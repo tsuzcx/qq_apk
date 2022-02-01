@@ -22,8 +22,8 @@ import android.widget.Gallery;
 import android.widget.OverScroller;
 import android.widget.SpinnerAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.f;
 import java.lang.ref.WeakReference;
@@ -31,106 +31,106 @@ import java.lang.ref.WeakReference;
 public class MMGestureGallery
   extends Gallery
 {
-  private boolean GaM;
-  private boolean GaN;
-  private boolean GaO;
-  private boolean GaP;
-  private boolean GaQ;
-  private final int Gbc;
-  private final int Gbd;
-  private l HrF;
-  private l HrG;
-  private l HrH;
-  private a HrI;
-  private f HrJ;
-  private c HrK;
-  private e HrL;
-  private boolean HrM;
-  private b HrN;
-  private float aOa;
-  private float aOb;
-  private int arE;
-  private int arF;
-  private float cHW;
+  private boolean HAA;
+  private boolean HAB;
+  private boolean HAC;
+  private boolean HAD;
+  private boolean HAE;
+  private final int HAR;
+  private final int HAS;
+  private l ISc;
+  private l ISd;
+  private l ISe;
+  private a ISf;
+  private MMGestureGallery.f ISg;
+  private MMGestureGallery.c ISh;
+  private e ISi;
+  private boolean ISj;
+  private b ISk;
+  private float aOQ;
+  private float aOR;
+  private int asA;
+  private int asz;
+  private float cFd;
   private int count;
-  private ap handler;
-  private MultiTouchImageView jPH;
-  private int kvn;
-  private int kvo;
+  private ao handler;
+  private int kWB;
+  private int kWC;
+  private MultiTouchImageView kqu;
   private VelocityTracker mVelocityTracker;
-  private boolean rMA;
-  private boolean rMB;
-  private boolean rMC;
-  private boolean rMD;
-  private long rMp;
-  private long rMq;
-  private float rMr;
-  private float rMs;
-  private long rMt;
-  private boolean rMu;
-  private OverScroller rMv;
-  private GestureDetector rMw;
-  private RectF rMx;
-  private float rMz;
-  private boolean xCE;
-  private boolean xCF;
-  private boolean xCG;
+  private long sUe;
+  private long sUf;
+  private float sUg;
+  private float sUh;
+  private long sUi;
+  private boolean sUj;
+  private OverScroller sUk;
+  private GestureDetector sUl;
+  private RectF sUm;
+  private float sUo;
+  private boolean sUp;
+  private boolean sUq;
+  private boolean sUr;
+  private boolean sUs;
+  private boolean yPs;
+  private boolean yPt;
+  private boolean yPu;
   
   public MMGestureGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143139);
-    this.rMu = false;
-    this.GaN = false;
-    this.GaO = false;
-    this.GaP = false;
-    this.GaQ = false;
-    this.rMA = false;
-    this.rMB = false;
-    this.rMC = false;
-    this.rMD = false;
+    this.sUj = false;
+    this.HAB = false;
+    this.HAC = false;
+    this.HAD = false;
+    this.HAE = false;
+    this.sUp = false;
+    this.sUq = false;
+    this.sUr = false;
+    this.sUs = false;
     this.count = 0;
-    this.rMp = 0L;
-    this.rMq = 0L;
-    this.rMr = 0.0F;
-    this.rMs = 0.0F;
-    this.rMt = 0L;
-    this.rMx = new RectF();
-    this.handler = new ap(Looper.getMainLooper());
-    this.HrM = true;
-    this.aOa = 0.0F;
-    this.aOb = 0.0F;
-    this.xCE = false;
-    this.xCF = false;
-    this.xCG = false;
-    this.GaM = false;
-    this.Gbc = 60;
-    this.Gbd = 500;
+    this.sUe = 0L;
+    this.sUf = 0L;
+    this.sUg = 0.0F;
+    this.sUh = 0.0F;
+    this.sUi = 0L;
+    this.sUm = new RectF();
+    this.handler = new ao(Looper.getMainLooper());
+    this.ISj = true;
+    this.aOQ = 0.0F;
+    this.aOR = 0.0F;
+    this.yPs = false;
+    this.yPt = false;
+    this.yPu = false;
+    this.HAA = false;
+    this.HAR = 60;
+    this.HAS = 500;
     setStaticTransformationsEnabled(true);
-    this.rMw = new GestureDetector(paramContext, new d((byte)0));
-    this.HrF = new l(new WeakReference(this));
-    this.HrG = new l(new WeakReference(this));
-    this.HrH = new l(new WeakReference(this));
-    this.rMv = new OverScroller(paramContext, new DecelerateInterpolator(2.0F));
+    this.sUl = new GestureDetector(paramContext, new d((byte)0));
+    this.ISc = new l(new WeakReference(this));
+    this.ISd = new l(new WeakReference(this));
+    this.ISe = new l(new WeakReference(this));
+    this.sUk = new OverScroller(paramContext, new DecelerateInterpolator(2.0F));
     float f = getResources().getDisplayMetrics().density;
     setOnTouchListener(new View.OnTouchListener()
     {
-      private void fdO()
+      private void ftJ()
       {
         AppMethodBeat.i(143113);
-        fdP();
+        ftK();
         MMGestureGallery.e(MMGestureGallery.this).j(2, 500L, 0L);
         AppMethodBeat.o(143113);
       }
       
-      private void fdP()
+      private void ftK()
       {
         AppMethodBeat.i(143114);
         MMGestureGallery.e(MMGestureGallery.this).removeMessages(2);
         AppMethodBeat.o(143114);
       }
       
-      private void wG(boolean paramAnonymousBoolean)
+      private void xN(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(143116);
         MMGestureGallery.k(MMGestureGallery.this).K(350L, paramAnonymousBoolean);
@@ -159,7 +159,7 @@ public class MMGestureGallery
             if (MMGestureGallery.g(MMGestureGallery.this))
             {
               if (MMGestureGallery.h(MMGestureGallery.this) != null) {
-                MMGestureGallery.h(MMGestureGallery.this).J(0.0F, 0.0F);
+                MMGestureGallery.h(MMGestureGallery.this).M(0.0F, 0.0F);
               }
               MMGestureGallery.a(MMGestureGallery.this, false);
             }
@@ -179,11 +179,11 @@ public class MMGestureGallery
             f2 = paramAnonymousMotionEvent.getY() - MMGestureGallery.m(MMGestureGallery.this);
             if ((MMGestureGallery.h(MMGestureGallery.this) != null) && (!MMGestureGallery.j(MMGestureGallery.this)) && (!MMGestureGallery.n(MMGestureGallery.this)))
             {
-              MMGestureGallery.h(MMGestureGallery.this).K(f1, f2);
+              MMGestureGallery.h(MMGestureGallery.this).N(f1, f2);
               if (((Math.abs(f1) > 250.0F) || (Math.abs(j) <= Math.abs(i)) || (j <= 0) || (MMGestureGallery.o(MMGestureGallery.this))) && (!MMGestureGallery.i(MMGestureGallery.this))) {
                 break label744;
               }
-              MMGestureGallery.h(MMGestureGallery.this).J(f1, f2);
+              MMGestureGallery.h(MMGestureGallery.this).M(f1, f2);
               MMGestureGallery.a(MMGestureGallery.this, true);
               if (f2 <= 200.0F) {
                 break label756;
@@ -212,35 +212,35 @@ public class MMGestureGallery
           if ((paramAnonymousView != null) && (paramAnonymousView.getVisibility() == 0) && (!(paramAnonymousView instanceof MultiTouchImageView)))
           {
             if (paramAnonymousMotionEvent.getAction() == 0) {
-              fdO();
+              ftJ();
             }
             if (paramAnonymousMotionEvent.getAction() == 1) {
-              fdP();
+              ftK();
             }
           }
           paramAnonymousView = localView.findViewById(2131306347);
           if ((paramAnonymousView != null) && (paramAnonymousView.getVisibility() == 0) && (!(paramAnonymousView instanceof MultiTouchImageView)))
           {
             if (paramAnonymousMotionEvent.getAction() == 0) {
-              fdO();
+              ftJ();
             }
             if (paramAnonymousMotionEvent.getAction() == 1) {
-              fdP();
+              ftK();
             }
           }
           paramAnonymousView = localView.findViewById(2131306410);
           if ((paramAnonymousView != null) && (paramAnonymousView.getVisibility() == 0))
           {
             if (paramAnonymousMotionEvent.getAction() == 0) {
-              fdO();
+              ftJ();
             }
             if (paramAnonymousMotionEvent.getAction() == 1) {
-              fdP();
+              ftK();
             }
           }
           paramAnonymousView = localView.findViewById(2131300933);
           if (((paramAnonymousView == null) || (paramAnonymousView.getVisibility() == 8)) && (MMGestureGallery.p(MMGestureGallery.this)) && (MMGestureGallery.q(MMGestureGallery.this) != null) && (paramAnonymousMotionEvent.getAction() == 1) && (Math.abs(MMGestureGallery.r(MMGestureGallery.this) - f.d(paramAnonymousMotionEvent, 0)) < 10.0F) && (Math.abs(MMGestureGallery.s(MMGestureGallery.this) - f.e(paramAnonymousMotionEvent, 0)) < 10.0F) && (!MMGestureGallery.o(MMGestureGallery.this))) {
-            wG(true);
+            xN(true);
           }
           if (paramAnonymousMotionEvent.getAction() == 1) {
             MMGestureGallery.t(MMGestureGallery.this);
@@ -266,14 +266,14 @@ public class MMGestureGallery
         if ((paramAnonymousView instanceof MultiTouchImageView))
         {
           MMGestureGallery.a(MMGestureGallery.this, (MultiTouchImageView)paramAnonymousView);
-          ad.d("dktest", "MMGestureGallery onTouch event.getAction():" + paramAnonymousMotionEvent.getAction());
+          ac.d("dktest", "MMGestureGallery onTouch event.getAction():" + paramAnonymousMotionEvent.getAction());
           if (paramAnonymousMotionEvent.getAction() == 0)
           {
-            fdO();
-            MMGestureGallery.a(MMGestureGallery.this).eSB();
+            ftJ();
+            MMGestureGallery.a(MMGestureGallery.this).fil();
             MMGestureGallery.e(MMGestureGallery.this, 0.0F);
             MMGestureGallery.f(MMGestureGallery.this, MMGestureGallery.a(MMGestureGallery.this).getScale());
-            ad.d("dktest", "originalScale :" + MMGestureGallery.u(MMGestureGallery.this));
+            ac.d("dktest", "originalScale :" + MMGestureGallery.u(MMGestureGallery.this));
             MMGestureGallery.c(MMGestureGallery.this, false);
             MMGestureGallery.v(MMGestureGallery.this);
             if (MMGestureGallery.w(MMGestureGallery.this) == 1)
@@ -287,11 +287,11 @@ public class MMGestureGallery
           {
             if ((paramAnonymousMotionEvent.getAction() == 6) || (paramAnonymousMotionEvent.getAction() == 262))
             {
-              fdP();
+              ftK();
               MMGestureGallery.e(MMGestureGallery.this, 0.0F);
               MMGestureGallery.f(MMGestureGallery.this, MMGestureGallery.a(MMGestureGallery.this).getScale());
               MMGestureGallery.c(MMGestureGallery.this, true);
-              ad.i("MicroMsg.MMGestureGallery", "originalScale:%f, scale:%f", new Object[] { Float.valueOf(MMGestureGallery.u(MMGestureGallery.this)), Float.valueOf(MMGestureGallery.a(MMGestureGallery.this).getScaleRate()) });
+              ac.i("MicroMsg.MMGestureGallery", "originalScale:%f, scale:%f", new Object[] { Float.valueOf(MMGestureGallery.u(MMGestureGallery.this)), Float.valueOf(MMGestureGallery.a(MMGestureGallery.this).getScaleRate()) });
               if (MMGestureGallery.u(MMGestureGallery.this) < MMGestureGallery.a(MMGestureGallery.this).getScaleRate())
               {
                 f1 = f.d(paramAnonymousMotionEvent, 0) - f.d(paramAnonymousMotionEvent, 1);
@@ -301,7 +301,7 @@ public class MMGestureGallery
                   break label2020;
                 }
                 if (MMGestureGallery.u(MMGestureGallery.this) <= f3 + 0.05D) {
-                  MMGestureGallery.a(MMGestureGallery.this).ai(f1 + f.d(paramAnonymousMotionEvent, 1), f2 + f.e(paramAnonymousMotionEvent, 1));
+                  MMGestureGallery.a(MMGestureGallery.this).am(f1 + f.d(paramAnonymousMotionEvent, 1), f2 + f.e(paramAnonymousMotionEvent, 1));
                 }
               }
               label1162:
@@ -313,12 +313,12 @@ public class MMGestureGallery
                 float f4 = f.e(paramAnonymousMotionEvent, 1);
                 MMGestureGallery.a(MMGestureGallery.this).setMaxZoomLimit(MMGestureGallery.a(MMGestureGallery.this).getDoubleTabScale() * 2.0F);
                 MMGestureGallery.a(MMGestureGallery.this).m(MMGestureGallery.a(MMGestureGallery.this).getDoubleTabScale() * 2.0F, f1 - f2 + f.d(paramAnonymousMotionEvent, 1), f3 - f4 + f.e(paramAnonymousMotionEvent, 1));
-                MMGestureGallery.a(MMGestureGallery.this).eSA();
+                MMGestureGallery.a(MMGestureGallery.this).fik();
               }
             }
             if (paramAnonymousMotionEvent.getAction() == 1)
             {
-              fdP();
+              ftK();
               MMGestureGallery.z(MMGestureGallery.this);
               MMGestureGallery.A(MMGestureGallery.this);
               MMGestureGallery.t(MMGestureGallery.this);
@@ -343,7 +343,7 @@ public class MMGestureGallery
                   break label2263;
                 }
                 if ((Math.abs(MMGestureGallery.r(MMGestureGallery.this) - f.d(paramAnonymousMotionEvent, 0)) < 10.0F) && (Math.abs(MMGestureGallery.s(MMGestureGallery.this) - f.e(paramAnonymousMotionEvent, 0)) < 10.0F)) {
-                  wG(false);
+                  xN(false);
                 }
               }
             }
@@ -362,7 +362,7 @@ public class MMGestureGallery
             if (f.ab(paramAnonymousMotionEvent) != 2) {
               break label2442;
             }
-            fdP();
+            ftK();
             if ((!MMGestureGallery.P(MMGestureGallery.this)) && (!MMGestureGallery.D(MMGestureGallery.this)) && (!MMGestureGallery.E(MMGestureGallery.this))) {
               break label2284;
             }
@@ -377,26 +377,26 @@ public class MMGestureGallery
               if ((Math.abs(MMGestureGallery.r(MMGestureGallery.this) - f.d(paramAnonymousMotionEvent, 0)) < 35.0F) && (Math.abs(MMGestureGallery.s(MMGestureGallery.this) - f.e(paramAnonymousMotionEvent, 0)) < 35.0F))
               {
                 MMGestureGallery.a(MMGestureGallery.this, 0);
-                ad.d("MicroMsg.MMGestureGallery", "double click!");
+                ac.d("MicroMsg.MMGestureGallery", "double click!");
                 f1 = MMGestureGallery.a(MMGestureGallery.this).getScale();
-                ad.i("MicroMsg.MMGestureGallery", "currentScale:%f, scale:%f", new Object[] { Float.valueOf(f1), Float.valueOf(MMGestureGallery.a(MMGestureGallery.this).getScaleRate()) });
+                ac.i("MicroMsg.MMGestureGallery", "currentScale:%f, scale:%f", new Object[] { Float.valueOf(f1), Float.valueOf(MMGestureGallery.a(MMGestureGallery.this).getScaleRate()) });
                 if (f1 <= MMGestureGallery.a(MMGestureGallery.this).getScaleRate())
                 {
-                  MMGestureGallery.a(MMGestureGallery.this).af(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
+                  MMGestureGallery.a(MMGestureGallery.this).aj(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
                   break;
                 }
                 if (MMGestureGallery.a(MMGestureGallery.this).getOriginScale() > 0.0F)
                 {
                   if (f1 <= MMGestureGallery.a(MMGestureGallery.this).getOriginScale() + 0.05D)
                   {
-                    MMGestureGallery.a(MMGestureGallery.this).af(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
+                    MMGestureGallery.a(MMGestureGallery.this).aj(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
                     break;
                   }
-                  MMGestureGallery.a(MMGestureGallery.this).ah(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
+                  MMGestureGallery.a(MMGestureGallery.this).al(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
                   break;
                 }
-                MMGestureGallery.a(MMGestureGallery.this).ae(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
-                MMGestureGallery.a(MMGestureGallery.this).eSA();
+                MMGestureGallery.a(MMGestureGallery.this).ai(f.d(paramAnonymousMotionEvent, 0), f.e(paramAnonymousMotionEvent, 0));
+                MMGestureGallery.a(MMGestureGallery.this).fik();
                 break;
               }
               MMGestureGallery.a(MMGestureGallery.this, 1);
@@ -405,7 +405,7 @@ public class MMGestureGallery
             MMGestureGallery.a(MMGestureGallery.this, 1);
             break;
             label2020:
-            MMGestureGallery.a(MMGestureGallery.this).ae(f1 + f.d(paramAnonymousMotionEvent, 1), f2 + f.e(paramAnonymousMotionEvent, 1));
+            MMGestureGallery.a(MMGestureGallery.this).ai(f1 + f.d(paramAnonymousMotionEvent, 1), f2 + f.e(paramAnonymousMotionEvent, 1));
             break label1162;
             label2048:
             if ((MMGestureGallery.D(MMGestureGallery.this)) || (MMGestureGallery.B(MMGestureGallery.this)))
@@ -437,7 +437,7 @@ public class MMGestureGallery
             break label1457;
             label2263:
             MMGestureGallery.a(MMGestureGallery.this, 0);
-            ad.d("MicroMsg.MMGestureGallery", "single long click over!");
+            ac.d("MicroMsg.MMGestureGallery", "single long click over!");
           }
           label2284:
           MMGestureGallery.c(MMGestureGallery.this, true);
@@ -460,12 +460,12 @@ public class MMGestureGallery
           if (MMGestureGallery.n(MMGestureGallery.this))
           {
             MMGestureGallery.a(MMGestureGallery.this).m(f3 * MMGestureGallery.u(MMGestureGallery.this), f1 + f.d(paramAnonymousMotionEvent, 1), f.e(paramAnonymousMotionEvent, 1) + f2);
-            MMGestureGallery.a(MMGestureGallery.this).eSA();
+            MMGestureGallery.a(MMGestureGallery.this).fik();
             continue;
             label2442:
             if ((Math.abs(MMGestureGallery.r(MMGestureGallery.this) - f.d(paramAnonymousMotionEvent, 0)) > 35.0F) || (Math.abs(MMGestureGallery.s(MMGestureGallery.this) - f.e(paramAnonymousMotionEvent, 0)) > 35.0F))
             {
-              fdP();
+              ftK();
               MMGestureGallery.a(MMGestureGallery.this, 0);
             }
           }
@@ -479,32 +479,32 @@ public class MMGestureGallery
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143137);
-    this.rMu = false;
-    this.GaN = false;
-    this.GaO = false;
-    this.GaP = false;
-    this.GaQ = false;
-    this.rMA = false;
-    this.rMB = false;
-    this.rMC = false;
-    this.rMD = false;
+    this.sUj = false;
+    this.HAB = false;
+    this.HAC = false;
+    this.HAD = false;
+    this.HAE = false;
+    this.sUp = false;
+    this.sUq = false;
+    this.sUr = false;
+    this.sUs = false;
     this.count = 0;
-    this.rMp = 0L;
-    this.rMq = 0L;
-    this.rMr = 0.0F;
-    this.rMs = 0.0F;
-    this.rMt = 0L;
-    this.rMx = new RectF();
-    this.handler = new ap(Looper.getMainLooper());
-    this.HrM = true;
-    this.aOa = 0.0F;
-    this.aOb = 0.0F;
-    this.xCE = false;
-    this.xCF = false;
-    this.xCG = false;
-    this.GaM = false;
-    this.Gbc = 60;
-    this.Gbd = 500;
+    this.sUe = 0L;
+    this.sUf = 0L;
+    this.sUg = 0.0F;
+    this.sUh = 0.0F;
+    this.sUi = 0L;
+    this.sUm = new RectF();
+    this.handler = new ao(Looper.getMainLooper());
+    this.ISj = true;
+    this.aOQ = 0.0F;
+    this.aOR = 0.0F;
+    this.yPs = false;
+    this.yPt = false;
+    this.yPu = false;
+    this.HAA = false;
+    this.HAR = 60;
+    this.HAS = 500;
     setStaticTransformationsEnabled(true);
     AppMethodBeat.o(143137);
   }
@@ -548,7 +548,7 @@ public class MMGestureGallery
   {
     AppMethodBeat.i(143142);
     int i;
-    if ((this.GaO) || (this.GaN)) {
+    if ((this.HAC) || (this.HAB)) {
       i = 0;
     }
     while (i != 0)
@@ -557,19 +557,19 @@ public class MMGestureGallery
       return true;
       if (getPositionForView(paramView) == getAdapter().getCount() - 1)
       {
-        if (this.GaQ)
+        if (this.HAE)
         {
           if (paramFloat3 > 0.0F)
           {
-            if (paramFloat2 >= this.kvn) {
-              this.jPH.ag(-paramFloat3, 0.0F);
+            if (paramFloat2 >= this.kWB) {
+              this.kqu.ak(-paramFloat3, 0.0F);
             }
             for (;;)
             {
               i = 1;
               break;
-              if ((paramFloat2 > this.kvn * 0.7F) && (paramFloat2 < this.kvo)) {
-                this.jPH.ag(-(paramFloat3 * 0.3F), 0.0F);
+              if ((paramFloat2 > this.kWB * 0.7F) && (paramFloat2 < this.kWC)) {
+                this.kqu.ak(-(paramFloat3 * 0.3F), 0.0F);
               }
             }
           }
@@ -578,26 +578,26 @@ public class MMGestureGallery
         }
         if (paramFloat3 > 0.0F)
         {
-          if (paramFloat2 < this.kvn) {
-            this.GaQ = true;
+          if (paramFloat2 < this.kWB) {
+            this.HAE = true;
           }
-          if (paramFloat2 >= this.kvn) {
-            this.jPH.ag(-paramFloat3, 0.0F);
+          if (paramFloat2 >= this.kWB) {
+            this.kqu.ak(-paramFloat3, 0.0F);
           }
           for (;;)
           {
             i = 1;
             break;
-            if ((paramFloat2 > this.kvn * 0.7F) && (paramFloat2 < this.kvo)) {
-              this.jPH.ag(-(paramFloat3 * 0.3F), 0.0F);
+            if ((paramFloat2 > this.kWB * 0.7F) && (paramFloat2 < this.kWC)) {
+              this.kqu.ak(-(paramFloat3 * 0.3F), 0.0F);
             }
           }
         }
       }
-      this.GaQ = false;
+      this.HAE = false;
       i = 0;
     }
-    if ((this.GaO) || (this.GaN)) {
+    if ((this.HAC) || (this.HAB)) {
       i = 0;
     }
     while (i != 0)
@@ -606,19 +606,19 @@ public class MMGestureGallery
       return true;
       if (getPositionForView(paramView) == 0)
       {
-        if (this.GaP)
+        if (this.HAD)
         {
           if (paramFloat3 < 0.0F)
           {
-            if ((paramFloat1 > 0.0F) && (paramFloat1 < this.kvn * 0.3F)) {
-              this.jPH.ag(-(paramFloat3 * 0.3F), 0.0F);
+            if ((paramFloat1 > 0.0F) && (paramFloat1 < this.kWB * 0.3F)) {
+              this.kqu.ak(-(paramFloat3 * 0.3F), 0.0F);
             }
             for (;;)
             {
               i = 1;
               break;
               if (paramFloat1 <= 0.0F) {
-                this.jPH.ag(-paramFloat3, 0.0F);
+                this.kqu.ak(-paramFloat3, 0.0F);
               }
             }
           }
@@ -628,22 +628,22 @@ public class MMGestureGallery
         if (paramFloat3 < 0.0F)
         {
           if (paramFloat1 > 0.0F) {
-            this.GaP = true;
+            this.HAD = true;
           }
-          if ((paramFloat1 > 0.0F) && (paramFloat1 < this.kvn * 0.3F)) {
-            this.jPH.ag(-(paramFloat3 * 0.3F), 0.0F);
+          if ((paramFloat1 > 0.0F) && (paramFloat1 < this.kWB * 0.3F)) {
+            this.kqu.ak(-(paramFloat3 * 0.3F), 0.0F);
           }
           for (;;)
           {
             i = 1;
             break;
             if (paramFloat1 <= 0.0F) {
-              this.jPH.ag(-paramFloat3, 0.0F);
+              this.kqu.ak(-paramFloat3, 0.0F);
             }
           }
         }
       }
-      this.GaP = false;
+      this.HAD = false;
       i = 0;
     }
     AppMethodBeat.o(143142);
@@ -653,12 +653,12 @@ public class MMGestureGallery
   private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(143141);
-    if (this.GaN)
+    if (this.HAB)
     {
       AppMethodBeat.o(143141);
       return true;
     }
-    this.GaO = true;
+    this.HAC = true;
     boolean bool = super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     AppMethodBeat.o(143141);
     return bool;
@@ -676,18 +676,18 @@ public class MMGestureGallery
     return false;
   }
   
-  private void cAV()
+  private void cOe()
   {
     AppMethodBeat.i(143138);
-    this.HrF.removeMessages(1);
+    this.ISc.removeMessages(1);
     AppMethodBeat.o(143138);
   }
   
   public void computeScroll()
   {
     AppMethodBeat.i(143152);
-    ad.d("MicroMsg.MMGestureGallery", "computeScrollOffset: %s.", new Object[] { Boolean.valueOf(this.rMv.computeScrollOffset()) });
-    if (this.jPH == null)
+    ac.d("MicroMsg.MMGestureGallery", "computeScrollOffset: %s.", new Object[] { Boolean.valueOf(this.sUk.computeScrollOffset()) });
+    if (this.kqu == null)
     {
       AppMethodBeat.o(143152);
       return;
@@ -698,75 +698,75 @@ public class MMGestureGallery
     float f5;
     int j;
     int k;
-    if (this.rMv.computeScrollOffset())
+    if (this.sUk.computeScrollOffset())
     {
-      ad.d("MicroMsg.MMGestureGallery", "mFlingScroller.getCurrX(): %s, mFlingScroller.getCurrY(): %s.", new Object[] { Integer.valueOf(this.rMv.getCurrX()), Integer.valueOf(this.rMv.getCurrY()) });
-      i = this.rMv.getCurrX() - this.arE;
-      int m = this.rMv.getCurrY() - this.arF;
-      ad.d("MicroMsg.MMGestureGallery", " scrollX: %s, scrollY: %s, mLastFlingX: %s, mLastFlingY: %s.", new Object[] { Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(this.arE), Integer.valueOf(this.arF) });
-      this.arE = this.rMv.getCurrX();
-      this.arF = this.rMv.getCurrY();
-      float f3 = this.jPH.getScale();
-      f4 = this.jPH.getImageWidth();
-      f1 = this.jPH.getScale() * this.jPH.getImageHeight();
+      ac.d("MicroMsg.MMGestureGallery", "mFlingScroller.getCurrX(): %s, mFlingScroller.getCurrY(): %s.", new Object[] { Integer.valueOf(this.sUk.getCurrX()), Integer.valueOf(this.sUk.getCurrY()) });
+      i = this.sUk.getCurrX() - this.asz;
+      int m = this.sUk.getCurrY() - this.asA;
+      ac.d("MicroMsg.MMGestureGallery", " scrollX: %s, scrollY: %s, mLastFlingX: %s, mLastFlingY: %s.", new Object[] { Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(this.asz), Integer.valueOf(this.asA) });
+      this.asz = this.sUk.getCurrX();
+      this.asA = this.sUk.getCurrY();
+      float f3 = this.kqu.getScale();
+      f4 = this.kqu.getImageWidth();
+      f1 = this.kqu.getScale() * this.kqu.getImageHeight();
       float[] arrayOfFloat = new float[9];
-      this.jPH.getImageMatrix().getValues(arrayOfFloat);
+      this.kqu.getImageMatrix().getValues(arrayOfFloat);
       float f2 = arrayOfFloat[2];
       f3 = f3 * f4 + f2;
       f4 = arrayOfFloat[5];
       f5 = f4 + f1;
-      ad.d("MicroMsg.MMGestureGallery", "left: %s, right: %s, top: %s, bottom: %s.", new Object[] { Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f5) });
+      ac.d("MicroMsg.MMGestureGallery", "left: %s, right: %s, top: %s, bottom: %s.", new Object[] { Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f5) });
       j = i;
       if (i < 0)
       {
         j = i;
-        if (i < this.rMx.right - Math.round(f3)) {
-          j = (int)(this.rMx.right - Math.round(f3));
+        if (i < this.sUm.right - Math.round(f3)) {
+          j = (int)(this.sUm.right - Math.round(f3));
         }
       }
       i = j;
       if (j > 0)
       {
         i = j;
-        if (j > this.rMx.left - Math.round(f2)) {
-          i = (int)(this.rMx.left - Math.round(f2));
+        if (j > this.sUm.left - Math.round(f2)) {
+          i = (int)(this.sUm.left - Math.round(f2));
         }
       }
       k = m;
       if (m < 0)
       {
         k = m;
-        if (m < this.rMx.bottom - Math.round(f5)) {
-          k = (int)(this.rMx.bottom - Math.round(f5));
+        if (m < this.sUm.bottom - Math.round(f5)) {
+          k = (int)(this.sUm.bottom - Math.round(f5));
         }
       }
       j = k;
       if (k > 0)
       {
         j = k;
-        if (k > this.rMx.top - Math.round(f4)) {
-          j = (int)(this.rMx.top - Math.round(f4));
+        if (k > this.sUm.top - Math.round(f4)) {
+          j = (int)(this.sUm.top - Math.round(f4));
         }
       }
-      if ((Math.round(f2) < this.rMx.left) && (Math.round(f3) > this.rMx.right)) {
+      if ((Math.round(f2) < this.sUm.left) && (Math.round(f3) > this.sUm.right)) {
         break label586;
       }
       k = 0;
     }
     for (;;)
     {
-      if (f1 < this.kvo) {
+      if (f1 < this.kWC) {
         j = 0;
       }
-      this.jPH.ag(k, j);
+      this.kqu.ak(k, j);
       postInvalidate();
       AppMethodBeat.o(143152);
       return;
       label586:
-      if (Math.round(f4) < this.rMx.top)
+      if (Math.round(f4) < this.sUm.top)
       {
         k = i;
-        if (Math.round(f5) > this.rMx.bottom) {}
+        if (Math.round(f5) > this.sUm.bottom) {}
       }
       else
       {
@@ -778,17 +778,17 @@ public class MMGestureGallery
   
   public int getScreenWidth()
   {
-    return this.kvn;
+    return this.kWB;
   }
   
   public int getXDown()
   {
-    return (int)this.aOa;
+    return (int)this.aOQ;
   }
   
   public int getYDown()
   {
-    return (int)this.aOb;
+    return (int)this.aOR;
   }
   
   public boolean isFocused()
@@ -799,8 +799,8 @@ public class MMGestureGallery
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143144);
-    if (this.rMv != null) {
-      this.rMv.forceFinished(true);
+    if (this.sUk != null) {
+      this.sUk.forceFinished(true);
     }
     boolean bool = super.onDown(paramMotionEvent);
     AppMethodBeat.o(143144);
@@ -839,8 +839,8 @@ public class MMGestureGallery
       localObject1 = (MultiTouchImageView)localObject1;
       f2 = ((MultiTouchImageView)localObject1).getScale() * ((MultiTouchImageView)localObject1).getImageWidth();
       f3 = ((MultiTouchImageView)localObject1).getScale() * ((MultiTouchImageView)localObject1).getImageHeight();
-      ad.d("MicroMsg.MMGestureGallery", "width: %f, height: %f.", new Object[] { Float.valueOf(f2), Float.valueOf(f3) });
-      if ((((MultiTouchImageView)localObject1).GbL) || (((MultiTouchImageView)localObject1).GbM) || ((int)f2 > this.kvn) || ((int)f3 > this.kvo))
+      ac.d("MicroMsg.MMGestureGallery", "width: %f, height: %f.", new Object[] { Float.valueOf(f2), Float.valueOf(f3) });
+      if ((((MultiTouchImageView)localObject1).HBA) || (((MultiTouchImageView)localObject1).HBB) || ((int)f2 > this.kWB) || ((int)f3 > this.kWC))
       {
         localObject2 = new float[9];
         ((MultiTouchImageView)localObject1).getImageMatrix().getValues((float[])localObject2);
@@ -848,8 +848,8 @@ public class MMGestureGallery
         float f6 = f1 + f2;
         f4 = localObject2[5];
         f5 = f4 + f3;
-        ad.d("MicroMsg.MMGestureGallery", "left: %f, right: %f, top: %f, bottom: %f, velocityX: %f, velocityY: %f.", new Object[] { Float.valueOf(f1), Float.valueOf(f6), Float.valueOf(f4), Float.valueOf(f5), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-        if ((Math.round(f1) < this.rMx.left) && (Math.round(f6) > this.rMx.right)) {
+        ac.d("MicroMsg.MMGestureGallery", "left: %f, right: %f, top: %f, bottom: %f, velocityX: %f, velocityY: %f.", new Object[] { Float.valueOf(f1), Float.valueOf(f6), Float.valueOf(f4), Float.valueOf(f5), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+        if ((Math.round(f1) < this.sUm.left) && (Math.round(f6) > this.sUm.right)) {
           break label614;
         }
       }
@@ -857,21 +857,21 @@ public class MMGestureGallery
     label614:
     for (float f1 = 0.0F;; f1 = paramFloat1)
     {
-      if ((Math.round(f4) >= this.rMx.top) || (Math.round(f5) <= this.rMx.bottom)) {
+      if ((Math.round(f4) >= this.sUm.top) || (Math.round(f5) <= this.sUm.bottom)) {
         paramFloat2 = 0.0F;
       }
-      if (Math.round(f4) < this.rMx.top) {}
-      for (this.GaM = true;; this.GaM = false)
+      if (Math.round(f4) < this.sUm.top) {}
+      for (this.HAA = true;; this.HAA = false)
       {
-        int i = (int)(this.rMx.right - f2);
-        int j = (int)(this.rMx.right + f2);
-        int k = (int)(this.rMx.bottom - f3);
-        int m = (int)(this.rMx.bottom + f3);
-        ad.d("MicroMsg.MMGestureGallery", "minX: %d, maxX: %d, minY: %d, maxY: %d.", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-        ad.d("MicroMsg.MMGestureGallery", "vx: %f, vy: %f.", new Object[] { Float.valueOf(f1), Float.valueOf(paramFloat2) });
-        this.rMv.forceFinished(true);
-        this.rMv.fling(this.rMv.getCurrX(), this.rMv.getCurrY(), (int)f1, (int)paramFloat2, i, j, k, m, 0, 0);
-        if (!this.rMu) {
+        int i = (int)(this.sUm.right - f2);
+        int j = (int)(this.sUm.right + f2);
+        int k = (int)(this.sUm.bottom - f3);
+        int m = (int)(this.sUm.bottom + f3);
+        ac.d("MicroMsg.MMGestureGallery", "minX: %d, maxX: %d, minY: %d, maxY: %d.", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+        ac.d("MicroMsg.MMGestureGallery", "vx: %f, vy: %f.", new Object[] { Float.valueOf(f1), Float.valueOf(paramFloat2) });
+        this.sUk.forceFinished(true);
+        this.sUk.fling(this.sUk.getCurrX(), this.sUk.getCurrY(), (int)f1, (int)paramFloat2, i, j, k, m, 0, 0);
+        if (!this.sUj) {
           break;
         }
         AppMethodBeat.o(143145);
@@ -895,7 +895,7 @@ public class MMGestureGallery
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143146);
-    this.xCG = true;
+    this.yPu = true;
     super.onLongPress(paramMotionEvent);
     AppMethodBeat.o(143146);
   }
@@ -904,17 +904,17 @@ public class MMGestureGallery
   {
     AppMethodBeat.i(143140);
     super.onMeasure(paramInt1, paramInt2);
-    this.kvn = View.MeasureSpec.getSize(paramInt1);
-    this.kvo = View.MeasureSpec.getSize(paramInt2);
-    this.rMx.set(0.0F, 0.0F, this.kvn, this.kvo);
-    ad.v("MicroMsg.MMGestureGallery", "MMGestureGallery width:" + this.kvn + " height:" + this.kvo);
+    this.kWB = View.MeasureSpec.getSize(paramInt1);
+    this.kWC = View.MeasureSpec.getSize(paramInt2);
+    this.sUm.set(0.0F, 0.0F, this.kWB, this.kWC);
+    ac.v("MicroMsg.MMGestureGallery", "MMGestureGallery width:" + this.kWB + " height:" + this.kWC);
     AppMethodBeat.o(143140);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(143143);
-    if ((this.rMu) || (this.xCE))
+    if ((this.sUj) || (this.yPs))
     {
       AppMethodBeat.o(143143);
       return true;
@@ -947,18 +947,18 @@ public class MMGestureGallery
     float f7;
     if ((localObject1 instanceof MultiTouchImageView))
     {
-      this.jPH = ((MultiTouchImageView)localObject1);
+      this.kqu = ((MultiTouchImageView)localObject1);
       localObject2 = new float[9];
-      this.jPH.getImageMatrix().getValues((float[])localObject2);
-      f1 = this.jPH.getScale() * this.jPH.getImageWidth();
-      float f2 = this.jPH.getScale() * this.jPH.getImageHeight();
+      this.kqu.getImageMatrix().getValues((float[])localObject2);
+      f1 = this.kqu.getScale() * this.kqu.getImageWidth();
+      float f2 = this.kqu.getScale() * this.kqu.getImageHeight();
       f5 = localObject2[2];
       f4 = f5 + f1;
       f6 = localObject2[5];
       f7 = f6 + f2;
       localObject2 = new Rect();
-      this.jPH.getGlobalVisibleRect((Rect)localObject2);
-      if (((int)f1 <= this.kvn) && ((int)f2 <= this.kvo))
+      this.kqu.getGlobalVisibleRect((Rect)localObject2);
+      if (((int)f1 <= this.kWB) && ((int)f2 <= this.kWC))
       {
         if (a(f5, f4, (View)localObject1, paramFloat1))
         {
@@ -967,7 +967,7 @@ public class MMGestureGallery
         }
         if (paramFloat1 > 0.0F)
         {
-          if (f4 <= this.kvn)
+          if (f4 <= this.kWB)
           {
             bool = a(paramMotionEvent1, paramMotionEvent2, paramFloat1, 0.0F);
             AppMethodBeat.o(143143);
@@ -980,68 +980,68 @@ public class MMGestureGallery
           AppMethodBeat.o(143143);
           return bool;
         }
-        if (!this.GaO) {
-          this.jPH.ag(-paramFloat1, 0.0F);
+        if (!this.HAC) {
+          this.kqu.ak(-paramFloat1, 0.0F);
         }
         AppMethodBeat.o(143143);
         return true;
       }
-      if (((int)f1 <= this.kvn) && ((int)f2 > this.kvo))
+      if (((int)f1 <= this.kWB) && ((int)f2 > this.kWC))
       {
         if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
         {
-          if ((this.GaO) || (this.GaP) || (this.GaQ))
+          if ((this.HAC) || (this.HAD) || (this.HAE))
           {
             AppMethodBeat.o(143143);
             return true;
           }
-          this.GaN = true;
+          this.HAB = true;
           f2 = 0.0F;
           float f3 = 0.0F;
           if (paramFloat2 < 0.0F)
           {
-            if (f6 > this.rMx.top) {
-              this.rMA = true;
+            if (f6 > this.sUm.top) {
+              this.sUp = true;
             }
-            if ((f6 <= this.rMx.top) || (f7 < this.kvo))
+            if ((f6 <= this.sUm.top) || (f7 < this.kWC))
             {
               f1 = -paramFloat2;
-              if ((paramFloat1 >= 0.0F) || (f5 <= this.rMx.left)) {
+              if ((paramFloat1 >= 0.0F) || (f5 <= this.sUm.left)) {
                 break label691;
               }
-              this.rMC = true;
+              this.sUr = true;
               paramFloat2 = -(0.3F * paramFloat1);
             }
           }
           for (;;)
           {
-            this.jPH.ag(paramFloat2, f1);
+            this.kqu.ak(paramFloat2, f1);
             AppMethodBeat.o(143143);
             return true;
             f1 = f3;
-            if (f6 <= this.rMx.top) {
+            if (f6 <= this.sUm.top) {
               break;
             }
             f1 = f3;
-            if (f6 >= this.kvo * 0.3F) {
+            if (f6 >= this.kWC * 0.3F) {
               break;
             }
             f1 = -(0.3F * paramFloat2);
             break;
-            if (f7 < this.rMx.bottom) {
-              this.rMB = true;
+            if (f7 < this.sUm.bottom) {
+              this.sUq = true;
             }
-            if ((f6 > 0.0F) || (f7 >= this.kvo))
+            if ((f6 > 0.0F) || (f7 >= this.kWC))
             {
               f1 = -paramFloat2;
               break;
             }
             f1 = f3;
-            if (f7 <= this.kvo * 0.7F) {
+            if (f7 <= this.kWC * 0.7F) {
               break;
             }
             f1 = f3;
-            if (f7 >= this.kvo) {
+            if (f7 >= this.kWC) {
               break;
             }
             f1 = -(0.3F * paramFloat2);
@@ -1051,9 +1051,9 @@ public class MMGestureGallery
             if (paramFloat1 > 0.0F)
             {
               paramFloat2 = f2;
-              if (f4 < this.rMx.right)
+              if (f4 < this.sUm.right)
               {
-                this.rMD = true;
+                this.sUs = true;
                 paramFloat2 = -(0.3F * paramFloat1);
               }
             }
@@ -1066,9 +1066,9 @@ public class MMGestureGallery
         }
         if (paramFloat1 > 0.0F)
         {
-          if (f4 <= this.kvn)
+          if (f4 <= this.kWB)
           {
-            if (f4 > this.kvn * 0.7F)
+            if (f4 > this.kWB * 0.7F)
             {
               bool = a(paramMotionEvent1, paramMotionEvent2, 0.3F * paramFloat1, 0.0F);
               AppMethodBeat.o(143143);
@@ -1081,7 +1081,7 @@ public class MMGestureGallery
         }
         else if (f5 >= 0.0F)
         {
-          if (f5 < this.kvn * 0.3F)
+          if (f5 < this.kWB * 0.3F)
           {
             bool = a(paramMotionEvent1, paramMotionEvent2, 0.3F * paramFloat1, 0.0F);
             AppMethodBeat.o(143143);
@@ -1091,13 +1091,13 @@ public class MMGestureGallery
           AppMethodBeat.o(143143);
           return bool;
         }
-        if (!this.GaO) {
-          this.jPH.ag(-paramFloat1, 0.0F);
+        if (!this.HAC) {
+          this.kqu.ak(-paramFloat1, 0.0F);
         }
         AppMethodBeat.o(143143);
         return true;
       }
-      if (((int)f1 > this.kvn) && ((int)f2 <= this.kvo))
+      if (((int)f1 > this.kWB) && ((int)f2 <= this.kWC))
       {
         if (a(f5, f4, (View)localObject1, paramFloat1))
         {
@@ -1106,7 +1106,7 @@ public class MMGestureGallery
         }
         if (paramFloat1 > 0.0F)
         {
-          if (f4 <= this.kvn)
+          if (f4 <= this.kWB)
           {
             bool = a(paramMotionEvent1, paramMotionEvent2, paramFloat1, 0.0F);
             AppMethodBeat.o(143143);
@@ -1119,8 +1119,8 @@ public class MMGestureGallery
           AppMethodBeat.o(143143);
           return bool;
         }
-        if (!this.GaO) {
-          this.jPH.ag(-paramFloat1, 0.0F);
+        if (!this.HAC) {
+          this.kqu.ak(-paramFloat1, 0.0F);
         }
         AppMethodBeat.o(143143);
         return true;
@@ -1130,16 +1130,16 @@ public class MMGestureGallery
         if (paramFloat1 == 0.0F) {
           break label1581;
         }
-        this.GaO = true;
+        this.HAC = true;
         if (paramFloat1 < 0.0F)
         {
-          if (f5 > this.rMx.left) {
-            this.rMC = true;
+          if (f5 > this.sUm.left) {
+            this.sUr = true;
           }
           f1 = paramFloat1;
-          if (f5 > this.rMx.left)
+          if (f5 > this.sUm.left)
           {
-            if (f4 >= this.kvn) {
+            if (f4 >= this.kWB) {
               break label1213;
             }
             f1 = paramFloat1;
@@ -1151,16 +1151,16 @@ public class MMGestureGallery
     {
       if (paramFloat2 != 0.0F)
       {
-        this.GaN = true;
+        this.HAB = true;
         if (paramFloat2 < 0.0F)
         {
-          if (f6 > this.rMx.top) {
-            this.rMA = true;
+          if (f6 > this.sUm.top) {
+            this.sUp = true;
           }
           paramFloat1 = paramFloat2;
-          if (f6 > this.rMx.top)
+          if (f6 > this.sUm.top)
           {
-            if (f7 >= this.kvo) {
+            if (f7 >= this.kWC) {
               break label1329;
             }
             paramFloat1 = paramFloat2;
@@ -1169,48 +1169,48 @@ public class MMGestureGallery
       }
       for (;;)
       {
-        this.jPH.ag(-f1, -paramFloat1);
+        this.kqu.ak(-f1, -paramFloat1);
         AppMethodBeat.o(143143);
         return true;
         label1213:
-        if ((f5 <= this.rMx.left) || (f5 >= this.kvn * 0.3F)) {
+        if ((f5 <= this.sUm.left) || (f5 >= this.kWB * 0.3F)) {
           break label1581;
         }
         f1 = paramFloat1 * 0.3F;
         break;
-        if (f4 < this.rMx.right) {
-          this.rMD = true;
+        if (f4 < this.sUm.right) {
+          this.sUs = true;
         }
         f1 = paramFloat1;
         if (f5 > 0.0F) {
           break;
         }
         f1 = paramFloat1;
-        if (f4 >= this.kvn) {
+        if (f4 >= this.kWB) {
           break;
         }
-        if ((f4 <= this.kvn * 0.7F) || (f4 >= this.kvn)) {
+        if ((f4 <= this.kWB * 0.7F) || (f4 >= this.kWB)) {
           break label1581;
         }
         f1 = paramFloat1 * 0.3F;
         break;
         label1329:
-        if ((f6 > this.rMx.top) && (f6 < this.kvo * 0.3F))
+        if ((f6 > this.sUm.top) && (f6 < this.kWC * 0.3F))
         {
           paramFloat1 = paramFloat2 * 0.3F;
           continue;
-          if (f7 < this.rMx.bottom) {
-            this.rMB = true;
+          if (f7 < this.sUm.bottom) {
+            this.sUq = true;
           }
           paramFloat1 = paramFloat2;
           if (f6 > 0.0F) {
             continue;
           }
           paramFloat1 = paramFloat2;
-          if (f7 >= this.kvo) {
+          if (f7 >= this.kWC) {
             continue;
           }
-          if ((f7 > this.kvo * 0.7F) && (f7 < this.kvo))
+          if ((f7 > this.kWC * 0.7F) && (f7 < this.kWC))
           {
             paramFloat1 = paramFloat2 * 0.3F;
             continue;
@@ -1221,7 +1221,7 @@ public class MMGestureGallery
             }
             if (paramFloat1 > 0.0F)
             {
-              if (f4 <= this.kvn)
+              if (f4 <= this.kWB)
               {
                 bool = a(paramMotionEvent1, paramMotionEvent2, paramFloat1, 0.0F);
                 AppMethodBeat.o(143143);
@@ -1234,8 +1234,8 @@ public class MMGestureGallery
               AppMethodBeat.o(143143);
               return bool;
             }
-            if (!this.GaO) {
-              this.jPH.ag(-paramFloat1, -paramFloat2);
+            if (!this.HAC) {
+              this.kqu.ak(-paramFloat1, -paramFloat2);
             }
             AppMethodBeat.o(143143);
             return true;
@@ -1254,8 +1254,8 @@ public class MMGestureGallery
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143149);
-    this.rMw.onTouchEvent(paramMotionEvent);
-    ad.d("dktest", "onTouchEvent event.getAction()" + paramMotionEvent.getAction());
+    this.sUl.onTouchEvent(paramMotionEvent);
+    ac.d("dktest", "onTouchEvent event.getAction()" + paramMotionEvent.getAction());
     switch (paramMotionEvent.getAction())
     {
     }
@@ -1268,19 +1268,19 @@ public class MMGestureGallery
       Object localObject = getSelectedView();
       if ((localObject instanceof MultiTouchImageView))
       {
-        this.jPH = ((MultiTouchImageView)localObject);
-        float f2 = this.jPH.getScale() * this.jPH.getImageWidth();
-        float f1 = this.jPH.getScale() * this.jPH.getImageHeight();
-        if (((int)f2 <= this.kvn) && ((int)f1 <= this.kvo))
+        this.kqu = ((MultiTouchImageView)localObject);
+        float f2 = this.kqu.getScale() * this.kqu.getImageWidth();
+        float f1 = this.kqu.getScale() * this.kqu.getImageHeight();
+        if (((int)f2 <= this.kWB) && ((int)f1 <= this.kWC))
         {
-          ad.i("dktest", "onTouchEvent width:" + f2 + "height:" + f1);
+          ac.i("dktest", "onTouchEvent width:" + f2 + "height:" + f1);
         }
         else
         {
           localObject = new float[9];
-          this.jPH.getImageMatrix().getValues((float[])localObject);
+          this.kqu.getImageMatrix().getValues((float[])localObject);
           f2 = localObject[5];
-          ad.d("dktest", "onTouchEvent top:" + f2 + " height:" + f1 + " bottom:" + (f2 + f1));
+          ac.d("dktest", "onTouchEvent top:" + f2 + " height:" + f1 + " bottom:" + (f2 + f1));
         }
       }
     }
@@ -1297,38 +1297,38 @@ public class MMGestureGallery
   
   public void setGalleryScaleListener(b paramb)
   {
-    this.HrN = paramb;
+    this.ISk = paramb;
   }
   
   public void setLoadQuit(boolean paramBoolean)
   {
-    this.HrM = paramBoolean;
+    this.ISj = paramBoolean;
   }
   
-  public void setLongClickOverListener(c paramc)
+  public void setLongClickOverListener(MMGestureGallery.c paramc)
   {
-    this.HrK = paramc;
+    this.ISh = paramc;
   }
   
   public void setScrollLeftRightListener(e parame)
   {
-    this.HrL = parame;
+    this.ISi = parame;
   }
   
-  public void setSingleClickOverListener(f paramf)
+  public void setSingleClickOverListener(MMGestureGallery.f paramf)
   {
-    this.HrJ = paramf;
+    this.ISg = paramf;
   }
   
   abstract class a
   {
-    protected boolean cHI = false;
+    protected boolean cEQ = false;
     
     public a() {}
     
-    public final boolean cAX()
+    public final boolean cOg()
     {
-      return this.cHI;
+      return this.cEQ;
     }
     
     public abstract void play();
@@ -1336,14 +1336,9 @@ public class MMGestureGallery
   
   public static abstract interface b
   {
-    public abstract void J(float paramFloat1, float paramFloat2);
+    public abstract void M(float paramFloat1, float paramFloat2);
     
-    public abstract void K(float paramFloat1, float paramFloat2);
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void aHp();
+    public abstract void N(float paramFloat1, float paramFloat2);
   }
   
   final class d
@@ -1359,21 +1354,16 @@ public class MMGestureGallery
   
   public static abstract interface e {}
   
-  public static abstract interface f
-  {
-    public abstract void aHo();
-  }
-  
   final class g
     extends MMGestureGallery.a
   {
-    float[] rMK;
+    float[] sUz;
     
     public g()
     {
       super();
       AppMethodBeat.i(143118);
-      this.rMK = new float[9];
+      this.sUz = new float[9];
       AppMethodBeat.o(143118);
     }
     
@@ -1385,25 +1375,25 @@ public class MMGestureGallery
         public final void run()
         {
           AppMethodBeat.i(143117);
-          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.g.this.rMK);
+          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.g.this.sUz);
           float f1 = MMGestureGallery.a(MMGestureGallery.this).getScale();
           float f2 = MMGestureGallery.a(MMGestureGallery.this).getImageHeight() * f1;
-          float f3 = MMGestureGallery.g.this.rMK[5];
+          float f3 = MMGestureGallery.g.this.sUz[5];
           f1 = MMGestureGallery.d(MMGestureGallery.this);
           if (f2 < MMGestureGallery.d(MMGestureGallery.this)) {
             f1 = MMGestureGallery.d(MMGestureGallery.this) / 2.0F + f2 / 2.0F;
           }
           f1 -= f3 + f2;
           if (f1 <= 0.0F) {
-            MMGestureGallery.g.this.cHI = true;
+            MMGestureGallery.g.this.cEQ = true;
           }
           for (;;)
           {
-            MMGestureGallery.a(MMGestureGallery.this).ag(0.0F, f1);
+            MMGestureGallery.a(MMGestureGallery.this).ak(0.0F, f1);
             AppMethodBeat.o(143117);
             return;
             if (Math.abs(f1) <= 5.0F) {
-              MMGestureGallery.g.this.cHI = true;
+              MMGestureGallery.g.this.cEQ = true;
             } else {
               f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
             }
@@ -1417,13 +1407,13 @@ public class MMGestureGallery
   final class h
     extends MMGestureGallery.a
   {
-    float[] rMK;
+    float[] sUz;
     
     public h()
     {
       super();
       AppMethodBeat.i(143121);
-      this.rMK = new float[9];
+      this.sUz = new float[9];
       AppMethodBeat.o(143121);
     }
     
@@ -1435,14 +1425,14 @@ public class MMGestureGallery
         public final void run()
         {
           AppMethodBeat.i(143120);
-          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.h.this.rMK);
+          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.h.this.sUz);
           float f5 = MMGestureGallery.a(MMGestureGallery.this).getScale() * MMGestureGallery.a(MMGestureGallery.this).getImageWidth();
           float f1 = MMGestureGallery.a(MMGestureGallery.this).getScale();
           float f8 = MMGestureGallery.a(MMGestureGallery.this).getImageHeight() * f1;
-          float f7 = MMGestureGallery.h.this.rMK[2];
-          float f10 = MMGestureGallery.h.this.rMK[5];
-          float f6 = MMGestureGallery.h.this.rMK[2];
-          float f9 = MMGestureGallery.h.this.rMK[5];
+          float f7 = MMGestureGallery.h.this.sUz[2];
+          float f10 = MMGestureGallery.h.this.sUz[5];
+          float f6 = MMGestureGallery.h.this.sUz[2];
+          float f9 = MMGestureGallery.h.this.sUz[5];
           float f2 = 0.0F;
           f1 = MMGestureGallery.d(MMGestureGallery.this);
           float f3 = 0.0F;
@@ -1479,11 +1469,11 @@ public class MMGestureGallery
                 {
                   label321:
                   if ((Math.abs(f2) <= 5.0F) && (Math.abs(f1) <= 5.0F)) {
-                    MMGestureGallery.h.this.cHI = true;
+                    MMGestureGallery.h.this.cEQ = true;
                   }
                   for (;;)
                   {
-                    MMGestureGallery.a(MMGestureGallery.this).ag(f2, f1);
+                    MMGestureGallery.a(MMGestureGallery.this).ak(f2, f1);
                     AppMethodBeat.o(143120);
                     return;
                     if (f1 <= 0.0F) {
@@ -1524,13 +1514,13 @@ public class MMGestureGallery
   final class i
     extends MMGestureGallery.a
   {
-    float[] rMK;
+    float[] sUz;
     
     public i()
     {
       super();
       AppMethodBeat.i(143124);
-      this.rMK = new float[9];
+      this.sUz = new float[9];
       AppMethodBeat.o(143124);
     }
     
@@ -1542,23 +1532,23 @@ public class MMGestureGallery
         public final void run()
         {
           AppMethodBeat.i(143123);
-          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.i.this.rMK);
-          float f2 = MMGestureGallery.i.this.rMK[2];
+          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.i.this.sUz);
+          float f2 = MMGestureGallery.i.this.sUz[2];
           float f1 = MMGestureGallery.a(MMGestureGallery.this).getScale() * MMGestureGallery.a(MMGestureGallery.this).getImageWidth();
           if (f1 < MMGestureGallery.b(MMGestureGallery.this)) {}
           for (f1 = MMGestureGallery.b(MMGestureGallery.this) / 2.0F - f1 / 2.0F;; f1 = 0.0F)
           {
             f1 -= f2;
             if (f1 >= 0.0F) {
-              MMGestureGallery.i.this.cHI = true;
+              MMGestureGallery.i.this.cEQ = true;
             }
             for (;;)
             {
-              MMGestureGallery.a(MMGestureGallery.this).ag(f1, 0.0F);
+              MMGestureGallery.a(MMGestureGallery.this).ak(f1, 0.0F);
               AppMethodBeat.o(143123);
               return;
               if (Math.abs(f1) <= 5.0F) {
-                MMGestureGallery.i.this.cHI = true;
+                MMGestureGallery.i.this.cEQ = true;
               } else {
                 f1 = -(float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
               }
@@ -1573,13 +1563,13 @@ public class MMGestureGallery
   final class j
     extends MMGestureGallery.a
   {
-    float[] rMK;
+    float[] sUz;
     
     public j()
     {
       super();
       AppMethodBeat.i(143127);
-      this.rMK = new float[9];
+      this.sUz = new float[9];
       AppMethodBeat.o(143127);
     }
     
@@ -1591,25 +1581,25 @@ public class MMGestureGallery
         public final void run()
         {
           AppMethodBeat.i(143126);
-          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.j.this.rMK);
+          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.j.this.sUz);
           float f1 = MMGestureGallery.a(MMGestureGallery.this).getScale();
           float f2 = MMGestureGallery.a(MMGestureGallery.this).getImageWidth() * f1;
-          float f3 = MMGestureGallery.j.this.rMK[2];
+          float f3 = MMGestureGallery.j.this.sUz[2];
           f1 = MMGestureGallery.b(MMGestureGallery.this);
           if (f2 < MMGestureGallery.b(MMGestureGallery.this)) {
             f1 = MMGestureGallery.b(MMGestureGallery.this) / 2.0F + f2 / 2.0F;
           }
           f1 -= f3 + f2;
           if (f1 <= 0.0F) {
-            MMGestureGallery.j.this.cHI = true;
+            MMGestureGallery.j.this.cEQ = true;
           }
           for (;;)
           {
-            MMGestureGallery.a(MMGestureGallery.this).ag(f1, 0.0F);
+            MMGestureGallery.a(MMGestureGallery.this).ak(f1, 0.0F);
             AppMethodBeat.o(143126);
             return;
             if (Math.abs(f1) <= 5.0F) {
-              MMGestureGallery.j.this.cHI = true;
+              MMGestureGallery.j.this.cEQ = true;
             } else {
               f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
             }
@@ -1623,13 +1613,13 @@ public class MMGestureGallery
   final class k
     extends MMGestureGallery.a
   {
-    float[] rMK;
+    float[] sUz;
     
     public k()
     {
       super();
       AppMethodBeat.i(143130);
-      this.rMK = new float[9];
+      this.sUz = new float[9];
       AppMethodBeat.o(143130);
     }
     
@@ -1641,23 +1631,23 @@ public class MMGestureGallery
         public final void run()
         {
           AppMethodBeat.i(143129);
-          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.k.this.rMK);
-          float f2 = MMGestureGallery.k.this.rMK[5];
+          MMGestureGallery.a(MMGestureGallery.this).getImageMatrix().getValues(MMGestureGallery.k.this.sUz);
+          float f2 = MMGestureGallery.k.this.sUz[5];
           float f1 = MMGestureGallery.a(MMGestureGallery.this).getScale() * MMGestureGallery.a(MMGestureGallery.this).getImageHeight();
           if (f1 < MMGestureGallery.d(MMGestureGallery.this)) {}
           for (f1 = MMGestureGallery.d(MMGestureGallery.this) / 2.0F - f1 / 2.0F;; f1 = 0.0F)
           {
             f1 -= f2;
             if (f1 >= 0.0F) {
-              MMGestureGallery.k.this.cHI = true;
+              MMGestureGallery.k.this.cEQ = true;
             }
             for (;;)
             {
-              MMGestureGallery.a(MMGestureGallery.this).ag(0.0F, f1);
+              MMGestureGallery.a(MMGestureGallery.this).ak(0.0F, f1);
               AppMethodBeat.o(143129);
               return;
               if (Math.abs(f1) <= 5.0F) {
-                MMGestureGallery.k.this.cHI = true;
+                MMGestureGallery.k.this.cEQ = true;
               } else {
                 f1 = -(float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
               }
@@ -1670,21 +1660,21 @@ public class MMGestureGallery
   }
   
   public static final class l
-    extends ap
+    extends ao
   {
-    private boolean dAD;
-    WeakReference<MMGestureGallery> rIC;
-    private long rMQ;
+    private boolean dyp;
+    WeakReference<MMGestureGallery> sQr;
+    private long sUF;
     
     public l(WeakReference<MMGestureGallery> paramWeakReference)
     {
-      this.rIC = paramWeakReference;
+      this.sQr = paramWeakReference;
     }
     
     public final void K(long paramLong, boolean paramBoolean)
     {
       AppMethodBeat.i(143136);
-      this.dAD = paramBoolean;
+      this.dyp = paramBoolean;
       j(0, paramLong, 0L);
       AppMethodBeat.o(143136);
     }
@@ -1694,23 +1684,23 @@ public class MMGestureGallery
       AppMethodBeat.i(143134);
       super.handleMessage(paramMessage);
       removeMessages(paramMessage.what);
-      if (this.rIC != null)
+      if (this.sQr != null)
       {
-        final MMGestureGallery localMMGestureGallery = (MMGestureGallery)this.rIC.get();
+        final MMGestureGallery localMMGestureGallery = (MMGestureGallery)this.sQr.get();
         if (localMMGestureGallery != null)
         {
           if (paramMessage.what == 0)
           {
-            if ((MMGestureGallery.w(localMMGestureGallery) == 1) || (this.dAD))
+            if ((MMGestureGallery.w(localMMGestureGallery) == 1) || (this.dyp))
             {
-              ad.d("MicroMsg.MMGestureGallery", "single click over!");
+              ac.d("MicroMsg.MMGestureGallery", "single click over!");
               if (MMGestureGallery.q(localMMGestureGallery) != null) {
                 MMGestureGallery.c(localMMGestureGallery).post(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(143132);
-                    MMGestureGallery.q(localMMGestureGallery).aHo();
+                    MMGestureGallery.q(localMMGestureGallery).aOd();
                     AppMethodBeat.o(143132);
                   }
                 });
@@ -1722,10 +1712,10 @@ public class MMGestureGallery
           }
           if (paramMessage.what == 1)
           {
-            if ((MMGestureGallery.R(localMMGestureGallery) != null) && (!MMGestureGallery.R(localMMGestureGallery).cAX()))
+            if ((MMGestureGallery.R(localMMGestureGallery) != null) && (!MMGestureGallery.R(localMMGestureGallery).cOg()))
             {
               MMGestureGallery.R(localMMGestureGallery).play();
-              sendEmptyMessageDelayed(paramMessage.what, this.rMQ);
+              sendEmptyMessageDelayed(paramMessage.what, this.sUF);
               AppMethodBeat.o(143134);
               return;
             }
@@ -1740,7 +1730,7 @@ public class MMGestureGallery
               public final void run()
               {
                 AppMethodBeat.i(143133);
-                MMGestureGallery.T(localMMGestureGallery).aHp();
+                MMGestureGallery.T(localMMGestureGallery).aOe();
                 AppMethodBeat.o(143133);
               }
             });
@@ -1753,7 +1743,7 @@ public class MMGestureGallery
     public final void j(int paramInt, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(143135);
-      this.rMQ = paramLong2;
+      this.sUF = paramLong2;
       sendEmptyMessageDelayed(paramInt, paramLong1);
       AppMethodBeat.o(143135);
     }

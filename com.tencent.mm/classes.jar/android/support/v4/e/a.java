@@ -10,7 +10,7 @@ public class a<K, V>
   extends n<K, V>
   implements Map<K, V>
 {
-  i<K, V> LE;
+  i<K, V> Mz;
   
   public a() {}
   
@@ -24,17 +24,17 @@ public class a<K, V>
     super(paramn);
   }
   
-  private i<K, V> eM()
+  private i<K, V> eU()
   {
-    if (this.LE == null) {
-      this.LE = new i()
+    if (this.Mz == null) {
+      this.Mz = new i()
       {
-        protected final int B(Object paramAnonymousObject)
+        protected final int D(Object paramAnonymousObject)
         {
           return a.this.indexOfKey(paramAnonymousObject);
         }
         
-        protected final int C(Object paramAnonymousObject)
+        protected final int E(Object paramAnonymousObject)
         {
           return a.this.indexOfValue(paramAnonymousObject);
         }
@@ -54,42 +54,42 @@ public class a<K, V>
           a.this.put(paramAnonymousK, paramAnonymousV);
         }
         
-        protected final int eN()
+        protected final int eV()
         {
           return a.this.mSize;
         }
         
-        protected final Map<K, V> eO()
+        protected final Map<K, V> eW()
         {
           return a.this;
         }
         
-        protected final void eP()
+        protected final void eX()
         {
           a.this.clear();
         }
         
         protected final Object s(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          return a.this.LN[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+          return a.this.MK[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
         }
       };
     }
-    return this.LE;
+    return this.Mz;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    i locali = eM();
-    if (locali.LW == null) {
-      locali.LW = new i.b(locali);
+    i locali = eU();
+    if (locali.MT == null) {
+      locali.MT = new i.b(locali);
     }
-    return locali.LW;
+    return locali.MT;
   }
   
   public Set<K> keySet()
   {
-    return eM().getKeySet();
+    return eU().getKeySet();
   }
   
   public void putAll(Map<? extends K, ? extends V> paramMap)
@@ -105,11 +105,11 @@ public class a<K, V>
   
   public Collection<V> values()
   {
-    i locali = eM();
-    if (locali.LY == null) {
-      locali.LY = new i.e(locali);
+    i locali = eU();
+    if (locali.MV == null) {
+      locali.MV = new i.e(locali);
     }
-    return locali.LY;
+    return locali.MV;
   }
 }
 

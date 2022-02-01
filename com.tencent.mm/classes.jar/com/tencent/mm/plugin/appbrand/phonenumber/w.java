@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dgk;
+import com.tencent.mm.protocal.protobuf.dlz;
 import d.g.a.b;
 import d.g.a.m;
 import d.g.b.k;
@@ -13,15 +13,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "mPagePath", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "mDeletePhoneItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lkotlin/collections/ArrayList;", "mPhoneItems", "mPhoneNumberManagerView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManagerView;", "mShowDelete", "", "addPhone", "", "editPhoneNumber", "enableEdit", "finishEdit", "getSpanString", "Landroid/text/SpannableString;", "getView", "Landroid/view/View;", "init", "removePhone", "phoneItem", "uninit", "updateView", "showDelete", "luggage-wechat-full-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "mPagePath", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "mDeletePhoneItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lkotlin/collections/ArrayList;", "mPhoneItems", "mPhoneNumberManagerView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManagerView;", "mShowDelete", "", "addPhone", "", "editPhoneNumber", "enableEdit", "finishEdit", "getSpanString", "Landroid/text/SpannableString;", "getView", "Landroid/view/View;", "init", "removePhone", "phoneItem", "uninit", "updateView", "showDelete", "luggage-wechat-full-sdk_release"})
 public final class w
   implements o
 {
-  private final String jzm;
-  private p lkY;
-  private final ArrayList<PhoneItem> lkZ;
-  private final ArrayList<PhoneItem> lla;
-  private boolean llb;
+  private final String jZJ;
+  private p lKQ;
+  private final ArrayList<PhoneItem> lKR;
+  private final ArrayList<PhoneItem> lKS;
+  private boolean lKT;
   final String mAppId;
   private final Context mContext;
   
@@ -30,9 +30,9 @@ public final class w
     AppMethodBeat.i(148147);
     this.mContext = paramContext;
     this.mAppId = paramString1;
-    this.jzm = paramString2;
-    this.lkZ = new ArrayList();
-    this.lla = new ArrayList();
+    this.jZJ = paramString2;
+    this.lKR = new ArrayList();
+    this.lKS = new ArrayList();
     AppMethodBeat.o(148147);
   }
   
@@ -40,129 +40,94 @@ public final class w
   {
     AppMethodBeat.i(148142);
     k.h(paramPhoneItem, "phoneItem");
-    this.lla.add(paramPhoneItem);
-    this.lkZ.remove(paramPhoneItem);
-    paramPhoneItem = this.lkY;
+    this.lKS.add(paramPhoneItem);
+    this.lKR.remove(paramPhoneItem);
+    paramPhoneItem = this.lKQ;
     if (paramPhoneItem != null)
     {
-      paramPhoneItem.b(this.llb, (List)this.lkZ);
+      paramPhoneItem.b(this.lKT, (List)this.lKR);
       AppMethodBeat.o(148142);
       return;
     }
     AppMethodBeat.o(148142);
   }
   
-  public final void blA()
+  public final void bsp()
   {
     AppMethodBeat.i(148141);
-    y localy = z.llS.Mn(this.mAppId);
+    y localy = z.lLJ.Qu(this.mAppId);
     if (localy != null)
     {
-      localObject = z.llS.Mn(this.mAppId);
+      localObject = z.lLJ.Qu(this.mAppId);
       if (localObject == null) {
         break label92;
       }
     }
     label92:
-    for (Object localObject = Long.valueOf(((y)localObject).llJ);; localObject = null)
+    for (Object localObject = Long.valueOf(((y)localObject).lLA);; localObject = null)
     {
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      localy.llJ = (((Long)localObject).longValue() + 1L);
-      localObject = u.lkN;
-      u.blE().a(this.mContext, this.mAppId, (m)w.a.llc);
+      localy.lLA = (((Long)localObject).longValue() + 1L);
+      localObject = u.lKF;
+      u.bst().a(this.mContext, this.mAppId, (m)w.a.lKU);
       AppMethodBeat.o(148141);
       return;
     }
   }
   
-  public final SpannableString blB()
+  public final SpannableString bsq()
   {
     AppMethodBeat.i(148145);
-    Object localObject = u.lkN;
-    localObject = u.blE().n(this.mContext, this.mAppId, this.jzm);
+    Object localObject = u.lKF;
+    localObject = u.bst().n(this.mContext, this.mAppId, this.jZJ);
     AppMethodBeat.o(148145);
     return localObject;
   }
   
-  public final void blC()
+  public final void bsr()
   {
     AppMethodBeat.i(148144);
-    if (this.lla.size() >= 0)
+    if (this.lKS.size() >= 0)
     {
-      localObject2 = this.lla.iterator();
+      localObject2 = this.lKS.iterator();
       if (((Iterator)localObject2).hasNext())
       {
         PhoneItem localPhoneItem = (PhoneItem)((Iterator)localObject2).next();
-        y localy = z.llS.Mn(this.mAppId);
+        y localy = z.lLJ.Qu(this.mAppId);
         if (localy != null)
         {
-          localObject1 = z.llS.Mn(this.mAppId);
+          localObject1 = z.lLJ.Qu(this.mAppId);
           if (localObject1 == null) {
             break label133;
           }
         }
         label133:
-        for (localObject1 = Long.valueOf(((y)localObject1).llK);; localObject1 = null)
+        for (localObject1 = Long.valueOf(((y)localObject1).lLB);; localObject1 = null)
         {
           if (localObject1 == null) {
-            k.fvU();
+            k.fOy();
           }
-          localy.llK = (((Long)localObject1).longValue() + 1L);
-          new g(this.mAppId, localPhoneItem.dpO, 1).t((b)new b(this));
+          localy.lLB = (((Long)localObject1).longValue() + 1L);
+          new g(this.mAppId, localPhoneItem.dnz, 1).x((b)new b(this));
           break;
         }
       }
     }
-    Object localObject1 = r.lkl;
-    Object localObject2 = this.lla;
+    Object localObject1 = r.lKd;
+    Object localObject2 = this.lKS;
     if (localObject2 == null) {
-      k.fvU();
+      k.fOy();
     }
-    ((r)localObject1).z((ArrayList)localObject2);
+    ((r)localObject1).E((ArrayList)localObject2);
     AppMethodBeat.o(148144);
-  }
-  
-  public final void gP(boolean paramBoolean)
-  {
-    AppMethodBeat.i(148140);
-    this.lkZ.clear();
-    Object localObject = this.lkZ;
-    r localr = r.lkl;
-    ((ArrayList)localObject).addAll((Collection)r.blD());
-    localObject = this.lkY;
-    if (localObject != null)
-    {
-      ((p)localObject).b(paramBoolean, (List)this.lkZ);
-      AppMethodBeat.o(148140);
-      return;
-    }
-    AppMethodBeat.o(148140);
-  }
-  
-  public final void gQ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(148143);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.llb = paramBoolean;
-      p localp = this.lkY;
-      if (localp == null) {
-        break;
-      }
-      localp.b(this.llb, (List)this.lkZ);
-      AppMethodBeat.o(148143);
-      return;
-    }
-    AppMethodBeat.o(148143);
   }
   
   public final View getView()
   {
     AppMethodBeat.i(148139);
-    Object localObject = this.lkY;
+    Object localObject = this.lKQ;
     if (localObject != null)
     {
       localObject = ((p)localObject).getView();
@@ -173,29 +138,64 @@ public final class w
     return null;
   }
   
+  public final void hj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(148140);
+    this.lKR.clear();
+    Object localObject = this.lKR;
+    r localr = r.lKd;
+    ((ArrayList)localObject).addAll((Collection)r.bss());
+    localObject = this.lKQ;
+    if (localObject != null)
+    {
+      ((p)localObject).b(paramBoolean, (List)this.lKR);
+      AppMethodBeat.o(148140);
+      return;
+    }
+    AppMethodBeat.o(148140);
+  }
+  
+  public final void hk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(148143);
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.lKT = paramBoolean;
+      p localp = this.lKQ;
+      if (localp == null) {
+        break;
+      }
+      localp.b(this.lKT, (List)this.lKR);
+      AppMethodBeat.o(148143);
+      return;
+    }
+    AppMethodBeat.o(148143);
+  }
+  
   public final void init()
   {
     AppMethodBeat.i(148138);
-    this.lkY = ((p)new x(this.mContext, (o)this));
-    this.lkZ.clear();
-    ArrayList localArrayList = this.lkZ;
-    r localr = r.lkl;
-    localArrayList.addAll((Collection)r.blD());
-    z.llS.Mm(this.mAppId);
+    this.lKQ = ((p)new x(this.mContext, (o)this));
+    this.lKR.clear();
+    ArrayList localArrayList = this.lKR;
+    r localr = r.lKd;
+    localArrayList.addAll((Collection)r.bss());
+    z.lLJ.Qt(this.mAppId);
     AppMethodBeat.o(148138);
   }
   
   public final void uninit()
   {
     AppMethodBeat.i(148146);
-    z.llS.Ml(this.mAppId);
+    z.lLJ.Qs(this.mAppId);
     AppMethodBeat.o(148146);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/UpdateUserPhoneResp;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/UpdateUserPhoneResp;", "invoke"})
   static final class b
     extends d.g.b.l
-    implements b<dgk, d.y>
+    implements b<dlz, d.y>
   {
     b(w paramw)
     {
@@ -205,7 +205,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.w
  * JD-Core Version:    0.7.0.1
  */

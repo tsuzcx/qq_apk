@@ -3,12 +3,14 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.plugin.wallet_core.c.ad;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wxcredit.a.f;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailUI;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditErrDetailUI;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -28,16 +30,16 @@ public class d
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           return false;
         }
         
-        public final boolean x(Object... paramAnonymousVarArgs)
+        public final boolean z(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72258);
           paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
-          this.Ieo.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
+          this.JFQ.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
           AppMethodBeat.o(72258);
           return true;
         }
@@ -55,13 +57,13 @@ public class d
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
             if ((paramAnonymousn instanceof f)) {
-              this.Ieo.b(new com.tencent.mm.plugin.wallet_core.c.ad(), true);
+              this.JFQ.b(new ad(), true);
             }
             for (;;)
             {
               AppMethodBeat.o(72259);
               return true;
-              if ((paramAnonymousn instanceof com.tencent.mm.plugin.wallet_core.c.ad)) {
+              if ((paramAnonymousn instanceof ad)) {
                 d.this.b(this.activity, d.a(d.this));
               }
             }
@@ -70,20 +72,20 @@ public class d
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72260);
           Bankcard localBankcard = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
-          this.Ieo.a(new f(localBankcard.field_bankcardType, localBankcard.field_bindSerial, (String)paramAnonymousVarArgs[0]), true, 1);
+          this.JFQ.a(new f(localBankcard.field_bankcardType, localBankcard.field_bindSerial, (String)paramAnonymousVarArgs[0]), true, 1);
           AppMethodBeat.o(72260);
           return true;
         }
         
-        public final boolean x(Object... paramAnonymousVarArgs)
+        public final boolean z(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72261);
           paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
-          this.Ieo.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
+          this.JFQ.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
           AppMethodBeat.o(72261);
           return true;
         }
@@ -99,7 +101,7 @@ public class d
   public final com.tencent.mm.wallet_core.d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72262);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WXCreditManagerProcess", "start Process : WXCreditManagerProcess");
+    ac.d("MicroMsg.WXCreditManagerProcess", "start Process : WXCreditManagerProcess");
     b(paramActivity, WalletWXCreditDetailUI.class, paramBundle);
     AppMethodBeat.o(72262);
     return this;
@@ -145,7 +147,7 @@ public class d
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "WXCreditManagerProcess";
   }
@@ -153,7 +155,7 @@ public class d
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72264);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(72264);
   }
 }

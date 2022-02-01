@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/aak" />
-            <corners android:radius="@dimen/c5" />
-            <stroke android:color="#1affffff" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/a_u" />
-            <corners android:radius="@dimen/c5" />
-            <stroke android:color="#1affffff" />
-        </shape>
-    </item>
-</selector>
+    <item android:duration="600" android:drawable="@raw/multitalk_loading0" />
+    <item android:duration="600" android:drawable="@raw/multitalk_loading1" />
+    <item android:duration="600" android:drawable="@raw/multitalk_loading2" />
+    <item android:duration="600" android:drawable="@raw/multitalk_loading3" />
+    <item android:duration="600" android:drawable="@raw/multitalk_loading4" />
+</animation-list>

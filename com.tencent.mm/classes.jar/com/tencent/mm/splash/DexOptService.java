@@ -12,18 +12,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class DexOptService
   extends Service
 {
-  private Handler Fbh;
-  private volatile boolean Fbi;
-  private Handler Fbj;
-  private volatile Throwable Fbk;
+  private Handler GyA;
+  private volatile Throwable GyB;
+  private Handler Gyy;
+  private volatile boolean Gyz;
   private HandlerThread mHandlerThread;
   
   public DexOptService()
   {
     AppMethodBeat.i(40608);
     this.mHandlerThread = new HandlerThread("DexOpt-Thread");
-    this.Fbi = false;
-    this.Fbj = new Handler()
+    this.Gyz = false;
+    this.GyA = new Handler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -36,16 +36,16 @@ public class DexOptService
     AppMethodBeat.o(40608);
   }
   
-  private boolean eIh()
+  private boolean eXD()
   {
     AppMethodBeat.i(40610);
     h.b("WxSplash.DexOptService", "doDexOpt start", new Object[0]);
     try
     {
-      bool = h.Fbq.bs(getApplicationContext());
+      bool = h.GyH.bv(getApplicationContext());
       h.b("WxSplash.DexOptService", "schedule to quit", new Object[0]);
-      this.Fbj.removeCallbacksAndMessages(null);
-      this.Fbj.sendEmptyMessageDelayed(0, 120000L);
+      this.GyA.removeCallbacksAndMessages(null);
+      this.GyA.sendEmptyMessageDelayed(0, 120000L);
       h.b("WxSplash.DexOptService", "doDexOpt done, result %s", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(40610);
       return bool;
@@ -54,7 +54,7 @@ public class DexOptService
     {
       for (;;)
       {
-        this.Fbk = localThrowable;
+        this.GyB = localThrowable;
         boolean bool = false;
       }
     }
@@ -74,7 +74,7 @@ public class DexOptService
     h.b("WxSplash.DexOptService", "onCreate", new Object[0]);
     super.onCreate();
     this.mHandlerThread.start();
-    this.Fbh = new Handler(this.mHandlerThread.getLooper())
+    this.Gyy = new Handler(this.mHandlerThread.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -91,7 +91,7 @@ public class DexOptService
         }
         for (;;)
         {
-          DexOptService.Kr();
+          DexOptService.Kb();
           DexOptService.a(DexOptService.this, false);
           AppMethodBeat.o(40607);
           return;
@@ -114,7 +114,7 @@ public class DexOptService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(40611);
-    this.Fbh.sendEmptyMessage(0);
+    this.Gyy.sendEmptyMessage(0);
     h.b("WxSplash.DexOptService", "onStartCommand", new Object[0]);
     paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
     AppMethodBeat.o(40611);

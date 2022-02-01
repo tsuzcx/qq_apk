@@ -1,85 +1,85 @@
 package com.tencent.mm.plugin.ipcall.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseIPCallAudioManager;", "()V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "deviceChangeCallback", "Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;", "getDeviceChangeCallback", "()Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;", "setDeviceChangeCallback", "(Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;)V", "ipCallAudioPlayer", "Lcom/tencent/mm/plugin/ipcall/model/device/IPCallAudioPlayer;", "getIpCallAudioPlayer", "()Lcom/tencent/mm/plugin/ipcall/model/device/IPCallAudioPlayer;", "setIpCallAudioPlayer", "(Lcom/tencent/mm/plugin/ipcall/model/device/IPCallAudioPlayer;)V", "ipCallRecorder", "Lcom/tencent/mm/plugin/ipcall/model/device/IPCallRecorder;", "getIpCallRecorder", "()Lcom/tencent/mm/plugin/ipcall/model/device/IPCallRecorder;", "setIpCallRecorder", "(Lcom/tencent/mm/plugin/ipcall/model/device/IPCallRecorder;)V", "resumeSpeakerStatus", "", "getAudioPlayVolume", "", "getCurrentStreamType", "getPlayErrState", "getRecordErrState", "initAudioPlayingDevice", "", "onAudioDeviceStateChanged", "status", "releaseAudioPlayingDevice", "requestSpeakerOn", "value", "requestSpeakerOnResume", "startRecord", "stopRecord", "unInit", "Companion", "OnDeviceChangeCallback", "app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseIPCallAudioManager;", "()V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "deviceChangeCallback", "Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;", "getDeviceChangeCallback", "()Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;", "setDeviceChangeCallback", "(Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;)V", "ipCallAudioPlayer", "Lcom/tencent/mm/plugin/ipcall/model/device/IPCallAudioPlayer;", "getIpCallAudioPlayer", "()Lcom/tencent/mm/plugin/ipcall/model/device/IPCallAudioPlayer;", "setIpCallAudioPlayer", "(Lcom/tencent/mm/plugin/ipcall/model/device/IPCallAudioPlayer;)V", "ipCallRecorder", "Lcom/tencent/mm/plugin/ipcall/model/device/IPCallRecorder;", "getIpCallRecorder", "()Lcom/tencent/mm/plugin/ipcall/model/device/IPCallRecorder;", "setIpCallRecorder", "(Lcom/tencent/mm/plugin/ipcall/model/device/IPCallRecorder;)V", "resumeSpeakerStatus", "", "getAudioPlayVolume", "", "getCurrentStreamType", "getPlayErrState", "getRecordErrState", "initAudioPlayingDevice", "", "onAudioDeviceStateChanged", "status", "releaseAudioPlayingDevice", "requestSpeakerOn", "value", "requestSpeakerOnResume", "startRecord", "stopRecord", "unInit", "Companion", "OnDeviceChangeCallback", "app_release"})
 public final class a
   extends com.tencent.mm.plugin.audio.b.b
 {
-  public static final a.a sAT;
-  public final com.tencent.mm.compatible.util.b hDB;
-  public b sAP;
-  public com.tencent.mm.plugin.ipcall.model.c.a sAQ;
-  public com.tencent.mm.plugin.ipcall.model.c.c sAR;
-  private boolean sAS;
+  public static final a.a tIC;
+  public final com.tencent.mm.compatible.util.b ied;
+  public com.tencent.mm.plugin.ipcall.model.c.c tIA;
+  private boolean tIB;
+  public b tIy;
+  public com.tencent.mm.plugin.ipcall.model.c.a tIz;
   
   static
   {
-    AppMethodBeat.i(191870);
-    sAT = new a.a((byte)0);
-    AppMethodBeat.o(191870);
+    AppMethodBeat.i(196991);
+    tIC = new a.a((byte)0);
+    AppMethodBeat.o(196991);
   }
   
   public a()
   {
-    AppMethodBeat.i(191869);
-    this.hDB = new com.tencent.mm.compatible.util.b(aj.getContext());
-    com.tencent.mm.plugin.audio.d.a.bvI();
-    com.tencent.mm.plugin.audio.d.c.bvI();
-    this.hDB.requestFocus();
-    this.sAQ = new com.tencent.mm.plugin.ipcall.model.c.a(this);
-    this.sAR = new com.tencent.mm.plugin.ipcall.model.c.c();
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mpv;
+    AppMethodBeat.i(196990);
+    this.ied = new com.tencent.mm.compatible.util.b(ai.getContext());
+    com.tencent.mm.plugin.audio.d.a.bCE();
+    com.tencent.mm.plugin.audio.d.c.bCE();
+    this.ied.requestFocus();
+    this.tIz = new com.tencent.mm.plugin.ipcall.model.c.a(this);
+    this.tIA = new com.tencent.mm.plugin.ipcall.model.c.c();
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
     com.tencent.mm.plugin.audio.c.a.a.a((com.tencent.mm.plugin.audio.b.a)this, "ipcall");
-    AppMethodBeat.o(191869);
+    AppMethodBeat.o(196990);
   }
   
-  public static void NX()
+  public static void unInit()
   {
-    AppMethodBeat.i(191864);
-    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mpv;
-    com.tencent.mm.plugin.audio.c.a.a.Oe("ipcall");
-    AppMethodBeat.o(191864);
+    AppMethodBeat.i(196985);
+    com.tencent.mm.plugin.audio.c.a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
+    com.tencent.mm.plugin.audio.c.a.a.So("ipcall");
+    AppMethodBeat.o(196985);
   }
   
-  public final void aZs()
+  public final void bgk()
   {
-    AppMethodBeat.i(191867);
-    com.tencent.mm.plugin.ipcall.model.c.c localc = this.sAR;
+    AppMethodBeat.i(196988);
+    com.tencent.mm.plugin.ipcall.model.c.c localc = this.tIA;
     if (localc != null)
     {
-      localc.aZs();
-      AppMethodBeat.o(191867);
+      localc.bgk();
+      AppMethodBeat.o(196988);
       return;
     }
-    AppMethodBeat.o(191867);
+    AppMethodBeat.o(196988);
   }
   
-  public final void cHw()
+  public final void cUH()
   {
-    AppMethodBeat.i(191866);
-    ck(this.sAS);
-    AppMethodBeat.o(191866);
+    AppMethodBeat.i(196987);
+    cm(this.tIB);
+    AppMethodBeat.o(196987);
   }
   
-  public final void ck(boolean paramBoolean)
+  public final void cm(boolean paramBoolean)
   {
-    AppMethodBeat.i(191865);
-    com.tencent.mm.plugin.ipcall.model.c.a locala = this.sAQ;
+    AppMethodBeat.i(196986);
+    com.tencent.mm.plugin.ipcall.model.c.a locala = this.tIz;
     if (locala != null) {
-      locala.mw(paramBoolean);
+      locala.np(paramBoolean);
     }
-    this.sAS = isSpeakerphoneOn();
-    AppMethodBeat.o(191865);
+    this.tIB = isSpeakerphoneOn();
+    AppMethodBeat.o(196986);
   }
   
-  public final void hL(int paramInt)
+  public final void hv(int paramInt)
   {
-    AppMethodBeat.i(191868);
-    super.hL(paramInt);
+    AppMethodBeat.i(196989);
+    super.hv(paramInt);
     switch (paramInt)
     {
     }
@@ -94,60 +94,60 @@ public final class a
           {
             do
             {
-              AppMethodBeat.o(191868);
+              AppMethodBeat.o(196989);
               return;
-              localObject = com.tencent.mm.plugin.audio.c.a.mpv;
-              localObject = com.tencent.mm.plugin.audio.d.a.mpy;
-            } while ((!com.tencent.mm.plugin.audio.d.a.bvC()) || (this.sAP == null));
-            localObject = this.sAP;
+              localObject = com.tencent.mm.plugin.audio.c.a.mRw;
+              localObject = com.tencent.mm.plugin.audio.d.a.mRz;
+            } while ((!com.tencent.mm.plugin.audio.d.a.bCy()) || (this.tIy == null));
+            localObject = this.tIy;
             if (localObject != null)
             {
-              ((b)localObject).mv(true);
-              AppMethodBeat.o(191868);
+              ((b)localObject).no(true);
+              AppMethodBeat.o(196989);
               return;
             }
-            AppMethodBeat.o(191868);
+            AppMethodBeat.o(196989);
             return;
-          } while (vQ(3));
-          localObject = this.sAP;
+          } while (wH(3));
+          localObject = this.tIy;
           if (localObject != null)
           {
-            ((b)localObject).mv(false);
-            AppMethodBeat.o(191868);
+            ((b)localObject).no(false);
+            AppMethodBeat.o(196989);
             return;
           }
-          AppMethodBeat.o(191868);
+          AppMethodBeat.o(196989);
           return;
-          ad.i("MicroMsg.IPCallAudioManager", "onHeadsetPlug connected");
-        } while (vQ(4));
-        localObject = this.sAP;
+          ac.i("MicroMsg.IPCallAudioManager", "onHeadsetPlug connected");
+        } while (wH(4));
+        localObject = this.tIy;
         if (localObject != null)
         {
-          ((b)localObject).mu(true);
-          AppMethodBeat.o(191868);
+          ((b)localObject).nn(true);
+          AppMethodBeat.o(196989);
           return;
         }
-        AppMethodBeat.o(191868);
+        AppMethodBeat.o(196989);
         return;
-        ad.i("MicroMsg.IPCallAudioManager", "onHeadsetPlug disconnect");
-      } while (vQ(4));
-      localObject = this.sAP;
+        ac.i("MicroMsg.IPCallAudioManager", "onHeadsetPlug disconnect");
+      } while (wH(4));
+      localObject = this.tIy;
     } while (localObject == null);
-    ((b)localObject).mu(false);
-    AppMethodBeat.o(191868);
+    ((b)localObject).nn(false);
+    AppMethodBeat.o(196989);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;", "", "onBluetoothPlugStateChange", "", "isPlugged", "", "onHeadsetPlugStateChange", "app_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/ipcall/model/audio/IPCallAudioManager$OnDeviceChangeCallback;", "", "onBluetoothPlugStateChange", "", "isPlugged", "", "onHeadsetPlugStateChange", "app_release"})
   public static abstract interface b
   {
-    public abstract void mu(boolean paramBoolean);
+    public abstract void nn(boolean paramBoolean);
     
-    public abstract void mv(boolean paramBoolean);
+    public abstract void no(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.a.a
  * JD-Core Version:    0.7.0.1
  */

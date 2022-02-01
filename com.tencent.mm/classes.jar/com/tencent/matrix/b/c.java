@@ -20,10 +20,10 @@ public final class c
     String str;
     if ("memory".equals(paramd.tag))
     {
-      if (paramd.cwV == null) {
+      if (paramd.cue == null) {
         break label200;
       }
-      str = paramd.cwV.optString("resultZipPath");
+      str = paramd.cue.optString("resultZipPath");
       if ((str != null) && (str.length() != 0)) {}
     }
     else
@@ -31,11 +31,11 @@ public final class c
       return;
     }
     Properties localProperties = new Properties();
-    localProperties.put("Uin", com.tencent.mm.loader.j.c.gmh.ao("last_login_uin", "0"));
-    localProperties.put("ClientVersion", String.valueOf(d.CpK));
+    localProperties.put("Uin", com.tencent.mm.loader.j.c.gMU.aw("last_login_uin", "0"));
+    localProperties.put("ClientVersion", String.valueOf(d.DIc));
     localProperties.put("Revision", h.REV);
     localProperties.put("ReportTime", String.valueOf(System.currentTimeMillis()));
-    localProperties.put("process", paramd.cwV.optString("process"));
+    localProperties.put("process", paramd.cue.optString("process"));
     MrsLogic.PhoneInfo localPhoneInfo = MrsLogic.getPhoneInfo();
     localProperties.put("DeviceModel", localPhoneInfo.deviceModel);
     localProperties.put("OSName", localPhoneInfo.osName);

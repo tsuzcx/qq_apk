@@ -13,38 +13,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class SnsRatioView
   extends View
 {
-  public int xYA;
-  public int xYB;
-  private Path xYC;
-  private Path xYD;
-  public Paint xYE;
-  public Paint xYF;
-  public float[] xYG;
-  public int xYw;
-  public int xYx;
-  public int xYy;
-  public int xYz;
+  private Path zlA;
+  public Paint zlB;
+  public Paint zlC;
+  public float[] zlD;
+  public int zlt;
+  public int zlu;
+  public int zlv;
+  public int zlw;
+  public int zlx;
+  public int zly;
+  private Path zlz;
   
   public SnsRatioView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100559);
-    this.xYz = 70;
-    this.xYA = 10;
-    this.xYB = 0;
-    this.xYC = new Path();
-    this.xYD = new Path();
-    this.xYE = new Paint();
-    this.xYF = new Paint();
-    this.xYG = new float[8];
+    this.zlw = 70;
+    this.zlx = 10;
+    this.zly = 0;
+    this.zlz = new Path();
+    this.zlA = new Path();
+    this.zlB = new Paint();
+    this.zlC = new Paint();
+    this.zlD = new float[8];
     AppMethodBeat.o(100559);
   }
   
-  public final void hB(int paramInt1, int paramInt2)
+  public final void hK(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100560);
-    this.xYE.setColor(paramInt1);
-    this.xYF.setColor(paramInt2);
+    this.zlB.setColor(paramInt1);
+    this.zlC.setColor(paramInt2);
     invalidate();
     AppMethodBeat.o(100560);
   }
@@ -54,25 +54,25 @@ public class SnsRatioView
     AppMethodBeat.i(100561);
     int i = getWidth();
     int j = getHeight();
-    int k = (int)(j / Math.tan(Math.toRadians(this.xYz)));
-    int m = Math.max((int)((i - k - this.xYA - this.xYy * 2) * this.xYw * 1.0F / 100.0F), this.xYB);
-    this.xYC.reset();
-    this.xYC.moveTo(0.0F, 0.0F);
-    this.xYC.lineTo(m + k, 0.0F);
-    this.xYC.lineTo(m, j);
-    this.xYC.lineTo(0.0F, j);
-    this.xYC.close();
-    this.xYD.reset();
-    this.xYD.moveTo(k + m + this.xYA, 0.0F);
-    this.xYD.lineTo(i, 0.0F);
-    this.xYD.lineTo(i, j);
-    this.xYD.lineTo(this.xYA + m, j);
-    this.xYD.close();
+    int k = (int)(j / Math.tan(Math.toRadians(this.zlw)));
+    int m = Math.max((int)((i - k - this.zlx - this.zlv * 2) * this.zlt * 1.0F / 100.0F), this.zly);
+    this.zlz.reset();
+    this.zlz.moveTo(0.0F, 0.0F);
+    this.zlz.lineTo(m + k, 0.0F);
+    this.zlz.lineTo(m, j);
+    this.zlz.lineTo(0.0F, j);
+    this.zlz.close();
+    this.zlA.reset();
+    this.zlA.moveTo(k + m + this.zlx, 0.0F);
+    this.zlA.lineTo(i, 0.0F);
+    this.zlA.lineTo(i, j);
+    this.zlA.lineTo(this.zlx + m, j);
+    this.zlA.close();
     Path localPath = new Path();
-    localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.xYG, Path.Direction.CW);
+    localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.zlD, Path.Direction.CW);
     paramCanvas.clipPath(localPath);
-    paramCanvas.drawPath(this.xYC, this.xYE);
-    paramCanvas.drawPath(this.xYD, this.xYF);
+    paramCanvas.drawPath(this.zlz, this.zlB);
+    paramCanvas.drawPath(this.zlA, this.zlC);
     AppMethodBeat.o(100561);
   }
   

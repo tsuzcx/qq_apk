@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
 public final class e
   implements MMSightRecordView.b
 {
-  public final MMSightRecordView.e aLi()
+  public final MMSightRecordView.e aRZ()
   {
     AppMethodBeat.i(89219);
     f localf = new f();
@@ -17,7 +17,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.e
  * JD-Core Version:    0.7.0.1
  */

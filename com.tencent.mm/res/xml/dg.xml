@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="live_demo" android:layout="@layout/aop" android:title="@string/hly" />
+    <Preference android:key="live_demo" android:layout="@layout/aop" android:title="@string/hml" />
     <PreferenceSmallCategory />
-    <Preference android:key="mlvb_live_room" android:layout="@layout/aop" android:title="@string/hpw" />
+    <Preference android:key="mlvb_live_room" android:layout="@layout/aop" android:title="@string/hqu" />
     <PreferenceSmallCategory />
-    <Preference android:key="source_camera" android:layout="@layout/aop" android:title="@string/hqr" />
+    <Preference android:key="source_camera" android:layout="@layout/aop" android:title="@string/hsa" />
     <PreferenceSmallCategory />
-    <Preference android:key="source_screen" android:layout="@layout/aop" android:title="@string/hqs" />
+    <Preference android:key="source_screen" android:layout="@layout/aop" android:title="@string/hsb" />
     <PreferenceSmallCategory />
-    <Preference android:key="live_view" android:layout="@layout/aop" android:title="@string/hpq" />
+    <Preference android:key="live_view" android:layout="@layout/aop" android:title="@string/hqo" />
     <PreferenceSmallCategory />
 </PreferenceScreen>

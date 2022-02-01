@@ -5,7 +5,7 @@ public final class d
 {
   public d()
   {
-    this.Kik = 258;
+    this.LVT = 258;
   }
 }
 

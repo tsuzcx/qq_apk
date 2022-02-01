@@ -7,8 +7,8 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.sdk.platformtools.f;
 import java.io.IOException;
 
@@ -16,14 +16,14 @@ public final class i
   implements s
 {
   private String iconUrl;
-  private s.b nSZ;
+  private s.b owu;
   
   public i(String paramString)
   {
     AppMethodBeat.i(56143);
-    this.nSZ = new s.b()
+    this.owu = new s.b()
     {
-      public final Bitmap By(String paramAnonymousString)
+      public final Bitmap FC(String paramAnonymousString)
       {
         AppMethodBeat.i(56142);
         paramAnonymousString = f.decodeFile(paramAnonymousString, null);
@@ -32,13 +32,13 @@ public final class i
       }
     };
     this.iconUrl = paramString;
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(56141);
-        if (!com.tencent.mm.vfs.i.eK(i.cKz())) {
-          com.tencent.mm.vfs.i.aMF(i.cKz());
+        if (!com.tencent.mm.vfs.i.eA(i.cYe())) {
+          com.tencent.mm.vfs.i.aSh(i.cYe());
         }
         AppMethodBeat.o(56141);
       }
@@ -46,32 +46,30 @@ public final class i
     AppMethodBeat.o(56143);
   }
   
-  public static String cKz()
+  public static String cYe()
   {
     AppMethodBeat.i(56144);
-    String str = b.aih() + "taxi_icon";
+    String str = b.aph() + "taxi_icon";
     AppMethodBeat.o(56144);
     return str;
   }
   
-  public final void Z(String paramString, boolean paramBoolean) {}
-  
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(56146);
-    if (s.a.hUk == parama) {
+    if (s.a.iuo == parama) {
       if ((paramBitmap != null) && (paramBitmap.getNinePatchChunk() != null))
       {
-        ad.v("MicroMsg.TaxiWeappIconStrategy", "get ninePatch chChunk.");
-        com.tencent.mm.vfs.i.lC(paramString, aGy());
+        ac.v("MicroMsg.TaxiWeappIconStrategy", "get ninePatch chChunk.");
+        com.tencent.mm.vfs.i.lZ(paramString, aNl());
         AppMethodBeat.o(56146);
         return paramBitmap;
       }
     }
     try
     {
-      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
-      ad.d("MicroMsg.TaxiWeappIconStrategy", "get bitmap, from %s.", new Object[] { parama.toString() });
+      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
+      ac.d("MicroMsg.TaxiWeappIconStrategy", "get bitmap, from %s.", new Object[] { parama.toString() });
       AppMethodBeat.o(56146);
       return paramBitmap;
     }
@@ -81,14 +79,14 @@ public final class i
       {
         try
         {
-          com.tencent.mm.vfs.i.aMF(cKz());
-          ad.w("MicroMsg.TaxiWeappIconStrategy", "retry saving bitmap.");
-          f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
+          com.tencent.mm.vfs.i.aSh(cYe());
+          ac.w("MicroMsg.TaxiWeappIconStrategy", "retry saving bitmap.");
+          f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
         }
         catch (IOException paramString)
         {
-          ad.printErrStackTrace("MicroMsg.TaxiWeappIconStrategy", paramString, "", new Object[0]);
-          ad.w("MicroMsg.TaxiWeappIconStrategy", "save bitmap fail.");
+          ac.printErrStackTrace("MicroMsg.TaxiWeappIconStrategy", paramString, "", new Object[0]);
+          ac.w("MicroMsg.TaxiWeappIconStrategy", "save bitmap fail.");
         }
       }
     }
@@ -96,45 +94,47 @@ public final class i
   
   public final void a(s.a parama, String paramString) {}
   
-  public final String aGA()
+  public final s.b aNk()
   {
-    return this.iconUrl;
+    return this.owu;
   }
   
-  public final boolean aGB()
-  {
-    return true;
-  }
-  
-  public final boolean aGC()
-  {
-    return false;
-  }
-  
-  public final Bitmap aGD()
-  {
-    return null;
-  }
-  
-  public final void aGE() {}
-  
-  public final s.b aGx()
-  {
-    return this.nSZ;
-  }
-  
-  public final String aGy()
+  public final String aNl()
   {
     AppMethodBeat.i(56145);
-    String str = String.format("%s/%s", new Object[] { cKz(), com.tencent.mm.b.g.getMessageDigest(this.iconUrl.getBytes()) });
+    String str = String.format("%s/%s", new Object[] { cYe(), com.tencent.mm.b.g.getMessageDigest(this.iconUrl.getBytes()) });
     AppMethodBeat.o(56145);
     return str;
   }
   
-  public final String aGz()
+  public final String aNm()
   {
     return this.iconUrl;
   }
+  
+  public final String aNn()
+  {
+    return this.iconUrl;
+  }
+  
+  public final boolean aNo()
+  {
+    return true;
+  }
+  
+  public final boolean aNp()
+  {
+    return false;
+  }
+  
+  public final Bitmap aNq()
+  {
+    return null;
+  }
+  
+  public final void aNr() {}
+  
+  public final void aa(String paramString, boolean paramBoolean) {}
   
   public final String getCacheKey()
   {
@@ -143,7 +143,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oj;
+import com.tencent.mm.g.a.os;
 import com.tencent.mm.sdk.b.c;
 
 final class h$2
-  extends c<oj>
+  extends c<os>
 {
   h$2(h paramh)
   {
     AppMethodBeat.i(160417);
-    this.__eventId = oj.class.getName().hashCode();
+    this.__eventId = os.class.getName().hashCode();
     AppMethodBeat.o(160417);
   }
 }

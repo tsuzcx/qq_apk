@@ -6,6 +6,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
+import java.io.FileNotFoundException;
 
 public class ModulePkgInfo
   implements Parcelable, IPkgInfo, Cloneable
@@ -75,10 +76,16 @@ public class ModulePkgInfo
   public long getPkgSize()
   {
     AppMethodBeat.i(182977);
-    e locale = new e(this.pkgPath);
-    if ((locale.isFile()) && (locale.canRead()))
+    if (!i.eA(this.pkgPath))
     {
-      long l = locale.length();
+      localObject = new FileNotFoundException();
+      AppMethodBeat.o(182977);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = new e(this.pkgPath);
+    if ((((e)localObject).isFile()) && (((e)localObject).canRead()))
+    {
+      long l = ((e)localObject).length();
       AppMethodBeat.o(182977);
       return l;
     }
@@ -97,9 +104,9 @@ public class ModulePkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(182973);
-    if (i.eK(this.pkgPath))
+    if (i.eA(this.pkgPath))
     {
-      long l = i.aMO(this.pkgPath);
+      long l = i.aSq(this.pkgPath);
       AppMethodBeat.o(182973);
       return l;
     }
@@ -151,7 +158,7 @@ public class ModulePkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,50 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import d.g.b.k;
+import com.tencent.mm.platformtools.d;
+import com.tencent.mm.plugin.finder.utils.n;
+import com.tencent.mm.protocal.protobuf.ajs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.vfs.i;
 import d.l;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCache;", "", "()V", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage;", "Lcom/tencent/mm/platformtools/BaseProtoPage;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "filename", "", "(Ljava/lang/String;)V", "Companion", "plugin-finder_release"})
 public final class b
+  extends d<ajs>
 {
-  public static final a qKl;
-  private static final Map<Long, FinderItem> qnU;
+  private static final String TAG = "Finder.FansContactPage";
+  public static final a rEB;
   
   static
   {
-    AppMethodBeat.i(167047);
-    qKl = new a((byte)0);
-    qnU = Collections.synchronizedMap((Map)new HashMap());
-    AppMethodBeat.o(167047);
+    AppMethodBeat.i(167044);
+    rEB = new a((byte)0);
+    TAG = "Finder.FansContactPage";
+    AppMethodBeat.o(167044);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCache$Companion;", "", "()V", "TAG", "", "cacheItems", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "", "clean", "", "getById", "id", "remove", "", "svrId", "update", "finder", "plugin-finder_release"})
+  public b(String paramString)
+  {
+    AppMethodBeat.i(167043);
+    StringBuilder localStringBuilder = new StringBuilder();
+    n localn = n.rPN;
+    super.Fu(n.EA(3) + paramString);
+    AppMethodBeat.o(167043);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage$Companion;", "", "()V", "TAG", "", "clearAll", "", "plugin-finder_release"})
   public static final class a
   {
-    public static boolean e(FinderItem paramFinderItem)
+    public static void clearAll()
     {
-      AppMethodBeat.i(167046);
-      k.h(paramFinderItem, "finder");
-      Map localMap = b.cqE();
-      k.g(localMap, "cacheItems");
-      localMap.put(Long.valueOf(paramFinderItem.field_id), paramFinderItem);
-      AppMethodBeat.o(167046);
-      return true;
-    }
-    
-    public static boolean nQ(long paramLong)
-    {
-      AppMethodBeat.i(190879);
-      if (b.cqE().remove(Long.valueOf(paramLong)) != null)
-      {
-        AppMethodBeat.o(190879);
-        return true;
+      AppMethodBeat.i(167042);
+      ac.i(b.access$getTAG$cp(), "clearAll");
+      Object localObject = n.rPN;
+      localObject = n.EA(3);
+      if (i.eA((String)localObject)) {
+        i.cU((String)localObject, true);
       }
-      AppMethodBeat.o(190879);
-      return false;
-    }
-    
-    public static FinderItem qC(long paramLong)
-    {
-      AppMethodBeat.i(167045);
-      FinderItem localFinderItem = (FinderItem)b.cqE().get(Long.valueOf(paramLong));
-      AppMethodBeat.o(167045);
-      return localFinderItem;
+      AppMethodBeat.o(167042);
     }
   }
 }

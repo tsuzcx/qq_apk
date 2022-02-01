@@ -9,30 +9,30 @@ import java.util.Map;
 
 public class a
 {
-  private static a jil;
-  public boolean jim;
-  public Map<String, c> jin;
+  private static a jIz;
+  public boolean jIA;
+  public Map<String, c> jIB;
   public List<a> listeners;
   
   private a()
   {
     AppMethodBeat.i(158902);
-    this.jim = false;
+    this.jIA = false;
     this.listeners = new ArrayList();
-    this.jin = new HashMap();
+    this.jIB = new HashMap();
     AppMethodBeat.o(158902);
   }
   
-  public static a aUI()
+  public static a bbG()
   {
     AppMethodBeat.i(158903);
-    if (jil == null) {}
+    if (jIz == null) {}
     try
     {
-      if (jil == null) {
-        jil = new a();
+      if (jIz == null) {
+        jIz = new a();
       }
-      a locala = jil;
+      a locala = jIz;
       AppMethodBeat.o(158903);
       return locala;
     }
@@ -42,10 +42,10 @@ public class a
     }
   }
   
-  public final c GL(String paramString)
+  public final c KP(String paramString)
   {
     AppMethodBeat.i(158906);
-    paramString = (c)this.jin.get(paramString);
+    paramString = (c)this.jIB.get(paramString);
     AppMethodBeat.o(158906);
     return paramString;
   }
@@ -53,7 +53,7 @@ public class a
   public final void a(a parama)
   {
     AppMethodBeat.i(158908);
-    if (this.jim)
+    if (this.jIA)
     {
       AppMethodBeat.o(158908);
       return;
@@ -64,19 +64,6 @@ public class a
     AppMethodBeat.o(158908);
   }
   
-  public final Collection<c> aUJ()
-  {
-    AppMethodBeat.i(158907);
-    Collection localCollection = this.jin.values();
-    AppMethodBeat.o(158907);
-    return localCollection;
-  }
-  
-  public final void aUK()
-  {
-    this.jim = true;
-  }
-  
   public final void b(a parama)
   {
     AppMethodBeat.i(158909);
@@ -84,10 +71,23 @@ public class a
     AppMethodBeat.o(158909);
   }
   
+  public final Collection<c> bbH()
+  {
+    AppMethodBeat.i(158907);
+    Collection localCollection = this.jIB.values();
+    AppMethodBeat.o(158907);
+    return localCollection;
+  }
+  
+  public final void bbI()
+  {
+    this.jIA = true;
+  }
+  
   public final boolean contains(String paramString)
   {
     AppMethodBeat.i(158904);
-    boolean bool = this.jin.containsKey(paramString);
+    boolean bool = this.jIB.containsKey(paramString);
     AppMethodBeat.o(158904);
     return bool;
   }
@@ -95,20 +95,20 @@ public class a
   public final void destroy()
   {
     AppMethodBeat.i(158910);
-    this.jin.clear();
-    jil = null;
+    this.jIB.clear();
+    jIz = null;
     AppMethodBeat.o(158910);
   }
   
   public final void remove(String paramString)
   {
     AppMethodBeat.i(158905);
-    if (this.jim)
+    if (this.jIA)
     {
       AppMethodBeat.o(158905);
       return;
     }
-    paramString = (c)this.jin.remove(paramString);
+    paramString = (c)this.jIB.remove(paramString);
     int i = 0;
     while (i < this.listeners.size())
     {

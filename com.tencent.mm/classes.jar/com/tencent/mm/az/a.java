@@ -1,238 +1,109 @@
 package com.tencent.mm.az;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lm;
-import com.tencent.mm.g.a.lm.b;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.aq;
-import java.util.List;
+import android.view.View;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import junit.framework.Assert;
 
-public final class a
+public abstract class a
 {
-  public static final void a(f paramf)
+  public static String hOy = "";
+  public static String hOz = "";
+  public String TEXT;
+  public String TYPE;
+  public bo dpq;
+  public String hOA = "";
+  public String hOB;
+  public LinkedList<String> hOC = new LinkedList();
+  public LinkedList<Integer> hOD = new LinkedList();
+  public LinkedList<Integer> hOE = new LinkedList();
+  public Map<String, String> values;
+  
+  public a(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(136995);
-    aq.f(new Runnable()
+    this.values = paramMap;
+  }
+  
+  public a(Map<String, String> paramMap, bo parambo)
+  {
+    this.values = paramMap;
+    this.dpq = parambo;
+  }
+  
+  public final boolean aGG()
+  {
+    if ((this.values != null) && (this.values.size() > 0))
     {
-      public final void run()
-      {
-        AppMethodBeat.i(136988);
-        lm locallm = new lm();
-        locallm.dqd.action = 6;
-        locallm.dqd.dqf = this.hng;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136988);
+      if (this.values.containsKey(".sysmsg.$type")) {
+        this.TYPE = ((String)this.values.get(".sysmsg.$type"));
       }
-    });
-    AppMethodBeat.o(136995);
-  }
-  
-  public static final void azB()
-  {
-    AppMethodBeat.i(136991);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136981);
-        lm locallm = new lm();
-        locallm.dqd.action = 1;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136981);
+      hOy = ".sysmsg." + this.TYPE + ".text";
+      if (this.values.containsKey(hOy)) {
+        this.TEXT = ((String)this.values.get(hOy));
       }
-    });
-    AppMethodBeat.o(136991);
-  }
-  
-  public static final void azC()
-  {
-    AppMethodBeat.i(136992);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136983);
-        lm locallm = new lm();
-        locallm.dqd.action = 2;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136983);
+      hOz = ".sysmsg." + this.TYPE + ".link.scene";
+      if (this.values.containsKey(hOz)) {
+        this.hOB = ((String)this.values.get(hOz));
       }
-    });
-    AppMethodBeat.o(136992);
-  }
-  
-  public static final void azD()
-  {
-    AppMethodBeat.i(136993);
-    aq.f(new a.6());
-    AppMethodBeat.o(136993);
-  }
-  
-  public static final void azE()
-  {
-    AppMethodBeat.i(136994);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136987);
-        lm locallm = new lm();
-        locallm.dqd.action = 11;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136987);
-      }
-    });
-    AppMethodBeat.o(136994);
-  }
-  
-  public static boolean azF()
-  {
-    AppMethodBeat.i(136996);
-    lm locallm = new lm();
-    locallm.dqd.action = -3;
-    com.tencent.mm.sdk.b.a.ESL.l(locallm);
-    boolean bool = locallm.dqe.result;
-    AppMethodBeat.o(136996);
-    return bool;
-  }
-  
-  public static boolean azG()
-  {
-    AppMethodBeat.i(136997);
-    lm locallm = new lm();
-    locallm.dqd.action = 10;
-    com.tencent.mm.sdk.b.a.ESL.l(locallm);
-    boolean bool = locallm.dqe.result;
-    AppMethodBeat.o(136997);
-    return bool;
-  }
-  
-  public static boolean azH()
-  {
-    AppMethodBeat.i(136998);
-    lm locallm = new lm();
-    locallm.dqd.action = 9;
-    com.tencent.mm.sdk.b.a.ESL.l(locallm);
-    boolean bool = locallm.dqe.result;
-    AppMethodBeat.o(136998);
-    return bool;
-  }
-  
-  public static f azI()
-  {
-    AppMethodBeat.i(136999);
-    Object localObject = new lm();
-    ((lm)localObject).dqd.action = -2;
-    com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
-    localObject = ((lm)localObject).dqe.dqf;
-    AppMethodBeat.o(136999);
-    return localObject;
-  }
-  
-  public static c azJ()
-  {
-    AppMethodBeat.i(137003);
-    Object localObject = new lm();
-    ((lm)localObject).dqd.action = 8;
-    com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
-    localObject = ((lm)localObject).dqe.dqj;
-    AppMethodBeat.o(137003);
-    return localObject;
-  }
-  
-  public static void b(f paramf)
-  {
-    AppMethodBeat.i(193673);
-    lm locallm = new lm();
-    locallm.dqd.action = 16;
-    locallm.dqd.dqf = paramf;
-    com.tencent.mm.sdk.b.a.ESL.l(locallm);
-    AppMethodBeat.o(193673);
-  }
-  
-  public static void c(f paramf)
-  {
-    AppMethodBeat.i(137000);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136989);
-        lm locallm = new lm();
-        locallm.dqd.action = 0;
-        locallm.dqd.dqf = this.hnc;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136989);
-      }
-    });
-    AppMethodBeat.o(137000);
-  }
-  
-  public static void d(f paramf)
-  {
-    AppMethodBeat.i(137001);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136982);
-        lm locallm = new lm();
-        locallm.dqd.action = 3;
-        locallm.dqd.dqf = this.hnc;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136982);
-      }
-    });
-    AppMethodBeat.o(137001);
-  }
-  
-  public static boolean e(f paramf)
-  {
-    if (paramf == null) {
-      return false;
+      return axn();
     }
-    switch (paramf.hnn)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    ac.e("MicroMsg.BaseNewXmlMsg", "values == null || values.size() == 0 ");
+    return false;
   }
   
-  public static void f(List<f> paramList, final int paramInt)
+  protected abstract boolean axn();
+  
+  public static abstract class a
   {
-    AppMethodBeat.i(182547);
-    aq.f(new Runnable()
+    private static HashMap<String, a> hOF = new HashMap();
+    
+    public static void a(String paramString, a parama)
     {
-      public final void run()
+      Assert.assertNotNull(paramString);
+      Assert.assertNotNull(parama);
+      synchronized (hOF)
       {
-        AppMethodBeat.i(136990);
-        lm locallm = new lm();
-        locallm.dqd.action = 4;
-        locallm.dqd.dkq = this.hnh;
-        locallm.dqd.dqg = paramInt;
-        com.tencent.mm.sdk.b.a.ESL.l(locallm);
-        AppMethodBeat.o(136990);
+        hOF.put(paramString.toLowerCase(), parama);
+        return;
       }
-    });
-    AppMethodBeat.o(182547);
+    }
+    
+    public static a b(Map<String, String> paramMap, bo parambo)
+    {
+      if (paramMap == null)
+      {
+        ac.e("MicroMsg.BaseNewXmlMsg", "values is null !!!");
+        return null;
+      }
+      String str = bs.bG((String)paramMap.get(".sysmsg.$type"), "");
+      synchronized (hOF)
+      {
+        a locala = (a)hOF.get(str.toLowerCase());
+        if (locala == null)
+        {
+          ac.w("MicroMsg.BaseNewXmlMsg", "TYPE %s is unDefine", new Object[] { str });
+          return null;
+        }
+        paramMap = locala.a(paramMap, parambo);
+        return paramMap;
+      }
+    }
+    
+    public abstract a a(Map<String, String> paramMap, bo parambo);
   }
   
-  public static boolean ox(int paramInt)
+  public static abstract interface b
   {
-    AppMethodBeat.i(137002);
-    lm locallm = new lm();
-    locallm.dqd.action = 7;
-    locallm.dqd.position = paramInt;
-    com.tencent.mm.sdk.b.a.ESL.l(locallm);
-    boolean bool = locallm.dqe.result;
-    AppMethodBeat.o(137002);
-    return bool;
+    public abstract void a(View paramView, bo parambo, a parama, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.az.a
  * JD-Core Version:    0.7.0.1
  */

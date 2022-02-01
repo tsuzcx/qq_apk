@@ -8,53 +8,53 @@ public final class d
   extends a
 {
   private static String TAG = "MicroMsg.BakOldItemFactory";
-  private static d myn;
-  private HashMap<Integer, j> muP;
+  private static d nao;
+  private HashMap<Integer, j> mWQ;
   
-  public static d byc()
+  public static d bEY()
   {
     AppMethodBeat.i(21843);
-    if (myn == null)
+    if (nao == null)
     {
       locald = new d();
-      myn = locald;
+      nao = locald;
       a(locald);
     }
-    d locald = myn;
+    d locald = nao;
     AppMethodBeat.o(21843);
     return locald;
   }
   
-  public final void bvO()
+  public final void bCK()
   {
-    myn = null;
+    nao = null;
   }
   
-  public final j wm(int paramInt)
+  public final j xd(int paramInt)
   {
     AppMethodBeat.i(21844);
-    if (this.muP == null)
+    if (this.mWQ == null)
     {
-      this.muP = new HashMap();
-      this.muP.put(Integer.valueOf(3), new e());
-      this.muP.put(Integer.valueOf(47), new c());
-      this.muP.put(Integer.valueOf(49), new b());
-      this.muP.put(Integer.valueOf(34), new h());
+      this.mWQ = new HashMap();
+      this.mWQ.put(Integer.valueOf(3), new e());
+      this.mWQ.put(Integer.valueOf(47), new c());
+      this.mWQ.put(Integer.valueOf(49), new b());
+      this.mWQ.put(Integer.valueOf(34), new h());
       localObject = new g();
-      this.muP.put(Integer.valueOf(43), localObject);
-      this.muP.put(Integer.valueOf(44), localObject);
-      this.muP.put(Integer.valueOf(62), localObject);
+      this.mWQ.put(Integer.valueOf(43), localObject);
+      this.mWQ.put(Integer.valueOf(44), localObject);
+      this.mWQ.put(Integer.valueOf(62), localObject);
       localObject = new f();
-      this.muP.put(Integer.valueOf(48), localObject);
-      this.muP.put(Integer.valueOf(42), localObject);
-      this.muP.put(Integer.valueOf(66), localObject);
-      this.muP.put(Integer.valueOf(10000), localObject);
-      this.muP.put(Integer.valueOf(1), localObject);
-      this.muP.put(Integer.valueOf(37), localObject);
-      this.muP.put(Integer.valueOf(40), localObject);
-      this.muP.put(Integer.valueOf(50), localObject);
+      this.mWQ.put(Integer.valueOf(48), localObject);
+      this.mWQ.put(Integer.valueOf(42), localObject);
+      this.mWQ.put(Integer.valueOf(66), localObject);
+      this.mWQ.put(Integer.valueOf(10000), localObject);
+      this.mWQ.put(Integer.valueOf(1), localObject);
+      this.mWQ.put(Integer.valueOf(37), localObject);
+      this.mWQ.put(Integer.valueOf(40), localObject);
+      this.mWQ.put(Integer.valueOf(50), localObject);
     }
-    Object localObject = (j)this.muP.get(Integer.valueOf(paramInt));
+    Object localObject = (j)this.mWQ.get(Integer.valueOf(paramInt));
     AppMethodBeat.o(21844);
     return localObject;
   }

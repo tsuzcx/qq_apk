@@ -24,43 +24,41 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.h.h;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.z;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.widget.InputPanelFrameLayout;
 import com.tencent.mm.ui.widget.MMEditText;
 import d.g.a.m;
 import d.l;
-import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgInputView;", "Lcom/tencent/mm/ui/widget/InputPanelFrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "canSend", "", "commentInputCallback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "content", "success", "", "getCommentInputCallback", "()Lkotlin/jvm/functions/Function2;", "setCommentInputCallback", "(Lkotlin/jvm/functions/Function2;)V", "emojiBtn", "Landroid/widget/ImageView;", "emojiRoot", "Landroid/widget/FrameLayout;", "hintTv", "Landroid/widget/TextView;", "inputContentGroup", "Landroid/view/View;", "inputLimit", "inputRootView", "inputType", "getInputType", "()I", "setInputType", "(I)V", "inputView", "Lcom/tencent/mm/ui/widget/MMEditText;", "isKeyboardShown", "keyboardHeight", "limitHighLightColor", "limitNormalColor", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "showImeRunnable", "Ljava/lang/Runnable;", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "destroy", "getContent", "", "hideInputPanel", "hideSoftInput", "initSmileyPanel", "onBack", "onInputPanelChange", "isKeyboardShow", "refreshBottomPanelHeight", "setInputHint", "toUser", "isReply", "setKeyboardVisibility", "visible", "setVisibility", "visibility", "needRequest", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgInputView;", "Lcom/tencent/mm/ui/widget/InputPanelFrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "canSend", "", "commentInputCallback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "content", "success", "", "getCommentInputCallback", "()Lkotlin/jvm/functions/Function2;", "setCommentInputCallback", "(Lkotlin/jvm/functions/Function2;)V", "emojiBtn", "Landroid/widget/ImageView;", "emojiRoot", "Landroid/widget/FrameLayout;", "hintTv", "Landroid/widget/TextView;", "inputContentGroup", "Landroid/view/View;", "inputLimit", "inputRootView", "inputType", "getInputType", "()I", "setInputType", "(I)V", "inputView", "Lcom/tencent/mm/ui/widget/MMEditText;", "isKeyboardShown", "keyboardHeight", "limitHighLightColor", "limitNormalColor", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "showImeRunnable", "Ljava/lang/Runnable;", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "destroy", "getContent", "", "hideInputPanel", "hideSoftInput", "initSmileyPanel", "onBack", "onInputPanelChange", "isKeyboardShow", "refreshBottomPanelHeight", "setInputHint", "toUser", "isReply", "setKeyboardVisibility", "visible", "setVisibility", "visibility", "needRequest", "Companion", "plugin-story_release"})
 public final class StoryMsgInputView
   extends InputPanelFrameLayout
 {
-  public static final a ywm;
+  public static final StoryMsgInputView.a zJC;
   private final String TAG;
-  private boolean fNO;
-  private final ChatFooterPanel fSY;
-  private final TextView iAd;
+  private boolean fRz;
+  private final ChatFooterPanel fWT;
   private int inputType;
-  private int mEi;
-  private final Runnable oQp;
-  private final FrameLayout yuK;
-  private final MMEditText yuL;
-  private final ImageView yuM;
-  private final TextView yuN;
-  private final View yuP;
-  private final View yuQ;
-  private boolean yuR;
-  private final int yuS;
-  private final int yuT;
-  private m<? super String, ? super Boolean, y> yuU;
+  private final TextView jae;
+  private int ngo;
+  private final Runnable ptC;
+  private final FrameLayout zIc;
+  private final MMEditText zId;
+  private final ImageView zIe;
+  private final TextView zIf;
+  private final View zIh;
+  private final View zIi;
+  private boolean zIj;
+  private final int zIk;
+  private final int zIl;
+  private m<? super String, ? super Boolean, d.y> zIm;
   
   static
   {
     AppMethodBeat.i(120226);
-    ywm = new a((byte)0);
+    zJC = new StoryMsgInputView.a((byte)0);
     AppMethodBeat.o(120226);
   }
   
@@ -81,42 +79,42 @@ public final class StoryMsgInputView
     setClickable(true);
     paramAttributeSet = findViewById(2131305297);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_comment_emoji_root)");
-    this.yuK = ((FrameLayout)paramAttributeSet);
+    this.zIc = ((FrameLayout)paramAttributeSet);
     paramAttributeSet = findViewById(2131305300);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_comment_input)");
-    this.yuL = ((MMEditText)paramAttributeSet);
-    this.yuL.setEnableSendBtn(true);
+    this.zId = ((MMEditText)paramAttributeSet);
+    this.zId.setEnableSendBtn(true);
     paramAttributeSet = findViewById(2131305296);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_comment_emoji_btn)");
-    this.yuM = ((ImageView)paramAttributeSet);
+    this.zIe = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305305);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_comment_input_limit)");
-    this.yuN = ((TextView)paramAttributeSet);
+    this.zIf = ((TextView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305304);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_comment_input_hint)");
-    this.iAd = ((TextView)paramAttributeSet);
+    this.jae = ((TextView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305307);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_comment_input_root)");
-    this.yuP = paramAttributeSet;
+    this.zIh = paramAttributeSet;
     paramAttributeSet = findViewById(2131305303);
     d.g.b.k.g(paramAttributeSet, "findViewById(R.id.story_…ent_input_footer_content)");
-    this.yuQ = paramAttributeSet;
-    this.yuS = getResources().getColor(2131100996);
-    this.yuT = getResources().getColor(2131099803);
+    this.zIi = paramAttributeSet;
+    this.zIk = getResources().getColor(2131100996);
+    this.zIl = getResources().getColor(2131099803);
     paramAttributeSet = aa.k(paramContext, true);
     d.g.b.k.g(paramAttributeSet, "SmileyPanelFactory.getSmileyPanel(context, true)");
-    this.fSY = ((ChatFooterPanel)paramAttributeSet);
-    this.mEi = z.in(getContext());
-    paramAttributeSet = new FrameLayout.LayoutParams(-1, this.mEi);
-    this.yuK.addView((View)this.fSY, (ViewGroup.LayoutParams)paramAttributeSet);
-    this.fSY.setPortHeightPx(this.mEi);
-    this.fSY.setEntranceScene(ChatFooterPanel.vej);
-    this.fSY.exn();
-    this.fSY.setVisibility(0);
-    this.fSY.setShowSend(true);
-    this.fSY.onResume();
-    this.fSY.setOnTextOperationListener((ChatFooterPanel.a)new b(this));
-    this.yuL.addTextChangedListener((TextWatcher)new TextWatcher()
+    this.fWT = ((ChatFooterPanel)paramAttributeSet);
+    this.ngo = com.tencent.mm.sdk.platformtools.y.iy(getContext());
+    paramAttributeSet = new FrameLayout.LayoutParams(-1, this.ngo);
+    this.zIc.addView((View)this.fWT, (ViewGroup.LayoutParams)paramAttributeSet);
+    this.fWT.setPortHeightPx(this.ngo);
+    this.fWT.setEntranceScene(ChatFooterPanel.wmY);
+    this.fWT.eMH();
+    this.fWT.setVisibility(0);
+    this.fWT.setShowSend(true);
+    this.fWT.onResume();
+    this.fWT.setOnTextOperationListener((ChatFooterPanel.a)new b(this));
+    this.zId.addTextChangedListener((TextWatcher)new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -125,12 +123,12 @@ public final class StoryMsgInputView
         {
           int j = ((CharSequence)paramAnonymousEditable).length();
           int k = 60 - j;
-          StoryMsgInputView localStoryMsgInputView = this.ywn;
+          StoryMsgInputView localStoryMsgInputView = this.zJD;
           int i;
           if (((CharSequence)paramAnonymousEditable).length() > 0)
           {
             i = 1;
-            if ((i == 0) || (k < 0) || (StoryMsgInputView.a(this.ywn).getLineCount() > 10)) {
+            if ((i == 0) || (k < 0) || (StoryMsgInputView.a(this.zJD).getLineCount() > 10)) {
               break label147;
             }
           }
@@ -141,28 +139,28 @@ public final class StoryMsgInputView
             if (j < 55) {
               break label176;
             }
-            StoryMsgInputView.e(this.ywn).setVisibility(0);
-            StoryMsgInputView.e(this.ywn).setText((CharSequence)String.valueOf(k));
+            StoryMsgInputView.e(this.zJD).setVisibility(0);
+            StoryMsgInputView.e(this.zJD).setText((CharSequence)String.valueOf(k));
             if (k < 0) {
               break label153;
             }
-            StoryMsgInputView.e(this.ywn).setTextColor(StoryMsgInputView.f(this.ywn));
+            StoryMsgInputView.e(this.zJD).setTextColor(StoryMsgInputView.f(this.zJD));
             AppMethodBeat.o(120208);
             return;
             i = 0;
             break;
           }
           label153:
-          StoryMsgInputView.e(this.ywn).setTextColor(StoryMsgInputView.g(this.ywn));
+          StoryMsgInputView.e(this.zJD).setTextColor(StoryMsgInputView.g(this.zJD));
           AppMethodBeat.o(120208);
           return;
           label176:
-          StoryMsgInputView.e(this.ywn).setVisibility(8);
+          StoryMsgInputView.e(this.zJD).setVisibility(8);
           AppMethodBeat.o(120208);
           return;
         }
-        StoryMsgInputView.a(this.ywn, false);
-        StoryMsgInputView.e(this.ywn).setVisibility(8);
+        StoryMsgInputView.a(this.zJD, false);
+        StoryMsgInputView.e(this.zJD).setVisibility(8);
         AppMethodBeat.o(120208);
       }
       
@@ -170,49 +168,49 @@ public final class StoryMsgInputView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.yuP.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.zIh.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120209);
-        if (!StoryMsgInputView.h(this.ywn))
+        if (!StoryMsgInputView.h(this.zJD))
         {
-          this.ywn.setInputType(2);
-          StoryMsgInputView.b(this.ywn, true);
-          StoryMsgInputView.i(this.ywn).setImageDrawable(am.i(paramContext, 2131690482, -1));
+          this.zJD.setInputType(2);
+          StoryMsgInputView.b(this.zJD, true);
+          StoryMsgInputView.i(this.zJD).setImageDrawable(am.k(paramContext, 2131690482, -1));
         }
         AppMethodBeat.o(120209);
       }
     });
-    this.yuM.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.zIe.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(120210);
-        if (this.ywn.getInputType() == 0)
+        if (this.zJD.getInputType() == 0)
         {
-          this.ywn.setInputType(2);
-          StoryMsgInputView.b(this.ywn, true);
-          StoryMsgInputView.i(this.ywn).setImageDrawable(am.i(paramContext, 2131690482, -1));
+          this.zJD.setInputType(2);
+          StoryMsgInputView.b(this.zJD, true);
+          StoryMsgInputView.i(this.zJD).setImageDrawable(am.k(paramContext, 2131690482, -1));
           AppMethodBeat.o(120210);
           return;
         }
-        if (StoryMsgInputView.h(this.ywn))
+        if (StoryMsgInputView.h(this.zJD))
         {
-          this.ywn.setInputType(0);
-          StoryMsgInputView.b(this.ywn, false);
+          this.zJD.setInputType(0);
+          StoryMsgInputView.b(this.zJD, false);
         }
         for (;;)
         {
-          StoryMsgInputView.i(this.ywn).setImageDrawable(am.i(paramContext, 2131690417, -1));
+          StoryMsgInputView.i(this.zJD).setImageDrawable(am.k(paramContext, 2131690417, -1));
           AppMethodBeat.o(120210);
           return;
-          this.ywn.setInputType(0);
-          StoryMsgInputView.d(this.ywn).setVisibility(0);
+          this.zJD.setInputType(0);
+          StoryMsgInputView.d(this.zJD).setVisibility(0);
         }
       }
     });
-    this.yuL.setOnEditorActionListener((TextView.OnEditorActionListener)new TextView.OnEditorActionListener()
+    this.zId.setOnEditorActionListener((TextView.OnEditorActionListener)new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -222,16 +220,16 @@ public final class StoryMsgInputView
           d.g.b.k.g(paramAnonymousKeyEvent, "keyEvent");
           if (paramAnonymousKeyEvent.getAction() != 66) {}
         }
-        else if (StoryMsgInputView.b(this.ywn))
+        else if (StoryMsgInputView.b(this.zJD))
         {
-          paramAnonymousTextView = h.ynv;
-          h.OB(9);
-          paramAnonymousTextView = StoryMsgInputView.a(this.ywn).getText();
+          paramAnonymousTextView = h.zAU;
+          h.QH(9);
+          paramAnonymousTextView = StoryMsgInputView.a(this.zJD).getText();
           if (paramAnonymousTextView != null)
           {
-            StoryMsgInputView.c(this.ywn);
-            StoryMsgInputView.a(this.ywn).setText(null);
-            paramAnonymousKeyEvent = this.ywn.getCommentInputCallback();
+            StoryMsgInputView.c(this.zJD);
+            StoryMsgInputView.a(this.zJD).setText(null);
+            paramAnonymousKeyEvent = this.zJD.getCommentInputCallback();
             if (paramAnonymousKeyEvent != null) {
               paramAnonymousKeyEvent.n(paramAnonymousTextView.toString(), Boolean.TRUE);
             }
@@ -241,14 +239,14 @@ public final class StoryMsgInputView
         return true;
       }
     });
-    this.yuM.setImageDrawable(am.i(paramContext, 2131690482, -1));
-    this.fNO = false;
+    this.zIe.setImageDrawable(am.k(paramContext, 2131690482, -1));
+    this.fRz = false;
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    this.oQp = ((Runnable)new c(this));
+    this.ptC = ((Runnable)new c(this));
     AppMethodBeat.o(120224);
   }
   
-  private final void dLi()
+  private final void dZI()
   {
     AppMethodBeat.i(120222);
     InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
@@ -266,11 +264,11 @@ public final class StoryMsgInputView
     AppMethodBeat.i(120221);
     if (paramBoolean)
     {
-      post(this.oQp);
+      post(this.ptC);
       AppMethodBeat.o(120221);
       return;
     }
-    removeCallbacks(this.oQp);
+    removeCallbacks(this.ptC);
     InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
     if (localInputMethodManager != null)
     {
@@ -285,31 +283,31 @@ public final class StoryMsgInputView
   {
     AppMethodBeat.i(120216);
     d.g.b.k.h(paramString, "toUser");
-    this.yuL.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), paramCharSequence, this.yuL.getTextSize()));
+    this.zId.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), paramCharSequence, this.zId.getTextSize()));
     if (paramCharSequence != null) {
-      this.yuL.setSelection(paramCharSequence.length());
+      this.zId.setSelection(paramCharSequence.length());
     }
     if (paramBoolean)
     {
       d.g.b.k.g(getResources().getString(2131764303), "resources.getString(R.st…story_reply_visible_hint)");
       paramCharSequence = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
       d.g.b.k.g(paramCharSequence, "MMKernel.service(IMessengerStorage::class.java)");
-      paramCharSequence = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramCharSequence).apM().aHY(paramString);
+      paramCharSequence = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramCharSequence).awB().aNt(paramString);
       paramString = new StringBuilder().append(getResources().getString(2131764302)).append(' ');
-      Context localContext = this.yuL.getContext();
+      Context localContext = this.zId.getContext();
       if (paramCharSequence != null)
       {
-        paramCharSequence = paramCharSequence.ZX();
+        paramCharSequence = paramCharSequence.aaS();
         if (paramCharSequence != null)
         {
           paramCharSequence = (CharSequence)paramCharSequence;
-          paramCharSequence = com.tencent.mm.pluginsdk.ui.span.k.b(localContext, paramCharSequence, this.yuL.getTextSize());
+          paramCharSequence = com.tencent.mm.pluginsdk.ui.span.k.b(localContext, paramCharSequence, this.zId.getTextSize());
         }
       }
     }
     for (;;)
     {
-      this.yuL.setHint((CharSequence)paramCharSequence);
+      this.zId.setHint((CharSequence)paramCharSequence);
       AppMethodBeat.o(120216);
       return;
       paramCharSequence = (CharSequence)"";
@@ -320,11 +318,11 @@ public final class StoryMsgInputView
     }
   }
   
-  public final void dLh()
+  public final void dZH()
   {
     AppMethodBeat.i(120219);
     if (this.inputType == 0) {
-      this.yuK.setVisibility(8);
+      this.zIc.setVisibility(8);
     }
     for (;;)
     {
@@ -332,7 +330,7 @@ public final class StoryMsgInputView
       AppMethodBeat.o(120219);
       return;
       if (this.inputType == 2) {
-        dLi();
+        dZI();
       }
     }
   }
@@ -341,21 +339,21 @@ public final class StoryMsgInputView
   {
     AppMethodBeat.i(120223);
     super.g(paramBoolean, paramInt);
-    this.yuR = paramBoolean;
+    this.zIj = paramBoolean;
     if (paramBoolean)
     {
       this.inputType = 2;
-      this.yuK.setVisibility(4);
+      this.zIc.setVisibility(4);
     }
     for (;;)
     {
-      if ((this.mEi != paramInt) && (paramInt != 0))
+      if ((this.ngo != paramInt) && (paramInt != 0))
       {
-        this.mEi = paramInt;
+        this.ngo = paramInt;
         i.A(getContext(), paramInt);
-        paramInt = z.in(getContext());
-        this.fSY.setPortHeightPx(paramInt);
-        ViewGroup.LayoutParams localLayoutParams = this.fSY.getLayoutParams();
+        paramInt = com.tencent.mm.sdk.platformtools.y.iy(getContext());
+        this.fWT.setPortHeightPx(paramInt);
+        ViewGroup.LayoutParams localLayoutParams = this.fWT.getLayoutParams();
         if (localLayoutParams != null) {
           localLayoutParams.height = paramInt;
         }
@@ -364,25 +362,25 @@ public final class StoryMsgInputView
       return;
       if (this.inputType == 0)
       {
-        this.yuK.setVisibility(0);
+        this.zIc.setVisibility(0);
       }
       else
       {
-        this.yuK.setVisibility(8);
+        this.zIc.setVisibility(8);
         this.inputType = -1;
       }
     }
   }
   
-  public final m<String, Boolean, y> getCommentInputCallback()
+  public final m<String, Boolean, d.y> getCommentInputCallback()
   {
-    return this.yuU;
+    return this.zIm;
   }
   
   public final CharSequence getContent()
   {
     AppMethodBeat.i(120218);
-    Object localObject = this.yuL.getText();
+    Object localObject = this.zId.getText();
     if (localObject != null) {}
     for (localObject = localObject.toString();; localObject = null)
     {
@@ -397,9 +395,9 @@ public final class StoryMsgInputView
     return this.inputType;
   }
   
-  public final void setCommentInputCallback(m<? super String, ? super Boolean, y> paramm)
+  public final void setCommentInputCallback(m<? super String, ? super Boolean, d.y> paramm)
   {
-    this.yuU = paramm;
+    this.zIm = paramm;
   }
   
   public final void setInputType(int paramInt)
@@ -412,10 +410,10 @@ public final class StoryMsgInputView
     AppMethodBeat.i(120220);
     if (paramBoolean)
     {
-      this.yuL.requestFocus();
+      this.zId.requestFocus();
       this.inputType = 2;
-      this.yuM.setImageDrawable(am.i(getContext(), 2131690482, -1));
-      this.yuK.setVisibility(4);
+      this.zIe.setImageDrawable(am.k(getContext(), 2131690482, -1));
+      this.zIc.setVisibility(4);
       setKeyboardVisibility(true);
     }
     setVisibility(0);
@@ -425,28 +423,18 @@ public final class StoryMsgInputView
     AppMethodBeat.o(120220);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/StoryMsgInputView$Companion;", "", "()V", "InputEmoji", "", "InputEmojiLater", "InputKeyboard", "InputKeyboardLater", "InputLimit", "InputNone", "MinShowLimit", "plugin-story_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/view/StoryMsgInputView$initSmileyPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/ui/view/StoryMsgInputView$initSmileyPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-story_release"})
   public static final class b
     implements ChatFooterPanel.a
   {
-    public final void append(String paramString)
-    {
-      AppMethodBeat.i(120212);
-      StoryMsgInputView.a(this.ywn).aMd(paramString);
-      AppMethodBeat.o(120212);
-    }
-    
-    public final void btF()
+    public final void amb()
     {
       AppMethodBeat.i(120213);
-      InputConnection localInputConnection = StoryMsgInputView.a(this.ywn).getInputConnection();
+      InputConnection localInputConnection = StoryMsgInputView.a(this.zJD).getInputConnection();
       if (localInputConnection != null) {
         localInputConnection.sendKeyEvent(new KeyEvent(0, 67));
       }
-      localInputConnection = StoryMsgInputView.a(this.ywn).getInputConnection();
+      localInputConnection = StoryMsgInputView.a(this.zJD).getInputConnection();
       if (localInputConnection != null)
       {
         localInputConnection.sendKeyEvent(new KeyEvent(1, 67));
@@ -456,20 +444,20 @@ public final class StoryMsgInputView
       AppMethodBeat.o(120213);
     }
     
-    public final void cqY()
+    public final void amc()
     {
       AppMethodBeat.i(120214);
-      if (StoryMsgInputView.b(this.ywn))
+      if (StoryMsgInputView.b(this.zJD))
       {
-        Object localObject = h.ynv;
-        h.OB(9);
-        localObject = StoryMsgInputView.a(this.ywn).getText();
+        Object localObject = h.zAU;
+        h.QH(9);
+        localObject = StoryMsgInputView.a(this.zJD).getText();
         if (localObject != null)
         {
-          StoryMsgInputView.c(this.ywn);
-          StoryMsgInputView.a(this.ywn).setText(null);
-          StoryMsgInputView.d(this.ywn).setVisibility(8);
-          m localm = this.ywn.getCommentInputCallback();
+          StoryMsgInputView.c(this.zJD);
+          StoryMsgInputView.a(this.zJD).setText(null);
+          StoryMsgInputView.d(this.zJD).setVisibility(8);
+          m localm = this.zJD.getCommentInputCallback();
           if (localm != null)
           {
             localm.n(localObject.toString(), Boolean.TRUE);
@@ -483,10 +471,17 @@ public final class StoryMsgInputView
       AppMethodBeat.o(120214);
     }
     
-    public final void lf(boolean paramBoolean) {}
+    public final void append(String paramString)
+    {
+      AppMethodBeat.i(120212);
+      StoryMsgInputView.a(this.zJD).aRF(paramString);
+      AppMethodBeat.o(120212);
+    }
+    
+    public final void dS(boolean paramBoolean) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -495,10 +490,10 @@ public final class StoryMsgInputView
     public final void run()
     {
       AppMethodBeat.i(120215);
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.ywn.getContext().getSystemService("input_method");
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.zJD.getContext().getSystemService("input_method");
       if (localInputMethodManager != null)
       {
-        localInputMethodManager.showSoftInput((View)StoryMsgInputView.a(this.ywn), 0);
+        localInputMethodManager.showSoftInput((View)StoryMsgInputView.a(this.zJD), 0);
         AppMethodBeat.o(120215);
         return;
       }
@@ -508,7 +503,7 @@ public final class StoryMsgInputView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryMsgInputView
  * JD-Core Version:    0.7.0.1
  */

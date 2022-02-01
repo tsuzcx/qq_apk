@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dc;
-import com.tencent.mm.protocal.protobuf.dd;
-import com.tencent.mm.protocal.protobuf.dev;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.df;
+import com.tencent.mm.protocal.protobuf.dkk;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,11 +20,11 @@ public final class b
   implements k
 {
   private g callback;
-  private List<String> pLp;
+  private List<String> qtW;
   
   public b(List<String> paramList)
   {
-    this.pLp = paramList;
+    this.qtW = paramList;
   }
   
   public final int doScene(e parame, g paramg)
@@ -32,27 +32,27 @@ public final class b
     AppMethodBeat.i(73763);
     this.callback = paramg;
     paramg = new b.a();
-    dc localdc = new dc();
+    de localde = new de();
     ArrayList localArrayList = new ArrayList();
-    if (this.pLp != null)
+    if (this.qtW != null)
     {
       i = 0;
-      while (i < this.pLp.size())
+      while (i < this.qtW.size())
       {
-        dev localdev = new dev();
-        localdev.mAQ = ((String)this.pLp.get(i));
-        localArrayList.add(localdev);
+        dkk localdkk = new dkk();
+        localdkk.ncR = ((String)this.qtW.get(i));
+        localArrayList.add(localdkk);
         i += 1;
       }
     }
-    localdc.CxO.addAll(localArrayList);
-    paramg.gUU = localdc;
-    paramg.gUV = new dd();
+    localde.DQk.addAll(localArrayList);
+    paramg.hvt = localde;
+    paramg.hvu = new df();
     paramg.uri = "/cgi-bin/micromsg-bin/addtrustedfriends";
     paramg.funcId = 583;
     paramg.reqCmdId = 0;
     paramg.reqCmdId = 0;
-    int i = dispatch(parame, paramg.atI(), this);
+    int i = dispatch(parame, paramg.aAz(), this);
     AppMethodBeat.o(73763);
     return i;
   }
@@ -67,7 +67,7 @@ public final class b
     AppMethodBeat.i(73762);
     updateDispatchIdNew(paramInt1);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ac.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(73762);

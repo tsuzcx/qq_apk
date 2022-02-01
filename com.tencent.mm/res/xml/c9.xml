@@ -8,4 +8,6 @@
     <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_video" android:title="@string/fba" />
     <PreferenceTitleCategory android:key="settings_sns_auto_play_tip" android:title="@string/fa9" />
     <CheckBoxPreference android:defaultValue="true" android:key="settings_sns_auto_play_switch" android:title="@string/fa8" />
+    <PreferenceTitleCategory android:key="settings_voip_audio_switch_mobile_net_tip" android:title="@string/hrw" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_audio_switch_mobile_net" android:title="@string/hru" />
 </PreferenceScreen>

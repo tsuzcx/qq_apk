@@ -17,7 +17,7 @@ public final class d
     AppMethodBeat.o(146414);
   }
   
-  public final boolean bh(Object paramObject)
+  public final boolean be(Object paramObject)
   {
     return paramObject instanceof Parcel;
   }
@@ -36,7 +36,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.d
  * JD-Core Version:    0.7.0.1
  */

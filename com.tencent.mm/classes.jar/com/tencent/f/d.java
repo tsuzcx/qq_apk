@@ -2,20 +2,20 @@ package com.tencent.f;
 
 public abstract class d<T extends e>
 {
-  private T[] IHG = fpm();
-  private int ktk;
+  private T[] KtR = fHu();
+  private int kUz;
   private final Object mLock = new Object();
   
-  private T fpp()
+  private T fHx()
   {
     e locale = null;
     synchronized (this.mLock)
     {
-      if (this.ktk > 0)
+      if (this.kUz > 0)
       {
-        this.ktk -= 1;
-        locale = this.IHG[this.ktk];
-        this.IHG[this.ktk] = null;
+        this.kUz -= 1;
+        locale = this.KtR[this.kUz];
+        this.KtR[this.kUz] = null;
       }
       return locale;
     }
@@ -25,25 +25,25 @@ public abstract class d<T extends e>
   {
     synchronized (this.mLock)
     {
-      int i = this.IHG.length;
-      if (this.ktk < i)
+      int i = this.KtR.length;
+      if (this.kUz < i)
       {
-        this.IHG[this.ktk] = paramT;
-        this.ktk += 1;
+        this.KtR[this.kUz] = paramT;
+        this.kUz += 1;
       }
       return;
     }
   }
   
-  protected abstract T[] fpm();
+  protected abstract T[] fHu();
   
-  protected abstract T fpn();
+  protected abstract T fHv();
   
-  public final T fpo()
+  public final T fHw()
   {
-    e locale = fpp();
+    e locale = fHx();
     if (locale == null) {
-      return fpn();
+      return fHv();
     }
     locale.reset();
     return locale;
@@ -51,7 +51,7 @@ public abstract class d<T extends e>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.f.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,27 +16,27 @@ public abstract interface g
   
   public static final class a
   {
-    private static Map<String, g> fmM;
+    private static Map<String, g> fqg;
     
     static
     {
       AppMethodBeat.i(131947);
-      fmM = new HashMap();
+      fqg = new HashMap();
       AppMethodBeat.o(131947);
     }
     
-    public static <T> T S(String paramString1, String paramString2)
+    public static <T> T T(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131942);
-      paramString1 = a(oK(paramString1), paramString2);
+      paramString1 = a(rT(paramString1), paramString2);
       AppMethodBeat.o(131942);
       return paramString1;
     }
     
-    public static <T> void T(String paramString1, String paramString2)
+    public static <T> void U(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131944);
-      b(oK(paramString1), paramString2);
+      b(rT(paramString1), paramString2);
       AppMethodBeat.o(131944);
     }
     
@@ -45,7 +45,7 @@ public abstract interface g
       AppMethodBeat.i(131945);
       if (paramg == null)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "null service");
+        ac.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131945);
         return null;
       }
@@ -57,8 +57,8 @@ public abstract interface g
       }
       catch (Exception paramg)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
-        ad.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bt.m(paramg) });
+        ac.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
+        ac.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bs.m(paramg) });
         AppMethodBeat.o(131945);
       }
       return null;
@@ -67,8 +67,22 @@ public abstract interface g
     public static void a(String paramString, g paramg)
     {
       AppMethodBeat.i(131940);
-      fmM.put(paramString, paramg);
+      fqg.put(paramString, paramg);
       AppMethodBeat.o(131940);
+    }
+    
+    public static <T> void a(String paramString1, String paramString2, T paramT)
+    {
+      AppMethodBeat.i(131943);
+      paramString1 = rT(paramString1);
+      if (paramString1 == null)
+      {
+        ac.e("MicroMsg.ICacheService.Factory", "null service");
+        AppMethodBeat.o(131943);
+        return;
+      }
+      paramString1.c(paramString2, paramT);
+      AppMethodBeat.o(131943);
     }
     
     private static <T> T b(g paramg, String paramString)
@@ -76,7 +90,7 @@ public abstract interface g
       AppMethodBeat.i(131946);
       if (paramg == null)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "null service");
+        ac.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131946);
         return null;
       }
@@ -88,31 +102,17 @@ public abstract interface g
       }
       catch (Exception paramg)
       {
-        ad.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
-        ad.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bt.m(paramg) });
+        ac.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
+        ac.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bs.m(paramg) });
         AppMethodBeat.o(131946);
       }
       return null;
     }
     
-    public static <T> void b(String paramString1, String paramString2, T paramT)
-    {
-      AppMethodBeat.i(131943);
-      paramString1 = oK(paramString1);
-      if (paramString1 == null)
-      {
-        ad.e("MicroMsg.ICacheService.Factory", "null service");
-        AppMethodBeat.o(131943);
-        return;
-      }
-      paramString1.c(paramString2, paramT);
-      AppMethodBeat.o(131943);
-    }
-    
-    private static g oK(String paramString)
+    private static g rT(String paramString)
     {
       AppMethodBeat.i(131941);
-      paramString = (g)fmM.get(paramString);
+      paramString = (g)fqg.get(paramString);
       AppMethodBeat.o(131941);
       return paramString;
     }

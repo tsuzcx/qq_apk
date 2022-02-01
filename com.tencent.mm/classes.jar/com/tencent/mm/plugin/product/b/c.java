@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.product.b;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.product.c.f;
 import com.tencent.mm.plugin.product.c.h;
 import com.tencent.mm.plugin.product.c.j;
 import com.tencent.mm.plugin.product.c.k;
 import com.tencent.mm.plugin.product.c.l;
-import com.tencent.mm.protocal.protobuf.abw;
-import com.tencent.mm.protocal.protobuf.aec;
-import com.tencent.mm.protocal.protobuf.ax;
-import com.tencent.mm.protocal.protobuf.bkd;
-import com.tencent.mm.protocal.protobuf.ccg;
+import com.tencent.mm.protocal.protobuf.acv;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.protocal.protobuf.bnx;
 import com.tencent.mm.protocal.protobuf.chi;
-import com.tencent.mm.protocal.protobuf.cmk;
-import com.tencent.mm.protocal.protobuf.cty;
-import com.tencent.mm.protocal.protobuf.df;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cml;
+import com.tencent.mm.protocal.protobuf.crr;
+import com.tencent.mm.protocal.protobuf.czk;
+import com.tencent.mm.protocal.protobuf.dh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -35,33 +35,33 @@ import java.util.Set;
 public final class c
 {
   public int mCount;
-  private d uvH;
-  public m uvI;
-  public List<n> uvJ;
-  public String uvK;
-  public String uvL;
-  public String uvM;
-  public aec uvN;
-  public df uvO;
-  public chi uvP;
-  public String uvQ;
-  public String uvR;
-  public int uvS;
-  public Map<String, e> uvT;
-  public Map<String, String> uvU;
-  public LinkedList<aec> uvV;
-  public LinkedList<ax> uvW;
-  public e uvX;
-  private com.tencent.mm.plugin.product.ui.e uvY;
-  public Map<String, LinkedList<abw>> uvZ;
+  private d vEA;
+  public m vEB;
+  public List<n> vEC;
+  public String vED;
+  public String vEE;
+  public String vEF;
+  public afb vEG;
+  public dh vEH;
+  public cml vEI;
+  public String vEJ;
+  public String vEK;
+  public int vEL;
+  public Map<String, e> vEM;
+  public Map<String, String> vEN;
+  public LinkedList<afb> vEO;
+  public LinkedList<az> vEP;
+  public e vEQ;
+  private com.tencent.mm.plugin.product.ui.e vER;
+  public Map<String, LinkedList<acv>> vES;
   
   public c()
   {
     AppMethodBeat.i(66858);
-    this.uvH = null;
+    this.vEA = null;
     this.mCount = 1;
-    this.uvU = new HashMap();
-    this.uvZ = null;
+    this.vEN = new HashMap();
+    this.vES = null;
     AppMethodBeat.o(66858);
   }
   
@@ -87,37 +87,37 @@ public final class c
         j += 1;
       }
       localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf(";"));
-      e locale = (e)this.uvT.get(localStringBuilder.toString());
+      e locale = (e)this.vEM.get(localStringBuilder.toString());
       if (locale != null)
       {
-        if (locale.uwb < paraml.uwN) {
-          locale.uwb = paraml.uwN;
+        if (locale.vEU < paraml.vFG) {
+          locale.vEU = paraml.vFG;
         }
-        if (locale.uwc > paraml.uwN) {
-          locale.uwc = paraml.uwN;
+        if (locale.vEV > paraml.vFG) {
+          locale.vEV = paraml.vFG;
         }
-        locale.uwk += paraml.uwk;
+        locale.vFd += paraml.vFd;
       }
       for (;;)
       {
         i += 1;
         break;
         locale = new e();
-        locale.uwb = paraml.uwN;
-        locale.uwc = paraml.uwN;
-        locale.uwk = paraml.uwk;
-        locale.uwO = paraml.uwO;
+        locale.vEU = paraml.vFG;
+        locale.vEV = paraml.vFG;
+        locale.vFd = paraml.vFd;
+        locale.vFH = paraml.vFH;
         locale.url = paraml.url;
-        this.uvT.put(localStringBuilder.toString(), locale);
+        this.vEM.put(localStringBuilder.toString(), locale);
       }
     }
     AppMethodBeat.o(66881);
   }
   
-  private void aB(LinkedList<l> paramLinkedList)
+  private void aI(LinkedList<l> paramLinkedList)
   {
     AppMethodBeat.i(66880);
-    this.uvT = new HashMap();
+    this.vEM = new HashMap();
     if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
     {
       AppMethodBeat.o(66880);
@@ -128,25 +128,25 @@ public final class c
     while (i < j)
     {
       l locall = (l)paramLinkedList.get(i);
-      a(locall.uwM.split(";"), locall);
+      a(locall.vFF.split(";"), locall);
       i += 1;
     }
-    dbA();
+    dpi();
     AppMethodBeat.o(66880);
   }
   
-  private int akv(String paramString)
+  private int apu(String paramString)
   {
     AppMethodBeat.i(66869);
     int k = 0;
     int i = 0;
     int j = k;
-    if (this.uvZ != null)
+    if (this.vES != null)
     {
       j = k;
-      if (this.uvZ.size() > 0)
+      if (this.vES.size() > 0)
       {
-        paramString = (LinkedList)this.uvZ.get(paramString);
+        paramString = (LinkedList)this.vES.get(paramString);
         j = k;
         if (paramString != null)
         {
@@ -160,7 +160,7 @@ public final class c
               if (!paramString.hasNext()) {
                 break;
               }
-              i = ((abw)paramString.next()).CNG + i;
+              i = ((acv)paramString.next()).Egi + i;
             }
           }
         }
@@ -170,7 +170,7 @@ public final class c
     return j;
   }
   
-  public static String ar(Map<String, String> paramMap)
+  public static String at(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66879);
     if ((paramMap == null) || (paramMap.isEmpty()))
@@ -193,16 +193,16 @@ public final class c
     return paramMap;
   }
   
-  public final void IY(int paramInt)
+  public final void KX(int paramInt)
   {
     AppMethodBeat.i(66866);
-    if (this.uvV == null)
+    if (this.vEO == null)
     {
       AppMethodBeat.o(66866);
       return;
     }
-    if ((paramInt < this.uvV.size()) && (paramInt >= 0)) {
-      this.uvN = ((aec)this.uvV.get(paramInt));
+    if ((paramInt < this.vEO.size()) && (paramInt >= 0)) {
+      this.vEG = ((afb)this.vEO.get(paramInt));
     }
     AppMethodBeat.o(66866);
   }
@@ -212,36 +212,36 @@ public final class c
     AppMethodBeat.i(66884);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<mallProductInfo>");
-    localStringBuilder.append("<type>").append(paramm.uwj).append("</type>");
-    localStringBuilder.append("<id>").append(paramm.uwi).append("</id>");
-    localStringBuilder.append("<version>").append(paramm.uwm.version).append("</version>");
-    localStringBuilder.append("<name>").append(bt.aGf(paramm.uwm.name)).append("</name>");
-    localStringBuilder.append("<highPrice>").append(paramm.uwm.uwx).append("</highPrice>");
-    localStringBuilder.append("<lowPrice>").append(paramm.uwm.uwy).append("</lowPrice>");
-    localStringBuilder.append("<originPrice>").append(paramm.uwm.uww).append("</originPrice>");
-    localStringBuilder.append("<sourceUrl>").append(bt.aGf(this.uvI.kqB)).append("</sourceUrl>");
-    if (paramm.uwm.uwz != null)
+    localStringBuilder.append("<type>").append(paramm.vFc).append("</type>");
+    localStringBuilder.append("<id>").append(paramm.vFb).append("</id>");
+    localStringBuilder.append("<version>").append(paramm.vFf.version).append("</version>");
+    localStringBuilder.append("<name>").append(bs.aLw(paramm.vFf.name)).append("</name>");
+    localStringBuilder.append("<highPrice>").append(paramm.vFf.vFq).append("</highPrice>");
+    localStringBuilder.append("<lowPrice>").append(paramm.vFf.vFr).append("</lowPrice>");
+    localStringBuilder.append("<originPrice>").append(paramm.vFf.vFp).append("</originPrice>");
+    localStringBuilder.append("<sourceUrl>").append(bs.aLw(this.vEB.kRU)).append("</sourceUrl>");
+    if (paramm.vFf.vFs != null)
     {
-      localStringBuilder.append("<imgCount>").append(paramm.uwm.uwz.size()).append("</imgCount>");
+      localStringBuilder.append("<imgCount>").append(paramm.vFf.vFs.size()).append("</imgCount>");
       localStringBuilder.append("<imgList>");
-      Iterator localIterator = paramm.uwm.uwz.iterator();
+      Iterator localIterator = paramm.vFf.vFs.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        localStringBuilder.append("<imgUrl>").append(bt.aGf(str)).append("</imgUrl>");
+        localStringBuilder.append("<imgUrl>").append(bs.aLw(str)).append("</imgUrl>");
       }
       localStringBuilder.append("</imgList>");
     }
     localStringBuilder.append("<shareInfo>");
-    localStringBuilder.append("<shareUrl>").append(bt.aGf(dbt())).append("</shareUrl>");
-    localStringBuilder.append("<shareThumbUrl>").append(bt.aGf(paramm.dbE())).append("</shareThumbUrl>");
+    localStringBuilder.append("<shareUrl>").append(bs.aLw(dpb())).append("</shareUrl>");
+    localStringBuilder.append("<shareThumbUrl>").append(bs.aLw(paramm.dpm())).append("</shareThumbUrl>");
     localStringBuilder.append("</shareInfo>");
-    if (this.uvI.uwn != null)
+    if (this.vEB.vFg != null)
     {
       localStringBuilder.append("<sellerInfo>");
-      localStringBuilder.append("<appID>").append(paramm.uwn.dlB).append("</appID>");
-      localStringBuilder.append("<appName>").append(paramm.uwn.name).append("</appName>");
-      localStringBuilder.append("<usrName>").append(paramm.uwn.username).append("</usrName>");
+      localStringBuilder.append("<appID>").append(paramm.vFg.djj).append("</appID>");
+      localStringBuilder.append("<appName>").append(paramm.vFg.name).append("</appName>");
+      localStringBuilder.append("<usrName>").append(paramm.vFg.username).append("</usrName>");
       localStringBuilder.append("</sellerInfo>");
     }
     localStringBuilder.append("</mallProductInfo>");
@@ -255,56 +255,73 @@ public final class c
     int j = 0;
     AppMethodBeat.i(66860);
     clear();
-    this.uvI = paramm;
-    this.uvJ = paramList;
-    if (bt.isNullOrNil(this.uvI.kqB)) {
-      this.uvI.kqB = this.uvL;
+    this.vEB = paramm;
+    this.vEC = paramList;
+    if (bs.isNullOrNil(this.vEB.kRU)) {
+      this.vEB.kRU = this.vEE;
     }
-    aB(this.uvI.uwo);
-    if ((this.uvI.uwm != null) && (this.uvI.uwm.uwF != null)) {
-      this.uvS = this.uvI.uwm.uwF.size();
+    aI(this.vEB.vFh);
+    if ((this.vEB.vFf != null) && (this.vEB.vFf.vFy != null)) {
+      this.vEL = this.vEB.vFf.vFy.size();
     }
-    if ((this.uvI.uwm != null) && (this.uvI.uwm.uwz != null) && (this.uvI.uwm.uwz.size() > 0)) {
-      this.uvQ = ((String)this.uvI.uwm.uwz.get(0));
+    if ((this.vEB.vFf != null) && (this.vEB.vFf.vFs != null) && (this.vEB.vFf.vFs.size() > 0)) {
+      this.vEJ = ((String)this.vEB.vFf.vFs.get(0));
     }
-    if (!bt.isNullOrNil(this.uvI.dbE()))
+    if (!bs.isNullOrNil(this.vEB.dpm()))
     {
-      u.a(new com.tencent.mm.plugin.product.ui.c(this.uvI.dbE()));
-      ad.d("MicroMsg.MallProductManager", "product img path : " + dbs());
+      u.a(new com.tencent.mm.plugin.product.ui.c(this.vEB.dpm()));
+      ac.d("MicroMsg.MallProductManager", "product img path : " + dpa());
     }
-    if ((this.uvI.uwp != null) && (this.uvI.uwp.uwJ != null)) {}
-    for (int i = this.uvI.uwp.uwJ.dtM;; i = 0)
+    if ((this.vEB.vFi != null) && (this.vEB.vFi.vFC != null)) {}
+    for (int i = this.vEB.vFi.vFC.drx;; i = 0)
     {
-      if (this.uvI.uwn != null) {
-        j = this.uvI.uwn.dtM;
+      if (this.vEB.vFg != null) {
+        j = this.vEB.vFg.drx;
       }
-      this.uvY = new com.tencent.mm.plugin.product.ui.e(i, j);
+      this.vER = new com.tencent.mm.plugin.product.ui.e(i, j);
       AppMethodBeat.o(66860);
       return;
     }
   }
   
-  public final LinkedList<com.tencent.mm.plugin.product.c.a> av(Activity paramActivity)
+  public final void aA(Intent paramIntent)
+  {
+    AppMethodBeat.i(66864);
+    dh localdh = new dh();
+    localdh.ncR = bs.bG(paramIntent.getStringExtra("userName"), "");
+    localdh.DQm = bs.bG(paramIntent.getStringExtra("telNumber"), "");
+    localdh.DQn = bs.bG(paramIntent.getStringExtra("addressPostalCode"), "");
+    localdh.iJU = bs.bG(paramIntent.getStringExtra("proviceFirstStageName"), "");
+    localdh.iJV = bs.bG(paramIntent.getStringExtra("addressCitySecondStageName"), "");
+    localdh.iKc = bs.bG(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
+    localdh.tiv = bs.bG(paramIntent.getStringExtra("addressDetailInfo"), "");
+    if ((!bs.isNullOrNil(localdh.ncR)) && (!bs.isNullOrNil(localdh.DQm))) {
+      this.vEH = localdh;
+    }
+    AppMethodBeat.o(66864);
+  }
+  
+  public final LinkedList<com.tencent.mm.plugin.product.c.a> az(Activity paramActivity)
   {
     AppMethodBeat.i(66865);
     LinkedList localLinkedList = new LinkedList();
-    if (this.uvW != null)
+    if (this.vEP != null)
     {
-      Iterator localIterator = this.uvW.iterator();
+      Iterator localIterator = this.vEP.iterator();
       while (localIterator.hasNext())
       {
-        ax localax = (ax)localIterator.next();
+        az localaz = (az)localIterator.next();
         com.tencent.mm.plugin.product.c.a locala = new com.tencent.mm.plugin.product.c.a();
-        locala.Name = localax.Name;
-        locala.uwt = localax.uwt;
-        locala.gKr = localax.gKr;
-        locala.mBH = localax.mBH;
-        locala.IconUrl = localax.IconUrl;
-        if (locala.mBH == 1)
+        locala.Name = localaz.Name;
+        locala.vFm = localaz.vFm;
+        locala.hkR = localaz.hkR;
+        locala.ndI = localaz.ndI;
+        locala.IconUrl = localaz.IconUrl;
+        if (locala.ndI == 1)
         {
-          int i = akv(locala.gKr);
+          int i = apu(locala.hkR);
           if (i > 0) {
-            locala.uwt = paramActivity.getString(2131761140, new Object[] { b.c(i, this.uvI.uwm.uop) });
+            locala.vFm = paramActivity.getString(2131761140, new Object[] { b.c(i, this.vEB.vFf.vxl) });
           }
         }
         localLinkedList.add(locala);
@@ -314,204 +331,85 @@ public final class c
     return localLinkedList;
   }
   
-  public final void az(Intent paramIntent)
-  {
-    AppMethodBeat.i(66864);
-    df localdf = new df();
-    localdf.mAQ = bt.by(paramIntent.getStringExtra("userName"), "");
-    localdf.CxQ = bt.by(paramIntent.getStringExtra("telNumber"), "");
-    localdf.CxR = bt.by(paramIntent.getStringExtra("addressPostalCode"), "");
-    localdf.ijN = bt.by(paramIntent.getStringExtra("proviceFirstStageName"), "");
-    localdf.ijO = bt.by(paramIntent.getStringExtra("addressCitySecondStageName"), "");
-    localdf.ijV = bt.by(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
-    localdf.saB = bt.by(paramIntent.getStringExtra("addressDetailInfo"), "");
-    if ((!bt.isNullOrNil(localdf.mAQ)) && (!bt.isNullOrNil(localdf.CxQ))) {
-      this.uvO = localdf;
-    }
-    AppMethodBeat.o(66864);
-  }
-  
   public final void clear()
   {
     AppMethodBeat.i(66859);
-    this.uvI = null;
-    if (this.uvJ != null)
+    this.vEB = null;
+    if (this.vEC != null)
     {
-      this.uvJ.clear();
-      this.uvJ = null;
+      this.vEC.clear();
+      this.vEC = null;
     }
-    this.uvK = null;
-    this.uvL = null;
+    this.vED = null;
+    this.vEE = null;
     this.mCount = 1;
-    this.uvM = null;
-    this.uvN = null;
-    this.uvP = null;
-    this.uvQ = null;
-    this.uvS = 0;
-    this.uvX = null;
-    if (this.uvT != null)
+    this.vEF = null;
+    this.vEG = null;
+    this.vEI = null;
+    this.vEJ = null;
+    this.vEL = 0;
+    this.vEQ = null;
+    if (this.vEM != null)
     {
-      this.uvT.clear();
-      this.uvT = null;
+      this.vEM.clear();
+      this.vEM = null;
     }
-    if (this.uvU != null) {
-      this.uvU.clear();
+    if (this.vEN != null) {
+      this.vEN.clear();
     }
-    if (this.uvV != null)
+    if (this.vEO != null)
     {
-      this.uvV.clear();
-      this.uvV = null;
+      this.vEO.clear();
+      this.vEO = null;
     }
-    if (this.uvZ != null)
+    if (this.vES != null)
     {
-      this.uvZ.clear();
-      this.uvZ = null;
+      this.vES.clear();
+      this.vES = null;
     }
     AppMethodBeat.o(66859);
   }
   
-  public final void dbA()
-  {
-    AppMethodBeat.i(66878);
-    if (this.uvU == null)
-    {
-      AppMethodBeat.o(66878);
-      return;
-    }
-    Iterator localIterator1 = this.uvI.uwm.uwF.iterator();
-    if (localIterator1.hasNext())
-    {
-      com.tencent.mm.plugin.product.c.m localm = (com.tencent.mm.plugin.product.c.m)localIterator1.next();
-      Iterator localIterator2 = localm.uwR.iterator();
-      label62:
-      h localh;
-      Object localObject;
-      String str2;
-      boolean bool;
-      if (localIterator2.hasNext())
-      {
-        localh = (h)localIterator2.next();
-        localObject = localm.uwP;
-        str2 = localh.id;
-        if ((this.uvU != null) && (this.uvT != null)) {
-          break label176;
-        }
-        bool = false;
-      }
-      for (;;)
-      {
-        localh.fN = bool;
-        ad.d("MicroMsg.MallProductManager", "(" + localm.uwP + " , " + localh.id + ") hasStock--> " + localh.fN);
-        break label62;
-        break;
-        label176:
-        String str1;
-        if (this.uvU.containsKey(localObject))
-        {
-          str1 = (String)this.uvU.get(localObject);
-          this.uvU.put(localObject, str2);
-          str2 = ar(this.uvU);
-          this.uvU.put(localObject, str1);
-          localObject = (e)this.uvT.get(str2);
-          if (localObject != null)
-          {
-            if (((e)localObject).uwk > 0) {
-              bool = true;
-            } else {
-              bool = false;
-            }
-          }
-          else {
-            bool = false;
-          }
-        }
-        else
-        {
-          this.uvU.put(localObject, str2);
-          str1 = ar(this.uvU);
-          this.uvU.remove(localObject);
-          localObject = (e)this.uvT.get(str1);
-          if (localObject != null)
-          {
-            if (((e)localObject).uwk > 0) {
-              bool = true;
-            } else {
-              bool = false;
-            }
-          }
-          else {
-            bool = false;
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(66878);
-  }
-  
-  public final String dbB()
-  {
-    AppMethodBeat.i(66882);
-    Object localObject = new k.b();
-    ((k.b)localObject).title = this.uvI.uwm.name;
-    ((k.b)localObject).description = dbC();
-    ((k.b)localObject).type = 13;
-    ((k.b)localObject).url = dbt();
-    ((k.b)localObject).thumburl = this.uvI.dbE();
-    ((k.b)localObject).gHJ = this.uvI.uwj;
-    ((k.b)localObject).gHK = a(this.uvI);
-    localObject = k.b.a((k.b)localObject, null, null);
-    AppMethodBeat.o(66882);
-    return localObject;
-  }
-  
-  public final String dbC()
-  {
-    AppMethodBeat.i(66883);
-    String str = b.c(this.uvI.uwm.uwy, this.uvI.uwm.uop);
-    AppMethodBeat.o(66883);
-    return str;
-  }
-  
-  public final com.tencent.mm.plugin.product.ui.e dbl()
+  public final com.tencent.mm.plugin.product.ui.e doT()
   {
     AppMethodBeat.i(66861);
-    if (this.uvY == null) {
-      this.uvY = new com.tencent.mm.plugin.product.ui.e(0, 0);
+    if (this.vER == null) {
+      this.vER = new com.tencent.mm.plugin.product.ui.e(0, 0);
     }
-    com.tencent.mm.plugin.product.ui.e locale = this.uvY;
+    com.tencent.mm.plugin.product.ui.e locale = this.vER;
     AppMethodBeat.o(66861);
     return locale;
   }
   
-  public final String dbm()
+  public final String doU()
   {
     AppMethodBeat.i(66862);
-    if ((this.uvX != null) && (!bt.isNullOrNil(this.uvX.url)))
+    if ((this.vEQ != null) && (!bs.isNullOrNil(this.vEQ.url)))
     {
-      str = this.uvX.url;
+      str = this.vEQ.url;
       AppMethodBeat.o(66862);
       return str;
     }
-    String str = this.uvQ;
+    String str = this.vEJ;
     AppMethodBeat.o(66862);
     return str;
   }
   
-  public final String dbn()
+  public final String doV()
   {
     AppMethodBeat.i(66863);
     Object localObject1 = new StringBuilder();
-    Iterator localIterator = this.uvI.uwm.uwF.iterator();
+    Iterator localIterator = this.vEB.vFf.vFy.iterator();
     for (;;)
     {
       if (!localIterator.hasNext()) {
         break label133;
       }
       Object localObject2 = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-      String str = (String)this.uvU.get(((com.tencent.mm.plugin.product.c.m)localObject2).uwP);
+      String str = (String)this.vEN.get(((com.tencent.mm.plugin.product.c.m)localObject2).vFI);
       if (str != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).uwR.iterator();
+        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).vFK.iterator();
         if (((Iterator)localObject2).hasNext())
         {
           h localh = (h)((Iterator)localObject2).next();
@@ -528,41 +426,41 @@ public final class c
     return localObject1;
   }
   
-  public final int dbo()
+  public final int doW()
   {
     AppMethodBeat.i(66867);
     int j = 0;
     int i = j;
-    if (!dbl().dbH())
+    if (!doT().dpp())
     {
       i = j;
-      if (this.uvN != null) {
-        i = this.uvN.CNG + 0;
+      if (this.vEG != null) {
+        i = this.vEG.Egi + 0;
       }
     }
-    if (this.uvX != null) {
-      i += this.uvX.uwb * this.mCount;
+    if (this.vEQ != null) {
+      i += this.vEQ.vEU * this.mCount;
     }
     for (;;)
     {
-      j = dbp();
+      j = doX();
       AppMethodBeat.o(66867);
       return i - j;
-      i += this.uvI.uwm.uwx * this.mCount;
+      i += this.vEB.vFf.vFq * this.mCount;
     }
   }
   
-  public final int dbp()
+  public final int doX()
   {
     AppMethodBeat.i(66868);
     int j = 0;
     int i = j;
-    if (this.uvZ != null)
+    if (this.vES != null)
     {
       i = j;
-      if (this.uvZ.size() > 0)
+      if (this.vES.size() > 0)
       {
-        Iterator localIterator = this.uvZ.values().iterator();
+        Iterator localIterator = this.vES.values().iterator();
         for (i = 0; localIterator.hasNext(); i = j)
         {
           Object localObject = (LinkedList)localIterator.next();
@@ -579,7 +477,7 @@ public final class c
                 if (!((Iterator)localObject).hasNext()) {
                   break;
                 }
-                i += ((abw)((Iterator)localObject).next()).CNG;
+                i += ((acv)((Iterator)localObject).next()).Egi;
               }
             }
           }
@@ -590,36 +488,36 @@ public final class c
     return i;
   }
   
-  public final chi dbq()
+  public final cml doY()
   {
     AppMethodBeat.i(66870);
-    if (this.uvP != null)
+    if (this.vEI != null)
     {
-      localObject = this.uvP;
+      localObject = this.vEI;
       AppMethodBeat.o(66870);
       return localObject;
     }
-    if (this.uvH == null) {
-      this.uvH = com.tencent.mm.plugin.product.a.a.dbi().dbk();
+    if (this.vEA == null) {
+      this.vEA = com.tencent.mm.plugin.product.a.a.doQ().doS();
     }
-    Object localObject = this.uvH;
-    if ((((d)localObject).uwa != null) && (((d)localObject).uwa.size() > 0)) {}
-    for (localObject = (String)((d)localObject).uwa.get(0); !bt.isNullOrNil((String)localObject); localObject = null)
+    Object localObject = this.vEA;
+    if ((((d)localObject).vET != null) && (((d)localObject).vET.size() > 0)) {}
+    for (localObject = (String)((d)localObject).vET.get(0); !bs.isNullOrNil((String)localObject); localObject = null)
     {
-      this.uvP = new chi();
-      this.uvP.saB = ((String)localObject);
-      this.uvP.EcR = 1;
-      localObject = this.uvP;
+      this.vEI = new cml();
+      this.vEI.tiv = ((String)localObject);
+      this.vEI.FzM = 1;
+      localObject = this.vEI;
       AppMethodBeat.o(66870);
       return localObject;
     }
-    localObject = this.uvO;
-    if ((localObject != null) && (!bt.isNullOrNil(((df)localObject).mAQ)))
+    localObject = this.vEH;
+    if ((localObject != null) && (!bs.isNullOrNil(((dh)localObject).ncR)))
     {
-      this.uvP = new chi();
-      this.uvP.saB = ((df)localObject).mAQ;
-      this.uvP.EcR = 1;
-      localObject = this.uvP;
+      this.vEI = new cml();
+      this.vEI.tiv = ((dh)localObject).ncR;
+      this.vEI.FzM = 1;
+      localObject = this.vEI;
       AppMethodBeat.o(66870);
       return localObject;
     }
@@ -627,20 +525,20 @@ public final class c
     return null;
   }
   
-  public final String dbr()
+  public final String doZ()
   {
-    if (this.uvI.uwn != null) {
-      return this.uvI.uwn.username;
+    if (this.vEB.vFg != null) {
+      return this.vEB.vFg.username;
     }
     return null;
   }
   
-  public final String dbs()
+  public final String dpa()
   {
     AppMethodBeat.i(66871);
-    if (!bt.isNullOrNil(this.uvI.dbE()))
+    if (!bs.isNullOrNil(this.vEB.dpm()))
     {
-      String str = com.tencent.mm.plugin.product.ui.c.akx(this.uvI.dbE());
+      String str = com.tencent.mm.plugin.product.ui.c.apw(this.vEB.dpm());
       AppMethodBeat.o(66871);
       return str;
     }
@@ -648,44 +546,44 @@ public final class c
     return null;
   }
   
-  public final String dbt()
+  public final String dpb()
   {
     AppMethodBeat.i(66872);
-    if ((this.uvI.uwm != null) && (this.uvI.uwm.uwH != null))
+    if ((this.vEB.vFf != null) && (this.vEB.vFf.vFA != null))
     {
-      str = this.uvI.uwm.uwH.url;
+      str = this.vEB.vFf.vFA.url;
       AppMethodBeat.o(66872);
       return str;
     }
-    if (!bt.isNullOrNil(this.uvI.kqB))
+    if (!bs.isNullOrNil(this.vEB.kRU))
     {
-      str = this.uvI.kqB;
+      str = this.vEB.kRU;
       AppMethodBeat.o(66872);
       return str;
     }
-    String str = this.uvL;
+    String str = this.vEE;
     AppMethodBeat.o(66872);
     return str;
   }
   
-  public final int dbu()
+  public final int dpc()
   {
-    int j = this.uvI.uwk;
+    int j = this.vEB.vFd;
     int i = j;
-    if (this.uvX != null)
+    if (this.vEQ != null)
     {
       i = j;
-      if (j > this.uvX.uwk) {
-        i = this.uvX.uwk;
+      if (j > this.vEQ.vFd) {
+        i = this.vEQ.vFd;
       }
     }
     return i;
   }
   
-  public final boolean dbv()
+  public final boolean dpd()
   {
     AppMethodBeat.i(66873);
-    if ((this.mCount > 0) && (this.uvI != null) && (this.mCount <= dbu()) && (this.uvI.uwm != null) && (this.uvI.uwm.uwF != null))
+    if ((this.mCount > 0) && (this.vEB != null) && (this.mCount <= dpc()) && (this.vEB.vFf != null) && (this.vEB.vFf.vFy != null))
     {
       AppMethodBeat.o(66873);
       return true;
@@ -694,24 +592,24 @@ public final class c
     return false;
   }
   
-  public final boolean dbw()
+  public final boolean dpe()
   {
     AppMethodBeat.i(66874);
-    if (!dbv())
+    if (!dpd())
     {
       AppMethodBeat.o(66874);
       return false;
     }
-    if ((this.uvU != null) && (this.uvU.size() == this.uvS)) {
-      if (this.uvS > 0)
+    if ((this.vEN != null) && (this.vEN.size() == this.vEL)) {
+      if (this.vEL > 0)
       {
-        if ((this.uvX != null) && (this.mCount > 0) && (this.mCount <= dbu()))
+        if ((this.vEQ != null) && (this.mCount > 0) && (this.mCount <= dpc()))
         {
           AppMethodBeat.o(66874);
           return true;
         }
       }
-      else if (this.uvS == 0)
+      else if (this.vEL == 0)
       {
         AppMethodBeat.o(66874);
         return true;
@@ -721,20 +619,20 @@ public final class c
     return false;
   }
   
-  public final boolean dbx()
+  public final boolean dpf()
   {
     AppMethodBeat.i(66875);
-    if (!dbw())
+    if (!dpe())
     {
       AppMethodBeat.o(66875);
       return false;
     }
-    if (this.uvO == null)
+    if (this.vEH == null)
     {
       AppMethodBeat.o(66875);
       return false;
     }
-    if ((!dbl().dbH()) && (this.uvN == null))
+    if ((!doT().dpp()) && (this.vEG == null))
     {
       AppMethodBeat.o(66875);
       return false;
@@ -743,88 +641,190 @@ public final class c
     return true;
   }
   
-  public final LinkedList<cmk> dby()
+  public final LinkedList<crr> dpg()
   {
     AppMethodBeat.i(66876);
     LinkedList localLinkedList = new LinkedList();
-    cmk localcmk = new cmk();
-    localcmk.mAK = this.mCount;
-    localcmk.DwS = this.uvI.uwi;
-    localcmk.DYG = this.uvI.kqB;
-    localcmk.DYH = this.uvM;
-    localLinkedList.add(localcmk);
+    crr localcrr = new crr();
+    localcrr.ncL = this.mCount;
+    localcrr.ESn = this.vEB.vFb;
+    localcrr.FvA = this.vEB.kRU;
+    localcrr.FvB = this.vEF;
+    localLinkedList.add(localcrr);
     AppMethodBeat.o(66876);
     return localLinkedList;
   }
   
-  public final cty dbz()
+  public final czk dph()
   {
     AppMethodBeat.i(66877);
-    cty localcty = new cty();
-    localcty.CPg = this.uvK;
-    localcty.upl = 1;
-    localcty.ElG = new LinkedList();
-    ccg localccg = new ccg();
-    localccg.mAK = this.mCount;
-    localccg.DwS = this.uvI.uwi;
-    localccg.Name = this.uvI.uwm.name;
-    if (this.uvX != null) {}
+    czk localczk = new czk();
+    localczk.EhR = this.vED;
+    localczk.vyh = 1;
+    localczk.FIF = new LinkedList();
+    chi localchi = new chi();
+    localchi.ncL = this.mCount;
+    localchi.ESn = this.vEB.vFb;
+    localchi.Name = this.vEB.vFf.name;
+    if (this.vEQ != null) {}
     Iterator localIterator;
     Object localObject;
-    for (localccg.DYF = this.uvX.uwb;; localccg.DYF = this.uvI.uwm.uwx)
+    for (localchi.Fvz = this.vEQ.vEU;; localchi.Fvz = this.vEB.vFf.vFq)
     {
-      localccg.DYG = this.uvI.kqB;
-      localccg.DYH = this.uvM;
-      localccg.mBH = this.uvI.uwj;
-      localccg.DYD = this.uvS;
-      localccg.DYE = new LinkedList();
-      localIterator = this.uvU.keySet().iterator();
+      localchi.FvA = this.vEB.kRU;
+      localchi.FvB = this.vEF;
+      localchi.ndI = this.vEB.vFc;
+      localchi.Fvx = this.vEL;
+      localchi.Fvy = new LinkedList();
+      localIterator = this.vEN.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        String str = (String)this.uvU.get(localObject);
-        bkd localbkd = new bkd();
-        localbkd.sdv = ((String)localObject);
-        localbkd.vJI = str;
-        localccg.DYE.add(localbkd);
+        String str = (String)this.vEN.get(localObject);
+        bnx localbnx = new bnx();
+        localbnx.tlp = ((String)localObject);
+        localbnx.wTM = str;
+        localchi.Fvy.add(localbnx);
       }
     }
-    localccg.DYL = new LinkedList();
-    localccg.DYK = 0;
-    if ((this.uvZ != null) && (this.uvZ.size() > 0))
+    localchi.FvF = new LinkedList();
+    localchi.FvE = 0;
+    if ((this.vES != null) && (this.vES.size() > 0))
     {
-      localIterator = this.uvZ.values().iterator();
+      localIterator = this.vES.values().iterator();
       while (localIterator.hasNext())
       {
         localObject = (LinkedList)localIterator.next();
-        localccg.DYL.addAll((Collection)localObject);
-        int i = localccg.DYK;
-        localccg.DYK = (((LinkedList)localObject).size() + i);
+        localchi.FvF.addAll((Collection)localObject);
+        int i = localchi.FvE;
+        localchi.FvE = (((LinkedList)localObject).size() + i);
       }
     }
-    localcty.ElG.add(localccg);
-    localcty.ElI = new LinkedList();
-    localcty.ElJ = 1;
-    this.uvP = dbq();
-    if (this.uvP != null) {
-      localcty.ElI.add(this.uvP);
+    localczk.FIF.add(localchi);
+    localczk.FIH = new LinkedList();
+    localczk.FII = 1;
+    this.vEI = doY();
+    if (this.vEI != null) {
+      localczk.FIH.add(this.vEI);
     }
     for (;;)
     {
-      localcty.DuN = this.uvO;
-      localcty.ElH = this.uvN;
+      localczk.EPW = this.vEH;
+      localczk.FIG = this.vEG;
       AppMethodBeat.o(66877);
-      return localcty;
-      this.uvP = new chi();
-      this.uvP.EcR = 0;
-      localcty.ElI.add(this.uvP);
+      return localczk;
+      this.vEI = new cml();
+      this.vEI.FzM = 0;
+      localczk.FIH.add(this.vEI);
     }
+  }
+  
+  public final void dpi()
+  {
+    AppMethodBeat.i(66878);
+    if (this.vEN == null)
+    {
+      AppMethodBeat.o(66878);
+      return;
+    }
+    Iterator localIterator1 = this.vEB.vFf.vFy.iterator();
+    if (localIterator1.hasNext())
+    {
+      com.tencent.mm.plugin.product.c.m localm = (com.tencent.mm.plugin.product.c.m)localIterator1.next();
+      Iterator localIterator2 = localm.vFK.iterator();
+      label62:
+      h localh;
+      Object localObject;
+      String str2;
+      boolean bool;
+      if (localIterator2.hasNext())
+      {
+        localh = (h)localIterator2.next();
+        localObject = localm.vFI;
+        str2 = localh.id;
+        if ((this.vEN != null) && (this.vEM != null)) {
+          break label176;
+        }
+        bool = false;
+      }
+      for (;;)
+      {
+        localh.gM = bool;
+        ac.d("MicroMsg.MallProductManager", "(" + localm.vFI + " , " + localh.id + ") hasStock--> " + localh.gM);
+        break label62;
+        break;
+        label176:
+        String str1;
+        if (this.vEN.containsKey(localObject))
+        {
+          str1 = (String)this.vEN.get(localObject);
+          this.vEN.put(localObject, str2);
+          str2 = at(this.vEN);
+          this.vEN.put(localObject, str1);
+          localObject = (e)this.vEM.get(str2);
+          if (localObject != null)
+          {
+            if (((e)localObject).vFd > 0) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+          }
+          else {
+            bool = false;
+          }
+        }
+        else
+        {
+          this.vEN.put(localObject, str2);
+          str1 = at(this.vEN);
+          this.vEN.remove(localObject);
+          localObject = (e)this.vEM.get(str1);
+          if (localObject != null)
+          {
+            if (((e)localObject).vFd > 0) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+          }
+          else {
+            bool = false;
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(66878);
+  }
+  
+  public final String dpj()
+  {
+    AppMethodBeat.i(66882);
+    Object localObject = new k.b();
+    ((k.b)localObject).title = this.vEB.vFf.name;
+    ((k.b)localObject).description = dpk();
+    ((k.b)localObject).type = 13;
+    ((k.b)localObject).url = dpb();
+    ((k.b)localObject).thumburl = this.vEB.dpm();
+    ((k.b)localObject).hik = this.vEB.vFc;
+    ((k.b)localObject).hil = a(this.vEB);
+    localObject = k.b.a((k.b)localObject, null, null);
+    AppMethodBeat.o(66882);
+    return localObject;
+  }
+  
+  public final String dpk()
+  {
+    AppMethodBeat.i(66883);
+    String str = b.c(this.vEB.vFf.vFr, this.vEB.vFf.vxl);
+    AppMethodBeat.o(66883);
+    return str;
   }
   
   public final String getAppId()
   {
-    if (this.uvI.uwn != null) {
-      return this.uvI.uwn.dlB;
+    if (this.vEB.vFg != null) {
+      return this.vEB.vFg.djj;
     }
     return null;
   }

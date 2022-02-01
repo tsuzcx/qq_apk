@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui;
 
 public abstract interface h$d
 {
-  public abstract void dwE();
+  public abstract void dLd();
 }
 
 

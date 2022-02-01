@@ -7,18 +7,18 @@ import com.tencent.mm.plugin.card.model.am;
 public final class d
   implements a
 {
-  private c nyl;
+  private c obm;
   
   public d(c paramc)
   {
-    this.nyl = paramc;
+    this.obm = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113185);
-    if (this.nyl != null) {
-      am.bIV().add(this.nyl);
+    if (this.obm != null) {
+      am.bQi().add(this.obm);
     }
     AppMethodBeat.o(113185);
   }
@@ -26,11 +26,11 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113186);
-    if (this.nyl != null)
+    if (this.obm != null)
     {
-      am.bIV().remove(this.nyl);
-      this.nyl.release();
-      this.nyl = null;
+      am.bQi().remove(this.obm);
+      this.obm.release();
+      this.obm = null;
     }
     AppMethodBeat.o(113186);
   }
@@ -38,8 +38,8 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113187);
-    if (this.nyl != null) {
-      this.nyl.a(null, null);
+    if (this.obm != null) {
+      this.obm.a(null, null);
     }
     AppMethodBeat.o(113187);
   }

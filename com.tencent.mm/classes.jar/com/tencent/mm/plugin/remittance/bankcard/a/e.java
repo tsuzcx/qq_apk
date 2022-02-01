@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abd;
-import com.tencent.mm.protocal.protobuf.abe;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.acc;
+import com.tencent.mm.protocal.protobuf.acd;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
   extends b
 {
   private final String TAG;
   private g callback;
-  public String nSX;
-  private com.tencent.mm.al.b rr;
-  public abe vug;
+  public String ows;
+  private com.tencent.mm.ak.b rr;
+  public acd wEl;
   
   public e(String paramString)
   {
     AppMethodBeat.i(67361);
     this.TAG = "MicroMsg.NetSceneBankRemitDeleteHistory";
     b.a locala = new b.a();
-    locala.gUU = new abd();
-    locala.gUV = new abe();
+    locala.hvt = new acc();
+    locala.hvu = new acd();
     locala.funcId = 1737;
     locala.uri = "/cgi-bin/mmpay-bin/deletehistoryrecord_tsbc";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((abd)this.rr.gUS.gUX).CNj = paramString;
-    this.nSX = paramString;
+    this.rr = locala.aAz();
+    ((acc)this.rr.hvr.hvw).EfL = paramString;
+    this.ows = paramString;
     AppMethodBeat.o(67361);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67363);
-    ad.i("MicroMsg.NetSceneBankRemitDeleteHistory", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.vug = ((abe)((com.tencent.mm.al.b)paramq).gUT.gUX);
-    ad.i("MicroMsg.NetSceneBankRemitDeleteHistory", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.vug.dcG), this.vug.nTK });
+    ac.i("MicroMsg.NetSceneBankRemitDeleteHistory", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.wEl = ((acd)((com.tencent.mm.ak.b)paramq).hvs.hvw);
+    ac.i("MicroMsg.NetSceneBankRemitDeleteHistory", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.wEl.dae), this.wEl.oxf });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -59,9 +59,9 @@ public final class e
   
   public final void e(q paramq)
   {
-    paramq = (abe)((com.tencent.mm.al.b)paramq).gUT.gUX;
-    this.IdO = paramq.dcG;
-    this.IdP = paramq.nTK;
+    paramq = (acd)((com.tencent.mm.ak.b)paramq).hvs.hvw;
+    this.JFq = paramq.dae;
+    this.JFr = paramq.oxf;
   }
   
   public final int getType()

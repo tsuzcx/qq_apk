@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
 import com.tencent.tmassistantsdk.storage.helper.SqliteHelper;
 import com.tencent.tmassistantsdk.storage.model.ClientInfo;
@@ -42,7 +42,7 @@ public class ClientInfoTable
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("ClientInfoTable", paramString1, "", new Object[0]);
+        ac.printErrStackTrace("ClientInfoTable", paramString1, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102436);
@@ -60,7 +60,7 @@ public class ClientInfoTable
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("ClientInfoTable", paramString, "", new Object[0]);
+        ac.printErrStackTrace("ClientInfoTable", paramString, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102437);
@@ -82,54 +82,54 @@ public class ClientInfoTable
   public static java.util.ArrayList<ClientInfo> query(String paramString)
   {
     // Byte code:
-    //   0: ldc 136
-    //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 137
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: ifnull +116 -> 122
-    //   9: new 138	java/util/ArrayList
+    //   9: new 139	java/util/ArrayList
     //   12: dup
-    //   13: invokespecial 139	java/util/ArrayList:<init>	()V
+    //   13: invokespecial 140	java/util/ArrayList:<init>	()V
     //   16: astore_3
-    //   17: invokestatic 82	com/tencent/tmassistantsdk/storage/helper/AstSDKDBHelper_V2:getInstance	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
-    //   20: invokevirtual 142	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   17: invokestatic 83	com/tencent/tmassistantsdk/storage/helper/AstSDKDBHelper_V2:getInstance	()Lcom/tencent/tmassistantsdk/storage/helper/SqliteHelper;
+    //   20: invokevirtual 143	com/tencent/tmassistantsdk/storage/helper/SqliteHelper:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   23: astore_2
     //   24: aload_2
-    //   25: ldc 15
+    //   25: ldc 16
     //   27: iconst_1
-    //   28: anewarray 92	java/lang/String
+    //   28: anewarray 93	java/lang/String
     //   31: dup
     //   32: iconst_0
     //   33: aload_0
     //   34: aastore
-    //   35: invokevirtual 146	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   35: invokevirtual 147	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   38: astore_2
     //   39: aload_2
     //   40: ifnull +38 -> 78
     //   43: aload_2
     //   44: astore_0
     //   45: aload_2
-    //   46: invokeinterface 150 1 0
+    //   46: invokeinterface 151 1 0
     //   51: ifeq +27 -> 78
     //   54: aload_2
     //   55: astore_0
     //   56: aload_3
     //   57: aload_2
-    //   58: invokestatic 152	com/tencent/tmassistantsdk/storage/table/ClientInfoTable:cursor2object	(Landroid/database/Cursor;)Lcom/tencent/tmassistantsdk/storage/model/ClientInfo;
-    //   61: invokevirtual 156	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   58: invokestatic 153	com/tencent/tmassistantsdk/storage/table/ClientInfoTable:cursor2object	(Landroid/database/Cursor;)Lcom/tencent/tmassistantsdk/storage/model/ClientInfo;
+    //   61: invokevirtual 157	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   64: pop
     //   65: aload_2
     //   66: astore_0
     //   67: aload_2
-    //   68: invokeinterface 159 1 0
+    //   68: invokeinterface 160 1 0
     //   73: istore_1
     //   74: iload_1
     //   75: ifne -21 -> 54
     //   78: aload_2
     //   79: ifnull +9 -> 88
     //   82: aload_2
-    //   83: invokeinterface 162 1 0
-    //   88: ldc 136
-    //   90: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: invokeinterface 163 1 0
+    //   88: ldc 137
+    //   90: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: aload_3
     //   94: areturn
     //   95: astore_3
@@ -137,18 +137,18 @@ public class ClientInfoTable
     //   97: astore_2
     //   98: aload_2
     //   99: astore_0
-    //   100: ldc 24
+    //   100: ldc 25
     //   102: aload_3
-    //   103: ldc 99
+    //   103: ldc 100
     //   105: iconst_0
     //   106: anewarray 4	java/lang/Object
-    //   109: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: invokestatic 106	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   112: aload_2
     //   113: ifnull +9 -> 122
     //   116: aload_2
-    //   117: invokeinterface 162 1 0
-    //   122: ldc 136
-    //   124: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: invokeinterface 163 1 0
+    //   122: ldc 137
+    //   124: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: aconst_null
     //   128: areturn
     //   129: astore_2
@@ -157,9 +157,9 @@ public class ClientInfoTable
     //   132: aload_0
     //   133: ifnull +9 -> 142
     //   136: aload_0
-    //   137: invokeinterface 162 1 0
-    //   142: ldc 136
-    //   144: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: invokeinterface 163 1 0
+    //   142: ldc 137
+    //   144: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: aload_2
     //   148: athrow
     //   149: astore_2
@@ -207,7 +207,7 @@ public class ClientInfoTable
       }
       catch (Exception paramClientInfo)
       {
-        ad.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
+        ac.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102432);
@@ -246,7 +246,7 @@ public class ClientInfoTable
     }
     catch (Exception paramClientInfo)
     {
-      ad.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
+      ac.printErrStackTrace("ClientInfoTable", paramClientInfo, "", new Object[0]);
       AppMethodBeat.o(102434);
     }
     return -2;
@@ -301,7 +301,7 @@ public class ClientInfoTable
       for (;;)
       {
         localObject = localSQLiteDatabase;
-        ad.printErrStackTrace("ClientInfoTable", paramSQLiteDatabase1, "", new Object[0]);
+        ac.printErrStackTrace("ClientInfoTable", paramSQLiteDatabase1, "", new Object[0]);
         if (localSQLiteDatabase != null) {
           localSQLiteDatabase.close();
         }
@@ -337,10 +337,19 @@ public class ClientInfoTable
   {
     return "clientinfo";
   }
+  
+  public class Columns
+  {
+    public static final String CLIENTID = "clientId";
+    public static final String TASKID = "taskId";
+    public static final String TASKURL = "taskUrl";
+    
+    public Columns() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.ClientInfoTable
  * JD-Core Version:    0.7.0.1
  */

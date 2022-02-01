@@ -13,12 +13,12 @@ public abstract interface s
   public static final class a
     implements s
   {
-    public static final a JUO;
+    public static final a LIh;
     
     static
     {
       AppMethodBeat.i(60318);
-      JUO = new a();
+      LIh = new a();
       AppMethodBeat.o(60318);
     }
     
@@ -37,7 +37,7 @@ public abstract interface s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.s
  * JD-Core Version:    0.7.0.1
  */

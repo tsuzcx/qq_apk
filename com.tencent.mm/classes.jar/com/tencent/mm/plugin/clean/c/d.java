@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.clean.c;
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,33 +12,33 @@ import java.util.LinkedList;
 public final class d
   implements aw
 {
-  private static d nNO;
+  private static d oqQ;
   public long cacheSize;
-  public HashMap<String, Long> nNM;
-  public HashSet<String> nNN;
-  public long nNw;
-  public long nNx;
-  public long nNy;
-  public LinkedList<String> npF;
+  public LinkedList<String> nSF;
+  public long oqA;
+  public HashMap<String, Long> oqO;
+  public HashSet<String> oqP;
+  public long oqy;
+  public long oqz;
   
-  public static d bNS()
+  public static d bVd()
   {
     AppMethodBeat.i(22827);
-    if (nNO == null) {
-      nNO = new d();
+    if (oqQ == null) {
+      oqQ = new d();
     }
-    d locald = nNO;
+    d locald = oqQ;
     AppMethodBeat.o(22827);
     return locald;
   }
   
-  public static long bNT()
+  public static long bVe()
   {
     AppMethodBeat.i(22832);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aib());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.apb());
       l = localStatFs.getBlockCount();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -59,13 +59,13 @@ public final class d
     return l;
   }
   
-  public static long bNU()
+  public static long bVf()
   {
     AppMethodBeat.i(22833);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aib());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.apb());
       l = localStatFs.getAvailableBlocks();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -86,17 +86,17 @@ public final class d
     return l;
   }
   
-  public static void bNV()
+  public static void bVg()
   {
     AppMethodBeat.i(22834);
-    com.tencent.mm.plugin.f.b.bHc().bHe();
+    com.tencent.mm.plugin.f.b.bOp().bOr();
     AppMethodBeat.o(22834);
   }
   
   public final void clearPluginData(int paramInt)
   {
     AppMethodBeat.i(22828);
-    a.bNQ();
+    a.bVb();
     AppMethodBeat.o(22828);
   }
   
@@ -108,39 +108,39 @@ public final class d
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(22829);
-    ad.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.plugin.f.b.bHc().onAccountInitialized(null);
+    ac.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.plugin.f.b.bOp().onAccountInitialized(null);
     AppMethodBeat.o(22829);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(22831);
-    ad.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
-    this.nNw = 0L;
-    this.nNx = 0L;
-    this.nNy = 0L;
-    if (this.nNM != null) {
-      this.nNM.clear();
+    ac.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
+    this.oqy = 0L;
+    this.oqz = 0L;
+    this.oqA = 0L;
+    if (this.oqO != null) {
+      this.oqO.clear();
     }
-    if (this.nNN != null) {
-      this.nNN.clear();
+    if (this.oqP != null) {
+      this.oqP.clear();
     }
-    a.bNQ();
-    com.tencent.mm.plugin.f.b.bHc().onAccountRelease();
+    a.bVb();
+    com.tencent.mm.plugin.f.b.bOp().onAccountRelease();
     AppMethodBeat.o(22831);
   }
   
   public final void onSdcardMount(boolean paramBoolean)
   {
     AppMethodBeat.i(22830);
-    ad.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(22830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.d
  * JD-Core Version:    0.7.0.1
  */

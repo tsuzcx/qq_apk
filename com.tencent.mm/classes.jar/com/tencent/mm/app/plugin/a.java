@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.jg;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.jn;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.pluginsdk.p;
 import com.tencent.mm.pluginsdk.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.JSAPIUploadLogHelperUI;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMWizardActivity;
@@ -27,13 +27,13 @@ public final class a
     AppMethodBeat.i(19659);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.MMURIJumpHandler", "jumpToUIInternal, context is null!");
+      ac.e("MicroMsg.MMURIJumpHandler", "jumpToUIInternal, context is null!");
       AppMethodBeat.o(19659);
       return false;
     }
     if (paramString == null)
     {
-      ad.e("MicroMsg.MMURIJumpHandler", "jumpToUIInternal url is null");
+      ac.e("MicroMsg.MMURIJumpHandler", "jumpToUIInternal url is null");
       AppMethodBeat.o(19659);
       return false;
     }
@@ -43,7 +43,7 @@ public final class a
       AppMethodBeat.o(19659);
       return paramBoolean;
     }
-    paramBoolean = e.LB().b(paramContext, paramString, paramBoolean, paramt, paramBundle);
+    paramBoolean = e.Lz().b(paramContext, paramString, paramBoolean, paramt, paramBundle);
     AppMethodBeat.o(19659);
     return paramBoolean;
   }
@@ -55,16 +55,16 @@ public final class a
     paramString.addFlags(268435456);
     try
     {
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.adn(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openLinkInBrowser", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.lS(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openLinkInBrowser", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/plugin/MMURIJumpHandler", "openLinkInBrowser", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(19660);
       return;
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.MMURIJumpHandler", "openLinkInBrowser fail:%s", new Object[] { paramContext.getMessage() });
+      ac.e("MicroMsg.MMURIJumpHandler", "openLinkInBrowser fail:%s", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(19660);
     }
   }
@@ -90,7 +90,7 @@ public final class a
     AppMethodBeat.i(19656);
     if (paramContext == null)
     {
-      ad.e("MicroMsg.MMURIJumpHandler", "jumpToURLWithCallback, context is null!");
+      ac.e("MicroMsg.MMURIJumpHandler", "jumpToURLWithCallback, context is null!");
       AppMethodBeat.o(19656);
       return false;
     }
@@ -102,7 +102,7 @@ public final class a
     }
     if (!b(paramContext, paramString, paramBoolean, paramt))
     {
-      ad.w("MicroMsg.MMURIJumpHandler", "jumpToUI failed, uri:%s", new Object[] { paramString });
+      ac.w("MicroMsg.MMURIJumpHandler", "jumpToUI failed, uri:%s", new Object[] { paramString });
       AppMethodBeat.o(19656);
       return false;
     }
@@ -123,13 +123,13 @@ public final class a
     AppMethodBeat.i(19661);
     if (paramString == null)
     {
-      ad.d("MicroMsg.MMURIJumpHandler", "openSpecificUI uri is null");
+      ac.d("MicroMsg.MMURIJumpHandler", "openSpecificUI uri is null");
       AppMethodBeat.o(19661);
       return false;
     }
     if (paramContext == null)
     {
-      ad.e("MicroMsg.MMURIJumpHandler", "openSpecificUI, context is null");
+      ac.e("MicroMsg.MMURIJumpHandler", "openSpecificUI, context is null");
       AppMethodBeat.o(19661);
       return false;
     }
@@ -150,9 +150,9 @@ public final class a
       localIntent.addFlags(67108864);
       localIntent.putExtra("preferred_tab", 2);
       paramString = localIntent.setClass(paramContext, LauncherUI.class);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.adn(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.lS(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
@@ -178,9 +178,9 @@ public final class a
         localIntent.addFlags(67108864);
         localIntent.putExtra("preferred_tab", 1);
         paramString = localIntent.setClass(paramContext, LauncherUI.class);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.adn(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.lS(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (str2.equalsIgnoreCase("timeline"))
@@ -201,7 +201,7 @@ public final class a
       }
       else if (str2.equalsIgnoreCase("bindphone"))
       {
-        MMWizardActivity.V(paramContext, localIntent.setClass(paramContext, BindMContactIntroUI.class));
+        MMWizardActivity.aj(paramContext, localIntent.setClass(paramContext, BindMContactIntroUI.class));
       }
       else if (str2.equalsIgnoreCase("privacy"))
       {
@@ -216,7 +216,7 @@ public final class a
         if (!str2.equalsIgnoreCase("invitevoip")) {
           break;
         }
-        VoipAddressUI.jS(paramContext);
+        VoipAddressUI.kd(paramContext);
       }
     }
     if (str2.equalsIgnoreCase("expose")) {
@@ -230,7 +230,7 @@ public final class a
     for (paramString = paramString.getString("url");; paramString = "")
     {
       localIntent.putExtra("k_expose_url", paramString);
-      localIntent.putExtra("k_username", u.aqG());
+      localIntent.putExtra("k_username", u.axw());
       localIntent.putExtra("showShare", false);
       localIntent.putExtra("rawUrl", String.format("https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect", new Object[] { Integer.valueOf(34) }));
       d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
@@ -249,17 +249,17 @@ public final class a
         break;
         if (str2.equalsIgnoreCase("cardlistview"))
         {
-          ad.i("MicroMsg.MMURIJumpHandler", "enter to cardhome");
-          paramString = new jg();
-          paramString.dnt.context = paramContext;
-          com.tencent.mm.sdk.b.a.ESL.l(paramString);
+          ac.i("MicroMsg.MMURIJumpHandler", "enter to cardhome");
+          paramString = new jn();
+          paramString.dlb.context = paramContext;
+          com.tencent.mm.sdk.b.a.GpY.l(paramString);
           break;
         }
         if (str2.equalsIgnoreCase("uploadlog"))
         {
-          str1 = u.aqG();
+          str1 = u.axw();
           paramVarArgs = str1;
-          if (bt.isNullOrNil(str1)) {
+          if (bs.isNullOrNil(str1)) {
             paramVarArgs = "weixin";
           }
           if (paramString != null) {}
@@ -267,18 +267,18 @@ public final class a
           {
             try
             {
-              i = bt.getInt(paramString.getString("extinfo"), 0);
-              if ((!az.afw()) || (az.aeC())) {
+              i = bs.getInt(paramString.getString("extinfo"), 0);
+              if ((!az.agM()) || (az.afS())) {
                 break label966;
               }
               bool = true;
-              ad.i("MicroMsg.MMURIJumpHandler", "upload log from jsapi, before upload, is-login:%b, time:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+              ac.i("MicroMsg.MMURIJumpHandler", "upload log from jsapi, before upload, is-login:%b, time:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
               paramString = new Intent(paramContext, JSAPIUploadLogHelperUI.class);
               paramString.putExtra("key_user", paramVarArgs);
               paramString.putExtra("key_time", i);
-              paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-              com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.adn(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramContext.startActivity((Intent)paramString.lS(0));
+              paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+              com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramContext.startActivity((Intent)paramString.lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/plugin/MMURIJumpHandler", "openSpecificUI", "(Landroid/content/Context;Ljava/lang/String;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
             catch (Exception paramString) {}
@@ -295,7 +295,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.plugin.a
  * JD-Core Version:    0.7.0.1
  */

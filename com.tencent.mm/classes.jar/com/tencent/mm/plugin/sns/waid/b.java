@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.sns.waid;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -13,10 +13,10 @@ public abstract class b
   implements c
 {
   protected Context mContext;
-  protected SharedPreferences xZp;
-  protected ArrayList<h> xZq = new ArrayList();
+  protected SharedPreferences zmp;
+  protected ArrayList<h> zmq = new ArrayList();
   
-  private void aq(ArrayList<h> paramArrayList)
+  private void aC(ArrayList<h> paramArrayList)
   {
     long l1 = System.currentTimeMillis();
     try
@@ -36,18 +36,18 @@ public abstract class b
     }
     catch (Exception localException)
     {
-      ad.e("ad.waid.BaseSpWaidStorageImpl", "saveAll exp=" + localException.toString());
+      ac.e("ad.waid.BaseSpWaidStorageImpl", "saveAll exp=" + localException.toString());
     }
     for (;;)
     {
       long l2;
-      ad.i("ad.waid.BaseSpWaidStorageImpl", "saveAll, cost=" + (l2 - l1) + ", total=" + paramArrayList.size());
+      ac.i("ad.waid.BaseSpWaidStorageImpl", "saveAll, cost=" + (l2 - l1) + ", total=" + paramArrayList.size());
       return;
-      this.xZp.edit().putString(dEy(), localException.toString()).apply();
+      this.zmp.edit().putString(dSX(), localException.toString()).apply();
     }
   }
   
-  private ArrayList<h> aqV(String paramString)
+  private ArrayList<h> awe(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     for (;;)
@@ -61,7 +61,7 @@ public abstract class b
         i = 0;
         if (i < j)
         {
-          h localh = h.aH(paramString.getJSONObject(i));
+          h localh = h.aI(paramString.getJSONObject(i));
           if ((localh.isValid()) && (!localArrayList.contains(localh))) {
             localArrayList.add(localh);
           }
@@ -69,13 +69,13 @@ public abstract class b
         else
         {
           long l2 = System.currentTimeMillis();
-          ad.i("ad.waid.BaseSpWaidStorageImpl", "parseAll, cost=" + (l2 - l1) + ", count=" + localArrayList.size() + ", sp=" + dEx());
+          ac.i("ad.waid.BaseSpWaidStorageImpl", "parseAll, cost=" + (l2 - l1) + ", count=" + localArrayList.size() + ", sp=" + dSW());
           return localArrayList;
         }
       }
       catch (Exception paramString)
       {
-        ad.e("ad.waid.BaseSpWaidStorageImpl", "parseAll exp=" + paramString.toString() + ", sp=" + dEx());
+        ac.e("ad.waid.BaseSpWaidStorageImpl", "parseAll exp=" + paramString.toString() + ", sp=" + dSW());
         return localArrayList;
       }
       i += 1;
@@ -86,15 +86,15 @@ public abstract class b
   {
     if (paramh == null)
     {
-      ad.w("ad.waid.BaseSpWaidStorageImpl", "addWaid, item==null");
+      ac.w("ad.waid.BaseSpWaidStorageImpl", "addWaid, item==null");
       return false;
     }
     try
     {
-      this.xZq.remove(paramh);
-      this.xZq.add(paramh);
-      ad.i("ad.waid.BaseSpWaidStorageImpl", "addWaid, item=".concat(String.valueOf(paramh)));
-      aq(this.xZq);
+      this.zmq.remove(paramh);
+      this.zmq.add(paramh);
+      ac.i("ad.waid.BaseSpWaidStorageImpl", "addWaid, item=".concat(String.valueOf(paramh)));
+      aC(this.zmq);
       return true;
     }
     finally {}
@@ -107,15 +107,15 @@ public abstract class b
     {
       try
       {
-        if (!this.xZq.remove(paramh)) {
+        if (!this.zmq.remove(paramh)) {
           break label61;
         }
         i = 1;
         if (i > 0)
         {
-          ad.i("ad.waid.BaseSpWaidStorageImpl", "delWaid, ret=".concat(String.valueOf(bool)));
+          ac.i("ad.waid.BaseSpWaidStorageImpl", "delWaid, ret=".concat(String.valueOf(bool)));
           if (bool) {
-            aq(this.xZq);
+            aC(this.zmq);
           }
           return bool;
         }
@@ -129,7 +129,7 @@ public abstract class b
   }
   
   /* Error */
-  public final boolean dEA()
+  public final boolean dSZ()
   {
     // Byte code:
     //   0: iconst_0
@@ -137,21 +137,21 @@ public abstract class b
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 22	com/tencent/mm/plugin/sns/waid/b:xZq	Ljava/util/ArrayList;
+    //   5: getfield 22	com/tencent/mm/plugin/sns/waid/b:zmq	Ljava/util/ArrayList;
     //   8: invokevirtual 194	java/util/ArrayList:isEmpty	()Z
     //   11: ifne +33 -> 44
     //   14: aload_0
-    //   15: getfield 22	com/tencent/mm/plugin/sns/waid/b:xZq	Ljava/util/ArrayList;
+    //   15: getfield 22	com/tencent/mm/plugin/sns/waid/b:zmq	Ljava/util/ArrayList;
     //   18: iconst_0
     //   19: invokevirtual 197	java/util/ArrayList:remove	(I)Ljava/lang/Object;
     //   22: pop
     //   23: ldc 62
     //   25: ldc 199
-    //   27: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokestatic 101	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: aload_0
     //   31: aload_0
-    //   32: getfield 22	com/tencent/mm/plugin/sns/waid/b:xZq	Ljava/util/ArrayList;
-    //   35: invokespecial 184	com/tencent/mm/plugin/sns/waid/b:aq	(Ljava/util/ArrayList;)V
+    //   32: getfield 22	com/tencent/mm/plugin/sns/waid/b:zmq	Ljava/util/ArrayList;
+    //   35: invokespecial 184	com/tencent/mm/plugin/sns/waid/b:aC	(Ljava/util/ArrayList;)V
     //   38: iconst_1
     //   39: istore_1
     //   40: aload_0
@@ -160,7 +160,7 @@ public abstract class b
     //   43: ireturn
     //   44: ldc 62
     //   46: ldc 201
-    //   48: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: invokestatic 101	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   51: goto -11 -> 40
     //   54: astore_2
     //   55: aload_0
@@ -178,7 +178,7 @@ public abstract class b
     //   44	51	54	finally
   }
   
-  public final int dEB()
+  public final int dTa()
   {
     int i = 0;
     for (;;)
@@ -186,21 +186,21 @@ public abstract class b
       int j;
       try
       {
-        j = this.xZq.size() - 1;
+        j = this.zmq.size() - 1;
         if (j >= 0)
         {
-          h localh = (h)this.xZq.get(j);
+          h localh = (h)this.zmq.get(j);
           if (localh.isExpired())
           {
-            this.xZq.remove(localh);
+            this.zmq.remove(localh);
             i += 1;
           }
         }
         else
         {
-          ad.i("ad.waid.BaseSpWaidStorageImpl", "delExpireItems, delNum=".concat(String.valueOf(i)));
+          ac.i("ad.waid.BaseSpWaidStorageImpl", "delExpireItems, delNum=".concat(String.valueOf(i)));
           if (i > 0) {
-            aq(this.xZq);
+            aC(this.zmq);
           }
           return i;
         }
@@ -214,7 +214,7 @@ public abstract class b
   {
     try
     {
-      int i = this.xZq.size();
+      int i = this.zmq.size();
       return i;
     }
     finally
@@ -229,8 +229,8 @@ public abstract class b
     try
     {
       this.mContext = paramContext;
-      this.xZp = paramContext.getSharedPreferences(dEx(), 0);
-      this.xZq = aqV(this.xZp.getString(dEy(), "[]"));
+      this.zmp = paramContext.getSharedPreferences(dSW(), 0);
+      this.zmq = awe(this.zmp.getString(dSX(), "[]"));
       return;
     }
     finally

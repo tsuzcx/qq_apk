@@ -16,13 +16,13 @@ public abstract interface y
   
   public abstract ad e(d.l.b.a.b.f.b paramb);
   
-  public abstract g fza();
+  public abstract g fRE();
   
-  public abstract List<y> fzb();
+  public abstract List<y> fRF();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.y
  * JD-Core Version:    0.7.0.1
  */

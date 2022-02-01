@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/c79" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textColor="@color/aj" android:id="@id/hsc" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/c_" android:layout_marginTop="12.0dip" android:text="@string/r5" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/c5" android:layout_alignParentStart="true" />
-    <Button android:id="@id/hsd" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/c_" android:layout_marginTop="12.0dip" android:text="@string/v1" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true" style="@style/o8" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/a_r" android:id="@id/hse" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqv" android:layout_below="@id/hsc" android:layout_marginStart="16.0dip" />
-    <com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView android:id="@id/hro" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/br" android:layout_marginBottom="@dimen/bt" />
+<RelativeLayout android:id="@id/hqb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bsy" />
+    <include layout="@layout/btd" />
+    <include layout="@layout/bt5" />
+    <include layout="@layout/bso" />
+    <include layout="@layout/bsn" />
+    <include android:id="@id/hpx" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="44.0dip" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true" layout="@layout/btg" />
+    <include android:id="@id/hmo" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="44.0dip" android:layout_marginEnd="@dimen/c5" android:layout_toStartOf="@id/hpx" layout="@layout/bsx" />
+    <include android:id="@id/hp6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/ci" android:layout_toStartOf="@id/hmo" android:layout_alignParentStart="true" layout="@layout/btb" />
+    <include android:id="@id/hjz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_below="@id/hp6" android:layout_marginStart="@dimen/c5" layout="@layout/bsc" />
+    <include android:id="@id/hmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_below="@id/hjz" android:layout_marginStart="@dimen/c5" layout="@layout/bsw" />
+    <include android:id="@id/ho2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" android:layout_alignParentBottom="true" android:layout_marginEnd="18.0dip" android:layout_alignParentEnd="true" layout="@layout/bsi" />
+    <include android:id="@id/hpy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/bth" />
+    <include android:id="@id/hkp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/bsl" />
+    <include android:id="@id/hjo" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_marginBottom="@dimen/c0" android:layout_above="@id/hpy" android:layout_marginStart="16.0dip" android:layout_marginEnd="82.0dip" android:layout_alignParentStart="true" layout="@layout/bsb" />
+    <include android:id="@id/hkg" android:visibility="gone" layout="@layout/bsk" />
+    <include layout="@layout/bsv" />
+    <include layout="@layout/bsr" />
+    <include layout="@layout/btf" />
+    <include layout="@layout/brr" />
+    <include layout="@layout/bsm" />
+    <include layout="@layout/bse" />
+    <include layout="@layout/bsg" />
 </RelativeLayout>

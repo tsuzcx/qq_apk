@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/hkn" android:background="@color/aaa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/hkl" android:background="@drawable/c6k" android:layout_width="@dimen/bs" android:layout_height="@dimen/bs" android:layout_marginBottom="@dimen/br" android:layout_above="@id/hkk" android:layout_centerHorizontal="true">
-        <TextView android:textSize="40.0dip" android:textColor="@color/a_u" android:id="@id/hkm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <RelativeLayout android:layout_width="@dimen/cd" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/hl5" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginBottom="@dimen/bq" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/c0" android:textColor="@color/ry" android:id="@id/hl6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5" android:singleLine="true" android:layout_below="@id/hl5" android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/hkk" android:background="@drawable/c6j" android:layout_width="@dimen/br" android:layout_height="@dimen/c_" android:layout_marginBottom="@dimen/amh" android:text="@string/hnl" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

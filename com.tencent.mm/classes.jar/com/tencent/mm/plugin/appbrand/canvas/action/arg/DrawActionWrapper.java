@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,8 +13,8 @@ public class DrawActionWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<DrawActionWrapper> CREATOR;
-  public BaseDrawActionArg iYV;
-  public JSONObject iYW;
+  public BaseDrawActionArg jzl;
+  public JSONObject jzm;
   public int type;
   
   static
@@ -40,17 +40,17 @@ public class DrawActionWrapper
       paramParcel = paramParcel.readString();
       try
       {
-        this.iYW = new JSONObject(paramParcel);
+        this.jzm = new JSONObject(paramParcel);
         AppMethodBeat.o(145002);
         return;
       }
       catch (JSONException paramParcel)
       {
-        ad.printErrStackTrace("DrawActionWrapper", paramParcel, "", new Object[0]);
+        ac.printErrStackTrace("DrawActionWrapper", paramParcel, "", new Object[0]);
         AppMethodBeat.o(145002);
         return;
       }
-      this.iYV = ((BaseDrawActionArg)paramParcel.readParcelable(DrawActionWrapper.class.getClassLoader()));
+      this.jzl = ((BaseDrawActionArg)paramParcel.readParcelable(DrawActionWrapper.class.getClassLoader()));
     }
   }
   
@@ -68,11 +68,11 @@ public class DrawActionWrapper
       AppMethodBeat.o(145004);
       return "";
     case 1: 
-      str = this.iYW.optString("method");
+      str = this.jzm.optString("method");
       AppMethodBeat.o(145004);
       return str;
     }
-    String str = this.iYV.method;
+    String str = this.jzl.method;
     AppMethodBeat.o(145004);
     return str;
   }
@@ -80,12 +80,12 @@ public class DrawActionWrapper
   public final void reset()
   {
     AppMethodBeat.i(145003);
-    if (this.iYV != null)
+    if (this.jzl != null)
     {
-      this.iYV.reset();
-      com.tencent.mm.plugin.appbrand.canvas.action.arg.a.c.aST().a(this.iYV);
+      this.jzl.reset();
+      com.tencent.mm.plugin.appbrand.canvas.action.arg.a.c.aZS().a(this.jzl);
     }
-    d.aSU().iZG.release(this);
+    d.aZT().jzT.release(this);
     AppMethodBeat.o(145003);
   }
   
@@ -108,16 +108,16 @@ public class DrawActionWrapper
     {
       AppMethodBeat.o(145006);
       return;
-      paramParcel.writeString(this.iYW.toString());
+      paramParcel.writeString(this.jzm.toString());
       AppMethodBeat.o(145006);
       return;
-      paramParcel.writeParcelable(this.iYV, paramInt);
+      paramParcel.writeParcelable(this.jzl, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ import android.support.v4.content.b;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class CircleImageView
   extends AppCompatImageView
@@ -30,7 +30,7 @@ public class CircleImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(106377);
     this.progress = -2147483648L;
-    ed(paramContext);
+    el(paramContext);
     AppMethodBeat.o(106377);
   }
   
@@ -39,15 +39,15 @@ public class CircleImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106376);
     this.progress = -2147483648L;
-    ed(paramContext);
+    el(paramContext);
     AppMethodBeat.o(106376);
   }
   
-  private void ed(Context paramContext)
+  private void el(Context paramContext)
   {
     AppMethodBeat.i(106378);
-    this.defaultWidth = a.ap(paramContext, 2131166366);
-    this.defaultHeight = a.ap(paramContext, 2131166366);
+    this.defaultWidth = a.av(paramContext, 2131166366);
+    this.defaultHeight = a.av(paramContext, 2131166366);
     AppMethodBeat.o(106378);
   }
   
@@ -188,7 +188,7 @@ public class CircleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

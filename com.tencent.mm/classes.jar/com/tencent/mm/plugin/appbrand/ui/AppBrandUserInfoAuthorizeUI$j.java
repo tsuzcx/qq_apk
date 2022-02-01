@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class AppBrandUserInfoAuthorizeUI$j
   implements DialogInterface.OnCancelListener
 {
@@ -15,7 +15,7 @@ final class AppBrandUserInfoAuthorizeUI$j
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(180673);
-    this.lDA.invoke();
+    this.mfu.invoke();
     AppMethodBeat.o(180673);
   }
 }

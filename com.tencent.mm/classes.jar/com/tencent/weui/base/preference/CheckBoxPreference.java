@@ -15,13 +15,13 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class CheckBoxPreference
   extends Preference
 {
-  boolean lG;
+  private TextView Bod;
+  private int Boe;
+  private String Bof;
+  private int Bog;
+  boolean mF;
   private View mView;
-  private MMSwitchBtn sLH;
-  private TextView zVJ;
-  private int zVK;
-  private String zVL;
-  private int zVM;
+  private MMSwitchBtn tTm;
   
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,28 +32,28 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159986);
-    this.lG = false;
-    this.zVK = -1;
-    this.zVL = "";
-    this.zVM = 8;
+    this.mF = false;
+    this.Boe = -1;
+    this.Bof = "";
+    this.Bog = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(159986);
   }
   
   public final boolean isChecked()
   {
-    if (this.sLH != null) {
-      return this.sLH.HAh;
+    if (this.tTm != null) {
+      return this.tTm.JaE;
     }
-    return this.lG;
+    return this.mF;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(159988);
     super.onBindView(paramView);
-    this.sLH = ((MMSwitchBtn)paramView.findViewById(2131298255));
-    this.sLH.setSwitchListener(new MMSwitchBtn.a()
+    this.tTm = ((MMSwitchBtn)paramView.findViewById(2131298255));
+    this.tTm.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -62,29 +62,29 @@ public class CheckBoxPreference
         AppMethodBeat.o(159985);
       }
     });
-    this.sLH.setCheck(this.lG);
+    this.tTm.setCheck(this.mF);
     if (!isEnabled())
     {
-      this.sLH.setEnabled(false);
+      this.tTm.setEnabled(false);
       ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100022));
     }
-    this.zVJ = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.zVL;
-    int i = this.zVK;
-    this.zVK = i;
-    this.zVL = paramView;
-    if (this.zVJ != null)
+    this.Bod = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.Bof;
+    int i = this.Boe;
+    this.Boe = i;
+    this.Bof = paramView;
+    if (this.Bod != null)
     {
       if (i > 0) {
-        this.zVJ.setBackgroundResource(this.zVK);
+        this.Bod.setBackgroundResource(this.Boe);
       }
-      if (!TextUtils.isEmpty(this.zVL)) {
-        this.zVJ.setText(this.zVL);
+      if (!TextUtils.isEmpty(this.Bof)) {
+        this.Bod.setText(this.Bof);
       }
     }
-    this.zVM = this.zVM;
-    if (this.zVJ != null) {
-      this.zVJ.setVisibility(this.zVM);
+    this.Bog = this.Bog;
+    if (this.Bod != null) {
+      this.Bod.setVisibility(this.Bog);
     }
     AppMethodBeat.o(159988);
   }
@@ -104,7 +104,7 @@ public class CheckBoxPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.weui.base.preference.CheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

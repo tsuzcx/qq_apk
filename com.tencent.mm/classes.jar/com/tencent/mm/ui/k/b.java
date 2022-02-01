@@ -21,11 +21,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.i;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ab;
-import com.tencent.xweb.y;
+import com.tencent.xweb.z;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -35,22 +33,22 @@ import java.net.URLDecoder;
 public final class b
   extends i
 {
-  static final float[] HiJ;
-  static final float[] HiK;
-  static final FrameLayout.LayoutParams HiL;
-  private WebView AKr;
-  private ProgressDialog HiN;
-  private ImageView HiO;
-  private FrameLayout HiP;
-  private a HxM;
+  static final float[] IJc;
+  static final float[] IJd;
+  static final FrameLayout.LayoutParams IJe;
+  private WebView CcI;
+  private ProgressDialog IJg;
+  private ImageView IJh;
+  private FrameLayout IJi;
+  private a IYj;
   private String mUrl;
   
   static
   {
     AppMethodBeat.i(152881);
-    HiJ = new float[] { 20.0F, 60.0F };
-    HiK = new float[] { 40.0F, 60.0F };
-    HiL = new FrameLayout.LayoutParams(-1, -1);
+    IJc = new float[] { 20.0F, 60.0F };
+    IJd = new float[] { 40.0F, 60.0F };
+    IJe = new FrameLayout.LayoutParams(-1, -1);
     AppMethodBeat.o(152881);
   }
   
@@ -58,20 +56,20 @@ public final class b
   {
     super(paramContext, 16973840);
     this.mUrl = paramString;
-    this.HxM = parama;
+    this.IYj = parama;
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(152879);
     super.onCreate(paramBundle);
-    this.HiN = new ProgressDialog(getContext());
-    this.HiN.requestWindowFeature(1);
-    this.HiN.setMessage(getContext().getString(2131764541));
+    this.IJg = new ProgressDialog(getContext());
+    this.IJg.requestWindowFeature(1);
+    this.IJg.setMessage(getContext().getString(2131764541));
     requestWindowFeature(1);
-    this.HiP = new FrameLayout(getContext());
-    this.HiO = new ImageView(getContext());
-    this.HiO.setOnClickListener(new View.OnClickListener()
+    this.IJi = new FrameLayout(getContext());
+    this.IJh = new ImageView(getContext());
+    this.IJh.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -82,23 +80,23 @@ public final class b
       }
     });
     paramBundle = getContext().getResources().getDrawable(2131231769);
-    this.HiO.setImageDrawable(paramBundle);
-    this.HiO.setVisibility(4);
-    int i = this.HiO.getDrawable().getIntrinsicWidth() / 2;
+    this.IJh.setImageDrawable(paramBundle);
+    this.IJh.setVisibility(4);
+    int i = this.IJh.getDrawable().getIntrinsicWidth() / 2;
     paramBundle = new LinearLayout(getContext());
-    this.AKr = new WebView(getContext());
-    this.AKr.setVerticalScrollBarEnabled(false);
-    this.AKr.setHorizontalScrollBarEnabled(false);
-    this.AKr.setWebViewClient(new b((byte)0));
-    this.AKr.getSettings().setJavaScriptEnabled(true);
-    this.AKr.loadUrl(this.mUrl);
-    this.AKr.setLayoutParams(HiL);
-    this.AKr.setVisibility(4);
+    this.CcI = new WebView(getContext());
+    this.CcI.setVerticalScrollBarEnabled(false);
+    this.CcI.setHorizontalScrollBarEnabled(false);
+    this.CcI.setWebViewClient(new b((byte)0));
+    this.CcI.getSettings().setJavaScriptEnabled(true);
+    this.CcI.loadUrl(this.mUrl);
+    this.CcI.setLayoutParams(IJe);
+    this.CcI.setVisibility(4);
     paramBundle.setPadding(i, i, i, i);
-    paramBundle.addView(this.AKr);
-    this.HiP.addView(paramBundle);
-    this.HiP.addView(this.HiO, new ViewGroup.LayoutParams(-2, -2));
-    addContentView(this.HiP, new ViewGroup.LayoutParams(-1, -1));
+    paramBundle.addView(this.CcI);
+    this.IJi.addView(paramBundle);
+    this.IJi.addView(this.IJh, new ViewGroup.LayoutParams(-2, -2));
+    addContentView(this.IJi, new ViewGroup.LayoutParams(-1, -1));
     AppMethodBeat.o(152879);
   }
   
@@ -107,7 +105,7 @@ public final class b
     AppMethodBeat.i(152880);
     if (paramInt == 4)
     {
-      this.HxM.onCancel();
+      this.IYj.onCancel();
       dismiss();
       AppMethodBeat.o(152880);
       return true;
@@ -119,7 +117,7 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract void feD();
+    public abstract void fuy();
     
     public abstract void onCancel();
     
@@ -128,13 +126,13 @@ public final class b
   
   @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
   final class b
-    extends ab
+    extends com.tencent.xweb.ac
   {
-    boolean HiR = true;
+    boolean IJk = true;
     
     private b() {}
     
-    private static Bundle aLC(String paramString)
+    private static Bundle aRe(String paramString)
     {
       AppMethodBeat.i(152877);
       Bundle localBundle = new Bundle();
@@ -154,15 +152,15 @@ public final class b
       return localBundle;
     }
     
-    private static Bundle aLD(String paramString)
+    private static Bundle aRf(String paramString)
     {
       AppMethodBeat.i(152878);
       paramString = paramString.replace("wechatapp", "http");
       try
       {
         paramString = new URL(paramString);
-        Bundle localBundle = aLC(paramString.getQuery());
-        localBundle.putAll(aLC(paramString.getRef()));
+        Bundle localBundle = aRe(paramString.getQuery());
+        localBundle.putAll(aRe(paramString.getRef()));
         AppMethodBeat.o(152878);
         return localBundle;
       }
@@ -178,10 +176,10 @@ public final class b
     {
       AppMethodBeat.i(152874);
       super.a(paramWebView, paramInt, paramString1, paramString2);
-      this.HiR = false;
+      this.IJk = false;
       paramWebView = b.a(b.this);
       new com.tencent.mm.ui.g.a.b(paramString1, paramInt, paramString2);
-      paramWebView.feD();
+      paramWebView.fuy();
       try
       {
         b.this.dismiss();
@@ -191,7 +189,7 @@ public final class b
       }
       catch (Exception paramWebView)
       {
-        ad.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
         AppMethodBeat.o(152874);
       }
     }
@@ -199,10 +197,10 @@ public final class b
     public final boolean a(WebView paramWebView, String paramString)
     {
       AppMethodBeat.i(152873);
-      ad.d("Twitter-WebView", "Redirect URL: ".concat(String.valueOf(paramString)));
+      com.tencent.mm.sdk.platformtools.ac.d("Twitter-WebView", "Redirect URL: ".concat(String.valueOf(paramString)));
       if (paramString.startsWith("wechatapp://sign-in-twitter.wechatapp.com/"))
       {
-        paramWebView = aLD(paramString);
+        paramWebView = aRf(paramString);
         if (paramWebView.getString("denied") == null) {
           b.a(b.this).w(paramWebView);
         }
@@ -216,9 +214,9 @@ public final class b
       }
       paramWebView = b.this.getContext();
       paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.adn(), "com/tencent/mm/ui/twitter/TwitterDialog$TwitterWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramWebView.startActivity((Intent)paramString.lS(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.aeD(), "com/tencent/mm/ui/twitter/TwitterDialog$TwitterWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramWebView.startActivity((Intent)paramString.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramWebView, "com/tencent/mm/ui/twitter/TwitterDialog$TwitterWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(152873);
       return true;
@@ -228,7 +226,7 @@ public final class b
     {
       AppMethodBeat.i(152876);
       super.b(paramWebView, paramString);
-      this.HiR = false;
+      this.IJk = false;
       try
       {
         b.b(b.this).dismiss();
@@ -242,7 +240,7 @@ public final class b
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
         }
       }
     }
@@ -250,7 +248,7 @@ public final class b
     public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
     {
       AppMethodBeat.i(152875);
-      ad.d("Twitter-WebView", "Webview loading URL: ".concat(String.valueOf(paramString)));
+      com.tencent.mm.sdk.platformtools.ac.d("Twitter-WebView", "Webview loading URL: ".concat(String.valueOf(paramString)));
       super.b(paramWebView, paramString, paramBitmap);
       try
       {
@@ -260,7 +258,7 @@ public final class b
           public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(152872);
-            if ((b.b.this.HiR) && (b.this != null))
+            if ((b.b.this.IJk) && (b.this != null))
             {
               b.a(b.this).onCancel();
               b.this.dismiss();
@@ -273,7 +271,7 @@ public final class b
       }
       catch (Exception paramWebView)
       {
-        ad.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
         AppMethodBeat.o(152875);
       }
     }

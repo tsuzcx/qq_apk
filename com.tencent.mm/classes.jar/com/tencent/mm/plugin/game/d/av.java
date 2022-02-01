@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class av
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String rZo;
+  public String thh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -13,28 +13,28 @@ public final class av
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.rZo != null) {
-        paramVarArgs.d(1, this.rZo);
+      if (this.thh != null) {
+        paramVarArgs.d(1, this.thh);
       }
       AppMethodBeat.o(41754);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.rZo == null) {
+      if (this.thh == null) {
         break label213;
       }
     }
     label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.rZo) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.thh) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(41754);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41754);
@@ -50,7 +50,7 @@ public final class av
           AppMethodBeat.o(41754);
           return -1;
         }
-        localav.rZo = locala.KhF.readString();
+        localav.thh = locala.LVo.readString();
         AppMethodBeat.o(41754);
         return 0;
       }
@@ -61,7 +61,7 @@ public final class av
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.av
  * JD-Core Version:    0.7.0.1
  */

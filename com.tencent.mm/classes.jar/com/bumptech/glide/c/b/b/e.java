@@ -11,9 +11,9 @@ import java.util.concurrent.locks.Lock;
 public final class e
   implements a
 {
-  private final j aGw;
-  private final c aGx;
-  private com.bumptech.glide.a.a aGy;
+  private final j aHm;
+  private final c aHn;
+  private com.bumptech.glide.a.a aHo;
   private final File directory;
   private final long maxSize;
   
@@ -21,22 +21,22 @@ public final class e
   e(File paramFile, long paramLong)
   {
     AppMethodBeat.i(77150);
-    this.aGx = new c();
+    this.aHn = new c();
     this.directory = paramFile;
     this.maxSize = paramLong;
-    this.aGw = new j();
+    this.aHm = new j();
     AppMethodBeat.o(77150);
   }
   
-  private com.bumptech.glide.a.a oB()
+  private com.bumptech.glide.a.a oL()
   {
     try
     {
       AppMethodBeat.i(77151);
-      if (this.aGy == null) {
-        this.aGy = com.bumptech.glide.a.a.b(this.directory, this.maxSize);
+      if (this.aHo == null) {
+        this.aHo = com.bumptech.glide.a.a.b(this.directory, this.maxSize);
       }
-      com.bumptech.glide.a.a locala = this.aGy;
+      com.bumptech.glide.a.a locala = this.aHo;
       AppMethodBeat.o(77151);
       return locala;
     }
@@ -46,17 +46,17 @@ public final class e
   public final File a(h paramh)
   {
     AppMethodBeat.i(77152);
-    Object localObject2 = this.aGw.c(paramh);
+    Object localObject2 = this.aHm.c(paramh);
     if (Log.isLoggable("DiskLruCacheWrapper", 2)) {
       new StringBuilder("Get: Obtained: ").append((String)localObject2).append(" for for Key: ").append(paramh);
     }
     localObject1 = null;
     try
     {
-      localObject2 = oB().M((String)localObject2);
+      localObject2 = oL().O((String)localObject2);
       paramh = localObject1;
       if (localObject2 != null) {
-        paramh = localObject2.aBk[0];
+        paramh = localObject2.aCd[0];
       }
     }
     catch (IOException paramh)
@@ -74,19 +74,19 @@ public final class e
   public final void a(h paramh, a.b paramb)
   {
     AppMethodBeat.i(77153);
-    str = this.aGw.c(paramh);
+    str = this.aHm.c(paramh);
     Object localObject;
-    synchronized (this.aGx)
+    synchronized (this.aHn)
     {
-      c.a locala = (c.a)???.aGp.get(str);
+      c.a locala = (c.a)???.aHf.get(str);
       localObject = locala;
       if (locala == null)
       {
-        localObject = ???.aGq.oz();
-        ???.aGp.put(str, localObject);
+        localObject = ???.aHg.oJ();
+        ???.aHf.put(str, localObject);
       }
-      ((c.a)localObject).aGs += 1;
-      ((c.a)localObject).aGr.lock();
+      ((c.a)localObject).aHi += 1;
+      ((c.a)localObject).aHh.lock();
     }
     for (;;)
     {
@@ -100,37 +100,37 @@ public final class e
       {
         try
         {
-          if (paramb.s(paramh.nt()))
+          if (paramb.s(paramh.nD()))
           {
-            com.bumptech.glide.a.a.a(paramh.aBa, paramh, true);
-            paramh.aBd = true;
+            com.bumptech.glide.a.a.a(paramh.aBU, paramh, true);
+            paramh.aBX = true;
           }
-          paramh.nu();
+          paramh.nE();
           continue;
         }
         finally
         {
-          paramh.nu();
+          paramh.nE();
           AppMethodBeat.o(77153);
         }
         paramh = finally;
-        this.aGx.release(str);
+        this.aHn.release(str);
         AppMethodBeat.o(77153);
       }
       try
       {
-        paramh = oB();
-        localObject = paramh.M(str);
+        paramh = oL();
+        localObject = paramh.O(str);
         if (localObject != null)
         {
-          this.aGx.release(str);
+          this.aHn.release(str);
           AppMethodBeat.o(77153);
           return;
           paramh = finally;
           AppMethodBeat.o(77153);
           throw paramh;
         }
-        paramh = paramh.N(str);
+        paramh = paramh.P(str);
         if (paramh == null)
         {
           paramh = new IllegalStateException("Had two simultaneous puts for: ".concat(String.valueOf(str)));
@@ -141,7 +141,7 @@ public final class e
       catch (IOException paramh)
       {
         Log.isLoggable("DiskLruCacheWrapper", 5);
-        this.aGx.release(str);
+        this.aHn.release(str);
         AppMethodBeat.o(77153);
         return;
       }
@@ -150,7 +150,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.e
  * JD-Core Version:    0.7.0.1
  */

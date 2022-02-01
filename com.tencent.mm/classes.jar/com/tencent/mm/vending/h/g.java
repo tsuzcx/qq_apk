@@ -11,21 +11,21 @@ import junit.framework.Assert;
 
 public class g
 {
-  private static Map<String, d> HQP;
-  private static Map<Thread, d> HQQ;
-  private static boolean HQR;
-  private static ThreadLocal<d> HQS;
-  private static a HQT;
+  private static Map<String, d> Jrk;
+  private static Map<Thread, d> Jrl;
+  private static boolean Jrm;
+  private static ThreadLocal<d> Jrn;
+  private static a Jro;
   
   static
   {
     AppMethodBeat.i(74933);
-    HQP = new ConcurrentHashMap();
-    HQQ = new HashMap();
-    HQR = false;
-    HQS = new ThreadLocal();
-    HQT = null;
-    fht();
+    Jrk = new ConcurrentHashMap();
+    Jrl = new HashMap();
+    Jrm = false;
+    Jrn = new ThreadLocal();
+    Jro = null;
+    fxv();
     AppMethodBeat.o(74933);
   }
   
@@ -34,14 +34,14 @@ public class g
     AppMethodBeat.i(74928);
     Assert.assertNotNull("Scheduler type is null", paramString);
     String str = paramString.toUpperCase(Locale.ENGLISH);
-    if (HQP.containsKey(str)) {
+    if (Jrk.containsKey(str)) {
       new IllegalStateException("Fatal error! Duplicate scheduler type " + paramString.toUpperCase(Locale.ENGLISH));
     }
-    HQP.put(str, paramd);
+    Jrk.put(str, paramd);
     if ((paramd instanceof h)) {
       try
       {
-        HQQ.put(((h)paramd).mLooper.getThread(), paramd);
+        Jrl.put(((h)paramd).mLooper.getThread(), paramd);
         return;
       }
       finally
@@ -52,7 +52,7 @@ public class g
     if ((paramd instanceof i)) {
       try
       {
-        HQQ.put(((i)paramd).mThread, paramd);
+        Jrl.put(((i)paramd).mThread, paramd);
         return;
       }
       finally
@@ -63,35 +63,35 @@ public class g
     AppMethodBeat.o(74928);
   }
   
-  public static void aMy(String paramString)
+  public static void aSa(String paramString)
   {
     AppMethodBeat.i(74929);
-    HQP.remove(paramString.toUpperCase(Locale.ENGLISH));
+    Jrk.remove(paramString.toUpperCase(Locale.ENGLISH));
     AppMethodBeat.o(74929);
   }
   
-  public static d aMz(String paramString)
+  public static d aSb(String paramString)
   {
     AppMethodBeat.i(74930);
     Assert.assertNotNull("Scheduler type is null", paramString);
-    d locald = (d)HQP.get(paramString.toUpperCase(Locale.ENGLISH));
+    d locald = (d)Jrk.get(paramString.toUpperCase(Locale.ENGLISH));
     Assert.assertNotNull("Scheduler type not found: " + paramString.toUpperCase(Locale.ENGLISH), locald);
     AppMethodBeat.o(74930);
     return locald;
   }
   
-  public static d fhs()
+  public static d fxu()
   {
     AppMethodBeat.i(74931);
-    Object localObject3 = (d)HQS.get();
-    if ((localObject3 != null) && (HQQ.size() == 0))
+    Object localObject3 = (d)Jrn.get();
+    if ((localObject3 != null) && (Jrl.size() == 0))
     {
       AppMethodBeat.o(74931);
       return localObject3;
     }
     try
     {
-      d locald = (d)HQQ.remove(Thread.currentThread());
+      d locald = (d)Jrl.remove(Thread.currentThread());
       if ((localObject3 != null) && (locald == null))
       {
         AppMethodBeat.o(74931);
@@ -104,23 +104,23 @@ public class g
     }
     if (localObject1 != null)
     {
-      HQS.set(localObject1);
+      Jrn.set(localObject1);
       AppMethodBeat.o(74931);
       return localObject1;
     }
     if (Looper.myLooper() != null)
     {
       localObject3 = new h(Looper.myLooper(), Looper.myLooper().toString());
-      HQS.set(localObject3);
+      Jrn.set(localObject3);
       AppMethodBeat.o(74931);
       return localObject3;
     }
-    localObject3 = HQT;
+    localObject3 = Jro;
     Object localObject2;
     if (localObject3 != null)
     {
       Thread.currentThread();
-      localObject2 = ((a)localObject3).fhu();
+      localObject2 = ((a)localObject3).fxw();
       a.i("Vending.SchedulerProvider", "This is not a handler thread(%s). So we get a instance(%s) from thread factory.", new Object[] { Thread.currentThread(), localObject2 });
     }
     for (;;)
@@ -137,14 +137,14 @@ public class g
   }
   
   /* Error */
-  static void fht()
+  static void fxv()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 189
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 42	com/tencent/mm/vending/h/g:HQR	Z
+    //   8: getstatic 42	com/tencent/mm/vending/h/g:Jrm	Z
     //   11: ifeq +12 -> 23
     //   14: ldc 189
     //   16: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -157,15 +157,15 @@ public class g
     //   28: anewarray 4	java/lang/Object
     //   31: invokestatic 180	com/tencent/mm/vending/f/a:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   34: iconst_1
-    //   35: putstatic 42	com/tencent/mm/vending/h/g:HQR	Z
+    //   35: putstatic 42	com/tencent/mm/vending/h/g:Jrm	Z
     //   38: ldc 193
-    //   40: getstatic 197	com/tencent/mm/vending/h/d:HQL	Lcom/tencent/mm/vending/h/h;
+    //   40: getstatic 197	com/tencent/mm/vending/h/d:Jrg	Lcom/tencent/mm/vending/h/h;
     //   43: invokestatic 199	com/tencent/mm/vending/h/g:a	(Ljava/lang/String;Lcom/tencent/mm/vending/h/d;)V
     //   46: ldc 201
-    //   48: getstatic 204	com/tencent/mm/vending/h/d:HQM	Lcom/tencent/mm/vending/h/h;
+    //   48: getstatic 204	com/tencent/mm/vending/h/d:Jrh	Lcom/tencent/mm/vending/h/h;
     //   51: invokestatic 199	com/tencent/mm/vending/h/g:a	(Ljava/lang/String;Lcom/tencent/mm/vending/h/d;)V
     //   54: ldc 206
-    //   56: getstatic 209	com/tencent/mm/vending/h/d:HQN	Lcom/tencent/mm/vending/h/h;
+    //   56: getstatic 209	com/tencent/mm/vending/h/d:Jri	Lcom/tencent/mm/vending/h/h;
     //   59: invokestatic 199	com/tencent/mm/vending/h/g:a	(Ljava/lang/String;Lcom/tencent/mm/vending/h/d;)V
     //   62: ldc 189
     //   64: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -186,7 +186,7 @@ public class g
   
   public static abstract interface a
   {
-    public abstract d fhu();
+    public abstract d fxw();
   }
 }
 

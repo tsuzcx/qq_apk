@@ -1,222 +1,112 @@
 package com.tencent.mm.bo;
 
-import com.tencent.mars.comm.PlatformComm.C2Java;
-import com.tencent.mars.comm.PlatformComm.SIMInfo;
-import com.tencent.mars.comm.PlatformComm.WifiInfo;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.abq;
-import com.tencent.mm.protocal.protobuf.cwv;
-import com.tencent.mm.protocal.protobuf.cwx;
-import com.tencent.mm.protocal.protobuf.cwy;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.net.Inet6Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.util.Enumeration;
+import com.tencent.mm.sdk.platformtools.ac;
 
+@TargetApi(3)
 public final class a
-  extends n
-  implements k
+  extends OrientationEventListener
 {
-  private g gbr;
-  private com.tencent.mm.bx.b hNk;
-  private int hNl;
-  private int hNm;
-  private int hNn;
-  private int hNo;
-  private cwv hNp;
-  private cwv hNq;
-  private String hNr;
-  private com.tencent.mm.al.b rr;
+  private a ioU = a.ioX;
+  private int ioV = 45;
+  private b ioW;
   
-  public a(com.tencent.mm.bx.b paramb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, cwv paramcwv1, cwv paramcwv2, String paramString)
+  public a(Context paramContext, b paramb)
   {
-    AppMethodBeat.i(20678);
-    this.rr = null;
-    this.hNk = paramb;
-    this.hNl = paramInt1;
-    this.hNm = paramInt2;
-    this.hNn = paramInt3;
-    this.hNo = paramInt4;
-    this.hNp = paramcwv1;
-    this.hNq = paramcwv2;
-    this.hNr = paramString;
-    paramb = new b.a();
-    paramb.gUU = new cwx();
-    paramb.gUV = new cwy();
-    paramb.funcId = 271;
-    paramb.uri = "/cgi-bin/micromsg-bin/speedtestreport";
-    paramb.reqCmdId = 996;
-    paramb.respCmdId = 1000000996;
-    this.rr = paramb.atI();
-    AppMethodBeat.o(20678);
+    super(paramContext);
+    this.ioW = paramb;
   }
   
-  private static String aFv()
+  public final void disable()
   {
-    AppMethodBeat.i(20681);
-    String str1 = "";
-    String str2 = str1;
-    label106:
+    AppMethodBeat.i(151343);
+    super.disable();
+    this.ioU = a.ioX;
+    AppMethodBeat.o(151343);
+  }
+  
+  public final void enable()
+  {
+    AppMethodBeat.i(151342);
+    super.enable();
+    AppMethodBeat.o(151342);
+  }
+  
+  public final void onOrientationChanged(int paramInt)
+  {
+    AppMethodBeat.i(151344);
+    if (paramInt == -1)
+    {
+      AppMethodBeat.o(151344);
+      return;
+    }
+    a locala2 = this.ioU;
+    a locala1;
+    if (((paramInt >= 360 - this.ioV) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.ioV + 0))) {
+      locala1 = a.ioY;
+    }
     for (;;)
     {
-      try
+      if (locala1 != this.ioU)
       {
-        Enumeration localEnumeration1 = NetworkInterface.getNetworkInterfaces();
-        str2 = str1;
-        if (localEnumeration1.hasMoreElements())
-        {
-          str2 = str1;
-          Enumeration localEnumeration2 = ((NetworkInterface)localEnumeration1.nextElement()).getInetAddresses();
-          str2 = str1;
-          if (!localEnumeration2.hasMoreElements()) {
-            break label106;
-          }
-          str2 = str1;
-          InetAddress localInetAddress = (InetAddress)localEnumeration2.nextElement();
-          str2 = str1;
-          if (!(localInetAddress instanceof Inet6Address)) {
-            continue;
-          }
-          str2 = str1;
-          str1 = localInetAddress.getHostAddress().toString();
-          continue;
+        if ((this.ioW != null) && (this.ioU != a.ioX)) {
+          this.ioW.a(this.ioU, locala1);
         }
-        AppMethodBeat.o(20681);
+        this.ioU = locala1;
       }
-      catch (Exception localException)
+      ac.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(151344);
+      return;
+      if ((paramInt >= 270 - this.ioV) && (paramInt <= this.ioV + 270))
       {
-        AppMethodBeat.o(20681);
-        return str2;
+        locala1 = a.ioZ;
       }
-      return localException;
-    }
-  }
-  
-  public final int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(20679);
-    this.gbr = paramg;
-    paramg = (cwx)this.rr.gUS.gUX;
-    paramg.DKa = this.hNk;
-    paramg.EoX = this.hNl;
-    paramg.EoY = this.hNm;
-    paramg.EoZ = this.hNn;
-    paramg.Epa = this.hNo;
-    paramg.Epc = this.hNp;
-    paramg.Epb = this.hNq;
-    Object localObject;
-    int i;
-    if ("dual".equals(this.hNr))
-    {
-      localObject = paramg.Epb.ip;
-      if ((localObject == null) || (((String)localObject).length() <= 0) || (((String)localObject).contains("."))) {
-        break label527;
-      }
-      i = 1;
-      if (i != 0)
+      else if ((paramInt >= 180 - this.ioV) && (paramInt <= this.ioV + 180))
       {
-        paramg.Epc.ip = aFv();
-        ad.d("MicroMsg.MMNewSpeedTest", "local stack is dual ip is " + paramg.Epc.ip);
-      }
-    }
-    switch (PlatformComm.C2Java.getNetInfo())
-    {
-    case 0: 
-    default: 
-      paramg.EoU = "NONET";
-    }
-    for (;;)
-    {
-      localObject = m.cvx();
-      StringBuilder localStringBuilder = new StringBuilder("device info:");
-      localStringBuilder.append(((abq)localObject).deviceBrand);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((abq)localObject).deviceModel);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((abq)localObject).osName);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((abq)localObject).osVersion);
-      paramg.EoW = localStringBuilder.toString();
-      ad.d("MicroMsg.MMNewSpeedTest", "speed test " + paramg.EoW + ",networktype: " + paramg.EoU + ",network_info: " + paramg.EoV + ",conn_time: " + paramg.EoX + ",conn_retcode: " + paramg.EoY + ",trans_time: " + paramg.EoZ + ",trans_time: " + paramg.Epa + ",cookie: " + paramg.DKa.toString() + ",cookie size: " + paramg.DKa.wA.length + ",size: " + paramg.computeSize() + ",client ip: " + paramg.Epc.ip + ",client port: " + paramg.Epc.port + ",server ip: " + paramg.Epb.ip + ",server port: " + paramg.Epb.port);
-      i = dispatch(parame, this.rr, this);
-      AppMethodBeat.o(20679);
-      return i;
-      label527:
-      i = 0;
-      break;
-      paramg.EoU = "WIFI";
-      localObject = PlatformComm.C2Java.getCurWifiInfo();
-      if (localObject != null)
-      {
-        paramg.EoV = ((PlatformComm.WifiInfo)localObject).ssid;
+        locala1 = a.ipa;
       }
       else
       {
-        paramg.EoV = "unknown_netinfo";
-        continue;
-        switch (PlatformComm.C2Java.getStatisticsNetType())
+        locala1 = locala2;
+        if (paramInt >= 90 - this.ioV)
         {
-        default: 
-          paramg.EoU = "EDGE";
-        }
-        for (;;)
-        {
-          localObject = PlatformComm.C2Java.getCurSIMInfo();
-          if (localObject == null) {
-            break label673;
+          locala1 = locala2;
+          if (paramInt <= this.ioV + 90) {
+            locala1 = a.ipb;
           }
-          paramg.EoV = ((PlatformComm.SIMInfo)localObject).ispCode;
-          break;
-          paramg.EoU = "2G";
-          continue;
-          paramg.EoU = "3G";
-          continue;
-          paramg.EoU = "4G";
-          continue;
-          paramg.EoU = "EDGE";
         }
-        label673:
-        paramg.EoV = "unknown_netinfo";
-        continue;
-        paramg.EoU = "NONET";
       }
     }
   }
   
-  public final int getType()
+  public static enum a
   {
-    return 271;
+    static
+    {
+      AppMethodBeat.i(151341);
+      ioX = new a("NONE", 0);
+      ioY = new a("PORTRAIT", 1);
+      ioZ = new a("LANDSCAPE", 2);
+      ipa = new a("REVERSE_PORTRAIT", 3);
+      ipb = new a("REVERSE_LANDSCAPE", 4);
+      ipc = new a[] { ioX, ioY, ioZ, ipa, ipb };
+      AppMethodBeat.o(151341);
+    }
+    
+    private a() {}
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public static abstract interface b
   {
-    AppMethodBeat.i(20680);
-    ad.d("MicroMsg.MMNewSpeedTest", "ErrType:" + paramInt2 + "   errCode:" + paramInt3);
-    if ((paramInt3 == 0) && (paramInt2 == 0)) {
-      h.vKh.dB(317, 26);
-    }
-    for (;;)
-    {
-      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(20680);
-      return;
-      h.vKh.dB(317, 27);
-    }
+    public abstract void a(a.a parama1, a.a parama2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.bo.a
  * JD-Core Version:    0.7.0.1
  */

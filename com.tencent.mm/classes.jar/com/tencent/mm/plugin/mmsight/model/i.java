@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.mmsight.model;
 public final class i
 {
   public static boolean DEBUG = false;
-  public static int tCH = 0;
-  public static int tCI = 1;
+  public static int uLe = 0;
+  public static int uLf = 1;
 }
 
 

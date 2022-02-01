@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class ad
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String mBL;
-  public int mBM;
-  public int mBO;
-  public int mBP;
-  public int mBR;
+  public String ndM;
+  public int ndN;
+  public int ndP;
+  public int ndQ;
+  public int ndS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -18,45 +18,45 @@ public final class ad
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.mBL == null)
+      if (this.ndM == null)
       {
         paramVarArgs = new b("Not all required fields were included: DataID");
         AppMethodBeat.o(22136);
         throw paramVarArgs;
       }
-      if (this.mBL != null) {
-        paramVarArgs.d(1, this.mBL);
+      if (this.ndM != null) {
+        paramVarArgs.d(1, this.ndM);
       }
-      paramVarArgs.aR(2, this.mBM);
-      paramVarArgs.aR(3, this.mBO);
-      paramVarArgs.aR(4, this.mBP);
-      paramVarArgs.aR(5, this.mBR);
+      paramVarArgs.aR(2, this.ndN);
+      paramVarArgs.aR(3, this.ndP);
+      paramVarArgs.aR(4, this.ndQ);
+      paramVarArgs.aR(5, this.ndS);
       AppMethodBeat.o(22136);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.mBL == null) {
+      if (this.ndM == null) {
         break label457;
       }
     }
     label457:
-    for (paramInt = f.a.a.b.b.a.e(1, this.mBL) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.ndM) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.mBM);
-      int j = f.a.a.b.b.a.bA(3, this.mBO);
-      int k = f.a.a.b.b.a.bA(4, this.mBP);
-      int m = f.a.a.b.b.a.bA(5, this.mBR);
+      int i = f.a.a.b.b.a.bx(2, this.ndN);
+      int j = f.a.a.b.b.a.bx(3, this.ndP);
+      int k = f.a.a.b.b.a.bx(4, this.ndQ);
+      int m = f.a.a.b.b.a.bx(5, this.ndS);
       AppMethodBeat.o(22136);
       return paramInt + i + j + k + m;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.mBL == null)
+        if (this.ndM == null)
         {
           paramVarArgs = new b("Not all required fields were included: DataID");
           AppMethodBeat.o(22136);
@@ -75,23 +75,23 @@ public final class ad
           AppMethodBeat.o(22136);
           return -1;
         case 1: 
-          localad.mBL = locala.KhF.readString();
+          localad.ndM = locala.LVo.readString();
           AppMethodBeat.o(22136);
           return 0;
         case 2: 
-          localad.mBM = locala.KhF.xS();
+          localad.ndN = locala.LVo.xF();
           AppMethodBeat.o(22136);
           return 0;
         case 3: 
-          localad.mBO = locala.KhF.xS();
+          localad.ndP = locala.LVo.xF();
           AppMethodBeat.o(22136);
           return 0;
         case 4: 
-          localad.mBP = locala.KhF.xS();
+          localad.ndQ = locala.LVo.xF();
           AppMethodBeat.o(22136);
           return 0;
         }
-        localad.mBR = locala.KhF.xS();
+        localad.ndS = locala.LVo.xF();
         AppMethodBeat.o(22136);
         return 0;
       }
@@ -102,7 +102,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.ad
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,9 +21,9 @@ import org.json.JSONObject;
 public final class g
   extends k
 {
-  ImageView djK;
+  ImageView dhf;
   ProgressBar progressBar;
-  boolean wZK = true;
+  boolean ymx = true;
   
   public g(Context paramContext, ViewGroup paramViewGroup)
   {
@@ -35,19 +35,19 @@ public final class g
     super(paramContext, null, paramViewGroup);
   }
   
-  public final boolean aG(JSONObject paramJSONObject)
+  public final boolean aH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96456);
-    if (!super.aG(paramJSONObject))
+    if (!super.aH(paramJSONObject))
     {
       AppMethodBeat.o(96456);
       return false;
     }
     try
     {
-      if (!this.wZK)
+      if (!this.ymx)
       {
-        String str = ai.du(((s)this.xab).wWp);
+        String str = ah.dg(((s)this.ymQ).yjd);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("urlMd5", str);
         localJSONObject.put("needDownload", 1);
@@ -58,41 +58,50 @@ public final class g
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace("AdLandingImageComp", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("AdLandingImageComp", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(96456);
     }
     return false;
   }
   
-  protected final void dvN()
+  public final void dJW()
+  {
+    AppMethodBeat.i(96452);
+    View localView = this.contentView;
+    this.dhf = ((ImageView)localView.findViewById(2131304915));
+    this.progressBar = ((ProgressBar)localView.findViewById(2131303535));
+    AppMethodBeat.o(96452);
+  }
+  
+  protected final void dKm()
   {
     AppMethodBeat.i(96453);
-    if ((this.contentView == null) || (this.djK == null) || (this.progressBar == null))
+    if ((this.contentView == null) || (this.dhf == null) || (this.progressBar == null))
     {
       AppMethodBeat.o(96453);
       return;
     }
-    if ((s)this.xab == null)
+    if ((s)this.ymQ == null)
     {
       AppMethodBeat.o(96453);
       return;
     }
-    float f1 = ((s)this.xab).paddingTop;
-    float f2 = ((s)this.xab).paddingBottom;
-    float f3 = ((s)this.xab).paddingLeft;
-    float f4 = ((s)this.xab).paddingRight;
-    String str = ((s)this.xab).wWp;
-    float f5 = ((s)this.xab).height;
-    float f6 = ((s)this.xab).width;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.djK.getLayoutParams();
+    float f1 = ((s)this.ymQ).paddingTop;
+    float f2 = ((s)this.ymQ).paddingBottom;
+    float f3 = ((s)this.ymQ).paddingLeft;
+    float f4 = ((s)this.ymQ).paddingRight;
+    String str = ((s)this.ymQ).yjd;
+    float f5 = ((s)this.ymQ).height;
+    float f6 = ((s)this.ymQ).width;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.dhf.getLayoutParams();
     localLayoutParams.width = ((int)f6);
     localLayoutParams.height = ((int)f5);
-    this.djK.setLayoutParams(localLayoutParams);
-    this.wZK = false;
+    this.dhf.setLayoutParams(localLayoutParams);
+    this.ymx = false;
     startLoading();
-    h.a(str, ((s)this.xab).wWF, new f.a()
+    h.a(str, ((s)this.ymQ).yjt, new f.a()
     {
-      public final void apm(String paramAnonymousString)
+      public final void asD(String paramAnonymousString)
       {
         AppMethodBeat.i(96451);
         g localg;
@@ -103,59 +112,50 @@ public final class g
           localg = g.this;
           if (paramAnonymousString == null)
           {
-            ad.e("AdLandingImageComp", "when set image the bmp is null!");
+            ac.e("AdLandingImageComp", "when set image the bmp is null!");
             AppMethodBeat.o(96451);
             return;
           }
-          if (localg.djK == null)
+          if (localg.dhf == null)
           {
-            ad.e("AdLandingImageComp", "when set image the imageView is null!");
+            ac.e("AdLandingImageComp", "when set image the imageView is null!");
             AppMethodBeat.o(96451);
             return;
           }
         }
         catch (Exception paramAnonymousString)
         {
-          ad.e("AdLandingImageComp", "%s" + bt.m(paramAnonymousString));
+          ac.e("AdLandingImageComp", "%s" + bs.m(paramAnonymousString));
           AppMethodBeat.o(96451);
           return;
         }
         if (paramAnonymousString.getWidth() == 0)
         {
-          ad.e("AdLandingImageComp", "when set image the bmp.getWidth is 0!");
+          ac.e("AdLandingImageComp", "when set image the bmp.getWidth is 0!");
           AppMethodBeat.o(96451);
           return;
         }
-        localg.djK.setImageBitmap(paramAnonymousString);
+        localg.dhf.setImageBitmap(paramAnonymousString);
         localg.progressBar.setVisibility(8);
         AppMethodBeat.o(96451);
       }
       
-      public final void dsA()
-      {
-        AppMethodBeat.i(96450);
-        g.this.stopLoading();
-        AppMethodBeat.o(96450);
-      }
-      
-      public final void duP()
+      public final void dFC()
       {
         AppMethodBeat.i(96449);
         g.this.startLoading();
         AppMethodBeat.o(96449);
       }
+      
+      public final void dFD()
+      {
+        AppMethodBeat.i(96450);
+        g.this.stopLoading();
+        AppMethodBeat.o(96450);
+      }
     });
     this.contentView.setPadding((int)f3, (int)f1, (int)f4, (int)f2);
     AppMethodBeat.o(96453);
-  }
-  
-  public final void dvx()
-  {
-    AppMethodBeat.i(96452);
-    View localView = this.contentView;
-    this.djK = ((ImageView)localView.findViewById(2131304915));
-    this.progressBar = ((ProgressBar)localView.findViewById(2131303535));
-    AppMethodBeat.o(96452);
   }
   
   protected final int getLayout()
@@ -179,7 +179,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.g
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,8 @@ import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.os.Bundle;
-import com.tencent.liteav.basic.d.g.a;
+import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.d.h.a;
 import com.tencent.liteav.basic.e.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
@@ -50,7 +51,7 @@ public class TXCRenderAndDec
   private int mRenderRotation;
   private int mStreamType;
   private TXCVideoDecoder mVideoDecoder;
-  private com.tencent.liteav.basic.d.g mVideoFrameFilter;
+  private h mVideoFrameFilter;
   private int mVideoFrameFormat;
   private n mVideoFrameListener;
   private e mVideoRender;
@@ -421,18 +422,18 @@ public class TXCRenderAndDec
           break label138;
         }
         this.mVideoFrameFilter.a(paramInt2, paramInt3);
-        this.mVideoFrameFilter.a(new g.a()
+        this.mVideoFrameFilter.a(new h.a()
         {
           public void a(int paramAnonymousInt)
           {
             AppMethodBeat.i(15553);
-            com.tencent.liteav.basic.d.g localg = TXCRenderAndDec.this.mVideoFrameFilter;
+            h localh = TXCRenderAndDec.this.mVideoFrameFilter;
             n localn = TXCRenderAndDec.this.mVideoFrameListener;
-            if ((localg != null) && (localn != null))
+            if ((localh != null) && (localn != null))
             {
               TXSVideoFrame localTXSVideoFrame = new TXSVideoFrame();
-              localTXSVideoFrame.width = localg.n();
-              localTXSVideoFrame.height = localg.o();
+              localTXSVideoFrame.width = localh.n();
+              localTXSVideoFrame.height = localh.o();
               localTXSVideoFrame.pts = TXCTimeUtil.getTimeTick();
               localTXSVideoFrame.rotation = ((paramInt4 + TXCRenderAndDec.this.mRenderRotation) % 360);
               localn.onRenderVideoFrame(TXCRenderAndDec.this.getID(), TXCRenderAndDec.this.mStreamType, localTXSVideoFrame);

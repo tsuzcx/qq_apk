@@ -11,49 +11,49 @@ import java.util.List;
 
 public final class CaptureDataManager
 {
-  public static CaptureDataManager vhw;
-  private Bundle joo;
-  public b vhv;
+  public static CaptureDataManager wqi;
+  private Bundle jOA;
+  public b wqh;
   
   static
   {
     AppMethodBeat.i(101494);
-    vhw = new CaptureDataManager();
+    wqi = new CaptureDataManager();
     AppMethodBeat.o(101494);
   }
   
   private CaptureDataManager()
   {
     AppMethodBeat.i(101490);
-    this.vhv = null;
-    this.joo = new Bundle();
+    this.wqh = null;
+    this.jOA = new Bundle();
     AppMethodBeat.o(101490);
   }
   
   public final void a(Context paramContext, CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(101491);
-    if ((this.vhv == null) || (paramContext == null))
+    if ((this.wqh == null) || (paramContext == null))
     {
       AppMethodBeat.o(101491);
       return;
     }
-    this.vhv.a(paramContext, paramCaptureVideoNormalModel, this.joo);
-    this.joo.clear();
+    this.wqh.a(paramContext, paramCaptureVideoNormalModel, this.jOA);
+    this.jOA.clear();
     AppMethodBeat.o(101491);
   }
   
   public final void a(b paramb)
   {
-    this.vhv = paramb;
+    this.wqh = paramb;
   }
   
   public final boolean a(Context paramContext, a parama)
   {
     AppMethodBeat.i(101492);
-    if (this.vhv != null)
+    if (this.wqh != null)
     {
-      boolean bool = this.vhv.a(paramContext, this.joo, parama);
+      boolean bool = this.wqh.a(paramContext, this.jOA, parama);
       AppMethodBeat.o(101492);
       return bool;
     }
@@ -61,29 +61,29 @@ public final class CaptureDataManager
     return false;
   }
   
-  public final void dhz()
+  public final void dvg()
   {
     AppMethodBeat.i(101493);
-    this.joo.clear();
+    this.jOA.clear();
     AppMethodBeat.o(101493);
   }
   
   public final Bundle getExtData()
   {
-    return this.joo;
+    return this.jOA;
   }
   
   public static class CaptureVideoNormalModel
     implements Parcelable
   {
     public static final Parcelable.Creator<CaptureVideoNormalModel> CREATOR;
-    private List<String> Lnb;
     public String thumbPath;
-    private RecordMediaReportInfo vhA;
-    public Boolean vhx;
-    public Long vhy;
-    public Boolean vhz;
     public String videoPath;
+    public Boolean wqj;
+    public Long wqk;
+    public Boolean wql;
+    private RecordMediaReportInfo wqm;
+    private List<String> wqn;
     
     static
     {
@@ -95,31 +95,31 @@ public final class CaptureDataManager
     protected CaptureVideoNormalModel(Parcel paramParcel)
     {
       AppMethodBeat.i(101488);
-      this.Lnb = new ArrayList();
-      this.vhx = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqn = new ArrayList();
+      this.wqj = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
       this.videoPath = paramParcel.readString();
       this.thumbPath = paramParcel.readString();
-      this.vhy = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
-      this.vhz = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.vhA = ((RecordMediaReportInfo)paramParcel.readParcelable(RecordMediaReportInfo.class.getClassLoader()));
-      this.Lnb = paramParcel.readArrayList(ArrayList.class.getClassLoader());
+      this.wqk = ((Long)paramParcel.readValue(Long.class.getClassLoader()));
+      this.wql = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqm = ((RecordMediaReportInfo)paramParcel.readParcelable(RecordMediaReportInfo.class.getClassLoader()));
+      this.wqn = paramParcel.readArrayList(ArrayList.class.getClassLoader());
       AppMethodBeat.o(101488);
     }
     
     public CaptureVideoNormalModel(Boolean paramBoolean1, String paramString1, String paramString2, Long paramLong, Boolean paramBoolean2, RecordMediaReportInfo paramRecordMediaReportInfo)
     {
-      AppMethodBeat.i(204041);
-      this.Lnb = new ArrayList();
-      this.vhx = paramBoolean1;
+      AppMethodBeat.i(199484);
+      this.wqn = new ArrayList();
+      this.wqj = paramBoolean1;
       this.videoPath = paramString1;
       this.thumbPath = paramString2;
-      this.vhy = paramLong;
-      this.vhz = paramBoolean2;
-      this.vhA = paramRecordMediaReportInfo;
-      AppMethodBeat.o(204041);
+      this.wqk = paramLong;
+      this.wql = paramBoolean2;
+      this.wqm = paramRecordMediaReportInfo;
+      AppMethodBeat.o(199484);
     }
     
-    public final String anX()
+    public final String auN()
     {
       return this.thumbPath;
     }
@@ -129,38 +129,47 @@ public final class CaptureDataManager
       return 0;
     }
     
-    public final Boolean dhA()
+    public final Boolean dvh()
     {
-      return this.vhx;
+      return this.wqj;
     }
     
-    public final Long dhB()
+    public final Long dvi()
     {
-      return this.vhy;
+      return this.wqk;
     }
     
-    public final Boolean dhC()
+    public final Boolean dvj()
     {
-      return this.vhz;
+      return this.wql;
     }
     
-    public final RecordMediaReportInfo dhD()
+    public final RecordMediaReportInfo dvk()
     {
       AppMethodBeat.i(101486);
-      if (this.vhA == null)
+      if (this.wqm == null)
       {
         localRecordMediaReportInfo = new RecordMediaReportInfo();
         AppMethodBeat.o(101486);
         return localRecordMediaReportInfo;
       }
-      RecordMediaReportInfo localRecordMediaReportInfo = this.vhA;
+      RecordMediaReportInfo localRecordMediaReportInfo = this.wqm;
       AppMethodBeat.o(101486);
       return localRecordMediaReportInfo;
     }
     
-    public final List<String> fYa()
+    public final List<String> dvl()
     {
-      return this.Lnb;
+      return this.wqn;
+    }
+    
+    public final void eM(List<String> paramList)
+    {
+      AppMethodBeat.i(199485);
+      if (paramList != null) {
+        this.wqn.addAll(paramList);
+      }
+      AppMethodBeat.o(199485);
     }
     
     public final String getVideoPath()
@@ -168,32 +177,23 @@ public final class CaptureDataManager
       return this.videoPath;
     }
     
-    public final void iX(List<String> paramList)
-    {
-      AppMethodBeat.i(204042);
-      if (paramList != null) {
-        this.Lnb.addAll(paramList);
-      }
-      AppMethodBeat.o(204042);
-    }
-    
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(101487);
-      paramParcel.writeValue(this.vhx);
+      paramParcel.writeValue(this.wqj);
       paramParcel.writeString(this.videoPath);
       paramParcel.writeString(this.thumbPath);
-      paramParcel.writeValue(this.vhy);
-      paramParcel.writeValue(this.vhz);
-      paramParcel.writeParcelable(this.vhA, paramInt);
-      paramParcel.writeList(this.Lnb);
+      paramParcel.writeValue(this.wqk);
+      paramParcel.writeValue(this.wql);
+      paramParcel.writeParcelable(this.wqm, paramInt);
+      paramParcel.writeList(this.wqn);
       AppMethodBeat.o(101487);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void dhE();
+    public abstract void dvm();
   }
   
   public static abstract interface b
@@ -205,7 +205,7 @@ public final class CaptureDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager
  * JD-Core Version:    0.7.0.1
  */

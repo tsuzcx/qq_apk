@@ -22,73 +22,73 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.LinkedList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public enum d
 {
-  WebViewBag BjF;
-  private a BjG;
-  public boolean BjH;
-  public a BjI;
-  private LinkedList<Object> BjJ;
-  long wvn;
+  WebViewBag CBT;
+  private a CBU;
+  public boolean CBV;
+  public a CBW;
+  private LinkedList<Object> CBX;
+  long xGD;
   
   static
   {
     AppMethodBeat.i(80462);
-    BjE = new d("INSTANCE");
-    BjK = new d[] { BjE };
+    CBS = new d("INSTANCE");
+    CBY = new d[] { CBS };
     AppMethodBeat.o(80462);
   }
   
   private d()
   {
     AppMethodBeat.i(80449);
-    this.wvn = -1L;
-    this.BjI = new a();
-    this.BjJ = new LinkedList();
+    this.xGD = -1L;
+    this.CBW = new a();
+    this.CBX = new LinkedList();
     AppMethodBeat.o(80449);
   }
   
-  private void TD(int paramInt)
+  private void VL(int paramInt)
   {
     AppMethodBeat.i(80456);
-    ad.v("MicroMsg.WebViewBagMgr", "kvReport op:%d", new Object[] { Integer.valueOf(paramInt) });
-    h.vKh.f(11576, new Object[] { this.BjI.url, Integer.valueOf(paramInt), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis() - this.BjI.hcM), this.BjI.id });
+    ac.v("MicroMsg.WebViewBagMgr", "kvReport op:%d", new Object[] { Integer.valueOf(paramInt) });
+    h.wUl.f(11576, new Object[] { this.CBW.url, Integer.valueOf(paramInt), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis() - this.CBW.hDp), this.CBW.id });
     AppMethodBeat.o(80456);
   }
   
-  private void epr()
+  private void eEM()
   {
     AppMethodBeat.i(80455);
-    ad.i("MicroMsg.WebViewBagMgr", "setAngryInfo mBagInfo.lastActiveTime:%d", new Object[] { Long.valueOf(this.BjI.hcM) });
-    if (this.BjF == null)
+    ac.i("MicroMsg.WebViewBagMgr", "setAngryInfo mBagInfo.lastActiveTime:%d", new Object[] { Long.valueOf(this.CBW.hDp) });
+    if (this.CBT == null)
     {
       AppMethodBeat.o(80455);
       return;
     }
-    if (eps())
+    if (eEN())
     {
-      this.BjF.o(60000, 100, this.BjI.hcM + 2000L);
+      this.CBT.o(60000, 100, this.CBW.hDp + 2000L);
       AppMethodBeat.o(80455);
       return;
     }
-    this.BjF.o(3600000, 30000, this.BjI.hcM + 3600000L);
+    this.CBT.o(3600000, 30000, this.CBW.hDp + 3600000L);
     AppMethodBeat.o(80455);
   }
   
-  private static boolean eps()
+  private static boolean eEN()
   {
     AppMethodBeat.i(80457);
-    boolean bool = "1".equals((String)g.afB().afk().get(ae.a.Ftt, "0"));
+    boolean bool = "1".equals((String)g.agR().agA().get(ah.a.GRn, "0"));
     AppMethodBeat.o(80457);
     return bool;
   }
@@ -96,41 +96,41 @@ public enum d
   final void a(String paramString1, int paramInt, String paramString2, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(80454);
-    if ((!paramBoolean) || (bt.isNullOrNil(this.BjI.id)))
+    if ((!paramBoolean) || (bs.isNullOrNil(this.CBW.id)))
     {
-      TD(23);
-      this.BjI.id = ai.du(String.format("bagId#%d#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), this.BjI.url }));
+      VL(23);
+      this.CBW.id = ah.dg(String.format("bagId#%d#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), this.CBW.url }));
     }
-    this.BjI.url = paramString1;
-    this.BjI.dub = paramString2;
-    this.BjI.scene = paramInt;
-    this.BjI.hcM = bt.eGO();
-    this.BjI.BjQ = c.aH(paramBundle);
-    this.BjI.save();
+    this.CBW.url = paramString1;
+    this.CBW.drM = paramString2;
+    this.CBW.scene = paramInt;
+    this.CBW.hDp = bs.eWj();
+    this.CBW.CCe = c.aM(paramBundle);
+    this.CBW.save();
     AppMethodBeat.o(80454);
   }
   
-  public final void bz(float paramFloat)
+  public final void bH(float paramFloat)
   {
     AppMethodBeat.i(80453);
-    if (this.BjF == null)
+    if (this.CBT == null)
     {
       AppMethodBeat.o(80453);
       return;
     }
-    this.BjF.setAlpha(paramFloat);
+    this.CBT.setAlpha(paramFloat);
     if (paramFloat == 0.0F)
     {
-      this.BjF.setVisibility(8);
+      this.CBT.setVisibility(8);
       AppMethodBeat.o(80453);
       return;
     }
-    this.BjF.setVisibility(0);
+    this.CBT.setVisibility(0);
     AppMethodBeat.o(80453);
   }
   
   /* Error */
-  public final void epo()
+  public final void eEJ()
   {
     // Byte code:
     //   0: ldc_w 358
@@ -142,14 +142,14 @@ public enum d
     //   15: dup
     //   16: iconst_0
     //   17: aload_0
-    //   18: getfield 68	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjI	Lcom/tencent/mm/plugin/webview/ui/tools/bag/d$a;
+    //   18: getfield 68	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBW	Lcom/tencent/mm/plugin/webview/ui/tools/bag/d$a;
     //   21: getfield 104	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:url	Ljava/lang/String;
     //   24: aastore
-    //   25: invokestatic 140	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   25: invokestatic 140	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   28: aload_0
-    //   29: invokevirtual 363	com/tencent/mm/plugin/webview/ui/tools/bag/d:epq	()V
+    //   29: invokevirtual 363	com/tencent/mm/plugin/webview/ui/tools/bag/d:eEL	()V
     //   32: aload_0
-    //   33: getfield 68	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjI	Lcom/tencent/mm/plugin/webview/ui/tools/bag/d$a;
+    //   33: getfield 68	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBW	Lcom/tencent/mm/plugin/webview/ui/tools/bag/d$a;
     //   36: astore_1
     //   37: aload_1
     //   38: aconst_null
@@ -159,10 +159,10 @@ public enum d
     //   44: putfield 104	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:url	Ljava/lang/String;
     //   47: aload_1
     //   48: aconst_null
-    //   49: putfield 183	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:dub	Ljava/lang/String;
+    //   49: putfield 183	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:drM	Ljava/lang/String;
     //   52: aload_1
     //   53: lconst_0
-    //   54: putfield 113	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:hcM	J
+    //   54: putfield 113	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:hDp	J
     //   57: aload_1
     //   58: iconst_0
     //   59: putfield 340	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:scene	I
@@ -170,47 +170,47 @@ public enum d
     //   63: new 365	org/json/JSONObject
     //   66: dup
     //   67: invokespecial 366	org/json/JSONObject:<init>	()V
-    //   70: putfield 160	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:BjQ	Lorg/json/JSONObject;
+    //   70: putfield 160	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:CCe	Lorg/json/JSONObject;
     //   73: aload_1
     //   74: invokevirtual 232	com/tencent/mm/plugin/webview/ui/tools/bag/d$a:save	()V
     //   77: ldc 78
     //   79: ldc_w 368
-    //   82: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   82: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   85: aload_0
-    //   86: getfield 219	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjF	Lcom/tencent/mm/plugin/webview/ui/tools/bag/WebViewBag;
+    //   86: getfield 219	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBT	Lcom/tencent/mm/plugin/webview/ui/tools/bag/WebViewBag;
     //   89: ifnull +118 -> 207
-    //   92: invokestatic 211	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   92: invokestatic 211	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   95: ldc_w 370
     //   98: invokevirtual 376	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   101: checkcast 378	android/view/WindowManager
     //   104: astore_1
     //   105: aload_1
     //   106: aload_0
-    //   107: getfield 219	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjF	Lcom/tencent/mm/plugin/webview/ui/tools/bag/WebViewBag;
+    //   107: getfield 219	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBT	Lcom/tencent/mm/plugin/webview/ui/tools/bag/WebViewBag;
     //   110: invokeinterface 382 2 0
     //   115: aload_0
     //   116: aconst_null
-    //   117: putfield 219	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjF	Lcom/tencent/mm/plugin/webview/ui/tools/bag/WebViewBag;
+    //   117: putfield 219	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBT	Lcom/tencent/mm/plugin/webview/ui/tools/bag/WebViewBag;
     //   120: aload_0
-    //   121: getfield 259	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjG	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a;
+    //   121: getfield 259	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBU	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a;
     //   124: ifnull +36 -> 160
     //   127: aload_0
-    //   128: getfield 259	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjG	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a;
+    //   128: getfield 259	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBU	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a;
     //   131: astore_1
-    //   132: invokestatic 211	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   132: invokestatic 211	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   135: ldc_w 370
     //   138: invokevirtual 376	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   141: checkcast 378	android/view/WindowManager
     //   144: astore_2
     //   145: aload_2
     //   146: aload_1
-    //   147: getfield 388	com/tencent/mm/plugin/webview/ui/tools/bag/a:BiY	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a$a;
+    //   147: getfield 388	com/tencent/mm/plugin/webview/ui/tools/bag/a:CBl	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a$a;
     //   150: invokeinterface 382 2 0
     //   155: aload_0
     //   156: aconst_null
-    //   157: putfield 259	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjG	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a;
+    //   157: putfield 259	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBU	Lcom/tencent/mm/plugin/webview/ui/tools/bag/a;
     //   160: aload_0
-    //   161: getfield 73	com/tencent/mm/plugin/webview/ui/tools/bag/d:BjJ	Ljava/util/LinkedList;
+    //   161: getfield 73	com/tencent/mm/plugin/webview/ui/tools/bag/d:CBX	Ljava/util/LinkedList;
     //   164: invokevirtual 392	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   167: astore_1
     //   168: aload_1
@@ -229,11 +229,11 @@ public enum d
     //   198: iconst_0
     //   199: aload_1
     //   200: aastore
-    //   201: invokestatic 405	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   204: goto -89 -> 115
     //   207: ldc 78
     //   209: ldc_w 407
-    //   212: invokestatic 409	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   212: invokestatic 409	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   215: goto -95 -> 120
     //   218: astore_1
     //   219: ldc_w 411
@@ -244,7 +244,7 @@ public enum d
     //   230: iconst_0
     //   231: aload_1
     //   232: aastore
-    //   233: invokestatic 405	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   233: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   236: goto -81 -> 155
     //   239: ldc_w 358
     //   242: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -262,33 +262,33 @@ public enum d
     //   145	155	218	java/lang/Exception
   }
   
-  final void epp()
+  final void eEK()
   {
     AppMethodBeat.i(80451);
-    ad.i("MicroMsg.WebViewBagMgr", "showBag url:%s", new Object[] { this.BjI.url });
-    if (!com.tencent.mm.compatible.d.b.bZ(aj.getContext()))
+    ac.i("MicroMsg.WebViewBagMgr", "showBag url:%s", new Object[] { this.CBW.url });
+    if (!com.tencent.mm.compatible.d.b.cc(ai.getContext()))
     {
-      ad.w("MicroMsg.WebViewBagMgr", "showBag: no float window permission");
+      ac.w("MicroMsg.WebViewBagMgr", "showBag: no float window permission");
       AppMethodBeat.o(80451);
       return;
     }
-    if (bt.isNullOrNil(this.BjI.url))
+    if (bs.isNullOrNil(this.CBW.url))
     {
-      epo();
+      eEJ();
       AppMethodBeat.o(80451);
       return;
     }
     boolean bool;
     WindowManager localWindowManager;
     WindowManager.LayoutParams localLayoutParams;
-    if (this.BjF == null)
+    if (this.CBT == null)
     {
       bool = true;
-      if (this.BjF == null)
+      if (this.CBT == null)
       {
-        this.BjG = new a(new a.b()
+        this.CBU = new a(new a.b()
         {
-          public final void epn()
+          public final void eEI()
           {
             AppMethodBeat.i(80441);
             d.a(d.this, 17);
@@ -296,25 +296,25 @@ public enum d
             if (d.b(d.this) != null) {
               localPoint = d.b(d.this).getLastTouchDownViewPos();
             }
-            d.this.epo();
+            d.this.eEJ();
             if (localPoint != null)
             {
-              d.c(d.this).BjP = localPoint.x;
-              d.c(d.this).BjO = localPoint.y;
+              d.c(d.this).CCd = localPoint.x;
+              d.c(d.this).CCc = localPoint.y;
               d.c(d.this).save();
             }
             AppMethodBeat.o(80441);
           }
         });
-        this.BjF = new WebViewBag(aj.getContext(), null);
-        this.BjF.setListener(new WebViewBag.a()
+        this.CBT = new WebViewBag(ai.getContext(), null);
+        this.CBT.setListener(new WebViewBag.a()
         {
-          public final void iD(int paramAnonymousInt1, int paramAnonymousInt2)
+          public final void iQ(int paramAnonymousInt1, int paramAnonymousInt2)
           {
             AppMethodBeat.i(80442);
             d.a(d.this, 19);
-            d.c(d.this).BjP = paramAnonymousInt1;
-            d.c(d.this).BjO = paramAnonymousInt2;
+            d.c(d.this).CCd = paramAnonymousInt1;
+            d.c(d.this).CCc = paramAnonymousInt2;
             d.c(d.this).save();
             AppMethodBeat.o(80442);
           }
@@ -337,19 +337,19 @@ public enum d
               AppMethodBeat.o(80443);
               return;
             case 0: 
-              locala.Bjb.x = f1;
-              locala.Bjb.y = f2;
+              locala.CBo.x = f1;
+              locala.CBo.y = f2;
             }
             for (;;)
             {
-              locala.Bja = false;
-              locala.Bjc = false;
+              locala.CBn = false;
+              locala.CBp = false;
               break;
               boolean bool;
               label177:
               Object localObject1;
               Object localObject2;
-              if (locala.Bja)
+              if (locala.CBn)
               {
                 bool = true;
                 if (!bool) {
@@ -357,56 +357,56 @@ public enum d
                 }
                 if (!locala.mIsShowing)
                 {
-                  b.ec(aj.getContext());
+                  b.ek(ai.getContext());
                   locala.mIsShowing = true;
-                  locala.mScreenWidth = com.tencent.mm.cd.a.hV(aj.getContext());
-                  locala.mScreenHeight = com.tencent.mm.cd.a.hW(aj.getContext());
+                  locala.mScreenWidth = com.tencent.mm.cc.a.ig(ai.getContext());
+                  locala.mScreenHeight = com.tencent.mm.cc.a.ih(ai.getContext());
                   if (locala.mScreenWidth <= locala.mScreenHeight) {
                     break label481;
                   }
                   bool = true;
-                  locala.Bjd = bool;
-                  ad.i("MicroMsg.BagCancelController", "updateOrientation mIsLandScape:%b", new Object[] { Boolean.valueOf(locala.Bjd) });
-                  localObject1 = locala.BiY;
+                  locala.CBq = bool;
+                  ac.i("MicroMsg.BagCancelController", "updateOrientation mIsLandScape:%b", new Object[] { Boolean.valueOf(locala.CBq) });
+                  localObject1 = locala.CBl;
                   ((a.a)localObject1).setVisibility(0);
-                  localObject2 = new TranslateAnimation(b.Bjm, 0.0F, b.Bjm, 0.0F);
+                  localObject2 = new TranslateAnimation(b.CBz, 0.0F, b.CBz, 0.0F);
                   ((TranslateAnimation)localObject2).setFillAfter(true);
                   ((TranslateAnimation)localObject2).setDuration(200L);
-                  ((a.a)localObject1).pev.startAnimation((Animation)localObject2);
+                  ((a.a)localObject1).pHG.startAnimation((Animation)localObject2);
                   ((a.a)localObject1).mContentView.startAnimation((Animation)localObject2);
                 }
-                bool = locala.Bjc;
-                if (!locala.Bjd) {
+                bool = locala.CBp;
+                if (!locala.CBq) {
                   break label487;
                 }
-                f1 = locala.mScreenWidth - paramAnonymousMotionEvent.getRawX() - b.mFV;
+                f1 = locala.mScreenWidth - paramAnonymousMotionEvent.getRawX() - b.nia;
                 f2 = locala.mScreenHeight - paramAnonymousMotionEvent.getRawY();
                 label316:
-                if (f1 * f1 + f2 * f2 >= a.BiX) {
+                if (f1 * f1 + f2 * f2 >= a.CBk) {
                   break label519;
                 }
               }
               label519:
-              for (locala.Bjc = true; locala.Bjc != bool; locala.Bjc = false)
+              for (locala.CBp = true; locala.CBp != bool; locala.CBp = false)
               {
-                paramAnonymousMotionEvent = locala.BiY;
-                if (!locala.Bjc) {
+                paramAnonymousMotionEvent = locala.CBl;
+                if (!locala.CBp) {
                   break label528;
                 }
-                paramAnonymousMotionEvent.ab(1.0F, b.Bjn);
-                if (paramAnonymousMotionEvent.lRO != null) {
-                  paramAnonymousMotionEvent.lRO.vibrate(10L);
+                paramAnonymousMotionEvent.af(1.0F, b.CBA);
+                if (paramAnonymousMotionEvent.mtQ != null) {
+                  paramAnonymousMotionEvent.mtQ.vibrate(10L);
                 }
                 AppMethodBeat.o(80443);
                 return;
-                float f3 = locala.Bjb.x;
-                float f4 = locala.Bjb.x;
-                float f5 = locala.Bjb.y;
-                if ((f1 - f4) * (f1 - f3) + (f2 - locala.Bjb.y) * (f2 - f5) - 900.0F > 0.0F) {}
+                float f3 = locala.CBo.x;
+                float f4 = locala.CBo.x;
+                float f5 = locala.CBo.y;
+                if ((f1 - f4) * (f1 - f3) + (f2 - locala.CBo.y) * (f2 - f5) - 900.0F > 0.0F) {}
                 for (bool = true;; bool = false)
                 {
-                  locala.Bja = bool;
-                  bool = locala.Bja;
+                  locala.CBn = bool;
+                  bool = locala.CBn;
                   break;
                 }
                 label481:
@@ -414,35 +414,35 @@ public enum d
                 break label177;
                 label487:
                 f1 = locala.mScreenWidth - paramAnonymousMotionEvent.getRawX();
-                f2 = locala.mScreenHeight - paramAnonymousMotionEvent.getRawY() - b.mFV;
+                f2 = locala.mScreenHeight - paramAnonymousMotionEvent.getRawY() - b.nia;
                 break label316;
               }
               label528:
-              paramAnonymousMotionEvent.ab(b.Bjn, 1.0F);
+              paramAnonymousMotionEvent.af(b.CBA, 1.0F);
               AppMethodBeat.o(80443);
               return;
-              if (locala.Bjc)
+              if (locala.CBp)
               {
-                locala.BiZ.epn();
+                locala.CBm.eEI();
               }
               else if (locala.mIsShowing)
               {
                 locala.mIsShowing = false;
-                paramAnonymousMotionEvent = locala.BiY;
-                localObject1 = new TranslateAnimation(0.0F, b.Bjm, 0.0F, b.Bjm);
+                paramAnonymousMotionEvent = locala.CBl;
+                localObject1 = new TranslateAnimation(0.0F, b.CBz, 0.0F, b.CBz);
                 localObject2 = new AlphaAnimation(1.0F, 0.0F);
                 AnimationSet localAnimationSet = new AnimationSet(true);
                 localAnimationSet.addAnimation((Animation)localObject2);
                 localAnimationSet.addAnimation((Animation)localObject1);
                 localAnimationSet.setDuration(300L);
                 localAnimationSet.setAnimationListener(new a.a.1(paramAnonymousMotionEvent));
-                paramAnonymousMotionEvent.pev.startAnimation(localAnimationSet);
+                paramAnonymousMotionEvent.pHG.startAnimation(localAnimationSet);
                 paramAnonymousMotionEvent.mContentView.startAnimation(localAnimationSet);
               }
             }
           }
         });
-        this.BjF.setOnClickListener(new View.OnClickListener()
+        this.CBT.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -452,18 +452,18 @@ public enum d
           }
         });
       }
-      bz(1.0F);
-      this.BjF.setTouchEnable(true);
-      this.BjF.setIcon(this.BjI.dub);
-      epr();
-      ad.i("MicroMsg.WebViewBagMgr", "bag showed needAttach:%b mCurrentBagId:%s", new Object[] { Boolean.valueOf(bool), this.BjI.id });
+      bH(1.0F);
+      this.CBT.setTouchEnable(true);
+      this.CBT.setIcon(this.CBW.drM);
+      eEM();
+      ac.i("MicroMsg.WebViewBagMgr", "bag showed needAttach:%b mCurrentBagId:%s", new Object[] { Boolean.valueOf(bool), this.CBW.id });
       if (!bool) {
         break label388;
       }
-      ad.i("MicroMsg.WebViewBagMgr", "attachBag");
-      localWindowManager = (WindowManager)aj.getContext().getSystemService("window");
+      ac.i("MicroMsg.WebViewBagMgr", "attachBag");
+      localWindowManager = (WindowManager)ai.getContext().getSystemService("window");
       localLayoutParams = new WindowManager.LayoutParams();
-      if (!com.tencent.mm.compatible.util.d.lf(26)) {
+      if (!com.tencent.mm.compatible.util.d.kZ(26)) {
         break label354;
       }
     }
@@ -471,23 +471,23 @@ public enum d
     for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
       localLayoutParams.format = 1;
-      localLayoutParams.packageName = aj.getContext().getPackageName();
+      localLayoutParams.packageName = ai.getContext().getPackageName();
       localLayoutParams.flags = 40;
       localLayoutParams.gravity = 51;
-      localLayoutParams.width = b.Bjg;
-      localLayoutParams.height = b.Bjg;
-      localLayoutParams.x = this.BjI.BjP;
-      localLayoutParams.y = this.BjI.BjO;
+      localLayoutParams.width = b.CBt;
+      localLayoutParams.height = b.CBt;
+      localLayoutParams.x = this.CBW.CCd;
+      localLayoutParams.y = this.CBW.CCc;
       try
       {
-        localWindowManager.addView(this.BjF, localLayoutParams);
-        epr();
+        localWindowManager.addView(this.CBT, localLayoutParams);
+        eEM();
         AppMethodBeat.o(80451);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.WebViewBagMgr", "add failed %s", new Object[] { localException });
+        ac.e("MicroMsg.WebViewBagMgr", "add failed %s", new Object[] { localException });
         AppMethodBeat.o(80451);
         return;
       }
@@ -495,35 +495,35 @@ public enum d
       break;
     }
     label388:
-    if (this.BjF.getVisibility() != 0)
+    if (this.CBT.getVisibility() != 0)
     {
-      this.BjF.setVisibility(0);
+      this.CBT.setVisibility(0);
       AppMethodBeat.o(80451);
       return;
     }
-    ad.i("MicroMsg.WebViewBagMgr", "already showed");
+    ac.i("MicroMsg.WebViewBagMgr", "already showed");
     AppMethodBeat.o(80451);
   }
   
-  public final void epq()
+  public final void eEL()
   {
     AppMethodBeat.i(80452);
-    if (this.BjF == null)
+    if (this.CBT == null)
     {
       AppMethodBeat.o(80452);
       return;
     }
-    this.BjF.setVisibility(8);
+    this.CBT.setVisibility(8);
     AppMethodBeat.o(80452);
   }
   
   public static final class a
   {
-    public int BjO;
-    public int BjP;
-    JSONObject BjQ;
-    String dub;
-    long hcM;
+    public int CCc;
+    public int CCd;
+    JSONObject CCe;
+    String drM;
+    long hDp;
     public String id;
     int scene;
     public String url;
@@ -531,18 +531,18 @@ public enum d
     public a()
     {
       AppMethodBeat.i(80445);
-      g.afC();
-      Object localObject = (String)g.afB().afk().get(ae.a.Fts, null);
-      ad.i("MicroMsg.WebViewBagMgr", "BagInfo#load %s", new Object[] { localObject });
-      if (bt.isNullOrNil((String)localObject))
+      g.agS();
+      Object localObject = (String)g.agR().agA().get(ah.a.GRm, null);
+      ac.i("MicroMsg.WebViewBagMgr", "BagInfo#load %s", new Object[] { localObject });
+      if (bs.isNullOrNil((String)localObject))
       {
         this.id = null;
         this.url = null;
-        this.dub = null;
-        this.BjP = (com.tencent.mm.cd.a.hV(aj.getContext()) - b.Bjg - b.Bjh);
-        this.BjO = (b.Bjf + aj.getContext().getResources().getDimensionPixelSize(2131167015));
-        this.BjQ = new JSONObject();
-        ad.i("MicroMsg.WebViewBagMgr", "BAG_INIT_X:%d BAG_INIT_Y:%d", new Object[] { Integer.valueOf(this.BjP), Integer.valueOf(this.BjO) });
+        this.drM = null;
+        this.CCd = (com.tencent.mm.cc.a.ig(ai.getContext()) - b.CBt - b.CBu);
+        this.CCc = (b.CBs + ai.getContext().getResources().getDimensionPixelSize(2131167015));
+        this.CCe = new JSONObject();
+        ac.i("MicroMsg.WebViewBagMgr", "BAG_INIT_X:%d BAG_INIT_Y:%d", new Object[] { Integer.valueOf(this.CCd), Integer.valueOf(this.CCc) });
         AppMethodBeat.o(80445);
         return;
       }
@@ -550,19 +550,19 @@ public enum d
       {
         localObject = new JSONObject((String)localObject);
         this.url = ((JSONObject)localObject).getString("url");
-        this.id = ((JSONObject)localObject).optString("id", ai.du(String.format("bagId#%d#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), this.url })));
-        this.dub = ((JSONObject)localObject).getString("icon");
-        this.BjO = ((JSONObject)localObject).getInt("pos_y");
-        this.BjP = ((JSONObject)localObject).getInt("pos_x");
-        this.hcM = ((JSONObject)localObject).getLong("last_active_time");
-        this.BjQ = ((JSONObject)localObject).getJSONObject("extras");
+        this.id = ((JSONObject)localObject).optString("id", ah.dg(String.format("bagId#%d#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), this.url })));
+        this.drM = ((JSONObject)localObject).getString("icon");
+        this.CCc = ((JSONObject)localObject).getInt("pos_y");
+        this.CCd = ((JSONObject)localObject).getInt("pos_x");
+        this.hDp = ((JSONObject)localObject).getLong("last_active_time");
+        this.CCe = ((JSONObject)localObject).getJSONObject("extras");
         this.scene = ((JSONObject)localObject).optInt("scene", 0);
         AppMethodBeat.o(80445);
         return;
       }
       catch (JSONException localJSONException)
       {
-        ad.e("MicroMsg.WebViewBagMgr", "BagInfo#load exp:%s", new Object[] { localJSONException });
+        ac.e("MicroMsg.WebViewBagMgr", "BagInfo#load exp:%s", new Object[] { localJSONException });
         AppMethodBeat.o(80445);
       }
     }
@@ -573,23 +573,23 @@ public enum d
       Object localObject = new JSONObject();
       try
       {
-        ((JSONObject)localObject).put("id", bt.nullAsNil(this.id));
-        ((JSONObject)localObject).put("url", bt.nullAsNil(this.url));
-        ((JSONObject)localObject).put("icon", bt.nullAsNil(this.dub));
-        ((JSONObject)localObject).put("pos_y", this.BjO);
-        ((JSONObject)localObject).put("pos_x", this.BjP);
-        ((JSONObject)localObject).put("last_active_time", this.hcM);
-        ((JSONObject)localObject).put("extras", this.BjQ);
+        ((JSONObject)localObject).put("id", bs.nullAsNil(this.id));
+        ((JSONObject)localObject).put("url", bs.nullAsNil(this.url));
+        ((JSONObject)localObject).put("icon", bs.nullAsNil(this.drM));
+        ((JSONObject)localObject).put("pos_y", this.CCc);
+        ((JSONObject)localObject).put("pos_x", this.CCd);
+        ((JSONObject)localObject).put("last_active_time", this.hDp);
+        ((JSONObject)localObject).put("extras", this.CCe);
         ((JSONObject)localObject).put("scene", this.scene);
         localObject = ((JSONObject)localObject).toString();
-        g.afC();
-        g.afB().afk().set(ae.a.Fts, localObject);
+        g.agS();
+        g.agR().agA().set(ah.a.GRm, localObject);
         AppMethodBeat.o(80446);
         return;
       }
       catch (JSONException localJSONException)
       {
-        ad.e("MicroMsg.WebViewBagMgr", "BagInfo#save exp:%s", new Object[] { localJSONException });
+        ac.e("MicroMsg.WebViewBagMgr", "BagInfo#save exp:%s", new Object[] { localJSONException });
         AppMethodBeat.o(80446);
       }
     }

@@ -5,17 +5,17 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface x
   extends ab
 {
-  public abstract void YN(int paramInt);
+  public abstract void aaY(int paramInt);
   
-  public abstract int eYc();
+  public abstract int fnO();
   
-  public abstract void eYd();
+  public abstract void fnP();
   
-  public abstract void eYe();
+  public abstract void fnQ();
   
-  public abstract void eYf();
+  public abstract void fnR();
   
-  public abstract int eYg();
+  public abstract int fnS();
 }
 
 

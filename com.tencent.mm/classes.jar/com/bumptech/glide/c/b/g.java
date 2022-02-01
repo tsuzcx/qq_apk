@@ -16,33 +16,33 @@ import java.util.List;
 public final class g<R>
   implements e.a, a.c, Comparable<g<?>>, Runnable
 {
-  Object aAv;
-  com.bumptech.glide.g aDC;
-  i aDD;
-  final f<R> aDG;
-  private final List<Throwable> aDH;
-  private final com.bumptech.glide.h.a.b aDI;
-  private final l.a<g<?>> aDJ;
-  final c<?> aDK;
-  final e aDL;
-  m aDM;
-  a<R> aDN;
-  private g aDO;
-  f aDP;
-  private long aDQ;
-  boolean aDR;
-  private Thread aDS;
-  com.bumptech.glide.c.h aDT;
-  private com.bumptech.glide.c.h aDU;
-  private Object aDV;
-  private com.bumptech.glide.c.a aDW;
-  private com.bumptech.glide.c.a.d<?> aDX;
-  public volatile e aDY;
-  private volatile boolean aDZ;
-  com.bumptech.glide.c.h aDt;
-  j aDv;
-  final d aDy;
-  com.bumptech.glide.e azC;
+  com.bumptech.glide.e aAw;
+  Object aBp;
+  private final l.a<g<?>> aEA;
+  final c<?> aEB;
+  final e aEC;
+  m aED;
+  a<R> aEE;
+  private g aEF;
+  f aEG;
+  private long aEH;
+  boolean aEI;
+  private Thread aEJ;
+  com.bumptech.glide.c.h aEK;
+  private com.bumptech.glide.c.h aEL;
+  private Object aEM;
+  private com.bumptech.glide.c.a aEN;
+  private com.bumptech.glide.c.a.d<?> aEO;
+  public volatile e aEP;
+  private volatile boolean aEQ;
+  com.bumptech.glide.c.h aEk;
+  j aEm;
+  final d aEp;
+  com.bumptech.glide.g aEt;
+  i aEu;
+  final f<R> aEx;
+  private final List<Throwable> aEy;
+  private final com.bumptech.glide.h.a.b aEz;
   int height;
   public volatile boolean isCancelled;
   int order;
@@ -51,13 +51,13 @@ public final class g<R>
   g(d paramd, l.a<g<?>> parama)
   {
     AppMethodBeat.i(76953);
-    this.aDG = new f();
-    this.aDH = new ArrayList();
-    this.aDI = new b.a();
-    this.aDK = new c();
-    this.aDL = new e();
-    this.aDy = paramd;
-    this.aDJ = parama;
+    this.aEx = new f();
+    this.aEy = new ArrayList();
+    this.aEz = new b.a();
+    this.aEB = new c();
+    this.aEC = new e();
+    this.aEp = paramd;
+    this.aEA = parama;
     AppMethodBeat.o(76953);
   }
   
@@ -72,8 +72,8 @@ public final class g<R>
     }
     try
     {
-      long l = com.bumptech.glide.h.e.pO();
-      paramData = a(paramData, parama, this.aDG.l(paramData.getClass()));
+      long l = com.bumptech.glide.h.e.pY();
+      paramData = a(paramData, parama, this.aEx.l(paramData.getClass()));
       if (Log.isLoggable("DecodeJob", 2)) {
         a("Decoded result ".concat(String.valueOf(paramData)), l, null);
       }
@@ -89,28 +89,28 @@ public final class g<R>
   private <Data, ResourceType> u<R> a(Data paramData, com.bumptech.glide.c.a parama, s<Data, ResourceType, R> params)
   {
     AppMethodBeat.i(76970);
-    Object localObject2 = this.aDv;
+    Object localObject2 = this.aEm;
     Object localObject1 = localObject2;
     if (Build.VERSION.SDK_INT >= 26)
     {
       localObject1 = localObject2;
-      if (((j)localObject2).a(com.bumptech.glide.c.d.a.h.aIG) == null) {
-        if (parama != com.bumptech.glide.c.a.aCa)
+      if (((j)localObject2).a(com.bumptech.glide.c.d.a.h.aJw) == null) {
+        if (parama != com.bumptech.glide.c.a.aCS)
         {
           localObject1 = localObject2;
-          if (!this.aDG.aDF) {}
+          if (!this.aEx.aEw) {}
         }
         else
         {
           localObject1 = new j();
-          ((j)localObject1).a(this.aDv);
-          localObject2 = com.bumptech.glide.c.d.a.h.aIG;
+          ((j)localObject1).a(this.aEm);
+          localObject2 = com.bumptech.glide.c.d.a.h.aJw;
           Boolean localBoolean = Boolean.TRUE;
-          ((j)localObject1).aCB.put(localObject2, localBoolean);
+          ((j)localObject1).aDt.put(localObject2, localBoolean);
         }
       }
     }
-    paramData = this.azC.azD.aAk.Q(paramData);
+    paramData = this.aAw.aAx.aBe.S(paramData);
     try
     {
       parama = params.a(paramData, (j)localObject1, this.width, this.height, new b(parama));
@@ -126,15 +126,15 @@ public final class g<R>
   private void a(u<R> paramu, com.bumptech.glide.c.a parama)
   {
     AppMethodBeat.i(76961);
-    oa();
-    this.aDN.c(paramu, parama);
+    ok();
+    this.aEE.c(paramu, parama);
     AppMethodBeat.o(76961);
   }
   
   private void a(String paramString1, long paramLong, String paramString2)
   {
     AppMethodBeat.i(76971);
-    StringBuilder localStringBuilder = new StringBuilder().append(paramString1).append(" in ").append(com.bumptech.glide.h.e.n(paramLong)).append(", load key: ").append(this.aDM);
+    StringBuilder localStringBuilder = new StringBuilder().append(paramString1).append(" in ").append(com.bumptech.glide.h.e.p(paramLong)).append(", load key: ").append(this.aED);
     if (paramString2 != null) {}
     for (paramString1 = ", ".concat(String.valueOf(paramString2));; paramString1 = "")
     {
@@ -152,7 +152,7 @@ public final class g<R>
     }
     Object localObject1 = null;
     Object localObject2 = paramu;
-    if (this.aDK.od())
+    if (this.aEB.on())
     {
       localObject1 = t.d(paramu);
       paramu = (u<R>)localObject1;
@@ -160,16 +160,16 @@ public final class g<R>
       localObject1 = paramu;
     }
     a((u)localObject2, parama);
-    this.aDO = g.aEs;
+    this.aEF = g.aFi;
     try
     {
-      if (this.aDK.od()) {
-        this.aDK.a(this.aDy, this.aDv);
+      if (this.aEB.on()) {
+        this.aEB.a(this.aEp, this.aEm);
       }
       if (localObject1 != null) {
         ((t)localObject1).unlock();
       }
-      nU();
+      oe();
       AppMethodBeat.o(76968);
       return;
     }
@@ -182,44 +182,44 @@ public final class g<R>
     }
   }
   
-  private void nU()
+  private void oe()
   {
     AppMethodBeat.i(76954);
-    if (this.aDL.of()) {
-      nW();
+    if (this.aEC.op()) {
+      og();
     }
     AppMethodBeat.o(76954);
   }
   
-  private void nV()
+  private void of()
   {
     AppMethodBeat.i(76955);
-    if (this.aDL.og()) {
-      nW();
+    if (this.aEC.oq()) {
+      og();
     }
     AppMethodBeat.o(76955);
   }
   
-  private e nX()
+  private e oh()
   {
     AppMethodBeat.i(76958);
     Object localObject;
-    switch (1.aEb[this.aDO.ordinal()])
+    switch (1.aES[this.aEF.ordinal()])
     {
     default: 
-      localObject = new IllegalStateException("Unrecognized stage: " + this.aDO);
+      localObject = new IllegalStateException("Unrecognized stage: " + this.aEF);
       AppMethodBeat.o(76958);
       throw ((Throwable)localObject);
     case 1: 
-      localObject = new v(this.aDG, this);
+      localObject = new v(this.aEx, this);
       AppMethodBeat.o(76958);
       return localObject;
     case 2: 
-      localObject = new b(this.aDG, this);
+      localObject = new b(this.aEx, this);
       AppMethodBeat.o(76958);
       return localObject;
     case 3: 
-      localObject = new y(this.aDG, this);
+      localObject = new y(this.aEx, this);
       AppMethodBeat.o(76958);
       return localObject;
     }
@@ -227,11 +227,11 @@ public final class g<R>
     return null;
   }
   
-  private void nY()
+  private void oi()
   {
     AppMethodBeat.i(76959);
-    this.aDS = Thread.currentThread();
-    this.aDQ = com.bumptech.glide.h.e.pO();
+    this.aEJ = Thread.currentThread();
+    this.aEH = com.bumptech.glide.h.e.pY();
     boolean bool1 = false;
     boolean bool2;
     do
@@ -241,62 +241,62 @@ public final class g<R>
         break;
       }
       bool2 = bool1;
-      if (this.aDY == null) {
+      if (this.aEP == null) {
         break;
       }
-      bool1 = this.aDY.nO();
+      bool1 = this.aEP.nY();
       bool2 = bool1;
       if (bool1) {
         break;
       }
-      this.aDO = a(this.aDO);
-      this.aDY = nX();
-    } while (this.aDO != g.aEr);
-    nQ();
+      this.aEF = a(this.aEF);
+      this.aEP = oh();
+    } while (this.aEF != g.aFh);
+    oa();
     AppMethodBeat.o(76959);
     return;
-    if (((this.aDO == g.aEt) || (this.isCancelled)) && (!bool2)) {
-      nZ();
+    if (((this.aEF == g.aFj) || (this.isCancelled)) && (!bool2)) {
+      oj();
     }
     AppMethodBeat.o(76959);
   }
   
-  private void nZ()
+  private void oj()
   {
     AppMethodBeat.i(76960);
-    oa();
-    p localp = new p("Failed to load resource", new ArrayList(this.aDH));
-    this.aDN.a(localp);
-    nV();
+    ok();
+    p localp = new p("Failed to load resource", new ArrayList(this.aEy));
+    this.aEE.a(localp);
+    of();
     AppMethodBeat.o(76960);
   }
   
-  private void oa()
+  private void ok()
   {
     AppMethodBeat.i(76962);
-    this.aDI.pU();
-    if (this.aDZ)
+    this.aEz.qe();
+    if (this.aEQ)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Already notified");
       AppMethodBeat.o(76962);
       throw localIllegalStateException;
     }
-    this.aDZ = true;
+    this.aEQ = true;
     AppMethodBeat.o(76962);
   }
   
-  private void ob()
+  private void ol()
   {
     AppMethodBeat.i(76967);
     if (Log.isLoggable("DecodeJob", 2)) {
-      a("Retrieved data", this.aDQ, "data: " + this.aDV + ", cache key: " + this.aDT + ", fetcher: " + this.aDX);
+      a("Retrieved data", this.aEH, "data: " + this.aEM + ", cache key: " + this.aEK + ", fetcher: " + this.aEO);
     }
     try
     {
-      u localu = a(this.aDX, this.aDV, this.aDW);
+      u localu = a(this.aEO, this.aEM, this.aEN);
       if (localu != null)
       {
-        b(localu, this.aDW);
+        b(localu, this.aEN);
         AppMethodBeat.o(76967);
         return;
       }
@@ -305,11 +305,11 @@ public final class g<R>
     {
       for (;;)
       {
-        localp.a(this.aDU, this.aDW, null);
-        this.aDH.add(localp);
+        localp.a(this.aEL, this.aEN, null);
+        this.aEy.add(localp);
         Object localObject = null;
       }
-      nY();
+      oi();
       AppMethodBeat.o(76967);
     }
   }
@@ -319,41 +319,41 @@ public final class g<R>
     AppMethodBeat.i(76963);
     for (;;)
     {
-      switch (1.aEb[paramg.ordinal()])
+      switch (1.aES[paramg.ordinal()])
       {
       default: 
         paramg = new IllegalArgumentException("Unrecognized stage: ".concat(String.valueOf(paramg)));
         AppMethodBeat.o(76963);
         throw paramg;
       case 5: 
-        if (this.aDD.oi())
+        if (this.aEu.os())
         {
-          paramg = g.aEp;
+          paramg = g.aFf;
           AppMethodBeat.o(76963);
           return paramg;
         }
-        paramg = g.aEp;
+        paramg = g.aFf;
         break;
       case 1: 
-        if (this.aDD.oj())
+        if (this.aEu.ot())
         {
-          paramg = g.aEq;
+          paramg = g.aFg;
           AppMethodBeat.o(76963);
           return paramg;
         }
-        paramg = g.aEq;
+        paramg = g.aFg;
       }
     }
-    if (this.aDR)
+    if (this.aEI)
     {
-      paramg = g.aEt;
+      paramg = g.aFj;
       AppMethodBeat.o(76963);
       return paramg;
     }
-    paramg = g.aEr;
+    paramg = g.aFh;
     AppMethodBeat.o(76963);
     return paramg;
-    paramg = g.aEt;
+    paramg = g.aFj;
     AppMethodBeat.o(76963);
     return paramg;
   }
@@ -363,37 +363,37 @@ public final class g<R>
     AppMethodBeat.i(76966);
     paramd.cleanup();
     paramException = new p("Fetching data failed", paramException);
-    paramException.a(paramh, parama, paramd.nK());
-    this.aDH.add(paramException);
-    if (Thread.currentThread() != this.aDS)
+    paramException.a(paramh, parama, paramd.nU());
+    this.aEy.add(paramException);
+    if (Thread.currentThread() != this.aEJ)
     {
-      this.aDP = f.aEl;
-      this.aDN.a(this);
+      this.aEG = f.aFb;
+      this.aEE.a(this);
       AppMethodBeat.o(76966);
       return;
     }
-    nY();
+    oi();
     AppMethodBeat.o(76966);
   }
   
   public final void a(com.bumptech.glide.c.h paramh1, Object paramObject, com.bumptech.glide.c.a.d<?> paramd, com.bumptech.glide.c.a parama, com.bumptech.glide.c.h paramh2)
   {
     AppMethodBeat.i(76965);
-    this.aDT = paramh1;
-    this.aDV = paramObject;
-    this.aDX = paramd;
-    this.aDW = parama;
-    this.aDU = paramh2;
-    if (Thread.currentThread() != this.aDS)
+    this.aEK = paramh1;
+    this.aEM = paramObject;
+    this.aEO = paramd;
+    this.aEN = parama;
+    this.aEL = paramh2;
+    if (Thread.currentThread() != this.aEJ)
     {
-      this.aDP = f.aEm;
-      this.aDN.a(this);
+      this.aEG = f.aFc;
+      this.aEE.a(this);
       AppMethodBeat.o(76965);
       return;
     }
     try
     {
-      ob();
+      ol();
       return;
     }
     finally
@@ -402,64 +402,64 @@ public final class g<R>
     }
   }
   
-  public final void nQ()
+  public final void oa()
   {
     AppMethodBeat.i(76964);
-    this.aDP = f.aEl;
-    this.aDN.a(this);
+    this.aEG = f.aFb;
+    this.aEE.a(this);
     AppMethodBeat.o(76964);
   }
   
-  final void nW()
+  final void og()
   {
     AppMethodBeat.i(76956);
-    this.aDL.reset();
-    this.aDK.clear();
-    this.aDG.clear();
-    this.aDZ = false;
-    this.azC = null;
-    this.aDt = null;
-    this.aDv = null;
-    this.aDC = null;
-    this.aDM = null;
-    this.aDN = null;
-    this.aDO = null;
-    this.aDY = null;
-    this.aDS = null;
-    this.aDT = null;
-    this.aDV = null;
-    this.aDW = null;
-    this.aDX = null;
-    this.aDQ = 0L;
+    this.aEC.reset();
+    this.aEB.clear();
+    this.aEx.clear();
+    this.aEQ = false;
+    this.aAw = null;
+    this.aEk = null;
+    this.aEm = null;
+    this.aEt = null;
+    this.aED = null;
+    this.aEE = null;
+    this.aEF = null;
+    this.aEP = null;
+    this.aEJ = null;
+    this.aEK = null;
+    this.aEM = null;
+    this.aEN = null;
+    this.aEO = null;
+    this.aEH = 0L;
     this.isCancelled = false;
-    this.aAv = null;
-    this.aDH.clear();
-    this.aDJ.release(this);
+    this.aBp = null;
+    this.aEy.clear();
+    this.aEA.release(this);
     AppMethodBeat.o(76956);
   }
   
-  public final com.bumptech.glide.h.a.b oc()
+  public final com.bumptech.glide.h.a.b om()
   {
-    return this.aDI;
+    return this.aEz;
   }
   
   public final void run()
   {
     AppMethodBeat.i(76957);
-    com.bumptech.glide.c.a.d locald = this.aDX;
+    com.bumptech.glide.c.a.d locald = this.aEO;
     for (;;)
     {
       try
       {
         if (this.isCancelled)
         {
-          nZ();
+          oj();
           return;
         }
-        switch (1.aEa[this.aDP.ordinal()])
+        switch (1.aER[this.aEG.ordinal()])
         {
         case 1: 
-          IllegalStateException localIllegalStateException = new IllegalStateException("Unrecognized run reason: " + this.aDP);
+          IllegalStateException localIllegalStateException = new IllegalStateException("Unrecognized run reason: " + this.aEG);
           AppMethodBeat.o(76957);
           throw localIllegalStateException;
         }
@@ -467,12 +467,12 @@ public final class g<R>
       catch (Throwable localThrowable)
       {
         if (Log.isLoggable("DecodeJob", 3)) {
-          new StringBuilder("DecodeJob threw unexpectedly, isCancelled: ").append(this.isCancelled).append(", stage: ").append(this.aDO);
+          new StringBuilder("DecodeJob threw unexpectedly, isCancelled: ").append(this.isCancelled).append(", stage: ").append(this.aEF);
         }
-        if (this.aDO != g.aEs)
+        if (this.aEF != g.aFi)
         {
-          this.aDH.add(localThrowable);
-          nZ();
+          this.aEy.add(localThrowable);
+          oj();
         }
         if (this.isCancelled) {
           break label266;
@@ -487,9 +487,9 @@ public final class g<R>
         }
         AppMethodBeat.o(76957);
       }
-      this.aDO = a(g.aEo);
-      this.aDY = nX();
-      nY();
+      this.aEF = a(g.aFe);
+      this.aEP = oh();
+      oi();
       for (;;)
       {
         if (locald != null) {
@@ -497,9 +497,9 @@ public final class g<R>
         }
         AppMethodBeat.o(76957);
         return;
-        nY();
+        oi();
         continue;
-        ob();
+        ol();
       }
       label266:
       if (locald != null) {
@@ -522,24 +522,24 @@ public final class g<R>
   final class b<Z>
     implements h.a<Z>
   {
-    private final com.bumptech.glide.c.a aEd;
+    private final com.bumptech.glide.c.a aEU;
     
     b(com.bumptech.glide.c.a parama)
     {
-      this.aEd = parama;
+      this.aEU = parama;
     }
     
     public final u<Z> a(u<Z> paramu)
     {
       AppMethodBeat.i(76942);
       g localg = g.this;
-      com.bumptech.glide.c.a locala = this.aEd;
+      com.bumptech.glide.c.a locala = this.aEU;
       Class localClass = paramu.get().getClass();
       Object localObject2 = null;
-      if (locala != com.bumptech.glide.c.a.aCa) {
-        localObject2 = localg.aDG.m(localClass);
+      if (locala != com.bumptech.glide.c.a.aCS) {
+        localObject2 = localg.aEx.m(localClass);
       }
-      for (Object localObject1 = ((com.bumptech.glide.c.m)localObject2).a(localg.azC, paramu, localg.width, localg.height);; localObject1 = paramu)
+      for (Object localObject1 = ((com.bumptech.glide.c.m)localObject2).a(localg.aAw, paramu, localg.width, localg.height);; localObject1 = paramu)
       {
         if (!paramu.equals(localObject1)) {
           paramu.recycle();
@@ -548,27 +548,27 @@ public final class g<R>
         com.bumptech.glide.c.c localc;
         label166:
         Object localObject3;
-        if (localg.aDG.azC.azD.aAj.u(((u)localObject1).oo()) != null)
+        if (localg.aEx.aAw.aAx.aBd.u(((u)localObject1).oy()) != null)
         {
           i = 1;
           if (i == 0) {
             break label312;
           }
-          paramu = localg.aDG.azC.azD.aAj.u(((u)localObject1).oo());
+          paramu = localg.aEx.aAw.aAx.aBd.u(((u)localObject1).oy());
           if (paramu == null) {
             break label290;
           }
-          localc = paramu.b(localg.aDv);
-          Object localObject4 = localg.aDG;
-          localObject3 = localg.aDT;
-          localObject4 = ((f)localObject4).nS();
+          localc = paramu.b(localg.aEm);
+          Object localObject4 = localg.aEx;
+          localObject3 = localg.aEK;
+          localObject4 = ((f)localObject4).oc();
           int j = ((List)localObject4).size();
           i = 0;
           label197:
           if (i >= j) {
             break label329;
           }
-          if (!((n.a)((List)localObject4).get(i)).aDo.equals(localObject3)) {
+          if (!((n.a)((List)localObject4).get(i)).aEf.equals(localObject3)) {
             break label322;
           }
           i = 1;
@@ -585,7 +585,7 @@ public final class g<R>
         for (boolean bool = true;; bool = false)
         {
           localObject3 = localObject1;
-          if (!localg.aDD.a(bool, locala, localc)) {
+          if (!localg.aEu.a(bool, locala, localc)) {
             break label450;
           }
           if (paramu != null) {
@@ -596,10 +596,10 @@ public final class g<R>
           throw paramu;
           i = 0;
           break;
-          paramu = new h.d(((u)localObject1).oo());
+          paramu = new h.d(((u)localObject1).oy());
           AppMethodBeat.o(76942);
           throw paramu;
-          localc = com.bumptech.glide.c.c.aCk;
+          localc = com.bumptech.glide.c.c.aDc;
           paramu = null;
           break label166;
           i += 1;
@@ -608,20 +608,20 @@ public final class g<R>
           break label228;
         }
         label340:
-        switch (g.1.aEc[localc.ordinal()])
+        switch (g.1.aET[localc.ordinal()])
         {
         default: 
           paramu = new IllegalArgumentException("Unknown strategy: ".concat(String.valueOf(localc)));
           AppMethodBeat.o(76942);
           throw paramu;
         }
-        for (localObject2 = new c(localg.aDT, localg.aDt);; localObject2 = new w(localg.aDG.azC.azE, localg.aDT, localg.aDt, localg.width, localg.height, (com.bumptech.glide.c.m)localObject2, localClass, localg.aDv))
+        for (localObject2 = new c(localg.aEK, localg.aEk);; localObject2 = new w(localg.aEx.aAw.aAy, localg.aEK, localg.aEk, localg.width, localg.height, (com.bumptech.glide.c.m)localObject2, localClass, localg.aEm))
         {
           localObject3 = t.d((u)localObject1);
-          localObject1 = localg.aDK;
-          ((g.c)localObject1).aDh = ((com.bumptech.glide.c.h)localObject2);
-          ((g.c)localObject1).aEf = paramu;
-          ((g.c)localObject1).aEg = ((t)localObject3);
+          localObject1 = localg.aEB;
+          ((g.c)localObject1).aDY = ((com.bumptech.glide.c.h)localObject2);
+          ((g.c)localObject1).aEW = paramu;
+          ((g.c)localObject1).aEX = ((t)localObject3);
           label450:
           AppMethodBeat.o(76942);
           return localObject3;
@@ -632,61 +632,61 @@ public final class g<R>
   
   static final class c<Z>
   {
-    com.bumptech.glide.c.h aDh;
-    l<Z> aEf;
-    t<Z> aEg;
+    com.bumptech.glide.c.h aDY;
+    l<Z> aEW;
+    t<Z> aEX;
     
     final void a(g.d paramd, j paramj)
     {
       AppMethodBeat.i(76943);
       try
       {
-        paramd.nR().a(this.aDh, new d(this.aEf, this.aEg, paramj));
+        paramd.ob().a(this.aDY, new d(this.aEW, this.aEX, paramj));
         return;
       }
       finally
       {
-        this.aEg.unlock();
+        this.aEX.unlock();
         AppMethodBeat.o(76943);
       }
     }
     
     final void clear()
     {
-      this.aDh = null;
-      this.aEf = null;
-      this.aEg = null;
+      this.aDY = null;
+      this.aEW = null;
+      this.aEX = null;
     }
     
-    final boolean od()
+    final boolean on()
     {
-      return this.aEg != null;
+      return this.aEX != null;
     }
   }
   
   static abstract interface d
   {
-    public abstract com.bumptech.glide.c.b.b.a nR();
+    public abstract com.bumptech.glide.c.b.b.a ob();
   }
   
   static final class e
   {
-    private boolean aEi;
-    private boolean aEj;
+    private boolean aEY;
+    private boolean aEZ;
     private boolean isReleased;
     
-    private boolean oh()
+    private boolean or()
     {
-      return ((this.aEj) || (this.aEi)) && (this.isReleased);
+      return ((this.aEZ) || (this.aEY)) && (this.isReleased);
     }
     
-    final boolean oe()
+    final boolean oo()
     {
       try
       {
         AppMethodBeat.i(76944);
         this.isReleased = true;
-        boolean bool = oh();
+        boolean bool = or();
         AppMethodBeat.o(76944);
         return bool;
       }
@@ -697,13 +697,13 @@ public final class g<R>
       }
     }
     
-    final boolean of()
+    final boolean op()
     {
       try
       {
         AppMethodBeat.i(76945);
-        this.aEi = true;
-        boolean bool = oh();
+        this.aEY = true;
+        boolean bool = or();
         AppMethodBeat.o(76945);
         return bool;
       }
@@ -714,13 +714,13 @@ public final class g<R>
       }
     }
     
-    final boolean og()
+    final boolean oq()
     {
       try
       {
         AppMethodBeat.i(76946);
-        this.aEj = true;
-        boolean bool = oh();
+        this.aEZ = true;
+        boolean bool = or();
         AppMethodBeat.o(76946);
         return bool;
       }
@@ -735,9 +735,9 @@ public final class g<R>
     {
       try
       {
-        this.aEi = false;
+        this.aEY = false;
         this.isReleased = false;
-        this.aEj = false;
+        this.aEZ = false;
         return;
       }
       finally
@@ -753,10 +753,10 @@ public final class g<R>
     static
     {
       AppMethodBeat.i(76949);
-      aEk = new f("INITIALIZE", 0);
-      aEl = new f("SWITCH_TO_SOURCE_SERVICE", 1);
-      aEm = new f("DECODE_DATA", 2);
-      aEn = new f[] { aEk, aEl, aEm };
+      aFa = new f("INITIALIZE", 0);
+      aFb = new f("SWITCH_TO_SOURCE_SERVICE", 1);
+      aFc = new f("DECODE_DATA", 2);
+      aFd = new f[] { aFa, aFb, aFc };
       AppMethodBeat.o(76949);
     }
     
@@ -768,13 +768,13 @@ public final class g<R>
     static
     {
       AppMethodBeat.i(76952);
-      aEo = new g("INITIALIZE", 0);
-      aEp = new g("RESOURCE_CACHE", 1);
-      aEq = new g("DATA_CACHE", 2);
-      aEr = new g("SOURCE", 3);
-      aEs = new g("ENCODE", 4);
-      aEt = new g("FINISHED", 5);
-      aEu = new g[] { aEo, aEp, aEq, aEr, aEs, aEt };
+      aFe = new g("INITIALIZE", 0);
+      aFf = new g("RESOURCE_CACHE", 1);
+      aFg = new g("DATA_CACHE", 2);
+      aFh = new g("SOURCE", 3);
+      aFi = new g("ENCODE", 4);
+      aFj = new g("FINISHED", 5);
+      aFk = new g[] { aFe, aFf, aFg, aFh, aFi, aFj };
       AppMethodBeat.o(76952);
     }
     
@@ -783,7 +783,7 @@ public final class g<R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.g
  * JD-Core Version:    0.7.0.1
  */

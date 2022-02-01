@@ -9,52 +9,52 @@ import java.util.Calendar;
 
 public final class b
 {
-  public a HID;
+  public a Jja;
   
   public b(Context paramContext, g paramg)
   {
-    AppMethodBeat.i(195366);
-    this.HID = new a(2);
-    this.HID.context = paramContext;
-    this.HID.HKp = paramg;
-    AppMethodBeat.o(195366);
+    AppMethodBeat.i(199837);
+    this.Jja = new a(2);
+    this.Jja.context = paramContext;
+    this.Jja.JkM = paramg;
+    AppMethodBeat.o(199837);
   }
   
   public final b b(Calendar paramCalendar)
   {
-    this.HID.hSi = paramCalendar;
+    this.Jja.isn = paramCalendar;
     return this;
   }
   
   public final b b(Calendar paramCalendar1, Calendar paramCalendar2)
   {
-    this.HID.hSj = paramCalendar1;
-    this.HID.hSk = paramCalendar2;
+    this.Jja.iso = paramCalendar1;
+    this.Jja.isp = paramCalendar2;
     return this;
   }
   
   public final b c(boolean[] paramArrayOfBoolean)
   {
-    this.HID.hSh = paramArrayOfBoolean;
+    this.Jja.ism = paramArrayOfBoolean;
     return this;
   }
   
   public final void c(h paramh)
   {
-    AppMethodBeat.i(195367);
-    paramh.a(this.HID);
-    AppMethodBeat.o(195367);
+    AppMethodBeat.i(199838);
+    paramh.a(this.Jja);
+    AppMethodBeat.o(199838);
   }
   
-  public final b fgk()
+  public final b fwk()
   {
-    this.HID.hSf = false;
+    this.Jja.isk = false;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.b.b
  * JD-Core Version:    0.7.0.1
  */

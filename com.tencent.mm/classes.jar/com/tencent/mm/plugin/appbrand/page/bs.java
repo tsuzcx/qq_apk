@@ -1,43 +1,29 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.webkit.ValueCallback;
-import com.tencent.luggage.sdk.b.a.b.a.a;
+import android.content.Context;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import org.a.a;
 
 public abstract interface bs
-  extends a, bd
 {
-  public abstract void a(a parama);
+  public abstract <WIDGET extends View> WIDGET c(Context paramContext, Class<WIDGET> paramClass);
   
-  public abstract void a(String paramString, ValueCallback<String> paramValueCallback);
-  
-  public abstract boolean aNw();
-  
-  public abstract void aa(Runnable paramRunnable);
-  
-  public abstract void bhE();
-  
-  public abstract boolean bhG();
-  
-  public abstract void bkJ();
-  
-  public static abstract interface a
+  public static class a
+    implements bs
   {
-    public abstract void bkD();
-    
-    public abstract boolean bkE();
-    
-    public abstract String bkF();
-    
-    public abstract aa bkG();
-    
-    public abstract void gI(boolean paramBoolean);
-    
-    public abstract void gJ(boolean paramBoolean);
+    public <WIDGET extends View> WIDGET c(Context paramContext, Class<WIDGET> paramClass)
+    {
+      AppMethodBeat.i(135280);
+      paramContext = (View)paramClass.cast(a.bD(paramClass).ai(new Object[] { paramContext }).object);
+      AppMethodBeat.o(135280);
+      return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bs
  * JD-Core Version:    0.7.0.1
  */

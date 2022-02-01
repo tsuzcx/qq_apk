@@ -1,123 +1,178 @@
 package com.tencent.xweb;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import org.json.JSONStringer;
+import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
 
 public final class ag
 {
-  static String IOa;
-  static boolean IOb = true;
-  static boolean IOc;
+  private JSONStringer KAj;
+  private int KAk;
+  private String KAl;
+  private String KAm;
+  private String KAn;
+  private String KAo;
+  private String KAp;
+  private int KAq;
+  private long KAr;
+  private WebView KAs;
+  private final String TAG;
+  private int bufferSize;
+  private String cacheKey;
   
-  public static void aPj(String paramString)
+  public ag(int paramInt1, int paramInt2, WebView paramWebView)
   {
-    try
-    {
-      AppMethodBeat.i(195168);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setEmbedInstallLibDir: ".concat(String.valueOf(paramString)));
-      IOa = paramString;
-      AppMethodBeat.o(195168);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    AppMethodBeat.i(156933);
+    this.TAG = "XWebScript";
+    this.KAj = new JSONStringer();
+    this.KAk = 0;
+    this.KAq = 0;
+    this.KAk = paramInt1;
+    this.KAq = paramInt2;
+    this.KAs = paramWebView;
+    AppMethodBeat.o(156933);
   }
   
-  /* Error */
-  public static String frs()
+  public final void aUY(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 51
-    //   5: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 45	com/tencent/xweb/ag:IOa	Ljava/lang/String;
-    //   11: invokestatic 57	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   14: ifne +17 -> 31
-    //   17: getstatic 45	com/tencent/xweb/ag:IOa	Ljava/lang/String;
-    //   20: astore_0
-    //   21: ldc 51
-    //   23: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: ldc 2
-    //   28: monitorexit
-    //   29: aload_0
-    //   30: areturn
-    //   31: invokestatic 61	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
-    //   34: invokevirtual 67	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   37: getfield 72	android/content/pm/ApplicationInfo:nativeLibraryDir	Ljava/lang/String;
-    //   40: astore_0
-    //   41: ldc 51
-    //   43: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   46: goto -20 -> 26
-    //   49: astore_0
-    //   50: ldc 2
-    //   52: monitorexit
-    //   53: aload_0
-    //   54: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   20	21	0	str	String
-    //   49	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	26	49	finally
-    //   31	46	49	finally
+    AppMethodBeat.i(210392);
+    mD(paramString, "path");
+    AppMethodBeat.o(210392);
   }
   
-  public static boolean frt()
+  public final void aUZ(String paramString)
   {
-    try
-    {
-      boolean bool = IOc;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.i(156935);
+    mD(paramString, "string");
+    AppMethodBeat.o(156935);
   }
   
-  public static void xD(boolean paramBoolean)
+  public final void aVa(String paramString)
   {
-    try
-    {
-      AppMethodBeat.i(195170);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setIsEmbedDirReady: ".concat(String.valueOf(paramBoolean)));
-      IOb = paramBoolean;
-      AppMethodBeat.o(195170);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.KAp = paramString;
   }
   
-  public static void xE(boolean paramBoolean)
+  public final void aVb(String paramString)
   {
-    try
+    this.KAo = paramString;
+  }
+  
+  public final void mC(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(156934);
+    mD(paramString1, "path");
+    this.KAn = paramString2;
+    AppMethodBeat.o(156934);
+  }
+  
+  public final void mD(String paramString1, String paramString2)
+  {
+    this.KAm = paramString1;
+    this.KAl = paramString2;
+  }
+  
+  public final String toString()
+  {
+    int j = 0;
+    AppMethodBeat.i(156936);
+    int i = j;
+    if (this.KAs != null)
     {
-      AppMethodBeat.i(195171);
-      XWalkEnvironment.addXWalkInitializeLog("XWebUpdaterSetting", "setForbidDownloadCode: ".concat(String.valueOf(paramBoolean)));
-      IOc = paramBoolean;
-      AppMethodBeat.o(195171);
-      return;
+      if (this.KAs.supportFeature(2002)) {
+        break label43;
+      }
+      i = j;
     }
-    finally
+    while (i == 0)
     {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.o(156936);
+      return "";
+      label43:
+      if (TextUtils.isEmpty(this.KAm))
+      {
+        Log.e("XWebScript", "checkValid failed jsSrcValue invalid = " + this.KAm);
+        i = j;
+      }
+      else if (TextUtils.isEmpty(this.KAl))
+      {
+        Log.e("XWebScript", "checkValid failed jsSrcKind invalid = " + this.KAl);
+        i = j;
+      }
+      else if (this.KAk < 0)
+      {
+        Log.e("XWebScript", "checkValid failed compile mode invalid = " + this.KAk);
+        i = j;
+      }
+      else if ((this.KAr != 0L) && (this.bufferSize <= 0))
+      {
+        Log.e("XWebScript", "checkValid failed bufferSize invalid = " + this.bufferSize);
+        i = j;
+      }
+      else if ((this.bufferSize != 0) && (this.KAr == 0L))
+      {
+        Log.e("XWebScript", "checkValid failed bufferAddr invalid = " + this.KAr);
+        i = j;
+      }
+      else if ((!TextUtils.isEmpty(this.KAp)) && (!this.KAs.supportFeature(2008)))
+      {
+        Log.e("XWebScript", "not support jsparam as file path , apk ver = " + XWalkEnvironment.getAvailableVersion());
+        i = j;
+      }
+      else
+      {
+        i = 1;
+      }
+    }
+    StringBuilder localStringBuilder = new StringBuilder("//XWEB_SCRIPT:");
+    Object localObject1 = new JSONStringer();
+    for (;;)
+    {
+      try
+      {
+        localObject2 = ((JSONStringer)localObject1).object().key("compile_mode").value(this.KAk).key("cache_option").value(this.KAq).key("js_src_kind").value(this.KAl).key("js_src").value(this.KAm);
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(this.cacheKey)) {
+          localObject1 = ((JSONStringer)localObject2).key("cache_key").value(this.cacheKey);
+        }
+        localObject2 = localObject1;
+        if (!TextUtils.isEmpty(this.KAn)) {
+          localObject2 = ((JSONStringer)localObject1).key("append_script").value(this.KAn);
+        }
+        if (TextUtils.isEmpty(this.KAp)) {
+          continue;
+        }
+        localObject1 = ((JSONStringer)localObject2).key("js_param_kind").value("path").key("js_param").value(this.KAp);
+        ((JSONStringer)localObject1).endObject();
+        localStringBuilder.append(((JSONStringer)localObject1).toString());
+        if ((this.KAs != null) && (this.KAs.supportFeature(2004))) {
+          localStringBuilder.append("XWEB_SCRIPT_END\n\r" + this.KAo);
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject2;
+        Log.e("XWebScript", "xweb script create failed " + localException.getMessage());
+        continue;
+      }
+      localObject1 = localStringBuilder.toString();
+      AppMethodBeat.o(156936);
+      return localObject1;
+      localObject1 = localObject2;
+      if (this.KAr != 0L)
+      {
+        localObject1 = localObject2;
+        if (this.bufferSize != 0) {
+          localObject1 = ((JSONStringer)localObject2).key("js_param_kind").value("buffer").key("js_param").value(Long.toHexString(this.KAr)).key("js_param_length").value(this.bufferSize);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.ag
  * JD-Core Version:    0.7.0.1
  */

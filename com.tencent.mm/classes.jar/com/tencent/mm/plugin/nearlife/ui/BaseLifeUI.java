@@ -8,26 +8,31 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.m.e;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bld;
+import com.tencent.mm.protocal.protobuf.boz;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
+import com.tencent.mm.ui.base.MMLoadMoreListView.a;
 import com.tencent.mm.ui.tools.r;
 import com.tencent.mm.ui.tools.r.b;
 import com.tencent.mm.vfs.i;
@@ -36,94 +41,102 @@ import java.util.List;
 
 public abstract class BaseLifeUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private String dct = "";
-  protected String dnB = "";
-  boolean fjF = false;
-  private r fvI;
-  boolean gqP = false;
-  protected boolean hem = true;
-  boolean inh = false;
-  protected String jko = "";
-  private int sOL = 1;
-  MMLoadMoreListView sUz;
-  public int sVb = -1;
-  private boolean sVh;
+  protected String dlj = "";
+  boolean fmZ = false;
+  private r fzp;
+  boolean gRx = false;
+  protected boolean hEP = true;
+  boolean iNn = false;
+  protected String jKB = "";
   int sceneType = 0;
-  private boolean uaF = false;
-  private View ubX;
-  private NearLifeErrorContent ubY;
-  private a ubZ;
-  private a uca;
-  private View ucb;
-  private TextView ucc;
-  private TextView ucd;
-  private com.tencent.mm.modelgeo.d uce = com.tencent.mm.modelgeo.d.axT();
-  private com.tencent.mm.plugin.nearlife.b.d ucf;
-  private int ucg;
-  private List<bld> uch;
-  protected bld uci = null;
-  protected float ucj = 0.0F;
-  protected float uck = 0.0F;
-  protected int ucl = 0;
-  protected float ucm = 0.0F;
-  protected long ucn = -1L;
-  protected long uco = -1L;
-  protected long ucp = -1L;
-  protected int ucq = 0;
-  protected boolean ucr = false;
-  protected int ucs = -1;
-  protected boolean uct = false;
-  boolean ucu = false;
-  protected boolean ucv = true;
-  private View.OnClickListener ucw = new BaseLifeUI.1(this);
-  private View.OnClickListener ucx = new View.OnClickListener()
+  private int tWY = 1;
+  MMLoadMoreListView ucL;
+  public int udn = -1;
+  private boolean udt;
+  private boolean vjE = false;
+  private String vkI = "";
+  private View vkW;
+  private NearLifeErrorContent vkX;
+  private a vkY;
+  private a vkZ;
+  private View vla;
+  private TextView vlb;
+  private TextView vlc;
+  private com.tencent.mm.modelgeo.d vld = com.tencent.mm.modelgeo.d.aEL();
+  private com.tencent.mm.plugin.nearlife.b.d vle;
+  private int vlf;
+  private List<boz> vlg;
+  protected boz vlh = null;
+  protected float vli = 0.0F;
+  protected float vlj = 0.0F;
+  protected int vlk = 0;
+  protected float vll = 0.0F;
+  protected long vlm = -1L;
+  protected long vln = -1L;
+  protected long vlo = -1L;
+  protected int vlp = 0;
+  protected boolean vlq = false;
+  protected int vlr = -1;
+  protected boolean vls = false;
+  boolean vlt = false;
+  protected boolean vlu = true;
+  private View.OnClickListener vlv = new View.OnClickListener()
+  {
+    public final void onClick(View paramAnonymousView)
+    {
+      AppMethodBeat.i(26560);
+      BaseLifeUI.a(BaseLifeUI.this);
+      AppMethodBeat.o(26560);
+    }
+  };
+  private View.OnClickListener vlw = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(26561);
-      if (BaseLifeUI.this.uci == null)
+      if (BaseLifeUI.this.vlh == null)
       {
-        ad.e("MicroMsg.BaseLifeUI", "Location is null");
+        ac.e("MicroMsg.BaseLifeUI", "Location is null");
         AppMethodBeat.o(26561);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.vKh.f(11138, new Object[] { "1", Integer.valueOf(BaseLifeUI.b(BaseLifeUI.this).getCount() + 1), BaseLifeUI.this.jko });
+      com.tencent.mm.plugin.report.service.h.wUl.f(11138, new Object[] { "1", Integer.valueOf(BaseLifeUI.b(BaseLifeUI.this).getCount() + 1), BaseLifeUI.this.jKB });
       paramAnonymousView = new Intent();
       paramAnonymousView.setClass(BaseLifeUI.this, NearLifeCreatePoiUI.class);
-      paramAnonymousView.putExtra("get_lat", BaseLifeUI.this.uci.COJ);
-      paramAnonymousView.putExtra("get_lng", BaseLifeUI.this.uci.COI);
-      paramAnonymousView.putExtra("get_preci", BaseLifeUI.this.uci.DfE);
-      paramAnonymousView.putExtra("get_poi_name", BaseLifeUI.b(BaseLifeUI.this).cWj());
-      paramAnonymousView.putExtra("get_cur_lat", BaseLifeUI.this.ucj);
-      paramAnonymousView.putExtra("get_cur_lng", BaseLifeUI.this.uck);
-      paramAnonymousView.putExtra("get_accuracy", BaseLifeUI.this.ucm);
-      paramAnonymousView.putExtra("get_loctype", BaseLifeUI.this.ucl);
-      paramAnonymousView.putExtra("search_id", BaseLifeUI.this.jko);
-      paramAnonymousView.putExtra("get_is_mars", BaseLifeUI.this.hem);
+      paramAnonymousView.putExtra("get_lat", BaseLifeUI.this.vlh.Ehu);
+      paramAnonymousView.putExtra("get_lng", BaseLifeUI.this.vlh.Eht);
+      paramAnonymousView.putExtra("get_preci", BaseLifeUI.this.vlh.EyK);
+      paramAnonymousView.putExtra("get_poi_name", BaseLifeUI.b(BaseLifeUI.this).djR());
+      paramAnonymousView.putExtra("get_cur_lat", BaseLifeUI.this.vli);
+      paramAnonymousView.putExtra("get_cur_lng", BaseLifeUI.this.vlj);
+      paramAnonymousView.putExtra("get_accuracy", BaseLifeUI.this.vll);
+      paramAnonymousView.putExtra("get_loctype", BaseLifeUI.this.vlk);
+      paramAnonymousView.putExtra("search_id", BaseLifeUI.this.jKB);
+      paramAnonymousView.putExtra("get_is_mars", BaseLifeUI.this.hEP);
       BaseLifeUI.this.startActivityForResult(paramAnonymousView, 1);
       AppMethodBeat.o(26561);
     }
   };
-  private b.a ucy = new b.a()
+  private b.a vlx = new b.a()
   {
     public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
     {
       AppMethodBeat.i(26572);
-      if (BaseLifeUI.this.gqP)
+      if (BaseLifeUI.this.gRx)
       {
         AppMethodBeat.o(26572);
         return false;
       }
-      if (BaseLifeUI.this.fjF)
+      if (BaseLifeUI.this.fmZ)
       {
         AppMethodBeat.o(26572);
         return false;
       }
       if (!paramAnonymousBoolean)
       {
-        if ((!BaseLifeUI.j(BaseLifeUI.this)) && (!com.tencent.mm.modelgeo.d.axU()))
+        if ((!BaseLifeUI.j(BaseLifeUI.this)) && (!com.tencent.mm.modelgeo.d.aEM()))
         {
           BaseLifeUI.k(BaseLifeUI.this);
           com.tencent.mm.ui.base.h.a(BaseLifeUI.this, BaseLifeUI.this.getString(2131760082), BaseLifeUI.this.getString(2131755906), BaseLifeUI.this.getString(2131760598), BaseLifeUI.this.getString(2131755691), false, new DialogInterface.OnClickListener()
@@ -131,7 +144,7 @@ public abstract class BaseLifeUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(26571);
-              com.tencent.mm.modelgeo.d.cv(BaseLifeUI.this);
+              com.tencent.mm.modelgeo.d.cE(BaseLifeUI.this);
               AppMethodBeat.o(26571);
             }
           }, null);
@@ -140,37 +153,37 @@ public abstract class BaseLifeUI
         return true;
       }
       o.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-      BaseLifeUI.this.fjF = true;
-      ad.i("MicroMsg.BaseLifeUI", "on get location %f %f " + System.currentTimeMillis(), new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
-      BaseLifeUI.this.uci = new bld();
-      BaseLifeUI.this.uci.DfG = "";
-      BaseLifeUI.this.uci.DfH = 0;
-      BaseLifeUI.this.uci.COJ = paramAnonymousFloat2;
-      BaseLifeUI.this.uci.COI = paramAnonymousFloat1;
-      BaseLifeUI.this.uci.DfF = "";
-      BaseLifeUI.this.uci.DfE = ((int)paramAnonymousDouble2);
-      BaseLifeUI.this.ucj = paramAnonymousFloat2;
-      BaseLifeUI.this.uck = paramAnonymousFloat1;
-      BaseLifeUI.this.ucl = paramAnonymousInt;
-      BaseLifeUI.this.ucm = ((float)paramAnonymousDouble2);
+      BaseLifeUI.this.fmZ = true;
+      ac.i("MicroMsg.BaseLifeUI", "on get location %f %f " + System.currentTimeMillis(), new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+      BaseLifeUI.this.vlh = new boz();
+      BaseLifeUI.this.vlh.EyM = "";
+      BaseLifeUI.this.vlh.EyN = 0;
+      BaseLifeUI.this.vlh.Ehu = paramAnonymousFloat2;
+      BaseLifeUI.this.vlh.Eht = paramAnonymousFloat1;
+      BaseLifeUI.this.vlh.EyL = "";
+      BaseLifeUI.this.vlh.EyK = ((int)paramAnonymousDouble2);
+      BaseLifeUI.this.vli = paramAnonymousFloat2;
+      BaseLifeUI.this.vlj = paramAnonymousFloat1;
+      BaseLifeUI.this.vlk = paramAnonymousInt;
+      BaseLifeUI.this.vll = ((float)paramAnonymousDouble2);
       Object localObject = BaseLifeUI.this;
       label418:
       BaseLifeUI localBaseLifeUI;
       if (BaseLifeUI.l(BaseLifeUI.this) == null)
       {
         paramAnonymousBoolean = false;
-        ((BaseLifeUI)localObject).hem = paramAnonymousBoolean;
-        localObject = BaseLifeUI.f(BaseLifeUI.this).ubQ;
+        ((BaseLifeUI)localObject).hEP = paramAnonymousBoolean;
+        localObject = BaseLifeUI.f(BaseLifeUI.this).vkP;
         if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
           break label569;
         }
         localObject = (BackwardSupportUtil.ExifHelper.LatLongData)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
-        BaseLifeUI.this.p(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dpb, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).hil);
-        BaseLifeUI.this.uct = BaseLifeUI.k(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dpb, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).hil, paramAnonymousFloat2, paramAnonymousFloat1);
-        BaseLifeUI.f(BaseLifeUI.this).ubU = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.uci.COJ, BaseLifeUI.this.uci.COI);
-        BaseLifeUI.b(BaseLifeUI.this).ubU = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.uci.COJ, BaseLifeUI.this.uci.COI);
+        BaseLifeUI.this.p(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dmL, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).hIO);
+        BaseLifeUI.this.vls = BaseLifeUI.k(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dmL, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).hIO, paramAnonymousFloat2, paramAnonymousFloat1);
+        BaseLifeUI.f(BaseLifeUI.this).vkT = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.vlh.Ehu, BaseLifeUI.this.vlh.Eht);
+        BaseLifeUI.b(BaseLifeUI.this).vkT = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.vlh.Ehu, BaseLifeUI.this.vlh.Eht);
         localBaseLifeUI = BaseLifeUI.this;
-        if (!BaseLifeUI.this.inh) {
+        if (!BaseLifeUI.this.iNn) {
           break label583;
         }
       }
@@ -183,7 +196,7 @@ public abstract class BaseLifeUI
         BaseLifeUI.this.addSearchMenu(true, BaseLifeUI.i(BaseLifeUI.this));
         AppMethodBeat.o(26572);
         return false;
-        paramAnonymousBoolean = BaseLifeUI.l(BaseLifeUI.this).hem;
+        paramAnonymousBoolean = BaseLifeUI.l(BaseLifeUI.this).hEP;
         break;
         BaseLifeUI.this.p(paramAnonymousFloat2, paramAnonymousFloat1);
         break label418;
@@ -191,35 +204,35 @@ public abstract class BaseLifeUI
     }
   };
   
-  private void Ij(int paramInt)
+  private void Ki(int paramInt)
   {
-    this.sUz.removeFooterView(this.ubX);
-    this.sUz.removeFooterView(this.ucb);
-    this.sUz.eSP();
-    this.ucb.setVisibility(paramInt);
-    this.ucc.setVisibility(paramInt);
-    this.ucd.setVisibility(paramInt);
+    this.ucL.removeFooterView(this.vkW);
+    this.ucL.removeFooterView(this.vla);
+    this.ucL.fiz();
+    this.vla.setVisibility(paramInt);
+    this.vlb.setVisibility(paramInt);
+    this.vlc.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      this.sUz.addFooterView(this.ucb);
+      this.ucL.addFooterView(this.vla);
       return;
     }
-    this.sUz.eSL();
-    this.sUz.addFooterView(this.ubX);
+    this.ucL.fiv();
+    this.ucL.addFooterView(this.vkW);
   }
   
-  private void cWo()
+  private void djW()
   {
-    if (!this.inh) {
-      ad.i("MicroMsg.BaseLifeUI", "is not Search mode pass createpoi");
+    if (!this.iNn) {
+      ac.i("MicroMsg.BaseLifeUI", "is not Search mode pass createpoi");
     }
     for (;;)
     {
       return;
       try
       {
-        int i = Integer.valueOf(com.tencent.mm.m.g.Zd().getValue("POICreateForbiden")).intValue();
-        ad.i("MicroMsg.BaseLifeUI", "getDynamicConfig createpoi %d", new Object[] { Integer.valueOf(i) });
+        int i = Integer.valueOf(com.tencent.mm.m.g.ZY().getValue("POICreateForbiden")).intValue();
+        ac.i("MicroMsg.BaseLifeUI", "getDynamicConfig createpoi %d", new Object[] { Integer.valueOf(i) });
         if (i == 1) {}
       }
       catch (Exception localException)
@@ -229,81 +242,81 @@ public abstract class BaseLifeUI
         break label56;
       }
     }
-    if (!this.uca.ajd(this.uca.cWj()))
+    if (!this.vkZ.aob(this.vkZ.djR()))
     {
-      str = String.format(getResources().getString(2131761604), new Object[] { this.uca.cWj() });
-      this.ucc.setText(str);
-      Ij(0);
+      str = String.format(getResources().getString(2131761604), new Object[] { this.vkZ.djR() });
+      this.vlb.setText(str);
+      Ki(0);
       return;
     }
-    Ij(8);
+    Ki(8);
   }
   
-  private boolean nM(boolean paramBoolean)
+  private boolean oG(boolean paramBoolean)
   {
-    bld localbld;
+    boz localboz;
     do
     {
-      if (this.ucf != null)
+      if (this.vle != null)
       {
-        ad.d("MicroMsg.BaseLifeUI", "scene is doing...");
+        ac.d("MicroMsg.BaseLifeUI", "scene is doing...");
         return false;
       }
-      if (this.uch.size() - 1 <= this.ucg)
+      if (this.vlg.size() - 1 <= this.vlf)
       {
-        this.ucg = -1;
-        ad.i("MicroMsg.BaseLifeUI", "index inc to end, ret");
+        this.vlf = -1;
+        ac.i("MicroMsg.BaseLifeUI", "index inc to end, ret");
         return false;
       }
-      this.ucg += 1;
-      localbld = (bld)this.uch.get(this.ucg);
-      if (this.ucg == 0) {
-        this.ucq += 1;
+      this.vlf += 1;
+      localboz = (boz)this.vlg.get(this.vlf);
+      if (this.vlf == 0) {
+        this.vlp += 1;
       }
-      if (!this.inh) {
+      if (!this.iNn) {
         break;
       }
-      i = this.uca.b(new BackwardSupportUtil.ExifHelper.LatLongData(localbld.COJ, localbld.COI));
+      i = this.vkZ.b(new BackwardSupportUtil.ExifHelper.LatLongData(localboz.Ehu, localboz.Eht));
     } while (i <= 0);
     SKBuiltinBuffer_t localSKBuiltinBuffer_t;
-    if (this.inh)
+    if (this.iNn)
     {
-      localSKBuiltinBuffer_t = this.uca.a(new BackwardSupportUtil.ExifHelper.LatLongData(localbld.COJ, localbld.COI));
+      localSKBuiltinBuffer_t = this.vkZ.a(new BackwardSupportUtil.ExifHelper.LatLongData(localboz.Ehu, localboz.Eht));
       label166:
-      if (!this.inh) {
+      if (!this.iNn) {
         break label249;
       }
     }
     label249:
     for (int i = 1;; i = 0)
     {
-      if (com.tencent.mm.plugin.nearlife.b.d.Ig(i)) {
+      if (com.tencent.mm.plugin.nearlife.b.d.Kf(i)) {
         break label255;
       }
-      this.ucg = -1;
+      this.vlf = -1;
       return false;
-      i = this.ubZ.b(new BackwardSupportUtil.ExifHelper.LatLongData(localbld.COJ, localbld.COI));
+      i = this.vkY.b(new BackwardSupportUtil.ExifHelper.LatLongData(localboz.Ehu, localboz.Eht));
       break;
-      localSKBuiltinBuffer_t = this.ubZ.a(new BackwardSupportUtil.ExifHelper.LatLongData(localbld.COJ, localbld.COI));
+      localSKBuiltinBuffer_t = this.vkY.a(new BackwardSupportUtil.ExifHelper.LatLongData(localboz.Ehu, localboz.Eht));
       break label166;
     }
     label255:
-    if (-1L == this.ucn) {
-      this.ucn = System.currentTimeMillis();
+    if (-1L == this.vlm) {
+      this.vlm = System.currentTimeMillis();
     }
     int j = this.sceneType;
-    float f1 = localbld.COI;
-    float f2 = localbld.COJ;
-    int k = localbld.DfE;
-    int m = localbld.DfH;
-    String str2 = localbld.DfF;
-    String str3 = localbld.DfG;
-    if (this.inh) {}
-    for (String str1 = this.uca.cWj();; str1 = "")
+    float f1 = localboz.Eht;
+    float f2 = localboz.Ehu;
+    int k = localboz.EyK;
+    int m = localboz.EyN;
+    String str2 = localboz.EyL;
+    String str3 = localboz.EyM;
+    if (this.iNn) {}
+    for (String str1 = this.vkZ.djR();; str1 = "")
     {
-      this.ucf = new com.tencent.mm.plugin.nearlife.b.d(i, j, f1, f2, k, m, str2, str3, localSKBuiltinBuffer_t, str1, this.sVb, paramBoolean, false);
-      az.aeS().a(this.ucf, 0);
-      ad.i("MicroMsg.BaseLifeUI", "start get lbs life list, index:%d, lat:%f, long:%f", new Object[] { Integer.valueOf(this.ucg), Float.valueOf(localbld.COJ), Float.valueOf(localbld.COI) });
+      this.vle = new com.tencent.mm.plugin.nearlife.b.d(i, j, f1, f2, k, m, str2, str3, localSKBuiltinBuffer_t, str1, this.udn, paramBoolean, false);
+      az.agi().a(this.vle, 0);
+      ac.i("MicroMsg.BaseLifeUI", "start get lbs life list, index:%d, lat:%f, long:%f", new Object[] { Integer.valueOf(this.vlf), Float.valueOf(localboz.Ehu), Float.valueOf(localboz.Eht) });
       return true;
     }
   }
@@ -329,9 +342,9 @@ public abstract class BaseLifeUI
         if (paramBoolean2)
         {
           i = 43;
-          if (this.uct)
+          if (this.vls)
           {
-            paramString = com.tencent.mm.plugin.report.service.h.vKh;
+            paramString = com.tencent.mm.plugin.report.service.h.wUl;
             if (!paramBoolean1) {
               break label402;
             }
@@ -341,12 +354,12 @@ public abstract class BaseLifeUI
           if (!paramBoolean1) {
             break label408;
           }
-          paramString = this.uca.Ii(paramInt).sWi;
+          paramString = this.vkZ.Kh(paramInt).uev;
           localObject1 = paramString;
-          if (this.uca.getCount() <= 0) {
+          if (this.vkZ.getCount() <= 0) {
             break label545;
           }
-          str1 = this.uca.Ii(1).dnB;
+          str1 = this.vkZ.Kh(1).dlj;
           localObject1 = paramString;
           paramString = str1;
         }
@@ -358,17 +371,17 @@ public abstract class BaseLifeUI
       j = i;
       str1 = paramString;
       localObject2 = localObject1;
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
-        str1 = this.dnB;
+        str1 = this.dlj;
         localObject2 = localObject1;
         j = i;
       }
-      if (this.uci == null) {}
-      for (paramString = "null/null";; paramString = String.format("%f/%f", new Object[] { Float.valueOf(this.uci.COJ), Float.valueOf(this.uci.COI) }))
+      if (this.vlh == null) {}
+      for (paramString = "null/null";; paramString = String.format("%f/%f", new Object[] { Float.valueOf(this.vlh.Ehu), Float.valueOf(this.vlh.Eht) }))
       {
-        ad.d("MicroMsg.BaseLifeUI", "index: %s, bid: %s, index: %s, searchId: %s, requestId: %s", new Object[] { Integer.valueOf(paramInt + 1), str2, Integer.valueOf(paramInt), localObject2, str1 });
-        com.tencent.mm.plugin.report.service.h.vKh.f(11135, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt + 1), Long.valueOf(this.ucn), Long.valueOf(this.ucp), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.uco), Integer.valueOf(this.ucq), paramString, str2, Integer.valueOf(this.sVb), localObject2, com.tencent.mm.compatible.deviceinfo.q.cG(true), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), str1 });
+        ac.d("MicroMsg.BaseLifeUI", "index: %s, bid: %s, index: %s, searchId: %s, requestId: %s", new Object[] { Integer.valueOf(paramInt + 1), str2, Integer.valueOf(paramInt), localObject2, str1 });
+        com.tencent.mm.plugin.report.service.h.wUl.f(11135, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt + 1), Long.valueOf(this.vlm), Long.valueOf(this.vlo), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.vln), Integer.valueOf(this.vlp), paramString, str2, Integer.valueOf(this.udn), localObject2, com.tencent.mm.compatible.deviceinfo.q.cF(true), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), str1 });
         return;
         i = 3;
         break;
@@ -383,15 +396,15 @@ public abstract class BaseLifeUI
         j = 4;
         break label63;
         label408:
-        str1 = this.ubZ.Ii(paramInt).sWi;
+        str1 = this.vkY.Kh(paramInt).uev;
         localObject1 = str1;
-        if (this.ubZ.getCount() <= 0) {
+        if (this.vkY.getCount() <= 0) {
           break label545;
         }
-        paramString = this.ubZ.Ii(1).dnB;
+        paramString = this.vkY.Kh(1).dlj;
         localObject1 = str1;
         break label130;
-        if (this.ucr) {
+        if (this.vlq) {
           if (paramBoolean2) {
             i = 44;
           }
@@ -415,20 +428,20 @@ public abstract class BaseLifeUI
     }
   }
   
-  public abstract a cWl();
+  public abstract a djT();
   
-  public abstract a cWm();
+  public abstract a djU();
   
-  public void cWn()
+  public void djV()
   {
-    ad.d("MicroMsg.BaseLifeUI", "init header");
-    this.ucb = View.inflate(this, 2131493673, null);
-    this.ucc = ((TextView)this.ucb.findViewById(2131306116));
-    this.ucd = ((TextView)this.ucb.findViewById(2131306115));
-    this.ucb.setOnClickListener(this.ucx);
-    this.ubX = View.inflate(this, 2131495103, null);
-    this.sUz.addFooterView(this.ubX);
-    this.ubX.setVisibility(8);
+    ac.d("MicroMsg.BaseLifeUI", "init header");
+    this.vla = View.inflate(this, 2131493673, null);
+    this.vlb = ((TextView)this.vla.findViewById(2131306116));
+    this.vlc = ((TextView)this.vla.findViewById(2131306115));
+    this.vla.setOnClickListener(this.vlw);
+    this.vkW = View.inflate(this, 2131495103, null);
+    this.ucL.addFooterView(this.vkW);
+    this.vkW.setVisibility(8);
   }
   
   public int getLayoutId()
@@ -438,36 +451,59 @@ public abstract class BaseLifeUI
   
   public void initView()
   {
-    this.sUz = ((MMLoadMoreListView)findViewById(2131302680));
-    this.sUz.setFooterTips(getString(2131761492));
-    this.ubY = ((NearLifeErrorContent)findViewById(2131302679));
-    cWn();
-    this.ubZ = cWl();
-    this.uca = cWm();
-    this.sUz.setAdapter(this.ubZ);
-    this.ubY.setListView(this.sUz);
-    this.ubZ.notifyDataSetChanged();
-    setBackBtn(new BaseLifeUI.3(this));
-    setToTop(new BaseLifeUI.4(this));
-    this.fvI = new r((byte)0);
-    this.fvI.Htp = new r.b()
+    this.ucL = ((MMLoadMoreListView)findViewById(2131302680));
+    this.ucL.setFooterTips(getString(2131761492));
+    this.vkX = ((NearLifeErrorContent)findViewById(2131302679));
+    djV();
+    this.vkY = djT();
+    this.vkZ = djU();
+    this.ucL.setAdapter(this.vkY);
+    this.vkX.setListView(this.ucL);
+    this.vkY.notifyDataSetChanged();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      public final boolean BX(String paramAnonymousString)
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(26562);
+        BaseLifeUI.this.a(-1, false, "", BaseLifeUI.this.vlt);
+        BaseLifeUI.this.finish();
+        AppMethodBeat.o(26562);
+        return true;
+      }
+    });
+    setToTop(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26563);
+        paramAnonymousView = BaseLifeUI.this.ucL;
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
+        Object localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$4", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$4", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        AppMethodBeat.o(26563);
+      }
+    });
+    this.fzp = new r((byte)0);
+    this.fzp.ITM = new r.b()
+    {
+      public final boolean Ga(String paramAnonymousString)
       {
         AppMethodBeat.i(26569);
-        ad.d("MicroMsg.BaseLifeUI", "search key click");
+        ac.d("MicroMsg.BaseLifeUI", "search key click");
         BaseLifeUI.b(BaseLifeUI.this, paramAnonymousString);
         AppMethodBeat.o(26569);
         return false;
       }
       
-      public final void BY(String paramAnonymousString)
+      public final void Gb(String paramAnonymousString)
       {
         AppMethodBeat.i(26566);
-        ad.d("MicroMsg.BaseLifeUI", "onSearchBarChange  %s", new Object[] { paramAnonymousString });
-        if (bt.isNullOrNil(paramAnonymousString))
+        ac.d("MicroMsg.BaseLifeUI", "onSearchBarChange  %s", new Object[] { paramAnonymousString });
+        if (bs.isNullOrNil(paramAnonymousString))
         {
-          aIl();
+          aPc();
           AppMethodBeat.o(26566);
           return;
         }
@@ -475,39 +511,39 @@ public abstract class BaseLifeUI
         AppMethodBeat.o(26566);
       }
       
-      public final void aIj()
+      public final void aPa()
       {
         AppMethodBeat.i(26567);
-        ad.d("MicroMsg.BaseLifeUI", "search helper onQuitSearch");
-        BaseLifeUI.this.inh = false;
-        BaseLifeUI.this.sUz.setAdapter(BaseLifeUI.f(BaseLifeUI.this));
+        ac.d("MicroMsg.BaseLifeUI", "search helper onQuitSearch");
+        BaseLifeUI.this.iNn = false;
+        BaseLifeUI.this.ucL.setAdapter(BaseLifeUI.f(BaseLifeUI.this));
         BaseLifeUI.f(BaseLifeUI.this).notifyDataSetChanged();
-        BaseLifeUI.g(BaseLifeUI.this).Ik(BaseLifeUI.f(BaseLifeUI.this).ubW);
-        if ((!BaseLifeUI.f(BaseLifeUI.this).cWk()) && (BaseLifeUI.h(BaseLifeUI.this) != null)) {
+        BaseLifeUI.g(BaseLifeUI.this).Kj(BaseLifeUI.f(BaseLifeUI.this).vkV);
+        if ((!BaseLifeUI.f(BaseLifeUI.this).djS()) && (BaseLifeUI.h(BaseLifeUI.this) != null)) {
           BaseLifeUI.h(BaseLifeUI.this).setVisibility(0);
         }
-        BaseLifeUI.this.sUz.setOnTouchListener(null);
+        BaseLifeUI.this.ucL.setOnTouchListener(null);
         BaseLifeUI.e(BaseLifeUI.this);
         BaseLifeUI.a(BaseLifeUI.this, BaseLifeUI.f(BaseLifeUI.this));
         AppMethodBeat.o(26567);
       }
       
-      public final void aIk()
+      public final void aPb()
       {
         AppMethodBeat.i(26568);
-        ad.d("MicroMsg.BaseLifeUI", "search helper onEnterSearch");
-        BaseLifeUI.this.ucr = true;
+        ac.d("MicroMsg.BaseLifeUI", "search helper onEnterSearch");
+        BaseLifeUI.this.vlq = true;
         BaseLifeUI.i(BaseLifeUI.this).setHint(BaseLifeUI.this.getString(2131761491));
-        BaseLifeUI.this.inh = true;
-        BaseLifeUI.b(BaseLifeUI.this).cWi();
-        BaseLifeUI.this.sUz.setAdapter(BaseLifeUI.b(BaseLifeUI.this));
+        BaseLifeUI.this.iNn = true;
+        BaseLifeUI.b(BaseLifeUI.this).djQ();
+        BaseLifeUI.this.ucL.setAdapter(BaseLifeUI.b(BaseLifeUI.this));
         BaseLifeUI.b(BaseLifeUI.this).notifyDataSetChanged();
-        BaseLifeUI.this.sUz.eSN();
-        BaseLifeUI.g(BaseLifeUI.this).Ik(BaseLifeUI.b(BaseLifeUI.this).ubW);
+        BaseLifeUI.this.ucL.fix();
+        BaseLifeUI.g(BaseLifeUI.this).Kj(BaseLifeUI.b(BaseLifeUI.this).vkV);
         if (BaseLifeUI.h(BaseLifeUI.this) != null) {
           BaseLifeUI.h(BaseLifeUI.this).setVisibility(8);
         }
-        BaseLifeUI.this.sUz.setOnTouchListener(new View.OnTouchListener()
+        BaseLifeUI.this.ucL.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymous2View, MotionEvent paramAnonymous2MotionEvent)
           {
@@ -521,30 +557,38 @@ public abstract class BaseLifeUI
         AppMethodBeat.o(26568);
       }
       
-      public final void aIl()
+      public final void aPc()
       {
         AppMethodBeat.i(26565);
-        ad.d("MicroMsg.BaseLifeUI", "click clear");
+        ac.d("MicroMsg.BaseLifeUI", "click clear");
         if (BaseLifeUI.c(BaseLifeUI.this) != null)
         {
-          az.aeS().a(BaseLifeUI.c(BaseLifeUI.this));
+          az.agi().a(BaseLifeUI.c(BaseLifeUI.this));
           BaseLifeUI.d(BaseLifeUI.this);
         }
-        BaseLifeUI.b(BaseLifeUI.this).cWi();
+        BaseLifeUI.b(BaseLifeUI.this).djQ();
         BaseLifeUI.e(BaseLifeUI.this);
         AppMethodBeat.o(26565);
       }
       
-      public final void aIm() {}
+      public final void aPd() {}
     };
-    this.sUz.setOnLoadMoreListener(new BaseLifeUI.6(this));
-    this.sUz.eSM();
+    this.ucL.setOnLoadMoreListener(new MMLoadMoreListView.a()
+    {
+      public final void Xa()
+      {
+        AppMethodBeat.i(26570);
+        BaseLifeUI.a(BaseLifeUI.this);
+        AppMethodBeat.o(26570);
+      }
+    });
+    this.ucL.fiw();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.d("MicroMsg.BaseLifeUI", "onActivityResult requestCode %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.d("MicroMsg.BaseLifeUI", "onActivityResult requestCode %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 == -1) {}
     switch (paramInt1)
     {
@@ -558,40 +602,40 @@ public abstract class BaseLifeUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.ucv = getIntent().getBooleanExtra("poi_show_none", true);
-    this.sVb = ((int)(System.currentTimeMillis() / 1000L));
+    this.vlu = getIntent().getBooleanExtra("poi_show_none", true);
+    this.udn = ((int)(System.currentTimeMillis() / 1000L));
     com.tencent.mm.plugin.nearlife.b.d.clear();
-    az.aeS().a(603, this);
+    az.agi().a(603, this);
     this.sceneType = getIntent().getIntExtra("near_life_scene", 0);
-    this.dnB = getIntent().getStringExtra("request_id");
-    this.uch = new ArrayList();
+    this.dlj = getIntent().getStringExtra("request_id");
+    this.vlg = new ArrayList();
     initView();
   }
   
   public void onDestroy()
   {
-    az.aeS().b(603, this);
+    az.agi().b(603, this);
     super.onDestroy();
-    if (this.uce != null) {
-      this.uce.c(this.ucy);
+    if (this.vld != null) {
+      this.vld.c(this.vlx);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    this.uce.c(this.ucy);
+    this.vld.c(this.vlx);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.ubZ.notifyDataSetChanged();
-    this.sUz.eSO();
-    if (this.uce != null) {
-      this.uce.a(this.ucy, true);
+    this.vkY.notifyDataSetChanged();
+    this.ucL.fiy();
+    if (this.vld != null) {
+      this.vld.a(this.vlx, true);
     }
-    this.gqP = false;
+    this.gRx = false;
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -599,20 +643,20 @@ public abstract class BaseLifeUI
     if (paramn.getType() != 603) {
       return;
     }
-    this.sUz.eSN();
+    this.ucL.fix();
     com.tencent.mm.plugin.nearlife.b.d locald = (com.tencent.mm.plugin.nearlife.b.d)paramn;
     LogoImageView localLogoImageView;
     Object localObject;
-    if (!bt.isNullOrNil(locald.dct))
+    if (!bs.isNullOrNil(locald.vkI))
     {
-      this.dct = locald.dct;
-      localLogoImageView = (LogoImageView)this.ubX.findViewById(2131303550);
-      localObject = this.dct;
-      az.arV();
-      localLogoImageView.imagePath = c.apX();
+      this.vkI = locald.vkI;
+      localLogoImageView = (LogoImageView)this.vkW.findViewById(2131303550);
+      localObject = this.vkI;
+      az.ayM();
+      localLogoImageView.imagePath = c.awM();
       localLogoImageView.url = ((String)localObject);
-      localLogoImageView.gnh = 0;
-      localLogoImageView.gni = 0;
+      localLogoImageView.gNU = 0;
+      localLogoImageView.gNV = 0;
       if ((localObject != null) && (((String)localObject).length() != 0)) {
         break label168;
       }
@@ -621,14 +665,14 @@ public abstract class BaseLifeUI
     int i;
     for (;;)
     {
-      this.jko = locald.jko;
-      this.sOL = locald.sOL;
-      i = ((com.tencent.mm.plugin.nearlife.b.d)paramn).diR;
-      com.tencent.mm.plugin.nearlife.b.d.Ih(i);
-      if (this.ucf != null) {
+      this.jKB = locald.jKB;
+      this.tWY = locald.tWY;
+      i = ((com.tencent.mm.plugin.nearlife.b.d)paramn).dgm;
+      com.tencent.mm.plugin.nearlife.b.d.Kg(i);
+      if (this.vle != null) {
         break;
       }
-      ad.d("MicroMsg.BaseLifeUI", "scene is null");
+      ac.d("MicroMsg.BaseLifeUI", "scene is null");
       return;
       label168:
       if (((String)localObject).startsWith("http"))
@@ -637,11 +681,11 @@ public abstract class BaseLifeUI
         if (localBitmap != null)
         {
           localObject = localBitmap;
-          if (localLogoImageView.gnh > 0)
+          if (localLogoImageView.gNU > 0)
           {
             localObject = localBitmap;
-            if (localLogoImageView.gni > 0) {
-              localObject = f.a(localBitmap, localLogoImageView.gnh, localLogoImageView.gni, true, false);
+            if (localLogoImageView.gNV > 0) {
+              localObject = f.a(localBitmap, localLogoImageView.gNU, localLogoImageView.gNV, true, false);
             }
           }
           localLogoImageView.setImageBitmap((Bitmap)localObject);
@@ -651,14 +695,14 @@ public abstract class BaseLifeUI
           com.tencent.mm.sdk.g.b.c(new LogoImageView.a((String)localObject, localLogoImageView.handler), "LogoImageView_download");
         }
       }
-      else if (!i.eK((String)localObject))
+      else if (!i.eA((String)localObject))
       {
         localLogoImageView.setVisibility(8);
       }
       else
       {
-        if ((localLogoImageView.gnh <= 0) || (localLogoImageView.gni <= 0)) {}
-        for (localObject = f.aFi((String)localObject);; localObject = f.e((String)localObject, localLogoImageView.gnh, localLogoImageView.gni, true))
+        if ((localLogoImageView.gNU <= 0) || (localLogoImageView.gNV <= 0)) {}
+        for (localObject = f.aKz((String)localObject);; localObject = f.e((String)localObject, localLogoImageView.gNU, localLogoImageView.gNV, true))
         {
           if (localObject != null) {
             break label371;
@@ -670,100 +714,100 @@ public abstract class BaseLifeUI
         localLogoImageView.setImageBitmap((Bitmap)localObject);
       }
     }
-    ad.i("MicroMsg.BaseLifeUI", "onSceneEnd: index:%d, errType=%d, errCode=%d, errMsg=%s opcde %d ", new Object[] { Integer.valueOf(this.ucg), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
+    ac.i("MicroMsg.BaseLifeUI", "onSceneEnd: index:%d, errType=%d, errCode=%d, errMsg=%s opcde %d ", new Object[] { Integer.valueOf(this.vlf), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
     if ((paramInt2 == 0) || (paramInt2 == 101))
     {
       i = 1;
       if ((paramInt1 == 0) || (i != 0)) {
         break label538;
       }
-      ad.d("MicroMsg.BaseLifeUI", "error");
-      if (!this.inh) {
+      ac.d("MicroMsg.BaseLifeUI", "error");
+      if (!this.iNn) {
         break label530;
       }
-      paramString = this.uca;
+      paramString = this.vkZ;
       label471:
-      if ((this.uch.size() - 1 == this.ucg) && (paramString.getCount() == 0))
+      if ((this.vlg.size() - 1 == this.vlf) && (paramString.getCount() == 0))
       {
-        paramString.ubW = 1;
-        this.ubY.Ik(paramString.ubW);
+        paramString.vkV = 1;
+        this.vkX.Kj(paramString.vkV);
       }
     }
     for (;;)
     {
-      this.ucf = null;
-      nM(false);
+      this.vle = null;
+      oG(false);
       return;
       i = 0;
       break;
       label530:
-      paramString = this.ubZ;
+      paramString = this.vkY;
       break label471;
       label538:
-      if (-1L == this.uco) {
-        this.uco = System.currentTimeMillis();
+      if (-1L == this.vln) {
+        this.vln = System.currentTimeMillis();
       }
-      this.ucp = System.currentTimeMillis();
-      paramn = locald.ubK;
-      paramString = (bld)this.uch.get(this.ucg);
-      localObject = new BackwardSupportUtil.ExifHelper.LatLongData(paramString.COJ, paramString.COI);
-      if ((this.inh) && (!this.ucf.ubL)) {
-        this.uca.cWi();
+      this.vlo = System.currentTimeMillis();
+      paramn = locald.vkJ;
+      paramString = (boz)this.vlg.get(this.vlf);
+      localObject = new BackwardSupportUtil.ExifHelper.LatLongData(paramString.Ehu, paramString.Eht);
+      if ((this.iNn) && (!this.vle.vkK)) {
+        this.vkZ.djQ();
       }
-      if (this.inh)
+      if (this.iNn)
       {
-        this.uca.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.ckO(), locald.cWh());
+        this.vkZ.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.csz(), locald.djP());
         label654:
         if ((paramn != null) && (paramn.size() != 0)) {
           break label828;
         }
-        if (!this.inh) {
+        if (!this.iNn) {
           break label820;
         }
       }
       label820:
-      for (paramString = this.uca;; paramString = this.ubZ)
+      for (paramString = this.vkZ;; paramString = this.vkY)
       {
-        if (this.uch.size() - 1 == this.ucg)
+        if (this.vlg.size() - 1 == this.vlf)
         {
           if (paramString.getCount() == 0) {
-            this.ubY.Ik(paramString.ubW);
+            this.vkX.Kj(paramString.vkV);
           }
-          this.sUz.eSN();
-          if ((!paramString.cWk()) && (paramInt2 != 101)) {
-            cWo();
+          this.ucL.fix();
+          if ((!paramString.djS()) && (paramInt2 != 101)) {
+            djW();
           }
         }
-        if ((!this.ubZ.cWk()) && (this.ubX != null) && (!this.inh)) {
-          this.ubX.setVisibility(0);
+        if ((!this.vkY.djS()) && (this.vkW != null) && (!this.iNn)) {
+          this.vkW.setVisibility(0);
         }
-        if ((this.ubX == null) || (this.inh)) {
+        if ((this.vkW == null) || (this.iNn)) {
           break label926;
         }
-        this.ubX.setVisibility(0);
+        this.vkW.setVisibility(0);
         break;
-        this.ubZ.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.ckO(), locald.cWh());
+        this.vkY.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.csz(), locald.djP());
         break label654;
       }
       label828:
-      if (this.inh) {}
-      for (paramString = this.uca;; paramString = this.ubZ)
+      if (this.iNn) {}
+      for (paramString = this.vkZ;; paramString = this.vkY)
       {
-        this.sUz.setVisibility(0);
-        paramString.ubW = 0;
-        this.ubY.Ik(this.uca.ubW);
+        this.ucL.setVisibility(0);
+        paramString.vkV = 0;
+        this.vkX.Kj(this.vkZ.vkV);
         paramString.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, paramn);
         paramString.notifyDataSetChanged();
-        if ((this.uch.size() - 1 != this.ucg) || (paramString.cWk())) {
+        if ((this.vlg.size() - 1 != this.vlf) || (paramString.djS())) {
           break;
         }
-        this.sUz.eSN();
-        cWo();
+        this.ucL.fix();
+        djW();
         break;
       }
       label926:
-      if (this.ubX != null) {
-        this.ubX.setVisibility(8);
+      if (this.vkW != null) {
+        this.vkW.setVisibility(8);
       }
     }
   }
@@ -778,7 +822,7 @@ public abstract class BaseLifeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.BaseLifeUI
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.utils.q;
 import com.tencent.mm.plugin.appbrand.utils.q.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -22,23 +22,23 @@ public final class ap
   public static String a(AppBrandRuntime paramAppBrandRuntime, String paramString1, String paramString2)
   {
     AppMethodBeat.i(146928);
-    ad.i("MicroMsg.SourceMapUtil", "hy: getting sourcemap %s, %s", new Object[] { paramString1, paramString2 });
+    ac.i("MicroMsg.SourceMapUtil", "hy: getting sourcemap %s, %s", new Object[] { paramString1, paramString2 });
     if ((paramAppBrandRuntime == null) || (paramString1 == null) || (paramString1.length() == 0))
     {
-      ad.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
+      ac.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
       AppMethodBeat.o(146928);
       return "";
     }
-    if (j.a.qD(paramAppBrandRuntime.Ef().jdS.iOQ))
+    if (j.a.rq(paramAppBrandRuntime.DI().jEg.jpa))
     {
-      ad.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      ac.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
       AppMethodBeat.o(146928);
       return "";
     }
     paramAppBrandRuntime = be.d(paramAppBrandRuntime, paramString1 + ".map");
     if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.length() == 0))
     {
-      ad.i("MicroMsg.SourceMapUtil", "sourceMap of the script(%s) is null or nil.", new Object[] { paramString1 });
+      ac.i("MicroMsg.SourceMapUtil", "sourceMap of the script(%s) is null or nil.", new Object[] { paramString1 });
       AppMethodBeat.o(146928);
       return "";
     }
@@ -52,17 +52,17 @@ public final class ap
     AppMethodBeat.i(169480);
     q.a(parami, b(paramd), new q.a()
     {
-      public final void cj(String paramAnonymousString)
+      public final void bZ(String paramAnonymousString)
       {
         AppMethodBeat.i(146926);
-        ad.e("MicroMsg.SourceMapUtil", "hy: Inject '%s' Script Failed: %s", new Object[] { "WASourceMap.js", paramAnonymousString });
+        ac.e("MicroMsg.SourceMapUtil", "hy: Inject '%s' Script Failed: %s", new Object[] { "WASourceMap.js", paramAnonymousString });
         AppMethodBeat.o(146926);
       }
       
       public final void onSuccess(String paramAnonymousString)
       {
         AppMethodBeat.i(146925);
-        ad.i("MicroMsg.SourceMapUtil", "hy: Inject '%s' Script Success: %s", new Object[] { "WASourceMap.js", paramAnonymousString });
+        ac.i("MicroMsg.SourceMapUtil", "hy: Inject '%s' Script Success: %s", new Object[] { "WASourceMap.js", paramAnonymousString });
         AppMethodBeat.o(146925);
       }
     });
@@ -73,33 +73,33 @@ public final class ap
   public static String b(d paramd)
   {
     AppMethodBeat.i(169481);
-    ad.i("MicroMsg.SourceMapUtil", "hy: injecting sourcemap.js");
+    ac.i("MicroMsg.SourceMapUtil", "hy: injecting sourcemap.js");
     if (paramd == null)
     {
-      ad.w("MicroMsg.SourceMapUtil", "hy: not valid runtime");
+      ac.w("MicroMsg.SourceMapUtil", "hy: not valid runtime");
       AppMethodBeat.o(169481);
       return "";
     }
     if (paramd.getRuntime() == null)
     {
-      ad.w("MicroMsg.SourceMapUtil", "hy: runtime not prepared. do not try to inject sourcemap.js. maybe preloading");
+      ac.w("MicroMsg.SourceMapUtil", "hy: runtime not prepared. do not try to inject sourcemap.js. maybe preloading");
       AppMethodBeat.o(169481);
       return "";
     }
-    if (j.a.qD(paramd.getRuntime().iDx.iOP))
+    if (j.a.rq(paramd.getRuntime().jdx.joY))
     {
-      ad.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      ac.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
       AppMethodBeat.o(169481);
       return "";
     }
     paramd = (ICommLibReader)paramd.K(ICommLibReader.class);
     if (paramd == null)
     {
-      ad.e("MicroMsg.SourceMapUtil", "execSourceMapScript NULL reader");
+      ac.e("MicroMsg.SourceMapUtil", "execSourceMapScript NULL reader");
       AppMethodBeat.o(169481);
       return "";
     }
-    paramd = paramd.DH("WASourceMap.js");
+    paramd = paramd.HL("WASourceMap.js");
     AppMethodBeat.o(169481);
     return paramd;
   }
@@ -107,16 +107,16 @@ public final class ap
   public static boolean c(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(169483);
-    ad.i("MicroMsg.SourceMapUtil", "is sourcemap exist: %s", new Object[] { paramString });
+    ac.i("MicroMsg.SourceMapUtil", "is sourcemap exist: %s", new Object[] { paramString });
     if ((paramAppBrandRuntime == null) || (paramString == null) || (paramString.length() == 0))
     {
-      ad.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
+      ac.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
       AppMethodBeat.o(169483);
       return false;
     }
-    if (j.a.qD(paramAppBrandRuntime.Ef().jdS.iOQ))
+    if (j.a.rq(paramAppBrandRuntime.DI().jEg.jpa))
     {
-      ad.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      ac.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
       AppMethodBeat.o(169483);
       return false;
     }
@@ -125,10 +125,19 @@ public final class ap
     return bool;
   }
   
-  public static ArrayList<ScriptPartObject> f(String paramString1, String paramString2, String paramString3, String paramString4)
+  @SuppressLint({"DefaultLocal"})
+  public static String getSysInfo()
+  {
+    AppMethodBeat.i(146929);
+    String str = String.format("typeof __wxSourceMap !== 'undefined' && (__wxSourceMap.__system = 'Android %s')", new Object[] { Build.VERSION.RELEASE });
+    AppMethodBeat.o(146929);
+    return str;
+  }
+  
+  public static ArrayList<ScriptPartObject> h(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(169482);
-    ad.i("MicroMsg.SourceMapUtil", "buildSourceMapAppendList wxapkgPath: %s, filePath: %s", new Object[] { paramString1, paramString2 });
+    ac.i("MicroMsg.SourceMapUtil", "buildSourceMapAppendList wxapkgPath: %s, filePath: %s", new Object[] { paramString1, paramString2 });
     ArrayList localArrayList = new ArrayList();
     ScriptPartObject localScriptPartObject = new ScriptPartObject();
     localScriptPartObject.type = 1;
@@ -147,19 +156,10 @@ public final class ap
     AppMethodBeat.o(169482);
     return localArrayList;
   }
-  
-  @SuppressLint({"DefaultLocal"})
-  public static String getSysInfo()
-  {
-    AppMethodBeat.i(146929);
-    String str = String.format("typeof __wxSourceMap !== 'undefined' && (__wxSourceMap.__system = 'Android %s')", new Object[] { Build.VERSION.RELEASE });
-    AppMethodBeat.o(146929);
-    return str;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ap
  * JD-Core Version:    0.7.0.1
  */

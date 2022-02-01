@@ -16,13 +16,13 @@ public final class m
       if (j < paramInt1)
       {
         if (j == 0) {
-          f1 = this.cVN[j][i];
+          f1 = this.cTj[j][i];
         }
         for (;;)
         {
           j += 1;
           break;
-          float f2 = this.cVN[j][i];
+          float f2 = this.cTj[j][i];
           if ((f1 < 0.0F) && (f2 < 0.0F)) {
             f1 = f1 + f2 - f1 * f2 / this.MIN_VALUE;
           } else if ((f1 > 0.0F) && (f2 > 0.0F)) {
@@ -33,10 +33,10 @@ public final class m
         }
       }
       j = (int)f1;
-      this.cVQ[i] = hS(j);
+      this.cTm[i] = hC(j);
       i += 1;
     }
-    byte[] arrayOfByte = cg(paramInt3, paramInt2);
+    byte[] arrayOfByte = ce(paramInt3, paramInt2);
     AppMethodBeat.o(136881);
     return arrayOfByte;
   }

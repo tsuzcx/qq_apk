@@ -5,7 +5,7 @@ import android.content.Context;
 
 public final class b
 {
-  public static boolean aW(Object paramObject)
+  public static boolean aT(Object paramObject)
   {
     return ((paramObject instanceof Activity)) || ((paramObject instanceof Context)) || ((paramObject instanceof android.support.v4.app.Fragment)) || ((paramObject instanceof android.app.Fragment));
   }

@@ -10,14 +10,14 @@ import java.util.Set;
 public class ForceUpdateNotify
   implements Parcelable
 {
-  public static Set<String> BIr;
   public static Parcelable.Creator<ForceUpdateNotify> CREATOR;
-  public String[] BIs;
+  public static Set<String> DaA;
+  public String[] DaB;
   
   static
   {
     AppMethodBeat.i(110637);
-    BIr = new HashSet();
+    DaA = new HashSet();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(110637);
   }
@@ -25,39 +25,39 @@ public class ForceUpdateNotify
   private ForceUpdateNotify(Parcel paramParcel)
   {
     AppMethodBeat.i(110636);
-    this.BIs = paramParcel.createStringArray();
+    this.DaB = paramParcel.createStringArray();
     AppMethodBeat.o(110636);
   }
   
   private ForceUpdateNotify(String[] paramArrayOfString)
   {
-    this.BIs = paramArrayOfString;
+    this.DaB = paramArrayOfString;
   }
   
-  public static void cot()
+  public static void Bk(String paramString)
+  {
+    AppMethodBeat.i(110633);
+    DaA.add(paramString);
+    AppMethodBeat.o(110633);
+  }
+  
+  public static void cxQ()
   {
     AppMethodBeat.i(110634);
-    if (BIr.size() != 0)
+    if (DaA.size() != 0)
     {
-      Set localSet = BIr;
+      Set localSet = DaA;
       c.a(new ForceUpdateNotify((String[])localSet.toArray(new String[localSet.size()])), new c.a()
       {
-        public final void cWw()
+        public final void dkf()
         {
           AppMethodBeat.i(110631);
-          ForceUpdateNotify.BIr.clear();
+          ForceUpdateNotify.DaA.clear();
           AppMethodBeat.o(110631);
         }
       });
     }
     AppMethodBeat.o(110634);
-  }
-  
-  public static void xe(String paramString)
-  {
-    AppMethodBeat.i(110633);
-    BIr.add(paramString);
-    AppMethodBeat.o(110633);
   }
   
   public int describeContents()
@@ -68,7 +68,7 @@ public class ForceUpdateNotify
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110635);
-    paramParcel.writeStringArray(this.BIs);
+    paramParcel.writeStringArray(this.DaB);
     AppMethodBeat.o(110635);
   }
 }

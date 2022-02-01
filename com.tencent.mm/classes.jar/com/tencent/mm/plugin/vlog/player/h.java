@@ -1,240 +1,200 @@
 package com.tencent.mm.plugin.vlog.player;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.util.Size;
+import android.opengl.EGLContext;
+import android.opengl.EGLDisplay;
+import android.opengl.EGLExt;
+import android.opengl.EGLSurface;
+import android.os.HandlerThread;
+import android.view.Surface;
+import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.media.j.c;
+import com.tencent.mm.media.j.c.a;
+import com.tencent.mm.media.j.c.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import d.g.a.a;
+import d.g.b.k;
 import d.y;
-import java.nio.IntBuffer;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector;", "", "width", "", "height", "textureWidth", "textureHeight", "widthScale", "", "heightScale", "loop", "", "previewPlay", "(IIIIFFZZ)V", "(IIZZ)V", "cropRect", "Landroid/graphics/Rect;", "drawCount", "durationMs", "getDurationMs", "()I", "setDurationMs", "(I)V", "getHeight", "lastPlayTime", "", "getLoop", "()Z", "setLoop", "(Z)V", "nextDrawTimeDelay", "onEnd", "Lkotlin/Function1;", "", "getOnEnd", "()Lkotlin/jvm/functions/Function1;", "setOnEnd", "(Lkotlin/jvm/functions/Function1;)V", "onProgress", "Lkotlin/Function2;", "getOnProgress", "()Lkotlin/jvm/functions/Function2;", "setOnProgress", "(Lkotlin/jvm/functions/Function2;)V", "prepared", "pts", "getPts", "()J", "setPts", "(J)V", "render", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcBlend;", "scriptReader", "Lcom/tencent/mm/plugin/vlog/player/VLogScriptReader;", "snapShotCallback", "Ljava/nio/IntBuffer;", "Lkotlin/ParameterName;", "name", "buffer", "getSnapShotCallback", "setSnapShotCallback", "vLogSurface", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "getWidth", "drawPreloadFrame", "getNextPtsStep", "getSize", "Landroid/util/Size;", "pause", "playNextFrame", "blendBitmap", "Landroid/graphics/Bitmap;", "withSnapshot", "drawCallback", "Lkotlin/Function0;", "preloadOneFrame", "release", "reset", "resetPts", "resume", "setCallback", "setCropRect", "rect", "setFrameRate", "videoFps", "imageFps", "setMute", "mute", "setScript", "scriptModel", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "musicUrl", "", "setSnapshotCallback", "callback", "setVLogSurface", "updateDrawSize", "videoDecodeEnd", "Companion", "plugin-vlog_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/player/VLogRemuxSurface;", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "width", "", "height", "textureWidth", "textureHeight", "(IIII)V", "(II)V", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "getEglEnvironment", "()Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "setEglEnvironment", "(Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "ht", "Landroid/os/HandlerThread;", "getHt", "()Landroid/os/HandlerThread;", "setHt", "(Landroid/os/HandlerThread;)V", "remuxEGLSurface", "Landroid/opengl/EGLSurface;", "attachConsumer", "", "surface", "Landroid/view/Surface;", "bindPreloadConsumer", "eglContext", "Landroid/opengl/EGLContext;", "eglDisplay", "Landroid/opengl/EGLDisplay;", "clearTask", "initGLEnvironment", "queueEvent", "task", "Lkotlin/Function0;", "release", "setPresentationTime", "nsecs", "", "submitProduction", "ptsMS", "unbindPreloadConsumer", "Companion", "plugin-vlog_release"})
 public final class h
+  extends l
 {
-  public static final a LrY;
-  private k LrR;
-  private com.tencent.mm.media.i.b.b LrS;
-  public m LrT;
-  public d.g.a.b<? super Long, y> LrU;
-  public d.g.a.b<? super IntBuffer, y> LrV;
-  public long LrW;
-  private final boolean LrX;
-  private boolean aRL;
-  private int fIT;
-  private Rect gtE;
-  private int guI;
-  private int guJ;
-  final int height;
-  int hsU;
-  private float kAJ;
-  private float kAK;
-  private boolean loop;
-  long pts;
-  final int width;
-  private long xWc;
-  public d.g.a.m<? super Long, ? super Long, y> zaT;
+  public static final h.a Aqe;
+  private EGLSurface Aqd;
+  private int gqZ;
+  private int gra;
+  public c.b gre;
+  private ao handler;
+  HandlerThread rZs;
   
   static
   {
-    AppMethodBeat.i(201017);
-    LrY = new a((byte)0);
-    AppMethodBeat.o(201017);
+    AppMethodBeat.i(207719);
+    Aqe = new h.a((byte)0);
+    AppMethodBeat.o(207719);
   }
   
-  public h(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2)
+  public h(int paramInt1, int paramInt2)
   {
-    this(paramInt1, paramInt2, false, false);
-    AppMethodBeat.i(201016);
-    this.kAJ = paramFloat1;
-    this.kAK = paramFloat2;
-    this.guI = paramInt3;
-    this.guJ = paramInt4;
-    ad.i("MicroMsg.VLogDirector", "create VLogDirector, scale:[" + paramFloat1 + ", " + paramFloat2 + "], texture:[" + paramInt3 + ", " + paramInt4 + ']');
-    AppMethodBeat.o(201016);
+    super(paramInt1, paramInt2);
+    AppMethodBeat.i(207717);
+    HandlerThread localHandlerThread = d.gy("VLogRemuxSurface_EncodeThread", -4);
+    k.g(localHandlerThread, "SpecialThreadFactory.cre….THREAD_PRIORITY_DISPLAY)");
+    this.rZs = localHandlerThread;
+    AppMethodBeat.o(207717);
   }
   
-  private h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public h(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(201015);
-    this.width = paramInt1;
-    this.height = paramInt2;
-    this.loop = paramBoolean1;
-    this.LrX = paramBoolean2;
-    this.LrR = new k(this.LrX);
-    this.kAJ = 1.0F;
-    this.kAK = 1.0F;
-    this.pts = -1L;
-    AppMethodBeat.o(201015);
+    this(paramInt1, paramInt2);
+    AppMethodBeat.i(207718);
+    this.gqZ = paramInt3;
+    this.gra = paramInt4;
+    ac.i("MicroMsg.VLog.VLogRemuxSurface", "create VLogRemuxSurface, surface:[" + paramInt1 + ", " + paramInt2 + "], texture:[" + paramInt3 + ", " + paramInt4 + ']');
+    AppMethodBeat.o(207718);
   }
   
-  private final void fYX()
+  public final void a(final EGLContext paramEGLContext, final EGLDisplay paramEGLDisplay, final Surface paramSurface, final int paramInt1, final int paramInt2)
   {
-    this.pts = 0L;
-    this.fIT = 0;
-  }
-  
-  public final void a(final com.tencent.mm.plugin.vlog.model.h paramh, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(201004);
-    d.g.b.k.h(paramh, "scriptModel");
-    d.g.b.k.h(paramString, "musicUrl");
-    ad.i("MicroMsg.VLogDirector", hashCode() + "  setScript  durationMs :" + paramInt + "  musicUrl:" + paramString);
-    this.hsU = paramInt;
-    fYX();
-    this.aRL = true;
-    paramString = this.LrT;
-    if (paramString != null)
+    AppMethodBeat.i(207711);
+    k.h(paramEGLContext, "eglContext");
+    k.h(paramEGLDisplay, "eglDisplay");
+    StringBuilder localStringBuilder = new StringBuilder("[OpenGL] bind surface before, surface: ").append(paramSurface).append(", eglEnv: ");
+    Object localObject = this.gre;
+    if (localObject != null) {}
+    for (localObject = ((c.b)localObject).gWL;; localObject = null)
     {
-      paramString.j((a)new h(this, paramh));
-      AppMethodBeat.o(201004);
+      ac.i("MicroMsg.VLog.VLogRemuxSurface", localObject);
+      h((a)new b(this, paramEGLContext, paramEGLDisplay, paramSurface, paramInt1, paramInt2));
+      AppMethodBeat.o(207711);
       return;
     }
-    AppMethodBeat.o(201004);
   }
   
-  public final void a(final m paramm)
+  public final void clearTask()
   {
-    AppMethodBeat.i(201009);
-    d.g.b.k.h(paramm, "vLogSurface");
-    ad.i("MicroMsg.VLogDirector", hashCode() + " setSurface");
-    this.LrT = paramm;
-    paramm.j((a)new i(this, paramm));
-    AppMethodBeat.o(201009);
-  }
-  
-  public final void cR(final int paramInt1, final int paramInt2)
-  {
-    AppMethodBeat.i(201010);
-    ad.i("MicroMsg.VLogDirector", hashCode() + " updateDrawSize:[" + paramInt1 + ", " + paramInt2 + ']');
-    m localm = this.LrT;
-    if (localm != null)
+    AppMethodBeat.i(207714);
+    ao localao = this.handler;
+    if (localao != null)
     {
-      localm.j((a)new j(this, paramInt1, paramInt2));
-      AppMethodBeat.o(201010);
+      localao.removeCallbacksAndMessages(null);
+      AppMethodBeat.o(207714);
       return;
     }
-    AppMethodBeat.o(201010);
+    AppMethodBeat.o(207714);
   }
   
-  public final void fYV()
+  public final void efV()
   {
-    AppMethodBeat.i(201006);
-    k localk = this.LrR;
-    localk.Lso = 33L;
-    localk.Lsp = 33L;
-    ad.i("MicroMsg.VLogScriptReader", "videoPtsStep :" + localk.Lso + " imagePtsStep:" + localk.Lsp);
-    AppMethodBeat.o(201006);
+    AppMethodBeat.i(207712);
+    h((a)new e(this));
+    AppMethodBeat.o(207712);
   }
   
-  public final void fYW()
+  public final void h(a<y> parama)
   {
-    AppMethodBeat.i(201011);
-    m localm = this.LrT;
-    if (localm != null)
+    AppMethodBeat.i(207713);
+    k.h(parama, "task");
+    ao localao = this.handler;
+    if (localao != null)
     {
-      localm.j((a)new b(this));
-      AppMethodBeat.o(201011);
+      localao.post((Runnable)new i(parama));
+      AppMethodBeat.o(207713);
       return;
     }
-    AppMethodBeat.o(201011);
+    AppMethodBeat.o(207713);
   }
   
-  public final Size getSize()
+  public final void k(Surface paramSurface)
   {
-    AppMethodBeat.i(201008);
-    Size localSize = new Size(this.width, this.height);
-    AppMethodBeat.o(201008);
-    return localSize;
+    AppMethodBeat.i(207710);
+    this.Aqy = paramSurface;
+    StringBuilder localStringBuilder = new StringBuilder("[OpenGL] init egl environment before, surface: ").append(paramSurface).append(", eglEnv: ");
+    paramSurface = this.gre;
+    if (paramSurface != null) {}
+    for (paramSurface = paramSurface.gWL;; paramSurface = null)
+    {
+      ac.i("MicroMsg.VLog.VLogRemuxSurface", paramSurface);
+      ac.i("MicroMsg.VLog.VLogRemuxSurface", "initGL");
+      this.rZs.start();
+      this.handler = new ao(this.rZs.getLooper());
+      h((a)new c(this));
+      AppMethodBeat.o(207710);
+      return;
+    }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(201013);
-    ad.m("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 1", new Object[0]);
-    Object localObject = this.LrT;
-    if (localObject != null)
+    AppMethodBeat.i(207716);
+    StringBuilder localStringBuilder = new StringBuilder("[OpenGL] VLogRelease release egl environment, surface: ").append(this.Aqy).append(", eglEnv: ");
+    Object localObject = this.gre;
+    if (localObject != null) {}
+    for (localObject = ((c.b)localObject).gWL;; localObject = null)
     {
-      ad.d("MicroMsg.VLogDirector", "VLogRelease into VLogDirector#release 2");
-      ((m)localObject).j((a)new e(this));
-    }
-    localObject = this.LrT;
-    if (localObject != null) {
-      ((m)localObject).release();
-    }
-    localObject = d.yZX;
-    d.clearCache();
-    AppMethodBeat.o(201013);
-  }
-  
-  public final void setCropRect(Rect paramRect)
-  {
-    AppMethodBeat.i(201007);
-    if (paramRect != null)
-    {
-      ad.i("MicroMsg.VLogDirector", "setCropRect:" + paramRect + ", width:" + this.width + ", height:" + this.height + ", textureWidth:" + this.guI + ", textureHeight:" + this.guJ);
-      this.gtE = new Rect(paramRect);
-      paramRect = this.LrS;
-      if (paramRect != null)
-      {
-        paramRect.guP = this.gtE;
-        AppMethodBeat.o(201007);
-        return;
-      }
-    }
-    AppMethodBeat.o(201007);
-  }
-  
-  public final void setMute(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(201014);
-    m localm = this.LrT;
-    if (localm != null)
-    {
-      localm.j((a)new g(this, paramBoolean));
-      AppMethodBeat.o(201014);
+      ac.m("MicroMsg.VLog.VLogRemuxSurface", localObject, new Object[0]);
+      h((a)new d(this));
+      AppMethodBeat.o(207716);
       return;
     }
-    AppMethodBeat.o(201014);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/player/VLogDirector$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
+  public final void yM(long paramLong)
+  {
+    AppMethodBeat.i(207715);
+    Object localObject = this.gre;
+    if (localObject != null) {
+      EGLExt.eglPresentationTimeANDROID(((c.b)localObject).gWK, ((c.b)localObject).eglSurface, paramLong * 1000L * 1000L);
+    }
+    localObject = c.gWJ;
+    c.a.vq("eglPresentationTimeANDROID");
+    localObject = this.gre;
+    if (localObject != null)
+    {
+      c.a locala = c.gWJ;
+      c.a.a(((c.b)localObject).gWK, ((c.b)localObject).eglSurface);
+      AppMethodBeat.o(207715);
+      return;
+    }
+    AppMethodBeat.o(207715);
+  }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$drawPreloadFrame$1$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements a<y>
   {
-    b(h paramh)
+    b(h paramh, EGLContext paramEGLContext, EGLDisplay paramEGLDisplay, Surface paramSurface, int paramInt1, int paramInt2)
     {
       super();
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$pause$1$1"})
-  public static final class c
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  static final class c
     extends d.g.b.l
     implements a<y>
   {
-    public c(h paramh)
+    c(h paramh)
     {
       super();
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$playNextFrame$1$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.l
     implements a<y>
   {
-    d(m paramm, h paramh, Bitmap paramBitmap, boolean paramBoolean)
+    d(h paramh)
     {
       super();
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$release$1$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class e
     extends d.g.b.l
     implements a<y>
@@ -244,65 +204,10 @@ public final class h
       super();
     }
   }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$resume$1$1"})
-  public static final class f
-    extends d.g.b.l
-    implements a<y>
-  {
-    public f(h paramh)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/vlog/player/VLogDirector$setMute$1$1"})
-  static final class g
-    extends d.g.b.l
-    implements a<y>
-  {
-    g(h paramh, boolean paramBoolean)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class h
-    extends d.g.b.l
-    implements a<y>
-  {
-    h(h paramh, com.tencent.mm.plugin.vlog.model.h paramh1)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class i
-    extends d.g.b.l
-    implements a<y>
-  {
-    i(h paramh, m paramm)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class j
-    extends d.g.b.l
-    implements a<y>
-  {
-    j(h paramh, int paramInt1, int paramInt2)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.player.h
  * JD-Core Version:    0.7.0.1
  */

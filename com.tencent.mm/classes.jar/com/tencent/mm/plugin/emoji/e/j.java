@@ -7,11 +7,11 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.c;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.av.c;
+import com.tencent.mm.av.o;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
 import com.tencent.mm.model.y;
@@ -25,7 +25,7 @@ import com.tencent.mm.pluginsdk.i;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -42,8 +42,8 @@ public final class j
     localIntent.putExtra("Ksnsupload_link", paramString4);
     localIntent.putExtra("KUploadProduct_UserData", paramString5);
     localIntent.putExtra("Ksnsupload_type", paramInt);
-    paramString1 = y.tD("emoje_stroe");
-    y.arz().E(paramString1, true).m("prePublishId", "emoje_stroe");
+    paramString1 = y.xJ("emoje_stroe");
+    y.ayq().F(paramString1, true).l("prePublishId", "emoje_stroe");
     localIntent.putExtra("reportSessionId", paramString1);
     d.c(paramContext, "sns", ".ui.SnsUploadUI", localIntent);
     AppMethodBeat.o(108530);
@@ -59,7 +59,7 @@ public final class j
         AppMethodBeat.i(108529);
         if (paramAnonymousBoolean)
         {
-          String str1 = this.own;
+          String str1 = this.oZN;
           paramAnonymousInt = paramInt1;
           int i = paramInt2;
           Object localObject2 = paramString2;
@@ -68,7 +68,7 @@ public final class j
           String str3 = paramString5;
           int j = paramInt3;
           String str4 = paramString6;
-          ad.d("MicroMsg.emoji.EmojiSharedMgr", "doSharedToFriend");
+          ac.d("MicroMsg.emoji.EmojiSharedMgr", "doSharedToFriend");
           Object localObject1 = new WXMediaMessage();
           ((WXMediaMessage)localObject1).title = ((String)localObject2);
           ((WXMediaMessage)localObject1).description = ((String)localObject3);
@@ -82,32 +82,32 @@ public final class j
           localWXEmojiPageSharedObject.pageType = j;
           localWXEmojiPageSharedObject.url = str4;
           ((WXMediaMessage)localObject1).mediaObject = localWXEmojiPageSharedObject;
-          o.ayE();
-          localObject2 = c.pT(str2);
+          o.aFw();
+          localObject2 = c.te(str2);
           if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
           {
-            ad.i("MicroMsg.emoji.EmojiSharedMgr", "thumb image is not null");
+            ac.i("MicroMsg.emoji.EmojiSharedMgr", "thumb image is not null");
             localObject3 = new ByteArrayOutputStream();
             ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject3);
             ((WXMediaMessage)localObject1).thumbData = ((ByteArrayOutputStream)localObject3).toByteArray();
           }
-          localObject2 = new ry();
-          ((ry)localObject2).dxx.doG = ((WXMediaMessage)localObject1);
-          ((ry)localObject2).dxx.toUser = str1;
-          ((ry)localObject2).dxx.dxy = 49;
-          ((ry)localObject2).dxx.dxz = str1;
-          ((ry)localObject2).dxx.dxA = "";
-          a.ESL.l((b)localObject2);
+          localObject2 = new sh();
+          ((sh)localObject2).dvk.dis = ((WXMediaMessage)localObject1);
+          ((sh)localObject2).dvk.toUser = str1;
+          ((sh)localObject2).dvk.dit = 49;
+          ((sh)localObject2).dvk.dvl = str1;
+          ((sh)localObject2).dvk.dvm = "";
+          a.GpY.l((b)localObject2);
           if (!TextUtils.isEmpty(paramAnonymousString))
           {
-            localObject1 = new sb();
-            ((sb)localObject1).dxJ.dxK = str1;
-            ((sb)localObject1).dxJ.content = paramAnonymousString;
-            ((sb)localObject1).dxJ.type = w.tq(str1);
-            ((sb)localObject1).dxJ.flags = 0;
-            a.ESL.l((b)localObject1);
+            localObject1 = new sk();
+            ((sk)localObject1).dvv.dvw = str1;
+            ((sk)localObject1).dvv.content = paramAnonymousString;
+            ((sk)localObject1).dvv.type = w.xt(str1);
+            ((sk)localObject1).dvv.flags = 0;
+            a.GpY.l((b)localObject1);
           }
-          com.tencent.mm.ui.base.h.cf(paramMMActivity, paramMMActivity.getString(2131755894));
+          com.tencent.mm.ui.base.h.cg(paramMMActivity, paramMMActivity.getString(2131755894));
           AppMethodBeat.o(108529);
           return;
         }
@@ -131,14 +131,14 @@ public final class j
         AppMethodBeat.i(108527);
         if (paramAnonymousBoolean)
         {
-          String str1 = this.own;
+          String str1 = this.oZN;
           String str2 = paramString2;
           Object localObject4 = paramString3;
           String str3 = paramString4;
           Object localObject2 = paramString5;
           Object localObject3 = paramString6;
           paramAnonymousInt = paramInt;
-          ad.d("MicroMsg.emoji.EmojiSharedMgr", "doSharedToFriend");
+          ac.d("MicroMsg.emoji.EmojiSharedMgr", "doSharedToFriend");
           Object localObject1 = new WXMediaMessage();
           ((WXMediaMessage)localObject1).title = ((String)localObject4);
           ((WXMediaMessage)localObject1).description = str3;
@@ -148,33 +148,33 @@ public final class j
           ((WXEmojiSharedObject)localObject4).thumburl = ((String)localObject2);
           ((WXEmojiSharedObject)localObject4).url = ((String)localObject3);
           ((WXMediaMessage)localObject1).mediaObject = ((WXMediaMessage.IMediaObject)localObject4);
-          o.ayE();
-          localObject2 = c.pT((String)localObject2);
+          o.aFw();
+          localObject2 = c.te((String)localObject2);
           if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
           {
-            ad.i("MicroMsg.emoji.EmojiSharedMgr", "thumb image is not null");
+            ac.i("MicroMsg.emoji.EmojiSharedMgr", "thumb image is not null");
             localObject3 = new ByteArrayOutputStream();
             ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject3);
             ((WXMediaMessage)localObject1).thumbData = ((ByteArrayOutputStream)localObject3).toByteArray();
           }
-          localObject2 = new ry();
-          ((ry)localObject2).dxx.doG = ((WXMediaMessage)localObject1);
-          ((ry)localObject2).dxx.toUser = str1;
-          ((ry)localObject2).dxx.dxy = 49;
-          ((ry)localObject2).dxx.dxz = str1;
-          ((ry)localObject2).dxx.dxA = "";
-          a.ESL.l((b)localObject2);
+          localObject2 = new sh();
+          ((sh)localObject2).dvk.dis = ((WXMediaMessage)localObject1);
+          ((sh)localObject2).dvk.toUser = str1;
+          ((sh)localObject2).dvk.dit = 49;
+          ((sh)localObject2).dvk.dvl = str1;
+          ((sh)localObject2).dvk.dvm = "";
+          a.GpY.l((b)localObject2);
           if (!TextUtils.isEmpty(paramAnonymousString))
           {
-            localObject1 = new sb();
-            ((sb)localObject1).dxJ.dxK = str1;
-            ((sb)localObject1).dxJ.content = paramAnonymousString;
-            ((sb)localObject1).dxJ.type = w.tq(str1);
-            ((sb)localObject1).dxJ.flags = 0;
-            a.ESL.l((b)localObject1);
+            localObject1 = new sk();
+            ((sk)localObject1).dvv.dvw = str1;
+            ((sk)localObject1).dvv.content = paramAnonymousString;
+            ((sk)localObject1).dvv.type = w.xt(str1);
+            ((sk)localObject1).dvv.flags = 0;
+            a.GpY.l((b)localObject1);
           }
-          com.tencent.mm.plugin.report.service.h.vKh.f(10993, new Object[] { Integer.valueOf(0), str2 });
-          com.tencent.mm.ui.base.h.cf(paramMMActivity, paramMMActivity.getString(2131755894));
+          com.tencent.mm.plugin.report.service.h.wUl.f(10993, new Object[] { Integer.valueOf(0), str2 });
+          com.tencent.mm.ui.base.h.cg(paramMMActivity, paramMMActivity.getString(2131755894));
         }
         AppMethodBeat.o(108527);
       }
@@ -182,7 +182,7 @@ public final class j
     AppMethodBeat.o(108532);
   }
   
-  public static void er(Context paramContext)
+  public static void ez(Context paramContext)
   {
     AppMethodBeat.i(108531);
     Intent localIntent = new Intent();

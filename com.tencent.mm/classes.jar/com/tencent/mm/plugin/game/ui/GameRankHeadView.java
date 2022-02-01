@@ -12,74 +12,74 @@ import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class GameRankHeadView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private TextView fQp;
-  private com.tencent.mm.plugin.game.model.c rYd;
-  k.a sgV;
-  private l sgX;
-  private TextView sgu;
-  private TextView slR;
-  private ImageView slS;
+  private TextView fUk;
+  private com.tencent.mm.plugin.game.model.c tfV;
+  k.a toP;
+  private l toR;
+  private TextView ton;
+  private TextView ttK;
+  private ImageView ttL;
   
   public GameRankHeadView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void cEh()
+  private void cRr()
   {
     AppMethodBeat.i(42343);
-    if (h.a(getContext(), this.rYd))
+    if (h.a(getContext(), this.tfV))
     {
-      int i = com.tencent.mm.plugin.game.f.c.acX(this.rYd.field_packageName);
-      if (this.rYd.versionCode > i)
+      int i = com.tencent.mm.plugin.game.f.c.ahP(this.tfV.field_packageName);
+      if (this.tfV.versionCode > i)
       {
-        this.sgu.setText(2131759855);
+        this.ton.setText(2131759855);
         AppMethodBeat.o(42343);
         return;
       }
-      this.sgu.setText(2131759853);
+      this.ton.setText(2131759853);
       AppMethodBeat.o(42343);
       return;
     }
-    switch (this.rYd.status)
+    switch (this.tfV.status)
     {
     default: 
-      this.sgu.setText(2131759850);
+      this.ton.setText(2131759850);
       AppMethodBeat.o(42343);
       return;
     }
-    if (this.sgX == null)
+    if (this.toR == null)
     {
-      this.sgu.setVisibility(8);
-      this.slS.setVisibility(8);
+      this.ton.setVisibility(8);
+      this.ttL.setVisibility(8);
       AppMethodBeat.o(42343);
       return;
     }
-    this.sgu.setVisibility(0);
-    this.slS.setVisibility(0);
-    switch (this.sgX.status)
+    this.ton.setVisibility(0);
+    this.ttL.setVisibility(0);
+    switch (this.toR.status)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(42343);
       return;
-      this.sgu.setText(2131759850);
+      this.ton.setText(2131759850);
       AppMethodBeat.o(42343);
       return;
-      this.sgu.setText(2131759851);
+      this.ton.setText(2131759851);
       AppMethodBeat.o(42343);
       return;
-      this.sgu.setText(2131759849);
+      this.ton.setText(2131759849);
       AppMethodBeat.o(42343);
       return;
-      this.sgu.setText(2131759852);
+      this.ton.setText(2131759852);
     }
   }
   
@@ -87,8 +87,8 @@ public class GameRankHeadView
   {
     AppMethodBeat.i(42345);
     paramView = new d(getContext());
-    l locall = new l(this.rYd);
-    paramView.a(this.rYd, locall);
+    l locall = new l(this.tfV);
+    paramView.a(this.tfV, locall);
     AppMethodBeat.o(42345);
   }
   
@@ -96,45 +96,45 @@ public class GameRankHeadView
   {
     AppMethodBeat.i(42342);
     super.onFinishInflate();
-    this.fQp = ((TextView)findViewById(2131300423));
-    this.slR = ((TextView)findViewById(2131300408));
-    this.sgu = ((TextView)findViewById(2131300422));
-    this.slS = ((ImageView)findViewById(2131300512));
-    ad.i("MicroMsg.GameRankHeadView", "initView finished");
+    this.fUk = ((TextView)findViewById(2131300423));
+    this.ttK = ((TextView)findViewById(2131300408));
+    this.ton = ((TextView)findViewById(2131300422));
+    this.ttL = ((ImageView)findViewById(2131300512));
+    ac.i("MicroMsg.GameRankHeadView", "initView finished");
     AppMethodBeat.o(42342);
   }
   
   public void setData(GameDetailRankUI.a parama)
   {
     AppMethodBeat.i(42344);
-    this.fQp.setText(parama.sgO);
-    this.slR.setText(parama.sgP);
-    this.rYd = parama.sgQ;
-    this.rYd.dvS = 1203;
-    this.rYd.position = 2;
-    if (this.sgX == null) {
-      this.sgX = new l(this.rYd);
+    this.fUk.setText(parama.toI);
+    this.ttK.setText(parama.toJ);
+    this.tfV = parama.toK;
+    this.tfV.dtF = 1203;
+    this.tfV.position = 2;
+    if (this.toR == null) {
+      this.toR = new l(this.tfV);
     }
-    this.sgX.fh(getContext());
-    this.sgX.bRs();
-    cEh();
-    if (this.sgV != null) {
-      k.a(this.sgV);
+    this.toR.fu(getContext());
+    this.toR.bYH();
+    cRr();
+    if (this.toP != null) {
+      k.a(this.toP);
     }
     for (;;)
     {
-      this.sgu.setOnClickListener(this);
+      this.ton.setOnClickListener(this);
       AppMethodBeat.o(42344);
       return;
-      this.sgV = new k.a()
+      this.toP = new k.a()
       {
         public final void e(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(42341);
           if (GameRankHeadView.a(GameRankHeadView.this) != null)
           {
-            GameRankHeadView.b(GameRankHeadView.this).fh(GameRankHeadView.this.getContext());
-            GameRankHeadView.b(GameRankHeadView.this).bRs();
+            GameRankHeadView.b(GameRankHeadView.this).fu(GameRankHeadView.this.getContext());
+            GameRankHeadView.b(GameRankHeadView.this).bYH();
             if (paramAnonymousBoolean) {
               GameRankHeadView.c(GameRankHeadView.this);
             }
@@ -142,7 +142,7 @@ public class GameRankHeadView
           AppMethodBeat.o(42341);
         }
       };
-      k.a(this.sgV);
+      k.a(this.toP);
     }
   }
 }

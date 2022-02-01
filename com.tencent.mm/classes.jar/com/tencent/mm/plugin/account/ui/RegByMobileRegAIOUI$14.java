@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelsimple.s;
 
@@ -15,7 +15,7 @@ final class RegByMobileRegAIOUI$14
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(128527);
-    g.aeS().a(this.ivZ);
+    g.agi().a(this.iWd);
     AppMethodBeat.o(128527);
   }
 }

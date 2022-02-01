@@ -12,39 +12,39 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class MaskImageButton
   extends ImageView
 {
-  private RectF Hsr;
-  private int Hss;
-  private int Hst;
+  private RectF ISO;
+  private int ISP;
+  private int ISQ;
   private int a;
   private int b;
   private int g;
-  public Object glT;
+  public Object gMG;
   private Paint paint;
   private int r;
-  private ap xkC;
-  private Runnable xkD;
+  private ao yxu;
+  private Runnable yxv;
   
   public MaskImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143201);
-    this.Hsr = new RectF();
+    this.ISO = new RectF();
     this.paint = null;
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.Hss = 0;
-    this.Hst = 0;
+    this.ISP = 0;
+    this.ISQ = 0;
     this.paint = new Paint();
     this.paint.setColor(Color.argb(this.a, this.r, this.g, this.b));
-    this.xkC = new ap(Looper.getMainLooper());
-    this.xkD = new Runnable()
+    this.yxu = new ao(Looper.getMainLooper());
+    this.yxv = new Runnable()
     {
       public final void run()
       {
@@ -85,8 +85,8 @@ public class MaskImageButton
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.Hsr.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.Hss - getPaddingRight(), this.Hst - getPaddingBottom());
-      paramCanvas.drawRoundRect(this.Hsr, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
+      this.ISO.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.ISP - getPaddingRight(), this.ISQ - getPaddingBottom());
+      paramCanvas.drawRoundRect(this.ISO, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
     }
     AppMethodBeat.o(143202);
   }
@@ -95,8 +95,8 @@ public class MaskImageButton
   {
     AppMethodBeat.i(143203);
     super.onMeasure(paramInt1, paramInt2);
-    this.Hss = getMeasuredWidth();
-    this.Hst = getMeasuredHeight();
+    this.ISP = getMeasuredWidth();
+    this.ISQ = getMeasuredHeight();
     AppMethodBeat.o(143203);
   }
 }

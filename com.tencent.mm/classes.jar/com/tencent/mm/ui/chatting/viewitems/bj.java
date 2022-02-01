@@ -1,204 +1,176 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.c.du;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bl;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.pluginsdk.ui.chat.c;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.t;
 
-public final class bj
+public class bj
+  extends c
 {
-  private static final List<c> GQY;
+  public long CqW;
+  public int CqX;
+  public boolean HJB;
+  public boolean IqQ;
+  public String IqR;
+  public boolean IqS;
+  public boolean IqT;
+  public String IqU;
+  public boolean IqV;
+  public Bundle IqW;
+  public t IqX;
+  public int IqY = -1;
+  public String chatroomName;
+  public String dBy;
+  public int dCr = 0;
+  public String dcO;
+  public String desc;
+  public String designerName;
+  public String designerRediretctUrl;
+  public int designerUIN;
+  public k.b dsB;
+  public String dvl;
+  public String dvm;
+  public String eSb;
+  public String hjT;
+  public int hoz = 0;
+  public String iconUrl;
+  public int pageType;
+  public String pageUrl;
+  public int position;
+  public String secondUrl;
+  public int tid;
+  public String title;
+  public String userName;
   
-  static
+  public bj() {}
+  
+  public bj(bo parambo, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(37561);
-    ArrayList localArrayList = new ArrayList();
-    GQY = localArrayList;
-    localArrayList.add(new av.b());
-    GQY.add(new av.a());
-    GQY.add(new e.e());
-    GQY.add(new e.d());
-    GQY.add(new r.c());
-    GQY.add(new r.b());
-    GQY.add(new y.c());
-    GQY.add(new y.b());
-    GQY.add(new q.c());
-    GQY.add(new q.b());
-    GQY.add(new u.c());
-    GQY.add(new u.b());
-    GQY.add(new l.d());
-    GQY.add(new l.c());
-    GQY.add(new as());
-    GQY.add(new an.b());
-    GQY.add(new ai.b());
-    GQY.add(new ai.a());
-    GQY.add(new ax.a());
-    GQY.add(new ax.b());
-    GQY.add(new ap.a());
-    GQY.add(new ae.c());
-    GQY.add(new ae.b());
-    GQY.add(new aj.a());
-    GQY.add(new aw.b());
-    GQY.add(new aw.a());
-    GQY.add(new ao.b());
-    GQY.add(new ao.a());
-    GQY.add(new bb.f());
-    GQY.add(new bb.c());
-    GQY.add(new bb.g());
-    GQY.add(new ac.j());
-    GQY.add(new bb.d());
-    GQY.add(new bb.e());
-    GQY.add(new ba());
-    GQY.add(new ay());
-    GQY.add(new az());
-    GQY.add(new ar.a());
-    GQY.add(new ar.b());
-    GQY.add(new bc.c());
-    GQY.add(new bc.b());
-    GQY.add(new ag());
-    GQY.add(new d());
-    GQY.add(new t.b());
-    GQY.add(new t.c());
-    GQY.add(new ak());
-    GQY.add(new al());
-    GQY.add(new am());
-    GQY.add(new x.c());
-    GQY.add(new x.b());
-    GQY.add(new f.c());
-    GQY.add(new f.b());
-    GQY.add(new j.c());
-    GQY.add(new j.b());
-    GQY.add(new h.c());
-    GQY.add(new h.b());
-    GQY.add(new i.c());
-    GQY.add(new i.b());
-    GQY.add(new aa.b());
-    GQY.add(new aa.a());
-    GQY.add(new ab.b());
-    GQY.add(new ab.a());
-    GQY.add(new z.b());
-    GQY.add(new z.a());
-    GQY.add(new s.c());
-    GQY.add(new s.b());
-    GQY.add(new an.a());
-    GQY.add(new g.c());
-    GQY.add(new g.b());
-    GQY.add(new k.c());
-    GQY.add(new v());
-    GQY.add(new n.b());
-    GQY.add(new n.c());
-    GQY.add(new p.b());
-    GQY.add(new p.c());
-    GQY.add(new m.b());
-    GQY.add(new m.c());
-    GQY.add(new o.b());
-    GQY.add(new o.c());
-    GQY.add(new br.a());
-    GQY.add(new br.b());
-    GQY.add(new w());
-    GQY.add(new av.b()
-    {
-      public final boolean aX(int paramAnonymousInt, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(37556);
-        ad.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
-        AppMethodBeat.o(37556);
-        return paramAnonymousBoolean;
-      }
-    });
-    GQY.add(new av.a()
-    {
-      public final boolean aX(int paramAnonymousInt, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(37557);
-        ad.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
-        if (!paramAnonymousBoolean)
-        {
-          AppMethodBeat.o(37557);
-          return true;
-        }
-        AppMethodBeat.o(37557);
-        return false;
-      }
-    });
-    AppMethodBeat.o(37561);
+    this.dpq = parambo;
+    this.HJB = false;
+    this.position = paramInt1;
+    this.userName = paramString1;
+    this.IqQ = false;
+    this.title = paramString2;
+    this.dvl = paramString3;
+    this.dvm = paramString4;
+    this.IqR = paramString5;
+    this.designerUIN = paramInt2;
+    this.designerName = paramString6;
+    this.designerRediretctUrl = paramString7;
+    this.eSb = paramString8;
   }
   
-  public static c cq(bl parambl)
+  public bj(bo parambo, String paramString)
   {
-    AppMethodBeat.i(37558);
-    Iterator localIterator = GQY.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      int i = parambl.getType();
-      if (parambl.field_isSend == 1) {}
-      for (boolean bool = true; localc.aX(i, bool); bool = false) {
-        try
-        {
-          localc = (c)localc.getClass().newInstance();
-          AppMethodBeat.o(37558);
-          return localc;
-        }
-        catch (Exception localException)
-        {
-          ad.printErrStackTrace("MicroMsg.Chatting.ItemFactory", localException, "", new Object[0]);
-        }
-      }
-    }
-    parambl = new av.a();
-    AppMethodBeat.o(37558);
-    return parambl;
+    this(paramString);
+    this.dpq = parambo;
   }
   
-  public static int cr(bl parambl)
+  public bj(bo parambo, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(37560);
-    if (parambl.getType() == 49)
-    {
-      i = m.f(k.b.rx(parambl.field_content));
-      ad.d("MicroMsg.Chatting.ItemFactory", "maybe honeypay need change type: %s", new Object[] { Integer.valueOf(i) });
-      if (i != 49)
-      {
-        parambl.setType(i);
-        com.tencent.mm.model.az.arV();
-        com.tencent.mm.model.c.apO().a(parambl.field_msgId, parambl);
-      }
-    }
-    int i = 0;
-    while (i < GQY.size())
-    {
-      c localc = (c)GQY.get(i);
-      int j = parambl.getType();
-      if (parambl.field_isSend == 1) {}
-      for (boolean bool = true; localc.aX(j, bool); bool = false)
-      {
-        AppMethodBeat.o(37560);
-        return i;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(37560);
-    return 0;
+    this.dpq = parambo;
+    this.userName = paramString1;
+    this.dpq = parambo;
+    this.pageUrl = paramString2;
   }
   
-  public static int faU()
+  private bj(bo parambo, boolean paramBoolean, int paramInt, String paramString)
   {
-    AppMethodBeat.i(37559);
-    int i = GQY.size();
-    AppMethodBeat.o(37559);
-    return i + 2;
+    this(parambo, paramBoolean, paramInt, paramString, false, null, null, null);
+  }
+  
+  private bj(bo parambo, boolean paramBoolean, int paramInt, String paramString, byte paramByte)
+  {
+    this(parambo, paramBoolean, paramInt, paramString);
+  }
+  
+  public bj(bo parambo, boolean paramBoolean, int paramInt, String paramString, char paramChar)
+  {
+    this(parambo, paramBoolean, paramInt, paramString, (byte)0);
+  }
+  
+  public bj(bo parambo, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    this(parambo, paramBoolean, paramInt, paramString1, (byte)0);
+    this.chatroomName = paramString2;
+  }
+  
+  public bj(bo parambo, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4)
+  {
+    this(parambo, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, null);
+  }
+  
+  public bj(bo parambo, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(parambo, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, paramString5, null, null, false, false);
+  }
+  
+  public bj(bo parambo, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    this.dpq = parambo;
+    this.HJB = paramBoolean1;
+    this.position = paramInt;
+    this.userName = paramString1;
+    this.IqQ = paramBoolean2;
+    this.title = paramString2;
+    this.dvl = paramString3;
+    this.dvm = paramString4;
+    this.IqR = paramString5;
+    this.dcO = paramString6;
+    this.eSb = paramString7;
+    this.IqS = paramBoolean3;
+    this.IqT = paramBoolean4;
+  }
+  
+  private bj(String paramString)
+  {
+    this.userName = paramString;
+  }
+  
+  public bj(String paramString1, String paramString2)
+  {
+    this.userName = paramString1;
+    this.chatroomName = paramString2;
+  }
+  
+  public static bj a(k.b paramb, bo parambo)
+  {
+    AppMethodBeat.i(37554);
+    bj localbj = new bj();
+    localbj.dsB = paramb;
+    localbj.dpq = parambo;
+    AppMethodBeat.o(37554);
+    return localbj;
+  }
+  
+  public static bj aQO(String paramString)
+  {
+    AppMethodBeat.i(37553);
+    bj localbj = new bj();
+    localbj.eSb = paramString;
+    AppMethodBeat.o(37553);
+    return localbj;
+  }
+  
+  public static bj b(bo parambo, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(37555);
+    bj localbj = new bj();
+    localbj.dpq = parambo;
+    localbj.HJB = paramBoolean;
+    localbj.position = paramInt;
+    localbj.IqV = false;
+    AppMethodBeat.o(37555);
+    return localbj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bj
  * JD-Core Version:    0.7.0.1
  */

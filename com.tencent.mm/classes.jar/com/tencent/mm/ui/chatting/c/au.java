@@ -16,8 +16,9 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.mm.ui.chatting.c.b.d;
 import com.tencent.mm.ui.chatting.c.b.f;
@@ -27,18 +28,18 @@ public class au
   extends a
   implements ab
 {
-  private View GyE;
-  private ViewGroup GyF;
-  private boolean GyG;
-  private boolean GyH;
-  private final long GyI;
-  private ChatFooter.c GyJ;
+  private ChatFooter.c HYA;
+  private View HYv;
+  private ViewGroup HYw;
+  private boolean HYx;
+  private boolean HYy;
+  private final long HYz;
   
   public au()
   {
     AppMethodBeat.i(35644);
-    this.GyI = 259200000L;
-    this.GyJ = new ChatFooter.c()
+    this.HYz = 259200000L;
+    this.HYA = new ChatFooter.c()
     {
       public final void a(Boolean paramAnonymousBoolean1, Boolean paramAnonymousBoolean2)
       {
@@ -82,25 +83,25 @@ public class au
   private void c(Boolean paramBoolean1, Boolean paramBoolean2)
   {
     AppMethodBeat.i(35646);
-    if (this.GyE != null)
+    if (this.HYv != null)
     {
-      this.GyE.clearAnimation();
-      this.GyE.setVisibility(8);
+      this.HYv.clearAnimation();
+      this.HYv.setVisibility(8);
       if (paramBoolean2.booleanValue())
       {
         if (paramBoolean1.booleanValue())
         {
-          az.arV();
-          c.afk().set(340228, Boolean.TRUE);
-          h.vKh.idkeyStat(232L, 1L, 1L, false);
+          az.ayM();
+          c.agA().set(340228, Boolean.TRUE);
+          h.wUl.idkeyStat(232L, 1L, 1L, false);
           AppMethodBeat.o(35646);
         }
       }
       else if (paramBoolean1.booleanValue())
       {
-        az.arV();
-        c.afk().set(340229, Boolean.TRUE);
-        h.vKh.idkeyStat(232L, 2L, 1L, false);
+        az.ayM();
+        c.agA().set(340229, Boolean.TRUE);
+        h.wUl.idkeyStat(232L, 2L, 1L, false);
       }
     }
     AppMethodBeat.o(35646);
@@ -109,22 +110,22 @@ public class au
   private void n(final Boolean paramBoolean)
   {
     AppMethodBeat.i(35645);
-    this.GyF = ((ViewGroup)this.cOd.findViewById(2131298070));
-    this.GyE = View.inflate(this.cOd.GzJ.getContext(), 2131495019, null);
-    Object localObject = (TextView)this.GyE.findViewById(2131302803);
+    this.HYw = ((ViewGroup)this.cLy.findViewById(2131298070));
+    this.HYv = View.inflate(this.cLy.HZF.getContext(), 2131495019, null);
+    Object localObject = (TextView)this.HYv.findViewById(2131302803);
     if (paramBoolean.booleanValue())
     {
-      ((TextView)localObject).setText(this.cOd.GzJ.getContext().getString(2131763066));
-      this.GyE.setBackgroundResource(2131233521);
+      ((TextView)localObject).setText(this.cLy.HZF.getContext().getString(2131763066));
+      this.HYv.setBackgroundResource(2131233521);
     }
     for (localObject = new FrameLayout.LayoutParams(-2, -2, 85);; localObject = new FrameLayout.LayoutParams(-2, -2, 83))
     {
-      if ((this.GyF != null) && (this.GyE != null))
+      if ((this.HYw != null) && (this.HYv != null))
       {
-        this.GyF.addView(this.GyE, (ViewGroup.LayoutParams)localObject);
-        localObject = AnimationUtils.loadAnimation(this.cOd.GzJ.getContext(), 2130772132);
-        this.GyE.startAnimation((Animation)localObject);
-        this.GyE.setOnClickListener(new View.OnClickListener()
+        this.HYw.addView(this.HYv, (ViewGroup.LayoutParams)localObject);
+        localObject = AnimationUtils.loadAnimation(this.cLy.HZF.getContext(), 2130772132);
+        this.HYv.startAnimation((Animation)localObject);
+        this.HYv.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -134,55 +135,55 @@ public class au
               paramAnonymousView = au.this;
               Boolean localBoolean = Boolean.TRUE;
               au.a(paramAnonymousView, localBoolean, localBoolean);
-              ((q)au.this.cOd.be(q.class)).eXs().fu(null);
+              ((q)au.this.cLy.bf(q.class)).fne().fH(null);
               AppMethodBeat.o(35641);
               return;
             }
             au.a(au.this, Boolean.TRUE, Boolean.FALSE);
-            ((q)au.this.cOd.be(q.class)).eXs().setMode(2);
+            ((q)au.this.cLy.bf(q.class)).fne().setMode(2);
             AppMethodBeat.o(35641);
           }
         });
       }
       AppMethodBeat.o(35645);
       return;
-      ((TextView)localObject).setText(this.cOd.GzJ.getContext().getString(2131763070));
-      this.GyE.setBackgroundResource(2131233520);
+      ((TextView)localObject).setText(this.cLy.HZF.getContext().getString(2131763070));
+      this.HYv.setBackgroundResource(2131233520);
     }
   }
   
-  public final void eQD()
+  public final void fgj()
   {
     AppMethodBeat.i(35647);
-    if (u.aro().booleanValue())
+    if (u.aye().booleanValue())
     {
-      if (!this.cOd.zgX.eKB())
+      if (!this.cLy.AzG.fad())
       {
-        az.arV();
-        this.GyG = bt.l((Boolean)c.afk().get(340228, null));
-        if ((!this.GyG) && (!((f)this.cOd.be(f.class)).eWV()) && (!((d)this.cOd.be(d.class)).eWI())) {
+        az.ayM();
+        this.HYx = bs.l((Boolean)c.agA().get(340228, null));
+        if ((!this.HYx) && (!((f)this.cLy.bf(f.class)).fmH()) && (!((d)this.cLy.bf(d.class)).fmu())) {
           n(Boolean.TRUE);
         }
-        az.arV();
-        this.GyH = bt.l((Boolean)c.afk().get(340229, null));
+        az.ayM();
+        this.HYy = bs.l((Boolean)c.agA().get(340229, null));
         long l1 = System.currentTimeMillis();
-        az.arV();
-        long l2 = bt.a((Long)c.afk().get(340240, null), 0L);
-        if ((this.GyG) && (!this.GyH) && (l1 - l2 >= 259200000L)) {
+        az.ayM();
+        long l2 = bs.a((Long)c.agA().get(340240, null), 0L);
+        if ((this.HYx) && (!this.HYy) && (l1 - l2 >= 259200000L)) {
           n(Boolean.FALSE);
         }
       }
-      if (((q)this.cOd.be(q.class)).eXs() != null) {
-        ((q)this.cOd.be(q.class)).eXs().setTipsShowCallback(this.GyJ);
+      if (((q)this.cLy.bf(q.class)).fne() != null) {
+        ((q)this.cLy.bf(q.class)).fne().setTipsShowCallback(this.HYA);
       }
     }
     AppMethodBeat.o(35647);
   }
   
-  public final void eQE()
+  public final void fgk()
   {
     AppMethodBeat.i(35648);
-    if ((!this.cOd.zgX.eKB()) && (u.aro().booleanValue()))
+    if ((!this.cLy.AzG.fad()) && (u.aye().booleanValue()))
     {
       Boolean localBoolean = Boolean.FALSE;
       c(localBoolean, localBoolean);
@@ -192,7 +193,7 @@ public class au
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.au
  * JD-Core Version:    0.7.0.1
  */

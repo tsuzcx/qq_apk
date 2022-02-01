@@ -12,23 +12,24 @@ import com.tencent.mm.kiss.widget.textview.PLSysTextView;
 import com.tencent.mm.kiss.widget.textview.SysTextView;
 import com.tencent.mm.pluginsdk.ui.span.f;
 import com.tencent.mm.pluginsdk.ui.span.p;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class ad
   implements View.OnTouchListener
 {
-  private static p xoB;
-  private static TextView xoC;
+  private static p yBs;
+  private static TextView yBt;
   
-  public static void dzp()
+  public static void dNM()
   {
     AppMethodBeat.i(97958);
-    if (xoB != null)
+    if (yBs != null)
     {
-      xoB.setIsPressed(false);
-      xoC.invalidate();
-      xoC = null;
-      xoB = null;
+      yBs.setIsPressed(false);
+      yBt.invalidate();
+      yBt = null;
+      yBs = null;
     }
     AppMethodBeat.o(97958);
   }
@@ -118,7 +119,7 @@ public final class ad
           i = paramMotionEvent.getAction();
           paramView = (p[])((Spannable)localObject).getSpans(j, j, p.class);
           j = paramView.length - 1;
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
+          ac.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
           if ((localTextView.getLayout() == null) && ((localTextView instanceof SysTextView))) {
             ((SysTextView)localTextView).getTvLayout();
           }
@@ -129,15 +130,7 @@ public final class ad
             break label570;
           }
           paramView[j].onClick(localTextView);
-          new ap().postDelayed(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(97956);
-              ad.dzp();
-              AppMethodBeat.o(97956);
-            }
-          }, 300L);
+          new ao().postDelayed(new ad.1(this), 300L);
           i = 1;
         }
         for (;;)
@@ -159,15 +152,15 @@ public final class ad
           label570:
           if ((i == 0) || (i == 2) || (i == 3))
           {
-            dzp();
-            xoB = paramView[j];
-            xoC = localTextView;
+            dNM();
+            yBs = paramView[j];
+            yBt = localTextView;
             paramView[j].setIsPressed(true);
             localTextView.invalidate();
             i = 1;
             continue;
             label617:
-            dzp();
+            dNM();
           }
           else
           {
@@ -176,7 +169,7 @@ public final class ad
         }
       }
       label625:
-      dzp();
+      dNM();
       AppMethodBeat.o(97957);
       return false;
       AppMethodBeat.o(97957);
@@ -186,7 +179,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ad
  * JD-Core Version:    0.7.0.1
  */

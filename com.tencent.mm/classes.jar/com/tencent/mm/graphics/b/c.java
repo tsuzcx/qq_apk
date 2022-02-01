@@ -3,43 +3,43 @@ package com.tencent.mm.graphics.b;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.concurrent.TimeUnit;
 
 public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  private long fWt;
-  private int fWu;
-  double fWv;
-  private int fWw;
-  public boolean fWx;
+  private long gba;
+  private int gbb;
+  double gbc;
+  private int gbd;
+  public boolean gbe;
   private final Object lock;
   
   static
   {
     AppMethodBeat.i(136204);
-    fWs = new c("INSTANCE");
-    fWy = new c[] { fWs };
+    gaZ = new c("INSTANCE");
+    gbf = new c[] { gaZ };
     AppMethodBeat.o(136204);
   }
   
   private c()
   {
     AppMethodBeat.i(136201);
-    this.fWt = 0L;
-    this.fWu = 0;
-    this.fWv = 0.0D;
-    this.fWw = 500;
+    this.gba = 0L;
+    this.gbb = 0;
+    this.gbc = 0.0D;
+    this.gbd = 500;
     this.lock = new Object();
-    this.fWx = false;
+    this.gbe = false;
     AppMethodBeat.o(136201);
   }
   
   /* Error */
-  public final Choreographer adb()
+  public final Choreographer aes()
   {
     // Byte code:
     //   0: ldc 94
@@ -129,40 +129,40 @@ public enum c
   {
     AppMethodBeat.i(136203);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.fWt > 0L)
+    if (this.gba > 0L)
     {
-      long l = paramLong - this.fWt;
-      this.fWu += 1;
-      if (l > this.fWw)
+      long l = paramLong - this.gba;
+      this.gbb += 1;
+      if (l > this.gbd)
       {
-        this.fWv = (this.fWu * 1000 / l);
-        this.fWt = paramLong;
-        this.fWu = 0;
+        this.gbc = (this.gbb * 1000 / l);
+        this.gba = paramLong;
+        this.gbb = 0;
       }
     }
     for (;;)
     {
-      adb().postFrameCallback(this);
+      aes().postFrameCallback(this);
       AppMethodBeat.o(136203);
       return;
-      this.fWt = paramLong;
+      this.gba = paramLong;
     }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(136202);
-    this.fWt = 0L;
-    this.fWu = 0;
-    this.fWx = false;
-    ad.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { bt.eGN() });
-    adb().removeFrameCallback(this);
+    this.gba = 0L;
+    this.gbb = 0;
+    this.gbe = false;
+    ac.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { bs.eWi() });
+    aes().removeFrameCallback(this);
     AppMethodBeat.o(136202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.graphics.b.c
  * JD-Core Version:    0.7.0.1
  */

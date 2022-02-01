@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
 public abstract class i
 {
-  public static final c BEi = new c();
-  public static final b BEj = new b();
-  public static final a BEk = new a();
+  public static final c CWp = new c();
+  public static final b CWq = new b();
+  public static final a CWr = new a();
   
   public static final class a
     extends i

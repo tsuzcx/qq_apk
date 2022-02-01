@@ -1035,14 +1035,14 @@ public class V8ObjectUtils
   private static V8Array toV8Array(V8 paramV8, List<? extends Object> paramList, Map<Object, V8Value> paramMap)
   {
     AppMethodBeat.i(61754);
-    if (paramMap.containsKey(new V8ObjectUtils.ListWrapper(paramList)))
+    if (paramMap.containsKey(new ListWrapper(paramList)))
     {
-      paramV8 = (V8Array)paramMap.get(new V8ObjectUtils.ListWrapper(paramList));
+      paramV8 = (V8Array)paramMap.get(new ListWrapper(paramList));
       AppMethodBeat.o(61754);
       return paramV8;
     }
     V8Array localV8Array = new V8Array(paramV8);
-    paramMap.put(new V8ObjectUtils.ListWrapper(paramList), localV8Array);
+    paramMap.put(new ListWrapper(paramList), localV8Array);
     int i = 0;
     try
     {
@@ -1084,14 +1084,14 @@ public class V8ObjectUtils
   private static V8Array toV8Array(V8Context paramV8Context, List<? extends Object> paramList, Map<Object, V8Value> paramMap)
   {
     AppMethodBeat.i(61755);
-    if (paramMap.containsKey(new V8ObjectUtils.ListWrapper(paramList)))
+    if (paramMap.containsKey(new ListWrapper(paramList)))
     {
-      paramV8Context = (V8Array)paramMap.get(new V8ObjectUtils.ListWrapper(paramList));
+      paramV8Context = (V8Array)paramMap.get(new ListWrapper(paramList));
       AppMethodBeat.o(61755);
       return paramV8Context;
     }
     V8Array localV8Array = paramV8Context.newV8Array();
-    paramMap.put(new V8ObjectUtils.ListWrapper(paramList), localV8Array);
+    paramMap.put(new ListWrapper(paramList), localV8Array);
     int i = 0;
     try
     {
@@ -1293,10 +1293,42 @@ public class V8ObjectUtils
       return TypeAdapter.DEFAULT;
     }
   }
+  
+  static class ListWrapper
+  {
+    private List<? extends Object> list;
+    
+    public ListWrapper(List<? extends Object> paramList)
+    {
+      this.list = paramList;
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if ((paramObject instanceof ListWrapper))
+      {
+        bool1 = bool2;
+        if (((ListWrapper)paramObject).list == this.list) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    
+    public int hashCode()
+    {
+      AppMethodBeat.i(61729);
+      int i = System.identityHashCode(this.list);
+      AppMethodBeat.o(61729);
+      return i;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.v8.utils.V8ObjectUtils
  * JD-Core Version:    0.7.0.1
  */

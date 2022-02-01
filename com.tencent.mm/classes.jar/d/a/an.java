@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"}, fOb=1)
 public class an
   extends am
 {
@@ -28,7 +28,7 @@ public class an
     label109:
     for (int i = ((Number)localObject).intValue() + paramSet.size();; i = paramSet.size() * 2)
     {
-      localObject = new LinkedHashSet(ae.adL(i));
+      localObject = new LinkedHashSet(ae.agH(i));
       ((LinkedHashSet)localObject).addAll((Collection)paramSet);
       j.a((Collection)localObject, paramIterable);
       paramSet = (Set)localObject;
@@ -43,7 +43,7 @@ public class an
   {
     AppMethodBeat.i(129004);
     k.h(paramSet, "$this$plus");
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(ae.adL(paramSet.size() + 1));
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(ae.agH(paramSet.size() + 1));
     localLinkedHashSet.addAll((Collection)paramSet);
     localLinkedHashSet.add(paramT);
     paramSet = (Set)localLinkedHashSet;

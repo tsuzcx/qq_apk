@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import com.tencent.mm.ab.a.d;
-import com.tencent.mm.ab.a.d.a;
+import com.tencent.mm.aa.a.d;
+import com.tencent.mm.aa.a.d.a;
 
 final class JsApiLogin$LoginTask$5
   implements d.a<d>

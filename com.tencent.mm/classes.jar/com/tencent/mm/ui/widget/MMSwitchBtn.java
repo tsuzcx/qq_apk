@@ -20,53 +20,53 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.Transformation;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.a.a;
+import com.tencent.mm.cl.a.a;
 import com.tencent.mm.ui.ao;
 
 public class MMSwitchBtn
   extends View
 {
-  private boolean HAa;
-  private float HAb;
-  private float HAc;
-  private int HAd;
-  private int HAe;
-  private int HAf;
-  private int HAg;
-  public boolean HAh;
-  private RectF HAi;
-  private RectF HAj;
-  private int HAk;
-  private int HAl;
-  private int HAm;
-  private String HAn;
-  private String HAo;
-  private b HAp;
-  private a HAq;
-  private long HzV;
-  private int HzW;
-  private int HzX;
-  private int HzY;
-  private boolean HzZ;
+  private int JaA;
+  private int JaB;
+  private int JaC;
+  private int JaD;
+  public boolean JaE;
+  private RectF JaF;
+  private RectF JaG;
+  private int JaH;
+  private int JaI;
+  private int JaJ;
+  private String JaK;
+  private String JaL;
+  private b JaM;
+  private a JaN;
+  private long Jas;
+  private int Jat;
+  private int Jau;
+  private int Jav;
+  private boolean Jaw;
+  private boolean Jax;
+  private float Jay;
+  private float Jaz;
   private int edgePadding;
   private int maxHeight;
   private int maxWidth;
-  private Paint nSL;
-  private int pd;
-  private float xVD;
-  private float xVE;
+  private Paint owg;
+  private int qc;
+  private float ziA;
+  private float ziz;
   
   public MMSwitchBtn(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159271);
-    this.HzZ = false;
-    this.HAa = false;
-    this.HAh = false;
-    this.nSL = new Paint(1);
-    this.HAi = new RectF();
-    this.HAj = new RectF();
-    this.HAp = new b((byte)0);
+    this.Jaw = false;
+    this.Jax = false;
+    this.JaE = false;
+    this.owg = new Paint(1);
+    this.JaF = new RectF();
+    this.JaG = new RectF();
+    this.JaM = new b((byte)0);
     init();
     AppMethodBeat.o(159271);
   }
@@ -75,13 +75,13 @@ public class MMSwitchBtn
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159270);
-    this.HzZ = false;
-    this.HAa = false;
-    this.HAh = false;
-    this.nSL = new Paint(1);
-    this.HAi = new RectF();
-    this.HAj = new RectF();
-    this.HAp = new b((byte)0);
+    this.Jaw = false;
+    this.Jax = false;
+    this.JaE = false;
+    this.owg = new Paint(1);
+    this.JaF = new RectF();
+    this.JaG = new RectF();
+    this.JaM = new b((byte)0);
     init();
     d(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMSwitchBtn));
     AppMethodBeat.o(159270);
@@ -91,13 +91,13 @@ public class MMSwitchBtn
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159269);
-    this.HzZ = false;
-    this.HAa = false;
-    this.HAh = false;
-    this.nSL = new Paint(1);
-    this.HAi = new RectF();
-    this.HAj = new RectF();
-    this.HAp = new b((byte)0);
+    this.Jaw = false;
+    this.Jax = false;
+    this.JaE = false;
+    this.owg = new Paint(1);
+    this.JaF = new RectF();
+    this.JaG = new RectF();
+    this.JaM = new b((byte)0);
     init();
     d(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMSwitchBtn));
     AppMethodBeat.o(159269);
@@ -106,52 +106,52 @@ public class MMSwitchBtn
   private void d(TypedArray paramTypedArray)
   {
     AppMethodBeat.i(159273);
-    this.HAl = paramTypedArray.getColor(2, this.HAf);
-    this.HAk = paramTypedArray.getColor(0, this.HAe);
-    this.HAm = paramTypedArray.getColor(4, this.HAd);
-    this.HAn = paramTypedArray.getString(3);
-    this.HAo = paramTypedArray.getString(1);
+    this.JaI = paramTypedArray.getColor(2, this.JaC);
+    this.JaH = paramTypedArray.getColor(0, this.JaB);
+    this.JaJ = paramTypedArray.getColor(4, this.JaA);
+    this.JaK = paramTypedArray.getString(3);
+    this.JaL = paramTypedArray.getString(1);
     paramTypedArray.recycle();
     AppMethodBeat.o(159273);
   }
   
-  private void feO()
+  private void fuJ()
   {
-    if (this.HzY < this.maxHeight) {
-      this.HAj.top = ((this.maxHeight - this.HzY) / 2 + this.edgePadding);
+    if (this.Jav < this.maxHeight) {
+      this.JaG.top = ((this.maxHeight - this.Jav) / 2 + this.edgePadding);
     }
-    for (this.HAj.bottom = (this.HAj.top + this.HzY - this.edgePadding * 2); this.HAh; this.HAj.bottom = (this.maxHeight - this.edgePadding))
+    for (this.JaG.bottom = (this.JaG.top + this.Jav - this.edgePadding * 2); this.JaE; this.JaG.bottom = (this.maxHeight - this.edgePadding))
     {
-      this.HAj.left = (this.HzX + this.edgePadding);
-      this.HAj.right = (this.maxWidth - this.edgePadding);
+      this.JaG.left = (this.Jau + this.edgePadding);
+      this.JaG.right = (this.maxWidth - this.edgePadding);
       return;
-      this.HAj.top = this.edgePadding;
+      this.JaG.top = this.edgePadding;
     }
-    this.HAj.left = this.edgePadding;
-    this.HAj.right = ((int)(this.HAc * 2.0F) + this.edgePadding);
+    this.JaG.left = this.edgePadding;
+    this.JaG.right = ((int)(this.Jaz * 2.0F) + this.edgePadding);
   }
   
-  private void feP()
+  private void fuK()
   {
-    if (this.HAj.left < this.edgePadding) {
-      this.HAj.left = this.edgePadding;
+    if (this.JaG.left < this.edgePadding) {
+      this.JaG.left = this.edgePadding;
     }
-    if (this.HAj.left > this.HzX + this.edgePadding) {
-      this.HAj.left = (this.HzX + this.edgePadding);
+    if (this.JaG.left > this.Jau + this.edgePadding) {
+      this.JaG.left = (this.Jau + this.edgePadding);
     }
-    this.HAj.right = (this.HAj.left + (int)(this.HAc * 2.0F));
+    this.JaG.right = (this.JaG.left + (int)(this.Jaz * 2.0F));
   }
   
-  private void fef()
+  private void fua()
   {
     AppMethodBeat.i(159278);
-    if (this.HAj.left > this.HzW)
+    if (this.JaG.left > this.Jat)
     {
-      wO(true);
+      xV(true);
       AppMethodBeat.o(159278);
       return;
     }
-    wO(false);
+    xV(false);
     AppMethodBeat.o(159278);
   }
   
@@ -159,20 +159,20 @@ public class MMSwitchBtn
   {
     AppMethodBeat.i(159272);
     this.edgePadding = getResources().getDimensionPixelSize(2131165575);
-    this.HAb = getResources().getDimensionPixelSize(2131165582);
-    this.HAc = getResources().getDimensionPixelSize(2131165581);
-    this.HAd = getResources().getColor(2131099828);
-    this.HAe = getResources().getColor(2131101001);
-    this.HAf = getResources().getColor(2131101002);
-    this.HAg = getResources().getColor(2131100022);
-    this.HAl = this.HAf;
-    this.HAk = this.HAe;
-    this.HAm = this.HAd;
-    this.pd = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.Jay = getResources().getDimensionPixelSize(2131165582);
+    this.Jaz = getResources().getDimensionPixelSize(2131165581);
+    this.JaA = getResources().getColor(2131099828);
+    this.JaB = getResources().getColor(2131101001);
+    this.JaC = getResources().getColor(2131101002);
+    this.JaD = getResources().getColor(2131100022);
+    this.JaI = this.JaC;
+    this.JaH = this.JaB;
+    this.JaJ = this.JaA;
+    this.qc = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     AppMethodBeat.o(159272);
   }
   
-  private void jF(boolean paramBoolean)
+  private void ki(boolean paramBoolean)
   {
     AppMethodBeat.i(159277);
     ViewParent localViewParent = getParent();
@@ -182,28 +182,28 @@ public class MMSwitchBtn
     AppMethodBeat.o(159277);
   }
   
-  private void wO(boolean paramBoolean)
+  private void xV(boolean paramBoolean)
   {
     AppMethodBeat.i(159276);
-    this.HzZ = true;
-    this.HAp.reset();
+    this.Jaw = true;
+    this.JaM.reset();
     if (paramBoolean) {
-      this.HAp.HAr = (this.HzX - this.HAj.left + this.edgePadding);
+      this.JaM.JaO = (this.Jau - this.JaG.left + this.edgePadding);
     }
-    for (this.HAp.direction = 1;; this.HAp.direction = 0)
+    for (this.JaM.direction = 1;; this.JaM.direction = 0)
     {
-      this.HAp.jn = this.HAj.left;
-      this.HAp.setDuration(80L * this.HAp.HAr / this.HzX);
-      startAnimation(this.HAp);
+      this.JaM.km = this.JaG.left;
+      this.JaM.setDuration(80L * this.JaM.JaO / this.Jau);
+      startAnimation(this.JaM);
       AppMethodBeat.o(159276);
       return;
-      this.HAp.HAr = (this.HAj.left);
+      this.JaM.JaO = (this.JaG.left);
     }
   }
   
-  public final boolean feN()
+  public final boolean fuI()
   {
-    return this.HAh;
+    return this.JaE;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -212,45 +212,45 @@ public class MMSwitchBtn
     int i;
     if (!isEnabled())
     {
-      i = this.HAg;
-      this.nSL.setAlpha(38);
+      i = this.JaD;
+      this.owg.setAlpha(38);
     }
     for (;;)
     {
-      this.nSL.setColor(i);
-      paramCanvas.drawRoundRect(this.HAi, this.HAb, this.HAb, this.nSL);
-      this.nSL.setColor(this.HAl);
-      this.nSL.setAlpha(Math.min(255, (int)((this.HAj.left - this.edgePadding) / this.HzX * 255.0F)));
-      paramCanvas.drawRoundRect(this.HAi, this.HAb, this.HAb, this.nSL);
-      this.nSL.setColor(this.HAm);
-      paramCanvas.drawRoundRect(this.HAj, this.HAc, this.HAc, this.nSL);
-      if ((this.HAn != null) && (this.HAo != null))
+      this.owg.setColor(i);
+      paramCanvas.drawRoundRect(this.JaF, this.Jay, this.Jay, this.owg);
+      this.owg.setColor(this.JaI);
+      this.owg.setAlpha(Math.min(255, (int)((this.JaG.left - this.edgePadding) / this.Jau * 255.0F)));
+      paramCanvas.drawRoundRect(this.JaF, this.Jay, this.Jay, this.owg);
+      this.owg.setColor(this.JaJ);
+      paramCanvas.drawRoundRect(this.JaG, this.Jaz, this.Jaz, this.owg);
+      if ((this.JaK != null) && (this.JaL != null))
       {
         Paint localPaint = new Paint();
         localPaint.setTextSize(getResources().getDimension(2131165569));
         localPaint.setTextAlign(Paint.Align.CENTER);
         localPaint.setColor(getResources().getColor(2131101182));
         localPaint.setAntiAlias(true);
-        i = Math.min(255, (int)((this.HAj.left - this.edgePadding) / this.HzX * 255.0F));
+        i = Math.min(255, (int)((this.JaG.left - this.edgePadding) / this.Jau * 255.0F));
         Rect localRect = new Rect();
-        localPaint.getTextBounds(this.HAn, 0, this.HAn.length(), localRect);
+        localPaint.getTextBounds(this.JaK, 0, this.JaK.length(), localRect);
         localPaint.setAlpha(i);
-        float f2 = (this.HAi.left + this.HAi.right) / 2.0F;
-        float f3 = this.HAc;
+        float f2 = (this.JaF.left + this.JaF.right) / 2.0F;
+        float f3 = this.Jaz;
         float f4 = ao.fromDPToPix(getContext(), 1);
-        float f1 = (this.HAi.top + this.HAi.bottom) / 2.0F;
+        float f1 = (this.JaF.top + this.JaF.bottom) / 2.0F;
         f1 = localRect.height() / 2.0F + f1 - ao.fromDPToPix(getContext(), 1);
-        paramCanvas.drawText(this.HAn, f2 - f3 + f4, f1, localPaint);
-        f2 = (this.HAi.left + this.HAi.right) / 2.0F;
-        f3 = this.HAc;
+        paramCanvas.drawText(this.JaK, f2 - f3 + f4, f1, localPaint);
+        f2 = (this.JaF.left + this.JaF.right) / 2.0F;
+        f3 = this.Jaz;
         f4 = ao.fromDPToPix(getContext(), 1);
         localPaint.setAlpha(255 - i);
-        paramCanvas.drawText(this.HAo, f2 + f3 - f4, f1, localPaint);
+        paramCanvas.drawText(this.JaL, f2 + f3 - f4, f1, localPaint);
       }
       AppMethodBeat.o(159280);
       return;
-      i = this.HAk;
-      this.nSL.setAlpha(255);
+      i = this.JaH;
+      this.owg.setAlpha(255);
     }
   }
   
@@ -260,22 +260,22 @@ public class MMSwitchBtn
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.maxWidth = (paramInt3 - paramInt1);
     this.maxHeight = (paramInt4 - paramInt2);
-    this.HzX = (this.maxWidth - (int)(this.HAc * 2.0F) - this.edgePadding * 2);
-    this.HzW = (this.HzX / 2);
-    this.HzY = getResources().getDimensionPixelSize(2131165580);
-    if (this.HzY < this.maxHeight) {
-      this.HAi.top = ((this.maxHeight - this.HzY) / 2);
+    this.Jau = (this.maxWidth - (int)(this.Jaz * 2.0F) - this.edgePadding * 2);
+    this.Jat = (this.Jau / 2);
+    this.Jav = getResources().getDimensionPixelSize(2131165580);
+    if (this.Jav < this.maxHeight) {
+      this.JaF.top = ((this.maxHeight - this.Jav) / 2);
     }
-    for (this.HAi.bottom = (this.HAi.top + this.HzY);; this.HAi.bottom = this.maxHeight)
+    for (this.JaF.bottom = (this.JaF.top + this.Jav);; this.JaF.bottom = this.maxHeight)
     {
-      this.HAi.left = 0.0F;
-      this.HAi.right = this.maxWidth;
-      feO();
-      this.nSL.setStyle(Paint.Style.FILL);
-      this.nSL.setColor(this.HAe);
+      this.JaF.left = 0.0F;
+      this.JaF.right = this.maxWidth;
+      fuJ();
+      this.owg.setStyle(Paint.Style.FILL);
+      this.owg.setColor(this.JaB);
       AppMethodBeat.o(159275);
       return;
-      this.HAi.top = 0.0F;
+      this.JaF.top = 0.0F;
     }
   }
   
@@ -283,7 +283,7 @@ public class MMSwitchBtn
   {
     int j = 0;
     AppMethodBeat.i(159279);
-    if (this.HzZ)
+    if (this.Jaw)
     {
       AppMethodBeat.o(159279);
       return true;
@@ -298,37 +298,37 @@ public class MMSwitchBtn
     }
     for (;;)
     {
-      if (this.HAa) {
+      if (this.Jax) {
         invalidate();
       }
       AppMethodBeat.o(159279);
       return true;
       clearAnimation();
-      this.xVD = paramMotionEvent.getX();
-      this.xVE = paramMotionEvent.getY();
-      this.HzV = SystemClock.elapsedRealtime();
-      this.HAa = false;
+      this.ziz = paramMotionEvent.getX();
+      this.ziA = paramMotionEvent.getY();
+      this.Jas = SystemClock.elapsedRealtime();
+      this.Jax = false;
       continue;
       float f1;
       float f2;
-      if (this.HAa)
+      if (this.Jax)
       {
-        jF(true);
+        ki(true);
         f1 = paramMotionEvent.getX();
-        f2 = this.xVD;
-        RectF localRectF = this.HAj;
+        f2 = this.ziz;
+        RectF localRectF = this.JaG;
         localRectF.left = (f1 - f2 + localRectF.left);
-        feP();
+        fuK();
       }
       for (;;)
       {
-        this.xVD = paramMotionEvent.getX();
-        this.xVE = paramMotionEvent.getY();
+        this.ziz = paramMotionEvent.getX();
+        this.ziA = paramMotionEvent.getY();
         break;
-        float f3 = paramMotionEvent.getX() - this.xVD;
-        f2 = paramMotionEvent.getY() - this.xVE;
+        float f3 = paramMotionEvent.getX() - this.ziz;
+        f2 = paramMotionEvent.getY() - this.ziA;
         int i = j;
-        if (Math.abs(f3) >= this.pd / 10.0F)
+        if (Math.abs(f3) >= this.qc / 10.0F)
         {
           f1 = f2;
           if (f2 == 0.0F) {
@@ -341,45 +341,45 @@ public class MMSwitchBtn
         }
         if (i != 0)
         {
-          this.HAa = true;
-          jF(true);
+          this.Jax = true;
+          ki(true);
         }
       }
       boolean bool;
-      if (SystemClock.elapsedRealtime() - this.HzV < 300L) {
-        if (!this.HAh)
+      if (SystemClock.elapsedRealtime() - this.Jas < 300L) {
+        if (!this.JaE)
         {
           bool = true;
           label308:
-          wO(bool);
+          xV(bool);
         }
       }
       for (;;)
       {
-        jF(false);
-        this.HAa = false;
+        ki(false);
+        this.Jax = false;
         break;
         bool = false;
         break label308;
-        fef();
+        fua();
       }
-      if (this.HAa) {
-        fef();
+      if (this.Jax) {
+        fua();
       }
-      jF(false);
-      this.HAa = false;
+      ki(false);
+      this.Jax = false;
     }
   }
   
   public void setCheck(boolean paramBoolean)
   {
     AppMethodBeat.i(159274);
-    if (this.HAh != paramBoolean)
+    if (this.JaE != paramBoolean)
     {
       clearAnimation();
-      this.HAh = paramBoolean;
-      feO();
-      this.HzZ = false;
+      this.JaE = paramBoolean;
+      fuJ();
+      this.Jaw = false;
       invalidate();
     }
     if (paramBoolean) {}
@@ -393,7 +393,7 @@ public class MMSwitchBtn
   
   public void setSwitchListener(a parama)
   {
-    this.HAq = parama;
+    this.JaN = parama;
   }
   
   public static abstract interface a
@@ -404,16 +404,16 @@ public class MMSwitchBtn
   final class b
     extends Animation
   {
-    long HAr;
+    long JaO;
     int direction;
-    float jn;
+    float km;
     
     private b()
     {
       AppMethodBeat.i(159267);
       this.direction = 0;
-      this.jn = 0.0F;
-      this.HAr = 0L;
+      this.km = 0.0F;
+      this.JaO = 0L;
       setInterpolator(new AccelerateDecelerateInterpolator());
       setAnimationListener(new Animation.AnimationListener()
       {
@@ -467,7 +467,7 @@ public class MMSwitchBtn
     {
       AppMethodBeat.i(159268);
       if (this.direction == 0) {}
-      for (MMSwitchBtn.d(MMSwitchBtn.this).left = (this.jn - (float)this.HAr * paramFloat);; MMSwitchBtn.d(MMSwitchBtn.this).left = (this.jn + (float)this.HAr * paramFloat))
+      for (MMSwitchBtn.d(MMSwitchBtn.this).left = (this.km - (float)this.JaO * paramFloat);; MMSwitchBtn.d(MMSwitchBtn.this).left = (this.km + (float)this.JaO * paramFloat))
       {
         MMSwitchBtn.e(MMSwitchBtn.this);
         MMSwitchBtn.this.invalidate();

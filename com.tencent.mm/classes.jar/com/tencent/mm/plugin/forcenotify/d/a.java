@@ -5,45 +5,45 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.forcenotify.c.d;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h;
 import d.g.b.k;
 import d.l;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/forcenotify/storage/ForceNotifyStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "()V", "TABLE_NAME", "", "TAG", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "mCache", "Ljava/util/concurrent/ConcurrentHashMap;", "delete", "", "forcePushId", "deleteExpireInfo", "", "get", "userName", "getErrorCount", "", "getExpireTime", "", "getList", "Ljava/util/ArrayList;", "getUnExpireCount", "isHasSetForceNotify", "isNeedNotify", "set", "info", "transformOldData", "updateStatus", "status", "plugin-force-notify_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/forcenotify/storage/ForceNotifyStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "()V", "TABLE_NAME", "", "TAG", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "mCache", "Ljava/util/concurrent/ConcurrentHashMap;", "delete", "", "forcePushId", "deleteExpireInfo", "", "get", "userName", "getErrorCount", "", "getExpireTime", "", "getList", "Ljava/util/ArrayList;", "getUnExpireCount", "isHasSetForceNotify", "isNeedNotify", "set", "info", "transformOldData", "updateStatus", "status", "plugin-force-notify_release"})
 public final class a
   extends j<d>
 {
-  public static final h gPa;
-  public static final ConcurrentHashMap<String, d> rey;
-  public static final a rez;
+  public static final h hpA;
+  public static final ConcurrentHashMap<String, d> snq;
+  public static final a snr;
   
   static
   {
     AppMethodBeat.i(149193);
-    rez = new a();
-    Object localObject = g.afB();
+    snr = new a();
+    Object localObject = g.agR();
     k.g(localObject, "MMKernel.storage()");
-    localObject = ((com.tencent.mm.kernel.e)localObject).afg();
+    localObject = ((com.tencent.mm.kernel.e)localObject).agw();
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
-    gPa = (h)localObject;
-    rey = new ConcurrentHashMap();
+    hpA = (h)localObject;
+    snq = new ConcurrentHashMap();
     AppMethodBeat.o(149193);
   }
   
   private a()
   {
-    super((com.tencent.mm.sdk.e.e)locale.afg(), d.info, "ForceNotifyData", new String[] { "CREATE INDEX IF NOT EXISTS userNameIndex ON ForceNotifyData(UserName)", "CREATE INDEX IF NOT EXISTS forcePushIdIndex ON ForceNotifyData(ForcePushId)", "CREATE INDEX IF NOT EXISTS statusIndex ON ForceNotifyData(Status)", "CREATE INDEX IF NOT EXISTS expireTimeIndex ON ForceNotifyData(ExpiredTime)" });
+    super((com.tencent.mm.sdk.e.e)locale.agw(), d.info, "ForceNotifyData", new String[] { "CREATE INDEX IF NOT EXISTS userNameIndex ON ForceNotifyData(UserName)", "CREATE INDEX IF NOT EXISTS forcePushIdIndex ON ForceNotifyData(ForcePushId)", "CREATE INDEX IF NOT EXISTS statusIndex ON ForceNotifyData(Status)", "CREATE INDEX IF NOT EXISTS expireTimeIndex ON ForceNotifyData(ExpiredTime)" });
     AppMethodBeat.i(149192);
     AppMethodBeat.o(149192);
   }
   
   /* Error */
-  public static boolean aaj(String paramString)
+  public static boolean afb(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -53,10 +53,10 @@ public final class a
     //   7: aload_0
     //   8: ldc 123
     //   10: invokestatic 126	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:rey	Ljava/util/concurrent/ConcurrentHashMap;
+    //   13: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:snq	Ljava/util/concurrent/ConcurrentHashMap;
     //   16: invokevirtual 130	java/util/concurrent/ConcurrentHashMap:isEmpty	()Z
     //   19: ifne +59 -> 78
-    //   22: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:rey	Ljava/util/concurrent/ConcurrentHashMap;
+    //   22: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:snq	Ljava/util/concurrent/ConcurrentHashMap;
     //   25: aload_0
     //   26: invokevirtual 133	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   29: checkcast 98	com/tencent/mm/plugin/forcenotify/c/d
@@ -71,7 +71,7 @@ public final class a
     //   45: ldc 135
     //   47: invokestatic 74	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   50: aload_0
-    //   51: invokevirtual 138	com/tencent/mm/plugin/forcenotify/c/d:cva	()Z
+    //   51: invokevirtual 138	com/tencent/mm/plugin/forcenotify/c/d:cIm	()Z
     //   54: ifne +17 -> 71
     //   57: aload_0
     //   58: invokevirtual 141	com/tencent/mm/plugin/forcenotify/c/d:isEnable	()Z
@@ -84,7 +84,7 @@ public final class a
     //   73: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: iconst_0
     //   77: ireturn
-    //   78: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   78: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   81: ldc 103
     //   83: iconst_1
     //   84: anewarray 105	java/lang/String
@@ -118,7 +118,7 @@ public final class a
     //   136: aload 5
     //   138: aload 4
     //   140: invokevirtual 163	com/tencent/mm/plugin/forcenotify/c/d:convertFrom	(Landroid/database/Cursor;)V
-    //   143: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:rey	Ljava/util/concurrent/ConcurrentHashMap;
+    //   143: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:snq	Ljava/util/concurrent/ConcurrentHashMap;
     //   146: checkcast 165	java/util/Map
     //   149: aload_0
     //   150: aload 5
@@ -136,9 +136,9 @@ public final class a
     //   171: iconst_1
     //   172: aload 5
     //   174: aastore
-    //   175: invokestatic 180	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   175: invokestatic 180	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   178: aload 5
-    //   180: invokevirtual 138	com/tencent/mm/plugin/forcenotify/c/d:cva	()Z
+    //   180: invokevirtual 138	com/tencent/mm/plugin/forcenotify/c/d:cIm	()Z
     //   183: ifne +27 -> 210
     //   186: aload 5
     //   188: invokevirtual 141	com/tencent/mm/plugin/forcenotify/c/d:isEnable	()Z
@@ -157,7 +157,7 @@ public final class a
     //   210: iconst_0
     //   211: istore_1
     //   212: goto -14 -> 198
-    //   215: getstatic 191	d/y:JfV	Ld/y;
+    //   215: getstatic 191	d/y:KTp	Ld/y;
     //   218: astore_0
     //   219: aload_3
     //   220: aconst_null
@@ -200,7 +200,7 @@ public final class a
   }
   
   /* Error */
-  public static boolean aam(String paramString)
+  public static boolean afe(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -210,10 +210,10 @@ public final class a
     //   7: aload_0
     //   8: ldc 123
     //   10: invokestatic 126	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:rey	Ljava/util/concurrent/ConcurrentHashMap;
+    //   13: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:snq	Ljava/util/concurrent/ConcurrentHashMap;
     //   16: invokevirtual 130	java/util/concurrent/ConcurrentHashMap:isEmpty	()Z
     //   19: ifne +30 -> 49
-    //   22: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:rey	Ljava/util/concurrent/ConcurrentHashMap;
+    //   22: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:snq	Ljava/util/concurrent/ConcurrentHashMap;
     //   25: aload_0
     //   26: invokevirtual 133	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   29: checkcast 98	com/tencent/mm/plugin/forcenotify/c/d
@@ -226,7 +226,7 @@ public final class a
     //   44: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: iconst_1
     //   48: ireturn
-    //   49: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   49: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   52: ldc 103
     //   54: iconst_1
     //   55: anewarray 105	java/lang/String
@@ -252,7 +252,7 @@ public final class a
     //   85: astore_2
     //   86: aload_3
     //   87: ifnonnull +6 -> 93
-    //   90: invokestatic 83	d/g/b/k:fvU	()V
+    //   90: invokestatic 83	d/g/b/k:fOy	()V
     //   93: aload_3
     //   94: invokeinterface 158 1 0
     //   99: ifeq +50 -> 149
@@ -275,7 +275,7 @@ public final class a
     //   130: iconst_1
     //   131: aload 4
     //   133: aastore
-    //   134: invokestatic 180	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   134: invokestatic 180	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   137: aload_2
     //   138: aconst_null
     //   139: invokestatic 185	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
@@ -283,7 +283,7 @@ public final class a
     //   144: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: iconst_1
     //   148: ireturn
-    //   149: getstatic 191	d/y:JfV	Ld/y;
+    //   149: getstatic 191	d/y:KTp	Ld/y;
     //   152: astore_0
     //   153: aload_2
     //   154: aconst_null
@@ -327,7 +327,7 @@ public final class a
   }
   
   /* Error */
-  public static d aan(String paramString)
+  public static d aff(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -337,7 +337,7 @@ public final class a
     //   7: aload_0
     //   8: ldc 199
     //   10: invokestatic 126	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   13: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   16: ldc 103
     //   18: iconst_1
     //   19: anewarray 105	java/lang/String
@@ -370,7 +370,7 @@ public final class a
     //   65: pop
     //   66: aload_0
     //   67: ifnonnull +6 -> 73
-    //   70: invokestatic 83	d/g/b/k:fvU	()V
+    //   70: invokestatic 83	d/g/b/k:fOy	()V
     //   73: aload_0
     //   74: invokeinterface 206 1 0
     //   79: ifne +8 -> 87
@@ -418,7 +418,7 @@ public final class a
   }
   
   /* Error */
-  public static java.util.ArrayList<d> cvb()
+  public static java.util.ArrayList<d> cIn()
   {
     // Byte code:
     //   0: aconst_null
@@ -439,9 +439,9 @@ public final class a
     //   31: checkcast 214	com/tencent/mm/plugin/messenger/foundation/a/k
     //   34: invokeinterface 224 1 0
     //   39: astore 5
-    //   41: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   41: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   44: astore 4
-    //   46: invokestatic 230	com/tencent/mm/model/ce:asR	()J
+    //   46: invokestatic 230	com/tencent/mm/model/ce:azI	()J
     //   49: lstore_0
     //   50: aload 4
     //   52: ldc 103
@@ -473,7 +473,7 @@ public final class a
     //   100: pop
     //   101: aload 6
     //   103: ifnonnull +6 -> 109
-    //   106: invokestatic 83	d/g/b/k:fvU	()V
+    //   106: invokestatic 83	d/g/b/k:fOy	()V
     //   109: aload 6
     //   111: invokeinterface 206 1 0
     //   116: ifne +136 -> 252
@@ -492,7 +492,7 @@ public final class a
     //   147: aload 7
     //   149: getfield 243	com/tencent/mm/plugin/forcenotify/c/d:field_UserName	Ljava/lang/String;
     //   152: invokeinterface 249 2 0
-    //   157: putfield 253	com/tencent/mm/plugin/forcenotify/c/d:contact	Lcom/tencent/mm/storage/af;
+    //   157: putfield 253	com/tencent/mm/plugin/forcenotify/c/d:contact	Lcom/tencent/mm/storage/ai;
     //   160: aload_2
     //   161: aload 7
     //   163: invokevirtual 257	java/util/ArrayList:add	(Ljava/lang/Object;)Z
@@ -505,8 +505,8 @@ public final class a
     //   177: iconst_0
     //   178: aload 7
     //   180: aastore
-    //   181: invokestatic 180	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   184: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:rey	Ljava/util/concurrent/ConcurrentHashMap;
+    //   181: invokestatic 180	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   184: getstatic 90	com/tencent/mm/plugin/forcenotify/d/a:snq	Ljava/util/concurrent/ConcurrentHashMap;
     //   187: checkcast 165	java/util/Map
     //   190: astore 8
     //   192: aload 7
@@ -537,7 +537,7 @@ public final class a
     //   247: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   250: aload_2
     //   251: athrow
-    //   252: getstatic 191	d/y:JfV	Ld/y;
+    //   252: getstatic 191	d/y:KTp	Ld/y;
     //   255: astore 5
     //   257: aload 4
     //   259: aconst_null
@@ -578,20 +578,20 @@ public final class a
   }
   
   /* Error */
-  public static int cvd()
+  public static int cIp()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
     //   2: ldc_w 269
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   8: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   11: ldc_w 271
     //   14: iconst_1
     //   15: anewarray 105	java/lang/String
     //   18: dup
     //   19: iconst_0
-    //   20: invokestatic 230	com/tencent/mm/model/ce:asR	()J
+    //   20: invokestatic 230	com/tencent/mm/model/ce:azI	()J
     //   23: invokestatic 236	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   26: aastore
     //   27: invokevirtual 275	com/tencent/mm/storagebase/h:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
@@ -601,7 +601,7 @@ public final class a
     //   35: astore_3
     //   36: aload_1
     //   37: ifnonnull +6 -> 43
-    //   40: invokestatic 83	d/g/b/k:fvU	()V
+    //   40: invokestatic 83	d/g/b/k:fOy	()V
     //   43: aload_1
     //   44: invokeinterface 158 1 0
     //   49: ifeq +24 -> 73
@@ -616,7 +616,7 @@ public final class a
     //   68: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: iload_0
     //   72: ireturn
-    //   73: getstatic 191	d/y:JfV	Ld/y;
+    //   73: getstatic 191	d/y:KTp	Ld/y;
     //   76: astore_1
     //   77: aload_3
     //   78: aconst_null
@@ -661,14 +661,14 @@ public final class a
   }
   
   /* Error */
-  public static void cve()
+  public static void cIq()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
     //   2: ldc_w 281
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 284	com/tencent/mm/kernel/g:afw	()Z
+    //   8: invokestatic 284	com/tencent/mm/kernel/g:agM	()Z
     //   11: ifeq +12 -> 23
     //   14: ldc_w 286
     //   17: invokestatic 218	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
@@ -676,9 +676,9 @@ public final class a
     //   23: ldc_w 281
     //   26: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: return
-    //   30: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   30: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   33: astore_2
-    //   34: invokestatic 230	com/tencent/mm/model/ce:asR	()J
+    //   34: invokestatic 230	com/tencent/mm/model/ce:azI	()J
     //   37: lstore_0
     //   38: aload_2
     //   39: ldc 103
@@ -710,7 +710,7 @@ public final class a
     //   84: pop
     //   85: aload_2
     //   86: ifnonnull +6 -> 92
-    //   89: invokestatic 83	d/g/b/k:fvU	()V
+    //   89: invokestatic 83	d/g/b/k:fOy	()V
     //   92: aload_2
     //   93: invokeinterface 206 1 0
     //   98: ifne +79 -> 177
@@ -727,7 +727,7 @@ public final class a
     //   125: aload 5
     //   127: getfield 240	com/tencent/mm/plugin/forcenotify/c/d:field_ForcePushId	Ljava/lang/String;
     //   130: iconst_5
-    //   131: invokestatic 230	com/tencent/mm/model/ce:asR	()J
+    //   131: invokestatic 230	com/tencent/mm/model/ce:azI	()J
     //   134: ldc2_w 289
     //   137: ldiv
     //   138: invokeinterface 293 5 0
@@ -748,7 +748,7 @@ public final class a
     //   172: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   175: aload_2
     //   176: athrow
-    //   177: getstatic 191	d/y:JfV	Ld/y;
+    //   177: getstatic 191	d/y:KTp	Ld/y;
     //   180: astore_2
     //   181: aload 4
     //   183: aconst_null
@@ -759,20 +759,20 @@ public final class a
     //   193: anewarray 175	java/lang/Object
     //   196: dup
     //   197: iconst_0
-    //   198: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   198: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   201: ldc 103
     //   203: ldc_w 288
     //   206: iconst_1
     //   207: anewarray 105	java/lang/String
     //   210: dup
     //   211: iconst_0
-    //   212: invokestatic 230	com/tencent/mm/model/ce:asR	()J
+    //   212: invokestatic 230	com/tencent/mm/model/ce:azI	()J
     //   215: invokestatic 236	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   218: aastore
     //   219: invokevirtual 298	com/tencent/mm/storagebase/h:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   222: invokestatic 303	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   225: aastore
-    //   226: invokestatic 180	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   226: invokestatic 180	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   229: ldc_w 281
     //   232: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: return
@@ -810,7 +810,7 @@ public final class a
     //   1: astore_2
     //   2: ldc_w 304
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   8: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   11: ldc_w 306
     //   14: iconst_1
     //   15: anewarray 105	java/lang/String
@@ -825,7 +825,7 @@ public final class a
     //   32: astore_3
     //   33: aload_1
     //   34: ifnonnull +6 -> 40
-    //   37: invokestatic 83	d/g/b/k:fvU	()V
+    //   37: invokestatic 83	d/g/b/k:fOy	()V
     //   40: aload_1
     //   41: invokeinterface 158 1 0
     //   46: ifeq +24 -> 70
@@ -840,7 +840,7 @@ public final class a
     //   65: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: iload_0
     //   69: ireturn
-    //   70: getstatic 191	d/y:JfV	Ld/y;
+    //   70: getstatic 191	d/y:KTp	Ld/y;
     //   73: astore_1
     //   74: aload_3
     //   75: aconst_null
@@ -884,47 +884,31 @@ public final class a
     //   70	74	110	finally
   }
   
-  public final void cK(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(149184);
-    k.h(paramString, "forcePushId");
-    d locald = new d();
-    locald.field_ForcePushId = paramString;
-    if (get((c)locald, new String[0]))
-    {
-      locald.field_Status = paramInt;
-      ad.i("MicroMsg.ForceNotifyStorage", "[updateStatus] ret:%s %s", new Object[] { Long.valueOf(gPa.replace("ForceNotifyData", "ForcePushId", locald.convertTo())), locald });
-      ((Map)rey).put(paramString, locald);
-      doNotify();
-    }
-    AppMethodBeat.o(149184);
-  }
-  
   /* Error */
-  public final int cvc()
+  public final int cIo()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: ldc_w 342
+    //   3: ldc_w 310
     //   6: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: new 344	java/util/LinkedList
+    //   9: new 312	java/util/LinkedList
     //   12: dup
-    //   13: invokespecial 345	java/util/LinkedList:<init>	()V
+    //   13: invokespecial 313	java/util/LinkedList:<init>	()V
     //   16: astore 4
-    //   18: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
+    //   18: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
     //   21: astore 6
-    //   23: invokestatic 230	com/tencent/mm/model/ce:asR	()J
+    //   23: invokestatic 230	com/tencent/mm/model/ce:azI	()J
     //   26: lstore_2
     //   27: aload 6
-    //   29: ldc_w 347
+    //   29: ldc_w 315
     //   32: iconst_1
     //   33: anewarray 105	java/lang/String
     //   36: dup
     //   37: iconst_0
     //   38: ldc 143
     //   40: aastore
-    //   41: ldc_w 349
+    //   41: ldc_w 317
     //   44: iconst_1
     //   45: anewarray 105	java/lang/String
     //   48: dup
@@ -946,7 +930,7 @@ public final class a
     //   79: pop
     //   80: aload 7
     //   82: ifnonnull +6 -> 88
-    //   85: invokestatic 83	d/g/b/k:fvU	()V
+    //   85: invokestatic 83	d/g/b/k:fOy	()V
     //   88: aload 7
     //   90: invokeinterface 206 1 0
     //   95: ifne +67 -> 162
@@ -959,14 +943,14 @@ public final class a
     //   111: invokevirtual 163	com/tencent/mm/plugin/forcenotify/c/d:convertFrom	(Landroid/database/Cursor;)V
     //   114: aload 4
     //   116: aload 8
-    //   118: invokevirtual 350	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   118: invokevirtual 318	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   121: pop
     //   122: aload 7
     //   124: invokeinterface 264 1 0
     //   129: pop
     //   130: goto -50 -> 80
     //   133: astore 5
-    //   135: ldc_w 342
+    //   135: ldc_w 310
     //   138: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload 5
     //   143: athrow
@@ -974,52 +958,52 @@ public final class a
     //   146: aload 6
     //   148: aload 5
     //   150: invokestatic 185	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   153: ldc_w 342
+    //   153: ldc_w 310
     //   156: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   159: aload 4
     //   161: athrow
-    //   162: getstatic 191	d/y:JfV	Ld/y;
+    //   162: getstatic 191	d/y:KTp	Ld/y;
     //   165: astore 7
     //   167: aload 6
     //   169: aconst_null
     //   170: invokestatic 185	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   173: aload 4
-    //   175: invokevirtual 354	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   175: invokevirtual 322	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   178: astore 4
     //   180: iconst_0
     //   181: istore_1
     //   182: aload 4
-    //   184: invokeinterface 359 1 0
+    //   184: invokeinterface 327 1 0
     //   189: ifeq +52 -> 241
     //   192: aload 4
-    //   194: invokeinterface 363 1 0
+    //   194: invokeinterface 331 1 0
     //   199: checkcast 98	com/tencent/mm/plugin/forcenotify/c/d
     //   202: astore 5
     //   204: aload_0
     //   205: aload 5
-    //   207: checkcast 313	com/tencent/mm/sdk/e/c
+    //   207: checkcast 333	com/tencent/mm/sdk/e/c
     //   210: iconst_0
-    //   211: invokevirtual 367	com/tencent/mm/plugin/forcenotify/d/a:insertNotify	(Lcom/tencent/mm/sdk/e/c;Z)Z
+    //   211: invokevirtual 337	com/tencent/mm/plugin/forcenotify/d/a:insertNotify	(Lcom/tencent/mm/sdk/e/c;Z)Z
     //   214: ifne +20 -> 234
     //   217: ldc 171
-    //   219: ldc_w 369
+    //   219: ldc_w 339
     //   222: iconst_1
     //   223: anewarray 175	java/lang/Object
     //   226: dup
     //   227: iconst_0
     //   228: aload 5
     //   230: aastore
-    //   231: invokestatic 180	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   231: invokestatic 180	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   234: iload_1
     //   235: iconst_1
     //   236: iadd
     //   237: istore_1
     //   238: goto -56 -> 182
-    //   241: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:gPa	Lcom/tencent/mm/storagebase/h;
-    //   244: ldc_w 347
-    //   247: invokevirtual 372	com/tencent/mm/storagebase/h:aJM	(Ljava/lang/String;)Z
+    //   241: getstatic 85	com/tencent/mm/plugin/forcenotify/d/a:hpA	Lcom/tencent/mm/storagebase/h;
+    //   244: ldc_w 315
+    //   247: invokevirtual 342	com/tencent/mm/storagebase/h:aPk	(Ljava/lang/String;)Z
     //   250: pop
-    //   251: ldc_w 342
+    //   251: ldc_w 310
     //   254: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   257: iload_1
     //   258: ireturn
@@ -1053,13 +1037,29 @@ public final class a
     //   162	167	259	finally
   }
   
-  public final boolean vv(String paramString)
+  public final void cP(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(149184);
+    k.h(paramString, "forcePushId");
+    d locald = new d();
+    locald.field_ForcePushId = paramString;
+    if (get((c)locald, new String[0]))
+    {
+      locald.field_Status = paramInt;
+      ac.i("MicroMsg.ForceNotifyStorage", "[updateStatus] ret:%s %s", new Object[] { Long.valueOf(hpA.replace("ForceNotifyData", "ForcePushId", locald.convertTo())), locald });
+      ((Map)snq).put(paramString, locald);
+      doNotify();
+    }
+    AppMethodBeat.o(149184);
+  }
+  
+  public final boolean zB(String paramString)
   {
     AppMethodBeat.i(149185);
     k.h(paramString, "forcePushId");
-    if (gPa.delete("ForceNotifyData", "ForcePushId=?", new String[] { paramString }) >= 0)
+    if (hpA.delete("ForceNotifyData", "ForcePushId=?", new String[] { paramString }) >= 0)
     {
-      rey.remove(paramString);
+      snq.remove(paramString);
       doNotify();
       AppMethodBeat.o(149185);
       return true;
@@ -1070,7 +1070,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.d.a
  * JD-Core Version:    0.7.0.1
  */

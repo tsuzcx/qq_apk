@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderJsApiMediaThumbInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int thumbHeight;
   public String thumbPath;
@@ -25,7 +25,7 @@ public class FinderJsApiMediaThumbInfo
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.thumbWidth) + 0 + f.a.a.b.b.a.bA(2, this.thumbHeight);
+      int i = f.a.a.b.b.a.bx(1, this.thumbWidth) + 0 + f.a.a.b.b.a.bx(2, this.thumbHeight);
       paramInt = i;
       if (this.thumbPath != null) {
         paramInt = i + f.a.a.b.b.a.e(3, this.thumbPath);
@@ -36,9 +36,9 @@ public class FinderJsApiMediaThumbInfo
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(169001);
@@ -54,15 +54,15 @@ public class FinderJsApiMediaThumbInfo
         AppMethodBeat.o(169001);
         return -1;
       case 1: 
-        localFinderJsApiMediaThumbInfo.thumbWidth = locala.KhF.xS();
+        localFinderJsApiMediaThumbInfo.thumbWidth = locala.LVo.xF();
         AppMethodBeat.o(169001);
         return 0;
       case 2: 
-        localFinderJsApiMediaThumbInfo.thumbHeight = locala.KhF.xS();
+        localFinderJsApiMediaThumbInfo.thumbHeight = locala.LVo.xF();
         AppMethodBeat.o(169001);
         return 0;
       }
-      localFinderJsApiMediaThumbInfo.thumbPath = locala.KhF.readString();
+      localFinderJsApiMediaThumbInfo.thumbPath = locala.LVo.readString();
       AppMethodBeat.o(169001);
       return 0;
     }

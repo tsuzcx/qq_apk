@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -21,57 +21,57 @@ import java.math.RoundingMode;
 public class HoneyPayModifyQuotaUI
   extends HoneyPayBaseUI
 {
-  private Button lkJ;
-  private long svZ;
-  private String svk;
-  private WalletFormView swS;
-  private long swa;
-  private TextView swy;
+  private Button lKB;
+  private String tCZ;
+  private long tDO;
+  private long tDP;
+  private WalletFormView tEH;
+  private TextView tEn;
   
-  private void mf(boolean paramBoolean)
+  private void mY(boolean paramBoolean)
   {
     AppMethodBeat.i(64809);
-    if ((paramBoolean) && (!this.swy.isShown()))
+    if ((paramBoolean) && (!this.tEn.isShown()))
     {
-      String str = ah.fkg() + e.a(new StringBuilder().append(this.swa).toString(), "100", 2, RoundingMode.HALF_UP).toString();
-      this.swy.setText(getString(2131760286, new Object[] { str }));
-      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
-      this.swy.setVisibility(0);
+      String str = ah.fAw() + e.a(new StringBuilder().append(this.tDP).toString(), "100", 2, RoundingMode.HALF_UP).toString();
+      this.tEn.setText(getString(2131760286, new Object[] { str }));
+      this.tEn.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
+      this.tEn.setVisibility(0);
       AppMethodBeat.o(64809);
       return;
     }
-    if ((!paramBoolean) && (this.swy.isShown()))
+    if ((!paramBoolean) && (this.tEn.isShown()))
     {
-      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
-      this.swy.setVisibility(8);
+      this.tEn.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
+      this.tEn.setVisibility(8);
     }
     AppMethodBeat.o(64809);
   }
   
-  private void mg(boolean paramBoolean)
+  private void mZ(boolean paramBoolean)
   {
     AppMethodBeat.i(64810);
-    if ((paramBoolean) && (!this.swy.isShown()))
+    if ((paramBoolean) && (!this.tEn.isShown()))
     {
-      String str = ah.fkg() + e.a(new StringBuilder().append(this.svZ).toString(), "100", 2, RoundingMode.HALF_UP);
-      this.swy.setText(getString(2131760282, new Object[] { str }));
-      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
-      this.swy.setVisibility(0);
+      String str = ah.fAw() + e.a(new StringBuilder().append(this.tDO).toString(), "100", 2, RoundingMode.HALF_UP);
+      this.tEn.setText(getString(2131760282, new Object[] { str }));
+      this.tEn.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
+      this.tEn.setVisibility(0);
       AppMethodBeat.o(64810);
       return;
     }
-    if ((!paramBoolean) && (this.swy.isShown()))
+    if ((!paramBoolean) && (this.tEn.isShown()))
     {
-      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
-      this.swy.setVisibility(8);
+      this.tEn.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
+      this.tEn.setVisibility(8);
     }
     AppMethodBeat.o(64810);
   }
   
-  private void mh(boolean paramBoolean)
+  private void na(boolean paramBoolean)
   {
     AppMethodBeat.i(64811);
-    this.lkJ.setEnabled(paramBoolean);
+    this.lKB.setEnabled(paramBoolean);
     AppMethodBeat.o(64811);
   }
   
@@ -83,13 +83,13 @@ public class HoneyPayModifyQuotaUI
   public void initView()
   {
     AppMethodBeat.i(64806);
-    this.swS = ((WalletFormView)findViewById(2131300834));
-    this.lkJ = ((Button)findViewById(2131300833));
-    this.swy = ((TextView)findViewById(2131300835));
-    this.swS.setContentPadding$3b4dfe4b(0);
-    this.swS.getTitleTv().setText(ah.fkg());
-    setEditFocusListener(this.swS, 2, false);
-    this.swS.a(new TextWatcher()
+    this.tEH = ((WalletFormView)findViewById(2131300834));
+    this.lKB = ((Button)findViewById(2131300833));
+    this.tEn = ((TextView)findViewById(2131300835));
+    this.tEH.setContentPadding$3b4dfe4b(0);
+    this.tEH.getTitleTv().setText(ah.fAw());
+    setEditFocusListener(this.tEH, 2, false);
+    this.tEH.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -111,7 +111,7 @@ public class HoneyPayModifyQuotaUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.lkJ.setOnClickListener(new View.OnClickListener()
+    this.lKB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -124,7 +124,7 @@ public class HoneyPayModifyQuotaUI
         AppMethodBeat.o(64803);
       }
     });
-    this.swS.postDelayed(new Runnable()
+    this.tEH.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -152,9 +152,9 @@ public class HoneyPayModifyQuotaUI
   {
     AppMethodBeat.i(64805);
     super.onCreate(paramBundle);
-    this.svZ = getIntent().getLongExtra("key_max_credit_line", 0L);
-    this.swa = getIntent().getLongExtra("key_min_credit_line", 0L);
-    this.svk = getIntent().getStringExtra("key_card_no");
+    this.tDO = getIntent().getLongExtra("key_max_credit_line", 0L);
+    this.tDP = getIntent().getLongExtra("key_min_credit_line", 0L);
+    this.tCZ = getIntent().getStringExtra("key_card_no");
     initView();
     setMMTitle(2131760287);
     AppMethodBeat.o(64805);
@@ -180,7 +180,7 @@ public class HoneyPayModifyQuotaUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayModifyQuotaUI
  * JD-Core Version:    0.7.0.1
  */

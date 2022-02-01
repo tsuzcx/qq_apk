@@ -9,44 +9,44 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout.a;
 import com.tencent.mm.pluginsdk.ui.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 @TargetApi(16)
 public class WebSearchVoiceInputLayoutImpl
   extends VoiceInputLayout
 {
-  private k BXd;
-  private View.OnLongClickListener aNt;
-  private View rxZ;
-  private boolean ryc;
-  private long rye;
-  private View.OnTouchListener ryf;
+  private k Dpu;
+  private View.OnLongClickListener aOj;
+  private View sGR;
+  private boolean sGU;
+  private long sGW;
+  private View.OnTouchListener sGX;
   
   public WebSearchVoiceInputLayoutImpl(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(32033);
-    this.ryc = false;
-    this.aNt = new View.OnLongClickListener()
+    this.sGU = false;
+    this.aOj = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(32025);
-        ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this)) });
+        ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this)) });
         WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, true);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).exG();
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).eNa();
         AppMethodBeat.o(32025);
         return true;
       }
     };
-    this.ryf = new View.OnTouchListener()
+    this.sGX = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -59,21 +59,21 @@ public class WebSearchVoiceInputLayoutImpl
           AppMethodBeat.o(32026);
           return false;
           WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, false);
-          WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, bt.GC());
-          ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.c(WebSearchVoiceInputLayoutImpl.this)), Long.valueOf(WebSearchVoiceInputLayoutImpl.d(WebSearchVoiceInputLayoutImpl.this)) });
-          WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).exH();
-          WebSearchVoiceInputLayoutImpl.this.M(false, false);
+          WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, bs.Gn());
+          ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.c(WebSearchVoiceInputLayoutImpl.this)), Long.valueOf(WebSearchVoiceInputLayoutImpl.d(WebSearchVoiceInputLayoutImpl.this)) });
+          WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).eNb();
+          WebSearchVoiceInputLayoutImpl.this.P(false, false);
           continue;
-          ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.e(WebSearchVoiceInputLayoutImpl.this)), Boolean.valueOf(WebSearchVoiceInputLayoutImpl.f(WebSearchVoiceInputLayoutImpl.this)) });
+          ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.e(WebSearchVoiceInputLayoutImpl.this)), Boolean.valueOf(WebSearchVoiceInputLayoutImpl.f(WebSearchVoiceInputLayoutImpl.this)) });
           if (WebSearchVoiceInputLayoutImpl.f(WebSearchVoiceInputLayoutImpl.this))
           {
-            WebSearchVoiceInputLayoutImpl.this.M(true, false);
+            WebSearchVoiceInputLayoutImpl.this.P(true, false);
             WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, false);
             WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, 0L);
           }
           else
           {
-            WebSearchVoiceInputLayoutImpl.this.M(false, true);
+            WebSearchVoiceInputLayoutImpl.this.P(false, true);
           }
         }
       }
@@ -86,20 +86,20 @@ public class WebSearchVoiceInputLayoutImpl
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(32032);
-    this.ryc = false;
-    this.aNt = new View.OnLongClickListener()
+    this.sGU = false;
+    this.aOj = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(32025);
-        ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this)) });
+        ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onLongClickListener currentState %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this)) });
         WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, true);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).exG();
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).eNa();
         AppMethodBeat.o(32025);
         return true;
       }
     };
-    this.ryf = new View.OnTouchListener()
+    this.sGX = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -112,21 +112,21 @@ public class WebSearchVoiceInputLayoutImpl
           AppMethodBeat.o(32026);
           return false;
           WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, false);
-          WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, bt.GC());
-          ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.c(WebSearchVoiceInputLayoutImpl.this)), Long.valueOf(WebSearchVoiceInputLayoutImpl.d(WebSearchVoiceInputLayoutImpl.this)) });
-          WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).exH();
-          WebSearchVoiceInputLayoutImpl.this.M(false, false);
+          WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, bs.Gn());
+          ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_DOWN currentState %s longClickStartTime %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.c(WebSearchVoiceInputLayoutImpl.this)), Long.valueOf(WebSearchVoiceInputLayoutImpl.d(WebSearchVoiceInputLayoutImpl.this)) });
+          WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).eNb();
+          WebSearchVoiceInputLayoutImpl.this.P(false, false);
           continue;
-          ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.e(WebSearchVoiceInputLayoutImpl.this)), Boolean.valueOf(WebSearchVoiceInputLayoutImpl.f(WebSearchVoiceInputLayoutImpl.this)) });
+          ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "btn onTouch ACTION_UP currentState %s longClickDown %s", new Object[] { Integer.valueOf(WebSearchVoiceInputLayoutImpl.e(WebSearchVoiceInputLayoutImpl.this)), Boolean.valueOf(WebSearchVoiceInputLayoutImpl.f(WebSearchVoiceInputLayoutImpl.this)) });
           if (WebSearchVoiceInputLayoutImpl.f(WebSearchVoiceInputLayoutImpl.this))
           {
-            WebSearchVoiceInputLayoutImpl.this.M(true, false);
+            WebSearchVoiceInputLayoutImpl.this.P(true, false);
             WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, false);
             WebSearchVoiceInputLayoutImpl.a(WebSearchVoiceInputLayoutImpl.this, 0L);
           }
           else
           {
-            WebSearchVoiceInputLayoutImpl.this.M(false, true);
+            WebSearchVoiceInputLayoutImpl.this.P(false, true);
           }
         }
       }
@@ -135,7 +135,7 @@ public class WebSearchVoiceInputLayoutImpl
     AppMethodBeat.o(32032);
   }
   
-  private void cyD()
+  private void cLP()
   {
     AppMethodBeat.i(32036);
     runOnUiThread(new Runnable()
@@ -143,18 +143,18 @@ public class WebSearchVoiceInputLayoutImpl
       public final void run()
       {
         AppMethodBeat.i(32027);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).exJ();
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).eNd();
         AppMethodBeat.o(32027);
       }
     });
-    cyQ();
+    cMc();
     AppMethodBeat.o(32036);
   }
   
-  private static boolean cyF()
+  private static boolean cLR()
   {
     AppMethodBeat.i(32037);
-    int i = az.aeS().auR();
+    int i = az.agi().aBK();
     if ((i == 4) || (i == 6))
     {
       AppMethodBeat.o(32037);
@@ -167,21 +167,21 @@ public class WebSearchVoiceInputLayoutImpl
   private void init(Context paramContext)
   {
     AppMethodBeat.i(32034);
-    this.rxZ = inflate(paramContext, 2131495858, this).findViewById(2131306533);
-    this.rxZ.setLayerType(1, null);
-    this.BXd = new k(paramContext);
-    this.rxZ.setBackground(this.BXd);
-    this.rxZ.setEnabled(true);
-    this.rxZ.setOnTouchListener(this.ryf);
-    this.rxZ.setOnLongClickListener(this.aNt);
+    this.sGR = inflate(paramContext, 2131495858, this).findViewById(2131306533);
+    this.sGR.setLayerType(1, null);
+    this.Dpu = new k(paramContext);
+    this.sGR.setBackground(this.Dpu);
+    this.sGR.setEnabled(true);
+    this.sGR.setOnTouchListener(this.sGX);
+    this.sGR.setOnLongClickListener(this.aOj);
     reset(true);
     if (isInEditMode())
     {
       AppMethodBeat.o(32034);
       return;
     }
-    if (!cyF()) {
-      cyD();
+    if (!cLR()) {
+      cLP();
     }
     AppMethodBeat.o(32034);
   }
@@ -191,7 +191,7 @@ public class WebSearchVoiceInputLayoutImpl
     AppMethodBeat.i(32042);
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      aq.f(paramRunnable);
+      ap.f(paramRunnable);
       AppMethodBeat.o(32042);
       return;
     }
@@ -199,7 +199,7 @@ public class WebSearchVoiceInputLayoutImpl
     AppMethodBeat.o(32042);
   }
   
-  public final void DQ(final int paramInt)
+  public final void FM(final int paramInt)
   {
     AppMethodBeat.i(32041);
     runOnUiThread(new Runnable()
@@ -207,34 +207,34 @@ public class WebSearchVoiceInputLayoutImpl
       public final void run()
       {
         AppMethodBeat.i(32031);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).UF(paramInt);
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).WP(paramInt);
         AppMethodBeat.o(32031);
       }
     });
     AppMethodBeat.o(32041);
   }
   
-  public final void M(boolean paramBoolean1, boolean paramBoolean2)
+  public final void P(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(32035);
-    ad.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "directStart currentState = %s longUp = %s clickUp = %s", new Object[] { Integer.valueOf(this.currentState), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    ac.d("MicroMsg.WebSearchVoiceInputLayoutImpl", "directStart currentState = %s longUp = %s clickUp = %s", new Object[] { Integer.valueOf(this.currentState), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
     if (this.currentState == 1)
     {
       if ((!paramBoolean1) && (!paramBoolean2))
       {
-        if (!cyF())
+        if (!cLR())
         {
-          cyD();
+          cLP();
           AppMethodBeat.o(32035);
           return;
         }
-        cyN();
+        cLZ();
         AppMethodBeat.o(32035);
         return;
       }
       if ((paramBoolean1) && (!paramBoolean2))
       {
-        this.BXd.cyr();
+        this.Dpu.cLD();
         AppMethodBeat.o(32035);
       }
     }
@@ -242,15 +242,15 @@ public class WebSearchVoiceInputLayoutImpl
     {
       if (!paramBoolean2)
       {
-        cyO();
+        cMa();
         AppMethodBeat.o(32035);
         return;
       }
-      this.BXd.cyr();
-      aDZ();
-      if (this.BXb != null)
+      this.Dpu.cLD();
+      aKQ();
+      if (this.Dps != null)
       {
-        this.BXb.cyC();
+        this.Dps.cLO();
         AppMethodBeat.o(32035);
       }
     }
@@ -258,18 +258,18 @@ public class WebSearchVoiceInputLayoutImpl
     {
       if ((!paramBoolean1) && (!paramBoolean2))
       {
-        aDZ();
+        aKQ();
         AppMethodBeat.o(32035);
         return;
       }
       if ((paramBoolean1) && (!paramBoolean2)) {
-        this.BXd.cyr();
+        this.Dpu.cLD();
       }
     }
     AppMethodBeat.o(32035);
   }
   
-  public final void cyG()
+  public final void cLS()
   {
     AppMethodBeat.i(32038);
     runOnUiThread(new Runnable()
@@ -277,14 +277,14 @@ public class WebSearchVoiceInputLayoutImpl
       public final void run()
       {
         AppMethodBeat.i(32028);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).tX(this.ryh);
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).uY(this.sGZ);
         AppMethodBeat.o(32028);
       }
     });
     AppMethodBeat.o(32038);
   }
   
-  public final void fU(boolean paramBoolean)
+  public final void gq(boolean paramBoolean)
   {
     AppMethodBeat.i(32039);
     runOnUiThread(new Runnable()
@@ -292,7 +292,7 @@ public class WebSearchVoiceInputLayoutImpl
       public final void run()
       {
         AppMethodBeat.i(32029);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).exI();
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).eNc();
         AppMethodBeat.o(32029);
       }
     });
@@ -307,7 +307,7 @@ public class WebSearchVoiceInputLayoutImpl
       public final void run()
       {
         AppMethodBeat.i(32030);
-        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).cyr();
+        WebSearchVoiceInputLayoutImpl.b(WebSearchVoiceInputLayoutImpl.this).cLD();
         AppMethodBeat.o(32030);
       }
     });

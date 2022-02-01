@@ -6,24 +6,25 @@ import com.tencent.luggage.game.c.h;
 import com.tencent.luggage.game.c.h.a;
 import com.tencent.magicbrush.MBRuntime;
 import com.tencent.magicbrush.MBRuntime.MBParams;
+import com.tencent.magicbrush.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ai;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.performance.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
 {
   Handler handler;
-  final b lsN;
-  QualitySessionRuntime lsO;
-  private f lsP;
+  final b lUH;
+  QualitySessionRuntime lUI;
+  private f lUJ;
   
   public e()
   {
     AppMethodBeat.i(48213);
-    this.lsN = new b((byte)0);
+    this.lUH = new b((byte)0);
     AppMethodBeat.o(48213);
   }
   
@@ -32,7 +33,7 @@ public final class e
     AppMethodBeat.i(48217);
     try
     {
-      int i = paramAppBrandRuntime.iDt.getStackSize();
+      int i = paramAppBrandRuntime.jdt.getStackSize();
       AppMethodBeat.o(48217);
       return i;
     }
@@ -43,26 +44,26 @@ public final class e
     return 0;
   }
   
-  public final void a(QualitySessionRuntime paramQualitySessionRuntime, int paramInt, e.a parama, boolean paramBoolean)
+  public final void a(QualitySessionRuntime paramQualitySessionRuntime, int paramInt, a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(48214);
-    this.lsO = paramQualitySessionRuntime;
+    this.lUI = paramQualitySessionRuntime;
     if (this.handler == null)
     {
       this.handler = new Handler(Looper.getMainLooper());
-      b.a(this.lsN, paramInt * 1000);
-      b.a(this.lsN, parama);
-      b.a(this.lsN, paramBoolean);
-      this.handler.post(this.lsN);
+      b.a(this.lUH, paramInt * 1000);
+      b.a(this.lUH, parama);
+      b.a(this.lUH, paramBoolean);
+      this.handler.post(this.lUH);
     }
-    this.lsP = new f();
-    this.lsP.mInterval = 200L;
-    this.lsP.lhG = null;
-    this.lsP.start();
+    this.lUJ = new f();
+    this.lUJ.mInterval = 200L;
+    this.lUJ.lHz = null;
+    this.lUJ.start();
     AppMethodBeat.o(48214);
   }
   
-  final void a(e.a parama, boolean paramBoolean)
+  final void a(a parama, boolean paramBoolean)
   {
     Object localObject1 = null;
     boolean bool = true;
@@ -74,141 +75,142 @@ public final class e
       try
       {
         AppMethodBeat.i(48216);
-        if (this.lsO == null)
+        if (this.lUI == null)
         {
           AppMethodBeat.o(48216);
           return;
         }
-        localQualitySessionRuntime = this.lsO;
+        localQualitySessionRuntime = this.lUI;
         if (localQualitySessionRuntime == null)
         {
           localObject1 = null;
           if (localObject1 != null) {
-            break label525;
+            break label529;
           }
           AppMethodBeat.o(48216);
           continue;
         }
-        localObject2 = localQualitySessionRuntime.joZ;
+        localObject2 = localQualitySessionRuntime.jPl;
       }
       finally {}
       Object localObject2;
       m.a locala1 = new m.a();
       Object localObject3;
-      if (parama == e.a.lsR)
+      if (parama == a.lUL)
       {
-        localObject3 = h.ccm;
-        localObject3 = h.BB();
-        locala1.ccp = ((h.a)localObject3).ccp;
-        locala1.lui = (((h.a)localObject3).ccp - localQualitySessionRuntime.ltI);
-        locala1.ccq = ((h.a)localObject3).ccq;
-        locala1.ccr = ((h.a)localObject3).ccr;
-        locala1.luk = ((int)Math.round(g.lsZ.lhE.blb()));
-        locala1.lun = ((h.a)localObject3).ccs;
-        locala1.jqE = aq((AppBrandRuntime)localObject2);
-        locala1.luj = ((int)(System.currentTimeMillis() - localQualitySessionRuntime.ltC));
-        if (localQualitySessionRuntime.cbn) {
-          localObject3 = localQualitySessionRuntime.joZ;
+        localObject3 = h.bZj;
+        localObject3 = h.Bf();
+        locala1.bZm = ((h.a)localObject3).bZm;
+        locala1.lWc = (((h.a)localObject3).bZm - localQualitySessionRuntime.lVC);
+        locala1.bZn = ((h.a)localObject3).bZn;
+        locala1.bZo = ((h.a)localObject3).bZo;
+        locala1.lWe = ((int)Math.round(g.lUT.lHx.brQ()));
+        locala1.lWh = ((h.a)localObject3).bZp;
+        locala1.jQW = aq((AppBrandRuntime)localObject2);
+        locala1.lWd = ((int)(System.currentTimeMillis() - localQualitySessionRuntime.lVw));
+        if (localQualitySessionRuntime.bYk) {
+          localObject3 = localQualitySessionRuntime.jPl;
         }
       }
       else
       {
         try
         {
-          localObject2 = ((com.tencent.luggage.game.d.a.a.b)((o)localObject3).aNe().Q(com.tencent.luggage.game.d.a.a.b.class)).getMagicBrush();
+          localObject2 = ((com.tencent.luggage.game.d.a.a.b)((o)localObject3).aTU().Q(com.tencent.luggage.game.d.a.a.b.class)).getMagicBrush();
           localObject1 = localObject2;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.AppBrandRuntimeEventReporter", localException, "get QualityEvent of WAGame but fail. [%s]", new Object[] { localObject3 });
+            ac.printErrStackTrace("MicroMsg.AppBrandRuntimeEventReporter", localException, "get QualityEvent of WAGame but fail. [%s]", new Object[] { localObject3 });
           }
-          locala = ((MBRuntime)localObject1).cem.FO();
-          locala1.fps = Math.round(locala.coh);
-          locala1.lum = Math.round(locala.coi);
-          locala1.lue = ((MBRuntime)localObject1).cem.FR();
-          locala1.lug = ((MBRuntime)localObject1).cem.FU();
-          locala1.luh = ((MBRuntime)localObject1).cem.FV();
-          locala1.luf = ((MBRuntime)localObject1).cem.FW();
-          locala1.ltY = localQualitySessionRuntime.ltM.ltY;
-          if (!((MBRuntime)localObject1).Gg().use_command_buffer) {
-            break label661;
+          locala = ((MBRuntime)localObject1).cbj.Fx();
+          locala1.fps = Math.round(locala.clj);
+          locala1.lWg = Math.round(locala.clk);
+          locala1.lVY = ((MBRuntime)localObject1).cbj.FB();
+          locala1.lWa = ((MBRuntime)localObject1).cbj.FE();
+          locala1.lWb = ((MBRuntime)localObject1).cbj.FF();
+          locala1.lVZ = ((MBRuntime)localObject1).cbj.FG();
+          locala1.lVS = localQualitySessionRuntime.lVG.lVS;
+          if (!((MBRuntime)localObject1).FS().use_command_buffer) {
+            break label665;
           }
         }
         if (localObject1 == null) {
-          ad.e("MicroMsg.AppBrandRuntimeEventReporter", "buildWAGameQualityEvent find renderer.fps == null");
+          ac.e("MicroMsg.AppBrandRuntimeEventReporter", "buildWAGameQualityEvent find renderer.fps == null");
         }
         for (;;)
         {
           localObject1 = new m(locala1, (byte)0);
           break;
-          locala1.ccp = -1;
-          locala1.lui = -1;
-          locala1.ccq = -1;
-          locala1.ccr = -1;
-          locala1.luk = -1;
-          locala1.lun = -1;
+          locala1.bZm = -1;
+          locala1.lWc = -1;
+          locala1.bZn = -1;
+          locala1.bZo = -1;
+          locala1.lWe = -1;
+          locala1.lWh = -1;
           break label167;
           com.tencent.magicbrush.a locala;
           i = 1;
           label434:
-          locala1.lul = i;
-          locala1.luo = ((MBRuntime)localObject1).Gg().cmd_pool_type;
-          locala1.lup = ((MBRuntime)localObject1).cem.FP();
-          locala1.luq = ((MBRuntime)localObject1).cem.FQ();
+          locala1.lWf = i;
+          locala1.lWi = ((MBRuntime)localObject1).FS().cmd_pool_type;
+          localObject1 = ((MBRuntime)localObject1).cbj.Fy();
+          locala1.lWj = ((c.a)localObject1).clK;
+          locala1.lWk = ((c.a)localObject1).clL;
         }
       }
-      localObject1 = localQualitySessionRuntime.ltK;
-      if (((e)localObject1).lsP == null) {}
-      for (i = 0;; i = (int)(((e)localObject1).lsP.lhY + 0.5D))
+      localObject1 = localQualitySessionRuntime.lVE;
+      if (((e)localObject1).lUJ == null) {}
+      for (i = 0;; i = (int)(((e)localObject1).lUJ.lHQ + 0.5D))
       {
         locala1.fps = i;
         break;
       }
-      label525:
-      if (!this.lsO.cbn) {
-        break label602;
+      label529:
+      if (!this.lUI.bYk) {
+        break label606;
       }
       if (!paramBoolean) {
         break;
       }
-      a.bmM();
-      b.a(this.lsO.appId, (m)localObject1);
+      a.btI();
+      b.a(this.lUI.appId, (m)localObject1);
       AppMethodBeat.o(48216);
     }
-    localObject1 = new com.tencent.mm.plugin.appbrand.game.d.b(this.lsO, (m)localObject1);
-    if (parama == e.a.lsR) {}
+    localObject1 = new com.tencent.mm.plugin.appbrand.game.d.b(this.lUI, (m)localObject1);
+    if (parama == a.lUL) {}
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      ((com.tencent.mm.plugin.appbrand.game.d.b)localObject1).fH(paramBoolean);
+      ((com.tencent.mm.plugin.appbrand.game.d.b)localObject1).gd(paramBoolean);
       AppMethodBeat.o(48216);
       break;
-      label602:
-      a.bmM();
-      b.a(this.lsO.appId, (m)localObject1);
-      localObject1 = new com.tencent.mm.plugin.appbrand.game.d.b(this.lsO, (m)localObject1);
-      if (parama == e.a.lsR) {}
+      label606:
+      a.btI();
+      b.a(this.lUI.appId, (m)localObject1);
+      localObject1 = new com.tencent.mm.plugin.appbrand.game.d.b(this.lUI, (m)localObject1);
+      if (parama == a.lUL) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
-        ((com.tencent.mm.plugin.appbrand.game.d.b)localObject1).fH(paramBoolean);
+        ((com.tencent.mm.plugin.appbrand.game.d.b)localObject1).gd(paramBoolean);
         AppMethodBeat.o(48216);
         break;
       }
-      label661:
+      label665:
       i = 0;
       break label434;
     }
   }
   
   /* Error */
-  public final boolean bmO()
+  public final boolean btK()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 59	com/tencent/mm/plugin/appbrand/report/quality/e:lsO	Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
+    //   3: getfield 59	com/tencent/mm/plugin/appbrand/report/quality/e:lUI	Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17
@@ -242,17 +244,17 @@ public final class e
     try
     {
       AppMethodBeat.i(48215);
-      ad.i("MicroMsg.AppBrandRuntimeEventReporter", "dl: destroyed");
-      this.lsO = null;
+      ac.i("MicroMsg.AppBrandRuntimeEventReporter", "dl: destroyed");
+      this.lUI = null;
       if (this.handler != null)
       {
-        this.handler.removeCallbacks(this.lsN);
+        this.handler.removeCallbacks(this.lUH);
         this.handler = null;
       }
-      if (this.lsP != null)
+      if (this.lUJ != null)
       {
-        this.lsP.stop();
-        this.lsP = null;
+        this.lUJ.stop();
+        this.lUJ = null;
       }
       AppMethodBeat.o(48215);
       return;
@@ -260,35 +262,49 @@ public final class e
     finally {}
   }
   
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(48211);
+      lUK = new a("Light", 0);
+      lUL = new a("Full", 1);
+      lUM = new a[] { lUK, lUL };
+      AppMethodBeat.o(48211);
+    }
+    
+    private a() {}
+  }
+  
   final class b
     implements Runnable
   {
-    private long cQF = 0L;
-    private e.a lsT = null;
-    private boolean lsU = false;
+    private long cOa = 0L;
+    private e.a lUN = null;
+    private boolean lUO = false;
     
     private b() {}
     
     public final void run()
     {
       AppMethodBeat.i(48212);
-      if (e.this.lsO == null)
+      if (e.this.lUI == null)
       {
         AppMethodBeat.o(48212);
         return;
       }
-      if (this.lsT == null) {
-        ad.e("MicroMsg.AppBrandRuntimeEventReporter", "hy: null type! could not happen");
+      if (this.lUN == null) {
+        ac.e("MicroMsg.AppBrandRuntimeEventReporter", "hy: null type! could not happen");
       }
-      e.this.a(this.lsT, this.lsU);
-      e.this.handler.postDelayed(e.this.lsN, this.cQF);
+      e.this.a(this.lUN, this.lUO);
+      e.this.handler.postDelayed(e.this.lUH, this.cOa);
       AppMethodBeat.o(48212);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.e
  * JD-Core Version:    0.7.0.1
  */

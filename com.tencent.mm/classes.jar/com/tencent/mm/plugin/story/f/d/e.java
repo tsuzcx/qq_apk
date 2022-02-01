@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/gallery/StoryDataSeedFactory;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed$IFactory;", "()V", "createAllFriendDataSeed", "", "userList", "", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "queryCondition", "", "createFavDataSeed", "dateList", "username", "createMultiSelectFavDataSeed", "checkedList", "createNewestDataSeed", "genKey", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/StoryDataSeedFactory;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed$IFactory;", "()V", "createAllFriendDataSeed", "", "userList", "", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "queryCondition", "", "createFavDataSeed", "dateList", "username", "createMultiSelectFavDataSeed", "checkedList", "createNewestDataSeed", "genKey", "plugin-story_release"})
 public final class e
   implements p.b
 {
-  public static final e yhx;
+  public static final e zux;
   
   static
   {
     AppMethodBeat.i(118914);
-    yhx = new e();
+    zux = new e();
     AppMethodBeat.o(118914);
   }
   
@@ -31,8 +31,8 @@ public final class e
     k.h(paramString, "username");
     k.h(paramMap, "filterList");
     k.h(paramArrayList, "checkedList");
-    paramList = new c(ce.asR(), paramList, paramString, true, paramMap, paramArrayList, paramInt);
-    p.a.dGt().a(paramList.key, (p)paramList);
+    paramList = new c(ce.azI(), paramList, paramString, true, paramMap, paramArrayList, paramInt);
+    p.a.dUU().a(paramList.key, (p)paramList);
     long l = paramList.key;
     AppMethodBeat.o(118912);
     return l;
@@ -43,8 +43,8 @@ public final class e
     AppMethodBeat.i(118910);
     k.h(paramList, "userList");
     k.h(paramMap, "filterList");
-    paramList = new a(ce.asR(), paramList, paramMap, paramInt);
-    p.a.dGt().a(paramList.key, (p)paramList);
+    paramList = new a(ce.azI(), paramList, paramMap, paramInt);
+    p.a.dUU().a(paramList.key, (p)paramList);
     long l = paramList.key;
     AppMethodBeat.o(118910);
     return l;
@@ -55,8 +55,8 @@ public final class e
     AppMethodBeat.i(118911);
     k.h(paramList, "dateList");
     k.h(paramString, "username");
-    paramList = new c(ce.asR(), paramList, paramString, paramInt);
-    p.a.dGt().a(paramList.key, (p)paramList);
+    paramList = new c(ce.azI(), paramList, paramString, paramInt);
+    p.a.dUU().a(paramList.key, (p)paramList);
     long l = paramList.key;
     AppMethodBeat.o(118911);
     return l;
@@ -66,8 +66,8 @@ public final class e
   {
     AppMethodBeat.i(118913);
     k.h(paramList, "userList");
-    paramList = new d(ce.asR(), paramList, paramInt);
-    p.a.dGt().a(paramList.key, (p)paramList);
+    paramList = new d(ce.azI(), paramList, paramInt);
+    p.a.dUU().a(paramList.key, (p)paramList);
     long l = paramList.key;
     AppMethodBeat.o(118913);
     return l;
@@ -75,7 +75,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.d.e
  * JD-Core Version:    0.7.0.1
  */

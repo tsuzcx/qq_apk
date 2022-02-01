@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,12 +57,12 @@ public final class a
     return bool;
   }
   
-  public final b ru(long paramLong)
+  public final b vX(long paramLong)
   {
     AppMethodBeat.i(88803);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteStorage", "getMsgQuteByMsgId:%s", new Object[] { Long.valueOf(paramLong) });
+      ac.e("MicroMsg.msgquote.MsgQuoteStorage", "getMsgQuteByMsgId:%s", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(88803);
       return null;
     }
@@ -89,12 +89,12 @@ public final class a
     return localObject;
   }
   
-  public final b rv(long paramLong)
+  public final b vY(long paramLong)
   {
     AppMethodBeat.i(88804);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgSvrId:%s", new Object[] { Long.valueOf(paramLong) });
+      ac.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgSvrId:%s", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(88804);
       return null;
     }
@@ -121,12 +121,12 @@ public final class a
     return localObject;
   }
   
-  public final b rw(long paramLong)
+  public final b vZ(long paramLong)
   {
     AppMethodBeat.i(88805);
     if (paramLong <= 0L)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
+      ac.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(88805);
       return null;
     }

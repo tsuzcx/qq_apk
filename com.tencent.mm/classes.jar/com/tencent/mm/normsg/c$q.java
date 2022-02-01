@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c$q
 {
-  private static volatile a hNt = null;
+  private static volatile a inP = null;
   
   public static void c0(a parama)
   {
     try
     {
-      hNt = parama;
+      inP = parama;
       return;
     }
     finally
@@ -29,9 +29,9 @@ public final class c$q
     //   2: monitorenter
     //   3: ldc 22
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 13	com/tencent/mm/normsg/c$q:hNt	Lcom/tencent/mm/normsg/a;
+    //   8: getstatic 13	com/tencent/mm/normsg/c$q:inP	Lcom/tencent/mm/normsg/a;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 13	com/tencent/mm/normsg/c$q:hNt	Lcom/tencent/mm/normsg/a;
+    //   14: getstatic 13	com/tencent/mm/normsg/c$q:inP	Lcom/tencent/mm/normsg/a;
     //   17: invokeinterface 33 1 0
     //   22: astore_0
     //   23: ldc 22
@@ -63,9 +63,9 @@ public final class c$q
   private static String c10()
   {
     AppMethodBeat.i(62435);
-    if (hNt != null)
+    if (inP != null)
     {
-      String str = hNt.getDeviceId();
+      String str = inP.getDeviceId();
       AppMethodBeat.o(62435);
       return str;
     }
@@ -76,9 +76,9 @@ public final class c$q
   private static boolean c11(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62436);
-    if (hNt != null)
+    if (inP != null)
     {
-      boolean bool = hNt.putByteToMMKV(paramString, paramArrayOfByte);
+      boolean bool = inP.putByteToMMKV(paramString, paramArrayOfByte);
       AppMethodBeat.o(62436);
       return bool;
     }
@@ -89,9 +89,9 @@ public final class c$q
   private static byte[] c12(String paramString)
   {
     AppMethodBeat.i(62437);
-    if (hNt != null)
+    if (inP != null)
     {
-      paramString = hNt.getByteFromMMKV(paramString);
+      paramString = inP.getByteFromMMKV(paramString);
       AppMethodBeat.o(62437);
       return paramString;
     }
@@ -102,8 +102,8 @@ public final class c$q
   private static void c13(String paramString)
   {
     AppMethodBeat.i(62438);
-    if (hNt != null) {
-      hNt.removeFromMMKV(paramString);
+    if (inP != null) {
+      inP.removeFromMMKV(paramString);
     }
     AppMethodBeat.o(62438);
   }
@@ -111,9 +111,9 @@ public final class c$q
   private static String c14()
   {
     AppMethodBeat.i(62439);
-    if (hNt != null)
+    if (inP != null)
     {
-      String str = hNt.getOAID();
+      String str = inP.getOAID();
       AppMethodBeat.o(62439);
       return str;
     }
@@ -124,9 +124,9 @@ public final class c$q
   private static String c15(Context paramContext, String paramString)
   {
     AppMethodBeat.i(62440);
-    if (hNt != null)
+    if (inP != null)
     {
-      paramContext = hNt.getAPKName(paramContext, paramString);
+      paramContext = inP.getAPKName(paramContext, paramString);
       AppMethodBeat.o(62440);
       return paramContext;
     }
@@ -136,14 +136,14 @@ public final class c$q
   
   private static boolean c16(Context paramContext)
   {
-    AppMethodBeat.i(186498);
-    if (hNt != null)
+    AppMethodBeat.i(190959);
+    if (inP != null)
     {
-      boolean bool = hNt.getPhoneState(paramContext);
-      AppMethodBeat.o(186498);
+      boolean bool = inP.getPhoneState(paramContext);
+      AppMethodBeat.o(190959);
       return bool;
     }
-    AppMethodBeat.o(186498);
+    AppMethodBeat.o(190959);
     return false;
   }
   
@@ -155,9 +155,9 @@ public final class c$q
     //   2: monitorenter
     //   3: ldc 81
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 13	com/tencent/mm/normsg/c$q:hNt	Lcom/tencent/mm/normsg/a;
+    //   8: getstatic 13	com/tencent/mm/normsg/c$q:inP	Lcom/tencent/mm/normsg/a;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 13	com/tencent/mm/normsg/c$q:hNt	Lcom/tencent/mm/normsg/a;
+    //   14: getstatic 13	com/tencent/mm/normsg/c$q:inP	Lcom/tencent/mm/normsg/a;
     //   17: invokeinterface 84 1 0
     //   22: lstore_0
     //   23: ldc 81
@@ -191,8 +191,8 @@ public final class c$q
     try
     {
       AppMethodBeat.i(62429);
-      if (hNt != null) {
-        hNt.reportKVStat(paramInt, paramString);
+      if (inP != null) {
+        inP.reportKVStat(paramInt, paramString);
       }
       AppMethodBeat.o(62429);
       return;
@@ -205,8 +205,8 @@ public final class c$q
     try
     {
       AppMethodBeat.i(62430);
-      if (hNt != null) {
-        hNt.reportIdKey(paramInt1, paramInt2, paramInt3);
+      if (inP != null) {
+        inP.reportIdKey(paramInt1, paramInt2, paramInt3);
       }
       AppMethodBeat.o(62430);
       return;
@@ -219,8 +219,8 @@ public final class c$q
     try
     {
       AppMethodBeat.i(62431);
-      if (hNt != null) {
-        hNt.reportGroupedIdKey(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (inP != null) {
+        inP.reportGroupedIdKey(paramInt1, paramInt2, paramInt3, paramInt4);
       }
       AppMethodBeat.o(62431);
       return;
@@ -241,9 +241,9 @@ public final class c$q
     //   2: monitorenter
     //   3: ldc 105
     //   5: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 13	com/tencent/mm/normsg/c$q:hNt	Lcom/tencent/mm/normsg/a;
+    //   8: getstatic 13	com/tencent/mm/normsg/c$q:inP	Lcom/tencent/mm/normsg/a;
     //   11: ifnull +22 -> 33
-    //   14: getstatic 13	com/tencent/mm/normsg/c$q:hNt	Lcom/tencent/mm/normsg/a;
+    //   14: getstatic 13	com/tencent/mm/normsg/c$q:inP	Lcom/tencent/mm/normsg/a;
     //   17: invokeinterface 108 1 0
     //   22: astore_0
     //   23: ldc 105
@@ -275,9 +275,9 @@ public final class c$q
   private static boolean c8()
   {
     AppMethodBeat.i(62433);
-    if (hNt != null)
+    if (inP != null)
     {
-      boolean bool = hNt.isUSBConnected();
+      boolean bool = inP.isUSBConnected();
       AppMethodBeat.o(62433);
       return bool;
     }
@@ -288,9 +288,9 @@ public final class c$q
   private static String c9()
   {
     AppMethodBeat.i(62434);
-    if (hNt != null)
+    if (inP != null)
     {
-      String str = hNt.getSoterUid();
+      String str = inP.getSoterUid();
       AppMethodBeat.o(62434);
       return str;
     }

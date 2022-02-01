@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.ax.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.aw.b.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.a;
@@ -20,7 +20,7 @@ public class AppBrandRedirectUI
   extends MMActivity
 {
   private int fromScene = -1;
-  private boolean lBY = false;
+  private boolean mdU = false;
   private int result = 0;
   
   public int getLayoutId()
@@ -33,31 +33,31 @@ public class AppBrandRedirectUI
     AppMethodBeat.i(48770);
     super.onCreate(paramBundle);
     r.b(getWindow());
-    ad.i("AppBrandRedirectUI", "onCreate");
+    ac.i("AppBrandRedirectUI", "onCreate");
     setResult(0);
     this.fromScene = getIntent().getIntExtra("key_from_scene", -1);
     if (this.fromScene == 0)
     {
-      ad.i("AppBrandRedirectUI", "start to bind phone number");
+      ac.i("AppBrandRedirectUI", "start to bind phone number");
       paramBundle = new Intent();
       paramBundle.setClassName(this, "com.tencent.mm.plugin.account.bind.ui.BindMContactUI");
       paramBundle.putExtra("WizardRootClass", getClass().getName());
       paramBundle.putExtra("bind_scene", 5);
       Object localObject = ((TelephonyManager)getContext().getSystemService("phone")).getSimCountryIso();
-      if (!bt.isNullOrNil((String)localObject))
+      if (!bs.isNullOrNil((String)localObject))
       {
-        localObject = b.bh((String)localObject, getContext().getString(2131757950));
+        localObject = b.bp((String)localObject, getContext().getString(2131757950));
         if (localObject != null)
         {
-          paramBundle.putExtra("country_name", ((b.a)localObject).hkO);
-          paramBundle.putExtra("couttry_code", ((b.a)localObject).hkN);
+          paramBundle.putExtra("country_name", ((b.a)localObject).hLr);
+          paramBundle.putExtra("couttry_code", ((b.a)localObject).hLq);
         }
       }
-      MMWizardActivity.V(this, paramBundle);
+      MMWizardActivity.aj(this, paramBundle);
       AppMethodBeat.o(48770);
       return;
     }
-    ad.e("AppBrandRedirectUI", "from scene is illegal, finish activity");
+    ac.e("AppBrandRedirectUI", "from scene is illegal, finish activity");
     finish();
     AppMethodBeat.o(48770);
   }
@@ -67,7 +67,7 @@ public class AppBrandRedirectUI
     AppMethodBeat.i(48772);
     if (paramInt == 4)
     {
-      ad.e("AppBrandRedirectUI", "onKeyDown KEYCODE_BACK, result cancel, finishUI");
+      ac.e("AppBrandRedirectUI", "onKeyDown KEYCODE_BACK, result cancel, finishUI");
       setResult(0);
       finish();
     }
@@ -79,20 +79,20 @@ public class AppBrandRedirectUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(48773);
-    ad.i("AppBrandRedirectUI", "onNewIntent");
+    ac.i("AppBrandRedirectUI", "onNewIntent");
     super.onNewIntent(paramIntent);
     if (paramIntent != null)
     {
       this.result = paramIntent.getIntExtra("wizard_activity_result_code", 0);
       setResult(this.result);
-      ad.i("AppBrandRedirectUI", "result:%d, finish activity", new Object[] { Integer.valueOf(this.result) });
+      ac.i("AppBrandRedirectUI", "result:%d, finish activity", new Object[] { Integer.valueOf(this.result) });
     }
     for (;;)
     {
       finish();
       AppMethodBeat.o(48773);
       return;
-      ad.i("AppBrandRedirectUI", "intent is null");
+      ac.i("AppBrandRedirectUI", "intent is null");
       setResult(0);
     }
   }
@@ -101,14 +101,14 @@ public class AppBrandRedirectUI
   {
     AppMethodBeat.i(48771);
     super.onResume();
-    ad.i("AppBrandRedirectUI", "onResume");
-    if (!this.lBY)
+    ac.i("AppBrandRedirectUI", "onResume");
+    if (!this.mdU)
     {
-      this.lBY = true;
+      this.mdU = true;
       AppMethodBeat.o(48771);
       return;
     }
-    ad.i("AppBrandRedirectUI", "onResume, RESULT_CANCELED  finish activity");
+    ac.i("AppBrandRedirectUI", "onResume, RESULT_CANCELED  finish activity");
     setResult(0);
     finish();
     AppMethodBeat.o(48771);
@@ -122,7 +122,7 @@ public class AppBrandRedirectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandRedirectUI
  * JD-Core Version:    0.7.0.1
  */

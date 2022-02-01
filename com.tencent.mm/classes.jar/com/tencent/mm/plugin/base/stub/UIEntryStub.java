@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.booter.NotifyReceiver;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.model.az;
@@ -15,9 +15,9 @@ import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 
@@ -25,17 +25,17 @@ import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 public class UIEntryStub
   extends HellActivity
 {
-  private String IK;
-  private Intent doO;
-  private int mKl;
-  private boolean mKm;
+  private String JG;
+  private Intent dmw;
+  private int nmu;
+  private boolean nmv;
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22185);
     super.onCreate(paramBundle);
-    NotifyReceiver.Ty();
-    this.mKm = false;
+    NotifyReceiver.Us();
+    this.nmv = false;
     AppMethodBeat.o(22185);
   }
   
@@ -43,9 +43,9 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22186);
     super.onNewIntent(paramIntent);
-    this.doO = paramIntent;
-    ad.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.mKm) });
-    this.mKm = false;
+    this.dmw = paramIntent;
+    ac.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.nmv) });
+    this.nmv = false;
     AppMethodBeat.o(22186);
   }
   
@@ -53,10 +53,10 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22187);
     super.onResume();
-    if (this.doO == null) {
-      this.doO = getIntent();
+    if (this.dmw == null) {
+      this.dmw = getIntent();
     }
-    az.aeS().a(new bn(new bn.a()
+    az.agi().a(new bn(new bn.a()
     {
       public final void a(e paramAnonymouse)
       {
@@ -67,7 +67,7 @@ public class UIEntryStub
           AppMethodBeat.o(22180);
           return;
         }
-        ad.i("MicroMsg.UIEntryStub", "onResume mHasHandled: %b", new Object[] { Boolean.valueOf(UIEntryStub.a(UIEntryStub.this)) });
+        ac.i("MicroMsg.UIEntryStub", "onResume mHasHandled: %b", new Object[] { Boolean.valueOf(UIEntryStub.a(UIEntryStub.this)) });
         if (!UIEntryStub.a(UIEntryStub.this))
         {
           UIEntryStub.b(UIEntryStub.this);
@@ -87,7 +87,7 @@ public class UIEntryStub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.UIEntryStub
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.model;
 
 public abstract interface au
 {
-  public abstract void arI();
+  public abstract void ayA();
   
-  public abstract void arJ();
+  public abstract void ayB();
   
-  public abstract void arK();
+  public abstract void ayC();
   
-  public abstract void arL();
+  public abstract void ayz();
 }
 
 

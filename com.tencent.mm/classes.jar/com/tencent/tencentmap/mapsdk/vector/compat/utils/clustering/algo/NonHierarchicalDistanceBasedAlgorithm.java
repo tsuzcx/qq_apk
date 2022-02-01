@@ -34,20 +34,20 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
   
   static
   {
-    AppMethodBeat.i(190402);
+    AppMethodBeat.i(192221);
     f = new c(1.0D);
-    AppMethodBeat.o(190402);
+    AppMethodBeat.o(192221);
   }
   
   public NonHierarchicalDistanceBasedAlgorithm(Context paramContext)
   {
-    AppMethodBeat.i(190393);
+    AppMethodBeat.i(192212);
     this.b = 35;
     this.d = new ArrayList();
     this.e = new d(0.0D, 1.0D, 0.0D, 1.0D);
     this.a = paramContext.getApplicationContext();
     this.c = ((int)(this.a.getResources().getDisplayMetrics().density * this.b + 0.5F));
-    AppMethodBeat.o(190393);
+    AppMethodBeat.o(192212);
   }
   
   private double a(b paramb1, b paramb2)
@@ -57,51 +57,51 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
   
   private a a(b paramb, double paramDouble)
   {
-    AppMethodBeat.i(190401);
+    AppMethodBeat.i(192220);
     paramDouble /= 2.0D;
     paramb = new a(paramb.a - paramDouble, paramb.a + paramDouble, paramb.b - paramDouble, paramDouble + paramb.b);
-    AppMethodBeat.o(190401);
+    AppMethodBeat.o(192220);
     return paramb;
   }
   
   public void addItem(T arg1)
   {
-    AppMethodBeat.i(190395);
+    AppMethodBeat.i(192214);
     QuadItem localQuadItem = new QuadItem(???, null);
     synchronized (this.e)
     {
       this.d.add(localQuadItem);
       this.e.a(localQuadItem);
-      AppMethodBeat.o(190395);
+      AppMethodBeat.o(192214);
       return;
     }
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(190396);
+    AppMethodBeat.i(192215);
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
       addItem((ClusterItem)paramCollection.next());
     }
-    AppMethodBeat.o(190396);
+    AppMethodBeat.o(192215);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(190397);
+    AppMethodBeat.i(192216);
     synchronized (this.e)
     {
       this.d.clear();
       this.e.a();
-      AppMethodBeat.o(190397);
+      AppMethodBeat.o(192216);
       return;
     }
   }
   
   public Set<? extends Cluster<T>> getClusters(double paramDouble)
   {
-    AppMethodBeat.i(190399);
+    AppMethodBeat.i(192218);
     int i = (int)paramDouble;
     paramDouble = this.c / Math.pow(2.0D, i + 1) / 256.0D;
     HashSet localHashSet1 = new HashSet();
@@ -154,13 +154,13 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
       }
       localObject1.addAll((Collection)localObject2);
     }
-    AppMethodBeat.o(190399);
+    AppMethodBeat.o(192218);
     return localHashSet2;
   }
   
   public Collection<T> getItems()
   {
-    AppMethodBeat.i(190400);
+    AppMethodBeat.i(192219);
     ArrayList localArrayList = new ArrayList();
     synchronized (this.e)
     {
@@ -169,7 +169,7 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
         localArrayList.add(QuadItem.a((QuadItem)localIterator.next()));
       }
     }
-    AppMethodBeat.o(190400);
+    AppMethodBeat.o(192219);
     return localCollection;
   }
   
@@ -180,23 +180,23 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
   
   public void removeItem(T arg1)
   {
-    AppMethodBeat.i(190398);
+    AppMethodBeat.i(192217);
     QuadItem localQuadItem = new QuadItem(???, null);
     synchronized (this.e)
     {
       this.d.remove(localQuadItem);
       this.e.b(localQuadItem);
-      AppMethodBeat.o(190398);
+      AppMethodBeat.o(192217);
       return;
     }
   }
   
   public void setMaxDistanceAtZoom(int paramInt)
   {
-    AppMethodBeat.i(190394);
+    AppMethodBeat.i(192213);
     this.b = paramInt;
     this.c = ((int)(this.a.getResources().getDisplayMetrics().density * this.b + 0.5F));
-    AppMethodBeat.o(190394);
+    AppMethodBeat.o(192213);
   }
   
   static class QuadItem<T extends ClusterItem>
@@ -209,24 +209,24 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
     
     private QuadItem(T paramT)
     {
-      AppMethodBeat.i(190389);
+      AppMethodBeat.i(192208);
       this.a = paramT;
       this.c = paramT.getPosition();
       this.b = NonHierarchicalDistanceBasedAlgorithm.a().a(this.c);
       this.d = Collections.singleton(this.a);
-      AppMethodBeat.o(190389);
+      AppMethodBeat.o(192208);
     }
     
     public boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(190391);
+      AppMethodBeat.i(192210);
       if (!(paramObject instanceof QuadItem))
       {
-        AppMethodBeat.o(190391);
+        AppMethodBeat.o(192210);
         return false;
       }
       boolean bool = ((QuadItem)paramObject).a.equals(this.a);
-      AppMethodBeat.o(190391);
+      AppMethodBeat.o(192210);
       return bool;
     }
     
@@ -252,16 +252,16 @@ public class NonHierarchicalDistanceBasedAlgorithm<T extends ClusterItem>
     
     public int hashCode()
     {
-      AppMethodBeat.i(190390);
+      AppMethodBeat.i(192209);
       int i = this.a.hashCode();
-      AppMethodBeat.o(190390);
+      AppMethodBeat.o(192209);
       return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.algo.NonHierarchicalDistanceBasedAlgorithm
  * JD-Core Version:    0.7.0.1
  */

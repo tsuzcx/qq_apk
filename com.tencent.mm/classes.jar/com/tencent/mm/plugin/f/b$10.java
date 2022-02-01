@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 
@@ -21,13 +21,13 @@ final class b$10
   public final void run()
   {
     AppMethodBeat.i(22699);
-    if ((this.npD == null) || (this.npD.length == 0))
+    if ((this.nSD == null) || (this.nSD.length == 0))
     {
-      ad.e("MicroMsg.CalcWxService", "apkList is null or 0");
+      ac.e("MicroMsg.CalcWxService", "apkList is null or 0");
       AppMethodBeat.o(22699);
       return;
     }
-    e[] arrayOfe = this.npD;
+    e[] arrayOfe = this.nSD;
     int m = arrayOfe.length;
     int j = 0;
     int k = 0;
@@ -40,7 +40,7 @@ final class b$10
       Object localObject2;
       int i;
       if (locale.getName().endsWith(".temp")) {
-        if (bt.vM(locale.lastModified()) > 86400000L)
+        if (bs.Ap(locale.lastModified()) > 86400000L)
         {
           locale.delete();
           localObject1 = localObject4;
@@ -80,7 +80,7 @@ final class b$10
           localObject1 = localObject4;
           if (locale.getName().endsWith(".apk"))
           {
-            localObject1 = aj.getContext().getPackageManager().getPackageArchiveInfo(q.B(locale.fhU()), 128);
+            localObject1 = ai.getContext().getPackageManager().getPackageArchiveInfo(q.B(locale.fxV()), 128);
             if (localObject1 != null)
             {
               if ((((PackageInfo)localObject1).packageName != null) && (!((PackageInfo)localObject1).packageName.equals("com.tencent.mm")))
@@ -95,8 +95,8 @@ final class b$10
               if ((localObject1 != null) && (((ApplicationInfo)localObject1).metaData != null))
               {
                 i = ((ApplicationInfo)localObject1).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-                ad.d("MicroMsg.CalcWxService", "startCleanAPKFiles:%d, currentVersion;%d", new Object[] { Integer.valueOf(i), Integer.valueOf(d.CpK) });
-                if (i <= d.CpK)
+                ac.d("MicroMsg.CalcWxService", "startCleanAPKFiles:%d, currentVersion;%d", new Object[] { Integer.valueOf(i), Integer.valueOf(d.DIc) });
+                if (i <= d.DIc)
                 {
                   locale.delete();
                   i = k;

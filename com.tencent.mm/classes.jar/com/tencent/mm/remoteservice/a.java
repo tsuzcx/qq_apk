@@ -3,8 +3,8 @@ package com.tencent.mm.remoteservice;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
@@ -13,13 +13,13 @@ import java.util.List;
 public class a
   extends b.a
 {
-  protected RemoteService ELR;
-  public b ELS;
-  private final d fLo;
+  protected RemoteService Gjd;
+  public b Gje;
+  private final d fPa;
   
   public a(d paramd)
   {
-    this.fLo = paramd;
+    this.fPa = paramd;
   }
   
   public Object CLIENT_CALL(String paramString, Object... paramVarArgs)
@@ -28,7 +28,7 @@ public class a
     paramVarArgs = objectsToBundle(paramVarArgs);
     try
     {
-      this.ELS.onCallback(paramString, paramVarArgs, true);
+      this.Gje.onCallback(paramString, paramVarArgs, true);
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152736);
       return paramString;
@@ -37,7 +37,7 @@ public class a
     {
       for (;;)
       {
-        ad.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bt.m(paramString) });
+        ac.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bs.m(paramString) });
       }
     }
   }
@@ -45,16 +45,16 @@ public class a
   public Object REMOTE_CALL(final String paramString, final Object... paramVarArgs)
   {
     AppMethodBeat.i(152735);
-    if (this.fLo.isConnected())
+    if (this.fPa.isConnected())
     {
       paramVarArgs = objectsToBundle(paramVarArgs);
-      this.fLo.a(this, paramString, paramVarArgs);
+      this.fPa.a(this, paramString, paramVarArgs);
       paramVarArgs.setClassLoader(getClass().getClassLoader());
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152735);
       return paramString;
     }
-    this.fLo.connect(new Runnable()
+    this.fPa.connect(new Runnable()
     {
       public final void run()
       {
@@ -116,7 +116,7 @@ public class a
   public void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(152734);
-    ad.d("MicroMsg.BaseClientRequest", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
+    ac.d("MicroMsg.BaseClientRequest", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
@@ -155,7 +155,7 @@ public class a
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bt.m(paramString) });
+        ac.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bs.m(paramString) });
         AppMethodBeat.o(152734);
         return;
       }
@@ -168,7 +168,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.remoteservice.a
  * JD-Core Version:    0.7.0.1
  */

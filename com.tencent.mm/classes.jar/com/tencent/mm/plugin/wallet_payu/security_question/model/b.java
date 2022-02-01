@@ -9,18 +9,18 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String AAY;
-  public String dpw;
+  public String BTt;
+  public String dnh;
   public String id;
-  public boolean pNR;
-  public String teH;
+  public boolean qwz;
+  public String umW;
   
   public b(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(72209);
     this.id = paramString2;
-    this.teH = paramString3;
-    this.dpw = paramString1;
+    this.umW = paramString3;
+    this.dnh = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("id", paramString2);
     localHashMap.put("answer", paramString3);
@@ -29,7 +29,7 @@ public final class b
     AppMethodBeat.o(72209);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 18;
   }
@@ -37,8 +37,8 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72210);
-    this.pNR = paramJSONObject.optBoolean("verified");
-    this.AAY = paramJSONObject.optString("payu_reference");
+    this.qwz = paramJSONObject.optBoolean("verified");
+    this.BTt = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72210);
   }
 }

@@ -5,8 +5,8 @@ public abstract interface d
 {
   public static final class b
   {
-    public int Ivy;
-    public boolean dAy;
+    public int JXh;
+    public boolean dyk;
   }
 }
 

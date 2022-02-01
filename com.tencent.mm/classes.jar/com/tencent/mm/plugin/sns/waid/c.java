@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.sns.waid;
 public abstract interface c
   extends d
 {
-  public abstract String dEx();
+  public abstract String dSW();
   
-  public abstract String dEy();
+  public abstract String dSX();
 }
 
 

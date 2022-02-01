@@ -10,8 +10,8 @@ import com.tencent.mm.plugin.brandservice.ui.timeline.c;
 public class j
   extends n
 {
-  public LinearLayout mZA;
-  public LinearLayout mZB;
+  public LinearLayout nBY;
+  public LinearLayout nBZ;
   
   public final void a(View paramView, c paramc)
   {
@@ -20,27 +20,27 @@ public class j
     AppMethodBeat.o(5999);
   }
   
-  public final void bDa()
+  public final void bKj()
   {
     AppMethodBeat.i(6000);
-    if (this.mYI == null)
+    if (this.nBh == null)
     {
       AppMethodBeat.o(6000);
       return;
     }
-    this.frr = ((ImageView)this.mYI.findViewById(2131297008));
-    this.mZh = ((TextView)this.mYI.findViewById(2131302860));
-    this.nar = this.mYI.findViewById(2131297371);
-    this.fwS = ((TextView)this.mYI.findViewById(2131305822));
-    this.naq = this.mYI.findViewById(2131297276);
-    this.mZA = ((LinearLayout)this.mYI.findViewById(2131297356));
-    this.mZB = ((LinearLayout)this.mYI.findViewById(2131297346));
+    this.fuY = ((ImageView)this.nBh.findViewById(2131297008));
+    this.nBF = ((TextView)this.nBh.findViewById(2131302860));
+    this.nCP = this.nBh.findViewById(2131297371);
+    this.fAz = ((TextView)this.nBh.findViewById(2131305822));
+    this.nCO = this.nBh.findViewById(2131297276);
+    this.nBY = ((LinearLayout)this.nBh.findViewById(2131297356));
+    this.nBZ = ((LinearLayout)this.nBh.findViewById(2131297346));
     AppMethodBeat.o(6000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.j
  * JD-Core Version:    0.7.0.1
  */

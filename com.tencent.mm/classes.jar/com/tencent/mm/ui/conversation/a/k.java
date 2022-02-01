@@ -9,46 +9,46 @@ import com.tencent.mm.model.bh;
 import com.tencent.mm.model.bh.b;
 import com.tencent.mm.pluginsdk.ui.b.a;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class k
   extends b
 {
-  LinearLayout HgX;
+  LinearLayout IHq;
   
   public k(final Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38799);
-    this.HgX = null;
-    this.HgX = new LinearLayout(paramContext);
-    this.HgX.setVisibility(8);
-    bh.asb().gNE = new bh.b()
+    this.IHq = null;
+    this.IHq = new LinearLayout(paramContext);
+    this.IHq.setVisibility(8);
+    bh.ayS().hoe = new bh.b()
     {
       public final void onNotify()
       {
         AppMethodBeat.i(38798);
-        k.this.HgX.post(new Runnable()
+        k.this.IHq.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(38797);
-            if (k.this.HgX != null)
+            if (k.this.IHq != null)
             {
-              k.this.HgX.setVisibility(8);
-              k.this.HgX.removeAllViews();
+              k.this.IHq.setVisibility(8);
+              k.this.IHq.removeAllViews();
             }
-            a locala = e.a(k.1.this.val$context, e.a.HgG, null);
+            a locala = e.a(k.1.this.val$context, e.a.IGZ, null);
             Object localObject = locala;
             if (locala == null) {
-              localObject = e.a(k.1.this.val$context, e.a.Hgx, null);
+              localObject = e.a(k.1.this.val$context, e.a.IGQ, null);
             }
             if ((localObject != null) && (((a)localObject).getView() != null))
             {
-              ad.i("MicroMsg.MainFrameAndAbtestBanner", "summerinit MainFrameBannerStorage onNotify banner[%s], view[%s]", new Object[] { localObject, ((a)localObject).getView() });
-              k.this.HgX.setVisibility(0);
+              ac.i("MicroMsg.MainFrameAndAbtestBanner", "summerinit MainFrameBannerStorage onNotify banner[%s], view[%s]", new Object[] { localObject, ((a)localObject).getView() });
+              k.this.IHq.setVisibility(0);
               localObject = ((a)localObject).getView();
-              k.this.HgX.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2));
+              k.this.IHq.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2));
             }
             AppMethodBeat.o(38797);
           }
@@ -56,14 +56,14 @@ public final class k
         AppMethodBeat.o(38798);
       }
     };
-    bh.asb().gNE.onNotify();
+    bh.ayS().hoe.onNotify();
     AppMethodBeat.o(38799);
   }
   
-  public final boolean boZ()
+  public final boolean bvU()
   {
     AppMethodBeat.i(38800);
-    if ((this.HgX != null) && (this.HgX.getVisibility() == 0))
+    if ((this.IHq != null) && (this.IHq.getVisibility() == 0))
     {
       AppMethodBeat.o(38800);
       return true;
@@ -75,7 +75,7 @@ public final class k
   public final void destroy()
   {
     AppMethodBeat.i(38801);
-    bh.asb().gNE = null;
+    bh.ayS().hoe = null;
     AppMethodBeat.o(38801);
   }
   
@@ -86,12 +86,12 @@ public final class k
   
   public final View getView()
   {
-    return this.HgX;
+    return this.IHq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.k
  * JD-Core Version:    0.7.0.1
  */

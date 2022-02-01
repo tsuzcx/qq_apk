@@ -21,17 +21,17 @@ import java.util.List;
 public final class r
   extends a
 {
-  List<k> buB;
-  private l wZJ;
-  private v xbl;
-  private CustomScrollView xbm;
+  List<k> bsA;
+  private l ymw;
+  private v yoa;
+  private CustomScrollView yob;
   
   public r(Context paramContext, v paramv, ViewGroup paramViewGroup)
   {
     super(paramContext, paramv, paramViewGroup);
     AppMethodBeat.i(96563);
-    this.xbl = paramv;
-    this.buB = new ArrayList();
+    this.yoa = paramv;
+    this.bsA = new ArrayList();
     AppMethodBeat.o(96563);
   }
   
@@ -39,46 +39,72 @@ public final class r
   {
     AppMethodBeat.i(96572);
     if ((paramx instanceof v)) {
-      this.xbl = ((v)paramx);
+      this.yoa = ((v)paramx);
     }
     super.a(paramx);
     AppMethodBeat.o(96572);
   }
   
-  public final void dvA()
+  public final void dJX()
   {
-    AppMethodBeat.i(96567);
-    Iterator localIterator = this.buB.iterator();
+    AppMethodBeat.i(96570);
+    super.dJX();
+    Iterator localIterator = this.bsA.iterator();
     while (localIterator.hasNext()) {
-      ((k)localIterator.next()).dvA();
+      ((k)localIterator.next()).dJX();
     }
-    super.dvA();
-    AppMethodBeat.o(96567);
+    AppMethodBeat.o(96570);
   }
   
-  public final void dvB()
+  public final void dJY()
   {
-    AppMethodBeat.i(96568);
-    Iterator localIterator = this.buB.iterator();
+    AppMethodBeat.i(96566);
+    Iterator localIterator = this.bsA.iterator();
     while (localIterator.hasNext())
     {
       k localk = (k)localIterator.next();
-      if (localk.dwd()) {
-        localk.dvB();
+      if (localk.dKC()) {
+        localk.dJY();
       }
     }
-    super.dvB();
+    super.dJY();
+    AppMethodBeat.o(96566);
+  }
+  
+  public final void dJZ()
+  {
+    AppMethodBeat.i(96567);
+    Iterator localIterator = this.bsA.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).dJZ();
+    }
+    super.dJZ();
+    AppMethodBeat.o(96567);
+  }
+  
+  public final void dKa()
+  {
+    AppMethodBeat.i(96568);
+    Iterator localIterator = this.bsA.iterator();
+    while (localIterator.hasNext())
+    {
+      k localk = (k)localIterator.next();
+      if (localk.dKC()) {
+        localk.dKa();
+      }
+    }
+    super.dKa();
     AppMethodBeat.o(96568);
   }
   
-  protected final void dvN()
+  protected final void dKm()
   {
     AppMethodBeat.i(96564);
-    if (this.wZJ == null)
+    if (this.ymw == null)
     {
-      this.wZJ = new l(this.xbl.buB, this.context, this.xbm);
-      this.wZJ.layout();
-      this.buB = dvV();
+      this.ymw = new l(this.yoa.bsA, this.context, this.yob);
+      this.ymw.layout();
+      this.bsA = dKu();
     }
     for (;;)
     {
@@ -86,110 +112,84 @@ public final class r
       {
         ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
         if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
+          ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.ymQ.paddingLeft, (int)this.ymQ.paddingTop, (int)this.ymQ.paddingRight, (int)this.ymQ.paddingBottom);
         }
         this.contentView.setLayoutParams(localLayoutParams);
       }
       AppMethodBeat.o(96564);
       return;
-      this.wZJ.fw(this.xbl.buB);
+      this.ymw.fE(this.yoa.bsA);
     }
   }
   
-  protected final View dvQ()
+  protected final View dKp()
   {
     AppMethodBeat.i(96565);
     RoundedCornerFrameLayout localRoundedCornerFrameLayout = new RoundedCornerFrameLayout(this.context);
-    this.xbm = new CustomScrollView(this.context);
-    this.xbm.setOverScrollMode(2);
-    this.xbm.setHorizontalScrollBarEnabled(false);
-    this.xbm.setVerticalScrollBarEnabled(false);
-    this.xbm.setOnScrollChangeListener(new CustomScrollView.a()
+    this.yob = new CustomScrollView(this.context);
+    this.yob.setOverScrollMode(2);
+    this.yob.setHorizontalScrollBarEnabled(false);
+    this.yob.setVerticalScrollBarEnabled(false);
+    this.yob.setOnScrollChangeListener(new CustomScrollView.a()
     {
       public final void a(ScrollView paramAnonymousScrollView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(96562);
-        paramAnonymousScrollView = r.this.buB.iterator();
+        paramAnonymousScrollView = r.this.bsA.iterator();
         while (paramAnonymousScrollView.hasNext())
         {
           k localk = (k)paramAnonymousScrollView.next();
-          if (localk.dwd())
+          if (localk.dKC())
           {
-            localk.dvz();
-            localk.dvB();
+            localk.dJY();
+            localk.dKa();
           }
           else
           {
-            localk.dvA();
+            localk.dJZ();
           }
         }
         AppMethodBeat.o(96562);
       }
     });
     localRoundedCornerFrameLayout.setBackgroundColor(this.backgroundColor);
-    localRoundedCornerFrameLayout.addView(this.xbm);
-    localRoundedCornerFrameLayout.setRadius(this.xbl.eN);
+    localRoundedCornerFrameLayout.addView(this.yob);
+    localRoundedCornerFrameLayout.setRadius(this.yoa.fO);
     AppMethodBeat.o(96565);
     return localRoundedCornerFrameLayout;
   }
   
-  public final void dvU()
+  public final void dKt()
   {
     AppMethodBeat.i(96569);
-    Iterator localIterator = this.buB.iterator();
+    Iterator localIterator = this.bsA.iterator();
     while (localIterator.hasNext())
     {
       k localk = (k)localIterator.next();
-      if (localk.dwd())
+      if (localk.dKC())
       {
-        localk.dvz();
-        localk.dvB();
+        localk.dJY();
+        localk.dKa();
       }
       else
       {
-        localk.dvA();
+        localk.dJZ();
       }
     }
     AppMethodBeat.o(96569);
   }
   
-  public final List<k> dvV()
+  public final List<k> dKu()
   {
     AppMethodBeat.i(96571);
-    ArrayList localArrayList = new ArrayList(this.wZJ.dwO());
+    ArrayList localArrayList = new ArrayList(this.ymw.dLn());
     AppMethodBeat.o(96571);
     return localArrayList;
-  }
-  
-  public final void dvy()
-  {
-    AppMethodBeat.i(96570);
-    super.dvy();
-    Iterator localIterator = this.buB.iterator();
-    while (localIterator.hasNext()) {
-      ((k)localIterator.next()).dvy();
-    }
-    AppMethodBeat.o(96570);
-  }
-  
-  public final void dvz()
-  {
-    AppMethodBeat.i(96566);
-    Iterator localIterator = this.buB.iterator();
-    while (localIterator.hasNext())
-    {
-      k localk = (k)localIterator.next();
-      if (localk.dwd()) {
-        localk.dvz();
-      }
-    }
-    super.dvz();
-    AppMethodBeat.o(96566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.r
  * JD-Core Version:    0.7.0.1
  */

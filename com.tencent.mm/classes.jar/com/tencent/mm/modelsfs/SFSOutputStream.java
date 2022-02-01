@@ -1,21 +1,21 @@
 package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class SFSOutputStream
   extends OutputStream
 {
-  private StackTraceElement[] hre;
+  private StackTraceElement[] hRG;
   private long mNativePtr;
   
   public SFSOutputStream(long paramLong)
   {
     AppMethodBeat.i(156032);
     this.mNativePtr = paramLong;
-    this.hre = Thread.currentThread().getStackTrace();
+    this.hRG = Thread.currentThread().getStackTrace();
     AppMethodBeat.o(156032);
   }
   
@@ -47,7 +47,7 @@ public class SFSOutputStream
     if (this.mNativePtr != 0L)
     {
       StringBuilder localStringBuilder = new StringBuilder("SFSOutputStream leaked:\n");
-      StackTraceElement[] arrayOfStackTraceElement = this.hre;
+      StackTraceElement[] arrayOfStackTraceElement = this.hRG;
       int j = arrayOfStackTraceElement.length;
       int i = 0;
       while (i < j)
@@ -55,7 +55,7 @@ public class SFSOutputStream
         localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append('\n');
         i += 1;
       }
-      ad.e("MicroMsg.SFSOutputStream", localStringBuilder.toString());
+      ac.e("MicroMsg.SFSOutputStream", localStringBuilder.toString());
       close();
     }
     super.finalize();
@@ -108,7 +108,7 @@ public class SFSOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsfs.SFSOutputStream
  * JD-Core Version:    0.7.0.1
  */

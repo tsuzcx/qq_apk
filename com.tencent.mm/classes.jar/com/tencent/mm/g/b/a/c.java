@@ -2,89 +2,89 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
   extends a
 {
-  public long dFl = 0L;
-  private long dFm = 0L;
-  public long dFn = 0L;
-  public long dFo = 0L;
-  public long dFp = 0L;
-  public long dFq = 0L;
+  public long dCY = 0L;
+  private long dCZ = 0L;
+  public long dDa = 0L;
+  public long dDb = 0L;
+  public long dDc = 0L;
+  public long dDd = 0L;
   
-  public final String PV()
+  public final String PR()
   {
     AppMethodBeat.i(19855);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFl);
+    ((StringBuffer)localObject).append(this.dCY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFm);
+    ((StringBuffer)localObject).append(this.dCZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFn);
+    ((StringBuffer)localObject).append(this.dDa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFo);
+    ((StringBuffer)localObject).append(this.dDb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFp);
+    ((StringBuffer)localObject).append(this.dDc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFq);
+    ((StringBuffer)localObject).append(this.dDd);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
+    arz((String)localObject);
     AppMethodBeat.o(19855);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
     AppMethodBeat.i(19856);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("FirstInputTimeStampMs:").append(this.dFl);
+    ((StringBuffer)localObject).append("FirstInputTimeStampMs:").append(this.dCY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LastInputTimeStampMs:").append(this.dFm);
+    ((StringBuffer)localObject).append("LastInputTimeStampMs:").append(this.dCZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SendStampMs:").append(this.dFn);
+    ((StringBuffer)localObject).append("SendStampMs:").append(this.dDa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickCount:").append(this.dFo);
+    ((StringBuffer)localObject).append("ClickCount:").append(this.dDb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TextLength:").append(this.dFp);
+    ((StringBuffer)localObject).append("TextLength:").append(this.dDc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EmojiCount:").append(this.dFq);
+    ((StringBuffer)localObject).append("EmojiCount:").append(this.dDd);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(19856);
     return localObject;
   }
   
-  public final c PX()
+  public final c PT()
   {
     AppMethodBeat.i(19852);
-    c localc = bq(bt.eGO());
+    c localc = bn(bs.eWj());
     AppMethodBeat.o(19852);
     return localc;
   }
   
-  public final c PY()
+  public final c PU()
   {
     AppMethodBeat.i(19854);
-    c localc = br(bt.eGO());
+    c localc = bo(bs.eWj());
     AppMethodBeat.o(19854);
     return localc;
   }
   
-  public final c bq(long paramLong)
+  public final c bn(long paramLong)
   {
     AppMethodBeat.i(19851);
-    this.dFl = paramLong;
-    super.bb("FirstInputTimeStampMs", this.dFl);
+    this.dCY = paramLong;
+    super.bd("FirstInputTimeStampMs", this.dCY);
     AppMethodBeat.o(19851);
     return this;
   }
   
-  public final c br(long paramLong)
+  public final c bo(long paramLong)
   {
     AppMethodBeat.i(19853);
-    this.dFm = paramLong;
-    super.bb("LastInputTimeStampMs", this.dFm);
+    this.dCZ = paramLong;
+    super.bd("LastInputTimeStampMs", this.dCZ);
     AppMethodBeat.o(19853);
     return this;
   }

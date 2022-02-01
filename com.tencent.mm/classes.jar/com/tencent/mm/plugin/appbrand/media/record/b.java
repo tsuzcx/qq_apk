@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public int kvZ;
+  public int kXn;
   
   static
   {
     AppMethodBeat.i(146318);
-    kQv = new b("AUTO", 0, 0);
-    kQw = new b("MIC", 1, 1);
-    kQx = new b("CAMCORDER", 2, 5);
-    kQy = new b("VOICE_RECOGNITION", 3, 6);
-    kQz = new b("VOICE_COMMUNICATION", 4, 7);
-    kQA = new b("UNPROCESSED", 5, 9);
-    kQB = new b[] { kQv, kQw, kQx, kQy, kQz, kQA };
+    lrU = new b("AUTO", 0, 0);
+    lrV = new b("MIC", 1, 1);
+    lrW = new b("CAMCORDER", 2, 5);
+    lrX = new b("VOICE_RECOGNITION", 3, 6);
+    lrY = new b("VOICE_COMMUNICATION", 4, 7);
+    lrZ = new b("UNPROCESSED", 5, 9);
+    lsa = new b[] { lrU, lrV, lrW, lrX, lrY, lrZ };
     AppMethodBeat.o(146318);
   }
   
   private b(int paramInt)
   {
-    this.kvZ = paramInt;
+    this.kXn = paramInt;
   }
   
   public static b a(String paramString, b paramb)
@@ -55,7 +55,7 @@ public enum b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.b
  * JD-Core Version:    0.7.0.1
  */

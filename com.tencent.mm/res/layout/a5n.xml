@@ -9,9 +9,9 @@
         <android.support.v7.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/c5z" android:layout_width="fill_parent" android:layout_height="@dimen/ch" />
         <FrameLayout android:id="@id/c5q" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
             <TextView android:textSize="@dimen/ia" android:textColor="@color/a_x" android:gravity="center" android:layout_gravity="start" android:id="@id/bg7" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ry" />
-            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/hsa" android:layout_width="wrap_content" android:layout_height="fill_parent">
-                <CheckBox android:id="@id/hs_" android:background="@drawable/yp" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
-                <TextView android:textSize="@dimen/ia" android:textColor="@color/a_x" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ci" android:text="@string/hki" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/hw6" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <CheckBox android:id="@id/hw5" android:background="@drawable/yp" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/a_x" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ci" android:text="@string/hkw" />
             </LinearLayout>
             <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:gravity="center" android:layout_gravity="end|center" android:id="@id/eh9" android:background="@drawable/a5y" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginEnd="@dimen/c5" />
         </FrameLayout>

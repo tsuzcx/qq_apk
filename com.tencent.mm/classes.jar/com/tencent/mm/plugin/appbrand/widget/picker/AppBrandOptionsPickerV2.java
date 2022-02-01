@@ -6,14 +6,14 @@ import android.support.annotation.Keep;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class AppBrandOptionsPickerV2
   extends YANumberPicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.n.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<String>
 {
-  private String[] mip;
-  private int mir;
+  private String[] mKp;
+  private int mKr;
   
   @Keep
   public AppBrandOptionsPickerV2(Context paramContext)
@@ -40,15 +40,15 @@ public class AppBrandOptionsPickerV2
   public void onHide(c paramc)
   {
     AppMethodBeat.i(138029);
-    buw();
+    bBt();
     AppMethodBeat.o(138029);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138028);
-    if (this.mir > 0) {
-      paramInt1 = View.MeasureSpec.makeMeasureSpec(this.mir, 1073741824);
+    if (this.mKr > 0) {
+      paramInt1 = View.MeasureSpec.makeMeasureSpec(this.mKr, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(138028);
@@ -58,7 +58,7 @@ public class AppBrandOptionsPickerV2
   
   public final void setForceWidth(int paramInt)
   {
-    this.mir = paramInt;
+    this.mKr = paramInt;
   }
   
   public final void setOptionsArray(String[] paramArrayOfString)
@@ -73,7 +73,7 @@ public class AppBrandOptionsPickerV2
     }
     setEnabled(true);
     setVisibility(0);
-    this.mip = paramArrayOfString;
+    this.mKp = paramArrayOfString;
     int i = getMinValue();
     int j = getMaxValue();
     int k = paramArrayOfString.length - 1;
@@ -91,7 +91,7 @@ public class AppBrandOptionsPickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPickerV2
  * JD-Core Version:    0.7.0.1
  */

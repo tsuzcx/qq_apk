@@ -13,58 +13,58 @@ public abstract class bi
     super((byte)0);
   }
   
-  public final boolean fBT()
+  public final h fQN()
   {
-    return fJX().fBT();
+    return gcA().fQN();
   }
   
-  public final List<av> fIT()
+  public final g fQj()
   {
-    return fJX().fIT();
+    return gcA().fQj();
   }
   
-  public final at fIW()
+  public final boolean fUx()
   {
-    return fJX().fIW();
+    return gcA().fUx();
   }
   
-  public boolean fJM()
+  public final List<av> gbw()
+  {
+    return gcA().gbw();
+  }
+  
+  public final at gbz()
+  {
+    return gcA().gbz();
+  }
+  
+  protected abstract ab gcA();
+  
+  public boolean gcp()
   {
     return true;
   }
   
-  public final bg fJW()
+  public final bg gcz()
   {
-    for (ab localab = fJX(); (localab instanceof bi); localab = ((bi)localab).fJX()) {}
+    for (ab localab = gcA(); (localab instanceof bi); localab = ((bi)localab).gcA()) {}
     if (localab == null) {
       throw new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.UnwrappedType");
     }
     return (bg)localab;
   }
   
-  protected abstract ab fJX();
-  
-  public final g fxF()
-  {
-    return fJX().fxF();
-  }
-  
-  public final h fyj()
-  {
-    return fJX().fyj();
-  }
-  
   public String toString()
   {
-    if (fJM()) {
-      return fJX().toString();
+    if (gcp()) {
+      return gcA().toString();
     }
     return "<Not computed yet>";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.bi
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ import android.widget.TimePicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.notification.PluginNotification;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -24,22 +24,22 @@ public class SettingsActiveTimeUI
   extends MMPreference
 {
   private boolean isActive;
-  private Preference myh;
-  private Preference myi;
+  private Preference nai;
+  private Preference naj;
   private com.tencent.mm.ui.base.preference.f screen;
-  private int wgf;
-  private int wgg;
-  private int wgh;
-  private int wgi;
-  private boolean wgj;
-  private final TimePickerDialog.OnTimeSetListener wgk;
+  private final TimePickerDialog.OnTimeSetListener xrA;
+  private int xrv;
+  private int xrw;
+  private int xrx;
+  private int xry;
+  private boolean xrz;
   
   public SettingsActiveTimeUI()
   {
     AppMethodBeat.i(74088);
-    this.wgj = false;
+    this.xrz = false;
     this.isActive = false;
-    this.wgk = new TimePickerDialog.OnTimeSetListener()
+    this.xrA = new TimePickerDialog.OnTimeSetListener()
     {
       public final void onTimeSet(TimePicker paramAnonymousTimePicker, int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -64,21 +64,21 @@ public class SettingsActiveTimeUI
     AppMethodBeat.o(74088);
   }
   
-  private static String f(Context paramContext, int paramInt1, int paramInt2)
+  private static String h(Context paramContext, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74094);
-    String str1 = ac.g(paramContext.getSharedPreferences(aj.eFD(), 0));
-    String str2 = ac.eFu();
+    String str1 = ab.g(paramContext.getSharedPreferences(ai.eUX(), 0));
+    String str2 = ab.eUO();
     if ((!str1.equalsIgnoreCase("zh_CN")) && ((!str1.equalsIgnoreCase("language_default")) || (!"zh_CN".equalsIgnoreCase(str2))))
     {
-      paramContext = DateFormat.getTimeInstance(3, ac.aFt(str1)).format(new Time(paramInt1, paramInt2, 0));
+      paramContext = DateFormat.getTimeInstance(3, ab.aKK(str1)).format(new Time(paramInt1, paramInt2, 0));
       AppMethodBeat.o(74094);
       return paramContext;
     }
     if (paramInt1 > 12) {}
     for (int i = paramInt1 - 12;; i = paramInt1)
     {
-      paramContext = com.tencent.mm.pluginsdk.g.h.t(paramContext, paramInt1 * 3600000L + paramInt2 * 60000L) + String.format("%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
+      paramContext = com.tencent.mm.pluginsdk.g.h.u(paramContext, paramInt1 * 3600000L + paramInt2 * 60000L) + String.format("%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(74094);
       return paramContext;
     }
@@ -94,34 +94,34 @@ public class SettingsActiveTimeUI
     AppMethodBeat.i(74090);
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(2131951724);
-    this.myi = this.screen.aKk("settings_active_begin_time");
-    this.wgf = com.tencent.mm.m.f.YB();
-    this.wgg = com.tencent.mm.m.f.YD();
-    this.myi.setSummary(f(this, this.wgf, this.wgg));
-    this.myh = this.screen.aKk("settings_active_end_time");
-    this.wgh = com.tencent.mm.m.f.YA();
-    this.wgi = com.tencent.mm.m.f.YC();
-    this.myh.setSummary(f(this, this.wgh, this.wgi));
+    this.naj = this.screen.aPN("settings_active_begin_time");
+    this.xrv = com.tencent.mm.m.f.Zy();
+    this.xrw = com.tencent.mm.m.f.ZA();
+    this.naj.setSummary(h(this, this.xrv, this.xrw));
+    this.nai = this.screen.aPN("settings_active_end_time");
+    this.xrx = com.tencent.mm.m.f.Zx();
+    this.xry = com.tencent.mm.m.f.Zz();
+    this.nai.setSummary(h(this, this.xrx, this.xry));
     boolean bool;
-    if (!com.tencent.mm.m.f.Yz())
+    if (!com.tencent.mm.m.f.Zw())
     {
       bool = true;
       this.isActive = bool;
-      ((CheckBoxPreference)this.screen.aKk("settings_active_silence_time")).lG = this.isActive;
+      ((CheckBoxPreference)this.screen.aPN("settings_active_silence_time")).mF = this.isActive;
       if (!this.isActive) {
         break label258;
       }
-      this.myi.setEnabled(true);
-      this.myh.setEnabled(true);
+      this.naj.setEnabled(true);
+      this.nai.setEnabled(true);
     }
     for (;;)
     {
       if (!this.isActive)
       {
-        this.screen.d(this.myi);
-        this.screen.d(this.myh);
+        this.screen.d(this.naj);
+        this.screen.d(this.nai);
       }
-      this.screen.cE("settings_active_time_full", true);
+      this.screen.cK("settings_active_time_full", true);
       this.screen.notifyDataSetChanged();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
@@ -139,8 +139,8 @@ public class SettingsActiveTimeUI
       bool = false;
       break;
       label258:
-      this.myi.setEnabled(false);
-      this.myh.setEnabled(false);
+      this.naj.setEnabled(false);
+      this.nai.setEnabled(false);
     }
   }
   
@@ -163,13 +163,13 @@ public class SettingsActiveTimeUI
       AppMethodBeat.o(74092);
       return null;
     }
-    if (this.wgj)
+    if (this.xrz)
     {
-      localTimePickerDialog = new TimePickerDialog(getContext(), this.wgk, this.wgf, this.wgg, false);
+      localTimePickerDialog = new TimePickerDialog(getContext(), this.xrA, this.xrv, this.xrw, false);
       AppMethodBeat.o(74092);
       return localTimePickerDialog;
     }
-    TimePickerDialog localTimePickerDialog = new TimePickerDialog(getContext(), this.wgk, this.wgh, this.wgi, false);
+    TimePickerDialog localTimePickerDialog = new TimePickerDialog(getContext(), this.xrA, this.xrx, this.xry, false);
     AppMethodBeat.o(74092);
     return localTimePickerDialog;
   }
@@ -178,7 +178,7 @@ public class SettingsActiveTimeUI
   {
     AppMethodBeat.i(74095);
     super.onDestroy();
-    ax.ng(2);
+    ax.nU(2);
     AppMethodBeat.o(74095);
   }
   
@@ -187,28 +187,28 @@ public class SettingsActiveTimeUI
     AppMethodBeat.i(74091);
     if (paramPreference.mKey.equals("settings_active_begin_time"))
     {
-      this.wgj = true;
+      this.xrz = true;
       showDialog(1);
       AppMethodBeat.o(74091);
       return true;
     }
     if (paramPreference.mKey.equals("settings_active_end_time"))
     {
-      this.wgj = false;
+      this.xrz = false;
       showDialog(1);
       AppMethodBeat.o(74091);
       return true;
     }
     if (paramPreference.mKey.equals("settings_active_silence_time"))
     {
-      paramf = (CheckBoxPreference)this.screen.aKk("settings_active_silence_time");
+      paramf = (CheckBoxPreference)this.screen.aPN("settings_active_silence_time");
       boolean bool;
       if (!paramf.isChecked())
       {
         bool = true;
-        com.tencent.mm.m.f.cY(bool);
+        com.tencent.mm.m.f.cX(bool);
         PluginNotification.createActiveTimeNotification();
-        paramPreference = com.tencent.mm.plugin.report.service.h.vKh;
+        paramPreference = com.tencent.mm.plugin.report.service.h.wUl;
         if (!paramf.isChecked()) {
           break label167;
         }
@@ -237,13 +237,13 @@ public class SettingsActiveTimeUI
       AppMethodBeat.o(74093);
       return;
     }
-    if (this.wgj)
+    if (this.xrz)
     {
-      ((TimePickerDialog)paramDialog).updateTime(this.wgf, this.wgg);
+      ((TimePickerDialog)paramDialog).updateTime(this.xrv, this.xrw);
       AppMethodBeat.o(74093);
       return;
     }
-    ((TimePickerDialog)paramDialog).updateTime(this.wgh, this.wgi);
+    ((TimePickerDialog)paramDialog).updateTime(this.xrx, this.xry);
     AppMethodBeat.o(74093);
   }
   
@@ -255,7 +255,7 @@ public class SettingsActiveTimeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsActiveTimeUI
  * JD-Core Version:    0.7.0.1
  */

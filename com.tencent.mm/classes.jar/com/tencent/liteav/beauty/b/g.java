@@ -1,18 +1,19 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
 public class g
-  extends com.tencent.liteav.basic.d.g
+  extends h
 {
-  protected List<com.tencent.liteav.basic.d.g> r;
-  protected List<com.tencent.liteav.basic.d.g> s;
+  protected List<h> r;
+  protected List<h> s;
   private int[] t;
   private int[] u;
-  private com.tencent.liteav.basic.d.g v;
+  private h v;
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -23,10 +24,10 @@ public class g
     int i = 0;
     if (j < k)
     {
-      com.tencent.liteav.basic.d.g localg = (com.tencent.liteav.basic.d.g)this.s.get(j);
+      h localh = (h)this.s.get(j);
       if (i != 0)
       {
-        paramInt1 = localg.a(paramInt1, paramInt2, paramInt3);
+        paramInt1 = localh.a(paramInt1, paramInt2, paramInt3);
         label64:
         if (i == 0) {
           break label103;
@@ -37,7 +38,7 @@ public class g
       {
         j += 1;
         break;
-        paramInt1 = localg.a(paramInt1, this.t[0], this.u[0]);
+        paramInt1 = localh.a(paramInt1, this.t[0], this.u[0]);
         break label64;
       }
     }
@@ -64,7 +65,7 @@ public class g
     int i = 0;
     while (i < j)
     {
-      ((com.tencent.liteav.basic.d.g)this.s.get(i)).a(paramInt1, paramInt2);
+      ((h)this.s.get(i)).a(paramInt1, paramInt2);
       i += 1;
     }
     this.v.a(paramInt1, paramInt2);
@@ -102,15 +103,15 @@ public class g
     if (bool2)
     {
       Iterator localIterator = this.r.iterator();
-      com.tencent.liteav.basic.d.g localg;
+      h localh;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localg = (com.tencent.liteav.basic.d.g)localIterator.next();
-        localg.a();
-      } while (localg.m());
+        localh = (h)localIterator.next();
+        localh.a();
+      } while (localh.m());
       bool1 = this.v.a();
     }
     if ((bool1) && (GLES20.glGetError() == 0))
@@ -128,7 +129,7 @@ public class g
     super.e();
     Iterator localIterator = this.r.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.liteav.basic.d.g)localIterator.next()).d();
+      ((h)localIterator.next()).d();
     }
     AppMethodBeat.o(15094);
   }

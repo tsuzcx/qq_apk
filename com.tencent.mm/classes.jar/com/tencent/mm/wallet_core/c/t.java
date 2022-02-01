@@ -1,21 +1,21 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.bzt;
-import com.tencent.mm.protocal.protobuf.bzu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cer;
+import com.tencent.mm.protocal.protobuf.ces;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class t
   extends w
 {
   private g callback;
-  private com.tencent.mm.al.b rr;
+  private com.tencent.mm.ak.b rr;
   
   public t(String paramString)
   {
@@ -26,29 +26,29 @@ public final class t
   {
     AppMethodBeat.i(72794);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bzt();
-    ((b.a)localObject).gUV = new bzu();
+    ((b.a)localObject).hvt = new cer();
+    ((b.a)localObject).hvu = new ces();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/paysubscribe";
     ((b.a)localObject).funcId = 421;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.aNn(paramString2);
-    this.rr = ((b.a)localObject).atI();
-    localObject = (bzt)this.rr.gUS.gUX;
-    ((bzt)localObject).DWw = paramString1;
-    ((bzt)localObject).CPi = k.ebS();
-    ((bzt)localObject).DWx = paramString3;
-    if (!bt.isNullOrNil(paramString2)) {
-      ((bzt)localObject).DWy = new com.tencent.mm.bx.b(paramString2.getBytes());
+    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.aSQ(paramString2);
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cer)this.rr.hvr.hvw;
+    ((cer)localObject).Fto = paramString1;
+    ((cer)localObject).EhT = k.ero();
+    ((cer)localObject).Ftp = paramString3;
+    if (!bs.isNullOrNil(paramString2)) {
+      ((cer)localObject).Ftq = new com.tencent.mm.bw.b(paramString2.getBytes());
     }
     if (paramInt1 >= 0) {
-      ((bzt)localObject).CPd = paramInt1;
+      ((cer)localObject).EhO = paramInt1;
     }
     if (paramInt2 >= 0) {
-      ((bzt)localObject).Ctl = paramInt2;
+      ((cer)localObject).DLC = paramInt2;
     }
     if (paramInt3 >= 0) {
-      ((bzt)localObject).DWz = paramInt3;
+      ((cer)localObject).Ftr = paramInt3;
     }
     AppMethodBeat.o(72794);
   }
@@ -70,14 +70,14 @@ public final class t
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(72796);
-    ad.d("MicroMsg.NetScenePaySubscribe", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ac.d("MicroMsg.NetScenePaySubscribe", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(72796);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.t
  * JD-Core Version:    0.7.0.1
  */

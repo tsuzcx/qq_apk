@@ -7,7 +7,7 @@ import android.opengl.GLSurfaceView.EGLContextFactory;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -16,26 +16,26 @@ import javax.microedition.khronos.egl.EGLDisplay;
 public class MMSightCameraGLSurfaceView
   extends GLSurfaceView
 {
-  int gBD;
-  int iBi;
-  int iBj;
-  private int iBt;
-  b tLL;
+  int hbZ;
+  int jbj;
+  int jbk;
+  private int jbu;
+  b uUp;
   
   public MMSightCameraGLSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94779);
-    this.tLL = null;
-    this.iBt = 0;
+    this.uUp = null;
+    this.jbu = 0;
     getHolder().addCallback(this);
     try
     {
       getHolder().setType(2);
       setEGLContextFactory(new b());
       setEGLConfigChooser(new a());
-      this.tLL = new b();
-      setRenderer(this.tLL);
+      this.uUp = new b();
+      setRenderer(this.uUp);
       setRenderMode(0);
       AppMethodBeat.o(94779);
       return;
@@ -60,66 +60,66 @@ public class MMSightCameraGLSurfaceView
     }
   }
   
-  public final void aj(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(94780);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "setFrameInfo, width: %s, height: %s, rotate: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
-    this.iBi = paramInt1;
-    this.iBj = paramInt2;
-    this.gBD = paramInt3;
-    AppMethodBeat.o(94780);
-  }
-  
-  public final void anT()
+  public final void ajB()
   {
     AppMethodBeat.i(94782);
-    if (this.tLL != null)
+    if (this.uUp != null)
     {
-      this.tLL.iBo = true;
+      this.uUp.jbp = true;
       requestRender();
     }
     AppMethodBeat.o(94782);
   }
   
+  public final void al(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(94780);
+    ac.i("MicroMsg.MMSightCameraGLSurfaceView", "setFrameInfo, width: %s, height: %s, rotate: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
+    this.jbj = paramInt1;
+    this.jbk = paramInt2;
+    this.hbZ = paramInt3;
+    AppMethodBeat.o(94780);
+  }
+  
   public final void e(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(94781);
-    if ((paramArrayOfByte != null) && (this.tLL != null) && (!this.tLL.iBh))
+    if ((paramArrayOfByte != null) && (this.uUp != null) && (!this.uUp.jbi))
     {
-      this.tLL.b(paramArrayOfByte, this.iBi, this.iBj, paramInt, paramBoolean);
+      this.uUp.b(paramArrayOfByte, this.jbj, this.jbk, paramInt, paramBoolean);
       requestRender();
       AppMethodBeat.o(94781);
       return;
     }
-    ad.v("MicroMsg.MMSightCameraGLSurfaceView", "passing draw");
+    ac.v("MicroMsg.MMSightCameraGLSurfaceView", "passing draw");
     AppMethodBeat.o(94781);
   }
   
   public int getFrameHeight()
   {
-    return this.iBj;
+    return this.jbk;
   }
   
   public int getFrameRotate()
   {
-    return this.gBD;
+    return this.hbZ;
   }
   
   public int getFrameWidth()
   {
-    return this.iBi;
+    return this.jbj;
   }
   
   public b getRenderer()
   {
-    return this.tLL;
+    return this.uUp;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(94785);
     super.surfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceChanged, format: %s, w: %s, h: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
+    ac.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceChanged, format: %s, w: %s, h: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
     AppMethodBeat.o(94785);
   }
   
@@ -127,7 +127,7 @@ public class MMSightCameraGLSurfaceView
   {
     AppMethodBeat.i(94783);
     super.surfaceCreated(paramSurfaceHolder);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
+    ac.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceCreated: %s this: %s %s", new Object[] { paramSurfaceHolder, this, Integer.valueOf(getId()) });
     AppMethodBeat.o(94783);
   }
   
@@ -135,7 +135,7 @@ public class MMSightCameraGLSurfaceView
   {
     AppMethodBeat.i(94784);
     super.surfaceDestroyed(paramSurfaceHolder);
-    ad.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
+    ac.i("MicroMsg.MMSightCameraGLSurfaceView", "surfaceDestroyed: %s this: %s", new Object[] { paramSurfaceHolder, this });
     AppMethodBeat.o(94784);
   }
   
@@ -143,36 +143,36 @@ public class MMSightCameraGLSurfaceView
     implements GLSurfaceView.EGLConfigChooser
   {
     private int EGL_OPENGL_ES2_BIT;
-    protected int fJA;
-    protected int fJB;
-    protected int fJC;
-    private int[] fJw;
-    protected int fJx;
-    protected int fJy;
-    protected int fJz;
-    private int[] guQ;
+    private int[] fNc;
+    protected int fNd;
+    protected int fNe;
+    protected int fNf;
+    protected int fNg;
+    protected int fNh;
+    protected int fNi;
+    private int[] gVp;
     
     public a()
     {
       AppMethodBeat.i(94772);
       this.EGL_OPENGL_ES2_BIT = 4;
-      this.guQ = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
-      this.fJw = new int[1];
-      this.fJx = 5;
-      this.fJy = 6;
-      this.fJz = 5;
-      this.fJA = 0;
-      this.fJB = 0;
-      this.fJC = 0;
+      this.gVp = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
+      this.fNc = new int[1];
+      this.fNd = 5;
+      this.fNe = 6;
+      this.fNf = 5;
+      this.fNg = 0;
+      this.fNh = 0;
+      this.fNi = 0;
       AppMethodBeat.o(94772);
     }
     
     private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
     {
       AppMethodBeat.i(94775);
-      if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fJw))
+      if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fNc))
       {
-        paramInt = this.fJw[0];
+        paramInt = this.fNc[0];
         AppMethodBeat.o(94775);
         return paramInt;
       }
@@ -190,13 +190,13 @@ public class MMSightCameraGLSurfaceView
         EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
         int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
         int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-        if ((k >= this.fJB) && (m >= this.fJC))
+        if ((k >= this.fNh) && (m >= this.fNi))
         {
           k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
           m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
           int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
           int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-          if ((k == this.fJx) && (m == this.fJy) && (n == this.fJz) && (i1 == this.fJA))
+          if ((k == this.fNd) && (m == this.fNe) && (n == this.fNf) && (i1 == this.fNg))
           {
             AppMethodBeat.o(94774);
             return localEGLConfig;
@@ -212,11 +212,11 @@ public class MMSightCameraGLSurfaceView
     {
       AppMethodBeat.i(94776);
       int k = paramArrayOfEGLConfig.length;
-      ad.i("GLConfigChooser", String.format("%d configurations", new Object[] { Integer.valueOf(k) }));
+      ac.i("GLConfigChooser", String.format("%d configurations", new Object[] { Integer.valueOf(k) }));
       int i = 0;
       while (i < k)
       {
-        ad.i("GLConfigChooser", String.format("Configuration %d:\n", new Object[] { Integer.valueOf(i) }));
+        ac.i("GLConfigChooser", String.format("Configuration %d:\n", new Object[] { Integer.valueOf(i) }));
         EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
         int[] arrayOfInt = new int[1];
         int j = 0;
@@ -234,7 +234,7 @@ public class MMSightCameraGLSurfaceView
     {
       AppMethodBeat.i(94773);
       int[] arrayOfInt = new int[1];
-      paramEGL10.eglChooseConfig(paramEGLDisplay, this.guQ, null, 0, arrayOfInt);
+      paramEGL10.eglChooseConfig(paramEGLDisplay, this.gVp, null, 0, arrayOfInt);
       int i = arrayOfInt[0];
       if (i <= 0)
       {
@@ -243,7 +243,7 @@ public class MMSightCameraGLSurfaceView
         throw paramEGL10;
       }
       EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-      paramEGL10.eglChooseConfig(paramEGLDisplay, this.guQ, arrayOfEGLConfig, i, arrayOfInt);
+      paramEGL10.eglChooseConfig(paramEGLDisplay, this.gVp, arrayOfEGLConfig, i, arrayOfInt);
       c(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
       paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
       AppMethodBeat.o(94773);
@@ -261,7 +261,7 @@ public class MMSightCameraGLSurfaceView
     public final EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
     {
       AppMethodBeat.i(94777);
-      ad.w("MicroMsg.MMSightCameraGLSurfaceView", "creating OpenGL ES 2.0 context");
+      ac.w("MicroMsg.MMSightCameraGLSurfaceView", "creating OpenGL ES 2.0 context");
       int i = this.EGL_CONTEXT_CLIENT_VERSION;
       paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
       AppMethodBeat.o(94777);

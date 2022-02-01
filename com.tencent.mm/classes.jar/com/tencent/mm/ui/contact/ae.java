@@ -4,9 +4,9 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.e;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import java.util.ArrayList;
 public final class ae
   extends q
 {
-  private String GRX;
-  private Cursor icq;
+  private String Isk;
+  private Cursor iCz;
   
   public ae(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, new ArrayList(), false, false);
     AppMethodBeat.i(102929);
-    this.GRX = paramString;
-    g.afC();
-    this.icq = ((k)g.ab(k.class)).apM().e(this.GRX, "", this.fvP);
+    this.Isk = paramString;
+    g.agS();
+    this.iCz = ((k)g.ab(k.class)).awB().e(this.Isk, "", this.fzw);
     AppMethodBeat.o(102929);
   }
   
@@ -31,11 +31,11 @@ public final class ae
   {
     AppMethodBeat.i(102932);
     super.finish();
-    ad.i("MicroMsg.SpecialContactAdapter", "finish!");
-    if (this.icq != null)
+    ac.i("MicroMsg.SpecialContactAdapter", "finish!");
+    if (this.iCz != null)
     {
-      this.icq.close();
-      this.icq = null;
+      this.iCz.close();
+      this.iCz = null;
     }
     AppMethodBeat.o(102932);
   }
@@ -43,34 +43,34 @@ public final class ae
   public final int getCount()
   {
     AppMethodBeat.i(102930);
-    int i = this.icq.getCount();
+    int i = this.iCz.getCount();
     AppMethodBeat.o(102930);
     return i;
   }
   
-  protected final a pU(int paramInt)
+  protected final a qH(int paramInt)
   {
     AppMethodBeat.i(102931);
     e locale = null;
-    if ((paramInt >= 0) && (this.icq.moveToPosition(paramInt)))
+    if ((paramInt >= 0) && (this.iCz.moveToPosition(paramInt)))
     {
       locale = new e(paramInt);
-      af localaf = new af();
-      localaf.convertFrom(this.icq);
-      locale.contact = localaf;
-      locale.GVT = dqZ();
+      ai localai = new ai();
+      localai.convertFrom(this.iCz);
+      locale.contact = localai;
+      locale.Iwh = dFi();
     }
     for (;;)
     {
       AppMethodBeat.o(102931);
       return locale;
-      ad.e("MicroMsg.SpecialContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+      ac.e("MicroMsg.SpecialContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ae
  * JD-Core Version:    0.7.0.1
  */

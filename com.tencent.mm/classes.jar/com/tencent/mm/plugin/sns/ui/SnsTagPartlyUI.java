@@ -17,52 +17,54 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.q.a;
+import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.r.a;
 
 public class SnsTagPartlyUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private ListView iwH;
+  private ListView iWK;
   protected p tipDialog;
-  private a xFg;
-  private View.OnClickListener xFh;
+  private a yRT;
+  private View.OnClickListener yRU;
   
   public SnsTagPartlyUI()
   {
     AppMethodBeat.i(99209);
     this.tipDialog = null;
-    this.xFh = new View.OnClickListener()
+    this.yRU = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(99203);
         if (SnsTagPartlyUI.a(SnsTagPartlyUI.this) == null)
         {
-          ad.e("MicroMsg.SnsTagPartlyUI", "The adapter is null..");
+          ac.e("MicroMsg.SnsTagPartlyUI", "The adapter is null..");
           AppMethodBeat.o(99203);
           return;
         }
         paramAnonymousView = paramAnonymousView.getTag();
         if (paramAnonymousView == null)
         {
-          ad.e("MicroMsg.SnsTagPartlyUI", "The tag is null..");
+          ac.e("MicroMsg.SnsTagPartlyUI", "The tag is null..");
           AppMethodBeat.o(99203);
           return;
         }
         if (!(paramAnonymousView instanceof Integer))
         {
-          ad.e("MicroMsg.SnsTagPartlyUI", "The tag is not a instance of Integer.");
+          ac.e("MicroMsg.SnsTagPartlyUI", "The tag is not a instance of Integer.");
           AppMethodBeat.o(99203);
           return;
         }
@@ -71,8 +73,8 @@ public class SnsTagPartlyUI
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface) {}
         });
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.plugin.sns.model.w(paramAnonymousView.field_tagId, paramAnonymousView.field_tagName), 0);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.plugin.sns.model.w(paramAnonymousView.field_tagId, paramAnonymousView.field_tagName), 0);
         AppMethodBeat.o(99203);
       }
     };
@@ -98,8 +100,8 @@ public class SnsTagPartlyUI
         return true;
       }
     });
-    this.iwH = ((ListView)findViewById(2131305081));
-    this.iwH.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.iWK = ((ListView)findViewById(2131305081));
+    this.iWK.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -116,28 +118,28 @@ public class SnsTagPartlyUI
           paramAnonymousAdapterView.putExtra("k_sns_tag_id", paramAnonymousView.field_tagId);
           paramAnonymousAdapterView.setClass(SnsTagPartlyUI.this, SnsTagDetailUI.class);
           paramAnonymousView = SnsTagPartlyUI.this;
-          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousAdapterView);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.adn(), "com/tencent/mm/plugin/sns/ui/SnsTagPartlyUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lS(0));
+          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/sns/ui/SnsTagPartlyUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/sns/ui/SnsTagPartlyUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(99200);
           return;
         }
         paramAnonymousAdapterView = new Intent();
-        paramAnonymousView = com.tencent.mm.model.u.aqG();
+        paramAnonymousView = com.tencent.mm.model.u.axw();
         paramAnonymousAdapterView.putExtra("titile", SnsTagPartlyUI.this.getString(2131755229));
         paramAnonymousAdapterView.putExtra("list_type", 1);
         paramAnonymousAdapterView.putExtra("KBlockOpenImFav", true);
-        paramAnonymousAdapterView.putExtra("list_attr", com.tencent.mm.ui.contact.u.jw(com.tencent.mm.ui.contact.u.I(new int[] { com.tencent.mm.ui.contact.u.GWC, 1024 }), 16777216));
+        paramAnonymousAdapterView.putExtra("list_attr", com.tencent.mm.ui.contact.u.jI(com.tencent.mm.ui.contact.u.I(new int[] { com.tencent.mm.ui.contact.u.IwQ, 1024 }), 16777216));
         paramAnonymousAdapterView.putExtra("block_contact", paramAnonymousView);
         d.c(SnsTagPartlyUI.this, ".ui.contact.SelectContactUI", paramAnonymousAdapterView, 1);
         AppMethodBeat.o(99200);
       }
     });
-    this.xFg = new a(this);
+    this.yRT = new a(this);
     View localView = View.inflate(this, 2131495598, null);
-    this.iwH.addFooterView(localView);
-    this.iwH.setAdapter(this.xFg);
+    this.iWK.addFooterView(localView);
+    this.iWK.setAdapter(this.yRT);
     addTextOptionMenu(0, getString(2131764007), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -146,12 +148,12 @@ public class SnsTagPartlyUI
         paramAnonymousMenuItem = SnsTagPartlyUI.a(SnsTagPartlyUI.this);
         boolean bool;
         SnsTagPartlyUI localSnsTagPartlyUI;
-        if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).xFk)
+        if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).yRX)
         {
           bool = true;
-          paramAnonymousMenuItem.xFk = bool;
+          paramAnonymousMenuItem.yRX = bool;
           localSnsTagPartlyUI = SnsTagPartlyUI.this;
-          if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).xFk) {
+          if (!SnsTagPartlyUI.a(SnsTagPartlyUI.this).yRX) {
             break label89;
           }
         }
@@ -167,9 +169,9 @@ public class SnsTagPartlyUI
         }
       }
     });
-    this.xFg.a(new q.a()
+    this.yRT.a(new r.a()
     {
-      public final void aIp()
+      public final void aPg()
       {
         boolean bool = true;
         AppMethodBeat.i(99202);
@@ -217,12 +219,12 @@ public class SnsTagPartlyUI
       }
       Intent localIntent = new Intent();
       localIntent.putExtra("k_sns_tag_id", 0);
-      localIntent.putExtra("k_sns_tag_name", bt.by(paramIntent, ""));
+      localIntent.putExtra("k_sns_tag_name", bs.bG(paramIntent, ""));
       localIntent.putExtra("k_sns_tag_list", str);
       localIntent.setClass(this, SnsTagDetailUI.class);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.adn(), "com/tencent/mm/plugin/sns/ui/SnsTagPartlyUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.lS(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.aeD(), "com/tencent/mm/plugin/sns/ui/SnsTagPartlyUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsTagPartlyUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
@@ -231,10 +233,10 @@ public class SnsTagPartlyUI
   {
     AppMethodBeat.i(99210);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(292, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.a(290, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(292, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.a(290, this);
     initView();
     AppMethodBeat.o(99210);
   }
@@ -242,12 +244,12 @@ public class SnsTagPartlyUI
   public void onDestroy()
   {
     AppMethodBeat.i(99211);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(292, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(290, this);
-    if (this.xFg != null) {
-      this.xFg.cHX();
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(292, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(290, this);
+    if (this.yRT != null) {
+      this.yRT.cVi();
     }
     super.onDestroy();
     AppMethodBeat.o(99211);
@@ -257,8 +259,8 @@ public class SnsTagPartlyUI
   {
     AppMethodBeat.i(99212);
     super.onResume();
-    if (this.xFg != null) {
-      this.xFg.a("", null);
+    if (this.yRT != null) {
+      this.yRT.a("", null);
     }
     AppMethodBeat.o(99212);
   }
@@ -266,14 +268,14 @@ public class SnsTagPartlyUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(99215);
-    ad.i("MicroMsg.SnsTagPartlyUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.SnsTagPartlyUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    if (this.xFg != null) {
-      this.xFg.a("", null);
+    if (this.yRT != null) {
+      this.yRT.a("", null);
     }
     AppMethodBeat.o(99215);
   }
@@ -285,37 +287,37 @@ public class SnsTagPartlyUI
   }
   
   final class a
-    extends com.tencent.mm.ui.q<v>
+    extends r<v>
   {
     private Context context;
-    public boolean xFk;
+    public boolean yRX;
     
     public a(Context paramContext)
     {
       super(new v());
       AppMethodBeat.i(99204);
-      this.xFk = false;
+      this.yRX = false;
       this.context = paramContext;
       AppMethodBeat.o(99204);
     }
     
-    public final void Wd()
+    public final void Xb()
     {
       AppMethodBeat.i(99206);
-      setCursor(af.dtA().getCursor());
+      setCursor(af.dHX().getCursor());
       notifyDataSetChanged();
       AppMethodBeat.o(99206);
     }
     
-    public final void We()
+    public final void Xc()
     {
       AppMethodBeat.i(99207);
-      cHX();
-      Wd();
+      cVi();
+      Xb();
       AppMethodBeat.o(99207);
     }
     
-    public final int cEn()
+    public final int cRx()
     {
       return 1;
     }
@@ -328,26 +330,26 @@ public class SnsTagPartlyUI
       {
         paramViewGroup = new a();
         paramView = View.inflate(this.context, 2131495063, null);
-        paramViewGroup.xFl = ((TextView)paramView.findViewById(2131305630));
-        paramViewGroup.xFm = ((TextView)paramView.findViewById(2131305075));
-        paramViewGroup.ipd = ((Button)paramView.findViewById(2131298954));
+        paramViewGroup.yRY = ((TextView)paramView.findViewById(2131305630));
+        paramViewGroup.yRZ = ((TextView)paramView.findViewById(2131305075));
+        paramViewGroup.iPj = ((Button)paramView.findViewById(2131298954));
         paramView.setTag(paramViewGroup);
-        if (EJ(paramInt)) {
+        if (GF(paramInt)) {
           break label229;
         }
         Object localObject = (v)getItem(paramInt);
-        paramViewGroup.xFl.setText(((v)localObject).field_tagName);
-        paramViewGroup.xFm.setVisibility(0);
-        paramViewGroup.xFm.setText(" (" + ((v)localObject).field_count + ") ");
-        localObject = paramViewGroup.ipd;
-        if (!this.xFk) {
+        paramViewGroup.yRY.setText(((v)localObject).field_tagName);
+        paramViewGroup.yRZ.setVisibility(0);
+        paramViewGroup.yRZ.setText(" (" + ((v)localObject).field_count + ") ");
+        localObject = paramViewGroup.iPj;
+        if (!this.yRX) {
           break label222;
         }
         i = 0;
         label172:
         ((Button)localObject).setVisibility(i);
-        paramViewGroup.ipd.setOnClickListener(SnsTagPartlyUI.b(SnsTagPartlyUI.this));
-        paramViewGroup.ipd.setTag(Integer.valueOf(paramInt));
+        paramViewGroup.iPj.setOnClickListener(SnsTagPartlyUI.b(SnsTagPartlyUI.this));
+        paramViewGroup.iPj.setTag(Integer.valueOf(paramInt));
       }
       for (;;)
       {
@@ -359,17 +361,17 @@ public class SnsTagPartlyUI
         i = 8;
         break label172;
         label229:
-        paramViewGroup.xFl.setText(2131764344);
-        paramViewGroup.xFm.setVisibility(8);
-        paramViewGroup.ipd.setVisibility(8);
+        paramViewGroup.yRY.setText(2131764344);
+        paramViewGroup.yRZ.setVisibility(8);
+        paramViewGroup.iPj.setVisibility(8);
       }
     }
     
     final class a
     {
-      Button ipd;
-      TextView xFl;
-      TextView xFm;
+      Button iPj;
+      TextView yRY;
+      TextView yRZ;
       
       a() {}
     }
@@ -377,7 +379,7 @@ public class SnsTagPartlyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTagPartlyUI
  * JD-Core Version:    0.7.0.1
  */

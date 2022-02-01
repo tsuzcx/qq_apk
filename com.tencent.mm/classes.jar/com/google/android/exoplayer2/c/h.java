@@ -2,7 +2,7 @@ package com.google.android.exoplayer2.c;
 
 public abstract interface h
 {
-  public abstract e[] sK();
+  public abstract e[] sT();
 }
 
 

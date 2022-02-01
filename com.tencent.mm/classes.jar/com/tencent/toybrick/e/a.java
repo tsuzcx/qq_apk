@@ -6,35 +6,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a IHb;
-  private a IHc;
-  private Handler IHd;
+  private static a Ktm;
+  private a Ktn;
+  private Handler Kto;
   private HandlerThread mThread;
   
   static
   {
     AppMethodBeat.i(159964);
-    IHb = new a();
+    Ktm = new a();
     AppMethodBeat.o(159964);
   }
   
-  public static a fpj()
+  public static a fHr()
   {
-    return IHb;
+    return Ktm;
   }
   
   public final void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(159963);
-    if (this.IHc == null)
+    if (this.Ktn == null)
     {
       if ((this.mThread == null) || (!this.mThread.isAlive()))
       {
         this.mThread = new HandlerThread("WhenHandler");
         this.mThread.start();
-        this.IHd = new Handler(this.mThread.getLooper());
+        this.Kto = new Handler(this.mThread.getLooper());
       }
-      this.IHd.post(paramRunnable);
+      this.Kto.post(paramRunnable);
     }
     AppMethodBeat.o(159963);
   }

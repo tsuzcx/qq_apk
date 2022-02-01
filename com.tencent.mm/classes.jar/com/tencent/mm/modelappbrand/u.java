@@ -1,46 +1,46 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ca;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.g.b.a.do;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class u
 {
-  private static Map<String, Long> gRF;
-  private static Map<String, Long> gRG;
-  private static Map<String, Long> gRH;
-  private static Map<String, Long> gRI;
-  private static Map<String, a> gRJ;
+  private static Map<String, Long> hsf;
+  private static Map<String, Long> hsg;
+  private static Map<String, Long> hsh;
+  private static Map<String, Long> hsi;
+  private static Map<String, a> hsj;
   
   static
   {
     AppMethodBeat.i(76390);
-    gRF = new HashMap();
-    gRG = new HashMap();
-    gRH = new HashMap();
-    gRI = new HashMap();
-    gRJ = new HashMap();
+    hsf = new HashMap();
+    hsg = new HashMap();
+    hsh = new HashMap();
+    hsi = new HashMap();
+    hsj = new HashMap();
     AppMethodBeat.o(76390);
   }
   
-  public static void H(String paramString, boolean paramBoolean)
+  public static void I(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(76388);
-    ad.i("SearchWidgetStartTrace", "drawEnd %s,succ %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    ac.i("SearchWidgetStartTrace", "drawEnd %s,succ %s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      if (gRF.containsKey(paramString)) {}
-      for (long l = ((Long)gRF.get(paramString)).longValue(); l > 0L; l = 0L)
+      if (hsf.containsKey(paramString)) {}
+      for (long l = ((Long)hsf.get(paramString)).longValue(); l > 0L; l = 0L)
       {
         System.currentTimeMillis();
         AppMethodBeat.o(76388);
         return;
       }
-      ad.e("SearchWidgetStartTrace", "can't find widget Recv timestamp for appid %s", new Object[] { paramString });
+      ac.e("SearchWidgetStartTrace", "can't find widget Recv timestamp for appid %s", new Object[] { paramString });
     }
     AppMethodBeat.o(76388);
   }
@@ -48,79 +48,79 @@ public final class u
   public static void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
     AppMethodBeat.i(76379);
-    a locala2 = (a)gRJ.get(paramString1);
+    a locala2 = (a)hsj.get(paramString1);
     a locala1 = locala2;
     if (locala2 == null) {
       locala1 = new a();
     }
-    locala1.dlB = paramString2;
-    locala1.cIB = paramInt1;
-    locala1.gRL = paramInt2;
-    locala1.gRK = paramString3;
-    gRJ.put(paramString1, locala1);
+    locala1.djj = paramString2;
+    locala1.cFI = paramInt1;
+    locala1.hsl = paramInt2;
+    locala1.hsk = paramString3;
+    hsj.put(paramString1, locala1);
     AppMethodBeat.o(76379);
   }
   
-  public static void atV()
+  public static void aAM()
   {
     AppMethodBeat.i(76389);
-    ad.i("SearchWidgetStartTrace", "hasInitData %s", new Object[] { Boolean.TRUE });
+    ac.i("SearchWidgetStartTrace", "hasInitData %s", new Object[] { Boolean.TRUE });
     AppMethodBeat.o(76389);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(76386);
-    ad.e("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    ac.e("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
     AppMethodBeat.o(76386);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(76385);
-    ad.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    ac.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
     AppMethodBeat.o(76385);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(76384);
-    ad.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
+    ac.i("SearchWidgetStartTrace", "widget trace - " + paramString1 + "-" + paramString2, paramVarArgs);
     AppMethodBeat.o(76384);
   }
   
-  public static void va(String paramString)
+  public static void zg(String paramString)
   {
     AppMethodBeat.i(76378);
-    Object localObject = (a)gRJ.get(paramString);
+    Object localObject = (a)hsj.get(paramString);
     if (localObject != null)
     {
-      if (((a)localObject).gRM)
+      if (((a)localObject).hsm)
       {
         i("SearchWidgetStartTrace", "do not report draw succ agagin", new Object[0]);
         AppMethodBeat.o(76378);
         return;
       }
-      ((a)localObject).gRM = true;
+      ((a)localObject).hsm = true;
     }
-    v.lI(20);
-    localObject = new ca().iI(vd(paramString));
-    ((ca)localObject).dQy = vb(paramString);
-    ((ca)localObject).dQv = 12L;
-    ((ca)localObject).dQx = 1L;
-    paramString = ((ca)localObject).iH(paramString);
-    paramString.dQw = System.currentTimeMillis();
-    paramString.iJ(ay.iw(aj.getContext())).aBj();
+    v.lA(20);
+    localObject = new do().ly(zj(paramString));
+    ((do)localObject).dSn = zh(paramString);
+    ((do)localObject).dSk = 12L;
+    ((do)localObject).dSm = 1L;
+    paramString = ((do)localObject).lx(paramString);
+    paramString.dSl = System.currentTimeMillis();
+    paramString.lz(ax.iH(ai.getContext())).aHZ();
     AppMethodBeat.o(76378);
   }
   
-  public static int vb(String paramString)
+  public static int zh(String paramString)
   {
     AppMethodBeat.i(76380);
-    paramString = (a)gRJ.get(paramString);
+    paramString = (a)hsj.get(paramString);
     if (paramString != null)
     {
-      int i = paramString.cIB;
+      int i = paramString.cFI;
       AppMethodBeat.o(76380);
       return i;
     }
@@ -128,21 +128,21 @@ public final class u
     return 0;
   }
   
-  public static boolean vc(String paramString)
+  public static boolean zi(String paramString)
   {
     AppMethodBeat.i(76381);
-    boolean bool = gRJ.containsKey(paramString);
+    boolean bool = hsj.containsKey(paramString);
     AppMethodBeat.o(76381);
     return bool;
   }
   
-  public static String vd(String paramString)
+  public static String zj(String paramString)
   {
     AppMethodBeat.i(76382);
-    a locala = (a)gRJ.get(paramString);
+    a locala = (a)hsj.get(paramString);
     if (locala != null)
     {
-      paramString = locala.gRK;
+      paramString = locala.hsk;
       AppMethodBeat.o(76382);
       return paramString;
     }
@@ -150,13 +150,13 @@ public final class u
     return paramString;
   }
   
-  public static int ve(String paramString)
+  public static int zk(String paramString)
   {
     AppMethodBeat.i(76383);
-    paramString = (a)gRJ.get(paramString);
+    paramString = (a)hsj.get(paramString);
     if (paramString != null)
     {
-      int i = paramString.gRL;
+      int i = paramString.hsl;
       AppMethodBeat.o(76383);
       return i;
     }
@@ -164,25 +164,25 @@ public final class u
     return 0;
   }
   
-  public static void vf(String paramString)
+  public static void zl(String paramString)
   {
     AppMethodBeat.i(76387);
-    ad.i("SearchWidgetStartTrace", "realInsert %s", new Object[] { paramString });
+    ac.i("SearchWidgetStartTrace", "realInsert %s", new Object[] { paramString });
     AppMethodBeat.o(76387);
   }
   
   public static final class a
   {
-    public int cIB;
-    public String dlB;
-    public String gRK;
-    public int gRL;
-    public boolean gRM;
+    public int cFI;
+    public String djj;
+    public String hsk;
+    public int hsl;
+    public boolean hsm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.u
  * JD-Core Version:    0.7.0.1
  */

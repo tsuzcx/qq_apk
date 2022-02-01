@@ -1,16 +1,16 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ij;
+import com.tencent.mm.g.a.iq;
 import com.tencent.mm.sdk.b.c;
 
 final class FindMoreFriendsUI$9
-  extends c<ij>
+  extends c<iq>
 {
   FindMoreFriendsUI$9(FindMoreFriendsUI paramFindMoreFriendsUI)
   {
     AppMethodBeat.i(161489);
-    this.__eventId = ij.class.getName().hashCode();
+    this.__eventId = iq.class.getName().hashCode();
     AppMethodBeat.o(161489);
   }
 }

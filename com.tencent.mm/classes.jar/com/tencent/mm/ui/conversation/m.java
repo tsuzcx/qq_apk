@@ -4,631 +4,522 @@ import android.database.AbstractCursor;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public final class m
   extends AbstractCursor
 {
-  private a[] Hfl;
-  private int Hfm;
-  private int Hfn;
-  int Hfo;
-  LinkedList<c> Hfp;
-  private final b Hfq;
-  private Cursor Qs;
+  private a[] IFE;
+  private int IFF;
+  private int IFG;
+  int IFH;
+  LinkedList<c> IFI;
+  private final b IFJ;
+  private Cursor Rn;
   private DataSetObserver mObserver;
-  private int pdP;
+  private int pHa;
   
-  public m(e parame, a... paramVarArgs)
+  public m(m.e parame, a... paramVarArgs)
   {
-    AppMethodBeat.i(191767);
+    AppMethodBeat.i(196882);
     this.mObserver = new DataSetObserver()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(191756);
+        AppMethodBeat.i(196872);
         m.a(m.this);
-        m.this.fcH();
-        AppMethodBeat.o(191756);
+        m.this.fsC();
+        AppMethodBeat.o(196872);
       }
       
       public final void onInvalidated()
       {
-        AppMethodBeat.i(191757);
+        AppMethodBeat.i(196873);
         m.b(m.this);
-        m.this.fcH();
-        AppMethodBeat.o(191757);
+        m.this.fsC();
+        AppMethodBeat.o(196873);
       }
     };
-    this.pdP = -1;
-    this.Hfm = e.HfE.op;
-    this.Hfn = 40;
-    this.Hfo = -1;
-    this.Hfp = new LinkedList();
-    this.Hfq = new b();
-    this.Hfm = parame.op;
+    this.pHa = -1;
+    this.IFF = m.e.IFX.op;
+    this.IFG = 100;
+    this.IFH = -1;
+    this.IFI = new LinkedList();
+    this.IFJ = new b();
+    this.IFF = parame.op;
     if (paramVarArgs.length < 2) {}
-    for (this.Hfl = paramVarArgs;; this.Hfl = new a[] { paramVarArgs[0], paramVarArgs[1] })
+    for (this.IFE = paramVarArgs;; this.IFE = new a[] { paramVarArgs[0], paramVarArgs[1] })
     {
-      this.Qs = this.Hfl[0].fcF();
-      while (i < this.Hfl.length)
+      this.Rn = this.IFE[0].fsA();
+      while (i < this.IFE.length)
       {
-        if (ZT(i) != null) {
-          ZT(i).registerDataSetObserver(this.mObserver);
+        if (acg(i) != null) {
+          acg(i).registerDataSetObserver(this.mObserver);
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(191767);
+    AppMethodBeat.o(196882);
   }
   
   private m(a... paramVarArgs)
   {
-    this(e.HfE, paramVarArgs);
+    this(m.e.IFX, paramVarArgs);
   }
   
-  private boolean ZQ(int paramInt)
+  private boolean acd(int paramInt)
   {
-    AppMethodBeat.i(191770);
+    AppMethodBeat.i(196885);
     try
     {
-      b.a(this.Hfq);
-      this.Qs = this.Hfl[0].fcF();
-      boolean bool = this.Qs.moveToPosition(paramInt);
-      AppMethodBeat.o(191770);
+      b.a(this.IFJ);
+      this.Rn = this.IFE[0].fsA();
+      boolean bool = this.Rn.moveToPosition(paramInt);
+      AppMethodBeat.o(196885);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      ad.w("MergeSortCursorWrapper", "onMoveOneCursorOnly fail:" + localThrowable.getMessage());
-      AppMethodBeat.o(191770);
+      ac.w("MergeSortCursorWrapper", "onMoveOneCursorOnly fail:" + localThrowable.getMessage());
+      AppMethodBeat.o(196885);
     }
     return false;
   }
   
-  private boolean ZR(int paramInt)
+  private boolean ace(int paramInt)
   {
-    AppMethodBeat.i(191771);
-    int i = this.Hfo;
-    int j = this.Hfo;
-    int k = this.Hfp.size();
-    Object localObject1;
-    int i3;
-    int i4;
-    label132:
-    Object localObject2;
-    d locald1;
-    d locald2;
-    label258:
-    int m;
-    if ((i <= paramInt) && (paramInt < j + k))
-    {
-      b.a(this.Hfq);
-      localObject1 = ZS(paramInt);
-      if (localObject1 == null)
-      {
-        AppMethodBeat.o(191771);
-        return false;
-      }
+    AppMethodBeat.i(196886);
+    int i = this.IFH;
+    int j = this.IFH;
+    int k = this.IFI.size();
+    if ((i <= paramInt) && (paramInt < j + k)) {
+      b.a(this.IFJ);
     }
-    else
+    Object localObject;
+    for (;;)
     {
-      localObject1 = this.Hfq;
-      ((b)localObject1).Hfw += 1L;
-      i = this.Hfn / 2;
-      i3 = Math.max(paramInt / i * i - i, 0);
-      i4 = Math.min(this.Hfn + i3, getCount());
-      int i2 = i4 - 1;
-      if (i2 < 0) {
-        localObject1 = null;
+      localObject = acf(paramInt);
+      if (localObject != null) {
+        break;
       }
-      while (localObject1 != null)
+      AppMethodBeat.o(196886);
+      return false;
+      localObject = this.IFJ;
+      ((b)localObject).IFP += 1L;
+      a locala1 = this.IFE[0];
+      a locala2 = this.IFE[1];
+      d locald;
+      LinkedList localLinkedList;
+      int m;
+      if (paramInt <= 0)
       {
-        localObject2 = new LinkedList();
-        a locala1 = this.Hfl[0];
-        a locala2 = this.Hfl[1];
-        j = ((Integer)((Pair)localObject1).first).intValue();
-        i = ((Integer)((Pair)localObject1).second).intValue();
-        k = i2;
-        for (;;)
-        {
-          if (k < i3) {
-            break label745;
-          }
-          locald1 = locala1.ZU(j);
-          locald2 = locala2.ZU(i);
-          if ((d.HfB == locald1) && (d.HfB == locald2)) {
-            break label745;
-          }
-          if (d.HfB != locald1) {
-            break;
-          }
-          ((LinkedList)localObject2).add(0, new c(1, i, locald2));
-          i -= 1;
-          k -= 1;
+        i = this.IFG;
+        j = Math.min(i * 2, getCount());
+        k = i;
+        if (j < i * 2) {
+          k = j;
         }
-        localObject1 = this.Hfl[0];
-        localObject2 = this.Hfl[1];
-        if ((localObject1 == null) || (localObject2 == null))
+        j = 0;
+        i = 0;
+        locald = locala1.ach(0);
+        localObject = locala2.ach(0);
+        localLinkedList = new LinkedList();
+        m = 0;
+        label163:
+        if ((m >= k) || ((d.IFU == locald) && (d.IFU == localObject))) {
+          break label405;
+        }
+        if (d.IFU != locald) {
+          break label254;
+        }
+        localLinkedList.add(new c(1, i, (d)localObject));
+        i += 1;
+        localObject = locala2.ach(i);
+      }
+      label373:
+      for (;;)
+      {
+        m += 1;
+        break label163;
+        i = (this.IFG - 1 + paramInt) / this.IFG * this.IFG;
+        break;
+        label254:
+        if (d.IFU == localObject)
         {
-          localObject1 = null;
+          localLinkedList.add(new c(0, j, locald));
+          j += 1;
+          locald = locala1.ach(j);
         }
         else
         {
-          j = ((a)localObject1).getCount();
-          int i5 = ((a)localObject2).getCount();
-          if (j + i5 < i2 + 1)
+          b localb = this.IFJ;
+          localb.IFQ += 1L;
+          if (this.IFF * locald.a((d)localObject) <= 0) {}
+          for (int n = 1;; n = 0)
           {
-            localObject1 = null;
-          }
-          else if (j <= 0)
-          {
-            localObject1 = new Pair(Integer.valueOf(-1), Integer.valueOf(i2));
-          }
-          else if (i5 <= 0)
-          {
-            localObject1 = new Pair(Integer.valueOf(i2), Integer.valueOf(-1));
-          }
-          else
-          {
-            i = 0;
-            m = Math.min(j - 1, i2);
-            k = 0;
-            j = -1;
-            while (i <= m)
-            {
-              n = (i + m) / 2;
-              int i1 = i2 - n - 1;
-              if ((i1 < 0) || (i1 >= i5))
-              {
-                i = n + 1;
-                j = i1;
-                k = n;
-              }
-              else
-              {
-                int i6 = a(((a)localObject1).ZU(n), ((a)localObject2).ZU(i1));
-                if (i6 < 0)
-                {
-                  i = n + 1;
-                  j = i1;
-                  k = n;
-                }
-                else
-                {
-                  j = i1;
-                  k = n;
-                  if (i6 <= 0) {
-                    break;
-                  }
-                  m = n - 1;
-                  j = i1;
-                  k = n;
-                }
-              }
+            if (n == 0) {
+              break label373;
             }
-            int n = j + 1;
-            for (;;)
-            {
-              i = j;
-              m = k;
-              if (n >= i5) {
-                break;
-              }
-              i = j;
-              m = k;
-              if (a(((a)localObject1).ZU(k), ((a)localObject2).ZU(n)) <= 0) {
-                break;
-              }
-              k -= 1;
-              j += 1;
-              i = j;
-              m = k;
-              if (k < 0) {
-                break;
-              }
-              n += 1;
-            }
-            if (m >= 0) {
-              break label915;
-            }
+            localLinkedList.add(new c(0, j, locald));
+            j += 1;
+            locald = locala1.ach(j);
+            break;
           }
+          localLinkedList.add(new c(1, i, (d)localObject));
+          i += 1;
+          localObject = locala2.ach(i);
         }
       }
+      label405:
+      if (localLinkedList.size() != k) {
+        ac.w("MergeSortCursorWrapper", "fillWindow K=%d, N=%d (%d), iterator=[%d, %d]", new Object[] { Integer.valueOf(0), Integer.valueOf(localLinkedList.size()), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) });
+      }
+      this.IFH = 0;
+      this.IFI = localLinkedList;
     }
-    label915:
-    for (j = -1;; j = m)
-    {
-      k = i;
-      if (i < 0) {
-        k = -1;
-      }
-      localObject1 = new Pair(Integer.valueOf(j), Integer.valueOf(k));
-      break label132;
-      break;
-      if (d.HfB == locald2)
-      {
-        ((LinkedList)localObject2).add(0, new c(0, j, locald1));
-        j -= 1;
-        break label258;
-      }
-      b.c(this.Hfq);
-      if (this.Hfm * locald1.a(locald2) <= 0) {}
-      for (m = 1;; m = 0)
-      {
-        if (m == 0) {
-          break label721;
-        }
-        ((LinkedList)localObject2).add(0, new c(1, i, locald2));
-        i -= 1;
-        break;
-      }
-      label721:
-      ((LinkedList)localObject2).add(0, new c(0, j, locald1));
-      j -= 1;
-      break label258;
-      label745:
-      if (((LinkedList)localObject2).size() != i4) {
-        ad.w("MergeSortCursorWrapper", "fillWindow K=%d, N=%d (%d), heads=[%d, %d], iterator=[%d, %d]", new Object[] { Integer.valueOf(i3), Integer.valueOf(((LinkedList)localObject2).size()), Integer.valueOf(i4), ((Pair)localObject1).first, ((Pair)localObject1).second, Integer.valueOf(j), Integer.valueOf(i) });
-      }
-      this.Hfo = i3;
-      this.Hfp = ((LinkedList)localObject2);
-      break;
-      try
-      {
-        this.Qs = this.Hfl[localObject1.Hfy].fcF();
-        boolean bool = this.Qs.moveToPosition(((c)localObject1).Hfz);
-        AppMethodBeat.o(191771);
-        return bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        ad.w("MergeSortCursorWrapper", "onMoveTwoCursorMixed fail:" + localThrowable.getMessage());
-        AppMethodBeat.o(191771);
-        return false;
-      }
-    }
-  }
-  
-  private c ZS(int paramInt)
-  {
-    AppMethodBeat.i(191774);
     try
     {
-      int i = this.Hfo;
-      c localc = (c)this.Hfp.get(paramInt - i);
-      AppMethodBeat.o(191774);
+      this.Rn = this.IFE[localObject.IFR].fsA();
+      boolean bool = this.Rn.moveToPosition(((c)localObject).IFS);
+      AppMethodBeat.o(196886);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      ac.w("MergeSortCursorWrapper", "onMoveTwoCursorMixed fail:" + localThrowable.getMessage());
+      AppMethodBeat.o(196886);
+    }
+    return false;
+  }
+  
+  private c acf(int paramInt)
+  {
+    AppMethodBeat.i(196888);
+    try
+    {
+      int i = this.IFH;
+      c localc = (c)this.IFI.get(paramInt - i);
+      AppMethodBeat.o(196888);
       return localc;
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      ad.w("MergeSortCursorWrapper", "locateElement fail:" + localIndexOutOfBoundsException.getMessage());
-      AppMethodBeat.o(191774);
+      ac.w("MergeSortCursorWrapper", "locateElement fail:" + localIndexOutOfBoundsException.getMessage());
+      AppMethodBeat.o(196888);
     }
     return null;
   }
   
-  private Cursor ZT(int paramInt)
+  private Cursor acg(int paramInt)
   {
-    AppMethodBeat.i(191792);
-    Cursor localCursor = this.Hfl[paramInt].fcF();
-    AppMethodBeat.o(191792);
+    AppMethodBeat.i(196906);
+    Cursor localCursor = this.IFE[paramInt].fsA();
+    AppMethodBeat.o(196906);
     return localCursor;
   }
   
-  private int a(d paramd1, d paramd2)
+  public static m fsB()
   {
-    AppMethodBeat.i(191773);
-    b.c(this.Hfq);
-    int i = this.Hfm;
-    int j = paramd1.a(paramd2);
-    AppMethodBeat.o(191773);
-    return i * j;
-  }
-  
-  public static m fcG()
-  {
-    AppMethodBeat.i(191766);
+    AppMethodBeat.i(196881);
     m localm = new m(new a[] { new a()
     {
-      protected final m.d d(Cursor paramAnonymousCursor, int paramAnonymousInt)
+      protected final m.d c(Cursor paramAnonymousCursor, int paramAnonymousInt)
       {
-        AppMethodBeat.i(191758);
+        AppMethodBeat.i(196874);
         paramAnonymousCursor = new m.d(paramAnonymousInt);
-        AppMethodBeat.o(191758);
+        AppMethodBeat.o(196874);
         return paramAnonymousCursor;
       }
       
-      public final Cursor fcF()
+      public final Cursor fsA()
       {
         return null;
       }
     } });
-    AppMethodBeat.o(191766);
+    AppMethodBeat.o(196881);
     return localm;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(191786);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196900);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if (ZT(i) != null) {
-        ZT(i).close();
+      if (acg(i) != null) {
+        acg(i).close();
       }
       i += 1;
     }
     super.close();
-    AppMethodBeat.o(191786);
+    AppMethodBeat.o(196900);
   }
   
   public final void deactivate()
   {
-    AppMethodBeat.i(191785);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196899);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if (ZT(i) != null) {
-        ZT(i).deactivate();
+      if (acg(i) != null) {
+        acg(i).deactivate();
       }
       i += 1;
     }
     super.deactivate();
-    AppMethodBeat.o(191785);
+    AppMethodBeat.o(196899);
   }
   
-  public final void fcH()
+  public final void fsC()
   {
-    AppMethodBeat.i(191772);
-    if (this.Hfo != -1) {
-      b.b(this.Hfq);
+    AppMethodBeat.i(196887);
+    if (this.IFH != -1) {
+      b.b(this.IFJ);
     }
-    this.Hfo = -1;
-    this.Hfp = new LinkedList();
-    AppMethodBeat.o(191772);
+    this.IFH = -1;
+    this.IFI = new LinkedList();
+    AppMethodBeat.o(196887);
   }
   
-  final Cursor fcI()
+  final Cursor fsD()
   {
-    AppMethodBeat.i(191793);
-    if ((this.Qs == null) || (this.Qs.isClosed())) {
-      onMove(-1, this.pdP);
+    AppMethodBeat.i(196907);
+    if ((this.Rn == null) || (this.Rn.isClosed())) {
+      onMove(-1, this.pHa);
     }
-    Cursor localCursor = this.Qs;
-    AppMethodBeat.o(191793);
+    Cursor localCursor = this.Rn;
+    AppMethodBeat.o(196907);
     return localCursor;
   }
   
   public final byte[] getBlob(int paramInt)
   {
-    AppMethodBeat.i(191783);
-    byte[] arrayOfByte = fcI().getBlob(paramInt);
-    AppMethodBeat.o(191783);
+    AppMethodBeat.i(196897);
+    byte[] arrayOfByte = fsD().getBlob(paramInt);
+    AppMethodBeat.o(196897);
     return arrayOfByte;
   }
   
   public final String[] getColumnNames()
   {
-    AppMethodBeat.i(191784);
-    if (this.Qs != null)
+    AppMethodBeat.i(196898);
+    if (this.Rn != null)
     {
-      String[] arrayOfString = fcI().getColumnNames();
-      AppMethodBeat.o(191784);
+      String[] arrayOfString = fsD().getColumnNames();
+      AppMethodBeat.o(196898);
       return arrayOfString;
     }
-    AppMethodBeat.o(191784);
+    AppMethodBeat.o(196898);
     return new String[0];
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(191768);
-    int m = this.Hfl.length;
+    AppMethodBeat.i(196883);
+    int m = this.IFE.length;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       k = j;
-      if (ZT(i) != null) {
-        k = j + ZT(i).getCount();
+      if (acg(i) != null) {
+        k = j + acg(i).getCount();
       }
       i += 1;
     }
-    AppMethodBeat.o(191768);
+    AppMethodBeat.o(196883);
     return j;
   }
   
   public final double getDouble(int paramInt)
   {
-    AppMethodBeat.i(191780);
-    double d = fcI().getDouble(paramInt);
-    AppMethodBeat.o(191780);
+    AppMethodBeat.i(196894);
+    double d = fsD().getDouble(paramInt);
+    AppMethodBeat.o(196894);
     return d;
   }
   
   public final float getFloat(int paramInt)
   {
-    AppMethodBeat.i(191779);
-    float f = fcI().getFloat(paramInt);
-    AppMethodBeat.o(191779);
+    AppMethodBeat.i(196893);
+    float f = fsD().getFloat(paramInt);
+    AppMethodBeat.o(196893);
     return f;
   }
   
   public final int getInt(int paramInt)
   {
-    AppMethodBeat.i(191777);
-    paramInt = fcI().getInt(paramInt);
-    AppMethodBeat.o(191777);
+    AppMethodBeat.i(196891);
+    paramInt = fsD().getInt(paramInt);
+    AppMethodBeat.o(196891);
     return paramInt;
   }
   
   public final long getLong(int paramInt)
   {
-    AppMethodBeat.i(191778);
-    long l = fcI().getLong(paramInt);
-    AppMethodBeat.o(191778);
+    AppMethodBeat.i(196892);
+    long l = fsD().getLong(paramInt);
+    AppMethodBeat.o(196892);
     return l;
   }
   
   public final short getShort(int paramInt)
   {
-    AppMethodBeat.i(191776);
-    short s = fcI().getShort(paramInt);
-    AppMethodBeat.o(191776);
+    AppMethodBeat.i(196890);
+    short s = fsD().getShort(paramInt);
+    AppMethodBeat.o(196890);
     return s;
   }
   
   public final String getString(int paramInt)
   {
-    AppMethodBeat.i(191775);
-    String str = fcI().getString(paramInt);
-    AppMethodBeat.o(191775);
+    AppMethodBeat.i(196889);
+    String str = fsD().getString(paramInt);
+    AppMethodBeat.o(196889);
     return str;
   }
   
   public final int getType(int paramInt)
   {
-    AppMethodBeat.i(191781);
-    paramInt = fcI().getType(paramInt);
-    AppMethodBeat.o(191781);
+    AppMethodBeat.i(196895);
+    paramInt = fsD().getType(paramInt);
+    AppMethodBeat.o(196895);
     return paramInt;
   }
   
   public final boolean isNull(int paramInt)
   {
-    AppMethodBeat.i(191782);
-    boolean bool = fcI().isNull(paramInt);
-    AppMethodBeat.o(191782);
+    AppMethodBeat.i(196896);
+    boolean bool = fsD().isNull(paramInt);
+    AppMethodBeat.o(196896);
     return bool;
   }
   
   public final boolean onMove(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(191769);
-    b localb = this.Hfq;
-    localb.Hft += 1L;
-    this.pdP = paramInt2;
-    if (this.Hfl.length < 2)
+    AppMethodBeat.i(196884);
+    b localb = this.IFJ;
+    localb.IFM += 1L;
+    this.pHa = paramInt2;
+    if (this.IFE.length < 2)
     {
-      bool = ZQ(paramInt2);
-      AppMethodBeat.o(191769);
+      bool = acd(paramInt2);
+      AppMethodBeat.o(196884);
       return bool;
     }
-    boolean bool = ZR(paramInt2);
-    AppMethodBeat.o(191769);
+    boolean bool = ace(paramInt2);
+    AppMethodBeat.o(196884);
     return bool;
   }
   
   public final void registerContentObserver(ContentObserver paramContentObserver)
   {
-    AppMethodBeat.i(191787);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196901);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if (ZT(i) != null) {
-        ZT(i).registerContentObserver(paramContentObserver);
+      if (acg(i) != null) {
+        acg(i).registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
-    AppMethodBeat.o(191787);
+    AppMethodBeat.o(196901);
   }
   
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    AppMethodBeat.i(191789);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196903);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if (ZT(i) != null) {
-        ZT(i).registerDataSetObserver(paramDataSetObserver);
+      if (acg(i) != null) {
+        acg(i).registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
-    AppMethodBeat.o(191789);
+    AppMethodBeat.o(196903);
   }
   
   public final boolean requery()
   {
-    AppMethodBeat.i(191791);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196905);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if ((ZT(i) != null) && (!ZT(i).requery()))
+      if ((acg(i) != null) && (!acg(i).requery()))
       {
-        AppMethodBeat.o(191791);
+        AppMethodBeat.o(196905);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(191791);
+    AppMethodBeat.o(196905);
     return true;
   }
   
   public final void unregisterContentObserver(ContentObserver paramContentObserver)
   {
-    AppMethodBeat.i(191788);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196902);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if (ZT(i) != null) {
-        ZT(i).unregisterContentObserver(paramContentObserver);
+      if (acg(i) != null) {
+        acg(i).unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
-    AppMethodBeat.o(191788);
+    AppMethodBeat.o(196902);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    AppMethodBeat.i(191790);
-    int j = this.Hfl.length;
+    AppMethodBeat.i(196904);
+    int j = this.IFE.length;
     int i = 0;
     while (i < j)
     {
-      if (ZT(i) != null) {
-        ZT(i).unregisterDataSetObserver(paramDataSetObserver);
+      if (acg(i) != null) {
+        acg(i).unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
-    AppMethodBeat.o(191790);
+    AppMethodBeat.o(196904);
   }
   
   public static abstract class a
   {
-    private final LinkedHashMap<String, Integer> Hfs = new LinkedHashMap();
+    private final LinkedHashMap<String, Integer> IFL = new LinkedHashMap();
     
-    public final m.d ZU(int paramInt)
+    public final m.d ach(int paramInt)
     {
-      Object localObject = fcF();
+      Object localObject = fsA();
       if (localObject == null) {
         return new m.d(paramInt);
       }
       if (paramInt < 0) {}
       try
       {
-        return m.d.HfB;
+        return m.d.IFU;
       }
       catch (Throwable localThrowable) {}
       ((Cursor)localObject).moveToPosition(paramInt);
-      localObject = d((Cursor)localObject, paramInt);
+      localObject = c((Cursor)localObject, paramInt);
       return localObject;
-      return m.d.HfB;
+      return m.d.IFU;
     }
     
     protected final int b(Cursor paramCursor, String paramString)
     {
-      Integer localInteger = (Integer)this.Hfs.get(paramString);
+      Integer localInteger = (Integer)this.IFL.get(paramString);
       if (localInteger != null) {
         return localInteger.intValue();
       }
@@ -638,52 +529,43 @@ public final class m
       {
         if (paramString.equals(paramCursor[i]))
         {
-          this.Hfs.put(paramString, Integer.valueOf(i));
+          this.IFL.put(paramString, Integer.valueOf(i));
           return i;
         }
         i += 1;
       }
-      this.Hfs.put(paramString, Integer.valueOf(-1));
+      this.IFL.put(paramString, Integer.valueOf(-1));
       return -1;
     }
     
-    protected abstract m.d d(Cursor paramCursor, int paramInt);
+    protected abstract m.d c(Cursor paramCursor, int paramInt);
     
-    protected abstract Cursor fcF();
-    
-    public final int getCount()
-    {
-      Cursor localCursor = fcF();
-      if (localCursor == null) {
-        return 0;
-      }
-      return localCursor.getCount();
-    }
+    protected abstract Cursor fsA();
   }
   
   public static final class b
   {
-    long Hft = 0L;
-    private long Hfu = 0L;
-    private long Hfv = 0L;
-    long Hfw = 0L;
-    private long Hfx = 0L;
+    long IFM = 0L;
+    private long IFN = 0L;
+    private long IFO = 0L;
+    long IFP = 0L;
+    long IFQ = 0L;
     
     public final String toString()
     {
-      AppMethodBeat.i(191759);
+      AppMethodBeat.i(196875);
       try
       {
-        String str = String.format("total=%d, hit=%d [%.2f%%], reset,fill=%d, %d [%.2f%%], compare=%d [%.2f%%]", new Object[] { Long.valueOf(this.Hft), Long.valueOf(this.Hfu), Float.valueOf((float)this.Hfu * 100.0F / (float)this.Hft), Long.valueOf(this.Hfv), Long.valueOf(this.Hfw), Float.valueOf((float)this.Hfv * 100.0F / (float)this.Hfw), Long.valueOf(this.Hfx), Float.valueOf((float)this.Hfx * 100.0F / (float)this.Hft) });
-        AppMethodBeat.o(191759);
+        String str = String.format("total=%d, hit=%d [%.2f%%], reset,fill=%d, %d [%.2f%%], compare=%d [%.2f%%]", new Object[] { Long.valueOf(this.IFM), Long.valueOf(this.IFN), Float.valueOf((float)this.IFN * 100.0F / (float)this.IFM), Long.valueOf(this.IFO), Long.valueOf(this.IFP), Float.valueOf((float)this.IFO * 100.0F / (float)this.IFP), Long.valueOf(this.IFQ), Float.valueOf((float)this.IFQ * 100.0F / (float)this.IFM) });
+        AppMethodBeat.o(196875);
         return str;
       }
       catch (Throwable localThrowable)
       {
         Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("total=").append(this.Hft).append("hit=").append(this.Hfu).append("clearWindow=").append(this.Hfv).append("fillWindow=").append(this.Hfw).append("compare=").append(this.Hfx);
+        ((StringBuilder)localObject).append("total=").append(this.IFM).append("hit=").append(this.IFN).append("clearWindow=").append(this.IFO).append("fillWindow=").append(this.IFP).append("compare=").append(this.IFQ);
         localObject = ((StringBuilder)localObject).toString();
-        AppMethodBeat.o(191759);
+        AppMethodBeat.o(196875);
         return localObject;
       }
     }
@@ -691,92 +573,73 @@ public final class m
   
   public static final class c
   {
-    public final m.d HfA;
-    public final int Hfy;
-    public final int Hfz;
+    public final int IFR;
+    public final int IFS;
+    public final m.d IFT;
     
     public c(int paramInt1, int paramInt2, m.d paramd)
     {
-      this.Hfy = paramInt1;
-      this.Hfz = paramInt2;
-      this.HfA = paramd;
+      this.IFR = paramInt1;
+      this.IFS = paramInt2;
+      this.IFT = paramd;
     }
   }
   
   public static final class d
     implements Comparable<d>
   {
-    public static final d HfB;
-    public long HfC = 0L;
-    public int HfD = 0;
+    public static final d IFU;
+    public long IFV = 0L;
+    public int IFW = 0;
     
     static
     {
-      AppMethodBeat.i(191762);
-      HfB = new d(0L);
-      AppMethodBeat.o(191762);
+      AppMethodBeat.i(196877);
+      IFU = new d(0L);
+      AppMethodBeat.o(196877);
     }
     
     public d() {}
     
     public d(long paramLong)
     {
-      this.HfC = paramLong;
-      this.HfD = 0;
+      this.IFV = paramLong;
+      this.IFW = 0;
     }
     
     public final int a(d paramd)
     {
       if (this == paramd) {}
+      long l;
       do
       {
-        return 0;
-        if ((paramd == null) || (HfB == paramd)) {
-          return 1;
+        do
+        {
+          return 0;
+          if ((paramd == null) || (IFU == paramd)) {
+            return 1;
+          }
+        } while ((this.IFW == paramd.IFW) && (this.IFV == paramd.IFV));
+        if (this.IFW != paramd.IFW) {
+          return this.IFW - paramd.IFW;
         }
-      } while ((this.HfD == paramd.HfD) && (this.HfC == paramd.HfC));
-      if (this.HfD != paramd.HfD) {
-        return this.HfD - paramd.HfD;
-      }
-      return (int)(this.HfC - paramd.HfC);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(191760);
-      boolean bool = super.equals(paramObject);
-      AppMethodBeat.o(191760);
-      return bool;
+        l = this.IFV - paramd.IFV;
+        if (l < 0L) {
+          return -1;
+        }
+      } while (l == 0L);
+      return 1;
     }
     
     public final int hashCode()
     {
-      return this.HfD << 31 | (int)this.HfC;
-    }
-  }
-  
-  public static enum e
-  {
-    final int op;
-    
-    static
-    {
-      AppMethodBeat.i(191765);
-      HfE = new e("ASC", 0, 1);
-      HfF = new e("DESC", 1, -1);
-      HfG = new e[] { HfE, HfF };
-      AppMethodBeat.o(191765);
-    }
-    
-    private e(int paramInt)
-    {
-      this.op = paramInt;
+      return this.IFW << 31 | (int)this.IFV;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.m
  * JD-Core Version:    0.7.0.1
  */

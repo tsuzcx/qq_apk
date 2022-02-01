@@ -6,52 +6,52 @@ import java.util.Arrays;
 
 public final class s
 {
-  public final a IBA = new a(2, true);
-  public final a IBB = new a(3, true);
-  public final a IBC = new a(4, true);
-  public final a IBD = new a(5, true);
-  public final a IBE = new a(6, true);
-  public final a IBF = new a(4096, true);
-  public final a IBG = new a(4097, true);
-  public final a IBH = new a(4098, true);
-  public final a IBI = new a(4099, true);
-  public final a IBJ = new a(8192, false);
-  public final a IBK = new a(8193, true);
-  public final a IBL = new a(8194, false);
-  public final a IBM = new a(8195, false);
-  public final a IBN = new a(8196, false);
-  public final a IBO = new a(8197, false);
-  public final a IBP = new a(8198, true);
-  public final a[] IBQ = { this.IBy, this.IBz, this.IBA, this.IBB, this.IBC, this.IBD, this.IBE, this.IBF, this.IBG, this.IBH, this.IBI, this.IBJ, this.IBK, this.IBL, this.IBM, this.IBN, this.IBO, this.IBP };
-  public int IBR;
-  public int IBS;
-  public int IBT;
-  public final a IBy = new a(0, true);
-  public final a IBz = new a(1, true);
+  public final a KnH = new a(0, true);
+  public final a KnI = new a(1, true);
+  public final a KnJ = new a(2, true);
+  public final a KnK = new a(3, true);
+  public final a KnL = new a(4, true);
+  public final a KnM = new a(5, true);
+  public final a KnN = new a(6, true);
+  public final a KnO = new a(4096, true);
+  public final a KnP = new a(4097, true);
+  public final a KnQ = new a(4098, true);
+  public final a KnR = new a(4099, true);
+  public final a KnS = new a(8192, false);
+  public final a KnT = new a(8193, true);
+  public final a KnU = new a(8194, false);
+  public final a KnV = new a(8195, false);
+  public final a KnW = new a(8196, false);
+  public final a KnX = new a(8197, false);
+  public final a KnY = new a(8198, true);
+  public final a[] KnZ = { this.KnH, this.KnI, this.KnJ, this.KnK, this.KnL, this.KnM, this.KnN, this.KnO, this.KnP, this.KnQ, this.KnR, this.KnS, this.KnT, this.KnU, this.KnV, this.KnW, this.KnX, this.KnY };
+  public int Koa;
+  public int Kob;
+  public int Koc;
+  public int dataSize;
   public int fileSize;
-  public int hDs;
-  public int oJm;
-  public byte[] taa = new byte[20];
+  public int idU;
+  public byte[] uiq = new byte[20];
   
   final void a(i.e parame)
   {
-    int k = parame.aIq.getInt();
+    int k = parame.aJg.getInt();
     int i = 0;
     a locala;
     for (Object localObject = null; i < k; localObject = locala)
     {
-      int m = parame.aIq.getShort();
-      parame.aIq.getShort();
-      a[] arrayOfa = this.IBQ;
+      int m = parame.aJg.getShort();
+      parame.aJg.getShort();
+      a[] arrayOfa = this.KnZ;
       int n = arrayOfa.length;
       int j = 0;
       while (j < n)
       {
         locala = arrayOfa[j];
-        if (locala.IBU == m)
+        if (locala.Kod == m)
         {
-          j = parame.aIq.getInt();
-          n = parame.aIq.getInt();
+          j = parame.aJg.getInt();
+          n = parame.aJg.getInt();
           if (((locala.size == 0) || (locala.size == j)) && ((locala.off == -1) || (locala.off == n))) {
             break label178;
           }
@@ -68,13 +68,13 @@ public final class s
       }
       i += 1;
     }
-    this.IBy.off = 0;
-    Arrays.sort(this.IBQ);
+    this.KnH.off = 0;
+    Arrays.sort(this.KnZ);
     i = 1;
-    while (i < this.IBQ.length)
+    while (i < this.KnZ.length)
     {
-      if (this.IBQ[i].off == -1) {
-        this.IBQ[i].off = this.IBQ[(i - 1)].off;
+      if (this.KnZ[i].off == -1) {
+        this.KnZ[i].off = this.KnZ[(i - 1)].off;
       }
       i += 1;
     }
@@ -82,7 +82,7 @@ public final class s
   
   public final void b(i.e parame)
   {
-    a[] arrayOfa = this.IBQ;
+    a[] arrayOfa = this.KnZ;
     int m = arrayOfa.length;
     int i = 0;
     int k;
@@ -95,7 +95,7 @@ public final class s
       i += 1;
     }
     parame.writeInt(j);
-    arrayOfa = this.IBQ;
+    arrayOfa = this.KnZ;
     j = arrayOfa.length;
     i = 0;
     while (i < j)
@@ -103,7 +103,7 @@ public final class s
       a locala = arrayOfa[i];
       if (locala.exists())
       {
-        parame.writeShort(locala.IBU);
+        parame.writeShort(locala.Kod);
         parame.writeShort((short)0);
         parame.writeInt(locala.size);
         parame.writeInt(locala.off);
@@ -112,13 +112,13 @@ public final class s
     }
   }
   
-  public final void foQ()
+  public final void fGY()
   {
     int j = this.fileSize;
-    int i = this.IBQ.length - 1;
+    int i = this.KnZ.length - 1;
     while (i >= 0)
     {
-      a locala = this.IBQ[i];
+      a locala = this.KnZ[i];
       int k = j;
       if (locala.off != -1)
       {
@@ -131,23 +131,23 @@ public final class s
       i -= 1;
       j = k;
     }
-    this.IBT = (this.IBy.byteCount + this.IBz.byteCount + this.IBA.byteCount + this.IBB.byteCount + this.IBC.byteCount + this.IBD.byteCount + this.IBE.byteCount);
-    this.oJm = (this.fileSize - this.IBT);
+    this.Koc = (this.KnH.byteCount + this.KnI.byteCount + this.KnJ.byteCount + this.KnK.byteCount + this.KnL.byteCount + this.KnM.byteCount + this.KnN.byteCount);
+    this.dataSize = (this.fileSize - this.Koc);
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public final short IBU;
-    public boolean IBV;
+    public final short Kod;
+    public boolean Koe;
     public int byteCount = 0;
     public int off = -1;
     public int size = 0;
     
     public a(int paramInt, boolean paramBoolean)
     {
-      this.IBU = ((short)paramInt);
-      this.IBV = paramBoolean;
+      this.Kod = ((short)paramInt);
+      this.Koe = paramBoolean;
       if (paramInt == 0)
       {
         this.off = 0;
@@ -160,7 +160,7 @@ public final class s
       this.size = 1;
     }
     
-    private static int acf(int paramInt)
+    private static int afb(int paramInt)
     {
       switch (paramInt)
       {
@@ -211,7 +211,7 @@ public final class s
     
     public final String toString()
     {
-      return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.IBU), Integer.valueOf(this.off), Integer.valueOf(this.size) });
+      return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.Kod), Integer.valueOf(this.off), Integer.valueOf(this.size) });
     }
     
     public static abstract class a<T>

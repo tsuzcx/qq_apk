@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.account.ui.FacebookFriendUI;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 import java.lang.ref.WeakReference;
 
 public final class h
@@ -24,13 +24,13 @@ public final class h
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38782);
-          az.arV();
-          c.afk().set(65833, Integer.valueOf(0));
-          paramAnonymousView = (Context)h.this.BZM.get();
-          Object localObject = new Intent((Context)h.this.BZM.get(), FacebookFriendUI.class);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          az.ayM();
+          c.agA().set(65833, Integer.valueOf(0));
+          paramAnonymousView = (Context)h.this.Dsc.get();
+          Object localObject = new Intent((Context)h.this.Dsc.get(), FacebookFriendUI.class);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           h.this.view.setVisibility(8);
           AppMethodBeat.o(38782);
@@ -45,7 +45,7 @@ public final class h
   public final int getLayoutId()
   {
     AppMethodBeat.i(38784);
-    com.tencent.mm.ax.b.azm();
+    com.tencent.mm.aw.b.aGd();
     AppMethodBeat.o(38784);
     return -1;
   }

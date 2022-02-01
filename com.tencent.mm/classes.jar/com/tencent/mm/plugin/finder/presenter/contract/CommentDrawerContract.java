@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.presenter.contract;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract;", "", "()V", "CloseDrawerCallback", "NPresenter", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract;", "", "()V", "CloseDrawerCallback", "NPresenter", "plugin-finder_release"})
 public final class CommentDrawerContract {}
 
 

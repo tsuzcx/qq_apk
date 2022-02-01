@@ -3,8 +3,8 @@ package com.tencent.mars;
 import android.content.Context;
 import com.tencent.mars.comm.PlatformComm;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -43,7 +43,7 @@ public class Mars
       try
       {
         String[] arrayOfString = new String[0];
-        ad.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
+        ac.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
         Arrays.sort(arrayOfString);
         libModules.add(arrayOfString);
         j = 0;
@@ -139,9 +139,9 @@ public class Mars
     }
   }
   
-  public static void init(Context paramContext, ap paramap)
+  public static void init(Context paramContext, ao paramao)
   {
-    PlatformComm.init(paramContext, paramap);
+    PlatformComm.init(paramContext, paramao);
     hasInitialized = true;
   }
   

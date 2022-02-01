@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dfb;
-import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.protocal.protobuf.dkq;
+import com.tencent.mm.protocal.protobuf.dkr;
 
 public final class d
   extends n
@@ -23,14 +23,14 @@ public final class d
   {
     AppMethodBeat.i(109752);
     b.a locala = new b.a();
-    locala.gUU = new dfb();
-    locala.gUV = new dfc();
+    locala.hvt = new dkq();
+    locala.hvu = new dkr();
     locala.uri = "/cgi-bin/micromsg-bin/unbindqq";
     locala.funcId = 253;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((dfb)this.rr.gUS.gUX).Ddo = paramString;
+    this.rr = locala.aAz();
+    ((dkq)this.rr.hvr.hvw).Ewu = paramString;
     AppMethodBeat.o(109752);
   }
   

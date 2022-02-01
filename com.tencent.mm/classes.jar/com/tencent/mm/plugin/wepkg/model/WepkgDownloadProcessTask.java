@@ -6,21 +6,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.downloader.WePkgDownloader;
 import com.tencent.mm.plugin.wepkg.downloader.WePkgDownloader.IWepkgUpdateCallback;
 import com.tencent.mm.plugin.wepkg.downloader.WePkgDownloader.IWepkgUpdateCallback.RetCode;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class WepkgDownloadProcessTask
   extends BaseWepkgProcessTask
 {
   public static final Parcelable.Creator<WepkgDownloadProcessTask> CREATOR;
-  public int BID;
-  public String BIR;
-  public long BIS;
-  public WePkgDownloader.IWepkgUpdateCallback.RetCode BIT;
-  public String dEO;
+  public int DaM;
+  public String Dba;
+  public long Dbb;
+  public WePkgDownloader.IWepkgUpdateCallback.RetCode Dbc;
+  public String dCA;
   public String downloadUrl;
   public int fileType;
-  public Runnable jwt;
+  public Runnable jWP;
   public String md5;
   public String pkgPath;
   public String version;
@@ -45,68 +45,68 @@ public class WepkgDownloadProcessTask
   {
     AppMethodBeat.i(110702);
     paramParcel.writeInt(this.fileType);
-    paramParcel.writeString(this.dEO);
-    paramParcel.writeString(this.BIR);
+    paramParcel.writeString(this.dCA);
+    paramParcel.writeString(this.Dba);
     paramParcel.writeString(this.downloadUrl);
-    paramParcel.writeLong(this.BIS);
+    paramParcel.writeLong(this.Dbb);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.md5);
-    paramParcel.writeInt(this.BID);
+    paramParcel.writeInt(this.DaM);
     paramParcel.writeString(this.pkgPath);
-    paramParcel.writeParcelable(this.BIT, paramInt);
+    paramParcel.writeParcelable(this.Dbc, paramInt);
     AppMethodBeat.o(110702);
   }
   
-  public final void aEA()
-  {
-    AppMethodBeat.i(110700);
-    if (this.jwt != null) {
-      this.jwt.run();
-    }
-    AppMethodBeat.o(110700);
-  }
-  
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(110699);
-    aXm();
+    bej();
     WePkgDownloader.IWepkgUpdateCallback local1 = new WePkgDownloader.IWepkgUpdateCallback()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, WePkgDownloader.IWepkgUpdateCallback.RetCode paramAnonymousRetCode)
       {
         AppMethodBeat.i(110696);
-        ad.i("MicroMsg.Wepkg.WepkgDownloadProcessTask", "onPkgUpdatingCallback errCode:%s", new Object[] { paramAnonymousRetCode });
-        WepkgDownloadProcessTask.this.dEO = paramAnonymousString1;
+        ac.i("MicroMsg.Wepkg.WepkgDownloadProcessTask", "onPkgUpdatingCallback errCode:%s", new Object[] { paramAnonymousRetCode });
+        WepkgDownloadProcessTask.this.dCA = paramAnonymousString1;
         WepkgDownloadProcessTask.this.pkgPath = paramAnonymousString2;
-        WepkgDownloadProcessTask.this.BIT = paramAnonymousRetCode;
-        WepkgDownloadProcessTask.this.aXn();
+        WepkgDownloadProcessTask.this.Dbc = paramAnonymousRetCode;
+        WepkgDownloadProcessTask.this.bek();
         WepkgDownloadProcessTask.a(WepkgDownloadProcessTask.this);
         AppMethodBeat.o(110696);
       }
     };
     if (this.fileType == 1)
     {
-      WePkgDownloader.etH().a(this.dEO, local1);
+      WePkgDownloader.eJa().a(this.dCA, local1);
       AppMethodBeat.o(110699);
       return;
     }
-    WePkgDownloader.etH().a(this.fileType, bt.nullAsNil(this.dEO), "", bt.nullAsNil(this.BIR), bt.nullAsNil(this.downloadUrl), this.BIS, bt.nullAsNil(this.version), "", bt.nullAsNil(this.md5), this.BID, local1);
+    WePkgDownloader.eJa().a(this.fileType, bs.nullAsNil(this.dCA), "", bs.nullAsNil(this.Dba), bs.nullAsNil(this.downloadUrl), this.Dbb, bs.nullAsNil(this.version), "", bs.nullAsNil(this.md5), this.DaM, local1);
     AppMethodBeat.o(110699);
   }
   
-  public final void m(Parcel paramParcel)
+  public final void aLr()
+  {
+    AppMethodBeat.i(110700);
+    if (this.jWP != null) {
+      this.jWP.run();
+    }
+    AppMethodBeat.o(110700);
+  }
+  
+  public final void n(Parcel paramParcel)
   {
     AppMethodBeat.i(110701);
     this.fileType = paramParcel.readInt();
-    this.dEO = paramParcel.readString();
-    this.BIR = paramParcel.readString();
+    this.dCA = paramParcel.readString();
+    this.Dba = paramParcel.readString();
     this.downloadUrl = paramParcel.readString();
-    this.BIS = paramParcel.readLong();
+    this.Dbb = paramParcel.readLong();
     this.version = paramParcel.readString();
     this.md5 = paramParcel.readString();
-    this.BID = paramParcel.readInt();
+    this.DaM = paramParcel.readInt();
     this.pkgPath = paramParcel.readString();
-    this.BIT = ((WePkgDownloader.IWepkgUpdateCallback.RetCode)paramParcel.readParcelable(WePkgDownloader.IWepkgUpdateCallback.RetCode.class.getClassLoader()));
+    this.Dbc = ((WePkgDownloader.IWepkgUpdateCallback.RetCode)paramParcel.readParcelable(WePkgDownloader.IWepkgUpdateCallback.RetCode.class.getClassLoader()));
     AppMethodBeat.o(110701);
   }
 }

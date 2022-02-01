@@ -14,9 +14,9 @@ public class JsApiGetStorageInfoTask
 {
   public static final Parcelable.Creator<JsApiGetStorageInfoTask> CREATOR;
   public String appId;
-  public Runnable jwt;
-  public int kkZ;
-  public ArrayList<String> kle;
+  public Runnable jWP;
+  public int kMr;
+  public ArrayList<String> kMw;
   public int limit;
   public int size;
   
@@ -27,32 +27,23 @@ public class JsApiGetStorageInfoTask
     AppMethodBeat.o(147258);
   }
   
-  public final void aEA()
-  {
-    AppMethodBeat.i(147255);
-    if (this.jwt != null) {
-      this.jwt.run();
-    }
-    AppMethodBeat.o(147255);
-  }
-  
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(147254);
     if (e.K(a.class) == null) {}
-    for (Object localObject1 = null; localObject1 == null; localObject1 = ((a)e.K(a.class)).Dg())
+    for (Object localObject1 = null; localObject1 == null; localObject1 = ((a)e.K(a.class)).CJ())
     {
-      aXw();
+      bet();
       AppMethodBeat.o(147254);
       return;
     }
     try
     {
-      localObject1 = ((d)localObject1).S(this.kkZ, this.appId);
-      this.kle = ((ArrayList)localObject1[0]);
+      localObject1 = ((d)localObject1).T(this.kMr, this.appId);
+      this.kMw = ((ArrayList)localObject1[0]);
       this.size = ((int)Math.ceil(((Integer)localObject1[1]).doubleValue() / 1000.0D));
       this.limit = ((int)Math.ceil(((Integer)localObject1[2]).doubleValue() / 1000.0D));
-      aXw();
+      bet();
       AppMethodBeat.o(147254);
       return;
     }
@@ -62,12 +53,21 @@ public class JsApiGetStorageInfoTask
     }
   }
   
+  public final void aLr()
+  {
+    AppMethodBeat.i(147255);
+    if (this.jWP != null) {
+      this.jWP.run();
+    }
+    AppMethodBeat.o(147255);
+  }
+  
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(147256);
     this.appId = paramParcel.readString();
-    this.kkZ = paramParcel.readInt();
-    this.kle = paramParcel.createStringArrayList();
+    this.kMr = paramParcel.readInt();
+    this.kMw = paramParcel.createStringArrayList();
     this.size = paramParcel.readInt();
     this.limit = paramParcel.readInt();
     AppMethodBeat.o(147256);
@@ -77,8 +77,8 @@ public class JsApiGetStorageInfoTask
   {
     AppMethodBeat.i(147257);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.kkZ);
-    paramParcel.writeStringList(this.kle);
+    paramParcel.writeInt(this.kMr);
+    paramParcel.writeStringList(this.kMw);
     paramParcel.writeInt(this.size);
     paramParcel.writeInt(this.limit);
     AppMethodBeat.o(147257);
@@ -86,7 +86,7 @@ public class JsApiGetStorageInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiGetStorageInfoTask
  * JD-Core Version:    0.7.0.1
  */

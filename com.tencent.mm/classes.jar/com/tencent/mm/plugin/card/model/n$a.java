@@ -7,14 +7,14 @@ public enum n$a
   static
   {
     AppMethodBeat.i(112798);
-    nto = new a("NORMAL_TYPE", 0);
-    ntp = new a("INVALID_TYPE", 1);
-    ntq = new a("CAN_GIFT_TYPE", 2);
-    ntr = new a("GENERAL_TYPE", 3);
-    nts = new a("MEMBER_CARD_TYPE", 4);
-    ntt = new a("HOME_MEMBER_CARD_TYPE", 5);
-    ntu = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
-    ntv = new a[] { nto, ntp, ntq, ntr, nts, ntt, ntu };
+    nWo = new a("NORMAL_TYPE", 0);
+    nWp = new a("INVALID_TYPE", 1);
+    nWq = new a("CAN_GIFT_TYPE", 2);
+    nWr = new a("GENERAL_TYPE", 3);
+    nWs = new a("MEMBER_CARD_TYPE", 4);
+    nWt = new a("HOME_MEMBER_CARD_TYPE", 5);
+    nWu = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
+    nWv = new a[] { nWo, nWp, nWq, nWr, nWs, nWt, nWu };
     AppMethodBeat.o(112798);
   }
   

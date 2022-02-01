@@ -11,21 +11,21 @@ import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public abstract class a<T>
   extends BaseAdapter
 {
-  private static int sem = 500;
+  private static int tmg = 500;
   protected Context mContext;
-  protected LinkedList<T> rYm;
-  private a sej;
-  protected boolean sek = false;
-  private f<String, Bitmap> sel;
-  private av sen = new av(new av.a()
+  protected LinkedList<T> tge;
+  private a tmd;
+  protected boolean tme = false;
+  private f<String, Bitmap> tmf;
+  private au tmh = new au(new au.a()
   {
     public final boolean onTimerExpired()
     {
@@ -35,15 +35,15 @@ public abstract class a<T>
       return false;
     }
   }, false);
-  private final k.a seo = new k.a()
+  private final k.a tmi = new k.a()
   {
     public final void a(String paramAnonymousString, m paramAnonymousm)
     {
       AppMethodBeat.i(41857);
       a.a(a.this).stopTimer();
       paramAnonymousString = a.a(a.this);
-      long l = a.sem;
-      paramAnonymousString.av(l, l);
+      long l = a.tmg;
+      paramAnonymousString.au(l, l);
       AppMethodBeat.o(41857);
     }
   };
@@ -51,15 +51,15 @@ public abstract class a<T>
   public a(Context paramContext)
   {
     this.mContext = paramContext;
-    this.rYm = new LinkedList();
-    this.sel = new b(20, getClass());
-    com.tencent.mm.plugin.s.a.cZQ().add(this.seo);
+    this.tge = new LinkedList();
+    this.tmf = new b(20, getClass());
+    com.tencent.mm.plugin.s.a.dny().add(this.tmi);
   }
   
-  protected final Bitmap acO(String paramString)
+  protected final Bitmap ahG(String paramString)
   {
     Object localObject;
-    if (bt.isNullOrNil(paramString)) {
+    if (bs.isNullOrNil(paramString)) {
       localObject = null;
     }
     Bitmap localBitmap;
@@ -70,76 +70,76 @@ public abstract class a<T>
         do
         {
           return localObject;
-          if (!this.sel.aN(paramString)) {
+          if (!this.tmf.aK(paramString)) {
             break;
           }
-          localBitmap = (Bitmap)this.sel.get(paramString);
+          localBitmap = (Bitmap)this.tmf.get(paramString);
           if (localBitmap == null) {
             break;
           }
           localObject = localBitmap;
         } while (!localBitmap.isRecycled());
-        localBitmap = h.c(paramString, 1, com.tencent.mm.cd.a.getDensity(this.mContext));
+        localBitmap = h.c(paramString, 1, com.tencent.mm.cc.a.getDensity(this.mContext));
         localObject = localBitmap;
       } while (localBitmap == null);
       localObject = localBitmap;
     } while (localBitmap.isRecycled());
-    this.sel.o(paramString, localBitmap);
+    this.tmf.o(paramString, localBitmap);
     return localBitmap;
   }
   
-  public void aq(LinkedList<T> paramLinkedList)
+  public void ax(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.sej != null) {
-        this.rYm.size();
+      if (this.tmd != null) {
+        this.tge.size();
       }
       return;
     }
-    this.rYm.addAll(paramLinkedList);
-    if (this.sej != null) {
-      this.rYm.size();
+    this.tge.addAll(paramLinkedList);
+    if (this.tmd != null) {
+      this.tge.size();
     }
     super.notifyDataSetChanged();
   }
   
-  public void ar(LinkedList<T> paramLinkedList)
+  public void ay(LinkedList<T> paramLinkedList)
   {
     if (paramLinkedList == null)
     {
-      if (this.sej != null) {
-        this.rYm.size();
+      if (this.tmd != null) {
+        this.tge.size();
       }
       return;
     }
-    this.rYm = paramLinkedList;
-    if (this.sej != null) {
-      this.rYm.size();
+    this.tge = paramLinkedList;
+    if (this.tmd != null) {
+      this.tge.size();
     }
     super.notifyDataSetChanged();
   }
   
   public void clear()
   {
-    if (this.rYm != null) {
-      this.rYm.clear();
+    if (this.tge != null) {
+      this.tge.clear();
     }
-    if (this.sel != null) {
-      this.sel.a(new f.a() {});
+    if (this.tmf != null) {
+      this.tmf.a(new f.a() {});
     }
-    this.sel = null;
-    com.tencent.mm.plugin.s.a.cZQ().remove(this.seo);
+    this.tmf = null;
+    com.tencent.mm.plugin.s.a.dny().remove(this.tmi);
   }
   
   public int getCount()
   {
-    return this.rYm.size();
+    return this.tge.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.rYm.get(paramInt);
+    return this.tge.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -151,7 +151,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.a
  * JD-Core Version:    0.7.0.1
  */

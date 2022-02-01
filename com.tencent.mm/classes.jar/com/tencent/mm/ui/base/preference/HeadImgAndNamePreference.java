@@ -15,17 +15,17 @@ import com.tencent.mm.ui.f.a.a;
 public final class HeadImgAndNamePreference
   extends Preference
 {
-  private View Gem;
-  private LinearLayout Gen;
-  private String Geo;
-  private boolean Gep;
-  private boolean Geq;
-  private a Ger;
-  private ImageView fxT;
-  private TextView hJe;
+  private View HEb;
+  private LinearLayout HEc;
+  private String HEd;
+  private boolean HEe;
+  private boolean HEf;
+  private a HEg;
+  private ImageView fBA;
   private int height;
-  private ImageView nAV;
-  private View.OnClickListener tOp;
+  private TextView ijE;
+  private ImageView odV;
+  private View.OnClickListener uWS;
   
   public HeadImgAndNamePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,87 +37,87 @@ public final class HeadImgAndNamePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164162);
     this.height = -1;
-    this.Geq = false;
-    this.Ger = null;
+    this.HEf = false;
+    this.HEg = null;
     setLayoutResource(2131494804);
     AppMethodBeat.o(164162);
   }
   
   public final void a(a parama)
   {
-    this.Ger = parama;
+    this.HEg = parama;
   }
   
-  public final void aKj(String paramString)
+  public final void aPM(String paramString)
   {
     AppMethodBeat.i(164164);
-    this.Geo = null;
-    if (this.nAV != null) {
-      if (this.Ger != null) {
-        this.Ger.b(paramString, this.nAV);
+    this.HEd = null;
+    if (this.odV != null) {
+      if (this.HEg != null) {
+        this.HEg.b(paramString, this.odV);
       }
     }
     while (paramString == null)
     {
-      this.Geq = false;
+      this.HEf = false;
       AppMethodBeat.o(164164);
       return;
-      if (this.Gep)
+      if (this.HEe)
       {
-        a.d(this.nAV, paramString);
+        a.d(this.odV, paramString);
       }
       else
       {
-        a.c(this.nAV, paramString);
+        a.c(this.odV, paramString);
         continue;
-        this.Geo = paramString;
+        this.HEd = paramString;
       }
     }
-    this.Geq = true;
+    this.HEf = true;
     AppMethodBeat.o(164164);
-  }
-  
-  public final void eTy()
-  {
-    this.Gep = true;
   }
   
   public final void f(View.OnClickListener paramOnClickListener)
   {
-    this.tOp = paramOnClickListener;
+    this.uWS = paramOnClickListener;
+  }
+  
+  public final void fjk()
+  {
+    this.HEe = true;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(164165);
     super.onBindView(paramView);
-    if (this.nAV == null) {
-      this.nAV = ((ImageView)paramView.findViewById(2131300940));
+    if (this.odV == null) {
+      this.odV = ((ImageView)paramView.findViewById(2131300940));
     }
-    if (this.hJe == null) {
-      this.hJe = ((TextView)paramView.findViewById(2131302878));
+    if (this.ijE == null) {
+      this.ijE = ((TextView)paramView.findViewById(2131302878));
     }
-    if (this.Gem == null) {
-      this.Gem = paramView.findViewById(2131302161);
+    if (this.HEb == null) {
+      this.HEb = paramView.findViewById(2131302161);
     }
-    if (this.tOp != null) {
-      this.Gem.setOnClickListener(this.tOp);
+    if (this.uWS != null) {
+      this.HEb.setOnClickListener(this.uWS);
     }
-    if (this.Geo != null)
+    if (this.HEd != null)
     {
-      if (this.Ger != null)
+      if (this.HEg != null)
       {
-        this.Ger.b(this.Geo, this.nAV);
-        this.Geo = null;
+        this.HEg.b(this.HEd, this.odV);
+        this.HEd = null;
       }
     }
     else
     {
-      if (this.Geq) {
+      if (this.HEf) {
         break label212;
       }
-      this.Gem.setVisibility(8);
-      this.hJe.setVisibility(0);
+      this.HEb.setVisibility(8);
+      this.ijE.setVisibility(0);
     }
     for (;;)
     {
@@ -127,20 +127,20 @@ public final class HeadImgAndNamePreference
       }
       AppMethodBeat.o(164165);
       return;
-      if (this.Gep)
+      if (this.HEe)
       {
-        a.d(this.nAV, this.Geo);
+        a.d(this.odV, this.HEd);
         break;
       }
-      a.c(this.nAV, this.Geo);
+      a.c(this.odV, this.HEd);
       break;
       label212:
-      this.hJe.setVisibility(8);
-      this.Gem.setVisibility(0);
-      if (this.Gep) {
-        this.Gem.setBackground(this.mContext.getDrawable(2131233939));
+      this.ijE.setVisibility(8);
+      this.HEb.setVisibility(0);
+      if (this.HEe) {
+        this.HEb.setBackground(this.mContext.getDrawable(2131233939));
       } else {
-        this.Gem.setBackground(this.mContext.getDrawable(2131233937));
+        this.HEb.setBackground(this.mContext.getDrawable(2131233937));
       }
     }
   }
@@ -152,11 +152,11 @@ public final class HeadImgAndNamePreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
     View.inflate(this.mContext, 2131494823, localViewGroup);
-    this.nAV = ((ImageView)paramViewGroup.findViewById(2131300940));
-    this.Gem = paramViewGroup.findViewById(2131302162);
-    this.Gen = ((LinearLayout)paramViewGroup.findViewById(2131299005));
-    this.fxT = ((ImageView)paramViewGroup.findViewById(2131300874));
-    this.hJe = ((TextView)paramViewGroup.findViewById(2131298996));
+    this.odV = ((ImageView)paramViewGroup.findViewById(2131300940));
+    this.HEb = paramViewGroup.findViewById(2131302162);
+    this.HEc = ((LinearLayout)paramViewGroup.findViewById(2131299005));
+    this.fBA = ((ImageView)paramViewGroup.findViewById(2131300874));
+    this.ijE = ((TextView)paramViewGroup.findViewById(2131298996));
     AppMethodBeat.o(164163);
     return paramViewGroup;
   }
@@ -168,7 +168,7 @@ public final class HeadImgAndNamePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.HeadImgAndNamePreference
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mm.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String gPh;
-  public long glk;
+  public long gLX;
+  public String hpH;
   public int key;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -16,30 +16,30 @@ public final class bw
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aR(1, this.key);
-      if (this.gPh != null) {
-        paramVarArgs.d(2, this.gPh);
+      if (this.hpH != null) {
+        paramVarArgs.d(2, this.hpH);
       }
-      paramVarArgs.aG(3, this.glk);
+      paramVarArgs.aO(3, this.gLX);
       AppMethodBeat.o(143730);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.key) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.key) + 0;
       paramInt = i;
-      if (this.gPh != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.gPh);
+      if (this.hpH != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.hpH);
       }
-      i = f.a.a.b.b.a.q(3, this.glk);
+      i = f.a.a.b.b.a.p(3, this.gLX);
       AppMethodBeat.o(143730);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(143730);
@@ -55,15 +55,15 @@ public final class bw
         AppMethodBeat.o(143730);
         return -1;
       case 1: 
-        localbw.key = locala.KhF.xS();
+        localbw.key = locala.LVo.xF();
         AppMethodBeat.o(143730);
         return 0;
       case 2: 
-        localbw.gPh = locala.KhF.readString();
+        localbw.hpH = locala.LVo.readString();
         AppMethodBeat.o(143730);
         return 0;
       }
-      localbw.glk = locala.KhF.xT();
+      localbw.gLX = locala.LVo.xG();
       AppMethodBeat.o(143730);
       return 0;
     }
@@ -73,7 +73,7 @@ public final class bw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.model.bw
  * JD-Core Version:    0.7.0.1
  */

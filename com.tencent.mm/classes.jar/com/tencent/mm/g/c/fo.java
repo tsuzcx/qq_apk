@@ -8,19 +8,24 @@ public abstract class fo
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eYj = "tagId".hashCode();
-  private static final int eYk = "tagName".hashCode();
-  private static final int eYl = "memberList".hashCode();
-  private static final int eyk = "count".hashCode();
+  private static final int eDF = "extFlag".hashCode();
+  private static final int eEW;
+  private static final int faH = "draft".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eYg = true;
-  private boolean eYh = true;
-  private boolean eYi = true;
-  private boolean exJ = true;
-  public int field_count;
-  public String field_memberList;
-  public long field_tagId;
-  public String field_tagName;
+  private boolean __hadSetkey = true;
+  private boolean eDA = true;
+  private boolean eEM = true;
+  private boolean faG = true;
+  public byte[] field_draft;
+  public int field_extFlag;
+  public String field_key;
+  public long field_timestamp;
+  
+  static
+  {
+    eEW = "timestamp".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,23 +40,24 @@ public abstract class fo
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eYj != k) {
-        break label60;
+      if (key_HASHCODE != k) {
+        break label65;
       }
-      this.field_tagId = paramCursor.getLong(i);
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eYk == k) {
-        this.field_tagName = paramCursor.getString(i);
-      } else if (eyk == k) {
-        this.field_count = paramCursor.getInt(i);
-      } else if (eYl == k) {
-        this.field_memberList = paramCursor.getString(i);
+      label65:
+      if (eEW == k) {
+        this.field_timestamp = paramCursor.getLong(i);
+      } else if (eDF == k) {
+        this.field_extFlag = paramCursor.getInt(i);
+      } else if (faH == k) {
+        this.field_draft = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,23 +67,20 @@ public abstract class fo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eYg) {
-      localContentValues.put("tagId", Long.valueOf(this.field_tagId));
+    if (this.field_key == null) {
+      this.field_key = "";
     }
-    if (this.field_tagName == null) {
-      this.field_tagName = "";
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.eYh) {
-      localContentValues.put("tagName", this.field_tagName);
+    if (this.eEM) {
+      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
     }
-    if (this.exJ) {
-      localContentValues.put("count", Integer.valueOf(this.field_count));
+    if (this.eDA) {
+      localContentValues.put("extFlag", Integer.valueOf(this.field_extFlag));
     }
-    if (this.field_memberList == null) {
-      this.field_memberList = "";
-    }
-    if (this.eYi) {
-      localContentValues.put("memberList", this.field_memberList);
+    if (this.faG) {
+      localContentValues.put("draft", this.field_draft);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -23,30 +23,30 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.brf;
+import com.tencent.mm.protocal.protobuf.bvw;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
 public class ReaderAppSubscribeUI
   extends MMActivity
 {
-  private ListView uVP;
-  private a uVQ;
+  private ListView weE;
+  private a weF;
   
-  private void JT(int paramInt)
+  private void LS(int paramInt)
   {
     AppMethodBeat.i(102714);
-    g.afB().afk().set(868518889, Integer.valueOf(paramInt));
-    Object localObject = new brf();
-    ((brf)localObject).DPa = paramInt;
-    ((k)g.ab(k.class)).apL().c(new j.a(43, (com.tencent.mm.bx.a)localObject));
+    g.agR().agA().set(868518889, Integer.valueOf(paramInt));
+    Object localObject = new bvw();
+    ((bvw)localObject).Flr = paramInt;
+    ((k)g.ab(k.class)).awA().c(new j.a(43, (com.tencent.mm.bw.a)localObject));
     localObject = new Intent();
     ((Intent)localObject).putExtra("Contact_User", "newsapp");
     ((Intent)localObject).addFlags(67108864);
-    com.tencent.mm.plugin.readerapp.b.a.hYt.c((Intent)localObject, this);
+    com.tencent.mm.plugin.readerapp.b.a.iyx.c((Intent)localObject, this);
     finish();
     AppMethodBeat.o(102714);
   }
@@ -59,22 +59,22 @@ public class ReaderAppSubscribeUI
   public void initView()
   {
     AppMethodBeat.i(102712);
-    this.uVQ = new a(this, bt.l((Integer)g.afB().afk().get(868518889, null)));
-    this.uVP = ((ListView)findViewById(2131303782));
-    this.uVP.setAdapter(this.uVQ);
-    this.uVP.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.weF = new a(this, bs.m((Integer)g.agR().agA().get(868518889, null)));
+    this.weE = ((ListView)findViewById(2131303782));
+    this.weE.setAdapter(this.weF);
+    this.weE.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         int i = 1;
         AppMethodBeat.i(102706);
         paramAnonymousAdapterView = ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this);
-        if ((paramAnonymousAdapterView.uVT & paramAnonymousAdapterView.uVS[paramAnonymousInt]) != 0)
+        if ((paramAnonymousAdapterView.weI & paramAnonymousAdapterView.weH[paramAnonymousInt]) != 0)
         {
-          paramAnonymousAdapterView.uVT &= (paramAnonymousAdapterView.uVS[paramAnonymousInt] ^ 0xFFFFFFFF);
-          paramAnonymousAdapterView.uVV -= 1;
-          if (paramAnonymousAdapterView.uVV < 0) {
-            paramAnonymousAdapterView.uVV = 0;
+          paramAnonymousAdapterView.weI &= (paramAnonymousAdapterView.weH[paramAnonymousInt] ^ 0xFFFFFFFF);
+          paramAnonymousAdapterView.weK -= 1;
+          if (paramAnonymousAdapterView.weK < 0) {
+            paramAnonymousAdapterView.weK = 0;
           }
           paramAnonymousAdapterView.notifyDataSetChanged();
           paramAnonymousInt = i;
@@ -82,16 +82,16 @@ public class ReaderAppSubscribeUI
         for (;;)
         {
           if (paramAnonymousInt == 0) {
-            h.j(ReaderAppSubscribeUI.this, 2131757781, 2131755906);
+            h.l(ReaderAppSubscribeUI.this, 2131757781, 2131755906);
           }
           AppMethodBeat.o(102706);
           return;
-          if (paramAnonymousAdapterView.uVV < 3)
+          if (paramAnonymousAdapterView.weK < 3)
           {
-            paramAnonymousAdapterView.uVT |= paramAnonymousAdapterView.uVS[paramAnonymousInt];
-            paramAnonymousAdapterView.uVV += 1;
-            if (paramAnonymousAdapterView.uVV > paramAnonymousAdapterView.uVS.length) {
-              paramAnonymousAdapterView.uVV = paramAnonymousAdapterView.uVS.length;
+            paramAnonymousAdapterView.weI |= paramAnonymousAdapterView.weH[paramAnonymousInt];
+            paramAnonymousAdapterView.weK += 1;
+            if (paramAnonymousAdapterView.weK > paramAnonymousAdapterView.weH.length) {
+              paramAnonymousAdapterView.weK = paramAnonymousAdapterView.weH.length;
             }
             paramAnonymousAdapterView.notifyDataSetChanged();
             paramAnonymousInt = i;
@@ -103,13 +103,13 @@ public class ReaderAppSubscribeUI
         }
       }
     });
-    this.uVQ.notifyDataSetChanged();
+    this.weF.notifyDataSetChanged();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(102707);
-        ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this, ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this).uVT);
+        ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this, ReaderAppSubscribeUI.a(ReaderAppSubscribeUI.this).weI);
         AppMethodBeat.o(102707);
         return true;
       }
@@ -120,10 +120,10 @@ public class ReaderAppSubscribeUI
       {
         AppMethodBeat.i(102708);
         paramAnonymousView = ReaderAppSubscribeUI.b(ReaderAppSubscribeUI.this);
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
         Object localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/readerapp/ui/ReaderAppSubscribeUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
         AppMethodBeat.o(102708);
       }
@@ -135,7 +135,7 @@ public class ReaderAppSubscribeUI
   {
     AppMethodBeat.i(102711);
     super.onCreate(paramBundle);
-    g.afB().afk().set(868518890, "in");
+    g.agR().agA().set(868518890, "in");
     setMMTitle(2131757780);
     initView();
     AppMethodBeat.o(102711);
@@ -146,8 +146,8 @@ public class ReaderAppSubscribeUI
     AppMethodBeat.i(102713);
     if (paramInt == 4)
     {
-      if (this.uVQ != null) {
-        JT(this.uVQ.uVT);
+      if (this.weF != null) {
+        LS(this.weF.weI);
       }
       AppMethodBeat.o(102713);
       return true;
@@ -161,7 +161,7 @@ public class ReaderAppSubscribeUI
   {
     AppMethodBeat.i(102715);
     super.onResume();
-    this.uVQ.notifyDataSetChanged();
+    this.weF.notifyDataSetChanged();
     AppMethodBeat.o(102715);
   }
   
@@ -175,31 +175,31 @@ public class ReaderAppSubscribeUI
     extends BaseAdapter
   {
     private final Context context;
-    final int[] uVS;
-    int uVT;
-    private String[] uVU;
-    int uVV;
+    final int[] weH;
+    int weI;
+    private String[] weJ;
+    int weK;
     
     public a(Context paramContext, int paramInt)
     {
       AppMethodBeat.i(102709);
-      this.uVS = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 };
-      this.uVU = null;
-      this.uVV = 0;
+      this.weH = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192 };
+      this.weJ = null;
+      this.weK = 0;
       this.context = paramContext;
-      this.uVT = paramInt;
-      this.uVU = paramContext.getString(2131762184).split(";");
-      this.uVV = JU(paramInt);
+      this.weI = paramInt;
+      this.weJ = paramContext.getString(2131762184).split(";");
+      this.weK = LT(paramInt);
       AppMethodBeat.o(102709);
     }
     
-    private int JU(int paramInt)
+    private int LT(int paramInt)
     {
       int j = 0;
       int i = 0;
-      if (j < this.uVS.length)
+      if (j < this.weH.length)
       {
-        if ((this.uVS[j] & paramInt) == 0) {
+        if ((this.weH[j] & paramInt) == 0) {
           break label37;
         }
         i += 1;
@@ -215,7 +215,7 @@ public class ReaderAppSubscribeUI
     
     public final int getCount()
     {
-      return this.uVU.length;
+      return this.weJ.length;
     }
     
     public final long getItemId(int paramInt)
@@ -230,12 +230,12 @@ public class ReaderAppSubscribeUI
       {
         paramViewGroup = new a();
         paramView = View.inflate(this.context, 2131495193, null);
-        paramViewGroup.ica = ((TextView)paramView.findViewById(2131303781));
-        paramViewGroup.icb = ((CheckBox)paramView.findViewById(2131303780));
+        paramViewGroup.iCg = ((TextView)paramView.findViewById(2131303781));
+        paramViewGroup.iCi = ((CheckBox)paramView.findViewById(2131303780));
         paramView.setTag(paramViewGroup);
-        paramViewGroup.ica.setText(this.uVU[paramInt]);
-        paramViewGroup = paramViewGroup.icb;
-        if ((this.uVT & this.uVS[paramInt]) == 0) {
+        paramViewGroup.iCg.setText(this.weJ[paramInt]);
+        paramViewGroup = paramViewGroup.iCi;
+        if ((this.weI & this.weH[paramInt]) == 0) {
           break label118;
         }
       }
@@ -252,14 +252,14 @@ public class ReaderAppSubscribeUI
     
     static final class a
     {
-      TextView ica;
-      CheckBox icb;
+      TextView iCg;
+      CheckBox iCi;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.ui.ReaderAppSubscribeUI
  * JD-Core Version:    0.7.0.1
  */

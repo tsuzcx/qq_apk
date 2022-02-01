@@ -8,7 +8,7 @@ import java.io.Reader;
 
 public final class e
 {
-  public static String Y(InputStream paramInputStream)
+  public static String X(InputStream paramInputStream)
   {
     AppMethodBeat.i(40583);
     d.j(paramInputStream, "Cannot get String from a null object");
@@ -40,7 +40,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.g.e
  * JD-Core Version:    0.7.0.1
  */

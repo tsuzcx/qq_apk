@@ -102,18 +102,18 @@ public abstract interface IImageDecodeService
       static
       {
         AppMethodBeat.i(127358);
-        aPK = new a("OK", 0);
-        aPL = new a("NOT_EXIST", 1);
-        aPM = new a("PRE_DECODE_ERROR", 2);
-        aPN = new a("DECODE_ERROR", 3);
-        aPO = new a("UNSUPPORTED_IMG_FORMAT", 4);
-        aPP = new a("HUGE_SIZE", 5);
-        aPQ = new a("IO_ERROR", 6);
-        aPR = new a("OUT_OF_MEMORY", 7);
-        aPS = new a("LEGACY_MODE", 8);
-        aPT = new a("TIME_COST_HUGE", 9);
-        aPU = new a("NATIVE_DECODE_ERROR", 10);
-        aPV = new a[] { aPK, aPL, aPM, aPN, aPO, aPP, aPQ, aPR, aPS, aPT, aPU };
+        aQA = new a("OK", 0);
+        aQB = new a("NOT_EXIST", 1);
+        aQC = new a("PRE_DECODE_ERROR", 2);
+        aQD = new a("DECODE_ERROR", 3);
+        aQE = new a("UNSUPPORTED_IMG_FORMAT", 4);
+        aQF = new a("HUGE_SIZE", 5);
+        aQG = new a("IO_ERROR", 6);
+        aQH = new a("OUT_OF_MEMORY", 7);
+        aQI = new a("LEGACY_MODE", 8);
+        aQJ = new a("TIME_COST_HUGE", 9);
+        aQK = new a("NATIVE_DECODE_ERROR", 10);
+        aQL = new a[] { aQA, aQB, aQC, aQD, aQE, aQF, aQG, aQH, aQI, aQJ, aQK };
         AppMethodBeat.o(127358);
       }
       
@@ -123,12 +123,12 @@ public abstract interface IImageDecodeService
   
   public static abstract interface c
   {
-    public abstract void Z(Object paramObject);
+    public abstract void ab(Object paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.github.henryye.nativeiv.api.IImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class qq
   extends b
 {
-  public a dwr;
-  public b dws;
+  public a dtB;
   
   public qq()
   {
@@ -18,30 +15,24 @@ public final class qq
   
   private qq(byte paramByte)
   {
-    AppMethodBeat.i(149885);
-    this.dwr = new a();
-    this.dws = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116043);
+    this.dtB = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149885);
+    AppMethodBeat.o(116043);
   }
   
   public static final class a
   {
-    public Context context;
-    public int dwl;
-    public Bundle extras;
-  }
-  
-  public static final class b
-  {
-    public boolean dwi;
-    public Bundle extras;
+    public String appId;
+    public String dtC;
+    public String dtD;
+    public String mediaTagName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.qq
  * JD-Core Version:    0.7.0.1
  */

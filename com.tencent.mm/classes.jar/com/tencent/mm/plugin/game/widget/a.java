@@ -20,25 +20,25 @@ import java.util.Iterator;
 
 public final class a
 {
-  private TextPaint Lm;
-  TextView Tu;
-  private TextWatcher atH;
+  private TextPaint Mh;
+  TextView Up;
+  private TextWatcher auC;
   private boolean mEnabled;
   private ArrayList<b> mListeners;
-  private int nmN;
-  private float oqc;
-  float soL;
-  float soM;
-  float soN;
-  boolean soO;
+  private int nPN;
+  private float oTC;
+  float twE;
+  float twF;
+  float twG;
+  boolean twH;
   
   private a(TextView paramTextView)
   {
     AppMethodBeat.i(42581);
-    this.atH = new a((byte)0);
+    this.auC = new a((byte)0);
     float f = paramTextView.getContext().getResources().getDisplayMetrics().scaledDensity;
-    this.Tu = paramTextView;
-    this.Lm = new TextPaint();
+    this.Up = paramTextView;
+    this.Mh = new TextPaint();
     setRawTextSize(paramTextView.getTextSize());
     int i = -1;
     TransformationMethod localTransformationMethod = paramTextView.getTransformationMethod();
@@ -47,10 +47,10 @@ public final class a
     }
     for (;;)
     {
-      this.nmN = i;
-      this.soL = (8.0F * f);
-      this.soM = this.oqc;
-      this.soN = 0.5F;
+      this.nPN = i;
+      this.twE = (8.0F * f);
+      this.twF = this.oTC;
+      this.twG = 0.5F;
       AppMethodBeat.o(42581);
       return;
       if (Build.VERSION.SDK_INT >= 16) {
@@ -136,11 +136,11 @@ public final class a
     paramTextView = new a(paramTextView);
     if (paramAttributeSet != null)
     {
-      int i = (int)paramTextView.soL;
-      float f = paramTextView.soN;
-      paramTextView.p(0, i).aV(f);
+      int i = (int)paramTextView.twE;
+      float f = paramTextView.twG;
+      paramTextView.p(0, i).bc(f);
     }
-    paramTextView.ma(true);
+    paramTextView.mT(true);
     AppMethodBeat.o(42578);
     return paramTextView;
   }
@@ -196,18 +196,18 @@ public final class a
     }
   }
   
-  private void aW(float paramFloat)
+  private void bd(float paramFloat)
   {
     AppMethodBeat.i(42585);
-    if (paramFloat != this.soL)
+    if (paramFloat != this.twE)
     {
-      this.soL = paramFloat;
-      cED();
+      this.twE = paramFloat;
+      cRN();
     }
     AppMethodBeat.o(42585);
   }
   
-  private void cEE()
+  private void cRO()
   {
     AppMethodBeat.i(42589);
     if (this.mListeners == null)
@@ -222,13 +222,13 @@ public final class a
     AppMethodBeat.o(42589);
   }
   
-  public final a EO(int paramInt)
+  public final a GK(int paramInt)
   {
     AppMethodBeat.i(42586);
-    if (this.nmN != paramInt)
+    if (this.nPN != paramInt)
     {
-      this.nmN = paramInt;
-      cED();
+      this.nPN = paramInt;
+      cRN();
     }
     AppMethodBeat.o(42586);
     return this;
@@ -245,32 +245,32 @@ public final class a
     return this;
   }
   
-  public final a aV(float paramFloat)
+  public final a bc(float paramFloat)
   {
     AppMethodBeat.i(42583);
-    if (this.soN != paramFloat)
+    if (this.twG != paramFloat)
     {
-      this.soN = paramFloat;
-      cED();
+      this.twG = paramFloat;
+      cRN();
     }
     AppMethodBeat.o(42583);
     return this;
   }
   
-  public final void cED()
+  public final void cRN()
   {
     AppMethodBeat.i(42588);
-    float f = this.Tu.getTextSize();
-    this.soO = true;
-    a(this.Tu, this.Lm, this.soL, this.soM, this.nmN, this.soN);
-    this.soO = false;
-    if (this.Tu.getTextSize() != f) {
-      cEE();
+    float f = this.Up.getTextSize();
+    this.twH = true;
+    a(this.Up, this.Mh, this.twE, this.twF, this.nPN, this.twG);
+    this.twH = false;
+    if (this.Up.getTextSize() != f) {
+      cRO();
     }
     AppMethodBeat.o(42588);
   }
   
-  public final a ma(boolean paramBoolean)
+  public final a mT(boolean paramBoolean)
   {
     AppMethodBeat.i(42587);
     if (this.mEnabled != paramBoolean)
@@ -279,36 +279,36 @@ public final class a
       if (!paramBoolean) {
         break label44;
       }
-      this.Tu.addTextChangedListener(this.atH);
-      cED();
+      this.Up.addTextChangedListener(this.auC);
+      cRN();
     }
     for (;;)
     {
       AppMethodBeat.o(42587);
       return this;
       label44:
-      this.Tu.removeTextChangedListener(this.atH);
-      this.Tu.setTextSize(0, this.oqc);
+      this.Up.removeTextChangedListener(this.auC);
+      this.Up.setTextSize(0, this.oTC);
     }
   }
   
   public final a p(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(42584);
-    Context localContext = this.Tu.getContext();
+    Context localContext = this.Up.getContext();
     Resources localResources = Resources.getSystem();
     if (localContext != null) {
       localResources = localContext.getResources();
     }
-    aW(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
+    bd(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
     AppMethodBeat.o(42584);
     return this;
   }
   
   final void setRawTextSize(float paramFloat)
   {
-    if (this.oqc != paramFloat) {
-      this.oqc = paramFloat;
+    if (this.oTC != paramFloat) {
+      this.oTC = paramFloat;
     }
   }
   
@@ -324,7 +324,7 @@ public final class a
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(42577);
-      a.this.cED();
+      a.this.cRN();
       AppMethodBeat.o(42577);
     }
   }
@@ -333,7 +333,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.a
  * JD-Core Version:    0.7.0.1
  */

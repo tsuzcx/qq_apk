@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class e
 {
-  private static volatile e IuL = null;
-  public String IuM = b.IuJ;
+  private static volatile e JWu = null;
+  public String JWv = b.JWs;
   
-  public static e fna()
+  public static e fDq()
   {
     AppMethodBeat.i(88659);
-    if (IuL == null) {
+    if (JWu == null) {
       try
       {
-        if (IuL == null) {
-          IuL = new e();
+        if (JWu == null) {
+          JWu = new e();
         }
-        e locale1 = IuL;
+        e locale1 = JWu;
         return locale1;
       }
       finally
@@ -24,7 +24,7 @@ public class e
         AppMethodBeat.o(88659);
       }
     }
-    e locale2 = IuL;
+    e locale2 = JWu;
     AppMethodBeat.o(88659);
     return locale2;
   }

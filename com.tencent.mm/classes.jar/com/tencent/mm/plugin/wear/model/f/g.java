@@ -2,25 +2,25 @@ package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.dre;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.dwv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.bo;
 import java.io.IOException;
 
 public final class g
   extends b
 {
-  private bl drF;
+  private bo dpq;
   
-  public g(bl parambl)
+  public g(bo parambo)
   {
-    this.drF = parambl;
+    this.dpq = parambo;
   }
   
   public final String getName()
@@ -31,35 +31,35 @@ public final class g
   protected final void send()
   {
     AppMethodBeat.i(30127);
-    dre localdre = new dre();
-    Object localObject = this.drF.field_content;
+    dwv localdwv = new dwv();
+    Object localObject = this.dpq.field_content;
     String str;
     if (localObject != null)
     {
-      localObject = k.b.ar((String)localObject, this.drF.field_reserved);
-      if ((localObject == null) || (!((k.b)localObject).gIO.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
+      localObject = k.b.az((String)localObject, this.dpq.field_reserved);
+      if ((localObject == null) || (!((k.b)localObject).hjo.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
         break label244;
       }
-      localdre.CCn = this.drF.field_msgId;
-      localdre.Egc = this.drF.field_talker;
-      if (this.drF.field_isSend != 1) {
+      localdwv.DUK = this.dpq.field_msgId;
+      localdwv.FDc = this.dpq.field_talker;
+      if (this.dpq.field_isSend != 1) {
         break label220;
       }
-      localObject = ((k.b)localObject).gII;
-      localdre.Title = h.auR(this.drF.field_talker);
-      if (!w.pF(this.drF.field_talker)) {
+      localObject = ((k.b)localObject).hji;
+      localdwv.Title = h.aAi(this.dpq.field_talker);
+      if (!w.sQ(this.dpq.field_talker)) {
         break label228;
       }
-      str = d(this.drF.field_talker, this.drF);
+      str = d(this.dpq.field_talker, this.dpq);
     }
-    for (localdre.gKr = String.format(aj.getContext().getString(2131761701), new Object[] { h.auR(str), Character.valueOf('​'), localObject });; localdre.gKr = ((String)localObject))
+    for (localdwv.hkR = String.format(ai.getContext().getString(2131761701), new Object[] { h.aAi(str), Character.valueOf('​'), localObject });; localdwv.hkR = ((String)localObject))
     {
       try
       {
-        com.tencent.mm.plugin.wear.model.a.egZ();
-        r.a(20014, localdre.toByteArray(), true);
-        com.tencent.mm.plugin.wear.model.c.a.in(10, 0);
-        com.tencent.mm.plugin.wear.model.c.a.RQ(10);
+        com.tencent.mm.plugin.wear.model.a.ewt();
+        r.a(20014, localdwv.toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.c.a.iC(10, 0);
+        com.tencent.mm.plugin.wear.model.c.a.Ua(10);
         AppMethodBeat.o(30127);
         return;
       }
@@ -70,20 +70,20 @@ public final class g
         AppMethodBeat.o(30127);
         return;
       }
-      ad.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
+      ac.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
       AppMethodBeat.o(30127);
       return;
-      localObject = ((k.b)localObject).gIH;
+      localObject = ((k.b)localObject).hjh;
       break;
     }
     label244:
-    ad.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
+    ac.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
     AppMethodBeat.o(30127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.g
  * JD-Core Version:    0.7.0.1
  */

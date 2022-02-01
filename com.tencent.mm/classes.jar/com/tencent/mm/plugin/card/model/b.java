@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.protocal.protobuf.rw;
+import com.tencent.mm.protocal.protobuf.sg;
 
 public final class b
-  extends rw
+  extends sg
 {
-  public boolean dAt = false;
-  public String gHT;
-  public int nrC;
-  public boolean nrD = false;
-  public boolean nrE = false;
-  public boolean nrF = false;
-  public String nrG;
+  public boolean dyf = false;
+  public String hiu;
+  public int nUC;
+  public boolean nUD = false;
+  public boolean nUE = false;
+  public boolean nUF = false;
+  public String nUG;
 }
 
 

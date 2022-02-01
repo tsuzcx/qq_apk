@@ -1,399 +1,190 @@
 package com.tencent.mm.plugin.finder.search;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.text.style.ForegroundColorSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.akw;
-import com.tencent.mm.protocal.protobuf.akx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.e;
-import d.g.a.b;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.l;
-import d.v;
-import d.y;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "Lcom/tencent/mm/plugin/finder/search/OnHistoryUpdateListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "onHistoryClickListener", "Lkotlin/Function1;", "", "", "(Lcom/tencent/mm/ui/MMActivity;Lkotlin/jvm/functions/Function1;)V", "footer", "Landroid/view/View;", "historyAdapter", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter;", "historyLV", "Landroid/widget/ListView;", "onDestroy", "onTextChange", "query", "onTextSearch", "update", "updateHistoryFooter", "HistoryAdapter", "HistoryDataManager", "HistoryItemHolder", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/search/FinderSearchLogic;", "", "()V", "FeedItemWidth", "", "getFeedItemWidth", "()I", "HighLightWordEnd", "", "getHighLightWordEnd", "()Ljava/lang/String;", "HighLightWordReplaceEnd", "getHighLightWordReplaceEnd", "HighLightWordReplaceStart", "getHighLightWordReplaceStart", "HighLightWordStart", "getHighLightWordStart", "finderDataCache", "Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "getFinderDataCache", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;", "setFinderDataCache", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedSearchObj;)V", "finderFeedCacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFinderFeedCacheMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setFinderFeedCacheMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "processHighLight", "Landroid/text/Spanned;", "origin", "textPaint", "Landroid/text/TextPaint;", "width", "removeHighLightTag", "plugin-finder_release"})
 public final class h
-  implements j
 {
-  View nCB;
-  private ListView qIl;
-  private a qIm;
+  private static final int rBA;
+  private static ajw rBB;
+  public static final h rBC;
+  private static final String rBw = "<em class=\"highlight\">";
+  private static final String rBx = "</em>";
+  private static final String rBy = "<font color=\"#06AD56\">";
+  private static final String rBz = "</font>";
+  private static ConcurrentHashMap<Long, FinderItem> roF;
   
-  public h(MMActivity paramMMActivity, b<? super String, y> paramb)
+  static
   {
-    AppMethodBeat.i(166864);
-    View localView = paramMMActivity.findViewById(2131300754);
-    d.g.b.k.g(localView, "activity.findViewById(R.id.history_lv)");
-    this.qIl = ((ListView)localView);
-    localView = LayoutInflater.from((Context)paramMMActivity).inflate(2131494102, (ViewGroup)this.qIl, false);
-    d.g.b.k.g(localView, "LayoutInflater.from(acti…footer, historyLV, false)");
-    this.nCB = localView;
-    coq();
-    this.qIl.addFooterView(this.nCB);
-    this.qIm = new a();
-    this.qIl.setAdapter((ListAdapter)this.qIm);
-    this.nCB.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(166868);
+    rBC = new h();
+    rBw = "<em class=\"highlight\">";
+    rBx = "</em>";
+    rBy = "<font color=\"#06AD56\">";
+    rBz = "</font>";
+    rBA = a.ig(ai.getContext()) - a.fromDPToPix(ai.getContext(), 72);
+    roF = new ConcurrentHashMap();
+    AppMethodBeat.o(166868);
+  }
+  
+  public static Spanned a(String paramString, TextPaint paramTextPaint, int paramInt)
+  {
+    AppMethodBeat.i(166867);
+    d.g.b.k.h(paramString, "origin");
+    d.g.b.k.h(paramTextPaint, "textPaint");
+    paramString = (CharSequence)paramString;
+    paramString = (CharSequence)new d.n.k(rBw).d(paramString, rBy);
+    Object localObject2 = Html.fromHtml(new d.n.k(rBx).d(paramString, rBz));
+    if ((paramTextPaint.measureText(localObject2.toString()) > paramInt) && ((localObject2 instanceof SpannableStringBuilder)))
     {
-      public final void onClick(View paramAnonymousView)
+      float f1 = paramInt - paramTextPaint.getTextSize() * 2.0F;
+      float f2 = paramTextPaint.measureText("…");
+      paramString = (ForegroundColorSpan[])((Spanned)localObject2).getSpans(0, ((Spanned)localObject2).length(), ForegroundColorSpan.class);
+      if (paramString != null)
       {
-        AppMethodBeat.i(166844);
-        this.qIn.nCB.setVisibility(8);
-        paramAnonymousView = h.b.qIs;
-        h.b.qIq.mAL.clear();
-        h.b.cot();
-        h.b.cos();
-        AppMethodBeat.o(166844);
-      }
-    });
-    this.qIl.setOnItemClickListener((AdapterView.OnItemClickListener)new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(166845);
-        paramAnonymousAdapterView = this.qIo;
-        paramAnonymousView = h.b.qIs;
-        paramAnonymousView = ((akx)h.b.cor().mAL.get(paramAnonymousInt)).query;
-        d.g.b.k.g(paramAnonymousView, "HistoryDataManager.searc…tory.List[position].query");
-        paramAnonymousAdapterView.aA(paramAnonymousView);
-        paramAnonymousAdapterView = h.b.qIs;
-        paramAnonymousAdapterView = ((akx)h.b.cor().mAL.get(paramAnonymousInt)).query;
-        d.g.b.k.g(paramAnonymousAdapterView, "HistoryDataManager.searc…tory.List[position].query");
-        h.b.Zp(paramAnonymousAdapterView);
-        AppMethodBeat.o(166845);
-      }
-    });
-    this.qIl.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(166846);
-        this.qCc.hideVKB();
-        AppMethodBeat.o(166846);
-        return false;
-      }
-    });
-    paramMMActivity = b.qIs;
-    b.a((j)this);
-    AppMethodBeat.o(166864);
-  }
-  
-  public final void Zo(String paramString)
-  {
-    AppMethodBeat.i(166860);
-    if (!bt.isNullOrNil(paramString))
-    {
-      this.qIl.setVisibility(8);
-      AppMethodBeat.o(166860);
-      return;
-    }
-    this.qIl.setVisibility(0);
-    AppMethodBeat.o(166860);
-  }
-  
-  public final void Zp(String paramString)
-  {
-    AppMethodBeat.i(166862);
-    if (paramString != null)
-    {
-      b localb = b.qIs;
-      b.Zp(paramString);
-      this.nCB.setVisibility(0);
-      AppMethodBeat.o(166862);
-      return;
-    }
-    AppMethodBeat.o(166862);
-  }
-  
-  public final void coq()
-  {
-    AppMethodBeat.i(166863);
-    b localb = b.qIs;
-    if (b.cor().mAL.isEmpty())
-    {
-      this.nCB.setVisibility(8);
-      AppMethodBeat.o(166863);
-      return;
-    }
-    this.nCB.setVisibility(0);
-    AppMethodBeat.o(166863);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(166859);
-    b localb = b.qIs;
-    b.b((j)this);
-    AppMethodBeat.o(166859);
-  }
-  
-  public final void update()
-  {
-    AppMethodBeat.i(166861);
-    this.qIm.notifyDataSetChanged();
-    AppMethodBeat.o(166861);
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-finder_release"})
-  public final class a
-    extends BaseAdapter
-  {
-    public final int getCount()
-    {
-      AppMethodBeat.i(166850);
-      h.b localb = h.b.qIs;
-      int i = h.b.cor().mAL.size();
-      AppMethodBeat.o(166850);
-      return i;
-    }
-    
-    public final Object getItem(int paramInt)
-    {
-      AppMethodBeat.i(166849);
-      Object localObject = h.b.qIs;
-      localObject = h.b.cor().mAL.get(paramInt);
-      d.g.b.k.g(localObject, "HistoryDataManager.searchHistory.List[position]");
-      AppMethodBeat.o(166849);
-      return localObject;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return 0L;
-    }
-    
-    public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      AppMethodBeat.i(166848);
-      Object localObject;
-      if (paramView == null)
-      {
-        if (paramViewGroup == null) {
-          d.g.b.k.fvU();
-        }
-        paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494103, paramViewGroup, false);
-        paramViewGroup = new h.c(this.qIn);
-        localObject = paramView.findViewById(2131298778);
-        d.g.b.k.g(localObject, "contentView.findViewById(R.id.content_tv)");
-        localObject = (TextView)localObject;
-        d.g.b.k.h(localObject, "<set-?>");
-        paramViewGroup.fwR = ((TextView)localObject);
-        localObject = paramView.findViewById(2131298373);
-        d.g.b.k.g(localObject, "contentView.findViewById(R.id.close_iv)");
-        localObject = (ImageView)localObject;
-        d.g.b.k.h(localObject, "<set-?>");
-        paramViewGroup.qIu = ((ImageView)localObject);
-        d.g.b.k.g(paramView, "contentView");
-        paramView.setTag(paramViewGroup);
-      }
-      for (;;)
-      {
-        localObject = h.b.qIs;
-        localObject = ((akx)h.b.cor().mAL.get(paramInt)).query;
-        TextView localTextView = paramViewGroup.fwR;
-        if (localTextView == null) {
-          d.g.b.k.aPZ("contentTV");
-        }
-        localTextView.setText((CharSequence)localObject);
-        paramViewGroup = paramViewGroup.qIu;
-        if (paramViewGroup == null) {
-          d.g.b.k.aPZ("closeIV");
-        }
-        paramViewGroup.setOnClickListener((View.OnClickListener)new a(this, paramInt));
-        AppMethodBeat.o(166848);
-        return paramView;
-        paramViewGroup = paramView.getTag();
-        if (paramViewGroup == null)
+        int k = paramString.length;
+        int j = 0;
+        i = 0;
+        paramInt = 0;
+        while (j < k)
         {
-          paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.search.FinderSearchHistoryLogic.HistoryItemHolder");
-          AppMethodBeat.o(166848);
-          throw paramView;
+          localObject1 = paramString[j];
+          paramInt = ((Spanned)localObject2).getSpanStart(localObject1);
+          i = ((Spanned)localObject2).getSpanEnd(localObject1);
+          j += 1;
         }
-        paramViewGroup = (h.c)paramViewGroup;
       }
-    }
-    
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(h.a parama, int paramInt) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(166847);
-        paramView = h.b.qIs;
-        int i = paramInt;
-        h.b.qIq.mAL.remove(i);
-        h.b.cot();
-        h.b.cos();
-        this.qIp.qIn.coq();
-        AppMethodBeat.o(166847);
-      }
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryDataManager;", "", "()V", "TAG", "", "listenerMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/search/OnHistoryUpdateListener;", "Lkotlin/collections/HashMap;", "searchHistory", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;", "getSearchHistory", "()Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;", "setSearchHistory", "(Lcom/tencent/mm/protocal/protobuf/FinderSearchHistory;)V", "addListener", "", "listener", "notifyUpdate", "onTextSearch", "query", "readFromFile", "removeAll", "removeListener", "removeQueryAtPosition", "position", "saveToFile", "plugin-finder_release"})
-  public static final class b
-  {
-    static akw qIq;
-    private static HashMap<Integer, j> qIr;
-    public static final b qIs;
-    
-    static
-    {
-      AppMethodBeat.i(166858);
-      qIs = new b();
-      qIq = new akw();
-      qIr = new HashMap();
-      Object localObject = new StringBuilder();
-      com.tencent.mm.plugin.finder.utils.k localk = com.tencent.mm.plugin.finder.utils.k.qTp;
-      localObject = com.tencent.mm.vfs.i.aR(com.tencent.mm.plugin.finder.utils.k.fWh() + "search-history.info", 0, -1);
-      try
-      {
-        qIq.parseFrom((byte[])localObject);
-        AppMethodBeat.o(166858);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ad.printErrStackTrace("Finder.FinderSearchHistoryLogic", (Throwable)localException, "", new Object[0]);
-        AppMethodBeat.o(166858);
-      }
-    }
-    
-    public static void Zp(String paramString)
-    {
-      AppMethodBeat.i(166856);
-      d.g.b.k.h(paramString, "query");
-      akx localakx = new akx();
-      localakx.timestamp = System.currentTimeMillis();
-      localakx.query = paramString;
       int i = 0;
-      LinkedList localLinkedList = qIq.mAL;
-      d.g.b.k.g(localLinkedList, "searchHistory.List");
-      int j = ((Collection)localLinkedList).size();
-      for (;;)
+      paramInt = 0;
+      if (i == 0)
       {
-        if (i < j)
-        {
-          if (d.g.b.k.g(((akx)qIq.mAL.get(i)).query, paramString)) {
-            qIq.mAL.remove(i);
-          }
-        }
-        else
-        {
-          qIq.mAL.addFirst(localakx);
-          if (qIq.mAL.size() > 20) {
-            qIq.mAL.removeLast();
-          }
-          cot();
-          cos();
-          AppMethodBeat.o(166856);
-          return;
-        }
-        i += 1;
+        AppMethodBeat.o(166867);
+        return localObject2;
       }
-    }
-    
-    public static void a(j paramj)
-    {
-      AppMethodBeat.i(166853);
-      d.g.b.k.h(paramj, "listener");
-      ((Map)qIr).put(Integer.valueOf(paramj.hashCode()), paramj);
-      AppMethodBeat.o(166853);
-    }
-    
-    public static void b(j paramj)
-    {
-      AppMethodBeat.i(166854);
-      d.g.b.k.h(paramj, "listener");
-      qIr.remove(Integer.valueOf(paramj.hashCode()));
-      AppMethodBeat.o(166854);
-    }
-    
-    public static akw cor()
-    {
-      return qIq;
-    }
-    
-    static void cos()
-    {
-      AppMethodBeat.i(166855);
-      com.tencent.e.h.Iye.aP((Runnable)a.qIt);
-      AppMethodBeat.o(166855);
-    }
-    
-    static void cot()
-    {
-      AppMethodBeat.i(166857);
-      Iterator localIterator = qIr.values().iterator();
-      while (localIterator.hasNext()) {
-        ((j)localIterator.next()).update();
-      }
-      AppMethodBeat.o(166857);
-    }
-    
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      public static final a qIt;
-      
-      static
+      float f3 = paramTextPaint.measureText((CharSequence)localObject2, 0, paramInt);
+      float f4 = paramTextPaint.measureText((CharSequence)localObject2, paramInt, i);
+      float f5 = paramTextPaint.measureText((CharSequence)localObject2, i, ((Spanned)localObject2).length());
+      Object localObject1 = ((Spanned)localObject2).subSequence(0, paramInt);
+      paramString = ((Spanned)localObject2).subSequence(paramInt, i);
+      localObject2 = ((Spanned)localObject2).subSequence(i, ((Spanned)localObject2).length());
+      if (f3 + f4 + f2 < f1)
       {
-        AppMethodBeat.i(166852);
-        qIt = new a();
-        AppMethodBeat.o(166852);
+        localObject1 = new SpannableStringBuilder((CharSequence)localObject1);
+        ((SpannableStringBuilder)localObject1).append(paramString);
+        ((SpannableStringBuilder)localObject1).append(TextUtils.ellipsize((CharSequence)localObject2, paramTextPaint, f1 - f3 - f4, TextUtils.TruncateAt.END));
+        paramString = (Spanned)localObject1;
+        AppMethodBeat.o(166867);
+        return paramString;
       }
-      
-      public final void run()
+      if (f2 + f4 + f5 < f1)
       {
-        AppMethodBeat.i(166851);
-        Object localObject1 = new StringBuilder();
-        Object localObject2 = com.tencent.mm.plugin.finder.utils.k.qTp;
-        localObject1 = com.tencent.mm.plugin.finder.utils.k.fWh() + "search-history.info";
-        localObject2 = new e((String)localObject1);
-        Object localObject3 = h.b.qIs;
-        localObject3 = h.b.cor().toByteArray();
-        if (!com.tencent.mm.vfs.i.eK(((e)localObject2).fhT().toString())) {
-          com.tencent.mm.vfs.i.aMF(((e)localObject2).fhT().toString());
-        }
-        com.tencent.mm.vfs.i.B((String)localObject1, (byte[])localObject3);
-        AppMethodBeat.o(166851);
+        localSpannableStringBuilder = new SpannableStringBuilder();
+        localSpannableStringBuilder.append(TextUtils.ellipsize((CharSequence)localObject1, paramTextPaint, f1 - f4 - f5, TextUtils.TruncateAt.START));
+        localSpannableStringBuilder.append(paramString);
+        localSpannableStringBuilder.append((CharSequence)localObject2);
+        paramString = (Spanned)localSpannableStringBuilder;
+        AppMethodBeat.o(166867);
+        return paramString;
       }
+      if (f2 + f4 + f2 >= f1)
+      {
+        localObject1 = new SpannableStringBuilder();
+        ((SpannableStringBuilder)localObject1).append(TextUtils.ellipsize(paramString, paramTextPaint, f1, TextUtils.TruncateAt.END));
+        paramString = (Spanned)localObject1;
+        AppMethodBeat.o(166867);
+        return paramString;
+      }
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      f1 = (f1 - f4) / 2.0F;
+      localSpannableStringBuilder.append(TextUtils.ellipsize((CharSequence)localObject1, paramTextPaint, f1, TextUtils.TruncateAt.START));
+      localSpannableStringBuilder.append(paramString);
+      localSpannableStringBuilder.append(TextUtils.ellipsize((CharSequence)localObject2, paramTextPaint, f1, TextUtils.TruncateAt.END));
+      paramString = (Spanned)localSpannableStringBuilder;
+      AppMethodBeat.o(166867);
+      return paramString;
     }
+    d.g.b.k.g(localObject2, "spanStr");
+    AppMethodBeat.o(166867);
+    return localObject2;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic$HistoryItemHolder;", "", "(Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;)V", "closeIV", "Landroid/widget/ImageView;", "getCloseIV", "()Landroid/widget/ImageView;", "setCloseIV", "(Landroid/widget/ImageView;)V", "contentTV", "Landroid/widget/TextView;", "getContentTV", "()Landroid/widget/TextView;", "setContentTV", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
-  public final class c
+  public static void a(ajw paramajw)
   {
-    public TextView fwR;
-    public ImageView qIu;
+    rBB = paramajw;
+  }
+  
+  public static String adY(String paramString)
+  {
+    AppMethodBeat.i(166865);
+    d.g.b.k.h(paramString, "origin");
+    paramString = (CharSequence)paramString;
+    paramString = (CharSequence)new d.n.k(rBw).d(paramString, "");
+    paramString = new d.n.k(rBx).d(paramString, "");
+    AppMethodBeat.o(166865);
+    return paramString;
+  }
+  
+  public static Spanned adZ(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(166866);
+    d.g.b.k.h(paramString, "origin");
+    paramString = (CharSequence)paramString;
+    paramString = (CharSequence)new d.n.k(rBw).d(paramString, rBy);
+    paramString = Html.fromHtml(new d.n.k(rBx).d(paramString, rBz));
+    if ((paramString instanceof SpannableStringBuilder))
+    {
+      ForegroundColorSpan[] arrayOfForegroundColorSpan = (ForegroundColorSpan[])paramString.getSpans(0, paramString.length(), ForegroundColorSpan.class);
+      if (arrayOfForegroundColorSpan != null)
+      {
+        int j = arrayOfForegroundColorSpan.length;
+        while (i < j)
+        {
+          ForegroundColorSpan localForegroundColorSpan = arrayOfForegroundColorSpan[i];
+          int k = paramString.getSpanStart(localForegroundColorSpan);
+          int m = paramString.getSpanEnd(localForegroundColorSpan);
+          ac.i("Finder.Hightlight", k + ' ' + m);
+          i += 1;
+        }
+      }
+    }
+    d.g.b.k.g(paramString, "spanStr");
+    AppMethodBeat.o(166866);
+    return paramString;
+  }
+  
+  public static int cxR()
+  {
+    return rBA;
+  }
+  
+  public static ajw cxS()
+  {
+    return rBB;
+  }
+  
+  public static ConcurrentHashMap<Long, FinderItem> cxT()
+  {
+    return roF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.search.h
  * JD-Core Version:    0.7.0.1
  */

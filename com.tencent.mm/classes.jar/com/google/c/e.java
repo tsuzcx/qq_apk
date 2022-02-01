@@ -18,7 +18,7 @@ public final class e
   {
     AppMethodBeat.i(12285);
     Object localObject;
-    switch (1.bJF[parama.ordinal()])
+    switch (1.bHn[parama.ordinal()])
     {
     default: 
       paramString = new IllegalArgumentException("No encoder available for format ".concat(String.valueOf(parama)));
@@ -60,7 +60,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.e
  * JD-Core Version:    0.7.0.1
  */

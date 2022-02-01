@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.io;
-import com.tencent.mm.g.a.io.b;
+import com.tencent.mm.g.a.iv;
+import com.tencent.mm.g.a.iv.b;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,15 +18,15 @@ public final class JsApiCheckBioEnrollment
 {
   public static final int CTRL_INDEX = 344;
   public static final String NAME = "checkIsSoterEnrolledInDevice";
-  private GetIsEnrolledTask jHe = null;
+  private GetIsEnrolledTask khD = null;
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(106580);
-    ad.i("MicroMsg.JsApiCheckBioEnrollment", "hy: subapp start do check is enrolled");
-    this.jHe = new GetIsEnrolledTask(paramc, paramInt, a.HR(paramJSONObject.optString("checkAuthMode")), this);
-    this.jHe.aXm();
-    AppBrandMainProcessService.a(this.jHe);
+    ac.i("MicroMsg.JsApiCheckBioEnrollment", "hy: subapp start do check is enrolled");
+    this.khD = new GetIsEnrolledTask(paramc, paramInt, a.LW(paramJSONObject.optString("checkAuthMode")), this);
+    this.khD.bej();
+    AppBrandMainProcessService.a(this.khD);
     AppMethodBeat.o(106580);
   }
   
@@ -34,11 +34,11 @@ public final class JsApiCheckBioEnrollment
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetIsEnrolledTask> CREATOR;
-    private int bZo;
-    private c jAc;
-    private JsApiCheckBioEnrollment jHf;
-    private int jHg;
-    private int jHh;
+    private int bWl;
+    private c kay;
+    private JsApiCheckBioEnrollment khE;
+    private int khF;
+    private int khG;
     
     static
     {
@@ -50,65 +50,65 @@ public final class JsApiCheckBioEnrollment
     protected GetIsEnrolledTask(Parcel paramParcel)
     {
       AppMethodBeat.i(106577);
-      this.jAc = null;
-      this.bZo = -1;
-      this.jHg = -1;
-      this.jHh = -1;
+      this.kay = null;
+      this.bWl = -1;
+      this.khF = -1;
+      this.khG = -1;
       e(paramParcel);
       AppMethodBeat.o(106577);
     }
     
     public GetIsEnrolledTask(c paramc, int paramInt1, int paramInt2, JsApiCheckBioEnrollment paramJsApiCheckBioEnrollment)
     {
-      this.jAc = null;
-      this.bZo = -1;
-      this.jHg = -1;
-      this.jHh = -1;
-      this.jAc = paramc;
-      this.bZo = paramInt1;
-      this.jHf = paramJsApiCheckBioEnrollment;
-      this.jHg = paramInt2;
+      this.kay = null;
+      this.bWl = -1;
+      this.khF = -1;
+      this.khG = -1;
+      this.kay = paramc;
+      this.bWl = paramInt1;
+      this.khE = paramJsApiCheckBioEnrollment;
+      this.khF = paramInt2;
     }
     
-    public final void aEA()
+    public final void aLq()
+    {
+      AppMethodBeat.i(106575);
+      iv localiv = new iv();
+      localiv.dkf.dkh = this.khF;
+      com.tencent.mm.sdk.b.a.GpY.l(localiv);
+      this.khG = localiv.dkg.dki;
+      ac.i("MicroMsg.GetIsEnrolledTask", "hy: enrollResult: %d", new Object[] { Integer.valueOf(this.khG) });
+      bet();
+      AppMethodBeat.o(106575);
+    }
+    
+    public final void aLr()
     {
       boolean bool = false;
       AppMethodBeat.i(106574);
-      super.aEA();
-      ad.d("MicroMsg.GetIsEnrolledTask", "hy: callback. enrollResult: %d", new Object[] { Integer.valueOf(this.jHh) });
+      super.aLr();
+      ac.d("MicroMsg.GetIsEnrolledTask", "hy: callback. enrollResult: %d", new Object[] { Integer.valueOf(this.khG) });
       HashMap localHashMap = new HashMap(2);
-      if (this.jHh == 1) {
+      if (this.khG == 1) {
         bool = true;
       }
       localHashMap.put("isEnrolled", Boolean.valueOf(bool));
-      if (this.jHh == 0) {
-        this.jAc.h(this.bZo, this.jHf.k("ok", localHashMap));
+      if (this.khG == 0) {
+        this.kay.h(this.bWl, this.khE.k("ok", localHashMap));
       }
       for (;;)
       {
-        aXn();
+        bek();
         AppMethodBeat.o(106574);
         return;
-        if (this.jHh == -1) {
-          this.jAc.h(this.bZo, this.jHf.k("fail not support", localHashMap));
-        } else if (this.jHh == 1) {
-          this.jAc.h(this.bZo, this.jHf.k("ok", localHashMap));
+        if (this.khG == -1) {
+          this.kay.h(this.bWl, this.khE.k("fail not support", localHashMap));
+        } else if (this.khG == 1) {
+          this.kay.h(this.bWl, this.khE.k("ok", localHashMap));
         } else {
-          this.jAc.h(this.bZo, this.jHf.k("fail unknown error", localHashMap));
+          this.kay.h(this.bWl, this.khE.k("fail unknown error", localHashMap));
         }
       }
-    }
-    
-    public final void aEz()
-    {
-      AppMethodBeat.i(106575);
-      io localio = new io();
-      localio.dmx.dmz = this.jHg;
-      com.tencent.mm.sdk.b.a.ESL.l(localio);
-      this.jHh = localio.dmy.dmA;
-      ad.i("MicroMsg.GetIsEnrolledTask", "hy: enrollResult: %d", new Object[] { Integer.valueOf(this.jHh) });
-      aXw();
-      AppMethodBeat.o(106575);
     }
     
     public int describeContents()
@@ -120,8 +120,8 @@ public final class JsApiCheckBioEnrollment
     {
       AppMethodBeat.i(106578);
       super.e(paramParcel);
-      this.jHh = paramParcel.readInt();
-      this.jHg = paramParcel.readInt();
+      this.khG = paramParcel.readInt();
+      this.khF = paramParcel.readInt();
       AppMethodBeat.o(106578);
     }
     
@@ -129,8 +129,8 @@ public final class JsApiCheckBioEnrollment
     {
       AppMethodBeat.i(106576);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.jHh);
-      paramParcel.writeInt(this.jHg);
+      paramParcel.writeInt(this.khG);
+      paramParcel.writeInt(this.khF);
       AppMethodBeat.o(106576);
     }
   }

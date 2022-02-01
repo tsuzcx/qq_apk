@@ -1,49 +1,67 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.d;
-import com.tencent.mm.protocal.protobuf.aii;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ajy;
+import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage;", "Lcom/tencent/mm/platformtools/BaseProtoPage;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "filename", "", "(Ljava/lang/String;)V", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "", "type", "", "name", "", "page", "Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "read", "", "(ILjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;Z)V", "getName", "()Ljava/lang/String;", "getPage", "()Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;", "setPage", "(Lcom/tencent/mm/protocal/protobuf/FinderFirstPage;)V", "getRead", "()Z", "setRead", "(Z)V", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
 public final class a
-  extends d<aii>
 {
-  private static final String TAG = "Finder.FansContactPage";
-  public static final a qKk;
+  boolean kkr;
+  final String name;
+  public ajy rEA;
+  final int type;
   
-  static
+  private a(int paramInt, String paramString, ajy paramajy)
   {
-    AppMethodBeat.i(167044);
-    qKk = new a((byte)0);
-    TAG = "Finder.FansContactPage";
-    AppMethodBeat.o(167044);
+    AppMethodBeat.i(203004);
+    this.type = paramInt;
+    this.name = paramString;
+    this.rEA = paramajy;
+    this.kkr = false;
+    AppMethodBeat.o(203004);
   }
   
-  public a(String paramString)
+  public final void a(ajy paramajy)
   {
-    AppMethodBeat.i(167043);
-    StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.plugin.finder.utils.i locali = com.tencent.mm.plugin.finder.utils.i.qTa;
-    super.Bq(com.tencent.mm.plugin.finder.utils.i.Dh(3) + paramString);
-    AppMethodBeat.o(167043);
+    AppMethodBeat.i(203003);
+    k.h(paramajy, "<set-?>");
+    this.rEA = paramajy;
+    AppMethodBeat.o(203003);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage$Companion;", "", "()V", "TAG", "", "clearAll", "", "plugin-finder_release"})
-  public static final class a
+  public final boolean equals(Object paramObject)
   {
-    public static void clearAll()
+    AppMethodBeat.i(203007);
+    if (this != paramObject)
     {
-      AppMethodBeat.i(167042);
-      ad.i(a.access$getTAG$cp(), "clearAll");
-      Object localObject = com.tencent.mm.plugin.finder.utils.i.qTa;
-      localObject = com.tencent.mm.plugin.finder.utils.i.Dh(3);
-      if (com.tencent.mm.vfs.i.eK((String)localObject)) {
-        com.tencent.mm.vfs.i.cO((String)localObject, true);
+      if ((paramObject instanceof a))
+      {
+        paramObject = (a)paramObject;
+        if ((this.type != paramObject.type) || (!k.g(this.name, paramObject.name)) || (!k.g(this.rEA, paramObject.rEA)) || (this.kkr != paramObject.kkr)) {}
       }
-      AppMethodBeat.o(167042);
     }
+    else
+    {
+      AppMethodBeat.o(203007);
+      return true;
+    }
+    AppMethodBeat.o(203007);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(203005);
+    String str = "CachePage(type=" + this.type + ", name=" + this.name + ", page=" + this.rEA + ", read=" + this.kkr + ")";
+    AppMethodBeat.o(203005);
+    return str;
   }
 }
 

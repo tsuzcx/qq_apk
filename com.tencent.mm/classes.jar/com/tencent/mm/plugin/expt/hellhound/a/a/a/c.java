@@ -3,45 +3,45 @@ package com.tencent.mm.plugin.expt.hellhound.a.a.a;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Field;
 
 public final class c
   implements b
 {
-  private Class<?> pFX;
-  private Field pFY;
-  private Field pFZ;
-  private Field pGa;
-  private Field pGb;
-  private Field pGc;
-  private Field pGd;
-  private Field pGe;
-  private Field pGf;
+  private Class<?> qkR;
+  private Field qkS;
+  private Field qkT;
+  private Field qkU;
+  private Field qkV;
+  private Field qkW;
+  private Field qkX;
+  private Field qkY;
+  private Field qkZ;
   
   public c()
   {
     AppMethodBeat.i(169314);
     try
     {
-      this.pFX = Class.forName("com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem$BaseViewHolder");
-      this.pFY = this.pFX.getDeclaredField("timeLineObject");
-      this.pFY.setAccessible(true);
-      this.pGa = this.pFX.getDeclaredField("isAd");
-      this.pGa.setAccessible(true);
-      this.pFZ = Class.forName("com.tencent.mm.protocal.protobuf.TimeLineObject").getDeclaredField("Id");
-      this.pFZ.setAccessible(true);
-      this.pGb = this.pFX.getDeclaredField("snsobj");
-      this.pGb.setAccessible(true);
+      this.qkR = Class.forName("com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem$BaseViewHolder");
+      this.qkS = this.qkR.getDeclaredField("timeLineObject");
+      this.qkS.setAccessible(true);
+      this.qkU = this.qkR.getDeclaredField("isAd");
+      this.qkU.setAccessible(true);
+      this.qkT = Class.forName("com.tencent.mm.protocal.protobuf.TimeLineObject").getDeclaredField("Id");
+      this.qkT.setAccessible(true);
+      this.qkV = this.qkR.getDeclaredField("snsobj");
+      this.qkV.setAccessible(true);
       Class localClass = Class.forName("com.tencent.mm.protocal.protobuf.SnsObject");
-      this.pGd = localClass.getDeclaredField("CommentUserList");
-      this.pGd.setAccessible(true);
-      this.pGc = localClass.getDeclaredField("LikeCount");
-      this.pGc.setAccessible(true);
-      this.pGe = localClass.getDeclaredField("Username");
-      this.pGe.setAccessible(true);
-      this.pGf = localClass.getDeclaredField("Nickname");
-      this.pGf.setAccessible(true);
+      this.qkX = localClass.getDeclaredField("CommentUserList");
+      this.qkX.setAccessible(true);
+      this.qkW = localClass.getDeclaredField("LikeCount");
+      this.qkW.setAccessible(true);
+      this.qkY = localClass.getDeclaredField("Username");
+      this.qkY.setAccessible(true);
+      this.qkZ = localClass.getDeclaredField("Nickname");
+      this.qkZ.setAccessible(true);
       AppMethodBeat.o(169314);
       return;
     }
@@ -51,60 +51,65 @@ public final class c
     }
   }
   
+  public final String Cn(int paramInt)
+  {
+    return null;
+  }
+  
   /* Error */
   public final void a(View paramView, com.tencent.mm.pointers.PInt paramPInt1, com.tencent.mm.pointers.PInt paramPInt2, int paramInt)
   {
     // Byte code:
-    //   0: ldc 94
+    //   0: ldc 96
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_2
     //   6: iconst_0
-    //   7: putfield 100	com/tencent/mm/pointers/PInt:value	I
+    //   7: putfield 102	com/tencent/mm/pointers/PInt:value	I
     //   10: aload_3
     //   11: iconst_0
-    //   12: putfield 100	com/tencent/mm/pointers/PInt:value	I
+    //   12: putfield 102	com/tencent/mm/pointers/PInt:value	I
     //   15: aload_1
-    //   16: invokevirtual 106	android/view/View:getTag	()Ljava/lang/Object;
+    //   16: invokevirtual 108	android/view/View:getTag	()Ljava/lang/Object;
     //   19: astore_1
     //   20: aload_1
     //   21: ifnonnull +9 -> 30
-    //   24: ldc 94
+    //   24: ldc 96
     //   26: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: return
     //   30: aload_0
-    //   31: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:pGb	Ljava/lang/reflect/Field;
+    //   31: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:qkV	Ljava/lang/reflect/Field;
     //   34: astore 7
     //   36: aload 7
     //   38: ifnonnull +9 -> 47
-    //   41: ldc 94
+    //   41: ldc 96
     //   43: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: return
     //   47: aload_0
-    //   48: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:pGb	Ljava/lang/reflect/Field;
+    //   48: getfield 69	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:qkV	Ljava/lang/reflect/Field;
     //   51: aload_1
-    //   52: invokevirtual 110	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   52: invokevirtual 112	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   55: astore_1
     //   56: aload_1
     //   57: ifnull +101 -> 158
     //   60: aload_0
-    //   61: getfield 79	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:pGc	Ljava/lang/reflect/Field;
+    //   61: getfield 79	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:qkW	Ljava/lang/reflect/Field;
     //   64: aload_1
-    //   65: invokevirtual 110	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   68: checkcast 112	java/lang/Integer
-    //   71: invokevirtual 116	java/lang/Integer:intValue	()I
+    //   65: invokevirtual 112	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   68: checkcast 114	java/lang/Integer
+    //   71: invokevirtual 118	java/lang/Integer:intValue	()I
     //   74: istore 4
     //   76: aload_0
-    //   77: getfield 75	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:pGd	Ljava/lang/reflect/Field;
+    //   77: getfield 75	com/tencent/mm/plugin/expt/hellhound/a/a/a/c:qkX	Ljava/lang/reflect/Field;
     //   80: aload_1
-    //   81: invokevirtual 110	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   84: checkcast 118	java/util/LinkedList
+    //   81: invokevirtual 112	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   84: checkcast 120	java/util/LinkedList
     //   87: astore_1
     //   88: iload 4
     //   90: istore 5
     //   92: aload_1
     //   93: ifnull +55 -> 148
     //   96: aload_1
-    //   97: invokevirtual 121	java/util/LinkedList:size	()I
+    //   97: invokevirtual 123	java/util/LinkedList:size	()I
     //   100: istore 6
     //   102: iload 4
     //   104: istore 5
@@ -112,22 +117,22 @@ public final class c
     //   108: istore 4
     //   110: aload_2
     //   111: iload 5
-    //   113: putfield 100	com/tencent/mm/pointers/PInt:value	I
+    //   113: putfield 102	com/tencent/mm/pointers/PInt:value	I
     //   116: aload_3
     //   117: iload 4
-    //   119: putfield 100	com/tencent/mm/pointers/PInt:value	I
-    //   122: ldc 94
+    //   119: putfield 102	com/tencent/mm/pointers/PInt:value	I
+    //   122: ldc 96
     //   124: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: return
     //   128: astore_1
     //   129: iconst_0
     //   130: istore 4
-    //   132: ldc 123
+    //   132: ldc 125
     //   134: aload_1
-    //   135: ldc 125
+    //   135: ldc 127
     //   137: iconst_0
     //   138: anewarray 4	java/lang/Object
-    //   141: invokestatic 131	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   141: invokestatic 133	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   144: iload 4
     //   146: istore 5
     //   148: iconst_0
@@ -159,7 +164,7 @@ public final class c
     //   96	102	154	java/lang/Exception
   }
   
-  public final String ab(View paramView, int paramInt)
+  public final String ac(View paramView, int paramInt)
   {
     AppMethodBeat.i(169315);
     paramView = paramView.getTag();
@@ -170,13 +175,13 @@ public final class c
     }
     try
     {
-      boolean bool = this.pFX.isInstance(paramView);
+      boolean bool = this.qkR.isInstance(paramView);
       if (!bool)
       {
         AppMethodBeat.o(169315);
         return null;
       }
-      paramView = this.pFY.get(paramView);
+      paramView = this.qkS.get(paramView);
       if (paramView == null)
       {
         AppMethodBeat.o(169315);
@@ -190,7 +195,7 @@ public final class c
     }
     try
     {
-      paramView = (String)this.pFZ.get(paramView);
+      paramView = (String)this.qkT.get(paramView);
       AppMethodBeat.o(169315);
       return paramView;
     }
@@ -198,13 +203,13 @@ public final class c
     {
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.SnsFeedParamCatcher", paramView, "getFeedParams.feedId: ", new Object[0]);
+        ac.printErrStackTrace("HABBYGE-MALI.SnsFeedParamCatcher", paramView, "getFeedParams.feedId: ", new Object[0]);
         paramView = null;
       }
     }
   }
   
-  public final String ac(View paramView, int paramInt)
+  public final String ad(View paramView, int paramInt)
   {
     AppMethodBeat.i(169317);
     paramView = paramView.getTag();
@@ -215,23 +220,23 @@ public final class c
     }
     try
     {
-      Field localField = this.pGb;
+      Field localField = this.qkV;
       if (localField == null)
       {
         AppMethodBeat.o(169317);
         return null;
       }
-      paramView = this.pGb.get(paramView);
+      paramView = this.qkV.get(paramView);
       if (paramView == null) {
         break label82;
       }
-      paramView = (String)this.pGe.get(paramView);
+      paramView = (String)this.qkY.get(paramView);
     }
     catch (Exception paramView)
     {
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.SnsFeedParamCatcher", paramView, "get feed info error!", new Object[0]);
+        ac.printErrStackTrace("HABBYGE-MALI.SnsFeedParamCatcher", paramView, "get feed info error!", new Object[0]);
         paramView = null;
       }
     }
@@ -239,7 +244,7 @@ public final class c
     return paramView;
   }
   
-  public final String ad(View paramView, int paramInt)
+  public final String ae(View paramView, int paramInt)
   {
     AppMethodBeat.i(185579);
     paramView = paramView.getTag();
@@ -250,23 +255,23 @@ public final class c
     }
     try
     {
-      Field localField = this.pGb;
+      Field localField = this.qkV;
       if (localField == null)
       {
         AppMethodBeat.o(185579);
         return null;
       }
-      paramView = this.pGb.get(paramView);
+      paramView = this.qkV.get(paramView);
       if (paramView == null) {
         break label82;
       }
-      paramView = (String)this.pGf.get(paramView);
+      paramView = (String)this.qkZ.get(paramView);
     }
     catch (Exception paramView)
     {
       for (;;)
       {
-        ad.printErrStackTrace("HABBYGE-MALI.SnsFeedParamCatcher", paramView, "get feed info error!", new Object[0]);
+        ac.printErrStackTrace("HABBYGE-MALI.SnsFeedParamCatcher", paramView, "get feed info error!", new Object[0]);
         paramView = null;
       }
     }
@@ -274,12 +279,7 @@ public final class c
     return paramView;
   }
   
-  public final String agS(int paramInt)
-  {
-    return null;
-  }
-  
-  public final boolean dO(View paramView)
+  public final boolean dS(View paramView)
   {
     AppMethodBeat.i(184357);
     paramView = paramView.getTag();
@@ -290,13 +290,13 @@ public final class c
     }
     try
     {
-      bool = this.pFX.isInstance(paramView);
+      bool = this.qkR.isInstance(paramView);
       if (!bool)
       {
         AppMethodBeat.o(184357);
         return false;
       }
-      bool = ((Boolean)this.pGa.get(paramView)).booleanValue();
+      bool = ((Boolean)this.qkU.get(paramView)).booleanValue();
     }
     catch (Exception paramView)
     {
@@ -313,7 +313,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

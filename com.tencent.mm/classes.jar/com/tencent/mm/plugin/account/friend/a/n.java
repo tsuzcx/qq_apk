@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cr;
+import com.tencent.mm.g.c.ct;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends cr
+  extends ct
 {
   protected static c.a info;
   
@@ -15,72 +15,72 @@ public final class n
   {
     AppMethodBeat.i(131047);
     c.a locala = new c.a();
-    locala.EYt = new Field[16];
+    locala.GvF = new Field[16];
     locala.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "googleid";
-    locala.EYv.put("googleid", "TEXT");
+    locala.GvH.put("googleid", "TEXT");
     localStringBuilder.append(" googleid TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "googlename";
-    locala.EYv.put("googlename", "TEXT");
+    locala.GvH.put("googlename", "TEXT");
     localStringBuilder.append(" googlename TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "googlephotourl";
-    locala.EYv.put("googlephotourl", "TEXT");
+    locala.GvH.put("googlephotourl", "TEXT");
     localStringBuilder.append(" googlephotourl TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "googlegmail";
-    locala.EYv.put("googlegmail", "TEXT");
+    locala.GvH.put("googlegmail", "TEXT");
     localStringBuilder.append(" googlegmail TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "username";
-    locala.EYv.put("username", "TEXT");
+    locala.GvH.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "nickname";
-    locala.EYv.put("nickname", "TEXT");
+    locala.GvH.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "nicknameqp";
-    locala.EYv.put("nicknameqp", "TEXT");
+    locala.GvH.put("nicknameqp", "TEXT");
     localStringBuilder.append(" nicknameqp TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "usernamepy";
-    locala.EYv.put("usernamepy", "TEXT");
+    locala.GvH.put("usernamepy", "TEXT");
     localStringBuilder.append(" usernamepy TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "small_url";
-    locala.EYv.put("small_url", "TEXT");
+    locala.GvH.put("small_url", "TEXT");
     localStringBuilder.append(" small_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "big_url";
-    locala.EYv.put("big_url", "TEXT");
+    locala.GvH.put("big_url", "TEXT");
     localStringBuilder.append(" big_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "ret";
-    locala.EYv.put("ret", "INTEGER");
+    locala.GvH.put("ret", "INTEGER");
     localStringBuilder.append(" ret INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "status";
-    locala.EYv.put("status", "INTEGER");
+    locala.GvH.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "googleitemid";
-    locala.EYv.put("googleitemid", "TEXT PRIMARY KEY ");
+    locala.GvH.put("googleitemid", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" googleitemid TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "googleitemid";
+    locala.GvG = "googleitemid";
     locala.columns[13] = "googlecgistatus";
-    locala.EYv.put("googlecgistatus", "INTEGER default '2' ");
+    locala.GvH.put("googlecgistatus", "INTEGER default '2' ");
     localStringBuilder.append(" googlecgistatus INTEGER default '2' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "contecttype";
-    locala.EYv.put("contecttype", "TEXT");
+    locala.GvH.put("contecttype", "TEXT");
     localStringBuilder.append(" contecttype TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "googlenamepy";
-    locala.EYv.put("googlenamepy", "TEXT");
+    locala.GvH.put("googlenamepy", "TEXT");
     localStringBuilder.append(" googlenamepy TEXT");
     locala.columns[16] = "rowid";
     locala.sql = localStringBuilder.toString();

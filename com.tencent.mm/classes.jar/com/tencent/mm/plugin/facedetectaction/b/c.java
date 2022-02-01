@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qn;
+import com.tencent.mm.g.a.qw;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<qn>
+  extends com.tencent.mm.sdk.b.c<qw>
 {
   public c()
   {
     AppMethodBeat.i(161649);
-    this.__eventId = qn.class.getName().hashCode();
+    this.__eventId = qw.class.getName().hashCode();
     AppMethodBeat.o(161649);
   }
 }

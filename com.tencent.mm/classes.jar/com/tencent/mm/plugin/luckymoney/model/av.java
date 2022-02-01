@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bfu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bjm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class av
 {
-  public bfu tcN;
-  public au tfV;
+  public bjm ulc;
+  public au uok;
   
-  public static av afq(String paramString)
+  public static av akk(String paramString)
   {
     AppMethodBeat.i(65312);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(65312);
       return null;
@@ -26,15 +26,15 @@ public final class av
       paramString = new JSONObject(paramString);
       JSONObject localJSONObject = paramString.optJSONObject("operation");
       if (localJSONObject != null) {
-        localav.tfV = x.av(localJSONObject);
+        localav.uok = x.aw(localJSONObject);
       }
-      localav.tcN = x.aw(paramString.optJSONObject("source"));
+      localav.ulc = x.ax(paramString.optJSONObject("source"));
       AppMethodBeat.o(65312);
       return localav;
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.ShowSourceOpen", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ShowSourceOpen", paramString, "", new Object[0]);
       AppMethodBeat.o(65312);
     }
     return null;

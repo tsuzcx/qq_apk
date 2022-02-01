@@ -5,7 +5,7 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.d.aa;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.g.a.ml;
+import com.tencent.mm.g.a.mu;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
@@ -15,8 +15,8 @@ import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +42,7 @@ public final class d
     this.db = parame;
   }
   
-  public final List<c> Vc()
+  public final List<c> VZ()
   {
     AppMethodBeat.i(185974);
     Cursor localCursor = this.db.query("GroupTools", c.info.columns, null, null, null, null, null);
@@ -80,7 +80,7 @@ public final class d
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(185975);
-    if (!aa.UU())
+    if (!aa.VQ())
     {
       AppMethodBeat.o(185975);
       return;
@@ -90,15 +90,15 @@ public final class d
       AppMethodBeat.o(185975);
       return;
     }
-    if ((paramInt == 2) && (paramn == ((k)g.ab(k.class)).apM()))
+    if ((paramInt == 2) && (paramn == ((k)g.ab(k.class)).awB()))
     {
       paramn = (String)paramObject;
-      if (w.sm(paramn))
+      if (w.wp(paramn))
       {
         paramObject = new c();
         paramObject.field_chatroomname = paramn;
         paramObject.field_queryState = 1;
-        ad.i("MicroMsg.roomtools.GroupToolsStorage", "onNotifyChange username:%s result:%s", new Object[] { paramn, Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramObject)) });
+        ac.i("MicroMsg.roomtools.GroupToolsStorage", "onNotifyChange username:%s result:%s", new Object[] { paramn, Boolean.valueOf(((PluginChatroomUI)g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramObject)) });
       }
     }
     AppMethodBeat.o(185975);
@@ -123,18 +123,18 @@ public final class d
     boolean bool = super.updateNotify(paramc, true, paramVarArgs);
     if (bool)
     {
-      paramVarArgs = new ml();
-      paramVarArgs.drD.dlX = paramc.field_chatroomname;
-      a.ESL.a(paramVarArgs, Looper.getMainLooper());
+      paramVarArgs = new mu();
+      paramVarArgs.dpo.djF = paramc.field_chatroomname;
+      a.GpY.a(paramVarArgs, Looper.getMainLooper());
     }
     AppMethodBeat.o(182162);
     return bool;
   }
   
-  public final c oQ(String paramString)
+  public final c sb(String paramString)
   {
     AppMethodBeat.i(182160);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(182160);
       return null;
@@ -182,7 +182,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.d
  * JD-Core Version:    0.7.0.1
  */

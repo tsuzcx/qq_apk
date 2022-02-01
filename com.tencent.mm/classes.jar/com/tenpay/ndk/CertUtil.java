@@ -4,8 +4,8 @@ import android.content.Context;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.vfs.e;
 import java.io.File;
@@ -285,7 +285,7 @@ public class CertUtil
     AppMethodBeat.i(73297);
     boolean bool = true;
     paramString = new e(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.fhW() == null)) {
+    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.fxX() == null)) {
       bool = false;
     }
     AppMethodBeat.o(73297);
@@ -878,16 +878,16 @@ public class CertUtil
     if (h.IS_FLAVOR_RED) {}
     try
     {
-      ad.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bt.eGN() });
+      ac.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bs.eWi() });
       this.imsi = localTelephonyManager.getSubscriberId();
-      ad.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { bt.eGN() });
+      ac.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { bs.eWi() });
       this.iccid = localTelephonyManager.getSimSerialNumber();
-      ad.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bt.eGN() });
+      ac.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bs.eWi() });
       this.imei = localTelephonyManager.getDeviceId();
       this.softid = Settings.System.getString(paramContext.getContentResolver(), "android_id");
       label131:
       this.deskey = paramEventListener.getUniqueID();
-      ad.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
+      ac.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
       for (;;)
       {
         this.imei = this.deskey;

@@ -28,36 +28,36 @@ import java.util.List;
 
 public final class k
 {
-  private static final x JnZ;
-  private static final x Joa;
+  private static final x Lbt;
+  private static final x Lbu;
   
   static
   {
     AppMethodBeat.i(56696);
-    Object localObject1 = u.fJR();
+    Object localObject1 = u.gcu();
     d.g.b.k.g(localObject1, "ErrorUtils.getErrorModule()");
-    Object localObject2 = c.JRc;
+    Object localObject2 = c.LEv;
     d.g.b.k.g(localObject2, "DescriptorUtils.COROUTIN…KAGE_FQ_NAME_EXPERIMENTAL");
-    localObject1 = new x((l)new m((y)localObject1, (d.l.b.a.b.f.b)localObject2), d.l.b.a.b.b.f.Jqe, c.JRe.fHe(), an.JqJ, d.l.b.a.b.l.b.JWw);
-    ((x)localObject1).b(w.Jqq);
-    ((x)localObject1).d(az.JqT);
+    localObject1 = new x((l)new m((y)localObject1, (d.l.b.a.b.f.b)localObject2), d.l.b.a.b.b.f.Ldx, c.LEx.fZI(), an.Lec, d.l.b.a.b.l.b.LJP);
+    ((x)localObject1).b(w.LdJ);
+    ((x)localObject1).d(az.Lem);
     localObject2 = (l)localObject1;
-    g.a locala = d.l.b.a.b.b.a.g.JrB;
-    ((x)localObject1).iK(j.listOf(ai.a((l)localObject2, g.a.fzI(), bh.JYD, d.l.b.a.b.f.f.aQC("T"), 0)));
-    ((x)localObject1).fAg();
-    JnZ = (x)localObject1;
-    localObject1 = u.fJR();
+    g.a locala = d.l.b.a.b.b.a.g.LeU;
+    ((x)localObject1).ja(j.listOf(ai.a((l)localObject2, g.a.fSm(), bh.LLW, d.l.b.a.b.f.f.aWB("T"), 0)));
+    ((x)localObject1).fSK();
+    Lbt = (x)localObject1;
+    localObject1 = u.gcu();
     d.g.b.k.g(localObject1, "ErrorUtils.getErrorModule()");
-    localObject2 = c.JRb;
+    localObject2 = c.LEu;
     d.g.b.k.g(localObject2, "DescriptorUtils.COROUTINES_PACKAGE_FQ_NAME_RELEASE");
-    localObject1 = new x((l)new m((y)localObject1, (d.l.b.a.b.f.b)localObject2), d.l.b.a.b.b.f.Jqe, c.JRf.fHe(), an.JqJ, d.l.b.a.b.l.b.JWw);
-    ((x)localObject1).b(w.Jqq);
-    ((x)localObject1).d(az.JqT);
+    localObject1 = new x((l)new m((y)localObject1, (d.l.b.a.b.f.b)localObject2), d.l.b.a.b.b.f.Ldx, c.LEy.fZI(), an.Lec, d.l.b.a.b.l.b.LJP);
+    ((x)localObject1).b(w.LdJ);
+    ((x)localObject1).d(az.Lem);
     localObject2 = (l)localObject1;
-    locala = d.l.b.a.b.b.a.g.JrB;
-    ((x)localObject1).iK(j.listOf(ai.a((l)localObject2, g.a.fzI(), bh.JYD, d.l.b.a.b.f.f.aQC("T"), 0)));
-    ((x)localObject1).fAg();
-    Joa = (x)localObject1;
+    locala = d.l.b.a.b.b.a.g.LeU;
+    ((x)localObject1).ja(j.listOf(ai.a((l)localObject2, g.a.fSm(), bh.LLW, d.l.b.a.b.f.f.aWB("T"), 0)));
+    ((x)localObject1).fSK();
+    Lbu = (x)localObject1;
     AppMethodBeat.o(56696);
   }
   
@@ -66,30 +66,30 @@ public final class k
     AppMethodBeat.i(56694);
     d.g.b.k.h(paramab, "suspendFunType");
     boolean bool = f.e(paramab);
-    if ((aa.JfW) && (!bool))
+    if ((aa.KTq) && (!bool))
     {
       paramab = (Throwable)new AssertionError("This type should be suspend function type: ".concat(String.valueOf(paramab)));
       AppMethodBeat.o(56694);
       throw paramab;
     }
     g localg = a.aN(paramab);
-    d.l.b.a.b.b.a.g localg1 = paramab.fxF();
+    d.l.b.a.b.b.a.g localg1 = paramab.fQj();
     ab localab = f.h(paramab);
     Object localObject2 = (Iterable)f.j(paramab);
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((av)((Iterator)localObject2).next()).fzr());
+      ((Collection)localObject1).add(((av)((Iterator)localObject2).next()).fRV());
     }
     localObject1 = (Collection)localObject1;
-    localObject2 = d.l.b.a.b.b.a.g.JrB;
-    localObject2 = g.a.fzI();
-    at localat = Joa.fxs();
+    localObject2 = d.l.b.a.b.b.a.g.LeU;
+    localObject2 = g.a.fSm();
+    at localat = Lbu.fPW();
     d.g.b.k.g(localat, "if (isReleaseCoroutines)…ERIMENTAL.typeConstructor");
     localObject1 = j.b((Collection)localObject1, ac.c((d.l.b.a.b.b.a.g)localObject2, localat, j.listOf(a.aO(f.i(paramab))), false));
-    localObject2 = a.aN(paramab).fxc();
+    localObject2 = a.aN(paramab).fPG();
     d.g.b.k.g(localObject2, "suspendFunType.builtIns.nullableAnyType");
-    paramab = f.a(localg, localg1, localab, (List)localObject1, (ab)localObject2).xW(paramab.fBT());
+    paramab = f.a(localg, localg1, localab, (List)localObject1, (ab)localObject2).zo(paramab.fUx());
     AppMethodBeat.o(56694);
     return paramab;
   }
@@ -99,18 +99,18 @@ public final class k
     AppMethodBeat.i(56695);
     if (paramBoolean)
     {
-      paramBoolean = d.g.b.k.g(paramb, c.JRf);
+      paramBoolean = d.g.b.k.g(paramb, c.LEy);
       AppMethodBeat.o(56695);
       return paramBoolean;
     }
-    paramBoolean = d.g.b.k.g(paramb, c.JRe);
+    paramBoolean = d.g.b.k.g(paramb, c.LEx);
     AppMethodBeat.o(56695);
     return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.k
  * JD-Core Version:    0.7.0.1
  */

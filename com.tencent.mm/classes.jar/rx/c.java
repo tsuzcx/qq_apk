@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c<T>
 {
-  private static final c<Void> Kon;
-  public final Throwable IzS = null;
-  private final a Kom;
+  private static final c<Void> MbW;
+  public final Throwable KbB = null;
+  private final a MbV;
   private final T value = null;
   
   static
   {
     AppMethodBeat.i(90087);
-    Kon = new c(a.Koq);
+    MbW = new c(a.MbZ);
     AppMethodBeat.o(90087);
   }
   
   private c(a parama)
   {
-    this.Kom = parama;
+    this.MbV = parama;
   }
   
-  private boolean fNt()
+  private boolean ggj()
   {
-    if (this.Kom == a.Kop) {}
-    for (int i = 1; (i != 0) && (this.IzS != null); i = 0) {
+    if (this.MbV == a.MbY) {}
+    for (int i = 1; (i != 0) && (this.KbB != null); i = 0) {
       return true;
     }
     return false;
@@ -32,7 +32,7 @@ public final class c<T>
   
   private boolean hasValue()
   {
-    if (this.Kom == a.Koo) {}
+    if (this.MbV == a.MbX) {}
     for (int i = 1; (i != 0) && (this.value != null); i = 0) {
       return true;
     }
@@ -58,7 +58,7 @@ public final class c<T>
       return false;
     }
     paramObject = (c)paramObject;
-    if (paramObject.Kom != this.Kom)
+    if (paramObject.MbV != this.MbV)
     {
       AppMethodBeat.o(90086);
       return false;
@@ -68,7 +68,7 @@ public final class c<T>
       AppMethodBeat.o(90086);
       return false;
     }
-    if ((this.IzS == paramObject.IzS) || ((this.IzS != null) && (this.IzS.equals(paramObject.IzS))))
+    if ((this.KbB == paramObject.KbB) || ((this.KbB != null) && (this.KbB.equals(paramObject.KbB))))
     {
       AppMethodBeat.o(90086);
       return true;
@@ -80,14 +80,14 @@ public final class c<T>
   public final int hashCode()
   {
     AppMethodBeat.i(90085);
-    int j = this.Kom.hashCode();
+    int j = this.MbV.hashCode();
     int i = j;
     if (hasValue()) {
       i = j * 31 + this.value.hashCode();
     }
     j = i;
-    if (fNt()) {
-      j = i * 31 + this.IzS.hashCode();
+    if (ggj()) {
+      j = i * 31 + this.KbB.hashCode();
     }
     AppMethodBeat.o(90085);
     return j;
@@ -96,12 +96,12 @@ public final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(90084);
-    Object localObject = new StringBuilder(64).append('[').append(super.toString()).append(' ').append(this.Kom);
+    Object localObject = new StringBuilder(64).append('[').append(super.toString()).append(' ').append(this.MbV);
     if (hasValue()) {
       ((StringBuilder)localObject).append(' ').append(this.value);
     }
-    if (fNt()) {
-      ((StringBuilder)localObject).append(' ').append(this.IzS.getMessage());
+    if (ggj()) {
+      ((StringBuilder)localObject).append(' ').append(this.KbB.getMessage());
     }
     ((StringBuilder)localObject).append(']');
     localObject = ((StringBuilder)localObject).toString();
@@ -114,10 +114,10 @@ public final class c<T>
     static
     {
       AppMethodBeat.i(90083);
-      Koo = new a("OnNext", 0);
-      Kop = new a("OnError", 1);
-      Koq = new a("OnCompleted", 2);
-      Kor = new a[] { Koo, Kop, Koq };
+      MbX = new a("OnNext", 0);
+      MbY = new a("OnError", 1);
+      MbZ = new a("OnCompleted", 2);
+      Mca = new a[] { MbX, MbY, MbZ };
       AppMethodBeat.o(90083);
     }
     

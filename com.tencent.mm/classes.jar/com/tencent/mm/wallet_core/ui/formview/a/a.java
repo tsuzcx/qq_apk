@@ -2,9 +2,9 @@ package com.tencent.mm.wallet_core.ui.formview.a;
 
 public abstract interface a
 {
-  public abstract boolean fkJ();
+  public abstract boolean fAZ();
   
-  public abstract boolean fkK();
+  public abstract boolean fBa();
 }
 
 

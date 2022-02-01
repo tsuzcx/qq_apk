@@ -7,25 +7,27 @@ import java.util.List;
 public abstract interface d
   extends a
 {
-  public abstract boolean Pc(String paramString);
+  public abstract boolean Tm(String paramString);
   
-  public abstract boolean Pd(String paramString);
+  public abstract boolean Tn(String paramString);
   
-  public abstract int Pe(String paramString);
+  public abstract int To(String paramString);
   
-  public abstract b Pf(String paramString);
+  public abstract b Tp(String paramString);
   
-  public abstract void Pg(String paramString);
+  public abstract void Tq(String paramString);
   
-  public abstract String Ph(String paramString);
+  public abstract String Tr(String paramString);
   
   public abstract void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2);
   
-  public abstract void cm(String paramString, int paramInt);
+  public abstract void cc(List<a> paramList);
   
-  public abstract boolean en(String paramString1, String paramString2);
+  public abstract void cr(String paramString, int paramInt);
   
-  public abstract b eo(String paramString1, String paramString2);
+  public abstract b eA(String paramString1, String paramString2);
+  
+  public abstract boolean ez(String paramString1, String paramString2);
   
   public abstract void l(List<a> paramList, int paramInt);
   
@@ -33,17 +35,18 @@ public abstract interface d
   {
     public String appId;
     public String desc;
-    public String dvh;
-    public int mSu = 999;
+    public String dsT;
+    public String extInfo;
+    public int nuJ = 999;
     public String title;
     public String url;
   }
   
   public static final class b
   {
-    public long mSv;
-    public String mSw;
-    public WebResourceResponse mSx;
+    public long nuK;
+    public String nuL;
+    public WebResourceResponse nuM;
     public String url;
   }
 }

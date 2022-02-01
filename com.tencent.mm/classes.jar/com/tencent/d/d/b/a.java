@@ -7,18 +7,18 @@ import java.io.InputStream;
 
 public final class a
 {
-  private static final byte[] Irr = { 127, 69, 76, 70 };
+  private static final byte[] JTb = { 127, 69, 76, 70 };
   
-  public static boolean aNE(String paramString)
+  public static boolean aTh(String paramString)
   {
     AppMethodBeat.i(138356);
-    byte[] arrayOfByte = new byte[Irr.length];
+    byte[] arrayOfByte = new byte[JTb.length];
     try
     {
       localFileInputStream = new FileInputStream(paramString);
       try
       {
-        if (localFileInputStream.read(arrayOfByte, 0, Irr.length) == arrayOfByte.length) {
+        if (localFileInputStream.read(arrayOfByte, 0, JTb.length) == arrayOfByte.length) {
           break label87;
         }
         paramString = new IOException("Read bytes less than " + arrayOfByte.length);
@@ -40,9 +40,9 @@ public final class a
     throw paramString;
     label87:
     i = 0;
-    while (i < Irr.length)
+    while (i < JTb.length)
     {
-      int j = Irr[i];
+      int j = JTb[i];
       int k = arrayOfByte[i];
       if (j != k)
       {
@@ -58,7 +58,7 @@ public final class a
   }
   
   /* Error */
-  public static byte[] aNG(String paramString)
+  public static byte[] aTj(String paramString)
   {
     // Byte code:
     //   0: ldc 64
@@ -76,7 +76,7 @@ public final class a
     //   25: astore_1
     //   26: aload_2
     //   27: aload_1
-    //   28: invokestatic 76	com/tencent/d/d/b/b:d	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+    //   28: invokestatic 76	com/tencent/d/d/b/b:c	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
     //   31: pop2
     //   32: aload_1
     //   33: invokevirtual 80	java/io/ByteArrayOutputStream:toByteArray	()[B
@@ -128,7 +128,7 @@ public final class a
   }
   
   /* Error */
-  public static byte[] gq(String paramString, int paramInt)
+  public static byte[] gu(String paramString, int paramInt)
   {
     // Byte code:
     //   0: iconst_0
@@ -254,7 +254,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.b.a
  * JD-Core Version:    0.7.0.1
  */

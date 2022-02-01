@@ -16,42 +16,42 @@ import java.util.Collection;
 public final class d
   implements d.l.b.a.b.b.b.b
 {
-  private static final d.l.b.a.b.f.b Jpf;
-  private static final d.l.b.a.b.f.f Jpg;
-  private static final d.l.b.a.b.f.a Jph;
-  public static final a Jpi;
-  private final d.l.b.a.b.l.f Jpc;
-  private final y Jpd;
-  private final d.g.a.b<y, d.l.b.a.b.b.l> Jpe;
+  private static final d.l.b.a.b.f.a LcA;
+  public static final a LcB;
+  private static final d.l.b.a.b.f.b Lcy;
+  private static final d.l.b.a.b.f.f Lcz;
+  private final d.l.b.a.b.l.f Lcv;
+  private final y Lcw;
+  private final d.g.a.b<y, d.l.b.a.b.b.l> Lcx;
   
   static
   {
     AppMethodBeat.i(56771);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(d.class), "cloneable", "getCloneable()Lorg/jetbrains/kotlin/descriptors/impl/ClassDescriptorImpl;")) };
-    Jpi = new a((byte)0);
-    Jpf = g.JlB;
-    Object localObject = g.JlM.JlS.fHe();
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(d.class), "cloneable", "getCloneable()Lorg/jetbrains/kotlin/descriptors/impl/ClassDescriptorImpl;")) };
+    LcB = new a((byte)0);
+    Lcy = g.KYV;
+    Object localObject = g.KZg.KZm.fZI();
     d.g.b.k.g(localObject, "KotlinBuiltIns.FQ_NAMES.cloneable.shortName()");
-    Jpg = (d.l.b.a.b.f.f)localObject;
-    localObject = d.l.b.a.b.f.a.p(g.JlM.JlS.fHh());
+    Lcz = (d.l.b.a.b.f.f)localObject;
+    localObject = d.l.b.a.b.f.a.p(g.KZg.KZm.fZL());
     d.g.b.k.g(localObject, "ClassId.topLevel(KotlinB…NAMES.cloneable.toSafe())");
-    Jph = (d.l.b.a.b.f.a)localObject;
+    LcA = (d.l.b.a.b.f.a)localObject;
     AppMethodBeat.o(56771);
   }
   
   private d(final i parami, y paramy, d.g.a.b<? super y, ? extends d.l.b.a.b.b.l> paramb)
   {
     AppMethodBeat.i(56776);
-    this.Jpd = paramy;
-    this.Jpe = paramb;
-    this.Jpc = parami.H((d.g.a.a)new b(this, parami));
+    this.Lcw = paramy;
+    this.Lcx = paramb;
+    this.Lcv = parami.O((d.g.a.a)new b(this, parami));
     AppMethodBeat.o(56776);
   }
   
-  private final d.l.b.a.b.b.c.h fxW()
+  private final d.l.b.a.b.b.c.h fQA()
   {
     AppMethodBeat.i(56772);
-    d.l.b.a.b.b.c.h localh = (d.l.b.a.b.b.c.h)d.l.b.a.b.l.h.a(this.Jpc, $$delegatedProperties[0]);
+    d.l.b.a.b.b.c.h localh = (d.l.b.a.b.b.c.h)d.l.b.a.b.l.h.a(this.Lcv, $$delegatedProperties[0]);
     AppMethodBeat.o(56772);
     return localh;
   }
@@ -61,7 +61,7 @@ public final class d
     AppMethodBeat.i(56773);
     d.g.b.k.h(paramb, "packageFqName");
     d.g.b.k.h(paramf, "name");
-    if ((d.g.b.k.g(paramf, Jpg)) && (d.g.b.k.g(paramb, Jpf)))
+    if ((d.g.b.k.g(paramf, Lcz)) && (d.g.b.k.g(paramb, Lcy)))
     {
       AppMethodBeat.o(56773);
       return true;
@@ -74,9 +74,9 @@ public final class d
   {
     AppMethodBeat.i(56774);
     d.g.b.k.h(parama, "classId");
-    if (d.g.b.k.g(parama, Jph))
+    if (d.g.b.k.g(parama, LcA))
     {
-      parama = (e)fxW();
+      parama = (e)fQA();
       AppMethodBeat.o(56774);
       return parama;
     }
@@ -88,13 +88,13 @@ public final class d
   {
     AppMethodBeat.i(56775);
     d.g.b.k.h(paramb, "packageFqName");
-    if (d.g.b.k.g(paramb, Jpf))
+    if (d.g.b.k.g(paramb, Lcy))
     {
-      paramb = (Collection)ak.setOf(fxW());
+      paramb = (Collection)ak.setOf(fQA());
       AppMethodBeat.o(56775);
       return paramb;
     }
-    paramb = (Collection)x.Jgn;
+    paramb = (Collection)x.KTH;
     AppMethodBeat.o(56775);
     return paramb;
   }
@@ -113,7 +113,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.b.d
  * JD-Core Version:    0.7.0.1
  */

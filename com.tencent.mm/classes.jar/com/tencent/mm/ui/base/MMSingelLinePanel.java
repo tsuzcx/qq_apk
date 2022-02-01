@@ -9,20 +9,20 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ae.a.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public class MMSingelLinePanel
   extends MMTagPanel
 {
-  private int FUZ;
-  private int FVa;
-  private LinkedList<Integer> FVb;
-  private boolean FZC;
-  private TextView FZD;
-  private int FZE;
-  private int FZF;
+  private int HuN;
+  private int HuO;
+  private LinkedList<Integer> HuP;
+  private boolean Hzq;
+  private TextView Hzr;
+  private int Hzs;
+  private int Hzt;
   
   static
   {
@@ -45,17 +45,17 @@ public class MMSingelLinePanel
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142121);
-    this.FVb = new LinkedList();
-    this.FUZ = 0;
-    this.FVa = 0;
-    this.FZC = true;
-    this.FZE = 0;
-    this.FZF = 0;
+    this.HuP = new LinkedList();
+    this.HuN = 0;
+    this.HuO = 0;
+    this.Hzq = true;
+    this.Hzs = 0;
+    this.Hzt = 0;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FlowLayout);
     try
     {
-      this.FUZ = paramContext.getDimensionPixelSize(0, 0);
-      this.FVa = paramContext.getDimensionPixelSize(3, 0);
+      this.HuN = paramContext.getDimensionPixelSize(0, 0);
+      this.HuO = paramContext.getDimensionPixelSize(3, 0);
       return;
     }
     finally
@@ -70,15 +70,15 @@ public class MMSingelLinePanel
     return false;
   }
   
-  public final void eST()
+  public final void fiD()
   {
     AppMethodBeat.i(142122);
-    super.eST();
-    this.FZD = new TextView(getContext());
-    this.FZD.setText("...");
-    this.FZD.setTextColor(getResources().getColor(2131101171));
-    this.FZD.setLayoutParams(generateDefaultLayoutParams());
-    addView(this.FZD);
+    super.fiD();
+    this.Hzr = new TextView(getContext());
+    this.Hzr.setText("...");
+    this.Hzr.setTextColor(getResources().getColor(2131101171));
+    this.Hzr.setLayoutParams(generateDefaultLayoutParams());
+    addView(this.Hzr);
     AppMethodBeat.o(142122);
   }
   
@@ -97,10 +97,10 @@ public class MMSingelLinePanel
     int m;
     int j;
     View localView;
-    if (this.FZC)
+    if (this.Hzq)
     {
       n = getChildCount();
-      i1 = this.FZE;
+      i1 = this.Hzs;
       i = getPaddingLeft();
       paramInt2 = getPaddingTop();
       k = 0;
@@ -110,7 +110,7 @@ public class MMSingelLinePanel
       if (j < n)
       {
         localView = getChildAt(j);
-        if ((localView.getVisibility() == 8) || (localView == this.FZD)) {
+        if ((localView.getVisibility() == 8) || (localView == this.Hzr)) {
           break label508;
         }
         int i2 = localView.getMeasuredWidth();
@@ -119,14 +119,14 @@ public class MMSingelLinePanel
           break label505;
         }
         i = getPaddingLeft();
-        paramInt2 += ((Integer)this.FVb.get(paramInt4)).intValue() + this.FVa;
+        paramInt2 += ((Integer)this.HuP.get(paramInt4)).intValue() + this.HuO;
         paramInt4 += 1;
         label150:
         if (paramInt4 > 0) {
           break label502;
         }
         localView.layout(i, paramInt2 + 0, i + i2, paramInt2 + 0 + i3);
-        i = this.FUZ + i2 + i;
+        i = this.HuN + i2 + i;
         m = paramInt2;
         k = i;
       }
@@ -139,15 +139,15 @@ public class MMSingelLinePanel
     {
       j += 1;
       break;
-      if (this.FZD != null)
+      if (this.Hzr != null)
       {
         if (paramInt4 > 0)
         {
-          this.FZD.layout(k, m, this.FZE + k, this.FZF + m);
+          this.Hzr.layout(k, m, this.Hzs + k, this.Hzt + m);
           AppMethodBeat.o(142125);
           return;
         }
-        this.FZD.layout(0, 0, 0, 0);
+        this.Hzr.layout(0, 0, 0, 0);
       }
       AppMethodBeat.o(142125);
       return;
@@ -167,7 +167,7 @@ public class MMSingelLinePanel
           n = i;
           m = paramInt4;
           k = paramInt2;
-          if (localView != this.FZD)
+          if (localView != this.Hzr)
           {
             k = localView.getMeasuredWidth();
             m = localView.getMeasuredHeight();
@@ -175,16 +175,16 @@ public class MMSingelLinePanel
               break label499;
             }
             i = getPaddingLeft();
-            paramInt2 += ((Integer)this.FVb.get(paramInt4)).intValue() + this.FVa;
+            paramInt2 += ((Integer)this.HuP.get(paramInt4)).intValue() + this.HuO;
             paramInt4 += 1;
           }
         }
       }
       for (;;)
       {
-        n = (((Integer)this.FVb.get(paramInt4)).intValue() - m) / 2;
+        n = (((Integer)this.HuP.get(paramInt4)).intValue() - m) / 2;
         localView.layout(i, paramInt2 + n, i + k, n + paramInt2 + m);
-        n = this.FUZ + k + i;
+        n = this.HuN + k + i;
         k = paramInt2;
         m = paramInt4;
         j += 1;
@@ -213,23 +213,23 @@ public class MMSingelLinePanel
     int m = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
     int i7 = View.MeasureSpec.getSize(paramInt2) - getPaddingTop() - getPaddingBottom();
     int i8 = getChildCount();
-    this.FVb.clear();
+    this.HuP.clear();
     int k = 0;
     int j = 0;
     int i = 0;
     if (View.MeasureSpec.getMode(paramInt2) == -2147483648) {}
     for (int n = View.MeasureSpec.makeMeasureSpec(i7, -2147483648);; n = View.MeasureSpec.makeMeasureSpec(0, 0))
     {
-      if ((this.FZC) && (this.FZD != null))
+      if ((this.Hzq) && (this.Hzr != null))
       {
-        this.FZD.measure(View.MeasureSpec.makeMeasureSpec(m, -2147483648), n);
-        this.FZE = this.FZD.getMeasuredWidth();
-        this.FZF = this.FZD.getMeasuredHeight();
-        ad.d("MicroMsg.MMTagContactPanel", "mEllipsisWidth %d", new Object[] { Integer.valueOf(this.FZE) });
+        this.Hzr.measure(View.MeasureSpec.makeMeasureSpec(m, -2147483648), n);
+        this.Hzs = this.Hzr.getMeasuredWidth();
+        this.Hzt = this.Hzr.getMeasuredHeight();
+        ac.d("MicroMsg.MMTagContactPanel", "mEllipsisWidth %d", new Object[] { Integer.valueOf(this.Hzs) });
       }
       int i1 = m;
-      if (this.FZC) {
-        i1 = m - this.FZE;
+      if (this.Hzq) {
+        i1 = m - this.Hzs;
       }
       m = 0;
       int i2 = 0;
@@ -251,12 +251,12 @@ public class MMSingelLinePanel
           if (k + i9 > i1)
           {
             i3 = 0;
-            m = j + (this.FVa + i);
-            this.FVb.add(Integer.valueOf(i));
+            m = j + (this.HuO + i);
+            this.HuP.add(Integer.valueOf(i));
             i4 = 0;
           }
           i6 = Math.max(i4, ((View)localObject).getMeasuredHeight());
-          i3 += this.FUZ + i9;
+          i3 += this.HuN + i9;
           i4 = i5;
           i5 = m;
         }
@@ -267,8 +267,8 @@ public class MMSingelLinePanel
         m = i4;
       }
     }
-    this.FVb.add(Integer.valueOf(i));
-    if (this.FZC)
+    this.HuP.add(Integer.valueOf(i));
+    if (this.Hzq)
     {
       getPaddingTop();
       getPaddingBottom();
@@ -294,17 +294,17 @@ public class MMSingelLinePanel
   public void setSingleLine(boolean paramBoolean)
   {
     AppMethodBeat.i(142123);
-    this.FZC = paramBoolean;
-    this.FZD = new TextView(getContext());
-    this.FZD.setText("...");
-    this.FZD.setLayoutParams(generateDefaultLayoutParams());
-    addView(this.FZD);
+    this.Hzq = paramBoolean;
+    this.Hzr = new TextView(getContext());
+    this.Hzr.setText("...");
+    this.Hzr.setLayoutParams(generateDefaultLayoutParams());
+    addView(this.Hzr);
     AppMethodBeat.o(142123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMSingelLinePanel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class asu
-  extends ckq
+  extends cqk
 {
-  public String CWC;
-  public long Dbe;
-  public byx DsX;
+  public SKBuiltinBuffer_t DUt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72483);
+    AppMethodBeat.i(32222);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.BaseResponse == null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(32222);
+        throw paramVarArgs;
       }
-      if (this.CWC != null) {
-        paramVarArgs.d(2, this.CWC);
-      }
-      paramVarArgs.aG(3, this.Dbe);
-      if (this.DsX != null)
+      if (this.DUt == null)
       {
-        paramVarArgs.kX(4, this.DsX.computeSize());
-        this.DsX.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: Key");
+        AppMethodBeat.o(32222);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(72483);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      if (this.DUt != null)
+      {
+        paramVarArgs.ln(2, this.DUt.computeSize());
+        this.DUt.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(32222);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label570;
+      if (this.BaseResponse == null) {
+        break label574;
       }
     }
-    label570:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label574:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.CWC != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.CWC);
+      if (this.DUt != null) {
+        i = paramInt + f.a.a.a.lm(2, this.DUt.computeSize());
       }
-      i += f.a.a.b.b.a.q(3, this.Dbe);
-      paramInt = i;
-      if (this.DsX != null) {
-        paramInt = i + f.a.a.a.kW(4, this.DsX.computeSize());
-      }
-      AppMethodBeat.o(72483);
-      return paramInt;
+      AppMethodBeat.o(32222);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(72483);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(32222);
+          throw paramVarArgs;
+        }
+        if (this.DUt == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Key");
+          AppMethodBeat.o(32222);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32222);
         return 0;
       }
       if (paramInt == 3)
@@ -73,48 +87,40 @@ public final class asu
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(72483);
+          AppMethodBeat.o(32222);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
+            localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localasu.BaseRequest = ((ip)localObject1);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localasu.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(72483);
-          return 0;
-        case 2: 
-          localasu.CWC = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(72483);
-          return 0;
-        case 3: 
-          localasu.Dbe = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(72483);
+          AppMethodBeat.o(32222);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new byx();
+          localObject1 = new SKBuiltinBuffer_t();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((byx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localasu.DsX = ((byx)localObject1);
+          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localasu.DUt = ((SKBuiltinBuffer_t)localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(72483);
+        AppMethodBeat.o(32222);
         return 0;
       }
-      AppMethodBeat.o(72483);
+      AppMethodBeat.o(32222);
       return -1;
     }
   }

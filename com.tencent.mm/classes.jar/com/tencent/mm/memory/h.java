@@ -8,12 +8,12 @@ import java.nio.ByteBuffer;
 public final class h
   extends c<ByteBuffer>
 {
-  public static h gDU;
+  public static h hev;
   
   static
   {
     AppMethodBeat.i(156425);
-    gDU = new h();
+    hev = new h();
     b.c(new Runnable()
     {
       public final void run()
@@ -22,7 +22,7 @@ public final class h
         int i = 0;
         while (i < 10)
         {
-          h.a(h.gDU, ByteBuffer.allocate(16384));
+          h.a(h.hev, ByteBuffer.allocate(16384));
           i += 1;
         }
         AppMethodBeat.o(156424);
@@ -38,7 +38,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.memory.h
  * JD-Core Version:    0.7.0.1
  */

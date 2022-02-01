@@ -27,15 +27,15 @@ public abstract class HeaderContainer
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract void brI();
+  public abstract void byI();
   
-  public abstract boolean brv();
+  public abstract boolean byv();
   
   public void e(Configuration paramConfiguration) {}
   
-  public void en(int paramInt1, int paramInt2) {}
+  public void eq(int paramInt1, int paramInt2) {}
   
-  public void eo(int paramInt1, int paramInt2) {}
+  public void er(int paramInt1, int paramInt2) {}
   
   public abstract void g(View paramView1, View paramView2);
   
@@ -62,16 +62,16 @@ public abstract class HeaderContainer
     return 0;
   }
   
-  public void hu(boolean paramBoolean) {}
+  public void hS(boolean paramBoolean) {}
   
   public boolean isFullScreen()
   {
     return false;
   }
   
-  public void k(long paramLong, int paramInt) {}
-  
   public void l(long paramLong, int paramInt) {}
+  
+  public void m(long paramLong, int paramInt) {}
   
   public void onDestroy() {}
   
@@ -91,11 +91,11 @@ public abstract class HeaderContainer
   
   public abstract void setFixedHeight(boolean paramBoolean);
   
-  public void uD(int paramInt) {}
+  public void vu(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer
  * JD-Core Version:    0.7.0.1
  */

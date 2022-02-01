@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
@@ -12,37 +12,37 @@ import java.util.Map;
 
 public enum e
 {
-  private Map<String, WeakReference<d>> Ajq;
+  private Map<String, WeakReference<d>> BBM;
   
   static
   {
     AppMethodBeat.i(70674);
-    Ajp = new e("INSTANCE");
-    Ajr = new e[] { Ajp };
+    BBL = new e("INSTANCE");
+    BBN = new e[] { BBL };
     AppMethodBeat.o(70674);
   }
   
   private e()
   {
     AppMethodBeat.i(70671);
-    this.Ajq = new HashMap();
+    this.BBM = new HashMap();
     AppMethodBeat.o(70671);
   }
   
   private static String b(Orders paramOrders)
   {
     AppMethodBeat.i(70673);
-    if ((paramOrders != null) && (paramOrders.Afx != null))
+    if ((paramOrders != null) && (paramOrders.BxR != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
-      while (i < paramOrders.Afx.size())
+      while (i < paramOrders.BxR.size())
       {
-        localStringBuilder.append(((Orders.Commodity)paramOrders.Afx.get(i)).dcF);
+        localStringBuilder.append(((Orders.Commodity)paramOrders.BxR.get(i)).dad);
         i += 1;
       }
       localStringBuilder.append("@");
-      localStringBuilder.append(paramOrders.Aff);
+      localStringBuilder.append(paramOrders.Bxz);
       paramOrders = localStringBuilder.toString();
       AppMethodBeat.o(70673);
       return paramOrders;
@@ -55,17 +55,17 @@ public enum e
   {
     AppMethodBeat.i(70672);
     String str = b(paramOrders);
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
-      ad.w("MicroMsg.FavorLogicHelperPool", "get key null");
+      ac.w("MicroMsg.FavorLogicHelperPool", "get key null");
       AppMethodBeat.o(70672);
       return null;
     }
     Object localObject;
-    if (this.Ajq.containsKey(str))
+    if (this.BBM.containsKey(str))
     {
-      ad.i("MicroMsg.FavorLogicHelperPool", "hit cache, key:".concat(String.valueOf(str)));
-      localObject = (WeakReference)this.Ajq.get(str);
+      ac.i("MicroMsg.FavorLogicHelperPool", "hit cache, key:".concat(String.valueOf(str)));
+      localObject = (WeakReference)this.BBM.get(str);
       if (localObject == null) {
         break label153;
       }
@@ -75,17 +75,17 @@ public enum e
         AppMethodBeat.o(70672);
         return localObject;
       }
-      ad.i("MicroMsg.FavorLogicHelperPool", "helper null");
+      ac.i("MicroMsg.FavorLogicHelperPool", "helper null");
     }
-    while ((paramOrders != null) && (paramOrders.Afy != null))
+    while ((paramOrders != null) && (paramOrders.BxS != null))
     {
-      paramOrders = new d(paramOrders.Afy);
+      paramOrders = new d(paramOrders.BxS);
       localObject = new WeakReference(paramOrders);
-      this.Ajq.put(str, localObject);
+      this.BBM.put(str, localObject);
       AppMethodBeat.o(70672);
       return paramOrders;
       label153:
-      ad.i("MicroMsg.FavorLogicHelperPool", "weakHelper null");
+      ac.i("MicroMsg.FavorLogicHelperPool", "weakHelper null");
     }
     AppMethodBeat.o(70672);
     return null;

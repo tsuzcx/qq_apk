@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.sns.ui.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.m.c.a;
+import com.tencent.mm.plugin.sns.l.c.a;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.g.g;
 
 public final class c
 {
   public boolean hasInit;
-  public int xGZ;
-  public b xMU;
-  public c.a xMV;
+  public int yTN;
+  public b yZJ;
+  public c.a yZK;
   
   public c()
   {
     AppMethodBeat.i(99838);
-    this.xMU = new b();
-    this.xMV = null;
-    this.xGZ = 0;
+    this.yZJ = new b();
+    this.yZK = null;
+    this.yTN = 0;
     this.hasInit = false;
     AppMethodBeat.o(99838);
   }
@@ -25,10 +25,10 @@ public final class c
   private void b(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(99839);
-    Object localObject = this.xMU;
-    if (((b)localObject).xFR != null)
+    Object localObject = this.yZJ;
+    if (((b)localObject).ySE != null)
     {
-      localObject = ((b)localObject).xFR.xZj;
+      localObject = ((b)localObject).ySE.zmj;
       g.b(paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt)).c((a)localObject);
     }
     AppMethodBeat.o(99839);
@@ -37,10 +37,10 @@ public final class c
   private void c(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(99840);
-    Object localObject = this.xMU;
-    if (((b)localObject).xFR != null)
+    Object localObject = this.yZJ;
+    if (((b)localObject).ySE != null)
     {
-      localObject = ((b)localObject).xFR.xZk;
+      localObject = ((b)localObject).ySE.zmk;
       g.b(paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt)).c((a)localObject);
     }
     AppMethodBeat.o(99840);
@@ -54,7 +54,7 @@ public final class c
       AppMethodBeat.o(99841);
       return;
     }
-    if (this.xGZ == 0) {
+    if (this.yTN == 0) {
       b(paramString, paramBoolean1, paramBoolean2, paramInt);
     }
     AppMethodBeat.o(99841);
@@ -68,7 +68,7 @@ public final class c
       AppMethodBeat.o(99842);
       return;
     }
-    if (this.xGZ == 0) {
+    if (this.yTN == 0) {
       c(paramString, paramBoolean1, paramBoolean2, paramInt);
     }
     AppMethodBeat.o(99842);

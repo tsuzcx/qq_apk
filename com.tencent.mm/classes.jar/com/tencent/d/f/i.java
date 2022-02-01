@@ -15,7 +15,7 @@ public final class i
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
-      locala.dvP = paramString;
+      locala.dtC = paramString;
       locala.versionName = paramContext.versionName;
       locala.versionCode = paramContext.versionCode;
       label45:
@@ -30,7 +30,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.f.i
  * JD-Core Version:    0.7.0.1
  */

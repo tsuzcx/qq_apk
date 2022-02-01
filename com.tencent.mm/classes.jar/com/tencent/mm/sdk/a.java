@@ -2,12 +2,12 @@ package com.tencent.mm.sdk;
 
 public final class a
 {
-  public static String ESB = "matrixmrs";
-  public static String ESC = "andromeda";
+  public static String GpO = "matrixmrs";
+  public static String GpP = "andromeda";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.a
  * JD-Core Version:    0.7.0.1
  */

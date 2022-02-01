@@ -6,25 +6,28 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qw;
+import com.tencent.mm.g.a.rf;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.sns.c.d;
-import com.tencent.mm.plugin.sns.c.i.a;
+import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.i.a;
 import com.tencent.mm.plugin.sns.storage.f;
 import com.tencent.mm.plugin.sns.storage.k;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.by;
-import com.tencent.mm.protocal.protobuf.ciu;
-import com.tencent.mm.protocal.protobuf.cui;
-import com.tencent.mm.protocal.protobuf.cuj;
-import com.tencent.mm.protocal.protobuf.cuo;
-import com.tencent.mm.protocal.protobuf.cuu;
-import com.tencent.mm.protocal.protobuf.yk;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.ca;
+import com.tencent.mm.protocal.protobuf.cob;
+import com.tencent.mm.protocal.protobuf.czu;
+import com.tencent.mm.protocal.protobuf.czv;
+import com.tencent.mm.protocal.protobuf.daa;
+import com.tencent.mm.protocal.protobuf.dag;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,25 +37,25 @@ import java.util.Map;
 
 public final class am
 {
-  private static final int wIJ;
+  private static final int xVe;
   
   static
   {
     AppMethodBeat.i(95919);
-    wIJ = com.tencent.mm.m.g.Zd().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
+    xVe = com.tencent.mm.m.g.ZY().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
     AppMethodBeat.o(95919);
   }
   
-  public static boolean dtW()
+  public static boolean dIu()
   {
     AppMethodBeat.i(95917);
-    com.tencent.mm.kernel.g.afC();
-    int i = ((Integer)com.tencent.mm.kernel.g.afB().afk().get(ae.a.FtM, Integer.valueOf(0))).intValue();
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(wIJ) });
-    if (i < wIJ)
+    com.tencent.mm.kernel.g.agS();
+    int i = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GRG, Integer.valueOf(0))).intValue();
+    ac.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(xVe) });
+    if (i < xVe)
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.FtM, Integer.valueOf(i + 1));
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GRG, Integer.valueOf(i + 1));
     }
     for (boolean bool = true;; bool = false)
     {
@@ -72,20 +75,20 @@ public final class am
     paramArrayList = new ArrayList(paramArrayList).iterator();
     while (paramArrayList.hasNext())
     {
-      int i = bt.getInt((String)paramArrayList.next(), 0);
+      int i = bs.getInt((String)paramArrayList.next(), 0);
       if (i != 0)
       {
-        Object localObject = af.dtu().Ne(i);
+        Object localObject = af.dHR().Ph(i);
         if (localObject != null)
         {
-          TimeLineObject localTimeLineObject = ((p)localObject).dxy();
-          if ((localTimeLineObject != null) && (localTimeLineObject.Etm != null) && (localTimeLineObject.Etm.DaB == 26))
+          TimeLineObject localTimeLineObject = ((p)localObject).dLV();
+          if ((localTimeLineObject != null) && (localTimeLineObject.FQo != null) && (localTimeLineObject.FQo.Ety == 26))
           {
-            localTimeLineObject.Etm.DaE = paramString;
-            af.dtu().b(i, (p)localObject);
-            localObject = new qw();
-            ((qw)localObject).dwz.dwA = i;
-            com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+            localTimeLineObject.FQo.EtB = paramString;
+            af.dHR().b(i, (p)localObject);
+            localObject = new rf();
+            ((rf)localObject).dum.dun = i;
+            com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
           }
         }
       }
@@ -93,7 +96,7 @@ public final class am
     AppMethodBeat.o(95916);
   }
   
-  public static boolean fK(Context paramContext)
+  public static boolean fV(Context paramContext)
   {
     bool1 = true;
     AppMethodBeat.i(95918);
@@ -106,7 +109,7 @@ public final class am
       paramContext = paramContext.signatures[0].toByteArray();
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramContext);
-      boolean bool2 = bt.kU(com.tencent.d.f.e.bytesToHexString(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
+      boolean bool2 = bs.lr(com.tencent.d.f.e.bytesToHexString(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
       if (!bool2) {
         break label87;
       }
@@ -115,7 +118,7 @@ public final class am
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
+        ac.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
         bool1 = false;
       }
     }
@@ -124,41 +127,41 @@ public final class am
   }
   
   public static final class a
-    implements com.tencent.mm.al.g, com.tencent.mm.plugin.sns.c.i
+    implements com.tencent.mm.ak.g, com.tencent.mm.plugin.sns.b.i
   {
-    public static int wIK = -1;
-    private Map<i.a, String> gVL;
-    private Map<String, Long> wIL;
-    private Map<String, Integer> wIM;
-    private Map<String, Long> wIN;
-    private Map<String, Integer> wIO;
-    private int wIP;
-    public long wIQ;
-    public long wIR;
-    private LinkedList<String> wIS;
-    public Map<String, ArrayList<com.tencent.mm.plugin.sns.j.b>> wIT;
-    public Map<String, Integer> wIU;
-    private as wIV;
+    public static int xVf = -1;
+    private Map<i.a, String> hwk;
+    private Map<String, Long> xVg;
+    private Map<String, Integer> xVh;
+    private Map<String, Long> xVi;
+    private Map<String, Integer> xVj;
+    private int xVk;
+    public long xVl;
+    public long xVm;
+    private LinkedList<String> xVn;
+    public Map<String, ArrayList<com.tencent.mm.plugin.sns.i.b>> xVo;
+    public Map<String, Integer> xVp;
+    private at xVq;
     
     public a()
     {
       AppMethodBeat.i(95895);
-      this.wIL = new HashMap();
-      this.wIM = new HashMap();
-      this.wIN = new HashMap();
-      this.wIO = new HashMap();
-      this.wIP = 0;
-      this.wIQ = 0L;
-      this.wIR = 0L;
-      this.gVL = new HashMap();
-      this.wIS = new LinkedList();
-      this.wIT = new HashMap();
-      this.wIU = new HashMap();
-      this.wIV = new as();
+      this.xVg = new HashMap();
+      this.xVh = new HashMap();
+      this.xVi = new HashMap();
+      this.xVj = new HashMap();
+      this.xVk = 0;
+      this.xVl = 0L;
+      this.xVm = 0L;
+      this.hwk = new HashMap();
+      this.xVn = new LinkedList();
+      this.xVo = new HashMap();
+      this.xVp = new HashMap();
+      this.xVq = new at();
       AppMethodBeat.o(95895);
     }
     
-    public static cuo a(p paramp, int paramInt1, String paramString, int paramInt2)
+    public static daa a(p paramp, int paramInt1, String paramString, int paramInt2)
     {
       AppMethodBeat.i(95909);
       paramp = b(paramp, paramInt1, paramString, null, 0, paramInt2, "");
@@ -166,44 +169,44 @@ public final class am
       return paramp;
     }
     
-    public static cuo a(p paramp, int paramInt1, String paramString1, cuo paramcuo, int paramInt2, int paramInt3, String paramString2)
+    public static daa a(p paramp, int paramInt1, String paramString1, daa paramdaa, int paramInt2, int paramInt3, String paramString2)
     {
       AppMethodBeat.i(95910);
-      paramp = b(paramp, paramInt1, paramString1, paramcuo, paramInt2, paramInt3, paramString2);
+      paramp = b(paramp, paramInt1, paramString1, paramdaa, paramInt2, paramInt3, paramString2);
       AppMethodBeat.o(95910);
       return paramp;
     }
     
-    public static cuo a(p paramp, int paramInt1, String paramString1, String paramString2, int paramInt2)
+    public static daa a(p paramp, int paramInt1, String paramString1, String paramString2, int paramInt2)
     {
       AppMethodBeat.i(95912);
-      cui localcui = new cui();
-      localcui.gKr = paramString1;
-      localcui.CreateTime = ((int)(bt.eGO() / 1000L));
-      localcui.ElX = u.aqI();
-      localcui.DZr = u.aqG();
-      localcui.rNz = paramInt2;
-      localcui.ElY = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(paramp.field_userName);
-      localcui.DdY = paramp.field_userName;
-      localcui.mBH = paramInt1;
-      cuj localcuj;
+      czu localczu = new czu();
+      localczu.hkR = paramString1;
+      localczu.CreateTime = ((int)(bs.eWj() / 1000L));
+      localczu.FIW = u.axy();
+      localczu.Fwn = u.axw();
+      localczu.sVo = paramInt2;
+      localczu.FIX = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramp.field_userName);
+      localczu.Exe = paramp.field_userName;
+      localczu.ndI = paramInt1;
+      czv localczv;
       String str;
-      if (paramp.Nb(32))
+      if (paramp.Pe(32))
       {
-        localcui.Emb = 0L;
-        paramString1 = new cui();
-        paramString1.DZr = paramString2;
-        if (!bt.isNullOrNil(paramString1.DZr)) {
-          paramString1.ElX = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(paramString1.DZr);
+        localczu.FJa = 0L;
+        paramString1 = new czu();
+        paramString1.Fwn = paramString2;
+        if (!bs.isNullOrNil(paramString1.Fwn)) {
+          paramString1.FIW = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramString1.Fwn);
         }
-        localcuj = new cuj();
-        localcuj.Id = paramp.field_snsId;
-        localcuj.Emi = localcui;
-        localcuj.Emj = paramString1;
+        localczv = new czv();
+        localczv.Id = paramp.field_snsId;
+        localczv.FJh = localczu;
+        localczv.FJi = paramString1;
         str = "";
-        if (paramp.Nb(32))
+        if (paramp.Pe(32))
         {
-          paramString1 = paramp.dxu();
+          paramString1 = paramp.dFQ();
           if (paramString1 != null) {
             break label382;
           }
@@ -214,53 +217,53 @@ public final class am
           }
           paramString1 = "";
           label215:
-          if (localcui.mBH != 7) {
+          if (localczu.ndI != 7) {
             break label398;
           }
-          ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dyi(), new Object[] { Integer.valueOf(1), paramString2, Integer.valueOf(paramp.dyi()) });
+          ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dMF(), new Object[] { Integer.valueOf(1), paramString2, Integer.valueOf(paramp.dMF()) });
           str = paramString1;
         }
         label273:
-        paramString2 = com.tencent.mm.b.g.getMessageDigest(bt.GC().getBytes());
+        paramString2 = com.tencent.mm.b.g.getMessageDigest(bs.Gn().getBytes());
         paramString1 = paramString2;
-        if (paramp.Nb(32)) {
+        if (paramp.Pe(32)) {
           paramString1 = "_AD_TAG_".concat(String.valueOf(paramString2));
         }
-        if (!af.dtt().a(paramString1, localcuj, str)) {
+        if (!af.dHQ().a(paramString1, localczv, str)) {
           break label490;
         }
-        if (!ad.aoC(paramString1)) {
+        if (!ad.atO(paramString1)) {
           break label462;
         }
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new j(localcuj, paramString1, str, 0), 0);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new j(localczv, paramString1, str, 0), 0);
       }
       for (;;)
       {
         AppMethodBeat.o(95912);
         return null;
-        localcui.ElZ = 0;
+        localczu.FIY = 0;
         break;
         label382:
-        paramString2 = paramString1.dAM;
+        paramString2 = paramString1.dyy;
         break label208;
         label390:
-        paramString1 = paramString1.dvK;
+        paramString1 = paramString1.dtx;
         break label215;
         label398:
         str = paramString1;
-        if (localcui.mBH != 8) {
+        if (localczu.ndI != 8) {
           break label273;
         }
-        ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dyi(), new Object[] { Integer.valueOf(2), paramString2, Integer.valueOf(paramp.dyi()) });
+        ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dMF(), new Object[] { Integer.valueOf(2), paramString2, Integer.valueOf(paramp.dMF()) });
         str = paramString1;
         break label273;
         label462:
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new n(localcuj, paramString1), 0);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new n(localczv, paramString1), 0);
         continue;
         label490:
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.SnsService", "can not add Comment");
+        ac.e("MicroMsg.SnsService", "can not add Comment");
       }
     }
     
@@ -272,34 +275,34 @@ public final class am
         AppMethodBeat.o(95913);
         return;
       }
-      cui localcui = new cui();
-      localcui.gKr = paramString2;
-      localcui.CreateTime = ((int)(System.currentTimeMillis() / 1000L));
-      localcui.ElX = u.aqI();
-      localcui.DZr = u.aqG();
-      localcui.rNz = paramInt2;
-      localcui.ElY = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(paramString1);
-      localcui.DdY = paramString1;
-      localcui.mBH = paramInt1;
-      paramString2 = new cuj();
+      czu localczu = new czu();
+      localczu.hkR = paramString2;
+      localczu.CreateTime = ((int)(System.currentTimeMillis() / 1000L));
+      localczu.FIW = u.axy();
+      localczu.Fwn = u.axw();
+      localczu.sVo = paramInt2;
+      localczu.FIX = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramString1);
+      localczu.Exe = paramString1;
+      localczu.ndI = paramInt1;
+      paramString2 = new czv();
       paramString2.Id = paramp.field_snsId;
-      paramString2.Emi = localcui;
-      paramString2.Emj = new cui();
-      String str = com.tencent.mm.b.g.getMessageDigest(bt.GC().getBytes());
+      paramString2.FJh = localczu;
+      paramString2.FJi = new czu();
+      String str = com.tencent.mm.b.g.getMessageDigest(bs.Gn().getBytes());
       long l = paramp.field_snsId;
       try
       {
-        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.SnsService", "comment stg inserted");
+        ac.v("MicroMsg.SnsService", "comment stg inserted");
         paramp = new com.tencent.mm.plugin.sns.storage.j();
         paramp.field_talker = paramString1;
         paramp.field_snsID = l;
         paramp.field_createTime = ((int)(System.currentTimeMillis() / 1000L));
-        paramp.field_curActionBuf = localcui.toByteArray();
+        paramp.field_curActionBuf = localczu.toByteArray();
         paramp.field_type = paramInt1;
         paramp.field_isSend = true;
         paramp.field_isRead = 1;
-        af.dtz().insert(paramp);
-        af.dtt().a(str, paramString2);
+        af.dHW().insert(paramp);
+        af.dHQ().a(str, paramString2);
         AppMethodBeat.o(95913);
         return;
       }
@@ -307,20 +310,20 @@ public final class am
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.SnsService", paramString1, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SnsService", paramString1, "", new Object[0]);
         }
       }
     }
     
-    public static void aoK(String paramString)
+    public static void atW(String paramString)
     {
       AppMethodBeat.i(95908);
-      Object localObject = af.dtt();
-      if (bt.isNullOrNil(((ad)localObject).fki)) {
-        ((ad)localObject).fki = u.aqG();
+      Object localObject = af.dHQ();
+      if (bs.isNullOrNil(((ad)localObject).fnC)) {
+        ((ad)localObject).fnC = u.axw();
       }
-      localObject = ((ad)localObject).fki;
-      p localp = com.tencent.mm.plugin.sns.storage.h.apJ(paramString);
+      localObject = ((ad)localObject).fnC;
+      p localp = com.tencent.mm.plugin.sns.storage.h.auS(paramString);
       for (;;)
       {
         try
@@ -329,330 +332,330 @@ public final class am
           Iterator localIterator = localSnsObject.LikeUserList.iterator();
           if (localIterator.hasNext())
           {
-            cuo localcuo = (cuo)localIterator.next();
-            if (!localcuo.Username.equals(localObject)) {
+            daa localdaa = (daa)localIterator.next();
+            if (!localdaa.Username.equals(localObject)) {
               continue;
             }
-            localSnsObject.LikeUserList.remove(localcuo);
+            localSnsObject.LikeUserList.remove(localdaa);
             localSnsObject.LikeCount -= 1;
             localp.field_attrBuf = localSnsObject.toByteArray();
-            if (!localp.Nb(32)) {
+            if (!localp.Pe(32)) {
               continue;
             }
-            af.dtx().replace(localp.dyh());
+            af.dHU().replace(localp.dME());
           }
         }
         catch (Exception localException)
         {
           continue;
-          String str = localException.dAM;
+          String str = localException.dyy;
           continue;
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new q(com.tencent.mm.plugin.sns.storage.x.anz(paramString), 5), 0);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new q(com.tencent.mm.plugin.sns.storage.x.asL(paramString), 5), 0);
           AppMethodBeat.o(95908);
         }
-        if (!af.dtt().sN(com.tencent.mm.plugin.sns.storage.x.anz(paramString))) {
+        if (!af.dHQ().xq(com.tencent.mm.plugin.sns.storage.x.asL(paramString))) {
           continue;
         }
-        if (!localp.Nb(32)) {
+        if (!localp.Pe(32)) {
           continue;
         }
-        localObject = localp.dxu();
+        localObject = localp.dFQ();
         if (localObject != null) {
           continue;
         }
         localObject = "";
-        ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, localp.dyi(), new Object[] { Integer.valueOf(0), localObject, Integer.valueOf(localp.dyi()) });
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new q(com.tencent.mm.plugin.sns.storage.x.anz(paramString), 7), 0);
+        ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, localp.dMF(), new Object[] { Integer.valueOf(0), localObject, Integer.valueOf(localp.dMF()) });
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new q(com.tencent.mm.plugin.sns.storage.x.asL(paramString), 7), 0);
         AppMethodBeat.o(95908);
         return;
-        af.dtu().J(localp);
+        af.dHR().K(localp);
       }
     }
     
-    private static cuo b(p paramp, int paramInt1, String paramString1, cuo paramcuo, int paramInt2, int paramInt3, String paramString2)
+    private static daa b(p paramp, int paramInt1, String paramString1, daa paramdaa, int paramInt2, int paramInt3, String paramString2)
     {
       AppMethodBeat.i(95911);
-      cui localcui = new cui();
-      localcui.gKr = paramString1;
-      localcui.CreateTime = ((int)(bt.eGO() / 1000L));
-      localcui.ElX = u.aqI();
-      localcui.DZr = u.aqG();
-      localcui.rNz = 0;
-      localcui.ElY = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(paramp.field_userName);
-      localcui.DdY = paramp.field_userName;
-      localcui.mBH = paramInt1;
-      localcui.Eme = paramInt2;
+      czu localczu = new czu();
+      localczu.hkR = paramString1;
+      localczu.CreateTime = ((int)(bs.eWj() / 1000L));
+      localczu.FIW = u.axy();
+      localczu.Fwn = u.axw();
+      localczu.sVo = 0;
+      localczu.FIX = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramp.field_userName);
+      localczu.Exe = paramp.field_userName;
+      localczu.ndI = paramInt1;
+      localczu.FJd = paramInt2;
       long l;
       label189:
-      cuj localcuj;
+      czv localczv;
       int i;
-      if (paramp.Nb(32)) {
-        if (paramcuo == null)
+      if (paramp.Pe(32)) {
+        if (paramdaa == null)
         {
           l = 0L;
-          localcui.Emb = l;
-          if (!bt.isNullOrNil(paramString2))
+          localczu.FJa = l;
+          if (!bs.isNullOrNil(paramString2))
           {
-            paramString1 = new cuu();
+            paramString1 = new dag();
             paramString1.Md5 = paramString2;
-            localcui.Emf = new LinkedList();
-            localcui.Emf.add(paramString1);
-            localcui.Emg = 1;
+            localczu.FJe = new LinkedList();
+            localczu.FJe.add(paramString1);
+            localczu.FJf = 1;
           }
-          paramString2 = new cui();
-          if (paramcuo != null) {
+          paramString2 = new czu();
+          if (paramdaa != null) {
             break label686;
           }
           paramString1 = "";
-          paramString2.DZr = paramString1;
-          if (!bt.isNullOrNil(paramString2.DZr)) {
-            paramString2.ElX = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(paramString2.DZr);
+          paramString2.Fwn = paramString1;
+          if (!bs.isNullOrNil(paramString2.Fwn)) {
+            paramString2.FIW = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramString2.Fwn);
           }
-          localcuj = new cuj();
-          localcuj.Id = paramp.field_snsId;
-          localcuj.Emi = localcui;
-          localcuj.Emj = paramString2;
+          localczv = new czv();
+          localczv.Id = paramp.field_snsId;
+          localczv.FJh = localczu;
+          localczv.FJi = paramString2;
           paramString1 = "";
           i = 0;
-          if (paramp.Nb(32))
+          if (paramp.Pe(32))
           {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "sendComment, sourceScene=" + paramInt3 + ", type=" + paramInt1 + ", flag=" + paramInt2);
+            ac.i("MicroMsg.SnsService", "sendComment, sourceScene=" + paramInt3 + ", type=" + paramInt1 + ", flag=" + paramInt2);
             if (paramInt3 != 2) {
               break label694;
             }
-            paramString1 = paramp.dxv();
+            paramString1 = paramp.dLS();
             paramInt1 = 1;
             label334:
             if (paramString1 != null) {
               break label704;
             }
-            paramcuo = "";
+            paramdaa = "";
             label341:
             if (paramString1 != null) {
               break label712;
             }
             paramString1 = "";
             label348:
-            if (localcui.mBH != 7) {
+            if (localczu.ndI != 7) {
               break label720;
             }
-            ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dyi(), new Object[] { Integer.valueOf(1), paramcuo, Integer.valueOf(paramp.dyi()) });
+            ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dMF(), new Object[] { Integer.valueOf(1), paramdaa, Integer.valueOf(paramp.dMF()) });
             label403:
-            paramcuo = paramp.dyh();
-            if (paramcuo == null) {
+            paramdaa = paramp.dME();
+            if (paramdaa == null) {
               break label1091;
             }
-            if (paramcuo.field_firstControlTime == 0)
+            if (paramdaa.field_firstControlTime == 0)
             {
-              paramcuo.field_firstControlTime = localcui.CreateTime;
-              af.dtx().b(paramcuo.field_snsId, paramcuo);
+              paramdaa.field_firstControlTime = localczu.CreateTime;
+              af.dHU().b(paramdaa.field_snsId, paramdaa);
             }
-            paramcuo = paramcuo.dxz();
+            paramdaa = paramdaa.dLW();
             if (paramInt3 != 2) {
               break label829;
             }
-            if (paramcuo == null) {
+            if (paramdaa == null) {
               break label804;
             }
-            localcuj.Emi.CxV = paramcuo.CwV;
-            if (paramcuo.CwV == null) {
+            localczv.FJh.DQr = paramdaa.DPr;
+            if (paramdaa.DPr == null) {
               break label778;
             }
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "atFriend remindInfo aid64 %d, aid %d", new Object[] { Long.valueOf(paramcuo.CwV.Eem), Integer.valueOf(paramcuo.CwV.Eeh) });
-            if ((paramcuo.CwV.Eem != 0L) || (paramcuo.CwV.Eeh != 0)) {
+            ac.i("MicroMsg.SnsService", "atFriend remindInfo aid64 %d, aid %d", new Object[] { Long.valueOf(paramdaa.DPr.FBm), Integer.valueOf(paramdaa.DPr.FBh) });
+            if ((paramdaa.DPr.FBm != 0L) || (paramdaa.DPr.FBh != 0)) {
               break label1091;
             }
-            com.tencent.mm.plugin.report.service.h.vKh.dB(955, 9);
+            com.tencent.mm.plugin.report.service.h.wUl.dB(955, 9);
             i = paramInt1;
           }
           label549:
-          paramString2 = com.tencent.mm.b.g.getMessageDigest(bt.GC().getBytes());
-          paramcuo = paramString2;
-          if (paramp.Nb(32)) {
-            paramcuo = "_AD_TAG_".concat(String.valueOf(paramString2));
+          paramString2 = com.tencent.mm.b.g.getMessageDigest(bs.Gn().getBytes());
+          paramdaa = paramString2;
+          if (paramp.Pe(32)) {
+            paramdaa = "_AD_TAG_".concat(String.valueOf(paramString2));
           }
-          if (!af.dtt().a(paramcuo, localcuj)) {
+          if (!af.dHQ().a(paramdaa, localczv)) {
             break label1125;
           }
-          if (!ad.aoC(paramcuo)) {
+          if (!ad.atO(paramdaa)) {
             break label1097;
           }
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new j(localcuj, paramcuo, paramString1, i), 0);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new j(localczv, paramdaa, paramString1, i), 0);
         }
       }
       for (;;)
       {
         AppMethodBeat.o(95911);
         return null;
-        l = paramcuo.Emc;
+        l = paramdaa.FJb;
         break;
-        if (paramcuo == null) {}
-        for (i = 0;; i = paramcuo.Ema)
+        if (paramdaa == null) {}
+        for (i = 0;; i = paramdaa.FIZ)
         {
-          localcui.ElZ = i;
+          localczu.FIY = i;
           break;
         }
         label686:
-        paramString1 = paramcuo.Username;
+        paramString1 = paramdaa.Username;
         break label189;
         label694:
-        paramString1 = paramp.dxu();
+        paramString1 = paramp.dFQ();
         paramInt1 = 0;
         break label334;
         label704:
-        paramcuo = paramString1.dAM;
+        paramdaa = paramString1.dyy;
         break label341;
         label712:
-        paramString1 = paramString1.dvK;
+        paramString1 = paramString1.dtx;
         break label348;
         label720:
-        if (localcui.mBH != 8) {
+        if (localczu.ndI != 8) {
           break label403;
         }
-        ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dyi(), new Object[] { Integer.valueOf(2), paramcuo, Integer.valueOf(paramp.dyi()) });
+        ((d)com.tencent.mm.kernel.g.ab(d.class)).a(11855, paramp.dMF(), new Object[] { Integer.valueOf(2), paramdaa, Integer.valueOf(paramp.dMF()) });
         break label403;
         label778:
-        com.tencent.mm.plugin.report.service.h.vKh.dB(955, 7);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "remindInfo is null!");
+        com.tencent.mm.plugin.report.service.h.wUl.dB(955, 7);
+        ac.i("MicroMsg.SnsService", "remindInfo is null!");
         i = paramInt1;
         break label549;
         label804:
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "remindInfo group is null!");
-        com.tencent.mm.plugin.report.service.h.vKh.dB(955, 5);
+        ac.i("MicroMsg.SnsService", "remindInfo group is null!");
+        com.tencent.mm.plugin.report.service.h.wUl.dB(955, 5);
         i = paramInt1;
         break label549;
         label829:
-        if (com.tencent.mm.plugin.sns.ui.widget.e.hA(paramInt2, 8))
+        if (com.tencent.mm.plugin.sns.ui.widget.e.hJ(paramInt2, 8))
         {
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "sendAtFriend");
-          if (paramcuo != null)
+          ac.i("MicroMsg.SnsService", "sendAtFriend");
+          if (paramdaa != null)
           {
-            if (paramcuo.CwU != null)
+            if (paramdaa.DPq != null)
             {
-              localcuj.Emi.CxV = paramcuo.CwU;
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "timeline remindInfo aid64 %d, aid %d", new Object[] { Long.valueOf(paramcuo.CwU.Eem), Integer.valueOf(paramcuo.CwU.Eeh) });
-              if ((paramcuo.CwU.Eem != 0L) || (paramcuo.CwU.Eeh != 0)) {
+              localczv.FJh.DQr = paramdaa.DPq;
+              ac.i("MicroMsg.SnsService", "timeline remindInfo aid64 %d, aid %d", new Object[] { Long.valueOf(paramdaa.DPq.FBm), Integer.valueOf(paramdaa.DPq.FBh) });
+              if ((paramdaa.DPq.FBm != 0L) || (paramdaa.DPq.FBh != 0)) {
                 break label1091;
               }
-              com.tencent.mm.plugin.report.service.h.vKh.dB(955, 8);
+              com.tencent.mm.plugin.report.service.h.wUl.dB(955, 8);
               i = paramInt1;
               break label549;
             }
-            if (paramcuo.CwV != null)
+            if (paramdaa.DPr != null)
             {
-              localcuj.Emi.CxV = paramcuo.CwV;
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "atFriend remindInfo aid64 %d, aid %d", new Object[] { Long.valueOf(paramcuo.CwV.Eem), Integer.valueOf(paramcuo.CwV.Eeh) });
-              if ((paramcuo.CwV.Eem != 0L) || (paramcuo.CwV.Eeh != 0)) {
+              localczv.FJh.DQr = paramdaa.DPr;
+              ac.i("MicroMsg.SnsService", "atFriend remindInfo aid64 %d, aid %d", new Object[] { Long.valueOf(paramdaa.DPr.FBm), Integer.valueOf(paramdaa.DPr.FBh) });
+              if ((paramdaa.DPr.FBm != 0L) || (paramdaa.DPr.FBh != 0)) {
                 break label1091;
               }
-              com.tencent.mm.plugin.report.service.h.vKh.dB(955, 8);
+              com.tencent.mm.plugin.report.service.h.wUl.dB(955, 8);
               i = paramInt1;
               break label549;
             }
-            com.tencent.mm.plugin.report.service.h.vKh.dB(955, 6);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "remindInfo is null!");
+            com.tencent.mm.plugin.report.service.h.wUl.dB(955, 6);
+            ac.i("MicroMsg.SnsService", "remindInfo is null!");
             i = paramInt1;
             break label549;
           }
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "remindInfo group is null!");
-          com.tencent.mm.plugin.report.service.h.vKh.dB(955, 5);
+          ac.i("MicroMsg.SnsService", "remindInfo group is null!");
+          com.tencent.mm.plugin.report.service.h.wUl.dB(955, 5);
         }
         label1091:
         i = paramInt1;
         break label549;
         label1097:
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new n(localcuj, paramcuo), 0);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new n(localczv, paramdaa), 0);
         continue;
         label1125:
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.SnsService", "can not add Comment");
+        ac.e("MicroMsg.SnsService", "can not add Comment");
       }
     }
     
-    public static int dtY()
+    public static int dIw()
     {
       AppMethodBeat.i(95906);
-      if (wIK != -1)
+      if (xVf != -1)
       {
-        i = wIK;
+        i = xVf;
         AppMethodBeat.o(95906);
         return i;
       }
-      wIK = com.tencent.mm.plugin.sns.data.q.dsa();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "getTimelineControlFlag %d", new Object[] { Integer.valueOf(wIK) });
-      int i = wIK;
+      xVf = com.tencent.mm.plugin.sns.data.q.dGz();
+      ac.i("MicroMsg.SnsService", "getTimelineControlFlag %d", new Object[] { Integer.valueOf(xVf) });
+      int i = xVf;
       AppMethodBeat.o(95906);
       return i;
     }
     
-    public final void N(long paramLong, int paramInt)
+    public final void Q(long paramLong, int paramInt)
     {
       AppMethodBeat.i(95905);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "setTimeLastId %d", new Object[] { Long.valueOf(paramLong) });
+      ac.d("MicroMsg.SnsService", "setTimeLastId %d", new Object[] { Long.valueOf(paramLong) });
       if (paramInt > 0)
       {
-        this.wIP = paramInt;
-        com.tencent.mm.plugin.sns.data.q.Mb(paramInt);
+        this.xVk = paramInt;
+        com.tencent.mm.plugin.sns.data.q.Od(paramInt);
       }
       if (paramLong == 0L)
       {
         AppMethodBeat.o(95905);
         return;
       }
-      this.wIQ = paramLong;
+      this.xVl = paramLong;
       AppMethodBeat.o(95905);
     }
     
     public final void a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean, long paramLong, int paramInt3)
     {
       AppMethodBeat.i(95902);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "doOtherList fetchType:%s, type:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      ac.d("MicroMsg.SnsService", "doOtherList fetchType:%s, type:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
       if (paramInt1 == 2)
       {
-        if (!z.aoz(paramString))
+        if (!z.atL(paramString))
         {
           AppMethodBeat.o(95902);
           return;
         }
-        if (paramInt2 == as.wKh)
+        if (paramInt2 == at.xWM)
         {
-          this.wIV.a(paramString, paramBoolean, paramInt3, paramLong, paramInt1);
+          this.xVq.a(paramString, paramBoolean, paramInt3, paramLong, paramInt1);
           AppMethodBeat.o(95902);
           return;
         }
-        if (paramInt2 == as.wKi)
+        if (paramInt2 == at.xWN)
         {
-          as.b(paramString, paramBoolean, paramInt3, paramLong, paramInt1);
+          at.b(paramString, paramBoolean, paramInt3, paramLong, paramInt1);
           AppMethodBeat.o(95902);
           return;
         }
-        if (paramInt2 == as.wKj)
+        if (paramInt2 == at.xWO)
         {
-          as.f(paramString, paramBoolean, paramInt3);
+          at.f(paramString, paramBoolean, paramInt3);
           AppMethodBeat.o(95902);
         }
       }
       else if (paramInt1 == 1)
       {
-        if (!x.aow("@__weixintimtline"))
+        if (!x.atI("@__weixintimtline"))
         {
           AppMethodBeat.o(95902);
           return;
         }
-        af.dtD().wJJ = paramInt2;
-        if (paramInt2 == as.wKh)
+        af.dIa().xWo = paramInt2;
+        if (paramInt2 == at.xWM)
         {
-          this.wIV.a(paramString, paramBoolean, paramInt3, paramLong, paramInt1);
+          this.xVq.a(paramString, paramBoolean, paramInt3, paramLong, paramInt1);
           AppMethodBeat.o(95902);
           return;
         }
-        if (paramInt2 == as.wKi)
+        if (paramInt2 == at.xWN)
         {
-          af.dtD().wJM = true;
-          as.b(paramString, paramBoolean, paramInt3, this.wIR, paramInt1);
+          af.dIa().xWr = true;
+          at.b(paramString, paramBoolean, paramInt3, this.xVm, paramInt1);
         }
       }
       AppMethodBeat.o(95902);
@@ -661,21 +664,21 @@ public final class am
     public final void a(int paramInt, String paramString, i.a arg3)
     {
       AppMethodBeat.i(95898);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "startServer " + paramInt + " " + ???);
-      af.dtt().fki = u.aqG();
-      af.dtt().dsV();
-      af.dtq().drS();
-      if (this.gVL.isEmpty())
+      ac.i("MicroMsg.SnsService", "startServer " + paramInt + " " + ???);
+      af.dHQ().fnC = u.axw();
+      af.dHQ().dHs();
+      af.dHN().dGr();
+      if (this.hwk.isEmpty())
       {
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(211, this);
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(212, this);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(211, this);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(212, this);
       }
-      if (!this.gVL.containsKey(???))
+      if (!this.hwk.containsKey(???))
       {
         if (paramInt == 1) {
-          this.gVL.put(???, "@__weixintimtline");
+          this.hwk.put(???, "@__weixintimtline");
         }
       }
       else {
@@ -689,80 +692,80 @@ public final class am
         return;
         if ((paramInt == 2) || (paramInt == 3) || (paramInt == 10))
         {
-          this.gVL.put(???, paramString);
+          this.hwk.put(???, paramString);
           break;
         }
         if (paramInt == 4)
         {
-          this.gVL.put(???, "@__classify_timeline");
+          this.hwk.put(???, "@__classify_timeline");
           break;
         }
         if (paramInt == 5)
         {
-          this.gVL.put(???, "");
+          this.hwk.put(???, "");
           break;
         }
-        this.gVL.put(???, "");
+        this.hwk.put(???, "");
         break;
-        synchronized (this.wIL)
+        synchronized (this.xVg)
         {
-          this.wIL.put(paramString, Long.valueOf(0L));
+          this.xVg.put(paramString, Long.valueOf(0L));
         }
-        synchronized (this.wIM)
+        synchronized (this.xVh)
         {
-          if (!this.wIM.containsKey(paramString)) {
-            this.wIM.put(paramString, Integer.valueOf(dtX()));
+          if (!this.xVh.containsKey(paramString)) {
+            this.xVh.put(paramString, Integer.valueOf(dIv()));
           }
-          z.aoA(paramString);
-          this.wIS.add(paramString);
+          z.atM(paramString);
+          this.xVn.add(paramString);
           AppMethodBeat.o(95898);
           return;
           paramString = finally;
           AppMethodBeat.o(95898);
           throw paramString;
         }
-        synchronized (this.wIN)
+        synchronized (this.xVi)
         {
-          this.wIN.put(paramString, Long.valueOf(0L));
+          this.xVi.put(paramString, Long.valueOf(0L));
         }
-        synchronized (this.wIO)
+        synchronized (this.xVj)
         {
-          if (!this.wIO.containsKey(paramString)) {
-            this.wIO.put(paramString, Integer.valueOf(dtX()));
+          if (!this.xVj.containsKey(paramString)) {
+            this.xVj.put(paramString, Integer.valueOf(dIv()));
           }
-          z.aoA(paramString);
-          this.wIS.add(paramString);
+          z.atM(paramString);
+          this.xVn.add(paramString);
           AppMethodBeat.o(95898);
           return;
           paramString = finally;
           AppMethodBeat.o(95898);
           throw paramString;
         }
-        this.wIQ = 0L;
-        this.wIP = dtX();
-        x.aox("@__weixintimtline");
+        this.xVl = 0L;
+        this.xVk = dIv();
+        x.atJ("@__weixintimtline");
       }
     }
     
     public final void a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
     {
       AppMethodBeat.i(95901);
-      if (com.tencent.mm.platformtools.ab.hVj)
+      if (ab.ivn)
       {
         AppMethodBeat.o(95901);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "doFpList type: %s, objectId: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+      ac.d("MicroMsg.SnsService", "doFpList type: %s, objectId: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
       if (paramInt1 == 2)
       {
-        if (!z.aoz(paramString))
+        if (!z.atL(paramString))
         {
           AppMethodBeat.o(95901);
           return;
         }
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.al.q localq = com.tencent.mm.kernel.g.afA().gcy;
-        int j = as.wKg;
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.ak.q localq = com.tencent.mm.kernel.g.agQ().ghe;
+        int j = at.xWL;
         if (paramBoolean) {}
         for (int i = 4;; i = 8)
         {
@@ -773,17 +776,17 @@ public final class am
       }
       if (paramInt1 == 1)
       {
-        if (!x.aow("@__weixintimtline"))
+        if (!x.atI("@__weixintimtline"))
         {
           AppMethodBeat.o(95901);
           return;
         }
-        af.dtD().wJJ = as.wKj;
-        af.dtD().wJQ = af.dtu().g(0L, 1, true);
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afB().afk().set(68377, "");
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new x(0L, 0L, 0), 0);
+        af.dIa().xWo = at.xWO;
+        af.dIa().xWv = af.dHR().g(0L, 1, true);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agR().agA().set(68377, "");
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new x(0L, 0L, 0), 0);
         AppMethodBeat.o(95901);
         return;
       }
@@ -791,25 +794,25 @@ public final class am
       {
         if (paramInt1 == 4)
         {
-          if (!m.aow("@__classify_timeline"))
+          if (!m.atI("@__classify_timeline"))
           {
             AppMethodBeat.o(95901);
             return;
           }
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new m(""), 0);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new m(""), 0);
           AppMethodBeat.o(95901);
           return;
         }
         if (paramInt1 == 10)
         {
-          if (!z.aoz(paramString))
+          if (!z.atL(paramString))
           {
             AppMethodBeat.o(95901);
             return;
           }
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new z(paramString, 0L, paramBoolean, paramInt2, as.wKg, 1, 64, paramInt1), 0);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new z(paramString, 0L, paramBoolean, paramInt2, at.xWL, 1, 64, paramInt1), 0);
         }
       }
       AppMethodBeat.o(95901);
@@ -818,20 +821,20 @@ public final class am
     public final boolean a(i.a parama, int paramInt)
     {
       AppMethodBeat.i(95899);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "closeServer");
-      this.gVL.remove(parama);
-      if (((paramInt == 2) || (paramInt == 10)) && (this.wIS.size() > 0)) {
-        this.wIS.removeLast();
+      ac.d("MicroMsg.SnsService", "closeServer");
+      this.hwk.remove(parama);
+      if (((paramInt == 2) || (paramInt == 10)) && (this.xVn.size() > 0)) {
+        this.xVn.removeLast();
       }
-      if (this.gVL.isEmpty())
+      if (this.hwk.isEmpty())
       {
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.b(211, this);
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.b(212, this);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.b(211, this);
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.b(212, this);
         an.release();
         p.release();
-        new ap(Looper.getMainLooper()).postDelayed(new Runnable()
+        new ao(Looper.getMainLooper()).postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -840,44 +843,44 @@ public final class am
             AppMethodBeat.o(95894);
           }
         }, 5000L);
-        aj.dtP();
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "close finish");
+        aj.dIn();
+        ac.i("MicroMsg.SnsService", "close finish");
       }
       AppMethodBeat.o(95899);
       return true;
     }
     
-    public final void anw(String paramString)
+    public final void asI(String paramString)
     {
       AppMethodBeat.i(95914);
       String str1 = af.getAccSnsPath();
       String str2 = paramString + "bg_";
       String str3 = paramString + "tbg_";
-      if (com.tencent.mm.vfs.i.eK(str2))
+      if (com.tencent.mm.vfs.i.eA(str2))
       {
-        com.tencent.mm.vfs.i.deleteFile(an.iF(str1, paramString) + str3);
-        com.tencent.mm.vfs.i.aQ(an.iF(str1, paramString), str2, str3);
+        com.tencent.mm.vfs.i.deleteFile(an.jc(str1, paramString) + str3);
+        com.tencent.mm.vfs.i.aT(an.jc(str1, paramString), str2, str3);
       }
       AppMethodBeat.o(95914);
     }
     
-    public final int aoJ(String paramString)
+    public final int atV(String paramString)
     {
       AppMethodBeat.i(95903);
-      synchronized (this.wIM)
+      synchronized (this.xVh)
       {
-        if (this.wIM.containsKey(paramString))
+        if (this.xVh.containsKey(paramString))
         {
-          i = ((Integer)this.wIM.get(paramString)).intValue();
+          i = ((Integer)this.xVh.get(paramString)).intValue();
           if (i > 0) {}
           for (;;)
           {
             AppMethodBeat.o(95903);
             return i;
-            i = com.tencent.mm.plugin.sns.data.q.dsb();
+            i = com.tencent.mm.plugin.sns.data.q.dGA();
           }
         }
-        int i = com.tencent.mm.plugin.sns.data.q.dsb();
+        int i = com.tencent.mm.plugin.sns.data.q.dGA();
         AppMethodBeat.o(95903);
         return i;
       }
@@ -886,63 +889,63 @@ public final class am
     public final void b(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
     {
       AppMethodBeat.i(95900);
-      if (com.tencent.mm.platformtools.ab.hVj)
+      if (ab.ivn)
       {
         AppMethodBeat.o(95900);
         return;
       }
-      synchronized (this.wIL)
+      synchronized (this.xVg)
       {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "DO NP　NP ~_~ %s type %s timeLastId: %s userLastIds: %s", new Object[] { paramString, Integer.valueOf(paramInt1), Long.valueOf(this.wIQ), this.wIL });
+        ac.d("MicroMsg.SnsService", "DO NP　NP ~_~ %s type %s timeLastId: %s userLastIds: %s", new Object[] { paramString, Integer.valueOf(paramInt1), Long.valueOf(this.xVl), this.xVg });
         if (paramInt1 != 2) {
           break label244;
         }
-        if (!z.aoz(paramString))
+        if (!z.atL(paramString))
         {
           AppMethodBeat.o(95900);
           return;
         }
       }
       long l = 0L;
-      synchronized (this.wIL)
+      synchronized (this.xVg)
       {
-        if (this.wIL.containsKey(paramString)) {
-          l = ((Long)this.wIL.get(paramString)).longValue();
+        if (this.xVg.containsKey(paramString)) {
+          l = ((Long)this.xVg.get(paramString)).longValue();
         }
         if (l == 0L)
         {
-          z.aoA(paramString);
+          z.atM(paramString);
           AppMethodBeat.o(95900);
           return;
         }
       }
-      com.tencent.mm.kernel.g.afC();
-      ??? = com.tencent.mm.kernel.g.afA().gcy;
-      int j = as.wKg;
+      com.tencent.mm.kernel.g.agS();
+      ??? = com.tencent.mm.kernel.g.agQ().ghe;
+      int j = at.xWL;
       if (paramBoolean) {}
       for (int i = 4;; i = 8)
       {
-        ((com.tencent.mm.al.q)???).a(new z(paramString, l, paramBoolean, paramInt2, j, 0, i, paramInt1), 0);
+        ((com.tencent.mm.ak.q)???).a(new z(paramString, l, paramBoolean, paramInt2, j, 0, i, paramInt1), 0);
         AppMethodBeat.o(95900);
         return;
       }
       label244:
       if (paramInt1 == 1)
       {
-        if (!x.aow("@__weixintimtline"))
+        if (!x.atI("@__weixintimtline"))
         {
           AppMethodBeat.o(95900);
           return;
         }
-        if (this.wIQ == 0L)
+        if (this.xVl == 0L)
         {
-          x.aox("@__weixintimtline");
+          x.atJ("@__weixintimtline");
           AppMethodBeat.o(95900);
           return;
         }
-        af.dtD().wJJ = as.wKj;
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(new x(this.wIQ, 0L, 0), 0);
+        af.dIa().xWo = at.xWO;
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agQ().ghe.a(new x(this.xVl, 0L, 0), 0);
         AppMethodBeat.o(95900);
         return;
       }
@@ -950,59 +953,59 @@ public final class am
       {
         if (paramInt1 == 4)
         {
-          if (!m.aow("@__classify_timeline"))
+          if (!m.atI("@__classify_timeline"))
           {
             AppMethodBeat.o(95900);
             return;
           }
-          if (this.wIQ == 0L)
+          if (this.xVl == 0L)
           {
-            m.aox("@__classify_timeline");
+            m.atJ("@__classify_timeline");
             AppMethodBeat.o(95900);
             return;
           }
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new m(""), 0);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new m(""), 0);
           AppMethodBeat.o(95900);
           return;
         }
         if (paramInt1 == 10)
         {
-          if (!z.aoz(paramString))
+          if (!z.atL(paramString))
           {
             AppMethodBeat.o(95900);
             return;
           }
           l = 0L;
-          synchronized (this.wIN)
+          synchronized (this.xVi)
           {
-            if (this.wIN.containsKey(paramString)) {
-              l = ((Long)this.wIN.get(paramString)).longValue();
+            if (this.xVi.containsKey(paramString)) {
+              l = ((Long)this.xVi.get(paramString)).longValue();
             }
             if (l == 0L)
             {
-              z.aoA(paramString);
+              z.atM(paramString);
               AppMethodBeat.o(95900);
               return;
             }
           }
-          com.tencent.mm.kernel.g.afC();
-          com.tencent.mm.kernel.g.afA().gcy.a(new z(paramString, l, paramBoolean, paramInt2, as.wKg, 1, 64, paramInt1), 0);
+          com.tencent.mm.kernel.g.agS();
+          com.tencent.mm.kernel.g.agQ().ghe.a(new z(paramString, l, paramBoolean, paramInt2, at.xWL, 1, 64, paramInt1), 0);
         }
       }
       AppMethodBeat.o(95900);
     }
     
-    public final int dtX()
+    public final int dIv()
     {
       AppMethodBeat.i(95904);
-      if (this.wIP > 0)
+      if (this.xVk > 0)
       {
-        i = this.wIP;
+        i = this.xVk;
         AppMethodBeat.o(95904);
         return i;
       }
-      int i = com.tencent.mm.plugin.sns.data.q.dsb();
+      int i = com.tencent.mm.plugin.sns.data.q.dGA();
       AppMethodBeat.o(95904);
       return i;
     }
@@ -1011,7 +1014,7 @@ public final class am
     {
       AppMethodBeat.i(95897);
       paramIntent.putExtra("sns_userName", paramString);
-      if ((this.wIS != null) && (this.wIS.contains(paramString)))
+      if ((this.xVn != null) && (this.xVn.contains(paramString)))
       {
         paramIntent.addFlags(536870912);
         paramIntent.addFlags(67108864);
@@ -1022,21 +1025,21 @@ public final class am
       return paramIntent;
     }
     
-    public final void i(String paramString, ArrayList<com.tencent.mm.plugin.sns.j.b> paramArrayList)
+    public final void i(String paramString, ArrayList<com.tencent.mm.plugin.sns.i.b> paramArrayList)
     {
       AppMethodBeat.i(95896);
-      this.wIT.put(paramString, paramArrayList);
+      this.xVo.put(paramString, paramArrayList);
       AppMethodBeat.o(95896);
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
     {
       AppMethodBeat.i(95907);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType());
-      if ((paramn != null) && ((paramn instanceof x)) && (((x)paramn).dsS())) {}
+      ac.i("MicroMsg.SnsService", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType());
+      if ((paramn != null) && ((paramn instanceof x)) && (((x)paramn).dHp())) {}
       for (int i = 1; i != 0; i = 0)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "skip by preload unread feeds");
+        ac.i("MicroMsg.SnsService", "skip by preload unread feeds");
         AppMethodBeat.o(95907);
         return;
       }
@@ -1046,8 +1049,8 @@ public final class am
       label980:
       if ((paramn.getType() == 212) || (paramn.getType() == 211))
       {
-        com.tencent.mm.plugin.sns.c.b localb = (com.tencent.mm.plugin.sns.c.b)paramn;
-        paramString = new ArrayList(this.gVL.keySet());
+        com.tencent.mm.plugin.sns.b.b localb = (com.tencent.mm.plugin.sns.b.b)paramn;
+        paramString = new ArrayList(this.hwk.keySet());
         if (((paramInt1 != 4) || (paramInt2 != 207)) && ((paramInt1 != 4) || (paramInt2 != 203))) {
           if ((paramInt1 == 4) && ((paramInt2 == 2001) || (paramInt2 == 2004) || (paramInt2 == 2005)))
           {
@@ -1064,13 +1067,13 @@ public final class am
         while (paramString.hasNext())
         {
           paramn = (i.a)paramString.next();
-          if (this.gVL.containsKey(paramn))
+          if (this.hwk.containsKey(paramn))
           {
-            ??? = (String)this.gVL.get(paramn);
-            if ((localb.getUserName().equals(???)) && (localb.drC()))
+            ??? = (String)this.hwk.get(paramn);
+            if ((localb.getUserName().equals(???)) && (localb.dGb()))
             {
-              ??? = com.tencent.mm.plugin.sns.data.q.su(aj.wET);
-              str = com.tencent.mm.plugin.sns.data.q.su(aj.wEU);
+              ??? = com.tencent.mm.plugin.sns.data.q.wX(aj.xRo);
+              str = com.tencent.mm.plugin.sns.data.q.wX(aj.xRp);
               if ((paramInt1 == 4) && ((paramInt2 == 2001) || (paramInt2 == 2004) || (paramInt2 == 2003) || (paramInt2 == 2005) || (paramInt2 == 203))) {}
               for (bool = true;; bool = false)
               {
@@ -1103,16 +1106,16 @@ public final class am
         while (paramn.hasNext())
         {
           ??? = (i.a)paramn.next();
-          if (this.gVL.containsKey(???))
+          if (this.hwk.containsKey(???))
           {
-            paramString = (String)this.gVL.get(???);
+            paramString = (String)this.hwk.get(???);
             if (localb.getUserName().equals(paramString))
             {
-              com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "notify ui ".concat(String.valueOf(paramString)));
-              if (localb.drI() == 0L)
+              ac.d("MicroMsg.SnsService", "notify ui ".concat(String.valueOf(paramString)));
+              if (localb.dGh() == 0L)
               {
                 paramString = "";
-                if (!localb.drB()) {
+                if (!localb.dGa()) {
                   break label980;
                 }
                 if ((paramInt1 != 4) || ((paramInt2 != 2001) && (paramInt2 != 2004) && (paramInt2 != 2003) && (paramInt2 != 2005) && (paramInt2 != 203))) {
@@ -1130,72 +1133,72 @@ public final class am
                     break label470;
                     ??? = (z)paramn;
                     paramn = ((z)???).userName;
-                    l = ((z)???).wEU;
-                    i = ((z)???).wEW;
-                    if (((z)???).wGp == 10)
+                    l = ((z)???).xRp;
+                    i = ((z)???).xRr;
+                    if (((z)???).xSJ == 10)
                     {
                       if (i > 0) {}
-                      synchronized (this.wIO)
+                      synchronized (this.xVj)
                       {
                         for (;;)
                         {
-                          this.wIO.put(paramn, Integer.valueOf(i));
+                          this.xVj.put(paramn, Integer.valueOf(i));
                           if (l == 0L) {
                             break;
                           }
-                          synchronized (this.wIN)
+                          synchronized (this.xVi)
                           {
-                            this.wIN.put(paramn, Long.valueOf(l));
+                            this.xVi.put(paramn, Long.valueOf(l));
                           }
                         }
                       }
                     }
                   }
                   if (i > 0) {}
-                  synchronized (this.wIM)
+                  synchronized (this.xVh)
                   {
                     for (;;)
                     {
-                      this.wIM.put(paramn, Integer.valueOf(i));
+                      this.xVh.put(paramn, Integer.valueOf(i));
                       if (l == 0L) {
                         break;
                       }
-                      synchronized (this.wIL)
+                      synchronized (this.xVg)
                       {
-                        this.wIL.put(paramn, Long.valueOf(l));
+                        this.xVg.put(paramn, Long.valueOf(l));
                       }
                     }
                   }
                 }
                 paramn = (x)paramn;
-                if (localb.drC()) {
-                  sP(paramn.wET);
+                if (localb.dGb()) {
+                  xs(paramn.xRo);
                 }
                 for (;;)
                 {
-                  i = paramn.wEX;
-                  if (wIK != i) {
-                    com.tencent.mm.plugin.sns.data.q.Ma(i);
+                  i = paramn.xRs;
+                  if (xVf != i) {
+                    com.tencent.mm.plugin.sns.data.q.Oc(i);
                   }
-                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "updateTimelineControlFlag %d", new Object[] { Integer.valueOf(i) });
-                  wIK = i;
+                  ac.i("MicroMsg.SnsService", "updateTimelineControlFlag %d", new Object[] { Integer.valueOf(i) });
+                  xVf = i;
                   break;
-                  N(paramn.wEU, paramn.wEW);
+                  Q(paramn.xRp, paramn.xRr);
                 }
-                paramString = com.tencent.mm.plugin.sns.data.q.su(localb.drI());
+                paramString = com.tencent.mm.plugin.sns.data.q.wX(localb.dGh());
                 break label566;
               }
-              if (localb.drC())
+              if (localb.dGb())
               {
                 bool = false;
-                if (localb.drD() == as.wKh)
+                if (localb.dGc() == at.xWM)
                 {
-                  aj.wIC = aj.wET;
+                  aj.xUX = aj.xRo;
                   bool = true;
                 }
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.SnsService", "fetchType:%s, preUpReady:%s, firstPage:%s", new Object[] { Integer.valueOf(localb.drD()), Boolean.valueOf(this.wIV.wKk), Boolean.valueOf(bool) });
-                paramString = com.tencent.mm.plugin.sns.data.q.su(aj.wET);
-                str = com.tencent.mm.plugin.sns.data.q.su(aj.wEU);
+                ac.i("MicroMsg.SnsService", "fetchType:%s, preUpReady:%s, firstPage:%s", new Object[] { Integer.valueOf(localb.dGc()), Boolean.valueOf(this.xVq.xWP), Boolean.valueOf(bool) });
+                paramString = com.tencent.mm.plugin.sns.data.q.wX(aj.xRo);
+                str = com.tencent.mm.plugin.sns.data.q.wX(aj.xRp);
                 if ((paramInt1 == 4) && ((paramInt2 == 2001) || (paramInt2 == 2004) || (paramInt2 == 2003) || (paramInt2 == 2005) || (paramInt2 == 203))) {}
                 for (bool = true;; bool = false)
                 {
@@ -1216,16 +1219,16 @@ public final class am
       AppMethodBeat.o(95907);
     }
     
-    public final void sP(long paramLong)
+    public final void xs(long paramLong)
     {
       AppMethodBeat.i(179094);
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.SnsService", "setTimeFirstId %d", new Object[] { Long.valueOf(paramLong) });
+      ac.d("MicroMsg.SnsService", "setTimeFirstId %d", new Object[] { Long.valueOf(paramLong) });
       if (paramLong == 0L)
       {
         AppMethodBeat.o(179094);
         return;
       }
-      this.wIR = paramLong;
+      this.xVm = paramLong;
       AppMethodBeat.o(179094);
     }
   }

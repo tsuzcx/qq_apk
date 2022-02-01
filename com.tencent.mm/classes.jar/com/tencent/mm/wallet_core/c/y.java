@@ -2,31 +2,31 @@ package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class y
 {
-  private static String Adv = "";
-  private static String IdS = "";
-  private static long nvz = 0L;
+  private static String BvP = "";
+  private static String JFu = "";
+  private static long nYz = 0L;
   
-  public static String fjW()
+  public static String fAm()
   {
     boolean bool = false;
     AppMethodBeat.i(72804);
-    if ((bt.isNullOrNil(Adv)) || (b.eEQ()))
+    if ((bs.isNullOrNil(BvP)) || (b.eUk()))
     {
-      str = IdS;
-      long l = bt.lZ(nvz);
-      ad.d("MicroMsg.TimeStampHelper", "pass time ".concat(String.valueOf(l)));
+      str = JFu;
+      long l = bs.pN(nYz);
+      ac.d("MicroMsg.TimeStampHelper", "pass time ".concat(String.valueOf(l)));
       if (l > 300L) {
         bool = true;
       }
-      ad.i("MicroMsg.TimeStampHelper", "getTimeStamp is null from %s isOverdue %s update_time: %s", new Object[] { str, Boolean.valueOf(bool), Long.valueOf(nvz) });
+      ac.i("MicroMsg.TimeStampHelper", "getTimeStamp is null from %s isOverdue %s update_time: %s", new Object[] { str, Boolean.valueOf(bool), Long.valueOf(nYz) });
     }
-    String str = Adv;
+    String str = BvP;
     AppMethodBeat.o(72804);
     return str;
   }
@@ -34,9 +34,9 @@ public final class y
   public static void setTimeStamp(String paramString)
   {
     AppMethodBeat.i(72803);
-    Adv = paramString;
-    nvz = System.currentTimeMillis() / 1000L;
-    IdS = bt.eGN().toString();
+    BvP = paramString;
+    nYz = System.currentTimeMillis() / 1000L;
+    JFu = bs.eWi().toString();
     AppMethodBeat.o(72803);
   }
 }

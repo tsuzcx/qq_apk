@@ -9,17 +9,22 @@ import java.util.List;
 public abstract interface m
   extends a
 {
-  public abstract WxaAttributes FW(String paramString);
+  public abstract WxaAttributes Ka(String paramString);
   
-  public abstract WxaAttributes FX(String paramString);
+  public abstract WxaAttributes Kb(String paramString);
   
-  public abstract com.tencent.mm.vending.g.e<WxaAttributes> FY(String paramString);
+  public abstract com.tencent.mm.vending.g.e<WxaAttributes> Kc(String paramString);
   
-  public abstract void a(String paramString, m.a parama);
+  public abstract void a(String paramString, a parama);
   
-  public abstract void b(String paramString, m.a parama);
+  public abstract void b(String paramString, a parama);
   
-  public abstract void bd(List<String> paramList);
+  public abstract void bb(List<String> paramList);
+  
+  public static abstract interface a
+  {
+    public abstract void b(WxaAttributes paramWxaAttributes);
+  }
 }
 
 

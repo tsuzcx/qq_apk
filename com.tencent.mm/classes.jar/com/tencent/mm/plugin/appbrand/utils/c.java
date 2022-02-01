@@ -5,10 +5,10 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.luggage.e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.b;
+import com.tencent.mm.cj.b;
 import com.tencent.mm.memory.l;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public enum c
     localObject3 = localObject4;
     try
     {
-      ad.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, srcWidth: %s, srcHeight: %s, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt3) });
+      ac.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, srcWidth: %s, srcHeight: %s, width: %s, height: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt3) });
       localObject3 = localObject4;
       localObject2 = new BitmapFactory.Options();
       localObject3 = localObject4;
@@ -46,7 +46,7 @@ public enum c
         label147:
         label171:
         Object localObject1;
-        ad.printErrStackTrace("MicroMsg.AppBrandImgUtil", paramString1, "create thumbnail from orig failed: %s", new Object[] { paramString2 });
+        ac.printErrStackTrace("MicroMsg.AppBrandImgUtil", paramString1, "create thumbnail from orig failed: %s", new Object[] { paramString2 });
         if (localObject3 != null) {}
         do
         {
@@ -58,12 +58,12 @@ public enum c
             d1 = d2;
             break label171;
             localObject3 = localObject4;
-            ad.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, sampleSize: %s", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject2).inSampleSize) });
+            ac.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, sampleSize: %s", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject2).inSampleSize) });
             localObject3 = localObject4;
             localObject2 = b(paramString1, (BitmapFactory.Options)localObject2);
             break;
             localObject3 = localObject4;
-            ad.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, bm.width: %s, bm.height: %s", new Object[] { Integer.valueOf(((Bitmap)localObject2).getWidth()), Integer.valueOf(((Bitmap)localObject2).getHeight()) });
+            ac.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, bm.width: %s, bm.height: %s", new Object[] { Integer.valueOf(((Bitmap)localObject2).getWidth()), Integer.valueOf(((Bitmap)localObject2).getHeight()) });
             if (d2 < d3)
             {
               localObject3 = localObject4;
@@ -73,7 +73,7 @@ public enum c
             for (;;)
             {
               localObject3 = localObject4;
-              paramInt4 = BackwardSupportUtil.ExifHelper.co(paramString1);
+              paramInt4 = BackwardSupportUtil.ExifHelper.ce(paramString1);
               if ((paramInt4 != 90) && (paramInt4 != 270)) {
                 break label619;
               }
@@ -88,17 +88,17 @@ public enum c
               if (paramString1 != localBitmap)
               {
                 localObject3 = localObject4;
-                l.aoZ().C(paramString1);
+                l.avQ().C(paramString1);
                 localObject2 = localBitmap;
               }
               localObject3 = localObject4;
-              ad.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScalebyUpload, degree %d, bm.width: %s, bm.height: %s", new Object[] { Integer.valueOf(paramInt4), Integer.valueOf(((Bitmap)localObject2).getWidth()), Integer.valueOf(((Bitmap)localObject2).getHeight()) });
+              ac.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScalebyUpload, degree %d, bm.width: %s, bm.height: %s", new Object[] { Integer.valueOf(paramInt4), Integer.valueOf(((Bitmap)localObject2).getWidth()), Integer.valueOf(((Bitmap)localObject2).getHeight()) });
               localObject3 = localObject4;
-              paramString1 = i.cM(paramString2, false);
+              paramString1 = i.cS(paramString2, false);
               localObject3 = paramString1;
               f.a((Bitmap)localObject2, paramInt5, paramCompressFormat, paramString1, false);
               localObject3 = paramString1;
-              l.aoZ().C((Bitmap)localObject2);
+              l.avQ().C((Bitmap)localObject2);
               localObject3 = paramString1;
               paramString1.close();
               AppMethodBeat.o(107815);
@@ -128,7 +128,7 @@ public enum c
       }
     }
     localObject3 = localObject4;
-    ad.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, result bm: %s", new Object[] { localObject2 });
+    ac.i("MicroMsg.AppBrandImgUtil", "createThumbNailUnScale, result bm: %s", new Object[] { localObject2 });
     if (localObject2 == null)
     {
       AppMethodBeat.o(107815);
@@ -162,7 +162,7 @@ public enum c
   private static boolean a(String paramString1, int paramInt1, int paramInt2, Bitmap.CompressFormat paramCompressFormat, int paramInt3, String paramString2)
   {
     AppMethodBeat.i(107813);
-    BitmapFactory.Options localOptions = f.aFf(paramString1);
+    BitmapFactory.Options localOptions = f.aKw(paramString1);
     if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
     {
       AppMethodBeat.o(107813);
@@ -179,15 +179,15 @@ public enum c
     long l = System.currentTimeMillis();
     try
     {
-      paramString = l.aoZ().a(paramString, paramOptions);
-      ad.d("MicroMsg.AppBrandImgUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString });
+      paramString = l.avQ().a(paramString, paramOptions);
+      ac.d("MicroMsg.AppBrandImgUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString });
       AppMethodBeat.o(107814);
       return paramString;
     }
     catch (OutOfMemoryError paramString)
     {
-      b.eOL();
-      ad.e("MicroMsg.AppBrandImgUtil", "OutOfMemoryError e " + paramString.getMessage());
+      b.fep();
+      ac.e("MicroMsg.AppBrandImgUtil", "OutOfMemoryError e " + paramString.getMessage());
       AppMethodBeat.o(107814);
     }
     return null;
@@ -202,7 +202,7 @@ public enum c
     return bool;
   }
   
-  public static boolean dX(String paramString1, String paramString2)
+  public static boolean ej(String paramString1, String paramString2)
   {
     AppMethodBeat.i(107816);
     boolean bool = f(paramString1, paramString2, -1, -1);
@@ -219,7 +219,7 @@ public enum c
     //   5: bipush 70
     //   7: istore 7
     //   9: aload_1
-    //   10: invokestatic 209	com/tencent/mm/vfs/i:aMN	(Ljava/lang/String;)J
+    //   10: invokestatic 209	com/tencent/mm/vfs/i:aSp	(Ljava/lang/String;)J
     //   13: l2i
     //   14: istore 10
     //   16: iload_2
@@ -227,7 +227,7 @@ public enum c
     //   20: iload_3
     //   21: ifle +43 -> 64
     //   24: aload_1
-    //   25: invokestatic 131	com/tencent/mm/sdk/platformtools/f:aFf	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
+    //   25: invokestatic 131	com/tencent/mm/sdk/platformtools/f:aKw	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
     //   28: astore 15
     //   30: aload 15
     //   32: ifnonnull +39 -> 71
@@ -239,7 +239,7 @@ public enum c
     //   44: iconst_0
     //   45: aload_1
     //   46: aastore
-    //   47: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   47: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   50: ldc 205
     //   52: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: iconst_0
@@ -260,7 +260,7 @@ public enum c
     //   87: aload 16
     //   89: invokestatic 222	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   92: invokevirtual 226	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   95: invokestatic 228	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   95: invokestatic 228	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   98: aload 16
     //   100: ifnull +383 -> 483
     //   103: aload 16
@@ -332,7 +332,7 @@ public enum c
     //   238: invokevirtual 250	com/tencent/mm/compatible/util/Exif:getOrientationInDegree	()I
     //   241: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   244: aastore
-    //   245: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   245: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   248: iload 7
     //   250: istore 5
     //   252: iload 5
@@ -375,7 +375,7 @@ public enum c
     //   349: iload_3
     //   350: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   353: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokestatic 272	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   356: invokestatic 272	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   359: aload 15
     //   361: getfield 134	android/graphics/BitmapFactory$Options:outWidth	I
     //   364: aload 15
@@ -406,10 +406,10 @@ public enum c
     //   421: ifne +110 -> 531
     //   424: ldc 25
     //   426: ldc_w 276
-    //   429: invokestatic 272	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   429: invokestatic 272	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   432: aload_1
     //   433: aload_0
-    //   434: invokestatic 280	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   434: invokestatic 280	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   437: lconst_0
     //   438: lcmp
     //   439: iflt +85 -> 524
@@ -444,7 +444,7 @@ public enum c
     //   505: invokevirtual 287	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   508: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   511: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   514: invokestatic 187	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   514: invokestatic 187	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   517: iload 5
     //   519: istore 7
     //   521: goto -265 -> 256
@@ -456,7 +456,7 @@ public enum c
     //   534: dup
     //   535: invokespecial 45	android/graphics/BitmapFactory$Options:<init>	()V
     //   538: astore 18
-    //   540: invokestatic 290	com/tencent/mm/sdk/platformtools/f:eFa	()V
+    //   540: invokestatic 290	com/tencent/mm/sdk/platformtools/f:eUu	()V
     //   543: aconst_null
     //   544: astore 16
     //   546: aconst_null
@@ -521,7 +521,7 @@ public enum c
     //   669: aload 17
     //   671: astore 16
     //   673: aload_0
-    //   674: invokestatic 209	com/tencent/mm/vfs/i:aMN	(Ljava/lang/String;)J
+    //   674: invokestatic 209	com/tencent/mm/vfs/i:aSp	(Ljava/lang/String;)J
     //   677: lstore 13
     //   679: aload 17
     //   681: astore 15
@@ -546,7 +546,7 @@ public enum c
     //   714: bipush 10
     //   716: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   719: aastore
-    //   720: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   720: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   723: iload 10
     //   725: i2l
     //   726: lload 13
@@ -572,7 +572,7 @@ public enum c
     //   762: astore 16
     //   764: aload_1
     //   765: aload_0
-    //   766: invokestatic 280	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   766: invokestatic 280	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   769: lstore 13
     //   771: lload 13
     //   773: lconst_0
@@ -618,7 +618,7 @@ public enum c
     //   854: invokevirtual 226	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   857: iconst_0
     //   858: anewarray 29	java/lang/Object
-    //   861: invokestatic 65	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   861: invokestatic 65	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   864: aload 15
     //   866: ifnull +8 -> 874
     //   869: aload 15
@@ -645,10 +645,10 @@ public enum c
     //   914: ifne +35 -> 949
     //   917: ldc 25
     //   919: ldc_w 332
-    //   922: invokestatic 272	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   922: invokestatic 272	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   925: aload_1
     //   926: aload_0
-    //   927: invokestatic 280	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   927: invokestatic 280	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   930: lconst_0
     //   931: lcmp
     //   932: iflt +10 -> 942
@@ -697,9 +697,9 @@ public enum c
     //   1017: getfield 137	android/graphics/BitmapFactory$Options:outHeight	I
     //   1020: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1023: aastore
-    //   1024: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1024: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1027: aload_1
-    //   1028: invokestatic 209	com/tencent/mm/vfs/i:aMN	(Ljava/lang/String;)J
+    //   1028: invokestatic 209	com/tencent/mm/vfs/i:aSp	(Ljava/lang/String;)J
     //   1031: ldc2_w 335
     //   1034: lcmp
     //   1035: ifge +100 -> 1135
@@ -713,10 +713,10 @@ public enum c
     //   1053: iconst_0
     //   1054: aload_1
     //   1055: aastore
-    //   1056: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1056: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1059: aload_1
     //   1060: aload_0
-    //   1061: invokestatic 280	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   1061: invokestatic 280	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   1064: lconst_0
     //   1065: lcmp
     //   1066: iflt +10 -> 1076
@@ -765,7 +765,7 @@ public enum c
     //   1162: iload 7
     //   1164: ifne +102 -> 1266
     //   1167: aload_0
-    //   1168: invokestatic 209	com/tencent/mm/vfs/i:aMN	(Ljava/lang/String;)J
+    //   1168: invokestatic 209	com/tencent/mm/vfs/i:aSp	(Ljava/lang/String;)J
     //   1171: lstore 13
     //   1173: ldc 25
     //   1175: ldc_w 321
@@ -786,7 +786,7 @@ public enum c
     //   1200: bipush 10
     //   1202: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1205: aastore
-    //   1206: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1206: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1209: iload 10
     //   1211: i2l
     //   1212: lload 13
@@ -804,7 +804,7 @@ public enum c
     //   1233: pop
     //   1234: aload_1
     //   1235: aload_0
-    //   1236: invokestatic 280	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   1236: invokestatic 280	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   1239: lconst_0
     //   1240: lcmp
     //   1241: iflt +10 -> 1251
@@ -864,7 +864,7 @@ public enum c
     //   1361: getfield 137	android/graphics/BitmapFactory$Options:outHeight	I
     //   1364: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1367: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1370: invokestatic 272	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1370: invokestatic 272	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1373: aload 15
     //   1375: getfield 137	android/graphics/BitmapFactory$Options:outHeight	I
     //   1378: ifgt +9 -> 1387
@@ -926,7 +926,7 @@ public enum c
     //   1498: iload 5
     //   1500: invokevirtual 257	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1503: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1506: invokestatic 272	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1506: invokestatic 272	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1509: aload_1
     //   1510: iload_2
     //   1511: iload_3
@@ -940,7 +940,7 @@ public enum c
     //   1528: iload 7
     //   1530: ifne +134 -> 1664
     //   1533: aload_0
-    //   1534: invokestatic 209	com/tencent/mm/vfs/i:aMN	(Ljava/lang/String;)J
+    //   1534: invokestatic 209	com/tencent/mm/vfs/i:aSp	(Ljava/lang/String;)J
     //   1537: lstore 13
     //   1539: ldc 25
     //   1541: ldc_w 321
@@ -961,7 +961,7 @@ public enum c
     //   1566: bipush 10
     //   1568: invokestatic 35	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1571: aastore
-    //   1572: invokestatic 40	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1572: invokestatic 40	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1575: iload 10
     //   1577: i2l
     //   1578: lload 13
@@ -979,7 +979,7 @@ public enum c
     //   1599: pop
     //   1600: aload_1
     //   1601: aload_0
-    //   1602: invokestatic 280	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   1602: invokestatic 280	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   1605: lconst_0
     //   1606: lcmp
     //   1607: iflt +50 -> 1657
@@ -1095,7 +1095,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.c
  * JD-Core Version:    0.7.0.1
  */

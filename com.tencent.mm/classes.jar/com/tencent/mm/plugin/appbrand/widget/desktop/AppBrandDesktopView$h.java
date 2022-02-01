@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppBrandDesktopView$h
-  extends RecyclerView.v
+  extends RecyclerView.w
 {
   protected TextView titleTv;
   

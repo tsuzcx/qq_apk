@@ -16,42 +16,42 @@ import java.util.TimeZone;
 
 final class b
 {
-  static a cFZ;
-  Integer cGa;
-  String cGb;
+  static a cDh;
+  Integer cDi;
+  String cDj;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(87628);
-    this.cGa = null;
-    this.cGb = null;
+    this.cDi = null;
+    this.cDj = null;
     try
     {
-      aT(paramContext);
+      aU(paramContext);
       TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
       if (localTelephonyManager != null) {
-        this.cGa = Integer.valueOf(localTelephonyManager.getNetworkType());
+        this.cDi = Integer.valueOf(localTelephonyManager.getNetworkType());
       }
-      this.cGb = s.be(paramContext);
+      this.cDj = s.bf(paramContext);
       AppMethodBeat.o(87628);
       return;
     }
     catch (Throwable paramContext)
     {
-      s.IC();
+      s.Il();
       AppMethodBeat.o(87628);
     }
   }
   
-  private static a aT(Context paramContext)
+  private static a aU(Context paramContext)
   {
     try
     {
       AppMethodBeat.i(87627);
-      if (cFZ == null) {
-        cFZ = new a(paramContext.getApplicationContext(), (byte)0);
+      if (cDh == null) {
+        cDh = new a(paramContext.getApplicationContext(), (byte)0);
       }
-      paramContext = cFZ;
+      paramContext = cDh;
       AppMethodBeat.o(87627);
       return paramContext;
     }
@@ -60,18 +60,18 @@ final class b
   
   static final class a
   {
-    String aSt;
+    String aTm;
     String appVersion;
-    String cGc;
-    DisplayMetrics cGd;
-    int cGe;
-    String cGf;
-    String cGg;
-    String cGh;
-    String cGi;
-    int cGj;
-    String cGk;
-    String cGl;
+    String cDk;
+    DisplayMetrics cDl;
+    int cDm;
+    String cDn;
+    String cDo;
+    String cDp;
+    String cDq;
+    int cDr;
+    String cDs;
+    String cDt;
     Context ctx;
     String imsi;
     String model;
@@ -81,36 +81,36 @@ final class b
     private a(Context paramContext)
     {
       AppMethodBeat.i(87626);
-      this.cGc = "2.21";
-      this.cGe = Build.VERSION.SDK_INT;
+      this.cDk = "2.21";
+      this.cDm = Build.VERSION.SDK_INT;
       this.model = Build.MODEL;
-      this.cGf = Build.MANUFACTURER;
-      this.aSt = Locale.getDefault().getLanguage();
-      this.cGg = "WX";
-      this.cGj = 0;
+      this.cDn = Build.MANUFACTURER;
+      this.aTm = Locale.getDefault().getLanguage();
+      this.cDo = "WX";
+      this.cDr = 0;
       this.packageName = null;
       this.ctx = null;
-      this.cGk = null;
-      this.cGl = null;
+      this.cDs = null;
+      this.cDt = null;
       this.ctx = paramContext.getApplicationContext();
       try
       {
         this.appVersion = this.ctx.getPackageManager().getPackageInfo(this.ctx.getPackageName(), 0).versionName;
-        this.cGd = new DisplayMetrics();
-        ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.cGd);
-        if (s.p(paramContext, "android.permission.READ_PHONE_STATE"))
+        this.cDl = new DisplayMetrics();
+        ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.cDl);
+        if (s.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
         {
           paramContext = (TelephonyManager)paramContext.getSystemService("phone");
           if (paramContext != null)
           {
-            this.cGh = paramContext.getSimOperator();
+            this.cDp = paramContext.getSimOperator();
             this.imsi = paramContext.getSubscriberId();
           }
         }
         this.timezone = TimeZone.getDefault().getID();
-        this.cGi = s.bd(this.ctx);
+        this.cDq = s.be(this.ctx);
         this.packageName = this.ctx.getPackageName();
-        this.cGl = s.IE();
+        this.cDt = s.In();
         AppMethodBeat.o(87626);
         return;
       }
@@ -118,7 +118,7 @@ final class b
       {
         for (;;)
         {
-          s.IC();
+          s.Il();
         }
       }
     }
@@ -126,7 +126,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,20 +3,21 @@ package com.tencent.mm.media.widget.camerarecordview;
 import android.graphics.Point;
 import android.opengl.EGLContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.i.b.f;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory;", "", "()V", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "getAudioRecorder", "Lcom/tencent/mm/plugin/mmsight/model/encode/IMMSightAACRecorder;", "sampleRate", "", "bitrate", "audioChannelCount", "getCPUMediaRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "recordType", "videoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "camera", "Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "getGPUMediaRecorder", "videoTransPara", "eglContext", "Landroid/opengl/EGLContext;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "useCPUCrop", "", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory;", "", "()V", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "getAudioRecorder", "Lcom/tencent/mm/plugin/mmsight/model/encode/IMMSightAACRecorder;", "sampleRate", "", "bitrate", "audioChannelCount", "getCPUMediaRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "recordType", "videoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "camera", "Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "getGPUMediaRecorder", "videoTransPara", "eglContext", "Landroid/opengl/EGLContext;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "useCPUCrop", "", "plugin-mediaeditor_release"})
 public final class c
 {
-  public static final c gBa;
-  private static com.tencent.mm.media.i.a gsB;
+  private static com.tencent.mm.media.i.a gTi;
+  public static final c hbw;
   
   static
   {
     AppMethodBeat.i(94272);
-    gBa = new c();
+    hbw = new c();
     AppMethodBeat.o(94272);
   }
   
@@ -31,42 +32,42 @@ public final class c
     {
       if (parama == null)
       {
-        gsB = (com.tencent.mm.media.i.a)new b(paramBoolean);
-        parama = gsB;
-        if ((parama != null) && (parame.amG() != null))
+        gTi = (com.tencent.mm.media.i.a)new b(paramBoolean);
+        parama = gTi;
+        if ((parama != null) && (parame.aty() != null))
         {
           parama.cS(com.tencent.mm.media.widget.a.b.getPreviewWidth(), com.tencent.mm.media.widget.a.b.getPreviewHeight());
-          parama.mz(com.tencent.mm.media.widget.a.b.amy());
-          parama.dJ(com.tencent.mm.media.widget.a.b.amB());
+          parama.mE(com.tencent.mm.media.widget.a.b.atq());
+          parama.ee(com.tencent.mm.media.widget.a.b.att());
         }
-        parame = gsB;
+        parame = gTi;
         parame1 = parame1.getPreviewTexture();
         if (parame1 == null) {
           break label155;
         }
       }
       label155:
-      for (paramInt = parame1.gro;; paramInt = -1)
+      for (paramInt = parame1.gRW;; paramInt = -1)
       {
         paramVideoTransPara = (com.tencent.mm.media.widget.c.b)new com.tencent.mm.media.widget.c.c(paramVideoTransPara, parame, paramEGLContext, paramInt);
         AppMethodBeat.o(94270);
         return paramVideoTransPara;
-        gsB = parama;
+        gTi = parama;
         break;
       }
     }
     if (parama == null) {}
-    for (gsB = (com.tencent.mm.media.i.a)new c();; gsB = parama)
+    for (gTi = (com.tencent.mm.media.i.a)new c();; gTi = parama)
     {
-      paramEGLContext = gsB;
-      if ((paramEGLContext != null) && (parame.amG() != null))
+      paramEGLContext = gTi;
+      if ((paramEGLContext != null) && (parame.aty() != null))
       {
-        parame1 = com.tencent.mm.media.widget.a.b.amC();
+        parame1 = com.tencent.mm.media.widget.a.b.atu();
         paramEGLContext.cS(parame1.x, parame1.y);
-        paramEGLContext.mz(com.tencent.mm.media.widget.a.b.amy());
-        paramEGLContext.dJ(com.tencent.mm.media.widget.a.b.amB());
+        paramEGLContext.mE(com.tencent.mm.media.widget.a.b.atq());
+        paramEGLContext.ee(com.tencent.mm.media.widget.a.b.att());
       }
-      paramVideoTransPara = new com.tencent.mm.media.widget.c.d(paramVideoTransPara, gsB);
+      paramVideoTransPara = new com.tencent.mm.media.widget.c.d(paramVideoTransPara, gTi);
       parame.a(paramVideoTransPara.getFrameDataCallback());
       paramVideoTransPara = (com.tencent.mm.media.widget.c.b)paramVideoTransPara;
       AppMethodBeat.o(94270);
@@ -82,17 +83,17 @@ public final class c
     if (paramInt == 2)
     {
       if (parama == null) {}
-      for (gsB = (com.tencent.mm.media.i.a)new a();; gsB = parama)
+      for (gTi = (com.tencent.mm.media.i.a)new a();; gTi = parama)
       {
-        parama = gsB;
-        if ((parama != null) && (parame.amG() != null))
+        parama = gTi;
+        if ((parama != null) && (parame.aty() != null))
         {
-          Point localPoint = com.tencent.mm.media.widget.a.b.amC();
+          Point localPoint = com.tencent.mm.media.widget.a.b.atu();
           parama.cS(localPoint.x, localPoint.y);
-          parama.mz(com.tencent.mm.media.widget.a.b.amy());
-          parama.dJ(com.tencent.mm.media.widget.a.b.amB());
+          parama.mE(com.tencent.mm.media.widget.a.b.atq());
+          parama.ee(com.tencent.mm.media.widget.a.b.att());
         }
-        paramVideoTransPara = new com.tencent.mm.media.widget.c.c(paramVideoTransPara, gsB);
+        paramVideoTransPara = new com.tencent.mm.media.widget.c.c(paramVideoTransPara, gTi);
         parame.a(paramVideoTransPara.getFrameDataCallback());
         paramVideoTransPara = (com.tencent.mm.media.widget.c.b)paramVideoTransPara;
         AppMethodBeat.o(94271);
@@ -100,8 +101,8 @@ public final class c
       }
     }
     paramVideoTransPara = new com.tencent.mm.media.widget.c.e(paramVideoTransPara);
-    if (parame.amG() != null) {
-      paramVideoTransPara.setMirror(com.tencent.mm.media.widget.a.b.amB());
+    if (parame.aty() != null) {
+      paramVideoTransPara.setMirror(com.tencent.mm.media.widget.a.b.att());
     }
     parame.a(paramVideoTransPara.getFrameDataCallback());
     paramVideoTransPara = (com.tencent.mm.media.widget.c.b)paramVideoTransPara;
@@ -109,17 +110,17 @@ public final class c
     return paramVideoTransPara;
   }
   
-  public static void anU()
+  public static void auK()
   {
-    gsB = null;
+    gTi = null;
   }
   
   public static com.tencent.mm.media.i.a getRenderer()
   {
-    return gsB;
+    return gTi;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getCPUMediaRecorder$1", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getCPUMediaRecorder$1", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
   public static final class a
     extends com.tencent.mm.media.i.a
   {
@@ -128,16 +129,16 @@ public final class c
       super(0, 0, 0, 62);
     }
     
-    public final com.tencent.mm.media.i.b.a akj()
+    public final com.tencent.mm.media.i.b.a ajF()
     {
       AppMethodBeat.i(94267);
-      com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.e(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+      com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new f(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
       AppMethodBeat.o(94267);
       return locala;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getGPUMediaRecorder$1", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getGPUMediaRecorder$1", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
   public static final class b
     extends com.tencent.mm.media.i.d
   {
@@ -146,22 +147,22 @@ public final class c
       super();
     }
     
-    public final com.tencent.mm.media.i.b.a akj()
+    public final com.tencent.mm.media.i.b.a ajF()
     {
       AppMethodBeat.i(94268);
-      if (this.gBb)
+      if (this.hbx)
       {
-        locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.e(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+        locala = (com.tencent.mm.media.i.b.a)new f(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
         AppMethodBeat.o(94268);
         return locala;
       }
-      com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.c(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+      com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.c(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
       AppMethodBeat.o(94268);
       return locala;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getGPUMediaRecorder$3", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getGPUMediaRecorder$3", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
   public static final class c
     extends com.tencent.mm.media.i.a
   {
@@ -170,10 +171,10 @@ public final class c
       super(0, 0, 0, 62);
     }
     
-    public final com.tencent.mm.media.i.b.a akj()
+    public final com.tencent.mm.media.i.b.a ajF()
     {
       AppMethodBeat.i(94269);
-      com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new com.tencent.mm.media.i.b.e(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+      com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new f(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
       AppMethodBeat.o(94269);
       return locala;
     }

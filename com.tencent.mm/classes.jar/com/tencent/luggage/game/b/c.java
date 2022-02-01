@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class c
 {
-  private static volatile c cbt;
-  public g cbu;
+  private static volatile c bYq;
+  public g bYr;
   
   protected c()
   {
     AppMethodBeat.i(130470);
-    this.cbu = new com.tencent.luggage.game.c.c();
+    this.bYr = new com.tencent.luggage.game.c.c();
     AppMethodBeat.o(130470);
   }
   
-  public static c Bt()
+  public static c AX()
   {
     AppMethodBeat.i(130471);
-    if (cbt == null) {}
+    if (bYq == null) {}
     try
     {
-      if (cbt == null) {
-        cbt = new c();
+      if (bYq == null) {
+        bYq = new c();
       }
-      c localc = cbt;
+      c localc = bYq;
       AppMethodBeat.o(130471);
       return localc;
     }
@@ -36,7 +36,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.b.c
  * JD-Core Version:    0.7.0.1
  */

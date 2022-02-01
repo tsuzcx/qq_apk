@@ -4,12 +4,12 @@ import android.os.Handler;
 
 public final class d
 {
-  public Handler cus;
+  public Handler crA;
   public boolean started = false;
   
-  public final void p(Runnable paramRunnable)
+  public final void q(Runnable paramRunnable)
   {
-    this.cus.post(paramRunnable);
+    this.crA.post(paramRunnable);
   }
 }
 

@@ -1,586 +1,385 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.SparseArray;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.luggage.h.k;
-import com.tencent.luggage.sdk.g.c;
+import android.view.ViewParent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.luggage.h.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.config.a.g;
-import com.tencent.mm.plugin.appbrand.config.a.h;
-import com.tencent.mm.plugin.appbrand.jsapi.f.f;
-import com.tencent.mm.plugin.appbrand.widget.tabbar.AppBrandTabBarItem;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.MMFragmentActivity.a;
+import com.tencent.mm.ui.widget.c;
+import d.g.b.k;
+import d.l;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.SwipeBackLayout.a;
+import me.imid.swipebacklayout.lib.SwipeBackLayout.b;
 
-@SuppressLint({"ViewConstructor"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView;", "Lme/imid/swipebacklayout/lib/SwipeBackLayout;", "Landroid/content/DialogInterface;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "actionBar", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar;", "appearAnimation", "Landroid/view/animation/Animation;", "dismissAnimation", "drawStatusBarLayout", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "iconImageView", "Landroid/widget/ImageView;", "negativeButton", "Landroid/content/DialogInterface$OnClickListener;", "getNegativeButton", "()Landroid/content/DialogInterface$OnClickListener;", "setNegativeButton", "(Landroid/content/DialogInterface$OnClickListener;)V", "pageContainer", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageContainer;", "positiveButton", "getPositiveButton", "setPositiveButton", "cancel", "", "cleanup", "dismiss", "dismissWithoutAnimation", "dispatchKeyEventPreIme", "", "event", "Landroid/view/KeyEvent;", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "onDetachedFromWindow", "resetStyle", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "show", "endAction", "Ljava/lang/Runnable;", "plugin-appbrand-integration_release"})
 public final class j
-  extends q
+  extends SwipeBackLayout
+  implements DialogInterface
 {
-  private ViewGroup jhz;
-  private Map<String, aa> kYA;
-  private SparseArray<AppBrandPageFullScreenView> kYB;
-  private boolean kYC;
-  private final Runnable kYD;
-  private final Runnable kYE;
-  private final LinkedList<b> kYF;
-  private com.tencent.mm.plugin.appbrand.widget.tabbar.a kYx;
-  private FrameLayout kYy;
-  private aa kYz;
-  private String kns;
-  private boolean mDestroyed;
+  u cdW;
+  private com.tencent.mm.ui.statusbar.b lAa;
+  com.tencent.mm.plugin.appbrand.widget.actionbar.b lAb;
+  ImageView lAc;
+  private DialogInterface.OnClickListener lzW;
+  private DialogInterface.OnClickListener lzX;
+  private Animation lzY;
+  Animation lzZ;
   
-  public j(Context paramContext, t paramt)
+  public j(final Context paramContext)
   {
-    super(paramContext, paramt);
-    AppMethodBeat.i(134975);
-    this.kYA = new HashMap();
-    this.kYB = new SparseArray();
-    this.kYC = false;
-    this.mDestroyed = false;
-    this.kYD = new Runnable()
+    super(paramContext);
+    AppMethodBeat.i(50928);
+    bw.cI((View)this);
+    a((SwipeBackLayout.a)new SwipeBackLayout.b()
     {
-      public final void run()
+      public final void AT() {}
+      
+      public final int bp(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(134965);
-        j.a(j.this);
-        AppMethodBeat.o(134965);
+        return 1;
       }
-    };
-    this.kYE = new j.3(this);
-    this.kYF = new LinkedList();
-    this.kYz = getContainer().bjq();
-    AppMethodBeat.o(134975);
-  }
-  
-  /* Error */
-  private aa Ls(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 110
-    //   4: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 103	com/tencent/mm/plugin/appbrand/page/j:kYz	Lcom/tencent/mm/plugin/appbrand/page/aa;
-    //   11: ifnull +51 -> 62
-    //   14: aload_0
-    //   15: getfield 103	com/tencent/mm/plugin/appbrand/page/j:kYz	Lcom/tencent/mm/plugin/appbrand/page/aa;
-    //   18: astore_2
-    //   19: aload_0
-    //   20: aconst_null
-    //   21: putfield 103	com/tencent/mm/plugin/appbrand/page/j:kYz	Lcom/tencent/mm/plugin/appbrand/page/aa;
-    //   24: aload_2
-    //   25: aload_0
-    //   26: putfield 116	com/tencent/mm/plugin/appbrand/page/aa:lbd	Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   29: aload_0
-    //   30: getfield 67	com/tencent/mm/plugin/appbrand/page/j:kYA	Ljava/util/Map;
-    //   33: aload_1
-    //   34: aload_2
-    //   35: invokeinterface 122 3 0
-    //   40: pop
-    //   41: aload_0
-    //   42: getfield 124	com/tencent/mm/plugin/appbrand/page/j:kYy	Landroid/widget/FrameLayout;
-    //   45: aload_2
-    //   46: getfield 126	com/tencent/mm/plugin/appbrand/page/aa:jhz	Landroid/view/ViewGroup;
-    //   49: iconst_0
-    //   50: invokevirtual 132	android/widget/FrameLayout:addView	(Landroid/view/View;I)V
-    //   53: ldc 110
-    //   55: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: aload_0
-    //   59: monitorexit
-    //   60: aload_2
-    //   61: areturn
-    //   62: aload_0
-    //   63: invokevirtual 95	com/tencent/mm/plugin/appbrand/page/j:getContainer	()Lcom/tencent/mm/plugin/appbrand/page/t;
-    //   66: invokevirtual 101	com/tencent/mm/plugin/appbrand/page/t:bjq	()Lcom/tencent/mm/plugin/appbrand/page/aa;
-    //   69: astore_2
-    //   70: goto -46 -> 24
-    //   73: astore_1
-    //   74: aload_0
-    //   75: monitorexit
-    //   76: aload_1
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	this	j
-    //   0	78	1	paramString	String
-    //   18	52	2	localaa	aa
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	73	finally
-    //   24	58	73	finally
-    //   62	70	73	finally
-  }
-  
-  private void Lt(String paramString)
-  {
-    AppMethodBeat.i(134984);
-    this.kYC = false;
-    aa localaa2 = (aa)this.kYA.get(k.cA(paramString));
-    localaa2.jhz.setVisibility(4);
-    paramString = null;
-    Iterator localIterator = this.kYA.values().iterator();
-    if (localIterator.hasNext())
-    {
-      aa localaa1 = (aa)localIterator.next();
-      if ((localaa1.jhz.getVisibility() != 0) || (localaa2 == localaa1)) {
-        break label143;
-      }
-      paramString = localaa1;
-    }
-    label143:
-    for (;;)
-    {
-      break;
-      localaa2.jhz.bringToFront();
-      localaa2.jhz.setVisibility(0);
-      if (paramString != null) {
-        paramString.jhz.setVisibility(4);
-      }
-      if (paramString != null) {
-        paramString.onBackground();
-      }
-      localaa2.onForeground();
-      bjf();
-      AppMethodBeat.o(134984);
-      return;
-    }
-  }
-  
-  private void bjd()
-  {
-    AppMethodBeat.i(134979);
-    if (this.mDestroyed)
-    {
-      AppMethodBeat.o(134979);
-      return;
-    }
-    post(this.kYD);
-    AppMethodBeat.o(134979);
-  }
-  
-  private void bje()
-  {
-    AppMethodBeat.i(134980);
-    if (this.mDestroyed)
-    {
-      AppMethodBeat.o(134980);
-      return;
-    }
-    post(this.kYE);
-    AppMethodBeat.o(134980);
-  }
-  
-  private void bjf()
-  {
-    AppMethodBeat.i(134985);
-    if (this.kYB.size() <= 0)
-    {
-      AppMethodBeat.o(134985);
-      return;
-    }
-    int i = 0;
-    while (i < this.kYB.size())
-    {
-      ((AppBrandPageFullScreenView)this.kYB.valueAt(i)).setVisibility(4);
-      i += 1;
-    }
-    Object localObject = getCurrentPageView();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(134985);
-      return;
-    }
-    localObject = (AppBrandPageFullScreenView)this.kYB.get(localObject.hashCode());
-    if (localObject != null) {
-      ((AppBrandPageFullScreenView)localObject).setVisibility(0);
-    }
-    AppMethodBeat.o(134985);
-  }
-  
-  private void gx(boolean paramBoolean)
-  {
-    AppMethodBeat.i(134986);
-    Iterator localIterator = this.kYF.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      removeCallbacks(localb);
-      if (paramBoolean) {
-        localb.run();
-      } else {
-        localb.mCanceled = true;
-      }
-    }
-    this.kYF.clear();
-    AppMethodBeat.o(134986);
-  }
-  
-  protected final View Cq()
-  {
-    AppMethodBeat.i(134976);
-    Object localObject;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.jhz == null)
-    {
-      localObject = new RelativeLayout(getContext());
-      this.kYy = new FrameLayout(getContext());
-      c.a("createTabBar", new Runnable()
+      
+      public final void bpU()
       {
+        AppMethodBeat.i(50916);
+        this.lAd.setVisibility(8);
+        this.lAd.post((Runnable)new a(this));
+        AppMethodBeat.o(50916);
+      }
+      
+      public final void h(int paramAnonymousInt, float paramAnonymousFloat) {}
+      
+      public final void k(MotionEvent paramAnonymousMotionEvent) {}
+      
+      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+      static final class a
+        implements Runnable
+      {
+        a(j.1 param1) {}
+        
         public final void run()
         {
-          AppMethodBeat.i(194484);
-          bc localbc = (bc)j.this.getContainer().getRuntime().ab(bc.class);
-          j.a(j.this, j.this.a(localbc));
-          AppMethodBeat.o(194484);
+          AppMethodBeat.i(50915);
+          ViewParent localViewParent = this.lAe.lAd.getParent();
+          Object localObject = localViewParent;
+          if (!(localViewParent instanceof ViewGroup)) {
+            localObject = null;
+          }
+          localObject = (ViewGroup)localObject;
+          if (localObject != null)
+          {
+            ((ViewGroup)localObject).removeView((View)this.lAe.lAd);
+            AppMethodBeat.o(50915);
+            return;
+          }
+          AppMethodBeat.o(50915);
         }
-      });
-      if (getContainer().getAppConfig().aTn().jbM) {
-        this.kYx.setVisibility(8);
       }
-      if (!"top".equals(getContainer().getAppConfig().aTn().jbI)) {
-        break label170;
-      }
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(10);
-      ((RelativeLayout)localObject).addView(this.kYy, localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(10);
-      ((RelativeLayout)localObject).addView(this.kYx, localLayoutParams);
-    }
-    for (;;)
-    {
-      this.jhz = ((ViewGroup)localObject);
-      localObject = this.jhz;
-      AppMethodBeat.o(134976);
-      return localObject;
-      label170:
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(12);
-      ((RelativeLayout)localObject).addView(this.kYx, localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(2, this.kYx.getId());
-      ((RelativeLayout)localObject).addView(this.kYy, localLayoutParams);
-    }
-  }
-  
-  protected final void Cr()
-  {
-    AppMethodBeat.i(134990);
-    super.Cr();
-    if (this.kYz != null) {
-      this.kYz.onDestroy();
-    }
-    Iterator localIterator = this.kYA.values().iterator();
-    while (localIterator.hasNext()) {
-      ((aa)localIterator.next()).onDestroy();
-    }
-    AppMethodBeat.o(134990);
-  }
-  
-  public final void Cs()
-  {
-    AppMethodBeat.i(134988);
-    super.Cs();
-    getCurrentPageView().onForeground();
-    AppMethodBeat.o(134988);
-  }
-  
-  public final void Ct()
-  {
-    AppMethodBeat.i(134989);
-    super.Ct();
-    getCurrentPageView().onBackground();
-    AppMethodBeat.o(134989);
-  }
-  
-  protected final com.tencent.mm.plugin.appbrand.widget.tabbar.a a(bc parambc)
-  {
-    AppMethodBeat.i(194492);
-    Object localObject2 = (com.tencent.mm.plugin.appbrand.widget.tabbar.a)parambc.aC(com.tencent.mm.plugin.appbrand.widget.tabbar.a.class);
-    Object localObject1 = localObject2;
+    });
+    Object localObject1 = new com.tencent.mm.ui.statusbar.b(paramContext);
+    ((com.tencent.mm.ui.statusbar.b)localObject1).setClickable(true);
+    ((com.tencent.mm.ui.statusbar.b)localObject1).setBackgroundColor(-1);
+    ((com.tencent.mm.ui.statusbar.b)localObject1).setWillNotDraw(false);
+    ((com.tencent.mm.ui.statusbar.b)localObject1).xK(false);
+    ((com.tencent.mm.ui.statusbar.b)localObject1).L(0, true);
+    this.lAa = ((com.tencent.mm.ui.statusbar.b)localObject1);
+    addView((View)this.lAa, new ViewGroup.LayoutParams(-1, -1));
+    setContentView((View)this.lAa);
+    localObject1 = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(paramContext);
+    ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1).setFullscreenMode(false);
+    ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1).setBackButtonClickListener((View.OnClickListener)new a(this, paramContext));
+    ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1).setCloseButtonClickListener((View.OnClickListener)new b(this, paramContext));
+    Object localObject2 = this.lAa;
     if (localObject2 == null) {
-      localObject1 = (com.tencent.mm.plugin.appbrand.widget.tabbar.a)getContainer().getDecorWidgetFactory().c(getContext(), com.tencent.mm.plugin.appbrand.widget.tabbar.a.class);
+      k.fOy();
     }
-    ((com.tencent.mm.plugin.appbrand.widget.tabbar.a)localObject1).setId(2131296776);
-    localObject2 = getContainer().getAppConfig().aTn();
-    ((com.tencent.mm.plugin.appbrand.widget.tabbar.a)localObject1).setPosition(((a.g)localObject2).jbI);
-    ((com.tencent.mm.plugin.appbrand.widget.tabbar.a)localObject1).i(((a.g)localObject2).gHT, ((a.g)localObject2).jbJ, ((a.g)localObject2).jbK, ((a.g)localObject2).jbL);
-    Iterator localIterator = ((a.g)localObject2).iq.iterator();
-    while (localIterator.hasNext())
+    ((com.tencent.mm.ui.statusbar.b)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.dT(paramContext)));
+    this.lAb = ((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject1);
+    localObject1 = LayoutInflater.from(paramContext).inflate(2131493013, (ViewGroup)this.lAa, false);
+    ((TextView)((View)localObject1).findViewById(2131296715)).setText(2131755520);
+    ((TextView)((View)localObject1).findViewById(2131296713)).setText(2131755519);
+    localObject2 = this.lAa;
+    if (localObject2 == null) {
+      k.fOy();
+    }
+    ((com.tencent.mm.ui.statusbar.b)localObject2).addView((View)localObject1);
+    k.g(localObject1, "this");
+    localObject2 = ((View)localObject1).getLayoutParams();
+    localObject1 = localObject2;
+    if (!(localObject2 instanceof ViewGroup.MarginLayoutParams)) {
+      localObject1 = null;
+    }
+    localObject1 = (ViewGroup.MarginLayoutParams)localObject1;
+    if (localObject1 != null) {
+      ((ViewGroup.MarginLayoutParams)localObject1).topMargin = com.tencent.mm.plugin.appbrand.widget.b.dT(paramContext);
+    }
+    this.lAc = ((ImageView)findViewById(2131296714));
+    findViewById(2131296713).setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
-      a.h localh = (a.h)localIterator.next();
-      ((com.tencent.mm.plugin.appbrand.widget.tabbar.a)localObject1).a(localh.url, localh.text, localh.dub, localh.jbO, (AppBrandTabBarItem)parambc.aC(AppBrandTabBarItem.class));
-    }
-    ((com.tencent.mm.plugin.appbrand.widget.tabbar.a)localObject1).setClickListener(new j.5(this, (a.g)localObject2));
-    AppMethodBeat.o(194492);
-    return localObject1;
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(50917);
+        paramAnonymousView = this.lAd.getPositiveButton();
+        if (paramAnonymousView != null)
+        {
+          paramAnonymousView.onClick((DialogInterface)this.lAd, -1);
+          AppMethodBeat.o(50917);
+          return;
+        }
+        AppMethodBeat.o(50917);
+      }
+    });
+    AppMethodBeat.o(50928);
   }
   
-  protected final void a(aa paramaa, AppBrandPageFullScreenView paramAppBrandPageFullScreenView)
+  public final void bpT()
   {
-    AppMethodBeat.i(134994);
-    if (paramaa == null)
+    AppMethodBeat.i(50923);
+    setVisibility(8);
+    cleanup();
+    AppMethodBeat.o(50923);
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(50924);
+    dismiss();
+    DialogInterface.OnClickListener localOnClickListener = this.lzX;
+    if (localOnClickListener != null)
     {
-      ad.e("MicroMsg.AppBrandMultiplePage", "getCurrentFullScreenView err, pageView is null");
-      AppMethodBeat.o(134994);
+      localOnClickListener.onClick((DialogInterface)this, -2);
+      AppMethodBeat.o(50924);
       return;
     }
-    if ((paramAppBrandPageFullScreenView != null) && (paramAppBrandPageFullScreenView.getParent() == null) && ((this.jhz instanceof ViewGroup)))
-    {
-      this.jhz.addView(paramAppBrandPageFullScreenView, new ViewGroup.LayoutParams(-1, -1));
-      this.kYB.put(paramaa.hashCode(), paramAppBrandPageFullScreenView);
-    }
-    AppMethodBeat.o(134994);
-  }
-  
-  public final void a(String paramString1, String paramString2, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(134991);
-    if ((this.kYz != null) && (f(paramArrayOfInt, this.kYz.aOd()))) {
-      this.kYz.c(paramString1, paramString2, 0);
-    }
-    Iterator localIterator = this.kYA.values().iterator();
-    while (localIterator.hasNext())
-    {
-      aa localaa = (aa)localIterator.next();
-      if (f(paramArrayOfInt, localaa.aOd())) {
-        localaa.c(paramString1, paramString2, 0);
-      }
-    }
-    AppMethodBeat.o(134991);
-  }
-  
-  public final Iterator<aa> bjg()
-  {
-    AppMethodBeat.i(134995);
-    Iterator local8 = new Iterator()
-    {
-      private final Iterator<aa> kYJ;
-      
-      public final boolean hasNext()
-      {
-        AppMethodBeat.i(194489);
-        boolean bool = this.kYJ.hasNext();
-        AppMethodBeat.o(194489);
-        return bool;
-      }
-      
-      public final void remove()
-      {
-        AppMethodBeat.i(194490);
-        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-        AppMethodBeat.o(194490);
-        throw localUnsupportedOperationException;
-      }
-    };
-    AppMethodBeat.o(134995);
-    return local8;
-  }
-  
-  public final boolean cl(String paramString)
-  {
-    AppMethodBeat.i(134987);
-    if (this.kYx.NZ(paramString) != -1)
-    {
-      AppMethodBeat.o(134987);
-      return true;
-    }
-    AppMethodBeat.o(134987);
-    return false;
+    AppMethodBeat.o(50924);
   }
   
   public final void cleanup()
   {
-    AppMethodBeat.i(134992);
-    this.mDestroyed = true;
-    super.cleanup();
-    if (this.kYz != null) {
-      this.kYz.cleanup();
+    Object localObject1 = null;
+    AppMethodBeat.i(50921);
+    Object localObject2 = getAnimation();
+    if (localObject2 != null) {
+      ((Animation)localObject2).cancel();
     }
-    Iterator localIterator = this.kYA.values().iterator();
-    while (localIterator.hasNext()) {
-      ((aa)localIterator.next()).cleanup();
+    localObject2 = getAnimation();
+    if (localObject2 != null) {
+      ((Animation)localObject2).setAnimationListener(null);
     }
-    gx(false);
-    removeCallbacks(this.kYD);
-    removeCallbacks(this.kYE);
-    AppMethodBeat.o(134992);
-  }
-  
-  /* Error */
-  public final aa getCurrentPageView()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 495
-    //   5: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 103	com/tencent/mm/plugin/appbrand/page/j:kYz	Lcom/tencent/mm/plugin/appbrand/page/aa;
-    //   12: ifnull +18 -> 30
-    //   15: aload_0
-    //   16: getfield 103	com/tencent/mm/plugin/appbrand/page/j:kYz	Lcom/tencent/mm/plugin/appbrand/page/aa;
-    //   19: astore_1
-    //   20: ldc_w 495
-    //   23: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: aload_1
-    //   29: areturn
-    //   30: aload_0
-    //   31: getfield 67	com/tencent/mm/plugin/appbrand/page/j:kYA	Ljava/util/Map;
-    //   34: aload_0
-    //   35: getfield 497	com/tencent/mm/plugin/appbrand/page/j:kns	Ljava/lang/String;
-    //   38: invokestatic 141	com/tencent/luggage/h/k:cA	(Ljava/lang/String;)Ljava/lang/String;
-    //   41: invokeinterface 145 2 0
-    //   46: checkcast 112	com/tencent/mm/plugin/appbrand/page/aa
-    //   49: astore_1
-    //   50: ldc_w 495
-    //   53: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   56: goto -30 -> 26
-    //   59: astore_1
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	j
-    //   19	31	1	localaa	aa
-    //   59	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	26	59	finally
-    //   30	56	59	finally
-  }
-  
-  public final String getCurrentUrl()
-  {
-    return this.kns;
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.widget.tabbar.a getTabBar()
-  {
-    return this.kYx;
-  }
-  
-  public final void loadUrl(final String paramString)
-  {
-    AppMethodBeat.i(134982);
-    ad.i("MicroMsg.AppBrandMultiplePage", "AppBrandPageProfile| loadUrl");
-    if (paramString.equals(this.kns))
+    localObject2 = getParent();
+    if (!(localObject2 instanceof ViewGroup)) {}
+    for (;;)
     {
-      AppMethodBeat.o(134982);
-      return;
-    }
-    int i = this.kYx.NZ(paramString);
-    if (i < 0)
-    {
-      AppMethodBeat.o(134982);
-      return;
-    }
-    gx(true);
-    this.kns = paramString;
-    this.kYx.vB(i);
-    if (this.kYA.get(k.cA(paramString)) == null)
-    {
-      final aa localaa = Ls(k.cA(paramString));
-      ad.i("MicroMsg.AppBrandMultiplePage", "loadAndWait appId[%s] url[%s]", new Object[] { getAppId(), paramString });
-      final b local6 = new b(paramString)
+      localObject1 = (ViewGroup)localObject1;
+      if (localObject1 != null)
       {
-        public final void bjh()
-        {
-          AppMethodBeat.i(194486);
-          j.a(j.this, paramString);
-          j.this.getContainer().bjs();
-          AppMethodBeat.o(194486);
-        }
-      };
-      localaa.a(new f.f()
-      {
-        public final void onReady()
-        {
-          AppMethodBeat.i(194487);
-          localaa.b(this);
-          local6.run();
-          long l1 = System.currentTimeMillis();
-          long l2 = this.chA;
-          ad.i("MicroMsg.AppBrandMultiplePage", "Tab[%s][%s] onReady received, time: %d", new Object[] { j.this.getAppId(), this.val$url, Long.valueOf(l1 - l2) });
-          AppMethodBeat.o(194487);
-        }
-      });
-      if (this.kYA.size() > 1)
-      {
-        this.kYF.addLast(local6);
-        postDelayed(local6, 500L);
-      }
-      this.kYC = true;
-      localaa.ct(paramString);
-      AppMethodBeat.o(134982);
-      return;
-    }
-    Lt(paramString);
-    AppMethodBeat.o(134982);
-  }
-  
-  public final void onDescendantInvalidated(View paramView1, View paramView2)
-  {
-    AppMethodBeat.i(134978);
-    super.onDescendantInvalidated(paramView1, paramView2);
-    if ((paramView2 instanceof com.tencent.mm.plugin.appbrand.widget.actionbar.d))
-    {
-      bjd();
-      bje();
-    }
-    AppMethodBeat.o(134978);
-  }
-  
-  protected final void onMeasure(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(134977);
-    super.onMeasure(paramInt1, paramInt2);
-    bjd();
-    bje();
-    AppMethodBeat.o(134977);
-  }
-  
-  static abstract class b
-    implements Runnable
-  {
-    private boolean kYK = false;
-    boolean mCanceled = false;
-    
-    public abstract void bjh();
-    
-    public final void run()
-    {
-      if ((!this.kYK) && (!this.mCanceled)) {}
-      for (int i = 1; i == 0; i = 0) {
+        ((ViewGroup)localObject1).removeView((View)this);
+        AppMethodBeat.o(50921);
         return;
       }
-      this.kYK = true;
-      bjh();
+      AppMethodBeat.o(50921);
+      return;
+      localObject1 = localObject2;
+    }
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(50922);
+    Animation localAnimation = this.lzY;
+    if (localAnimation != null) {
+      localAnimation.cancel();
+    }
+    this.lzY = AnimationUtils.loadAnimation(getContext(), MMFragmentActivity.a.mnF);
+    localAnimation = this.lzY;
+    if (localAnimation == null) {
+      k.fOy();
+    }
+    localAnimation.setAnimationListener((Animation.AnimationListener)new c(this));
+    localAnimation = this.lzY;
+    if (localAnimation == null) {
+      k.fOy();
+    }
+    startAnimation(localAnimation);
+    AppMethodBeat.o(50922);
+  }
+  
+  public final boolean dispatchKeyEventPreIme(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(50927);
+    if ((this.lzY != null) || (this.lzZ != null))
+    {
+      AppMethodBeat.o(50927);
+      return true;
+    }
+    if ((paramKeyEvent != null) && (paramKeyEvent.getAction() == 0) && (paramKeyEvent.getKeyCode() == 4))
+    {
+      f.aC(getContext());
+      dismiss();
+      AppMethodBeat.o(50927);
+      return true;
+    }
+    boolean bool = super.dispatchKeyEventPreIme(paramKeyEvent);
+    AppMethodBeat.o(50927);
+    return bool;
+  }
+  
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(50926);
+    if ((this.lzY != null) || (this.lzZ != null))
+    {
+      AppMethodBeat.o(50926);
+      return true;
+    }
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(50926);
+    return bool;
+  }
+  
+  public final DialogInterface.OnClickListener getNegativeButton()
+  {
+    return this.lzX;
+  }
+  
+  public final DialogInterface.OnClickListener getPositiveButton()
+  {
+    return this.lzW;
+  }
+  
+  protected final void onDetachedFromWindow()
+  {
+    AppMethodBeat.i(50925);
+    super.onDetachedFromWindow();
+    this.lzW = null;
+    this.lzX = null;
+    this.lzY = null;
+    this.lzZ = null;
+    this.cdW = null;
+    AppMethodBeat.o(50925);
+  }
+  
+  public final void setNegativeButton(DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.lzX = paramOnClickListener;
+  }
+  
+  public final void setPositiveButton(DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.lzW = paramOnClickListener;
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$3$1"})
+  static final class a
+    implements View.OnClickListener
+  {
+    a(j paramj, Context paramContext) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(50913);
+      this.lAd.dismiss();
+      AppMethodBeat.o(50913);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$3$2"})
+  static final class b
+    implements View.OnClickListener
+  {
+    b(j paramj, Context paramContext) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(50914);
+      paramView = j.b(this.lAd);
+      if (paramView != null)
+      {
+        paramView = paramView.getRuntime();
+        if (paramView != null)
+        {
+          g.a(paramView.getAppId(), g.d.jdc);
+          paramView.close();
+          AppMethodBeat.o(50914);
+          return;
+        }
+      }
+      AppMethodBeat.o(50914);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$dismiss$1", "Lcom/tencent/mm/ui/widget/MMAnimationListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "plugin-appbrand-integration_release"})
+  public static final class c
+    extends c
+  {
+    public final void onAnimationEnd(Animation paramAnimation)
+    {
+      AppMethodBeat.i(50919);
+      this.lAd.setVisibility(8);
+      ap.f((Runnable)new a(this));
+      AppMethodBeat.o(50919);
+    }
+    
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    static final class a
+      implements Runnable
+    {
+      a(j.c paramc) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(50918);
+        this.lAf.lAd.cleanup();
+        AppMethodBeat.o(50918);
+      }
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/page/AppBrandModularizingErrorReplayView$show$1", "Lcom/tencent/mm/ui/widget/MMAnimationListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "plugin-appbrand-integration_release"})
+  public static final class d
+    extends c
+  {
+    d(Runnable paramRunnable) {}
+    
+    public final void onAnimationEnd(Animation paramAnimation)
+    {
+      AppMethodBeat.i(50920);
+      j.a(this.lAd);
+      paramAnimation = this.lAg;
+      if (paramAnimation != null)
+      {
+        paramAnimation.run();
+        AppMethodBeat.o(50920);
+        return;
+      }
+      AppMethodBeat.o(50920);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.j
  * JD-Core Version:    0.7.0.1
  */

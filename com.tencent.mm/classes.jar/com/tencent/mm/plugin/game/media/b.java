@@ -9,24 +9,24 @@ import org.json.JSONObject;
 public final class b
 {
   public long createTime;
-  public int rRm;
-  public JSONArray rRn;
-  public String rRo;
-  public int rRp;
+  public int sZc;
+  public JSONArray sZd;
+  public String sZe;
+  public int sZf;
   public String taskId;
   
   public b(String paramString1, int paramInt1, String paramString2, String paramString3, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(40943);
     this.taskId = paramString1;
-    this.rRm = paramInt1;
+    this.sZc = paramInt1;
     try
     {
-      this.rRn = c.adb(paramString2);
+      this.sZd = c.ahT(paramString2);
       label27:
-      this.rRo = paramString3;
+      this.sZe = paramString3;
       this.createTime = paramLong;
-      this.rRp = paramInt2;
+      this.sZf = paramInt2;
       AppMethodBeat.o(40943);
       return;
     }
@@ -43,11 +43,11 @@ public final class b
     try
     {
       localJSONObject.put("postId", this.taskId);
-      localJSONObject.put("state", this.rRm);
-      localJSONObject.put("localIds", this.rRn);
-      localJSONObject.put("extra", this.rRo);
+      localJSONObject.put("state", this.sZc);
+      localJSONObject.put("localIds", this.sZd);
+      localJSONObject.put("extra", this.sZe);
       localJSONObject.put("createTime", this.createTime);
-      localJSONObject.put("mixState", this.rRp);
+      localJSONObject.put("mixState", this.sZf);
       label79:
       AppMethodBeat.o(40944);
       return localJSONObject;

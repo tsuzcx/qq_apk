@@ -12,9 +12,9 @@ public class Plugin
   public m createApplication()
   {
     AppMethodBeat.i(51553);
-    f localf = new f();
+    g localg = new g();
     AppMethodBeat.o(51553);
-    return localf;
+    return localg;
   }
   
   public aw createSubCore()
@@ -29,7 +29,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.Plugin
  * JD-Core Version:    0.7.0.1
  */

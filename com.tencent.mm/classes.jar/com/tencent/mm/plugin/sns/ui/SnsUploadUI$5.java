@@ -21,17 +21,17 @@ final class SnsUploadUI$5
     {
       AppMethodBeat.o(99574);
       return false;
-      this.isK[0] = true;
-      b.ufs.hK("ce_sns_upload", "<SnsUpload>");
+      this.iSP[0] = true;
+      b.vor.id("ce_sns_upload", "<SnsUpload>");
       continue;
-      b.ufs.a("ce_sns_upload", paramMotionEvent);
-      b.ufs.ajw("ce_sns_upload");
+      b.vor.a("ce_sns_upload", paramMotionEvent);
+      b.vor.aou("ce_sns_upload");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.5
  * JD-Core Version:    0.7.0.1
  */

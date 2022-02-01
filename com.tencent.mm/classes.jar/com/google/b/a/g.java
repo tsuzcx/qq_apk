@@ -3,44 +3,44 @@ package com.google.b.a;
 public final class g
 {
   public static final String[] EMPTY_STRING_ARRAY = new String[0];
-  public static final int[] bIT = new int[0];
-  public static final long[] bIU = new long[0];
-  public static final float[] bIV = new float[0];
-  public static final double[] bIW = new double[0];
-  public static final boolean[] bIX = new boolean[0];
-  public static final byte[][] bIY = new byte[0][];
-  public static final byte[] bIZ = new byte[0];
+  public static final int[] bGB = new int[0];
+  public static final long[] bGC = new long[0];
+  public static final float[] bGD = new float[0];
+  public static final double[] bGE = new double[0];
+  public static final boolean[] bGF = new boolean[0];
+  public static final byte[][] bGG = new byte[0][];
+  public static final byte[] bGH = new byte[0];
   
   public static boolean a(a parama, int paramInt)
   {
-    return parama.fQ(paramInt);
+    return parama.fC(paramInt);
   }
   
   public static final int b(a parama, int paramInt)
   {
     int i = 1;
     int j = parama.getPosition();
-    parama.fQ(paramInt);
-    while (parama.xR() == paramInt)
+    parama.fC(paramInt);
+    while (parama.xE() == paramInt)
     {
-      parama.fQ(paramInt);
+      parama.fC(paramInt);
       i += 1;
     }
-    parama.fT(j);
+    parama.fF(j);
     return i;
   }
   
-  static int bD(int paramInt1, int paramInt2)
+  static int bA(int paramInt1, int paramInt2)
   {
     return paramInt1 << 3 | paramInt2;
   }
   
-  static int gb(int paramInt)
+  static int fN(int paramInt)
   {
     return paramInt & 0x7;
   }
   
-  public static int gc(int paramInt)
+  public static int fO(int paramInt)
   {
     return paramInt >>> 3;
   }

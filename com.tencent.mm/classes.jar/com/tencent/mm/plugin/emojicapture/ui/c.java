@@ -12,17 +12,17 @@ import d.a.e;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"DEFAULT_STROKE_COLOR", "", "DEFAULT_TEXT_COLOR", "STROKE_COLORS", "", "getSTROKE_COLORS", "()[I", "TEXT_COLORS", "getTEXT_COLORS", "findStrokeColor", "textColor", "findTextColor", "isRedPackageScene", "", "scene", "waitUploading", "waitingMixing", "getIconNorColor", "Landroid/view/View;", "getIconSelColor", "getTextColor", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"DEFAULT_STROKE_COLOR", "", "DEFAULT_TEXT_COLOR", "STROKE_COLORS", "", "getSTROKE_COLORS", "()[I", "TEXT_COLORS", "getTEXT_COLORS", "findStrokeColor", "textColor", "findTextColor", "isRedPackageScene", "", "scene", "waitUploading", "waitingMixing", "getIconNorColor", "Landroid/view/View;", "getIconSelColor", "getTextColor", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojicapture_release"})
 public final class c
 {
-  private static final int[] oNF = { -1, -16777216, -314573, -12493, -4920114, -4724993, -144437 };
-  private static final int[] oNG = { -16777216, -1, -15616, -2724096, -16339626, -15954996, -298125 };
+  private static final int[] pqZ = { -1, -16777216, -314573, -12493, -4920114, -4724993, -144437 };
+  private static final int[] pra = { -16777216, -1, -15616, -2724096, -16339626, -15954996, -298125 };
   
-  public static final int AR(int paramInt)
+  public static final int BJ(int paramInt)
   {
     int j = 1;
     AppMethodBeat.i(475);
-    Object localObject = oNF;
+    Object localObject = pqZ;
     int i;
     if (localObject.length == 0)
     {
@@ -82,21 +82,21 @@ public final class c
     return -1;
   }
   
-  public static final int AS(int paramInt)
+  public static final int BK(int paramInt)
   {
     AppMethodBeat.i(476);
-    paramInt = e.k(oNF, paramInt);
+    paramInt = e.n(pqZ, paramInt);
     if (paramInt < 0)
     {
       AppMethodBeat.o(476);
       return -16777216;
     }
-    paramInt = oNG[paramInt];
+    paramInt = pra[paramInt];
     AppMethodBeat.o(476);
     return paramInt;
   }
   
-  public static final boolean AT(int paramInt)
+  public static final boolean BL(int paramInt)
   {
     switch (paramInt)
     {
@@ -106,10 +106,10 @@ public final class c
     return true;
   }
   
-  public static final boolean AU(int paramInt)
+  public static final boolean BM(int paramInt)
   {
     AppMethodBeat.i(480);
-    if ((AT(paramInt)) && ((paramInt == 4) || (paramInt == 5)))
+    if ((BL(paramInt)) && ((paramInt == 4) || (paramInt == 5)))
     {
       AppMethodBeat.o(480);
       return true;
@@ -122,32 +122,32 @@ public final class c
   {
     AppMethodBeat.i(479);
     k.h(paramImageView, "$this$setSvgDrawable");
-    paramImageView.setImageDrawable(am.i(paramImageView.getContext(), paramInt1, paramInt2));
+    paramImageView.setImageDrawable(am.k(paramImageView.getContext(), paramInt1, paramInt2));
     AppMethodBeat.o(479);
   }
   
-  public static final int[] bYw()
+  public static final int[] cfK()
   {
-    return oNF;
+    return pqZ;
   }
   
-  public static final int[] bYx()
+  public static final int[] cfL()
   {
-    return oNG;
+    return pra;
   }
   
-  public static final int dK(View paramView)
+  public static final int dM(View paramView)
   {
     AppMethodBeat.i(477);
     k.h(paramView, "$this$getIconSelColor");
     Context localContext = paramView.getContext();
     k.g(localContext, "context");
-    int i = localContext.getResources().getColor(b.ch(paramView.getContext()));
+    int i = localContext.getResources().getColor(b.cn(paramView.getContext()));
     AppMethodBeat.o(477);
     return i;
   }
   
-  public static final int dL(View paramView)
+  public static final int dN(View paramView)
   {
     AppMethodBeat.i(478);
     k.h(paramView, "$this$getIconNorColor");
@@ -160,7 +160,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.c
  * JD-Core Version:    0.7.0.1
  */

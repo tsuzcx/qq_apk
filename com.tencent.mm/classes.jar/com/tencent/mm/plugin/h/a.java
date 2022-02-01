@@ -12,39 +12,39 @@ public final class a
   extends com.tencent.mm.model.t
   implements b
 {
-  private static a obM;
+  private static a oFl;
   
   private a()
   {
-    super(com.tencent.mm.bc.t.class);
+    super(com.tencent.mm.bb.t.class);
   }
   
-  public static String aqd()
+  public static String awS()
   {
     AppMethodBeat.i(151486);
     Object localObject = new StringBuilder();
-    g.afC();
-    localObject = g.afB().gcW + "package/";
+    g.agS();
+    localObject = g.agR().ghC + "package/";
     AppMethodBeat.o(151486);
     return localObject;
   }
   
-  public static a bQg()
+  public static a bXx()
   {
     try
     {
       AppMethodBeat.i(151484);
-      if (obM == null) {
-        obM = new a();
+      if (oFl == null) {
+        oFl = new a();
       }
-      a locala = obM;
+      a locala = oFl;
       AppMethodBeat.o(151484);
       return locala;
     }
     finally {}
   }
   
-  public final List<String> afI()
+  public final List<String> agY()
   {
     AppMethodBeat.i(151485);
     LinkedList localLinkedList = new LinkedList();
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.h.a
  * JD-Core Version:    0.7.0.1
  */

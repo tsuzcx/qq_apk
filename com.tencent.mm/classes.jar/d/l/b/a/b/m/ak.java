@@ -11,23 +11,23 @@ import java.util.List;
 final class ak
   extends aj
 {
-  private final boolean JRT;
-  private final at JXw;
-  private final b<d.l.b.a.b.m.a.i, aj> JYe;
-  private final List<av> JqB;
-  private final h Juv;
+  private final boolean LFm;
+  private final at LKP;
+  private final b<d.l.b.a.b.m.a.i, aj> LLx;
+  private final List<av> LdU;
+  private final h LhO;
   
   public ak(at paramat, List<? extends av> paramList, boolean paramBoolean, h paramh, b<? super d.l.b.a.b.m.a.i, ? extends aj> paramb)
   {
     AppMethodBeat.i(60791);
-    this.JXw = paramat;
-    this.JqB = paramList;
-    this.JRT = paramBoolean;
-    this.Juv = paramh;
-    this.JYe = paramb;
-    if ((this.Juv instanceof u.b))
+    this.LKP = paramat;
+    this.LdU = paramList;
+    this.LFm = paramBoolean;
+    this.LhO = paramh;
+    this.LLx = paramb;
+    if ((this.LhO instanceof u.b))
     {
-      paramat = (Throwable)new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.Juv + '\n' + this.JXw);
+      paramat = (Throwable)new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.LhO + '\n' + this.LKP);
       AppMethodBeat.o(60791);
       throw paramat;
     }
@@ -38,7 +38,7 @@ final class ak
   {
     AppMethodBeat.i(60788);
     k.h(parami, "kotlinTypeRefiner");
-    parami = (aj)this.JYe.aA(parami);
+    parami = (aj)this.LLx.ay(parami);
     if (parami == null) {
       parami = (aj)this;
     }
@@ -64,39 +64,39 @@ final class ak
     return paramg;
   }
   
-  public final boolean fBT()
+  public final h fQN()
   {
-    return this.JRT;
+    return this.LhO;
   }
   
-  public final List<av> fIT()
-  {
-    return this.JqB;
-  }
-  
-  public final at fIW()
-  {
-    return this.JXw;
-  }
-  
-  public final g fxF()
+  public final g fQj()
   {
     AppMethodBeat.i(60783);
-    Object localObject = g.JrB;
-    localObject = g.a.fzI();
+    Object localObject = g.LeU;
+    localObject = g.a.fSm();
     AppMethodBeat.o(60783);
     return localObject;
   }
   
-  public final h fyj()
+  public final boolean fUx()
   {
-    return this.Juv;
+    return this.LFm;
   }
   
-  public final aj xW(boolean paramBoolean)
+  public final List<av> gbw()
+  {
+    return this.LdU;
+  }
+  
+  public final at gbz()
+  {
+    return this.LKP;
+  }
+  
+  public final aj zo(boolean paramBoolean)
   {
     AppMethodBeat.i(60786);
-    if (paramBoolean == this.JRT)
+    if (paramBoolean == this.LFm)
     {
       localaj = (aj)this;
       AppMethodBeat.o(60786);
@@ -115,7 +115,7 @@ final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ak
  * JD-Core Version:    0.7.0.1
  */

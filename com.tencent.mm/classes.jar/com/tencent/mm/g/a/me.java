@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class me
   extends b
 {
-  public a drp;
+  public a dox;
   
   public me()
   {
@@ -15,22 +15,23 @@ public final class me
   
   private me(byte paramByte)
   {
-    AppMethodBeat.i(19822);
-    this.drp = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116461);
+    this.dox = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19822);
+    AppMethodBeat.o(116461);
   }
   
   public static final class a
   {
-    public int drq = 0;
-    public int drr = 0;
+    public String chatroomName;
+    public boolean doi = false;
+    public int doy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.me
  * JD-Core Version:    0.7.0.1
  */

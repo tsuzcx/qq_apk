@@ -22,10 +22,10 @@ import java.util.WeakHashMap;
 @TargetApi(21)
 public final class ak
 {
-  private static final boolean FTc;
-  private static final WeakHashMap<Activity, ak> FTd;
-  private WindowInsets FTe;
-  private final Set<View.OnApplyWindowInsetsListener> ocs;
+  private static final boolean HsR;
+  private static final WeakHashMap<Activity, ak> HsS;
+  private WindowInsets HsT;
+  private final Set<View.OnApplyWindowInsetsListener> oFR;
   
   static
   {
@@ -33,8 +33,8 @@ public final class ak
     if (Build.VERSION.SDK_INT < 23) {}
     for (boolean bool = true;; bool = false)
     {
-      FTc = bool;
-      FTd = new WeakHashMap();
+      HsR = bool;
+      HsS = new WeakHashMap();
       AppMethodBeat.o(153549);
       return;
     }
@@ -43,7 +43,7 @@ public final class ak
   private ak(final Activity paramActivity)
   {
     AppMethodBeat.i(153547);
-    this.ocs = new HashSet();
+    this.oFR = new HashSet();
     paramActivity.runOnUiThread(new Runnable()
     {
       public final void run()
@@ -83,7 +83,7 @@ public final class ak
   }
   
   @TargetApi(21)
-  public static ak bc(Activity paramActivity)
+  public static ak bg(Activity paramActivity)
   {
     AppMethodBeat.i(153544);
     paramActivity = d(paramActivity, true);
@@ -91,10 +91,10 @@ public final class ak
     return paramActivity;
   }
   
-  public static WindowInsets bd(Activity paramActivity)
+  public static WindowInsets bh(Activity paramActivity)
   {
     AppMethodBeat.i(153545);
-    if (FTc)
+    if (HsR)
     {
       paramActivity = d(paramActivity, false);
       if (paramActivity == null)
@@ -102,7 +102,7 @@ public final class ak
         AppMethodBeat.o(153545);
         return null;
       }
-      paramActivity = paramActivity.eSc();
+      paramActivity = paramActivity.fhM();
       AppMethodBeat.o(153545);
       return paramActivity;
     }
@@ -119,9 +119,9 @@ public final class ak
   private static ak d(Activity paramActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(153546);
-    synchronized (FTd)
+    synchronized (HsS)
     {
-      ak localak2 = (ak)FTd.get(paramActivity);
+      ak localak2 = (ak)HsS.get(paramActivity);
       ak localak1 = localak2;
       if (localak2 == null)
       {
@@ -129,7 +129,7 @@ public final class ak
         if (paramBoolean)
         {
           localak1 = new ak(paramActivity);
-          FTd.put(paramActivity, localak1);
+          HsS.put(paramActivity, localak1);
         }
       }
       AppMethodBeat.o(153546);
@@ -137,11 +137,11 @@ public final class ak
     }
   }
   
-  private WindowInsets eSc()
+  private WindowInsets fhM()
   {
     try
     {
-      WindowInsets localWindowInsets = this.FTe;
+      WindowInsets localWindowInsets = this.HsT;
       return localWindowInsets;
     }
     finally {}
@@ -155,16 +155,16 @@ public final class ak
       public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(153538);
-        this.FTf.apply(paramAnonymousActivity);
+        this.HsU.apply(paramAnonymousActivity);
         AppMethodBeat.o(153538);
       }
       
       public final void onActivityDestroyed(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(153540);
-        synchronized (ak.eSd())
+        synchronized (ak.fhN())
         {
-          paramAnonymousActivity = (ak)ak.eSd().remove(paramAnonymousActivity);
+          paramAnonymousActivity = (ak)ak.fhN().remove(paramAnonymousActivity);
           if (paramAnonymousActivity == null) {
             break label72;
           }
@@ -191,7 +191,7 @@ public final class ak
       public final void onActivityStarted(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(153539);
-        this.FTf.apply(paramAnonymousActivity);
+        this.HsU.apply(paramAnonymousActivity);
         AppMethodBeat.o(153539);
       }
       
@@ -203,9 +203,9 @@ public final class ak
   public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
     AppMethodBeat.i(153548);
-    synchronized (this.ocs)
+    synchronized (this.oFR)
     {
-      this.ocs.add(paramOnApplyWindowInsetsListener);
+      this.oFR.add(paramOnApplyWindowInsetsListener);
       AppMethodBeat.o(153548);
       return;
     }
@@ -214,9 +214,9 @@ public final class ak
   public final void b(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
     AppMethodBeat.i(175981);
-    synchronized (this.ocs)
+    synchronized (this.oFR)
     {
-      this.ocs.remove(paramOnApplyWindowInsetsListener);
+      this.oFR.remove(paramOnApplyWindowInsetsListener);
       AppMethodBeat.o(175981);
       return;
     }

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class f
@@ -19,24 +19,24 @@ public final class f
     AppMethodBeat.i(145708);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance fail, data is null");
+      ac.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance fail, data is null");
       paramc.h(paramInt, e("fail:data is null", null));
       AppMethodBeat.o(145708);
       return;
     }
-    ad.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance data:%s", new Object[] { paramJSONObject.toString() });
+    ac.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "destroyAudioInstance data:%s", new Object[] { paramJSONObject.toString() });
     paramJSONObject = paramJSONObject.optString("audioId");
     if (TextUtils.isEmpty(paramJSONObject))
     {
-      ad.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "audioId is empty");
+      ac.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "audioId is empty");
       paramc.h(paramInt, e("fail:audioId is empty", null));
       AppMethodBeat.o(145708);
       return;
     }
     f.a locala = new f.a(this, paramc, paramInt);
     locala.appId = paramc.getAppId();
-    locala.cTr = paramJSONObject;
-    locala.aEC();
+    locala.cQO = paramJSONObject;
+    locala.aLt();
     AppMethodBeat.o(145708);
   }
 }

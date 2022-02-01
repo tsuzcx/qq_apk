@@ -1,356 +1,148 @@
 package com.tencent.mm.ak;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.w;
-import com.tencent.mm.protocal.protobuf.bqj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import junit.framework.Assert;
 
-public final class c
+@Deprecated
+public class c<_Resp extends cqk>
 {
-  public static Bitmap a(String paramString, boolean paramBoolean, int paramInt, b paramb)
+  private f<a<_Resp>> hvf;
+  b<_Resp> hvx;
+  public b rr;
+  
+  public c()
   {
-    AppMethodBeat.i(190710);
-    if ((bt.isNullOrNil(paramString)) || (!g.afz().aeI()))
-    {
-      AppMethodBeat.o(190710);
-      return null;
-    }
-    String str = paramString;
-    if (af.st(paramString)) {
-      str = af.aHM(paramString);
-    }
-    paramString = str;
-    if (w.sz(str)) {
-      paramString = "weixin";
-    }
-    paramString = p.auH().b(paramString, paramBoolean, paramInt, paramb);
-    AppMethodBeat.o(190710);
-    return paramString;
+    AppMethodBeat.i(182916);
+    this.hvx = new b(this);
+    AppMethodBeat.o(182916);
   }
   
-  public static i a(String paramString, bqj parambqj)
-  {
-    AppMethodBeat.i(150213);
-    i locali = new i();
-    locali.dtM = -1;
-    locali.username = paramString;
-    locali.gUf = parambqj.CVw;
-    locali.gUg = parambqj.CVv;
-    ad.i("MicroMsg.AvatarLogic", "dkhurl contact %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aux(), locali.auy() });
-    boolean bool;
-    if (parambqj.DOo != 0)
-    {
-      bool = true;
-      locali.ee(bool);
-      if ((parambqj.DOj != 3) && (parambqj.DOj != 4)) {
-        break label121;
-      }
-      locali.evo = parambqj.DOj;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(150213);
-      return locali;
-      bool = false;
-      break;
-      label121:
-      if (parambqj.DOj == 2)
-      {
-        locali.evo = 3;
-        if (!u.aqG().equals(paramString))
-        {
-          p.auq();
-          e.K(paramString, false);
-          p.auq();
-          e.K(paramString, true);
-          p.auF().b(locali);
-          p.auH().vP(paramString);
-        }
-      }
-    }
-  }
+  protected void a(int paramInt1, int paramInt2, String paramString, _Resp param_Resp, n paramn) {}
   
-  public static String aN(String paramString1, String paramString2)
+  public f<a<_Resp>> aBB()
   {
-    AppMethodBeat.i(150196);
-    paramString1 = paramString1 + "?access_token=" + paramString2;
-    AppMethodBeat.o(150196);
-    return paramString1;
-  }
-  
-  public static boolean ac(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(150207);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(150207);
-      return false;
-    }
-    i locali2 = p.auF().we(paramString);
-    if ((locali2 != null) && (paramString.equals(locali2.getUsername())) && (paramInt == locali2.evo))
-    {
-      AppMethodBeat.o(150207);
-      return true;
-    }
-    i locali1 = locali2;
-    if (locali2 == null) {
-      locali1 = new i();
-    }
-    locali1.username = paramString;
-    locali1.evo = paramInt;
-    locali1.dtM = 3;
-    boolean bool = p.auF().b(locali1);
-    AppMethodBeat.o(150207);
-    return bool;
-  }
-  
-  public static Bitmap e(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(150209);
-    if ((bt.isNullOrNil(paramString)) || (!g.afz().aeI()))
-    {
-      AppMethodBeat.o(150209);
-      return null;
-    }
-    p.auq();
-    Object localObject = e.m(paramString, paramInt1, paramInt2);
-    if (localObject == null)
-    {
-      localObject = new f();
-      ((f)localObject).a(paramString, new f.c()
-      {
-        public final int dd(int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          AppMethodBeat.i(150195);
-          this.gTj.auu();
-          ad.i("MicroMsg.AvatarLogic", "getHDHeadImage onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          AppMethodBeat.o(150195);
-          return 0;
-        }
-      });
-      paramString = a(paramString, false, paramInt3, null);
-      AppMethodBeat.o(150209);
-      return paramString;
-    }
-    paramString = (String)localObject;
-    if (paramInt3 > 5) {
-      paramString = com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject, false, paramInt3);
-    }
-    AppMethodBeat.o(150209);
-    return paramString;
-  }
-  
-  public static boolean e(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(150204);
-    if (paramInt != 3)
-    {
-      AppMethodBeat.o(150204);
-      return false;
-    }
-    boolean bool = vK(ma(paramLong));
-    AppMethodBeat.o(150204);
-    return bool;
-  }
-  
-  private static String ma(long paramLong)
-  {
-    AppMethodBeat.i(150202);
-    String str = new com.tencent.mm.b.p(paramLong) + "@qqim";
-    AppMethodBeat.o(150202);
-    return str;
-  }
-  
-  public static Bitmap mb(long paramLong)
-  {
-    AppMethodBeat.i(150206);
-    Bitmap localBitmap = a(ma(paramLong), false, -1, null);
-    AppMethodBeat.o(150206);
-    return localBitmap;
-  }
-  
-  public static Bitmap vE(String paramString)
-  {
-    AppMethodBeat.i(150197);
-    paramString = a(paramString + "@google", false, -1, null);
-    AppMethodBeat.o(150197);
-    return paramString;
-  }
-  
-  private static String vF(String paramString)
-  {
-    AppMethodBeat.i(150198);
-    paramString = "http://graph.facebook.com/" + paramString + "/picture";
-    AppMethodBeat.o(150198);
-    return paramString;
-  }
-  
-  public static void vG(String paramString)
-  {
-    AppMethodBeat.i(150199);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(150199);
-      return;
-    }
-    String str = paramString + "@fb";
-    i locali2 = p.auF().we(str);
-    if ((locali2 != null) && (str.equals(locali2.getUsername())) && (3 == locali2.evo))
-    {
-      AppMethodBeat.o(150199);
-      return;
-    }
-    i locali1 = locali2;
-    if (locali2 == null) {
-      locali1 = new i();
-    }
-    locali1.username = str;
-    locali1.evo = 3;
-    locali1.gUg = vF(paramString);
-    locali1.gUf = vF(paramString);
-    locali1.ee(true);
-    locali1.dtM = 31;
-    p.auF().b(locali1);
-    AppMethodBeat.o(150199);
-  }
-  
-  public static Bitmap vH(String paramString)
-  {
-    AppMethodBeat.i(150200);
-    paramString = a(paramString + "@fb", false, -1, null);
-    AppMethodBeat.o(150200);
-    return paramString;
-  }
-  
-  public static long vI(String paramString)
-  {
-    AppMethodBeat.i(150201);
-    if (!af.aHJ(paramString))
-    {
-      AppMethodBeat.o(150201);
-      return -1L;
-    }
-    paramString = paramString.split("@");
     try
     {
-      long l = bt.getLong(paramString[0], -1L);
-      AppMethodBeat.o(150201);
-      return l;
+      AppMethodBeat.i(182917);
+      Assert.assertNotNull("You should set a CommReqResp!", this.rr);
+      Assert.assertTrue("RunCgi NetSceneQueue not ready!", x.aCn());
+      if (this.hvf == null) {
+        this.hvf = com.tencent.mm.cn.g.c(new com.tencent.mm.vending.g.c.a() {});
+      }
+      f localf = this.hvf;
+      AppMethodBeat.o(182917);
+      return localf;
     }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(150201);
-    }
-    return -1L;
+    finally {}
   }
   
-  public static long vJ(String paramString)
+  public final void c(b paramb)
   {
-    AppMethodBeat.i(150203);
-    if (!af.aHG(paramString))
-    {
-      AppMethodBeat.o(150203);
-      return -1L;
-    }
-    paramString = paramString.split("@");
-    try
-    {
-      long l = bt.getLong(paramString[0], -1L);
-      AppMethodBeat.o(150203);
-      return l;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(150203);
-    }
-    return -1L;
+    this.rr = paramb;
   }
   
-  public static boolean vK(String paramString)
+  public final void cancel()
   {
-    AppMethodBeat.i(150205);
-    if (paramString == null)
-    {
-      ad.w("MicroMsg.AvatarLogic", "setQQAvatarImgFlag failed : invalid username");
-      AppMethodBeat.o(150205);
-      return false;
+    AppMethodBeat.i(182915);
+    if (this.hvx != null) {
+      x.a(this.hvx);
     }
-    if (!paramString.endsWith("@qqim"))
-    {
-      ad.w("MicroMsg.AvatarLogic", "setQQAvatarImgFlag failed : invalid username");
-      AppMethodBeat.o(150205);
-      return false;
+    if (this.hvf != null) {
+      this.hvf.ym(true);
     }
-    i locali = new i();
-    locali.username = paramString;
-    locali.evo = 3;
-    locali.dtM = 3;
-    boolean bool = p.auF().b(locali);
-    AppMethodBeat.o(150205);
-    return bool;
+    AppMethodBeat.o(182915);
   }
   
-  public static Bitmap vL(String paramString)
+  public static class a<T extends cqk>
   {
-    AppMethodBeat.i(203564);
-    paramString = a(paramString, false, -1, null);
-    AppMethodBeat.o(203564);
-    return paramString;
+    public n dcV;
+    public int errCode;
+    public String errMsg;
+    public int errType;
+    public T hvj;
+    public c hvz;
+    
+    public static <T extends cqk> a<T> a(int paramInt1, int paramInt2, String paramString, T paramT, n paramn, c paramc)
+    {
+      AppMethodBeat.i(182910);
+      a locala = new a();
+      locala.errType = paramInt1;
+      locala.errCode = paramInt2;
+      locala.errMsg = paramString;
+      locala.hvj = paramT;
+      locala.dcV = paramn;
+      locala.hvz = paramc;
+      if (paramc != null) {
+        paramc.a(paramInt1, paramInt2, paramString, paramT, paramn);
+      }
+      AppMethodBeat.o(182910);
+      return locala;
+    }
   }
   
-  public static String vM(String paramString)
+  static final class b<_Resp extends cqk>
+    extends n
   {
-    AppMethodBeat.i(184252);
-    paramString = vN(paramString);
-    AppMethodBeat.o(184252);
-    return paramString;
-  }
-  
-  public static String vN(String paramString)
-  {
-    AppMethodBeat.i(150211);
-    if ((bt.isNullOrNil(paramString)) || (!g.afz().aeI()))
+    g gfX;
+    c hvA;
+    final n hvl;
+    b hvm;
+    com.tencent.mm.vending.g.b hvn;
+    private k hvp;
+    final long mStartTime;
+    
+    public b(c paramc)
     {
-      AppMethodBeat.o(150211);
-      return null;
+      AppMethodBeat.i(182912);
+      this.gfX = null;
+      this.hvl = this;
+      this.mStartTime = bs.eWj();
+      this.hvp = new k()
+      {
+        public final void onGYNetEnd(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, String paramAnonymousString, q paramAnonymousq, byte[] paramAnonymousArrayOfByte)
+        {
+          AppMethodBeat.i(182911);
+          com.tencent.mm.vending.g.g.a(c.b.this.hvn, new Object[] { c.a.a(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, (cqk)c.b.this.hvm.hvs.hvw, c.b.this, c.b.this.hvA) });
+          c.b.this.gfX.onSceneEnd(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, c.b.this.hvl);
+          ac.i("MicroMsg.Cgi", "onGYNetEnd:%d func:%d time:%d [%d,%d,%s]", new Object[] { Integer.valueOf(c.b.this.hvl.hashCode()), Integer.valueOf(c.b.this.getType()), Long.valueOf(bs.eWj() - c.b.this.mStartTime), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
+          AppMethodBeat.o(182911);
+        }
+      };
+      this.hvA = paramc;
+      AppMethodBeat.o(182912);
     }
-    if (af.st(paramString))
+    
+    public final int doScene(com.tencent.mm.network.e parame, g paramg)
     {
-      p.auq();
-      paramString = e.I(af.aHM(paramString), false);
-      AppMethodBeat.o(150211);
-      return paramString;
+      AppMethodBeat.i(182914);
+      this.gfX = paramg;
+      int i = dispatch(parame, this.hvm, this.hvp);
+      ac.i("MicroMsg.Cgi", "Start doScene:%d func:%d netid:%d time:%d", new Object[] { Integer.valueOf(this.hvl.hashCode()), Integer.valueOf(getType()), Integer.valueOf(i), Long.valueOf(bs.eWj() - this.mStartTime) });
+      if (i < 0) {
+        com.tencent.mm.vending.g.g.a(this.hvn, new Object[] { c.a.a(3, -1, "", (cqk)this.hvm.hvs.hvw, this, this.hvA) });
+      }
+      AppMethodBeat.o(182914);
+      return i;
     }
-    p.auq();
-    paramString = e.I(paramString, false);
-    AppMethodBeat.o(150211);
-    return paramString;
-  }
-  
-  public static void vO(String paramString)
-  {
-    AppMethodBeat.i(150212);
-    i locali = p.auF().we(paramString);
-    if (locali == null)
+    
+    public final int getType()
     {
-      AppMethodBeat.o(150212);
-      return;
+      AppMethodBeat.i(182913);
+      int i = this.hvm.getType();
+      AppMethodBeat.o(182913);
+      return i;
     }
-    if (!paramString.equals(locali.getUsername()))
+    
+    protected final int securityLimitCount()
     {
-      AppMethodBeat.o(150212);
-      return;
+      return 1;
     }
-    locali.gUi = 0;
-    locali.dtM = 64;
-    p.auF().b(locali);
-    AppMethodBeat.o(150212);
   }
 }
 

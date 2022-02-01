@@ -6,14 +6,14 @@ public class a
 {
   public boolean isStart = false;
   
-  protected void bmJ() {}
+  protected void btF() {}
   
   public final void finish()
   {
     AppMethodBeat.i(25497);
     if (this.isStart)
     {
-      bmJ();
+      btF();
       this.isStart = false;
     }
     AppMethodBeat.o(25497);
@@ -31,7 +31,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.a
  * JD-Core Version:    0.7.0.1
  */

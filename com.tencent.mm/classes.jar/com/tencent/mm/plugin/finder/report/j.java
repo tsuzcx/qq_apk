@@ -1,93 +1,106 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.event.base.b;
 import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.d;
-import com.tencent.mm.plugin.finder.event.base.g;
-import d.l;
+import com.tencent.mm.plugin.finder.event.base.f;
+import com.tencent.mm.plugin.finder.utils.n;
+import d.g.b.k;
+import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "getBehavior", "PlayEvent", "PlayFocusBehavior", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class j
-  extends g<b>
+  extends f
 {
-  public j(d paramd)
+  private final String TAG = "Finder.FinderTwoFeedFlowEventSubscriber";
+  
+  public j(c paramc)
   {
-    super(paramd);
-    AppMethodBeat.i(166719);
-    AppMethodBeat.o(166719);
+    super(paramc);
   }
   
-  public final b coj()
+  public final b h(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(166718);
-    b localb = (b)new c(this);
-    AppMethodBeat.o(166718);
-    return localb;
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "initPos", "", "(I)V", "getInitPos", "()I", "component1", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-finder_release"})
-  public static final class a
-    extends c
-  {
-    public final int qvB;
-    
-    public a(int paramInt)
+    AppMethodBeat.i(202797);
+    k.h(paramRecyclerView, "recyclerView");
+    Object localObject1 = super.h(paramRecyclerView, paramInt);
+    if (localObject1 == null)
     {
-      this.qvB = paramInt;
+      paramRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.TwoFeedFlowScrollEvent");
+      AppMethodBeat.o(202797);
+      throw paramRecyclerView;
     }
-    
-    public final boolean equals(Object paramObject)
+    localObject1 = (com.tencent.mm.plugin.finder.event.base.l)localObject1;
+    Object localObject2 = paramRecyclerView.getLayoutManager();
+    if (localObject2 == null)
     {
-      if (this != paramObject)
+      paramRecyclerView = new v("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager");
+      AppMethodBeat.o(202797);
+      throw paramRecyclerView;
+    }
+    Object localObject3 = (StaggeredGridLayoutManager)localObject2;
+    localObject2 = ((StaggeredGridLayoutManager)localObject3).n(null);
+    localObject3 = ((StaggeredGridLayoutManager)localObject3).mi();
+    int i;
+    if (localObject2 != null)
+    {
+      paramInt = localObject2[0];
+      if (localObject2 == null) {
+        break label274;
+      }
+      i = localObject2[1];
+      label118:
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH = Math.min(paramInt, i);
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ = Math.max(localObject3[0], localObject3[1]);
+      localObject2 = n.rPN;
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdQ = n.a(((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH, ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ, paramRecyclerView);
+      if ((this.nAG != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH) || (this.nAH != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ))
       {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if (this.qvB != paramObject.qvB) {}
+        if ((this.nAG != 2147483647) && (this.nAH != 2147483647)) {
+          break label279;
         }
+        i = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH;
+        paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ;
       }
-      else {
-        return true;
+    }
+    for (;;)
+    {
+      localObject2 = n.rPN;
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdP = n.a(i, paramInt, paramRecyclerView);
+      this.nAG = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH;
+      this.nAH = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ;
+      paramRecyclerView = (b)localObject1;
+      AppMethodBeat.o(202797);
+      return paramRecyclerView;
+      paramInt = 0;
+      break;
+      label274:
+      i = 0;
+      break label118;
+      label279:
+      if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH < this.nAG) {}
+      for (paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH;; paramInt = this.nAG)
+      {
+        if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ <= this.nAH) {
+          break label332;
+        }
+        j = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ;
+        i = paramInt;
+        paramInt = j;
+        break;
       }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return this.qvB;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(166716);
-      String str = "PlayEvent(initPos=" + this.qvB + ")";
-      AppMethodBeat.o(166716);
-      return str;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "", "onPlay", "", "initPos", "", "plugin-finder_release"})
-  public static abstract interface b
-  {
-    public abstract void CN(int paramInt);
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/report/PlayFocusSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "onPlay", "", "initPos", "", "plugin-finder_release"})
-  public static final class c
-    implements j.b
-  {
-    public final void CN(int paramInt)
-    {
-      AppMethodBeat.i(166717);
-      j.a locala = new j.a(paramInt);
-      this.qHx.b((c)locala);
-      AppMethodBeat.o(166717);
+      label332:
+      int j = this.nAH;
+      i = paramInt;
+      paramInt = j;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.j
  * JD-Core Version:    0.7.0.1
  */

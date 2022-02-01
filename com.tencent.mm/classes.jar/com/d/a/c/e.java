@@ -16,12 +16,12 @@ public final class e<E>
     if (i < 0) {
       return false;
     }
-    Object localObject = this.bYf[i];
-    this.bYf[i] = paramE;
+    Object localObject = this.bVN[i];
+    this.bVN[i] = paramE;
     if (localObject == null) {
       bool = true;
     }
-    bo(bool);
+    bn(bool);
     return true;
   }
   
@@ -52,7 +52,7 @@ public final class e<E>
   public final void clear()
   {
     super.clear();
-    Object[] arrayOfObject = this.bYf;
+    Object[] arrayOfObject = this.bVN;
     int j;
     for (int i = arrayOfObject.length;; i = j)
     {
@@ -86,25 +86,25 @@ public final class e<E>
     return containsAll(paramObject);
   }
   
-  protected final void gy(int paramInt)
+  protected final void gj(int paramInt)
   {
-    int i = this.bYf.length;
-    Object[] arrayOfObject = this.bYf;
-    this.bYf = new Object[paramInt];
+    int i = this.bVN.length;
+    Object[] arrayOfObject = this.bVN;
+    this.bVN = new Object[paramInt];
     paramInt = i;
     for (;;)
     {
       i = paramInt - 1;
       if (paramInt > 0)
       {
-        if ((arrayOfObject[i] != null) && (arrayOfObject[i] != bYh))
+        if ((arrayOfObject[i] != null) && (arrayOfObject[i] != bVP))
         {
           Object localObject = arrayOfObject[i];
           paramInt = ax(localObject);
           if (paramInt < 0) {
-            m(this.bYf[(-paramInt - 1)], localObject);
+            m(this.bVN[(-paramInt - 1)], localObject);
           }
-          this.bYf[paramInt] = localObject;
+          this.bVN[paramInt] = localObject;
           paramInt = i;
         }
       }
@@ -223,7 +223,7 @@ public final class e<E>
     
     public final boolean as(E paramE)
     {
-      this.h += e.this.bYg.av(paramE);
+      this.h += e.this.bVO.av(paramE);
       return true;
     }
   }

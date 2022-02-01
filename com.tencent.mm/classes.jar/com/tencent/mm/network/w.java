@@ -6,11 +6,11 @@ import java.util.Map;
 
 public abstract interface w
 {
-  public abstract void Bc(String paramString);
+  public abstract void Fh(String paramString);
   
-  public abstract String aES();
+  public abstract String aLJ();
   
-  public abstract int aET();
+  public abstract int aLK();
   
   public abstract void disconnect();
   
@@ -42,7 +42,7 @@ public abstract interface w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.w
  * JD-Core Version:    0.7.0.1
  */

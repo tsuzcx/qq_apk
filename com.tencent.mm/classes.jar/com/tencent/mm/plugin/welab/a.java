@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.welab;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.g.a.lo;
-import com.tencent.mm.g.a.pf;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.g.a.lx;
+import com.tencent.mm.g.a.po;
 import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,27 +16,27 @@ import java.util.Map;
 
 public final class a
 {
-  public static final a BBB;
-  public c AJq;
-  public com.tencent.mm.plugin.welab.d.a BBC;
-  public Map<String, b> BBD;
-  public b BBE;
+  public static final a CTH;
+  public com.tencent.mm.plugin.welab.d.a CTI;
+  public Map<String, b> CTJ;
+  public b CTK;
+  public c CbH;
   
   static
   {
     AppMethodBeat.i(146208);
-    BBB = new a();
+    CTH = new a();
     AppMethodBeat.o(146208);
   }
   
   public a()
   {
     AppMethodBeat.i(146200);
-    this.BBD = new HashMap();
+    this.CTJ = new HashMap();
     c.a locala = new c.a();
-    locala.hjU = true;
-    locala.hjT = true;
-    this.AJq = locala.azc();
+    locala.hKx = true;
+    locala.hKw = true;
+    this.CbH = locala.aFT();
     AppMethodBeat.o(146200);
   }
   
@@ -44,44 +44,44 @@ public final class a
   {
     AppMethodBeat.i(146201);
     String str = "";
-    Object localObject = BBB.ayV(parama.field_LabsAppId);
+    Object localObject = CTH.aEm(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((b)localObject).esi();
-      ad.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
+      str = ((b)localObject).eHC();
+      ac.i("WelabMgr", "get appName from opener , appid %s, appName %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
-      localObject = parama.aze("field_Title");
+      localObject = parama.aEv("field_Title");
     }
     AppMethodBeat.o(146201);
     return localObject;
   }
   
-  private b ayV(String paramString)
-  {
-    AppMethodBeat.i(146203);
-    paramString = (b)this.BBD.get(paramString);
-    AppMethodBeat.o(146203);
-    return paramString;
-  }
-  
-  public static void az(boolean paramBoolean1, boolean paramBoolean2)
+  public static void aD(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(146204);
-    e.aA(paramBoolean1, paramBoolean2);
+    e.aE(paramBoolean1, paramBoolean2);
     AppMethodBeat.o(146204);
+  }
+  
+  private b aEm(String paramString)
+  {
+    AppMethodBeat.i(146203);
+    paramString = (b)this.CTJ.get(paramString);
+    AppMethodBeat.o(146203);
+    return paramString;
   }
   
   public static String b(com.tencent.mm.plugin.welab.d.a.a parama)
   {
     AppMethodBeat.i(146202);
     String str = "";
-    Object localObject = BBB.ayV(parama.field_LabsAppId);
+    Object localObject = CTH.aEm(parama.field_LabsAppId);
     if (localObject != null)
     {
-      str = ((b)localObject).esh();
-      ad.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
+      str = ((b)localObject).eHB();
+      ac.i("WelabMgr", "get icon url from opener , appid %s, url %s", new Object[] { parama.field_LabsAppId, str });
     }
     localObject = str;
     if (TextUtils.isEmpty(str)) {
@@ -91,12 +91,12 @@ public final class a
     return localObject;
   }
   
-  public static a esb()
+  public static a eHv()
   {
-    return BBB;
+    return CTH;
   }
   
-  public static void gB(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  public static void gM(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
   {
     AppMethodBeat.i(146207);
     if (!paramList.isEmpty())
@@ -106,18 +106,18 @@ public final class a
       while (paramList.hasNext())
       {
         com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)paramList.next();
-        if ((!locala.esn()) && (!locala.isExpired())) {
+        if ((!locala.eHG()) && (!locala.isExpired())) {
           localArrayList.add(locala.field_LabsAppId);
         }
       }
-      paramList = new pf();
-      paramList.duM.duN = localArrayList;
-      com.tencent.mm.sdk.b.a.ESL.l(paramList);
+      paramList = new po();
+      paramList.dsy.dsz = localArrayList;
+      com.tencent.mm.sdk.b.a.GpY.l(paramList);
       paramList = localArrayList.iterator();
       while (paramList.hasNext()) {
         if ("labs_nearbylife".equals((String)paramList.next()))
         {
-          com.tencent.mm.sdk.b.a.ESL.l(new lo());
+          com.tencent.mm.sdk.b.a.GpY.l(new lx());
           AppMethodBeat.o(146207);
           return;
         }
@@ -126,10 +126,10 @@ public final class a
     AppMethodBeat.o(146207);
   }
   
-  public final com.tencent.mm.plugin.welab.d.a.a ayW(String paramString)
+  public final com.tencent.mm.plugin.welab.d.a.a aEn(String paramString)
   {
     AppMethodBeat.i(146206);
-    com.tencent.mm.plugin.welab.d.a locala = this.BBC;
+    com.tencent.mm.plugin.welab.d.a locala = this.CTI;
     com.tencent.mm.plugin.welab.d.a.a locala1 = new com.tencent.mm.plugin.welab.d.a.a();
     locala1.field_LabsAppId = paramString;
     locala.get(locala1, new String[0]);
@@ -137,10 +137,10 @@ public final class a
     return locala1;
   }
   
-  public final List<com.tencent.mm.plugin.welab.d.a.a> esc()
+  public final List<com.tencent.mm.plugin.welab.d.a.a> eHw()
   {
     AppMethodBeat.i(146205);
-    List localList = this.BBC.esj();
+    List localList = this.CTI.eHD();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
@@ -149,7 +149,7 @@ public final class a
         localIterator.remove();
       }
     }
-    ad.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
+    ac.i("WelabMgr", "online lab %s", new Object[] { localList.toString() });
     AppMethodBeat.o(146205);
     return localList;
   }

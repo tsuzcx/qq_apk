@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public final class b
   }
   
   /* Error */
-  public final List<a> ae(com.tencent.mm.storage.bl parambl)
+  public final List<a> ae(com.tencent.mm.storage.bo parambo)
   {
     // Byte code:
     //   0: aconst_null
@@ -51,12 +51,12 @@ public final class b
     //   26: ldc 61
     //   28: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   31: aload_1
-    //   32: getfield 70	com/tencent/mm/g/c/du:field_msgId	J
+    //   32: getfield 70	com/tencent/mm/g/c/dy:field_msgId	J
     //   35: invokevirtual 74	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   38: ldc 76
     //   40: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: aload_1
-    //   44: getfield 83	com/tencent/mm/g/c/du:field_talker	Ljava/lang/String;
+    //   44: getfield 83	com/tencent/mm/g/c/dy:field_talker	Ljava/lang/String;
     //   47: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: ldc 85
     //   52: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -131,7 +131,7 @@ public final class b
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	189	0	this	b
-    //   0	189	1	parambl	com.tencent.mm.storage.bl
+    //   0	189	1	parambo	com.tencent.mm.storage.bo
     //   1	123	2	localObject1	Object
     //   137	39	2	localException	Exception
     //   3	159	3	localCursor	Cursor
@@ -151,7 +151,7 @@ public final class b
     //   124	134	170	finally
   }
   
-  public final long bHl()
+  public final long bOy()
   {
     Object localObject1 = null;
     AppMethodBeat.i(22742);
@@ -181,7 +181,7 @@ public final class b
     }
   }
   
-  public final Cursor bHm()
+  public final Cursor bOz()
   {
     Object localObject = null;
     AppMethodBeat.i(22743);
@@ -199,7 +199,7 @@ public final class b
     return localObject;
   }
   
-  public final int cw(List<a> paramList)
+  public final int cy(List<a> paramList)
   {
     AppMethodBeat.i(22747);
     if (paramList.isEmpty())
@@ -207,7 +207,7 @@ public final class b
       AppMethodBeat.o(22747);
       return 0;
     }
-    long l = bt.GC();
+    long l = bs.Gn();
     Iterator localIterator = paramList.iterator();
     int i = 0;
     if (localIterator.hasNext())
@@ -219,12 +219,12 @@ public final class b
         break;
       }
     }
-    ad.d("MicroMsg.WxFileIndexStorage", "insert list result[%d %d] cost[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()), Long.valueOf(bt.aS(l)) });
+    ac.d("MicroMsg.WxFileIndexStorage", "insert list result[%d %d] cost[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()), Long.valueOf(bs.aO(l)) });
     AppMethodBeat.o(22747);
     return i;
   }
   
-  public final int cx(List<a> paramList)
+  public final int cz(List<a> paramList)
   {
     AppMethodBeat.i(22748);
     if (paramList.isEmpty())
@@ -232,7 +232,7 @@ public final class b
       AppMethodBeat.o(22748);
       return 0;
     }
-    long l = bt.GC();
+    long l = bs.Gn();
     Iterator localIterator = paramList.iterator();
     int i = 0;
     if (localIterator.hasNext())
@@ -245,7 +245,7 @@ public final class b
         break;
       }
     }
-    ad.d("MicroMsg.WxFileIndexStorage", "update list result[%d %d] cost[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()), Long.valueOf(bt.aS(l)) });
+    ac.d("MicroMsg.WxFileIndexStorage", "update list result[%d %d] cost[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()), Long.valueOf(bs.aO(l)) });
     AppMethodBeat.o(22748);
     return i;
   }
@@ -275,12 +275,12 @@ public final class b
   }
   
   /* Error */
-  public final List<a> v(String paramString, long paramLong1, long paramLong2)
+  public final List<a> s(String paramString, long paramLong1, long paramLong2)
   {
     // Byte code:
     //   0: sipush 22744
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 146	com/tencent/mm/sdk/platformtools/bt:GC	()J
+    //   6: invokestatic 146	com/tencent/mm/sdk/platformtools/bs:Gn	()J
     //   9: lstore 6
     //   11: new 59	java/lang/StringBuilder
     //   14: dup
@@ -359,7 +359,7 @@ public final class b
     //   175: iconst_0
     //   176: aload 11
     //   178: aastore
-    //   179: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   179: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   182: aload 8
     //   184: ifnull +10 -> 194
     //   187: aload 8
@@ -381,10 +381,10 @@ public final class b
     //   219: dup
     //   220: iconst_2
     //   221: lload 6
-    //   223: invokestatic 183	com/tencent/mm/sdk/platformtools/bt:aS	(J)J
+    //   223: invokestatic 183	com/tencent/mm/sdk/platformtools/bs:aO	(J)J
     //   226: invokestatic 188	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   229: aastore
-    //   230: invokestatic 229	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   230: invokestatic 229	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   233: sipush 22744
     //   236: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   239: aload 12
@@ -433,12 +433,12 @@ public final class b
   }
   
   /* Error */
-  public final List<a> w(String paramString, long paramLong1, long paramLong2)
+  public final List<a> t(String paramString, long paramLong1, long paramLong2)
   {
     // Byte code:
     //   0: sipush 22745
     //   3: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 146	com/tencent/mm/sdk/platformtools/bt:GC	()J
+    //   6: invokestatic 146	com/tencent/mm/sdk/platformtools/bs:Gn	()J
     //   9: lstore 6
     //   11: new 59	java/lang/StringBuilder
     //   14: dup
@@ -517,7 +517,7 @@ public final class b
     //   175: iconst_0
     //   176: aload 11
     //   178: aastore
-    //   179: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   179: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   182: aload 8
     //   184: ifnull +10 -> 194
     //   187: aload 8
@@ -539,10 +539,10 @@ public final class b
     //   219: dup
     //   220: iconst_2
     //   221: lload 6
-    //   223: invokestatic 183	com/tencent/mm/sdk/platformtools/bt:aS	(J)J
+    //   223: invokestatic 183	com/tencent/mm/sdk/platformtools/bs:aO	(J)J
     //   226: invokestatic 188	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   229: aastore
-    //   230: invokestatic 229	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   230: invokestatic 229	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   233: sipush 22745
     //   236: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   239: aload 12
@@ -590,7 +590,7 @@ public final class b
     //   164	182	257	finally
   }
   
-  public final long yL(int paramInt)
+  public final long zB(int paramInt)
   {
     localObject3 = null;
     localObject1 = null;
@@ -625,7 +625,7 @@ public final class b
       for (;;)
       {
         localObject3 = localObject1;
-        ad.printErrStackTrace("MicroMsg.WxFileIndexStorage", localException, "getSumByMsgType error", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WxFileIndexStorage", localException, "getSumByMsgType error", new Object[0]);
         long l3 = l2;
         if (localObject1 != null)
         {
@@ -646,7 +646,7 @@ public final class b
     return l3;
   }
   
-  public final long yM(int paramInt)
+  public final long zC(int paramInt)
   {
     Object localObject1 = null;
     AppMethodBeat.i(22741);
@@ -683,7 +683,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.f.b.b
  * JD-Core Version:    0.7.0.1
  */

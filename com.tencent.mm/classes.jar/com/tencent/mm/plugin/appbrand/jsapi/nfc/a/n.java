@@ -2,8 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ad;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.k;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.ae;
 import d.g.a.b;
 import d.g.b.k;
@@ -13,18 +15,18 @@ import d.y;
 import java.util.Map;
 import org.json.JSONObject;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiStopNFCDiscovery;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiStopNFCDiscovery;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class n
   extends a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   public static final int CTRL_INDEX = 794;
   public static final String NAME = "stopNFCDiscovery";
-  public static final a kcy;
+  public static final a kDl;
   
   static
   {
     AppMethodBeat.i(183663);
-    kcy = new a((byte)0);
+    kDl = new a((byte)0);
     AppMethodBeat.o(183663);
   }
   
@@ -36,33 +38,33 @@ public final class n
       AppMethodBeat.o(183662);
       return;
     }
-    paramJSONObject = (com.tencent.mm.plugin.appbrand.jsapi.ad)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.jsapi.ad.class);
-    if ((paramJSONObject != null) && (!paramJSONObject.aXM()))
+    paramJSONObject = (ad)com.tencent.luggage.a.e.K(ad.class);
+    if ((paramJSONObject != null) && (!paramJSONObject.beJ()))
     {
-      paramc.h(paramInt, k("fail:user is not authorized", (Map)ae.c(new o[] { u.P("errCode", Integer.valueOf(13019)) })));
+      paramc.h(paramInt, k("fail:user is not authorized", (Map)ae.c(new o[] { u.Q("errCode", Integer.valueOf(13019)) })));
       AppMethodBeat.o(183662);
       return;
     }
-    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.kcQ;
+    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.kDD;
     paramJSONObject = c.a.w(paramc);
     if (paramJSONObject == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.JsApiStopNFCDiscovery", "invoke, can not get activity");
-      paramc.h(paramInt, k("fail:unknown", (Map)ae.c(new o[] { u.P("errCode", Integer.valueOf(13010)) })));
+      ac.w("MicroMsg.AppBrand.JsApiStopNFCDiscovery", "invoke, can not get activity");
+      paramc.h(paramInt, k("fail:unknown", (Map)ae.c(new o[] { u.Q("errCode", Integer.valueOf(13010)) })));
       AppMethodBeat.o(183662);
       return;
     }
     paramc = (b)new b(this, paramc, paramInt, paramJSONObject);
     k.h(paramc, "callback");
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.AppBrand.NFCReadWriteManager", "stopNFCDiscovery");
-    com.tencent.mm.plugin.appbrand.aa.l.runOnUiThread((Runnable)new c.k(paramJSONObject, paramc));
+    ac.d("MicroMsg.AppBrand.NFCReadWriteManager", "stopNFCDiscovery");
+    com.tencent.mm.plugin.appbrand.z.l.runOnUiThread((Runnable)new c.k(paramJSONObject, paramc));
     AppMethodBeat.o(183662);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiStopNFCDiscovery$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiStopNFCDiscovery$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "invoke"})
   static final class b
     extends d.g.b.l
     implements b<com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.e<y>, y>

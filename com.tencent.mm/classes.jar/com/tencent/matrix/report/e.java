@@ -4,24 +4,24 @@ import d.g.b.k;
 import d.l;
 import d.n.n;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isCareScene", "", "scene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/matrix/report/MatrixFinderReporter;", "", "()V", "ID_KEY", "", "KV_ID", "getDeviceLevelIndex", "level", "", "getDeviceLevelSnsIndex", "isCareScene", "", "scene", "isFinderScene", "isFinderTlScene", "isSnsTlScene", "onAnr", "", "onFPS", "content", "Lorg/json/JSONObject;", "plugin-report_release"})
 public final class e
 {
-  public static final e cwZ = new e();
+  public static final e cui = new e();
   
-  public static boolean cY(String paramString)
+  public static boolean cN(String paramString)
   {
     k.h(paramString, "scene");
-    return n.mB(paramString, "SnsTimeLineUI");
+    return n.nc(paramString, "SnsTimeLineUI");
   }
   
-  public static boolean cZ(String paramString)
+  public static boolean cO(String paramString)
   {
     k.h(paramString, "scene");
     return n.a((CharSequence)paramString, (CharSequence)"Finder", false);
   }
   
-  static int df(String paramString)
+  static int cP(String paramString)
   {
     switch (paramString.hashCode())
     {
@@ -45,7 +45,7 @@ public final class e
     }
   }
   
-  static int dg(String paramString)
+  static int cQ(String paramString)
   {
     switch (paramString.hashCode())
     {

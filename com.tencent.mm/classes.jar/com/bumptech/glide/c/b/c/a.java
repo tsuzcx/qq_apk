@@ -18,69 +18,69 @@ import java.util.concurrent.TimeUnit;
 public final class a
   implements ExecutorService
 {
-  private static final long aGR;
-  private static volatile int aGS;
-  private final ExecutorService aGT;
+  private static final long aHH;
+  private static volatile int aHI;
+  private final ExecutorService aHJ;
   
   static
   {
     AppMethodBeat.i(77194);
-    aGR = TimeUnit.SECONDS.toMillis(10L);
+    aHH = TimeUnit.SECONDS.toMillis(10L);
     AppMethodBeat.o(77194);
   }
   
   private a(ExecutorService paramExecutorService)
   {
-    this.aGT = paramExecutorService;
+    this.aHJ = paramExecutorService;
   }
   
-  public static a oF()
+  public static a oP()
   {
     AppMethodBeat.i(77175);
-    Object localObject = a.b.aHb;
+    Object localObject = a.b.aHR;
     localObject = new a(new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new a("disk-cache", (a.b)localObject, true)));
     AppMethodBeat.o(77175);
     return localObject;
   }
   
-  public static a oG()
+  public static a oQ()
   {
     AppMethodBeat.i(77176);
-    int i = oJ();
-    Object localObject = a.b.aHb;
+    int i = oT();
+    Object localObject = a.b.aHR;
     localObject = new a(new ThreadPoolExecutor(i, i, 0L, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new a("source", (a.b)localObject, false)));
     AppMethodBeat.o(77176);
     return localObject;
   }
   
-  public static a oH()
+  public static a oR()
   {
     AppMethodBeat.i(77177);
-    a locala = new a(new ThreadPoolExecutor(0, 2147483647, aGR, TimeUnit.MILLISECONDS, new SynchronousQueue(), new a("source-unlimited", a.b.aHb, false)));
+    a locala = new a(new ThreadPoolExecutor(0, 2147483647, aHH, TimeUnit.MILLISECONDS, new SynchronousQueue(), new a("source-unlimited", a.b.aHR, false)));
     AppMethodBeat.o(77177);
     return locala;
   }
   
-  public static a oI()
+  public static a oS()
   {
     AppMethodBeat.i(77178);
-    if (oJ() >= 4) {}
+    if (oT() >= 4) {}
     for (int i = 2;; i = 1)
     {
-      Object localObject = a.b.aHb;
-      localObject = new a(new ThreadPoolExecutor(0, i, aGR, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new a("animation", (a.b)localObject, true)));
+      Object localObject = a.b.aHR;
+      localObject = new a(new ThreadPoolExecutor(0, i, aHH, TimeUnit.MILLISECONDS, new PriorityBlockingQueue(), new a("animation", (a.b)localObject, true)));
       AppMethodBeat.o(77178);
       return localObject;
     }
   }
   
-  private static int oJ()
+  private static int oT()
   {
     AppMethodBeat.i(77193);
-    if (aGS == 0) {
-      aGS = Math.min(4, b.availableProcessors());
+    if (aHI == 0) {
+      aHI = Math.min(4, b.availableProcessors());
     }
-    int i = aGS;
+    int i = aHI;
     AppMethodBeat.o(77193);
     return i;
   }
@@ -88,7 +88,7 @@ public final class a
   public final boolean awaitTermination(long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(77191);
-    boolean bool = this.aGT.awaitTermination(paramLong, paramTimeUnit);
+    boolean bool = this.aHJ.awaitTermination(paramLong, paramTimeUnit);
     AppMethodBeat.o(77191);
     return bool;
   }
@@ -96,14 +96,14 @@ public final class a
   public final void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(77179);
-    this.aGT.execute(paramRunnable);
+    this.aHJ.execute(paramRunnable);
     AppMethodBeat.o(77179);
   }
   
   public final <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> paramCollection)
   {
     AppMethodBeat.i(77181);
-    paramCollection = this.aGT.invokeAll(paramCollection);
+    paramCollection = this.aHJ.invokeAll(paramCollection);
     AppMethodBeat.o(77181);
     return paramCollection;
   }
@@ -111,7 +111,7 @@ public final class a
   public final <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> paramCollection, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(77182);
-    paramCollection = this.aGT.invokeAll(paramCollection, paramLong, paramTimeUnit);
+    paramCollection = this.aHJ.invokeAll(paramCollection, paramLong, paramTimeUnit);
     AppMethodBeat.o(77182);
     return paramCollection;
   }
@@ -119,7 +119,7 @@ public final class a
   public final <T> T invokeAny(Collection<? extends Callable<T>> paramCollection)
   {
     AppMethodBeat.i(77183);
-    paramCollection = this.aGT.invokeAny(paramCollection);
+    paramCollection = this.aHJ.invokeAny(paramCollection);
     AppMethodBeat.o(77183);
     return paramCollection;
   }
@@ -127,7 +127,7 @@ public final class a
   public final <T> T invokeAny(Collection<? extends Callable<T>> paramCollection, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(77184);
-    paramCollection = this.aGT.invokeAny(paramCollection, paramLong, paramTimeUnit);
+    paramCollection = this.aHJ.invokeAny(paramCollection, paramLong, paramTimeUnit);
     AppMethodBeat.o(77184);
     return paramCollection;
   }
@@ -135,7 +135,7 @@ public final class a
   public final boolean isShutdown()
   {
     AppMethodBeat.i(77189);
-    boolean bool = this.aGT.isShutdown();
+    boolean bool = this.aHJ.isShutdown();
     AppMethodBeat.o(77189);
     return bool;
   }
@@ -143,7 +143,7 @@ public final class a
   public final boolean isTerminated()
   {
     AppMethodBeat.i(77190);
-    boolean bool = this.aGT.isTerminated();
+    boolean bool = this.aHJ.isTerminated();
     AppMethodBeat.o(77190);
     return bool;
   }
@@ -151,14 +151,14 @@ public final class a
   public final void shutdown()
   {
     AppMethodBeat.i(77187);
-    this.aGT.shutdown();
+    this.aHJ.shutdown();
     AppMethodBeat.o(77187);
   }
   
   public final List<Runnable> shutdownNow()
   {
     AppMethodBeat.i(77188);
-    List localList = this.aGT.shutdownNow();
+    List localList = this.aHJ.shutdownNow();
     AppMethodBeat.o(77188);
     return localList;
   }
@@ -166,7 +166,7 @@ public final class a
   public final Future<?> submit(Runnable paramRunnable)
   {
     AppMethodBeat.i(77180);
-    paramRunnable = this.aGT.submit(paramRunnable);
+    paramRunnable = this.aHJ.submit(paramRunnable);
     AppMethodBeat.o(77180);
     return paramRunnable;
   }
@@ -174,7 +174,7 @@ public final class a
   public final <T> Future<T> submit(Runnable paramRunnable, T paramT)
   {
     AppMethodBeat.i(77185);
-    paramRunnable = this.aGT.submit(paramRunnable, paramT);
+    paramRunnable = this.aHJ.submit(paramRunnable, paramT);
     AppMethodBeat.o(77185);
     return paramRunnable;
   }
@@ -182,7 +182,7 @@ public final class a
   public final <T> Future<T> submit(Callable<T> paramCallable)
   {
     AppMethodBeat.i(77186);
-    paramCallable = this.aGT.submit(paramCallable);
+    paramCallable = this.aHJ.submit(paramCallable);
     AppMethodBeat.o(77186);
     return paramCallable;
   }
@@ -190,7 +190,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(77192);
-    String str = this.aGT.toString();
+    String str = this.aHJ.toString();
     AppMethodBeat.o(77192);
     return str;
   }
@@ -198,16 +198,16 @@ public final class a
   static final class a
     implements ThreadFactory
   {
-    final a.b aGU;
-    final boolean aGV;
-    private int aGW;
+    final a.b aHK;
+    final boolean aHL;
+    private int aHM;
     private final String name;
     
     a(String paramString, a.b paramb, boolean paramBoolean)
     {
       this.name = paramString;
-      this.aGU = paramb;
-      this.aGV = paramBoolean;
+      this.aHK = paramb;
+      this.aHL = paramBoolean;
     }
     
     public final Thread newThread(Runnable paramRunnable)
@@ -215,13 +215,13 @@ public final class a
       try
       {
         AppMethodBeat.i(77172);
-        paramRunnable = new Thread(paramRunnable, "glide-" + this.name + "-thread-" + this.aGW)
+        paramRunnable = new Thread(paramRunnable, "glide-" + this.name + "-thread-" + this.aHM)
         {
           public final void run()
           {
             AppMethodBeat.i(77171);
             Process.setThreadPriority(9);
-            if (a.a.this.aGV) {
+            if (a.a.this.aHL) {
               StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectNetwork().penaltyDeath().build());
             }
             try
@@ -232,12 +232,12 @@ public final class a
             }
             catch (Throwable localThrowable)
             {
-              a.a.this.aGU.c(localThrowable);
+              a.a.this.aHK.c(localThrowable);
               AppMethodBeat.o(77171);
             }
           }
         };
-        this.aGW += 1;
+        this.aHM += 1;
         AppMethodBeat.o(77172);
         return paramRunnable;
       }
@@ -251,7 +251,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.c.a
  * JD-Core Version:    0.7.0.1
  */

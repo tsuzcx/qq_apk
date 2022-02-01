@@ -21,12 +21,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/component/UIComponentActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "mainUIC", "Lcom/tencent/mm/ui/component/UIComponent;", "store", "Landroid/arch/lifecycle/ViewModelStore;", "uiComponents", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "component", "T", "Landroid/arch/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/arch/lifecycle/ViewModel;", "getLayoutId", "", "getViewModelStore", "importUIComponents", "", "initializeUIC", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "libmmui_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/component/UIComponentActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "mainUIC", "Lcom/tencent/mm/ui/component/UIComponent;", "store", "Landroid/arch/lifecycle/ViewModelStore;", "uiComponents", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "component", "T", "Landroid/arch/lifecycle/ViewModel;", "modelClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/arch/lifecycle/ViewModel;", "getLayoutId", "", "getViewModelStore", "importUIComponents", "", "initializeUIC", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "libmmui_release"})
 public abstract class UIComponentActivity
   extends MMActivity
 {
-  private UIComponent LDa;
-  private final ViewModelStore LDb = new ViewModelStore();
+  private UIComponent Isb;
+  private final ViewModelStore Isc = new ViewModelStore();
   private HashMap _$_findViewCache;
   private final HashSet<UIComponent> uiComponents = new HashSet();
   
@@ -45,10 +45,10 @@ public abstract class UIComponentActivity
     return localView1;
   }
   
-  protected void a(HashSet<UIComponent> paramHashSet)
+  protected void b(HashSet<UIComponent> paramHashSet)
   {
     k.h(paramHashSet, "uiComponents");
-    Object localObject1 = fTM();
+    Object localObject1 = cwg();
     if (localObject1 != null)
     {
       localObject1 = ((Iterable)localObject1).iterator();
@@ -56,13 +56,13 @@ public abstract class UIComponentActivity
       if (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (Class)((Iterator)localObject1).next();
-        a locala = a.LCX;
-        localObject2 = (UIComponent)a.s((MMActivity)this).get((Class)localObject2);
+        a locala = a.IrY;
+        localObject2 = (UIComponent)a.q((MMActivity)this).get((Class)localObject2);
         paramHashSet.add(localObject2);
         if (((UIComponent)localObject2).getLayoutId() == 0) {
           break label113;
         }
-        this.LDa = ((UIComponent)localObject2);
+        this.Isb = ((UIComponent)localObject2);
         if (i != 0) {
           throw ((Throwable)new RuntimeException("don't has more one daemon uic"));
         }
@@ -77,20 +77,20 @@ public abstract class UIComponentActivity
     }
   }
   
-  public final <T extends ViewModel> T bF(Class<T> paramClass)
+  public final <T extends ViewModel> T bh(Class<T> paramClass)
   {
     k.h(paramClass, "modelClass");
-    a locala = a.LCX;
-    paramClass = a.s((MMActivity)this).get(paramClass);
+    a locala = a.IrY;
+    paramClass = a.q((MMActivity)this).get(paramClass);
     k.g(paramClass, "UICProvider.of(this).get(modelClass)");
     return paramClass;
   }
   
-  public abstract Set<Class<? extends UIComponent>> fTM();
+  public abstract Set<Class<? extends UIComponent>> cwg();
   
   public int getLayoutId()
   {
-    UIComponent localUIComponent = this.LDa;
+    UIComponent localUIComponent = this.Isb;
     if (localUIComponent != null) {
       return localUIComponent.getLayoutId();
     }
@@ -99,7 +99,7 @@ public abstract class UIComponentActivity
   
   public ViewModelStore getViewModelStore()
   {
-    return this.LDb;
+    return this.Isc;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -149,10 +149,10 @@ public abstract class UIComponentActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    a(this.uiComponents);
+    b(this.uiComponents);
     Iterator localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
-      ((UIComponent)localIterator.next()).be(paramBundle);
+      ((UIComponent)localIterator.next()).aa(paramBundle);
     }
     super.onCreate(paramBundle);
     localIterator = ((Iterable)this.uiComponents).iterator();
@@ -161,7 +161,7 @@ public abstract class UIComponentActivity
       UIComponent localUIComponent = (UIComponent)localIterator.next();
       View localView = getContentView();
       k.g(localView, "contentView");
-      localUIComponent.gT(localView);
+      localUIComponent.gz(localView);
     }
     localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
@@ -169,7 +169,7 @@ public abstract class UIComponentActivity
     }
     localIterator = ((Iterable)this.uiComponents).iterator();
     while (localIterator.hasNext()) {
-      ((UIComponent)localIterator.next()).ba(paramBundle);
+      ((UIComponent)localIterator.next()).Z(paramBundle);
     }
   }
   
@@ -284,7 +284,7 @@ public abstract class UIComponentActivity
     {
       localIterator = ((Iterable)this.uiComponents).iterator();
       while (localIterator.hasNext()) {
-        ((UIComponent)localIterator.next()).fXy();
+        ((UIComponent)localIterator.next()).cGh();
       }
     }
   }
@@ -297,7 +297,7 @@ public abstract class UIComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponentActivity
  * JD-Core Version:    0.7.0.1
  */

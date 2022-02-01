@@ -8,22 +8,22 @@ import java.util.Map;
 
 public final class b
 {
-  final Map<String, List<com.tencent.mm.plugin.appbrand.keylogger.base.b>> kax;
+  final Map<String, List<com.tencent.mm.plugin.appbrand.keylogger.base.b>> kBk;
   
   private b()
   {
-    AppMethodBeat.i(194840);
-    this.kax = new HashMap();
-    AppMethodBeat.o(194840);
+    AppMethodBeat.i(200995);
+    this.kBk = new HashMap();
+    AppMethodBeat.o(200995);
   }
   
   final void a(String paramString, b paramb)
   {
-    AppMethodBeat.i(194842);
-    paramString = (List)this.kax.get(paramString);
+    AppMethodBeat.i(200997);
+    paramString = (List)this.kBk.get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(194842);
+      AppMethodBeat.o(200997);
       return;
     }
     int i = 0;
@@ -32,33 +32,33 @@ public final class b
       paramb.a((com.tencent.mm.plugin.appbrand.keylogger.base.b)paramString.get(i));
       i += 1;
     }
-    AppMethodBeat.o(194842);
+    AppMethodBeat.o(200997);
   }
   
   public final void a(String paramString1, final String paramString2, final a parama, final long paramLong)
   {
-    AppMethodBeat.i(194841);
+    AppMethodBeat.i(200996);
     a(paramString1, new b()
     {
       public final void a(com.tencent.mm.plugin.appbrand.keylogger.base.b paramAnonymousb)
       {
-        AppMethodBeat.i(194837);
+        AppMethodBeat.i(200992);
         paramAnonymousb.b(paramString2, parama, paramLong);
-        AppMethodBeat.o(194837);
+        AppMethodBeat.o(200992);
       }
     });
-    AppMethodBeat.o(194841);
+    AppMethodBeat.o(200996);
   }
   
   static final class a
   {
-    private static final b kEz;
+    private static final b lfS;
     
     static
     {
-      AppMethodBeat.i(194839);
-      kEz = new b((byte)0);
-      AppMethodBeat.o(194839);
+      AppMethodBeat.i(200994);
+      lfS = new b((byte)0);
+      AppMethodBeat.o(200994);
     }
   }
   
@@ -69,7 +69,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.b
  * JD-Core Version:    0.7.0.1
  */

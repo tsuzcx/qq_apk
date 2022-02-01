@@ -6,21 +6,21 @@ import com.tencent.mm.kernel.a;
 public final class b
   extends RuntimeException
 {
-  private final int cUB;
+  private final int cRY;
   
   public b()
   {
-    super(a.aet());
+    super(a.afJ());
     AppMethodBeat.i(132231);
-    this.cUB = 0;
+    this.cRY = 0;
     AppMethodBeat.o(132231);
   }
   
   public b(byte paramByte)
   {
-    super(a.aet());
+    super(a.afJ());
     AppMethodBeat.i(132232);
-    this.cUB = 1;
+    this.cRY = 1;
     AppMethodBeat.o(132232);
   }
 }

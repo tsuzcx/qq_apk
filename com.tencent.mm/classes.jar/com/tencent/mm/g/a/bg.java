@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bg
   extends b
 {
-  public a ddy;
+  public a daV;
   
   public bg()
   {
@@ -15,23 +15,21 @@ public final class bg
   
   private bg(byte paramByte)
   {
-    AppMethodBeat.i(149854);
-    this.ddy = new a();
-    this.ESR = false;
+    AppMethodBeat.i(114790);
+    this.daV = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149854);
+    AppMethodBeat.o(114790);
   }
   
   public static final class a
   {
-    public boolean ddA = false;
-    public boolean ddB = false;
-    public boolean ddz = false;
+    public boolean aKd = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.bg
  * JD-Core Version:    0.7.0.1
  */

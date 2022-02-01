@@ -14,13 +14,13 @@ import rx.j;
 public final class h<T>
   extends d<T>
 {
-  static final boolean KrO;
-  final T KrN;
+  static final boolean Mfx;
+  final T Mfw;
   
   static
   {
     AppMethodBeat.i(90227);
-    KrO = Boolean.valueOf(System.getProperty("rx.just.strong-mode", "false")).booleanValue();
+    Mfx = Boolean.valueOf(System.getProperty("rx.just.strong-mode", "false")).booleanValue();
     AppMethodBeat.o(90227);
   }
   
@@ -30,7 +30,7 @@ public final class h<T>
     if ((paramg instanceof rx.internal.c.b)) {}
     for (paramg = new e() {};; paramg = new e() {})
     {
-      paramg = a(new a(this.KrN, paramg));
+      paramg = a(new a(this.Mfw, paramg));
       AppMethodBeat.o(90226);
       return paramg;
     }
@@ -39,13 +39,13 @@ public final class h<T>
   static final class a<T>
     implements d.a<T>
   {
-    final e<a, j> KrV;
+    final e<a, j> MfE;
     final T value;
     
     a(T paramT, e<a, j> parame)
     {
       this.value = paramT;
-      this.KrV = parame;
+      this.MfE = parame;
     }
   }
   
@@ -53,22 +53,37 @@ public final class h<T>
     extends AtomicBoolean
     implements a, f
   {
-    final rx.i<? super T> Kpc;
-    final e<a, j> KrV;
+    final rx.i<? super T> McL;
+    final e<a, j> MfE;
     final T value;
     
     public b(rx.i<? super T> parami, T paramT, e<a, j> parame)
     {
-      this.Kpc = parami;
+      this.McL = parami;
       this.value = paramT;
-      this.KrV = parame;
+      this.MfE = parame;
+    }
+    
+    public final void CI(long paramLong)
+    {
+      AppMethodBeat.i(90223);
+      if (paramLong < 0L)
+      {
+        IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("n >= 0 required but it was ".concat(String.valueOf(paramLong)));
+        AppMethodBeat.o(90223);
+        throw localIllegalArgumentException;
+      }
+      if ((paramLong != 0L) && (compareAndSet(false, true))) {
+        this.McL.b((j)this.MfE.call(this));
+      }
+      AppMethodBeat.o(90223);
     }
     
     public final void call()
     {
       AppMethodBeat.i(90224);
-      rx.i locali = this.Kpc;
-      if (locali.KoC.KrX)
+      rx.i locali = this.McL;
+      if (locali.Mcl.MfG)
       {
         AppMethodBeat.o(90224);
         return;
@@ -76,8 +91,8 @@ public final class h<T>
       Object localObject = this.value;
       try
       {
-        locali.fV(localObject);
-        if (locali.KoC.KrX)
+        locali.gd(localObject);
+        if (locali.Mcl.MfG)
         {
           AppMethodBeat.o(90224);
           return;
@@ -89,7 +104,7 @@ public final class h<T>
         AppMethodBeat.o(90224);
         return;
       }
-      locali.fNs();
+      locali.ggi();
       AppMethodBeat.o(90224);
     }
     
@@ -100,26 +115,11 @@ public final class h<T>
       AppMethodBeat.o(90225);
       return str;
     }
-    
-    public final void xU(long paramLong)
-    {
-      AppMethodBeat.i(90223);
-      if (paramLong < 0L)
-      {
-        IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("n >= 0 required but it was ".concat(String.valueOf(paramLong)));
-        AppMethodBeat.o(90223);
-        throw localIllegalArgumentException;
-      }
-      if ((paramLong != 0L) && (compareAndSet(false, true))) {
-        this.Kpc.b((j)this.KrV.call(this));
-      }
-      AppMethodBeat.o(90223);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.util.h
  * JD-Core Version:    0.7.0.1
  */

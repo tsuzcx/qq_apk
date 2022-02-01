@@ -4,8 +4,8 @@ import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.d;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class j
 {
@@ -20,7 +20,7 @@ public final class j
         Activity localActivity = this.val$activity;
         int i = paramInt1;
         int j = paramInt2;
-        ad.i("MicroMsg.LauncherUI.HomeUtil", "clickFlowStat index:%d op:%d %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bt.eGN() });
+        ac.i("MicroMsg.LauncherUI.HomeUtil", "clickFlowStat index:%d op:%d %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bs.eWi() });
         if (j >= 0)
         {
           String str = "MainUI";
@@ -33,7 +33,7 @@ public final class j
           if (j == 3) {
             str = "MoreTabUI";
           }
-          d.c(i, str, localActivity.hashCode() / 16 * 16 + j);
+          d.d(i, str, localActivity.hashCode() / 16 * 16 + j);
         }
         AppMethodBeat.o(33283);
       }
@@ -43,7 +43,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.j
  * JD-Core Version:    0.7.0.1
  */

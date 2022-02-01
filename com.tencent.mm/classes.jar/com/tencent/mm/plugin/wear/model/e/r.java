@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class r
 {
-  private static AtomicInteger AEZ;
+  private static AtomicInteger BXt;
   
   static
   {
     AppMethodBeat.i(30112);
-    AEZ = new AtomicInteger();
+    BXt = new AtomicInteger();
     AppMethodBeat.o(30112);
   }
   
@@ -25,9 +25,9 @@ public final class r
     AppMethodBeat.i(30111);
     byte[] arrayOfByte = paramArrayOfByte;
     if (paramBoolean) {
-      arrayOfByte = a.egV().bX(paramArrayOfByte);
+      arrayOfByte = a.ewp().bW(paramArrayOfByte);
     }
-    int i = AEZ.incrementAndGet();
+    int i = BXt.incrementAndGet();
     paramArrayOfByte = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream(paramArrayOfByte);
     try
@@ -42,7 +42,7 @@ public final class r
       }
       for (;;)
       {
-        a.egV().bV(paramArrayOfByte.toByteArray());
+        a.ewp().bU(paramArrayOfByte.toByteArray());
         AppMethodBeat.o(30111);
         return;
         localDataOutputStream.writeInt(0);
@@ -51,14 +51,14 @@ public final class r
     }
     catch (IOException paramArrayOfByte)
     {
-      ad.printErrStackTrace("MicroMsg.Wear.WearPushServerLogic", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt) });
+      ac.printErrStackTrace("MicroMsg.Wear.WearPushServerLogic", paramArrayOfByte, "gen response data error connectType=%d, sessionId=%d, funId=%d", new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt) });
       AppMethodBeat.o(30111);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.r
  * JD-Core Version:    0.7.0.1
  */

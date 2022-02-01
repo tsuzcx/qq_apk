@@ -1,105 +1,109 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.game.g.b.5;
-import com.tencent.mm.plugin.appbrand.game.g.b.6;
-import com.tencent.mm.plugin.appbrand.game.g.b.7;
-import com.tencent.mm.plugin.appbrand.game.g.b.8;
-import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
-import org.json.JSONException;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
+import com.tencent.mm.plugin.appbrand.utils.n;
+import com.tencent.mm.plugin.appbrand.utils.n.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class d
-  extends b
+  extends a
 {
-  public static final int CTRL_INDEX = 687;
-  public static final String NAME = "operateMediaTrack";
+  public static final int CTRL_INDEX = 491;
+  public static final String NAME = "enableDeviceMotionChangeListening";
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(46760);
-    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: %s %s", new Object[] { "operateMediaTrack", paramJSONObject.toString() });
-    Object localObject1 = paramJSONObject.optString("operationType");
-    Object localObject2;
-    if (((String)localObject1).equalsIgnoreCase("get"))
+    AppMethodBeat.i(137631);
+    final l locall = new l("enableDeviceMotionChangeListening");
+    paramJSONObject = locall.a(paramc, paramJSONObject, new b(paramc)
     {
-      localObject1 = paramJSONObject.optString("source");
-      if (bt.isNullOrNil((String)localObject1))
+      public final void onDestroy()
       {
-        paramc.h(paramInt, e(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
-        AppMethodBeat.o(46760);
-        return;
+        AppMethodBeat.i(137629);
+        g.b(paramc.getAppId(), this);
+        locall.a(this);
+        AppMethodBeat.o(137629);
       }
-      try
-      {
-        paramJSONObject.put("filePath", q.B(paramc.getRuntime().DW().EP((String)localObject1).fhU()));
-        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.5((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
-    }
-    if (((String)localObject1).equalsIgnoreCase("create"))
+    }, "JsApi#SensorDeviceMotion" + paramc.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(3) })));
+    paramc.h(paramInt, k(paramJSONObject.errMsg, paramJSONObject.values));
+    AppMethodBeat.o(137631);
+  }
+  
+  public static final class a
+    extends ar
+  {
+    private static final int CTRL_INDEX = 490;
+    private static final String NAME = "onDeviceMotionChange";
+  }
+  
+  static abstract class b
+    extends l.a
+    implements SensorEventListener
+  {
+    d.a kKB = new d.a();
+    private n kKp;
+    private boolean kKt;
+    
+    b(final c paramc)
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.6((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46760);
-      return;
-    }
-    if (((String)localObject1).equalsIgnoreCase("update")) {
-      try
+      this.kKB.h(paramc);
+      this.kKp = new n(i.kKR.biJ(), new n.a()
       {
-        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.7((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
-        AppMethodBeat.o(46760);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46760);
-        return;
-      }
+        public final boolean k(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(137630);
+          paramAnonymousVarArgs = (float[])paramAnonymousVarArgs[0];
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("alpha", Float.valueOf(paramAnonymousVarArgs[0]));
+          localHashMap.put("beta", Float.valueOf(paramAnonymousVarArgs[1]));
+          localHashMap.put("gamma", Float.valueOf(paramAnonymousVarArgs[2]));
+          d.b.this.kKB.B(localHashMap);
+          boolean bool = k.a.kKY.a(d.b.this.kKB, paramc);
+          AppMethodBeat.o(137630);
+          return bool;
+        }
+      });
     }
-    if (((String)localObject1).equalsIgnoreCase("remove"))
+    
+    public final void biL()
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.8((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46760);
-      return;
+      this.kKt = true;
     }
-    ad.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: invalid operate type: %s", new Object[] { localObject1 });
-    paramc.h(paramInt, e(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
-    AppMethodBeat.o(46760);
+    
+    public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+    
+    public void onSensorChanged(SensorEvent paramSensorEvent)
+    {
+      if (this.kKt) {}
+      while (paramSensorEvent.sensor.getType() != 3) {
+        return;
+      }
+      paramSensorEvent = paramSensorEvent.values;
+      if ((paramSensorEvent == null) || (paramSensorEvent.length < 3))
+      {
+        ac.w("MicroMsg.JsApiEnableDeviceMotion", "deviceMotion sensor callback data invalidate.");
+        return;
+      }
+      ac.v("MicroMsg.JsApiEnableDeviceMotion", "try to do frequency limit action(%s).", new Object[] { Boolean.valueOf(this.kKp.m(new Object[] { paramSensorEvent })) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.d
  * JD-Core Version:    0.7.0.1
  */

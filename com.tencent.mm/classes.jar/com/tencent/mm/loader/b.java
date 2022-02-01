@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import com.tencent.mm.loader.f.d;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/IRequestBuilder;", "T", "R", "", "download", "", "fromCache", "()Ljava/lang/Object;", "into", "imageView", "Landroid/widget/ImageView;", "needDefault", "", "load", "setDefaultBackgroundDrawable", "_drawable", "Landroid/graphics/drawable/Drawable;", "setDefaultBackgroundResId", "_resId", "", "setDefaultDrawable", "setDefaultResId", "setImageDownloadListener", "imageDownloadListener", "Lcom/tencent/mm/loader/listener/IImageDownloadListener;", "setImageFileBrokenCallback", "imageFileBrokenCallback", "Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;", "setImageLoadListener", "imageLoadListener", "Lcom/tencent/mm/loader/listener/IImageLoadListener;", "setImageLoaderListener", "imageLoaderListener", "Lcom/tencent/mm/loader/listener/IImageLoaderListener;", "setImageLoaderReportListener", "imageloaderReportListener", "Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;", "setOptions", "options", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "withStruct", "V", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/IRequestBuilder;", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/IRequestBuilder;", "T", "R", "", "download", "", "fromCache", "()Ljava/lang/Object;", "into", "imageView", "Landroid/widget/ImageView;", "needDefault", "", "load", "setDefaultBackgroundDrawable", "_drawable", "Landroid/graphics/drawable/Drawable;", "setDefaultBackgroundResId", "_resId", "", "setDefaultDrawable", "setDefaultResId", "setImageDownloadListener", "imageDownloadListener", "Lcom/tencent/mm/loader/listener/IImageDownloadListener;", "setImageFileBrokenCallback", "imageFileBrokenCallback", "Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;", "setImageLoadListener", "imageLoadListener", "Lcom/tencent/mm/loader/listener/IImageLoadListener;", "setImageLoaderListener", "imageLoaderListener", "Lcom/tencent/mm/loader/listener/IImageLoaderListener;", "setImageLoaderReportListener", "imageloaderReportListener", "Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;", "setOptions", "options", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "withStruct", "V", "(Ljava/lang/Object;)Lcom/tencent/mm/loader/IRequestBuilder;", "libimageloader_release"})
 public abstract interface b<T, R>
 {
   public abstract b<T, R> a(d<T, R> paramd);
@@ -15,7 +15,7 @@ public abstract interface b<T, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.b
  * JD-Core Version:    0.7.0.1
  */

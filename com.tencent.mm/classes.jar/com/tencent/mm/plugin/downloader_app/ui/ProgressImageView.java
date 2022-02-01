@@ -10,23 +10,23 @@ import android.support.v4.content.b;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.ui.aj;
 
 public class ProgressImageView
   extends AppCompatImageView
 {
-  private int EI;
+  private int FG;
   private Paint mPaint;
-  private boolean ojv;
-  boolean ojw;
-  private int ojx;
+  private boolean oMV;
+  boolean oMW;
+  private int oMX;
   
   public ProgressImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(183821);
-    this.EI = -1;
+    this.FG = -1;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStyle(Paint.Style.STROKE);
@@ -34,12 +34,12 @@ public class ProgressImageView
     AppMethodBeat.o(183821);
   }
   
-  public final void bRq()
+  public final void bYF()
   {
     AppMethodBeat.i(183823);
-    this.ojv = true;
-    this.ojw = false;
-    if (ai.Eq())
+    this.oMV = true;
+    this.oMW = false;
+    if (aj.DT())
     {
       setImageResource(2131233689);
       AppMethodBeat.o(183823);
@@ -49,11 +49,11 @@ public class ProgressImageView
     AppMethodBeat.o(183823);
   }
   
-  public final void bRr()
+  public final void bYG()
   {
     AppMethodBeat.i(184793);
-    this.ojw = true;
-    this.ojv = false;
+    this.oMW = true;
+    this.oMV = false;
     setImageResource("download_wait_wifi");
     AppMethodBeat.o(184793);
   }
@@ -62,7 +62,7 @@ public class ProgressImageView
   {
     AppMethodBeat.i(183826);
     super.onDraw(paramCanvas);
-    if ((this.ojv) || (this.ojw) || (this.EI == -1) || (this.ojx == 0))
+    if ((this.oMV) || (this.oMW) || (this.FG == -1) || (this.oMX == 0))
     {
       AppMethodBeat.o(183826);
       return;
@@ -74,8 +74,8 @@ public class ProgressImageView
     f3 = getWidth() / 2 - f3 / 2.0F;
     this.mPaint.setColor(b.n(getContext(), 2131099736));
     paramCanvas.drawCircle(f1, f2, f3, this.mPaint);
-    this.mPaint.setColor(b.n(getContext(), this.ojx));
-    paramCanvas.drawArc(f1 - f3, f2 - f3, f1 + f3, f2 + f3, -90.0F, this.EI / 100.0F * 360.0F, false, this.mPaint);
+    this.mPaint.setColor(b.n(getContext(), this.oMX));
+    paramCanvas.drawArc(f1 - f3, f2 - f3, f1 + f3, f2 + f3, -90.0F, this.FG / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(183826);
   }
   
@@ -90,7 +90,7 @@ public class ProgressImageView
   {
     AppMethodBeat.i(183824);
     String str = paramString;
-    if (ai.Eq()) {
+    if (aj.DT()) {
       str = paramString + "_dark";
     }
     setImageResource(getResources().getIdentifier(str, "raw", getContext().getPackageName()));
@@ -100,16 +100,16 @@ public class ProgressImageView
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(183822);
-    this.EI = paramInt;
-    this.ojv = false;
-    this.ojw = false;
+    this.FG = paramInt;
+    this.oMV = false;
+    this.oMW = false;
     postInvalidate();
     AppMethodBeat.o(183822);
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.ojx = paramInt;
+    this.oMX = paramInt;
   }
 }
 

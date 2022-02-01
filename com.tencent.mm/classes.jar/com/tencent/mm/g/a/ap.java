@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ap
   extends b
 {
-  public a dcD;
+  public a cZT;
+  public b cZU;
   
   public ap()
   {
@@ -15,26 +16,38 @@ public final class ap
   
   private ap(byte paramByte)
   {
-    AppMethodBeat.i(91195);
-    this.dcD = new a();
-    this.ESR = false;
+    AppMethodBeat.i(155543);
+    this.cZT = new a();
+    this.cZU = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91195);
+    AppMethodBeat.o(155543);
   }
   
   public static final class a
   {
-    public String dcE;
-    public String dcF;
-    public int dcG;
-    public double dcH = 0.0D;
-    public int dcI;
-    public boolean isKinda = true;
+    public String cZV;
+    public int position = 0;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public String Title;
+    public int cZW = 0;
+    public int cZX = 0;
+    public int cZY = 0;
+    public int cZZ = 0;
+    public String daa;
+    public String desc;
+    public int position = 0;
+    public String url;
+    public boolean visible = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ap
  * JD-Core Version:    0.7.0.1
  */

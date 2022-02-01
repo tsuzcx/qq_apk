@@ -20,10 +20,10 @@ import com.tencent.mm.plugin.backup.backuppcmodel.b;
 import com.tencent.mm.plugin.backup.backuppcmodel.d;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.util.Set;
 
@@ -31,21 +31,21 @@ import java.util.Set;
 public class BackupPcUI
   extends MMWizardActivity
 {
-  private static boolean ifG = false;
-  private TextView mup;
-  private TextView muq;
-  private TextView mur;
-  private TextView mus;
-  private TextView mut;
-  private ImageView muu;
-  public b.c mwi;
+  private static boolean iFP = false;
+  private TextView gzg;
+  private TextView mWr;
+  private TextView mWs;
+  private TextView mWt;
+  private TextView mWu;
+  private ImageView mWv;
+  public b.c mYj;
   
   public BackupPcUI()
   {
     AppMethodBeat.i(21676);
-    this.mwi = new b.c()
+    this.mYj = new b.c()
     {
-      private void bxs()
+      private void bEo()
       {
         AppMethodBeat.i(21674);
         BackupPcUI.h(BackupPcUI.this).setText(2131756095);
@@ -61,7 +61,7 @@ public class BackupPcUI
         AppMethodBeat.o(21674);
       }
       
-      private void bxt()
+      private void bEp()
       {
         AppMethodBeat.i(21675);
         BackupPcUI.h(BackupPcUI.this).setText(2131756097);
@@ -77,7 +77,7 @@ public class BackupPcUI
         AppMethodBeat.o(21675);
       }
       
-      private void we(int paramAnonymousInt)
+      private void wV(int paramAnonymousInt)
       {
         AppMethodBeat.i(21673);
         if ((2 == paramAnonymousInt) || (4 == paramAnonymousInt))
@@ -90,11 +90,11 @@ public class BackupPcUI
         AppMethodBeat.o(21673);
       }
       
-      public final void bvR()
+      public final void bCN()
       {
         AppMethodBeat.i(21671);
-        int i = b.bxe().bxf().mvu;
-        ad.i("MicroMsg.BackupPcUI", "onBackupPcUpdateUICallback onBackupPcStart, commandMode[%d]", new Object[] { Integer.valueOf(i) });
+        int i = b.bEa().bEb().mXv;
+        ac.i("MicroMsg.BackupPcUI", "onBackupPcUpdateUICallback onBackupPcStart, commandMode[%d]", new Object[] { Integer.valueOf(i) });
         switch (i)
         {
         }
@@ -102,31 +102,31 @@ public class BackupPcUI
         {
           AppMethodBeat.o(21671);
           return;
-          b.bxe().bvT().mqj = 11;
-          vS(11);
+          b.bEa().bCP().mSk = 11;
+          wJ(11);
           AppMethodBeat.o(21671);
           return;
-          b.bxe().bvT().mqj = 21;
-          vS(21);
+          b.bEa().bCP().mSk = 21;
+          wJ(21);
           AppMethodBeat.o(21671);
           return;
-          b.bxe().bvT().mqj = 12;
-          vS(12);
+          b.bEa().bCP().mSk = 12;
+          wJ(12);
           AppMethodBeat.o(21671);
           return;
-          b.bxe().bvT().mqj = 22;
-          vS(22);
+          b.bEa().bCP().mSk = 22;
+          wJ(22);
         }
       }
       
-      public final void bvS() {}
+      public final void bCO() {}
       
-      public final void vS(int paramAnonymousInt)
+      public final void wJ(int paramAnonymousInt)
       {
         AppMethodBeat.i(21672);
-        int i = b.bxe().bxf().mvu;
-        ad.i("MicroMsg.BackupPcUI", "onUpdateUIProgress backupPcState:%d, commandMode:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
-        Object localObject = b.bxe().bvT();
+        int i = b.bEa().bEb().mXv;
+        ac.i("MicroMsg.BackupPcUI", "onUpdateUIProgress backupPcState:%d, commandMode:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+        Object localObject = b.bEa().bCP();
         switch (paramAnonymousInt)
         {
         }
@@ -142,7 +142,7 @@ public class BackupPcUI
           BackupPcUI.d(BackupPcUI.this).setVisibility(4);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          bxs();
+          bEo();
           AppMethodBeat.o(21672);
           return;
           BackupPcUI.b(BackupPcUI.this).setImageResource(2131231107);
@@ -154,15 +154,15 @@ public class BackupPcUI
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(0);
           BackupPcUI.f(BackupPcUI.this).setVisibility(0);
-          bxs();
+          bEo();
           BackupPcUI.e(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymous2View)
             {
               AppMethodBeat.i(21650);
-              az.arV();
-              boolean bool = ((Boolean)com.tencent.mm.model.c.afk().get(ae.a.Fnb, Boolean.FALSE)).booleanValue();
-              ad.i("MicroMsg.BackupPcUI", "onBackupPcUpdateUICallback onUpdateUIProgress startbackup all, hasMove:%s", new Object[] { Boolean.valueOf(bool) });
+              az.ayM();
+              boolean bool = ((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GKQ, Boolean.FALSE)).booleanValue();
+              ac.i("MicroMsg.BackupPcUI", "onBackupPcUpdateUICallback onUpdateUIProgress startbackup all, hasMove:%s", new Object[] { Boolean.valueOf(bool) });
               if (bool)
               {
                 com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756216, 0, 2131756270, 0, false, new DialogInterface.OnClickListener()
@@ -170,27 +170,27 @@ public class BackupPcUI
                   public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                   {
                     AppMethodBeat.i(21649);
-                    b.bxe().bxf().wc(2);
-                    b.bxe().bvT().mqj = 12;
-                    BackupPcUI.3.this.vS(12);
-                    b.bxe().bxi().bxd();
-                    b.bxe().bxi().hV(true);
-                    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 7L, 1L, false);
-                    com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(b.bxe().bxf().mvA) });
+                    b.bEa().bEb().wT(2);
+                    b.bEa().bCP().mSk = 12;
+                    BackupPcUI.3.this.wJ(12);
+                    b.bEa().bEe().bDZ();
+                    b.bEa().bEe().iv(true);
+                    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 7L, 1L, false);
+                    com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(b.bEa().bEb().mXB) });
                     AppMethodBeat.o(21649);
                   }
                 }, null, 2131099990);
                 AppMethodBeat.o(21650);
                 return;
               }
-              b.bxe().bxf().wc(2);
-              b.bxe().bvT().mqj = 12;
-              BackupPcUI.3.this.vS(12);
-              b.bxe().bxi().cancel();
-              b.bxe().bxi().bxd();
-              b.bxe().bxi().hV(true);
-              com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 7L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(b.bxe().bxf().mvA) });
+              b.bEa().bEb().wT(2);
+              b.bEa().bCP().mSk = 12;
+              BackupPcUI.3.this.wJ(12);
+              b.bEa().bEe().cancel();
+              b.bEa().bEe().bDZ();
+              b.bEa().bEe().iv(true);
+              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 7L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(b.bEa().bEb().mXB) });
               AppMethodBeat.o(21650);
             }
           });
@@ -200,10 +200,10 @@ public class BackupPcUI
             {
               AppMethodBeat.i(21661);
               paramAnonymous2View = new Intent(BackupPcUI.this, BackupPcChooseUI.class);
-              MMWizardActivity.V(BackupPcUI.this, paramAnonymous2View);
-              b.bxe().bxi().cancel();
-              b.bxe().bxi().bxd();
-              b.bxe().bxi().hV(false);
+              MMWizardActivity.aj(BackupPcUI.this, paramAnonymous2View);
+              b.bEa().bEe().cancel();
+              b.bEa().bEe().bDZ();
+              b.bEa().bEe().iv(false);
               AppMethodBeat.o(21661);
             }
           });
@@ -216,27 +216,27 @@ public class BackupPcUI
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          bxt();
+          bEp();
           AppMethodBeat.o(21672);
           return;
           BackupPcUI.b(BackupPcUI.this).setImageResource(2131231107);
           TextView localTextView = BackupPcUI.c(BackupPcUI.this);
           BackupPcUI localBackupPcUI = BackupPcUI.this;
-          paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mqk;
-          i = ((com.tencent.mm.plugin.backup.b.e)localObject).mql;
-          b.bxe().bxf();
-          localTextView.setText(localBackupPcUI.getString(2131756249, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bxk() }));
+          paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mSl;
+          i = ((com.tencent.mm.plugin.backup.b.e)localObject).mSm;
+          b.bEa().bEb();
+          localTextView.setText(localBackupPcUI.getString(2131756249, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bEg() }));
           BackupPcUI.d(BackupPcUI.this).setText(2131756221);
           BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131099992));
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          bxt();
+          bEp();
           AppMethodBeat.o(21672);
           return;
           BackupPcUI.b(BackupPcUI.this).setImageResource(2131231106);
           BackupPcUI.c(BackupPcUI.this).setText(2131756180);
-          BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756181, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mqk), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mql) }));
+          BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756181, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSl), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSm) }));
           BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131099992));
           BackupPcUI.e(BackupPcUI.this).setText(2131756096);
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
@@ -247,14 +247,14 @@ public class BackupPcUI
             public final void onClick(View paramAnonymous2View)
             {
               AppMethodBeat.i(21662);
-              b.bxe().bwD().stop();
-              b.bxe().bxg().cancel(true);
-              b.bxe().bvT().mqj = -100;
+              b.bEa().bDz().stop();
+              b.bEa().bEc().cancel(true);
+              b.bEa().bCP().mSk = -100;
               BackupPcUI.g(BackupPcUI.this);
               AppMethodBeat.o(21662);
             }
           });
-          bxs();
+          bEo();
           AppMethodBeat.o(21672);
           return;
           BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
@@ -268,15 +268,15 @@ public class BackupPcUI
             public final void onClick(View paramAnonymous2View)
             {
               AppMethodBeat.i(21663);
-              com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(23), Integer.valueOf(b.bxe().bxf().mvA) });
-              b.bxe().bxf().wc(4);
-              b.bxe().bvT().mqj = 22;
-              BackupPcUI.3.this.vS(22);
-              com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 16L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(23), Integer.valueOf(b.bEa().bEb().mXB) });
+              b.bEa().bEb().wT(4);
+              b.bEa().bCP().mSk = 22;
+              BackupPcUI.3.this.wJ(22);
+              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 16L, 1L, false);
               AppMethodBeat.o(21663);
             }
           });
-          bxs();
+          bEo();
           AppMethodBeat.o(21672);
           return;
           BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
@@ -286,30 +286,30 @@ public class BackupPcUI
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          bxt();
+          bEp();
           AppMethodBeat.o(21672);
           return;
           BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
           localTextView = BackupPcUI.c(BackupPcUI.this);
           localBackupPcUI = BackupPcUI.this;
-          paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mqk;
-          i = ((com.tencent.mm.plugin.backup.b.e)localObject).mql;
-          b.bxe().bxf();
-          localTextView.setText(localBackupPcUI.getString(2131756232, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bxk() }));
+          paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mSl;
+          i = ((com.tencent.mm.plugin.backup.b.e)localObject).mSm;
+          b.bEa().bEb();
+          localTextView.setText(localBackupPcUI.getString(2131756232, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bEg() }));
           BackupPcUI.d(BackupPcUI.this).setText(2131756221);
           BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131099992));
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          bxt();
+          bEp();
           AppMethodBeat.o(21672);
           return;
-          if (bt.iM(BackupPcUI.this))
+          if (bs.iX(BackupPcUI.this))
           {
-            b.bxe().bvT().mqj = 24;
+            b.bEa().bCP().mSk = 24;
             paramAnonymousInt = 24;
             break;
-            if (BackupPcUI.bxr())
+            if (BackupPcUI.bEn())
             {
               BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
               BackupPcUI.c(BackupPcUI.this).setText(2131756233);
@@ -326,22 +326,22 @@ public class BackupPcUI
                 public final void onClick(View paramAnonymous2View)
                 {
                   AppMethodBeat.i(21664);
-                  ad.i("MicroMsg.BackupPcUI", "onUpdateUIProgress user click start merge.");
-                  b.bxe().bxh();
-                  if (!d.bwH())
+                  ac.i("MicroMsg.BackupPcUI", "onUpdateUIProgress user click start merge.");
+                  b.bEa().bEd();
+                  if (!d.bDD())
                   {
-                    b.bxe().bxh();
-                    if (!d.bwH())
+                    b.bEa().bEd();
+                    if (!d.bDD())
                     {
-                      b.bxe().bvT().mqj = -22;
-                      BackupPcUI.3.this.vS(-22);
-                      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 64L, 1L, false);
+                      b.bEa().bCP().mSk = -22;
+                      BackupPcUI.3.this.wJ(-22);
+                      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 64L, 1L, false);
                       AppMethodBeat.o(21664);
                       return;
                     }
                   }
-                  com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(27), Integer.valueOf(b.bxe().bxf().mvA) });
-                  b.bxe().bxh().bxo();
+                  com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(27), Integer.valueOf(b.bEa().bEb().mXB) });
+                  b.bEa().bEd().bEk();
                   AppMethodBeat.o(21664);
                 }
               });
@@ -355,10 +355,10 @@ public class BackupPcUI
                     public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                     {
                       AppMethodBeat.i(21665);
-                      ad.i("MicroMsg.BackupPcUI", "user click close. stop recover merge.");
-                      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 26L, 1L, false);
-                      b.bxe().bwD().stop();
-                      b.bxe().bxh().b(true, true, -100);
+                      ac.i("MicroMsg.BackupPcUI", "user click close. stop recover merge.");
+                      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 26L, 1L, false);
+                      b.bEa().bDz().stop();
+                      b.bEa().bEd().b(true, true, -100);
                       AppMethodBeat.o(21665);
                     }
                   }, null, 2131099991);
@@ -370,7 +370,7 @@ public class BackupPcUI
                 public final void onClick(View paramAnonymous2View)
                 {
                   AppMethodBeat.i(21667);
-                  b.bxe().bvT().mqj = 25;
+                  b.bEa().bCP().mSk = 25;
                   BackupPcUI.i(BackupPcUI.this);
                   AppMethodBeat.o(21667);
                 }
@@ -378,29 +378,29 @@ public class BackupPcUI
               AppMethodBeat.o(21672);
               return;
             }
-            if (bt.iM(BackupPcUI.this))
+            if (bs.iX(BackupPcUI.this))
             {
-              b.bxe().bxh();
-              if (!d.bwH())
+              b.bEa().bEd();
+              if (!d.bDD())
               {
-                b.bxe().bvT().mqj = -22;
-                vS(-22);
-                com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 64L, 1L, false);
+                b.bEa().bCP().mSk = -22;
+                wJ(-22);
+                com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 64L, 1L, false);
                 AppMethodBeat.o(21672);
                 return;
               }
-              b.bxe().bxh().bxo();
+              b.bEa().bEd().bEk();
               AppMethodBeat.o(21672);
               return;
               BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
-              BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756227, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mqm) }));
+              BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756227, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSn) }));
               BackupPcUI.d(BackupPcUI.this).setText(2131756226);
               BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131099992));
               BackupPcUI.h(BackupPcUI.this).setText(2131756231);
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
               BackupPcUI.b(BackupPcUI.this).setImageResource(2131689735);
@@ -410,12 +410,12 @@ public class BackupPcUI
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
               BackupPcUI.b(BackupPcUI.this).setImageResource(2131231109);
               BackupPcUI.c(BackupPcUI.this).setText(2131756224);
-              BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756225, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mqk), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mql) }));
+              BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756225, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSl), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSm) }));
               BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131099992));
               BackupPcUI.e(BackupPcUI.this).setText(2131756096);
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
@@ -426,13 +426,13 @@ public class BackupPcUI
                 public final void onClick(View paramAnonymous2View)
                 {
                   AppMethodBeat.i(21668);
-                  b.bxe().bwD().stop();
-                  b.bxe().bvT().mqj = -100;
+                  b.bEa().bDz().stop();
+                  b.bEa().bCP().mSk = -100;
                   BackupPcUI.j(BackupPcUI.this);
                   AppMethodBeat.o(21668);
                 }
               });
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
               switch (i)
@@ -445,24 +445,24 @@ public class BackupPcUI
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-                bxt();
+                bEp();
                 AppMethodBeat.o(21672);
                 return;
                 BackupPcUI.b(BackupPcUI.this).setImageResource(2131231107);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mqk;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mql;
-                b.bxe().bxf();
-                localTextView.setText(localBackupPcUI.getString(2131756249, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bxk() }));
+                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mSl;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mSm;
+                b.bEa().bEb();
+                localTextView.setText(localBackupPcUI.getString(2131756249, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bEg() }));
                 continue;
                 BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mqk;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mql;
-                b.bxe().bxf();
-                localTextView.setText(localBackupPcUI.getString(2131756232, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bxk() }));
+                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mSl;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mSm;
+                b.bEa().bEb();
+                localTextView.setText(localBackupPcUI.getString(2131756232, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bEg() }));
               }
               switch (i)
               {
@@ -474,16 +474,16 @@ public class BackupPcUI
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(0);
-                bxt();
+                bEp();
                 AppMethodBeat.o(21672);
                 return;
                 BackupPcUI.b(BackupPcUI.this).setImageResource(2131231107);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mqk;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mql;
-                b.bxe().bxf();
-                localTextView.setText(localBackupPcUI.getString(2131756249, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bxk() }));
+                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mSl;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mSm;
+                b.bEa().bEb();
+                localTextView.setText(localBackupPcUI.getString(2131756249, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bEg() }));
                 BackupPcUI.f(BackupPcUI.this).setText(2131756245);
                 BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
                 {
@@ -495,12 +495,12 @@ public class BackupPcUI
                       public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(21669);
-                        ad.i("MicroMsg.BackupPcUI", "user click close. stop backup.");
-                        b.bxe().bwD().stop();
-                        b.bxe().bxg().cancel(true);
-                        b.bxe().bvT().mqj = -100;
-                        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 52L, 1L, false);
-                        b.bxe().bxg().wd(4);
+                        ac.i("MicroMsg.BackupPcUI", "user click close. stop backup.");
+                        b.bEa().bDz().stop();
+                        b.bEa().bEc().cancel(true);
+                        b.bEa().bCP().mSk = -100;
+                        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 52L, 1L, false);
+                        b.bEa().bEc().wU(4);
                         BackupPcUI.k(BackupPcUI.this);
                         AppMethodBeat.o(21669);
                       }
@@ -512,10 +512,10 @@ public class BackupPcUI
                 BackupPcUI.b(BackupPcUI.this).setImageResource(2131231110);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mqk;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mql;
-                b.bxe().bxf();
-                localTextView.setText(localBackupPcUI.getString(2131756232, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bxk() }));
+                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).mSl;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).mSm;
+                b.bEa().bEb();
+                localTextView.setText(localBackupPcUI.getString(2131756232, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.bEg() }));
                 BackupPcUI.f(BackupPcUI.this).setText(2131756247);
                 BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
                 {
@@ -527,11 +527,11 @@ public class BackupPcUI
                       public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(21651);
-                        ad.i("MicroMsg.BackupPcUI", "user click close. stop recover.");
-                        b.bxe().bwD().stop();
-                        b.bxe().bxh().b(true, true, -100);
-                        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 52L, 1L, false);
-                        b.bxe().bxh().wd(4);
+                        ac.i("MicroMsg.BackupPcUI", "user click close. stop recover.");
+                        b.bEa().bDz().stop();
+                        b.bEa().bEd().b(true, true, -100);
+                        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 52L, 1L, false);
+                        b.bEa().bEd().wU(4);
                         AppMethodBeat.o(21651);
                       }
                     }, null, 2131099991);
@@ -542,7 +542,7 @@ public class BackupPcUI
               if ((1 == i) || (3 == i))
               {
                 BackupPcUI.b(BackupPcUI.this).setImageResource(2131231105);
-                BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756249, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mqk), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mql), "0M" }));
+                BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756249, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSl), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSm), "0M" }));
                 BackupPcUI.d(BackupPcUI.this).setText(2131756204);
                 BackupPcUI.f(BackupPcUI.this).setText(2131756245);
                 BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
@@ -555,12 +555,12 @@ public class BackupPcUI
                       public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(21653);
-                        ad.i("MicroMsg.BackupPcUI", "user click close. stop backup.");
-                        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 10L, 1L, false);
-                        b.bxe().bxg().wd(4);
-                        b.bxe().bwD().stop();
-                        b.bxe().bxg().cancel(true);
-                        b.bxe().bvT().mqj = -100;
+                        ac.i("MicroMsg.BackupPcUI", "user click close. stop backup.");
+                        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 10L, 1L, false);
+                        b.bEa().bEc().wU(4);
+                        b.bEa().bDz().stop();
+                        b.bEa().bEc().cancel(true);
+                        b.bEa().bCP().mSk = -100;
                         BackupPcUI.l(BackupPcUI.this);
                         AppMethodBeat.o(21653);
                       }
@@ -575,13 +575,13 @@ public class BackupPcUI
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(0);
-                bxt();
+                bEp();
                 AppMethodBeat.o(21672);
                 return;
                 if ((2 == i) || (4 == i))
                 {
                   BackupPcUI.b(BackupPcUI.this).setImageResource(2131231108);
-                  BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756232, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mqk), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mql), "0M" }));
+                  BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756232, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSl), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).mSm), "0M" }));
                   BackupPcUI.d(BackupPcUI.this).setText(2131756212);
                   BackupPcUI.f(BackupPcUI.this).setText(2131756247);
                   BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
@@ -594,11 +594,11 @@ public class BackupPcUI
                         public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                         {
                           AppMethodBeat.i(21655);
-                          ad.i("MicroMsg.BackupPcUI", "user click close. stop recover.");
-                          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 18L, 1L, false);
-                          b.bxe().bxh().wd(4);
-                          b.bxe().bwD().stop();
-                          b.bxe().bxh().b(true, true, -100);
+                          ac.i("MicroMsg.BackupPcUI", "user click close. stop recover.");
+                          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 18L, 1L, false);
+                          b.bEa().bEd().wU(4);
+                          b.bEa().bDz().stop();
+                          b.bEa().bEd().b(true, true, -100);
                           AppMethodBeat.o(21655);
                         }
                       }, null, 2131099991);
@@ -607,11 +607,11 @@ public class BackupPcUI
                   });
                 }
               }
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756209);
-              localObject = com.tencent.mm.plugin.backup.b.g.dZ(BackupPcUI.this);
+              localObject = com.tencent.mm.plugin.backup.b.g.eh(BackupPcUI.this);
               if ((localObject == null) || (((String)localObject).equals(""))) {
-                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756210, new Object[] { b.bxe().bxf().mvv, "移动网络" }));
+                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756210, new Object[] { b.bEa().bEb().mXw, "移动网络" }));
               }
               for (;;)
               {
@@ -629,12 +629,12 @@ public class BackupPcUI
                     AppMethodBeat.o(21657);
                   }
                 });
-                bxs();
+                bEo();
                 AppMethodBeat.o(21672);
                 return;
-                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756210, new Object[] { b.bxe().bxf().mvv, localObject }));
+                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756210, new Object[] { b.bEa().bEb().mXw, localObject }));
               }
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756198);
               BackupPcUI.f(BackupPcUI.this).setText(2131756214);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
@@ -649,49 +649,49 @@ public class BackupPcUI
                   AppMethodBeat.o(21658);
                 }
               });
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756199);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756211);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756208);
-              b.bxe().bwD().stop();
+              b.bEa().bDz().stop();
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756203);
-              b.bxe().bwD().stop();
+              b.bEa().bDz().stop();
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
               AppMethodBeat.o(21672);
               return;
-              we(i);
+              wV(i);
               BackupPcUI.c(BackupPcUI.this).setText(2131756200);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              bxs();
+              bEo();
             }
           }
         }
@@ -700,12 +700,12 @@ public class BackupPcUI
     AppMethodBeat.o(21676);
   }
   
-  private void bwX()
+  private void bDT()
   {
     AppMethodBeat.i(21684);
-    int i = b.bxe().bvT().mqj;
-    int j = b.bxe().bxf().mvu;
-    ad.i("MicroMsg.BackupPcUI", "closeImpl, backupPcState:%d, commandMode:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    int i = b.bEa().bCP().mSk;
+    int j = b.bEa().bEb().mXv;
+    ac.i("MicroMsg.BackupPcUI", "closeImpl, backupPcState:%d, commandMode:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     switch (i)
     {
     default: 
@@ -724,33 +724,33 @@ public class BackupPcUI
     case 24: 
       for (;;)
       {
-        Xo(1);
+        ZA(1);
         AppMethodBeat.o(21684);
         return;
-        ad.i("MicroMsg.BackupPcUI", "closeImpl backup finish, user click close.");
-        bxq();
+        ac.i("MicroMsg.BackupPcUI", "closeImpl backup finish, user click close.");
+        bEm();
         AppMethodBeat.o(21684);
         return;
         if ((1 == j) || (3 == j))
         {
-          b.bxe().bxg().cancel(false);
-          b.bxe().bvT().mqj = -100;
+          b.bEa().bEc().cancel(false);
+          b.bEa().bCP().mSk = -100;
         }
         else
         {
           if ((2 == j) || (4 == j))
           {
-            b.bxe().bxh().b(false, false, -100);
+            b.bEa().bEd().b(false, false, -100);
             AppMethodBeat.o(21684);
             return;
           }
-          b.bxe().bvT().mqj = -100;
+          b.bEa().bCP().mSk = -100;
           continue;
-          ad.i("MicroMsg.BackupPcUI", "closeImpl recover finish, user click close.");
-          bxq();
+          ac.i("MicroMsg.BackupPcUI", "closeImpl recover finish, user click close.");
+          bEm();
           AppMethodBeat.o(21684);
           return;
-          b.bxe().bvT().mqj = 25;
+          b.bEa().bCP().mSk = 25;
         }
       }
     }
@@ -759,35 +759,35 @@ public class BackupPcUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(21648);
-        ad.i("MicroMsg.BackupPcUI", "closeImpl merging user click close. stop recover merge.");
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 26L, 1L, false);
-        b.bxe().bwD().stop();
-        b.bxe().bxh().b(true, true, -100);
+        ac.i("MicroMsg.BackupPcUI", "closeImpl merging user click close. stop recover merge.");
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 26L, 1L, false);
+        b.bEa().bDz().stop();
+        b.bEa().bEd().b(true, true, -100);
         AppMethodBeat.o(21648);
       }
     }, null, 2131099991);
     AppMethodBeat.o(21684);
   }
   
-  private void bxq()
+  private void bEm()
   {
     AppMethodBeat.i(21685);
-    ad.i("MicroMsg.BackupPcUI", "exitBackupPc.");
-    if ((1 == b.bxe().bxf().mvu) || (3 == b.bxe().bxf().mvu))
+    ac.i("MicroMsg.BackupPcUI", "exitBackupPc.");
+    if ((1 == b.bEa().bEb().mXv) || (3 == b.bEa().bEb().mXv))
     {
-      b.bxe().bxi().cancel();
-      b.bxe().bxi().bxd();
-      b.bxe().bxg().cancel(true);
-      b.bxe().bwD().stop();
-      b.bxe().bvT().mqj = -100;
-      Xo(1);
+      b.bEa().bEe().cancel();
+      b.bEa().bEe().bDZ();
+      b.bEa().bEc().cancel(true);
+      b.bEa().bDz().stop();
+      b.bEa().bCP().mSk = -100;
+      ZA(1);
       AppMethodBeat.o(21685);
       return;
     }
-    if ((2 == b.bxe().bxf().mvu) || (4 == b.bxe().bxf().mvu))
+    if ((2 == b.bEa().bEb().mXv) || (4 == b.bEa().bEb().mXv))
     {
-      b.bxe().bxh().b(true, true, -100);
-      b.bxe().bwD().stop();
+      b.bEa().bEd().b(true, true, -100);
+      b.bEa().bDz().stop();
     }
     AppMethodBeat.o(21685);
   }
@@ -800,12 +800,12 @@ public class BackupPcUI
   public void initView()
   {
     AppMethodBeat.i(21681);
-    this.mut = ((TextView)findViewById(2131297053));
-    this.muu = ((ImageView)findViewById(2131297054));
-    this.mur = ((TextView)findViewById(2131297063));
-    this.mus = ((TextView)findViewById(2131297062));
-    this.mup = ((TextView)findViewById(2131297034));
-    this.muq = ((TextView)findViewById(2131297033));
+    this.gzg = ((TextView)findViewById(2131297053));
+    this.mWv = ((ImageView)findViewById(2131297054));
+    this.mWt = ((TextView)findViewById(2131297063));
+    this.mWu = ((TextView)findViewById(2131297062));
+    this.mWr = ((TextView)findViewById(2131297034));
+    this.mWs = ((TextView)findViewById(2131297033));
     AppMethodBeat.o(21681);
   }
   
@@ -818,31 +818,31 @@ public class BackupPcUI
       AppMethodBeat.o(21677);
       return;
     }
-    ad.i("MicroMsg.BackupPcUI", "onCreate.");
+    ac.i("MicroMsg.BackupPcUI", "onCreate.");
     getSupportActionBar().hide();
-    com.tencent.mm.plugin.backup.a.hYt.Lo();
+    com.tencent.mm.plugin.backup.a.iyx.Lm();
     initView();
-    if (b.bxe().bxf().mvB)
+    if (b.bEa().bEb().mXC)
     {
-      b.bxe().bxf().mvB = false;
-      final int i = com.tencent.mm.plugin.backup.b.g.bwj();
+      b.bEa().bEb().mXC = false;
+      final int i = com.tencent.mm.plugin.backup.b.g.bDf();
       if (i < 50)
       {
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 4L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.vKh.f(13736, new Object[] { Integer.valueOf(4), b.bxe().bxf().mvv, com.tencent.mm.plugin.backup.b.g.dZ(this), Integer.valueOf(0), Integer.valueOf(b.bxe().bxf().mvA) });
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.f(13736, new Object[] { Integer.valueOf(4), b.bEa().bEb().mXw, com.tencent.mm.plugin.backup.b.g.eh(this), Integer.valueOf(0), Integer.valueOf(b.bEa().bEb().mXB) });
         com.tencent.mm.ui.base.h.a(this, 2131756202, 2131756201, 2131756270, 0, false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(21647);
-            ad.i("MicroMsg.BackupPcUI", "low battery, user click sure. battery:%d", new Object[] { Integer.valueOf(i) });
+            ac.i("MicroMsg.BackupPcUI", "low battery, user click sure. battery:%d", new Object[] { Integer.valueOf(i) });
             AppMethodBeat.o(21647);
           }
         }, null, 2131099990);
       }
     }
-    if (((k)com.tencent.mm.kernel.g.ab(k.class)).aqo().cON()) {
-      bi.ash();
+    if (((k)com.tencent.mm.kernel.g.ab(k.class)).axd().dcw()) {
+      bi.ayY();
     }
     AppMethodBeat.o(21677);
   }
@@ -850,7 +850,7 @@ public class BackupPcUI
   public void onDestroy()
   {
     AppMethodBeat.i(21682);
-    ad.i("MicroMsg.BackupPcUI", "onDestroy. stack:%s", new Object[] { bt.eGN() });
+    ac.i("MicroMsg.BackupPcUI", "onDestroy. stack:%s", new Object[] { bs.eWi() });
     super.onDestroy();
     AppMethodBeat.o(21682);
   }
@@ -860,7 +860,7 @@ public class BackupPcUI
     AppMethodBeat.i(21683);
     if (paramInt == 4)
     {
-      bwX();
+      bDT();
       AppMethodBeat.o(21683);
       return true;
     }
@@ -873,18 +873,18 @@ public class BackupPcUI
   {
     AppMethodBeat.i(21679);
     super.onPause();
-    ad.i("MicroMsg.BackupPcUI", "onPause.");
-    Object localObject1 = b.bxe().bxg();
-    b.c localc = this.mwi;
-    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mvG)
+    ac.i("MicroMsg.BackupPcUI", "onPause.");
+    Object localObject1 = b.bEa().bEc();
+    b.c localc = this.mYj;
+    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mXH)
     {
-      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mvG.remove(localc);
-      localObject1 = b.bxe().bxh();
-      localc = this.mwi;
+      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mXH.remove(localc);
+      localObject1 = b.bEa().bEd();
+      localc = this.mYj;
     }
-    synchronized (((d)localObject1).mvG)
+    synchronized (((d)localObject1).mXH)
     {
-      ((d)localObject1).mvG.remove(localc);
+      ((d)localObject1).mXH.remove(localc);
       AppMethodBeat.o(21679);
       return;
       localObject2 = finally;
@@ -897,20 +897,20 @@ public class BackupPcUI
   {
     AppMethodBeat.i(21680);
     super.onResume();
-    ad.i("MicroMsg.BackupPcUI", "onResume.");
-    Object localObject1 = b.bxe().bxg();
-    b.c localc = this.mwi;
-    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mvG)
+    ac.i("MicroMsg.BackupPcUI", "onResume.");
+    Object localObject1 = b.bEa().bEc();
+    b.c localc = this.mYj;
+    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mXH)
     {
-      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mvG.add(localc);
-      localObject1 = b.bxe().bxh();
-      localc = this.mwi;
+      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).mXH.add(localc);
+      localObject1 = b.bEa().bEd();
+      localc = this.mYj;
     }
-    synchronized (((d)localObject1).mvG)
+    synchronized (((d)localObject1).mXH)
     {
-      ((d)localObject1).mvG.add(localc);
-      int i = b.bxe().bvT().mqj;
-      this.mwi.vS(i);
+      ((d)localObject1).mXH.add(localc);
+      int i = b.bEa().bCP().mSk;
+      this.mYj.wJ(i);
       AppMethodBeat.o(21680);
       return;
       localObject2 = finally;
@@ -923,8 +923,8 @@ public class BackupPcUI
   {
     AppMethodBeat.i(21678);
     super.onStart();
-    ad.i("MicroMsg.BackupPcUI", "onStart.");
-    ifG = getIntent().getBooleanExtra("isRecoverTransferFinishFromBanner", false);
+    ac.i("MicroMsg.BackupPcUI", "onStart.");
+    iFP = getIntent().getBooleanExtra("isRecoverTransferFinishFromBanner", false);
     AppMethodBeat.o(21678);
   }
   

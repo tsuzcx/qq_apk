@@ -6,7 +6,7 @@ import java.util.Set;
 public abstract interface m<E>
   extends Collection<E>
 {
-  public abstract Set<E> zU();
+  public abstract Set<E> zH();
 }
 
 

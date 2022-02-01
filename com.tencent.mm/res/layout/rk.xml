@@ -44,7 +44,12 @@
                 <Button android:enabled="false" android:id="@id/h2t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c5" android:text="@string/ayg" android:layout_alignParentRight="true" style="@style/o8" />
             </RelativeLayout>
             <RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/elz" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci">
-                <Button android:gravity="center" android:layout_gravity="center" android:id="@id/ely" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:layout_marginBottom="@dimen/c_" android:text="@string/ebm" style="@style/od" />
+                <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/hs6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c8" android:layout_marginRight="@dimen/c8">
+                    <TextView android:textSize="@dimen/jo" android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqw" />
+                    <TextView android:textSize="@dimen/jo" android:textStyle="bold" android:textColor="@color/y4" android:id="@id/hs5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:layout_marginRight="@dimen/bq" />
+                    <TextView android:textSize="@dimen/jo" android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqx" />
+                </LinearLayout>
+                <Button android:gravity="center" android:id="@id/ely" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c8" android:text="@string/ebm" android:layout_below="@id/hs6" android:layout_centerHorizontal="true" style="@style/od" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

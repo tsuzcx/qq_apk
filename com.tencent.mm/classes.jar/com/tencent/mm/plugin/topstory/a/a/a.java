@@ -15,50 +15,50 @@ public final class a
     AppMethodBeat.i(91000);
     ArrayList localArrayList;
     IDKey localIDKey;
-    if (paramb.yLK > 0L)
+    if (paramb.zZD > 0L)
     {
       localArrayList = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(0);
-      localIDKey.SetValue(paramb.yLK);
+      localIDKey.SetValue(paramb.zZD);
       localArrayList.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(1);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      e.vIY.b(localArrayList, false);
+      e.wTc.b(localArrayList, false);
     }
-    if (paramb.yLB > 0L)
+    if (paramb.zZu > 0L)
     {
       localArrayList = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(2);
-      localIDKey.SetValue(paramb.yLB);
+      localIDKey.SetValue(paramb.zZu);
       localArrayList.add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(3);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      e.vIY.b(localArrayList, false);
+      e.wTc.b(localArrayList, false);
     }
-    if (paramb.yLL > 0L)
+    if (paramb.zZE > 0L)
     {
       localArrayList = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(ID);
       localIDKey.SetKey(4);
-      localIDKey.SetValue(paramb.yLL);
+      localIDKey.SetValue(paramb.zZE);
       localArrayList.add(localIDKey);
       paramb = new IDKey();
       paramb.SetID(ID);
       paramb.SetKey(5);
       paramb.SetValue(1L);
       localArrayList.add(paramb);
-      e.vIY.b(localArrayList, false);
+      e.wTc.b(localArrayList, false);
     }
     AppMethodBeat.o(91000);
   }

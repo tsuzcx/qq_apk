@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.monitor;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.report.service.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class b$1
   implements g
@@ -19,14 +19,14 @@ final class b$1
     if (paramn == null) {}
     for (int i = -1;; i = paramn.getType())
     {
-      ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv onIDKeyCallback onSceneEnd[%d][%d, %d, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv onIDKeyCallback onSceneEnd[%d][%d, %d, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        h.Iye.aP(new Runnable()
+        h.JZN.aS(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(51499);
-            e.dkL();
+            e.dyO();
             AppMethodBeat.o(51499);
           }
         });

@@ -18,7 +18,7 @@ import d.l.d;
 import d.l.e;
 import d.o;
 
-@l(fvt={1, 1, 15}, fvu={""}, fvv={"reflect", "Lkotlin/reflect/KFunction;", "R", "Lkotlin/Function;", "kotlin-reflection"})
+@l(fNY={1, 1, 15}, fNZ={""}, fOa={"reflect", "Lkotlin/reflect/KFunction;", "R", "Lkotlin/Function;", "kotlin-reflection"})
 public final class b
 {
   public static final <R> e<R> a(d.c<? extends R> paramc)
@@ -31,7 +31,7 @@ public final class b
       AppMethodBeat.o(56271);
       return null;
     }
-    Object localObject1 = ((l)localObject2).fvu();
+    Object localObject1 = ((l)localObject2).fNZ();
     int i;
     if (localObject1.length == 0)
     {
@@ -53,34 +53,34 @@ public final class b
       localObject1 = null;
     }
     label77:
-    Object localObject3 = d.l.b.a.b.e.c.a.i.g((String[])localObject1, ((l)localObject2).fvv());
+    Object localObject3 = d.l.b.a.b.e.c.a.i.g((String[])localObject1, ((l)localObject2).fOa());
     localObject1 = (g)((o)localObject3).first;
     localObject3 = (a.h)((o)localObject3).second;
-    Object localObject4 = ((l)localObject2).fvt();
-    if ((((l)localObject2).fvw() & 0x8) != 0) {}
+    Object localObject4 = ((l)localObject2).fNY();
+    if ((((l)localObject2).fOb() & 0x8) != 0) {}
     for (boolean bool = true;; bool = false)
     {
       localObject2 = new f((int[])localObject4, bool);
       paramc = paramc.getClass();
       localObject4 = (q)localObject3;
       localObject1 = (d.l.b.a.b.e.b.c)localObject1;
-      localObject3 = ((a.h)localObject3).JGJ;
+      localObject3 = ((a.h)localObject3).Luc;
       k.g(localObject3, "proto.typeTable");
-      paramc = (am)af.a(paramc, (q)localObject4, (d.l.b.a.b.e.b.c)localObject1, new h((a.s)localObject3), (d.l.b.a.b.e.b.a)localObject2, (m)a.Jih);
+      paramc = (am)af.a(paramc, (q)localObject4, (d.l.b.a.b.e.b.c)localObject1, new h((a.s)localObject3), (d.l.b.a.b.e.b.a)localObject2, (m)a.KVB);
       if (paramc != null) {
         break;
       }
       AppMethodBeat.o(56271);
       return null;
     }
-    paramc = (e)new d.l.b.a.j((d.l.b.a.i)d.l.b.a.a.Jii, (t)paramc);
+    paramc = (e)new d.l.b.a.j((d.l.b.a.i)d.l.b.a.a.KVC, (t)paramc);
     AppMethodBeat.o(56271);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.b
  * JD-Core Version:    0.7.0.1
  */

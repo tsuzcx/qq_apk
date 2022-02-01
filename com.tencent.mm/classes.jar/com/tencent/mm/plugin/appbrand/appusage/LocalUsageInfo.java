@@ -4,20 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class LocalUsageInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocalUsageInfo> CREATOR;
-  public final int aAS;
+  public final int aBM;
   public final String appId;
-  public final long cfT;
-  public final String cfp;
-  public final int gXn;
-  public final String iVP;
-  public final boolean iVQ;
-  public final long iVR;
+  public final long ccQ;
+  public final String ccm;
+  public final int hxM;
+  public final String jwf;
+  public final boolean jwg;
+  public final long jwh;
   public final String nickname;
   public final String username;
   
@@ -33,17 +33,17 @@ public class LocalUsageInfo
     AppMethodBeat.i(153200);
     this.username = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.gXn = paramParcel.readInt();
-    this.aAS = paramParcel.readInt();
+    this.hxM = paramParcel.readInt();
+    this.aBM = paramParcel.readInt();
     this.nickname = paramParcel.readString();
-    this.cfp = paramParcel.readString();
-    this.iVP = paramParcel.readString();
+    this.ccm = paramParcel.readString();
+    this.jwf = paramParcel.readString();
     if (paramParcel.readByte() > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.iVQ = bool;
-      this.cfT = paramParcel.readLong();
-      this.iVR = paramParcel.readLong();
+      this.jwg = bool;
+      this.ccQ = paramParcel.readLong();
+      this.jwh = paramParcel.readLong();
       AppMethodBeat.o(153200);
       return;
     }
@@ -53,14 +53,14 @@ public class LocalUsageInfo
   {
     this.username = paramString1;
     this.appId = paramString2;
-    this.gXn = paramInt1;
-    this.aAS = paramInt2;
+    this.hxM = paramInt1;
+    this.aBM = paramInt2;
     this.nickname = paramString3;
-    this.cfp = paramString4;
-    this.iVP = paramString5;
-    this.iVQ = paramBoolean;
-    this.cfT = paramLong1;
-    this.iVR = paramLong2;
+    this.ccm = paramString4;
+    this.jwf = paramString5;
+    this.jwg = paramBoolean;
+    this.ccQ = paramLong1;
+    this.jwh = paramLong2;
   }
   
   public int describeContents()
@@ -76,12 +76,12 @@ public class LocalUsageInfo
       AppMethodBeat.o(153198);
       return false;
     }
-    if (bt.isNullOrNil(paramLocalUsageInfo.username))
+    if (bs.isNullOrNil(paramLocalUsageInfo.username))
     {
       AppMethodBeat.o(153198);
       return false;
     }
-    if ((paramLocalUsageInfo.username.equals(this.username)) && (paramLocalUsageInfo.gXn == this.gXn))
+    if ((paramLocalUsageInfo.username.equals(this.username)) && (paramLocalUsageInfo.hxM == this.hxM))
     {
       AppMethodBeat.o(153198);
       return true;
@@ -95,17 +95,17 @@ public class LocalUsageInfo
     AppMethodBeat.i(153199);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.gXn);
-    paramParcel.writeInt(this.aAS);
+    paramParcel.writeInt(this.hxM);
+    paramParcel.writeInt(this.aBM);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeString(this.cfp);
-    paramParcel.writeString(this.iVP);
-    if (this.iVQ) {}
+    paramParcel.writeString(this.ccm);
+    paramParcel.writeString(this.jwf);
+    if (this.jwg) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.cfT);
-      paramParcel.writeLong(this.iVR);
+      paramParcel.writeLong(this.ccQ);
+      paramParcel.writeLong(this.jwh);
       AppMethodBeat.o(153199);
       return;
     }
@@ -113,7 +113,7 @@ public class LocalUsageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo
  * JD-Core Version:    0.7.0.1
  */

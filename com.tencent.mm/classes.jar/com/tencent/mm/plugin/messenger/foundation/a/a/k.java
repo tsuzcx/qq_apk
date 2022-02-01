@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bu;
 import java.util.List;
 
 public abstract interface k
   extends g
 {
-  public abstract br agP(String paramString);
+  public abstract bu alJ(String paramString);
   
-  public abstract void bi(String paramString, boolean paramBoolean);
+  public abstract void bp(String paramString, boolean paramBoolean);
   
-  public abstract List<br> cPb();
+  public abstract void dX(String paramString, int paramInt);
   
-  public abstract void dQ(String paramString, int paramInt);
+  public abstract List<bu> dcK();
   
   public abstract void delete(String paramString);
   
-  public abstract void e(String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void f(String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract boolean has(String paramString);
 }

@@ -6,17 +6,17 @@ import java.io.File;
 public final class a
   implements d
 {
-  File EVi;
+  File Gsu;
   
   public a(File paramFile)
   {
-    this.EVi = paramFile;
+    this.Gsu = paramFile;
   }
   
   public final boolean delete()
   {
     AppMethodBeat.i(183503);
-    boolean bool = this.EVi.delete();
+    boolean bool = this.Gsu.delete();
     AppMethodBeat.o(183503);
     return bool;
   }
@@ -24,16 +24,16 @@ public final class a
   public final boolean exists()
   {
     AppMethodBeat.i(183502);
-    boolean bool = this.EVi.exists();
+    boolean bool = this.Gsu.exists();
     AppMethodBeat.o(183502);
     return bool;
   }
   
-  public final d[] frB()
+  public final d[] fKd()
   {
     int i = 0;
     AppMethodBeat.i(183501);
-    File[] arrayOfFile = this.EVi.listFiles();
+    File[] arrayOfFile = this.Gsu.listFiles();
     if ((arrayOfFile == null) || (arrayOfFile.length == 0))
     {
       AppMethodBeat.o(183501);
@@ -52,7 +52,7 @@ public final class a
   public final String getPath()
   {
     AppMethodBeat.i(183499);
-    String str = this.EVi.getPath();
+    String str = this.Gsu.getPath();
     AppMethodBeat.o(183499);
     return str;
   }
@@ -60,7 +60,7 @@ public final class a
   public final boolean isDirectory()
   {
     AppMethodBeat.i(183500);
-    boolean bool = this.EVi.isDirectory();
+    boolean bool = this.Gsu.isDirectory();
     AppMethodBeat.o(183500);
     return bool;
   }
@@ -68,7 +68,7 @@ public final class a
   public final String[] list()
   {
     AppMethodBeat.i(183504);
-    String[] arrayOfString = this.EVi.list();
+    String[] arrayOfString = this.Gsu.list();
     AppMethodBeat.o(183504);
     return arrayOfString;
   }

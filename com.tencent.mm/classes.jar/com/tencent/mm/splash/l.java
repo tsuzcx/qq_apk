@@ -9,15 +9,15 @@ import java.util.List;
 
 final class l
 {
-  public static Handler Fca;
-  public static Object Fcb;
-  public static Application Fcc;
-  public static List<ProviderInfo> Fcd;
-  public static Method Fce;
-  public static j Fcf;
-  public static Field Fcg;
-  public static Field Fch;
-  public static Object cMP;
+  public static Handler Gzs;
+  public static Object Gzt;
+  public static Application Gzu;
+  public static List<ProviderInfo> Gzv;
+  public static Method Gzw;
+  public static j Gzx;
+  public static Field Gzy;
+  public static Field Gzz;
+  public static Object cKa;
 }
 
 

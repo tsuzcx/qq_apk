@@ -1,297 +1,260 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
-public class mu
-  extends com.tencent.mm.bx.a
+public final class mu
+  extends com.tencent.mm.bw.a
 {
-  public String CJL;
-  public LinkedList<Integer> CJM;
-  public int CJN;
-  public int CJO;
-  public int CJP;
-  public int CJQ;
-  public int CJR;
-  public int CJS;
-  public int CJT;
-  public int CJU;
-  public int CJV;
-  public int CJW;
-  public int CJX;
-  public int CJY;
-  public int CJZ;
-  public int CJi;
-  public String CKa;
-  public long CKb;
-  public int CKc;
-  public int CKd;
-  public int CKe;
-  public int CKf;
-  public int CKg;
-  public int CKh;
-  public int CKi;
-  public long CKj;
-  public String CKk;
-  public int CKl;
-  public String CKm;
-  public int cancel;
-  public long ded;
-  public int lpz;
-  public int pos;
-  public int style;
-  public int weight;
+  public int EbD;
+  public int EbM;
+  public int EbN;
+  public int EbO;
+  public int EbP;
+  public long EbQ;
+  public long EbR;
+  public boolean EbS;
+  public int EbT;
+  public boolean EbU;
+  public io EbV;
+  public boolean EbW;
+  public ty EbX;
+  public LinkedList<dvc> EbY;
+  public boolean EbZ;
+  public String Ebs;
+  public LinkedList<String> Eca;
+  public String Ecb;
+  public String Ecc;
   
   public mu()
   {
-    AppMethodBeat.i(6398);
-    this.CJM = new LinkedList();
-    this.lpz = 0;
-    AppMethodBeat.o(6398);
+    AppMethodBeat.i(209565);
+    this.EbY = new LinkedList();
+    this.Eca = new LinkedList();
+    AppMethodBeat.o(209565);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(6399);
+    AppMethodBeat.i(124426);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CJL != null) {
-        paramVarArgs.d(1, this.CJL);
+      if (this.Ebs == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: brand_user_name");
+        AppMethodBeat.o(124426);
+        throw paramVarArgs;
       }
-      paramVarArgs.aG(2, this.ded);
-      paramVarArgs.aR(3, this.pos);
-      paramVarArgs.e(4, 2, this.CJM);
-      paramVarArgs.aR(5, this.CJN);
-      paramVarArgs.aR(6, this.CJO);
-      paramVarArgs.aR(7, this.CJP);
-      paramVarArgs.aR(8, this.CJQ);
-      paramVarArgs.aR(9, this.CJR);
-      paramVarArgs.aR(10, this.CJS);
-      paramVarArgs.aR(11, this.CJi);
-      paramVarArgs.aR(12, this.CJT);
-      paramVarArgs.aR(13, this.CJU);
-      paramVarArgs.aR(14, this.cancel);
-      paramVarArgs.aR(15, this.CJV);
-      paramVarArgs.aR(16, this.CJW);
-      paramVarArgs.aR(17, this.CJX);
-      paramVarArgs.aR(18, this.CJY);
-      paramVarArgs.aR(19, this.CJZ);
-      if (this.CKa != null) {
-        paramVarArgs.d(20, this.CKa);
+      if (this.Ebs != null) {
+        paramVarArgs.d(1, this.Ebs);
       }
-      paramVarArgs.aG(21, this.CKb);
-      paramVarArgs.aR(22, this.CKc);
-      paramVarArgs.aR(23, this.CKd);
-      paramVarArgs.aR(24, this.CKe);
-      paramVarArgs.aR(25, this.CKf);
-      paramVarArgs.aR(26, this.CKg);
-      paramVarArgs.aR(27, this.CKh);
-      paramVarArgs.aR(28, this.CKi);
-      paramVarArgs.aR(29, this.lpz);
-      paramVarArgs.aG(30, this.CKj);
-      if (this.CKk != null) {
-        paramVarArgs.d(31, this.CKk);
+      paramVarArgs.aR(2, this.EbM);
+      paramVarArgs.aR(3, this.EbN);
+      paramVarArgs.aR(4, this.EbO);
+      paramVarArgs.aR(5, this.EbP);
+      paramVarArgs.aO(6, this.EbQ);
+      paramVarArgs.aO(7, this.EbR);
+      paramVarArgs.aR(8, this.EbD);
+      paramVarArgs.bl(9, this.EbS);
+      paramVarArgs.aR(10, this.EbT);
+      paramVarArgs.bl(11, this.EbU);
+      if (this.EbV != null)
+      {
+        paramVarArgs.ln(12, this.EbV.computeSize());
+        this.EbV.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(32, this.CKl);
-      paramVarArgs.aR(33, this.weight);
-      if (this.CKm != null) {
-        paramVarArgs.d(34, this.CKm);
+      paramVarArgs.bl(13, this.EbW);
+      if (this.EbX != null)
+      {
+        paramVarArgs.ln(14, this.EbX.computeSize());
+        this.EbX.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(35, this.style);
-      AppMethodBeat.o(6399);
+      paramVarArgs.e(15, 8, this.EbY);
+      paramVarArgs.bl(16, this.EbZ);
+      paramVarArgs.e(17, 1, this.Eca);
+      if (this.Ecb != null) {
+        paramVarArgs.d(18, this.Ecb);
+      }
+      if (this.Ecc != null) {
+        paramVarArgs.d(19, this.Ecc);
+      }
+      AppMethodBeat.o(124426);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CJL == null) {
-        break label1822;
+      if (this.Ebs == null) {
+        break label1418;
       }
     }
-    label1822:
-    for (paramInt = f.a.a.b.b.a.e(1, this.CJL) + 0;; paramInt = 0)
+    label1418:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Ebs) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.q(2, this.ded) + f.a.a.b.b.a.bA(3, this.pos) + f.a.a.a.c(4, 2, this.CJM) + f.a.a.b.b.a.bA(5, this.CJN) + f.a.a.b.b.a.bA(6, this.CJO) + f.a.a.b.b.a.bA(7, this.CJP) + f.a.a.b.b.a.bA(8, this.CJQ) + f.a.a.b.b.a.bA(9, this.CJR) + f.a.a.b.b.a.bA(10, this.CJS) + f.a.a.b.b.a.bA(11, this.CJi) + f.a.a.b.b.a.bA(12, this.CJT) + f.a.a.b.b.a.bA(13, this.CJU) + f.a.a.b.b.a.bA(14, this.cancel) + f.a.a.b.b.a.bA(15, this.CJV) + f.a.a.b.b.a.bA(16, this.CJW) + f.a.a.b.b.a.bA(17, this.CJX) + f.a.a.b.b.a.bA(18, this.CJY) + f.a.a.b.b.a.bA(19, this.CJZ);
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.EbM) + f.a.a.b.b.a.bx(3, this.EbN) + f.a.a.b.b.a.bx(4, this.EbO) + f.a.a.b.b.a.bx(5, this.EbP) + f.a.a.b.b.a.p(6, this.EbQ) + f.a.a.b.b.a.p(7, this.EbR) + f.a.a.b.b.a.bx(8, this.EbD) + (f.a.a.b.b.a.fK(9) + 1) + f.a.a.b.b.a.bx(10, this.EbT) + (f.a.a.b.b.a.fK(11) + 1);
       paramInt = i;
-      if (this.CKa != null) {
-        paramInt = i + f.a.a.b.b.a.e(20, this.CKa);
+      if (this.EbV != null) {
+        paramInt = i + f.a.a.a.lm(12, this.EbV.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.q(21, this.CKb) + f.a.a.b.b.a.bA(22, this.CKc) + f.a.a.b.b.a.bA(23, this.CKd) + f.a.a.b.b.a.bA(24, this.CKe) + f.a.a.b.b.a.bA(25, this.CKf) + f.a.a.b.b.a.bA(26, this.CKg) + f.a.a.b.b.a.bA(27, this.CKh) + f.a.a.b.b.a.bA(28, this.CKi) + f.a.a.b.b.a.bA(29, this.lpz) + f.a.a.b.b.a.q(30, this.CKj);
+      i = paramInt + (f.a.a.b.b.a.fK(13) + 1);
       paramInt = i;
-      if (this.CKk != null) {
-        paramInt = i + f.a.a.b.b.a.e(31, this.CKk);
+      if (this.EbX != null) {
+        paramInt = i + f.a.a.a.lm(14, this.EbX.computeSize());
       }
-      i = paramInt + f.a.a.b.b.a.bA(32, this.CKl) + f.a.a.b.b.a.bA(33, this.weight);
+      i = paramInt + f.a.a.a.c(15, 8, this.EbY) + (f.a.a.b.b.a.fK(16) + 1) + f.a.a.a.c(17, 1, this.Eca);
       paramInt = i;
-      if (this.CKm != null) {
-        paramInt = i + f.a.a.b.b.a.e(34, this.CKm);
+      if (this.Ecb != null) {
+        paramInt = i + f.a.a.b.b.a.e(18, this.Ecb);
       }
-      i = f.a.a.b.b.a.bA(35, this.style);
-      AppMethodBeat.o(6399);
-      return paramInt + i;
+      i = paramInt;
+      if (this.Ecc != null) {
+        i = paramInt + f.a.a.b.b.a.e(19, this.Ecc);
+      }
+      AppMethodBeat.o(124426);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.CJM.clear();
+        this.EbY.clear();
+        this.Eca.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(6399);
+        if (this.Ebs == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: brand_user_name");
+          AppMethodBeat.o(124426);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124426);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         mu localmu = (mu)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(6399);
+          AppMethodBeat.o(124426);
           return -1;
         case 1: 
-          localmu.CJL = locala.KhF.readString();
-          AppMethodBeat.o(6399);
+          localmu.Ebs = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(124426);
           return 0;
         case 2: 
-          localmu.ded = locala.KhF.xT();
-          AppMethodBeat.o(6399);
+          localmu.EbM = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(124426);
           return 0;
         case 3: 
-          localmu.pos = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbN = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(124426);
           return 0;
         case 4: 
-          localmu.CJM.add(Integer.valueOf(locala.KhF.xS()));
-          AppMethodBeat.o(6399);
+          localmu.EbO = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(124426);
           return 0;
         case 5: 
-          localmu.CJN = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbP = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(124426);
           return 0;
         case 6: 
-          localmu.CJO = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbQ = ((f.a.a.a.a)localObject1).LVo.xG();
+          AppMethodBeat.o(124426);
           return 0;
         case 7: 
-          localmu.CJP = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbR = ((f.a.a.a.a)localObject1).LVo.xG();
+          AppMethodBeat.o(124426);
           return 0;
         case 8: 
-          localmu.CJQ = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbD = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(124426);
           return 0;
         case 9: 
-          localmu.CJR = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbS = ((f.a.a.a.a)localObject1).LVo.fZX();
+          AppMethodBeat.o(124426);
           return 0;
         case 10: 
-          localmu.CJS = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbT = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(124426);
           return 0;
         case 11: 
-          localmu.CJi = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbU = ((f.a.a.a.a)localObject1).LVo.fZX();
+          AppMethodBeat.o(124426);
           return 0;
         case 12: 
-          localmu.CJT = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new io();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((io)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localmu.EbV = ((io)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124426);
           return 0;
         case 13: 
-          localmu.CJU = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbW = ((f.a.a.a.a)localObject1).LVo.fZX();
+          AppMethodBeat.o(124426);
           return 0;
         case 14: 
-          localmu.cancel = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ty();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ty)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localmu.EbX = ((ty)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124426);
           return 0;
         case 15: 
-          localmu.CJV = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new dvc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((dvc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localmu.EbY.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124426);
           return 0;
         case 16: 
-          localmu.CJW = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.EbZ = ((f.a.a.a.a)localObject1).LVo.fZX();
+          AppMethodBeat.o(124426);
           return 0;
         case 17: 
-          localmu.CJX = locala.KhF.xS();
-          AppMethodBeat.o(6399);
+          localmu.Eca.add(((f.a.a.a.a)localObject1).LVo.readString());
+          AppMethodBeat.o(124426);
           return 0;
         case 18: 
-          localmu.CJY = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 19: 
-          localmu.CJZ = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 20: 
-          localmu.CKa = locala.KhF.readString();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 21: 
-          localmu.CKb = locala.KhF.xT();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 22: 
-          localmu.CKc = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 23: 
-          localmu.CKd = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 24: 
-          localmu.CKe = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 25: 
-          localmu.CKf = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 26: 
-          localmu.CKg = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 27: 
-          localmu.CKh = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 28: 
-          localmu.CKi = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 29: 
-          localmu.lpz = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 30: 
-          localmu.CKj = locala.KhF.xT();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 31: 
-          localmu.CKk = locala.KhF.readString();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 32: 
-          localmu.CKl = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 33: 
-          localmu.weight = locala.KhF.xS();
-          AppMethodBeat.o(6399);
-          return 0;
-        case 34: 
-          localmu.CKm = locala.KhF.readString();
-          AppMethodBeat.o(6399);
+          localmu.Ecb = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(124426);
           return 0;
         }
-        localmu.style = locala.KhF.xS();
-        AppMethodBeat.o(6399);
+        localmu.Ecc = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(124426);
         return 0;
       }
-      AppMethodBeat.o(6399);
+      AppMethodBeat.o(124426);
       return -1;
     }
   }

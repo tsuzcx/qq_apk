@@ -11,7 +11,6 @@ import com.tencent.mapsdk.raster.model.CustomLayerOptions;
 import com.tencent.mapsdk.raster.model.IndoorBuilding;
 import com.tencent.mapsdk.raster.model.Language;
 import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.mapsdk.raster.model.MapPoi;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.mapsdk.raster.model.Polygon;
@@ -112,6 +111,8 @@ public abstract interface TencentMap
   
   public abstract void setIndoorFloor(String paramString1, String paramString2);
   
+  public abstract void setIndoorMaskColor(int paramInt);
+  
   public abstract void setInfoWindowAdapter(InfoWindowAdapter paramInfoWindowAdapter);
   
   public abstract void setMapAnchor(float paramFloat1, float paramFloat2);
@@ -120,9 +121,13 @@ public abstract interface TencentMap
   
   public abstract void setMapType(int paramInt);
   
+  public abstract void setMaxZoomLevel(int paramInt);
+  
+  public abstract void setMinZoomLevel(int paramInt);
+  
   public abstract void setOnIndoorStateChangeListener(OnIndoorStateChangeListener paramOnIndoorStateChangeListener);
   
-  public abstract void setOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  public abstract void setOnInfoWindowClickListener(TencentMap.OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
   public abstract void setOnMapCameraChangeListener(OnMapCameraChangeListener paramOnMapCameraChangeListener);
   
@@ -132,9 +137,9 @@ public abstract interface TencentMap
   
   public abstract void setOnMapLongClickListener(OnMapLongClickListener paramOnMapLongClickListener);
   
-  public abstract void setOnMapPoiClickListener(OnMapPoiClickListener paramOnMapPoiClickListener);
+  public abstract void setOnMapPoiClickListener(TencentMap.OnMapPoiClickListener paramOnMapPoiClickListener);
   
-  public abstract void setOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
+  public abstract void setOnMarkerClickListener(TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
   
   public abstract void setOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
@@ -176,11 +181,6 @@ public abstract interface TencentMap
     public abstract boolean onIndoorLevelActivated(IndoorBuilding paramIndoorBuilding);
   }
   
-  public static abstract interface OnInfoWindowClickListener
-  {
-    public abstract void onInfoWindowClick(Marker paramMarker);
-  }
-  
   public static abstract interface OnMapCameraChangeListener
   {
     public abstract void onCameraChange(CameraPosition paramCameraPosition);
@@ -201,16 +201,6 @@ public abstract interface TencentMap
   public static abstract interface OnMapLongClickListener
   {
     public abstract void onMapLongClick(LatLng paramLatLng);
-  }
-  
-  public static abstract interface OnMapPoiClickListener
-  {
-    public abstract void onClicked(MapPoi paramMapPoi);
-  }
-  
-  public static abstract interface OnMarkerClickListener
-  {
-    public abstract boolean onMarkerClick(Marker paramMarker);
   }
   
   public static abstract interface OnMarkerDraggedListener
@@ -248,7 +238,7 @@ public abstract interface TencentMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.TencentMap
  * JD-Core Version:    0.7.0.1
  */

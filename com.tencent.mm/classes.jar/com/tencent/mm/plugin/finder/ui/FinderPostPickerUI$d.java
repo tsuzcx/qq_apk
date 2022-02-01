@@ -5,16 +5,16 @@ import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class FinderPostPickerUI$d
   implements View.OnLongClickListener
 {
-  public static final d qOt;
+  public static final d rJH;
   
   static
   {
     AppMethodBeat.i(167487);
-    qOt = new d();
+    rJH = new d();
     AppMethodBeat.o(167487);
   }
   

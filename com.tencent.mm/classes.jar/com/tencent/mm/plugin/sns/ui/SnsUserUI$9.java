@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
-import com.tencent.mm.protocal.protobuf.boj;
+import com.tencent.mm.protocal.protobuf.bsz;
 import com.tencent.mm.vfs.i;
 import com.tencent.xweb.util.d;
 
@@ -20,23 +20,23 @@ final class SnsUserUI$9
   
   public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(187752);
-    paramBundle = new boj();
-    paramBundle.DLK = true;
-    paramBundle.DLJ = false;
-    String str = i.aMS(paramCaptureVideoNormalModel.videoPath);
-    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.vhy.longValue() / 1000L), paramBundle);
-    if (paramCaptureVideoNormalModel.vhz.booleanValue())
+    AppMethodBeat.i(200621);
+    paramBundle = new bsz();
+    paramBundle.FhZ = true;
+    paramBundle.FhY = false;
+    String str = i.aSu(paramCaptureVideoNormalModel.videoPath);
+    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.wqk.longValue() / 1000L), paramBundle);
+    if (paramCaptureVideoNormalModel.wql.booleanValue())
     {
-      paramBundle.tAP = true;
-      paramBundle.osM = false;
-      paramBundle.tAX = paramCaptureVideoNormalModel.thumbPath;
+      paramBundle.uJm = true;
+      paramBundle.oWm = false;
+      paramBundle.uJu = paramCaptureVideoNormalModel.thumbPath;
     }
     paramCaptureVideoNormalModel = new Intent();
     paramCaptureVideoNormalModel.putExtra("key_req_result", paramBundle);
     ((Activity)paramContext).setResult(-1, paramCaptureVideoNormalModel);
     ((Activity)paramContext).finish();
-    AppMethodBeat.o(187752);
+    AppMethodBeat.o(200621);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
@@ -46,7 +46,7 @@ final class SnsUserUI$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUserUI.9
  * JD-Core Version:    0.7.0.1
  */

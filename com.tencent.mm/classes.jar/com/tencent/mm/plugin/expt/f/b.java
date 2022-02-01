@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.expt.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +30,7 @@ public final class b
   }
   
   /* Error */
-  public final int Xn(String paramString)
+  public final int abK(String paramString)
   {
     // Byte code:
     //   0: ldc 53
@@ -99,7 +99,7 @@ public final class b
     //   118: aload 6
     //   120: invokevirtual 86	java/lang/Exception:toString	()Ljava/lang/String;
     //   123: aastore
-    //   124: invokestatic 92	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 92	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: aload 5
     //   129: ifnull +10 -> 139
     //   132: aload 5
@@ -147,7 +147,7 @@ public final class b
   }
   
   /* Error */
-  public final a Xt(String paramString)
+  public final a abQ(String paramString)
   {
     // Byte code:
     //   0: ldc 95
@@ -221,7 +221,7 @@ public final class b
     //   120: aload 5
     //   122: invokevirtual 86	java/lang/Exception:toString	()Ljava/lang/String;
     //   125: aastore
-    //   126: invokestatic 92	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 92	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload_2
     //   130: astore 4
     //   132: aload_3
@@ -276,7 +276,7 @@ public final class b
     //   66	71	182	java/lang/Exception
   }
   
-  public final int ceE()
+  public final int cml()
   {
     int i = 0;
     AppMethodBeat.i(122451);
@@ -289,14 +289,14 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
+        ac.e("MicroMsg.ExptKeyMapIdStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
       }
     }
     AppMethodBeat.o(122451);
     return i;
   }
   
-  public final int db(List<a> paramList)
+  public final int dd(List<a> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122448);
@@ -309,7 +309,7 @@ public final class b
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.rb(-1L);
+      l = localh.vE(-1L);
     }
     for (;;)
     {
@@ -325,25 +325,25 @@ public final class b
       {
         localException1 = localException1;
         i = 0;
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "insert expt key map id [%s]", new Object[] { localException1.toString() });
+        ac.e("MicroMsg.ExptKeyMapIdStorage", "insert expt key map id [%s]", new Object[] { localException1.toString() });
         j = i;
         if (localh != null)
         {
-          localh.mX(l);
+          localh.qL(l);
           j = i;
         }
       }
       finally
       {
         if (localh != null) {
-          localh.mX(l);
+          localh.qL(l);
         }
         AppMethodBeat.o(122448);
       }
     }
   }
   
-  public final int dc(List<a> paramList)
+  public final int de(List<a> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122449);
@@ -356,7 +356,7 @@ public final class b
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.rb(-1L);
+      l = localh.vE(-1L);
     }
     for (;;)
     {
@@ -373,25 +373,25 @@ public final class b
       {
         localException1 = localException1;
         i = 0;
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "update expt key map id [%s]", new Object[] { localException1.toString() });
+        ac.e("MicroMsg.ExptKeyMapIdStorage", "update expt key map id [%s]", new Object[] { localException1.toString() });
         j = i;
         if (localh != null)
         {
-          localh.mX(l);
+          localh.qL(l);
           j = i;
         }
       }
       finally
       {
         if (localh != null) {
-          localh.mX(l);
+          localh.qL(l);
         }
         AppMethodBeat.o(122449);
       }
     }
   }
   
-  public final int dd(List<Integer> paramList)
+  public final int df(List<Integer> paramList)
   {
     AppMethodBeat.i(122450);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -406,7 +406,7 @@ public final class b
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.rb(-1L);
+      l = localh.vE(-1L);
     }
     for (;;)
     {
@@ -430,18 +430,18 @@ public final class b
         k = i;
         if (localh != null)
         {
-          localh.mX(l);
+          localh.qL(l);
           k = i;
         }
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.ExptKeyMapIdStorage", "delete expt by id id [%s] ret[%d]", new Object[] { localException.toString(), Integer.valueOf(j) });
+        ac.e("MicroMsg.ExptKeyMapIdStorage", "delete expt by id id [%s] ret[%d]", new Object[] { localException.toString(), Integer.valueOf(j) });
         int k = j;
         if (localh == null) {
           continue;
         }
-        localh.mX(l);
+        localh.qL(l);
         k = j;
         continue;
       }
@@ -450,10 +450,10 @@ public final class b
         if (localh == null) {
           continue;
         }
-        localh.mX(l);
+        localh.qL(l);
         AppMethodBeat.o(122450);
       }
-      ad.i("MicroMsg.ExptKeyMapIdStorage", "deleteExptKeyMapIdById exptIds size[%d] ret[%d]", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(k) });
+      ac.i("MicroMsg.ExptKeyMapIdStorage", "deleteExptKeyMapIdById exptIds size[%d] ret[%d]", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(k) });
       AppMethodBeat.o(122450);
       return k;
       localh = null;
@@ -462,7 +462,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.f.b
  * JD-Core Version:    0.7.0.1
  */

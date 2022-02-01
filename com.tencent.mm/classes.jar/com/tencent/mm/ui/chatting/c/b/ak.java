@@ -5,21 +5,21 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface ak
   extends ab
 {
-  public abstract void aG(Runnable paramRunnable);
+  public abstract void aI(Runnable paramRunnable);
   
-  public abstract void aKN(String paramString);
+  public abstract void aQq(String paramString);
   
-  public abstract void cG(String paramString, boolean paramBoolean);
+  public abstract void cM(String paramString, boolean paramBoolean);
   
-  public abstract boolean eYE();
+  public abstract boolean foq();
   
-  public abstract boolean eYF();
+  public abstract boolean jdMethod_for();
   
-  public abstract int eYG();
+  public abstract boolean fos();
   
-  public abstract boolean gai();
+  public abstract int fot();
   
-  public abstract void wi(boolean paramBoolean);
+  public abstract void xm(boolean paramBoolean);
 }
 
 

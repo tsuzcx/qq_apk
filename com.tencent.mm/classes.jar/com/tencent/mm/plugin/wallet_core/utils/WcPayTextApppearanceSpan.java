@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WcPayTextApppearanceSpan
   extends TextAppearanceSpan
 {
-  Typeface Avt;
+  Typeface BNN;
   
   public WcPayTextApppearanceSpan(int paramInt, ColorStateList paramColorStateList)
   {
@@ -20,15 +20,15 @@ public class WcPayTextApppearanceSpan
   {
     AppMethodBeat.i(71650);
     super.updateMeasureState(paramTextPaint);
-    if (this.Avt != null) {
-      paramTextPaint.setTypeface(this.Avt);
+    if (this.BNN != null) {
+      paramTextPaint.setTypeface(this.BNN);
     }
     AppMethodBeat.o(71650);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.WcPayTextApppearanceSpan
  * JD-Core Version:    0.7.0.1
  */

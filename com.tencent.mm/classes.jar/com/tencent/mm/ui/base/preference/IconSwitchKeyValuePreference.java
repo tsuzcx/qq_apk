@@ -12,7 +12,7 @@ public class IconSwitchKeyValuePreference
   extends IconPreference
 {
   private int status = 0;
-  private TextView uCm;
+  private TextView vLf;
   
   public IconSwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,46 +24,46 @@ public class IconSwitchKeyValuePreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(142568);
-    if (this.uCm == null)
+    if (this.vLf == null)
     {
       AppMethodBeat.o(142568);
       return;
     }
     int i = BackwardSupportUtil.b.g(this.mContext, 2.0F);
-    this.uCm.setTextColor(t.kg(this.mContext));
+    this.vLf.setTextColor(t.kr(this.mContext));
     if (this.status == 0)
     {
-      this.uCm.setCompoundDrawablesWithIntrinsicBounds(2131691256, 0, 0, 0);
-      this.uCm.setCompoundDrawablePadding(i);
+      this.vLf.setCompoundDrawablesWithIntrinsicBounds(2131691256, 0, 0, 0);
+      this.vLf.setCompoundDrawablePadding(i);
       AppMethodBeat.o(142568);
       return;
     }
     if (this.status == 1)
     {
-      this.uCm.setCompoundDrawablesWithIntrinsicBounds(2131691254, 0, 0, 0);
-      this.uCm.setCompoundDrawablePadding(i);
+      this.vLf.setCompoundDrawablesWithIntrinsicBounds(2131691254, 0, 0, 0);
+      this.vLf.setCompoundDrawablePadding(i);
       AppMethodBeat.o(142568);
       return;
     }
     if (this.status == 2)
     {
-      this.uCm.setCompoundDrawablesWithIntrinsicBounds(2131691255, 0, 0, 0);
-      this.uCm.setCompoundDrawablePadding(i);
+      this.vLf.setCompoundDrawablesWithIntrinsicBounds(2131691255, 0, 0, 0);
+      this.vLf.setCompoundDrawablePadding(i);
       AppMethodBeat.o(142568);
       return;
     }
-    this.uCm.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.vLf.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     AppMethodBeat.o(142568);
   }
   
-  public final void XX(int paramInt)
+  public final void aai(int paramInt)
   {
     AppMethodBeat.i(142567);
     this.status = paramInt;
-    cE();
+    cL();
     AppMethodBeat.o(142567);
   }
   
@@ -71,14 +71,14 @@ public class IconSwitchKeyValuePreference
   {
     AppMethodBeat.i(142566);
     super.onBindView(paramView);
-    this.uCm = ((TextView)paramView.findViewById(16908304));
-    cE();
+    this.vLf = ((TextView)paramView.findViewById(16908304));
+    cL();
     AppMethodBeat.o(142566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

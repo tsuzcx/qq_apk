@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.game.api;
 
 public final class b$a
 {
-  private static b rNy = null;
+  private static b sVn = null;
   
   public static void a(b paramb)
   {
-    rNy = paramb;
+    sVn = paramb;
   }
   
-  public static b cBi()
+  public static b cOr()
   {
-    return rNy;
+    return sVn;
   }
 }
 

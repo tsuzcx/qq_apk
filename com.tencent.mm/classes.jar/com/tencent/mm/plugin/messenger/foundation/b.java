@@ -6,31 +6,31 @@ import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
 import com.tencent.mm.plugin.messenger.foundation.a.x;
-import com.tencent.mm.protocal.protobuf.xd;
-import com.tencent.mm.protocal.protobuf.zr;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.protocal.protobuf.aaq;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.storage.bk;
 
 public final class b
   implements u
 {
-  public final void a(xd paramxd, byte[] paramArrayOfByte, boolean paramBoolean, x paramx)
+  public final void a(xv paramxv, byte[] paramArrayOfByte, boolean paramBoolean, x paramx)
   {
     AppMethodBeat.i(116875);
-    switch (paramxd.CYY)
+    switch (paramxv.ErL)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(116875);
       return;
-      paramxd = (zr)new zr().parseFrom(paramArrayOfByte);
-      ((k)g.ab(k.class)).apR().aIl(z.a(paramxd.Dby));
+      paramxv = (aaq)new aaq().parseFrom(paramArrayOfByte);
+      ((k)g.ab(k.class)).awG().aNG(z.a(paramxv.EuE));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.b
  * JD-Core Version:    0.7.0.1
  */

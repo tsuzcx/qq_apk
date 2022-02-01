@@ -12,7 +12,7 @@ final class GroupSolitatireEditUI$5
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(110431);
-    GroupSolitatireEditUI.p(this.srR);
+    GroupSolitatireEditUI.p(this.tzI);
     AppMethodBeat.o(110431);
   }
 }

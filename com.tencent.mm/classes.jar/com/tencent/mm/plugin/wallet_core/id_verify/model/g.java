@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dbk;
-import com.tencent.mm.protocal.protobuf.dbl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.dgw;
+import com.tencent.mm.protocal.protobuf.dgx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.c.s;
 import com.tencent.mm.wallet_core.c.x;
@@ -23,17 +23,17 @@ import org.json.JSONObject;
 public final class g
   extends s
 {
-  public String Aaa;
-  public String Aab;
-  public String dlJ;
-  public String dwg;
-  public long gri;
+  public t Bom;
+  public boolean Bsr;
+  public boolean Bss;
+  public boolean Bst;
+  public String Bsu;
+  public String Bsv;
+  public String djr;
+  public String dtT;
+  public long gRQ;
   public String packageExt;
   public String token;
-  public t zVS;
-  public boolean zZX;
-  public boolean zZY;
-  public boolean zZZ;
   
   public g(String paramString1, String paramString2, int paramInt)
   {
@@ -44,7 +44,7 @@ public final class g
     localHashMap.put("identify_card", paramString2);
     localHashMap.put("cre_type", "1");
     localHashMap.put("realname_scene", String.valueOf(paramInt));
-    ad.i("MicroMsg.NetSceneRealNameVerify", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.NetSceneRealNameVerify", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
     setRequestData(localHashMap);
     AppMethodBeat.o(70145);
   }
@@ -60,8 +60,8 @@ public final class g
     localHashMap.put("cre_type", String.valueOf(paramInt2));
     if (paramProfession != null)
     {
-      localHashMap.put("profession_name", paramProfession.Aap);
-      localHashMap.put("profession_type", String.valueOf(paramProfession.Aaq));
+      localHashMap.put("profession_name", paramProfession.BsJ);
+      localHashMap.put("profession_type", String.valueOf(paramProfession.BsK));
     }
     localHashMap.put("user_country", paramString3);
     localHashMap.put("user_province", paramString4);
@@ -71,7 +71,7 @@ public final class g
     localHashMap.put("birth_date", paramString7);
     localHashMap.put("nationality", paramString8);
     localHashMap.put("session_id", paramString9);
-    ad.i("MicroMsg.NetSceneRealNameVerify", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt1) });
+    ac.i("MicroMsg.NetSceneRealNameVerify", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt1) });
     setRequestData(localHashMap);
     AppMethodBeat.o(70146);
   }
@@ -84,24 +84,24 @@ public final class g
     if (localObject2 == null)
     {
       localObject1 = new b.a();
-      ((b.a)localObject1).gUU = new dbk();
-      ((b.a)localObject1).gUV = new dbl();
+      ((b.a)localObject1).hvt = new dgw();
+      ((b.a)localObject1).hvu = new dgx();
       ((b.a)localObject1).uri = "/cgi-bin/mmpay-bin/tenpay/realnameauthen";
       ((b.a)localObject1).funcId = 1616;
       ((b.a)localObject1).reqCmdId = 185;
       ((b.a)localObject1).respCmdId = 1000000185;
-      localObject1 = ((b.a)localObject1).atI();
+      localObject1 = ((b.a)localObject1).aAz();
       ((b)localObject1).setIsUserCmd(true);
     }
-    localObject2 = (dbk)((b)localObject1).gUS.gUX;
+    localObject2 = (dgw)((b)localObject1).hvr.hvw;
     if (paramBoolean2) {
-      ((dbk)localObject2).DEt = 1;
+      ((dgw)localObject2).EZO = 1;
     }
     setCommReqResp((b)localObject1);
     AppMethodBeat.o(70148);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(70152);
     this.callback = paramg;
@@ -110,19 +110,19 @@ public final class g
     return i;
   }
   
-  public final int doSceneSimulately(b paramb, e parame, com.tencent.mm.al.g paramg)
+  public final int doSceneSimulately(b paramb, e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(70151);
-    paramb = (dbk)paramb.gUS.gUX;
-    if (paramb.DEu != null) {
-      new String(paramb.DEu.getBufferToBytes());
+    paramb = (dgw)paramb.hvr.hvw;
+    if (paramb.EZP != null) {
+      new String(paramb.EZP.getBufferToBytes());
     }
-    if (paramb.DWE != null) {
-      new String(paramb.DWE.getBufferToBytes());
+    if (paramb.Ftw != null) {
+      new String(paramb.Ftw.getBufferToBytes());
     }
-    aj.getContext();
+    ai.getContext();
     getPayCgicmd();
-    ae.fke();
+    ae.fAu();
     AppMethodBeat.o(70151);
     return -1;
   }
@@ -143,14 +143,14 @@ public final class g
   public final x getRetModel(b paramb)
   {
     AppMethodBeat.i(70150);
-    paramb = (dbl)paramb.gUT.gUX;
+    paramb = (dgx)paramb.hvs.hvw;
     x localx = new x();
-    localx.DEy = paramb.DEy;
-    localx.DEx = paramb.DEx;
-    localx.DEw = paramb.DEw;
-    localx.DEv = paramb.DEv;
-    localx.oXw = paramb.DWG;
-    localx.IdR = paramb.DWF;
+    localx.EZT = paramb.EZT;
+    localx.EZS = paramb.EZS;
+    localx.EZR = paramb.EZR;
+    localx.EZQ = paramb.EZQ;
+    localx.pAH = paramb.Fty;
+    localx.JFt = paramb.Ftx;
     AppMethodBeat.o(70150);
     return localx;
   }
@@ -166,33 +166,33 @@ public final class g
     if (paramInt == 0)
     {
       this.token = paramJSONObject.optString("token");
-      this.zZX = paramJSONObject.optBoolean("is_need_bind");
-      this.zZY = paramJSONObject.optBoolean("is_need_face");
-      this.zZZ = paramJSONObject.optBoolean("is_need_Laund");
-      this.Aaa = paramJSONObject.optString("laundh5");
-      this.gri = paramJSONObject.optLong("scene");
+      this.Bsr = paramJSONObject.optBoolean("is_need_bind");
+      this.Bss = paramJSONObject.optBoolean("is_need_face");
+      this.Bst = paramJSONObject.optBoolean("is_need_Laund");
+      this.Bsu = paramJSONObject.optString("laundh5");
+      this.gRQ = paramJSONObject.optLong("scene");
       this.packageExt = paramJSONObject.optString("package", "");
-      this.dwg = paramJSONObject.optString("packagesign", "");
-      this.Aab = paramJSONObject.optString("addbankword");
-      this.dlJ = this.token;
-      this.zVS = t.bc(paramJSONObject);
+      this.dtT = paramJSONObject.optString("packagesign", "");
+      this.Bsv = paramJSONObject.optString("addbankword");
+      this.djr = this.token;
+      this.Bom = t.bd(paramJSONObject);
     }
     AppMethodBeat.o(70147);
   }
   
   public final void putToReqText(b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    ((dbk)paramb.gUS.gUX).DEu = paramSKBuiltinBuffer_t;
+    ((dgw)paramb.hvr.hvw).EZP = paramSKBuiltinBuffer_t;
   }
   
   public final void putToWXReqText(b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    ((dbk)paramb.gUS.gUX).DWE = paramSKBuiltinBuffer_t;
+    ((dgw)paramb.hvr.hvw).Ftw = paramSKBuiltinBuffer_t;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
 import com.tencent.mm.protocal.protobuf.s;
 import com.tencent.mm.protocal.protobuf.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   extends c<t>
@@ -15,23 +15,23 @@ public final class b
     AppMethodBeat.i(63371);
     b.a locala = new b.a();
     s locals = new s();
-    locals.Csi = paramString1;
-    locals.Csj = paramString2;
+    locals.DKA = paramString1;
+    locals.DKB = paramString2;
     locals.scene = paramInt;
-    locala.gUU = locals;
-    locala.gUV = new t();
+    locala.hvt = locals;
+    locala.hvu = new t();
     locala.uri = "/cgi-bin/mmpay-bin/newaapayurge";
     locala.funcId = 1644;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ad.i("MicroMsg.CgiAAPayUrge", "CgiAAPayUrge, billNo: %s, chatroom: %s, scene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    this.rr = locala.aAz();
+    ac.i("MicroMsg.CgiAAPayUrge", "CgiAAPayUrge, billNo: %s, chatroom: %s, scene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
     AppMethodBeat.o(63371);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@
 <LinearLayout android:orientation="vertical" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:background="@drawable/l" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/y4" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/dao" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/s5" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/daf" />
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/y4" android:layout_gravity="left" android:id="@id/hac" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/dao" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/s5" android:gravity="left" android:layout_gravity="left" android:id="@id/hab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/daf" />
         <Button android:textSize="17.0dip" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/cmx" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" android:text="@string/dqv" style="@style/ob" />
     </LinearLayout>
 </LinearLayout>

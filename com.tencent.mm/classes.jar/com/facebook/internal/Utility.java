@@ -36,6 +36,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -63,6 +64,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 import java.util.TimeZone;
+import java.util.regex.Pattern;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -1284,27 +1286,27 @@ public final class Utility
   {
     // Byte code:
     //   0: sipush 17953
-    //   3: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 322	java/io/BufferedInputStream
+    //   3: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 324	java/io/BufferedInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 325	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   11: invokespecial 327	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   14: astore_3
-    //   15: new 906	java/io/InputStreamReader
+    //   15: new 908	java/io/InputStreamReader
     //   18: dup
     //   19: aload_3
-    //   20: invokespecial 907	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   20: invokespecial 909	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   23: astore_2
-    //   24: new 231	java/lang/StringBuilder
+    //   24: new 233	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 232	java/lang/StringBuilder:<init>	()V
+    //   28: invokespecial 234	java/lang/StringBuilder:<init>	()V
     //   31: astore_0
     //   32: sipush 2048
     //   35: newarray char
     //   37: astore 4
     //   39: aload_2
     //   40: aload 4
-    //   42: invokevirtual 910	java/io/InputStreamReader:read	([C)I
+    //   42: invokevirtual 912	java/io/InputStreamReader:read	([C)I
     //   45: istore_1
     //   46: iload_1
     //   47: iconst_m1
@@ -1313,27 +1315,27 @@ public final class Utility
     //   52: aload 4
     //   54: iconst_0
     //   55: iload_1
-    //   56: invokevirtual 913	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 915	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   59: pop
     //   60: goto -21 -> 39
     //   63: astore_0
     //   64: aload_3
-    //   65: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   65: invokestatic 917	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   68: aload_2
-    //   69: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   69: invokestatic 917	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   72: sipush 17953
-    //   75: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: aload_0
     //   79: athrow
     //   80: aload_0
-    //   81: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   84: astore_0
     //   85: aload_3
-    //   86: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   86: invokestatic 917	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   89: aload_2
-    //   90: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   90: invokestatic 917	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   93: sipush 17953
-    //   96: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   96: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_0
     //   100: areturn
     //   101: astore_0
@@ -1415,7 +1417,16 @@ public final class Utility
     }
     try
     {
-      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new Utility.2());
+      File[] arrayOfFile = new File("/sys/devices/system/cpu/").listFiles(new FilenameFilter()
+      {
+        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
+        {
+          AppMethodBeat.i(17927);
+          boolean bool = Pattern.matches("cpu[0-9]+", paramAnonymousString);
+          AppMethodBeat.o(17927);
+          return bool;
+        }
+      });
       if (arrayOfFile != null) {
         numCPUCores = arrayOfFile.length;
       }

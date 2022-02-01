@@ -11,37 +11,37 @@ import java.util.BitSet;
 
 public final class p
 {
-  static BitSet fGH;
-  static String fGI;
+  static BitSet fKo;
+  static String fKp;
   
   static
   {
     AppMethodBeat.i(155915);
-    fGI = null;
-    fGH = new BitSet(256);
+    fKp = null;
+    fKo = new BitSet(256);
     int i = 97;
     while (i <= 122)
     {
-      fGH.set(i);
+      fKo.set(i);
       i += 1;
     }
     i = 65;
     while (i <= 90)
     {
-      fGH.set(i);
+      fKo.set(i);
       i += 1;
     }
     i = 48;
     while (i <= 57)
     {
-      fGH.set(i);
+      fKo.set(i);
       i += 1;
     }
-    fGH.set(45);
-    fGH.set(95);
-    fGH.set(46);
-    fGH.set(42);
-    fGI = (String)AccessController.doPrivileged(new h("file.encoding"));
+    fKo.set(45);
+    fKo.set(95);
+    fKo.set(46);
+    fKo.set(42);
+    fKp = (String)AccessController.doPrivileged(new h("file.encoding"));
     AppMethodBeat.o(155915);
   }
   
@@ -52,7 +52,7 @@ public final class p
     Object localObject = null;
     try
     {
-      paramString = encode(paramString, fGI);
+      paramString = encode(paramString, fKp);
       AppMethodBeat.o(155913);
       return paramString;
     }
@@ -90,7 +90,7 @@ public final class p
           break;
         }
         k = paramString1.charAt(i);
-        if (fGH.get(k))
+        if (fKo.get(k))
         {
           if (k == 32) {
             j = 1;
@@ -144,7 +144,7 @@ public final class p
         if (k >= paramString1.length()) {
           break;
         }
-        paramString2 = fGH;
+        paramString2 = fKo;
         m = paramString1.charAt(k);
         j = m;
         i = k;
@@ -191,7 +191,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.compatible.util.p
  * JD-Core Version:    0.7.0.1
  */

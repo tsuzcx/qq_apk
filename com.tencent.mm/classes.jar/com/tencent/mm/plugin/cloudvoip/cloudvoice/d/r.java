@@ -1,291 +1,122 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
-import android.content.Context;
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.a;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.protocal.protobuf.dkl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.wxmm.v2conference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.protocal.protobuf.avm;
+import com.tencent.mm.protocal.protobuf.avn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
 
-public final class r
+final class r
 {
-  byte[] frameData;
-  boolean mStarted;
-  private HandlerThread mThread;
-  Timer mTimer;
-  private j nPH;
-  int nSH;
-  int nSI;
-  public final Map<String, c> nSJ;
+  final Map<String, q> ovX;
   
-  public r(j paramj)
+  r()
   {
-    AppMethodBeat.i(90942);
-    this.nPH = null;
-    this.mThread = null;
-    this.nSH = 0;
-    this.nSI = 0;
-    this.mTimer = null;
-    this.frameData = new byte[l.bOh().defaultHeight * l.bOh().defaultWidth * 4];
-    this.nSJ = new HashMap();
-    this.mStarted = false;
-    this.nPH = paramj;
-    AppMethodBeat.o(90942);
+    AppMethodBeat.i(90935);
+    this.ovX = new ConcurrentHashMap(1);
+    AppMethodBeat.o(90935);
   }
   
-  private b RT(String paramString)
+  private void b(final String paramString1, String paramString2, final a parama)
   {
-    AppMethodBeat.i(90945);
-    if (this.nPH == null)
+    AppMethodBeat.i(184491);
+    Object localObject = new b.a();
+    ((b.a)localObject).hvt = new avm();
+    ((b.a)localObject).hvu = new avn();
+    ((b.a)localObject).funcId = 2985;
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getcloudimsession";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    localObject = ((b.a)localObject).aAz();
+    avm localavm = (avm)((b)localObject).hvr.hvw;
+    localavm.djj = paramString1;
+    localavm.ENF = paramString2;
+    IPCRunCgi.a((b)localObject, new IPCRunCgi.a()
     {
-      AppMethodBeat.o(90945);
-      return null;
-    }
-    Object localObject = this.nPH.nQn;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(90945);
-      return null;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      b localb = (b)((Iterator)localObject).next();
-      if (localb.openId.equals(paramString))
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
       {
-        AppMethodBeat.o(90945);
-        return localb;
-      }
-    }
-    AppMethodBeat.o(90945);
-    return null;
-  }
-  
-  final dkl RS(String paramString)
-  {
-    AppMethodBeat.i(184492);
-    ad.d("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "getVideoSize");
-    c localc;
-    synchronized (this.nSJ)
-    {
-      localc = (c)this.nSJ.get(paramString);
-      if (localc == null)
-      {
-        AppMethodBeat.o(184492);
-        return null;
-      }
-    }
-    paramString = new dkl();
-    paramString.Dab = localc.getMemberId();
-    if (localc.bOc())
-    {
-      ??? = (i)localc;
-      if (((i)???).getHeight() > ((i)???).getWidth()) {}
-      for (i = ((i)???).getHeight();; i = ((i)???).getWidth())
-      {
-        paramString.EAb = i;
-        AppMethodBeat.o(184492);
-        return paramString;
-      }
-    }
-    ??? = (s)localc;
-    if (((s)???).getHeight() > ((s)???).getWidth()) {}
-    for (int i = ((s)???).getHeight();; i = ((s)???).getWidth())
-    {
-      paramString.EAb = i;
-      break;
-    }
-  }
-  
-  public final c a(Context paramContext, JSONObject arg2)
-  {
-    AppMethodBeat.i(90944);
-    if (o.nQO.nQT != o.d.nSy)
-    {
-      ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not in room, data:" + ???.toString());
-      AppMethodBeat.o(90944);
-      return null;
-    }
-    String str = ???.optString("openId", "");
-    Object localObject = RT(str);
-    if (localObject == null)
-    {
-      ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not found member, data:" + ???.toString());
-      AppMethodBeat.o(90944);
-      return null;
-    }
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "new View, mid:" + ((b)localObject).nPB + " data:" + ???.toString());
-    if (???.optString("type", "camera").equals("camera")) {
-      paramContext = new i(paramContext, (b)localObject);
-    }
-    for (;;)
-    {
-      if (paramContext.bOc())
-      {
-        ??? = o.nQO;
-        ad.i("MicroMsg.OpenVoice.OpenVoiceService", "hy: onCameraStart");
-        ???.ae(new o.13(???));
-      }
-      synchronized (this.nSJ)
-      {
-        localObject = (c)this.nSJ.get(str);
-        if (localObject != null)
+        AppMethodBeat.i(90934);
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousb.hvs.hvw == null))
         {
-          ((c)localObject).uint();
-          this.nSJ.remove(str);
+          ac.e("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: get sessionkey fail,errType:" + paramAnonymousInt1 + ",errCode:" + paramAnonymousInt2);
+          r.a(r.this, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null, false, parama);
+          AppMethodBeat.o(90934);
+          return;
         }
-        this.nSJ.put(str, paramContext);
-        AppMethodBeat.o(90944);
-        return paramContext;
-        paramContext = new s(paramContext, (b)localObject, ???);
+        paramAnonymousString = (avn)paramAnonymousb.hvs.hvw;
+        paramAnonymousb = new q();
+        paramAnonymousb.ovU = paramAnonymousString.DZz;
+        paramAnonymousb.ovW = bs.Gn();
+        paramAnonymousb.ovV = paramAnonymousString.ENG;
+        ac.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: getSession sessionKey: %s", new Object[] { paramAnonymousb });
+        r.this.ovX.put(paramString1, paramAnonymousb);
+        r.a(r.this, 0, 0, "", paramAnonymousb, true, parama);
+        AppMethodBeat.o(90934);
       }
-    }
+    });
+    AppMethodBeat.o(184491);
   }
   
-  public final boolean bOm()
+  public final void Wd(String paramString)
   {
-    AppMethodBeat.i(90943);
-    ad.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay");
-    try
+    AppMethodBeat.i(90939);
+    ac.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: on exit");
+    if (bs.isNullOrNil(paramString))
     {
-      try
-      {
-        if (this.mStarted) {
-          return false;
-        }
-        this.mStarted = true;
-        if (this.mTimer != null)
-        {
-          this.mTimer.cancel();
-          this.mTimer = null;
-        }
-        this.mTimer = new Timer();
-        this.mTimer.schedule(new TimerTask()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(90941);
-            int k = 8;
-            if (k > 0) {}
-            for (;;)
-            {
-              int i;
-              try
-              {
-                if (r.this.isStarted())
-                {
-                  j = 0;
-                  int m = 0;
-                  i = (byte)(j + 1);
-                  if (j < 2)
-                  {
-                    r.this.frameData[0] = i;
-                    ??? = o.nQO;
-                    j = o.aP(r.this.frameData);
-                    int n = l.bOh().field_remoteImgLength;
-                    int i1 = l.bOh().field_remoteImgHeight;
-                    int i2 = l.bOh().field_remoteImgWidth;
-                    int i3 = l.bOh().field_remoteImgMember;
-                    ??? = r.this;
-                    int i4 = ((r)???).nSH + 1;
-                    ((r)???).nSH = i4;
-                    if (i4 % 100 == 0) {
-                      ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "GetVideo, mark:" + (i - 1) + " ret:" + j + ", len:" + r.this.frameData.length + ", rLen:" + n + ", rHeight:" + i1 + ", rWidth:" + i2 + ", rMid:" + i3 + ", drawCnt:" + r.this.nSI);
-                    }
-                    if ((j <= 0) || (n <= 0) || (i1 <= 0) || (i2 <= 0)) {
-                      break label518;
-                    }
-                    a locala = new a();
-                    locala.nPz = r.this.frameData;
-                    locala.cJQ = n;
-                    locala.width = i2;
-                    locala.height = i1;
-                    locala.nPA = i3;
-                    synchronized (r.this.nSJ)
-                    {
-                      Object localObject3 = r.this.nSJ.entrySet().iterator();
-                      if (!((Iterator)localObject3).hasNext()) {
-                        break label513;
-                      }
-                      c localc = (c)((Map.Entry)((Iterator)localObject3).next()).getValue();
-                      if ((localc == null) || (localc.bOc()) || (localc.getMemberId() != locala.nPA)) {
-                        continue;
-                      }
-                      localc.a(locala);
-                      localObject3 = r.this;
-                      ((r)localObject3).nSI += 1;
-                      j = 1;
-                      if (j == 0) {
-                        ad.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "thread handler, mid:" + locala.nPA + " not found");
-                      }
-                      j = i;
-                      m = 1;
-                    }
-                  }
-                  if (m != 0) {
-                    break label506;
-                  }
-                }
-              }
-              catch (Exception localException)
-              {
-                ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoMgr", localException, "timer task crash", new Object[0]);
-                AppMethodBeat.o(90941);
-                return;
-              }
-              AppMethodBeat.o(90941);
-              return;
-              label506:
-              k -= 1;
-              break;
-              label513:
-              int j = 0;
-              continue;
-              label518:
-              j = i;
-            }
-          }
-        }, 0L, 20L);
-        AppMethodBeat.o(90943);
-        return true;
-      }
-      finally
-      {
-        AppMethodBeat.o(90943);
-      }
-      return false;
+      AppMethodBeat.o(90939);
+      return;
     }
-    catch (Exception localException)
-    {
-      ad.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay error:" + localException.toString());
-      AppMethodBeat.o(90943);
-    }
+    this.ovX.remove(paramString);
+    AppMethodBeat.o(90939);
   }
   
-  public final boolean isStarted()
+  final void a(final int paramInt1, final int paramInt2, final String paramString, final q paramq, final boolean paramBoolean, final a parama)
   {
-    try
+    AppMethodBeat.i(90937);
+    p.otZ.ag(new Runnable()
     {
-      boolean bool = this.mStarted;
-      return bool;
+      public final void run()
+      {
+        AppMethodBeat.i(90933);
+        parama.a(paramInt1, paramInt2, paramString, paramq, paramBoolean);
+        AppMethodBeat.o(90933);
+      }
+    });
+    AppMethodBeat.o(90937);
+  }
+  
+  public final void a(String paramString1, String paramString2, a parama)
+  {
+    AppMethodBeat.i(184490);
+    q localq = (q)this.ovX.get(paramString1);
+    if ((localq != null) && (localq.isValid()))
+    {
+      ac.d("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: has valid sessionKey");
+      a(0, 0, "", localq, false, parama);
+      AppMethodBeat.o(184490);
+      return;
     }
-    finally {}
+    this.ovX.remove(paramString1);
+    b(paramString1, paramString2, parama);
+    AppMethodBeat.o(184490);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.r
  * JD-Core Version:    0.7.0.1
  */

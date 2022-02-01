@@ -4,7 +4,7 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.a.a.ae;
 import com.tencent.mm.emoji.a.a.h;
-import com.tencent.mm.emoji.a.n;
+import com.tencent.mm.emoji.a.o;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class c
@@ -22,20 +22,20 @@ public final class c
       }
       if ((paramObject instanceof h))
       {
-        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).fLP);
+        ((EmojiPopView)paramAbstractPopView).setEmojiInfo(((h)paramObject).fPB);
         AppMethodBeat.o(105304);
       }
     }
     else if ((paramAbstractPopView instanceof SmileyPopView))
     {
-      if ((paramObject instanceof n))
+      if ((paramObject instanceof o))
       {
-        ((SmileyPopView)paramAbstractPopView).setSmileyItem((n)paramObject);
+        ((SmileyPopView)paramAbstractPopView).setSmileyItem((o)paramObject);
         AppMethodBeat.o(105304);
         return;
       }
       if ((paramObject instanceof ae)) {
-        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ae)paramObject).fOB);
+        ((SmileyPopView)paramAbstractPopView).setSmileyItem(((ae)paramObject).fSm);
       }
     }
     AppMethodBeat.o(105304);
@@ -44,7 +44,7 @@ public final class c
   public static AbstractPopView b(Context paramContext, Object paramObject)
   {
     AppMethodBeat.i(105303);
-    if (((paramObject instanceof n)) || ((paramObject instanceof ae)))
+    if (((paramObject instanceof o)) || ((paramObject instanceof ae)))
     {
       paramContext = new SmileyPopView(paramContext);
       AppMethodBeat.o(105303);
@@ -63,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.popview.c
  * JD-Core Version:    0.7.0.1
  */

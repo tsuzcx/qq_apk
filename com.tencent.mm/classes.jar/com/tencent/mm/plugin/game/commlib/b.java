@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.vfs.i;
 
 public class b
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static b rOn;
-  private boolean fOm = false;
+  private static b sWe;
+  private boolean fRX = false;
   
-  public static b cBq()
+  public static b cOz()
   {
     AppMethodBeat.i(89930);
-    if (rOn == null) {}
+    if (sWe == null) {}
     try
     {
-      if (rOn == null) {
-        rOn = new b();
+      if (sWe == null) {
+        sWe = new b();
       }
-      b localb = rOn;
+      b localb = sWe;
       AppMethodBeat.o(89930);
       return localb;
     }
@@ -38,12 +38,12 @@ public class b
   private void release()
   {
     AppMethodBeat.i(89932);
-    this.fOm = false;
-    com.tencent.mm.kernel.g.aeS().b(1311, this);
+    this.fRX = false;
+    com.tencent.mm.kernel.g.agi().b(1311, this);
     AppMethodBeat.o(89932);
   }
   
-  public final void lL(boolean paramBoolean)
+  public final void mE(boolean paramBoolean)
   {
     for (;;)
     {
@@ -56,30 +56,30 @@ public class b
           i = 1;
           if (i == 0)
           {
-            if (!i.eK(a.cBj()))
+            if (!i.eA(a.cOs()))
             {
               i = 1;
-              break label174;
+              break label177;
             }
           }
           else
           {
-            if (!this.fOm)
+            if (!this.fRX)
             {
-              ad.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
+              ac.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
               release();
-              this.fOm = true;
-              com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqf, Long.valueOf(0L));
-              com.tencent.mm.kernel.g.aeS().a(1311, this);
+              this.fRX = true;
+              com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNV, Long.valueOf(0L));
+              com.tencent.mm.kernel.g.agi().a(1311, this);
               c localc = new c();
-              com.tencent.mm.kernel.g.aeS().a(localc, 0);
+              com.tencent.mm.kernel.g.agi().a(localc, 0);
             }
             AppMethodBeat.o(89931);
           }
         }
         else
         {
-          long l = bt.lZ(bt.f((Long)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fge, Long.valueOf(0L))));
+          long l = Math.abs(bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GDS, Long.valueOf(0L)))));
           if (l > 86400L)
           {
             i = 1;
@@ -91,7 +91,7 @@ public class b
         i = 0;
       }
       finally {}
-      label174:
+      label177:
       if (i == 0) {}
     }
   }
@@ -101,11 +101,11 @@ public class b
     AppMethodBeat.i(89933);
     if (paramn.getType() == 1311)
     {
-      ad.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (com.tencent.mm.kernel.g.afz().aeI()) {
+      ac.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (com.tencent.mm.kernel.g.agP().afY()) {
         break label67;
       }
-      ad.w("MicroMsg.GameConfigUpdater", "account not init.");
+      ac.w("MicroMsg.GameConfigUpdater", "account not init.");
     }
     for (;;)
     {
@@ -113,7 +113,7 @@ public class b
       AppMethodBeat.o(89933);
       return;
       label67:
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fge, Long.valueOf(bt.aGK()));
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GDS, Long.valueOf(bs.aNx()));
     }
   }
 }

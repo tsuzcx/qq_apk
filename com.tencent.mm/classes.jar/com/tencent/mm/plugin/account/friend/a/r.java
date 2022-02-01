@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ec;
+import com.tencent.mm.g.c.eg;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class r
-  extends ec
+  extends eg
 {
   protected static c.a info;
   
@@ -15,43 +15,43 @@ public final class r
   {
     AppMethodBeat.i(184421);
     c.a locala = new c.a();
-    locala.EYt = new Field[9];
+    locala.GvF = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "encryptUsername";
-    locala.EYv.put("encryptUsername", "TEXT");
+    locala.GvH.put("encryptUsername", "TEXT");
     localStringBuilder.append(" encryptUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "oldUsername";
-    locala.EYv.put("oldUsername", "TEXT");
+    locala.GvH.put("oldUsername", "TEXT");
     localStringBuilder.append(" oldUsername TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "ticket";
-    locala.EYv.put("ticket", "TEXT");
+    locala.GvH.put("ticket", "TEXT");
     localStringBuilder.append(" ticket TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "nickname";
-    locala.EYv.put("nickname", "TEXT");
+    locala.GvH.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "addState";
-    locala.EYv.put("addState", "INTEGER");
+    locala.GvH.put("addState", "INTEGER");
     localStringBuilder.append(" addState INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "showHead";
-    locala.EYv.put("showHead", "INTEGER");
+    locala.GvH.put("showHead", "INTEGER");
     localStringBuilder.append(" showHead INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "pinyinName";
-    locala.EYv.put("pinyinName", "TEXT");
+    locala.GvH.put("pinyinName", "TEXT");
     localStringBuilder.append(" pinyinName TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "username";
-    locala.EYv.put("username", "TEXT");
+    locala.GvH.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "seq";
-    locala.EYv.put("seq", "INTEGER");
+    locala.GvH.put("seq", "INTEGER");
     localStringBuilder.append(" seq INTEGER");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -66,7 +66,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.r
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@ import java.util.List;
 
 public final class j
 {
-  public String duk;
-  public String dvT;
-  public List<b> upA;
-  public String uph;
-  public String upr;
-  public String ups;
-  public String upt;
-  public String upu;
-  public String upv;
-  public String upw;
-  public String upx;
-  public String upy;
-  public List<a> upz;
+  public String drV;
+  public String dtG;
+  public String vyd;
+  public String vyn;
+  public String vyo;
+  public String vyp;
+  public String vyq;
+  public String vyr;
+  public String vys;
+  public String vyt;
+  public String vyu;
+  public List<a> vyv;
+  public List<b> vyw;
   
   public static final class a
   {

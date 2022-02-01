@@ -15,7 +15,7 @@ public abstract interface o
   
   public abstract boolean b(j paramj);
   
-  public abstract boolean bh();
+  public abstract boolean bo();
   
   public abstract boolean c(j paramj);
   

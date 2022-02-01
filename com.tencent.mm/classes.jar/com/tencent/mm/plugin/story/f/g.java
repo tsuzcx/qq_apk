@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.f;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryCdnUpload;", "", "ISightCdnUploadCallback", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/StoryCdnUpload;", "", "ISightCdnUploadCallback", "plugin-story_release"})
 public abstract interface g {}
 
 

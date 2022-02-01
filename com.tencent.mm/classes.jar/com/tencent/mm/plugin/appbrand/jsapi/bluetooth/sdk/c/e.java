@@ -4,8 +4,8 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public boolean bnd;
   public JSONObject jsonObject;
+  public boolean kkz;
   public String uuid;
 }
 

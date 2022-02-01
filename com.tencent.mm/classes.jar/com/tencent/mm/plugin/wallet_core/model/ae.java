@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class ae
 {
-  public static List<Bankcard> ecn()
+  public static List<Bankcard> erJ()
   {
-    AppMethodBeat.i(201270);
-    ArrayList localArrayList = sB(false);
-    AppMethodBeat.o(201270);
+    AppMethodBeat.i(210294);
+    ArrayList localArrayList = tC(false);
+    AppMethodBeat.o(210294);
     return localArrayList;
   }
   
-  public static ArrayList<Bankcard> sB(boolean paramBoolean)
+  public static ArrayList<Bankcard> tC(boolean paramBoolean)
   {
     AppMethodBeat.i(70433);
-    ad.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {}
-    for (ArrayList localArrayList1 = s.ecc().edc();; localArrayList1 = s.ecc().sC(true))
+    for (ArrayList localArrayList1 = s.ery().esx();; localArrayList1 = s.ery().tD(true))
     {
-      localObject = s.ecc().eda();
+      localObject = s.ery().esv();
       if (localObject != null) {
         break;
       }
-      ad.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
+      ac.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
       AppMethodBeat.o(70433);
       return localArrayList1;
     }
@@ -43,7 +43,7 @@ public final class ae
       if (localIterator.hasNext())
       {
         Bankcard localBankcard = (Bankcard)localIterator.next();
-        if (!localBankcard.field_bindSerial.equals(localc.uns)) {
+        if (!localBankcard.field_bindSerial.equals(localc.vwo)) {
           break;
         }
         localArrayList1.remove(localBankcard);
@@ -53,7 +53,7 @@ public final class ae
     label166:
     if (!localArrayList1.isEmpty())
     {
-      ad.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
+      ac.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
       localArrayList2.addAll(localArrayList1);
     }
     AppMethodBeat.o(70433);

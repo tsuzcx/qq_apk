@@ -13,11 +13,11 @@ public @interface c
 {
   String value();
   
-  String[] xv() default {};
+  String[] xi() default {};
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.a.c
  * JD-Core Version:    0.7.0.1
  */

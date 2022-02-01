@@ -12,42 +12,42 @@ import java.util.Set;
 public abstract interface h
   extends j
 {
-  public static final h.a JTC = h.a.JTE;
+  public static final h.a LGV = h.a.LGX;
   
   public abstract Collection<? extends ah> a(f paramf, a parama);
   
   public abstract Collection<? extends am> b(f paramf, a parama);
   
-  public abstract Set<f> fzU();
+  public abstract Set<f> fSy();
   
-  public abstract Set<f> fzV();
+  public abstract Set<f> fSz();
   
   public static final class b
     extends i
   {
-    public static final b JTG;
+    public static final b LGZ;
     
     static
     {
       AppMethodBeat.i(60216);
-      JTG = new b();
+      LGZ = new b();
       AppMethodBeat.o(60216);
     }
     
-    public final Set<f> fzU()
+    public final Set<f> fSy()
     {
-      return (Set)x.Jgn;
+      return (Set)x.KTH;
     }
     
-    public final Set<f> fzV()
+    public final Set<f> fSz()
     {
-      return (Set)x.Jgn;
+      return (Set)x.KTH;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.h
  * JD-Core Version:    0.7.0.1
  */

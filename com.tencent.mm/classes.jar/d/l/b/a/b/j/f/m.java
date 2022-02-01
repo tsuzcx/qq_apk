@@ -16,19 +16,19 @@ import java.util.List;
 public final class m
   extends a
 {
-  public static final a JTO;
-  private final b JTN;
+  public static final a LHh;
+  private final b LHg;
   
   static
   {
     AppMethodBeat.i(60247);
-    JTO = new a((byte)0);
+    LHh = new a((byte)0);
     AppMethodBeat.o(60247);
   }
   
   private m(b paramb)
   {
-    this.JTN = paramb;
+    this.LHg = paramb;
   }
   
   public static final h b(String paramString, Collection<? extends ab> paramCollection)
@@ -44,7 +44,7 @@ public final class m
     AppMethodBeat.i(60245);
     k.h(paramf, "name");
     k.h(parama, "location");
-    paramf = d.l.b.a.b.j.j.b(super.a(paramf, parama), (d.g.a.b)d.JTR);
+    paramf = d.l.b.a.b.j.j.b(super.a(paramf, parama), (d.g.a.b)d.LHk);
     AppMethodBeat.o(60245);
     return paramf;
   }
@@ -76,7 +76,7 @@ public final class m
       AppMethodBeat.o(60246);
       throw paramd;
     }
-    paramd = (Collection)d.a.j.b(d.l.b.a.b.j.j.b((Collection)paramd, (d.g.a.b)b.JTP), (Iterable)paramb);
+    paramd = (Collection)d.a.j.b(d.l.b.a.b.j.j.b((Collection)paramd, (d.g.a.b)b.LHi), (Iterable)paramb);
     AppMethodBeat.o(60246);
     return paramd;
   }
@@ -86,7 +86,7 @@ public final class m
     AppMethodBeat.i(60244);
     k.h(paramf, "name");
     k.h(parama, "location");
-    paramf = d.l.b.a.b.j.j.b(super.b(paramf, parama), (d.g.a.b)c.JTQ);
+    paramf = d.l.b.a.b.j.j.b(super.b(paramf, parama), (d.g.a.b)c.LHj);
     AppMethodBeat.o(60244);
     return paramf;
   }
@@ -102,7 +102,7 @@ public final class m
       Collection localCollection = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localCollection.add(((ab)((Iterator)localObject).next()).fyj());
+        localCollection.add(((ab)((Iterator)localObject).next()).fQN());
       }
       paramString = new b(paramString, (List)localCollection);
       if (paramCollection.size() <= 1)
@@ -121,12 +121,12 @@ public final class m
     extends d.g.b.l
     implements d.g.a.b<d.l.b.a.b.b.a, d.l.b.a.b.b.a>
   {
-    public static final b JTP;
+    public static final b LHi;
     
     static
     {
       AppMethodBeat.i(60239);
-      JTP = new b();
+      LHi = new b();
       AppMethodBeat.o(60239);
     }
     
@@ -140,12 +140,12 @@ public final class m
     extends d.g.b.l
     implements d.g.a.b<am, am>
   {
-    public static final c JTQ;
+    public static final c LHj;
     
     static
     {
       AppMethodBeat.i(60241);
-      JTQ = new c();
+      LHj = new c();
       AppMethodBeat.o(60241);
     }
     
@@ -159,12 +159,12 @@ public final class m
     extends d.g.b.l
     implements d.g.a.b<ah, ah>
   {
-    public static final d JTR;
+    public static final d LHk;
     
     static
     {
       AppMethodBeat.i(60243);
-      JTR = new d();
+      LHk = new d();
       AppMethodBeat.o(60243);
     }
     
@@ -176,7 +176,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.m
  * JD-Core Version:    0.7.0.1
  */

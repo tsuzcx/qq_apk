@@ -47,6 +47,13 @@ public final class pf
       localPaint = c.a(localPaint, paramVarArgs);
       localPaint.setColor(-15028967);
       localObject = c.n(paramVarArgs);
+      ((Path)localObject).moveTo(45.424198F, 69.0F);
+      ((Path)localObject).lineTo(39.625198F, 63.291F);
+      ((Path)localObject).cubicTo(47.098202F, 56.445F, 51.769199F, 46.713001F, 51.769199F, 35.918999F);
+      ((Path)localObject).cubicTo(51.769199F, 25.209F, 47.173199F, 15.546F, 39.8022F, 8.709F);
+      ((Path)localObject).lineTo(45.6012F, 3.0F);
+      ((Path)localObject).cubicTo(54.472198F, 11.295F, 60.001202F, 22.976999F, 60.001202F, 35.918999F);
+      ((Path)localObject).cubicTo(60.001202F, 48.945F, 54.4002F, 60.695999F, 45.424198F, 69.0F);
       ((Path)localObject).moveTo(31.891199F, 55.674F);
       ((Path)localObject).lineTo(26.089199F, 49.959F);
       ((Path)localObject).cubicTo(30.058201F, 46.523998F, 32.5602F, 41.505001F, 32.5602F, 35.918999F);

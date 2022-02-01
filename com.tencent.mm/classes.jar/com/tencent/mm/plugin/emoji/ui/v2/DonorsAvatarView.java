@@ -7,13 +7,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.o;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.protocal.protobuf.EmotionDonor;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -21,11 +21,11 @@ public class DonorsAvatarView
   extends LinearLayout
 {
   private int mMaxCount;
-  private int oFb;
-  private int oFc;
-  private int oFd;
-  private int oFe;
-  private LinearLayout.LayoutParams oFf;
+  private int piC;
+  private int piD;
+  private int piE;
+  private int piF;
+  private LinearLayout.LayoutParams piG;
   
   public DonorsAvatarView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,15 +47,15 @@ public class DonorsAvatarView
   {
     AppMethodBeat.i(109132);
     setOrientation(0);
-    this.oFb = com.tencent.mm.cd.a.hV(getContext());
-    this.oFc = com.tencent.mm.cd.a.ao(getContext(), 2131166213);
-    this.oFd = com.tencent.mm.cd.a.ao(getContext(), 2131165187);
-    this.oFe = com.tencent.mm.cd.a.ao(getContext(), 2131165516);
-    this.oFf = new LinearLayout.LayoutParams(this.oFc, this.oFc);
-    this.oFf.leftMargin = this.oFd;
-    this.oFf.rightMargin = this.oFd;
-    this.mMaxCount = ((this.oFb - this.oFe * 2) / (this.oFc + this.oFd * 2));
-    ad.i("MicroMsg.emoji.DonorsAvatarView", "max count:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
+    this.piC = com.tencent.mm.cc.a.ig(getContext());
+    this.piD = com.tencent.mm.cc.a.au(getContext(), 2131166213);
+    this.piE = com.tencent.mm.cc.a.au(getContext(), 2131165187);
+    this.piF = com.tencent.mm.cc.a.au(getContext(), 2131165516);
+    this.piG = new LinearLayout.LayoutParams(this.piD, this.piD);
+    this.piG.leftMargin = this.piE;
+    this.piG.rightMargin = this.piE;
+    this.mMaxCount = ((this.piC - this.piF * 2) / (this.piD + this.piE * 2));
+    ac.i("MicroMsg.emoji.DonorsAvatarView", "max count:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
     AppMethodBeat.o(109132);
   }
   
@@ -80,11 +80,11 @@ public class DonorsAvatarView
         if (localEmotionDonor != null)
         {
           localImageView = new ImageView(getContext());
-          localImageView.setLayoutParams(this.oFf);
-          if (bt.isNullOrNil(localEmotionDonor.HeadUrl)) {
+          localImageView.setLayoutParams(this.piG);
+          if (bs.isNullOrNil(localEmotionDonor.HeadUrl)) {
             break label143;
           }
-          o.ayJ().a(localEmotionDonor.HeadUrl, localImageView, e.k(paramString, localEmotionDonor.HeadUrl, new Object[0]));
+          o.aFB().a(localEmotionDonor.HeadUrl, localImageView, e.k(paramString, localEmotionDonor.HeadUrl, new Object[0]));
         }
       }
       for (;;)
@@ -97,11 +97,11 @@ public class DonorsAvatarView
         try
         {
           label143:
-          localImageView.setImageBitmap(BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cd.a.getDensity(null)));
+          localImageView.setImageBitmap(BackwardSupportUtil.b.b(ai.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null)));
         }
         catch (IOException localIOException)
         {
-          ad.printErrStackTrace("MicroMsg.emoji.DonorsAvatarView", localIOException, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.emoji.DonorsAvatarView", localIOException, "", new Object[0]);
         }
       }
     }

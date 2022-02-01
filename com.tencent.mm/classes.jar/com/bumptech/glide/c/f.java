@@ -15,32 +15,32 @@ public abstract interface f
   
   public static enum a
   {
-    public final boolean aCu;
+    public final boolean aDm;
     
     static
     {
       AppMethodBeat.i(76845);
-      aCm = new a("GIF", 0, true);
-      aCn = new a("JPEG", 1, false);
-      aCo = new a("RAW", 2, false);
-      aCp = new a("PNG_A", 3, true);
-      aCq = new a("PNG", 4, false);
-      aCr = new a("WEBP_A", 5, true);
-      aCs = new a("WEBP", 6, false);
-      aCt = new a("UNKNOWN", 7, false);
-      aCv = new a[] { aCm, aCn, aCo, aCp, aCq, aCr, aCs, aCt };
+      aDe = new a("GIF", 0, true);
+      aDf = new a("JPEG", 1, false);
+      aDg = new a("RAW", 2, false);
+      aDh = new a("PNG_A", 3, true);
+      aDi = new a("PNG", 4, false);
+      aDj = new a("WEBP_A", 5, true);
+      aDk = new a("WEBP", 6, false);
+      aDl = new a("UNKNOWN", 7, false);
+      aDn = new a[] { aDe, aDf, aDg, aDh, aDi, aDj, aDk, aDl };
       AppMethodBeat.o(76845);
     }
     
     private a(boolean paramBoolean)
     {
-      this.aCu = paramBoolean;
+      this.aDm = paramBoolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.f
  * JD-Core Version:    0.7.0.1
  */

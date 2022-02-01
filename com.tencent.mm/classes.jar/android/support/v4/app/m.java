@@ -16,7 +16,7 @@ final class m
 {
   private static boolean a(Transition paramTransition)
   {
-    return (!h(paramTransition.getTargetIds())) || (!h(paramTransition.getTargetNames())) || (!h(paramTransition.getTargetTypes()));
+    return (!g(paramTransition.getTargetIds())) || (!g(paramTransition.getTargetNames())) || (!g(paramTransition.getTargetTypes()));
   }
   
   public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
@@ -135,7 +135,7 @@ final class m
           i += 1;
         }
       }
-      else if ((!a(paramObject)) && (h(paramObject.getTargets())))
+      else if ((!a(paramObject)) && (g(paramObject.getTargets())))
       {
         j = paramArrayList.size();
         i = 0;
@@ -268,12 +268,12 @@ final class m
     }
   }
   
-  public final boolean f(Object paramObject)
+  public final boolean h(Object paramObject)
   {
     return paramObject instanceof Transition;
   }
   
-  public final Object g(Object paramObject)
+  public final Object i(Object paramObject)
   {
     Transition localTransition = null;
     if (paramObject != null) {
@@ -282,7 +282,7 @@ final class m
     return localTransition;
   }
   
-  public final Object h(Object paramObject)
+  public final Object j(Object paramObject)
   {
     if (paramObject == null) {
       return null;

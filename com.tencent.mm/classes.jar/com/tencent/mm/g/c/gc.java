@@ -8,16 +8,16 @@ public abstract class gc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ejL = "msgId".hashCode();
-  private static final int elb = "content".hashCode();
-  private static final int faT = "cmsgId".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eok = "username".hashCode();
+  private static final int epZ = "openId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ejH = true;
-  private boolean ekE = true;
-  private boolean faS = true;
-  public String field_cmsgId;
-  public String field_content;
-  public long field_msgId;
+  private boolean enx = true;
+  private boolean eoh = true;
+  private boolean epD = true;
+  public String field_appId;
+  public String field_openId;
+  public String field_username;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class gc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ejL != k) {
+      if (epZ != k) {
         break label65;
       }
-      this.field_msgId = paramCursor.getLong(i);
-      this.ejH = true;
+      this.field_openId = paramCursor.getString(i);
+      this.epD = true;
     }
     for (;;)
     {
@@ -44,10 +44,10 @@ public abstract class gc
       break label20;
       break;
       label65:
-      if (faT == k) {
-        this.field_cmsgId = paramCursor.getString(i);
-      } else if (elb == k) {
-        this.field_content = paramCursor.getString(i);
+      if (enO == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eok == k) {
+        this.field_username = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,17 +57,14 @@ public abstract class gc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ejH) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.epD) {
+      localContentValues.put("openId", this.field_openId);
     }
-    if (this.faS) {
-      localContentValues.put("cmsgId", this.field_cmsgId);
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.field_content == null) {
-      this.field_content = "";
-    }
-    if (this.ekE) {
-      localContentValues.put("content", this.field_content);
+    if (this.eoh) {
+      localContentValues.put("username", this.field_username);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

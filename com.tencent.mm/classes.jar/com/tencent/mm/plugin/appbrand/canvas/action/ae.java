@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetShadowActionArg;
+import com.tencent.mm.plugin.appbrand.z.g;
 import org.json.JSONArray;
 
 public final class ae
@@ -15,8 +15,8 @@ public final class ae
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
     AppMethodBeat.i(144968);
-    paramd.iYM.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
-    paramd.iYL.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.jzc.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.jzb.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
     AppMethodBeat.o(144968);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ae
       AppMethodBeat.o(144969);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.iZs, paramCanvas.color);
+    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.jzH, paramCanvas.color);
     AppMethodBeat.o(144969);
     return bool;
   }
@@ -57,7 +57,7 @@ public final class ae
     return bool;
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144966);
     SetShadowActionArg localSetShadowActionArg = new SetShadowActionArg();
@@ -72,7 +72,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ae
  * JD-Core Version:    0.7.0.1
  */

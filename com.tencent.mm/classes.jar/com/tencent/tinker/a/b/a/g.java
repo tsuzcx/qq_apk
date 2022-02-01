@@ -5,22 +5,22 @@ import java.io.EOFException;
 public final class g
   extends a
 {
-  final short[] ICm;
+  final short[] Kov;
   
   public g(short[] paramArrayOfShort)
   {
     if (paramArrayOfShort == null) {
       throw new NullPointerException("array == null");
     }
-    this.ICm = paramArrayOfShort;
+    this.Kov = paramArrayOfShort;
   }
   
   public final int read()
   {
     try
     {
-      int i = this.ICm[this.amn];
-      foX();
+      int i = this.Kov[this.anh];
+      fHf();
       return i & 0xFFFF;
     }
     catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)

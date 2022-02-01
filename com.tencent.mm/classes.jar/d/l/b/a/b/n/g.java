@@ -11,12 +11,12 @@ public abstract interface g
   public static final class a
     implements g
   {
-    public static final a Kac;
+    public static final a LNv;
     
     static
     {
       AppMethodBeat.i(61302);
-      Kac = new a();
+      LNv = new a();
       AppMethodBeat.o(61302);
     }
     
@@ -32,7 +32,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.g
  * JD-Core Version:    0.7.0.1
  */

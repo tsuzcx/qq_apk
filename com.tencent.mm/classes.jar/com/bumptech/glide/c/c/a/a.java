@@ -12,13 +12,13 @@ import java.io.InputStream;
 public final class a
   implements n<g, InputStream>
 {
-  public static final i<Integer> aIg;
-  private final m<g, g> aIh;
+  public static final i<Integer> aIW;
+  private final m<g, g> aIX;
   
   static
   {
     AppMethodBeat.i(77330);
-    aIg = i.b("com.bumptech.glide.load.model.stream.HttpGlideUrlLoader.Timeout", Integer.valueOf(2500));
+    aIW = i.b("com.bumptech.glide.load.model.stream.HttpGlideUrlLoader.Timeout", Integer.valueOf(2500));
     AppMethodBeat.o(77330);
   }
   
@@ -29,25 +29,25 @@ public final class a
   
   public a(m<g, g> paramm)
   {
-    this.aIh = paramm;
+    this.aIX = paramm;
   }
   
   public static final class a
     implements o<g, InputStream>
   {
-    private final m<g, g> aIh;
+    private final m<g, g> aIX;
     
     public a()
     {
       AppMethodBeat.i(77327);
-      this.aIh = new m(500L);
+      this.aIX = new m(500L);
       AppMethodBeat.o(77327);
     }
     
     public final n<g, InputStream> a(r paramr)
     {
       AppMethodBeat.i(77328);
-      paramr = new a(this.aIh);
+      paramr = new a(this.aIX);
       AppMethodBeat.o(77328);
       return paramr;
     }
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.a.a
  * JD-Core Version:    0.7.0.1
  */

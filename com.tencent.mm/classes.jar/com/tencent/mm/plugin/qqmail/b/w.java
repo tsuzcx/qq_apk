@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
@@ -28,33 +28,33 @@ import java.util.Map;
 
 public final class w
 {
-  private static SparseArray<String> uMa = null;
-  public q uLV;
-  public i uLW;
-  private k uLX;
-  private Map<Long, d> uLY;
-  private Map<Long, b> uLZ;
-  private Map<String, String> uLv;
+  private static SparseArray<String> vUQ = null;
+  public q vUL;
+  public i vUM;
+  private k vUN;
+  private Map<Long, d> vUO;
+  private Map<Long, b> vUP;
+  private Map<String, String> vUm;
   
   public w(int paramInt, String paramString)
   {
     AppMethodBeat.i(122738);
-    this.uLv = new HashMap();
-    this.uLY = new HashMap();
-    this.uLZ = new HashMap();
+    this.vUm = new HashMap();
+    this.vUO = new HashMap();
+    this.vUP = new HashMap();
     ag.setHost("qqmail.weixin.qq.com:443");
     ag.setUserAgent("weixin/" + paramString + "/0x" + Integer.toHexString(paramInt));
     reset();
     AppMethodBeat.o(122738);
   }
   
-  private static String JK(int paramInt)
+  private static String LJ(int paramInt)
   {
     AppMethodBeat.i(122752);
     Object localObject1;
-    if (uMa == null)
+    if (vUQ == null)
     {
-      uMa = new SparseArray();
+      vUQ = new SparseArray();
       localObject1 = HttpURLConnection.class.getDeclaredFields();
       int k = localObject1.length;
       int i = 0;
@@ -79,7 +79,7 @@ public final class w
             }
             localStringBuilder.append("error");
           }
-          uMa.put(m, localStringBuilder.toString().toLowerCase());
+          vUQ.put(m, localStringBuilder.toString().toLowerCase());
         }
         catch (Exception localException)
         {
@@ -91,10 +91,10 @@ public final class w
     }
     else
     {
-      localObject1 = (String)uMa.get(paramInt);
+      localObject1 = (String)vUQ.get(paramInt);
       if (localObject1 == null)
       {
-        localObject1 = bt(paramInt, "request error");
+        localObject1 = by(paramInt, "request error");
         AppMethodBeat.o(122752);
         return localObject1;
       }
@@ -115,8 +115,8 @@ public final class w
     ((Map)localObject).put("charset", "utf-8");
     ((Map)localObject).put("clientip", getLocalIp());
     paramString = new d(paramString, new n.b(paramInt, (Map)localObject, getCookie(), paramd), parama);
-    paramString.uMj = paramc;
-    aq.f(new Runnable()
+    paramString.vUZ = paramc;
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -133,7 +133,7 @@ public final class w
     return l;
   }
   
-  private static String bt(int paramInt, String paramString)
+  private static String by(int paramInt, String paramString)
   {
     AppMethodBeat.i(122753);
     int i = 0;
@@ -160,7 +160,7 @@ public final class w
       continue;
       paramInt = 2131761984;
     }
-    paramString = a.aq(aj.getContext(), paramInt);
+    paramString = a.aw(ai.getContext(), paramInt);
     AppMethodBeat.o(122753);
     return paramString;
   }
@@ -168,16 +168,16 @@ public final class w
   private void cancel()
   {
     AppMethodBeat.i(122745);
-    Iterator localIterator = this.uLZ.values().iterator();
+    Iterator localIterator = this.vUP.values().iterator();
     while (localIterator.hasNext()) {
       ((b)localIterator.next()).cancel(true);
     }
-    this.uLZ.clear();
-    this.uLY.clear();
+    this.vUP.clear();
+    this.vUO.clear();
     AppMethodBeat.o(122745);
   }
   
-  public static String dec()
+  public static String drK()
   {
     return "https://qqmail.weixin.qq.com:443";
   }
@@ -185,8 +185,8 @@ public final class w
   public static String getDownloadPath()
   {
     AppMethodBeat.i(122749);
-    String str = b.aij();
-    com.tencent.mm.vfs.i.aMF(str);
+    String str = b.apj();
+    com.tencent.mm.vfs.i.aSh(str);
     AppMethodBeat.o(122749);
     return str;
   }
@@ -269,21 +269,21 @@ public final class w
   public final void cancel(long paramLong)
   {
     AppMethodBeat.i(122746);
-    b localb = (b)this.uLZ.get(Long.valueOf(paramLong));
+    b localb = (b)this.vUP.get(Long.valueOf(paramLong));
     if (localb != null)
     {
       localb.onCancelled();
       localb.cancel(true);
     }
-    this.uLZ.remove(Long.valueOf(paramLong));
-    this.uLY.remove(Long.valueOf(paramLong));
+    this.vUP.remove(Long.valueOf(paramLong));
+    this.vUO.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(122746);
   }
   
   public final void clearData()
   {
     AppMethodBeat.i(122748);
-    com.tencent.mm.vfs.i.cO("wcf://mailapp/", true);
+    com.tencent.mm.vfs.i.cU("wcf://mailapp/", true);
     reset();
     AppMethodBeat.o(122748);
   }
@@ -291,16 +291,16 @@ public final class w
   public final Map<String, String> getCookie()
   {
     AppMethodBeat.i(122751);
-    String str = (String)g.afB().afk().get(-1535680990, null);
-    Map localMap = this.uLv;
+    String str = (String)g.agR().agA().get(-1535680990, null);
+    Map localMap = this.vUm;
     if (str == null) {}
     for (Object localObject = "";; localObject = str)
     {
       localMap.put("skey", localObject);
-      int i = bt.i(g.afB().afk().get(9, null), 0);
-      this.uLv.put("uin", "o" + new p(i));
-      ad.d("MicroMsg.NormalMailAppService", "sKey:%b, uin:%d", new Object[] { Boolean.valueOf(bt.isNullOrNil(str)), Integer.valueOf(i) });
-      localObject = this.uLv;
+      int i = bs.l(g.agR().agA().get(9, null), 0);
+      this.vUm.put("uin", "o" + new p(i));
+      ac.d("MicroMsg.NormalMailAppService", "sKey:%b, uin:%d", new Object[] { Boolean.valueOf(bs.isNullOrNil(str)), Integer.valueOf(i) });
+      localObject = this.vUm;
       AppMethodBeat.o(122751);
       return localObject;
     }
@@ -309,12 +309,12 @@ public final class w
   public final void reset()
   {
     AppMethodBeat.i(122747);
-    ag.akT(getDownloadPath());
+    ag.apS(getDownloadPath());
     cancel();
-    this.uLv.clear();
-    this.uLV = new q("wcf://mailapp/" + "addr/");
-    this.uLW = new i("wcf://mailapp/" + "draft/");
-    this.uLX = new k("wcf://mailapp/" + "http/", 0);
+    this.vUm.clear();
+    this.vUL = new q("wcf://mailapp/" + "addr/");
+    this.vUM = new i("wcf://mailapp/" + "draft/");
+    this.vUN = new k("wcf://mailapp/" + "http/", 0);
     AppMethodBeat.o(122747);
   }
   
@@ -338,26 +338,26 @@ public final class w
     extends AsyncTask<w.d, Integer, w.d>
     implements n.a
   {
-    private n uMd;
-    w.d uMe;
+    private n vUT;
+    w.d vUU;
     
     private b() {}
     
     public final boolean b(w.d paramd)
     {
       AppMethodBeat.i(122729);
-      if (!paramd.uMn.onReady())
+      if (!paramd.vVd.onReady())
       {
         AppMethodBeat.o(122729);
         return false;
       }
-      this.uMe = paramd;
+      this.vUU = paramd;
       super.execute(new w.d[] { paramd });
       AppMethodBeat.o(122729);
       return true;
     }
     
-    public final void ddV()
+    public final void drD()
     {
       AppMethodBeat.i(122730);
       publishProgress(new Integer[] { Integer.valueOf(0) });
@@ -367,8 +367,8 @@ public final class w
     protected final void onCancelled()
     {
       AppMethodBeat.i(122731);
-      g.afC();
-      g.afE().ax(new Runnable()
+      g.agS();
+      g.agU().az(new Runnable()
       {
         public final void run()
         {
@@ -394,25 +394,25 @@ public final class w
   
   public static final class c
   {
-    public boolean uMg = false;
-    public boolean uMh = true;
-    public boolean uMi = true;
+    public boolean vUW = false;
+    public boolean vUX = true;
+    public boolean vUY = true;
     
     public final void fromBundle(Bundle paramBundle)
     {
       AppMethodBeat.i(122736);
-      this.uMg = paramBundle.getBoolean("qqmail_httpoptions_expired");
-      this.uMh = paramBundle.getBoolean("qqmail_httpoptions_needcache");
-      this.uMi = paramBundle.getBoolean("qqmail_httpoptions_needparse");
+      this.vUW = paramBundle.getBoolean("qqmail_httpoptions_expired");
+      this.vUX = paramBundle.getBoolean("qqmail_httpoptions_needcache");
+      this.vUY = paramBundle.getBoolean("qqmail_httpoptions_needparse");
       AppMethodBeat.o(122736);
     }
     
     public final void toBundle(Bundle paramBundle)
     {
       AppMethodBeat.i(122735);
-      paramBundle.putBoolean("qqmail_httpoptions_expired", this.uMg);
-      paramBundle.putBoolean("qqmail_httpoptions_needcache", this.uMh);
-      paramBundle.putBoolean("qqmail_httpoptions_needparse", this.uMi);
+      paramBundle.putBoolean("qqmail_httpoptions_expired", this.vUW);
+      paramBundle.putBoolean("qqmail_httpoptions_needcache", this.vUX);
+      paramBundle.putBoolean("qqmail_httpoptions_needparse", this.vUY);
       AppMethodBeat.o(122735);
     }
   }
@@ -420,27 +420,27 @@ public final class w
   final class d
   {
     long id;
-    w.c uMj;
-    n.b uMk;
-    n.c uMl;
-    Map<String, String> uMm;
-    w.a uMn;
     String uri;
+    w.c vUZ;
+    n.b vVa;
+    n.c vVb;
+    Map<String, String> vVc;
+    w.a vVd;
     
     public d(String paramString, n.b paramb, w.a parama)
     {
       AppMethodBeat.i(122737);
       this.id = System.currentTimeMillis();
       this.uri = paramString;
-      this.uMk = paramb;
-      this.uMn = parama;
+      this.vVa = paramb;
+      this.vVd = parama;
       AppMethodBeat.o(122737);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.w
  * JD-Core Version:    0.7.0.1
  */

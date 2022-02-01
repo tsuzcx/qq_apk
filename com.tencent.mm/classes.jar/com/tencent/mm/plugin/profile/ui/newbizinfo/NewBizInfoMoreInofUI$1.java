@@ -12,7 +12,7 @@ final class NewBizInfoMoreInofUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(27545);
-    this.uGa.finish();
+    this.vOR.finish();
     AppMethodBeat.o(27545);
     return true;
   }

@@ -144,9 +144,9 @@ final class FragmentManagerImpl
     final ViewGroup localViewGroup = paramFragment.mContainer;
     localViewGroup.startViewTransition(localView);
     paramFragment.setStateAfterAnimating(paramInt);
-    if (paramc.CN != null)
+    if (paramc.DM != null)
     {
-      localObject = new e(paramc.CN, localViewGroup, localView);
+      localObject = new e(paramc.DM, localViewGroup, localView);
       paramFragment.setAnimatingAway(paramFragment.mView);
       ((Animation)localObject).setAnimationListener(new b(getAnimationListener((Animation)localObject))
       {
@@ -170,8 +170,8 @@ final class FragmentManagerImpl
       paramFragment.mView.startAnimation((Animation)localObject);
       return;
     }
-    Object localObject = paramc.CO;
-    paramFragment.setAnimator(paramc.CO);
+    Object localObject = paramc.DN;
+    paramFragment.setAnimator(paramc.DN);
     ((Animator)localObject).addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
@@ -335,14 +335,14 @@ final class FragmentManagerImpl
         bool = false;
         break label45;
         localb.aq(1);
-        localb.dB();
+        localb.dI();
       }
     }
   }
   
   private void executeOpsTogether(ArrayList<b> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2)
   {
-    boolean bool = ((b)paramArrayList.get(paramInt1)).BV;
+    boolean bool = ((b)paramArrayList.get(paramInt1)).CU;
     Object localObject;
     int j;
     label55:
@@ -363,7 +363,7 @@ final class FragmentManagerImpl
       }
       localObject = localb.a(this.mTmpAddedFragments, (Fragment)localObject);
       label101:
-      if ((i == 0) && (!localb.BM)) {
+      if ((i == 0) && (!localb.CK)) {
         break label152;
       }
     }
@@ -412,7 +412,7 @@ final class FragmentManagerImpl
           freeBackStackIndex(((b)localObject).mIndex);
           ((b)localObject).mIndex = -1;
         }
-        ((b)localObject).dA();
+        ((b)localObject).dH();
         k += 1;
       }
       if (i != 0) {
@@ -438,14 +438,14 @@ final class FragmentManagerImpl
         return;
       }
       localj = (j)this.mPostponedTransactions.get(j);
-      if ((paramArrayList == null) || (localj.CX)) {
+      if ((paramArrayList == null) || (localj.DV)) {
         break label101;
       }
-      k = paramArrayList.indexOf(localj.CY);
+      k = paramArrayList.indexOf(localj.DW);
       if ((k == -1) || (!((Boolean)paramArrayList1.get(k)).booleanValue())) {
         break label101;
       }
-      localj.dH();
+      localj.dO();
     }
     for (;;)
     {
@@ -454,7 +454,7 @@ final class FragmentManagerImpl
       i = this.mPostponedTransactions.size();
       break;
       label101:
-      if (localj.CZ == 0) {}
+      if (localj.DX == 0) {}
       int m;
       for (k = 1;; k = 0)
       {
@@ -467,27 +467,27 @@ final class FragmentManagerImpl
           }
           m = j;
           k = i;
-          if (!localj.CY.a(paramArrayList, 0, paramArrayList.size())) {
+          if (!localj.DW.a(paramArrayList, 0, paramArrayList.size())) {
             break label240;
           }
         }
         this.mPostponedTransactions.remove(j);
         m = j - 1;
         k = i - 1;
-        if ((paramArrayList == null) || (localj.CX)) {
+        if ((paramArrayList == null) || (localj.DV)) {
           break label235;
         }
-        i = paramArrayList.indexOf(localj.CY);
+        i = paramArrayList.indexOf(localj.DW);
         if ((i == -1) || (!((Boolean)paramArrayList1.get(i)).booleanValue())) {
           break label235;
         }
-        localj.dH();
+        localj.dO();
         j = m;
         i = k;
         break;
       }
       label235:
-      localj.dG();
+      localj.dN();
       label240:
       j = m;
       i = k;
@@ -527,7 +527,7 @@ final class FragmentManagerImpl
   {
     if (this.mPostponedTransactions != null) {
       while (!this.mPostponedTransactions.isEmpty()) {
-        ((j)this.mPostponedTransactions.remove(0)).dG();
+        ((j)this.mPostponedTransactions.remove(0)).dN();
       }
     }
   }
@@ -603,7 +603,7 @@ final class FragmentManagerImpl
     int i = 0;
     while (i < j)
     {
-      Fragment localFragment = (Fragment)paramb.LN[i];
+      Fragment localFragment = (Fragment)paramb.MK[i];
       if (!localFragment.mAdded)
       {
         View localView = localFragment.getView();
@@ -652,14 +652,14 @@ final class FragmentManagerImpl
   {
     boolean bool2 = false;
     boolean bool1;
-    if ((paramc.CN instanceof AlphaAnimation))
+    if ((paramc.DM instanceof AlphaAnimation))
     {
       bool1 = true;
       return bool1;
     }
-    if ((paramc.CN instanceof AnimationSet))
+    if ((paramc.DM instanceof AnimationSet))
     {
-      paramc = ((AnimationSet)paramc.CN).getAnimations();
+      paramc = ((AnimationSet)paramc.DM).getAnimations();
       int i = 0;
       for (;;)
       {
@@ -673,7 +673,7 @@ final class FragmentManagerImpl
         i += 1;
       }
     }
-    return modifiesAlpha(paramc.CO);
+    return modifiesAlpha(paramc.DN);
   }
   
   private boolean popBackStackImmediate(String paramString, int paramInt1, int paramInt2)
@@ -717,8 +717,8 @@ final class FragmentManagerImpl
       boolean bool = ((Boolean)paramArrayList1.get(j)).booleanValue();
       k = 0;
       label44:
-      if (k < localb.BF.size()) {
-        if (b.b((b.a)localb.BF.get(k)))
+      if (k < localb.CD.size()) {
+        if (b.b((b.a)localb.CD.get(k)))
         {
           k = 1;
           label79:
@@ -739,7 +739,7 @@ final class FragmentManagerImpl
           if (!bool) {
             break label229;
           }
-          localb.dB();
+          localb.dI();
           i -= 1;
           if (j != i)
           {
@@ -785,7 +785,7 @@ final class FragmentManagerImpl
     int k;
     if (i < m)
     {
-      if (((b)paramArrayList.get(i)).BV) {
+      if (((b)paramArrayList.get(i)).CU) {
         break label222;
       }
       if (j != i) {
@@ -805,7 +805,7 @@ final class FragmentManagerImpl
             break;
           }
           j = k;
-          if (((b)paramArrayList.get(k)).BV) {
+          if (((b)paramArrayList.get(k)).CU) {
             break;
           }
           k += 1;
@@ -850,14 +850,14 @@ final class FragmentManagerImpl
     while (!shouldRunOnHWLayer(paramView, paramc)) {
       return;
     }
-    if (paramc.CO != null)
+    if (paramc.DN != null)
     {
-      paramc.CO.addListener(new d(paramView));
+      paramc.DN.addListener(new d(paramView));
       return;
     }
-    Animation.AnimationListener localAnimationListener = getAnimationListener(paramc.CN);
+    Animation.AnimationListener localAnimationListener = getAnimationListener(paramc.DM);
     paramView.setLayerType(2, null);
-    paramc.CN.setAnimationListener(new a(paramView, localAnimationListener));
+    paramc.DM.setAnimationListener(new a(paramView, localAnimationListener));
   }
   
   private static void setRetaining(h paramh)
@@ -866,7 +866,7 @@ final class FragmentManagerImpl
     for (;;)
     {
       return;
-      Object localObject = paramh.Da;
+      Object localObject = paramh.DY;
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
@@ -874,7 +874,7 @@ final class FragmentManagerImpl
           ((Fragment)((Iterator)localObject).next()).mRetaining = true;
         }
       }
-      paramh = paramh.Db;
+      paramh = paramh.DZ;
       if (paramh != null)
       {
         paramh = paramh.iterator();
@@ -1099,7 +1099,7 @@ final class FragmentManagerImpl
     {
       i += 1;
       break label95;
-      paramb.dB();
+      paramb.dI();
       break;
       label199:
       ((Fragment)localObject).mPostponedAlpha = -1.0F;
@@ -1119,10 +1119,10 @@ final class FragmentManagerImpl
       }
       bool = true;
       localc = loadAnimation(paramFragment, i, bool, paramFragment.getNextTransitionStyle());
-      if ((localc == null) || (localc.CO == null)) {
+      if ((localc == null) || (localc.DN == null)) {
         break label194;
       }
-      localc.CO.setTarget(paramFragment.mView);
+      localc.DN.setTarget(paramFragment.mView);
       if (!paramFragment.mHidden) {
         break label183;
       }
@@ -1134,7 +1134,7 @@ final class FragmentManagerImpl
     for (;;)
     {
       setHWLayerAnimListenerIfAlpha(paramFragment.mView, localc);
-      localc.CO.start();
+      localc.DN.start();
       if ((paramFragment.mAdded) && (paramFragment.mHasMenu) && (paramFragment.mMenuVisible)) {
         this.mNeedMenuInvalidate = true;
       }
@@ -1148,7 +1148,7 @@ final class FragmentManagerImpl
       final ViewGroup localViewGroup = paramFragment.mContainer;
       final View localView = paramFragment.mView;
       localViewGroup.startViewTransition(localView);
-      localc.CO.addListener(new AnimatorListenerAdapter()
+      localc.DN.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
@@ -1167,8 +1167,8 @@ final class FragmentManagerImpl
     if (localc != null)
     {
       setHWLayerAnimListenerIfAlpha(paramFragment.mView, localc);
-      paramFragment.mView.startAnimation(localc.CN);
-      localc.CN.start();
+      paramFragment.mView.startAnimation(localc.DM);
+      localc.DM.start();
     }
     if ((paramFragment.mHidden) && (!paramFragment.isHideReplaced())) {}
     for (int i = 8;; i = 0)
@@ -1354,8 +1354,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentActivityCreated(this, paramFragment, paramBundle);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentActivityCreated(this, paramFragment, paramBundle);
       }
     }
   }
@@ -1373,8 +1373,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentAttached(this, paramFragment, paramContext);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentAttached(this, paramFragment, paramContext);
       }
     }
   }
@@ -1392,8 +1392,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentCreated(this, paramFragment, paramBundle);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentCreated(this, paramFragment, paramBundle);
       }
     }
   }
@@ -1411,8 +1411,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentDestroyed(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentDestroyed(this, paramFragment);
       }
     }
   }
@@ -1430,8 +1430,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentDetached(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentDetached(this, paramFragment);
       }
     }
   }
@@ -1449,8 +1449,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentPaused(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentPaused(this, paramFragment);
       }
     }
   }
@@ -1468,8 +1468,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentPreAttached(this, paramFragment, paramContext);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentPreAttached(this, paramFragment, paramContext);
       }
     }
   }
@@ -1487,8 +1487,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentPreCreated(this, paramFragment, paramBundle);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentPreCreated(this, paramFragment, paramBundle);
       }
     }
   }
@@ -1506,8 +1506,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentResumed(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentResumed(this, paramFragment);
       }
     }
   }
@@ -1525,8 +1525,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentSaveInstanceState(this, paramFragment, paramBundle);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentSaveInstanceState(this, paramFragment, paramBundle);
       }
     }
   }
@@ -1544,8 +1544,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentStarted(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentStarted(this, paramFragment);
       }
     }
   }
@@ -1563,8 +1563,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentStopped(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentStopped(this, paramFragment);
       }
     }
   }
@@ -1582,8 +1582,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentViewCreated(this, paramFragment, paramView, paramBundle);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentViewCreated(this, paramFragment, paramView, paramBundle);
       }
     }
   }
@@ -1601,8 +1601,8 @@ final class FragmentManagerImpl
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
-      if ((!paramBoolean) || (localf.CU)) {
-        localf.CT.onFragmentViewDestroyed(this, paramFragment);
+      if ((!paramBoolean) || (localf.DS)) {
+        localf.DR.onFragmentViewDestroyed(this, paramFragment);
       }
     }
   }
@@ -2387,10 +2387,10 @@ final class FragmentManagerImpl
             if (localObject != null)
             {
               setHWLayerAnimListenerIfAlpha(paramFragment.mView, (c)localObject);
-              if (((c)localObject).CN == null) {
+              if (((c)localObject).DM == null) {
                 break label234;
               }
-              paramFragment.mView.startAnimation(((c)localObject).CN);
+              paramFragment.mView.startAnimation(((c)localObject).DM);
             }
           }
         }
@@ -2404,8 +2404,8 @@ final class FragmentManagerImpl
         return;
         i = Math.min(j, 0);
         break;
-        ((c)localObject).CO.setTarget(paramFragment.mView);
-        ((c)localObject).CO.start();
+        ((c)localObject).DN.setTarget(paramFragment.mView);
+        ((c)localObject).DN.start();
       }
     }
   }
@@ -2442,7 +2442,7 @@ final class FragmentManagerImpl
       }
       startPendingDeferredFragments();
     } while ((!this.mNeedMenuInvalidate) || (this.mHost == null) || (this.mCurState != 4));
-    this.mHost.dF();
+    this.mHost.dM();
     this.mNeedMenuInvalidate = false;
   }
   
@@ -2749,7 +2749,7 @@ final class FragmentManagerImpl
         if (DEBUG) {
           new StringBuilder("movefrom ACTIVITY_CREATED: ").append(paramFragment);
         }
-        if ((paramFragment.mView != null) && (this.mHost.dE()) && (paramFragment.mSavedViewState == null)) {
+        if ((paramFragment.mView != null) && (this.mHost.dL()) && (paramFragment.mSavedViewState == null)) {
           saveFragmentViewState(paramFragment);
         }
         paramFragment.performDestroyView();
@@ -2846,7 +2846,7 @@ final class FragmentManagerImpl
       return null;
     }
     String str1 = paramAttributeSet.getAttributeValue(null, "class");
-    paramString = paramContext.obtainStyledAttributes(paramAttributeSet, g.CV);
+    paramString = paramContext.obtainStyledAttributes(paramAttributeSet, g.DT);
     if (str1 == null) {
       str1 = paramString.getString(0);
     }
@@ -3144,7 +3144,7 @@ final class FragmentManagerImpl
     {
       return;
       localFragmentManagerState = (FragmentManagerState)???;
-    } while (localFragmentManagerState.Dd == null);
+    } while (localFragmentManagerState.Eb == null);
     List localList = null;
     Object localObject1;
     int i;
@@ -3153,9 +3153,9 @@ final class FragmentManagerImpl
     Object localObject3;
     if (paramh != null)
     {
-      localObject1 = paramh.Da;
-      localList = paramh.Db;
-      ??? = paramh.Dc;
+      localObject1 = paramh.DY;
+      localList = paramh.DZ;
+      ??? = paramh.Ea;
       if (localObject1 != null)
       {
         i = ((List)localObject1).size();
@@ -3173,7 +3173,7 @@ final class FragmentManagerImpl
         int k = 0;
         for (;;)
         {
-          if ((k < localFragmentManagerState.Dd.length) && (localFragmentManagerState.Dd[k].mIndex != ((Fragment)localObject2).mIndex))
+          if ((k < localFragmentManagerState.Eb.length) && (localFragmentManagerState.Eb[k].mIndex != ((Fragment)localObject2).mIndex))
           {
             k += 1;
             continue;
@@ -3181,11 +3181,11 @@ final class FragmentManagerImpl
             break;
           }
         }
-        if (k == localFragmentManagerState.Dd.length) {
+        if (k == localFragmentManagerState.Eb.length) {
           throwException(new IllegalStateException("Could not find active fragment with index " + ((Fragment)localObject2).mIndex));
         }
-        localObject3 = localFragmentManagerState.Dd[k];
-        ((FragmentState)localObject3).Dh = ((Fragment)localObject2);
+        localObject3 = localFragmentManagerState.Eb[k];
+        ((FragmentState)localObject3).Ef = ((Fragment)localObject2);
         ((Fragment)localObject2).mSavedViewState = null;
         ((Fragment)localObject2).mBackStackNesting = 0;
         ((Fragment)localObject2).mInLayout = false;
@@ -3203,12 +3203,12 @@ final class FragmentManagerImpl
     for (;;)
     {
       label298:
-      this.mActive = new SparseArray(localFragmentManagerState.Dd.length);
+      this.mActive = new SparseArray(localFragmentManagerState.Eb.length);
       i = 0;
       FragmentState localFragmentState;
-      if (i < localFragmentManagerState.Dd.length)
+      if (i < localFragmentManagerState.Eb.length)
       {
-        localFragmentState = localFragmentManagerState.Dd[i];
+        localFragmentState = localFragmentManagerState.Eb[i];
         if (localFragmentState != null) {
           if ((localList == null) || (i >= localList.size())) {
             break label1267;
@@ -3231,7 +3231,7 @@ final class FragmentManagerImpl
         d locald = this.mContainer;
         Fragment localFragment = this.mParent;
         Context localContext;
-        if (localFragmentState.Dh == null)
+        if (localFragmentState.Ef == null)
         {
           localContext = ((f)localObject3).mContext;
           if (localFragmentState.mArguments != null) {
@@ -3242,40 +3242,40 @@ final class FragmentManagerImpl
           }
         }
         label761:
-        for (localFragmentState.Dh = locald.instantiate(localContext, localFragmentState.mClassName, localFragmentState.mArguments);; localFragmentState.Dh = Fragment.instantiate(localContext, localFragmentState.mClassName, localFragmentState.mArguments))
+        for (localFragmentState.Ef = locald.instantiate(localContext, localFragmentState.mClassName, localFragmentState.mArguments);; localFragmentState.Ef = Fragment.instantiate(localContext, localFragmentState.mClassName, localFragmentState.mArguments))
         {
           if (localFragmentState.mSavedFragmentState != null)
           {
             localFragmentState.mSavedFragmentState.setClassLoader(localContext.getClassLoader());
-            localFragmentState.Dh.mSavedFragmentState = localFragmentState.mSavedFragmentState;
+            localFragmentState.Ef.mSavedFragmentState = localFragmentState.mSavedFragmentState;
           }
-          localFragmentState.Dh.setIndex(localFragmentState.mIndex, localFragment);
-          localFragmentState.Dh.mFromLayout = localFragmentState.mFromLayout;
-          localFragmentState.Dh.mRestored = true;
-          localFragmentState.Dh.mFragmentId = localFragmentState.mFragmentId;
-          localFragmentState.Dh.mContainerId = localFragmentState.mContainerId;
-          localFragmentState.Dh.mTag = localFragmentState.mTag;
-          localFragmentState.Dh.mRetainInstance = localFragmentState.mRetainInstance;
-          localFragmentState.Dh.mDetached = localFragmentState.mDetached;
-          localFragmentState.Dh.mHidden = localFragmentState.mHidden;
-          localFragmentState.Dh.mFragmentManager = ((f)localObject3).mFragmentManager;
+          localFragmentState.Ef.setIndex(localFragmentState.mIndex, localFragment);
+          localFragmentState.Ef.mFromLayout = localFragmentState.mFromLayout;
+          localFragmentState.Ef.mRestored = true;
+          localFragmentState.Ef.mFragmentId = localFragmentState.mFragmentId;
+          localFragmentState.Ef.mContainerId = localFragmentState.mContainerId;
+          localFragmentState.Ef.mTag = localFragmentState.mTag;
+          localFragmentState.Ef.mRetainInstance = localFragmentState.mRetainInstance;
+          localFragmentState.Ef.mDetached = localFragmentState.mDetached;
+          localFragmentState.Ef.mHidden = localFragmentState.mHidden;
+          localFragmentState.Ef.mFragmentManager = ((f)localObject3).mFragmentManager;
           if (DEBUG) {
-            new StringBuilder("Instantiated fragment ").append(localFragmentState.Dh);
+            new StringBuilder("Instantiated fragment ").append(localFragmentState.Ef);
           }
-          localFragmentState.Dh.mChildNonConfig = ((h)localObject1);
-          localFragmentState.Dh.mViewModelStore = ((ViewModelStore)localObject2);
-          localObject1 = localFragmentState.Dh;
+          localFragmentState.Ef.mChildNonConfig = ((h)localObject1);
+          localFragmentState.Ef.mViewModelStore = ((ViewModelStore)localObject2);
+          localObject1 = localFragmentState.Ef;
           if (DEBUG) {
             new StringBuilder("restoreAllState: active #").append(i).append(": ").append(localObject1);
           }
           this.mActive.put(((Fragment)localObject1).mIndex, localObject1);
-          localFragmentState.Dh = null;
+          localFragmentState.Ef = null;
           i += 1;
           break;
         }
         if (paramh != null)
         {
-          ??? = paramh.Da;
+          ??? = paramh.DY;
           if (??? != null) {}
           for (i = ???.size();; i = 0)
           {
@@ -3295,14 +3295,14 @@ final class FragmentManagerImpl
           }
         }
         this.mAdded.clear();
-        if (localFragmentManagerState.De != null)
+        if (localFragmentManagerState.Ec != null)
         {
           i = 0;
-          while (i < localFragmentManagerState.De.length)
+          while (i < localFragmentManagerState.Ec.length)
           {
-            paramh = (Fragment)this.mActive.get(localFragmentManagerState.De[i]);
+            paramh = (Fragment)this.mActive.get(localFragmentManagerState.Ec[i]);
             if (paramh == null) {
-              throwException(new IllegalStateException("No instantiated fragment for index #" + localFragmentManagerState.De[i]));
+              throwException(new IllegalStateException("No instantiated fragment for index #" + localFragmentManagerState.Ec[i]));
             }
             paramh.mAdded = true;
             if (DEBUG) {
@@ -3318,13 +3318,13 @@ final class FragmentManagerImpl
             }
           }
         }
-        if (localFragmentManagerState.Df != null)
+        if (localFragmentManagerState.Ed != null)
         {
-          this.mBackStack = new ArrayList(localFragmentManagerState.Df.length);
+          this.mBackStack = new ArrayList(localFragmentManagerState.Ed.length);
           i = 0;
-          while (i < localFragmentManagerState.Df.length)
+          while (i < localFragmentManagerState.Ed.length)
           {
-            ??? = localFragmentManagerState.Df[i].a(this);
+            ??? = localFragmentManagerState.Ed[i].a(this);
             if (DEBUG)
             {
               new StringBuilder("restoreAllState: back stack #").append(i).append(" (index ").append(???.mIndex).append("): ").append(???);
@@ -3340,8 +3340,8 @@ final class FragmentManagerImpl
           }
         }
         this.mBackStack = null;
-        if (localFragmentManagerState.Dg >= 0) {
-          this.mPrimaryNav = ((Fragment)this.mActive.get(localFragmentManagerState.Dg));
+        if (localFragmentManagerState.Ee >= 0) {
+          this.mPrimaryNav = ((Fragment)this.mActive.get(localFragmentManagerState.Ee));
         }
         this.mNextFragmentIndex = localFragmentManagerState.mNextFragmentIndex;
         return;
@@ -3464,11 +3464,11 @@ final class FragmentManagerImpl
         }
       }
       localObject3 = new FragmentManagerState();
-      ((FragmentManagerState)localObject3).Dd = arrayOfFragmentState;
-      ((FragmentManagerState)localObject3).De = ((int[])localObject1);
-      ((FragmentManagerState)localObject3).Df = ((BackStackState[])localObject2);
+      ((FragmentManagerState)localObject3).Eb = arrayOfFragmentState;
+      ((FragmentManagerState)localObject3).Ec = ((int[])localObject1);
+      ((FragmentManagerState)localObject3).Ed = ((BackStackState[])localObject2);
       if (this.mPrimaryNav != null) {
-        ((FragmentManagerState)localObject3).Dg = this.mPrimaryNav.mIndex;
+        ((FragmentManagerState)localObject3).Ee = this.mPrimaryNav.mIndex;
       }
       ((FragmentManagerState)localObject3).mNextFragmentIndex = this.mNextFragmentIndex;
       saveNonConfig();
@@ -3905,7 +3905,7 @@ final class FragmentManagerImpl
         i = 0;
         if (i < j)
         {
-          if (((f)this.mLifecycleCallbacks.get(i)).CT == paramb) {
+          if (((f)this.mLifecycleCallbacks.get(i)).DR == paramb) {
             this.mLifecycleCallbacks.remove(i);
           }
         }
@@ -3951,44 +3951,44 @@ final class FragmentManagerImpl
   static class b
     implements Animation.AnimationListener
   {
-    private final Animation.AnimationListener CM;
+    private final Animation.AnimationListener DL;
     
     b(Animation.AnimationListener paramAnimationListener)
     {
-      this.CM = paramAnimationListener;
+      this.DL = paramAnimationListener;
     }
     
     public void onAnimationEnd(Animation paramAnimation)
     {
-      if (this.CM != null) {
-        this.CM.onAnimationEnd(paramAnimation);
+      if (this.DL != null) {
+        this.DL.onAnimationEnd(paramAnimation);
       }
     }
     
     public void onAnimationRepeat(Animation paramAnimation)
     {
-      if (this.CM != null) {
-        this.CM.onAnimationRepeat(paramAnimation);
+      if (this.DL != null) {
+        this.DL.onAnimationRepeat(paramAnimation);
       }
     }
     
     public void onAnimationStart(Animation paramAnimation)
     {
-      if (this.CM != null) {
-        this.CM.onAnimationStart(paramAnimation);
+      if (this.DL != null) {
+        this.DL.onAnimationStart(paramAnimation);
       }
     }
   }
   
   static final class c
   {
-    public final Animation CN;
-    public final Animator CO;
+    public final Animation DM;
+    public final Animator DN;
     
     c(Animator paramAnimator)
     {
-      this.CN = null;
-      this.CO = paramAnimator;
+      this.DM = null;
+      this.DN = paramAnimator;
       if (paramAnimator == null) {
         throw new IllegalStateException("Animator cannot be null");
       }
@@ -3996,8 +3996,8 @@ final class FragmentManagerImpl
     
     c(Animation paramAnimation)
     {
-      this.CN = paramAnimation;
-      this.CO = null;
+      this.DM = paramAnimation;
+      this.DN = null;
       if (paramAnimation == null) {
         throw new IllegalStateException("Animation cannot be null");
       }
@@ -4030,81 +4030,81 @@ final class FragmentManagerImpl
     extends AnimationSet
     implements Runnable
   {
-    private final ViewGroup Bf;
-    private final View CQ;
-    private boolean CR;
-    private boolean CS = true;
-    private boolean zF;
+    private boolean AD;
+    private final ViewGroup Cd;
+    private final View DO;
+    private boolean DP;
+    private boolean DQ = true;
     
     e(Animation paramAnimation, ViewGroup paramViewGroup, View paramView)
     {
       super();
-      this.Bf = paramViewGroup;
-      this.CQ = paramView;
+      this.Cd = paramViewGroup;
+      this.DO = paramView;
       addAnimation(paramAnimation);
-      this.Bf.post(this);
+      this.Cd.post(this);
     }
     
     public final boolean getTransformation(long paramLong, Transformation paramTransformation)
     {
-      this.CS = true;
-      if (this.zF) {
-        if (this.CR) {}
+      this.DQ = true;
+      if (this.AD) {
+        if (this.DP) {}
       }
       while (super.getTransformation(paramLong, paramTransformation))
       {
         return true;
         return false;
       }
-      this.zF = true;
-      w.a(this.Bf, this);
+      this.AD = true;
+      w.a(this.Cd, this);
       return true;
     }
     
     public final boolean getTransformation(long paramLong, Transformation paramTransformation, float paramFloat)
     {
-      this.CS = true;
-      if (this.zF) {
-        if (this.CR) {}
+      this.DQ = true;
+      if (this.AD) {
+        if (this.DP) {}
       }
       while (super.getTransformation(paramLong, paramTransformation, paramFloat))
       {
         return true;
         return false;
       }
-      this.zF = true;
-      w.a(this.Bf, this);
+      this.AD = true;
+      w.a(this.Cd, this);
       return true;
     }
     
     public final void run()
     {
-      if ((!this.zF) && (this.CS))
+      if ((!this.AD) && (this.DQ))
       {
-        this.CS = false;
-        this.Bf.post(this);
+        this.DQ = false;
+        this.Cd.post(this);
         return;
       }
-      this.Bf.endViewTransition(this.CQ);
-      this.CR = true;
+      this.Cd.endViewTransition(this.DO);
+      this.DP = true;
     }
   }
   
   static final class f
   {
-    final g.b CT;
-    final boolean CU;
+    final g.b DR;
+    final boolean DS;
     
     f(g.b paramb, boolean paramBoolean)
     {
-      this.CT = paramb;
-      this.CU = paramBoolean;
+      this.DR = paramb;
+      this.DS = paramBoolean;
     }
   }
   
   static final class g
   {
-    public static final int[] CV = { 16842755, 16842960, 16842961 };
+    public static final int[] DT = { 16842755, 16842960, 16842961 };
   }
   
   static abstract interface h
@@ -4115,7 +4115,7 @@ final class FragmentManagerImpl
   final class i
     implements FragmentManagerImpl.h
   {
-    final int CW;
+    final int DU;
     final int mId;
     final String mName;
     
@@ -4123,7 +4123,7 @@ final class FragmentManagerImpl
     {
       this.mName = paramString;
       this.mId = paramInt1;
-      this.CW = paramInt2;
+      this.DU = paramInt2;
     }
     
     public final boolean a(ArrayList<b> paramArrayList, ArrayList<Boolean> paramArrayList1)
@@ -4135,39 +4135,39 @@ final class FragmentManagerImpl
           return false;
         }
       }
-      return FragmentManagerImpl.this.popBackStackState(paramArrayList, paramArrayList1, this.mName, this.mId, this.CW);
+      return FragmentManagerImpl.this.popBackStackState(paramArrayList, paramArrayList1, this.mName, this.mId, this.DU);
     }
   }
   
   static final class j
     implements Fragment.c
   {
-    final boolean CX;
-    final b CY;
-    int CZ;
+    final boolean DV;
+    final b DW;
+    int DX;
     
     j(b paramb, boolean paramBoolean)
     {
-      this.CX = paramBoolean;
-      this.CY = paramb;
+      this.DV = paramBoolean;
+      this.DW = paramb;
     }
     
-    public final void dD()
+    public final void dK()
     {
-      this.CZ -= 1;
-      if (this.CZ != 0) {
+      this.DX -= 1;
+      if (this.DX != 0) {
         return;
       }
-      this.CY.BE.scheduleCommit();
+      this.DW.CC.scheduleCommit();
     }
     
-    public final void dG()
+    public final void dN()
     {
       boolean bool1 = false;
-      if (this.CZ > 0) {}
+      if (this.DX > 0) {}
       for (int i = 1;; i = 0)
       {
-        localFragmentManagerImpl = this.CY.BE;
+        localFragmentManagerImpl = this.DW.CC;
         int k = localFragmentManagerImpl.mAdded.size();
         int j = 0;
         while (j < k)
@@ -4180,23 +4180,23 @@ final class FragmentManagerImpl
           j += 1;
         }
       }
-      FragmentManagerImpl localFragmentManagerImpl = this.CY.BE;
-      Object localObject = this.CY;
-      boolean bool2 = this.CX;
+      FragmentManagerImpl localFragmentManagerImpl = this.DW.CC;
+      Object localObject = this.DW;
+      boolean bool2 = this.DV;
       if (i == 0) {
         bool1 = true;
       }
       localFragmentManagerImpl.completeExecute((b)localObject, bool2, bool1, true);
     }
     
-    public final void dH()
+    public final void dO()
     {
-      this.CY.BE.completeExecute(this.CY, this.CX, false, false);
+      this.DW.CC.completeExecute(this.DW, this.DV, false, false);
     }
     
     public final void startListening()
     {
-      this.CZ += 1;
+      this.DX += 1;
     }
   }
 }

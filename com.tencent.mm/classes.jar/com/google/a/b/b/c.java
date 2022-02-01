@@ -9,26 +9,26 @@ import java.lang.reflect.Method;
 final class c
   extends b
 {
-  private static Class bIz;
-  private final Object bIA;
-  private final Field bIB;
+  private static Class bGh;
+  private final Object bGi;
+  private final Field bGj;
   
   c()
   {
     AppMethodBeat.i(107924);
-    this.bIA = xK();
-    this.bIB = xL();
+    this.bGi = xx();
+    this.bGj = xy();
     AppMethodBeat.o(107924);
   }
   
   private boolean b(AccessibleObject paramAccessibleObject)
   {
     AppMethodBeat.i(107926);
-    if ((this.bIA != null) && (this.bIB != null)) {
+    if ((this.bGi != null) && (this.bGj != null)) {
       try
       {
-        long l = ((Long)bIz.getMethod("objectFieldOffset", new Class[] { Field.class }).invoke(this.bIA, new Object[] { this.bIB })).longValue();
-        bIz.getMethod("putBoolean", new Class[] { Object.class, Long.TYPE, Boolean.TYPE }).invoke(this.bIA, new Object[] { paramAccessibleObject, Long.valueOf(l), Boolean.TRUE });
+        long l = ((Long)bGh.getMethod("objectFieldOffset", new Class[] { Field.class }).invoke(this.bGi, new Object[] { this.bGj })).longValue();
+        bGh.getMethod("putBoolean", new Class[] { Object.class, Long.TYPE, Boolean.TYPE }).invoke(this.bGi, new Object[] { paramAccessibleObject, Long.valueOf(l), Boolean.TRUE });
         AppMethodBeat.o(107926);
         return true;
       }
@@ -38,13 +38,13 @@ final class c
     return false;
   }
   
-  private static Object xK()
+  private static Object xx()
   {
     AppMethodBeat.i(107927);
     try
     {
       Object localObject = Class.forName("sun.misc.Unsafe");
-      bIz = (Class)localObject;
+      bGh = (Class)localObject;
       localObject = ((Class)localObject).getDeclaredField("theUnsafe");
       ((Field)localObject).setAccessible(true);
       localObject = ((Field)localObject).get(null);
@@ -58,7 +58,7 @@ final class c
     return null;
   }
   
-  private static Field xL()
+  private static Field xy()
   {
     AppMethodBeat.i(107928);
     try
@@ -96,7 +96,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.b.c
  * JD-Core Version:    0.7.0.1
  */

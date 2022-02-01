@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.a;
@@ -28,11 +28,11 @@ public abstract class e
           AppMethodBeat.i(72149);
           if ((paramAnonymousn instanceof d))
           {
-            ad.d("MicroMsg.PayUBaseChangePwdProcess", "hy: forget pwd user success");
+            ac.d("MicroMsg.PayUBaseChangePwdProcess", "hy: forget pwd user success");
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
-              e.this.dow.putInt("key_errcode_payu", 0);
-              a.b(this.activity, e.this.dow, 0);
+              e.this.dmf.putInt("key_errcode_payu", 0);
+              a.b(this.activity, e.this.dmf, 0);
               AppMethodBeat.o(72149);
               return true;
             }
@@ -41,13 +41,13 @@ public abstract class e
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72150);
           Object localObject = (u)paramAnonymousVarArgs[0];
-          paramAnonymousVarArgs = e.this.dow.getString("payu_reference");
-          localObject = ((u)localObject).ijt;
-          this.Ieo.b(new d(paramAnonymousVarArgs, (String)localObject), true);
+          paramAnonymousVarArgs = e.this.dmf.getString("payu_reference");
+          localObject = ((u)localObject).iJA;
+          this.JFQ.b(new d(paramAnonymousVarArgs, (String)localObject), true);
           AppMethodBeat.o(72150);
           return true;
         }
@@ -65,7 +65,7 @@ public abstract class e
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    if (this.dow.getInt("key_errcode_payu", -1) == 0) {
+    if (this.dmf.getInt("key_errcode_payu", -1) == 0) {
       t.makeText(paramActivity, 2131765569, 0).show();
     }
     for (;;)

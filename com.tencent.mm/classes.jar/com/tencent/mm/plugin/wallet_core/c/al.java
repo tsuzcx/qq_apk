@@ -6,14 +6,14 @@ import org.json.JSONObject;
 
 public final class al
 {
-  public String lZG;
+  public boolean Bpr;
+  public ak Bps;
+  public String Bpt;
+  public String Bpu;
+  public String mBH;
   public String title;
-  public boolean zWX;
-  public ak zWY;
-  public String zWZ;
-  public String zXa;
   
-  public static al aO(JSONObject paramJSONObject)
+  public static al aP(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69966);
     if (paramJSONObject == null)
@@ -23,19 +23,19 @@ public final class al
     }
     al localal = new al();
     localal.title = paramJSONObject.optString("title");
-    localal.lZG = paramJSONObject.optString("sub_title");
-    localal.zWX = paramJSONObject.optBoolean("is_lqt_user");
-    localal.zWZ = paramJSONObject.optString("lqt_operate_id");
-    localal.zXa = paramJSONObject.optString("lqt_trace_info");
-    ae.atq(localal.zXa);
+    localal.mBH = paramJSONObject.optString("sub_title");
+    localal.Bpr = paramJSONObject.optBoolean("is_lqt_user");
+    localal.Bpt = paramJSONObject.optString("lqt_operate_id");
+    localal.Bpu = paramJSONObject.optString("lqt_trace_info");
+    ae.ayI(localal.Bpu);
     paramJSONObject = paramJSONObject.optJSONObject("open_lqt_info");
     if (paramJSONObject != null)
     {
-      localal.zWY = new ak();
-      localal.zWY.zWU = paramJSONObject.optString("open_info");
-      localal.zWY.zWV = paramJSONObject.optString("open_url");
-      localal.zWY.zWW = paramJSONObject.optInt("route_type");
-      localal.zWY.gIw = paramJSONObject.optString("appname");
+      localal.Bps = new ak();
+      localal.Bps.Bpo = paramJSONObject.optString("open_info");
+      localal.Bps.Bpp = paramJSONObject.optString("open_url");
+      localal.Bps.Bpq = paramJSONObject.optInt("route_type");
+      localal.Bps.hiX = paramJSONObject.optString("appname");
     }
     AppMethodBeat.o(69966);
     return localal;

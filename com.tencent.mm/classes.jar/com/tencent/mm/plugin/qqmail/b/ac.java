@@ -2,13 +2,12 @@ package com.tencent.mm.plugin.qqmail.b;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.h;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,179 +21,179 @@ import java.util.Map;
 import java.util.Set;
 
 public final class ac
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  String dpv;
-  String[] uLJ;
-  String[] uLK;
-  private String[] uLL;
-  String uLh;
-  public aa uMA;
-  Map<String, String> uMB;
-  f uMC;
-  private HashMap<Long, Integer> uMD;
-  private HashMap<Long, String> uME;
-  private HashMap<String, Integer> uMF;
-  private int uMG;
-  ArrayList<g> uMH;
-  String uMI;
-  String uMJ;
-  HashMap<String, String> uMK;
-  c uML;
-  d uMM;
-  int uMN;
-  h uMO;
-  e uMt;
-  String uMv;
-  Map<String, String> uMw;
-  private Map<String, String> uMx;
-  private Map<String, String> uMy;
-  private b uMz;
+  String dng;
+  String vTY;
+  String[] vUA;
+  private String[] vUB;
+  String[] vUz;
+  HashMap<String, String> vVA;
+  c vVB;
+  d vVC;
+  int vVD;
+  h vVE;
+  e vVj;
+  String vVl;
+  Map<String, String> vVm;
+  private Map<String, String> vVn;
+  private Map<String, String> vVo;
+  private b vVp;
+  public aa vVq;
+  Map<String, String> vVr;
+  f vVs;
+  private HashMap<Long, Integer> vVt;
+  private HashMap<Long, String> vVu;
+  private HashMap<String, Integer> vVv;
+  private int vVw;
+  ArrayList<g> vVx;
+  String vVy;
+  String vVz;
   
   public ac()
   {
     AppMethodBeat.i(122778);
-    this.uMw = new HashMap();
-    this.uMx = new LinkedHashMap();
-    this.uMy = new LinkedHashMap();
-    this.uMB = new HashMap();
-    this.uMC = null;
-    this.uMt = null;
-    this.uMD = new HashMap();
-    this.uME = new HashMap();
-    this.uMF = new HashMap();
-    this.uMG = 0;
-    this.uMH = new ArrayList();
-    this.uMI = null;
-    this.uMJ = null;
-    this.uMK = new HashMap();
-    this.uMN = 0;
-    this.uMO = new h()
+    this.vVm = new HashMap();
+    this.vVn = new LinkedHashMap();
+    this.vVo = new LinkedHashMap();
+    this.vVr = new HashMap();
+    this.vVs = null;
+    this.vVj = null;
+    this.vVt = new HashMap();
+    this.vVu = new HashMap();
+    this.vVv = new HashMap();
+    this.vVw = 0;
+    this.vVx = new ArrayList();
+    this.vVy = null;
+    this.vVz = null;
+    this.vVA = new HashMap();
+    this.vVD = 0;
+    this.vVE = new h()
     {
       public final void a(int paramAnonymousInt1, int paramAnonymousInt2, n paramAnonymousn)
       {
         AppMethodBeat.i(122776);
-        ad.i("MicroMsg.ShareModeMailAppService", "currentSendFile: %s, offset: %d, totalLen: %d, filesInfo.size: %d", new Object[] { ac.this.uMI, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(ac.this.uMH.size()) });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "currentSendFile: %s, offset: %d, totalLen: %d, filesInfo.size: %d", new Object[] { ac.this.vVy, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(ac.this.vVx.size()) });
         if (paramAnonymousInt1 >= paramAnonymousInt2)
         {
-          ac.this.uMK.put(ac.this.uMJ, ((v)paramAnonymousn).deb().uKY);
-          paramAnonymousn = ((v)paramAnonymousn).deb();
-          if (ac.this.uMM != null) {
-            ac.this.uMM.f(ac.this.uMN - ac.this.uMH.size(), ac.this.uMN, ac.this.uMJ, paramAnonymousn.uKY);
+          ac.this.vVA.put(ac.this.vVz, ((v)paramAnonymousn).drJ().vTP);
+          paramAnonymousn = ((v)paramAnonymousn).drJ();
+          if (ac.this.vVC != null) {
+            ac.this.vVC.h(ac.this.vVD - ac.this.vVx.size(), ac.this.vVD, ac.this.vVz, paramAnonymousn.vTP);
           }
-          if (ac.this.uMH.isEmpty())
+          if (ac.this.vVx.isEmpty())
           {
-            ad.i("MicroMsg.ShareModeMailAppService", "finished send all files");
-            if (ac.this.uML != null) {
-              ac.this.uML.dee();
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "finished send all files");
+            if (ac.this.vVB != null) {
+              ac.this.vVB.drM();
             }
             AppMethodBeat.o(122776);
             return;
           }
-          ad.i("MicroMsg.ShareModeMailAppService", "finished send one file, continue to send another one");
-          paramAnonymousn = (ac.g)ac.this.uMH.remove(0);
-          ac.this.uMI = paramAnonymousn.fileId;
-          ac.this.uMJ = paramAnonymousn.fileName;
-          paramAnonymousn = new v(ac.this.uMJ, ac.this.uMI, this);
-          com.tencent.mm.kernel.g.afA().gcy.a(paramAnonymousn, 0);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "finished send one file, continue to send another one");
+          paramAnonymousn = (ac.g)ac.this.vVx.remove(0);
+          ac.this.vVy = paramAnonymousn.fileId;
+          ac.this.vVz = paramAnonymousn.fileName;
+          paramAnonymousn = new v(ac.this.vVz, ac.this.vVy, this);
+          com.tencent.mm.kernel.g.agQ().ghe.a(paramAnonymousn, 0);
         }
         AppMethodBeat.o(122776);
       }
     };
-    com.tencent.mm.kernel.g.afA().gcy.a(483, this);
-    com.tencent.mm.kernel.g.afA().gcy.a(484, this);
-    com.tencent.mm.kernel.g.afA().gcy.a(485, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(483, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(484, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(485, this);
     AppMethodBeat.o(122778);
   }
   
   private void a(s params)
   {
     AppMethodBeat.i(122790);
-    this.uMG += 1;
-    ad.i("MicroMsg.ShareModeMailAppService", "processCheckImgStatusSceneEnd, checkTimes: %d", new Object[] { Integer.valueOf(this.uMG) });
-    params = params.dea().iterator();
+    this.vVw += 1;
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "processCheckImgStatusSceneEnd, checkTimes: %d", new Object[] { Integer.valueOf(this.vVw) });
+    params = params.drI().iterator();
     while (params.hasNext())
     {
       g localg = (g)params.next();
-      long l = localg.uKX;
-      int i = localg.mBi;
-      if (this.uMD.containsKey(Long.valueOf(l)))
+      long l = localg.vTO;
+      int i = localg.ndj;
+      if (this.vVt.containsKey(Long.valueOf(l)))
       {
-        ad.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, status: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, status: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
         if (i == 0)
         {
-          this.uMD.remove(Long.valueOf(l));
-          if (localg.uKY != null)
+          this.vVt.remove(Long.valueOf(l));
+          if (localg.vTP != null)
           {
-            ad.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, attachId: %s", new Object[] { Long.valueOf(l), localg.uKY });
-            this.uME.put(Long.valueOf(l), localg.uKY);
-            this.uMF.put(localg.uKY, Integer.valueOf(localg.FileSize));
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, attachId: %s", new Object[] { Long.valueOf(l), localg.vTP });
+            this.vVu.put(Long.valueOf(l), localg.vTP);
+            this.vVv.put(localg.vTP, Integer.valueOf(localg.FileSize));
           }
         }
         else
         {
-          this.uMD.put(Long.valueOf(l), Integer.valueOf(i));
+          this.vVt.put(Long.valueOf(l), Integer.valueOf(i));
         }
       }
     }
-    if (this.uMD.isEmpty())
+    if (this.vVt.isEmpty())
     {
-      ad.i("MicroMsg.ShareModeMailAppService", "all image is in server");
-      if (this.uMz != null) {
-        this.uMz.a(new ArrayList(), this.uME);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "all image is in server");
+      if (this.vVp != null) {
+        this.vVp.a(new ArrayList(), this.vVu);
       }
       AppMethodBeat.o(122790);
       return;
     }
-    if (this.uMG < 3)
+    if (this.vVw < 3)
     {
-      ad.i("MicroMsg.ShareModeMailAppService", "checkTime small than limit, doScene again");
-      params = new s(i(this.uMD));
-      com.tencent.mm.kernel.g.afA().gcy.a(params, 0);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "checkTime small than limit, doScene again");
+      params = new s(j(this.vVt));
+      com.tencent.mm.kernel.g.agQ().ghe.a(params, 0);
       AppMethodBeat.o(122790);
       return;
     }
-    this.uMz.a(i(this.uMD), this.uME);
+    this.vVp.a(j(this.vVt), this.vVu);
     AppMethodBeat.o(122790);
   }
   
   private void a(ArrayList<Long> paramArrayList, b paramb)
   {
     AppMethodBeat.i(122788);
-    ad.i("MicroMsg.ShareModeMailAppService", "checkImgStatus");
-    this.uMG = 0;
-    ag(paramArrayList);
-    if (this.uME != null)
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "checkImgStatus");
+    this.vVw = 0;
+    ar(paramArrayList);
+    if (this.vVu != null)
     {
-      this.uME.clear();
-      this.uME = null;
+      this.vVu.clear();
+      this.vVu = null;
     }
-    this.uME = new HashMap();
-    this.uMz = paramb;
+    this.vVu = new HashMap();
+    this.vVp = paramb;
     paramArrayList = new s(paramArrayList);
-    com.tencent.mm.kernel.g.afA().gcy.a(paramArrayList, 0);
+    com.tencent.mm.kernel.g.agQ().ghe.a(paramArrayList, 0);
     AppMethodBeat.o(122788);
   }
   
-  private void ag(ArrayList<Long> paramArrayList)
+  private void ar(ArrayList<Long> paramArrayList)
   {
     AppMethodBeat.i(122787);
-    if (this.uMD != null)
+    if (this.vVt != null)
     {
-      this.uMD.clear();
-      this.uMD = null;
+      this.vVt.clear();
+      this.vVt = null;
     }
-    this.uMD = new HashMap();
+    this.vVt = new HashMap();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       long l = ((Long)paramArrayList.next()).longValue();
-      this.uMD.put(Long.valueOf(l), Integer.valueOf(1));
+      this.vVt.put(Long.valueOf(l), Integer.valueOf(1));
     }
     AppMethodBeat.o(122787);
   }
   
-  private static ArrayList<Long> i(HashMap<Long, Integer> paramHashMap)
+  private static ArrayList<Long> j(HashMap<Long, Integer> paramHashMap)
   {
     AppMethodBeat.i(122789);
     ArrayList localArrayList = new ArrayList();
@@ -206,16 +205,16 @@ public final class ac
     return localArrayList;
   }
   
-  public final void JM(final int paramInt)
+  public final void LL(final int paramInt)
   {
     AppMethodBeat.i(122782);
-    if (this.uMC != null) {
-      aq.f(new Runnable()
+    if (this.vVs != null) {
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(122770);
-          ac.this.uMC.aq(ac.this.uLh, paramInt, this.hhZ);
+          ac.this.vVs.ap(ac.this.vTY, paramInt, this.hIC);
           AppMethodBeat.o(122770);
         }
       });
@@ -226,24 +225,24 @@ public final class ac
   public final void a(f paramf, e parame)
   {
     AppMethodBeat.i(122784);
-    this.uMC = paramf;
-    this.uMt = parame;
-    if (this.uMw.size() > 0)
+    this.vVs = paramf;
+    this.vVj = parame;
+    if (this.vVm.size() > 0)
     {
       paramf = new ArrayList();
-      parame = this.uMw.keySet().iterator();
+      parame = this.vVm.keySet().iterator();
       while (parame.hasNext())
       {
         String str = (String)parame.next();
-        ad.i("MicroMsg.ShareModeMailAppService", "check img status, msgSvrId: %s", new Object[] { str });
-        paramf.add(Long.valueOf(bt.getLong(str, 0L)));
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "check img status, msgSvrId: %s", new Object[] { str });
+        paramf.add(Long.valueOf(bs.getLong(str, 0L)));
       }
       a(paramf, new b()
       {
         public final void a(ArrayList<Long> paramAnonymousArrayList, HashMap<Long, String> paramAnonymousHashMap)
         {
           AppMethodBeat.i(122771);
-          ad.i("MicroMsg.ShareModeMailAppService", "finishChckImgStatus, notUploadedImgIdList.size: %d, attachIdMap.size: %d", new Object[] { Integer.valueOf(paramAnonymousArrayList.size()), Integer.valueOf(paramAnonymousHashMap.size()) });
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "finishChckImgStatus, notUploadedImgIdList.size: %d, attachIdMap.size: %d", new Object[] { Integer.valueOf(paramAnonymousArrayList.size()), Integer.valueOf(paramAnonymousHashMap.size()) });
           Object localObject1;
           if (paramAnonymousArrayList.size() > 0)
           {
@@ -252,109 +251,109 @@ public final class ac
             while (paramAnonymousArrayList.hasNext())
             {
               Object localObject2 = (Long)paramAnonymousArrayList.next();
-              localObject2 = (String)((ac)localObject1).uMw.get(String.valueOf(localObject2));
-              ad.i("MicroMsg.ShareModeMailAppService", "appendAllUndownloadImage, filePath: %s", new Object[] { localObject2 });
-              if (!bt.isNullOrNil((String)localObject2))
+              localObject2 = (String)((ac)localObject1).vVm.get(String.valueOf(localObject2));
+              com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "appendAllUndownloadImage, filePath: %s", new Object[] { localObject2 });
+              if (!bs.isNullOrNil((String)localObject2))
               {
-                if (((ac)localObject1).uMH == null) {
-                  ((ac)localObject1).uMH = new ArrayList();
+                if (((ac)localObject1).vVx == null) {
+                  ((ac)localObject1).vVx = new ArrayList();
                 }
-                ((ac)localObject1).uMH.add(new ac.g((String)localObject2, (String)localObject2));
+                ((ac)localObject1).vVx.add(new ac.g((String)localObject2, (String)localObject2));
               }
             }
           }
           if (paramAnonymousHashMap.size() > 0) {
             ac.a(ac.this, paramAnonymousHashMap);
           }
-          ac.this.JM(10);
+          ac.this.LL(10);
           paramAnonymousArrayList = ac.this;
-          ad.i("MicroMsg.ShareModeMailAppService", "uploadMsgImg, filesInfo.size = %d", new Object[] { Integer.valueOf(paramAnonymousArrayList.uMH.size()) });
-          if (paramAnonymousArrayList.uMH == null) {
-            paramAnonymousArrayList.uMH = new ArrayList();
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "uploadMsgImg, filesInfo.size = %d", new Object[] { Integer.valueOf(paramAnonymousArrayList.vVx.size()) });
+          if (paramAnonymousArrayList.vVx == null) {
+            paramAnonymousArrayList.vVx = new ArrayList();
           }
-          if (paramAnonymousArrayList.uMH.size() > 0)
+          if (paramAnonymousArrayList.vVx.size() > 0)
           {
             paramAnonymousHashMap = new ac.3(paramAnonymousArrayList);
             localObject1 = new ac.4(paramAnonymousArrayList);
-            ad.i("MicroMsg.ShareModeMailAppService", "uploadFile, filesInfo.size: %d", new Object[] { Integer.valueOf(paramAnonymousArrayList.uMH.size()) });
-            paramAnonymousArrayList.uML = paramAnonymousHashMap;
-            paramAnonymousArrayList.uMM = ((ac.d)localObject1);
-            paramAnonymousArrayList.uMN = paramAnonymousArrayList.uMH.size();
-            if ((paramAnonymousArrayList.uMH != null) && (paramAnonymousArrayList.uMH.size() > 0))
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "uploadFile, filesInfo.size: %d", new Object[] { Integer.valueOf(paramAnonymousArrayList.vVx.size()) });
+            paramAnonymousArrayList.vVB = paramAnonymousHashMap;
+            paramAnonymousArrayList.vVC = ((ac.d)localObject1);
+            paramAnonymousArrayList.vVD = paramAnonymousArrayList.vVx.size();
+            if ((paramAnonymousArrayList.vVx != null) && (paramAnonymousArrayList.vVx.size() > 0))
             {
-              paramAnonymousHashMap = (ac.g)paramAnonymousArrayList.uMH.remove(0);
-              paramAnonymousArrayList.uMI = paramAnonymousHashMap.fileId;
-              paramAnonymousArrayList.uMJ = paramAnonymousHashMap.fileName;
-              paramAnonymousArrayList.uMK = new HashMap();
-              paramAnonymousArrayList = new v(paramAnonymousArrayList.uMJ, paramAnonymousArrayList.uMI, paramAnonymousArrayList.uMO);
-              com.tencent.mm.kernel.g.afA().gcy.a(paramAnonymousArrayList, 0);
+              paramAnonymousHashMap = (ac.g)paramAnonymousArrayList.vVx.remove(0);
+              paramAnonymousArrayList.vVy = paramAnonymousHashMap.fileId;
+              paramAnonymousArrayList.vVz = paramAnonymousHashMap.fileName;
+              paramAnonymousArrayList.vVA = new HashMap();
+              paramAnonymousArrayList = new v(paramAnonymousArrayList.vVz, paramAnonymousArrayList.vVy, paramAnonymousArrayList.vVE);
+              com.tencent.mm.kernel.g.agQ().ghe.a(paramAnonymousArrayList, 0);
             }
             AppMethodBeat.o(122771);
             return;
           }
-          paramAnonymousArrayList.JM(90);
-          paramAnonymousArrayList.ded();
+          paramAnonymousArrayList.LL(90);
+          paramAnonymousArrayList.drL();
           AppMethodBeat.o(122771);
         }
       });
       AppMethodBeat.o(122784);
       return;
     }
-    JM(90);
-    ded();
+    LL(90);
+    drL();
     AppMethodBeat.o(122784);
-  }
-  
-  public final void at(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(122779);
-    this.uMw = new HashMap();
-    this.uMw.putAll(paramMap);
-    AppMethodBeat.o(122779);
-  }
-  
-  public final void au(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(122780);
-    this.uMx = new LinkedHashMap();
-    this.uMx.putAll(paramMap);
-    AppMethodBeat.o(122780);
   }
   
   public final void av(Map<String, String> paramMap)
   {
+    AppMethodBeat.i(122779);
+    this.vVm = new HashMap();
+    this.vVm.putAll(paramMap);
+    AppMethodBeat.o(122779);
+  }
+  
+  public final void aw(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(122780);
+    this.vVn = new LinkedHashMap();
+    this.vVn.putAll(paramMap);
+    AppMethodBeat.o(122780);
+  }
+  
+  public final void ax(Map<String, String> paramMap)
+  {
     AppMethodBeat.i(122781);
-    this.uMy = new LinkedHashMap();
-    this.uMy.putAll(paramMap);
+    this.vVo = new LinkedHashMap();
+    this.vVo.putAll(paramMap);
     AppMethodBeat.o(122781);
   }
   
   public final void clearData()
   {
     AppMethodBeat.i(122783);
-    this.uME.clear();
-    this.uLL = null;
-    this.uMG = 0;
-    this.uMI = null;
-    this.uMJ = null;
-    this.uMK.clear();
-    this.uMH.clear();
-    this.dpv = null;
-    this.uMD.clear();
-    this.uMw.clear();
-    this.uMv = null;
-    this.uLh = null;
-    this.uMN = 0;
-    this.uLJ = null;
-    this.uMx.clear();
-    this.uMB.clear();
-    this.uMF.clear();
-    this.uMC = null;
-    this.uMt = null;
+    this.vVu.clear();
+    this.vUB = null;
+    this.vVw = 0;
+    this.vVy = null;
+    this.vVz = null;
+    this.vVA.clear();
+    this.vVx.clear();
+    this.dng = null;
+    this.vVt.clear();
+    this.vVm.clear();
+    this.vVl = null;
+    this.vTY = null;
+    this.vVD = 0;
+    this.vUz = null;
+    this.vVn.clear();
+    this.vVr.clear();
+    this.vVv.clear();
+    this.vVs = null;
+    this.vVj = null;
     AppMethodBeat.o(122783);
   }
   
-  final void ded()
+  final void drL()
   {
     AppMethodBeat.i(122785);
     int i = 0;
@@ -363,22 +362,22 @@ public final class ac
     int j;
     Object localObject3;
     Object localObject4;
-    if ((this.uMx != null) && (this.uMx.size() > 0))
+    if ((this.vVn != null) && (this.vVn.size() > 0))
     {
-      localObject1 = new r.a[this.uMx.size()];
-      localObject2 = this.uMx.keySet().iterator();
+      localObject1 = new r.a[this.vVn.size()];
+      localObject2 = this.vVn.keySet().iterator();
       i = 0;
       j = 0;
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (String)((Iterator)localObject2).next();
         localObject4 = new r.a();
-        ((r.a)localObject4).uLP = ((String)this.uMx.get(localObject3));
+        ((r.a)localObject4).vUF = ((String)this.vVn.get(localObject3));
         ((r.a)localObject4).fileName = ((String)localObject3);
-        ((r.a)localObject4).name = ((String)this.uMy.get(localObject3));
-        ((r.a)localObject4).fileSize = ((int)i.aMN((String)localObject3));
+        ((r.a)localObject4).name = ((String)this.vVo.get(localObject3));
+        ((r.a)localObject4).fileSize = ((int)i.aSp((String)localObject3));
         localObject1[j] = localObject4;
-        ad.i("MicroMsg.ShareModeMailAppService", "fileInfos[%d], attachId: %s, fileName: %s, name: %s, fileSize: %d", new Object[] { Integer.valueOf(j), ((r.a)localObject4).uLP, ((r.a)localObject4).fileName, ((r.a)localObject4).name, Integer.valueOf(((r.a)localObject4).fileSize) });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "fileInfos[%d], attachId: %s, fileName: %s, name: %s, fileSize: %d", new Object[] { Integer.valueOf(j), ((r.a)localObject4).vUF, ((r.a)localObject4).fileName, ((r.a)localObject4).name, Integer.valueOf(((r.a)localObject4).fileSize) });
         i = ((r.a)localObject4).fileSize + i;
         j += 1;
       }
@@ -386,30 +385,30 @@ public final class ac
     for (;;)
     {
       Object localObject5;
-      if ((this.uMB != null) && (this.uMB.size() > 0))
+      if ((this.vVr != null) && (this.vVr.size() > 0))
       {
-        localObject2 = new r.a[this.uMB.size()];
-        localObject3 = this.uMB.keySet().iterator();
+        localObject2 = new r.a[this.vVr.size()];
+        localObject3 = this.vVr.keySet().iterator();
         j = 0;
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (String)((Iterator)localObject3).next();
           localObject5 = new r.a();
-          ((r.a)localObject5).uLP = ((String)this.uMB.get(localObject4));
+          ((r.a)localObject5).vUF = ((String)this.vVr.get(localObject4));
           ((r.a)localObject5).fileName = ((String)localObject4);
-          ((r.a)localObject5).fileSize = bt.a((Integer)this.uMF.get(((r.a)localObject5).uLP), 0);
+          ((r.a)localObject5).fileSize = bs.a((Integer)this.vVv.get(((r.a)localObject5).vUF), 0);
           if (((r.a)localObject5).fileSize == 0) {
-            ((r.a)localObject5).fileSize = ((int)i.aMN((String)localObject4));
+            ((r.a)localObject5).fileSize = ((int)i.aSp((String)localObject4));
           }
           localObject2[j] = localObject5;
-          ad.i("MicroMsg.ShareModeMailAppService", "imagesFileInfos[%d], attachId: %s, fileName: %s, fileSize: %d", new Object[] { Integer.valueOf(j), ((r.a)localObject5).uLP, ((r.a)localObject5).fileName, Integer.valueOf(((r.a)localObject5).fileSize) });
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "imagesFileInfos[%d], attachId: %s, fileName: %s, fileSize: %d", new Object[] { Integer.valueOf(j), ((r.a)localObject5).vUF, ((r.a)localObject5).fileName, Integer.valueOf(((r.a)localObject5).fileSize) });
           i = ((r.a)localObject5).fileSize + i;
           j += 1;
         }
       }
       for (;;)
       {
-        ad.i("MicroMsg.ShareModeMailAppService", "totalFileSize = %d", new Object[] { Integer.valueOf(i) });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "totalFileSize = %d", new Object[] { Integer.valueOf(i) });
         if ((localObject2 == null) || (localObject2.length == 0))
         {
           localObject2 = null;
@@ -423,47 +422,47 @@ public final class ac
         {
           localObject3 = new a()
           {
-            public final void def()
+            public final void drN()
             {
               AppMethodBeat.i(122774);
-              ac.this.JM(100);
+              ac.this.LL(100);
               AppMethodBeat.o(122774);
             }
           };
-          localObject4 = new r(this.dpv, this.uLJ, this.uLK, this.uLL, this.uLh);
-          ((r)localObject4).uLM = this.uMv;
+          localObject4 = new r(this.dng, this.vUz, this.vUA, this.vUB, this.vTY);
+          ((r)localObject4).vUC = this.vVl;
           if ((localObject1 == null) || (localObject1.length <= 0)) {
             break label1622;
           }
-          ((r)localObject4).uLO = new r.a[localObject1.length];
+          ((r)localObject4).vUE = new r.a[localObject1.length];
           j = 0;
-          while (j < ((r)localObject4).uLO.length)
+          while (j < ((r)localObject4).vUE.length)
           {
-            ((r)localObject4).uLO[j] = localObject1[j];
+            ((r)localObject4).vUE[j] = localObject1[j];
             j += 1;
           }
           break;
         }
-        ad.i("MicroMsg.MailContentFormatter", "setFileInfo, fileInfos.length = %d", new Object[] { Integer.valueOf(((r)localObject4).uLO.length) });
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MailContentFormatter", "setFileInfo, fileInfos.length = %d", new Object[] { Integer.valueOf(((r)localObject4).vUE.length) });
         if ((localObject2 != null) && (localObject2.length > 0))
         {
-          ((r)localObject4).uLN = ((r.a[])localObject2);
+          ((r)localObject4).vUD = ((r.a[])localObject2);
           label637:
           localObject2 = new StringBuilder("");
           localObject5 = new StringBuilder("");
-          if (((r)localObject4).dpv == null) {
+          if (((r)localObject4).dng == null) {
             break label1640;
           }
           localObject1 = new StringBuilder("");
           ((StringBuilder)localObject1).append("From: ");
           ((StringBuilder)localObject1).append("\"");
           ((StringBuilder)localObject1).append("=?utf-8?B?");
-          ((StringBuilder)localObject1).append(Base64.encodeToString(((r)localObject4).dpv.getBytes(), 2));
+          ((StringBuilder)localObject1).append(Base64.encodeToString(((r)localObject4).dng.getBytes(), 2));
           ((StringBuilder)localObject1).append("?=");
           ((StringBuilder)localObject1).append("\"");
           ((StringBuilder)localObject1).append(" ");
           ((StringBuilder)localObject1).append("<");
-          ((StringBuilder)localObject1).append(((r)localObject4).dpv);
+          ((StringBuilder)localObject1).append(((r)localObject4).dng);
           ((StringBuilder)localObject1).append(">");
         }
         int k;
@@ -478,27 +477,27 @@ public final class ac
             ((StringBuilder)localObject5).append((String)localObject1);
             ((StringBuilder)localObject5).append("\n");
           }
-          localObject1 = ((r)localObject4).ddX();
+          localObject1 = ((r)localObject4).drF();
           if (localObject1 != null)
           {
             ((StringBuilder)localObject5).append((String)localObject1);
             ((StringBuilder)localObject5).append("\n");
           }
-          localObject1 = ((r)localObject4).ddY();
+          localObject1 = ((r)localObject4).drG();
           if (localObject1 != null)
           {
             ((StringBuilder)localObject5).append((String)localObject1);
             ((StringBuilder)localObject5).append("\n");
           }
-          localObject1 = ((r)localObject4).ddZ();
+          localObject1 = ((r)localObject4).drH();
           if (localObject1 != null)
           {
             ((StringBuilder)localObject5).append((String)localObject1);
             ((StringBuilder)localObject5).append("\n");
           }
           ((StringBuilder)localObject5).append("Subject: ");
-          if (((r)localObject4).uLh != null) {
-            ((StringBuilder)localObject5).append(((r)localObject4).uLh);
+          if (((r)localObject4).vTY != null) {
+            ((StringBuilder)localObject5).append(((r)localObject4).vTY);
           }
           ((StringBuilder)localObject5).append("\n");
           ((StringBuilder)localObject5).append("Mime-Version: 1.0");
@@ -528,20 +527,20 @@ public final class ac
           ((StringBuilder)localObject1).append("Content-Transfer-Encoding:base64");
           ((StringBuilder)localObject1).append("\n");
           ((StringBuilder)localObject1).append("\r\n");
-          ((StringBuilder)localObject1).append(Base64.encodeToString(((r)localObject4).uLM.getBytes(), 0));
+          ((StringBuilder)localObject1).append(Base64.encodeToString(((r)localObject4).vUC.getBytes(), 0));
           ((StringBuilder)localObject1).append("\n");
           ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
           ((StringBuilder)localObject2).append("\r\n");
-          if ((((r)localObject4).uLN == null) || (((r)localObject4).uLN.length <= 0)) {
+          if ((((r)localObject4).vUD == null) || (((r)localObject4).vUD.length <= 0)) {
             break label1646;
           }
-          localObject1 = ((r)localObject4).uLN;
+          localObject1 = ((r)localObject4).vUD;
           k = localObject1.length;
           j = 0;
           while (j < k)
           {
             StringBuilder localStringBuilder = localObject1[j];
-            localObject5 = localStringBuilder.uLP;
+            localObject5 = localStringBuilder.vUF;
             localObject6 = localStringBuilder.fileName;
             m = localStringBuilder.fileSize;
             localStringBuilder = new StringBuilder("");
@@ -562,7 +561,7 @@ public final class ac
             localStringBuilder.append("\n");
             localStringBuilder.append("QQMail-BreakType:1");
             localStringBuilder.append("\n");
-            localStringBuilder.append(String.format("QQMail-Key:%s", new Object[] { r.akX((String)localObject5) }));
+            localStringBuilder.append(String.format("QQMail-Key:%s", new Object[] { r.apW((String)localObject5) }));
             localStringBuilder.append("\n");
             localStringBuilder.append("QQMail-LinkEnd");
             localStringBuilder.append("\n");
@@ -570,22 +569,22 @@ public final class ac
             ((StringBuilder)localObject2).append("\r\n");
             j += 1;
           }
-          ((r)localObject4).uLO = null;
+          ((r)localObject4).vUE = null;
           break;
-          ((r)localObject4).uLN = null;
+          ((r)localObject4).vUD = null;
           break label637;
         }
         label1646:
         ((StringBuilder)localObject2).append("\r\n");
-        if ((((r)localObject4).uLO != null) && (((r)localObject4).uLO.length > 0))
+        if ((((r)localObject4).vUE != null) && (((r)localObject4).vUE.length > 0))
         {
-          localObject1 = ((r)localObject4).uLO;
+          localObject1 = ((r)localObject4).vUE;
           k = localObject1.length;
           j = 0;
           while (j < k)
           {
             localObject5 = localObject1[j];
-            localObject4 = ((r.a)localObject5).uLP;
+            localObject4 = ((r.a)localObject5).vUF;
             m = ((r.a)localObject5).fileSize;
             localObject5 = ((r.a)localObject5).name;
             localObject6 = new StringBuilder("");
@@ -608,7 +607,7 @@ public final class ac
             ((StringBuilder)localObject6).append("\n");
             ((StringBuilder)localObject6).append("QQMail-BreakType:1");
             ((StringBuilder)localObject6).append("\n");
-            ((StringBuilder)localObject6).append(String.format("QQMail-Key:%s", new Object[] { r.akX((String)localObject4) }));
+            ((StringBuilder)localObject6).append(String.format("QQMail-Key:%s", new Object[] { r.apW((String)localObject4) }));
             ((StringBuilder)localObject6).append("\n");
             ((StringBuilder)localObject6).append("QQMail-LinkEnd");
             ((StringBuilder)localObject6).append("\n");
@@ -618,23 +617,23 @@ public final class ac
           }
         }
         ((StringBuilder)localObject2).append("------=_NextPart_5208D22F_0929AFA8_5112E4AB--");
-        localObject1 = new t(((StringBuilder)localObject2).toString(), this.dpv, this.uLJ, i, new h()
+        localObject1 = new t(((StringBuilder)localObject2).toString(), this.dng, this.vUz, i, new h()
         {
           public final void a(int paramAnonymousInt1, int paramAnonymousInt2, n paramAnonymousn)
           {
             AppMethodBeat.i(122777);
-            ad.i("MicroMsg.ShareModeMailAppService", "composeSend, offset: %d, totalLen: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "composeSend, offset: %d, totalLen: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
             if (paramAnonymousInt1 >= paramAnonymousInt2)
             {
-              ad.i("MicroMsg.ShareModeMailAppService", "finish send");
-              if (this.uMQ != null) {
-                this.uMQ.def();
+              com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "finish send");
+              if (this.vVG != null) {
+                this.vVG.drN();
               }
             }
             AppMethodBeat.o(122777);
           }
         });
-        com.tencent.mm.kernel.g.afA().gcy.a((n)localObject1, 0);
+        com.tencent.mm.kernel.g.agQ().ghe.a((n)localObject1, 0);
         AppMethodBeat.o(122785);
         return;
         localObject2 = null;
@@ -646,23 +645,23 @@ public final class ac
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(122786);
-    ad.i("MicroMsg.ShareModeMailAppService", "onSceneEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareModeMailAppService", "onSceneEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.ShareModeMailAppService", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ShareModeMailAppService", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       if (paramn.getType() == 483)
       {
         a((s)paramn);
         AppMethodBeat.o(122786);
         return;
       }
-      if (this.uMt != null) {
-        aq.f(new Runnable()
+      if (this.vVj != null) {
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(122775);
-            ac.this.uMt.ala(ac.this.uLh);
+            ac.this.vVj.apZ(ac.this.vTY);
             AppMethodBeat.o(122775);
           }
         });
@@ -684,7 +683,7 @@ public final class ac
   
   static abstract interface a
   {
-    public abstract void def();
+    public abstract void drN();
   }
   
   public static abstract interface b
@@ -694,22 +693,22 @@ public final class ac
   
   public static abstract interface c
   {
-    public abstract void dee();
+    public abstract void drM();
   }
   
   public static abstract interface d
   {
-    public abstract void f(int paramInt1, int paramInt2, String paramString1, String paramString2);
+    public abstract void h(int paramInt1, int paramInt2, String paramString1, String paramString2);
   }
   
   public static abstract interface e
   {
-    public abstract void ala(String paramString);
+    public abstract void apZ(String paramString);
   }
   
   public static abstract interface f
   {
-    public abstract void aq(String paramString, int paramInt1, int paramInt2);
+    public abstract void ap(String paramString, int paramInt1, int paramInt2);
   }
   
   public static final class g

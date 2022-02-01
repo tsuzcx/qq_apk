@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class e
 {
-  public static int[] NS(String paramString)
+  public static int[] Sb(String paramString)
   {
     AppMethodBeat.i(138087);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -19,9 +19,9 @@ public final class e
       AppMethodBeat.o(138087);
       return null;
     }
-    int i = NT(paramString[0]);
-    int j = NT(paramString[1]);
-    if ((!vo(i)) || (!vn(j)))
+    int i = Sc(paramString[0]);
+    int j = Sc(paramString[1]);
+    if ((!wf(i)) || (!we(j)))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -30,7 +30,7 @@ public final class e
     return new int[] { i, j };
   }
   
-  private static int NT(String paramString)
+  private static int Sc(String paramString)
   {
     AppMethodBeat.i(138088);
     try
@@ -46,19 +46,19 @@ public final class e
     return -1;
   }
   
-  public static boolean vn(int paramInt)
+  public static boolean we(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 59);
   }
   
-  public static boolean vo(int paramInt)
+  public static boolean wf(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 23);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

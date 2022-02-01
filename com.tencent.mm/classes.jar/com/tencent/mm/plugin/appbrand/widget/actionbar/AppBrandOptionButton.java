@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandOptionButton
   extends FrameLayout
 {
-  private ImageButton lRA;
+  private ImageButton mtD;
   
   public AppBrandOptionButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,16 +46,16 @@ public class AppBrandOptionButton
   private void init(Context paramContext)
   {
     AppMethodBeat.i(135463);
-    this.lRA = new ImageButton(paramContext);
-    this.lRA.setClickable(false);
-    this.lRA.setBackground(null);
-    addView(this.lRA, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
+    this.mtD = new ImageButton(paramContext);
+    this.mtD.setClickable(false);
+    this.mtD.setBackground(null);
+    addView(this.mtD, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
     AppMethodBeat.o(135463);
   }
   
   ImageView getButtonImage()
   {
-    return this.lRA;
+    return this.mtD;
   }
   
   protected Drawable getDefaultImageDrawable()
@@ -69,17 +69,17 @@ public class AppBrandOptionButton
   public final void reset()
   {
     AppMethodBeat.i(135467);
-    this.lRA.setVisibility(0);
-    this.lRA.setAlpha(1.0F);
-    this.lRA.setImageDrawable(getDefaultImageDrawable());
+    this.mtD.setVisibility(0);
+    this.mtD.setAlpha(1.0F);
+    this.mtD.setImageDrawable(getDefaultImageDrawable());
     AppMethodBeat.o(135467);
   }
   
   public void setAccessibilityLabel(String paramString)
   {
     AppMethodBeat.i(135464);
-    if ((this.lRA != null) && (this.lRA.getVisibility() == 0)) {
-      this.lRA.setContentDescription(paramString);
+    if ((this.mtD != null) && (this.mtD.getVisibility() == 0)) {
+      this.mtD.setContentDescription(paramString);
     }
     AppMethodBeat.o(135464);
   }
@@ -87,11 +87,11 @@ public class AppBrandOptionButton
   public void setColor(int paramInt)
   {
     AppMethodBeat.i(135466);
-    this.lRA.setImageDrawable(getDefaultImageDrawable());
-    this.lRA.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.lRA.setBackground(getBackground());
-    if (this.lRA.getBackground() != null) {
-      this.lRA.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.mtD.setImageDrawable(getDefaultImageDrawable());
+    this.mtD.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.mtD.setBackground(getBackground());
+    if (this.mtD.getBackground() != null) {
+      this.mtD.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(135466);
   }
@@ -104,14 +104,14 @@ public class AppBrandOptionButton
       AppMethodBeat.o(135465);
       return;
     }
-    this.lRA.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
-    this.lRA.setVisibility(0);
+    this.mtD.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
+    this.mtD.setVisibility(0);
     AppMethodBeat.o(135465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton
  * JD-Core Version:    0.7.0.1
  */

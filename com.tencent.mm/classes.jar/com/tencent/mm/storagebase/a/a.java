@@ -4,9 +4,9 @@ public abstract interface a<K>
 {
   public abstract void aE(int paramInt, long paramLong);
   
-  public abstract void cD(int paramInt, String paramString);
+  public abstract void cG(int paramInt, String paramString);
   
-  public abstract void eJA();
+  public abstract void eYX();
   
   public abstract K getKey();
   

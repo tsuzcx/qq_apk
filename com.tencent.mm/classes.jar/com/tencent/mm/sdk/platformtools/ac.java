@@ -1,383 +1,354 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.LocaleList;
-import android.util.DisplayMetrics;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Locale;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Process;
+import android.util.Log;
 
-public final class ac
+public class ac
 {
-  public static Locale EUl;
+  private static a Gry;
+  private static a Grz;
+  private static final String SYS_INFO;
+  private static int level = 6;
   
   static
   {
-    AppMethodBeat.i(125269);
-    if (Build.VERSION.SDK_INT < 24) {}
-    for (EUl = Locale.getDefault();; EUl = LocaleList.getDefault().get(0))
+    Object localObject = new a()
     {
-      Locale.setDefault(EUl);
-      AppMethodBeat.o(125269);
-      return;
-    }
-  }
-  
-  public static void a(Context paramContext, Locale paramLocale)
-  {
-    AppMethodBeat.i(125257);
+      private Handler handler = new Handler(Looper.getMainLooper());
+      
+      public final void appenderClose() {}
+      
+      public final void appenderFlush(boolean paramAnonymousBoolean) {}
+      
+      public final int getLogLevel()
+      {
+        return ac.level;
+      }
+      
+      public final void logD(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
+      
+      public final void logE(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
+      
+      public final void logF(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4)
+      {
+        if (ac.level > 5) {}
+      }
+      
+      public final void logI(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
+      
+      public final void logV(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
+      
+      public final void logW(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString4) {}
+      
+      public final void moveLogsFromCacheDirToLogDir() {}
+    };
+    Gry = (a)localObject;
+    Grz = (a)localObject;
+    localObject = new StringBuilder();
     try
     {
-      paramContext = paramContext.getResources();
-      Configuration localConfiguration = paramContext.getConfiguration();
-      DisplayMetrics localDisplayMetrics = paramContext.getDisplayMetrics();
-      localConfiguration.locale = paramLocale;
-      paramContext.updateConfiguration(localConfiguration, localDisplayMetrics);
-      Resources.getSystem().updateConfiguration(localConfiguration, localDisplayMetrics);
-      AppMethodBeat.o(125257);
+      ((StringBuilder)localObject).append("VERSION.RELEASE:[" + Build.VERSION.RELEASE);
+      ((StringBuilder)localObject).append("] VERSION.CODENAME:[" + Build.VERSION.CODENAME);
+      ((StringBuilder)localObject).append("] VERSION.INCREMENTAL:[" + Build.VERSION.INCREMENTAL);
+      ((StringBuilder)localObject).append("] BOARD:[" + Build.BOARD);
+      ((StringBuilder)localObject).append("] DEVICE:[" + Build.DEVICE);
+      ((StringBuilder)localObject).append("] DISPLAY:[" + Build.DISPLAY);
+      ((StringBuilder)localObject).append("] FINGERPRINT:[" + Build.FINGERPRINT);
+      ((StringBuilder)localObject).append("] HOST:[" + Build.HOST);
+      ((StringBuilder)localObject).append("] MANUFACTURER:[" + Build.MANUFACTURER);
+      ((StringBuilder)localObject).append("] MODEL:[" + Build.MODEL);
+      ((StringBuilder)localObject).append("] PRODUCT:[" + Build.PRODUCT);
+      ((StringBuilder)localObject).append("] TAGS:[" + Build.TAGS);
+      ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
+      ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
+      SYS_INFO = ((StringBuilder)localObject).toString();
       return;
     }
-    catch (Exception paramContext)
+    catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.LocaleUtil", paramContext, "updateApplicationResourceLocale err~~~", new Object[0]);
-      AppMethodBeat.o(125257);
+      for (;;)
+      {
+        printErrStackTrace("MicroMsg.SDK.Log", localThrowable, "", new Object[0]);
+      }
     }
   }
   
-  public static Locale aFt(String paramString)
+  public static void Ys(int paramInt)
   {
-    AppMethodBeat.i(125259);
-    if (paramString.equals("zh_TW"))
-    {
-      paramString = Locale.TAIWAN;
-      AppMethodBeat.o(125259);
-      return paramString;
-    }
-    if (paramString.equals("zh_HK"))
-    {
-      paramString = new Locale("zh", "HK");
-      AppMethodBeat.o(125259);
-      return paramString;
-    }
-    if (paramString.equals("en"))
-    {
-      paramString = Locale.ENGLISH;
-      AppMethodBeat.o(125259);
-      return paramString;
-    }
-    if (paramString.equals("zh_CN"))
-    {
-      paramString = Locale.CHINA;
-      AppMethodBeat.o(125259);
-      return paramString;
-    }
-    if ((paramString.equalsIgnoreCase("th")) || (paramString.equalsIgnoreCase("id")) || (paramString.equalsIgnoreCase("in")) || (paramString.equalsIgnoreCase("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr")) || (paramString.equalsIgnoreCase("de")) || (paramString.equalsIgnoreCase("fr")) || (paramString.equalsIgnoreCase("my")) || (paramString.equalsIgnoreCase("lo")))
-    {
-      paramString = new Locale(paramString);
-      AppMethodBeat.o(125259);
-      return paramString;
-    }
-    ad.e("MicroMsg.LocaleUtil", "transLanguageToLocale country = ".concat(String.valueOf(paramString)));
-    paramString = Locale.ENGLISH;
-    AppMethodBeat.o(125259);
-    return paramString;
+    level = paramInt;
   }
   
-  private static String aFu(String paramString)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(125261);
-    String str1 = Locale.getDefault().getLanguage().trim();
-    String str2 = str1 + "_" + Locale.getDefault().getCountry().trim();
-    if (str1.equals("en"))
-    {
-      AppMethodBeat.o(125261);
-      return str1;
-    }
-    if (str2.equals("zh_TW"))
-    {
-      AppMethodBeat.o(125261);
-      return "zh_TW";
-    }
-    if (str2.equals("zh_HK"))
-    {
-      AppMethodBeat.o(125261);
-      return "zh_HK";
-    }
-    if (str2.equals("zh_CN"))
-    {
-      AppMethodBeat.o(125261);
-      return "zh_CN";
-    }
-    if (str1.equals("th"))
-    {
-      AppMethodBeat.o(125261);
-      return "th";
-    }
-    if (str1.equals("id"))
-    {
-      AppMethodBeat.o(125261);
-      return "id";
-    }
-    if (str1.equals("in"))
-    {
-      AppMethodBeat.o(125261);
-      return "id";
-    }
-    if (str1.equals("vi"))
-    {
-      AppMethodBeat.o(125261);
-      return "vi";
-    }
-    if (str1.equals("pt"))
-    {
-      AppMethodBeat.o(125261);
-      return "pt";
-    }
-    if (str1.equals("es"))
-    {
-      AppMethodBeat.o(125261);
-      return "es";
-    }
-    if (str1.equals("ru"))
-    {
-      AppMethodBeat.o(125261);
-      return "ru";
-    }
-    if (str1.equals("ar"))
-    {
-      AppMethodBeat.o(125261);
-      return "ar";
-    }
-    if (str1.equals("ja"))
-    {
-      AppMethodBeat.o(125261);
-      return "ja";
-    }
-    if (str1.equals("it"))
-    {
-      AppMethodBeat.o(125261);
-      return "it";
-    }
-    if (str1.equals("ko"))
-    {
-      AppMethodBeat.o(125261);
-      return "ko";
-    }
-    if (str1.equals("ms"))
-    {
-      AppMethodBeat.o(125261);
-      return "ms";
-    }
-    if (str1.equals("tr"))
-    {
-      AppMethodBeat.o(125261);
-      return "tr";
-    }
-    if (str1.equals("de"))
-    {
-      AppMethodBeat.o(125261);
-      return "de";
-    }
-    if (str1.equals("fr"))
-    {
-      AppMethodBeat.o(125261);
-      return "fr";
-    }
-    if (str1.equals("my"))
-    {
-      AppMethodBeat.o(125261);
-      return "my";
-    }
-    if (str1.equals("lo"))
-    {
-      AppMethodBeat.o(125261);
-      return "lo";
-    }
-    AppMethodBeat.o(125261);
-    return paramString;
+    Grz = parama;
   }
   
-  public static void c(SharedPreferences paramSharedPreferences, String paramString)
+  public static void appenderClose()
   {
-    AppMethodBeat.i(125265);
-    if (paramSharedPreferences.edit().putString("language_key", paramString).commit())
-    {
-      bp.setProperty("language_key", paramString);
-      ad.w("MicroMsg.LocaleUtil", "save application lang as:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(125265);
-      return;
+    if (Grz != null) {
+      Grz.appenderClose();
     }
-    ad.e("MicroMsg.LocaleUtil", "saving application lang failed");
-    AppMethodBeat.o(125265);
   }
   
-  public static String d(Locale paramLocale)
+  public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(125258);
-    String str = paramLocale.getLanguage();
-    if (str.equals("zh"))
-    {
-      paramLocale = str + "_" + paramLocale.getCountry().toUpperCase();
-      AppMethodBeat.o(125258);
-      return paramLocale;
-    }
-    AppMethodBeat.o(125258);
-    return str;
+    d(paramString1, paramString2, null);
   }
   
-  public static boolean eFq()
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125254);
-    String str = eFu();
-    if ((str.equals("zh_CN")) || (str.equals("zh_TW")) || (str.equals("zh_HK")))
-    {
-      AppMethodBeat.o(125254);
-      return true;
-    }
-    AppMethodBeat.o(125254);
-    return false;
-  }
-  
-  public static boolean eFr()
-  {
-    AppMethodBeat.i(125255);
-    if (eFu().equals("zh_CN"))
-    {
-      AppMethodBeat.o(125255);
-      return true;
-    }
-    AppMethodBeat.o(125255);
-    return false;
-  }
-  
-  public static boolean eFs()
-  {
-    AppMethodBeat.i(125256);
-    if ((eFu().equals("zh_TW")) || (eFu().equals("zh_HK")))
-    {
-      AppMethodBeat.o(125256);
-      return true;
-    }
-    AppMethodBeat.o(125256);
-    return false;
-  }
-  
-  public static String eFt()
-  {
-    AppMethodBeat.i(125260);
-    String str = Locale.getDefault().getCountry().trim();
-    AppMethodBeat.o(125260);
-    return str;
-  }
-  
-  public static String eFu()
-  {
-    AppMethodBeat.i(125262);
-    String str = bt.nullAsNil(bp.getProperty("language_key"));
-    if ((str.length() > 0) && (!str.equals("language_default")))
-    {
-      AppMethodBeat.o(125262);
-      return str;
-    }
-    str = aFu("en");
-    AppMethodBeat.o(125262);
-    return str;
-  }
-  
-  public static String f(SharedPreferences paramSharedPreferences)
-  {
-    AppMethodBeat.i(125263);
-    paramSharedPreferences = bt.nullAsNil(paramSharedPreferences.getString("language_key", null));
-    if ((paramSharedPreferences.length() > 0) && (!paramSharedPreferences.equals("language_default")))
-    {
-      bp.setProperty("language_key", paramSharedPreferences);
-      AppMethodBeat.o(125263);
-      return paramSharedPreferences;
-    }
-    paramSharedPreferences = aFu("en");
-    bp.setProperty("language_key", paramSharedPreferences);
-    AppMethodBeat.o(125263);
-    return paramSharedPreferences;
-  }
-  
-  public static String g(SharedPreferences paramSharedPreferences)
-  {
-    AppMethodBeat.i(125264);
-    paramSharedPreferences = bt.nullAsNil(paramSharedPreferences.getString("language_key", null));
-    if (!bt.isNullOrNil(paramSharedPreferences))
-    {
-      AppMethodBeat.o(125264);
-      return paramSharedPreferences;
-    }
-    AppMethodBeat.o(125264);
-    return "language_default";
-  }
-  
-  public static Locale initLanguage(Context paramContext)
-  {
-    AppMethodBeat.i(125268);
-    Object localObject = f(paramContext.getSharedPreferences(aj.eFD(), 0));
-    if (((String)localObject).equals("language_default"))
-    {
-      a(paramContext, Locale.ENGLISH);
-      paramContext = Locale.getDefault();
-      AppMethodBeat.o(125268);
-      return paramContext;
-    }
-    localObject = aFt((String)localObject);
-    a(paramContext, (Locale)localObject);
-    AppMethodBeat.o(125268);
-    return localObject;
-  }
-  
-  public static String ir(Context paramContext)
-  {
-    AppMethodBeat.i(125266);
-    paramContext = g(paramContext.getSharedPreferences(aj.eFD(), 0));
-    String str = eFu();
-    if (paramContext.equalsIgnoreCase("language_default")) {
-      paramContext = str;
+    if ((Grz != null) && (Grz.getLogLevel() <= 1)) {
+      if (paramVarArgs != null) {
+        break label67;
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(125266);
-      return paramContext;
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      Grz.logD(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
+      return;
+      label67:
+      paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
   
-  public static String is(Context paramContext)
+  public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(125267);
-    String[] arrayOfString1 = paramContext.getResources().getStringArray(2130903056);
-    String str = g(paramContext.getSharedPreferences(aj.eFD(), 0));
-    if (str == null)
-    {
-      paramContext = paramContext.getString(2131755800);
-      AppMethodBeat.o(125267);
-      return paramContext;
-    }
-    String[] arrayOfString2 = ab.whf;
-    int k = arrayOfString2.length;
-    int j = 0;
-    int i = 0;
-    while (j < k)
-    {
-      if (arrayOfString2[j].equals(str))
-      {
-        paramContext = arrayOfString1[i];
-        AppMethodBeat.o(125267);
-        return paramContext;
+    e(paramString1, paramString2, null);
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 4)) {
+      if (paramVarArgs != null) {
+        break label67;
       }
-      j += 1;
-      i += 1;
     }
-    paramContext = paramContext.getString(2131755800);
-    AppMethodBeat.o(125267);
-    return paramContext;
+    for (;;)
+    {
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      Grz.logE(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
+      return;
+      label67:
+      paramString2 = String.format(paramString2, paramVarArgs);
+    }
+  }
+  
+  public static a eUP()
+  {
+    return Grz;
+  }
+  
+  public static void eUQ()
+  {
+    if (Grz != null) {
+      Grz.appenderFlush(false);
+    }
+  }
+  
+  public static void eUR()
+  {
+    if (Grz != null) {
+      Grz.appenderFlush(true);
+    }
+  }
+  
+  public static void f(String paramString1, String paramString2)
+  {
+    f(paramString1, paramString2, null);
+  }
+  
+  public static void f(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 5)) {
+      if (paramVarArgs != null) {
+        break label58;
+      }
+    }
+    for (;;)
+    {
+      Grz.logF(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
+      return;
+      label58:
+      paramString2 = String.format(paramString2, paramVarArgs);
+    }
+  }
+  
+  public static int getLogLevel()
+  {
+    if (Grz != null) {
+      return Grz.getLogLevel();
+    }
+    return 6;
+  }
+  
+  public static String getSysInfo()
+  {
+    return SYS_INFO;
+  }
+  
+  public static void i(String paramString1, String paramString2)
+  {
+    i(paramString1, paramString2, null);
+  }
+  
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 2)) {
+      if (paramVarArgs != null) {
+        break label67;
+      }
+    }
+    for (;;)
+    {
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      Grz.logI(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
+      return;
+      label67:
+      paramString2 = String.format(paramString2, paramVarArgs);
+    }
+  }
+  
+  public static void l(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 1))
+    {
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      paramString2 = paramString2 + "  " + bs.eWi();
+      Grz.logI(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
+    }
+  }
+  
+  public static void m(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 2))
+    {
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      paramString2 = paramString2 + "  " + bs.eWi();
+      Grz.logI(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
+    }
+  }
+  
+  public static void moveLogsFromCacheDirToLogDir()
+  {
+    if (Grz != null) {
+      Grz.moveLogsFromCacheDirToLogDir();
+    }
+  }
+  
+  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 4)) {
+      if (paramVarArgs != null) {
+        break label94;
+      }
+    }
+    for (;;)
+    {
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      paramThrowable = paramVarArgs + "  " + Log.getStackTraceString(paramThrowable);
+      Grz.logE(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramThrowable);
+      return;
+      label94:
+      paramString2 = String.format(paramString2, paramVarArgs);
+    }
+  }
+  
+  public static void v(String paramString1, String paramString2)
+  {
+    v(paramString1, paramString2, null);
+  }
+  
+  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 0)) {
+      if (paramVarArgs != null) {
+        break label66;
+      }
+    }
+    for (;;)
+    {
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      Grz.logV(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
+      return;
+      label66:
+      paramString2 = String.format(paramString2, paramVarArgs);
+    }
+  }
+  
+  public static void w(String paramString1, String paramString2)
+  {
+    w(paramString1, paramString2, null);
+  }
+  
+  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    if ((Grz != null) && (Grz.getLogLevel() <= 3)) {
+      if (paramVarArgs != null) {
+        break label67;
+      }
+    }
+    for (;;)
+    {
+      paramVarArgs = paramString2;
+      if (paramString2 == null) {
+        paramVarArgs = "";
+      }
+      Grz.logW(paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
+      return;
+      label67:
+      paramString2 = String.format(paramString2, paramVarArgs);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void appenderClose();
+    
+    public abstract void appenderFlush(boolean paramBoolean);
+    
+    public abstract int getLogLevel();
+    
+    public abstract void logD(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
+    
+    public abstract void logE(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
+    
+    public abstract void logF(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
+    
+    public abstract void logI(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
+    
+    public abstract void logV(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
+    
+    public abstract void logW(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4);
+    
+    public abstract void moveLogsFromCacheDirToLogDir();
   }
 }
 

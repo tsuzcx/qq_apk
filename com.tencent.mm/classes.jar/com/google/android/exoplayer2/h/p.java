@@ -3,10 +3,10 @@ package com.google.android.exoplayer2.h;
 public final class p
   extends s.a
 {
-  private final x<? super g> bws;
-  private final boolean bxc;
-  private final int bxd;
-  private final int bxe;
+  private final boolean allowCrossProtocolRedirects;
+  private final w<? super g> bur;
+  private final int connectTimeoutMillis;
+  private final int readTimeoutMillis;
   private final String userAgent;
   
   public p(String paramString)
@@ -14,18 +14,18 @@ public final class p
     this(paramString, null);
   }
   
-  public p(String paramString, x<? super g> paramx)
+  public p(String paramString, w<? super g> paramw)
   {
-    this(paramString, paramx, false);
+    this(paramString, paramw, false);
   }
   
-  public p(String paramString, x<? super g> paramx, boolean paramBoolean)
+  public p(String paramString, w<? super g> paramw, boolean paramBoolean)
   {
     this.userAgent = paramString;
-    this.bws = paramx;
-    this.bxd = 8000;
-    this.bxe = 8000;
-    this.bxc = paramBoolean;
+    this.bur = paramw;
+    this.connectTimeoutMillis = 8000;
+    this.readTimeoutMillis = 8000;
+    this.allowCrossProtocolRedirects = paramBoolean;
   }
 }
 

@@ -1,45 +1,45 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dwq;
-import com.tencent.mm.protocal.protobuf.dwr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ech;
+import com.tencent.mm.protocal.protobuf.eci;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class s
   extends n
   implements k
 {
-  private final b gRE;
-  private g gbr;
+  private g gfX;
+  private final b hse;
   
   public s(String paramString)
   {
     AppMethodBeat.i(121059);
     b.a locala = new b.a();
-    locala.gUU = new dwq();
-    locala.gUV = new dwr();
+    locala.hvt = new ech();
+    locala.hvu = new eci();
     locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/wxatmplcomplaint";
     locala.funcId = getType();
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.gRE = locala.atI();
-    ((dwq)this.gRE.gUS.gUX).EKD = paramString;
+    this.hse = locala.aAz();
+    ((ech)this.hse.hvr.hvw).GhP = paramString;
     AppMethodBeat.o(121059);
   }
   
-  public final dwr atU()
+  public final eci aAL()
   {
-    if (this.gRE != null) {
-      return (dwr)this.gRE.gUT.gUX;
+    if (this.hse != null) {
+      return (eci)this.hse.hvs.hvw;
     }
     return null;
   }
@@ -47,9 +47,9 @@ public final class s
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(121061);
-    ad.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
-    this.gbr = paramg;
-    int i = dispatch(parame, this.gRE, this);
+    ac.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
+    this.gfX = paramg;
+    int i = dispatch(parame, this.hse, this);
     AppMethodBeat.o(121061);
     return i;
   }
@@ -62,16 +62,16 @@ public final class s
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121060);
-    ad.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gbr != null) {
-      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ac.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gfX != null) {
+      this.gfX.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(121060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.s
  * JD-Core Version:    0.7.0.1
  */

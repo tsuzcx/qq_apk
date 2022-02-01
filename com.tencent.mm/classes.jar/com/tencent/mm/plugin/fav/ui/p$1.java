@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.List;
 
 final class p$1
@@ -14,16 +14,16 @@ final class p$1
   public final void run()
   {
     AppMethodBeat.i(107055);
-    b.di(this.qdg);
-    if (this.qgp != null) {
-      this.qgp.ciY();
+    b.dk(this.qLL);
+    if (this.qOR != null) {
+      this.qOR.cqF();
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107053);
-        p.1.this.qcu.dismiss();
+        p.1.this.qLa.dismiss();
         AppMethodBeat.o(107053);
       }
       
@@ -40,7 +40,7 @@ final class p$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.p.1
  * JD-Core Version:    0.7.0.1
  */

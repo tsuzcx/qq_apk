@@ -7,14 +7,14 @@ import java.util.concurrent.Callable;
 public final class e<E>
   extends k<E>
 {
-  public final a EYE;
-  a IAp;
+  public final a GvQ;
+  a KbY;
   
   public e(Runnable paramRunnable, long paramLong, String paramString, boolean paramBoolean)
   {
     super(paramRunnable, paramLong, paramBoolean);
     AppMethodBeat.i(183475);
-    this.EYE = a.aOe(paramString);
+    this.GvQ = a.aTH(paramString);
     AppMethodBeat.o(183475);
   }
   
@@ -22,7 +22,7 @@ public final class e<E>
   {
     super(paramCallable, paramLong, paramBoolean);
     AppMethodBeat.i(183476);
-    this.EYE = a.aOe(paramString);
+    this.GvQ = a.aTH(paramString);
     AppMethodBeat.o(183476);
   }
   
@@ -31,8 +31,8 @@ public final class e<E>
     AppMethodBeat.i(183478);
     if (super.cancel(paramBoolean))
     {
-      if (this.IAp != null) {
-        this.IAp.b(this);
+      if (this.KbY != null) {
+        this.KbY.b(this);
       }
       AppMethodBeat.o(183478);
       return true;
@@ -46,15 +46,15 @@ public final class e<E>
     AppMethodBeat.i(183477);
     try
     {
-      a.a(this.EYE);
+      a.a(this.GvQ);
       super.run();
       return;
     }
     finally
     {
       a.a(null);
-      if (this.IAp != null) {
-        this.IAp.a(this.EYE, this);
+      if (this.KbY != null) {
+        this.KbY.a(this.GvQ, this);
       }
       AppMethodBeat.o(183477);
     }

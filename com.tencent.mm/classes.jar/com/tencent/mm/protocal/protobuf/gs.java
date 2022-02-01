@@ -1,72 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
-public final class gs
-  extends com.tencent.mm.bx.a
+public class gs
+  extends cqk
 {
-  public String desc;
-  public String title;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123545);
+    AppMethodBeat.i(147760);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.d(1, this.title);
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(147760);
+        throw paramVarArgs;
       }
-      if (this.desc != null) {
-        paramVarArgs.d(2, this.desc);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(123545);
+      AppMethodBeat.o(147760);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label274;
+      if (this.BaseResponse == null) {
+        break label358;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
+    label358:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.desc);
-      }
-      AppMethodBeat.o(123545);
-      return i;
+      AppMethodBeat.o(147760);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(123545);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(147760);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(147760);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         gs localgs = (gs)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123545);
+          AppMethodBeat.o(147760);
           return -1;
-        case 1: 
-          localgs.title = locala.KhF.readString();
-          AppMethodBeat.o(123545);
-          return 0;
         }
-        localgs.desc = locala.KhF.readString();
-        AppMethodBeat.o(123545);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new BaseResponse();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localgs.BaseResponse = ((BaseResponse)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(147760);
         return 0;
       }
-      AppMethodBeat.o(123545);
+      AppMethodBeat.o(147760);
       return -1;
     }
   }

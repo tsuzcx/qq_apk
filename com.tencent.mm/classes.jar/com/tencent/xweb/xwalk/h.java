@@ -1,46 +1,89 @@
 package com.tencent.xweb.xwalk;
 
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.IJsRuntime;
-import org.xwalk.core.XWalkV8;
+import com.tencent.xweb.JsResult;
+import com.tencent.xweb.internal.e;
+import org.xwalk.core.XWalkView;
 
 public final class h
-  implements IJsRuntime
+  implements e
 {
-  XWalkV8 ITN;
-  private HandlerThread ITO;
-  private Handler ITP;
+  m KGm;
+  o KGn;
+  XWalkView KGo;
   
-  public h()
+  public h(XWalkView paramXWalkView)
   {
-    AppMethodBeat.i(154293);
-    this.ITO = new HandlerThread("j2v8");
-    this.ITO.start();
-    this.ITP = new Handler(this.ITO.getLooper());
-    AppMethodBeat.o(154293);
+    AppMethodBeat.i(154285);
+    this.KGo = paramXWalkView;
+    this.KGm = new m(paramXWalkView);
+    this.KGn = new o(paramXWalkView);
+    AppMethodBeat.o(154285);
   }
   
-  public final void init(final int paramInt)
+  public final boolean a(String paramString1, String paramString2, JsResult paramJsResult)
   {
-    AppMethodBeat.i(154294);
-    this.ITP.post(new Runnable()
+    AppMethodBeat.i(154289);
+    if ((paramJsResult instanceof g.c))
     {
-      public final void run()
-      {
-        AppMethodBeat.i(154292);
-        if (h.this.ITN != null)
-        {
-          AppMethodBeat.o(154292);
-          return;
-        }
-        h.this.ITN = new XWalkV8();
-        h.this.ITN.init(paramInt);
-        AppMethodBeat.o(154292);
-      }
-    });
-    AppMethodBeat.o(154294);
+      boolean bool = this.KGm.b(this.KGo, paramString1, paramString2, ((g.c)paramJsResult).KGi);
+      AppMethodBeat.o(154289);
+      return bool;
+    }
+    AppMethodBeat.o(154289);
+    return false;
+  }
+  
+  public final boolean a(String paramString1, String paramString2, String paramString3, com.tencent.xweb.o paramo)
+  {
+    AppMethodBeat.i(154291);
+    if ((paramo instanceof g.e))
+    {
+      boolean bool = this.KGm.a(this.KGo, paramString1, paramString2, paramString3, ((g.e)paramo).KGi);
+      AppMethodBeat.o(154291);
+      return bool;
+    }
+    AppMethodBeat.o(154291);
+    return false;
+  }
+  
+  public final boolean b(String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    AppMethodBeat.i(154290);
+    if ((paramJsResult instanceof g.c))
+    {
+      boolean bool = this.KGm.a(this.KGo, paramString1, paramString2, ((g.c)paramJsResult).KGi);
+      AppMethodBeat.o(154290);
+      return bool;
+    }
+    AppMethodBeat.o(154290);
+    return false;
+  }
+  
+  public final void onHideCustomView()
+  {
+    AppMethodBeat.i(154288);
+    this.KGm.fLr();
+    AppMethodBeat.o(154288);
+  }
+  
+  public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    AppMethodBeat.i(154287);
+    if ((paramCustomViewCallback instanceof g.a)) {
+      this.KGm.a(paramView, ((g.a)paramCustomViewCallback).KGg);
+    }
+    AppMethodBeat.o(154287);
+  }
+  
+  public final void y(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(154286);
+    this.KGm.a(this.KGo, paramString);
+    AppMethodBeat.o(154286);
   }
 }
 

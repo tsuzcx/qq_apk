@@ -2,134 +2,112 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
+import java.util.LinkedList;
 
 public final class drw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CND;
-  public String Egc;
-  public String MD5;
-  public int Scene;
+  public SKBuiltinBuffer_t DVs;
+  public int ErL;
+  public int pAs;
+  public int wTD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32556);
+    AppMethodBeat.i(115873);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Egc == null)
+      if (this.DVs == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32556);
+        paramVarArgs = new b("Not all required fields were included: Buffer");
+        AppMethodBeat.o(115873);
         throw paramVarArgs;
       }
-      if (this.MD5 == null)
+      paramVarArgs.aR(1, this.ErL);
+      paramVarArgs.aR(2, this.pAs);
+      paramVarArgs.aR(3, this.wTD);
+      if (this.DVs != null)
       {
-        paramVarArgs = new b("Not all required fields were included: MD5");
-        AppMethodBeat.o(32556);
-        throw paramVarArgs;
+        paramVarArgs.ln(4, this.DVs.computeSize());
+        this.DVs.writeFields(paramVarArgs);
       }
-      if (this.CND == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ProductId");
-        AppMethodBeat.o(32556);
-        throw paramVarArgs;
-      }
-      if (this.Egc != null) {
-        paramVarArgs.d(1, this.Egc);
-      }
-      if (this.MD5 != null) {
-        paramVarArgs.d(2, this.MD5);
-      }
-      if (this.CND != null) {
-        paramVarArgs.d(3, this.CND);
-      }
-      paramVarArgs.aR(4, this.Scene);
-      AppMethodBeat.o(32556);
+      AppMethodBeat.o(115873);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Egc == null) {
-        break label540;
-      }
-    }
-    label540:
-    for (int i = f.a.a.b.b.a.e(1, this.Egc) + 0;; i = 0)
+    int i;
+    if (paramInt == 1)
     {
+      i = f.a.a.b.b.a.bx(1, this.ErL) + 0 + f.a.a.b.b.a.bx(2, this.pAs) + f.a.a.b.b.a.bx(3, this.wTD);
       paramInt = i;
-      if (this.MD5 != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.MD5);
+      if (this.DVs != null) {
+        paramInt = i + f.a.a.a.lm(4, this.DVs.computeSize());
       }
-      i = paramInt;
-      if (this.CND != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.CND);
-      }
-      paramInt = f.a.a.b.b.a.bA(4, this.Scene);
-      AppMethodBeat.o(32556);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        if (this.Egc == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32556);
-          throw paramVarArgs;
-        }
-        if (this.MD5 == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: MD5");
-          AppMethodBeat.o(32556);
-          throw paramVarArgs;
-        }
-        if (this.CND == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ProductId");
-          AppMethodBeat.o(32556);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32556);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        drw localdrw = (drw)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(32556);
-          return -1;
-        case 1: 
-          localdrw.Egc = locala.KhF.readString();
-          AppMethodBeat.o(32556);
-          return 0;
-        case 2: 
-          localdrw.MD5 = locala.KhF.readString();
-          AppMethodBeat.o(32556);
-          return 0;
-        case 3: 
-          localdrw.CND = locala.KhF.readString();
-          AppMethodBeat.o(32556);
-          return 0;
-        }
-        localdrw.Scene = locala.KhF.xS();
-        AppMethodBeat.o(32556);
-        return 0;
-      }
-      AppMethodBeat.o(32556);
-      return -1;
+      AppMethodBeat.o(115873);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      if (this.DVs == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Buffer");
+        AppMethodBeat.o(115873);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(115873);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      drw localdrw = (drw)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(115873);
+        return -1;
+      case 1: 
+        localdrw.ErL = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(115873);
+        return 0;
+      case 2: 
+        localdrw.pAs = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(115873);
+        return 0;
+      case 3: 
+        localdrw.wTD = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(115873);
+        return 0;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new SKBuiltinBuffer_t();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localdrw.DVs = ((SKBuiltinBuffer_t)localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(115873);
+      return 0;
+    }
+    AppMethodBeat.o(115873);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.drw
  * JD-Core Version:    0.7.0.1
  */

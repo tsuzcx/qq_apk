@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.af;
+import com.tencent.mm.al.af;
 import com.tencent.mm.plugin.brandservice.ui.timeline.h;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
 import java.util.ArrayList;
@@ -15,52 +15,52 @@ import java.util.List;
 public final class o
   extends n
 {
-  public LinearLayout mZA;
-  public LinearLayout mZB;
-  public t naA;
-  public x naB;
-  public r naC;
-  public v naD;
-  public View.OnClickListener naE;
-  public LinearLayout nat;
-  public LinearLayout nau;
-  public TextView nav;
-  public List<k> naw;
-  public u nax;
-  public w nay;
-  public s naz;
+  public LinearLayout nBY;
+  public LinearLayout nBZ;
+  public LinearLayout nCR;
+  public LinearLayout nCS;
+  public TextView nCT;
+  public List<k> nCU;
+  public u nCV;
+  public w nCW;
+  public s nCX;
+  public t nCY;
+  public x nCZ;
+  public r nDa;
+  public v nDb;
+  public View.OnClickListener nDc;
   
   public o()
   {
     AppMethodBeat.i(6030);
-    this.naw = new ArrayList();
-    this.nax = new u();
-    this.nay = new w();
-    this.naz = new s();
-    this.naA = new t();
-    this.naB = new x();
-    this.naC = new r();
-    this.naD = new v();
-    this.naE = new View.OnClickListener()
+    this.nCU = new ArrayList();
+    this.nCV = new u();
+    this.nCW = new w();
+    this.nCX = new s();
+    this.nCY = new t();
+    this.nCZ = new x();
+    this.nDa = new r();
+    this.nDb = new v();
+    this.nDc = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(6028);
-        paramAnonymousView = (com.tencent.mm.storage.s)paramAnonymousView.getTag();
+        paramAnonymousView = (com.tencent.mm.storage.t)paramAnonymousView.getTag();
         paramAnonymousView.field_isExpand = true;
         paramAnonymousView.field_status = 4;
         paramAnonymousView.field_isRead = 1;
         paramAnonymousView.field_hasShow = 1;
-        af.awk().k(paramAnonymousView);
-        com.tencent.mm.plugin.brandservice.ui.timeline.c.cj(o.this.nao.lEL);
-        o.this.nao.mWX.c(paramAnonymousView, 0);
+        af.aDc().k(paramAnonymousView);
+        com.tencent.mm.plugin.brandservice.ui.timeline.c.cl(o.this.nCM.mgF);
+        o.this.nCM.nzw.d(paramAnonymousView, 0);
         AppMethodBeat.o(6028);
       }
     };
     AppMethodBeat.o(6030);
   }
   
-  public static void W(View paramView, int paramInt)
+  public static void X(View paramView, int paramInt)
   {
     AppMethodBeat.i(6034);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
@@ -74,23 +74,23 @@ public final class o
     AppMethodBeat.i(6031);
     if (paramBoolean)
     {
-      if (paraml.mYI == null) {
-        paraml.a(paramView, this.nao);
+      if (paraml.nBh == null) {
+        paraml.a(paramView, this.nCM);
       }
-      if (paraml.mYI != null)
+      if (paraml.nBh != null)
       {
-        paraml.mYI.setVisibility(0);
+        paraml.nBh.setVisibility(0);
         AppMethodBeat.o(6031);
       }
     }
-    else if (paraml.mYI != null)
+    else if (paraml.nBh != null)
     {
-      paraml.mYI.setVisibility(8);
+      paraml.nBh.setVisibility(8);
     }
     AppMethodBeat.o(6031);
   }
   
-  public static void c(com.tencent.mm.ai.v paramv)
+  public static void c(com.tencent.mm.ah.v paramv)
   {
     if (paramv.type == 6) {
       paramv.type = 7;
@@ -100,7 +100,7 @@ public final class o
   public static void t(View paramView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(6033);
-    paramView.setPadding(0, paramInt1 - com.tencent.mm.plugin.brandservice.ui.timeline.c.mWI, 0, paramInt2 - com.tencent.mm.plugin.brandservice.ui.timeline.c.mWI);
+    paramView.setPadding(0, paramInt1 - com.tencent.mm.plugin.brandservice.ui.timeline.c.nzh, 0, paramInt2 - com.tencent.mm.plugin.brandservice.ui.timeline.c.nzh);
     AppMethodBeat.o(6033);
   }
   
@@ -112,7 +112,7 @@ public final class o
     if (paramInt1 == 5)
     {
       bool1 = true;
-      a(paramo.nat, paramo.nay, bool1);
+      a(paramo.nCR, paramo.nCW, bool1);
       if (!bool1) {
         break label247;
       }
@@ -127,7 +127,7 @@ public final class o
       if (paramInt1 == 8)
       {
         bool1 = true;
-        a(paramo.nat, paramo.naA, bool1);
+        a(paramo.nCR, paramo.nCY, bool1);
         if (bool1) {
           i = 1;
         }
@@ -135,7 +135,7 @@ public final class o
           break label220;
         }
         bool1 = true;
-        a(paramo.nat, paramo.naB, bool1);
+        a(paramo.nCR, paramo.nCZ, bool1);
         if (bool1) {
           i = 1;
         }
@@ -143,7 +143,7 @@ public final class o
           break label226;
         }
         bool1 = true;
-        a(paramo.nat, paramo.naC, bool1);
+        a(paramo.nCR, paramo.nDa, bool1);
         if (bool1) {
           i = 1;
         }
@@ -151,7 +151,7 @@ public final class o
           break label232;
         }
         bool1 = true;
-        a(paramo.nat, paramo.naD, bool1);
+        a(paramo.nCR, paramo.nDb, bool1);
         if (!bool1) {
           break label244;
         }
@@ -159,8 +159,8 @@ public final class o
       }
       for (;;)
       {
-        LinearLayout localLinearLayout = paramo.nat;
-        paramo = paramo.nax;
+        LinearLayout localLinearLayout = paramo.nCR;
+        paramo = paramo.nCV;
         if ((i == 0) && (paramInt2 > 0) && (paramInt1 != -1)) {}
         for (bool1 = bool2;; bool1 = false)
         {
@@ -184,7 +184,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.o
  * JD-Core Version:    0.7.0.1
  */

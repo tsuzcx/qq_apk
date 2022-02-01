@@ -3,8 +3,8 @@ package com.tencent.kinda.framework.app;
 import com.tencent.kinda.gen.KindaLocationManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bb;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class KindaLocationManagerImpl
   implements KindaLocationManager
@@ -15,11 +15,11 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18454);
     String str = "";
-    az localaz = k.ebS();
-    if (localaz != null) {
-      str = localaz.Cvj;
+    bb localbb = k.ero();
+    if (localbb != null) {
+      str = localbb.DNE;
     }
-    ad.i("KindaLocationManagerImpl", "getCellInfo return: ".concat(String.valueOf(str)));
+    ac.i("KindaLocationManagerImpl", "getCellInfo return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18454);
     return str;
   }
@@ -28,11 +28,11 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18453);
     String str = "";
-    az localaz = k.ebS();
-    if (localaz != null) {
-      str = localaz.Cvh;
+    bb localbb = k.ero();
+    if (localbb != null) {
+      str = localbb.DNC;
     }
-    ad.i("KindaLocationManagerImpl", "getEncryptInfo return: ".concat(String.valueOf(str)));
+    ac.i("KindaLocationManagerImpl", "getEncryptInfo return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18453);
     return str;
   }
@@ -41,18 +41,18 @@ public class KindaLocationManagerImpl
   {
     AppMethodBeat.i(18455);
     String str = "";
-    az localaz = k.ebS();
-    if (localaz != null) {
-      str = localaz.Cvi;
+    bb localbb = k.ero();
+    if (localbb != null) {
+      str = localbb.DND;
     }
-    ad.i("KindaLocationManagerImpl", "getEncryptKey return: ".concat(String.valueOf(str)));
+    ac.i("KindaLocationManagerImpl", "getEncryptKey return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18455);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaLocationManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,27 @@ import junit.framework.Assert;
 
 public abstract class a<_Callback>
 {
-  private LinkedList<b> HPI = new LinkedList();
-  protected f HPJ;
-  protected d cLA;
+  private LinkedList<b> Jqd = new LinkedList();
+  protected f Jqe;
+  protected d cII;
   
   public a()
   {
-    this(g.fhs());
+    this(g.fxu());
   }
   
   public a(d paramd)
   {
     Assert.assertNotNull(paramd);
-    this.cLA = paramd;
-    this.HPJ = new f(paramd, null);
+    this.cII = paramd;
+    this.Jqe = new f(paramd, null);
   }
   
   protected final b a(b paramb)
   {
     try
     {
-      this.HPI.add(paramb);
+      this.Jqd.add(paramb);
       return paramb;
     }
     finally
@@ -42,7 +42,7 @@ public abstract class a<_Callback>
   {
     try
     {
-      this.HPI.remove(paramb);
+      this.Jqd.remove(paramb);
       return;
     }
     finally
@@ -56,7 +56,7 @@ public abstract class a<_Callback>
   {
     try
     {
-      boolean bool = this.HPI.contains(new b(param_Callback, this));
+      boolean bool = this.Jqd.contains(new b(param_Callback, this));
       return bool;
     }
     finally
@@ -66,11 +66,11 @@ public abstract class a<_Callback>
     }
   }
   
-  public final LinkedList<b> fhh()
+  public final LinkedList<b> fxj()
   {
     try
     {
-      LinkedList localLinkedList = fhi();
+      LinkedList localLinkedList = fxk();
       return localLinkedList;
     }
     finally
@@ -80,16 +80,16 @@ public abstract class a<_Callback>
     }
   }
   
-  protected final LinkedList<b> fhi()
+  protected final LinkedList<b> fxk()
   {
-    return new LinkedList(this.HPI);
+    return new LinkedList(this.Jqd);
   }
   
   public final int size()
   {
     try
     {
-      int i = this.HPI.size();
+      int i = this.Jqd.size();
       return i;
     }
     finally

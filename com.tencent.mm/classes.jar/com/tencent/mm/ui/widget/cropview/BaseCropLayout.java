@@ -9,14 +9,14 @@ import android.view.ViewPropertyAnimator;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout;", "Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "borderView", "Landroid/view/View;", "getBorderView", "()Landroid/view/View;", "setBorderView", "(Landroid/view/View;)V", "isHasBorder", "", "()Z", "setHasBorder", "(Z)V", "onBorderVisibilityCallback", "Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "getOnBorderVisibilityCallback", "()Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "setOnBorderVisibilityCallback", "(Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;)V", "dismissBorder", "", "onDown", "e", "Landroid/view/MotionEvent;", "onTouchCancel", "e1", "showBorder", "Companion", "OnBorderVisibilityCallback", "libmmui_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout;", "Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "borderView", "Landroid/view/View;", "getBorderView", "()Landroid/view/View;", "setBorderView", "(Landroid/view/View;)V", "isHasBorder", "", "()Z", "setHasBorder", "(Z)V", "onBorderVisibilityCallback", "Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "getOnBorderVisibilityCallback", "()Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "setOnBorderVisibilityCallback", "(Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;)V", "dismissBorder", "", "onDown", "e", "Landroid/view/MotionEvent;", "onTouchCancel", "e1", "showBorder", "Companion", "OnBorderVisibilityCallback", "libmmui_release"})
 public abstract class BaseCropLayout
   extends TouchEventLayout
 {
-  public static final a HDc = new a((byte)0);
-  private boolean HCZ = true;
-  private View HDa;
-  private b HDb;
+  public static final BaseCropLayout.a Jdy = new BaseCropLayout.a((byte)0);
+  private boolean Jdv = true;
+  private View Jdw;
+  private b Jdx;
   
   public BaseCropLayout(Context paramContext)
   {
@@ -39,17 +39,17 @@ public abstract class BaseCropLayout
   public void ai(MotionEvent paramMotionEvent)
   {
     k.h(paramMotionEvent, "e1");
-    if ((this.HCZ) && (this.HCZ))
+    if ((this.Jdv) && (this.Jdv))
     {
-      paramMotionEvent = this.HDb;
+      paramMotionEvent = this.Jdx;
       if (paramMotionEvent != null) {
         paramMotionEvent.onDismiss();
       }
-      paramMotionEvent = this.HDa;
+      paramMotionEvent = this.Jdw;
       if (paramMotionEvent != null) {
         paramMotionEvent.setAlpha(1.0F);
       }
-      paramMotionEvent = this.HDa;
+      paramMotionEvent = this.Jdw;
       if (paramMotionEvent != null)
       {
         paramMotionEvent = paramMotionEvent.animate();
@@ -74,23 +74,23 @@ public abstract class BaseCropLayout
   
   public final View getBorderView()
   {
-    return this.HDa;
+    return this.Jdw;
   }
   
   public final b getOnBorderVisibilityCallback()
   {
-    return this.HDb;
+    return this.Jdx;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if ((this.HCZ) && (this.HCZ))
+    if ((this.Jdv) && (this.Jdv))
     {
-      Object localObject = this.HDb;
+      Object localObject = this.Jdx;
       if (localObject != null) {
         ((b)localObject).onShow();
       }
-      localObject = this.HDa;
+      localObject = this.Jdw;
       if (localObject != null)
       {
         localObject = ((View)localObject).animate();
@@ -116,23 +116,20 @@ public abstract class BaseCropLayout
   
   public final void setBorderView(View paramView)
   {
-    this.HDa = paramView;
+    this.Jdw = paramView;
   }
   
   public final void setHasBorder(boolean paramBoolean)
   {
-    this.HCZ = paramBoolean;
+    this.Jdv = paramBoolean;
   }
   
   public final void setOnBorderVisibilityCallback(b paramb)
   {
-    this.HDb = paramb;
+    this.Jdx = paramb;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$Companion;", "", "()V", "BORDER_DELAY", "", "BORDER_DURATION", "libmmui_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "", "onDismiss", "", "onShow", "libmmui_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "", "onDismiss", "", "onShow", "libmmui_release"})
   public static abstract interface b
   {
     public abstract void onDismiss();
@@ -142,7 +139,7 @@ public abstract class BaseCropLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cropview.BaseCropLayout
  * JD-Core Version:    0.7.0.1
  */

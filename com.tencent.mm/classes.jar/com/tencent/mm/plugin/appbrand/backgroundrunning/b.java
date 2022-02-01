@@ -4,37 +4,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public final class b
   implements com.tencent.mm.kernel.c.b, g
 {
-  private final HashSet<g.b> iXH;
-  private final HashSet<g.a> iXI;
+  private final HashSet<g.b> jxX;
+  private final HashSet<g.a> jxY;
   
   public b()
   {
     AppMethodBeat.i(44765);
-    this.iXH = new HashSet();
-    this.iXI = new HashSet();
+    this.jxX = new HashSet();
+    this.jxY = new HashSet();
     AppMethodBeat.o(44765);
   }
   
   public final void a(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel)
   {
     AppMethodBeat.i(44767);
-    ad.i("MicroMsg.AppBrandBackgroundRunningManagerService", "sendOperation from appbrand process, operation:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
-    synchronized (this.iXH)
+    ac.i("MicroMsg.AppBrandBackgroundRunningManagerService", "sendOperation from appbrand process, operation:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
+    synchronized (this.jxX)
     {
-      Iterator localIterator = this.iXH.iterator();
+      Iterator localIterator = this.jxX.iterator();
       if (localIterator.hasNext()) {
         ((g.b)localIterator.next()).b(paramAppBrandBackgroundRunningOperationParcel);
       }
     }
-    if (paramAppBrandBackgroundRunningOperationParcel.iXO)
+    if (paramAppBrandBackgroundRunningOperationParcel.jye)
     {
       AppMethodBeat.o(44767);
       return;
@@ -46,12 +46,12 @@ public final class b
   public final void a(MMBackgroundRunningOperationParcel paramMMBackgroundRunningOperationParcel)
   {
     AppMethodBeat.i(44768);
-    if ((paramMMBackgroundRunningOperationParcel != null) && (!bt.isNullOrNil(paramMMBackgroundRunningOperationParcel.appId)))
+    if ((paramMMBackgroundRunningOperationParcel != null) && (!bs.isNullOrNil(paramMMBackgroundRunningOperationParcel.appId)))
     {
-      ad.i("MicroMsg.AppBrandBackgroundRunningManagerService", "receiveOperation in appbrand process, operation:%s", new Object[] { paramMMBackgroundRunningOperationParcel });
-      synchronized (this.iXI)
+      ac.i("MicroMsg.AppBrandBackgroundRunningManagerService", "receiveOperation in appbrand process, operation:%s", new Object[] { paramMMBackgroundRunningOperationParcel });
+      synchronized (this.jxY)
       {
-        Iterator localIterator = this.iXI.iterator();
+        Iterator localIterator = this.jxY.iterator();
         if (localIterator.hasNext()) {
           ((g.a)localIterator.next()).b(paramMMBackgroundRunningOperationParcel);
         }
@@ -70,9 +70,9 @@ public final class b
       AppMethodBeat.o(44771);
       return;
     }
-    synchronized (this.iXI)
+    synchronized (this.jxY)
     {
-      this.iXI.add(parama);
+      this.jxY.add(parama);
       AppMethodBeat.o(44771);
       return;
     }
@@ -86,21 +86,21 @@ public final class b
       AppMethodBeat.o(44769);
       return;
     }
-    synchronized (this.iXH)
+    synchronized (this.jxX)
     {
-      this.iXH.add(paramb);
+      this.jxX.add(paramb);
       AppMethodBeat.o(44769);
       return;
     }
   }
   
-  public final void agv() {}
+  public final void ahM() {}
   
-  public final void agw()
+  public final void ahN()
   {
     AppMethodBeat.i(44766);
-    this.iXH.clear();
-    this.iXI.clear();
+    this.jxX.clear();
+    this.jxY.clear();
     AppMethodBeat.o(44766);
   }
   
@@ -112,9 +112,9 @@ public final class b
       AppMethodBeat.o(44772);
       return;
     }
-    synchronized (this.iXI)
+    synchronized (this.jxY)
     {
-      this.iXI.remove(parama);
+      this.jxY.remove(parama);
       AppMethodBeat.o(44772);
       return;
     }
@@ -128,9 +128,9 @@ public final class b
       AppMethodBeat.o(44770);
       return;
     }
-    synchronized (this.iXH)
+    synchronized (this.jxX)
     {
-      this.iXH.remove(paramb);
+      this.jxX.remove(paramb);
       AppMethodBeat.o(44770);
       return;
     }
@@ -142,7 +142,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.b
  * JD-Core Version:    0.7.0.1
  */

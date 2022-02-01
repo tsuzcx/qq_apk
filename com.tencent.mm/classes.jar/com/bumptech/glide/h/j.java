@@ -16,21 +16,21 @@ import java.util.Queue;
 
 public final class j
 {
-  private static final char[] aLy;
-  private static final char[] aLz;
+  private static final char[] aMo;
+  private static final char[] aMp;
   
   static
   {
     AppMethodBeat.i(77784);
-    aLy = "0123456789abcdef".toCharArray();
-    aLz = new char[64];
+    aMo = "0123456789abcdef".toCharArray();
+    aMp = new char[64];
     AppMethodBeat.o(77784);
   }
   
   public static boolean aY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(77774);
-    if ((dx(paramInt1)) && (dx(paramInt2)))
+    if ((dw(paramInt1)) && (dw(paramInt2)))
     {
       AppMethodBeat.o(77774);
       return true;
@@ -74,12 +74,12 @@ public final class j
     }
   }
   
-  private static boolean dx(int paramInt)
+  private static boolean dw(int paramInt)
   {
     return (paramInt > 0) || (paramInt == -2147483648);
   }
   
-  public static <T> Queue<T> dy(int paramInt)
+  public static <T> Queue<T> dx(int paramInt)
   {
     AppMethodBeat.i(77778);
     ArrayDeque localArrayDeque = new ArrayDeque(paramInt);
@@ -120,7 +120,7 @@ public final class j
     }
     if ((paramObject1 instanceof l))
     {
-      bool = ((l)paramObject1).oM();
+      bool = ((l)paramObject1).oW();
       AppMethodBeat.o(77781);
       return bool;
     }
@@ -150,7 +150,7 @@ public final class j
       localConfig = Bitmap.Config.ARGB_8888;
     }
     int i;
-    switch (1.$SwitchMap$android$graphics$Bitmap$Config[localConfig.ordinal()])
+    switch (j.1.$SwitchMap$android$graphics$Bitmap$Config[localConfig.ordinal()])
     {
     default: 
       i = 4;
@@ -195,15 +195,15 @@ public final class j
   public static String m(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77771);
-    synchronized (aLz)
+    synchronized (aMp)
     {
-      char[] arrayOfChar2 = aLz;
+      char[] arrayOfChar2 = aMp;
       int i = 0;
       while (i < paramArrayOfByte.length)
       {
         int j = paramArrayOfByte[i] & 0xFF;
-        arrayOfChar2[(i * 2)] = aLy[(j >>> 4)];
-        arrayOfChar2[(i * 2 + 1)] = aLy[(j & 0xF)];
+        arrayOfChar2[(i * 2)] = aMo[(j >>> 4)];
+        arrayOfChar2[(i * 2 + 1)] = aMo[(j & 0xF)];
         i += 1;
       }
       paramArrayOfByte = new String(arrayOfChar2);
@@ -212,10 +212,10 @@ public final class j
     }
   }
   
-  public static void pQ()
+  public static void qa()
   {
     AppMethodBeat.i(77775);
-    if (!pR())
+    if (!qb())
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("You must call this method on the main thread");
       AppMethodBeat.o(77775);
@@ -224,7 +224,7 @@ public final class j
     AppMethodBeat.o(77775);
   }
   
-  public static boolean pR()
+  public static boolean qb()
   {
     AppMethodBeat.i(77776);
     if (Looper.myLooper() == Looper.getMainLooper())
@@ -236,10 +236,10 @@ public final class j
     return false;
   }
   
-  public static boolean pS()
+  public static boolean qc()
   {
     AppMethodBeat.i(77777);
-    if (!pR())
+    if (!qb())
     {
       AppMethodBeat.o(77777);
       return true;
@@ -250,7 +250,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.j
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -19,7 +19,7 @@ public class at
   private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(78607);
-    if (bt.gL(paramLinkedList))
+    if (bs.gY(paramLinkedList))
     {
       AppMethodBeat.o(78607);
       return;
@@ -37,7 +37,7 @@ public class at
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
+        ac.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
       }
     }
     AppMethodBeat.o(78607);
@@ -46,11 +46,11 @@ public class at
   public final void a(final Context paramContext, String paramString, final bn.a parama)
   {
     AppMethodBeat.i(78606);
-    ad.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
+    ac.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
-      com.tencent.mm.cj.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -67,7 +67,7 @@ public class at
           FileDownloadTaskInfo localFileDownloadTaskInfo;
           if (l > 0L)
           {
-            localFileDownloadTaskInfo = f.bQt().oh(l);
+            localFileDownloadTaskInfo = f.bXJ().rT(l);
             localObject = localFileDownloadTaskInfo;
             if (localFileDownloadTaskInfo == null) {
               localObject = new FileDownloadTaskInfo();
@@ -76,9 +76,9 @@ public class at
             AppMethodBeat.o(78605);
             return;
           }
-          if (!bt.isNullOrNil((String)localObject))
+          if (!bs.isNullOrNil((String)localObject))
           {
-            localFileDownloadTaskInfo = f.bQt().Sp((String)localObject);
+            localFileDownloadTaskInfo = f.bXJ().WB((String)localObject);
             localObject = localFileDownloadTaskInfo;
             if (localFileDownloadTaskInfo == null) {
               localObject = new FileDownloadTaskInfo();
@@ -96,7 +96,7 @@ public class at
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
+      ac.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78606);
     }
@@ -104,7 +104,7 @@ public class at
   
   public final void b(com.tencent.luggage.d.a<n>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

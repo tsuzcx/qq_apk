@@ -1,21 +1,26 @@
 package com.tencent.mm.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/Atom/MvhdAtom;", "Lcom/tencent/mm/plugin/Atom/Atom;", "atomSize", "", "beginPos", "", "type", "atomLargeSize", "(IJIJ)V", "duration", "getDuration", "()J", "setDuration", "(J)V", "timeScale", "getTimeScale", "setTimeScale", "parser", "", "source", "Ljava/io/RandomAccessFile;", "atomHead", "", "Companion", "plugin-playvideo_release"})
 public final class m
+  extends a
 {
-  public long grd;
-  public int hXP;
-  public int id;
-  public int size;
-  public long start;
+  public static final m.a ixS;
+  long duration;
+  public long ixw;
   
-  public final String toString()
+  static
   {
-    AppMethodBeat.i(133882);
-    String str = " id: " + this.id + " start: " + this.start + " size: " + this.size + " sampleTime: " + this.grd + " sampleFlag: " + this.hXP;
-    AppMethodBeat.o(133882);
-    return str;
+    AppMethodBeat.i(134106);
+    ixS = new m.a((byte)0);
+    AppMethodBeat.o(134106);
+  }
+  
+  public m(int paramInt1, long paramLong, int paramInt2)
+  {
+    super(paramInt1, paramLong, paramInt2, 0L);
   }
 }
 

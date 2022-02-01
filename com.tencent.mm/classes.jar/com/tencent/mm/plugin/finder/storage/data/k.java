@@ -3,157 +3,139 @@ package com.tencent.mm.plugin.finder.storage.data;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.protocal.protobuf.dzo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.au.c;
+import com.tencent.mm.protocal.protobuf.ang;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.at.c;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import d.f;
 import d.g.a.a;
 import d.g.b.u;
 import d.g.b.w;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/data/PageRecovery;", "", "()V", "SENSITIVE_CRASH_DURATION", "", "SENSITIVE_DURATION", "TAG", "", "lastEnterTimeMs", "", "getLastEnterTimeMs", "()J", "setLastEnterTimeMs", "(J)V", "touchFile", "getTouchFile", "()Ljava/lang/String;", "touchFile$delegate", "Lkotlin/Lazy;", "enterActivity", "", "setup", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/data/PageRecovery;", "", "()V", "SENSITIVE_CRASH_DURATION", "", "SENSITIVE_DURATION", "TAG", "", "lastEnterTimeMs", "", "getLastEnterTimeMs", "()J", "setLastEnterTimeMs", "(J)V", "touchFile", "getTouchFile", "()Ljava/lang/String;", "touchFile$delegate", "Lkotlin/Lazy;", "enterActivity", "", "setup", "plugin-finder_release"})
 public final class k
 {
-  private static final f KXA;
-  public static final k KXB;
-  private static long KXz;
+  private static long rFe;
+  private static final f rFf;
+  public static final k rFg;
   
   static
   {
-    AppMethodBeat.i(199082);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(k.class), "touchFile", "getTouchFile()Ljava/lang/String;")) };
-    KXB = new k();
-    KXA = d.g.E((a)b.KXD);
-    AppMethodBeat.o(199082);
+    AppMethodBeat.i(203050);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(k.class), "touchFile", "getTouchFile()Ljava/lang/String;")) };
+    rFg = new k();
+    rFf = d.g.K((a)k.b.rFi);
+    AppMethodBeat.o(203050);
   }
   
-  public static long fVh()
+  public static long cBk()
   {
-    return KXz;
+    return rFe;
   }
   
-  public static String fVi()
+  public static String cBl()
   {
-    AppMethodBeat.i(199083);
-    String str = (String)KXA.getValue();
-    AppMethodBeat.o(199083);
+    AppMethodBeat.i(203051);
+    String str = (String)rFf.getValue();
+    AppMethodBeat.o(203051);
     return str;
   }
   
-  public static void fVj()
+  public static void cBm()
   {
-    AppMethodBeat.i(199084);
-    KXz = SystemClock.uptimeMillis();
-    AppMethodBeat.o(199084);
+    AppMethodBeat.i(203052);
+    rFe = SystemClock.uptimeMillis();
+    AppMethodBeat.o(203052);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "kotlin.jvm.PlatformType", "msg", "", "ex", "", "uncaughtException"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "kotlin.jvm.PlatformType", "msg", "", "ex", "", "uncaughtException"})
   public static final class a
-    implements au.c
+    implements at.c
   {
-    public a(dzo paramdzo) {}
+    public a(ang paramang) {}
     
-    public final void b(String paramString, Throwable paramThrowable)
+    public final void a(at paramat, String paramString, Throwable paramThrowable)
     {
-      Object localObject1 = null;
-      AppMethodBeat.i(199079);
-      paramThrowable = this.KXC;
-      if (paramThrowable == null)
+      paramThrowable = null;
+      AppMethodBeat.i(203047);
+      paramat = this.rFh;
+      if (paramat == null)
       {
-        paramThrowable = new dzo();
-        paramThrowable.crashCount = 0;
-        paramThrowable.Lyb = 0L;
+        paramat = new ang();
+        paramat.crashCount = 0;
+        paramat.EGo = 0L;
       }
       for (;;)
       {
         paramString = new StringBuilder("get crash msg ").append(paramString).append(", isInFinder ").append(((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isInFinder()).append(" lastEnterTimeMs:");
-        Object localObject2 = k.KXB;
-        paramString = paramString.append(k.fVh()).append(" pass: ");
+        Object localObject = k.rFg;
+        paramString = paramString.append(k.cBk()).append(" pass: ");
         long l = SystemClock.uptimeMillis();
-        localObject2 = k.KXB;
-        localObject2 = paramString.append(l - k.fVh()).append(" info: ");
-        paramString = this.KXC;
+        localObject = k.rFg;
+        localObject = paramString.append(l - k.cBk()).append(" info: ");
+        paramString = this.rFh;
         if (paramString != null)
         {
           paramString = Integer.valueOf(paramString.crashCount);
-          localObject2 = ((StringBuilder)localObject2).append(paramString).append(' ');
-          paramString = this.KXC;
+          localObject = ((StringBuilder)localObject).append(paramString).append(' ');
+          paramString = this.rFh;
           if (paramString == null) {
-            break label400;
+            break label402;
           }
-          paramString = Long.valueOf(paramString.Lyb);
-          label163:
-          ad.i("Finder.PageRecovery", paramString);
+          paramString = Long.valueOf(paramString.EGo);
+          label164:
+          ac.i("Finder.PageRecovery", paramString);
           if (((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).isInFinder())
           {
             l = SystemClock.uptimeMillis();
-            paramString = k.KXB;
-            if (l - k.fVh() <= 5000L)
+            paramString = k.rFg;
+            if (l - k.cBk() <= 5000L)
             {
-              if (System.currentTimeMillis() - paramThrowable.Lyb >= 300000L) {
-                break label405;
+              if (System.currentTimeMillis() - paramat.EGo >= 300000L) {
+                break label407;
               }
-              paramThrowable.crashCount += 1;
-              label236:
-              paramThrowable.Lyb = System.currentTimeMillis();
-              paramString = k.KXB;
-              i.aMF(new e(k.fVk()).getParent());
-              paramString = k.KXB;
-              i.B(k.fVk(), paramThrowable.toByteArray());
+              paramat.crashCount += 1;
+              label239:
+              paramat.EGo = System.currentTimeMillis();
+              paramString = k.rFg;
+              i.aSh(new e(k.cBn()).getParent());
+              paramString = k.rFg;
+              i.B(k.cBn(), paramat.toByteArray());
               paramString = new StringBuilder("[setup] crash happen =");
-              localObject2 = k.KXB;
-              paramString = paramString.append(i.eK(k.fVk())).append(" touchFile=");
-              localObject2 = k.KXB;
-              localObject2 = paramString.append(k.fVk()).append(" info: ");
-              if (paramThrowable == null) {
-                break label413;
+              localObject = k.rFg;
+              paramString = paramString.append(i.eA(k.cBn())).append(" touchFile=");
+              localObject = k.rFg;
+              localObject = paramString.append(k.cBn()).append(" info: ");
+              if (paramat == null) {
+                break label415;
               }
             }
           }
         }
-        label400:
-        label405:
-        label413:
-        for (paramString = Integer.valueOf(paramThrowable.crashCount);; paramString = null)
+        label402:
+        label407:
+        label415:
+        for (paramString = Integer.valueOf(paramat.crashCount);; paramString = null)
         {
-          localObject2 = ((StringBuilder)localObject2).append(paramString.intValue()).append(' ');
-          paramString = localObject1;
-          if (paramThrowable != null) {
-            paramString = Long.valueOf(paramThrowable.Lyb);
+          localObject = ((StringBuilder)localObject).append(paramString.intValue()).append(' ');
+          paramString = paramThrowable;
+          if (paramat != null) {
+            paramString = Long.valueOf(paramat.EGo);
           }
-          ad.i("Finder.PageRecovery", paramString.longValue());
-          AppMethodBeat.o(199079);
+          ac.i("Finder.PageRecovery", paramString.longValue());
+          AppMethodBeat.o(203047);
           return;
           paramString = null;
           break;
           paramString = null;
-          break label163;
-          paramThrowable.crashCount = 1;
-          break label236;
+          break label164;
+          paramat.crashCount = 1;
+          break label239;
         }
       }
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements a<String>
-  {
-    public static final b KXD;
-    
-    static
-    {
-      AppMethodBeat.i(199081);
-      KXD = new b();
-      AppMethodBeat.o(199081);
-    }
-    
-    b()
-    {
-      super();
     }
   }
 }

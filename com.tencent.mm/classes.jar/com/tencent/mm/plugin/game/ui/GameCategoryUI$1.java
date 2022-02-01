@@ -12,14 +12,14 @@ final class GameCategoryUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(41912);
-    this.sfx.finish();
+    this.tnq.finish();
     AppMethodBeat.o(41912);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCategoryUI.1
  * JD-Core Version:    0.7.0.1
  */

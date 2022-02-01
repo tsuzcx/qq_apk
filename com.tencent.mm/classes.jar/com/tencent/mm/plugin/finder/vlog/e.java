@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.finder.vlog;
 import d.g.a.a;
 import d.l;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 16})
 final class e
   implements Runnable
 {
   e(a parama)
   {
-    this.cbg = parama;
+    this.bYd = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.vlog.e
  * JD-Core Version:    0.7.0.1
  */

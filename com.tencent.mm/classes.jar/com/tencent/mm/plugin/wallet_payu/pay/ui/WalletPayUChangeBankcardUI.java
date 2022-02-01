@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.a.h;
 import com.tencent.mm.plugin.wallet.pay.ui.WalletChangeBankcardUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
@@ -17,52 +17,52 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.ui.k;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletPayUChangeBankcardUI
   extends WalletChangeBankcardUI
 {
-  private String AAp;
-  private com.tencent.mm.sdk.b.c AAq;
+  private String BSL;
+  private com.tencent.mm.sdk.b.c BSM;
   
   public WalletPayUChangeBankcardUI()
   {
     AppMethodBeat.i(72106);
-    this.AAp = null;
-    this.AAq = new WalletPayUChangeBankcardUI.4(this);
+    this.BSL = null;
+    this.BSM = new WalletPayUChangeBankcardUI.4(this);
     AppMethodBeat.o(72106);
   }
   
-  public final void atF(String paramString)
+  public final void ayX(String paramString)
   {
     AppMethodBeat.i(72111);
-    this.zNP.Abg = paramString;
+    this.Bgj.BtA = paramString;
     label168:
     Object localObject;
     boolean bool;
-    if (this.zGh != null)
+    if (this.AYu != null)
     {
-      getInput().putString("key_mobile", this.zGh.field_mobile);
-      getInput().putParcelable("key_bankcard", this.zGh);
-      this.zNP.uns = this.zGh.field_bindSerial;
-      this.zNP.dca = this.zGh.field_bankcardType;
-      if (this.zQd == null) {
+      getInput().putString("key_mobile", this.AYu.field_mobile);
+      getInput().putParcelable("key_bankcard", this.AYu);
+      this.Bgj.vwo = this.AYu.field_bindSerial;
+      this.Bgj.cZz = this.AYu.field_bankcardType;
+      if (this.Bix == null) {
         break label340;
       }
-      this.zNP.Abq = this.zQd.Aeb;
-      if ((this.vIq != null) && (this.vIq.Afy != null)) {
-        this.zNP.Abp = this.vIq.Afy.zOr;
+      this.Bgj.BtK = this.Bix.Bwv;
+      if ((this.wSu != null) && (this.wSu.BxS != null)) {
+        this.Bgj.BtJ = this.wSu.BxS.BgL;
       }
-      if ((this.vIq != null) && (this.vIq.zWA == 3))
+      if ((this.wSu != null) && (this.wSu.BoU == 3))
       {
-        if (!this.zGh.eby()) {
+        if (!this.AYu.eqU()) {
           break label351;
         }
-        this.zNP.dtM = 3;
+        this.Bgj.drx = 3;
         localObject = getInput();
-        if (this.zGh.eby()) {
+        if (this.AYu.eqU()) {
           break label363;
         }
         bool = true;
@@ -70,63 +70,63 @@ public class WalletPayUChangeBankcardUI
         ((Bundle)localObject).putBoolean("key_is_oversea", bool);
       }
     }
-    getInput().putParcelable("key_authen", this.zNP);
-    if ((this.mPayInfo.dtb == 32) || (this.mPayInfo.dtb == 31))
+    getInput().putParcelable("key_authen", this.Bgj);
+    if ((this.mPayInfo.dqL == 32) || (this.mPayInfo.dqL == 31))
     {
-      if (this.mPayInfo.dtb == 32) {
-        ad.d("MicroMsg.WalletPayUChangeBankcardUI", "hy: transfer ftf");
+      if (this.mPayInfo.dqL == 32) {
+        ac.d("MicroMsg.WalletPayUChangeBankcardUI", "hy: transfer ftf");
       }
       for (int i = 1;; i = 0)
       {
-        doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.a(this.mPayInfo.dcE, this.ixc, this.mPayInfo.Cos.getDouble("total_fee"), this.mPayInfo.Cos.getString("fee_type"), i, this.mPayInfo.Cos.getString("extinfo_key_1"), this.zGh.field_bindSerial, this.mPayInfo.Cos.getString("extinfo_key_4")));
+        doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.a(this.mPayInfo.dac, this.iXf, this.mPayInfo.hbR.getDouble("total_fee"), this.mPayInfo.hbR.getString("fee_type"), i, this.mPayInfo.hbR.getString("extinfo_key_1"), this.AYu.field_bindSerial, this.mPayInfo.hbR.getString("extinfo_key_4")));
         AppMethodBeat.o(72111);
         return;
         label340:
-        this.zNP.Abq = null;
+        this.Bgj.BtK = null;
         break;
         label351:
-        this.zNP.dtM = 6;
+        this.Bgj.drx = 6;
         break label168;
         label363:
         bool = false;
         break label187;
       }
     }
-    if (this.mPayInfo.dtb == 11)
+    if (this.mPayInfo.dqL == 11)
     {
-      paramString = this.ixc;
-      localObject = this.AAp;
-      String str1 = this.mPayInfo.dcE;
-      double d = this.mPayInfo.Cos.getDouble("total_fee");
-      String str2 = this.mPayInfo.Cos.getString("fee_type");
-      String str3 = this.zGh.field_bindSerial;
-      String str4 = this.zGh.field_bankcardType;
-      com.tencent.mm.plugin.wallet.a.s.dZT();
-      doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.balance.a.b(paramString, (String)localObject, str1, d, str2, str3, str4, com.tencent.mm.plugin.wallet.a.s.dZU().zHd.field_bindSerial));
+      paramString = this.iXf;
+      localObject = this.BSL;
+      String str1 = this.mPayInfo.dac;
+      double d = this.mPayInfo.hbR.getDouble("total_fee");
+      String str2 = this.mPayInfo.hbR.getString("fee_type");
+      String str3 = this.AYu.field_bindSerial;
+      String str4 = this.AYu.field_bankcardType;
+      com.tencent.mm.plugin.wallet.a.s.epp();
+      doSceneForceProgress(new com.tencent.mm.plugin.wallet_payu.balance.a.b(paramString, (String)localObject, str1, d, str2, str3, str4, com.tencent.mm.plugin.wallet.a.s.epq().AZp.field_bindSerial));
       AppMethodBeat.o(72111);
       return;
     }
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.pay.a.a(this.mPayInfo.dcE, this.mPayInfo.Cos.getDouble("total_fee"), this.mPayInfo.Cos.getString("fee_type"), this.zGh.field_bankcardType, this.zGh.field_bindSerial, this.AAp, paramString));
+    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.pay.a.a(this.mPayInfo.dac, this.mPayInfo.hbR.getDouble("total_fee"), this.mPayInfo.hbR.getString("fee_type"), this.AYu.field_bankcardType, this.AYu.field_bindSerial, this.BSL, paramString));
     AppMethodBeat.o(72111);
   }
   
-  public final k eae()
+  public final k epA()
   {
     AppMethodBeat.i(72109);
-    a locala = new a(this, this.zGg, this.zQa, this.vIq);
+    a locala = new a(this, this.AYt, this.Biu, this.wSu);
     AppMethodBeat.o(72109);
     return locala;
   }
   
-  public final void eaf()
+  public final void epB()
   {
     AppMethodBeat.i(72110);
-    ad.d("MicroMsg.WalletPayUChangeBankcardUI", "pay with old bankcard!");
+    ac.d("MicroMsg.WalletPayUChangeBankcardUI", "pay with old bankcard!");
     String str = getInput().getString("key_pwd1");
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
       setContentViewVisibility(4);
-      this.zPZ = b.a(this, this.vIq, this.zQd, this.zGh, new b.b()new View.OnClickListener
+      this.Bit = b.a(this, this.wSu, this.Bix, this.AYu, new b.b()new View.OnClickListener
       {
         public final void a(String paramAnonymousString1, String paramAnonymousString2, FavorPayInfo paramAnonymousFavorPayInfo)
         {
@@ -136,7 +136,7 @@ public class WalletPayUChangeBankcardUI
           WalletPayUChangeBankcardUI.a(WalletPayUChangeBankcardUI.this, paramAnonymousString1);
           WalletPayUChangeBankcardUI.b(WalletPayUChangeBankcardUI.this, paramAnonymousString2);
           WalletPayUChangeBankcardUI.this.hideVKB();
-          WalletPayUChangeBankcardUI.this.atF(paramAnonymousString1);
+          WalletPayUChangeBankcardUI.this.ayX(paramAnonymousString1);
           AppMethodBeat.o(72102);
         }
       }, new View.OnClickListener()new DialogInterface.OnCancelListener
@@ -150,7 +150,7 @@ public class WalletPayUChangeBankcardUI
           WalletPayUChangeBankcardUI.e(WalletPayUChangeBankcardUI.this).f(WalletPayUChangeBankcardUI.d(WalletPayUChangeBankcardUI.this), true);
           WalletPayUChangeBankcardUI.b(WalletPayUChangeBankcardUI.this, (FavorPayInfo)paramAnonymousView.getTag());
           if (WalletPayUChangeBankcardUI.f(WalletPayUChangeBankcardUI.this) != null) {
-            WalletPayUChangeBankcardUI.g(WalletPayUChangeBankcardUI.this).Aef = "";
+            WalletPayUChangeBankcardUI.g(WalletPayUChangeBankcardUI.this).Bwz = "";
           }
           WalletPayUChangeBankcardUI.this.getInput().putParcelable("key_favor_pay_info", WalletPayUChangeBankcardUI.h(WalletPayUChangeBankcardUI.this));
           WalletPayUChangeBankcardUI.i(WalletPayUChangeBankcardUI.this);
@@ -168,11 +168,11 @@ public class WalletPayUChangeBankcardUI
           }
           AppMethodBeat.o(72104);
         }
-      }, "CREDITCARD_PAYU".equals(this.zGh.field_bankcardType));
+      }, "CREDITCARD_PAYU".equals(this.AYu.field_bankcardType));
       AppMethodBeat.o(72110);
       return;
     }
-    atF(str);
+    ayX(str);
     AppMethodBeat.o(72110);
   }
   
@@ -181,7 +181,7 @@ public class WalletPayUChangeBankcardUI
     AppMethodBeat.i(72113);
     if (paramInt1 == 23351)
     {
-      ad.d("MicroMsg.WalletPayUChangeBankcardUI", "hy: check otp done. resultcode: %d", new Object[] { Integer.valueOf(paramInt2) });
+      ac.d("MicroMsg.WalletPayUChangeBankcardUI", "hy: check otp done. resultcode: %d", new Object[] { Integer.valueOf(paramInt2) });
       if (paramInt2 == -1)
       {
         getInput().putBoolean("key_should_redirect", false);
@@ -199,7 +199,7 @@ public class WalletPayUChangeBankcardUI
   {
     AppMethodBeat.i(72107);
     super.onCreate(paramBundle);
-    com.tencent.mm.sdk.b.a.ESL.c(this.AAq);
+    com.tencent.mm.sdk.b.a.GpY.c(this.BSM);
     AppMethodBeat.o(72107);
   }
   
@@ -207,7 +207,7 @@ public class WalletPayUChangeBankcardUI
   {
     AppMethodBeat.i(72108);
     super.onDestroy();
-    com.tencent.mm.sdk.b.a.ESL.d(this.AAq);
+    com.tencent.mm.sdk.b.a.GpY.d(this.BSM);
     AppMethodBeat.o(72108);
   }
   
@@ -217,8 +217,8 @@ public class WalletPayUChangeBankcardUI
     if ((paramInt1 == 0) && (paramInt2 == 0) && (((paramn instanceof com.tencent.mm.plugin.wallet_payu.pay.a.a)) || ((paramn instanceof com.tencent.mm.plugin.wallet_payu.remittance.a.a)) || ((paramn instanceof com.tencent.mm.plugin.wallet_payu.balance.a.b))))
     {
       paramString = getInput();
-      if (!bt.isNullOrNil(this.ixc)) {
-        paramString.putString("key_pwd1", this.ixc);
+      if (!bs.isNullOrNil(this.iXf)) {
+        paramString.putString("key_pwd1", this.iXf);
       }
       paramString.putBoolean("key_need_verify_sms", false);
       paramString.putParcelable("key_pay_info", this.mPayInfo);
@@ -226,25 +226,25 @@ public class WalletPayUChangeBankcardUI
       if ((paramn instanceof com.tencent.mm.plugin.wallet_payu.pay.a.a))
       {
         com.tencent.mm.plugin.wallet_payu.pay.a.a locala = (com.tencent.mm.plugin.wallet_payu.pay.a.a)paramn;
-        paramString.putString("transid", locala.nSY);
-        paramString.putBoolean("key_should_redirect", locala.AAj);
-        paramString.putString("key_gateway_code", locala.AyO);
-        paramString.putString("key_gateway_reference", locala.AyN);
-        paramString.putString("key_force_adjust_code", locala.AyQ);
-        paramString.putBoolean("key_should_force_adjust", locala.AAk);
+        paramString.putString("transid", locala.owt);
+        paramString.putBoolean("key_should_redirect", locala.BSF);
+        paramString.putString("key_gateway_code", locala.BRk);
+        paramString.putString("key_gateway_reference", locala.BRj);
+        paramString.putString("key_force_adjust_code", locala.BRm);
+        paramString.putBoolean("key_should_force_adjust", locala.BSG);
         if (locala.isSuccess()) {
-          paramString.putParcelable("key_orders", com.tencent.mm.plugin.wallet_payu.pay.a.c.a(this.vIq, locala.AAl, locala.AAm, locala.nUh, locala.don));
+          paramString.putParcelable("key_orders", com.tencent.mm.plugin.wallet_payu.pay.a.c.a(this.wSu, locala.BSH, locala.BSI, locala.oxC, locala.dlW));
         }
       }
       if ((paramn instanceof com.tencent.mm.plugin.wallet_payu.balance.a.b))
       {
         paramn = (com.tencent.mm.plugin.wallet_payu.balance.a.b)paramn;
-        paramString.putString("transid", paramn.nSY);
-        paramString.putBoolean("key_should_redirect", paramn.AyM);
-        paramString.putString("key_gateway_code", paramn.AyO);
-        paramString.putString("key_gateway_reference", paramn.AyN);
-        paramString.putString("key_force_adjust_code", paramn.AyQ);
-        paramString.putBoolean("key_should_force_adjust", paramn.AyP);
+        paramString.putString("transid", paramn.owt);
+        paramString.putBoolean("key_should_redirect", paramn.BRi);
+        paramString.putString("key_gateway_code", paramn.BRk);
+        paramString.putString("key_gateway_reference", paramn.BRj);
+        paramString.putString("key_force_adjust_code", paramn.BRm);
+        paramString.putBoolean("key_should_force_adjust", paramn.BRl);
       }
       com.tencent.mm.wallet_core.a.k(this, paramString);
       AppMethodBeat.o(72112);

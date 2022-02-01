@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class xz
   extends b
 {
-  public a dEm;
-  public b dEn;
+  public a dBt;
+  public b dBu;
   
   public xz()
   {
@@ -16,23 +16,22 @@ public final class xz
   
   private xz(byte paramByte)
   {
-    AppMethodBeat.i(19850);
-    this.dEm = new a();
-    this.dEn = new b();
-    this.ESR = false;
+    AppMethodBeat.i(91231);
+    this.dBt = new a();
+    this.dBu = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19850);
+    AppMethodBeat.o(91231);
   }
   
   public static final class a
   {
-    public int dbV;
-    public String username;
+    public String dBv;
   }
   
   public static final class b
   {
-    public int dEo;
+    public int status = -1;
   }
 }
 

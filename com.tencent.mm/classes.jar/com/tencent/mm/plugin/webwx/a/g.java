@@ -8,15 +8,15 @@ import android.database.Cursor;
 import android.media.RingtoneManager;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.al.f.d;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.rt;
-import com.tencent.mm.g.a.rt.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.f.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.sc;
+import com.tencent.mm.g.a.sc.a;
 import com.tencent.mm.model.aq;
 import com.tencent.mm.model.av;
 import com.tencent.mm.model.aw;
@@ -31,16 +31,16 @@ import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.plugin.webwx.ui.ExtDeviceWXLoginUI;
-import com.tencent.mm.protocal.protobuf.aek;
-import com.tencent.mm.protocal.protobuf.ael;
-import com.tencent.mm.protocal.protobuf.aen;
-import com.tencent.mm.protocal.protobuf.aeq;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.protocal.protobuf.afj;
+import com.tencent.mm.protocal.protobuf.afk;
+import com.tencent.mm.protocal.protobuf.afm;
+import com.tencent.mm.protocal.protobuf.afp;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,64 +48,64 @@ import java.util.Map;
 public final class g
   implements aw
 {
-  private f BAM;
-  private a BAN;
-  private av BAO;
-  private com.tencent.mm.sdk.b.c BAP;
-  private v BAQ;
-  private cc.a mCl;
+  private f CST;
+  private a CSU;
+  private av CSV;
+  private com.tencent.mm.sdk.b.c CSW;
+  private v CSX;
+  private cc.a nem;
   
   public g()
   {
     AppMethodBeat.i(30189);
-    this.BAM = new f();
-    this.mCl = new cc.a()
+    this.CST = new f();
+    this.nem = new cc.a()
     {
       public final void a(f.a paramAnonymousa)
       {
         AppMethodBeat.i(30183);
-        String str = (String)bw.K(z.a(paramAnonymousa.fTo.Cxz), "sysmsg").get(".sysmsg.pushloginurl.url");
-        if (bt.isNullOrNil(str)) {
-          ad.e("MicroMsg.SubCoreWebWX.pushloginurl", "pushloginurl is null");
+        String str = (String)bv.L(z.a(paramAnonymousa.fXi.DPV), "sysmsg").get(".sysmsg.pushloginurl.url");
+        if (bs.isNullOrNil(str)) {
+          ac.e("MicroMsg.SubCoreWebWX.pushloginurl", "pushloginurl is null");
         }
-        rt localrt = new rt();
-        localrt.dxp.dxq = str;
-        localrt.dxp.type = 1;
-        com.tencent.mm.sdk.b.a.ESL.l(localrt);
-        paramAnonymousa.fTo.CxD = null;
+        sc localsc = new sc();
+        localsc.dvc.dvd = str;
+        localsc.dvc.type = 1;
+        com.tencent.mm.sdk.b.a.GpY.l(localsc);
+        paramAnonymousa.fXi.DPZ = null;
         AppMethodBeat.o(30183);
       }
       
       public final void a(f.c paramAnonymousc) {}
     };
-    this.BAO = new av()
+    this.CSV = new av()
     {
-      public final void arM()
+      public final void ayD()
       {
         AppMethodBeat.i(30184);
-        az.arV();
-        if (com.tencent.mm.model.c.aeG()) {
-          g.erX();
+        az.ayM();
+        if (com.tencent.mm.model.c.afW()) {
+          g.eHr();
         }
         AppMethodBeat.o(30184);
       }
     };
-    this.BAP = new com.tencent.mm.sdk.b.c()
+    this.CSW = new com.tencent.mm.sdk.b.c()
     {
-      private boolean a(final rt paramAnonymousrt)
+      private boolean a(final sc paramAnonymoussc)
       {
         AppMethodBeat.i(30186);
-        if ((paramAnonymousrt != null) && ((paramAnonymousrt instanceof rt)))
+        if ((paramAnonymoussc != null) && ((paramAnonymoussc instanceof sc)))
         {
-          final d locald = new d(paramAnonymousrt.dxp.dxq);
-          paramAnonymousrt = new com.tencent.mm.al.g()
+          final d locald = new d(paramAnonymoussc.dvc.dvd);
+          paramAnonymoussc = new com.tencent.mm.ak.g()
           {
             public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
             {
               AppMethodBeat.i(30185);
-              az.aeS().b(971, this);
-              aen localaen = (aen)locald.hdD.gUT.gUX;
-              ad.d("MicroMsg.SubCoreWebWX", "errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
+              az.agi().b(971, this);
+              afm localafm = (afm)locald.hEg.hvs.hvw;
+              ac.d("MicroMsg.SubCoreWebWX", "errCode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
               Object localObject1;
               StringBuilder localStringBuilder;
               Object localObject3;
@@ -113,21 +113,21 @@ public final class g
               Object localObject2;
               if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
               {
-                if (localaen.DeC == null) {
+                if (localafm.ExI == null) {
                   break label1051;
                 }
                 paramAnonymous2String = new Intent();
-                paramAnonymous2String.putExtra("intent.key.login.url", paramAnonymousrt.dxp.dxq);
+                paramAnonymous2String.putExtra("intent.key.login.url", paramAnonymoussc.dvc.dvd);
                 paramAnonymous2String.putExtra("intent.key.type", 0);
-                paramAnonymous2String.putExtra("intent.key.icon.type", localaen.DeC.Dey);
-                paramAnonymous2String.putExtra("intent.key.ok.string", localaen.DeC.DeM);
-                paramAnonymous2String.putExtra("intent.key.cancel.string", localaen.DeC.DeN);
-                paramAnonymous2String.putExtra("intent.key.title.string", localaen.DeC.Dez);
-                paramAnonymous2String.putExtra("intent.key.content.string", localaen.DeC.DeR);
-                paramAnonymous2String.putExtra("intent.key.login.client.version", localaen.DeG);
-                paramAnonymous2String.putExtra("intent.key.function.control", localaen.DeH);
-                paramAnonymous2String.putExtra("intent.key.usage.link", localaen.DeC.DeS);
-                localObject1 = localaen.DeC.Dez;
+                paramAnonymous2String.putExtra("intent.key.icon.type", localafm.ExI.ExE);
+                paramAnonymous2String.putExtra("intent.key.ok.string", localafm.ExI.ExS);
+                paramAnonymous2String.putExtra("intent.key.cancel.string", localafm.ExI.ExT);
+                paramAnonymous2String.putExtra("intent.key.title.string", localafm.ExI.ExF);
+                paramAnonymous2String.putExtra("intent.key.content.string", localafm.ExI.ExX);
+                paramAnonymous2String.putExtra("intent.key.login.client.version", localafm.ExM);
+                paramAnonymous2String.putExtra("intent.key.function.control", localafm.ExN);
+                paramAnonymous2String.putExtra("intent.key.usage.link", localafm.ExI.ExY);
+                localObject1 = localafm.ExI.ExF;
                 localStringBuilder = new StringBuilder();
                 localObject3 = null;
                 localCursor = null;
@@ -138,15 +138,15 @@ public final class g
               {
                 try
                 {
-                  az.arV();
+                  az.ayM();
                   localObject2 = localCursor;
                   paramAnonymous2n = localObject3;
-                  localCursor = com.tencent.mm.model.c.apR().a(w.gMn, null, com.tencent.mm.o.a.fIf, true);
+                  localCursor = com.tencent.mm.model.c.awG().a(w.hmN, null, com.tencent.mm.o.a.fLL, true);
                   if (localCursor != null)
                   {
                     localObject2 = localCursor;
                     paramAnonymous2n = localCursor;
-                    if (localCursor.getCount() < localaen.DeC.DeO)
+                    if (localCursor.getCount() < localafm.ExI.ExU)
                     {
                       localObject2 = localCursor;
                       paramAnonymous2n = localCursor;
@@ -178,7 +178,7 @@ public final class g
                     {
                       localObject2 = localCursor;
                       paramAnonymous2n = localCursor;
-                      paramAnonymous2Int1 = localaen.DeC.DeO;
+                      paramAnonymous2Int1 = localafm.ExI.ExU;
                       continue;
                     }
                   }
@@ -195,7 +195,7 @@ public final class g
                 catch (Exception localException)
                 {
                   paramAnonymous2n = (n)localObject2;
-                  ad.printErrStackTrace("MicroMsg.SubCoreWebWX", localException, "[oneliang]get session list error.", new Object[0]);
+                  ac.printErrStackTrace("MicroMsg.SubCoreWebWX", localException, "[oneliang]get session list error.", new Object[0]);
                   if (localObject2 == null) {
                     break label790;
                   }
@@ -215,21 +215,21 @@ public final class g
                 if (paramAnonymous2n != null)
                 {
                   paramAnonymous2n.setFlags(268435456);
-                  paramAnonymous2n.setClass(aj.getContext(), ExtDeviceWXLoginUI.class);
-                  localObject1 = aj.getContext();
-                  localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymous2n);
-                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/plugin/webwx/model/SubCoreWebWX$3$1", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+                  paramAnonymous2n.setClass(ai.getContext(), ExtDeviceWXLoginUI.class);
+                  localObject1 = ai.getContext();
+                  localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymous2n);
+                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/webwx/model/SubCoreWebWX$3$1", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
                   com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/webwx/model/SubCoreWebWX$3$1", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                   paramAnonymous2n = new Intent(paramAnonymous2n);
                   paramAnonymous2n.setFlags(67108864);
-                  if (paramAnonymousrt.dxp.type == 1)
+                  if (paramAnonymoussc.dvc.type == 1)
                   {
-                    paramAnonymous2n = PendingIntent.getActivity(aj.getContext(), 0, paramAnonymous2n, 134217728);
-                    paramAnonymous2String = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").i(null).g(System.currentTimeMillis()).f(aj.getContext().getString(2131755822)).g(paramAnonymous2String);
-                    paramAnonymous2String.Ew = paramAnonymous2n;
+                    paramAnonymous2n = PendingIntent.getActivity(ai.getContext(), 0, paramAnonymous2n, 134217728);
+                    paramAnonymous2String = com.tencent.mm.bq.a.bE(ai.getContext(), "reminder_channel_id").i(null).i(System.currentTimeMillis()).f(ai.getContext().getString(2131755822)).g(paramAnonymous2String);
+                    paramAnonymous2String.Fu = paramAnonymous2n;
                     paramAnonymous2String = paramAnonymous2String.build();
-                    paramAnonymous2String.icon = com.tencent.mm.br.a.cYf();
+                    paramAnonymous2String.icon = com.tencent.mm.bq.a.dlN();
                     paramAnonymous2String.flags |= 0x10;
                     paramAnonymous2String.sound = RingtoneManager.getDefaultUri(2);
                     az.getNotification().notify(38, paramAnonymous2String);
@@ -243,28 +243,28 @@ public final class g
                 continue;
                 if (paramAnonymous2Int2 == -1)
                 {
-                  if (localaen.DeD != null)
+                  if (localafm.ExJ != null)
                   {
                     paramAnonymous2n = new Intent();
-                    paramAnonymous2n.putExtra("intent.key.login.url", paramAnonymousrt.dxp.dxq);
+                    paramAnonymous2n.putExtra("intent.key.login.url", paramAnonymoussc.dvc.dvd);
                     paramAnonymous2n.putExtra("intent.key.type", -1);
-                    paramAnonymous2n.putExtra("intent.key.title.string", localaen.DeD.DeA);
-                    paramAnonymous2n.putExtra("intent.key.icon.type", localaen.DeD.Dey);
-                    paramAnonymous2n.putExtra("intent.key.ok.string", localaen.DeD.DeB);
-                    paramAnonymous2n.putExtra("intent.key.content.string", localaen.DeD.Dez);
-                    paramAnonymous2String = localaen.DeD.Dez;
+                    paramAnonymous2n.putExtra("intent.key.title.string", localafm.ExJ.ExG);
+                    paramAnonymous2n.putExtra("intent.key.icon.type", localafm.ExJ.ExE);
+                    paramAnonymous2n.putExtra("intent.key.ok.string", localafm.ExJ.ExH);
+                    paramAnonymous2n.putExtra("intent.key.content.string", localafm.ExJ.ExF);
+                    paramAnonymous2String = localafm.ExJ.ExF;
                   }
                 }
-                else if ((paramAnonymous2Int2 == -2) && (localaen.DeE != null))
+                else if ((paramAnonymous2Int2 == -2) && (localafm.ExK != null))
                 {
                   paramAnonymous2n = new Intent();
-                  paramAnonymous2n.putExtra("intent.key.login.url", paramAnonymousrt.dxp.dxq);
+                  paramAnonymous2n.putExtra("intent.key.login.url", paramAnonymoussc.dvc.dvd);
                   paramAnonymous2n.putExtra("intent.key.type", -2);
-                  paramAnonymous2n.putExtra("intent.key.title.string", localaen.DeE.DeA);
-                  paramAnonymous2n.putExtra("intent.key.icon.type", localaen.DeE.Dey);
-                  paramAnonymous2n.putExtra("intent.key.ok.string", localaen.DeE.DeB);
-                  paramAnonymous2n.putExtra("intent.key.content.string", localaen.DeE.Dez);
-                  paramAnonymous2String = localaen.DeE.Dez;
+                  paramAnonymous2n.putExtra("intent.key.title.string", localafm.ExK.ExG);
+                  paramAnonymous2n.putExtra("intent.key.icon.type", localafm.ExK.ExE);
+                  paramAnonymous2n.putExtra("intent.key.ok.string", localafm.ExK.ExH);
+                  paramAnonymous2n.putExtra("intent.key.content.string", localafm.ExK.ExF);
+                  paramAnonymous2String = localafm.ExK.ExF;
                   continue;
                 }
                 label1051:
@@ -276,33 +276,33 @@ public final class g
               }
             }
           };
-          az.aeS().a(971, paramAnonymousrt);
-          az.aeS().a(locald, 0);
+          az.agi().a(971, paramAnonymoussc);
+          az.agi().a(locald, 0);
         }
         AppMethodBeat.o(30186);
         return false;
       }
     };
-    this.BAQ = new v() {};
+    this.CSX = new v() {};
     AppMethodBeat.o(30189);
   }
   
-  public static g erW()
+  public static g eHq()
   {
     AppMethodBeat.i(30190);
-    az.arP();
-    g localg2 = (g)bz.ut("plugin.webwx");
+    az.ayG();
+    g localg2 = (g)bz.yz("plugin.webwx");
     g localg1 = localg2;
     if (localg2 == null)
     {
       localg1 = new g();
-      az.arP().a("plugin.webwx", localg1);
+      az.ayG().a("plugin.webwx", localg1);
     }
     AppMethodBeat.o(30190);
     return localg1;
   }
   
-  static void erX()
+  static void eHr()
   {
     AppMethodBeat.i(30193);
     az.getNotification().cancel(38);
@@ -311,14 +311,14 @@ public final class g
   
   public final void clearPluginData(int paramInt) {}
   
-  public final a erY()
+  public final a eHs()
   {
     AppMethodBeat.i(30194);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (this.BAN == null) {
-      this.BAN = new a();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (this.CSU == null) {
+      this.CSU = new a();
     }
-    a locala = this.BAN;
+    a locala = this.CSU;
     AppMethodBeat.o(30194);
     return locala;
   }
@@ -331,32 +331,32 @@ public final class g
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(30192);
-    f.d.a(Integer.valueOf(51), this.BAM);
-    az.getSysCmdMsgExtension().a("pushloginurl", this.mCl, true);
-    az.arV();
-    com.tencent.mm.model.c.a(this.BAO);
-    com.tencent.mm.sdk.b.a.ESL.c(this.BAP);
-    this.BAN = null;
-    y.a(5, this.BAQ);
+    f.d.a(Integer.valueOf(51), this.CST);
+    az.getSysCmdMsgExtension().a("pushloginurl", this.nem, true);
+    az.ayM();
+    com.tencent.mm.model.c.a(this.CSV);
+    com.tencent.mm.sdk.b.a.GpY.c(this.CSW);
+    this.CSU = null;
+    y.a(5, this.CSX);
     AppMethodBeat.o(30192);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(30191);
-    f.d.b(Integer.valueOf(51), this.BAM);
-    az.getSysCmdMsgExtension().b("pushloginurl", this.mCl, true);
-    az.arV();
-    com.tencent.mm.model.c.b(this.BAO);
-    com.tencent.mm.sdk.b.a.ESL.d(this.BAP);
-    erX();
-    if (this.BAN != null)
+    f.d.b(Integer.valueOf(51), this.CST);
+    az.getSysCmdMsgExtension().b("pushloginurl", this.nem, true);
+    az.ayM();
+    com.tencent.mm.model.c.b(this.CSV);
+    com.tencent.mm.sdk.b.a.GpY.d(this.CSW);
+    eHr();
+    if (this.CSU != null)
     {
-      a locala = this.BAN;
-      o.aCI().a(locala);
-      com.tencent.mm.kernel.g.aeS().b(221, locala);
+      a locala = this.CSU;
+      o.aJy().a(locala);
+      com.tencent.mm.kernel.g.agi().b(221, locala);
     }
-    y.a(this.BAQ);
+    y.a(this.CSX);
     AppMethodBeat.o(30191);
   }
   
@@ -364,7 +364,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.g
  * JD-Core Version:    0.7.0.1
  */

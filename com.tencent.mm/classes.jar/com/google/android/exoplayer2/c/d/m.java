@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
 {
-  public final int[] aWC;
-  public final int bbU;
-  public final int[] bbW;
-  public final long[] bdO;
+  public final int[] aXo;
+  public final int bcG;
+  public final int[] bcI;
+  public final long[] beA;
   public final long[] offsets;
   public final int sampleCount;
   
@@ -36,10 +36,10 @@ final class m
     {
       a.checkArgument(bool1);
       this.offsets = paramArrayOfLong1;
-      this.aWC = paramArrayOfInt1;
-      this.bbU = paramInt;
-      this.bdO = paramArrayOfLong2;
-      this.bbW = paramArrayOfInt2;
+      this.aXo = paramArrayOfInt1;
+      this.bcG = paramInt;
+      this.beA = paramArrayOfLong2;
+      this.bcI = paramArrayOfInt2;
       this.sampleCount = paramArrayOfLong1.length;
       AppMethodBeat.o(92132);
       return;
@@ -50,13 +50,13 @@ final class m
     }
   }
   
-  public final int O(long paramLong)
+  public final int P(long paramLong)
   {
     AppMethodBeat.i(92133);
-    int i = x.a(this.bdO, paramLong, false);
+    int i = x.a(this.beA, paramLong, false);
     while (i >= 0)
     {
-      if ((this.bbW[i] & 0x1) != 0)
+      if ((this.bcI[i] & 0x1) != 0)
       {
         AppMethodBeat.o(92133);
         return i;
@@ -67,13 +67,13 @@ final class m
     return -1;
   }
   
-  public final int P(long paramLong)
+  public final int Q(long paramLong)
   {
     AppMethodBeat.i(92134);
-    int i = x.a(this.bdO, paramLong, true, false);
-    while (i < this.bdO.length)
+    int i = x.a(this.beA, paramLong, true, false);
+    while (i < this.beA.length)
     {
-      if ((this.bbW[i] & 0x1) != 0)
+      if ((this.bcI[i] & 0x1) != 0)
       {
         AppMethodBeat.o(92134);
         return i;

@@ -6,13 +6,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
 {
-  final m aXj;
-  int aZo;
+  final m aXV;
+  int baa;
   
   public e()
   {
     AppMethodBeat.i(92030);
-    this.aXj = new m(8);
+    this.aXV = new m(8);
     AppMethodBeat.o(92030);
   }
   
@@ -20,8 +20,8 @@ final class e
   {
     int k = 0;
     AppMethodBeat.i(92031);
-    paramf.b(this.aXj.data, 0, 1);
-    int m = this.aXj.data[0] & 0xFF;
+    paramf.b(this.aXV.data, 0, 1);
+    int m = this.aXV.data[0] & 0xFF;
     if (m == 0)
     {
       AppMethodBeat.o(92031);
@@ -35,15 +35,15 @@ final class e
       i += 1;
     }
     m = (j ^ 0xFFFFFFFF) & m;
-    paramf.b(this.aXj.data, 1, i);
+    paramf.b(this.aXV.data, 1, i);
     j = k;
     k = m;
     while (j < i)
     {
-      k = (k << 8) + (this.aXj.data[(j + 1)] & 0xFF);
+      k = (k << 8) + (this.aXV.data[(j + 1)] & 0xFF);
       j += 1;
     }
-    this.aZo += i + 1;
+    this.baa += i + 1;
     long l = k;
     AppMethodBeat.o(92031);
     return l;

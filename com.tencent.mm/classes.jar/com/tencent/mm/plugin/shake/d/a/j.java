@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.d;
 import com.tencent.mm.plugin.shake.b.e;
@@ -9,10 +9,10 @@ import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.protocal.protobuf.csf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.protocal.protobuf.cxo;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,61 +20,61 @@ import java.util.List;
 public final class j
   extends l.b
 {
-  public static boolean hBC = false;
-  public static j wnV;
+  public static boolean icd = false;
+  public static j xzm;
   private boolean isActive;
-  private long lKF;
-  public a wnU;
+  private long mmC;
+  public a xzl;
   
   private j(l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28310);
     this.isActive = false;
-    this.wnU = new a();
+    this.xzl = new a();
     AppMethodBeat.o(28310);
   }
   
   public static j a(l.a parama)
   {
     AppMethodBeat.i(28309);
-    if ((wnV == null) || (wnV.wlU == null)) {
-      wnV = new j(parama);
+    if ((xzm == null) || (xzm.xxk == null)) {
+      xzm = new j(parama);
     }
-    parama = wnV;
+    parama = xzm;
     AppMethodBeat.o(28309);
     return parama;
   }
   
-  private void d(List<d> paramList, long paramLong)
+  private void e(List<d> paramList, long paramLong)
   {
     AppMethodBeat.i(28314);
-    if (this.wlU != null) {
-      this.wlU.c(paramList, paramLong);
+    if (this.xxk != null) {
+      this.xxk.d(paramList, paramLong);
     }
     AppMethodBeat.o(28314);
   }
   
-  public final void doF()
+  public final void dCP()
   {
     AppMethodBeat.i(28313);
-    this.wnU.Ob();
-    super.doF();
+    this.xzl.NX();
+    super.dCP();
     AppMethodBeat.o(28313);
   }
   
   public final void init()
   {
     AppMethodBeat.i(28312);
-    if (!hBC)
+    if (!icd)
     {
-      if (!this.wnU.dpB())
+      if (!this.xzl.dDL())
       {
-        ad.e("Micromsg.ShakeMusicMgr", "init MusicFingerPrintRecorder false");
+        ac.e("Micromsg.ShakeMusicMgr", "init MusicFingerPrintRecorder false");
         AppMethodBeat.o(28312);
         return;
       }
-      hBC = true;
+      icd = true;
     }
     AppMethodBeat.o(28312);
   }
@@ -88,51 +88,51 @@ public final class j
   public final void start()
   {
     AppMethodBeat.i(28311);
-    if (this.wlU == null)
+    if (this.xxk == null)
     {
-      ad.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
+      ac.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
       AppMethodBeat.o(28311);
       return;
     }
-    this.lKF = System.currentTimeMillis();
-    this.wnU.a(367, new a.a()
+    this.mmC = System.currentTimeMillis();
+    this.xzl.a(367, new a.a()
     {
-      public final void b(cld paramAnonymouscld, long paramAnonymousLong, boolean paramAnonymousBoolean)
+      public final void b(cqk paramAnonymouscqk, long paramAnonymousLong, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(28308);
         if (j.a(j.this) == null)
         {
-          ad.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
+          ac.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
           AppMethodBeat.o(28308);
           return;
         }
-        csf localcsf = (csf)paramAnonymouscld;
-        if (localcsf == null)
+        cxo localcxo = (cxo)paramAnonymouscqk;
+        if (localcxo == null)
         {
-          ad.w("Micromsg.ShakeMusicMgr", "resp null & return");
+          ac.w("Micromsg.ShakeMusicMgr", "resp null & return");
           j.a(j.this, new ArrayList());
           AppMethodBeat.o(28308);
           return;
         }
         Object localObject;
-        if (localcsf.Efh == 1)
+        if (localcxo.FCh == 1)
         {
           if (paramAnonymousLong > j.b(j.this))
           {
             paramAnonymousLong = System.currentTimeMillis() - paramAnonymousLong;
-            if ((localcsf == null) || (bt.isNullOrNil(localcsf.Eko))) {
+            if ((localcxo == null) || (bs.isNullOrNil(localcxo.FHm))) {
               break label458;
             }
-            ad.w("Micromsg.ShakeMusicMgr", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localcsf.Ekn), localcsf.Eko });
-            localObject = localcsf.Eko;
-            paramAnonymouscld = (cld)localObject;
+            ac.w("Micromsg.ShakeMusicMgr", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localcxo.FHl), localcxo.FHm });
+            localObject = localcxo.FHm;
+            paramAnonymouscqk = (cqk)localObject;
             if (localObject != null) {
-              paramAnonymouscld = ((String)localObject).trim();
+              paramAnonymouscqk = ((String)localObject).trim();
             }
-            switch (localcsf.Ekn)
+            switch (localcxo.FHl)
             {
             default: 
-              ad.w("Micromsg.ShakeMusicMgr", "parse unknown type:" + localcsf.Ekn);
+              ac.w("Micromsg.ShakeMusicMgr", "parse unknown type:" + localcxo.FHl);
               j.a(j.this, new ArrayList());
               paramAnonymousBoolean = false;
             }
@@ -142,67 +142,67 @@ public final class j
             if (!paramAnonymousBoolean) {
               break label399;
             }
-            h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - j.b(j.this))) });
-            h.vKh.m(835L, 0L, 1L);
+            h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - j.b(j.this))) });
+            h.wUl.n(835L, 0L, 1L);
             AppMethodBeat.o(28308);
             return;
             paramAnonymousLong = System.currentTimeMillis() - j.b(j.this);
             break;
-            paramAnonymousBoolean = j.a(j.this, paramAnonymouscld);
+            paramAnonymousBoolean = j.a(j.this, paramAnonymouscqk);
             continue;
-            paramAnonymousBoolean = j.b(j.this, paramAnonymouscld);
+            paramAnonymousBoolean = j.b(j.this, paramAnonymouscqk);
             continue;
-            paramAnonymousBoolean = j.c(j.this, paramAnonymouscld);
+            paramAnonymousBoolean = j.c(j.this, paramAnonymouscqk);
             continue;
-            paramAnonymousBoolean = j.d(j.this, paramAnonymouscld);
+            paramAnonymousBoolean = j.d(j.this, paramAnonymouscqk);
             continue;
-            paramAnonymousBoolean = j.e(j.this, paramAnonymouscld);
+            paramAnonymousBoolean = j.e(j.this, paramAnonymouscqk);
           }
           label399:
-          h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramAnonymousLong) });
-          h.vKh.m(835L, 4L, 1L);
+          h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramAnonymousLong) });
+          h.wUl.n(835L, 4L, 1L);
           AppMethodBeat.o(28308);
           return;
           label458:
           if (paramAnonymousBoolean)
           {
             j.a(j.this, new ArrayList());
-            h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramAnonymousLong) });
-            h.vKh.m(835L, 3L, 1L);
+            h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramAnonymousLong) });
+            h.wUl.n(835L, 3L, 1L);
             AppMethodBeat.o(28308);
             return;
           }
           j.a(j.this, new ArrayList());
-          h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramAnonymousLong) });
-          h.vKh.m(835L, 2L, 1L);
+          h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramAnonymousLong) });
+          h.wUl.n(835L, 2L, 1L);
           AppMethodBeat.o(28308);
           return;
         }
-        paramAnonymouscld = new ArrayList();
-        if (localcsf != null)
+        paramAnonymouscqk = new ArrayList();
+        if (localcxo != null)
         {
           localObject = new d();
-          if ((localcsf.Ekj != null) && (localcsf.Ekj.getBuffer() != null)) {
-            ((d)localObject).field_username = localcsf.Ekj.getBuffer().eBA();
+          if ((localcxo.FHh != null) && (localcxo.FHh.getBuffer() != null)) {
+            ((d)localObject).field_username = localcxo.FHh.getBuffer().eQU();
           }
-          if ((localcsf.Eki != null) && (localcsf.Eki.getBuffer() != null)) {
-            ((d)localObject).field_nickname = localcsf.Eki.getBuffer().eBA();
+          if ((localcxo.FHg != null) && (localcxo.FHg.getBuffer() != null)) {
+            ((d)localObject).field_nickname = localcxo.FHg.getBuffer().eQU();
           }
-          if ((localcsf.Ekj != null) && (localcsf.Ekj.getBuffer() != null)) {
-            ((d)localObject).field_distance = localcsf.Ekj.getBuffer().eBA();
+          if ((localcxo.FHh != null) && (localcxo.FHh.getBuffer() != null)) {
+            ((d)localObject).field_distance = localcxo.FHh.getBuffer().eQU();
           }
-          if ((localcsf.Dxo != null) && (localcsf.Dxo.getBuffer() != null)) {
-            ((d)localObject).field_sns_bgurl = localcsf.Dxo.getBuffer().eBA();
+          if ((localcxo.ESK != null) && (localcxo.ESK.getBuffer() != null)) {
+            ((d)localObject).field_sns_bgurl = localcxo.ESK.getBuffer().eQU();
           }
           ((d)localObject).field_type = 4;
           ((d)localObject).field_insertBatch = 1;
         }
         try
         {
-          ((d)localObject).field_lvbuffer = localcsf.toByteArray();
-          m.dpb().a((d)localObject, true);
-          paramAnonymouscld.add(localObject);
-          j.c(j.this).c(paramAnonymouscld, paramAnonymousLong);
+          ((d)localObject).field_lvbuffer = localcxo.toByteArray();
+          m.dDl().a((d)localObject, true);
+          paramAnonymouscqk.add(localObject);
+          j.c(j.this).d(paramAnonymouscqk, paramAnonymousLong);
           AppMethodBeat.o(28308);
           return;
         }
@@ -210,7 +210,7 @@ public final class j
         {
           for (;;)
           {
-            ad.w("Micromsg.ShakeMusicMgr", "insertItem, to lvbuf error [%s]", new Object[] { localIOException.getLocalizedMessage() });
+            ac.w("Micromsg.ShakeMusicMgr", "insertItem, to lvbuf error [%s]", new Object[] { localIOException.getLocalizedMessage() });
           }
         }
       }

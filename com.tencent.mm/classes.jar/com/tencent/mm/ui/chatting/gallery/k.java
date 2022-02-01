@@ -23,10 +23,10 @@ import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pluginsdk.ui.tools.t;
-import com.tencent.mm.protocal.protobuf.czj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dev;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.m;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.WxImageView;
@@ -35,66 +35,66 @@ import java.util.HashMap;
 
 public final class k
 {
-  public b GAA;
-  public b.b GDC;
-  public HashMap<String, Boolean> GDD;
-  public RelativeLayout GDE;
-  public com.tencent.mm.pluginsdk.ui.tools.h GDF;
-  public ImageView GDG;
-  public ImageView GDH;
-  public MMPinProgressBtn GDI;
-  public View GDJ;
-  public RelativeLayout GDK;
-  public ImageView GDL;
-  public ImageView GDM;
-  public com.tencent.mm.pluginsdk.ui.tools.h GDN;
-  public MMPinProgressBtn GDO;
-  public TextView GDP;
-  public RelativeLayout GDQ;
-  public TextView GDR;
-  public LinearLayout GDS;
-  public TextView GDT;
-  public TextView GDU;
-  public ImageView GDV;
-  public ProgressBar GDW;
-  public ProgressBar GDX;
-  public LinearLayout GDY;
-  public TextView GDZ;
-  public ImageView GEa;
-  public MultiTouchImageView GEb;
-  public WxImageView GEc;
-  public boolean GEd;
-  int GEe;
-  int GEf;
+  public b Iav;
+  public HashMap<String, Boolean> IdA;
+  public RelativeLayout IdB;
+  public com.tencent.mm.pluginsdk.ui.tools.h IdC;
+  public ImageView IdD;
+  public ImageView IdE;
+  public MMPinProgressBtn IdF;
+  public View IdG;
+  public RelativeLayout IdH;
+  public ImageView IdI;
+  public ImageView IdJ;
+  public com.tencent.mm.pluginsdk.ui.tools.h IdK;
+  public MMPinProgressBtn IdL;
+  public TextView IdM;
+  public RelativeLayout IdN;
+  public TextView IdO;
+  public LinearLayout IdP;
+  public TextView IdQ;
+  public TextView IdR;
+  public ImageView IdS;
+  public ProgressBar IdT;
+  public ProgressBar IdU;
+  public LinearLayout IdV;
+  public TextView IdW;
+  public ImageView IdX;
+  public MultiTouchImageView IdY;
+  public WxImageView IdZ;
+  public b.b Idz;
+  public boolean Iea;
+  int Ieb;
+  int Iec;
   long createTime;
-  String dpv;
+  String dng;
   String fileId;
   public int mPosition;
-  public TextView qhu;
-  public View rLd;
-  int xcL;
+  public TextView qPW;
+  public View sSS;
+  int ypz;
   
   @TargetApi(11)
   public k(b paramb, View paramView)
   {
     AppMethodBeat.i(36331);
-    this.GDD = new HashMap();
-    this.xcL = 0;
-    this.GEe = 0;
-    this.GEf = 0;
-    this.dpv = "";
-    this.rLd = paramView;
-    this.GAA = paramb;
-    this.GEb = ((MultiTouchImageView)paramView.findViewById(2131300914));
-    this.GEc = ((WxImageView)paramView.findViewById(2131307106));
-    this.GDX = ((ProgressBar)paramView.findViewById(2131300931));
-    if (this.GEc != null) {
-      this.GEc.setForceTileFlag(c.fWh);
+    this.IdA = new HashMap();
+    this.ypz = 0;
+    this.Ieb = 0;
+    this.Iec = 0;
+    this.dng = "";
+    this.sSS = paramView;
+    this.Iav = paramb;
+    this.IdY = ((MultiTouchImageView)paramView.findViewById(2131300914));
+    this.IdZ = ((WxImageView)paramView.findViewById(2131307106));
+    this.IdU = ((ProgressBar)paramView.findViewById(2131300931));
+    if (this.IdZ != null) {
+      this.IdZ.setForceTileFlag(c.gaO);
     }
     AppMethodBeat.o(36331);
   }
   
-  public static void aD(View paramView, int paramInt)
+  public static void aF(View paramView, int paramInt)
   {
     AppMethodBeat.i(36332);
     if (paramView != null) {
@@ -105,88 +105,88 @@ public final class k
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, long paramLong)
   {
-    this.xcL = paramInt1;
-    this.GEe = paramInt2;
-    this.GEf = paramInt3;
-    this.dpv = paramString1;
+    this.ypz = paramInt1;
+    this.Ieb = paramInt2;
+    this.Iec = paramInt3;
+    this.dng = paramString1;
     this.fileId = paramString2;
     this.createTime = paramLong;
   }
   
-  public final void b(boolean paramBoolean, float paramFloat)
+  public final void c(boolean paramBoolean, float paramFloat)
   {
     AppMethodBeat.i(36337);
-    ad.i("MicroMsg.ImageGalleryViewHolder", "%d switch video model isVideoPlay[%b] alpha[%f]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
+    ac.i("MicroMsg.ImageGalleryViewHolder", "%d switch video model isVideoPlay[%b] alpha[%f]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat) });
     if (paramBoolean)
     {
-      View localView = (View)fac().GDN;
+      View localView = (View)fpS().IdK;
       localView.setAlpha(paramFloat);
-      aD(localView, 0);
+      aF(localView, 0);
       if (paramFloat >= 1.0D)
       {
-        aD(fac().GDL, 8);
-        aD(fac().GDM, 8);
+        aF(fpS().IdI, 8);
+        aF(fpS().IdJ, 8);
       }
       AppMethodBeat.o(36337);
       return;
     }
-    aD((View)fac().GDN, 8);
-    aD(fac().GDL, 0);
-    aD(fac().GDM, 0);
+    aF((View)fpS().IdK, 8);
+    aF(fpS().IdI, 0);
+    aF(fpS().IdJ, 0);
     AppMethodBeat.o(36337);
   }
   
-  public final k eZZ()
+  public final k fpP()
   {
     AppMethodBeat.i(36333);
-    if (this.GDS == null)
+    if (this.IdP == null)
     {
-      this.GDS = ((LinearLayout)((ViewStub)this.rLd.findViewById(2131300934)).inflate());
-      this.GDW = ((ProgressBar)this.GDS.findViewById(2131299229));
-      this.GDT = ((TextView)this.GDS.findViewById(2131299230));
-      this.GDU = ((TextView)this.GDS.findViewById(2131299228));
-      this.GDV = ((ImageView)this.GDS.findViewById(2131299231));
+      this.IdP = ((LinearLayout)((ViewStub)this.sSS.findViewById(2131300934)).inflate());
+      this.IdT = ((ProgressBar)this.IdP.findViewById(2131299229));
+      this.IdQ = ((TextView)this.IdP.findViewById(2131299230));
+      this.IdR = ((TextView)this.IdP.findViewById(2131299228));
+      this.IdS = ((ImageView)this.IdP.findViewById(2131299231));
     }
     AppMethodBeat.o(36333);
     return this;
   }
   
-  public final k faa()
+  public final k fpQ()
   {
     AppMethodBeat.i(36334);
-    if (this.GDY == null)
+    if (this.IdV == null)
     {
-      this.GDY = ((LinearLayout)((ViewStub)this.rLd.findViewById(2131300932)).inflate());
-      this.GEa = ((ImageView)this.GDY.findViewById(2131299204));
-      this.GDZ = ((TextView)this.GDY.findViewById(2131299205));
+      this.IdV = ((LinearLayout)((ViewStub)this.sSS.findViewById(2131300932)).inflate());
+      this.IdX = ((ImageView)this.IdV.findViewById(2131299204));
+      this.IdW = ((TextView)this.IdV.findViewById(2131299205));
     }
     AppMethodBeat.o(36334);
     return this;
   }
   
-  public final k fab()
+  public final k fpR()
   {
     AppMethodBeat.i(36335);
-    if (this.GDE == null)
+    if (this.IdB == null)
     {
-      this.GDE = ((RelativeLayout)((ViewStub)this.rLd.findViewById(2131304816)).inflate());
-      this.GDF = t.ho(this.rLd.getContext());
+      this.IdB = ((RelativeLayout)((ViewStub)this.sSS.findViewById(2131304816)).inflate());
+      this.IdC = t.hz(this.sSS.getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
       localLayoutParams.addRule(13);
-      this.GDE.addView((View)this.GDF, localLayoutParams);
-      ((View)this.GDF).setVisibility(8);
-      this.GDJ = this.GDE.findViewById(2131305896);
-      this.GDJ.setVisibility(8);
-      this.qhu = ((TextView)this.GDE.findViewById(2131304777));
-      this.GDI = ((MMPinProgressBtn)this.GDE.findViewById(2131304805));
-      this.GDI.setVisibility(8);
-      this.GDG = ((ImageView)this.GDE.findViewById(2131304812));
-      this.GDH = ((ImageView)this.GDE.findViewById(2131306414));
-      this.GDF.setVideoCallback(new h.a()
+      this.IdB.addView((View)this.IdC, localLayoutParams);
+      ((View)this.IdC).setVisibility(8);
+      this.IdG = this.IdB.findViewById(2131305896);
+      this.IdG.setVisibility(8);
+      this.qPW = ((TextView)this.IdB.findViewById(2131304777));
+      this.IdF = ((MMPinProgressBtn)this.IdB.findViewById(2131304805));
+      this.IdF.setVisibility(8);
+      this.IdD = ((ImageView)this.IdB.findViewById(2131304812));
+      this.IdE = ((ImageView)this.IdB.findViewById(2131306414));
+      this.IdC.setVideoCallback(new h.a()
       {
-        public final void dY(int paramAnonymousInt1, int paramAnonymousInt2) {}
+        public final void dZ(int paramAnonymousInt1, int paramAnonymousInt2) {}
         
-        public final int eM(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final int eP(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           return 0;
         }
@@ -194,35 +194,35 @@ public final class k
         public final void onCompletion()
         {
           AppMethodBeat.i(36320);
-          k.this.GDF.start();
-          k.this.GDJ.post(new Runnable()
+          k.this.IdC.start();
+          k.this.IdG.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36318);
-              if ((k.this.GDJ == null) || (k.this.GDJ.getVisibility() == 0))
+              if ((k.this.IdG == null) || (k.this.IdG.getVisibility() == 0))
               {
                 AppMethodBeat.o(36318);
                 return;
               }
-              if ((k.this.GDJ.getTag() != null) && ((k.this.GDJ.getTag() instanceof s)))
+              if ((k.this.IdG.getTag() != null) && ((k.this.IdG.getTag() instanceof s)))
               {
-                s locals = (s)k.this.GDJ.getTag();
-                if ((locals.hAq != null) && (!bt.isNullOrNil(locals.hAq.gJv)))
+                s locals = (s)k.this.IdG.getTag();
+                if ((locals.iaR != null) && (!bs.isNullOrNil(locals.iaR.hjV)))
                 {
-                  k.this.GDJ.setVisibility(8);
+                  k.this.IdG.setVisibility(8);
                   AppMethodBeat.o(36318);
                   return;
                 }
-                if ((locals.hAq != null) && (!bt.isNullOrNil(locals.hAq.gJy)) && (!bt.isNullOrNil(locals.hAq.gJz)))
+                if ((locals.iaR != null) && (!bs.isNullOrNil(locals.iaR.hjY)) && (!bs.isNullOrNil(locals.iaR.hjZ)))
                 {
-                  k.this.GDJ.setVisibility(8);
+                  k.this.IdG.setVisibility(8);
                   AppMethodBeat.o(36318);
                   return;
                 }
               }
-              k.this.GDJ.setVisibility(0);
-              k.this.GDJ.startAnimation(AnimationUtils.loadAnimation(k.this.GDJ.getContext(), 2130772047));
+              k.this.IdG.setVisibility(0);
+              k.this.IdG.startAnimation(AnimationUtils.loadAnimation(k.this.IdG.getContext(), 2130772047));
               AppMethodBeat.o(36318);
             }
           });
@@ -232,118 +232,118 @@ public final class k
         public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(36319);
-          k.this.GDF.stop();
-          final String str = (String)((View)k.this.GDF).getTag();
-          com.tencent.mm.sdk.a.b.M(Base64.encodeToString((com.tencent.mm.plugin.sight.base.e.dqn() + "[ImageGallery] on play sight error, what=" + paramAnonymousInt1 + ", extra=" + paramAnonymousInt2 + ", path=" + bt.by(str, "")).getBytes(), 2), "FullScreenPlaySight");
-          aq.f(new Runnable()
+          k.this.IdC.stop();
+          final String str = (String)((View)k.this.IdC).getTag();
+          com.tencent.mm.sdk.a.b.N(Base64.encodeToString((com.tencent.mm.plugin.sight.base.e.dEw() + "[ImageGallery] on play sight error, what=" + paramAnonymousInt1 + ", extra=" + paramAnonymousInt2 + ", path=" + bs.bG(str, "")).getBytes(), 2), "FullScreenPlaySight");
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36317);
-              if (bt.isNullOrNil(str))
+              if (bs.isNullOrNil(str))
               {
-                com.tencent.mm.ui.base.h.j(k.this.GAA.GAa, 2131764680, 2131757274);
+                com.tencent.mm.ui.base.h.l(k.this.Iav.HZV, 2131764680, 2131757274);
                 AppMethodBeat.o(36317);
                 return;
               }
               Object localObject = new Intent();
               ((Intent)localObject).setAction("android.intent.action.VIEW");
-              m.a(k.this.GAA.GAa, (Intent)localObject, new com.tencent.mm.vfs.e(str), "video/*");
+              m.a(k.this.Iav.HZV, (Intent)localObject, new com.tencent.mm.vfs.e(str), "video/*");
               try
               {
-                ImageGalleryUI localImageGalleryUI = k.this.GAA.GAa;
-                localObject = Intent.createChooser((Intent)localObject, k.this.GAA.GAa.getContext().getString(2131759030));
-                localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(localImageGalleryUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$1$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                localImageGalleryUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+                ImageGalleryUI localImageGalleryUI = k.this.Iav.HZV;
+                localObject = Intent.createChooser((Intent)localObject, k.this.Iav.HZV.getContext().getString(2131759030));
+                localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+                com.tencent.mm.hellhoundlib.a.a.a(localImageGalleryUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$1$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localImageGalleryUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
                 com.tencent.mm.hellhoundlib.a.a.a(localImageGalleryUI, "com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$1$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 AppMethodBeat.o(36317);
                 return;
               }
               catch (Exception localException)
               {
-                ad.e("MicroMsg.ImageGalleryViewHolder", "startActivity fail, activity not found");
-                com.tencent.mm.ui.base.h.j(k.this.GAA.GAa, 2131758931, 2131758932);
+                ac.e("MicroMsg.ImageGalleryViewHolder", "startActivity fail, activity not found");
+                com.tencent.mm.ui.base.h.l(k.this.Iav.HZV, 2131758931, 2131758932);
                 AppMethodBeat.o(36317);
               }
             }
           });
-          k.this.GDD.put(str, Boolean.TRUE);
+          k.this.IdA.put(str, Boolean.TRUE);
           AppMethodBeat.o(36319);
         }
         
-        public final void rq() {}
+        public final void rB() {}
       });
-      this.qhu.setOnClickListener(new k.2(this));
+      this.qPW.setOnClickListener(new k.2(this));
     }
     AppMethodBeat.o(36335);
     return this;
   }
   
-  public final k fac()
+  public final k fpS()
   {
     AppMethodBeat.i(36336);
-    if (this.GDK == null)
+    if (this.IdH == null)
     {
-      if (this.GEc != null) {
-        this.GEc.setVisibility(8);
+      if (this.IdZ != null) {
+        this.IdZ.setVisibility(8);
       }
-      if (this.GEb != null) {
-        this.GEb.setVisibility(8);
+      if (this.IdY != null) {
+        this.IdY.setVisibility(8);
       }
-      this.GDK = ((RelativeLayout)((ViewStub)this.rLd.findViewById(2131306392)).inflate());
-      this.GDL = ((ImageView)this.GDK.findViewById(2131306347));
-      this.GDM = ((ImageView)this.GDK.findViewById(2131306413));
-      this.GDM.setOnClickListener(new View.OnClickListener()
+      this.IdH = ((RelativeLayout)((ViewStub)this.sSS.findViewById(2131306392)).inflate());
+      this.IdI = ((ImageView)this.IdH.findViewById(2131306347));
+      this.IdJ = ((ImageView)this.IdH.findViewById(2131306413));
+      this.IdJ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(36323);
-          if (k.this.GAA != null)
+          if (k.this.Iav != null)
           {
-            ad.i("MicroMsg.ImageGalleryViewHolder", "%d video wait play on click, play video %d", new Object[] { Integer.valueOf(k.this.hashCode()), Integer.valueOf(k.this.mPosition) });
-            k.this.GAA.Zc(k.this.mPosition);
+            ac.i("MicroMsg.ImageGalleryViewHolder", "%d video wait play on click, play video %d", new Object[] { Integer.valueOf(k.this.hashCode()), Integer.valueOf(k.this.mPosition) });
+            k.this.Iav.abo(k.this.mPosition);
           }
           AppMethodBeat.o(36323);
         }
       });
-      d.awT();
-      if (!d.axf()) {
+      d.aDL();
+      if (!d.aDX()) {
         break label309;
       }
-      this.GDN = new VideoPlayerTextureView(this.rLd.getContext());
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 150L, 1L, false);
+      this.IdK = new VideoPlayerTextureView(this.sSS.getContext());
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 150L, 1L, false);
     }
     for (;;)
     {
-      this.GDP = ((TextView)this.rLd.findViewById(2131298943));
-      this.GDN.setPlayProgressCallback(true);
+      this.IdM = ((TextView)this.sSS.findViewById(2131298943));
+      this.IdK.setPlayProgressCallback(true);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      this.GDK.addView((View)this.GDN, 1, localLayoutParams);
-      this.GDO = ((MMPinProgressBtn)this.GDK.findViewById(2131306331));
-      this.GDO.setVisibility(8);
-      ((View)this.GDN).setVisibility(8);
-      this.GDQ = ((RelativeLayout)this.rLd.findViewById(2131306339));
-      this.GDR = ((TextView)this.rLd.findViewById(2131306340));
-      this.GDN.setVideoCallback(new h.a()
+      this.IdH.addView((View)this.IdK, 1, localLayoutParams);
+      this.IdL = ((MMPinProgressBtn)this.IdH.findViewById(2131306331));
+      this.IdL.setVisibility(8);
+      ((View)this.IdK).setVisibility(8);
+      this.IdN = ((RelativeLayout)this.sSS.findViewById(2131306339));
+      this.IdO = ((TextView)this.sSS.findViewById(2131306340));
+      this.IdK.setVideoCallback(new h.a()
       {
-        public final void dY(int paramAnonymousInt1, int paramAnonymousInt2) {}
+        public final void dZ(int paramAnonymousInt1, int paramAnonymousInt2) {}
         
-        public final int eM(final int paramAnonymousInt1, final int paramAnonymousInt2)
+        public final int eP(final int paramAnonymousInt1, final int paramAnonymousInt2)
         {
           AppMethodBeat.i(36329);
-          ad.i("MicroMsg.ImageGalleryViewHolder", "dkvideo onplaytime:%d total:%d,%d size:%d cnt:%d user:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(k.this.xcL), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(k.this.GEe), Integer.valueOf(k.this.GEf), k.this.dpv });
-          az.afE().ax(new Runnable()
+          ac.i("MicroMsg.ImageGalleryViewHolder", "dkvideo onplaytime:%d total:%d,%d size:%d cnt:%d user:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(k.this.ypz), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(k.this.Ieb), Integer.valueOf(k.this.Iec), k.this.dng });
+          az.agU().az(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36325);
-              com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
-              int j = k.this.GEe;
+              com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+              int j = k.this.Ieb;
               if (paramAnonymousInt2 <= 0) {}
-              for (int i = k.this.xcL * 1000;; i = paramAnonymousInt2)
+              for (int i = k.this.ypz * 1000;; i = paramAnonymousInt2)
               {
-                localh.f(12084, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(1), k.this.dpv, Integer.valueOf(k.this.GEf), k.this.fileId, Long.valueOf(k.this.createTime) });
+                localh.f(12084, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(1), k.this.dng, Integer.valueOf(k.this.Iec), k.this.fileId, Long.valueOf(k.this.createTime) });
                 AppMethodBeat.o(36325);
                 return;
               }
@@ -356,18 +356,18 @@ public final class k
         public final void onCompletion()
         {
           AppMethodBeat.i(36328);
-          k.this.GAA.GAa.GCg.i(k.this.GAA.eZr(), 7);
-          k.this.GAA.GAa.GCg.hxT = 4;
-          aq.f(new Runnable()
+          k.this.Iav.HZV.Ica.i(k.this.Iav.fpg(), 7);
+          k.this.Iav.HZV.Ica.hYu = 4;
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(36324);
-              k.this.GAA.GAa.setVideoStateIv(true);
-              b localb = k.this.GAA;
+              k.this.Iav.HZV.setVideoStateIv(true);
+              b localb = k.this.Iav;
               int i = k.this.mPosition;
-              localb.GAg.Zu(i);
-              k.this.GAA.GAg.eZV();
+              localb.Iab.abG(i);
+              k.this.Iav.Iab.fpL();
               AppMethodBeat.o(36324);
             }
           });
@@ -377,21 +377,21 @@ public final class k
         public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(36327);
-          ad.w("MicroMsg.ImageGalleryViewHolder", "play video error what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
-          if (k.this.GAA != null) {
-            k.this.GAA.GAg.ju(paramAnonymousInt1, paramAnonymousInt2);
+          ac.w("MicroMsg.ImageGalleryViewHolder", "play video error what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
+          if (k.this.Iav != null) {
+            k.this.Iav.Iab.jG(paramAnonymousInt1, paramAnonymousInt2);
           }
-          k.this.GAA.GAa.GCg.hxT = 4;
-          k.this.GAA.GAa.GCg.nlX = ("what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
-          com.tencent.mm.plugin.report.service.h.vKh.f(12084, new Object[] { Integer.valueOf(k.this.GEe), Integer.valueOf(k.this.xcL * 1000), Integer.valueOf(0), Integer.valueOf(4), k.this.dpv, Integer.valueOf(k.this.GEf), k.this.fileId, Long.valueOf(k.this.createTime) });
+          k.this.Iav.HZV.Ica.hYu = 4;
+          k.this.Iav.HZV.Ica.nOX = ("what : " + paramAnonymousInt1 + " extra: " + paramAnonymousInt2);
+          com.tencent.mm.plugin.report.service.h.wUl.f(12084, new Object[] { Integer.valueOf(k.this.Ieb), Integer.valueOf(k.this.ypz * 1000), Integer.valueOf(0), Integer.valueOf(4), k.this.dng, Integer.valueOf(k.this.Iec), k.this.fileId, Long.valueOf(k.this.createTime) });
           AppMethodBeat.o(36327);
         }
         
-        public final void rq()
+        public final void rB()
         {
           AppMethodBeat.i(36326);
-          if (k.this.GAA != null) {
-            k.this.GAA.GAg.eZU();
+          if (k.this.Iav != null) {
+            k.this.Iav.Iab.fpK();
           }
           AppMethodBeat.o(36326);
         }
@@ -399,8 +399,8 @@ public final class k
       AppMethodBeat.o(36336);
       return this;
       label309:
-      this.GDN = new VideoTextureView(this.rLd.getContext());
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 151L, 1L, false);
+      this.IdK = new VideoTextureView(this.sSS.getContext());
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 151L, 1L, false);
     }
   }
 }

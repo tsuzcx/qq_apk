@@ -9,64 +9,64 @@ import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.address.model.j;
 import com.tencent.mm.plugin.address.model.k;
 import com.tencent.mm.plugin.address.model.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
   implements aw
 {
-  private l iyp;
-  private com.tencent.mm.plugin.address.b.a.a iyq;
-  private j iyr;
-  private k iys;
+  private l iYs;
+  private com.tencent.mm.plugin.address.b.a.a iYt;
+  private j iYu;
+  private k iYv;
   
   public a()
   {
     AppMethodBeat.i(20756);
-    this.iyp = null;
-    this.iyq = null;
-    this.iyr = new j();
-    this.iys = new k();
+    this.iYs = null;
+    this.iYt = null;
+    this.iYu = new j();
+    this.iYv = new k();
     AppMethodBeat.o(20756);
   }
   
-  public static a aKO()
+  public static a aRF()
   {
     AppMethodBeat.i(20757);
-    az.arP();
-    a locala2 = (a)bz.ut("plugin.address");
+    az.ayG();
+    a locala2 = (a)bz.yz("plugin.address");
     a locala1 = locala2;
     if (locala2 == null)
     {
-      ad.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
+      ac.w("MicroMsg.SubCoreAddress", "not found in MMCore, new one");
       locala1 = new a();
-      az.arP().a("plugin.address", locala1);
+      az.ayG().a("plugin.address", locala1);
     }
     AppMethodBeat.o(20757);
     return locala1;
   }
   
-  public static com.tencent.mm.plugin.address.b.a.a aKP()
+  public static com.tencent.mm.plugin.address.b.a.a aRG()
   {
     AppMethodBeat.i(20758);
-    g.afz().aeD();
-    if (aKO().iyq == null) {
-      aKO().iyq = new com.tencent.mm.plugin.address.b.a.a();
+    g.agP().afT();
+    if (aRF().iYt == null) {
+      aRF().iYt = new com.tencent.mm.plugin.address.b.a.a();
     }
-    com.tencent.mm.plugin.address.b.a.a locala = aKO().iyq;
+    com.tencent.mm.plugin.address.b.a.a locala = aRF().iYt;
     AppMethodBeat.o(20758);
     return locala;
   }
   
-  public static l aKQ()
+  public static l aRH()
   {
     AppMethodBeat.i(20759);
-    g.afz().aeD();
-    if (aKO().iyp == null) {
-      aKO().iyp = new l();
+    g.agP().afT();
+    if (aRF().iYs == null) {
+      aRF().iYs = new l();
     }
-    l locall = aKO().iyp;
+    l locall = aRF().iYs;
     AppMethodBeat.o(20759);
     return locall;
   }
@@ -81,10 +81,10 @@ public final class a
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(20760);
-    com.tencent.mm.sdk.b.a.ESL.c(this.iyr);
-    com.tencent.mm.sdk.b.a.ESL.c(this.iys);
-    l locall = aKQ();
-    az.arV();
+    com.tencent.mm.sdk.b.a.GpY.c(this.iYu);
+    com.tencent.mm.sdk.b.a.GpY.c(this.iYv);
+    l locall = aRH();
+    az.ayM();
     String str = c.getAccPath();
     locall.path = (str + "addrmgr");
     AppMethodBeat.o(20760);
@@ -93,8 +93,8 @@ public final class a
   public final void onAccountRelease()
   {
     AppMethodBeat.i(20761);
-    com.tencent.mm.sdk.b.a.ESL.d(this.iyr);
-    com.tencent.mm.sdk.b.a.ESL.d(this.iys);
+    com.tencent.mm.sdk.b.a.GpY.d(this.iYu);
+    com.tencent.mm.sdk.b.a.GpY.d(this.iYv);
     AppMethodBeat.o(20761);
   }
   
@@ -102,7 +102,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.address.a.a
  * JD-Core Version:    0.7.0.1
  */

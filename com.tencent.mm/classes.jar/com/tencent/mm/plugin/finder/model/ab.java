@@ -1,39 +1,41 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.feed.model.internal.h;
+import com.tencent.mm.plugin.finder.storage.u;
 import d.g.b.k;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectLikeLike;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FinderMsgLike;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
 public final class ab
   extends a
 {
-  public ab(com.tencent.mm.plugin.finder.storage.l paraml)
+  public ab(u paramu)
   {
-    super(paraml);
-    AppMethodBeat.i(198650);
-    AppMethodBeat.o(198650);
+    super(paramu);
+    AppMethodBeat.i(166406);
+    AppMethodBeat.o(166406);
   }
   
-  public final int a(i parami)
+  public final int a(h paramh)
   {
-    AppMethodBeat.i(198649);
-    k.h(parami, "obj");
-    AppMethodBeat.o(198649);
+    AppMethodBeat.i(166405);
+    k.h(paramh, "obj");
+    AppMethodBeat.o(166405);
     return 0;
   }
   
-  public final int bMt()
+  public final int bTF()
   {
-    AppMethodBeat.i(198648);
+    AppMethodBeat.i(166404);
     int i = ab.class.getName().hashCode();
-    AppMethodBeat.o(198648);
+    AppMethodBeat.o(166404);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.ab
  * JD-Core Version:    0.7.0.1
  */

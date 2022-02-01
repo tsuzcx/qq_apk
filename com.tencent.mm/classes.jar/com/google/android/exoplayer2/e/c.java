@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface c
 {
-  public static final c biT = new c()
+  public static final c bjy = new c()
   {
     public final a f(String paramAnonymousString, boolean paramAnonymousBoolean)
     {
@@ -14,10 +14,10 @@ public abstract interface c
       return paramAnonymousString;
     }
     
-    public final a tt()
+    public final a tB()
     {
       AppMethodBeat.i(92360);
-      a locala = d.tt();
+      a locala = d.tB();
       AppMethodBeat.o(92360);
       return locala;
     }
@@ -25,7 +25,7 @@ public abstract interface c
   
   public abstract a f(String paramString, boolean paramBoolean);
   
-  public abstract a tt();
+  public abstract a tB();
 }
 
 

@@ -16,32 +16,32 @@ public final class i
   {
     super(paramView, paramk);
     AppMethodBeat.i(30864);
-    this.oln.setVisibility(0);
-    this.djK.setVisibility(8);
-    this.irQ.setVisibility(8);
-    this.oln.setTag(this);
-    this.oln.setOnClickListener(this.olC);
+    this.oON.setVisibility(0);
+    this.dhf.setVisibility(8);
+    this.iRV.setVisibility(8);
+    this.oON.setTag(this);
+    this.oON.setOnClickListener(this.oPc);
     AppMethodBeat.o(30864);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30865);
-    this.olq.setImageResource(2131689562);
-    this.olo.setText(((g)paramc).goQ);
-    this.olp.setText(((g)paramc).hdQ);
+    this.oOQ.setImageResource(2131689562);
+    this.oOO.setText(((g)paramc).gPy);
+    this.oOP.setText(((g)paramc).hEt);
     super.a(paramc, paramInt1, paramInt2);
     AppMethodBeat.o(30865);
   }
   
-  public final int bSa()
+  public final int bZp()
   {
     return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.i
  * JD-Core Version:    0.7.0.1
  */

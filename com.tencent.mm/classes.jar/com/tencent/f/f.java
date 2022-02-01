@@ -6,41 +6,41 @@ import java.util.HashMap;
 
 public final class f
 {
-  private static f IHH;
-  private HashMap<String, g> IHI;
-  HashMap<String, Object> IHJ;
-  private Object IHK;
-  Object IHL;
-  private a IHM;
+  private static f KtS;
+  private HashMap<String, g> KtT;
+  HashMap<String, Object> KtU;
+  private Object KtV;
+  Object KtW;
+  private a KtX;
   
   public f()
   {
     AppMethodBeat.i(62799);
-    this.IHI = new HashMap();
-    this.IHJ = new HashMap();
-    this.IHK = new Object();
-    this.IHL = new Object();
-    this.IHM = new a();
+    this.KtT = new HashMap();
+    this.KtU = new HashMap();
+    this.KtV = new Object();
+    this.KtW = new Object();
+    this.KtX = new a();
     AppMethodBeat.o(62799);
   }
   
   public static com.tencent.f.b.b a(d paramd)
   {
     AppMethodBeat.i(62802);
-    paramd = fpq().b(paramd);
+    paramd = fHy().b(paramd);
     AppMethodBeat.o(62802);
     return paramd;
   }
   
-  public static Object aOl(String paramString)
+  public static Object aTW(String paramString)
   {
     AppMethodBeat.i(62801);
-    paramString = fpq().aOm(paramString);
+    paramString = fHy().aTX(paramString);
     AppMethodBeat.o(62801);
     return paramString;
   }
   
-  private Object aOm(String paramString)
+  private Object aTX(String paramString)
   {
     AppMethodBeat.i(62803);
     if (paramString == null)
@@ -49,22 +49,22 @@ public final class f
       AppMethodBeat.o(62803);
       throw paramString;
     }
-    synchronized (this.IHL)
+    synchronized (this.KtW)
     {
-      ??? = this.IHJ.get(paramString);
+      ??? = this.KtU.get(paramString);
       if (??? != null) {}
     }
     label187:
     for (;;)
     {
       g localg;
-      synchronized (this.IHK)
+      synchronized (this.KtV)
       {
-        localg = (g)this.IHI.get(paramString);
+        localg = (g)this.KtT.get(paramString);
         if (localg == null) {
           break label187;
         }
-        if (localg.IHQ.IIb)
+        if (localg.Kub.Kum)
         {
           paramString = c(localg);
           AppMethodBeat.o(62803);
@@ -78,9 +78,9 @@ public final class f
       try
       {
         a(localg);
-        synchronized (this.IHL)
+        synchronized (this.KtW)
         {
-          paramString = this.IHJ.get(paramString);
+          paramString = this.KtU.get(paramString);
         }
         paramString = ???;
       }
@@ -111,9 +111,9 @@ public final class f
     for (;;)
     {
       boolean bool;
-      synchronized (this.IHK)
+      synchronized (this.KtV)
       {
-        localObject2 = (g)this.IHI.get(localObject2);
+        localObject2 = (g)this.KtT.get(localObject2);
         if (localObject2 == null)
         {
           bool = false;
@@ -129,7 +129,7 @@ public final class f
       else
       {
         ((g)localObject2).mReferenceCount += 1;
-        com.tencent.pb.common.c.b.d("reference_count", new Object[] { "addReferenceCount|", ((g)localObject2).IHQ.IHZ, "|refcount=", Integer.valueOf(((g)localObject2).mReferenceCount) });
+        com.tencent.pb.common.c.b.d("reference_count", new Object[] { "addReferenceCount|", ((g)localObject2).Kub.Kuk, "|refcount=", Integer.valueOf(((g)localObject2).mReferenceCount) });
         i += 1;
         break;
         bool = true;
@@ -141,30 +141,30 @@ public final class f
   {
     int j = 1;
     AppMethodBeat.i(62804);
-    if ((paramd == null) || (paramd.IHZ == null))
+    if ((paramd == null) || (paramd.Kuk == null))
     {
       AppMethodBeat.o(62804);
       return null;
     }
-    String str = paramd.IHZ;
-    this.IHM.lU("install_", str);
+    String str = paramd.Kuk;
+    this.KtX.mv("install_", str);
     for (;;)
     {
       try
       {
-        synchronized (this.IHK)
+        synchronized (this.KtV)
         {
-          g localg = (g)this.IHI.get(str);
+          g localg = (g)this.KtT.get(str);
           if (localg == null)
           {
             localg = new g(this, paramd);
             localg.mState = 2;
             com.tencent.pb.common.c.b.d("service", new Object[] { "service [", str, "] installed!" });
-            this.IHI.put(str, localg);
+            this.KtT.put(str, localg);
             i = 1;
             if (i != 0)
             {
-              if (paramd.IHY == null) {
+              if (paramd.Kuj == null) {
                 break label290;
               }
               i = j;
@@ -189,7 +189,7 @@ public final class f
       }
       finally
       {
-        this.IHM.lV("install_", str);
+        this.KtX.mw("install_", str);
         AppMethodBeat.o(62804);
       }
       AppMethodBeat.o(62804);
@@ -202,15 +202,15 @@ public final class f
   private static boolean b(g paramg)
   {
     AppMethodBeat.i(62807);
-    if (!paramg.IHQ.IIb) {}
+    if (!paramg.Kub.Kum) {}
     for (;;)
     {
       try
       {
-        b localb = (b)Class.forName(paramg.IHQ.IHY).newInstance();
-        paramg.IHR = localb;
+        b localb = (b)Class.forName(paramg.Kub.Kuj).newInstance();
+        paramg.Kuc = localb;
         a locala = new a(paramg);
-        paramg.IHS = locala;
+        paramg.Kud = locala;
         localb.a(locala);
         bool = true;
         AppMethodBeat.o(62807);
@@ -229,10 +229,10 @@ public final class f
     AppMethodBeat.i(62808);
     try
     {
-      c localc = (c)Class.forName(paramg.IHQ.IHY).newInstance();
-      paramg.IHS = new a(paramg);
+      c localc = (c)Class.forName(paramg.Kub.Kuj).newInstance();
+      paramg.Kud = new a(paramg);
       paramg.mState = 32;
-      paramg = localc.fpl();
+      paramg = localc.fHt();
       AppMethodBeat.o(62808);
       return paramg;
     }
@@ -244,16 +244,16 @@ public final class f
     return null;
   }
   
-  static f fpq()
+  static f fHy()
   {
     AppMethodBeat.i(62800);
-    if (IHH == null) {}
+    if (KtS == null) {}
     try
     {
-      if (IHH == null) {
-        IHH = new f();
+      if (KtS == null) {
+        KtS = new f();
       }
-      f localf = IHH;
+      f localf = KtS;
       AppMethodBeat.o(62800);
       return localf;
     }
@@ -267,9 +267,9 @@ public final class f
   {
     int j = 0;
     AppMethodBeat.i(62805);
-    d locald = paramg.IHQ;
-    String str = locald.IHZ;
-    this.IHM.lU("service_", str);
+    d locald = paramg.Kub;
+    String str = locald.Kuk;
+    this.KtX.mv("service_", str);
     try
     {
       int i = paramg.mState;
@@ -278,7 +278,7 @@ public final class f
       }
       for (;;)
       {
-        this.IHM.lV("service_", str);
+        this.KtX.mw("service_", str);
         if (i != 0) {
           break;
         }
@@ -290,8 +290,8 @@ public final class f
         {
           paramg.mState = 8;
           com.tencent.pb.common.c.b.d("service", new Object[] { "service [", str, "] starting..." });
-          if (locald.IIa != null) {
-            ac(locald.IIa);
+          if (locald.Kul != null) {
+            ac(locald.Kul);
           }
           i = j;
           if (b(paramg))
@@ -306,7 +306,7 @@ public final class f
     }
     finally
     {
-      this.IHM.lV("service_", str);
+      this.KtX.mw("service_", str);
       AppMethodBeat.o(62805);
     }
     return true;
@@ -314,18 +314,18 @@ public final class f
   
   final class a
   {
-    private final HashMap<String, Object> IHN;
+    private final HashMap<String, Object> KtY;
     private final Object mLock;
     
     a()
     {
       AppMethodBeat.i(62795);
       this.mLock = new Object();
-      this.IHN = new HashMap();
+      this.KtY = new HashMap();
       AppMethodBeat.o(62795);
     }
     
-    final void lU(String arg1, String paramString2)
+    final void mv(String arg1, String paramString2)
     {
       AppMethodBeat.i(62796);
       String str = ??? + paramString2;
@@ -333,7 +333,7 @@ public final class f
       {
         for (;;)
         {
-          Object localObject = this.IHN.get(str);
+          Object localObject = this.KtY.get(str);
           if (localObject != null) {
             try
             {
@@ -348,17 +348,17 @@ public final class f
           }
         }
       }
-      this.IHN.put(str, paramString2);
+      this.KtY.put(str, paramString2);
       AppMethodBeat.o(62796);
     }
     
-    final void lV(String arg1, String paramString2)
+    final void mw(String arg1, String paramString2)
     {
       AppMethodBeat.i(62797);
       paramString2 = ??? + paramString2;
       synchronized (this.mLock)
       {
-        this.IHN.remove(paramString2);
+        this.KtY.remove(paramString2);
         this.mLock.notifyAll();
         AppMethodBeat.o(62797);
         return;
@@ -368,7 +368,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.f.f
  * JD-Core Version:    0.7.0.1
  */

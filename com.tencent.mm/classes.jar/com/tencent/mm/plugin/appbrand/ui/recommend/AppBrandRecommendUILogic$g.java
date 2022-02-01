@@ -5,16 +5,16 @@ import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class AppBrandRecommendUILogic$g
   implements View.OnLongClickListener
 {
-  public static final g lLn;
+  public static final g mnk;
   
   static
   {
     AppMethodBeat.i(51365);
-    lLn = new g();
+    mnk = new g();
     AppMethodBeat.o(51365);
   }
   

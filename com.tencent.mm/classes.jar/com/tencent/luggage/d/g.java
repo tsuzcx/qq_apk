@@ -5,17 +5,17 @@ import java.util.LinkedList;
 
 public abstract class g
 {
-  abstract k AW();
+  abstract k AA();
   
-  abstract Class<? extends com.tencent.luggage.webview.a> AX();
+  abstract Class<? extends com.tencent.luggage.webview.a> AB();
   
-  public abstract LinkedList<e> Ba();
+  public abstract LinkedList<e> AE();
   
-  public abstract h Bb();
+  public abstract h AF();
   
-  abstract LinkedList<Class<? extends a>> Bc();
+  abstract LinkedList<Class<? extends a>> AG();
   
-  public abstract com.tencent.luggage.h.e Bd();
+  public abstract com.tencent.luggage.h.e AH();
   
   abstract Context getContext();
 }

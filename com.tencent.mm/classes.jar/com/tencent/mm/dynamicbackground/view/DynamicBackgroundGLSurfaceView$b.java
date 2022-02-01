@@ -13,106 +13,106 @@ import com.tencent.mm.dynamicbackground.model.d;
 import d.l;
 import java.lang.ref.WeakReference;
 
-@l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer;", "Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$Renderer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "colorInfo", "Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer$ColorInfo;", "contextWeakRef", "Ljava/lang/ref/WeakReference;", "drawCount", "", "hasPostAlphaAnimation", "", "isAlphaAnimating", "()Z", "setAlphaAnimating", "(Z)V", "mDynamicBgService", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "mGradientBgView", "Landroid/view/View;", "mLastDraw", "", "mNativeRenderer", "Lcom/tencent/mm/dynamicbackground/model/DynamicBackgroundNative;", "nativeRenderInitialized", "needCheckBlack", "showGradientView", "surfaceView", "Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;", "viewHeight", "viewWidth", "init", "", "initNativeView", "onDestroy", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "isPaused", "onEGLCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "onEGLSurfaceChanged", "onError", "e", "", "onPause", "onResume", "onSurfaceSizeChanged", "width", "height", "release", "reset", "setColor", "particleColor1", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "setGradientBackgroundView", "gradientColorBackgroundView", "setShowGradientView", "show", "setSurfaceView", "ColorInfo", "Companion", "dynamicbg_release"})
+@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer;", "Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView$Renderer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "colorInfo", "Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer$ColorInfo;", "contextWeakRef", "Ljava/lang/ref/WeakReference;", "drawCount", "", "hasPostAlphaAnimation", "", "isAlphaAnimating", "()Z", "setAlphaAnimating", "(Z)V", "mDynamicBgService", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "mGradientBgView", "Landroid/view/View;", "mLastDraw", "", "mNativeRenderer", "Lcom/tencent/mm/dynamicbackground/model/DynamicBackgroundNative;", "nativeRenderInitialized", "needCheckBlack", "showGradientView", "surfaceView", "Lcom/tencent/mm/dynamicbackground/view/GameGLSurfaceView;", "viewHeight", "viewWidth", "init", "", "initNativeView", "onDestroy", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "isPaused", "onEGLCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "onEGLSurfaceChanged", "onError", "e", "", "onPause", "onResume", "onSurfaceSizeChanged", "width", "height", "release", "reset", "setColor", "particleColor1", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "setGradientBackgroundView", "gradientColorBackgroundView", "setShowGradientView", "show", "setSurfaceView", "ColorInfo", "Companion", "dynamicbg_release"})
 public final class DynamicBackgroundGLSurfaceView$b
   implements GameGLSurfaceView.n
 {
-  private static long fIY;
-  public static final DynamicBackgroundGLSurfaceView.b.b fIZ;
-  boolean fII;
-  public DynamicBackgroundNative fIK;
-  private WeakReference<Context> fIL;
-  private long fIM;
-  public int fIN;
-  public int fIO;
-  View fIP;
-  boolean fIQ;
-  boolean fIR;
-  GameGLSurfaceView fIS;
-  private int fIT;
-  private boolean fIU;
-  public a fIV;
-  public boolean fIW;
-  private com.tencent.mm.dynamicbackground.model.c fIX;
+  private static long fME;
+  public static final DynamicBackgroundGLSurfaceView.b.b fMF;
+  private boolean fMA;
+  public a fMB;
+  public boolean fMC;
+  private com.tencent.mm.dynamicbackground.model.c fMD;
+  boolean fMo;
+  public DynamicBackgroundNative fMq;
+  private WeakReference<Context> fMr;
+  private long fMs;
+  public int fMt;
+  public int fMu;
+  View fMv;
+  boolean fMw;
+  boolean fMx;
+  GameGLSurfaceView fMy;
+  private int fMz;
   
   static
   {
     AppMethodBeat.i(103109);
-    fIZ = new DynamicBackgroundGLSurfaceView.b.b((byte)0);
-    fIY = 500L;
+    fMF = new DynamicBackgroundGLSurfaceView.b.b((byte)0);
+    fME = 500L;
     AppMethodBeat.o(103109);
   }
   
   public DynamicBackgroundGLSurfaceView$b(Context paramContext)
   {
     AppMethodBeat.i(103108);
-    this.fIM = -1L;
-    this.fIU = true;
-    Object localObject = d.fIt;
-    this.fIX = d.aar();
-    localObject = this.fIX;
-    if ((localObject != null) && (((com.tencent.mm.dynamicbackground.model.c)localObject).aaf() == true))
+    this.fMs = -1L;
+    this.fMA = true;
+    Object localObject = d.fLZ;
+    this.fMD = d.abq();
+    localObject = this.fMD;
+    if ((localObject != null) && (((com.tencent.mm.dynamicbackground.model.c)localObject).abe() == true))
     {
-      localObject = this.fIX;
-      if ((localObject != null) && (!((com.tencent.mm.dynamicbackground.model.c)localObject).aai())) {
-        this.fIK = new DynamicBackgroundNative();
+      localObject = this.fMD;
+      if ((localObject != null) && (!((com.tencent.mm.dynamicbackground.model.c)localObject).abh())) {
+        this.fMq = new DynamicBackgroundNative();
       }
     }
     for (;;)
     {
-      this.fIL = new WeakReference(paramContext);
+      this.fMr = new WeakReference(paramContext);
       AppMethodBeat.o(103108);
       return;
       com.tencent.mm.dynamicbackground.a.c.e("MicroMsg.DynamicBgSurfaceView", "alvinluo AppBrandDesktopConfig not enableNativeDynamicBackground", new Object[0]);
     }
   }
   
-  private final void aav()
+  private final void abu()
   {
     AppMethodBeat.i(103102);
-    Object localObject1 = this.fIK;
+    Object localObject1 = this.fMq;
     if (localObject1 != null) {
-      ((DynamicBackgroundNative)localObject1).surfaceCreated(this.fIN, this.fIO);
+      ((DynamicBackgroundNative)localObject1).surfaceCreated(this.fMt, this.fMu);
     }
-    localObject1 = (Context)this.fIL.get();
+    localObject1 = (Context)this.fMr.get();
     if (localObject1 == null)
     {
       AppMethodBeat.o(103102);
       return;
     }
-    DynamicBackgroundNative localDynamicBackgroundNative = this.fIK;
+    DynamicBackgroundNative localDynamicBackgroundNative = this.fMq;
     if (localDynamicBackgroundNative != null)
     {
       Object localObject2 = new StringBuilder();
-      Object localObject3 = b.fID;
-      localObject2 = b.cg((Context)localObject1) + "scene_shaderv.glsl";
+      Object localObject3 = b.fMj;
+      localObject2 = b.cm((Context)localObject1) + "scene_shaderv.glsl";
       localObject3 = new StringBuilder();
-      Object localObject4 = b.fID;
-      localObject3 = b.cg((Context)localObject1) + "scene_shaderf.glsl";
+      Object localObject4 = b.fMj;
+      localObject3 = b.cm((Context)localObject1) + "scene_shaderf.glsl";
       localObject4 = new StringBuilder();
-      Object localObject5 = b.fID;
-      localObject4 = b.cg((Context)localObject1) + "vertex_framebuffer_plane.glsl";
+      Object localObject5 = b.fMj;
+      localObject4 = b.cm((Context)localObject1) + "vertex_framebuffer_plane.glsl";
       localObject5 = new StringBuilder();
-      Object localObject6 = b.fID;
-      localObject5 = b.cg((Context)localObject1) + "frag_framebuffer_plane.glsl";
+      Object localObject6 = b.fMj;
+      localObject5 = b.cm((Context)localObject1) + "frag_framebuffer_plane.glsl";
       localObject6 = new StringBuilder();
-      Object localObject7 = b.fID;
-      localObject6 = b.cg((Context)localObject1) + "texture_vertex_shader.glsl";
+      Object localObject7 = b.fMj;
+      localObject6 = b.cm((Context)localObject1) + "texture_vertex_shader.glsl";
       localObject7 = new StringBuilder();
-      Object localObject8 = b.fID;
-      localObject7 = b.cg((Context)localObject1) + "texture_fragment_shader.glsl";
+      Object localObject8 = b.fMj;
+      localObject7 = b.cm((Context)localObject1) + "texture_fragment_shader.glsl";
       localObject8 = new StringBuilder();
-      Object localObject9 = b.fID;
-      localObject8 = b.cg((Context)localObject1) + "bg_gradient_vertex_shader.glsl";
+      Object localObject9 = b.fMj;
+      localObject8 = b.cm((Context)localObject1) + "bg_gradient_vertex_shader.glsl";
       localObject9 = new StringBuilder();
-      b localb = b.fID;
-      localDynamicBackgroundNative.setupGlslFiles((String)localObject2, (String)localObject3, (String)localObject4, (String)localObject5, (String)localObject6, (String)localObject7, (String)localObject8, b.cg((Context)localObject1) + "bg_gradient_fragment_shader.glsl");
+      b localb = b.fMj;
+      localDynamicBackgroundNative.setupGlslFiles((String)localObject2, (String)localObject3, (String)localObject4, (String)localObject5, (String)localObject6, (String)localObject7, (String)localObject8, b.cm((Context)localObject1) + "bg_gradient_fragment_shader.glsl");
     }
-    localObject1 = this.fIK;
+    localObject1 = this.fMq;
     if (localObject1 != null) {
       ((DynamicBackgroundNative)localObject1).initView();
     }
-    this.fIT = 0;
+    this.fMz = 0;
     AppMethodBeat.o(103102);
   }
   
@@ -122,18 +122,18 @@ public final class DynamicBackgroundGLSurfaceView$b
     com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo NativeRender init", new Object[0]);
     try
     {
-      Object localObject = this.fIK;
+      Object localObject = this.fMq;
       if (localObject != null) {
         ((DynamicBackgroundNative)localObject).nativeInit();
       }
-      this.fIW = true;
-      localObject = this.fIV;
+      this.fMC = true;
+      localObject = this.fMB;
       if (localObject != null)
       {
-        DynamicBackgroundNative localDynamicBackgroundNative2 = this.fIK;
+        DynamicBackgroundNative localDynamicBackgroundNative2 = this.fMq;
         if (localDynamicBackgroundNative2 != null)
         {
-          localDynamicBackgroundNative2.setColor(((a)localObject).fJa, ((a)localObject).fJb, ((a)localObject).fJc, ((a)localObject).fJd, ((a)localObject).fJe);
+          localDynamicBackgroundNative2.setColor(((a)localObject).fMG, ((a)localObject).fMH, ((a)localObject).fMI, ((a)localObject).fMJ, ((a)localObject).fMK);
           AppMethodBeat.o(103098);
           return;
         }
@@ -150,21 +150,21 @@ public final class DynamicBackgroundGLSurfaceView$b
         try
         {
           System.loadLibrary("dynamicBg");
-          DynamicBackgroundNative localDynamicBackgroundNative1 = this.fIK;
+          DynamicBackgroundNative localDynamicBackgroundNative1 = this.fMq;
           if (localDynamicBackgroundNative1 != null) {
             localDynamicBackgroundNative1.nativeInit();
           }
-          this.fIW = true;
+          this.fMC = true;
           AppMethodBeat.o(103098);
           return;
         }
         catch (Throwable localThrowable2)
         {
-          com.tencent.mm.dynamicbackground.model.c localc = this.fIX;
+          com.tencent.mm.dynamicbackground.model.c localc = this.fMD;
           if (localc == null) {
             break label186;
           }
-          localc.aak();
+          localc.abj();
           AppMethodBeat.o(103098);
           return;
         }
@@ -176,22 +176,22 @@ public final class DynamicBackgroundGLSurfaceView$b
     }
   }
   
-  public final void aat()
+  public final void abs()
   {
     AppMethodBeat.i(103099);
     try
     {
       init();
-      Object localObject1 = (Context)this.fIL.get();
+      Object localObject1 = (Context)this.fMr.get();
       if (localObject1 == null)
       {
         AppMethodBeat.o(103099);
         return;
       }
-      Object localObject2 = this.fIX;
+      Object localObject2 = this.fMD;
       if (localObject2 != null)
       {
-        localObject2 = ((com.tencent.mm.dynamicbackground.model.c)localObject2).cf((Context)localObject1);
+        localObject2 = ((com.tencent.mm.dynamicbackground.model.c)localObject2).cl((Context)localObject1);
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -199,38 +199,38 @@ public final class DynamicBackgroundGLSurfaceView$b
       {
         localObject1 = new Point(0, 0);
       }
-      this.fIN = ((Point)localObject1).x;
-      this.fIO = ((Point)localObject1).y;
-      com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onEGLCreated width: %d, height: %d", new Object[] { Integer.valueOf(this.fIN), Integer.valueOf(this.fIO) });
-      aav();
-      localObject1 = this.fIX;
+      this.fMt = ((Point)localObject1).x;
+      this.fMu = ((Point)localObject1).y;
+      com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onEGLCreated width: %d, height: %d", new Object[] { Integer.valueOf(this.fMt), Integer.valueOf(this.fMu) });
+      abu();
+      localObject1 = this.fMD;
       if (localObject1 != null)
       {
-        if (((com.tencent.mm.dynamicbackground.model.c)localObject1).aaf() != true) {
+        if (((com.tencent.mm.dynamicbackground.model.c)localObject1).abe() != true) {
           break label233;
         }
-        localObject1 = this.fIX;
+        localObject1 = this.fMD;
         if (localObject1 == null) {
           break label219;
         }
-        if (((com.tencent.mm.dynamicbackground.model.c)localObject1).aam()) {
+        if (((com.tencent.mm.dynamicbackground.model.c)localObject1).abl()) {
           break label233;
         }
-        localObject1 = this.fIX;
+        localObject1 = this.fMD;
         if (localObject1 == null) {
           break label226;
         }
-        ((com.tencent.mm.dynamicbackground.model.c)localObject1).aal();
+        ((com.tencent.mm.dynamicbackground.model.c)localObject1).abk();
         AppMethodBeat.o(103099);
       }
     }
     catch (Throwable localThrowable)
     {
       com.tencent.mm.dynamicbackground.a.c.printErrStackTrace("MicroMsg.DynamicBgSurfaceView", localThrowable, "alvinluo onEGLCreated exception", new Object[0]);
-      com.tencent.mm.dynamicbackground.model.c localc = this.fIX;
+      com.tencent.mm.dynamicbackground.model.c localc = this.fMD;
       if (localc != null)
       {
-        localc.aak();
+        localc.abj();
         AppMethodBeat.o(103099);
         return;
         AppMethodBeat.o(103099);
@@ -247,26 +247,26 @@ public final class DynamicBackgroundGLSurfaceView$b
     }
   }
   
-  public final void aau()
+  public final void abt()
   {
     AppMethodBeat.i(103100);
     com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onEGLSurfaceChanged and do nothing", new Object[0]);
-    this.fIT = 0;
+    this.fMz = 0;
     AppMethodBeat.o(103100);
   }
   
-  public final void aaw()
+  public final void abv()
   {
     AppMethodBeat.i(103103);
     for (;;)
     {
       try
       {
-        localObject1 = this.fIX;
+        localObject1 = this.fMD;
         if (localObject1 == null) {
           continue;
         }
-        l = ((com.tencent.mm.dynamicbackground.model.c)localObject1).aaq();
+        l = ((com.tencent.mm.dynamicbackground.model.c)localObject1).abp();
         Thread.sleep(l);
       }
       catch (Exception localException)
@@ -276,17 +276,17 @@ public final class DynamicBackgroundGLSurfaceView$b
         Object localObject2;
         continue;
       }
-      localObject1 = this.fIX;
-      if ((localObject1 != null) && (((com.tencent.mm.dynamicbackground.model.c)localObject1).aan() == true))
+      localObject1 = this.fMD;
+      if ((localObject1 != null) && (((com.tencent.mm.dynamicbackground.model.c)localObject1).abm() == true))
       {
-        localObject1 = this.fIX;
+        localObject1 = this.fMD;
         if (localObject1 != null) {
-          ((com.tencent.mm.dynamicbackground.model.c)localObject1).aao();
+          ((com.tencent.mm.dynamicbackground.model.c)localObject1).abn();
         }
       }
       try
       {
-        localObject1 = this.fIK;
+        localObject1 = this.fMq;
         if (localObject1 != null) {
           ((DynamicBackgroundNative)localObject1).draw();
         }
@@ -294,32 +294,32 @@ public final class DynamicBackgroundGLSurfaceView$b
       catch (Throwable localThrowable)
       {
         com.tencent.mm.dynamicbackground.a.c.printErrStackTrace("MicroMsg.DynamicBgSurfaceView", localThrowable, "alvinluo onDraw exception", new Object[0]);
-        localObject2 = this.fIX;
+        localObject2 = this.fMD;
         if (localObject2 == null) {
           continue;
         }
-        ((com.tencent.mm.dynamicbackground.model.c)localObject2).aag();
+        ((com.tencent.mm.dynamicbackground.model.c)localObject2).abf();
         continue;
         AppMethodBeat.o(103103);
         return;
       }
-      localObject1 = this.fIX;
-      if ((localObject1 != null) && (((com.tencent.mm.dynamicbackground.model.c)localObject1).aan() == true))
+      localObject1 = this.fMD;
+      if ((localObject1 != null) && (((com.tencent.mm.dynamicbackground.model.c)localObject1).abm() == true))
       {
-        this.fIT += 1;
-        if (this.fIT >= 2)
+        this.fMz += 1;
+        if (this.fMz >= 2)
         {
-          localObject1 = this.fIX;
+          localObject1 = this.fMD;
           if (localObject1 != null) {
-            ((com.tencent.mm.dynamicbackground.model.c)localObject1).aap();
+            ((com.tencent.mm.dynamicbackground.model.c)localObject1).abo();
           }
         }
       }
-      if ((this.fII) || (this.fIR)) {
+      if ((this.fMo) || (this.fMx)) {
         continue;
       }
-      this.fIR = true;
-      localObject1 = this.fIP;
+      this.fMx = true;
+      localObject1 = this.fMv;
       if (localObject1 == null) {
         continue;
       }
@@ -328,12 +328,12 @@ public final class DynamicBackgroundGLSurfaceView$b
       return;
       l = 16L;
     }
-    if (this.fII)
+    if (this.fMo)
     {
-      localObject2 = this.fIP;
+      localObject2 = this.fMv;
       if ((localObject2 == null) || (((View)localObject2).getVisibility() != 0))
       {
-        localObject2 = this.fIP;
+        localObject2 = this.fMv;
         if (localObject2 != null)
         {
           ((View)localObject2).post((Runnable)new d(this));
@@ -345,33 +345,33 @@ public final class DynamicBackgroundGLSurfaceView$b
     AppMethodBeat.o(103103);
   }
   
-  public final void aax()
+  public final void abw()
   {
     AppMethodBeat.i(103107);
     com.tencent.mm.dynamicbackground.a.c.e("MicroMsg.DynamicBgSurfaceView", "alvinluo GLSurfaceView onError", new Object[0]);
-    com.tencent.mm.dynamicbackground.model.c localc = this.fIX;
+    com.tencent.mm.dynamicbackground.model.c localc = this.fMD;
     if (localc != null)
     {
-      localc.aaj();
+      localc.abi();
       AppMethodBeat.o(103107);
       return;
     }
     AppMethodBeat.o(103107);
   }
   
-  public final void cu(int paramInt1, int paramInt2)
+  public final void cs(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103101);
     try
     {
       com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onSurfaceSizeChanged width: %d, height: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if ((this.fIN != paramInt1) && (this.fIO != paramInt2))
+      if ((this.fMt != paramInt1) && (this.fMu != paramInt2))
       {
         init();
-        this.fIN = paramInt1;
-        this.fIO = paramInt2;
-        com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onSurfaceSizeChanged reCreated width: %d, height: %d", new Object[] { Integer.valueOf(this.fIN), Integer.valueOf(this.fIO) });
-        aav();
+        this.fMt = paramInt1;
+        this.fMu = paramInt2;
+        com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo onSurfaceSizeChanged reCreated width: %d, height: %d", new Object[] { Integer.valueOf(this.fMt), Integer.valueOf(this.fMu) });
+        abu();
         AppMethodBeat.o(103101);
         return;
       }
@@ -379,10 +379,10 @@ public final class DynamicBackgroundGLSurfaceView$b
     catch (Throwable localThrowable)
     {
       com.tencent.mm.dynamicbackground.a.c.printErrStackTrace("MicroMsg.DynamicBgSurfaceView", localThrowable, "alvinluo onSurfaceSizeChanged exception", new Object[0]);
-      com.tencent.mm.dynamicbackground.model.c localc = this.fIX;
+      com.tencent.mm.dynamicbackground.model.c localc = this.fMD;
       if (localc != null)
       {
-        localc.aag();
+        localc.abf();
         AppMethodBeat.o(103101);
         return;
       }
@@ -396,7 +396,7 @@ public final class DynamicBackgroundGLSurfaceView$b
     com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo DynamicBackgroundSurfaceView.Renderer onDestroy", new Object[0]);
     try
     {
-      DynamicBackgroundNative localDynamicBackgroundNative = this.fIK;
+      DynamicBackgroundNative localDynamicBackgroundNative = this.fMq;
       if (localDynamicBackgroundNative != null)
       {
         localDynamicBackgroundNative.nativeRelease();
@@ -424,26 +424,26 @@ public final class DynamicBackgroundGLSurfaceView$b
   {
     AppMethodBeat.i(103104);
     com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo DynamicBackgroundSurfaceView.Renderer onResume", new Object[0]);
-    this.fIU = true;
+    this.fMA = true;
     AppMethodBeat.o(103104);
   }
   
-  @l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer$ColorInfo;", "", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "(IIIII)V", "getBgColor1", "()I", "getBgColor2", "getParticleColor1", "getParticleColor2", "getParticleColor3", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "", "dynamicbg_release"})
+  @l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$GLRenderer$ColorInfo;", "", "particleColor1", "", "particleColor2", "particleColor3", "bgColor1", "bgColor2", "(IIIII)V", "getBgColor1", "()I", "getBgColor2", "getParticleColor1", "getParticleColor2", "getParticleColor3", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "", "dynamicbg_release"})
   public static final class a
   {
-    public final int fJa;
-    public final int fJb;
-    public final int fJc;
-    public final int fJd;
-    public final int fJe;
+    public final int fMG;
+    public final int fMH;
+    public final int fMI;
+    public final int fMJ;
+    public final int fMK;
     
     public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
     {
-      this.fJa = paramInt1;
-      this.fJb = paramInt2;
-      this.fJc = paramInt3;
-      this.fJd = paramInt4;
-      this.fJe = paramInt5;
+      this.fMG = paramInt1;
+      this.fMH = paramInt2;
+      this.fMI = paramInt3;
+      this.fMJ = paramInt4;
+      this.fMK = paramInt5;
     }
     
     public final boolean equals(Object paramObject)
@@ -457,7 +457,7 @@ public final class DynamicBackgroundGLSurfaceView$b
           break label125;
         }
         paramObject = (a)paramObject;
-        if (this.fJa != paramObject.fJa) {
+        if (this.fMG != paramObject.fMG) {
           break label127;
         }
         i = 1;
@@ -465,7 +465,7 @@ public final class DynamicBackgroundGLSurfaceView$b
         if (i == 0) {
           break label125;
         }
-        if (this.fJb != paramObject.fJb) {
+        if (this.fMH != paramObject.fMH) {
           break label132;
         }
         i = 1;
@@ -474,7 +474,7 @@ public final class DynamicBackgroundGLSurfaceView$b
         if (i == 0) {
           break label125;
         }
-        if (this.fJc != paramObject.fJc) {
+        if (this.fMI != paramObject.fMI) {
           break label137;
         }
         i = 1;
@@ -483,7 +483,7 @@ public final class DynamicBackgroundGLSurfaceView$b
         if (i == 0) {
           break label125;
         }
-        if (this.fJd != paramObject.fJd) {
+        if (this.fMJ != paramObject.fMJ) {
           break label142;
         }
         i = 1;
@@ -492,7 +492,7 @@ public final class DynamicBackgroundGLSurfaceView$b
         if (i == 0) {
           break label125;
         }
-        if (this.fJe != paramObject.fJe) {
+        if (this.fMK != paramObject.fMK) {
           break label147;
         }
       }
@@ -522,19 +522,19 @@ public final class DynamicBackgroundGLSurfaceView$b
     
     public final int hashCode()
     {
-      return (((this.fJa * 31 + this.fJb) * 31 + this.fJc) * 31 + this.fJd) * 31 + this.fJe;
+      return (((this.fMG * 31 + this.fMH) * 31 + this.fMI) * 31 + this.fMJ) * 31 + this.fMK;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(189978);
-      String str = "ColorInfo(particleColor1=" + this.fJa + ", particleColor2=" + this.fJb + ", particleColor3=" + this.fJc + ", bgColor1=" + this.fJd + ", bgColor2=" + this.fJe + ")";
-      AppMethodBeat.o(189978);
+      AppMethodBeat.i(195757);
+      String str = "ColorInfo(particleColor1=" + this.fMG + ", particleColor2=" + this.fMH + ", particleColor3=" + this.fMI + ", bgColor1=" + this.fMJ + ", bgColor2=" + this.fMK + ")";
+      AppMethodBeat.o(195757);
       return str;
     }
   }
   
-  @l(fvt={1, 1, 11}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 11}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -543,22 +543,22 @@ public final class DynamicBackgroundGLSurfaceView$b
     public final void run()
     {
       AppMethodBeat.i(103095);
-      Object localObject = DynamicBackgroundGLSurfaceView.b.a(this.fJf);
+      Object localObject = DynamicBackgroundGLSurfaceView.b.a(this.fML);
       if (localObject != null)
       {
-        if ((((View)localObject).getVisibility() == 0) && (!this.fJf.fIQ))
+        if ((((View)localObject).getVisibility() == 0) && (!this.fML.fMw))
         {
-          localObject = DynamicBackgroundGLSurfaceView.b.b(this.fJf);
+          localObject = DynamicBackgroundGLSurfaceView.b.b(this.fML);
           if (localObject != null) {
             ((GameGLSurfaceView)localObject).setVisibility(0);
           }
-          this.fJf.fIQ = true;
-          localObject = DynamicBackgroundGLSurfaceView.b.a(this.fJf);
+          this.fML.fMw = true;
+          localObject = DynamicBackgroundGLSurfaceView.b.a(this.fML);
           if (localObject != null) {
             ((View)localObject).setAlpha(1.0F);
           }
           com.tencent.mm.dynamicbackground.a.c.d("MicroMsg.DynamicBgSurfaceView", "alvinluo GradientColorBackgroundView do alpha animation", new Object[0]);
-          localObject = DynamicBackgroundGLSurfaceView.b.a(this.fJf);
+          localObject = DynamicBackgroundGLSurfaceView.b.a(this.fML);
           if (localObject != null)
           {
             localObject = ((View)localObject).animate();
@@ -567,24 +567,24 @@ public final class DynamicBackgroundGLSurfaceView$b
               localObject = ((ViewPropertyAnimator)localObject).alpha(0.0F);
               if (localObject != null)
               {
-                localObject = ((ViewPropertyAnimator)localObject).setDuration(DynamicBackgroundGLSurfaceView.b.aay());
+                localObject = ((ViewPropertyAnimator)localObject).setDuration(DynamicBackgroundGLSurfaceView.b.abx());
                 if (localObject != null)
                 {
                   localObject = ((ViewPropertyAnimator)localObject).setListener((Animator.AnimatorListener)new Animator.AnimatorListener()
                   {
                     public final void onAnimationCancel(Animator paramAnonymousAnimator)
                     {
-                      this.fJg.fJf.fIQ = false;
+                      this.fMM.fML.fMw = false;
                     }
                     
                     public final void onAnimationEnd(Animator paramAnonymousAnimator)
                     {
                       AppMethodBeat.i(103094);
-                      paramAnonymousAnimator = DynamicBackgroundGLSurfaceView.b.a(this.fJg.fJf);
+                      paramAnonymousAnimator = DynamicBackgroundGLSurfaceView.b.a(this.fMM.fML);
                       if (paramAnonymousAnimator != null) {
                         paramAnonymousAnimator.setVisibility(4);
                       }
-                      this.fJg.fJf.fIQ = false;
+                      this.fMM.fML.fMw = false;
                       AppMethodBeat.o(103094);
                     }
                     
@@ -612,7 +612,7 @@ public final class DynamicBackgroundGLSurfaceView$b
     }
   }
   
-  @l(fvt={1, 1, 11}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 11}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -621,16 +621,16 @@ public final class DynamicBackgroundGLSurfaceView$b
     public final void run()
     {
       AppMethodBeat.i(103097);
-      Object localObject = DynamicBackgroundGLSurfaceView.b.a(this.fJf);
+      Object localObject = DynamicBackgroundGLSurfaceView.b.a(this.fML);
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
-      localObject = DynamicBackgroundGLSurfaceView.b.a(this.fJf);
+      localObject = DynamicBackgroundGLSurfaceView.b.a(this.fML);
       if (localObject != null) {
         ((View)localObject).setAlpha(1.0F);
       }
       com.tencent.mm.dynamicbackground.a.c.d("MicroMsg.DynamicBgSurfaceView", "alvinluo showGradientView", new Object[0]);
-      localObject = DynamicBackgroundGLSurfaceView.b.b(this.fJf);
+      localObject = DynamicBackgroundGLSurfaceView.b.b(this.fML);
       if (localObject != null)
       {
         ((GameGLSurfaceView)localObject).postDelayed((Runnable)new Runnable()
@@ -638,11 +638,11 @@ public final class DynamicBackgroundGLSurfaceView$b
           public final void run()
           {
             AppMethodBeat.i(103096);
-            GameGLSurfaceView localGameGLSurfaceView = DynamicBackgroundGLSurfaceView.b.b(this.fJh.fJf);
+            GameGLSurfaceView localGameGLSurfaceView = DynamicBackgroundGLSurfaceView.b.b(this.fMN.fML);
             if (localGameGLSurfaceView != null) {
               localGameGLSurfaceView.onPause();
             }
-            localGameGLSurfaceView = DynamicBackgroundGLSurfaceView.b.b(this.fJh.fJf);
+            localGameGLSurfaceView = DynamicBackgroundGLSurfaceView.b.b(this.fMN.fML);
             if (localGameGLSurfaceView != null)
             {
               localGameGLSurfaceView.setVisibility(4);
@@ -661,7 +661,7 @@ public final class DynamicBackgroundGLSurfaceView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView.b
  * JD-Core Version:    0.7.0.1
  */

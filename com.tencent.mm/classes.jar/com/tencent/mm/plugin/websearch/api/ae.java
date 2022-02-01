@@ -1,99 +1,83 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Base64;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.cnu;
-import com.tencent.mm.protocal.protobuf.cnv;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.io.IOException;
-import java.util.LinkedList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import java.util.HashMap;
 
-public final class ae
+public class ae
 {
-  public static cnv AGP;
+  private static volatile ae BZk;
+  public HashMap<Integer, af> BZj;
   
-  public static String bdo()
+  private ae()
   {
-    AppMethodBeat.i(117724);
-    String str = "key_pb_history_list" + u.aqG();
-    AppMethodBeat.o(117724);
-    return str;
+    AppMethodBeat.i(117734);
+    this.BZj = new HashMap();
+    AppMethodBeat.o(117734);
   }
   
-  public static cnv ehZ()
+  public static ae exw()
   {
-    AppMethodBeat.i(117723);
-    Object localObject;
-    if (AGP == null)
+    AppMethodBeat.i(117735);
+    if (BZk == null) {}
+    try
     {
-      localObject = bdo();
-      AGP = new cnv();
-      localObject = aj.getContext().getSharedPreferences("fts_history_search_sp", 0).getString((String)localObject, "");
-      if (!bt.isNullOrNil((String)localObject)) {
-        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+      if (BZk == null) {
+        BZk = new ae();
       }
+      ae localae = BZk;
+      AppMethodBeat.o(117735);
+      return localae;
     }
-    try
+    finally
     {
-      AGP.parseFrom((byte[])localObject);
-      label67:
-      localObject = AGP;
-      AppMethodBeat.o(117723);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      break label67;
+      AppMethodBeat.o(117735);
     }
   }
   
-  public static String eia()
+  public final void t(final String paramString, final int paramInt, final boolean paramBoolean)
   {
-    AppMethodBeat.i(117725);
-    cnv localcnv = ehZ();
-    int j = localcnv.mAL.size();
-    Object localObject = new JSONObject();
-    try
+    AppMethodBeat.i(184555);
+    ac.i("MicroMsg.WebSearch.WebSearchPreloadExport", "preloadWebView %s %s %s %s", new Object[] { ai.getProcessName(), paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (ai.eVe())
     {
-      JSONArray localJSONArray1 = new JSONArray();
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONArray localJSONArray2 = new JSONArray();
-      int i = 0;
-      while ((i < localcnv.mAL.size()) && (i < j))
+      ac.i("MicroMsg.WebSearch.WebSearchPreloadExport", "current preload mgr size %s", new Object[] { Integer.valueOf(this.BZj.size()) });
+      if (paramBoolean) {
+        this.BZj.remove(Integer.valueOf(paramInt));
+      }
+      if (!this.BZj.containsKey(Integer.valueOf(paramInt)))
       {
-        cnu localcnu = (cnu)localcnv.mAL.get(i);
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("word", localcnu.CLI);
-        localJSONArray2.put(localJSONObject2);
-        i += 1;
+        af localaf = new af(paramInt);
+        localaf.aAz(paramString);
+        this.BZj.put(Integer.valueOf(paramInt), localaf);
+        AppMethodBeat.o(184555);
+        return;
       }
-      localJSONObject1.put("items", localJSONArray2);
-      localJSONObject1.put("count", localJSONArray2.length());
-      localJSONObject1.put("type", 4);
-      localJSONArray1.put(localJSONObject1);
-      ((JSONObject)localObject).put("data", localJSONArray1);
-      ((JSONObject)localObject).put("ret", 0);
+      ((af)this.BZj.get(Integer.valueOf(paramInt))).aAz(paramString);
+      AppMethodBeat.o(184555);
+      return;
     }
-    catch (JSONException localJSONException)
-    {
-      label177:
-      break label177;
+    if (ai.cin()) {
+      h.JZN.aS(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(117733);
+          ac.i("MicroMsg.WebSearch.WebSearchPreloadExport", "sending broadcast");
+          ae.f("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH", paramString, paramInt, paramBoolean);
+          AppMethodBeat.o(117733);
+        }
+      });
     }
-    localObject = ((JSONObject)localObject).toString();
-    AppMethodBeat.o(117725);
-    return localObject;
+    AppMethodBeat.o(184555);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ae
  * JD-Core Version:    0.7.0.1
  */

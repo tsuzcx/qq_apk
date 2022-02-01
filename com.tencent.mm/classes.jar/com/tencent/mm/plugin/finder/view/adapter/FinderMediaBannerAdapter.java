@@ -10,40 +10,42 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.loader.f;
+import com.tencent.mm.plugin.finder.loader.h;
 import com.tencent.mm.plugin.finder.loader.h.a;
 import com.tencent.mm.plugin.finder.loader.j;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.m;
 import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
 import com.tencent.mm.plugin.finder.video.FinderVideoSeekBar;
-import com.tencent.mm.plugin.finder.video.c;
+import com.tencent.mm.plugin.finder.video.i;
 import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
-import com.tencent.mm.protocal.protobuf.bmd;
+import com.tencent.mm.protocal.protobuf.bqs;
 import com.tencent.mm.ui.base.a.a;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import d.g.b.k;
 import d.l;
 import d.v;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderMediaBannerAdapter;", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "Landroid/view/View;", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "(Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;)V", "banner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "setBanner", "(Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;)V", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeed", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "attachFinderImage", "Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "mediaObj", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getItemViewType", "", "position", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "onBindViewHolderImpl", "onCreateItemView", "parent", "Landroid/view/ViewGroup;", "viewType", "onCreateItemViewImpl", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderMediaBannerAdapter;", "Lcom/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "Landroid/view/View;", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "(Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;)V", "banner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "setBanner", "(Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;)V", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeed", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "attachFinderImage", "Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "mediaObj", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getItemViewType", "", "position", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "onBindViewHolderImpl", "onCreateItemView", "parent", "Landroid/view/ViewGroup;", "viewType", "onCreateItemViewImpl", "Companion", "plugin-finder_release"})
 public class FinderMediaBannerAdapter
-  extends a<bmd, View>
+  extends a<bqs, View>
 {
-  public static final a.a qYr;
-  public FinderMediaBanner Lgw;
+  public static final FinderMediaBannerAdapter.a sac;
   public FinderItem feed;
-  private final c qrq;
+  private final i rbo;
+  public FinderMediaBanner sab;
   
   static
   {
     AppMethodBeat.i(168454);
-    qYr = new a.a((byte)0);
+    sac = new FinderMediaBannerAdapter.a((byte)0);
     AppMethodBeat.o(168454);
   }
   
-  public FinderMediaBannerAdapter(c paramc)
+  public FinderMediaBannerAdapter(i parami)
   {
-    this.qrq = paramc;
+    this.rbo = parami;
   }
   
   public final void a(com.tencent.mm.ui.base.a.b paramb, int paramInt)
@@ -51,7 +53,7 @@ public class FinderMediaBannerAdapter
     AppMethodBeat.i(168451);
     k.h(paramb, "holder");
     super.a(paramb, paramInt);
-    paramb.ei(getItemAtPosition(paramInt));
+    paramb.ej(getItemAtPosition(paramInt));
     k.h(paramb, "holder");
     switch (getItemViewType(paramInt))
     {
@@ -62,27 +64,27 @@ public class FinderMediaBannerAdapter
     {
       AppMethodBeat.o(168451);
       return;
-      localObject1 = (bmd)getItemAtPosition(paramInt);
-      paramb = (ImageView)paramb.abq(2131299974);
+      localObject1 = (bqs)getItemAtPosition(paramInt);
+      paramb = (ImageView)paramb.adJ(2131299974);
       localObject2 = new FrameLayout.LayoutParams(-1, -1);
       k.g(paramb, "imageView");
       paramb.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       ((FrameLayout.LayoutParams)localObject2).gravity = 17;
       paramb.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      localObject2 = com.tencent.mm.plugin.finder.loader.h.qCF;
-      localObject2 = com.tencent.mm.plugin.finder.loader.h.cmU();
+      localObject2 = h.rtK;
+      localObject2 = h.cwn();
       k.g(localObject1, "item");
-      localObject2 = ((com.tencent.mm.loader.d)localObject2).bI(new f((bmd)localObject1, com.tencent.mm.plugin.finder.storage.h.qJY));
-      com.tencent.mm.plugin.finder.loader.h localh = com.tencent.mm.plugin.finder.loader.h.qCF;
-      ((com.tencent.mm.loader.a.b)localObject2).a(com.tencent.mm.plugin.finder.loader.h.a(h.a.qCG)).a((com.tencent.mm.loader.f.d)new a((bmd)localObject1)).c(paramb);
+      localObject2 = ((com.tencent.mm.loader.d)localObject2).bG(new f((bqs)localObject1, m.rDQ));
+      h localh = h.rtK;
+      ((com.tencent.mm.loader.a.b)localObject2).a(h.a(h.a.rtL)).a((com.tencent.mm.loader.f.d)new b((bqs)localObject1)).c(paramb);
       AppMethodBeat.o(168451);
       return;
-      localObject1 = (FinderVideoLayout)paramb.abq(2131299975);
+      localObject1 = (FinderVideoLayout)paramb.adJ(2131299975);
       localObject2 = this.feed;
     } while (localObject2 == null);
-    paramb = this.Lgw;
+    paramb = this.sab;
     if (paramb != null) {}
-    for (paramb = (FinderVideoSeekBar)paramb.findViewById(2131307822);; paramb = null)
+    for (paramb = (FinderVideoSeekBar)paramb.findViewById(2131307914);; paramb = null)
     {
       ((FinderVideoLayout)localObject1).a(paramInt, (FinderItem)localObject2, paramb);
       AppMethodBeat.o(168451);
@@ -93,7 +95,7 @@ public class FinderMediaBannerAdapter
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(168450);
-    paramInt = ((bmd)this.cbP.get(paramInt)).mediaType;
+    paramInt = ((bqs)this.bYM.get(paramInt)).mediaType;
     AppMethodBeat.o(168450);
     return paramInt;
   }
@@ -105,7 +107,7 @@ public class FinderMediaBannerAdapter
     k.h(paramViewGroup, "parent");
     if (paramInt == 4)
     {
-      paramViewGroup = y.js(paramViewGroup.getContext()).inflate(2131494065, paramViewGroup, false);
+      paramViewGroup = z.jD(paramViewGroup.getContext()).inflate(2131494065, paramViewGroup, false);
       if (paramViewGroup == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.video.FinderVideoLayout");
@@ -113,17 +115,17 @@ public class FinderMediaBannerAdapter
         throw paramViewGroup;
       }
       FinderVideoLayout localFinderVideoLayout = (FinderVideoLayout)paramViewGroup;
-      c localc = this.qrq;
-      if (localc == null) {
-        k.fvU();
+      i locali = this.rbo;
+      if (locali == null) {
+        k.fOy();
       }
-      localFinderVideoLayout.setVideoCore(localc);
+      localFinderVideoLayout.setVideoCore(locali);
       AppMethodBeat.o(168449);
       return paramViewGroup;
     }
     if ((paramInt == 2) || (paramInt == 7))
     {
-      paramViewGroup = y.js(paramViewGroup.getContext()).inflate(2131494063, paramViewGroup, false);
+      paramViewGroup = z.jD(paramViewGroup.getContext()).inflate(2131494063, paramViewGroup, false);
       k.g(paramViewGroup, "MMLayoutInflater.getInfl…container, parent, false)");
       AppMethodBeat.o(168449);
       return paramViewGroup;
@@ -133,16 +135,16 @@ public class FinderMediaBannerAdapter
     return paramViewGroup;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete"})
-  static final class a<T, R>
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete"})
+  static final class b<T, R>
     implements com.tencent.mm.loader.f.d<j, Bitmap>
   {
-    a(bmd parambmd) {}
+    b(bqs parambqs) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter
  * JD-Core Version:    0.7.0.1
  */

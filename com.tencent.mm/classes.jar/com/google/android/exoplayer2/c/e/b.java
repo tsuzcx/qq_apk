@@ -12,13 +12,13 @@ import java.util.Collections;
 final class b
   extends h
 {
-  g bdZ;
-  private a bea;
+  g beL;
+  private a beM;
   
   public static boolean r(m paramm)
   {
     AppMethodBeat.i(92145);
-    if ((paramm.vJ() >= 5) && (paramm.readUnsignedByte() == 127) && (paramm.df() == 1179402563L))
+    if ((paramm.vy() >= 5) && (paramm.readUnsignedByte() == 127) && (paramm.dm() == 1179402563L))
     {
       AppMethodBeat.o(92145);
       return true;
@@ -41,15 +41,15 @@ final class b
     int i = 0;
     AppMethodBeat.i(92148);
     Object localObject = paramm.data;
-    if (this.bdZ == null)
+    if (this.beL == null)
     {
-      this.bdZ = new g((byte[])localObject);
+      this.beL = new g((byte[])localObject);
       paramm = Arrays.copyOfRange((byte[])localObject, 9, paramm.limit);
       paramm[4] = -128;
       paramm = Collections.singletonList(paramm);
-      localObject = this.bdZ;
-      i = ((g)localObject).bia;
-      parama.aSv = Format.a(null, "audio/flac", -1, ((g)localObject).sampleRate * i, this.bdZ.channels, this.bdZ.sampleRate, paramm, null, null);
+      localObject = this.beL;
+      i = ((g)localObject).biF;
+      parama.aTo = Format.a(null, "audio/flac", -1, ((g)localObject).sampleRate * i, this.beL.channels, this.beL.sampleRate, paramm, null, null);
     }
     do
     {
@@ -60,25 +60,25 @@ final class b
         if ((localObject[0] & 0x7F) != 3) {
           break;
         }
-        this.bea = new a();
-        parama = this.bea;
-        paramm.fl(1);
-        int j = paramm.vL() / 18;
-        parama.beb = new long[j];
-        parama.bec = new long[j];
+        this.beM = new a();
+        parama = this.beM;
+        paramm.eX(1);
+        int j = paramm.vA() / 18;
+        parama.beN = new long[j];
+        parama.beO = new long[j];
         while (i < j)
         {
-          parama.beb[i] = paramm.readLong();
-          parama.bec[i] = paramm.readLong();
-          paramm.fl(2);
+          parama.beN[i] = paramm.readLong();
+          parama.beO[i] = paramm.readLong();
+          paramm.eX(2);
           i += 1;
         }
       }
     } while (!t((byte[])localObject));
-    if (this.bea != null)
+    if (this.beM != null)
     {
-      this.bea.firstFrameOffset = paramLong;
-      parama.bey = this.bea;
+      this.beM.firstFrameOffset = paramLong;
+      parama.bfk = this.beM;
     }
     AppMethodBeat.o(92148);
     return false;
@@ -90,8 +90,8 @@ final class b
     super.reset(paramBoolean);
     if (paramBoolean)
     {
-      this.bdZ = null;
-      this.bea = null;
+      this.beL = null;
+      this.beM = null;
     }
     AppMethodBeat.o(92146);
   }
@@ -128,7 +128,7 @@ final class b
       }
     case 6: 
     case 7: 
-      paramm.fl(4);
+      paramm.eX(4);
       l1 = paramm.data[paramm.position];
       i = 7;
       label169:
@@ -190,57 +190,57 @@ final class b
   final class a
     implements f, l
   {
-    long[] beb;
-    long[] bec;
-    private long bed = -1L;
+    long[] beN;
+    long[] beO;
+    private long beP = -1L;
     long firstFrameOffset = -1L;
     
     public a() {}
     
-    public final long K(long paramLong)
+    public final long L(long paramLong)
     {
       AppMethodBeat.i(92144);
-      paramLong = b.this.S(paramLong);
-      int i = x.a(this.beb, paramLong, true);
+      paramLong = b.this.T(paramLong);
+      int i = x.a(this.beN, paramLong, true);
       paramLong = this.firstFrameOffset;
-      long l = this.bec[i];
+      long l = this.beO[i];
       AppMethodBeat.o(92144);
       return l + paramLong;
     }
     
-    public final long Q(long paramLong)
+    public final long R(long paramLong)
     {
       AppMethodBeat.i(92143);
-      paramLong = b.this.S(paramLong);
-      int i = x.a(this.beb, paramLong, true);
-      this.bed = this.beb[i];
+      paramLong = b.this.T(paramLong);
+      int i = x.a(this.beN, paramLong, true);
+      this.beP = this.beN[i];
       AppMethodBeat.o(92143);
       return paramLong;
     }
     
     public final long getDurationUs()
     {
-      g localg = b.this.bdZ;
-      return localg.byR * 1000000L / localg.sampleRate;
+      g localg = b.this.beL;
+      return localg.bwz * 1000000L / localg.sampleRate;
     }
     
     public final long i(com.google.android.exoplayer2.c.f paramf)
     {
-      if (this.bed >= 0L)
+      if (this.beP >= 0L)
       {
-        long l = -(this.bed + 2L);
-        this.bed = -1L;
+        long l = -(this.beP + 2L);
+        this.beP = -1L;
         return l;
       }
       return -1L;
     }
     
-    public final boolean sH()
+    public final boolean sQ()
     {
       return true;
     }
     
-    public final l sU()
+    public final l td()
     {
       return this;
     }

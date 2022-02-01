@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.bz;
 import com.tencent.mm.g.a.bz.a;
 import com.tencent.mm.g.a.bz.b;
 import com.tencent.mm.plugin.fingerprint.c.d;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   extends c<bz>
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private bz rbC;
-  private boolean rbD;
+  private bz sjW;
+  private boolean sjX;
   
   public b()
   {
     AppMethodBeat.i(160794);
-    this.rbD = false;
+    this.sjX = false;
     this.__eventId = bz.class.getName().hashCode();
     AppMethodBeat.o(160794);
   }
@@ -28,22 +28,22 @@ public final class b
   private boolean a(bz parambz)
   {
     AppMethodBeat.i(64289);
-    if (!com.tencent.mm.kernel.g.afw())
+    if (!com.tencent.mm.kernel.g.agM())
     {
-      ad.e("MicroMsg.CloseFingerPrintEventListener", "CloseFingerPrintEvent account is not ready");
+      ac.e("MicroMsg.CloseFingerPrintEventListener", "CloseFingerPrintEvent account is not ready");
       AppMethodBeat.o(64289);
       return false;
     }
-    this.rbD = false;
+    this.sjX = false;
     if ((parambz instanceof bz))
     {
-      this.rbC = parambz;
-      ad.i("MicroMsg.CloseFingerPrintEventListener", "handle CloseFingerPrintEvent");
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.a(385, this);
-      parambz = new d(parambz.def.deh);
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.a(parambz, 0);
+      this.sjW = parambz;
+      ac.i("MicroMsg.CloseFingerPrintEventListener", "handle CloseFingerPrintEvent");
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.a(385, this);
+      parambz = new d(parambz.dbB.dbD);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.a(parambz, 0);
       AppMethodBeat.o(64289);
       return true;
     }
@@ -57,34 +57,34 @@ public final class b
     if ((paramn instanceof d))
     {
       paramn = new bz.b();
-      ad.i("MicroMsg.CloseFingerPrintEventListener", "NetSceneTenpayCloseTouchPay doscene return errcode " + paramInt2 + " errmsg" + paramString);
+      ac.i("MicroMsg.CloseFingerPrintEventListener", "NetSceneTenpayCloseTouchPay doscene return errcode " + paramInt2 + " errmsg" + paramString);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label144;
       }
-      ad.i("MicroMsg.CloseFingerPrintEventListener", "NetSceneTenpayCloseTouchPay doscene is success");
+      ac.i("MicroMsg.CloseFingerPrintEventListener", "NetSceneTenpayCloseTouchPay doscene is success");
     }
     for (paramn.retCode = 0;; paramn.retCode = paramInt2)
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.b(385, this);
-      this.rbC.deg = paramn;
-      this.rbD = true;
-      if (this.rbC.callback != null) {
-        this.rbC.callback.run();
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.b(385, this);
+      this.sjW.dbC = paramn;
+      this.sjX = true;
+      if (this.sjW.callback != null) {
+        this.sjW.callback.run();
       }
-      if (this.rbD) {
-        this.rbC = null;
+      if (this.sjX) {
+        this.sjW = null;
       }
       AppMethodBeat.o(64290);
       return;
       label144:
-      ad.i("MicroMsg.CloseFingerPrintEventListener", "NetSceneTenpayCloseTouchPay doscene is fail");
+      ac.i("MicroMsg.CloseFingerPrintEventListener", "NetSceneTenpayCloseTouchPay doscene is fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.b
  * JD-Core Version:    0.7.0.1
  */

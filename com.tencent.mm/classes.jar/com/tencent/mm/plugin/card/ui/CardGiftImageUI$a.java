@@ -8,7 +8,7 @@ import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 
 final class CardGiftImageUI$a
@@ -34,10 +34,10 @@ final class CardGiftImageUI$a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113327);
-    Object localObject = u.BA(CardGiftImageUI.b(this.nAb));
+    Object localObject = u.FE(CardGiftImageUI.b(this.odb));
     if (localObject == null)
     {
-      ad.w("MicroMsg.CardGiftImageUI", "get image fail");
+      ac.w("MicroMsg.CardGiftImageUI", "get image fail");
       if (paramView != null)
       {
         localObject = paramView;
@@ -64,13 +64,13 @@ final class CardGiftImageUI$a
       AppMethodBeat.o(113327);
       return paramView;
       paramView = (MultiTouchImageView)paramView;
-      paramView.cH(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      paramView.cF(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftImageUI.a
  * JD-Core Version:    0.7.0.1
  */

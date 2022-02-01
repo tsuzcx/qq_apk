@@ -3,47 +3,79 @@ package com.google.android.exoplayer2.g;
 import android.os.SystemClock;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.o;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public abstract class b
   implements f
 {
-  private int aFj;
-  final Format[] blC;
-  protected final p bvN;
-  protected final int[] bvO;
-  private final long[] bvP;
+  private int aFZ;
+  final Format[] bmh;
+  protected final o btL;
+  protected final int[] btM;
+  private final long[] btN;
   protected final int length;
   
-  public b(p paramp, int... paramVarArgs)
+  public b(o paramo, int... paramVarArgs)
   {
     if (paramVarArgs.length > 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bvN = ((p)a.checkNotNull(paramp));
+      this.btL = ((o)a.checkNotNull(paramo));
       this.length = paramVarArgs.length;
-      this.blC = new Format[this.length];
+      this.bmh = new Format[this.length];
       i = 0;
       while (i < paramVarArgs.length)
       {
-        Format[] arrayOfFormat = this.blC;
+        Format[] arrayOfFormat = this.bmh;
         int k = paramVarArgs[i];
-        arrayOfFormat[i] = paramp.blC[k];
+        arrayOfFormat[i] = paramo.bmh[k];
         i += 1;
       }
     }
-    Arrays.sort(this.blC, new a((byte)0));
-    this.bvO = new int[this.length];
+    Arrays.sort(this.bmh, new a((byte)0));
+    this.btM = new int[this.length];
     int i = j;
     while (i < this.length)
     {
-      this.bvO[i] = paramp.j(this.blC[i]);
+      this.btM[i] = paramo.j(this.bmh[i]);
       i += 1;
     }
-    this.bvP = new long[this.length];
+    this.btN = new long[this.length];
+  }
+  
+  public final Format eR(int paramInt)
+  {
+    return this.bmh[paramInt];
+  }
+  
+  public final int eS(int paramInt)
+  {
+    return this.btM[paramInt];
+  }
+  
+  public final boolean eT(int paramInt)
+  {
+    long l = SystemClock.elapsedRealtime();
+    boolean bool = k(paramInt, l);
+    int i = 0;
+    if ((i < this.length) && (!bool))
+    {
+      if ((i != paramInt) && (!k(i, l))) {}
+      for (bool = true;; bool = false)
+      {
+        i += 1;
+        break;
+      }
+    }
+    if (!bool) {
+      return false;
+    }
+    long[] arrayOfLong = this.btN;
+    arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], l + 60000L);
+    return true;
   }
   
   public boolean equals(Object paramObject)
@@ -56,48 +88,16 @@ public abstract class b
         return false;
       }
       paramObject = (b)paramObject;
-    } while ((this.bvN == paramObject.bvN) && (Arrays.equals(this.bvO, paramObject.bvO)));
+    } while ((this.btL == paramObject.btL) && (Arrays.equals(this.btM, paramObject.btM)));
     return false;
-  }
-  
-  public final Format fe(int paramInt)
-  {
-    return this.blC[paramInt];
-  }
-  
-  public final int ff(int paramInt)
-  {
-    return this.bvO[paramInt];
-  }
-  
-  public final boolean fg(int paramInt)
-  {
-    long l = SystemClock.elapsedRealtime();
-    boolean bool = l(paramInt, l);
-    int i = 0;
-    if ((i < this.length) && (!bool))
-    {
-      if ((i != paramInt) && (!l(i, l))) {}
-      for (bool = true;; bool = false)
-      {
-        i += 1;
-        break;
-      }
-    }
-    if (!bool) {
-      return false;
-    }
-    long[] arrayOfLong = this.bvP;
-    arrayOfLong[paramInt] = Math.max(arrayOfLong[paramInt], l + 60000L);
-    return true;
   }
   
   public int hashCode()
   {
-    if (this.aFj == 0) {
-      this.aFj = (System.identityHashCode(this.bvN) * 31 + Arrays.hashCode(this.bvO));
+    if (this.aFZ == 0) {
+      this.aFZ = (System.identityHashCode(this.btL) * 31 + Arrays.hashCode(this.btM));
     }
-    return this.aFj;
+    return this.aFZ;
   }
   
   public final int indexOf(int paramInt)
@@ -105,7 +105,7 @@ public abstract class b
     int i = 0;
     while (i < this.length)
     {
-      if (this.bvO[i] == paramInt) {
+      if (this.btM[i] == paramInt) {
         return i;
       }
       i += 1;
@@ -118,7 +118,7 @@ public abstract class b
     int i = 0;
     while (i < this.length)
     {
-      if (this.blC[i] == paramFormat) {
+      if (this.bmh[i] == paramFormat) {
         return i;
       }
       i += 1;
@@ -126,29 +126,29 @@ public abstract class b
     return -1;
   }
   
-  protected final boolean l(int paramInt, long paramLong)
+  protected final boolean k(int paramInt, long paramLong)
   {
-    return this.bvP[paramInt] > paramLong;
+    return this.btN[paramInt] > paramLong;
   }
   
   public final int length()
   {
-    return this.bvO.length;
+    return this.btM.length;
   }
   
-  public final p va()
+  public final o uU()
   {
-    return this.bvN;
+    return this.btL;
   }
   
-  public final Format vb()
+  public final Format uV()
   {
-    return this.blC[getSelectedIndex()];
+    return this.bmh[getSelectedIndex()];
   }
   
-  public final int vc()
+  public final int uW()
   {
-    return this.bvO[getSelectedIndex()];
+    return this.btM[getSelectedIndex()];
   }
   
   static final class a

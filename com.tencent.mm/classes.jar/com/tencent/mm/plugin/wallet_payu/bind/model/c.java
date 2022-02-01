@@ -5,13 +5,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardManageUI;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUCardElementUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.d;
@@ -26,7 +26,7 @@ public class c
     AppMethodBeat.i(71985);
     if ((paramMMActivity instanceof WalletPayUCheckPwdUI))
     {
-      paramMMActivity = new c.1(this, paramMMActivity, parami, this.dow);
+      paramMMActivity = new c.1(this, paramMMActivity, parami, this.dmf);
       AppMethodBeat.o(71985);
       return paramMMActivity;
     }
@@ -47,11 +47,11 @@ public class c
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
               break label126;
             }
-            paramAnonymousString = ((NetScenePayUElementQuery)paramAnonymousn).AyU;
-            if (bt.isNullOrNil(paramAnonymousString.AyV)) {
-              paramAnonymousString.AyW = aj.getContext().getString(2131765711);
+            paramAnonymousString = ((NetScenePayUElementQuery)paramAnonymousn).BRq;
+            if (bs.isNullOrNil(paramAnonymousString.BRr)) {
+              paramAnonymousString.BRs = ai.getContext().getString(2131765711);
             }
-            c.c(c.this).putParcelable("key_card_element", ((NetScenePayUElementQuery)paramAnonymousn).AyU);
+            c.c(c.this).putParcelable("key_card_element", ((NetScenePayUElementQuery)paramAnonymousn).BRq);
           }
           for (;;)
           {
@@ -60,19 +60,19 @@ public class c
             label126:
             NetScenePayUElementQuery.PayUBankcardElement localPayUBankcardElement = new NetScenePayUElementQuery.PayUBankcardElement();
             paramAnonymousn = paramAnonymousString;
-            if (bt.isNullOrNil(paramAnonymousString)) {
+            if (bs.isNullOrNil(paramAnonymousString)) {
               paramAnonymousn = "err card element";
             }
-            localPayUBankcardElement.AyW = paramAnonymousn;
+            localPayUBankcardElement.BRs = paramAnonymousn;
             c.d(c.this).putParcelable("key_card_element", localPayUBankcardElement);
           }
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(71980);
           paramAnonymousVarArgs = (NetScenePayUElementQuery.PayUBankcardElement)c.e(c.this).getParcelable("key_card_element");
-          this.Ieo.b(new a(paramAnonymousVarArgs.uon, paramAnonymousVarArgs.AyW, c.f(c.this).getString("key_bank_username"), c.g(c.this).getString("key_card_id"), c.h(c.this).getString("key_expire_data"), paramAnonymousVarArgs.cardType, c.i(c.this).getString("key_cvv"), c.j(c.this).getString("key_pwd1")), true);
+          this.JFQ.b(new a(paramAnonymousVarArgs.vxj, paramAnonymousVarArgs.BRs, c.f(c.this).getString("key_bank_username"), c.g(c.this).getString("key_card_id"), c.h(c.this).getString("key_expire_data"), paramAnonymousVarArgs.cardType, c.i(c.this).getString("key_cvv"), c.j(c.this).getString("key_pwd1")), true);
           AppMethodBeat.o(71980);
           return false;
         }
@@ -88,7 +88,7 @@ public class c
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71981);
-    ad.d("MicroMsg.PayUBindProcess", "hy: start process: PayUBindProcess");
+    ac.d("MicroMsg.PayUBindProcess", "hy: start process: PayUBindProcess");
     b(paramActivity, WalletPayUCheckPwdUI.class, paramBundle);
     AppMethodBeat.o(71981);
     return this;
@@ -106,7 +106,7 @@ public class c
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71984);
-    if (this.dow.getInt("key_errcode_payu", -1) == 0)
+    if (this.dmf.getInt("key_errcode_payu", -1) == 0)
     {
       t.makeText(paramActivity, 2131765569, 0).show();
       a(paramActivity, WalletPayUBankcardManageUI.class, -1, false);
@@ -123,7 +123,7 @@ public class c
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "PayUBindProcess";
   }
@@ -131,7 +131,7 @@ public class c
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(71983);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(71983);
   }
 }

@@ -15,12 +15,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.k;
 import com.tencent.mm.pluginsdk.model.w.a;
 import com.tencent.mm.sandbox.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.service.MMService;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Collection;
@@ -33,19 +33,19 @@ import java.util.Map;
 public class UpdaterService
   extends MMService
 {
-  private static UpdaterService EPu = null;
-  static final long EPw = 1800000L;
-  Map<Integer, a> EPv;
-  private av EPx;
-  private a EPy;
-  private boolean ctF;
+  private static UpdaterService GmH = null;
+  static final long GmJ = 1800000L;
+  Map<Integer, a> GmI;
+  private au GmK;
+  private a GmL;
+  private boolean cqM;
   
   public UpdaterService()
   {
     AppMethodBeat.i(32801);
-    this.EPv = new HashMap();
-    this.ctF = false;
-    this.EPx = new av(new av.a()
+    this.GmI = new HashMap();
+    this.cqM = false;
+    this.GmK = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
@@ -59,32 +59,32 @@ public class UpdaterService
         return false;
       }
     }, true);
-    this.EPy = null;
+    this.GmL = null;
     AppMethodBeat.o(32801);
   }
   
-  public static UpdaterService eDZ()
+  public static UpdaterService eTt()
   {
-    return EPu;
+    return GmH;
   }
   
-  private boolean eEa()
+  private boolean eTu()
   {
     AppMethodBeat.i(32808);
-    if (this.EPv.size() > 0)
+    if (this.GmI.size() > 0)
     {
-      Iterator localIterator = this.EPv.values().iterator();
+      Iterator localIterator = this.GmI.values().iterator();
       while (localIterator.hasNext()) {
         if (((a)localIterator.next()).isBusy())
         {
-          ad.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, dont stop, some download mgr still busy");
+          ac.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, dont stop, some download mgr still busy");
           AppMethodBeat.o(32808);
           return false;
         }
       }
     }
-    ad.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, UpdaterService killed self");
-    aq.n(new Runnable()
+    ac.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, UpdaterService killed self");
+    ap.n(new Runnable()
     {
       public final void run()
       {
@@ -95,19 +95,19 @@ public class UpdaterService
           while (localIterator.hasNext()) {
             if (((a)localIterator.next()).isBusy())
             {
-              ad.i("MicroMsg.UpdaterService", "checkAndTryStopSelf2, dont stop, some download mgr still busy");
+              ac.i("MicroMsg.UpdaterService", "checkAndTryStopSelf2, dont stop, some download mgr still busy");
               AppMethodBeat.o(32799);
               return;
             }
           }
         }
-        if (!w.a.evv())
+        if (!w.a.eKP())
         {
           UpdaterService.this.stopSelf();
           AppMethodBeat.o(32799);
           return;
         }
-        ad.i("TBSDownloadMgr", "is still busy");
+        ac.i("TBSDownloadMgr", "is still busy");
         AppMethodBeat.o(32799);
       }
     }, 10000L);
@@ -115,12 +115,12 @@ public class UpdaterService
     return true;
   }
   
-  public static void fe()
+  public static void fm()
   {
     AppMethodBeat.i(32802);
-    ad.i("MicroMsg.UpdaterService", "UpdaterService stopInstance()");
-    if (EPu != null) {
-      EPu.eEa();
+    ac.i("MicroMsg.UpdaterService", "UpdaterService stopInstance()");
+    if (GmH != null) {
+      GmH.eTu();
     }
     AppMethodBeat.o(32802);
   }
@@ -134,20 +134,20 @@ public class UpdaterService
       return;
     }
     int i = paramIntent.getIntExtra("intent_extra_download_type", 0);
-    ad.i("MicroMsg.UpdaterService", "handleCommand, downloadType = %d", new Object[] { Integer.valueOf(i) });
-    a locala = (a)this.EPv.get(Integer.valueOf(i));
+    ac.i("MicroMsg.UpdaterService", "handleCommand, downloadType = %d", new Object[] { Integer.valueOf(i) });
+    a locala = (a)this.GmI.get(Integer.valueOf(i));
     if (locala != null)
     {
-      boolean bool = locala.bb(paramIntent);
-      ad.i("MicroMsg.UpdaterService", "handleCommand ret = %b", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = locala.bc(paramIntent);
+      ac.i("MicroMsg.UpdaterService", "handleCommand ret = %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
-        eEa();
+        eTu();
       }
     }
     AppMethodBeat.o(32807);
   }
   
-  public final IBinder TF()
+  public final IBinder Uz()
   {
     return null;
   }
@@ -161,40 +161,40 @@ public class UpdaterService
   {
     AppMethodBeat.i(32803);
     super.onCreate();
-    ad.i("MicroMsg.UpdaterService", "onCreate");
+    ac.i("MicroMsg.UpdaterService", "onCreate");
     c.o(hashCode(), this);
-    EPu = this;
-    this.EPv.put(Integer.valueOf(0), k.a.EPt);
-    this.EPv.put(Integer.valueOf(1), e.eDG());
-    this.EPv.put(Integer.valueOf(2), e.eDG());
-    this.EPv.put(Integer.valueOf(4), l.a.EPA);
-    this.EPv.put(Integer.valueOf(5), l.a.EPA);
-    MMActivity.initLanguage(aj.getContext());
-    Object localObject = this.EPx;
-    long l = EPw;
-    ((av)localObject).av(l, l);
+    GmH = this;
+    this.GmI.put(Integer.valueOf(0), k.a.GmG);
+    this.GmI.put(Integer.valueOf(1), e.eTa());
+    this.GmI.put(Integer.valueOf(2), e.eTa());
+    this.GmI.put(Integer.valueOf(4), l.a.GmN);
+    this.GmI.put(Integer.valueOf(5), l.a.GmN);
+    MMActivity.initLanguage(ai.getContext());
+    Object localObject = this.GmK;
+    long l = GmJ;
+    ((au)localObject).au(l, l);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    this.EPy = new a();
-    a locala = this.EPy;
-    this.EZM.registerReceiver(locala, (IntentFilter)localObject);
+    this.GmL = new a();
+    a locala = this.GmL;
+    this.Gxd.registerReceiver(locala, (IntentFilter)localObject);
     AppMethodBeat.o(32803);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(32806);
-    ad.i("MicroMsg.UpdaterService", "onDestroy");
-    this.EPx.stopTimer();
-    if (this.EPy != null) {}
+    ac.i("MicroMsg.UpdaterService", "onDestroy");
+    this.GmK.stopTimer();
+    if (this.GmL != null) {}
     try
     {
-      Object localObject = this.EPy;
-      this.EZM.unregisterReceiver((BroadcastReceiver)localObject);
-      if (this.ctF) {
-        eHH();
+      Object localObject = this.GmL;
+      this.Gxd.unregisterReceiver((BroadcastReceiver)localObject);
+      if (this.cqM) {
+        eXd();
       }
-      localObject = this.EPv.values().iterator();
+      localObject = this.GmI.values().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((a)((Iterator)localObject).next()).onDestroy();
       }
@@ -203,10 +203,10 @@ public class UpdaterService
     {
       for (;;)
       {
-        ad.e("MicroMsg.UpdaterService", "unregisterReceiver(UpdaterService.ConnectivityReceiver) exception = %s", new Object[] { localException.getMessage() });
+        ac.e("MicroMsg.UpdaterService", "unregisterReceiver(UpdaterService.ConnectivityReceiver) exception = %s", new Object[] { localException.getMessage() });
       }
-      this.EPv.clear();
-      EPu = null;
+      this.GmI.clear();
+      GmH = null;
       c.p(hashCode(), this);
       super.onDestroy();
       AppMethodBeat.o(32806);
@@ -216,7 +216,7 @@ public class UpdaterService
   public final void onStart(Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(32804);
-    ad.i("MicroMsg.UpdaterService", "onStart intent = %s", new Object[] { paramIntent });
+    ac.i("MicroMsg.UpdaterService", "onStart intent = %s", new Object[] { paramIntent });
     o(paramIntent);
     AppMethodBeat.o(32804);
   }
@@ -224,20 +224,20 @@ public class UpdaterService
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(32805);
-    ad.i("MicroMsg.UpdaterService", "onStartCommand intent = %s", new Object[] { paramIntent });
+    ac.i("MicroMsg.UpdaterService", "onStartCommand intent = %s", new Object[] { paramIntent });
     if (paramIntent != null)
     {
       if (!paramIntent.getBooleanExtra("intent_extra_run_in_foreground", false)) {
         break label136;
       }
-      ad.i("MicroMsg.UpdaterService", "runServiceInForground");
+      ac.i("MicroMsg.UpdaterService", "runServiceInForground");
       Object localObject = new Intent();
-      localObject = PendingIntent.getService(aj.getContext(), 0, (Intent)localObject, 0);
-      s.c localc = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").i("updater service running forground").g(System.currentTimeMillis()).f("Updater Service").g("updater service running forground");
-      localc.Ew = ((PendingIntent)localObject);
+      localObject = PendingIntent.getService(ai.getContext(), 0, (Intent)localObject, 0);
+      s.c localc = com.tencent.mm.bq.a.bE(ai.getContext(), "reminder_channel_id").i("updater service running forground").i(System.currentTimeMillis()).f("Updater Service").g("updater service running forground");
+      localc.Fu = ((PendingIntent)localObject);
       startForeground(0, localc.build());
     }
-    for (this.ctF = true;; this.ctF = true)
+    for (this.cqM = true;; this.cqM = true)
     {
       label136:
       do
@@ -245,7 +245,7 @@ public class UpdaterService
         o(paramIntent);
         AppMethodBeat.o(32805);
         return 2;
-      } while ((Build.VERSION.SDK_INT >= 18) || (this.ctF));
+      } while ((Build.VERSION.SDK_INT >= 18) || (this.cqM));
       startForeground(-1314, new Notification());
     }
   }
@@ -257,15 +257,15 @@ public class UpdaterService
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(32800);
-      if (UpdaterService.eDZ() != null)
+      if (UpdaterService.eTt() != null)
       {
-        paramIntent = UpdaterService.eDZ();
-        boolean bool = ay.isWifi(paramContext);
-        if (paramIntent.EPv.size() > 0)
+        paramIntent = UpdaterService.eTt();
+        boolean bool = ax.isWifi(paramContext);
+        if (paramIntent.GmI.size() > 0)
         {
-          paramContext = paramIntent.EPv.values().iterator();
+          paramContext = paramIntent.GmI.values().iterator();
           while (paramContext.hasNext()) {
-            ((a)paramContext.next()).uC(bool);
+            ((a)paramContext.next()).vE(bool);
           }
         }
       }
@@ -275,7 +275,7 @@ public class UpdaterService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.UpdaterService
  * JD-Core Version:    0.7.0.1
  */

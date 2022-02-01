@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.nearby.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.blh;
-import com.tencent.mm.protocal.protobuf.bli;
-import com.tencent.mm.protocal.protobuf.blj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bpd;
+import com.tencent.mm.protocal.protobuf.bpe;
+import com.tencent.mm.protocal.protobuf.bpf;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,15 +31,15 @@ public final class e
   {
     AppMethodBeat.i(89773);
     b.a locala = new b.a();
-    locala.gUU = new bli();
-    locala.gUV = new blj();
+    locala.hvt = new bpe();
+    locala.hvu = new bpf();
     locala.uri = "/cgi-bin/micromsg-bin/getroommember";
     locala.funcId = 377;
     locala.reqCmdId = 184;
     locala.respCmdId = 1000000184;
-    this.rr = locala.atI();
-    ((bli)this.rr.gUS.gUX).hod = paramString;
-    ad.d("MicroMsg.NetSceneLbsRoomGetMember", "Req: roomName:".concat(String.valueOf(paramString)));
+    this.rr = locala.aAz();
+    ((bpe)this.rr.hvr.hvw).hOG = paramString;
+    ac.d("MicroMsg.NetSceneLbsRoomGetMember", "Req: roomName:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(89773);
   }
   
@@ -60,8 +60,8 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(89775);
-    ad.d("MicroMsg.NetSceneLbsRoomGetMember", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (blj)this.rr.gUT.gUX;
+    ac.d("MicroMsg.NetSceneLbsRoomGetMember", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (bpf)this.rr.hvs.hvw;
     if (paramInt2 != 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -70,24 +70,24 @@ public final class e
     }
     paramArrayOfByte = new ArrayList();
     paramInt1 = 0;
-    while (paramInt1 < paramq.Cxd.size())
+    while (paramInt1 < paramq.DPz.size())
     {
       i locali = new i();
-      locali.username = ((blh)paramq.Cxd.get(paramInt1)).mAQ;
-      locali.gUg = ((blh)paramq.Cxd.get(paramInt1)).CVv;
-      locali.gUf = ((blh)paramq.Cxd.get(paramInt1)).CVw;
-      locali.ee(true);
+      locali.username = ((bpd)paramq.DPz.get(paramInt1)).ncR;
+      locali.huF = ((bpd)paramq.DPz.get(paramInt1)).Eof;
+      locali.huE = ((bpd)paramq.DPz.get(paramInt1)).Eog;
+      locali.ez(true);
       paramArrayOfByte.add(locali);
       paramInt1 += 1;
     }
-    p.auF().ao(paramArrayOfByte);
+    p.aBw().al(paramArrayOfByte);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(89775);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.a.e
  * JD-Core Version:    0.7.0.1
  */

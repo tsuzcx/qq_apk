@@ -16,23 +16,23 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.d.bp;
 import com.tencent.mm.plugin.game.d.bq;
 import com.tencent.mm.plugin.game.d.dm;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,9 +41,9 @@ public class GameDetailRankLikedUI
   extends MMActivity
 {
   private static final String TAG;
-  private Dialog lIc;
-  private ListView sgF;
-  private a sgG;
+  private Dialog mjY;
+  private a toA;
+  private ListView toz;
   
   static
   {
@@ -71,11 +71,11 @@ public class GameDetailRankLikedUI
         return true;
       }
     });
-    this.sgF = ((ListView)findViewById(2131300419));
-    this.sgG = new a(this);
-    this.sgF.setAdapter(this.sgG);
-    this.lIc = c.fi(getContext());
-    this.lIc.show();
+    this.toz = ((ListView)findViewById(2131300419));
+    this.toA = new a(this);
+    this.toz.setAdapter(this.toA);
+    this.mjY = c.fv(getContext());
+    this.mjY.show();
     AppMethodBeat.o(42001);
   }
   
@@ -85,19 +85,19 @@ public class GameDetailRankLikedUI
     super.onCreate(paramBundle);
     initView();
     paramBundle = getIntent().getStringExtra("extra_appdi");
-    if (bt.isNullOrNil(paramBundle))
+    if (bs.isNullOrNil(paramBundle))
     {
       finish();
       AppMethodBeat.o(42000);
       return;
     }
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bp();
-    ((b.a)localObject).gUV = new bq();
+    ((b.a)localObject).hvt = new bp();
+    ((b.a)localObject).hvu = new bq();
     ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getuplist";
     ((b.a)localObject).funcId = 1331;
-    localObject = ((b.a)localObject).atI();
-    ((bp)((b)localObject).gUS.gUX).fVC = paramBundle;
+    localObject = ((b.a)localObject).aAz();
+    ((bp)((b)localObject).hvr.hvw).fZx = paramBundle;
     x.a((b)localObject, new x.a()
     {
       public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
@@ -105,18 +105,18 @@ public class GameDetailRankLikedUI
         AppMethodBeat.i(41994);
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          ad.e(GameDetailRankLikedUI.TAG, "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          ac.e(GameDetailRankLikedUI.TAG, "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           GameDetailRankLikedUI.this.finish();
           AppMethodBeat.o(41994);
           return 0;
         }
-        paramAnonymousb = (bq)paramAnonymousb.gUT.gUX;
+        paramAnonymousb = (bq)paramAnonymousb.hvs.hvw;
         paramAnonymousString = GameDetailRankLikedUI.a(GameDetailRankLikedUI.this);
-        paramAnonymousb = paramAnonymousb.scI;
+        paramAnonymousb = paramAnonymousb.tkC;
         if (paramAnonymousb != null)
         {
-          paramAnonymousString.cbP.clear();
-          paramAnonymousString.cbP.addAll(paramAnonymousb);
+          paramAnonymousString.bYM.clear();
+          paramAnonymousString.bYM.addAll(paramAnonymousb);
           paramAnonymousString.notifyDataSetChanged();
         }
         GameDetailRankLikedUI.b(GameDetailRankLikedUI.this).dismiss();
@@ -136,21 +136,21 @@ public class GameDetailRankLikedUI
   static final class a
     extends BaseAdapter
   {
-    List<dm> cbP;
+    List<dm> bYM;
     private Context mContext;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(41995);
-      this.cbP = new LinkedList();
+      this.bYM = new LinkedList();
       this.mContext = paramContext;
       AppMethodBeat.o(41995);
     }
     
-    private dm EG(int paramInt)
+    private dm GC(int paramInt)
     {
       AppMethodBeat.i(41997);
-      dm localdm = (dm)this.cbP.get(paramInt);
+      dm localdm = (dm)this.bYM.get(paramInt);
       AppMethodBeat.o(41997);
       return localdm;
     }
@@ -158,7 +158,7 @@ public class GameDetailRankLikedUI
     public final int getCount()
     {
       AppMethodBeat.i(41996);
-      int i = this.cbP.size();
+      int i = this.bYM.size();
       AppMethodBeat.o(41996);
       return i;
     }
@@ -176,42 +176,42 @@ public class GameDetailRankLikedUI
       {
         paramView = LayoutInflater.from(this.mContext).inflate(2131494289, paramViewGroup, false);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.ikp = ((ImageView)paramView.findViewById(2131300416));
-        paramViewGroup.sgt = ((TextView)paramView.findViewById(2131300417));
-        paramViewGroup.sgI = ((TextView)paramView.findViewById(2131300418));
+        paramViewGroup.iKw = ((ImageView)paramView.findViewById(2131300416));
+        paramViewGroup.tom = ((TextView)paramView.findViewById(2131300417));
+        paramViewGroup.toC = ((TextView)paramView.findViewById(2131300418));
         paramView.setTag(paramViewGroup);
-        localdm = EG(paramInt);
-        a.b.a(paramViewGroup.ikp, localdm.sdQ, 0.5F, false);
-        Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(localdm.sdQ);
+        localdm = GC(paramInt);
+        a.b.a(paramViewGroup.iKw, localdm.tlK, 0.5F, false);
+        Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(localdm.tlK);
         if (localObject == null) {
           break label196;
         }
-        localObject = new SpannableString(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, ((af)localObject).ZX(), paramViewGroup.sgt.getTextSize()));
-        paramViewGroup.sgt.setText((CharSequence)localObject);
+        localObject = new SpannableString(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, ((ai)localObject).aaS(), paramViewGroup.tom.getTextSize()));
+        paramViewGroup.tom.setText((CharSequence)localObject);
       }
       for (;;)
       {
-        paramViewGroup.sgI.setText(localdm.sdR);
+        paramViewGroup.toC.setText(localdm.tlL);
         AppMethodBeat.o(41998);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
         label196:
-        paramViewGroup.sgt.setText("");
+        paramViewGroup.tom.setText("");
       }
     }
     
     static final class a
     {
-      public ImageView ikp;
-      public TextView sgI;
-      public TextView sgt;
+      public ImageView iKw;
+      public TextView toC;
+      public TextView tom;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankLikedUI
  * JD-Core Version:    0.7.0.1
  */

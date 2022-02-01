@@ -6,37 +6,37 @@ import java.nio.ByteBuffer;
 public class e
   extends a
 {
-  public ByteBuffer aIq;
-  public final b aWk;
-  public final int aWm;
+  public ByteBuffer aJg;
+  public final b aWX;
+  public final int aWY;
   public long timeUs;
   
   public e(int paramInt)
   {
     AppMethodBeat.i(91850);
-    this.aWk = new b();
-    this.aWm = paramInt;
+    this.aWX = new b();
+    this.aWY = paramInt;
     AppMethodBeat.o(91850);
   }
   
-  private ByteBuffer dP(int paramInt)
+  private ByteBuffer dO(int paramInt)
   {
     AppMethodBeat.i(91855);
     Object localObject;
-    if (this.aWm == 1)
+    if (this.aWY == 1)
     {
       localObject = ByteBuffer.allocate(paramInt);
       AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aWm == 2)
+    if (this.aWY == 2)
     {
       localObject = ByteBuffer.allocateDirect(paramInt);
       AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aIq == null) {}
-    for (int i = 0;; i = this.aIq.capacity())
+    if (this.aJg == null) {}
+    for (int i = 0;; i = this.aJg.capacity())
     {
       localObject = new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
       AppMethodBeat.o(91855);
@@ -48,52 +48,52 @@ public class e
   {
     AppMethodBeat.i(91854);
     super.clear();
-    if (this.aIq != null) {
-      this.aIq.clear();
+    if (this.aJg != null) {
+      this.aJg.clear();
     }
     AppMethodBeat.o(91854);
   }
   
-  public final void dO(int paramInt)
+  public final void dN(int paramInt)
   {
     AppMethodBeat.i(91851);
-    if (this.aIq == null)
+    if (this.aJg == null)
     {
-      this.aIq = dP(paramInt);
+      this.aJg = dO(paramInt);
       AppMethodBeat.o(91851);
       return;
     }
-    int i = this.aIq.capacity();
-    int j = this.aIq.position();
+    int i = this.aJg.capacity();
+    int j = this.aJg.position();
     paramInt = j + paramInt;
     if (i >= paramInt)
     {
       AppMethodBeat.o(91851);
       return;
     }
-    ByteBuffer localByteBuffer = dP(paramInt);
+    ByteBuffer localByteBuffer = dO(paramInt);
     if (j > 0)
     {
-      this.aIq.position(0);
-      this.aIq.limit(j);
-      localByteBuffer.put(this.aIq);
+      this.aJg.position(0);
+      this.aJg.limit(j);
+      localByteBuffer.put(this.aJg);
     }
-    this.aIq = localByteBuffer;
+    this.aJg = localByteBuffer;
     AppMethodBeat.o(91851);
   }
   
-  public final boolean su()
+  public final boolean sD()
   {
     AppMethodBeat.i(91852);
-    boolean bool = dN(1073741824);
+    boolean bool = dM(1073741824);
     AppMethodBeat.o(91852);
     return bool;
   }
   
-  public final void sv()
+  public final void sE()
   {
     AppMethodBeat.i(91853);
-    this.aIq.flip();
+    this.aJg.flip();
     AppMethodBeat.o(91853);
   }
 }

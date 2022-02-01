@@ -38,11 +38,11 @@ public final class b
     super(paramContext, 2131820861);
     AppMethodBeat.i(159284);
     this.mContext = paramContext;
-    gl();
+    gt();
     AppMethodBeat.o(159284);
   }
   
-  private boolean aov()
+  private boolean aly()
   {
     AppMethodBeat.i(159291);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -62,13 +62,13 @@ public final class b
     label70:
     ViewGroup localViewGroup;
     View localView;
-    if (aov())
+    if (aly())
     {
       ((Window)localObject1).setGravity(5);
       ((Window)localObject1).setWindowAnimations(2131821249);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
-      if (!aov()) {
+      if (!aly()) {
         break label270;
       }
       ((WindowManager.LayoutParams)localObject2).width = -2;
@@ -84,7 +84,7 @@ public final class b
           localObject1 = getLayoutInflater().inflate(paramInt, localViewGroup, false);
         }
       }
-      if (!ap.ju(this.mContext)) {
+      if (!ap.jF(this.mContext)) {
         break label364;
       }
     }
@@ -92,9 +92,9 @@ public final class b
     label210:
     label354:
     label364:
-    for (paramInt = ap.eb(this.mContext);; paramInt = 0)
+    for (paramInt = ap.ej(this.mContext);; paramInt = 0)
     {
-      if (aov())
+      if (aly())
       {
         localObject2 = (FrameLayout)localViewGroup.findViewById(2131302250);
         paramView = (View)localObject2;
@@ -119,7 +119,7 @@ public final class b
       }
       for (;;)
       {
-        if (eqd()) {
+        if (eFx()) {
           localView.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
@@ -160,7 +160,7 @@ public final class b
     }
   }
   
-  private boolean eqd()
+  private boolean eFx()
   {
     AppMethodBeat.i(159290);
     if (Build.VERSION.SDK_INT < 11)

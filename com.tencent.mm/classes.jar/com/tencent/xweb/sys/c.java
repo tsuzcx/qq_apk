@@ -4,7 +4,7 @@ import android.os.Build.VERSION;
 import android.webkit.SslErrorHandler;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.q;
+import com.tencent.xweb.r;
 import org.xwalk.core.Log;
 
 public final class c
@@ -17,7 +17,7 @@ public final class c
       AppMethodBeat.o(153667);
       return null;
     }
-    if ((paramWebResourceResponse.INl) && (Build.VERSION.SDK_INT >= 21)) {
+    if ((paramWebResourceResponse.KzI) && (Build.VERSION.SDK_INT >= 21)) {
       try
       {
         android.webkit.WebResourceResponse localWebResourceResponse1 = new android.webkit.WebResourceResponse(paramWebResourceResponse.mMimeType, paramWebResourceResponse.mEncoding, paramWebResourceResponse.mStatusCode, paramWebResourceResponse.mReasonPhrase, paramWebResourceResponse.mResponseHeaders, paramWebResourceResponse.mInputStream);
@@ -43,26 +43,26 @@ public final class c
   
   @JgClassChecked(author=20001, fComment="checked", lastDate="20171024", reviewer=20001, vComment={com.jg.EType.JSEXECUTECHECK})
   public static final class a
-    implements q
+    implements r
   {
-    SslErrorHandler IQT;
+    SslErrorHandler KDo;
     
     public a(SslErrorHandler paramSslErrorHandler)
     {
-      this.IQT = paramSslErrorHandler;
+      this.KDo = paramSslErrorHandler;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(153658);
-      this.IQT.cancel();
+      this.KDo.cancel();
       AppMethodBeat.o(153658);
     }
     
     public final void proceed()
     {
       AppMethodBeat.i(153657);
-      this.IQT.proceed();
+      this.KDo.proceed();
       AppMethodBeat.o(153657);
     }
   }

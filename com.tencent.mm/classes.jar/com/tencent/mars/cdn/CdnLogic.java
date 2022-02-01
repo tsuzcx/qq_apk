@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.security.KeyStoreException;
@@ -73,6 +73,7 @@ public class CdnLogic
   public static final int kBizAny = 0;
   public static final int kBizApp = 4;
   public static final int kBizC2C = 1;
+  public static final int kBizDC = 5;
   public static final int kBizFavorite = 2;
   public static final int kBizGeneric = 65535;
   public static final int kBizSns = 3;
@@ -130,7 +131,7 @@ public class CdnLogic
   
   public static void Initialize(String paramString1, CdnLogic.AppCallback paramAppCallback, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    ad.i("mars.CdnLogic", "init cdnlogic");
+    ac.i("mars.CdnLogic", "init cdnlogic");
     setAppCallback(paramAppCallback);
     onCreate(i.k(paramString1, true));
     setRSAPublicKeyParams(paramString2, paramString3, paramString4);
@@ -139,7 +140,7 @@ public class CdnLogic
   
   public static void UnInitialize()
   {
-    ad.w("mars.CdnLogic", "uninit cdnlogic");
+    ac.w("mars.CdnLogic", "uninit cdnlogic");
     setAppCallback(null);
   }
   
@@ -163,39 +164,39 @@ public class CdnLogic
   
   public static int doCertificateVerify(String paramString, byte[][] paramArrayOfByte)
   {
-    ad.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
+    ac.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
     try
     {
       paramArrayOfByte = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString);
-      ad.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
+      ac.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
       int i = paramArrayOfByte.getStatus();
       return i;
     }
     catch (KeyStoreException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (IllegalArgumentException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       return -1;
     }
     catch (Exception paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
     }
     return -1;
   }
   
   public static CertVerifyResult doCertificateVerifyWithDetail(String paramString, byte[][] paramArrayOfByte)
   {
-    ad.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
+    ac.i("mars.CdnLogic", "certifivate verify for %s", new Object[] { paramString });
     try
     {
       paramArrayOfByte = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString);
@@ -204,33 +205,33 @@ public class CdnLogic
       localCertVerifyResult.isIssuedByKnownRoot = paramArrayOfByte.isIssuedByKnownRoot();
       localCertVerifyResult.certificateChain = paramArrayOfByte.getCertificateChainEncoded();
       paramArrayOfByte.getCertificateChainEncoded();
-      ad.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
+      ac.i("mars.CdnLogic", "host %s verify result %d, isknownroots %b", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.getStatus()), Boolean.valueOf(paramArrayOfByte.isIssuedByKnownRoot()) });
       return localCertVerifyResult;
     }
     catch (KeyStoreException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (IllegalArgumentException paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
       return paramString;
     }
     catch (Exception paramString)
     {
-      ad.e("mars.CdnLogic", paramString.getLocalizedMessage());
+      ac.e("mars.CdnLogic", paramString.getLocalizedMessage());
       paramString = new CertVerifyResult();
       paramString.status = -1;
     }
@@ -251,7 +252,7 @@ public class CdnLogic
   public static int getUSBState()
   {
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    localObject = aj.getContext().registerReceiver(null, (IntentFilter)localObject);
+    localObject = ai.getContext().registerReceiver(null, (IntentFilter)localObject);
     if (localObject != null) {
       try
       {
@@ -260,7 +261,7 @@ public class CdnLogic
       }
       catch (Exception localException)
       {
-        ad.e("mars.CdnLogic", "err:%s", new Object[] { localException.getMessage() });
+        ac.e("mars.CdnLogic", "err:%s", new Object[] { localException.getMessage() });
       }
     }
     return -1;
@@ -278,11 +279,11 @@ public class CdnLogic
     do
     {
       return i;
-      ad.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
+      ac.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
       j = getUSBState();
       i = j;
     } while (2 != j);
-    ad.i("mars.CdnLogic", "checkFileProperty usb is connecting PC");
+    ac.i("mars.CdnLogic", "checkFileProperty usb is connecting PC");
     return j;
   }
   
@@ -291,6 +292,8 @@ public class CdnLogic
   private static native void onCreate(String paramString);
   
   public static native int pauseHttpMultiSocketDownloadTask(String paramString);
+  
+  public static native int queryContinuousSize(String paramString, long paramLong, long[] paramArrayOfLong);
   
   public static native int queryDownloadedSize(String paramString, long[] paramArrayOfLong);
   
@@ -301,7 +304,7 @@ public class CdnLogic
     e locale = new e(paramString);
     paramString = locale;
     if (!locale.isDirectory()) {
-      paramString = locale.fhT();
+      paramString = locale.fxU();
     }
     do
     {
@@ -309,7 +312,7 @@ public class CdnLogic
       if (l > 0L) {
         return l;
       }
-      locale = paramString.fhT();
+      locale = paramString.fxU();
       paramString = locale;
     } while (locale != null);
     return 0L;
@@ -325,7 +328,7 @@ public class CdnLogic
   
   public static native void setCdnInfo(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public static native void setCdnInfoParams(CdnLogic.CdnInfoParams paramCdnInfoParams1, CdnLogic.CdnInfoParams paramCdnInfoParams2, int paramInt);
+  public static native void setCdnInfoParams(CdnInfoParams paramCdnInfoParams1, CdnInfoParams paramCdnInfoParams2, int paramInt);
   
   public static native void setConfig(Config paramConfig);
   
@@ -442,6 +445,7 @@ public class CdnLogic
     public int transforTimeoutSeconds = 600;
     public String url = "";
     public boolean useMultithread = false;
+    public boolean useNewdns = false;
     public String videofileid = "";
     public int videoflagPolicy = 1;
     public boolean wifiAutoStart = false;
@@ -882,7 +886,7 @@ public class CdnLogic
     public void setFilePath(String paramString)
     {
       this.filePath = i.k(paramString, false);
-      if (bt.isNullOrNil(this.filePath)) {
+      if (bs.isNullOrNil(this.filePath)) {
         this.filePath = "";
       }
     }
@@ -890,7 +894,7 @@ public class CdnLogic
     public void setMidimgPath(String paramString)
     {
       this.midimgPath = i.k(paramString, false);
-      if (bt.isNullOrNil(this.midimgPath)) {
+      if (bs.isNullOrNil(this.midimgPath)) {
         this.midimgPath = "";
       }
     }
@@ -898,7 +902,7 @@ public class CdnLogic
     public void setThumbfilePath(String paramString)
     {
       this.thumbfilePath = i.k(paramString, false);
-      if (bt.isNullOrNil(this.thumbfilePath)) {
+      if (bs.isNullOrNil(this.thumbfilePath)) {
         this.thumbfilePath = "";
       }
     }
@@ -961,6 +965,16 @@ public class CdnLogic
     public int[] zoneports = null;
   }
   
+  public static class CdnInfoParams
+  {
+    public int c2CretryIntervalMs = 0;
+    public int c2CrwtimeoutMs = 0;
+    public int c2CshowErrorDelayMs = 0;
+    public int snsretryIntervalMs = 0;
+    public int snsrwtimeoutMs = 0;
+    public int snsshowErrorDelayMs = 0;
+  }
+  
   public static class CertVerifyResult
   {
     public byte[][] certificateChain = null;
@@ -987,6 +1001,7 @@ public class CdnLogic
     public int MobileEtl = 70;
     public int Ptl = 35;
     public int SNSOverloadDelaySeconds = 60;
+    public int SupportQuicVersionMax = 1;
     public int UseDynamicETL = 0;
     public int UseStreamCDN = 1;
     public int WifiEtl = 90;
@@ -995,7 +1010,7 @@ public class CdnLogic
     
     public String toString()
     {
-      return String.format("wifietl:%d, nowifietl:%d,ptl:%d,UseStreamCDN:%d,onlysendetl:%b,onlyrecvptl:%b,ackslice:%d,enableverify:%d,enableoc:%d,enablevideo:%d,dynamicetl:%b,c2coverload:%d,snsoverload:%d,safecdn:%d,snsstream:%d, snsimage:%d, c2cquic:%d, userquic:%d, bandquic:%d, statusquic:%d, snsvideo redirect:%d", new Object[] { Integer.valueOf(this.WifiEtl), Integer.valueOf(this.MobileEtl), Integer.valueOf(this.Ptl), Integer.valueOf(this.UseStreamCDN), Boolean.valueOf(this.onlysendETL), Boolean.valueOf(this.onlyrecvPtl), Integer.valueOf(this.AckSlice), Integer.valueOf(this.EnableCDNVerifyConnect), Integer.valueOf(this.EnableCDNVideoRedirectOC), Integer.valueOf(this.EnableStreamUploadVideo), Integer.valueOf(this.UseDynamicETL), Integer.valueOf(this.C2COverloadDelaySeconds), Integer.valueOf(this.SNSOverloadDelaySeconds), Integer.valueOf(this.EnableSafeCDN), Integer.valueOf(this.EnableSnsStreamDownload), Integer.valueOf(this.EnableSnsImageDownload), Integer.valueOf(this.EnableC2CVideoQUIC), Integer.valueOf(this.EnableUserVideoQUIC), Integer.valueOf(this.EnableBandVideoQUIC), Integer.valueOf(this.EnableStatusVideoQUIC), Integer.valueOf(this.EnableSnsVideoRedirect) });
+      return String.format("wifietl:%d, nowifietl:%d,ptl:%d,UseStreamCDN:%d,onlysendetl:%b,onlyrecvptl:%b,ackslice:%d,enableverify:%d,enableoc:%d,enablevideo:%d,dynamicetl:%b,c2coverload:%d,snsoverload:%d,safecdn:%d,snsstream:%d, snsimage:%d, c2cquic:%d, userquic:%d, bandquic:%d, statusquic:%d, quic.maxver:%d,snsvideo redirect:%d", new Object[] { Integer.valueOf(this.WifiEtl), Integer.valueOf(this.MobileEtl), Integer.valueOf(this.Ptl), Integer.valueOf(this.UseStreamCDN), Boolean.valueOf(this.onlysendETL), Boolean.valueOf(this.onlyrecvPtl), Integer.valueOf(this.AckSlice), Integer.valueOf(this.EnableCDNVerifyConnect), Integer.valueOf(this.EnableCDNVideoRedirectOC), Integer.valueOf(this.EnableStreamUploadVideo), Integer.valueOf(this.UseDynamicETL), Integer.valueOf(this.C2COverloadDelaySeconds), Integer.valueOf(this.SNSOverloadDelaySeconds), Integer.valueOf(this.EnableSafeCDN), Integer.valueOf(this.EnableSnsStreamDownload), Integer.valueOf(this.EnableSnsImageDownload), Integer.valueOf(this.EnableC2CVideoQUIC), Integer.valueOf(this.EnableUserVideoQUIC), Integer.valueOf(this.EnableBandVideoQUIC), Integer.valueOf(this.EnableStatusVideoQUIC), Integer.valueOf(this.SupportQuicVersionMax), Integer.valueOf(this.EnableSnsVideoRedirect) });
     }
   }
   

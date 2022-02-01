@@ -14,21 +14,21 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 
 public class MMTextInputUI
   extends MMActivity
 {
-  private TextView Hsl;
-  private int Hsm;
-  private boolean Hsn;
+  private TextView ISI;
+  private int ISJ;
+  private boolean ISK;
   private int maxCount;
-  private int qwl;
-  private EditText sz;
+  private int rja;
+  private EditText ty;
   
   private void goBack()
   {
@@ -66,14 +66,14 @@ public class MMTextInputUI
   {
     AppMethodBeat.i(143187);
     super.onCreate(paramBundle);
-    this.sz = ((EditText)findViewById(2131305727));
-    this.Hsl = ((TextView)findViewById(2131305192));
-    this.sz.setHint(bt.by(getIntent().getStringExtra("key_hint"), ""));
-    this.sz.append(bt.by(getIntent().getStringExtra("key_value"), ""));
+    this.ty = ((EditText)findViewById(2131305727));
+    this.ISI = ((TextView)findViewById(2131305192));
+    this.ty.setHint(bs.bG(getIntent().getStringExtra("key_hint"), ""));
+    this.ty.append(bs.bG(getIntent().getStringExtra("key_value"), ""));
     this.maxCount = (getIntent().getIntExtra("key_max_count", -1) << 1);
-    this.qwl = 0;
-    this.Hsm = Math.max(this.maxCount - 120, this.maxCount * 9 / 10);
-    this.Hsn = getIntent().getBooleanExtra("key_nullable", false);
+    this.rja = 0;
+    this.ISJ = Math.max(this.maxCount - 120, this.maxCount * 9 / 10);
+    this.ISK = getIntent().getBooleanExtra("key_nullable", false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -97,10 +97,10 @@ public class MMTextInputUI
         AppMethodBeat.o(143183);
         return true;
       }
-    }, null, r.b.FOB);
-    enableOptionMenu(this.Hsn);
-    if ((!this.Hsn) || (this.maxCount > 0)) {
-      this.sz.addTextChangedListener(new TextWatcher()
+    }, null, s.b.Hom);
+    enableOptionMenu(this.ISK);
+    if ((!this.ISK) || (this.maxCount > 0)) {
+      this.ty.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -125,7 +125,7 @@ public class MMTextInputUI
             if (i >= paramAnonymousEditable.length()) {
               break label135;
             }
-            if (!bt.E(paramAnonymousEditable.charAt(i))) {
+            if (!bs.C(paramAnonymousEditable.charAt(i))) {
               break label115;
             }
             MMTextInputUI.a(MMTextInputUI.this, MMTextInputUI.e(MMTextInputUI.this) + 2);
@@ -195,7 +195,7 @@ public class MMTextInputUI
     AppMethodBeat.i(143186);
     if (4 == paramInt)
     {
-      ad.i("MicroMsg.MMTextInputUI", "on back key down");
+      ac.i("MicroMsg.MMTextInputUI", "on back key down");
       goBack();
       AppMethodBeat.o(143186);
       return true;
@@ -227,7 +227,7 @@ public class MMTextInputUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MMTextInputUI
  * JD-Core Version:    0.7.0.1
  */

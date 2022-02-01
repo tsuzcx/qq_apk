@@ -23,11 +23,11 @@ public class BiometricManagerCompat
   {
     AppMethodBeat.i(88562);
     IMPL_PROVIDER = new HashMap();
-    if (a.fmR()) {}
+    if (a.fDh()) {}
     for (Object localObject = new FingerprintManagerImpl();; localObject = new LegacyFingerprintManagerImpl())
     {
       IMPL_PROVIDER.put(Integer.valueOf(1), localObject);
-      if ((a.fmR()) && (isNativeSupportFaceid())) {
+      if ((a.fDh()) && (isNativeSupportFaceid())) {
         IMPL_PROVIDER.put(Integer.valueOf(2), new FaceidManagerImpl());
       }
       AppMethodBeat.o(88562);

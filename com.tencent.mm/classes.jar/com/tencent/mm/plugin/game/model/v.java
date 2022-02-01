@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cm;
+import com.tencent.mm.g.c.co;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class v
-  extends cm
+  extends co
 {
   protected static c.a info;
   
@@ -15,16 +15,16 @@ public final class v
   {
     AppMethodBeat.i(41518);
     c.a locala = new c.a();
-    locala.EYt = new Field[2];
+    locala.GvF = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.EYv.put("key", "TEXT PRIMARY KEY ");
+    locala.GvH.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "key";
+    locala.GvG = "key";
     locala.columns[1] = "value";
-    locala.EYv.put("value", "BLOB");
+    locala.GvH.put("value", "BLOB");
     localStringBuilder.append(" value BLOB");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

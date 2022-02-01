@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.c.e;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.g.b.a.ca;
+import com.tencent.mm.aa.c.e;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.g.b.a.do;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
@@ -20,34 +20,34 @@ import com.tencent.mm.plugin.appbrand.dynamic.f.g;
 import com.tencent.mm.plugin.appbrand.dynamic.j.b.b;
 import com.tencent.mm.plugin.appbrand.jsruntime.y;
 import com.tencent.mm.plugin.appbrand.widget.f;
-import com.tencent.mm.protocal.protobuf.acm;
-import com.tencent.mm.protocal.protobuf.acn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.adl;
+import com.tencent.mm.protocal.protobuf.adm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class c
   implements com.tencent.mm.plugin.appbrand.canvas.widget.b
 {
-  String Ky;
+  String Lt;
   String appId;
-  boolean arf;
-  String fDK;
-  volatile e gbB;
-  int jkl;
-  boolean jkm;
-  f jkn;
-  String jko;
-  volatile boolean jkp;
-  volatile boolean jkq;
-  private volatile boolean jkr;
-  boolean jks;
-  boolean jkt;
-  private IPCRunCgi.a jku;
-  Runnable jkv;
+  boolean eg;
+  String fHr;
+  volatile e ggh;
+  f jKA;
+  String jKB;
+  volatile boolean jKC;
+  volatile boolean jKD;
+  private volatile boolean jKE;
+  boolean jKF;
+  boolean jKG;
+  private IPCRunCgi.a jKH;
+  Runnable jKI;
+  int jKy;
+  boolean jKz;
   Context mContext;
   String mSessionId;
   String mUrl;
@@ -55,98 +55,98 @@ public final class c
   public c(Context paramContext)
   {
     AppMethodBeat.i(121149);
-    this.jks = false;
-    this.jkt = false;
+    this.jKF = false;
+    this.jKG = false;
     this.mContext = paramContext;
-    this.jku = new IPCRunCgi.a()
+    this.jKH = new IPCRunCgi.a()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
       {
         AppMethodBeat.i(121141);
-        ad.i("MicroMsg.DynamicPageViewIPCProxy", "getDynamicData result(errType : %s, errCode : %s, errMsg : %s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        ac.i("MicroMsg.DynamicPageViewIPCProxy", "getDynamicData result(errType : %s, errCode : %s, errMsg : %s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         u.i("MicroMsg.DynamicPageViewIPCProxy", "getDynamicData result(errType : %s, errCode : %s, errMsg : %s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-        f localf = c.this.jkn;
+        f localf = c.this.jKA;
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(638L, 0L, 1L, false);
-          if ((c.this.jkl == 1) && (!c.this.jks))
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(638L, 0L, 1L, false);
+          if ((c.this.jKy == 1) && (!c.this.jKF))
           {
-            v.lI(18);
-            paramAnonymousString = new ca().iI(u.vd(c.this.fDK));
-            paramAnonymousString.dQy = u.vb(c.this.fDK);
-            paramAnonymousString.dQv = 10L;
-            paramAnonymousString.dQx = 2L;
-            paramAnonymousString = paramAnonymousString.iH(c.this.fDK);
-            paramAnonymousString.dQw = System.currentTimeMillis();
-            paramAnonymousString.iJ(ay.iw(aj.getContext())).aBj();
+            v.lA(18);
+            paramAnonymousString = new do().ly(u.zj(c.this.fHr));
+            paramAnonymousString.dSn = u.zh(c.this.fHr);
+            paramAnonymousString.dSk = 10L;
+            paramAnonymousString.dSm = 2L;
+            paramAnonymousString = paramAnonymousString.lx(c.this.fHr);
+            paramAnonymousString.dSl = System.currentTimeMillis();
+            paramAnonymousString.lz(ax.iH(ai.getContext())).aHZ();
           }
           if (localf != null) {}
           for (long l = localf.field_interval;; l = 10L)
           {
-            b.j(c.this.jkv, l * 1000L);
-            if ((c.this.jkn == null) || (TextUtils.isEmpty(c.this.jkn.field_data))) {
-              j.aVk().L(c.this.fDK, 627, 2);
+            b.j(c.this.jKI, l * 1000L);
+            if ((c.this.jKA == null) || (TextUtils.isEmpty(c.this.jKA.field_data))) {
+              j.bci().K(c.this.fHr, 627, 2);
             }
             AppMethodBeat.o(121141);
             return;
           }
         }
-        if ((c.this.jkl == 1) && (!c.this.jks))
+        if ((c.this.jKy == 1) && (!c.this.jKF))
         {
-          c.this.jks = true;
-          v.lI(17);
-          paramAnonymousString = new ca().iI(u.vd(c.this.fDK));
-          paramAnonymousString.dQy = u.vb(c.this.fDK);
-          paramAnonymousString.dQv = 10L;
-          paramAnonymousString.dQx = 1L;
-          paramAnonymousString = paramAnonymousString.iH(c.this.fDK);
-          paramAnonymousString.dQw = System.currentTimeMillis();
-          paramAnonymousString.iJ(ay.iw(aj.getContext())).aBj();
+          c.this.jKF = true;
+          v.lA(17);
+          paramAnonymousString = new do().ly(u.zj(c.this.fHr));
+          paramAnonymousString.dSn = u.zh(c.this.fHr);
+          paramAnonymousString.dSk = 10L;
+          paramAnonymousString.dSm = 1L;
+          paramAnonymousString = paramAnonymousString.lx(c.this.fHr);
+          paramAnonymousString.dSl = System.currentTimeMillis();
+          paramAnonymousString.lz(ax.iH(ai.getContext())).aHZ();
         }
-        paramAnonymousb = (acn)paramAnonymousb.gUT.gUX;
-        if (paramAnonymousb.DcU != null) {}
-        for (paramAnonymousString = paramAnonymousb.DcU.eBA(); localf == null; paramAnonymousString = "")
+        paramAnonymousb = (adm)paramAnonymousb.hvs.hvw;
+        if (paramAnonymousb.Ewb != null) {}
+        for (paramAnonymousString = paramAnonymousb.Ewb.eQU(); localf == null; paramAnonymousString = "")
         {
           AppMethodBeat.o(121141);
           return;
         }
-        if (!bt.isNullOrNil(paramAnonymousString)) {
+        if (!bs.isNullOrNil(paramAnonymousString)) {
           localf.field_data = paramAnonymousString;
         }
         for (;;)
         {
-          localf.field_interval = paramAnonymousb.fWw;
+          localf.field_interval = paramAnonymousb.gbd;
           localf.field_updateTime = System.currentTimeMillis();
           paramAnonymousString = (Bundle)com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", localf.convertTo(), b.b.class);
           if (paramAnonymousString != null) {
             paramAnonymousString.getBoolean("result", false);
           }
-          if (c.this.arf) {
+          if (c.this.eg) {
             break;
           }
-          ad.i("MicroMsg.DynamicPageViewIPCProxy", "not running");
+          ac.i("MicroMsg.DynamicPageViewIPCProxy", "not running");
           AppMethodBeat.o(121141);
           return;
-          if ((c.this.jkn == null) || (TextUtils.isEmpty(c.this.jkn.field_data))) {
-            j.aVk().L(c.this.fDK, 627, 4);
+          if ((c.this.jKA == null) || (TextUtils.isEmpty(c.this.jKA.field_data))) {
+            j.bci().K(c.this.fHr, 627, 4);
           }
         }
-        c.this.a(c.this.gbB, localf);
-        if ((c.this.jkl == 1) && (!c.this.jkt)) {
-          c.this.jkt = true;
+        c.this.a(c.this.ggh, localf);
+        if ((c.this.jKy == 1) && (!c.this.jKG)) {
+          c.this.jKG = true;
         }
         if (localf.field_interval > 0) {
-          c.this.aVd();
+          c.this.bcb();
         }
         AppMethodBeat.o(121141);
       }
     };
-    this.jkv = new Runnable()
+    this.jKI = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121142);
-        c.this.aVd();
+        c.this.bcb();
         AppMethodBeat.o(121142);
       }
     };
@@ -157,7 +157,7 @@ public final class c
   {
     boolean bool2 = false;
     AppMethodBeat.i(121153);
-    if ((parame == null) || (paramf == null) || (bt.isNullOrNil(paramf.field_data)))
+    if ((parame == null) || (paramf == null) || (bs.isNullOrNil(paramf.field_data)))
     {
       if (parame == null) {}
       for (boolean bool1 = true;; bool1 = false)
@@ -165,7 +165,7 @@ public final class c
         if (paramf == null) {
           bool2 = true;
         }
-        ad.i("MicroMsg.DynamicPageViewIPCProxy", "pushData failed, jsBridge(isNull : %s) or cacheData(isNull : %s) or cacheData.field_data is null", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        ac.i("MicroMsg.DynamicPageViewIPCProxy", "pushData failed, jsBridge(isNull : %s) or cacheData(isNull : %s) or cacheData.field_data is null", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
         AppMethodBeat.o(121153);
         return;
       }
@@ -177,7 +177,7 @@ public final class c
     parame = new Bundle();
     parame.putString("widgetId", paramf.field_id);
     parame.putString("respData", paramf.field_data);
-    paramf = i.aVi().GW(paramf.field_id);
+    paramf = i.bcg().La(paramf.field_id);
     u.i("MicroMsg.DynamicPageViewIPCProxy", "dispatch onDataPush event to view proce %s", new Object[] { paramf });
     if (paramf == null)
     {
@@ -189,122 +189,122 @@ public final class c
     AppMethodBeat.o(121153);
   }
   
-  final void aVd()
+  final void bcb()
   {
     AppMethodBeat.i(121152);
     u.i("MicroMsg.DynamicPageViewIPCProxy", "try to refresh", new Object[0]);
-    if (this.jkm)
+    if (this.jKz)
     {
       AppMethodBeat.o(121152);
       return;
     }
-    f localf = this.jkn;
-    if ((localf == null) || (!this.arf))
+    f localf = this.jKA;
+    if ((localf == null) || (!this.eg))
     {
       if (localf == null) {}
       for (boolean bool = true;; bool = false)
       {
-        u.i("MicroMsg.DynamicPageViewIPCProxy", "cacheData %b, mRunning %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.arf) });
+        u.i("MicroMsg.DynamicPageViewIPCProxy", "cacheData %b, mRunning %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.eg) });
         AppMethodBeat.o(121152);
         return;
       }
     }
-    if (this.jkq)
+    if (this.jKD)
     {
       u.i("MicroMsg.DynamicPageViewIPCProxy", "paused", new Object[0]);
-      this.jkr = true;
+      this.jKE = true;
       AppMethodBeat.o(121152);
       return;
     }
-    if (bt.isNullOrNil(localf.field_appId))
+    if (bs.isNullOrNil(localf.field_appId))
     {
-      ad.e("MicroMsg.DynamicPageViewIPCProxy", "tryToRefresh(%s) failed, has no appId", new Object[] { this.fDK });
+      ac.e("MicroMsg.DynamicPageViewIPCProxy", "tryToRefresh(%s) failed, has no appId", new Object[] { this.fHr });
       AppMethodBeat.o(121152);
       return;
     }
-    this.jkr = false;
+    this.jKE = false;
     long l = localf.field_updateTime + localf.field_interval * 1000L - System.currentTimeMillis();
     if (l > 0L)
     {
       u.i("MicroMsg.DynamicPageViewIPCProxy", "post delay refresh(%s) data.", new Object[] { Long.valueOf(l) });
-      b.j(this.jkv, l);
+      b.j(this.jKI, l);
       AppMethodBeat.o(121152);
       return;
     }
-    u.i("MicroMsg.DynamicPageViewIPCProxy", "refresh data(%s, %s)", new Object[] { this.jkn.field_id, this.jkn.field_appId });
-    if ((this.jkl == 1) && (!this.jks))
+    u.i("MicroMsg.DynamicPageViewIPCProxy", "refresh data(%s, %s)", new Object[] { this.jKA.field_id, this.jKA.field_appId });
+    if ((this.jKy == 1) && (!this.jKF))
     {
-      v.lI(16);
-      localObject = new ca().iI(u.vd(this.fDK));
-      ((ca)localObject).dQy = u.vb(this.fDK);
-      ((ca)localObject).dQv = 9L;
-      localObject = ((ca)localObject).iH(this.fDK);
-      ((ca)localObject).dQw = System.currentTimeMillis();
-      ((ca)localObject).iJ(ay.iw(aj.getContext())).aBj();
+      v.lA(16);
+      localObject = new do().ly(u.zj(this.fHr));
+      ((do)localObject).dSn = u.zh(this.fHr);
+      ((do)localObject).dSk = 9L;
+      localObject = ((do)localObject).lx(this.fHr);
+      ((do)localObject).dSl = System.currentTimeMillis();
+      ((do)localObject).lz(ax.iH(ai.getContext())).aHZ();
     }
     Object localObject = new b.a();
     ((b.a)localObject).funcId = 1193;
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/getdynamicdata";
-    acm localacm = new acm();
-    localacm.dlB = localf.field_appId;
-    localacm.key = localf.field_cacheKey;
-    localacm.scene = this.jkl;
-    localacm.query = this.Ky;
-    localacm.url = this.mUrl;
-    ((b.a)localObject).gUU = localacm;
-    ((b.a)localObject).gUV = new acn();
-    IPCRunCgi.a(((b.a)localObject).atI(), this.jku);
+    adl localadl = new adl();
+    localadl.djj = localf.field_appId;
+    localadl.key = localf.field_cacheKey;
+    localadl.scene = this.jKy;
+    localadl.query = this.Lt;
+    localadl.url = this.mUrl;
+    ((b.a)localObject).hvt = localadl;
+    ((b.a)localObject).hvu = new adm();
+    IPCRunCgi.a(((b.a)localObject).aAz(), this.jKH);
     AppMethodBeat.o(121152);
+  }
+  
+  public final boolean cF(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(121150);
+    if ((this.ggh == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      AppMethodBeat.o(121150);
+      return false;
+    }
+    boolean bool = this.ggh.ap(paramString1, paramString2);
+    AppMethodBeat.o(121150);
+    return bool;
   }
   
   final void cleanup()
   {
     AppMethodBeat.i(121151);
-    if (this.jkn != null) {
-      ad.i("MicroMsg.DynamicPageViewIPCProxy", "cleanup(%s, %s)", new Object[] { this.jkn.field_id, this.jkn.field_appId });
+    if (this.jKA != null) {
+      ac.i("MicroMsg.DynamicPageViewIPCProxy", "cleanup(%s, %s)", new Object[] { this.jKA.field_id, this.jKA.field_appId });
     }
     for (;;)
     {
-      if (this.gbB != null) {
-        this.gbB.onStop();
+      if (this.ggh != null) {
+        this.ggh.onStop();
       }
       AppMethodBeat.o(121151);
       return;
-      ad.i("MicroMsg.DynamicPageViewIPCProxy", "cleanup");
+      ac.i("MicroMsg.DynamicPageViewIPCProxy", "cleanup");
     }
-  }
-  
-  public final boolean cv(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(121150);
-    if ((this.gbB == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      AppMethodBeat.o(121150);
-      return false;
-    }
-    boolean bool = this.gbB.am(paramString1, paramString2);
-    AppMethodBeat.o(121150);
-    return bool;
   }
   
   public final boolean isPaused()
   {
-    return this.jkp;
+    return this.jKC;
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(121155);
-    ad.i("MicroMsg.DynamicPageViewIPCProxy", "onResume(%s)", new Object[] { this.fDK });
-    boolean bool = this.jkp;
-    if (this.gbB != null) {
-      this.gbB.b(new g());
+    ac.i("MicroMsg.DynamicPageViewIPCProxy", "onResume(%s)", new Object[] { this.fHr });
+    boolean bool = this.jKC;
+    if (this.ggh != null) {
+      this.ggh.b(new g());
     }
-    this.jkp = false;
-    bool = this.jkq;
-    this.jkq = false;
-    if ((bool) && (this.jkr)) {
-      aVd();
+    this.jKC = false;
+    bool = this.jKD;
+    this.jKD = false;
+    if ((bool) && (this.jKE)) {
+      bcb();
     }
     AppMethodBeat.o(121155);
   }
@@ -317,9 +317,9 @@ public final class c
       AppMethodBeat.o(121154);
       return;
     }
-    if (this.gbB != null)
+    if (this.ggh != null)
     {
-      y.b localb = this.gbB.aej();
+      y.b localb = this.ggh.afz();
       if (localb == null)
       {
         AppMethodBeat.o(121154);
@@ -335,7 +335,7 @@ public final class c
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        localb.m(str, paramBundle.get(str));
+        localb.l(str, paramBundle.get(str));
       }
     }
     AppMethodBeat.o(121154);
@@ -351,7 +351,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.c
  * JD-Core Version:    0.7.0.1
  */

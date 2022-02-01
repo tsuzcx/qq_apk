@@ -8,34 +8,34 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 import d.n.n;
 import d.v;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart;", "", "()V", "prepare_restart", "", "selfRestart", "suicide", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart;", "", "()V", "prepare_restart", "", "selfRestart", "suicide", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a jtS;
+  public static final a jUn;
   
   static
   {
     AppMethodBeat.i(50397);
-    jtS = new a();
+    jUn = new a();
     AppMethodBeat.o(50397);
   }
   
-  public static void aXd()
+  public static void beb()
   {
     AppMethodBeat.i(50396);
-    Object localObject = aj.getContext();
+    Object localObject = ai.getContext();
     k.g(localObject, "context");
     PendingIntent localPendingIntent = PendingIntent.getActivity((Context)localObject, -1, ((Context)localObject).getPackageManager().getLaunchIntentForPackage(((Context)localObject).getPackageName()), 268435456);
     localObject = (AlarmManager)((Context)localObject).getSystemService("alarm");
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((AlarmManager)localObject).set(1, System.currentTimeMillis() + 100L, localPendingIntent);
     AppMethodBeat.o(50396);
@@ -44,7 +44,7 @@ public final class a
   public static void suicide()
   {
     AppMethodBeat.i(50395);
-    Object localObject = aj.getContext().getSystemService("activity");
+    Object localObject = ai.getContext().getSystemService("activity");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.app.ActivityManager");
@@ -69,7 +69,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.h.a
  * JD-Core Version:    0.7.0.1
  */

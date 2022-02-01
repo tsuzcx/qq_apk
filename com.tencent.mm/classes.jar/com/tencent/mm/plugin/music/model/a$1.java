@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.music.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bb.a;
 
 final class a$1
-  implements bc.a
+  implements bb.a
 {
   a$1(a parama)
   {
@@ -13,20 +13,20 @@ final class a$1
     AppMethodBeat.o(160403);
   }
   
-  public final void kq(int paramInt)
+  public final void kn(int paramInt)
   {
-    AppMethodBeat.i(190238);
+    AppMethodBeat.i(195597);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190238);
+      AppMethodBeat.o(195597);
       return;
-      AppMethodBeat.o(190238);
+      AppMethodBeat.o(195597);
       return;
-      ad.i("MicroMsg.GlobalMusicFloatBallHelper", "onPhoneCall, removeCurrentBall, state:%s", new Object[] { Integer.valueOf(paramInt) });
-      this.tWx.bzt();
+      ac.i("MicroMsg.GlobalMusicFloatBallHelper", "onPhoneCall, removeCurrentBall, state:%s", new Object[] { Integer.valueOf(paramInt) });
+      this.vfh.bGp();
     }
   }
 }

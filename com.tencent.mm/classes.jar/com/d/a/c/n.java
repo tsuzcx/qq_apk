@@ -4,15 +4,15 @@ public abstract class n<T>
   extends b
   implements p<T>
 {
-  public static final Object bYh = new Object();
-  public static final a bYi = new a();
-  protected transient Object[] bYf;
-  protected final p<T> bYg = this;
+  public static final Object bVP = new Object();
+  public static final a bVQ = new a();
+  protected transient Object[] bVN;
+  protected final p<T> bVO = this;
   
-  public n<T> Ar()
+  public n<T> Ae()
   {
     n localn = (n)super.clone();
-    localn.bYf = ((Object[])this.bYf.clone());
+    localn.bVN = ((Object[])this.bVN.clone());
     return localn;
   }
   
@@ -26,19 +26,19 @@ public abstract class n<T>
   
   protected final int aw(T paramT)
   {
-    Object[] arrayOfObject = this.bYf;
+    Object[] arrayOfObject = this.bVN;
     int k = arrayOfObject.length;
-    int m = this.bYg.av(paramT) & 0x7FFFFFFF;
+    int m = this.bVO.av(paramT) & 0x7FFFFFFF;
     int i = m % k;
     Object localObject2 = arrayOfObject[i];
     int j = i;
     Object localObject1 = localObject2;
     if (localObject2 != null) {
-      if (localObject2 != bYh)
+      if (localObject2 != bVP)
       {
         j = i;
         localObject1 = localObject2;
-        if (this.bYg.equals(localObject2, paramT)) {}
+        if (this.bVO.equals(localObject2, paramT)) {}
       }
       else
       {
@@ -59,9 +59,9 @@ public abstract class n<T>
               break;
             }
             j = i;
-          } while (localObject2 == bYh);
+          } while (localObject2 == bVP);
           j = i;
-        } while (!this.bYg.equals(localObject2, paramT));
+        } while (!this.bVO.equals(localObject2, paramT));
         localObject1 = localObject2;
         j = i;
       }
@@ -74,19 +74,19 @@ public abstract class n<T>
   
   protected final int ax(T paramT)
   {
-    Object[] arrayOfObject = this.bYf;
+    Object[] arrayOfObject = this.bVN;
     int m = arrayOfObject.length;
-    int j = this.bYg.av(paramT) & 0x7FFFFFFF;
+    int j = this.bVO.av(paramT) & 0x7FFFFFFF;
     int i = j % m;
     Object localObject1 = arrayOfObject[i];
     if (localObject1 == null) {
       return i;
     }
-    if ((localObject1 != bYh) && (this.bYg.equals(localObject1, paramT))) {
+    if ((localObject1 != bVP) && (this.bVO.equals(localObject1, paramT))) {
       return -i - 1;
     }
     int n = j % (m - 2) + 1;
-    if (localObject1 == bYh) {
+    if (localObject1 == bVP) {
       j = i;
     }
     for (;;)
@@ -101,13 +101,13 @@ public abstract class n<T>
       if (j == -1)
       {
         k = j;
-        if (localObject1 == bYh) {
+        if (localObject1 == bVP) {
           k = i;
         }
       }
-      if ((localObject1 == null) || (localObject1 == bYh) || (this.bYg.equals(localObject1, paramT)))
+      if ((localObject1 == null) || (localObject1 == bVP) || (this.bVO.equals(localObject1, paramT)))
       {
-        if (localObject1 == bYh)
+        if (localObject1 == bVP)
         {
           for (;;)
           {
@@ -116,11 +116,11 @@ public abstract class n<T>
             if (localObject1 == null) {
               break;
             }
-            if (localObject1 != bYh)
+            if (localObject1 != bVP)
             {
               j = i;
               localObject2 = localObject1;
-              if (this.bYg.equals(localObject1, paramT)) {
+              if (this.bVO.equals(localObject1, paramT)) {
                 break;
               }
             }
@@ -136,7 +136,7 @@ public abstract class n<T>
         }
         Object localObject2 = localObject1;
         j = i;
-        if ((localObject2 != null) && (localObject2 != bYh)) {
+        if ((localObject2 != null) && (localObject2 != bVP)) {
           return -j - 1;
         }
         i = j;
@@ -151,14 +151,14 @@ public abstract class n<T>
   
   public final boolean b(s<T> params)
   {
-    Object[] arrayOfObject = this.bYf;
+    Object[] arrayOfObject = this.bVN;
     int j;
     for (int i = arrayOfObject.length;; i = j)
     {
       j = i - 1;
       if (i > 0)
       {
-        if ((arrayOfObject[j] != null) && (arrayOfObject[j] != bYh) && (!params.as(arrayOfObject[j]))) {
+        if ((arrayOfObject[j] != null) && (arrayOfObject[j] != bVP) && (!params.as(arrayOfObject[j]))) {
           return false;
         }
       }
@@ -170,7 +170,7 @@ public abstract class n<T>
   
   protected final int capacity()
   {
-    return this.bYf.length;
+    return this.bVN.length;
   }
   
   public boolean contains(Object paramObject)
@@ -186,10 +186,10 @@ public abstract class n<T>
     return paramT2 == null;
   }
   
-  protected int gx(int paramInt)
+  protected int gi(int paramInt)
   {
-    paramInt = super.gx(paramInt);
-    this.bYf = new Object[paramInt];
+    paramInt = super.gi(paramInt);
+    this.bVN = new Object[paramInt];
     return paramInt;
   }
   
@@ -200,7 +200,7 @@ public abstract class n<T>
     if (paramObject1 == null)
     {
       localObject = "";
-      localObject = localStringBuilder.append((String)localObject).append(", hashCode=").append(this.bYg.av(paramObject1)).append("; object #2 =").append(paramObject2);
+      localObject = localStringBuilder.append((String)localObject).append(", hashCode=").append(this.bVO.av(paramObject1)).append("; object #2 =").append(paramObject2);
       if (paramObject2 != null) {
         break label125;
       }
@@ -208,7 +208,7 @@ public abstract class n<T>
     label125:
     for (paramObject1 = "";; paramObject1 = " (" + paramObject2.getClass() + ")")
     {
-      throw new IllegalArgumentException(paramObject1 + ", hashCode=" + this.bYg.av(paramObject2));
+      throw new IllegalArgumentException(paramObject1 + ", hashCode=" + this.bVO.av(paramObject2));
       localObject = " (" + paramObject1.getClass() + ")";
       break;
     }
@@ -216,7 +216,7 @@ public abstract class n<T>
   
   protected void removeAt(int paramInt)
   {
-    this.bYf[paramInt] = bYh;
+    this.bVN[paramInt] = bVP;
     super.removeAt(paramInt);
   }
   

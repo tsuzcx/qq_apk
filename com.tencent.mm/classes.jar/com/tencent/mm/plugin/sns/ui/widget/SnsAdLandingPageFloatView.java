@@ -13,15 +13,15 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.sy;
+import com.tencent.mm.g.a.th;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,34 +31,34 @@ import java.util.Map;
 public class SnsAdLandingPageFloatView
   extends FrameLayout
 {
-  public String dsN;
-  public String dvK;
-  public String iYE;
+  public String dqx;
+  public String dtx;
   private boolean isResume;
-  public ValueAnimator tck;
-  public String wSj;
-  private Map<String, String> wXp;
-  public boolean xMz;
-  public int xXi;
-  public String xXj;
-  public String xXk;
-  public v xXl;
-  public g xXm;
-  public k xXn;
-  public View xXo;
-  public AnimatorSet xXp;
-  public LinkedList<g> xhQ;
-  private List<k> xtW;
-  public String xtw;
+  public String jyU;
+  public ValueAnimator ukz;
+  private List<k> yGM;
+  public String yGm;
+  public boolean yZo;
+  public String yeP;
+  private Map<String, String> ykd;
+  public LinkedList<g> yuE;
+  public int zkd;
+  public String zke;
+  public String zkf;
+  public v zkg;
+  public g zkh;
+  public k zki;
+  public View zkj;
+  public AnimatorSet zkk;
   
   public SnsAdLandingPageFloatView(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(100462);
-    this.xhQ = new LinkedList();
-    this.wXp = new HashMap();
-    this.xXp = new AnimatorSet();
-    this.tck = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    this.yuE = new LinkedList();
+    this.ykd = new HashMap();
+    this.zkk = new AnimatorSet();
+    this.ukz = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
     AppMethodBeat.o(100462);
   }
   
@@ -66,10 +66,10 @@ public class SnsAdLandingPageFloatView
   {
     super(paramContext, paramAttributeSet, -1);
     AppMethodBeat.i(100463);
-    this.xhQ = new LinkedList();
-    this.wXp = new HashMap();
-    this.xXp = new AnimatorSet();
-    this.tck = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    this.yuE = new LinkedList();
+    this.ykd = new HashMap();
+    this.zkk = new AnimatorSet();
+    this.ukz = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
     AppMethodBeat.o(100463);
   }
   
@@ -77,21 +77,21 @@ public class SnsAdLandingPageFloatView
   {
     super(paramContext, paramAttributeSet, paramInt, -1);
     AppMethodBeat.i(100464);
-    this.xhQ = new LinkedList();
-    this.wXp = new HashMap();
-    this.xXp = new AnimatorSet();
-    this.tck = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    this.yuE = new LinkedList();
+    this.ykd = new HashMap();
+    this.zkk = new AnimatorSet();
+    this.ukz = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
     AppMethodBeat.o(100464);
   }
   
-  public final void dEc()
+  public final void dSA()
   {
     AppMethodBeat.i(100467);
     Map localMap;
     int i;
-    if ((this.xXm != null) && (!bt.isNullOrNil(this.wSj)))
+    if ((this.zkh != null) && (!bs.isNullOrNil(this.yeP)))
     {
-      localMap = bw.K(this.wSj, "adCardItemList");
+      localMap = bv.L(this.yeP, "adCardItemList");
       i = 0;
       if (i <= 0) {
         break label196;
@@ -102,10 +102,10 @@ public class SnsAdLandingPageFloatView
     {
       if (localMap.containsKey(str1 + ".cardTpId"))
       {
-        String str2 = bt.by((String)localMap.get(str1 + ".cardTpId"), "");
-        str1 = bt.by((String)localMap.get(str1 + ".cardExt"), "");
-        if ((!bt.isNullOrNil(str2)) && (!bt.isNullOrNil(str1))) {
-          this.wXp.put(str2, str1);
+        String str2 = bs.bG((String)localMap.get(str1 + ".cardTpId"), "");
+        str1 = bs.bG((String)localMap.get(str1 + ".cardExt"), "");
+        if ((!bs.isNullOrNil(str2)) && (!bs.isNullOrNil(str1))) {
+          this.ykd.put(str2, str1);
         }
         i += 1;
         break;
@@ -118,16 +118,16 @@ public class SnsAdLandingPageFloatView
   public List<k> getAllComp()
   {
     AppMethodBeat.i(100468);
-    if (this.xtW != null)
+    if (this.yGM != null)
     {
-      localList = this.xtW;
+      localList = this.yGM;
       AppMethodBeat.o(100468);
       return localList;
     }
-    this.xtW = new ArrayList();
-    this.xtW.add(this.xXn);
-    i.fv(this.xtW);
-    List localList = this.xtW;
+    this.yGM = new ArrayList();
+    this.yGM.add(this.zki);
+    i.fD(this.yGM);
+    List localList = this.yGM;
     AppMethodBeat.o(100468);
     return localList;
   }
@@ -136,8 +136,8 @@ public class SnsAdLandingPageFloatView
   {
     AppMethodBeat.i(100466);
     this.isResume = false;
-    if (this.xXm != null) {
-      this.xXn.dvA();
+    if (this.zkh != null) {
+      this.zki.dJZ();
     }
     AppMethodBeat.o(100466);
   }
@@ -146,15 +146,15 @@ public class SnsAdLandingPageFloatView
   {
     AppMethodBeat.i(100465);
     this.isResume = true;
-    if (this.xXm != null)
+    if (this.zkh != null)
     {
-      this.xXn.dvz();
+      this.zki.dJY();
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(100461);
-          SnsAdLandingPageFloatView.d(SnsAdLandingPageFloatView.this).dvB();
+          SnsAdLandingPageFloatView.d(SnsAdLandingPageFloatView.this).dKa();
           AppMethodBeat.o(100461);
         }
       });
@@ -164,7 +164,7 @@ public class SnsAdLandingPageFloatView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdLandingPageFloatView
  * JD-Core Version:    0.7.0.1
  */

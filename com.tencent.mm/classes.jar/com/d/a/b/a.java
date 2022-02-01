@@ -3,8 +3,8 @@ package com.d.a.b;
 public class a
   extends i
 {
-  public final p bVX;
-  private final long bVY;
+  public final p bTF;
+  private final long bTG;
   private final int mLength;
   
   static
@@ -20,55 +20,55 @@ public class a
   public a(long paramLong1, n paramn, p paramp, int paramInt, long paramLong2)
   {
     super(paramLong1, paramn);
-    this.bVX = paramp;
+    this.bTF = paramp;
     this.mLength = paramInt;
-    this.bVY = paramLong2;
+    this.bTG = paramLong2;
   }
   
-  byte[] bS(int paramInt1, int paramInt2)
+  byte[] bP(int paramInt1, int paramInt2)
   {
-    Ai().aK(this.bVY);
-    assert (this.bVX != p.bXr);
+    zV().aG(this.bTG);
+    assert (this.bTF != p.bUZ);
     assert (paramInt1 + paramInt2 <= this.mLength);
-    byte[] arrayOfByte = new byte[this.bVX.mSize * paramInt2];
-    Ai().q(arrayOfByte, this.bVX.mSize * paramInt1, this.bVX.mSize * paramInt2);
+    byte[] arrayOfByte = new byte[this.bTF.mSize * paramInt2];
+    zV().p(arrayOfByte, this.bTF.mSize * paramInt1, this.bTF.mSize * paramInt2);
     return arrayOfByte;
   }
   
   public final int getSize()
   {
-    return this.mLength * this.bWC.bWt.b(this.bVX);
+    return this.mLength * this.bUk.bUb.b(this.bTF);
   }
   
   public final String toString()
   {
-    String str2 = zW().mClassName;
+    String str2 = zJ().mClassName;
     String str1 = str2;
     if (str2.endsWith("[]")) {
       str1 = str2.substring(0, str2.length() - 2);
     }
-    return String.format("%s[%d]@%d (0x%x)", new Object[] { str1, Integer.valueOf(this.mLength), Long.valueOf(Ah()), Long.valueOf(Ah()) });
+    return String.format("%s[%d]@%d (0x%x)", new Object[] { str1, Integer.valueOf(this.mLength), Long.valueOf(zU()), Long.valueOf(zU()) });
   }
   
-  public final Object[] zV()
+  public final Object[] zI()
   {
     Object[] arrayOfObject = new Object[this.mLength];
-    Ai().aK(this.bVY);
+    zV().aG(this.bTG);
     int i = 0;
     while (i < this.mLength)
     {
-      arrayOfObject[i] = a(this.bVX);
+      arrayOfObject[i] = a(this.bTF);
       i += 1;
     }
     return arrayOfObject;
   }
   
-  public final c zW()
+  public final c zJ()
   {
-    if (this.bVX == p.bXr) {
-      return super.zW();
+    if (this.bTF == p.bUZ) {
+      return super.zJ();
     }
-    return this.bWC.bWt.bJ(p.c(this.bVX));
+    return this.bUk.bUb.bA(p.c(this.bTF));
   }
 }
 

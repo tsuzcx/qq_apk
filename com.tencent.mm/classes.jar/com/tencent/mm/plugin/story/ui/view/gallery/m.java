@@ -8,10 +8,10 @@ import com.tencent.mm.i.g.b;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.s;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ddy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.y;
@@ -27,68 +27,68 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr;", "", "()V", "MAX_PRELOAD_TASK_LIMIT", "", "TAG", "", "clicfg_story_preload_force_canload", "getClicfg_story_preload_force_canload", "()I", "setClicfg_story_preload_force_canload", "(I)V", "clicfg_story_preload_force_preload", "getClicfg_story_preload_force_preload", "setClicfg_story_preload_force_preload", "clicfg_story_preload_strategy", "getClicfg_story_preload_strategy", "setClicfg_story_preload_strategy", "groupData", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData;", "lastFinishStoryId", "", "getLastFinishStoryId", "()J", "setLastFinishStoryId", "(J)V", "lastStoryId", "getLastStoryId", "setLastStoryId", "playingMediaId", "preLoadConfig", "Lcom/tencent/mm/plugin/story/ui/view/gallery/PreLoadConfig;", "getPreLoadConfig", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/PreLoadConfig;", "setPreLoadConfig", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/PreLoadConfig;)V", "preloadFinishSet", "", "preloadInfoRatioSet", "", "preloadInfoSet", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "preloadRunningSet", "", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "runningMediaId", "Ljava/lang/Long;", "selectMediaId", "totalPreLoadOneItemSelect", "getTotalPreLoadOneItemSelect", "setTotalPreLoadOneItemSelect", "addPreLoadTask", "", "quota", "fromTag", "connectionCount", "addPreloadVideo", "", "videoItemList", "", "downloadExpect", "calcPreloadPercent", "mediaId", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "cacheSecondsDowngrade", "isGoodNetwork", "cancelAllPreloadTask", "cancelPreloadTask", "videoItem", "checkCanPlay", "item", "checkPreLoad", "checkPreloadOnVideoPlay", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$MoovReadyInfo;", "createVideoPreloadCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "url", "path", "preloadPercent", "getNetworkSpeed", "isBadNetwork", "isLocalVideo", "makrFinish", "storyId", "markCurrentPlay", "markOnVideoFirstFrameDraw", "needPreLoad", "onVideoSourceChange", "preloadVideoWithPercent", "percent", "taskInfo", "queryQuota", "setPreloadQueueFromGallery", "groupItems", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "positionV", "positionH", "skipPosition", "startPreLoad", "checkNet", "taskConnectionCount", "index", "upgrades", "GroupData", "MoovReadyInfo", "TaskInfo", "VideoPreloadTaskCallback", "VideoTaskCallTask", "plugin-story_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr;", "", "()V", "MAX_PRELOAD_TASK_LIMIT", "", "TAG", "", "clicfg_story_preload_force_canload", "getClicfg_story_preload_force_canload", "()I", "setClicfg_story_preload_force_canload", "(I)V", "clicfg_story_preload_force_preload", "getClicfg_story_preload_force_preload", "setClicfg_story_preload_force_preload", "clicfg_story_preload_strategy", "getClicfg_story_preload_strategy", "setClicfg_story_preload_strategy", "groupData", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData;", "lastFinishStoryId", "", "getLastFinishStoryId", "()J", "setLastFinishStoryId", "(J)V", "lastStoryId", "getLastStoryId", "setLastStoryId", "playingMediaId", "preLoadConfig", "Lcom/tencent/mm/plugin/story/ui/view/gallery/PreLoadConfig;", "getPreLoadConfig", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/PreLoadConfig;", "setPreLoadConfig", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/PreLoadConfig;)V", "preloadFinishSet", "", "preloadInfoRatioSet", "", "preloadInfoSet", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "preloadRunningSet", "", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "runningMediaId", "Ljava/lang/Long;", "selectMediaId", "totalPreLoadOneItemSelect", "getTotalPreLoadOneItemSelect", "setTotalPreLoadOneItemSelect", "addPreLoadTask", "", "quota", "fromTag", "connectionCount", "addPreloadVideo", "", "videoItemList", "", "downloadExpect", "calcPreloadPercent", "mediaId", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "cacheSecondsDowngrade", "isGoodNetwork", "cancelAllPreloadTask", "cancelPreloadTask", "videoItem", "checkCanPlay", "item", "checkPreLoad", "checkPreloadOnVideoPlay", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$MoovReadyInfo;", "createVideoPreloadCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "url", "path", "preloadPercent", "getNetworkSpeed", "isBadNetwork", "isLocalVideo", "makrFinish", "storyId", "markCurrentPlay", "markOnVideoFirstFrameDraw", "needPreLoad", "onVideoSourceChange", "preloadVideoWithPercent", "percent", "taskInfo", "queryQuota", "setPreloadQueueFromGallery", "groupItems", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "positionV", "positionH", "skipPosition", "startPreLoad", "checkNet", "taskConnectionCount", "index", "upgrades", "GroupData", "MoovReadyInfo", "TaskInfo", "VideoPreloadTaskCallback", "VideoTaskCallTask", "plugin-story_release"})
 public final class m
 {
-  private static volatile Long yAA;
-  private static long yAB;
-  private static long yAC;
-  public static final m yAD;
-  private static j yAp;
-  private static int yAq;
-  private static int yAr;
-  private static int yAs;
-  private static final Map<String, com.tencent.mm.plugin.story.f.d.j> yAt;
-  private static final Map<String, Integer> yAu;
-  private static final Set<String> yAv;
-  private static final List<c> yAw;
-  private static int yAx;
-  private static a yAy;
-  private static volatile String yAz;
-  private static long ymk;
+  private static j zND;
+  private static int zNE;
+  private static int zNF;
+  private static int zNG;
+  private static final Map<String, com.tencent.mm.plugin.story.f.d.j> zNH;
+  private static final Map<String, Integer> zNI;
+  private static final Set<String> zNJ;
+  private static final List<c> zNK;
+  private static int zNL;
+  private static a zNM;
+  private static volatile String zNN;
+  private static volatile Long zNO;
+  private static long zNP;
+  private static long zNQ;
+  public static final m zNR;
+  private static long zzJ;
   
   static
   {
     AppMethodBeat.i(120574);
-    yAD = new m();
-    yAp = new j();
+    zNR = new m();
+    zND = new j();
     Object localObject = Collections.synchronizedMap((Map)new HashMap());
     k.g(localObject, "Collections.synchronized…tring, StoryVideoItem>())");
-    yAt = (Map)localObject;
+    zNH = (Map)localObject;
     localObject = Collections.synchronizedMap((Map)new HashMap());
     k.g(localObject, "Collections.synchronized…p(HashMap<String, Int>())");
-    yAu = (Map)localObject;
+    zNI = (Map)localObject;
     localObject = Collections.synchronizedSet((Set)new HashSet());
     k.g(localObject, "Collections.synchronizedSet(HashSet<String>())");
-    yAv = (Set)localObject;
+    zNJ = (Set)localObject;
     localObject = Collections.synchronizedList((List)new LinkedList());
     k.g(localObject, "Collections.synchronized…t(LinkedList<TaskInfo>())");
-    yAw = (List)localObject;
-    yAx = 3;
-    yAy = new a((List)new ArrayList());
+    zNK = (List)localObject;
+    zNL = 3;
+    zNM = new a((List)new ArrayList());
     AppMethodBeat.o(120574);
   }
   
-  private static int OP(int paramInt)
+  private static int QV(int paramInt)
   {
     AppMethodBeat.i(120564);
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "taskConnectionCount: ".concat(String.valueOf(paramInt)));
-    List localList = yAp.yzb;
-    if (paramInt < yAp.yzb.size()) {}
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "taskConnectionCount: ".concat(String.valueOf(paramInt)));
+    List localList = zND.zMp;
+    if (paramInt < zND.zMp.size()) {}
     for (;;)
     {
       paramInt = ((Number)localList.get(paramInt)).intValue();
       AppMethodBeat.o(120564);
       return paramInt;
-      paramInt = yAp.yzb.size() - 1;
+      paramInt = zND.zMp.size() - 1;
     }
   }
   
-  private static int a(String paramString, cym paramcym, int paramInt, boolean paramBoolean)
+  private static int a(String paramString, ddy paramddy, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(120569);
-    float f = paramcym.EqD;
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "calcPreloadPercent, cacheSecondsDowngrade:" + paramInt + ", mediaId:" + paramString + ", duration:" + f + ", isGoodNetwork:" + paramBoolean + " media:" + paramcym.EqD);
+    float f = paramddy.FNF;
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "calcPreloadPercent, cacheSecondsDowngrade:" + paramInt + ", mediaId:" + paramString + ", duration:" + f + ", isGoodNetwork:" + paramBoolean + " media:" + paramddy.FNF);
     int i;
     if (paramBoolean)
     {
@@ -96,13 +96,13 @@ public final class m
       if (f > 0.0F) {
         break label135;
       }
-      paramInt = yAp.yyW;
+      paramInt = zND.zMk;
     }
     for (;;)
     {
       i = paramInt;
-      if (paramInt <= yAp.yyW) {
-        i = yAp.yyW;
+      if (paramInt <= zND.zMk) {
+        i = zND.zMk;
       }
       AppMethodBeat.o(120569);
       return i;
@@ -126,7 +126,7 @@ public final class m
         AppMethodBeat.i(120563);
         k.h(paramj, "videoItem");
         k.h(paramc, "taskInfo");
-        if ((paramj.dHW()) || (bt.isNullOrNil(paramj.yhP.Url)))
+        if ((paramj.dWx()) || (bs.isNullOrNil(paramj.zuP.Url)))
         {
           AppMethodBeat.o(120563);
           bool = false;
@@ -134,56 +134,56 @@ public final class m
         }
         if (i(paramj))
         {
-          ad.i("MicroMsg.StoryVideoPreloadMgr", "preloadVideoWithPercent, isLocalVideo: " + paramj.yhP.Url);
+          ac.i("MicroMsg.StoryVideoPreloadMgr", "preloadVideoWithPercent, isLocalVideo: " + paramj.zuP.Url);
           AppMethodBeat.o(120563);
           bool = false;
           continue;
         }
-        String str2 = paramj.yhP.Url;
-        String str1 = paramc.hxP;
-        Object localObject1 = s.ygj;
+        String str2 = paramj.zuP.Url;
+        String str1 = paramc.hYq;
+        Object localObject1 = s.ztj;
         localObject1 = s.a(paramj);
-        ad.i("MicroMsg.StoryVideoPreloadMgr", "preloadVideoWithPercent, " + str1 + ", " + paramInt1 + ", playingMediaId:" + yAz + ", " + ((com.tencent.mm.plugin.story.i.n)localObject1).field_filePath + ", " + str2 + "  videoCache " + localObject1);
-        if ((str1 == null) || (d.n.n.I(yAz, str1, false))) {
+        ac.i("MicroMsg.StoryVideoPreloadMgr", "preloadVideoWithPercent, " + str1 + ", " + paramInt1 + ", playingMediaId:" + zNN + ", " + ((com.tencent.mm.plugin.story.i.n)localObject1).field_filePath + ", " + str2 + "  videoCache " + localObject1);
+        if ((str1 == null) || (d.n.n.I(zNN, str1, false))) {
           break label646;
         }
-        Object localObject2 = s.ygj;
-        i.aMF(s.arB(paramj.username));
+        Object localObject2 = s.ztj;
+        i.aSh(s.awK(paramj.username));
         k.g(str2, "url");
         localObject1 = ((com.tencent.mm.plugin.story.i.n)localObject1).field_filePath;
         k.g(localObject1, "videoCache.field_filePath");
-        ad.i("MicroMsg.StoryVideoPreloadMgr", "createVideoPreloadCDNTask, mediaId:" + str1 + ", path:" + (String)localObject1 + ", url:" + str2 + ", preloadPercent:" + paramInt1 + ", connectionCount:" + paramInt2);
+        ac.i("MicroMsg.StoryVideoPreloadMgr", "createVideoPreloadCDNTask, mediaId:" + str1 + ", path:" + (String)localObject1 + ", url:" + str2 + ", preloadPercent:" + paramInt1 + ", connectionCount:" + paramInt2);
         localObject2 = new com.tencent.mm.i.h();
         ((com.tencent.mm.i.h)localObject2).field_mediaId = str1;
         ((com.tencent.mm.i.h)localObject2).url = str2;
-        ((com.tencent.mm.i.h)localObject2).fnW = 2;
-        ((com.tencent.mm.i.h)localObject2).foc = 2;
-        ((com.tencent.mm.i.h)localObject2).fnX = 6;
-        ((com.tencent.mm.i.h)localObject2).foh = paramInt1;
+        ((com.tencent.mm.i.h)localObject2).frq = 2;
+        ((com.tencent.mm.i.h)localObject2).frw = 2;
+        ((com.tencent.mm.i.h)localObject2).frr = 6;
+        ((com.tencent.mm.i.h)localObject2).frB = paramInt1;
         ((com.tencent.mm.i.h)localObject2).field_preloadRatio = paramInt1;
         ((com.tencent.mm.i.h)localObject2).concurrentCount = 4;
         ((com.tencent.mm.i.h)localObject2).field_fullpath = ((String)localObject1);
-        ((com.tencent.mm.i.h)localObject2).fnH = ((g.a)new e());
-        ((com.tencent.mm.i.h)localObject2).fnY = ((g.b)new d(bt.GC()));
+        ((com.tencent.mm.i.h)localObject2).frb = ((g.a)new e());
+        ((com.tencent.mm.i.h)localObject2).frs = ((g.b)new d(bs.Gn()));
         ((com.tencent.mm.i.h)localObject2).connectionCount = paramInt2;
-        ((com.tencent.mm.i.h)localObject2).field_fileType = com.tencent.mm.i.a.fne;
-        ((com.tencent.mm.i.h)localObject2).field_requestVideoFormat = com.tencent.mm.modelcontrol.d.H(2, (String)localObject1);
-        com.tencent.mm.ao.f.awL().d((com.tencent.mm.i.g)localObject2);
-        ad.i("MicroMsg.StoryVideoPreloadMgr", "preloadVideoWithPercent:" + localObject2 + ", currentSpeed:" + CdnLogic.getRecentAverageSpeed(2));
-        yAt.put(str1, paramj);
-        yAu.put(str1, Integer.valueOf(paramInt1));
-        paramj = yAw.iterator();
+        ((com.tencent.mm.i.h)localObject2).field_fileType = com.tencent.mm.i.a.fqy;
+        ((com.tencent.mm.i.h)localObject2).field_requestVideoFormat = com.tencent.mm.modelcontrol.d.I(2, (String)localObject1);
+        com.tencent.mm.an.f.aDD().e((com.tencent.mm.i.g)localObject2);
+        ac.i("MicroMsg.StoryVideoPreloadMgr", "preloadVideoWithPercent:" + localObject2 + ", currentSpeed:" + CdnLogic.getRecentAverageSpeed(2));
+        zNH.put(str1, paramj);
+        zNI.put(str1, Integer.valueOf(paramInt1));
+        paramj = zNK.iterator();
         paramInt1 = 0;
         if (!paramj.hasNext()) {
           break label627;
         }
-        if (k.g(((c)paramj.next()).hxP, paramc.hxP))
+        if (k.g(((c)paramj.next()).hYq, paramc.hYq))
         {
           if (paramInt1 <= 0) {
             break label632;
           }
-          yAw.set(paramInt1, paramc);
-          yAv.remove(str1);
+          zNK.set(paramInt1, paramc);
+          zNJ.remove(str1);
           bool = true;
           AppMethodBeat.o(120563);
           continue;
@@ -196,7 +196,7 @@ public final class m
       paramInt1 = -1;
       continue;
       label632:
-      yAw.add(paramc);
+      zNK.add(paramc);
       continue;
       label646:
       AppMethodBeat.o(120563);
@@ -208,11 +208,11 @@ public final class m
   {
     AppMethodBeat.i(120556);
     k.h(paramj, "item");
-    Object localObject = s.ygj;
+    Object localObject = s.ztj;
     localObject = s.a(paramj);
-    if (((com.tencent.mm.plugin.story.i.n)localObject).dKR())
+    if (((com.tencent.mm.plugin.story.i.n)localObject).dZs())
     {
-      ad.v("MicroMsg.StoryVideoPreloadMgr", "z checkCanPlay downloadFinish " + paramj.dAu);
+      ac.v("MicroMsg.StoryVideoPreloadMgr", "z checkCanPlay downloadFinish " + paramj.dyg);
       AppMethodBeat.o(120556);
       return 1;
     }
@@ -221,9 +221,9 @@ public final class m
       AppMethodBeat.o(120556);
       return 0;
     }
-    if (((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize * 100.0F >= yAp.yyW)
+    if (((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize * 100.0F >= zND.zMk)
     {
-      ad.v("MicroMsg.StoryVideoPreloadMgr", "z checkCanPlay cachesize " + ((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize + " totalSize: " + ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize);
+      ac.v("MicroMsg.StoryVideoPreloadMgr", "z checkCanPlay cachesize " + ((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize + " totalSize: " + ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize);
       AppMethodBeat.o(120556);
       return 1;
     }
@@ -235,18 +235,18 @@ public final class m
   {
     AppMethodBeat.i(120551);
     k.h(???, "groupItems");
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "setPreloadQueueFromGallery, galleryItems size:" + ???.size() + ", positionV:" + paramInt1 + "  positionH:" + paramInt2 + ", skipPosition:true");
-    Object localObject1 = yAy;
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "setPreloadQueueFromGallery, galleryItems size:" + ???.size() + ", positionV:" + paramInt1 + "  positionH:" + paramInt2 + ", skipPosition:true");
+    Object localObject1 = zNM;
     k.h(???, "galleryItems");
     int i;
-    if (((a)localObject1).gf(???)) {
+    if (((a)localObject1).gm(???)) {
       i = 0;
     }
     while (i != 0)
     {
       AppMethodBeat.o(120551);
       return false;
-      if ((((a)localObject1).yAM != paramInt2) || (((a)localObject1).yAL != paramInt1)) {
+      if ((((a)localObject1).zOa != paramInt2) || (((a)localObject1).zNZ != paramInt1)) {
         i = 0;
       } else {
         i = 1;
@@ -257,15 +257,15 @@ public final class m
       localObject1 = (com.tencent.mm.plugin.story.f.d.h)((List)???.get(paramInt1)).get(paramInt2);
       if (localObject1 != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.story.f.d.h)localObject1).yhF;
+        localObject1 = ((com.tencent.mm.plugin.story.f.d.h)localObject1).zuF;
         if (localObject1 != null) {
-          yAB = ((com.tencent.mm.plugin.story.f.d.j)localObject1).dAu;
+          zNP = ((com.tencent.mm.plugin.story.f.d.j)localObject1).dyg;
         }
       }
     }
-    ymk = 0L;
-    yAx = 0;
-    yAy = new a(???, paramInt1, paramInt2, yAy);
+    zzJ = 0L;
+    zNL = 0;
+    zNM = new a(???, paramInt1, paramInt2, zNM);
     localObject1 = new ArrayList();
     for (;;)
     {
@@ -278,28 +278,28 @@ public final class m
         {
           localObject5 = ((Iterator)localObject4).next();
           if (i < 0) {
-            d.a.j.fvx();
+            d.a.j.fOc();
           }
           localObject5 = (List)localObject5;
           if ((i < paramInt1) || (((List)localObject5).size() <= 0)) {
             break label957;
           }
-          ((ArrayList)localObject1).add(Integer.valueOf(((com.tencent.mm.plugin.story.f.d.h)((List)localObject5).get(0)).yhF.dzf));
+          ((ArrayList)localObject1).add(Integer.valueOf(((com.tencent.mm.plugin.story.f.d.h)((List)localObject5).get(0)).zuF.dwR));
           break label957;
         }
-        localObject4 = y.JfV;
+        localObject4 = y.KTp;
         ??? = new ArrayList();
         if ((paramInt1 < ???.size()) && (paramInt2 < ((List)???.get(paramInt1)).size()))
         {
           i = ((List)???.get(paramInt1)).size();
           if (paramInt2 < i)
           {
-            ((ArrayList)???).add(Integer.valueOf(((com.tencent.mm.plugin.story.f.d.h)((List)???.get(paramInt1)).get(paramInt2)).yhF.dzf));
+            ((ArrayList)???).add(Integer.valueOf(((com.tencent.mm.plugin.story.f.d.h)((List)???.get(paramInt1)).get(paramInt2)).zuF.dwR));
             paramInt2 += 1;
           }
         }
       }
-      Object localObject4 = (Iterable)yAw;
+      Object localObject4 = (Iterable)zNK;
       ??? = (Collection)new ArrayList();
       localObject4 = ((Iterable)localObject4).iterator();
       label575:
@@ -307,7 +307,7 @@ public final class m
       {
         localObject5 = ((Iterator)localObject4).next();
         c localc = (c)localObject5;
-        if ((!((ArrayList)localObject1).contains(Integer.valueOf(localc.yAR.dzf))) && (!((ArrayList)???).contains(Integer.valueOf(localc.yAR.dzf)))) {}
+        if ((!((ArrayList)localObject1).contains(Integer.valueOf(localc.zOf.dwR))) && (!((ArrayList)???).contains(Integer.valueOf(localc.zOf.dwR)))) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
           if (paramInt1 == 0) {
@@ -321,27 +321,27 @@ public final class m
       {
         localObject1 = ???.iterator();
         if (((Iterator)localObject1).hasNext()) {
-          l(((c)((Iterator)localObject1).next()).yAR);
+          l(((c)((Iterator)localObject1).next()).zOf);
         }
       }
-      y localy = y.JfV;
-      yAq = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pjt, 1);
-      paramInt1 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pju, 450);
-      paramInt2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pjv, 200);
-      yAr = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pjw, 0);
-      yAs = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pjA, 100);
-      yAp.yyX = paramInt1;
-      yAp.yyY = paramInt2;
+      y localy = y.KTp;
+      zNE = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pMK, 1);
+      paramInt1 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pML, 450);
+      paramInt2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pMM, 200);
+      zNF = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pMN, 0);
+      zNG = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pMR, 100);
+      zND.zMl = paramInt1;
+      zND.zMm = paramInt2;
       i = CdnLogic.getRecentAverageSpeed(2);
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "setPreloadQueueFromGallery clicfg_story_preload_strategy " + yAq + " clicfg_story_preload_speed_good:" + paramInt1 + " clicfg_story_preload_speed_bad:" + paramInt2 + " clicfg_story_preload_force_preload " + yAr + "  clicfg_story_preload_force_canload: " + yAs + " speed:" + i);
-      if ((i > 0) && (yAs > 0) && (i < yAs))
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "setPreloadQueueFromGallery clicfg_story_preload_strategy " + zNE + " clicfg_story_preload_speed_good:" + paramInt1 + " clicfg_story_preload_speed_bad:" + paramInt2 + " clicfg_story_preload_force_preload " + zNF + "  clicfg_story_preload_force_canload: " + zNG + " speed:" + i);
+      if ((i > 0) && (zNG > 0) && (i < zNG))
       {
-        ad.w("MicroMsg.StoryVideoPreloadMgr", "setPreloadQueueFromGallery speed too low then pass " + i + " clicfg_story_preload_force_canload: " + yAs);
+        ac.w("MicroMsg.StoryVideoPreloadMgr", "setPreloadQueueFromGallery speed too low then pass " + i + " clicfg_story_preload_force_canload: " + zNG);
         ??? = new LinkedList();
-        ???.addAll((Collection)yAw);
+        ???.addAll((Collection)zNK);
         ??? = ???.iterator();
         while (???.hasNext()) {
-          l(((c)???.next()).yAR);
+          l(((c)???.next()).zOf);
         }
       }
       AppMethodBeat.o(120551);
@@ -351,10 +351,47 @@ public final class m
     }
   }
   
-  private static boolean dLA()
+  public static j dZX()
+  {
+    return zND;
+  }
+  
+  private static List<Integer> dZY()
+  {
+    AppMethodBeat.i(120550);
+    if (eab())
+    {
+      localList = zND.zMo;
+      AppMethodBeat.o(120550);
+      return localList;
+    }
+    List localList = zND.zMn;
+    AppMethodBeat.o(120550);
+    return localList;
+  }
+  
+  public static void dZZ()
+  {
+    AppMethodBeat.i(120568);
+    ac.m("MicroMsg.StoryVideoPreloadMgr", "cancelAllPreloadTask", new Object[0]);
+    Iterator localIterator = zNH.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "cancelAllPreloadTask ".concat(String.valueOf(str)));
+      com.tencent.mm.an.f.aDD().BR(str);
+    }
+    zNH.clear();
+    zNI.clear();
+    zNM = new a((List)new ArrayList());
+    zNK.clear();
+    AppMethodBeat.o(120568);
+  }
+  
+  private static boolean eaa()
   {
     AppMethodBeat.i(120570);
-    if (CdnLogic.getRecentAverageSpeed(2) >= yAp.yyX)
+    if (CdnLogic.getRecentAverageSpeed(2) >= zND.zMl)
     {
       AppMethodBeat.o(120570);
       return true;
@@ -363,10 +400,10 @@ public final class m
     return false;
   }
   
-  private static boolean dLB()
+  private static boolean eab()
   {
     AppMethodBeat.i(120571);
-    int i = yAp.yyY;
+    int i = zND.zMm;
     int j = CdnLogic.getRecentAverageSpeed(2);
     if (1 > j) {}
     while (i < j)
@@ -378,70 +415,33 @@ public final class m
     return true;
   }
   
-  public static int dLC()
+  public static int eac()
   {
-    AppMethodBeat.i(204836);
+    AppMethodBeat.i(210147);
     int i = CdnLogic.getRecentAverageSpeed(2);
-    AppMethodBeat.o(204836);
+    AppMethodBeat.o(210147);
     return i;
-  }
-  
-  public static j dLx()
-  {
-    return yAp;
-  }
-  
-  private static List<Integer> dLy()
-  {
-    AppMethodBeat.i(120550);
-    if (dLB())
-    {
-      localList = yAp.yza;
-      AppMethodBeat.o(120550);
-      return localList;
-    }
-    List localList = yAp.yyZ;
-    AppMethodBeat.o(120550);
-    return localList;
-  }
-  
-  public static void dLz()
-  {
-    AppMethodBeat.i(120568);
-    ad.m("MicroMsg.StoryVideoPreloadMgr", "cancelAllPreloadTask", new Object[0]);
-    Iterator localIterator = yAt.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "cancelAllPreloadTask ".concat(String.valueOf(str)));
-      com.tencent.mm.ao.f.awL().xL(str);
-    }
-    yAt.clear();
-    yAu.clear();
-    yAy = new a((List)new ArrayList());
-    yAw.clear();
-    AppMethodBeat.o(120568);
   }
   
   private static boolean i(com.tencent.mm.plugin.story.f.d.j paramj)
   {
     AppMethodBeat.i(120562);
-    if (paramj.dHW())
+    if (paramj.dWx())
     {
       AppMethodBeat.o(120562);
       return true;
     }
-    s locals = s.ygj;
-    if (i.aMN(s.a(paramj.yhP)) > 0L)
+    s locals = s.ztj;
+    if (i.aSp(s.a(paramj.zuP)) > 0L)
     {
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "isLocalVideo video downloadDone " + paramj.yhP.taskId + " username:" + paramj.username);
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "isLocalVideo video downloadDone " + paramj.zuP.taskId + " username:" + paramj.username);
       AppMethodBeat.o(120562);
       return true;
     }
-    locals = s.ygj;
-    if (s.a(paramj).dKR())
+    locals = s.ztj;
+    if (s.a(paramj).dZs())
     {
-      ad.i("MicroMsg.StoryVideoPreloadMgr", " isLocalVideo video download finish " + paramj.yhP.taskId + " username:" + paramj.username);
+      ac.i("MicroMsg.StoryVideoPreloadMgr", " isLocalVideo video download finish " + paramj.zuP.taskId + " username:" + paramj.username);
       AppMethodBeat.o(120562);
       return true;
     }
@@ -453,27 +453,27 @@ public final class m
   {
     AppMethodBeat.i(120565);
     k.h(paramj, "videoItem");
-    Object localObject = s.ygj;
-    localObject = s.bQ(paramj.hgr, paramj.yhP.Url);
-    yAz = (String)localObject;
-    yAA = Long.valueOf(paramj.dAu);
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "markCurrentPlay:" + yAz + " then remove it from preload");
-    Iterator localIterator = ((Iterable)yAw).iterator();
+    Object localObject = s.ztj;
+    localObject = s.bU(paramj.hGU, paramj.zuP.Url);
+    zNN = (String)localObject;
+    zNO = Long.valueOf(paramj.dyg);
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "markCurrentPlay:" + zNN + " then remove it from preload");
+    Iterator localIterator = ((Iterable)zNK).iterator();
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
       paramj = localIterator.next();
-    } while (!k.g(localObject, ((c)paramj).hxP));
+    } while (!k.g(localObject, ((c)paramj).hYq));
     for (;;)
     {
       paramj = (c)paramj;
       if (paramj == null) {
         break;
       }
-      yAw.remove(paramj);
-      l(paramj.yAR);
+      zNK.remove(paramj);
+      l(paramj.zOf);
       AppMethodBeat.o(120565);
       return;
       paramj = null;
@@ -485,30 +485,30 @@ public final class m
   {
     AppMethodBeat.i(120566);
     k.h(paramj, "videoItem");
-    Object localObject1 = s.ygj;
-    localObject1 = s.bQ(paramj.hgr, paramj.yhP.Url);
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "checkPreloadOnVideoPlay:".concat(String.valueOf(localObject1)));
-    Object localObject2 = s.ygj;
+    Object localObject1 = s.ztj;
+    localObject1 = s.bU(paramj.hGU, paramj.zuP.Url);
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "checkPreloadOnVideoPlay:".concat(String.valueOf(localObject1)));
+    Object localObject2 = s.ztj;
     localObject2 = s.a(paramj);
     if ((((com.tencent.mm.plugin.story.i.n)localObject2).field_cacheSize > 0) && (((com.tencent.mm.plugin.story.i.n)localObject2).field_totalSize > 0))
     {
       float f = ((com.tencent.mm.plugin.story.i.n)localObject2).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject2).field_totalSize;
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "hit cache, mediaId:" + (String)localObject1 + ", cachePercent:" + f + ", filePath:" + ((com.tencent.mm.plugin.story.i.n)localObject2).field_filePath);
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "hit cache, mediaId:" + (String)localObject1 + ", cachePercent:" + f + ", filePath:" + ((com.tencent.mm.plugin.story.i.n)localObject2).field_filePath);
       localObject2 = ((com.tencent.mm.plugin.story.i.n)localObject2).field_filePath;
       CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
       long[] arrayOfLong = new long[2];
       localC2CDownloadRequest.fileKey = ((String)localObject1);
       localC2CDownloadRequest.fileType = 6;
-      localC2CDownloadRequest.url = paramj.yhP.Url;
+      localC2CDownloadRequest.url = paramj.zuP.Url;
       localC2CDownloadRequest.setSavePath((String)localObject2);
-      localC2CDownloadRequest.requestVideoFormat = com.tencent.mm.modelcontrol.d.H(1, (String)localObject2);
+      localC2CDownloadRequest.requestVideoFormat = com.tencent.mm.modelcontrol.d.I(1, (String)localObject2);
       boolean bool = CdnLogic.queryVideoMoovInfo(localC2CDownloadRequest, arrayOfLong);
-      ad.i("MicroMsg.StoryVideoPreloadMgr", (String)localObject1 + " queryMoovReady: " + bool + ", offset:" + arrayOfLong[0] + ", length:" + arrayOfLong[1] + ", preloadFinish:" + d.a.j.a((Iterable)yAv, localObject1));
-      paramj = new b(true, arrayOfLong[0], arrayOfLong[1], d.a.j.a((Iterable)yAv, localObject1));
+      ac.i("MicroMsg.StoryVideoPreloadMgr", (String)localObject1 + " queryMoovReady: " + bool + ", offset:" + arrayOfLong[0] + ", length:" + arrayOfLong[1] + ", preloadFinish:" + d.a.j.a((Iterable)zNJ, localObject1));
+      paramj = new b(true, arrayOfLong[0], arrayOfLong[1], d.a.j.a((Iterable)zNJ, localObject1));
       AppMethodBeat.o(120566);
       return paramj;
     }
-    ad.i("MicroMsg.StoryVideoPreloadMgr", (String)localObject1 + " not hit cache or moov not ready");
+    ac.i("MicroMsg.StoryVideoPreloadMgr", (String)localObject1 + " not hit cache or moov not ready");
     paramj = new b(false, 0L, 0L, false);
     AppMethodBeat.o(120566);
     return paramj;
@@ -518,27 +518,27 @@ public final class m
   {
     AppMethodBeat.i(120567);
     k.h(paramj, "videoItem");
-    Object localObject = s.ygj;
-    localObject = s.bQ(paramj.hgr, paramj.yhP.Url);
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "cancelPreloadTask, videoItem:".concat(String.valueOf(localObject)));
-    com.tencent.mm.ao.f.awL().xL((String)localObject);
-    Iterator localIterator = ((Iterable)yAw).iterator();
+    Object localObject = s.ztj;
+    localObject = s.bU(paramj.hGU, paramj.zuP.Url);
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "cancelPreloadTask, videoItem:".concat(String.valueOf(localObject)));
+    com.tencent.mm.an.f.aDD().BR((String)localObject);
+    Iterator localIterator = ((Iterable)zNK).iterator();
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
       paramj = localIterator.next();
-    } while (!k.g(((c)paramj).hxP, localObject));
+    } while (!k.g(((c)paramj).hYq, localObject));
     for (;;)
     {
       paramj = (c)paramj;
       if (paramj == null) {
         break;
       }
-      yAw.remove(paramj);
-      if (yAx > 0) {
-        yAx -= 1;
+      zNK.remove(paramj);
+      if (zNL > 0) {
+        zNL -= 1;
       }
       AppMethodBeat.o(120567);
       return;
@@ -550,34 +550,34 @@ public final class m
   private static boolean m(com.tencent.mm.plugin.story.f.d.j paramj)
   {
     AppMethodBeat.i(120573);
-    if ((i(paramj)) || (paramj.dHW()))
+    if ((i(paramj)) || (paramj.dWx()))
     {
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo fail, " + paramj + " isLocalVideo or fake video");
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo fail, " + paramj + " isLocalVideo or fake video");
       AppMethodBeat.o(120573);
       return false;
     }
-    Object localObject = s.ygj;
-    localObject = s.bQ(paramj.hgr, paramj.yhP.Url);
-    if ((!bt.isNullOrNil((String)localObject)) && (!bt.isNullOrNil(paramj.yhP.Url)) && (!d.n.n.I(yAz, (String)localObject, false)))
+    Object localObject = s.ztj;
+    localObject = s.bU(paramj.hGU, paramj.zuP.Url);
+    if ((!bs.isNullOrNil((String)localObject)) && (!bs.isNullOrNil(paramj.zuP.Url)) && (!d.n.n.I(zNN, (String)localObject, false)))
     {
       AppMethodBeat.o(120573);
       return true;
     }
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo:" + (String)localObject + ", already request preload or url " + paramj.yhP.Url);
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo:" + (String)localObject + ", already request preload or url " + paramj.zuP.Url);
     AppMethodBeat.o(120573);
     return false;
   }
   
-  private final void qX(boolean paramBoolean)
+  private final void rV(boolean paramBoolean)
   {
     int k = 1;
     AppMethodBeat.i(120557);
-    boolean bool1 = dLA();
-    boolean bool2 = dLB();
+    boolean bool1 = eaa();
+    boolean bool2 = eab();
     int i = CdnLogic.getRecentAverageSpeed(2);
-    if ((paramBoolean) && (i > 0) && (yAs > 0) && (i < yAs))
+    if ((paramBoolean) && (i > 0) && (zNG > 0) && (i < zNG))
     {
-      ad.w("MicroMsg.StoryVideoPreloadMgr", "speed too low then pass " + i + " clicfg_story_preload_force_canload: " + yAs + " callerFrom " + at.eFT());
+      ac.w("MicroMsg.StoryVideoPreloadMgr", "speed too low then pass " + i + " clicfg_story_preload_force_canload: " + zNG + " callerFrom " + as.eVo());
       AppMethodBeat.o(120557);
       return;
     }
@@ -585,26 +585,26 @@ public final class m
     if (bool2) {}
     for (i = 1;; i = 3)
     {
-      if (yAq == 1) {
+      if (zNE == 1) {
         i = k;
       }
       for (;;)
       {
-        ad.i("MicroMsg.StoryVideoPreloadMgr", "startPreloadQueue, isGoodNetwork:" + bool1 + ", isBadNetwork:" + bool2 + ", currentSpeed:" + CdnLogic.getRecentAverageSpeed(2) + " preloadRunningSet " + yAw.size() + " maxTaskNum " + i + " totalPreLoadOneItemSelect " + yAx + " checkNet " + paramBoolean + " callerFrom " + at.eFT());
-        List localList = dLy();
-        while ((yAw.size() < i) && (j < localList.size()) && (yAx < 3) && (r(((Number)localList.get(j)).intValue(), "startPreLoad", OP(j))))
+        ac.i("MicroMsg.StoryVideoPreloadMgr", "startPreloadQueue, isGoodNetwork:" + bool1 + ", isBadNetwork:" + bool2 + ", currentSpeed:" + CdnLogic.getRecentAverageSpeed(2) + " preloadRunningSet " + zNK.size() + " maxTaskNum " + i + " totalPreLoadOneItemSelect " + zNL + " checkNet " + paramBoolean + " callerFrom " + as.eVo());
+        List localList = dZY();
+        while ((zNK.size() < i) && (j < localList.size()) && (zNL < 3) && (t(((Number)localList.get(j)).intValue(), "startPreLoad", QV(j))))
         {
-          yAx += 1;
+          zNL += 1;
           j += 1;
         }
-        ad.i("MicroMsg.StoryVideoPreloadMgr", "startPreloadQueue finish loop preload queue, current queue size: " + yAw.size() + ", pullPreloadTaskNum:0, preloadVideoNum:" + j + " preloadRunningSet " + yAw.size() + " totalPreLoadOneItemSelect " + yAx + ' ');
+        ac.i("MicroMsg.StoryVideoPreloadMgr", "startPreloadQueue finish loop preload queue, current queue size: " + zNK.size() + ", pullPreloadTaskNum:0, preloadVideoNum:" + j + " preloadRunningSet " + zNK.size() + " totalPreLoadOneItemSelect " + zNL + ' ');
         AppMethodBeat.o(120557);
         return;
       }
     }
   }
   
-  private final boolean r(int paramInt1, String paramString, int paramInt2)
+  private final boolean t(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(120558);
     m localm;
@@ -619,13 +619,13 @@ public final class m
       for (;;)
       {
         localm = (m)this;
-        Object localObject1 = yAy;
+        Object localObject1 = zNM;
         i = 0;
         localo = null;
-        while ((i < ((a)localObject1).yAK.size()) && (localo == null))
+        while ((i < ((a)localObject1).zNY.size()) && (localo == null))
         {
-          localo = ((a)localObject1).dLG();
-          ad.i(a.TAG, "produceVideoItem walkVertical:" + ((a)localObject1).yAF + "  walkHorizontal:" + ((a)localObject1).yAG + " positionV:" + ((a)localObject1).yAL + " positionH:" + ((a)localObject1).yAM + ", ret:" + localo);
+          localo = ((a)localObject1).eag();
+          ac.i(a.TAG, "produceVideoItem walkVertical:" + ((a)localObject1).zNT + "  walkHorizontal:" + ((a)localObject1).zNU + " positionV:" + ((a)localObject1).zNZ + " positionH:" + ((a)localObject1).zOa + ", ret:" + localo);
           i += 1;
         }
         if (localo == null)
@@ -634,25 +634,25 @@ public final class m
           return false;
         }
         localj = (com.tencent.mm.plugin.story.f.d.j)localo.first;
-        String str = ((c)localo.second).hxP;
+        String str = ((c)localo.second).hYq;
         localObject1 = new StringBuilder("try preload mediaId ").append(str).append(" videoItem:").append(localj).append(" pos:").append((c)localo.second).append("  groupinfo ");
-        Object localObject2 = yAy;
-        ad.i("MicroMsg.StoryVideoPreloadMgr", new StringBuilder("positionV:").append(((a)localObject2).yAL).append(", positionH:").append(((a)localObject2).yAM).append(", walkVertical:").append(((a)localObject2).yAF).append(", walkHorizontal:").append(((a)localObject2).yAG).toString() + " quota:" + paramInt1 + "  fromTag:" + paramString);
-        localObject2 = ((Iterable)yAw).iterator();
+        Object localObject2 = zNM;
+        ac.i("MicroMsg.StoryVideoPreloadMgr", new StringBuilder("positionV:").append(((a)localObject2).zNZ).append(", positionH:").append(((a)localObject2).zOa).append(", walkVertical:").append(((a)localObject2).zNT).append(", walkHorizontal:").append(((a)localObject2).zNU).toString() + " quota:" + paramInt1 + "  fromTag:" + paramString);
+        localObject2 = ((Iterable)zNK).iterator();
         do
         {
           if (!((Iterator)localObject2).hasNext()) {
             break;
           }
           localObject1 = ((Iterator)localObject2).next();
-        } while (!k.g(((c)localObject1).hxP, str));
+        } while (!k.g(((c)localObject1).hYq, str));
         for (;;)
         {
           localObject1 = (c)localObject1;
-          if ((localObject1 == null) || (paramInt1 > ((c)localObject1).fph)) {
+          if ((localObject1 == null) || (paramInt1 > ((c)localObject1).fsH)) {
             break label451;
           }
-          ad.i("MicroMsg.StoryVideoPreloadMgr", "no need add quota " + paramInt1 + " cur:" + ((c)localObject1).fph + " fromTag:" + paramString);
+          ac.i("MicroMsg.StoryVideoPreloadMgr", "no need add quota " + paramInt1 + " cur:" + ((c)localObject1).fsH + " fromTag:" + paramString);
           break;
           localObject1 = null;
         }
@@ -668,13 +668,13 @@ public final class m
           if (localObject1 == null) {
             break label641;
           }
-          i = a(str, localj.yhP, paramInt1, dLA());
-          localObject1 = s.ygj;
+          i = a(str, localj.zuP, paramInt1, eaa());
+          localObject1 = s.ztj;
           localObject1 = s.a(localj);
-          if ((!((com.tencent.mm.plugin.story.i.n)localObject1).dKR()) && (((com.tencent.mm.plugin.story.i.n)localObject1).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject1).field_totalSize * 100.0F < i)) {
+          if ((!((com.tencent.mm.plugin.story.i.n)localObject1).dZs()) && (((com.tencent.mm.plugin.story.i.n)localObject1).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject1).field_totalSize * 100.0F < i)) {
             break label643;
           }
-          ad.i("MicroMsg.StoryVideoPreloadMgr", "pull preload video, " + str + ", already reach cache size! cacheSize:" + ((com.tencent.mm.plugin.story.i.n)localObject1).field_cacheSize + ", totalSize:" + ((com.tencent.mm.plugin.story.i.n)localObject1).field_totalSize + ", cachePercent:" + ((com.tencent.mm.plugin.story.i.n)localObject1).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject1).field_totalSize * 100.0F + "  fromTag:" + paramString);
+          ac.i("MicroMsg.StoryVideoPreloadMgr", "pull preload video, " + str + ", already reach cache size! cacheSize:" + ((com.tencent.mm.plugin.story.i.n)localObject1).field_cacheSize + ", totalSize:" + ((com.tencent.mm.plugin.story.i.n)localObject1).field_totalSize + ", cachePercent:" + ((com.tencent.mm.plugin.story.i.n)localObject1).field_cacheSize / ((com.tencent.mm.plugin.story.i.n)localObject1).field_totalSize * 100.0F + "  fromTag:" + paramString);
           break;
           i = 0;
           break label467;
@@ -683,7 +683,7 @@ public final class m
     } while (!localm.a(localj, i, paramInt2, (c)localo.second));
     label641:
     label643:
-    ((c)localo.second).fph = paramInt1;
+    ((c)localo.second).fsH = paramInt1;
     AppMethodBeat.o(120558);
     return true;
   }
@@ -693,11 +693,11 @@ public final class m
     int j = 0;
     AppMethodBeat.i(120560);
     k.h(paramList, "videoItemList");
-    ad.m("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList " + paramList.size(), new Object[0]);
-    boolean bool1 = dLA();
-    boolean bool2 = dLB();
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList, isGoodNetwork:" + bool1 + ", isBadNetwork:" + bool2 + ", currentSpeed:" + CdnLogic.getRecentAverageSpeed(2) + " preloadRunningSet " + yAw.size() + " downloadExpect " + paramInt);
-    List localList = dLy();
+    ac.m("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList " + paramList.size(), new Object[0]);
+    boolean bool1 = eaa();
+    boolean bool2 = eab();
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList, isGoodNetwork:" + bool1 + ", isBadNetwork:" + bool2 + ", currentSpeed:" + CdnLogic.getRecentAverageSpeed(2) + " preloadRunningSet " + zNK.size() + " downloadExpect " + paramInt);
+    List localList = dZY();
     for (;;)
     {
       com.tencent.mm.plugin.story.f.d.j localj;
@@ -719,24 +719,24 @@ public final class m
         if (paramInt > 0)
         {
           i = paramInt;
-          k = OP(j);
-          paramList = s.ygj;
-          str = s.bQ(localj.hgr, localj.yhP.Url);
-          m = a(str, localj.yhP, i, dLA());
-          paramList = s.ygj;
+          k = QV(j);
+          paramList = s.ztj;
+          str = s.bU(localj.hGU, localj.zuP.Url);
+          m = a(str, localj.zuP, i, eaa());
+          paramList = s.ztj;
           localn = s.a(localj);
-          Iterator localIterator2 = ((Iterable)yAw).iterator();
+          Iterator localIterator2 = ((Iterable)zNK).iterator();
           if (!localIterator2.hasNext()) {
             break label585;
           }
           paramList = localIterator2.next();
-          if (!k.g(((c)paramList).hxP, str)) {
+          if (!k.g(((c)paramList).hYq, str)) {
             continue;
           }
           if (paramList == null) {
             break label382;
           }
-          ad.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList, " + str + ", already prealoding!");
+          ac.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList, " + str + ", already prealoding!");
         }
       }
       label532:
@@ -747,22 +747,22 @@ public final class m
       }
       else
       {
-        i = ((Number)d.a.j.iA(localList)).intValue();
+        i = ((Number)d.a.j.iQ(localList)).intValue();
         continue;
         label382:
-        if ((localn.dKR()) || (localn.field_cacheSize / localn.field_totalSize * 100.0F >= m))
+        if ((localn.dZs()) || (localn.field_cacheSize / localn.field_totalSize * 100.0F >= m))
         {
-          ad.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList, " + str + ", already reach cache size! cacheSize:" + localn.field_cacheSize + ", totalSize:" + localn.field_totalSize + ", cachePercent:" + localn.field_cacheSize / localn.field_totalSize * 100.0F);
+          ac.i("MicroMsg.StoryVideoPreloadMgr", "addPreloadVideo withList, " + str + ", already reach cache size! cacheSize:" + localn.field_cacheSize + ", totalSize:" + localn.field_totalSize + ", cachePercent:" + localn.field_cacheSize / localn.field_totalSize * 100.0F);
         }
         else
         {
           paramList = new c(0, j, localj, i, k);
-          if (yAD.a(localj, m, k, paramList))
+          if (zNR.a(localj, m, k, paramList))
           {
             j += 1;
             continue;
-            paramList = y.JfV;
-            ad.i("MicroMsg.StoryVideoPreloadMgr", "finish addPreloadVideo withList, total pull video task:" + j + " preloadRunningSet " + yAw.size());
+            paramList = y.KTp;
+            ac.i("MicroMsg.StoryVideoPreloadMgr", "finish addPreloadVideo withList, total pull video task:" + j + " preloadRunningSet " + zNK.size());
             AppMethodBeat.o(120560);
             return;
             paramList = null;
@@ -776,107 +776,107 @@ public final class m
   {
     AppMethodBeat.i(120555);
     k.h(paramj, "item");
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "checkPreLoad " + paramj + ' ' + at.eFT());
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "checkPreLoad " + paramj + ' ' + as.eVo());
     if (i(paramj))
     {
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "checkPreLoad checkCanPlay isLocalVideo");
-      qX(false);
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "checkPreLoad checkCanPlay isLocalVideo");
+      rV(false);
       AppMethodBeat.o(120555);
       return;
     }
     if (c(paramj) == 1)
     {
-      ad.i("MicroMsg.StoryVideoPreloadMgr", "checkPreLoad checkCanPlay true");
-      qX(true);
+      ac.i("MicroMsg.StoryVideoPreloadMgr", "checkPreLoad checkCanPlay true");
+      rV(true);
       AppMethodBeat.o(120555);
       return;
     }
-    if (yAr == 1) {
-      qX(true);
+    if (zNF == 1) {
+      rV(true);
     }
-    ad.i("MicroMsg.StoryVideoPreloadMgr", "nothing can checkPreLoad");
+    ac.i("MicroMsg.StoryVideoPreloadMgr", "nothing can checkPreLoad");
     AppMethodBeat.o(120555);
   }
   
-  public final void tZ(long paramLong)
+  public final void yC(long paramLong)
   {
     AppMethodBeat.i(120553);
-    if (ymk == paramLong)
+    if (zzJ == paramLong)
     {
       AppMethodBeat.o(120553);
       return;
     }
-    ymk = paramLong;
-    if (yAq == 0)
+    zzJ = paramLong;
+    if (zNE == 0)
     {
       AppMethodBeat.o(120553);
       return;
     }
-    a locala = yAy;
+    a locala = zNM;
     if (locala != null) {
-      locala.dLH();
+      locala.eah();
     }
-    qX(true);
+    rV(true);
     AppMethodBeat.o(120553);
   }
   
-  public final void ua(long paramLong)
+  public final void yD(long paramLong)
   {
     AppMethodBeat.i(120554);
-    Object localObject = yAA;
+    Object localObject = zNO;
     if (localObject == null) {}
-    while (yAC == paramLong)
+    while (zNQ == paramLong)
     {
       AppMethodBeat.o(120554);
       return;
       if (((Long)localObject).longValue() == paramLong) {
-        yAA = Long.valueOf(0L);
+        zNO = Long.valueOf(0L);
       }
     }
-    yAC = paramLong;
-    if (yAq == 0)
+    zNQ = paramLong;
+    if (zNE == 0)
     {
       AppMethodBeat.o(120554);
       return;
     }
-    if (yAs == 0)
+    if (zNG == 0)
     {
       AppMethodBeat.o(120554);
       return;
     }
-    if (yAw.size() > 0)
+    if (zNK.size() > 0)
     {
       AppMethodBeat.o(120554);
       return;
     }
-    localObject = yAy;
+    localObject = zNM;
     if (localObject != null) {
-      ((a)localObject).dLH();
+      ((a)localObject).eah();
     }
-    qX(false);
+    rV(false);
     AppMethodBeat.o(120554);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData;", "", "groupItems", "", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "positionV", "", "positionH", "lastGroup", "skipPosition", "", "(Ljava/util/List;IILcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData;Z)V", "MAX_PRELOAD_COUNT", "horizontalList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "produceList", "Lkotlin/Function0;", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "verticalList", "walkHorizontal", "walkIndex", "walkVertical", "info", "", "isDataChange", "isSame", "galleryItems", "produce", "produceHorizontalVideoItem", "produceVerticalVideoItem", "produceVideoItem", "reset", "", "resetWalk", "Companion", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData;", "", "groupItems", "", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "positionV", "", "positionH", "lastGroup", "skipPosition", "", "(Ljava/util/List;IILcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData;Z)V", "MAX_PRELOAD_COUNT", "horizontalList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "produceList", "Lkotlin/Function0;", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "verticalList", "walkHorizontal", "walkIndex", "walkVertical", "info", "", "isDataChange", "isSame", "galleryItems", "produce", "produceHorizontalVideoItem", "produceVerticalVideoItem", "produceVideoItem", "reset", "", "resetWalk", "Companion", "plugin-story_release"})
   public static final class a
   {
     static final String TAG = "MicroMsg.GroupData.StoryVideoPreloadMgr";
-    public static final a yAO;
-    private final int yAE;
-    int yAF;
-    int yAG;
-    private int yAH;
-    private ArrayList<com.tencent.mm.plugin.story.f.d.h> yAI;
-    private ArrayList<com.tencent.mm.plugin.story.f.d.h> yAJ;
-    List<? extends d.g.a.a<d.o<com.tencent.mm.plugin.story.f.d.j, m.c>>> yAK;
-    int yAL;
-    int yAM;
-    private final boolean yAN;
+    public static final m.a.a zOc;
+    private final int zNS;
+    int zNT;
+    int zNU;
+    private int zNV;
+    private ArrayList<com.tencent.mm.plugin.story.f.d.h> zNW;
+    private ArrayList<com.tencent.mm.plugin.story.f.d.h> zNX;
+    List<? extends d.g.a.a<d.o<com.tencent.mm.plugin.story.f.d.j, m.c>>> zNY;
+    int zNZ;
+    int zOa;
+    private final boolean zOb;
     
     static
     {
       AppMethodBeat.i(120542);
-      yAO = new a((byte)0);
+      zOc = new m.a.a((byte)0);
       TAG = "MicroMsg.GroupData.StoryVideoPreloadMgr";
       AppMethodBeat.o(120542);
     }
@@ -884,18 +884,18 @@ public final class m
     public a(List<? extends List<com.tencent.mm.plugin.story.f.d.h>> arg1, int paramInt1, int paramInt2, a arg4)
     {
       AppMethodBeat.i(120541);
-      this.yAL = paramInt1;
-      this.yAM = paramInt2;
-      this.yAN = true;
-      this.yAE = 15;
-      this.yAI = new ArrayList();
-      this.yAJ = new ArrayList();
-      this.yAK = d.a.j.listOf(new d.g.a.a[] { (d.g.a.a)new b(this), (d.g.a.a)new c(this), (d.g.a.a)new d(this) });
-      if (((??? != null) && (this.yAL != ???.yAL)) || ((??? != null) && (this.yAM != ???.yAM)) || (gf(???))) {
+      this.zNZ = paramInt1;
+      this.zOa = paramInt2;
+      this.zOb = true;
+      this.zNS = 15;
+      this.zNW = new ArrayList();
+      this.zNX = new ArrayList();
+      this.zNY = d.a.j.listOf(new d.g.a.a[] { (d.g.a.a)new b(this), (d.g.a.a)new c(this), (d.g.a.a)new d(this) });
+      if (((??? != null) && (this.zNZ != ???.zNZ)) || ((??? != null) && (this.zOa != ???.zOa)) || (gm(???))) {
         reset();
       }
-      this.yAI.clear();
-      this.yAJ.clear();
+      this.zNW.clear();
+      this.zNX.clear();
       for (;;)
       {
         synchronized ((Iterable)???)
@@ -911,108 +911,108 @@ public final class m
             if (paramInt1 == 0) {
               continue;
             }
-            this.yAJ.add(localList.get(0));
+            this.zNX.add(localList.get(0));
           }
         }
         paramInt1 = 0;
       }
-      Object localObject = y.JfV;
-      if (this.yAL < ???.size())
+      Object localObject = y.KTp;
+      if (this.zNZ < ???.size())
       {
-        synchronized ((Iterable)???.get(this.yAL))
+        synchronized ((Iterable)???.get(this.zNZ))
         {
           ??? = ???.iterator();
           if (???.hasNext())
           {
             localObject = (com.tencent.mm.plugin.story.f.d.h)???.next();
-            this.yAI.add(localObject);
+            this.zNW.add(localObject);
           }
         }
-        ??? = y.JfV;
+        ??? = y.KTp;
         AppMethodBeat.o(120541);
         return;
       }
       AppMethodBeat.o(120541);
     }
     
-    private final d.o<com.tencent.mm.plugin.story.f.d.j, m.c> dLI()
+    private final d.o<com.tencent.mm.plugin.story.f.d.j, m.c> eai()
     {
       AppMethodBeat.i(120539);
       for (;;)
       {
-        if (this.yAN) {
-          this.yAF += 1;
+        if (this.zOb) {
+          this.zNT += 1;
         }
-        if (this.yAF >= this.yAJ.size())
+        if (this.zNT >= this.zNX.size())
         {
           AppMethodBeat.o(120539);
           return null;
         }
         try
         {
-          if (this.yAJ.size() > 0)
+          if (this.zNX.size() > 0)
           {
-            Object localObject1 = ((com.tencent.mm.plugin.story.f.d.h)this.yAJ.get(this.yAF)).yhF;
-            m localm = m.yAD;
+            Object localObject1 = ((com.tencent.mm.plugin.story.f.d.h)this.zNX.get(this.zNT)).zuF;
+            m localm = m.zNR;
             if (m.n((com.tencent.mm.plugin.story.f.d.j)localObject1)) {}
             while (localObject1 != null)
             {
-              localObject1 = new d.o(localObject1, new m.c(this.yAF, 0, (com.tencent.mm.plugin.story.f.d.j)localObject1));
+              localObject1 = new d.o(localObject1, new m.c(this.zNT, 0, (com.tencent.mm.plugin.story.f.d.j)localObject1));
               return localObject1;
               localObject1 = null;
             }
           }
-          if (this.yAN) {
+          if (this.zOb) {
             continue;
           }
-          this.yAF += 1;
+          this.zNT += 1;
         }
         finally
         {
-          if (!this.yAN) {
-            this.yAF += 1;
+          if (!this.zOb) {
+            this.zNT += 1;
           }
           AppMethodBeat.o(120539);
         }
       }
     }
     
-    private final d.o<com.tencent.mm.plugin.story.f.d.j, m.c> dLJ()
+    private final d.o<com.tencent.mm.plugin.story.f.d.j, m.c> eaj()
     {
       AppMethodBeat.i(120540);
       for (;;)
       {
-        if (this.yAN) {
-          this.yAG += 1;
+        if (this.zOb) {
+          this.zNU += 1;
         }
-        if (this.yAG >= this.yAI.size())
+        if (this.zNU >= this.zNW.size())
         {
           AppMethodBeat.o(120540);
           return null;
         }
         try
         {
-          if (this.yAI.size() > this.yAG)
+          if (this.zNW.size() > this.zNU)
           {
-            Object localObject1 = ((com.tencent.mm.plugin.story.f.d.h)this.yAI.get(this.yAG)).yhF;
-            m localm = m.yAD;
+            Object localObject1 = ((com.tencent.mm.plugin.story.f.d.h)this.zNW.get(this.zNU)).zuF;
+            m localm = m.zNR;
             if (m.n((com.tencent.mm.plugin.story.f.d.j)localObject1)) {}
             while (localObject1 != null)
             {
-              localObject1 = new d.o(localObject1, new m.c(this.yAF, this.yAG, (com.tencent.mm.plugin.story.f.d.j)localObject1));
+              localObject1 = new d.o(localObject1, new m.c(this.zNT, this.zNU, (com.tencent.mm.plugin.story.f.d.j)localObject1));
               return localObject1;
               localObject1 = null;
             }
           }
-          if (this.yAN) {
+          if (this.zOb) {
             continue;
           }
-          this.yAG += 1;
+          this.zNU += 1;
         }
         finally
         {
-          if (!this.yAN) {
-            this.yAG += 1;
+          if (!this.zOb) {
+            this.zNU += 1;
           }
           AppMethodBeat.o(120540);
         }
@@ -1021,47 +1021,47 @@ public final class m
     
     private final void reset()
     {
-      this.yAF = this.yAL;
-      this.yAG = this.yAM;
-      this.yAH = 0;
+      this.zNT = this.zNZ;
+      this.zNU = this.zOa;
+      this.zNV = 0;
     }
     
-    final d.o<com.tencent.mm.plugin.story.f.d.j, m.c> dLG()
+    final d.o<com.tencent.mm.plugin.story.f.d.j, m.c> eag()
     {
       AppMethodBeat.i(120536);
       try
       {
-        if (this.yAH > this.yAE)
+        if (this.zNV > this.zNS)
         {
-          ad.i(TAG, "stop preload now " + this.yAH);
+          ac.i(TAG, "stop preload now " + this.zNV);
           AppMethodBeat.o(120536);
           return null;
         }
-        d.o localo = (d.o)((d.g.a.a)this.yAK.get(this.yAH % this.yAK.size())).invoke();
-        this.yAH += 1;
+        d.o localo = (d.o)((d.g.a.a)this.zNY.get(this.zNV % this.zNY.size())).invoke();
+        this.zNV += 1;
         AppMethodBeat.o(120536);
         return localo;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace(TAG, (Throwable)localException, "error on produce", new Object[0]);
+        ac.printErrStackTrace(TAG, (Throwable)localException, "error on produce", new Object[0]);
         AppMethodBeat.o(120536);
       }
       return null;
     }
     
-    public final void dLH()
+    public final void eah()
     {
       AppMethodBeat.i(120538);
-      ad.i(TAG, "resetWalk");
+      ac.i(TAG, "resetWalk");
       reset();
       AppMethodBeat.o(120538);
     }
     
-    final boolean gf(List<? extends List<com.tencent.mm.plugin.story.f.d.h>> paramList)
+    final boolean gm(List<? extends List<com.tencent.mm.plugin.story.f.d.h>> paramList)
     {
       AppMethodBeat.i(120537);
-      if (paramList.size() == this.yAJ.size())
+      if (paramList.size() == this.zNX.size())
       {
         int j = paramList.size();
         int i = 0;
@@ -1072,7 +1072,7 @@ public final class m
             AppMethodBeat.o(120537);
             return true;
           }
-          if (((com.tencent.mm.plugin.story.f.d.h)this.yAJ.get(i)).yhF.dzf != ((com.tencent.mm.plugin.story.f.d.h)((List)paramList.get(i)).get(0)).yhF.dzf)
+          if (((com.tencent.mm.plugin.story.f.d.h)this.zNX.get(i)).zuF.dwR != ((com.tencent.mm.plugin.story.f.d.h)((List)paramList.get(i)).get(0)).zuF.dwR)
           {
             AppMethodBeat.o(120537);
             return true;
@@ -1086,10 +1086,7 @@ public final class m
       return true;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$GroupData$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
-    public static final class a {}
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "invoke"})
     static final class b
       extends d.g.b.l
       implements d.g.a.a<d.o<? extends com.tencent.mm.plugin.story.f.d.j, ? extends m.c>>
@@ -1100,7 +1097,7 @@ public final class m
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "invoke"})
     static final class c
       extends d.g.b.l
       implements d.g.a.a<d.o<? extends com.tencent.mm.plugin.story.f.d.j, ? extends m.c>>
@@ -1111,7 +1108,7 @@ public final class m
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "invoke"})
     static final class d
       extends d.g.b.l
       implements d.g.a.a<d.o<? extends com.tencent.mm.plugin.story.f.d.j, ? extends m.c>>
@@ -1123,20 +1120,20 @@ public final class m
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$MoovReadyInfo;", "", "isMoovReady", "", "offset", "", "length", "preloadFinish", "(ZJJZ)V", "()Z", "getLength", "()J", "getOffset", "getPreloadFinish", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$MoovReadyInfo;", "", "isMoovReady", "", "offset", "", "length", "preloadFinish", "(ZJJZ)V", "()Z", "getLength", "()J", "getOffset", "getPreloadFinish", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
   public static final class b
   {
     final long length;
     final long offset;
-    final boolean qEp;
-    final boolean yAQ;
+    final boolean rvp;
+    final boolean zOe;
     
     public b(boolean paramBoolean1, long paramLong1, long paramLong2, boolean paramBoolean2)
     {
-      this.qEp = paramBoolean1;
+      this.rvp = paramBoolean1;
       this.offset = paramLong1;
       this.length = paramLong2;
-      this.yAQ = paramBoolean2;
+      this.zOe = paramBoolean2;
     }
     
     public final boolean equals(Object paramObject)
@@ -1146,7 +1143,7 @@ public final class m
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.qEp != paramObject.qEp) || (this.offset != paramObject.offset) || (this.length != paramObject.length) || (this.yAQ != paramObject.yAQ)) {}
+          if ((this.rvp != paramObject.rvp) || (this.offset != paramObject.offset) || (this.length != paramObject.length) || (this.zOe != paramObject.zOe)) {}
         }
       }
       else {
@@ -1163,96 +1160,96 @@ public final class m
     public final String toString()
     {
       AppMethodBeat.i(120545);
-      String str = "MoovReadyInfo(isMoovReady=" + this.qEp + ", offset=" + this.offset + ", length=" + this.length + ", preloadFinish=" + this.yAQ + ")";
+      String str = "MoovReadyInfo(isMoovReady=" + this.rvp + ", offset=" + this.offset + ", length=" + this.length + ", preloadFinish=" + this.zOe + ")";
       AppMethodBeat.o(120545);
       return str;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "", "positionV", "", "positionH", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "quota", "connectionCount", "(IILcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;II)V", "cdnMediaId", "", "getCdnMediaId", "()Ljava/lang/String;", "setCdnMediaId", "(Ljava/lang/String;)V", "getConnectionCount", "()I", "setConnectionCount", "(I)V", "getItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getPositionH", "getPositionV", "getQuota", "setQuota", "info", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$TaskInfo;", "", "positionV", "", "positionH", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "quota", "connectionCount", "(IILcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;II)V", "cdnMediaId", "", "getCdnMediaId", "()Ljava/lang/String;", "setCdnMediaId", "(Ljava/lang/String;)V", "getConnectionCount", "()I", "setConnectionCount", "(I)V", "getItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getPositionH", "getPositionV", "getQuota", "setQuota", "info", "plugin-story_release"})
   public static final class c
   {
     private int connectionCount;
-    int fph;
-    String hxP;
-    private final int yAL;
-    private final int yAM;
-    final com.tencent.mm.plugin.story.f.d.j yAR;
+    int fsH;
+    String hYq;
+    private final int zNZ;
+    private final int zOa;
+    final com.tencent.mm.plugin.story.f.d.j zOf;
     
     public c(int paramInt1, int paramInt2, com.tencent.mm.plugin.story.f.d.j paramj, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(120546);
-      this.yAL = paramInt1;
-      this.yAM = paramInt2;
-      this.yAR = paramj;
-      this.fph = paramInt3;
+      this.zNZ = paramInt1;
+      this.zOa = paramInt2;
+      this.zOf = paramj;
+      this.fsH = paramInt3;
       this.connectionCount = paramInt4;
-      paramj = s.ygj;
-      String str = s.bQ(this.yAR.hgr, this.yAR.yhP.Url);
+      paramj = s.ztj;
+      String str = s.bU(this.zOf.hGU, this.zOf.zuP.Url);
       paramj = str;
       if (str == null) {
         paramj = "";
       }
-      this.hxP = paramj;
+      this.hYq = paramj;
       AppMethodBeat.o(120546);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$VideoPreloadTaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "startTick", "", "(J)V", "onPreloadCompleted", "", "mediaId", "", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$VideoPreloadTaskCallback;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskPreloadCallback;", "startTick", "", "(J)V", "onPreloadCompleted", "", "mediaId", "", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "plugin-story_release"})
   static final class d
     implements g.b
   {
-    private final long fNi;
+    private final long fQT;
     
     public d(long paramLong)
     {
-      this.fNi = paramLong;
+      this.fQT = paramLong;
     }
     
-    public final void a(String paramString, com.tencent.mm.i.d paramd)
+    public final void b(String paramString, com.tencent.mm.i.d paramd)
     {
       AppMethodBeat.i(120548);
-      ad.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted, mediaId:" + paramString + ", sceneResult:" + paramd);
+      ac.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted, mediaId:" + paramString + ", sceneResult:" + paramd);
       if ((paramd != null) && (paramd.field_retCode == -21112))
       {
-        ad.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted, mediaId:" + paramString + ", video source change!");
-        paramd = m.yAD;
-        m.asd(paramString);
+        ac.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted, mediaId:" + paramString + ", video source change!");
+        paramd = m.zNR;
+        m.axm(paramString);
         AppMethodBeat.o(120548);
         return;
       }
       if ((paramString != null) && (paramd != null))
       {
-        Object localObject = m.yAD;
-        if (m.dLD().containsKey(paramString))
+        Object localObject = m.zNR;
+        if (m.ead().containsKey(paramString))
         {
-          localObject = m.yAD;
-          localObject = (com.tencent.mm.plugin.story.f.d.j)m.dLD().get(paramString);
+          localObject = m.zNR;
+          localObject = (com.tencent.mm.plugin.story.f.d.j)m.ead().get(paramString);
           if (localObject != null)
           {
             if ((paramd.field_recvedBytes > 0L) && (paramd.field_fileLength > 0L))
             {
-              s locals = s.ygj;
+              s locals = s.ztj;
               localObject = s.a((com.tencent.mm.plugin.story.f.d.j)localObject);
               ((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize = ((int)paramd.field_recvedBytes);
               ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize = ((int)paramd.field_fileLength);
-              paramd = com.tencent.mm.plugin.story.f.j.yfh;
-              j.b.dHh().b((com.tencent.mm.plugin.story.i.n)localObject);
-              paramd = m.yAD;
-              m.dLE().add(paramString);
-              ad.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted update cacheSize:" + ((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize + ", totalSize:" + ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize + ", preloadCost:" + bt.aS(this.fNi));
-              com.tencent.mm.ad.c.g((d.g.a.a)new a(paramString));
+              paramd = com.tencent.mm.plugin.story.f.j.zsh;
+              j.b.dVI().b((com.tencent.mm.plugin.story.i.n)localObject);
+              paramd = m.zNR;
+              m.eae().add(paramString);
+              ac.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted update cacheSize:" + ((com.tencent.mm.plugin.story.i.n)localObject).field_cacheSize + ", totalSize:" + ((com.tencent.mm.plugin.story.i.n)localObject).field_totalSize + ", preloadCost:" + bs.aO(this.fQT));
+              com.tencent.mm.ac.c.g((d.g.a.a)new a(paramString));
               AppMethodBeat.o(120548);
               return;
             }
-            ad.e("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted error, recvedBytes:" + paramd.field_recvedBytes + ", fileLength:" + paramd.field_fileLength);
+            ac.e("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreloadCompleted error, recvedBytes:" + paramd.field_recvedBytes + ", fileLength:" + paramd.field_fileLength);
           }
         }
       }
       AppMethodBeat.o(120548);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<y>
@@ -1264,7 +1261,7 @@ public final class m
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$VideoTaskCallTask;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "()V", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoPreloadMgr$VideoTaskCallTask;", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "()V", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-story_release"})
   static final class e
     implements g.a
   {
@@ -1273,9 +1270,9 @@ public final class m
       AppMethodBeat.i(120549);
       if ((paramd != null) && (paramd.field_retCode == -21112))
       {
-        ad.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreload, mediaId:" + paramString + ", video source change!");
-        paramc = m.yAD;
-        m.asd(paramString);
+        ac.i("MicroMsg.StoryVideoPreloadMgr", hashCode() + " onPreload, mediaId:" + paramString + ", video source change!");
+        paramc = m.zNR;
+        m.axm(paramString);
         AppMethodBeat.o(120549);
         return 0;
       }
@@ -1283,13 +1280,13 @@ public final class m
       int i;
       if ((paramc != null) && (paramc.field_toltalLength > 0L))
       {
-        paramd = m.yAD;
-        localObject1 = (com.tencent.mm.plugin.story.f.d.j)m.dLD().get(paramString);
-        paramd = m.yAD;
-        paramBoolean = d.a.j.a((Iterable)m.dLE(), paramString);
+        paramd = m.zNR;
+        localObject1 = (com.tencent.mm.plugin.story.f.d.j)m.ead().get(paramString);
+        paramd = m.zNR;
+        paramBoolean = d.a.j.a((Iterable)m.eae(), paramString);
         int j = (int)((float)paramc.field_finishedLength / (float)paramc.field_toltalLength * 100.0F);
-        paramd = m.yAD;
-        paramd = (Integer)m.dLF().get(paramString);
+        paramd = m.zNR;
+        paramd = (Integer)m.eaf().get(paramString);
         if (paramd == null) {
           break label565;
         }
@@ -1308,43 +1305,43 @@ public final class m
       {
         if (localObject1 != null)
         {
-          Object localObject2 = s.ygj;
+          Object localObject2 = s.ztj;
           localObject2 = s.a((com.tencent.mm.plugin.story.f.d.j)localObject1);
           ((com.tencent.mm.plugin.story.i.n)localObject2).field_cacheSize = ((int)paramc.field_finishedLength);
           ((com.tencent.mm.plugin.story.i.n)localObject2).field_totalSize = ((int)paramc.field_toltalLength);
-          paramc = com.tencent.mm.plugin.story.f.j.yfh;
-          j.b.dHh().b((com.tencent.mm.plugin.story.i.n)localObject2);
-          paramc = com.tencent.mm.plugin.story.f.j.yfh;
-          com.tencent.mm.plugin.story.i.f localf = j.b.dHe().arp(((com.tencent.mm.plugin.story.f.d.j)localObject1).username);
+          paramc = com.tencent.mm.plugin.story.f.j.zsh;
+          j.b.dVI().b((com.tencent.mm.plugin.story.i.n)localObject2);
+          paramc = com.tencent.mm.plugin.story.f.j.zsh;
+          com.tencent.mm.plugin.story.i.f localf = j.b.dVF().awy(((com.tencent.mm.plugin.story.f.d.j)localObject1).username);
           paramc = paramd;
-          if (localf.field_syncId == ((com.tencent.mm.plugin.story.f.d.j)localObject1).dAu)
+          if (localf.field_syncId == ((com.tencent.mm.plugin.story.f.d.j)localObject1).dyg)
           {
             paramc = paramd;
             if (localf.isValid())
             {
-              long l = ((com.tencent.mm.plugin.story.f.d.j)localObject1).dAu;
-              localObject1 = ((com.tencent.mm.plugin.story.f.d.j)localObject1).yhP.Id;
+              long l = ((com.tencent.mm.plugin.story.f.d.j)localObject1).dyg;
+              localObject1 = ((com.tencent.mm.plugin.story.f.d.j)localObject1).zuP.Id;
               k.g(localObject1, "videoItem.media.Id");
               paramc = paramd;
-              if (localf.c(l, (String)localObject1, ((com.tencent.mm.plugin.story.i.n)localObject2).field_cacheSize))
+              if (localf.a(l, (String)localObject1, ((com.tencent.mm.plugin.story.i.n)localObject2).field_cacheSize))
               {
                 paramc = paramd + " * ext pre update * ";
-                paramd = com.tencent.mm.plugin.story.f.j.yfh;
-                j.b.dHe().a((int)localf.systemRowid, localf);
+                paramd = com.tencent.mm.plugin.story.f.j.zsh;
+                j.b.dVF().a((int)localf.systemRowid, localf);
               }
             }
           }
           if ((paramInt != 0) && (paramString != null))
           {
-            paramd = m.yAD;
-            m.dLE().add(paramString);
+            paramd = m.zNR;
+            m.eae().add(paramString);
           }
         }
         for (paramString = paramc + "update cacheSize done";; paramString = paramd)
         {
           paramString = new StringBuilder().append(paramString).append(", currentSpeed:");
-          paramc = m.yAD;
-          ad.i("MicroMsg.StoryVideoPreloadMgr", m.dLC());
+          paramc = m.zNR;
+          ac.i("MicroMsg.StoryVideoPreloadMgr", m.eac());
           AppMethodBeat.o(120549);
           return 0;
           i = 0;
@@ -1363,7 +1360,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.m
  * JD-Core Version:    0.7.0.1
  */

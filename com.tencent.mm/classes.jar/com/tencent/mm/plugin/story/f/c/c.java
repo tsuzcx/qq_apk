@@ -6,10 +6,10 @@ import com.tencent.mm.i.e;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.loader.d.b.b;
 import com.tencent.mm.plugin.story.f.j;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.protocal.protobuf.ddy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.g.b.k;
 import d.g.b.z;
 import java.io.ByteArrayOutputStream;
@@ -19,17 +19,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/download/StoryDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "()V", "attachSnsImgTaskInfo", "", "story", "tmpFilePath", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_SnsImageTaskInfo;", "isDcIp", "referer", "getStringArray", "", "strList", "", "(Ljava/util/List;)[Ljava/lang/String;", "idDcIp", "scene", "Lcom/tencent/mm/storage/FROM_SCENE;", "url", "configTime", "", "hostname", "loadDataImp", "", "data", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "plugin-story_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/download/StoryDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "()V", "attachSnsImgTaskInfo", "", "story", "tmpFilePath", "", "taskInfo", "Lcom/tencent/mm/cdn/keep_SnsImageTaskInfo;", "isDcIp", "referer", "getStringArray", "", "strList", "", "(Ljava/util/List;)[Ljava/lang/String;", "idDcIp", "scene", "Lcom/tencent/mm/storage/FROM_SCENE;", "url", "configTime", "", "hostname", "loadDataImp", "", "data", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "plugin-story_release"})
 public final class c
   extends com.tencent.mm.loader.d.b<d>
 {
   private static final String TAG = "MicroMsg.Loader.StoryDownloader";
-  public static final a yhn;
+  public static final c.a zun;
   
   static
   {
     AppMethodBeat.i(118901);
-    yhn = new a((byte)0);
+    zun = new c.a((byte)0);
     TAG = "MicroMsg.Loader.StoryDownloader";
     AppMethodBeat.o(118901);
   }
@@ -39,42 +39,42 @@ public final class c
     AppMethodBeat.i(118899);
     try
     {
-      cym localcym = paramd.yhp;
-      String str = new URL(localcym.DMQ).getHost();
+      ddy localddy = paramd.zup;
+      String str = new URL(localddy.Fjh).getHost();
       ArrayList localArrayList1 = new ArrayList();
       int i = com.tencent.mm.network.b.a(str, false, (List)localArrayList1);
       ArrayList localArrayList2 = new ArrayList();
       int j = com.tencent.mm.network.b.a(str, true, (List)localArrayList2);
-      parame.field_mediaId = (localcym.Id + "_");
-      parame.url = localcym.DMQ;
+      parame.field_mediaId = (localddy.Id + "_");
+      parame.url = localddy.Fjh;
       parame.host = str;
       parame.referer = paramString2;
-      parame.fny = paramString1;
-      parame.fnz = dy((List)localArrayList1);
-      parame.fnA = dy((List)localArrayList2);
-      parame.fnB = i;
-      parame.fnC = j;
+      parame.fqS = paramString1;
+      parame.fqT = dz((List)localArrayList1);
+      parame.fqU = dz((List)localArrayList2);
+      parame.fqV = i;
+      parame.fqW = j;
       parame.isColdSnsData = false;
-      parame.signalQuality = ay.getStrength(aj.getContext());
+      parame.signalQuality = ax.getStrength(ai.getContext());
       parame.snsScene = "";
-      parame.snsCipherKey = paramd.yhp.DNk;
-      parame.evH = 3;
+      parame.snsCipherKey = paramd.zup.FjB;
+      parame.eyd = 3;
       parame.appType = 100;
       parame.fileType = 20201;
-      ad.i(TAG, "attachSnsImgTaskInfo reqDownType:%s", new Object[] { parame });
+      ac.i(TAG, "attachSnsImgTaskInfo reqDownType:%s", new Object[] { parame });
       AppMethodBeat.o(118899);
       return true;
     }
     catch (MalformedURLException paramd)
     {
-      ad.printErrStackTrace(TAG, (Throwable)paramd, "", new Object[0]);
-      ad.w(TAG, "attachSnsImgTaskInfo fail:".concat(String.valueOf(paramd)));
+      ac.printErrStackTrace(TAG, (Throwable)paramd, "", new Object[0]);
+      ac.w(TAG, "attachSnsImgTaskInfo fail:".concat(String.valueOf(paramd)));
       AppMethodBeat.o(118899);
     }
     return false;
   }
   
-  private static String[] dy(List<String> paramList)
+  private static String[] dz(List<String> paramList)
   {
     AppMethodBeat.i(118900);
     String[] arrayOfString = new String[paramList.size()];
@@ -96,52 +96,49 @@ public final class c
     k.h(paramf, "fileNameCreator");
     k.h(paramb, "callback");
     d locald = (d)parama.value();
-    Object localObject1 = z.Jhz;
-    int i = com.tencent.mm.protocal.d.CpK;
-    localObject1 = j.yfh;
-    k.g(com.tencent.mm.kernel.g.afz(), "MMKernel.account()");
-    String str1 = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), p.getString(com.tencent.mm.kernel.a.getUin()), Integer.valueOf(ay.getNetTypeForStat(aj.getContext())), Integer.valueOf(ay.getStrength(aj.getContext())), "" }, 5));
+    Object localObject1 = z.KUT;
+    int i = com.tencent.mm.protocal.d.DIc;
+    localObject1 = j.zsh;
+    k.g(com.tencent.mm.kernel.g.agP(), "MMKernel.account()");
+    String str1 = String.format("http://weixin.qq.com/?version=%d&uin=%s&nettype=%d&signal=%d%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), p.getString(com.tencent.mm.kernel.a.getUin()), Integer.valueOf(ax.getNetTypeForStat(ai.getContext())), Integer.valueOf(ax.getStrength(ai.getContext())), "" }, 5));
     k.g(str1, "java.lang.String.format(format, *args)");
     e locale = new e();
-    ad.i(TAG, "loadDataImp " + (d)parama.value() + " story " + locald.yhp.Url);
+    ac.i(TAG, "loadDataImp " + (d)parama.value() + " story " + locald.zup.Url);
     StringBuilder localStringBuilder = new StringBuilder();
-    localObject1 = com.tencent.mm.plugin.story.f.l.yfu;
-    Object localObject2 = ((d)parama.value()).yhp.Url;
+    localObject1 = com.tencent.mm.plugin.story.f.l.zsu;
+    Object localObject2 = ((d)parama.value()).zup.Url;
     String str2 = ((d)parama.value()).username;
     if (localObject2 == null) {}
-    for (localObject1 = "";; localObject1 = com.tencent.mm.plugin.story.f.l.ih(str2, com.tencent.mm.b.g.getMessageDigest((byte[])localObject2)) + ".d")
+    for (localObject1 = "";; localObject1 = com.tencent.mm.plugin.story.f.l.iA(str2, com.tencent.mm.b.g.getMessageDigest((byte[])localObject2)) + ".d")
     {
       parama = (String)localObject1 + paramf.c(parama);
       k.g(locald, "story");
       if (!a(locald, parama, locale, str1)) {
         break label424;
       }
-      locale.fnH = ((g.a)new b(locald, paramb, parama));
-      if (!com.tencent.mm.ao.f.awL().d((com.tencent.mm.i.g)locale)) {
+      locale.frb = ((g.a)new b(locald, paramb, parama));
+      if (!com.tencent.mm.an.f.aDD().e((com.tencent.mm.i.g)locale)) {
         break;
       }
-      ad.i(TAG, "SubCoreCdnTransport addRecvTask suc");
+      ac.i(TAG, "SubCoreCdnTransport addRecvTask suc");
       AppMethodBeat.o(118898);
       return;
       localObject1 = new StringBuilder();
-      str2 = com.tencent.mm.plugin.story.f.l.arr(str2) + "pic/";
+      str2 = com.tencent.mm.plugin.story.f.l.awA(str2) + "pic/";
       localObject2 = ((String)localObject2).getBytes(d.n.d.UTF_8);
       k.g(localObject2, "(this as java.lang.String).getBytes(charset)");
     }
-    ad.w(TAG, "SubCoreCdnTransport addRecvTask failed");
+    ac.w(TAG, "SubCoreCdnTransport addRecvTask failed");
     paramb.onError();
     AppMethodBeat.o(118898);
     return;
     label424:
-    ad.w(TAG, "attachSnsImgTaskInfo failed");
+    ac.w(TAG, "attachSnsImgTaskInfo failed");
     paramb.onError();
     AppMethodBeat.o(118898);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/download/StoryDownloader$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/model/download/StoryDownloader$loadDataImp$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/model/download/StoryDownloader$loadDataImp$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-story_release"})
   public static final class b
     implements g.a
   {
@@ -151,16 +148,16 @@ public final class c
     {
       AppMethodBeat.i(118895);
       k.h(paramString, "mediaId");
-      ad.i(c.access$getTAG$cp(), "mediaId " + paramString + " startRet " + paramInt + " sceneResult " + paramd + " onlyCheckExist " + paramBoolean);
+      ac.i(c.access$getTAG$cp(), "mediaId " + paramString + " startRet " + paramInt + " sceneResult " + paramd + " onlyCheckExist " + paramBoolean);
       if (paramd != null)
       {
-        if (this.yho == null)
+        if (this.zuo == null)
         {
           AppMethodBeat.o(118895);
           return 0;
         }
         paramString = paramb;
-        paramc = com.tencent.mm.loader.h.a.an(parama, "");
+        paramc = com.tencent.mm.loader.h.a.av(parama, "");
         k.g(paramc, "HttpFileResponse.create(tmpFilePath, \"\")");
         paramString.a((com.tencent.mm.loader.h.f)paramc);
       }
@@ -188,7 +185,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.c.c
  * JD-Core Version:    0.7.0.1
  */

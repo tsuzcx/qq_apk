@@ -25,37 +25,37 @@ public final class h
   extends d
   implements a
 {
-  String ADm;
-  String IvD;
-  private c Iwp;
-  com.tencent.soter.a.f.f Iwq;
-  private WeakReference<Context> Iwr;
-  com.tencent.soter.a.d.a Iws;
-  com.tencent.soter.a.d.b Iwt;
-  j Iwu;
-  private a Iwv;
-  boolean Iww;
-  boolean Iwx;
-  boolean Iwy;
+  String BVH;
+  private c JXY;
+  com.tencent.soter.a.f.f JXZ;
+  String JXm;
+  private WeakReference<Context> JYa;
+  com.tencent.soter.a.d.a JYb;
+  com.tencent.soter.a.d.b JYc;
+  j JYd;
+  private a JYe;
+  boolean JYf;
+  boolean JYg;
+  boolean JYh;
   private int mScene;
   
   public h(b paramb)
   {
     AppMethodBeat.i(64);
     this.mScene = -1;
-    this.IvD = null;
-    this.ADm = null;
-    this.Iwp = null;
-    this.Iwq = null;
-    this.Iwr = null;
-    this.Iws = null;
-    this.Iwt = null;
-    this.Iwu = null;
-    this.Iwv = null;
+    this.JXm = null;
+    this.BVH = null;
+    this.JXY = null;
+    this.JXZ = null;
+    this.JYa = null;
+    this.JYb = null;
+    this.JYc = null;
+    this.JYd = null;
+    this.JYe = null;
     if ((Build.VERSION.SDK_INT < 23) && (Build.MANUFACTURER.equalsIgnoreCase("vivo")))
     {
       bool1 = true;
-      this.Iww = bool1;
+      this.JYf = bool1;
       if (Build.VERSION.SDK_INT >= 23) {
         break label133;
       }
@@ -63,8 +63,8 @@ public final class h
     label133:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.Iwx = bool1;
-      this.Iwy = false;
+      this.JYg = bool1;
+      this.JYh = false;
       if (paramb != null) {
         break label138;
       }
@@ -76,12 +76,12 @@ public final class h
     }
     label138:
     this.mScene = paramb.mScene;
-    this.Iwp = paramb.IvQ;
-    this.Iwq = paramb.IvR;
-    this.Iwr = new WeakReference(paramb.mContext);
-    this.Iwt = paramb.IvT;
-    this.Iws = paramb.rcc;
-    this.ADm = paramb.ADm;
+    this.JXY = paramb.JXz;
+    this.JXZ = paramb.JXA;
+    this.JYa = new WeakReference(paramb.mContext);
+    this.JYc = paramb.JXC;
+    this.JYb = paramb.skw;
+    this.BVH = paramb.BVH;
     AppMethodBeat.o(64);
   }
   
@@ -89,13 +89,13 @@ public final class h
   final void a(Signature paramSignature)
   {
     AppMethodBeat.i(70);
-    if (this.IvH)
+    if (this.JXq)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: already finished. can not authenticate", new Object[0]);
       AppMethodBeat.o(70);
       return;
     }
-    Object localObject = (Context)this.Iwr.get();
+    Object localObject = (Context)this.JYa.get();
     if (localObject == null)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: context instance released in startAuthenticate", new Object[0]);
@@ -106,12 +106,12 @@ public final class h
     try
     {
       com.tencent.soter.core.c.d.v("Soter.TaskAuthentication", "soter: performing start", new Object[0]);
-      localObject = com.tencent.soter.core.a.a.kF((Context)localObject);
+      localObject = com.tencent.soter.core.a.a.kR((Context)localObject);
       a.d locald = new a.d(paramSignature);
-      if (this.Iws != null) {}
-      for (paramSignature = this.Iws.EQJ;; paramSignature = null)
+      if (this.JYb != null) {}
+      for (paramSignature = this.JYb.GnW;; paramSignature = null)
       {
-        ((com.tencent.soter.core.a.a)localObject).a(locald, paramSignature, this.Iwv);
+        ((com.tencent.soter.core.a.a)localObject).a(locald, paramSignature, this.JYe);
         AppMethodBeat.o(70);
         return;
       }
@@ -133,7 +133,7 @@ public final class h
     if (((parame.errCode == 1018) || (parame.errCode == 1007) || (parame.errCode == 1015)) && (com.tencent.soter.a.c.a.a(getClass(), parame)))
     {
       com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: same error happen too much, delete ask", new Object[0]);
-      com.tencent.soter.a.a.fnm();
+      com.tencent.soter.a.a.fDC();
     }
     AppMethodBeat.o(68);
   }
@@ -141,119 +141,42 @@ public final class h
   final void execute()
   {
     AppMethodBeat.i(67);
-    if (com.tencent.soter.core.c.g.isNullOrNil(this.ADm))
+    if (com.tencent.soter.core.c.g.isNullOrNil(this.BVH))
     {
       com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: not provide the challenge. we will do the job", new Object[0]);
-      this.Iwp.cY(new c.a());
-      this.Iwp.a(new com.tencent.soter.a.f.b() {});
-      this.Iwp.execute();
+      this.JXY.cZ(new c.a());
+      this.JXY.a(new com.tencent.soter.a.f.b() {});
+      this.JXY.execute();
       AppMethodBeat.o(67);
       return;
     }
     com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: already provided the challenge. directly authenticate", new Object[0]);
-    fnA();
+    fDQ();
     AppMethodBeat.o(67);
   }
   
-  final void fnA()
-  {
-    AppMethodBeat.i(69);
-    if (com.tencent.soter.core.a.fmN() == 1)
-    {
-      localObject = com.tencent.soter.core.a.lQ(this.IvD, this.ADm);
-      if (localObject == null)
-      {
-        com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: error occurred when init sign soterSessionResult is null", new Object[0]);
-        c(new com.tencent.soter.a.b.a(1007));
-        AppMethodBeat.o(69);
-        return;
-      }
-      if (((SoterSessionResult)localObject).bRZ != 0)
-      {
-        com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: error occurred when init sign resultCode error", new Object[0]);
-        c(new com.tencent.soter.a.b.a(1007));
-        AppMethodBeat.o(69);
-        return;
-      }
-      com.tencent.soter.core.c.d.d("Soter.TaskAuthentication", "soter: session is %d", new Object[] { Long.valueOf(((SoterSessionResult)localObject).dcQ) });
-      this.Iwv = new a(null, (byte)0);
-      this.Iwv.dcQ = ((SoterSessionResult)localObject).dcQ;
-      a(null);
-      g.fnz().f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(46);
-          if (h.this.Iwt != null) {
-            h.this.Iwt.dED();
-          }
-          AppMethodBeat.o(46);
-        }
-      });
-      AppMethodBeat.o(69);
-      return;
-    }
-    Object localObject = com.tencent.soter.core.a.aNS(this.IvD);
-    if (localObject == null)
-    {
-      com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: error occurred when init sign", new Object[0]);
-      c(new com.tencent.soter.a.b.a(1007));
-      AppMethodBeat.o(69);
-      return;
-    }
-    this.Iwv = new a((Signature)localObject, (byte)0);
-    a((Signature)localObject);
-    g.fnz().f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(47);
-        if (h.this.Iwt != null) {
-          h.this.Iwt.dED();
-        }
-        AppMethodBeat.o(47);
-      }
-    });
-    AppMethodBeat.o(69);
-  }
-  
-  final void fnB()
-  {
-    AppMethodBeat.i(71);
-    if (this.Iwu == null)
-    {
-      c(new com.tencent.soter.a.b.a(1018, "sign failed even after user authenticated the key."));
-      AppMethodBeat.o(71);
-      return;
-    }
-    this.Iwq.cY(new f.a(this.Iwu.signature, this.Iwu.Iva, this.Iwu.IuZ));
-    this.Iwq.a(new com.tencent.soter.a.f.b() {});
-    this.Iwq.execute();
-    AppMethodBeat.o(71);
-  }
-  
-  public final void fnt()
+  public final void fDJ()
   {
     AppMethodBeat.i(72);
     com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: called from cancellation signal", new Object[0]);
-    if (this.Iwv != null) {
-      this.Iwv.onAuthenticationCancelled();
+    if (this.JYe != null) {
+      this.JYe.onAuthenticationCancelled();
     }
     AppMethodBeat.o(72);
   }
   
   @SuppressLint({"DefaultLocale", "NewApi"})
-  final boolean fnu()
+  final boolean fDK()
   {
     AppMethodBeat.i(65);
-    if (!com.tencent.soter.a.c.b.fno().isInit())
+    if (!com.tencent.soter.a.c.b.fDE().isInit())
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: not initialized yet", new Object[0]);
       c(new com.tencent.soter.a.b.a(1008));
       AppMethodBeat.o(65);
       return true;
     }
-    if (!com.tencent.soter.a.c.b.fno().fnk())
+    if (!com.tencent.soter.a.c.b.fDE().fDA())
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: not support soter", new Object[0]);
       c(new com.tencent.soter.a.b.a(2));
@@ -264,8 +187,8 @@ public final class h
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.IvD = ((String)com.tencent.soter.a.c.b.fno().fnq().get(this.mScene, ""));
-      if (!com.tencent.soter.core.c.g.isNullOrNil(this.IvD)) {
+      this.JXm = ((String)com.tencent.soter.a.c.b.fDE().fDG().get(this.mScene, ""));
+      if (!com.tencent.soter.core.c.g.isNullOrNil(this.JXm)) {
         break;
       }
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: request prepare auth key scene: %d, but key name is not registered. Please make sure you register the scene in init", new Object[0]);
@@ -273,21 +196,21 @@ public final class h
       AppMethodBeat.o(65);
       return true;
     }
-    if (!com.tencent.soter.core.a.aNP(this.IvD))
+    if (!com.tencent.soter.core.a.aTs(this.JXm))
     {
-      com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: auth key %s not exists. need re-generate", new Object[] { this.IvD });
+      com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: auth key %s not exists. need re-generate", new Object[] { this.JXm });
       c(new com.tencent.soter.a.b.a(1006, String.format("the auth key to scene %d not exists. it may because you haven't prepare it, or user removed them already in system settings. please prepare the key again", new Object[] { Integer.valueOf(this.mScene) })));
       AppMethodBeat.o(65);
       return true;
     }
-    if ((this.Iwp == null) && (com.tencent.soter.core.c.g.isNullOrNil(this.ADm)))
+    if ((this.JXY == null) && (com.tencent.soter.core.c.g.isNullOrNil(this.BVH)))
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: challenge wrapper is null!", new Object[0]);
       c(new com.tencent.soter.a.b.a(1010, "neither get challenge wrapper nor challenge str is found in request parameter"));
       AppMethodBeat.o(65);
       return true;
     }
-    Context localContext = (Context)this.Iwr.get();
+    Context localContext = (Context)this.JYa.get();
     if (localContext == null)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: context instance released in preExecute", new Object[0]);
@@ -295,60 +218,137 @@ public final class h
       AppMethodBeat.o(65);
       return true;
     }
-    if (!com.tencent.soter.core.a.a.kF(localContext).hasEnrolledFingerprints())
+    if (!com.tencent.soter.core.a.a.kR(localContext).hasEnrolledFingerprints())
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: user has not enrolled any fingerprint in system.", new Object[0]);
       c(new com.tencent.soter.a.b.a(1012));
       AppMethodBeat.o(65);
       return true;
     }
-    if (com.tencent.soter.core.a.kE(localContext))
+    if (com.tencent.soter.core.a.kQ(localContext))
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: fingerprint sensor frozen", new Object[0]);
       c(new com.tencent.soter.a.b.a(1021, "Too many failed times"));
       AppMethodBeat.o(65);
       return true;
     }
-    if (this.Iws == null)
+    if (this.JYb == null)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: did not pass cancellation obj. We suggest you pass one", new Object[0]);
-      this.Iws = new com.tencent.soter.a.d.a();
+      this.JYb = new com.tencent.soter.a.d.a();
       AppMethodBeat.o(65);
       return false;
     }
-    if (this.Iwq == null) {
+    if (this.JXZ == null) {
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "hy: we strongly recommend you to check the final authentication data in server! Please make sure you upload and check later", new Object[0]);
     }
     AppMethodBeat.o(65);
     return false;
   }
   
-  final void fnv()
+  final void fDL()
   {
     AppMethodBeat.i(66);
-    if (this.Iws != null) {
-      this.Iws.xw(true);
+    if (this.JYb != null) {
+      this.JYb.yG(true);
     }
     AppMethodBeat.o(66);
   }
   
+  final void fDQ()
+  {
+    AppMethodBeat.i(69);
+    if (com.tencent.soter.core.a.fDd() == 1)
+    {
+      localObject = com.tencent.soter.core.a.mn(this.JXm, this.BVH);
+      if (localObject == null)
+      {
+        com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: error occurred when init sign soterSessionResult is null", new Object[0]);
+        c(new com.tencent.soter.a.b.a(1007));
+        AppMethodBeat.o(69);
+        return;
+      }
+      if (((SoterSessionResult)localObject).bPH != 0)
+      {
+        com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: error occurred when init sign resultCode error", new Object[0]);
+        c(new com.tencent.soter.a.b.a(1007));
+        AppMethodBeat.o(69);
+        return;
+      }
+      com.tencent.soter.core.c.d.d("Soter.TaskAuthentication", "soter: session is %d", new Object[] { Long.valueOf(((SoterSessionResult)localObject).dao) });
+      this.JYe = new a(null, (byte)0);
+      this.JYe.dao = ((SoterSessionResult)localObject).dao;
+      a(null);
+      g.fDP().f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(46);
+          if (h.this.JYc != null) {
+            h.this.JYc.dTc();
+          }
+          AppMethodBeat.o(46);
+        }
+      });
+      AppMethodBeat.o(69);
+      return;
+    }
+    Object localObject = com.tencent.soter.core.a.aTv(this.JXm);
+    if (localObject == null)
+    {
+      com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: error occurred when init sign", new Object[0]);
+      c(new com.tencent.soter.a.b.a(1007));
+      AppMethodBeat.o(69);
+      return;
+    }
+    this.JYe = new a((Signature)localObject, (byte)0);
+    a((Signature)localObject);
+    g.fDP().f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(47);
+        if (h.this.JYc != null) {
+          h.this.JYc.dTc();
+        }
+        AppMethodBeat.o(47);
+      }
+    });
+    AppMethodBeat.o(69);
+  }
+  
+  final void fDR()
+  {
+    AppMethodBeat.i(71);
+    if (this.JYd == null)
+    {
+      c(new com.tencent.soter.a.b.a(1018, "sign failed even after user authenticated the key."));
+      AppMethodBeat.o(71);
+      return;
+    }
+    this.JXZ.cZ(new f.a(this.JYd.signature, this.JYd.JWJ, this.JYd.JWI));
+    this.JXZ.a(new com.tencent.soter.a.f.b() {});
+    this.JXZ.execute();
+    AppMethodBeat.o(71);
+  }
+  
   public final boolean isCancelled()
   {
-    return this.Iwy;
+    return this.JYh;
   }
   
   final class a
     extends a.b
   {
-    Signature IwA = null;
-    long dcQ;
+    Signature JYj = null;
+    long dao;
     
     private a(Signature paramSignature)
     {
-      this.IwA = paramSignature;
+      this.JYj = paramSignature;
     }
     
-    static String ay(CharSequence paramCharSequence)
+    static String az(CharSequence paramCharSequence)
     {
       AppMethodBeat.i(57);
       if (paramCharSequence == null)
@@ -362,22 +362,22 @@ public final class h
     }
     
     @SuppressLint({"NewApi"})
-    private void fnC()
+    private void fDS()
     {
       AppMethodBeat.i(63);
-      if (h.this.Iwx)
+      if (h.this.JYg)
       {
-        h.this.Iws.xw(false);
-        h.this.Iwy = true;
+        h.this.JYb.yG(false);
+        h.this.JYh = true;
       }
       AppMethodBeat.o(63);
     }
     
-    public final void dFh()
+    public final void dTI()
     {
       AppMethodBeat.i(60);
       com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: authentication succeed. start sign and upload upload signature", new Object[0]);
-      g.fnz().ae(new Runnable()
+      g.fDP().ag(new Runnable()
       {
         /* Error */
         public final void run()
@@ -386,32 +386,32 @@ public final class h
           //   0: bipush 51
           //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   5: aload_0
-          //   6: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   9: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
-          //   12: getfield 42	com/tencent/soter/a/g/h:ADm	Ljava/lang/String;
+          //   6: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   9: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
+          //   12: getfield 42	com/tencent/soter/a/g/h:BVH	Ljava/lang/String;
           //   15: invokestatic 48	com/tencent/soter/core/c/g:isNullOrNil	(Ljava/lang/String;)Z
           //   18: ifne +418 -> 436
-          //   21: invokestatic 54	com/tencent/soter/core/a:fmN	()I
+          //   21: invokestatic 54	com/tencent/soter/core/a:fDd	()I
           //   24: iconst_1
           //   25: if_icmpne +131 -> 156
           //   28: aload_0
-          //   29: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   32: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
+          //   29: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   32: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
           //   35: astore_3
           //   36: aload_0
-          //   37: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   40: getfield 58	com/tencent/soter/a/g/h$a:dcQ	J
+          //   37: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   40: getfield 58	com/tencent/soter/a/g/h$a:dao	J
           //   43: lstore_1
           //   44: aload_3
           //   45: lload_1
-          //   46: invokestatic 62	com/tencent/soter/core/a:xi	(J)[B
-          //   49: invokestatic 66	com/tencent/soter/core/a:cL	([B)Lcom/tencent/soter/core/c/j;
-          //   52: putfield 70	com/tencent/soter/a/g/h:Iwu	Lcom/tencent/soter/core/c/j;
+          //   46: invokestatic 62	com/tencent/soter/core/a:BS	(J)[B
+          //   49: invokestatic 66	com/tencent/soter/core/a:cK	([B)Lcom/tencent/soter/core/c/j;
+          //   52: putfield 70	com/tencent/soter/a/g/h:JYd	Lcom/tencent/soter/core/c/j;
           //   55: aload_3
-          //   56: getfield 74	com/tencent/soter/a/g/h:Iwq	Lcom/tencent/soter/a/f/f;
+          //   56: getfield 74	com/tencent/soter/a/g/h:JXZ	Lcom/tencent/soter/a/f/f;
           //   59: ifnull +13 -> 72
           //   62: aload_3
-          //   63: invokevirtual 77	com/tencent/soter/a/g/h:fnB	()V
+          //   63: invokevirtual 77	com/tencent/soter/a/g/h:fDR	()V
           //   66: bipush 51
           //   68: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   71: return
@@ -424,7 +424,7 @@ public final class h
           //   84: new 91	com/tencent/soter/a/b/a
           //   87: dup
           //   88: aload_3
-          //   89: getfield 70	com/tencent/soter/a/g/h:Iwu	Lcom/tencent/soter/core/c/j;
+          //   89: getfield 70	com/tencent/soter/a/g/h:JYd	Lcom/tencent/soter/core/c/j;
           //   92: invokespecial 94	com/tencent/soter/a/b/a:<init>	(Lcom/tencent/soter/core/c/j;)V
           //   95: invokevirtual 98	com/tencent/soter/a/g/h:c	(Lcom/tencent/soter/a/b/e;)V
           //   98: bipush 51
@@ -456,34 +456,34 @@ public final class h
           //   152: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   155: return
           //   156: aload_0
-          //   157: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   160: getfield 122	com/tencent/soter/a/g/h$a:IwA	Ljava/security/Signature;
+          //   157: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   160: getfield 122	com/tencent/soter/a/g/h$a:JYj	Ljava/security/Signature;
           //   163: aload_0
-          //   164: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   167: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
-          //   170: getfield 42	com/tencent/soter/a/g/h:ADm	Ljava/lang/String;
+          //   164: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   167: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
+          //   170: getfield 42	com/tencent/soter/a/g/h:BVH	Ljava/lang/String;
           //   173: ldc 124
           //   175: invokestatic 130	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
           //   178: invokevirtual 136	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
           //   181: invokevirtual 142	java/security/Signature:update	([B)V
           //   184: aload_0
-          //   185: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   188: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
+          //   185: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   188: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
           //   191: astore_3
           //   192: aload_0
-          //   193: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   196: getfield 122	com/tencent/soter/a/g/h$a:IwA	Ljava/security/Signature;
+          //   193: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   196: getfield 122	com/tencent/soter/a/g/h$a:JYj	Ljava/security/Signature;
           //   199: astore 4
           //   201: aload_3
           //   202: aload 4
           //   204: invokevirtual 146	java/security/Signature:sign	()[B
-          //   207: invokestatic 66	com/tencent/soter/core/a:cL	([B)Lcom/tencent/soter/core/c/j;
-          //   210: putfield 70	com/tencent/soter/a/g/h:Iwu	Lcom/tencent/soter/core/c/j;
+          //   207: invokestatic 66	com/tencent/soter/core/a:cK	([B)Lcom/tencent/soter/core/c/j;
+          //   210: putfield 70	com/tencent/soter/a/g/h:JYd	Lcom/tencent/soter/core/c/j;
           //   213: aload_3
-          //   214: getfield 74	com/tencent/soter/a/g/h:Iwq	Lcom/tencent/soter/a/f/f;
+          //   214: getfield 74	com/tencent/soter/a/g/h:JXZ	Lcom/tencent/soter/a/f/f;
           //   217: ifnull +149 -> 366
           //   220: aload_3
-          //   221: invokevirtual 77	com/tencent/soter/a/g/h:fnB	()V
+          //   221: invokevirtual 77	com/tencent/soter/a/g/h:fDR	()V
           //   224: bipush 51
           //   226: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   229: return
@@ -529,21 +529,21 @@ public final class h
           //   310: dup
           //   311: iconst_0
           //   312: aload_0
-          //   313: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   316: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
-          //   319: getfield 156	com/tencent/soter/a/g/h:IvD	Ljava/lang/String;
+          //   313: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   316: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
+          //   319: getfield 156	com/tencent/soter/a/g/h:JXm	Ljava/lang/String;
           //   322: aastore
           //   323: invokestatic 107	com/tencent/soter/core/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   326: aload_0
-          //   327: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   330: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
-          //   333: getfield 156	com/tencent/soter/a/g/h:IvD	Ljava/lang/String;
+          //   327: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   330: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
+          //   333: getfield 156	com/tencent/soter/a/g/h:JXm	Ljava/lang/String;
           //   336: iconst_0
-          //   337: invokestatic 160	com/tencent/soter/core/a:cU	(Ljava/lang/String;Z)Lcom/tencent/soter/core/c/f;
+          //   337: invokestatic 160	com/tencent/soter/core/a:db	(Ljava/lang/String;Z)Lcom/tencent/soter/core/c/f;
           //   340: pop
           //   341: aload_0
-          //   342: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
-          //   345: getfield 38	com/tencent/soter/a/g/h$a:Iwz	Lcom/tencent/soter/a/g/h;
+          //   342: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
+          //   345: getfield 38	com/tencent/soter/a/g/h$a:JYi	Lcom/tencent/soter/a/g/h;
           //   348: new 91	com/tencent/soter/a/b/a
           //   351: dup
           //   352: sipush 1027
@@ -560,7 +560,7 @@ public final class h
           //   378: new 91	com/tencent/soter/a/b/a
           //   381: dup
           //   382: aload_3
-          //   383: getfield 70	com/tencent/soter/a/g/h:Iwu	Lcom/tencent/soter/core/c/j;
+          //   383: getfield 70	com/tencent/soter/a/g/h:JYd	Lcom/tencent/soter/core/c/j;
           //   386: invokespecial 94	com/tencent/soter/a/b/a:<init>	(Lcom/tencent/soter/core/c/j;)V
           //   389: invokevirtual 98	com/tencent/soter/a/g/h:c	(Lcom/tencent/soter/a/b/e;)V
           //   392: bipush 51
@@ -577,7 +577,7 @@ public final class h
           //   413: ldc 166
           //   415: invokestatic 113	com/tencent/soter/core/c/d:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
           //   418: aload_0
-          //   419: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
+          //   419: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
           //   422: sipush -1000
           //   425: ldc 168
           //   427: invokevirtual 172	com/tencent/soter/a/g/h$a:onAuthenticationError	(ILjava/lang/CharSequence;)V
@@ -590,7 +590,7 @@ public final class h
           //   441: anewarray 4	java/lang/Object
           //   444: invokestatic 107	com/tencent/soter/core/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   447: aload_0
-          //   448: getfield 20	com/tencent/soter/a/g/h$a$3:IwD	Lcom/tencent/soter/a/g/h$a;
+          //   448: getfield 20	com/tencent/soter/a/g/h$a$3:JYm	Lcom/tencent/soter/a/g/h$a;
           //   451: sipush -1000
           //   454: ldc 176
           //   456: invokevirtual 172	com/tencent/soter/a/g/h$a:onAuthenticationError	(ILjava/lang/CharSequence;)V
@@ -621,18 +621,18 @@ public final class h
           //   392	397	398	java/lang/Exception
         }
       });
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(52);
-          if (h.this.Iwt != null) {
-            h.this.Iwt.dEE();
+          if (h.this.JYc != null) {
+            h.this.JYc.dTd();
           }
           AppMethodBeat.o(52);
         }
       });
-      fnC();
+      fDS();
       AppMethodBeat.o(60);
     }
     
@@ -640,26 +640,26 @@ public final class h
     {
       AppMethodBeat.i(62);
       com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: called onAuthenticationCancelled", new Object[0]);
-      if (h.this.Iwy)
+      if (h.this.JYh)
       {
         com.tencent.soter.core.c.d.v("Soter.TaskAuthentication", "soter: during ignore cancel period", new Object[0]);
         AppMethodBeat.o(62);
         return;
       }
       super.onAuthenticationCancelled();
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(54);
-          if (h.this.Iwt != null) {
-            h.this.Iwt.onAuthenticationCancelled();
+          if (h.this.JYc != null) {
+            h.this.JYc.onAuthenticationCancelled();
           }
           AppMethodBeat.o(54);
         }
       });
       h.this.c(new com.tencent.soter.a.b.a(1020, "user cancelled authentication"));
-      fnC();
+      fDS();
       AppMethodBeat.o(62);
     }
     
@@ -669,25 +669,25 @@ public final class h
       com.tencent.soter.core.c.d.e("Soter.TaskAuthentication", "soter: on authentication fatal error: %d, %s", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
       if (paramInt != 10308)
       {
-        g.fnz().f(new Runnable()
+        g.fDP().f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(49);
-            if (h.this.Iwt != null) {
-              h.this.Iwt.onAuthenticationError(paramInt, paramCharSequence);
+            if (h.this.JYc != null) {
+              h.this.JYc.onAuthenticationError(paramInt, paramCharSequence);
             }
             AppMethodBeat.o(49);
           }
         });
-        h.this.c(new com.tencent.soter.a.b.a(1016, ay(paramCharSequence)));
+        h.this.c(new com.tencent.soter.a.b.a(1016, az(paramCharSequence)));
       }
       for (;;)
       {
-        fnC();
+        fDS();
         AppMethodBeat.o(58);
         return;
-        h.this.c(new com.tencent.soter.a.b.a(1021, ay(paramCharSequence)));
+        h.this.c(new com.tencent.soter.a.b.a(1021, az(paramCharSequence)));
       }
     }
     
@@ -696,36 +696,36 @@ public final class h
       AppMethodBeat.i(61);
       super.onAuthenticationFailed();
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: authentication failed once", new Object[0]);
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(53);
-          if (h.this.Iwt != null) {
-            h.this.Iwt.onAuthenticationFailed();
+          if (h.this.JYc != null) {
+            h.this.JYc.onAuthenticationFailed();
           }
           AppMethodBeat.o(53);
         }
       });
-      if (h.this.Iww)
+      if (h.this.JYf)
       {
         com.tencent.soter.core.c.d.i("Soter.TaskAuthentication", "soter: should compat lower android version logic.", new Object[0]);
-        h.this.Iws.xw(false);
-        g.fnz().ae(new Runnable()
+        h.this.JYb.yG(false);
+        g.fDP().ag(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(55);
-            h.this.Iws.fnn();
+            h.this.JYb.fDD();
             AppMethodBeat.o(55);
           }
         });
-        g.fnz().o(new Runnable()
+        g.fDP().o(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(56);
-            h.this.a(h.a.this.IwA);
+            h.this.a(h.a.this.JYj);
             AppMethodBeat.o(56);
           }
         }, 1000L);
@@ -737,13 +737,13 @@ public final class h
     {
       AppMethodBeat.i(59);
       com.tencent.soter.core.c.d.w("Soter.TaskAuthentication", "soter: on authentication help. you do not need to cancel the authentication: %d, %s", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(50);
-          if (h.this.Iwt != null) {
-            h.this.Iwt.onAuthenticationHelp(paramInt, h.a.ay(paramCharSequence));
+          if (h.this.JYc != null) {
+            h.this.JYc.onAuthenticationHelp(paramInt, h.a.az(paramCharSequence));
           }
           AppMethodBeat.o(50);
         }

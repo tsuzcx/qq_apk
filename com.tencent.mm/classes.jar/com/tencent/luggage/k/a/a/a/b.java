@@ -1,18 +1,18 @@
 package com.tencent.luggage.k.a.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.rtmp.ITXLiveBaseListener;
 import com.tencent.rtmp.TXLiveBase;
 
 public final class b
 {
-  private static boolean ckp;
+  private static boolean cho;
   
-  public static void EX()
+  public static void EB()
   {
     AppMethodBeat.i(138810);
-    if (ckp)
+    if (cho)
     {
       AppMethodBeat.o(138810);
       return;
@@ -27,41 +27,41 @@ public final class b
         switch (paramAnonymousInt)
         {
         default: 
-          ad.d(paramAnonymousString1, paramAnonymousString2);
+          ac.d(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(138809);
           return;
         case 0: 
-          ad.v(paramAnonymousString1, paramAnonymousString2);
+          ac.v(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(138809);
           return;
         case 1: 
-          ad.d(paramAnonymousString1, paramAnonymousString2);
+          ac.d(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(138809);
           return;
         case 2: 
-          ad.i(paramAnonymousString1, paramAnonymousString2);
+          ac.i(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(138809);
           return;
         case 3: 
-          ad.w(paramAnonymousString1, paramAnonymousString2);
+          ac.w(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(138809);
           return;
         case 4: 
-          ad.e(paramAnonymousString1, paramAnonymousString2);
+          ac.e(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(138809);
           return;
         }
-        ad.e(paramAnonymousString1, paramAnonymousString2);
+        ac.e(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(138809);
       }
     });
-    ckp = true;
+    cho = true;
     AppMethodBeat.o(138810);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

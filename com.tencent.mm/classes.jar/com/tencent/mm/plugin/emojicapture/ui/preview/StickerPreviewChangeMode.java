@@ -11,11 +11,11 @@ import d.g.a.b;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onModeSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "mode", "", "getOnModeSelected", "()Lkotlin/jvm/functions/Function1;", "setOnModeSelected", "(Lkotlin/jvm/functions/Function1;)V", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewChangeMode;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onModeSelected", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "mode", "", "getOnModeSelected", "()Lkotlin/jvm/functions/Function1;", "setOnModeSelected", "(Lkotlin/jvm/functions/Function1;)V", "plugin-emojicapture_release"})
 public final class StickerPreviewChangeMode
   extends FrameLayout
 {
-  private b<? super Integer, y> oSE;
+  private b<? super Integer, y> pvP;
   
   public StickerPreviewChangeMode(Context paramContext)
   {
@@ -41,10 +41,10 @@ public final class StickerPreviewChangeMode
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(895);
-        paramAnonymousView = this.oSF.getOnModeSelected();
+        paramAnonymousView = this.pvQ.getOnModeSelected();
         if (paramAnonymousView != null)
         {
-          paramAnonymousView.aA(Integer.valueOf(0));
+          paramAnonymousView.ay(Integer.valueOf(0));
           AppMethodBeat.o(895);
           return;
         }
@@ -56,10 +56,10 @@ public final class StickerPreviewChangeMode
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(896);
-        paramAnonymousView = this.oSF.getOnModeSelected();
+        paramAnonymousView = this.pvQ.getOnModeSelected();
         if (paramAnonymousView != null)
         {
-          paramAnonymousView.aA(Integer.valueOf(1));
+          paramAnonymousView.ay(Integer.valueOf(1));
           AppMethodBeat.o(896);
           return;
         }
@@ -71,10 +71,10 @@ public final class StickerPreviewChangeMode
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(897);
-        paramAnonymousView = this.oSF.getOnModeSelected();
+        paramAnonymousView = this.pvQ.getOnModeSelected();
         if (paramAnonymousView != null)
         {
-          paramAnonymousView.aA(Integer.valueOf(2));
+          paramAnonymousView.ay(Integer.valueOf(2));
           AppMethodBeat.o(897);
           return;
         }
@@ -86,12 +86,12 @@ public final class StickerPreviewChangeMode
   
   public final b<Integer, y> getOnModeSelected()
   {
-    return this.oSE;
+    return this.pvP;
   }
   
   public final void setOnModeSelected(b<? super Integer, y> paramb)
   {
-    this.oSE = paramb;
+    this.pvP = paramb;
   }
 }
 

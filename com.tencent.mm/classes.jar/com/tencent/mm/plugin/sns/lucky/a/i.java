@@ -5,16 +5,16 @@ import java.util.LinkedList;
 
 public final class i
 {
-  private static String wBZ = "";
-  private static i wCJ = null;
-  StringBuffer muN;
-  LinkedList<h> wCK;
+  private static String xOu = "";
+  private static i xPe = null;
+  StringBuffer mWO;
+  LinkedList<h> xPf;
   
   public i()
   {
     AppMethodBeat.i(95184);
-    this.wCK = new LinkedList();
-    this.muN = new StringBuffer();
+    this.xPf = new LinkedList();
+    this.mWO = new StringBuffer();
     AppMethodBeat.o(95184);
   }
 }

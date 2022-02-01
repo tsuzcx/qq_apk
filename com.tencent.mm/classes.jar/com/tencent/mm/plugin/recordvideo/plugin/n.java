@@ -6,38 +6,38 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.ap;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-recordvideo_release"})
 public final class n
   implements t
 {
   private final String TAG;
+  private d rTT;
   private View view;
-  private d vjo;
   
   public n(View paramView, d paramd)
   {
     AppMethodBeat.i(75563);
     this.view = paramView;
-    this.vjo = paramd;
+    this.rTT = paramd;
     this.TAG = "MicroMsg.EditPhotoShadowPlugin";
-    ad.i(this.TAG, "status bar : " + ap.eb(this.view.getContext()));
-    paramView = new RelativeLayout.LayoutParams(-1, this.view.getLayoutParams().height + ap.eb(this.view.getContext()));
+    ac.i(this.TAG, "status bar : " + ap.ej(this.view.getContext()));
+    paramView = new RelativeLayout.LayoutParams(-1, this.view.getLayoutParams().height + ap.ej(this.view.getContext()));
     paramView.addRule(12, -1);
     this.view.setLayoutParams((ViewGroup.LayoutParams)paramView);
     this.view.invalidate();
     AppMethodBeat.o(75563);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {

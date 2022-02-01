@@ -26,23 +26,23 @@ import com.tencent.mm.plugin.game.model.m;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.o.a;
 import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import java.util.LinkedHashMap;
 
 public class GameTabWidget
   extends LinearLayout
 {
-  public static int jJO = 0;
+  public static int kko = 0;
   private Activity mActivity;
-  private a sof;
+  private a tvY;
   
   public GameTabWidget(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(42473);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(42473);
   }
   
@@ -50,7 +50,7 @@ public class GameTabWidget
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42474);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(42474);
   }
   
@@ -58,7 +58,7 @@ public class GameTabWidget
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(42475);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(42475);
   }
   
@@ -69,24 +69,24 @@ public class GameTabWidget
     if (paramIntent.getComponent() == null)
     {
       localObject = "";
-      ad.i("MicroMsg.GameTabWidget", "(%s isActivityExist):%b, hasAnimation:%b, forceFinish:%b, isNative:%b", new Object[] { localObject, Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean4) });
+      ac.i("MicroMsg.GameTabWidget", "(%s isActivityExist):%b, hasAnimation:%b, forceFinish:%b, isNative:%b", new Object[] { localObject, Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean4) });
       if ((!paramBoolean3) && (!paramBoolean4)) {
         break label235;
       }
       localObject = "straight to jump";
       label76:
-      ad.i("MicroMsg.GameTabWidget", (String)localObject);
+      ac.i("MicroMsg.GameTabWidget", (String)localObject);
       if ((!paramBoolean3) && (paramBoolean4)) {
         ToolsProcessIPCService.a(a.class, null);
       }
       if ((!paramBoolean3) && (!paramBoolean4)) {
         break label242;
       }
-      jJO = 0;
+      kko = 0;
       paramIntent.addFlags(131072);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/plugin/game/ui/tab/GameTabWidget", "turnPage", "(Landroid/app/Activity;Landroid/content/Intent;ZZZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)paramIntent.lS(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.aeD(), "com/tencent/mm/plugin/game/ui/tab/GameTabWidget", "turnPage", "(Landroid/app/Activity;Landroid/content/Intent;ZZZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramIntent.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/game/ui/tab/GameTabWidget", "turnPage", "(Landroid/app/Activity;Landroid/content/Intent;ZZZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
@@ -97,7 +97,7 @@ public class GameTabWidget
       if (!paramBoolean1) {
         break label340;
       }
-      paramActivity.overridePendingTransition(MMFragmentActivity.a.lLF, MMFragmentActivity.a.lLG);
+      paramActivity.overridePendingTransition(MMFragmentActivity.a.mnC, MMFragmentActivity.a.mnD);
       AppMethodBeat.o(42479);
       return;
       localObject = paramIntent.getComponent().getClassName();
@@ -109,9 +109,9 @@ public class GameTabWidget
       localObject = new Intent(paramActivity, GameTabBridgeUI.class);
       ((Intent)localObject).putExtras(paramIntent.getExtras());
       ((Intent)localObject).putExtra("next_tab_component", paramIntent.getComponent());
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/plugin/game/ui/tab/GameTabWidget", "turnPage", "(Landroid/app/Activity;Landroid/content/Intent;ZZZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)paramIntent.lS(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.aeD(), "com/tencent/mm/plugin/game/ui/tab/GameTabWidget", "turnPage", "(Landroid/app/Activity;Landroid/content/Intent;ZZZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramIntent.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/game/ui/tab/GameTabWidget", "turnPage", "(Landroid/app/Activity;Landroid/content/Intent;ZZZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     label340:
@@ -127,20 +127,20 @@ public class GameTabWidget
       AppMethodBeat.o(42478);
       return;
     }
-    if (c.ay(paramActivity, paramTabItem.jumpUrl))
+    if (c.az(paramActivity, paramTabItem.jumpUrl))
     {
       AppMethodBeat.o(42478);
       return;
     }
     Object localObject2 = paramActivity.getIntent().getStringExtra("tab_key");
-    if (bt.nullAsNil(paramTabItem.rYs).equals(localObject2))
+    if (bs.nullAsNil(paramTabItem.tgk).equals(localObject2))
     {
       AppMethodBeat.o(42478);
       return;
     }
-    ad.i("MicroMsg.GameTabWidget", "current_page:%s, next_page:%s, hasAnimation:%b", new Object[] { paramActivity.getClass().getSimpleName(), paramTabItem.rYz, Boolean.valueOf(paramBoolean1) });
+    ac.i("MicroMsg.GameTabWidget", "current_page:%s, next_page:%s, hasAnimation:%b", new Object[] { paramActivity.getClass().getSimpleName(), paramTabItem.tgr, Boolean.valueOf(paramBoolean1) });
     Intent localIntent = new Intent();
-    localIntent.setClassName(paramActivity, paramTabItem.rYz);
+    localIntent.setClassName(paramActivity, paramTabItem.tgr);
     Object localObject1 = paramActivity.getIntent().getExtras();
     Bundle localBundle;
     boolean bool;
@@ -148,29 +148,29 @@ public class GameTabWidget
     {
       localIntent.putExtras((Bundle)localObject1);
       localBundle = new Bundle();
-      localBundle.putString("tab_key", paramTabItem.rYs);
+      localBundle.putString("tab_key", paramTabItem.tgk);
       localObject1 = (GameTabData)((Bundle)localObject1).getParcelable("tab_data");
       if (localObject1 == null) {
         break label705;
       }
-      localObject2 = (GameTabData.TabItem)((GameTabData)localObject1).rYp.get(bt.nullAsNil((String)localObject2));
+      localObject2 = (GameTabData.TabItem)((GameTabData)localObject1).tgh.get(bs.nullAsNil((String)localObject2));
       if (localObject2 != null) {
-        ((GameTabData.TabItem)localObject2).rYA = true;
+        ((GameTabData.TabItem)localObject2).tgs = true;
       }
-      localObject2 = (GameTabData.TabItem)((GameTabData)localObject1).rYp.get(paramTabItem.rYs);
+      localObject2 = (GameTabData.TabItem)((GameTabData)localObject1).tgh.get(paramTabItem.tgk);
       if (localObject2 == null) {
         break label699;
       }
-      bool = ((GameTabData.TabItem)localObject2).rYA;
+      bool = ((GameTabData.TabItem)localObject2).tgs;
       label240:
       localBundle.putParcelable("tab_data", (Parcelable)localObject1);
     }
     for (;;)
     {
       if (!paramBoolean3) {
-        e.a(paramActivity, 18, paramTabItem.dvS, paramTabItem.rYB, 2, null, paramActivity.getIntent().getIntExtra("game_report_from_scene", 0), com.tencent.mm.plugin.game.e.a.qh(paramTabItem.rVj));
+        e.a(paramActivity, 18, paramTabItem.dtF, paramTabItem.tgt, 2, null, paramActivity.getIntent().getIntExtra("game_report_from_scene", 0), com.tencent.mm.plugin.game.e.a.tu(paramTabItem.tdb));
       }
-      if (!paramTabItem.rYu)
+      if (!paramTabItem.tgm)
       {
         localBundle.putString("rawUrl", paramTabItem.jumpUrl);
         localBundle.putBoolean("KRightBtn", true);
@@ -185,14 +185,14 @@ public class GameTabWidget
         localBundle.putInt("screen_orientation", 1);
         localBundle.putString("KPublisherId", "game_center_entrance");
         localBundle.putInt("geta8key_scene", 32);
-        if ((localObject1 != null) && (((GameTabData)localObject1).rYq != null))
+        if ((localObject1 != null) && (((GameTabData)localObject1).tgi != null))
         {
-          localBundle.putString("status_bar_style", ((GameTabData)localObject1).rYq.rYr);
-          localBundle.putInt("customize_status_bar_color", ((GameTabData)localObject1).rYq.color);
+          localBundle.putString("status_bar_style", ((GameTabData)localObject1).tgi.tgj);
+          localBundle.putInt("customize_status_bar_color", ((GameTabData)localObject1).tgi.color);
         }
         localBundle.putBoolean("game_check_float", paramBoolean3);
         String str = localBundle.getString("rawUrl");
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
           if (!paramBoolean3) {
             break label680;
@@ -201,20 +201,20 @@ public class GameTabWidget
           int i = localIntent.getIntExtra("game_report_from_scene", 0);
           if (paramBoolean3)
           {
-            ((d)g.ab(d.class)).cBc();
-            localObject2 = r.cDk();
+            ((d)g.ab(d.class)).cOl();
+            localObject2 = r.cQu();
             localObject1 = localObject2;
             if (localObject2 == null)
             {
-              ((d)g.ab(d.class)).cBc();
-              localObject1 = r.cDo();
+              ((d)g.ab(d.class)).cOl();
+              localObject1 = r.cQy();
             }
             localBundle.putString("rawUrl", m.a(str, (o)localObject1));
             if (localObject1 != null)
             {
-              ((o)localObject1).cDf();
-              if (((o)localObject1).rWu.rWX) {
-                localBundle.putString("game_transparent_float_url", ((o)localObject1).rWu.url);
+              ((o)localObject1).cQp();
+              if (((o)localObject1).tem.teP) {
+                localBundle.putString("game_transparent_float_url", ((o)localObject1).tem.url);
               }
               localBundle.putInt("game_sourceScene", i);
             }
@@ -224,7 +224,7 @@ public class GameTabWidget
       for (;;)
       {
         localIntent.putExtras(localBundle);
-        a(paramActivity, localIntent, paramBoolean1, paramBoolean2, bool, paramTabItem.rYu);
+        a(paramActivity, localIntent, paramBoolean1, paramBoolean2, bool, paramTabItem.tgm);
         AppMethodBeat.o(42478);
         return;
         localObject1 = new Bundle();
@@ -241,7 +241,7 @@ public class GameTabWidget
     }
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
     AppMethodBeat.i(42476);
     this.mActivity = ((Activity)paramContext);
@@ -254,7 +254,7 @@ public class GameTabWidget
   public void setAdapter(a parama)
   {
     AppMethodBeat.i(42477);
-    this.sof = parama;
+    this.tvY = parama;
     parama.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()

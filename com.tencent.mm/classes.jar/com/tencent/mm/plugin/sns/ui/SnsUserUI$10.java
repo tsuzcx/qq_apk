@@ -11,15 +11,15 @@ final class SnsUserUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(187753);
-    this.xLe.finish();
-    AppMethodBeat.o(187753);
+    AppMethodBeat.i(200622);
+    this.yXT.finish();
+    AppMethodBeat.o(200622);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUserUI.10
  * JD-Core Version:    0.7.0.1
  */

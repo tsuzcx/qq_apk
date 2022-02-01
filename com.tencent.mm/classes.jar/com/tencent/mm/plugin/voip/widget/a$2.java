@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.voip.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.la;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 
 final class a$2
-  extends com.tencent.mm.sdk.b.c<kr>
+  extends com.tencent.mm.sdk.b.c<la>
 {
   a$2(a parama)
   {
-    AppMethodBeat.i(192205);
-    this.__eventId = kr.class.getName().hashCode();
-    AppMethodBeat.o(192205);
+    AppMethodBeat.i(208543);
+    this.__eventId = la.class.getName().hashCode();
+    AppMethodBeat.o(208543);
   }
 }
 

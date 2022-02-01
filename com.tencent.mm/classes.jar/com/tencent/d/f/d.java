@@ -12,8 +12,8 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Method;
 import java.net.NetworkInterface;
 import java.util.Collections;
@@ -23,7 +23,7 @@ import java.util.List;
 
 public final class d
 {
-  public static String aNJ(String paramString)
+  public static String aTm(String paramString)
   {
     AppMethodBeat.i(138471);
     try
@@ -41,126 +41,109 @@ public final class d
       for (;;)
       {
         paramString = "";
-        h.eo(" getBuildPropByReflect: ".concat(String.valueOf(localThrowable)));
+        h.ep(" getBuildPropByReflect: ".concat(String.valueOf(localThrowable)));
       }
     }
     AppMethodBeat.o(138471);
     return paramString;
   }
   
-  public static int fmv()
-  {
-    AppMethodBeat.i(138466);
-    try
-    {
-      int i = Integer.parseInt(Build.VERSION.SDK);
-      AppMethodBeat.o(138466);
-      return i;
-    }
-    catch (Throwable localThrowable)
-    {
-      h.eo("getSDKVersion: ".concat(String.valueOf(localThrowable)));
-      AppMethodBeat.o(138466);
-    }
-    return 0;
-  }
-  
   /* Error */
-  public static String fmw()
+  public static String fCM()
   {
     // Byte code:
-    //   0: ldc 85
+    //   0: ldc 68
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 87	java/io/FileInputStream
+    //   5: new 70	java/io/FileInputStream
     //   8: dup
-    //   9: ldc 89
-    //   11: invokespecial 93	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   9: ldc 72
+    //   11: invokespecial 76	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   14: astore_0
-    //   15: new 95	java/io/BufferedReader
+    //   15: new 78	java/io/BufferedReader
     //   18: dup
-    //   19: new 97	java/io/InputStreamReader
+    //   19: new 80	java/io/InputStreamReader
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 100	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   24: invokespecial 83	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   27: sipush 8192
-    //   30: invokespecial 103	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   30: invokespecial 86	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   33: astore_2
-    //   34: new 105	java/lang/StringBuilder
+    //   34: new 88	java/lang/StringBuilder
     //   37: dup
     //   38: ldc 46
-    //   40: invokespecial 106	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   40: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   43: astore_1
     //   44: aload_2
-    //   45: invokevirtual 109	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 92	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore_3
     //   49: aload_3
     //   50: ifnull +50 -> 100
     //   53: aload_1
     //   54: aload_3
-    //   55: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: pop
     //   59: goto -15 -> 44
     //   62: astore_3
     //   63: aload_3
-    //   64: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   64: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   67: aload_2
-    //   68: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   68: invokevirtual 103	java/io/BufferedReader:close	()V
     //   71: aload_0
-    //   72: invokevirtual 123	java/io/InputStream:close	()V
+    //   72: invokevirtual 106	java/io/InputStream:close	()V
     //   75: aload_1
-    //   76: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   79: astore_0
-    //   80: ldc 85
+    //   80: ldc 68
     //   82: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   85: aload_0
     //   86: areturn
     //   87: astore_0
     //   88: aload_0
-    //   89: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
-    //   92: ldc 85
+    //   89: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
+    //   92: ldc 68
     //   94: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: ldc 46
     //   99: areturn
     //   100: aload_2
-    //   101: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   101: invokevirtual 103	java/io/BufferedReader:close	()V
     //   104: aload_0
-    //   105: invokevirtual 123	java/io/InputStream:close	()V
+    //   105: invokevirtual 106	java/io/InputStream:close	()V
     //   108: aload_1
-    //   109: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   112: astore_0
     //   113: goto -33 -> 80
     //   116: astore_2
     //   117: aload_2
-    //   118: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   118: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   121: goto -17 -> 104
     //   124: astore_0
     //   125: aload_0
-    //   126: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   126: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   129: goto -21 -> 108
     //   132: astore_2
     //   133: aload_2
-    //   134: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   134: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   137: goto -66 -> 71
     //   140: astore_0
     //   141: aload_0
-    //   142: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   142: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   145: goto -70 -> 75
     //   148: astore_1
     //   149: aload_2
-    //   150: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   150: invokevirtual 103	java/io/BufferedReader:close	()V
     //   153: aload_0
-    //   154: invokevirtual 123	java/io/InputStream:close	()V
-    //   157: ldc 85
+    //   154: invokevirtual 106	java/io/InputStream:close	()V
+    //   157: ldc 68
     //   159: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   162: aload_1
     //   163: athrow
     //   164: astore_2
     //   165: aload_2
-    //   166: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   166: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   169: goto -16 -> 153
     //   172: astore_0
     //   173: aload_0
-    //   174: invokestatic 116	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   174: invokestatic 99	com/tencent/d/f/h:eq	(Ljava/lang/Object;)V
     //   177: goto -20 -> 157
     // Local variable table:
     //   start	length	slot	name	signature
@@ -194,7 +177,7 @@ public final class d
     //   153	157	172	java/lang/Throwable
   }
   
-  private static String fmx()
+  private static String fCN()
   {
     AppMethodBeat.i(138473);
     try
@@ -202,7 +185,7 @@ public final class d
       localObject1 = NetworkInterface.getNetworkInterfaces();
       if (localObject1 == null)
       {
-        h.eo("[tomys] getMac2, itfs is null.");
+        h.ep("[tomys] getMac2, itfs is null.");
         AppMethodBeat.o(138473);
         return "";
       }
@@ -237,7 +220,7 @@ public final class d
       for (;;)
       {
         Object localObject1;
-        h.eo("getMac2: ".concat(String.valueOf(localThrowable)));
+        h.ep("getMac2: ".concat(String.valueOf(localThrowable)));
         String str = "";
       }
     }
@@ -251,7 +234,7 @@ public final class d
     try
     {
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      ad.d("DeviceUtil", "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bt.eGN() });
+      ac.d("DeviceUtil", "READ_PHONE_STATE.getDeviceId, %s", new Object[] { bs.eWi() });
       paramContext = paramContext.getDeviceId();
       AppMethodBeat.o(138464);
       return paramContext;
@@ -260,52 +243,36 @@ public final class d
     {
       for (;;)
       {
-        h.eo("getIMEI: ".concat(String.valueOf(paramContext)));
+        h.ep("getIMEI: ".concat(String.valueOf(paramContext)));
         paramContext = "";
       }
     }
   }
   
-  public static String kA(Context paramContext)
+  public static int getSDKVersion()
   {
-    AppMethodBeat.i(138472);
+    AppMethodBeat.i(138466);
     try
     {
-      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (paramContext == null) {
-        break label70;
-      }
-      paramContext = paramContext.getMacAddress();
+      int i = Integer.parseInt(Build.VERSION.SDK);
+      AppMethodBeat.o(138466);
+      return i;
     }
-    catch (Throwable paramContext)
+    catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        Object localObject;
-        h.eo("getMac: ".concat(String.valueOf(paramContext)));
-        paramContext = "";
-      }
+      h.ep("getSDKVersion: ".concat(String.valueOf(localThrowable)));
+      AppMethodBeat.o(138466);
     }
-    if (!TextUtils.isEmpty(paramContext))
-    {
-      localObject = paramContext;
-      if (!paramContext.equals("02:00:00:00:00:00")) {}
-    }
-    else
-    {
-      localObject = fmx();
-    }
-    AppMethodBeat.o(138472);
-    return localObject;
+    return 0;
   }
   
-  public static String kx(Context paramContext)
+  public static String kJ(Context paramContext)
   {
     AppMethodBeat.i(138465);
     try
     {
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      ad.d("DeviceUtil", "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bt.eGN() });
+      ac.d("DeviceUtil", "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { bs.eWi() });
       paramContext = paramContext.getSubscriberId();
       AppMethodBeat.o(138465);
       return paramContext;
@@ -314,13 +281,13 @@ public final class d
     {
       for (;;)
       {
-        h.eo("getIMSI: ".concat(String.valueOf(paramContext)));
+        h.ep("getIMSI: ".concat(String.valueOf(paramContext)));
         paramContext = "";
       }
     }
   }
   
-  public static String ky(Context paramContext)
+  public static String kK(Context paramContext)
   {
     AppMethodBeat.i(138467);
     try
@@ -331,25 +298,25 @@ public final class d
     }
     catch (Throwable paramContext)
     {
-      h.eo("getAndroidId: ".concat(String.valueOf(paramContext)));
+      h.ep("getAndroidId: ".concat(String.valueOf(paramContext)));
       AppMethodBeat.o(138467);
     }
     return "";
   }
   
-  public static a kz(Context paramContext)
+  public static a kL(Context paramContext)
   {
     AppMethodBeat.i(138470);
     NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
     if ((localNetworkInfo == null) || ((localNetworkInfo.getState() != NetworkInfo.State.CONNECTING) && (localNetworkInfo.getState() != NetworkInfo.State.CONNECTED)))
     {
-      paramContext = a.IsZ;
+      paramContext = a.JUJ;
       AppMethodBeat.o(138470);
       return paramContext;
     }
     if (localNetworkInfo.getType() == 1)
     {
-      paramContext = a.IsW;
+      paramContext = a.JUG;
       AppMethodBeat.o(138470);
       return paramContext;
     }
@@ -357,21 +324,54 @@ public final class d
     {
       if ((Proxy.getDefaultHost() != null) || (Proxy.getHost(paramContext) != null))
       {
-        paramContext = a.IsX;
+        paramContext = a.JUH;
         AppMethodBeat.o(138470);
         return paramContext;
       }
-      paramContext = a.IsY;
+      paramContext = a.JUI;
       AppMethodBeat.o(138470);
       return paramContext;
     }
-    paramContext = a.IsZ;
+    paramContext = a.JUJ;
     AppMethodBeat.o(138470);
     return paramContext;
   }
   
+  public static String kM(Context paramContext)
+  {
+    AppMethodBeat.i(138472);
+    try
+    {
+      paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+      if (paramContext == null) {
+        break label74;
+      }
+      paramContext = paramContext.getMacAddress();
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        Object localObject;
+        h.ep("getMac: ".concat(String.valueOf(paramContext)));
+        paramContext = "";
+      }
+    }
+    if (!TextUtils.isEmpty(paramContext))
+    {
+      localObject = paramContext;
+      if (!paramContext.equals("02:00:00:00:00:00")) {}
+    }
+    else
+    {
+      localObject = fCN();
+    }
+    AppMethodBeat.o(138472);
+    return localObject;
+  }
+  
   /* Error */
-  public static String xt(boolean paramBoolean)
+  public static String yD(boolean paramBoolean)
   {
     // Byte code:
     //   0: aconst_null
@@ -384,23 +384,23 @@ public final class d
     //   16: astore_2
     //   17: ldc_w 342
     //   20: astore_1
-    //   21: new 95	java/io/BufferedReader
+    //   21: new 78	java/io/BufferedReader
     //   24: dup
     //   25: new 344	java/io/FileReader
     //   28: dup
-    //   29: new 105	java/lang/StringBuilder
+    //   29: new 88	java/lang/StringBuilder
     //   32: dup
-    //   33: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   33: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   36: aload_2
-    //   37: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: ldc_w 346
-    //   43: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   43: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   49: invokespecial 347	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   52: invokespecial 350	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   55: astore_3
     //   56: aload_3
-    //   57: invokevirtual 109	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   57: invokevirtual 92	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   60: astore 6
     //   62: aload 5
     //   64: astore 4
@@ -411,25 +411,25 @@ public final class d
     //   75: aload 6
     //   77: invokevirtual 353	java/lang/String:toUpperCase	()Ljava/lang/String;
     //   80: aload_1
-    //   81: invokevirtual 254	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   81: invokevirtual 329	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   84: ifeq +82 -> 166
-    //   87: new 95	java/io/BufferedReader
+    //   87: new 78	java/io/BufferedReader
     //   90: dup
     //   91: new 344	java/io/FileReader
     //   94: dup
-    //   95: new 105	java/lang/StringBuilder
+    //   95: new 88	java/lang/StringBuilder
     //   98: dup
-    //   99: invokespecial 173	java/lang/StringBuilder:<init>	()V
+    //   99: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   102: aload_2
-    //   103: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: ldc_w 355
-    //   109: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   115: invokespecial 347	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   118: invokespecial 350	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   121: astore_1
     //   122: aload_1
-    //   123: invokevirtual 109	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   123: invokevirtual 92	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   126: astore_2
     //   127: aload_2
     //   128: ifnull +35 -> 163
@@ -437,9 +437,9 @@ public final class d
     //   132: invokevirtual 358	java/lang/String:trim	()Ljava/lang/String;
     //   135: astore_2
     //   136: aload_3
-    //   137: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   137: invokevirtual 103	java/io/BufferedReader:close	()V
     //   140: aload_1
-    //   141: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   141: invokevirtual 103	java/io/BufferedReader:close	()V
     //   144: ldc_w 338
     //   147: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   150: aload_2
@@ -452,11 +452,11 @@ public final class d
     //   163: aload_1
     //   164: astore 4
     //   166: aload_3
-    //   167: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   167: invokevirtual 103	java/io/BufferedReader:close	()V
     //   170: aload 4
     //   172: ifnull +8 -> 180
     //   175: aload 4
-    //   177: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   177: invokevirtual 103	java/io/BufferedReader:close	()V
     //   180: ldc_w 338
     //   183: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   186: ldc 46
@@ -470,15 +470,15 @@ public final class d
     //   197: aload_1
     //   198: invokestatic 55	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   201: invokevirtual 58	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   204: invokestatic 64	com/tencent/d/f/h:eo	(Ljava/lang/Object;)V
+    //   204: invokestatic 64	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
     //   207: aload_3
     //   208: ifnull +7 -> 215
     //   211: aload_3
-    //   212: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   212: invokevirtual 103	java/io/BufferedReader:close	()V
     //   215: aload_2
     //   216: ifnull -36 -> 180
     //   219: aload_2
-    //   220: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   220: invokevirtual 103	java/io/BufferedReader:close	()V
     //   223: goto -43 -> 180
     //   226: astore_1
     //   227: goto -47 -> 180
@@ -490,11 +490,11 @@ public final class d
     //   235: aload_3
     //   236: ifnull +7 -> 243
     //   239: aload_3
-    //   240: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   240: invokevirtual 103	java/io/BufferedReader:close	()V
     //   243: aload_2
     //   244: ifnull +7 -> 251
     //   247: aload_2
-    //   248: invokevirtual 120	java/io/BufferedReader:close	()V
+    //   248: invokevirtual 103	java/io/BufferedReader:close	()V
     //   251: ldc_w 338
     //   254: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   257: aload_1
@@ -590,11 +590,11 @@ public final class d
     static
     {
       AppMethodBeat.i(138463);
-      IsW = new a("CONN_WIFI", 0);
-      IsX = new a("CONN_CMWAP", 1);
-      IsY = new a("CONN_CMNET", 2);
-      IsZ = new a("CONN_NONE", 3);
-      Ita = new a[] { IsW, IsX, IsY, IsZ };
+      JUG = new a("CONN_WIFI", 0);
+      JUH = new a("CONN_CMWAP", 1);
+      JUI = new a("CONN_CMNET", 2);
+      JUJ = new a("CONN_NONE", 3);
+      JUK = new a[] { JUG, JUH, JUI, JUJ };
       AppMethodBeat.o(138463);
     }
     

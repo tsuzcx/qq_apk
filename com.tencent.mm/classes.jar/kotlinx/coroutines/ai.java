@@ -1,50 +1,36 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
 import d.l;
-import d.p;
-import d.p.a;
-import d.q;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"classSimpleName", "", "", "getClassSimpleName", "(Ljava/lang/Object;)Ljava/lang/String;", "hexAddress", "getHexAddress", "toDebugString", "Lkotlin/coroutines/Continuation;", "kotlinx-coroutines-core"})
-public final class ai
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CoroutineStart;", "", "(Ljava/lang/String;I)V", "isLazy", "", "isLazy$annotations", "()V", "()Z", "invoke", "", "T", "block", "Lkotlin/Function1;", "Lkotlin/coroutines/Continuation;", "", "completion", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "DEFAULT", "LAZY", "ATOMIC", "UNDISPATCHED", "kotlinx-coroutines-core"})
+public enum ai
 {
-  public static final String e(d<?> paramd)
+  static
   {
-    AppMethodBeat.i(190036);
-    if ((paramd instanceof ap))
-    {
-      paramd = paramd.toString();
-      AppMethodBeat.o(190036);
-      return paramd;
-    }
-    try
-    {
-      Object localObject1 = p.JfM;
-      localObject1 = p.eF(paramd + '@' + Integer.toHexString(System.identityHashCode(paramd)));
-      if (p.eE(localObject1) == null)
-      {
-        paramd = (String)localObject1;
-        AppMethodBeat.o(190036);
-        return paramd;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        p.a locala = p.JfM;
-        Object localObject2 = p.eF(q.n(localThrowable));
-        continue;
-        localObject2 = paramd.getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(paramd));
-      }
-    }
+    AppMethodBeat.i(118175);
+    ai localai1 = new ai("DEFAULT", 0);
+    LRc = localai1;
+    ai localai2 = new ai("LAZY", 1);
+    LRd = localai2;
+    ai localai3 = new ai("ATOMIC", 2);
+    LRe = localai3;
+    ai localai4 = new ai("UNDISPATCHED", 3);
+    LRf = localai4;
+    LRg = new ai[] { localai1, localai2, localai3, localai4 };
+    AppMethodBeat.o(118175);
+  }
+  
+  private ai() {}
+  
+  public final boolean gdC()
+  {
+    return (ai)this == LRd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ai
  * JD-Core Version:    0.7.0.1
  */

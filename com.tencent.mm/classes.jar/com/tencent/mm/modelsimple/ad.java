@@ -1,16 +1,17 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bms;
-import com.tencent.mm.protocal.protobuf.bmt;
+import com.tencent.mm.protocal.protobuf.bri;
+import com.tencent.mm.protocal.protobuf.brj;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class ad
   extends n
@@ -23,21 +24,21 @@ public final class ad
   {
     AppMethodBeat.i(150963);
     b.a locala = new b.a();
-    locala.gUU = new bms();
-    locala.gUV = new bmt();
+    locala.hvt = new bri();
+    locala.hvu = new brj();
     locala.uri = "/cgi-bin/micromsg-bin/logoutwebwx";
     locala.funcId = 281;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((bms)this.rr.gUS.gUX).OpCode = paramInt;
+    this.rr = locala.aAz();
+    ((bri)this.rr.hvr.hvw).OpCode = paramInt;
     AppMethodBeat.o(150963);
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(150964);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneWebWXLogout", "doScene");
+    ac.d("MicroMsg.NetSceneWebWXLogout", "doScene");
     this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(150964);
@@ -53,7 +54,7 @@ public final class ad
   {
     AppMethodBeat.i(150965);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneWebWXLogout", "logout Error. ");
+      ac.d("MicroMsg.NetSceneWebWXLogout", "logout Error. ");
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -63,7 +64,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelsimple.ad
  * JD-Core Version:    0.7.0.1
  */

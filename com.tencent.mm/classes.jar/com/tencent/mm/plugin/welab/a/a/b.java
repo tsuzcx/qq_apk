@@ -4,9 +4,9 @@ import android.app.Activity;
 
 public abstract interface b
 {
-  public abstract String esh();
+  public abstract String eHB();
   
-  public abstract String esi();
+  public abstract String eHC();
   
   public abstract void i(Activity paramActivity, String paramString);
 }

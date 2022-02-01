@@ -12,15 +12,15 @@ final class BaseScanUI$2
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(169960);
-    if (paraml.eSQ()) {
-      paraml.jj(102, 2131755150);
+    if (paraml.fiA()) {
+      paraml.jw(102, 2131755150);
     }
     AppMethodBeat.o(169960);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.2
  * JD-Core Version:    0.7.0.1
  */

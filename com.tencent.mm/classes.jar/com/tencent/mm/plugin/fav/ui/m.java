@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 
 public final class m
 {
-  public static CharSequence C(Context paramContext, int paramInt)
+  public static CharSequence F(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106935);
     if (paramInt <= 0)
@@ -65,7 +65,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.m
  * JD-Core Version:    0.7.0.1
  */

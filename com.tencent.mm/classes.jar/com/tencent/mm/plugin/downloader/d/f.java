@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 
 public final class f
 {
-  public static ByteBuffer J(e parame)
+  public static ByteBuffer I(e parame)
   {
     AppMethodBeat.i(177463);
     if ((parame == null) || (!parame.exists()) || (!parame.isFile()))
@@ -20,7 +20,7 @@ public final class f
     }
     try
     {
-      parame = i.cS(q.B(parame.mUri), false);
+      parame = i.cY(q.B(parame.mUri), false);
       try
       {
         Object localObject1 = a.g(parame);
@@ -61,7 +61,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.f
  * JD-Core Version:    0.7.0.1
  */

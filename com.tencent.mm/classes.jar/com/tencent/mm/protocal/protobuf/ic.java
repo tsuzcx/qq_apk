@@ -3,84 +3,68 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ic
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public boolean CDF;
-  public String CDG;
-  public String CDu;
-  public String CDw;
-  public String dca;
-  public String szi;
-  public String vur;
+  public String AZE;
+  public String AZF;
+  public String BnF;
+  public String title;
+  public int vjP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(19405);
+    AppMethodBeat.i(91354);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.szi != null) {
-        paramVarArgs.d(1, this.szi);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      if (this.vur != null) {
-        paramVarArgs.d(2, this.vur);
+      paramVarArgs.aR(2, this.vjP);
+      if (this.BnF != null) {
+        paramVarArgs.d(3, this.BnF);
       }
-      if (this.dca != null) {
-        paramVarArgs.d(3, this.dca);
+      if (this.AZE != null) {
+        paramVarArgs.d(4, this.AZE);
       }
-      paramVarArgs.bg(4, this.CDF);
-      if (this.CDw != null) {
-        paramVarArgs.d(5, this.CDw);
+      if (this.AZF != null) {
+        paramVarArgs.d(5, this.AZF);
       }
-      if (this.CDu != null) {
-        paramVarArgs.d(6, this.CDu);
-      }
-      if (this.CDG != null) {
-        paramVarArgs.d(7, this.CDG);
-      }
-      AppMethodBeat.o(19405);
+      AppMethodBeat.o(91354);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.szi == null) {
-        break label575;
+      if (this.title == null) {
+        break label438;
       }
     }
-    label575:
-    for (int i = f.a.a.b.b.a.e(1, this.szi) + 0;; i = 0)
+    label438:
+    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
     {
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.vjP);
       paramInt = i;
-      if (this.vur != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.vur);
+      if (this.BnF != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.BnF);
       }
       i = paramInt;
-      if (this.dca != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dca);
-      }
-      i += f.a.a.b.b.a.fY(4) + 1;
-      paramInt = i;
-      if (this.CDw != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.CDw);
-      }
-      i = paramInt;
-      if (this.CDu != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.CDu);
+      if (this.AZE != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.AZE);
       }
       paramInt = i;
-      if (this.CDG != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.CDG);
+      if (this.AZF != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.AZF);
       }
-      AppMethodBeat.o(19405);
+      AppMethodBeat.o(91354);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(19405);
+        AppMethodBeat.o(91354);
         return 0;
       }
       if (paramInt == 3)
@@ -90,45 +74,37 @@ public final class ic
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(19405);
+          AppMethodBeat.o(91354);
           return -1;
         case 1: 
-          localic.szi = locala.KhF.readString();
-          AppMethodBeat.o(19405);
+          localic.title = locala.LVo.readString();
+          AppMethodBeat.o(91354);
           return 0;
         case 2: 
-          localic.vur = locala.KhF.readString();
-          AppMethodBeat.o(19405);
+          localic.vjP = locala.LVo.xF();
+          AppMethodBeat.o(91354);
           return 0;
         case 3: 
-          localic.dca = locala.KhF.readString();
-          AppMethodBeat.o(19405);
+          localic.BnF = locala.LVo.readString();
+          AppMethodBeat.o(91354);
           return 0;
         case 4: 
-          localic.CDF = locala.KhF.fHu();
-          AppMethodBeat.o(19405);
-          return 0;
-        case 5: 
-          localic.CDw = locala.KhF.readString();
-          AppMethodBeat.o(19405);
-          return 0;
-        case 6: 
-          localic.CDu = locala.KhF.readString();
-          AppMethodBeat.o(19405);
+          localic.AZE = locala.LVo.readString();
+          AppMethodBeat.o(91354);
           return 0;
         }
-        localic.CDG = locala.KhF.readString();
-        AppMethodBeat.o(19405);
+        localic.AZF = locala.LVo.readString();
+        AppMethodBeat.o(91354);
         return 0;
       }
-      AppMethodBeat.o(19405);
+      AppMethodBeat.o(91354);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ic
  * JD-Core Version:    0.7.0.1
  */

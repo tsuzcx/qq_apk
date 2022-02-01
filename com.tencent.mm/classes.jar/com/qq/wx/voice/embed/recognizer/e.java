@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public Grammar bNP;
-  g bNQ;
+  public Grammar bLx;
+  g bLy;
   byte[] c;
   public boolean d;
   public boolean e;
@@ -14,12 +14,12 @@ public final class e
   public e()
   {
     AppMethodBeat.i(76756);
-    this.bNP = null;
-    this.bNQ = new g();
+    this.bLx = null;
+    this.bLy = new g();
     this.c = null;
     this.d = false;
     this.e = false;
-    this.bNP = new Grammar();
+    this.bLx = new Grammar();
     AppMethodBeat.o(76756);
   }
   
@@ -36,7 +36,7 @@ public final class e
       AppMethodBeat.o(76757);
       return -302;
     }
-    this.bNQ.bNR = paramc;
+    this.bLy.bLz = paramc;
     this.c = paramArrayOfByte;
     if (this.c == null)
     {
@@ -64,29 +64,29 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(76755);
-      if (e.this.bNP.begin() != 0)
+      if (e.this.bLx.begin() != 0)
       {
-        e.this.bNQ.a(-102);
+        e.this.bLy.a(-102);
         AppMethodBeat.o(76755);
         return;
       }
-      if (e.this.bNP.recognize(e.this.c, e.this.c.length) != 0)
+      if (e.this.bLx.recognize(e.this.c, e.this.c.length) != 0)
       {
-        e.this.bNQ.a(-103);
+        e.this.bLy.a(-103);
         AppMethodBeat.o(76755);
         return;
       }
-      if (e.this.bNP.end() != 0)
+      if (e.this.bLx.end() != 0)
       {
-        e.this.bNQ.a(-104);
+        e.this.bLy.a(-104);
         AppMethodBeat.o(76755);
         return;
       }
       a locala = new a();
-      if (e.this.bNP.getResult(locala) != 0) {
-        e.this.bNQ.a(-105);
+      if (e.this.bLx.getResult(locala) != 0) {
+        e.this.bLy.a(-105);
       }
-      g localg = e.this.bNQ;
+      g localg = e.this.bLy;
       localg.b.sendMessage(localg.b.obtainMessage(200, locala));
       AppMethodBeat.o(76755);
     }

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.fav.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 final class l$1
   implements Runnable
@@ -14,8 +14,8 @@ final class l$1
   public final void run()
   {
     AppMethodBeat.i(103409);
-    String str = bt.cy(this.qak);
-    g.afB().afk().set(225283, str);
+    String str = bs.cx(this.qIQ);
+    g.agR().agA().set(225283, str);
     AppMethodBeat.o(103409);
   }
   

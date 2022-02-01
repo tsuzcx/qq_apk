@@ -12,9 +12,9 @@ public abstract interface d
   
   public abstract boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void r(double paramDouble);
+  public abstract void q(double paramDouble);
   
-  public abstract void ti(int paramInt);
+  public abstract void tZ(int paramInt);
   
   public static abstract interface a
   {
@@ -23,7 +23,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.d
  * JD-Core Version:    0.7.0.1
  */

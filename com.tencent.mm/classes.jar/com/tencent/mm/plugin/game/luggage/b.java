@@ -9,19 +9,19 @@ import com.tencent.mm.plugin.webview.ui.tools.game.d;
 public final class b
   implements com.tencent.luggage.webview.a.c
 {
-  private e rOP;
+  private e sWF;
   
   public b(e parame)
   {
-    this.rOP = parame;
+    this.sWF = parame;
   }
   
-  public final String Eu()
+  public final String DX()
   {
     return "weixin://game.js";
   }
   
-  public final WebResourceResponse bW(String paramString)
+  public final WebResourceResponse bM(String paramString)
   {
     AppMethodBeat.i(82986);
     if (Build.VERSION.SDK_INT < 21)
@@ -30,10 +30,10 @@ public final class b
       return null;
     }
     boolean bool = false;
-    if (this.rOP.getWePkgPlugin() != null) {
-      bool = this.rOP.getWePkgPlugin().BHg;
+    if (this.sWF.getWePkgPlugin() != null) {
+      bool = this.sWF.getWePkgPlugin().CZo;
     }
-    paramString = d.tw(bool);
+    paramString = d.uy(bool);
     AppMethodBeat.o(82986);
     return paramString;
   }

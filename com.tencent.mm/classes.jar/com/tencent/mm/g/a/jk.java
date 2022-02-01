@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jk
   extends b
 {
-  public a dnA;
+  public a dkT;
   
   public jk()
   {
@@ -15,17 +15,16 @@ public final class jk
   
   private jk(byte paramByte)
   {
-    AppMethodBeat.i(121032);
-    this.dnA = new a();
-    this.ESR = false;
+    AppMethodBeat.i(104418);
+    this.dkT = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(121032);
+    AppMethodBeat.o(104418);
   }
   
   public static final class a
   {
-    public String dnB;
-    public String dnC;
+    public int errorCode;
   }
 }
 

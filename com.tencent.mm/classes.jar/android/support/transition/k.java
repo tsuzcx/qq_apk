@@ -8,19 +8,19 @@ import android.util.Property;
 final class k<T>
   extends Property<T, Float>
 {
-  private final PathMeasure vc;
-  private final Property<T, PointF> yA;
-  private final float yB;
-  private final float[] yC = new float[2];
-  private final PointF yD = new PointF();
-  private float yE;
+  private final PathMeasure wa;
+  private final Property<T, PointF> zA;
+  private final float zB;
+  private final float[] zC = new float[2];
+  private final PointF zD = new PointF();
+  private float zE;
   
   k(Property<T, PointF> paramProperty, Path paramPath)
   {
     super(Float.class, paramProperty.getName());
-    this.yA = paramProperty;
-    this.vc = new PathMeasure(paramPath, false);
-    this.yB = this.vc.getLength();
+    this.zA = paramProperty;
+    this.wa = new PathMeasure(paramPath, false);
+    this.zB = this.wa.getLength();
   }
 }
 

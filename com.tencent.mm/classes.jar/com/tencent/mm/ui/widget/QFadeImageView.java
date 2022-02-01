@@ -8,7 +8,7 @@ public class QFadeImageView
   extends QPictureView
 {
   String key;
-  long wIy;
+  long xUT;
   
   public QFadeImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,9 +20,9 @@ public class QFadeImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void L(long paramLong, String paramString)
+  public final void J(long paramLong, String paramString)
   {
-    this.wIy = paramLong;
+    this.xUT = paramLong;
     this.key = paramString;
   }
   
@@ -33,7 +33,7 @@ public class QFadeImageView
   
   public long getStartTimeMillis()
   {
-    return this.wIy;
+    return this.xUT;
   }
 }
 

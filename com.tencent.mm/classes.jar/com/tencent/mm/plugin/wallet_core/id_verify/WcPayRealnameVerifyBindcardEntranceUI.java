@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -19,9 +19,9 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WcPayRealnameVerifyBindcardEntranceUI
   extends WalletBaseUI
 {
-  private TextView kFd;
-  private Button zYm;
-  private Button zYn;
+  private Button BqG;
+  private Button BqH;
+  private TextView lgw;
   
   public int getLayoutId()
   {
@@ -31,14 +31,14 @@ public class WcPayRealnameVerifyBindcardEntranceUI
   public void initView()
   {
     AppMethodBeat.i(70072);
-    this.zYm = ((Button)findViewById(2131307064));
-    this.zYn = ((Button)findViewById(2131307065));
-    this.kFd = ((TextView)findViewById(2131307093));
+    this.BqG = ((Button)findViewById(2131307064));
+    this.BqH = ((Button)findViewById(2131307065));
+    this.lgw = ((TextView)findViewById(2131307093));
     String str = getInput().getString("realname_verify_process_add_bank_word");
-    if (!bt.isNullOrNil(str)) {
-      this.kFd.setText(str);
+    if (!bs.isNullOrNil(str)) {
+      this.lgw.setText(str);
     }
-    this.zYm.setOnClickListener(new View.OnClickListener()
+    this.BqG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -48,13 +48,13 @@ public class WcPayRealnameVerifyBindcardEntranceUI
         AppMethodBeat.o(70069);
       }
     });
-    this.zYn.setOnClickListener(new View.OnClickListener()
+    this.BqH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70070);
         boolean bool = WcPayRealnameVerifyBindcardEntranceUI.this.getInput().getBoolean("realname_verify_process_need_face", false);
-        ad.i("MicroMsg.WcPayRealnameVerifyBindcardEntranceUI", "need face : %s", new Object[] { Boolean.valueOf(bool) });
+        ac.i("MicroMsg.WcPayRealnameVerifyBindcardEntranceUI", "need face : %s", new Object[] { Boolean.valueOf(bool) });
         if (bool)
         {
           WcPayRealnameVerifyBindcardEntranceUI.a(WcPayRealnameVerifyBindcardEntranceUI.this);
@@ -72,7 +72,7 @@ public class WcPayRealnameVerifyBindcardEntranceUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(70073);
-    ad.i("MicroMsg.WcPayRealnameVerifyBindcardEntranceUI", "onActivityResult: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.WcPayRealnameVerifyBindcardEntranceUI", "onActivityResult: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 1)
     {
       if ((paramInt2 == -1) && (paramIntent != null) && (paramIntent.getExtras() != null))

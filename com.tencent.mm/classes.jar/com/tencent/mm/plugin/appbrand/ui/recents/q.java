@@ -6,34 +6,34 @@ import java.util.List;
 public abstract class q<T>
   extends c.a
 {
-  protected final List<T> lJR;
-  protected final List<T> lJS;
+  protected final List<T> mlO;
+  protected final List<T> mlP;
   
   public q(List<T> paramList1, List<T> paramList2)
   {
-    this.lJR = paramList1;
-    this.lJS = paramList2;
+    this.mlO = paramList1;
+    this.mlP = paramList2;
   }
   
-  public final int gR()
+  public final int gZ()
   {
-    if (this.lJR == null) {
+    if (this.mlO == null) {
       return 0;
     }
-    return this.lJR.size();
+    return this.mlO.size();
   }
   
-  public final int gS()
+  public final int ha()
   {
-    if (this.lJS == null) {
+    if (this.mlP == null) {
       return 0;
     }
-    return this.lJS.size();
+    return this.mlP.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.q
  * JD-Core Version:    0.7.0.1
  */

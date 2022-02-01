@@ -1,12 +1,21 @@
 package com.tencent.mm.ui.base;
 
-public abstract interface MMFlipper$d
+import android.view.animation.Interpolator;
+
+final class MMFlipper$d
+  implements Interpolator
 {
-  public abstract void aik(int paramInt);
+  private float wcx = 1.3F;
+  
+  public final float getInterpolation(float paramFloat)
+  {
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat) + 1.0F;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFlipper.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class d
 {
@@ -26,7 +26,7 @@ public final class d
     return j;
   }
   
-  public static Integer cw(Object paramObject)
+  public static Integer cu(Object paramObject)
   {
     AppMethodBeat.i(131531);
     if (paramObject == null)
@@ -64,7 +64,7 @@ public final class d
   {
     AppMethodBeat.i(131530);
     int i = aJ(paramClass);
-    if ((bt.isNullOrNil(paramString)) || (paramString.length() > i))
+    if ((bs.isNullOrNil(paramString)) || (paramString.length() > i))
     {
       AppMethodBeat.o(131530);
       return null;
@@ -90,7 +90,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.d
  * JD-Core Version:    0.7.0.1
  */

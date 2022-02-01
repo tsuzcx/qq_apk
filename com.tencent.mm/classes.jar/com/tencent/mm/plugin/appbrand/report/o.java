@@ -1,26 +1,76 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import com.tencent.mm.sdk.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.p;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
-public abstract class o
-  extends c
+public final class o
 {
-  public void enter()
+  private static String QF(String paramString)
   {
-    super.enter();
-    ad.i("MicroMsg.LoggerState", getName() + " [ENTERING]");
+    AppMethodBeat.i(48072);
+    if (bs.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(48072);
+      return "";
+    }
+    try
+    {
+      String str = bs.nullAsNil(p.encode(paramString));
+      AppMethodBeat.o(48072);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      ac.e("MicroMsg.AppBrand.ReportUtil", "safeEncode, given %s, e %s", new Object[] { paramString, localException });
+      AppMethodBeat.o(48072);
+    }
+    return "";
   }
   
-  public final void exit()
+  public static Object[] l(Object... paramVarArgs)
   {
-    super.exit();
-    ad.i("MicroMsg.LoggerState", getName() + " [EXITING]");
+    AppMethodBeat.i(48073);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
+    {
+      AppMethodBeat.o(48073);
+      return new Object[0];
+    }
+    Object[] arrayOfObject = new Object[paramVarArgs.length];
+    int k = paramVarArgs.length;
+    int j = 0;
+    int i = 0;
+    if (j < k)
+    {
+      Object localObject2 = paramVarArgs[j];
+      Object localObject1;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      for (;;)
+      {
+        arrayOfObject[i] = String.valueOf(localObject1);
+        j += 1;
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof String))
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).contains(",")) {
+            localObject1 = QF((String)localObject2);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(48073);
+    return arrayOfObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.o
  * JD-Core Version:    0.7.0.1
  */

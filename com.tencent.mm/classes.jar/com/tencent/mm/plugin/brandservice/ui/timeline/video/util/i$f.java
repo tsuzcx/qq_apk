@@ -8,7 +8,7 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 public final class i$f
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -16,22 +16,22 @@ public final class i$f
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(193354);
-    i locali = this.nly;
+    AppMethodBeat.i(199166);
+    i locali = this.nOy;
     k.g(paramValueAnimator, "valueAnimator");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
     {
       paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(193354);
+      AppMethodBeat.o(199166);
       throw paramValueAnimator;
     }
-    locali.nll = ((Integer)paramValueAnimator).intValue();
-    if (this.nly.nll == this.nly.nlo) {
-      i.a(this.nly);
+    locali.nOl = ((Integer)paramValueAnimator).intValue();
+    if (this.nOy.nOl == this.nOy.nOo) {
+      i.a(this.nOy);
     }
-    this.nlA.invoke();
-    AppMethodBeat.o(193354);
+    this.nOA.invoke();
+    AppMethodBeat.o(199166);
   }
 }
 

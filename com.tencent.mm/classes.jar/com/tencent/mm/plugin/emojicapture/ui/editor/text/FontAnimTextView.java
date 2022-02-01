@@ -18,19 +18,19 @@ import d.a.e;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animCount", "animIndex", "bitmapArray", "", "Landroid/graphics/Bitmap;", "[Landroid/graphics/Bitmap;", "fontPaths", "", "[Ljava/lang/String;", "strokeColor", "switchRunnable", "Ljava/lang/Runnable;", "text", "", "textColor", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "typefaceIndex", "wxTypeFaces", "Landroid/graphics/Typeface;", "[Landroid/graphics/Typeface;", "createTextBitmap", "typeface", "getText", "getTextColor", "onSizeChanged", "", "w", "h", "oldw", "oldh", "pause", "refresh", "resume", "switchFont", "updateText", "color", "change", "", "stroke", "Companion", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animCount", "animIndex", "bitmapArray", "", "Landroid/graphics/Bitmap;", "[Landroid/graphics/Bitmap;", "fontPaths", "", "[Ljava/lang/String;", "strokeColor", "switchRunnable", "Ljava/lang/Runnable;", "text", "", "textColor", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "typefaceIndex", "wxTypeFaces", "Landroid/graphics/Typeface;", "[Landroid/graphics/Typeface;", "createTextBitmap", "typeface", "getText", "getTextColor", "onSizeChanged", "", "w", "h", "oldw", "oldh", "pause", "refresh", "resume", "switchFont", "updateText", "color", "change", "", "stroke", "Companion", "plugin-emojicapture_release"})
 public final class FontAnimTextView
   extends ImageView
 {
-  public static final a oRl;
-  private c oQR;
-  private String[] oQT;
-  private Typeface[] oQU;
-  private int oQV;
-  private final Runnable oQW;
-  private final int oRb;
-  private int oRc;
-  private final Bitmap[] oRd;
+  public static final FontAnimTextView.a pux;
+  private c pue;
+  private String[] pug;
+  private Typeface[] puh;
+  private int pui;
+  private final Runnable puj;
+  private final int puo;
+  private int pup;
+  private final Bitmap[] puq;
   private int strokeColor;
   private CharSequence text;
   private int textColor;
@@ -38,7 +38,7 @@ public final class FontAnimTextView
   static
   {
     AppMethodBeat.i(818);
-    oRl = new a((byte)0);
+    pux = new FontAnimTextView.a((byte)0);
     AppMethodBeat.o(818);
   }
   
@@ -51,39 +51,39 @@ public final class FontAnimTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(817);
-    this.oQW = ((Runnable)new b(this));
+    this.puj = ((Runnable)new b(this));
     this.textColor = -1;
     this.strokeColor = -1;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     float f = paramContext.getResources().getDimension(2131166194);
     int i;
-    if (com.tencent.mm.ar.b.axr().axu())
+    if (com.tencent.mm.aq.b.aEj().aEm())
     {
-      paramContext = d.oJY;
-      if (d.a.bXE())
+      paramContext = d.pnw;
+      if (d.a.ceR())
       {
-        k.g(com.tencent.mm.ar.b.axr(), "FontResLogic.getInstance()");
-        paramContext = com.tencent.mm.ar.b.axv();
+        k.g(com.tencent.mm.aq.b.aEj(), "FontResLogic.getInstance()");
+        paramContext = com.tencent.mm.aq.b.aEn();
         k.g(paramContext, "FontResLogic.getInstance().fontPath");
-        this.oQT = paramContext;
-        paramContext = d.oJY;
-        this.oQR = ((c)new b(this.oQT, (int)f));
-        i = this.oQT.length;
+        this.pug = paramContext;
+        paramContext = d.pnw;
+        this.pue = ((c)new b(this.pug, (int)f));
+        i = this.pug.length;
         paramContext = new Typeface[i];
         paramInt = 0;
         while (paramInt < i)
         {
-          paramContext[paramInt] = Typeface.createFromFile(this.oQT[paramInt]);
+          paramContext[paramInt] = Typeface.createFromFile(this.pug[paramInt]);
           paramInt += 1;
         }
       }
     }
-    for (this.oQU = paramContext;; this.oQU = new Typeface[] { null })
+    for (this.puh = paramContext;; this.puh = new Typeface[] { null })
     {
-      this.oRb = this.oQU.length;
-      i = this.oRb;
+      this.puo = this.puh.length;
+      i = this.puo;
       paramContext = new Bitmap[i];
       paramInt = 0;
       while (paramInt < i)
@@ -91,31 +91,31 @@ public final class FontAnimTextView
         paramContext[paramInt] = null;
         paramInt += 1;
       }
-      this.oQT = new String[] { "" };
-      h.vKh.D(933L, 3L);
-      this.oQR = ((c)new a());
+      this.pug = new String[] { "" };
+      h.wUl.A(933L, 3L);
+      this.pue = ((c)new a());
     }
-    this.oRd = paramContext;
+    this.puq = paramContext;
     AppMethodBeat.o(817);
   }
   
-  private final void bYJ()
+  private final void cfU()
   {
     AppMethodBeat.i(815);
-    this.oRc += 1;
-    this.oRc %= this.oRb;
-    Object localObject = this.oQU[this.oQV];
-    this.oQR.Uz(this.oQT[this.oQV]);
-    this.oQV += 1;
-    this.oQV %= this.oQU.length;
-    if (this.oRd[this.oRc] == null)
+    this.pup += 1;
+    this.pup %= this.puo;
+    Object localObject = this.puh[this.pui];
+    this.pue.YL(this.pug[this.pui]);
+    this.pui += 1;
+    this.pui %= this.puh.length;
+    if (this.puq[this.pup] == null)
     {
       localObject = d((Typeface)localObject);
-      this.oRd[this.oRc] = localObject;
+      this.puq[this.pup] = localObject;
     }
-    removeCallbacks(this.oQW);
-    postDelayed(this.oQW, 100L);
-    setImageBitmap(this.oRd[this.oRc]);
+    removeCallbacks(this.puj);
+    postDelayed(this.puj, 100L);
+    setImageBitmap(this.puq[this.pup]);
     AppMethodBeat.o(815);
   }
   
@@ -125,7 +125,7 @@ public final class FontAnimTextView
     FontTextView localFontTextView = new FontTextView(getContext());
     int i = getWidth() - getPaddingLeft() - getPaddingRight();
     localFontTextView.setMaxWidth(i);
-    localFontTextView.setTextDrawer(this.oQR);
+    localFontTextView.setTextDrawer(this.pue);
     localFontTextView.setTypeface(paramTypeface);
     localFontTextView.d(this.text, this.textColor, this.strokeColor);
     localFontTextView.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), 0);
@@ -172,7 +172,7 @@ public final class FontAnimTextView
   public final void pause()
   {
     AppMethodBeat.i(812);
-    removeCallbacks(this.oQW);
+    removeCallbacks(this.puj);
     AppMethodBeat.o(812);
   }
   
@@ -185,23 +185,20 @@ public final class FontAnimTextView
       if (localCharSequence.length() > 0) {}
       for (int i = 1; i == 1; i = 0)
       {
-        e.M(this.oRd);
-        this.oRc = 0;
-        this.oQV = 0;
-        bYJ();
+        e.O(this.puq);
+        this.pup = 0;
+        this.pui = 0;
+        cfU();
         AppMethodBeat.o(814);
         return;
       }
     }
-    removeCallbacks(this.oQW);
+    removeCallbacks(this.puj);
     setImageBitmap(null);
     AppMethodBeat.o(814);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView$Companion;", "", "()V", "ANIM_INTERVAL", "", "TEXT_COLOR_INVALID", "", "plugin-emojicapture_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -210,14 +207,14 @@ public final class FontAnimTextView
     public final void run()
     {
       AppMethodBeat.i(810);
-      FontAnimTextView.a(this.oRm);
+      FontAnimTextView.a(this.puy);
       AppMethodBeat.o(810);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView
  * JD-Core Version:    0.7.0.1
  */

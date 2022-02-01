@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public final class g
   extends m
 {
-  public String dta;
+  public String dqK;
   
   public g(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(72308);
-    this.dta = null;
+    this.dqK = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("verify_code", paramString1);
     localHashMap.put("session_key", paramString2);
@@ -37,13 +37,13 @@ public final class g
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72309);
-    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72309);
       return;
     }
-    this.dta = paramJSONObject.optString("app_username");
+    this.dqK = paramJSONObject.optString("app_username");
     AppMethodBeat.o(72309);
   }
 }

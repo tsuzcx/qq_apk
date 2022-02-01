@@ -7,22 +7,22 @@ import com.tencent.mm.ui.widget.a.d;
 
 public final class c
 {
-  a HwS;
-  d ijc;
+  a IXp;
+  d iJj;
   
   c(a parama)
   {
-    this.HwS = parama;
+    this.IXp = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fen();
+    public abstract void fui();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.c
  * JD-Core Version:    0.7.0.1
  */

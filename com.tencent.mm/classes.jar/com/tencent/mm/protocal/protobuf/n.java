@@ -5,17 +5,17 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class n
-  extends cld
+  extends cqk
 {
-  public int dcG = 268513600;
-  public int iap;
-  public int iaq;
-  public int iar;
-  public long ias;
-  public long iat;
-  public String iau;
-  public String iav;
-  public String nTK = "请求不成功，请稍候再试";
+  public int dae = 268513600;
+  public int iAs;
+  public int iAt;
+  public int iAu;
+  public long iAv;
+  public long iAw;
+  public String iAx;
+  public String iAy;
+  public String oxf = "请求不成功，请稍候再试";
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -31,23 +31,23 @@ public final class n
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.kX(1, this.BaseResponse.computeSize());
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(2, this.dcG);
-      if (this.nTK != null) {
-        paramVarArgs.d(3, this.nTK);
+      paramVarArgs.aR(2, this.dae);
+      if (this.oxf != null) {
+        paramVarArgs.d(3, this.oxf);
       }
-      paramVarArgs.aR(4, this.iap);
-      paramVarArgs.aR(5, this.iaq);
-      paramVarArgs.aR(6, this.iar);
-      paramVarArgs.aG(7, this.ias);
-      paramVarArgs.aG(8, this.iat);
-      if (this.iau != null) {
-        paramVarArgs.d(9, this.iau);
+      paramVarArgs.aR(4, this.iAs);
+      paramVarArgs.aR(5, this.iAt);
+      paramVarArgs.aR(6, this.iAu);
+      paramVarArgs.aO(7, this.iAv);
+      paramVarArgs.aO(8, this.iAw);
+      if (this.iAx != null) {
+        paramVarArgs.d(9, this.iAx);
       }
-      if (this.iav != null) {
-        paramVarArgs.d(10, this.iav);
+      if (this.iAy != null) {
+        paramVarArgs.d(10, this.iAy);
       }
       AppMethodBeat.o(91325);
       return 0;
@@ -58,30 +58,30 @@ public final class n
       }
     }
     label806:
-    for (paramInt = f.a.a.a.kW(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bA(2, this.dcG);
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.dae);
       paramInt = i;
-      if (this.nTK != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.nTK);
+      if (this.oxf != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.oxf);
       }
-      i = paramInt + f.a.a.b.b.a.bA(4, this.iap) + f.a.a.b.b.a.bA(5, this.iaq) + f.a.a.b.b.a.bA(6, this.iar) + f.a.a.b.b.a.q(7, this.ias) + f.a.a.b.b.a.q(8, this.iat);
+      i = paramInt + f.a.a.b.b.a.bx(4, this.iAs) + f.a.a.b.b.a.bx(5, this.iAt) + f.a.a.b.b.a.bx(6, this.iAu) + f.a.a.b.b.a.p(7, this.iAv) + f.a.a.b.b.a.p(8, this.iAw);
       paramInt = i;
-      if (this.iau != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.iau);
+      if (this.iAx != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.iAx);
       }
       i = paramInt;
-      if (this.iav != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.iav);
+      if (this.iAy != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.iAy);
       }
       AppMethodBeat.o(91325);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cld.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cld.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.BaseResponse == null)
@@ -104,7 +104,7 @@ public final class n
           AppMethodBeat.o(91325);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -112,46 +112,46 @@ public final class n
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localn.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91325);
           return 0;
         case 2: 
-          localn.dcG = ((f.a.a.a.a)localObject1).KhF.xS();
+          localn.dae = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(91325);
           return 0;
         case 3: 
-          localn.nTK = ((f.a.a.a.a)localObject1).KhF.readString();
+          localn.oxf = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(91325);
           return 0;
         case 4: 
-          localn.iap = ((f.a.a.a.a)localObject1).KhF.xS();
+          localn.iAs = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(91325);
           return 0;
         case 5: 
-          localn.iaq = ((f.a.a.a.a)localObject1).KhF.xS();
+          localn.iAt = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(91325);
           return 0;
         case 6: 
-          localn.iar = ((f.a.a.a.a)localObject1).KhF.xS();
+          localn.iAu = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(91325);
           return 0;
         case 7: 
-          localn.ias = ((f.a.a.a.a)localObject1).KhF.xT();
+          localn.iAv = ((f.a.a.a.a)localObject1).LVo.xG();
           AppMethodBeat.o(91325);
           return 0;
         case 8: 
-          localn.iat = ((f.a.a.a.a)localObject1).KhF.xT();
+          localn.iAw = ((f.a.a.a.a)localObject1).LVo.xG();
           AppMethodBeat.o(91325);
           return 0;
         case 9: 
-          localn.iau = ((f.a.a.a.a)localObject1).KhF.readString();
+          localn.iAx = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(91325);
           return 0;
         }
-        localn.iav = ((f.a.a.a.a)localObject1).KhF.readString();
+        localn.iAy = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(91325);
         return 0;
       }
@@ -162,7 +162,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.n
  * JD-Core Version:    0.7.0.1
  */

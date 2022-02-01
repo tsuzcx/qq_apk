@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.ViewGroup;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.List;
 
 public abstract class a
@@ -15,20 +15,20 @@ public abstract class a
     super(paramContext, paramx, paramViewGroup);
   }
   
-  public abstract void dvU();
-  
-  public abstract List<k> dvV();
-  
-  public final boolean dwd()
+  public final boolean dKC()
   {
-    int i = dwc();
-    ad.i("MicroMsg.AdLandingPageContainerComponent", "inScreenHeight %d", new Object[] { Integer.valueOf(i) });
+    int i = dKB();
+    ac.i("MicroMsg.AdLandingPageContainerComponent", "inScreenHeight %d", new Object[] { Integer.valueOf(i) });
     return i > 0;
   }
+  
+  public abstract void dKt();
+  
+  public abstract List<k> dKu();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a
  * JD-Core Version:    0.7.0.1
  */

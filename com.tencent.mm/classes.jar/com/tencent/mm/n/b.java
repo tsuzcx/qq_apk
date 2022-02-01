@@ -3,124 +3,124 @@ package com.tencent.mm.n;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class b
-  extends au
+  extends av
 {
-  private static a fIe;
+  private static a fLK;
   public static c.a info;
-  public long fId;
+  public long fLJ;
   public int versionCode;
   
   static
   {
     AppMethodBeat.i(42758);
     c.a locala = new c.a();
-    locala.EYt = new Field[23];
+    locala.GvF = new Field[23];
     locala.columns = new String[24];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.EYv.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.GvH.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "username";
+    locala.GvG = "username";
     locala.columns[1] = "alias";
-    locala.EYv.put("alias", "TEXT default '' ");
+    locala.GvH.put("alias", "TEXT default '' ");
     localStringBuilder.append(" alias TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "conRemark";
-    locala.EYv.put("conRemark", "TEXT default '' ");
+    locala.GvH.put("conRemark", "TEXT default '' ");
     localStringBuilder.append(" conRemark TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "domainList";
-    locala.EYv.put("domainList", "TEXT default '' ");
+    locala.GvH.put("domainList", "TEXT default '' ");
     localStringBuilder.append(" domainList TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "nickname";
-    locala.EYv.put("nickname", "TEXT default '' ");
+    locala.GvH.put("nickname", "TEXT default '' ");
     localStringBuilder.append(" nickname TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "pyInitial";
-    locala.EYv.put("pyInitial", "TEXT default '' ");
+    locala.GvH.put("pyInitial", "TEXT default '' ");
     localStringBuilder.append(" pyInitial TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "quanPin";
-    locala.EYv.put("quanPin", "TEXT default '' ");
+    locala.GvH.put("quanPin", "TEXT default '' ");
     localStringBuilder.append(" quanPin TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "showHead";
-    locala.EYv.put("showHead", "INTEGER default '0' ");
+    locala.GvH.put("showHead", "INTEGER default '0' ");
     localStringBuilder.append(" showHead INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "type";
-    locala.EYv.put("type", "INTEGER default '0' ");
+    locala.GvH.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "weiboFlag";
-    locala.EYv.put("weiboFlag", "INTEGER default '0' ");
+    locala.GvH.put("weiboFlag", "INTEGER default '0' ");
     localStringBuilder.append(" weiboFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "weiboNickname";
-    locala.EYv.put("weiboNickname", "TEXT default '' ");
+    locala.GvH.put("weiboNickname", "TEXT default '' ");
     localStringBuilder.append(" weiboNickname TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "conRemarkPYFull";
-    locala.EYv.put("conRemarkPYFull", "TEXT default '' ");
+    locala.GvH.put("conRemarkPYFull", "TEXT default '' ");
     localStringBuilder.append(" conRemarkPYFull TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "conRemarkPYShort";
-    locala.EYv.put("conRemarkPYShort", "TEXT default '' ");
+    locala.GvH.put("conRemarkPYShort", "TEXT default '' ");
     localStringBuilder.append(" conRemarkPYShort TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "lvbuff";
-    locala.EYv.put("lvbuff", "BLOB");
+    locala.GvH.put("lvbuff", "BLOB");
     localStringBuilder.append(" lvbuff BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "verifyFlag";
-    locala.EYv.put("verifyFlag", "INTEGER default '0' ");
+    locala.GvH.put("verifyFlag", "INTEGER default '0' ");
     localStringBuilder.append(" verifyFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "encryptUsername";
-    locala.EYv.put("encryptUsername", "TEXT default '' ");
+    locala.GvH.put("encryptUsername", "TEXT default '' ");
     localStringBuilder.append(" encryptUsername TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "chatroomFlag";
-    locala.EYv.put("chatroomFlag", "INTEGER");
+    locala.GvH.put("chatroomFlag", "INTEGER");
     localStringBuilder.append(" chatroomFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[17] = "deleteFlag";
-    locala.EYv.put("deleteFlag", "INTEGER default '0' ");
+    locala.GvH.put("deleteFlag", "INTEGER default '0' ");
     localStringBuilder.append(" deleteFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "contactLabelIds";
-    locala.EYv.put("contactLabelIds", "TEXT default '' ");
+    locala.GvH.put("contactLabelIds", "TEXT default '' ");
     localStringBuilder.append(" contactLabelIds TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "descWordingId";
-    locala.EYv.put("descWordingId", "TEXT default '' ");
+    locala.GvH.put("descWordingId", "TEXT default '' ");
     localStringBuilder.append(" descWordingId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "openImAppid";
-    locala.EYv.put("openImAppid", "TEXT");
+    locala.GvH.put("openImAppid", "TEXT");
     localStringBuilder.append(" openImAppid TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "sourceExtInfo";
-    locala.EYv.put("sourceExtInfo", "TEXT");
+    locala.GvH.put("sourceExtInfo", "TEXT");
     localStringBuilder.append(" sourceExtInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[22] = "ticket";
-    locala.EYv.put("ticket", "TEXT default '' ");
+    locala.GvH.put("ticket", "TEXT default '' ");
     localStringBuilder.append(" ticket TEXT default '' ");
     locala.columns[23] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    fIe = null;
+    fLK = null;
     AppMethodBeat.o(42758);
   }
   
@@ -129,50 +129,50 @@ public class b
     AppMethodBeat.i(42667);
     this.versionCode = 0;
     super.setUsername("");
-    super.nd("");
-    super.ne("");
-    super.nf("");
-    super.na("");
-    super.nb("");
-    super.ni("");
-    super.nh("");
-    super.nc("");
-    super.jE(0);
-    super.ng("");
-    super.jD(0);
+    super.qj("");
+    super.qk("");
+    super.ql("");
+    super.qg("");
+    super.qh("");
+    super.qo("");
+    super.qn("");
+    super.qi("");
+    super.jC(0);
+    super.qm("");
+    super.jB(0);
     super.setType(0);
-    super.jF(0);
-    super.jG(0);
-    super.nk("");
-    super.jJ(0);
-    super.nx("");
+    super.jD(0);
+    super.jE(0);
+    super.qq("");
+    super.jH(0);
+    super.qD("");
     super.setFromType(0);
     super.setUin(0);
-    super.nq("");
-    super.nr("");
-    super.jK(0);
-    super.jL(0);
-    super.ns("");
-    super.nt("");
-    super.jM(1);
+    super.qw("");
+    super.qx("");
     super.jI(0);
-    super.jN(0);
-    super.nu("");
-    super.nv("");
-    super.nw("");
+    super.jJ(0);
+    super.qy("");
+    super.qz("");
+    super.jK(1);
+    super.jG(0);
+    super.jL(0);
+    super.qA("");
+    super.qB("");
+    super.qC("");
     super.setSource(0);
-    super.nz("");
-    super.ny("");
-    super.kP(0L);
-    super.np("");
-    super.nA("");
-    super.jO(0);
-    super.nD("");
-    super.nE("");
-    super.nF("");
-    super.nI("");
-    super.nl("");
-    super.nm("");
+    super.qF("");
+    super.qE("");
+    super.or(0L);
+    super.qv("");
+    super.qG("");
+    super.jM(0);
+    super.qJ("");
+    super.qK("");
+    super.qL("");
+    super.qO("");
+    super.qr("");
+    super.qs("");
     this.versionCode = 0;
     AppMethodBeat.o(42667);
   }
@@ -189,46 +189,46 @@ public class b
     AppMethodBeat.o(42666);
   }
   
-  public static int ZD()
+  public static void a(a parama)
   {
-    return 1;
+    fLK = parama;
   }
   
-  public static int ZE()
-  {
-    return 8;
-  }
-  
-  public static int ZF()
+  public static int aaA()
   {
     return 524288;
   }
   
-  public static int ZG()
+  public static int aaB()
   {
     return 8388608;
   }
   
-  public static int ZH()
+  public static int aaC()
   {
     return 16;
   }
   
-  public static int ZI()
+  public static int aaD()
   {
     return 32;
   }
   
-  public static void a(a parama)
-  {
-    fIe = parama;
-  }
-  
-  private int aaa()
+  private int aaV()
   {
     int i = this.versionCode + 1;
     this.versionCode = i;
     return i;
+  }
+  
+  public static int aay()
+  {
+    return 1;
+  }
+  
+  public static int aaz()
+  {
+    return 8;
   }
   
   private static boolean isLetter(char paramChar)
@@ -236,17 +236,17 @@ public class b
     return ((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'));
   }
   
-  public static boolean ls(int paramInt)
+  public static boolean ln(int paramInt)
   {
     return (paramInt & 0x1) != 0;
   }
   
-  public static String pL(String paramString)
+  public static String sW(String paramString)
   {
     AppMethodBeat.i(42668);
-    if (fIe != null)
+    if (fLK != null)
     {
-      paramString = fIe.eR(paramString);
+      paramString = fLK.eH(paramString);
       AppMethodBeat.o(42668);
       return paramString;
     }
@@ -254,7 +254,7 @@ public class b
     return null;
   }
   
-  private static String pM(String paramString)
+  private static String sX(String paramString)
   {
     AppMethodBeat.i(42701);
     if (paramString == null)
@@ -281,33 +281,38 @@ public class b
       AppMethodBeat.o(42701);
       return paramString;
     }
+    if (paramString.toLowerCase().endsWith("@stranger"))
+    {
+      AppMethodBeat.o(42701);
+      return " ";
+    }
     AppMethodBeat.o(42701);
     return paramString;
   }
   
-  public final boolean Ny()
-  {
-    return (this.field_type & 0x200) != 0;
-  }
-  
-  public final void O(byte[] paramArrayOfByte)
+  public final void M(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(42717);
-    if (!bt.isEqual(this.field_lvbuff, paramArrayOfByte))
+    if (!bs.isEqual(this.field_lvbuff, paramArrayOfByte))
     {
-      super.O(paramArrayOfByte);
-      aaa();
+      super.M(paramArrayOfByte);
+      aaV();
     }
     AppMethodBeat.o(42717);
   }
   
-  public final String Ss()
+  public final boolean Nw()
+  {
+    return (this.field_type & 0x200) != 0;
+  }
+  
+  public final String Tl()
   {
     AppMethodBeat.i(42695);
-    if (fIe != null) {}
-    for (String str = fIe.eS(this.field_username); str == null; str = null)
+    if (fLK != null) {}
+    for (String str = fLK.eI(this.field_username); str == null; str = null)
     {
-      str = super.Ss();
+      str = super.Tl();
       AppMethodBeat.o(42695);
       return str;
     }
@@ -315,142 +320,121 @@ public class b
     return str;
   }
   
-  public final String Sv()
+  public final String To()
   {
     AppMethodBeat.i(42693);
-    if ((super.Sv() == null) || (super.Sv().length() < 0))
+    if ((super.To() == null) || (super.To().length() < 0))
     {
-      str = Sw();
+      str = Tp();
       AppMethodBeat.o(42693);
       return str;
     }
-    String str = super.Sv();
+    String str = super.To();
     AppMethodBeat.o(42693);
     return str;
   }
   
-  public final String Sw()
+  public final String Tp()
   {
     AppMethodBeat.i(42694);
-    if ((super.Sw() == null) || (super.Sw().length() < 0))
+    if ((super.Tp() == null) || (super.Tp().length() < 0))
     {
       str = this.field_nickname;
       AppMethodBeat.o(42694);
       return str;
     }
-    String str = super.Sw();
+    String str = super.Tp();
     AppMethodBeat.o(42694);
     return str;
   }
   
-  public final boolean VG()
+  public final boolean WE()
   {
     return (this.field_type & 0x400) == 0;
   }
   
-  public final void ZA()
+  public final boolean aaE()
   {
-    AppMethodBeat.i(42688);
-    setType(this.field_type & 0xFFFFFEFF);
-    AppMethodBeat.o(42688);
-  }
-  
-  public final void ZB()
-  {
-    AppMethodBeat.i(42689);
-    setType(this.field_type | 0x800000);
-    AppMethodBeat.o(42689);
-  }
-  
-  public final void ZC()
-  {
-    AppMethodBeat.i(42690);
-    setType(this.field_type & 0xFF7FFFFF);
-    AppMethodBeat.o(42690);
-  }
-  
-  public final boolean ZJ()
-  {
-    AppMethodBeat.i(197133);
-    boolean bool = ls(this.field_type);
-    AppMethodBeat.o(197133);
+    AppMethodBeat.i(210242);
+    boolean bool = ln(this.field_type);
+    AppMethodBeat.o(210242);
     return bool;
   }
   
-  public final boolean ZK()
+  public final boolean aaF()
   {
     return (this.field_type & 0x2) != 0;
   }
   
-  public final boolean ZL()
+  public final boolean aaG()
   {
     return (this.field_type & 0x4) != 0;
   }
   
-  public final boolean ZM()
+  public final boolean aaH()
   {
     return (this.field_type & 0x8) != 0;
   }
   
-  public final boolean ZN()
+  public final boolean aaI()
   {
     return (0x80000 & this.field_type) != 0;
   }
   
-  public final boolean ZO()
+  public final boolean aaJ()
   {
     return (this.field_type & 0x40) != 0;
   }
   
-  public final boolean ZP()
+  public final boolean aaK()
   {
     return (this.field_type & 0x100) != 0;
   }
   
-  public final boolean ZQ()
+  public final boolean aaL()
   {
     return (0x10000 & this.field_type) != 0;
   }
   
-  public final boolean ZR()
+  public final boolean aaM()
   {
     return (0x800000 & this.field_type) != 0;
   }
   
-  public final boolean ZS()
+  public final boolean aaN()
   {
     return (this.field_type & 0x800) != 0;
   }
   
-  public final boolean ZT()
+  public final boolean aaO()
   {
     return (0x8000 & this.field_type) != 0;
   }
   
-  public final void ZU()
+  public final void aaP()
   {
     AppMethodBeat.i(42692);
     setType(this.field_type | 0x8000);
     AppMethodBeat.o(42692);
   }
   
-  public final int ZV()
+  public final int aaQ()
   {
-    return (int)this.fId;
+    return (int)this.fLJ;
   }
   
-  public final String ZW()
+  public final String aaR()
   {
     AppMethodBeat.i(42696);
-    if (fIe != null) {}
-    for (String str = fIe.eR(this.field_username); str != null; str = null)
+    if (fLK != null) {}
+    for (String str = fLK.eH(this.field_username); str != null; str = null)
     {
       AppMethodBeat.o(42696);
       return str;
     }
     if ((this.field_nickname == null) || (this.field_nickname.length() <= 0))
     {
-      str = ZY();
+      str = aaT();
       AppMethodBeat.o(42696);
       return str;
     }
@@ -459,7 +443,7 @@ public class b
     return str;
   }
   
-  public final String ZX()
+  public final String aaS()
   {
     AppMethodBeat.i(42697);
     if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals("")))
@@ -468,21 +452,21 @@ public class b
       AppMethodBeat.o(42697);
       return str;
     }
-    String str = ZW();
+    String str = aaR();
     AppMethodBeat.o(42697);
     return str;
   }
   
-  public final String ZY()
+  public final String aaT()
   {
     AppMethodBeat.i(42698);
-    String str = Ss();
-    if (!bt.isNullOrNil(str))
+    String str = Tl();
+    if (!bs.isNullOrNil(str))
     {
       AppMethodBeat.o(42698);
       return str;
     }
-    str = pM(this.field_username);
+    str = sX(this.field_username);
     if ((str != null) && (str.length() != 0))
     {
       AppMethodBeat.o(42698);
@@ -493,7 +477,7 @@ public class b
     return str;
   }
   
-  public final int ZZ()
+  public final int aaU()
   {
     AppMethodBeat.i(42700);
     int i = super.getSource();
@@ -501,7 +485,7 @@ public class b
     return i;
   }
   
-  public final int Zh()
+  public final int aac()
   {
     AppMethodBeat.i(42669);
     int j = 32;
@@ -523,14 +507,14 @@ public class b
         i = this.field_conRemarkPYFull.charAt(0);
         break;
       }
-      if ((super.Sv() != null) && (!super.Sv().equals("")))
+      if ((super.To() != null) && (!super.To().equals("")))
       {
-        i = super.Sv().charAt(0);
+        i = super.To().charAt(0);
         break;
       }
-      if ((super.Sw() != null) && (!super.Sw().equals("")))
+      if ((super.Tp() != null) && (!super.Tp().equals("")))
       {
-        i = super.Sw().charAt(0);
+        i = super.Tp().charAt(0);
         break;
       }
       if ((this.field_nickname != null) && (!this.field_nickname.equals("")) && (isLetter(this.field_nickname.charAt(0))))
@@ -565,139 +549,160 @@ public class b
     }
   }
   
-  public final void Zi()
+  public final void aad()
   {
     AppMethodBeat.i(42670);
     setType(0);
     AppMethodBeat.o(42670);
   }
   
-  public final void Zj()
+  public final void aae()
   {
     AppMethodBeat.i(42671);
     setType(this.field_type | 0x4);
     AppMethodBeat.o(42671);
   }
   
-  public final void Zk()
+  public final void aaf()
   {
     AppMethodBeat.i(42672);
     setType(this.field_type | 0x1);
     AppMethodBeat.o(42672);
   }
   
-  public final void Zl()
+  public final void aag()
   {
     AppMethodBeat.i(42673);
-    ad.w("MicroMsg.RContact", "unSetContact!! user:%s oldType:%d [%s]", new Object[] { this.field_username, Integer.valueOf(this.field_type), bt.eGN() });
+    ac.w("MicroMsg.RContact", "unSetContact!! user:%s oldType:%d [%s]", new Object[] { this.field_username, Integer.valueOf(this.field_type), bs.eWi() });
     setType(this.field_type & 0xFFFFFFFE);
     AppMethodBeat.o(42673);
   }
   
-  public final void Zm()
+  public final void aah()
   {
     AppMethodBeat.i(42674);
     setType(this.field_type | 0x8);
     AppMethodBeat.o(42674);
   }
   
-  public final void Zn()
+  public final void aai()
   {
     AppMethodBeat.i(42675);
     setType(this.field_type & 0xFFFFFFF7);
     AppMethodBeat.o(42675);
   }
   
-  public final void Zo()
+  public final void aaj()
   {
     AppMethodBeat.i(42676);
     setType(this.field_type | 0x80000);
     AppMethodBeat.o(42676);
   }
   
-  public final void Zp()
+  public final void aak()
   {
     AppMethodBeat.i(42677);
     setType(this.field_type & 0xFFF7FFFF);
     AppMethodBeat.o(42677);
   }
   
-  public final void Zq()
+  public final void aal()
   {
     AppMethodBeat.i(42678);
     setType(this.field_type | 0x2);
     AppMethodBeat.o(42678);
   }
   
-  public final void Zr()
+  public final void aam()
   {
     AppMethodBeat.i(42679);
     setType(this.field_type & 0xFFFFFFFD);
     AppMethodBeat.o(42679);
   }
   
-  public final void Zs()
+  public final void aan()
   {
     AppMethodBeat.i(42680);
     setType(this.field_type & 0xFFFFF7FF);
     AppMethodBeat.o(42680);
   }
   
-  public final void Zt()
+  public final void aao()
   {
     AppMethodBeat.i(42681);
     setType(this.field_type | 0x20);
     AppMethodBeat.o(42681);
   }
   
-  public final void Zu()
+  public final void aap()
   {
     AppMethodBeat.i(42682);
     setType(this.field_type & 0xFFFFFFDF);
     AppMethodBeat.o(42682);
   }
   
-  public final void Zv()
+  public final void aaq()
   {
     AppMethodBeat.i(42683);
     setType(this.field_type | 0x40);
     AppMethodBeat.o(42683);
   }
   
-  public final void Zw()
+  public final void aar()
   {
     AppMethodBeat.i(42684);
     setType(this.field_type & 0xFFFFFFBF);
     AppMethodBeat.o(42684);
   }
   
-  public final void Zx()
+  public final void aas()
   {
     AppMethodBeat.i(42685);
     setType(this.field_type | 0x200);
     AppMethodBeat.o(42685);
   }
   
-  public final void Zy()
+  public final void aat()
   {
     AppMethodBeat.i(42686);
     setType(this.field_type & 0xFFFFFDFF);
     AppMethodBeat.o(42686);
   }
   
-  public final void Zz()
+  public final void aau()
   {
     AppMethodBeat.i(42687);
     setType(this.field_type | 0x100);
     AppMethodBeat.o(42687);
   }
   
+  public final void aav()
+  {
+    AppMethodBeat.i(42688);
+    setType(this.field_type & 0xFFFFFEFF);
+    AppMethodBeat.o(42688);
+  }
+  
+  public final void aaw()
+  {
+    AppMethodBeat.i(42689);
+    setType(this.field_type | 0x800000);
+    AppMethodBeat.o(42689);
+  }
+  
+  public final void aax()
+  {
+    AppMethodBeat.i(42690);
+    setType(this.field_type & 0xFF7FFFFF);
+    AppMethodBeat.o(42690);
+  }
+  
   public void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(42703);
     super.convertFrom(paramCursor);
-    this.fId = this.systemRowid;
-    super.O(null);
+    this.fLJ = this.systemRowid;
+    super.M(null);
     AppMethodBeat.o(42703);
   }
   
@@ -719,570 +724,570 @@ public class b
     return (this.field_type & 0x20) != 0;
   }
   
-  public final void jD(int paramInt)
+  public final void jB(int paramInt)
   {
     AppMethodBeat.i(42711);
-    if (!bt.iY(this.field_showHead, paramInt))
+    if (!bs.jl(this.field_showHead, paramInt))
     {
-      super.jD(paramInt);
-      aaa();
+      super.jB(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42711);
   }
   
-  public final void jE(int paramInt)
+  public final void jC(int paramInt)
   {
     AppMethodBeat.i(42713);
-    if (!bt.iY(this.field_weiboFlag, paramInt))
+    if (!bs.jl(this.field_weiboFlag, paramInt))
     {
-      super.jE(paramInt);
-      aaa();
+      super.jC(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42713);
   }
   
-  public final void jF(int paramInt)
+  public final void jD(int paramInt)
   {
     AppMethodBeat.i(42718);
-    if (!bt.iY(this.field_verifyFlag, paramInt))
+    if (!bs.jl(this.field_verifyFlag, paramInt))
     {
-      super.jF(paramInt);
-      aaa();
+      super.jD(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42718);
   }
   
-  public final void jG(int paramInt)
+  public final void jE(int paramInt)
   {
     AppMethodBeat.i(42720);
-    if (!bt.iY(this.field_chatroomFlag, paramInt))
+    if (!bs.jl(this.field_chatroomFlag, paramInt))
     {
-      super.jG(paramInt);
-      aaa();
+      super.jE(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42720);
   }
   
-  public final void jH(int paramInt)
+  public final void jF(int paramInt)
   {
     AppMethodBeat.i(42721);
-    if (!bt.iY(this.field_deleteFlag, paramInt))
+    if (!bs.jl(this.field_deleteFlag, paramInt))
     {
-      super.jH(paramInt);
-      aaa();
+      super.jF(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42721);
   }
   
-  public final void jI(int paramInt)
+  public final void jG(int paramInt)
   {
     AppMethodBeat.i(42723);
-    if (!bt.iY(this.evo, paramInt))
+    if (!bs.jl(this.exK, paramInt))
     {
-      super.jI(paramInt);
-      aaa();
+      super.jG(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42723);
   }
   
-  public final void jJ(int paramInt)
+  public final void jH(int paramInt)
   {
     AppMethodBeat.i(42724);
-    if (!bt.iY(this.evp, paramInt))
+    if (!bs.jl(this.exL, paramInt))
     {
-      super.jJ(paramInt);
-      aaa();
+      super.jH(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42724);
   }
   
-  public final void jK(int paramInt)
+  public final void jI(int paramInt)
   {
     AppMethodBeat.i(42730);
-    if (!bt.iY(this.evt, paramInt))
+    if (!bs.jl(this.exP, paramInt))
     {
-      super.jK(paramInt);
-      aaa();
+      super.jI(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42730);
   }
   
-  public final void jL(int paramInt)
+  public final void jJ(int paramInt)
   {
     AppMethodBeat.i(42731);
-    if (!bt.iY(this.evu, paramInt))
+    if (!bs.jl(this.exQ, paramInt))
     {
-      super.jL(paramInt);
-      aaa();
+      super.jJ(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42731);
   }
   
-  public final void jM(int paramInt)
+  public final void jK(int paramInt)
   {
     AppMethodBeat.i(42734);
-    if (!bt.iY(this.evx, paramInt))
+    if (!bs.jl(this.exT, paramInt))
     {
-      super.jM(paramInt);
-      aaa();
+      super.jK(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42734);
   }
   
-  public final void jN(int paramInt)
+  public final void jL(int paramInt)
   {
     AppMethodBeat.i(42735);
-    if (!bt.iY(this.evy, paramInt))
+    if (!bs.jl(this.exU, paramInt))
     {
-      super.jN(paramInt);
-      aaa();
+      super.jL(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42735);
   }
   
-  public final void jO(int paramInt)
+  public final void jM(int paramInt)
   {
     AppMethodBeat.i(42745);
-    if (!bt.iY(this.evG, paramInt))
+    if (!bs.jl(this.eyc, paramInt))
     {
-      super.jO(paramInt);
-      aaa();
+      super.jM(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42745);
   }
   
-  public final void jP(int paramInt)
+  public final void jN(int paramInt)
   {
     AppMethodBeat.i(42746);
-    if (!bt.iY(this.evH, paramInt))
+    if (!bs.jl(this.eyd, paramInt))
     {
-      super.jP(paramInt);
-      aaa();
+      super.jN(paramInt);
+      aaV();
     }
     AppMethodBeat.o(42746);
   }
   
-  public final void kP(long paramLong)
+  public final void lo(int paramInt)
+  {
+    AppMethodBeat.i(42702);
+    jE(this.field_chatroomFlag & 0xFFFFFFFE | paramInt & 0x1);
+    AppMethodBeat.o(42702);
+  }
+  
+  public final void or(long paramLong)
   {
     AppMethodBeat.i(42726);
-    if (!bt.aw(this.evr, paramLong))
+    if (!bs.av(this.exN, paramLong))
     {
-      super.kP(paramLong);
-      aaa();
+      super.or(paramLong);
+      aaV();
     }
     AppMethodBeat.o(42726);
   }
   
-  public final void kQ(long paramLong)
+  public final void os(long paramLong)
   {
     AppMethodBeat.i(163506);
-    if (!bt.aw(this.evU, paramLong))
+    if (!bs.av(this.eyr, paramLong))
     {
-      super.kQ(paramLong);
-      aaa();
+      super.os(paramLong);
+      aaV();
     }
     AppMethodBeat.o(163506);
   }
   
-  public final void kR(long paramLong)
+  public final void ot(long paramLong)
   {
     AppMethodBeat.i(178862);
-    if (!bt.aw(this.evV, paramLong))
+    if (!bs.av(this.eys, paramLong))
     {
-      super.kR(paramLong);
-      aaa();
+      super.ot(paramLong);
+      aaV();
     }
     AppMethodBeat.o(178862);
   }
   
-  public final void lt(int paramInt)
-  {
-    AppMethodBeat.i(42702);
-    jG(this.field_chatroomFlag & 0xFFFFFFFE | paramInt & 0x1);
-    AppMethodBeat.o(42702);
-  }
-  
-  public void nA(String paramString)
-  {
-    AppMethodBeat.i(42744);
-    if (!bt.kU(this.evF, paramString))
-    {
-      super.nA(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42744);
-  }
-  
-  public final void nB(String paramString)
-  {
-    AppMethodBeat.i(42747);
-    if (!bt.kU(this.evI, paramString))
-    {
-      super.nB(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42747);
-  }
-  
-  public final void nC(String paramString)
-  {
-    AppMethodBeat.i(42748);
-    if (!bt.kU(this.evJ, paramString))
-    {
-      super.nC(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42748);
-  }
-  
-  public final void nD(String paramString)
-  {
-    AppMethodBeat.i(42749);
-    if (!bt.kU(this.evK, paramString))
-    {
-      super.nD(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42749);
-  }
-  
-  public final void nE(String paramString)
-  {
-    AppMethodBeat.i(42750);
-    if (!bt.kU(this.evL, paramString))
-    {
-      super.nE(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42750);
-  }
-  
-  public final void nF(String paramString)
-  {
-    AppMethodBeat.i(42751);
-    if (!bt.kU(this.evM, paramString))
-    {
-      super.nF(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42751);
-  }
-  
-  public final void nG(String paramString)
-  {
-    AppMethodBeat.i(42752);
-    if (!bt.kU(this.evN, paramString))
-    {
-      super.nG(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42752);
-  }
-  
-  public final void nH(String paramString)
-  {
-    AppMethodBeat.i(42753);
-    if (!bt.kU(this.evO, paramString))
-    {
-      super.nH(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42753);
-  }
-  
-  public final void nI(String paramString)
-  {
-    AppMethodBeat.i(42754);
-    if (!bt.kU(this.evP, paramString))
-    {
-      super.nI(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42754);
-  }
-  
-  public final void na(String paramString)
-  {
-    AppMethodBeat.i(42705);
-    if (!bt.kU(Ss(), paramString))
-    {
-      super.na(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42705);
-  }
-  
-  public final void nb(String paramString)
-  {
-    AppMethodBeat.i(42706);
-    if (!bt.kU(this.field_conRemark, paramString))
-    {
-      super.nb(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42706);
-  }
-  
-  public final void nc(String paramString)
-  {
-    AppMethodBeat.i(42707);
-    if (!bt.kU(this.field_domainList, paramString))
-    {
-      super.nc(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42707);
-  }
-  
-  public final void nd(String paramString)
-  {
-    AppMethodBeat.i(42708);
-    if (!bt.kU(this.field_nickname, paramString))
-    {
-      super.nd(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42708);
-  }
-  
-  public final void ne(String paramString)
-  {
-    AppMethodBeat.i(42709);
-    if (!bt.kU(Sv(), paramString))
-    {
-      super.ne(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42709);
-  }
-  
-  public final void nf(String paramString)
-  {
-    AppMethodBeat.i(42710);
-    if (!bt.kU(Sw(), paramString))
-    {
-      super.nf(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42710);
-  }
-  
-  public final void ng(String paramString)
-  {
-    AppMethodBeat.i(42714);
-    if (!bt.kU(this.field_weiboNickname, paramString))
-    {
-      super.ng(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42714);
-  }
-  
-  public final void nh(String paramString)
-  {
-    AppMethodBeat.i(42715);
-    if (!bt.kU(this.field_conRemarkPYFull, paramString))
-    {
-      super.nh(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42715);
-  }
-  
-  public final void ni(String paramString)
-  {
-    AppMethodBeat.i(42716);
-    if (!bt.kU(this.field_conRemarkPYShort, paramString))
-    {
-      super.ni(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42716);
-  }
-  
-  public final void nj(String paramString)
-  {
-    AppMethodBeat.i(42719);
-    if (!bt.kU(this.field_encryptUsername, paramString))
-    {
-      super.nj(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42719);
-  }
-  
-  public final void nk(String paramString)
-  {
-    AppMethodBeat.i(42722);
-    if (!bt.kU(this.field_contactLabelIds, paramString))
-    {
-      super.nk(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42722);
-  }
-  
-  public final void nm(String paramString)
-  {
-    AppMethodBeat.i(42755);
-    if (!bt.kU(this.field_openImAppid, paramString))
-    {
-      super.nm(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42755);
-  }
-  
-  public final void nn(String paramString)
-  {
-    AppMethodBeat.i(42756);
-    if (!bt.kU(this.field_sourceExtInfo, paramString))
-    {
-      super.nn(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42756);
-  }
-  
-  public final void no(String paramString)
-  {
-    AppMethodBeat.i(42757);
-    if (!bt.kU(this.field_ticket, paramString))
-    {
-      super.no(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42757);
-  }
-  
-  public final void np(String paramString)
-  {
-    AppMethodBeat.i(42725);
-    if (!bt.kU(this.evq, paramString))
-    {
-      super.np(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42725);
-  }
-  
-  public final void nq(String paramString)
-  {
-    AppMethodBeat.i(42728);
-    if (!bt.kU(this.evs, paramString))
-    {
-      super.nq(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42728);
-  }
-  
-  public final void nr(String paramString)
-  {
-    AppMethodBeat.i(42729);
-    if (!bt.kU(this.dpO, paramString))
-    {
-      super.nr(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42729);
-  }
-  
-  public final void ns(String paramString)
-  {
-    AppMethodBeat.i(42732);
-    if (!bt.kU(this.evv, paramString))
-    {
-      super.ns(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42732);
-  }
-  
-  public final void nt(String paramString)
-  {
-    AppMethodBeat.i(42733);
-    if (!bt.kU(this.evw, paramString))
-    {
-      super.nt(paramString);
-      aaa();
-    }
-    AppMethodBeat.o(42733);
-  }
-  
-  public final void nu(String paramString)
+  public final void qA(String paramString)
   {
     AppMethodBeat.i(42736);
-    if (!bt.kU(this.signature, paramString))
+    if (!bs.lr(this.signature, paramString))
     {
-      super.nu(paramString);
-      aaa();
+      super.qA(paramString);
+      aaV();
     }
     AppMethodBeat.o(42736);
   }
   
-  public void nv(String paramString)
+  public void qB(String paramString)
   {
     AppMethodBeat.i(42737);
-    if (!bt.kU(getProvince(), paramString))
+    if (!bs.lr(getProvince(), paramString))
     {
-      super.nv(paramString);
-      aaa();
+      super.qB(paramString);
+      aaV();
     }
     AppMethodBeat.o(42737);
   }
   
-  public void nw(String paramString)
+  public void qC(String paramString)
   {
     AppMethodBeat.i(42738);
-    if (!bt.kU(getCity(), paramString))
+    if (!bs.lr(getCity(), paramString))
     {
-      super.nw(paramString);
-      aaa();
+      super.qC(paramString);
+      aaV();
     }
     AppMethodBeat.o(42738);
   }
   
-  public final void nx(String paramString)
+  public final void qD(String paramString)
   {
     AppMethodBeat.i(42739);
-    if (!bt.kU(this.evB, paramString))
+    if (!bs.lr(this.exX, paramString))
     {
-      super.nx(paramString);
-      aaa();
+      super.qD(paramString);
+      aaV();
     }
     AppMethodBeat.o(42739);
   }
   
-  public final void ny(String paramString)
+  public final void qE(String paramString)
   {
     AppMethodBeat.i(42742);
-    if (!bt.kU(this.evD, paramString))
+    if (!bs.lr(this.exZ, paramString))
     {
-      super.ny(paramString);
-      aaa();
+      super.qE(paramString);
+      aaV();
     }
     AppMethodBeat.o(42742);
   }
   
-  public final void nz(String paramString)
+  public final void qF(String paramString)
   {
     AppMethodBeat.i(42743);
-    if (!bt.kU(this.evE, paramString))
+    if (!bs.lr(this.eya, paramString))
     {
-      super.nz(paramString);
-      aaa();
+      super.qF(paramString);
+      aaV();
     }
     AppMethodBeat.o(42743);
+  }
+  
+  public void qG(String paramString)
+  {
+    AppMethodBeat.i(42744);
+    if (!bs.lr(this.eyb, paramString))
+    {
+      super.qG(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42744);
+  }
+  
+  public final void qH(String paramString)
+  {
+    AppMethodBeat.i(42747);
+    if (!bs.lr(this.eyf, paramString))
+    {
+      super.qH(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42747);
+  }
+  
+  public final void qI(String paramString)
+  {
+    AppMethodBeat.i(42748);
+    if (!bs.lr(this.eyg, paramString))
+    {
+      super.qI(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42748);
+  }
+  
+  public final void qJ(String paramString)
+  {
+    AppMethodBeat.i(42749);
+    if (!bs.lr(this.eyh, paramString))
+    {
+      super.qJ(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42749);
+  }
+  
+  public final void qK(String paramString)
+  {
+    AppMethodBeat.i(42750);
+    if (!bs.lr(this.eyi, paramString))
+    {
+      super.qK(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42750);
+  }
+  
+  public final void qL(String paramString)
+  {
+    AppMethodBeat.i(42751);
+    if (!bs.lr(this.eyj, paramString))
+    {
+      super.qL(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42751);
+  }
+  
+  public final void qM(String paramString)
+  {
+    AppMethodBeat.i(42752);
+    if (!bs.lr(this.eyk, paramString))
+    {
+      super.qM(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42752);
+  }
+  
+  public final void qN(String paramString)
+  {
+    AppMethodBeat.i(42753);
+    if (!bs.lr(this.eyl, paramString))
+    {
+      super.qN(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42753);
+  }
+  
+  public final void qO(String paramString)
+  {
+    AppMethodBeat.i(42754);
+    if (!bs.lr(this.eym, paramString))
+    {
+      super.qO(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42754);
+  }
+  
+  public final void qg(String paramString)
+  {
+    AppMethodBeat.i(42705);
+    if (!bs.lr(Tl(), paramString))
+    {
+      super.qg(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42705);
+  }
+  
+  public final void qh(String paramString)
+  {
+    AppMethodBeat.i(42706);
+    if (!bs.lr(this.field_conRemark, paramString))
+    {
+      super.qh(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42706);
+  }
+  
+  public final void qi(String paramString)
+  {
+    AppMethodBeat.i(42707);
+    if (!bs.lr(this.field_domainList, paramString))
+    {
+      super.qi(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42707);
+  }
+  
+  public final void qj(String paramString)
+  {
+    AppMethodBeat.i(42708);
+    if (!bs.lr(this.field_nickname, paramString))
+    {
+      super.qj(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42708);
+  }
+  
+  public final void qk(String paramString)
+  {
+    AppMethodBeat.i(42709);
+    if (!bs.lr(To(), paramString))
+    {
+      super.qk(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42709);
+  }
+  
+  public final void ql(String paramString)
+  {
+    AppMethodBeat.i(42710);
+    if (!bs.lr(Tp(), paramString))
+    {
+      super.ql(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42710);
+  }
+  
+  public final void qm(String paramString)
+  {
+    AppMethodBeat.i(42714);
+    if (!bs.lr(this.field_weiboNickname, paramString))
+    {
+      super.qm(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42714);
+  }
+  
+  public final void qn(String paramString)
+  {
+    AppMethodBeat.i(42715);
+    if (!bs.lr(this.field_conRemarkPYFull, paramString))
+    {
+      super.qn(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42715);
+  }
+  
+  public final void qo(String paramString)
+  {
+    AppMethodBeat.i(42716);
+    if (!bs.lr(this.field_conRemarkPYShort, paramString))
+    {
+      super.qo(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42716);
+  }
+  
+  public final void qp(String paramString)
+  {
+    AppMethodBeat.i(42719);
+    if (!bs.lr(this.field_encryptUsername, paramString))
+    {
+      super.qp(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42719);
+  }
+  
+  public final void qq(String paramString)
+  {
+    AppMethodBeat.i(42722);
+    if (!bs.lr(this.field_contactLabelIds, paramString))
+    {
+      super.qq(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42722);
+  }
+  
+  public final void qs(String paramString)
+  {
+    AppMethodBeat.i(42755);
+    if (!bs.lr(this.field_openImAppid, paramString))
+    {
+      super.qs(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42755);
+  }
+  
+  public final void qt(String paramString)
+  {
+    AppMethodBeat.i(42756);
+    if (!bs.lr(this.field_sourceExtInfo, paramString))
+    {
+      super.qt(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42756);
+  }
+  
+  public final void qu(String paramString)
+  {
+    AppMethodBeat.i(42757);
+    if (!bs.lr(this.field_ticket, paramString))
+    {
+      super.qu(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42757);
+  }
+  
+  public final void qv(String paramString)
+  {
+    AppMethodBeat.i(42725);
+    if (!bs.lr(this.exM, paramString))
+    {
+      super.qv(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42725);
+  }
+  
+  public final void qw(String paramString)
+  {
+    AppMethodBeat.i(42728);
+    if (!bs.lr(this.exO, paramString))
+    {
+      super.qw(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42728);
+  }
+  
+  public final void qx(String paramString)
+  {
+    AppMethodBeat.i(42729);
+    if (!bs.lr(this.dnz, paramString))
+    {
+      super.qx(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42729);
+  }
+  
+  public final void qy(String paramString)
+  {
+    AppMethodBeat.i(42732);
+    if (!bs.lr(this.exR, paramString))
+    {
+      super.qy(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42732);
+  }
+  
+  public final void qz(String paramString)
+  {
+    AppMethodBeat.i(42733);
+    if (!bs.lr(this.exS, paramString))
+    {
+      super.qz(paramString);
+      aaV();
+    }
+    AppMethodBeat.o(42733);
   }
   
   public final void setFromType(int paramInt)
   {
     AppMethodBeat.i(42740);
-    if (!bt.iY(this.evC, paramInt))
+    if (!bs.jl(this.exY, paramInt))
     {
       super.setFromType(paramInt);
-      aaa();
+      aaV();
     }
     AppMethodBeat.o(42740);
   }
@@ -1290,10 +1295,10 @@ public class b
   public final void setSource(int paramInt)
   {
     AppMethodBeat.i(42741);
-    if (!bt.iY(super.getSource(), paramInt))
+    if (!bs.jl(super.getSource(), paramInt))
     {
       super.setSource(paramInt);
-      aaa();
+      aaV();
     }
     AppMethodBeat.o(42741);
   }
@@ -1301,10 +1306,10 @@ public class b
   public final void setType(int paramInt)
   {
     AppMethodBeat.i(42712);
-    if (!bt.iY(this.field_type, paramInt))
+    if (!bs.jl(this.field_type, paramInt))
     {
       super.setType(paramInt);
-      aaa();
+      aaV();
     }
     AppMethodBeat.o(42712);
   }
@@ -1312,10 +1317,10 @@ public class b
   public final void setUin(int paramInt)
   {
     AppMethodBeat.i(42727);
-    if (!bt.iY(this.uin, paramInt))
+    if (!bs.jl(this.uin, paramInt))
     {
       super.setUin(paramInt);
-      aaa();
+      aaV();
     }
     AppMethodBeat.o(42727);
   }
@@ -1323,19 +1328,19 @@ public class b
   public final void setUsername(String paramString)
   {
     AppMethodBeat.i(42704);
-    if (!bt.kU(this.field_username, paramString))
+    if (!bs.lr(this.field_username, paramString))
     {
       super.setUsername(paramString);
-      aaa();
+      aaV();
     }
     AppMethodBeat.o(42704);
   }
   
   public static abstract interface a
   {
-    public abstract String eR(String paramString);
+    public abstract String eH(String paramString);
     
-    public abstract String eS(String paramString);
+    public abstract String eI(String paramString);
   }
 }
 

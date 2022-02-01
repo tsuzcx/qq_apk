@@ -12,12 +12,12 @@ public final class b
     super(paramContext);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a du(Context paramContext)
+  public final com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a dD(Context paramContext)
   {
-    AppMethodBeat.i(194323);
-    this.kuZ = 1;
+    AppMethodBeat.i(194668);
+    this.kWn = 1;
     paramContext = new a(paramContext);
-    AppMethodBeat.o(194323);
+    AppMethodBeat.o(194668);
     return paramContext;
   }
 }

@@ -8,64 +8,64 @@ import java.util.Arrays;
 
 public final class a
 {
-  public static final byte[] mqF = { 68, 88, 68, 73, 70, 70 };
-  public int IDA;
-  public int IDB;
-  public int IDC;
-  public int IDD;
-  public int IDE;
-  public int IDF;
-  public int IDG;
-  public int IDH;
-  public int IDI;
-  public int IDJ;
-  public byte[] IDK;
-  public final com.tencent.tinker.a.a.a.a IDp;
-  private short IDq;
-  public int IDr;
-  private int IDs;
-  public int IDt;
-  public int IDu;
-  public int IDv;
-  public int IDw;
-  public int IDx;
-  public int IDy;
-  public int IDz;
+  public static final byte[] mSH = { 68, 88, 68, 73, 70, 70 };
+  public int KpA;
+  private int KpB;
+  public int KpC;
+  public int KpD;
+  public int KpE;
+  public int KpF;
+  public int KpG;
+  public int KpH;
+  public int KpI;
+  public int KpJ;
+  public int KpK;
+  public int KpL;
+  public int KpM;
+  public int KpN;
+  public int KpO;
+  public int KpP;
+  public int KpQ;
+  public int KpR;
+  public int KpS;
+  public byte[] KpT;
+  public final com.tencent.tinker.a.a.a.a Kpy;
+  private short Kpz;
   
   public a(InputStream paramInputStream)
   {
-    this.IDp = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.p(paramInputStream)));
-    paramInputStream = this.IDp.ach(mqF.length);
-    if (c.p(paramInputStream, mqF) != 0) {
+    this.Kpy = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.o(paramInputStream)));
+    paramInputStream = this.Kpy.afd(mSH.length);
+    if (c.p(paramInputStream, mSH) != 0) {
       throw new IllegalStateException("bad dex patch file magic: " + Arrays.toString(paramInputStream));
     }
-    this.IDq = this.IDp.aIq.getShort();
-    if (c.a(this.IDq, (short)2) != 0) {
-      throw new IllegalStateException("bad dex patch file version: " + this.IDq + ", expected: 2");
+    this.Kpz = this.Kpy.aJg.getShort();
+    if (c.a(this.Kpz, (short)2) != 0) {
+      throw new IllegalStateException("bad dex patch file version: " + this.Kpz + ", expected: 2");
     }
-    this.IDr = this.IDp.aIq.getInt();
-    this.IDs = this.IDp.aIq.getInt();
-    this.IDt = this.IDp.aIq.getInt();
-    this.IDu = this.IDp.aIq.getInt();
-    this.IDv = this.IDp.aIq.getInt();
-    this.IDw = this.IDp.aIq.getInt();
-    this.IDx = this.IDp.aIq.getInt();
-    this.IDy = this.IDp.aIq.getInt();
-    this.IDz = this.IDp.aIq.getInt();
-    this.IDA = this.IDp.aIq.getInt();
-    this.IDB = this.IDp.aIq.getInt();
-    this.IDC = this.IDp.aIq.getInt();
-    this.IDD = this.IDp.aIq.getInt();
-    this.IDE = this.IDp.aIq.getInt();
-    this.IDF = this.IDp.aIq.getInt();
-    this.IDG = this.IDp.aIq.getInt();
-    this.IDH = this.IDp.aIq.getInt();
-    this.IDI = this.IDp.aIq.getInt();
-    this.IDJ = this.IDp.aIq.getInt();
-    this.IDK = this.IDp.ach(20);
-    paramInputStream = this.IDp;
-    int i = this.IDs;
-    paramInputStream.aIq.position(i);
+    this.KpA = this.Kpy.aJg.getInt();
+    this.KpB = this.Kpy.aJg.getInt();
+    this.KpC = this.Kpy.aJg.getInt();
+    this.KpD = this.Kpy.aJg.getInt();
+    this.KpE = this.Kpy.aJg.getInt();
+    this.KpF = this.Kpy.aJg.getInt();
+    this.KpG = this.Kpy.aJg.getInt();
+    this.KpH = this.Kpy.aJg.getInt();
+    this.KpI = this.Kpy.aJg.getInt();
+    this.KpJ = this.Kpy.aJg.getInt();
+    this.KpK = this.Kpy.aJg.getInt();
+    this.KpL = this.Kpy.aJg.getInt();
+    this.KpM = this.Kpy.aJg.getInt();
+    this.KpN = this.Kpy.aJg.getInt();
+    this.KpO = this.Kpy.aJg.getInt();
+    this.KpP = this.Kpy.aJg.getInt();
+    this.KpQ = this.Kpy.aJg.getInt();
+    this.KpR = this.Kpy.aJg.getInt();
+    this.KpS = this.Kpy.aJg.getInt();
+    this.KpT = this.Kpy.afd(20);
+    paramInputStream = this.Kpy;
+    int i = this.KpB;
+    paramInputStream.aJg.position(i);
   }
 }
 

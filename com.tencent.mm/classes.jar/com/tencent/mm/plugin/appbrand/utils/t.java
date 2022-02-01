@@ -6,45 +6,45 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 import com.tencent.luggage.h.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.aj;
 import d.g.b.k;
 import d.l;
 import d.n.n;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/utils/LuggageUIUtilsBridge;", "Lcom/tencent/luggage/util/UIUtilsInterface;", "()V", "TAG", "", "getCutOutHeight", "", "context", "Landroid/content/Context;", "getDarkModeColor", "originalColor", "getStableStatusBarHeight", "hasCutOut", "", "hasHuaweiMagicWindowFeature", "huaweiSpecial", "isDarkMode", "isHuaweiFold", "plugin-luggage-wechat-impl_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/utils/LuggageUIUtilsBridge;", "Lcom/tencent/luggage/util/UIUtilsInterface;", "()V", "TAG", "", "getCutOutHeight", "", "context", "Landroid/content/Context;", "getDarkModeColor", "originalColor", "getStableStatusBarHeight", "hasCutOut", "", "hasHuaweiMagicWindowFeature", "huaweiSpecial", "isDarkMode", "isHuaweiFold", "plugin-luggage-wechat-impl_release"})
 public final class t
   implements j
 {
-  public static final t lME;
+  public static final t moB;
   
   static
   {
     AppMethodBeat.i(174557);
-    lME = new t();
+    moB = new t();
     AppMethodBeat.o(174557);
   }
   
-  public final boolean Eq()
+  public final boolean DT()
   {
     AppMethodBeat.i(174554);
-    boolean bool = ai.Eq();
+    boolean bool = aj.DT();
     AppMethodBeat.o(174554);
     return bool;
   }
   
-  public final boolean Er()
+  public final boolean DU()
   {
-    AppMethodBeat.i(192565);
-    boolean bool = ai.Er();
-    AppMethodBeat.o(192565);
+    AppMethodBeat.i(205638);
+    boolean bool = aj.DU();
+    AppMethodBeat.o(205638);
     return bool;
   }
   
-  public final boolean Es()
+  public final boolean DV()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(192567);
+    AppMethodBeat.i(205640);
     if (n.I("HUAWEI", Build.BRAND, true))
     {
       bool1 = bool2;
@@ -73,50 +73,50 @@ public final class t
     label124:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ad.i("MicroMsg.LuggageUIUtilsBridge", "isHuaweiFold: ".concat(String.valueOf(bool1)));
-      AppMethodBeat.o(192567);
+      ac.i("MicroMsg.LuggageUIUtilsBridge", "isHuaweiFold: ".concat(String.valueOf(bool1)));
+      AppMethodBeat.o(205640);
       return bool1;
     }
   }
   
-  public final boolean Et()
+  public final boolean DW()
   {
-    AppMethodBeat.i(192566);
+    AppMethodBeat.i(205639);
     boolean bool1 = false;
     try
     {
-      boolean bool2 = u.Et();
+      boolean bool2 = u.DW();
       bool1 = bool2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.LuggageUIUtilsBridge", "hasHuaweiMagicWindowFeature" + localException.getMessage());
+        ac.e("MicroMsg.LuggageUIUtilsBridge", "hasHuaweiMagicWindowFeature" + localException.getMessage());
       }
     }
-    ad.i("MicroMsg.LuggageUIUtilsBridge", "hasHuaweiMagicWindowFeature: ".concat(String.valueOf(bool1)));
-    AppMethodBeat.o(192566);
+    ac.i("MicroMsg.LuggageUIUtilsBridge", "hasHuaweiMagicWindowFeature: ".concat(String.valueOf(bool1)));
+    AppMethodBeat.o(205639);
     return bool1;
   }
   
-  public final int aE(Context paramContext)
+  public final int aF(Context paramContext)
   {
     AppMethodBeat.i(174555);
-    int i = ai.aE(paramContext);
+    int i = aj.aF(paramContext);
     AppMethodBeat.o(174555);
     return i;
   }
   
-  public final boolean aF(Context paramContext)
+  public final boolean aG(Context paramContext)
   {
     AppMethodBeat.i(174556);
-    boolean bool = ai.aF(paramContext);
+    boolean bool = aj.aG(paramContext);
     AppMethodBeat.o(174556);
     return bool;
   }
   
-  public final int aG(Context paramContext)
+  public final int aH(Context paramContext)
   {
     AppMethodBeat.i(182443);
     k.h(paramContext, "context");
@@ -127,8 +127,8 @@ public final class t
       paramContext = paramContext.getResources();
       k.g(paramContext, "resources");
       float f = paramContext.getDisplayMetrics().density;
-      f = com.tencent.mm.ce.a.eCY() / f;
-      i = d.h.a.bU(paramContext.getDimensionPixelSize(paramContext.getIdentifier("status_bar_height", "dimen", "android")) * f);
+      f = com.tencent.mm.cd.a.eSs() / f;
+      i = d.h.a.cj(paramContext.getDimensionPixelSize(paramContext.getIdentifier("status_bar_height", "dimen", "android")) * f);
       AppMethodBeat.o(182443);
       return i;
     }
@@ -136,16 +136,16 @@ public final class t
     {
       for (;;)
       {
-        ad.e("MicroMsg.LuggageUIUtilsBridge", "getStableStatusBarHeight e=".concat(String.valueOf(paramContext)));
+        ac.e("MicroMsg.LuggageUIUtilsBridge", "getStableStatusBarHeight e=".concat(String.valueOf(paramContext)));
         int i = 0;
       }
     }
   }
   
-  public final int gO(int paramInt)
+  public final int gy(int paramInt)
   {
     AppMethodBeat.i(174553);
-    paramInt = ai.gO(paramInt);
+    paramInt = aj.gy(paramInt);
     AppMethodBeat.o(174553);
     return paramInt;
   }

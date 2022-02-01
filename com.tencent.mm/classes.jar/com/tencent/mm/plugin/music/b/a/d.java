@@ -5,15 +5,15 @@ import com.tencent.mm.plugin.music.f.c.a;
 public abstract interface d
   extends a
 {
-  public abstract void Hs(int paramInt);
+  public abstract void Jr(int paramInt);
   
-  public abstract void Ht(int paramInt);
+  public abstract void Js(int paramInt);
   
-  public abstract void Hu(int paramInt);
+  public abstract void Jt(int paramInt);
   
-  public abstract void Hv(int paramInt);
+  public abstract void Ju(int paramInt);
   
-  public abstract void Hw(int paramInt);
+  public abstract void Jv(int paramInt);
   
   public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3);
   
@@ -21,11 +21,11 @@ public abstract interface d
   
   public abstract void c(String paramString, long paramLong1, long paramLong2, long paramLong3);
   
-  public abstract void cUm();
+  public abstract void dhS();
   
-  public abstract void gi(int paramInt1, int paramInt2);
+  public abstract void gp(int paramInt1, int paramInt2);
   
-  public abstract void hA(String paramString1, String paramString2);
+  public abstract void hT(String paramString1, String paramString2);
   
   public abstract void r(String paramString1, String paramString2, boolean paramBoolean);
 }

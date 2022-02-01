@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class PhoneRechargeUI$16
   implements View.OnClickListener
@@ -16,11 +16,11 @@ final class PhoneRechargeUI$16
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(67178);
-    if (b.a(this.uYi.getContext(), "android.permission.READ_CONTACTS", 48, null, null))
+    if (b.a(this.wgX.getContext(), "android.permission.READ_CONTACTS", 48, null, null))
     {
       paramView = new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI);
-      if (bt.T(this.uYi, paramView)) {
-        this.uYi.startActivityForResult(paramView, 1);
+      if (bs.ah(this.wgX, paramView)) {
+        this.wgX.startActivityForResult(paramView, 1);
       }
     }
     AppMethodBeat.o(67178);
@@ -28,7 +28,7 @@ final class PhoneRechargeUI$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.PhoneRechargeUI.16
  * JD-Core Version:    0.7.0.1
  */

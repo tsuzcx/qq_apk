@@ -10,18 +10,18 @@ public class ExtractorWrapperPool
   
   static
   {
-    AppMethodBeat.i(202078);
+    AppMethodBeat.i(198139);
     extractorHashMap = new HashMap();
-    AppMethodBeat.o(202078);
+    AppMethodBeat.o(198139);
   }
   
   public static void clear()
   {
     try
     {
-      AppMethodBeat.i(202077);
+      AppMethodBeat.i(198138);
       extractorHashMap.clear();
-      AppMethodBeat.o(202077);
+      AppMethodBeat.o(198138);
       return;
     }
     finally
@@ -35,9 +35,9 @@ public class ExtractorWrapperPool
   {
     try
     {
-      AppMethodBeat.i(202072);
+      AppMethodBeat.i(198133);
       boolean bool = extractorHashMap.containsKey(paramString);
-      AppMethodBeat.o(202072);
+      AppMethodBeat.o(198133);
       return bool;
     }
     finally
@@ -51,13 +51,13 @@ public class ExtractorWrapperPool
   {
     try
     {
-      AppMethodBeat.i(202076);
+      AppMethodBeat.i(198137);
       paramString = get(paramString);
       paramString.checkAndLoad(paramAssetExtractor);
       paramAssetExtractor.setSize(paramString.getVideoSize());
       paramAssetExtractor.setDuration(paramString.getDuration());
       paramAssetExtractor.setPreferRotation(paramString.getPreferRotation());
-      AppMethodBeat.o(202076);
+      AppMethodBeat.o(198137);
       return;
     }
     finally
@@ -71,14 +71,14 @@ public class ExtractorWrapperPool
   {
     try
     {
-      AppMethodBeat.i(202071);
+      AppMethodBeat.i(198132);
       ExtractorWrapper localExtractorWrapper2 = (ExtractorWrapper)extractorHashMap.get(paramString);
       ExtractorWrapper localExtractorWrapper1 = localExtractorWrapper2;
       if (localExtractorWrapper2 == null) {
         localExtractorWrapper1 = new ExtractorWrapper(paramString);
       }
       extractorHashMap.put(paramString, localExtractorWrapper1);
-      AppMethodBeat.o(202071);
+      AppMethodBeat.o(198132);
       return localExtractorWrapper1;
     }
     finally {}
@@ -88,9 +88,9 @@ public class ExtractorWrapperPool
   {
     try
     {
-      AppMethodBeat.i(202075);
+      AppMethodBeat.i(198136);
       get(paramAssetExtractor.getSourcePath()).checkAndLoad(paramAssetExtractor);
-      AppMethodBeat.o(202075);
+      AppMethodBeat.o(198136);
       return;
     }
     finally
@@ -104,11 +104,11 @@ public class ExtractorWrapperPool
   {
     try
     {
-      AppMethodBeat.i(202074);
+      AppMethodBeat.i(198135);
       AssetExtractor localAssetExtractor = new AssetExtractor();
       localAssetExtractor.setDataSource(paramString);
       get(paramString).checkAndLoad(localAssetExtractor);
-      AppMethodBeat.o(202074);
+      AppMethodBeat.o(198135);
       return;
     }
     finally
@@ -122,9 +122,9 @@ public class ExtractorWrapperPool
   {
     try
     {
-      AppMethodBeat.i(202073);
+      AppMethodBeat.i(198134);
       extractorHashMap.put(paramExtractorWrapper.getVideoPath(), paramExtractorWrapper);
-      AppMethodBeat.o(202073);
+      AppMethodBeat.o(198134);
       return;
     }
     finally
@@ -136,7 +136,7 @@ public class ExtractorWrapperPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.extractor.wrapper.ExtractorWrapperPool
  * JD-Core Version:    0.7.0.1
  */

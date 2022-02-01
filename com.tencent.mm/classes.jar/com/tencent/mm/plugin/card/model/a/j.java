@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.card.model.a;
 
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.protocal.protobuf.ckq;
-import com.tencent.mm.protocal.protobuf.cld;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.cpx;
+import com.tencent.mm.protocal.protobuf.cqk;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "_Resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "()V", "setRR", "", "request", "Lcom/tencent/mm/protocal/protobuf/RequestProtoBuf;", "response", "funcId", "", "uri", "", "plugin-card_release"})
-public abstract class j<_Resp extends cld>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "_Resp", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "()V", "setRR", "", "request", "Lcom/tencent/mm/protocal/protobuf/RequestProtoBuf;", "response", "funcId", "", "uri", "", "plugin-card_release"})
+public abstract class j<_Resp extends cqk>
   extends c<_Resp>
 {
-  public final void a(ckq paramckq, cld paramcld, int paramInt, String paramString)
+  public final void a(cpx paramcpx, cqk paramcqk, int paramInt, String paramString)
   {
-    k.h(paramckq, "request");
-    k.h(paramcld, "response");
+    k.h(paramcpx, "request");
+    k.h(paramcqk, "response");
     k.h(paramString, "uri");
     b.a locala = new b.a();
-    locala.c((a)paramckq);
-    locala.d((a)paramcld);
-    locala.nB(paramInt);
-    locala.wg(paramString);
-    locala.nD(0);
-    locala.nE(0);
-    c(locala.atI());
+    locala.c((a)paramcpx);
+    locala.d((a)paramcqk);
+    locala.op(paramInt);
+    locala.Am(paramString);
+    locala.or(0);
+    locala.os(0);
+    c(locala.aAz());
   }
 }
 

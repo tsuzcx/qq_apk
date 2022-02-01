@@ -23,23 +23,23 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.az;
-import com.tencent.mm.g.a.az.b;
-import com.tencent.mm.g.b.a.ao;
-import com.tencent.mm.g.c.fb;
+import com.tencent.mm.g.a.ba;
+import com.tencent.mm.g.a.ba.b;
+import com.tencent.mm.g.c.ff;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.scanner.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.scanner.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.b;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
@@ -51,35 +51,37 @@ import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 public class TranslationResultUI
   extends MMActivity
 {
-  private View frN;
-  private MultiTouchImageView jPH;
+  private int dbL;
+  private View fvu;
+  private AnimationLayout iBC;
+  private boolean iBD;
+  private ImageView iBF;
+  private MultiTouchImageView kqu;
   private long msgId;
-  private AnimationLayout qMx;
-  private boolean qMy;
-  private ImageView qdk;
   private float scaleX;
   private float scaleY;
   private float translationX;
   private float translationY;
-  private Bitmap vUj;
-  private MMGestureGallery vUm;
-  private String vWh;
-  private fb vWi;
-  private a vWj;
-  private View vWk;
-  private Rect vWl;
+  private Bitmap xeU;
+  private MMGestureGallery xeX;
+  private String xgT;
+  private ff xgU;
+  private a xgV;
+  private View xgW;
+  private TextView xgX;
+  private Rect xgY;
   
-  private void dmI()
+  private void aOc()
   {
     AppMethodBeat.i(120942);
-    if (this.qMy)
+    if (this.iBD)
     {
       AppMethodBeat.o(120942);
       return;
     }
-    this.qMy = true;
-    ad.i("MicroMsg.TranslationResultUI", "runExitAnimation, thumbRect %s", new Object[] { this.vWl });
-    this.qMx.a(this.qdk, this.frN, new ViewAnimHelper.ViewInfo(this.vWl), new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
+    this.iBD = true;
+    ac.i("MicroMsg.TranslationResultUI", "runExitAnimation, thumbRect %s", new Object[] { this.xgY });
+    this.iBC.a(this.iBF, this.fvu, new ViewAnimHelper.ViewInfo(this.xgY), new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -96,15 +98,15 @@ public class TranslationResultUI
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(120934);
-        if (TranslationResultUI.f(TranslationResultUI.this) != null)
+        if (TranslationResultUI.g(TranslationResultUI.this) != null)
         {
-          if (TranslationResultUI.f(TranslationResultUI.this).getScale() > 1.0F) {
-            TranslationResultUI.f(TranslationResultUI.this).eSz();
+          if (TranslationResultUI.g(TranslationResultUI.this).getScale() > 1.0F) {
+            TranslationResultUI.g(TranslationResultUI.this).fij();
           }
-          TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.f(TranslationResultUI.this).getTranslationX());
-          TranslationResultUI.b(TranslationResultUI.this, TranslationResultUI.f(TranslationResultUI.this).getTranslationY());
-          TranslationResultUI.c(TranslationResultUI.this, TranslationResultUI.f(TranslationResultUI.this).getScaleX());
-          TranslationResultUI.d(TranslationResultUI.this, TranslationResultUI.f(TranslationResultUI.this).getScaleY());
+          TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.g(TranslationResultUI.this).getTranslationX());
+          TranslationResultUI.b(TranslationResultUI.this, TranslationResultUI.g(TranslationResultUI.this).getTranslationY());
+          TranslationResultUI.c(TranslationResultUI.this, TranslationResultUI.g(TranslationResultUI.this).getScaleX());
+          TranslationResultUI.d(TranslationResultUI.this, TranslationResultUI.g(TranslationResultUI.this).getScaleY());
         }
         AppMethodBeat.o(120934);
       }
@@ -114,12 +116,12 @@ public class TranslationResultUI
       {
         AppMethodBeat.i(120936);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        if (TranslationResultUI.f(TranslationResultUI.this) != null)
+        if (TranslationResultUI.g(TranslationResultUI.this) != null)
         {
-          TranslationResultUI.f(TranslationResultUI.this).setTranslationX(TranslationResultUI.i(TranslationResultUI.this) * (1.0F - f));
-          TranslationResultUI.f(TranslationResultUI.this).setTranslationY(TranslationResultUI.j(TranslationResultUI.this) * (1.0F - f));
-          TranslationResultUI.f(TranslationResultUI.this).setScaleX((1.0F - f) * TranslationResultUI.k(TranslationResultUI.this) + f);
-          TranslationResultUI.f(TranslationResultUI.this).setScaleY(f + (1.0F - f) * TranslationResultUI.l(TranslationResultUI.this));
+          TranslationResultUI.g(TranslationResultUI.this).setTranslationX(TranslationResultUI.j(TranslationResultUI.this) * (1.0F - f));
+          TranslationResultUI.g(TranslationResultUI.this).setTranslationY(TranslationResultUI.k(TranslationResultUI.this) * (1.0F - f));
+          TranslationResultUI.g(TranslationResultUI.this).setScaleX((1.0F - f) * TranslationResultUI.l(TranslationResultUI.this) + f);
+          TranslationResultUI.g(TranslationResultUI.this).setScaleY(f + (1.0F - f) * TranslationResultUI.m(TranslationResultUI.this));
         }
         AppMethodBeat.o(120936);
       }
@@ -130,9 +132,9 @@ public class TranslationResultUI
   private void goBack()
   {
     AppMethodBeat.i(120941);
-    if (this.vWl != null)
+    if (this.xgY != null)
     {
-      dmI();
+      aOc();
       AppMethodBeat.o(120941);
       return;
     }
@@ -154,40 +156,42 @@ public class TranslationResultUI
   public void initView()
   {
     AppMethodBeat.i(120939);
-    this.frN = findViewById(2131304241);
-    this.vWk = findViewById(2131304288);
-    this.qdk = ((ImageView)findViewById(2131300336));
-    this.qMx = ((AnimationLayout)findViewById(2131296674));
-    this.vWh = getIntent().getStringExtra("original_file_path");
+    this.fvu = findViewById(2131304241);
+    this.xgW = findViewById(2131304288);
+    this.iBF = ((ImageView)findViewById(2131300336));
+    this.iBC = ((AnimationLayout)findViewById(2131296674));
+    this.xgX = ((TextView)findViewById(2131308044));
+    this.xgT = getIntent().getStringExtra("original_file_path");
     this.msgId = getIntent().getLongExtra("msg_id", -1L);
-    this.vWl = ((Rect)getIntent().getParcelableExtra("thumb_location"));
-    ad.i("MicroMsg.TranslationResultUI", "file path %s", new Object[] { this.vWh });
-    if (!i.eK(this.vWh)) {
-      ad.e("MicroMsg.TranslationResultUI", "translation original file not exist!");
+    this.dbL = getIntent().getIntExtra("translate_source", 0);
+    this.xgY = ((Rect)getIntent().getParcelableExtra("thumb_location"));
+    ac.i("MicroMsg.TranslationResultUI", "file path %s", new Object[] { this.xgT });
+    if (!i.eA(this.xgT)) {
+      ac.e("MicroMsg.TranslationResultUI", "translation original file not exist!");
     }
     Object localObject1 = findViewById(2131304282);
     Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject2).bottomMargin += ai.eb(this);
+    ((FrameLayout.LayoutParams)localObject2).bottomMargin += aj.ej(this);
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     getSupportActionBar().hide();
     getController().q(this, getResources().getColor(2131101053));
     getController().setNavigationbarColor(getResources().getColor(2131101053));
-    this.vUm = ((MMGestureGallery)findViewById(2131306079));
-    this.vWj = new a((byte)0);
-    this.vUm.setAdapter(this.vWj);
-    this.vUm.setSingleClickOverListener(new MMGestureGallery.f()
+    this.xeX = ((MMGestureGallery)findViewById(2131306079));
+    this.xgV = new a((byte)0);
+    this.xeX.setAdapter(this.xgV);
+    this.xeX.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aHo()
+      public final void aOd()
       {
         AppMethodBeat.i(120929);
         TranslationResultUI.a(TranslationResultUI.this);
         AppMethodBeat.o(120929);
       }
     });
-    this.vWi = ((c)g.ad(c.class)).getTranslationResult(this.vWh);
-    if (this.vWi != null)
+    this.xgU = ((d)g.ad(d.class)).getTranslationResult(this.xgT);
+    if (this.xgU != null)
     {
-      if (this.vUj == null) {
+      if (this.xeU == null) {
         com.tencent.mm.sdk.g.b.e(new Runnable()
         {
           public final void run()
@@ -195,7 +199,7 @@ public class TranslationResultUI
             AppMethodBeat.i(120931);
             TranslationResultUI.a(TranslationResultUI.this, f.decodeFile(TranslationResultUI.b(TranslationResultUI.this).field_resultFile, null));
             if (TranslationResultUI.c(TranslationResultUI.this) != null) {
-              aq.f(new Runnable()
+              ap.f(new Runnable()
               {
                 public final void run()
                 {
@@ -212,79 +216,85 @@ public class TranslationResultUI
       }
       for (;;)
       {
-        this.vWk.setOnClickListener(new View.OnClickListener()
+        if (!bs.isNullOrNil(this.xgU.field_brand))
+        {
+          this.xgX.setText(this.xgU.field_brand);
+          this.xgX.setVisibility(0);
+        }
+        this.xgW.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(120932);
-            paramAnonymousView = new ao();
-            paramAnonymousView.dFd = 7L;
-            paramAnonymousView.aBj();
+            paramAnonymousView = new com.tencent.mm.g.b.a.bo();
+            paramAnonymousView.dCQ = 7L;
+            paramAnonymousView.dNc = TranslationResultUI.e(TranslationResultUI.this);
+            paramAnonymousView.aHZ();
             TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.b(TranslationResultUI.this).field_resultFile);
             AppMethodBeat.o(120932);
           }
         });
-        this.vWk.setVisibility(0);
-        this.vUm.setGalleryScaleListener(new MMGestureGallery.b()
+        this.xgW.setVisibility(0);
+        this.xeX.setGalleryScaleListener(new MMGestureGallery.b()
         {
-          public final void J(float paramAnonymousFloat1, float paramAnonymousFloat2)
+          public final void M(float paramAnonymousFloat1, float paramAnonymousFloat2)
           {
             float f1 = 1.0F;
             AppMethodBeat.i(120933);
-            float f2 = 1.0F - paramAnonymousFloat2 / TranslationResultUI.e(TranslationResultUI.this).getHeight();
+            float f2 = 1.0F - paramAnonymousFloat2 / TranslationResultUI.f(TranslationResultUI.this).getHeight();
             if (f2 > 1.0F)
             {
-              ad.d("MicroMsg.TranslationResultUI", "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Float.valueOf(f1) });
-              if (TranslationResultUI.f(TranslationResultUI.this) == null) {
+              ac.d("MicroMsg.TranslationResultUI", "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Float.valueOf(f1) });
+              if (TranslationResultUI.g(TranslationResultUI.this) == null) {
                 break label224;
               }
               if ((paramAnonymousFloat1 != 0.0F) || (paramAnonymousFloat2 != 0.0F)) {
                 break label209;
               }
-              TranslationResultUI.g(TranslationResultUI.this).setVisibility(0);
+              TranslationResultUI.h(TranslationResultUI.this).setVisibility(0);
             }
             for (;;)
             {
-              TranslationResultUI.f(TranslationResultUI.this).setPivotX(TranslationResultUI.e(TranslationResultUI.this).getWidth() / 2);
-              TranslationResultUI.f(TranslationResultUI.this).setPivotY(TranslationResultUI.e(TranslationResultUI.this).getHeight() / 2);
-              TranslationResultUI.f(TranslationResultUI.this).setScaleX(f1);
-              TranslationResultUI.f(TranslationResultUI.this).setScaleY(f1);
-              TranslationResultUI.f(TranslationResultUI.this).setTranslationX(paramAnonymousFloat1);
-              TranslationResultUI.f(TranslationResultUI.this).setTranslationY(paramAnonymousFloat2);
-              TranslationResultUI.h(TranslationResultUI.this).setAlpha(f1);
+              TranslationResultUI.g(TranslationResultUI.this).setPivotX(TranslationResultUI.f(TranslationResultUI.this).getWidth() / 2);
+              TranslationResultUI.g(TranslationResultUI.this).setPivotY(TranslationResultUI.f(TranslationResultUI.this).getHeight() / 2);
+              TranslationResultUI.g(TranslationResultUI.this).setScaleX(f1);
+              TranslationResultUI.g(TranslationResultUI.this).setScaleY(f1);
+              TranslationResultUI.g(TranslationResultUI.this).setTranslationX(paramAnonymousFloat1);
+              TranslationResultUI.g(TranslationResultUI.this).setTranslationY(paramAnonymousFloat2);
+              TranslationResultUI.i(TranslationResultUI.this).setAlpha(f1);
               AppMethodBeat.o(120933);
               return;
               f1 = f2;
               break;
               label209:
-              TranslationResultUI.g(TranslationResultUI.this).setVisibility(8);
+              TranslationResultUI.h(TranslationResultUI.this).setVisibility(8);
             }
             label224:
-            ad.d("MicroMsg.TranslationResultUI", "runDragAnimation contentView is null !!");
+            ac.d("MicroMsg.TranslationResultUI", "runDragAnimation contentView is null !!");
             AppMethodBeat.o(120933);
           }
           
-          public final void K(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
+          public final void N(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
         });
-        localObject1 = ((k)g.ab(k.class)).cOI().rm(this.msgId);
+        localObject1 = ((k)g.ab(k.class)).dcr().vP(this.msgId);
         if (this.msgId != -1L)
         {
-          localObject2 = new az();
-          ((az)localObject2).ddf.dbD = ((bl)localObject1);
-          com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
-          this.vWl = new Rect();
-          this.vWl.left = ((az)localObject2).ddg.ddh;
-          this.vWl.top = ((az)localObject2).ddg.ddi;
-          this.vWl.right = (((az)localObject2).ddg.ddj + this.vWl.left);
-          this.vWl.bottom = (((az)localObject2).ddg.ddk + this.vWl.top);
+          localObject2 = new ba();
+          ((ba)localObject2).daD.cZc = ((com.tencent.mm.storage.bo)localObject1);
+          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
+          this.xgY = new Rect();
+          this.xgY.left = ((ba)localObject2).daE.daF;
+          this.xgY.top = ((ba)localObject2).daE.daG;
+          this.xgY.right = (((ba)localObject2).daE.daH + this.xgY.left);
+          this.xgY.bottom = (((ba)localObject2).daE.daI + this.xgY.top);
         }
         AppMethodBeat.o(120939);
         return;
-        this.vWj.bitmap = this.vUj;
-        this.vWj.notifyDataSetChanged();
+        this.xgV.bitmap = this.xeU;
+        this.xgV.notifyDataSetChanged();
       }
     }
-    ad.e("MicroMsg.TranslationResultUI", "translation result not found!");
+    ac.e("MicroMsg.TranslationResultUI", "translation result not found!");
     goBack();
     AppMethodBeat.o(120939);
   }
@@ -302,7 +312,7 @@ public class TranslationResultUI
   {
     AppMethodBeat.i(120944);
     super.onDestroy();
-    this.vUj = null;
+    this.xeU = null;
     AppMethodBeat.o(120944);
   }
   
@@ -366,18 +376,18 @@ public class TranslationResultUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(120937);
-      if (TranslationResultUI.f(TranslationResultUI.this) == null)
+      if (TranslationResultUI.g(TranslationResultUI.this) == null)
       {
         TranslationResultUI.a(TranslationResultUI.this, new MultiTouchImageView(TranslationResultUI.this, 0, 0, (byte)0));
-        TranslationResultUI.f(TranslationResultUI.this).setLayoutParams(new Gallery.LayoutParams(-1, -1));
-        TranslationResultUI.f(TranslationResultUI.this).eSz();
+        TranslationResultUI.g(TranslationResultUI.this).setLayoutParams(new Gallery.LayoutParams(-1, -1));
+        TranslationResultUI.g(TranslationResultUI.this).fij();
       }
       if (this.bitmap != null)
       {
-        TranslationResultUI.f(TranslationResultUI.this).setImageBitmap(this.bitmap);
-        TranslationResultUI.f(TranslationResultUI.this).cH(this.bitmap.getWidth(), this.bitmap.getHeight());
+        TranslationResultUI.g(TranslationResultUI.this).setImageBitmap(this.bitmap);
+        TranslationResultUI.g(TranslationResultUI.this).cF(this.bitmap.getWidth(), this.bitmap.getHeight());
       }
-      paramView = TranslationResultUI.f(TranslationResultUI.this);
+      paramView = TranslationResultUI.g(TranslationResultUI.this);
       AppMethodBeat.o(120937);
       return paramView;
     }
@@ -385,7 +395,7 @@ public class TranslationResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.TranslationResultUI
  * JD-Core Version:    0.7.0.1
  */

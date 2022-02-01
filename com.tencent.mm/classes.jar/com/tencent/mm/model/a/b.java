@@ -5,25 +5,25 @@ import java.util.HashMap;
 
 public final class b
 {
-  public String fMu;
-  public String gPI;
-  public String gPJ;
-  public String gPK;
-  public HashMap<String, e> gPL;
+  public String fQg;
+  public String hqi;
+  public String hqj;
+  public String hqk;
+  public HashMap<String, e> hql;
   
   public b()
   {
     AppMethodBeat.i(153089);
-    this.gPL = new HashMap();
+    this.hql = new HashMap();
     AppMethodBeat.o(153089);
   }
   
-  public final e uz(String paramString)
+  public final e yF(String paramString)
   {
     AppMethodBeat.i(153090);
-    if ((this.gPL != null) && (this.gPL.containsKey(paramString)))
+    if ((this.hql != null) && (this.hql.containsKey(paramString)))
     {
-      paramString = (e)this.gPL.get(paramString);
+      paramString = (e)this.hql.get(paramString);
       AppMethodBeat.o(153090);
       return paramString;
     }

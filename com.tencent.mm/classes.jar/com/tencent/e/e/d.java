@@ -13,33 +13,33 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final d IyJ;
-  private static final ConcurrentHashMap<Looper, WeakReference<Handler>> IyK;
-  private final Looper cBP;
+  private static final d Kas;
+  private static final ConcurrentHashMap<Looper, WeakReference<Handler>> Kat;
+  private final Looper cyY;
   
   static
   {
     AppMethodBeat.i(183287);
-    IyJ = new d();
-    IyK = new ConcurrentHashMap();
+    Kas = new d();
+    Kat = new ConcurrentHashMap();
     AppMethodBeat.o(183287);
   }
   
   private d()
   {
     AppMethodBeat.i(183283);
-    HandlerThread localHandlerThread = c.aGG("TP#Internal");
+    HandlerThread localHandlerThread = c.aLY("TP#Internal");
     localHandlerThread.setPriority(8);
     localHandlerThread.start();
-    this.cBP = localHandlerThread.getLooper();
+    this.cyY = localHandlerThread.getLooper();
     AppMethodBeat.o(183283);
   }
   
   public static Handler a(String paramString, Handler.Callback paramCallback)
   {
     AppMethodBeat.i(183285);
-    paramString = new a(paramString, IyJ.cBP, paramCallback);
-    IyK.put(IyJ.cBP, new WeakReference(paramString));
+    paramString = new a(paramString, Kas.cyY, paramCallback);
+    Kat.put(Kas.cyY, new WeakReference(paramString));
     AppMethodBeat.o(183285);
     return paramString;
   }
@@ -47,7 +47,7 @@ public final class d
   public static void release()
   {
     AppMethodBeat.i(183286);
-    Iterator localIterator = IyK.values().iterator();
+    Iterator localIterator = Kat.values().iterator();
     while (localIterator.hasNext())
     {
       Handler localHandler = (Handler)((WeakReference)localIterator.next()).get();

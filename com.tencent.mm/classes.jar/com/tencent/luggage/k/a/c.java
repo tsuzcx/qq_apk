@@ -10,7 +10,7 @@ import org.xwalk.core.XWalkView;
 public final class c
   extends XWalkExtendPluginClient
 {
-  com.tencent.luggage.k.a.c.c cjC;
+  com.tencent.luggage.k.a.c.c cgy;
   
   public c(XWalkView paramXWalkView)
   {
@@ -21,8 +21,8 @@ public final class c
   {
     AppMethodBeat.i(138805);
     super.onPluginDestroy(paramString, paramInt);
-    if (this.cjC != null) {
-      this.cjC.onPluginDestroy(paramString, paramInt);
+    if (this.cgy != null) {
+      this.cgy.onPluginDestroy(paramString, paramInt);
     }
     AppMethodBeat.o(138805);
   }
@@ -31,8 +31,8 @@ public final class c
   {
     AppMethodBeat.i(138804);
     super.onPluginReady(paramString, paramInt, paramSurfaceTexture);
-    if (this.cjC != null) {
-      this.cjC.onPluginReady(paramString, paramInt, paramSurfaceTexture);
+    if (this.cgy != null) {
+      this.cgy.onPluginReady(paramString, paramInt, paramSurfaceTexture);
     }
     AppMethodBeat.o(138804);
   }
@@ -41,8 +41,8 @@ public final class c
   {
     AppMethodBeat.i(178798);
     super.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
-    if (this.cjC != null) {
-      this.cjC.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
+    if (this.cgy != null) {
+      this.cgy.onPluginScreenshotTaken(paramString, paramInt, paramBitmap);
     }
     AppMethodBeat.o(178798);
   }
@@ -51,8 +51,8 @@ public final class c
   {
     AppMethodBeat.i(138806);
     super.onPluginTouch(paramString, paramInt, paramMotionEvent);
-    if (this.cjC != null) {
-      this.cjC.onPluginTouch(paramString, paramInt, paramMotionEvent);
+    if (this.cgy != null) {
+      this.cgy.onPluginTouch(paramString, paramInt, paramMotionEvent);
     }
     AppMethodBeat.o(138806);
   }
@@ -66,7 +66,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.c
  * JD-Core Version:    0.7.0.1
  */

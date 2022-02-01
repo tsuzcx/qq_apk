@@ -6,7 +6,7 @@ import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
 import com.tencent.mm.plugin.appbrand.collector.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONException;
@@ -14,22 +14,22 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private static Set<String> jnI;
+  private static Set<String> jNU;
   
   static
   {
     AppMethodBeat.i(121439);
-    jnI = new HashSet();
+    jNU = new HashSet();
     if (!TextUtils.isEmpty("drawCanvas")) {
-      jnI.add("drawCanvas");
+      jNU.add("drawCanvas");
     }
     AppMethodBeat.o(121439);
   }
   
-  public static boolean FD(String paramString)
+  public static boolean JH(String paramString)
   {
     AppMethodBeat.i(121436);
-    boolean bool = jnI.contains(paramString);
+    boolean bool = jNU.contains(paramString);
     AppMethodBeat.o(121436);
     return bool;
   }
@@ -41,16 +41,16 @@ public final class d
     {
       paramJSONObject.put("__session_id", paramString1);
       paramJSONObject.put("__invoke_jsapi_timestamp", System.nanoTime());
-      paramString1 = c.Fx(paramString1);
+      paramString1 = c.JB(paramString1);
       if (paramString1 != null) {
-        paramString1.dlO.putInt("__invoke_jsapi_data_size", paramString2.length());
+        paramString1.djw.putInt("__invoke_jsapi_data_size", paramString2.length());
       }
       AppMethodBeat.o(121437);
       return;
     }
     catch (JSONException paramString1)
     {
-      ad.e("MicroMsg.JsApiCostTimeStrategy", "%s", new Object[] { Log.getStackTraceString(paramString1) });
+      ac.e("MicroMsg.JsApiCostTimeStrategy", "%s", new Object[] { Log.getStackTraceString(paramString1) });
       AppMethodBeat.o(121437);
     }
   }
@@ -65,7 +65,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.d
  * JD-Core Version:    0.7.0.1
  */

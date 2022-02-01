@@ -8,9 +8,9 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.ai;
+import com.tencent.mm.plugin.appbrand.appcache.ab;
 import com.tencent.mm.plugin.appbrand.appcache.ai.a;
-import com.tencent.mm.plugin.appbrand.appcache.aw;
+import com.tencent.mm.plugin.appbrand.appcache.aq;
 import com.tencent.mm.plugin.appbrand.appcache.bb;
 import com.tencent.mm.plugin.appbrand.appcache.bf;
 import com.tencent.mm.plugin.appbrand.appcache.bf.b;
@@ -25,15 +25,14 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 import com.tencent.mm.plugin.appbrand.config.u;
 import com.tencent.mm.plugin.appbrand.config.w;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.vfs.i;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.ZipInputStream;
@@ -47,7 +46,7 @@ public final class b
     boolean bool2 = false;
     boolean bool1 = false;
     AppMethodBeat.i(43788);
-    if ((bu.eGT()) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE)) {}
+    if ((bt.eWo()) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE)) {}
     for (int j = 1; j == 0; j = 0)
     {
       AppMethodBeat.o(43788);
@@ -55,13 +54,13 @@ public final class b
     }
     if ("//enable_appbrand_monkey_test".equals(paramArrayOfString[0]))
     {
-      DebuggerShell.aUa();
+      DebuggerShell.baY();
       AppMethodBeat.o(43788);
       return true;
     }
     if ("//disable_appbrand_monkey_test".equals(paramArrayOfString[0]))
     {
-      DebuggerShell.aUb();
+      DebuggerShell.baZ();
       AppMethodBeat.o(43788);
       return true;
     }
@@ -70,14 +69,14 @@ public final class b
       if (paramArrayOfString.length > 1) {}
       for (paramArrayOfString = paramArrayOfString[1].trim();; paramArrayOfString = "")
       {
-        paramArrayOfString = com.tencent.mm.plugin.appbrand.task.f.MR(paramArrayOfString);
+        paramArrayOfString = com.tencent.mm.plugin.appbrand.task.f.Ra(paramArrayOfString);
         if (paramArrayOfString != null)
         {
           paramString = new com.tencent.mm.plugin.appbrand.a.f();
           paramString.appId = ((String)paramArrayOfString.first);
-          paramString.gXn = ((Integer)paramArrayOfString.second).intValue();
+          paramString.hxM = ((Integer)paramArrayOfString.second).intValue();
           paramString.scene = 1030;
-          ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(paramContext, paramString);
+          ((n)g.ab(n.class)).a(paramContext, paramString);
         }
         AppMethodBeat.o(43788);
         return true;
@@ -88,7 +87,7 @@ public final class b
       if (paramArrayOfString.length > 1) {}
       for (paramContext = paramArrayOfString[1].trim();; paramContext = "")
       {
-        ((q)g.ab(q.class)).Eu(paramContext);
+        ((com.tencent.mm.plugin.appbrand.service.q)g.ab(com.tencent.mm.plugin.appbrand.service.q.class)).Ix(paramContext);
         AppMethodBeat.o(43788);
         return true;
       }
@@ -123,11 +122,11 @@ public final class b
         }
         i = 2;
         break;
-        com.tencent.mm.plugin.appbrand.xweb_ext.c.bvb();
+        com.tencent.mm.plugin.appbrand.xweb_ext.c.bBY();
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.c.vF(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.c.ww(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.c.vF(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.c.ww(0);
       }
     }
     if ("//xweb_video_preload".equals(paramArrayOfString[0]))
@@ -160,24 +159,24 @@ public final class b
         }
         i = 2;
         break;
-        ax.aFC("xweb_abtest_command").removeValueForKey("xweb_video_preload_command_value");
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").removeValueForKey("xweb_video_preload_command_value");
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vH(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wy(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vH(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wy(0);
       }
     }
     if ("//xweb_video_ps".equals(paramArrayOfString[0]))
     {
-      i = bt.aGh(paramArrayOfString[1]);
+      i = bs.aLy(paramArrayOfString[1]);
       if (i < 0) {
-        ax.aFC("xweb_abtest_command").removeValueForKey("xweb_video_weishi_ps_command_value");
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").removeValueForKey("xweb_video_weishi_ps_command_value");
       }
       for (;;)
       {
         AppMethodBeat.o(43788);
         return true;
-        ax.aFC("xweb_abtest_command").encode("xweb_video_weishi_ps_command_value", i);
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").encode("xweb_video_weishi_ps_command_value", i);
       }
     }
     if ("//xweb_video_player".equals(paramArrayOfString[0]))
@@ -210,11 +209,11 @@ public final class b
         }
         i = 2;
         break;
-        ax.aFC("xweb_abtest_command").removeValueForKey("xweb_video_player_command_value");
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").removeValueForKey("xweb_video_player_command_value");
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vI(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wz(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vI(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wz(0);
       }
     }
     if ("//xweb_hls_video_player".equals(paramArrayOfString[0]))
@@ -247,11 +246,11 @@ public final class b
         }
         i = 2;
         break;
-        ax.aFC("xweb_abtest_command").removeValueForKey("xweb_hls_video_player_command_value");
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").removeValueForKey("xweb_hls_video_player_command_value");
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vJ(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wA(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vJ(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wA(0);
       }
     }
     if ("//xweb_video_proxy".equals(paramArrayOfString[0]))
@@ -284,11 +283,11 @@ public final class b
         }
         i = 2;
         break;
-        ax.aFC("xweb_abtest_command").removeValueForKey("xweb_video_proxy_command_value");
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").removeValueForKey("xweb_video_proxy_command_value");
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vK(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wB(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vK(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wB(0);
       }
     }
     if ("//xweb_video_hls_proxy".equals(paramArrayOfString[0]))
@@ -321,11 +320,11 @@ public final class b
         }
         i = 2;
         break;
-        ax.aFC("xweb_abtest_command").removeValueForKey("xweb_video_hls_proxy_command_value");
+        com.tencent.mm.sdk.platformtools.aw.aKT("xweb_abtest_command").removeValueForKey("xweb_video_hls_proxy_command_value");
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vL(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wC(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.vL(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.video.b.wC(0);
       }
     }
     if ("//xweb_video".equals(paramArrayOfString[0]))
@@ -358,11 +357,11 @@ public final class b
         }
         i = 2;
         break;
-        com.tencent.mm.plugin.appbrand.xweb_ext.c.buP();
+        com.tencent.mm.plugin.appbrand.xweb_ext.c.bBM();
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.c.vE(1);
+        com.tencent.mm.plugin.appbrand.xweb_ext.c.wv(1);
         continue;
-        com.tencent.mm.plugin.appbrand.xweb_ext.c.vE(0);
+        com.tencent.mm.plugin.appbrand.xweb_ext.c.wv(0);
       }
     }
     if ("//showad".equals(paramArrayOfString[0]))
@@ -395,11 +394,11 @@ public final class b
         }
         i = 2;
         break;
-        com.tencent.mm.plugin.appbrand.ad.a.aNU();
+        com.tencent.mm.plugin.appbrand.ad.a.aUK();
         continue;
-        com.tencent.mm.plugin.appbrand.ad.a.qx(1);
+        com.tencent.mm.plugin.appbrand.ad.a.rk(1);
         continue;
-        com.tencent.mm.plugin.appbrand.ad.a.qx(0);
+        com.tencent.mm.plugin.appbrand.ad.a.rk(0);
       }
     }
     if ("//allshowad".equals(paramArrayOfString[0]))
@@ -432,16 +431,16 @@ public final class b
         }
         i = 2;
         break;
-        com.tencent.mm.plugin.appbrand.ad.a.aNW();
+        com.tencent.mm.plugin.appbrand.ad.a.aUM();
         continue;
-        com.tencent.mm.plugin.appbrand.ad.a.qy(1);
+        com.tencent.mm.plugin.appbrand.ad.a.rl(1);
         continue;
-        com.tencent.mm.plugin.appbrand.ad.a.qy(0);
+        com.tencent.mm.plugin.appbrand.ad.a.rl(0);
       }
     }
     if ("//localwxalibrary".equals(paramArrayOfString[0]))
     {
-      paramContext = ax.aFC("__appbrand_comm_lib__prefs");
+      paramContext = com.tencent.mm.sdk.platformtools.aw.aKT("__appbrand_comm_lib__prefs");
       paramArrayOfString = paramArrayOfString[1];
       switch (paramArrayOfString.hashCode())
       {
@@ -481,26 +480,26 @@ public final class b
     {
       if ((paramArrayOfString.length > 1) && (paramArrayOfString[1].contains("daily")))
       {
-        paramContext = z.a.iVu;
-        z.aSd();
+        paramContext = z.a.jvK;
+        z.aZa();
       }
       for (;;)
       {
         AppMethodBeat.o(43788);
         return true;
-        paramContext = z.a.iVv;
-        z.aSd();
+        paramContext = z.a.jvL;
+        z.aZa();
       }
     }
     if ("//callsearchshowoutwxaapp".equals(paramArrayOfString[0]))
     {
-      ((r)g.ab(r.class)).aSg();
+      ((r)g.ab(r.class)).aZd();
       AppMethodBeat.o(43788);
       return true;
     }
     if ("//wagame".equals(paramArrayOfString[0]))
     {
-      com.tencent.mm.plugin.appbrand.game.a.n.a(paramContext, paramArrayOfString);
+      com.tencent.mm.plugin.appbrand.game.a.q.a(paramContext, paramArrayOfString);
       AppMethodBeat.o(43788);
       return true;
     }
@@ -692,13 +691,23 @@ public final class b
       }
       i = 34;
       break;
+      if (!paramString.equals("insert_pdd_enc_1170_app")) {
+        break;
+      }
+      i = 35;
+      break;
+      if (!paramString.equals("insert_pdd_ori_1170_app")) {
+        break;
+      }
+      i = 36;
+      break;
       com.tencent.mm.sdk.g.b.c(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(43784);
-          long l = bt.eGO();
-          ad.i("[ZIP]", "unzip JNI %d, cost %d", new Object[] { Integer.valueOf(ZipJNI.unzip("/sdcard/test_zip.zip", "/sdcard/test_zip/", null)), Long.valueOf(bt.eGO() - l) });
+          long l = bs.eWj();
+          ac.i("[ZIP]", "unzip JNI %d, cost %d", new Object[] { Integer.valueOf(ZipJNI.unzip("/sdcard/test_zip.zip", "/sdcard/test_zip/", null)), Long.valueOf(bs.eWj() - l) });
           AppMethodBeat.o(43784);
         }
       }, "TestZipJNI");
@@ -708,63 +717,63 @@ public final class b
         public final void run()
         {
           AppMethodBeat.i(43785);
-          long l = bt.eGO();
+          long l = bs.eWj();
           int i = -1;
           try
           {
-            int j = m.a(new ZipInputStream(i.ah(new com.tencent.mm.vfs.e("/sdcard/test_zip.zip"))), "/sdcard/test_zip/");
+            int j = m.a(new ZipInputStream(i.ag(new com.tencent.mm.vfs.e("/sdcard/test_zip.zip"))), "/sdcard/test_zip/");
             i = j;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ad.e("[ZIP]", "unzip Java ex=%s", new Object[] { localException });
+              ac.e("[ZIP]", "unzip Java ex=%s", new Object[] { localException });
             }
           }
-          ad.i("[ZIP]", "unzip Java %d, cost %d", new Object[] { Integer.valueOf(i), Long.valueOf(bt.eGO() - l) });
+          ac.i("[ZIP]", "unzip Java %d, cost %d", new Object[] { Integer.valueOf(i), Long.valueOf(bs.eWj() - l) });
           AppMethodBeat.o(43785);
         }
       }, "TestZipJava");
       continue;
-      paramContext = j.aOK();
+      paramContext = j.aVC();
       paramArrayOfString = new bb();
       paramArrayOfString.field_appId = "@LibraryAppId";
       paramArrayOfString.field_debugType = 999;
       paramArrayOfString.field_version = 1;
-      paramContext.iOF.delete(paramArrayOfString, bb.iOp);
-      i = aw.VERSION;
-      com.tencent.mm.plugin.appbrand.appcache.aq.aPP();
+      paramContext.joO.delete(paramArrayOfString, bb.joy);
+      i = com.tencent.mm.plugin.appbrand.appcache.aw.VERSION;
+      aq.aWH();
       continue;
-      j.aOK().aN("@LibraryAppId", 0);
-      i = aw.VERSION;
-      com.tencent.mm.plugin.appbrand.appcache.aq.aPP();
+      j.aVC().aR("@LibraryAppId", 0);
+      i = com.tencent.mm.plugin.appbrand.appcache.aw.VERSION;
+      aq.aWH();
       continue;
       if (paramArrayOfString.length > 2)
       {
         paramContext = paramArrayOfString[2].trim();
-        label3203:
+        label3261:
         if (paramArrayOfString.length <= 3) {
-          break label3246;
+          break label3304;
         }
       }
-      label3246:
-      for (i = bt.getInt(paramArrayOfString[3].trim(), 0); !TextUtils.isEmpty(paramContext); i = 0)
+      label3304:
+      for (i = bs.getInt(paramArrayOfString[3].trim(), 0); !TextUtils.isEmpty(paramContext); i = 0)
       {
-        j.aOK().aN(paramContext, i);
+        j.aVC().aR(paramContext, i);
         break;
         paramContext = null;
-        break label3203;
+        break label3261;
       }
-      com.tencent.mm.sdk.g.b.c(n.c.aPq(), "WxaPkgCleanupByCMD");
+      com.tencent.mm.sdk.g.b.c(n.c.aWi(), "WxaPkgCleanupByCMD");
       continue;
-      ad.i("PluginCodePruneLRULogic", "pluginCode lru cleanup!");
+      ac.i("PluginCodePruneLRULogic", "pluginCode lru cleanup!");
       paramContext = new AtomicBoolean();
       try
       {
-        ai.b(4194304L, new ai.a()
+        com.tencent.mm.plugin.appbrand.appcache.ai.b(4194304L, new ai.a()
         {
-          public final boolean aLy()
+          public final boolean aSp()
           {
             AppMethodBeat.i(43786);
             boolean bool = paramContext.get();
@@ -775,30 +784,30 @@ public final class b
       }
       catch (InterruptedException paramContext) {}
       continue;
-      u.Gl(paramArrayOfString[2]);
+      u.Kp(paramArrayOfString[2]);
       continue;
-      if (bt.getInt(paramArrayOfString[2].trim(), 0) > 0) {
+      if (bs.getInt(paramArrayOfString[2].trim(), 0) > 0) {
         bool1 = true;
       }
-      g.afB().afk().set(ae.a.Flk, Boolean.valueOf(bool1));
+      g.agR().agA().set(ah.a.GIZ, Boolean.valueOf(bool1));
       continue;
-      u.Gk(paramArrayOfString[2]);
+      u.Ko(paramArrayOfString[2]);
       continue;
-      w.Go(paramArrayOfString[2]);
+      w.Ks(paramArrayOfString[2]);
       continue;
-      v.qN(Math.max(0, bt.getInt(paramArrayOfString[2], 0)));
+      v.rA(Math.max(0, bs.getInt(paramArrayOfString[2], 0)));
       continue;
-      com.tencent.mm.bs.d.O(aj.getContext(), "appbrand", ".ui.AppBrandGuideUI");
+      com.tencent.mm.br.d.N(com.tencent.mm.sdk.platformtools.ai.getContext(), "appbrand", ".ui.AppBrandGuideUI");
       continue;
-      g.afB().afk().set(ae.a.Flj, Boolean.FALSE);
+      g.agR().agA().set(ah.a.GIY, Boolean.FALSE);
       continue;
       paramContext = paramArrayOfString[2];
       try
       {
         paramArrayOfString = new WxaAttributes.WxaVersionInfo();
-        paramArrayOfString.aAS = 1000;
-        paramArrayOfString.jfy = "fake";
-        j.aOK().a(paramContext, paramArrayOfString);
+        paramArrayOfString.aBM = 1000;
+        paramArrayOfString.jFN = "fake";
+        j.aVC().a(paramContext, paramArrayOfString);
       }
       catch (Exception paramContext) {}
       continue;
@@ -806,36 +815,34 @@ public final class b
       paramContext.field_appId = "wx4ffb369b6881ee5e";
       paramContext.field_version = 24;
       paramContext.field_versionMd5 = "a47b978d23679075cbbed1030f71b7bb";
-      paramContext.field_versionState = 0;
       paramContext.field_debugType = 0;
       paramContext.field_pkgPath = "/sdcard/_276854502_24.wxapkg";
-      j.aOK().f(paramContext);
+      j.aVC().f(paramContext);
       continue;
       paramContext = new bb();
       paramContext.field_appId = "wx4ffb369b6881ee5e";
       paramContext.field_version = 28;
       paramContext.field_versionMd5 = "5713e70880cc2d356905d6189ba37a72";
-      paramContext.field_versionState = 0;
       paramContext.field_debugType = 0;
       paramContext.field_pkgPath = "/sdcard/_276854502_28.wxapkg";
-      j.aOK().f(paramContext);
+      j.aVC().f(paramContext);
       continue;
       paramContext = new bb();
       paramContext.field_appId = "wx4ffb369b6881ee5e";
       paramContext.field_version = 28;
       paramContext.field_debugType = 0;
-      j.aOK().a(paramContext);
+      j.aVC().a(paramContext);
       continue;
-      paramContext = j.aOK();
+      paramContext = j.aVC();
       paramArrayOfString = paramContext.a("wx4ffb369b6881ee5e", 0, new String[] { "version" });
       if (paramArrayOfString != null)
       {
         paramContext.a(paramArrayOfString);
         continue;
-        new com.tencent.mm.plugin.appbrand.appcache.t(bt.getInt(paramArrayOfString[2], 78), paramArrayOfString[3]).run();
+        new com.tencent.mm.plugin.appbrand.appcache.t(bs.getInt(paramArrayOfString[2], 78), paramArrayOfString[3]).run();
         continue;
-        aw.aQa();
-        Toast.makeText(aj.getContext(), "MockLib已清除，重启微信生效", 1).show();
+        com.tencent.mm.plugin.appbrand.appcache.aw.aWS();
+        Toast.makeText(com.tencent.mm.sdk.platformtools.ai.getContext(), "MockLib已清除，重启微信生效", 1).show();
         continue;
         if (paramArrayOfString.length >= 3)
         {
@@ -846,27 +853,27 @@ public final class b
         {
           bool1 = true;
         }
-        com.tencent.mm.plugin.appbrand.launching.bf.kMw = bool1;
+        com.tencent.mm.plugin.appbrand.launching.bf.lnT = bool1;
         continue;
         if (paramArrayOfString.length >= 3)
         {
-          aw.fn(paramArrayOfString[2].trim().contentEquals("1"));
+          com.tencent.mm.plugin.appbrand.appcache.aw.fJ(paramArrayOfString[2].trim().contentEquals("1"));
           continue;
-          paramContext = com.tencent.mm.plugin.m.a.c.c.tsc;
-          com.tencent.mm.plugin.m.a.c.c.mV(paramArrayOfString[2].equals("1"));
+          paramContext = com.tencent.mm.plugin.m.a.c.c.uAv;
+          com.tencent.mm.plugin.m.a.c.c.nO(paramArrayOfString[2].equals("1"));
           continue;
-          paramContext = com.tencent.mm.plugin.m.a.c.c.tsc;
-          com.tencent.mm.plugin.m.a.c.c.mW(paramArrayOfString[2].equals("1"));
+          paramContext = com.tencent.mm.plugin.m.a.c.c.uAv;
+          com.tencent.mm.plugin.m.a.c.c.nP(paramArrayOfString[2].equals("1"));
           continue;
           if (paramArrayOfString.length >= 3)
           {
-            com.tencent.mm.plugin.appbrand.task.preload.d.gX(paramArrayOfString[2].trim().contentEquals("1"));
+            com.tencent.mm.plugin.appbrand.task.preload.d.hu(paramArrayOfString[2].trim().contentEquals("1"));
           }
           else
           {
-            com.tencent.mm.ui.base.t.cg(aj.getContext(), " 预载已禁用，即将重启微信...");
-            com.tencent.mm.plugin.appbrand.task.preload.d.gX(true);
-            com.tencent.mm.sdk.platformtools.aq.n(new Runnable()
+            com.tencent.mm.ui.base.t.ch(com.tencent.mm.sdk.platformtools.ai.getContext(), " 预载已禁用，即将重启微信...");
+            com.tencent.mm.plugin.appbrand.task.preload.d.hu(true);
+            ap.n(new Runnable()
             {
               public final void run()
               {
@@ -876,49 +883,65 @@ public final class b
               }
             }, 2000L);
             continue;
-            com.tencent.mm.ui.base.t.cg(aj.getContext(), "已开启");
-            paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-            com.tencent.mm.plugin.appbrand.app.d.Km().putBoolean("enable_pre_loading_rainbow", true);
+            com.tencent.mm.ui.base.t.ch(com.tencent.mm.sdk.platformtools.ai.getContext(), "已开启");
+            paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+            com.tencent.mm.plugin.appbrand.app.d.JW().putBoolean("enable_pre_loading_rainbow", true);
             continue;
-            com.tencent.mm.ui.base.t.cg(aj.getContext(), "已关闭");
-            paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-            com.tencent.mm.plugin.appbrand.app.d.Km().putBoolean("enable_pre_loading_rainbow", false);
+            com.tencent.mm.ui.base.t.ch(com.tencent.mm.sdk.platformtools.ai.getContext(), "已关闭");
+            paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+            com.tencent.mm.plugin.appbrand.app.d.JW().putBoolean("enable_pre_loading_rainbow", false);
             continue;
-            paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-            com.tencent.mm.plugin.appbrand.app.d.Km().putBoolean("enable_pre_loading", false);
+            paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+            com.tencent.mm.plugin.appbrand.app.d.JW().putBoolean("enable_pre_loading", false);
             continue;
-            paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-            com.tencent.mm.plugin.appbrand.app.d.Km().putBoolean("enable_pre_loading", true);
+            paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+            com.tencent.mm.plugin.appbrand.app.d.JW().putBoolean("enable_pre_loading", true);
             continue;
             if (paramArrayOfString.length >= 3)
             {
               paramArrayOfString = paramArrayOfString[2];
-              if (i.eK(paramArrayOfString))
+              if (i.eA(paramArrayOfString))
               {
                 paramString = MD5JNI.getMD5Wrap(paramArrayOfString);
                 if (!TextUtils.isEmpty(paramString))
                 {
-                  j.aOK().a("wx5b3f21610c440402", 1, null, paramString, 0L, 0L);
-                  j.aOK().d("wx5b3f21610c440402", 1, 0, paramArrayOfString);
+                  j.aVC().a("wx5b3f21610c440402", 1, null, paramString, 0L, 0L);
+                  j.aVC().e("wx5b3f21610c440402", 1, 0, paramArrayOfString);
                   paramArrayOfString = new com.tencent.mm.plugin.appbrand.a.f();
                   paramArrayOfString.appId = "wx5b3f21610c440402";
-                  paramArrayOfString.gXn = 1;
+                  paramArrayOfString.hxM = 1;
                   paramArrayOfString.scene = 1001;
-                  ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(paramContext, paramArrayOfString);
+                  ((n)g.ab(n.class)).a(paramContext, paramArrayOfString);
                   continue;
                   if (paramArrayOfString.length == 3)
                   {
                     new com.tencent.mm.plugin.appbrand.appcache.b.b.h();
-                    com.tencent.mm.plugin.appbrand.appcache.b.b.h.bX("", paramArrayOfString[2]);
+                    com.tencent.mm.plugin.appbrand.appcache.b.b.h.cg("", paramArrayOfString[2]);
                     continue;
-                    paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-                    com.tencent.mm.plugin.appbrand.app.d.Km().putInt("pre_load_level", Integer.valueOf(paramArrayOfString[2]).intValue());
+                    paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+                    com.tencent.mm.plugin.appbrand.app.d.JW().putInt("pre_load_level", Integer.valueOf(paramArrayOfString[2]).intValue());
                     continue;
-                    paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-                    com.tencent.mm.plugin.appbrand.app.d.Km().putBoolean("is_pre_load_downgrade_env", true);
+                    paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+                    com.tencent.mm.plugin.appbrand.app.d.JW().putBoolean("is_pre_load_downgrade_env", true);
                     continue;
-                    paramContext = com.tencent.mm.plugin.appbrand.app.d.iJD;
-                    com.tencent.mm.plugin.appbrand.app.d.Km().putBoolean("is_pre_load_downgrade_env", false);
+                    paramContext = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+                    com.tencent.mm.plugin.appbrand.app.d.JW().putBoolean("is_pre_load_downgrade_env", false);
+                    continue;
+                    paramContext = new bb();
+                    paramContext.field_appId = new ab("wx32540bd863b27570", "__APP__", 4).toString();
+                    paramContext.field_version = 1170;
+                    paramContext.field_versionMd5 = "cf3f65adde418a69001fe285a37ad2ce";
+                    paramContext.field_NewMd5 = "b1d11357e7ae7ca9139f6a9641da26b0";
+                    paramContext.field_pkgPath = "/sdcard/enc.wxapkg";
+                    j.aVC().b(paramContext);
+                    continue;
+                    paramContext = new bb();
+                    paramContext.field_appId = new ab("wx32540bd863b27570", "__APP__", 4).toString();
+                    paramContext.field_version = 1170;
+                    paramContext.field_versionMd5 = "cf3f65adde418a69001fe285a37ad2ce";
+                    paramContext.field_NewMd5 = "b1d11357e7ae7ca9139f6a9641da26b0";
+                    paramContext.field_pkgPath = "/sdcard/origin.wxapkg";
+                    j.aVC().b(paramContext);
                   }
                 }
               }
@@ -931,7 +954,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.b
  * JD-Core Version:    0.7.0.1
  */

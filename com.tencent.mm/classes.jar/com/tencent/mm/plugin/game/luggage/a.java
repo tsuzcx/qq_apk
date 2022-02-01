@@ -6,14 +6,14 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.xweb.s;
+import com.tencent.xweb.t;
 
 public final class a
 {
   public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean b(InputType paramInputType, Class<T> paramClass, d<ResultType> paramd)
   {
     AppMethodBeat.i(82981);
-    if (cBv()) {}
+    if (cOE()) {}
     for (String str = "com.tencent.mm:toolsmp";; str = "com.tencent.mm:tools")
     {
       boolean bool = h.a(str, paramInputType, paramClass, paramd);
@@ -22,10 +22,10 @@ public final class a
     }
   }
   
-  private static boolean cBv()
+  private static boolean cOE()
   {
     AppMethodBeat.i(82980);
-    if ((s.aOZ("game.weixin.qq.com")) && (!ToolsProcessIPCService.adM()))
+    if ((t.aUS("game.weixin.qq.com")) && (!ToolsProcessIPCService.afc()))
     {
       AppMethodBeat.o(82980);
       return true;

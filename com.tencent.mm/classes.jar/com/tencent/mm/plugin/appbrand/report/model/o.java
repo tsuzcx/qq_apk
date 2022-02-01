@@ -8,7 +8,7 @@ public final class o
   public static void a(a parama, String paramString)
   {
     AppMethodBeat.i(48172);
-    e.vIY.f(14750, new Object[] { Integer.valueOf(parama.value), paramString });
+    e.wTc.f(14750, new Object[] { Integer.valueOf(parama.value), paramString });
     AppMethodBeat.o(48172);
   }
   
@@ -19,11 +19,11 @@ public final class o
     static
     {
       AppMethodBeat.i(48171);
-      lsl = new a("GUIDE_EXPOSE", 0, 1);
-      lsm = new a("GUIDE_CLOSE", 1, 2);
-      lsn = new a("TO_APP_LAUNCHER", 2, 3);
-      lso = new a("GUIDE_CLOSE_BY_BACK", 3, 4);
-      lsp = new a[] { lsl, lsm, lsn, lso };
+      lUf = new a("GUIDE_EXPOSE", 0, 1);
+      lUg = new a("GUIDE_CLOSE", 1, 2);
+      lUh = new a("TO_APP_LAUNCHER", 2, 3);
+      lUi = new a("GUIDE_CLOSE_BY_BACK", 3, 4);
+      lUj = new a[] { lUf, lUg, lUh, lUi };
       AppMethodBeat.o(48171);
     }
     
@@ -35,7 +35,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.o
  * JD-Core Version:    0.7.0.1
  */

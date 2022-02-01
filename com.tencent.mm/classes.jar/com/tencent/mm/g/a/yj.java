@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.plugin.appbrand.appcache.h;
 import com.tencent.mm.sdk.b.b;
 
 public final class yj
   extends b
 {
-  public a dEV;
+  public a dBX;
   
   public yj()
   {
@@ -17,19 +15,16 @@ public final class yj
   
   private yj(byte paramByte)
   {
-    AppMethodBeat.i(90538);
-    this.dEV = new a();
-    this.ESR = false;
+    AppMethodBeat.i(114793);
+    this.dBX = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(90538);
+    AppMethodBeat.o(114793);
   }
   
   public static final class a
   {
-    public long bof;
-    public long cCY;
-    public h dEW;
-    public c.a dEX;
+    public int cZu;
   }
 }
 

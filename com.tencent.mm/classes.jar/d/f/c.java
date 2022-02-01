@@ -6,7 +6,7 @@ import d.l;
 import java.io.Reader;
 import java.io.Writer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"buffered", "Ljava/io/BufferedReader;", "Ljava/io/Reader;", "bufferSize", "", "Ljava/io/BufferedWriter;", "Ljava/io/Writer;", "copyTo", "", "out", "forEachLine", "", "action", "Lkotlin/Function1;", "", "lineSequence", "Lkotlin/sequences/Sequence;", "readBytes", "", "Ljava/net/URL;", "readLines", "", "readText", "charset", "Ljava/nio/charset/Charset;", "reader", "Ljava/io/StringReader;", "useLines", "T", "block", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Reader;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"buffered", "Ljava/io/BufferedReader;", "Ljava/io/Reader;", "bufferSize", "", "Ljava/io/BufferedWriter;", "Ljava/io/Writer;", "copyTo", "", "out", "forEachLine", "", "action", "Lkotlin/Function1;", "", "lineSequence", "Lkotlin/sequences/Sequence;", "readBytes", "", "Ljava/net/URL;", "readLines", "", "readText", "charset", "Ljava/nio/charset/Charset;", "reader", "Ljava/io/StringReader;", "useLines", "T", "block", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Reader;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
 public final class c
 {
   public static final long a(Reader paramReader, Writer paramWriter)
@@ -47,7 +47,7 @@ public final class c
     //   27: ldc 92
     //   29: invokestatic 95	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   32: aload_0
-    //   33: invokestatic 101	d/f/a:V	(Ljava/io/InputStream;)[B
+    //   33: invokestatic 101	d/f/a:U	(Ljava/io/InputStream;)[B
     //   36: astore_0
     //   37: aload_2
     //   38: aconst_null

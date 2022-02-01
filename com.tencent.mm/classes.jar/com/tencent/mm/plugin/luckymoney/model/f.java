@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int fBI;
-  public String tcR;
-  public String tcS;
+  public int fFp;
+  public String ulg;
+  public String ulh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class f
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.fBI);
-      if (this.tcR != null) {
-        paramVarArgs.d(2, this.tcR);
+      paramVarArgs.aR(1, this.fFp);
+      if (this.ulg != null) {
+        paramVarArgs.d(2, this.ulg);
       }
-      if (this.tcS != null) {
-        paramVarArgs.d(3, this.tcS);
+      if (this.ulh != null) {
+        paramVarArgs.d(3, this.ulh);
       }
       AppMethodBeat.o(91251);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.fBI) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.fFp) + 0;
       paramInt = i;
-      if (this.tcR != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.tcR);
+      if (this.ulg != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.ulg);
       }
       i = paramInt;
-      if (this.tcS != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.tcS);
+      if (this.ulh != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ulh);
       }
       AppMethodBeat.o(91251);
       return i;
@@ -42,9 +42,9 @@ public final class f
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(91251);
@@ -60,15 +60,15 @@ public final class f
         AppMethodBeat.o(91251);
         return -1;
       case 1: 
-        localf.fBI = locala.KhF.xS();
+        localf.fFp = locala.LVo.xF();
         AppMethodBeat.o(91251);
         return 0;
       case 2: 
-        localf.tcR = locala.KhF.readString();
+        localf.ulg = locala.LVo.readString();
         AppMethodBeat.o(91251);
         return 0;
       }
-      localf.tcS = locala.KhF.readString();
+      localf.ulh = locala.LVo.readString();
       AppMethodBeat.o(91251);
       return 0;
     }
@@ -78,7 +78,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.f
  * JD-Core Version:    0.7.0.1
  */

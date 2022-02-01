@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.music.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.f;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.ay.f;
+import com.tencent.mm.g.c.ec;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
-  extends dy
+  extends ec
 {
   public static c.a info;
-  public String gSZ;
-  public String hnN;
+  public String hOq;
+  public String hty;
   public String playUrl;
   
   static
   {
     AppMethodBeat.i(63171);
-    info = dy.So();
+    info = ec.Th();
     AppMethodBeat.o(63171);
   }
   
@@ -26,15 +26,15 @@ public final class a
     return (this.field_songBgColor == paramArrayOfInt[0]) && (this.field_songLyricColor == paramArrayOfInt[1]);
   }
   
-  public final boolean cVx()
+  public final boolean djd()
   {
     return (this.field_songBgColor != 0) && (this.field_songLyricColor != 0);
   }
   
-  public final boolean cVy()
+  public final boolean dje()
   {
     AppMethodBeat.i(63168);
-    if (!bt.isNullOrNil(this.field_songHAlbumUrl))
+    if (!bs.isNullOrNil(this.field_songHAlbumUrl))
     {
       AppMethodBeat.o(63168);
       return true;
@@ -43,38 +43,38 @@ public final class a
     return false;
   }
   
-  public final f cVz()
+  public final f djf()
   {
     AppMethodBeat.i(63170);
     f localf = new f();
-    localf.hnp = this.field_originMusicId;
-    localf.hnn = this.field_musicType;
-    localf.hnC = this.field_appId;
-    localf.hnt = this.field_songAlbum;
-    localf.hnD = this.field_songAlbumType;
-    localf.hnu = this.field_songAlbumUrl;
-    localf.hnG = this.field_songHAlbumUrl;
-    localf.hny = this.field_songLyric;
-    localf.hnv = this.field_songWifiUrl;
-    localf.hnr = this.field_songName;
-    localf.hns = this.field_songSinger;
-    localf.hnw = this.field_songWapLinkUrl;
-    localf.hnx = this.field_songWebUrl;
-    localf.hnz = this.field_songAlbumLocalPath;
-    localf.hnF = this.field_songMediaId;
-    localf.hnH = this.field_songSnsAlbumUser;
-    localf.hnJ = this.field_songSnsShareUser;
-    localf.hnL = this.field_hideBanner;
-    localf.hnM = this.field_jsWebUrlDomain;
-    localf.cUL = this.field_startTime;
-    localf.hnN = this.hnN;
+    localf.hNS = this.field_originMusicId;
+    localf.hNQ = this.field_musicType;
+    localf.hOf = this.field_appId;
+    localf.hNW = this.field_songAlbum;
+    localf.hOg = this.field_songAlbumType;
+    localf.hNX = this.field_songAlbumUrl;
+    localf.hOj = this.field_songHAlbumUrl;
+    localf.hOb = this.field_songLyric;
+    localf.hNY = this.field_songWifiUrl;
+    localf.hNU = this.field_songName;
+    localf.hNV = this.field_songSinger;
+    localf.hNZ = this.field_songWapLinkUrl;
+    localf.hOa = this.field_songWebUrl;
+    localf.hOc = this.field_songAlbumLocalPath;
+    localf.hOi = this.field_songMediaId;
+    localf.hOk = this.field_songSnsAlbumUser;
+    localf.hOm = this.field_songSnsShareUser;
+    localf.hOo = this.field_hideBanner;
+    localf.hOp = this.field_jsWebUrlDomain;
+    localf.cSh = this.field_startTime;
+    localf.hOq = this.hOq;
     localf.protocol = this.field_protocol;
-    localf.hnO = this.field_barBackToWebView;
-    localf.hnP = this.field_musicbar_url;
+    localf.hOr = this.field_barBackToWebView;
+    localf.hOs = this.field_musicbar_url;
     localf.playUrl = this.playUrl;
-    localf.dxz = this.field_srcUsername;
-    localf.gSR = this.field_playbackRate;
-    localf.gSZ = this.gSZ;
+    localf.dvl = this.field_srcUsername;
+    localf.htq = this.field_playbackRate;
+    localf.hty = this.hty;
     AppMethodBeat.o(63170);
     return localf;
   }
@@ -99,7 +99,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.a
  * JD-Core Version:    0.7.0.1
  */

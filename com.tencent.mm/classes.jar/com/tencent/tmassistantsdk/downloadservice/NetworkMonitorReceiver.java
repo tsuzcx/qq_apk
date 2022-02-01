@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
@@ -21,14 +21,14 @@ public class NetworkMonitorReceiver
   protected static final String TAG = "NetworkMonitorReceiver";
   protected static NetworkMonitorReceiver mInstance = null;
   protected boolean isRegisterReceiver;
-  protected final ap mNetworkChangedHandler;
+  protected final ao mNetworkChangedHandler;
   ArrayList<INetworkChangedObserver> mObs;
   
   public NetworkMonitorReceiver()
   {
     AppMethodBeat.i(102017);
     this.isRegisterReceiver = false;
-    this.mNetworkChangedHandler = new ap()
+    this.mNetworkChangedHandler = new ao()
     {
       public void handleMessage(Message paramAnonymousMessage)
       {
@@ -115,7 +115,7 @@ public class NetworkMonitorReceiver
     catch (Throwable localThrowable)
     {
       this.isRegisterReceiver = false;
-      ad.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
+      ac.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
       AppMethodBeat.o(102020);
     }
   }
@@ -155,7 +155,7 @@ public class NetworkMonitorReceiver
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
+      ac.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
       AppMethodBeat.o(102021);
     }
   }
@@ -167,7 +167,7 @@ public class NetworkMonitorReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver
  * JD-Core Version:    0.7.0.1
  */

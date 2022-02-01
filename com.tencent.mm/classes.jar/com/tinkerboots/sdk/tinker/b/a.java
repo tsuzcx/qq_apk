@@ -6,8 +6,9 @@ import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tinker.lib.e.d;
-import com.tencent.tinker.lib.f.c;
+import com.tencent.tinker.lib.util.c;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
 
 public final class a
@@ -28,7 +29,7 @@ public final class a
       public final boolean queueIdle()
       {
         AppMethodBeat.i(3442);
-        c.kN(a.this.context).fpd();
+        c.lc(a.this.context).fHl();
         AppMethodBeat.o(3442);
         return false;
       }
@@ -42,10 +43,10 @@ public final class a
     super.a(paramFile, paramInt, paramBoolean);
     if (paramInt == 1)
     {
-      paramFile = com.tencent.tinker.lib.e.a.kI(this.context).IEQ;
-      if ((paramFile.IEV != null) && ("00000000000000000000000000000000".equals(paramFile.IEV)))
+      paramFile = com.tencent.tinker.lib.e.a.kX(this.context).KqZ;
+      if ((paramFile.Kre != null) && ("00000000000000000000000000000000".equals(paramFile.Kre)))
       {
-        com.tencent.tinker.lib.f.a.e("Tinker.ServerLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
+        ShareTinkerLog.v("Tinker.ServerLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
         ShareTinkerInternals.killAllOtherProcess(this.context);
       }
     }
@@ -68,7 +69,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.b.a
  * JD-Core Version:    0.7.0.1
  */

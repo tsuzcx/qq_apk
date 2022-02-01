@@ -15,19 +15,21 @@ import android.view.ViewParent;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Method;
 import java.util.Locale;
 import org.a.a;
 
 public enum aj
 {
-  static final Class mei;
+  static final Class mGh;
   
   static
   {
     AppMethodBeat.i(136598);
-    mej = new aj[0];
+    mGi = new aj[0];
     Object localObject = null;
     try
     {
@@ -38,10 +40,10 @@ public enum aj
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
+        ac.e("MicroMsg.AppBrand.InputUtil", "class for ComposingText e = %s", new Object[] { localClassNotFoundException });
       }
     }
-    mei = localObject;
+    mGh = localObject;
     AppMethodBeat.o(136598);
   }
   
@@ -71,7 +73,7 @@ public enum aj
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
-      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), mei);
+      paramCharSequence = paramCharSequence.getSpans(0, paramCharSequence.length(), mGh);
       if ((paramCharSequence != null) && (paramCharSequence.length > 0))
       {
         AppMethodBeat.o(136591);
@@ -84,15 +86,15 @@ public enum aj
     return false;
   }
   
-  static boolean cM(Object paramObject)
+  static boolean cL(Object paramObject)
   {
     AppMethodBeat.i(136592);
-    boolean bool = mei.isInstance(paramObject);
+    boolean bool = mGh.isInstance(paramObject);
     AppMethodBeat.o(136592);
     return bool;
   }
   
-  public static InputMethodManager dl(View paramView)
+  public static InputMethodManager dn(View paramView)
   {
     AppMethodBeat.i(136593);
     if (paramView != null)
@@ -103,40 +105,40 @@ public enum aj
     }
     else
     {
-      paramView = com.tencent.mm.sdk.platformtools.aj.getContext();
+      paramView = ai.getContext();
     }
     paramView = (InputMethodManager)paramView.getSystemService("input_method");
     AppMethodBeat.o(136593);
     return paramView;
   }
   
-  public static void dm(View paramView)
+  public static void jdMethod_do(View paramView)
   {
     AppMethodBeat.i(136594);
     if (Build.VERSION.SDK_INT >= 30)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo skip >=30");
+      ac.w("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo skip >=30");
       AppMethodBeat.o(136594);
       return;
     }
-    Object localObject = dl(paramView);
+    Object localObject = dn(paramView);
     if (localObject == null) {
       paramView = "NULL Imm";
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo: %s", new Object[] { paramView });
+      ac.i("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo: %s", new Object[] { paramView });
       AppMethodBeat.o(136594);
       return;
       try
       {
-        paramView = (View)a.fU(localObject).get("mServedView");
-        localObject = (View)a.fU(localObject).get("mNextServedView");
+        paramView = (View)a.gc(localObject).get("mServedView");
+        localObject = (View)a.gc(localObject).get("mNextServedView");
         paramView = String.format(Locale.US, "mServedView=%s, mNextServedView=%s", new Object[] { paramView, localObject });
       }
       catch (Exception paramView)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo reflect failed %s", new Object[] { paramView });
+        ac.e("MicroMsg.AppBrand.InputUtil", "dumpImmDebugInfo reflect failed %s", new Object[] { paramView });
         AppMethodBeat.o(136594);
       }
     }
@@ -292,7 +294,7 @@ public enum aj
         AppMethodBeat.o(136585);
         return;
       }
-      aj.dl(paramEditText).hideSoftInputFromInputMethod(paramEditText.getWindowToken(), 0);
+      aj.dn(paramEditText).hideSoftInputFromInputMethod(paramEditText.getWindowToken(), 0);
       AppMethodBeat.o(136585);
     }
     
@@ -321,7 +323,7 @@ public enum aj
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+        ac.i("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
         try
         {
           Method localMethod2 = EditText.class.getMethod("setSoftInputShownOnFocus", new Class[] { Boolean.TYPE });
@@ -333,7 +335,7 @@ public enum aj
         }
         catch (Exception localException)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bt.m(localException) });
+          ac.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bs.m(localException) });
           if ((paramEditText.getContext() != null) && ((paramEditText.getContext() instanceof ad))) {
             ((ad)paramEditText.getContext()).hideVKB(paramEditText);
           }
@@ -343,7 +345,7 @@ public enum aj
       }
       catch (Exception paramEditText)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bt.m(paramEditText) });
+        ac.e("MicroMsg.AppBrand.InputUtil.EditTextUtil", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bs.m(paramEditText) });
         AppMethodBeat.o(136586);
       }
     }
@@ -351,7 +353,7 @@ public enum aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.aj
  * JD-Core Version:    0.7.0.1
  */

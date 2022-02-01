@@ -20,15 +20,15 @@ public final class a$6
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(181975);
-    paramView = RecordConfigProvider.dhF();
+    paramView = RecordConfigProvider.dvn();
     Object localObject = new UICustomParam.a();
-    ((UICustomParam.a)localObject).Ya();
-    ((UICustomParam.a)localObject).XZ();
-    ((UICustomParam.a)localObject).cO(true);
-    paramView.vhI = ((UICustomParam.a)localObject).fHa;
-    if (this.ora.oqY)
+    ((UICustomParam.a)localObject).YX();
+    ((UICustomParam.a)localObject).YW();
+    ((UICustomParam.a)localObject).cN(true);
+    paramView.wqu = ((UICustomParam.a)localObject).fKH;
+    if (this.oUA.oUy)
     {
-      localObject = com.tencent.mm.plugin.recordvideo.jumper.a.vih;
+      localObject = com.tencent.mm.plugin.recordvideo.jumper.a.wqR;
       com.tencent.mm.plugin.recordvideo.jumper.a.a(this.val$context, 4097, paramView);
       AppMethodBeat.o(181975);
       return;
@@ -40,17 +40,17 @@ public final class a$6
       paramView = new SightParams(4, 0);
     }
     localObject = "micromsg_" + System.currentTimeMillis();
-    String str1 = b.ais() + (String)localObject + ".mp4";
-    String str2 = b.ais() + (String)localObject + ".jpeg";
+    String str1 = b.aps() + (String)localObject + ".mp4";
+    String str2 = b.aps() + (String)localObject + ".jpeg";
     int i = localIntent.getIntExtra("key_pick_local_media_duration", 60);
     SightParams localSightParams = new SightParams(4, 1);
-    localSightParams.tAY = 2;
+    localSightParams.uJv = 2;
     localSightParams.mode = 0;
-    if (localSightParams.gCB == null) {
-      localSightParams.gCB = new VideoTransPara();
+    if (localSightParams.hcZ == null) {
+      localSightParams.hcZ = new VideoTransPara();
     }
-    localSightParams.gCB.duration = i;
-    localSightParams.p((String)localObject, str1, str2, b.ais() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+    localSightParams.hcZ.duration = i;
+    localSightParams.r((String)localObject, str1, str2, b.aps() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
     localIntent.putExtra("KEY_SIGHT_PARAMS", paramView);
     q.a(this.val$context, 4098, localIntent, 4, 1);
     AppMethodBeat.o(181975);

@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 public final class n
 {
-  public final ArrayList<String> Fcn;
-  public final ArrayList<long[]> fhH;
+  public final ArrayList<String> GzF;
+  public final ArrayList<long[]> flc;
   long mStartTimestamp;
   
   public n()
   {
     AppMethodBeat.i(40690);
-    this.fhH = new ArrayList();
-    this.Fcn = new ArrayList();
+    this.flc = new ArrayList();
+    this.GzF = new ArrayList();
     this.mStartTimestamp = 0L;
     AppMethodBeat.o(40690);
   }
@@ -21,7 +21,7 @@ public final class n
   public final void idkey(long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(40691);
-    this.fhH.add(new long[] { paramLong1, paramLong2, paramLong3 });
+    this.flc.add(new long[] { paramLong1, paramLong2, paramLong3 });
     AppMethodBeat.o(40691);
   }
 }

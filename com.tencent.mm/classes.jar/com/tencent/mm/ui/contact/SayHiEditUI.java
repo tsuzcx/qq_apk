@@ -14,17 +14,17 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.normsg.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.widget.MMEditText;
 
@@ -32,8 +32,8 @@ public class SayHiEditUI
   extends MMActivity
   implements g
 {
-  private MMEditText GYd;
-  private ProgressDialog fpP = null;
+  private MMEditText Iyt;
+  private ProgressDialog fts = null;
   
   public int getLayoutId()
   {
@@ -43,10 +43,10 @@ public class SayHiEditUI
   public void initView()
   {
     AppMethodBeat.i(37967);
-    this.GYd = ((MMEditText)findViewById(2131304291));
-    this.GYd.requestFocus();
-    this.GYd.addTextChangedListener(new a((byte)0));
-    this.GYd.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.Iyt = ((MMEditText)findViewById(2131304291));
+    this.Iyt.requestFocus();
+    this.Iyt.addTextChangedListener(new a((byte)0));
+    this.Iyt.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -61,7 +61,7 @@ public class SayHiEditUI
         return false;
       }
     });
-    c.d(this.GYd).aaj(100).a(null);
+    c.d(this.Iyt).acw(100).a(null);
     addTextOptionMenu(0, getString(2131755884), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -72,7 +72,7 @@ public class SayHiEditUI
         AppMethodBeat.o(37963);
         return false;
       }
-    }, null, r.b.FOB);
+    }, null, s.b.Hom);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -90,7 +90,7 @@ public class SayHiEditUI
   {
     AppMethodBeat.i(37965);
     super.onCreate(paramBundle);
-    az.aeS().a(30, this);
+    az.agi().a(30, this);
     setMMTitle(2131761513);
     initView();
     AppMethodBeat.o(37965);
@@ -99,7 +99,7 @@ public class SayHiEditUI
   public void onDestroy()
   {
     AppMethodBeat.i(37966);
-    az.aeS().b(30, this);
+    az.agi().b(30, this);
     super.onDestroy();
     AppMethodBeat.o(37966);
   }
@@ -108,15 +108,15 @@ public class SayHiEditUI
   {
     int i = 1;
     AppMethodBeat.i(37968);
-    ad.i("MicroMsg.SayHiEditUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.SayHiEditUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     for (;;)
     {
       try
       {
-        if (this.fpP != null)
+        if (this.fts != null)
         {
-          this.fpP.dismiss();
-          this.fpP = null;
+          this.fts.dismiss();
+          this.fts = null;
         }
         switch (paramInt2)
         {
@@ -131,7 +131,7 @@ public class SayHiEditUI
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.SayHiEditUI", "exception in onSceneEnd : " + paramString.getMessage());
+        ac.e("MicroMsg.SayHiEditUI", "exception in onSceneEnd : " + paramString.getMessage());
         AppMethodBeat.o(37968);
         return;
       }
@@ -142,18 +142,18 @@ public class SayHiEditUI
     label178:
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      h.cf(this, getString(2131757561));
+      h.cg(this, getString(2131757561));
       finish();
       AppMethodBeat.o(37968);
       return;
     }
-    if ((paramInt1 == 4) && (paramInt2 == -24) && (!bt.isNullOrNil(paramString)))
+    if ((paramInt1 == 4) && (paramInt2 == -24) && (!bs.isNullOrNil(paramString)))
     {
       Toast.makeText(this, paramString, 1).show();
       AppMethodBeat.o(37968);
       return;
     }
-    if ((paramInt2 == -101) && (!bt.isNullOrNil(paramString)))
+    if ((paramInt2 == -101) && (!bs.isNullOrNil(paramString)))
     {
       h.a(this, paramString, getString(2131755906), getString(2131755835), null);
       AppMethodBeat.o(37968);
@@ -172,7 +172,7 @@ public class SayHiEditUI
   static final class a
     implements TextWatcher
   {
-    private boolean gfk = false;
+    private boolean gjQ = false;
     
     public final void afterTextChanged(Editable paramEditable) {}
     
@@ -181,20 +181,20 @@ public class SayHiEditUI
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(37964);
-      if (this.gfk)
+      if (this.gjQ)
       {
         AppMethodBeat.o(37964);
         return;
       }
-      this.gfk = true;
-      b.ufs.am(3, 2, 10);
+      this.gjQ = true;
+      b.vor.ao(3, 2, 10);
       AppMethodBeat.o(37964);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.SayHiEditUI
  * JD-Core Version:    0.7.0.1
  */

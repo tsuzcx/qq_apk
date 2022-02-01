@@ -1,12 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class yf
   extends b
 {
-  public a dEv;
+  public a dBI;
+  public b dBJ;
   
   public yf()
   {
@@ -15,36 +19,30 @@ public final class yf
   
   private yf(byte paramByte)
   {
-    AppMethodBeat.i(116060);
-    this.dEv = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19848);
+    this.dBI = new a();
+    this.dBJ = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116060);
+    AppMethodBeat.o(19848);
   }
   
   public static final class a
   {
-    public int dEA;
-    public String dEB;
-    public String dEC;
-    public int dED;
-    public int dEE;
-    public int dEF;
-    public String dEG;
-    public String dEH;
-    public String dEI;
-    public int dEJ;
-    public String dEK;
-    public String dEw;
-    public String dEx;
-    public String dEy;
-    public String dEz;
-    public String url;
+    public String callingPackage;
+    public Context context;
+    public int dfg = 0;
+    public Uri uri;
+  }
+  
+  public static final class b
+  {
+    public Cursor dfh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.yf
  * JD-Core Version:    0.7.0.1
  */

@@ -3,20 +3,20 @@ package d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/text/ScreenFloatValueRegEx;", "", "()V", "value", "Lkotlin/text/Regex;", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/text/ScreenFloatValueRegEx;", "", "()V", "value", "Lkotlin/text/Regex;", "kotlin-stdlib"})
 final class m
 {
-  public static final k KcT;
-  public static final m KcU;
+  public static final k LQo;
+  public static final m LQp;
   
   static
   {
     AppMethodBeat.i(129375);
-    KcU = new m();
+    LQp = new m();
     String str1 = "[eE][+-]?".concat(String.valueOf("(\\p{Digit}+)"));
     String str2 = "(0[xX]" + "(\\p{XDigit}+)" + "(\\.)?)|(0[xX]" + "(\\p{XDigit}+)" + "?(\\.)" + "(\\p{XDigit}+)" + ')';
     str1 = "(" + "(\\p{Digit}+)" + "(\\.)?(" + "(\\p{Digit}+)" + "?)(" + str1 + ")?)|(\\.(" + "(\\p{Digit}+)" + ")(" + str1 + ")?)|((" + str2 + ")[pP][+-]?" + "(\\p{Digit}+)" + ')';
-    KcT = new k("[\\x00-\\x20]*[+-]?(NaN|Infinity|((" + str1 + ")[fFdD]?))[\\x00-\\x20]*");
+    LQo = new k("[\\x00-\\x20]*[+-]?(NaN|Infinity|((" + str1 + ")[fFdD]?))[\\x00-\\x20]*");
     AppMethodBeat.o(129375);
   }
 }

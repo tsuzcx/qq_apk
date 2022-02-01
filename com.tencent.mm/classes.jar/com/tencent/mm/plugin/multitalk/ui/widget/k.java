@@ -6,25 +6,25 @@ import android.support.v7.widget.RecyclerView.a;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarAdapterInContactUI;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "contactList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "headerCount", "", "smallAvatarClickListener", "Landroid/view/View$OnClickListener;", "checkIsExists", "", "userName", "decreaseContact", "", "userNameList", "onClickListener", "index", "getItemCount", "getItemViewType", "position", "getMarginStart", "getMarginStartFrom", "increaseContact", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateContactList", "Companion", "plugin-multitalk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarAdapterInContactUI;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "contactList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "headerCount", "", "smallAvatarClickListener", "Landroid/view/View$OnClickListener;", "checkIsExists", "", "userName", "decreaseContact", "", "userNameList", "onClickListener", "index", "getItemCount", "getItemViewType", "position", "getMarginStart", "getMarginStartFrom", "increaseContact", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateContactList", "Companion", "plugin-multitalk_release"})
 public final class k
   extends RecyclerView.a<l>
 {
-  public static final a tTC;
+  public static final k.a vck;
   private Context context;
-  public final ArrayList<String> qHA;
-  public final int qYg;
-  public View.OnClickListener tTB;
+  public final int rZI;
+  public final ArrayList<String> rpr;
+  public View.OnClickListener vcj;
   
   static
   {
     AppMethodBeat.i(178984);
-    tTC = new a((byte)0);
+    vck = new k.a((byte)0);
     AppMethodBeat.o(178984);
   }
   
@@ -32,24 +32,24 @@ public final class k
   {
     AppMethodBeat.i(178983);
     this.context = paramContext;
-    this.qHA = new ArrayList();
-    this.qYg = 1;
+    this.rpr = new ArrayList();
+    this.rZI = 1;
     AppMethodBeat.o(178983);
   }
   
-  private final int cTi()
+  private final int dgS()
   {
     AppMethodBeat.i(178979);
-    int i = (ai.cf(this.context).x - (f.tRY * this.qHA.size() + f.tRR * (this.qHA.size() - 1))) / 2;
-    int j = f.tRY;
+    int i = (aj.cl(this.context).x - (f.vaF * this.rpr.size() + f.vay * (this.rpr.size() - 1))) / 2;
+    int j = f.vaF;
     AppMethodBeat.o(178979);
     return i - j;
   }
   
-  public final boolean ahN(String paramString)
+  public final boolean amI(String paramString)
   {
     AppMethodBeat.i(178978);
-    Iterator localIterator = ((Iterable)this.qHA).iterator();
+    Iterator localIterator = ((Iterable)this.rpr).iterator();
     Object localObject;
     do
     {
@@ -72,20 +72,20 @@ public final class k
     AppMethodBeat.i(178977);
     d.g.b.k.h(paramArrayList, "userNameList");
     d.g.b.k.h(paramOnClickListener, "onClickListener");
-    this.qHA.clear();
-    this.qHA.add(u.aqG());
+    this.rpr.clear();
+    this.rpr.add(u.axw());
     int i = 0;
     int j = ((Collection)paramArrayList).size();
     while (i < j)
     {
       Object localObject = paramArrayList.get(i);
       d.g.b.k.g(localObject, "userNameList[i]");
-      if ((!ahN((String)localObject)) && ((d.g.b.k.g((String)paramArrayList.get(i), u.aqG()) ^ true))) {
-        this.qHA.add(paramArrayList.get(i));
+      if ((!amI((String)localObject)) && ((d.g.b.k.g((String)paramArrayList.get(i), u.axw()) ^ true))) {
+        this.rpr.add(paramArrayList.get(i));
       }
       i += 1;
     }
-    this.tTB = paramOnClickListener;
+    this.vcj = paramOnClickListener;
     notifyDataSetChanged();
     AppMethodBeat.o(178977);
   }
@@ -93,8 +93,8 @@ public final class k
   public final int getItemCount()
   {
     AppMethodBeat.i(178982);
-    int i = this.qHA.size();
-    int j = this.qYg;
+    int i = this.rpr.size();
+    int j = this.rZI;
     AppMethodBeat.o(178982);
     return i + j;
   }
@@ -108,13 +108,10 @@ public final class k
     }
     return 2;
   }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarAdapterInContactUI$Companion;", "", "()V", "VIEW_TYPE_FOOTER", "", "VIEW_TYPE_HEADER", "VIEW_TYPE_ITEM", "plugin-multitalk_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public static int ep(String paramString)
+  public static int ee(String paramString)
   {
     AppMethodBeat.i(945);
     if (paramString != null) {}
@@ -28,7 +28,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.d.j
  * JD-Core Version:    0.7.0.1
  */

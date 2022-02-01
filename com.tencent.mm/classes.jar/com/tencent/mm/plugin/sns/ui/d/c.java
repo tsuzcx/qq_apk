@@ -4,23 +4,23 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class c
   implements View.OnCreateContextMenuListener
 {
   public abstract void a(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo);
   
-  public abstract boolean eM(View paramView);
+  public abstract boolean eZ(View paramView);
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    if (eM(paramView))
+    if (eZ(paramView))
     {
       a(paramContextMenu, paramView, paramContextMenuInfo);
       return;
     }
-    ad.e("MicroMsg.TimelineOnCreateContextMenuListener", "onMMCreateContextMenu error");
+    ac.e("MicroMsg.TimelineOnCreateContextMenuListener", "onMMCreateContextMenu error");
   }
 }
 

@@ -7,26 +7,26 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.config.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/GetSycConfigTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class l
   implements com.tencent.mm.ipcinvoker.k<IPCString, AppBrandSysConfigWC>
 {
   private static AppBrandSysConfigWC b(IPCString paramIPCString)
   {
     AppMethodBeat.i(50878);
-    ad.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
+    ac.i("MicroMsg.AppBrand.FunctionalConfigAssembler", "invoke GetSycConfigTask with ".concat(String.valueOf(paramIPCString)));
     if (paramIPCString == null) {}
     try
     {
-      d.g.b.k.fvU();
-      if (g.afz().aeI())
+      d.g.b.k.fOy();
+      if (g.agP().afY())
       {
-        paramIPCString = u.Ge(paramIPCString.value);
+        paramIPCString = u.Ki(paramIPCString.value);
         if (paramIPCString != null)
         {
-          paramIPCString.cfR = AppBrandGlobalSystemConfig.aTv();
+          paramIPCString.ccO = AppBrandGlobalSystemConfig.bat();
           AppMethodBeat.o(50878);
           return paramIPCString;
         }
@@ -43,7 +43,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import java.util.NoSuchElementException;
 final class c
   extends p
 {
-  final int JMp;
-  private final int JMq;
+  final int LzI;
+  private final int LzJ;
   
   c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
@@ -31,12 +31,12 @@ final class c
       AppMethodBeat.o(59365);
       throw paramArrayOfByte;
     }
-    this.JMp = paramInt1;
-    this.JMq = paramInt2;
+    this.LzI = paramInt1;
+    this.LzJ = paramInt2;
     AppMethodBeat.o(59365);
   }
   
-  public final byte afz(int paramInt)
+  public final byte aiv(int paramInt)
   {
     AppMethodBeat.i(59366);
     ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException;
@@ -46,24 +46,24 @@ final class c
       AppMethodBeat.o(59366);
       throw localArrayIndexOutOfBoundsException;
     }
-    if (paramInt >= this.JMq)
+    if (paramInt >= this.LzJ)
     {
-      int i = this.JMq;
+      int i = this.LzJ;
       localArrayIndexOutOfBoundsException = new ArrayIndexOutOfBoundsException(41 + "Index too large: " + paramInt + ", " + i);
       AppMethodBeat.o(59366);
       throw localArrayIndexOutOfBoundsException;
     }
-    byte b = this.wA[(this.JMp + paramInt)];
+    byte b = this.xy[(this.LzI + paramInt)];
     AppMethodBeat.o(59366);
     return b;
   }
   
-  protected final int fHl()
+  protected final int fZO()
   {
-    return this.JMp;
+    return this.LzI;
   }
   
-  public final d.a fHm()
+  public final d.a fZP()
   {
     AppMethodBeat.i(59368);
     a locala = new a((byte)0);
@@ -71,16 +71,16 @@ final class c
     return locala;
   }
   
-  protected final void i(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  protected final void j(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59367);
-    System.arraycopy(this.wA, this.JMp + paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    System.arraycopy(this.xy, this.LzI + paramInt1, paramArrayOfByte, paramInt2, paramInt3);
     AppMethodBeat.o(59367);
   }
   
   public final int size()
   {
-    return this.JMq;
+    return this.LzJ;
   }
   
   final class a
@@ -92,7 +92,7 @@ final class c
     private a()
     {
       AppMethodBeat.i(59361);
-      this.position = c.this.JMp;
+      this.position = c.this.LzI;
       this.limit = (this.position + c.this.size());
       AppMethodBeat.o(59361);
     }
@@ -111,7 +111,7 @@ final class c
         AppMethodBeat.o(59362);
         throw ((Throwable)localObject);
       }
-      Object localObject = c.this.wA;
+      Object localObject = c.this.xy;
       int i = this.position;
       this.position = (i + 1);
       byte b = localObject[i];
@@ -130,7 +130,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.l.b.a.b.h.c
  * JD-Core Version:    0.7.0.1
  */

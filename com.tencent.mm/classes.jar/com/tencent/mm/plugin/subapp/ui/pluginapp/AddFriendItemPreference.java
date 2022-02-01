@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AddFriendItemPreference
@@ -18,9 +18,9 @@ public class AddFriendItemPreference
   private Context context;
   private Drawable drawable;
   private int height;
-  private String uCA;
-  private int wey;
-  int wez;
+  private String vLt;
+  private int xpM;
+  int xpN;
   
   public AddFriendItemPreference(Context paramContext)
   {
@@ -36,9 +36,9 @@ public class AddFriendItemPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29182);
-    this.uCA = "";
-    this.wey = -1;
-    this.wez = 8;
+    this.vLt = "";
+    this.xpM = -1;
+    this.xpN = 8;
     this.height = -1;
     this.context = paramContext;
     setLayoutResource(2131494804);
@@ -68,23 +68,23 @@ public class AddFriendItemPreference
       paramView = (TextView)paramView.findViewById(2131305745);
       if (paramView != null)
       {
-        paramView.setVisibility(this.wez);
-        paramView.setText(this.uCA);
-        if (this.wey != -1) {
-          paramView.setBackgroundDrawable(a.l(this.context, this.wey));
+        paramView.setVisibility(this.xpN);
+        paramView.setText(this.vLt);
+        if (this.xpM != -1) {
+          paramView.setBackgroundDrawable(a.l(this.context, this.xpM));
         }
       }
       AppMethodBeat.o(29184);
       return;
       label137:
-      if (this.Uy != null)
+      if (this.Vu != null)
       {
-        ((ImageView)localObject).setImageDrawable(this.Uy);
+        ((ImageView)localObject).setImageDrawable(this.Vu);
         ((ImageView)localObject).setVisibility(0);
       }
-      else if (this.abP != 0)
+      else if (this.acJ != 0)
       {
-        ((ImageView)localObject).setImageResource(this.abP);
+        ((ImageView)localObject).setImageResource(this.acJ);
         ((ImageView)localObject).setVisibility(0);
       }
     }
@@ -104,7 +104,7 @@ public class AddFriendItemPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
 {
@@ -22,16 +22,16 @@ public final class a
     AppMethodBeat.i(95200);
     View localView = LayoutInflater.from(paramContext).inflate(2131494625, null);
     Object localObject;
-    if (ac.eFr()) {
+    if (ab.eUL()) {
       localObject = "font_1.otf";
     }
     for (;;)
     {
       TextView localTextView = (TextView)localView.findViewById(2131301956);
-      if (!bt.isNullOrNil((String)localObject)) {
+      if (!bs.isNullOrNil((String)localObject)) {
         localTextView.setTypeface(Typeface.createFromAsset(paramContext.getAssets(), (String)localObject));
       }
-      if (!ac.eFq()) {
+      if (!ab.eUK()) {
         localTextView.setTextSize(1, 10.0F);
       }
       localObject = new com.tencent.mm.plugin.crashfix.b.a(paramContext, 2131821723);
@@ -42,9 +42,9 @@ public final class a
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(95197);
-          ad.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onCancel");
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          ac.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onCancel");
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           AppMethodBeat.o(95197);
         }
@@ -54,9 +54,9 @@ public final class a
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(95198);
-          ad.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onClick");
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          ac.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onClick");
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           paramAnonymousView = paramView;
           if (paramAnonymousView != null) {
@@ -67,15 +67,15 @@ public final class a
       });
       paramView = localView.findViewById(2131305893);
       int i = BackwardSupportUtil.b.g(paramContext, 10.0F);
-      bt.n(paramView, i, i, i, i);
+      bs.n(paramView, i, i, i, i);
       paramView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(95199);
-          ad.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog OnClick: close");
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          ac.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog OnClick: close");
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           AppMethodBeat.o(95199);
         }
@@ -83,7 +83,7 @@ public final class a
       ((Dialog)localObject).show();
       AppMethodBeat.o(95200);
       return localObject;
-      if (ac.eFs()) {
+      if (ab.eUM()) {
         localObject = "font_2.otf";
       } else {
         localObject = null;

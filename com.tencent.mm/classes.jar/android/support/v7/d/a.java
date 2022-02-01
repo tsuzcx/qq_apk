@@ -13,19 +13,19 @@ import java.util.PriorityQueue;
 
 final class a
 {
-  private static final Comparator<a> Yg = new Comparator() {};
-  final int[] Yb;
-  final List<b.d> Yc;
-  final TimingLogger Yd = null;
-  final b.b[] Ye;
-  private final float[] Yf = new float[3];
+  private static final Comparator<a> Zb = new Comparator() {};
+  final int[] YW;
+  final List<b.d> YX;
+  final TimingLogger YY = null;
+  final b.b[] YZ;
+  private final float[] Za = new float[3];
   final int[] mColors;
   
   a(int[] paramArrayOfInt, int paramInt, b.b[] paramArrayOfb)
   {
-    this.Ye = paramArrayOfb;
+    this.YZ = paramArrayOfb;
     paramArrayOfb = new int[32768];
-    this.Yb = paramArrayOfb;
+    this.YW = paramArrayOfb;
     int i = 0;
     int n;
     while (i < paramArrayOfInt.length)
@@ -43,8 +43,8 @@ final class a
     {
       if (paramArrayOfb[i] > 0)
       {
-        b.d(bo(i), this.Yf);
-        if (d(this.Yf)) {
+        b.d(bo(i), this.Za);
+        if (d(this.Za)) {
           paramArrayOfb[i] = 0;
         }
       }
@@ -74,20 +74,20 @@ final class a
       break;
       if (j <= paramInt)
       {
-        this.Yc = new ArrayList();
+        this.YX = new ArrayList();
         i = paramArrayOfInt.length;
         paramInt = m;
         while (paramInt < i)
         {
           j = paramArrayOfInt[paramInt];
-          this.Yc.add(new b.d(bo(j), paramArrayOfb[j]));
+          this.YX.add(new b.d(bo(j), paramArrayOfb[j]));
           paramInt += 1;
         }
       }
-      paramArrayOfInt = new PriorityQueue(paramInt, Yg);
+      paramArrayOfInt = new PriorityQueue(paramInt, Zb);
       paramArrayOfInt.offer(new a(0, this.mColors.length - 1));
       a(paramArrayOfInt, paramInt);
-      this.Yc = a(paramArrayOfInt);
+      this.YX = a(paramArrayOfInt);
       return;
     }
   }
@@ -98,8 +98,8 @@ final class a
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
-      b.d locald = ((a)paramCollection.next()).gA();
-      if (!d(locald.gF())) {
+      b.d locald = ((a)paramCollection.next()).gI();
+      if (!d(locald.gN())) {
         localArrayList.add(locald);
       }
     }
@@ -111,16 +111,16 @@ final class a
     while (paramPriorityQueue.size() < paramInt)
     {
       a locala1 = (a)paramPriorityQueue.poll();
-      if ((locala1 == null) || (!locala1.gw())) {
+      if ((locala1 == null) || (!locala1.gE())) {
         break;
       }
-      if (!locala1.gw()) {
+      if (!locala1.gE()) {
         throw new IllegalStateException("Can not split a box with only 1 color");
       }
-      int i = locala1.gz();
-      a locala2 = new a(locala1.Yq, i + 1, locala1.Yi);
-      locala1.Yi = i;
-      locala1.gy();
+      int i = locala1.gH();
+      a locala2 = new a(locala1.Zl, i + 1, locala1.Zd);
+      locala1.Zd = i;
+      locala1.gG();
       paramPriorityQueue.offer(locala2);
       paramPriorityQueue.offer(locala1);
     }
@@ -176,12 +176,12 @@ final class a
     boolean bool1 = bool2;
     int j;
     int i;
-    if (this.Ye != null)
+    if (this.YZ != null)
     {
       bool1 = bool2;
-      if (this.Ye.length > 0)
+      if (this.YZ.length > 0)
       {
-        j = this.Ye.length;
+        j = this.YZ.length;
         i = 0;
       }
     }
@@ -190,7 +190,7 @@ final class a
       bool1 = bool2;
       if (i < j)
       {
-        if (!this.Ye[i].e(paramArrayOfFloat)) {
+        if (!this.YZ[i].e(paramArrayOfFloat)) {
           bool1 = true;
         }
       }
@@ -220,67 +220,39 @@ final class a
   
   final class a
   {
-    private int Yh;
-    int Yi;
-    private int Yj;
-    private int Yk;
-    private int Yl;
-    private int Ym;
-    private int Yn;
-    private int Yo;
-    private int Yp;
+    private int Zc;
+    int Zd;
+    private int Ze;
+    private int Zf;
+    private int Zg;
+    private int Zh;
+    private int Zi;
+    private int Zj;
+    private int Zk;
     
     a(int paramInt1, int paramInt2)
     {
-      this.Yh = paramInt1;
-      this.Yi = paramInt2;
-      gy();
+      this.Zc = paramInt1;
+      this.Zd = paramInt2;
+      gG();
     }
     
-    private int gx()
+    private int gF()
     {
-      return this.Yi + 1 - this.Yh;
+      return this.Zd + 1 - this.Zc;
     }
     
-    final b.d gA()
+    final boolean gE()
     {
-      int[] arrayOfInt1 = a.this.mColors;
-      int[] arrayOfInt2 = a.this.Yb;
-      int j = this.Yh;
-      int n = 0;
-      int i = 0;
-      int k = 0;
-      int m = 0;
-      while (j <= this.Yi)
-      {
-        int i2 = arrayOfInt1[j];
-        int i1 = arrayOfInt2[i2];
-        n += i1;
-        m += a.bp(i2) * i1;
-        k += a.bq(i2) * i1;
-        i2 = a.br(i2);
-        j += 1;
-        i = i2 * i1 + i;
-      }
-      return new b.d(a.j(Math.round(m / n), Math.round(k / n), Math.round(i / n)), n);
+      return gF() > 1;
     }
     
-    final int getVolume()
-    {
-      return (this.Yl - this.Yk + 1) * (this.Yn - this.Ym + 1) * (this.Yp - this.Yo + 1);
-    }
-    
-    final boolean gw()
-    {
-      return gx() > 1;
-    }
-    
-    final void gy()
+    final void gG()
     {
       int[] arrayOfInt1 = a.this.mColors;
-      int[] arrayOfInt2 = a.this.Yb;
+      int[] arrayOfInt2 = a.this.YW;
       int i4 = 0;
-      int n = this.Yh;
+      int n = this.Zc;
       int i5 = -2147483648;
       int j = -2147483648;
       int m = -2147483648;
@@ -291,7 +263,7 @@ final class a
       int i8;
       int i6;
       int i2;
-      if (n <= this.Yi)
+      if (n <= this.Zd)
       {
         i1 = arrayOfInt1[n];
         i8 = i4 + arrayOfInt2[i1];
@@ -334,46 +306,46 @@ final class a
           i3 = i2;
           k = i6;
           break;
-          this.Yk = i3;
-          this.Yl = i5;
-          this.Ym = i;
-          this.Yn = j;
-          this.Yo = k;
-          this.Yp = m;
-          this.Yj = i4;
+          this.Zf = i3;
+          this.Zg = i5;
+          this.Zh = i;
+          this.Zi = j;
+          this.Zj = k;
+          this.Zk = m;
+          this.Ze = i4;
           return;
         }
       }
     }
     
-    final int gz()
+    final int gH()
     {
-      int i = this.Yl - this.Yk;
-      int j = this.Yn - this.Ym;
-      int k = this.Yp - this.Yo;
+      int i = this.Zg - this.Zf;
+      int j = this.Zi - this.Zh;
+      int k = this.Zk - this.Zj;
       int[] arrayOfInt1;
       int[] arrayOfInt2;
       if ((i >= j) && (i >= k))
       {
         i = -3;
         arrayOfInt1 = a.this.mColors;
-        arrayOfInt2 = a.this.Yb;
-        a.a(arrayOfInt1, i, this.Yh, this.Yi);
-        Arrays.sort(arrayOfInt1, this.Yh, this.Yi + 1);
-        a.a(arrayOfInt1, i, this.Yh, this.Yi);
-        k = this.Yj / 2;
-        i = this.Yh;
+        arrayOfInt2 = a.this.YW;
+        a.a(arrayOfInt1, i, this.Zc, this.Zd);
+        Arrays.sort(arrayOfInt1, this.Zc, this.Zd + 1);
+        a.a(arrayOfInt1, i, this.Zc, this.Zd);
+        k = this.Ze / 2;
+        i = this.Zc;
         j = 0;
       }
       for (;;)
       {
-        if (i > this.Yi) {
+        if (i > this.Zd) {
           break label180;
         }
         j += arrayOfInt2[arrayOfInt1[i]];
         if (j >= k)
         {
-          return Math.min(this.Yi - 1, i);
+          return Math.min(this.Zd - 1, i);
           if ((j >= i) && (j >= k))
           {
             i = -2;
@@ -385,13 +357,41 @@ final class a
         i += 1;
       }
       label180:
-      return this.Yh;
+      return this.Zc;
+    }
+    
+    final b.d gI()
+    {
+      int[] arrayOfInt1 = a.this.mColors;
+      int[] arrayOfInt2 = a.this.YW;
+      int j = this.Zc;
+      int n = 0;
+      int i = 0;
+      int k = 0;
+      int m = 0;
+      while (j <= this.Zd)
+      {
+        int i2 = arrayOfInt1[j];
+        int i1 = arrayOfInt2[i2];
+        n += i1;
+        m += a.bp(i2) * i1;
+        k += a.bq(i2) * i1;
+        i2 = a.br(i2);
+        j += 1;
+        i = i2 * i1 + i;
+      }
+      return new b.d(a.j(Math.round(m / n), Math.round(k / n), Math.round(i / n)), n);
+    }
+    
+    final int getVolume()
+    {
+      return (this.Zg - this.Zf + 1) * (this.Zi - this.Zh + 1) * (this.Zk - this.Zj + 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import java.util.List;
 
 public final class a
 {
-  public b IpT;
+  public b JRD;
   public Context mContext;
   
   public a(Context paramContext)
@@ -23,7 +23,7 @@ public final class a
     AppMethodBeat.i(138310);
     this.mContext = null;
     this.mContext = paramContext;
-    this.IpT = new b(paramContext);
+    this.JRD = new b(paramContext);
     AppMethodBeat.o(138310);
   }
   
@@ -36,47 +36,47 @@ public final class a
       return null;
     }
     com.tencent.d.c.b.b localb = new com.tencent.d.c.b.b();
-    localb.IqB = paramInt;
-    localb.IqC = null;
-    localb.IqD = parama.dvP;
-    localb.IqE = com.tencent.d.f.e.aNK(parama.IpO);
-    paramContext = com.tencent.d.f.a.cs(paramContext, parama.dvP);
+    localb.JSl = paramInt;
+    localb.JSm = null;
+    localb.JSn = parama.dtC;
+    localb.JSo = com.tencent.d.f.e.aTn(parama.JRy);
+    paramContext = com.tencent.d.f.a.cs(paramContext, parama.dtC);
     if (paramContext.size() > 1)
     {
-      localb.IqT = new ArrayList();
+      localb.JSD = new ArrayList();
       paramContext = paramContext.iterator();
       while (paramContext.hasNext())
       {
         byte[] arrayOfByte = (byte[])paramContext.next();
-        localb.IqT.add(arrayOfByte);
+        localb.JSD.add(arrayOfByte);
       }
     }
-    localb.IqF = parama.fileSize;
-    localb.IqG = parama.IpN;
-    localb.IqH = parama.versionCode;
-    localb.IqI = parama.versionName;
-    localb.IqJ = 0;
+    localb.JSp = parama.fileSize;
+    localb.JSq = parama.JRx;
+    localb.JSr = parama.versionCode;
+    localb.JSs = parama.versionName;
+    localb.JSt = 0;
     if (parama.appType == 1) {
-      localb.IqJ |= 0x1;
+      localb.JSt |= 0x1;
     }
-    localb.IqJ |= 0x2;
-    if ((!parama.IpP.startsWith("/data")) && (!parama.IpP.startsWith("/system"))) {
-      localb.IqJ |= 0x4;
+    localb.JSt |= 0x2;
+    if ((!parama.JRz.startsWith("/data")) && (!parama.JRz.startsWith("/system"))) {
+      localb.JSt |= 0x4;
     }
-    localb.IqK = "";
-    localb.IqL = 0;
-    localb.IqM = 0;
-    localb.IqN = 0;
-    localb.IqO = null;
-    localb.IqP = 0;
-    localb.IqQ = false;
-    localb.IqR = 0;
-    localb.IqS = 0;
+    localb.JSu = "";
+    localb.JSv = 0;
+    localb.JSw = 0;
+    localb.JSx = 0;
+    localb.JSy = null;
+    localb.JSz = 0;
+    localb.JSA = false;
+    localb.JSB = 0;
+    localb.JSC = 0;
     AppMethodBeat.o(138312);
     return localb;
   }
   
-  public static com.tencent.d.c.b.d fmb()
+  public static com.tencent.d.c.b.d fCs()
   {
     AppMethodBeat.i(138311);
     com.tencent.d.c.b.d locald = new com.tencent.d.c.b.d();
@@ -84,14 +84,14 @@ public final class a
     {
       try
       {
-        locald.Irj = Build.FINGERPRINT;
-        locald.Irk = com.tencent.d.f.d.fmw();
-        locald.gXN = Build.BRAND;
+        locald.JST = Build.FINGERPRINT;
+        locald.JSU = com.tencent.d.f.d.fCM();
+        locald.hym = Build.BRAND;
         locald.model = Build.MODEL;
-        locald.Irl = Build.VERSION.SDK_INT;
-        locald.Irm = Build.CPU_ABI;
-        locald.platform = com.tencent.d.f.d.aNJ("ro.board.platform");
-        if (!com.tencent.d.d.a.f.fmf()) {
+        locald.JSV = Build.VERSION.SDK_INT;
+        locald.JSW = Build.CPU_ABI;
+        locald.platform = com.tencent.d.f.d.aTm("ro.board.platform");
+        if (!com.tencent.d.d.a.f.fCw()) {
           continue;
         }
         i = 2;
@@ -118,10 +118,10 @@ public final class a
         i = 1;
         continue;
       }
-      locald.Irn = i;
+      locald.JSX = i;
       AppMethodBeat.o(138311);
       return locald;
-      localObject2 = com.tencent.d.d.b.d.fmg();
+      localObject2 = com.tencent.d.d.b.d.fCx();
       if (!((Collection)localObject2).isEmpty()) {
         continue;
       }
@@ -132,7 +132,7 @@ public final class a
       localObject1 = new ArrayList(3);
       ((List)localObject1).add(new g());
       ((List)localObject1).add(new com.tencent.d.d.a.d());
-      if (com.tencent.d.d.b.f.fmh()) {
+      if (com.tencent.d.d.b.f.fCy()) {
         ((List)localObject1).add(new c());
       }
       localObject2 = ((List)localObject2).iterator();
@@ -153,42 +153,42 @@ public final class a
         if (!((Iterator)localObject1).hasNext()) {
           continue;
         }
-        if (((com.tencent.d.d.a.b)((Iterator)localObject1).next()).fmd())
+        if (((com.tencent.d.d.a.b)((Iterator)localObject1).next()).fCu())
         {
           i = 1;
           continue;
-          if (com.tencent.d.d.a.e.fme())
+          if (com.tencent.d.d.a.e.fCv())
           {
             i = 1;
           }
           else
           {
-            if (!com.tencent.d.d.a.a.aNE("/system/bin/debuggerd"))
+            if (!com.tencent.d.d.a.a.aTh("/system/bin/debuggerd"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aNE("/system/bin/debuggerd64"))
+            if (!com.tencent.d.d.a.a.aTh("/system/bin/debuggerd64"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aNE("/system/bin/ddexe"))
+            if (!com.tencent.d.d.a.a.aTh("/system/bin/ddexe"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aNF("/system/etc/install-recovery.sh"))
+            if (!com.tencent.d.d.a.a.aTi("/system/etc/install-recovery.sh"))
             {
               i = 1;
               continue;
             }
-            if (!com.tencent.d.d.a.a.aNF("/system/bin/install-recovery.sh"))
+            if (!com.tencent.d.d.a.a.aTi("/system/bin/install-recovery.sh"))
             {
               i = 1;
               continue;
             }
-            h.fmy();
+            h.fCO();
             i = 0;
             continue;
             i = 0;
@@ -200,7 +200,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZoneSelectOtherCountryPreference
   extends Preference
 {
-  a HuD;
+  a IVa;
   String text;
   
   public ZoneSelectOtherCountryPreference(Context paramContext)
@@ -40,7 +40,7 @@ public class ZoneSelectOtherCountryPreference
     AppMethodBeat.i(39219);
     super.onBindView(paramView);
     TextView localTextView = (TextView)paramView.findViewById(2131307140);
-    if (!bt.isNullOrNil(this.text)) {
+    if (!bs.isNullOrNil(this.text)) {
       localTextView.setText(this.text);
     }
     paramView.setOnClickListener(new View.OnClickListener()
@@ -76,7 +76,7 @@ public class ZoneSelectOtherCountryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZoneSelectOtherCountryPreference
  * JD-Core Version:    0.7.0.1
  */

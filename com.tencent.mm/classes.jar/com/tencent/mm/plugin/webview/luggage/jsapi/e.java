@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class e
@@ -20,15 +20,15 @@ public class e
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(160421);
-    ad.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
-    Object localObject = parama.bZV.bZb;
+    ac.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
+    Object localObject = parama.bWS.bVY;
     if (localObject == null)
     {
       AppMethodBeat.o(160421);
       return;
     }
     localObject = ((IAppBrandBatchPreloadController)g.ab(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
-    if (!bt.isNullOrNil((String)localObject))
+    if (!bs.isNullOrNil((String)localObject))
     {
       if ("ok".equalsIgnoreCase((String)localObject))
       {
@@ -44,7 +44,7 @@ public class e
     AppMethodBeat.o(160421);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

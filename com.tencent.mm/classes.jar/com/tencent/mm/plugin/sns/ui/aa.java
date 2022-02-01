@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface aa
 {
-  public abstract boolean Nj(int paramInt);
+  public abstract boolean Pm(int paramInt);
 }
 
 

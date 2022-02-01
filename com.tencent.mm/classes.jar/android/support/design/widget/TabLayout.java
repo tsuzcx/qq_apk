@@ -25,7 +25,6 @@ import android.support.v4.e.l.a;
 import android.support.v4.e.l.b;
 import android.support.v4.e.l.c;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.view.ViewPager.a;
 import android.support.v4.view.ViewPager.c;
 import android.support.v4.view.r;
@@ -52,7 +51,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -60,47 +58,47 @@ import java.util.Iterator;
 public class TabLayout
   extends HorizontalScrollView
 {
-  private static final l.a<f> rg = new l.c(16);
+  private static final l.a<TabLayout.f> sh = new l.c(16);
   private int contentInsetStart;
   int mode;
-  private final int rA;
-  private final int rB;
-  private final int rC;
-  int rD;
-  int rE;
-  int rF;
-  boolean rG;
-  boolean rH;
-  boolean rI;
-  private b rJ;
-  private final ArrayList<b> rK = new ArrayList();
-  private b rL;
-  private ValueAnimator rM;
-  ViewPager rN;
-  private android.support.v4.view.q rO;
-  private DataSetObserver rP;
-  private g rQ;
-  private a rR;
-  private boolean rS;
-  private final l.a<h> rT = new l.b(12);
-  private final ArrayList<f> rh = new ArrayList();
-  private f ri;
-  private final RectF rj = new RectF();
-  private final e rk;
-  int rl;
-  int rm;
-  int rn;
-  int ro;
-  int rp;
-  ColorStateList rq;
-  ColorStateList rs;
-  ColorStateList rt;
-  Drawable ru;
-  PorterDuff.Mode rv;
-  float rw;
-  float rx;
-  final int ry;
-  int rz = 2147483647;
+  int sA = 2147483647;
+  private final int sB;
+  private final int sC;
+  private final int sD;
+  int sE;
+  int sF;
+  int sG;
+  boolean sH;
+  boolean sI;
+  boolean sJ;
+  private b sK;
+  private final ArrayList<b> sL = new ArrayList();
+  private b sM;
+  private ValueAnimator sN;
+  ViewPager sO;
+  private android.support.v4.view.q sP;
+  private DataSetObserver sQ;
+  private TabLayout.g sR;
+  private a sS;
+  private boolean sT;
+  private final l.a<h> sU = new l.b(12);
+  private final ArrayList<TabLayout.f> si = new ArrayList();
+  private TabLayout.f sj;
+  private final RectF sk = new RectF();
+  private final e sl;
+  int sm;
+  int sn;
+  int so;
+  int sq;
+  int sr;
+  ColorStateList ss;
+  ColorStateList st;
+  ColorStateList su;
+  Drawable sv;
+  PorterDuff.Mode sw;
+  float sx;
+  float sy;
+  final int sz;
   
   public TabLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -111,56 +109,56 @@ public class TabLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     setHorizontalScrollBarEnabled(false);
-    this.rk = new e(paramContext);
-    super.addView(this.rk, 0, new FrameLayout.LayoutParams(-2, -1));
+    this.sl = new e(paramContext);
+    super.addView(this.sl, 0, new FrameLayout.LayoutParams(-2, -1));
     TypedArray localTypedArray = f.a(paramContext, paramAttributeSet, android.support.design.a.a.TabLayout, paramInt, 2131821641, new int[] { 22 });
-    this.rk.aj(localTypedArray.getDimensionPixelSize(10, -1));
-    this.rk.ai(localTypedArray.getColor(7, 0));
+    this.sl.aj(localTypedArray.getDimensionPixelSize(10, -1));
+    this.sl.ai(localTypedArray.getColor(7, 0));
     setSelectedTabIndicator(android.support.design.d.a.c(paramContext, localTypedArray, 5));
     setSelectedTabIndicatorGravity(localTypedArray.getInt(9, 0));
     setTabIndicatorFullWidth(localTypedArray.getBoolean(8, true));
     paramInt = localTypedArray.getDimensionPixelSize(15, 0);
-    this.ro = paramInt;
-    this.rn = paramInt;
-    this.rm = paramInt;
-    this.rl = paramInt;
-    this.rl = localTypedArray.getDimensionPixelSize(18, this.rl);
-    this.rm = localTypedArray.getDimensionPixelSize(19, this.rm);
-    this.rn = localTypedArray.getDimensionPixelSize(17, this.rn);
-    this.ro = localTypedArray.getDimensionPixelSize(16, this.ro);
-    this.rp = localTypedArray.getResourceId(22, 2131821393);
-    paramAttributeSet = paramContext.obtainStyledAttributes(this.rp, android.support.v7.a.a.a.TextAppearance);
+    this.sq = paramInt;
+    this.so = paramInt;
+    this.sn = paramInt;
+    this.sm = paramInt;
+    this.sm = localTypedArray.getDimensionPixelSize(18, this.sm);
+    this.sn = localTypedArray.getDimensionPixelSize(19, this.sn);
+    this.so = localTypedArray.getDimensionPixelSize(17, this.so);
+    this.sq = localTypedArray.getDimensionPixelSize(16, this.sq);
+    this.sr = localTypedArray.getResourceId(22, 2131821393);
+    paramAttributeSet = paramContext.obtainStyledAttributes(this.sr, android.support.v7.a.a.a.TextAppearance);
     try
     {
-      this.rw = paramAttributeSet.getDimensionPixelSize(0, 0);
-      this.rq = android.support.design.d.a.b(paramContext, paramAttributeSet, 3);
+      this.sx = paramAttributeSet.getDimensionPixelSize(0, 0);
+      this.ss = android.support.design.d.a.b(paramContext, paramAttributeSet, 3);
       paramAttributeSet.recycle();
       if (localTypedArray.hasValue(23)) {
-        this.rq = android.support.design.d.a.b(paramContext, localTypedArray, 23);
+        this.ss = android.support.design.d.a.b(paramContext, localTypedArray, 23);
       }
       if (localTypedArray.hasValue(21))
       {
         paramInt = localTypedArray.getColor(21, 0);
-        int i = this.rq.getDefaultColor();
-        this.rq = new ColorStateList(new int[][] { SELECTED_STATE_SET, EMPTY_STATE_SET }, new int[] { paramInt, i });
+        int i = this.ss.getDefaultColor();
+        this.ss = new ColorStateList(new int[][] { SELECTED_STATE_SET, EMPTY_STATE_SET }, new int[] { paramInt, i });
       }
-      this.rs = android.support.design.d.a.b(paramContext, localTypedArray, 3);
-      this.rv = android.support.design.internal.g.a(localTypedArray.getInt(4, -1), null);
-      this.rt = android.support.design.d.a.b(paramContext, localTypedArray, 20);
-      this.rE = localTypedArray.getInt(6, 300);
-      this.rA = localTypedArray.getDimensionPixelSize(13, -1);
-      this.rB = localTypedArray.getDimensionPixelSize(12, -1);
-      this.ry = localTypedArray.getResourceId(0, 0);
+      this.st = android.support.design.d.a.b(paramContext, localTypedArray, 3);
+      this.sw = android.support.design.internal.g.a(localTypedArray.getInt(4, -1), null);
+      this.su = android.support.design.d.a.b(paramContext, localTypedArray, 20);
+      this.sF = localTypedArray.getInt(6, 300);
+      this.sB = localTypedArray.getDimensionPixelSize(13, -1);
+      this.sC = localTypedArray.getDimensionPixelSize(12, -1);
+      this.sz = localTypedArray.getResourceId(0, 0);
       this.contentInsetStart = localTypedArray.getDimensionPixelSize(1, 0);
       this.mode = localTypedArray.getInt(14, 1);
-      this.rD = localTypedArray.getInt(2, 0);
-      this.rG = localTypedArray.getBoolean(11, false);
-      this.rI = localTypedArray.getBoolean(24, false);
+      this.sE = localTypedArray.getInt(2, 0);
+      this.sH = localTypedArray.getBoolean(11, false);
+      this.sJ = localTypedArray.getBoolean(24, false);
       localTypedArray.recycle();
       paramContext = getResources();
-      this.rx = paramContext.getDimensionPixelSize(2131166134);
-      this.rC = paramContext.getDimensionPixelSize(2131166132);
-      cC();
+      this.sy = paramContext.getDimensionPixelSize(2131166134);
+      this.sD = paramContext.getDimensionPixelSize(2131166132);
+      cJ();
       return;
     }
     finally
@@ -169,11 +167,11 @@ public class TabLayout
     }
   }
   
-  private h a(f paramf)
+  private h a(TabLayout.f paramf)
   {
-    if (this.rT != null) {}
+    if (this.sU != null) {}
     h localh2;
-    for (h localh1 = (h)this.rT.acquire();; localh1 = null)
+    for (h localh1 = (h)this.sU.acquire();; localh1 = null)
     {
       localh2 = localh1;
       if (localh1 == null) {
@@ -182,54 +180,54 @@ public class TabLayout
       localh2.i(paramf);
       localh2.setFocusable(true);
       localh2.setMinimumWidth(getTabMinWidth());
-      if (!TextUtils.isEmpty(paramf.sj)) {
+      if (!TextUtils.isEmpty(paramf.tj)) {
         break;
       }
       localh2.setContentDescription(paramf.text);
       return localh2;
     }
-    localh2.setContentDescription(paramf.sj);
+    localh2.setContentDescription(paramf.tj);
     return localh2;
   }
   
   private void a(TabItem paramTabItem)
   {
-    f localf = cx();
+    TabLayout.f localf = cE();
     if (paramTabItem.text != null) {
       localf.d(paramTabItem.text);
     }
     if (paramTabItem.icon != null)
     {
       localf.icon = paramTabItem.icon;
-      localf.cE();
+      localf.cL();
     }
-    if (paramTabItem.rf != 0) {
-      localf.ak(paramTabItem.rf);
+    if (paramTabItem.sg != 0) {
+      localf.ak(paramTabItem.sg);
     }
     if (!TextUtils.isEmpty(paramTabItem.getContentDescription()))
     {
-      localf.sj = paramTabItem.getContentDescription();
-      localf.cE();
+      localf.tj = paramTabItem.getContentDescription();
+      localf.cL();
     }
-    a(localf, this.rh.isEmpty());
+    a(localf, this.si.isEmpty());
   }
   
-  private void a(f paramf, int paramInt)
+  private void a(TabLayout.f paramf, int paramInt)
   {
     paramf.position = paramInt;
-    this.rh.add(paramInt, paramf);
-    int i = this.rh.size();
+    this.si.add(paramInt, paramf);
+    int i = this.si.size();
     paramInt += 1;
     while (paramInt < i)
     {
-      ((f)this.rh.get(paramInt)).position = paramInt;
+      ((TabLayout.f)this.si.get(paramInt)).position = paramInt;
       paramInt += 1;
     }
   }
   
   private void a(LinearLayout.LayoutParams paramLayoutParams)
   {
-    if ((this.mode == 1) && (this.rD == 0))
+    if ((this.mode == 1) && (this.sE == 0))
     {
       paramLayoutParams.width = 0;
       paramLayoutParams.weight = 1.0F;
@@ -246,7 +244,7 @@ public class TabLayout
     }
     if ((getWindowToken() != null) && (t.ay(this)))
     {
-      e locale = this.rk;
+      e locale = this.sl;
       j = locale.getChildCount();
       i = 0;
       if (i >= j) {
@@ -273,11 +271,11 @@ public class TabLayout
     int j = b(paramInt, 0.0F);
     if (i != j)
     {
-      cB();
-      this.rM.setIntValues(new int[] { i, j });
-      this.rM.start();
+      cI();
+      this.sN.setIntValues(new int[] { i, j });
+      this.sN.start();
     }
-    this.rk.k(paramInt, this.rE);
+    this.sl.k(paramInt, this.sF);
   }
   
   private int b(int paramInt, float paramFloat)
@@ -288,11 +286,11 @@ public class TabLayout
     View localView1;
     if (this.mode == 0)
     {
-      localView2 = this.rk.getChildAt(paramInt);
-      if (paramInt + 1 >= this.rk.getChildCount()) {
+      localView2 = this.sl.getChildAt(paramInt);
+      if (paramInt + 1 >= this.sl.getChildCount()) {
         break label116;
       }
-      localView1 = this.rk.getChildAt(paramInt + 1);
+      localView1 = this.sl.getChildAt(paramInt + 1);
       if (localView2 == null) {
         break label122;
       }
@@ -321,38 +319,48 @@ public class TabLayout
   
   private void b(b paramb)
   {
-    this.rK.remove(paramb);
+    this.sL.remove(paramb);
   }
   
-  private void c(f paramf)
+  private void c(TabLayout.f paramf)
   {
-    int i = this.rK.size() - 1;
+    int i = this.sL.size() - 1;
     while (i >= 0)
     {
-      ((b)this.rK.get(i)).f(paramf);
+      ((b)this.sL.get(i)).f(paramf);
       i -= 1;
     }
   }
   
-  private void cA()
+  private static TabLayout.f cF()
   {
-    int j = this.rh.size();
+    TabLayout.f localf2 = (TabLayout.f)sh.acquire();
+    TabLayout.f localf1 = localf2;
+    if (localf2 == null) {
+      localf1 = new TabLayout.f();
+    }
+    return localf1;
+  }
+  
+  private void cH()
+  {
+    int j = this.si.size();
     int i = 0;
     while (i < j)
     {
-      ((f)this.rh.get(i)).cE();
+      ((TabLayout.f)this.si.get(i)).cL();
       i += 1;
     }
   }
   
-  private void cB()
+  private void cI()
   {
-    if (this.rM == null)
+    if (this.sN == null)
     {
-      this.rM = new ValueAnimator();
-      this.rM.setInterpolator(android.support.design.a.a.dQ);
-      this.rM.setDuration(this.rE);
-      this.rM.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.sN = new ValueAnimator();
+      this.sN.setInterpolator(android.support.design.a.a.eQ);
+      this.sN.setDuration(this.sF);
+      this.sN.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -362,12 +370,12 @@ public class TabLayout
     }
   }
   
-  private void cC()
+  private void cJ()
   {
     if (this.mode == 0) {}
-    for (int i = Math.max(0, this.contentInsetStart - this.rl);; i = 0)
+    for (int i = Math.max(0, this.contentInsetStart - this.sm);; i = 0)
     {
-      t.d(this.rk, i, 0, 0, 0);
+      t.d(this.sl, i, 0, 0, 0);
       switch (this.mode)
       {
       }
@@ -375,55 +383,45 @@ public class TabLayout
       {
         x(true);
         return;
-        this.rk.setGravity(1);
+        this.sl.setGravity(1);
         continue;
-        this.rk.setGravity(8388611);
+        this.sl.setGravity(8388611);
       }
     }
   }
   
-  private static f cy()
+  private void d(TabLayout.f paramf)
   {
-    f localf2 = (f)rg.acquire();
-    f localf1 = localf2;
-    if (localf2 == null) {
-      localf1 = new f();
-    }
-    return localf1;
-  }
-  
-  private void d(f paramf)
-  {
-    int i = this.rK.size() - 1;
+    int i = this.sL.size() - 1;
     while (i >= 0)
     {
-      ((b)this.rK.get(i)).g(paramf);
+      ((b)this.sL.get(i)).g(paramf);
       i -= 1;
     }
   }
   
-  private void e(f paramf)
+  private void e(TabLayout.f paramf)
   {
-    int i = this.rK.size() - 1;
+    int i = this.sL.size() - 1;
     while (i >= 0)
     {
-      ((b)this.rK.get(i)).h(paramf);
+      ((b)this.sL.get(i)).h(paramf);
       i -= 1;
     }
   }
   
   private int getDefaultHeight()
   {
-    int j = this.rh.size();
+    int j = this.si.size();
     int i = 0;
     if (i < j)
     {
-      f localf = (f)this.rh.get(i);
+      TabLayout.f localf = (TabLayout.f)this.si.get(i);
       if ((localf == null) || (localf.icon == null) || (TextUtils.isEmpty(localf.text))) {}
     }
     for (i = 1;; i = 0)
     {
-      if ((i != 0) && (!this.rG))
+      if ((i != 0) && (!this.sH))
       {
         return 72;
         i += 1;
@@ -435,52 +433,52 @@ public class TabLayout
   
   private int getTabMinWidth()
   {
-    if (this.rA != -1) {
-      return this.rA;
+    if (this.sB != -1) {
+      return this.sB;
     }
     if (this.mode == 0) {
-      return this.rC;
+      return this.sD;
     }
     return 0;
   }
   
   private int getTabScrollRange()
   {
-    return Math.max(0, this.rk.getWidth() - getWidth() - getPaddingLeft() - getPaddingRight());
+    return Math.max(0, this.sl.getWidth() - getWidth() - getPaddingLeft() - getPaddingRight());
   }
   
   private void removeAllTabs()
   {
-    int i = this.rk.getChildCount() - 1;
+    int i = this.sl.getChildCount() - 1;
     while (i >= 0)
     {
-      localObject = (h)this.rk.getChildAt(i);
-      this.rk.removeViewAt(i);
+      localObject = (h)this.sl.getChildAt(i);
+      this.sl.removeViewAt(i);
       if (localObject != null)
       {
         ((h)localObject).i(null);
         ((h)localObject).setSelected(false);
-        this.rT.release(localObject);
+        this.sU.release(localObject);
       }
       requestLayout();
       i -= 1;
     }
-    Object localObject = this.rh.iterator();
+    Object localObject = this.si.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      f localf = (f)((Iterator)localObject).next();
+      TabLayout.f localf = (TabLayout.f)((Iterator)localObject).next();
       ((Iterator)localObject).remove();
-      localf.sl = null;
-      localf.sm = null;
+      localf.tl = null;
+      localf.tm = null;
       localf.tag = null;
       localf.icon = null;
       localf.text = null;
-      localf.sj = null;
+      localf.tj = null;
       localf.position = -1;
-      localf.sk = null;
-      rg.release(localf);
+      localf.tk = null;
+      sh.release(localf);
     }
-    this.ri = null;
+    this.sj = null;
   }
   
   private void setScrollPosition$4867b5c2(int paramInt)
@@ -490,13 +488,13 @@ public class TabLayout
   
   private void setSelectedTabView(int paramInt)
   {
-    int j = this.rk.getChildCount();
+    int j = this.sl.getChildCount();
     if (paramInt < j)
     {
       int i = 0;
       if (i < j)
       {
-        View localView = this.rk.getChildAt(i);
+        View localView = this.sl.getChildAt(i);
         if (i == paramInt)
         {
           bool = true;
@@ -532,15 +530,15 @@ public class TabLayout
   final void a(int paramInt, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = Math.round(paramInt + paramFloat);
-    if ((i < 0) || (i >= this.rk.getChildCount())) {}
+    if ((i < 0) || (i >= this.sl.getChildCount())) {}
     do
     {
       return;
       if (paramBoolean2) {
-        this.rk.c(paramInt, paramFloat);
+        this.sl.c(paramInt, paramFloat);
       }
-      if ((this.rM != null) && (this.rM.isRunning())) {
-        this.rM.cancel();
+      if ((this.sN != null) && (this.sN.isRunning())) {
+        this.sN.cancel();
       }
       scrollTo(b(paramInt, paramFloat), 0);
     } while (!paramBoolean1);
@@ -549,20 +547,20 @@ public class TabLayout
   
   public final void a(b paramb)
   {
-    if (!this.rK.contains(paramb)) {
-      this.rK.add(paramb);
+    if (!this.sL.contains(paramb)) {
+      this.sL.add(paramb);
     }
   }
   
-  public final void a(f paramf, boolean paramBoolean)
+  public final void a(TabLayout.f paramf, boolean paramBoolean)
   {
-    int i = this.rh.size();
-    if (paramf.sl != this) {
+    int i = this.si.size();
+    if (paramf.tl != this) {
       throw new IllegalArgumentException("Tab belongs to a different TabLayout.");
     }
     a(paramf, i);
-    h localh = paramf.sm;
-    e locale = this.rk;
+    h localh = paramf.tm;
+    e locale = this.sl;
     i = paramf.position;
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
     a(localLayoutParams);
@@ -574,72 +572,72 @@ public class TabLayout
   
   public final void a(ViewPager paramViewPager, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.rN != null)
+    if (this.sO != null)
     {
-      if (this.rQ != null) {
-        this.rN.removeOnPageChangeListener(this.rQ);
+      if (this.sR != null) {
+        this.sO.removeOnPageChangeListener(this.sR);
       }
-      if (this.rR != null) {
-        this.rN.removeOnAdapterChangeListener(this.rR);
+      if (this.sS != null) {
+        this.sO.removeOnAdapterChangeListener(this.sS);
       }
     }
-    if (this.rL != null)
+    if (this.sM != null)
     {
-      b(this.rL);
-      this.rL = null;
+      b(this.sM);
+      this.sM = null;
     }
     if (paramViewPager != null)
     {
-      this.rN = paramViewPager;
-      if (this.rQ == null) {
-        this.rQ = new g(this);
+      this.sO = paramViewPager;
+      if (this.sR == null) {
+        this.sR = new TabLayout.g(this);
       }
-      this.rQ.reset();
-      paramViewPager.addOnPageChangeListener(this.rQ);
-      this.rL = new TabLayout.i(paramViewPager);
-      a(this.rL);
+      this.sR.reset();
+      paramViewPager.addOnPageChangeListener(this.sR);
+      this.sM = new TabLayout.i(paramViewPager);
+      a(this.sM);
       android.support.v4.view.q localq = paramViewPager.getAdapter();
       if (localq != null) {
         a(localq, paramBoolean1);
       }
-      if (this.rR == null) {
-        this.rR = new a();
+      if (this.sS == null) {
+        this.sS = new a();
       }
-      this.rR.rV = paramBoolean1;
-      paramViewPager.addOnAdapterChangeListener(this.rR);
+      this.sS.sW = paramBoolean1;
+      paramViewPager.addOnAdapterChangeListener(this.sS);
       setScrollPosition$4867b5c2(paramViewPager.getCurrentItem());
     }
     for (;;)
     {
-      this.rS = paramBoolean2;
+      this.sT = paramBoolean2;
       return;
-      this.rN = null;
+      this.sO = null;
       a(null, false);
     }
   }
   
   final void a(android.support.v4.view.q paramq, boolean paramBoolean)
   {
-    if ((this.rO != null) && (this.rP != null)) {
-      this.rO.unregisterDataSetObserver(this.rP);
+    if ((this.sP != null) && (this.sQ != null)) {
+      this.sP.unregisterDataSetObserver(this.sQ);
     }
-    this.rO = paramq;
+    this.sP = paramq;
     if ((paramBoolean) && (paramq != null))
     {
-      if (this.rP == null) {
-        this.rP = new d();
+      if (this.sQ == null) {
+        this.sQ = new d();
       }
-      paramq.registerDataSetObserver(this.rP);
+      paramq.registerDataSetObserver(this.sQ);
     }
-    cz();
+    cG();
   }
   
-  public final f ad(int paramInt)
+  public final TabLayout.f ad(int paramInt)
   {
     if ((paramInt < 0) || (paramInt >= getTabCount())) {
       return null;
     }
-    return (f)this.rh.get(paramInt);
+    return (TabLayout.f)this.si.get(paramInt);
   }
   
   public void addView(View paramView)
@@ -667,14 +665,14 @@ public class TabLayout
     return Math.round(getResources().getDisplayMetrics().density * paramInt);
   }
   
-  final void b(f paramf)
+  final void b(TabLayout.f paramf)
   {
     b(paramf, true);
   }
   
-  final void b(f paramf, boolean paramBoolean)
+  final void b(TabLayout.f paramf, boolean paramBoolean)
   {
-    f localf = this.ri;
+    TabLayout.f localf = this.sj;
     if (localf == paramf)
     {
       if (localf != null)
@@ -702,7 +700,7 @@ public class TabLayout
       if (i != -1) {
         setSelectedTabView(i);
       }
-      this.ri = paramf;
+      this.sj = paramf;
       if (localf != null) {
         d(localf);
       }
@@ -718,29 +716,29 @@ public class TabLayout
     }
   }
   
-  public final f cx()
+  public final TabLayout.f cE()
   {
-    f localf = cy();
-    localf.sl = this;
-    localf.sm = a(localf);
+    TabLayout.f localf = cF();
+    localf.tl = this;
+    localf.tm = a(localf);
     return localf;
   }
   
-  final void cz()
+  final void cG()
   {
     removeAllTabs();
-    if (this.rO != null)
+    if (this.sP != null)
     {
-      int j = this.rO.getCount();
+      int j = this.sP.getCount();
       int i = 0;
       while (i < j)
       {
-        a(cx().d(this.rO.getPageTitle(i)), false);
+        a(cE().d(this.sP.getPageTitle(i)), false);
         i += 1;
       }
-      if ((this.rN != null) && (j > 0))
+      if ((this.sO != null) && (j > 0))
       {
-        i = this.rN.getCurrentItem();
+        i = this.sO.getCurrentItem();
         if ((i != getSelectedTabPosition()) && (i < getTabCount())) {
           b(ad(i), true);
         }
@@ -755,35 +753,35 @@ public class TabLayout
   
   public int getSelectedTabPosition()
   {
-    if (this.ri != null) {
-      return this.ri.position;
+    if (this.sj != null) {
+      return this.sj.position;
     }
     return -1;
   }
   
   public int getTabCount()
   {
-    return this.rh.size();
+    return this.si.size();
   }
   
   public int getTabGravity()
   {
-    return this.rD;
+    return this.sE;
   }
   
   public ColorStateList getTabIconTint()
   {
-    return this.rs;
+    return this.st;
   }
   
   public int getTabIndicatorGravity()
   {
-    return this.rF;
+    return this.sG;
   }
   
   int getTabMaxWidth()
   {
-    return this.rz;
+    return this.sA;
   }
   
   public int getTabMode()
@@ -793,23 +791,23 @@ public class TabLayout
   
   public ColorStateList getTabRippleColor()
   {
-    return this.rt;
+    return this.su;
   }
   
   public Drawable getTabSelectedIndicator()
   {
-    return this.ru;
+    return this.sv;
   }
   
   public ColorStateList getTabTextColors()
   {
-    return this.rq;
+    return this.ss;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.rN == null)
+    if (this.sO == null)
     {
       ViewParent localViewParent = getParent();
       if ((localViewParent instanceof ViewPager)) {
@@ -821,19 +819,19 @@ public class TabLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.rS)
+    if (this.sT)
     {
       setupWithViewPager(null);
-      this.rS = false;
+      this.sT = false;
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = 0;
-    while (i < this.rk.getChildCount())
+    while (i < this.sl.getChildCount())
     {
-      View localView = this.rk.getChildAt(i);
+      View localView = this.sl.getChildAt(i);
       if ((localView instanceof h)) {
         h.a((h)localView, paramCanvas);
       }
@@ -854,10 +852,10 @@ public class TabLayout
       i = View.MeasureSpec.getSize(paramInt1);
       if (View.MeasureSpec.getMode(paramInt1) != 0)
       {
-        if (this.rB > 0)
+        if (this.sC > 0)
         {
-          i = this.rB;
-          this.rz = i;
+          i = this.sC;
+          this.sA = i;
         }
       }
       else
@@ -903,27 +901,27 @@ public class TabLayout
   
   public void setInlineLabel(boolean paramBoolean)
   {
-    if (this.rG != paramBoolean)
+    if (this.sH != paramBoolean)
     {
-      this.rG = paramBoolean;
+      this.sH = paramBoolean;
       int i = 0;
-      if (i < this.rk.getChildCount())
+      if (i < this.sl.getChildCount())
       {
-        Object localObject = this.rk.getChildAt(i);
+        Object localObject = this.sl.getChildAt(i);
         int j;
         if ((localObject instanceof h))
         {
           localObject = (h)localObject;
-          if (!((h)localObject).rU.rG) {
+          if (!((h)localObject).sV.sH) {
             break label108;
           }
           j = 0;
           label64:
           ((h)localObject).setOrientation(j);
-          if ((((h)localObject).su == null) && (((h)localObject).sv == null)) {
+          if ((((h)localObject).tt == null) && (((h)localObject).tu == null)) {
             break label113;
           }
-          ((h)localObject).a(((h)localObject).su, ((h)localObject).sv);
+          ((h)localObject).a(((h)localObject).tt, ((h)localObject).tu);
         }
         for (;;)
         {
@@ -933,10 +931,10 @@ public class TabLayout
           j = 1;
           break label64;
           label113:
-          ((h)localObject).a(((h)localObject).ss, ((h)localObject).st);
+          ((h)localObject).a(((h)localObject).tr, ((h)localObject).ts);
         }
       }
-      cC();
+      cJ();
     }
   }
   
@@ -948,10 +946,10 @@ public class TabLayout
   @Deprecated
   public void setOnTabSelectedListener(b paramb)
   {
-    if (this.rJ != null) {
-      b(this.rJ);
+    if (this.sK != null) {
+      b(this.sK);
     }
-    this.rJ = paramb;
+    this.sK = paramb;
     if (paramb != null) {
       a(paramb);
     }
@@ -959,8 +957,8 @@ public class TabLayout
   
   void setScrollAnimatorListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    cB();
-    this.rM.addListener(paramAnimatorListener);
+    cI();
+    this.sN.addListener(paramAnimatorListener);
   }
   
   public void setSelectedTabIndicator(int paramInt)
@@ -975,48 +973,48 @@ public class TabLayout
   
   public void setSelectedTabIndicator(Drawable paramDrawable)
   {
-    if (this.ru != paramDrawable)
+    if (this.sv != paramDrawable)
     {
-      this.ru = paramDrawable;
-      t.W(this.rk);
+      this.sv = paramDrawable;
+      t.W(this.sl);
     }
   }
   
   public void setSelectedTabIndicatorColor(int paramInt)
   {
-    this.rk.ai(paramInt);
+    this.sl.ai(paramInt);
   }
   
   public void setSelectedTabIndicatorGravity(int paramInt)
   {
-    if (this.rF != paramInt)
+    if (this.sG != paramInt)
     {
-      this.rF = paramInt;
-      t.W(this.rk);
+      this.sG = paramInt;
+      t.W(this.sl);
     }
   }
   
   @Deprecated
   public void setSelectedTabIndicatorHeight(int paramInt)
   {
-    this.rk.aj(paramInt);
+    this.sl.aj(paramInt);
   }
   
   public void setTabGravity(int paramInt)
   {
-    if (this.rD != paramInt)
+    if (this.sE != paramInt)
     {
-      this.rD = paramInt;
-      cC();
+      this.sE = paramInt;
+      cJ();
     }
   }
   
   public void setTabIconTint(ColorStateList paramColorStateList)
   {
-    if (this.rs != paramColorStateList)
+    if (this.st != paramColorStateList)
     {
-      this.rs = paramColorStateList;
-      cA();
+      this.st = paramColorStateList;
+      cH();
     }
   }
   
@@ -1027,8 +1025,8 @@ public class TabLayout
   
   public void setTabIndicatorFullWidth(boolean paramBoolean)
   {
-    this.rH = paramBoolean;
-    t.W(this.rk);
+    this.sI = paramBoolean;
+    t.W(this.sl);
   }
   
   public void setTabMode(int paramInt)
@@ -1036,19 +1034,19 @@ public class TabLayout
     if (paramInt != this.mode)
     {
       this.mode = paramInt;
-      cC();
+      cJ();
     }
   }
   
   public void setTabRippleColor(ColorStateList paramColorStateList)
   {
-    if (this.rt != paramColorStateList)
+    if (this.su != paramColorStateList)
     {
-      this.rt = paramColorStateList;
+      this.su = paramColorStateList;
       int i = 0;
-      while (i < this.rk.getChildCount())
+      while (i < this.sl.getChildCount())
       {
-        paramColorStateList = this.rk.getChildAt(i);
+        paramColorStateList = this.sl.getChildAt(i);
         if ((paramColorStateList instanceof h)) {
           h.a((h)paramColorStateList, getContext());
         }
@@ -1064,10 +1062,10 @@ public class TabLayout
   
   public void setTabTextColors(ColorStateList paramColorStateList)
   {
-    if (this.rq != paramColorStateList)
+    if (this.ss != paramColorStateList)
     {
-      this.rq = paramColorStateList;
-      cA();
+      this.ss = paramColorStateList;
+      cH();
     }
   }
   
@@ -1079,13 +1077,13 @@ public class TabLayout
   
   public void setUnboundedRipple(boolean paramBoolean)
   {
-    if (this.rI != paramBoolean)
+    if (this.sJ != paramBoolean)
     {
-      this.rI = paramBoolean;
+      this.sJ = paramBoolean;
       int i = 0;
-      while (i < this.rk.getChildCount())
+      while (i < this.sl.getChildCount())
       {
-        View localView = this.rk.getChildAt(i);
+        View localView = this.sl.getChildAt(i);
         if ((localView instanceof h)) {
           h.a((h)localView, getContext());
         }
@@ -1112,9 +1110,9 @@ public class TabLayout
   final void x(boolean paramBoolean)
   {
     int i = 0;
-    while (i < this.rk.getChildCount())
+    while (i < this.sl.getChildCount())
     {
-      View localView = this.rk.getChildAt(i);
+      View localView = this.sl.getChildAt(i);
       localView.setMinimumWidth(getTabMinWidth());
       a((LinearLayout.LayoutParams)localView.getLayoutParams());
       if (paramBoolean) {
@@ -1127,14 +1125,14 @@ public class TabLayout
   final class a
     implements ViewPager.c
   {
-    boolean rV;
+    boolean sW;
     
     a() {}
     
     public final void a(ViewPager paramViewPager, android.support.v4.view.q paramq1, android.support.v4.view.q paramq2)
     {
-      if (TabLayout.this.rN == paramViewPager) {
-        TabLayout.this.a(paramq2, this.rV);
+      if (TabLayout.this.sO == paramViewPager) {
+        TabLayout.this.a(paramq2, this.sW);
       }
     }
   }
@@ -1155,12 +1153,12 @@ public class TabLayout
     
     public final void onChanged()
     {
-      TabLayout.this.cz();
+      TabLayout.this.cG();
     }
     
     public final void onInvalidated()
     {
-      TabLayout.this.cz();
+      TabLayout.this.cG();
     }
   }
   
@@ -1170,19 +1168,19 @@ public class TabLayout
     private int indicatorLeft = -1;
     private int indicatorRight = -1;
     private int layoutDirection = -1;
-    private int rW;
-    private final Paint rX;
-    private final GradientDrawable rY;
-    int rZ = -1;
-    float sa;
-    private ValueAnimator sc;
+    private int sX;
+    private final Paint sY;
+    private final GradientDrawable sZ;
+    int ta = -1;
+    float tb;
+    private ValueAnimator tc;
     
     e(Context paramContext)
     {
       super();
       setWillNotDraw(false);
-      this.rX = new Paint();
-      this.rY = new GradientDrawable();
+      this.sY = new Paint();
+      this.sZ = new GradientDrawable();
     }
     
     private void a(TabLayout.h paramh, RectF paramRectF)
@@ -1198,9 +1196,9 @@ public class TabLayout
       paramRectF.set(j - k, 0.0F, i + j, 0.0F);
     }
     
-    private void cD()
+    private void cK()
     {
-      View localView = getChildAt(this.rZ);
+      View localView = getChildAt(this.ta);
       int k;
       int m;
       int i;
@@ -1211,7 +1209,7 @@ public class TabLayout
         m = localView.getRight();
         i = m;
         j = k;
-        if (!TabLayout.this.rH)
+        if (!TabLayout.this.sI)
         {
           i = m;
           j = k;
@@ -1224,16 +1222,16 @@ public class TabLayout
         }
         k = i;
         m = j;
-        if (this.sa > 0.0F)
+        if (this.tb > 0.0F)
         {
           k = i;
           m = j;
-          if (this.rZ < getChildCount() - 1)
+          if (this.ta < getChildCount() - 1)
           {
-            localView = getChildAt(this.rZ + 1);
+            localView = getChildAt(this.ta + 1);
             m = localView.getLeft();
             k = localView.getRight();
-            if ((TabLayout.this.rH) || (!(localView instanceof TabLayout.h))) {
+            if ((TabLayout.this.sI) || (!(localView instanceof TabLayout.h))) {
               break label311;
             }
             a((TabLayout.h)localView, TabLayout.a(TabLayout.this));
@@ -1245,13 +1243,13 @@ public class TabLayout
       label311:
       for (;;)
       {
-        float f1 = this.sa;
+        float f1 = this.tb;
         float f2 = m;
-        float f3 = this.sa;
+        float f3 = this.tb;
         m = (int)(j * (1.0F - f3) + f1 * f2);
-        f1 = this.sa;
+        f1 = this.tb;
         f2 = k;
-        f3 = this.sa;
+        f3 = this.tb;
         k = (int)(f2 * f1 + i * (1.0F - f3));
         for (;;)
         {
@@ -1265,62 +1263,62 @@ public class TabLayout
     
     final void ai(int paramInt)
     {
-      if (this.rX.getColor() != paramInt)
+      if (this.sY.getColor() != paramInt)
       {
-        this.rX.setColor(paramInt);
+        this.sY.setColor(paramInt);
         t.W(this);
       }
     }
     
     final void aj(int paramInt)
     {
-      if (this.rW != paramInt)
+      if (this.sX != paramInt)
       {
-        this.rW = paramInt;
+        this.sX = paramInt;
         t.W(this);
       }
     }
     
     final void c(int paramInt, float paramFloat)
     {
-      if ((this.sc != null) && (this.sc.isRunning())) {
-        this.sc.cancel();
+      if ((this.tc != null) && (this.tc.isRunning())) {
+        this.tc.cancel();
       }
-      this.rZ = paramInt;
-      this.sa = paramFloat;
-      cD();
+      this.ta = paramInt;
+      this.tb = paramFloat;
+      cK();
     }
     
     public final void draw(Canvas paramCanvas)
     {
-      if (TabLayout.this.ru != null) {}
-      for (int i = TabLayout.this.ru.getIntrinsicHeight();; i = 0)
+      if (TabLayout.this.sv != null) {}
+      for (int i = TabLayout.this.sv.getIntrinsicHeight();; i = 0)
       {
-        if (this.rW >= 0) {
-          i = this.rW;
+        if (this.sX >= 0) {
+          i = this.sX;
         }
         int j;
         Object localObject;
-        switch (TabLayout.this.rF)
+        switch (TabLayout.this.sG)
         {
         default: 
           i = 0;
           j = 0;
           if ((this.indicatorLeft >= 0) && (this.indicatorRight > this.indicatorLeft))
           {
-            if (TabLayout.this.ru == null) {
+            if (TabLayout.this.sv == null) {
               break label238;
             }
-            localObject = TabLayout.this.ru;
+            localObject = TabLayout.this.sv;
             label113:
             localObject = android.support.v4.graphics.drawable.a.i((Drawable)localObject);
             ((Drawable)localObject).setBounds(this.indicatorLeft, j, this.indicatorRight, i);
-            if (this.rX != null)
+            if (this.sY != null)
             {
               if (Build.VERSION.SDK_INT != 21) {
                 break label247;
               }
-              ((Drawable)localObject).setColorFilter(this.rX.getColor(), PorterDuff.Mode.SRC_IN);
+              ((Drawable)localObject).setColorFilter(this.sY.getColor(), PorterDuff.Mode.SRC_IN);
             }
           }
           break;
@@ -1345,10 +1343,10 @@ public class TabLayout
           j = 0;
           break;
           label238:
-          localObject = this.rY;
+          localObject = this.sZ;
           break label113;
           label247:
-          android.support.v4.graphics.drawable.a.a((Drawable)localObject, this.rX.getColor());
+          android.support.v4.graphics.drawable.a.a((Drawable)localObject, this.sY.getColor());
         }
       }
     }
@@ -1365,12 +1363,12 @@ public class TabLayout
     
     final void k(final int paramInt1, int paramInt2)
     {
-      if ((this.sc != null) && (this.sc.isRunning())) {
-        this.sc.cancel();
+      if ((this.tc != null) && (this.tc.isRunning())) {
+        this.tc.cancel();
       }
       Object localObject = getChildAt(paramInt1);
       if (localObject == null) {
-        cD();
+        cK();
       }
       final int k;
       final int m;
@@ -1383,7 +1381,7 @@ public class TabLayout
         m = ((View)localObject).getRight();
         j = k;
         i = m;
-        if (!TabLayout.this.rH)
+        if (!TabLayout.this.sI)
         {
           j = k;
           i = m;
@@ -1398,8 +1396,8 @@ public class TabLayout
         m = this.indicatorRight;
       } while ((k == j) && (m == i));
       localObject = new ValueAnimator();
-      this.sc = ((ValueAnimator)localObject);
-      ((ValueAnimator)localObject).setInterpolator(android.support.design.a.a.dQ);
+      this.tc = ((ValueAnimator)localObject);
+      ((ValueAnimator)localObject).setInterpolator(android.support.design.a.a.eQ);
       ((ValueAnimator)localObject).setDuration(paramInt2);
       ((ValueAnimator)localObject).setFloatValues(new float[] { 0.0F, 1.0F });
       ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
@@ -1414,8 +1412,8 @@ public class TabLayout
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          TabLayout.e.this.rZ = paramInt1;
-          TabLayout.e.this.sa = 0.0F;
+          TabLayout.e.this.ta = paramInt1;
+          TabLayout.e.this.tb = 0.0F;
         }
       });
       ((ValueAnimator)localObject).start();
@@ -1424,16 +1422,16 @@ public class TabLayout
     protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      if ((this.sc != null) && (this.sc.isRunning()))
+      if ((this.tc != null) && (this.tc.isRunning()))
       {
-        this.sc.cancel();
-        long l = this.sc.getDuration();
-        paramInt1 = this.rZ;
-        float f = this.sc.getAnimatedFraction();
+        this.tc.cancel();
+        long l = this.tc.getDuration();
+        paramInt1 = this.ta;
+        float f = this.tc.getAnimatedFraction();
         k(paramInt1, Math.round((float)l * (1.0F - f)));
         return;
       }
-      cD();
+      cK();
     }
     
     protected final void onMeasure(int paramInt1, int paramInt2)
@@ -1443,7 +1441,7 @@ public class TabLayout
         break label16;
       }
       label16:
-      while ((TabLayout.this.mode != 1) || (TabLayout.this.rD != 1)) {
+      while ((TabLayout.this.mode != 1) || (TabLayout.this.sE != 1)) {
         return;
       }
       int n = getChildCount();
@@ -1492,7 +1490,7 @@ public class TabLayout
         {
           k += 1;
           break label133;
-          TabLayout.this.rD = 0;
+          TabLayout.this.sE = 0;
           TabLayout.this.x(false);
           m = 1;
           if (m == 0) {
@@ -1515,164 +1513,30 @@ public class TabLayout
     }
   }
   
-  public static final class f
-  {
-    Drawable icon;
-    int position = -1;
-    CharSequence sj;
-    public View sk;
-    public TabLayout sl;
-    public TabLayout.h sm;
-    Object tag;
-    CharSequence text;
-    
-    private f z(View paramView)
-    {
-      this.sk = paramView;
-      cE();
-      return this;
-    }
-    
-    public final f ak(int paramInt)
-    {
-      return z(LayoutInflater.from(this.sm.getContext()).inflate(paramInt, this.sm, false));
-    }
-    
-    final void cE()
-    {
-      if (this.sm != null) {
-        this.sm.update();
-      }
-    }
-    
-    public final f d(CharSequence paramCharSequence)
-    {
-      if ((TextUtils.isEmpty(this.sj)) && (!TextUtils.isEmpty(paramCharSequence))) {
-        this.sm.setContentDescription(paramCharSequence);
-      }
-      this.text = paramCharSequence;
-      cE();
-      return this;
-    }
-    
-    public final f gb(Object paramObject)
-    {
-      this.tag = paramObject;
-      return this;
-    }
-    
-    public final View getCustomView()
-    {
-      return this.sk;
-    }
-    
-    public final Object getTag()
-    {
-      return this.tag;
-    }
-    
-    public final boolean isSelected()
-    {
-      if (this.sl == null) {
-        throw new IllegalArgumentException("Tab not attached to a TabLayout");
-      }
-      return this.sl.getSelectedTabPosition() == this.position;
-    }
-    
-    public final void select()
-    {
-      if (this.sl == null) {
-        throw new IllegalArgumentException("Tab not attached to a TabLayout");
-      }
-      this.sl.b(this);
-    }
-  }
-  
-  public static final class g
-    implements ViewPager.OnPageChangeListener
-  {
-    private final WeakReference<TabLayout> sn;
-    private int so;
-    private int sq;
-    
-    public g(TabLayout paramTabLayout)
-    {
-      this.sn = new WeakReference(paramTabLayout);
-    }
-    
-    public final void onPageScrollStateChanged(int paramInt)
-    {
-      this.so = this.sq;
-      this.sq = paramInt;
-    }
-    
-    public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-    {
-      boolean bool2 = false;
-      TabLayout localTabLayout = (TabLayout)this.sn.get();
-      if (localTabLayout != null) {
-        if ((this.sq == 2) && (this.so != 1)) {
-          break label69;
-        }
-      }
-      label69:
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        if ((this.sq != 2) || (this.so != 0)) {
-          bool2 = true;
-        }
-        localTabLayout.a(paramInt1, paramFloat, bool1, bool2);
-        return;
-      }
-    }
-    
-    public final void onPageSelected(int paramInt)
-    {
-      TabLayout localTabLayout = (TabLayout)this.sn.get();
-      if ((localTabLayout != null) && (localTabLayout.getSelectedTabPosition() != paramInt) && (paramInt < localTabLayout.getTabCount())) {
-        if ((this.sq != 0) && ((this.sq != 2) || (this.so != 0))) {
-          break label66;
-        }
-      }
-      label66:
-      for (boolean bool = true;; bool = false)
-      {
-        localTabLayout.b(localTabLayout.ad(paramInt), bool);
-        return;
-      }
-    }
-    
-    final void reset()
-    {
-      this.sq = 0;
-      this.so = 0;
-    }
-  }
-  
   final class h
     extends LinearLayout
   {
-    private View sk;
-    private TabLayout.f sr;
-    TextView ss;
-    ImageView st;
-    TextView su;
-    ImageView sv;
-    private Drawable sw;
-    private int sx = 2;
+    private View tk;
+    private TabLayout.f tq;
+    TextView tr;
+    ImageView ts;
+    TextView tt;
+    ImageView tu;
+    private Drawable tv;
+    private int tw = 2;
     
     public h(Context paramContext)
     {
       super();
       I(paramContext);
-      t.d(this, TabLayout.this.rl, TabLayout.this.rm, TabLayout.this.rn, TabLayout.this.ro);
+      t.d(this, TabLayout.this.sm, TabLayout.this.sn, TabLayout.this.so, TabLayout.this.sq);
       setGravity(17);
-      if (TabLayout.this.rG) {}
+      if (TabLayout.this.sH) {}
       for (int i = 0;; i = 1)
       {
         setOrientation(i);
         setClickable(true);
-        t.a(this, r.V(getContext()));
+        t.a(this, r.W(getContext()));
         return;
       }
     }
@@ -1682,28 +1546,28 @@ public class TabLayout
       Object localObject = null;
       GradientDrawable localGradientDrawable;
       ColorStateList localColorStateList;
-      if (TabLayout.this.ry != 0)
+      if (TabLayout.this.sz != 0)
       {
-        this.sw = android.support.v7.c.a.a.l(paramContext, TabLayout.this.ry);
-        if ((this.sw != null) && (this.sw.isStateful())) {
-          this.sw.setState(getDrawableState());
+        this.tv = android.support.v7.c.a.a.l(paramContext, TabLayout.this.sz);
+        if ((this.tv != null) && (this.tv.isStateful())) {
+          this.tv.setState(getDrawableState());
         }
         localGradientDrawable = new GradientDrawable();
         ((GradientDrawable)localGradientDrawable).setColor(0);
         paramContext = localGradientDrawable;
-        if (TabLayout.this.rt != null)
+        if (TabLayout.this.su != null)
         {
           paramContext = new GradientDrawable();
           paramContext.setCornerRadius(1.0E-005F);
           paramContext.setColor(-1);
-          localColorStateList = android.support.design.e.a.b(TabLayout.this.rt);
+          localColorStateList = android.support.design.e.a.b(TabLayout.this.su);
           if (Build.VERSION.SDK_INT < 21) {
             break label183;
           }
-          if (TabLayout.this.rI) {
+          if (TabLayout.this.sJ) {
             localGradientDrawable = null;
           }
-          if (!TabLayout.this.rI) {
+          if (!TabLayout.this.sJ) {
             break label180;
           }
           paramContext = localObject;
@@ -1715,7 +1579,7 @@ public class TabLayout
         t.a(this, paramContext);
         TabLayout.this.invalidate();
         return;
-        this.sw = null;
+        this.tv = null;
         break;
         label180:
         break label147;
@@ -1733,13 +1597,13 @@ public class TabLayout
       label51:
       label76:
       int i;
-      if ((this.sr != null) && (this.sr.icon != null))
+      if ((this.tq != null) && (this.tq.icon != null))
       {
-        localDrawable = android.support.v4.graphics.drawable.a.i(this.sr.icon).mutate();
-        if (this.sr == null) {
+        localDrawable = android.support.v4.graphics.drawable.a.i(this.tq.icon).mutate();
+        if (this.tq == null) {
           break label217;
         }
-        localCharSequence = this.sr.text;
+        localCharSequence = this.tq.text;
         if (paramImageView != null)
         {
           if (localDrawable == null) {
@@ -1777,7 +1641,7 @@ public class TabLayout
       label296:
       for (int j = TabLayout.this.ag(8);; j = 0)
       {
-        if (TabLayout.this.rG)
+        if (TabLayout.this.sH)
         {
           if (j != android.support.v4.view.g.b(paramTextView))
           {
@@ -1787,10 +1651,10 @@ public class TabLayout
             paramImageView.requestLayout();
           }
           label183:
-          if (this.sr == null) {
+          if (this.tq == null) {
             break label288;
           }
-          paramTextView = this.sr.sj;
+          paramTextView = this.tq.tj;
           label198:
           if (i == 0) {
             break label293;
@@ -1837,11 +1701,11 @@ public class TabLayout
       boolean bool2 = false;
       int[] arrayOfInt = getDrawableState();
       boolean bool1 = bool2;
-      if (this.sw != null)
+      if (this.tv != null)
       {
         bool1 = bool2;
-        if (this.sw.isStateful()) {
-          bool1 = this.sw.setState(arrayOfInt) | false;
+        if (this.tv.isStateful()) {
+          bool1 = this.tv.setState(arrayOfInt) | false;
         }
       }
       if (bool1)
@@ -1853,9 +1717,9 @@ public class TabLayout
     
     final int getContentWidth()
     {
-      TextView localTextView = this.ss;
-      ImageView localImageView = this.st;
-      View localView1 = this.sk;
+      TextView localTextView = this.tr;
+      ImageView localImageView = this.ts;
+      View localView1 = this.tk;
       int k = 0;
       int m = 0;
       int i = 0;
@@ -1904,9 +1768,9 @@ public class TabLayout
     
     final void i(TabLayout.f paramf)
     {
-      if (paramf != this.sr)
+      if (paramf != this.tq)
       {
-        this.sr = paramf;
+        this.tq = paramf;
         update();
       }
     }
@@ -1939,17 +1803,17 @@ public class TabLayout
         }
         else
         {
-          i = View.MeasureSpec.makeMeasureSpec(TabLayout.this.rz, -2147483648);
+          i = View.MeasureSpec.makeMeasureSpec(TabLayout.this.sA, -2147483648);
         }
       }
       super.onMeasure(i, paramInt2);
       float f2;
       float f1;
-      if (this.ss != null)
+      if (this.tr != null)
       {
-        f2 = TabLayout.this.rw;
-        j = this.sx;
-        if ((this.st == null) || (this.st.getVisibility() != 0)) {
+        f2 = TabLayout.this.sx;
+        j = this.tw;
+        if ((this.ts == null) || (this.ts.getVisibility() != 0)) {
           break label285;
         }
         paramInt1 = 1;
@@ -1957,9 +1821,9 @@ public class TabLayout
       }
       for (;;)
       {
-        f2 = this.ss.getTextSize();
-        m = this.ss.getLineCount();
-        j = android.support.v4.widget.q.b(this.ss);
+        f2 = this.tr.getTextSize();
+        m = this.tr.getLineCount();
+        j = android.support.v4.widget.q.b(this.tr);
         if ((f1 != f2) || ((j >= 0) && (paramInt1 != j)))
         {
           j = k;
@@ -1971,7 +1835,7 @@ public class TabLayout
               j = k;
               if (m == 1)
               {
-                Layout localLayout = this.ss.getLayout();
+                Layout localLayout = this.tr.getLayout();
                 if (localLayout != null)
                 {
                   f2 = localLayout.getLineWidth(0);
@@ -1987,8 +1851,8 @@ public class TabLayout
           }
           if (j != 0)
           {
-            this.ss.setTextSize(0, f1);
-            this.ss.setMaxLines(paramInt1);
+            this.tr.setTextSize(0, f1);
+            this.tr.setMaxLines(paramInt1);
             super.onMeasure(i, paramInt2);
           }
         }
@@ -1996,13 +1860,13 @@ public class TabLayout
         label285:
         paramInt1 = j;
         f1 = f2;
-        if (this.ss != null)
+        if (this.tr != null)
         {
           paramInt1 = j;
           f1 = f2;
-          if (this.ss.getLineCount() > 1)
+          if (this.tr.getLineCount() > 1)
           {
-            f1 = TabLayout.this.rx;
+            f1 = TabLayout.this.sy;
             paramInt1 = j;
           }
         }
@@ -2013,12 +1877,12 @@ public class TabLayout
     {
       boolean bool2 = super.performClick();
       boolean bool1 = bool2;
-      if (this.sr != null)
+      if (this.tq != null)
       {
         if (!bool2) {
           playSoundEffect(0);
         }
-        this.sr.select();
+        this.tq.select();
         bool1 = true;
       }
       return bool1;
@@ -2033,14 +1897,14 @@ public class TabLayout
         if ((i != 0) && (paramBoolean) && (Build.VERSION.SDK_INT < 16)) {
           sendAccessibilityEvent(4);
         }
-        if (this.ss != null) {
-          this.ss.setSelected(paramBoolean);
+        if (this.tr != null) {
+          this.tr.setSelected(paramBoolean);
         }
-        if (this.st != null) {
-          this.st.setSelected(paramBoolean);
+        if (this.ts != null) {
+          this.ts.setSelected(paramBoolean);
         }
-        if (this.sk != null) {
-          this.sk.setSelected(paramBoolean);
+        if (this.tk != null) {
+          this.tk.setSelected(paramBoolean);
         }
         return;
       }
@@ -2048,11 +1912,11 @@ public class TabLayout
     
     final void update()
     {
-      TabLayout.f localf = this.sr;
+      TabLayout.f localf = this.tq;
       Object localObject;
       if (localf != null)
       {
-        localObject = localf.sk;
+        localObject = localf.tk;
         if (localObject == null) {
           break label385;
         }
@@ -2064,29 +1928,29 @@ public class TabLayout
           }
           addView((View)localObject);
         }
-        this.sk = ((View)localObject);
-        if (this.ss != null) {
-          this.ss.setVisibility(8);
+        this.tk = ((View)localObject);
+        if (this.tr != null) {
+          this.tr.setVisibility(8);
         }
-        if (this.st != null)
+        if (this.ts != null)
         {
-          this.st.setVisibility(8);
-          this.st.setImageDrawable(null);
+          this.ts.setVisibility(8);
+          this.ts.setImageDrawable(null);
         }
-        this.su = ((TextView)((View)localObject).findViewById(16908308));
-        if (this.su != null) {
-          this.sx = android.support.v4.widget.q.b(this.su);
+        this.tt = ((TextView)((View)localObject).findViewById(16908308));
+        if (this.tt != null) {
+          this.tw = android.support.v4.widget.q.b(this.tt);
         }
-        this.sv = ((ImageView)((View)localObject).findViewById(16908294));
+        this.tu = ((ImageView)((View)localObject).findViewById(16908294));
         label140:
-        if (this.sk != null) {
+        if (this.tk != null) {
           break label423;
         }
-        if (this.st == null)
+        if (this.ts == null)
         {
           localObject = (ImageView)LayoutInflater.from(getContext()).inflate(2131493696, this, false);
           addView((View)localObject, 0);
-          this.st = ((ImageView)localObject);
+          this.ts = ((ImageView)localObject);
         }
         if ((localf == null) || (localf.icon == null)) {
           break label418;
@@ -2095,26 +1959,26 @@ public class TabLayout
         label206:
         if (localObject != null)
         {
-          android.support.v4.graphics.drawable.a.a((Drawable)localObject, TabLayout.this.rs);
-          if (TabLayout.this.rv != null) {
-            android.support.v4.graphics.drawable.a.a((Drawable)localObject, TabLayout.this.rv);
+          android.support.v4.graphics.drawable.a.a((Drawable)localObject, TabLayout.this.st);
+          if (TabLayout.this.sw != null) {
+            android.support.v4.graphics.drawable.a.a((Drawable)localObject, TabLayout.this.sw);
           }
         }
-        if (this.ss == null)
+        if (this.tr == null)
         {
           localObject = (TextView)LayoutInflater.from(getContext()).inflate(2131493697, this, false);
           addView((View)localObject);
-          this.ss = ((TextView)localObject);
-          this.sx = android.support.v4.widget.q.b(this.ss);
+          this.tr = ((TextView)localObject);
+          this.tw = android.support.v4.widget.q.b(this.tr);
         }
-        android.support.v4.widget.q.d(this.ss, TabLayout.this.rp);
-        if (TabLayout.this.rq != null) {
-          this.ss.setTextColor(TabLayout.this.rq);
+        android.support.v4.widget.q.d(this.tr, TabLayout.this.sr);
+        if (TabLayout.this.ss != null) {
+          this.tr.setTextColor(TabLayout.this.ss);
         }
-        a(this.ss, this.st);
+        a(this.tr, this.ts);
         label339:
-        if ((localf != null) && (!TextUtils.isEmpty(localf.sj))) {
-          setContentDescription(localf.sj);
+        if ((localf != null) && (!TextUtils.isEmpty(localf.tj))) {
+          setContentDescription(localf.tj);
         }
         if ((localf == null) || (!localf.isSelected())) {
           break label452;
@@ -2130,20 +1994,20 @@ public class TabLayout
         return;
         localObject = null;
         break;
-        if (this.sk != null)
+        if (this.tk != null)
         {
-          removeView(this.sk);
-          this.sk = null;
+          removeView(this.tk);
+          this.tk = null;
         }
-        this.su = null;
-        this.sv = null;
+        this.tt = null;
+        this.tu = null;
         break label140;
         localObject = null;
         break label206;
-        if ((this.su == null) && (this.sv == null)) {
+        if ((this.tt == null) && (this.tu == null)) {
           break label339;
         }
-        a(this.su, this.sv);
+        a(this.tt, this.tu);
         break label339;
       }
     }
@@ -2151,7 +2015,7 @@ public class TabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.TabLayout
  * JD-Core Version:    0.7.0.1
  */

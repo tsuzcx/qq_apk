@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vx
   extends b
 {
-  public a dBu;
+  public a dyN;
   
   public vx()
   {
@@ -15,30 +15,21 @@ public final class vx
   
   private vx(byte paramByte)
   {
-    AppMethodBeat.i(140991);
-    this.dBu = new a();
-    this.ESR = false;
+    AppMethodBeat.i(94818);
+    this.dyN = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(140991);
+    AppMethodBeat.o(94818);
   }
   
   public static final class a
   {
-    public String Title;
-    public int dcA = 0;
-    public int dcB = 0;
-    public String dcC;
-    public int dcy = 0;
-    public int dcz = 0;
-    public String desc;
-    public int position = 0;
-    public String url;
-    public boolean visible = false;
+    public long fe = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.vx
  * JD-Core Version:    0.7.0.1
  */

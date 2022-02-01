@@ -13,21 +13,21 @@ public abstract class aw
         return false;
       }
       paramObject = (av)paramObject;
-      if (fJY() != paramObject.fJY()) {
+      if (gcB() != paramObject.gcB()) {
         return false;
       }
-      if (fJZ() != paramObject.fJZ()) {
+      if (gcC() != paramObject.gcC()) {
         return false;
       }
-    } while (fzr().equals(paramObject.fzr()));
+    } while (fRV().equals(paramObject.fRV()));
     return false;
   }
   
   public int hashCode()
   {
-    int i = fJZ().hashCode();
+    int i = gcC().hashCode();
     int j;
-    if (bc.aB(fzr()))
+    if (bc.aB(fRV()))
     {
       j = i * 31;
       i = 19;
@@ -36,28 +36,28 @@ public abstract class aw
     {
       return i + j;
       j = i * 31;
-      if (fJY()) {
+      if (gcB()) {
         i = 17;
       } else {
-        i = fzr().hashCode();
+        i = fRV().hashCode();
       }
     }
   }
   
   public String toString()
   {
-    if (fJY()) {
+    if (gcB()) {
       return "*";
     }
-    if (fJZ() == bh.JYC) {
-      return fzr().toString();
+    if (gcC() == bh.LLV) {
+      return fRV().toString();
     }
-    return fJZ() + " " + fzr();
+    return gcC() + " " + fRV();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.aw
  * JD-Core Version:    0.7.0.1
  */

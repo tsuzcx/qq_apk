@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gj;
+import com.tencent.mm.g.b.a.ib;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
-import com.tencent.mm.plugin.websearch.api.j;
+import com.tencent.mm.plugin.websearch.api.i;
 
 public final class f
 {
@@ -20,26 +20,26 @@ public final class f
     }
     for (;;)
     {
-      localObject = new gj();
-      ((gj)localObject).egW = ((gj)localObject).t("appId", paramWidgetData2, true);
-      ((gj)localObject).egU = paramInt;
-      ((gj)localObject).egV = (System.currentTimeMillis() / 1000L);
-      ((gj)localObject).egX = paramWidgetData1.AHB.cIB;
-      ((gj)localObject).egY = ((gj)localObject).t("statBuffer", paramWidgetData1.AHB.AHJ, true);
-      ((gj)localObject).egZ = ((gj)localObject).t("switchId", String.format("%s-%s-%s", new Object[] { paramWidgetData1.AHB.jko, Integer.valueOf(paramWidgetData1.AHB.cIB), Long.valueOf(System.currentTimeMillis() / 1000L) }), true);
-      paramWidgetData1 = ((gj)localObject).PV();
-      ((j)g.ab(j.class)).ci(14688, paramWidgetData1);
+      localObject = new ib();
+      ((ib)localObject).ejc = ((ib)localObject).t("appId", paramWidgetData2, true);
+      ((ib)localObject).eja = paramInt;
+      ((ib)localObject).ejb = (System.currentTimeMillis() / 1000L);
+      ((ib)localObject).ejd = paramWidgetData1.BZS.cFI;
+      ((ib)localObject).eje = ((ib)localObject).t("statBuffer", paramWidgetData1.BZS.Caa, true);
+      ((ib)localObject).ejf = ((ib)localObject).t("switchId", String.format("%s-%s-%s", new Object[] { paramWidgetData1.BZS.jKB, Integer.valueOf(paramWidgetData1.BZS.cFI), Long.valueOf(System.currentTimeMillis() / 1000L) }), true);
+      paramWidgetData1 = ((ib)localObject).PR();
+      ((i)g.ab(i.class)).cl(14688, paramWidgetData1);
       AppMethodBeat.o(116645);
       return;
-      paramWidgetData2 = paramWidgetData1.AHB.gRK;
+      paramWidgetData2 = paramWidgetData1.BZS.hsk;
       continue;
-      paramWidgetData2 = paramWidgetData2.AHB.gRK;
+      paramWidgetData2 = paramWidgetData2.BZS.hsk;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.f
  * JD-Core Version:    0.7.0.1
  */

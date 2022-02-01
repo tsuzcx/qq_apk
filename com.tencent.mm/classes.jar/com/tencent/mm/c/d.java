@@ -13,22 +13,22 @@ import com.tencent.mm.view.b.a;
 public final class d
   extends b
 {
-  public a cHP;
-  public float cHQ = 1.0F;
-  public float cHR;
-  public float cHS;
-  public boolean cHT = true;
-  public boolean cHU = false;
-  public ValueAnimator cHw;
+  public ValueAnimator cEE;
+  public a cEX;
+  public float cEY = 1.0F;
+  public float cEZ;
+  public float cFa;
+  public boolean cFb = true;
+  public boolean cFc = false;
   
   public d(a parama)
   {
-    this.cHP = parama;
+    this.cEX = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.d;
 
 public abstract interface a
 {
-  public abstract void B(String paramString1, String paramString2, int paramInt);
+  public abstract void C(String paramString1, String paramString2, int paramInt);
   
   public abstract void a(String paramString1, String paramString2, int paramInt1, long paramLong1, long paramLong2, long paramLong3, int paramInt2, String paramString3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, String paramString4, int paramInt3);
   
-  public abstract void bdg();
+  public abstract void bkb();
   
-  public abstract void dk(String paramString1, String paramString2);
+  public abstract void dw(String paramString1, String paramString2);
   
-  public abstract void dl(String paramString1, String paramString2);
+  public abstract void dx(String paramString1, String paramString2);
   
-  public abstract void nf(long paramLong);
+  public abstract void qR(long paramLong);
   
-  public abstract void sb(int paramInt);
+  public abstract void sR(int paramInt);
 }
 
 

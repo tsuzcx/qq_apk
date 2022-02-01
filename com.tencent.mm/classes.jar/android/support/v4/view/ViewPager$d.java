@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface ViewPager$d
 {
-  public abstract void m(View paramView, float paramFloat);
+  public abstract void n(View paramView, float paramFloat);
 }
 
 

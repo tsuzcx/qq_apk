@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public final class c
   extends a
 {
-  public String AAZ;
-  public String dpw;
+  public String BTu;
+  public String dnh;
   public String id;
   
   public c()
@@ -22,14 +22,14 @@ public final class c
   public c(String paramString)
   {
     AppMethodBeat.i(72211);
-    this.dpw = paramString;
+    this.dnh = paramString;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("payu_reference", bt.by(paramString, ""));
+    localHashMap.put("payu_reference", bs.bG(paramString, ""));
     setRequestData(localHashMap);
     AppMethodBeat.o(72211);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 23;
   }
@@ -38,7 +38,7 @@ public final class c
   {
     AppMethodBeat.i(72212);
     this.id = paramJSONObject.optString("id");
-    this.AAZ = paramJSONObject.optString("description");
+    this.BTu = paramJSONObject.optString("description");
     AppMethodBeat.o(72212);
   }
 }

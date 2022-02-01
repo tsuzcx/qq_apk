@@ -5,19 +5,19 @@ import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/Atom/EdtsAtom;", "Lcom/tencent/mm/plugin/Atom/Atom;", "atomSize", "", "beginPos", "", "type", "atomLargeSize", "(IJIJ)V", "mediaTimes", "", "getMediaTimes", "()Ljava/util/List;", "segmentDurations", "getSegmentDurations", "handleElstAtom", "", "source", "Ljava/io/RandomAccessFile;", "parse", "atomHead", "", "plugin-playvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/Atom/EdtsAtom;", "Lcom/tencent/mm/plugin/Atom/Atom;", "atomSize", "", "beginPos", "", "type", "atomLargeSize", "(IJIJ)V", "mediaTimes", "", "getMediaTimes", "()Ljava/util/List;", "segmentDurations", "getSegmentDurations", "handleElstAtom", "", "source", "Ljava/io/RandomAccessFile;", "parse", "atomHead", "", "plugin-playvideo_release"})
 public final class d
   extends a
 {
-  public final List<Long> hXa;
-  public final List<Long> hXb;
+  public final List<Long> ixe;
+  public final List<Long> ixf;
   
   public d(int paramInt1, long paramLong, int paramInt2)
   {
     super(paramInt1, paramLong, paramInt2, 0L);
     AppMethodBeat.i(134105);
-    this.hXa = ((List)new ArrayList());
-    this.hXb = ((List)new ArrayList());
+    this.ixe = ((List)new ArrayList());
+    this.ixf = ((List)new ArrayList());
     AppMethodBeat.o(134105);
   }
 }

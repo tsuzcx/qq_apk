@@ -10,7 +10,7 @@ final class WalletOrderInfoNewUI$10
 {
   WalletOrderInfoNewUI$10(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
   
-  public final void kM(int paramInt)
+  public final void kG(int paramInt)
   {
     AppMethodBeat.i(70997);
     switch (paramInt)
@@ -20,12 +20,12 @@ final class WalletOrderInfoNewUI$10
     {
       AppMethodBeat.o(70997);
       return;
-      Object localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + WalletOrderInfoNewUI.y(this.Aot)));
+      Object localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + WalletOrderInfoNewUI.y(this.BGN)));
       ((Intent)localObject).addFlags(268435456);
-      WalletOrderInfoNewUI localWalletOrderInfoNewUI = this.Aot;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoNewUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localWalletOrderInfoNewUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      WalletOrderInfoNewUI localWalletOrderInfoNewUI = this.BGN;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoNewUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localWalletOrderInfoNewUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoNewUI, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }

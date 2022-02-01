@@ -10,39 +10,39 @@ import java.util.Arrays;
 
 abstract class h
 {
-  private g aXn;
-  private com.google.android.exoplayer2.c.m aZw;
-  private long bdU;
-  private long beA;
-  private a beB;
-  private long beC;
-  private boolean beD;
-  private boolean beE;
-  private final d bex = new d();
-  private f bey;
-  long bez;
+  private g aXZ;
+  private com.google.android.exoplayer2.c.m bai;
+  private long beG;
+  private final d bfj = new d();
+  private f bfk;
+  long bfl;
+  private long bfm;
+  private a bfn;
+  private long bfo;
+  private boolean bfp;
+  private boolean bfq;
   private int sampleRate;
   int state;
   
-  protected final long R(long paramLong)
+  protected final long S(long paramLong)
   {
     return 1000000L * paramLong / this.sampleRate;
   }
   
-  protected final long S(long paramLong)
+  protected final long T(long paramLong)
   {
     return this.sampleRate * paramLong / 1000000L;
   }
   
-  protected void T(long paramLong)
+  protected void U(long paramLong)
   {
-    this.beA = paramLong;
+    this.bfm = paramLong;
   }
   
   final void a(g paramg, com.google.android.exoplayer2.c.m paramm)
   {
-    this.aXn = paramg;
-    this.aZw = paramm;
+    this.aXZ = paramg;
+    this.bai = paramm;
     reset(true);
   }
   
@@ -50,34 +50,34 @@ abstract class h
   
   final int b(com.google.android.exoplayer2.c.f paramf, k paramk)
   {
-    long l1 = this.bey.i(paramf);
+    long l1 = this.bfk.i(paramf);
     if (l1 >= 0L)
     {
       paramk.position = l1;
       return 1;
     }
     if (l1 < -1L) {
-      T(-(l1 + 2L));
+      U(-(l1 + 2L));
     }
-    if (!this.beD)
+    if (!this.bfp)
     {
-      paramk = this.bey.sU();
-      this.aXn.a(paramk);
-      this.beD = true;
+      paramk = this.bfk.td();
+      this.aXZ.a(paramk);
+      this.bfp = true;
     }
-    if ((this.beC > 0L) || (this.bex.k(paramf)))
+    if ((this.bfo > 0L) || (this.bfj.k(paramf)))
     {
-      this.beC = 0L;
-      paramf = this.bex.beh;
+      this.bfo = 0L;
+      paramf = this.bfj.beT;
       l1 = s(paramf);
-      if ((l1 >= 0L) && (this.beA + l1 >= this.bdU))
+      if ((l1 >= 0L) && (this.bfm + l1 >= this.beG))
       {
-        long l2 = R(this.beA);
-        this.aZw.a(paramf, paramf.limit);
-        this.aZw.a(l2, 1, paramf.limit, 0, null);
-        this.bdU = -1L;
+        long l2 = S(this.bfm);
+        this.bai.a(paramf, paramf.limit);
+        this.bai.a(l2, 1, paramf.limit, 0, null);
+        this.beG = -1L;
       }
-      this.beA += l1;
+      this.bfm += l1;
       return 0;
     }
     this.state = 3;
@@ -87,14 +87,14 @@ abstract class h
   final void f(long paramLong1, long paramLong2)
   {
     boolean bool = false;
-    d locald = this.bex;
-    locald.bdP.reset();
-    locald.beh.reset();
-    locald.bei = -1;
-    locald.bek = false;
+    d locald = this.bfj;
+    locald.beB.reset();
+    locald.beT.reset();
+    locald.beU = -1;
+    locald.beW = false;
     if (paramLong1 == 0L)
     {
-      if (!this.beD) {
+      if (!this.bfp) {
         bool = true;
       }
       reset(bool);
@@ -102,7 +102,7 @@ abstract class h
     while (this.state == 0) {
       return;
     }
-    this.bdU = this.bey.Q(paramLong2);
+    this.beG = this.bfk.R(paramLong2);
     this.state = 2;
   }
   
@@ -112,48 +112,48 @@ abstract class h
     int j = 1;
     while (j != 0)
     {
-      if (!this.bex.k(paramf))
+      if (!this.bfj.k(paramf))
       {
         this.state = 3;
         i = -1;
         return i;
       }
-      this.beC = (paramf.getPosition() - this.bez);
-      boolean bool = a(this.bex.beh, this.bez, this.beB);
+      this.bfo = (paramf.getPosition() - this.bfl);
+      boolean bool = a(this.bfj.beT, this.bfl, this.bfn);
       j = bool;
       if (bool)
       {
-        this.bez = paramf.getPosition();
+        this.bfl = paramf.getPosition();
         j = bool;
       }
     }
-    this.sampleRate = this.beB.aSv.sampleRate;
-    if (!this.beE)
+    this.sampleRate = this.bfn.aTo.sampleRate;
+    if (!this.bfq)
     {
-      this.aZw.f(this.beB.aSv);
-      this.beE = true;
+      this.bai.f(this.bfn.aTo);
+      this.bfq = true;
     }
-    if (this.beB.bey != null) {
-      this.bey = this.beB.bey;
+    if (this.bfn.bfk != null) {
+      this.bfk = this.bfn.bfk;
     }
     for (;;)
     {
-      this.beB = null;
+      this.bfn = null;
       this.state = 2;
-      paramf = this.bex;
-      if (paramf.beh.data.length == 65025) {
+      paramf = this.bfj;
+      if (paramf.beT.data.length == 65025) {
         break;
       }
-      paramf.beh.data = Arrays.copyOf(paramf.beh.data, Math.max(65025, paramf.beh.limit));
+      paramf.beT.data = Arrays.copyOf(paramf.beT.data, Math.max(65025, paramf.beT.limit));
       return 0;
       if (paramf.getLength() == -1L)
       {
-        this.bey = new b((byte)0);
+        this.bfk = new b((byte)0);
       }
       else
       {
-        e locale = this.bex.bdP;
-        this.bey = new a(this.bez, paramf.getLength(), this, locale.aZG + locale.bes, locale.ben);
+        e locale = this.bfj.beB;
+        this.bfk = new a(this.bfl, paramf.getLength(), this, locale.bas + locale.bfe, locale.beZ);
       }
     }
   }
@@ -162,13 +162,13 @@ abstract class h
   {
     if (paramBoolean)
     {
-      this.beB = new a();
-      this.bez = 0L;
+      this.bfn = new a();
+      this.bfl = 0L;
     }
     for (this.state = 0;; this.state = 1)
     {
-      this.bdU = -1L;
-      this.beA = 0L;
+      this.beG = -1L;
+      this.bfm = 0L;
       return;
     }
   }
@@ -177,14 +177,14 @@ abstract class h
   
   static final class a
   {
-    Format aSv;
-    f bey;
+    Format aTo;
+    f bfk;
   }
   
   static final class b
     implements f
   {
-    public final long Q(long paramLong)
+    public final long R(long paramLong)
     {
       return 0L;
     }
@@ -194,7 +194,7 @@ abstract class h
       return -1L;
     }
     
-    public final l sU()
+    public final l td()
     {
       AppMethodBeat.i(92166);
       l.a locala = new l.a(-9223372036854775807L);

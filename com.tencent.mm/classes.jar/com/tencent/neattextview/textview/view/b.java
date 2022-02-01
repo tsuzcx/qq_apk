@@ -15,29 +15,29 @@ import java.util.List;
 public class b
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, NeatTextView.c
 {
-  private a Ijt;
-  private com.tencent.neattextview.textview.layout.a Iju;
-  protected c Ijv;
-  private GestureDetector ktZ;
+  private a JLe;
+  private com.tencent.neattextview.textview.layout.a JLf;
+  protected c JLg;
+  private GestureDetector kVo;
   protected View mView;
   
   public b(Context paramContext, a parama)
   {
     AppMethodBeat.i(39830);
-    this.Ijt = parama;
-    this.ktZ = new GestureDetector(paramContext, this);
-    this.ktZ.setOnDoubleTapListener(this);
+    this.JLe = parama;
+    this.kVo = new GestureDetector(paramContext, this);
+    this.kVo.setOnDoubleTapListener(this);
     AppMethodBeat.o(39830);
   }
   
   protected void cancel(int paramInt)
   {
     AppMethodBeat.i(39836);
-    if (this.Ijv != null)
+    if (this.JLg != null)
     {
-      this.Ijv.isPressed = false;
+      this.JLg.isPressed = false;
       this.mView.invalidate();
-      this.Ijv = null;
+      this.JLg = null;
     }
     AppMethodBeat.o(39836);
   }
@@ -45,9 +45,9 @@ public class b
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39837);
-    if (this.Ijt.getOnDoubleClickListener() != null)
+    if (this.JLe.getOnDoubleClickListener() != null)
     {
-      this.Ijt.getOnDoubleClickListener().fT(this.mView);
+      this.JLe.getOnDoubleClickListener().gg(this.mView);
       AppMethodBeat.o(39837);
       return true;
     }
@@ -63,23 +63,23 @@ public class b
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39832);
-    if (this.Ijt.flh())
+    if (this.JLe.fBy())
     {
       AppMethodBeat.o(39832);
       return false;
     }
-    if (this.Iju.fkW() == null)
+    if (this.JLf.fBn() == null)
     {
       AppMethodBeat.o(39832);
       return false;
     }
-    Iterator localIterator = this.Iju.fkW().iterator();
+    Iterator localIterator = this.JLf.fBn().iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.al(paramMotionEvent.getX() - this.Ijt.getHorizontalOffset(), paramMotionEvent.getY() - this.Ijt.getVerticalOffset()))
+      if (localc.ap(paramMotionEvent.getX() - this.JLe.getHorizontalOffset(), paramMotionEvent.getY() - this.JLe.getVerticalOffset()))
       {
-        this.Ijv = localc;
+        this.JLg = localc;
         localc.isPressed = true;
         this.mView.postInvalidate();
         AppMethodBeat.o(39832);
@@ -120,17 +120,17 @@ public class b
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39833);
-    if (this.Ijt.flh())
+    if (this.JLe.fBy())
     {
       AppMethodBeat.o(39833);
       return false;
     }
-    if (this.Ijv != null)
+    if (this.JLg != null)
     {
-      paramMotionEvent = this.Ijv;
+      paramMotionEvent = this.JLg;
       View localView = this.mView;
-      if (paramMotionEvent.IhY != null) {
-        ((ClickableSpan)paramMotionEvent.IhY).onClick(localView);
+      if (paramMotionEvent.JJH != null) {
+        ((ClickableSpan)paramMotionEvent.JJH).onClick(localView);
       }
     }
     AppMethodBeat.o(39833);
@@ -140,14 +140,14 @@ public class b
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39831);
-    if (this.Ijt.getLayout() == null)
+    if (this.JLe.getLayout() == null)
     {
       AppMethodBeat.o(39831);
       return false;
     }
-    this.Iju = this.Ijt.getLayout();
+    this.JLf = this.JLe.getLayout();
     this.mView = paramView;
-    boolean bool = this.ktZ.onTouchEvent(paramMotionEvent);
+    boolean bool = this.kVo.onTouchEvent(paramMotionEvent);
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
       cancel(2);
     }

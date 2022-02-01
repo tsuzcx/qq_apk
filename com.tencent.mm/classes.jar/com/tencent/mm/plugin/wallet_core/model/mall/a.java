@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.model.mall;
 
 public final class a
 {
-  public int Aix;
-  public String Aiy;
-  public String Aiz;
+  public int BAS;
+  public String BAT;
+  public String BAU;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.a
  * JD-Core Version:    0.7.0.1
  */

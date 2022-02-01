@@ -17,12 +17,12 @@ public final class at
     localHashMap.put("sendId", paramString2);
     localHashMap.put("channelId", "1");
     localHashMap.put("ver", paramString3);
-    localHashMap.put("sendUserName", u.aqG());
+    localHashMap.put("sendUserName", u.axw());
     setRequestData(localHashMap);
     AppMethodBeat.o(65311);
   }
   
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/sharewxhb";
   }

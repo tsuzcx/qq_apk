@@ -2,19 +2,23 @@ package com.tencent.mm.plugin.luckymoney.scaledLayout;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.r;
+import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.s.a;
+import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.ae;
 import android.support.v7.widget.aj;
 import android.support.v7.widget.ak;
+import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends ak
 {
   public Context context;
-  public View tgd;
-  public boolean tge = false;
+  public View uos;
+  public boolean uot = false;
   
   public static View h(RecyclerView.i parami)
   {
@@ -31,7 +35,7 @@ public final class a
     int k;
     if (parami.getClipToPadding())
     {
-      j = localaj.kd() + localaj.kf() / 2;
+      j = localaj.kl() + localaj.kn() / 2;
       int i = 2147483647;
       k = 0;
       label58:
@@ -74,15 +78,15 @@ public final class a
       return -1;
     }
     View localView1 = localView2;
-    if (this.tgd != null)
+    if (this.uos != null)
     {
       localView1 = localView2;
-      if (this.tgd != localView2) {
-        localView1 = this.tgd;
+      if (this.uos != localView2) {
+        localView1 = this.uos;
       }
     }
     paramInt2 = RecyclerView.i.bB(localView1);
-    ad.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
+    ac.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
     if ((paramInt1 >= 100) && (paramInt2 + 1 < parami.getItemCount()))
     {
       AppMethodBeat.o(65322);
@@ -116,7 +120,7 @@ public final class a
     label118:
     for (;;)
     {
-      if (localView2 == this.tgd) {
+      if (localView2 == this.uos) {
         k = i;
       }
       i += 1;
@@ -138,16 +142,43 @@ public final class a
     }
   }
   
-  public final RecyclerView.r g(RecyclerView.i parami)
+  public final RecyclerView.s g(final RecyclerView.i parami)
   {
     AppMethodBeat.i(65324);
-    if (this.tge)
+    if (this.uot)
     {
       parami = super.g(parami);
       AppMethodBeat.o(65324);
       return parami;
     }
-    parami = new a.1(this, this.context, parami);
+    parami = new ae(this.context)
+    {
+      public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 50.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      public final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      {
+        AppMethodBeat.i(65319);
+        paramAnonymousView = a.this.a(parami, paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.TN);
+        }
+        AppMethodBeat.o(65319);
+      }
+      
+      public final int ce(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(65320);
+        paramAnonymousInt = Math.min(50, super.ce(paramAnonymousInt));
+        AppMethodBeat.o(65320);
+        return paramAnonymousInt;
+      }
+    };
     AppMethodBeat.o(65324);
     return parami;
   }

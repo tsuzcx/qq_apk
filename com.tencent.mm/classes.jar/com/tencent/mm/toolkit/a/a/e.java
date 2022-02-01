@@ -2,17 +2,17 @@ package com.tencent.mm.toolkit.a.a;
 
 public abstract interface e
 {
-  public abstract boolean aQp();
+  public abstract boolean aXh();
   
   public abstract int getTimeout();
   
   public static final class a
     implements e
   {
-    private final int FES = 3;
-    private final float FET = 1.0F;
-    private int FEU = 5000;
-    private int FEV = 0;
+    private final int HdV = 3;
+    private final float HdW = 1.0F;
+    private int HdX = 5000;
+    private int HdY = 0;
     
     public a()
     {
@@ -21,22 +21,22 @@ public abstract interface e
     
     private a(byte paramByte) {}
     
-    public final boolean aQp()
+    public final boolean aXh()
     {
-      this.FEV += 1;
-      this.FEU = ((int)(this.FEU + this.FEU * this.FET));
-      return this.FEV < this.FES;
+      this.HdY += 1;
+      this.HdX = ((int)(this.HdX + this.HdX * this.HdW));
+      return this.HdY < this.HdV;
     }
     
     public final int getTimeout()
     {
-      return this.FEU;
+      return this.HdX;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.a.e
  * JD-Core Version:    0.7.0.1
  */

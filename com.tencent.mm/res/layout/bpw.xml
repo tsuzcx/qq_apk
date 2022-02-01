@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="@dimen/br" android:layout_height="wrap_content"
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/hq3" android:layout_width="@dimen/br" android:layout_height="@dimen/br" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5">
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/hq_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:text="{nickname}" android:maxLines="1" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hq2" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/bq" />
+    <android.support.constraint.ConstraintLayout android:id="@id/hsx" android:background="@drawable/a_c" android:paddingLeft="@dimen/c0" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/hsy" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginRight="@dimen/ci" android:scaleType="centerCrop" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/hta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="640.0px" android:text="{title}{title}{title}{title}{title}{title}{title}{title}" android:maxLines="1" />
+            <TextView android:textSize="@dimen/jo" android:textColor="@color/yh" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ht_" android:background="@drawable/c58" android:paddingLeft="@dimen/bq" android:paddingRight="@dimen/bq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:text="{sub}{sub}" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/FG_2" android:id="@id/hsw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c9" android:text="{desc}" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+        <FrameLayout android:id="@id/ht9" android:background="@drawable/c57" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginRight="@dimen/ci" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/ci" android:layout_height="@dimen/c5" android:src="@raw/icons_filled_arrow" app:iconColor="@color/BW_70" />
+        </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@color/BW_100" android:paddingLeft="@dimen/ci" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toBottomOf="@id/hsx">
+        <include android:id="@id/ht4" layout="@layout/bpy" />
+        <include android:id="@id/ht5" layout="@layout/bpy" />
+        <include android:id="@id/ht6" layout="@layout/bpy" />
     </LinearLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

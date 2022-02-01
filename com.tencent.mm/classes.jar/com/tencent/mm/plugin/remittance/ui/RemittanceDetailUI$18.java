@@ -18,7 +18,7 @@ final class RemittanceDetailUI$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceDetailUI.18
  * JD-Core Version:    0.7.0.1
  */

@@ -7,33 +7,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScaleLayoutManager
   extends ViewPagerLayoutManager
 {
-  public float aMv;
-  private int fQr;
-  private float tgh;
-  private float tgi;
-  private float tgj;
+  public float aNl;
+  private int fUm;
+  private float uow;
+  private float uox;
+  private float uoy;
   
   private ScaleLayoutManager(int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2, float paramFloat4, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     super(paramInt2, paramBoolean);
     AppMethodBeat.i(65337);
-    E(null);
-    if (this.tgC != paramInt4)
+    G(null);
+    if (this.uoR != paramInt4)
     {
-      this.tgC = paramInt4;
+      this.uoR = paramInt4;
       removeAllViews();
     }
-    E(null);
-    if (this.tgA != paramInt3)
+    G(null);
+    if (this.uoP != paramInt3)
     {
-      this.tgA = paramInt3;
+      this.uoP = paramInt3;
       removeAllViews();
     }
-    this.fQr = paramInt1;
-    this.aMv = paramFloat1;
-    this.tgh = paramFloat4;
-    this.tgi = paramFloat2;
-    this.tgj = paramFloat3;
+    this.fUm = paramInt1;
+    this.aNl = paramFloat1;
+    this.uow = paramFloat4;
+    this.uox = paramFloat2;
+    this.uoy = paramFloat3;
     AppMethodBeat.o(65337);
   }
   
@@ -51,34 +51,34 @@ public class ScaleLayoutManager
     AppMethodBeat.o(65336);
   }
   
-  protected final float cLB()
+  protected final float cZh()
   {
-    return this.fQr + this.tgp;
+    return this.fUm + this.uoE;
   }
   
-  protected final float cLC()
+  protected final float cZi()
   {
-    if (this.tgh == 0.0F) {
+    if (this.uow == 0.0F) {
       return 3.4028235E+38F;
     }
-    return 1.0F / this.tgh;
+    return 1.0F / this.uow;
   }
   
-  protected final void p(View paramView, float paramFloat)
+  protected final void q(View paramView, float paramFloat)
   {
     AppMethodBeat.i(65338);
-    float f2 = Math.abs(this.tgr + paramFloat - this.tgr);
+    float f2 = Math.abs(this.uoG + paramFloat - this.uoG);
     float f1 = f2;
-    if (f2 - this.tgp > 0.0F) {
-      f1 = this.tgp;
+    if (f2 - this.uoE > 0.0F) {
+      f1 = this.uoE;
     }
-    f1 = 1.0F - f1 / this.tgp * (1.0F - this.aMv);
+    f1 = 1.0F - f1 / this.uoE * (1.0F - this.aNl);
     paramView.setScaleX(f1);
     paramView.setScaleY(f1);
     f1 = Math.abs(paramFloat);
-    paramFloat = (this.tgj - this.tgi) / this.tgw * f1 + this.tgi;
-    if (f1 >= this.tgw) {
-      paramFloat = this.tgj;
+    paramFloat = (this.uoy - this.uox) / this.uoL * f1 + this.uox;
+    if (f1 >= this.uoL) {
+      paramFloat = this.uoy;
     }
     paramView.setAlpha(paramFloat);
     AppMethodBeat.o(65338);
@@ -86,36 +86,36 @@ public class ScaleLayoutManager
   
   public static final class a
   {
-    private static float tgk = 1.0F;
-    private static float tgl = 1.0F;
-    private float aMv;
-    private boolean aqJ;
+    private static float uoA = 1.0F;
+    private static float uoz = 1.0F;
+    private float aNl;
+    private boolean arF;
     private Context context;
-    private int fQr = 0;
+    private int fUm = 0;
     private int orientation;
-    private float tgh;
-    private float tgi;
-    private float tgj;
-    private int tgm;
-    private int tgn;
+    private int uoB;
+    private int uoC;
+    private float uow;
+    private float uox;
+    private float uoy;
     
     public a(Context paramContext)
     {
       this.context = paramContext;
       this.orientation = 0;
-      this.aMv = 0.8F;
-      this.tgh = 1.0F;
-      this.tgi = tgl;
-      this.tgj = tgk;
-      this.aqJ = false;
-      this.tgn = 2147483647;
-      this.tgm = -1;
+      this.aNl = 0.8F;
+      this.uow = 1.0F;
+      this.uox = uoA;
+      this.uoy = uoz;
+      this.arF = false;
+      this.uoC = 2147483647;
+      this.uoB = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.scaledLayout.ScaleLayoutManager
  * JD-Core Version:    0.7.0.1
  */

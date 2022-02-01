@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class MultiTalkMainUI$ScreenActionReceiver
   extends BroadcastReceiver
@@ -18,17 +18,17 @@ public class MultiTalkMainUI$ScreenActionReceiver
     paramContext = paramIntent.getAction();
     if ((paramContext != null) && (paramContext.equals("android.intent.action.SCREEN_OFF")))
     {
-      ad.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
-      paramContext = this.tQz;
-      paramContext.tQy.removeCallbacksAndMessages(null);
-      paramContext.tQy.sendEmptyMessage(0);
+      ac.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
+      paramContext = this.uYZ;
+      paramContext.uYY.removeCallbacksAndMessages(null);
+      paramContext.uYY.sendEmptyMessage(0);
     }
     AppMethodBeat.o(114662);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI.ScreenActionReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -5,36 +5,37 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.os.Looper;
+import android.support.annotation.Keep;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.a;
-import io.flutter.a.a.n;
+import io.flutter.plugin.a.n;
 import io.flutter.view.FlutterCallbackInformation;
 import io.flutter.view.a.b;
 import java.nio.ByteBuffer;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
+@Keep
 public class FlutterJNI
 {
   private static final String TAG = "FlutterJNI";
-  private static AsyncWaitForVsyncDelegate asyncWaitForVsyncDelegate;
+  private static FlutterJNI.AsyncWaitForVsyncDelegate asyncWaitForVsyncDelegate;
   private static String observatoryUri;
   private static float refreshRateFPS = 0.0F;
   private AccessibilityDelegate accessibilityDelegate;
   private final Set<a.a> engineLifecycleListeners;
-  private final Set<io.flutter.embedding.engine.b.b> firstFrameListeners;
+  private final Set<io.flutter.embedding.engine.b.b> flutterUiDisplayListeners;
   private final Looper mainLooper;
   private Long nativePlatformViewId;
   private io.flutter.embedding.engine.dart.b platformMessageHandler;
-  private io.flutter.embedding.engine.b.a.a renderSurface;
   
   public FlutterJNI()
   {
     AppMethodBeat.i(10127);
-    this.engineLifecycleListeners = new HashSet();
-    this.firstFrameListeners = new HashSet();
+    this.engineLifecycleListeners = new CopyOnWriteArraySet();
+    this.flutterUiDisplayListeners = new CopyOnWriteArraySet();
     this.mainLooper = Looper.getMainLooper();
     AppMethodBeat.o(10127);
   }
@@ -126,8 +127,6 @@ public class FlutterJNI
   
   private native Bitmap nativeGetBitmap(long paramLong);
   
-  public static native boolean nativeGetIsSoftwareRenderingEnabled();
-  
   public static native void nativeInit(Context paramContext, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
   
   private native void nativeInvokePlatformMessageEmptyResponseCallback(long paramLong, int paramInt);
@@ -162,20 +161,6 @@ public class FlutterJNI
   
   private native void nativeUnregisterTexture(long paramLong1, long paramLong2);
   
-  private void onFirstFrame()
-  {
-    AppMethodBeat.i(10135);
-    ensureRunningOnMainThread();
-    if (this.renderSurface != null) {
-      this.renderSurface.onFirstFrameRendered();
-    }
-    Iterator localIterator = this.firstFrameListeners.iterator();
-    while (localIterator.hasNext()) {
-      ((io.flutter.embedding.engine.b.b)localIterator.next()).onFirstFrameRendered();
-    }
-    AppMethodBeat.o(10135);
-  }
-  
   private void onPreEngineRestart()
   {
     AppMethodBeat.i(10162);
@@ -186,7 +171,7 @@ public class FlutterJNI
     AppMethodBeat.o(10162);
   }
   
-  public static void setAsyncWaitForVsyncDelegate(AsyncWaitForVsyncDelegate paramAsyncWaitForVsyncDelegate)
+  public static void setAsyncWaitForVsyncDelegate(FlutterJNI.AsyncWaitForVsyncDelegate paramAsyncWaitForVsyncDelegate)
   {
     asyncWaitForVsyncDelegate = paramAsyncWaitForVsyncDelegate;
   }
@@ -224,12 +209,12 @@ public class FlutterJNI
     AppMethodBeat.o(10160);
   }
   
-  public void addOnFirstFrameRenderedListener(io.flutter.embedding.engine.b.b paramb)
+  public void addIsDisplayingFlutterUiListener(io.flutter.embedding.engine.b.b paramb)
   {
-    AppMethodBeat.i(10133);
+    AppMethodBeat.i(192804);
     ensureRunningOnMainThread();
-    this.firstFrameListeners.add(paramb);
-    AppMethodBeat.o(10133);
+    this.flutterUiDisplayListeners.add(paramb);
+    AppMethodBeat.o(192804);
   }
   
   public void attachToNative(boolean paramBoolean)
@@ -262,7 +247,7 @@ public class FlutterJNI
       return;
     }
     new StringBuilder("Tried to send a platform message to Flutter, but FlutterJNI was detached from native C++. Could not send. Channel: ").append(paramString).append(". Response ID: ").append(paramInt);
-    a.ftU();
+    a.fMG();
     AppMethodBeat.o(10156);
   }
   
@@ -277,7 +262,7 @@ public class FlutterJNI
       return;
     }
     new StringBuilder("Tried to send a platform message to Flutter, but FlutterJNI was detached from native C++. Could not send. Channel: ").append(paramString).append(". Response ID: ").append(paramInt2);
-    a.ftU();
+    a.fMG();
     AppMethodBeat.o(10157);
   }
   
@@ -314,7 +299,7 @@ public class FlutterJNI
     int i = 0;
     if (paramObject != null)
     {
-      localByteBuffer = n.Jbx.eB(paramObject);
+      localByteBuffer = n.KPb.eD(paramObject);
       i = localByteBuffer.position();
     }
     dispatchSemanticsAction(paramInt, paramb.value, localByteBuffer, i);
@@ -342,7 +327,7 @@ public class FlutterJNI
       return;
     }
     "Tried to send a platform message response, but FlutterJNI was detached from native C++. Could not send. Response ID: ".concat(String.valueOf(paramInt));
-    a.ftU();
+    a.fMG();
     AppMethodBeat.o(10158);
   }
   
@@ -357,7 +342,7 @@ public class FlutterJNI
       return;
     }
     "Tried to send a platform message response, but FlutterJNI was detached from native C++. Could not send. Response ID: ".concat(String.valueOf(paramInt1));
-    a.ftU();
+    a.fMG();
     AppMethodBeat.o(10159);
   }
   
@@ -375,17 +360,41 @@ public class FlutterJNI
     AppMethodBeat.o(10150);
   }
   
+  public native boolean nativeGetIsSoftwareRenderingEnabled();
+  
+  void onFirstFrame()
+  {
+    AppMethodBeat.i(10135);
+    ensureRunningOnMainThread();
+    Iterator localIterator = this.flutterUiDisplayListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((io.flutter.embedding.engine.b.b)localIterator.next()).cHX();
+    }
+    AppMethodBeat.o(10135);
+  }
+  
   public void onMemoryWarning()
   {
-    AppMethodBeat.i(190256);
+    AppMethodBeat.i(192807);
     if (isAttached())
     {
       nativeMemoryWarning(this.nativePlatformViewId.longValue());
-      AppMethodBeat.o(190256);
+      AppMethodBeat.o(192807);
       return;
     }
-    a.ftU();
-    AppMethodBeat.o(190256);
+    a.fMG();
+    AppMethodBeat.o(192807);
+  }
+  
+  void onRenderingStopped()
+  {
+    AppMethodBeat.i(192806);
+    ensureRunningOnMainThread();
+    Iterator localIterator = this.flutterUiDisplayListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((io.flutter.embedding.engine.b.b)localIterator.next()).cHY();
+    }
+    AppMethodBeat.o(192806);
   }
   
   public void onSurfaceChanged(int paramInt1, int paramInt2)
@@ -411,6 +420,7 @@ public class FlutterJNI
     AppMethodBeat.i(10138);
     ensureRunningOnMainThread();
     ensureAttachedToNative();
+    onRenderingStopped();
     nativeSurfaceDestroyed(this.nativePlatformViewId.longValue());
     AppMethodBeat.o(10138);
   }
@@ -432,12 +442,12 @@ public class FlutterJNI
     AppMethodBeat.o(10161);
   }
   
-  public void removeOnFirstFrameRenderedListener(io.flutter.embedding.engine.b.b paramb)
+  public void removeIsDisplayingFlutterUiListener(io.flutter.embedding.engine.b.b paramb)
   {
-    AppMethodBeat.i(10134);
+    AppMethodBeat.i(192805);
     ensureRunningOnMainThread();
-    this.firstFrameListeners.remove(paramb);
-    AppMethodBeat.o(10134);
+    this.flutterUiDisplayListeners.remove(paramb);
+    AppMethodBeat.o(192805);
   }
   
   public void runBundleAndSnapshotFromLibrary(String paramString1, String paramString2, String paramString3, AssetManager paramAssetManager)
@@ -474,14 +484,6 @@ public class FlutterJNI
     AppMethodBeat.o(10153);
   }
   
-  public void setRenderSurface(io.flutter.embedding.engine.b.a.a parama)
-  {
-    AppMethodBeat.i(10132);
-    ensureRunningOnMainThread();
-    this.renderSurface = parama;
-    AppMethodBeat.o(10132);
-  }
-  
   public void setSemanticsEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(10147);
@@ -515,15 +517,10 @@ public class FlutterJNI
     
     public abstract void updateSemantics(ByteBuffer paramByteBuffer, String[] paramArrayOfString);
   }
-  
-  public static abstract interface AsyncWaitForVsyncDelegate
-  {
-    public abstract void asyncWaitForVsync(long paramLong);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.embedding.engine.FlutterJNI
  * JD-Core Version:    0.7.0.1
  */

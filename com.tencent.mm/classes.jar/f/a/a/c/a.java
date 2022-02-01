@@ -1,64 +1,64 @@
 package f.a.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.io.OutputStream;
 import java.util.LinkedList;
 
 public final class a
 {
-  private final byte[] KhH;
-  private final f.a.a.b.b.a KhI;
+  private final byte[] LVq;
+  private final f.a.a.b.b.a LVr;
   private final OutputStream output;
   
   public a(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2444);
-    this.KhH = paramArrayOfByte;
+    this.LVq = paramArrayOfByte;
     this.output = null;
-    this.KhI = new f.a.a.b.b.a(paramArrayOfByte, paramArrayOfByte.length);
+    this.LVr = new f.a.a.b.b.a(paramArrayOfByte, paramArrayOfByte.length);
     AppMethodBeat.o(2444);
   }
   
-  public final void aG(int paramInt, long paramLong)
+  public final void aO(int paramInt, long paramLong)
   {
     AppMethodBeat.i(2451);
-    this.KhI.o(paramInt, paramLong);
+    this.LVr.n(paramInt, paramLong);
     AppMethodBeat.o(2451);
   }
   
   public final void aR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2449);
-    this.KhI.by(paramInt1, paramInt2);
+    this.LVr.bv(paramInt1, paramInt2);
     AppMethodBeat.o(2449);
   }
   
-  public final void bg(int paramInt, boolean paramBoolean)
+  public final void bl(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(2445);
-    this.KhI.bf(paramInt, paramBoolean);
+    this.LVr.bk(paramInt, paramBoolean);
     AppMethodBeat.o(2445);
   }
   
   public final void c(int paramInt, b paramb)
   {
     AppMethodBeat.i(2446);
-    this.KhI.a(paramInt, paramb);
+    this.LVr.a(paramInt, paramb);
     AppMethodBeat.o(2446);
   }
   
   public final void d(int paramInt, String paramString)
   {
     AppMethodBeat.i(2452);
-    this.KhI.d(paramInt, paramString);
+    this.LVr.d(paramInt, paramString);
     AppMethodBeat.o(2452);
   }
   
   public final void e(int paramInt, double paramDouble)
   {
     AppMethodBeat.i(2447);
-    this.KhI.e(paramInt, paramDouble);
+    this.LVr.e(paramInt, paramDouble);
     AppMethodBeat.o(2447);
   }
   
@@ -75,102 +75,78 @@ public final class a
         throw paramLinkedList;
       case 6: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
           c(paramInt1, (b)paramLinkedList.get(paramInt2));
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       case 4: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
           e(paramInt1, ((Double)paramLinkedList.get(paramInt2)).doubleValue());
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       case 5: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
           x(paramInt1, ((Float)paramLinkedList.get(paramInt2)).floatValue());
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       case 2: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
           aR(paramInt1, ((Integer)paramLinkedList.get(paramInt2)).intValue());
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       case 3: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
-          aG(paramInt1, ((Long)paramLinkedList.get(paramInt2)).longValue());
+          aO(paramInt1, ((Long)paramLinkedList.get(paramInt2)).longValue());
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       case 1: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
           d(paramInt1, (String)paramLinkedList.get(paramInt2));
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       case 7: 
         paramInt2 = 0;
-        for (;;)
+        while (paramInt2 < paramLinkedList.size())
         {
-          if (paramInt2 >= paramLinkedList.size())
-          {
-            AppMethodBeat.o(2454);
-            return;
-          }
-          bg(paramInt1, ((Boolean)paramLinkedList.get(paramInt2)).booleanValue());
+          bl(paramInt1, ((Boolean)paramLinkedList.get(paramInt2)).booleanValue());
           paramInt2 += 1;
         }
+        AppMethodBeat.o(2454);
+        return;
       }
       paramInt2 = 0;
-      for (;;)
+      while (paramInt2 < paramLinkedList.size())
       {
-        if (paramInt2 >= paramLinkedList.size())
-        {
-          AppMethodBeat.o(2454);
-          return;
-        }
-        com.tencent.mm.bx.a locala = (com.tencent.mm.bx.a)paramLinkedList.get(paramInt2);
-        kX(paramInt1, locala.computeSize());
+        com.tencent.mm.bw.a locala = (com.tencent.mm.bw.a)paramLinkedList.get(paramInt2);
+        ln(paramInt1, locala.computeSize());
         locala.writeFields(this);
         paramInt2 += 1;
       }
+      AppMethodBeat.o(2454);
+      return;
     }
     AppMethodBeat.o(2454);
   }
@@ -188,37 +164,31 @@ public final class a
       case 2: 
         if (paramLinkedList.size() > 0)
         {
-          this.KhI.bC(paramInt1, 2);
-          this.KhI.fZ(f.a.a.a.e(paramInt2, paramLinkedList));
+          this.LVr.bz(paramInt1, 2);
+          this.LVr.fL(f.a.a.a.e(paramInt2, paramLinkedList));
           paramInt1 = 0;
-          for (;;)
+          while (paramInt1 < paramLinkedList.size())
           {
-            if (paramInt1 >= paramLinkedList.size())
-            {
-              AppMethodBeat.o(2455);
-              return;
-            }
-            this.KhI.fZ(((Integer)paramLinkedList.get(paramInt1)).intValue());
+            this.LVr.fL(((Integer)paramLinkedList.get(paramInt1)).intValue());
             paramInt1 += 1;
           }
+          AppMethodBeat.o(2455);
+          return;
         }
         break;
       case 3: 
         if (paramLinkedList.size() > 0)
         {
-          this.KhI.bC(paramInt1, 2);
-          this.KhI.fZ(f.a.a.a.e(paramInt2, paramLinkedList));
+          this.LVr.bz(paramInt1, 2);
+          this.LVr.fL(f.a.a.a.e(paramInt2, paramLinkedList));
           paramInt1 = 0;
-          for (;;)
+          while (paramInt1 < paramLinkedList.size())
           {
-            if (paramInt1 >= paramLinkedList.size())
-            {
-              AppMethodBeat.o(2455);
-              return;
-            }
-            this.KhI.aA(((Long)paramLinkedList.get(paramInt1)).longValue());
+            this.LVr.aw(((Long)paramLinkedList.get(paramInt1)).longValue());
             paramInt1 += 1;
           }
+          AppMethodBeat.o(2455);
+          return;
         }
         break;
       }
@@ -226,35 +196,35 @@ public final class a
     AppMethodBeat.o(2455);
   }
   
-  public final void fMA()
+  public final void gfq()
   {
     AppMethodBeat.i(168739);
     if (this.output != null)
     {
-      this.output.write(this.KhH);
+      this.output.write(this.LVq);
       this.output.flush();
     }
     AppMethodBeat.o(168739);
   }
   
-  public final void kX(int paramInt1, int paramInt2)
+  public final void ln(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2453);
-    this.KhI.kX(paramInt1, paramInt2);
+    this.LVr.ln(paramInt1, paramInt2);
     AppMethodBeat.o(2453);
   }
   
-  public final void kY(int paramInt1, int paramInt2)
+  public final void lo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(205064);
+    AppMethodBeat.i(210389);
     aR(paramInt1, paramInt2);
-    AppMethodBeat.o(205064);
+    AppMethodBeat.o(210389);
   }
   
   public final void x(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(2448);
-    this.KhI.x(paramInt, paramFloat);
+    this.LVr.x(paramInt, paramFloat);
     AppMethodBeat.o(2448);
   }
 }

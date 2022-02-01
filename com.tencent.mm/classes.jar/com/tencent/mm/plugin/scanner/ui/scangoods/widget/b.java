@@ -4,16 +4,16 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/DefaultScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/DefaultScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
 public final class b
   extends a
 {
-  public static final b.a vWL;
+  public static final b.a xhy;
   
   static
   {
     AppMethodBeat.i(52254);
-    vWL = new b.a((byte)0);
+    xhy = new b.a((byte)0);
     AppMethodBeat.o(52254);
   }
   
@@ -40,7 +40,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.b
  * JD-Core Version:    0.7.0.1
  */

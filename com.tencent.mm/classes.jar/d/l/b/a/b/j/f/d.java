@@ -13,58 +13,58 @@ import java.util.List;
 
 public final class d
 {
-  private static int JSZ;
-  private static final int JTa;
-  private static final int JTb;
-  private static final int JTc;
-  private static final int JTd;
-  private static final int JTe;
-  private static final int JTf;
-  private static final int JTg;
-  private static final int JTh;
-  private static final int JTi;
-  private static final int JTj;
-  public static final d JTk;
-  public static final d JTl;
-  public static final d JTm;
-  public static final d JTn;
-  public static final d JTo;
-  public static final d JTp;
-  public static final d JTq;
-  public static final d JTr;
-  public static final d JTs;
-  public static final d JTt;
-  private static final List<d.a.a> JTu;
-  private static final List<d.a.a> JTv;
-  public static final a JTw;
-  final int JSX;
-  public final List<c> JSY;
+  private static final int LGA;
+  private static final int LGB;
+  private static final int LGC;
+  public static final d LGD;
+  public static final d LGE;
+  public static final d LGF;
+  public static final d LGG;
+  public static final d LGH;
+  public static final d LGI;
+  public static final d LGJ;
+  public static final d LGK;
+  public static final d LGL;
+  public static final d LGM;
+  private static final List<d.a.a> LGN;
+  private static final List<d.a.a> LGO;
+  public static final a LGP;
+  private static int LGs;
+  private static final int LGt;
+  private static final int LGu;
+  private static final int LGv;
+  private static final int LGw;
+  private static final int LGx;
+  private static final int LGy;
+  private static final int LGz;
+  final int LGq;
+  public final List<c> LGr;
   
   static
   {
     AppMethodBeat.i(60201);
-    JTw = new a((byte)0);
-    JSZ = 1;
-    JTa = a.fJq();
-    JTb = a.fJq();
-    JTc = a.fJq();
-    JTd = a.fJq();
-    JTe = a.fJq();
-    JTf = a.fJq();
-    JTg = a.fJq() - 1;
-    JTh = JTa | JTb | JTc;
-    JTi = JTb | JTe | JTf;
-    JTj = JTe | JTf;
-    JTk = new d(JTg);
-    JTl = new d(JTj);
-    JTm = new d(JTa);
-    JTn = new d(JTb);
-    JTo = new d(JTc);
-    JTp = new d(JTh);
-    JTq = new d(JTd);
-    JTr = new d(JTe);
-    JTs = new d(JTf);
-    JTt = new d(JTi);
+    LGP = new a((byte)0);
+    LGs = 1;
+    LGt = a.gbT();
+    LGu = a.gbT();
+    LGv = a.gbT();
+    LGw = a.gbT();
+    LGx = a.gbT();
+    LGy = a.gbT();
+    LGz = a.gbT() - 1;
+    LGA = LGt | LGu | LGv;
+    LGB = LGu | LGx | LGy;
+    LGC = LGx | LGy;
+    LGD = new d(LGz);
+    LGE = new d(LGC);
+    LGF = new d(LGt);
+    LGG = new d(LGu);
+    LGH = new d(LGv);
+    LGI = new d(LGA);
+    LGJ = new d(LGw);
+    LGK = new d(LGx);
+    LGL = new d(LGy);
+    LGM = new d(LGB);
     Object localObject1 = d.class.getFields();
     k.g(localObject1, "T::class.java.fields");
     Object localObject2 = (Collection)new ArrayList();
@@ -94,7 +94,7 @@ public final class d
       localObject1 = (d)localObject1;
       if (localObject1 != null)
       {
-        i = ((d)localObject1).JSX;
+        i = ((d)localObject1).LGq;
         k.g(localField, "field");
         localObject1 = localField.getName();
         k.g(localObject1, "field.name");
@@ -108,7 +108,7 @@ public final class d
         break;
       }
     }
-    JTu = j.m((Iterable)localObject3);
+    LGN = j.l((Iterable)localObject3);
     localObject1 = d.class.getFields();
     k.g(localObject1, "T::class.java.fields");
     localObject2 = (Collection)new ArrayList();
@@ -173,31 +173,31 @@ public final class d
         break label701;
       }
     }
-    JTv = j.m((Iterable)localObject2);
+    LGO = j.l((Iterable)localObject2);
     AppMethodBeat.o(60201);
   }
   
   public d(int paramInt, List<? extends c> paramList)
   {
     AppMethodBeat.i(60199);
-    this.JSY = paramList;
-    paramList = ((Iterable)this.JSY).iterator();
+    this.LGr = paramList;
+    paramList = ((Iterable)this.LGr).iterator();
     while (paramList.hasNext()) {
-      paramInt &= (((c)paramList.next()).fJg() ^ 0xFFFFFFFF);
+      paramInt &= (((c)paramList.next()).gbJ() ^ 0xFFFFFFFF);
     }
-    this.JSX = paramInt;
+    this.LGq = paramInt;
     AppMethodBeat.o(60199);
   }
   
-  public final boolean afP(int paramInt)
+  public final boolean aiL(int paramInt)
   {
-    return (this.JSX & paramInt) != 0;
+    return (this.LGq & paramInt) != 0;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60198);
-    Object localObject2 = ((Iterable)JTu).iterator();
+    Object localObject2 = ((Iterable)LGN).iterator();
     int i;
     label49:
     label53:
@@ -206,7 +206,7 @@ public final class d
     if (((Iterator)localObject2).hasNext())
     {
       localObject1 = ((Iterator)localObject2).next();
-      if (((d.a.a)localObject1).mask == this.JSX)
+      if (((d.a.a)localObject1).mask == this.LGq)
       {
         i = 1;
         if (i == 0) {
@@ -221,7 +221,7 @@ public final class d
         if (localObject1 != null) {
           break label195;
         }
-        localObject1 = (Iterable)JTv;
+        localObject1 = (Iterable)LGO;
         localObject2 = (Collection)new ArrayList();
         localIterator = ((Iterable)localObject1).iterator();
       }
@@ -236,7 +236,7 @@ public final class d
         break label171;
       }
       localObject1 = (d.a.a)localIterator.next();
-      if (afP(((d.a.a)localObject1).mask)) {}
+      if (aiL(((d.a.a)localObject1).mask)) {}
       for (localObject1 = ((d.a.a)localObject1).name;; localObject1 = null)
       {
         if (localObject1 == null) {
@@ -256,26 +256,40 @@ public final class d
     label171:
     localObject2 = j.a((Iterable)localObject2, (CharSequence)" | ", null, null, 0, null, null, 62);
     label195:
-    Object localObject1 = "DescriptorKindFilter(" + (String)localObject2 + ", " + this.JSY + ')';
+    Object localObject1 = "DescriptorKindFilter(" + (String)localObject2 + ", " + this.LGr + ')';
     AppMethodBeat.o(60198);
     return localObject1;
   }
   
   public static final class a
   {
-    static int fJq()
+    static int gbT()
     {
       AppMethodBeat.i(60197);
-      int i = d.fJh();
-      d.afQ(d.fJh() << 1);
+      int i = d.gbK();
+      d.aiM(d.gbK() << 1);
       AppMethodBeat.o(60197);
       return i;
+    }
+    
+    static final class a
+    {
+      final int mask;
+      final String name;
+      
+      public a(int paramInt, String paramString)
+      {
+        AppMethodBeat.i(60196);
+        this.mask = paramInt;
+        this.name = paramString;
+        AppMethodBeat.o(60196);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.d
  * JD-Core Version:    0.7.0.1
  */

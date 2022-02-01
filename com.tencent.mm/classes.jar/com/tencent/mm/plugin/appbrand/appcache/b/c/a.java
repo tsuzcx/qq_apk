@@ -10,62 +10,62 @@ import com.tencent.mm.plugin.appbrand.appcache.b.b.f;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.g;
 import com.tencent.mm.plugin.appbrand.appcache.b.b.i;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public enum a
 {
-  public static final a iQA;
-  public static final a iQx;
-  public static final a iQy;
-  public static final a iQz;
+  public static final a jqH;
+  public static final a jqI;
+  public static final a jqJ;
+  public static final a jqK;
   
   static
   {
     AppMethodBeat.i(44429);
-    iQw = new a("INSTANCE");
-    iQB = new a[] { iQw };
-    iQx = new a() {};
-    iQy = new a() {};
-    iQz = new a() {};
-    iQA = new a() {};
+    jqG = new a("INSTANCE");
+    jqL = new a[] { jqG };
+    jqH = new a() {};
+    jqI = new a() {};
+    jqJ = new a() {};
+    jqK = new a() {};
     AppMethodBeat.o(44429);
   }
   
   private a() {}
   
-  public static void D(long paramLong1, long paramLong2)
+  public static void A(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(44428);
     if (paramLong2 < 0L)
     {
-      ad.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      ac.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       AppMethodBeat.o(44428);
       return;
     }
     if (paramLong1 > 0L)
     {
-      h.vKh.m(paramLong1, paramLong2, 1L);
-      h.vKh.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      h.wUl.n(paramLong1, paramLong2, 1L);
+      h.wUl.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
     }
     if (843L != paramLong1)
     {
-      h.vKh.m(843L, paramLong2, 1L);
-      h.vKh.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
+      h.wUl.n(843L, paramLong2, 1L);
+      h.wUl.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
     }
     AppMethodBeat.o(44428);
   }
   
   public static void dB(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(205035);
-    D(paramInt1, paramInt2);
-    AppMethodBeat.o(205035);
+    AppMethodBeat.i(210154);
+    A(paramInt1, paramInt2);
+    AppMethodBeat.o(210154);
   }
   
   public static class a<_Key>
     extends SparseIntArray
   {
-    private int ck(_Key param_Key)
+    private int ci(_Key param_Key)
     {
       AppMethodBeat.i(44423);
       if (param_Key == null)
@@ -88,7 +88,7 @@ public enum a
     public final int get(_Key param_Key)
     {
       AppMethodBeat.i(44424);
-      int i = ck(param_Key);
+      int i = ci(param_Key);
       AppMethodBeat.o(44424);
       return i;
     }
@@ -96,7 +96,7 @@ public enum a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.c.a
  * JD-Core Version:    0.7.0.1
  */

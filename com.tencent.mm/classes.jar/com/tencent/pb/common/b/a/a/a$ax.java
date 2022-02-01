@@ -7,28 +7,28 @@ import com.google.b.a.e;
 public final class a$ax
   extends e
 {
-  private static volatile ax[] Inj;
-  public int IkG = 0;
-  public a.ay[] IlV = a.ay.flz();
-  public String Ink = "";
+  private static volatile ax[] JOT;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JMr = 0;
+  public a.ay[] JNG = a.ay.fBQ();
+  public String JOU = "";
   public String groupId = "";
-  public int zkT = 0;
-  public long zkU = 0L;
   
   public a$ax()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static ax[] fly()
+  public static ax[] fBP()
   {
-    if (Inj == null) {}
-    synchronized (c.bIR)
+    if (JOT == null) {}
+    synchronized (c.bGz)
     {
-      if (Inj == null) {
-        Inj = new ax[0];
+      if (JOT == null) {
+        JOT = new ax[0];
       }
-      return Inj;
+      return JOT;
     }
   }
   
@@ -37,58 +37,58 @@ public final class a$ax
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if ((this.IlV != null) && (this.IlV.length > 0))
+    if ((this.JNG != null) && (this.JNG.length > 0))
     {
       int i = 0;
-      while (i < this.IlV.length)
+      while (i < this.JNG.length)
       {
-        a.ay localay = this.IlV[i];
+        a.ay localay = this.JNG[i];
         if (localay != null) {
           paramb.a(4, localay);
         }
         i += 1;
       }
     }
-    if (this.IkG != 0) {
-      paramb.bz(5, this.IkG);
+    if (this.JMr != 0) {
+      paramb.bw(5, this.JMr);
     }
-    if (!this.Ink.equals("")) {
-      paramb.d(6, this.Ink);
+    if (!this.JOU.equals("")) {
+      paramb.d(6, this.JOU);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.IlV != null)
+    if (this.JNG != null)
     {
       j = i;
-      if (this.IlV.length > 0)
+      if (this.JNG.length > 0)
       {
         j = 0;
-        while (j < this.IlV.length)
+        while (j < this.JNG.length)
         {
-          a.ay localay = this.IlV[j];
+          a.ay localay = this.JNG[j];
           int k = i;
           if (localay != null) {
             k = i + b.b(4, localay);
@@ -100,12 +100,12 @@ public final class a$ax
       }
     }
     i = j;
-    if (this.IkG != 0) {
-      i = j + b.bB(5, this.IkG);
+    if (this.JMr != 0) {
+      i = j + b.by(5, this.JMr);
     }
     j = i;
-    if (!this.Ink.equals("")) {
-      j = i + b.e(6, this.Ink);
+    if (!this.JOU.equals("")) {
+      j = i + b.e(6, this.JOU);
     }
     return j;
   }

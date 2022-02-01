@@ -11,38 +11,38 @@ public final class e
   extends t
   implements b
 {
-  private static e osY;
+  private static e oWz;
   
   private e()
   {
-    super(com.tencent.mm.av.a.class);
+    super(com.tencent.mm.au.a.class);
   }
   
-  public static e bTX()
+  public static e cbl()
   {
     try
     {
       AppMethodBeat.i(104543);
-      if (osY == null) {
-        osY = new e();
+      if (oWz == null) {
+        oWz = new e();
       }
-      e locale = osY;
+      e locale = oWz;
       AppMethodBeat.o(104543);
       return locale;
     }
     finally {}
   }
   
-  public static String bTY()
+  public static String cbm()
   {
     AppMethodBeat.i(104545);
-    Object localObject = com.tencent.mm.emoji.d.a.fSR;
-    localObject = com.tencent.mm.emoji.d.a.acD();
+    Object localObject = com.tencent.mm.emoji.d.a.fWM;
+    localObject = com.tencent.mm.emoji.d.a.adJ();
     AppMethodBeat.o(104545);
     return localObject;
   }
   
-  public final List<String> afI()
+  public final List<String> agY()
   {
     AppMethodBeat.i(104544);
     LinkedList localLinkedList = new LinkedList();

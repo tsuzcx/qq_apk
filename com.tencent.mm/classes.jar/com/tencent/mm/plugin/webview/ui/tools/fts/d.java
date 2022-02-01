@@ -12,18 +12,18 @@ import org.xwalk.core.Log;
 public final class d
   extends a
 {
-  public d(Context paramContext, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8, View paramView9)
+  public d(Context paramContext, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8)
   {
-    super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8, paramView9);
+    super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8);
   }
   
-  protected final void epS()
+  protected final void eFm()
   {
     AppMethodBeat.i(80764);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "search to init");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.BlO[0][0] - this.BlD >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.BlU);
+    if (this.CDY[0][0] - this.CDO >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.CEe);
     }
     for (;;)
     {
@@ -41,8 +41,8 @@ public final class d
         {
           AppMethodBeat.i(80761);
           d.this.isAnimating = false;
-          if (d.this.BlR != null) {
-            d.this.BlR.onAnimationEnd();
+          if (d.this.CEb != null) {
+            d.this.CEb.onAnimationEnd();
           }
           AppMethodBeat.o(80761);
         }
@@ -53,8 +53,8 @@ public final class d
         {
           AppMethodBeat.i(80760);
           d.this.isAnimating = true;
-          if (d.this.BlR != null) {
-            d.this.BlR.onAnimationStart();
+          if (d.this.CEb != null) {
+            d.this.CEb.onAnimationStart();
           }
           AppMethodBeat.o(80760);
         }
@@ -62,17 +62,17 @@ public final class d
       localAnimatorSet.start();
       AppMethodBeat.o(80764);
       return;
-      localValueAnimator.addUpdateListener(this.BlV);
+      localValueAnimator.addUpdateListener(this.CEf);
     }
   }
   
-  protected final void epT()
+  protected final void eFn()
   {
     AppMethodBeat.i(80765);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "init to search");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.BlO[0][0] - this.BlD >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.BlS);
+    if (this.CDY[0][0] - this.CDO >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.CEc);
     }
     for (;;)
     {
@@ -90,8 +90,8 @@ public final class d
         {
           AppMethodBeat.i(80763);
           d.this.isAnimating = false;
-          if (d.this.BlR != null) {
-            d.this.BlR.onAnimationEnd();
+          if (d.this.CEb != null) {
+            d.this.CEb.onAnimationEnd();
           }
           AppMethodBeat.o(80763);
         }
@@ -102,8 +102,8 @@ public final class d
         {
           AppMethodBeat.i(80762);
           d.this.isAnimating = true;
-          if (d.this.BlR != null) {
-            d.this.BlR.onAnimationStart();
+          if (d.this.CEb != null) {
+            d.this.CEb.onAnimationStart();
           }
           AppMethodBeat.o(80762);
         }
@@ -111,7 +111,7 @@ public final class d
       localAnimatorSet.start();
       AppMethodBeat.o(80765);
       return;
-      localValueAnimator.addUpdateListener(this.BlT);
+      localValueAnimator.addUpdateListener(this.CEd);
     }
   }
 }

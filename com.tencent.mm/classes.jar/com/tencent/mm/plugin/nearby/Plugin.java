@@ -11,14 +11,14 @@ import com.tencent.mm.pluginsdk.m;
 public class Plugin
   implements d
 {
-  private c mQZ;
+  private c ntp;
   
   public Plugin()
   {
     AppMethodBeat.i(89751);
-    this.mQZ = new c()
+    this.ntp = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(89750);
         paramAnonymousContext = new com.tencent.mm.plugin.nearby.ui.a(paramAnonymousContext);
@@ -47,12 +47,12 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.mQZ;
+    return this.ntp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -21,36 +21,36 @@ import java.util.Set;
 public final class j
   implements com.bumptech.glide.manager.i
 {
-  private static final com.bumptech.glide.f.e aAE;
-  private static final com.bumptech.glide.f.e aAF;
-  private static final com.bumptech.glide.f.e aAq;
-  final h aAG;
-  final n aAH;
-  private final m aAI;
-  final o aAJ;
-  private final Runnable aAK;
-  private final com.bumptech.glide.manager.c aAL;
-  com.bumptech.glide.f.e aAt;
-  private final Handler azU;
-  protected final c azw;
+  private static final com.bumptech.glide.f.e aBk;
+  private static final com.bumptech.glide.f.e aBy;
+  private static final com.bumptech.glide.f.e aBz;
+  private final Handler aAO;
+  protected final c aAq;
+  final h aBA;
+  final n aBB;
+  private final m aBC;
+  final o aBD;
+  private final Runnable aBE;
+  private final com.bumptech.glide.manager.c aBF;
+  com.bumptech.glide.f.e aBn;
   protected final Context context;
   
   static
   {
     AppMethodBeat.i(76832);
     com.bumptech.glide.f.e locale = com.bumptech.glide.f.e.v(Bitmap.class);
-    locale.aFx = true;
-    aAE = locale;
+    locale.aGn = true;
+    aBy = locale;
     locale = com.bumptech.glide.f.e.v(com.bumptech.glide.c.d.e.c.class);
-    locale.aFx = true;
-    aAF = locale;
-    aAq = com.bumptech.glide.f.e.a(com.bumptech.glide.c.b.i.aEC).b(g.aAe).pu();
+    locale.aGn = true;
+    aBz = locale;
+    aBk = com.bumptech.glide.f.e.a(com.bumptech.glide.c.b.i.aFs).b(g.aAY).pE();
     AppMethodBeat.o(76832);
   }
   
   public j(c paramc, h paramh, m paramm, Context paramContext)
   {
-    this(paramc, paramh, paramm, new n(), paramc.azG, paramContext);
+    this(paramc, paramh, paramm, new n(), paramc.aAA, paramContext);
     AppMethodBeat.i(76821);
     AppMethodBeat.o(76821);
   }
@@ -58,33 +58,33 @@ public final class j
   private j(c paramc, h arg2, m paramm, n paramn, d paramd, Context paramContext)
   {
     AppMethodBeat.i(76822);
-    this.aAJ = new o();
-    this.aAK = new Runnable()
+    this.aBD = new o();
+    this.aBE = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(76818);
-        j.this.aAG.a(j.this);
+        j.this.aBA.a(j.this);
         AppMethodBeat.o(76818);
       }
     };
-    this.azU = new Handler(Looper.getMainLooper());
-    this.azw = paramc;
-    this.aAG = ???;
-    this.aAI = paramm;
-    this.aAH = paramn;
+    this.aAO = new Handler(Looper.getMainLooper());
+    this.aAq = paramc;
+    this.aBA = ???;
+    this.aBC = paramm;
+    this.aBB = paramn;
     this.context = paramContext;
-    this.aAL = paramd.a(paramContext.getApplicationContext(), new a(paramn));
-    if (com.bumptech.glide.h.j.pS()) {
-      this.azU.post(this.aAK);
+    this.aBF = paramd.a(paramContext.getApplicationContext(), new a(paramn));
+    if (com.bumptech.glide.h.j.qc()) {
+      this.aAO.post(this.aBE);
     }
     for (;;)
     {
-      ???.a(this.aAL);
-      this.aAt = paramc.azC.azP.pv().pw();
-      synchronized (paramc.azH)
+      ???.a(this.aBF);
+      this.aBn = paramc.aAw.aAJ.pF().pG();
+      synchronized (paramc.aAB)
       {
-        if (!paramc.azH.contains(this)) {
+        if (!paramc.aAB.contains(this)) {
           break;
         }
         paramc = new IllegalStateException("Cannot register already registered manager");
@@ -93,16 +93,16 @@ public final class j
       }
       ???.a(this);
     }
-    paramc.azH.add(this);
+    paramc.aAB.add(this);
     AppMethodBeat.o(76822);
   }
   
   private void d(com.bumptech.glide.f.a.e<?> parame)
   {
     AppMethodBeat.i(76828);
-    if ((!e(parame)) && (!this.azw.a(parame)) && (parame.pK() != null))
+    if ((!e(parame)) && (!this.aAq.a(parame)) && (parame.pU() != null))
     {
-      b localb = parame.pK();
+      b localb = parame.pU();
       parame.h(null);
       localb.clear();
     }
@@ -117,13 +117,13 @@ public final class j
       AppMethodBeat.o(76827);
       return;
     }
-    if (com.bumptech.glide.h.j.pR())
+    if (com.bumptech.glide.h.j.qb())
     {
       d(parame);
       AppMethodBeat.o(76827);
       return;
     }
-    this.azU.post(new Runnable()
+    this.aAO.post(new Runnable()
     {
       public final void run()
       {
@@ -138,15 +138,15 @@ public final class j
   final boolean e(com.bumptech.glide.f.a.e<?> parame)
   {
     AppMethodBeat.i(76829);
-    b localb = parame.pK();
+    b localb = parame.pU();
     if (localb == null)
     {
       AppMethodBeat.o(76829);
       return true;
     }
-    if (this.aAH.a(localb, true))
+    if (this.aBB.a(localb, true))
     {
-      this.aAJ.f(parame);
+      this.aBD.f(parame);
       parame.h(null);
       AppMethodBeat.o(76829);
       return true;
@@ -158,12 +158,12 @@ public final class j
   final <T> k<?, T> j(Class<T> paramClass)
   {
     AppMethodBeat.i(76830);
-    Object localObject3 = this.azw.azC;
-    Object localObject2 = (k)((e)localObject3).azJ.get(paramClass);
+    Object localObject3 = this.aAq.aAw;
+    Object localObject2 = (k)((e)localObject3).aAD.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject3 = ((e)localObject3).azJ.entrySet().iterator();
+      localObject3 = ((e)localObject3).aAD.entrySet().iterator();
       localObject1 = localObject2;
       if (((Iterator)localObject3).hasNext())
       {
@@ -180,17 +180,17 @@ public final class j
       break;
       paramClass = (Class<T>)localObject1;
       if (localObject1 == null) {
-        paramClass = e.azT;
+        paramClass = e.aAN;
       }
       AppMethodBeat.o(76830);
       return paramClass;
     }
   }
   
-  public final i<Bitmap> nm()
+  public final i<Bitmap> nw()
   {
     AppMethodBeat.i(76826);
-    i locali = new i(this.azw, this, Bitmap.class, this.context).a(aAE);
+    i locali = new i(this.aAq, this, Bitmap.class, this.context).a(aBy);
     AppMethodBeat.o(76826);
     return locali;
   }
@@ -198,42 +198,42 @@ public final class j
   public final void onDestroy()
   {
     AppMethodBeat.i(76825);
-    this.aAJ.onDestroy();
-    ??? = com.bumptech.glide.h.j.c(this.aAJ.aKn).iterator();
+    this.aBD.onDestroy();
+    ??? = com.bumptech.glide.h.j.c(this.aBD.aLd).iterator();
     while (((Iterator)???).hasNext()) {
       c((com.bumptech.glide.f.a.e)((Iterator)???).next());
     }
-    this.aAJ.aKn.clear();
-    ??? = this.aAH;
-    Object localObject2 = com.bumptech.glide.h.j.c(((n)???).aKi).iterator();
+    this.aBD.aLd.clear();
+    ??? = this.aBB;
+    Object localObject2 = com.bumptech.glide.h.j.c(((n)???).aKY).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((n)???).a((b)((Iterator)localObject2).next(), false);
     }
-    ((n)???).aKj.clear();
-    this.aAG.b(this);
-    this.aAG.b(this.aAL);
-    this.azU.removeCallbacks(this.aAK);
-    localObject2 = this.azw;
-    synchronized (((c)localObject2).azH)
+    ((n)???).aKZ.clear();
+    this.aBA.b(this);
+    this.aBA.b(this.aBF);
+    this.aAO.removeCallbacks(this.aBE);
+    localObject2 = this.aAq;
+    synchronized (((c)localObject2).aAB)
     {
-      if (!((c)localObject2).azH.contains(this))
+      if (!((c)localObject2).aAB.contains(this))
       {
         localObject2 = new IllegalStateException("Cannot unregister not yet registered manager");
         AppMethodBeat.o(76825);
         throw ((Throwable)localObject2);
       }
     }
-    localObject3.azH.remove(this);
+    localObject3.aAB.remove(this);
     AppMethodBeat.o(76825);
   }
   
   public final void onStart()
   {
     AppMethodBeat.i(76823);
-    com.bumptech.glide.h.j.pQ();
-    n localn = this.aAH;
+    com.bumptech.glide.h.j.qa();
+    n localn = this.aBB;
     localn.isPaused = false;
-    Iterator localIterator = com.bumptech.glide.h.j.c(localn.aKi).iterator();
+    Iterator localIterator = com.bumptech.glide.h.j.c(localn.aKY).iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
@@ -241,35 +241,35 @@ public final class j
         localb.begin();
       }
     }
-    localn.aKj.clear();
-    this.aAJ.onStart();
+    localn.aKZ.clear();
+    this.aBD.onStart();
     AppMethodBeat.o(76823);
   }
   
   public final void onStop()
   {
     AppMethodBeat.i(76824);
-    com.bumptech.glide.h.j.pQ();
-    n localn = this.aAH;
+    com.bumptech.glide.h.j.qa();
+    n localn = this.aBB;
     localn.isPaused = true;
-    Iterator localIterator = com.bumptech.glide.h.j.c(localn.aKi).iterator();
+    Iterator localIterator = com.bumptech.glide.h.j.c(localn.aKY).iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
       if (localb.isRunning())
       {
         localb.pause();
-        localn.aKj.add(localb);
+        localn.aKZ.add(localb);
       }
     }
-    this.aAJ.onStop();
+    this.aBD.onStop();
     AppMethodBeat.o(76824);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(76831);
-    String str = super.toString() + "{tracker=" + this.aAH + ", treeNode=" + this.aAI + "}";
+    String str = super.toString() + "{tracker=" + this.aBB + ", treeNode=" + this.aBC + "}";
     AppMethodBeat.o(76831);
     return str;
   }
@@ -277,11 +277,11 @@ public final class j
   static final class a
     implements c.a
   {
-    private final n aAH;
+    private final n aBB;
     
     a(n paramn)
     {
-      this.aAH = paramn;
+      this.aBB = paramn;
     }
     
     public final void aG(boolean paramBoolean)
@@ -289,8 +289,8 @@ public final class j
       AppMethodBeat.i(76820);
       if (paramBoolean)
       {
-        n localn = this.aAH;
-        Iterator localIterator = com.bumptech.glide.h.j.c(localn.aKi).iterator();
+        n localn = this.aBB;
+        Iterator localIterator = com.bumptech.glide.h.j.c(localn.aKY).iterator();
         while (localIterator.hasNext())
         {
           b localb = (b)localIterator.next();
@@ -300,7 +300,7 @@ public final class j
             if (!localn.isPaused) {
               localb.begin();
             } else {
-              localn.aKj.add(localb);
+              localn.aKZ.add(localb);
             }
           }
         }
@@ -311,7 +311,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.j
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ public enum m
   {
     AppMethodBeat.i(56976);
     m localm1 = new m("RUNTIME", 0);
-    JrO = localm1;
+    Lfh = localm1;
     m localm2 = new m("BINARY", 1);
-    JrP = localm2;
+    Lfi = localm2;
     m localm3 = new m("SOURCE", 2);
-    JrQ = localm3;
-    JrR = new m[] { localm1, localm2, localm3 };
+    Lfj = localm3;
+    Lfk = new m[] { localm1, localm2, localm3 };
     AppMethodBeat.o(56976);
   }
   

@@ -18,13 +18,13 @@ public final class b
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("errMsg", "ok");
     localHashMap.put("value", paramString);
-    B(localHashMap).g(paramq).aXQ();
+    A(localHashMap).g(paramq).beN();
     AppMethodBeat.o(130607);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.d.b.b
  * JD-Core Version:    0.7.0.1
  */

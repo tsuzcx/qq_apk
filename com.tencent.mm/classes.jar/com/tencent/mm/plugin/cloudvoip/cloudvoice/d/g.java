@@ -14,7 +14,7 @@ import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.BufferedOutputStream;
@@ -34,7 +34,7 @@ public final class g
   private int TIMEOUT_USEC;
   public byte[] configbyte;
   public int encLen;
-  public long gru;
+  public long gSc;
   public boolean isRuning;
   public long mGeneratedIdx;
   int mPrevResolution;
@@ -46,19 +46,19 @@ public final class g
   int m_height;
   int m_width;
   protected MediaFormat mediaFormat;
-  public int nPX;
-  z nPY;
-  private byte[] nPZ;
-  private MediaMuxer nQa;
-  private int nQb;
-  private boolean nQc;
-  private BufferedOutputStream nQd;
-  com.tencent.mm.plugin.voip.model.g nQe;
-  public int nQf;
-  public int nQg;
-  public int nQh;
-  public int nQi;
-  a nQj;
+  public int otc;
+  private z otd;
+  private byte[] ote;
+  private MediaMuxer otf;
+  private int otg;
+  private boolean oth;
+  private BufferedOutputStream oti;
+  com.tencent.mm.plugin.voip.model.g otj;
+  public int otk;
+  public int otl;
+  public int otm;
+  public int otn;
+  a oto;
   private BufferedOutputStream outputStream;
   
   static
@@ -77,20 +77,20 @@ public final class g
   public g(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(90802);
-    this.nPX = 0;
+    this.otc = 0;
     this.ENCODING = "hevc";
     this.TIMEOUT_USEC = 12000;
     this.mProfileCfg = 1;
-    this.nPZ = null;
+    this.ote = null;
     this.configbyte = null;
     this.mGeneratedIdx = 0L;
-    this.gru = 0L;
-    this.nQe = null;
-    this.nQf = 0;
-    this.nQg = 8;
-    this.nQh = 0;
-    this.nQi = 0;
-    this.nQj = null;
+    this.gSc = 0L;
+    this.otj = null;
+    this.otk = 0;
+    this.otl = 8;
+    this.otm = 0;
+    this.otn = 0;
+    this.oto = null;
     this.isRuning = false;
     this.encLen = 0;
     this.mPrevResolution = 8;
@@ -110,18 +110,18 @@ public final class g
     }
     try
     {
-      this.outputStream = new BufferedOutputStream(i.ai(paramString));
+      this.outputStream = new BufferedOutputStream(i.ah(paramString));
       frameID = 0;
       this.mGeneratedIdx = 0L;
-      this.nQj = new a();
-      this.nPY = null;
-      this.nQg = 8;
-      this.nQf = 0;
-      this.nQh = 0;
-      this.nPX = 0;
-      this.nPZ = null;
-      this.nQi = 0;
-      this.gru = 0L;
+      this.oto = new a();
+      this.otd = null;
+      this.otl = 8;
+      this.otk = 0;
+      this.otm = 0;
+      this.otc = 0;
+      this.ote = null;
+      this.otn = 0;
+      this.gSc = 0L;
       AppMethodBeat.o(90802);
       return;
     }
@@ -129,9 +129,34 @@ public final class g
     {
       for (;;)
       {
-        ad.e("OpenVoice[HWEnc]", " error:" + paramString.toString());
+        ac.e("OpenVoice[HWEnc]", " error:" + paramString.toString());
       }
     }
+  }
+  
+  @SuppressLint({"NewApi"})
+  private boolean SetBitRate(int paramInt)
+  {
+    AppMethodBeat.i(90805);
+    try
+    {
+      if (this.otd != null)
+      {
+        Bundle localBundle = new Bundle();
+        paramInt *= 1000;
+        ac.v("OpenVoice[HWEnc]", "steve: setRates: ".concat(String.valueOf(paramInt)));
+        localBundle.putInt("video-bitrate", paramInt);
+        this.otd.setParameters(localBundle);
+        AppMethodBeat.o(90805);
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      ac.e("OpenVoice[HWEnc]", "steve: setRates failed:".concat(String.valueOf(localException)));
+      AppMethodBeat.o(90805);
+    }
+    return false;
   }
   
   @SuppressLint({"NewApi"})
@@ -140,17 +165,17 @@ public final class g
     AppMethodBeat.i(90803);
     try
     {
-      if (this.nPY != null)
+      if (this.otd != null)
       {
-        this.nPY.stop();
-        this.nPY.release();
+        this.otd.stop();
+        this.otd.release();
       }
       AppMethodBeat.o(90803);
       return;
     }
     catch (Exception localException)
     {
-      ad.e("OpenVoice[HWEnc]", " error:" + localException.toString());
+      ac.e("OpenVoice[HWEnc]", " error:" + localException.toString());
       AppMethodBeat.o(90803);
     }
   }
@@ -171,7 +196,7 @@ public final class g
         if (paramMediaCodecInfo.startsWith(arrayOfString[i]))
         {
           bool1 = true;
-          ad.d("OpenVoice[HWEnc]", "steve : known H.264 HW encoder :".concat(String.valueOf(paramMediaCodecInfo)));
+          ac.d("OpenVoice[HWEnc]", "steve : known H.264 HW encoder :".concat(String.valueOf(paramMediaCodecInfo)));
         }
       }
       else
@@ -188,7 +213,7 @@ public final class g
     AppMethodBeat.i(90799);
     bool2 = false;
     bool1 = bool2;
-    if (d.lf(23))
+    if (d.kZ(23))
     {
       for (;;)
       {
@@ -226,7 +251,7 @@ public final class g
           int m;
           int n;
           boolean bool3;
-          ad.e("OpenVoice[HWEnc]", "trySetProfile error: " + paramMediaCodecInfo.getMessage());
+          ac.e("OpenVoice[HWEnc]", "trySetProfile error: " + paramMediaCodecInfo.getMessage());
           bool1 = bool2;
           continue;
           int j = 0;
@@ -253,10 +278,10 @@ public final class g
             }
           }
         }
-        ad.i("OpenVoice[HWEnc]", "steve : profile: " + m + ", level: " + n + ", maxProfile: " + paramInt + ", isRecognized:" + bool1);
+        ac.i("OpenVoice[HWEnc]", "steve : profile: " + m + ", level: " + n + ", maxProfile: " + paramInt + ", isRecognized:" + bool1);
         i += 1;
       }
-      ad.i("OpenVoice[HWEnc]", "best profile: " + paramString.profile + ", best level: " + paramString.level);
+      ac.i("OpenVoice[HWEnc]", "best profile: " + paramString.profile + ", best level: " + paramString.level);
       bool1 = bool2;
       if (paramString.profile > 0)
       {
@@ -283,7 +308,7 @@ public final class g
     if (Build.VERSION.SDK_INT >= 18)
     {
       bool2 = bool3;
-      if (8 <= this.nQg)
+      if (8 <= this.otl)
       {
         String str = paramMediaCodecInfo.getName();
         String[] arrayOfString = supportedH264HwCodecPrefixes;
@@ -318,7 +343,7 @@ public final class g
                   bool3 = true;
                 }
                 bool2 = bool3;
-                ad.d("OpenVoice[HWEnc]", "steve : [" + str + "] supported profiles:" + localCodecProfileLevel.profile + ", maxAllowedProfile: " + this.nQg + ", MIME:" + paramString);
+                ac.d("OpenVoice[HWEnc]", "steve : [" + str + "] supported profiles:" + localCodecProfileLevel.profile + ", maxAllowedProfile: " + this.otl + ", MIME:" + paramString);
                 j += 1;
                 bool1 = bool3;
               }
@@ -335,11 +360,11 @@ public final class g
   }
   
   @SuppressLint({"NewApi"})
-  private int bOd()
+  private int bVq()
   {
     boolean bool1 = false;
     AppMethodBeat.i(90801);
-    if (this.nPY != null) {
+    if (this.otd != null) {
       StopEncoder();
     }
     String str = this.ENCODING;
@@ -357,7 +382,7 @@ public final class g
         label60:
         if (j < arrayOfString.length) {
           if (arrayOfString[j].equalsIgnoreCase(str)) {
-            ad.d("OpenVoice[HWEnc]", "steve : H.264 HW encoder found:".concat(String.valueOf(localMediaCodecInfo.getName())));
+            ac.d("OpenVoice[HWEnc]", "steve : H.264 HW encoder found:".concat(String.valueOf(localMediaCodecInfo.getName())));
           }
         }
       }
@@ -367,9 +392,9 @@ public final class g
       if (localMediaCodecInfo != null) {
         break label169;
       }
-      ad.e("OpenVoice[HWEnc]", "steve: Unable to find an appropriate codec for " + this.ENCODING);
-      this.nPX = 2001;
-      i = -this.nPX;
+      ac.e("OpenVoice[HWEnc]", "steve: Unable to find an appropriate codec for " + this.ENCODING);
+      this.otc = 2001;
+      i = -this.otc;
       AppMethodBeat.o(90801);
       return i;
       j += 1;
@@ -379,15 +404,15 @@ public final class g
       localMediaCodecInfo = null;
     }
     label169:
-    ad.i("OpenVoice[HWEnc]", "steve: found HW codec: " + localMediaCodecInfo.getName());
+    ac.i("OpenVoice[HWEnc]", "steve: found HW codec: " + localMediaCodecInfo.getName());
     this.mediaFormat = MediaFormat.createVideoFormat(this.ENCODING, this.m_width, this.m_height);
     this.mediaFormat.setInteger("color-format", 21);
     this.mediaFormat.setInteger("bitrate", this.m_br_kbps * 1000);
     this.mediaFormat.setInteger("frame-rate", this.m_framerate);
     this.mediaFormat.setInteger("i-frame-interval", 1);
     str = this.mediaFormat.getString("mime");
-    this.nQf = 1;
-    if ((this.ENCODING.equalsIgnoreCase("video/avc")) && (a(localMediaCodecInfo)) && (d.lf(23)))
+    this.otk = 1;
+    if ((this.ENCODING.equalsIgnoreCase("video/avc")) && (a(localMediaCodecInfo)) && (d.kZ(23)))
     {
       if ((this.mProfileCfg <= 0) || ((this.mProfileCfg & 0x1) == 0)) {
         break label517;
@@ -414,24 +439,24 @@ public final class g
     label522:
     label527:
     label583:
-    for (this.nQf = this.mediaFormat.getInteger("profile");; this.nQf = 1)
+    for (this.otk = this.mediaFormat.getInteger("profile");; this.otk = 1)
     {
       this.mediaFormat.setInteger("bitrate-mode", 2);
       try
       {
-        this.nPY = z.q(str, false);
-        ad.i("OpenVoice[HWEnc]", "steve: mediaFormat: " + this.mediaFormat + ", actProfile: " + this.nQf);
-        this.nPY.a(this.mediaFormat, null, 1);
-        this.nPY.start();
-        this.nQe = new com.tencent.mm.plugin.voip.model.g();
+        this.otd = z.q(str, false);
+        ac.i("OpenVoice[HWEnc]", "steve: mediaFormat: " + this.mediaFormat + ", actProfile: " + this.otk);
+        this.otd.a(this.mediaFormat, null, 1);
+        this.otd.start();
+        this.otj = new com.tencent.mm.plugin.voip.model.g();
         AppMethodBeat.o(90801);
         return 2000;
       }
       catch (Exception localException)
       {
-        ad.e("OpenVoice[HWEnc]", " error:" + localException.toString());
-        this.nPX = 2002;
-        i = -this.nPX;
+        ac.e("OpenVoice[HWEnc]", " error:" + localException.toString());
+        this.otc = 2002;
+        i = -this.otc;
         AppMethodBeat.o(90801);
       }
       i = 0;
@@ -448,13 +473,13 @@ public final class g
       if (localMediaCodecInfo == null) {
         break label398;
       }
-      bool1 = a(localMediaCodecInfo, str, this.nQg);
+      bool1 = a(localMediaCodecInfo, str, this.otl);
       break label398;
     }
     return i;
   }
   
-  private void v(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private void u(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90806);
     int i = VFMT_i264;
@@ -463,41 +488,58 @@ public final class g
     }
     i = l.c(paramArrayOfByte, this.m_width, paramInt1, i);
     if (i > 0) {
-      ad.d("OpenVoice[HWEnc]", "steve: send successfully! frameLen = " + paramInt2 + ", type = " + paramInt1 + ", pkt cnt = " + i);
+      ac.d("OpenVoice[HWEnc]", "steve: send successfully! frameLen = " + paramInt2 + ", type = " + paramInt1 + ", pkt cnt = " + i);
     }
     AppMethodBeat.o(90806);
   }
   
-  @SuppressLint({"NewApi"})
-  public final boolean SetBitRate(int paramInt)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(90805);
-    try
+    AppMethodBeat.i(200740);
+    if ((this.oto == null) || (this.otd == null))
     {
-      if (this.nPY != null)
+      AppMethodBeat.o(200740);
+      return;
+    }
+    a locala = this.oto;
+    locala.iKbps = parama.iKbps;
+    locala.cFps = parama.cFps;
+    locala.cIPeriod = parama.cIPeriod;
+    locala.cResolution = parama.cResolution;
+    locala.osG = parama.osG;
+    locala.osH = parama.osH;
+    locala.cSkipFlag = parama.cSkipFlag;
+    locala.cIReqFlag = parama.cIReqFlag;
+    locala.cRsvd1 = parama.cRsvd1;
+    int i = (int)(this.oto.iKbps * 1.1D);
+    if (this.m_br_kbps != i)
+    {
+      SetBitRate(i);
+      ac.i("OpenVoice[HWEnc]", "steve[QoS]: Update BR! frameID: " + frameID + ", new_br: " + this.m_br_kbps + ", tuneBR:" + i);
+      this.m_br_kbps = i;
+    }
+    if ((1 == this.oto.cIReqFlag) && (frameID > 0))
+    {
+      if (this.otd != null)
       {
-        Bundle localBundle = new Bundle();
-        paramInt *= 1000;
-        ad.v("OpenVoice[HWEnc]", "steve: setRates: ".concat(String.valueOf(paramInt)));
-        localBundle.putInt("video-bitrate", paramInt);
-        this.nPY.setParameters(localBundle);
-        AppMethodBeat.o(90805);
-        return true;
+        ac.v("OpenVoice[HWEnc]", "steve: Sync frame request soon!");
+        parama = new Bundle();
+        parama.putInt("request-sync", 0);
+        this.otd.setParameters(parama);
       }
+      ac.i("OpenVoice[HWEnc]", "steve[QoS]: Force I Frame! frameID: " + frameID);
     }
-    catch (Exception localException)
-    {
-      ad.e("OpenVoice[HWEnc]", "steve: setRates failed:".concat(String.valueOf(localException)));
-      AppMethodBeat.o(90805);
+    if (this.oto.cFps != this.m_framerate) {
+      this.m_framerate = this.oto.cFps;
     }
-    return false;
+    AppMethodBeat.o(200740);
   }
   
   /* Error */
   public final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     // Byte code:
-    //   0: ldc_w 463
+    //   0: ldc_w 511
     //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aconst_null
     //   7: astore 8
@@ -516,7 +558,7 @@ public final class g
     //   31: iload_3
     //   32: putfield 165	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_CapH	I
     //   35: aload_0
-    //   36: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPZ	[B
+    //   36: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:ote	[B
     //   39: ifnonnull +22 -> 61
     //   42: aload_0
     //   43: aload_0
@@ -529,25 +571,25 @@ public final class g
     //   54: iconst_2
     //   55: idiv
     //   56: newarray byte
-    //   58: putfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPZ	[B
+    //   58: putfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:ote	[B
     //   61: ldc 215
     //   63: new 171	java/lang/StringBuilder
     //   66: dup
-    //   67: ldc_w 465
+    //   67: ldc_w 513
     //   70: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   73: aload_0
     //   74: getfield 167	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_framerate	I
-    //   77: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   80: ldc_w 467
+    //   77: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   80: ldc_w 515
     //   83: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: aload_0
     //   87: getfield 169	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_br_kbps	I
-    //   90: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   93: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 263	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: invokestatic 289	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   99: aload_0
-    //   100: getfield 151	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQj	Lcom/tencent/mm/plugin/cloudvoip/cloudvoice/d/a;
-    //   103: getfield 471	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/a:cSkipFlag	B
+    //   100: getfield 151	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oto	Lcom/tencent/mm/plugin/cloudvoip/cloudvoice/d/a;
+    //   103: getfield 488	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/a:cSkipFlag	B
     //   106: ifne +1171 -> 1277
     //   109: aload_1
     //   110: aload_1
@@ -558,17 +600,17 @@ public final class g
     //   117: getfield 165	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_CapH	I
     //   120: iload 4
     //   122: aload_0
-    //   123: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPZ	[B
-    //   126: invokestatic 475	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:videoHWProcess	([BIIII[B)I
+    //   123: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:ote	[B
+    //   126: invokestatic 519	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:videoHWProcess	([BIIII[B)I
     //   129: pop
     //   130: aload_0
-    //   131: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPZ	[B
+    //   131: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:ote	[B
     //   134: astore_1
-    //   135: invokestatic 479	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:bOh	()Lcom/tencent/wxmm/v2conference;
-    //   138: getfield 484	com/tencent/wxmm/v2conference:field_HWEncW	I
+    //   135: invokestatic 523	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:bVu	()Lcom/tencent/wxmm/v2conference;
+    //   138: getfield 528	com/tencent/wxmm/v2conference:field_HWEncW	I
     //   141: istore_2
-    //   142: invokestatic 479	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:bOh	()Lcom/tencent/wxmm/v2conference;
-    //   145: getfield 487	com/tencent/wxmm/v2conference:field_HWEncH	I
+    //   142: invokestatic 523	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/l:bVu	()Lcom/tencent/wxmm/v2conference;
+    //   145: getfield 531	com/tencent/wxmm/v2conference:field_HWEncH	I
     //   148: istore_3
     //   149: aload_0
     //   150: getfield 159	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_width	I
@@ -579,31 +621,31 @@ public final class g
     //   161: iload_3
     //   162: if_icmpne +10 -> 172
     //   165: aload_0
-    //   166: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   166: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   169: ifnonnull +266 -> 435
     //   172: ldc 215
     //   174: new 171	java/lang/StringBuilder
     //   177: dup
-    //   178: ldc_w 489
+    //   178: ldc_w 533
     //   181: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   184: iload_2
-    //   185: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   188: ldc_w 491
+    //   185: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   188: ldc_w 535
     //   191: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   194: iload_3
-    //   195: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   198: ldc_w 493
+    //   195: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   198: ldc_w 537
     //   201: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: aload_0
     //   205: getfield 159	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_width	I
-    //   208: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   211: ldc_w 491
+    //   208: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   211: ldc_w 535
     //   214: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: aload_0
     //   218: getfield 161	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_height	I
-    //   221: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   224: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: invokestatic 306	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   227: invokestatic 331	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   230: aload_0
     //   231: iload_2
     //   232: putfield 159	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_width	I
@@ -622,51 +664,51 @@ public final class g
     //   253: ishr
     //   254: putfield 155	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:encLen	I
     //   257: aload_0
-    //   258: invokespecial 495	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:bOd	()I
+    //   258: invokespecial 539	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:bVq	()I
     //   261: istore_2
     //   262: iload_2
     //   263: istore_3
     //   264: iload_2
     //   265: ifge +172 -> 437
     //   268: ldc 215
-    //   270: ldc_w 497
+    //   270: ldc_w 541
     //   273: iload_2
-    //   274: invokestatic 449	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   277: invokevirtual 260	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   280: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   274: invokestatic 239	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   277: invokevirtual 243	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   280: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   283: aload_0
     //   284: iconst_0
     //   285: putfield 153	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:isRuning	Z
     //   288: aload_0
-    //   289: invokespecial 346	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:StopEncoder	()V
+    //   289: invokespecial 370	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:StopEncoder	()V
     //   292: aload_0
     //   293: getfield 208	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:outputStream	Ljava/io/BufferedOutputStream;
     //   296: ifnull +17 -> 313
     //   299: aload_0
     //   300: getfield 208	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:outputStream	Ljava/io/BufferedOutputStream;
-    //   303: invokevirtual 500	java/io/BufferedOutputStream:flush	()V
+    //   303: invokevirtual 544	java/io/BufferedOutputStream:flush	()V
     //   306: aload_0
     //   307: getfield 208	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:outputStream	Ljava/io/BufferedOutputStream;
-    //   310: invokevirtual 503	java/io/BufferedOutputStream:close	()V
+    //   310: invokevirtual 547	java/io/BufferedOutputStream:close	()V
     //   313: aload_0
-    //   314: getfield 505	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQd	Ljava/io/BufferedOutputStream;
+    //   314: getfield 549	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oti	Ljava/io/BufferedOutputStream;
     //   317: ifnull +17 -> 334
     //   320: aload_0
-    //   321: getfield 505	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQd	Ljava/io/BufferedOutputStream;
-    //   324: invokevirtual 500	java/io/BufferedOutputStream:flush	()V
+    //   321: getfield 549	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oti	Ljava/io/BufferedOutputStream;
+    //   324: invokevirtual 544	java/io/BufferedOutputStream:flush	()V
     //   327: aload_0
-    //   328: getfield 505	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQd	Ljava/io/BufferedOutputStream;
-    //   331: invokevirtual 503	java/io/BufferedOutputStream:close	()V
+    //   328: getfield 549	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oti	Ljava/io/BufferedOutputStream;
+    //   331: invokevirtual 547	java/io/BufferedOutputStream:close	()V
     //   334: aload_0
-    //   335: getfield 507	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQa	Landroid/media/MediaMuxer;
+    //   335: getfield 551	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otf	Landroid/media/MediaMuxer;
     //   338: ifnull +17 -> 355
     //   341: aload_0
-    //   342: getfield 507	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQa	Landroid/media/MediaMuxer;
-    //   345: invokevirtual 510	android/media/MediaMuxer:stop	()V
+    //   342: getfield 551	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otf	Landroid/media/MediaMuxer;
+    //   345: invokevirtual 554	android/media/MediaMuxer:stop	()V
     //   348: aload_0
-    //   349: getfield 507	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQa	Landroid/media/MediaMuxer;
-    //   352: invokevirtual 511	android/media/MediaMuxer:release	()V
-    //   355: ldc_w 463
+    //   349: getfield 551	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otf	Landroid/media/MediaMuxer;
+    //   352: invokevirtual 555	android/media/MediaMuxer:release	()V
+    //   355: ldc_w 511
     //   358: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   361: iload_2
     //   362: ireturn
@@ -674,18 +716,18 @@ public final class g
     //   365: ldc 215
     //   367: new 171	java/lang/StringBuilder
     //   370: dup
-    //   371: ldc_w 513
+    //   371: ldc_w 557
     //   374: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   377: aload 8
-    //   379: invokevirtual 325	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   379: invokevirtual 349	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   382: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   385: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   388: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   388: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   391: aload_0
     //   392: sipush 2003
-    //   395: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   395: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   398: aload_0
-    //   399: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   399: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   402: ineg
     //   403: istore_2
     //   404: goto -142 -> 262
@@ -699,7 +741,7 @@ public final class g
     //   420: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
     //   423: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   426: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   429: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   429: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   432: goto -77 -> 355
     //   435: iconst_0
     //   436: istore_3
@@ -707,58 +749,58 @@ public final class g
     //   440: bipush 100
     //   442: if_icmpgt +465 -> 907
     //   445: aload_0
-    //   446: getfield 505	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQd	Ljava/io/BufferedOutputStream;
+    //   446: getfield 549	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oti	Ljava/io/BufferedOutputStream;
     //   449: ifnull +458 -> 907
     //   452: aload_0
-    //   453: getfield 505	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQd	Ljava/io/BufferedOutputStream;
+    //   453: getfield 549	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oti	Ljava/io/BufferedOutputStream;
     //   456: aload_0
-    //   457: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPZ	[B
+    //   457: getfield 133	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:ote	[B
     //   460: iconst_0
     //   461: aload_0
     //   462: getfield 155	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:encLen	I
-    //   465: invokevirtual 516	java/io/BufferedOutputStream:write	([BII)V
+    //   465: invokevirtual 560	java/io/BufferedOutputStream:write	([BII)V
     //   468: iload_3
     //   469: istore_2
     //   470: aload_1
     //   471: ifnull +773 -> 1244
     //   474: aload_0
-    //   475: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   475: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   478: ifnull +766 -> 1244
     //   481: aload_0
     //   482: iconst_0
-    //   483: putfield 149	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQi	I
-    //   486: invokestatic 522	java/lang/System:currentTimeMillis	()J
+    //   483: putfield 149	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otn	I
+    //   486: invokestatic 566	java/lang/System:currentTimeMillis	()J
     //   489: lstore 6
     //   491: ldc 215
     //   493: new 171	java/lang/StringBuilder
     //   496: dup
-    //   497: ldc_w 524
+    //   497: ldc_w 568
     //   500: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   503: aload_0
     //   504: getfield 155	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:encLen	I
-    //   507: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   510: ldc_w 526
+    //   507: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   510: ldc_w 570
     //   513: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   516: getstatic 70	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:frameID	I
-    //   519: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   522: ldc_w 528
+    //   519: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   522: ldc_w 572
     //   525: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: lload 6
-    //   530: invokevirtual 531	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   530: invokevirtual 575	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   533: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   536: invokestatic 263	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   536: invokestatic 289	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   539: aload_0
-    //   540: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   543: invokevirtual 535	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
+    //   540: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   543: invokevirtual 579	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
     //   546: astore 9
     //   548: aload_0
-    //   549: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   552: invokevirtual 538	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+    //   549: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   552: invokevirtual 582	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   555: astore 8
     //   557: aload_0
-    //   558: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   561: ldc2_w 539
-    //   564: invokevirtual 544	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
+    //   558: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   561: ldc2_w 583
+    //   564: invokevirtual 588	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
     //   567: istore_3
     //   568: iload_3
     //   569: iflt +103 -> 672
@@ -768,64 +810,64 @@ public final class g
     //   578: aload_0
     //   579: getfield 167	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:m_framerate	I
     //   582: bipush 15
-    //   584: invokestatic 550	java/lang/Math:max	(II)I
+    //   584: invokestatic 594	java/lang/Math:max	(II)I
     //   587: bipush 30
-    //   589: invokestatic 553	java/lang/Math:min	(II)I
+    //   589: invokestatic 597	java/lang/Math:min	(II)I
     //   592: istore 4
     //   594: lload 6
     //   596: lconst_0
     //   597: lcmp
     //   598: ifeq +12 -> 610
     //   601: aload_0
-    //   602: getfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gru	J
+    //   602: getfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gSc	J
     //   605: lconst_0
     //   606: lcmp
     //   607: ifne +305 -> 912
     //   610: aload_0
-    //   611: ldc2_w 554
-    //   614: putfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gru	J
+    //   611: ldc2_w 598
+    //   614: putfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gSc	J
     //   617: aload_0
-    //   618: getfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gru	J
+    //   618: getfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gSc	J
     //   621: lstore 6
     //   623: aload 9
     //   625: iload_3
     //   626: aaload
     //   627: astore 9
     //   629: aload 9
-    //   631: invokevirtual 561	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   631: invokevirtual 605	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   634: pop
     //   635: aload 9
     //   637: aload_1
     //   638: iconst_0
     //   639: aload_0
     //   640: getfield 155	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:encLen	I
-    //   643: invokevirtual 565	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   643: invokevirtual 609	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
     //   646: pop
     //   647: aload_0
-    //   648: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   648: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   651: iload_3
     //   652: aload_0
     //   653: getfield 155	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:encLen	I
     //   656: lload 6
     //   658: iconst_0
-    //   659: invokevirtual 568	com/tencent/mm/compatible/deviceinfo/z:a	(IIJI)V
+    //   659: invokevirtual 612	com/tencent/mm/compatible/deviceinfo/z:a	(IIJI)V
     //   662: aload_0
     //   663: aload_0
     //   664: getfield 137	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:mGeneratedIdx	J
     //   667: lconst_1
     //   668: ladd
     //   669: putfield 137	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:mGeneratedIdx	J
-    //   672: new 570	android/media/MediaCodec$BufferInfo
+    //   672: new 614	android/media/MediaCodec$BufferInfo
     //   675: dup
-    //   676: invokespecial 571	android/media/MediaCodec$BufferInfo:<init>	()V
+    //   676: invokespecial 615	android/media/MediaCodec$BufferInfo:<init>	()V
     //   679: astore_1
     //   680: aload_0
-    //   681: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   681: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   684: aload_1
     //   685: aload_0
     //   686: getfield 129	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:TIMEOUT_USEC	I
     //   689: i2l
-    //   690: invokevirtual 575	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   690: invokevirtual 619	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
     //   693: istore 5
     //   695: iload_2
     //   696: istore_3
@@ -835,13 +877,13 @@ public final class g
     //   703: bipush 254
     //   705: if_icmpne +30 -> 735
     //   708: ldc 215
-    //   710: ldc_w 577
+    //   710: ldc_w 621
     //   713: aload_0
-    //   714: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   717: invokevirtual 581	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
-    //   720: invokestatic 256	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   723: invokevirtual 260	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   726: invokestatic 306	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   714: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   717: invokevirtual 625	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
+    //   720: invokestatic 263	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   723: invokevirtual 243	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   726: invokestatic 331	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   729: iload 5
     //   731: istore 4
     //   733: iload_2
@@ -855,12 +897,12 @@ public final class g
     //   746: aaload
     //   747: astore 9
     //   749: aload_1
-    //   750: getfield 584	android/media/MediaCodec$BufferInfo:size	I
+    //   750: getfield 628	android/media/MediaCodec$BufferInfo:size	I
     //   753: newarray byte
     //   755: astore 10
     //   757: aload 9
     //   759: aload 10
-    //   761: invokevirtual 588	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   761: invokevirtual 632	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
     //   764: pop
     //   765: aload_0
     //   766: getfield 208	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:outputStream	Ljava/io/BufferedOutputStream;
@@ -871,47 +913,47 @@ public final class g
     //   778: iconst_0
     //   779: aload 10
     //   781: arraylength
-    //   782: invokevirtual 516	java/io/BufferedOutputStream:write	([BII)V
+    //   782: invokevirtual 560	java/io/BufferedOutputStream:write	([BII)V
     //   785: aload_1
-    //   786: getfield 591	android/media/MediaCodec$BufferInfo:flags	I
+    //   786: getfield 635	android/media/MediaCodec$BufferInfo:flags	I
     //   789: iconst_2
     //   790: if_icmpne +309 -> 1099
     //   793: aload_0
-    //   794: getfield 143	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQf	I
+    //   794: getfield 143	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otk	I
     //   797: iconst_1
     //   798: if_icmpeq +221 -> 1019
     //   801: aload_0
-    //   802: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQe	Lcom/tencent/mm/plugin/voip/model/g;
+    //   802: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otj	Lcom/tencent/mm/plugin/voip/model/g;
     //   805: aload 10
-    //   807: invokevirtual 595	com/tencent/mm/plugin/voip/model/g:bH	([B)Z
+    //   807: invokevirtual 639	com/tencent/mm/plugin/voip/model/g:bG	([B)Z
     //   810: ifeq +209 -> 1019
     //   813: aload_0
     //   814: aload_0
-    //   815: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQe	Lcom/tencent/mm/plugin/voip/model/g;
-    //   818: getfield 598	com/tencent/mm/plugin/voip/model/g:zgM	I
-    //   821: putfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQh	I
+    //   815: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otj	Lcom/tencent/mm/plugin/voip/model/g;
+    //   818: getfield 642	com/tencent/mm/plugin/voip/model/g:Azv	I
+    //   821: putfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otm	I
     //   824: aload_0
     //   825: iconst_1
-    //   826: putfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQg	I
+    //   826: putfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otl	I
     //   829: ldc 215
     //   831: new 171	java/lang/StringBuilder
     //   834: dup
-    //   835: ldc_w 600
+    //   835: ldc_w 644
     //   838: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   841: aload_0
-    //   842: getfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQg	I
-    //   845: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   848: ldc_w 602
+    //   842: getfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otl	I
+    //   845: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   848: ldc_w 646
     //   851: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   854: aload_0
-    //   855: getfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQh	I
-    //   858: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   855: getfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otm	I
+    //   858: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   861: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   864: invokestatic 306	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   864: invokestatic 331	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   867: aload_0
-    //   868: invokespecial 495	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:bOd	()I
+    //   868: invokespecial 539	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:bVq	()I
     //   871: istore_2
-    //   872: ldc_w 463
+    //   872: ldc_w 511
     //   875: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   878: iload_2
     //   879: ireturn
@@ -925,19 +967,19 @@ public final class g
     //   895: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
     //   898: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   901: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   904: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   904: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   907: iload_3
     //   908: istore_2
     //   909: goto -439 -> 470
     //   912: aload_0
     //   913: aload_0
-    //   914: getfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gru	J
-    //   917: ldc_w 603
+    //   914: getfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gSc	J
+    //   917: ldc_w 647
     //   920: iload 4
     //   922: idiv
     //   923: i2l
     //   924: ladd
-    //   925: putfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gru	J
+    //   925: putfield 139	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:gSc	J
     //   928: goto -311 -> 617
     //   931: astore_1
     //   932: ldc 215
@@ -949,15 +991,15 @@ public final class g
     //   944: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
     //   947: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   950: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   953: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   953: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   956: aload_0
     //   957: sipush 2004
-    //   960: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   960: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   963: aload_0
-    //   964: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   964: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   967: ineg
     //   968: istore_2
-    //   969: ldc_w 463
+    //   969: ldc_w 511
     //   972: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   975: iload_2
     //   976: ireturn
@@ -965,97 +1007,97 @@ public final class g
     //   978: ldc 215
     //   980: new 171	java/lang/StringBuilder
     //   983: dup
-    //   984: ldc_w 605
+    //   984: ldc_w 649
     //   987: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   990: aload_1
-    //   991: invokevirtual 325	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   991: invokevirtual 349	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   994: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   997: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1000: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1000: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1003: aload_0
     //   1004: sipush 2005
-    //   1007: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   1007: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   1010: aload_0
-    //   1011: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   1011: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   1014: ineg
     //   1015: istore_2
     //   1016: goto -144 -> 872
     //   1019: aload_0
     //   1020: aload 10
     //   1022: aload_1
-    //   1023: getfield 591	android/media/MediaCodec$BufferInfo:flags	I
+    //   1023: getfield 635	android/media/MediaCodec$BufferInfo:flags	I
     //   1026: aload 10
     //   1028: arraylength
-    //   1029: invokespecial 607	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:v	([BII)V
+    //   1029: invokespecial 651	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:u	([BII)V
     //   1032: aload_0
-    //   1033: getfield 609	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQc	Z
+    //   1033: getfield 653	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:oth	Z
     //   1036: ifeq +22 -> 1058
     //   1039: aload 9
     //   1041: ifnull +17 -> 1058
     //   1044: aload_0
-    //   1045: getfield 507	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQa	Landroid/media/MediaMuxer;
+    //   1045: getfield 551	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otf	Landroid/media/MediaMuxer;
     //   1048: aload_0
-    //   1049: getfield 611	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQb	I
+    //   1049: getfield 655	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otg	I
     //   1052: aload 9
     //   1054: aload_1
-    //   1055: invokevirtual 615	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
+    //   1055: invokevirtual 659	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
     //   1058: aload_1
-    //   1059: getfield 591	android/media/MediaCodec$BufferInfo:flags	I
+    //   1059: getfield 635	android/media/MediaCodec$BufferInfo:flags	I
     //   1062: istore_3
     //   1063: getstatic 70	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:frameID	I
     //   1066: iconst_1
     //   1067: iadd
     //   1068: putstatic 70	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:frameID	I
     //   1071: aload_0
-    //   1072: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   1072: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   1075: iload 4
     //   1077: iconst_0
-    //   1078: invokevirtual 619	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
+    //   1078: invokevirtual 663	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
     //   1081: aload_0
-    //   1082: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPY	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   1082: getfield 213	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otd	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   1085: aload_1
     //   1086: aload_0
     //   1087: getfield 129	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:TIMEOUT_USEC	I
     //   1090: i2l
-    //   1091: invokevirtual 575	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
+    //   1091: invokevirtual 619	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
     //   1094: istore 4
     //   1096: goto -361 -> 735
     //   1099: aload_0
-    //   1100: getfield 143	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQf	I
+    //   1100: getfield 143	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otk	I
     //   1103: iconst_1
     //   1104: if_icmpeq +124 -> 1228
     //   1107: aload_0
-    //   1108: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQe	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1108: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otj	Lcom/tencent/mm/plugin/voip/model/g;
     //   1111: aload 10
-    //   1113: invokevirtual 622	com/tencent/mm/plugin/voip/model/g:bI	([B)Z
+    //   1113: invokevirtual 666	com/tencent/mm/plugin/voip/model/g:bH	([B)Z
     //   1116: ifeq +112 -> 1228
     //   1119: aload_0
     //   1120: aload_0
-    //   1121: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQe	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1124: getfield 598	com/tencent/mm/plugin/voip/model/g:zgM	I
-    //   1127: putfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQh	I
+    //   1121: getfield 141	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otj	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1124: getfield 642	com/tencent/mm/plugin/voip/model/g:Azv	I
+    //   1127: putfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otm	I
     //   1130: aload_0
     //   1131: iconst_1
-    //   1132: putfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQg	I
+    //   1132: putfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otl	I
     //   1135: ldc 215
     //   1137: new 171	java/lang/StringBuilder
     //   1140: dup
-    //   1141: ldc_w 600
+    //   1141: ldc_w 644
     //   1144: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1147: aload_0
-    //   1148: getfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQg	I
-    //   1151: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1154: ldc_w 602
+    //   1148: getfield 145	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otl	I
+    //   1151: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1154: ldc_w 646
     //   1157: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1160: aload_0
-    //   1161: getfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQh	I
-    //   1164: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1161: getfield 147	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otm	I
+    //   1164: invokevirtual 320	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1167: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1170: invokestatic 306	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1170: invokestatic 331	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1173: aload_0
-    //   1174: invokespecial 495	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:bOd	()I
+    //   1174: invokespecial 539	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:bVq	()I
     //   1177: istore_2
-    //   1178: ldc_w 463
+    //   1178: ldc_w 511
     //   1181: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1184: iload_2
     //   1185: ireturn
@@ -1063,45 +1105,45 @@ public final class g
     //   1187: ldc 215
     //   1189: new 171	java/lang/StringBuilder
     //   1192: dup
-    //   1193: ldc_w 605
+    //   1193: ldc_w 649
     //   1196: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1199: aload_1
-    //   1200: invokevirtual 325	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1200: invokevirtual 349	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1203: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1206: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1209: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1209: invokestatic 225	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1212: aload_0
     //   1213: sipush 2005
-    //   1216: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   1216: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   1219: aload_0
-    //   1220: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   1220: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   1223: ineg
     //   1224: istore_2
     //   1225: goto -47 -> 1178
     //   1228: aload_0
     //   1229: aload 10
     //   1231: aload_1
-    //   1232: getfield 591	android/media/MediaCodec$BufferInfo:flags	I
+    //   1232: getfield 635	android/media/MediaCodec$BufferInfo:flags	I
     //   1235: aload 10
     //   1237: arraylength
-    //   1238: invokespecial 607	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:v	([BII)V
+    //   1238: invokespecial 651	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:u	([BII)V
     //   1241: goto -209 -> 1032
     //   1244: aload_0
-    //   1245: getfield 149	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQi	I
+    //   1245: getfield 149	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otn	I
     //   1248: istore_3
     //   1249: aload_0
     //   1250: iload_3
     //   1251: iconst_1
     //   1252: iadd
-    //   1253: putfield 149	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nQi	I
+    //   1253: putfield 149	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otn	I
     //   1256: iload_3
     //   1257: iconst_5
     //   1258: if_icmple -289 -> 969
     //   1261: aload_0
     //   1262: sipush 2006
-    //   1265: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   1265: putfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   1268: aload_0
-    //   1269: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:nPX	I
+    //   1269: getfield 123	com/tencent/mm/plugin/cloudvoip/cloudvoice/d/g:otc	I
     //   1272: ineg
     //   1273: istore_2
     //   1274: goto -305 -> 969

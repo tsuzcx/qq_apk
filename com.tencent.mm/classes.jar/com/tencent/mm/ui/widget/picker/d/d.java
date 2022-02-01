@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.picker.d;
 
 public abstract interface d
 {
-  public abstract void pG(int paramInt);
+  public abstract void qt(int paramInt);
 }
 
 

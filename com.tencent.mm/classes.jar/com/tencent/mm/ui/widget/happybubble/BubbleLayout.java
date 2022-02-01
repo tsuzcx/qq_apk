@@ -15,35 +15,35 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.ae.a.a;
+import com.tencent.mm.cc.a;
 
 public class BubbleLayout
   extends FrameLayout
 {
-  private int HGA;
-  private int HGB;
-  private int HGC;
-  private b HGD;
-  private Region HGE;
-  private Paint HGs;
-  private Path HGt;
-  private a HGu;
-  private int HGv;
-  private int HGw;
-  private int HGx;
-  private int HGy;
-  private int HGz;
-  private int PH;
-  private int lEp;
+  private Paint JgP;
+  private Path JgQ;
+  private a JgR;
+  private int JgS;
+  private int JgT;
+  private int JgU;
+  private int JgV;
+  private int JgW;
+  private int JgX;
+  private int JgY;
+  private int JgZ;
+  private b Jha;
+  private Region Jhb;
+  private int QC;
   private int mHeight;
   private Paint mPaint;
   private int mWidth;
-  private Path uW;
-  private int xo;
-  private int xp;
-  private int xq;
-  private int xr;
+  private int mgj;
+  private Path vU;
+  private int ym;
+  private int yn;
+  private int yo;
+  private int yp;
   
   public BubbleLayout(Context paramContext)
   {
@@ -59,97 +59,97 @@ public class BubbleLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143546);
-    this.HGE = new Region();
+    this.Jhb = new Region();
     setLayerType(1, null);
     setWillNotDraw(false);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.BubbleLayout, paramInt, 0);
-    this.HGu = a.aaI(paramContext.getInt(3, a.HGJ.value));
-    this.HGw = paramContext.getDimensionPixelOffset(5, 0);
-    this.HGx = paramContext.getDimensionPixelOffset(6, a.g(getContext(), 17.0F));
-    this.HGy = paramContext.getDimensionPixelOffset(4, a.g(getContext(), 17.0F));
-    this.PH = paramContext.getDimensionPixelOffset(8, a.g(getContext(), 3.3F));
-    this.HGz = paramContext.getDimensionPixelOffset(9, a.g(getContext(), 1.0F));
-    this.HGA = paramContext.getDimensionPixelOffset(10, a.g(getContext(), 1.0F));
-    this.HGB = paramContext.getDimensionPixelOffset(2, a.g(getContext(), 7.0F));
-    this.HGv = paramContext.getDimensionPixelOffset(1, a.g(getContext(), 8.0F));
-    this.lEp = paramContext.getColor(7, -7829368);
-    this.HGC = paramContext.getColor(0, -1);
+    this.JgR = a.acT(paramContext.getInt(3, a.Jhg.value));
+    this.JgT = paramContext.getDimensionPixelOffset(5, 0);
+    this.JgU = paramContext.getDimensionPixelOffset(6, a.g(getContext(), 17.0F));
+    this.JgV = paramContext.getDimensionPixelOffset(4, a.g(getContext(), 17.0F));
+    this.QC = paramContext.getDimensionPixelOffset(8, a.g(getContext(), 3.3F));
+    this.JgW = paramContext.getDimensionPixelOffset(9, a.g(getContext(), 1.0F));
+    this.JgX = paramContext.getDimensionPixelOffset(10, a.g(getContext(), 1.0F));
+    this.JgY = paramContext.getDimensionPixelOffset(2, a.g(getContext(), 7.0F));
+    this.JgS = paramContext.getDimensionPixelOffset(1, a.g(getContext(), 8.0F));
+    this.mgj = paramContext.getColor(7, -7829368);
+    this.JgZ = paramContext.getColor(0, -1);
     paramContext.recycle();
     this.mPaint = new Paint(5);
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.HGs = new Paint(5);
-    this.HGs.setStyle(Paint.Style.FILL);
-    this.uW = new Path();
-    this.HGt = new Path();
-    ffF();
+    this.JgP = new Paint(5);
+    this.JgP.setStyle(Paint.Style.FILL);
+    this.vU = new Path();
+    this.JgQ = new Path();
+    fvE();
     AppMethodBeat.o(143546);
   }
   
-  private void VL()
+  private void WJ()
   {
     int j = 0;
     AppMethodBeat.i(143551);
-    this.mPaint.setPathEffect(new CornerPathEffect(this.HGB));
-    this.mPaint.setShadowLayer(this.PH, this.HGz, this.HGA, this.lEp);
-    int k = this.HGv;
+    this.mPaint.setPathEffect(new CornerPathEffect(this.JgY));
+    this.mPaint.setShadowLayer(this.QC, this.JgW, this.JgX, this.mgj);
+    int k = this.JgS;
     int i;
-    if (this.HGu == a.HGG)
+    if (this.JgR == a.Jhd)
     {
-      i = this.HGy;
-      this.xo = (i + k);
-      k = this.HGv;
-      if (this.HGu != a.HGH) {
+      i = this.JgV;
+      this.ym = (i + k);
+      k = this.JgS;
+      if (this.JgR != a.Jhe) {
         break label361;
       }
-      i = this.HGy;
+      i = this.JgV;
       label100:
-      this.xp = (i + k);
+      this.yn = (i + k);
       k = this.mWidth;
-      int m = this.HGv;
-      if (this.HGu != a.HGI) {
+      int m = this.JgS;
+      if (this.JgR != a.Jhf) {
         break label366;
       }
-      i = this.HGy;
+      i = this.JgV;
       label133:
-      this.xq = (k - m - i);
+      this.yo = (k - m - i);
       k = this.mHeight;
-      m = this.HGv;
+      m = this.JgS;
       i = j;
-      if (this.HGu == a.HGJ) {
-        i = this.HGy;
+      if (this.JgR == a.Jhg) {
+        i = this.JgV;
       }
-      this.xr = (k - m - i);
-      this.mPaint.setColor(this.HGC);
-      this.HGs.setColor(this.HGC);
-      this.uW.reset();
-      this.HGt.reset();
-      j = this.HGw;
+      this.yp = (k - m - i);
+      this.mPaint.setColor(this.JgZ);
+      this.JgP.setColor(this.JgZ);
+      this.vU.reset();
+      this.JgQ.reset();
+      j = this.JgT;
       i = j;
-      if (this.HGy + j > this.xr) {
-        i = this.xr - this.HGx;
+      if (this.JgV + j > this.yp) {
+        i = this.yp - this.JgU;
       }
-      if (i <= this.HGv) {
+      if (i <= this.JgS) {
         break label371;
       }
       j = i;
       label257:
-      k = this.HGw;
+      k = this.JgT;
       i = k;
-      if (this.HGy + k > this.xq) {
-        i = this.xq - this.HGx;
+      if (this.JgV + k > this.yo) {
+        i = this.yo - this.JgU;
       }
-      if (i <= this.HGv) {
+      if (i <= this.JgS) {
         break label379;
       }
       label295:
-      switch (1.HGF[this.HGu.ordinal()])
+      switch (1.Jhc[this.JgR.ordinal()])
       {
       }
     }
     for (;;)
     {
-      this.uW.close();
-      this.HGt.close();
+      this.vU.close();
+      this.JgQ.close();
       AppMethodBeat.o(143551);
       return;
       i = 0;
@@ -161,110 +161,110 @@ public class BubbleLayout
       i = 0;
       break label133;
       label371:
-      j = this.HGv;
+      j = this.JgS;
       break label257;
       label379:
-      i = this.HGv;
+      i = this.JgS;
       break label295;
-      this.uW.moveTo(this.xo, j);
-      this.HGt.moveTo(this.xo, j);
-      this.HGt.rLineTo(-this.HGy, this.HGx / 2);
-      this.HGt.rLineTo(this.HGy, this.HGx / 2);
-      this.HGt.lineTo(this.xo, j);
-      this.uW.lineTo(this.xo, this.xr);
-      this.uW.lineTo(this.xq, this.xr);
-      this.uW.lineTo(this.xq, this.xp);
-      this.uW.lineTo(this.xo, this.xp);
+      this.vU.moveTo(this.ym, j);
+      this.JgQ.moveTo(this.ym, j);
+      this.JgQ.rLineTo(-this.JgV, this.JgU / 2);
+      this.JgQ.rLineTo(this.JgV, this.JgU / 2);
+      this.JgQ.lineTo(this.ym, j);
+      this.vU.lineTo(this.ym, this.yp);
+      this.vU.lineTo(this.yo, this.yp);
+      this.vU.lineTo(this.yo, this.yn);
+      this.vU.lineTo(this.ym, this.yn);
       continue;
-      this.uW.moveTo(i, this.xp);
-      this.HGt.moveTo(i, this.xp);
-      this.HGt.rLineTo(this.HGx / 2, -this.HGy);
-      this.HGt.rLineTo(this.HGx / 2, this.HGy);
-      this.HGt.lineTo(i, this.xp);
-      this.uW.lineTo(this.xq, this.xp);
-      this.uW.lineTo(this.xq, this.xr);
-      this.uW.lineTo(this.xo, this.xr);
-      this.uW.lineTo(this.xo, this.xp);
+      this.vU.moveTo(i, this.yn);
+      this.JgQ.moveTo(i, this.yn);
+      this.JgQ.rLineTo(this.JgU / 2, -this.JgV);
+      this.JgQ.rLineTo(this.JgU / 2, this.JgV);
+      this.JgQ.lineTo(i, this.yn);
+      this.vU.lineTo(this.yo, this.yn);
+      this.vU.lineTo(this.yo, this.yp);
+      this.vU.lineTo(this.ym, this.yp);
+      this.vU.lineTo(this.ym, this.yn);
       continue;
-      this.uW.moveTo(this.xq, j);
-      this.HGt.moveTo(this.xq, j);
-      this.HGt.rLineTo(this.HGy, this.HGx / 2);
-      this.HGt.rLineTo(-this.HGy, this.HGx / 2);
-      this.HGt.lineTo(this.xq, j);
-      this.uW.lineTo(this.xq, this.xr);
-      this.uW.lineTo(this.xo, this.xr);
-      this.uW.lineTo(this.xo, this.xp);
-      this.uW.lineTo(this.xq, this.xp);
+      this.vU.moveTo(this.yo, j);
+      this.JgQ.moveTo(this.yo, j);
+      this.JgQ.rLineTo(this.JgV, this.JgU / 2);
+      this.JgQ.rLineTo(-this.JgV, this.JgU / 2);
+      this.JgQ.lineTo(this.yo, j);
+      this.vU.lineTo(this.yo, this.yp);
+      this.vU.lineTo(this.ym, this.yp);
+      this.vU.lineTo(this.ym, this.yn);
+      this.vU.lineTo(this.yo, this.yn);
       continue;
-      this.uW.moveTo(i, this.xr);
-      this.HGt.moveTo(i, this.xr);
-      this.HGt.rLineTo(this.HGx / 2, this.HGy);
-      this.HGt.rLineTo(this.HGx / 2, -this.HGy);
-      this.HGt.lineTo(i, this.xr);
-      this.uW.lineTo(this.xq, this.xr);
-      this.uW.lineTo(this.xq, this.xp);
-      this.uW.lineTo(this.xo, this.xp);
-      this.uW.lineTo(this.xo, this.xr);
+      this.vU.moveTo(i, this.yp);
+      this.JgQ.moveTo(i, this.yp);
+      this.JgQ.rLineTo(this.JgU / 2, this.JgV);
+      this.JgQ.rLineTo(this.JgU / 2, -this.JgV);
+      this.JgQ.lineTo(i, this.yp);
+      this.vU.lineTo(this.yo, this.yp);
+      this.vU.lineTo(this.yo, this.yn);
+      this.vU.lineTo(this.ym, this.yn);
+      this.vU.lineTo(this.ym, this.yp);
     }
   }
   
-  public final void ffF()
+  public final void fvE()
   {
     AppMethodBeat.i(143547);
-    int i = this.HGv * 2;
-    switch (1.HGF[this.HGu.ordinal()])
+    int i = this.JgS * 2;
+    switch (1.Jhc[this.JgR.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(143547);
       return;
-      setPadding(i, i, i, this.HGy + i);
+      setPadding(i, i, i, this.JgV + i);
       AppMethodBeat.o(143547);
       return;
-      setPadding(i, this.HGy + i, i, i);
+      setPadding(i, this.JgV + i, i, i);
       AppMethodBeat.o(143547);
       return;
-      setPadding(this.HGy + i, i, i, i);
+      setPadding(this.JgV + i, i, i, i);
       AppMethodBeat.o(143547);
       return;
-      setPadding(i, i, this.HGy + i, i);
+      setPadding(i, i, this.JgV + i, i);
     }
   }
   
   public int getBubbleColor()
   {
-    return this.HGC;
+    return this.JgZ;
   }
   
   public int getBubblePadding()
   {
-    return this.HGv;
+    return this.JgS;
   }
   
   public int getBubbleRadius()
   {
-    return this.HGB;
+    return this.JgY;
   }
   
   public a getLook()
   {
-    return this.HGu;
+    return this.JgR;
   }
   
   public int getLookLength()
   {
-    return this.HGy;
+    return this.JgV;
   }
   
   public int getLookPosition()
   {
-    return this.HGw;
+    return this.JgT;
   }
   
   public int getLookWidth()
   {
-    return this.HGx;
+    return this.JgU;
   }
   
   public Paint getPaint()
@@ -274,33 +274,33 @@ public class BubbleLayout
   
   public Path getPath()
   {
-    return this.uW;
+    return this.vU;
   }
   
   public int getShadowColor()
   {
-    return this.lEp;
+    return this.mgj;
   }
   
   public int getShadowRadius()
   {
-    return this.PH;
+    return this.QC;
   }
   
   public int getShadowX()
   {
-    return this.HGz;
+    return this.JgW;
   }
   
   public int getShadowY()
   {
-    return this.HGA;
+    return this.JgX;
   }
   
   public void invalidate()
   {
     AppMethodBeat.i(143549);
-    VL();
+    WJ();
     super.invalidate();
     AppMethodBeat.o(143549);
   }
@@ -309,10 +309,10 @@ public class BubbleLayout
   {
     AppMethodBeat.i(143552);
     super.onDraw(paramCanvas);
-    this.mPaint.setPathEffect(new CornerPathEffect(this.HGB));
-    paramCanvas.drawPath(this.uW, this.mPaint);
+    this.mPaint.setPathEffect(new CornerPathEffect(this.JgY));
+    paramCanvas.drawPath(this.vU, this.mPaint);
     this.mPaint.setPathEffect(null);
-    paramCanvas.drawPath(this.HGt, this.HGs);
+    paramCanvas.drawPath(this.JgQ, this.JgP);
     AppMethodBeat.o(143552);
   }
   
@@ -322,20 +322,20 @@ public class BubbleLayout
     if ((paramParcelable instanceof Bundle))
     {
       paramParcelable = (Bundle)paramParcelable;
-      this.HGw = paramParcelable.getInt("mLookPosition");
-      this.HGx = paramParcelable.getInt("mLookWidth");
-      this.HGy = paramParcelable.getInt("mLookLength");
-      this.lEp = paramParcelable.getInt("mShadowColor");
-      this.PH = paramParcelable.getInt("mShadowRadius");
-      this.HGz = paramParcelable.getInt("mShadowX");
-      this.HGA = paramParcelable.getInt("mShadowY");
-      this.HGB = paramParcelable.getInt("mBubbleRadius");
+      this.JgT = paramParcelable.getInt("mLookPosition");
+      this.JgU = paramParcelable.getInt("mLookWidth");
+      this.JgV = paramParcelable.getInt("mLookLength");
+      this.mgj = paramParcelable.getInt("mShadowColor");
+      this.QC = paramParcelable.getInt("mShadowRadius");
+      this.JgW = paramParcelable.getInt("mShadowX");
+      this.JgX = paramParcelable.getInt("mShadowY");
+      this.JgY = paramParcelable.getInt("mBubbleRadius");
       this.mWidth = paramParcelable.getInt("mWidth");
       this.mHeight = paramParcelable.getInt("mHeight");
-      this.xo = paramParcelable.getInt("mLeft");
-      this.xp = paramParcelable.getInt("mTop");
-      this.xq = paramParcelable.getInt("mRight");
-      this.xr = paramParcelable.getInt("mBottom");
+      this.ym = paramParcelable.getInt("mLeft");
+      this.yn = paramParcelable.getInt("mTop");
+      this.yo = paramParcelable.getInt("mRight");
+      this.yp = paramParcelable.getInt("mBottom");
       super.onRestoreInstanceState(paramParcelable.getParcelable("instanceState"));
       AppMethodBeat.o(143557);
       return;
@@ -349,20 +349,20 @@ public class BubbleLayout
     AppMethodBeat.i(143556);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("instanceState", super.onSaveInstanceState());
-    localBundle.putInt("mLookPosition", this.HGw);
-    localBundle.putInt("mLookWidth", this.HGx);
-    localBundle.putInt("mLookLength", this.HGy);
-    localBundle.putInt("mShadowColor", this.lEp);
-    localBundle.putInt("mShadowRadius", this.PH);
-    localBundle.putInt("mShadowX", this.HGz);
-    localBundle.putInt("mShadowY", this.HGA);
-    localBundle.putInt("mBubbleRadius", this.HGB);
+    localBundle.putInt("mLookPosition", this.JgT);
+    localBundle.putInt("mLookWidth", this.JgU);
+    localBundle.putInt("mLookLength", this.JgV);
+    localBundle.putInt("mShadowColor", this.mgj);
+    localBundle.putInt("mShadowRadius", this.QC);
+    localBundle.putInt("mShadowX", this.JgW);
+    localBundle.putInt("mShadowY", this.JgX);
+    localBundle.putInt("mBubbleRadius", this.JgY);
     localBundle.putInt("mWidth", this.mWidth);
     localBundle.putInt("mHeight", this.mHeight);
-    localBundle.putInt("mLeft", this.xo);
-    localBundle.putInt("mTop", this.xp);
-    localBundle.putInt("mRight", this.xq);
-    localBundle.putInt("mBottom", this.xr);
+    localBundle.putInt("mLeft", this.ym);
+    localBundle.putInt("mTop", this.yn);
+    localBundle.putInt("mRight", this.yo);
+    localBundle.putInt("mBottom", this.yp);
     AppMethodBeat.o(143556);
     return localBundle;
   }
@@ -373,7 +373,7 @@ public class BubbleLayout
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    VL();
+    WJ();
     AppMethodBeat.o(143548);
   }
   
@@ -383,10 +383,10 @@ public class BubbleLayout
     if (paramMotionEvent.getAction() == 0)
     {
       RectF localRectF = new RectF();
-      this.uW.computeBounds(localRectF, true);
-      this.HGE.setPath(this.uW, new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
-      if ((!this.HGE.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) && (this.HGD != null)) {
-        this.HGD.ffE();
+      this.vU.computeBounds(localRectF, true);
+      this.Jhb.setPath(this.vU, new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
+      if ((!this.Jhb.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) && (this.Jha != null)) {
+        this.Jha.fvD();
       }
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -397,70 +397,70 @@ public class BubbleLayout
   public void postInvalidate()
   {
     AppMethodBeat.i(143550);
-    VL();
+    WJ();
     super.postInvalidate();
     AppMethodBeat.o(143550);
   }
   
   public void setBubbleColor(int paramInt)
   {
-    this.HGC = paramInt;
+    this.JgZ = paramInt;
   }
   
   public void setBubbleRadius(int paramInt)
   {
-    this.HGB = paramInt;
+    this.JgY = paramInt;
   }
   
   public void setLook(a parama)
   {
     AppMethodBeat.i(143554);
-    this.HGu = parama;
-    ffF();
+    this.JgR = parama;
+    fvE();
     AppMethodBeat.o(143554);
   }
   
   public void setLookLength(int paramInt)
   {
     AppMethodBeat.i(143555);
-    this.HGy = paramInt;
-    ffF();
+    this.JgV = paramInt;
+    fvE();
     AppMethodBeat.o(143555);
   }
   
   public void setLookPosition(int paramInt)
   {
-    this.HGw = paramInt;
+    this.JgT = paramInt;
   }
   
   public void setLookWidth(int paramInt)
   {
-    this.HGx = paramInt;
+    this.JgU = paramInt;
   }
   
   public void setOnClickEdgeListener(b paramb)
   {
-    this.HGD = paramb;
+    this.Jha = paramb;
   }
   
   public void setShadowColor(int paramInt)
   {
-    this.lEp = paramInt;
+    this.mgj = paramInt;
   }
   
   public void setShadowRadius(int paramInt)
   {
-    this.PH = paramInt;
+    this.QC = paramInt;
   }
   
   public void setShadowX(int paramInt)
   {
-    this.HGz = paramInt;
+    this.JgW = paramInt;
   }
   
   public void setShadowY(int paramInt)
   {
-    this.HGA = paramInt;
+    this.JgX = paramInt;
   }
   
   public static enum a
@@ -470,11 +470,11 @@ public class BubbleLayout
     static
     {
       AppMethodBeat.i(143545);
-      HGG = new a("LEFT", 0, 1);
-      HGH = new a("TOP", 1, 2);
-      HGI = new a("RIGHT", 2, 3);
-      HGJ = new a("BOTTOM", 3, 4);
-      HGK = new a[] { HGG, HGH, HGI, HGJ };
+      Jhd = new a("LEFT", 0, 1);
+      Jhe = new a("TOP", 1, 2);
+      Jhf = new a("RIGHT", 2, 3);
+      Jhg = new a("BOTTOM", 3, 4);
+      Jhh = new a[] { Jhd, Jhe, Jhf, Jhg };
       AppMethodBeat.o(143545);
     }
     
@@ -483,27 +483,27 @@ public class BubbleLayout
       this.value = paramInt;
     }
     
-    public static a aaI(int paramInt)
+    public static a acT(int paramInt)
     {
-      a locala = HGJ;
+      a locala = Jhg;
       switch (paramInt)
       {
       default: 
         return locala;
       case 1: 
-        return HGG;
+        return Jhd;
       case 2: 
-        return HGH;
+        return Jhe;
       case 3: 
-        return HGI;
+        return Jhf;
       }
-      return HGJ;
+      return Jhg;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void ffE();
+    public abstract void fvD();
   }
 }
 

@@ -1,70 +1,82 @@
 package com.tencent.mm.plugin.card.b;
 
+import android.annotation.TargetApi;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothAdapter.LeScanCallback;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.LocationManager;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.plugin.card.model.ai;
-import com.tencent.mm.protocal.protobuf.oc;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class i
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  public volatile boolean csX;
-  public Object dah;
-  public volatile float fjD;
-  public volatile float fjE;
-  public MMActivity nqA;
-  private volatile boolean nqB;
-  private boolean nqC;
-  boolean nqD;
-  private boolean nqE;
-  oc nqF;
-  private i.b nqG;
-  public i.a nqH;
-  private int nqI;
-  private long nqJ;
-  private long nqK;
-  private long nqL;
-  public av nqM;
-  String nqb;
-  private com.tencent.mm.plugin.card.base.b nqp;
+  public Object cXD;
+  public volatile boolean cqf;
+  public volatile float fmX;
+  public volatile float fmY;
+  public MMActivity nTA;
+  private volatile boolean nTB;
+  private boolean nTC;
+  boolean nTD;
+  private boolean nTE;
+  oj nTF;
+  private b nTG;
+  public a nTH;
+  private int nTI;
+  private long nTJ;
+  private long nTK;
+  private long nTL;
+  public au nTM;
+  String nTb;
+  private com.tencent.mm.plugin.card.base.b nTp;
   
   public i()
   {
     AppMethodBeat.i(112657);
-    this.csX = false;
-    this.nqB = false;
-    this.dah = new Object();
-    this.nqC = false;
-    this.nqD = false;
-    this.fjD = -85.0F;
-    this.fjE = -1000.0F;
-    this.nqE = false;
-    this.nqI = 60;
-    this.nqJ = 0L;
-    this.nqK = 0L;
-    this.nqL = 10000L;
-    this.nqM = new av(new av.a()
+    this.cqf = false;
+    this.nTB = false;
+    this.cXD = new Object();
+    this.nTC = false;
+    this.nTD = false;
+    this.fmX = -85.0F;
+    this.fmY = -1000.0F;
+    this.nTE = false;
+    this.nTI = 60;
+    this.nTJ = 0L;
+    this.nTK = 0L;
+    this.nTL = 10000L;
+    this.nTM = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(112645);
         i.this.report();
-        i.this.bIB();
+        i.this.bPO();
         AppMethodBeat.o(112645);
         return true;
       }
@@ -75,7 +87,7 @@ public final class i
   private void a(String paramString, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(112665);
-    boolean bool = this.nqD;
+    boolean bool = this.nTD;
     a(paramString, new byte[0], paramFloat1, paramFloat2, 0, false, bool);
     AppMethodBeat.o(112665);
   }
@@ -83,53 +95,53 @@ public final class i
   private void a(String paramString, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(112667);
-    a(paramString, paramArrayOfByte, paramFloat1, paramFloat2, paramInt, paramBoolean, this.nqD);
+    a(paramString, paramArrayOfByte, paramFloat1, paramFloat2, paramInt, paramBoolean, this.nTD);
     AppMethodBeat.o(112667);
   }
   
   static void a(String paramString, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(112668);
-    paramString = new ai(paramString, paramArrayOfByte, paramFloat1, paramFloat2, paramInt, paramBoolean1, paramBoolean2);
-    com.tencent.mm.kernel.g.afA().gcy.a(paramString, 0);
+    paramString = new com.tencent.mm.plugin.card.model.ai(paramString, paramArrayOfByte, paramFloat1, paramFloat2, paramInt, paramBoolean1, paramBoolean2);
+    com.tencent.mm.kernel.g.agQ().ghe.a(paramString, 0);
     AppMethodBeat.o(112668);
   }
   
   private void a(String paramString, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(112666);
-    a(paramString, paramArrayOfByte, -1000.0F, -85.0F, paramInt, paramBoolean, this.nqD);
+    a(paramString, paramArrayOfByte, -1000.0F, -85.0F, paramInt, paramBoolean, this.nTD);
     AppMethodBeat.o(112666);
   }
   
-  private static void aSo()
+  private static void aZl()
   {
     AppMethodBeat.i(112670);
-    LocationManager localLocationManager = (LocationManager)aj.getContext().getSystemService("location");
+    LocationManager localLocationManager = (LocationManager)com.tencent.mm.sdk.platformtools.ai.getContext().getSystemService("location");
     if (localLocationManager != null) {
-      ad.i("MicroMsg.CardLbsOrBluetooth", "isGPSEnable:%b isNetworkEnable:%b", new Object[] { Boolean.valueOf(localLocationManager.isProviderEnabled("gps")), Boolean.valueOf(localLocationManager.isProviderEnabled("network")) });
+      ac.i("MicroMsg.CardLbsOrBluetooth", "isGPSEnable:%b isNetworkEnable:%b", new Object[] { Boolean.valueOf(localLocationManager.isProviderEnabled("gps")), Boolean.valueOf(localLocationManager.isProviderEnabled("network")) });
     }
     AppMethodBeat.o(112670);
   }
   
-  private boolean bID()
+  private boolean bPQ()
   {
     boolean bool = true;
     AppMethodBeat.i(112663);
-    synchronized (this.dah)
+    synchronized (this.cXD)
     {
       int i;
-      if (System.currentTimeMillis() - this.nqK >= this.nqL)
+      if (System.currentTimeMillis() - this.nTK >= this.nTL)
       {
         i = 1;
-        if ((Float.compare(this.fjD, -85.0F) == 0) || (Float.compare(this.fjE, -1000.0F) == 0)) {
+        if ((Float.compare(this.fmX, -85.0F) == 0) || (Float.compare(this.fmY, -1000.0F) == 0)) {
           break label97;
         }
       }
       label97:
       for (int j = 1;; j = 0)
       {
-        if ((!this.nqD) || (!this.nqC) || (j == 0) || (i == 0)) {
+        if ((!this.nTD) || (!this.nTC) || (j == 0) || (i == 0)) {
           break label102;
         }
         AppMethodBeat.o(112663);
@@ -142,26 +154,26 @@ public final class i
     }
   }
   
-  private boolean bIE()
+  private boolean bPR()
   {
     AppMethodBeat.i(112664);
-    if (!this.nqE)
+    if (!this.nTE)
     {
       AppMethodBeat.o(112664);
       return false;
     }
-    if (this.nqH == null)
+    if (this.nTH == null)
     {
-      ad.e("MicroMsg.CardLbsOrBluetooth", "[needReportBluetooth]bluetoothHelper is null, return");
+      ac.e("MicroMsg.CardLbsOrBluetooth", "[needReportBluetooth]bluetoothHelper is null, return");
       AppMethodBeat.o(112664);
       return false;
     }
-    if (this.nqH.bIG().cLR.equals(""))
+    if (this.nTH.bPT().cIZ.equals(""))
     {
       AppMethodBeat.o(112664);
       return false;
     }
-    if (System.currentTimeMillis() - this.nqJ >= this.nqL)
+    if (System.currentTimeMillis() - this.nTJ >= this.nTL)
     {
       AppMethodBeat.o(112664);
       return true;
@@ -173,201 +185,424 @@ public final class i
   public final void a(MMActivity paramMMActivity, String paramString, com.tencent.mm.plugin.card.base.b paramb, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(112658);
-    this.csX = true;
-    this.nqA = paramMMActivity;
-    this.nqb = paramString;
-    this.nqp = paramb;
-    this.fjD = paramFloat1;
-    this.fjE = paramFloat2;
-    this.nqC = paramb.bHV().CSn;
-    this.nqD = paramb.bHW().CPK;
-    this.nqF = paramb.bHV().CSo;
+    this.cqf = true;
+    this.nTA = paramMMActivity;
+    this.nTb = paramString;
+    this.nTp = paramb;
+    this.fmX = paramFloat1;
+    this.fmY = paramFloat2;
+    this.nTC = paramb.bPi().EkY;
+    this.nTD = paramb.bPj().Eiv;
+    this.nTF = paramb.bPi().EkZ;
     int i;
-    if (paramb.bHV().CSo == null)
+    if (paramb.bPi().EkZ == null)
     {
       i = 60;
-      this.nqI = i;
-      if ((paramb.bHV().CSo == null) || (bt.isNullOrNil(paramb.bHV().CSo.name))) {
+      this.nTI = i;
+      if ((paramb.bPi().EkZ == null) || (bs.isNullOrNil(paramb.bPi().EkZ.name))) {
         break label328;
       }
     }
     label328:
     for (boolean bool = true;; bool = false)
     {
-      this.nqE = bool;
-      ad.i("MicroMsg.CardLbsOrBluetooth", "init cardId:%s, needLocation:%b, isLocationAuth:%b needBluetooth:%b reportTime:%d", new Object[] { paramString, Boolean.valueOf(this.nqC), Boolean.valueOf(this.nqD), Boolean.valueOf(this.nqE), Integer.valueOf(this.nqI) });
-      if ((this.nqC) && (!this.nqD)) {
+      this.nTE = bool;
+      ac.i("MicroMsg.CardLbsOrBluetooth", "init cardId:%s, needLocation:%b, isLocationAuth:%b needBluetooth:%b reportTime:%d", new Object[] { paramString, Boolean.valueOf(this.nTC), Boolean.valueOf(this.nTD), Boolean.valueOf(this.nTE), Integer.valueOf(this.nTI) });
+      if ((this.nTC) && (!this.nTD)) {
         break label334;
       }
-      if (this.nqE)
+      if (this.nTE)
       {
-        ad.i("MicroMsg.CardLbsOrBluetooth", "initBluetoothHelper blueToothInfo.name:%s", new Object[] { this.nqF.name });
-        this.nqH = new i.a(this, (byte)0);
-        paramMMActivity = this.nqH;
-        ad.i("MicroMsg.CardLbsOrBluetooth", "init bluetoothStateListener");
-        paramMMActivity.jHB = new i.a.2(paramMMActivity);
+        ac.i("MicroMsg.CardLbsOrBluetooth", "initBluetoothHelper blueToothInfo.name:%s", new Object[] { this.nTF.name });
+        this.nTH = new a((byte)0);
+        paramMMActivity = this.nTH;
+        ac.i("MicroMsg.CardLbsOrBluetooth", "init bluetoothStateListener");
+        paramMMActivity.kia = new i.a.2(paramMMActivity);
         paramString = new IntentFilter("android.bluetooth.adapter.action.STATE_CHANGED");
-        aj.getContext().registerReceiver(paramMMActivity.jHB, paramString);
+        com.tencent.mm.sdk.platformtools.ai.getContext().registerReceiver(paramMMActivity.kia, paramString);
       }
       start();
       report();
       AppMethodBeat.o(112658);
       return;
-      i = paramb.bHV().CSo.CLF;
+      i = paramb.bPi().EkZ.Eei;
       break;
     }
     label334:
-    if (bt.isNullOrNil(this.nqp.bHV().CSp)) {}
-    for (paramMMActivity = this.nqp.bHV().title;; paramMMActivity = this.nqp.bHV().CSp)
+    if (bs.isNullOrNil(this.nTp.bPi().Ela)) {}
+    for (paramMMActivity = this.nTp.bPi().title;; paramMMActivity = this.nTp.bPi().Ela)
     {
-      h.a(this.nqA, this.nqA.getString(2131756956, new Object[] { paramMMActivity }), this.nqA.getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      h.a(this.nTA, this.nTA.getString(2131756956, new Object[] { paramMMActivity }), this.nTA.getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(112646);
-          i.this.nqD = true;
-          i.a(i.this.nqb, new byte[0], -85.0F, -1000.0F, 0, false, true);
+          i.this.nTD = true;
+          i.a(i.this.nTb, new byte[0], -85.0F, -1000.0F, 0, false, true);
           AppMethodBeat.o(112646);
         }
       }, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          i.this.nqD = false;
+          i.this.nTD = false;
         }
       });
       break;
     }
   }
   
-  public final void bIB()
+  public final void bPO()
   {
     AppMethodBeat.i(112660);
-    bIC();
-    if (this.nqI > 0)
+    bPP();
+    if (this.nTI > 0)
     {
-      av localav = this.nqM;
-      long l = this.nqI * 1000;
-      localav.av(l, l);
-      ad.i("MicroMsg.CardLbsOrBluetooth", "start ReportTimer!");
+      au localau = this.nTM;
+      long l = this.nTI * 1000;
+      localau.au(l, l);
+      ac.i("MicroMsg.CardLbsOrBluetooth", "start ReportTimer!");
       AppMethodBeat.o(112660);
       return;
     }
-    ad.e("MicroMsg.CardLbsOrBluetooth", "not to start ReportTimer!");
+    ac.e("MicroMsg.CardLbsOrBluetooth", "not to start ReportTimer!");
     AppMethodBeat.o(112660);
   }
   
-  public final void bIC()
+  public final void bPP()
   {
     AppMethodBeat.i(112661);
-    ad.i("MicroMsg.CardLbsOrBluetooth", "stop ReportTimer!");
-    if (!this.nqM.eFX()) {
-      this.nqM.stopTimer();
+    ac.i("MicroMsg.CardLbsOrBluetooth", "stop ReportTimer!");
+    if (!this.nTM.eVs()) {
+      this.nTM.stopTimer();
     }
     AppMethodBeat.o(112661);
   }
   
-  public final boolean bIF()
+  public final boolean bPS()
   {
-    return (this.nqC) || (this.nqE);
+    return (this.nTC) || (this.nTE);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(112669);
-    ad.i("MicroMsg.CardLbsOrBluetooth", "report success, onSceneEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nqB = false;
+    ac.i("MicroMsg.CardLbsOrBluetooth", "report success, onSceneEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.nTB = false;
     AppMethodBeat.o(112669);
   }
   
   public final void report()
   {
     AppMethodBeat.i(112662);
-    if (!bIF())
+    if (!bPS())
     {
-      ad.i("MicroMsg.CardLbsOrBluetooth", "[report]not need report");
+      ac.i("MicroMsg.CardLbsOrBluetooth", "[report]not need report");
       AppMethodBeat.o(112662);
       return;
     }
-    if (this.nqB)
+    if (this.nTB)
     {
-      ad.i("MicroMsg.CardLbsOrBluetooth", "isReporting, return");
+      ac.i("MicroMsg.CardLbsOrBluetooth", "isReporting, return");
       AppMethodBeat.o(112662);
       return;
     }
-    this.nqB = true;
-    boolean bool2 = bIE();
-    boolean bool3 = bID();
-    boolean bool4 = this.nqC;
-    boolean bool5 = this.nqD;
-    if (this.nqH == null) {}
-    i.b localb;
-    for (boolean bool1 = false;; bool1 = this.nqH.nqP)
+    this.nTB = true;
+    boolean bool2 = bPR();
+    boolean bool3 = bPQ();
+    boolean bool4 = this.nTC;
+    boolean bool5 = this.nTD;
+    if (this.nTH == null) {}
+    b localb;
+    for (boolean bool1 = false;; bool1 = this.nTH.nTP)
     {
-      ad.i("MicroMsg.CardLbsOrBluetooth", "report needLocation:%b, isLocationAuth:%b, isBluetoothEnable:%b, needReportBluetooth:%b needReportGps:%b", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+      ac.i("MicroMsg.CardLbsOrBluetooth", "report needLocation:%b, isLocationAuth:%b, isBluetoothEnable:%b, needReportBluetooth:%b needReportGps:%b", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
       if ((!bool2) || (!bool3)) {
         break;
       }
-      localb = this.nqH.bIG();
-      ad.i("MicroMsg.CardLbsOrBluetooth", "reportBluetoothAndGps deviceInfo:%s", new Object[] { localb });
-      ad.d("MicroMsg.CardLbsOrBluetooth", "reportBluetoothAndGps lbsLongitude:%f, lbsLatitude:%f", new Object[] { Float.valueOf(this.fjE), Float.valueOf(this.fjD) });
-      a(this.nqb, localb.nqV, this.fjE, this.fjD, localb.dhP, this.nqH.nqP);
-      this.nqK = System.currentTimeMillis();
-      this.nqJ = System.currentTimeMillis();
-      this.nqH.reset();
-      this.nqG = localb;
+      localb = this.nTH.bPT();
+      ac.i("MicroMsg.CardLbsOrBluetooth", "reportBluetoothAndGps deviceInfo:%s", new Object[] { localb });
+      ac.d("MicroMsg.CardLbsOrBluetooth", "reportBluetoothAndGps lbsLongitude:%f, lbsLatitude:%f", new Object[] { Float.valueOf(this.fmY), Float.valueOf(this.fmX) });
+      a(this.nTb, localb.nTV, this.fmY, this.fmX, localb.dfk, this.nTH.nTP);
+      this.nTK = System.currentTimeMillis();
+      this.nTJ = System.currentTimeMillis();
+      this.nTH.reset();
+      this.nTG = localb;
       AppMethodBeat.o(112662);
       return;
     }
     if (bool2)
     {
-      localb = this.nqH.bIG();
-      ad.i("MicroMsg.CardLbsOrBluetooth", "reportBluetooth deviceInfo:%s", new Object[] { localb });
-      a(this.nqb, localb.nqV, localb.dhP, this.nqH.nqP);
-      this.nqJ = System.currentTimeMillis();
-      this.nqH.reset();
-      this.nqG = localb;
+      localb = this.nTH.bPT();
+      ac.i("MicroMsg.CardLbsOrBluetooth", "reportBluetooth deviceInfo:%s", new Object[] { localb });
+      a(this.nTb, localb.nTV, localb.dfk, this.nTH.nTP);
+      this.nTJ = System.currentTimeMillis();
+      this.nTH.reset();
+      this.nTG = localb;
       AppMethodBeat.o(112662);
       return;
     }
     if (bool3)
     {
-      ad.i("MicroMsg.CardLbsOrBluetooth", "reportgps");
-      ad.d("MicroMsg.CardLbsOrBluetooth", "reportgps lbsLongitude:%f, lbsLatitude:%f", new Object[] { Float.valueOf(this.fjE), Float.valueOf(this.fjD) });
-      a(this.nqb, this.fjE, this.fjD);
-      this.nqK = System.currentTimeMillis();
+      ac.i("MicroMsg.CardLbsOrBluetooth", "reportgps");
+      ac.d("MicroMsg.CardLbsOrBluetooth", "reportgps lbsLongitude:%f, lbsLatitude:%f", new Object[] { Float.valueOf(this.fmY), Float.valueOf(this.fmX) });
+      a(this.nTb, this.fmY, this.fmX);
+      this.nTK = System.currentTimeMillis();
       AppMethodBeat.o(112662);
       return;
     }
-    ad.e("MicroMsg.CardLbsOrBluetooth", "not report");
-    this.nqB = false;
+    ac.e("MicroMsg.CardLbsOrBluetooth", "not report");
+    this.nTB = false;
     AppMethodBeat.o(112662);
   }
   
   public final void start()
   {
     AppMethodBeat.i(112659);
-    if (!bIF())
+    if (!bPS())
     {
       AppMethodBeat.o(112659);
       return;
     }
-    ad.i("MicroMsg.CardLbsOrBluetooth", "start");
-    if (!this.csX)
+    ac.i("MicroMsg.CardLbsOrBluetooth", "start");
+    if (!this.cqf)
     {
-      ad.e("MicroMsg.CardLbsOrBluetooth", "isInit:%b", new Object[] { Boolean.valueOf(this.csX) });
+      ac.e("MicroMsg.CardLbsOrBluetooth", "isInit:%b", new Object[] { Boolean.valueOf(this.cqf) });
       AppMethodBeat.o(112659);
       return;
     }
-    if (this.nqC) {
-      aSo();
+    if (this.nTC) {
+      aZl();
     }
-    if ((this.nqH != null) && (this.nqE)) {
-      this.nqH.bIH();
+    if ((this.nTH != null) && (this.nTE)) {
+      this.nTH.bPU();
     }
-    bIB();
-    com.tencent.mm.kernel.g.afA().gcy.a(2574, this);
+    bPO();
+    com.tencent.mm.kernel.g.agQ().ghe.a(2574, this);
     AppMethodBeat.o(112659);
+  }
+  
+  public final class a
+  {
+    public BroadcastReceiver kia;
+    private BluetoothAdapter ksj;
+    private volatile boolean nTO;
+    boolean nTP;
+    Map<String, i.b> nTQ;
+    long nTR;
+    Runnable nTS;
+    private BluetoothAdapter.LeScanCallback nTT;
+    
+    private a()
+    {
+      AppMethodBeat.i(112650);
+      this.nTO = false;
+      this.nTP = false;
+      this.nTQ = new ConcurrentHashMap();
+      this.nTR = 3000L;
+      this.nTS = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(112647);
+          i.a.this.bPV();
+          i.a.this.bPU();
+          AppMethodBeat.o(112647);
+        }
+      };
+      this.nTT = new BluetoothAdapter.LeScanCallback()
+      {
+        public final void onLeScan(BluetoothDevice paramAnonymousBluetoothDevice, int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
+        {
+          AppMethodBeat.i(112649);
+          if (paramAnonymousBluetoothDevice == null)
+          {
+            ac.e("MicroMsg.CardLbsOrBluetooth", "device is null, return");
+            AppMethodBeat.o(112649);
+            return;
+          }
+          if ((i.this.nTF == null) || (bs.isNullOrNil(i.this.nTF.name)))
+          {
+            AppMethodBeat.o(112649);
+            return;
+          }
+          String str = bs.nullAsNil(paramAnonymousBluetoothDevice.getName());
+          paramAnonymousBluetoothDevice = paramAnonymousBluetoothDevice.getAddress();
+          if (str.equals(i.this.nTF.name))
+          {
+            ac.i("MicroMsg.CardLbsOrBluetooth", "onLeScan for deviceId:%s, name:%s, rssi:%d", new Object[] { paramAnonymousBluetoothDevice, str, Integer.valueOf(paramAnonymousInt) });
+            paramAnonymousArrayOfByte = new i.b(paramAnonymousBluetoothDevice, paramAnonymousInt, str, i.a.aJ(paramAnonymousArrayOfByte));
+            i.a.this.nTQ.put(paramAnonymousBluetoothDevice, paramAnonymousArrayOfByte);
+            AppMethodBeat.o(112649);
+            return;
+          }
+          ac.d("MicroMsg.CardLbsOrBluetooth", "onLeScan for deviceId:%s, name:%s, rssi:%d", new Object[] { paramAnonymousBluetoothDevice, str, Integer.valueOf(paramAnonymousInt) });
+          AppMethodBeat.o(112649);
+        }
+      };
+      AppMethodBeat.o(112650);
+    }
+    
+    public static byte[] aJ(byte[] paramArrayOfByte)
+    {
+      byte[] arrayOfByte = null;
+      AppMethodBeat.i(112655);
+      if (paramArrayOfByte == null)
+      {
+        AppMethodBeat.o(112655);
+        return null;
+      }
+      int i = 0;
+      if (i < paramArrayOfByte.length)
+      {
+        int j = i + 1;
+        i = paramArrayOfByte[i] & 0xFF;
+        if (i != 0)
+        {
+          i -= 1;
+          int k = j + 1;
+          switch (paramArrayOfByte[j] & 0xFF)
+          {
+          }
+          for (;;)
+          {
+            i += k;
+            break;
+            arrayOfByte = new byte[i];
+            System.arraycopy(paramArrayOfByte, k, arrayOfByte, 0, i);
+          }
+        }
+      }
+      AppMethodBeat.o(112655);
+      return arrayOfByte;
+    }
+    
+    public final i.b bPT()
+    {
+      AppMethodBeat.i(112652);
+      Object localObject = new i.b("", -100, "", null);
+      if (this.nTQ.size() <= 0)
+      {
+        AppMethodBeat.o(112652);
+        return localObject;
+      }
+      Iterator localIterator = this.nTQ.values().iterator();
+      if (localIterator.hasNext())
+      {
+        i.b localb = (i.b)localIterator.next();
+        if (((i.b)localObject).dfk >= localb.dfk) {
+          break label96;
+        }
+        localObject = localb;
+      }
+      label96:
+      for (;;)
+      {
+        break;
+        AppMethodBeat.o(112652);
+        return localObject;
+      }
+    }
+    
+    @TargetApi(18)
+    public final void bPU()
+    {
+      AppMethodBeat.i(112653);
+      if (Build.VERSION.SDK_INT < 18)
+      {
+        ac.i("MicroMsg.CardLbsOrBluetooth", "not support bluetooth, return");
+        AppMethodBeat.o(112653);
+        return;
+      }
+      if (this.nTO)
+      {
+        ac.i("MicroMsg.CardLbsOrBluetooth", "already start");
+        AppMethodBeat.o(112653);
+        return;
+      }
+      this.nTQ.clear();
+      BluetoothManager localBluetoothManager = (BluetoothManager)com.tencent.mm.sdk.platformtools.ai.getContext().getSystemService("bluetooth");
+      if (localBluetoothManager == null)
+      {
+        this.nTP = false;
+        ac.e("MicroMsg.CardLbsOrBluetooth", "bluetoothManager is null");
+        AppMethodBeat.o(112653);
+        return;
+      }
+      this.nTP = true;
+      this.ksj = localBluetoothManager.getAdapter();
+      if ((this.ksj == null) || (!this.ksj.isEnabled()))
+      {
+        this.nTP = false;
+        ac.e("MicroMsg.CardLbsOrBluetooth", "bluetoothAdapter is null or bluetoothAdapter is disable");
+        AppMethodBeat.o(112653);
+        return;
+      }
+      ac.i("MicroMsg.CardLbsOrBluetooth", "startLeScan isOK:%b", new Object[] { Boolean.valueOf(this.ksj.startLeScan(this.nTT)) });
+      this.nTO = true;
+      AppMethodBeat.o(112653);
+    }
+    
+    @TargetApi(18)
+    public final void bPV()
+    {
+      AppMethodBeat.i(112654);
+      if (Build.VERSION.SDK_INT < 18)
+      {
+        ac.i("MicroMsg.CardLbsOrBluetooth", "not support bluetooth, return");
+        AppMethodBeat.o(112654);
+        return;
+      }
+      if (!this.nTO)
+      {
+        ac.i("MicroMsg.CardLbsOrBluetooth", "not start");
+        AppMethodBeat.o(112654);
+        return;
+      }
+      if ((this.ksj == null) || (!this.ksj.isEnabled()))
+      {
+        this.nTP = false;
+        ac.e("MicroMsg.CardLbsOrBluetooth", "bluetoothAdapter is null or bluetoothAdapter is disable");
+        AppMethodBeat.o(112654);
+        return;
+      }
+      this.nTP = true;
+      this.ksj.stopLeScan(this.nTT);
+      ac.i("MicroMsg.CardLbsOrBluetooth", "stopLeScan");
+      this.nTO = false;
+      AppMethodBeat.o(112654);
+    }
+    
+    public final void reset()
+    {
+      AppMethodBeat.i(112651);
+      this.nTQ.clear();
+      AppMethodBeat.o(112651);
+    }
+  }
+  
+  static final class b
+  {
+    String cIZ;
+    int dfk;
+    byte[] nTV;
+    String name;
+    
+    public b(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+    {
+      this.cIZ = paramString1;
+      this.dfk = paramInt;
+      this.name = paramString2;
+      this.nTV = paramArrayOfByte;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(112656);
+      String str = "SrvDeviceInfo{deviceId='" + this.cIZ + '\'' + ", rssi=" + this.dfk + ", name='" + this.name + '\'' + ", manuData=" + Arrays.toString(this.nTV) + '}';
+      AppMethodBeat.o(112656);
+      return str;
+    }
   }
 }
 

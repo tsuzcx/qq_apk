@@ -15,19 +15,19 @@ public final class a
     super(paramContext, paramArrayList, paramInt, paramOrders);
   }
   
-  public final Bankcard Rk(int paramInt)
+  public final Bankcard Tt(int paramInt)
   {
     AppMethodBeat.i(72100);
     Bankcard localBankcard;
-    if ((this.zGg != null) && (this.zGg.size() != 0))
+    if ((this.AYt != null) && (this.AYt.size() != 0))
     {
-      localBankcard = (Bankcard)this.zGg.get(paramInt);
+      localBankcard = (Bankcard)this.AYt.get(paramInt);
       AppMethodBeat.o(72100);
       return localBankcard;
     }
     if (paramInt != getCount() - 1)
     {
-      localBankcard = (Bankcard)this.zGg.get(paramInt);
+      localBankcard = (Bankcard)this.AYt.get(paramInt);
       AppMethodBeat.o(72100);
       return localBankcard;
     }
@@ -38,9 +38,9 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(72099);
-    if ((this.zGg != null) && (this.zGg.size() != 0))
+    if ((this.AYt != null) && (this.AYt.size() != 0))
     {
-      int i = this.zGg.size();
+      int i = this.AYt.size();
       AppMethodBeat.o(72099);
       return i;
     }

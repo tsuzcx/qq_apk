@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.d.b.b;
 import com.tencent.mm.loader.e.d;
 import com.tencent.mm.loader.h.a.a;
-import com.tencent.mm.plugin.finder.storage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.finder.storage.m;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.l;
 import d.v;
@@ -19,16 +19,16 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import javax.net.ssl.SSLHandshakeException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "loadDataImp", "", "item", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "DefaultHttpClientFactory", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "loadDataImp", "", "item", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "Companion", "DefaultHttpClientFactory", "plugin-finder_release"})
 public final class g
   extends com.tencent.mm.loader.d.b<j>
 {
-  public static final a qCm;
+  public static final g.a rto;
   
   static
   {
     AppMethodBeat.i(166323);
-    qCm = new a((byte)0);
+    rto = new g.a((byte)0);
     AppMethodBeat.o(166323);
   }
   
@@ -41,18 +41,18 @@ public final class g
     try
     {
       paramf = (j)parama.value();
-      if (paramf.cmR() == h.qJY)
+      if (paramf.cwj() == m.rDQ)
       {
         parama = paramf.getUrl();
-        ad.d("Finder.ImageDownloader", "loadDataImp http " + paramf.cmR() + " thumbUrl " + paramf.cmT() + " url " + paramf.getUrl());
-        paramf = b.qCn;
+        ac.d("Finder.ImageDownloader", "loadDataImp http " + paramf.cwj() + " thumbUrl " + paramf.aik() + " url " + paramf.getUrl());
+        paramf = b.rtp;
         k.h(parama, "url");
-        parama = b.Zc(parama);
+        parama = b.adE(parama);
         if (parama.getResponseCode() < 300) {
           break label172;
         }
         parama.disconnect();
-        ad.w("Finder.ImageDownloader", "dz[httpURLConnectionGet 300]");
+        ac.w("Finder.ImageDownloader", "dz[httpURLConnectionGet 300]");
       }
       label172:
       Object localObject;
@@ -64,11 +64,11 @@ public final class g
         paramb.a((com.tencent.mm.loader.h.f)parama);
         AppMethodBeat.o(166322);
         return;
-        parama = paramf.cmT();
+        parama = paramf.aik();
         break;
         localObject = parama.getInputStream();
         paramf = parama.getContentType();
-        localObject = d.p((InputStream)localObject);
+        localObject = d.o((InputStream)localObject);
         parama.disconnect();
       }
       label204:
@@ -78,7 +78,7 @@ public final class g
     }
     catch (InterruptedException parama)
     {
-      ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+      ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       paramb.onError();
       AppMethodBeat.o(166322);
       return;
@@ -87,66 +87,63 @@ public final class g
     {
       for (;;)
       {
-        ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       }
     }
     catch (SSLHandshakeException parama)
     {
       for (;;)
       {
-        ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       }
     }
     catch (SocketException parama)
     {
       for (;;)
       {
-        ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       }
     }
     catch (SocketTimeoutException parama)
     {
       for (;;)
       {
-        ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       }
     }
     catch (IOException parama)
     {
       for (;;)
       {
-        ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       }
     }
     catch (Exception parama)
     {
       for (;;)
       {
-        ad.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bt.m((Throwable)parama) });
+        ac.e("Finder.ImageDownloader", "[cpan] getOption image data failed.:%s", new Object[] { bs.m((Throwable)parama) });
       }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader$DefaultHttpClientFactory;", "", "()V", "httpURLConnectionGet", "Lcom/tencent/mm/loader/model/HttpResponse;", "url", "", "openConnection", "Ljava/net/HttpURLConnection;", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderImageDownloader$DefaultHttpClientFactory;", "", "()V", "httpURLConnectionGet", "Lcom/tencent/mm/loader/model/HttpResponse;", "url", "", "openConnection", "Ljava/net/HttpURLConnection;", "plugin-finder_release"})
   public static final class b
   {
-    public static final b qCn;
+    public static final b rtp;
     
     static
     {
       AppMethodBeat.i(166321);
-      qCn = new b();
+      rtp = new b();
       AppMethodBeat.o(166321);
     }
     
-    public static HttpURLConnection Zc(String paramString)
+    public static HttpURLConnection adE(String paramString)
     {
       AppMethodBeat.i(166320);
       k.h(paramString, "url");
-      ad.i("Finder.ImageDownloader", "[openConnection] url:".concat(String.valueOf(paramString)));
+      ac.i("Finder.ImageDownloader", "[openConnection] url:".concat(String.valueOf(paramString)));
       paramString = new URL(paramString).openConnection();
       if (paramString == null)
       {

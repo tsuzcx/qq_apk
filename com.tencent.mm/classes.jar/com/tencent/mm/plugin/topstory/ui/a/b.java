@@ -11,7 +11,7 @@ public final class b
     super(paramActivity);
   }
   
-  public final int byK()
+  public final int bFG()
   {
     return 0;
   }

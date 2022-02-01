@@ -8,63 +8,31 @@ public abstract class gr
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ekU = "createTime".hashCode();
-  private static final int emB;
-  private static final int emV;
-  private static final int etB;
-  private static final int etz;
-  private static final int eyX;
-  private static final int feL;
-  private static final int feP;
-  private static final int ffh;
-  private static final int ffi;
-  private static final int ffj;
-  private static final int ffk = "autoDownloadCount".hashCode();
-  private static final int ffl = "fileDownloadCount".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eKA = "weight".hashCode();
+  private static final int eKw = "expireTime".hashCode();
+  private static final int eQG = "timeStamp".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eoH = "size".hashCode();
+  private static final int fik = "appIdKey".hashCode();
+  private static final int fil = "localFile".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean ekx = true;
-  private boolean emQ = true;
-  private boolean emz = true;
-  private boolean etr = true;
-  private boolean ett = true;
-  private boolean eyl = true;
-  private boolean feG = true;
-  private boolean feK = true;
-  private boolean ffc = true;
-  private boolean ffd = true;
-  private boolean ffe = true;
-  private boolean fff = true;
-  private boolean ffg = true;
-  public int field_autoDownloadCount;
-  public boolean field_completeDownload;
-  public long field_createTime;
-  public int field_downloadNetType;
-  public String field_downloadUrl;
-  public int field_fileDownloadCount;
-  public String field_filePath;
-  public String field_key;
-  public String field_md5;
-  public String field_mimeType;
-  public String field_pkgId;
-  public String field_rid;
-  public int field_size;
-  public String field_version;
-  
-  static
-  {
-    feL = "pkgId".hashCode();
-    emV = "version".hashCode();
-    etB = "filePath".hashCode();
-    ffh = "rid".hashCode();
-    ffi = "mimeType".hashCode();
-    eyX = "md5".hashCode();
-    etz = "downloadUrl".hashCode();
-    emB = "size".hashCode();
-    feP = "downloadNetType".hashCode();
-    ffj = "completeDownload".hashCode();
-  }
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetvalue = true;
+  private boolean eKl = true;
+  private boolean eKp = true;
+  private boolean eQA = true;
+  private boolean enx = true;
+  private boolean eoF = true;
+  public String field_appId;
+  public String field_appIdKey;
+  public long field_expireTime;
+  public String field_localFile;
+  public long field_size;
+  public long field_timeStamp;
+  public String field_value;
+  public String field_weight;
+  private boolean fii = true;
+  private boolean fij = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -72,81 +40,56 @@ public abstract class gr
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label65;
+      if (enO != k) {
+        break label60;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (feL == k)
+      label60:
+      if (fik == k)
       {
-        this.field_pkgId = paramCursor.getString(i);
+        this.field_appIdKey = paramCursor.getString(i);
+        this.fii = true;
       }
-      else if (emV == k)
+      else if (value_HASHCODE == k)
       {
-        this.field_version = paramCursor.getString(i);
+        this.field_value = paramCursor.getString(i);
       }
-      else if (etB == k)
+      else if (eKA == k)
       {
-        this.field_filePath = paramCursor.getString(i);
+        this.field_weight = paramCursor.getString(i);
       }
-      else if (ffh == k)
+      else if (eKw == k)
       {
-        this.field_rid = paramCursor.getString(i);
+        this.field_expireTime = paramCursor.getLong(i);
       }
-      else if (ffi == k)
+      else if (eQG == k)
       {
-        this.field_mimeType = paramCursor.getString(i);
+        this.field_timeStamp = paramCursor.getLong(i);
       }
-      else if (eyX == k)
+      else if (eoH == k)
       {
-        this.field_md5 = paramCursor.getString(i);
+        this.field_size = paramCursor.getLong(i);
       }
-      else if (etz == k)
+      else if (fil == k)
       {
-        this.field_downloadUrl = paramCursor.getString(i);
+        this.field_localFile = paramCursor.getString(i);
       }
-      else if (emB == k)
+      else if (rowid_HASHCODE == k)
       {
-        this.field_size = paramCursor.getInt(i);
-      }
-      else if (feP == k)
-      {
-        this.field_downloadNetType = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (ffj == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_completeDownload = bool;
-            break;
-          }
-        }
-        if (ekU == k) {
-          this.field_createTime = paramCursor.getLong(i);
-        } else if (ffk == k) {
-          this.field_autoDownloadCount = paramCursor.getInt(i);
-        } else if (ffl == k) {
-          this.field_fileDownloadCount = paramCursor.getInt(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -154,47 +97,29 @@ public abstract class gr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.feG) {
-      localContentValues.put("pkgId", this.field_pkgId);
+    if (this.fii) {
+      localContentValues.put("appIdKey", this.field_appIdKey);
     }
-    if (this.emQ) {
-      localContentValues.put("version", this.field_version);
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    if (this.ett) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.eKp) {
+      localContentValues.put("weight", this.field_weight);
     }
-    if (this.ffc) {
-      localContentValues.put("rid", this.field_rid);
+    if (this.eKl) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
-    if (this.ffd) {
-      localContentValues.put("mimeType", this.field_mimeType);
+    if (this.eQA) {
+      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
-    if (this.eyl) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.eoF) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.etr) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
-    }
-    if (this.emz) {
-      localContentValues.put("size", Integer.valueOf(this.field_size));
-    }
-    if (this.feK) {
-      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
-    }
-    if (this.ffe) {
-      localContentValues.put("completeDownload", Boolean.valueOf(this.field_completeDownload));
-    }
-    if (this.ekx) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.fff) {
-      localContentValues.put("autoDownloadCount", Integer.valueOf(this.field_autoDownloadCount));
-    }
-    if (this.ffg) {
-      localContentValues.put("fileDownloadCount", Integer.valueOf(this.field_fileDownloadCount));
+    if (this.fij) {
+      localContentValues.put("localFile", this.field_localFile);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

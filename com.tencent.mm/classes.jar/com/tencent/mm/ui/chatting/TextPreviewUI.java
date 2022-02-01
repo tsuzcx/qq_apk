@@ -22,6 +22,7 @@ import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewStub;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -29,18 +30,18 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bk;
 import com.tencent.mm.plugin.ball.f.f;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.CustomScrollView;
 import com.tencent.mm.ui.base.CustomScrollView.a;
@@ -51,37 +52,37 @@ import com.tencent.mm.ui.widget.textview.a.a;
 @com.tencent.mm.ui.base.a(3)
 public class TextPreviewUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private boolean Chd = false;
-  private TextView Gof = null;
-  private int GqR;
-  private com.tencent.mm.ui.widget.textview.a GqS;
-  private com.tencent.mm.ui.widget.b.a GqT;
-  private CharSequence GqU;
-  private View GqV;
-  private View GqW;
-  private View GqX;
-  private CustomScrollView GqY;
-  private final int GqZ = 1;
-  private final int Gra = 2;
-  private boolean Grb = false;
-  private ToolsBar Grc;
-  private View Grd;
-  private TextView Tu = null;
+  private boolean Dzu = false;
+  private TextView HNW = null;
+  private int HQJ;
+  private com.tencent.mm.ui.widget.textview.a HQK;
+  private com.tencent.mm.ui.widget.b.a HQL;
+  private CharSequence HQM;
+  private View HQN;
+  private View HQO;
+  private View HQP;
+  private CustomScrollView HQQ;
+  private final int HQR = 1;
+  private final int HQS = 2;
+  private boolean HQT = false;
+  private ToolsBar HQU;
+  private View HQV;
+  private TextView Up = null;
   private int bottom = 0;
-  private bl drF;
-  private final int mVC = 0;
+  private bo dpq;
+  private final int nyc = 0;
   private CharSequence text = null;
-  private Animation wte;
-  private Animation wtf;
-  private int ym;
+  private Animation xEu;
+  private Animation xEv;
+  private int zl;
   
-  private void bw(bl parambl)
+  private void by(bo parambo)
   {
     AppMethodBeat.i(34950);
     com.tencent.mm.ui.chatting.view.c localc = new com.tencent.mm.ui.chatting.view.c(getContext());
-    localc.GHz = new TextPreviewUI.4(this, localc, parambl);
+    localc.Ihv = new TextPreviewUI.4(this, localc, parambo);
     localc.show();
     AppMethodBeat.o(34950);
   }
@@ -104,19 +105,19 @@ public class TextPreviewUI
     requestWindowFeature(1);
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    if (d.lf(19)) {
+    if (d.kZ(19)) {
       getWindow().setFlags(67109888, 67109888);
     }
-    this.GqV = findViewById(2131305741);
+    this.HQN = findViewById(2131305741);
     this.text = getIntent().getCharSequenceExtra("key_chat_text");
-    this.GqR = getIntent().getIntExtra("key_msg_type", 0);
+    this.HQJ = getIntent().getIntExtra("key_msg_type", 0);
     long l = getIntent().getLongExtra("Chat_Msg_Id", 0L);
-    az.arV();
-    this.drF = com.tencent.mm.model.c.apO().rm(l);
-    this.Tu = ((TextView)findViewById(2131300329));
-    this.Gof = ((TextView)findViewById(2131300330));
+    az.ayM();
+    this.dpq = com.tencent.mm.model.c.awD().vP(l);
+    this.Up = ((TextView)findViewById(2131300329));
+    this.HNW = ((TextView)findViewById(2131300330));
     Object localObject = this.text;
-    TextView localTextView = this.Gof;
+    TextView localTextView = this.HNW;
     paramBundle = (Bundle)localObject;
     if ((localObject instanceof SpannableString))
     {
@@ -125,19 +126,31 @@ public class TextPreviewUI
       paramBundle = localTextView.getText();
     }
     this.text = paramBundle;
-    paramBundle = this.Tu;
-    localObject = com.tencent.mm.cg.g.eIa();
+    paramBundle = this.Up;
+    localObject = com.tencent.mm.cf.g.eXw();
     getContext();
-    paramBundle.setText(((com.tencent.mm.cg.g)localObject).b(this.text, this.Tu.getTextSize()));
-    this.GqW = findViewById(2131301274);
-    this.GqX = this.GqW.findViewById(2131301241);
-    this.GqY = ((CustomScrollView)findViewById(2131300328));
-    this.Tu.getViewTreeObserver().addOnPreDrawListener(new TextPreviewUI.1(this));
-    this.wtf = AnimationUtils.loadAnimation(getContext(), 2130772108);
-    this.wte = AnimationUtils.loadAnimation(getContext(), 2130772106);
-    this.GqT = new com.tencent.mm.ui.widget.b.a(getContext(), this.Tu);
-    this.GqT.HIv = true;
-    this.GqT.HIu = new View.OnCreateContextMenuListener()
+    paramBundle.setText(((com.tencent.mm.cf.g)localObject).b(this.text, this.Up.getTextSize()));
+    this.HQO = findViewById(2131301274);
+    this.HQP = this.HQO.findViewById(2131301241);
+    this.HQQ = ((CustomScrollView)findViewById(2131300328));
+    this.Up.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+    {
+      public final boolean onPreDraw()
+      {
+        AppMethodBeat.i(34929);
+        TextPreviewUI.a(TextPreviewUI.this).getViewTreeObserver().removeOnPreDrawListener(this);
+        if (TextPreviewUI.a(TextPreviewUI.this).getLineCount() == 1) {
+          TextPreviewUI.a(TextPreviewUI.this).setGravity(1);
+        }
+        AppMethodBeat.o(34929);
+        return false;
+      }
+    });
+    this.xEv = AnimationUtils.loadAnimation(getContext(), 2130772108);
+    this.xEu = AnimationUtils.loadAnimation(getContext(), 2130772106);
+    this.HQL = new com.tencent.mm.ui.widget.b.a(getContext(), this.Up);
+    this.HQL.JiS = true;
+    this.HQL.JiR = new View.OnCreateContextMenuListener()
     {
       public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
       {
@@ -146,14 +159,14 @@ public class TextPreviewUI
         paramAnonymousContextMenu.clear();
         paramAnonymousContextMenu.add(0, 0, 0, TextPreviewUI.this.getResources().getString(2131755701));
         int i = bk.D(TextPreviewUI.b(TextPreviewUI.this));
-        if ((i <= 0) || (i >= com.tencent.mm.ui.widget.textview.b.gA(TextPreviewUI.a(TextPreviewUI.this)).length())) {
+        if ((i <= 0) || (i >= com.tencent.mm.ui.widget.textview.b.gQ(TextPreviewUI.a(TextPreviewUI.this)).length())) {
           paramAnonymousContextMenu.add(1, 1, 0, TextPreviewUI.this.getResources().getString(2131761224));
         }
         paramAnonymousContextMenu.add(1, 2, 0, TextPreviewUI.this.getResources().getString(2131761223));
         AppMethodBeat.o(34937);
       }
     };
-    this.GqT.HrY = new n.d()
+    this.HQL.ISv = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -165,13 +178,13 @@ public class TextPreviewUI
         {
           AppMethodBeat.o(34939);
           return;
-          ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(TextPreviewUI.c(TextPreviewUI.this), TextPreviewUI.c(TextPreviewUI.this)));
+          ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(TextPreviewUI.c(TextPreviewUI.this), TextPreviewUI.c(TextPreviewUI.this)));
           if (TextPreviewUI.d(TextPreviewUI.this) != null)
           {
-            TextPreviewUI.d(TextPreviewUI.this).fgF();
-            TextPreviewUI.d(TextPreviewUI.this).HNX = true;
-            TextPreviewUI.d(TextPreviewUI.this).HNY = true;
-            TextPreviewUI.d(TextPreviewUI.this).fgE();
+            TextPreviewUI.d(TextPreviewUI.this).fwF();
+            TextPreviewUI.d(TextPreviewUI.this).Jot = true;
+            TextPreviewUI.d(TextPreviewUI.this).Jou = true;
+            TextPreviewUI.d(TextPreviewUI.this).fwE();
           }
           paramAnonymousMenuItem = TextPreviewUI.b(TextPreviewUI.this);
           if (TextPreviewUI.c(TextPreviewUI.this) == null) {}
@@ -184,21 +197,21 @@ public class TextPreviewUI
           }
           if (TextPreviewUI.d(TextPreviewUI.this) != null)
           {
-            TextPreviewUI.d(TextPreviewUI.this).fgE();
-            TextPreviewUI.d(TextPreviewUI.this).fgI();
-            TextPreviewUI.d(TextPreviewUI.this).jQ(0, TextPreviewUI.a(TextPreviewUI.this).getText().length());
-            TextPreviewUI.d(TextPreviewUI.this).HNX = false;
-            TextPreviewUI.d(TextPreviewUI.this).HNY = false;
-            TextPreviewUI.d(TextPreviewUI.this).fgH();
+            TextPreviewUI.d(TextPreviewUI.this).fwE();
+            TextPreviewUI.d(TextPreviewUI.this).fwI();
+            TextPreviewUI.d(TextPreviewUI.this).kc(0, TextPreviewUI.a(TextPreviewUI.this).getText().length());
+            TextPreviewUI.d(TextPreviewUI.this).Jot = false;
+            TextPreviewUI.d(TextPreviewUI.this).Jou = false;
+            TextPreviewUI.d(TextPreviewUI.this).fwH();
           }
           TextPreviewUI.b(TextPreviewUI.b(TextPreviewUI.this), 10, 0);
-          aq.n(new Runnable()
+          ap.n(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(34938);
               if (TextPreviewUI.d(TextPreviewUI.this) != null) {
-                TextPreviewUI.d(TextPreviewUI.this).fgM();
+                TextPreviewUI.d(TextPreviewUI.this).fwM();
               }
               AppMethodBeat.o(34938);
             }
@@ -210,15 +223,15 @@ public class TextPreviewUI
         }
       }
     };
-    if ((this.GqS == null) && (!bk.x(this.drF)) && (!bk.y(this.drF)))
+    if ((this.HQK == null) && (!bk.x(this.dpq)) && (!bk.y(this.dpq)))
     {
-      paramBundle = new a.a(this.Tu, this.GqT);
-      paramBundle.HNO = 2131100846;
-      paramBundle.HNP = 2131100195;
-      this.GqS = paramBundle.fgN();
-      this.GqS.HNG = new v()
+      paramBundle = new a.a(this.Up, this.HQL);
+      paramBundle.Jok = 2131100846;
+      paramBundle.Jol = 2131100195;
+      this.HQK = paramBundle.fwN();
+      this.HQK.Joc = new v()
       {
-        public final void am(CharSequence paramAnonymousCharSequence)
+        public final void an(CharSequence paramAnonymousCharSequence)
         {
           AppMethodBeat.i(34940);
           TextPreviewUI.a(TextPreviewUI.this, paramAnonymousCharSequence);
@@ -226,17 +239,17 @@ public class TextPreviewUI
         }
       };
     }
-    this.GqV.setOnClickListener(new View.OnClickListener()
+    this.HQN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34941);
-        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).HNX) || (!TextPreviewUI.d(TextPreviewUI.this).HNY)))
+        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).Jot) || (!TextPreviewUI.d(TextPreviewUI.this).Jou)))
         {
-          TextPreviewUI.d(TextPreviewUI.this).fgF();
-          TextPreviewUI.d(TextPreviewUI.this).HNX = true;
-          TextPreviewUI.d(TextPreviewUI.this).HNY = true;
-          TextPreviewUI.d(TextPreviewUI.this).fgE();
+          TextPreviewUI.d(TextPreviewUI.this).fwF();
+          TextPreviewUI.d(TextPreviewUI.this).Jot = true;
+          TextPreviewUI.d(TextPreviewUI.this).Jou = true;
+          TextPreviewUI.d(TextPreviewUI.this).fwE();
           AppMethodBeat.o(34941);
           return;
         }
@@ -244,17 +257,17 @@ public class TextPreviewUI
         AppMethodBeat.o(34941);
       }
     });
-    this.Tu.setOnClickListener(new View.OnClickListener()
+    this.Up.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34942);
-        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).HNX) || (!TextPreviewUI.d(TextPreviewUI.this).HNY)))
+        if ((TextPreviewUI.d(TextPreviewUI.this) != null) && ((!TextPreviewUI.d(TextPreviewUI.this).Jot) || (!TextPreviewUI.d(TextPreviewUI.this).Jou)))
         {
-          TextPreviewUI.d(TextPreviewUI.this).fgF();
-          TextPreviewUI.d(TextPreviewUI.this).HNX = true;
-          TextPreviewUI.d(TextPreviewUI.this).HNY = true;
-          TextPreviewUI.d(TextPreviewUI.this).fgE();
+          TextPreviewUI.d(TextPreviewUI.this).fwF();
+          TextPreviewUI.d(TextPreviewUI.this).Jot = true;
+          TextPreviewUI.d(TextPreviewUI.this).Jou = true;
+          TextPreviewUI.d(TextPreviewUI.this).fwE();
           AppMethodBeat.o(34942);
           return;
         }
@@ -262,10 +275,10 @@ public class TextPreviewUI
         AppMethodBeat.o(34942);
       }
     });
-    if (!bt.isNullOrNil(bk.B(this.drF)))
+    if (!bs.isNullOrNil(bk.B(this.dpq)))
     {
-      this.GqW.setVisibility(0);
-      this.GqX.setOnClickListener(new TextPreviewUI.13(this));
+      this.HQO.setVisibility(0);
+      this.HQP.setOnClickListener(new TextPreviewUI.13(this));
     }
     label724:
     for (;;)
@@ -280,7 +293,7 @@ public class TextPreviewUI
           return true;
         }
       });
-      this.GqY.setOnTouchListener(new View.OnTouchListener()
+      this.HQQ.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -305,7 +318,7 @@ public class TextPreviewUI
           }
         }
       });
-      this.GqY.setOnScrollChangeListener(new CustomScrollView.a()
+      this.HQQ.setOnScrollChangeListener(new CustomScrollView.a()
       {
         public final void a(ScrollView paramAnonymousScrollView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -345,12 +358,12 @@ public class TextPreviewUI
           }
         }
       });
-      az.aeS().a(525, this);
+      az.agi().a(525, this);
       AppMethodBeat.o(34946);
       return;
-      if ((!bk.x(this.drF)) && (!bk.y(this.drF)))
+      if ((!bk.x(this.dpq)) && (!bk.y(this.dpq)))
       {
-        if (this.GqR == 1) {}
+        if (this.HQJ == 1) {}
         for (int i = 1;; i = 0)
         {
           if (i != 0) {
@@ -358,14 +371,14 @@ public class TextPreviewUI
           }
           paramBundle = (ViewStub)findViewById(2131306449);
           if (paramBundle != null) {
-            this.Grd = paramBundle.inflate();
+            this.HQV = paramBundle.inflate();
           }
-          this.Grc = ((ToolsBar)findViewById(2131305987));
-          this.Grc.setVisibility(0);
-          if (this.Grc == null) {
+          this.HQU = ((ToolsBar)findViewById(2131305987));
+          this.HQU.setVisibility(0);
+          if (this.HQU == null) {
             break;
           }
-          this.Grc.b(0, new View.OnClickListener()
+          this.HQU.b(0, new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
@@ -376,7 +389,7 @@ public class TextPreviewUI
               AppMethodBeat.o(34934);
             }
           });
-          this.Grc.b(1, new View.OnClickListener()
+          this.HQU.b(1, new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
@@ -385,7 +398,7 @@ public class TextPreviewUI
               AppMethodBeat.o(34935);
             }
           });
-          this.Grc.b(2, new View.OnClickListener()
+          this.HQU.b(2, new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
@@ -404,7 +417,7 @@ public class TextPreviewUI
   {
     AppMethodBeat.i(34951);
     super.onDestroy();
-    az.aeS().b(525, this);
+    az.agi().b(525, this);
     AppMethodBeat.o(34951);
   }
   
@@ -412,7 +425,7 @@ public class TextPreviewUI
   {
     AppMethodBeat.i(34948);
     super.onPause();
-    f.d(false, true, true);
+    f.e(false, true, true);
     AppMethodBeat.o(34948);
   }
   
@@ -420,14 +433,14 @@ public class TextPreviewUI
   {
     AppMethodBeat.i(34947);
     super.onResume();
-    f.d(true, true, true);
-    if (this.GqS != null)
+    f.e(true, true, true);
+    if (this.HQK != null)
     {
-      if (!this.GqS.HNX) {
-        this.GqS.fgM();
+      if (!this.HQK.Jot) {
+        this.HQK.fwM();
       }
-      if (!this.GqS.HNY) {
-        this.GqS.fgH();
+      if (!this.HQK.Jou) {
+        this.HQK.fwH();
       }
     }
     AppMethodBeat.o(34947);
@@ -444,21 +457,21 @@ public class TextPreviewUI
         AppMethodBeat.o(34952);
         return;
       }
-      ad.i("MicroMsg.TextPreviewUI", "set msg remind!");
+      ac.i("MicroMsg.TextPreviewUI", "set msg remind!");
       com.tencent.mm.ui.widget.snackbar.b.a(getContext(), getContext().getResources().getString(2131760231), "", null);
       AppMethodBeat.o(34952);
       return;
     }
     if (paramn.getType() == 525)
     {
-      ad.e("MicroMsg.TextPreviewUI", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bt.nullAsNil(paramString) });
+      ac.e("MicroMsg.TextPreviewUI", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bs.nullAsNil(paramString) });
       AppCompatActivity localAppCompatActivity = getContext();
       paramn = paramString;
-      if (bt.isNullOrNil(paramString)) {
+      if (bs.isNullOrNil(paramString)) {
         paramn = getResources().getString(2131762409);
       }
       com.tencent.mm.ui.base.h.c(localAppCompatActivity, paramn, getContext().getResources().getString(2131762410), true);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(795L, 4L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(795L, 4L, 1L, false);
     }
     AppMethodBeat.o(34952);
   }

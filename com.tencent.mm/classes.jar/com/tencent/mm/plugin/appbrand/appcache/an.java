@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.c;
+import com.tencent.mm.plugin.appbrand.y.c;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 
 public class an
   extends c<am>
 {
-  public static final String[] gLs;
+  public static final String[] hlS;
   
   static
   {
     AppMethodBeat.i(90566);
-    gLs = new String[] { j.getCreateSQLs(am.gLr, "PushWxaPkgDecryptKeyTable") };
+    hlS = new String[] { j.getCreateSQLs(am.hlR, "PushWxaPkgDecryptKeyTable") };
     AppMethodBeat.o(90566);
   }
   
   public an(e parame)
   {
-    super(parame, am.gLr, "PushWxaPkgDecryptKeyTable", am.INDEX_CREATE);
+    super(parame, am.hlR, "PushWxaPkgDecryptKeyTable", am.INDEX_CREATE);
   }
   
-  public final am aE(String paramString, int paramInt)
+  public final am aI(String paramString, int paramInt)
   {
     AppMethodBeat.i(90565);
     am localam = new am();
@@ -39,7 +39,7 @@ public class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.an
  * JD-Core Version:    0.7.0.1
  */

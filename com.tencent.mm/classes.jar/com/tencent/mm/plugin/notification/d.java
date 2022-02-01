@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.notification;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.at;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.x;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.br;
-import com.tencent.mm.storage.br.a;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bu.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,15 +22,15 @@ import java.util.List;
 public final class d
   implements x
 {
-  private static List<at> uhe;
-  private boolean uhf;
-  private boolean uhg;
-  private List<bl> uhh;
+  private static List<at> vqc;
+  private boolean vqd;
+  private boolean vqe;
+  private List<bo> vqf;
   
   static
   {
     AppMethodBeat.i(149387);
-    uhe = new ArrayList();
+    vqc = new ArrayList();
     AppMethodBeat.o(149387);
   }
   
@@ -42,22 +42,22 @@ public final class d
   public d(boolean paramBoolean)
   {
     AppMethodBeat.i(149383);
-    this.uhf = false;
-    this.uhg = false;
-    this.uhh = new LinkedList();
-    this.uhf = paramBoolean;
-    this.uhg = false;
-    this.uhh = new LinkedList();
+    this.vqd = false;
+    this.vqe = false;
+    this.vqf = new LinkedList();
+    this.vqd = paramBoolean;
+    this.vqe = false;
+    this.vqf = new LinkedList();
     AppMethodBeat.o(149383);
   }
   
   public static void a(at paramat)
   {
     AppMethodBeat.i(149381);
-    synchronized (uhe)
+    synchronized (vqc)
     {
-      if (!uhe.contains(paramat)) {
-        uhe.add(paramat);
+      if (!vqc.contains(paramat)) {
+        vqc.add(paramat);
       }
       AppMethodBeat.o(149381);
       return;
@@ -67,53 +67,53 @@ public final class d
   public static void b(at paramat)
   {
     AppMethodBeat.i(149382);
-    synchronized (uhe)
+    synchronized (vqc)
     {
-      uhe.remove(paramat);
+      vqc.remove(paramat);
       AppMethodBeat.o(149382);
       return;
     }
   }
   
-  public final void a(final bl parambl, final cs paramcs)
+  public final void a(final bo parambo, final cu paramcu)
   {
     AppMethodBeat.i(149385);
-    if (this.uhf)
+    if (this.vqd)
     {
-      ad.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
+      ac.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
       AppMethodBeat.o(149385);
       return;
     }
-    synchronized (uhe)
+    synchronized (vqc)
     {
-      if (uhe.isEmpty())
+      if (vqc.isEmpty())
       {
-        ad.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
+        ac.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
         AppMethodBeat.o(149385);
         return;
       }
-      if ((parambl.field_isSend != 0) || (parambl.field_status == 4))
+      if ((parambo.field_isSend != 0) || (parambo.field_status == 4))
       {
-        ad.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
+        ac.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
         AppMethodBeat.o(149385);
         return;
       }
     }
-    ??? = z.a(paramcs.Cxx);
-    ??? = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apU().agP(new br.a((String)???).aJf(""));
-    if ((??? != null) && (!((br)???).eMR()))
+    ??? = z.a(paramcu.DPT);
+    ??? = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awJ().alJ(new bu.a((String)???).aOB(""));
+    if ((??? != null) && (!((bu)???).fcv()))
     {
-      ad.d("MicroMsg.SyncMessageNotifier", "account no notification");
+      ac.d("MicroMsg.SyncMessageNotifier", "account no notification");
       AppMethodBeat.o(149385);
       return;
     }
-    if (!this.uhg)
+    if (!this.vqe)
     {
-      this.uhg = true;
+      this.vqe = true;
       Object localObject2 = new ArrayList();
-      synchronized (uhe)
+      synchronized (vqc)
       {
-        Iterator localIterator = uhe.iterator();
+        Iterator localIterator = vqc.iterator();
         if (localIterator.hasNext()) {
           ((List)localObject2).add((at)localIterator.next());
         }
@@ -122,25 +122,25 @@ public final class d
       while (((Iterator)???).hasNext())
       {
         localObject2 = (at)((Iterator)???).next();
-        new ap(((at)localObject2).getLooper()).post(new Runnable()
+        new ao(((at)localObject2).getLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(149380);
-            if (paramcs.saz == 49)
+            if (paramcu.tit == 49)
             {
-              k.b localb = k.b.rx(d.c(paramcs));
-              if ((localb.gIC == 1) && (!bt.isNullOrNil(localb.gID)) && (!bt.isNullOrNil(localb.gIE)))
+              k.b localb = k.b.vA(d.c(paramcu));
+              if ((localb.hjc == 1) && (!bs.isNullOrNil(localb.hjd)) && (!bs.isNullOrNil(localb.hje)))
               {
-                this.uhm.a(39, localb.gIE, "", localb.gID, null, null);
+                this.vqk.a(39, localb.hje, "", localb.hjd, null, null);
                 AppMethodBeat.o(149380);
                 return;
               }
-              this.uhm.a(parambl);
+              this.vqk.a(parambo);
               AppMethodBeat.o(149380);
               return;
             }
-            this.uhm.a(parambl);
+            this.vqk.a(parambo);
             AppMethodBeat.o(149380);
           }
         });
@@ -148,25 +148,25 @@ public final class d
       AppMethodBeat.o(149385);
       return;
     }
-    this.uhh.add(parambl);
+    this.vqf.add(parambo);
     AppMethodBeat.o(149385);
   }
   
-  public final void cOJ()
+  public final void dcs()
   {
     AppMethodBeat.i(149384);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(this.uhh);
-    this.uhh.clear();
+    localLinkedList.addAll(this.vqf);
+    this.vqf.clear();
     if (localLinkedList.size() == 0)
     {
       AppMethodBeat.o(149384);
       return;
     }
     Object localObject2 = new ArrayList();
-    synchronized (uhe)
+    synchronized (vqc)
     {
-      Iterator localIterator = uhe.iterator();
+      Iterator localIterator = vqc.iterator();
       if (localIterator.hasNext()) {
         ((List)localObject2).add((at)localIterator.next());
       }
@@ -175,12 +175,12 @@ public final class d
     while (((Iterator)???).hasNext())
     {
       localObject2 = (at)((Iterator)???).next();
-      new ap(((at)localObject2).getLooper()).post(new Runnable()
+      new ao(((at)localObject2).getLooper()).post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149379);
-          this.uhi.V(localList);
+          this.vqg.M(localList);
           AppMethodBeat.o(149379);
         }
       });
@@ -190,7 +190,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.d
  * JD-Core Version:    0.7.0.1
  */

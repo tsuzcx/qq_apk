@@ -13,22 +13,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "Landroid/widget/ScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "isLayoutChanged", "", "()Z", "isOverScroll", "mLastMotionY", "", "mRect", "Landroid/graphics/Rect;", "mRootChildView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "mScrollInterpolator", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "mTranslateAnimation", "Landroid/view/animation/TranslateAnimation;", "onFinishInflate", "", "onTouchEvent", "ev", "Landroid/view/MotionEvent;", "scaleOverScroll", "", "offset", "startAnimation", "WorkspaceOvershootInterpolator", "plugin-radar_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "Landroid/widget/ScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "isLayoutChanged", "", "()Z", "isOverScroll", "mLastMotionY", "", "mRect", "Landroid/graphics/Rect;", "mRootChildView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "mScrollInterpolator", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "mTranslateAnimation", "Landroid/view/animation/TranslateAnimation;", "onFinishInflate", "", "onTouchEvent", "ev", "Landroid/view/MotionEvent;", "scaleOverScroll", "", "offset", "startAnimation", "WorkspaceOvershootInterpolator", "plugin-radar_release"})
 public class RadarSpecialSmoothScrollView
   extends ScrollView
 {
   private float mLastMotionY;
   private final Rect mRect;
-  private RadarSpecialTableLayout uTF;
-  private TranslateAnimation uTG;
-  private final a uTH;
+  private RadarSpecialTableLayout wcu;
+  private TranslateAnimation wcv;
+  private final RadarSpecialSmoothScrollView.a wcw;
   
   public RadarSpecialSmoothScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138657);
     this.mRect = new Rect();
-    this.uTH = new a();
+    this.wcw = new RadarSpecialSmoothScrollView.a();
     AppMethodBeat.o(138657);
   }
   
@@ -42,7 +42,7 @@ public class RadarSpecialSmoothScrollView
       if (!(localView2 instanceof RadarSpecialTableLayout)) {
         localView1 = null;
       }
-      this.uTF = ((RadarSpecialTableLayout)localView1);
+      this.wcu = ((RadarSpecialTableLayout)localView1);
     }
     AppMethodBeat.o(138655);
   }
@@ -54,7 +54,7 @@ public class RadarSpecialSmoothScrollView
     AppMethodBeat.i(138656);
     k.h(paramMotionEvent, "ev");
     boolean bool;
-    if (this.uTF == null)
+    if (this.wcu == null)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(138656);
@@ -75,9 +75,9 @@ public class RadarSpecialSmoothScrollView
       if (this.mLastMotionY == 0.0F) {
         this.mLastMotionY = f;
       }
-      Object localObject = this.uTF;
+      Object localObject = this.wcu;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       int k = ((RadarSpecialTableLayout)localObject).getMeasuredHeight();
       int m = getHeight();
@@ -101,52 +101,52 @@ public class RadarSpecialSmoothScrollView
         if (this.mRect.isEmpty())
         {
           localObject = this.mRect;
-          localRadarSpecialTableLayout = this.uTF;
+          localRadarSpecialTableLayout = this.wcu;
           if (localRadarSpecialTableLayout == null) {
-            k.fvU();
+            k.fOy();
           }
           j = localRadarSpecialTableLayout.getLeft();
-          localRadarSpecialTableLayout = this.uTF;
+          localRadarSpecialTableLayout = this.wcu;
           if (localRadarSpecialTableLayout == null) {
-            k.fvU();
+            k.fOy();
           }
           k = localRadarSpecialTableLayout.getTop();
-          localRadarSpecialTableLayout = this.uTF;
+          localRadarSpecialTableLayout = this.wcu;
           if (localRadarSpecialTableLayout == null) {
-            k.fvU();
+            k.fOy();
           }
           m = localRadarSpecialTableLayout.getRight();
-          localRadarSpecialTableLayout = this.uTF;
+          localRadarSpecialTableLayout = this.wcu;
           if (localRadarSpecialTableLayout == null) {
-            k.fvU();
+            k.fOy();
           }
           ((Rect)localObject).set(j, k, m, localRadarSpecialTableLayout.getBottom());
         }
-        localObject = this.uTF;
+        localObject = this.wcu;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        localRadarSpecialTableLayout = this.uTF;
+        localRadarSpecialTableLayout = this.wcu;
         if (localRadarSpecialTableLayout == null) {
-          k.fvU();
+          k.fOy();
         }
         j = localRadarSpecialTableLayout.getLeft();
-        localRadarSpecialTableLayout = this.uTF;
+        localRadarSpecialTableLayout = this.wcu;
         if (localRadarSpecialTableLayout == null) {
-          k.fvU();
+          k.fOy();
         }
         k = localRadarSpecialTableLayout.getTop();
         m = i / 2;
-        localRadarSpecialTableLayout = this.uTF;
+        localRadarSpecialTableLayout = this.wcu;
         if (localRadarSpecialTableLayout == null) {
-          k.fvU();
+          k.fOy();
         }
         n = localRadarSpecialTableLayout.getRight();
-        localRadarSpecialTableLayout = this.uTF;
+        localRadarSpecialTableLayout = this.wcu;
         if (localRadarSpecialTableLayout == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((RadarSpecialTableLayout)localObject).F(j, k - m, n, localRadarSpecialTableLayout.getBottom() - i / 2);
+        ((RadarSpecialTableLayout)localObject).H(j, k - m, n, localRadarSpecialTableLayout.getBottom() - i / 2);
       }
       for (;;)
       {
@@ -164,66 +164,40 @@ public class RadarSpecialSmoothScrollView
         if (i == 0) {
           break label666;
         }
-        localObject = this.uTF;
+        localObject = this.wcu;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        this.uTG = new TranslateAnimation(0.0F, 0.0F, ((RadarSpecialTableLayout)localObject).getTop() - this.mRect.top, 0.0F);
-        localObject = this.uTG;
+        this.wcv = new TranslateAnimation(0.0F, 0.0F, ((RadarSpecialTableLayout)localObject).getTop() - this.mRect.top, 0.0F);
+        localObject = this.wcv;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((TranslateAnimation)localObject).setInterpolator((Interpolator)this.uTH);
-        localObject = this.uTG;
+        ((TranslateAnimation)localObject).setInterpolator((Interpolator)this.wcw);
+        localObject = this.wcv;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        localRadarSpecialTableLayout = this.uTF;
+        localRadarSpecialTableLayout = this.wcu;
         if (localRadarSpecialTableLayout == null) {
-          k.fvU();
+          k.fOy();
         }
         ((TranslateAnimation)localObject).setDuration(Math.abs(localRadarSpecialTableLayout.getTop() - this.mRect.top));
-        localObject = this.uTF;
+        localObject = this.wcu;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((RadarSpecialTableLayout)localObject).startAnimation((Animation)this.uTG);
-        localObject = this.uTF;
+        ((RadarSpecialTableLayout)localObject).startAnimation((Animation)this.wcv);
+        localObject = this.wcu;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((RadarSpecialTableLayout)localObject).F(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
+        ((RadarSpecialTableLayout)localObject).H(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
         this.mRect.setEmpty();
         break;
         i = 0;
       }
     }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator;", "Landroid/view/animation/Interpolator;", "()V", "mTension", "", "getInterpolation", "t", "Companion", "plugin-radar_release"})
-  static final class a
-    implements Interpolator
-  {
-    private static final float uTJ = 1.3F;
-    public static final a uTK;
-    private final float uTI = uTJ;
-    
-    static
-    {
-      AppMethodBeat.i(138654);
-      uTK = new a((byte)0);
-      uTJ = 1.3F;
-      AppMethodBeat.o(138654);
-    }
-    
-    public final float getInterpolation(float paramFloat)
-    {
-      paramFloat -= 1.0F;
-      return (paramFloat * (this.uTI + 1.0F) + this.uTI) * (paramFloat * paramFloat) + 1.0F;
-    }
-    
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView$WorkspaceOvershootInterpolator$Companion;", "", "()V", "DEFAULT_TENSION", "", "plugin-radar_release"})
-    public static final class a {}
   }
 }
 

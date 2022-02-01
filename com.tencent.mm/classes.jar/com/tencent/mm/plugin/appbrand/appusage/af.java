@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.al;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class af
   extends al
@@ -15,7 +15,7 @@ public final class af
     return "MicroMsg.AppBrand.DuplicateUsageUsernameSetFlagDataTransfer";
   }
   
-  public final boolean nb(int paramInt)
+  public final boolean nP(int paramInt)
   {
     int j = 1;
     int i;
@@ -38,17 +38,17 @@ public final class af
   public final void transfer(int paramInt)
   {
     AppMethodBeat.i(44648);
-    if (nb(paramInt))
+    if (nP(paramInt))
     {
-      ae.a locala = ae.a.FlK;
-      g.afB().afk().set(locala, Boolean.FALSE);
+      ah.a locala = ah.a.GJz;
+      g.agR().agA().set(locala, Boolean.FALSE);
     }
     AppMethodBeat.o(44648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.af
  * JD-Core Version:    0.7.0.1
  */

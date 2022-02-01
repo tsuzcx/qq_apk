@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ie
   extends b
 {
-  public a dlW;
+  public a djl;
   
   public ie()
   {
@@ -15,21 +15,25 @@ public final class ie
   
   private ie(byte paramByte)
   {
-    AppMethodBeat.i(181498);
-    this.dlW = new a();
-    this.ESR = false;
+    AppMethodBeat.i(149861);
+    this.djl = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(181498);
+    AppMethodBeat.o(149861);
   }
   
   public static final class a
   {
-    public String dlX;
+    public String appId;
+    public String dbZ;
+    public int djm;
+    public int opType;
+    public String openId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ie
  * JD-Core Version:    0.7.0.1
  */

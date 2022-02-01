@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.wallet_ecard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bvc;
-import com.tencent.mm.protocal.protobuf.bvd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bzu;
+import com.tencent.mm.protocal.protobuf.bzv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,35 +20,35 @@ public final class e
   extends n
   implements k
 {
-  public bvd Aws;
+  public bzv BOM;
   private g callback;
-  public int dcG;
-  public String nTK;
+  public int dae;
+  public String oxf;
   private b rr;
   public String token;
   
   public e(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(71695);
-    this.dcG = 0;
-    this.nTK = "";
+    this.dae = 0;
+    this.oxf = "";
     this.token = null;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bvc();
-    ((b.a)localObject).gUV = new bvd();
+    ((b.a)localObject).hvt = new bzu();
+    ((b.a)localObject).hvu = new bzv();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/openecardauth";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (bvc)this.rr.gUS.gUX;
-    ((bvc)localObject).CFs = paramString1;
-    ((bvc)localObject).DSi = paramString2;
-    ((bvc)localObject).dsB = paramInt;
-    ((bvc)localObject).token = paramString3;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bzu)this.rr.hvr.hvw;
+    ((bzu)localObject).DXS = paramString1;
+    ((bzu)localObject).FoE = paramString2;
+    ((bzu)localObject).dql = paramInt;
+    ((bzu)localObject).token = paramString3;
     this.token = null;
-    ad.i("MicroMsg.NetSceneOpenECardAuth", "cardType: %s, scene: %d, token: %s, wxp_passwd_enc==null: %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString3, Boolean.valueOf(bt.isNullOrNil(paramString2)) });
-    ad.i("MicroMsg.NetSceneOpenECardAuth", "cardType: %s, scene: %d", new Object[] { paramString1, Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.NetSceneOpenECardAuth", "cardType: %s, scene: %d, token: %s, wxp_passwd_enc==null: %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString3, Boolean.valueOf(bs.isNullOrNil(paramString2)) });
+    ac.i("MicroMsg.NetSceneOpenECardAuth", "cardType: %s, scene: %d", new Object[] { paramString1, Integer.valueOf(paramInt) });
     AppMethodBeat.o(71695);
   }
   
@@ -69,17 +69,17 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(71696);
-    ad.i("MicroMsg.NetSceneOpenECardAuth", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Aws = ((bvd)((b)paramq).gUT.gUX);
-    ad.i("MicroMsg.NetSceneOpenECardAuth", "ret_code: %d, ret_msg: %s, is_token_invalid: %s", new Object[] { Integer.valueOf(this.Aws.ntx), this.Aws.nty, Boolean.valueOf(this.Aws.DSk) });
-    if (!bt.isNullOrNil(this.Aws.DSj)) {
-      ad.d("MicroMsg.NetSceneOpenECardAuth", "rettext: %s", new Object[] { this.Aws.DSj });
+    ac.i("MicroMsg.NetSceneOpenECardAuth", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.BOM = ((bzv)((b)paramq).hvs.hvw);
+    ac.i("MicroMsg.NetSceneOpenECardAuth", "ret_code: %d, ret_msg: %s, is_token_invalid: %s", new Object[] { Integer.valueOf(this.BOM.nWx), this.BOM.nWy, Boolean.valueOf(this.BOM.FoG) });
+    if (!bs.isNullOrNil(this.BOM.FoF)) {
+      ac.d("MicroMsg.NetSceneOpenECardAuth", "rettext: %s", new Object[] { this.BOM.FoF });
     }
     try
     {
-      paramq = new JSONObject(this.Aws.DSj);
-      this.dcG = paramq.optInt("retcode", 0);
-      this.nTK = paramq.optString("retmsg", "");
+      paramq = new JSONObject(this.BOM.FoF);
+      this.dae = paramq.optInt("retcode", 0);
+      this.oxf = paramq.optString("retmsg", "");
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
@@ -90,14 +90,14 @@ public final class e
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.NetSceneOpenECardAuth", paramq, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.NetSceneOpenECardAuth", paramq, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -35,36 +35,36 @@ public final class c
     extends g.a
     implements Runnable
   {
-    final b Kqu;
-    final AtomicInteger Kqv;
-    final ScheduledExecutorService Kqw;
+    final b Med;
+    final AtomicInteger Mee;
+    final ScheduledExecutorService Mef;
     final Executor executor;
-    final ConcurrentLinkedQueue<i> qRN;
+    final ConcurrentLinkedQueue<i> rNK;
     
     public a(Executor paramExecutor)
     {
       AppMethodBeat.i(90363);
       this.executor = paramExecutor;
-      this.qRN = new ConcurrentLinkedQueue();
-      this.Kqv = new AtomicInteger();
-      this.Kqu = new b();
-      this.Kqw = d.fNH();
+      this.rNK = new ConcurrentLinkedQueue();
+      this.Mee = new AtomicInteger();
+      this.Med = new b();
+      this.Mef = d.ggx();
       AppMethodBeat.o(90363);
     }
     
     public final j a(a parama)
     {
       AppMethodBeat.i(90364);
-      if (this.Kqu.KrX)
+      if (this.Med.MfG)
       {
-        parama = rx.f.d.fOj();
+        parama = rx.f.d.ggZ();
         AppMethodBeat.o(90364);
         return parama;
       }
-      parama = new i(parama, this.Kqu);
-      this.Kqu.b(parama);
-      this.qRN.offer(parama);
-      if (this.Kqv.getAndIncrement() == 0) {}
+      parama = new i(parama, this.Med);
+      this.Med.b(parama);
+      this.rNK.offer(parama);
+      if (this.Mee.getAndIncrement() == 0) {}
       try
       {
         this.executor.execute(this);
@@ -73,8 +73,8 @@ public final class c
       }
       catch (RejectedExecutionException localRejectedExecutionException)
       {
-        this.Kqu.e(parama);
-        this.Kqv.decrementAndGet();
+        this.Med.e(parama);
+        this.Mee.decrementAndGet();
         rx.d.c.onError(localRejectedExecutionException);
         AppMethodBeat.o(90364);
         throw localRejectedExecutionException;
@@ -90,22 +90,22 @@ public final class c
         AppMethodBeat.o(90366);
         return parama;
       }
-      if (this.Kqu.KrX)
+      if (this.Med.MfG)
       {
-        parama = rx.f.d.fOj();
+        parama = rx.f.d.ggZ();
         AppMethodBeat.o(90366);
         return parama;
       }
       rx.f.c localc1 = new rx.f.c();
       final rx.f.c localc2 = new rx.f.c();
       localc2.f(localc1);
-      this.Kqu.b(localc2);
+      this.Med.b(localc2);
       final j localj = rx.f.d.e(new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90361);
-          c.a.this.Kqu.e(localc2);
+          c.a.this.Med.e(localc2);
           AppMethodBeat.o(90361);
         }
       });
@@ -114,7 +114,7 @@ public final class c
         public final void call()
         {
           AppMethodBeat.i(90362);
-          if (localc2.fNx())
+          if (localc2.ggn())
           {
             AppMethodBeat.o(90362);
             return;
@@ -125,7 +125,7 @@ public final class c
           {
             localObject = (i)localObject;
             j localj = localj;
-            ((i)localObject).KqR.b(localj);
+            ((i)localObject).MeA.b(localj);
           }
           AppMethodBeat.o(90362);
         }
@@ -133,7 +133,7 @@ public final class c
       localc1.f(parama);
       try
       {
-        parama.b(this.Kqw.schedule(parama, paramLong, paramTimeUnit));
+        parama.b(this.Mef.schedule(parama, paramLong, paramTimeUnit));
         AppMethodBeat.o(90366);
         return localj;
       }
@@ -145,17 +145,17 @@ public final class c
       }
     }
     
-    public final void fNw()
+    public final void ggm()
     {
       AppMethodBeat.i(90367);
-      this.Kqu.fNw();
-      this.qRN.clear();
+      this.Med.ggm();
+      this.rNK.clear();
       AppMethodBeat.o(90367);
     }
     
-    public final boolean fNx()
+    public final boolean ggn()
     {
-      return this.Kqu.KrX;
+      return this.Med.MfG;
     }
     
     public final void run()
@@ -163,36 +163,36 @@ public final class c
       AppMethodBeat.i(90365);
       do
       {
-        if (this.Kqu.KrX)
+        if (this.Med.MfG)
         {
-          this.qRN.clear();
+          this.rNK.clear();
           AppMethodBeat.o(90365);
           return;
         }
-        i locali = (i)this.qRN.poll();
+        i locali = (i)this.rNK.poll();
         if (locali == null)
         {
           AppMethodBeat.o(90365);
           return;
         }
-        if (!locali.KqR.KrX)
+        if (!locali.MeA.MfG)
         {
-          if (this.Kqu.KrX) {
+          if (this.Med.MfG) {
             break;
           }
           locali.run();
         }
-      } while (this.Kqv.decrementAndGet() != 0);
+      } while (this.Mee.decrementAndGet() != 0);
       AppMethodBeat.o(90365);
       return;
-      this.qRN.clear();
+      this.rNK.clear();
       AppMethodBeat.o(90365);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.c.c
  * JD-Core Version:    0.7.0.1
  */

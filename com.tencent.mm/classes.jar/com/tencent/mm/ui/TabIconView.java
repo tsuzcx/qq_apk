@@ -16,14 +16,14 @@ import com.tencent.mm.sdk.platformtools.f;
 public class TabIconView
   extends ImageView
 {
-  private Bitmap FSD;
-  private Bitmap FSE;
-  private Bitmap FSF;
-  private Rect FSG;
-  private Rect FSH;
-  private Rect FSI;
-  private int FSJ = 0;
-  private Paint bto;
+  private Bitmap Hss;
+  private Bitmap Hst;
+  private Bitmap Hsu;
+  private Rect Hsv;
+  private Rect Hsw;
+  private Rect Hsx;
+  private int Hsy = 0;
+  private Paint brn;
   private Context mContext;
   private Paint paint;
   private float scale = 1.166667F;
@@ -40,27 +40,27 @@ public class TabIconView
     this.mContext = paramContext;
   }
   
-  public final void g(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public final void h(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(33778);
     if (paramBoolean) {
       this.scale *= 1.2F;
     }
-    this.FSD = f.t(paramInt1, this.scale);
-    this.FSE = f.t(paramInt3, this.scale);
-    this.FSF = f.t(paramInt2, this.scale);
-    if (this.FSD != null) {
-      this.FSG = new Rect(0, 0, this.FSD.getWidth(), this.FSD.getHeight());
+    this.Hss = f.t(paramInt1, this.scale);
+    this.Hst = f.t(paramInt3, this.scale);
+    this.Hsu = f.t(paramInt2, this.scale);
+    if (this.Hss != null) {
+      this.Hsv = new Rect(0, 0, this.Hss.getWidth(), this.Hss.getHeight());
     }
-    if (this.FSE != null) {
-      this.FSH = new Rect(0, 0, this.FSE.getWidth(), this.FSE.getHeight());
+    if (this.Hst != null) {
+      this.Hsw = new Rect(0, 0, this.Hst.getWidth(), this.Hst.getHeight());
     }
-    if (this.FSF != null) {
-      this.FSI = new Rect(0, 0, this.FSF.getWidth(), this.FSF.getHeight());
+    if (this.Hsu != null) {
+      this.Hsx = new Rect(0, 0, this.Hsu.getWidth(), this.Hsu.getHeight());
     }
     this.paint = new Paint(1);
-    this.bto = new Paint(1);
-    this.bto.setColorFilter(new PorterDuffColorFilter(ao.aD(this.mContext, 2130968584), PorterDuff.Mode.SRC_ATOP));
+    this.brn = new Paint(1);
+    this.brn.setColorFilter(new PorterDuffColorFilter(ao.aJ(this.mContext, 2130968584), PorterDuff.Mode.SRC_ATOP));
     this.paint.setColorFilter(new PorterDuffColorFilter(this.mContext.getResources().getColor(2131101171), PorterDuff.Mode.SRC_ATOP));
     AppMethodBeat.o(33778);
   }
@@ -74,26 +74,26 @@ public class TabIconView
       AppMethodBeat.o(33780);
       return;
     }
-    if (this.FSJ < 128)
+    if (this.Hsy < 128)
     {
-      this.bto.setAlpha(255 - this.FSJ);
-      paramCanvas.drawBitmap(this.FSE, null, this.FSH, this.bto);
-      this.paint.setAlpha(this.FSJ);
-      paramCanvas.drawBitmap(this.FSF, null, this.FSI, this.paint);
+      this.brn.setAlpha(255 - this.Hsy);
+      paramCanvas.drawBitmap(this.Hst, null, this.Hsw, this.brn);
+      this.paint.setAlpha(this.Hsy);
+      paramCanvas.drawBitmap(this.Hsu, null, this.Hsx, this.paint);
       AppMethodBeat.o(33780);
       return;
     }
-    this.paint.setAlpha(255 - this.FSJ);
-    paramCanvas.drawBitmap(this.FSF, null, this.FSI, this.paint);
-    this.paint.setAlpha(this.FSJ);
-    paramCanvas.drawBitmap(this.FSD, null, this.FSG, this.paint);
+    this.paint.setAlpha(255 - this.Hsy);
+    paramCanvas.drawBitmap(this.Hsu, null, this.Hsx, this.paint);
+    this.paint.setAlpha(this.Hsy);
+    paramCanvas.drawBitmap(this.Hss, null, this.Hsv, this.paint);
     AppMethodBeat.o(33780);
   }
   
   public void setFocusAlpha(int paramInt)
   {
     AppMethodBeat.i(33779);
-    this.FSJ = paramInt;
+    this.Hsy = paramInt;
     invalidate();
     AppMethodBeat.o(33779);
   }

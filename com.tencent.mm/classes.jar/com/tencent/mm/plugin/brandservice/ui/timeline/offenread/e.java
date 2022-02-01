@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.dbw;
-import com.tencent.mm.protocal.protobuf.dby;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.dhi;
+import com.tencent.mm.protocal.protobuf.dhk;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,24 +16,24 @@ import java.util.List;
 
 public final class e
 {
-  static dbw nbQ;
+  static dhi nEA;
   
-  public static boolean Pp(String paramString)
+  public static boolean TA(String paramString)
   {
     AppMethodBeat.i(6135);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(6135);
       return false;
     }
-    Object localObject = bDe();
+    Object localObject = bKr();
     if (localObject == null)
     {
       AppMethodBeat.o(6135);
       return false;
     }
-    localObject = ((dbw)localObject).Etz;
-    if (bt.gL((List)localObject))
+    localObject = ((dhi)localObject).FQB;
+    if (bs.gY((List)localObject))
     {
       AppMethodBeat.o(6135);
       return false;
@@ -41,8 +41,8 @@ public final class e
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      dby localdby = (dby)((Iterator)localObject).next();
-      if ((localdby != null) && (paramString.equals(localdby.CAc)))
+      dhk localdhk = (dhk)((Iterator)localObject).next();
+      if ((localdhk != null) && (paramString.equals(localdhk.DSy)))
       {
         AppMethodBeat.o(6135);
         return true;
@@ -52,33 +52,33 @@ public final class e
     return false;
   }
   
-  public static dbw bDe()
+  public static dhi bKr()
   {
     AppMethodBeat.i(6134);
-    if (nbQ != null)
+    if (nEA != null)
     {
-      localdbw = nbQ;
+      localdhi = nEA;
       AppMethodBeat.o(6134);
-      return localdbw;
+      return localdhi;
     }
-    Object localObject = (String)g.afB().afk().get(ae.a.Ftq, "");
-    if (bt.isNullOrNil((String)localObject))
+    Object localObject = (String)g.agR().agA().get(ah.a.GRk, "");
+    if (bs.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(6134);
       return null;
     }
-    dbw localdbw = new dbw();
+    dhi localdhi = new dhi();
     localObject = Base64.decode((String)localObject, 0);
     try
     {
-      localdbw.parseFrom((byte[])localObject);
-      nbQ = localdbw;
+      localdhi.parseFrom((byte[])localObject);
+      nEA = localdhi;
       AppMethodBeat.o(6134);
-      return localdbw;
+      return localdhi;
     }
     catch (IOException localIOException)
     {
-      ad.e("MicroMsg.BizTimeLineOftenReadHelper", "getOftenRead exp: %s", new Object[] { localIOException.getMessage() });
+      ac.e("MicroMsg.BizTimeLineOftenReadHelper", "getOftenRead exp: %s", new Object[] { localIOException.getMessage() });
       AppMethodBeat.o(6134);
     }
     return null;

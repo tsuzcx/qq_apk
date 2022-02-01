@@ -4,7 +4,7 @@ import com.tencent.mm.media.f.d;
 import d.g.a.b;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/media/globject/GLTextureObject;", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/media/globject/GLTextureObject;", "invoke"})
 final class a$c
   extends d.g.b.l
   implements b<d, y>
@@ -16,7 +16,7 @@ final class a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.a.c
  * JD-Core Version:    0.7.0.1
  */

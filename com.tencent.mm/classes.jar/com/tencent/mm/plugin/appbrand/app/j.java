@@ -6,26 +6,24 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fh;
-import com.tencent.mm.g.a.kj;
+import com.tencent.mm.g.a.fi;
 import com.tencent.mm.g.a.kr;
 import com.tencent.mm.g.a.l;
-import com.tencent.mm.g.a.lh;
-import com.tencent.mm.g.a.pe;
-import com.tencent.mm.g.a.wa;
-import com.tencent.mm.g.a.wm;
+import com.tencent.mm.g.a.la;
+import com.tencent.mm.g.a.lq;
+import com.tencent.mm.g.a.pn;
+import com.tencent.mm.g.a.wl;
+import com.tencent.mm.g.a.wx;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.cc.a;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.appbrand.appcache.ae;
 import com.tencent.mm.plugin.appbrand.appcache.as;
 import com.tencent.mm.plugin.appbrand.appcache.av;
 import com.tencent.mm.plugin.appbrand.appcache.bc;
 import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.appcache.bk;
-import com.tencent.mm.plugin.appbrand.appstorage.h;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appusage.i;
 import com.tencent.mm.plugin.appbrand.appusage.t.b;
 import com.tencent.mm.plugin.appbrand.appusage.x.a;
@@ -40,9 +38,9 @@ import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
 import com.tencent.mm.protocal.x.b;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.bh.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.bk.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -55,71 +53,72 @@ import java.util.Vector;
 public final class j
   implements aw
 {
-  private static volatile com.tencent.mm.plugin.appbrand.appstorage.d iKf;
-  private static volatile com.tencent.mm.plugin.appbrand.config.d iKg;
-  private static volatile bf iKh;
-  private static volatile com.tencent.mm.plugin.appbrand.appusage.y iKi;
-  private static volatile v iKj;
-  private static volatile at iKk;
-  private static volatile com.tencent.mm.plugin.appbrand.widget.g iKl;
-  private static volatile com.tencent.mm.plugin.appbrand.widget.j iKm;
-  private static volatile r.a iKn;
-  private static volatile com.tencent.mm.plugin.appbrand.widget.o iKo;
-  private static volatile com.tencent.mm.ai.a.d iKp;
-  private static volatile com.tencent.mm.plugin.appbrand.z.a iKq;
-  private static volatile ae iKr;
-  private static volatile com.tencent.mm.plugin.appbrand.game.b.a.b iKs;
-  private static volatile ay iKt;
-  private static volatile av iKu;
-  private static volatile bk iKv;
-  private static com.tencent.mm.plugin.appbrand.c.c iKw;
-  private static com.tencent.mm.plugin.appbrand.c.b iKx;
-  private k.a gQD;
-  private final com.tencent.mm.network.n haH;
-  private final com.tencent.mm.plugin.auth.a.a iKA;
-  private final Set<com.tencent.mm.sdk.b.c> iKB;
-  private final com.tencent.mm.sdk.b.c<kr> iKC;
-  private final com.tencent.mm.sdk.b.c<wm> iKD;
-  private final com.tencent.mm.sdk.b.c<lh> iKE;
-  private final com.tencent.mm.sdk.b.c<pe> iKF;
-  private final com.tencent.mm.sdk.b.c<l> iKG;
-  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.q> iKH;
-  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.p> iKI;
-  private final com.tencent.mm.sdk.b.c<wa> iKJ;
-  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.k> iKK;
-  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.o> iKL;
-  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.cc> iKM;
-  private final com.tencent.mm.sdk.b.c<kj> iKN;
-  private final cc.a iKO;
-  private com.tencent.mm.sdk.b.c iKP;
-  private com.tencent.mm.sdk.b.c iKQ;
-  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.k> iKR;
-  private final AppBrandGuideUI.a iKS;
-  private final com.tencent.mm.sdk.b.c<fh> iKT;
-  private bh.a iKy;
-  private com.tencent.mm.vending.b.b iKz;
+  private static volatile av jkA;
+  private static volatile com.tencent.mm.plugin.appbrand.appcache.bk jkB;
+  private static com.tencent.mm.plugin.appbrand.c.c jkC;
+  private static com.tencent.mm.plugin.appbrand.c.b jkD;
+  private static volatile com.tencent.mm.plugin.appbrand.appstorage.d jkl;
+  private static volatile com.tencent.mm.plugin.appbrand.config.d jkm;
+  private static volatile bf jkn;
+  private static volatile com.tencent.mm.plugin.appbrand.appusage.y jko;
+  private static volatile v jkp;
+  private static volatile at jkq;
+  private static volatile com.tencent.mm.plugin.appbrand.widget.g jkr;
+  private static volatile com.tencent.mm.plugin.appbrand.widget.j jks;
+  private static volatile r.a jkt;
+  private static volatile com.tencent.mm.plugin.appbrand.widget.o jku;
+  private static volatile com.tencent.mm.ah.a.d jkv;
+  private static volatile com.tencent.mm.plugin.appbrand.y.a jkw;
+  private static volatile ae jkx;
+  private static volatile com.tencent.mm.plugin.appbrand.game.b.a.b jky;
+  private static volatile ay jkz;
+  private final com.tencent.mm.network.n hBi;
+  private k.a hrd;
+  private bk.a jkE;
+  private com.tencent.mm.vending.b.b jkF;
+  private final com.tencent.mm.plugin.auth.a.a jkG;
+  private final Set<com.tencent.mm.sdk.b.c> jkH;
+  private final com.tencent.mm.sdk.b.c<la> jkI;
+  private final com.tencent.mm.sdk.b.c<wx> jkJ;
+  private final com.tencent.mm.sdk.b.c<lq> jkK;
+  private final com.tencent.mm.sdk.b.c<pn> jkL;
+  private final com.tencent.mm.sdk.b.c<l> jkM;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.q> jkN;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.p> jkO;
+  private final com.tencent.mm.sdk.b.c<wl> jkP;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.k> jkQ;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.o> jkR;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.cc> jkS;
+  private final com.tencent.mm.sdk.b.c<kr> jkT;
+  private final cc.a jkU;
+  private com.tencent.mm.sdk.b.c jkV;
+  private com.tencent.mm.sdk.b.c jkW;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.k> jkX;
+  private final com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.r> jkY;
+  private final AppBrandGuideUI.a jkZ;
+  private final com.tencent.mm.sdk.b.c<fi> jla;
   
   public j()
   {
     AppMethodBeat.i(44202);
-    this.iKy = new com.tencent.mm.plugin.appbrand.x.a();
-    this.iKz = null;
-    this.iKA = new com.tencent.mm.plugin.auth.a.a()
+    this.jkE = new com.tencent.mm.plugin.appbrand.w.a();
+    this.jkF = null;
+    this.jkG = new com.tencent.mm.plugin.auth.a.a()
     {
       public final void a(j.h paramAnonymoush, j.i paramAnonymousi, boolean paramAnonymousBoolean)
       {
         int j = 0;
-        AppMethodBeat.i(195607);
+        AppMethodBeat.i(186308);
         if ((paramAnonymousi != null) && ((paramAnonymousi instanceof j.g)))
         {
-          com.tencent.mm.plugin.appbrand.appusage.j.aRE().aRF();
-          as.fm(true);
+          com.tencent.mm.plugin.appbrand.appusage.j.aYz().aYA();
+          as.fI(true);
         }
         if ((paramAnonymousBoolean) && ((paramAnonymoush instanceof com.tencent.mm.protocal.j.a)) && (paramAnonymoush.getSceneStatus() == 12)) {}
         for (int i = 1;; i = 0)
         {
           if (i != 0) {
-            as.fm(true);
+            as.fI(true);
           }
           if ((!(paramAnonymoush instanceof j.f)) || (paramAnonymoush.getSceneStatus() != 1))
           {
@@ -135,93 +134,95 @@ public final class j
             i = 1;
           }
           if (i != 0) {
-            com.tencent.mm.plugin.appbrand.appusage.a.g.fr(true);
+            com.tencent.mm.plugin.appbrand.appusage.a.g.fN(true);
           }
-          AppMethodBeat.o(195607);
+          AppMethodBeat.o(186308);
           return;
         }
       }
       
       public final void a(x.b paramAnonymousb, String paramAnonymousString1, int paramAnonymousInt1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt2) {}
     };
-    this.iKC = new j.13(this);
-    this.iKD = new j.14(this);
-    this.iKE = new com.tencent.mm.sdk.b.c() {};
-    this.iKF = new j.16(this);
-    this.iKG = new j.17(this);
-    this.iKH = new j.18(this);
-    this.iKI = new j.19(this);
-    this.iKJ = new com.tencent.mm.sdk.b.c() {};
-    this.iKK = new com.tencent.mm.sdk.b.c() {};
-    this.iKL = new j.22(this);
-    this.iKM = new j.24(this);
-    this.iKN = new j.25(this);
-    this.iKO = new bc();
-    this.haH = new n.a()
+    this.jkI = new com.tencent.mm.sdk.b.c() {};
+    this.jkJ = new com.tencent.mm.sdk.b.c() {};
+    this.jkK = new com.tencent.mm.sdk.b.c() {};
+    this.jkL = new com.tencent.mm.sdk.b.c() {};
+    this.jkM = new com.tencent.mm.sdk.b.c() {};
+    this.jkN = new com.tencent.mm.sdk.b.c() {};
+    this.jkO = new j.19(this);
+    this.jkP = new com.tencent.mm.sdk.b.c() {};
+    this.jkQ = new com.tencent.mm.sdk.b.c() {};
+    this.jkR = new j.22(this);
+    this.jkS = new j.24(this);
+    this.jkT = new com.tencent.mm.sdk.b.c() {};
+    this.jkU = new bc();
+    this.hBi = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(195610);
+        AppMethodBeat.i(186311);
         com.tencent.mm.plugin.appbrand.task.f.onNetworkChange();
-        com.tencent.mm.plugin.appbrand.appcache.b.b.j.iQo.aQJ();
-        AppMethodBeat.o(195610);
+        com.tencent.mm.plugin.appbrand.appcache.b.b.j.jqy.aXE();
+        AppMethodBeat.o(186311);
       }
     };
-    this.iKP = new j.27(this);
-    this.iKQ = new com.tencent.mm.sdk.b.c() {};
-    this.iKR = new j.29(this);
-    this.iKS = new AppBrandGuideUI.a();
-    this.gQD = new k.a()
+    this.jkV = new j.27(this);
+    this.jkW = new com.tencent.mm.sdk.b.c() {};
+    this.jkX = new j.29(this);
+    this.jkY = new j.30(this);
+    this.jkZ = new AppBrandGuideUI.a();
+    this.hrd = new k.a()
     {
       public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
       {
-        AppMethodBeat.i(195613);
+        AppMethodBeat.i(186316);
         if ((paramAnonymousString != null) && (paramAnonymousString.length() > 0) && ("event_updated".equals(paramAnonymousString)))
         {
-          j.aOU();
-          j.aOV();
-          j.aOW();
-          j.aOX();
-          j.aOY();
+          j.aVM();
+          j.aVN();
+          j.aVO();
+          j.aVP();
+          j.aVQ();
         }
-        AppMethodBeat.o(195613);
+        AppMethodBeat.o(186316);
       }
     };
-    this.iKT = new com.tencent.mm.sdk.b.c() {};
-    this.iKB = new HashSet();
-    this.iKB.add(this.iKK);
-    this.iKB.add(new com.tencent.mm.plugin.appbrand.launching.b());
-    this.iKB.add(this.iKL);
-    this.iKB.add(this.iKE);
-    this.iKB.add(this.iKF);
-    this.iKB.add(this.iKD);
-    this.iKB.add(new com.tencent.mm.plugin.appbrand.config.f());
-    this.iKB.add(this.iKC);
-    this.iKB.add(i.iUk);
-    this.iKB.add(this.iKG);
-    this.iKB.add(this.iKH);
-    this.iKB.add(this.iKI);
-    this.iKB.add(this.iKJ);
-    this.iKB.add(this.iKM);
-    this.iKB.add(this.iKN);
-    this.iKB.add(this.iKP);
-    this.iKB.add(this.iKQ);
-    this.iKB.add(this.iKR);
+    this.jla = new com.tencent.mm.sdk.b.c() {};
+    this.jkH = new HashSet();
+    this.jkH.add(this.jkQ);
+    this.jkH.add(new com.tencent.mm.plugin.appbrand.launching.b());
+    this.jkH.add(this.jkR);
+    this.jkH.add(this.jkK);
+    this.jkH.add(this.jkL);
+    this.jkH.add(this.jkJ);
+    this.jkH.add(new com.tencent.mm.plugin.appbrand.config.f());
+    this.jkH.add(this.jkI);
+    this.jkH.add(i.juw);
+    this.jkH.add(this.jkM);
+    this.jkH.add(this.jkN);
+    this.jkH.add(this.jkO);
+    this.jkH.add(this.jkP);
+    this.jkH.add(this.jkS);
+    this.jkH.add(this.jkT);
+    this.jkH.add(this.jkV);
+    this.jkH.add(this.jkW);
+    this.jkH.add(this.jkX);
+    this.jkH.add(this.jkY);
     AppMethodBeat.o(44202);
   }
   
-  public static com.tencent.mm.plugin.appbrand.appstorage.d Dg()
+  public static com.tencent.mm.plugin.appbrand.appstorage.d CJ()
   {
-    return iKf;
+    return jkl;
   }
   
-  public static com.tencent.mm.plugin.appbrand.config.d Dh()
+  public static com.tencent.mm.plugin.appbrand.config.d CK()
   {
     AppMethodBeat.i(44205);
-    if ((iKg == null) && (iKn != null) && (!iKn.eHe())) {
-      iKg = new com.tencent.mm.plugin.appbrand.config.d(iKn);
+    if ((jkm == null) && (jkt != null) && (!jkt.eWz())) {
+      jkm = new com.tencent.mm.plugin.appbrand.config.d(jkt);
     }
-    com.tencent.mm.plugin.appbrand.config.d locald = iKg;
+    com.tencent.mm.plugin.appbrand.config.d locald = jkm;
     AppMethodBeat.o(44205);
     return locald;
   }
@@ -231,78 +232,22 @@ public final class j
     AppMethodBeat.i(44209);
     if (paramClass == com.tencent.mm.plugin.appbrand.appusage.y.class)
     {
-      paramClass = iKi;
+      paramClass = jko;
       AppMethodBeat.o(44209);
       return paramClass;
     }
-    paramClass = b.T(paramClass);
+    paramClass = a.T(paramClass);
     AppMethodBeat.o(44209);
     return paramClass;
   }
   
-  public static AppBrandGuideUI.a aOB()
+  public static com.tencent.mm.plugin.appbrand.appusage.y aVA()
   {
-    AppMethodBeat.i(44203);
-    if (aOz() == null)
-    {
-      AppMethodBeat.o(44203);
-      return null;
-    }
-    AppBrandGuideUI.a locala = aOz().iKS;
-    AppMethodBeat.o(44203);
-    return locala;
-  }
-  
-  public static v aOC()
-  {
-    AppMethodBeat.i(44204);
-    try
-    {
-      if (((iKj == null) || (!iKj.aTJ())) && (iKn != null) && (!iKn.eHe())) {
-        iKj = new v(iKn);
-      }
-      v localv = iKj;
-      AppMethodBeat.o(44204);
-      return localv;
-    }
-    finally
-    {
-      AppMethodBeat.o(44204);
-    }
-  }
-  
-  public static at aOD()
-  {
-    return iKk;
-  }
-  
-  public static com.tencent.mm.plugin.appbrand.widget.j aOE()
-  {
-    return iKm;
-  }
-  
-  public static ay aOF()
-  {
-    return iKt;
-  }
-  
-  public static com.tencent.mm.plugin.appbrand.widget.o aOG()
-  {
-    return iKo;
-  }
-  
-  public static com.tencent.mm.ai.a.d aOH()
-  {
-    return iKp;
-  }
-  
-  public static com.tencent.mm.plugin.appbrand.appusage.y aOI()
-  {
-    return iKi;
+    return jko;
   }
   
   @Deprecated
-  public static com.tencent.mm.plugin.appbrand.appusage.u aOJ()
+  public static com.tencent.mm.plugin.appbrand.appusage.u aVB()
   {
     AppMethodBeat.i(44206);
     com.tencent.mm.plugin.appbrand.appusage.u localu = (com.tencent.mm.plugin.appbrand.appusage.u)T(com.tencent.mm.plugin.appbrand.appusage.u.class);
@@ -310,59 +255,59 @@ public final class j
     return localu;
   }
   
-  public static bf aOK()
+  public static bf aVC()
   {
-    return iKh;
+    return jkn;
   }
   
-  public static com.tencent.mm.plugin.appbrand.widget.g aOL()
+  public static com.tencent.mm.plugin.appbrand.widget.g aVD()
   {
-    return iKl;
+    return jkr;
   }
   
-  public static com.tencent.mm.plugin.appbrand.c.c aOM()
+  public static com.tencent.mm.plugin.appbrand.c.c aVE()
   {
     AppMethodBeat.i(44207);
-    if (iKw == null) {
-      iKw = new com.tencent.mm.plugin.appbrand.c.c();
+    if (jkC == null) {
+      jkC = new com.tencent.mm.plugin.appbrand.c.c();
     }
-    com.tencent.mm.plugin.appbrand.c.c localc = iKw;
+    com.tencent.mm.plugin.appbrand.c.c localc = jkC;
     AppMethodBeat.o(44207);
     return localc;
   }
   
-  public static com.tencent.mm.plugin.appbrand.c.b aON()
+  public static com.tencent.mm.plugin.appbrand.c.b aVF()
   {
     AppMethodBeat.i(44208);
-    if (iKx == null) {
-      iKx = new com.tencent.mm.plugin.appbrand.c.b();
+    if (jkD == null) {
+      jkD = new com.tencent.mm.plugin.appbrand.c.b();
     }
-    com.tencent.mm.plugin.appbrand.c.b localb = iKx;
+    com.tencent.mm.plugin.appbrand.c.b localb = jkD;
     AppMethodBeat.o(44208);
     return localb;
   }
   
-  public static com.tencent.mm.plugin.appbrand.z.a aOO()
+  public static com.tencent.mm.plugin.appbrand.y.a aVG()
   {
-    return iKq;
+    return jkw;
   }
   
-  public static ae aOP()
+  public static ae aVH()
   {
-    return iKr;
+    return jkx;
   }
   
-  public static av aOQ()
+  public static av aVI()
   {
-    return iKu;
+    return jkA;
   }
   
-  public static bk aOR()
+  public static com.tencent.mm.plugin.appbrand.appcache.bk aVJ()
   {
-    return iKv;
+    return jkB;
   }
   
-  public static com.tencent.mm.plugin.appbrand.backgroundfetch.d aOS()
+  public static com.tencent.mm.plugin.appbrand.backgroundfetch.d aVK()
   {
     AppMethodBeat.i(44210);
     com.tencent.mm.plugin.appbrand.backgroundfetch.d locald = (com.tencent.mm.plugin.appbrand.backgroundfetch.d)T(com.tencent.mm.plugin.appbrand.backgroundfetch.d.class);
@@ -370,7 +315,7 @@ public final class j
     return locald;
   }
   
-  public static com.tencent.mm.plugin.appbrand.backgroundfetch.g aOT()
+  public static com.tencent.mm.plugin.appbrand.backgroundfetch.g aVL()
   {
     AppMethodBeat.i(44211);
     com.tencent.mm.plugin.appbrand.backgroundfetch.g localg = (com.tencent.mm.plugin.appbrand.backgroundfetch.g)T(com.tencent.mm.plugin.appbrand.backgroundfetch.g.class);
@@ -378,7 +323,7 @@ public final class j
     return localg;
   }
   
-  private HashMap<Integer, h.b> aOx()
+  private HashMap<Integer, h.b> aVp()
   {
     AppMethodBeat.i(44197);
     HashMap localHashMap = new HashMap();
@@ -393,113 +338,113 @@ public final class j
     {
       public final String[] getSQLs()
       {
-        return bf.iOD;
+        return bf.joM;
       }
     });
     localHashMap.put(Integer.valueOf("AppBrandCommonConfigStorageCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.config.d.gLs;
+        return com.tencent.mm.plugin.appbrand.config.d.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("AppBrandLayoutStorageCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.appusage.y.gLs;
+        return com.tencent.mm.plugin.appbrand.appusage.y.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("AppBrandStarAppStorageCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.appusage.u.gLs;
+        return com.tencent.mm.plugin.appbrand.appusage.u.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("WxaAttributesTableCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return v.gLs;
+        return v.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("LaunchWxaAppInfoCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return new String[] { at.kLE };
+        return new String[] { at.lna };
       }
     });
     localHashMap.put(Integer.valueOf("DynamicMsgCacheDataCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.widget.g.gLs;
+        return com.tencent.mm.plugin.appbrand.widget.g.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("LaunchWxaWidgetCacheCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return new String[] { com.tencent.mm.plugin.appbrand.widget.j.kLE };
+        return new String[] { com.tencent.mm.plugin.appbrand.widget.j.lna };
       }
     });
     localHashMap.put(Integer.valueOf("WxaWidgetInfoStorageCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.widget.o.gLs;
+        return com.tencent.mm.plugin.appbrand.widget.o.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("WxaUpdateableMsgStorageCreate".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.ai.a.d.gLs;
+        return com.tencent.mm.ah.a.d.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("AppBrandCommonKVBinaryDataStorage".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.z.a.gLs;
+        return com.tencent.mm.plugin.appbrand.y.a.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("PkgUpdateStatsStorage".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return ae.gLs;
+        return ae.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("MiniGameInfoStorage".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.game.b.a.b.gLs;
+        return com.tencent.mm.plugin.appbrand.game.b.a.b.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("AppBrandRecommendCardStorage".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.appbrand.appusage.a.b.gLs;
+        return com.tencent.mm.plugin.appbrand.appusage.a.b.hlS;
       }
     });
     localHashMap.put(Integer.valueOf("LaunchWxaJsApiPluginInfoStorage".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return ay.gLs;
+        return ay.hlS;
       }
     });
-    Iterator localIterator = b.iJo.entrySet().iterator();
+    Iterator localIterator = a.jjs.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       final String[] arrayOfString = (String[])localEntry.getValue();
-      localHashMap.put(Integer.valueOf(((b.a)localEntry.getKey()).hashCode()), new h.b()
+      localHashMap.put(Integer.valueOf(((a.a)localEntry.getKey()).hashCode()), new h.b()
       {
         public final String[] getSQLs()
         {
@@ -511,12 +456,12 @@ public final class j
     return localHashMap;
   }
   
-  public static r.a aOy()
+  public static r.a aVq()
   {
-    return iKn;
+    return jkt;
   }
   
-  public static j aOz()
+  public static j aVr()
   {
     AppMethodBeat.i(44198);
     Object localObject = (com.tencent.mm.plugin.appbrand.a.c)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.appbrand.a.c.class);
@@ -528,18 +473,74 @@ public final class j
     }
   }
   
-  public final r.a aOA()
+  public static AppBrandGuideUI.a aVt()
+  {
+    AppMethodBeat.i(44203);
+    if (aVr() == null)
+    {
+      AppMethodBeat.o(44203);
+      return null;
+    }
+    AppBrandGuideUI.a locala = aVr().jkZ;
+    AppMethodBeat.o(44203);
+    return locala;
+  }
+  
+  public static v aVu()
+  {
+    AppMethodBeat.i(44204);
+    try
+    {
+      if (((jkp == null) || (!jkp.baH())) && (jkt != null) && (!jkt.eWz())) {
+        jkp = new v(jkt);
+      }
+      v localv = jkp;
+      AppMethodBeat.o(44204);
+      return localv;
+    }
+    finally
+    {
+      AppMethodBeat.o(44204);
+    }
+  }
+  
+  public static at aVv()
+  {
+    return jkq;
+  }
+  
+  public static com.tencent.mm.plugin.appbrand.widget.j aVw()
+  {
+    return jks;
+  }
+  
+  public static ay aVx()
+  {
+    return jkz;
+  }
+  
+  public static com.tencent.mm.plugin.appbrand.widget.o aVy()
+  {
+    return jku;
+  }
+  
+  public static com.tencent.mm.ah.a.d aVz()
+  {
+    return jkv;
+  }
+  
+  public final r.a aVs()
   {
     AppMethodBeat.i(44199);
-    Object localObject = com.tencent.mm.kernel.g.afB().cachePath + "AppBrandComm.db";
-    if ((iKn != null) && (((String)localObject).equals(iKn.getPath())))
+    Object localObject = com.tencent.mm.kernel.g.agR().cachePath + "AppBrandComm.db";
+    if ((jkt != null) && (((String)localObject).equals(jkt.getPath())))
     {
-      localObject = iKn;
+      localObject = jkt;
       AppMethodBeat.o(44199);
       return localObject;
     }
-    localObject = r.a(hashCode(), (String)localObject, aOx(), true);
-    iKn = (r.a)localObject;
+    localObject = com.tencent.mm.platformtools.r.a(hashCode(), (String)localObject, aVp(), true);
+    jkt = (r.a)localObject;
     AppMethodBeat.o(44199);
     return localObject;
   }
@@ -554,16 +555,16 @@ public final class j
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(44200);
-    ad.d("MicroMsg.SubCoreAppBrand", "onAccountPostReset updated %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.iKz = ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(this.iKA);
-    Object localObject2 = aj.getContext().getSharedPreferences("app_brand_global_sp", 0);
+    ac.d("MicroMsg.SubCoreAppBrand", "onAccountPostReset updated %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.jkF = ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(this.jkG);
+    Object localObject2 = ai.getContext().getSharedPreferences("app_brand_global_sp", 0);
     if (localObject2 != null)
     {
       localObject1 = ((SharedPreferences)localObject2).getStringSet("uin_set", new HashSet());
       if (localObject1 != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        com.tencent.mm.kernel.g.afz();
+        com.tencent.mm.kernel.g.agP();
         if (((Set)localObject1).add(com.tencent.mm.kernel.a.getUin()))
         {
           localObject2 = ((SharedPreferences)localObject2).edit();
@@ -574,116 +575,117 @@ public final class j
         }
       }
     }
-    Object localObject1 = this.iKB.iterator();
+    Object localObject1 = this.jkH.iterator();
     while (((Iterator)localObject1).hasNext()) {
       ((com.tencent.mm.sdk.b.c)((Iterator)localObject1).next()).alive();
     }
-    com.tencent.mm.plugin.appbrand.floatball.c.aWh();
-    localObject1 = bc.iOq.keySet().iterator();
+    com.tencent.mm.plugin.appbrand.floatball.c.bdf();
+    localObject1 = bc.joz.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a((String)localObject2, this.iKO, true);
+      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a((String)localObject2, this.jkU, true);
     }
-    t.b.Bu();
-    x.a.Bu();
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().c(this.iKy);
-    aOA();
-    iKf = new com.tencent.mm.plugin.appbrand.appstorage.d(iKn);
-    iKg = new com.tencent.mm.plugin.appbrand.config.d(iKn);
-    iKh = new bf(iKn);
-    iKi = new com.tencent.mm.plugin.appbrand.appusage.y(iKn);
-    iKk = new at(iKn);
-    iKl = new com.tencent.mm.plugin.appbrand.widget.g(iKn);
-    iKm = new com.tencent.mm.plugin.appbrand.widget.j(iKn);
-    iKo = new com.tencent.mm.plugin.appbrand.widget.o(iKn);
-    iKp = new com.tencent.mm.ai.a.d(iKn);
-    iKq = new com.tencent.mm.plugin.appbrand.z.a(iKn);
-    iKr = new ae(iKn);
-    iKs = new com.tencent.mm.plugin.appbrand.game.b.a.b(iKn);
-    iKt = new ay(iKn);
-    iKu = new av();
-    iKv = new bk();
-    aOC();
-    b.a(iKn);
+    t.b.AY();
+    x.a.AY();
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().c(this.jkE);
+    aVs();
+    jkl = new com.tencent.mm.plugin.appbrand.appstorage.d(jkt);
+    jkm = new com.tencent.mm.plugin.appbrand.config.d(jkt);
+    jkn = new bf(jkt);
+    jko = new com.tencent.mm.plugin.appbrand.appusage.y(jkt);
+    jkq = new at(jkt);
+    jkr = new com.tencent.mm.plugin.appbrand.widget.g(jkt);
+    jks = new com.tencent.mm.plugin.appbrand.widget.j(jkt);
+    jku = new com.tencent.mm.plugin.appbrand.widget.o(jkt);
+    jkv = new com.tencent.mm.ah.a.d(jkt);
+    jkw = new com.tencent.mm.plugin.appbrand.y.a(jkt);
+    jkx = new ae(jkt);
+    jky = new com.tencent.mm.plugin.appbrand.game.b.a.b(jkt);
+    jkz = new ay(jkt);
+    jkA = new av();
+    jkB = new com.tencent.mm.plugin.appbrand.appcache.bk();
+    aVu();
+    a.a(jkt);
     com.tencent.mm.plugin.appbrand.j.setup();
-    com.tencent.mm.plugin.appbrand.config.u.aTL();
+    com.tencent.mm.plugin.appbrand.config.u.baJ();
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon().a(-86016, new j.10(this));
-    com.tencent.mm.kernel.g.afA().a(this.haH);
+    com.tencent.mm.kernel.g.agQ().a(this.hBi);
     com.tencent.mm.plugin.appbrand.dynamic.g.initialize();
-    com.tencent.mm.model.c.d.aty().add(this.gQD);
-    this.iKT.alive();
+    com.tencent.mm.model.c.d.aAp().add(this.hrd);
+    this.jla.alive();
     com.tencent.mm.pluginsdk.cmd.b.a(new j.a((byte)0), new String[] { "//xwebdebug" });
     com.tencent.mm.plugin.appbrand.config.g.init();
-    localObject1 = this.iKS;
-    AppBrandGuideUI.a.bod().registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
+    localObject1 = this.jkZ;
+    AppBrandGuideUI.a.buZ().registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
     AppBrandStickyBannerLogic.b.d((com.tencent.mm.plugin.appbrand.ui.banner.f)localObject1);
-    ((AppBrandGuideUI.a)localObject1).lzx = false;
-    com.tencent.mm.plugin.appbrand.floatball.g.aWo();
-    com.tencent.mm.plugin.appbrand.keylogger.g.bfS();
+    ((AppBrandGuideUI.a)localObject1).mbt = false;
+    com.tencent.mm.plugin.appbrand.floatball.g.bdm();
+    com.tencent.mm.plugin.appbrand.floatball.h.bdm();
+    com.tencent.mm.plugin.appbrand.keylogger.g.bmM();
     AppMethodBeat.o(44200);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(44201);
-    ad.d("MicroMsg.SubCoreAppBrand", "onAccountRelease");
-    if (this.iKz != null)
+    ac.d("MicroMsg.SubCoreAppBrand", "onAccountRelease");
+    if (this.jkF != null)
     {
-      this.iKz.dead();
-      this.iKz = null;
+      this.jkF.dead();
+      this.jkF = null;
     }
-    ??? = this.iKB.iterator();
+    ??? = this.jkH.iterator();
     while (((Iterator)???).hasNext()) {
       ((com.tencent.mm.sdk.b.c)((Iterator)???).next()).dead();
     }
-    com.tencent.mm.plugin.appbrand.floatball.c.aWi();
+    com.tencent.mm.plugin.appbrand.floatball.c.bdg();
     com.tencent.mm.plugin.appbrand.j.release();
-    ??? = bc.iOq.keySet().iterator();
+    ??? = bc.joz.keySet().iterator();
     Object localObject2;
     while (((Iterator)???).hasNext())
     {
       localObject2 = (String)((Iterator)???).next();
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b((String)localObject2, this.iKO, true);
+      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b((String)localObject2, this.jkU, true);
     }
     t.b.unregister();
     x.a.unregister();
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().d(this.iKy);
-    com.tencent.mm.plugin.appbrand.appcache.bh.shutdown();
-    iKf = null;
-    iKj = null;
-    iKg = null;
-    iKh = null;
-    iKi = null;
-    iKk = null;
-    iKl = null;
-    iKm = null;
-    iKo = null;
-    iKp = null;
-    iKq = null;
-    iKr = null;
-    iKs = null;
-    iKt = null;
-    iKu = null;
-    iKv = null;
-    b.aOm();
-    if (iKx != null)
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().d(this.jkE);
+    bh.shutdown();
+    jkl = null;
+    jkp = null;
+    jkm = null;
+    jkn = null;
+    jko = null;
+    jkq = null;
+    jkr = null;
+    jks = null;
+    jku = null;
+    jkv = null;
+    jkw = null;
+    jkx = null;
+    jky = null;
+    jkz = null;
+    jkA = null;
+    jkB = null;
+    a.aVc();
+    if (jkD != null)
     {
-      ??? = iKx;
-      ((com.tencent.mm.plugin.appbrand.c.b)???).jaA.clear();
-      ((com.tencent.mm.plugin.appbrand.c.b)???).jaB.clear();
-      iKx = null;
+      ??? = jkD;
+      ((com.tencent.mm.plugin.appbrand.c.b)???).jAN.clear();
+      ((com.tencent.mm.plugin.appbrand.c.b)???).jAO.clear();
+      jkD = null;
     }
-    iKw = null;
-    if (iKn != null)
+    jkC = null;
+    if (jkt != null)
     {
-      iKn.pK(hashCode());
-      iKn = null;
+      jkt.qx(hashCode());
+      jkt = null;
     }
     com.tencent.mm.plugin.appbrand.appusage.j.release();
     com.tencent.mm.plugin.appbrand.config.u.release();
-    com.tencent.mm.plugin.appbrand.appcache.b.b.j.iQo.cleanup();
-    com.tencent.mm.plugin.appbrand.utils.e.bql();
+    com.tencent.mm.plugin.appbrand.appcache.b.b.j.jqy.cleanup();
+    com.tencent.mm.plugin.appbrand.utils.e.bxi();
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).unregisterIndexStorage(512);
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).unregisterNativeLogic(7);
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).unregisterFTSUILogic(144);
@@ -692,24 +694,25 @@ public final class j
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).unregisterNativeLogic(10);
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).unregisterFTSUILogic(208);
     ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).unregisterFTSUILogic(4240);
-    com.tencent.mm.kernel.g.afA().b(this.haH);
+    com.tencent.mm.kernel.g.agQ().b(this.hBi);
     com.tencent.mm.plugin.appbrand.dynamic.g.release();
-    com.tencent.mm.model.c.d.aty().remove(this.gQD);
-    this.iKT.dead();
+    com.tencent.mm.model.c.d.aAp().remove(this.hrd);
+    this.jla.dead();
     com.tencent.mm.plugin.appbrand.config.g.release();
-    ??? = this.iKS;
-    AppBrandGuideUI.a.bod().unregisterActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)???);
+    ??? = this.jkZ;
+    AppBrandGuideUI.a.buZ().unregisterActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)???);
     AppBrandStickyBannerLogic.b.c((com.tencent.mm.plugin.appbrand.ui.banner.f)???);
-    ((AppBrandGuideUI.a)???).lzx = false;
-    ??? = h.iSm;
-    com.tencent.mm.kernel.g.afz();
+    ((AppBrandGuideUI.a)???).mbt = false;
+    ??? = com.tencent.mm.plugin.appbrand.appstorage.h.jsx;
+    com.tencent.mm.kernel.g.agP();
     long l = new com.tencent.mm.b.p(com.tencent.mm.kernel.a.getUin()).longValue();
-    synchronized (h.aRf())
+    synchronized (com.tencent.mm.plugin.appbrand.appstorage.h.aYa())
     {
-      h.aRf().remove(Long.valueOf(l));
-      ad.i("AppBrandMMKVStorage", "onAccountRelease remove cache uin:".concat(String.valueOf(l)));
-      localObject2 = d.y.JfV;
-      com.tencent.mm.plugin.appbrand.floatball.g.aWp();
+      com.tencent.mm.plugin.appbrand.appstorage.h.aYa().remove(Long.valueOf(l));
+      ac.i("AppBrandMMKVStorage", "onAccountRelease remove cache uin:".concat(String.valueOf(l)));
+      localObject2 = d.y.KTp;
+      com.tencent.mm.plugin.appbrand.floatball.g.bdn();
+      com.tencent.mm.plugin.appbrand.floatball.h.bdn();
       AppMethodBeat.o(44201);
       return;
     }
@@ -719,7 +722,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aew;
-import com.tencent.mm.protocal.protobuf.aex;
-import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.afv;
+import com.tencent.mm.protocal.protobuf.afw;
+import com.tencent.mm.protocal.protobuf.bb;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   extends n
   implements com.tencent.mm.network.k
 {
   private g callback;
-  public int dcG;
-  private com.tencent.mm.al.b iaa;
-  public String nTK;
-  private aew tap;
-  private aex taq;
+  public int dae;
+  private com.tencent.mm.ak.b gvE;
+  public String oxf;
+  private afv uiE;
+  private afw uiF;
   
   public b(String paramString)
   {
@@ -30,19 +30,19 @@ public final class b
     Object localObject = new b.a();
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    ((b.a)localObject).gUU = new aew();
-    ((b.a)localObject).gUV = new aex();
+    ((b.a)localObject).hvt = new afv();
+    ((b.a)localObject).hvu = new afw();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffwxhbinvalidateshareurl";
-    this.iaa = ((b.a)localObject).atI();
-    this.tap = ((aew)this.iaa.gUS.gUX);
-    localObject = com.tencent.mm.plugin.wallet_core.model.k.ebS();
+    this.gvE = ((b.a)localObject).aAz();
+    this.uiE = ((afv)this.gvE.hvr.hvw);
+    localObject = com.tencent.mm.plugin.wallet_core.model.k.ero();
     if (localObject != null)
     {
-      this.tap.latitude = ((az)localObject).latitude;
-      this.tap.longitude = ((az)localObject).longitude;
+      this.uiE.latitude = ((bb)localObject).latitude;
+      this.uiE.longitude = ((bb)localObject).longitude;
     }
-    this.tap.DeY = paramString;
+    this.uiE.Eye = paramString;
     AppMethodBeat.o(65038);
   }
   
@@ -50,7 +50,7 @@ public final class b
   {
     AppMethodBeat.i(65039);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(65039);
     return i;
   }
@@ -63,12 +63,12 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(65040);
-    ad.i(" NetSceneF2FLuckyMoneyInvalid", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.taq = ((aex)((com.tencent.mm.al.b)paramq).gUT.gUX);
-    this.dcG = this.taq.dcG;
-    this.nTK = this.taq.nTK;
+    ac.i(" NetSceneF2FLuckyMoneyInvalid", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.uiF = ((afw)((com.tencent.mm.ak.b)paramq).hvs.hvw);
+    this.dae = this.uiF.dae;
+    this.oxf = this.uiF.oxf;
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, this.taq.dcG, this.taq.nTK, this);
+      this.callback.onSceneEnd(paramInt2, this.uiF.dae, this.uiF.oxf, this);
     }
     AppMethodBeat.o(65040);
   }

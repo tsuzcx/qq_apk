@@ -15,16 +15,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.product.a.a;
 import com.tencent.mm.plugin.product.b.e;
 import com.tencent.mm.plugin.product.b.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.t;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -34,47 +34,47 @@ public class MallProductSelectSkuUI
   extends MallBaseUI
   implements u.a
 {
-  private TextView kEu;
-  private com.tencent.mm.plugin.product.b.m uvI;
-  private e uvX;
-  private com.tencent.mm.plugin.product.b.c uxz;
-  private ImageView uyb;
-  private TextView uyc;
-  private TextView uyd;
-  private Button uye;
-  private ListView uyf;
-  private MallProductSelectAmountView uyg = null;
-  private i uyh = null;
-  private f uyi;
+  private TextView lfN;
+  private com.tencent.mm.plugin.product.b.m vEB;
+  private e vEQ;
+  private ImageView vGU;
+  private TextView vGV;
+  private TextView vGW;
+  private Button vGX;
+  private ListView vGY;
+  private MallProductSelectAmountView vGZ = null;
+  private com.tencent.mm.plugin.product.b.c vGs;
+  private i vHa = null;
+  private f vHb;
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(67022);
-    if (this.uvI != null)
+    if (this.vEB != null)
     {
-      if ((this.uvX == null) || (this.uvI.uwm == null)) {
+      if ((this.vEQ == null) || (this.vEB.vFf == null)) {
         break label180;
       }
-      this.uyc.setText(com.tencent.mm.plugin.product.b.b.D(this.uvX.uwb, this.uvX.uwc, this.uvI.uwm.uop));
+      this.vGV.setText(com.tencent.mm.plugin.product.b.b.C(this.vEQ.vEU, this.vEQ.vEV, this.vEB.vFf.vxl));
     }
     for (;;)
     {
-      if (this.uvI.uwm != null) {
-        this.kEu.setText(this.uvI.uwm.name);
+      if (this.vEB.vFf != null) {
+        this.lfN.setText(this.vEB.vFf.name);
       }
-      if (!bt.isNullOrNil(this.uxz.dbm()))
+      if (!bs.isNullOrNil(this.vGs.doU()))
       {
-        Bitmap localBitmap = u.a(new c(this.uxz.dbm()));
-        this.uyb.setImageBitmap(localBitmap);
+        Bitmap localBitmap = u.a(new c(this.vGs.doU()));
+        this.vGU.setImageBitmap(localBitmap);
         u.a(this);
       }
-      this.uyd.setVisibility(8);
-      this.uyg.gC(this.uxz.dbu(), this.uxz.uvI.uwl);
-      this.uyh.notifyDataSetChanged();
+      this.vGW.setVisibility(8);
+      this.vGZ.gJ(this.vGs.dpc(), this.vGs.vEB.vFe);
+      this.vHa.notifyDataSetChanged();
       AppMethodBeat.o(67022);
       return;
       label180:
-      this.uyc.setText(com.tencent.mm.plugin.product.b.b.D(this.uvI.uwm.uwx, this.uvI.uwm.uwy, this.uvI.uwm.uop));
+      this.vGV.setText(com.tencent.mm.plugin.product.b.b.C(this.vEB.vFf.vFq, this.vEB.vFf.vFr, this.vEB.vFf.vxl));
     }
   }
   
@@ -87,21 +87,21 @@ public class MallProductSelectSkuUI
   {
     AppMethodBeat.i(67021);
     setMMTitle(2131761130);
-    this.uyb = ((ImageView)findViewById(2131302100));
-    this.kEu = ((TextView)findViewById(2131302104));
-    this.uyc = ((TextView)findViewById(2131302102));
-    this.uyd = ((TextView)findViewById(2131302099));
-    this.uye = ((Button)findViewById(2131302101));
-    this.uyf = ((ListView)findViewById(2131302107));
-    this.uyg = ((MallProductSelectAmountView)findViewById(2131304492));
-    this.uyg.setAmount(this.uxz.mCount);
-    this.uyh = new i(this);
-    if ((this.uvI != null) && (this.uvI.uwm != null) && (this.uvI.uwm.uwF != null)) {
-      this.uyh.uyk = this.uvI.uwm.uwF;
+    this.vGU = ((ImageView)findViewById(2131302100));
+    this.lfN = ((TextView)findViewById(2131302104));
+    this.vGV = ((TextView)findViewById(2131302102));
+    this.vGW = ((TextView)findViewById(2131302099));
+    this.vGX = ((Button)findViewById(2131302101));
+    this.vGY = ((ListView)findViewById(2131302107));
+    this.vGZ = ((MallProductSelectAmountView)findViewById(2131304492));
+    this.vGZ.setAmount(this.vGs.mCount);
+    this.vHa = new i(this);
+    if ((this.vEB != null) && (this.vEB.vFf != null) && (this.vEB.vFf.vFy != null)) {
+      this.vHa.vHd = this.vEB.vFf.vFy;
     }
     for (;;)
     {
-      this.uyh.uyl = new AdapterView.OnItemClickListener()
+      this.vHa.vHe = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -112,19 +112,19 @@ public class MallProductSelectSkuUI
           com.tencent.mm.plugin.product.b.c localc = MallProductSelectSkuUI.b(MallProductSelectSkuUI.this);
           String str = (String)((Pair)localObject).first;
           localObject = (String)((Pair)localObject).second;
-          ad.d("MicroMsg.MallProductManager", "selectSkuInfo (" + str + " , " + (String)localObject + ")");
-          if ((localc.uvU.containsKey(str)) && (((String)localc.uvU.get(str)).equals(localObject)))
+          ac.d("MicroMsg.MallProductManager", "selectSkuInfo (" + str + " , " + (String)localObject + ")");
+          if ((localc.vEN.containsKey(str)) && (((String)localc.vEN.get(str)).equals(localObject)))
           {
-            localc.uvU.remove(str);
-            localc.uvM = com.tencent.mm.plugin.product.b.c.ar(localc.uvU);
-            if (localc.uvT != null) {
-              paramAnonymousAdapterView = (e)localc.uvT.get(localc.uvM);
+            localc.vEN.remove(str);
+            localc.vEF = com.tencent.mm.plugin.product.b.c.at(localc.vEN);
+            if (localc.vEM != null) {
+              paramAnonymousAdapterView = (e)localc.vEM.get(localc.vEF);
             }
           }
-          for (localc.uvX = paramAnonymousAdapterView;; localc.uvX = ((e)localc.uvT.get(localc.uvM)))
+          for (localc.vEQ = paramAnonymousAdapterView;; localc.vEQ = ((e)localc.vEM.get(localc.vEF)))
           {
-            localc.dbA();
-            paramAnonymousAdapterView = localc.uvX;
+            localc.dpi();
+            paramAnonymousAdapterView = localc.vEQ;
             do
             {
               MallProductSelectSkuUI.a(paramAnonymousView, paramAnonymousAdapterView);
@@ -133,17 +133,17 @@ public class MallProductSelectSkuUI
               return;
               paramAnonymousAdapterView = null;
               break;
-              localc.uvU.put(str, localObject);
-              localc.uvM = com.tencent.mm.plugin.product.b.c.ar(localc.uvU);
-              ad.d("MicroMsg.MallProductManager", "getSkuInfoId (" + localc.uvM + ")");
-            } while (localc.uvT == null);
+              localc.vEN.put(str, localObject);
+              localc.vEF = com.tencent.mm.plugin.product.b.c.at(localc.vEN);
+              ac.d("MicroMsg.MallProductManager", "getSkuInfoId (" + localc.vEF + ")");
+            } while (localc.vEM == null);
           }
         }
       };
-      this.uyf.setAdapter(this.uyh);
-      this.uyg.setOnAmountChangeListener(new MallProductSelectAmountView.a()
+      this.vGY.setAdapter(this.vHa);
+      this.vGZ.setOnAmountChangeListener(new MallProductSelectAmountView.a()
       {
-        public final void gD(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void gK(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(67015);
           switch (paramAnonymousInt2)
@@ -162,7 +162,7 @@ public class MallProductSelectSkuUI
           }
         }
         
-        public final void hM(int paramAnonymousInt)
+        public final void hw(int paramAnonymousInt)
         {
           AppMethodBeat.i(67014);
           MallProductSelectSkuUI.b(MallProductSelectSkuUI.this).mCount = paramAnonymousInt;
@@ -170,78 +170,78 @@ public class MallProductSelectSkuUI
           AppMethodBeat.o(67014);
         }
       });
-      this.uye.setOnClickListener(new View.OnClickListener()
+      this.vGX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67016);
           f localf = MallProductSelectSkuUI.d(MallProductSelectSkuUI.this);
-          if (localf.uxx)
+          if (localf.vGq)
           {
-            t.makeText(localf.jgS, 2131761119, 1).show();
+            t.makeText(localf.jHh, 2131761119, 1).show();
             AppMethodBeat.o(67016);
             return;
           }
-          if (localf.uxz.dbw())
+          if (localf.vGs.dpe())
           {
-            if (localf.uxz.uvO != null)
+            if (localf.vGs.vEH != null)
             {
-              g.afC();
-              g.afA().gcy.a(new j(localf.uxz.dby(), f.mScene), 0);
+              g.agS();
+              g.agQ().ghe.a(new j(localf.vGs.dpg(), f.mScene), 0);
               AppMethodBeat.o(67016);
               return;
             }
-            d.b(localf.jgS, "address", ".ui.WalletAddAddressUI", 2);
+            d.b(localf.jHh, "address", ".ui.WalletAddAddressUI", 2);
             AppMethodBeat.o(67016);
             return;
           }
-          paramAnonymousView = localf.uxz;
+          paramAnonymousView = localf.vGs;
           com.tencent.mm.plugin.product.c.m localm;
-          if ((paramAnonymousView.uvU != null) && (paramAnonymousView.uvU.size() < paramAnonymousView.uvS) && (paramAnonymousView.uvS > 0))
+          if ((paramAnonymousView.vEN != null) && (paramAnonymousView.vEN.size() < paramAnonymousView.vEL) && (paramAnonymousView.vEL > 0))
           {
-            Iterator localIterator = paramAnonymousView.uvI.uwm.uwF.iterator();
+            Iterator localIterator = paramAnonymousView.vEB.vFf.vFy.iterator();
             do
             {
               if (!localIterator.hasNext()) {
                 break;
               }
               localm = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-            } while (paramAnonymousView.uvU.containsKey(localm.uwP));
+            } while (paramAnonymousView.vEN.containsKey(localm.vFI));
           }
-          for (paramAnonymousView = localm.uwQ;; paramAnonymousView = null)
+          for (paramAnonymousView = localm.vFJ;; paramAnonymousView = null)
           {
-            if (!bt.isNullOrNil(paramAnonymousView)) {
-              t.makeText(localf.jgS, localf.jgS.getString(2131761128, new Object[] { paramAnonymousView }), 0).show();
+            if (!bs.isNullOrNil(paramAnonymousView)) {
+              t.makeText(localf.jHh, localf.jHh.getString(2131761128, new Object[] { paramAnonymousView }), 0).show();
             }
             AppMethodBeat.o(67016);
             return;
           }
         }
       });
-      this.uyb.setFocusable(true);
-      this.uyb.setFocusableInTouchMode(true);
-      this.uyb.requestFocus();
+      this.vGU.setFocusable(true);
+      this.vGU.setFocusableInTouchMode(true);
+      this.vGU.requestFocus();
       AppMethodBeat.o(67021);
       return;
-      ad.e("MicroMsg.MallProductSelectSkuUI", "Illage mProductInfo.base_attr.sku_table");
+      ac.e("MicroMsg.MallProductSelectSkuUI", "Illage mProductInfo.base_attr.sku_table");
     }
   }
   
-  public final void l(String paramString, final Bitmap paramBitmap)
+  public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(67024);
     paramString = new StringBuilder().append(paramString).append(", bitmap = ");
     if (paramBitmap == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.MallProductSelectSkuUI", bool);
-      if (!bt.isNullOrNil(this.uxz.dbm())) {
+      ac.d("MicroMsg.MallProductSelectSkuUI", bool);
+      if (!bs.isNullOrNil(this.vGs.doU())) {
         break;
       }
       AppMethodBeat.o(67024);
       return;
     }
-    this.uyb.post(new Runnable()
+    this.vGU.post(new Runnable()
     {
       public final void run()
       {
@@ -257,7 +257,7 @@ public class MallProductSelectSkuUI
   {
     AppMethodBeat.i(67023);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.uyi.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.vHb.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(67023);
   }
   
@@ -265,9 +265,9 @@ public class MallProductSelectSkuUI
   {
     AppMethodBeat.i(67018);
     super.onCreate(paramBundle);
-    this.uyi = new f(getContext(), new f.a()
+    this.vHb = new f(getContext(), new f.a()
     {
-      public final void E(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+      public final void D(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
       {
         AppMethodBeat.i(67012);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -276,22 +276,22 @@ public class MallProductSelectSkuUI
           AppMethodBeat.o(67012);
           return;
         }
-        MallProductSelectSkuUI.this.akw(paramAnonymousString);
+        MallProductSelectSkuUI.this.apv(paramAnonymousString);
         AppMethodBeat.o(67012);
       }
     });
-    a.dbi();
-    this.uxz = a.dbj();
-    this.uvI = this.uxz.uvI;
+    a.doQ();
+    this.vGs = a.doR();
+    this.vEB = this.vGs.vEB;
     initView();
-    cE();
+    cL();
     AppMethodBeat.o(67018);
   }
   
   public void onStart()
   {
     AppMethodBeat.i(67019);
-    this.uyi.onStart();
+    this.vHb.onStart();
     super.onStart();
     AppMethodBeat.o(67019);
   }
@@ -299,7 +299,7 @@ public class MallProductSelectSkuUI
   public void onStop()
   {
     AppMethodBeat.i(67020);
-    this.uyi.onStop();
+    this.vHb.onStop();
     super.onStop();
     AppMethodBeat.o(67020);
   }

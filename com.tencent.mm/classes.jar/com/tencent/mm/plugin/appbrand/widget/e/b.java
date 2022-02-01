@@ -13,8 +13,10 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.page.ar;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.am;
+import com.tencent.mm.plugin.appbrand.utils.ab;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -22,38 +24,26 @@ import org.apache.commons.b.a;
 
 public final class b
 {
-  public final com.tencent.mm.plugin.appbrand.page.aa mkl;
-  a mkm;
-  public f mkn;
+  public final aa mMl;
+  a mMm;
+  public f mMn;
   
-  public b(com.tencent.mm.plugin.appbrand.page.aa paramaa)
+  public b(aa paramaa)
   {
-    this.mkl = paramaa;
+    this.mMl = paramaa;
   }
   
-  public static void buB()
-  {
-    AppMethodBeat.i(135504);
-    if (!com.tencent.mm.plugin.appbrand.utils.aa.Be())
-    {
-      RuntimeException localRuntimeException = new RuntimeException("Should be called on main-thread");
-      AppMethodBeat.o(135504);
-      throw localRuntimeException;
-    }
-    AppMethodBeat.o(135504);
-  }
-  
-  private a bux()
+  private a bBu()
   {
     AppMethodBeat.i(135500);
-    if ((this.mkm != null) && (t.aC(this.mkm)))
+    if ((this.mMm != null) && (!a.a(this.mMm)))
     {
-      localObject = this.mkm;
+      localObject = this.mMm;
       AppMethodBeat.o(135500);
       return localObject;
     }
-    this.mkm = null;
-    Object localObject = this.mkl.laW.bkr();
+    this.mMm = null;
+    Object localObject = this.mMl.lCv.brg();
     int i = 0;
     while (i < ((ViewGroup)localObject).getChildCount())
     {
@@ -70,18 +60,72 @@ public final class b
     return null;
   }
   
-  public final boolean buA()
+  public static void bBy()
+  {
+    AppMethodBeat.i(135504);
+    if (!ab.AI())
+    {
+      RuntimeException localRuntimeException = new RuntimeException("Should be called on main-thread");
+      AppMethodBeat.o(135504);
+      throw localRuntimeException;
+    }
+    AppMethodBeat.o(135504);
+  }
+  
+  public final a bBv()
+  {
+    AppMethodBeat.i(135501);
+    ViewGroup localViewGroup = this.mMl.lCv.brg();
+    a locala2 = bBu();
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = new a(this.mMl.getContext());
+      locala1.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
+      {
+        public final void onViewAttachedToWindow(View paramAnonymousView) {}
+        
+        public final void onViewDetachedFromWindow(View paramAnonymousView)
+        {
+          if (paramAnonymousView == b.this.mMm) {
+            b.this.mMm = null;
+          }
+        }
+      });
+      localViewGroup.addView(locala1, -1, -1);
+    }
+    locala1.bringToFront();
+    this.mMm = locala1;
+    AppMethodBeat.o(135501);
+    return locala1;
+  }
+  
+  public final void bBw()
+  {
+    AppMethodBeat.i(135502);
+    com.tencent.mm.plugin.appbrand.widget.actionbar.b localb = this.mMl.bqy();
+    if (localb == null)
+    {
+      AppMethodBeat.o(135502);
+      return;
+    }
+    int i = localb.getTop();
+    wj(localb.getMeasuredHeight() + i);
+    AppMethodBeat.o(135502);
+  }
+  
+  public final boolean bBx()
   {
     boolean bool3 = false;
     boolean bool1 = false;
     AppMethodBeat.i(135503);
-    if (!this.mkl.isRunning())
+    if (!this.mMl.isRunning())
     {
       AppMethodBeat.o(135503);
       return false;
     }
-    buB();
-    a locala = this.mkm;
+    bBy();
+    a locala = this.mMm;
     boolean bool2 = bool3;
     if (locala != null)
     {
@@ -115,76 +159,34 @@ public final class b
         }
       }
     }
-    if ((bool2) && (this.mkl.getRuntime() != null)) {
-      b.a(b.at(this.mkl.getRuntime())).remove(this.mkl);
+    if ((bool2) && (this.mMl.getRuntime() != null)) {
+      b.a(b.at(this.mMl.getRuntime())).remove(this.mMl);
     }
     AppMethodBeat.o(135503);
     return bool2;
   }
   
-  public final a buy()
+  public final void dr(View paramView)
   {
-    AppMethodBeat.i(135501);
-    ViewGroup localViewGroup = this.mkl.laW.bkr();
-    a locala2 = bux();
-    a locala1 = locala2;
-    if (locala2 == null)
+    AppMethodBeat.i(193551);
+    if ((!this.mMl.isRunning()) || (this.mMl.getRuntime() == null))
     {
-      locala1 = new a(this.mkl.getContext());
-      locala1.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
-      {
-        public final void onViewAttachedToWindow(View paramAnonymousView) {}
-        
-        public final void onViewDetachedFromWindow(View paramAnonymousView)
-        {
-          if (paramAnonymousView == b.this.mkm) {
-            b.this.mkm = null;
-          }
-        }
-      });
-      localViewGroup.addView(locala1, -1, -1);
-    }
-    locala1.bringToFront();
-    this.mkm = locala1;
-    AppMethodBeat.o(135501);
-    return locala1;
-  }
-  
-  public final void buz()
-  {
-    AppMethodBeat.i(135502);
-    com.tencent.mm.plugin.appbrand.widget.actionbar.b localb = this.mkl.bjH();
-    if (localb == null)
-    {
-      AppMethodBeat.o(135502);
+      AppMethodBeat.o(193551);
       return;
     }
-    int i = localb.getTop();
-    vs(localb.getMeasuredHeight() + i);
-    AppMethodBeat.o(135502);
-  }
-  
-  public final void dp(View paramView)
-  {
-    AppMethodBeat.i(194547);
-    if ((!this.mkl.isRunning()) || (this.mkl.getRuntime() == null))
-    {
-      AppMethodBeat.o(194547);
-      return;
-    }
-    buB();
-    a locala = buy();
-    buz();
+    bBy();
+    a locala = bBv();
+    bBw();
     paramView.setTag(2131296836, Boolean.TRUE);
     locala.addView(paramView);
-    b.a(b.at(this.mkl.getRuntime())).add(this.mkl);
-    AppMethodBeat.o(194547);
+    b.a(b.at(this.mMl.getRuntime())).add(this.mMl);
+    AppMethodBeat.o(193551);
   }
   
-  public final void vs(int paramInt)
+  public final void wj(int paramInt)
   {
     AppMethodBeat.i(135499);
-    a locala = bux();
+    a locala = bBu();
     if ((locala != null) && ((locala.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)locala.getLayoutParams();
@@ -200,15 +202,17 @@ public final class b
   static final class a
     extends FrameLayout
   {
-    private final Rect jL;
-    private final int[] mkp;
+    private final Rect kK;
+    private final int[] mMp;
+    private boolean mMq;
     
     public a(Context paramContext)
     {
       super();
       AppMethodBeat.i(135493);
-      this.jL = new Rect();
-      this.mkp = new int[2];
+      this.kK = new Rect();
+      this.mMp = new int[2];
+      this.mMq = false;
       setWillNotDraw(true);
       AppMethodBeat.o(135493);
     }
@@ -224,6 +228,22 @@ public final class b
       return paramLayoutParams;
     }
     
+    protected final void onAttachedToWindow()
+    {
+      AppMethodBeat.i(193549);
+      super.onAttachedToWindow();
+      this.mMq = false;
+      AppMethodBeat.o(193549);
+    }
+    
+    protected final void onDetachedFromWindow()
+    {
+      AppMethodBeat.i(193550);
+      super.onDetachedFromWindow();
+      this.mMq = true;
+      AppMethodBeat.o(193550);
+    }
+    
     protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(135497);
@@ -233,16 +253,16 @@ public final class b
         AppMethodBeat.o(135497);
         return;
       }
-      getWindowVisibleDisplayFrame(this.jL);
-      getLocationInWindow(this.mkp);
-      if (ad.getLogLevel() <= 1) {
-        ad.d("MicroMsg.PagePromptViewContainerLayout[keyboard]", "onLayout, WindowVisibleDisplayFrame=%s, location=%s", new Object[] { this.jL, a.toString(this.mkp) });
+      getWindowVisibleDisplayFrame(this.kK);
+      getLocationInWindow(this.mMp);
+      if (ac.getLogLevel() <= 1) {
+        ac.d("MicroMsg.PagePromptViewContainerLayout[keyboard]", "onLayout, WindowVisibleDisplayFrame=%s, location=%s", new Object[] { this.kK, a.toString(this.mMp) });
       }
       paramInt1 = 0;
       while (paramInt1 < getChildCount())
       {
         View localView = getChildAt(paramInt1);
-        paramInt2 = this.mkp[1] + localView.getTop() + localView.getHeight() - this.jL.bottom;
+        paramInt2 = this.mMp[1] + localView.getTop() + localView.getHeight() - this.kK.bottom;
         if (paramInt2 > 0)
         {
           paramInt2 = Math.max(0, localView.getTop() - paramInt2);
@@ -280,12 +300,12 @@ public final class b
   public static final class b
     implements k
   {
-    public final LinkedList<com.tencent.mm.plugin.appbrand.page.aa> mkq;
+    public final LinkedList<aa> mMr;
     
     private b()
     {
       AppMethodBeat.i(164055);
-      this.mkq = new LinkedList();
+      this.mMr = new LinkedList();
       AppMethodBeat.o(164055);
     }
     
@@ -306,7 +326,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e.b
  * JD-Core Version:    0.7.0.1
  */

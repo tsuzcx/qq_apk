@@ -9,13 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
 import java.util.List;
@@ -23,14 +23,14 @@ import java.util.List;
 public final class f
   extends BaseAdapter
 {
-  private static final String rVs;
-  l BoA;
+  private static final String tdk;
+  l CGH;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(81003);
-    rVs = b.aih() + "Game/HvMenu/";
+    tdk = b.aph() + "Game/HvMenu/";
     AppMethodBeat.o(81003);
   }
   
@@ -42,7 +42,7 @@ public final class f
   public final void a(l paraml)
   {
     AppMethodBeat.i(80999);
-    this.BoA = paraml;
+    this.CGH = paraml;
     notifyDataSetChanged();
     AppMethodBeat.o(80999);
   }
@@ -50,12 +50,12 @@ public final class f
   public final int getCount()
   {
     AppMethodBeat.i(81000);
-    if (this.BoA == null)
+    if (this.CGH == null)
     {
       AppMethodBeat.o(81000);
       return 0;
     }
-    int i = this.BoA.size();
+    int i = this.CGH.size();
     AppMethodBeat.o(81000);
     return i;
   }
@@ -70,17 +70,17 @@ public final class f
     AppMethodBeat.i(81001);
     paramView = LayoutInflater.from(this.mContext).inflate(2131494345, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    m localm = (m)this.BoA.FYt.get(paramInt);
+    m localm = (m)this.CGH.Hyi.get(paramInt);
     Object localObject1;
     if ((localm != null) && (localm.getItemId() != -1))
     {
       localObject1 = localm.getTitle().toString();
-      if (!bt.isNullOrNil((String)localObject1))
+      if (!bs.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split("__", 2);
         if (localObject1.length == 1)
         {
-          paramViewGroup.fQp.setText(localObject1[0]);
+          paramViewGroup.fUk.setText(localObject1[0]);
           paramView.setTag(localm);
         }
       }
@@ -89,19 +89,19 @@ public final class f
     {
       AppMethodBeat.o(81001);
       return paramView;
-      paramViewGroup.fQp.setText(localObject1[0]);
+      paramViewGroup.fUk.setText(localObject1[0]);
       localObject1 = localObject1[1];
       if (((String)localObject1).startsWith("http"))
       {
-        Object localObject2 = rVs + g.getMessageDigest(((String)localObject1).getBytes());
+        Object localObject2 = tdk + g.getMessageDigest(((String)localObject1).getBytes());
         c.a locala = new c.a();
-        locala.hjU = true;
-        locala.gjt = ((String)localObject2);
-        localObject2 = locala.azc();
-        a.ayO().a((String)localObject1, paramViewGroup.hg, (c)localObject2);
+        locala.hKx = true;
+        locala.gKe = ((String)localObject2);
+        localObject2 = locala.aFT();
+        a.aFG().a((String)localObject1, paramViewGroup.ig, (c)localObject2);
         break;
       }
-      paramViewGroup.hg.setImageResource(aj.getResources().getIdentifier((String)localObject1, "drawable", aj.getPackageName()));
+      paramViewGroup.ig.setImageResource(ai.getResources().getIdentifier((String)localObject1, "drawable", ai.getPackageName()));
       break;
       paramView.setTag(null);
     }
@@ -109,14 +109,14 @@ public final class f
   
   public final class a
   {
-    TextView fQp;
-    ImageView hg;
+    TextView fUk;
+    ImageView ig;
     
     public a(View paramView)
     {
       AppMethodBeat.i(80998);
-      this.fQp = ((TextView)paramView.findViewById(2131305902));
-      this.hg = ((ImageView)paramView.findViewById(2131300874));
+      this.fUk = ((TextView)paramView.findViewById(2131305902));
+      this.ig = ((ImageView)paramView.findViewById(2131300874));
       AppMethodBeat.o(80998);
     }
   }

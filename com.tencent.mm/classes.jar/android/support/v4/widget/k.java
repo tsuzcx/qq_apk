@@ -20,7 +20,7 @@ final class k
     case 17: 
       localRect1.offset(paramRect.width() + 1, 0);
       localObject1 = null;
-      int k = paramb.I(paramL);
+      int k = paramb.K(paramL);
       localRect2 = new Rect();
       j = 0;
       if (j < k)
@@ -240,7 +240,7 @@ final class k
   
   public static abstract interface b<T, V>
   {
-    public abstract int I(T paramT);
+    public abstract int K(T paramT);
     
     public abstract V get(T paramT, int paramInt);
   }
@@ -248,23 +248,23 @@ final class k
   static final class c<T>
     implements Comparator<T>
   {
-    private final Rect RB = new Rect();
-    private final Rect RC = new Rect();
-    private final boolean RD;
-    private final k.a<T> RE;
+    private final Rect Sw = new Rect();
+    private final Rect Sx = new Rect();
+    private final boolean Sy;
+    private final k.a<T> Sz;
     
     c(boolean paramBoolean, k.a<T> parama)
     {
-      this.RD = paramBoolean;
-      this.RE = parama;
+      this.Sy = paramBoolean;
+      this.Sz = parama;
     }
     
     public final int compare(T paramT1, T paramT2)
     {
-      Rect localRect1 = this.RB;
-      Rect localRect2 = this.RC;
-      this.RE.b(paramT1, localRect1);
-      this.RE.b(paramT2, localRect2);
+      Rect localRect1 = this.Sw;
+      Rect localRect2 = this.Sx;
+      this.Sz.b(paramT1, localRect1);
+      this.Sz.b(paramT2, localRect2);
       if (localRect1.top < localRect2.top) {}
       do
       {
@@ -283,12 +283,12 @@ final class k
                 if (localRect1.left >= localRect2.left) {
                   break;
                 }
-              } while (!this.RD);
+              } while (!this.Sy);
               return 1;
               if (localRect1.left <= localRect2.left) {
                 break;
               }
-            } while (this.RD);
+            } while (this.Sy);
             return 1;
           } while (localRect1.bottom < localRect2.bottom);
           if (localRect1.bottom > localRect2.bottom) {
@@ -297,12 +297,12 @@ final class k
           if (localRect1.right >= localRect2.right) {
             break;
           }
-        } while (!this.RD);
+        } while (!this.Sy);
         return 1;
         if (localRect1.right <= localRect2.right) {
           break;
         }
-      } while (this.RD);
+      } while (this.Sy);
       return 1;
       return 0;
     }
@@ -310,7 +310,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.widget.k
  * JD-Core Version:    0.7.0.1
  */

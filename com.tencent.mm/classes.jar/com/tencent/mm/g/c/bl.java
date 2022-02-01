@@ -8,13 +8,13 @@ public abstract class bl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elb = "content".hashCode();
-  private static final int exK = "productID".hashCode();
+  private static final int eCo = "designerIDAndType".hashCode();
+  private static final int eng = "content".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ekE = true;
-  private boolean exk = true;
+  private boolean eCn = true;
+  private boolean emI = true;
   public byte[] field_content;
-  public String field_productID;
+  public String field_designerIDAndType;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class bl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (exK != k) {
+      if (eCo != k) {
         break label65;
       }
-      this.field_productID = paramCursor.getString(i);
-      this.exk = true;
+      this.field_designerIDAndType = paramCursor.getString(i);
+      this.eCn = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class bl
       break label20;
       break;
       label65:
-      if (elb == k) {
+      if (eng == k) {
         this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class bl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.exk) {
-      localContentValues.put("productID", this.field_productID);
+    if (this.eCn) {
+      localContentValues.put("designerIDAndType", this.field_designerIDAndType);
     }
-    if (this.ekE) {
+    if (this.emI) {
       localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {

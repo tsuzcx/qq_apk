@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jr
   extends b
 {
-  public a dnR;
+  public a dli;
   
   public jr()
   {
@@ -15,21 +15,22 @@ public final class jr
   
   private jr(byte paramByte)
   {
-    AppMethodBeat.i(19814);
-    this.dnR = new a();
-    this.ESR = false;
+    AppMethodBeat.i(121032);
+    this.dli = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19814);
+    AppMethodBeat.o(121032);
   }
   
   public static final class a
   {
-    public byte[] dnS;
+    public String dlj;
+    public String dlk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.jr
  * JD-Core Version:    0.7.0.1
  */

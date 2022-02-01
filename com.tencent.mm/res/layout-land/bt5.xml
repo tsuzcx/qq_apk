@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ho5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ho6" android:background="@raw/live_anchor_top_shadow" android:layout_width="fill_parent" android:layout_height="@dimen/bu" android:layout_alignParentTop="true" />
+    <View android:id="@id/ho4" android:background="@raw/live_anchor_bottom_shadow" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

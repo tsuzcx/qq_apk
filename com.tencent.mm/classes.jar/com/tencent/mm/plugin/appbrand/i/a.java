@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class a
@@ -32,7 +32,7 @@ public final class a
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
+      ac.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
       AppMethodBeat.o(139381);
     }
   }
@@ -74,14 +74,14 @@ public final class a
   
   public static void h(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(195033);
+    AppMethodBeat.i(206667);
     c(paramJSONObject, "abtestXWebCameraEnable", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(195033);
+    AppMethodBeat.o(206667);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class VoiceReCreatePromptUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private View zeX = null;
+  private View AxD = null;
   
   public int getLayoutId()
   {
@@ -23,9 +23,9 @@ public class VoiceReCreatePromptUI
   {
     AppMethodBeat.i(29904);
     paramView = new Intent(this, VoiceCreateUI.class);
-    paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.adn(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramView.lS(0));
+    paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.aeD(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramView.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(29904);
@@ -36,8 +36,8 @@ public class VoiceReCreatePromptUI
     AppMethodBeat.i(29902);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.zeX = findViewById(2131303910);
-    this.zeX.setOnClickListener(this);
+    this.AxD = findViewById(2131303910);
+    this.AxD.setOnClickListener(this);
     AppMethodBeat.o(29902);
   }
   

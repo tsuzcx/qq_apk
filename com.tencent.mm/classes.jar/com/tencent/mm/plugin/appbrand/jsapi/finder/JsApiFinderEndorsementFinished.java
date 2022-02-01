@@ -38,7 +38,7 @@ public final class JsApiFinderEndorsementFinished
       this.username = paramString;
     }
     
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(163943);
       AppMethodBeat.o(163943);
@@ -61,7 +61,7 @@ public final class JsApiFinderEndorsementFinished
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.finder.JsApiFinderEndorsementFinished
  * JD-Core Version:    0.7.0.1
  */

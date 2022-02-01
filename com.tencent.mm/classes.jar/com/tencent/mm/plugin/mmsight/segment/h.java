@@ -10,107 +10,107 @@ import com.tencent.mm.compatible.h.c;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ah.a;
 
 public final class h
   implements e.a
 {
-  private static int hBV = -1;
-  long bxw;
-  int dwp;
-  long gnO;
-  int gnX;
-  c gqX;
-  int gqY;
-  private int hBG;
-  private int hBH;
-  private int hBI;
-  private int hBJ;
-  private int hBK;
-  private int hBL;
-  private int hBM;
-  private int hBN;
-  VideoTransPara hBR;
-  private int hBS;
-  String hBT;
-  private MediaFormat hBW;
+  private static int icw = -1;
+  long bvf;
+  int duc;
+  int gOI;
+  long gOz;
+  c gRF;
+  int gRG;
+  private int ich;
+  private int ici;
+  private int icj;
+  private int ick;
+  private int icl;
+  private int icm;
+  private int icn;
+  private int ico;
+  VideoTransPara ics;
+  private int ict;
+  String icu;
+  private MediaFormat icx;
   private Object lock;
-  a tGi;
-  e tGj;
-  private boolean tGk;
+  a uOD;
+  e uOE;
+  private boolean uOF;
   
   public h()
   {
     AppMethodBeat.i(107657);
-    this.bxw = -1L;
-    this.gnO = -1L;
-    this.hBS = 0;
-    this.tGk = false;
+    this.bvf = -1L;
+    this.gOz = -1L;
+    this.ict = 0;
+    this.uOF = false;
     this.lock = new byte[0];
-    this.gnX = -1;
+    this.gOI = -1;
     AppMethodBeat.o(107657);
   }
   
   public static int getDecoderType()
   {
     AppMethodBeat.i(107658);
-    int i = CaptureMMProxy.getInstance().getInt(ae.a.Fmz, -1);
+    int i = CaptureMMProxy.getInstance().getInt(ah.a.GKo, -1);
     if (i != -1)
     {
       if (i == 1) {
-        if (d.lf(21)) {
-          hBV = 2;
+        if (d.kZ(21)) {
+          icw = 2;
         }
       }
       for (;;)
       {
-        i = hBV;
+        i = icw;
         AppMethodBeat.o(107658);
         return i;
-        hBV = 1;
+        icw = 1;
         continue;
         if (i == 2) {
-          hBV = 1;
+          icw = 1;
         } else {
-          hBV = 3;
+          icw = 3;
         }
       }
     }
-    if (hBV != -1)
+    if (icw != -1)
     {
-      i = hBV;
+      i = icw;
       AppMethodBeat.o(107658);
       return i;
     }
-    i = ae.fFD.fEg;
+    i = ae.fJk.fHN;
     if (i != -1) {
       if (i == 1) {
-        hBV = 1;
+        icw = 1;
       }
     }
     for (;;)
     {
-      i = hBV;
+      i = icw;
       AppMethodBeat.o(107658);
       return i;
       if (i == 2)
       {
-        if (d.lf(21)) {
-          hBV = 2;
+        if (d.kZ(21)) {
+          icw = 2;
         } else {
-          hBV = 1;
+          icw = 1;
         }
       }
       else if (i == 3)
       {
         do
         {
-          hBV = 3;
+          icw = 3;
           break;
-        } while (!d.lf(bt.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightSegCutMinApiLevel"), 21)));
-        hBV = 1;
+        } while (!d.kZ(bs.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightSegCutMinApiLevel"), 21)));
+        icw = 1;
       }
     }
   }
@@ -118,10 +118,10 @@ public final class h
   private static Point v(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(107661);
-    ad.d("MicroMsg.MediaCodecFFMpegTranscoder", "scale() called with: decoderOutputWidth = [" + paramInt1 + "], decoderOutputHeight = [" + paramInt2 + "], specWidth = [" + paramInt3 + "], specHeight = [" + paramInt4 + "]");
+    ac.d("MicroMsg.MediaCodecFFMpegTranscoder", "scale() called with: decoderOutputWidth = [" + paramInt1 + "], decoderOutputHeight = [" + paramInt2 + "], specWidth = [" + paramInt3 + "], specHeight = [" + paramInt4 + "]");
     if ((paramInt1 <= paramInt3) && (paramInt2 <= paramInt4))
     {
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, small or equal to spec size");
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, small or equal to spec size");
       AppMethodBeat.o(107661);
       return null;
     }
@@ -131,13 +131,13 @@ public final class h
     int j = Math.min(paramInt3, paramInt4);
     if ((m % 16 == 0) && (Math.abs(m - i) < 16) && (k % 16 == 0) && (Math.abs(k - j) < 16))
     {
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, same len divide by 16, no need scale");
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, same len divide by 16, no need scale");
       AppMethodBeat.o(107661);
       return null;
     }
     if ((m / 2 == i) && (k / 2 == j))
     {
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, double ratio");
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, double ratio");
       paramInt4 = paramInt1 / 2;
       paramInt3 = paramInt2 / 2;
       paramInt1 = paramInt4;
@@ -156,7 +156,7 @@ public final class h
     k /= 2;
     if ((m % 16 == 0) && (Math.abs(m - i) < 16) && (k % 16 == 0) && (Math.abs(k - j) < 16))
     {
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, double ratio divide by 16");
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, double ratio divide by 16");
       paramInt4 = paramInt1 / 2;
       paramInt3 = paramInt2 / 2;
       paramInt1 = paramInt4;
@@ -190,7 +190,7 @@ public final class h
       if (paramInt1 % 2 != 0) {
         paramInt2 = paramInt1 + 1;
       }
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, outputsize: %s %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "calc scale, outputsize: %s %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       localPoint.x = paramInt2;
       localPoint.y = paramInt3;
       AppMethodBeat.o(107661);
@@ -202,157 +202,157 @@ public final class h
     }
   }
   
-  public final void br(byte[] paramArrayOfByte)
+  public final void bq(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(107663);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "onYuvDataImp error data is null!!");
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "onYuvDataImp error data is null!!");
       AppMethodBeat.o(107663);
       return;
     }
-    Point localPoint1 = this.tGj.aDh();
-    this.hBG = localPoint1.x;
-    this.hBH = localPoint1.y;
+    Point localPoint1 = this.uOE.aJY();
+    this.ich = localPoint1.x;
+    this.ici = localPoint1.y;
     Point localPoint2;
-    if ((this.hBN <= 0) || (this.hBM <= 0))
+    if ((this.ico <= 0) || (this.icn <= 0))
     {
-      localPoint2 = v(this.hBG, this.hBH, this.hBI, this.hBJ);
+      localPoint2 = v(this.ich, this.ici, this.icj, this.ick);
       if (localPoint2 == null) {
         break label533;
       }
-      this.hBM = localPoint2.x;
+      this.icn = localPoint2.x;
     }
     int k;
     int m;
     boolean bool;
-    for (this.hBN = localPoint2.y;; this.hBN = this.hBH)
+    for (this.ico = localPoint2.y;; this.ico = this.ici)
     {
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "scaleYuvTargetWidth: %s, scaleYuvTargetHeight: %s, srcWidth: %s, srcHeight: %s", new Object[] { Integer.valueOf(this.hBM), Integer.valueOf(this.hBN), Integer.valueOf(this.hBG), Integer.valueOf(this.hBH) });
-      long l = bt.GC();
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "scaleYuvTargetWidth: %s, scaleYuvTargetHeight: %s, srcWidth: %s, srcHeight: %s", new Object[] { Integer.valueOf(this.icn), Integer.valueOf(this.ico), Integer.valueOf(this.ich), Integer.valueOf(this.ici) });
+      long l = bs.Gn();
       int i = 0;
       int j = 0;
-      if (this.hBW != null)
+      if (this.icx != null)
       {
-        k = this.hBW.getInteger("width");
-        m = this.hBW.getInteger("height");
-        if (this.hBK > 0)
+        k = this.icx.getInteger("width");
+        m = this.icx.getInteger("height");
+        if (this.icl > 0)
         {
           i = k;
           j = m;
-          if (this.hBL > 0) {}
+          if (this.icm > 0) {}
         }
         else
         {
-          localPoint2 = v(k, m, this.hBI, this.hBJ);
+          localPoint2 = v(k, m, this.icj, this.ick);
           if (localPoint2 == null) {
             break;
           }
-          this.hBK = localPoint2.x;
-          this.hBL = localPoint2.y;
+          this.icl = localPoint2.x;
+          this.icm = localPoint2.y;
           bool = true;
           if (bool)
           {
-            this.hBM = this.hBK;
-            this.hBN = this.hBL;
+            this.icn = this.icl;
+            this.ico = this.icm;
           }
-          ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "videoTargetWidth: %s, videoTargetHeight: %s, initWidth: %s, initHeight: %s, videoNeedScale: %s", new Object[] { Integer.valueOf(this.hBK), Integer.valueOf(this.hBL), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
+          ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "videoTargetWidth: %s, videoTargetHeight: %s, initWidth: %s, initHeight: %s, videoNeedScale: %s", new Object[] { Integer.valueOf(this.icl), Integer.valueOf(this.icm), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) });
           j = m;
           i = k;
         }
       }
-      this.hBS = this.tGj.aDi();
-      i = MP4MuxerJNI.writeYuvDataForSegment(paramArrayOfByte, localPoint1.x, localPoint1.y, this.hBM, this.hBN, this.hBS, i, j);
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "writeYuvDataForSegment used %sms", new Object[] { Long.valueOf(bt.aS(l)) });
+      this.ict = this.uOE.aJZ();
+      i = MP4MuxerJNI.writeYuvDataForSegment(paramArrayOfByte, localPoint1.x, localPoint1.y, this.icn, this.ico, this.ict, i, j);
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "writeYuvDataForSegment used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
       if (i < 0) {
-        ad.e("MicroMsg.MediaCodecFFMpegTranscoder", "writeYuvDataForSegment error: %s", new Object[] { Integer.valueOf(i) });
+        ac.e("MicroMsg.MediaCodecFFMpegTranscoder", "writeYuvDataForSegment error: %s", new Object[] { Integer.valueOf(i) });
       }
-      if (this.tGi == null)
+      if (this.uOD == null)
       {
-        MP4MuxerJNI.initH264Encoder(this.hBK, this.hBL, this.hBR.fps, this.hBR.videoBitrate, this.hBR.hbY, 8, this.hBR.hbX, 23.0F, 0, 51);
-        this.tGi = new a((byte)0);
-        com.tencent.e.h.Iye.aS(this.tGi);
-        ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "initAndStartEncoder");
+        MP4MuxerJNI.initH264Encoder(this.icl, this.icm, this.ics.fps, this.ics.videoBitrate, this.ics.hCA, 8, this.ics.hCz, 23.0F, 0, 51);
+        this.uOD = new a((byte)0);
+        com.tencent.e.h.JZN.aV(this.uOD);
+        ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "initAndStartEncoder");
       }
       AppMethodBeat.o(107663);
       return;
       label533:
-      this.hBM = this.hBG;
+      this.icn = this.ich;
     }
     if ((Math.abs(m - localPoint1.y) > 0) && (k == localPoint1.x)) {
-      this.hBK = k;
+      this.icl = k;
     }
-    for (this.hBL = m;; this.hBL = localPoint1.y)
+    for (this.icm = m;; this.icm = localPoint1.y)
     {
       bool = false;
       break;
-      this.hBK = localPoint1.x;
+      this.icl = localPoint1.x;
     }
   }
   
   public final void jdMethod_do(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(107660);
-    ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "registerDesiredSize: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.hBI = paramInt1;
-    this.hBJ = paramInt2;
+    ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "registerDesiredSize: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.icj = paramInt1;
+    this.ick = paramInt2;
     AppMethodBeat.o(107660);
   }
   
-  public final int m(MediaFormat paramMediaFormat)
+  public final int h(MediaFormat paramMediaFormat)
   {
     AppMethodBeat.i(107659);
-    ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "initDecoder, format: %s, filePath: %s", new Object[] { paramMediaFormat, this.hBT });
-    this.hBW = paramMediaFormat;
+    ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "initDecoder, format: %s, filePath: %s", new Object[] { paramMediaFormat, this.icu });
+    this.icx = paramMediaFormat;
     int i = getDecoderType();
     if (i == 1)
     {
-      this.tGj = new i(this.gqX, paramMediaFormat, this.gqY);
-      this.tGk = false;
+      this.uOE = new i(this.gRF, paramMediaFormat, this.gRG);
+      this.uOF = false;
     }
     for (;;)
     {
-      if (this.tGj == null)
+      if (this.uOE == null)
       {
-        ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "use default config");
-        this.tGj = new i(this.gqX, paramMediaFormat, this.gqY);
-        this.tGk = false;
+        ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "use default config");
+        this.uOE = new i(this.gRF, paramMediaFormat, this.gRG);
+        this.uOF = false;
       }
-      int j = this.tGj.q(this.hBT, this.bxw, this.gnO);
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "init decoder ret: %s", new Object[] { Integer.valueOf(j) });
+      int j = this.uOE.n(this.icu, this.bvf, this.gOz);
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "init decoder ret: %s", new Object[] { Integer.valueOf(j) });
       i = j;
       if (j < 0) {
-        if (hBV != 1)
+        if (icw != 1)
         {
           i = j;
-          if (hBV != 2) {}
+          if (icw != 2) {}
         }
         else
         {
-          ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "init mediaCodecDecoder failed, try ffmepg");
+          ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "init mediaCodecDecoder failed, try ffmepg");
         }
       }
       try
       {
-        this.tGj.stop();
-        this.tGj = null;
+        this.uOE.stop();
+        this.uOE = null;
         label193:
-        this.tGj = new b();
-        this.tGk = true;
-        hBV = 3;
-        i = this.tGj.q(this.hBT, this.bxw, this.gnO);
-        this.tGj.a(this);
-        ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "init finish, ret: %d, decoderType: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(hBV) });
+        this.uOE = new b();
+        this.uOF = true;
+        icw = 3;
+        i = this.uOE.n(this.icu, this.bvf, this.gOz);
+        this.uOE.a(this);
+        ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "init finish, ret: %d, decoderType: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(icw) });
         AppMethodBeat.o(107659);
         return i;
         if (i == 2)
         {
-          this.tGj = new j(this.gqX, paramMediaFormat, this.gqY);
-          this.tGk = false;
+          this.uOE = new j(this.gRF, paramMediaFormat, this.gRG);
+          this.uOF = false;
           continue;
         }
-        this.tGj = new b();
-        this.tGk = true;
+        this.uOE = new b();
+        this.uOF = true;
       }
       catch (Exception paramMediaFormat)
       {
@@ -364,23 +364,23 @@ public final class h
   public final void release()
   {
     AppMethodBeat.i(107662);
-    ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "release, decoderType: %d", new Object[] { Integer.valueOf(hBV) });
+    ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "release, decoderType: %d", new Object[] { Integer.valueOf(icw) });
     try
     {
-      if (this.tGj != null) {
-        this.tGj.stop();
+      if (this.uOE != null) {
+        this.uOE.stop();
       }
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MediaCodecFFMpegTranscoder", "release error: %s", new Object[] { localException.getMessage() });
+      ac.e("MicroMsg.MediaCodecFFMpegTranscoder", "release error: %s", new Object[] { localException.getMessage() });
       return;
     }
     finally
     {
       MP4MuxerJNI.releaseDataBuf(0);
-      hBV = -1;
+      icw = -1;
       AppMethodBeat.o(107662);
     }
   }
@@ -388,15 +388,15 @@ public final class h
   final class a
     extends com.tencent.e.i.b
   {
-    Object gDG;
-    int gDr;
-    volatile int gqQ;
-    boolean hCa;
+    volatile int gRy;
+    int hdS;
+    Object heh;
+    boolean icB;
     
     private a()
     {
       AppMethodBeat.i(107655);
-      this.gDG = new Object();
+      this.heh = new Object();
       AppMethodBeat.o(107655);
     }
     
@@ -408,32 +408,32 @@ public final class h
     public final void run()
     {
       AppMethodBeat.i(107656);
-      if (this.gDr == -1)
+      if (this.hdS == -1)
       {
-        this.gDr = Process.myTid();
+        this.hdS = Process.myTid();
         Process.setThreadPriority(Process.myTid(), -2);
-        ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "encodeTid: %s", new Object[] { Integer.valueOf(this.gDr) });
+        ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "encodeTid: %s", new Object[] { Integer.valueOf(this.hdS) });
       }
-      this.gqQ = 0;
+      this.gRy = 0;
       for (;;)
       {
         int i;
-        synchronized (this.gDG)
+        synchronized (this.heh)
         {
-          if (this.hCa) {
+          if (this.icB) {
             break label193;
           }
-          l = bt.GC();
-          ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "try trigger encode");
-          i = MP4MuxerJNI.triggerEncodeForSegment(Math.max(0, this.gqQ), false);
-          ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "ing: trigger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(bt.aS(l)), Integer.valueOf(this.gqQ), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
-          int j = this.gqQ;
+          l = bs.Gn();
+          ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "try trigger encode");
+          i = MP4MuxerJNI.triggerEncodeForSegment(Math.max(0, this.gRy), false);
+          ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "ing: trigger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(bs.aO(l)), Integer.valueOf(this.gRy), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
+          int j = this.gRy;
           if (i != j) {}
         }
         try
         {
           Thread.sleep(20L);
-          this.gqQ = i;
+          this.gRy = i;
           continue;
           localObject2 = finally;
           AppMethodBeat.o(107656);
@@ -443,14 +443,14 @@ public final class h
         {
           for (;;)
           {
-            ad.e("MicroMsg.MediaCodecFFMpegTranscoder", "thread sleep error");
+            ac.e("MicroMsg.MediaCodecFFMpegTranscoder", "thread sleep error");
           }
         }
       }
       label193:
-      long l = bt.GC();
-      this.gqQ = MP4MuxerJNI.triggerEncodeForSegment(this.gqQ, true);
-      ad.i("MicroMsg.MediaCodecFFMpegTranscoder", "end: trigger encode use %dms, curEncode index %d, threadId: %s", new Object[] { Long.valueOf(bt.aS(l)), Integer.valueOf(this.gqQ), Long.valueOf(Thread.currentThread().getId()) });
+      long l = bs.Gn();
+      this.gRy = MP4MuxerJNI.triggerEncodeForSegment(this.gRy, true);
+      ac.i("MicroMsg.MediaCodecFFMpegTranscoder", "end: trigger encode use %dms, curEncode index %d, threadId: %s", new Object[] { Long.valueOf(bs.aO(l)), Integer.valueOf(this.gRy), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(107656);
     }
   }

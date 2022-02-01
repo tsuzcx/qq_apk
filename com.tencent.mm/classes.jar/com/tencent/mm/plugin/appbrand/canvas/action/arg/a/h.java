@@ -9,21 +9,21 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleAction
 public final class h
   extends a<BaseDrawActionArg>
 {
-  private static h iZL;
+  private static h jzY;
   
   static
   {
     AppMethodBeat.i(145329);
-    iZL = new h();
+    jzY = new h();
     AppMethodBeat.o(145329);
   }
   
-  public static h aSY()
+  public static h aZX()
   {
-    return iZL;
+    return jzY;
   }
   
-  public final <T> T Fs(String paramString)
+  public final <T> T Jw(String paramString)
   {
     AppMethodBeat.i(145328);
     Object localObject = null;
@@ -45,7 +45,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class m
   extends bo<f>
@@ -15,13 +15,13 @@ public class m
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78545);
-    ad.i("MicroMsg.JsApiCloseWindow", "invokeInOwn");
-    ((f)parama.bZU).elb();
+    ac.i("MicroMsg.JsApiCloseWindow", "invokeInOwn");
+    ((f)parama.bWR).eAx();
     parama.a("", null);
     AppMethodBeat.o(78545);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

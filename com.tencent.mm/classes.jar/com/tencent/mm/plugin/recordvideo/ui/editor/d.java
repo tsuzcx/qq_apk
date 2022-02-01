@@ -6,31 +6,32 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "fakeLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "getFakeLayer", "()Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "setFakeLayer", "(Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;)V", "imageVideoView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "getImageVideoView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "setImageVideoView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;)V", "isMute", "", "loading", "Landroid/widget/ProgressBar;", "getLoading", "()Landroid/widget/ProgressBar;", "setLoading", "(Landroid/widget/ProgressBar;)V", "videoItem", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "checkResumeLocalVideo", "getCurPos", "", "getImageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "hideLoading", "", "initView", "isPlaying", "isShowLoading", "onUIResume", "pause", "play", "item", "sessionId", "resume", "storyVideoItem", "setMute", "mute", "showLoading", "stop", "Companion", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "fakeLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "getFakeLayer", "()Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "setFakeLayer", "(Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;)V", "imageVideoView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "getImageVideoView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "setImageVideoView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;)V", "isMute", "", "loading", "Landroid/widget/ProgressBar;", "getLoading", "()Landroid/widget/ProgressBar;", "setLoading", "(Landroid/widget/ProgressBar;)V", "videoItem", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "checkResumeLocalVideo", "getCurPos", "", "getImageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "hideLoading", "", "initView", "isPlaying", "isShowLoading", "onUIResume", "pause", "play", "item", "sessionId", "resume", "storyVideoItem", "setMute", "mute", "showLoading", "stop", "Companion", "plugin-recordvideo_release"})
 public final class d
   extends RelativeLayout
 {
   private static final String TAG = "MicroMsg.Story.ImageFakeVideoView";
-  public static final a vsd;
-  private boolean fqj;
-  public ProgressBar kuP;
-  public FakeVideoViewLayer rTL;
-  public StoryFakeVideoPlayView vsb;
-  private com.tencent.mm.plugin.recordvideo.background.d vsc;
+  public static final d.a wCe;
+  private boolean ftN;
+  public ProgressBar kWd;
+  public FakeVideoViewLayer tbD;
+  public StoryFakeVideoPlayView wCc;
+  private e wCd;
   
   static
   {
     AppMethodBeat.i(76029);
-    vsd = new a((byte)0);
+    wCe = new d.a((byte)0);
     TAG = "MicroMsg.Story.ImageFakeVideoView";
     AppMethodBeat.o(76029);
   }
@@ -42,13 +43,13 @@ public final class d
     LayoutInflater.from(getContext()).inflate(2131495700, (ViewGroup)this);
     paramContext = findViewById(2131300971);
     k.g(paramContext, "findViewById(R.id.imagevideoview)");
-    this.vsb = ((StoryFakeVideoPlayView)paramContext);
+    this.wCc = ((StoryFakeVideoPlayView)paramContext);
     paramContext = findViewById(2131299758);
     k.g(paramContext, "findViewById(R.id.fakelayer)");
-    this.rTL = ((FakeVideoViewLayer)paramContext);
+    this.tbD = ((FakeVideoViewLayer)paramContext);
     paramContext = findViewById(2131306352);
     k.g(paramContext, "findViewById(R.id.video_loading)");
-    this.kuP = ((ProgressBar)paramContext);
+    this.kWd = ((ProgressBar)paramContext);
     AppMethodBeat.o(76028);
   }
   
@@ -56,10 +57,10 @@ public final class d
   {
     AppMethodBeat.i(76021);
     ArrayList localArrayList = new ArrayList();
-    a locala = (a)new acq();
-    Object localObject1 = this.vsc;
+    a locala = (a)new adp();
+    Object localObject1 = this.wCd;
     if (localObject1 != null) {}
-    for (localObject1 = ((com.tencent.mm.plugin.recordvideo.background.d)localObject1).field_baseItemData;; localObject1 = null)
+    for (localObject1 = ((e)localObject1).field_baseItemData;; localObject1 = null)
     {
       try
       {
@@ -70,14 +71,14 @@ public final class d
       {
         for (;;)
         {
-          ad.l("safeParser", "", new Object[] { localException });
+          ac.l("safeParser", "", new Object[] { localException });
           Object localObject2 = null;
         }
       }
-      localObject1 = (acq)localObject1;
+      localObject1 = (adp)localObject1;
       if (localObject1 != null)
       {
-        localObject1 = ((acq)localObject1).Ddj;
+        localObject1 = ((adp)localObject1).Ewp;
         if (localObject1 != null) {
           localArrayList.addAll((Collection)localObject1);
         }
@@ -87,69 +88,69 @@ public final class d
     }
   }
   
-  public final void a(com.tencent.mm.plugin.recordvideo.background.d paramd)
+  public final void a(e parame)
   {
     AppMethodBeat.i(76023);
-    k.h(paramd, "item");
-    this.vsc = paramd;
-    ad.i(TAG, "LogStory: play fake video");
-    paramd = this.rTL;
-    if (paramd == null) {
-      k.aPZ("fakeLayer");
+    k.h(parame, "item");
+    this.wCd = parame;
+    ac.i(TAG, "LogStory: play fake video");
+    parame = this.tbD;
+    if (parame == null) {
+      k.aVY("fakeLayer");
     }
-    paramd.setVisibility(0);
-    paramd = this.vsc;
-    if (paramd != null)
+    parame.setVisibility(0);
+    parame = this.wCd;
+    if (parame != null)
     {
-      FakeVideoViewLayer localFakeVideoViewLayer = this.rTL;
+      FakeVideoViewLayer localFakeVideoViewLayer = this.tbD;
       if (localFakeVideoViewLayer == null) {
-        k.aPZ("fakeLayer");
+        k.aVY("fakeLayer");
       }
-      localFakeVideoViewLayer.setFakeVideoInfo(paramd);
+      localFakeVideoViewLayer.setFakeVideoInfo(parame);
       setAlpha(0.0F);
-      paramd = this.vsb;
-      if (paramd == null) {
-        k.aPZ("imageVideoView");
+      parame = this.wCc;
+      if (parame == null) {
+        k.aVY("imageVideoView");
       }
-      paramd.setCallback((StoryFakeVideoPlayView.a)new b(this));
-      paramd = this.vsb;
-      if (paramd == null) {
-        k.aPZ("imageVideoView");
+      parame.setCallback((StoryFakeVideoPlayView.a)new b(this));
+      parame = this.wCc;
+      if (parame == null) {
+        k.aVY("imageVideoView");
       }
-      paramd.ai(getImageList());
+      parame.au(getImageList());
     }
     AppMethodBeat.o(76023);
   }
   
-  public final void b(com.tencent.mm.plugin.recordvideo.background.d paramd)
+  public final void b(e parame)
   {
     AppMethodBeat.i(76024);
-    ad.i(TAG, "resume");
-    ad.i(TAG, "checkResumeLocalVideo");
-    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.vsb;
+    ac.i(TAG, "resume");
+    ac.i(TAG, "checkResumeLocalVideo");
+    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.wCc;
     if (localStoryFakeVideoPlayView == null) {
-      k.aPZ("imageVideoView");
+      k.aVY("imageVideoView");
     }
-    if (localStoryFakeVideoPlayView.vsr)
+    if (localStoryFakeVideoPlayView.wCr)
     {
-      localStoryFakeVideoPlayView = this.vsb;
+      localStoryFakeVideoPlayView = this.wCc;
       if (localStoryFakeVideoPlayView == null) {
-        k.aPZ("imageVideoView");
+        k.aVY("imageVideoView");
       }
       localStoryFakeVideoPlayView.resume();
     }
     for (int i = 1; i != 0; i = 0)
     {
-      paramd = this.rTL;
-      if (paramd == null) {
-        k.aPZ("fakeLayer");
+      parame = this.tbD;
+      if (parame == null) {
+        k.aVY("fakeLayer");
       }
-      paramd.oC(this.fqj);
+      parame.pA(this.ftN);
       AppMethodBeat.o(76024);
       return;
     }
-    if (paramd != null) {
-      a(paramd);
+    if (parame != null) {
+      a(parame);
     }
     AppMethodBeat.o(76024);
   }
@@ -157,9 +158,9 @@ public final class d
   public final int getCurPos()
   {
     AppMethodBeat.i(76025);
-    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.vsb;
+    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.wCc;
     if (localStoryFakeVideoPlayView == null) {
-      k.aPZ("imageVideoView");
+      k.aVY("imageVideoView");
     }
     int i = localStoryFakeVideoPlayView.getCurPos();
     AppMethodBeat.o(76025);
@@ -169,9 +170,9 @@ public final class d
   public final FakeVideoViewLayer getFakeLayer()
   {
     AppMethodBeat.i(76017);
-    FakeVideoViewLayer localFakeVideoViewLayer = this.rTL;
+    FakeVideoViewLayer localFakeVideoViewLayer = this.tbD;
     if (localFakeVideoViewLayer == null) {
-      k.aPZ("fakeLayer");
+      k.aVY("fakeLayer");
     }
     AppMethodBeat.o(76017);
     return localFakeVideoViewLayer;
@@ -180,9 +181,9 @@ public final class d
   public final StoryFakeVideoPlayView getImageVideoView()
   {
     AppMethodBeat.i(76015);
-    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.vsb;
+    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.wCc;
     if (localStoryFakeVideoPlayView == null) {
-      k.aPZ("imageVideoView");
+      k.aVY("imageVideoView");
     }
     AppMethodBeat.o(76015);
     return localStoryFakeVideoPlayView;
@@ -191,9 +192,9 @@ public final class d
   public final ProgressBar getLoading()
   {
     AppMethodBeat.i(76019);
-    ProgressBar localProgressBar = this.kuP;
+    ProgressBar localProgressBar = this.kWd;
     if (localProgressBar == null) {
-      k.aPZ("loading");
+      k.aVY("loading");
     }
     AppMethodBeat.o(76019);
     return localProgressBar;
@@ -202,11 +203,11 @@ public final class d
   public final boolean isPlaying()
   {
     AppMethodBeat.i(76022);
-    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.vsb;
+    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.wCc;
     if (localStoryFakeVideoPlayView == null) {
-      k.aPZ("imageVideoView");
+      k.aVY("imageVideoView");
     }
-    if (localStoryFakeVideoPlayView.vsn == StoryFakeVideoPlayView.c.vsv)
+    if (localStoryFakeVideoPlayView.wCn == StoryFakeVideoPlayView.c.wCv)
     {
       AppMethodBeat.o(76022);
       return true;
@@ -218,8 +219,8 @@ public final class d
   public final void onUIResume()
   {
     AppMethodBeat.i(76027);
-    ad.i(TAG, "onUIResume");
-    b(this.vsc);
+    ac.i(TAG, "onUIResume");
+    b(this.wCd);
     AppMethodBeat.o(76027);
   }
   
@@ -227,7 +228,7 @@ public final class d
   {
     AppMethodBeat.i(76018);
     k.h(paramFakeVideoViewLayer, "<set-?>");
-    this.rTL = paramFakeVideoViewLayer;
+    this.tbD = paramFakeVideoViewLayer;
     AppMethodBeat.o(76018);
   }
   
@@ -235,7 +236,7 @@ public final class d
   {
     AppMethodBeat.i(76016);
     k.h(paramStoryFakeVideoPlayView, "<set-?>");
-    this.vsb = paramStoryFakeVideoPlayView;
+    this.wCc = paramStoryFakeVideoPlayView;
     AppMethodBeat.o(76016);
   }
   
@@ -243,46 +244,43 @@ public final class d
   {
     AppMethodBeat.i(76020);
     k.h(paramProgressBar, "<set-?>");
-    this.kuP = paramProgressBar;
+    this.kWd = paramProgressBar;
     AppMethodBeat.o(76020);
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    this.fqj = paramBoolean;
+    this.ftN = paramBoolean;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(76026);
-    Object localObject = this.rTL;
+    Object localObject = this.tbD;
     if (localObject == null) {
-      k.aPZ("fakeLayer");
+      k.aVY("fakeLayer");
     }
-    ((FakeVideoViewLayer)localObject).diG();
-    localObject = this.vsb;
+    ((FakeVideoViewLayer)localObject).dwz();
+    localObject = this.wCc;
     if (localObject == null) {
-      k.aPZ("imageVideoView");
+      k.aVY("imageVideoView");
     }
     ((StoryFakeVideoPlayView)localObject).stop();
     AppMethodBeat.o(76026);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-recordvideo_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView$play$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "onPrepared", "", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView$play$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "onPrepared", "", "plugin-recordvideo_release"})
   public static final class b
     implements StoryFakeVideoPlayView.a
   {
-    public final void rq()
+    public final void rB()
     {
       AppMethodBeat.i(76014);
-      this.vse.post((Runnable)new a(this));
+      this.wCf.post((Runnable)new a(this));
       AppMethodBeat.o(76014);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -291,10 +289,10 @@ public final class d
       public final void run()
       {
         AppMethodBeat.i(76013);
-        this.vsf.vse.setAlpha(1.0F);
-        this.vsf.vse.getFakeLayer().oC(d.a(this.vsf.vse));
-        d.a locala = d.vsd;
-        ad.i(d.access$getTAG$cp(), "imageVideoView onPrepared");
+        this.wCg.wCf.setAlpha(1.0F);
+        this.wCg.wCf.getFakeLayer().pA(d.a(this.wCg.wCf));
+        d.a locala = d.wCe;
+        ac.i(d.access$getTAG$cp(), "imageVideoView onPrepared");
         AppMethodBeat.o(76013);
       }
     }
@@ -302,7 +300,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.d
  * JD-Core Version:    0.7.0.1
  */

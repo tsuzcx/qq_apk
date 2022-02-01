@@ -177,43 +177,43 @@ public class GmsIntents
     locala.mIntent.putExtra("android.intent.extra.SUBJECT", paramString1);
     locala.mIntent.putExtra("android.intent.extra.TEXT", paramString2);
     locala.mIntent.setType("text/plain");
-    if (locala.FM != null)
+    if (locala.GK != null)
     {
-      locala.a("android.intent.extra.EMAIL", locala.FM);
-      locala.FM = null;
+      locala.a("android.intent.extra.EMAIL", locala.GK);
+      locala.GK = null;
     }
-    if (locala.FN != null)
+    if (locala.GL != null)
     {
-      locala.a("android.intent.extra.CC", locala.FN);
-      locala.FN = null;
+      locala.a("android.intent.extra.CC", locala.GL);
+      locala.GL = null;
     }
-    if (locala.FO != null)
+    if (locala.GM != null)
     {
-      locala.a("android.intent.extra.BCC", locala.FO);
-      locala.FO = null;
+      locala.a("android.intent.extra.BCC", locala.GM);
+      locala.GM = null;
     }
     int i;
-    if ((locala.FP != null) && (locala.FP.size() > 1))
+    if ((locala.GN != null) && (locala.GN.size() > 1))
     {
       i = 1;
       boolean bool = locala.mIntent.getAction().equals("android.intent.action.SEND_MULTIPLE");
       if ((i == 0) && (bool))
       {
         locala.mIntent.setAction("android.intent.action.SEND");
-        if ((locala.FP == null) || (locala.FP.isEmpty())) {
+        if ((locala.GN == null) || (locala.GN.isEmpty())) {
           break label338;
         }
-        locala.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)locala.FP.get(0));
+        locala.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)locala.GN.get(0));
         label237:
-        locala.FP = null;
+        locala.GN = null;
       }
       if ((i != 0) && (!bool))
       {
         locala.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
-        if ((locala.FP == null) || (locala.FP.isEmpty())) {
+        if ((locala.GN == null) || (locala.GN.isEmpty())) {
           break label352;
         }
-        locala.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", locala.FP);
+        locala.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", locala.GN);
       }
     }
     for (;;)

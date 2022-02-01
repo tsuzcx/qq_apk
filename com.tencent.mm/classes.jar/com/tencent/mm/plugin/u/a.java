@@ -7,22 +7,22 @@ import com.tencent.mm.modelcontrol.c;
 public final class a
   extends t
 {
-  private static a uuz;
+  private static a vDs;
   
   private a()
   {
     super(c.class);
   }
   
-  public static a daW()
+  public static a doE()
   {
     try
     {
       AppMethodBeat.i(151531);
-      if (uuz == null) {
-        uuz = new a();
+      if (vDs == null) {
+        vDs = new a();
       }
-      a locala = uuz;
+      a locala = vDs;
       AppMethodBeat.o(151531);
       return locala;
     }
@@ -31,7 +31,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.u.a
  * JD-Core Version:    0.7.0.1
  */

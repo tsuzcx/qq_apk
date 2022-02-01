@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.a;
 
 public final class g
 {
-  public final long bwz;
+  public final long absoluteStreamPosition;
   public final int flags;
   public final String key;
   public final long length;
@@ -18,13 +18,13 @@ public final class g
   public g(Uri paramUri, long paramLong)
   {
     this(paramUri, paramLong, paramLong, -1L, null, 0, null, -1);
-    AppMethodBeat.i(193868);
-    AppMethodBeat.o(193868);
+    AppMethodBeat.i(194215);
+    AppMethodBeat.o(194215);
   }
   
   public g(Uri paramUri, long paramLong1, long paramLong2, long paramLong3, String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(193869);
+    AppMethodBeat.i(194216);
     boolean bool;
     if (paramLong1 >= 0L) {
       bool = true;
@@ -47,14 +47,14 @@ public final class g
             break label149;
             a.checkArgument(bool);
             this.uri = paramUri;
-            this.bwz = paramLong1;
+            this.absoluteStreamPosition = paramLong1;
             this.position = paramLong2;
             this.length = paramLong3;
             this.key = paramString1;
             this.flags = paramInt1;
             this.uuid = paramString2;
             this.priority = paramInt2;
-            AppMethodBeat.o(193869);
+            AppMethodBeat.o(194216);
             return;
             bool = false;
           }
@@ -71,7 +71,7 @@ public final class g
       catch (IllegalArgumentException paramUri)
       {
         paramUri = new m(paramUri);
-        AppMethodBeat.o(193869);
+        AppMethodBeat.o(194216);
         throw paramUri;
       }
     }
@@ -79,9 +79,9 @@ public final class g
   
   public final String toString()
   {
-    AppMethodBeat.i(193870);
-    String str = "DataSpec[uri=" + this.uri + ", absPos=" + this.bwz + ", pos=" + this.position + ", len=" + this.length + ", key=" + this.key + ", flags=" + this.flags + ", uuid=" + this.uuid + "]";
-    AppMethodBeat.o(193870);
+    AppMethodBeat.i(194217);
+    String str = "DataSpec[uri=" + this.uri + ", absPos=" + this.absoluteStreamPosition + ", pos=" + this.position + ", len=" + this.length + ", key=" + this.key + ", flags=" + this.flags + ", uuid=" + this.uuid + "]";
+    AppMethodBeat.o(194217);
     return str;
   }
 }

@@ -14,7 +14,7 @@ public final class d
     AppMethodBeat.o(158797);
   }
   
-  public final boolean bh(Object paramObject)
+  public final boolean be(Object paramObject)
   {
     return paramObject instanceof Parcelable;
   }

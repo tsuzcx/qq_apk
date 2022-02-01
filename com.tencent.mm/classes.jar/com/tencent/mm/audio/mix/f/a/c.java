@@ -10,24 +10,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class c
   extends a
 {
-  private static long cWX = 0L;
-  private static long cWY = 0L;
+  private static long cUt = 0L;
+  private static long cUu = 0L;
   
   public c(int paramInt1, int paramInt2, d paramd, f paramf)
   {
     super(paramInt1, paramInt2, paramd, paramf);
   }
   
-  public final void M(byte[] paramArrayOfByte)
+  public final void K(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136952);
-    if (this.aUg == null)
+    if (this.aUW == null)
     {
       b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack before");
       if (!createAudioTrack())
       {
-        if (this.cWT != null) {
-          this.cWT.onError(707);
+        if (this.cUp != null) {
+          this.cUp.onError(707);
         }
         b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack fail");
         AppMethodBeat.o(136952);
@@ -37,15 +37,15 @@ public final class c
     }
     try
     {
-      i(this.cWS);
-      this.aUg.play();
-      this.aUg.setStereoVolume(this.volume, this.volume);
+      i(this.cUo);
+      this.aUW.play();
+      this.aUW.setStereoVolume(this.volume, this.volume);
       b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack after");
-      if (this.cWT != null) {
-        this.cWT.Nj();
+      if (this.cUp != null) {
+        this.cUp.Nh();
       }
-      this.aUg.setStereoVolume(this.volume, this.volume);
-      this.aUg.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      this.aUW.setStereoVolume(this.volume, this.volume);
+      this.aUW.write(paramArrayOfByte, 0, paramArrayOfByte.length);
       AppMethodBeat.o(136952);
       return;
     }
@@ -58,10 +58,10 @@ public final class c
     }
   }
   
-  public final void NV()
+  public final void NS()
   {
     AppMethodBeat.i(136953);
-    super.NV();
+    super.NS();
     b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "playFlush");
     AppMethodBeat.o(136953);
   }
@@ -70,7 +70,7 @@ public final class c
   {
     AppMethodBeat.i(136951);
     b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "createAudioTrack");
-    if (this.cWQ > 1)
+    if (this.cUm > 1)
     {
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "createAudioTrack fail count reach MAX COUNT");
       AppMethodBeat.o(136951);
@@ -89,29 +89,29 @@ public final class c
       return false;
     }
     int j = k;
-    if (this.cWS > 1.0D) {
-      j = (int)(this.cWS * k);
+    if (this.cUo > 1.0D) {
+      j = (int)(this.cUo * k);
     }
-    if (this.aUg == null)
+    if (this.aUW == null)
     {
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "new AudioTrack");
       System.currentTimeMillis();
-      this.aUg = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
-      this.cWQ += 1;
-      cWW.incrementAndGet();
+      this.aUW = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
+      this.cUm += 1;
+      cUs.incrementAndGet();
     }
-    if ((this.aUg == null) || (this.aUg.getState() != 1))
+    if ((this.aUW == null) || (this.aUW.getState() != 1))
     {
-      cWV.incrementAndGet();
-      b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(cWW.get()), Integer.valueOf(cWV.get()) });
+      cUr.incrementAndGet();
+      b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(cUs.get()), Integer.valueOf(cUr.get()) });
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "audio track not initialized");
-      if (this.aUg != null) {
-        b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.aUg.getState()) });
+      if (this.aUW != null) {
+        b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.aUW.getState()) });
       }
       try
       {
-        this.aUg.release();
-        this.aUg = null;
+        this.aUW.release();
+        this.aUW = null;
         AppMethodBeat.o(136951);
         return false;
       }

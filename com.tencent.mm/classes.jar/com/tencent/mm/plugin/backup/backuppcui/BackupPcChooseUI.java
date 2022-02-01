@@ -25,9 +25,9 @@ import com.tencent.mm.plugin.backup.backuppcmodel.b;
 import com.tencent.mm.plugin.backup.backuppcmodel.e;
 import com.tencent.mm.plugin.backup.backupui.BackupSelectExtUI;
 import com.tencent.mm.plugin.backup.c.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,34 +39,34 @@ import java.util.LinkedList;
 public class BackupPcChooseUI
   extends MMWizardActivity
 {
-  private static int aTB = 0;
+  private static int aUt = 0;
   private static long endTime;
-  private static int muf = 0;
+  private static int mWh = 0;
   private static long startTime;
-  private TextView mtS;
-  private TextView mtT;
-  private TextView mtU;
-  private ProgressBar mtV;
-  private View mtW;
-  private LinearLayout mtX;
-  private LinearLayout mtY;
-  private LinearLayout mtZ;
-  private LinearLayout mua;
-  private TextView mub;
-  private TextView muc;
-  private TextView mud;
-  private Button mue;
-  private SimpleDateFormat mug;
-  private a mwb;
-  private ListView mwc;
-  private b.a mwd;
+  private TextView mVU;
+  private TextView mVV;
+  private TextView mVW;
+  private ProgressBar mVX;
+  private View mVY;
+  private LinearLayout mVZ;
+  private LinearLayout mWa;
+  private LinearLayout mWb;
+  private LinearLayout mWc;
+  private TextView mWd;
+  private TextView mWe;
+  private TextView mWf;
+  private Button mWg;
+  private SimpleDateFormat mWi;
+  private a mYc;
+  private ListView mYd;
+  private b.a mYe;
   
   public BackupPcChooseUI()
   {
     AppMethodBeat.i(21638);
-    this.mwb = new a(this);
-    this.mug = new SimpleDateFormat("yyyy.MM.dd");
-    this.mwd = new b.a()
+    this.mYc = new a(this);
+    this.mWi = new SimpleDateFormat("yyyy.MM.dd");
+    this.mYe = new b.a()
     {
       public final void C(LinkedList<f.b> paramAnonymousLinkedList)
       {
@@ -80,7 +80,7 @@ public class BackupPcChooseUI
         {
           BackupPcChooseUI.b(BackupPcChooseUI.this).setVisibility(8);
           BackupPcChooseUI.c(BackupPcChooseUI.this).setVisibility(0);
-          switch (BackupPcChooseUI.muf)
+          switch (BackupPcChooseUI.mWh)
           {
           }
           for (;;)
@@ -103,39 +103,39 @@ public class BackupPcChooseUI
     AppMethodBeat.o(21638);
   }
   
-  private void bwV()
+  private void bDR()
   {
     AppMethodBeat.i(21645);
-    if ((this.mtY.getVisibility() == 8) && (this.mtZ.getVisibility() == 8) && (this.mua.getVisibility() == 8))
+    if ((this.mWa.getVisibility() == 8) && (this.mWb.getVisibility() == 8) && (this.mWc.getVisibility() == 8))
     {
-      this.mtW.setVisibility(8);
-      this.mtX.setVisibility(8);
+      this.mVY.setVisibility(8);
+      this.mVZ.setVisibility(8);
       AppMethodBeat.o(21645);
       return;
     }
-    this.mtW.setVisibility(0);
-    this.mtX.setVisibility(0);
+    this.mVY.setVisibility(0);
+    this.mVZ.setVisibility(0);
     AppMethodBeat.o(21645);
   }
   
-  private void hU(boolean paramBoolean)
+  private void iu(boolean paramBoolean)
   {
     AppMethodBeat.i(21643);
     if (paramBoolean)
     {
-      b.bxe();
-      SharedPreferences localSharedPreferences = b.bvY();
-      muf = localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0);
-      aTB = localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_CONTENT_TYPE", 0);
+      b.bEa();
+      SharedPreferences localSharedPreferences = b.bCU();
+      mWh = localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0);
+      aUt = localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_CONTENT_TYPE", 0);
       startTime = localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L);
       endTime = localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L);
     }
-    if (b.bxe().bxg().mvP) {}
-    switch (muf)
+    if (b.bEa().bEc().mXQ) {}
+    switch (mWh)
     {
     default: 
-      if (b.bxe().bxg().mvQ) {
-        switch (aTB)
+      if (b.bEa().bEc().mXR) {
+        switch (aUt)
         {
         }
       }
@@ -143,30 +143,30 @@ public class BackupPcChooseUI
     }
     for (;;)
     {
-      bwV();
+      bDR();
       AppMethodBeat.o(21643);
       return;
-      this.mtZ.setVisibility(8);
+      this.mWb.setVisibility(8);
       break;
-      this.mtW.setVisibility(0);
-      this.mtX.setVisibility(0);
-      this.mtZ.setVisibility(0);
-      this.muc.setText(this.mug.format(new Date(startTime)) + "~" + this.mug.format(new Date(endTime - 86400000L)));
+      this.mVY.setVisibility(0);
+      this.mVZ.setVisibility(0);
+      this.mWb.setVisibility(0);
+      this.mWe.setText(this.mWi.format(new Date(startTime)) + "~" + this.mWi.format(new Date(endTime - 86400000L)));
       break;
-      this.mua.setVisibility(8);
+      this.mWc.setVisibility(8);
       continue;
-      this.mtW.setVisibility(0);
-      this.mtX.setVisibility(0);
-      this.mua.setVisibility(0);
-      this.mud.setText(getContext().getResources().getString(2131756236));
+      this.mVY.setVisibility(0);
+      this.mVZ.setVisibility(0);
+      this.mWc.setVisibility(0);
+      this.mWf.setText(getContext().getResources().getString(2131756236));
     }
   }
   
-  public final void b(HashSet<Integer> paramHashSet)
+  public final void a(HashSet<Integer> paramHashSet)
   {
     AppMethodBeat.i(21644);
     Object localObject = new HashSet();
-    int i = b.bxe().bxi().bwy().size();
+    int i = b.bEa().bEe().bDu().size();
     Iterator localIterator = paramHashSet.iterator();
     while (localIterator.hasNext())
     {
@@ -181,27 +181,27 @@ public class BackupPcChooseUI
     }
     if (paramHashSet.size() != 0)
     {
-      this.mue.setEnabled(true);
-      if ((b.bxe().bxi().msq) && (paramHashSet.size() == this.mwb.getCount()))
+      this.mWg.setEnabled(true);
+      if ((b.bEa().bEe().mUr) && (paramHashSet.size() == this.mYc.getCount()))
       {
-        this.mtS.setText(2131756092);
-        this.mtW.setVisibility(0);
-        this.mtX.setVisibility(0);
-        this.mtY.setVisibility(0);
-        this.mub.setText(getString(2131756094, new Object[] { Integer.valueOf(paramHashSet.size()) }));
+        this.mVU.setText(2131756092);
+        this.mVY.setVisibility(0);
+        this.mVZ.setVisibility(0);
+        this.mWa.setVisibility(0);
+        this.mWd.setText(getString(2131756094, new Object[] { Integer.valueOf(paramHashSet.size()) }));
       }
     }
     for (;;)
     {
-      bwV();
+      bDR();
       AppMethodBeat.o(21644);
       return;
-      this.mtS.setText(2131756091);
+      this.mVU.setText(2131756091);
       break;
-      this.mue.setEnabled(false);
-      this.mtS.setText(2131756091);
-      this.mtY.setVisibility(8);
-      this.mub.setText("");
+      this.mWg.setEnabled(false);
+      this.mVU.setText(2131756091);
+      this.mWa.setVisibility(8);
+      this.mWd.setText("");
     }
   }
   
@@ -214,21 +214,21 @@ public class BackupPcChooseUI
   {
     AppMethodBeat.i(21642);
     setMMTitle(2131756242);
-    this.mwc = ((ListView)findViewById(2131297038));
-    this.mwc.setAdapter(this.mwb);
-    this.mwc.setEmptyView(findViewById(2131297040));
-    this.mtS = ((TextView)findViewById(2131297046));
-    this.mtT = ((TextView)findViewById(2131297039));
-    this.mtV = ((ProgressBar)findViewById(2131297045));
-    this.mtU = ((TextView)findViewById(2131297041));
-    this.mtW = findViewById(2131297044);
-    this.mtX = ((LinearLayout)findViewById(2131297042));
-    this.mtY = ((LinearLayout)findViewById(2131297047));
-    this.mtZ = ((LinearLayout)findViewById(2131297050));
-    this.mua = ((LinearLayout)findViewById(2131297035));
-    this.mub = ((TextView)findViewById(2131297049));
-    this.muc = ((TextView)findViewById(2131297052));
-    this.mud = ((TextView)findViewById(2131297037));
+    this.mYd = ((ListView)findViewById(2131297038));
+    this.mYd.setAdapter(this.mYc);
+    this.mYd.setEmptyView(findViewById(2131297040));
+    this.mVU = ((TextView)findViewById(2131297046));
+    this.mVV = ((TextView)findViewById(2131297039));
+    this.mVX = ((ProgressBar)findViewById(2131297045));
+    this.mVW = ((TextView)findViewById(2131297041));
+    this.mVY = findViewById(2131297044);
+    this.mVZ = ((LinearLayout)findViewById(2131297042));
+    this.mWa = ((LinearLayout)findViewById(2131297047));
+    this.mWb = ((LinearLayout)findViewById(2131297050));
+    this.mWc = ((LinearLayout)findViewById(2131297035));
+    this.mWd = ((TextView)findViewById(2131297049));
+    this.mWe = ((TextView)findViewById(2131297052));
+    this.mWf = ((TextView)findViewById(2131297037));
     ((TextView)findViewById(2131297048)).setText(2131756184);
     ((TextView)findViewById(2131297051)).setText(2131756187);
     ((TextView)findViewById(2131297036)).setText(2131756182);
@@ -242,21 +242,21 @@ public class BackupPcChooseUI
         return false;
       }
     });
-    this.mue = ((Button)findViewById(2131297043));
-    this.mue.setOnClickListener(new View.OnClickListener()
+    this.mWg = ((Button)findViewById(2131297043));
+    this.mWg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(21634);
         Object localObject = BackupPcChooseUI.a(BackupPcChooseUI.this);
         paramAnonymousView = new LinkedList();
-        if (((a)localObject).mtN.size() <= 0) {}
+        if (((a)localObject).mVP.size() <= 0) {}
         for (;;)
         {
           localObject = g.B(paramAnonymousView);
-          az.arV();
-          boolean bool = ((Boolean)com.tencent.mm.model.c.afk().get(ae.a.Fnb, Boolean.FALSE)).booleanValue();
-          ad.i("MicroMsg.BackupPcChooseUI", "initView OnMenuItemClickListener startbackup choose records finish, selectedConversation size[%d], hasMove[%b], timeMode[%d], startTime[%d], endTime[%d], contentType[%d]", new Object[] { Integer.valueOf(paramAnonymousView.size()), Boolean.valueOf(bool), Integer.valueOf(BackupPcChooseUI.muf), Long.valueOf(BackupPcChooseUI.startTime), Long.valueOf(BackupPcChooseUI.Hf()), Integer.valueOf(BackupPcChooseUI.aTB) });
+          az.ayM();
+          boolean bool = ((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GKQ, Boolean.FALSE)).booleanValue();
+          ac.i("MicroMsg.BackupPcChooseUI", "initView OnMenuItemClickListener startbackup choose records finish, selectedConversation size[%d], hasMove[%b], timeMode[%d], startTime[%d], endTime[%d], contentType[%d]", new Object[] { Integer.valueOf(paramAnonymousView.size()), Boolean.valueOf(bool), Integer.valueOf(BackupPcChooseUI.mWh), Long.valueOf(BackupPcChooseUI.startTime), Long.valueOf(BackupPcChooseUI.GQ()), Integer.valueOf(BackupPcChooseUI.aUt) });
           if (!bool) {
             break;
           }
@@ -265,161 +265,161 @@ public class BackupPcChooseUI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(21633);
-              b.bxe().bxi().G(paramAnonymousView);
-              b.bxe().bxf().wc(2);
-              b.bxe().bvT().mqj = 12;
-              b.bxe().bxg().H(this.mwg);
-              b.bxe().bxg().nq(paramAnonymousView.size());
-              com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 8L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(10), Integer.valueOf(b.bxe().bxf().mvA) });
-              if ((BackupPcChooseUI.muf == 1) && (BackupPcChooseUI.aTB == 1))
+              b.bEa().bEe().G(paramAnonymousView);
+              b.bEa().bEb().wT(2);
+              b.bEa().bCP().mSk = 12;
+              b.bEa().bEc().H(this.mYh);
+              b.bEa().bEc().rc(paramAnonymousView.size());
+              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 8L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(10), Integer.valueOf(b.bEa().bEb().mXB) });
+              if ((BackupPcChooseUI.mWh == 1) && (BackupPcChooseUI.aUt == 1))
               {
-                com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 32L, 1L, false);
-                com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 35L, 1L, false);
-                com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(13), Integer.valueOf(b.bxe().bxf().mvA) });
+                com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 32L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 35L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(13), Integer.valueOf(b.bEa().bEb().mXB) });
               }
               for (;;)
               {
                 BackupPcChooseUI.this.finish();
                 AppMethodBeat.o(21633);
                 return;
-                if (BackupPcChooseUI.muf == 1)
+                if (BackupPcChooseUI.mWh == 1)
                 {
-                  com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 32L, 1L, false);
-                  com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(11), Integer.valueOf(b.bxe().bxf().mvA) });
+                  com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 32L, 1L, false);
+                  com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(11), Integer.valueOf(b.bEa().bEb().mXB) });
                 }
-                else if (BackupPcChooseUI.aTB == 1)
+                else if (BackupPcChooseUI.aUt == 1)
                 {
-                  com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 35L, 1L, false);
-                  com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(12), Integer.valueOf(b.bxe().bxf().mvA) });
+                  com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 35L, 1L, false);
+                  com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(12), Integer.valueOf(b.bEa().bEb().mXB) });
                 }
               }
             }
           }, null, 2131099990);
           AppMethodBeat.o(21634);
           return;
-          LinkedList localLinkedList = b.bxe().bxi().bwy();
+          LinkedList localLinkedList = b.bEa().bEe().bDu();
           if (localLinkedList != null)
           {
             int i = 0;
             while (i < ((a)localObject).getCount())
             {
-              if (((a)localObject).mtN.contains(Integer.valueOf(i))) {
+              if (((a)localObject).mVP.contains(Integer.valueOf(i))) {
                 paramAnonymousView.add(localLinkedList.get(i));
               }
               i += 1;
             }
           }
-          ad.i("MicroMsg.BackupPcChooseAdapter", "finishSelected usernameSize:%d", new Object[] { Integer.valueOf(paramAnonymousView.size()) });
+          ac.i("MicroMsg.BackupPcChooseAdapter", "finishSelected usernameSize:%d", new Object[] { Integer.valueOf(paramAnonymousView.size()) });
         }
-        b.bxe().bxi().G(paramAnonymousView);
-        b.bxe().bxf().wc(2);
-        b.bxe().bvT().mqj = 12;
-        b.bxe().bxg().H((LinkedList)localObject);
-        b.bxe().bxg().nq(paramAnonymousView.size());
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 8L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(10), Integer.valueOf(b.bxe().bxf().mvA) });
-        if ((BackupPcChooseUI.muf == 1) && (BackupPcChooseUI.aTB == 1))
+        b.bEa().bEe().G(paramAnonymousView);
+        b.bEa().bEb().wT(2);
+        b.bEa().bCP().mSk = 12;
+        b.bEa().bEc().H((LinkedList)localObject);
+        b.bEa().bEc().rc(paramAnonymousView.size());
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 8L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(10), Integer.valueOf(b.bEa().bEb().mXB) });
+        if ((BackupPcChooseUI.mWh == 1) && (BackupPcChooseUI.aUt == 1))
         {
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 32L, 1L, false);
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 35L, 1L, false);
-          com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(13), Integer.valueOf(b.bxe().bxf().mvA) });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 32L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 35L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(13), Integer.valueOf(b.bEa().bEb().mXB) });
         }
         for (;;)
         {
           BackupPcChooseUI.this.finish();
           AppMethodBeat.o(21634);
           return;
-          if (BackupPcChooseUI.muf == 1)
+          if (BackupPcChooseUI.mWh == 1)
           {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 32L, 1L, false);
-            com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(11), Integer.valueOf(b.bxe().bxf().mvA) });
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 32L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(11), Integer.valueOf(b.bEa().bEb().mXB) });
           }
-          else if (BackupPcChooseUI.aTB == 1)
+          else if (BackupPcChooseUI.aUt == 1)
           {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(400L, 35L, 1L, false);
-            com.tencent.mm.plugin.report.service.h.vKh.f(13735, new Object[] { Integer.valueOf(12), Integer.valueOf(b.bxe().bxf().mvA) });
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(400L, 35L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.wUl.f(13735, new Object[] { Integer.valueOf(12), Integer.valueOf(b.bEa().bEb().mXB) });
           }
         }
       }
     });
-    this.mue.setEnabled(false);
-    if ((!b.bxe().bxg().mvP) && (!b.bxe().bxg().mvQ)) {
-      this.mtU.setVisibility(8);
+    this.mWg.setEnabled(false);
+    if ((!b.bEa().bEc().mXQ) && (!b.bEa().bEc().mXR)) {
+      this.mVW.setVisibility(8);
     }
     for (;;)
     {
-      this.mtS.setOnClickListener(new View.OnClickListener()
+      this.mVU.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           int i = 0;
           AppMethodBeat.i(21636);
-          if (b.bxe().bxi().msq)
+          if (b.bEa().bEe().mUr)
           {
             paramAnonymousView = BackupPcChooseUI.a(BackupPcChooseUI.this);
-            if (paramAnonymousView.mtN.size() != paramAnonymousView.getCount()) {
+            if (paramAnonymousView.mVP.size() != paramAnonymousView.getCount()) {
               break label75;
             }
-            paramAnonymousView.mtN.clear();
+            paramAnonymousView.mVP.clear();
           }
-          for (a.mvZ = false;; a.mvZ = true)
+          for (a.mYa = false;; a.mYa = true)
           {
             paramAnonymousView.notifyDataSetChanged();
-            paramAnonymousView.mvY.b(paramAnonymousView.mtN);
+            paramAnonymousView.mXZ.a(paramAnonymousView.mVP);
             AppMethodBeat.o(21636);
             return;
             label75:
             while (i < paramAnonymousView.getCount())
             {
-              paramAnonymousView.mtN.add(Integer.valueOf(i));
+              paramAnonymousView.mVP.add(Integer.valueOf(i));
               i += 1;
             }
           }
         }
       });
-      if (b.bxe().bxi().msq) {
+      if (b.bEa().bEe().mUr) {
         break;
       }
-      this.mtS.setTextColor(getResources().getColor(2131099992));
-      this.mtS.setClickable(false);
-      this.mtV.setVisibility(0);
+      this.mVU.setTextColor(getResources().getColor(2131099992));
+      this.mVU.setClickable(false);
+      this.mVX.setVisibility(0);
       AppMethodBeat.o(21642);
       return;
-      this.mtU.setVisibility(0);
-      hU(true);
-      this.mtU.setOnClickListener(new View.OnClickListener()
+      this.mVW.setVisibility(0);
+      iu(true);
+      this.mVW.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(21635);
           paramAnonymousView = new Intent(BackupPcChooseUI.this, BackupSelectExtUI.class);
           paramAnonymousView.putExtra("BACKUP_MODE", 1);
-          paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MODE", BackupPcChooseUI.muf);
-          paramAnonymousView.putExtra("BACKUP_SELECT_SUPPORT_CONTENT_TYPE", b.bxe().bxg().mvQ);
-          paramAnonymousView.putExtra("BACKUP_SELECT_CONTENT_TYPE", BackupPcChooseUI.aTB);
+          paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MODE", BackupPcChooseUI.mWh);
+          paramAnonymousView.putExtra("BACKUP_SELECT_SUPPORT_CONTENT_TYPE", b.bEa().bEc().mXR);
+          paramAnonymousView.putExtra("BACKUP_SELECT_CONTENT_TYPE", BackupPcChooseUI.aUt);
           paramAnonymousView.putExtra("BACKUP_SELECT_TIME_START_TIME", BackupPcChooseUI.startTime);
-          paramAnonymousView.putExtra("BACKUP_SELECT_TIME_END_TIME", BackupPcChooseUI.Hf());
-          paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MIN_CONVERSATION_TIME", b.bxe().bxi().msm);
+          paramAnonymousView.putExtra("BACKUP_SELECT_TIME_END_TIME", BackupPcChooseUI.GQ());
+          paramAnonymousView.putExtra("BACKUP_SELECT_TIME_MIN_CONVERSATION_TIME", b.bEa().bEe().mUn);
           BackupPcChooseUI.this.startActivityForResult(paramAnonymousView, 0);
           AppMethodBeat.o(21635);
         }
       });
     }
-    if (b.bxe().bxi().bwy().size() == 0) {
-      switch (muf)
+    if (b.bEa().bEe().bDu().size() == 0) {
+      switch (mWh)
       {
       }
     }
     for (;;)
     {
-      this.mtT.setVisibility(0);
-      this.mtV.setVisibility(4);
+      this.mVV.setVisibility(0);
+      this.mVX.setVisibility(4);
       AppMethodBeat.o(21642);
       return;
-      this.mtT.setText(2131756183);
+      this.mVV.setText(2131756183);
       continue;
-      this.mtT.setText(2131756255);
+      this.mVV.setText(2131756255);
     }
   }
   
@@ -428,47 +428,47 @@ public class BackupPcChooseUI
     AppMethodBeat.i(21646);
     if (paramInt2 != -1)
     {
-      ad.e("MicroMsg.BackupPcChooseUI", "onActivityResult result error! resultCode[%d]", new Object[] { Integer.valueOf(paramInt2) });
+      ac.e("MicroMsg.BackupPcChooseUI", "onActivityResult result error! resultCode[%d]", new Object[] { Integer.valueOf(paramInt2) });
       AppMethodBeat.o(21646);
       return;
     }
-    paramInt1 = muf;
+    paramInt1 = mWh;
     long l1 = startTime;
     long l2 = endTime;
-    muf = paramIntent.getIntExtra("BACKUP_SELECT_TIME_MODE", muf);
+    mWh = paramIntent.getIntExtra("BACKUP_SELECT_TIME_MODE", mWh);
     startTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_START_TIME", 0L);
     endTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_END_TIME", 0L);
-    aTB = paramIntent.getIntExtra("BACKUP_SELECT_CONTENT_TYPE", aTB);
-    ad.i("MicroMsg.BackupPcChooseUI", "onActivityResult timeMode/preTimeMode[%d/%d], startTime/preStartTime[%d/%d], endTime/preEndTime[%d/%d], contentType[%d]", new Object[] { Integer.valueOf(muf), Integer.valueOf(paramInt1), Long.valueOf(startTime), Long.valueOf(l1), Long.valueOf(endTime), Long.valueOf(l2), Integer.valueOf(aTB) });
-    b.bxe().bxg();
-    e.f(muf, startTime, endTime, aTB);
-    hU(false);
-    if ((paramInt1 == muf) && ((muf == 0) || ((muf == 1) && (startTime == l1) && (endTime == l2))))
+    aUt = paramIntent.getIntExtra("BACKUP_SELECT_CONTENT_TYPE", aUt);
+    ac.i("MicroMsg.BackupPcChooseUI", "onActivityResult timeMode/preTimeMode[%d/%d], startTime/preStartTime[%d/%d], endTime/preEndTime[%d/%d], contentType[%d]", new Object[] { Integer.valueOf(mWh), Integer.valueOf(paramInt1), Long.valueOf(startTime), Long.valueOf(l1), Long.valueOf(endTime), Long.valueOf(l2), Integer.valueOf(aUt) });
+    b.bEa().bEc();
+    e.f(mWh, startTime, endTime, aUt);
+    iu(false);
+    if ((paramInt1 == mWh) && ((mWh == 0) || ((mWh == 1) && (startTime == l1) && (endTime == l2))))
     {
       AppMethodBeat.o(21646);
       return;
     }
-    b.bxe().bxi().a(muf, startTime, endTime, b.bxe().bxi().bwx());
-    paramIntent = this.mwb;
-    paramIntent.mtN.clear();
-    paramIntent.mvY.b(paramIntent.mtN);
-    if ((b.bxe().bxi().bwy() == null) || (b.bxe().bxi().bwy().size() == 0)) {
-      switch (muf)
+    b.bEa().bEe().a(mWh, startTime, endTime, b.bEa().bEe().bDt());
+    paramIntent = this.mYc;
+    paramIntent.mVP.clear();
+    paramIntent.mXZ.a(paramIntent.mVP);
+    if ((b.bEa().bEe().bDu() == null) || (b.bEa().bEe().bDu().size() == 0)) {
+      switch (mWh)
       {
       default: 
-        this.mtT.setVisibility(0);
+        this.mVV.setVisibility(0);
       }
     }
     for (;;)
     {
-      this.mwb.notifyDataSetChanged();
+      this.mYc.notifyDataSetChanged();
       AppMethodBeat.o(21646);
       return;
-      this.mtT.setText(2131756183);
+      this.mVV.setText(2131756183);
       break;
-      this.mtT.setText(2131756255);
+      this.mVV.setText(2131756255);
       break;
-      this.mtT.setVisibility(4);
+      this.mVV.setVisibility(4);
     }
   }
   
@@ -489,7 +489,7 @@ public class BackupPcChooseUI
   {
     AppMethodBeat.i(21640);
     super.onStart();
-    b.bxe().bxi().mvm = this.mwd;
+    b.bEa().bEe().mXn = this.mYe;
     AppMethodBeat.o(21640);
   }
   
@@ -497,7 +497,7 @@ public class BackupPcChooseUI
   {
     AppMethodBeat.i(21641);
     super.onStop();
-    b.bxe().bxi().mvm = null;
+    b.bEa().bEe().mXn = null;
     AppMethodBeat.o(21641);
   }
   

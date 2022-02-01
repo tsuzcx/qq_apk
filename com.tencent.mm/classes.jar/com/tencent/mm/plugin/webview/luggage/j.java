@@ -13,24 +13,24 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.xweb.WebView;
 
 public class j
   extends FrameLayout
 {
-  private int Ao;
-  private boolean ldA;
-  private boolean ldB;
-  private boolean ldC;
-  private int ldD;
-  private int ldE;
-  private ObjectAnimator ldG;
-  protected View ldv;
-  protected FrameLayout ldw;
-  protected FrameLayout ldx;
-  private boolean ldy;
-  private boolean ldz;
+  private int Bm;
+  protected View lDm;
+  protected FrameLayout lDn;
+  protected FrameLayout lDo;
+  private boolean lDp;
+  private boolean lDq;
+  private boolean lDr;
+  private boolean lDs;
+  private boolean lDt;
+  private int lDu;
+  private int lDv;
+  private ObjectAnimator lDx;
   protected View mContentView;
   private int mTouchSlop;
   
@@ -38,21 +38,21 @@ public class j
   {
     super(paramContext);
     AppMethodBeat.i(78359);
-    this.ldy = true;
-    this.ldz = false;
-    this.ldA = false;
-    this.ldB = false;
-    this.ldC = false;
-    this.ldG = null;
+    this.lDp = true;
+    this.lDq = false;
+    this.lDr = false;
+    this.lDs = false;
+    this.lDt = false;
+    this.lDx = null;
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     AppMethodBeat.o(78359);
   }
   
-  private boolean Cl()
+  private boolean BP()
   {
     AppMethodBeat.i(78365);
-    ad.d("MicroMsg.AppBrandPullDownView", "canOverScroll, scrollY = %d, topY = %d", new Object[] { Integer.valueOf(this.mContentView.getScrollY()), Integer.valueOf(this.mContentView.getTop()) });
+    ac.d("MicroMsg.AppBrandPullDownView", "canOverScroll, scrollY = %d, topY = %d", new Object[] { Integer.valueOf(this.mContentView.getScrollY()), Integer.valueOf(this.mContentView.getTop()) });
     if ((this.mContentView instanceof WebView))
     {
       if (((WebView)this.mContentView).getWebScrollY() == 0)
@@ -65,7 +65,7 @@ public class j
     }
     if ((this.mContentView instanceof RecyclerView))
     {
-      if ((((LinearLayoutManager)((RecyclerView)this.mContentView).getLayoutManager()).jO() == 0) && (this.mContentView.getScrollY() == 0))
+      if ((((LinearLayoutManager)((RecyclerView)this.mContentView).getLayoutManager()).jW() == 0) && (this.mContentView.getScrollY() == 0))
       {
         AppMethodBeat.o(78365);
         return true;
@@ -82,21 +82,21 @@ public class j
     return false;
   }
   
-  private void tx(int paramInt)
+  private void un(int paramInt)
   {
     AppMethodBeat.i(78369);
-    int i = (int)this.ldx.getTranslationY();
+    int i = (int)this.lDo.getTranslationY();
     if (i == paramInt)
     {
       AppMethodBeat.o(78369);
       return;
     }
-    ad.i("MicroMsg.AppBrandPullDownView", "fastScrollTo from = %s, to = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-    if (this.ldG != null) {
-      this.ldG.cancel();
+    ac.i("MicroMsg.AppBrandPullDownView", "fastScrollTo from = %s, to = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+    if (this.lDx != null) {
+      this.lDx.cancel();
     }
     long l = (Math.abs(i - paramInt) / getStayHeight() * 250.0F);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.ldx, "translationY", new float[] { i, paramInt });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.lDo, "translationY", new float[] { i, paramInt });
     localObjectAnimator.setDuration(Math.min(l, 250L));
     localObjectAnimator.setInterpolator(new DecelerateInterpolator());
     localObjectAnimator.start();
@@ -106,25 +106,25 @@ public class j
       {
         AppMethodBeat.i(78358);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        j.this.tw((int)f);
+        j.this.um((int)f);
         AppMethodBeat.o(78358);
       }
     });
-    this.ldG = localObjectAnimator;
+    this.lDx = localObjectAnimator;
     AppMethodBeat.o(78369);
   }
   
-  protected void bkk()
+  protected void bqZ()
   {
     AppMethodBeat.i(78363);
-    tx(0);
-    this.ldB = false;
-    this.ldA = false;
-    this.ldC = false;
+    un(0);
+    this.lDs = false;
+    this.lDr = false;
+    this.lDt = false;
     AppMethodBeat.o(78363);
   }
   
-  protected void bkl() {}
+  protected void bra() {}
   
   protected int getMaxOverScrollDistance()
   {
@@ -137,7 +137,7 @@ public class j
   protected int getOpenHeight()
   {
     AppMethodBeat.i(78367);
-    int i = this.ldv.getHeight();
+    int i = this.lDm.getHeight();
     AppMethodBeat.o(78367);
     return i;
   }
@@ -145,7 +145,7 @@ public class j
   protected int getStayHeight()
   {
     AppMethodBeat.i(78368);
-    int i = this.ldv.getHeight();
+    int i = this.lDm.getHeight();
     AppMethodBeat.o(78368);
     return i;
   }
@@ -154,25 +154,25 @@ public class j
   {
     AppMethodBeat.i(78360);
     removeAllViews();
-    this.ldv = paramView1;
-    this.ldw = new FrameLayout(getContext());
-    this.ldw.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.ldw.addView(paramView1);
+    this.lDm = paramView1;
+    this.lDn = new FrameLayout(getContext());
+    this.lDn.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.lDn.addView(paramView1);
     this.mContentView = paramView2;
-    this.ldx = new FrameLayout(getContext());
-    this.ldx.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.ldx.addView(paramView2);
-    addView(this.ldw);
-    addView(this.ldx);
+    this.lDo = new FrameLayout(getContext());
+    this.lDo.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.lDo.addView(paramView2);
+    addView(this.lDn);
+    addView(this.lDo);
     AppMethodBeat.o(78360);
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(78361);
-    if (this.ldy)
+    if (this.lDp)
     {
-      boolean bool = this.ldC;
+      boolean bool = this.lDt;
       AppMethodBeat.o(78361);
       return bool;
     }
@@ -182,7 +182,7 @@ public class j
       AppMethodBeat.o(78361);
       return false;
     }
-    if (this.ldB)
+    if (this.lDs)
     {
       AppMethodBeat.o(78361);
       return true;
@@ -200,20 +200,20 @@ public class j
         {
           AppMethodBeat.o(78361);
           return false;
-          if (Cl())
+          if (BP())
           {
-            this.ldD = ((int)paramMotionEvent.getX());
-            this.ldE = ((int)paramMotionEvent.getY());
-            this.Ao = ((int)paramMotionEvent.getY());
+            this.lDu = ((int)paramMotionEvent.getX());
+            this.lDv = ((int)paramMotionEvent.getY());
+            this.Bm = ((int)paramMotionEvent.getY());
           }
         }
-      } while (!Cl());
+      } while (!BP());
       i = (int)paramMotionEvent.getX();
       k = (int)paramMotionEvent.getY();
-      j = this.ldD;
-      k -= this.ldE;
+      j = this.lDu;
+      k -= this.lDv;
     } while ((Math.abs(k) <= this.mTouchSlop) || (Math.abs(k) <= Math.abs(i - j)) || (k <= 0));
-    this.ldB = true;
+    this.lDs = true;
     AppMethodBeat.o(78361);
     return true;
   }
@@ -221,12 +221,12 @@ public class j
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(78362);
-    if (this.ldy)
+    if (this.lDp)
     {
-      if (this.ldC) {
-        bkk();
+      if (this.lDt) {
+        bqZ();
       }
-      boolean bool = this.ldC;
+      boolean bool = this.lDt;
       AppMethodBeat.o(78362);
       return bool;
     }
@@ -236,11 +236,11 @@ public class j
       AppMethodBeat.o(78362);
       return false;
     case 0: 
-      this.Ao = ((int)paramMotionEvent.getY());
+      this.Bm = ((int)paramMotionEvent.getY());
       AppMethodBeat.o(78362);
       return true;
     case 2: 
-      int k = (int)paramMotionEvent.getY() - this.Ao;
+      int k = (int)paramMotionEvent.getY() - this.Bm;
       int i = k >> 1;
       int j = getMaxOverScrollDistance();
       if (i > j) {
@@ -249,45 +249,45 @@ public class j
       for (;;)
       {
         j = i;
-        if (this.ldA) {
+        if (this.lDr) {
           j = i + getStayHeight();
         }
         i = Math.max(j, 0);
-        ad.d("MicroMsg.AppBrandPullDownView", "real diff: %d, calc diff: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        ac.d("MicroMsg.AppBrandPullDownView", "real diff: %d, calc diff: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
         j = Math.min(getMaxOverScrollDistance(), i);
-        this.ldx.setTranslationY(j);
-        tw(i);
+        this.lDo.setTranslationY(j);
+        um(i);
         AppMethodBeat.o(78362);
         return true;
       }
     }
-    if ((this.ldx.getTranslationY() > getOpenHeight()) && (this.ldz))
+    if ((this.lDo.getTranslationY() > getOpenHeight()) && (this.lDq))
     {
-      tx(getStayHeight());
-      if (!this.ldA) {
-        bkl();
+      un(getStayHeight());
+      if (!this.lDr) {
+        bra();
       }
-      this.ldB = true;
-      this.ldA = true;
-      this.ldC = true;
+      this.lDs = true;
+      this.lDr = true;
+      this.lDt = true;
     }
     for (;;)
     {
       AppMethodBeat.o(78362);
       return true;
-      bkk();
+      bqZ();
     }
   }
   
   public void setNeedStay(boolean paramBoolean)
   {
-    this.ldz = paramBoolean;
+    this.lDq = paramBoolean;
   }
   
   public void setPullDownBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(78364);
-    this.ldw.setBackgroundColor(paramInt);
+    this.lDn.setBackgroundColor(paramInt);
     AppMethodBeat.o(78364);
   }
   
@@ -296,16 +296,16 @@ public class j
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.ldy = paramBoolean;
+      this.lDp = paramBoolean;
       return;
     }
   }
   
-  protected void tw(int paramInt) {}
+  protected void um(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.j
  * JD-Core Version:    0.7.0.1
  */

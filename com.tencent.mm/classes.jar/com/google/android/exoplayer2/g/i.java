@@ -1,23 +1,23 @@
 package com.google.android.exoplayer2.g;
 
 import com.google.android.exoplayer2.i.x;
-import com.google.android.exoplayer2.source.q;
+import com.google.android.exoplayer2.source.p;
 import com.google.android.exoplayer2.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public final q bwp;
-  public final g bwq;
-  public final t[] bwr;
+  public final p buo;
+  public final g bup;
+  public final t[] buq;
   public final Object info;
   
-  public i(q paramq, g paramg, Object paramObject, t[] paramArrayOft)
+  public i(p paramp, g paramg, Object paramObject, t[] paramArrayOft)
   {
-    this.bwp = paramq;
-    this.bwq = paramg;
+    this.buo = paramp;
+    this.bup = paramg;
     this.info = paramObject;
-    this.bwr = paramArrayOft;
+    this.buq = paramArrayOft;
   }
   
   public final boolean a(i parami)
@@ -29,7 +29,7 @@ public final class i
       return false;
     }
     int i = 0;
-    while (i < this.bwq.length)
+    while (i < this.bup.length)
     {
       if (!a(parami, i))
       {
@@ -50,7 +50,7 @@ public final class i
       AppMethodBeat.o(92954);
       return false;
     }
-    if ((x.g(this.bwq.bwn[paramInt], parami.bwq.bwn[paramInt])) && (x.g(this.bwr[paramInt], parami.bwr[paramInt])))
+    if ((x.g(this.bup.bum[paramInt], parami.bup.bum[paramInt])) && (x.g(this.buq[paramInt], parami.buq[paramInt])))
     {
       AppMethodBeat.o(92954);
       return true;

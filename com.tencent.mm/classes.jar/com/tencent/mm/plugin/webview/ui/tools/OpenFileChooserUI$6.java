@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.model.aw;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,24 +27,24 @@ final class OpenFileChooserUI$6
     while (((Iterator)localObject2).hasNext())
     {
       String str1 = (String)((Iterator)localObject2).next();
-      WebViewJSSDKFileItem localWebViewJSSDKFileItem = WebViewJSSDKFileItem.aVX(str1);
-      String str2 = localWebViewJSSDKFileItem.diQ;
-      localWebViewJSSDKFileItem.jay = bool2;
-      g.emF().a(localWebViewJSSDKFileItem);
-      ad.i("MicroMsg.OpenFileChooserUI", "now filepath is : %s, local id is : %s", new Object[] { str1, str2 });
+      WebViewJSSDKFileItem localWebViewJSSDKFileItem = WebViewJSSDKFileItem.aCp(str1);
+      String str2 = localWebViewJSSDKFileItem.dgl;
+      localWebViewJSSDKFileItem.jAL = bool2;
+      g.eCa().a(localWebViewJSSDKFileItem);
+      ac.i("MicroMsg.OpenFileChooserUI", "now filepath is : %s, local id is : %s", new Object[] { str1, str2 });
       ((ArrayList)localObject1).add(str2);
     }
-    localObject1 = aw.az((ArrayList)localObject1);
-    ad.i("MicroMsg.OpenFileChooserUI", "after parse to json data : %s", new Object[] { localObject1 });
+    localObject1 = aw.aL((ArrayList)localObject1);
+    ac.i("MicroMsg.OpenFileChooserUI", "after parse to json data : %s", new Object[] { localObject1 });
     localObject2 = new Intent();
     ((Intent)localObject2).putExtra("key_pick_local_pic_callback_local_ids", (String)localObject1);
     if (bool1) {}
     for (localObject1 = "camera";; localObject1 = "album")
     {
       ((Intent)localObject2).putExtra("key_pick_local_pic_source_type", (String)localObject1);
-      ((Intent)localObject2).putExtra("key_pick_local_media_show_memory_warning", OpenFileChooserUI.a(this.Bdy));
-      this.Bdy.setResult(this.val$resultCode, (Intent)localObject2);
-      this.Bdy.finish();
+      ((Intent)localObject2).putExtra("key_pick_local_media_show_memory_warning", OpenFileChooserUI.a(this.CvK));
+      this.CvK.setResult(this.val$resultCode, (Intent)localObject2);
+      this.CvK.finish();
       AppMethodBeat.o(79652);
       return;
     }

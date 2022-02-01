@@ -8,111 +8,111 @@ import java.util.Arrays;
 public final class a$q
   extends e
 {
-  public a.aw IkD = null;
-  public int IkG = 0;
-  public a.bb IkI = null;
-  public int Ilh = 0;
-  public a.az[] Ili = a.az.flA();
-  public a.ay[] Ilj = a.ay.flz();
-  public a.av Ilk = null;
-  public int Ill = 0;
-  public int Ilm = 0;
-  public int Iln = 0;
-  public byte[] Ilo = g.bIZ;
-  public byte[] Ilp = g.bIZ;
-  public a.ay[] Ilq = a.ay.flz();
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JMS = 0;
+  public a.az[] JMT = a.az.fBR();
+  public a.ay[] JMU = a.ay.fBQ();
+  public a.av JMV = null;
+  public int JMW = 0;
+  public int JMX = 0;
+  public int JMY = 0;
+  public byte[] JMZ = g.bGH;
+  public a.aw JMo = null;
+  public int JMr = 0;
+  public a.bb JMt = null;
+  public byte[] JNa = g.bGH;
+  public a.ay[] JNb = a.ay.fBQ();
   public int audioStreamType = 0;
   public String groupId = "";
-  public int htk = 0;
+  public int hTM = 0;
   public long msgId = 0L;
-  public int zkT = 0;
-  public long zkU = 0L;
   
   public a$q()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
     int j = 0;
-    if (this.Ilh != 0) {
-      paramb.by(1, this.Ilh);
+    if (this.JMS != 0) {
+      paramb.bv(1, this.JMS);
     }
     if (!this.groupId.equals("")) {
       paramb.d(2, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(3, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(3, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(4, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(4, this.ADF);
     }
-    if (this.IkG != 0) {
-      paramb.bz(5, this.IkG);
+    if (this.JMr != 0) {
+      paramb.bw(5, this.JMr);
     }
-    if (this.IkD != null) {
-      paramb.a(6, this.IkD);
+    if (this.JMo != null) {
+      paramb.a(6, this.JMo);
     }
     int i;
     Object localObject;
-    if ((this.Ili != null) && (this.Ili.length > 0))
+    if ((this.JMT != null) && (this.JMT.length > 0))
     {
       i = 0;
-      while (i < this.Ili.length)
+      while (i < this.JMT.length)
       {
-        localObject = this.Ili[i];
+        localObject = this.JMT[i];
         if (localObject != null) {
           paramb.a(7, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.Ilj != null) && (this.Ilj.length > 0))
+    if ((this.JMU != null) && (this.JMU.length > 0))
     {
       i = 0;
-      while (i < this.Ilj.length)
+      while (i < this.JMU.length)
       {
-        localObject = this.Ilj[i];
+        localObject = this.JMU[i];
         if (localObject != null) {
           paramb.a(8, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.Ilk != null) {
-      paramb.a(9, this.Ilk);
+    if (this.JMV != null) {
+      paramb.a(9, this.JMV);
     }
-    if (this.IkI != null) {
-      paramb.a(10, this.IkI);
+    if (this.JMt != null) {
+      paramb.a(10, this.JMt);
     }
-    if (this.Ill != 0) {
-      paramb.bz(11, this.Ill);
+    if (this.JMW != 0) {
+      paramb.bw(11, this.JMW);
     }
-    if (this.Ilm != 0) {
-      paramb.bz(12, this.Ilm);
+    if (this.JMX != 0) {
+      paramb.bw(12, this.JMX);
     }
-    if (this.htk != 0) {
-      paramb.bz(13, this.htk);
+    if (this.hTM != 0) {
+      paramb.bw(13, this.hTM);
     }
     if (this.msgId != 0L) {
-      paramb.n(101, this.msgId);
+      paramb.m(101, this.msgId);
     }
-    if (this.Iln != 0) {
-      paramb.bz(102, this.Iln);
+    if (this.JMY != 0) {
+      paramb.bw(102, this.JMY);
     }
-    if (!Arrays.equals(this.Ilo, g.bIZ)) {
-      paramb.b(103, this.Ilo);
+    if (!Arrays.equals(this.JMZ, g.bGH)) {
+      paramb.b(103, this.JMZ);
     }
-    if (!Arrays.equals(this.Ilp, g.bIZ)) {
-      paramb.b(200, this.Ilp);
+    if (!Arrays.equals(this.JNa, g.bGH)) {
+      paramb.b(200, this.JNa);
     }
-    if ((this.Ilq != null) && (this.Ilq.length > 0))
+    if ((this.JNb != null) && (this.JNb.length > 0))
     {
       i = j;
-      while (i < this.Ilq.length)
+      while (i < this.JNb.length)
       {
-        localObject = this.Ilq[i];
+        localObject = this.JNb[i];
         if (localObject != null) {
           paramb.a(201, (e)localObject);
         }
@@ -120,50 +120,50 @@ public final class a$q
       }
     }
     if (this.audioStreamType != 0) {
-      paramb.by(202, this.audioStreamType);
+      paramb.bv(202, this.audioStreamType);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
     int m = 0;
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.Ilh != 0) {
-      i = j + b.bA(1, this.Ilh);
+    if (this.JMS != 0) {
+      i = j + b.bx(1, this.JMS);
     }
     j = i;
     if (!this.groupId.equals("")) {
       j = i + b.e(2, this.groupId);
     }
     i = j;
-    if (this.zkT != 0) {
-      i = j + b.bA(3, this.zkT);
+    if (this.ADE != 0) {
+      i = j + b.bx(3, this.ADE);
     }
     j = i;
-    if (this.zkU != 0L) {
-      j = i + b.q(4, this.zkU);
+    if (this.ADF != 0L) {
+      j = i + b.p(4, this.ADF);
     }
     int k = j;
-    if (this.IkG != 0) {
-      k = j + b.bB(5, this.IkG);
+    if (this.JMr != 0) {
+      k = j + b.by(5, this.JMr);
     }
     i = k;
-    if (this.IkD != null) {
-      i = k + b.b(6, this.IkD);
+    if (this.JMo != null) {
+      i = k + b.b(6, this.JMo);
     }
     j = i;
     Object localObject;
-    if (this.Ili != null)
+    if (this.JMT != null)
     {
       j = i;
-      if (this.Ili.length > 0)
+      if (this.JMT.length > 0)
       {
         j = 0;
-        while (j < this.Ili.length)
+        while (j < this.JMT.length)
         {
-          localObject = this.Ili[j];
+          localObject = this.JMT[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(7, (e)localObject);
@@ -175,17 +175,17 @@ public final class a$q
       }
     }
     i = j;
-    if (this.Ilj != null)
+    if (this.JMU != null)
     {
       i = j;
-      if (this.Ilj.length > 0)
+      if (this.JMU.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.Ilj.length)
+        while (j < this.JMU.length)
         {
-          localObject = this.Ilj[j];
+          localObject = this.JMU[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(8, (e)localObject);
@@ -196,55 +196,55 @@ public final class a$q
       }
     }
     j = i;
-    if (this.Ilk != null) {
-      j = i + b.b(9, this.Ilk);
+    if (this.JMV != null) {
+      j = i + b.b(9, this.JMV);
     }
     i = j;
-    if (this.IkI != null) {
-      i = j + b.b(10, this.IkI);
+    if (this.JMt != null) {
+      i = j + b.b(10, this.JMt);
     }
     j = i;
-    if (this.Ill != 0) {
-      j = i + b.bB(11, this.Ill);
+    if (this.JMW != 0) {
+      j = i + b.by(11, this.JMW);
     }
     i = j;
-    if (this.Ilm != 0) {
-      i = j + b.bB(12, this.Ilm);
+    if (this.JMX != 0) {
+      i = j + b.by(12, this.JMX);
     }
     j = i;
-    if (this.htk != 0) {
-      j = i + b.bB(13, this.htk);
+    if (this.hTM != 0) {
+      j = i + b.by(13, this.hTM);
     }
     i = j;
     if (this.msgId != 0L) {
-      i = j + b.p(101, this.msgId);
+      i = j + b.o(101, this.msgId);
     }
     j = i;
-    if (this.Iln != 0) {
-      j = i + b.bB(102, this.Iln);
+    if (this.JMY != 0) {
+      j = i + b.by(102, this.JMY);
     }
     k = j;
-    if (!Arrays.equals(this.Ilo, g.bIZ)) {
-      k = j + b.c(103, this.Ilo);
+    if (!Arrays.equals(this.JMZ, g.bGH)) {
+      k = j + b.c(103, this.JMZ);
     }
     i = k;
-    if (!Arrays.equals(this.Ilp, g.bIZ)) {
-      i = k + b.c(200, this.Ilp);
+    if (!Arrays.equals(this.JNa, g.bGH)) {
+      i = k + b.c(200, this.JNa);
     }
     j = i;
-    if (this.Ilq != null)
+    if (this.JNb != null)
     {
       j = i;
-      if (this.Ilq.length > 0)
+      if (this.JNb.length > 0)
       {
         k = m;
         for (;;)
         {
           j = i;
-          if (k >= this.Ilq.length) {
+          if (k >= this.JNb.length) {
             break;
           }
-          localObject = this.Ilq[k];
+          localObject = this.JNb[k];
           j = i;
           if (localObject != null) {
             j = i + b.b(201, (e)localObject);
@@ -256,7 +256,7 @@ public final class a$q
     }
     i = j;
     if (this.audioStreamType != 0) {
-      i = j + b.bA(202, this.audioStreamType);
+      i = j + b.bx(202, this.audioStreamType);
     }
     return i;
   }

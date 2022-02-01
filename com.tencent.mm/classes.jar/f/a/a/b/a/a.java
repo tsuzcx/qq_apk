@@ -6,12 +6,12 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private int JMy;
-  private int bIK;
-  private int bIL;
-  private int bIM;
-  private int bIN;
-  private int bIQ;
+  private int LzR;
+  private int bGs;
+  private int bGt;
+  private int bGu;
+  private int bGv;
+  private int bGy;
   private byte[] buffer;
   private int bufferSize;
   private InputStream input;
@@ -19,19 +19,19 @@ public final class a
   public a(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(2420);
-    this.bIK = 0;
-    this.bIM = 0;
-    this.JMy = 0;
-    this.bIN = 2147483647;
-    this.bIQ = 67108864;
+    this.bGs = 0;
+    this.bGu = 0;
+    this.LzR = 0;
+    this.bGv = 2147483647;
+    this.bGy = 67108864;
     this.buffer = paramArrayOfByte;
     this.bufferSize = (paramInt + 0);
-    this.bIL = 0;
+    this.bGt = 0;
     this.input = null;
     AppMethodBeat.o(2420);
   }
   
-  private int[] ago(int paramInt)
+  private int[] ajk(int paramInt)
   {
     AppMethodBeat.i(2415);
     int j = this.buffer[paramInt];
@@ -79,14 +79,8 @@ public final class a
       i = j;
     } while (k >= 0);
     paramInt = 0;
-    for (;;)
+    while (paramInt < 5)
     {
-      if (paramInt >= 5)
-      {
-        b localb = b.fMx();
-        AppMethodBeat.o(2415);
-        throw localb;
-      }
       if (this.buffer[j] >= 0)
       {
         AppMethodBeat.o(2415);
@@ -94,200 +88,188 @@ public final class a
       }
       paramInt += 1;
     }
+    b localb = b.gfn();
+    AppMethodBeat.o(2415);
+    throw localb;
   }
   
-  private byte[] fU(int paramInt)
+  private byte[] fG(int paramInt)
   {
     AppMethodBeat.i(2423);
     if (paramInt < 0)
     {
-      localObject = b.fMw();
+      localObject = b.gfm();
       AppMethodBeat.o(2423);
       throw ((Throwable)localObject);
     }
-    if (this.JMy + this.bIL + paramInt > this.bIN)
+    if (this.LzR + this.bGt + paramInt > this.bGv)
     {
-      fV(this.bIN - this.JMy - this.bIL);
-      localObject = b.fMv();
+      fH(this.bGv - this.LzR - this.bGt);
+      localObject = b.gfl();
       AppMethodBeat.o(2423);
       throw ((Throwable)localObject);
     }
-    if (paramInt <= this.bufferSize - this.bIL)
+    if (paramInt <= this.bufferSize - this.bGt)
     {
       localObject = new byte[paramInt];
-      System.arraycopy(this.buffer, this.bIL, localObject, 0, paramInt);
-      this.bIL += paramInt;
+      System.arraycopy(this.buffer, this.bGt, localObject, 0, paramInt);
+      this.bGt += paramInt;
       AppMethodBeat.o(2423);
       return localObject;
     }
     if (paramInt < 2048)
     {
       localObject = new byte[paramInt];
-      i = this.bufferSize - this.bIL;
-      System.arraycopy(this.buffer, this.bIL, localObject, 0, i);
-      this.bIL = this.bufferSize;
-      ys(true);
-      for (;;)
+      i = this.bufferSize - this.bGt;
+      System.arraycopy(this.buffer, this.bGt, localObject, 0, i);
+      this.bGt = this.bufferSize;
+      zK(true);
+      while (paramInt - i > this.bufferSize)
       {
-        if (paramInt - i <= this.bufferSize)
-        {
-          System.arraycopy(this.buffer, 0, localObject, i, paramInt - i);
-          this.bIL = (paramInt - i);
-          AppMethodBeat.o(2423);
-          return localObject;
-        }
         System.arraycopy(this.buffer, 0, localObject, i, this.bufferSize);
         i += this.bufferSize;
-        this.bIL = this.bufferSize;
-        ys(true);
+        this.bGt = this.bufferSize;
+        zK(true);
       }
+      System.arraycopy(this.buffer, 0, localObject, i, paramInt - i);
+      this.bGt = (paramInt - i);
+      AppMethodBeat.o(2423);
+      return localObject;
     }
-    int m = this.bIL;
+    int m = this.bGt;
     int n = this.bufferSize;
-    this.JMy += this.bufferSize;
-    this.bIL = 0;
+    this.LzR += this.bufferSize;
+    this.bGt = 0;
     this.bufferSize = 0;
     Object localObject = new LinkedList();
     int i = paramInt - (n - m);
-    byte[] arrayOfByte1;
-    if (i <= 0)
+    while (i > 0)
     {
-      arrayOfByte1 = new byte[paramInt];
-      i = n - m;
-      System.arraycopy(this.buffer, m, arrayOfByte1, 0, i);
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt >= ((LinkedList)localObject).size())
+      arrayOfByte1 = new byte[Math.min(i, 2048)];
+      int j = 0;
+      while (j < arrayOfByte1.length)
       {
-        AppMethodBeat.o(2423);
-        return arrayOfByte1;
-        arrayOfByte1 = new byte[Math.min(i, 2048)];
-        int j = 0;
-        for (;;)
+        if (this.input == null) {}
+        for (int k = -1; k == -1; k = this.input.read(arrayOfByte1, j, arrayOfByte1.length - j))
         {
-          if (j >= arrayOfByte1.length)
-          {
-            j = arrayOfByte1.length;
-            ((LinkedList)localObject).add(arrayOfByte1);
-            i -= j;
-            break;
-          }
-          if (this.input == null) {}
-          for (int k = -1; k == -1; k = this.input.read(arrayOfByte1, j, arrayOfByte1.length - j))
-          {
-            localObject = b.fMv();
-            AppMethodBeat.o(2423);
-            throw ((Throwable)localObject);
-          }
-          this.JMy += k;
-          j += k;
+          localObject = b.gfl();
+          AppMethodBeat.o(2423);
+          throw ((Throwable)localObject);
         }
+        this.LzR += k;
+        j += k;
       }
+      j = arrayOfByte1.length;
+      ((LinkedList)localObject).add(arrayOfByte1);
+      i -= j;
+    }
+    byte[] arrayOfByte1 = new byte[paramInt];
+    i = n - m;
+    System.arraycopy(this.buffer, m, arrayOfByte1, 0, i);
+    paramInt = 0;
+    while (paramInt < ((LinkedList)localObject).size())
+    {
       byte[] arrayOfByte2 = (byte[])((LinkedList)localObject).get(paramInt);
       System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, arrayOfByte2.length);
       i += arrayOfByte2.length;
       paramInt += 1;
     }
+    AppMethodBeat.o(2423);
+    return arrayOfByte1;
   }
   
-  private void fV(int paramInt)
+  private void fH(int paramInt)
   {
     AppMethodBeat.i(2424);
     b localb;
     if (paramInt < 0)
     {
-      localb = b.fMw();
+      localb = b.gfm();
       AppMethodBeat.o(2424);
       throw localb;
     }
-    if (this.JMy + this.bIL + paramInt > this.bIN)
+    if (this.LzR + this.bGt + paramInt > this.bGv)
     {
-      fV(this.bIN - this.JMy - this.bIL);
-      localb = b.fMv();
+      fH(this.bGv - this.LzR - this.bGt);
+      localb = b.gfl();
       AppMethodBeat.o(2424);
       throw localb;
     }
-    if (paramInt < this.bufferSize - this.bIL)
+    if (paramInt < this.bufferSize - this.bGt)
     {
-      this.bIL += paramInt;
+      this.bGt += paramInt;
       AppMethodBeat.o(2424);
       return;
     }
-    int i = this.bufferSize - this.bIL;
-    this.JMy += i;
-    this.bIL = 0;
+    int i = this.bufferSize - this.bGt;
+    this.LzR += i;
+    this.bGt = 0;
     this.bufferSize = 0;
-    for (;;)
+    while (i < paramInt)
     {
-      if (i >= paramInt)
-      {
-        AppMethodBeat.o(2424);
-        return;
-      }
       if (this.input == null) {}
       for (int j = -1; j <= 0; j = (int)this.input.skip(paramInt - i))
       {
-        localb = b.fMv();
+        localb = b.gfl();
         AppMethodBeat.o(2424);
         throw localb;
       }
       i += j;
-      this.JMy = (j + this.JMy);
+      this.LzR = (j + this.LzR);
     }
+    AppMethodBeat.o(2424);
   }
   
-  private void xU()
+  private void xH()
   {
-    this.bufferSize += this.bIK;
-    int i = this.JMy + this.bufferSize;
-    if (i > this.bIN)
+    this.bufferSize += this.bGs;
+    int i = this.LzR + this.bufferSize;
+    if (i > this.bGv)
     {
-      this.bIK = (i - this.bIN);
-      this.bufferSize -= this.bIK;
+      this.bGs = (i - this.bGv);
+      this.bufferSize -= this.bGs;
       return;
     }
-    this.bIK = 0;
+    this.bGs = 0;
   }
   
-  private byte xW()
+  private byte xJ()
   {
     AppMethodBeat.i(2422);
-    if (this.bIL == this.bufferSize) {
-      ys(true);
+    if (this.bGt == this.bufferSize) {
+      zK(true);
     }
     byte[] arrayOfByte = this.buffer;
-    int i = this.bIL;
-    this.bIL = (i + 1);
+    int i = this.bGt;
+    this.bGt = (i + 1);
     byte b = arrayOfByte[i];
     AppMethodBeat.o(2422);
     return b;
   }
   
-  private boolean ys(boolean paramBoolean)
+  private boolean zK(boolean paramBoolean)
   {
     AppMethodBeat.i(2421);
     Object localObject;
-    if (this.bIL < this.bufferSize)
+    if (this.bGt < this.bufferSize)
     {
       localObject = new IllegalStateException("refillBuffer() called when buffer wasn't empty.");
       AppMethodBeat.o(2421);
       throw ((Throwable)localObject);
     }
-    if (this.JMy + this.bufferSize == this.bIN)
+    if (this.LzR + this.bufferSize == this.bGv)
     {
       if (paramBoolean)
       {
-        localObject = b.fMv();
+        localObject = b.gfl();
         AppMethodBeat.o(2421);
         throw ((Throwable)localObject);
       }
       AppMethodBeat.o(2421);
       return false;
     }
-    this.JMy += this.bufferSize;
-    this.bIL = 0;
+    this.LzR += this.bufferSize;
+    this.bGt = 0;
     if (this.input == null) {}
     for (int i = -1;; i = this.input.read(this.buffer))
     {
@@ -299,18 +281,18 @@ public final class a
       if (!paramBoolean) {
         break;
       }
-      localObject = b.fMv();
+      localObject = b.gfl();
       AppMethodBeat.o(2421);
       throw ((Throwable)localObject);
     }
     AppMethodBeat.o(2421);
     return false;
     label159:
-    xU();
-    i = this.JMy + this.bufferSize + this.bIK;
-    if ((i > this.bIQ) || (i < 0))
+    xH();
+    i = this.LzR + this.bufferSize + this.bGs;
+    if ((i > this.bGy) || (i < 0))
     {
-      localObject = b.fMz();
+      localObject = b.gfp();
       AppMethodBeat.o(2421);
       throw ((Throwable)localObject);
     }
@@ -318,53 +300,57 @@ public final class a
     return true;
   }
   
-  public final LinkedList<byte[]> agn(int paramInt)
+  public final LinkedList<byte[]> ajj(int paramInt)
   {
     AppMethodBeat.i(2412);
     LinkedList localLinkedList = new LinkedList();
-    int i = xS();
+    int i = xF();
+    Object localObject;
+    OutOfMemoryError localOutOfMemoryError2;
     try
     {
-      byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.buffer, this.bIL, arrayOfByte, 0, i);
-      localLinkedList.add(arrayOfByte);
-      this.bIL = (i + this.bIL);
-      i = this.bIL;
-      if (this.bIL == this.bufferSize)
+      localObject = new byte[i];
+      System.arraycopy(this.buffer, this.bGt, localObject, 0, i);
+      localLinkedList.add(localObject);
+      this.bGt = (i + this.bGt);
+      i = this.bGt;
+      if (this.bGt == this.bufferSize)
       {
         AppMethodBeat.o(2412);
         return localLinkedList;
       }
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (OutOfMemoryError localOutOfMemoryError1)
     {
-      localObject = new OutOfMemoryError("alloc bytes:".concat(String.valueOf(i)));
+      localOutOfMemoryError2 = new OutOfMemoryError("alloc bytes:".concat(String.valueOf(i)));
       AppMethodBeat.o(2412);
-      throw ((Throwable)localObject);
+      throw localOutOfMemoryError2;
     }
-    Object localObject = ago(i);
-    for (i = localObject[0];; i = localObject[0])
+    for (;;)
     {
-      if (f.a.a.b.a.gc(i) != paramInt) {}
-      do
-      {
-        AppMethodBeat.o(2412);
-        return localLinkedList;
-        this.bIL = localObject[1];
-        i = xS();
-        localObject = new byte[i];
-        System.arraycopy(this.buffer, this.bIL, localObject, 0, i);
-        localLinkedList.add(localObject);
-        this.bIL = (i + this.bIL);
-      } while (this.bIL == this.bufferSize);
-      localObject = ago(this.bIL);
+      localObject = ajk(i);
+      if (f.a.a.b.a.fO(localObject[0]) != paramInt) {
+        break;
+      }
+      this.bGt = localObject[1];
+      i = xF();
+      localObject = new byte[i];
+      System.arraycopy(this.buffer, this.bGt, localObject, 0, i);
+      localOutOfMemoryError2.add(localObject);
+      this.bGt = (i + this.bGt);
+      if (this.bGt == this.bufferSize) {
+        break;
+      }
+      i = this.bGt;
     }
+    AppMethodBeat.o(2412);
+    return localOutOfMemoryError2;
   }
   
-  public final boolean fHu()
+  public final boolean fZX()
   {
     AppMethodBeat.i(2411);
-    if (xS() != 0)
+    if (xF() != 0)
     {
       AppMethodBeat.o(2411);
       return true;
@@ -373,28 +359,28 @@ public final class a
     return false;
   }
   
-  public final int fHx()
+  public final int gaa()
   {
     AppMethodBeat.i(2418);
-    int i = xW();
-    int j = xW();
-    int k = xW();
-    int m = xW();
+    int i = xJ();
+    int j = xJ();
+    int k = xJ();
+    int m = xJ();
     AppMethodBeat.o(2418);
     return i & 0xFF | (j & 0xFF) << 8 | (k & 0xFF) << 16 | (m & 0xFF) << 24;
   }
   
-  public final long fHy()
+  public final long gab()
   {
     AppMethodBeat.i(2419);
-    int i = xW();
-    int j = xW();
-    int k = xW();
-    int m = xW();
-    int n = xW();
-    int i1 = xW();
-    int i2 = xW();
-    int i3 = xW();
+    int i = xJ();
+    int j = xJ();
+    int k = xJ();
+    int m = xJ();
+    int n = xJ();
+    int i1 = xJ();
+    int i2 = xJ();
+    int i3 = xJ();
     long l1 = i;
     long l2 = j;
     long l3 = k;
@@ -407,48 +393,40 @@ public final class a
     return (l2 & 0xFF) << 8 | l1 & 0xFF | (l3 & 0xFF) << 16 | (l4 & 0xFF) << 24 | (l5 & 0xFF) << 32 | (l6 & 0xFF) << 40 | (l7 & 0xFF) << 48 | (l8 & 0xFF) << 56;
   }
   
-  public final LinkedList<Integer> fMs()
+  public final LinkedList<Integer> gfi()
   {
     AppMethodBeat.i(2410);
     LinkedList localLinkedList = new LinkedList();
-    for (;;)
-    {
-      if (this.bIL >= this.bufferSize)
-      {
-        AppMethodBeat.o(2410);
-        return localLinkedList;
-      }
-      localLinkedList.add(Integer.valueOf(xS()));
+    while (this.bGt < this.bufferSize) {
+      localLinkedList.add(Integer.valueOf(xF()));
     }
+    AppMethodBeat.o(2410);
+    return localLinkedList;
   }
   
-  public final LinkedList<Long> fMt()
+  public final LinkedList<Long> gfj()
   {
     AppMethodBeat.i(183559);
     LinkedList localLinkedList = new LinkedList();
-    for (;;)
-    {
-      if (this.bIL >= this.bufferSize)
-      {
-        AppMethodBeat.o(183559);
-        return localLinkedList;
-      }
-      localLinkedList.add(Long.valueOf(xT()));
+    while (this.bGt < this.bufferSize) {
+      localLinkedList.add(Long.valueOf(xG()));
     }
+    AppMethodBeat.o(183559);
+    return localLinkedList;
   }
   
-  public final com.tencent.mm.bx.b fMu()
+  public final com.tencent.mm.bw.b gfk()
   {
     AppMethodBeat.i(2414);
-    int i = xS();
-    if ((i < this.bufferSize - this.bIL) && (i > 0))
+    int i = xF();
+    if ((i < this.bufferSize - this.bGt) && (i > 0))
     {
-      localb = com.tencent.mm.bx.b.F(this.buffer, this.bIL, i);
-      this.bIL = (i + this.bIL);
+      localb = com.tencent.mm.bw.b.E(this.buffer, this.bGt, i);
+      this.bGt = (i + this.bGt);
       AppMethodBeat.o(2414);
       return localb;
     }
-    com.tencent.mm.bx.b localb = com.tencent.mm.bx.b.cd(fU(i));
+    com.tencent.mm.bw.b localb = com.tencent.mm.bw.b.cc(fG(i));
     AppMethodBeat.o(2414);
     return localb;
   }
@@ -456,51 +434,51 @@ public final class a
   public final String readString()
   {
     AppMethodBeat.i(2413);
-    int i = xS();
-    if ((i < this.bufferSize - this.bIL) && (i > 0))
+    int i = xF();
+    if ((i < this.bufferSize - this.bGt) && (i > 0))
     {
-      str = new String(this.buffer, this.bIL, i, "UTF-8");
-      this.bIL = (i + this.bIL);
+      str = new String(this.buffer, this.bGt, i, "UTF-8");
+      this.bGt = (i + this.bGt);
       AppMethodBeat.o(2413);
       return str;
     }
-    String str = new String(fU(i), "UTF-8");
+    String str = new String(fG(i), "UTF-8");
     AppMethodBeat.o(2413);
     return str;
   }
   
-  public final int xR()
+  public final int xE()
   {
     AppMethodBeat.i(168737);
-    if ((this.bIL == this.bufferSize) && (!ys(false)))
+    if ((this.bGt == this.bufferSize) && (!zK(false)))
     {
-      this.bIM = 0;
+      this.bGu = 0;
       AppMethodBeat.o(168737);
       return 0;
     }
-    this.bIM = xS();
-    if (this.bIM == 0)
+    this.bGu = xF();
+    if (this.bGu == 0)
     {
-      b localb = b.fMy();
+      b localb = b.gfo();
       AppMethodBeat.o(168737);
       throw localb;
     }
-    int i = this.bIM;
+    int i = this.bGu;
     AppMethodBeat.o(168737);
     return i;
   }
   
-  public final int xS()
+  public final int xF()
   {
     AppMethodBeat.i(2416);
-    int i = xW();
+    int i = xJ();
     if (i >= 0)
     {
       AppMethodBeat.o(2416);
       return i;
     }
     i &= 0x7F;
-    int j = xW();
+    int j = xJ();
     if (j >= 0) {
       i |= j << 7;
     }
@@ -512,7 +490,7 @@ public final class a
         AppMethodBeat.o(2416);
         return i;
         i |= (j & 0x7F) << 7;
-        j = xW();
+        j = xJ();
         if (j >= 0)
         {
           i |= j << 14;
@@ -520,49 +498,40 @@ public final class a
         else
         {
           i |= (j & 0x7F) << 14;
-          j = xW();
+          j = xJ();
           if (j < 0) {
             break;
           }
           i |= j << 21;
         }
       }
-      k = xW();
+      k = xJ();
       j = i | (j & 0x7F) << 21 | k << 28;
       i = j;
     } while (k >= 0);
     i = 0;
-    for (;;)
+    while (i < 5)
     {
-      if (i >= 5)
-      {
-        b localb = b.fMx();
-        AppMethodBeat.o(2416);
-        throw localb;
-      }
-      if (xW() >= 0)
+      if (xJ() >= 0)
       {
         AppMethodBeat.o(2416);
         return j;
       }
       i += 1;
     }
+    b localb = b.gfn();
+    AppMethodBeat.o(2416);
+    throw localb;
   }
   
-  public final long xT()
+  public final long xG()
   {
     AppMethodBeat.i(2417);
     int i = 0;
     long l = 0L;
-    for (;;)
+    while (i < 64)
     {
-      if (i >= 64)
-      {
-        b localb = b.fMx();
-        AppMethodBeat.o(2417);
-        throw localb;
-      }
-      int j = xW();
+      int j = xJ();
       l |= (j & 0x7F) << i;
       if ((j & 0x80) == 0)
       {
@@ -571,6 +540,9 @@ public final class a
       }
       i += 7;
     }
+    b localb = b.gfn();
+    AppMethodBeat.o(2417);
+    throw localb;
   }
 }
 

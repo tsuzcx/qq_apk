@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.c.a.b;
 import com.tencent.mm.pluginsdk.model.w.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -22,27 +22,27 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletIbgAdapterUI
   extends WalletBaseUI
 {
-  private void auz(String paramString)
+  private void azQ(String paramString)
   {
     AppMethodBeat.i(71442);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
-    com.tencent.mm.wallet_core.ui.e.X(this, localIntent);
+    com.tencent.mm.wallet_core.ui.e.al(this, localIntent);
     AppMethodBeat.o(71442);
   }
   
-  private void eeY()
+  private void eut()
   {
     AppMethodBeat.i(71443);
-    g.afC();
-    g.afB().afk().set(ae.a.FkD, Boolean.TRUE);
+    g.agS();
+    g.agR().agA().set(ah.a.GIs, Boolean.TRUE);
     h.a(this, false, getString(2131766143), "", getString(2131766138), getString(2131766137), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(71436);
-        w.a.evx();
+        w.a.eKR();
         Toast.makeText(WalletIbgAdapterUI.this, WalletIbgAdapterUI.this.getString(2131766139), 1).show();
         WalletIbgAdapterUI.this.finish();
         AppMethodBeat.o(71436);
@@ -94,42 +94,42 @@ public class WalletIbgAdapterUI
     AppMethodBeat.i(71440);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof b)))
     {
-      paramInt1 = ((b)paramn).zXb;
+      paramInt1 = ((b)paramn).Bpv;
       paramString = ((b)paramn).jumpUrl;
-      ad.i("MicroMsg.WalletH5AdapterUI", "hy: get success! url is: %s, download x5 = %b", new Object[] { paramString, Integer.valueOf(paramInt1) });
+      ac.i("MicroMsg.WalletH5AdapterUI", "hy: get success! url is: %s, download x5 = %b", new Object[] { paramString, Integer.valueOf(paramInt1) });
       if (paramInt1 == 1)
       {
-        paramInt1 = w.a.evw();
-        ad.i("MicroMsg.WalletH5AdapterUI", "now status = %d", new Object[] { Integer.valueOf(paramInt1) });
+        paramInt1 = w.a.eKQ();
+        ac.i("MicroMsg.WalletH5AdapterUI", "now status = %d", new Object[] { Integer.valueOf(paramInt1) });
         switch (paramInt1)
         {
         default: 
-          eeY();
+          eut();
         case 1: 
         case 4: 
           for (paramInt1 = 0; paramInt1 != 0; paramInt1 = 1)
           {
-            auz(paramString);
+            azQ(paramString);
             finish();
             AppMethodBeat.o(71440);
             return false;
           }
         }
-        g.afC();
-        if (((Boolean)g.afB().afk().get(ae.a.FkD, Boolean.FALSE)).booleanValue())
+        g.agS();
+        if (((Boolean)g.agR().agA().get(ah.a.GIs, Boolean.FALSE)).booleanValue())
         {
           Toast.makeText(this, getString(2131766140), 1).show();
-          w.a.evx();
+          w.a.eKR();
           finish();
         }
         for (;;)
         {
           paramInt1 = 0;
           break;
-          eeY();
+          eut();
         }
       }
-      auz(paramString);
+      azQ(paramString);
       finish();
       AppMethodBeat.o(71440);
       return false;
@@ -147,7 +147,7 @@ public class WalletIbgAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.ibg.WalletIbgAdapterUI
  * JD-Core Version:    0.7.0.1
  */

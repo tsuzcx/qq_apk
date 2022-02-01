@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.appbrand.dynamic.ui.WxaWidgetDebugUI;
 public final class e
   implements n
 {
-  boolean jlp;
+  boolean jLC;
   
   public final boolean a(String paramString, n.a parama)
   {
@@ -23,15 +23,15 @@ public final class e
     return bool;
   }
   
-  public final boolean atR()
+  public final boolean aAI()
   {
-    return this.jlp;
+    return this.jLC;
   }
   
-  public final boolean atS()
+  public final boolean aAJ()
   {
     AppMethodBeat.i(121248);
-    boolean bool = com.tencent.mm.sdk.a.b.eEQ();
+    boolean bool = com.tencent.mm.sdk.a.b.eUk();
     AppMethodBeat.o(121248);
     return bool;
   }
@@ -44,10 +44,10 @@ public final class e
     return bool;
   }
   
-  public final void cr(Context paramContext)
+  public final void cA(Context paramContext)
   {
     AppMethodBeat.i(121244);
-    com.tencent.mm.plugin.appbrand.wxawidget.console.e.dY(paramContext);
+    com.tencent.mm.plugin.appbrand.wxawidget.console.e.eg(paramContext);
     AppMethodBeat.o(121244);
   }
   
@@ -55,32 +55,32 @@ public final class e
   {
     AppMethodBeat.i(121243);
     Intent localIntent = new Intent(paramContext, WxaWidgetDebugUI.class);
-    String str = WxaWidgetInitializer.cx(paramBundle.getString("app_id"), paramBundle.getString("msg_id"));
+    String str = WxaWidgetInitializer.cH(paramBundle.getString("app_id"), paramBundle.getString("msg_id"));
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("id", str);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBundle.adn(), "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramBundle.lS(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().ba(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBundle.aeD(), "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramBundle.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(121243);
   }
   
-  public final void ed(boolean paramBoolean)
+  public final void ey(boolean paramBoolean)
   {
-    this.jlp = paramBoolean;
+    this.jLC = paramBoolean;
   }
   
-  public final boolean nz(int paramInt)
+  public final boolean on(int paramInt)
   {
     AppMethodBeat.i(121245);
-    boolean bool = j.a.nz(paramInt);
+    boolean bool = j.a.on(paramInt);
     AppMethodBeat.o(121245);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.e
  * JD-Core Version:    0.7.0.1
  */

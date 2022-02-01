@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.messenger.a;
 
 import android.view.View;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public abstract class a
   extends o
 {
-  private long txC = -1L;
+  private long uGa = -1L;
   
   public a()
   {
@@ -17,16 +17,16 @@ public abstract class a
   
   public void onClick(View paramView)
   {
-    if (bt.aS(this.txC) > 1000L)
+    if (bs.aO(this.uGa) > 1000L)
     {
       super.onClick(paramView);
       onClickImp(paramView);
     }
     for (;;)
     {
-      this.txC = bt.GC();
+      this.uGa = bs.Gn();
       return;
-      ad.w("MicroMsg.AvoidDuplicatedPressableSpan", "hy: too often click");
+      ac.w("MicroMsg.AvoidDuplicatedPressableSpan", "hy: too often click");
       setIsPressed(false);
     }
   }
@@ -35,7 +35,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.a.a
  * JD-Core Version:    0.7.0.1
  */

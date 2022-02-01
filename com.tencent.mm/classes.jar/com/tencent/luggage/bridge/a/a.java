@@ -7,11 +7,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static a.b bZK;
+  public static b bWH;
+  
+  public static abstract interface a
+    extends a.c
+  {}
+  
+  public static abstract interface b
+  {
+    public abstract void a(a.a parama);
+    
+    public abstract void a(a.c paramc);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract <T extends b> void a(Class<T> paramClass, T paramT);
+    
+    public abstract <T extends d> void a(Class<T> paramClass, T paramT);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.bridge.a.a
  * JD-Core Version:    0.7.0.1
  */

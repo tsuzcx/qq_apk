@@ -3,14 +3,17 @@ package com.tencent.tencentmap.mapsdk.maps;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
-import android.location.Location;
 import android.view.View;
 import com.tencent.map.lib.MapLanguage;
+import com.tencent.map.sdk.comps.indoor.IIndoor;
+import com.tencent.map.sdk.comps.mylocation.IMyLocation;
 import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 import com.tencent.tencentmap.mapsdk.maps.model.Circle;
 import com.tencent.tencentmap.mapsdk.maps.model.CircleOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.CustomLayer;
 import com.tencent.tencentmap.mapsdk.maps.model.CustomLayerOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.GroundOverlay;
+import com.tencent.tencentmap.mapsdk.maps.model.GroundOverlayOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.IOverlay;
 import com.tencent.tencentmap.mapsdk.maps.model.IndoorBuilding;
 import com.tencent.tencentmap.mapsdk.maps.model.Language;
@@ -28,10 +31,12 @@ import com.tencent.tencentmap.mapsdk.maps.model.RestrictBoundsFitMode;
 import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
 import com.tencent.tencentmap.mapsdk.maps.model.TileOverlay;
 import com.tencent.tencentmap.mapsdk.maps.model.TileOverlayOptions;
-import com.tencent.tencentmap.mapsdk.maps.model.TrafficEvent;
+import com.tencent.tencentmap.mapsdk.maps.model.VectorHeatOverlay;
+import com.tencent.tencentmap.mapsdk.maps.model.VectorHeatOverlayOptions;
 import java.util.List;
 
 public abstract interface TencentMap
+  extends IIndoor, IMyLocation
 {
   public static final int MAP_MODE_NAV = 12;
   public static final int MAP_MODE_NAV_NIGHT = 1013;
@@ -51,6 +56,8 @@ public abstract interface TencentMap
   
   public abstract CustomLayer addCustomLayer(CustomLayerOptions paramCustomLayerOptions);
   
+  public abstract GroundOverlay addGroundOverlay(GroundOverlayOptions paramGroundOverlayOptions);
+  
   public abstract Marker addMarker(MarkerOptions paramMarkerOptions);
   
   public abstract void addOnMapLoadedCallback(OnMapLoadedCallback paramOnMapLoadedCallback);
@@ -62,6 +69,8 @@ public abstract interface TencentMap
   public abstract void addTencentMapGestureListener(TencentMapGestureListener paramTencentMapGestureListener);
   
   public abstract TileOverlay addTileOverlay(TileOverlayOptions paramTileOverlayOptions);
+  
+  public abstract VectorHeatOverlay addVectorHeatOverlay(VectorHeatOverlayOptions paramVectorHeatOverlayOptions);
   
   public abstract void animateCamera(CameraUpdate paramCameraUpdate);
   
@@ -79,11 +88,6 @@ public abstract interface TencentMap
   
   public abstract void enableMultipleInfowindow(boolean paramBoolean);
   
-  @Deprecated
-  public abstract String getActivedIndoorBuilding(LatLng paramLatLng);
-  
-  public abstract String[] getActivedIndoorFloorNames();
-  
   public abstract List<LatLng> getBounderPoints(Marker paramMarker);
   
   public abstract CameraPosition getCameraPosition();
@@ -92,9 +96,9 @@ public abstract interface TencentMap
   
   public abstract String getDebugError();
   
-  public abstract int getIndoorFloorId();
-  
   public abstract MapLanguage getLanguage();
+  
+  public abstract <T extends TencentMapComponent.Component> T getMapComponent(Class<T> paramClass);
   
   public abstract TencentMapContext getMapContext();
   
@@ -112,8 +116,6 @@ public abstract interface TencentMap
   
   public abstract float getMinZoomLevel();
   
-  public abstract Location getMyLocation();
-  
   public abstract Projection getProjection();
   
   public abstract UiSettings getUiSettings();
@@ -127,8 +129,6 @@ public abstract interface TencentMap
   public abstract boolean isDestroyed();
   
   public abstract boolean isHandDrawMapEnable();
-  
-  public abstract boolean isMyLocationEnabled();
   
   public abstract boolean isSateLiteEnable();
   
@@ -150,21 +150,15 @@ public abstract interface TencentMap
   
   public abstract void setCameraCenterProportion(float paramFloat1, float paramFloat2, boolean paramBoolean);
   
+  public abstract void setCustomRender(CustomRender paramCustomRender);
+  
   public abstract void setDrawPillarWith2DStyle(boolean paramBoolean);
   
   public abstract void setForeignLanguage(Language paramLanguage);
   
   public abstract void setHandDrawMapEnable(boolean paramBoolean);
   
-  public abstract void setIndoorEnabled(boolean paramBoolean);
-  
-  public abstract void setIndoorFloor(int paramInt);
-  
-  public abstract void setIndoorFloor(String paramString1, String paramString2);
-  
   public abstract void setInfoWindowAdapter(InfoWindowAdapter paramInfoWindowAdapter);
-  
-  public abstract void setLocationSource(LocationSource paramLocationSource);
   
   public abstract void setMapCenterAndScale(float paramFloat1, float paramFloat2, float paramFloat3);
   
@@ -176,15 +170,11 @@ public abstract interface TencentMap
   
   public abstract void setMinZoomLevel(int paramInt);
   
-  public abstract void setMyLocationEnabled(boolean paramBoolean);
-  
   public abstract void setMyLocationStyle(MyLocationStyle paramMyLocationStyle);
   
   public abstract void setOnCameraChangeListener(OnCameraChangeListener paramOnCameraChangeListener);
   
   public abstract void setOnCompassClickedListener(TencentMap.OnCompassClickedListener paramOnCompassClickedListener);
-  
-  public abstract void setOnIndoorStateChangeListener(OnIndoorStateChangeListener paramOnIndoorStateChangeListener);
   
   public abstract void setOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
@@ -200,13 +190,11 @@ public abstract interface TencentMap
   
   public abstract void setOnMarkerDragListener(OnMarkerDragListener paramOnMarkerDragListener);
   
-  public abstract void setOnMyLocationChangeListener(OnMyLocationChangeListener paramOnMyLocationChangeListener);
-  
   public abstract void setOnPolylineClickListener(OnPolylineClickListener paramOnPolylineClickListener);
   
   public abstract void setOnTapMapViewInfoWindowHidden(boolean paramBoolean);
   
-  public abstract void setOnTrafficEventClickListener(OnTrafficEventClickListener paramOnTrafficEventClickListener);
+  public abstract void setOnTrafficEventClickListener(TencentMap.OnTrafficEventClickListener paramOnTrafficEventClickListener);
   
   public abstract void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -301,19 +289,9 @@ public abstract interface TencentMap
     public abstract void onMarkerDragStart(Marker paramMarker);
   }
   
-  public static abstract interface OnMyLocationChangeListener
-  {
-    public abstract void onMyLocationChange(Location paramLocation);
-  }
-  
   public static abstract interface OnPolylineClickListener
   {
     public abstract void onPolylineClick(Polyline paramPolyline, LatLng paramLatLng);
-  }
-  
-  public static abstract interface OnTrafficEventClickListener
-  {
-    public abstract void onTrafficEventClicked(TrafficEvent paramTrafficEvent);
   }
   
   public static abstract interface SnapshotReadyCallback
@@ -323,7 +301,7 @@ public abstract interface TencentMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMap
  * JD-Core Version:    0.7.0.1
  */

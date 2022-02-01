@@ -8,11 +8,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class b<_Struct, _Change>
   extends Vending<_Struct, Integer, _Change>
 {
-  public int HPl = 5;
-  private a HPm = new a((byte)0);
+  public int JpG = 5;
+  private a JpH = new a((byte)0);
   public int mCount = 0;
   
-  private void jS(int paramInt1, int paramInt2)
+  private void ke(int paramInt1, int paramInt2)
   {
     int i;
     int j;
@@ -25,9 +25,9 @@ public abstract class b<_Struct, _Change>
     for (;;)
     {
       int k;
-      synchronized (this.HPm)
+      synchronized (this.JpH)
       {
-        Object localObject1 = this.HPm;
+        Object localObject1 = this.JpH;
         if (!((a)localObject1).initialized)
         {
           ((a)localObject1).set(j, paramInt1);
@@ -37,8 +37,8 @@ public abstract class b<_Struct, _Change>
         }
         else
         {
-          paramInt2 = ((a)localObject1).xo;
-          k = ((a)localObject1).xq;
+          paramInt2 = ((a)localObject1).ym;
+          k = ((a)localObject1).yo;
           if (paramInt2 > paramInt1) {
             break label479;
           }
@@ -96,12 +96,12 @@ public abstract class b<_Struct, _Change>
           j = m - paramInt2;
           localf = getLoader();
           localInteger = Integer.valueOf(j);
-          if (localf.iQZ.get()) {}
+          if (localf.jrj.get()) {}
         }
-        synchronized (localf.HPs)
+        synchronized (localf.JpN)
         {
-          Vending.f.b localb = (Vending.f.b)localf.HPq.get(localInteger);
-          if ((localb != null) && (localb != Vending.f.b.HPu))
+          Vending.f.b localb = (Vending.f.b)localf.JpL.get(localInteger);
+          if ((localb != null) && (localb != Vending.f.b.JpP))
           {
             paramInt2 += 1;
             break label295;
@@ -115,7 +115,7 @@ public abstract class b<_Struct, _Change>
             j = k + paramInt2;
             break label311;
           }
-          localf.HPq.put(localInteger, Vending.f.b.HPv);
+          localf.JpL.put(localInteger, Vending.f.b.JpQ);
           localf.mVendingHandler.sendMessage(localf.mVendingHandler.obtainMessage(0, localInteger));
         }
         label455:
@@ -140,9 +140,9 @@ public abstract class b<_Struct, _Change>
     }
   }
   
-  protected abstract _Struct NM(int paramInt);
+  protected abstract _Struct PQ(int paramInt);
   
-  protected abstract int fgZ();
+  protected abstract int fxb();
   
   public final <T> T get(int paramInt)
   {
@@ -156,11 +156,11 @@ public abstract class b<_Struct, _Change>
   
   protected void loaderClear()
   {
-    synchronized (this.HPm)
+    synchronized (this.JpH)
     {
-      a locala2 = this.HPm;
-      locala2.xo = -1;
-      locala2.xq = -1;
+      a locala2 = this.JpH;
+      locala2.ym = -1;
+      locala2.yo = -1;
       locala2.initialized = false;
       return;
     }
@@ -168,20 +168,20 @@ public abstract class b<_Struct, _Change>
   
   protected void synchronizing(int paramInt, Object paramObject)
   {
-    this.mCount = fgZ();
+    this.mCount = fxb();
     a.i("Vending.ForwardVending", "the count %s", new Object[] { Integer.valueOf(this.mCount) });
   }
   
   static final class a
   {
     boolean initialized = false;
-    public int xo = -1;
-    public int xq = -1;
+    public int ym = -1;
+    public int yo = -1;
     
     final void set(int paramInt1, int paramInt2)
     {
-      this.xo = paramInt1;
-      this.xq = paramInt2;
+      this.ym = paramInt1;
+      this.yo = paramInt2;
     }
   }
 }

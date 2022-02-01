@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -11,13 +11,13 @@ public final class ah
   public static String a(String paramString, LinkedList<o.i> paramLinkedList, HashMap<String, o.e> paramHashMap)
   {
     AppMethodBeat.i(41573);
-    if ((bt.isNullOrNil(paramString)) || (bt.gL(paramLinkedList)))
+    if ((bs.isNullOrNil(paramString)) || (bs.gY(paramLinkedList)))
     {
       AppMethodBeat.o(41573);
       return paramString;
     }
-    String str1 = ap(paramLinkedList);
-    if (bt.isNullOrNil(str1))
+    String str1 = aw(paramLinkedList);
+    if (bs.isNullOrNil(str1))
     {
       AppMethodBeat.o(41573);
       return paramString;
@@ -32,7 +32,7 @@ public final class ah
       if (paramHashMap.lastIndexOf("</userinfo>") != -1) {
         paramHashMap.insert(paramHashMap.lastIndexOf("</userinfo>") + 11, str1);
       }
-      if ((paramHashMap.lastIndexOf("</jump>") != -1) && (!bt.isNullOrNil(str2))) {
+      if ((paramHashMap.lastIndexOf("</jump>") != -1) && (!bs.isNullOrNil(str2))) {
         paramHashMap.insert(paramHashMap.lastIndexOf("</jump>") + 7, str2);
       }
     }
@@ -40,8 +40,8 @@ public final class ah
     {
       for (;;)
       {
-        ad.e("MicroMsg.GameXmlProcess", paramLinkedList.getMessage());
-        ad.e("MicroMsg.GameXmlProcess", "xml is invalid : ".concat(String.valueOf(paramString)));
+        ac.e("MicroMsg.GameXmlProcess", paramLinkedList.getMessage());
+        ac.e("MicroMsg.GameXmlProcess", "xml is invalid : ".concat(String.valueOf(paramString)));
       }
     }
     paramString = paramHashMap.toString();
@@ -50,13 +50,13 @@ public final class ah
   }
   
   /* Error */
-  private static String ap(LinkedList<o.i> paramLinkedList)
+  private static String aw(LinkedList<o.i> paramLinkedList)
   {
     // Byte code:
     //   0: ldc 107
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 25	com/tencent/mm/sdk/platformtools/bt:gL	(Ljava/util/List;)Z
+    //   6: invokestatic 25	com/tencent/mm/sdk/platformtools/bs:gY	(Ljava/util/List;)Z
     //   9: ifeq +11 -> 20
     //   12: ldc 107
     //   14: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -91,7 +91,7 @@ public final class ah
     //   77: aconst_null
     //   78: ldc 154
     //   80: aload_3
-    //   81: getfield 158	com/tencent/mm/plugin/game/model/o$i:rXo	Ljava/lang/String;
+    //   81: getfield 158	com/tencent/mm/plugin/game/model/o$i:tfg	Ljava/lang/String;
     //   84: invokeinterface 162 4 0
     //   89: pop
     //   90: aload_2
@@ -103,7 +103,7 @@ public final class ah
     //   101: aload_3
     //   102: getfield 167	com/tencent/mm/plugin/game/model/o$i:userName	Ljava/lang/String;
     //   105: ldc 109
-    //   107: invokestatic 171	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   107: invokestatic 171	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   110: invokeinterface 175 2 0
     //   115: pop
     //   116: aload_2
@@ -118,9 +118,9 @@ public final class ah
     //   135: pop
     //   136: aload_2
     //   137: aload_3
-    //   138: getfield 183	com/tencent/mm/plugin/game/model/o$i:bNK	Ljava/lang/String;
+    //   138: getfield 183	com/tencent/mm/plugin/game/model/o$i:bLs	Ljava/lang/String;
     //   141: ldc 109
-    //   143: invokestatic 171	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   143: invokestatic 171	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   146: invokeinterface 175 2 0
     //   151: pop
     //   152: aload_2
@@ -135,9 +135,9 @@ public final class ah
     //   171: pop
     //   172: aload_2
     //   173: aload_3
-    //   174: getfield 188	com/tencent/mm/plugin/game/model/o$i:rXl	Ljava/lang/String;
+    //   174: getfield 188	com/tencent/mm/plugin/game/model/o$i:tfd	Ljava/lang/String;
     //   177: ldc 109
-    //   179: invokestatic 171	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   179: invokestatic 171	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   182: invokeinterface 175 2 0
     //   187: pop
     //   188: aload_2
@@ -152,9 +152,9 @@ public final class ah
     //   207: pop
     //   208: aload_2
     //   209: aload_3
-    //   210: getfield 193	com/tencent/mm/plugin/game/model/o$i:rXm	Ljava/lang/String;
+    //   210: getfield 193	com/tencent/mm/plugin/game/model/o$i:tfe	Ljava/lang/String;
     //   213: ldc 109
-    //   215: invokestatic 171	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   215: invokestatic 171	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   218: invokeinterface 175 2 0
     //   223: pop
     //   224: aload_2
@@ -169,9 +169,9 @@ public final class ah
     //   243: pop
     //   244: aload_2
     //   245: aload_3
-    //   246: getfield 198	com/tencent/mm/plugin/game/model/o$i:rXn	Ljava/lang/String;
+    //   246: getfield 198	com/tencent/mm/plugin/game/model/o$i:tff	Ljava/lang/String;
     //   249: ldc 109
-    //   251: invokestatic 171	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   251: invokestatic 171	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   254: invokeinterface 175 2 0
     //   259: pop
     //   260: aload_2
@@ -189,7 +189,7 @@ public final class ah
     //   284: ldc 82
     //   286: aload_0
     //   287: invokevirtual 85	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   290: invokestatic 91	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   290: invokestatic 91	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   293: ldc 107
     //   295: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   298: ldc 109
@@ -278,7 +278,7 @@ public final class ah
     //   0: ldc 216
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 25	com/tencent/mm/sdk/platformtools/bt:gL	(Ljava/util/List;)Z
+    //   6: invokestatic 25	com/tencent/mm/sdk/platformtools/bs:gY	(Ljava/util/List;)Z
     //   9: ifne +10 -> 19
     //   12: aload_1
     //   13: invokevirtual 221	java/util/HashMap:isEmpty	()Z
@@ -309,7 +309,7 @@ public final class ah
     //   72: astore 5
     //   74: aload_1
     //   75: aload 5
-    //   77: getfield 158	com/tencent/mm/plugin/game/model/o$i:rXo	Ljava/lang/String;
+    //   77: getfield 158	com/tencent/mm/plugin/game/model/o$i:tfg	Ljava/lang/String;
     //   80: invokevirtual 225	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   83: checkcast 227	com/tencent/mm/plugin/game/model/o$e
     //   86: astore 4
@@ -324,7 +324,7 @@ public final class ah
     //   104: aconst_null
     //   105: ldc 231
     //   107: aload 5
-    //   109: getfield 158	com/tencent/mm/plugin/game/model/o$i:rXo	Ljava/lang/String;
+    //   109: getfield 158	com/tencent/mm/plugin/game/model/o$i:tfg	Ljava/lang/String;
     //   112: invokeinterface 162 4 0
     //   117: pop
     //   118: aload_3
@@ -350,9 +350,9 @@ public final class ah
     //   162: pop
     //   163: aload_3
     //   164: aload 4
-    //   166: getfield 245	com/tencent/mm/plugin/game/model/o$e:pdh	Ljava/lang/String;
+    //   166: getfield 245	com/tencent/mm/plugin/game/model/o$e:pGs	Ljava/lang/String;
     //   169: ldc 109
-    //   171: invokestatic 171	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   171: invokestatic 171	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   174: invokeinterface 175 2 0
     //   179: pop
     //   180: aload_3
@@ -370,7 +370,7 @@ public final class ah
     //   204: ldc 82
     //   206: aload_0
     //   207: invokevirtual 85	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   210: invokestatic 91	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   210: invokestatic 91	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   213: ldc 216
     //   215: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   218: ldc 109
@@ -427,7 +427,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ah
  * JD-Core Version:    0.7.0.1
  */

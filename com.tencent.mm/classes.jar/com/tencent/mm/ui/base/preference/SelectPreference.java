@@ -11,9 +11,9 @@ public class SelectPreference
   extends Preference
 {
   private boolean enable;
-  public boolean ira;
+  public boolean isSelected;
   private View mView;
-  private WeImageView raM;
+  private WeImageView sje;
   
   public SelectPreference(Context paramContext)
   {
@@ -38,17 +38,17 @@ public class SelectPreference
   
   public final boolean getSelected()
   {
-    return this.ira;
+    return this.isSelected;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(142672);
     super.onBindView(paramView);
-    Yb(8);
-    this.raM = ((WeImageView)paramView.findViewById(2131305186));
-    paramView = this.raM;
-    if (this.ira) {}
+    aam(8);
+    this.sje = ((WeImageView)paramView.findViewById(2131305186));
+    paramView = this.sje;
+    if (this.isSelected) {}
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
@@ -72,12 +72,12 @@ public class SelectPreference
   
   public final void setSelected(boolean paramBoolean)
   {
-    this.ira = paramBoolean;
+    this.isSelected = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.SelectPreference
  * JD-Core Version:    0.7.0.1
  */

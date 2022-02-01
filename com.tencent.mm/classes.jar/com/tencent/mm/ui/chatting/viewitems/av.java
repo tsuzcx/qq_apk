@@ -1,107 +1,90 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnCreateContextMenuListener;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.c.du;
-import com.tencent.mm.model.bk;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.ui.base.b;
+import com.tencent.mm.bb.b;
+import com.tencent.mm.bb.t;
+import com.tencent.mm.g.c.dy;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.messenger.a.f;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.TextPreviewUI;
-import com.tencent.mm.ui.chatting.c.b.am;
-import com.tencent.mm.ui.chatting.s.e;
-import com.tencent.mm.ui.transmit.MsgRetransmitUI;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.ui.widget.MMTextView;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
 
-public final class av
+final class av
+  implements at.a
 {
-  private static final int GLI = 2131298134;
-  private static final int GLJ = 2131298133;
-  
-  public static void a(Context paramContext, com.tencent.mm.ui.chatting.d.a parama, String paramString, CharSequence paramCharSequence, MMNeat7extView paramMMNeat7extView, bl parambl, int paramInt)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bo parambo)
   {
-    AppMethodBeat.i(191647);
-    q.a(paramContext, parama, paramString, paramCharSequence, paramMMNeat7extView, parambl, paramInt);
-    AppMethodBeat.o(191647);
-  }
-  
-  public static void a(boolean paramBoolean, av.f paramf, com.tencent.mm.ui.chatting.d.a parama)
-  {
-    AppMethodBeat.i(180039);
-    if (paramf == null)
+    AppMethodBeat.i(37381);
+    String str = parama1.getTalkerUserName();
+    parama = (at.b)parama;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("conv_talker_username", str);
+    if ((parama1.HZF instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
     {
-      AppMethodBeat.o(180039);
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramf.GJT.setBackgroundResource(2131231647);
-      paramf.GJU.setTextColor(parama.GzJ.getContext().getResources().getColor(2131099673));
-      paramf.GJU.setText(2131760124);
-      AppMethodBeat.o(180039);
-      return;
-    }
-    paramf.GJT.setBackgroundResource(2131231648);
-    paramf.GJU.setTextColor(parama.GzJ.getContext().getResources().getColor(2131099699));
-    paramf.GJU.setText(2131760126);
-    AppMethodBeat.o(180039);
-  }
-  
-  static final class e
-    extends s.e
-  {
-    public e(com.tencent.mm.ui.chatting.d.a parama)
-    {
-      super();
-    }
-    
-    public final void a(View paramView, com.tencent.mm.ui.chatting.d.a parama, bl parambl)
-    {
-      AppMethodBeat.i(37419);
-      parama = (bi)paramView.getTag();
-      if (parambl.eLS())
-      {
-        if (this.Gob != null)
-        {
-          h.vKh.kvStat(10221, "1");
-          paramView = new Intent();
-          paramView.addFlags(67108864);
-          d.b(this.Gob.GzJ.getContext(), "shake", ".ui.ShakeReportUI", paramView);
-        }
-        AppMethodBeat.o(37419);
-        return;
+      paramInt = 10;
+      localBundle.putInt("scene", paramInt);
+      localBundle.putLong("msg_id", parambo.field_msgId);
+      localBundle.putLong("msg_sever_id", parambo.field_msgSvrId);
+      localBundle.putString("send_msg_username", parambo.field_talker);
+      localBundle.putString("local_session", parama1.HZI);
+      parambo = ((f)g.ab(f.class)).b(parambo.field_content, localBundle, new WeakReference(parama1.HZF.getContext()), new WeakReference(parama.Ipl));
+      if ((parambo != null) && (parambo.length() != 0)) {
+        break label337;
       }
-      if ((parambl.isText()) && ((paramView instanceof MMTextView)))
-      {
-        paramView = (MMTextView)paramView;
-        com.tencent.mm.ui.chatting.l.a.a.fat();
-        com.tencent.mm.ui.chatting.l.a.a.a(paramView.getText(), parama.drF);
+      parama.sSS.setVisibility(8);
+      label173:
+      parambo = t.aGP().CW(str);
+      az.ayM();
+      paramInt = ((Integer)c.agA().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambo == null) || (parambo.hPy == -2)) && ((parambo != null) || (paramInt == -2))) {
+        break label357;
       }
-      AppMethodBeat.o(37419);
+      parama.Ipl.setTextColor(parama1.HZF.getContext().getResources().getColor(2131100151));
+      parama.Ipl.setBackground(parama1.HZF.getContext().getResources().getDrawable(2131231583));
+    }
+    for (;;)
+    {
+      parama.Ipl.setOnClickListener(new av.1(this));
+      parama.Ipl.invalidate();
+      AppMethodBeat.o(37381);
+      return;
+      if (parama1.foQ())
+      {
+        paramInt = 2;
+        break;
+      }
+      if (w.wH(str))
+      {
+        paramInt = 7;
+        break;
+      }
+      paramInt = 1;
+      break;
+      label337:
+      parama.sSS.setVisibility(0);
+      parama.Ipl.ar(parambo);
+      break label173;
+      label357:
+      parama.Ipl.setTextColor(ao.aJ(parama1.HZF.getContext(), 2130968586));
+      parama.Ipl.setBackground(parama1.HZF.getContext().getResources().getDrawable(2131231582));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.av
  * JD-Core Version:    0.7.0.1
  */

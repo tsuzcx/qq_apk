@@ -57,7 +57,7 @@ public final class a
         {
           AppMethodBeat.i(78760);
           if ((paramAnonymousInt & 0x4) == 0) {
-            this.klX.getDecorView().setSystemUiVisibility(a.a(this.klX, paramBoolean));
+            this.kNp.getDecorView().setSystemUiVisibility(a.a(this.kNp, paramBoolean));
           }
           AppMethodBeat.o(78760);
         }

@@ -38,7 +38,7 @@ public class WWMediaFile
     return false;
   }
   
-  public final void fqr()
+  public final void fIM()
   {
     this.contentLengthLimit = 104857600;
   }

@@ -1,18 +1,20 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.api.t;
-import com.tencent.mm.aw.l;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.l;
+import com.tencent.mm.av.o;
 import com.tencent.mm.g.a.cs;
 import com.tencent.mm.g.a.cs.b;
 import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.fav.a.ad;
 import com.tencent.mm.plugin.messenger.a.j;
 import com.tencent.mm.remoteservice.d;
 import com.tencent.mm.remoteservice.f;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public class PhotoEditProxy
   extends com.tencent.mm.remoteservice.a
@@ -35,11 +37,11 @@ public class PhotoEditProxy
   {
     AppMethodBeat.i(103246);
     cs localcs = new cs();
-    ((com.tencent.mm.plugin.fav.a.ad)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fav.a.ad.class)).a(localcs, 2, paramString);
-    localcs.deQ.deW = 44;
-    com.tencent.mm.sdk.b.a.ESL.l(localcs);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PhotoEditProxy", "[doFavInMM] path:%s", new Object[] { paramString });
-    int i = localcs.deR.ret;
+    ((ad)com.tencent.mm.kernel.g.ab(ad.class)).a(localcs, 2, paramString);
+    localcs.dck.dcq = 44;
+    com.tencent.mm.sdk.b.a.GpY.l(localcs);
+    ac.i("MicroMsg.PhotoEditProxy", "[doFavInMM] path:%s", new Object[] { paramString });
+    int i = localcs.dcl.ret;
     AppMethodBeat.o(103246);
     return i;
   }
@@ -56,7 +58,7 @@ public class PhotoEditProxy
   public String getFullPathInMM(String paramString)
   {
     AppMethodBeat.i(103247);
-    paramString = o.ayF().getFullPath(paramString);
+    paramString = o.aFx().getFullPath(paramString);
     AppMethodBeat.o(103247);
     return paramString;
   }
@@ -73,7 +75,7 @@ public class PhotoEditProxy
   public String getSelfUsernameInMM()
   {
     AppMethodBeat.i(103244);
-    String str = u.aqG();
+    String str = u.axw();
     AppMethodBeat.o(103244);
     return str;
   }
@@ -90,7 +92,7 @@ public class PhotoEditProxy
   public boolean isAutoSavePhotoInMM()
   {
     AppMethodBeat.i(103245);
-    boolean bool = com.tencent.mm.kernel.g.afB().afk().getBoolean(ae.a.Fno, true);
+    boolean bool = com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GLd, true);
     AppMethodBeat.o(103245);
     return bool;
   }
@@ -137,15 +139,15 @@ public class PhotoEditProxy
   {
     AppMethodBeat.i(103243);
     paramString2 = new l(4, paramString3, paramString4, paramString2, 0, null, 0, "", "", true, 2131231564);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.aeS().a(paramString2, 0);
-    j.cOB().hm(paramString1, paramString4);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agi().a(paramString2, 0);
+    j.dck().hF(paramString1, paramString4);
     AppMethodBeat.o(103243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.PhotoEditProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aq;
 import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.voip.b.k;
+import com.tencent.mm.plugin.voip.b.l;
 import com.tencent.mm.plugin.voip.c;
 import com.tencent.mm.plugin.voip.model.q;
 import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.ui.VideoActivity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class VoipForegroundService
   extends Service
@@ -26,7 +26,7 @@ public class VoipForegroundService
   public IBinder onBind(Intent paramIntent)
   {
     AppMethodBeat.i(115791);
-    ad.i("MicroMsg.VoipForegroundService", "onBind");
+    ac.i("MicroMsg.VoipForegroundService", "onBind");
     AppMethodBeat.o(115791);
     return null;
   }
@@ -34,26 +34,26 @@ public class VoipForegroundService
   public void onCreate()
   {
     AppMethodBeat.i(115789);
-    ad.i("MicroMsg.VoipForegroundService", "VoipForegroundService onCreate");
+    ac.i("MicroMsg.VoipForegroundService", "VoipForegroundService onCreate");
     super.onCreate();
-    g.afC();
-    if (!g.afz().aeI())
+    g.agS();
+    if (!g.agP().afY())
     {
       stopSelf();
       AppMethodBeat.o(115789);
       return;
     }
-    if (d.lf(26))
+    if (d.kZ(26))
     {
-      Object localObject = q.zld;
-      q.dTJ();
-      localObject = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").g(System.currentTimeMillis()).as(b.cYf());
+      Object localObject = q.ADO;
+      q.eiV();
+      localObject = com.tencent.mm.bq.a.bE(ai.getContext(), "reminder_channel_id").i(System.currentTimeMillis()).as(b.dlN());
       ((s.c)localObject).f(2, true);
-      localObject = k.c((s.c)localObject);
+      localObject = l.e((s.c)localObject);
       try
       {
-        if (aj.eFN()) {
-          ad.i("MicroMsg.VoipForegroundService", "current mmprocess is exits");
+        if (ai.eVi()) {
+          ac.i("MicroMsg.VoipForegroundService", "current mmprocess is exits");
         }
         startForeground(40, (Notification)localObject);
         AppMethodBeat.o(115789);
@@ -61,7 +61,7 @@ public class VoipForegroundService
       }
       catch (Exception localException)
       {
-        ad.i("MicroMsg.VoipForegroundService", "start foreground service happened error %s", new Object[] { localException.getMessage() });
+        ac.i("MicroMsg.VoipForegroundService", "start foreground service happened error %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(115789);
@@ -70,21 +70,21 @@ public class VoipForegroundService
   public void onDestroy()
   {
     AppMethodBeat.i(115790);
-    ad.i("MicroMsg.VoipForegroundService", "VoipForegroundService onDestroy");
-    q localq = q.zld;
-    q.dTL();
+    ac.i("MicroMsg.VoipForegroundService", "VoipForegroundService onDestroy");
+    q localq = q.ADO;
+    q.eiX();
     try
     {
       stopForeground(true);
       ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
-      g.afC();
-      if (g.afz().aeI())
+      g.agS();
+      if (g.agP().afY())
       {
         sendBroadcast(new Intent("com.tencent.mm.foregroundDestroy"));
-        if (c.dRQ().cXd)
+        if (c.ehb().cUz)
         {
-          localq = q.zld;
-          q.dTN();
+          localq = q.ADO;
+          q.eiZ();
         }
       }
       super.onDestroy();
@@ -95,7 +95,7 @@ public class VoipForegroundService
     {
       for (;;)
       {
-        ad.e("MicroMsg.VoipForegroundService", "onDestroy happened error %s", new Object[] { localException });
+        ac.e("MicroMsg.VoipForegroundService", "onDestroy happened error %s", new Object[] { localException });
       }
     }
   }
@@ -103,30 +103,30 @@ public class VoipForegroundService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115788);
-    g.afC();
-    if (!g.afz().aeI())
+    g.agS();
+    if (!g.agP().afY())
     {
-      ad.e("MicroMsg.VoipForegroundService", "error called voip foreground service in onStartCommand process");
-      paramIntent = q.zld;
-      q.dTP();
+      ac.e("MicroMsg.VoipForegroundService", "error called voip foreground service in onStartCommand process");
+      paramIntent = q.ADO;
+      q.ejb();
       stopSelf();
       AppMethodBeat.o(115788);
       return 2;
     }
     Object localObject;
     String str;
-    if ((d.lf(26)) && (paramIntent != null))
+    if ((d.kZ(26)) && (paramIntent != null))
     {
-      ad.i("MicroMsg.VoipForegroundService", "foreground service is on bind ");
+      ac.i("MicroMsg.VoipForegroundService", "foreground service is on bind ");
       if (paramIntent.getBooleanExtra("isRecalled", false))
       {
-        localObject = q.zld;
-        q.dTO();
+        localObject = q.ADO;
+        q.eja();
       }
-      localObject = q.zld;
-      q.dTK();
-      ad.i("MicroMsg.VoipForegroundService", "setNotificationBind");
-      paramIntent.setClass(aj.getContext(), VideoActivity.class);
+      localObject = q.ADO;
+      q.eiW();
+      ac.i("MicroMsg.VoipForegroundService", "setNotificationBind");
+      paramIntent.setClass(ai.getContext(), VideoActivity.class);
       paramIntent.setFlags(268435456);
       str = paramIntent.getStringExtra("Voip_User");
       if (paramIntent.getBooleanExtra("Voip_VideoCall", false)) {
@@ -135,15 +135,15 @@ public class VoipForegroundService
       if (paramIntent.getStringExtra("mTickerText") != null) {
         break label194;
       }
-      localObject = aj.getContext().getString(2131764941);
-      ad.i("MicroMsg.VoipForegroundService", "voip notification type is 40");
-      g.afC();
-      if (g.afz().aeI()) {
+      localObject = ai.getContext().getString(2131764941);
+      ac.i("MicroMsg.VoipForegroundService", "voip notification type is 40");
+      g.agS();
+      if (g.agP().afY()) {
         break label218;
       }
-      ad.e("MicroMsg.VoipForegroundService", "error called voip foreground service in setNotification process");
-      paramIntent = q.zld;
-      q.dTP();
+      ac.e("MicroMsg.VoipForegroundService", "error called voip foreground service in setNotification process");
+      paramIntent = q.ADO;
+      q.ejb();
       stopSelf();
     }
     for (;;)
@@ -154,21 +154,21 @@ public class VoipForegroundService
       localObject = paramIntent.getStringExtra("mTickerText");
       break;
       label205:
-      localObject = aj.getContext().getString(2131764933);
+      localObject = ai.getContext().getString(2131764933);
       break;
       label218:
-      paramIntent = PendingIntent.getActivity(aj.getContext(), 40, paramIntent, 134217728);
-      localObject = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").i((CharSequence)localObject).g(System.currentTimeMillis()).f(v.sh(str)).g((CharSequence)localObject).as(b.cYf());
-      ((s.c)localObject).Ew = paramIntent;
+      paramIntent = PendingIntent.getActivity(ai.getContext(), 40, paramIntent, 134217728);
+      localObject = com.tencent.mm.bq.a.bE(ai.getContext(), "reminder_channel_id").i((CharSequence)localObject).i(System.currentTimeMillis()).f(v.wk(str)).g((CharSequence)localObject).as(b.dlN());
+      ((s.c)localObject).Fu = paramIntent;
       ((s.c)localObject).f(2, true);
-      paramIntent = k.c((s.c)localObject);
+      paramIntent = l.e((s.c)localObject);
       ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().a(40, paramIntent, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.VoipForegroundService
  * JD-Core Version:    0.7.0.1
  */

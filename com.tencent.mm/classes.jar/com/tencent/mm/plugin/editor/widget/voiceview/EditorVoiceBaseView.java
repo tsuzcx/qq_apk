@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.editor.model.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.t;
 
 public class EditorVoiceBaseView
@@ -21,11 +21,11 @@ public class EditorVoiceBaseView
   implements a.a
 {
   private Context context;
-  private int dkj;
+  private int dhE;
   private int duration;
   private boolean isRunning;
-  private AlphaAnimation orc;
-  private AnimationDrawable ord;
+  private AlphaAnimation oUC;
+  private AnimationDrawable oUD;
   private String path;
   
   public EditorVoiceBaseView(Context paramContext, AttributeSet paramAttributeSet)
@@ -36,7 +36,7 @@ public class EditorVoiceBaseView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aGa();
+    aMN();
     AppMethodBeat.o(181995);
   }
   
@@ -48,58 +48,58 @@ public class EditorVoiceBaseView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aGa();
+    aMN();
     AppMethodBeat.o(181996);
   }
   
-  private void aGa()
+  private void aMN()
   {
     AppMethodBeat.i(181997);
-    this.orc = new AlphaAnimation(0.1F, 1.0F);
-    this.orc.setDuration(1000L);
-    this.orc.setRepeatCount(-1);
-    this.orc.setRepeatMode(2);
-    this.ord = new com.tencent.mm.ui.e.a();
+    this.oUC = new AlphaAnimation(0.1F, 1.0F);
+    this.oUC.setDuration(1000L);
+    this.oUC.setRepeatCount(-1);
+    this.oUC.setRepeatMode(2);
+    this.oUD = new com.tencent.mm.ui.e.a();
     Drawable localDrawable = getResources().getDrawable(2131689892);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ord.addFrame(localDrawable, 300);
+    this.oUD.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689893);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ord.addFrame(localDrawable, 300);
+    this.oUD.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689894);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ord.addFrame(localDrawable, 300);
-    this.ord.setOneShot(false);
-    this.ord.setVisible(true, true);
+    this.oUD.addFrame(localDrawable, 300);
+    this.oUD.setOneShot(false);
+    this.oUD.setVisible(true, true);
     AppMethodBeat.o(181997);
   }
   
-  public final void Tf(String paramString)
+  public final void Xr(String paramString)
   {
     AppMethodBeat.i(182000);
-    ad.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
-    if (!bt.by(paramString, "").equals(this.path)) {
-      bTF();
+    ac.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
+    if (!bs.bG(paramString, "").equals(this.path)) {
+      caT();
     }
     AppMethodBeat.o(182000);
   }
   
-  public final void bTF()
+  public final void caT()
   {
     AppMethodBeat.i(181998);
-    if ((this.orc != null) && (this.orc.isInitialized())) {
+    if ((this.oUC != null) && (this.oUC.isInitialized())) {
       setAnimation(null);
     }
     this.isRunning = false;
     setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131689891), null, null, null);
-    this.ord.stop();
+    this.oUD.stop();
     AppMethodBeat.o(181998);
   }
   
-  public final void bTG()
+  public final void caU()
   {
     AppMethodBeat.i(182001);
-    bTF();
+    caT();
     AppMethodBeat.o(182001);
   }
   
@@ -113,33 +113,33 @@ public class EditorVoiceBaseView
       {
         AppMethodBeat.i(181994);
         String str2 = EditorVoiceBaseView.a(EditorVoiceBaseView.this);
-        if (a.bTH().bTK()) {}
+        if (a.caV().caY()) {}
         for (String str1 = "true";; str1 = "false")
         {
-          ad.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str2, str1, a.bTH().path });
-          if ((!com.tencent.mm.r.a.ce(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.cc(EditorVoiceBaseView.b(EditorVoiceBaseView.this)))) {
+          ac.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str2, str1, a.caV().path });
+          if ((!com.tencent.mm.r.a.ci(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.cf(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.ck(EditorVoiceBaseView.b(EditorVoiceBaseView.this)))) {
             break;
           }
           AppMethodBeat.o(181994);
           return;
         }
-        if ((!e.XG()) && (!bt.isNullOrNil(EditorVoiceBaseView.a(EditorVoiceBaseView.this))))
+        if ((!e.YD()) && (!bs.isNullOrNil(EditorVoiceBaseView.a(EditorVoiceBaseView.this))))
         {
           t.g(paramAnonymousView.getContext(), null);
           AppMethodBeat.o(181994);
           return;
         }
-        if (c.bSb().omf)
+        if (c.bZq().oPF)
         {
           AppMethodBeat.o(181994);
           return;
         }
-        if ((bt.by(EditorVoiceBaseView.a(EditorVoiceBaseView.this), "").equals(a.bTH().path)) && (a.bTH().bTK()))
+        if ((bs.bG(EditorVoiceBaseView.a(EditorVoiceBaseView.this), "").equals(a.caV().path)) && (a.caV().caY()))
         {
           paramAnonymousView = EditorVoiceBaseView.this;
-          ad.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
-          paramAnonymousView.bTF();
-          a.bTH().stopPlay();
+          ac.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
+          paramAnonymousView.caT();
+          a.caV().stopPlay();
           AppMethodBeat.o(181994);
           return;
         }
@@ -152,7 +152,7 @@ public class EditorVoiceBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.widget.voiceview.EditorVoiceBaseView
  * JD-Core Version:    0.7.0.1
  */

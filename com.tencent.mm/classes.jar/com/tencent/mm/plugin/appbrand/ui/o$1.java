@@ -14,7 +14,7 @@ public final class o$1
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(147691);
-    this.lDl.setVisibility(8);
+    this.mff.setVisibility(8);
     AppMethodBeat.o(147691);
   }
   

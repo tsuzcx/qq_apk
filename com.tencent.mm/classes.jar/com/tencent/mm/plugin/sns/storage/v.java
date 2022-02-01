@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fo;
-import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.g.c.fs;
+import com.tencent.mm.protocal.protobuf.crm;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -11,32 +11,32 @@ import java.util.List;
 import java.util.Map;
 
 public final class v
-  extends fo
+  extends fs
 {
   protected static c.a info;
-  public int xjo;
+  public int ywf;
   
   static
   {
     AppMethodBeat.i(97623);
     c.a locala = new c.a();
-    locala.EYt = new Field[4];
+    locala.GvF = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "tagId";
-    locala.EYv.put("tagId", "LONG default '0' ");
+    locala.GvH.put("tagId", "LONG default '0' ");
     localStringBuilder.append(" tagId LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "tagName";
-    locala.EYv.put("tagName", "TEXT default '' ");
+    locala.GvH.put("tagName", "TEXT default '' ");
     localStringBuilder.append(" tagName TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "count";
-    locala.EYv.put("count", "INTEGER default '0' ");
+    locala.GvH.put("count", "INTEGER default '0' ");
     localStringBuilder.append(" count INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "memberList";
-    locala.EYv.put("memberList", "TEXT default '' ");
+    locala.GvH.put("memberList", "TEXT default '' ");
     localStringBuilder.append(" memberList TEXT default '' ");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -48,19 +48,19 @@ public final class v
   {
     AppMethodBeat.i(97622);
     super.convertFrom(paramCursor);
-    this.xjo = ((int)this.systemRowid);
+    this.ywf = ((int)this.systemRowid);
     AppMethodBeat.o(97622);
   }
   
-  public final void fz(List<cmf> paramList)
+  public final void fH(List<crm> paramList)
   {
     AppMethodBeat.i(97621);
     this.field_memberList = "";
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      cmf localcmf = (cmf)paramList.next();
-      this.field_memberList = (this.field_memberList + localcmf.Ehn + ",");
+      crm localcrm = (crm)paramList.next();
+      this.field_memberList = (this.field_memberList + localcrm.FEm + ",");
     }
     AppMethodBeat.o(97621);
   }

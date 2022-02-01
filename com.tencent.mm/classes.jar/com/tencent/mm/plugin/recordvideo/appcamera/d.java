@@ -35,46 +35,46 @@ import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
 import com.tencent.mm.plugin.mmsight.model.g;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 import d.v;
 import java.nio.ByteBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppRecordViewImpl;", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$MMSightRecordViewDelegate;", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "Lcom/tencent/mm/plugin/mmsight/model/encode/IMMSightMediaRecorder$ErrorCallback;", "Lcom/tencent/mm/plugin/api/recordView/MMSightRecordViewTouchListener$TouchCallback;", "()V", "cameraPluginLayout", "Lcom/tencent/mm/plugin/recordvideo/appcamera/AppBrandCameraPluginLayout;", "displayRatio", "", "isDragZoomEnable", "", "isTouchFocusEnable", "lastPointerDistance", "lastTouchDownTime", "", "mDisplayScreenSize", "Landroid/util/Size;", "mZoomMultipleToRatio", "", "previewSizeLimit", "", "videoPath", "", "videoSizeRatio", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getCameraRotation", "getCurrentFramePicture", "Landroid/graphics/Bitmap;", "getDrawSizePoint", "Landroid/graphics/Point;", "getFlashMode", "getPictureSize", "getPreviewSize", "getScreenRotation", "getSupportZoomMultiple", "getVideoFilePath", "getVideoSize", "handlePluginTouch", "", "motionEvent", "Landroid/view/MotionEvent;", "init", "context", "Landroid/content/Context;", "view", "Landroid/view/ViewGroup;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "width", "height", "initRecorder", "isClipPictureSize", "isClipVideoSize", "isEnableDragZoom", "isEnableTouchFocus", "isFrontCamera", "onDoubleClick", "onError", "errorCode", "onFrameData", "data", "", "onTouchDown", "x", "y", "onZoomIn", "onZoomOut", "pointerDistance", "event", "release", "set34PreviewVideoSize", "setClipPictureSize", "clip", "setClipVideoSize", "setDisplayRatio", "size", "setDisplayScreenSize", "screenSize", "setEnableDragZoom", "enable", "setEnableTouchFocus", "setFlashMode", "flashMode", "setFrameBuffer", "buffer", "Ljava/nio/ByteBuffer;", "listener", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$OnDateUpdateListener;", "setFrameDataCallback", "callback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$CameraFrameDataCallback;", "setHalfPreviewVideoSize", "setInitDoneCallback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$InitDoneCallback;", "setInitErrorCallback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$InitErrorCallback;", "setPreviewMode", "mode", "setPreviewSizeLimit", "limit", "setRGBSizeLimit", "setUseBackCamera", "back", "setVideoFilePath", "filePath", "setVideoPara", "maxDuration", "videoBitrate", "fps", "audioBitrate", "audioSampleRate", "setZoomMultiple", "multiple", "startPreview", "startRecord", "stopRecord", "stopCallback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$StopRecordCallback;", "switchCamera", "takePicture", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$PictureTakenCallback;", "openFlash", "Companion", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/appcamera/AppRecordViewImpl;", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$MMSightRecordViewDelegate;", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "Lcom/tencent/mm/plugin/mmsight/model/encode/IMMSightMediaRecorder$ErrorCallback;", "Lcom/tencent/mm/plugin/api/recordView/MMSightRecordViewTouchListener$TouchCallback;", "()V", "cameraPluginLayout", "Lcom/tencent/mm/plugin/recordvideo/appcamera/AppBrandCameraPluginLayout;", "displayRatio", "", "isDragZoomEnable", "", "isTouchFocusEnable", "lastPointerDistance", "lastTouchDownTime", "", "mDisplayScreenSize", "Landroid/util/Size;", "mZoomMultipleToRatio", "", "previewSizeLimit", "", "videoPath", "", "videoSizeRatio", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getCameraRotation", "getCurrentFramePicture", "Landroid/graphics/Bitmap;", "getDrawSizePoint", "Landroid/graphics/Point;", "getFlashMode", "getPictureSize", "getPreviewSize", "getScreenRotation", "getSupportZoomMultiple", "getVideoFilePath", "getVideoSize", "handlePluginTouch", "", "motionEvent", "Landroid/view/MotionEvent;", "init", "context", "Landroid/content/Context;", "view", "Landroid/view/ViewGroup;", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "width", "height", "initRecorder", "isClipPictureSize", "isClipVideoSize", "isEnableDragZoom", "isEnableTouchFocus", "isFrontCamera", "onDoubleClick", "onError", "errorCode", "onFrameData", "data", "", "onTouchDown", "x", "y", "onZoomIn", "onZoomOut", "pointerDistance", "event", "release", "set34PreviewVideoSize", "setClipPictureSize", "clip", "setClipVideoSize", "setDisplayRatio", "size", "setDisplayScreenSize", "screenSize", "setEnableDragZoom", "enable", "setEnableTouchFocus", "setFlashMode", "flashMode", "setFrameBuffer", "buffer", "Ljava/nio/ByteBuffer;", "listener", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$OnDateUpdateListener;", "setFrameDataCallback", "callback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$CameraFrameDataCallback;", "setHalfPreviewVideoSize", "setInitDoneCallback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$InitDoneCallback;", "setInitErrorCallback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$InitErrorCallback;", "setPreviewMode", "mode", "setPreviewSizeLimit", "limit", "setRGBSizeLimit", "setUseBackCamera", "back", "setVideoFilePath", "filePath", "setVideoPara", "maxDuration", "videoBitrate", "fps", "audioBitrate", "audioSampleRate", "setZoomMultiple", "multiple", "startPreview", "startRecord", "stopRecord", "stopCallback", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$StopRecordCallback;", "switchCamera", "takePicture", "Lcom/tencent/mm/plugin/mmsight/api/MMSightRecordView$PictureTakenCallback;", "openFlash", "Companion", "plugin-recordvideo_release"})
 public final class d
   extends MMSightRecordView.e
   implements g.a, com.tencent.mm.plugin.mmsight.model.a.d.a, g
 {
   private static final String TAG = "MicroMsg.AppRecordViewImpl";
-  private static final int vdk = 400;
-  private static final int vdl = 15;
-  public static final d.a vdm;
-  private float gwC;
-  private int iBC;
-  private boolean iBQ = true;
-  private boolean iBR = true;
-  private float iBX = 1.0F;
-  private long iCi = -1L;
-  private float iCj = -1.0F;
-  private Size jLV;
-  private VideoTransPara tCr;
-  private a vdi;
-  private float[] vdj;
+  private static final int wma = 400;
+  private static final int wmb = 15;
+  public static final d.a wmc;
+  private float gWZ;
+  private int jbD;
+  private boolean jbR = true;
+  private boolean jbS = true;
+  private float jbY = 1.0F;
+  private long jcj = -1L;
+  private float jck = -1.0F;
+  private Size kmw;
+  private VideoTransPara uKO;
   private String videoPath;
+  private a wlY;
+  private float[] wlZ;
   
   static
   {
     AppMethodBeat.i(75151);
-    vdm = new d.a((byte)0);
+    wmc = new d.a((byte)0);
     TAG = "MicroMsg.AppRecordViewImpl";
-    vdk = 400;
-    vdl = 15;
+    wma = 400;
+    wmb = 15;
     AppMethodBeat.o(75151);
   }
   
-  private static float y(MotionEvent paramMotionEvent)
+  private static float w(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(75148);
     try
@@ -90,24 +90,24 @@ public final class d
     }
     catch (Exception paramMotionEvent)
     {
-      ad.e(TAG, "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
+      ac.e(TAG, "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
       AppMethodBeat.o(75148);
     }
     return 0.0F;
   }
   
-  public final void A(float paramFloat1, float paramFloat2)
+  public final void D(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(75145);
-    if (this.iBR)
+    if (this.jbS)
     {
       Bundle localBundle = new Bundle();
       localBundle.putFloat("PARAM_POINT_X", paramFloat1);
       localBundle.putFloat("PARAM_POINT_Y", paramFloat2);
-      a locala = this.vdi;
+      a locala = this.wlY;
       if (locala != null)
       {
-        locala.a(d.c.vnx, localBundle);
+        locala.a(d.c.wvS, localBundle);
         AppMethodBeat.o(75145);
         return;
       }
@@ -115,24 +115,24 @@ public final class d
     AppMethodBeat.o(75145);
   }
   
-  public final boolean Ok()
+  public final boolean Og()
   {
     AppMethodBeat.i(75123);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null) {
-      d.b.a(locala, d.c.vny);
+      d.b.a(locala, d.c.wvT);
     }
     AppMethodBeat.o(75123);
     return true;
   }
   
-  public final boolean W(byte[] paramArrayOfByte)
+  public final boolean V(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(75143);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
-      boolean bool = locala.W(paramArrayOfByte);
+      boolean bool = locala.V(paramArrayOfByte);
       AppMethodBeat.o(75143);
       return bool;
     }
@@ -145,51 +145,51 @@ public final class d
     AppMethodBeat.i(75114);
     k.h(paramContext, "context");
     k.h(paramViewGroup, "view");
-    this.vdi = new a(paramContext);
+    this.wlY = new a(paramContext);
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
     }
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       k.h(paramContext, "context");
       k.h(paramViewGroup, "view");
-      ad.i(a.TAG, "surface is %s", new Object[] { paramSurfaceTexture });
+      ac.i(a.TAG, "surface is %s", new Object[] { paramSurfaceTexture });
       if (paramSurfaceTexture == null) {
-        k.fvU();
+        k.fOy();
       }
-      locala.vcT = ((CameraPreviewGLSurfaceView)new com.tencent.mm.media.widget.camerarecordview.b(paramContext, paramSurfaceTexture, paramInt1, paramInt2));
-      locala.tKW = new com.tencent.mm.plugin.mmsight.model.d(paramContext, (byte)0);
-      paramSurfaceTexture = locala.tKW;
+      locala.rQU = ((CameraPreviewGLSurfaceView)new com.tencent.mm.media.widget.camerarecordview.b(paramContext, paramSurfaceTexture, paramInt1, paramInt2));
+      locala.gEn = new com.tencent.mm.plugin.mmsight.model.d(paramContext, (byte)0);
+      paramSurfaceTexture = locala.gEn;
       if (paramSurfaceTexture == null) {
-        k.fvU();
+        k.fOy();
       }
       paramSurfaceTexture.enable();
-      locala.iBI = new MMSightCameraGLSurfaceView(paramContext);
-      paramContext = locala.iBI;
+      locala.jbJ = new MMSightCameraGLSurfaceView(paramContext);
+      paramContext = locala.jbJ;
       if (paramContext != null) {
         paramContext.setBackgroundColor(Color.argb(0, 0, 0, 0));
       }
       paramContext = new ViewGroup.MarginLayoutParams(-1, -1);
-      paramViewGroup.addView((View)locala.iBI, (ViewGroup.LayoutParams)paramContext);
+      paramViewGroup.addView((View)locala.jbJ, (ViewGroup.LayoutParams)paramContext);
     }
-    this.tCr = new VideoTransPara();
+    this.uKO = new VideoTransPara();
     AppMethodBeat.o(75114);
   }
   
   public final void a(MMSightRecordView.g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(75125);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
-      locala.vcW = paramg;
-      locala.vda = paramBoolean;
+      locala.wlM = paramg;
+      locala.wlQ = paramBoolean;
     }
-    paramg = this.vdi;
+    paramg = this.wlY;
     if (paramg != null)
     {
-      d.b.a(paramg, d.c.vnA);
+      d.b.a(paramg, d.c.wwb);
       AppMethodBeat.o(75125);
       return;
     }
@@ -199,14 +199,14 @@ public final class d
   public final void a(MMSightRecordView.h paramh)
   {
     AppMethodBeat.i(75124);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null) {
       locala.setRecordCallback(paramh);
     }
-    paramh = this.vdi;
+    paramh = this.wlY;
     if (paramh != null)
     {
-      d.b.a(paramh, d.c.vnz);
+      d.b.a(paramh, d.c.wvU);
       AppMethodBeat.o(75124);
       return;
     }
@@ -216,19 +216,19 @@ public final class d
   public final void a(ByteBuffer paramByteBuffer, MMSightRecordView.f paramf)
   {
     AppMethodBeat.i(75142);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       if ((paramf == null) && (paramByteBuffer == null))
       {
-        if (locala.iBY != null)
+        if (locala.jbZ != null)
         {
-          paramByteBuffer = locala.iBY;
+          paramByteBuffer = locala.jbZ;
           if (paramByteBuffer != null) {
             paramByteBuffer.release();
           }
-          locala.iBY = null;
-          paramByteBuffer = locala.iBI;
+          locala.jbZ = null;
+          paramByteBuffer = locala.jbJ;
           if (paramByteBuffer != null)
           {
             paramByteBuffer.setVisibility(8);
@@ -239,39 +239,39 @@ public final class d
         AppMethodBeat.o(75142);
         return;
       }
-      if (locala.iBY == null)
+      if (locala.jbZ == null)
       {
-        locala.iBY = new h();
-        locala.aLt();
-        h localh = locala.iBY;
+        locala.jbZ = new h();
+        locala.aSk();
+        h localh = locala.jbZ;
         if (localh != null) {
           localh.a((i.a)new a.h(paramf, paramByteBuffer));
         }
-        paramByteBuffer = locala.vcV;
+        paramByteBuffer = locala.wlL;
         if (paramByteBuffer != null)
         {
-          paramByteBuffer = Boolean.valueOf(paramByteBuffer.gAz.amv());
+          paramByteBuffer = Boolean.valueOf(paramByteBuffer.goG.atn());
           if (paramByteBuffer == null) {
-            k.fvU();
+            k.fOy();
           }
           if (!paramByteBuffer.booleanValue()) {
             break label257;
           }
-          paramByteBuffer = locala.iBI;
+          paramByteBuffer = locala.jbJ;
           if (paramByteBuffer == null) {
             break label257;
           }
           if (paramByteBuffer.getEglContext() == null) {
             break label222;
           }
-          paramf = locala.iBY;
+          paramf = locala.jbZ;
           if (paramf != null) {
             paramf.b(paramByteBuffer.getEglContext());
           }
         }
         for (;;)
         {
-          paramByteBuffer = locala.iBI;
+          paramByteBuffer = locala.jbJ;
           if (paramByteBuffer == null) {
             break label250;
           }
@@ -281,7 +281,7 @@ public final class d
           paramByteBuffer = null;
           break;
           label222:
-          paramf = locala.iBI;
+          paramf = locala.jbJ;
           if (paramf != null) {
             paramf.setOnEglEnableListener((MMSightCameraGLSurfaceView.c)new a.g(paramByteBuffer, locala));
           }
@@ -297,28 +297,28 @@ public final class d
     AppMethodBeat.o(75142);
   }
   
-  public final void aLj() {}
+  public final void aSa() {}
   
-  public final void aLo()
+  public final void aSf()
   {
     AppMethodBeat.i(75138);
-    ad.i(TAG, "setHalfPreviewVideoSize");
-    this.iBX = 0.5F;
+    ac.i(TAG, "setHalfPreviewVideoSize");
+    this.jbY = 0.5F;
     AppMethodBeat.o(75138);
   }
   
-  public final void aLp()
+  public final void aSg()
   {
     AppMethodBeat.i(75139);
-    ad.i(TAG, "set34PreviewVideoSize");
-    this.iBX = 0.75F;
+    ac.i(TAG, "set34PreviewVideoSize");
+    this.jbY = 0.75F;
     AppMethodBeat.o(75139);
   }
   
-  public final void aLq()
+  public final void aSh()
   {
     AppMethodBeat.i(75144);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.reset();
@@ -328,19 +328,19 @@ public final class d
     AppMethodBeat.o(75144);
   }
   
-  public final void aLr()
+  public final void aSi()
   {
     AppMethodBeat.i(75146);
-    if (this.iBQ)
+    if (this.jbR)
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_BOOLEAN", true);
       localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_SCROLL_BOOLEAN", false);
       localBundle.putInt("PARAM_PREPARE_CAMERA_ZOOM_FACTOR_INT", 1);
-      a locala = this.vdi;
+      a locala = this.wlY;
       if (locala != null)
       {
-        locala.a(d.c.vnv, localBundle);
+        locala.a(d.c.wvQ, localBundle);
         AppMethodBeat.o(75146);
         return;
       }
@@ -348,19 +348,19 @@ public final class d
     AppMethodBeat.o(75146);
   }
   
-  public final void aLs()
+  public final void aSj()
   {
     AppMethodBeat.i(75147);
-    if (this.iBQ)
+    if (this.jbR)
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_BOOLEAN", false);
       localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_SCROLL_BOOLEAN", false);
       localBundle.putInt("PARAM_PREPARE_CAMERA_ZOOM_FACTOR_INT", 1);
-      a locala = this.vdi;
+      a locala = this.wlY;
       if (locala != null)
       {
-        locala.a(d.c.vnv, localBundle);
+        locala.a(d.c.wvQ, localBundle);
         AppMethodBeat.o(75147);
         return;
       }
@@ -368,16 +368,16 @@ public final class d
     AppMethodBeat.o(75147);
   }
   
-  public final boolean am(float paramFloat)
+  public final boolean aq(float paramFloat)
   {
     AppMethodBeat.i(75137);
     int i;
-    if (this.vdj != null)
+    if (this.wlZ != null)
     {
-      localObject = this.vdj;
+      localObject = this.wlZ;
       if ((localObject == null) || (localObject.length != 0))
       {
-        localObject = this.vdj;
+        localObject = this.wlZ;
         if (localObject == null) {
           break label111;
         }
@@ -399,7 +399,7 @@ public final class d
     for (Object localObject = Integer.valueOf(i);; localObject = null)
     {
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       if (((Integer)localObject).intValue() >= 0) {
         break label117;
@@ -412,7 +412,7 @@ public final class d
       break label69;
     }
     label117:
-    localObject = this.vdi;
+    localObject = this.wlY;
     if (localObject != null) {
       ((a)localObject).setForceZoomTargetRatio(paramFloat);
     }
@@ -425,49 +425,49 @@ public final class d
     AppMethodBeat.i(75113);
     k.h(paramContext, "context");
     k.h(paramViewGroup, "view");
-    this.vdi = new a(paramContext);
-    a locala = this.vdi;
+    this.wlY = new a(paramContext);
+    a locala = this.wlY;
     if (locala != null) {
       locala.setTouchListener((g.a)this);
     }
-    locala = this.vdi;
+    locala = this.wlY;
     if (locala != null)
     {
       k.h(paramContext, "context");
       k.h(paramViewGroup, "viewGroup");
       Object localObject = new ViewGroup.MarginLayoutParams(-1, -1);
-      locala.vcT = new CameraPreviewGLSurfaceView(paramContext, null);
-      CameraPreviewGLSurfaceView localCameraPreviewGLSurfaceView = locala.vcT;
+      locala.rQU = new CameraPreviewGLSurfaceView(paramContext, null);
+      CameraPreviewGLSurfaceView localCameraPreviewGLSurfaceView = locala.rQU;
       if (localCameraPreviewGLSurfaceView != null) {
-        localCameraPreviewGLSurfaceView.setOnTouchListener((View.OnTouchListener)locala.iBT);
+        localCameraPreviewGLSurfaceView.setOnTouchListener((View.OnTouchListener)locala.jbU);
       }
-      paramViewGroup.addView((View)locala.vcT, (ViewGroup.LayoutParams)localObject);
-      locala.tKW = new com.tencent.mm.plugin.mmsight.model.d(paramContext, (byte)0);
-      localObject = locala.tKW;
+      paramViewGroup.addView((View)locala.rQU, (ViewGroup.LayoutParams)localObject);
+      locala.gEn = new com.tencent.mm.plugin.mmsight.model.d(paramContext, (byte)0);
+      localObject = locala.gEn;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((com.tencent.mm.plugin.mmsight.model.d)localObject).enable();
-      locala.iBI = new MMSightCameraGLSurfaceView(paramContext);
-      paramContext = locala.iBI;
+      locala.jbJ = new MMSightCameraGLSurfaceView(paramContext);
+      paramContext = locala.jbJ;
       if (paramContext != null) {
         paramContext.setBackgroundColor(Color.argb(0, 0, 0, 0));
       }
       paramContext = new ViewGroup.MarginLayoutParams(1, 1);
-      paramViewGroup.addView((View)locala.iBI, (ViewGroup.LayoutParams)paramContext);
+      paramViewGroup.addView((View)locala.jbJ, (ViewGroup.LayoutParams)paramContext);
     }
-    this.tCr = new VideoTransPara();
+    this.uKO = new VideoTransPara();
     AppMethodBeat.o(75113);
   }
   
   public final int getCameraRotation()
   {
     AppMethodBeat.i(75132);
-    if (this.vdi != null)
+    if (this.wlY != null)
     {
-      a locala = this.vdi;
+      a locala = this.wlY;
       if (locala == null) {
-        k.fvU();
+        k.fOy();
       }
       int i = locala.getCameraRotation();
       AppMethodBeat.o(75132);
@@ -480,7 +480,7 @@ public final class d
   public final Bitmap getCurrentFramePicture()
   {
     AppMethodBeat.i(75140);
-    Object localObject = this.vdi;
+    Object localObject = this.wlY;
     if (localObject != null)
     {
       localObject = ((a)localObject).getCurrentFramePicture();
@@ -494,7 +494,7 @@ public final class d
   public final Point getDrawSizePoint()
   {
     AppMethodBeat.i(75130);
-    Object localObject = this.vdi;
+    Object localObject = this.wlY;
     if (localObject != null)
     {
       Point localPoint = ((a)localObject).getDrawSizePoint();
@@ -512,7 +512,7 @@ public final class d
   public final int getFlashMode()
   {
     AppMethodBeat.i(75135);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       int i = locala.getFlashMode();
@@ -526,7 +526,7 @@ public final class d
   public final Point getPictureSize()
   {
     AppMethodBeat.i(75127);
-    Object localObject = this.vdi;
+    Object localObject = this.wlY;
     if (localObject != null)
     {
       Point localPoint = ((a)localObject).getPictureSize();
@@ -544,7 +544,7 @@ public final class d
   public final Point getPreviewSize()
   {
     AppMethodBeat.i(75129);
-    Object localObject = this.vdi;
+    Object localObject = this.wlY;
     if (localObject != null)
     {
       Point localPoint = ((a)localObject).getPreviewSize();
@@ -562,15 +562,15 @@ public final class d
   public final float[] getSupportZoomMultiple()
   {
     AppMethodBeat.i(75136);
-    if ((this.vdj == null) && (this.vdi != null))
+    if ((this.wlZ == null) && (this.wlY != null))
     {
-      localObject = this.vdi;
+      localObject = this.wlY;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      this.vdj = ((a)localObject).getSupportZoomRatios();
+      this.wlZ = ((a)localObject).getSupportZoomRatios();
     }
-    Object localObject = this.vdj;
+    Object localObject = this.wlZ;
     AppMethodBeat.o(75136);
     return localObject;
   }
@@ -588,7 +588,7 @@ public final class d
   public final Point getVideoSize()
   {
     AppMethodBeat.i(75128);
-    Object localObject = this.vdi;
+    Object localObject = this.wlY;
     if (localObject != null)
     {
       Point localPoint = ((a)localObject).getVideoSize();
@@ -603,7 +603,7 @@ public final class d
     return localObject;
   }
   
-  public final void n(MotionEvent paramMotionEvent)
+  public final void l(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(75149);
     Integer localInteger;
@@ -638,33 +638,33 @@ public final class d
         if (localInteger.intValue() != 0) {
           break label22;
         }
-        ad.d(TAG, "ACTION_DOWN");
-        if ((this.iCi <= 0L) || (SystemClock.elapsedRealtime() - this.iCi >= vdk)) {
-          A(paramMotionEvent.getX(), paramMotionEvent.getY());
+        ac.d(TAG, "ACTION_DOWN");
+        if ((this.jcj <= 0L) || (SystemClock.elapsedRealtime() - this.jcj >= wma)) {
+          D(paramMotionEvent.getX(), paramMotionEvent.getY());
         }
-        this.iCi = SystemClock.elapsedRealtime();
-        this.iCj = -1.0F;
+        this.jcj = SystemClock.elapsedRealtime();
+        this.jck = -1.0F;
         AppMethodBeat.o(75149);
         return;
         label123:
         if (localInteger.intValue() != 5) {
           break label26;
         }
-        ad.d(TAG, "ACTION_POINTER_DOWN");
+        ac.d(TAG, "ACTION_POINTER_DOWN");
         AppMethodBeat.o(75149);
         return;
         label147:
         if (localInteger.intValue() != 6) {
           break label30;
         }
-        ad.d(TAG, "ACTION_POINTER_UP");
+        ac.d(TAG, "ACTION_POINTER_UP");
         AppMethodBeat.o(75149);
         return;
         label172:
         if (localInteger.intValue() == 1)
         {
-          ad.d(TAG, "ACTION_UP");
-          this.iCj = -1.0F;
+          ac.d(TAG, "ACTION_UP");
+          this.jck = -1.0F;
           AppMethodBeat.o(75149);
           return;
         }
@@ -673,42 +673,42 @@ public final class d
     float f;
     if ((localInteger.intValue() == 2) && (paramMotionEvent.getPointerCount() >= 2))
     {
-      f = y(paramMotionEvent);
-      ad.v(TAG, "distance: %s", new Object[] { Float.valueOf(f) });
+      f = w(paramMotionEvent);
+      ac.v(TAG, "distance: %s", new Object[] { Float.valueOf(f) });
       if (f > 0.0F) {
-        if (this.iCj > 0.0F)
+        if (this.jck > 0.0F)
         {
-          if (Math.abs(f - this.iCj) <= vdl) {
+          if (Math.abs(f - this.jck) <= wmb) {
             break label302;
           }
-          if (f <= this.iCj) {
+          if (f <= this.jck) {
             break label309;
           }
-          ad.d(TAG, "zoom out");
-          aLr();
+          ac.d(TAG, "zoom out");
+          aSi();
         }
       }
     }
     for (;;)
     {
-      this.iCj = f;
+      this.jck = f;
       label302:
       AppMethodBeat.o(75149);
       return;
       label309:
-      ad.d(TAG, "zoom in");
-      aLs();
+      ac.d(TAG, "zoom in");
+      aSj();
     }
   }
   
   public final void release()
   {
     AppMethodBeat.i(75141);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null) {
       locala.release();
     }
-    this.vdj = null;
+    this.wlZ = null;
     AppMethodBeat.o(75141);
   }
   
@@ -719,7 +719,7 @@ public final class d
   public final void setDisplayRatio(float paramFloat)
   {
     AppMethodBeat.i(75117);
-    Object localObject = aj.getContext().getSystemService("window");
+    Object localObject = ai.getContext().getSystemService("window");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.WindowManager");
@@ -736,16 +736,16 @@ public final class d
     }
     for (;;)
     {
-      ad.i(TAG, "setDisplayRatio: %s, screenRotation: %s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(i) });
-      this.gwC = paramFloat;
+      ac.i(TAG, "setDisplayRatio: %s, screenRotation: %s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(i) });
+      this.gWZ = paramFloat;
       if ((i == 90) || (i == 270)) {
-        this.gwC = (1.0F / this.gwC);
+        this.gWZ = (1.0F / this.gWZ);
       }
-      localObject = this.vdi;
+      localObject = this.wlY;
       if (localObject == null) {
         break;
       }
-      ((a)localObject).setDisplayRatio(this.gwC);
+      ((a)localObject).setDisplayRatio(this.gWZ);
       AppMethodBeat.o(75117);
       return;
       i = 0;
@@ -761,23 +761,23 @@ public final class d
   
   public final void setDisplayScreenSize(Size paramSize)
   {
-    this.jLV = paramSize;
+    this.kmw = paramSize;
   }
   
   public final void setEnableDragZoom(boolean paramBoolean)
   {
-    this.iBQ = paramBoolean;
+    this.jbR = paramBoolean;
   }
   
   public final void setEnableTouchFocus(boolean paramBoolean)
   {
-    this.iBR = paramBoolean;
+    this.jbS = paramBoolean;
   }
   
   public final void setFlashMode(int paramInt)
   {
     AppMethodBeat.i(75134);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setFlashMode(paramInt);
@@ -790,7 +790,7 @@ public final class d
   public final void setFrameDataCallback(MMSightRecordView.a parama)
   {
     AppMethodBeat.i(75131);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setFrameDataCallback(parama);
@@ -803,7 +803,7 @@ public final class d
   public final void setInitDoneCallback(MMSightRecordView.c paramc)
   {
     AppMethodBeat.i(75116);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setInitDoneCallback(paramc);
@@ -816,7 +816,7 @@ public final class d
   public final void setInitErrorCallback(MMSightRecordView.d paramd)
   {
     AppMethodBeat.i(75115);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setInitErrorCallback(paramd);
@@ -829,7 +829,7 @@ public final class d
   public final void setPreviewMode(int paramInt)
   {
     AppMethodBeat.i(75150);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setPreviewMode(paramInt);
@@ -842,15 +842,15 @@ public final class d
   public final void setPreviewSizeLimit(int paramInt)
   {
     AppMethodBeat.i(75118);
-    ad.i(TAG, "setPreviewSizeLimit: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.iBC = paramInt;
+    ac.i(TAG, "setPreviewSizeLimit: %s", new Object[] { Integer.valueOf(paramInt) });
+    this.jbD = paramInt;
     AppMethodBeat.o(75118);
   }
   
   public final void setRGBSizeLimit(int paramInt)
   {
     AppMethodBeat.i(75119);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setRGBSizeLimit(paramInt);
@@ -863,7 +863,7 @@ public final class d
   public final void setUseBackCamera(boolean paramBoolean)
   {
     AppMethodBeat.i(75126);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
       locala.setUseBackCamera(paramBoolean);
@@ -879,11 +879,11 @@ public final class d
     this.videoPath = paramString;
     if (paramString != null)
     {
-      Object localObject = this.vdi;
+      Object localObject = this.wlY;
       if (localObject != null)
       {
         k.h(paramString, "path");
-        localObject = ((a)localObject).vcU;
+        localObject = ((a)localObject).wlK;
         if (localObject != null)
         {
           k.h(paramString, "<set-?>");
@@ -891,48 +891,48 @@ public final class d
         }
       }
     }
-    ad.i(TAG, "video path has been set %s", new Object[] { paramString });
+    ac.i(TAG, "video path has been set %s", new Object[] { paramString });
     AppMethodBeat.o(75122);
   }
   
   public final void setVideoPara$2e715812(int paramInt)
   {
     AppMethodBeat.i(75121);
-    VideoTransPara localVideoTransPara = this.tCr;
+    VideoTransPara localVideoTransPara = this.uKO;
     if (localVideoTransPara != null) {
       localVideoTransPara.duration = paramInt;
     }
-    localVideoTransPara = this.tCr;
+    localVideoTransPara = this.uKO;
     if (localVideoTransPara != null) {
       localVideoTransPara.videoBitrate = 4800000;
     }
-    localVideoTransPara = this.tCr;
+    localVideoTransPara = this.uKO;
     if (localVideoTransPara != null) {
       localVideoTransPara.fps = 30;
     }
-    localVideoTransPara = this.tCr;
+    localVideoTransPara = this.uKO;
     if (localVideoTransPara != null) {
       localVideoTransPara.audioBitrate = 64000;
     }
-    localVideoTransPara = this.tCr;
+    localVideoTransPara = this.uKO;
     if (localVideoTransPara != null) {
       localVideoTransPara.audioSampleRate = 44100;
     }
-    if (this.tCr != null)
+    if (this.uKO != null)
     {
-      Object localObject = this.vdi;
+      Object localObject = this.wlY;
       if (localObject != null)
       {
-        localVideoTransPara = this.tCr;
+        localVideoTransPara = this.uKO;
         if (localVideoTransPara == null) {
-          k.fvU();
+          k.fOy();
         }
         k.h(localVideoTransPara, "para");
-        localObject = ((a)localObject).vcU;
+        localObject = ((a)localObject).wlK;
         if (localObject != null)
         {
           k.h(localVideoTransPara, "<set-?>");
-          ((com.tencent.mm.plugin.recordvideo.b.a)localObject).vge = localVideoTransPara;
+          ((com.tencent.mm.plugin.recordvideo.b.a)localObject).woQ = localVideoTransPara;
           AppMethodBeat.o(75121);
           return;
         }
@@ -946,49 +946,49 @@ public final class d
   public final void startPreview()
   {
     AppMethodBeat.i(75120);
-    if ((this.gwC > 0.0F) && (this.iBC > 0))
+    if ((this.gWZ > 0.0F) && (this.jbD > 0))
     {
-      localObject1 = this.tCr;
+      localObject1 = this.uKO;
       if (localObject1 != null) {
-        ((VideoTransPara)localObject1).width = this.iBC;
+        ((VideoTransPara)localObject1).width = this.jbD;
       }
-      localObject1 = this.tCr;
+      localObject1 = this.uKO;
       if (localObject1 != null) {
-        ((VideoTransPara)localObject1).height = ((int)(this.iBC / this.gwC));
+        ((VideoTransPara)localObject1).height = ((int)(this.jbD / this.gWZ));
       }
     }
-    Object localObject1 = this.vdi;
+    Object localObject1 = this.wlY;
     if (localObject1 != null)
     {
-      Object localObject3 = this.tCr;
+      Object localObject3 = this.uKO;
       if (localObject3 == null) {
-        k.fvU();
+        k.fOy();
       }
       Object localObject4 = this.videoPath;
       if (localObject4 == null) {
-        k.fvU();
+        k.fOy();
       }
-      Object localObject2 = this.jLV;
+      Object localObject2 = this.kmw;
       k.h(localObject3, "para");
       k.h(localObject4, "videoPath");
-      CameraPreviewGLSurfaceView localCameraPreviewGLSurfaceView = ((a)localObject1).vcT;
+      CameraPreviewGLSurfaceView localCameraPreviewGLSurfaceView = ((a)localObject1).rQU;
       if (localCameraPreviewGLSurfaceView == null) {
-        k.fvU();
+        k.fOy();
       }
-      ((a)localObject1).vcU = new com.tencent.mm.plugin.recordvideo.b.a((VideoTransPara)localObject3, localCameraPreviewGLSurfaceView, (String)localObject4);
-      localObject3 = ((a)localObject1).vcU;
+      ((a)localObject1).wlK = new com.tencent.mm.plugin.recordvideo.b.a((VideoTransPara)localObject3, localCameraPreviewGLSurfaceView, (String)localObject4);
+      localObject3 = ((a)localObject1).wlK;
       if (localObject3 == null) {
-        k.fvU();
+        k.fOy();
       }
-      ((a)localObject1).vcV = new com.tencent.mm.media.widget.camerarecordview.a((com.tencent.mm.media.widget.camerarecordview.d.a)localObject3);
-      localObject3 = ((a)localObject1).vcV;
-      if ((localObject3 != null) && (true != ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAM))
+      ((a)localObject1).wlL = new com.tencent.mm.media.widget.camerarecordview.a((com.tencent.mm.media.widget.camerarecordview.d.a)localObject3);
+      localObject3 = ((a)localObject1).wlL;
+      if ((localObject3 != null) && (true != ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).hbh))
       {
-        ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAM = true;
-        if (!((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAM)
+        ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).hbh = true;
+        if (!((com.tencent.mm.media.widget.camerarecordview.a)localObject3).hbh)
         {
-          localObject4 = ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAK;
-          if ((((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAD) || (!((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAN.aog())) {
+          localObject4 = ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).hbf;
+          if ((((com.tencent.mm.media.widget.camerarecordview.a)localObject3).haY) || (!((com.tencent.mm.media.widget.camerarecordview.a)localObject3).hbj.auX())) {
             break label346;
           }
         }
@@ -996,20 +996,20 @@ public final class d
       label346:
       for (boolean bool = true;; bool = false)
       {
-        ((com.tencent.mm.media.widget.camerarecordview.c.a)localObject4).a(bool, ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAz.amG());
-        localObject3 = ((a)localObject1).vcV;
+        ((com.tencent.mm.media.widget.camerarecordview.c.a)localObject4).a(bool, ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).goG.aty());
+        localObject3 = ((a)localObject1).wlL;
         if (localObject3 != null) {
-          ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).gAz.setDisplayScreenSize((Size)localObject2);
+          ((com.tencent.mm.media.widget.camerarecordview.a)localObject3).goG.setDisplayScreenSize((Size)localObject2);
         }
-        localObject2 = ((a)localObject1).vcV;
+        localObject2 = ((a)localObject1).wlL;
         if (localObject2 != null) {
-          ((com.tencent.mm.media.widget.camerarecordview.a)localObject2).k((d.g.a.b)new a.c((a)localObject1));
+          ((com.tencent.mm.media.widget.camerarecordview.a)localObject2).p((d.g.a.b)new a.c((a)localObject1));
         }
-        localObject2 = ((a)localObject1).vcV;
+        localObject2 = ((a)localObject1).wlL;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((com.tencent.mm.media.widget.camerarecordview.a)localObject2).a(((a)localObject1).vcZ, (d.g.a.b)new a.d((a)localObject1));
+        ((com.tencent.mm.media.widget.camerarecordview.a)localObject2).a(((a)localObject1).wlP, (d.g.a.b)new a.d((a)localObject1));
         AppMethodBeat.o(75120);
         return;
       }
@@ -1022,10 +1022,10 @@ public final class d
     AppMethodBeat.i(75133);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("PARAM_PREPARE_CAMERA_IGNORE_FLIP_CHECK_BOOLEAN", true);
-    a locala = this.vdi;
+    a locala = this.wlY;
     if (locala != null)
     {
-      locala.a(d.c.vnw, localBundle);
+      locala.a(d.c.wvR, localBundle);
       AppMethodBeat.o(75133);
       return;
     }
@@ -1034,7 +1034,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.appcamera.d
  * JD-Core Version:    0.7.0.1
  */

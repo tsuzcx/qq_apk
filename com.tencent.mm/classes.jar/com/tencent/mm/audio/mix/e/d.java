@@ -7,20 +7,20 @@ import java.util.List;
 public final class d
   implements i
 {
-  private h cVC;
-  private int cVD = 4;
+  private h cSY;
+  private int cSZ = 4;
   
-  public final com.tencent.mm.audio.mix.a.b S(List<e> paramList)
+  public final com.tencent.mm.audio.mix.a.b J(List<e> paramList)
   {
     AppMethodBeat.i(136865);
-    if (this.cVC == null)
+    if (this.cSY == null)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mixAlgorithm must be init, please call init() first");
       AppMethodBeat.o(136865);
       return null;
     }
-    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.MF().MG();
-    if (!this.cVC.a(localb, paramList))
+    com.tencent.mm.audio.mix.a.b localb = com.tencent.mm.audio.mix.b.a.MD().ME();
+    if (!this.cSY.a(localb, paramList))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixer", "mix audio fail");
       AppMethodBeat.o(136865);
@@ -34,8 +34,8 @@ public final class d
   {
     AppMethodBeat.i(136864);
     Object localObject;
-    if (this.cVC == null) {
-      switch (this.cVD)
+    if (this.cSY == null) {
+      switch (this.cSZ)
       {
       default: 
         localObject = new j();
@@ -43,7 +43,7 @@ public final class d
     }
     for (;;)
     {
-      this.cVC = ((h)localObject);
+      this.cSY = ((h)localObject);
       AppMethodBeat.o(136864);
       return;
       localObject = new n();

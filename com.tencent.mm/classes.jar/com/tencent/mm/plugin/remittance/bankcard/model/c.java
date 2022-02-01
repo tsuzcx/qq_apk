@@ -15,8 +15,8 @@ import android.widget.Filterable;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,25 +26,25 @@ public final class c
   implements Filterable
 {
   private Context mContext;
-  private List<TransferRecordParcel> vuE;
-  private List<TransferRecordParcel> vuF;
-  private List<Pair<Integer, Integer>> vuG;
-  private Filter vuH;
+  private List<TransferRecordParcel> wEJ;
+  private List<TransferRecordParcel> wEK;
+  private List<Pair<Integer, Integer>> wEL;
+  private Filter wEM;
   
   public c(Context paramContext, List<TransferRecordParcel> paramList)
   {
     AppMethodBeat.i(67412);
-    this.vuF = new ArrayList();
-    this.vuG = new ArrayList();
+    this.wEK = new ArrayList();
+    this.wEL = new ArrayList();
     this.mContext = paramContext;
-    this.vuE = paramList;
+    this.wEJ = paramList;
     AppMethodBeat.o(67412);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(67413);
-    int i = this.vuF.size();
+    int i = this.wEK.size();
     AppMethodBeat.o(67413);
     return i;
   }
@@ -52,10 +52,10 @@ public final class c
   public final Filter getFilter()
   {
     AppMethodBeat.i(67416);
-    if (this.vuH == null) {
-      this.vuH = new a((byte)0);
+    if (this.wEM == null) {
+      this.wEM = new a((byte)0);
     }
-    Filter localFilter = this.vuH;
+    Filter localFilter = this.wEM;
     AppMethodBeat.o(67416);
     return localFilter;
   }
@@ -63,7 +63,7 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(67414);
-    Object localObject = this.vuF.get(paramInt);
+    Object localObject = this.wEK.get(paramInt);
     AppMethodBeat.o(67414);
     return localObject;
   }
@@ -81,20 +81,20 @@ public final class c
     {
       localView = LayoutInflater.from(this.mContext).inflate(2131493159, paramViewGroup, false);
       paramView = new b((byte)0);
-      paramView.vuK = ((CdnImageView)localView.findViewById(2131297560));
-      paramView.vuL = ((TextView)localView.findViewById(2131297562));
-      paramView.vuM = ((TextView)localView.findViewById(2131297561));
+      paramView.wEP = ((CdnImageView)localView.findViewById(2131297560));
+      paramView.wEQ = ((TextView)localView.findViewById(2131297562));
+      paramView.wER = ((TextView)localView.findViewById(2131297561));
       localView.setTag(paramView);
     }
     paramView = (b)localView.getTag();
     paramViewGroup = (TransferRecordParcel)getItem(paramInt);
-    Pair localPair = (Pair)this.vuG.get(paramInt);
+    Pair localPair = (Pair)this.wEL.get(paramInt);
     ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(this.mContext.getResources().getColor(2131100711));
-    SpannableString localSpannableString = new SpannableString(paramViewGroup.vuP);
+    SpannableString localSpannableString = new SpannableString(paramViewGroup.wEU);
     localSpannableString.setSpan(localForegroundColorSpan, ((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue(), 18);
-    paramView.vuK.setUrl(paramViewGroup.vur);
-    paramView.vuL.setText(localSpannableString);
-    paramView.vuM.setText(this.mContext.getString(2131756399, new Object[] { paramViewGroup.szi, paramViewGroup.vuO }));
+    paramView.wEP.setUrl(paramViewGroup.wEw);
+    paramView.wEQ.setText(localSpannableString);
+    paramView.wER.setText(this.mContext.getString(2131756399, new Object[] { paramViewGroup.tGS, paramViewGroup.wET }));
     AppMethodBeat.o(67415);
     return localView;
   }
@@ -102,38 +102,38 @@ public final class c
   final class a
     extends Filter
   {
-    List<TransferRecordParcel> vuI;
+    List<TransferRecordParcel> wEN;
     
     private a()
     {
       AppMethodBeat.i(67409);
-      this.vuI = new ArrayList();
+      this.wEN = new ArrayList();
       AppMethodBeat.o(67409);
     }
     
     protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence)
     {
       AppMethodBeat.i(67410);
-      this.vuI.clear();
+      this.wEN.clear();
       c.a(c.this).clear();
-      ad.d("MicroMsg.PayeeAutoCompleteAdapter", "input: %s", new Object[] { paramCharSequence });
+      ac.d("MicroMsg.PayeeAutoCompleteAdapter", "input: %s", new Object[] { paramCharSequence });
       Iterator localIterator = c.b(c.this).iterator();
       while (localIterator.hasNext())
       {
         TransferRecordParcel localTransferRecordParcel = (TransferRecordParcel)localIterator.next();
-        if ((!bt.ai(paramCharSequence)) && (localTransferRecordParcel.vuP.contains(paramCharSequence)))
+        if ((!bs.aj(paramCharSequence)) && (localTransferRecordParcel.wEU.contains(paramCharSequence)))
         {
-          int i = localTransferRecordParcel.vuP.indexOf((String)paramCharSequence);
+          int i = localTransferRecordParcel.wEU.indexOf((String)paramCharSequence);
           int j = paramCharSequence.length() + i;
-          ad.i("MicroMsg.PayeeAutoCompleteAdapter", "match payee: %s, start: %s, end: %s", new Object[] { localTransferRecordParcel.vuP, Integer.valueOf(i), Integer.valueOf(j) });
+          ac.i("MicroMsg.PayeeAutoCompleteAdapter", "match payee: %s, start: %s, end: %s", new Object[] { localTransferRecordParcel.wEU, Integer.valueOf(i), Integer.valueOf(j) });
           Pair localPair = new Pair(Integer.valueOf(i), Integer.valueOf(j));
           c.a(c.this).add(localPair);
-          this.vuI.add(localTransferRecordParcel);
+          this.wEN.add(localTransferRecordParcel);
         }
       }
       paramCharSequence = new Filter.FilterResults();
-      paramCharSequence.count = this.vuI.size();
-      paramCharSequence.values = this.vuI;
+      paramCharSequence.count = this.wEN.size();
+      paramCharSequence.values = this.wEN;
       AppMethodBeat.o(67410);
       return paramCharSequence;
     }
@@ -142,7 +142,7 @@ public final class c
     {
       AppMethodBeat.i(67411);
       c.a(c.this, (List)paramFilterResults.values);
-      ad.i("MicroMsg.PayeeAutoCompleteAdapter", "match count: %d", new Object[] { Integer.valueOf(c.c(c.this).size()) });
+      ac.i("MicroMsg.PayeeAutoCompleteAdapter", "match count: %d", new Object[] { Integer.valueOf(c.c(c.this).size()) });
       c.this.notifyDataSetChanged();
       AppMethodBeat.o(67411);
     }
@@ -150,9 +150,9 @@ public final class c
   
   final class b
   {
-    CdnImageView vuK;
-    TextView vuL;
-    TextView vuM;
+    CdnImageView wEP;
+    TextView wEQ;
+    TextView wER;
     
     private b() {}
   }

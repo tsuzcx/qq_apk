@@ -10,8 +10,8 @@ import com.tencent.kinda.modularize.KindaAppModuleManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class KindaApp
 {
@@ -19,7 +19,7 @@ public class KindaApp
   private static KindaApp instance;
   private KindaAppModuleManager appModuleManager;
   private IAppKinda kinda;
-  private aq threadHandler;
+  private ap threadHandler;
   
   static
   {
@@ -32,8 +32,8 @@ public class KindaApp
   public KindaApp()
   {
     AppMethodBeat.i(18612);
-    ad.i("MicroMsg.Kinda.KindaApp", "create kinda app");
-    h.vKh.dB(782, 30);
+    ac.i("MicroMsg.Kinda.KindaApp", "create kinda app");
+    h.wUl.dB(782, 30);
     this.appModuleManager = new KindaAppModuleManager();
     this.appModuleManager.registerModule(new KindaBaseViewModule());
     this.appModuleManager.registerModule(new KindaBaseServiceModule());
@@ -59,7 +59,7 @@ public class KindaApp
   public static boolean isEnabled()
   {
     AppMethodBeat.i(18609);
-    boolean bool = a.cbc();
+    boolean bool = a.cil();
     AppMethodBeat.o(18609);
     return bool;
   }
@@ -76,7 +76,7 @@ public class KindaApp
   public void notifyAllUseCases(ITransmitKvData paramITransmitKvData)
   {
     AppMethodBeat.i(18616);
-    ad.i("MicroMsg.Kinda.KindaApp", "notifyAllUseCases");
+    ac.i("MicroMsg.Kinda.KindaApp", "notifyAllUseCases");
     this.kinda.notifyAllUseCases(paramITransmitKvData);
     AppMethodBeat.o(18616);
   }
@@ -84,7 +84,7 @@ public class KindaApp
   public void onBackground()
   {
     AppMethodBeat.i(18615);
-    ad.i("MicroMsg.Kinda.KindaApp", "onBackground");
+    ac.i("MicroMsg.Kinda.KindaApp", "onBackground");
     this.kinda.applicationEnterBackground();
     AppMethodBeat.o(18615);
   }
@@ -100,20 +100,20 @@ public class KindaApp
   public void onForeground()
   {
     AppMethodBeat.i(18614);
-    ad.i("MicroMsg.Kinda.KindaApp", "onForeground");
+    ac.i("MicroMsg.Kinda.KindaApp", "onForeground");
     this.kinda.applicationEnterForeground();
     AppMethodBeat.o(18614);
   }
   
   public void reInitModule()
   {
-    AppMethodBeat.i(186423);
+    AppMethodBeat.i(207385);
     if (this.appModuleManager != null)
     {
       this.appModuleManager.initAllModule();
       this.kinda = IAppKinda.getInstance();
     }
-    AppMethodBeat.o(186423);
+    AppMethodBeat.o(207385);
   }
   
   public void releaseAppKinda()

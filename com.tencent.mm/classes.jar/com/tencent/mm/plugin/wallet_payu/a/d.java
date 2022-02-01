@@ -10,8 +10,8 @@ import java.util.HashMap;
 public class d
   implements aw
 {
-  private String AzP = null;
-  private int AzQ = -1;
+  private String BSl = null;
+  private int BSm = -1;
   
   static
   {

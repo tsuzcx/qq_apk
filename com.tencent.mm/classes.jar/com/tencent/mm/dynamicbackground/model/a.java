@@ -11,68 +11,68 @@ import d.l;
 import d.v;
 import java.lang.reflect.Method;
 
-@l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
+@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
 public final class a
   implements c
 {
-  public static final a fIp;
-  private boolean cEP = true;
+  public static final a fLV;
+  private boolean cBX = true;
   
   static
   {
     AppMethodBeat.i(103076);
-    fIp = new a((byte)0);
+    fLV = new a((byte)0);
     AppMethodBeat.o(103076);
   }
   
-  public final boolean aaf()
+  public final boolean abe()
   {
-    return this.cEP;
+    return this.cBX;
   }
   
-  public final void aag()
+  public final void abf()
   {
-    this.cEP = false;
+    this.cBX = false;
   }
   
-  public final void aah()
+  public final void abg()
   {
     AppMethodBeat.i(103075);
     System.loadLibrary("dynamicBg");
     AppMethodBeat.o(103075);
   }
   
-  public final boolean aai()
+  public final boolean abh()
   {
     return false;
   }
   
-  public final void aaj() {}
+  public final void abi() {}
   
-  public final void aak() {}
+  public final void abj() {}
   
-  public final void aal() {}
+  public final void abk() {}
   
-  public final boolean aam()
+  public final boolean abl()
   {
     return false;
   }
   
-  public final boolean aan()
+  public final boolean abm()
   {
     return false;
   }
   
-  public final void aao() {}
+  public final void abn() {}
   
-  public final void aap() {}
+  public final void abo() {}
   
-  public final float aaq()
+  public final float abp()
   {
     return 16.0F;
   }
   
-  public final Point cf(Context paramContext)
+  public final Point cl(Context paramContext)
   {
     AppMethodBeat.i(103074);
     k.h(paramContext, "context");
@@ -126,12 +126,12 @@ public final class a
     }
   }
   
-  @l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl$Companion;", "", "()V", "TAG", "", "dynamicbg_release"})
+  @l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl$Companion;", "", "()V", "TAG", "", "dynamicbg_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.a
  * JD-Core Version:    0.7.0.1
  */

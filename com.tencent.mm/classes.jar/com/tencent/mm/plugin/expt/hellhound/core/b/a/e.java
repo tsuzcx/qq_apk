@@ -5,8 +5,6 @@ import android.content.Intent;
 
 abstract interface e
 {
-  public abstract void P(Activity paramActivity);
-  
   public abstract void Q(Activity paramActivity);
   
   public abstract void R(Activity paramActivity);
@@ -19,6 +17,8 @@ abstract interface e
   
   public abstract void V(Activity paramActivity);
   
+  public abstract void W(Activity paramActivity);
+  
   public abstract void a(Activity paramActivity, Intent paramIntent);
   
   public abstract void a(Activity paramActivity, boolean paramBoolean);
@@ -29,7 +29,7 @@ abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.e
  * JD-Core Version:    0.7.0.1
  */

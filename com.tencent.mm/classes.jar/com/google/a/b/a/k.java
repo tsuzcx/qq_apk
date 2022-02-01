@@ -10,49 +10,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k<T>
   extends s<T>
 {
-  private s<T> bFw;
-  final f bGS;
-  private final q<T> bHe;
-  private final j<T> bHf;
-  private final com.google.a.c.a<T> bHg;
-  private final t bHh;
-  private final k<T>.a bHi;
+  private s<T> bDe;
+  final f bEA;
+  private final q<T> bEM;
+  private final j<T> bEN;
+  private final com.google.a.c.a<T> bEO;
+  private final t bEP;
+  private final k<T>.a bEQ;
   
   public k(q<T> paramq, j<T> paramj, f paramf, com.google.a.c.a<T> parama)
   {
     AppMethodBeat.i(107986);
-    this.bHi = new a((byte)0);
-    this.bHe = paramq;
-    this.bHf = paramj;
-    this.bGS = paramf;
-    this.bHg = parama;
-    this.bHh = null;
+    this.bEQ = new a((byte)0);
+    this.bEM = paramq;
+    this.bEN = paramj;
+    this.bEA = paramf;
+    this.bEO = parama;
+    this.bEP = null;
     AppMethodBeat.o(107986);
   }
   
   public final void a(com.google.a.d.a parama, T paramT)
   {
     AppMethodBeat.i(107987);
-    if (this.bHe == null)
+    if (this.bEM == null)
     {
-      s locals = this.bFw;
+      s locals = this.bDe;
       if (locals != null) {}
       for (;;)
       {
         locals.a(parama, paramT);
         AppMethodBeat.o(107987);
         return;
-        locals = this.bGS.a(this.bHh, this.bHg);
-        this.bFw = locals;
+        locals = this.bEA.a(this.bEP, this.bEO);
+        this.bDe = locals;
       }
     }
     if (paramT == null)
     {
-      parama.xI();
+      parama.xv();
       AppMethodBeat.o(107987);
       return;
     }
-    com.google.a.b.k.a(this.bHe.xq(), parama);
+    com.google.a.b.k.a(this.bEM.xd(), parama);
     AppMethodBeat.o(107987);
   }
   
@@ -63,7 +63,7 @@ public final class k<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.a.k
  * JD-Core Version:    0.7.0.1
  */

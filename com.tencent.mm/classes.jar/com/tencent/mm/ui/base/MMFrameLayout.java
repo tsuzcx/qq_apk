@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMFrameLayout
   extends FrameLayout
 {
-  private boolean FXa = false;
+  private boolean HwP = false;
   
   public MMFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,7 +22,7 @@ public class MMFrameLayout
     AppMethodBeat.i(141956);
     int j = getChildCount();
     int i = 0;
-    while ((!this.FXa) && (i < j))
+    while ((!this.HwP) && (i < j))
     {
       View localView = getChildAt(i);
       if (localView != null)
@@ -36,7 +36,7 @@ public class MMFrameLayout
       }
       i += 1;
     }
-    this.FXa = true;
+    this.HwP = true;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(141956);
   }

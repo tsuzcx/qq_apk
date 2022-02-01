@@ -11,10 +11,10 @@ public class AppBrandWeishiParams
   public static final Parcelable.Creator<AppBrandWeishiParams> CREATOR;
   public String appId;
   public String appName;
-  public int gFG;
-  public String jea;
-  public String jeb;
-  public String jec;
+  public int hgh;
+  public String jEo;
+  public String jEp;
+  public String jEq;
   public String thumbUrl;
   
   static
@@ -36,13 +36,13 @@ public class AppBrandWeishiParams
   private void i(Parcel paramParcel)
   {
     AppMethodBeat.i(134802);
-    this.gFG = paramParcel.readInt();
+    this.hgh = paramParcel.readInt();
     this.thumbUrl = paramParcel.readString();
-    this.jea = paramParcel.readString();
-    this.jeb = paramParcel.readString();
+    this.jEo = paramParcel.readString();
+    this.jEp = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.appName = paramParcel.readString();
-    this.jec = paramParcel.readString();
+    this.jEq = paramParcel.readString();
     AppMethodBeat.o(134802);
   }
   
@@ -71,7 +71,7 @@ public class AppBrandWeishiParams
   public String toString()
   {
     AppMethodBeat.i(134800);
-    String str = "AppBrandWeishiParams{fromOpenSdk=" + this.gFG + ", thumbUrl='" + this.thumbUrl + '\'' + ", thumbFullPath='" + this.jea + '\'' + ", msgImgPath='" + this.jeb + '\'' + ", appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", sourceUserName='" + this.jec + '\'' + '}';
+    String str = "AppBrandWeishiParams{fromOpenSdk=" + this.hgh + ", thumbUrl='" + this.thumbUrl + '\'' + ", thumbFullPath='" + this.jEo + '\'' + ", msgImgPath='" + this.jEp + '\'' + ", appId='" + this.appId + '\'' + ", appName='" + this.appName + '\'' + ", sourceUserName='" + this.jEq + '\'' + '}';
     AppMethodBeat.o(134800);
     return str;
   }
@@ -79,19 +79,19 @@ public class AppBrandWeishiParams
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134804);
-    paramParcel.writeInt(this.gFG);
+    paramParcel.writeInt(this.hgh);
     paramParcel.writeString(this.thumbUrl);
-    paramParcel.writeString(this.jea);
-    paramParcel.writeString(this.jeb);
+    paramParcel.writeString(this.jEo);
+    paramParcel.writeString(this.jEp);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.appName);
-    paramParcel.writeString(this.jec);
+    paramParcel.writeString(this.jEq);
     AppMethodBeat.o(134804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams
  * JD-Core Version:    0.7.0.1
  */

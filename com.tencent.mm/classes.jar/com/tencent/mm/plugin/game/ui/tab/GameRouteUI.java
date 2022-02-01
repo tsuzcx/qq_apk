@@ -7,17 +7,17 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.game.d.an;
 import com.tencent.mm.plugin.game.d.bg;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.model.GameTabData.TabItem;
 import com.tencent.mm.plugin.game.model.aj;
 import com.tencent.mm.plugin.game.ui.GameCenterActivity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import java.util.List;
 import java.util.List<Lcom.tencent.mm.plugin.game.d.an;>;
@@ -25,12 +25,12 @@ import java.util.List<Lcom.tencent.mm.plugin.game.d.an;>;
 @com.tencent.mm.ui.base.a(19)
 public class GameRouteUI
   extends GameCenterActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private int rXI;
+  private int tfA;
   
   /* Error */
-  private static bg cEt()
+  private static bg cRD()
   {
     // Byte code:
     //   0: ldc 46
@@ -40,10 +40,10 @@ public class GameRouteUI
     //   10: checkcast 48	com/tencent/mm/plugin/game/api/e
     //   13: invokeinterface 58 1 0
     //   18: ldc 60
-    //   20: invokevirtual 66	com/tencent/mm/plugin/game/model/w:abW	(Ljava/lang/String;)[B
+    //   20: invokevirtual 66	com/tencent/mm/plugin/game/model/w:agO	(Ljava/lang/String;)[B
     //   23: astore_1
     //   24: aload_1
-    //   25: invokestatic 72	com/tencent/mm/sdk/platformtools/bt:cw	([B)Z
+    //   25: invokestatic 72	com/tencent/mm/sdk/platformtools/bs:cv	([B)Z
     //   28: ifeq +10 -> 38
     //   31: ldc 46
     //   33: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -55,7 +55,7 @@ public class GameRouteUI
     //   45: astore_0
     //   46: aload_0
     //   47: aload_1
-    //   48: invokevirtual 79	com/tencent/mm/plugin/game/d/bg:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   48: invokevirtual 79	com/tencent/mm/plugin/game/d/bg:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   51: pop
     //   52: ldc 46
     //   54: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -88,15 +88,15 @@ public class GameRouteUI
       AppMethodBeat.o(42426);
       return;
     }
-    GameTabData localGameTabData = GameTabData.dQ(paramList);
-    if ((localGameTabData == null) || (bt.gL(localGameTabData.getItemList())))
+    GameTabData localGameTabData = GameTabData.dU(paramList);
+    if ((localGameTabData == null) || (bs.gY(localGameTabData.acH())))
     {
-      ad.e("MicroMsg.GameRouteUI", "game tab data is null");
+      ac.e("MicroMsg.GameRouteUI", "game tab data is null");
       exit();
       AppMethodBeat.o(42426);
       return;
     }
-    Object localObject2 = localGameTabData.getItemList();
+    Object localObject2 = localGameTabData.acH();
     paramList = null;
     int i = 0;
     Object localObject1;
@@ -106,12 +106,12 @@ public class GameRouteUI
       if (localObject1 == null) {
         break label253;
       }
-      if (!((GameTabData.TabItem)localObject1).rYt) {
+      if (!((GameTabData.TabItem)localObject1).tgl) {
         break label250;
       }
       paramList = (List<an>)localObject1;
       label115:
-      com.tencent.mm.plugin.game.e.a.a(this, 18, ((GameTabData.TabItem)localObject1).dvS, ((GameTabData.TabItem)localObject1).rYB, null, this.rXI, com.tencent.mm.plugin.game.e.a.qh(((GameTabData.TabItem)localObject1).rVj));
+      com.tencent.mm.plugin.game.e.a.a(this, 18, ((GameTabData.TabItem)localObject1).dtF, ((GameTabData.TabItem)localObject1).tgt, null, this.tfA, com.tencent.mm.plugin.game.e.a.tu(((GameTabData.TabItem)localObject1).tdb));
     }
     label250:
     label253:
@@ -125,7 +125,7 @@ public class GameRouteUI
       }
       if (localObject1 == null)
       {
-        ad.e("MicroMsg.GameRouteUI", "game tab entry item is null");
+        ac.e("MicroMsg.GameRouteUI", "game tab entry item is null");
         exit();
         AppMethodBeat.o(42426);
         return;
@@ -150,22 +150,22 @@ public class GameRouteUI
     if ((!isFinishing()) && (!isDestroyed()))
     {
       finish();
-      overridePendingTransition(MMFragmentActivity.a.lLH, MMFragmentActivity.a.lLI);
+      overridePendingTransition(MMFragmentActivity.a.mnE, MMFragmentActivity.a.mnF);
     }
     AppMethodBeat.o(42425);
   }
   
-  public final boolean cDZ()
+  public final boolean cRj()
   {
     return false;
   }
   
-  public final int cEa()
+  public final int cRk()
   {
     return 0;
   }
   
-  public final int cEb()
+  public final int cRl()
   {
     return 0;
   }
@@ -203,15 +203,15 @@ public class GameRouteUI
     AppMethodBeat.i(42420);
     super.onCreate(paramBundle);
     initView();
-    this.rXI = getIntent().getIntExtra("game_report_from_scene", 0);
-    paramBundle = cEt();
-    if ((paramBundle != null) && (!bt.gL(paramBundle.saZ)))
+    this.tfA = getIntent().getIntExtra("game_report_from_scene", 0);
+    paramBundle = cRD();
+    if ((paramBundle != null) && (!bs.gY(paramBundle.tiT)))
     {
-      ad.i("MicroMsg.GameRouteUI", "use cache data");
+      ac.i("MicroMsg.GameRouteUI", "use cache data");
       aj.updateData();
       boolean bool2 = getIntent().getBooleanExtra("switch_country_no_anim", false);
       getIntent().removeExtra("switch_country_no_anim");
-      paramBundle = paramBundle.saZ;
+      paramBundle = paramBundle.tiT;
       if (!bool2) {
         bool1 = true;
       }
@@ -219,16 +219,16 @@ public class GameRouteUI
       AppMethodBeat.o(42420);
       return;
     }
-    com.tencent.mm.kernel.g.aeS().a(2641, this);
+    com.tencent.mm.kernel.g.agi().a(2641, this);
     paramBundle = new aj();
-    com.tencent.mm.kernel.g.aeS().a(paramBundle, 0);
+    com.tencent.mm.kernel.g.agi().a(paramBundle, 0);
     AppMethodBeat.o(42420);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(42422);
-    com.tencent.mm.kernel.g.aeS().b(2641, this);
+    com.tencent.mm.kernel.g.agi().b(2641, this);
     super.onDestroy();
     AppMethodBeat.o(42422);
   }
@@ -252,20 +252,20 @@ public class GameRouteUI
     AppMethodBeat.i(42423);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data success");
-      aq.f(new Runnable()
+      ac.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data success");
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(42419);
-          aj.a(this.rYD);
-          if ((this.rYD != null) && (!bt.gL(this.rYD.saZ)))
+          aj.a(this.tgv);
+          if ((this.tgv != null) && (!bs.gY(this.tgv.tiT)))
           {
-            GameRouteUI.a(GameRouteUI.this, this.rYD.saZ);
+            GameRouteUI.a(GameRouteUI.this, this.tgv.tiT);
             AppMethodBeat.o(42419);
             return;
           }
-          ad.e("MicroMsg.GameRouteUI", "get GameIndex4TabNavData err");
+          ac.e("MicroMsg.GameRouteUI", "get GameIndex4TabNavData err");
           GameRouteUI.a(GameRouteUI.this);
           AppMethodBeat.o(42419);
         }
@@ -273,7 +273,7 @@ public class GameRouteUI
       AppMethodBeat.o(42423);
       return;
     }
-    ad.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data fail");
+    ac.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data fail");
     exit();
     AppMethodBeat.o(42423);
   }

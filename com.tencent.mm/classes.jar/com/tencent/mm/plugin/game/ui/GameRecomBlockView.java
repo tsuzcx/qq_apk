@@ -15,8 +15,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.aj;
 import com.tencent.mm.plugin.game.d.cy;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public class GameRecomBlockView
@@ -26,7 +26,7 @@ public class GameRecomBlockView
   private ViewGroup mContainer;
   private Context mContext;
   private LayoutInflater mInflater;
-  int rXI;
+  int tfA;
   
   public GameRecomBlockView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,14 +43,14 @@ public class GameRecomBlockView
   {
     AppMethodBeat.i(42350);
     this.mContainer.removeAllViews();
-    if (bt.gL(paramaj.saZ))
+    if (bs.gY(paramaj.tiT))
     {
       setVisibility(8);
       AppMethodBeat.o(42350);
       return;
     }
     if (paramInt1 == 2) {
-      com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1021, 0, null, paramInt2, com.tencent.mm.plugin.game.e.a.qh(paramaj.rZW));
+      com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1021, 0, null, paramInt2, com.tencent.mm.plugin.game.e.a.tu(paramaj.thP));
     }
     this.mInflater.inflate(2131494253, this, true);
     Object localObject1 = (TextView)findViewById(2131303853);
@@ -63,21 +63,21 @@ public class GameRecomBlockView
     label190:
     int j;
     Object localObject4;
-    if (!bt.isNullOrNil(paramaj.rZX))
+    if (!bs.isNullOrNil(paramaj.thQ))
     {
-      ((TextView)localObject1).setText(paramaj.rZX);
-      if (bt.isNullOrNil(paramaj.sba)) {
+      ((TextView)localObject1).setText(paramaj.thQ);
+      if (bs.isNullOrNil(paramaj.tiU)) {
         break label506;
       }
-      ((TextView)localObject3).setText(paramaj.sba);
-      ((View)localObject2).setTag(new a(null, 999, paramaj.sbb, paramaj.rZW, "game_center_mygame_more"));
+      ((TextView)localObject3).setText(paramaj.tiU);
+      ((View)localObject2).setTag(new a(null, 999, paramaj.tiV, paramaj.thP, "game_center_mygame_more"));
       ((View)localObject2).setOnClickListener(this);
       k = 0;
       i = 0;
-      if (i >= paramaj.saZ.size()) {
+      if (i >= paramaj.tiT.size()) {
         break label586;
       }
-      localObject1 = (cy)paramaj.saZ.get(i);
+      localObject1 = (cy)paramaj.tiT.get(i);
       j = k;
       if (localObject1 != null)
       {
@@ -86,7 +86,7 @@ public class GameRecomBlockView
         }
         k += 1;
         localObject4 = (LinearLayout)this.mInflater.inflate(2131494254, this, false);
-        ((LinearLayout)localObject4).setTag(new a(((cy)localObject1).hnC, k, ((cy)localObject1).rZo, ((cy)localObject1).rZW, "game_center_mygame_rank"));
+        ((LinearLayout)localObject4).setTag(new a(((cy)localObject1).hOf, k, ((cy)localObject1).thh, ((cy)localObject1).thP, "game_center_mygame_rank"));
         ((LinearLayout)localObject4).setOnClickListener(this);
         localLinearLayout.addView((View)localObject4, new LinearLayout.LayoutParams(-1, -2, 1.0F));
         localObject2 = (TextView)((LinearLayout)localObject4).findViewById(2131303852);
@@ -98,9 +98,9 @@ public class GameRecomBlockView
         default: 
           label388:
           ((TextView)localObject2).setText(((cy)localObject1).Title);
-          com.tencent.mm.plugin.game.f.e.cEB().l((ImageView)localObject3, ((cy)localObject1).rZn);
-          localTextView.setText(((cy)localObject1).scR);
-          if (!bt.isNullOrNil(((cy)localObject1).Desc)) {
+          com.tencent.mm.plugin.game.f.e.cRL().l((ImageView)localObject3, ((cy)localObject1).thg);
+          localTextView.setText(((cy)localObject1).tkL);
+          if (!bs.isNullOrNil(((cy)localObject1).Desc)) {
             ((TextView)localObject4).setText(((cy)localObject1).Desc);
           }
           break;
@@ -112,7 +112,7 @@ public class GameRecomBlockView
       j = k;
       if (paramInt1 == 2)
       {
-        com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1021, k, ((cy)localObject1).hnC, paramInt2, com.tencent.mm.plugin.game.e.a.qh(((cy)localObject1).rZW));
+        com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1021, k, ((cy)localObject1).hOf, paramInt2, com.tencent.mm.plugin.game.e.a.tu(((cy)localObject1).thP));
         j = k;
       }
       i += 1;
@@ -134,7 +134,7 @@ public class GameRecomBlockView
     label586:
     paramaj = new View(getContext());
     paramaj.setBackgroundColor(getContext().getResources().getColor(2131100406));
-    addView(paramaj, new LinearLayout.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(getContext(), 5)));
+    addView(paramaj, new LinearLayout.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(getContext(), 5)));
     AppMethodBeat.o(42350);
   }
   
@@ -143,19 +143,19 @@ public class GameRecomBlockView
     AppMethodBeat.i(42351);
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
-      ad.w("MicroMsg.GameRecomBlockView", "getTag is null");
+      ac.w("MicroMsg.GameRecomBlockView", "getTag is null");
       AppMethodBeat.o(42351);
       return;
     }
     paramView = (a)paramView.getTag();
-    if (bt.isNullOrNil(paramView.jumpUrl))
+    if (bs.isNullOrNil(paramView.jumpUrl))
     {
-      ad.w("MicroMsg.GameRecomBlockView", "jumpUrl is null");
+      ac.w("MicroMsg.GameRecomBlockView", "jumpUrl is null");
       AppMethodBeat.o(42351);
       return;
     }
-    int i = c.A(this.mContext, paramView.jumpUrl, paramView.dxF);
-    com.tencent.mm.game.report.e.a(this.mContext, 10, 1021, paramView.rYB, i, paramView.appId, this.rXI, com.tencent.mm.plugin.game.e.a.qh(paramView.rVj));
+    int i = c.z(this.mContext, paramView.jumpUrl, paramView.dvr);
+    com.tencent.mm.game.report.e.a(this.mContext, 10, 1021, paramView.tgt, i, paramView.appId, this.tfA, com.tencent.mm.plugin.game.e.a.tu(paramView.tdb));
     AppMethodBeat.o(42351);
   }
   
@@ -163,25 +163,25 @@ public class GameRecomBlockView
   {
     AppMethodBeat.i(42349);
     super.onFinishInflate();
-    ad.i("MicroMsg.GameRecomBlockView", "initView finished");
+    ac.i("MicroMsg.GameRecomBlockView", "initView finished");
     AppMethodBeat.o(42349);
   }
   
   static final class a
   {
     public String appId;
-    public String dxF;
+    public String dvr;
     public String jumpUrl;
-    public String rVj;
-    public int rYB;
+    public String tdb;
+    public int tgt;
     
     public a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
     {
       this.appId = paramString1;
-      this.rYB = paramInt;
+      this.tgt = paramInt;
       this.jumpUrl = paramString2;
-      this.rVj = paramString3;
-      this.dxF = paramString4;
+      this.tdb = paramString3;
+      this.dvr = paramString4;
     }
   }
 }

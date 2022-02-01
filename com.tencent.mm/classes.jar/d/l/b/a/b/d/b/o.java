@@ -14,7 +14,7 @@ public final class o
     paramn = paramn.c(parama);
     if (paramn != null)
     {
-      paramn = paramn.fCh();
+      paramn = paramn.fUL();
       AppMethodBeat.o(58224);
       return paramn;
     }
@@ -24,7 +24,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.o
  * JD-Core Version:    0.7.0.1
  */

@@ -10,104 +10,104 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.AccelerateInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.MMWebView;
 import d.g.b.k;
 import d.l;
 import d.v;
 import java.lang.reflect.Method;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper;", "", "bottomNavigator", "Landroid/view/View;", "root", "webview", "Lcom/tencent/mm/ui/widget/MMWebView;", "(Landroid/view/View;Landroid/view/View;Lcom/tencent/mm/ui/widget/MMWebView;)V", "MIN_TRIGGER_HEIGHT", "", "bottomBarHeight", "currentShow", "", "deviceShowBottomNav", "Ljava/lang/Boolean;", "isXWeb", "startScrollTime", "", "startScrollY", "getWebview", "()Lcom/tencent/mm/ui/widget/MMWebView;", "setWebview", "(Lcom/tencent/mm/ui/widget/MMWebView;)V", "hideBottomNavigator", "", "huaweiNeedShowBottomNavigator", "miuiNeedShowBottomNavigator", "needShowBottomNavigator", "onDestroy", "onWebViewScrollChanged", "l", "t", "oldl", "oldt", "oppoNeedShowBottomNavigator", "setBottomNavigatorPos", "show", "setBottomNavigatorVisibility", "showBottom", "showBottomNavigator", "vivoNeedShowBottomNavigator", "Companion", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper;", "", "bottomNavigator", "Landroid/view/View;", "root", "webview", "Lcom/tencent/mm/ui/widget/MMWebView;", "(Landroid/view/View;Landroid/view/View;Lcom/tencent/mm/ui/widget/MMWebView;)V", "MIN_TRIGGER_HEIGHT", "", "bottomBarHeight", "currentShow", "", "deviceShowBottomNav", "Ljava/lang/Boolean;", "isXWeb", "startScrollTime", "", "startScrollY", "getWebview", "()Lcom/tencent/mm/ui/widget/MMWebView;", "setWebview", "(Lcom/tencent/mm/ui/widget/MMWebView;)V", "hideBottomNavigator", "", "huaweiNeedShowBottomNavigator", "miuiNeedShowBottomNavigator", "needShowBottomNavigator", "onDestroy", "onWebViewScrollChanged", "l", "t", "oldl", "oldt", "oppoNeedShowBottomNavigator", "setBottomNavigatorPos", "show", "setBottomNavigatorVisibility", "showBottom", "showBottomNavigator", "vivoNeedShowBottomNavigator", "Companion", "plugin-webview_release"})
 public final class g
 {
-  private static final long BeD = 300L;
-  public static final a BeE;
+  private static final long CwP = 300L;
+  public static final a CwQ;
   static final String TAG = "MicroMsg.WebViewBottomNavigatorHelper";
-  private int BeA;
-  final View BeB;
-  private MMWebView BeC;
-  long Beu;
-  int Bev;
-  final int Bew;
-  boolean Bex;
-  Boolean Bey;
-  private boolean Bez;
-  private final View frN;
+  long CwG;
+  int CwH;
+  final int CwI;
+  boolean CwJ;
+  Boolean CwK;
+  private boolean CwL;
+  private int CwM;
+  final View CwN;
+  private MMWebView CwO;
+  private final View fvu;
   
   static
   {
     AppMethodBeat.i(82541);
-    BeE = new a((byte)0);
+    CwQ = new a((byte)0);
     TAG = "MicroMsg.WebViewBottomNavigatorHelper";
-    BeD = 300L;
+    CwP = 300L;
     AppMethodBeat.o(82541);
   }
   
   public g(View paramView1, View paramView2, MMWebView paramMMWebView)
   {
     AppMethodBeat.i(82540);
-    this.BeB = paramView1;
-    this.frN = paramView2;
-    this.BeC = paramMMWebView;
-    this.Bew = a.fromDPToPix(aj.getContext(), 16);
-    paramView1 = this.BeC;
+    this.CwN = paramView1;
+    this.fvu = paramView2;
+    this.CwO = paramMMWebView;
+    this.CwI = a.fromDPToPix(ai.getContext(), 16);
+    paramView1 = this.CwO;
     if (paramView1 != null)
     {
-      this.Bez = paramView1.isXWalkKernel();
+      this.CwL = paramView1.isXWalkKernel();
       AppMethodBeat.o(82540);
       return;
     }
     AppMethodBeat.o(82540);
   }
   
-  final void enL()
+  final void eDe()
   {
     AppMethodBeat.i(82538);
-    if (this.BeB.getVisibility() == 0)
+    if (this.CwN.getVisibility() == 0)
     {
       AppMethodBeat.o(82538);
       return;
     }
-    ad.i(TAG, "showBottomNavigator");
-    this.BeB.clearAnimation();
-    this.BeB.animate().setDuration(BeD).translationY(0.0F).setInterpolator((TimeInterpolator)new AccelerateInterpolator(2.0F)).setListener((Animator.AnimatorListener)new c(this)).start();
+    ac.i(TAG, "showBottomNavigator");
+    this.CwN.clearAnimation();
+    this.CwN.animate().setDuration(CwP).translationY(0.0F).setInterpolator((TimeInterpolator)new AccelerateInterpolator(2.0F)).setListener((Animator.AnimatorListener)new c(this)).start();
     AppMethodBeat.o(82538);
   }
   
-  final void enM()
+  final void eDf()
   {
     AppMethodBeat.i(82539);
-    if (this.BeB.getVisibility() == 8)
+    if (this.CwN.getVisibility() == 8)
     {
       AppMethodBeat.o(82539);
       return;
     }
-    ad.i(TAG, "hideBottomNavigator");
-    this.BeB.clearAnimation();
-    this.BeB.animate().setDuration(BeD).translationY(this.BeB.getHeight()).setInterpolator((TimeInterpolator)new AccelerateInterpolator(2.0F)).setListener((Animator.AnimatorListener)new b(this)).start();
+    ac.i(TAG, "hideBottomNavigator");
+    this.CwN.clearAnimation();
+    this.CwN.animate().setDuration(CwP).translationY(this.CwN.getHeight()).setInterpolator((TimeInterpolator)new AccelerateInterpolator(2.0F)).setListener((Animator.AnimatorListener)new b(this)).start();
     AppMethodBeat.o(82539);
   }
   
-  public final void ts(boolean paramBoolean)
+  public final void uu(boolean paramBoolean)
   {
     AppMethodBeat.i(82537);
-    this.Bex = paramBoolean;
+    this.CwJ = paramBoolean;
     if (!paramBoolean)
     {
-      enM();
+      eDf();
       AppMethodBeat.o(82537);
       return;
     }
-    enL();
+    eDe();
     AppMethodBeat.o(82537);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper$Companion;", "", "()V", "TAG", "", "animationDuration", "", "checkDeviceHasNavigationBar", "", "context", "Landroid/content/Context;", "hasNavigationBar", "plugin-webview_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper$Companion;", "", "()V", "TAG", "", "animationDuration", "", "checkDeviceHasNavigationBar", "", "context", "Landroid/content/Context;", "hasNavigationBar", "plugin-webview_release"})
   public static final class a
   {
-    public static boolean dW(Context paramContext)
+    public static boolean ee(Context paramContext)
     {
       AppMethodBeat.i(82531);
       k.h(paramContext, "context");
@@ -118,7 +118,7 @@ public final class g
           Class localClass1 = localObject.getClass();
           Class localClass2 = Integer.TYPE;
           if (localClass2 == null) {
-            k.fvU();
+            k.fOy();
           }
           paramContext = localClass1.getMethod("hasNavigationBar", new Class[] { localClass2 }).invoke(localObject, new Object[] { paramContext.getClass().getMethod("getDisplayId", new Class[0]).invoke(paramContext, new Object[0]) });
           if (paramContext == null)
@@ -130,7 +130,7 @@ public final class g
         }
         catch (Throwable paramContext)
         {
-          ad.w(g.access$getTAG$cp(), "checkDeviceHasNavigationBar Q ex:%s", new Object[] { paramContext.getMessage() });
+          ac.w(g.access$getTAG$cp(), "checkDeviceHasNavigationBar Q ex:%s", new Object[] { paramContext.getMessage() });
         }
       }
       for (;;)
@@ -153,7 +153,7 @@ public final class g
         }
         catch (Throwable paramContext)
         {
-          ad.w(g.access$getTAG$cp(), "checkDeviceHasNavigationBar ex:%s", new Object[] { paramContext.getMessage() });
+          ac.w(g.access$getTAG$cp(), "checkDeviceHasNavigationBar ex:%s", new Object[] { paramContext.getMessage() });
         }
       }
       boolean bool = ((Boolean)paramContext).booleanValue();
@@ -161,7 +161,7 @@ public final class g
       return bool;
     }
     
-    public static boolean gF(Context paramContext)
+    public static boolean gQ(Context paramContext)
     {
       AppMethodBeat.i(82532);
       k.h(paramContext, "context");
@@ -183,7 +183,7 @@ public final class g
         }
         catch (Throwable paramContext)
         {
-          ad.w(g.access$getTAG$cp(), "hasNavigationBar ex:%s", new Object[] { paramContext.getMessage() });
+          ac.w(g.access$getTAG$cp(), "hasNavigationBar ex:%s", new Object[] { paramContext.getMessage() });
         }
         for (;;)
         {
@@ -206,7 +206,7 @@ public final class g
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper$hideBottomNavigator$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-webview_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper$hideBottomNavigator$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-webview_release"})
   public static final class b
     implements Animator.AnimatorListener
   {
@@ -215,7 +215,7 @@ public final class g
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(82534);
-      g.a(this.BeF).setVisibility(8);
+      g.a(this.CwR).setVisibility(8);
       AppMethodBeat.o(82534);
     }
     
@@ -224,12 +224,12 @@ public final class g
     public final void onAnimationStart(Animator paramAnimator)
     {
       AppMethodBeat.i(82533);
-      g.a(this.BeF, false);
+      g.a(this.CwR, false);
       AppMethodBeat.o(82533);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper$showBottomNavigator$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-webview_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/ui/tools/WebViewBottomNavigatorHelper$showBottomNavigator$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-webview_release"})
   public static final class c
     implements Animator.AnimatorListener
   {
@@ -238,7 +238,7 @@ public final class g
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(82536);
-      g.a(this.BeF, true);
+      g.a(this.CwR, true);
       AppMethodBeat.o(82536);
     }
     
@@ -247,7 +247,7 @@ public final class g
     public final void onAnimationStart(Animator paramAnimator)
     {
       AppMethodBeat.i(82535);
-      g.a(this.BeF).setVisibility(0);
+      g.a(this.CwR).setVisibility(0);
       AppMethodBeat.o(82535);
     }
   }

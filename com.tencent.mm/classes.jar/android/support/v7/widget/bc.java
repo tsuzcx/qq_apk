@@ -15,22 +15,22 @@ import android.view.accessibility.AccessibilityManager;
 final class bc
   implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener
 {
-  private static bc awW;
-  private static bc awX;
-  private final CharSequence abS;
-  private final View awP;
-  private final int awQ;
-  private final Runnable awR = new Runnable()
+  private static bc axQ;
+  private static bc axR;
+  private final CharSequence acM;
+  private final View axJ;
+  private final int axK;
+  private final Runnable axL = new Runnable()
   {
     public final void run()
     {
       bc.this.aF(false);
     }
   };
-  private int awS;
-  private int awT;
-  private bd awU;
-  private boolean awV;
+  private int axM;
+  private int axN;
+  private bd axO;
+  private boolean axP;
   private final Runnable mHideRunnable = new Runnable()
   {
     public final void run()
@@ -41,34 +41,34 @@ final class bc
   
   private bc(View paramView, CharSequence paramCharSequence)
   {
-    this.awP = paramView;
-    this.abS = paramCharSequence;
-    this.awQ = u.b(ViewConfiguration.get(this.awP.getContext()));
-    mF();
-    this.awP.setOnLongClickListener(this);
-    this.awP.setOnHoverListener(this);
+    this.axJ = paramView;
+    this.acM = paramCharSequence;
+    this.axK = u.b(ViewConfiguration.get(this.axJ.getContext()));
+    mP();
+    this.axJ.setOnLongClickListener(this);
+    this.axJ.setOnHoverListener(this);
   }
   
   private static void a(bc parambc)
   {
-    if (awW != null) {
-      awW.mE();
+    if (axQ != null) {
+      axQ.mO();
     }
-    awW = parambc;
+    axQ = parambc;
     if (parambc != null) {
-      awW.mD();
+      axQ.mN();
     }
   }
   
   public static void a(View paramView, CharSequence paramCharSequence)
   {
-    if ((awW != null) && (awW.awP == paramView)) {
+    if ((axQ != null) && (axQ.axJ == paramView)) {
       a(null);
     }
     if (TextUtils.isEmpty(paramCharSequence))
     {
-      if ((awX != null) && (awX.awP == paramView)) {
-        awX.hide();
+      if ((axR != null) && (axR.axJ == paramView)) {
+        axR.hide();
       }
       paramView.setOnLongClickListener(null);
       paramView.setLongClickable(false);
@@ -78,46 +78,46 @@ final class bc
     new bc(paramView, paramCharSequence);
   }
   
-  private void mD()
+  private void mN()
   {
-    this.awP.postDelayed(this.awR, ViewConfiguration.getLongPressTimeout());
+    this.axJ.postDelayed(this.axL, ViewConfiguration.getLongPressTimeout());
   }
   
-  private void mE()
+  private void mO()
   {
-    this.awP.removeCallbacks(this.awR);
+    this.axJ.removeCallbacks(this.axL);
   }
   
-  private void mF()
+  private void mP()
   {
-    this.awS = 2147483647;
-    this.awT = 2147483647;
+    this.axM = 2147483647;
+    this.axN = 2147483647;
   }
   
   final void aF(boolean paramBoolean)
   {
-    if (!t.aC(this.awP)) {
+    if (!t.aC(this.axJ)) {
       return;
     }
     a(null);
-    if (awX != null) {
-      awX.hide();
+    if (axR != null) {
+      axR.hide();
     }
-    awX = this;
-    this.awV = paramBoolean;
-    this.awU = new bd(this.awP.getContext());
-    this.awU.a(this.awP, this.awS, this.awT, this.awV, this.abS);
-    this.awP.addOnAttachStateChangeListener(this);
+    axR = this;
+    this.axP = paramBoolean;
+    this.axO = new bd(this.axJ.getContext());
+    this.axO.a(this.axJ, this.axM, this.axN, this.axP, this.acM);
+    this.axJ.addOnAttachStateChangeListener(this);
     long l;
-    if (this.awV) {
+    if (this.axP) {
       l = 2500L;
     }
     for (;;)
     {
-      this.awP.removeCallbacks(this.mHideRunnable);
-      this.awP.postDelayed(this.mHideRunnable, l);
+      this.axJ.removeCallbacks(this.mHideRunnable);
+      this.axJ.postDelayed(this.mHideRunnable, l);
       return;
-      if ((t.ao(this.awP) & 0x1) == 1) {
+      if ((t.ao(this.axJ) & 0x1) == 1) {
         l = 3000L - ViewConfiguration.getLongPressTimeout();
       } else {
         l = 15000L - ViewConfiguration.getLongPressTimeout();
@@ -127,32 +127,32 @@ final class bc
   
   final void hide()
   {
-    if (awX == this)
+    if (axR == this)
     {
-      awX = null;
-      if (this.awU != null)
+      axR = null;
+      if (this.axO != null)
       {
-        this.awU.hide();
-        this.awU = null;
-        mF();
-        this.awP.removeOnAttachStateChangeListener(this);
+        this.axO.hide();
+        this.axO = null;
+        mP();
+        this.axJ.removeOnAttachStateChangeListener(this);
       }
     }
-    if (awW == this) {
+    if (axQ == this) {
       a(null);
     }
-    this.awP.removeCallbacks(this.mHideRunnable);
+    this.axJ.removeCallbacks(this.mHideRunnable);
   }
   
   public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.awU != null) && (this.awV)) {}
+    if ((this.axO != null) && (this.axP)) {}
     do
     {
       do
       {
         return false;
-        paramView = (AccessibilityManager)this.awP.getContext().getSystemService("accessibility");
+        paramView = (AccessibilityManager)this.axJ.getContext().getSystemService("accessibility");
       } while ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled()));
       switch (paramMotionEvent.getAction())
       {
@@ -161,26 +161,26 @@ final class bc
       default: 
         return false;
       }
-    } while ((!this.awP.isEnabled()) || (this.awU != null));
+    } while ((!this.axJ.isEnabled()) || (this.axO != null));
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    if ((Math.abs(i - this.awS) <= this.awQ) && (Math.abs(j - this.awT) <= this.awQ)) {}
+    if ((Math.abs(i - this.axM) <= this.axK) && (Math.abs(j - this.axN) <= this.axK)) {}
     for (i = 0; i != 0; i = 1)
     {
       a(this);
       return false;
-      this.awS = i;
-      this.awT = j;
+      this.axM = i;
+      this.axN = j;
     }
-    mF();
+    mP();
     hide();
     return false;
   }
   
   public final boolean onLongClick(View paramView)
   {
-    this.awS = (paramView.getWidth() / 2);
-    this.awT = (paramView.getHeight() / 2);
+    this.axM = (paramView.getWidth() / 2);
+    this.axN = (paramView.getHeight() / 2);
     aF(true);
     return true;
   }

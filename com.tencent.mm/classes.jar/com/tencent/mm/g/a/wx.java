@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class wx
   extends b
 {
-  public a dCt;
+  public a dzL;
+  public b dzM;
   
   public wx()
   {
@@ -16,16 +16,24 @@ public final class wx
   
   private wx(byte paramByte)
   {
-    AppMethodBeat.i(130929);
-    this.dCt = new a();
-    this.ESR = false;
+    AppMethodBeat.i(121052);
+    this.dzL = new a();
+    this.dzM = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(130929);
+    AppMethodBeat.o(121052);
   }
   
   public static final class a
   {
-    public Context context;
+    public int action;
+    public String cYF;
+    public int option;
+  }
+  
+  public static final class b
+  {
+    public boolean dzN;
   }
 }
 

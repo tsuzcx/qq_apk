@@ -83,7 +83,7 @@ public class DeviceRequestsHelper
   {
     AppMethodBeat.i(7628);
     Object localObject = new EnumMap(c.class);
-    ((Map)localObject).put(c.bJx, Integer.valueOf(2));
+    ((Map)localObject).put(c.bHf, Integer.valueOf(2));
     int m;
     int n;
     int i;
@@ -91,7 +91,7 @@ public class DeviceRequestsHelper
     int k;
     try
     {
-      paramString = new e().a(paramString, a.bJl, 200, 200, (Map)localObject);
+      paramString = new e().a(paramString, a.bGT, 200, 200, (Map)localObject);
       m = paramString.height;
       n = paramString.width;
       localObject = new int[m * n];
@@ -117,7 +117,7 @@ public class DeviceRequestsHelper
       }
     }
     if (j < n) {
-      if (paramString.bJ(j, i)) {
+      if (paramString.bG(j, i)) {
         k = -16777216;
       }
     }

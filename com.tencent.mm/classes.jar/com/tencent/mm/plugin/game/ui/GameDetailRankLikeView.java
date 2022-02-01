@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.x;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.x;
 import com.tencent.mm.game.report.e;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.game.d.dk;
@@ -29,30 +29,30 @@ public class GameDetailRankLikeView
   implements View.OnClickListener
 {
   String mAppId;
-  private int rXI;
-  private Drawable sgA;
-  private Animation sgB;
-  private ImageView sgC;
-  private TextView sgD;
-  aa sgx;
-  aa.a sgy;
-  private Drawable sgz;
+  private int tfA;
+  aa tor;
+  aa.a tos;
+  private Drawable tot;
+  private Drawable tou;
+  private Animation tov;
+  private ImageView tow;
+  private TextView tox;
   
   public GameDetailRankLikeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void lZ(boolean paramBoolean)
+  private void mS(boolean paramBoolean)
   {
     AppMethodBeat.i(41989);
     if (paramBoolean)
     {
-      this.sgC.setImageDrawable(this.sgz);
+      this.tow.setImageDrawable(this.tot);
       AppMethodBeat.o(41989);
       return;
     }
-    this.sgC.setImageDrawable(this.sgA);
+    this.tow.setImageDrawable(this.tou);
     AppMethodBeat.o(41989);
   }
   
@@ -61,27 +61,27 @@ public class GameDetailRankLikeView
     AppMethodBeat.i(41990);
     if (paramInt > 99)
     {
-      this.sgD.setText("99+");
+      this.tox.setText("99+");
       AppMethodBeat.o(41990);
       return;
     }
     if (paramInt == 0)
     {
-      this.sgD.setText("");
+      this.tox.setText("");
       AppMethodBeat.o(41990);
       return;
     }
-    this.sgD.setText(String.valueOf(paramInt));
+    this.tox.setText(String.valueOf(paramInt));
     AppMethodBeat.o(41990);
   }
   
-  final void cEf()
+  final void cRp()
   {
     AppMethodBeat.i(41988);
-    if (this.sgy != null)
+    if (this.tos != null)
     {
-      lZ(this.sgy.rXU);
-      setCount(this.sgy.rXT);
+      mS(this.tos.tfM);
+      setCount(this.tos.tfL);
       AppMethodBeat.o(41988);
       return;
     }
@@ -93,41 +93,41 @@ public class GameDetailRankLikeView
   {
     AppMethodBeat.i(41991);
     Object localObject1;
-    if (u.aqG().equals(this.sgy.dtV))
+    if (u.axw().equals(this.tos.drG))
     {
-      if (this.sgy.rXT > 0)
+      if (this.tos.tfL > 0)
       {
         localObject1 = new Intent(getContext(), GameDetailRankLikedUI.class);
         ((Intent)localObject1).putExtra("extra_appdi", this.mAppId);
         paramView = getContext();
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mm/plugin/game/ui/GameDetailRankLikeView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/mm/plugin/game/ui/GameDetailRankLikeView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/game/ui/GameDetailRankLikeView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(41991);
       }
     }
-    else if (!this.sgy.rXU)
+    else if (!this.tos.tfM)
     {
-      this.sgy.rXU = true;
-      paramView = this.sgy;
-      paramView.rXT += 1;
-      this.sgx.cDE();
+      this.tos.tfM = true;
+      paramView = this.tos;
+      paramView.tfL += 1;
+      this.tor.cQO();
       paramView = this.mAppId;
-      localObject1 = this.sgy.dtV;
+      localObject1 = this.tos.drG;
       Object localObject2 = new b.a();
-      ((b.a)localObject2).gUU = new dk();
-      ((b.a)localObject2).gUV = new dl();
+      ((b.a)localObject2).hvt = new dk();
+      ((b.a)localObject2).hvu = new dl();
       ((b.a)localObject2).uri = "/cgi-bin/mmgame-bin/upfriend";
       ((b.a)localObject2).funcId = 1330;
-      localObject2 = ((b.a)localObject2).atI();
-      dk localdk = (dk)((b)localObject2).gUS.gUX;
-      localdk.fVC = paramView;
-      localdk.sdP = ((String)localObject1);
+      localObject2 = ((b.a)localObject2).aAz();
+      dk localdk = (dk)((b)localObject2).hvr.hvw;
+      localdk.fZx = paramView;
+      localdk.tlJ = ((String)localObject1);
       x.a((b)localObject2, new GameDetailRankLikeView.1(this));
-      e.a(getContext(), 12, 1203, 1, 2, this.mAppId, this.rXI, null);
-      cEf();
-      this.sgC.startAnimation(this.sgB);
+      e.a(getContext(), 12, 1203, 1, 2, this.mAppId, this.tfA, null);
+      cRp();
+      this.tow.startAnimation(this.tov);
     }
     AppMethodBeat.o(41991);
   }
@@ -136,24 +136,24 @@ public class GameDetailRankLikeView
   {
     AppMethodBeat.i(41987);
     super.onFinishInflate();
-    this.sgz = getContext().getResources().getDrawable(2131232567);
-    this.sgA = getContext().getResources().getDrawable(2131232566);
-    this.sgB = AnimationUtils.loadAnimation(getContext(), 2130772124);
+    this.tot = getContext().getResources().getDrawable(2131232567);
+    this.tou = getContext().getResources().getDrawable(2131232566);
+    this.tov = AnimationUtils.loadAnimation(getContext(), 2130772124);
     inflate(getContext(), 2131494286, this);
     setOnClickListener(this);
-    this.sgC = ((ImageView)findViewById(2131301413));
-    this.sgD = ((TextView)findViewById(2131301415));
+    this.tow = ((ImageView)findViewById(2131301413));
+    this.tox = ((TextView)findViewById(2131301415));
     AppMethodBeat.o(41987);
   }
   
   public void setSourceScene(int paramInt)
   {
-    this.rXI = paramInt;
+    this.tfA = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankLikeView
  * JD-Core Version:    0.7.0.1
  */

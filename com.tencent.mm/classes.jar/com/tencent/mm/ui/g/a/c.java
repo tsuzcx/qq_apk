@@ -7,32 +7,32 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.d;
 
 public final class c
 {
-  protected static String Hir = "https://m.facebook.com/dialog/";
-  protected static String His = "https://graph.facebook.com/";
-  protected static String Hit = "https://api.facebook.com/restserver.php";
-  private final long HiA;
-  private long Hiu;
-  public long Hiv;
-  private Activity Hiw;
-  private String[] Hix;
-  private int Hiy;
-  private a Hiz;
-  public String ifJ;
+  protected static String IIK = "https://m.facebook.com/dialog/";
+  protected static String IIL = "https://graph.facebook.com/";
+  protected static String IIM = "https://api.facebook.com/restserver.php";
+  private long IIN;
+  public long IIO;
+  private Activity IIP;
+  private String[] IIQ;
+  private int IIR;
+  private a IIS;
+  private final long IIT;
+  public String iFS;
   private String mAppId;
   
   public c(String paramString)
   {
     AppMethodBeat.i(152810);
-    this.ifJ = null;
-    this.Hiu = 0L;
-    this.Hiv = 0L;
-    this.HiA = 86400000L;
+    this.iFS = null;
+    this.IIN = 0L;
+    this.IIO = 0L;
+    this.IIT = 86400000L;
     if (paramString == null)
     {
       paramString = new IllegalArgumentException("You must specify your application ID when instantiating a Facebook object. See README for details.");
@@ -50,13 +50,13 @@ public final class c
     if (paramArrayOfString.length > 0) {
       localBundle.putString("scope", TextUtils.join(",", paramArrayOfString));
     }
-    d.kU(paramActivity);
+    d.li(paramActivity);
     a(paramActivity, "oauth", localBundle, new a()
     {
       public final void a(b paramAnonymousb)
       {
         AppMethodBeat.i(152807);
-        ad.d("Facebook-authorize", "Login failed: ".concat(String.valueOf(paramAnonymousb)));
+        ac.d("Facebook-authorize", "Login failed: ".concat(String.valueOf(paramAnonymousb)));
         c.a(c.this).a(paramAnonymousb);
         AppMethodBeat.o(152807);
       }
@@ -64,7 +64,7 @@ public final class c
       public final void a(e paramAnonymouse)
       {
         AppMethodBeat.i(152808);
-        ad.d("Facebook-authorize", "Login failed: ".concat(String.valueOf(paramAnonymouse)));
+        ac.d("Facebook-authorize", "Login failed: ".concat(String.valueOf(paramAnonymouse)));
         c.a(c.this).a(paramAnonymouse);
         AppMethodBeat.o(152808);
       }
@@ -72,7 +72,7 @@ public final class c
       public final void onCancel()
       {
         AppMethodBeat.i(152809);
-        ad.d("Facebook-authorize", "Login canceled");
+        ac.d("Facebook-authorize", "Login canceled");
         c.a(c.this).onCancel();
         AppMethodBeat.o(152809);
       }
@@ -80,13 +80,13 @@ public final class c
       public final void w(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(152806);
-        d.fqE();
+        d.fJc();
         d.sync();
-        c.this.aLA(paramAnonymousBundle.getString("access_token"));
-        c.this.aLB(paramAnonymousBundle.getString("expires_in"));
-        if (c.this.fcU())
+        c.this.aRc(paramAnonymousBundle.getString("access_token"));
+        c.this.aRd(paramAnonymousBundle.getString("expires_in"));
+        if (c.this.fsP())
         {
-          ad.d("Facebook-authorize", "Login Success! access_token=" + c.this.ifJ + " expires=" + c.this.Hiv);
+          ac.d("Facebook-authorize", "Login Success! access_token=" + c.this.iFS + " expires=" + c.this.IIO);
           c.a(c.this).w(paramAnonymousBundle);
           AppMethodBeat.o(152806);
           return;
@@ -101,7 +101,7 @@ public final class c
   private void b(Activity paramActivity, String[] paramArrayOfString, a parama)
   {
     AppMethodBeat.i(152812);
-    this.Hiz = parama;
+    this.IIS = parama;
     a(paramActivity, paramArrayOfString);
     AppMethodBeat.o(152812);
   }
@@ -110,11 +110,11 @@ public final class c
   {
     AppMethodBeat.i(152817);
     paramBundle.putString("format", "json");
-    if (fcU()) {
-      paramBundle.putString("access_token", this.ifJ);
+    if (fsP()) {
+      paramBundle.putString("access_token", this.iFS);
     }
     if (paramString1 != null) {}
-    for (paramString1 = His + paramString1;; paramString1 = Hit)
+    for (paramString1 = IIL + paramString1;; paramString1 = IIM)
     {
       paramString1 = f.e(paramString1, paramString2, paramBundle);
       AppMethodBeat.o(152817);
@@ -126,14 +126,14 @@ public final class c
   {
     AppMethodBeat.i(152811);
     b(paramActivity, paramArrayOfString, parama);
-    h.vKh.idkeyStat(582L, 0L, 1L, false);
+    h.wUl.idkeyStat(582L, 0L, 1L, false);
     AppMethodBeat.o(152811);
   }
   
   public final void a(Context paramContext, String paramString, Bundle paramBundle, a parama)
   {
     AppMethodBeat.i(152818);
-    String str = Hir + paramString;
+    String str = IIK + paramString;
     paramBundle.putString("display", "touch");
     paramBundle.putString("redirect_uri", "fbconnect://success");
     if (paramString.equals("oauth"))
@@ -143,14 +143,14 @@ public final class c
     }
     for (;;)
     {
-      if (fcU()) {
-        paramBundle.putString("access_token", this.ifJ);
+      if (fsP()) {
+        paramBundle.putString("access_token", this.iFS);
       }
-      paramString = str + "?" + f.aZ(paramBundle);
+      paramString = str + "?" + f.bd(paramBundle);
       if (paramContext.checkCallingOrSelfPermission("android.permission.INTERNET") == 0) {
         break;
       }
-      f.S(paramContext, "Error", "Application requires permission to access the Internet");
+      f.R(paramContext, "Error", "Application requires permission to access the Internet");
       AppMethodBeat.o(152818);
       return;
       paramBundle.putString("app_id", this.mAppId);
@@ -159,15 +159,15 @@ public final class c
     AppMethodBeat.o(152818);
   }
   
-  public final void aLA(String paramString)
+  public final void aRc(String paramString)
   {
     AppMethodBeat.i(152820);
-    this.ifJ = paramString;
-    this.Hiu = System.currentTimeMillis();
+    this.iFS = paramString;
+    this.IIN = System.currentTimeMillis();
     AppMethodBeat.o(152820);
   }
   
-  public final void aLB(String paramString)
+  public final void aRd(String paramString)
   {
     AppMethodBeat.i(152821);
     if (paramString != null) {
@@ -176,18 +176,18 @@ public final class c
       }
     }
     label31:
-    for (long l = 0L;; l = System.currentTimeMillis() + bt.aGi(paramString) * 1000L)
+    for (long l = 0L;; l = System.currentTimeMillis() + bs.aLz(paramString) * 1000L)
     {
-      this.Hiv = l;
+      this.IIO = l;
       AppMethodBeat.o(152821);
       return;
     }
   }
   
-  public final boolean fcU()
+  public final boolean fsP()
   {
     AppMethodBeat.i(152819);
-    if ((this.ifJ != null) && ((this.Hiv == 0L) || (System.currentTimeMillis() < this.Hiv)))
+    if ((this.iFS != null) && ((this.IIO == 0L) || (System.currentTimeMillis() < this.IIO)))
     {
       AppMethodBeat.o(152819);
       return true;
@@ -199,7 +199,7 @@ public final class c
   public final void i(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(152814);
-    if (paramInt1 == this.Hiy)
+    if (paramInt1 == this.IIR)
     {
       if (paramInt2 == -1)
       {
@@ -212,15 +212,15 @@ public final class c
         {
           if ((str1.equals("service_disabled")) || (str1.equals("AndroidAuthKillSwitchException")))
           {
-            ad.d("Facebook-authorize", "Hosted auth currently disabled. Retrying dialog auth...");
-            a(this.Hiw, this.Hix);
+            ac.d("Facebook-authorize", "Hosted auth currently disabled. Retrying dialog auth...");
+            a(this.IIP, this.IIQ);
             AppMethodBeat.o(152814);
             return;
           }
           if ((str1.equals("access_denied")) || (str1.equals("OAuthAccessDeniedException")))
           {
-            ad.d("Facebook-authorize", "Login canceled by user.");
-            this.Hiz.onCancel();
+            ac.d("Facebook-authorize", "Login canceled by user.");
+            this.IIS.onCancel();
             AppMethodBeat.o(152814);
             return;
           }
@@ -229,21 +229,21 @@ public final class c
           if (str2 != null) {
             paramIntent = str1 + ":" + str2;
           }
-          ad.d("Facebook-authorize", "Login failed: ".concat(String.valueOf(paramIntent)));
-          this.Hiz.a(new e(paramIntent));
+          ac.d("Facebook-authorize", "Login failed: ".concat(String.valueOf(paramIntent)));
+          this.IIS.a(new e(paramIntent));
           AppMethodBeat.o(152814);
           return;
         }
-        aLA(paramIntent.getStringExtra("access_token"));
-        aLB(paramIntent.getStringExtra("expires_in"));
-        if (fcU())
+        aRc(paramIntent.getStringExtra("access_token"));
+        aRd(paramIntent.getStringExtra("expires_in"));
+        if (fsP())
         {
-          ad.d("Facebook-authorize", "Login Success! access_token=" + this.ifJ + " expires=" + this.Hiv);
-          this.Hiz.w(paramIntent.getExtras());
+          ac.d("Facebook-authorize", "Login Success! access_token=" + this.iFS + " expires=" + this.IIO);
+          this.IIS.w(paramIntent.getExtras());
           AppMethodBeat.o(152814);
           return;
         }
-        this.Hiz.a(new e("Failed to receive access token."));
+        this.IIS.a(new e("Failed to receive access token."));
         AppMethodBeat.o(152814);
         return;
       }
@@ -251,24 +251,24 @@ public final class c
       {
         if (paramIntent != null)
         {
-          ad.d("Facebook-authorize", "Login failed: " + paramIntent.getStringExtra("error"));
-          this.Hiz.a(new b(paramIntent.getStringExtra("error"), paramIntent.getIntExtra("error_code", -1), paramIntent.getStringExtra("failing_url")));
+          ac.d("Facebook-authorize", "Login failed: " + paramIntent.getStringExtra("error"));
+          this.IIS.a(new b(paramIntent.getStringExtra("error"), paramIntent.getIntExtra("error_code", -1), paramIntent.getStringExtra("failing_url")));
           AppMethodBeat.o(152814);
           return;
         }
-        ad.d("Facebook-authorize", "Login canceled by user.");
-        this.Hiz.onCancel();
+        ac.d("Facebook-authorize", "Login canceled by user.");
+        this.IIS.onCancel();
       }
     }
     AppMethodBeat.o(152814);
   }
   
-  public final String jZ(Context paramContext)
+  public final String kk(Context paramContext)
   {
     AppMethodBeat.i(152815);
-    f.ka(paramContext);
-    aLA(null);
-    this.Hiv = 0L;
+    f.kl(paramContext);
+    aRc(null);
+    this.IIO = 0L;
     AppMethodBeat.o(152815);
     return null;
   }

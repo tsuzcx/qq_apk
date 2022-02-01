@@ -19,13 +19,13 @@ public final class i
 {
   public static int B(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(200801);
+    AppMethodBeat.i(210179);
     int i = f(paramString, paramArrayOfByte, paramArrayOfByte.length);
-    AppMethodBeat.o(200801);
+    AppMethodBeat.o(210179);
     return i;
   }
   
-  public static String RK(String paramString)
+  public static String VW(String paramString)
   {
     AppMethodBeat.i(13298);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -48,14 +48,14 @@ public final class i
   public static ParcelFileDescriptor a(Uri paramUri, a.e parame, String paramString)
   {
     AppMethodBeat.i(13275);
-    parame = a.gap().a(paramUri, parame);
+    parame = a.ghk().a(paramUri, parame);
     if (!parame.valid())
     {
       paramUri = new FileNotFoundException("Cannot resolve path or URI: ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13275);
       throw paramUri;
     }
-    paramUri = parame.HRC.lw(parame.path, paramString);
+    paramUri = parame.Jsh.lT(parame.path, paramString);
     AppMethodBeat.o(13275);
     return paramUri;
   }
@@ -63,14 +63,14 @@ public final class i
   static OutputStream a(Uri paramUri, a.e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(13271);
-    parame = a.gap().a(paramUri, parame);
+    parame = a.ghk().a(paramUri, parame);
     if (!parame.valid())
     {
       paramUri = new FileNotFoundException("Cannot resolve path or URI: ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13271);
       throw paramUri;
     }
-    paramUri = parame.HRC.cM(parame.path, paramBoolean);
+    paramUri = parame.Jsh.cS(parame.path, paramBoolean);
     AppMethodBeat.o(13271);
     return paramUri;
   }
@@ -102,14 +102,14 @@ public final class i
       AppMethodBeat.o(13292);
       return false;
     }
-    Object localObject = parame1.HRC.cN(parame1.path, true);
+    Object localObject = parame1.Jsh.cT(parame1.path, true);
     if (localObject == null)
     {
       AppMethodBeat.o(13292);
       return false;
     }
     HashSet localHashSet = new HashSet();
-    parame2.HRC.aMF(parame2.path);
+    parame2.Jsh.aSh(parame2.path);
     localHashSet.add(parame2.path);
     Iterator localIterator = ((Iterable)localObject).iterator();
     FileSystem.a locala;
@@ -120,16 +120,16 @@ public final class i
       }
       locala = (FileSystem.a)localIterator.next();
       int i = parame1.path.length();
-      String str = locala.EQk.substring(i);
+      String str = locala.Gnx.substring(i);
       localObject = str;
       if (!str.startsWith("/")) {
         localObject = "/".concat(String.valueOf(str));
       }
       localObject = parame2.path + (String)localObject;
-      if (locala.HRB)
+      if (locala.Jsg)
       {
         if (localHashSet.add(localObject)) {
-          parame2.HRC.aMF((String)localObject);
+          parame2.Jsh.aSh((String)localObject);
         }
       }
       else
@@ -139,13 +139,13 @@ public final class i
         {
           str = ((String)localObject).substring(0, i);
           if (localHashSet.add(str)) {
-            parame2.HRC.aMF(str);
+            parame2.Jsh.aSh(str);
           }
         }
         if (paramBoolean) {
           try
           {
-            parame2.HRC.a((String)localObject, locala.HRC, locala.EQk);
+            parame2.Jsh.a((String)localObject, locala.Jsh, locala.Gnx);
           }
           catch (IOException parame2)
           {
@@ -160,7 +160,7 @@ public final class i
       Log.w("MicroMsg.VFSFileOp", parame2, parame1 + " files.");
       AppMethodBeat.o(13292);
       return false;
-      parame2.HRC.c((String)localObject, locala.HRC, locala.EQk);
+      parame2.Jsh.c((String)localObject, locala.Jsh, locala.Gnx);
       break;
     }
     label373:
@@ -168,10 +168,10 @@ public final class i
     return true;
   }
   
-  public static String aEN(String paramString)
+  public static String aKe(String paramString)
   {
     AppMethodBeat.i(13302);
-    paramString = aMU(paramString);
+    paramString = aSw(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(13302);
@@ -189,7 +189,7 @@ public final class i
     return paramString;
   }
   
-  public static boolean aMF(String paramString)
+  public static boolean aSh(String paramString)
   {
     AppMethodBeat.i(13285);
     if ((paramString == null) || (paramString.length() == 0))
@@ -207,7 +207,7 @@ public final class i
     return false;
   }
   
-  public static long aMN(String paramString)
+  public static long aSp(String paramString)
   {
     AppMethodBeat.i(13278);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -216,13 +216,13 @@ public final class i
       return 0L;
     }
     paramString = q.parseUri(paramString);
-    paramString = a.gap().a(paramString, null);
+    paramString = a.ghk().a(paramString, null);
     if (!paramString.valid())
     {
       AppMethodBeat.o(13278);
       return 0L;
     }
-    paramString = paramString.HRC.aME(paramString.path);
+    paramString = paramString.Jsh.aSg(paramString.path);
     if (paramString == null)
     {
       AppMethodBeat.o(13278);
@@ -233,7 +233,7 @@ public final class i
     return l;
   }
   
-  public static long aMO(String paramString)
+  public static long aSq(String paramString)
   {
     AppMethodBeat.i(13279);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -242,25 +242,25 @@ public final class i
       return 0L;
     }
     paramString = q.parseUri(paramString);
-    paramString = a.gap().a(paramString, null);
+    paramString = a.ghk().a(paramString, null);
     if (!paramString.valid())
     {
       AppMethodBeat.o(13279);
       return 0L;
     }
-    paramString = paramString.HRC.aME(paramString.path);
+    paramString = paramString.Jsh.aSg(paramString.path);
     if (paramString == null)
     {
       AppMethodBeat.o(13279);
       return 0L;
     }
-    long l = paramString.HRA;
+    long l = paramString.Jsf;
     AppMethodBeat.o(13279);
     return l;
   }
   
   /* Error */
-  public static String aMP(String paramString)
+  public static String aSr(String paramString)
   {
     // Byte code:
     //   0: sipush 13281
@@ -372,15 +372,15 @@ public final class i
     //   15	27	143	java/io/IOException
   }
   
-  public static String aMQ(String paramString)
+  public static String aSs(String paramString)
   {
     AppMethodBeat.i(13284);
-    paramString = new e(paramString).fhV().getParent();
+    paramString = new e(paramString).fxW().getParent();
     AppMethodBeat.o(13284);
     return paramString;
   }
   
-  public static boolean aMR(String paramString)
+  public static boolean aSt(String paramString)
   {
     AppMethodBeat.i(13297);
     try
@@ -401,7 +401,7 @@ public final class i
     return false;
   }
   
-  public static final String aMS(String paramString)
+  public static final String aSu(String paramString)
   {
     AppMethodBeat.i(13299);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -426,7 +426,7 @@ public final class i
     return paramString;
   }
   
-  public static void aMT(String paramString)
+  public static void aSv(String paramString)
   {
     AppMethodBeat.i(13300);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -435,25 +435,25 @@ public final class i
       return;
     }
     paramString = q.parseUri(paramString);
-    paramString = a.gap().a(paramString, null);
+    paramString = a.ghk().a(paramString, null);
     if (!paramString.valid())
     {
       AppMethodBeat.o(13300);
       return;
     }
-    if ((paramString.HRC.fhA() & 0x2) == 0)
+    if ((paramString.Jsh.fxC() & 0x2) == 0)
     {
       AppMethodBeat.o(13300);
       return;
     }
-    if (paramString.HRC.cP(paramString.path, true) == null)
+    if (paramString.Jsh.cV(paramString.path, true) == null)
     {
       AppMethodBeat.o(13300);
       return;
     }
     try
     {
-      paramString.HRC.cM(paramString.path + "/.nomedia", false).close();
+      paramString.Jsh.cS(paramString.path + "/.nomedia", false).close();
       AppMethodBeat.o(13300);
       return;
     }
@@ -464,7 +464,7 @@ public final class i
   }
   
   /* Error */
-  private static byte[] aMU(String paramString)
+  private static byte[] aSw(String paramString)
   {
     // Byte code:
     //   0: sipush 13301
@@ -557,16 +557,16 @@ public final class i
     //   18	23	111	java/lang/Exception
   }
   
-  public static boolean aQ(String paramString1, String paramString2, String paramString3)
+  public static boolean aT(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(13289);
-    boolean bool = lD(paramString1 + paramString2, paramString1 + paramString3);
+    boolean bool = ma(paramString1 + paramString2, paramString1 + paramString3);
     AppMethodBeat.o(13289);
     return bool;
   }
   
   /* Error */
-  public static byte[] aR(String paramString, int paramInt1, int paramInt2)
+  public static byte[] aU(String paramString, int paramInt1, int paramInt2)
   {
     // Byte code:
     //   0: sipush 13280
@@ -745,18 +745,18 @@ public final class i
     //   133	142	284	java/io/IOException
   }
   
-  public static InputStream ah(e parame)
+  public static InputStream ag(e parame)
   {
     AppMethodBeat.i(13265);
-    parame = b(parame.mUri, parame.fhR());
+    parame = b(parame.mUri, parame.fxS());
     AppMethodBeat.o(13265);
     return parame;
   }
   
-  public static OutputStream ai(e parame)
+  public static OutputStream ah(e parame)
   {
     AppMethodBeat.i(13268);
-    parame = a(parame.mUri, parame.fhR(), false);
+    parame = a(parame.mUri, parame.fxS(), false);
     AppMethodBeat.o(13268);
     return parame;
   }
@@ -764,14 +764,14 @@ public final class i
   public static InputStream b(Uri paramUri, a.e parame)
   {
     AppMethodBeat.i(13266);
-    parame = a.gap().a(paramUri, parame);
+    parame = a.ghk().a(paramUri, parame);
     if (!parame.valid())
     {
       paramUri = new FileNotFoundException("Cannot resolve path or URI: ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13266);
       throw paramUri;
     }
-    paramUri = parame.HRC.openRead(parame.path);
+    paramUri = parame.Jsh.openRead(parame.path);
     AppMethodBeat.o(13266);
     return paramUri;
   }
@@ -779,19 +779,19 @@ public final class i
   public static ReadableByteChannel c(Uri paramUri, a.e parame)
   {
     AppMethodBeat.i(170165);
-    parame = a.gap().a(paramUri, parame);
+    parame = a.ghk().a(paramUri, parame);
     if (!parame.valid())
     {
       paramUri = new FileNotFoundException("Cannot resolve path or URI: ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(170165);
       throw paramUri;
     }
-    paramUri = parame.HRC.aMA(parame.path);
+    paramUri = parame.Jsh.aSc(parame.path);
     AppMethodBeat.o(170165);
     return paramUri;
   }
   
-  public static OutputStream cM(String paramString, boolean paramBoolean)
+  public static OutputStream cS(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13269);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -805,7 +805,7 @@ public final class i
     return paramString;
   }
   
-  public static boolean cO(String paramString, boolean paramBoolean)
+  public static boolean cU(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13296);
     if ((paramString == null) || (paramString.length() == 0))
@@ -814,18 +814,18 @@ public final class i
       return false;
     }
     paramString = q.parseUri(paramString);
-    paramString = a.gap().a(paramString, null);
+    paramString = a.ghk().a(paramString, null);
     if (!paramString.valid())
     {
       AppMethodBeat.o(13296);
       return false;
     }
-    paramBoolean = paramString.HRC.cO(paramString.path, paramBoolean);
+    paramBoolean = paramString.Jsh.cU(paramString.path, paramBoolean);
     AppMethodBeat.o(13296);
     return paramBoolean;
   }
   
-  public static RandomAccessFile cS(String paramString, boolean paramBoolean)
+  public static RandomAccessFile cY(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13272);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -839,34 +839,65 @@ public final class i
     return paramString;
   }
   
-  public static Iterable<FileSystem.a> cT(String paramString, boolean paramBoolean)
+  public static Iterable<FileSystem.a> cZ(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13291);
     paramString = q.parseUri(paramString);
-    paramString = a.gap().a(paramString, null);
+    paramString = a.ghk().a(paramString, null);
     if (!paramString.valid())
     {
       AppMethodBeat.o(13291);
       return null;
     }
-    paramString = paramString.HRC.cN(paramString.path, paramBoolean);
+    paramString = paramString.Jsh.cT(paramString.path, paramBoolean);
     AppMethodBeat.o(13291);
     return paramString;
+  }
+  
+  public static boolean ct(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(13294);
+    Object localObject1 = q.parseUri(paramString1);
+    localObject1 = a.ghk().a((Uri)localObject1, null);
+    paramString2 = q.parseUri(paramString2);
+    paramString2 = a.ghk().a(paramString2, null);
+    if ((((a.e)localObject1).valid()) && (paramString2.valid()))
+    {
+      Object localObject3 = ((a.e)localObject1).Jsh;
+      Object localObject2 = paramString2.Jsh;
+      if (((((FileSystem)localObject3).fxC() & 0xA) == 10) && ((((FileSystem)localObject2).fxC() & 0xA) == 10))
+      {
+        localObject3 = ((FileSystem)localObject3).cV(((a.e)localObject1).path, false);
+        localObject2 = ((FileSystem)localObject2).cV(paramString2.path, true);
+        if ((localObject3 != null) && (localObject2 != null) && (new File((String)localObject3).renameTo(new File((String)localObject2))))
+        {
+          AppMethodBeat.o(13294);
+          return true;
+        }
+      }
+    }
+    if ((a((a.e)localObject1, paramString2, true)) && (cU(paramString1, false)))
+    {
+      AppMethodBeat.o(13294);
+      return true;
+    }
+    AppMethodBeat.o(13294);
+    return false;
   }
   
   public static OutputStream d(e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(170167);
-    parame = a(parame.mUri, parame.fhR(), paramBoolean);
+    parame = a(parame.mUri, parame.fxS(), paramBoolean);
     AppMethodBeat.o(170167);
     return parame;
   }
   
   public static boolean deleteDir(String paramString)
   {
-    AppMethodBeat.i(200802);
-    boolean bool = cO(paramString, true);
-    AppMethodBeat.o(200802);
+    AppMethodBeat.i(210180);
+    boolean bool = cU(paramString, true);
+    AppMethodBeat.o(210180);
     return bool;
   }
   
@@ -895,7 +926,7 @@ public final class i
     Object localObject1 = null;
     try
     {
-      OutputStream localOutputStream = cM(paramString, true);
+      OutputStream localOutputStream = cS(paramString, true);
       localObject1 = localOutputStream;
       localObject2 = localOutputStream;
       localOutputStream.write(paramArrayOfByte, 0, paramInt);
@@ -916,7 +947,7 @@ public final class i
     }
   }
   
-  public static boolean eK(String paramString)
+  public static boolean eA(String paramString)
   {
     AppMethodBeat.i(13287);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -925,13 +956,13 @@ public final class i
       return false;
     }
     paramString = q.parseUri(paramString);
-    paramString = a.gap().a(paramString, null);
+    paramString = a.ghk().a(paramString, null);
     if (!paramString.valid())
     {
       AppMethodBeat.o(13287);
       return false;
     }
-    boolean bool = paramString.HRC.aMD(paramString.path);
+    boolean bool = paramString.Jsh.aSf(paramString.path);
     AppMethodBeat.o(13287);
     return bool;
   }
@@ -953,7 +984,7 @@ public final class i
     Object localObject1 = null;
     try
     {
-      OutputStream localOutputStream = cM(paramString, false);
+      OutputStream localOutputStream = cS(paramString, false);
       localObject1 = localOutputStream;
       localObject2 = localOutputStream;
       localOutputStream.write(paramArrayOfByte, 0, paramInt);
@@ -973,45 +1004,45 @@ public final class i
   }
   
   /* Error */
-  public static int fc(String paramString1, String paramString2)
+  public static int fp(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 13303
     //   3: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 441	java/util/zip/ZipInputStream
+    //   6: new 451	java/util/zip/ZipInputStream
     //   9: dup
     //   10: aload_0
     //   11: invokestatic 245	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   14: invokespecial 442	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   14: invokespecial 452	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   17: astore_3
     //   18: aload_3
     //   19: astore_0
     //   20: aload_3
-    //   21: invokevirtual 446	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   21: invokevirtual 456	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   24: astore 4
     //   26: aload 4
     //   28: ifnull +254 -> 282
     //   31: aload_3
     //   32: astore_0
     //   33: aload 4
-    //   35: invokevirtual 449	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   35: invokevirtual 459	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   38: astore 5
     //   40: aload_3
     //   41: astore_0
     //   42: aload 5
-    //   44: ldc_w 451
-    //   47: invokevirtual 455	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   44: ldc_w 461
+    //   47: invokevirtual 465	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   50: ifne -32 -> 18
     //   53: aload_3
     //   54: astore_0
     //   55: aload 5
-    //   57: ldc_w 457
-    //   60: invokevirtual 455	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   57: ldc_w 467
+    //   60: invokevirtual 465	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   63: ifne -45 -> 18
     //   66: aload_3
     //   67: astore_0
     //   68: aload 4
-    //   70: invokevirtual 458	java/util/zip/ZipEntry:isDirectory	()Z
+    //   70: invokevirtual 468	java/util/zip/ZipEntry:isDirectory	()Z
     //   73: ifeq +83 -> 156
     //   76: aload_3
     //   77: astore_0
@@ -1069,7 +1100,7 @@ public final class i
     //   180: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   186: invokespecial 37	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
-    //   189: invokestatic 460	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   189: invokestatic 470	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   192: astore 4
     //   194: aload_3
     //   195: astore_0
@@ -1080,7 +1111,7 @@ public final class i
     //   204: astore_0
     //   205: aload_3
     //   206: aload 5
-    //   208: invokevirtual 461	java/util/zip/ZipInputStream:read	([B)I
+    //   208: invokevirtual 471	java/util/zip/ZipInputStream:read	([B)I
     //   211: istore_2
     //   212: iload_2
     //   213: iconst_m1
@@ -1091,7 +1122,7 @@ public final class i
     //   221: aload 5
     //   223: iconst_0
     //   224: iload_2
-    //   225: invokevirtual 417	java/io/OutputStream:write	([BII)V
+    //   225: invokevirtual 427	java/io/OutputStream:write	([BII)V
     //   228: goto -25 -> 203
     //   231: astore_1
     //   232: aload_3
@@ -1208,7 +1239,7 @@ public final class i
     return paramString;
   }
   
-  public static ParcelFileDescriptor lB(String paramString1, String paramString2)
+  public static ParcelFileDescriptor lY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(13274);
     if ((paramString1 == null) || (paramString1.isEmpty()))
@@ -1222,7 +1253,7 @@ public final class i
     return paramString1;
   }
   
-  public static long lC(String paramString1, String paramString2)
+  public static long lZ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(13286);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0))
@@ -1235,8 +1266,8 @@ public final class i
       AppMethodBeat.o(13286);
       return -1L;
     }
-    a.e locale1 = a.gap().a(q.parseUri(paramString1), null);
-    a.e locale2 = a.gap().a(q.parseUri(paramString2), null);
+    a.e locale1 = a.ghk().a(q.parseUri(paramString1), null);
+    a.e locale2 = a.ghk().a(q.parseUri(paramString2), null);
     if ((!locale1.valid()) || (!locale2.valid()))
     {
       AppMethodBeat.o(13286);
@@ -1244,7 +1275,7 @@ public final class i
     }
     try
     {
-      long l = locale2.HRC.c(locale2.path, locale1.HRC, locale1.path);
+      long l = locale2.Jsh.c(locale2.path, locale1.Jsh, locale1.path);
       AppMethodBeat.o(13286);
       return l;
     }
@@ -1256,7 +1287,7 @@ public final class i
     return -1L;
   }
   
-  public static boolean lD(String paramString1, String paramString2)
+  public static boolean ma(String paramString1, String paramString2)
   {
     AppMethodBeat.i(13290);
     if ((paramString1 == null) || (paramString2 == null) || (paramString1.length() == 0) || (paramString2.length() == 0))
@@ -1264,8 +1295,8 @@ public final class i
       AppMethodBeat.o(13290);
       return false;
     }
-    a.e locale1 = a.gap().a(q.parseUri(paramString1), null);
-    a.e locale2 = a.gap().a(q.parseUri(paramString2), null);
+    a.e locale1 = a.ghk().a(q.parseUri(paramString1), null);
+    a.e locale2 = a.ghk().a(q.parseUri(paramString2), null);
     if ((!locale1.valid()) || (!locale2.valid()))
     {
       AppMethodBeat.o(13290);
@@ -1273,10 +1304,10 @@ public final class i
     }
     try
     {
-      boolean bool1 = locale2.HRC.a(locale2.path, locale1.HRC, locale1.path);
+      boolean bool1 = locale2.Jsh.a(locale2.path, locale1.Jsh, locale1.path);
       boolean bool2 = bool1;
       if (!bool1) {
-        if (locale2.HRC.c(locale2.path, locale1.HRC, locale1.path) < 0L) {
+        if (locale2.Jsh.c(locale2.path, locale1.Jsh, locale1.path) < 0L) {
           break label182;
         }
       }
@@ -1286,7 +1317,7 @@ public final class i
         bool2 = bool1;
         if (bool1)
         {
-          locale1.HRC.vv(locale1.path);
+          locale1.Jsh.zB(locale1.path);
           bool2 = bool1;
         }
         AppMethodBeat.o(13290);
@@ -1301,49 +1332,18 @@ public final class i
     }
   }
   
-  public static boolean lE(String paramString1, String paramString2)
+  public static boolean mb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(13293);
     paramString1 = q.parseUri(paramString1);
-    paramString1 = a.gap().a(paramString1, null);
+    paramString1 = a.ghk().a(paramString1, null);
     paramString2 = q.parseUri(paramString2);
-    boolean bool = a(paramString1, a.gap().a(paramString2, null), false);
+    boolean bool = a(paramString1, a.ghk().a(paramString2, null), false);
     AppMethodBeat.o(13293);
     return bool;
   }
   
-  public static boolean lF(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(13294);
-    Object localObject1 = q.parseUri(paramString1);
-    localObject1 = a.gap().a((Uri)localObject1, null);
-    paramString2 = q.parseUri(paramString2);
-    paramString2 = a.gap().a(paramString2, null);
-    if ((((a.e)localObject1).valid()) && (paramString2.valid()))
-    {
-      Object localObject3 = ((a.e)localObject1).HRC;
-      Object localObject2 = paramString2.HRC;
-      if (((((FileSystem)localObject3).fhA() & 0xA) == 10) && ((((FileSystem)localObject2).fhA() & 0xA) == 10))
-      {
-        localObject3 = ((FileSystem)localObject3).cP(((a.e)localObject1).path, false);
-        localObject2 = ((FileSystem)localObject2).cP(paramString2.path, true);
-        if ((localObject3 != null) && (localObject2 != null) && (new File((String)localObject3).renameTo(new File((String)localObject2))))
-        {
-          AppMethodBeat.o(13294);
-          return true;
-        }
-      }
-    }
-    if ((a((a.e)localObject1, paramString2, true)) && (cO(paramString1, false)))
-    {
-      AppMethodBeat.o(13294);
-      return true;
-    }
-    AppMethodBeat.o(13294);
-    return false;
-  }
-  
-  public static boolean lG(String paramString1, String paramString2)
+  public static boolean mc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(170171);
     if ((paramString1 == null) || (paramString1.isEmpty()))
@@ -1386,8 +1386,8 @@ public final class i
     //   23: iconst_0
     //   24: ireturn
     //   25: aload_1
-    //   26: invokestatic 508	com/tencent/mm/vfs/i:aMQ	(Ljava/lang/String;)Ljava/lang/String;
-    //   29: invokestatic 509	com/tencent/mm/vfs/i:aMF	(Ljava/lang/String;)Z
+    //   26: invokestatic 508	com/tencent/mm/vfs/i:aSs	(Ljava/lang/String;)Ljava/lang/String;
+    //   29: invokestatic 509	com/tencent/mm/vfs/i:aSh	(Ljava/lang/String;)Z
     //   32: pop
     //   33: sipush 4096
     //   36: newarray byte
@@ -1396,7 +1396,7 @@ public final class i
     //   43: dup
     //   44: aload_1
     //   45: iconst_0
-    //   46: invokestatic 416	com/tencent/mm/vfs/i:cM	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   46: invokestatic 426	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   49: invokespecial 514	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   52: astore 4
     //   54: aload_0
@@ -1410,7 +1410,7 @@ public final class i
     //   79: checkcast 25	java/lang/String
     //   82: invokestatic 226	com/tencent/mm/vfs/q:parseUri	(Ljava/lang/String;)Landroid/net/Uri;
     //   85: astore_0
-    //   86: invokestatic 57	com/tencent/mm/vfs/a:gap	()Lcom/tencent/mm/vfs/a;
+    //   86: invokestatic 57	com/tencent/mm/vfs/a:ghk	()Lcom/tencent/mm/vfs/a;
     //   89: aload_0
     //   90: aconst_null
     //   91: invokevirtual 60	com/tencent/mm/vfs/a:a	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;)Lcom/tencent/mm/vfs/a$e;
@@ -1419,7 +1419,7 @@ public final class i
     //   96: invokevirtual 66	com/tencent/mm/vfs/a$e:valid	()Z
     //   99: ifeq -37 -> 62
     //   102: aload_0
-    //   103: getfield 82	com/tencent/mm/vfs/a$e:HRC	Lcom/tencent/mm/vfs/FileSystem;
+    //   103: getfield 82	com/tencent/mm/vfs/a$e:Jsh	Lcom/tencent/mm/vfs/FileSystem;
     //   106: aload_0
     //   107: getfield 86	com/tencent/mm/vfs/a$e:path	Ljava/lang/String;
     //   110: invokeinterface 230 2 0
@@ -1427,7 +1427,7 @@ public final class i
     //   116: aload_1
     //   117: ifnull -55 -> 62
     //   120: aload_1
-    //   121: getfield 172	com/tencent/mm/vfs/FileSystem$a:HRB	Z
+    //   121: getfield 172	com/tencent/mm/vfs/FileSystem$a:Jsg	Z
     //   124: ifeq +190 -> 314
     //   127: aload_0
     //   128: getfield 86	com/tencent/mm/vfs/a$e:path	Ljava/lang/String;
@@ -1441,7 +1441,7 @@ public final class i
     //   147: iconst_0
     //   148: istore_2
     //   149: aload_0
-    //   150: getfield 82	com/tencent/mm/vfs/a$e:HRC	Lcom/tencent/mm/vfs/FileSystem;
+    //   150: getfield 82	com/tencent/mm/vfs/a$e:Jsh	Lcom/tencent/mm/vfs/FileSystem;
     //   153: aload_0
     //   154: getfield 86	com/tencent/mm/vfs/a$e:path	Ljava/lang/String;
     //   157: iconst_1
@@ -1464,10 +1464,10 @@ public final class i
     //   197: checkcast 150	com/tencent/mm/vfs/FileSystem$a
     //   200: astore_0
     //   201: aload_0
-    //   202: getfield 172	com/tencent/mm/vfs/FileSystem$a:HRB	Z
+    //   202: getfield 172	com/tencent/mm/vfs/FileSystem$a:Jsg	Z
     //   205: ifne -25 -> 180
     //   208: aload_0
-    //   209: getfield 153	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   209: getfield 153	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   212: invokevirtual 29	java/lang/String:length	()I
     //   215: iload_2
     //   216: if_icmpge +120 -> 336
@@ -1475,13 +1475,13 @@ public final class i
     //   220: getfield 523	com/tencent/mm/vfs/FileSystem$a:name	Ljava/lang/String;
     //   223: astore_1
     //   224: aload_0
-    //   225: getfield 176	com/tencent/mm/vfs/FileSystem$a:HRC	Lcom/tencent/mm/vfs/FileSystem;
+    //   225: getfield 176	com/tencent/mm/vfs/FileSystem$a:Jsh	Lcom/tencent/mm/vfs/FileSystem;
     //   228: aload_0
-    //   229: getfield 153	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   229: getfield 153	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   232: invokeinterface 387 2 0
     //   237: astore_0
     //   238: aload 4
-    //   240: new 448	java/util/zip/ZipEntry
+    //   240: new 458	java/util/zip/ZipEntry
     //   243: dup
     //   244: aload_1
     //   245: invokespecial 524	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
@@ -1532,7 +1532,7 @@ public final class i
     //   332: istore_2
     //   333: goto -161 -> 172
     //   336: aload_0
-    //   337: getfield 153	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   337: getfield 153	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   340: iload_2
     //   341: invokevirtual 49	java/lang/String:substring	(I)Ljava/lang/String;
     //   344: astore_1
@@ -1638,11 +1638,11 @@ public final class i
     //   40	54	435	java/io/IOException
   }
   
-  public static OutputStream vu(String paramString)
+  public static OutputStream zA(String paramString)
   {
-    AppMethodBeat.i(200800);
-    paramString = cM(paramString, false);
-    AppMethodBeat.o(200800);
+    AppMethodBeat.i(210178);
+    paramString = cS(paramString, false);
+    AppMethodBeat.o(210178);
     return paramString;
   }
 }

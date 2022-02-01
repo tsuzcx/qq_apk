@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.o;
 
 public abstract interface b
 {
-  public abstract long cPk();
+  public abstract long dcT();
 }
 
 

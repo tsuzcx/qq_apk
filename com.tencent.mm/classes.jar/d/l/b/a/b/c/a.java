@@ -16,15 +16,15 @@ public final class a
     k.h(parama, "from");
     k.h(paramab, "scopeOwner");
     k.h(paramf, "name");
-    paramab = paramab.fzd().qV();
+    paramab = paramab.fRH().rf();
     k.g(paramab, "scopeOwner.fqName.asString()");
-    paramf = paramf.qV();
+    paramf = paramf.rf();
     k.g(paramf, "name.asString()");
     k.h(paramb, "$this$recordPackageLookup");
     k.h(parama, "from");
     k.h(paramab, "packageFqName");
     k.h(paramf, "name");
-    paramb = b.a.Jwy;
+    paramb = b.a.LjR;
     AppMethodBeat.o(57522);
   }
   
@@ -35,7 +35,7 @@ public final class a
     k.h(parama, "from");
     k.h(parame, "scopeOwner");
     k.h(paramf, "name");
-    if (paramb == b.a.Jwy)
+    if (paramb == b.a.LjR)
     {
       AppMethodBeat.o(57521);
       return;
@@ -45,7 +45,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.c.a
  * JD-Core Version:    0.7.0.1
  */

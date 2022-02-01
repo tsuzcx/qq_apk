@@ -8,18 +8,18 @@ import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ab;
+import com.tencent.xweb.ac;
 
 public class WebViewTestUI
   extends MMActivity
 {
-  MMWebViewWithJsApi BgA;
-  private ab lef;
+  MMWebViewWithJsApi CyM;
+  private ac lDW;
   
   public WebViewTestUI()
   {
     AppMethodBeat.i(80040);
-    this.lef = new ab()
+    this.lDW = new ac()
     {
       public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -41,10 +41,10 @@ public class WebViewTestUI
     AppMethodBeat.i(80041);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("rawUrl");
-    this.BgA = MMWebViewWithJsApi.a.gJ(this);
-    this.BgA.setWebViewClient(this.lef);
-    setContentView(this.BgA);
-    this.BgA.loadUrl(paramBundle);
+    this.CyM = MMWebViewWithJsApi.a.gU(this);
+    this.CyM.setWebViewClient(this.lDW);
+    setContentView(this.CyM);
+    this.CyM.loadUrl(paramBundle);
     AppMethodBeat.o(80041);
   }
   

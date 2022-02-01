@@ -171,7 +171,7 @@ public class YTImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.model.YTImageInfo
  * JD-Core Version:    0.7.0.1
  */

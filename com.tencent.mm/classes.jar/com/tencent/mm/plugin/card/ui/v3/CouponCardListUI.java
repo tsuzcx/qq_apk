@@ -28,7 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c.a;
+import com.tencent.mm.ak.c.a;
 import com.tencent.mm.plugin.card.model.a.a.a;
 import com.tencent.mm.plugin.card.model.a.a.a.a;
 import com.tencent.mm.plugin.card.model.a.a.a.b;
@@ -37,18 +37,18 @@ import com.tencent.mm.plugin.card.widget.CardTagTextView;
 import com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ast;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.qp;
-import com.tencent.mm.protocal.protobuf.qq;
-import com.tencent.mm.protocal.protobuf.qs;
-import com.tencent.mm.protocal.protobuf.qw;
+import com.tencent.mm.protocal.protobuf.avx;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.qz;
+import com.tencent.mm.protocal.protobuf.ra;
 import com.tencent.mm.protocal.protobuf.rc;
-import com.tencent.mm.protocal.protobuf.rk;
-import com.tencent.mm.protocal.protobuf.rl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.rg;
+import com.tencent.mm.protocal.protobuf.rm;
+import com.tencent.mm.protocal.protobuf.ru;
+import com.tencent.mm.protocal.protobuf.rv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
@@ -58,7 +58,7 @@ import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
 import d.g.b.k;
-import d.g.b.v.e;
+import d.g.b.v.f;
 import d.v;
 import d.y;
 import java.util.ArrayList;
@@ -67,205 +67,205 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "TAG", "", "loadCount", "", "mCouponCardList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConvertData;", "Lkotlin/collections/ArrayList;", "mCouponCardListAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "mCouponCardListRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "mCurrentSortInfo", "mCurrentSortWording", "mEmptyView", "Landroid/view/ViewGroup;", "mFirstLoad", "", "mHasLoadedSuccess", "mHeaderView", "mHistoryEntranceWording", "mHistoryMiniAppInfo", "Lcom/tencent/mm/protocal/protobuf/CardMiniAppInfo;", "mIsAll", "mIsLoading", "mNeedRefreshMch", "mOffset", "mPreviousSortInfo", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "mReqNum", "mScene", "mSortInfoList", "Lcom/tencent/mm/protocal/protobuf/CardSortInfoList;", "mSortTv", "Landroid/widget/TextView;", "mViewHeight", "mVisitMchId", "mVisitMchTime", "", "doDeleteVipCard", "", "merchantId", "cardId", "doGetMchInfo", "doLoadCouponCardList", "refresh", "getLayoutId", "gotoCardDetailUI", "initView", "loadSnapshot", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "onResume", "saveSnapshot", "showSortDialog", "updateIconMenu", "updateSortView", "updateViewByResp", "resp", "Lcom/tencent/mm/protocal/protobuf/GetCouponHomePageResponse;", "CardSpan", "Companion", "CouponCardConvertData", "CouponCardConverter", "plugin-card_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "TAG", "", "loadCount", "", "mCouponCardList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConvertData;", "Lkotlin/collections/ArrayList;", "mCouponCardListAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "mCouponCardListRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "mCurrentSortInfo", "mCurrentSortWording", "mEmptyView", "Landroid/view/ViewGroup;", "mFirstLoad", "", "mHasLoadedSuccess", "mHeaderView", "mHistoryEntranceWording", "mHistoryMiniAppInfo", "Lcom/tencent/mm/protocal/protobuf/CardMiniAppInfo;", "mIsAll", "mIsLoading", "mNeedRefreshMch", "mOffset", "mPreviousSortInfo", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "mReqNum", "mScene", "mSortInfoList", "Lcom/tencent/mm/protocal/protobuf/CardSortInfoList;", "mSortTv", "Landroid/widget/TextView;", "mViewHeight", "mVisitMchId", "mVisitMchTime", "", "doDeleteVipCard", "", "merchantId", "cardId", "doGetMchInfo", "doLoadCouponCardList", "refresh", "getLayoutId", "gotoCardDetailUI", "initView", "loadSnapshot", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "onResume", "saveSnapshot", "showSortDialog", "updateIconMenu", "updateSortView", "updateViewByResp", "resp", "Lcom/tencent/mm/protocal/protobuf/GetCouponHomePageResponse;", "CardSpan", "Companion", "CouponCardConvertData", "CouponCardConverter", "plugin-card_release"})
 public final class CouponCardListUI
   extends CardNewBaseUI
 {
-  public static final CouponCardListUI.b nHf;
-  private int LZ;
+  public static final CouponCardListUI.b okg;
+  private int MW;
   private final String TAG;
-  private int aNJ;
-  private boolean knt;
-  private boolean kwQ;
+  private int aOz;
+  private boolean kOL;
+  private boolean kYe;
   private int mScene;
-  private ViewGroup nFU;
-  private WxRecyclerView nGR;
-  private TextView nGS;
-  private WxRecyclerAdapter<c> nGT;
-  private final ArrayList<c> nGU;
-  private int nGV;
-  private boolean nGW;
-  private String nGX;
-  private long nGY;
-  private rc nGZ;
-  private RefreshLoadMoreLayout nGj;
-  private ViewGroup nGk;
-  private boolean nGq;
-  private boolean nGr;
-  private int nGv;
-  private String nHa;
-  private rl nHb;
-  private String nHc;
-  private int nHd;
-  private int nHe;
+  private ViewGroup oiV;
+  private WxRecyclerView ojS;
+  private TextView ojT;
+  private WxRecyclerAdapter<c> ojU;
+  private final ArrayList<c> ojV;
+  private int ojW;
+  private boolean ojX;
+  private String ojY;
+  private long ojZ;
+  private RefreshLoadMoreLayout ojk;
+  private ViewGroup ojl;
+  private boolean ojr;
+  private boolean ojs;
+  private int ojw;
+  private rm oka;
+  private String okb;
+  private rv okc;
+  private String okd;
+  private int oke;
+  private int okf;
   
   static
   {
-    AppMethodBeat.i(192793);
-    nHf = new CouponCardListUI.b((byte)0);
-    AppMethodBeat.o(192793);
+    AppMethodBeat.i(206369);
+    okg = new CouponCardListUI.b((byte)0);
+    AppMethodBeat.o(206369);
   }
   
   public CouponCardListUI()
   {
-    AppMethodBeat.i(192792);
+    AppMethodBeat.i(206368);
     this.TAG = "MicroMsg.CouponCardListUI";
-    this.nGU = new ArrayList();
-    this.nGV = 10;
-    this.nGX = "";
-    this.nHc = "";
-    this.kwQ = true;
-    AppMethodBeat.o(192792);
+    this.ojV = new ArrayList();
+    this.ojW = 10;
+    this.ojY = "";
+    this.okd = "";
+    this.kYe = true;
+    AppMethodBeat.o(206368);
   }
   
-  private final void a(ast paramast)
+  private final void a(avx paramavx)
   {
-    AppMethodBeat.i(192791);
-    if ((paramast.DsR == null) || (paramast.DsR.CQJ.isEmpty()))
+    AppMethodBeat.i(206367);
+    if ((paramavx.ENV == null) || (paramavx.ENV.Eju.isEmpty()))
     {
-      AppMethodBeat.o(192791);
+      AppMethodBeat.o(206367);
       return;
     }
-    paramast = paramast.DsR.CQJ.iterator();
-    while (paramast.hasNext())
+    paramavx = paramavx.ENV.Eju.iterator();
+    while (paramavx.hasNext())
     {
-      qs localqs = (qs)paramast.next();
+      rc localrc = (rc)paramavx.next();
       c localc = new c();
-      k.g(localqs, "cardInfo");
-      localc.a(localqs);
-      this.nGU.add(localc);
+      k.g(localrc, "cardInfo");
+      localc.a(localrc);
+      this.ojV.add(localc);
     }
-    if (this.nGU.isEmpty())
+    if (this.ojV.isEmpty())
     {
-      paramast = this.nFU;
-      if (paramast == null) {
-        k.aPZ("mEmptyView");
+      paramavx = this.oiV;
+      if (paramavx == null) {
+        k.aVY("mEmptyView");
       }
-      paramast.setVisibility(0);
+      paramavx.setVisibility(0);
     }
     for (;;)
     {
-      paramast = this.nGT;
-      if (paramast == null) {
-        k.aPZ("mCouponCardListAdapter");
+      paramavx = this.ojU;
+      if (paramavx == null) {
+        k.aVY("mCouponCardListAdapter");
       }
-      paramast.notifyDataSetChanged();
-      AppMethodBeat.o(192791);
+      paramavx.notifyDataSetChanged();
+      AppMethodBeat.o(206367);
       return;
-      paramast = this.nFU;
-      if (paramast == null) {
-        k.aPZ("mEmptyView");
+      paramavx = this.oiV;
+      if (paramavx == null) {
+        k.aVY("mEmptyView");
       }
-      paramast.setVisibility(8);
+      paramavx.setVisibility(8);
     }
   }
   
-  private final void bMw()
+  private final void bTH()
   {
-    AppMethodBeat.i(192788);
-    rc localrc = this.nGZ;
-    if (localrc != null)
+    AppMethodBeat.i(206364);
+    rm localrm = this.oka;
+    if (localrm != null)
     {
       removeAllOptionMenu();
-      addIconOptionMenu(0, 0, 2131690603, (MenuItem.OnMenuItemClickListener)new m(localrc, this));
-      AppMethodBeat.o(192788);
+      addIconOptionMenu(0, 0, 2131690603, (MenuItem.OnMenuItemClickListener)new m(localrm, this));
+      AppMethodBeat.o(206364);
       return;
     }
-    AppMethodBeat.o(192788);
+    AppMethodBeat.o(206364);
   }
   
-  private final void bMx()
+  private final void bTI()
   {
-    AppMethodBeat.i(192789);
+    AppMethodBeat.i(206365);
     int i;
     Object localObject;
     ViewGroup localViewGroup;
-    if (this.nHd > 0) {
-      if (!((Collection)this.nGU).isEmpty())
+    if (this.oke > 0) {
+      if (!((Collection)this.ojV).isEmpty())
       {
         i = 1;
         if (i == 0) {
           break label132;
         }
-        localObject = this.nGS;
+        localObject = this.ojT;
         if (localObject == null) {
-          k.aPZ("mSortTv");
+          k.aVY("mSortTv");
         }
-        ((TextView)localObject).setText((CharSequence)this.nHc);
-        localObject = this.nGT;
+        ((TextView)localObject).setText((CharSequence)this.okd);
+        localObject = this.ojU;
         if (localObject == null) {
-          k.aPZ("mCouponCardListAdapter");
+          k.aVY("mCouponCardListAdapter");
         }
-        localViewGroup = this.nGk;
+        localViewGroup = this.ojl;
         if (localViewGroup == null) {
-          k.aPZ("mHeaderView");
+          k.aVY("mHeaderView");
         }
         ((WxRecyclerAdapter)localObject).f((View)localViewGroup, 2, false);
       }
     }
     for (;;)
     {
-      localObject = this.nGT;
+      localObject = this.ojU;
       if (localObject == null) {
-        k.aPZ("mCouponCardListAdapter");
+        k.aVY("mCouponCardListAdapter");
       }
       ((WxRecyclerAdapter)localObject).notifyDataSetChanged();
-      AppMethodBeat.o(192789);
+      AppMethodBeat.o(206365);
       return;
       i = 0;
       break;
       label132:
-      localObject = this.nGT;
+      localObject = this.ojU;
       if (localObject == null) {
-        k.aPZ("mCouponCardListAdapter");
+        k.aVY("mCouponCardListAdapter");
       }
-      localViewGroup = this.nGk;
+      localViewGroup = this.ojl;
       if (localViewGroup == null) {
-        k.aPZ("mHeaderView");
+        k.aVY("mHeaderView");
       }
-      ((WxRecyclerAdapter)localObject).i(localViewGroup.hashCode(), false);
+      ((WxRecyclerAdapter)localObject).L(localViewGroup.hashCode(), false);
     }
   }
   
-  private final void iK(final boolean paramBoolean)
+  private final void jn(final boolean paramBoolean)
   {
     int i = 0;
-    AppMethodBeat.i(192790);
-    ad.i(this.TAG, "do load vip card list: " + this.knt + ", " + this.LZ + ", " + this.nHd);
+    AppMethodBeat.i(206366);
+    ac.i(this.TAG, "do load vip card list: " + this.kOL + ", " + this.MW + ", " + this.oke);
     Object localObject;
-    if ((this.nGq) && (!paramBoolean))
+    if ((this.ojr) && (!paramBoolean))
     {
-      ad.w(this.TAG, "already load complete");
-      localObject = this.nGj;
+      ac.w(this.TAG, "already load complete");
+      localObject = this.ojk;
       if (localObject == null) {
-        k.aPZ("mRefreshLayout");
+        k.aVY("mRefreshLayout");
       }
-      ((RefreshLoadMoreLayout)localObject).abh(0);
-      AppMethodBeat.o(192790);
+      ((RefreshLoadMoreLayout)localObject).adz(0);
+      AppMethodBeat.o(206366);
       return;
     }
-    if (this.knt)
+    if (this.kOL)
     {
-      ad.w(this.TAG, "is loading");
-      AppMethodBeat.o(192790);
+      ac.w(this.TAG, "is loading");
+      AppMethodBeat.o(206366);
       return;
     }
-    this.knt = true;
-    int j = this.LZ;
+    this.kOL = true;
+    int j = this.MW;
     if (paramBoolean)
     {
-      localObject = this.nGj;
+      localObject = this.ojk;
       if (localObject == null) {
-        k.aPZ("mRefreshLayout");
+        k.aVY("mRefreshLayout");
       }
       ((RefreshLoadMoreLayout)localObject).setHasBottomMore(true);
     }
     for (;;)
     {
-      localObject = new com.tencent.mm.plugin.card.model.b.a(i, this.nGV, this.dpb, this.dqQ, this.nHd).auK();
+      localObject = new com.tencent.mm.plugin.card.model.b.a(i, this.ojW, this.dmL, this.doB, this.oke).aBB();
       k.g(localObject, "CgiGetCouponHomePage(off…, mCurrentSortInfo).run()");
-      com.tencent.mm.ad.c.b((com.tencent.mm.vending.g.c)localObject, (d.g.a.b)new f(this, paramBoolean)).b((com.tencent.mm.vending.e.b)this);
-      AppMethodBeat.o(192790);
+      com.tencent.mm.ac.c.b((com.tencent.mm.vending.g.c)localObject, (d.g.a.b)new f(this, paramBoolean)).b((com.tencent.mm.vending.e.b)this);
+      AppMethodBeat.o(206366);
       return;
       i = j;
     }
@@ -273,17 +273,17 @@ public final class CouponCardListUI
   
   public final void V(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(192787);
-    if ((this.kwQ) && (this.nHd == 1))
+    AppMethodBeat.i(206363);
+    if ((this.kYe) && (this.oke == 1))
     {
-      iK(true);
-      AppMethodBeat.o(192787);
+      jn(true);
+      AppMethodBeat.o(206363);
       return;
     }
     if (!paramBoolean) {
-      bMl();
+      bTy();
     }
-    AppMethodBeat.o(192787);
+    AppMethodBeat.o(206363);
   }
   
   public final int getLayoutId()
@@ -293,198 +293,198 @@ public final class CouponCardListUI
   
   public final void initView()
   {
-    AppMethodBeat.i(192784);
+    AppMethodBeat.i(206360);
     Object localObject1 = findViewById(2131298323);
     k.g(localObject1, "findViewById(R.id.chpvv3_rv)");
-    this.nGR = ((WxRecyclerView)localObject1);
+    this.ojS = ((WxRecyclerView)localObject1);
     localObject1 = findViewById(2131298321);
     k.g(localObject1, "findViewById(R.id.chpvv3_refresh_layout)");
-    this.nGj = ((RefreshLoadMoreLayout)localObject1);
+    this.ojk = ((RefreshLoadMoreLayout)localObject1);
     localObject1 = findViewById(2131298319);
     k.g(localObject1, "findViewById(R.id.chpvv3_empty_layout)");
-    this.nFU = ((ViewGroup)localObject1);
-    localObject1 = this.nGR;
+    this.oiV = ((ViewGroup)localObject1);
+    localObject1 = this.ojS;
     if (localObject1 == null) {
-      k.aPZ("mCouponCardListRv");
+      k.aVY("mCouponCardListRv");
     }
     getContext();
     ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.i)new LinearLayoutManager(1));
-    this.nGT = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.c)new g(this), this.nGU);
-    localObject1 = this.nGR;
+    this.ojU = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.c)new g(this), this.ojV);
+    localObject1 = this.ojS;
     if (localObject1 == null) {
-      k.aPZ("mCouponCardListRv");
+      k.aVY("mCouponCardListRv");
     }
-    Object localObject2 = this.nGT;
+    Object localObject2 = this.ojU;
     if (localObject2 == null) {
-      k.aPZ("mCouponCardListAdapter");
+      k.aVY("mCouponCardListAdapter");
     }
     ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
     localObject1 = getLayoutInflater();
-    localObject2 = this.nGR;
+    localObject2 = this.ojS;
     if (localObject2 == null) {
-      k.aPZ("mCouponCardListRv");
+      k.aVY("mCouponCardListRv");
     }
     localObject1 = ((LayoutInflater)localObject1).inflate(2131493305, (ViewGroup)localObject2, false);
     if (localObject1 == null)
     {
       localObject1 = new v("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(192784);
+      AppMethodBeat.o(206360);
       throw ((Throwable)localObject1);
     }
-    this.nGk = ((ViewGroup)localObject1);
-    localObject1 = this.nGk;
+    this.ojl = ((ViewGroup)localObject1);
+    localObject1 = this.ojl;
     if (localObject1 == null) {
-      k.aPZ("mHeaderView");
+      k.aVY("mHeaderView");
     }
-    localObject2 = this.nGk;
+    localObject2 = this.ojl;
     if (localObject2 == null) {
-      k.aPZ("mHeaderView");
+      k.aVY("mHeaderView");
     }
-    ((ViewGroup)localObject1).setPadding(0, ((ViewGroup)localObject2).getPaddingTop(), 0, com.tencent.mm.cd.a.fromDPToPix((Context)getContext(), 12));
-    localObject1 = this.nGk;
+    ((ViewGroup)localObject1).setPadding(0, ((ViewGroup)localObject2).getPaddingTop(), 0, com.tencent.mm.cc.a.fromDPToPix((Context)getContext(), 12));
+    localObject1 = this.ojl;
     if (localObject1 == null) {
-      k.aPZ("mHeaderView");
+      k.aVY("mHeaderView");
     }
     localObject1 = ((ViewGroup)localObject1).findViewById(2131298325);
     k.g(localObject1, "mHeaderView.findViewById(R.id.chpvv3_sort_tv)");
-    this.nGS = ((TextView)localObject1);
-    localObject1 = this.nGk;
+    this.ojT = ((TextView)localObject1);
+    localObject1 = this.ojl;
     if (localObject1 == null) {
-      k.aPZ("mHeaderView");
+      k.aVY("mHeaderView");
     }
     ((ViewGroup)localObject1).setOnClickListener((View.OnClickListener)new h(this));
-    localObject1 = this.nGT;
+    localObject1 = this.ojU;
     if (localObject1 == null) {
-      k.aPZ("mCouponCardListAdapter");
+      k.aVY("mCouponCardListAdapter");
     }
-    localObject2 = this.nGk;
+    localObject2 = this.ojl;
     if (localObject2 == null) {
-      k.aPZ("mHeaderView");
+      k.aVY("mHeaderView");
     }
     ((WxRecyclerAdapter)localObject1).f((View)localObject2, 2, false);
-    localObject1 = this.nGj;
+    localObject1 = this.ojk;
     if (localObject1 == null) {
-      k.aPZ("mRefreshLayout");
+      k.aVY("mRefreshLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setEnableRefresh(false);
-    localObject1 = this.nGj;
+    localObject1 = this.ojk;
     if (localObject1 == null) {
-      k.aPZ("mRefreshLayout");
+      k.aVY("mRefreshLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setActionCallback((RefreshLoadMoreLayout.a)new i(this));
-    AppMethodBeat.o(192784);
+    AppMethodBeat.o(206360);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192783);
+    AppMethodBeat.i(206359);
     super.onCreate(paramBundle);
     initView();
     setMMTitle(2131756824);
     setActionbarColor(getResources().getColor(2131099648));
     hideActionbarLine();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new CouponCardListUI.j(this));
+    setBackBtn((MenuItem.OnMenuItemClickListener)new j(this));
     this.mScene = getIntent().getIntExtra("scene", 0);
-    paramBundle = com.tencent.mm.plugin.card.model.a.a.nuE;
-    paramBundle = a.a.bJp();
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.nXE;
+    paramBundle = a.a.bQC();
     if (paramBundle != null)
     {
-      this.LZ = paramBundle.ocT;
-      this.nHb = paramBundle.DsW;
-      this.nGZ = paramBundle.DsS;
-      this.nHa = paramBundle.DsT;
-      bMw();
+      this.MW = paramBundle.oGs;
+      this.okc = paramBundle.EOa;
+      this.oka = paramBundle.ENW;
+      this.okb = paramBundle.ENX;
+      bTH();
       a(paramBundle);
     }
-    paramBundle = com.tencent.mm.plugin.card.model.a.a.nuE;
-    paramBundle = a.a.bJq();
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.nXE;
+    paramBundle = a.a.bQD();
     Object localObject;
     if (paramBundle != null)
     {
-      this.nHd = paramBundle.CRs;
-      localObject = paramBundle.CRu;
+      this.oke = paramBundle.Ekd;
+      localObject = paramBundle.Ekf;
       k.g(localObject, "cardSortInfo.sort_wording");
-      this.nHc = ((String)localObject);
-      this.nGV = paramBundle.CRt;
-      this.nHe = this.nHd;
+      this.okd = ((String)localObject);
+      this.ojW = paramBundle.Eke;
+      this.okf = this.oke;
     }
-    if ((this.nHb != null) && (this.mScene == 1))
+    if ((this.okc != null) && (this.mScene == 1))
     {
-      paramBundle = this.nHb;
+      paramBundle = this.okc;
       if (paramBundle == null) {
-        k.fvU();
+        k.fOy();
       }
-      paramBundle = paramBundle.CRv.iterator();
+      paramBundle = paramBundle.Ekg.iterator();
       while (paramBundle.hasNext())
       {
-        localObject = (rk)paramBundle.next();
-        if (((rk)localObject).CRs == 2)
+        localObject = (ru)paramBundle.next();
+        if (((ru)localObject).Ekd == 2)
         {
-          this.nHd = 2;
-          localObject = ((rk)localObject).CRu;
+          this.oke = 2;
+          localObject = ((ru)localObject).Ekf;
           k.g(localObject, "sortInfo.sort_wording");
-          this.nHc = ((String)localObject);
+          this.okd = ((String)localObject);
         }
       }
     }
-    bMx();
-    bMx();
-    if (this.nHd != 1) {
-      iK(true);
+    bTI();
+    bTI();
+    if (this.oke != 1) {
+      jn(true);
     }
-    AppMethodBeat.o(192783);
+    AppMethodBeat.o(206359);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(192786);
+    AppMethodBeat.i(206362);
     super.onDestroy();
-    if (!this.nGr)
+    if (!this.ojs)
     {
-      ad.i(this.TAG, "no data to save snapshot");
-      AppMethodBeat.o(192786);
+      ac.i(this.TAG, "no data to save snapshot");
+      AppMethodBeat.o(206362);
       return;
     }
-    Object localObject1 = new ast();
-    ((ast)localObject1).BaseResponse = new BaseResponse();
-    ((ast)localObject1).BaseResponse.ErrMsg = new cmf();
-    ((ast)localObject1).DsR = new qw();
-    Object localObject2 = this.nGU.iterator();
+    Object localObject1 = new avx();
+    ((avx)localObject1).BaseResponse = new BaseResponse();
+    ((avx)localObject1).BaseResponse.ErrMsg = new crm();
+    ((avx)localObject1).ENV = new rg();
+    Object localObject2 = this.ojV.iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      qs localqs = ((c)((Iterator)localObject2).next()).bMy();
-      if (localqs != null) {
-        ((ast)localObject1).DsR.CQJ.add(localqs);
+      rc localrc = ((c)((Iterator)localObject2).next()).bTJ();
+      if (localrc != null) {
+        ((avx)localObject1).ENV.Eju.add(localrc);
       }
     }
-    ((ast)localObject1).DsW = this.nHb;
-    ((ast)localObject1).ocT = this.LZ;
-    ((ast)localObject1).DsT = this.nHa;
-    ((ast)localObject1).DsS = this.nGZ;
-    localObject2 = com.tencent.mm.plugin.card.model.a.a.nuE;
+    ((avx)localObject1).EOa = this.okc;
+    ((avx)localObject1).oGs = this.MW;
+    ((avx)localObject1).ENX = this.okb;
+    ((avx)localObject1).ENW = this.oka;
+    localObject2 = com.tencent.mm.plugin.card.model.a.a.nXE;
     k.h(localObject1, "response");
-    ad.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save vip card list snapshot");
-    com.tencent.mm.ad.c.b(null, (d.g.a.a)new a.a.a((ast)localObject1));
-    localObject1 = new rk();
-    ((rk)localObject1).CRs = this.nHd;
-    ((rk)localObject1).CRu = this.nHc;
-    ((rk)localObject1).CRt = this.nGV;
-    localObject2 = com.tencent.mm.plugin.card.model.a.a.nuE;
+    ac.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save vip card list snapshot");
+    com.tencent.mm.ac.c.b(null, (d.g.a.a)new a.a.a((avx)localObject1));
+    localObject1 = new ru();
+    ((ru)localObject1).Ekd = this.oke;
+    ((ru)localObject1).Ekf = this.okd;
+    ((ru)localObject1).Eke = this.ojW;
+    localObject2 = com.tencent.mm.plugin.card.model.a.a.nXE;
     k.h(localObject1, "sortInfo");
-    ad.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save vip card list snapshot");
-    com.tencent.mm.ad.c.b(null, (d.g.a.a)new a.a.b((rk)localObject1));
-    AppMethodBeat.o(192786);
+    ac.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save vip card list snapshot");
+    com.tencent.mm.ac.c.b(null, (d.g.a.a)new a.a.b((ru)localObject1));
+    AppMethodBeat.o(206362);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(192785);
+    AppMethodBeat.i(206361);
     super.onResume();
-    ad.i(this.TAG, "do get mch infoset: %s", new Object[] { Boolean.valueOf(this.nGW) });
-    if (this.nGW) {
-      new com.tencent.mm.plugin.card.model.a.f(this.nGX, this.nGY, this.dpb, this.dqQ, this.nHd, 1).auK().b((com.tencent.mm.vending.c.a)new e(this)).a((com.tencent.mm.vending.e.b)this);
+    ac.i(this.TAG, "do get mch infoset: %s", new Object[] { Boolean.valueOf(this.ojX) });
+    if (this.ojX) {
+      new com.tencent.mm.plugin.card.model.a.f(this.ojY, this.ojZ, this.dmL, this.doB, this.oke, 1).aBB().b((com.tencent.mm.vending.c.a)new e(this)).a((com.tencent.mm.vending.e.b)this);
     }
-    AppMethodBeat.o(192785);
+    AppMethodBeat.o(206361);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -493,121 +493,121 @@ public final class CouponCardListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "(Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;)V", "couponCardInfo", "Lcom/tencent/mm/protocal/protobuf/CardHomePageElement;", "getCouponCardInfo", "()Lcom/tencent/mm/protocal/protobuf/CardHomePageElement;", "setCouponCardInfo", "(Lcom/tencent/mm/protocal/protobuf/CardHomePageElement;)V", "expandState", "", "getExpandState", "()Z", "setExpandState", "(Z)V", "hasRender", "getHasRender", "setHasRender", "getItemId", "", "getItemType", "", "plugin-card_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "(Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;)V", "couponCardInfo", "Lcom/tencent/mm/protocal/protobuf/CardHomePageElement;", "getCouponCardInfo", "()Lcom/tencent/mm/protocal/protobuf/CardHomePageElement;", "setCouponCardInfo", "(Lcom/tencent/mm/protocal/protobuf/CardHomePageElement;)V", "expandState", "", "getExpandState", "()Z", "setExpandState", "(Z)V", "hasRender", "getHasRender", "setHasRender", "getItemId", "", "getItemType", "", "plugin-card_release"})
   public final class c
     implements com.tencent.mm.view.recyclerview.a
   {
-    boolean nEG;
-    boolean nEH;
-    public qs nHh;
+    boolean ohH;
+    boolean ohI;
+    public rc oki;
     
-    public final void a(qs paramqs)
+    public final void a(rc paramrc)
     {
-      AppMethodBeat.i(192749);
-      k.h(paramqs, "<set-?>");
-      this.nHh = paramqs;
-      AppMethodBeat.o(192749);
+      AppMethodBeat.i(206323);
+      k.h(paramrc, "<set-?>");
+      this.oki = paramrc;
+      AppMethodBeat.o(206323);
     }
     
-    public final long bMs()
-    {
-      AppMethodBeat.i(192750);
-      qs localqs = this.nHh;
-      if (localqs == null) {
-        k.aPZ("couponCardInfo");
-      }
-      long l = localqs.CQp.hashCode();
-      AppMethodBeat.o(192750);
-      return l;
-    }
-    
-    public final int bMt()
+    public final int bTF()
     {
       return 1;
     }
     
-    public final qs bMy()
+    public final rc bTJ()
     {
-      AppMethodBeat.i(192748);
-      qs localqs = this.nHh;
-      if (localqs == null) {
-        k.aPZ("couponCardInfo");
+      AppMethodBeat.i(206322);
+      rc localrc = this.oki;
+      if (localrc == null) {
+        k.aVY("couponCardInfo");
       }
-      AppMethodBeat.o(192748);
-      return localqs;
+      AppMethodBeat.o(206322);
+      return localrc;
+    }
+    
+    public final long lx()
+    {
+      AppMethodBeat.i(206324);
+      rc localrc = this.oki;
+      if (localrc == null) {
+        k.aVY("couponCardInfo");
+      }
+      long l = localrc.Eja.hashCode();
+      AppMethodBeat.o(206324);
+      return l;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConvertData;", "Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;", "(Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;)V", "headerClickListener", "Landroid/view/View$OnClickListener;", "addCouponView", "", "view", "Landroid/view/View;", "parentView", "Landroid/view/ViewGroup;", "appendCouponView", "offset", "", "len", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "collapseCouponLayout", "expandCouponLayout", "getLayoutId", "onBindViewHolder", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "showCollapseLayout", "showExpandLayout", "showMiniAppLayout", "updateCardLabelLayout", "couponLabelList", "", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponLabel;", "labelLayout", "Landroid/widget/LinearLayout;", "updateExpandLayout", "isExpended", "plugin-card_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConvertData;", "Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;", "(Lcom/tencent/mm/plugin/card/ui/v3/CouponCardListUI;)V", "headerClickListener", "Landroid/view/View$OnClickListener;", "addCouponView", "", "view", "Landroid/view/View;", "parentView", "Landroid/view/ViewGroup;", "appendCouponView", "offset", "", "len", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "collapseCouponLayout", "expandCouponLayout", "getLayoutId", "onBindViewHolder", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "showCollapseLayout", "showExpandLayout", "showMiniAppLayout", "updateCardLabelLayout", "couponLabelList", "", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponLabel;", "labelLayout", "Landroid/widget/LinearLayout;", "updateExpandLayout", "isExpended", "plugin-card_release"})
   public final class d
     extends com.tencent.mm.view.recyclerview.b<CouponCardListUI.c>
   {
-    View.OnClickListener nHi;
+    View.OnClickListener okj;
     
     private static void a(com.tencent.mm.view.recyclerview.e parame, CouponCardListUI.c paramc)
     {
-      AppMethodBeat.i(192762);
-      paramc = paramc.bMy();
-      TextView localTextView = (TextView)parame.abq(2131298296);
-      ImageView localImageView = (ImageView)parame.abq(2131298294);
-      parame = (ViewGroup)parame.abq(2131298295);
-      if (!bt.isNullOrNil(paramc.CQv))
+      AppMethodBeat.i(206336);
+      paramc = paramc.bTJ();
+      TextView localTextView = (TextView)parame.adJ(2131298296);
+      ImageView localImageView = (ImageView)parame.adJ(2131298294);
+      parame = (ViewGroup)parame.adJ(2131298295);
+      if (!bs.isNullOrNil(paramc.Ejg))
       {
-        if (!bt.isNullOrNil(paramc.CQw)) {
-          localTextView.setTextColor(Color.parseColor(paramc.CQw));
+        if (!bs.isNullOrNil(paramc.Ejh)) {
+          localTextView.setTextColor(Color.parseColor(paramc.Ejh));
         }
         k.g(localTextView, "chpiExpandTv");
-        localTextView.setText((CharSequence)paramc.CQv);
+        localTextView.setText((CharSequence)paramc.Ejg);
         localImageView.setImageResource(2131231436);
         parame.setOnClickListener((View.OnClickListener)new i(paramc));
       }
-      AppMethodBeat.o(192762);
+      AppMethodBeat.o(206336);
     }
     
     private final void a(final com.tencent.mm.view.recyclerview.e parame, final CouponCardListUI.c paramc, final int paramInt)
     {
-      AppMethodBeat.i(192763);
-      qs localqs = paramc.bMy();
-      TextView localTextView = (TextView)parame.abq(2131298296);
-      ImageView localImageView = (ImageView)parame.abq(2131298294);
-      ViewGroup localViewGroup = (ViewGroup)parame.abq(2131298295);
+      AppMethodBeat.i(206337);
+      rc localrc = paramc.bTJ();
+      TextView localTextView = (TextView)parame.adJ(2131298296);
+      ImageView localImageView = (ImageView)parame.adJ(2131298294);
+      ViewGroup localViewGroup = (ViewGroup)parame.adJ(2131298295);
       k.g(localTextView, "chpiExpandTv");
-      Resources localResources = aj.getResources();
-      if (localqs == null) {
-        k.fvU();
+      Resources localResources = ai.getResources();
+      if (localrc == null) {
+        k.fOy();
       }
-      localTextView.setText((CharSequence)localResources.getString(2131756876, new Object[] { Integer.valueOf(localqs.CQA - localqs.CQB) }));
+      localTextView.setText((CharSequence)localResources.getString(2131756876, new Object[] { Integer.valueOf(localrc.Ejl - localrc.Ejm) }));
       localViewGroup.setOnClickListener((View.OnClickListener)new h(this, parame, paramc, paramInt));
       localImageView.setImageResource(2131231497);
       k.g(localImageView, "chpiExpandIv");
       localImageView.setVisibility(0);
-      AppMethodBeat.o(192763);
+      AppMethodBeat.o(206337);
     }
     
-    private final void a(List<? extends qp> paramList, LinearLayout paramLinearLayout)
+    private final void a(List<? extends qz> paramList, LinearLayout paramLinearLayout)
     {
-      AppMethodBeat.i(192767);
+      AppMethodBeat.i(206341);
       paramList = paramList.iterator();
       if (paramList.hasNext())
       {
-        qp localqp = (qp)paramList.next();
-        CardTagTextView localCardTagTextView = new CardTagTextView((Context)this.nHg.getContext());
-        AppCompatActivity localAppCompatActivity = this.nHg.getContext();
-        localCardTagTextView.setMinHeight(com.tencent.mm.cd.a.fromDPToPix((Context)localAppCompatActivity, 18));
-        localCardTagTextView.setMinWidth(com.tencent.mm.cd.a.fromDPToPix((Context)localAppCompatActivity, 56));
-        int i = com.tencent.mm.cd.a.fromDPToPix((Context)localAppCompatActivity, 8);
-        int j = com.tencent.mm.cd.a.fromDPToPix((Context)localAppCompatActivity, 4);
+        qz localqz = (qz)paramList.next();
+        CardTagTextView localCardTagTextView = new CardTagTextView((Context)this.okh.getContext());
+        AppCompatActivity localAppCompatActivity = this.okh.getContext();
+        localCardTagTextView.setMinHeight(com.tencent.mm.cc.a.fromDPToPix((Context)localAppCompatActivity, 18));
+        localCardTagTextView.setMinWidth(com.tencent.mm.cc.a.fromDPToPix((Context)localAppCompatActivity, 56));
+        int i = com.tencent.mm.cc.a.fromDPToPix((Context)localAppCompatActivity, 8);
+        int j = com.tencent.mm.cc.a.fromDPToPix((Context)localAppCompatActivity, 4);
         localCardTagTextView.setPadding(i, j, i, j);
-        localCardTagTextView.setText((CharSequence)localqp.CPL);
+        localCardTagTextView.setText((CharSequence)localqz.Eiw);
         localCardTagTextView.setTextSize(1, 10.0F);
-        if (!bt.isNullOrNil(localqp.CPM))
+        if (!bs.isNullOrNil(localqz.Eix))
         {
-          localCardTagTextView.setTextColor(Color.parseColor(localqp.CPM));
+          localCardTagTextView.setTextColor(Color.parseColor(localqz.Eix));
           label169:
-          if (bt.isNullOrNil(localqp.CPN)) {
+          if (bs.isNullOrNil(localqz.Eiy)) {
             break label219;
           }
-          localCardTagTextView.setFillColor(com.tencent.mm.plugin.card.d.l.cC(localqp.CPN, localqp.CPQ));
+          localCardTagTextView.setFillColor(com.tencent.mm.plugin.card.d.l.cH(localqz.Eiy, localqz.EiB));
         }
         for (;;)
         {
@@ -616,62 +616,62 @@ public final class CouponCardListUI
           localCardTagTextView.setTextColor(-1);
           break label169;
           label219:
-          localCardTagTextView.setFillColor(com.tencent.mm.plugin.card.d.l.eO(-16777216, 26));
+          localCardTagTextView.setFillColor(com.tencent.mm.plugin.card.d.l.eR(-16777216, 26));
         }
       }
-      AppMethodBeat.o(192767);
+      AppMethodBeat.o(206341);
     }
     
     private static void b(View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(192768);
+      AppMethodBeat.i(206342);
       if (paramViewGroup.getChildCount() == 0)
       {
         paramViewGroup.addView(paramView);
-        AppMethodBeat.o(192768);
+        AppMethodBeat.o(206342);
         return;
       }
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(paramViewGroup.getContext(), 84));
-      localMarginLayoutParams.topMargin = com.tencent.mm.cd.a.fromDPToPix(paramViewGroup.getContext(), 8);
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = new ViewGroup.MarginLayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(paramViewGroup.getContext(), 84));
+      localMarginLayoutParams.topMargin = com.tencent.mm.cc.a.fromDPToPix(paramViewGroup.getContext(), 8);
       paramViewGroup.addView(paramView, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(localMarginLayoutParams));
-      AppMethodBeat.o(192768);
+      AppMethodBeat.o(206342);
     }
     
     private final void b(final com.tencent.mm.view.recyclerview.e parame, final CouponCardListUI.c paramc, final int paramInt)
     {
-      AppMethodBeat.i(192764);
-      paramc.bMy();
-      TextView localTextView = (TextView)parame.abq(2131298296);
-      ImageView localImageView = (ImageView)parame.abq(2131298294);
-      ViewGroup localViewGroup = (ViewGroup)parame.abq(2131298295);
+      AppMethodBeat.i(206338);
+      paramc.bTJ();
+      TextView localTextView = (TextView)parame.adJ(2131298296);
+      ImageView localImageView = (ImageView)parame.adJ(2131298294);
+      ViewGroup localViewGroup = (ViewGroup)parame.adJ(2131298295);
       k.g(localTextView, "chpiExpandTv");
-      localTextView.setText((CharSequence)aj.getResources().getString(2131756874));
+      localTextView.setText((CharSequence)ai.getResources().getString(2131756874));
       localViewGroup.setOnClickListener((View.OnClickListener)new g(this, parame, paramc, paramInt));
       localImageView.setImageResource(2131231498);
       k.g(localImageView, "chpiExpandIv");
       localImageView.setVisibility(0);
-      AppMethodBeat.o(192764);
+      AppMethodBeat.o(206338);
     }
     
     final void a(int paramInt1, int paramInt2, com.tencent.mm.view.recyclerview.e parame, final CouponCardListUI.c paramc, final int paramInt3)
     {
-      AppMethodBeat.i(192766);
-      paramc = paramc.bMy();
-      ViewGroup localViewGroup = (ViewGroup)parame.abq(2131298292);
+      AppMethodBeat.i(206340);
+      paramc = paramc.bTJ();
+      ViewGroup localViewGroup = (ViewGroup)parame.adJ(2131298292);
       final int k = 0;
-      Object localObject1 = paramc.CQu;
+      Object localObject1 = paramc.Ejf;
       k.g(localObject1, "el.card_element_coupon_list");
       localObject1 = ((Iterable)localObject1).iterator();
       int i = 0;
       if (((Iterator)localObject1).hasNext())
       {
-        final qq localqq = (qq)((Iterator)localObject1).next();
+        final ra localra = (ra)((Iterator)localObject1).next();
         int j = i;
-        final v.e locale;
+        final v.f localf;
         if (k >= paramInt1)
         {
-          locale = new v.e();
-          if (localqq.CPX != 1) {
+          localf = new v.f();
+          if (localra.EiI != 1) {
             break label494;
           }
           k.g(localViewGroup, "chpiCouponLayout");
@@ -679,37 +679,37 @@ public final class CouponCardListUI
           if (localObject2 == null)
           {
             parame = new v("null cannot be cast to non-null type android.view.ViewGroup");
-            AppMethodBeat.o(192766);
+            AppMethodBeat.o(206340);
             throw parame;
           }
-          locale.Jhw = ((ViewGroup)localObject2);
-          localObject3 = (TextView)((ViewGroup)locale.Jhw).findViewById(2131298279);
-          localObject4 = (CdnImageView)((ViewGroup)locale.Jhw).findViewById(2131298276);
-          localTextView = (TextView)((ViewGroup)locale.Jhw).findViewById(2131298277);
-          localObject2 = (LinearLayout)((ViewGroup)locale.Jhw).findViewById(2131298278);
-          if (!bt.isNullOrNil(localqq.CQa)) {
-            ((TextView)localObject3).setTextColor(com.tencent.mm.plugin.card.d.l.cC(localqq.CQa, localqq.CQb));
+          localf.KUQ = ((ViewGroup)localObject2);
+          localObject3 = (TextView)((ViewGroup)localf.KUQ).findViewById(2131298279);
+          localObject4 = (CdnImageView)((ViewGroup)localf.KUQ).findViewById(2131298276);
+          localTextView = (TextView)((ViewGroup)localf.KUQ).findViewById(2131298277);
+          localObject2 = (LinearLayout)((ViewGroup)localf.KUQ).findViewById(2131298278);
+          if (!bs.isNullOrNil(localra.EiL)) {
+            ((TextView)localObject3).setTextColor(com.tencent.mm.plugin.card.d.l.cH(localra.EiL, localra.EiM));
           }
           k.g(localObject3, "titleTv");
-          ((TextView)localObject3).setText((CharSequence)localqq.CPR);
-          ((CdnImageView)localObject4).setUrl(localqq.CPY);
-          if (!bt.isNullOrNil(localqq.CQc)) {
-            localTextView.setTextColor(com.tencent.mm.plugin.card.d.l.cC(localqq.CQc, localqq.CQd));
+          ((TextView)localObject3).setText((CharSequence)localra.EiC);
+          ((CdnImageView)localObject4).setUrl(localra.EiJ);
+          if (!bs.isNullOrNil(localra.EiN)) {
+            localTextView.setTextColor(com.tencent.mm.plugin.card.d.l.cH(localra.EiN, localra.EiO));
           }
           k.g(localTextView, "descTv");
-          localTextView.setText((CharSequence)localqq.CPS);
-          localObject3 = localqq.CPW;
+          localTextView.setText((CharSequence)localra.EiD);
+          localObject3 = localra.EiH;
           k.g(localObject3, "coupon.coupon_label");
           localObject3 = (List)localObject3;
           k.g(localObject2, "labelLayout");
           a((List)localObject3, (LinearLayout)localObject2);
           localViewGroup.getChildCount();
-          ((ViewGroup)locale.Jhw).setOnClickListener((View.OnClickListener)new a(this, paramc, localqq, k, paramInt3));
-          ((ViewGroup)locale.Jhw).setTag(localqq.CuA);
-          b((View)locale.Jhw, localViewGroup);
+          ((ViewGroup)localf.KUQ).setOnClickListener((View.OnClickListener)new a(this, paramc, localra, k, paramInt3));
+          ((ViewGroup)localf.KUQ).setTag(localra.DMR);
+          b((View)localf.KUQ, localViewGroup);
         }
         label494:
-        while (localqq.CPX != 2)
+        while (localra.EiI != 2)
         {
           j = i;
           if (paramInt2 > 0)
@@ -728,35 +728,35 @@ public final class CouponCardListUI
         if (localObject2 == null)
         {
           parame = new v("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(192766);
+          AppMethodBeat.o(206340);
           throw parame;
         }
-        locale.Jhw = ((ViewGroup)localObject2);
-        Object localObject4 = (TextView)((ViewGroup)locale.Jhw).findViewById(2131298279);
-        TextView localTextView = (TextView)((ViewGroup)locale.Jhw).findViewById(2131298277);
-        localObject2 = (LinearLayout)((ViewGroup)locale.Jhw).findViewById(2131298278);
-        MemberCardTopCropImageView localMemberCardTopCropImageView = (MemberCardTopCropImageView)((ViewGroup)locale.Jhw).findViewById(2131298274);
-        Object localObject3 = (ImageView)((ViewGroup)locale.Jhw).findViewById(2131298275);
-        if (!bt.isNullOrNil(localqq.CQa)) {
-          ((TextView)localObject4).setTextColor(com.tencent.mm.plugin.card.d.l.cC(localqq.CQa, localqq.CQb));
+        localf.KUQ = ((ViewGroup)localObject2);
+        Object localObject4 = (TextView)((ViewGroup)localf.KUQ).findViewById(2131298279);
+        TextView localTextView = (TextView)((ViewGroup)localf.KUQ).findViewById(2131298277);
+        localObject2 = (LinearLayout)((ViewGroup)localf.KUQ).findViewById(2131298278);
+        MemberCardTopCropImageView localMemberCardTopCropImageView = (MemberCardTopCropImageView)((ViewGroup)localf.KUQ).findViewById(2131298274);
+        Object localObject3 = (ImageView)((ViewGroup)localf.KUQ).findViewById(2131298275);
+        if (!bs.isNullOrNil(localra.EiL)) {
+          ((TextView)localObject4).setTextColor(com.tencent.mm.plugin.card.d.l.cH(localra.EiL, localra.EiM));
         }
         k.g(localObject4, "titleTv");
-        ((TextView)localObject4).setText((CharSequence)localqq.CPR);
+        ((TextView)localObject4).setText((CharSequence)localra.EiC);
         k.g(localTextView, "descTv");
-        localTextView.setText((CharSequence)localqq.CPS);
+        localTextView.setText((CharSequence)localra.EiD);
         k.g(localMemberCardTopCropImageView, "bgIv");
-        localMemberCardTopCropImageView.setRadius(com.tencent.mm.cd.a.fromDPToPix(localMemberCardTopCropImageView.getContext(), 2));
-        if (!bt.isNullOrNil(localqq.CPV))
+        localMemberCardTopCropImageView.setRadius(com.tencent.mm.cc.a.fromDPToPix(localMemberCardTopCropImageView.getContext(), 2));
+        if (!bs.isNullOrNil(localra.EiG))
         {
-          localObject4 = ((ViewGroup)locale.Jhw).findViewById(2131298274);
+          localObject4 = ((ViewGroup)localf.KUQ).findViewById(2131298274);
           k.g(localObject4, "view.findViewById(R.id.chpc_bg_iv)");
-          localObject4 = (d.g.a.a)new d(this, (MemberCardTopCropImageView)localObject4, localqq);
-          if (CouponCardListUI.b(this.nHg) <= 0)
+          localObject4 = (d.g.a.a)new d(this, (MemberCardTopCropImageView)localObject4, localra);
+          if (CouponCardListUI.b(this.okh) <= 0)
           {
-            CouponCardListUI.a(this.nHg, ((ViewGroup)locale.Jhw).getHeight());
-            if (CouponCardListUI.b(this.nHg) <= 0)
+            CouponCardListUI.a(this.okh, ((ViewGroup)localf.KUQ).getHeight());
+            if (CouponCardListUI.b(this.okh) <= 0)
             {
-              parame.arI.post((Runnable)new b(this, locale, (d.g.a.a)localObject4));
+              parame.asD.post((Runnable)new b(this, localf, (d.g.a.a)localObject4));
               label869:
               k.g(localObject3, "shadowBgIv");
               ((ImageView)localObject3).setVisibility(0);
@@ -765,66 +765,66 @@ public final class CouponCardListUI
         }
         for (;;)
         {
-          localObject3 = localqq.CPW;
+          localObject3 = localra.EiH;
           k.g(localObject3, "coupon.coupon_label");
           localObject3 = (List)localObject3;
           k.g(localObject2, "labelLayout");
           a((List)localObject3, (LinearLayout)localObject2);
           localViewGroup.getChildCount();
-          ((ViewGroup)locale.Jhw).setOnClickListener((View.OnClickListener)new c(this, paramc, localqq));
-          ((ViewGroup)locale.Jhw).setTag(localqq.CuA);
-          b((View)locale.Jhw, localViewGroup);
+          ((ViewGroup)localf.KUQ).setOnClickListener((View.OnClickListener)new c(this, paramc, localra));
+          ((ViewGroup)localf.KUQ).setTag(localra.DMR);
+          b((View)localf.KUQ, localViewGroup);
           break;
           ((d.g.a.a)localObject4).invoke();
           break label869;
           ((d.g.a.a)localObject4).invoke();
           break label869;
-          if (!bt.isNullOrNil(localqq.CPU))
+          if (!bs.isNullOrNil(localra.EiF))
           {
-            localMemberCardTopCropImageView.setImageDrawable((Drawable)new ColorDrawable(Color.parseColor(localqq.CPU)));
+            localMemberCardTopCropImageView.setImageDrawable((Drawable)new ColorDrawable(Color.parseColor(localra.EiF)));
             k.g(localObject3, "shadowBgIv");
             ((ImageView)localObject3).setVisibility(0);
           }
         }
       }
       label1061:
-      AppMethodBeat.o(192766);
+      AppMethodBeat.o(206340);
     }
     
     public final void a(RecyclerView paramRecyclerView, final com.tencent.mm.view.recyclerview.e parame, int paramInt)
     {
-      AppMethodBeat.i(192760);
+      AppMethodBeat.i(206334);
       k.h(paramRecyclerView, "recyclerView");
       k.h(parame, "holder");
-      paramRecyclerView = (ImageView)parame.abq(2131298299);
-      parame.abq(2131298303);
-      this.nHi = ((View.OnClickListener)new f(this, parame));
-      parame = this.nHi;
+      paramRecyclerView = (ImageView)parame.adJ(2131298299);
+      parame.adJ(2131298303);
+      this.okj = ((View.OnClickListener)new f(this, parame));
+      parame = this.okj;
       if (parame == null) {
-        k.aPZ("headerClickListener");
+        k.aVY("headerClickListener");
       }
       paramRecyclerView.setOnClickListener(parame);
-      AppMethodBeat.o(192760);
+      AppMethodBeat.o(206334);
     }
     
     final void a(boolean paramBoolean, com.tencent.mm.view.recyclerview.e parame, CouponCardListUI.c paramc, int paramInt)
     {
-      AppMethodBeat.i(192765);
-      qs localqs = paramc.bMy();
+      AppMethodBeat.i(206339);
+      rc localrc = paramc.bTJ();
       if (paramBoolean)
       {
-        if (!bt.isNullOrNil(localqs.CQv))
+        if (!bs.isNullOrNil(localrc.Ejg))
         {
           a(parame, paramc);
-          AppMethodBeat.o(192765);
+          AppMethodBeat.o(206339);
           return;
         }
         b(parame, paramc, paramInt);
-        AppMethodBeat.o(192765);
+        AppMethodBeat.o(206339);
         return;
       }
       a(parame, paramc, paramInt);
-      AppMethodBeat.o(192765);
+      AppMethodBeat.o(206339);
     }
     
     public final int getLayoutId()
@@ -832,80 +832,80 @@ public final class CouponCardListUI
       return 2131493299;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
-      a(CouponCardListUI.d paramd, qs paramqs, qq paramqq, int paramInt1, int paramInt2) {}
+      a(CouponCardListUI.d paramd, rc paramrc, ra paramra, int paramInt1, int paramInt2) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(192751);
-        CouponCardListUI.a(this.nHj.nHg, true);
-        paramView = this.nHj.nHg;
-        String str = paramc.CQp;
+        AppMethodBeat.i(206325);
+        CouponCardListUI.a(this.okk.okh, true);
+        paramView = this.okk.okh;
+        String str = paramc.Eja;
         k.g(str, "el.card_pack_merchant_id");
         CouponCardListUI.a(paramView, str);
-        CouponCardListUI.a(this.nHj.nHg, paramc.CQC);
-        paramView = this.nHj.nHg;
-        str = localqq.CuA;
+        CouponCardListUI.a(this.okk.okh, paramc.Ejn);
+        paramView = this.okk.okh;
+        str = localra.DMR;
         k.g(str, "coupon.user_card_id");
         CouponCardListUI.b(paramView, str);
-        com.tencent.mm.plugin.report.service.h.vKh.f(19748, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis() / 1000L), localqq.CuA, Integer.valueOf(k), Integer.valueOf(paramInt3) });
-        AppMethodBeat.o(192751);
+        com.tencent.mm.plugin.report.service.h.wUl.f(19748, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis() / 1000L), localra.DMR, Integer.valueOf(k), Integer.valueOf(paramInt3) });
+        AppMethodBeat.o(206325);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
-      b(CouponCardListUI.d paramd, v.e parame, d.g.a.a parama) {}
+      b(CouponCardListUI.d paramd, v.f paramf, d.g.a.a parama) {}
       
       public final void run()
       {
-        AppMethodBeat.i(192752);
-        CouponCardListUI.a(this.nHj.nHg, ((ViewGroup)locale.Jhw).getHeight());
-        this.nGH.invoke();
-        AppMethodBeat.o(192752);
+        AppMethodBeat.i(206326);
+        CouponCardListUI.a(this.okk.okh, ((ViewGroup)localf.KUQ).getHeight());
+        this.ojI.invoke();
+        AppMethodBeat.o(206326);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class c
       implements View.OnClickListener
     {
-      c(CouponCardListUI.d paramd, qs paramqs, qq paramqq) {}
+      c(CouponCardListUI.d paramd, rc paramrc, ra paramra) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(192753);
-        CouponCardListUI.a(this.nHj.nHg, true);
-        paramView = this.nHj.nHg;
-        String str = paramc.CQp;
+        AppMethodBeat.i(206327);
+        CouponCardListUI.a(this.okk.okh, true);
+        paramView = this.okk.okh;
+        String str = paramc.Eja;
         k.g(str, "el.card_pack_merchant_id");
         CouponCardListUI.a(paramView, str);
-        CouponCardListUI.a(this.nHj.nHg, paramc.CQC);
-        paramView = this.nHj.nHg;
-        str = localqq.CuA;
+        CouponCardListUI.a(this.okk.okh, paramc.Ejn);
+        paramView = this.okk.okh;
+        str = localra.DMR;
         k.g(str, "coupon.user_card_id");
         CouponCardListUI.b(paramView, str);
-        AppMethodBeat.o(192753);
+        AppMethodBeat.o(206327);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "()Lkotlin/Unit;"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "()Lkotlin/Unit;"})
     static final class d
       extends d.g.b.l
       implements d.g.a.a<y>
     {
-      d(CouponCardListUI.d paramd, MemberCardTopCropImageView paramMemberCardTopCropImageView, qq paramqq)
+      d(CouponCardListUI.d paramd, MemberCardTopCropImageView paramMemberCardTopCropImageView, ra paramra)
       {
         super();
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class f
       implements View.OnClickListener
     {
@@ -913,49 +913,49 @@ public final class CouponCardListUI
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(192756);
-        ad.i(CouponCardListUI.a(this.nHj.nHg), "click header view: " + parame.ln());
-        paramView = ((CouponCardListUI.c)parame.fjf()).bMy();
+        AppMethodBeat.i(206330);
+        ac.i(CouponCardListUI.a(this.okk.okh), "click header view: " + parame.lv());
+        paramView = ((CouponCardListUI.c)parame.fzs()).bTJ();
         if (paramView != null)
         {
-          switch (paramView.CQf)
+          switch (paramView.EiQ)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(192756);
+            AppMethodBeat.o(206330);
             return;
-            CouponCardListUI.a(this.nHj.nHg, true);
-            Object localObject = this.nHj.nHg;
-            String str = paramView.CQp;
+            CouponCardListUI.a(this.okk.okh, true);
+            Object localObject = this.okk.okh;
+            String str = paramView.Eja;
             k.g(str, "card_pack_merchant_id");
             CouponCardListUI.a((CouponCardListUI)localObject, str);
-            CouponCardListUI.a(this.nHj.nHg, paramView.CQC);
-            localObject = this.nHj.nHg.getContext();
+            CouponCardListUI.a(this.okk.okh, paramView.Ejn);
+            localObject = this.okk.okh.getContext();
             if (localObject == null)
             {
               paramView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-              AppMethodBeat.o(192756);
+              AppMethodBeat.o(206330);
               throw paramView;
             }
-            com.tencent.mm.plugin.card.d.b.a((MMActivity)localObject, paramView.CQg);
-            AppMethodBeat.o(192756);
+            com.tencent.mm.plugin.card.d.b.a((MMActivity)localObject, paramView.EiR);
+            AppMethodBeat.o(206330);
             return;
-            CouponCardListUI.a(this.nHj.nHg, true);
-            localObject = this.nHj.nHg;
-            str = paramView.CQp;
+            CouponCardListUI.a(this.okk.okh, true);
+            localObject = this.okk.okh;
+            str = paramView.Eja;
             k.g(str, "card_pack_merchant_id");
             CouponCardListUI.a((CouponCardListUI)localObject, str);
-            CouponCardListUI.a(this.nHj.nHg, paramView.CQC);
-            paramView = paramView.CQh;
-            com.tencent.mm.plugin.card.d.b.G(paramView.zHs, paramView.zHt, paramView.Aoy);
+            CouponCardListUI.a(this.okk.okh, paramView.Ejn);
+            paramView = paramView.EiS;
+            com.tencent.mm.plugin.card.d.b.H(paramView.AZE, paramView.AZF, paramView.BGS);
           }
         }
-        AppMethodBeat.o(192756);
+        AppMethodBeat.o(206330);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class g
       implements View.OnClickListener
     {
@@ -963,25 +963,25 @@ public final class CouponCardListUI
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(192757);
-        ad.d("MicroMsg.CardHomePageNewUI", "do collapse coupon layout");
-        paramView = this.nHj;
+        AppMethodBeat.i(206331);
+        ac.d("MicroMsg.CardHomePageNewUI", "do collapse coupon layout");
+        paramView = this.okk;
         com.tencent.mm.view.recyclerview.e locale = parame;
         CouponCardListUI.c localc = paramc;
         int j = paramInt;
-        qs localqs = localc.bMy();
-        ViewGroup localViewGroup = (ViewGroup)locale.abq(2131298292);
+        rc localrc = localc.bTJ();
+        ViewGroup localViewGroup = (ViewGroup)locale.adJ(2131298292);
         k.g(localViewGroup, "chpiCouponLayout");
-        if (localViewGroup.getChildCount() > localqs.CQB)
+        if (localViewGroup.getChildCount() > localrc.Ejm)
         {
-          String str = CouponCardListUI.a(paramView.nHg);
+          String str = CouponCardListUI.a(paramView.okh);
           int i = localViewGroup.getChildCount();
-          if (localqs == null) {
-            k.fvU();
+          if (localrc == null) {
+            k.fOy();
           }
-          ad.d(str, "collapse count: %s, limit: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(localqs.CQB) });
+          ac.d(str, "collapse count: %s, limit: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(localrc.Ejm) });
           i = localViewGroup.getChildCount() - 1;
-          int k = localqs.CQB;
+          int k = localrc.Ejm;
           if (i >= k) {
             for (;;)
             {
@@ -994,12 +994,12 @@ public final class CouponCardListUI
           }
         }
         paramView.a(false, locale, localc, j);
-        paramc.nEH = false;
-        AppMethodBeat.o(192757);
+        paramc.ohI = false;
+        AppMethodBeat.o(206331);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class h
       implements View.OnClickListener
     {
@@ -1007,26 +1007,26 @@ public final class CouponCardListUI
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(192758);
-        ad.d(CouponCardListUI.a(this.nHj.nHg), "do expand coupon layout");
-        paramView = this.nHj;
+        AppMethodBeat.i(206332);
+        ac.d(CouponCardListUI.a(this.okk.okh), "do expand coupon layout");
+        paramView = this.okk;
         com.tencent.mm.view.recyclerview.e locale = parame;
         CouponCardListUI.c localc = paramc;
         int i = paramInt;
-        qs localqs = localc.bMy();
-        locale.abq(2131298296);
-        locale.abq(2131298294);
-        ViewGroup localViewGroup1 = (ViewGroup)locale.abq(2131298295);
-        ViewGroup localViewGroup2 = (ViewGroup)locale.abq(2131298292);
+        rc localrc = localc.bTJ();
+        locale.adJ(2131298296);
+        locale.adJ(2131298294);
+        ViewGroup localViewGroup1 = (ViewGroup)locale.adJ(2131298295);
+        ViewGroup localViewGroup2 = (ViewGroup)locale.adJ(2131298292);
         k.g(localViewGroup2, "chpiCouponLayout");
         int j = localViewGroup2.getChildCount();
-        if (localqs == null) {
-          k.fvU();
+        if (localrc == null) {
+          k.fOy();
         }
-        if (j < localqs.CQA)
+        if (j < localrc.Ejl)
         {
-          paramView.a(localqs.CQB, -1, locale, localc, i);
-          if (localqs.CQB < localqs.CQA) {
+          paramView.a(localrc.Ejm, -1, locale, localc, i);
+          if (localrc.Ejm < localrc.Ejl) {
             break label175;
           }
           k.g(localViewGroup1, "chpiExpandLayout");
@@ -1034,8 +1034,8 @@ public final class CouponCardListUI
         }
         for (;;)
         {
-          paramc.nEH = true;
-          AppMethodBeat.o(192758);
+          paramc.ohI = true;
+          AppMethodBeat.o(206332);
           return;
           label175:
           paramView.a(true, locale, localc, i);
@@ -1043,26 +1043,26 @@ public final class CouponCardListUI
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class i
       implements View.OnClickListener
     {
-      i(qs paramqs) {}
+      i(rc paramrc) {}
       
       public final void onClick(View paramView)
       {
         boolean bool = true;
-        AppMethodBeat.i(192759);
-        if (this.nFh.CQx != null) {
-          if (this.nFh.CQx == null) {
+        AppMethodBeat.i(206333);
+        if (this.oii.Eji != null) {
+          if (this.oii.Eji == null) {
             break label84;
           }
         }
         for (;;)
         {
-          ad.i("MicroMsg.CardHomePageNewUI", "detail goto mini app %s", new Object[] { Boolean.valueOf(bool) });
-          com.tencent.mm.plugin.card.d.b.G(this.nFh.CQx.zHs, this.nFh.CQx.zHt, this.nFh.CQx.Aoy);
-          AppMethodBeat.o(192759);
+          ac.i("MicroMsg.CardHomePageNewUI", "detail goto mini app %s", new Object[] { Boolean.valueOf(bool) });
+          com.tencent.mm.plugin.card.d.b.H(this.oii.Eji.AZE, this.oii.Eji.AZF, this.oii.Eji.BGS);
+          AppMethodBeat.o(206333);
           return;
           label84:
           bool = false;
@@ -1071,17 +1071,17 @@ public final class CouponCardListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetCardPkgMchInfoResponse;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetCardPkgMchInfoResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class e<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     e(CouponCardListUI paramCouponCardListUI) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetCouponHomePageResponse;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetCouponHomePageResponse;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
     extends d.g.b.l
-    implements d.g.a.b<c.a<ast>, y>
+    implements d.g.a.b<c.a<avx>, y>
   {
     f(CouponCardListUI paramCouponCardListUI, boolean paramBoolean)
     {
@@ -1089,20 +1089,20 @@ public final class CouponCardListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-card_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-card_release"})
   public static final class g
     implements com.tencent.mm.view.recyclerview.c
   {
-    public final com.tencent.mm.view.recyclerview.b<?> zm(int paramInt)
+    public final com.tencent.mm.view.recyclerview.b<?> Ac(int paramInt)
     {
-      AppMethodBeat.i(192771);
-      com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)new CouponCardListUI.d(this.nHg);
-      AppMethodBeat.o(192771);
+      AppMethodBeat.i(206345);
+      com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)new CouponCardListUI.d(this.okh);
+      AppMethodBeat.o(206345);
       return localb;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -1110,65 +1110,65 @@ public final class CouponCardListUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(192772);
-      ad.d(CouponCardListUI.a(this.nHg), "click header view");
-      CouponCardListUI.c(this.nHg);
-      AppMethodBeat.o(192772);
+      AppMethodBeat.i(206346);
+      ac.d(CouponCardListUI.a(this.okh), "click header view");
+      CouponCardListUI.c(this.okh);
+      AppMethodBeat.o(206346);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-card_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-card_release"})
   public static final class i
     extends RefreshLoadMoreLayout.a
   {
-    public final void a(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void Ad(int paramInt)
     {
-      AppMethodBeat.i(192775);
+      AppMethodBeat.i(206350);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.be(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ado());
-      k.h(paramc, "reason");
-      ad.d(CouponCardListUI.a(this.nHg), "on load more end: " + CouponCardListUI.d(this.nHg));
-      if (CouponCardListUI.e(this.nHg)) {
-        CouponCardListUI.f(this.nHg).g(null);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(192775);
+      localb.lS(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aeE());
+      super.Ad(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
+      AppMethodBeat.o(206350);
     }
     
-    public final void agP(int paramInt)
+    public final void a(RefreshLoadMoreLayout.c<Object> paramc)
     {
-      AppMethodBeat.i(205462);
+      AppMethodBeat.i(206349);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.lT(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.ado());
-      super.agP(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(205462);
+      localb.bb(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aeE());
+      k.h(paramc, "reason");
+      ac.d(CouponCardListUI.a(this.okh), "on load more end: " + CouponCardListUI.d(this.okh));
+      if (CouponCardListUI.e(this.okh)) {
+        CouponCardListUI.f(this.okh).i(null);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
+      AppMethodBeat.o(206349);
     }
     
     public final void b(RefreshLoadMoreLayout.c paramc)
     {
-      AppMethodBeat.i(205463);
+      AppMethodBeat.i(206351);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.be(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ado());
+      localb.bb(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aeE());
       super.b(paramc);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(205463);
+      AppMethodBeat.o(206351);
     }
     
-    public final void bMu()
+    public final void bTG()
     {
-      AppMethodBeat.i(192774);
+      AppMethodBeat.i(206348);
       com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      ad.d(CouponCardListUI.a(this.nHg), "on load more");
-      com.tencent.mm.ad.c.g((d.g.a.a)new a(this));
+      ac.d(CouponCardListUI.a(this.okh), "on load more");
+      com.tencent.mm.ac.c.g((d.g.a.a)new a(this));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-      AppMethodBeat.o(192774);
+      AppMethodBeat.o(206348);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<y>
@@ -1180,7 +1180,22 @@ public final class CouponCardListUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class j
+    implements MenuItem.OnMenuItemClickListener
+  {
+    j(CouponCardListUI paramCouponCardListUI) {}
+    
+    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    {
+      AppMethodBeat.i(206352);
+      this.okh.finish();
+      AppMethodBeat.o(206352);
+      return false;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class k
     implements n.c
   {
@@ -1188,22 +1203,22 @@ public final class CouponCardListUI
     
     public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
     {
-      AppMethodBeat.i(192777);
-      Object localObject = CouponCardListUI.h(this.nHg);
+      AppMethodBeat.i(206353);
+      Object localObject = CouponCardListUI.h(this.okh);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      localObject = ((rl)localObject).CRv.iterator();
+      localObject = ((rv)localObject).Ekg.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        rk localrk = (rk)((Iterator)localObject).next();
-        paraml.add(0, localrk.CRs, 1, (CharSequence)localrk.CRu);
+        ru localru = (ru)((Iterator)localObject).next();
+        paraml.add(0, localru.Ekd, 1, (CharSequence)localru.Ekf);
       }
-      AppMethodBeat.o(192777);
+      AppMethodBeat.o(206353);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class l
     implements n.d
   {
@@ -1211,81 +1226,81 @@ public final class CouponCardListUI
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(192779);
+      AppMethodBeat.i(206355);
       k.g(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
-      ad.i(CouponCardListUI.a(this.nHg), "click item: %s", new Object[] { Integer.valueOf(paramInt) });
+      ac.i(CouponCardListUI.a(this.okh), "click item: %s", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt == 1)
       {
-        if (!CouponCardListUI.i(this.nHg))
+        if (!CouponCardListUI.i(this.okh))
         {
-          com.tencent.mm.ui.base.h.a((Context)this.nHg.getContext(), this.nHg.getString(2131756893), this.nHg.getString(2131761885), this.nHg.getString(2131760598), this.nHg.getString(2131757558), false, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a((Context)this.okh.getContext(), this.okh.getString(2131756893), this.okh.getString(2131761885), this.okh.getString(2131760598), this.okh.getString(2131757558), false, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(192778);
-              this.nHo.nHg.startActivityForResult(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"), 564);
-              AppMethodBeat.o(192778);
+              AppMethodBeat.i(206354);
+              this.oko.okh.startActivityForResult(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"), 564);
+              AppMethodBeat.o(206354);
             }
           }, null);
-          AppMethodBeat.o(192779);
+          AppMethodBeat.o(206355);
           return;
         }
-        CouponCardListUI.b(this.nHg, CouponCardListUI.k(this.nHg));
-        CouponCardListUI.c(this.nHg, 1);
-        CouponCardListUI.d(this.nHg, paramMenuItem.getTitle().toString());
-        CouponCardListUI.l(this.nHg);
-        CouponCardListUI.b(this.nHg, true);
-        com.tencent.mm.plugin.report.service.h.vKh.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(5) });
-        AppMethodBeat.o(192779);
+        CouponCardListUI.b(this.okh, CouponCardListUI.k(this.okh));
+        CouponCardListUI.c(this.okh, 1);
+        CouponCardListUI.d(this.okh, paramMenuItem.getTitle().toString());
+        CouponCardListUI.l(this.okh);
+        CouponCardListUI.b(this.okh, true);
+        com.tencent.mm.plugin.report.service.h.wUl.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(5) });
+        AppMethodBeat.o(206355);
         return;
       }
-      CouponCardListUI.b(this.nHg, CouponCardListUI.k(this.nHg));
-      CouponCardListUI.c(this.nHg, paramInt);
-      CouponCardListUI.d(this.nHg, paramMenuItem.getTitle().toString());
-      CouponCardListUI.l(this.nHg);
-      CouponCardListUI.b(this.nHg, true);
-      com.tencent.mm.plugin.report.service.h.vKh.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(6) });
-      AppMethodBeat.o(192779);
+      CouponCardListUI.b(this.okh, CouponCardListUI.k(this.okh));
+      CouponCardListUI.c(this.okh, paramInt);
+      CouponCardListUI.d(this.okh, paramMenuItem.getTitle().toString());
+      CouponCardListUI.l(this.okh);
+      CouponCardListUI.b(this.okh, true);
+      com.tencent.mm.plugin.report.service.h.wUl.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(6) });
+      AppMethodBeat.o(206355);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$updateIconMenu$1$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$updateIconMenu$1$1"})
   static final class m
     implements MenuItem.OnMenuItemClickListener
   {
-    m(rc paramrc, CouponCardListUI paramCouponCardListUI) {}
+    m(rm paramrm, CouponCardListUI paramCouponCardListUI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(192782);
+      AppMethodBeat.i(206358);
       paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)jdField_this.getContext(), 1, false);
       paramMenuItem.a((n.c)new n.c()
       {
         public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
         {
-          AppMethodBeat.i(192780);
-          paramAnonymousl.add(0, 0, 1, (CharSequence)CouponCardListUI.g(this.nHq.nHg));
-          AppMethodBeat.o(192780);
+          AppMethodBeat.i(206356);
+          paramAnonymousl.add(0, 0, 1, (CharSequence)CouponCardListUI.g(this.okq.okh));
+          AppMethodBeat.o(206356);
         }
       });
       paramMenuItem.a((n.d)new n.d()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(192781);
+          AppMethodBeat.i(206357);
           k.g(paramAnonymousMenuItem, "menuItem");
           if (paramAnonymousMenuItem.getItemId() == 0)
           {
-            com.tencent.mm.plugin.card.d.b.G(this.nHq.nHp.zHs, this.nHq.nHp.zHt, this.nHq.nHp.Aoy);
-            com.tencent.mm.plugin.report.service.h.vKh.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
+            com.tencent.mm.plugin.card.d.b.H(this.okq.okp.AZE, this.okq.okp.AZF, this.okq.okp.BGS);
+            com.tencent.mm.plugin.report.service.h.wUl.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
           }
-          AppMethodBeat.o(192781);
+          AppMethodBeat.o(206357);
         }
       });
-      paramMenuItem.csG();
-      com.tencent.mm.plugin.report.service.h.vKh.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
-      AppMethodBeat.o(192782);
+      paramMenuItem.cED();
+      com.tencent.mm.plugin.report.service.h.wUl.f(19747, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+      AppMethodBeat.o(206358);
       return false;
     }
   }

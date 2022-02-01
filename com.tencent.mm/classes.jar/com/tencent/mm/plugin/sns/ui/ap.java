@@ -7,44 +7,30 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
-import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult.a;
 import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.sns.data.j;
-import com.tencent.mm.plugin.sns.f.a.2;
-import com.tencent.mm.plugin.sns.f.a.3;
-import com.tencent.mm.plugin.sns.f.a.4;
-import com.tencent.mm.plugin.sns.k.b.1;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.b;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.plugin.sns.storage.b.a;
+import com.tencent.mm.plugin.sns.storage.b.b;
+import com.tencent.mm.plugin.sns.storage.e;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.x;
-import com.tencent.mm.plugin.sns.storage.y;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.czx;
-import com.tencent.mm.protocal.protobuf.yk;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,118 +38,145 @@ import java.util.List;
 public final class ap
   implements View.OnClickListener
 {
-  private String dpC;
-  private String dvK;
+  private String dnn;
+  private String dtx;
   private View mContentView;
   private Context mContext;
-  private String wBR;
-  private p wvM;
-  private com.tencent.mm.al.g wzQ;
-  private TextView xsA;
-  private TextView xsB;
-  private Button xsC;
-  private View xsD;
-  private b.a xsE;
-  public com.tencent.mm.plugin.sns.a.b.i xsF;
-  private b xsG;
-  private a xsH;
-  private int xsz;
+  private p xHc;
+  private com.tencent.mm.ak.g xMk;
+  private String xOm;
+  private int yFp;
+  private RoundedCornerFrameLayout yFq;
+  private ImageView yFr;
+  private TextView yFs;
+  private TextView yFt;
+  private Button yFu;
+  private View yFv;
+  private b.b yFw;
+  private b yFx;
+  private ap.a yFy;
+  public com.tencent.mm.plugin.sns.ad.d.i ywr;
   
-  public ap(Context paramContext, View paramView, int paramInt, com.tencent.mm.plugin.sns.a.b.i parami, b paramb)
+  public ap(Context paramContext, View paramView, int paramInt, com.tencent.mm.plugin.sns.ad.d.i parami, b paramb)
   {
     AppMethodBeat.i(98296);
-    this.wBR = "";
-    this.dvK = "";
-    this.dpC = "";
-    this.wzQ = new com.tencent.mm.al.g()
+    this.xOm = "";
+    this.dtx = "";
+    this.dnn = "";
+    this.xMk = new ap.1(this);
+    this.yFy = new ap.a()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
-      {
-        AppMethodBeat.i(179159);
-        ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "onSceneEnd errType %d,errCode %d,errMsg %s,scene %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(paramAnonymousn.getType()) });
-        try
-        {
-          Object localObject;
-          g.b localb;
-          if ((paramAnonymousn instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g))
-          {
-            localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)paramAnonymousn;
-            localb = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)localObject).xfy;
-            if (localb != null)
-            {
-              if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-              {
-                bt.nullAsNil(paramAnonymousString);
-                localb.c(null);
-                com.tencent.mm.kernel.g.aeS().b(paramAnonymousn.getType(), ap.a(ap.this));
-                AppMethodBeat.o(179159);
-                return;
-              }
-              localObject = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)localObject).getReqResp();
-              if ((localObject instanceof com.tencent.mm.al.b))
-              {
-                localObject = (com.tencent.mm.al.b)localObject;
-                if ((((com.tencent.mm.al.b)localObject).gUT.gUX instanceof czx)) {
-                  localObject = (czx)((com.tencent.mm.al.b)localObject).gUT.gUX;
-                }
-              }
-            }
-          }
-          StringBuilder localStringBuilder;
-          SubscribeMsgRequestResult.a locala;
-          AppMethodBeat.o(179159);
-        }
-        catch (Throwable paramAnonymousString)
-        {
-          try
-          {
-            localStringBuilder = new StringBuilder("rr = ");
-            locala = SubscribeMsgRequestResult.hGs;
-            ad.i("MicroMsg.SnsAdCardActionBtnCtrl", SubscribeMsgRequestResult.a.a((czx)localObject));
-            bt.nullAsNil(paramAnonymousString);
-            paramAnonymousString = SubscribeMsgRequestResult.hGs;
-            localb.c(SubscribeMsgRequestResult.a.a((czx)localObject));
-            com.tencent.mm.kernel.g.aeS().b(paramAnonymousn.getType(), ap.a(ap.this));
-            AppMethodBeat.o(179159);
-            return;
-          }
-          catch (Exception paramAnonymousString)
-          {
-            ad.e("MicroMsg.SnsAdCardActionBtnCtrl", paramAnonymousString.toString());
-          }
-          paramAnonymousString = paramAnonymousString;
-          ad.e("MicroMsg.SnsAdCardActionBtnCtrl", paramAnonymousString.toString());
-          AppMethodBeat.o(179159);
-          return;
-        }
-      }
-    };
-    this.xsH = new a()
-    {
-      public final void a(b.a paramAnonymousa)
+      public final void a(b.b paramAnonymousb)
       {
         AppMethodBeat.i(179160);
-        if ((ap.b(ap.this) != null) && (paramAnonymousa != null) && (!bt.isNullOrNil(paramAnonymousa.wTW)))
+        if ((ap.b(ap.this) != null) && (paramAnonymousb != null) && (!bs.isNullOrNil(paramAnonymousb.ygK)))
         {
           ap.b(ap.this).setTextColor(-7829368);
-          ap.b(ap.this).setText(paramAnonymousa.wTW);
+          ap.b(ap.this).setText(paramAnonymousb.ygK);
           ap.b(ap.this).setEnabled(false);
         }
         AppMethodBeat.o(179160);
       }
     };
-    ad.d("MicroMsg.SnsAdCardActionBtnCtrl", "init, source=" + paramInt + ", context=" + paramContext + ", static=" + parami);
+    ac.d("MicroMsg.SnsAdCardActionBtnCtrl", "init, source=" + paramInt + ", context=" + paramContext + ", static=" + parami);
     this.mContext = paramContext;
-    this.xsz = paramInt;
-    this.xsF = parami;
-    this.xsG = paramb;
+    this.yFp = paramInt;
+    this.ywr = parami;
+    this.yFx = paramb;
     this.mContentView = paramView;
-    this.xsD = this.mContentView.findViewById(2131302206);
-    this.xsA = ((TextView)paramView.findViewById(2131296391));
-    this.xsB = ((TextView)paramView.findViewById(2131296361));
-    this.xsC = ((Button)paramView.findViewById(2131296354));
-    this.xsC.setOnClickListener(this);
+    this.yFv = this.mContentView.findViewById(2131302206);
+    this.yFq = ((RoundedCornerFrameLayout)paramView.findViewById(2131307266));
+    this.yFr = ((ImageView)paramView.findViewById(2131307265));
+    this.yFs = ((TextView)paramView.findViewById(2131296391));
+    this.yFt = ((TextView)paramView.findViewById(2131296361));
+    this.yFu = ((Button)paramView.findViewById(2131296354));
+    this.yFu.setOnClickListener(this);
+    this.yFq.setRadius(com.tencent.mm.cc.a.fromDPToPix(this.mContext, 4));
     AppMethodBeat.o(98296);
+  }
+  
+  private int a(String paramString1, String paramString2, String paramString3, SnsAdClick paramSnsAdClick)
+  {
+    AppMethodBeat.i(210271);
+    ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "handleDownload, appPageUrl=" + paramString3 + ", pkg=" + paramString2 + ", appId=" + paramString1);
+    Object localObject = a.e.yhL;
+    if (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.bd(ai.getContext(), paramString2))
+    {
+      ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "isPkgInstalled==true");
+      if (this.xHc != null)
+      {
+        paramSnsAdClick = this.xHc.Pg(this.yFp);
+        if (paramSnsAdClick != null) {
+          this.dtx = bs.nullAsNil(paramSnsAdClick.dtx);
+        }
+      }
+      j.a(this.mContext, paramString1, paramString2, "", paramString3, this.dtx, this.xOm, this.dnn, 0);
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        AppMethodBeat.o(210271);
+        return 34;
+      }
+    }
+    else
+    {
+      paramString3 = a.e.yhL;
+      if (!com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.isApkExist(paramString1)) {
+        break label187;
+      }
+      ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "isApkExist==true");
+      AdLandingPagesProxy.getInstance().installApp(this.mContext, paramString1, paramString2, "", "");
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(210271);
+      return 21;
+      label187:
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (this.xHc != null) {}
+      try
+      {
+        paramString1 = this.xHc.Pg(this.yFp);
+        bool1 = j.b(this.mContext, this.xHc, paramString1);
+        if (!bool1)
+        {
+          paramString3 = this.xHc;
+          paramString2 = (Activity)this.mContext;
+          int i = this.yFp;
+          localObject = this.yFv;
+          StringBuilder localStringBuilder = new StringBuilder("jumpNativeLandingPageUIForDownload, snsId=");
+          if (paramString3 == null) {}
+          for (paramString1 = "";; paramString1 = com.tencent.mm.plugin.sns.data.q.wW(paramString3.field_snsId))
+          {
+            ac.i("MicroMsg.SnsAdCardActionBtnCtrl", paramString1);
+            paramString1 = a(paramString3, paramString2, i, (View)localObject);
+            if (paramString1 == null) {
+              break label413;
+            }
+            this.yFx.dOE();
+            paramString1.putExtra("sns_landing_pages_auto_download_for_action_btn", true);
+            paramString1 = new com.tencent.mm.hellhoundlib.b.a().ba(paramString1);
+            com.tencent.mm.hellhoundlib.a.a.a(paramString2, paramString1.aeD(), "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUIForDownload", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramString2.startActivity((Intent)paramString1.lR(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramString2, "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUIForDownload", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramString2.overridePendingTransition(0, 0);
+            break;
+          }
+          label413:
+          a(paramString3, paramSnsAdClick, i, paramString2);
+          continue;
+        }
+        AppMethodBeat.o(210271);
+        return 36;
+      }
+      catch (Throwable paramString1)
+      {
+        for (;;)
+        {
+          bool1 = bool2;
+        }
+      }
+    }
   }
   
   private static Intent a(p paramp, Activity paramActivity, int paramInt, View paramView)
@@ -171,7 +184,7 @@ public final class ap
     int i = 2;
     boolean bool = true;
     AppMethodBeat.i(98301);
-    if (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.apF(paramp.dyh().field_adxml))
+    if (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.auO(paramp.dME().field_adxml))
     {
       Intent localIntent = new Intent();
       int[] arrayOfInt = new int[2];
@@ -183,20 +196,20 @@ public final class ap
       localIntent.putExtra("img_gallery_width", j);
       localIntent.putExtra("img_gallery_height", k);
       localIntent.putExtra("sns_landing_pages_share_sns_id", paramp.getSnsId());
-      localIntent.putExtra("sns_landing_pages_rawSnsId", paramp.dxy().Id);
-      localIntent.putExtra("sns_landing_pages_ux_info", paramp.dyg());
+      localIntent.putExtra("sns_landing_pages_rawSnsId", paramp.dLV().Id);
+      localIntent.putExtra("sns_landing_pages_ux_info", paramp.dMD());
       localIntent.setClass(paramActivity, SnsAdNativeLandingPagesUI.class);
       if (paramInt == 2)
       {
         i = 16;
         localIntent.putExtra("sns_landig_pages_from_source", i);
-        localIntent.putExtra("sns_landing_pages_xml", paramp.dyh().field_adxml);
-        localIntent.putExtra("sns_landing_pages_rec_src", paramp.dyi());
+        localIntent.putExtra("sns_landing_pages_xml", paramp.dME().field_adxml);
+        localIntent.putExtra("sns_landing_pages_rec_src", paramp.dMF());
         localIntent.putExtra("sns_landing_pages_xml_prefix", "adxml");
         localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", true);
-        paramp = paramp.dxy();
-        if ((paramp.Etm.DaB != 15) || (paramp.Ett == 1)) {
-          break label268;
+        paramp = paramp.dLV();
+        if ((paramp.FQo.Ety != 15) || (paramp.FQv == 1)) {
+          break label284;
         }
       }
       for (;;)
@@ -209,11 +222,11 @@ public final class ap
         }
         i = 1;
         break;
-        label268:
+        label284:
         bool = false;
       }
     }
-    ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "adxml is invalid, snsId=" + com.tencent.mm.plugin.sns.data.q.st(paramp.field_snsId));
+    ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "adxml is invalid, snsId=" + com.tencent.mm.plugin.sns.data.q.wW(paramp.field_snsId));
     AppMethodBeat.o(98301);
     return null;
   }
@@ -221,14 +234,14 @@ public final class ap
   private static void a(p paramp, SnsAdClick paramSnsAdClick, int paramInt, Context paramContext)
   {
     AppMethodBeat.i(98299);
-    String str2 = paramp.dyf();
+    String str2 = paramp.dMC();
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = paramp.dye();
+      str1 = paramp.dMB();
     }
     if (TextUtils.isEmpty(str1))
     {
-      ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "jumpUpdateWebUI both url is empty");
+      ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "jumpUpdateWebUI both url is empty");
       AppMethodBeat.o(98299);
       return;
     }
@@ -240,7 +253,7 @@ public final class ap
   {
     boolean bool2 = false;
     AppMethodBeat.i(98300);
-    ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "jumpWebUI, url=" + paramString + ", source=" + paramInt + ", snsInfo=" + paramp);
+    ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "jumpWebUI, url=" + paramString + ", source=" + paramInt + ", snsInfo=" + paramp);
     if ((TextUtils.isEmpty(paramString)) || (paramp == null))
     {
       AppMethodBeat.o(98300);
@@ -248,10 +261,10 @@ public final class ap
     }
     Intent localIntent = new Intent();
     boolean bool1;
-    if (paramp.dxs().wSL == 0)
+    if (paramp.dFR().yfv == 0)
     {
       bool1 = true;
-      if (!ab.hVL) {
+      if (!ab.ivP) {
         break label385;
       }
       bool1 = bool2;
@@ -263,15 +276,15 @@ public final class ap
       if (paramp != null)
       {
         str = paramString;
-        if (paramp.Nb(32))
+        if (paramp.Pe(32))
         {
-          com.tencent.mm.plugin.sns.storage.a locala = paramp.Nd(paramInt);
+          com.tencent.mm.plugin.sns.storage.a locala = paramp.Pg(paramInt);
           str = paramString;
           if (locala != null)
           {
-            localIntent.putExtra("KsnsViewId", locala.dAM);
-            str = com.tencent.mm.plugin.sns.data.q.iy(paramString, locala.dvK);
-            com.tencent.mm.plugin.sns.data.q.g(localIntent, locala.dvK);
+            localIntent.putExtra("KsnsViewId", locala.dyy);
+            str = com.tencent.mm.plugin.sns.data.q.iV(paramString, locala.dtx);
+            com.tencent.mm.plugin.sns.data.q.g(localIntent, locala.dtx);
           }
         }
       }
@@ -280,17 +293,17 @@ public final class ap
       if (paramSnsAdClick != null) {
         paramString.putParcelable("KSnsAdTag", paramSnsAdClick);
       }
-      paramString.putString("key_snsad_statextstr", paramp.dxy().xns);
+      paramString.putString("key_snsad_statextstr", paramp.dLV().yAj);
       localIntent.putExtra("jsapiargs", paramString);
       localIntent.putExtra("rawUrl", str);
       localIntent.putExtra("useJs", true);
       localIntent.putExtra("srcUsername", paramp.field_userName);
       localIntent.putExtra("stastic_scene", 15);
-      localIntent.putExtra("KPublisherId", "sns_" + com.tencent.mm.plugin.sns.data.q.st(paramp.field_snsId));
+      localIntent.putExtra("KPublisherId", "sns_" + com.tencent.mm.plugin.sns.data.q.wW(paramp.field_snsId));
       localIntent.putExtra("pre_username", paramp.field_userName);
-      localIntent.putExtra("prePublishId", "sns_" + com.tencent.mm.plugin.sns.data.q.st(paramp.field_snsId));
+      localIntent.putExtra("prePublishId", "sns_" + com.tencent.mm.plugin.sns.data.q.wW(paramp.field_snsId));
       localIntent.putExtra("preUsername", paramp.field_userName);
-      com.tencent.mm.plugin.sns.d.a.hYt.i(localIntent, paramContext);
+      com.tencent.mm.plugin.sns.c.a.iyx.i(localIntent, paramContext);
       AppMethodBeat.o(98300);
       return;
       bool1 = false;
@@ -298,39 +311,39 @@ public final class ap
     }
   }
   
-  public final void M(p paramp)
+  public final void N(p paramp)
   {
     AppMethodBeat.i(98297);
     if (paramp == null)
     {
-      ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "refreshUI, snsInfo==null");
+      ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "refreshUI, snsInfo==null");
       AppMethodBeat.o(98297);
       return;
     }
-    this.wvM = paramp;
-    this.xsE = paramp.dxs().wTM;
+    this.xHc = paramp;
+    this.yFw = paramp.dFR().ygw;
     try
     {
-      this.wBR = bt.nullAsNil(paramp.dxs().wBR);
-      this.dpC = String.valueOf(j.anz(bt.nullAsNil(paramp.getSnsId())));
-      if (this.xsE != null)
+      this.xOm = bs.nullAsNil(paramp.dFR().xOm);
+      this.dnn = String.valueOf(j.asL(bs.nullAsNil(paramp.getSnsId())));
+      if (this.yFw != null)
       {
         System.currentTimeMillis();
-        if (!TextUtils.isEmpty(paramp.dxs().wTx))
+        if (!TextUtils.isEmpty(paramp.dFR().ygh))
         {
-          Object localObject1 = com.tencent.mm.cg.g.eIa();
-          this.xsA.getContext();
-          localObject1 = ((com.tencent.mm.cg.g)localObject1).b(paramp.dxs().wTx, this.xsA.getTextSize());
-          this.xsA.setText((CharSequence)localObject1);
-          this.xsA.setVisibility(0);
-          this.xsA.setTypeface(Typeface.defaultFromStyle(1));
-          if (!TextUtils.isEmpty(paramp.dxs().wTy))
+          Object localObject1 = com.tencent.mm.cf.g.eXw();
+          this.yFs.getContext();
+          localObject1 = ((com.tencent.mm.cf.g)localObject1).b(paramp.dFR().ygh, this.yFs.getTextSize());
+          this.yFs.setText((CharSequence)localObject1);
+          this.yFs.setVisibility(0);
+          this.yFs.setTypeface(Typeface.defaultFromStyle(1));
+          if (!TextUtils.isEmpty(paramp.dFR().ygi))
           {
-            localObject1 = com.tencent.mm.cg.g.eIa();
-            this.xsB.getContext();
-            localObject1 = ((com.tencent.mm.cg.g)localObject1).b(paramp.dxs().wTy, this.xsB.getTextSize());
-            this.xsB.setText((CharSequence)localObject1);
-            this.xsB.setVisibility(0);
+            localObject1 = com.tencent.mm.cf.g.eXw();
+            this.yFt.getContext();
+            localObject1 = ((com.tencent.mm.cf.g)localObject1).b(paramp.dFR().ygi, this.yFt.getTextSize());
+            this.yFt.setText((CharSequence)localObject1);
+            this.yFt.setVisibility(0);
           }
         }
       }
@@ -341,112 +354,118 @@ public final class ap
       {
         for (;;)
         {
-          this.xsC.setTextColor(this.mContext.getResources().getColor(2131100027));
-          this.xsC.setEnabled(true);
-          if (this.xsE.wTT != 2) {
+          this.yFu.setTextColor(this.mContext.getResources().getColor(2131100027));
+          this.yFu.setEnabled(true);
+          if (this.yFw.ygH != 2) {
             break;
           }
-          if (TextUtils.isEmpty(this.xsC.getText().toString())) {
-            this.xsC.setText(this.xsE.wTS);
+          if (TextUtils.isEmpty(this.yFu.getText().toString())) {
+            this.yFu.setText(this.yFw.ygG);
           }
-          new ap.c(this.xsC, this.xsE.wUd, this.xsE.wUc, this.xsE.wTS).execute(new Void[0]);
+          new ap.c(this.yFu, this.yFw.ygR, this.yFw.ygQ, this.yFw.ygG).execute(new Void[0]);
+          if (TextUtils.isEmpty(this.yFw.iconUrl)) {
+            break label622;
+          }
+          this.yFq.setVisibility(0);
+          com.tencent.mm.plugin.sns.ad.e.a.h(this.yFw.iconUrl, this.yFr);
           AppMethodBeat.o(98297);
           return;
           localThrowable1 = localThrowable1;
-          ad.e("MicroMsg.SnsAdCardActionBtnCtrl", localThrowable1.toString());
+          ac.e("MicroMsg.SnsAdCardActionBtnCtrl", localThrowable1.toString());
           continue;
-          this.xsB.setVisibility(8);
+          this.yFt.setVisibility(8);
         }
-        if (!TextUtils.isEmpty(paramp.dxs().wTy))
+        if (!TextUtils.isEmpty(paramp.dFR().ygi))
         {
-          Object localObject2 = com.tencent.mm.cg.g.eIa();
-          this.xsA.getContext();
-          localObject2 = ((com.tencent.mm.cg.g)localObject2).b(paramp.dxs().wTy, this.xsA.getTextSize());
-          this.xsA.setText((CharSequence)localObject2);
-          this.xsA.setVisibility(0);
-          this.xsA.setTypeface(Typeface.defaultFromStyle(0));
+          Object localObject2 = com.tencent.mm.cf.g.eXw();
+          this.yFs.getContext();
+          localObject2 = ((com.tencent.mm.cf.g)localObject2).b(paramp.dFR().ygi, this.yFs.getTextSize());
+          this.yFs.setText((CharSequence)localObject2);
+          this.yFs.setVisibility(0);
+          this.yFs.setTypeface(Typeface.defaultFromStyle(0));
         }
         for (;;)
         {
-          this.xsB.setVisibility(8);
+          this.yFt.setVisibility(8);
           break;
-          this.xsA.setVisibility(8);
+          this.yFs.setVisibility(8);
         }
       }
       catch (Throwable localThrowable2)
       {
         for (;;)
         {
-          ad.e("MicroMsg.SnsAdCardActionBtnCtrl", localThrowable2.toString());
-        }
-        if (this.xsE.wTT == 6)
-        {
-          try
+          ac.e("MicroMsg.SnsAdCardActionBtnCtrl", localThrowable2.toString());
+          continue;
+          if (this.yFw.ygH == 6)
           {
-            paramp = com.tencent.mm.plugin.sns.data.q.st(paramp.field_snsId);
-            if (bt.isNullOrNil(paramp)) {
-              break label575;
-            }
-            if ("1".equals(x.aqj(paramp)))
+            try
             {
-              this.xsC.setTextColor(-7829368);
-              this.xsC.setText(this.xsE.wTW);
-              this.xsC.setEnabled(false);
-              AppMethodBeat.o(98297);
-              return;
+              paramp = com.tencent.mm.plugin.sns.data.q.wW(paramp.field_snsId);
+              if (bs.isNullOrNil(paramp)) {
+                continue;
+              }
+              if (!"1".equals(x.avs(paramp))) {
+                break label588;
+              }
+              this.yFu.setTextColor(-7829368);
+              this.yFu.setText(this.yFw.ygK);
+              this.yFu.setEnabled(false);
             }
+            catch (Throwable paramp)
+            {
+              ac.e("MicroMsg.SnsAdCardActionBtnCtrl", paramp.toString());
+            }
+            continue;
+            label588:
+            this.yFu.setText(this.yFw.ygG);
           }
-          catch (Throwable paramp)
+          else
           {
-            ad.e("MicroMsg.SnsAdCardActionBtnCtrl", paramp.toString());
-            AppMethodBeat.o(98297);
-            return;
+            this.yFu.setText(this.yFw.ygG);
           }
-          this.xsC.setText(this.xsE.wTS);
-          label575:
-          AppMethodBeat.o(98297);
-          return;
         }
-        this.xsC.setText(this.xsE.wTS);
+        label622:
+        this.yFq.setVisibility(8);
       }
       AppMethodBeat.o(98297);
     }
   }
   
-  public final void onClick(final View paramView)
+  public final void onClick(View paramView)
   {
-    final int i = 1;
-    boolean bool2 = false;
+    int i = 1;
     AppMethodBeat.i(98298);
-    if (this.xsE == null)
+    if (this.yFw == null)
     {
-      ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "onClick mActionBtnInfo==null");
+      ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "onClick mActionBtnInfo==null");
       AppMethodBeat.o(98298);
       return;
     }
     for (;;)
     {
       SnsAdClick localSnsAdClick;
+      Object localObject3;
       try
       {
-        int j = this.xsz;
-        if (this.xsz == 0)
+        int j = this.yFp;
+        if (this.yFp == 0)
         {
-          localSnsAdClick = new SnsAdClick(j, i, this.wvM.field_snsId, 26, 0);
-          j.a(localSnsAdClick, this.xsF, this.wvM, 26);
+          localSnsAdClick = new SnsAdClick(j, i, this.xHc.field_snsId, 26, 0);
+          j.a(localSnsAdClick, this.ywr, this.xHc, 26);
         }
         try
         {
-          ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "onClick, type=" + this.xsE.wTT + ", snsId=" + com.tencent.mm.plugin.sns.data.q.st(this.wvM.field_snsId));
-          switch (this.xsE.wTT)
+          ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "onClick, type=" + this.yFw.ygH + ", snsId=" + com.tencent.mm.plugin.sns.data.q.wW(this.xHc.field_snsId));
+          switch (this.yFw.ygH)
           {
           case 3: 
-            ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "clickAction=" + localSnsAdClick.hsY);
+            ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "clickAction=" + localSnsAdClick.hTA);
           }
         }
         catch (Exception paramView)
         {
-          ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "onClick exp=" + paramView.toString());
+          ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "onClick exp=" + paramView.toString());
           continue;
         }
         com.tencent.mm.plugin.sns.data.q.a(localSnsAdClick);
@@ -454,24 +473,24 @@ public final class ap
         return;
         i = 2;
         continue;
-        localSnsAdClick.hsY = 21;
-        localObject1 = this.wvM;
+        localSnsAdClick.hTA = 21;
+        localObject1 = this.xHc;
         paramView = (Activity)this.mContext;
-        i = this.xsz;
-        localObject2 = this.xsD;
+        i = this.yFp;
+        localObject2 = this.yFv;
         localObject3 = new StringBuilder("jumpNativeLandingPageUI, snsId=");
         if (localObject1 == null)
         {
           l = 0L;
-          ad.i("MicroMsg.SnsAdCardActionBtnCtrl", l);
+          ac.i("MicroMsg.SnsAdCardActionBtnCtrl", l);
           localObject1 = a((p)localObject1, paramView, i, (View)localObject2);
           if (localObject1 == null) {
             break label468;
           }
-          this.xsG.dAh();
-          localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUI", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+          this.yFx.dOE();
+          localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUI", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUI", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           paramView.overridePendingTransition(0, 0);
           continue;
@@ -480,255 +499,90 @@ public final class ap
       }
       catch (Exception paramView)
       {
-        ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "onClick report exp=" + paramView.toString());
+        ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "onClick report exp=" + paramView.toString());
         AppMethodBeat.o(98298);
         return;
       }
       continue;
       label468:
-      a(this.wvM, localSnsAdClick, this.xsz, this.mContext);
+      a(this.xHc, localSnsAdClick, this.yFp, this.mContext);
       continue;
-      localSnsAdClick.hsY = 0;
-      a(this.xsE.wTU, this.wvM, localSnsAdClick, this.xsz, this.mContext);
+      localSnsAdClick.hTA = 0;
+      a(this.yFw.ygI, this.xHc, localSnsAdClick, this.yFp, this.mContext);
       continue;
-      localSnsAdClick.hsY = 31;
-      com.tencent.mm.plugin.sns.ui.d.b.a(this.xsE.oER, this.xsE.gKJ, this.xsE.gKK, this.wvM, this.xsz);
+      localSnsAdClick.hTA = 31;
+      com.tencent.mm.plugin.sns.ui.d.b.a(this.yFw.pis, this.yFw.hlj, this.yFw.hlk, this.xHc, this.yFp);
       continue;
-      localSnsAdClick.hsY = 21;
-      paramView = this.xsE.wUc;
-      Object localObject1 = this.xsE.wUd;
-      Object localObject2 = this.xsE.wSw;
-      ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "handleDownload, appPageUrl=" + (String)localObject2 + ", pkg=" + (String)localObject1 + ", appId=" + paramView);
-      Object localObject3 = a.e.wUX;
-      if (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.bc(aj.getContext(), (String)localObject1))
+      localSnsAdClick.hTA = a(this.yFw.ygQ, this.yFw.ygR, this.yFw.yfc, localSnsAdClick);
+      continue;
+      localSnsAdClick.hTA = 32;
+      a(this.yFw.ygI, this.xHc, localSnsAdClick, this.yFp, this.mContext);
+      continue;
+      localSnsAdClick.hTA = 11;
+      Object localObject2 = this.xHc.dFQ();
+      Object localObject1 = "";
+      paramView = (View)localObject1;
+      if (localObject2 != null)
       {
-        ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "isPkgInstalled==true");
-        if (this.wvM != null)
-        {
-          localObject3 = this.wvM.Nd(this.xsz);
-          if (localObject3 != null) {
-            this.dvK = bt.nullAsNil(((com.tencent.mm.plugin.sns.storage.a)localObject3).dvK);
-          }
+        paramView = (View)localObject1;
+        if (((com.tencent.mm.plugin.sns.storage.a)localObject2).yeQ != null) {
+          paramView = (String)((com.tencent.mm.plugin.sns.storage.a)localObject2).yeQ.get(this.yFw.nVh);
         }
-        j.a(this.mContext, paramView, (String)localObject1, "", (String)localObject2, this.dvK, this.wBR, this.dpC);
       }
-      else
+      if (TextUtils.isEmpty(paramView))
       {
-        localObject2 = a.e.wUX;
-        if (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.isApkExist(paramView))
+        ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "cardExt is not found in adInfo, tpid=" + this.yFw.nVh);
+        paramView = this.yFw.nWf;
+      }
+      for (;;)
+      {
+        String str;
+        for (;;)
         {
-          ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "isApkExist==true");
-          AdLandingPagesProxy.getInstance().installApp(this.mContext, paramView, (String)localObject1, "", "");
-        }
-        else
-        {
-          paramView = this.wvM;
-          boolean bool1 = bool2;
-          if (paramView != null) {}
+          localObject1 = (Activity)this.mContext;
+          localObject2 = this.yFw.nVh;
+          ac.i("MicroMsg.SnsAdCardActionBtnCtrl", "jumpCardDetail, cardTpId=" + (String)localObject2 + ", cardExt=" + paramView);
+          localObject3 = new Intent();
+          ((Intent)localObject3).putExtra("key_card_id", (String)localObject2);
+          ((Intent)localObject3).putExtra("key_card_ext", paramView);
+          ((Intent)localObject3).putExtra("key_from_scene", 21);
+          ((Intent)localObject3).putExtra("key_stastic_scene", 15);
+          d.b((Context)localObject1, "card", ".ui.CardDetailUI", (Intent)localObject3);
+          break;
+          localSnsAdClick.hTA = 33;
           try
           {
-            paramView = this.wvM.Nd(this.xsz);
-            bool1 = j.a(this.mContext, this.wvM, paramView);
-            if (!bool1)
-            {
-              localObject2 = this.wvM;
-              localObject1 = (Activity)this.mContext;
-              i = this.xsz;
-              localObject3 = this.xsD;
-              Object localObject4 = new StringBuilder("jumpNativeLandingPageUIForDownload, snsId=");
-              if (localObject2 == null) {}
-              for (paramView = "";; paramView = com.tencent.mm.plugin.sns.data.q.st(((p)localObject2).field_snsId))
-              {
-                ad.i("MicroMsg.SnsAdCardActionBtnCtrl", paramView);
-                paramView = a((p)localObject2, (Activity)localObject1, i, (View)localObject3);
-                if (paramView == null) {
-                  break label1020;
-                }
-                this.xsG.dAh();
-                paramView.putExtra("sns_landing_pages_auto_download_for_action_btn", true);
-                paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
-                com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramView.adn(), "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUIForDownload", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                ((Activity)localObject1).startActivity((Intent)paramView.lS(0));
-                com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/sns/ui/SnsAdCardActionBtnCtrl", "jumpNativeLandingPageUIForDownload", "(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Landroid/app/Activity;ILandroid/view/View;Lcom/tencent/mm/modelsns/SnsAdClick;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                ((Activity)localObject1).overridePendingTransition(0, 0);
-                break;
-              }
-              label1020:
-              a((p)localObject2, localSnsAdClick, i, (Context)localObject1);
-              continue;
-              localSnsAdClick.hsY = 32;
-              a(this.xsE.wTU, this.wvM, localSnsAdClick, this.xsz, this.mContext);
-              continue;
-              localSnsAdClick.hsY = 11;
-              localObject2 = this.wvM.dxu();
-              localObject1 = "";
-              paramView = (View)localObject1;
-              if (localObject2 != null)
-              {
-                paramView = (View)localObject1;
-                if (((com.tencent.mm.plugin.sns.storage.a)localObject2).wSk != null) {
-                  paramView = (String)((com.tencent.mm.plugin.sns.storage.a)localObject2).wSk.get(this.xsE.nsh);
-                }
-              }
-              if (TextUtils.isEmpty(paramView))
-              {
-                ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "cardExt is not found in adInfo, tpid=" + this.xsE.nsh);
-                paramView = this.xsE.ntf;
-                localObject1 = (Activity)this.mContext;
-                localObject2 = this.xsE.nsh;
-                ad.i("MicroMsg.SnsAdCardActionBtnCtrl", "jumpCardDetail, cardTpId=" + (String)localObject2 + ", cardExt=" + paramView);
-                localObject3 = new Intent();
-                ((Intent)localObject3).putExtra("key_card_id", (String)localObject2);
-                ((Intent)localObject3).putExtra("key_card_ext", paramView);
-                ((Intent)localObject3).putExtra("key_from_scene", 21);
-                ((Intent)localObject3).putExtra("key_stastic_scene", 15);
-                d.b((Context)localObject1, "card", ".ui.CardDetailUI", (Intent)localObject3);
-                continue;
-                localSnsAdClick.hsY = 33;
-                try
-                {
-                  paramView = this.mContext;
-                  localObject1 = this.xsE;
-                  localObject2 = this.wvM;
-                  i = this.xsz;
-                  localObject3 = ((b.a)localObject1).wTV;
-                  localObject4 = ((b.a)localObject1).oER;
-                  if (!bt.T(new String[] { localObject3, localObject4 })) {
-                    break label1374;
-                  }
-                  ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "tempId or userName is null");
-                }
-                catch (Throwable paramView)
-                {
-                  ad.e("MicroMsg.SnsAdCardActionBtnCtrl", paramView.toString());
-                }
-                continue;
-                label1374:
-                ArrayList localArrayList = new ArrayList();
-                localArrayList.add(((b.a)localObject1).wTV);
-                paramView = g.a.a((String)localObject4, localArrayList, new g.b()
-                {
-                  public final void c(final SubscribeMsgRequestResult paramAnonymousSubscribeMsgRequestResult)
-                  {
-                    AppMethodBeat.i(179163);
-                    if (paramAnonymousSubscribeMsgRequestResult == null)
-                    {
-                      aq.f(new Runnable()
-                      {
-                        public final void run()
-                        {
-                          AppMethodBeat.i(179161);
-                          try
-                          {
-                            if (((ap.3.this.val$context instanceof Activity)) && (!((Activity)ap.3.this.val$context).isFinishing())) {
-                              t.ci(ap.3.this.val$context, ap.3.this.wzX.wUa);
-                            }
-                            AppMethodBeat.o(179161);
-                            return;
-                          }
-                          catch (Throwable localThrowable)
-                          {
-                            ad.e("MicroMsg.SnsAdCardActionBtnCtrl", localThrowable.toString());
-                            AppMethodBeat.o(179161);
-                          }
-                        }
-                      });
-                      ad.e("MicroMsg.SnsAdCardActionBtnCtrl", "NetSceneSubscribeInfo result is null");
-                      paramAnonymousSubscribeMsgRequestResult = new y(this.wzS, this.gXD, 0, -2);
-                      com.tencent.mm.plugin.sns.k.b.a(this.xlw, i, paramAnonymousSubscribeMsgRequestResult);
-                      AppMethodBeat.o(179163);
-                      return;
-                    }
-                    aq.f(new Runnable()
-                    {
-                      public final void run()
-                      {
-                        AppMethodBeat.i(179162);
-                        try
-                        {
-                          if (ap.3.this.val$context != null)
-                          {
-                            com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(ap.3.this.val$context, true, 0);
-                            com.tencent.mm.plugin.sns.f.a locala = new com.tencent.mm.plugin.sns.f.a();
-                            Context localContext = ap.3.this.val$context;
-                            SubscribeMsgRequestResult localSubscribeMsgRequestResult = paramAnonymousSubscribeMsgRequestResult;
-                            b.a locala1 = ap.3.this.wzX;
-                            p localp = ap.3.this.xlw;
-                            int i = ap.3.this.hQA;
-                            ap.a locala2 = ap.c(ap.this);
-                            String str1 = locala1.oER;
-                            String str2 = locala1.wTV;
-                            View localView = LayoutInflater.from(localContext).inflate(2131495530, null);
-                            Object localObject1 = (TextView)localView.findViewById(2131306893);
-                            Object localObject2 = (ImageView)localView.findViewById(2131306892);
-                            Object localObject3 = (TextView)localView.findViewById(2131305527);
-                            TextView localTextView = (TextView)localView.findViewById(2131305520);
-                            Button localButton = (Button)localView.findViewById(2131305516);
-                            String str3 = localSubscribeMsgRequestResult.appName;
-                            String str4 = localSubscribeMsgRequestResult.hGe;
-                            ((TextView)localObject1).setText(str3);
-                            if (!TextUtils.equals((String)((ImageView)localObject2).getTag(2131304927), str4))
-                            {
-                              ((ImageView)localObject2).setImageDrawable(null);
-                              if (!TextUtils.isEmpty(str4))
-                              {
-                                ad.d("HalfScreenSubscribeUtils", "loadImage, hash=" + localObject2.hashCode() + ", url=" + str4);
-                                h.a(str4, new b.1((ImageView)localObject2, str4));
-                              }
-                            }
-                            ((TextView)localObject3).setText(locala1.wTX);
-                            localTextView.setText(locala1.wTY);
-                            localButton.setText(locala1.wTZ);
-                            localObject2 = (WeImageView)localView.findViewById(2131298360);
-                            localObject1 = (Button)localView.findViewById(2131305516);
-                            locala.wzP = false;
-                            locale.GHn = new a.2(locala, str2, str1, localp, i);
-                            ((WeImageView)localObject2).setOnClickListener(new a.3(locala, locale));
-                            localObject2 = localSubscribeMsgRequestResult.hGg;
-                            localObject3 = localSubscribeMsgRequestResult.buffer;
-                            ((Button)localObject1).setOnClickListener(new a.4(locala, str1, (List)localObject2, locale, localContext, locala1, str2, localp, i, locala2, localSubscribeMsgRequestResult.hGj, (byte[])localObject3, com.tencent.mm.plugin.sns.k.b.fs((List)localObject2)));
-                            locale.J(localView, true);
-                            locale.ffu();
-                            locale.csG();
-                          }
-                          AppMethodBeat.o(179162);
-                          return;
-                        }
-                        catch (Throwable localThrowable)
-                        {
-                          ad.e("MicroMsg.SnsAdCardActionBtnCtrl", localThrowable.toString());
-                          AppMethodBeat.o(179162);
-                        }
-                      }
-                    });
-                    AppMethodBeat.o(179163);
-                  }
-                }).dxb();
-                com.tencent.mm.kernel.g.aeS().a(paramView, 0);
-                com.tencent.mm.kernel.g.aeS().a(2920, this.wzQ);
-              }
+            paramView = this.mContext;
+            localObject1 = this.yFw;
+            localObject2 = this.xHc;
+            i = this.yFp;
+            localObject3 = ((b.b)localObject1).ygJ;
+            str = ((b.b)localObject1).pis;
+            if (!bs.T(new String[] { localObject3, str })) {
+              break label953;
             }
+            ac.e("MicroMsg.SnsAdCardActionBtnCtrl", "tempId or userName is null");
           }
           catch (Throwable paramView)
           {
-            for (;;)
-            {
-              bool1 = bool2;
-            }
+            ac.e("MicroMsg.SnsAdCardActionBtnCtrl", paramView.toString());
           }
         }
+        break;
+        label953:
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(((b.b)localObject1).ygJ);
+        paramView = g.a.a(str, localArrayList, new ap.3(this, paramView, (b.b)localObject1, (String)localObject3, str, (p)localObject2, i)).dLA();
+        com.tencent.mm.kernel.g.agi().a(paramView, 0);
+        com.tencent.mm.kernel.g.agi().a(2920, this.xMk);
+        break;
       }
     }
   }
   
-  public static abstract interface a
-  {
-    public abstract void a(b.a parama);
-  }
-  
   public static abstract interface b
   {
-    public abstract void dAh();
+    public abstract void dOE();
   }
 }
 

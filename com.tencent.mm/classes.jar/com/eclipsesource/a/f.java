@@ -6,24 +6,24 @@ import java.io.StringReader;
 
 final class f
 {
-  private final Reader aOL;
-  private final char[] aOM;
-  private int aON;
-  private int aOO;
-  private int aOP;
-  private int aOQ;
-  private StringBuilder aOR;
-  private int aOS;
+  private final Reader aPB;
+  private final char[] aPC;
+  private int aPD;
+  private int aPE;
+  private int aPF;
+  private int aPG;
+  private StringBuilder aPH;
+  private int aPI;
   private int index;
   private int line;
   
   private f(Reader paramReader, int paramInt)
   {
     AppMethodBeat.i(74743);
-    this.aOL = paramReader;
-    this.aOM = new char[paramInt];
+    this.aPB = paramReader;
+    this.aPC = new char[paramInt];
     this.line = 1;
-    this.aOS = -1;
+    this.aPI = -1;
     AppMethodBeat.o(74743);
   }
   
@@ -34,16 +34,16 @@ final class f
     AppMethodBeat.o(74742);
   }
   
-  private j ab(String paramString)
+  private j ac(String paramString)
   {
     AppMethodBeat.i(74765);
-    if (qU())
+    if (re())
     {
-      paramString = ac("Unexpected end of input");
+      paramString = ad("Unexpected end of input");
       AppMethodBeat.o(74765);
       return paramString;
     }
-    paramString = ac("Expected ".concat(String.valueOf(paramString)));
+    paramString = ad("Expected ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(74765);
     return paramString;
   }
@@ -53,7 +53,7 @@ final class f
     AppMethodBeat.i(74751);
     if (!c(paramChar))
     {
-      j localj = ab("'" + paramChar + "'");
+      j localj = ac("'" + paramChar + "'");
       AppMethodBeat.o(74751);
       throw localj;
     }
@@ -63,22 +63,49 @@ final class f
   private boolean c(char paramChar)
   {
     AppMethodBeat.i(74758);
-    if (this.aOQ != paramChar)
+    if (this.aPG != paramChar)
     {
       AppMethodBeat.o(74758);
       return false;
     }
-    qN();
+    qX();
     AppMethodBeat.o(74758);
     return true;
   }
   
-  private e qA()
+  private b qJ()
+  {
+    AppMethodBeat.i(74745);
+    qX();
+    Object localObject = new b();
+    qW();
+    if (c(']'))
+    {
+      AppMethodBeat.o(74745);
+      return localObject;
+    }
+    do
+    {
+      qW();
+      ((b)localObject).a(qI());
+      qW();
+    } while (c(','));
+    if (!c(']'))
+    {
+      localObject = ac("',' or ']'");
+      AppMethodBeat.o(74745);
+      throw ((Throwable)localObject);
+    }
+    AppMethodBeat.o(74745);
+    return localObject;
+  }
+  
+  private e qK()
   {
     AppMethodBeat.i(74746);
-    qN();
+    qX();
     Object localObject = new e();
-    qM();
+    qW();
     if (c('}'))
     {
       AppMethodBeat.o(74746);
@@ -86,22 +113,22 @@ final class f
     }
     do
     {
-      qM();
-      String str = qB();
-      qM();
+      qW();
+      String str = qL();
+      qW();
       if (!c(':'))
       {
-        localObject = ab("':'");
+        localObject = ac("':'");
         AppMethodBeat.o(74746);
         throw ((Throwable)localObject);
       }
-      qM();
-      ((e)localObject).a(str, qy());
-      qM();
+      qW();
+      ((e)localObject).a(str, qI());
+      qW();
     } while (c(','));
     if (!c('}'))
     {
-      localObject = ab("',' or '}'");
+      localObject = ac("',' or '}'");
       AppMethodBeat.o(74746);
       throw ((Throwable)localObject);
     }
@@ -109,164 +136,164 @@ final class f
     return localObject;
   }
   
-  private String qB()
+  private String qL()
   {
     AppMethodBeat.i(74747);
-    if (this.aOQ != 34)
+    if (this.aPG != 34)
     {
-      localObject = ab("name");
+      localObject = ac("name");
       AppMethodBeat.o(74747);
       throw ((Throwable)localObject);
     }
-    Object localObject = qG();
+    Object localObject = qQ();
     AppMethodBeat.o(74747);
     return localObject;
   }
   
-  private h qC()
+  private h qM()
   {
     AppMethodBeat.i(74748);
-    qN();
+    qX();
     b('u');
     b('l');
     b('l');
-    h localh = a.aOw;
+    h localh = a.aPm;
     AppMethodBeat.o(74748);
     return localh;
   }
   
-  private h qD()
+  private h qN()
   {
     AppMethodBeat.i(74749);
-    qN();
+    qX();
     b('r');
     b('u');
     b('e');
-    h localh = a.aOx;
+    h localh = a.aPn;
     AppMethodBeat.o(74749);
     return localh;
   }
   
-  private h qE()
+  private h qO()
   {
     AppMethodBeat.i(74750);
-    qN();
+    qX();
     b('a');
     b('l');
     b('s');
     b('e');
-    h localh = a.aOy;
+    h localh = a.aPo;
     AppMethodBeat.o(74750);
     return localh;
   }
   
-  private h qF()
+  private h qP()
   {
     AppMethodBeat.i(74752);
-    g localg = new g(qG());
+    g localg = new g(qQ());
     AppMethodBeat.o(74752);
     return localg;
   }
   
-  private String qG()
+  private String qQ()
   {
     AppMethodBeat.i(74753);
-    qN();
-    qO();
-    while (this.aOQ != 34) {
-      if (this.aOQ == 92)
+    qX();
+    qY();
+    while (this.aPG != 34) {
+      if (this.aPG == 92)
       {
-        qP();
-        qH();
-        qO();
+        qZ();
+        qR();
+        qY();
       }
       else
       {
-        if (this.aOQ < 32)
+        if (this.aPG < 32)
         {
-          localObject = ab("valid string character");
+          localObject = ac("valid string character");
           AppMethodBeat.o(74753);
           throw ((Throwable)localObject);
         }
-        qN();
+        qX();
       }
     }
-    Object localObject = qQ();
-    qN();
+    Object localObject = ra();
+    qX();
     AppMethodBeat.o(74753);
     return localObject;
   }
   
-  private void qH()
+  private void qR()
   {
     AppMethodBeat.i(74754);
-    qN();
+    qX();
     Object localObject;
-    switch (this.aOQ)
+    switch (this.aPG)
     {
     default: 
-      localObject = ab("valid escape sequence");
+      localObject = ac("valid escape sequence");
       AppMethodBeat.o(74754);
       throw ((Throwable)localObject);
     case 34: 
     case 47: 
     case 92: 
-      this.aOR.append((char)this.aOQ);
+      this.aPH.append((char)this.aPG);
     }
     for (;;)
     {
-      qN();
+      qX();
       AppMethodBeat.o(74754);
       return;
-      this.aOR.append('\b');
+      this.aPH.append('\b');
       continue;
-      this.aOR.append('\f');
+      this.aPH.append('\f');
       continue;
-      this.aOR.append('\n');
+      this.aPH.append('\n');
       continue;
-      this.aOR.append('\r');
+      this.aPH.append('\r');
       continue;
-      this.aOR.append('\t');
+      this.aPH.append('\t');
       continue;
       localObject = new char[4];
       int i = 0;
       while (i < 4)
       {
-        qN();
-        if (!qT())
+        qX();
+        if (!rd())
         {
-          localObject = ab("hexadecimal digit");
+          localObject = ac("hexadecimal digit");
           AppMethodBeat.o(74754);
           throw ((Throwable)localObject);
         }
-        localObject[i] = ((char)this.aOQ);
+        localObject[i] = ((char)this.aPG);
         i += 1;
       }
-      this.aOR.append((char)Integer.parseInt(new String((char[])localObject), 16));
+      this.aPH.append((char)Integer.parseInt(new String((char[])localObject), 16));
     }
   }
   
-  private h qI()
+  private h qS()
   {
     AppMethodBeat.i(74755);
-    qO();
+    qY();
     c('-');
-    int i = this.aOQ;
-    if (!qL())
+    int i = this.aPG;
+    if (!qV())
     {
-      localObject = ab("digit");
+      localObject = ac("digit");
       AppMethodBeat.o(74755);
       throw ((Throwable)localObject);
     }
-    while ((i != 48) && (qL())) {}
-    qJ();
-    qK();
-    Object localObject = new d(qQ());
+    while ((i != 48) && (qV())) {}
+    qT();
+    qU();
+    Object localObject = new d(ra());
     AppMethodBeat.o(74755);
     return localObject;
   }
   
-  private boolean qJ()
+  private boolean qT()
   {
     AppMethodBeat.i(74756);
     if (!c('.'))
@@ -274,18 +301,18 @@ final class f
       AppMethodBeat.o(74756);
       return false;
     }
-    if (!qL())
+    if (!qV())
     {
-      j localj = ab("digit");
+      j localj = ac("digit");
       AppMethodBeat.o(74756);
       throw localj;
     }
-    while (qL()) {}
+    while (qV()) {}
     AppMethodBeat.o(74756);
     return true;
   }
   
-  private boolean qK()
+  private boolean qU()
   {
     AppMethodBeat.i(74757);
     if ((!c('e')) && (!c('E')))
@@ -296,134 +323,107 @@ final class f
     if (!c('+')) {
       c('-');
     }
-    if (!qL())
+    if (!qV())
     {
-      j localj = ab("digit");
+      j localj = ac("digit");
       AppMethodBeat.o(74757);
       throw localj;
     }
-    while (qL()) {}
+    while (qV()) {}
     AppMethodBeat.o(74757);
     return true;
   }
   
-  private boolean qL()
+  private boolean qV()
   {
     AppMethodBeat.i(74759);
-    if (!qS())
+    if (!rc())
     {
       AppMethodBeat.o(74759);
       return false;
     }
-    qN();
+    qX();
     AppMethodBeat.o(74759);
     return true;
   }
   
-  private void qO()
+  private void qY()
   {
     AppMethodBeat.i(74762);
-    if (this.aOR == null) {
-      this.aOR = new StringBuilder();
+    if (this.aPH == null) {
+      this.aPH = new StringBuilder();
     }
-    this.aOS = (this.index - 1);
+    this.aPI = (this.index - 1);
     AppMethodBeat.o(74762);
   }
   
-  private void qP()
+  private void qZ()
   {
     AppMethodBeat.i(74763);
-    if (this.aOQ == -1) {}
+    if (this.aPG == -1) {}
     for (int i = this.index;; i = this.index - 1)
     {
-      StringBuilder localStringBuilder = this.aOR;
-      char[] arrayOfChar = this.aOM;
-      int j = this.aOS;
+      StringBuilder localStringBuilder = this.aPH;
+      char[] arrayOfChar = this.aPC;
+      int j = this.aPI;
       localStringBuilder.append(arrayOfChar, j, i - j);
-      this.aOS = -1;
+      this.aPI = -1;
       AppMethodBeat.o(74763);
       return;
     }
   }
   
-  private String qQ()
+  private String ra()
   {
     AppMethodBeat.i(74764);
     int i;
     Object localObject;
-    if (this.aOQ == -1)
+    if (this.aPG == -1)
     {
       i = this.index;
-      if (this.aOR.length() <= 0) {
+      if (this.aPH.length() <= 0) {
         break label93;
       }
-      localObject = this.aOR;
-      char[] arrayOfChar = this.aOM;
-      int j = this.aOS;
+      localObject = this.aPH;
+      char[] arrayOfChar = this.aPC;
+      int j = this.aPI;
       ((StringBuilder)localObject).append(arrayOfChar, j, i - j);
-      localObject = this.aOR.toString();
-      this.aOR.setLength(0);
+      localObject = this.aPH.toString();
+      this.aPH.setLength(0);
     }
     for (;;)
     {
-      this.aOS = -1;
+      this.aPI = -1;
       AppMethodBeat.o(74764);
       return localObject;
       i = this.index - 1;
       break;
       label93:
-      localObject = new String(this.aOM, this.aOS, i - this.aOS);
+      localObject = new String(this.aPC, this.aPI, i - this.aPI);
     }
   }
   
-  private boolean qR()
+  private boolean rb()
   {
-    return (this.aOQ == 32) || (this.aOQ == 9) || (this.aOQ == 10) || (this.aOQ == 13);
+    return (this.aPG == 32) || (this.aPG == 9) || (this.aPG == 10) || (this.aPG == 13);
   }
   
-  private boolean qS()
+  private boolean rc()
   {
-    return (this.aOQ >= 48) && (this.aOQ <= 57);
+    return (this.aPG >= 48) && (this.aPG <= 57);
   }
   
-  private boolean qT()
+  private boolean rd()
   {
-    return ((this.aOQ >= 48) && (this.aOQ <= 57)) || ((this.aOQ >= 97) && (this.aOQ <= 102)) || ((this.aOQ >= 65) && (this.aOQ <= 70));
+    return ((this.aPG >= 48) && (this.aPG <= 57)) || ((this.aPG >= 97) && (this.aPG <= 102)) || ((this.aPG >= 65) && (this.aPG <= 70));
   }
   
-  private b qz()
-  {
-    AppMethodBeat.i(74745);
-    qN();
-    Object localObject = new b();
-    qM();
-    if (c(']'))
-    {
-      AppMethodBeat.o(74745);
-      return localObject;
-    }
-    do
-    {
-      qM();
-      ((b)localObject).a(qy());
-      qM();
-    } while (c(','));
-    if (!c(']'))
-    {
-      localObject = ab("',' or ']'");
-      AppMethodBeat.o(74745);
-      throw ((Throwable)localObject);
-    }
-    AppMethodBeat.o(74745);
-    return localObject;
-  }
-  
-  final j ac(String paramString)
+  final j ad(String paramString)
   {
     AppMethodBeat.i(74766);
-    int j = this.aON + this.index;
-    int k = this.aOP;
-    if (qU()) {}
+    int j = this.aPD + this.index;
+    int k = this.aPF;
+    if (re()) {}
     for (int i = j;; i = j - 1)
     {
       paramString = new j(paramString, i, this.line, j - k - 1);
@@ -432,89 +432,89 @@ final class f
     }
   }
   
-  final void qM()
+  final h qI()
+  {
+    AppMethodBeat.i(74744);
+    switch (this.aPG)
+    {
+    default: 
+      localObject = ac("value");
+      AppMethodBeat.o(74744);
+      throw ((Throwable)localObject);
+    case 110: 
+      localObject = qM();
+      AppMethodBeat.o(74744);
+      return localObject;
+    case 116: 
+      localObject = qN();
+      AppMethodBeat.o(74744);
+      return localObject;
+    case 102: 
+      localObject = qO();
+      AppMethodBeat.o(74744);
+      return localObject;
+    case 34: 
+      localObject = qP();
+      AppMethodBeat.o(74744);
+      return localObject;
+    case 91: 
+      localObject = qJ();
+      AppMethodBeat.o(74744);
+      return localObject;
+    case 123: 
+      localObject = qK();
+      AppMethodBeat.o(74744);
+      return localObject;
+    }
+    Object localObject = qS();
+    AppMethodBeat.o(74744);
+    return localObject;
+  }
+  
+  final void qW()
   {
     AppMethodBeat.i(74760);
-    while (qR()) {
-      qN();
+    while (rb()) {
+      qX();
     }
     AppMethodBeat.o(74760);
   }
   
-  final void qN()
+  final void qX()
   {
     AppMethodBeat.i(74761);
-    if (this.index == this.aOO)
+    if (this.index == this.aPE)
     {
-      if (this.aOS != -1)
+      if (this.aPI != -1)
       {
-        this.aOR.append(this.aOM, this.aOS, this.aOO - this.aOS);
-        this.aOS = 0;
+        this.aPH.append(this.aPC, this.aPI, this.aPE - this.aPI);
+        this.aPI = 0;
       }
-      this.aON += this.aOO;
-      this.aOO = this.aOL.read(this.aOM, 0, this.aOM.length);
+      this.aPD += this.aPE;
+      this.aPE = this.aPB.read(this.aPC, 0, this.aPC.length);
       this.index = 0;
-      if (this.aOO == -1)
+      if (this.aPE == -1)
       {
-        this.aOQ = -1;
+        this.aPG = -1;
         AppMethodBeat.o(74761);
         return;
       }
     }
-    if (this.aOQ == 10)
+    if (this.aPG == 10)
     {
       this.line += 1;
-      this.aOP = (this.aON + this.index);
+      this.aPF = (this.aPD + this.index);
     }
-    char[] arrayOfChar = this.aOM;
+    char[] arrayOfChar = this.aPC;
     int i = this.index;
     this.index = (i + 1);
-    this.aOQ = arrayOfChar[i];
+    this.aPG = arrayOfChar[i];
     AppMethodBeat.o(74761);
   }
   
-  final boolean qU()
+  final boolean re()
   {
-    return this.aOQ == -1;
-  }
-  
-  final h qy()
-  {
-    AppMethodBeat.i(74744);
-    switch (this.aOQ)
-    {
-    default: 
-      localObject = ab("value");
-      AppMethodBeat.o(74744);
-      throw ((Throwable)localObject);
-    case 110: 
-      localObject = qC();
-      AppMethodBeat.o(74744);
-      return localObject;
-    case 116: 
-      localObject = qD();
-      AppMethodBeat.o(74744);
-      return localObject;
-    case 102: 
-      localObject = qE();
-      AppMethodBeat.o(74744);
-      return localObject;
-    case 34: 
-      localObject = qF();
-      AppMethodBeat.o(74744);
-      return localObject;
-    case 91: 
-      localObject = qz();
-      AppMethodBeat.o(74744);
-      return localObject;
-    case 123: 
-      localObject = qA();
-      AppMethodBeat.o(74744);
-      return localObject;
-    }
-    Object localObject = qI();
-    AppMethodBeat.o(74744);
-    return localObject;
+    return this.aPG == -1;
   }
 }
 

@@ -1,322 +1,146 @@
 package com.tencent.mm.plugin.brandservice.b;
 
-import android.content.Context;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.j;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.protocal.protobuf.dpz;
+import com.tencent.mm.protocal.protobuf.ny;
+import com.tencent.mm.protocal.protobuf.nz;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.ai;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aw;
+import d.g.b.u;
+import d.g.b.w;
 import d.l;
-import java.util.Map;
+import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/model/BizPayLogic;", "", "()V", "TAG", "", "isPayReadingOpen", "", "()I", "setPayReadingOpen", "(I)V", "payMMkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getPayMMkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setPayMMkv", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;)V", "appMsgPaySuccess", "", "url", "itemShowType", "getPayIcon", "scene", "isPaid", "", "onPaySuccessNotify", "values", "", "payMmkv", "setPayStatus", "setPayStatusById", "id", "setTitleText", "text", "", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "isPaySubscribe", "item", "Lcom/tencent/mm/message/BizReaderItem;", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/model/BizStrategyManager;", "", "()V", "KEY_BIZ_STRATEGY_FETCH_INTERVAL", "", "KEY_BIZ_STRATEGY_FETCH_LAST_TIME", "TAG", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "requestType", "", "fetchBizStrategy", "", "init", "onEnterBizTimeLineUI", "onUpdateBizStrategy", "resp", "Lcom/tencent/mm/protocal/protobuf/BizStrategyResp;", "preloadForPluginApp", "release", "updateBizStrategyControlInfo", "RequestType", "plugin-brandservice_release"})
 public final class b
 {
-  private static final String TAG = "MicroMsg.BizPayLogic";
-  private static ax mSA;
-  private static int mSB;
-  public static final b mSC;
+  private static final d.f nuQ;
+  public static final b nuR;
+  private static int requestType;
   
   static
   {
-    AppMethodBeat.i(6497);
-    mSC = new b();
-    TAG = "MicroMsg.BizPayLogic";
-    mSB = -1;
-    AppMethodBeat.o(6497);
+    AppMethodBeat.i(175458);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(b.class), "mmkv", "getMmkv()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;")) };
+    nuR = new b();
+    requestType = 10;
+    nuQ = d.g.K((d.g.a.a)b.b.nuT);
+    AppMethodBeat.o(175458);
   }
   
-  public static boolean Pi(String paramString)
+  private static aw bJa()
   {
-    AppMethodBeat.i(6490);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(6490);
-      return false;
-    }
-    ax localax = bCb();
-    h localh = h.mSY;
-    if (localax.decodeInt(h.Pj(paramString), 0) == 1)
-    {
-      AppMethodBeat.o(6490);
-      return true;
-    }
-    AppMethodBeat.o(6490);
-    return false;
+    AppMethodBeat.i(175459);
+    aw localaw = (aw)nuQ.getValue();
+    AppMethodBeat.o(175459);
+    return localaw;
   }
   
-  public static void R(Map<String, String> paramMap)
+  public static final void bJb()
   {
-    AppMethodBeat.i(6495);
-    k.h(paramMap, "values");
-    String str = (String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.AppmsgUrl");
-    int i = bt.getInt((String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.ItemShowType"), -1);
-    ad.i(TAG, "onPaySuccessNotify url=" + str + ", itemShowType=" + i);
-    if ((str != null) && (i >= 0)) {
-      cl(str, i);
+    AppMethodBeat.i(175462);
+    long l = bJa().getLong("biz_time_line_strategy_last_time", 0L);
+    l = Math.abs(System.currentTimeMillis() - l);
+    if (l < bJa().getLong("biz_time_line_fetch_interval", 1800000L)) {
+      ac.i("MicroMsg.BizStrategyManager", "fetchBizStrategy delta < interval, return");
     }
-    AppMethodBeat.o(6495);
-  }
-  
-  public static void a(CharSequence paramCharSequence, MMNeat7extView paramMMNeat7extView, boolean paramBoolean, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(6493);
-    k.h(paramCharSequence, "text");
-    k.h(paramMMNeat7extView, "titleTv");
-    if ((paramBoolean) && (bBS()))
+    while (c.bJd())
     {
-      Object localObject = com.tencent.mm.plugin.bizui.a.a.mLS;
-      localObject = paramMMNeat7extView.getContext();
-      k.g(localObject, "titleTv.context");
-      com.tencent.mm.plugin.bizui.a.a.a((Context)localObject, paramMMNeat7extView, cn(paramString, paramInt), paramCharSequence, paramInt);
-      AppMethodBeat.o(6493);
-      return;
-    }
-    paramMMNeat7extView.aq(paramCharSequence);
-    AppMethodBeat.o(6493);
-  }
-  
-  public static void a(String paramString, MMNeat7extView paramMMNeat7extView, com.tencent.mm.ai.v paramv, int paramInt)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(6492);
-    k.h(paramString, "text");
-    k.h(paramMMNeat7extView, "titleTv");
-    k.h(paramv, "item");
-    if ((paramv.type == 0) && (paramv.gGA == 1)) {}
-    for (;;)
-    {
-      a((CharSequence)paramString, paramMMNeat7extView, bool, paramv.url, paramInt);
-      AppMethodBeat.o(6492);
-      return;
-      bool = false;
-    }
-  }
-  
-  public static void aA(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(6489);
-    k.h(paramString, "url");
-    h localh = h.mSY;
-    paramString = h.Pj(paramString);
-    if (paramBoolean)
-    {
-      bCb().encode(paramString, 1);
-      AppMethodBeat.o(6489);
-      return;
-    }
-    bCb().remove(paramString);
-    AppMethodBeat.o(6489);
-  }
-  
-  public static boolean bBS()
-  {
-    AppMethodBeat.i(6496);
-    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG) || (bu.eGT()))
-    {
-      AppMethodBeat.o(6496);
-      return true;
-    }
-    if (mSB != -1)
-    {
-      if (mSB == 1)
-      {
-        AppMethodBeat.o(6496);
-        return true;
+      Object localObject = c.nva;
+      c.bJh();
+      ((com.tencent.mm.plugin.appbrand.service.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.f.class)).aVd();
+      localObject = c.bJf();
+      if (localObject == null) {
+        break;
       }
-      AppMethodBeat.o(6496);
-      return false;
-    }
-    mSB = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pmE, 0);
-    ad.i(TAG, "isPayReadingOpen open %d", new Object[] { Integer.valueOf(mSB) });
-    if (mSB == 1)
-    {
-      AppMethodBeat.o(6496);
-      return true;
-    }
-    AppMethodBeat.o(6496);
-    return false;
-  }
-  
-  private static ax bCb()
-  {
-    AppMethodBeat.i(6488);
-    Object localObject;
-    if (mSA != null)
-    {
-      localObject = mSA;
-      if (localObject == null)
+      localObject = ((dpz)localObject).FXn;
+      if (localObject == null) {
+        break;
+      }
+      ((q)com.tencent.mm.kernel.g.ab(q.class)).Ix((String)localObject);
+      AppMethodBeat.o(175462);
+      return;
+      ac.i("MicroMsg.BizStrategyManager", "alvinluo fetchBizStrategy %d, requestType: %d", new Object[] { Long.valueOf(l), Integer.valueOf(requestType) });
+      localObject = new com.tencent.mm.ak.b.a();
+      ((com.tencent.mm.ak.b.a)localObject).c((com.tencent.mm.bw.a)new ny());
+      ((com.tencent.mm.ak.b.a)localObject).d((com.tencent.mm.bw.a)new nz());
+      ((com.tencent.mm.ak.b.a)localObject).Am("/cgi-bin/mmbiz-bin/timeline/bizstrategy");
+      ((com.tencent.mm.ak.b.a)localObject).op(1806);
+      localObject = ((com.tencent.mm.ak.b.a)localObject).aAz();
+      d.g.b.k.g(localObject, "rr");
+      com.tencent.mm.bw.a locala = ((com.tencent.mm.ak.b)localObject).aBC();
+      if (locala == null)
       {
-        localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.sdk.platformtools.MultiProcessMMKV");
-        AppMethodBeat.o(6488);
+        localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizStrategyReq");
+        AppMethodBeat.o(175462);
         throw ((Throwable)localObject);
       }
-      AppMethodBeat.o(6488);
-      return localObject;
+      ((ny)locala).ReqType = requestType;
+      x.a((com.tencent.mm.ak.b)localObject, (x.a)a.nuS);
     }
-    if (aj.cbe()) {
-      k.g(g.afz(), "MMKernel.account()");
-    }
-    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.aeL())
-    {
-      localObject = ax.fF("appMsgPay_".concat(String.valueOf(i)), 2);
-      mSA = (ax)localObject;
-      if (localObject != null) {
-        break;
-      }
-      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.sdk.platformtools.MultiProcessMMKV");
-      AppMethodBeat.o(6488);
-      throw ((Throwable)localObject);
-    }
-    AppMethodBeat.o(6488);
-    return localObject;
+    AppMethodBeat.o(175462);
   }
   
-  public static void cl(String paramString, int paramInt)
+  public static final void init()
   {
-    AppMethodBeat.i(6494);
-    k.h(paramString, "url");
-    if (Pi(paramString))
-    {
-      ad.d(TAG, "url pay status: already paid url=" + paramString + ", itemShowType=" + paramInt);
-      AppMethodBeat.o(6494);
-      return;
-    }
-    ad.i(TAG, "appMsgPaySuccess url=" + paramString + ", itemShowType=" + paramInt);
-    j localj = j.ned;
-    j.PC(paramString);
-    aA(paramString, true);
-    j.a(paramString, paramInt, 90, new Object[0]);
-    paramString = new t();
-    paramString.dbF.dbG = true;
-    com.tencent.mm.sdk.b.a.ESL.a((com.tencent.mm.sdk.b.b)paramString, Looper.getMainLooper());
-    AppMethodBeat.o(6494);
+    AppMethodBeat.i(175460);
+    ac.i("MicroMsg.BizStrategyManager", "alvinluo BizStrategyManager init requestType: %d", new Object[] { Integer.valueOf(requestType) });
+    c.init();
+    AppMethodBeat.o(175460);
   }
   
-  private static int cn(String paramString, int paramInt)
+  public static final void release()
   {
-    AppMethodBeat.i(162409);
-    String str = ac.eFu();
-    boolean bool1 = ai.Eq();
-    com.tencent.mm.plugin.bizui.a.a locala = com.tencent.mm.plugin.bizui.a.a.mLS;
-    boolean bool2 = com.tencent.mm.plugin.bizui.a.a.xs(paramInt);
-    if (Pi(paramString))
+    AppMethodBeat.i(175461);
+    c.release();
+    AppMethodBeat.o(175461);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "comReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+  static final class a
+    implements x.a
+  {
+    public static final a nuS;
+    
+    static
     {
-      if (str == null) {}
-      while (bool1)
-      {
-        AppMethodBeat.o(162409);
-        return 2131231215;
-        switch (str.hashCode())
-        {
-        default: 
-          break;
-        case 115861276: 
-          if (str.equals("zh_CN")) {
-            if (bool1)
-            {
-              AppMethodBeat.o(162409);
-              return 2131231214;
-            }
-          }
-          break;
-        case 115861428: 
-          if (!str.equals("zh_HK")) {}
-          break;
-        case 115861812: 
-          for (;;)
-          {
-            if (!bool1) {
-              break label183;
-            }
-            AppMethodBeat.o(162409);
-            return 2131231216;
-            if (!str.equals("zh_TW")) {
-              break;
-            }
-          }
-          if (bool2)
-          {
-            AppMethodBeat.o(162409);
-            return 2131231211;
-          }
-          AppMethodBeat.o(162409);
-          return 2131231217;
-          label183:
-          if (bool2)
-          {
-            AppMethodBeat.o(162409);
-            return 2131231213;
-          }
-          AppMethodBeat.o(162409);
-          return 2131231219;
-        }
-      }
-      if (bool2)
-      {
-        AppMethodBeat.o(162409);
-        return 2131231212;
-      }
-      AppMethodBeat.o(162409);
-      return 2131231218;
+      AppMethodBeat.i(175455);
+      nuS = new a();
+      AppMethodBeat.o(175455);
     }
-    if (str == null) {}
-    while (bool1)
+    
+    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb, n paramn)
     {
-      AppMethodBeat.o(162409);
-      return 2131231221;
-      switch (str.hashCode())
+      AppMethodBeat.i(175454);
+      ac.i("MicroMsg.BizStrategyManager", "doBizStrategy callback %d/%d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-      default: 
-        break;
-      case 115861276: 
-        if (str.equals("zh_CN")) {
-          if (bool1)
-          {
-            AppMethodBeat.o(162409);
-            return 2131231220;
-          }
-        }
-        break;
-      case 115861428: 
-        if (!str.equals("zh_HK")) {}
-        break;
-      case 115861812: 
-        for (;;)
-        {
-          if (!bool1) {
-            break label365;
-          }
-          AppMethodBeat.o(162409);
-          return 2131231222;
-          if (!str.equals("zh_TW")) {
-            break;
-          }
-        }
-        AppMethodBeat.o(162409);
-        return 2131231223;
-        label365:
-        AppMethodBeat.o(162409);
-        return 2131231225;
+        AppMethodBeat.o(175454);
+        return 0;
       }
+      paramString = b.nuR;
+      paramInt1 = b.bJc();
+      d.g.b.k.g(paramb, "comReqResp");
+      paramString = paramb.aBD();
+      if (paramString == null)
+      {
+        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizStrategyResp");
+        AppMethodBeat.o(175454);
+        throw paramString;
+      }
+      b.a(paramInt1, (nz)paramString);
+      AppMethodBeat.o(175454);
+      return 0;
     }
-    AppMethodBeat.o(162409);
-    return 2131231224;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.b
  * JD-Core Version:    0.7.0.1
  */

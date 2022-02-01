@@ -5,7 +5,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.g.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class WalletOrderInfoOldUI$11
   implements View.OnLongClickListener
@@ -19,8 +19,8 @@ final class WalletOrderInfoOldUI$11
     try
     {
       paramView = (String)paramView.getTag();
-      Toast.makeText(this.AoQ, 2131765540, 0).show();
-      this.AoQ.getContext();
+      Toast.makeText(this.BHk, 2131765540, 0).show();
+      this.BHk.getContext();
       a.b(paramView, paramView);
       AppMethodBeat.o(71053);
       return true;
@@ -29,7 +29,7 @@ final class WalletOrderInfoOldUI$11
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
       }
     }
   }

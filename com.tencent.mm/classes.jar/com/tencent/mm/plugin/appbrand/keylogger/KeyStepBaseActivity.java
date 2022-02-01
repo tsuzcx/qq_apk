@@ -13,7 +13,7 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 public abstract class KeyStepBaseActivity
   extends HellActivity
 {
-  private TextView kEu;
+  private TextView lfN;
   
   static
   {
@@ -36,14 +36,14 @@ public abstract class KeyStepBaseActivity
     int i = getLayoutId();
     assert (i != 0);
     localLayoutInflater.inflate(i, paramBundle);
-    this.kEu = ((TextView)findViewById(2131296415));
+    this.lfN = ((TextView)findViewById(2131296415));
     findViewById(2131296417).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(194833);
+        AppMethodBeat.i(200988);
         KeyStepBaseActivity.this.finish();
-        AppMethodBeat.o(194833);
+        AppMethodBeat.o(200988);
       }
     });
   }
@@ -56,7 +56,7 @@ public abstract class KeyStepBaseActivity
   
   protected final void setTitle(String paramString)
   {
-    this.kEu.setText(paramString);
+    this.lfN.setText(paramString);
   }
 }
 

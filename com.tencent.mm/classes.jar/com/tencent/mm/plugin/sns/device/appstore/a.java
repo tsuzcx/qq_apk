@@ -7,7 +7,7 @@ import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,76 +20,32 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private final WeakReference<? extends Context> avO;
-  private final List<c> wBB;
+  private final WeakReference<? extends Context> mContextRef;
+  private final List<c> xNW;
   
   private a(Context paramContext, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187280);
-    this.avO = new WeakReference(paramContext);
-    this.wBB = ay(paramMap);
-    AppMethodBeat.o(187280);
+    AppMethodBeat.i(200061);
+    this.mContextRef = new WeakReference(paramContext);
+    this.xNW = aC(paramMap);
+    AppMethodBeat.o(200061);
   }
   
-  private static boolean Mc(int paramInt)
+  private static boolean Oe(int paramInt)
   {
     return paramInt <= 1;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(187288);
-    b(paramString1, paramString2, paramString3, paramInt, paramString4, az(paramMap));
-    AppMethodBeat.o(187288);
+    AppMethodBeat.i(200069);
+    b(paramString1, paramString2, paramString3, paramInt, paramString4, aD(paramMap));
+    AppMethodBeat.o(200069);
   }
   
-  public static boolean aC(Intent paramIntent)
+  private static List<c> aC(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187285);
-    if (paramIntent != null) {
-      try
-      {
-        boolean bool = paramIntent.getBooleanExtra("brand_state", false);
-        AppMethodBeat.o(187285);
-        return bool;
-      }
-      catch (Throwable paramIntent)
-      {
-        ad.w("MICROMSG.AdAppMarketHelper", "setBrandState has something error");
-      }
-    }
-    AppMethodBeat.o(187285);
-    return false;
-  }
-  
-  public static boolean aD(Intent paramIntent)
-  {
-    AppMethodBeat.i(187286);
-    if (paramIntent != null) {
-      try
-      {
-        if (!TextUtils.isEmpty(paramIntent.getAction()))
-        {
-          paramIntent = paramIntent.getData();
-          if (paramIntent != null)
-          {
-            AppMethodBeat.o(187286);
-            return true;
-          }
-        }
-      }
-      catch (Throwable paramIntent)
-      {
-        ad.w("MICROMSG.AdAppMarketHelper", "isAppMarketIntentValid has something error");
-      }
-    }
-    AppMethodBeat.o(187286);
-    return false;
-  }
-  
-  private static List<c> ay(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(187281);
+    AppMethodBeat.i(200062);
     ArrayList localArrayList = new ArrayList();
     if ((!paramMap.containsKey(".adxml.adCanvasInfo.adMarketJump.marketTag.marketSchema")) && (paramMap.containsKey(".RecXml.adxml.adCanvasInfo.adMarketJump.marketTag.marketSchema"))) {}
     String str2;
@@ -98,7 +54,7 @@ public final class a
     String str3;
     for (String str1 = ".RecXml.adxml.adCanvasInfo.adMarketJump.";; str1 = ".adxml.adCanvasInfo.adMarketJump.")
     {
-      str2 = eq(str1 + "marketTag", 0);
+      str2 = ey(str1 + "marketTag", 0);
       int j = 0;
       for (;;)
       {
@@ -106,14 +62,14 @@ public final class a
           break label457;
         }
         localc = new c();
-        localc.wBI = ((String)paramMap.get(str2 + ".brand"));
-        localc.wBE = ((String)paramMap.get(str2 + ".appPackage"));
-        localc.wBF = ((String)paramMap.get(str2 + ".marketName"));
-        localc.wBH = d(paramMap, str2, "marketPackage");
-        localc.wBG = d(paramMap, str2, "marketSchema");
+        localc.xOd = ((String)paramMap.get(str2 + ".brand"));
+        localc.xNZ = ((String)paramMap.get(str2 + ".appPackage"));
+        localc.xOa = ((String)paramMap.get(str2 + ".marketName"));
+        localc.xOc = d(paramMap, str2, "marketPackage");
+        localc.xOb = d(paramMap, str2, "marketSchema");
         str4 = Build.BRAND;
         str2 = Build.MANUFACTURER;
-        str3 = localc.wBI;
+        str3 = localc.xOd;
         localc.mPriority = 2;
         if ((!TextUtils.isEmpty(str3)) && (str4 != null))
         {
@@ -126,7 +82,7 @@ public final class a
         }
         localArrayList.add(localc);
         j += 1;
-        str2 = eq(str1 + "marketTag", j);
+        str2 = ey(str1 + "marketTag", j);
       }
     }
     String str5;
@@ -157,13 +113,13 @@ public final class a
     }
     label457:
     Collections.sort(localArrayList, new c.a());
-    AppMethodBeat.o(187281);
+    AppMethodBeat.o(200062);
     return localArrayList;
   }
   
-  private static String az(Map<String, Object> paramMap)
+  private static String aD(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(187289);
+    AppMethodBeat.i(200070);
     JSONObject localJSONObject;
     if (paramMap != null) {
       try
@@ -178,57 +134,101 @@ public final class a
             localJSONObject.put(str, paramMap.get(str));
           }
         }
-        AppMethodBeat.o(187289);
+        AppMethodBeat.o(200070);
       }
       catch (Throwable paramMap) {}
     } else {
       return "";
     }
     paramMap = localJSONObject.toString();
-    AppMethodBeat.o(187289);
+    AppMethodBeat.o(200070);
     return paramMap;
+  }
+  
+  public static boolean aE(Intent paramIntent)
+  {
+    AppMethodBeat.i(200066);
+    if (paramIntent != null) {
+      try
+      {
+        boolean bool = paramIntent.getBooleanExtra("brand_state", false);
+        AppMethodBeat.o(200066);
+        return bool;
+      }
+      catch (Throwable paramIntent)
+      {
+        ac.w("MICROMSG.AdAppMarketHelper", "setBrandState has something error");
+      }
+    }
+    AppMethodBeat.o(200066);
+    return false;
+  }
+  
+  public static boolean aF(Intent paramIntent)
+  {
+    AppMethodBeat.i(200067);
+    if (paramIntent != null) {
+      try
+      {
+        if (!TextUtils.isEmpty(paramIntent.getAction()))
+        {
+          paramIntent = paramIntent.getData();
+          if (paramIntent != null)
+          {
+            AppMethodBeat.o(200067);
+            return true;
+          }
+        }
+      }
+      catch (Throwable paramIntent)
+      {
+        ac.w("MICROMSG.AdAppMarketHelper", "isAppMarketIntentValid has something error");
+      }
+    }
+    AppMethodBeat.o(200067);
+    return false;
   }
   
   public static a b(Context paramContext, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187278);
+    AppMethodBeat.i(200059);
     try
     {
       paramContext = new a(paramContext, paramMap);
-      AppMethodBeat.o(187278);
+      AppMethodBeat.o(200059);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      ad.e("MICROMSG.AdAppMarketHelper", "create aAdAppMarketHelper failed!");
-      AppMethodBeat.o(187278);
+      ac.e("MICROMSG.AdAppMarketHelper", "create aAdAppMarketHelper failed!");
+      AppMethodBeat.o(200059);
     }
     return null;
   }
   
   private static void b(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(187287);
+    AppMethodBeat.i(200068);
     try
     {
-      h.vKh.f(19790, new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt), paramString4, paramString5 });
-      ad.i("MICROMSG.AdAppMarketHelper", "report19790 snsId=" + paramString1 + ", uxInfo=" + paramString2 + ", adExtInfo =" + paramString3 + ", actType =" + paramInt + ", actValue = " + paramString4 + ", extInfo = " + paramString5);
-      AppMethodBeat.o(187287);
+      h.wUl.f(19790, new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt), paramString4, paramString5 });
+      ac.i("MICROMSG.AdAppMarketHelper", "report19790 snsId=" + paramString1 + ", uxInfo=" + paramString2 + ", adExtInfo =" + paramString3 + ", actType =" + paramInt + ", actValue = " + paramString4 + ", extInfo = " + paramString5);
+      AppMethodBeat.o(200068);
       return;
     }
     catch (Throwable paramString1)
     {
-      ad.e("MICROMSG.AdAppMarketHelper", "report19790 exp:" + paramString1.toString());
-      AppMethodBeat.o(187287);
+      ac.e("MICROMSG.AdAppMarketHelper", "report19790 exp:" + paramString1.toString());
+      AppMethodBeat.o(200068);
     }
   }
   
   private static List<String> d(Map<String, String> paramMap, String paramString1, String paramString2)
   {
     int i = 0;
-    AppMethodBeat.i(187283);
+    AppMethodBeat.i(200064);
     ArrayList localArrayList = new ArrayList();
-    for (String str = eq(paramString1 + "." + paramString2, 0); (paramMap.containsKey(str)) && (i < 10); str = eq(paramString1 + "." + paramString2, i))
+    for (String str = ey(paramString1 + "." + paramString2, 0); (paramMap.containsKey(str)) && (i < 10); str = ey(paramString1 + "." + paramString2, i))
     {
       str = (String)paramMap.get(str);
       if (!TextUtils.isEmpty(str)) {
@@ -236,43 +236,43 @@ public final class a
       }
       i += 1;
     }
-    AppMethodBeat.o(187283);
+    AppMethodBeat.o(200064);
     return localArrayList;
   }
   
   private static void d(Intent paramIntent, boolean paramBoolean)
   {
-    AppMethodBeat.i(187284);
+    AppMethodBeat.i(200065);
     if (paramIntent != null) {}
     try
     {
       paramIntent.putExtra("brand_state", paramBoolean);
-      AppMethodBeat.o(187284);
+      AppMethodBeat.o(200065);
       return;
     }
     catch (Throwable paramIntent)
     {
-      ad.w("MICROMSG.AdAppMarketHelper", "setBrandState has something error");
-      AppMethodBeat.o(187284);
+      ac.w("MICROMSG.AdAppMarketHelper", "setBrandState has something error");
+      AppMethodBeat.o(200065);
     }
   }
   
-  private static String eq(String paramString, int paramInt)
+  private static String ey(String paramString, int paramInt)
   {
-    AppMethodBeat.i(187282);
+    AppMethodBeat.i(200063);
     if (paramInt == 0)
     {
-      AppMethodBeat.o(187282);
+      AppMethodBeat.o(200063);
       return paramString;
     }
     paramString = paramString + paramInt;
-    AppMethodBeat.o(187282);
+    AppMethodBeat.o(200063);
     return paramString;
   }
   
-  public final Intent dsg()
+  public final Intent dGF()
   {
-    AppMethodBeat.i(187279);
+    AppMethodBeat.i(200060);
     for (;;)
     {
       Object localObject2;
@@ -282,14 +282,14 @@ public final class a
       Iterator localIterator2;
       try
       {
-        localObject2 = (Context)this.avO.get();
+        localObject2 = (Context)this.mContextRef.get();
         if (localObject2 == null)
         {
-          ad.w("MICROMSG.AdAppMarketHelper", "the context is null, activity is finished?");
-          AppMethodBeat.o(187279);
+          ac.w("MICROMSG.AdAppMarketHelper", "the context is null, activity is finished?");
+          AppMethodBeat.o(200060);
           return null;
         }
-        localObject3 = this.wBB;
+        localObject3 = this.xNW;
         if (localObject3 == null) {
           break label328;
         }
@@ -306,10 +306,10 @@ public final class a
         }
         localPackageManager = ((Context)localObject2).getPackageManager();
         ArrayList localArrayList = new ArrayList();
-        localIterator2 = localc.dsi().iterator();
+        localIterator2 = localc.dGH().iterator();
         if (localIterator2.hasNext())
         {
-          Intent localIntent = ((b)localIterator2.next()).dsh();
+          Intent localIntent = ((b)localIterator2.next()).dGG();
           if (localIntent == null) {
             continue;
           }
@@ -320,8 +320,8 @@ public final class a
       }
       catch (Throwable localThrowable1)
       {
-        ad.d("MICROMSG.AdAppMarketHelper", "screen intent failed");
-        AppMethodBeat.o(187279);
+        ac.d("MICROMSG.AdAppMarketHelper", "screen intent failed");
+        AppMethodBeat.o(200060);
         return null;
       }
       Object localObject1;
@@ -334,8 +334,8 @@ public final class a
       }
       while (localObject1 != null)
       {
-        d((Intent)localObject1, Mc(localc.mPriority));
-        AppMethodBeat.o(187279);
+        d((Intent)localObject1, Oe(localc.mPriority));
+        AppMethodBeat.o(200060);
         return localObject1;
         label245:
         if (!((List)localObject3).isEmpty())
@@ -344,27 +344,27 @@ public final class a
           if (localObject1 != null)
           {
             localObject2 = new Intent();
-            localObject3 = ((c)localObject1).wBE;
+            localObject3 = ((c)localObject1).xNZ;
             try
             {
               if (!TextUtils.isEmpty((CharSequence)localObject3)) {
                 ((Intent)localObject2).putExtra("target_app_id", (String)localObject3);
               }
-              d((Intent)localObject2, Mc(((c)localObject1).mPriority));
-              AppMethodBeat.o(187279);
+              d((Intent)localObject2, Oe(((c)localObject1).mPriority));
+              AppMethodBeat.o(200060);
               return localObject2;
             }
             catch (Throwable localThrowable2)
             {
               for (;;)
               {
-                ad.w("MICROMSG.AdAppMarketHelper", "setBrandState has something error");
+                ac.w("MICROMSG.AdAppMarketHelper", "setBrandState has something error");
               }
             }
           }
         }
         label328:
-        AppMethodBeat.o(187279);
+        AppMethodBeat.o(200060);
         return null;
         label336:
         localObject1 = null;
@@ -374,7 +374,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.a
  * JD-Core Version:    0.7.0.1
  */

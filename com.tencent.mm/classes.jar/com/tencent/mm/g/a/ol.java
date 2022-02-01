@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ol
   extends b
 {
-  public a dtC;
+  public a dqV;
   
   public ol()
   {
@@ -15,26 +15,21 @@ public final class ol
   
   private ol(byte paramByte)
   {
-    AppMethodBeat.i(168630);
-    this.dtC = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91037);
+    this.dqV = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(168630);
+    AppMethodBeat.o(91037);
   }
   
   public static final class a
   {
-    public String DkS;
-    public boolean bfS;
-    public String mediaId;
-    public int process;
-    public int size;
-    public int type;
+    public int action = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ol
  * JD-Core Version:    0.7.0.1
  */

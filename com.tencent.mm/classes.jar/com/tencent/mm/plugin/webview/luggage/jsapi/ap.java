@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.kernel.g;
@@ -19,12 +19,12 @@ import com.tencent.mm.plugin.webview.ui.tools.game.h;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.c.g;
-import com.tencent.mm.protocal.protobuf.bij;
-import com.tencent.mm.protocal.protobuf.bip;
-import com.tencent.mm.protocal.protobuf.biq;
-import com.tencent.mm.protocal.protobuf.dji;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bmb;
+import com.tencent.mm.protocal.protobuf.bmh;
+import com.tencent.mm.protocal.protobuf.bmi;
+import com.tencent.mm.protocal.protobuf.dox;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -40,21 +40,21 @@ public class ap
   public final void b(com.tencent.luggage.d.a<f>.a parama)
   {
     AppMethodBeat.i(78596);
-    ad.i("MicroMsg.JsApiPreVerify", "invokeInOwn");
-    h.bB(((f)parama.bZU).bEx(), System.currentTimeMillis());
-    Object localObject1 = parama.bZV.bZb;
+    ac.i("MicroMsg.JsApiPreVerify", "invokeInOwn");
+    h.bD(((f)parama.bWR).bLL(), System.currentTimeMillis());
+    Object localObject1 = parama.bWS.bVY;
     String str1 = ((JSONObject)localObject1).optString("verifyAppId");
     String str2 = ((JSONObject)localObject1).optString("verifySignature");
     String str3 = ((JSONObject)localObject1).optString("verifyNonceStr");
     String str4 = ((JSONObject)localObject1).optString("verifyTimestamp");
     String str5 = ((JSONObject)localObject1).optString("verifySignType");
     Object localObject2 = ((JSONObject)localObject1).optJSONArray("verifyJsApiList");
-    ad.i("MicroMsg.JsApiPreVerify", "appid : %s, %s, %s, %s, %s", new Object[] { str1, str2, str3, str4, str5 });
-    localObject1 = ((f)parama.bZU).getUrl();
+    ac.i("MicroMsg.JsApiPreVerify", "appid : %s, %s, %s, %s, %s", new Object[] { str1, str2, str3, str4, str5 });
+    localObject1 = ((f)parama.bWR).getUrl();
     LinkedList localLinkedList = new LinkedList();
     try
     {
-      ad.i("MicroMsg.JsApiPreVerify", "jsItem length %s", new Object[] { Integer.valueOf(((JSONArray)localObject2).length()) });
+      ac.i("MicroMsg.JsApiPreVerify", "jsItem length %s", new Object[] { Integer.valueOf(((JSONArray)localObject2).length()) });
       if (((JSONArray)localObject2).length() == 0)
       {
         parama.a("checkJsApi:param is empty", null);
@@ -65,51 +65,51 @@ public class ap
       while (i < ((JSONArray)localObject2).length())
       {
         localObject3 = ((JSONArray)localObject2).getString(i);
-        if (!bt.isNullOrNil((String)localObject3)) {
+        if (!bs.isNullOrNil((String)localObject3)) {
           localLinkedList.add(localObject3);
         }
         i += 1;
       }
-      if (bt.isNullOrNil(localException)) {
+      if (bs.isNullOrNil(localException)) {
         break label292;
       }
     }
     catch (Exception localException)
     {
-      ad.w("MicroMsg.JsApiPreVerify", "exception occur " + localException.getMessage());
+      ac.w("MicroMsg.JsApiPreVerify", "exception occur " + localException.getMessage());
       parama.a("", null);
       AppMethodBeat.o(78596);
       return;
     }
-    if ((localLinkedList.size() <= 0) || (bt.isNullOrNil((String)localObject1)))
+    if ((localLinkedList.size() <= 0) || (bs.isNullOrNil((String)localObject1)))
     {
       label292:
-      ad.e("MicroMsg.JsApiPreVerify", "handlePreVerify wrong args, %s", new Object[] { localException });
+      ac.e("MicroMsg.JsApiPreVerify", "handlePreVerify wrong args, %s", new Object[] { localException });
       parama.a("pre_verify_jsapi:fail_invalid_args", null);
       AppMethodBeat.o(78596);
       return;
     }
     localObject2 = new b.a();
-    ((b.a)localObject2).gUU = new bip();
-    ((b.a)localObject2).gUV = new biq();
+    ((b.a)localObject2).hvt = new bmh();
+    ((b.a)localObject2).hvu = new bmi();
     ((b.a)localObject2).uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
     ((b.a)localObject2).funcId = 1093;
     ((b.a)localObject2).reqCmdId = 0;
     ((b.a)localObject2).respCmdId = 0;
-    localObject2 = ((b.a)localObject2).atI();
-    Object localObject3 = (bip)((b)localObject2).gUS.gUX;
-    ((bip)localObject3).url = ((String)localObject1);
-    ((bip)localObject3).dlB = localException;
-    ((bip)localObject3).DGk = localLinkedList;
-    ((bip)localObject3).cMo = str4;
-    ((bip)localObject3).DFR = str3;
-    ((bip)localObject3).signature = str2;
-    ((bip)localObject3).DFS = str5;
+    localObject2 = ((b.a)localObject2).aAz();
+    Object localObject3 = (bmh)((b)localObject2).hvr.hvw;
+    ((bmh)localObject3).url = ((String)localObject1);
+    ((bmh)localObject3).djj = localException;
+    ((bmh)localObject3).FbE = localLinkedList;
+    ((bmh)localObject3).cJz = str4;
+    ((bmh)localObject3).Fbl = str3;
+    ((bmh)localObject3).signature = str2;
+    ((bmh)localObject3).Fbm = str5;
     IPCRunCgi.a((b)localObject2, new a(parama, localException));
     AppMethodBeat.o(78596);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }
@@ -122,106 +122,106 @@ public class ap
   static final class a
     implements IPCRunCgi.a
   {
-    private com.tencent.luggage.d.a<f>.a AVj;
+    private com.tencent.luggage.d.a<f>.a Cnw;
     private String appId;
     
     a(com.tencent.luggage.d.a<f>.a parama, String paramString)
     {
-      this.AVj = parama;
+      this.Cnw = parama;
       this.appId = paramString;
     }
     
-    private void HQ(String paramString)
+    private void LV(String paramString)
     {
       AppMethodBeat.i(78595);
-      if (bt.isNullOrNil(paramString)) {
-        this.AVj.a("", null);
+      if (bs.isNullOrNil(paramString)) {
+        this.Cnw.a("", null);
       }
       for (;;)
       {
-        h.bC(((f)this.AVj.bZU).bEx(), System.currentTimeMillis());
+        h.bE(((f)this.Cnw.bWR).bLL(), System.currentTimeMillis());
         release();
         AppMethodBeat.o(78595);
         return;
-        this.AVj.a(paramString, null);
+        this.Cnw.a(paramString, null);
       }
     }
     
     private void release()
     {
-      this.AVj = null;
+      this.Cnw = null;
       this.appId = null;
     }
     
     public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
     {
       AppMethodBeat.i(78594);
-      if (this.AVj == null)
+      if (this.Cnw == null)
       {
         AppMethodBeat.o(78594);
         return;
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.JsApiPreVerify", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        HQ(paramString);
+        ac.e("MicroMsg.JsApiPreVerify", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        LV(paramString);
         AppMethodBeat.o(78594);
         return;
       }
-      paramb = (biq)paramb.gUT.gUX;
-      if ((paramb == null) || (paramb.DFW == null) || (paramb.DFW.dhR != 0))
+      paramb = (bmi)paramb.hvs.hvw;
+      if ((paramb == null) || (paramb.Fbq == null) || (paramb.Fbq.dfm != 0))
       {
-        HQ(paramString);
+        LV(paramString);
         AppMethodBeat.o(78594);
         return;
       }
-      paramString = ((f)this.AVj.bZU).ATn;
+      paramString = ((f)this.Cnw.bWR).ClA;
       Object localObject1 = this.appId;
-      if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil(paramString.ASM.getUrl()))) {
-        paramString.AUG.put(t.awm(paramString.ASM.getUrl()), localObject1);
+      if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil(paramString.CkZ.getUrl()))) {
+        paramString.CmT.put(t.aBE(paramString.CkZ.getUrl()), localObject1);
       }
-      paramString = ((f)this.AVj.bZU).ATn;
+      paramString = ((f)this.Cnw.bWR).ClA;
       localObject1 = this.appId;
-      Object localObject2 = paramb.DGp;
-      if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil((String)localObject2))) {
-        paramString.AUI.put(localObject1, localObject2);
+      Object localObject2 = paramb.FbJ;
+      if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil((String)localObject2))) {
+        paramString.CmV.put(localObject1, localObject2);
       }
       paramString = new a.d(this.appId, paramb);
-      localObject1 = ((f)this.AVj.bZU).ATn;
-      if (!bt.isNullOrNil(((t)localObject1).ASM.getUrl())) {
-        ((t)localObject1).AUH.put(t.awm(((t)localObject1).ASM.getUrl()), paramString);
+      localObject1 = ((f)this.Cnw.bWR).ClA;
+      if (!bs.isNullOrNil(((t)localObject1).CkZ.getUrl())) {
+        ((t)localObject1).CmU.put(t.aBE(((t)localObject1).CkZ.getUrl()), paramString);
       }
-      localObject1 = paramb.DGn;
-      paramString = ((f)this.AVj.bZU).ekW().axk(((f)this.AVj.bZU).getUrl());
+      localObject1 = paramb.FbH;
+      paramString = ((f)this.Cnw.bWR).eAs().aCC(((f)this.Cnw.bWR).getUrl());
       if (paramString == null)
       {
-        HQ("");
+        LV("");
         AppMethodBeat.o(78594);
         return;
       }
-      if (!bt.gL((List)localObject1))
+      if (!bs.gY((List)localObject1))
       {
         localObject1 = ((LinkedList)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (dji)((Iterator)localObject1).next();
-          c.g localg = com.tencent.mm.protocal.c.aDh(((dji)localObject2).DFP);
-          if ((localg != null) && (paramString.Vw(localg.eBD()) != ((dji)localObject2).state)) {
-            paramString.a(localg.eBD(), (byte)((dji)localObject2).state);
+          localObject2 = (dox)((Iterator)localObject1).next();
+          c.g localg = com.tencent.mm.protocal.c.aIy(((dox)localObject2).Fbj);
+          if ((localg != null) && (paramString.XF(localg.eQY()) != ((dox)localObject2).state)) {
+            paramString.a(localg.eQY(), (byte)((dox)localObject2).state);
           }
         }
       }
-      if (((f)this.AVj.bZU).ekZ() != null)
+      if (((f)this.Cnw.bWR).eAv() != null)
       {
-        ad.i("MicroMsg.JsApiPreVerify", "updateFloatBallIcon:%s", new Object[] { paramb.DGp });
-        ((f)this.AVj.bZU).ekZ().OD(paramb.DGp);
+        ac.i("MicroMsg.JsApiPreVerify", "updateFloatBallIcon:%s", new Object[] { paramb.FbJ });
+        ((f)this.Cnw.bWR).eAv().SN(paramb.FbJ);
       }
-      if (((f)this.AVj.bZU).ela() != null)
+      if (((f)this.Cnw.bWR).eAw() != null)
       {
-        ((f)this.AVj.bZU).ela().setIcon(bt.nullAsNil(paramb.DGp));
-        ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(((f)this.AVj.bZU).ela());
+        ((f)this.Cnw.bWR).eAw().setIcon(bs.nullAsNil(paramb.FbJ));
+        ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(((f)this.Cnw.bWR).eAw());
       }
-      HQ("");
+      LV("");
       AppMethodBeat.o(78594);
     }
   }

@@ -1,462 +1,829 @@
 package com.tencent.mm.ui;
 
-import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jv;
-import com.tencent.mm.g.a.rx;
-import com.tencent.mm.g.a.vz;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.extension.reddot.d.a;
-import com.tencent.mm.plugin.newtips.a.i.a;
-import com.tencent.mm.plugin.websearch.api.aj;
-import com.tencent.mm.plugin.websearch.api.aj.a;
-import com.tencent.mm.pluginsdk.g.f;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.z.a.a;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.cd.g;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.ui.widget.MMCollapsibleTextView;
+import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class z
-  implements n.b
 {
-  com.tencent.mm.sdk.b.c<rx> FJC;
-  com.tencent.mm.sdk.b.c FJD;
-  MMFragmentActivity FKl;
-  LauncherUI.c FPS;
-  c FPT;
-  boolean FPU;
-  Runnable FPV;
-  a FPW;
-  a.a FPX;
-  n.b FPY;
-  com.tencent.mm.sdk.b.c FPZ;
+  public static final int[] HoZ = { 16843087, 16843088, 16843379 };
+  public static final int[] Hpa = { 16843379 };
   
-  public z()
+  public static LayoutInflater b(LayoutInflater paramLayoutInflater)
   {
-    AppMethodBeat.i(33506);
-    this.FPV = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(33490);
-        if (!com.tencent.mm.kernel.g.afz().aeI())
-        {
-          ad.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "Account not Ready!!!");
-          AppMethodBeat.o(33490);
-          return;
-        }
-        if (z.this.FPT == null)
-        {
-          ad.w("MicroMsg.LauncherUI.MainTabUnreadMgr", "set tag job, but tab view is null");
-          AppMethodBeat.o(33490);
-          return;
-        }
-        com.tencent.mm.vending.g.g.fhq().d(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a()
-        {
-          private Void m(Integer paramAnonymous2Integer)
-          {
-            AppMethodBeat.i(33487);
-            z.this.FPT.vj(false);
-            z.this.FPT.Xb(paramAnonymous2Integer.intValue());
-            if ((paramAnonymous2Integer.intValue() <= 0) && ((u.aqS() & 0x200) == 0) && (com.tencent.mm.bq.a.euw()) && (com.tencent.mm.bk.d.aCp().bIR() > 0)) {
-              z.this.FPT.vj(true);
-            }
-            if ((paramAnonymous2Integer.intValue() <= 0) && ((u.aqS() & 0x8000) == 0))
-            {
-              az.arV();
-              if (bt.a((Boolean)com.tencent.mm.model.c.afk().get(68384, null), true))
-              {
-                az.arV();
-                if (!bt.isNullOrNil((String)com.tencent.mm.model.c.afk().get(68377, null)))
-                {
-                  z.this.FPT.vj(true);
-                  paramAnonymous2Integer = HPQ;
-                  AppMethodBeat.o(33487);
-                  return paramAnonymous2Integer;
-                }
-                az.arV();
-                if (((Boolean)com.tencent.mm.model.c.afk().get(589825, Boolean.FALSE)).booleanValue())
-                {
-                  z.this.FPT.vj(true);
-                  paramAnonymous2Integer = HPQ;
-                  AppMethodBeat.o(33487);
-                  return paramAnonymous2Integer;
-                }
-                Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fty, null);
-                if (localObject == null) {}
-                for (long l = 0L; (l != 0L) && (((com.tencent.mm.plugin.sns.c.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.sns.c.n.class)).sh(l)); l = ((Long)localObject).longValue())
-                {
-                  z.this.FPT.vj(true);
-                  paramAnonymous2Integer = HPQ;
-                  AppMethodBeat.o(33487);
-                  return paramAnonymous2Integer;
-                }
-              }
-            }
-            boolean bool1;
-            if (paramAnonymous2Integer.intValue() <= 0)
-            {
-              if ((u.aqL() & 0x400000) != 0L) {
-                i = 1;
-              }
-              while ((i == 0) && (!com.tencent.mm.plugin.subapp.jdbiz.d.dLT().dMb()) && (f.BRH != null))
-              {
-                com.tencent.mm.plugin.subapp.jdbiz.d.dLT();
-                bool1 = com.tencent.mm.plugin.subapp.jdbiz.d.dLV();
-                ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "jdshowFriend ".concat(String.valueOf(bool1)));
-                if (bool1)
-                {
-                  paramAnonymous2Integer = com.tencent.mm.plugin.subapp.jdbiz.d.dLT().dLY();
-                  if ((paramAnonymous2Integer.isStart()) && (!paramAnonymous2Integer.cva()))
-                  {
-                    z.this.FPT.vj(true);
-                    paramAnonymous2Integer = HPQ;
-                    AppMethodBeat.o(33487);
-                    return paramAnonymous2Integer;
-                    i = 0;
-                  }
-                  else
-                  {
-                    ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "jd time is not start or jd time isExpire");
-                  }
-                }
-              }
-              paramAnonymous2Integer = ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr();
-              if (!com.tencent.mm.ax.b.yL((String)com.tencent.mm.kernel.g.afB().afk().get(274436, null))) {
-                break label975;
-              }
-              ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "checkLookVisibility EuropeanUnionCountry");
-              if ((((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.welab.a.a.a.class)).azb("labs_nearbylife")) && (((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.welab.a.a.a.class)).Dx("labs_nearbylife")) && (((Boolean)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fue, Boolean.TRUE)).booleanValue())) {
-                z.this.FPT.vj(true);
-              }
-              if ((u.aqL() & 0x200000) == 0L) {
-                break label1037;
-              }
-              i = 1;
-              label572:
-              if (i == 0)
-              {
-                paramAnonymous2Integer = aj.eid();
-                if ((paramAnonymous2Integer.AHf == null) || (!paramAnonymous2Integer.AHf.isValid()) || (paramAnonymous2Integer.AHf.AHk != 1)) {
-                  break label1042;
-                }
-                i = 1;
-                label610:
-                if (i != 0) {
-                  z.this.FPT.vj(true);
-                }
-              }
-              if ((u.aqL() & 0x2000000) == 0L) {
-                break label1047;
-              }
-              i = 1;
-              label644:
-              if (!com.tencent.mm.plugin.ipcall.d.cGO()) {
-                break label1052;
-              }
-              if ((i == 0) && (!z.this.FPT.getShowFriendPoint()))
-              {
-                az.arV();
-                if (((Integer)com.tencent.mm.model.c.afk().get(ae.a.FiM, Integer.valueOf(0))).intValue() >= com.tencent.mm.m.g.Zd().getInt("WCOEntranceRedDot", 0))
-                {
-                  az.arV();
-                  if (((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FiO, Boolean.FALSE)).booleanValue() != true) {}
-                }
-                else
-                {
-                  z.this.FPT.vj(true);
-                }
-              }
-            }
-            label750:
-            label765:
-            boolean bool2;
-            if ((u.aqL() & 0x0) == 0L)
-            {
-              bool1 = true;
-              paramAnonymous2Integer = com.tencent.mm.plugin.finder.extension.reddot.d.qtG;
-              paramAnonymous2Integer = (d.a)com.tencent.mm.plugin.finder.extension.reddot.d.clp().getValue();
-              if ((paramAnonymous2Integer == null) || (!paramAnonymous2Integer.ddw)) {
-                break label1077;
-              }
-              bool2 = true;
-              label793:
-              ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "[FinderDiscoveryTab] open=%s result=%s isShow=%s", new Object[] { Boolean.valueOf(bool1), paramAnonymous2Integer, Boolean.valueOf(bool2) });
-              if ((bool1) && (paramAnonymous2Integer != null) && (paramAnonymous2Integer.ddw)) {
-                z.this.FPT.vj(true);
-              }
-              az.arV();
-              if ((com.tencent.mm.model.c.afk().getInt(40, 0) & 0x20000) != 0) {
-                break label1089;
-              }
-            }
-            label1037:
-            label1042:
-            label1047:
-            label1052:
-            label1077:
-            label1089:
-            for (int i = 1;; i = 0)
-            {
-              if (bt.getInt(com.tencent.mm.m.g.Zd().getValue("VoiceprintEntry"), 0) == 1) {
-                az.arV();
-              }
-              for (bool1 = ((Boolean)com.tencent.mm.model.c.afk().get(ae.a.FgL, Boolean.TRUE)).booleanValue();; bool1 = false)
-              {
-                if ((bool1) && (i != 0))
-                {
-                  ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "show voiceprint dot");
-                  z.this.FPT.vk(true);
-                }
-                z.this.FPU = false;
-                paramAnonymous2Integer = HPQ;
-                AppMethodBeat.o(33487);
-                return paramAnonymous2Integer;
-                label975:
-                if ((paramAnonymous2Integer == null) || (!paramAnonymous2Integer.dNO()) || (!paramAnonymous2Integer.dNP()) || (!((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().dNz())) {
-                  break;
-                }
-                z.this.FPT.vj(true);
-                break;
-                i = 0;
-                break label572;
-                i = 0;
-                break label610;
-                i = 0;
-                break label644;
-                az.arV();
-                com.tencent.mm.model.c.afk().set(ae.a.FiL, Boolean.FALSE);
-                break label750;
-                bool1 = false;
-                break label765;
-                bool2 = false;
-                break label793;
-              }
-            }
-          }
-        }).b(z.this.FKl);
-        AppMethodBeat.o(33490);
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(33491);
-        String str = super.toString() + "|setTagRunnable";
-        AppMethodBeat.o(33491);
-        return str;
-      }
-    };
-    this.FJD = new com.tencent.mm.sdk.b.c() {};
-    this.FJC = new com.tencent.mm.sdk.b.c() {};
-    this.FPX = new a.a()
-    {
-      public final void B(int paramAnonymousInt, String paramAnonymousString)
-      {
-        AppMethodBeat.i(33502);
-        if ((paramAnonymousInt == 262145) || (paramAnonymousInt == 262156) || (paramAnonymousInt == 262152) || (paramAnonymousInt == 266260) || (paramAnonymousInt == 266267)) {
-          z.b(z.this);
-        }
-        if ((paramAnonymousInt == 262147) || (paramAnonymousInt == 262149) || (paramAnonymousInt == 352279)) {
-          z.b(z.this);
-        }
-        AppMethodBeat.o(33502);
-      }
-      
-      public final void b(ae.a paramAnonymousa)
-      {
-        AppMethodBeat.i(33503);
-        if (paramAnonymousa == ae.a.FrW) {
-          z.b(z.this);
-        }
-        AppMethodBeat.o(33503);
-      }
-    };
-    this.FPY = new n.b()
-    {
-      public final void a(int paramAnonymousInt, com.tencent.mm.sdk.e.n paramAnonymousn, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(33504);
-        int i = bt.i(paramAnonymousObject, 0);
-        ad.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), paramAnonymousn });
-        az.arV();
-        if ((paramAnonymousn != com.tencent.mm.model.c.afk()) || (i <= 0))
-        {
-          ad.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramAnonymousn });
-          AppMethodBeat.o(33504);
-          return;
-        }
-        z.this.eRm();
-        if (i == 143618)
-        {
-          z.a(z.this);
-          AppMethodBeat.o(33504);
-          return;
-        }
-        if ((i == 204817) || (i == 204820)) {
-          z.b(z.this);
-        }
-        AppMethodBeat.o(33504);
-      }
-    };
-    this.FPZ = new com.tencent.mm.sdk.b.c() {};
-    AppMethodBeat.o(33506);
+    AppMethodBeat.i(141465);
+    a.eb(paramLayoutInflater.getContext());
+    paramLayoutInflater = paramLayoutInflater.cloneInContext(paramLayoutInflater.getContext());
+    a locala = new a((byte)0);
+    locala.layoutInflater = paramLayoutInflater;
+    paramLayoutInflater.setFactory(locala);
+    AppMethodBeat.o(141465);
+    return paramLayoutInflater;
   }
   
-  public final void Xu(int paramInt)
+  public static LayoutInflater jD(Context paramContext)
   {
-    AppMethodBeat.i(33511);
-    if (this.FPT != null)
-    {
-      this.FPT.WZ(paramInt);
-      this.FPS.eQo();
-    }
-    AppMethodBeat.o(33511);
-  }
-  
-  public final void Xv(int paramInt)
-  {
-    AppMethodBeat.i(33513);
-    if (this.FPT != null) {
-      this.FPT.setTo(paramInt);
-    }
-    AppMethodBeat.o(33513);
-  }
-  
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(33512);
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      ad.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
-      AppMethodBeat.o(33512);
-      return;
-    }
-    az.arV();
-    if (paramn == com.tencent.mm.model.c.apR())
-    {
-      ad.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "Launcherui onNotifyChange event type %d, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
-      if (af.st((String)paramObject)) {
-        eRm();
-      }
-      AppMethodBeat.o(33512);
-      return;
-    }
-    AppMethodBeat.o(33512);
-  }
-  
-  protected final void eRk()
-  {
-    AppMethodBeat.i(33509);
-    com.tencent.mm.blink.b.SX().v(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(33501);
-        if (z.this.FPU)
-        {
-          ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "remove setTagRunnable");
-          aq.az(z.this.FPV);
-        }
-        AppMethodBeat.o(33501);
-      }
-    });
-    AppMethodBeat.o(33509);
-  }
-  
-  protected final void eRl()
-  {
-    AppMethodBeat.i(33510);
-    if (this.FPU)
-    {
-      ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "start  setAppTagUnreadNow");
-      eRq();
-    }
-    AppMethodBeat.o(33510);
-  }
-  
-  protected final void eRm()
-  {
-    AppMethodBeat.i(33508);
-    com.tencent.mm.blink.b.SX().v(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(33500);
-        z.this.FPU = true;
-        aq.az(z.this.FPV);
-        aq.n(z.this.FPV, 300L);
-        AppMethodBeat.o(33500);
-      }
-    });
-    AppMethodBeat.o(33508);
-  }
-  
-  protected final void eRq()
-  {
-    AppMethodBeat.i(33507);
-    com.tencent.mm.blink.b.SX().v(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(33499);
-        z.this.FPU = true;
-        aq.az(z.this.FPV);
-        aq.f(z.this.FPV);
-        AppMethodBeat.o(33499);
-      }
-    });
-    AppMethodBeat.o(33507);
-  }
-  
-  public final int eRr()
-  {
-    AppMethodBeat.i(33514);
-    int j = 0;
-    int i = j;
-    if (this.FPT != null)
-    {
-      i = j;
-      if (this.FPT.getMainTabUnread() > 0) {
-        i = this.FPT.getMainTabUnread();
-      }
-    }
-    AppMethodBeat.o(33514);
-    return i;
+    AppMethodBeat.i(141466);
+    a.eb(paramContext);
+    paramContext = LayoutInflater.from(paramContext).cloneInContext(paramContext);
+    a locala = new a((byte)0);
+    locala.layoutInflater = paramContext;
+    paramContext.setFactory(locala);
+    AppMethodBeat.o(141466);
+    return paramContext;
   }
   
   static final class a
-    implements i.a
+    implements LayoutInflater.Factory
   {
-    c FPT;
+    LayoutInflater layoutInflater;
     
-    public a(c paramc)
+    private View createView(String paramString1, String paramString2, AttributeSet paramAttributeSet)
     {
-      this.FPT = paramc;
-    }
-    
-    public final void e(com.tencent.mm.plugin.newtips.b.a parama)
-    {
-      AppMethodBeat.i(33505);
-      if ((parama != null) && (parama.field_tipId == com.tencent.mm.plugin.newtips.a.d.udR))
+      AppMethodBeat.i(141464);
+      Object localObject = null;
+      try
       {
-        com.tencent.mm.plugin.newtips.a.cWv();
-        if (com.tencent.mm.plugin.newtips.a.e.Il(com.tencent.mm.plugin.newtips.a.d.udR)) {
-          this.FPT.vk(true);
+        paramString1 = this.layoutInflater.createView(paramString1, paramString2, paramAttributeSet);
+        AppMethodBeat.o(141464);
+        return paramString1;
+      }
+      catch (ClassNotFoundException paramString1)
+      {
+        for (;;)
+        {
+          paramString1 = localObject;
         }
       }
-      AppMethodBeat.o(33505);
+      catch (InflateException paramString1)
+      {
+        for (;;)
+        {
+          paramString1 = localObject;
+        }
+      }
+    }
+    
+    public final View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+    {
+      Object localObject5 = null;
+      Object localObject4 = null;
+      AppMethodBeat.i(141463);
+      Object localObject2 = localObject4;
+      Object localObject3 = localObject5;
+      Object localObject1;
+      label118:
+      float f1;
+      label777:
+      label933:
+      label1110:
+      int j;
+      label1274:
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            if (paramString.indexOf(".") == -1)
+            {
+              localObject2 = localObject4;
+              localObject3 = localObject5;
+              if (!paramString.equals("WebView")) {
+                break label2795;
+              }
+              localObject2 = localObject4;
+              localObject3 = localObject5;
+              localObject1 = createView(paramString, "android.webkit.", paramAttributeSet);
+              localObject2 = localObject1;
+              if (localObject1 == null)
+              {
+                localObject2 = localObject4;
+                localObject3 = localObject5;
+                localObject1 = createView(paramString, "android.widget.", paramAttributeSet);
+                localObject2 = localObject1;
+              }
+              if (localObject2 != null) {
+                break label2788;
+              }
+              localObject2 = localObject4;
+              localObject3 = localObject5;
+              localObject1 = createView(paramString, "android.view.", paramAttributeSet);
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if ((localObject1 instanceof ViewStub))
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (Build.VERSION.SDK_INT >= 21)
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  ((ViewStub)localObject1).setLayoutInflater(this.layoutInflater);
+                }
+              }
+              if (localObject1 == null) {
+                break label2755;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (!paramString.equals("TextView"))
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (!paramString.equals("Button"))
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  if (!paramString.equals("EditText"))
+                  {
+                    localObject2 = localObject1;
+                    localObject3 = localObject1;
+                    if (!paramString.equals("CheckBox"))
+                    {
+                      localObject2 = localObject1;
+                      localObject3 = localObject1;
+                      if (!paramString.equals("ImageView"))
+                      {
+                        localObject2 = localObject1;
+                        localObject3 = localObject1;
+                        if (!paramString.equals("CheckedTextView"))
+                        {
+                          localObject2 = localObject1;
+                          localObject3 = localObject1;
+                          if (!paramString.equals("com.tencent.mm.ui.widget.MMTextView"))
+                          {
+                            localObject2 = localObject1;
+                            localObject3 = localObject1;
+                            if (!paramString.equals("com.tencent.mm.ui.widget.MMEditText"))
+                            {
+                              localObject2 = localObject1;
+                              localObject3 = localObject1;
+                              if (!paramString.equals("com.tencent.mm.ui.widget.MMNeat7extView"))
+                              {
+                                localObject2 = localObject1;
+                                localObject3 = localObject1;
+                                if (!paramString.equals("com.tencent.mm.ui.widget.MMCollapsibleTextView"))
+                                {
+                                  localObject2 = localObject1;
+                                  localObject3 = localObject1;
+                                  if (!paramString.equals("com.tencent.mm.ui.base.MMClearEditText"))
+                                  {
+                                    localObject2 = localObject1;
+                                    localObject3 = localObject1;
+                                    if (!paramString.equals("com.tencent.mm.ui.widget.edittext.PasterEditText"))
+                                    {
+                                      localObject2 = localObject1;
+                                      localObject3 = localObject1;
+                                      if (!paramString.equals("com.tenpay.android.wechat.TenpaySecureEditText"))
+                                      {
+                                        localObject2 = localObject1;
+                                        localObject3 = localObject1;
+                                        if (!paramString.equals("com.tencent.mm.ui.base.MMVisiblePasswordEditText"))
+                                        {
+                                          localObject2 = localObject1;
+                                          localObject3 = localObject1;
+                                          if (!paramString.equals("com.tencent.mm.ui.tools.MMTruncTextView"))
+                                          {
+                                            localObject2 = localObject1;
+                                            localObject3 = localObject1;
+                                            if (!paramString.equals("com.tencent.mm.plugin.brandservice.ui.base.CatalogView"))
+                                            {
+                                              localObject2 = localObject1;
+                                              localObject3 = localObject1;
+                                              if (!paramString.equals("com.tencent.mm.ui.tools.CustomFitTextView"))
+                                              {
+                                                localObject2 = localObject1;
+                                                localObject3 = localObject1;
+                                                if (!paramString.equals("com.tencent.mm.ui.tools.ActionBarSearchView$ActionBarEditText"))
+                                                {
+                                                  localObject2 = localObject1;
+                                                  localObject3 = localObject1;
+                                                  if (!paramString.equals("com.tencent.mm.plugin.favorite.ui.base.FavDetailFooterView"))
+                                                  {
+                                                    localObject2 = localObject1;
+                                                    localObject3 = localObject1;
+                                                    if (!paramString.equals("com.tencent.mm.plugin.game.ui.GameDropdownView"))
+                                                    {
+                                                      localObject2 = localObject1;
+                                                      localObject3 = localObject1;
+                                                      if (!paramString.equals("com.tencent.mm.ui.ScrollAlwaysTextView"))
+                                                      {
+                                                        localObject2 = localObject1;
+                                                        localObject3 = localObject1;
+                                                        if (!paramString.equals("com.tencent.mm.ui.base.MMAutoSizeTextView"))
+                                                        {
+                                                          localObject2 = localObject1;
+                                                          localObject3 = localObject1;
+                                                          if (!paramString.equals("com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView"))
+                                                          {
+                                                            localObject2 = localObject1;
+                                                            localObject3 = localObject1;
+                                                            if (!paramString.equals("com.tencent.mm.plugin.sns.ui.AsyncTextView"))
+                                                            {
+                                                              localObject2 = localObject1;
+                                                              localObject3 = localObject1;
+                                                              if (!paramString.equals("com.tencent.mm.plugin.sns.ui.SnsTextView"))
+                                                              {
+                                                                localObject2 = localObject1;
+                                                                localObject3 = localObject1;
+                                                                if (!paramString.equals("com.tencent.mm.plugin.sns.ui.MaskTextView"))
+                                                                {
+                                                                  localObject2 = localObject1;
+                                                                  localObject3 = localObject1;
+                                                                  if (!paramString.equals("com.tencent.mm.plugin.sns.ui.SnsEditText"))
+                                                                  {
+                                                                    localObject2 = localObject1;
+                                                                    localObject3 = localObject1;
+                                                                    if (!paramString.equals("com.tencent.mm.kiss.widget.textview.PLSysTextView"))
+                                                                    {
+                                                                      localObject2 = localObject1;
+                                                                      localObject3 = localObject1;
+                                                                      if (!paramString.equals("com.tencent.mm.ui.base.EllipsizeTextView"))
+                                                                      {
+                                                                        localObject2 = localObject1;
+                                                                        localObject4 = localObject1;
+                                                                        localObject3 = localObject1;
+                                                                        if (!paramString.equals("com.tencent.mm.wallet_core.ui.WalletTextView")) {
+                                                                          continue;
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              float f2 = a.eb(paramContext);
+              f1 = f2;
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramContext.getSharedPreferences(ai.eUX(), 0).getBoolean("screenResolution_isModifyDensity", true))
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (aj.ah(f2, 1.1F)) {
+                  break label2801;
+                }
+                f1 = f2;
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (aj.ah(f2, 0.8F)) {
+                  break label2801;
+                }
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (!aj.ah(f1, a.hV(paramContext)))
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (!aj.ah(f1, a.hW(paramContext))) {
+                  break label2785;
+                }
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramString.equals("com.tencent.mm.ui.widget.MMTextView")) {
+                break label2785;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramString.equals("com.tencent.mm.plugin.sns.ui.AsyncTextView")) {
+                break label2785;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramString.equals("com.tencent.mm.plugin.sns.ui.SnsTextView")) {
+                break label2785;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramString.equals("com.tencent.mm.plugin.sns.ui.MaskTextView")) {
+                break label2785;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramString.equals("com.tencent.mm.ui.widget.MMNeat7extView")) {
+                break label2785;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (paramString.equals("com.tencent.mm.ui.widget.MMCollapsibleTextView")) {
+                break label2785;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              f1 = a.hU(paramContext);
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (!paramString.equals("TextView"))
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (!paramString.equals("com.tencent.mm.ui.widget.MMTextView"))
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  if (!paramString.equals("com.tencent.mm.wallet_core.ui.WalletTextView"))
+                  {
+                    localObject2 = localObject1;
+                    localObject3 = localObject1;
+                    if (!paramString.equals("com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView")) {
+                      continue;
+                    }
+                  }
+                }
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              localObject5 = (TextView)localObject1;
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              ((TextView)localObject5).setTextSize(1, f1 * ((TextView)localObject5).getTextSize() / a.getDensity(((TextView)localObject5).getContext()));
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              paramContext.getAssets();
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              g.eSH();
+              localObject2 = localObject1;
+              localObject4 = localObject1;
+              localObject3 = localObject1;
+              if (!g.eSI()) {
+                continue;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+              i = 0;
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (i >= z.HoZ.length) {
+                continue;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              j = paramAttributeSet.getResourceId(i, 0);
+              if (j == 0) {
+                break label2807;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (z.HoZ[i] == 16843379)
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                ((TextView)localObject5).setContentDescription(paramContext.getString(j));
+                break label2807;
+              }
+            }
+            else
+            {
+              localObject2 = localObject4;
+              localObject3 = localObject5;
+              localObject1 = this.layoutInflater.createView(paramString, null, paramAttributeSet);
+              continue;
+            }
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            if (z.HoZ[i] == 16843088)
+            {
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              ((TextView)localObject5).setHint(paramContext.getString(j));
+            }
+          }
+          catch (ClassNotFoundException paramContext)
+          {
+            ac.w("MicroMsg.MMLayoutInflater", "[cpan] class not found. name:%s. Use default Inflate.", new Object[] { paramString });
+            localObject4 = localObject2;
+            AppMethodBeat.o(141463);
+            return localObject4;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            ((TextView)localObject5).setText(paramContext.getString(j));
+          }
+          catch (InflateException paramContext)
+          {
+            ac.w("MicroMsg.MMLayoutInflater", "[cpan] Inflate failed. name:%s. Use default Inflate.", new Object[] { paramString });
+            localObject4 = localObject3;
+            continue;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramAttributeSet.recycle();
+            localObject4 = localObject1;
+            continue;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            if (!paramString.equals("Button")) {
+              break label1634;
+            }
+          }
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          localObject5 = (Button)localObject1;
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          ((Button)localObject5).setTextSize(1, f1 * ((Button)localObject5).getTextSize() / a.getDensity(((Button)localObject5).getContext()));
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          paramContext.getAssets();
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          g.eSH();
+          localObject2 = localObject1;
+          localObject4 = localObject1;
+          localObject3 = localObject1;
+          if (g.eSI())
+          {
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+            i = 0;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            if (i < z.HoZ.length)
+            {
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              j = paramAttributeSet.getResourceId(i, 0);
+              if (j == 0) {
+                break label2816;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (z.HoZ[i] == 16843379)
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                ((Button)localObject5).setContentDescription(paramContext.getString(j));
+                break label2816;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (z.HoZ[i] == 16843088)
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                ((Button)localObject5).setHint(paramContext.getString(j));
+                break label2816;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              ((Button)localObject5).setText(paramContext.getString(j));
+              break label2816;
+            }
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramAttributeSet.recycle();
+            localObject4 = localObject1;
+            continue;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            if (!paramString.equals("EditText"))
+            {
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (!paramString.equals("com.tencent.mm.ui.widget.MMEditText"))
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (!paramString.equals("com.tencent.mm.ui.base.MMClearEditText"))
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  if (!paramString.equals("com.tencent.mm.ui.widget.edittext.PasterEditText"))
+                  {
+                    localObject2 = localObject1;
+                    localObject3 = localObject1;
+                    if (!paramString.equals("com.tencent.mm.ui.tools.ActionBarSearchView$ActionBarEditText"))
+                    {
+                      localObject2 = localObject1;
+                      localObject3 = localObject1;
+                      if (!paramString.equals("com.tenpay.android.wechat.TenpaySecureEditText"))
+                      {
+                        localObject2 = localObject1;
+                        localObject3 = localObject1;
+                        if (!paramString.equals("com.tencent.mm.ui.base.MMVisiblePasswordEditText"))
+                        {
+                          localObject2 = localObject1;
+                          localObject3 = localObject1;
+                          if (!paramString.equals("com.tencent.mm.plugin.sns.ui.SnsEditText")) {
+                            break label2041;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            localObject5 = (EditText)localObject1;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            ((EditText)localObject5).setTextSize(1, f1 * ((EditText)localObject5).getTextSize() / a.getDensity(((EditText)localObject5).getContext()));
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext.getAssets();
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            g.eSH();
+            localObject2 = localObject1;
+            localObject4 = localObject1;
+            localObject3 = localObject1;
+            if (g.eSI())
+            {
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+              i = 0;
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (i < z.HoZ.length)
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                j = paramAttributeSet.getResourceId(i, 0);
+                if (j == 0) {
+                  break label2825;
+                }
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (z.HoZ[i] == 16843379)
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  ((EditText)localObject5).setContentDescription(paramContext.getString(j));
+                  break label2825;
+                }
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (z.HoZ[i] == 16843088)
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  ((EditText)localObject5).setHint(paramContext.getString(j));
+                  break label2825;
+                }
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                ((EditText)localObject5).setText(paramContext.getString(j));
+                break label2825;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              paramAttributeSet.recycle();
+              localObject4 = localObject1;
+              continue;
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              if (!paramString.equals("CheckBox")) {
+                break;
+              }
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              localObject5 = (CheckBox)localObject1;
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              ((CheckBox)localObject5).setTextSize(1, f1 * ((CheckBox)localObject5).getTextSize() / a.getDensity(((CheckBox)localObject5).getContext()));
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              paramContext.getAssets();
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              g.eSH();
+              localObject2 = localObject1;
+              localObject4 = localObject1;
+              localObject3 = localObject1;
+              if (g.eSI())
+              {
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.HoZ);
+                i = 0;
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                if (i < z.HoZ.length)
+                {
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  j = paramAttributeSet.getResourceId(i, 0);
+                  if (j == 0) {
+                    break label2834;
+                  }
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  if (z.HoZ[i] == 16843379)
+                  {
+                    localObject2 = localObject1;
+                    localObject3 = localObject1;
+                    ((CheckBox)localObject5).setContentDescription(paramContext.getString(j));
+                    break label2834;
+                  }
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  if (z.HoZ[i] == 16843088)
+                  {
+                    localObject2 = localObject1;
+                    localObject3 = localObject1;
+                    ((CheckBox)localObject5).setHint(paramContext.getString(j));
+                    break label2834;
+                  }
+                  localObject2 = localObject1;
+                  localObject3 = localObject1;
+                  ((CheckBox)localObject5).setText(paramContext.getString(j));
+                  break label2834;
+                }
+                localObject2 = localObject1;
+                localObject3 = localObject1;
+                paramAttributeSet.recycle();
+                localObject4 = localObject1;
+              }
+            }
+          }
+        }
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        if (!paramString.equals("ImageView")) {
+          break;
+        }
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        localObject5 = (ImageView)localObject1;
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        paramContext.getAssets();
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        g.eSH();
+        localObject2 = localObject1;
+        localObject4 = localObject1;
+        localObject3 = localObject1;
+      } while (!g.eSI());
+      label1472:
+      label1634:
+      label2041:
+      localObject2 = localObject1;
+      label1879:
+      label2167:
+      localObject3 = localObject1;
+      paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, z.Hpa);
+      int i = 0;
+      for (;;)
+      {
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        if (i < z.Hpa.length)
+        {
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          j = paramAttributeSet.getResourceId(i, 0);
+          if (j != 0)
+          {
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            if (z.Hpa[i] == 16843379)
+            {
+              localObject2 = localObject1;
+              localObject3 = localObject1;
+              ((ImageView)localObject5).setContentDescription(paramContext.getString(j));
+            }
+          }
+        }
+        else
+        {
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          paramAttributeSet.recycle();
+          localObject4 = localObject1;
+          break label1274;
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          if (paramString.equals("com.tencent.mm.ui.widget.MMNeat7extView"))
+          {
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext = (MMNeat7extView)localObject1;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext.setTextSize(1, f1 * paramContext.getTextSize() / a.getDensity(paramContext.getContext()));
+            localObject4 = localObject1;
+            break label1274;
+          }
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          if (paramString.equals("com.tencent.mm.ui.widget.MMCollapsibleTextView"))
+          {
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext = (MMCollapsibleTextView)localObject1;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            f1 = f1 * paramContext.getTextSize() / a.getDensity(paramContext.getContext());
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext.get_collapseButton().setTextSize(1, f1);
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext.get_contentText().setTextSize(1, f1);
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            paramContext.get_contentBackupText().setTextSize(1, f1);
+            localObject4 = localObject1;
+            break label1274;
+          }
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          paramContext = (TextView)localObject1;
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          paramContext.setTextSize(1, f1 * paramContext.getTextSize() / a.getDensity(paramContext.getContext()));
+          localObject4 = localObject1;
+          break label1274;
+          label2755:
+          localObject2 = localObject1;
+          localObject3 = localObject1;
+          ac.w("MicroMsg.MMLayoutInflater", "Inflate view, ClassNotFound ".concat(String.valueOf(paramString)));
+          localObject4 = localObject1;
+          break label1274;
+          label2785:
+          break label933;
+          label2788:
+          localObject1 = localObject2;
+          break label118;
+          label2795:
+          localObject1 = null;
+          break;
+          label2801:
+          f1 = 1.0F;
+          break label777;
+          label2807:
+          i += 1;
+          break label1110;
+          label2816:
+          i += 1;
+          break label1472;
+          label2825:
+          i += 1;
+          break label1879;
+          label2834:
+          i += 1;
+          break label2167;
+        }
+        i += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.z
  * JD-Core Version:    0.7.0.1
  */

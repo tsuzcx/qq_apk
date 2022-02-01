@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.plugin.sns.storage.v;
 import com.tencent.mm.plugin.sns.storage.w;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cvu;
-import com.tencent.mm.protocal.protobuf.cvv;
-import com.tencent.mm.protocal.protobuf.cvw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.dbg;
+import com.tencent.mm.protocal.protobuf.dbh;
+import com.tencent.mm.protocal.protobuf.dbi;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class u
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
   public g callback;
-  private int diR;
+  private int dgm;
   private String md5;
   private b rr;
-  public LinkedList<cvu> wFM;
-  public int wFN;
+  public LinkedList<dbg> xSg;
+  public int xSh;
   
   public u(int paramInt)
   {
     AppMethodBeat.i(95648);
-    this.wFM = null;
-    this.diR = paramInt;
+    this.xSg = null;
+    this.dgm = paramInt;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cvv();
-    ((b.a)localObject).gUV = new cvw();
+    ((b.a)localObject).hvt = new dbh();
+    ((b.a)localObject).hvu = new dbi();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnstaglist";
     ((b.a)localObject).funcId = 292;
     ((b.a)localObject).reqCmdId = 116;
     ((b.a)localObject).respCmdId = 1000000116;
-    this.rr = ((b.a)localObject).atI();
-    localObject = af.dty().apP("@__weixintsnstag").field_md5;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = af.dHV().auY("@__weixintsnstag").field_md5;
     if (localObject == null) {
       localObject = "";
     }
     for (;;)
     {
       this.md5 = ((String)localObject);
-      cvv localcvv = (cvv)this.rr.gUS.gUX;
-      localcvv.OpCode = paramInt;
-      localcvv.Enx = ((String)localObject);
+      dbh localdbh = (dbh)this.rr.hvr.hvw;
+      localdbh.OpCode = paramInt;
+      localdbh.FKw = ((String)localObject);
       AppMethodBeat.o(95648);
       return;
     }
   }
   
-  public static v a(v paramv, cvu paramcvu)
+  public static v a(v paramv, dbg paramdbg)
   {
     AppMethodBeat.i(95650);
-    paramv.field_tagId = paramcvu.Enw;
-    paramv.field_tagName = bt.by(paramcvu.scP, "");
-    paramv.field_count = paramcvu.mAK;
-    paramv.fz(paramcvu.mAL);
-    ad.d("MicroMsg.NetSceneSnsTagList", "tagInfo getList: " + paramcvu.toString());
+    paramv.field_tagId = paramdbg.FKv;
+    paramv.field_tagName = bs.bG(paramdbg.tkJ, "");
+    paramv.field_count = paramdbg.ncL;
+    paramv.fH(paramdbg.ncM);
+    ac.d("MicroMsg.NetSceneSnsTagList", "tagInfo getList: " + paramdbg.toString());
     AppMethodBeat.o(95650);
     return paramv;
   }
@@ -88,26 +88,26 @@ public final class u
     return false;
   }
   
-  private static boolean b(v paramv, cvu paramcvu)
+  private static boolean b(v paramv, dbg paramdbg)
   {
     boolean bool2 = false;
     AppMethodBeat.i(95654);
     paramv = paramv.field_memberList.split(",");
-    paramcvu = paramcvu.mAL.iterator();
+    paramdbg = paramdbg.ncM.iterator();
     label83:
     label90:
     label93:
     for (;;)
     {
       boolean bool1 = bool2;
-      if (paramcvu.hasNext())
+      if (paramdbg.hasNext())
       {
-        cmf localcmf = (cmf)paramcvu.next();
+        crm localcrm = (crm)paramdbg.next();
         i = 0;
         if (i >= paramv.length) {
           break label90;
         }
-        if (!paramv[i].equals(localcmf)) {
+        if (!paramv[i].equals(localcrm)) {
           break label83;
         }
       }
@@ -142,27 +142,27 @@ public final class u
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95653);
-    ad.d("MicroMsg.NetSceneSnsTagList", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ac.d("MicroMsg.NetSceneSnsTagList", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95653);
       return;
     }
-    Object localObject1 = (cvw)((b)paramq).gUT.gUX;
-    ad.d("MicroMsg.NetSceneSnsTagList", "[onGYNetEnd]State：%s", new Object[] { Integer.valueOf(this.wFN) });
-    this.wFN = ((cvw)localObject1).wFN;
-    this.wFM = ((cvw)localObject1).mAL;
-    paramq = ((cvw)localObject1).Enx;
+    Object localObject1 = (dbi)((b)paramq).hvs.hvw;
+    ac.d("MicroMsg.NetSceneSnsTagList", "[onGYNetEnd]State：%s", new Object[] { Integer.valueOf(this.xSh) });
+    this.xSh = ((dbi)localObject1).xSh;
+    this.xSg = ((dbi)localObject1).ncM;
+    paramq = ((dbi)localObject1).FKw;
     if (this.md5.equals(paramq))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95653);
       return;
     }
-    paramArrayOfByte = af.dtA().dyC();
+    paramArrayOfByte = af.dHX().dMZ();
     Object localObject2;
-    if (this.diR != 3) {
+    if (this.dgm != 3) {
       localObject2 = paramArrayOfByte.iterator();
     }
     label504:
@@ -172,15 +172,15 @@ public final class u
       if (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Long)((Iterator)localObject2).next();
-        Iterator localIterator = ((cvw)localObject1).mAL.iterator();
-        cvu localcvu;
+        Iterator localIterator = ((dbi)localObject1).ncM.iterator();
+        dbg localdbg;
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-          localcvu = (cvu)localIterator.next();
-        } while (((Long)localObject3).longValue() != localcvu.Enw);
+          localdbg = (dbg)localIterator.next();
+        } while (((Long)localObject3).longValue() != localdbg.FKv);
       }
       for (paramInt1 = 1;; paramInt1 = 0)
       {
@@ -188,31 +188,31 @@ public final class u
           break label504;
         }
         ((Iterator)localObject2).remove();
-        af.dtA().tk(((Long)localObject3).longValue());
+        af.dHX().xN(((Long)localObject3).longValue());
         break;
-        localObject1 = ((cvw)localObject1).mAL.iterator();
+        localObject1 = ((dbi)localObject1).ncM.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (cvu)((Iterator)localObject1).next();
-          if (!a(paramArrayOfByte, Long.valueOf(((cvu)localObject2).Enw)))
+          localObject2 = (dbg)((Iterator)localObject1).next();
+          if (!a(paramArrayOfByte, Long.valueOf(((dbg)localObject2).FKv)))
           {
             localObject3 = new v();
-            a((v)localObject3, (cvu)localObject2);
-            af.dtA().a((v)localObject3);
+            a((v)localObject3, (dbg)localObject2);
+            af.dHX().a((v)localObject3);
           }
           else
           {
-            localObject3 = af.dtA().tj(((cvu)localObject2).Enw);
-            if (((((v)localObject3).field_tagName != null) && (!((v)localObject3).field_tagName.equals(((cvu)localObject2).scP))) || (((v)localObject3).field_count != ((cvu)localObject2).mAK) || (b((v)localObject3, (cvu)localObject2)))
+            localObject3 = af.dHX().xM(((dbg)localObject2).FKv);
+            if (((((v)localObject3).field_tagName != null) && (!((v)localObject3).field_tagName.equals(((dbg)localObject2).tkJ))) || (((v)localObject3).field_count != ((dbg)localObject2).ncL) || (b((v)localObject3, (dbg)localObject2)))
             {
-              a((v)localObject3, (cvu)localObject2);
-              af.dtA().a((v)localObject3);
+              a((v)localObject3, (dbg)localObject2);
+              af.dHX().a((v)localObject3);
             }
           }
         }
-        paramArrayOfByte = af.dty().apP("@__weixintsnstag");
+        paramArrayOfByte = af.dHV().auY("@__weixintsnstag");
         paramArrayOfByte.field_md5 = paramq;
-        af.dty().a(paramArrayOfByte);
+        af.dHV().a(paramArrayOfByte);
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(95653);
         return;
@@ -220,24 +220,24 @@ public final class u
     }
   }
   
-  public final List<String> sJ(long paramLong)
+  public final List<String> xm(long paramLong)
   {
     AppMethodBeat.i(95652);
     LinkedList localLinkedList = new LinkedList();
-    if (this.wFM == null)
+    if (this.xSg == null)
     {
       AppMethodBeat.o(95652);
       return localLinkedList;
     }
-    Iterator localIterator = this.wFM.iterator();
+    Iterator localIterator = this.xSg.iterator();
     while (localIterator.hasNext())
     {
-      cvu localcvu = (cvu)localIterator.next();
-      if (localcvu.Enw == paramLong)
+      dbg localdbg = (dbg)localIterator.next();
+      if (localdbg.FKv == paramLong)
       {
-        localIterator = localcvu.mAL.iterator();
+        localIterator = localdbg.ncM.iterator();
         while (localIterator.hasNext()) {
-          localLinkedList.add(((cmf)localIterator.next()).Ehn);
+          localLinkedList.add(((crm)localIterator.next()).FEm);
         }
         AppMethodBeat.o(95652);
         return localLinkedList;
@@ -249,7 +249,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.u
  * JD-Core Version:    0.7.0.1
  */

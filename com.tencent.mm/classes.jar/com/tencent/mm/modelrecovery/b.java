@@ -2,9 +2,9 @@ package com.tencent.mm.modelrecovery;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -12,10 +12,10 @@ import java.io.IOException;
 
 public final class b
 {
-  public static void aAa()
+  public static void aGQ()
   {
     AppMethodBeat.i(20588);
-    e locale = new e(aj.getContext().getFilesDir(), "/recovery/recovery.log");
+    e locale = new e(ai.getContext().getFilesDir(), "/recovery/recovery.log");
     String str = null;
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -28,7 +28,7 @@ public final class b
     }
     try
     {
-      localObject2 = i.aMP(q.B(locale.fhU()));
+      localObject2 = i.aSr(q.B(locale.fxV()));
       localObject1 = localObject2;
       locale.delete();
       localObject1 = localObject2;
@@ -40,21 +40,21 @@ public final class b
         int k;
         int i;
         int j;
-        ad.printErrStackTrace("MicroMsg.Recovery.RecoveryLogUtil", localIOException, "recoveryLog", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Recovery.RecoveryLogUtil", localIOException, "recoveryLog", new Object[0]);
         continue;
         if (str.equals("E"))
         {
           j = 0;
           continue;
-          ad.e(localIOException[1], localIOException[2]);
+          ac.e(localIOException[1], localIOException[2]);
           continue;
-          ad.i("MicroMsg.Recovery.RecoveryLogUtil", str);
+          ac.i("MicroMsg.Recovery.RecoveryLogUtil", str);
         }
       }
       AppMethodBeat.o(20588);
       return;
     }
-    if (!bt.isNullOrNil((String)localObject1))
+    if (!bs.isNullOrNil((String)localObject1))
     {
       localObject1 = ((String)localObject1).split("​​");
       k = localObject1.length;
@@ -77,7 +77,7 @@ public final class b
           switch (j)
           {
           default: 
-            ad.i(localObject2[1], localObject2[2]);
+            ac.i(localObject2[1], localObject2[2]);
             i += 1;
           }
           break;
@@ -85,7 +85,7 @@ public final class b
       }
     }
     label259:
-    ad.i("MicroMsg.Recovery.RecoveryLogUtil", "not found recovery log");
+    ac.i("MicroMsg.Recovery.RecoveryLogUtil", "not found recovery log");
     AppMethodBeat.o(20588);
   }
 }

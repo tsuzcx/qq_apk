@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aop;
 import com.tencent.mm.sdk.b.b;
 
 public final class hk
   extends b
 {
-  public a dla;
-  public b dlb;
+  public a dix;
   
   public hk()
   {
@@ -17,27 +16,22 @@ public final class hk
   
   private hk(byte paramByte)
   {
-    AppMethodBeat.i(19811);
-    this.dla = new a();
-    this.dlb = new b();
-    this.ESR = false;
+    AppMethodBeat.i(194874);
+    this.dix = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19811);
+    AppMethodBeat.o(194874);
   }
   
   public static final class a
   {
-    public Intent intent;
-  }
-  
-  public static final class b
-  {
-    public int dhR = 0;
+    public aop diy;
+    public int index;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.hk
  * JD-Core Version:    0.7.0.1
  */

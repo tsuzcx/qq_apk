@@ -7,25 +7,25 @@ import java.util.Locale;
 public final class au
   extends a
 {
-  final int iNo;
-  final int iNp;
-  final bh.a iNq;
+  final int jnw;
+  final int jnx;
+  final bh.a jny;
   
   au(String paramString1, int paramInt1, int paramInt2, String paramString2, bh.a parama)
   {
-    super(A(paramString1, paramInt1, paramInt2), ax.aQj() + String.format(Locale.US, "_%s_%d_%d.wxapkg.diff", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, 0, paramInt2);
+    super(z(paramString1, paramInt1, paramInt2), ax.aXb() + String.format(Locale.US, "_%s_%d_%d.wxapkg.diff", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, 0, paramInt2);
     AppMethodBeat.i(90591);
-    this.iNo = paramInt1;
-    this.iNp = paramInt2;
-    this.iNq = parama;
+    this.jnw = paramInt1;
+    this.jnx = paramInt2;
+    this.jny = parama;
     if (!"@LibraryAppId".equals(paramString1)) {
       bool = true;
     }
-    this.iPr = bool;
+    this.jpB = bool;
     AppMethodBeat.o(90591);
   }
   
-  static String A(String paramString, int paramInt1, int paramInt2)
+  static String z(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90590);
     paramString = String.format(Locale.US, "WxaPkgDiff_%s_%d_%d", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
@@ -33,17 +33,17 @@ public final class au
     return paramString;
   }
   
-  public final String aPZ()
+  public final String aWR()
   {
     AppMethodBeat.i(90592);
-    String str = ay.aF(this.appId, this.iNp);
+    String str = ay.aJ(this.appId, this.jnx);
     AppMethodBeat.o(90592);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.au
  * JD-Core Version:    0.7.0.1
  */

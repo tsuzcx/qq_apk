@@ -10,14 +10,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class l
   extends ClickableSpan
 {
-  public a Anf;
+  public a BFA;
   private int mBgColor;
   public int mColor;
   
   public l(Context paramContext)
   {
     AppMethodBeat.i(70927);
-    this.Anf = null;
+    this.BFA = null;
     this.mColor = -1;
     this.mBgColor = -1;
     this.mColor = paramContext.getResources().getColor(2131101114);
@@ -28,8 +28,8 @@ public class l
   public void onClick(View paramView)
   {
     AppMethodBeat.i(70928);
-    if (this.Anf != null) {
-      this.Anf.onClick(paramView);
+    if (this.BFA != null) {
+      this.BFA.onClick(paramView);
     }
     AppMethodBeat.o(70928);
   }
@@ -52,7 +52,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.l
  * JD-Core Version:    0.7.0.1
  */

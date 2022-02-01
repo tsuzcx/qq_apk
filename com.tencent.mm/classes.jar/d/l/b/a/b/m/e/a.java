@@ -5,13 +5,13 @@ import d.g.b.k;
 
 public final class a<T>
 {
-  final T JZJ;
-  public final T JZK;
+  final T LNc;
+  public final T LNd;
   
   public a(T paramT1, T paramT2)
   {
-    this.JZJ = paramT1;
-    this.JZK = paramT2;
+    this.LNc = paramT1;
+    this.LNd = paramT2;
   }
   
   public final boolean equals(Object paramObject)
@@ -22,7 +22,7 @@ public final class a<T>
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!k.g(this.JZJ, paramObject.JZJ)) || (!k.g(this.JZK, paramObject.JZK))) {}
+        if ((!k.g(this.LNc, paramObject.LNc)) || (!k.g(this.LNd, paramObject.LNd))) {}
       }
     }
     else
@@ -38,11 +38,11 @@ public final class a<T>
   {
     int j = 0;
     AppMethodBeat.i(61258);
-    Object localObject = this.JZJ;
+    Object localObject = this.LNc;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.JZK;
+      localObject = this.LNd;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -54,7 +54,7 @@ public final class a<T>
   public final String toString()
   {
     AppMethodBeat.i(61257);
-    String str = "ApproximationBounds(lower=" + this.JZJ + ", upper=" + this.JZK + ")";
+    String str = "ApproximationBounds(lower=" + this.LNc + ", upper=" + this.LNd + ")";
     AppMethodBeat.o(61257);
     return str;
   }

@@ -8,23 +8,23 @@ import com.tencent.mm.sdk.f.a;
 public class i
   implements g
 {
-  protected final AppBrandRuntime iGV;
+  protected final AppBrandRuntime jgY;
   
   public i(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.iGV = paramAppBrandRuntime;
+    this.jgY = paramAppBrandRuntime;
   }
   
-  public void Mh(String paramString)
+  public void Qn(String paramString)
   {
     AppMethodBeat.i(147661);
-    Toast.makeText(a.iV(this.iGV.mContext), String.format("jsapi banned %s", new Object[] { paramString }), 0).show();
+    Toast.makeText(a.jg(this.jgY.mContext), String.format("jsapi banned %s", new Object[] { paramString }), 0).show();
     AppMethodBeat.o(147661);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.i
  * JD-Core Version:    0.7.0.1
  */

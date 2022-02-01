@@ -6,34 +6,34 @@ import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/panel/GroupTitleItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "designer", "Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "getDesigner", "()Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "setDesigner", "(Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "hasNew", "", "getHasNew", "()Z", "setHasNew", "(Z)V", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/GroupTitleItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "designer", "Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "getDesigner", "()Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "setDesigner", "(Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "hasNew", "", "getHasNew", "()Z", "setHasNew", "(Z)V", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
 public final class q
   extends y
 {
-  public final EmojiGroupInfo fLb;
-  public PersonalDesigner fOh;
-  public boolean fOi;
+  public final EmojiGroupInfo fON;
+  public PersonalDesigner fRS;
+  public boolean fRT;
   
   public q(EmojiGroupInfo paramEmojiGroupInfo)
   {
     super(2);
     AppMethodBeat.i(105562);
-    this.fLb = paramEmojiGroupInfo;
+    this.fON = paramEmojiGroupInfo;
     AppMethodBeat.o(105562);
   }
   
-  public final boolean aT(Object paramObject)
+  public final boolean aQ(Object paramObject)
   {
     Object localObject3 = null;
     AppMethodBeat.i(183956);
-    if ((super.aT(paramObject)) && ((paramObject instanceof q)))
+    if ((super.aQ(paramObject)) && ((paramObject instanceof q)))
     {
-      Object localObject1 = ((q)paramObject).fOh;
+      Object localObject1 = ((q)paramObject).fRS;
       Object localObject2;
       if (localObject1 != null)
       {
         localObject1 = Integer.valueOf(((PersonalDesigner)localObject1).DesignerUin);
-        localObject2 = this.fOh;
+        localObject2 = this.fRS;
         if (localObject2 == null) {
           break label178;
         }
@@ -42,13 +42,13 @@ public final class q
         if (!k.g(localObject1, localObject2)) {
           break label198;
         }
-        localObject1 = ((q)paramObject).fOh;
+        localObject1 = ((q)paramObject).fRS;
         if (localObject1 == null) {
           break label183;
         }
         localObject1 = ((PersonalDesigner)localObject1).Name;
         label85:
-        localObject2 = this.fOh;
+        localObject2 = this.fRS;
         if (localObject2 == null) {
           break label188;
         }
@@ -57,7 +57,7 @@ public final class q
         if (!k.g(localObject1, localObject2)) {
           break label198;
         }
-        localObject1 = ((q)paramObject).fOh;
+        localObject1 = ((q)paramObject).fRS;
         if (localObject1 == null) {
           break label193;
         }
@@ -68,12 +68,12 @@ public final class q
       label193:
       for (localObject1 = ((PersonalDesigner)localObject1).HeadUrl;; localObject1 = null)
       {
-        PersonalDesigner localPersonalDesigner = this.fOh;
+        PersonalDesigner localPersonalDesigner = this.fRS;
         localObject2 = localObject3;
         if (localPersonalDesigner != null) {
           localObject2 = localPersonalDesigner.HeadUrl;
         }
-        if ((!k.g(localObject1, localObject2)) || (((q)paramObject).fOi != this.fOi)) {
+        if ((!k.g(localObject1, localObject2)) || (((q)paramObject).fRT != this.fRT)) {
           break label198;
         }
         AppMethodBeat.o(183956);
@@ -96,7 +96,7 @@ public final class q
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(105561);
-    if ((super.equals(paramObject)) && ((paramObject instanceof q)) && (k.g(((q)paramObject).fLb.fZJ(), this.fLb.fZJ())))
+    if ((super.equals(paramObject)) && ((paramObject instanceof q)) && (k.g(((q)paramObject).fON.fdm(), this.fON.fdm())))
     {
       AppMethodBeat.o(105561);
       return true;
@@ -107,7 +107,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.q
  * JD-Core Version:    0.7.0.1
  */

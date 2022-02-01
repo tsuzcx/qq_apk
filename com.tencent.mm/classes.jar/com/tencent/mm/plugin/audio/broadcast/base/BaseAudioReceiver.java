@@ -4,32 +4,32 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "p0", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "Companion", "plugin-audio_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "p0", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "Companion", "plugin-audio_release"})
 public final class BaseAudioReceiver
   extends BroadcastReceiver
 {
-  public static final a moU;
+  public static final a mQV;
   
   static
   {
-    AppMethodBeat.i(189214);
-    moU = new a((byte)0);
-    AppMethodBeat.o(189214);
+    AppMethodBeat.i(198334);
+    mQV = new a((byte)0);
+    AppMethodBeat.o(198334);
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(189213);
-    ad.i("MicroMsg.BaseAudioReceiver", "onReceive action[ ACTION_AUDIO_BECOMING_NOISY ] ");
-    paramContext = a.moT;
-    a.bvs();
-    AppMethodBeat.o(189213);
+    AppMethodBeat.i(198333);
+    ac.i("MicroMsg.BaseAudioReceiver", "onReceive action[ ACTION_AUDIO_BECOMING_NOISY ] ");
+    paramContext = a.mQU;
+    a.bCo();
+    AppMethodBeat.o(198333);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioReceiver$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/broadcast/base/BaseAudioReceiver$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
   public static final class a {}
 }
 

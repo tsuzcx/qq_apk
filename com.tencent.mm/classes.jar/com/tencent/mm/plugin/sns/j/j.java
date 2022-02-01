@@ -1,92 +1,60 @@
 package com.tencent.mm.plugin.sns.j;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.modelsns.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.Iterator;
+import java.util.Vector;
 
-public final class j
-  extends com.tencent.mm.bx.a
+public abstract class j
 {
-  public long wJR;
-  public LinkedList<k> wOf;
-  public long wOg;
+  private Vector<d> yet = new Vector();
   
-  public j()
+  public final d b(d paramd)
   {
-    AppMethodBeat.i(179119);
-    this.wOf = new LinkedList();
-    AppMethodBeat.o(179119);
+    this.yet.add(paramd);
+    return paramd;
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final boolean c(d paramd)
   {
-    AppMethodBeat.i(179120);
-    if (paramInt == 0)
+    Iterator localIterator = this.yet.iterator();
+    while (localIterator.hasNext())
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 8, this.wOf);
-      paramVarArgs.aG(2, this.wOg);
-      paramVarArgs.aG(3, this.wJR);
-      AppMethodBeat.o(179120);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.wOf);
-      i = f.a.a.b.b.a.q(2, this.wOg);
-      int j = f.a.a.b.b.a.q(3, this.wJR);
-      AppMethodBeat.o(179120);
-      return paramInt + 0 + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wOf.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
+      d locald = (d)localIterator.next();
+      if (locald.hTM == paramd.hTM) {
+        this.yet.remove(locald);
       }
-      AppMethodBeat.o(179120);
-      return 0;
     }
-    if (paramInt == 3)
+    for (boolean bool = true;; bool = false)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      j localj = (j)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      this.yet.add(paramd);
+      return bool;
+    }
+  }
+  
+  public final d dE(Object paramObject)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    try
+    {
+      Iterator localIterator = this.yet.iterator();
+      while (localIterator.hasNext())
       {
-      default: 
-        AppMethodBeat.o(179120);
-        return -1;
-      case 1: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
+        d locald = (d)localIterator.next();
+        if (paramObject.equals(locald.hTK))
         {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new k();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((k)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localj.wOf.add(localObject1);
-          paramInt += 1;
+          this.yet.remove(locald);
+          return locald;
         }
-        AppMethodBeat.o(179120);
-        return 0;
-      case 2: 
-        localj.wOg = ((f.a.a.a.a)localObject1).KhF.xT();
-        AppMethodBeat.o(179120);
-        return 0;
       }
-      localj.wJR = ((f.a.a.a.a)localObject1).KhF.xT();
-      AppMethodBeat.o(179120);
-      return 0;
     }
-    AppMethodBeat.o(179120);
-    return -1;
+    catch (Exception localException)
+    {
+      ac.e("MicroMsg.Ss_log_base_helper", "report by key " + localException.getMessage() + " " + paramObject);
+    }
+    return null;
   }
 }
 

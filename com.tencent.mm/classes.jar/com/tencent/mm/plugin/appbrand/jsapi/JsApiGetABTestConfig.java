@@ -5,7 +5,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storage.c;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +20,8 @@ public final class JsApiGetABTestConfig
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetABTestConfigTask> CREATOR;
-    private String jxr;
-    private Map<String, String> jxs;
+    private String jXN;
+    private Map<String, String> jXO;
     
     static
     {
@@ -33,39 +33,39 @@ public final class JsApiGetABTestConfig
     GetABTestConfigTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45475);
-      this.jxs = new HashMap();
+      this.jXO = new HashMap();
       e(paramParcel);
       AppMethodBeat.o(45475);
     }
     
-    public final void aEA() {}
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(45476);
-      ad.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
-      c localc = com.tencent.mm.model.c.d.aty().qu(this.jxr);
+      ac.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
+      c localc = com.tencent.mm.model.c.d.aAp().tJ(this.jXN);
       if (localc.isValid()) {
-        this.jxs.putAll(localc.eJy());
+        this.jXO.putAll(localc.eYV());
       }
-      aXw();
+      bet();
       AppMethodBeat.o(45476);
     }
+    
+    public final void aLr() {}
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45477);
-      this.jxs.clear();
-      this.jxs.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
-      this.jxr = paramParcel.readString();
+      this.jXO.clear();
+      this.jXO.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
+      this.jXN = paramParcel.readString();
       AppMethodBeat.o(45477);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45478);
-      paramParcel.writeMap(this.jxs);
-      paramParcel.writeString(this.jxr);
+      paramParcel.writeMap(this.jXO);
+      paramParcel.writeString(this.jXN);
       AppMethodBeat.o(45478);
     }
   }

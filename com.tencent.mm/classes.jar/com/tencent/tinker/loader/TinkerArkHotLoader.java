@@ -8,6 +8,7 @@ import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareSecurityCheck;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.io.IOException;
@@ -90,14 +91,16 @@ public class TinkerArkHotLoader
   @TargetApi(14)
   public static boolean loadTinkerArkHot(TinkerApplication paramTinkerApplication, String paramString, Intent paramIntent)
   {
-    if (arkHotApkInfo.isEmpty()) {
+    if (arkHotApkInfo.isEmpty())
+    {
+      ShareTinkerLog.w("Tinker.TinkerArkHotLoader", "there is no apk to load", new Object[0]);
       return true;
     }
     paramTinkerApplication = (PathClassLoader)TinkerArkHotLoader.class.getClassLoader();
     ArrayList localArrayList;
     if (paramTinkerApplication != null)
     {
-      new StringBuilder("classloader: ").append(paramTinkerApplication.toString());
+      ShareTinkerLog.i("Tinker.TinkerArkHotLoader", "classloader: " + paramTinkerApplication.toString(), new Object[0]);
       paramString = paramString + "/arkHot/";
       localArrayList = new ArrayList();
       if ((isArkHotRuning) && (!arkHotApkInfo.isEmpty())) {
@@ -111,9 +114,11 @@ public class TinkerArkHotLoader
     }
     catch (Throwable paramTinkerApplication)
     {
+      ShareTinkerLog.e("Tinker.TinkerArkHotLoader", "install dexes failed", new Object[0]);
       paramIntent.putExtra("intent_patch_exception", paramTinkerApplication);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -14);
     }
+    ShareTinkerLog.e("Tinker.TinkerArkHotLoader", "classloader is null", new Object[0]);
     ShareIntentUtil.setIntentReturnCode(paramIntent, -12);
     return false;
     return false;

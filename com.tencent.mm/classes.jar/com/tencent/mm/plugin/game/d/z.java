@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class z
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Name;
-  public String sah;
+  public String tia;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,8 +14,8 @@ public final class z
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.sah != null) {
-        paramVarArgs.d(1, this.sah);
+      if (this.tia != null) {
+        paramVarArgs.d(1, this.tia);
       }
       if (this.Name != null) {
         paramVarArgs.d(2, this.Name);
@@ -24,12 +24,12 @@ public final class z
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sah == null) {
+      if (this.tia == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.sah) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.tia) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.Name != null) {
@@ -40,9 +40,9 @@ public final class z
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41726);
@@ -58,11 +58,11 @@ public final class z
           AppMethodBeat.o(41726);
           return -1;
         case 1: 
-          localz.sah = locala.KhF.readString();
+          localz.tia = locala.LVo.readString();
           AppMethodBeat.o(41726);
           return 0;
         }
-        localz.Name = locala.KhF.readString();
+        localz.Name = locala.LVo.readString();
         AppMethodBeat.o(41726);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.z
  * JD-Core Version:    0.7.0.1
  */

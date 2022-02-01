@@ -7,14 +7,14 @@ import d.l.b.a.b.l.i;
 final class b
   extends g
 {
-  private static final g JoK;
-  public static final a JoL;
+  private static final g Lcd;
+  public static final a Lce;
   
   static
   {
     AppMethodBeat.i(56748);
-    JoL = new a((byte)0);
-    JoK = (g)new b();
+    Lce = new a((byte)0);
+    Lcd = (g)new b();
     AppMethodBeat.o(56748);
   }
   
@@ -22,7 +22,7 @@ final class b
   {
     super((i)new d.l.b.a.b.l.b("FallbackBuiltIns"));
     AppMethodBeat.i(56747);
-    fwV();
+    fPz();
     AppMethodBeat.o(56747);
   }
   
@@ -30,7 +30,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.b.b
  * JD-Core Version:    0.7.0.1
  */

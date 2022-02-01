@@ -10,15 +10,17 @@ import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.g.c;
 import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.ball.c.h;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.commons.a.d;
 import org.json.JSONObject;
 
 public final class z
@@ -26,27 +28,27 @@ public final class z
 {
   private static final int CTRL_INDEX = 99;
   private static final String NAME = "openDocument";
-  private static long jQF = -1L;
-  private h jQG;
-  private h jQH;
-  private b juV;
+  private static long krq = -1L;
+  private b jVq;
+  private h krr;
+  private h krs;
   private String mAppID;
   
   public z()
   {
     AppMethodBeat.i(174793);
-    this.jQG = new h()
+    this.krr = new h()
     {
-      public final void bo(List<BallInfo> paramAnonymousList)
+      public final void bm(List<BallInfo> paramAnonymousList)
       {
         AppMethodBeat.i(174791);
         paramAnonymousList = paramAnonymousList.iterator();
         while (paramAnonymousList.hasNext())
         {
           BallInfo localBallInfo = (BallInfo)paramAnonymousList.next();
-          if ((localBallInfo != null) && (localBallInfo.type == 4) && (localBallInfo.hsl != null) && (bt.nullAsNil(localBallInfo.hsl.getString("appId")).equals(z.d(z.this))))
+          if ((localBallInfo != null) && (localBallInfo.type == 4) && (localBallInfo.hSN != null) && (bs.nullAsNil(localBallInfo.hSN.getString("appId")).equals(z.d(z.this))))
           {
-            localBallInfo.hsl.putString("processName", aj.getProcessName());
+            localBallInfo.hSN.putString("processName", ai.getProcessName());
             if (z.a(z.this) != null) {
               z.a(z.this).a(localBallInfo);
             }
@@ -55,18 +57,18 @@ public final class z
         AppMethodBeat.o(174791);
       }
     };
-    this.jQH = new h()
+    this.krs = new h()
     {
-      public final void bo(List<BallInfo> paramAnonymousList)
+      public final void bm(List<BallInfo> paramAnonymousList)
       {
         AppMethodBeat.i(174792);
         paramAnonymousList = paramAnonymousList.iterator();
         while (paramAnonymousList.hasNext())
         {
           BallInfo localBallInfo = (BallInfo)paramAnonymousList.next();
-          if ((localBallInfo != null) && (localBallInfo.type == 4) && (localBallInfo.hsl != null) && (bt.nullAsNil(localBallInfo.hsl.getString("processName")).equals(aj.getProcessName())))
+          if ((localBallInfo != null) && (localBallInfo.type == 4) && (localBallInfo.hSN != null) && (bs.nullAsNil(localBallInfo.hSN.getString("processName")).equals(ai.getProcessName())))
           {
-            localBallInfo.hsl.putString("processName", "");
+            localBallInfo.hSN.putString("processName", "");
             if (z.a(z.this) != null) {
               z.a(z.this).a(localBallInfo);
             }
@@ -78,17 +80,17 @@ public final class z
     AppMethodBeat.o(174793);
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46349);
-    long l = bt.eGO();
-    if (l - jQF < 1000L)
+    long l = bs.eWj();
+    if (l - krq < 1000L)
     {
       paramc.h(paramInt, e("fail:document viewer already starting", null));
       AppMethodBeat.o(46349);
       return;
     }
-    jQF = l;
+    krq = l;
     final Context localContext = paramc.getContext();
     if ((localContext == null) || (!(localContext instanceof Activity)))
     {
@@ -98,13 +100,13 @@ public final class z
     }
     boolean bool = paramJSONObject.optBoolean("showMenu");
     String str = paramJSONObject.optString("filePath");
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(46349);
       return;
     }
-    e locale = paramc.Ee().EP(str);
+    e locale = paramc.DH().IS(str);
     if (locale == null)
     {
       paramc.h(paramInt, e("fail:file doesn't exist", null));
@@ -113,13 +115,13 @@ public final class z
     }
     this.mAppID = paramc.getAppId();
     OpenFileRequest localOpenFileRequest = new OpenFileRequest();
-    localOpenFileRequest.filePath = q.B(locale.fhU());
-    localOpenFileRequest.fyk = org.apache.commons.a.c.getExtension(str);
+    localOpenFileRequest.filePath = q.B(locale.fxV());
+    localOpenFileRequest.fBR = d.getExtension(str);
     localOpenFileRequest.appId = this.mAppID;
-    localOpenFileRequest.juW = bool;
+    localOpenFileRequest.jVr = bool;
     paramJSONObject = paramJSONObject.optString("fileType");
-    if (!bt.isNullOrNil(paramJSONObject)) {
-      localOpenFileRequest.fyk = paramJSONObject;
+    if (!bs.isNullOrNil(paramJSONObject)) {
+      localOpenFileRequest.fBR = paramJSONObject;
     }
     com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, localOpenFileRequest, new AppBrandProxyUIProcessTask.b() {});
     g.a(paramc.getAppId(), new g.c()
@@ -159,7 +161,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.z
  * JD-Core Version:    0.7.0.1
  */

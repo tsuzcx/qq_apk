@@ -29,22 +29,24 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.ur;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.vb;
 import com.tencent.mm.m.f;
 import com.tencent.mm.model.av;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
+import com.tencent.mm.modelsimple.ad;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.webwx.a.b;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.amy;
+import com.tencent.mm.protocal.protobuf.aqc;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.base.h;
@@ -55,58 +57,58 @@ public class WebWXLogoutUI
   extends MMActivity
   implements g, av
 {
-  private boolean BAY;
-  private boolean BBg;
-  private View BBh;
-  private View BBi;
-  private WeImageView BBj;
-  private WeImageView BBk;
-  private ImageView BBl;
-  private int BBm;
-  private int BBn;
-  private int BBo;
-  private Animator BBp;
-  private int BBq;
-  private GridLayout BBr;
-  private boolean nph;
-  private com.tencent.mm.sdk.b.c wHU;
-  private ProgressDialog wfA;
+  private int Ank;
+  private boolean CTf;
+  private boolean CTn;
+  private View CTo;
+  private View CTp;
+  private WeImageView CTq;
+  private WeImageView CTr;
+  private ImageView CTs;
+  private int CTt;
+  private int CTu;
+  private Animator CTv;
+  private int CTw;
+  private GridLayout CTx;
+  private boolean nSh;
+  private com.tencent.mm.sdk.b.c xUp;
+  private ProgressDialog xqQ;
   
   public WebWXLogoutUI()
   {
     AppMethodBeat.i(30223);
-    this.wfA = null;
-    this.BAY = false;
-    this.wHU = new com.tencent.mm.sdk.b.c() {};
+    this.xqQ = null;
+    this.CTf = false;
+    this.xUp = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(30223);
   }
   
-  private void erZ()
+  private void eHt()
   {
     AppMethodBeat.i(30229);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebWXLogoutUI", "grid child count %d", new Object[] { Integer.valueOf(this.BBr.getChildCount()) });
-    if (this.BBr.getChildCount() > 1)
+    ac.i("MicroMsg.WebWXLogoutUI", "grid child count %d", new Object[] { Integer.valueOf(this.CTx.getChildCount()) });
+    if (this.CTx.getChildCount() > 1)
     {
       int i = 0;
-      if (i < this.BBr.getChildCount())
+      if (i < this.CTx.getChildCount())
       {
-        GridLayout.LayoutParams localLayoutParams = (GridLayout.LayoutParams)this.BBr.getChildAt(i).getLayoutParams();
+        GridLayout.LayoutParams localLayoutParams = (GridLayout.LayoutParams)this.CTx.getChildAt(i).getLayoutParams();
         if (i == 0) {
-          localLayoutParams.rightMargin = com.tencent.mm.cd.a.fromDPToPix(this, 30);
+          localLayoutParams.rightMargin = com.tencent.mm.cc.a.fromDPToPix(this, 30);
         }
         for (;;)
         {
-          this.BBr.getChildAt(i).setLayoutParams(localLayoutParams);
+          this.CTx.getChildAt(i).setLayoutParams(localLayoutParams);
           i += 1;
           break;
-          if (i == this.BBr.getChildCount() - 1)
+          if (i == this.CTx.getChildCount() - 1)
           {
-            localLayoutParams.leftMargin = com.tencent.mm.cd.a.fromDPToPix(this, 30);
+            localLayoutParams.leftMargin = com.tencent.mm.cc.a.fromDPToPix(this, 30);
           }
           else
           {
-            localLayoutParams.leftMargin = com.tencent.mm.cd.a.fromDPToPix(this, 30);
-            localLayoutParams.rightMargin = com.tencent.mm.cd.a.fromDPToPix(this, 30);
+            localLayoutParams.leftMargin = com.tencent.mm.cc.a.fromDPToPix(this, 30);
+            localLayoutParams.rightMargin = com.tencent.mm.cc.a.fromDPToPix(this, 30);
           }
         }
       }
@@ -114,24 +116,24 @@ public class WebWXLogoutUI
     AppMethodBeat.o(30229);
   }
   
-  private boolean esa()
+  private boolean eHu()
   {
     AppMethodBeat.i(30233);
-    if (!az.afw())
+    if (!az.agM())
     {
       AppMethodBeat.o(30233);
       return false;
     }
-    int i = u.aqM();
-    if (this.BBg) {
+    int i = u.axC();
+    if (this.CTn) {
       i |= 0x2000;
     }
     for (;;)
     {
-      f.lk(i);
-      az.arV();
-      com.tencent.mm.model.c.afk().set(40, Integer.valueOf(i));
-      this.BAY = true;
+      f.le(i);
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(40, Integer.valueOf(i));
+      this.CTf = true;
       updateStatus();
       AppMethodBeat.o(30233);
       return true;
@@ -139,38 +141,38 @@ public class WebWXLogoutUI
     }
   }
   
-  private void tJ(boolean paramBoolean)
+  private void uL(boolean paramBoolean)
   {
     AppMethodBeat.i(30231);
-    if (this.BBh != null)
+    if (this.CTo != null)
     {
       if (paramBoolean)
       {
-        this.BBh.setBackgroundResource(2131231759);
+        this.CTo.setBackgroundResource(2131231759);
         ((TextView)findViewById(2131306936)).setText(2131766173);
         AppMethodBeat.o(30231);
         return;
       }
-      this.BBh.setBackgroundResource(2131231758);
+      this.CTo.setBackgroundResource(2131231758);
       ((TextView)findViewById(2131306936)).setText(2131766155);
     }
     AppMethodBeat.o(30231);
   }
   
-  private void tK(boolean paramBoolean)
+  private void uM(boolean paramBoolean)
   {
     AppMethodBeat.i(30232);
-    if (this.BBi != null)
+    if (this.CTp != null)
     {
       if (paramBoolean)
       {
-        this.BBi.setBackgroundResource(2131231758);
-        this.BBk.setIconColor(getResources().getColor(2131099732));
+        this.CTp.setBackgroundResource(2131231758);
+        this.CTr.setIconColor(getResources().getColor(2131099732));
         AppMethodBeat.o(30232);
         return;
       }
-      this.BBi.setBackgroundResource(2131231759);
-      this.BBk.setIconColor(getResources().getColor(2131099673));
+      this.CTp.setBackgroundResource(2131231759);
+      this.CTr.setIconColor(getResources().getColor(2131099673));
     }
     AppMethodBeat.o(30232);
   }
@@ -178,102 +180,102 @@ public class WebWXLogoutUI
   private void updateStatus()
   {
     AppMethodBeat.i(30230);
-    if (!bt.isNullOrNil(com.tencent.mm.modelsimple.n.hrK))
+    if (!bs.isNullOrNil(com.tencent.mm.modelsimple.n.hSm))
     {
-      ((TextView)findViewById(2131305199)).setText(com.tencent.mm.modelsimple.n.hrK);
-      if (com.tencent.mm.modelsimple.n.aAC() == 1)
+      ((TextView)findViewById(2131305199)).setText(com.tencent.mm.modelsimple.n.hSm);
+      if (com.tencent.mm.modelsimple.n.aHs() == 1)
       {
-        if (!this.BBg)
+        if (!this.CTn)
         {
-          this.BBl.setImageResource(2131689983);
-          this.BBl.setPadding(this.BBn - this.BBm, this.BBo, 0, 0);
+          this.CTs.setImageResource(2131689983);
+          this.CTs.setPadding(this.CTt - this.Ank, this.CTu, 0, 0);
           AppMethodBeat.o(30230);
         }
       }
       else
       {
-        if (com.tencent.mm.modelsimple.n.aAC() == 2)
+        if (com.tencent.mm.modelsimple.n.aHs() == 2)
         {
-          if (this.BBg) {
+          if (this.CTn) {
             ((TextView)findViewById(2131303536)).setText(2131766172);
           }
-          while (this.nph)
+          while (this.nSh)
           {
             ((TextView)findViewById(2131305199)).setText(getString(2131766156, new Object[] { "Mac" }));
-            this.BBl.setImageResource(2131689977);
-            this.BBl.setPadding(0, this.BBo, 0, 0);
-            if ((!f.Yi()) || (this.BBg)) {
+            this.CTs.setImageResource(2131689977);
+            this.CTs.setPadding(0, this.CTu, 0, 0);
+            if ((!f.Zf()) || (this.CTn)) {
               break label588;
             }
             ((TextView)findViewById(2131303536)).setText(2131766152);
-            this.BBl.setImageResource(2131689979);
-            this.BBl.setPadding(this.BBn - this.BBm, this.BBo, 0, 0);
+            this.CTs.setImageResource(2131689979);
+            this.CTs.setPadding(this.CTt - this.Ank, this.CTu, 0, 0);
             AppMethodBeat.o(30230);
             return;
-            if (!f.Yi()) {
+            if (!f.Zf()) {
               ((TextView)findViewById(2131303536)).setText("");
             }
           }
           ((TextView)findViewById(2131305199)).setText(getString(2131766159, new Object[] { "Mac" }));
-          this.BBl.setImageResource(2131689976);
-          this.BBl.setPadding(0, this.BBo, 0, 0);
-          if ((!f.Yi()) || (this.BBg)) {
+          this.CTs.setImageResource(2131689976);
+          this.CTs.setPadding(0, this.CTu, 0, 0);
+          if ((!f.Zf()) || (this.CTn)) {
             break label588;
           }
           ((TextView)findViewById(2131303536)).setText(2131766152);
-          this.BBl.setImageResource(2131689978);
-          this.BBl.setPadding(this.BBn - this.BBm, this.BBo, 0, 0);
+          this.CTs.setImageResource(2131689978);
+          this.CTs.setPadding(this.CTt - this.Ank, this.CTu, 0, 0);
           AppMethodBeat.o(30230);
           return;
         }
-        if (com.tencent.mm.modelsimple.n.aAC() == 3)
+        if (com.tencent.mm.modelsimple.n.aHs() == 3)
         {
-          this.BBl.setImageResource(2131689975);
-          this.BBl.setPadding(0, this.BBo, 0, 0);
+          this.CTs.setImageResource(2131689975);
+          this.CTs.setPadding(0, this.CTu, 0, 0);
           AppMethodBeat.o(30230);
           return;
         }
-        if (com.tencent.mm.modelsimple.n.aAC() == 6)
+        if (com.tencent.mm.modelsimple.n.aHs() == 6)
         {
-          this.BBl.setImageResource(2131689964);
-          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.BBl.getLayoutParams();
-          localLayoutParams.width = com.tencent.mm.cd.a.ao(this, 2131167018);
-          localLayoutParams.height = com.tencent.mm.cd.a.ao(this, 2131167018);
-          localLayoutParams.topMargin = this.BBo;
-          this.BBl.setLayoutParams(localLayoutParams);
-          this.BBl.setAlpha(0.3F);
+          this.CTs.setImageResource(2131689964);
+          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.CTs.getLayoutParams();
+          localLayoutParams.width = com.tencent.mm.cc.a.au(this, 2131167018);
+          localLayoutParams.height = com.tencent.mm.cc.a.au(this, 2131167018);
+          localLayoutParams.topMargin = this.CTu;
+          this.CTs.setLayoutParams(localLayoutParams);
+          this.CTs.setAlpha(0.3F);
           ((TextView)findViewById(2131303536)).setText("");
-          if (!bt.isNullOrNil(com.tencent.mm.modelsimple.n.hrJ))
+          if (!bs.isNullOrNil(com.tencent.mm.modelsimple.n.hSl))
           {
-            ((TextView)findViewById(2131299070)).setText(com.tencent.mm.modelsimple.n.hrJ);
+            ((TextView)findViewById(2131299070)).setText(com.tencent.mm.modelsimple.n.hSl);
             findViewById(2131299070).setVisibility(0);
           }
           AppMethodBeat.o(30230);
           return;
         }
       }
-      this.BBl.setImageResource(2131689981);
-      this.BBl.setPadding(0, this.BBo, 0, 0);
+      this.CTs.setImageResource(2131689981);
+      this.CTs.setPadding(0, this.CTu, 0, 0);
     }
     label588:
     AppMethodBeat.o(30230);
   }
   
-  public final void arM()
+  public final void ayD()
   {
     AppMethodBeat.i(30235);
-    az.arV();
-    if (!com.tencent.mm.model.c.aeG())
+    az.ayM();
+    if (!com.tencent.mm.model.c.afW())
     {
       finish();
       AppMethodBeat.o(30235);
       return;
     }
-    if ((com.tencent.mm.modelsimple.n.aAE()) && (!this.nph))
+    if ((com.tencent.mm.modelsimple.n.aHu()) && (!this.nSh))
     {
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WebWXLogoutUI", "extDevice remote lock");
-      this.nph = true;
-      tJ(this.nph);
+      ac.d("MicroMsg.WebWXLogoutUI", "extDevice remote lock");
+      this.nSh = true;
+      uL(this.nSh);
       updateStatus();
     }
     AppMethodBeat.o(30235);
@@ -306,14 +308,14 @@ public class WebWXLogoutUI
         return true;
       }
     }, 2131689488);
-    if ((!bt.isNullOrNil(com.tencent.mm.modelsimple.n.hrS)) && (com.tencent.mm.modelsimple.n.aAC() == 6)) {
+    if ((!bs.isNullOrNil(com.tencent.mm.modelsimple.n.hSu)) && (com.tencent.mm.modelsimple.n.aHs() == 6)) {
       addIconOptionMenu(10001, 2131690581, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(30214);
           paramAnonymousMenuItem = new Intent();
-          paramAnonymousMenuItem.putExtra("rawUrl", com.tencent.mm.modelsimple.n.hrS + "&lang=" + ac.eFu());
+          paramAnonymousMenuItem.putExtra("rawUrl", com.tencent.mm.modelsimple.n.hSu + "&lang=" + ab.eUO());
           paramAnonymousMenuItem.putExtra("showShare", false);
           paramAnonymousMenuItem.putExtra("neverGetA8Key", false);
           d.b(WebWXLogoutUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousMenuItem);
@@ -323,8 +325,8 @@ public class WebWXLogoutUI
       });
     }
     hideActionbarLine();
-    this.BBr = ((GridLayout)findViewById(2131306932));
-    this.BBl = ((ImageView)findViewById(2131305201));
+    this.CTx = ((GridLayout)findViewById(2131306932));
+    this.CTs = ((ImageView)findViewById(2131305201));
     Object localObject;
     label279:
     label338:
@@ -332,20 +334,20 @@ public class WebWXLogoutUI
     label443:
     int i;
     int j;
-    if (!f.Yi())
+    if (!f.Zf())
     {
-      this.BBr.removeView(findViewById(2131298361));
-      this.BBg = false;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebWXLogoutUI", "need hide lock bt ?: " + com.tencent.mm.modelsimple.n.aAG());
-      if (com.tencent.mm.modelsimple.n.aAG()) {
+      this.CTx.removeView(findViewById(2131298361));
+      this.CTn = false;
+      ac.i("MicroMsg.WebWXLogoutUI", "need hide lock bt ?: " + com.tencent.mm.modelsimple.n.aHw());
+      if (com.tencent.mm.modelsimple.n.aHw()) {
         break label628;
       }
       findViewById(2131301547).setVisibility(0);
       localObject = AnimatorInflater.loadAnimator(this, 2130837509);
       ((Animator)localObject).setTarget(findViewById(2131306937));
-      this.BBp = AnimatorInflater.loadAnimator(this, 2130837510);
-      this.BBp.setTarget(findViewById(2131306937));
-      this.BBp.addListener(new AnimatorListenerAdapter()
+      this.CTv = AnimatorInflater.loadAnimator(this, 2130837510);
+      this.CTv.setTarget(findViewById(2131306937));
+      this.CTv.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
@@ -355,11 +357,11 @@ public class WebWXLogoutUI
           AppMethodBeat.o(30216);
         }
       });
-      this.nph = com.tencent.mm.modelsimple.n.aAE();
-      this.BBh = findViewById(2131306935);
-      this.BBj = ((WeImageView)findViewById(2131300893));
-      tJ(this.nph);
-      this.BBh.setOnClickListener(new View.OnClickListener()
+      this.nSh = com.tencent.mm.modelsimple.n.aHu();
+      this.CTo = findViewById(2131306935);
+      this.CTq = ((WeImageView)findViewById(2131300893));
+      uL(this.nSh);
+      this.CTo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -373,7 +375,7 @@ public class WebWXLogoutUI
           {
             WebWXLogoutUI.f(WebWXLogoutUI.this);
             WebWXLogoutUI.this.findViewById(2131306937).setVisibility(0);
-            this.BBt.start();
+            this.CTz.start();
             AppMethodBeat.o(30217);
             return;
             WebWXLogoutUI.d(WebWXLogoutUI.this).setBackgroundResource(2131231759);
@@ -381,8 +383,8 @@ public class WebWXLogoutUI
           }
         }
       });
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WebWXLogoutUI", "need hide file bt ?: " + com.tencent.mm.modelsimple.n.aAH());
-      if (com.tencent.mm.modelsimple.n.aAH()) {
+      ac.i("MicroMsg.WebWXLogoutUI", "need hide file bt ?: " + com.tencent.mm.modelsimple.n.aHx());
+      if (com.tencent.mm.modelsimple.n.aHx()) {
         break label645;
       }
       findViewById(2131306931).setVisibility(0);
@@ -394,39 +396,39 @@ public class WebWXLogoutUI
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("Chat_User", "filehelper");
           paramAnonymousView.putExtra("key_show_bottom_app_panel", true);
-          com.tencent.mm.plugin.webwx.a.hYt.d(paramAnonymousView, WebWXLogoutUI.this);
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WebWXLogoutUI", "clicked file transfer bt, start filehelper");
+          com.tencent.mm.plugin.webwx.a.iyx.d(paramAnonymousView, WebWXLogoutUI.this);
+          ac.d("MicroMsg.WebWXLogoutUI", "clicked file transfer bt, start filehelper");
           WebWXLogoutUI.this.finish();
           AppMethodBeat.o(30218);
         }
       });
-      erZ();
+      eHt();
       localObject = (Button)findViewById(2131306942);
-      if (!bt.isNullOrNil(com.tencent.mm.modelsimple.n.hrQ)) {
-        ((Button)localObject).setText(com.tencent.mm.modelsimple.n.hrQ);
+      if (!bs.isNullOrNil(com.tencent.mm.modelsimple.n.hSs)) {
+        ((Button)localObject).setText(com.tencent.mm.modelsimple.n.hSs);
       }
       ((Button)localObject).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(30219);
-          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WebWXLogoutUI", "logout webwx");
+          ac.d("MicroMsg.WebWXLogoutUI", "logout webwx");
           WebWXLogoutUI.g(WebWXLogoutUI.this);
           AppMethodBeat.o(30219);
         }
       });
-      if (com.tencent.mm.modelsimple.n.aAC() != 1) {
+      if (com.tencent.mm.modelsimple.n.aHs() != 1) {
         break label662;
       }
       localObject = getResources().getDrawable(2131689981);
       localDrawable = getResources().getDrawable(2131689983);
       if ((localObject != null) && (localDrawable != null))
       {
-        this.BBm = ((Drawable)localObject).getIntrinsicWidth();
-        this.BBn = localDrawable.getIntrinsicWidth();
+        this.Ank = ((Drawable)localObject).getIntrinsicWidth();
+        this.CTt = localDrawable.getIntrinsicWidth();
       }
-      i = ap.dL(getContext());
-      j = ap.jA(getContext());
+      i = ap.dT(getContext());
+      j = ap.jL(getContext());
       localObject = new Point();
       if (Build.VERSION.SDK_INT < 17) {
         break label724;
@@ -436,18 +438,18 @@ public class WebWXLogoutUI
     for (;;)
     {
       int k = ((Point)localObject).y;
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WebWXLogoutUI", "statusbarheight:%d,screenheight:%d,actionbarheight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
-      this.BBo = ((int)(k / 4.0D) - j - i);
+      ac.d("MicroMsg.WebWXLogoutUI", "statusbarheight:%d,screenheight:%d,actionbarheight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+      this.CTu = ((int)(k / 4.0D) - j - i);
       updateStatus();
       AppMethodBeat.o(30228);
       return;
-      this.BBi = findViewById(2131306929);
-      this.BBk = ((WeImageView)findViewById(2131300897));
-      if (u.mY(u.aqM())) {}
-      for (this.BBg = true;; this.BBg = false)
+      this.CTp = findViewById(2131306929);
+      this.CTr = ((WeImageView)findViewById(2131300897));
+      if (u.nM(u.axC())) {}
+      for (this.CTn = true;; this.CTn = false)
       {
-        tK(this.BBg);
-        this.BBi.setOnClickListener(new View.OnClickListener()
+        uM(this.CTn);
+        this.CTp.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -467,13 +469,13 @@ public class WebWXLogoutUI
         break;
       }
       label628:
-      this.BBr.removeView(findViewById(2131301547));
+      this.CTx.removeView(findViewById(2131301547));
       break label279;
       label645:
-      this.BBr.removeView(findViewById(2131306931));
+      this.CTx.removeView(findViewById(2131306931));
       break label338;
       label662:
-      if (com.tencent.mm.modelsimple.n.aAC() != 2) {
+      if (com.tencent.mm.modelsimple.n.aHs() != 2) {
         break label443;
       }
       localObject = getResources().getDrawable(2131689976);
@@ -481,8 +483,8 @@ public class WebWXLogoutUI
       if ((localObject == null) || (localDrawable == null)) {
         break label443;
       }
-      this.BBm = ((Drawable)localObject).getIntrinsicWidth();
-      this.BBn = localDrawable.getIntrinsicWidth();
+      this.Ank = ((Drawable)localObject).getIntrinsicWidth();
+      this.CTt = localDrawable.getIntrinsicWidth();
       break label443;
       label724:
       getWindowManager().getDefaultDisplay().getSize((Point)localObject);
@@ -494,15 +496,15 @@ public class WebWXLogoutUI
     AppMethodBeat.i(30225);
     super.onCreate(paramBundle);
     if (getIntent() != null) {
-      this.BBq = getIntent().getIntExtra("intent.key.online_version", 0);
+      this.CTw = getIntent().getIntExtra("intent.key.online_version", 0);
     }
     initView();
     overridePendingTransition(2130772108, 2130771986);
-    az.aeS().a(281, this);
-    az.aeS().a(792, this);
-    az.arV();
+    az.agi().a(281, this);
+    az.agi().a(792, this);
+    az.ayM();
     com.tencent.mm.model.c.a(this);
-    com.tencent.mm.sdk.b.a.ESL.c(this.wHU);
+    com.tencent.mm.sdk.b.a.GpY.c(this.xUp);
     AppMethodBeat.o(30225);
   }
   
@@ -511,11 +513,11 @@ public class WebWXLogoutUI
     AppMethodBeat.i(30227);
     super.onDestroy();
     overridePendingTransition(2130771986, 2130772106);
-    az.aeS().b(281, this);
-    az.aeS().b(792, this);
-    az.arV();
+    az.agi().b(281, this);
+    az.agi().b(792, this);
+    az.ayM();
     com.tencent.mm.model.c.b(this);
-    com.tencent.mm.sdk.b.a.ESL.d(this.wHU);
+    com.tencent.mm.sdk.b.a.GpY.d(this.xUp);
     AppMethodBeat.o(30227);
   }
   
@@ -523,34 +525,34 @@ public class WebWXLogoutUI
   {
     AppMethodBeat.i(30226);
     super.onPause();
-    amy localamy;
-    if ((this.BAY) && (az.afw()))
+    aqc localaqc;
+    if ((this.CTf) && (az.agM()))
     {
-      localamy = new amy();
-      localamy.DnY = 27;
-      if (!u.mY(u.aqM())) {
+      localaqc = new aqc();
+      localaqc.EIY = 27;
+      if (!u.nM(u.axC())) {
         break label87;
       }
     }
     label87:
     for (int i = 1;; i = 2)
     {
-      localamy.uMR = i;
-      az.arV();
-      com.tencent.mm.model.c.apL().c(new j.a(23, localamy));
-      this.BAY = false;
+      localaqc.vVH = i;
+      az.ayM();
+      com.tencent.mm.model.c.awA().c(new j.a(23, localaqc));
+      this.CTf = false;
       AppMethodBeat.o(30226);
       return;
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(30234);
-    if (this.wfA != null)
+    if (this.xqQ != null)
     {
-      this.wfA.dismiss();
-      this.wfA = null;
+      this.xqQ.dismiss();
+      this.xqQ = null;
     }
     if (paramn.getType() == 281)
     {
@@ -564,9 +566,9 @@ public class WebWXLogoutUI
     boolean bool;
     if (paramn.getType() == 792)
     {
-      int i = ((b)paramn).diR;
-      if (this.BBp != null) {
-        this.BBp.start();
+      int i = ((b)paramn).dgm;
+      if (this.CTv != null) {
+        this.CTv.start();
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
@@ -584,10 +586,10 @@ public class WebWXLogoutUI
         break label211;
       }
       bool = true;
-      this.nph = bool;
-      com.tencent.mm.modelsimple.n.ev(this.nph);
+      this.nSh = bool;
+      com.tencent.mm.modelsimple.n.eP(this.nSh);
       updateStatus();
-      if (!this.nph) {
+      if (!this.nSh) {
         break label217;
       }
     }
@@ -595,7 +597,7 @@ public class WebWXLogoutUI
     label217:
     for (paramString = "lock";; paramString = "unlock")
     {
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WebWXLogoutUI", "%s extDevice success", new Object[] { paramString });
+      ac.d("MicroMsg.WebWXLogoutUI", "%s extDevice success", new Object[] { paramString });
       AppMethodBeat.o(30234);
       return;
       bool = false;
@@ -611,7 +613,7 @@ public class WebWXLogoutUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.WebWXLogoutUI
  * JD-Core Version:    0.7.0.1
  */

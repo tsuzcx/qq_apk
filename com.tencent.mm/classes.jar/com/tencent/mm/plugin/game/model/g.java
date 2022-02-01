@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yh;
+import com.tencent.mm.g.a.ys;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.game.commlib.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,95 +21,95 @@ import org.json.JSONObject;
 
 public final class g
 {
-  public static g rVy;
+  public static g tdq;
   
-  public static void Y(Map<String, String> paramMap)
+  public static void Z(Map<String, String> paramMap)
   {
     int i = 1;
-    AppMethodBeat.i(196750);
+    AppMethodBeat.i(199220);
     String str;
     if (paramMap.get(".sysmsg.control_command.game_download") != null)
     {
-      if (bt.getInt((String)paramMap.get(".sysmsg.control_command.game_download.delete_all_download_task"), 0) == 1) {}
+      if (bs.getInt((String)paramMap.get(".sysmsg.control_command.game_download.delete_all_download_task"), 0) == 1) {}
       Object localObject;
       for (;;)
       {
-        localObject = bt.by((String)paramMap.get(".sysmsg.control_command.game_download.delete_download_task.$appid"), "");
-        str = bt.by((String)paramMap.get(".sysmsg.control_command.game_download.delete_download_task.download_url"), "");
+        localObject = bs.bG((String)paramMap.get(".sysmsg.control_command.game_download.delete_download_task.$appid"), "");
+        str = bs.bG((String)paramMap.get(".sysmsg.control_command.game_download.delete_download_task.download_url"), "");
         if (i == 0) {
           break label135;
         }
-        paramMap = com.tencent.mm.plugin.downloader.model.d.bQr();
-        if (bt.gL(paramMap)) {
+        paramMap = com.tencent.mm.plugin.downloader.model.d.bXH();
+        if (bs.gY(paramMap)) {
           break;
         }
         paramMap = paramMap.iterator();
         while (paramMap.hasNext())
         {
           localObject = (com.tencent.mm.plugin.downloader.g.a)paramMap.next();
-          f.bQt().og(((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId);
+          f.bXJ().rS(((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId);
         }
         i = 0;
       }
-      AppMethodBeat.o(196750);
+      AppMethodBeat.o(199220);
       return;
       label135:
       paramMap = null;
-      if (bt.isNullOrNil((String)localObject)) {
+      if (bs.isNullOrNil((String)localObject)) {
         break label170;
       }
-      paramMap = com.tencent.mm.plugin.downloader.model.d.Sk((String)localObject);
+      paramMap = com.tencent.mm.plugin.downloader.model.d.Ww((String)localObject);
     }
     for (;;)
     {
       if (paramMap != null) {
-        f.bQt().og(paramMap.field_downloadId);
+        f.bXJ().rS(paramMap.field_downloadId);
       }
-      AppMethodBeat.o(196750);
+      AppMethodBeat.o(199220);
       return;
       label170:
-      if (!bt.isNullOrNil(str)) {
-        paramMap = com.tencent.mm.plugin.downloader.model.d.Sn(str);
+      if (!bs.isNullOrNil(str)) {
+        paramMap = com.tencent.mm.plugin.downloader.model.d.Wz(str);
       }
     }
   }
   
   public static void a(String paramString, Map<String, String> paramMap, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(196754);
+    AppMethodBeat.i(199224);
     String str = ".sysmsg.control_command.auto_run_switch.".concat(String.valueOf(paramString));
     if (!paramMap.containsKey(str))
     {
-      AppMethodBeat.o(196754);
+      AppMethodBeat.o(199224);
       return;
     }
     try
     {
-      paramJSONObject.put(paramString, bt.getInt((String)paramMap.get(str), 0));
-      AppMethodBeat.o(196754);
+      paramJSONObject.put(paramString, bs.getInt((String)paramMap.get(str), 0));
+      AppMethodBeat.o(199224);
       return;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(196754);
+      AppMethodBeat.o(199224);
     }
   }
   
   public static void c(List<String> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(196752);
-    if (bt.gL(paramList))
+    AppMethodBeat.i(199222);
+    if (bs.gY(paramList))
     {
-      AppMethodBeat.o(196752);
+      AppMethodBeat.o(199222);
       return;
     }
-    Object localObject1 = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fqe, ""));
+    Object localObject1 = bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNU, ""));
     try
     {
-      if (!bt.isNullOrNil((String)localObject1)) {}
+      if (!bs.isNullOrNil((String)localObject1)) {}
       for (localObject1 = new JSONArray((String)localObject1); localObject1 == null; localObject1 = new JSONArray())
       {
-        AppMethodBeat.o(196752);
+        AppMethodBeat.o(199222);
         return;
       }
     }
@@ -118,8 +118,8 @@ public final class g
       Object localObject2;
       for (;;)
       {
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqe, "");
-        ad.printErrStackTrace("MicroMsg.GameControlCmdParser", localJSONException, "", new Object[0]);
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNU, "");
+        ac.printErrStackTrace("MicroMsg.GameControlCmdParser", localJSONException, "", new Object[0]);
         localObject2 = null;
       }
       Iterator localIterator = paramList.iterator();
@@ -133,15 +133,15 @@ public final class g
           localObject2.remove(0);
         }
         localObject2.put(str);
-        ((com.tencent.mm.plugin.game.api.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.d.class)).cBc();
-        paramList = r.cDj();
-        if ((paramList != null) && (bt.nullAsNil(paramList.field_gameMsgId).equals(str))) {
-          com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fjf, Long.valueOf(0L));
+        ((com.tencent.mm.plugin.game.api.d)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.d.class)).cOl();
+        paramList = r.cQt();
+        if ((paramList != null) && (bs.nullAsNil(paramList.field_gameMsgId).equals(str))) {
+          com.tencent.mm.kernel.g.agR().agA().set(ah.a.GGU, Long.valueOf(0L));
         }
-        paramList = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().acA(str);
+        paramList = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().ahs(str);
         if ((paramList != null) && (str.equals(paramList.field_gameMsgId)))
         {
-          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().delete(paramList, new String[0]);
+          ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().delete(paramList, new String[0]);
           i = 1;
           if (i == 0) {
             break label374;
@@ -152,29 +152,29 @@ public final class g
           if (!paramBoolean) {
             break label378;
           }
-          com.tencent.mm.game.report.e.a(aj.getContext(), 0, 0, 0, 403, i, paramList.field_appId, 0, paramList.rWQ, paramList.field_gameMsgId, paramList.rWR, com.tencent.mm.game.report.e.a("resource", String.valueOf(paramList.rWe.rXc), paramList.rWS, null));
+          com.tencent.mm.game.report.e.a(ai.getContext(), 0, 0, 0, 403, i, paramList.field_appId, 0, paramList.teI, paramList.field_gameMsgId, paramList.teJ, com.tencent.mm.game.report.e.a("resource", String.valueOf(paramList.tdW.teU), paramList.teK, null));
           break;
-          ad.i("MicroMsg.GameMessageService", "dont have msgId:%s for delete", new Object[] { str });
+          ac.i("MicroMsg.GameMessageService", "dont have msgId:%s for delete", new Object[] { str });
           paramList = new o();
           paramList.field_gameMsgId = str;
           i = 0;
           break label272;
         }
       }
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqe, localObject2.toString());
-      ad.i("MicroMsg.GameControlCmdParser", "deleted msg list:%s", new Object[] { localObject2.toString() });
-      AppMethodBeat.o(196752);
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNU, localObject2.toString());
+      ac.i("MicroMsg.GameControlCmdParser", "deleted msg list:%s", new Object[] { localObject2.toString() });
+      AppMethodBeat.o(199222);
     }
   }
   
-  public static List<a> cDa()
+  public static List<a> cQk()
   {
-    AppMethodBeat.i(196751);
-    Object localObject = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fqg, ""));
+    AppMethodBeat.i(199221);
+    Object localObject = bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNW, ""));
     localArrayList = new ArrayList();
-    if (bt.isNullOrNil((String)localObject))
+    if (bs.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(196751);
+      AppMethodBeat.o(199221);
       return localArrayList;
     }
     try
@@ -183,20 +183,20 @@ public final class g
       int i = 0;
       while (i < ((JSONArray)localObject).length())
       {
-        localArrayList.add(a.acz(((JSONArray)localObject).optString(i)));
+        localArrayList.add(a.ahr(((JSONArray)localObject).optString(i)));
         i += 1;
       }
       return localArrayList;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(196751);
+      AppMethodBeat.o(199221);
     }
   }
   
-  public static List<String> u(String paramString, Map<String, String> paramMap)
+  public static List<String> v(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(196753);
+    AppMethodBeat.i(199223);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i == 0) {}
@@ -208,7 +208,7 @@ public final class g
       int j = i + 1;
       str = (String)paramMap.get(str);
       i = j;
-      if (bt.isNullOrNil(str)) {
+      if (bs.isNullOrNil(str)) {
         break;
       }
       localArrayList.add(str);
@@ -216,34 +216,34 @@ public final class g
       break;
     }
     label125:
-    AppMethodBeat.o(196753);
+    AppMethodBeat.o(199223);
     return localArrayList;
   }
   
   public static final class a
   {
     public long endTime;
-    public int rVD;
-    public List<String> rVE;
     public long startTime;
+    public int tdv;
+    public List<String> tdw;
     
     public a()
     {
-      AppMethodBeat.i(196747);
+      AppMethodBeat.i(199217);
       this.startTime = 0L;
       this.endTime = 0L;
-      this.rVD = -10;
-      this.rVE = new ArrayList();
-      AppMethodBeat.o(196747);
+      this.tdv = -10;
+      this.tdw = new ArrayList();
+      AppMethodBeat.o(199217);
     }
     
-    static a acz(String paramString)
+    static a ahr(String paramString)
     {
-      AppMethodBeat.i(196749);
+      AppMethodBeat.i(199219);
       locala = new a();
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
-        AppMethodBeat.o(196749);
+        AppMethodBeat.o(199219);
         return locala;
       }
       try
@@ -251,14 +251,14 @@ public final class g
         paramString = new JSONObject(paramString);
         locala.startTime = paramString.optLong("startTime", 0L);
         locala.endTime = paramString.optLong("endTime", 0L);
-        locala.rVD = paramString.optInt("basicType", -10);
+        locala.tdv = paramString.optInt("basicType", -10);
         paramString = paramString.optJSONArray("msgIdList");
         if (paramString != null)
         {
           int i = 0;
           while (i < paramString.length())
           {
-            locala.rVE.add(paramString.optString(i));
+            locala.tdw.add(paramString.optString(i));
             i += 1;
           }
         }
@@ -266,21 +266,21 @@ public final class g
       }
       catch (JSONException paramString)
       {
-        AppMethodBeat.o(196749);
+        AppMethodBeat.o(199219);
       }
     }
     
     public final String toJson()
     {
-      AppMethodBeat.i(196748);
+      AppMethodBeat.i(199218);
       Object localObject = new JSONObject();
       try
       {
         ((JSONObject)localObject).put("startTime", this.startTime);
         ((JSONObject)localObject).put("endTime", this.endTime);
-        ((JSONObject)localObject).put("basicType", this.rVD);
+        ((JSONObject)localObject).put("basicType", this.tdv);
         JSONArray localJSONArray = new JSONArray();
-        Iterator localIterator = this.rVE.iterator();
+        Iterator localIterator = this.tdw.iterator();
         while (localIterator.hasNext())
         {
           localJSONArray.put((String)localIterator.next());
@@ -291,7 +291,7 @@ public final class g
       catch (JSONException localJSONException) {}
       for (;;)
       {
-        AppMethodBeat.o(196748);
+        AppMethodBeat.o(199218);
         return localObject;
         ((JSONObject)localObject).put("msgIdList", localJSONException);
       }

@@ -12,22 +12,22 @@ public class PluginAvatar
   public void configure(g paramg)
   {
     AppMethodBeat.i(151429);
-    o.a("avatar", "avatar", 536870912L, 0, true);
+    o.a("avatar", "avatar", 536870912L, 0);
     AppMethodBeat.o(151429);
   }
   
   public void execute(g paramg)
   {
     AppMethodBeat.i(151430);
-    if (paramg.agu()) {
-      pin(c.bvL());
+    if (paramg.ahL()) {
+      pin(c.bCH());
     }
     AppMethodBeat.o(151430);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.avatar.PluginAvatar
  * JD-Core Version:    0.7.0.1
  */

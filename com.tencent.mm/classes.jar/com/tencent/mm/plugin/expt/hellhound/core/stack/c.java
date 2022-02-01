@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bi;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bk;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class c
 {
-  public static void a(bi parambi)
+  public static void a(bk parambk)
   {
     AppMethodBeat.i(121880);
-    if (parambi == null)
+    if (parambk == null)
     {
       AppMethodBeat.o(121880);
       return;
@@ -18,36 +18,36 @@ public final class c
     Object localObject = null;
     try
     {
-      parambi = parambi.toByteArray();
-      b.o("hell_astackd_mmkv_key", parambi);
+      parambk = parambk.toByteArray();
+      b.o("hell_astackd_mmkv_key", parambk);
       AppMethodBeat.o(121880);
       return;
     }
-    catch (Exception parambi)
+    catch (Exception parambk)
     {
       for (;;)
       {
-        ad.printErrStackTrace("ActivityStackDao", parambi, "ActivityStackDao write", new Object[0]);
-        parambi = localObject;
+        ac.printErrStackTrace("ActivityStackDao", parambk, "ActivityStackDao write", new Object[0]);
+        parambk = localObject;
       }
     }
   }
   
-  public static bi cbE()
+  public static bk ciP()
   {
     AppMethodBeat.i(121879);
-    bi localbi2 = cbF();
-    bi localbi1 = localbi2;
-    if (localbi2 == null)
+    bk localbk2 = ciQ();
+    bk localbk1 = localbk2;
+    if (localbk2 == null)
     {
-      localbi1 = new bi();
-      a(localbi1);
+      localbk1 = new bk();
+      a(localbk1);
     }
     AppMethodBeat.o(121879);
-    return localbi1;
+    return localbk1;
   }
   
-  private static bi cbF()
+  private static bk ciQ()
   {
     AppMethodBeat.i(121881);
     byte[] arrayOfByte = b.getBytes("hell_astackd_mmkv_key");
@@ -56,16 +56,16 @@ public final class c
       AppMethodBeat.o(121881);
       return null;
     }
-    bi localbi = new bi();
+    bk localbk = new bk();
     try
     {
-      localbi.parseFrom(arrayOfByte);
+      localbk.parseFrom(arrayOfByte);
       AppMethodBeat.o(121881);
-      return localbi;
+      return localbk;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
+      ac.printErrStackTrace("ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
       AppMethodBeat.o(121881);
     }
     return null;
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.c
  * JD-Core Version:    0.7.0.1
  */

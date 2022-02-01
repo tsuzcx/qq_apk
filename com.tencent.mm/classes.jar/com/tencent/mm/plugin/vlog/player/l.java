@@ -1,54 +1,52 @@
 package com.tencent.mm.plugin.vlog.player;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.f.c;
+import android.opengl.EGLContext;
+import android.opengl.EGLDisplay;
+import android.view.Surface;
 import com.tencent.mm.media.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import d.g.a.a;
+import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache;", "", "()V", "externalTexIndex", "", "externalTexsPool", "", "Lcom/tencent/mm/media/globject/GLTextureObject;", "[Lcom/tencent/mm/media/globject/GLTextureObject;", "normalTexIndex", "normalTexsPool", "clearCache", "", "initCache", "releaseExternalTex", "tex", "releaseNormalTex", "requestExternalTex", "requestNormalTex", "Companion", "plugin-vlog_release"})
-public final class l
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "", "width", "", "height", "(II)V", "consumer", "Landroid/view/Surface;", "getConsumer", "()Landroid/view/Surface;", "setConsumer", "(Landroid/view/Surface;)V", "getHeight", "()I", "productionTexObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "getProductionTexObj", "()Lcom/tencent/mm/media/globject/GLTextureObject;", "setProductionTexObj", "(Lcom/tencent/mm/media/globject/GLTextureObject;)V", "getWidth", "attachConsumer", "", "surface", "bindPreloadConsumer", "eglContext", "Landroid/opengl/EGLContext;", "eglDisplay", "Landroid/opengl/EGLDisplay;", "clearTask", "getProductionTex", "queueEvent", "task", "Lkotlin/Function0;", "release", "submitProduction", "ptsMS", "", "unbindPreloadConsumer", "plugin-vlog_release"})
+public abstract class l
 {
-  public static final a LsA;
-  final d[] Lsw;
-  final d[] Lsx;
-  int Lsy;
-  int Lsz;
+  d Aqx;
+  Surface Aqy;
+  final int height;
+  final int width;
   
-  static
+  public l(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(201047);
-    LsA = new a((byte)0);
-    AppMethodBeat.o(201047);
+    this.width = paramInt1;
+    this.height = paramInt2;
   }
   
-  public l()
-  {
-    AppMethodBeat.i(201046);
-    this.Lsw = new d[2];
-    this.Lsx = new d[2];
-    AppMethodBeat.o(201046);
-  }
+  public abstract void a(EGLContext paramEGLContext, EGLDisplay paramEGLDisplay, Surface paramSurface, int paramInt1, int paramInt2);
   
-  public final void dRg()
+  public abstract void clearTask();
+  
+  public abstract void efV();
+  
+  public final int efX()
   {
-    AppMethodBeat.i(201045);
-    ad.i("MicroMsg.VLogScriptTexCache", "init cache, cacheTexsNum:2");
-    int i = 0;
-    while (i < 2)
-    {
-      this.Lsw[i] = c.a(false, 11L);
-      this.Lsx[i] = c.a(true, 11L);
-      i += 1;
+    d locald = this.Aqx;
+    if (locald != null) {
+      return locald.gRW;
     }
-    AppMethodBeat.o(201045);
+    return -1;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache$Companion;", "", "()V", "TAG", "", "cacheTexsNum", "", "plugin-vlog_release"})
-  public static final class a {}
+  public abstract void h(a<y> parama);
+  
+  public abstract void k(Surface paramSurface);
+  
+  public abstract void release();
+  
+  public abstract void yM(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.player.l
  * JD-Core Version:    0.7.0.1
  */

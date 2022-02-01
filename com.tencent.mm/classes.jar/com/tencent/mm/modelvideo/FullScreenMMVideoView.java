@@ -3,16 +3,16 @@ package com.tencent.mm.modelvideo;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.a.p;
+import com.tencent.mm.plugin.a.f;
 import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public class FullScreenMMVideoView
   extends MMVideoView
 {
-  private String hxI;
+  private String hYj;
   
   public FullScreenMMVideoView(Context paramContext)
   {
@@ -31,96 +31,96 @@ public class FullScreenMMVideoView
   
   private String getRootPath()
   {
-    AppMethodBeat.i(195141);
-    if (!bt.isNullOrNil(this.hxI))
+    AppMethodBeat.i(209964);
+    if (!bs.isNullOrNil(this.hYj))
     {
-      str = this.hxI;
-      AppMethodBeat.o(195141);
+      str = this.hYj;
+      AppMethodBeat.o(209964);
       return str;
     }
-    String str = com.tencent.mm.loader.j.b.aih() + "video/";
-    AppMethodBeat.o(195141);
+    String str = com.tencent.mm.loader.j.b.aph() + "video/";
+    AppMethodBeat.o(209964);
     return str;
   }
   
-  protected final void aCr()
+  protected final void aJh()
   {
-    AppMethodBeat.i(195140);
+    AppMethodBeat.i(209963);
     try
     {
-      if (!bt.isNullOrNil(this.url))
+      if (!bs.isNullOrNil(this.url))
       {
-        this.hxP = ("MMVideo_FullScreen" + this.url.hashCode());
-        this.hxQ = (getRootPath() + "MMVideo_" + this.url.hashCode() + ".mp4");
-        i.aMF(i.aMQ(this.hxQ));
-        ad.i(this.TAG, "%s set video path [%s %s]", new Object[] { bel(), this.hxP, this.hxQ });
+        this.hYq = ("MMVideo_FullScreen" + this.url.hashCode());
+        this.hYr = (getRootPath() + "MMVideo_" + this.url.hashCode() + ".mp4");
+        i.aSh(i.aSs(this.hYr));
+        ac.i(this.TAG, "%s set video path [%s %s]", new Object[] { blf(), this.hYq, this.hYr });
       }
-      AppMethodBeat.o(195140);
+      AppMethodBeat.o(209963);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.e(this.TAG, localThrowable.toString());
-      AppMethodBeat.o(195140);
+      ac.e(this.TAG, localThrowable.toString());
+      AppMethodBeat.o(209963);
     }
   }
   
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(195139);
+    AppMethodBeat.i(209962);
     try
     {
       super.c(paramBoolean, paramString, paramInt);
-      aCr();
-      AppMethodBeat.o(195139);
+      aJh();
+      AppMethodBeat.o(209962);
       return;
     }
     catch (Throwable paramString)
     {
-      ad.e(this.TAG, paramString.toString());
-      AppMethodBeat.o(195139);
+      ac.e(this.TAG, paramString.toString());
+      AppMethodBeat.o(209962);
     }
   }
   
   public final void onCompletion()
   {
-    AppMethodBeat.i(195142);
+    AppMethodBeat.i(209965);
     try
     {
-      if (this.hyg) {
-        super.dwE();
+      if (this.hYH) {
+        super.dLd();
       }
       for (;;)
       {
-        this.KCd.release();
-        AppMethodBeat.o(195142);
+        this.hYv.release();
+        AppMethodBeat.o(209965);
         return;
         super.onCompletion();
-        if ((this.hxP != null) && (this.hxO != null)) {
-          this.hxO.fy(this.hxP);
+        if ((this.hYq != null) && (this.hYp != null)) {
+          this.hYp.fo(this.hYq);
         }
         reset();
-        if (this.nAZ != null) {
-          this.nAZ.stop();
+        if (this.odZ != null) {
+          this.odZ.stop();
         }
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.e(this.TAG, localThrowable.toString());
-      AppMethodBeat.o(195142);
+      ac.e(this.TAG, localThrowable.toString());
+      AppMethodBeat.o(209965);
     }
   }
   
   public void setRootPath(String paramString)
   {
-    this.hxI = paramString;
+    this.hYj = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.FullScreenMMVideoView
  * JD-Core Version:    0.7.0.1
  */

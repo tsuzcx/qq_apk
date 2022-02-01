@@ -9,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.v;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,24 +24,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ol;
-import com.tencent.mm.g.a.ys;
+import com.tencent.mm.g.a.ou;
+import com.tencent.mm.g.a.vw;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.event.b.a;
 import com.tencent.mm.plugin.finder.event.base.d;
-import com.tencent.mm.plugin.finder.event.base.i;
+import com.tencent.mm.plugin.finder.event.base.h;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
 import com.tencent.mm.plugin.finder.preload.MediaPreloadCore.d;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.video.i;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.a.j;
+import d.f;
 import d.g.b.u;
 import d.g.b.w;
 import d.n.n;
@@ -51,50 +52,50 @@ import d.y;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bufferSet", "Ljava/util/concurrent/ConcurrentHashMap;", "callback", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$callback$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$callback$1;", "centerFeedId", "", "data", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "globalPreloadTv", "Landroid/widget/TextView;", "getGlobalPreloadTv", "()Landroid/widget/TextView;", "globalPreloadTv$delegate", "Lkotlin/Lazy;", "headerCount", "isCreated", "", "isOpenMultiBitRateDownload", "listener", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$listener$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$listener$1;", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mediaCache", "", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$Info;", "notifyListener", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$notifyListener$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$notifyListener$1;", "observer", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$observer$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$observer$1;", "playingIndex", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "recyclerView$delegate", "tabType", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "buildText", "feedId", "simpleFeedId", "mediaId", "isVideo", "percent", "preloadPercent", "preloadMinSize", "fileFormat", "codingFormat", "position", "size", "hasPlayed", "relatedFeedId", "desc", "findCacheInfo", "originalMediaId", "notifyChange", "", "onCreate", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "onDetachedFromWindow", "Companion", "Info", "TestAdapter", "TestHolder", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bufferSet", "Ljava/util/concurrent/ConcurrentHashMap;", "callback", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$callback$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$callback$1;", "centerFeedId", "", "data", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "globalPreloadTv", "Landroid/widget/TextView;", "getGlobalPreloadTv", "()Landroid/widget/TextView;", "globalPreloadTv$delegate", "Lkotlin/Lazy;", "headerCount", "isCreated", "", "isOpenMultiBitRateDownload", "listener", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$listener$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$listener$1;", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mediaCache", "", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$Info;", "notifyListener", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$notifyListener$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$notifyListener$1;", "observer", "com/tencent/mm/plugin/finder/view/TestPreloadPreview$observer$1", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$observer$1;", "playingIndex", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "recyclerView$delegate", "tabType", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "buildText", "feedId", "simpleFeedId", "mediaId", "isVideo", "percent", "preloadPercent", "preloadMinSize", "fileFormat", "codingFormat", "position", "size", "hasPlayed", "relatedFeedId", "desc", "findCacheInfo", "originalMediaId", "notifyChange", "", "onCreate", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "onDetachedFromWindow", "Companion", "Info", "TestAdapter", "TestHolder", "plugin-finder_release"})
 public final class TestPreloadPreview
   extends FrameLayout
 {
-  public static final a Lgk;
-  private int IoU;
-  private final boolean KUi;
-  private final d.f Lga;
-  private final ConcurrentHashMap<Integer, Integer> Lgb;
-  private final d.f Lgc;
-  private DataBuffer<BaseFinderFeed> Lgd;
-  private final ConcurrentHashMap<String, b> Lge;
-  private final e Lgf;
-  private int Lgg;
-  private final i Lgh;
-  private final g Lgi;
-  private final j Lgj;
-  private boolean cCu;
-  private final ap hbq;
-  private int qYg;
-  private com.tencent.mm.plugin.finder.video.c qrq;
-  private long qsk;
+  public static final TestPreloadPreview.a rZP;
+  private boolean czD;
+  private int diw;
+  private final ao hBR;
+  private final f rZE;
+  private final ConcurrentHashMap<Integer, Integer> rZF;
+  private final f rZG;
+  private DataBuffer<BaseFinderFeed> rZH;
+  private int rZI;
+  private final ConcurrentHashMap<String, b> rZJ;
+  private final e rZK;
+  private int rZL;
+  private final i rZM;
+  private final g rZN;
+  private final j rZO;
+  private i rbo;
+  private long rdL;
+  private final boolean rwd;
   
   static
   {
-    AppMethodBeat.i(200225);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(TestPreloadPreview.class), "recyclerView", "getRecyclerView()Landroid/support/v7/widget/RecyclerView;")), (d.l.k)w.a(new u(w.bk(TestPreloadPreview.class), "globalPreloadTv", "getGlobalPreloadTv()Landroid/widget/TextView;")) };
-    Lgk = new a((byte)0);
-    AppMethodBeat.o(200225);
+    AppMethodBeat.i(204295);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(TestPreloadPreview.class), "recyclerView", "getRecyclerView()Landroid/support/v7/widget/RecyclerView;")), (d.l.k)w.a(new u(w.bn(TestPreloadPreview.class), "globalPreloadTv", "getGlobalPreloadTv()Landroid/widget/TextView;")) };
+    rZP = new TestPreloadPreview.a((byte)0);
+    AppMethodBeat.o(204295);
   }
   
   public TestPreloadPreview(final Context paramContext, final AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200230);
-    this.Lga = d.g.E((d.g.a.a)new l(this));
-    this.Lgb = new ConcurrentHashMap();
-    this.Lgc = d.g.E((d.g.a.a)new f(this));
-    paramContext = com.tencent.mm.plugin.finder.storage.b.qJA;
-    this.KUi = com.tencent.mm.plugin.finder.storage.b.fUN();
+    AppMethodBeat.i(204300);
+    this.rZE = d.g.K((d.g.a.a)new l(this));
+    this.rZF = new ConcurrentHashMap();
+    this.rZG = d.g.K((d.g.a.a)new f(this));
+    paramContext = com.tencent.mm.plugin.finder.storage.b.rCU;
+    this.rwd = com.tencent.mm.plugin.finder.storage.b.cAk();
     setId(2131305708);
-    LayoutInflater.from(getContext()).inflate(2131496352, (ViewGroup)this, true);
-    paramContext = findViewById(2131307891);
-    paramAttributeSet = findViewById(2131307299);
+    LayoutInflater.from(getContext()).inflate(2131496366, (ViewGroup)this, true);
+    paramContext = findViewById(2131308028);
+    paramAttributeSet = findViewById(2131307330);
     d.g.b.k.g(paramAttributeSet, "expandBtn");
     paramAttributeSet.setTag(Boolean.FALSE);
     getRecyclerView().setLayoutFrozen(true);
@@ -102,36 +103,36 @@ public final class TestPreloadPreview
     {
       public final void run()
       {
-        AppMethodBeat.i(200194);
+        AppMethodBeat.i(204264);
         View localView = paramContext;
         d.g.b.k.g(localView, "container");
-        localView.setTranslationY(-this.Lgl.getRecyclerView().getHeight() - this.Lgl.getGlobalPreloadTv().getHeight());
-        AppMethodBeat.o(200194);
+        localView.setTranslationY(-this.rZQ.getRecyclerView().getHeight() - this.rZQ.getGlobalPreloadTv().getHeight());
+        AppMethodBeat.o(204264);
       }
     });
     paramAttributeSet.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(200197);
+        AppMethodBeat.i(204267);
         paramAnonymousView = paramAttributeSet;
         d.g.b.k.g(paramAnonymousView, "expandBtn");
         if (d.g.b.k.g(paramAnonymousView.getTag(), Boolean.TRUE))
         {
           paramContext.animate().cancel();
-          paramContext.animate().translationY(-this.Lgl.getRecyclerView().getHeight() - this.Lgl.getGlobalPreloadTv().getHeight()).withEndAction((Runnable)new Runnable()
+          paramContext.animate().translationY(-this.rZQ.getRecyclerView().getHeight() - this.rZQ.getGlobalPreloadTv().getHeight()).withEndAction((Runnable)new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(200195);
-              this.Lgn.Lgl.getRecyclerView().setLayoutFrozen(true);
-              AppMethodBeat.o(200195);
+              AppMethodBeat.i(204265);
+              this.rZT.rZQ.getRecyclerView().setLayoutFrozen(true);
+              AppMethodBeat.o(204265);
             }
           }).setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.6F)).setDuration(220L).start();
           paramAnonymousView = paramAttributeSet;
           d.g.b.k.g(paramAnonymousView, "expandBtn");
           paramAnonymousView.setTag(Boolean.FALSE);
-          AppMethodBeat.o(200197);
+          AppMethodBeat.o(204267);
           return;
         }
         paramContext.animate().cancel();
@@ -139,43 +140,43 @@ public final class TestPreloadPreview
         {
           public final void run()
           {
-            AppMethodBeat.i(200196);
-            View localView = this.Lgn.uGQ;
+            AppMethodBeat.i(204266);
+            View localView = this.rZT.rZR;
             d.g.b.k.g(localView, "container");
             localView.setTranslationY(0.0F);
-            this.Lgn.Lgl.getRecyclerView().setLayoutFrozen(false);
-            AppMethodBeat.o(200196);
+            this.rZT.rZQ.getRecyclerView().setLayoutFrozen(false);
+            AppMethodBeat.o(204266);
           }
         }).setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.6F)).setDuration(220L).start();
         paramAnonymousView = paramAttributeSet;
         d.g.b.k.g(paramAnonymousView, "expandBtn");
         paramAnonymousView.setTag(Boolean.TRUE);
-        AppMethodBeat.o(200197);
+        AppMethodBeat.o(204267);
       }
     });
-    this.Lge = new ConcurrentHashMap();
-    this.Lgf = new e(this);
-    this.Lgg = -1;
-    this.hbq = new ap(Looper.getMainLooper());
-    this.Lgh = new i(this);
-    this.Lgi = new g(this);
-    this.Lgj = new j(this);
-    AppMethodBeat.o(200230);
+    this.rZJ = new ConcurrentHashMap();
+    this.rZK = new e(this);
+    this.rZL = -1;
+    this.hBR = new ao(Looper.getMainLooper());
+    this.rZM = new i(this);
+    this.rZN = new g(this);
+    this.rZO = new j(this);
+    AppMethodBeat.o(204300);
   }
   
   public TestPreloadPreview(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200231);
-    this.Lga = d.g.E((d.g.a.a)new l(this));
-    this.Lgb = new ConcurrentHashMap();
-    this.Lgc = d.g.E((d.g.a.a)new f(this));
-    paramContext = com.tencent.mm.plugin.finder.storage.b.qJA;
-    this.KUi = com.tencent.mm.plugin.finder.storage.b.fUN();
+    AppMethodBeat.i(204301);
+    this.rZE = d.g.K((d.g.a.a)new l(this));
+    this.rZF = new ConcurrentHashMap();
+    this.rZG = d.g.K((d.g.a.a)new f(this));
+    paramContext = com.tencent.mm.plugin.finder.storage.b.rCU;
+    this.rwd = com.tencent.mm.plugin.finder.storage.b.cAk();
     setId(2131305708);
-    LayoutInflater.from(getContext()).inflate(2131496352, (ViewGroup)this, true);
-    paramContext = findViewById(2131307891);
-    paramAttributeSet = findViewById(2131307299);
+    LayoutInflater.from(getContext()).inflate(2131496366, (ViewGroup)this, true);
+    paramContext = findViewById(2131308028);
+    paramAttributeSet = findViewById(2131307330);
     d.g.b.k.g(paramAttributeSet, "expandBtn");
     paramAttributeSet.setTag(Boolean.FALSE);
     getRecyclerView().setLayoutFrozen(true);
@@ -183,36 +184,36 @@ public final class TestPreloadPreview
     {
       public final void run()
       {
-        AppMethodBeat.i(200194);
+        AppMethodBeat.i(204264);
         View localView = paramContext;
         d.g.b.k.g(localView, "container");
-        localView.setTranslationY(-this.Lgl.getRecyclerView().getHeight() - this.Lgl.getGlobalPreloadTv().getHeight());
-        AppMethodBeat.o(200194);
+        localView.setTranslationY(-this.rZQ.getRecyclerView().getHeight() - this.rZQ.getGlobalPreloadTv().getHeight());
+        AppMethodBeat.o(204264);
       }
     });
     paramAttributeSet.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(200197);
+        AppMethodBeat.i(204267);
         paramAnonymousView = paramAttributeSet;
         d.g.b.k.g(paramAnonymousView, "expandBtn");
         if (d.g.b.k.g(paramAnonymousView.getTag(), Boolean.TRUE))
         {
           paramContext.animate().cancel();
-          paramContext.animate().translationY(-this.Lgl.getRecyclerView().getHeight() - this.Lgl.getGlobalPreloadTv().getHeight()).withEndAction((Runnable)new Runnable()
+          paramContext.animate().translationY(-this.rZQ.getRecyclerView().getHeight() - this.rZQ.getGlobalPreloadTv().getHeight()).withEndAction((Runnable)new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(200195);
-              this.Lgn.Lgl.getRecyclerView().setLayoutFrozen(true);
-              AppMethodBeat.o(200195);
+              AppMethodBeat.i(204265);
+              this.rZT.rZQ.getRecyclerView().setLayoutFrozen(true);
+              AppMethodBeat.o(204265);
             }
           }).setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.6F)).setDuration(220L).start();
           paramAnonymousView = paramAttributeSet;
           d.g.b.k.g(paramAnonymousView, "expandBtn");
           paramAnonymousView.setTag(Boolean.FALSE);
-          AppMethodBeat.o(200197);
+          AppMethodBeat.o(204267);
           return;
         }
         paramContext.animate().cancel();
@@ -220,40 +221,40 @@ public final class TestPreloadPreview
         {
           public final void run()
           {
-            AppMethodBeat.i(200196);
-            View localView = this.Lgn.uGQ;
+            AppMethodBeat.i(204266);
+            View localView = this.rZT.rZR;
             d.g.b.k.g(localView, "container");
             localView.setTranslationY(0.0F);
-            this.Lgn.Lgl.getRecyclerView().setLayoutFrozen(false);
-            AppMethodBeat.o(200196);
+            this.rZT.rZQ.getRecyclerView().setLayoutFrozen(false);
+            AppMethodBeat.o(204266);
           }
         }).setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.6F)).setDuration(220L).start();
         paramAnonymousView = paramAttributeSet;
         d.g.b.k.g(paramAnonymousView, "expandBtn");
         paramAnonymousView.setTag(Boolean.TRUE);
-        AppMethodBeat.o(200197);
+        AppMethodBeat.o(204267);
       }
     });
-    this.Lge = new ConcurrentHashMap();
-    this.Lgf = new e(this);
-    this.Lgg = -1;
-    this.hbq = new ap(Looper.getMainLooper());
-    this.Lgh = new i(this);
-    this.Lgi = new g(this);
-    this.Lgj = new j(this);
-    AppMethodBeat.o(200231);
+    this.rZJ = new ConcurrentHashMap();
+    this.rZK = new e(this);
+    this.rZL = -1;
+    this.hBR = new ao(Looper.getMainLooper());
+    this.rZM = new i(this);
+    this.rZN = new g(this);
+    this.rZO = new j(this);
+    AppMethodBeat.o(204301);
   }
   
-  public final void a(DataBuffer<BaseFinderFeed> paramDataBuffer, int paramInt1, com.tencent.mm.plugin.finder.video.c paramc, d paramd, int paramInt2)
+  public final void a(DataBuffer<BaseFinderFeed> paramDataBuffer, int paramInt1, i parami, com.tencent.mm.plugin.finder.event.base.c paramc, int paramInt2)
   {
-    AppMethodBeat.i(200228);
+    AppMethodBeat.i(204298);
     d.g.b.k.h(paramDataBuffer, "data");
-    d.g.b.k.h(paramc, "videoCore");
-    this.cCu = true;
-    this.Lgd = paramDataBuffer;
-    this.IoU = paramInt2;
-    this.qrq = paramc;
-    this.qYg = paramInt1;
+    d.g.b.k.h(parami, "videoCore");
+    this.czD = true;
+    this.rZH = paramDataBuffer;
+    this.diw = paramInt2;
+    this.rbo = parami;
+    this.rZI = paramInt1;
     paramDataBuffer = getRecyclerView();
     getContext();
     paramDataBuffer.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
@@ -261,119 +262,116 @@ public final class TestPreloadPreview
     paramDataBuffer.av(true);
     getRecyclerView().setAdapter((RecyclerView.a)paramDataBuffer);
     getRecyclerView().setHasFixedSize(true);
-    if (paramd != null) {
-      paramd.a((com.tencent.mm.plugin.finder.event.base.f)this.Lgj);
+    if (paramc != null) {
+      paramc.a((d)this.rZO);
     }
-    this.Lgi.alive();
-    this.Lgh.alive();
-    paramDataBuffer = paramc.Lct;
+    this.rZN.alive();
+    this.rZM.alive();
+    paramDataBuffer = parami.rSt;
     if (paramDataBuffer != null) {
-      paramDataBuffer.a((com.tencent.mm.plugin.finder.preload.b)this.Lgf);
+      paramDataBuffer.a((com.tencent.mm.plugin.finder.preload.b)this.rZK);
     }
     getRecyclerView().setOnTouchListener((View.OnTouchListener)new k(this));
-    AppMethodBeat.o(200228);
+    AppMethodBeat.o(204298);
   }
   
   public final TextView getGlobalPreloadTv()
   {
-    AppMethodBeat.i(200227);
-    TextView localTextView = (TextView)this.Lgc.getValue();
-    AppMethodBeat.o(200227);
+    AppMethodBeat.i(204297);
+    TextView localTextView = (TextView)this.rZG.getValue();
+    AppMethodBeat.o(204297);
     return localTextView;
   }
   
   public final RecyclerView getRecyclerView()
   {
-    AppMethodBeat.i(200226);
-    RecyclerView localRecyclerView = (RecyclerView)this.Lga.getValue();
-    AppMethodBeat.o(200226);
+    AppMethodBeat.i(204296);
+    RecyclerView localRecyclerView = (RecyclerView)this.rZE.getValue();
+    AppMethodBeat.o(204296);
     return localRecyclerView;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(200229);
+    AppMethodBeat.i(204299);
     super.onDetachedFromWindow();
-    if (this.cCu)
+    if (this.czD)
     {
-      this.Lgi.dead();
-      this.Lgh.dead();
-      Object localObject1 = this.qrq;
+      this.rZN.dead();
+      this.rZM.dead();
+      Object localObject1 = this.rbo;
       if (localObject1 == null) {
-        d.g.b.k.aPZ("videoCore");
+        d.g.b.k.aVY("videoCore");
       }
-      Object localObject2 = ((com.tencent.mm.plugin.finder.video.c)localObject1).Lct;
+      Object localObject2 = ((i)localObject1).rSt;
       if (localObject2 != null)
       {
-        localObject1 = (com.tencent.mm.plugin.finder.preload.b)this.Lgf;
+        localObject1 = (com.tencent.mm.plugin.finder.preload.b)this.rZK;
         d.g.b.k.h(localObject1, "callback");
-        localObject2 = ((MediaPreloadCore)localObject2).KTx;
+        localObject2 = ((MediaPreloadCore)localObject2).rvl;
         if (localObject2 != null)
         {
-          localObject2 = ((com.tencent.mm.plugin.finder.preload.a.b)localObject2).KUj;
+          localObject2 = ((com.tencent.mm.plugin.finder.preload.worker.b)localObject2).rwe;
           if (localObject2 != null) {
             j.a((Iterable)localObject2, (d.g.a.b)new MediaPreloadCore.d((com.tencent.mm.plugin.finder.preload.b)localObject1));
           }
         }
       }
-      this.cCu = false;
+      this.czD = false;
     }
-    AppMethodBeat.o(200229);
+    AppMethodBeat.o(204299);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$Info;", "", "()V", "codingFormat", "", "getCodingFormat", "()Ljava/lang/String;", "setCodingFormat", "(Ljava/lang/String;)V", "fileFormat", "getFileFormat", "setFileFormat", "hasPlayed", "getHasPlayed", "setHasPlayed", "percent", "", "getPercent", "()I", "setPercent", "(I)V", "preloadMinSize", "", "getPreloadMinSize", "()J", "setPreloadMinSize", "(J)V", "preloadPercent", "getPreloadPercent", "setPreloadPercent", "size", "getSize", "setSize", "state", "getState", "setState", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$Info;", "", "()V", "codingFormat", "", "getCodingFormat", "()Ljava/lang/String;", "setCodingFormat", "(Ljava/lang/String;)V", "fileFormat", "getFileFormat", "setFileFormat", "hasPlayed", "getHasPlayed", "setHasPlayed", "percent", "", "getPercent", "()I", "setPercent", "(I)V", "preloadMinSize", "", "getPreloadMinSize", "()J", "setPreloadMinSize", "(J)V", "preloadPercent", "getPreloadPercent", "setPreloadPercent", "size", "getSize", "setSize", "state", "getState", "setState", "plugin-finder_release"})
   public static final class b
   {
-    String DkS;
-    String KTW;
-    String Lgo;
-    int foh;
+    String drn;
+    int frB;
     int percent;
     long preloadMinSize;
+    String rZU;
+    String rvP;
     int size;
     int state;
     
-    public final int fWZ()
+    public final int cFk()
     {
-      if (this.foh == 0) {
+      if (this.frB == 0) {
         return this.percent;
       }
-      return this.foh;
+      return this.frB;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestHolder;", "(Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview;)V", "getItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "position", "", "getItemCount", "getItemId", "", "getMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "feed", "onBindViewHolder", "", "holder", "onCreateViewHolder", "p0", "Landroid/view/ViewGroup;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestHolder;", "(Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview;)V", "getItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "position", "", "getItemCount", "getItemId", "", "getMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "feed", "onBindViewHolder", "", "holder", "onCreateViewHolder", "p0", "Landroid/view/ViewGroup;", "plugin-finder_release"})
   public final class c
     extends RecyclerView.a<TestPreloadPreview.d>
   {
-    private final FinderItem ahL(int paramInt)
+    private final FinderItem ER(int paramInt)
     {
-      AppMethodBeat.i(200203);
-      FinderItem localFinderItem = ((BaseFinderFeed)TestPreloadPreview.b(this.Lgl).get(paramInt)).feedObject;
-      AppMethodBeat.o(200203);
+      AppMethodBeat.i(204273);
+      FinderItem localFinderItem = ((BaseFinderFeed)TestPreloadPreview.b(this.rZQ).get(paramInt)).feedObject;
+      AppMethodBeat.o(204273);
       return localFinderItem;
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(200200);
-      int i = TestPreloadPreview.b(this.Lgl).getTotalSize();
-      AppMethodBeat.o(200200);
+      AppMethodBeat.i(204270);
+      int i = TestPreloadPreview.b(this.rZQ).getTotalSize();
+      AppMethodBeat.o(204270);
       return i;
     }
     
     public final long getItemId(int paramInt)
     {
-      AppMethodBeat.i(200201);
-      long l = ((BaseFinderFeed)TestPreloadPreview.b(this.Lgl).get(paramInt)).feedObject.getExpectId();
-      AppMethodBeat.o(200201);
+      AppMethodBeat.i(204271);
+      long l = ((BaseFinderFeed)TestPreloadPreview.b(this.rZQ).get(paramInt)).feedObject.getExpectId();
+      AppMethodBeat.o(204271);
       return l;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
     static final class a
       implements View.OnLongClickListener
     {
@@ -381,55 +379,40 @@ public final class TestPreloadPreview
       
       public final boolean onLongClick(View paramView)
       {
-        AppMethodBeat.i(200198);
-        paramView = (bmd)j.iz((List)TestPreloadPreview.c.a(this.Lgp, this.fKG).getMediaList());
-        if ((paramView != null) && ((TestPreloadPreview.b)TestPreloadPreview.a(this.Lgp.Lgl).get(paramView.mediaId) != null))
+        AppMethodBeat.i(204268);
+        paramView = (bqs)j.iP((List)TestPreloadPreview.c.a(this.rZV, this.fOm).getMediaList());
+        if ((paramView != null) && ((TestPreloadPreview.b)TestPreloadPreview.a(this.rZV.rZQ).get(paramView.mediaId) != null))
         {
-          paramView = aj.getContext().getSystemService("clipboard");
+          paramView = ai.getContext().getSystemService("clipboard");
           if (paramView == null)
           {
             paramView = new v("null cannot be cast to non-null type android.content.ClipboardManager");
-            AppMethodBeat.o(200198);
+            AppMethodBeat.o(204268);
             throw paramView;
           }
           paramView = (ClipboardManager)paramView;
-          Object localObject = this.Lgq.Lgr;
+          Object localObject = this.rZW.rZX;
           d.g.b.k.g(localObject, "holder.mediaIdTv");
           localObject = ((TextView)localObject).getText().toString();
           paramView.setText((CharSequence)localObject);
-          paramView = this.Lgq.arI;
+          paramView = this.rZW.asD;
           d.g.b.k.g(paramView, "holder.itemView");
           Toast.makeText(paramView.getContext(), (CharSequence)localObject, 1).show();
-          ad.i("TestPreloadView", (String)localObject);
+          ac.i("TestPreloadView", (String)localObject);
         }
-        AppMethodBeat.o(200198);
+        AppMethodBeat.o(204268);
         return true;
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/TestPreloadPreview$TestHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "mediaIdTv", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getMediaIdTv", "()Landroid/widget/TextView;", "plugin-finder_release"})
-  public static final class d
-    extends RecyclerView.v
-  {
-    final TextView Lgr;
-    
-    public d(View paramView)
-    {
-      super();
-      AppMethodBeat.i(200205);
-      this.Lgr = ((TextView)paramView.findViewById(2131307780));
-      AppMethodBeat.o(200205);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$callback$1", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "getOriginalMediaId", "", "mediaId", "onCancel", "", "task", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "onFailure", "msg", "onFormatChange", "onPending", "progress", "", "targetPercent", "fileFormat", "codingFormat", "onProgress", "onSuccessfully", "isAllCompleted", "", "percent", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$callback$1", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "getOriginalMediaId", "", "mediaId", "onCancel", "", "task", "Lcom/tencent/mm/plugin/finder/preload/PreloadCDNTask;", "onFailure", "msg", "onFormatChange", "onPending", "progress", "", "targetPercent", "fileFormat", "codingFormat", "onProgress", "onSuccessfully", "isAllCompleted", "", "percent", "plugin-finder_release"})
   public static final class e
     implements com.tencent.mm.plugin.finder.preload.b
   {
-    private static String aVI(String paramString)
+    private static String aeN(String paramString)
     {
-      AppMethodBeat.i(200206);
+      AppMethodBeat.i(204276);
       String str = n.h(paramString, "finder_video_", "", false);
       CharSequence localCharSequence = (CharSequence)str;
       int k = localCharSequence.length();
@@ -451,7 +434,7 @@ public final class TestPreloadPreview
           break label102;
         }
         paramString = str.subSequence(i + 1, str.length()).toString();
-        AppMethodBeat.o(200206);
+        AppMethodBeat.o(204276);
         return paramString;
         j = 0;
         break label53;
@@ -461,69 +444,69 @@ public final class TestPreloadPreview
         i = -1;
       }
       label102:
-      AppMethodBeat.o(200206);
+      AppMethodBeat.o(204276);
       return paramString;
     }
     
     public final void a(String paramString1, int paramInt, String paramString2, String paramString3, com.tencent.mm.plugin.finder.preload.c paramc)
     {
-      AppMethodBeat.i(200207);
+      AppMethodBeat.i(204277);
       d.g.b.k.h(paramString1, "mediaId");
       d.g.b.k.h(paramString2, "fileFormat");
       d.g.b.k.h(paramString3, "codingFormat");
       d.g.b.k.h(paramc, "task");
-      paramString1 = TestPreloadPreview.a(this.Lgl, aVI(paramString1));
-      paramString1.foh = paramInt;
+      paramString1 = TestPreloadPreview.a(this.rZQ, aeN(paramString1));
+      paramString1.frB = paramInt;
       paramString1.state = 2;
-      paramString1.KTW = paramString3;
-      paramString1.DkS = paramString2;
+      paramString1.rvP = paramString3;
+      paramString1.drn = paramString2;
       paramString1.preloadMinSize = paramc.preloadMinSize;
-      TestPreloadPreview.h(this.Lgl);
-      AppMethodBeat.o(200207);
+      TestPreloadPreview.h(this.rZQ);
+      AppMethodBeat.o(204277);
     }
     
     public final void a(String paramString1, String paramString2, com.tencent.mm.plugin.finder.preload.c paramc)
     {
-      AppMethodBeat.i(200210);
+      AppMethodBeat.i(204280);
       d.g.b.k.h(paramString1, "mediaId");
       d.g.b.k.h(paramString2, "msg");
       d.g.b.k.h(paramc, "task");
-      AppMethodBeat.o(200210);
+      AppMethodBeat.o(204280);
     }
     
     public final void a(String paramString, boolean paramBoolean, int paramInt, com.tencent.mm.plugin.finder.preload.c paramc)
     {
-      AppMethodBeat.i(200209);
+      AppMethodBeat.i(204279);
       d.g.b.k.h(paramString, "mediaId");
       d.g.b.k.h(paramc, "task");
-      paramString = TestPreloadPreview.a(this.Lgl, aVI(paramString));
+      paramString = TestPreloadPreview.a(this.rZQ, aeN(paramString));
       paramString.preloadMinSize = paramc.preloadMinSize;
-      paramString.foh = paramInt;
+      paramString.frB = paramInt;
       paramString.state = 3;
-      TestPreloadPreview.h(this.Lgl);
-      AppMethodBeat.o(200209);
+      TestPreloadPreview.h(this.rZQ);
+      AppMethodBeat.o(204279);
     }
     
-    public final void aVn(String paramString)
+    public final void adG(String paramString)
     {
-      AppMethodBeat.i(200211);
+      AppMethodBeat.i(204281);
       d.g.b.k.h(paramString, "mediaId");
-      AppMethodBeat.o(200211);
+      AppMethodBeat.o(204281);
     }
     
-    public final void cU(String paramString, int paramInt)
+    public final void cZ(String paramString, int paramInt)
     {
-      AppMethodBeat.i(200208);
+      AppMethodBeat.i(204278);
       d.g.b.k.h(paramString, "mediaId");
-      paramString = TestPreloadPreview.a(this.Lgl, aVI(paramString));
-      paramString.foh = paramInt;
+      paramString = TestPreloadPreview.a(this.rZQ, aeN(paramString));
+      paramString.frB = paramInt;
       paramString.state = 2;
-      TestPreloadPreview.h(this.Lgl);
-      AppMethodBeat.o(200208);
+      TestPreloadPreview.h(this.rZQ);
+      AppMethodBeat.o(204278);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
     extends d.g.b.l
     implements d.g.a.a<TextView>
@@ -534,12 +517,12 @@ public final class TestPreloadPreview
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$listener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/PreloadProcessChangeEvent;", "callback", "", "event", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$listener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/PreloadProcessChangeEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class g
-    extends com.tencent.mm.sdk.b.c<ol>
+    extends com.tencent.mm.sdk.b.c<ou>
   {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class h
     implements Runnable
   {
@@ -547,89 +530,89 @@ public final class TestPreloadPreview
     
     public final void run()
     {
-      AppMethodBeat.i(200215);
+      AppMethodBeat.i(204285);
       int i = CdnLogic.getRecentAverageSpeed(2);
       com.tencent.mm.plugin.finder.preload.model.a locala = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getMediaPreloadModel();
-      Object localObject = com.tencent.mm.ui.component.a.LCX;
-      localObject = com.tencent.mm.ui.component.a.bE(PluginFinder.class).get(FinderVideoRecycler.class);
+      Object localObject = com.tencent.mm.ui.component.a.IrY;
+      localObject = com.tencent.mm.ui.component.a.bg(PluginFinder.class).get(FinderVideoRecycler.class);
       d.g.b.k.g(localObject, "UICProvider.of(PluginFin…ideoRecycler::class.java)");
       localObject = (FinderVideoRecycler)localObject;
-      com.tencent.mm.ad.c.g((d.g.a.a)new d.g.b.l(i + "kb/s | load(" + bt.mK(locala.KTT) + " : " + locala.Dmf + " : " + locala.wAk + " : " + locala.KTR + ')' + " | video=" + FinderVideoRecycler.a((FinderVideoRecycler)localObject) + " | buf=" + (Integer)TestPreloadPreview.f(this.Lgl).get(Integer.valueOf(TestPreloadPreview.g(this.Lgl)))) {});
-      AppMethodBeat.o(200215);
+      com.tencent.mm.ac.c.g((d.g.a.a)new d.g.b.l(i + "kb/s | load(" + bs.qz(locala.rvK) + " : " + locala.rvF + " : " + locala.rvG + " : " + locala.rvI + ')' + " | video=" + FinderVideoRecycler.a((FinderVideoRecycler)localObject) + " | buf=" + (Integer)TestPreloadPreview.f(this.rZQ).get(Integer.valueOf(TestPreloadPreview.g(this.rZQ)))) {});
+      AppMethodBeat.o(204285);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$notifyListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/TestPreloadPreviewNotifyEvent;", "callback", "", "event", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$notifyListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/TestPreloadPreviewNotifyEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class i
-    extends com.tencent.mm.sdk.b.c<ys>
+    extends com.tencent.mm.sdk.b.c<vw>
   {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$observer$1", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "isAsync", "", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "ev", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/view/TestPreloadPreview$observer$1", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "isAsync", "", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "ev", "plugin-finder_release"})
   public static final class j
-    extends com.tencent.mm.plugin.finder.event.base.f
+    extends d
   {
-    public final void a(final com.tencent.mm.plugin.finder.event.base.c paramc)
+    public final void a(final com.tencent.mm.plugin.finder.event.base.b paramb)
     {
-      AppMethodBeat.i(200220);
-      d.g.b.k.h(paramc, "ev");
-      if ((paramc instanceof com.tencent.mm.plugin.finder.event.base.a))
+      AppMethodBeat.i(204290);
+      d.g.b.k.h(paramb, "ev");
+      if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.a))
       {
-        com.tencent.mm.ad.c.g((d.g.a.a)new a(this));
-        AppMethodBeat.o(200220);
+        com.tencent.mm.ac.c.g((d.g.a.a)new a(this));
+        AppMethodBeat.o(204290);
         return;
       }
-      if ((paramc instanceof i))
+      if ((paramb instanceof h))
       {
-        com.tencent.mm.ad.c.g((d.g.a.a)new b(this, paramc));
-        AppMethodBeat.o(200220);
+        com.tencent.mm.ac.c.g((d.g.a.a)new b(this, paramb));
+        AppMethodBeat.o(204290);
         return;
       }
-      if ((paramc instanceof b.a)) {
-        com.tencent.mm.ad.c.g((d.g.a.a)new c(this, paramc));
+      if ((paramb instanceof b.a)) {
+        com.tencent.mm.ac.c.g((d.g.a.a)new c(this, paramb));
       }
-      AppMethodBeat.o(200220);
+      AppMethodBeat.o(204290);
     }
     
-    public final boolean a(d paramd, com.tencent.mm.plugin.finder.event.base.c paramc)
+    public final boolean a(com.tencent.mm.plugin.finder.event.base.c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
     {
-      AppMethodBeat.i(200221);
-      d.g.b.k.h(paramd, "dispatcher");
-      d.g.b.k.h(paramc, "event");
-      if ((paramc instanceof i))
+      AppMethodBeat.i(204291);
+      d.g.b.k.h(paramc, "dispatcher");
+      d.g.b.k.h(paramb, "event");
+      if ((paramb instanceof h))
       {
-        if (((i)paramc).type == 0)
+        if (((h)paramb).type == 0)
         {
-          AppMethodBeat.o(200221);
+          AppMethodBeat.o(204291);
           return true;
         }
-        AppMethodBeat.o(200221);
+        AppMethodBeat.o(204291);
         return false;
       }
-      if ((paramc instanceof com.tencent.mm.plugin.finder.event.base.a))
+      if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.a))
       {
-        AppMethodBeat.o(200221);
+        AppMethodBeat.o(204291);
         return true;
       }
-      if ((paramc instanceof b.a))
+      if ((paramb instanceof b.a))
       {
-        if (((b.a)paramc).type == 1)
+        if (((b.a)paramb).type == 1)
         {
-          AppMethodBeat.o(200221);
+          AppMethodBeat.o(204291);
           return true;
         }
-        AppMethodBeat.o(200221);
+        AppMethodBeat.o(204291);
         return false;
       }
-      AppMethodBeat.o(200221);
+      AppMethodBeat.o(204291);
       return false;
     }
     
-    public final boolean clc()
+    public final boolean csW()
     {
       return true;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<y>
@@ -640,30 +623,30 @@ public final class TestPreloadPreview
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class b
       extends d.g.b.l
       implements d.g.a.a<y>
     {
-      b(TestPreloadPreview.j paramj, com.tencent.mm.plugin.finder.event.base.c paramc)
+      b(TestPreloadPreview.j paramj, com.tencent.mm.plugin.finder.event.base.b paramb)
       {
         super();
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class c
       extends d.g.b.l
       implements d.g.a.a<y>
     {
-      c(TestPreloadPreview.j paramj, com.tencent.mm.plugin.finder.event.base.c paramc)
+      c(TestPreloadPreview.j paramj, com.tencent.mm.plugin.finder.event.base.b paramb)
       {
         super();
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
   static final class k
     implements View.OnTouchListener
   {
@@ -671,32 +654,32 @@ public final class TestPreloadPreview
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(200223);
+      AppMethodBeat.i(204293);
       d.g.b.k.g(paramMotionEvent, "event");
       if (paramMotionEvent.getAction() == 0) {
-        TestPreloadPreview.d(this.Lgl).removeCallbacksAndMessages(null);
+        TestPreloadPreview.d(this.rZQ).removeCallbacksAndMessages(null);
       }
       for (;;)
       {
-        AppMethodBeat.o(200223);
+        AppMethodBeat.o(204293);
         return false;
         if (paramMotionEvent.getAction() == 1)
         {
-          TestPreloadPreview.d(this.Lgl).removeCallbacksAndMessages(null);
-          TestPreloadPreview.d(this.Lgl).postDelayed((Runnable)new Runnable()
+          TestPreloadPreview.d(this.rZQ).removeCallbacksAndMessages(null);
+          TestPreloadPreview.d(this.rZQ).postDelayed((Runnable)new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(200222);
-              Object localObject = this.Lgv.Lgl.getRecyclerView().getLayoutManager();
+              AppMethodBeat.i(204292);
+              Object localObject = this.saa.rZQ.getRecyclerView().getLayoutManager();
               if (localObject == null)
               {
                 localObject = new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-                AppMethodBeat.o(200222);
+                AppMethodBeat.o(204292);
                 throw ((Throwable)localObject);
               }
-              ((LinearLayoutManager)localObject).af(Math.max(0, TestPreloadPreview.e(this.Lgv.Lgl) - 1), 0);
-              AppMethodBeat.o(200222);
+              ((LinearLayoutManager)localObject).af(Math.max(0, TestPreloadPreview.e(this.saa.rZQ) - 1), 0);
+              AppMethodBeat.o(204292);
             }
           }, 3000L);
         }
@@ -704,7 +687,7 @@ public final class TestPreloadPreview
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class l
     extends d.g.b.l
     implements d.g.a.a<RecyclerView>
@@ -717,7 +700,7 @@ public final class TestPreloadPreview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.TestPreloadPreview
  * JD-Core Version:    0.7.0.1
  */

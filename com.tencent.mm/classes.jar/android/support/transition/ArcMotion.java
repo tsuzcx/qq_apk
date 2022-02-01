@@ -10,34 +10,34 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArcMotion
   extends PathMotion
 {
-  private static final float wK = (float)Math.tan(Math.toRadians(35.0D));
-  private float wL = 0.0F;
-  private float wM = 0.0F;
-  private float wN = 70.0F;
-  private float wO = 0.0F;
-  private float wP = 0.0F;
-  private float wQ = wK;
+  private static final float xI = (float)Math.tan(Math.toRadians(35.0D));
+  private float xJ = 0.0F;
+  private float xK = 0.0F;
+  private float xL = 70.0F;
+  private float xM = 0.0F;
+  private float xN = 0.0F;
+  private float xO = xI;
   
   public ArcMotion() {}
   
   public ArcMotion(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.zb);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.Ab);
     paramAttributeSet = (XmlPullParser)paramAttributeSet;
     float f = g.a(paramContext, paramAttributeSet, "minimumVerticalAngle", 1, 0.0F);
-    this.wM = f;
-    this.wP = u(f);
+    this.xK = f;
+    this.xN = y(f);
     f = g.a(paramContext, paramAttributeSet, "minimumHorizontalAngle", 0, 0.0F);
-    this.wL = f;
-    this.wO = u(f);
+    this.xJ = f;
+    this.xM = y(f);
     f = g.a(paramContext, paramAttributeSet, "maximumAngle", 2, 70.0F);
-    this.wN = f;
-    this.wQ = u(f);
+    this.xL = f;
+    this.xO = y(f);
     paramContext.recycle();
   }
   
-  private static float u(float paramFloat)
+  private static float y(float paramFloat)
   {
     if ((paramFloat < 0.0F) || (paramFloat > 90.0F)) {
       throw new IllegalArgumentException("Arc must be between 0 and 90 degrees");
@@ -70,11 +70,11 @@ public class ArcMotion
       }
       f2 = paramFloat4 + f1;
       f1 = paramFloat3;
-      f3 = this.wP * f4 * this.wP;
+      f3 = this.xN * f4 * this.xN;
       f7 = f5 - f1;
       float f8 = f6 - f2;
       f7 = f8 * f8 + f7 * f7;
-      f4 = this.wQ * f4 * this.wQ;
+      f4 = this.xO * f4 * this.xO;
       if (f7 >= f3) {
         break label328;
       }
@@ -105,7 +105,7 @@ public class ArcMotion
         }
         for (f2 = paramFloat2;; f2 = paramFloat4)
         {
-          f3 = this.wO * f4 * this.wO;
+          f3 = this.xM * f4 * this.xM;
           break;
           f1 = paramFloat3 - f1;
         }

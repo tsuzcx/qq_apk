@@ -6,7 +6,7 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.b;
 import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.h;
+import com.tencent.mm.ab.h;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
@@ -15,49 +15,49 @@ import com.tencent.mm.plugin.appbrand.config.x;
 import com.tencent.mm.plugin.appbrand.config.y;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import org.json.JSONObject;
 
 public class e
   implements Runnable
 {
   protected volatile String appId;
-  final AppBrandLaunchReferrer cfi;
-  protected final int gXn;
-  protected AppBrandStatObject iJL;
-  protected final String iJb;
-  private final a kFW;
-  protected final ActivityStarterIpcDelegate kFX;
+  final AppBrandLaunchReferrer cce;
+  protected final int hxM;
+  protected AppBrandStatObject jjR;
+  protected final String jjf;
+  private final a lhp;
+  protected final ActivityStarterIpcDelegate lhq;
   protected final int pkgVersion;
   protected final String username;
   
   public e(LaunchParcel paramLaunchParcel, a parama)
   {
-    this.kFW = parama;
-    this.gXn = paramLaunchParcel.gXn;
+    this.lhp = parama;
+    this.hxM = paramLaunchParcel.hxM;
     this.appId = paramLaunchParcel.appId;
     this.username = paramLaunchParcel.username;
     this.pkgVersion = paramLaunchParcel.version;
-    this.iJL = paramLaunchParcel.kOh;
-    this.iJb = paramLaunchParcel.iJb;
-    this.kFX = paramLaunchParcel.kFX;
-    this.cfi = paramLaunchParcel.cfi;
+    this.jjR = paramLaunchParcel.lpG;
+    this.jjf = paramLaunchParcel.jjf;
+    this.lhq = paramLaunchParcel.lhq;
+    this.cce = paramLaunchParcel.cce;
   }
   
   protected final void b(AppBrandInitConfigLU paramAppBrandInitConfigLU, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(147313);
-    if (this.kFW != null) {
-      this.kFW.a(paramAppBrandInitConfigLU, paramAppBrandStatObject);
+    if (this.lhp != null) {
+      this.lhp.a(paramAppBrandInitConfigLU, paramAppBrandStatObject);
     }
     AppMethodBeat.o(147313);
   }
   
-  protected Pair<WxaAttributes, Boolean> bgg()
+  protected Pair<WxaAttributes, Boolean> bna()
   {
     AppMethodBeat.i(147309);
-    x.aTU();
+    x.baS();
     Pair localPair = new Pair(x.e(this.appId, new String[0]), Boolean.FALSE);
     AppMethodBeat.o(147309);
     return localPair;
@@ -66,9 +66,9 @@ public class e
   protected boolean f(WxaAttributes paramWxaAttributes)
   {
     AppMethodBeat.i(147311);
-    if ((j.a.qD(this.gXn)) && (1 == paramWxaAttributes.aTP().cfk))
+    if ((j.a.rq(this.hxM)) && (1 == paramWxaAttributes.baN().ccg))
     {
-      Toast.makeText(aj.getContext(), 2131755509, 1).show();
+      Toast.makeText(ai.getContext(), 2131755509, 1).show();
       AppMethodBeat.o(147311);
       return true;
     }
@@ -79,8 +79,8 @@ public class e
   protected final void onError()
   {
     AppMethodBeat.i(147312);
-    if (this.kFW != null) {
-      this.kFW.a(null, null);
+    if (this.lhp != null) {
+      this.lhp.a(null, null);
     }
     AppMethodBeat.o(147312);
   }
@@ -88,10 +88,10 @@ public class e
   public void run()
   {
     AppMethodBeat.i(147308);
-    Object localObject = (WxaAttributes)bgg().first;
+    Object localObject = (WxaAttributes)bna().first;
     if (localObject == null)
     {
-      ad.i("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr null return");
+      ac.i("Luggage.AppBrandPreLaunchProcess", "onGetWxaAttr null return");
       onError();
       AppMethodBeat.o(147308);
       return;
@@ -102,28 +102,28 @@ public class e
       AppMethodBeat.o(147308);
       return;
     }
-    AppBrandInitConfigLU localAppBrandInitConfigLU = b.CV().a((WxaAttributes)localObject);
-    localAppBrandInitConfigLU.iOP = this.gXn;
+    AppBrandInitConfigLU localAppBrandInitConfigLU = b.Cy().a((WxaAttributes)localObject);
+    localAppBrandInitConfigLU.joY = this.hxM;
     this.appId = localAppBrandInitConfigLU.appId;
-    if (this.gXn == 0) {
-      localAppBrandInitConfigLU.jbC = ((WxaAttributes)localObject).aTP().jfz;
+    if (this.hxM == 0) {
+      localAppBrandInitConfigLU.jBP = ((WxaAttributes)localObject).baN().jFO;
     }
     for (;;)
     {
-      if (this.iJL == null) {
-        this.iJL = new AppBrandStatObject();
+      if (this.jjR == null) {
+        this.jjR = new AppBrandStatObject();
       }
-      b(localAppBrandInitConfigLU, this.iJL);
+      b(localAppBrandInitConfigLU, this.jjR);
       AppMethodBeat.o(147308);
       return;
-      s.bgx();
-      localAppBrandInitConfigLU.extInfo = s.bG(this.appId, this.gXn);
+      s.bnr();
+      localAppBrandInitConfigLU.extInfo = s.bK(this.appId, this.hxM);
       try
       {
-        localObject = h.qE(localAppBrandInitConfigLU.extInfo);
-        localAppBrandInitConfigLU.jbC = ((JSONObject)localObject).optString("device_orientation");
-        localAppBrandInitConfigLU.cfe = ((JSONObject)localObject).optBoolean("open_remote", false);
-        localAppBrandInitConfigLU.cfl = y.Gx(localAppBrandInitConfigLU.extInfo);
+        localObject = h.tT(localAppBrandInitConfigLU.extInfo);
+        localAppBrandInitConfigLU.jBP = ((JSONObject)localObject).optString("device_orientation");
+        localAppBrandInitConfigLU.ccb = ((JSONObject)localObject).optBoolean("open_remote", false);
+        localAppBrandInitConfigLU.cch = y.KB(localAppBrandInitConfigLU.extInfo);
       }
       catch (Exception localException) {}
     }
@@ -136,7 +136,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e
  * JD-Core Version:    0.7.0.1
  */

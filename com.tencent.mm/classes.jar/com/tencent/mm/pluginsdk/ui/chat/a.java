@@ -1,174 +1,213 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.g;
 import java.util.ArrayList;
 
 public final class a
 {
-  a.c CaH;
-  a.c CaI;
-  public a.c CaJ;
-  a.c CaK;
-  a.c CaL;
-  a.c CaM;
-  a.c CaN;
-  a.c CaO;
-  a.c CaP;
-  a.c CaQ;
-  a.c CaR;
-  a.c CaS;
-  a.c CaT;
-  a.c CaU;
-  a.c CaV;
-  a.c CaW;
-  a.c CaX;
-  a.c CaY;
-  public a.c CaZ;
-  a.c Cba;
-  a.c Cbb;
-  public a.c Cbc;
-  private a.c Cbd;
-  a.c Cbe;
-  a.c Cbf;
-  a.c Cbg;
-  ArrayList<a.a> Cbh;
-  a.c Lwz;
+  c DsY;
+  c DsZ;
+  public c Dta;
+  c Dtb;
+  c Dtc;
+  c Dtd;
+  c Dte;
+  c Dtf;
+  c Dtg;
+  c Dth;
+  c Dti;
+  c Dtj;
+  c Dtk;
+  c Dtl;
+  c Dtm;
+  c Dtn;
+  c Dto;
+  c Dtp;
+  public c Dtq;
+  c Dtr;
+  c Dts;
+  public c Dtt;
+  private c Dtu;
+  c Dtv;
+  c Dtw;
+  c Dtx;
+  c Dty;
+  ArrayList<a> Dtz;
   public final String TAG;
   
   public a()
   {
     AppMethodBeat.i(31493);
     this.TAG = "MircoMsg.AppPanelControl";
-    this.CaH = new a.c(this);
-    this.CaI = new a.c(this);
-    this.CaJ = new a.c(this);
-    this.CaK = new a.c(this);
-    this.CaL = new a.c(this);
-    this.CaM = new a.c(this);
-    this.CaN = new a.c(this);
-    this.CaW = new a.c(this);
-    this.CaU = new a.c(this);
-    this.CaO = new a.c(this);
-    this.CaP = new a.c(this);
-    this.CaQ = new a.c(this);
-    this.CaR = new a.c(this);
-    this.CaS = new a.c(this);
-    this.CaT = new a.c(this);
-    this.CaV = new a.c(this);
-    this.CaX = new a.c(this);
-    this.CaY = new a.c(this);
-    this.CaZ = new a.c(this);
-    this.Cba = new a.c(this);
-    this.Cbb = new a.c(this);
-    this.Cbc = new a.c(this);
-    this.Cbd = new a.c(this);
-    this.Cbe = new a.c(this);
-    this.Lwz = new a.c(this);
-    this.Cbf = new a.c(this);
-    this.Cbg = new a.c(this);
+    this.DsY = new c();
+    this.DsZ = new c();
+    this.Dta = new c();
+    this.Dtb = new c();
+    this.Dtc = new c();
+    this.Dtd = new c();
+    this.Dte = new c();
+    this.Dtn = new c();
+    this.Dtl = new c();
+    this.Dtf = new c();
+    this.Dtg = new c();
+    this.Dth = new c();
+    this.Dti = new c();
+    this.Dtj = new c();
+    this.Dtk = new c();
+    this.Dtm = new c();
+    this.Dto = new c();
+    this.Dtp = new c();
+    this.Dtq = new c();
+    this.Dtr = new c();
+    this.Dts = new c();
+    this.Dtt = new c();
+    this.Dtu = new c();
+    this.Dtv = new c();
+    this.Dty = new c();
+    this.Dtw = new c();
+    this.Dtx = new c();
     AppMethodBeat.o(31493);
   }
   
-  public final void eyN()
+  public final void eOi()
   {
-    this.CaH.value = true;
-    this.CaI.value = true;
-    this.CaJ.value = true;
-    this.CaK.value = true;
-    this.CaL.value = true;
-    this.CaM.value = true;
-    this.CaN.value = true;
-    this.CaW.value = true;
-    this.CaU.value = true;
-    this.CaO.value = true;
-    this.CaP.value = true;
-    this.CaQ.value = true;
-    this.CaR.value = true;
-    this.CaS.value = true;
-    this.CaT.value = true;
-    this.CaV.value = true;
-    this.CaX.value = true;
-    this.CaY.value = false;
-    this.CaZ.value = true;
-    this.Cba.value = true;
-    this.Cbc.value = true;
-    this.Cbd.value = true;
-    this.Cbc.value = false;
-    this.Cbe.value = true;
-    this.Cbf.value = true;
-    this.Cbg.value = true;
+    this.DsY.value = true;
+    this.DsZ.value = true;
+    this.Dta.value = true;
+    this.Dtb.value = true;
+    this.Dtc.value = true;
+    this.Dtd.value = true;
+    this.Dte.value = true;
+    this.Dtn.value = true;
+    this.Dtl.value = true;
+    this.Dtf.value = true;
+    this.Dtg.value = true;
+    this.Dth.value = true;
+    this.Dti.value = true;
+    this.Dtj.value = true;
+    this.Dtk.value = true;
+    this.Dtm.value = true;
+    this.Dto.value = true;
+    this.Dtp.value = false;
+    this.Dtq.value = true;
+    this.Dtr.value = true;
+    this.Dtt.value = true;
+    this.Dtu.value = true;
+    this.Dtt.value = false;
+    this.Dtv.value = true;
+    this.Dtw.value = true;
+    this.Dtx.value = true;
   }
   
-  public final void eyO()
+  public final void eOj()
   {
-    this.CaN.value = true;
+    this.Dte.value = true;
   }
   
-  public final void eyP()
+  public final void eOk()
   {
-    this.CaV.value = true;
+    this.Dtm.value = true;
   }
   
-  public final int eyQ()
-  {
-    AppMethodBeat.i(163210);
-    if (this.Cbh != null)
-    {
-      int i = this.Cbh.size();
-      AppMethodBeat.o(163210);
-      return i;
-    }
-    AppMethodBeat.o(163210);
-    return 0;
-  }
-  
-  public final ArrayList<a.a> getAppPanelUnCertainEnterArrayList()
+  public final ArrayList<a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163211);
-    if (this.Cbh == null)
+    if (this.Dtz == null)
     {
       localArrayList = new ArrayList();
       AppMethodBeat.o(163211);
       return localArrayList;
     }
-    ArrayList localArrayList = this.Cbh;
+    ArrayList localArrayList = this.Dtz;
     AppMethodBeat.o(163211);
     return localArrayList;
   }
   
-  public final void uh(boolean paramBoolean)
+  public final void vi(boolean paramBoolean)
   {
-    this.CaO.value = paramBoolean;
+    this.Dtf.value = paramBoolean;
   }
   
-  public final void ui(boolean paramBoolean)
+  public final void vj(boolean paramBoolean)
   {
-    this.CaP.value = paramBoolean;
+    this.Dtg.value = paramBoolean;
   }
   
-  public final void uj(boolean paramBoolean)
+  public final void vk(boolean paramBoolean)
   {
-    this.CaT.value = paramBoolean;
+    this.Dtk.value = paramBoolean;
   }
   
-  public final void uk(boolean paramBoolean)
+  public final void vl(boolean paramBoolean)
   {
-    this.CaX.value = paramBoolean;
+    this.Dto.value = paramBoolean;
   }
   
-  public final void ul(boolean paramBoolean)
+  public final void vm(boolean paramBoolean)
   {
-    this.Cba.value = paramBoolean;
+    this.Dtr.value = paramBoolean;
   }
   
-  public final void um(boolean paramBoolean)
+  public final void vn(boolean paramBoolean)
   {
-    this.Cbd.value = paramBoolean;
+    this.Dtu.value = paramBoolean;
   }
   
-  public final void zh(boolean paramBoolean)
+  public final void vo(boolean paramBoolean)
   {
-    this.Lwz.value = paramBoolean;
+    this.Dty.value = paramBoolean;
+  }
+  
+  public static final class a
+    extends g
+  {
+    public String DtA;
+    public int DtB;
+    public String DtC;
+    public int DtD;
+    public String DtE;
+    public String DtF;
+    public a.b DtG;
+    public a.b DtH;
+    public a.b DtI;
+    public a.b DtJ;
+    public String DtK;
+    public long DtL;
+    public String iconUrl;
+    public String jjp;
+    public String lze;
+    public int vjP;
+    
+    public a()
+    {
+      AppMethodBeat.i(163209);
+      this.DtG = new a.b();
+      this.DtH = new a.b();
+      this.DtI = new a.b();
+      this.DtJ = new a.b();
+      AppMethodBeat.o(163209);
+    }
+  }
+  
+  public static final class b
+  {
+    public String desc;
+    public String title;
+  }
+  
+  public final class c
+  {
+    private boolean DtM;
+    public boolean value;
+    
+    public c()
+    {
+      AppMethodBeat.i(31492);
+      this.DtM = true;
+      this.value = true;
+      AppMethodBeat.o(31492);
+    }
   }
 }
 

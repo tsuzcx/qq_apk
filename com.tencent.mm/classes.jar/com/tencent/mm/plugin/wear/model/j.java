@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.wear.model;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class j
 {
-  ap kQO;
+  ao lso;
   
   public j()
   {
     AppMethodBeat.i(30036);
-    if (com.tencent.mm.compatible.util.d.lh(18))
+    if (com.tencent.mm.compatible.util.d.lb(18))
     {
-      this.kQO = new a("WearWorker_worker_thread");
-      ad.i("MicroMsg.Wear.WearWorker", "start worker");
+      this.lso = new a("WearWorker_worker_thread");
+      ac.i("MicroMsg.Wear.WearWorker", "start worker");
     }
     AppMethodBeat.o(30036);
   }
@@ -23,16 +23,16 @@ public final class j
   public final void a(com.tencent.mm.plugin.wear.model.f.d paramd)
   {
     AppMethodBeat.i(30037);
-    if (this.kQO != null)
+    if (this.lso != null)
     {
-      paramd = this.kQO.obtainMessage(0, paramd);
-      this.kQO.sendMessage(paramd);
+      paramd = this.lso.obtainMessage(0, paramd);
+      this.lso.sendMessage(paramd);
     }
     AppMethodBeat.o(30037);
   }
   
   final class a
-    extends ap
+    extends ao
   {
     public a(String paramString)
     {
@@ -52,7 +52,7 @@ public final class j
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.Wear.WearWorker", localException.getCause(), "run task %s occur exception", new Object[] { paramMessage.getName() });
+          ac.printErrStackTrace("MicroMsg.Wear.WearWorker", localException.getCause(), "run task %s occur exception", new Object[] { paramMessage.getName() });
         }
       }
       AppMethodBeat.o(30035);
@@ -61,7 +61,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.j
  * JD-Core Version:    0.7.0.1
  */

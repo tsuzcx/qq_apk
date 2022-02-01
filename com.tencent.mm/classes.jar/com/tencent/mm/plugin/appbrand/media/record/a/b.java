@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class b
 {
-  private static b kRs = new b()
+  private static b lsS = new b()
   {
-    public final d KN(String paramAnonymousString)
+    public final d OU(String paramAnonymousString)
     {
       AppMethodBeat.i(146341);
-      ad.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
-      if (!h.KK(paramAnonymousString))
+      ac.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
+      if (!h.OR(paramAnonymousString))
       {
         AppMethodBeat.o(146341);
         return null;
@@ -46,16 +46,16 @@ public abstract class b
     }
   };
   
-  public static d KO(String paramString)
+  public static d OV(String paramString)
   {
-    return kRs.KN(paramString);
+    return lsS.OU(paramString);
   }
   
-  public abstract d KN(String paramString);
+  public abstract d OU(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.b
  * JD-Core Version:    0.7.0.1
  */

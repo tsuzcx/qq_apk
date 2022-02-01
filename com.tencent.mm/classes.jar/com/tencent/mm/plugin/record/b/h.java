@@ -6,39 +6,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.record.a.b;
 import com.tencent.mm.plugin.record.a.c;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class h<T extends c>
   implements b
 {
-  private boolean van = false;
-  final int vao = 3;
-  private final int vap = 300000;
-  private SparseArray<h<T>.a> vaq = new SparseArray();
-  private LinkedList<T> var = new LinkedList();
-  private long vas = 0L;
+  private boolean wjb = false;
+  final int wjc = 3;
+  private final int wjd = 300000;
+  private SparseArray<h<T>.a> wje = new SparseArray();
+  private LinkedList<T> wjf = new LinkedList();
+  private long wjg = 0L;
   
-  protected abstract List<T> dgh();
+  protected abstract List<T> dtO();
   
-  protected final void dgi()
+  protected final void dtP()
   {
-    this.van = false;
+    this.wjb = false;
     run();
   }
   
   public final void finish()
   {
-    this.var.clear();
-    this.vaq.clear();
-    this.van = false;
+    this.wjf.clear();
+    this.wje.clear();
+    this.wjb = false;
   }
   
   public final void run()
   {
-    g.afC();
-    g.afE().ax(new Runnable()
+    g.agS();
+    g.agU().az(new Runnable()
     {
       public final void run()
       {
@@ -59,21 +59,21 @@ public abstract class h<T extends c>
   
   final class a
   {
-    int hUz;
-    long vau;
+    int iuD;
+    long wji;
     
     private a()
     {
       AppMethodBeat.i(9490);
-      this.vau = SystemClock.elapsedRealtime();
-      this.hUz = h.this.vao;
+      this.wji = SystemClock.elapsedRealtime();
+      this.iuD = h.this.wjc;
       AppMethodBeat.o(9490);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.h
  * JD-Core Version:    0.7.0.1
  */

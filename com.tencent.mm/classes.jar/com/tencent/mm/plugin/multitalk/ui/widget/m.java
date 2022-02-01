@@ -9,26 +9,26 @@ import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "avatarItems", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "addMember", "", "userName", "index", "", "checkIsExists", "", "getItemCount", "getMarginWidth", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "plugin-multitalk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarLayoutHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "avatarItems", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getContext", "()Landroid/content/Context;", "setContext", "addMember", "", "userName", "index", "", "checkIsExists", "", "getItemCount", "getMarginWidth", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "plugin-multitalk_release"})
 public final class m
   extends RecyclerView.a<n>
 {
   private Context context;
-  public ArrayList<String> tTD;
+  public ArrayList<String> vcl;
   
   public m(Context paramContext)
   {
     AppMethodBeat.i(178991);
     this.context = paramContext;
-    this.tTD = new ArrayList();
+    this.vcl = new ArrayList();
     AppMethodBeat.o(178991);
   }
   
-  public final boolean ahN(String paramString)
+  public final boolean amI(String paramString)
   {
     AppMethodBeat.i(178987);
     k.h(paramString, "userName");
-    Iterator localIterator = ((Iterable)this.tTD).iterator();
+    Iterator localIterator = ((Iterable)this.vcl).iterator();
     Object localObject;
     do
     {
@@ -46,31 +46,31 @@ public final class m
     return false;
   }
   
-  public final void dT(String paramString, int paramInt)
+  public final void ea(String paramString, int paramInt)
   {
     AppMethodBeat.i(178986);
     k.h(paramString, "userName");
-    if (this.tTD.size() <= paramInt)
+    if (this.vcl.size() <= paramInt)
     {
-      this.tTD.add(paramString);
+      this.vcl.add(paramString);
       AppMethodBeat.o(178986);
       return;
     }
-    this.tTD.set(paramInt, paramString);
+    this.vcl.set(paramInt, paramString);
     AppMethodBeat.o(178986);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(178989);
-    int i = (int)Math.ceil(this.tTD.size() / d.b.BNi);
+    int i = (int)Math.ceil(this.vcl.size() / d.b.Dfs);
     AppMethodBeat.o(178989);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.m
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,27 +17,27 @@ import java.util.List;
 public class QTextView
   extends View
 {
-  private static HashMap<String, a> xrd;
-  private TextPaint avD;
+  private static HashMap<String, a> yDT;
+  private TextPaint awy;
   private Context context;
   private String mText;
-  boolean nmL;
-  private int nmN;
+  boolean nPL;
+  private int nPN;
   private int textSize;
-  private int xqX;
-  private String xqY;
-  private String xqZ;
-  private boolean xra;
-  private int xrb;
-  private boolean xrc;
-  private a xre;
-  private a xrf;
-  int xrg;
+  private int yDN;
+  private String yDO;
+  private String yDP;
+  private boolean yDQ;
+  private int yDR;
+  private boolean yDS;
+  private a yDU;
+  private a yDV;
+  int yDW;
   
   static
   {
     AppMethodBeat.i(98222);
-    xrd = new HashMap();
+    yDT = new HashMap();
     AppMethodBeat.o(98222);
   }
   
@@ -47,7 +47,7 @@ public class QTextView
     AppMethodBeat.i(98214);
     this.mText = "";
     this.textSize = -1;
-    this.xrg = 0;
+    this.yDW = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98214);
@@ -59,29 +59,29 @@ public class QTextView
     AppMethodBeat.i(98213);
     this.mText = "";
     this.textSize = -1;
-    this.xrg = 0;
+    this.yDW = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98213);
   }
   
-  private int Np(int paramInt)
+  private int Ps(int paramInt)
   {
     AppMethodBeat.i(98221);
-    if (this.nmL) {
-      if (bt.isNullOrNil(a.a(this.xre))) {
-        this.xrg = this.xre.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.avD);
+    if (this.nPL) {
+      if (bs.isNullOrNil(a.a(this.yDU))) {
+        this.yDW = this.yDU.a(this.mText, paramInt - getPaddingLeft() - getPaddingRight(), this.awy);
       }
     }
     for (;;)
     {
-      paramInt = this.xrg;
+      paramInt = this.yDW;
       int i = getPaddingLeft();
       int j = getPaddingRight();
       AppMethodBeat.o(98221);
       return paramInt + i + j;
-      if (bt.isNullOrNil(a.a(this.xrf))) {
-        this.xrg = this.xrf.a(this.mText, this.xqY, this.xqZ, this.nmN, paramInt - getPaddingLeft() - getPaddingRight(), this.avD);
+      if (bs.isNullOrNil(a.a(this.yDV))) {
+        this.yDW = this.yDV.a(this.mText, this.yDO, this.yDP, this.nPN, paramInt - getPaddingLeft() - getPaddingRight(), this.awy);
       }
     }
   }
@@ -89,35 +89,35 @@ public class QTextView
   private void init()
   {
     AppMethodBeat.i(98215);
-    this.nmL = false;
-    this.xra = true;
-    this.xrc = false;
-    this.nmN = -1;
-    this.xqY = "...";
-    this.xqZ = "";
-    this.xrb = -16776961;
-    this.xre = new a();
-    this.xrf = new a();
-    this.avD = new TextPaint();
-    this.avD.setAntiAlias(true);
+    this.nPL = false;
+    this.yDQ = true;
+    this.yDS = false;
+    this.nPN = -1;
+    this.yDO = "...";
+    this.yDP = "";
+    this.yDR = -16776961;
+    this.yDU = new a();
+    this.yDV = new a();
+    this.awy = new TextPaint();
+    this.awy.setAntiAlias(true);
     if (this.textSize == -1)
     {
       this.textSize = BackwardSupportUtil.b.g(this.context, 12.0F);
-      this.avD.setTextSize(this.textSize);
+      this.awy.setTextSize(this.textSize);
     }
     for (;;)
     {
-      this.avD.setColor(-16777216);
-      this.avD.setTextAlign(Paint.Align.LEFT);
+      this.awy.setColor(-16777216);
+      this.awy.setTextAlign(Paint.Align.LEFT);
       AppMethodBeat.o(98215);
       return;
-      this.avD.setTextSize(13.0F);
+      this.awy.setTextSize(13.0F);
     }
   }
   
   public boolean getIsExpanded()
   {
-    return this.nmL;
+    return this.nPL;
   }
   
   public String getText()
@@ -136,46 +136,46 @@ public class QTextView
     int i;
     label53:
     int j;
-    if (this.nmL)
+    if (this.nPL)
     {
-      locala = this.xre;
-      localArrayList = this.xre.xri;
+      locala = this.yDU;
+      localArrayList = this.yDU.yDY;
       f2 = getPaddingLeft();
-      f1 = getPaddingTop() + -this.xqX;
+      f1 = getPaddingTop() + -this.yDN;
       i = 0;
       if (i >= localArrayList.size()) {
         break label307;
       }
       int[] arrayOfInt = (int[])localArrayList.get(i);
-      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.avD);
-      if ((i == localArrayList.size() - 1) && (locala.xrh))
+      paramCanvas.drawText(this.mText, arrayOfInt[0], arrayOfInt[1] + 1, f2, f1, this.awy);
+      if ((i == localArrayList.size() - 1) && (locala.yDX))
       {
-        paramCanvas.drawText(this.xqY, locala.xrj + f2, f1, this.avD);
-        if (this.xra)
+        paramCanvas.drawText(this.yDO, locala.yDZ + f2, f1, this.awy);
+        if (this.yDQ)
         {
-          j = this.avD.getColor();
-          this.avD.setColor(this.xrb);
-          if (!this.xrc) {
+          j = this.awy.getColor();
+          this.awy.setColor(this.yDR);
+          if (!this.yDS) {
             break label278;
           }
-          paramCanvas.drawText(this.xqZ, paramCanvas.getWidth() - (locala.xrl + getPaddingRight() + getPaddingLeft()), f1, this.avD);
+          paramCanvas.drawText(this.yDP, paramCanvas.getWidth() - (locala.yEb + getPaddingRight() + getPaddingLeft()), f1, this.awy);
         }
       }
     }
     for (;;)
     {
-      this.avD.setColor(j);
-      f1 += -this.xqX + this.avD.descent();
+      this.awy.setColor(j);
+      f1 += -this.yDN + this.awy.descent();
       if (f1 > paramCanvas.getHeight()) {
         break label307;
       }
       i += 1;
       break label53;
-      locala = this.xrf;
-      localArrayList = this.xrf.xri;
+      locala = this.yDV;
+      localArrayList = this.yDV.yDY;
       break;
       label278:
-      paramCanvas.drawText(this.xqZ, locala.xrj + locala.xrk + f2, f1, this.avD);
+      paramCanvas.drawText(this.yDP, locala.yDZ + locala.yEa + f2, f1, this.awy);
     }
     label307:
     AppMethodBeat.o(98220);
@@ -187,14 +187,14 @@ public class QTextView
     int i = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (i == 1073741824) {
-      Np(paramInt1);
+      Ps(paramInt1);
     }
     int k;
     for (;;)
     {
       k = View.MeasureSpec.getMode(paramInt2);
       i = View.MeasureSpec.getSize(paramInt2);
-      this.xqX = ((int)this.avD.ascent());
+      this.yDN = ((int)this.awy.ascent());
       if (k != 1073741824) {
         break;
       }
@@ -204,18 +204,18 @@ public class QTextView
       return;
       if (i == -2147483648)
       {
-        paramInt1 = Math.min(Np(paramInt1), paramInt1);
+        paramInt1 = Math.min(Ps(paramInt1), paramInt1);
       }
       else
       {
-        Np(paramInt1);
+        Ps(paramInt1);
         paramInt1 = 0;
       }
     }
-    if (this.nmL) {}
-    for (paramInt2 = this.xre.xri.size();; paramInt2 = this.xrf.xri.size())
+    if (this.nPL) {}
+    for (paramInt2 = this.yDU.yDY.size();; paramInt2 = this.yDV.yDY.size())
     {
-      int j = paramInt2 * (int)(-this.xqX + this.avD.descent()) + getPaddingTop() + getPaddingBottom();
+      int j = paramInt2 * (int)(-this.yDN + this.awy.descent()) + getPaddingTop() + getPaddingBottom();
       paramInt2 = j;
       if (k != -2147483648) {
         break;
@@ -227,43 +227,43 @@ public class QTextView
   
   public void setColorEllpsizeMore(int paramInt)
   {
-    this.xrb = paramInt;
+    this.yDR = paramInt;
   }
   
   public void setDrawEllipsizeMoreString(boolean paramBoolean)
   {
-    this.xra = paramBoolean;
+    this.yDQ = paramBoolean;
   }
   
   public void setEllipsis(String paramString)
   {
-    this.xqY = paramString;
+    this.yDO = paramString;
   }
   
   public void setEllipsisMore(String paramString)
   {
-    this.xqZ = paramString;
+    this.yDP = paramString;
   }
   
   public void setMaxLines(int paramInt)
   {
-    this.nmN = paramInt;
+    this.nPN = paramInt;
   }
   
   public void setRightAlignEllipsizeMoreString(boolean paramBoolean)
   {
-    this.xrc = paramBoolean;
+    this.yDS = paramBoolean;
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(98216);
-    if (bt.isNullOrNil(this.mText)) {
+    if (bs.isNullOrNil(this.mText)) {
       this.mText = "";
     }
     this.mText = paramString;
-    a.a(this.xre, "");
-    a.a(this.xrf, "");
+    a.a(this.yDU, "");
+    a.a(this.yDV, "");
     requestLayout();
     invalidate();
     AppMethodBeat.o(98216);
@@ -272,7 +272,7 @@ public class QTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(98218);
-    this.avD.setColor(paramInt);
+    this.awy.setColor(paramInt);
     invalidate();
     AppMethodBeat.o(98218);
   }
@@ -280,7 +280,7 @@ public class QTextView
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(98217);
-    this.avD.setTextSize(paramInt);
+    this.awy.setTextSize(paramInt);
     requestLayout();
     invalidate();
     AppMethodBeat.o(98217);
@@ -288,29 +288,29 @@ public class QTextView
   
   static final class a
   {
-    private static HashMap<String, Integer> xrm;
+    private static HashMap<String, Integer> yEc;
     private String key;
-    private int xrg;
-    boolean xrh;
-    ArrayList<int[]> xri;
-    float xrj;
-    float xrk;
-    float xrl;
+    private int yDW;
+    boolean yDX;
+    ArrayList<int[]> yDY;
+    float yDZ;
+    float yEa;
+    float yEb;
     
     static
     {
       AppMethodBeat.i(98212);
-      xrm = new HashMap();
+      yEc = new HashMap();
       AppMethodBeat.o(98212);
     }
     
     public a()
     {
       AppMethodBeat.i(98209);
-      this.xrg = 0;
+      this.yDW = 0;
       this.key = "";
-      this.xrh = false;
-      this.xri = new ArrayList();
+      this.yDX = false;
+      this.yDY = new ArrayList();
       AppMethodBeat.o(98209);
     }
     
@@ -328,29 +328,29 @@ public class QTextView
       String str = paramString1 + paramString2 + paramString3 + paramInt1 + paramInt2;
       if (str.equals(this.key))
       {
-        paramInt1 = this.xrg;
+        paramInt1 = this.yDW;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
       this.key = str;
-      this.xri.clear();
-      this.xrh = false;
-      this.xrj = 0.0F;
-      this.xrk = 0.0F;
-      this.xrl = 0.0F;
+      this.yDY.clear();
+      this.yDX = false;
+      this.yDZ = 0.0F;
+      this.yEa = 0.0F;
+      this.yEb = 0.0F;
       if (paramInt2 == -1)
       {
-        this.xri.add(new int[] { 0, paramString1.length() });
-        this.xrg = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
-        paramInt1 = this.xrg;
+        this.yDY.add(new int[] { 0, paramString1.length() });
+        this.yDW = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
+        paramInt1 = this.yDW;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
       if (paramString2 != null) {
-        this.xrk = paramTextPaint.measureText(paramString2);
+        this.yEa = paramTextPaint.measureText(paramString2);
       }
       if (paramString3 != null) {
-        this.xrl = paramTextPaint.measureText(paramString3);
+        this.yEb = paramTextPaint.measureText(paramString3);
       }
       int k = -1;
       float f1 = 0.0F;
@@ -364,22 +364,22 @@ public class QTextView
         if (k == -1) {
           i = paramInt2;
         }
-        if (this.xri.size() == paramInt1) {
-          this.xrh = true;
+        if (this.yDY.size() == paramInt1) {
+          this.yDX = true;
         }
       }
       else
       {
-        if (this.xrh)
+        if (this.yDX)
         {
-          paramString2 = (int[])this.xri.get(this.xri.size() - 1);
-          this.xrj = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
+          paramString2 = (int[])this.yDY.get(this.yDY.size() - 1);
+          this.yDZ = paramTextPaint.measureText(paramString1.substring(paramString2[0], paramString2[1] + 1));
         }
-        if (this.xri.size() != 0) {
+        if (this.yDY.size() != 0) {
           break label675;
         }
-        this.xrg = 0;
-        paramInt1 = this.xrg;
+        this.yDW = 0;
+        paramInt1 = this.yDW;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
@@ -392,7 +392,7 @@ public class QTextView
       if (paramString1.charAt(paramInt2) == '\n')
       {
         k = 1;
-        this.xri.add(new int[] { i, paramInt2 - 1 });
+        this.yDY.add(new int[] { i, paramInt2 - 1 });
         j = paramInt2;
         if (k == 0) {
           break label601;
@@ -403,9 +403,9 @@ public class QTextView
         f1 = f2;
         k = paramInt2;
         i1 = m;
-        if (this.xri.size() == paramInt1 - 1)
+        if (this.yDY.size() == paramInt1 - 1)
         {
-          i1 = (int)(m - (this.xrk + this.xrl));
+          i1 = (int)(m - (this.yEa + this.yEb));
           i2 = 0;
           k = paramInt2;
           f1 = f2;
@@ -430,7 +430,7 @@ public class QTextView
         else
         {
           j = paramInt2 - 1;
-          this.xri.add(new int[] { i, j });
+          this.yDY.add(new int[] { i, j });
           break label389;
         }
         do
@@ -442,7 +442,7 @@ public class QTextView
           paramInt2 = j - 1;
           j = paramInt2;
         } while (paramInt2 != 0);
-        this.xri.add(new int[] { i, paramInt2 });
+        this.yDY.add(new int[] { i, paramInt2 });
         j = paramInt2;
         break label389;
         label601:
@@ -453,7 +453,7 @@ public class QTextView
         i1 = m;
         if (j == paramString1.length() - 1)
         {
-          this.xri.add(new int[] { i, j });
+          this.yDY.add(new int[] { i, j });
           i2 = n;
           f1 = f2;
           k = i;
@@ -461,15 +461,15 @@ public class QTextView
         }
       }
       label675:
-      if (this.xri.size() == 1)
+      if (this.yDY.size() == 1)
       {
-        this.xrg = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
-        paramInt1 = this.xrg;
+        this.yDW = ((int)(paramTextPaint.measureText(paramString1) + 0.5F));
+        paramInt1 = this.yDW;
         AppMethodBeat.o(98211);
         return paramInt1;
       }
-      this.xrg = m;
-      paramInt1 = this.xrg;
+      this.yDW = m;
+      paramInt1 = this.yDW;
       AppMethodBeat.o(98211);
       return paramInt1;
     }

@@ -6,7 +6,7 @@ import java.io.Closeable;
 public final class f
 {
   /* Error */
-  public static java.lang.String T(java.io.File paramFile)
+  public static java.lang.String W(java.io.File paramFile)
   {
     // Byte code:
     //   0: ldc 9
@@ -90,7 +90,7 @@ public final class f
   }
   
   /* Error */
-  public static byte[] U(java.io.File paramFile)
+  public static byte[] X(java.io.File paramFile)
   {
     // Byte code:
     //   0: ldc 45
@@ -233,7 +233,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.f.f
  * JD-Core Version:    0.7.0.1
  */

@@ -22,10 +22,10 @@ public final class m
   public final void a(Context paramContext, f paramf)
   {
     AppMethodBeat.i(78708);
-    paramf.ekX().awi("shareTimeline");
-    paramf.caI.a(new c()
+    paramf.eAt().aBA("shareTimeline");
+    paramf.bXF.a(new c()
     {
-      public final JSONObject AM()
+      public final JSONObject Aq()
       {
         return null;
       }
@@ -35,14 +35,14 @@ public final class m
         return "menu:share:timeline";
       }
     });
-    h.vKh.dB(982, 10);
+    h.wUl.dB(982, 10);
     AppMethodBeat.o(78708);
   }
   
   public final void a(Context paramContext, f paramf, l paraml)
   {
     AppMethodBeat.i(78707);
-    if (paramf.Em(23)) {
+    if (paramf.Gi(23)) {
       paraml.a(2, paramContext.getString(2131762164), 2131689817);
     }
     AppMethodBeat.o(78707);

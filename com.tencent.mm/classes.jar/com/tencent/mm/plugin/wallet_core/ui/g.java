@@ -15,23 +15,23 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class g
   extends Preference
 {
-  private View iIW;
+  public View.OnClickListener gst;
+  private View jja;
   public boolean mClickable;
   public String mContent;
   private View mView;
-  public View.OnClickListener pgj;
-  public int uqD;
-  private int uqE;
-  private int uqF;
+  private int vzA;
+  private int vzB;
+  public int vzz;
   
   public g(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(70676);
     this.mView = null;
-    this.uqD = 2147483647;
-    this.uqE = -1;
-    this.uqF = -1;
+    this.vzz = 2147483647;
+    this.vzA = -1;
+    this.vzB = -1;
     setLayoutResource(2131494531);
     AppMethodBeat.o(70676);
   }
@@ -55,17 +55,17 @@ public final class g
     Object localObject = (TextView)paramView.findViewById(2131301249);
     TextView localTextView = (TextView)paramView.findViewById(2131306264);
     ((TextView)localObject).setText(getTitle());
-    this.iIW = paramView;
-    if (this.uqD != 2147483647) {
-      localTextView.setTextColor(this.uqD);
+    this.jja = paramView;
+    if (this.vzz != 2147483647) {
+      localTextView.setTextColor(this.vzz);
     }
     if (this.mClickable)
     {
-      if ((this.uqE >= 0) && (this.uqF > 0))
+      if ((this.vzA >= 0) && (this.vzB > 0))
       {
         paramView = new l(this.mContext);
         localObject = new SpannableString(this.mContent);
-        paramView.Anf = new l.a()
+        paramView.BFA = new l.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -77,17 +77,17 @@ public final class g
           }
         };
         localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        ((SpannableString)localObject).setSpan(paramView, this.uqE, this.uqF, 33);
+        ((SpannableString)localObject).setSpan(paramView, this.vzA, this.vzB, 33);
         localTextView.setText((CharSequence)localObject);
         AppMethodBeat.o(70678);
         return;
       }
-      if (this.uqD != 2147483647) {
-        localTextView.setTextColor(this.uqD);
+      if (this.vzz != 2147483647) {
+        localTextView.setTextColor(this.vzz);
       }
       for (;;)
       {
-        localTextView.setOnClickListener(this.pgj);
+        localTextView.setOnClickListener(this.gst);
         localTextView.setText(k.b(this.mContext, this.mContent, localTextView.getTextSize()));
         AppMethodBeat.o(70678);
         return;

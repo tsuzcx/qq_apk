@@ -9,132 +9,132 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactSocialInfoPreference
   extends Preference
 {
-  private TextView nBl;
-  private ImageView uAA;
-  private ImageView uAB;
-  private int uAC;
-  private int uAD;
-  private int uAE;
-  private int uAF;
-  private int uAG;
-  private int uAH;
-  private ImageView uAw;
-  private ImageView uAx;
-  private ImageView uAy;
-  private ImageView uAz;
+  private TextView oel;
+  private int vJA;
+  private ImageView vJp;
+  private ImageView vJq;
+  private ImageView vJr;
+  private ImageView vJs;
+  private ImageView vJt;
+  private ImageView vJu;
+  private int vJv;
+  private int vJw;
+  private int vJx;
+  private int vJy;
+  private int vJz;
   
   public ContactSocialInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.uAC = 8;
-    this.uAD = 8;
-    this.uAE = 8;
-    this.uAF = 8;
-    this.uAG = 8;
-    this.uAH = 8;
+    this.vJv = 8;
+    this.vJw = 8;
+    this.vJx = 8;
+    this.vJy = 8;
+    this.vJz = 8;
+    this.vJA = 8;
   }
   
   public ContactSocialInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27047);
-    this.uAC = 8;
-    this.uAD = 8;
-    this.uAE = 8;
-    this.uAF = 8;
-    this.uAG = 8;
-    this.uAH = 8;
+    this.vJv = 8;
+    this.vJw = 8;
+    this.vJx = 8;
+    this.vJy = 8;
+    this.vJz = 8;
+    this.vJA = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(27047);
   }
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(27055);
-    if (this.uAw != null) {
-      this.uAw.setVisibility(this.uAC);
+    if (this.vJp != null) {
+      this.vJp.setVisibility(this.vJv);
     }
-    if (this.uAx != null) {
-      this.uAx.setVisibility(this.uAD);
+    if (this.vJq != null) {
+      this.vJq.setVisibility(this.vJw);
     }
-    if (this.uAy != null) {
-      this.uAy.setVisibility(this.uAE);
+    if (this.vJr != null) {
+      this.vJr.setVisibility(this.vJx);
     }
-    if (this.uAz != null) {
-      this.uAz.setVisibility(this.uAF);
+    if (this.vJs != null) {
+      this.vJs.setVisibility(this.vJy);
     }
-    if (this.uAA != null) {
-      this.uAA.setVisibility(this.uAG);
+    if (this.vJt != null) {
+      this.vJt.setVisibility(this.vJz);
     }
-    if (this.nBl != null)
+    if (this.oel != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.nBl.getLayoutParams();
-      localLayoutParams.width = a.ao(this.mContext, 2131165370);
-      this.nBl.setLayoutParams(localLayoutParams);
+      ViewGroup.LayoutParams localLayoutParams = this.oel.getLayoutParams();
+      localLayoutParams.width = a.au(this.mContext, 2131165370);
+      this.oel.setLayoutParams(localLayoutParams);
     }
-    if (this.uAB != null) {
-      this.uAB.setVisibility(this.uAH);
+    if (this.vJu != null) {
+      this.vJu.setVisibility(this.vJA);
     }
     AppMethodBeat.o(27055);
   }
   
-  public final void Jl(int paramInt)
+  public final void Lk(int paramInt)
   {
     AppMethodBeat.i(27051);
-    this.uAD = paramInt;
-    cE();
+    this.vJw = paramInt;
+    cL();
     AppMethodBeat.o(27051);
   }
   
-  public final void Jm(int paramInt)
+  public final void Ll(int paramInt)
   {
     AppMethodBeat.i(27052);
-    this.uAE = paramInt;
-    cE();
+    this.vJx = paramInt;
+    cL();
     AppMethodBeat.o(27052);
   }
   
-  public final void Jn(int paramInt)
+  public final void Lm(int paramInt)
   {
     AppMethodBeat.i(27053);
-    this.uAG = paramInt;
-    cE();
+    this.vJz = paramInt;
+    cL();
     AppMethodBeat.o(27053);
   }
   
-  public final void Jo(int paramInt)
+  public final void Ln(int paramInt)
   {
     AppMethodBeat.i(27054);
-    this.uAH = paramInt;
-    cE();
+    this.vJA = paramInt;
+    cL();
     AppMethodBeat.o(27054);
   }
   
-  public final void Jp(int paramInt)
+  public final void Lo(int paramInt)
   {
     AppMethodBeat.i(27050);
-    this.uAC = paramInt;
-    cE();
+    this.vJv = paramInt;
+    cL();
     AppMethodBeat.o(27050);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27049);
-    this.uAw = ((ImageView)paramView.findViewById(2131300953));
-    this.uAx = ((ImageView)paramView.findViewById(2131300958));
-    this.uAy = ((ImageView)paramView.findViewById(2131300949));
-    this.uAz = ((ImageView)paramView.findViewById(2131300927));
-    this.uAA = ((ImageView)paramView.findViewById(2131300937));
-    this.uAB = ((ImageView)paramView.findViewById(2131300967));
-    this.nBl = ((TextView)paramView.findViewById(2131305902));
-    cE();
+    this.vJp = ((ImageView)paramView.findViewById(2131300953));
+    this.vJq = ((ImageView)paramView.findViewById(2131300958));
+    this.vJr = ((ImageView)paramView.findViewById(2131300949));
+    this.vJs = ((ImageView)paramView.findViewById(2131300927));
+    this.vJt = ((ImageView)paramView.findViewById(2131300937));
+    this.vJu = ((ImageView)paramView.findViewById(2131300967));
+    this.oel = ((TextView)paramView.findViewById(2131305902));
+    cL();
     super.onBindView(paramView);
     AppMethodBeat.o(27049);
   }
@@ -153,7 +153,7 @@ public class ContactSocialInfoPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactSocialInfoPreference
  * JD-Core Version:    0.7.0.1
  */

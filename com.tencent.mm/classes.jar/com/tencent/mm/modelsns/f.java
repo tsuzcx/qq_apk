@@ -4,50 +4,50 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  StringBuffer htv;
-  StringBuffer htw;
+  StringBuffer hTX;
+  StringBuffer hTY;
   private int index;
   
   public f()
   {
     AppMethodBeat.i(150969);
-    this.htv = new StringBuffer();
-    this.htw = new StringBuffer();
+    this.hTX = new StringBuffer();
+    this.hTY = new StringBuffer();
     this.index = 0;
     AppMethodBeat.o(150969);
   }
   
-  public final String PW()
+  public final String PS()
   {
     AppMethodBeat.i(150973);
     this.index = 0;
-    this.htv.append("--end--\n\n");
-    String str = this.htv.toString();
+    this.hTX.append("--end--\n\n");
+    String str = this.hTX.toString();
     AppMethodBeat.o(150973);
     return str;
   }
   
-  public final void n(String paramString, Object paramObject)
+  public final void m(String paramString, Object paramObject)
   {
     AppMethodBeat.i(150970);
-    this.htv.append(this.index + " " + paramString + "->" + paramObject + "\n");
-    this.htw.append(paramObject);
+    this.hTX.append(this.index + " " + paramString + "->" + paramObject + "\n");
+    this.hTY.append(paramObject);
     this.index += 1;
     AppMethodBeat.o(150970);
   }
   
-  public final void o(String paramString, Object paramObject)
+  public final void n(String paramString, Object paramObject)
   {
     AppMethodBeat.i(150971);
-    this.htv.append(paramString + "->" + paramObject + "\n");
-    this.htw.append(paramObject);
+    this.hTX.append(paramString + "->" + paramObject + "\n");
+    this.hTY.append(paramObject);
     AppMethodBeat.o(150971);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(150972);
-    String str = this.htw.toString();
+    String str = this.hTY.toString();
     AppMethodBeat.o(150972);
     return str;
   }

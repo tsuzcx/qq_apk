@@ -16,25 +16,25 @@ public class TexturePool
   
   public TexturePool()
   {
-    AppMethodBeat.i(201849);
+    AppMethodBeat.i(197910);
     this.textureInfoList = new ArrayList();
     this.MaxCacheSize = 207360000L;
     this.MaxCacheLength = 60;
     Logger.d("TexturePool", "TexturePool: create " + Thread.currentThread().getId());
-    AppMethodBeat.o(201849);
+    AppMethodBeat.o(197910);
   }
   
   private void adaptCacheSize()
   {
     try
     {
-      AppMethodBeat.i(201854);
+      AppMethodBeat.i(197915);
       while ((this.textureInfoList.size() > 0) && (this.textureInfoList.size() - this.MaxCacheLength > 0))
       {
         ((TextureInfo)this.textureInfoList.get(0)).release();
         this.textureInfoList.remove(0);
       }
-      AppMethodBeat.o(201854);
+      AppMethodBeat.o(197915);
     }
     finally {}
   }
@@ -46,7 +46,7 @@ public class TexturePool
       int i;
       try
       {
-        AppMethodBeat.i(201855);
+        AppMethodBeat.i(197916);
         long l = 0L;
         i = 0;
         if (i < this.textureInfoList.size())
@@ -63,7 +63,7 @@ public class TexturePool
         }
         else
         {
-          AppMethodBeat.o(201855);
+          AppMethodBeat.o(197916);
           return;
         }
       }
@@ -270,7 +270,7 @@ public class TexturePool
   {
     try
     {
-      AppMethodBeat.i(201856);
+      AppMethodBeat.i(197917);
       Logger.d("TexturePool", " release all " + Thread.currentThread().getId());
       int i = 0;
       while (i < this.textureInfoList.size())
@@ -278,7 +278,7 @@ public class TexturePool
         ((TextureInfo)this.textureInfoList.get(i)).release();
         i += 1;
       }
-      AppMethodBeat.o(201856);
+      AppMethodBeat.o(197917);
       return;
     }
     finally {}
@@ -286,23 +286,23 @@ public class TexturePool
   
   public void setMaxCacheLength(int paramInt)
   {
-    AppMethodBeat.i(201851);
+    AppMethodBeat.i(197912);
     this.MaxCacheLength = paramInt;
     adapterCacheMemorySize();
-    AppMethodBeat.o(201851);
+    AppMethodBeat.o(197912);
   }
   
   public void setMaxCacheSize(long paramLong)
   {
-    AppMethodBeat.i(201850);
+    AppMethodBeat.i(197911);
     this.MaxCacheSize = paramLong;
     adaptCacheSize();
-    AppMethodBeat.o(201850);
+    AppMethodBeat.o(197911);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.TexturePool
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,7 +105,7 @@ public class SetPixelsActionArg
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace("SetPixelsActionArg", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("SetPixelsActionArg", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(145222);
     }
   }
@@ -124,7 +124,7 @@ public class SetPixelsActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetPixelsActionArg
  * JD-Core Version:    0.7.0.1
  */

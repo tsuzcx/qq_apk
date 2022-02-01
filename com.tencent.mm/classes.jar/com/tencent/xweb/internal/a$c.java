@@ -7,28 +7,28 @@ import org.xwalk.core.XWalkEnvironment;
 public final class a$c
   extends a.b
 {
-  static String IQt = null;
+  static String KCO = null;
   
-  public static void aPm(String paramString)
+  public static void aVf(String paramString)
   {
-    IQt = paramString;
+    KCO = paramString;
   }
   
-  public final String frF()
+  public final String fKh()
   {
     AppMethodBeat.i(156957);
-    if (!TextUtils.isEmpty(IQt))
+    if (!TextUtils.isEmpty(KCO))
     {
-      str = IQt;
+      str = KCO;
       AppMethodBeat.o(156957);
       return str;
     }
-    String str = super.frF();
+    String str = super.fKh();
     AppMethodBeat.o(156957);
     return str;
   }
   
-  protected final boolean frH()
+  protected final boolean fKj()
   {
     AppMethodBeat.i(156956);
     boolean bool = XWalkEnvironment.is64BitRuntime();

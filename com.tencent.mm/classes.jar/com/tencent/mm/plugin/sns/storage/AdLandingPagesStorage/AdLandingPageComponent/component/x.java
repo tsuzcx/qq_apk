@@ -7,13 +7,13 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cj.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class x
   extends o
@@ -22,19 +22,19 @@ public final class x
   {
     super(paramContext, paramp, paramViewGroup);
     AppMethodBeat.i(96657);
-    paramContext = h.j(paramp.wVY, true, false);
-    paramViewGroup = this.xas;
+    paramContext = h.k(paramp.yiM, true, false);
+    paramViewGroup = this.ynh;
     if (paramContext == null) {}
     for (paramContext = "";; paramContext = paramContext.field_packageName)
     {
-      paramViewGroup.iQ("pkg", paramContext);
-      this.xas.iQ("appid", paramp.wVY);
+      paramViewGroup.jo("pkg", paramContext);
+      this.ynh.jo("appid", paramp.yiM);
       AppMethodBeat.o(96657);
       return;
     }
   }
   
-  private boolean C(Context paramContext, final String paramString1, final String paramString2)
+  private boolean B(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(96659);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
@@ -44,52 +44,44 @@ public final class x
     }
     try
     {
-      final Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
+      Intent localIntent = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1);
       if (localIntent != null)
       {
         paramString1 = paramContext;
         if (!(paramContext instanceof Activity)) {
           paramString1 = this.context;
         }
-        a.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(96656);
-            h.b(paramString1, localIntent, paramString2);
-            AppMethodBeat.o(96656);
-          }
-        });
+        a.post(new x.1(this, paramString1, localIntent, paramString2));
         AppMethodBeat.o(96659);
         return true;
       }
     }
     catch (Exception paramContext)
     {
-      ad.e("AdLandingPageOpenAppBtnComp", bt.m(paramContext));
+      ac.e("AdLandingPageOpenAppBtnComp", bs.m(paramContext));
       AppMethodBeat.o(96659);
     }
     return false;
   }
   
-  protected final void dwp()
+  protected final void dKO()
   {
     AppMethodBeat.i(96658);
-    Object localObject = dwo();
-    if (h.t(this.context, ((p)localObject).wVY))
+    Object localObject = dKN();
+    if (h.t(this.context, ((p)localObject).yiM))
     {
-      localObject = h.j(((p)localObject).wVY, true, false);
-      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (C(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
+      localObject = h.k(((p)localObject).yiM, true, false);
+      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (B(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
       {
-        dwn();
+        dKM();
         AppMethodBeat.o(96658);
         return;
       }
-      super.dwp();
+      super.dKO();
       AppMethodBeat.o(96658);
       return;
     }
-    super.dwp();
+    super.dKO();
     AppMethodBeat.o(96658);
   }
 }

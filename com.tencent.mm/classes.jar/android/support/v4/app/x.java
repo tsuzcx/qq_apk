@@ -7,21 +7,21 @@ import java.util.Set;
 
 public final class x
 {
-  final String FH;
-  final CharSequence FI;
-  final CharSequence[] FJ;
-  final boolean FK;
-  final Set<String> FL;
+  final String GF;
+  final CharSequence GG;
+  final CharSequence[] GH;
+  final boolean GI;
+  final Set<String> GJ;
   final Bundle mExtras;
   
   public x(String paramString, CharSequence paramCharSequence, CharSequence[] paramArrayOfCharSequence, boolean paramBoolean, Bundle paramBundle, Set<String> paramSet)
   {
-    this.FH = paramString;
-    this.FI = paramCharSequence;
-    this.FJ = paramArrayOfCharSequence;
-    this.FK = paramBoolean;
+    this.GF = paramString;
+    this.GG = paramCharSequence;
+    this.GH = paramArrayOfCharSequence;
+    this.GI = paramBoolean;
     this.mExtras = paramBundle;
-    this.FL = paramSet;
+    this.GJ = paramSet;
   }
   
   static RemoteInput[] b(x[] paramArrayOfx)
@@ -34,7 +34,7 @@ public final class x
     while (i < paramArrayOfx.length)
     {
       x localx = paramArrayOfx[i];
-      arrayOfRemoteInput[i] = new RemoteInput.Builder(localx.FH).setLabel(localx.FI).setChoices(localx.FJ).setAllowFreeFormInput(localx.FK).addExtras(localx.mExtras).build();
+      arrayOfRemoteInput[i] = new RemoteInput.Builder(localx.GF).setLabel(localx.GG).setChoices(localx.GH).setAllowFreeFormInput(localx.GI).addExtras(localx.mExtras).build();
       i += 1;
     }
     return arrayOfRemoteInput;

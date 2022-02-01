@@ -11,30 +11,30 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class f
 {
-  View hIZ;
-  private MMActivity nqt;
-  b nwI;
-  ImageView nwM;
-  TextView nwN;
-  TextView nwO;
+  View ijA;
+  private MMActivity nTt;
+  b nZI;
+  ImageView nZM;
+  TextView nZN;
+  TextView nZO;
   
   public f(MMActivity paramMMActivity, View paramView)
   {
-    this.nqt = paramMMActivity;
-    this.hIZ = paramView;
+    this.nTt = paramMMActivity;
+    this.ijA = paramView;
   }
   
-  public final void cE()
+  public final void cL()
   {
     AppMethodBeat.i(113091);
-    this.nwN.setVisibility(0);
-    this.nwM.setImageDrawable(this.nqt.getResources().getDrawable(2131231458));
-    this.nwN.setText(2131756970);
-    this.nwO.setText(2131756969);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.nwM.getLayoutParams();
-    localLayoutParams.topMargin = this.nqt.getResources().getDimensionPixelOffset(2131165993);
-    this.nwM.setLayoutParams(localLayoutParams);
-    this.nwM.invalidate();
+    this.nZN.setVisibility(0);
+    this.nZM.setImageDrawable(this.nTt.getResources().getDrawable(2131231458));
+    this.nZN.setText(2131756970);
+    this.nZO.setText(2131756969);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.nZM.getLayoutParams();
+    localLayoutParams.topMargin = this.nTt.getResources().getDimensionPixelOffset(2131165993);
+    this.nZM.setLayoutParams(localLayoutParams);
+    this.nZM.invalidate();
     AppMethodBeat.o(113091);
   }
 }

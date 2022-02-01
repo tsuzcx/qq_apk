@@ -17,12 +17,12 @@ public final class BackwardSupportUtil$c
     }
     if (Build.VERSION.SDK_INT >= 8)
     {
-      new bn();
-      bn.c(paramListView);
+      new bm();
+      bm.c(paramListView);
       AppMethodBeat.o(156073);
       return;
     }
-    new bm();
+    new bl();
     paramListView.setSelection(0);
     AppMethodBeat.o(156073);
   }
@@ -37,12 +37,12 @@ public final class BackwardSupportUtil$c
     }
     if (Build.VERSION.SDK_INT >= 8)
     {
-      new bn();
-      bn.d(paramListView, paramInt);
+      new bm();
+      bm.d(paramListView, paramInt);
       AppMethodBeat.o(156074);
       return;
     }
-    new bm();
+    new bl();
     paramListView.setSelection(paramInt);
     AppMethodBeat.o(156074);
   }
@@ -57,7 +57,7 @@ public final class BackwardSupportUtil$c
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      new bn();
+      new bm();
       int i = paramListView.getFirstVisiblePosition();
       if ((i < paramInt) && (i + 10 < paramInt)) {
         paramListView.setSelectionFromTop(paramInt - 10, 0);
@@ -67,8 +67,8 @@ public final class BackwardSupportUtil$c
         if (Build.VERSION.SDK_INT >= 11)
         {
           com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, c.a(0, new com.tencent.mm.hellhoundlib.b.a()));
-          com.tencent.mm.hellhoundlib.a.a.a(paramListView, locala.adn(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScrollFromTop", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPositionFromTop", "(II)V");
-          paramListView.smoothScrollToPositionFromTop(((Integer)locala.lS(0)).intValue(), ((Integer)locala.lS(1)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(paramListView, locala.aeD(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScrollFromTop", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPositionFromTop", "(II)V");
+          paramListView.smoothScrollToPositionFromTop(((Integer)locala.lR(0)).intValue(), ((Integer)locala.lR(1)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(paramListView, "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScrollFromTop", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPositionFromTop", "(II)V");
         }
         AppMethodBeat.o(156075);
@@ -78,7 +78,7 @@ public final class BackwardSupportUtil$c
         }
       }
     }
-    new bm();
+    new bl();
     paramListView.setSelectionFromTop(paramInt, 0);
     AppMethodBeat.o(156075);
   }

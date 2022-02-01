@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.audio.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.util.Stack;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/audio/util/EarPieceUtil;", "", "()V", "TAG", "", "releaseEarPieceResource", "", "mDeviceQueue", "Ljava/util/Stack;", "", "requestEarPieceResource", "", "plugin-audio_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/util/EarPieceUtil;", "", "()V", "TAG", "", "releaseEarPieceResource", "", "mDeviceQueue", "Ljava/util/Stack;", "", "requestEarPieceResource", "", "plugin-audio_release"})
 public final class b
 {
-  public static final b mpz;
+  public static final b mRA;
   
   static
   {
-    AppMethodBeat.i(189279);
-    mpz = new b();
-    AppMethodBeat.o(189279);
+    AppMethodBeat.i(198402);
+    mRA = new b();
+    AppMethodBeat.o(198402);
   }
   
   public static final boolean c(Stack<Integer> paramStack)
   {
-    AppMethodBeat.i(189278);
+    AppMethodBeat.i(198401);
     k.h(paramStack, "mDeviceQueue");
-    ad.i("MicroMsg.EarPieceUtil", " request the earpiece resource");
+    ac.i("MicroMsg.EarPieceUtil", " request the earpiece resource");
     Integer localInteger;
     if (!paramStack.isEmpty())
     {
@@ -38,16 +38,16 @@ public final class b
         paramStack.removeElement(Integer.valueOf(2));
       }
       paramStack.push(Integer.valueOf(2));
-      AppMethodBeat.o(189278);
+      AppMethodBeat.o(198401);
       return true;
     }
-    AppMethodBeat.o(189278);
+    AppMethodBeat.o(198401);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.d.b
  * JD-Core Version:    0.7.0.1
  */

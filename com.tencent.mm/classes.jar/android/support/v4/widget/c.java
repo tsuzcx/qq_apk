@@ -18,8 +18,8 @@ import android.widget.ImageView;
 final class c
   extends ImageView
 {
-  Animation.AnimationListener PG;
-  int PH;
+  Animation.AnimationListener QB;
+  int QC;
   
   c(Context paramContext)
   {
@@ -27,8 +27,8 @@ final class c
     float f = getContext().getResources().getDisplayMetrics().density;
     int i = (int)(1.75F * f);
     int j = (int)(0.0F * f);
-    this.PH = ((int)(3.5F * f));
-    if (fh())
+    this.QC = ((int)(3.5F * f));
+    if (fp())
     {
       paramContext = new ShapeDrawable(new OvalShape());
       t.k(this, f * 4.0F);
@@ -38,15 +38,15 @@ final class c
       paramContext.getPaint().setColor(-328966);
       t.a(this, paramContext);
       return;
-      paramContext = new ShapeDrawable(new a(this.PH));
+      paramContext = new ShapeDrawable(new a(this.QC));
       setLayerType(1, paramContext.getPaint());
-      paramContext.getPaint().setShadowLayer(this.PH, j, i, 503316480);
-      i = this.PH;
+      paramContext.getPaint().setShadowLayer(this.QC, j, i, 503316480);
+      i = this.QC;
       setPadding(i, i, i, i);
     }
   }
   
-  private static boolean fh()
+  private static boolean fp()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -54,24 +54,24 @@ final class c
   public final void onAnimationEnd()
   {
     super.onAnimationEnd();
-    if (this.PG != null) {
-      this.PG.onAnimationEnd(getAnimation());
+    if (this.QB != null) {
+      this.QB.onAnimationEnd(getAnimation());
     }
   }
   
   public final void onAnimationStart()
   {
     super.onAnimationStart();
-    if (this.PG != null) {
-      this.PG.onAnimationStart(getAnimation());
+    if (this.QB != null) {
+      this.QB.onAnimationStart(getAnimation());
     }
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!fh()) {
-      setMeasuredDimension(getMeasuredWidth() + this.PH * 2, getMeasuredHeight() + this.PH * 2);
+    if (!fp()) {
+      setMeasuredDimension(getMeasuredWidth() + this.QC * 2, getMeasuredHeight() + this.QC * 2);
     }
   }
   
@@ -85,12 +85,12 @@ final class c
   final class a
     extends OvalShape
   {
-    private RadialGradient PI;
-    private Paint PJ = new Paint();
+    private RadialGradient QD;
+    private Paint QE = new Paint();
     
     a(int paramInt)
     {
-      c.this.PH = paramInt;
+      c.this.QC = paramInt;
       aT((int)rect().width());
     }
     
@@ -98,18 +98,18 @@ final class c
     {
       float f1 = paramInt / 2;
       float f2 = paramInt / 2;
-      float f3 = c.this.PH;
+      float f3 = c.this.QC;
       Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-      this.PI = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
-      this.PJ.setShader(this.PI);
+      this.QD = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
+      this.QE.setShader(this.QD);
     }
     
     public final void draw(Canvas paramCanvas, Paint paramPaint)
     {
       int i = c.this.getWidth();
       int j = c.this.getHeight();
-      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.PJ);
-      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - c.this.PH, paramPaint);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.QE);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - c.this.QC, paramPaint);
     }
     
     protected final void onResize(float paramFloat1, float paramFloat2)

@@ -6,14 +6,14 @@ import android.webkit.URLUtil;
 import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.aa.d;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.b.b;
 import com.tencent.mm.plugin.appbrand.b.c;
 import com.tencent.mm.plugin.appbrand.b.c.a;
 import com.tencent.mm.plugin.appbrand.config.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,15 +24,15 @@ import java.util.Map;
 public final class be
   implements r
 {
-  private static final Map<AppBrandRuntime, be> iOy;
-  private final LinkedList<String> iOA;
-  private final q iOz;
+  private static final Map<AppBrandRuntime, be> joH;
+  private final q joI;
+  private final LinkedList<String> joJ;
   private final String mAppId;
   
   static
   {
     AppMethodBeat.i(134709);
-    iOy = new HashMap();
+    joH = new HashMap();
     AppMethodBeat.o(134709);
   }
   
@@ -40,18 +40,18 @@ public final class be
   {
     AppMethodBeat.i(134701);
     this.mAppId = paramAppBrandRuntime.mAppId;
-    k localk = paramAppBrandRuntime.Ef();
-    ad.i("MicroMsg.WxaPkgRuntimeReader", "<init> appId[%s] sysConfig.class[%s], stacktrace=%s", new Object[] { this.mAppId, localk.getClass().getName(), Log.getStackTraceString(new Throwable()) });
-    this.iOA = new LinkedList();
-    this.iOz = bm.a(paramAppBrandRuntime, this);
-    this.iOz.aPy();
+    k localk = paramAppBrandRuntime.DI();
+    ac.i("MicroMsg.WxaPkgRuntimeReader", "<init> appId[%s] sysConfig.class[%s], stacktrace=%s", new Object[] { this.mAppId, localk.getClass().getName(), Log.getStackTraceString(new Throwable()) });
+    this.joJ = new LinkedList();
+    this.joI = bm.a(paramAppBrandRuntime, this);
+    this.joI.aWq();
     AppMethodBeat.o(134701);
   }
   
-  private static boolean Ek(String paramString)
+  private static boolean In(String paramString)
   {
     AppMethodBeat.i(134706);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(134706);
       return true;
@@ -61,7 +61,7 @@ public final class be
       AppMethodBeat.o(134706);
       return true;
     }
-    if (d.Ng(paramString))
+    if (d.Rp(paramString))
     {
       AppMethodBeat.o(134706);
       return true;
@@ -78,7 +78,7 @@ public final class be
   public static void T(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(134694);
-    U(paramAppBrandRuntime).aPy();
+    U(paramAppBrandRuntime).aWq();
     AppMethodBeat.o(134694);
   }
   
@@ -87,27 +87,27 @@ public final class be
     AppMethodBeat.i(178545);
     if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.isDestroyed()))
     {
-      paramAppBrandRuntime = r.a.iLT;
+      paramAppBrandRuntime = r.a.jma;
       AppMethodBeat.o(178545);
       return paramAppBrandRuntime;
     }
-    synchronized (iOy)
+    synchronized (joH)
     {
-      be localbe2 = (be)iOy.get(paramAppBrandRuntime);
+      be localbe2 = (be)joH.get(paramAppBrandRuntime);
       be localbe1 = localbe2;
       if (localbe2 == null)
       {
         localbe1 = new be(paramAppBrandRuntime);
-        iOy.put(paramAppBrandRuntime, localbe1);
-        paramAppBrandRuntime.iDK.a(new c.a()
+        joH.put(paramAppBrandRuntime, localbe1);
+        paramAppBrandRuntime.jdK.a(new c.a()
         {
           public final void a(String arg1, b paramAnonymousb)
           {
             AppMethodBeat.i(178544);
-            if (b.iQN == paramAnonymousb) {}
-            synchronized (be.iOy)
+            if (b.jqX == paramAnonymousb) {}
+            synchronized (be.joH)
             {
-              paramAnonymousb = (be)be.iOy.remove(this.iOB);
+              paramAnonymousb = (be)be.joH.remove(this.joK);
               if (paramAnonymousb != null) {
                 paramAnonymousb.close();
               }
@@ -125,7 +125,7 @@ public final class be
   public static String d(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(134696);
-    paramAppBrandRuntime = bt.nullAsNil((String)U(paramAppBrandRuntime).f(paramString, String.class));
+    paramAppBrandRuntime = bs.nullAsNil((String)U(paramAppBrandRuntime).f(paramString, String.class));
     AppMethodBeat.o(134696);
     return paramAppBrandRuntime;
   }
@@ -149,7 +149,7 @@ public final class be
   public static boolean g(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(176544);
-    boolean bool = U(paramAppBrandRuntime).DR(paramString);
+    boolean bool = U(paramAppBrandRuntime).HU(paramString);
     AppMethodBeat.o(176544);
     return bool;
   }
@@ -157,15 +157,15 @@ public final class be
   public static String h(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(134699);
-    if (Ek(paramString))
+    if (In(paramString))
     {
       AppMethodBeat.o(134699);
       return null;
     }
-    paramAppBrandRuntime = U(paramAppBrandRuntime).DQ(paramString);
+    paramAppBrandRuntime = U(paramAppBrandRuntime).HT(paramString);
     if (paramAppBrandRuntime != null)
     {
-      paramAppBrandRuntime = z.a(paramAppBrandRuntime.iLP, paramAppBrandRuntime.fileName);
+      paramAppBrandRuntime = z.a(paramAppBrandRuntime.jlW, paramAppBrandRuntime.fileName);
       AppMethodBeat.o(134699);
       return paramAppBrandRuntime;
     }
@@ -173,13 +173,13 @@ public final class be
     return null;
   }
   
-  public final WxaPkg DO(String paramString)
+  public final WxaPkg HR(String paramString)
   {
     AppMethodBeat.i(178550);
     try
     {
-      paramString = DS(paramString);
-      paramString = this.iOz.DO(paramString);
+      paramString = HV(paramString);
+      paramString = this.joI.HR(paramString);
       AppMethodBeat.o(178550);
       return paramString;
     }
@@ -190,13 +190,13 @@ public final class be
     return null;
   }
   
-  public final InputStream DP(String paramString)
+  public final InputStream HS(String paramString)
   {
     AppMethodBeat.i(134707);
     try
     {
-      paramString = DS(paramString);
-      paramString = this.iOz.DP(paramString);
+      paramString = HV(paramString);
+      paramString = this.joI.HS(paramString);
       AppMethodBeat.o(134707);
       return paramString;
     }
@@ -207,13 +207,13 @@ public final class be
     return null;
   }
   
-  public final q.a DQ(String paramString)
+  public final q.a HT(String paramString)
   {
     AppMethodBeat.i(178548);
     try
     {
-      paramString = DS(paramString);
-      paramString = this.iOz.DQ(paramString);
+      paramString = HV(paramString);
+      paramString = this.joI.HT(paramString);
       AppMethodBeat.o(178548);
       return paramString;
     }
@@ -224,13 +224,13 @@ public final class be
     return null;
   }
   
-  public final boolean DR(String paramString)
+  public final boolean HU(String paramString)
   {
     AppMethodBeat.i(134702);
     try
     {
-      paramString = DS(paramString);
-      boolean bool = this.iOz.DR(paramString);
+      paramString = HV(paramString);
+      boolean bool = this.joI.HU(paramString);
       AppMethodBeat.o(134702);
       return bool;
     }
@@ -241,10 +241,10 @@ public final class be
     return false;
   }
   
-  public final String DS(String paramString)
+  public final String HV(String paramString)
   {
     AppMethodBeat.i(134705);
-    Object localObject = this.iOA.iterator();
+    Object localObject = this.joJ.iterator();
     while (((Iterator)localObject).hasNext()) {
       if (paramString.startsWith((String)((Iterator)localObject).next()))
       {
@@ -252,22 +252,22 @@ public final class be
         return paramString;
       }
     }
-    if (Ek(paramString))
+    if (In(paramString))
     {
       paramString = new IllegalArgumentException("Invalid URL");
       AppMethodBeat.o(134705);
       throw paramString;
     }
-    localObject = m.EV(paramString);
+    localObject = m.IY(paramString);
     paramString = (String)localObject;
     if (((String)localObject).startsWith("/__APP__")) {
-      paramString = m.EV(((String)localObject).substring(8));
+      paramString = m.IY(((String)localObject).substring(8));
     }
     AppMethodBeat.o(134705);
     return paramString;
   }
   
-  public final void Ej(String paramString)
+  public final void Im(String paramString)
   {
     AppMethodBeat.i(178547);
     if (TextUtils.isEmpty(paramString))
@@ -275,50 +275,50 @@ public final class be
       AppMethodBeat.o(178547);
       return;
     }
-    this.iOA.add(paramString);
+    this.joJ.add(paramString);
     AppMethodBeat.o(178547);
   }
   
-  public final List<String> aPA()
-  {
-    AppMethodBeat.i(194463);
-    List localList = this.iOz.aPA();
-    AppMethodBeat.o(194463);
-    return localList;
-  }
-  
-  public final List<WxaPkg.Info> aPx()
+  public final List<WxaPkg.Info> aWp()
   {
     AppMethodBeat.i(178549);
-    List localList = this.iOz.aPx();
+    List localList = this.joI.aWp();
     AppMethodBeat.o(178549);
     return localList;
   }
   
-  public final void aPy()
+  public final void aWq()
   {
     AppMethodBeat.i(178551);
-    this.iOz.aPy();
+    this.joI.aWq();
     AppMethodBeat.o(178551);
   }
   
-  public final List<ModulePkgInfo> aPz()
+  public final List<ModulePkgInfo> aWr()
   {
     AppMethodBeat.i(134703);
-    List localList = this.iOz.aPz();
+    List localList = this.joI.aWr();
     AppMethodBeat.o(134703);
     return localList;
   }
   
-  public final q aQw()
+  public final List<String> aWs()
   {
-    return this.iOz;
+    AppMethodBeat.i(193379);
+    List localList = this.joI.aWs();
+    AppMethodBeat.o(193379);
+    return localList;
+  }
+  
+  public final q aXo()
+  {
+    return this.joI;
   }
   
   public final void close()
   {
     AppMethodBeat.i(178552);
-    this.iOz.close();
+    this.joI.close();
     AppMethodBeat.o(178552);
   }
   
@@ -330,7 +330,7 @@ public final class be
     //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: aload_1
-    //   8: invokevirtual 231	com/tencent/mm/plugin/appbrand/appcache/be:DS	(Ljava/lang/String;)Ljava/lang/String;
+    //   8: invokevirtual 231	com/tencent/mm/plugin/appbrand/appcache/be:HV	(Ljava/lang/String;)Ljava/lang/String;
     //   11: astore 7
     //   13: invokestatic 319	java/lang/System:currentTimeMillis	()J
     //   16: lstore 4
@@ -338,14 +338,14 @@ public final class be
     //   19: astore_1
     //   20: aload_0
     //   21: aload 7
-    //   23: invokevirtual 320	com/tencent/mm/plugin/appbrand/appcache/be:DP	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   23: invokevirtual 320	com/tencent/mm/plugin/appbrand/appcache/be:HS	(Ljava/lang/String;)Ljava/io/InputStream;
     //   26: astore 8
     //   28: aload 8
     //   30: ifnull +158 -> 188
     //   33: aload 8
     //   35: invokevirtual 324	java/io/InputStream:available	()I
     //   38: istore_3
-    //   39: getstatic 327	com/tencent/mm/plugin/appbrand/appcache/be$b$a:iOC	Ljava/util/Map;
+    //   39: getstatic 327	com/tencent/mm/plugin/appbrand/appcache/be$b$a:joL	Ljava/util/Map;
     //   42: aload_2
     //   43: invokeinterface 156 2 0
     //   48: checkcast 13	com/tencent/mm/plugin/appbrand/appcache/be$b
@@ -394,7 +394,7 @@ public final class be
     //   123: lsub
     //   124: invokestatic 348	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   127: aastore
-    //   128: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: ldc_w 313
     //   134: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   137: aload_1
@@ -422,7 +422,7 @@ public final class be
     //   171: iconst_2
     //   172: aload_1
     //   173: aastore
-    //   174: invokestatic 352	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: invokestatic 352	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   177: iconst_m1
     //   178: istore_3
     //   179: goto -140 -> 39
@@ -458,17 +458,17 @@ public final class be
     
     public static final class a
     {
-      static final Map<Class, be.b> iOC;
+      static final Map<Class, be.b> joL;
       
       static
       {
         AppMethodBeat.i(134691);
         HashMap localHashMap = new HashMap();
-        iOC = localHashMap;
+        joL = localHashMap;
         localHashMap.put(InputStream.class, new be.c((byte)0));
-        iOC.put(WebResourceResponse.class, new be.e((byte)0));
-        iOC.put(String.class, new be.d((byte)0));
-        iOC.put([B.class, new be.a((byte)0));
+        joL.put(WebResourceResponse.class, new be.e((byte)0));
+        joL.put(String.class, new be.d((byte)0));
+        joL.put([B.class, new be.a((byte)0));
         AppMethodBeat.o(134691);
       }
     }
@@ -484,7 +484,7 @@ public final class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.be
  * JD-Core Version:    0.7.0.1
  */

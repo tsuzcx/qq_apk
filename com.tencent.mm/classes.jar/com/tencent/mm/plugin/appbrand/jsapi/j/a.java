@@ -6,40 +6,40 @@ import java.util.HashMap;
 
 public final class a
 {
-  private HashMap<String, o> kah;
+  private HashMap<String, o> kAU;
   
   public a()
   {
-    AppMethodBeat.i(190819);
-    this.kah = new HashMap(5);
-    AppMethodBeat.o(190819);
+    AppMethodBeat.i(199898);
+    this.kAU = new HashMap(5);
+    AppMethodBeat.o(199898);
   }
   
-  public final o II(String paramString)
+  public final o MJ(String paramString)
   {
-    AppMethodBeat.i(190821);
-    paramString = (o)this.kah.get(paramString);
-    AppMethodBeat.o(190821);
+    AppMethodBeat.i(199900);
+    paramString = (o)this.kAU.get(paramString);
+    AppMethodBeat.o(199900);
     return paramString;
   }
   
   public final void a(String paramString, o paramo)
   {
-    AppMethodBeat.i(190820);
-    this.kah.put(paramString, paramo);
-    AppMethodBeat.o(190820);
+    AppMethodBeat.i(199899);
+    this.kAU.put(paramString, paramo);
+    AppMethodBeat.o(199899);
   }
   
   public final void remove(String paramString)
   {
-    AppMethodBeat.i(190822);
-    this.kah.remove(paramString);
-    AppMethodBeat.o(190822);
+    AppMethodBeat.i(199901);
+    this.kAU.remove(paramString);
+    AppMethodBeat.o(199901);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a
  * JD-Core Version:    0.7.0.1
  */

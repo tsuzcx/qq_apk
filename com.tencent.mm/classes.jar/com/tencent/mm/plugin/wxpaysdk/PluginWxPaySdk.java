@@ -12,7 +12,7 @@ public class PluginWxPaySdk
   public void configure(g paramg)
   {
     AppMethodBeat.i(91307);
-    paramg.agu();
+    paramg.ahL();
     AppMethodBeat.o(91307);
   }
   
@@ -21,7 +21,7 @@ public class PluginWxPaySdk
   public void execute(g paramg)
   {
     AppMethodBeat.i(91308);
-    paramg.agu();
+    paramg.ahL();
     AppMethodBeat.o(91308);
   }
   

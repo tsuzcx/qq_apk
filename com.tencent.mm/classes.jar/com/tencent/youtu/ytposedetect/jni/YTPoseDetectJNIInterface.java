@@ -3,11 +3,12 @@ package com.tencent.youtu.ytposedetect.jni;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.youtu.ytposedetect.data.YTActRefData;
 import java.io.ByteArrayOutputStream;
 
 public class YTPoseDetectJNIInterface
 {
-  public static native String base64Encode(byte[] paramArrayOfByte);
+  public static native boolean canReflect();
   
   public static byte[] encodeJpeg(Bitmap paramBitmap)
   {
@@ -19,13 +20,17 @@ public class YTPoseDetectJNIInterface
     return paramBitmap;
   }
   
+  public static native YTActRefData getActionReflectData(int paramInt);
+  
   public static native byte[] getBestImage(int paramInt);
   
-  public static native Bitmap getBitmapFromYuv(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
+  public static native byte[] getEyeImage(int paramInt);
   
   public static native byte[][] getFrameList();
   
-  public static native int getFrameNum();
+  public static native byte[] getMouthImage(int paramInt);
+  
+  public static native String getVersion();
   
   public static native int initModel(String paramString);
   
@@ -37,13 +42,13 @@ public class YTPoseDetectJNIInterface
   
   public static native void resetDetect();
   
-  public static native void setFrameNum(int paramInt);
-  
   public static native void setSafetyLevel(int paramInt);
+  
+  public static native int updateParam(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

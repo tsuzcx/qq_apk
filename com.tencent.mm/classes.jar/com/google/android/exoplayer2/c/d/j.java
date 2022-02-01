@@ -4,15 +4,15 @@ import com.google.android.exoplayer2.Format;
 
 public final class j
 {
-  public final Format aSv;
-  public final long aSz;
-  public final int aXz;
-  public final long bdm;
-  public final long bdn;
-  public final int bdo;
-  public final long[] bdp;
-  public final long[] bdq;
-  private final k[] bdr;
+  public final Format aTo;
+  public final long aTs;
+  public final int aYl;
+  public final long bdY;
+  public final long bdZ;
+  public final int bea;
+  public final long[] beb;
+  public final long[] bec;
+  private final k[] bed;
   public final int id;
   public final int type;
   
@@ -20,23 +20,23 @@ public final class j
   {
     this.id = paramInt1;
     this.type = paramInt2;
-    this.bdm = paramLong1;
-    this.bdn = paramLong2;
-    this.aSz = paramLong3;
-    this.aSv = paramFormat;
-    this.bdo = paramInt3;
-    this.bdr = paramArrayOfk;
-    this.aXz = paramInt4;
-    this.bdp = paramArrayOfLong1;
-    this.bdq = paramArrayOfLong2;
+    this.bdY = paramLong1;
+    this.bdZ = paramLong2;
+    this.aTs = paramLong3;
+    this.aTo = paramFormat;
+    this.bea = paramInt3;
+    this.bed = paramArrayOfk;
+    this.aYl = paramInt4;
+    this.beb = paramArrayOfLong1;
+    this.bec = paramArrayOfLong2;
   }
   
   public final k ek(int paramInt)
   {
-    if (this.bdr == null) {
+    if (this.bed == null) {
       return null;
     }
-    return this.bdr[paramInt];
+    return this.bed[paramInt];
   }
 }
 

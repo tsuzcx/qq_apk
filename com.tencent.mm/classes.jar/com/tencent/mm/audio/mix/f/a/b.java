@@ -9,25 +9,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class b
   extends a
 {
-  private static long cWX = 0L;
-  private static long cWY = 0L;
-  private Thread aDS;
+  private static long cUt = 0L;
+  private static long cUu = 0L;
+  private Thread aEJ;
   
   public b(int paramInt1, int paramInt2, d paramd, f paramf)
   {
     super(paramInt1, paramInt2, paramd, paramf);
   }
   
-  public final void M(byte[] paramArrayOfByte)
+  public final void K(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136946);
-    if (this.aUg == null)
+    if (this.aUW == null)
     {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "create AudioTrack before");
       if (!createAudioTrack())
       {
-        if (this.cWT != null) {
-          this.cWT.onError(707);
+        if (this.cUp != null) {
+          this.cUp.onError(707);
         }
         com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "create AudioTrack fail");
         AppMethodBeat.o(136946);
@@ -36,7 +36,7 @@ public final class b
     }
     try
     {
-      AudioTrack localAudioTrack = this.aUg;
+      AudioTrack localAudioTrack = this.aUW;
       if (localAudioTrack != null) {
         localAudioTrack.setStereoVolume(this.volume, this.volume);
       }
@@ -54,9 +54,9 @@ public final class b
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "create AudioTrack after and success!");
     if (this.byteBuffer == null)
     {
-      if (this.cUa != null)
+      if (this.cRx != null)
       {
-        j = this.cUa.size() * 3536;
+        j = this.cRx.size() * 3536;
         i = j;
         if (j == 0) {
           i = 3536;
@@ -70,42 +70,42 @@ public final class b
     }
     else
     {
-      if (this.cWR + paramArrayOfByte.length <= this.byteBuffer.length)
+      if (this.cUn + paramArrayOfByte.length <= this.byteBuffer.length)
       {
-        System.arraycopy(paramArrayOfByte, 0, this.byteBuffer, this.cWR, paramArrayOfByte.length);
-        this.cWR += paramArrayOfByte.length;
+        System.arraycopy(paramArrayOfByte, 0, this.byteBuffer, this.cUn, paramArrayOfByte.length);
+        this.cUn += paramArrayOfByte.length;
       }
       AppMethodBeat.o(136946);
       return;
     }
   }
   
-  public final void NV()
+  public final void NS()
   {
     AppMethodBeat.i(136947);
-    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "playFlush play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(cWW.get()), Integer.valueOf(cWV.get()) });
-    if (this.aUg != null)
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "playFlush play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(cUs.get()), Integer.valueOf(cUr.get()) });
+    if (this.aUW != null)
     {
-      if (this.cWT != null) {
-        this.cWT.Nj();
+      if (this.cUp != null) {
+        this.cUp.Nh();
       }
-      AudioTrack localAudioTrack = this.aUg;
+      AudioTrack localAudioTrack = this.aUW;
       if ((localAudioTrack.getState() == 2) && (localAudioTrack.write(this.byteBuffer, 0, this.byteBuffer.length) <= 0))
       {
         com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "AudioTrack write fail, should write length:%d", new Object[] { Integer.valueOf(this.byteBuffer.length) });
-        this.cWT.onError(708);
+        this.cUp.onError(708);
         AppMethodBeat.o(136947);
         return;
       }
       if (localAudioTrack.getState() == 1)
       {
         localAudioTrack.reloadStaticData();
-        i(this.cWS);
+        i(this.cUo);
         localAudioTrack.play();
-        this.aDS = Thread.currentThread();
+        this.aEJ = Thread.currentThread();
         try
         {
-          long l2 = this.cUa.duration;
+          long l2 = this.cRx.duration;
           long l1 = l2;
           if (l2 <= 0L) {
             l1 = 2000L;
@@ -126,7 +126,7 @@ public final class b
   protected final boolean createAudioTrack()
   {
     AppMethodBeat.i(136945);
-    if (this.cWQ > 1)
+    if (this.cUm > 1)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "createAudioTrack fail count reach MAX COUNT");
       AppMethodBeat.o(136945);
@@ -139,17 +139,17 @@ public final class b
       j = 4;
       int k = AudioTrack.getMinBufferSize(this.sampleRate, j, 2);
       i = k;
-      if (this.cUa != null)
+      if (this.cRx != null)
       {
         i = k;
-        if (this.cUa.size() > 0) {
-          i = this.cUa.size() * 3536;
+        if (this.cRx.size() > 0) {
+          i = this.cRx.size() * 3536;
         }
       }
-      if (this.cWS <= 1.0D) {
+      if (this.cUo <= 1.0D) {
         break label275;
       }
-      double d = this.cWS;
+      double d = this.cUo;
       i = (int)(i * d);
     }
     label275:
@@ -157,25 +157,25 @@ public final class b
     {
       for (;;)
       {
-        if (this.aUg == null)
+        if (this.aUW == null)
         {
           com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "new AudioTrack");
           System.currentTimeMillis();
-          this.aUg = new AudioTrack(3, this.sampleRate, j, 2, i, 0);
-          this.cWQ += 1;
-          cWW.incrementAndGet();
+          this.aUW = new AudioTrack(3, this.sampleRate, j, 2, i, 0);
+          this.cUm += 1;
+          cUs.incrementAndGet();
         }
-        if ((this.aUg == null) || (this.aUg.getState() != 2))
+        if ((this.aUW == null) || (this.aUW.getState() != 2))
         {
           com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "audio track not initialized");
-          cWV.incrementAndGet();
-          if (this.aUg != null) {
-            com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.aUg.getState()) });
+          cUr.incrementAndGet();
+          if (this.aUW != null) {
+            com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioPcmStaticPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.aUW.getState()) });
           }
           try
           {
-            this.aUg.release();
-            this.aUg = null;
+            this.aUW.release();
+            this.aUW = null;
             AppMethodBeat.o(136945);
             return false;
             j = 12;
@@ -197,7 +197,7 @@ public final class b
   public final void pause()
   {
     AppMethodBeat.i(136949);
-    AudioTrack localAudioTrack = this.aUg;
+    AudioTrack localAudioTrack = this.aUW;
     if (localAudioTrack != null)
     {
       int i = localAudioTrack.getState();
@@ -206,10 +206,10 @@ public final class b
         try
         {
           localAudioTrack.pause();
-          this.cWU = localAudioTrack.getPlaybackHeadPosition();
-          com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "pause startPos :%d", new Object[] { Integer.valueOf(this.cWU) });
-          if (this.aDS != null) {
-            this.aDS.interrupt();
+          this.cUq = localAudioTrack.getPlaybackHeadPosition();
+          com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "pause startPos :%d", new Object[] { Integer.valueOf(this.cUq) });
+          if (this.aEJ != null) {
+            this.aEJ.interrupt();
           }
           AppMethodBeat.o(136949);
           return;
@@ -228,25 +228,25 @@ public final class b
     AppMethodBeat.i(136950);
     super.reset();
     releaseAudioTrack();
-    this.aDS = null;
+    this.aEJ = null;
     AppMethodBeat.o(136950);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(136948);
-    AudioTrack localAudioTrack = this.aUg;
+    AudioTrack localAudioTrack = this.aUW;
     if ((localAudioTrack != null) && (localAudioTrack.getState() == 1))
     {
       com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "resume");
-      if (this.cWT != null) {
-        this.cWT.Nj();
+      if (this.cUp != null) {
+        this.cUp.Nh();
       }
       try
       {
         localAudioTrack.setStereoVolume(this.volume, this.volume);
-        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "play startPos:%d", new Object[] { Integer.valueOf(this.cWU) });
-        localAudioTrack.setPlaybackHeadPosition(this.cWU);
+        com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmStaticPlayComponent", "play startPos:%d", new Object[] { Integer.valueOf(this.cUq) });
+        localAudioTrack.setPlaybackHeadPosition(this.cUq);
         localAudioTrack.play();
       }
       catch (IllegalStateException localIllegalStateException)
@@ -255,7 +255,7 @@ public final class b
         {
           try
           {
-            long l2 = this.cUa.duration;
+            long l2 = this.cRx.duration;
             long l1 = l2;
             if (l2 <= 0L) {
               l1 = 2000L;

@@ -14,7 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 public final class d
 {
   String ip;
-  c.a jjh;
+  c.a jJu;
   int port = -1;
   boolean running = false;
   ServerSocket serverSocket;
@@ -37,7 +37,7 @@ public final class d
       {
         try
         {
-          this.ip = g.aUX();
+          this.ip = g.bbV();
           this.serverSocket = new ServerSocket(0, 32, InetAddress.getByName(this.ip));
           this.port = this.serverSocket.getLocalPort();
           new Thread(new b()).start();
@@ -98,7 +98,7 @@ public final class d
     private void a(com.tencent.mm.plugin.appbrand.h.c.b.d paramd, BufferedWriter paramBufferedWriter)
     {
       AppMethodBeat.i(158972);
-      c.a locala = d.this.jjh;
+      c.a locala = d.this.jJu;
       if ((locala == null) || (locala.b(paramd)))
       {
         paramBufferedWriter.write("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n");
@@ -121,7 +121,7 @@ public final class d
       //   8: getfield 23	com/tencent/mm/plugin/appbrand/h/c/d$a:socket	Ljava/net/Socket;
       //   11: invokevirtual 66	java/net/Socket:getInputStream	()Ljava/io/InputStream;
       //   14: astore 5
-      //   16: invokestatic 72	com/tencent/mm/plugin/appbrand/h/c/j:aVb	()Lcom/tencent/mm/plugin/appbrand/h/c/j;
+      //   16: invokestatic 72	com/tencent/mm/plugin/appbrand/h/c/j:bbZ	()Lcom/tencent/mm/plugin/appbrand/h/c/j;
       //   19: astore 7
       //   21: new 74	com/tencent/mm/plugin/appbrand/h/c/b/d
       //   24: dup
@@ -161,10 +161,10 @@ public final class d
       //   99: ifle +367 -> 466
       //   102: aload 6
       //   104: aload 4
-      //   106: invokestatic 107	com/tencent/mm/plugin/appbrand/h/c/j:GN	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
-      //   109: putfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jjR	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
+      //   106: invokestatic 107	com/tencent/mm/plugin/appbrand/h/c/j:KR	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
+      //   109: putfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jKe	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
       //   112: aload 6
-      //   114: getfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jjR	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
+      //   114: getfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jKe	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
       //   117: ldc 113
       //   119: invokevirtual 119	com/tencent/mm/plugin/appbrand/h/c/b/b:get	(Ljava/lang/String;)Ljava/lang/String;
       //   122: astore 9
@@ -198,16 +198,16 @@ public final class d
       //   179: ifle +12 -> 191
       //   182: aload 6
       //   184: aload_3
-      //   185: invokestatic 107	com/tencent/mm/plugin/appbrand/h/c/j:GN	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
-      //   188: putfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jjR	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
+      //   185: invokestatic 107	com/tencent/mm/plugin/appbrand/h/c/j:KR	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
+      //   188: putfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jKe	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
       //   191: aload 4
       //   193: invokevirtual 100	java/lang/String:length	()I
       //   196: ifle +15 -> 211
       //   199: aload 6
       //   201: aload 7
       //   203: aload 4
-      //   205: invokevirtual 145	com/tencent/mm/plugin/appbrand/h/c/j:GO	(Ljava/lang/String;)Ljava/util/HashMap;
-      //   208: putfield 149	com/tencent/mm/plugin/appbrand/h/c/b/d:jjS	Ljava/util/Map;
+      //   205: invokevirtual 145	com/tencent/mm/plugin/appbrand/h/c/j:KS	(Ljava/lang/String;)Ljava/util/HashMap;
+      //   208: putfield 149	com/tencent/mm/plugin/appbrand/h/c/b/d:jKf	Ljava/util/Map;
       //   211: new 46	java/io/BufferedWriter
       //   214: dup
       //   215: new 151	java/io/OutputStreamWriter
@@ -219,7 +219,7 @@ public final class d
       //   229: invokespecial 161	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
       //   232: astore_3
       //   233: aload 6
-      //   235: getfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jjR	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
+      //   235: getfield 111	com/tencent/mm/plugin/appbrand/h/c/b/d:jKe	Lcom/tencent/mm/plugin/appbrand/h/c/b/b;
       //   238: ldc 163
       //   240: invokevirtual 119	com/tencent/mm/plugin/appbrand/h/c/b/b:get	(Ljava/lang/String;)Ljava/lang/String;
       //   243: astore 4
@@ -282,7 +282,7 @@ public final class d
       //   391: goto +82 -> 473
       //   394: aload 6
       //   396: ldc 194
-      //   398: putfield 198	com/tencent/mm/plugin/appbrand/h/c/b/d:jjQ	Ljava/lang/String;
+      //   398: putfield 198	com/tencent/mm/plugin/appbrand/h/c/b/d:jKd	Ljava/lang/String;
       //   401: aload_0
       //   402: aload 6
       //   404: aload_3
@@ -301,7 +301,7 @@ public final class d
       //   432: athrow
       //   433: aload 6
       //   435: ldc 202
-      //   437: putfield 198	com/tencent/mm/plugin/appbrand/h/c/b/d:jjQ	Ljava/lang/String;
+      //   437: putfield 198	com/tencent/mm/plugin/appbrand/h/c/b/d:jKd	Ljava/lang/String;
       //   440: aload_0
       //   441: aload 6
       //   443: aload_3
@@ -407,12 +407,12 @@ public final class d
   
   static final class c
   {
-    private static d jjp;
+    private static d jJC;
     
     static
     {
       AppMethodBeat.i(158975);
-      jjp = new d((byte)0);
+      jJC = new d((byte)0);
       AppMethodBeat.o(158975);
     }
   }

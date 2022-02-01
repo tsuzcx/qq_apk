@@ -13,9 +13,14 @@ public abstract interface f
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, Bundle paramBundle);
   
-  public abstract void ac(String paramString1, String paramString2, String paramString3);
+  public abstract void ad(String paramString1, String paramString2, String paramString3);
   
   public abstract void i(Context paramContext, String paramString, int paramInt);
+  
+  public static abstract interface a
+  {
+    public abstract void ag(String paramString, int paramInt1, int paramInt2);
+  }
 }
 
 

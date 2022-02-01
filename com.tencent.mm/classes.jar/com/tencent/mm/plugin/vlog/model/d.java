@@ -1,52 +1,51 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import com.tencent.mm.protocal.protobuf.dep;
-import com.tencent.mm.protocal.protobuf.dtr;
-import d.g.b.k;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/model/Material;", "", "scaleType", "Lcom/tencent/mm/plugin/vlog/model/ScaleType;", "filter", "Lcom/tencent/mm/plugin/vlog/model/Filter;", "transition", "Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "startTime", "", "endTime", "duration", "path", "", "keyTrace", "", "Lcom/tencent/mm/protocal/protobuf/WindowMeta;", "transitionParams", "Lcom/tencent/mm/protocal/protobuf/TransitionParam;", "(Lcom/tencent/mm/plugin/vlog/model/ScaleType;Lcom/tencent/mm/plugin/vlog/model/Filter;Lcom/tencent/mm/plugin/vlog/model/TransitionType;JJJLjava/lang/String;Ljava/util/List;Ljava/util/List;)V", "getDuration", "()J", "setDuration", "(J)V", "getEndTime", "setEndTime", "getFilter", "()Lcom/tencent/mm/plugin/vlog/model/Filter;", "setFilter", "(Lcom/tencent/mm/plugin/vlog/model/Filter;)V", "getKeyTrace", "()Ljava/util/List;", "setKeyTrace", "(Ljava/util/List;)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getScaleType", "()Lcom/tencent/mm/plugin/vlog/model/ScaleType;", "setScaleType", "(Lcom/tencent/mm/plugin/vlog/model/ScaleType;)V", "getStartTime", "setStartTime", "getTransition", "()Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "setTransition", "(Lcom/tencent/mm/plugin/vlog/model/TransitionType;)V", "getTransitionParams", "setTransitionParams", "plugin-vlog_release"})
-public abstract class d
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "", "()V", "contentRect", "Landroid/graphics/Rect;", "getContentRect", "()Landroid/graphics/Rect;", "cropRect", "getCropRect", "setCropRect", "(Landroid/graphics/Rect;)V", "initScale", "", "getInitScale", "()F", "setInitScale", "(F)V", "matrix", "Landroid/graphics/Matrix;", "getMatrix", "()Landroid/graphics/Matrix;", "setMatrix", "(Landroid/graphics/Matrix;)V", "maxScale", "getMaxScale", "setMaxScale", "minScale", "getMinScale", "setMinScale", "rotation", "getRotation", "setRotation", "scale", "getScale", "setScale", "viewRect", "getViewRect", "setViewRect", "plugin-vlog_release"})
+public final class d
 {
-  private long duration;
-  public long endTime;
-  public String path;
-  public long startTime;
-  private e yZc;
-  private a yZd;
-  private f yZe;
-  List<? extends dtr> yZf;
-  List<? extends dep> yZg;
+  public float aNk;
+  public float aNl;
+  public Matrix eY;
+  public Rect gUl;
+  public final Rect pvE;
+  public float sOy;
+  public Rect viewRect;
   
-  private d(e parame, a parama, f paramf, long paramLong1, long paramLong2, long paramLong3, String paramString)
+  public d()
   {
-    this.yZc = parame;
-    this.yZd = parama;
-    this.yZe = paramf;
-    this.startTime = paramLong1;
-    this.endTime = paramLong2;
-    this.duration = paramLong3;
-    this.path = paramString;
-    this.yZf = null;
-    this.yZg = null;
+    AppMethodBeat.i(207512);
+    this.eY = new Matrix();
+    this.gUl = new Rect();
+    this.viewRect = new Rect();
+    this.pvE = new Rect();
+    this.sOy = 1.0F;
+    this.aNk = 1.0F;
+    this.aNl = 1.0F;
+    AppMethodBeat.o(207512);
   }
   
-  public final void a(e parame)
+  public final float getScale()
   {
-    k.h(parame, "<set-?>");
-    this.yZc = parame;
-  }
-  
-  public final void a(f paramf)
-  {
-    k.h(paramf, "<set-?>");
-    this.yZe = paramf;
+    AppMethodBeat.i(207511);
+    float[] arrayOfFloat = new float[9];
+    this.eY.getValues(arrayOfFloat);
+    float f1 = arrayOfFloat[0];
+    float f2 = arrayOfFloat[3];
+    double d1 = f1 * f1;
+    double d2 = f2;
+    f1 = (float)Math.sqrt(f2 * d2 + d1);
+    AppMethodBeat.o(207511);
+    return f1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.d
  * JD-Core Version:    0.7.0.1
  */

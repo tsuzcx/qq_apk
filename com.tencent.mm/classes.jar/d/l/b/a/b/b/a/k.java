@@ -13,18 +13,18 @@ import java.util.List;
 public final class k
   implements g
 {
-  private final List<g> JrJ;
+  private final List<g> Lfc;
   
   public k(List<? extends g> paramList)
   {
     AppMethodBeat.i(56968);
-    this.JrJ = paramList;
+    this.Lfc = paramList;
     AppMethodBeat.o(56968);
   }
   
   public k(g... paramVarArgs)
   {
-    this(e.T(paramVarArgs));
+    this(e.V(paramVarArgs));
     AppMethodBeat.i(56969);
     AppMethodBeat.o(56969);
   }
@@ -33,7 +33,7 @@ public final class k
   {
     AppMethodBeat.i(56966);
     d.g.b.k.h(paramb, "fqName");
-    paramb = i.e(j.u((Iterable)this.JrJ), (d.g.a.b)new a(paramb));
+    paramb = i.e(j.t((Iterable)this.Lfc), (d.g.a.b)new a(paramb));
     d.g.b.k.h(paramb, "$this$firstOrNull");
     paramb = paramb.iterator();
     if (!paramb.hasNext()) {}
@@ -49,7 +49,7 @@ public final class k
   {
     AppMethodBeat.i(56965);
     d.g.b.k.h(paramb, "fqName");
-    Iterator localIterator = j.u((Iterable)this.JrJ).iterator();
+    Iterator localIterator = j.t((Iterable)this.Lfc).iterator();
     while (localIterator.hasNext()) {
       if (((g)localIterator.next()).h(paramb))
       {
@@ -64,7 +64,7 @@ public final class k
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56964);
-    Object localObject = (Iterable)this.JrJ;
+    Object localObject = (Iterable)this.Lfc;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
@@ -83,7 +83,7 @@ public final class k
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56967);
-    Iterator localIterator = i.c(j.u((Iterable)this.JrJ), (d.g.a.b)b.JrL).iterator();
+    Iterator localIterator = i.c(j.t((Iterable)this.Lfc), (d.g.a.b)b.Lfe).iterator();
     AppMethodBeat.o(56967);
     return localIterator;
   }
@@ -102,12 +102,12 @@ public final class k
     extends l
     implements d.g.a.b<g, h<? extends c>>
   {
-    public static final b JrL;
+    public static final b Lfe;
     
     static
     {
       AppMethodBeat.i(56963);
-      JrL = new b();
+      Lfe = new b();
       AppMethodBeat.o(56963);
     }
     
@@ -119,7 +119,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.k
  * JD-Core Version:    0.7.0.1
  */

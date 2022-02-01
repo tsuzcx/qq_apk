@@ -23,12 +23,12 @@ public class UdpNative
   @Keep
   public UdpNative(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(187808);
+    AppMethodBeat.i(197371);
     this.mNativeInst = 0L;
     this.initCallBackFlag = false;
     new StringBuilder("UdpNative isolate_ptr:").append(paramLong1).append(",context_ptr:").append(paramLong2).append(",uvloop_ptr:").append(paramLong3);
     this.mNativeInst = initBindingUdp(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(187808);
+    AppMethodBeat.o(197371);
   }
   
   private native void destoryBindingUdp(long paramLong);
@@ -158,7 +158,7 @@ public class UdpNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.udp.libmmudp.UdpNative
  * JD-Core Version:    0.7.0.1
  */

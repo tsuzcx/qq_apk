@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum g
 {
-  public static final a KbI;
+  public static final a LPd;
   final String description;
   
   static
   {
     AppMethodBeat.i(61373);
     g localg1 = new g("IGNORE", 0, "ignore");
-    KbE = localg1;
+    LOZ = localg1;
     g localg2 = new g("WARN", 1, "warn");
-    KbF = localg2;
+    LPa = localg2;
     g localg3 = new g("STRICT", 2, "strict");
-    KbG = localg3;
-    KbH = new g[] { localg1, localg2, localg3 };
-    KbI = new a((byte)0);
+    LPb = localg3;
+    LPc = new g[] { localg1, localg2, localg3 };
+    LPd = new a((byte)0);
     AppMethodBeat.o(61373);
   }
   
@@ -26,21 +26,21 @@ public enum g
     this.description = paramString;
   }
   
-  public final boolean fKl()
+  public final boolean gcO()
   {
-    return (g)this == KbF;
+    return (g)this == LPa;
   }
   
-  public final boolean fKm()
+  public final boolean gcP()
   {
-    return (g)this == KbE;
+    return (g)this == LOZ;
   }
   
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.o.g
  * JD-Core Version:    0.7.0.1
  */

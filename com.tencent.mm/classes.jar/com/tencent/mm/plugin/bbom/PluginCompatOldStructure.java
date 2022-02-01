@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 
@@ -12,7 +12,7 @@ public class PluginCompatOldStructure
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(22433);
-    if (((h)com.tencent.mm.kernel.g.afy().aeZ()).agu())
+    if (((h)com.tencent.mm.kernel.g.agO().agp()).ahL())
     {
       new l.1().alone();
       new l.2().alone();
@@ -94,7 +94,7 @@ public class PluginCompatOldStructure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.PluginCompatOldStructure
  * JD-Core Version:    0.7.0.1
  */

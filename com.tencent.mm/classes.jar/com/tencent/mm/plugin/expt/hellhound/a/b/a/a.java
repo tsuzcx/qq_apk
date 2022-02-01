@@ -6,327 +6,278 @@ import android.support.v7.widget.RecyclerView.c;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.b;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.e;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.j;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.l.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.view.recyclerview.d;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
-  implements e
+  implements com.tencent.mm.plugin.expt.hellhound.a.b.b.e
 {
-  WeakReference<com.tencent.mm.view.recyclerview.d> KFa;
-  p KFb;
-  final a KFc;
-  private final b KFd;
-  private final RecyclerView.c lWH;
-  private List<Pair<String, String>> pGi;
-  private com.tencent.mm.plugin.expt.hellhound.a.a.d pGj;
+  private final RecyclerView.c myJ;
+  private List<Pair<String, String>> qll;
+  private com.tencent.mm.plugin.expt.hellhound.a.a.e qlm;
+  WeakReference<d> qln;
+  p qlo;
+  final a qlp;
+  private final b qlq;
   
   public a()
   {
-    AppMethodBeat.i(205393);
-    this.KFa = null;
-    this.KFc = new a((byte)0);
-    this.lWH = new RecyclerView.c()
-    {
-      public final void as(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(205386);
-        super.as(paramAnonymousInt1, paramAnonymousInt2);
-        a.a(a.this);
-        AppMethodBeat.o(205386);
-      }
-      
-      public final void at(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(205388);
-        super.at(paramAnonymousInt1, paramAnonymousInt2);
-        a.a(a.this);
-        AppMethodBeat.o(205388);
-      }
-      
-      public final void au(int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(205389);
-        super.au(paramAnonymousInt1, paramAnonymousInt2);
-        a.a(a.this);
-        AppMethodBeat.o(205389);
-      }
-      
-      public final void f(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
-      {
-        AppMethodBeat.i(205387);
-        super.f(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
-        a.a(a.this);
-        AppMethodBeat.o(205387);
-      }
-      
-      public final void l(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        AppMethodBeat.i(205390);
-        super.l(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
-        a.a(a.this);
-        AppMethodBeat.o(205390);
-      }
-      
-      public final void onChanged()
-      {
-        AppMethodBeat.i(205385);
-        super.onChanged();
-        a.a(a.this);
-        AppMethodBeat.o(205385);
-      }
-    };
-    this.KFd = new b()
+    AppMethodBeat.i(195226);
+    this.qln = null;
+    this.qlp = new a((byte)0);
+    this.myJ = new a.1(this);
+    this.qlq = new b()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject) {}
       
       public final void l(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
       {
-        AppMethodBeat.i(205391);
+        AppMethodBeat.i(195224);
         if ((paramAnonymousString1.equals("android/support/v7/widget/RecyclerView")) || (paramAnonymousString1.startsWith("com/tencent/mm/plugin/finder/feed/ui/FinderTimelineUI")))
         {
-          if (a.this.KFb == null)
+          if (a.this.qlo == null)
           {
-            AppMethodBeat.o(205391);
+            AppMethodBeat.o(195224);
             return;
           }
           if ((paramAnonymousString2.equals("smoothScrollToPosition")) && ("(I)V".equals(paramAnonymousString3)))
           {
-            if (a.this.KFa != null)
+            if (a.this.qln != null)
             {
-              paramAnonymousString1 = (com.tencent.mm.view.recyclerview.d)a.this.KFa.get();
+              paramAnonymousString1 = (d)a.this.qln.get();
               if (paramAnonymousString1 != null)
               {
-                a.this.KFc.KFf = true;
-                paramAnonymousString1.getRecyclerView().post(a.this.KFc);
+                a.this.qlp.qls = true;
+                paramAnonymousString1.getRecyclerView().post(a.this.qlp);
               }
             }
-            AppMethodBeat.o(205391);
+            AppMethodBeat.o(195224);
             return;
           }
-          if ((paramAnonymousString2.equals("scrollToPosition")) && ("(I)V".equals(paramAnonymousString3)) && (a.this.KFa != null))
+          if ((paramAnonymousString2.equals("scrollToPosition")) && ("(I)V".equals(paramAnonymousString3)) && (a.this.qln != null))
           {
-            paramAnonymousString1 = (com.tencent.mm.view.recyclerview.d)a.this.KFa.get();
+            paramAnonymousString1 = (d)a.this.qln.get();
             if (paramAnonymousString1 != null)
             {
-              a.this.KFc.KFf = true;
-              paramAnonymousString1.getRecyclerView().post(a.this.KFc);
+              a.this.qlp.qls = true;
+              paramAnonymousString1.getRecyclerView().post(a.this.qlp);
             }
           }
         }
-        AppMethodBeat.o(205391);
+        AppMethodBeat.o(195224);
       }
     };
-    AppMethodBeat.o(205393);
+    AppMethodBeat.o(195226);
   }
   
-  private static LinearLayoutManager u(RecyclerView paramRecyclerView)
+  private static LinearLayoutManager r(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(205400);
+    AppMethodBeat.i(195233);
     paramRecyclerView = paramRecyclerView.getLayoutManager();
     if (!(paramRecyclerView instanceof LinearLayoutManager))
     {
-      AppMethodBeat.o(205400);
+      AppMethodBeat.o(195233);
       return null;
     }
     paramRecyclerView = (LinearLayoutManager)paramRecyclerView;
-    AppMethodBeat.o(205400);
+    AppMethodBeat.o(195233);
     return paramRecyclerView;
   }
   
-  public final void a(com.tencent.mm.plugin.expt.hellhound.a.a.d paramd, p paramp)
+  public final void a(com.tencent.mm.plugin.expt.hellhound.a.a.e parame, p paramp)
   {
-    AppMethodBeat.i(205394);
-    j.KHt.a(this);
-    this.pGi = new ArrayList();
-    this.pGi.add(Pair.create("smoothScrollToPosition", "(I)V"));
-    this.pGi.add(Pair.create("scrollToPosition", "(I)V"));
-    com.tencent.mm.hellhoundlib.a.adm();
-    com.tencent.mm.hellhoundlib.a.a(this.pGi, this.KFd);
-    this.pGj = paramd;
-    this.KFb = paramp;
-    AppMethodBeat.o(205394);
+    AppMethodBeat.i(195227);
+    j.qnH.a(this);
+    this.qll = new ArrayList();
+    this.qll.add(Pair.create("smoothScrollToPosition", "(I)V"));
+    this.qll.add(Pair.create("scrollToPosition", "(I)V"));
+    com.tencent.mm.hellhoundlib.a.aeC();
+    com.tencent.mm.hellhoundlib.a.a(this.qll, this.qlq);
+    this.qlm = parame;
+    this.qlo = paramp;
+    AppMethodBeat.o(195227);
   }
   
   public final void a(l.a parama)
   {
-    AppMethodBeat.i(205398);
+    AppMethodBeat.i(195231);
     if (parama == null)
     {
-      AppMethodBeat.o(205398);
+      AppMethodBeat.o(195231);
       return;
     }
     List localList = parama.incrementList;
     if ((localList == null) || (localList.isEmpty()))
     {
-      ad.w("HABBYGE-MALI.FeedFlowCallback", "mRefreshEndListener, onRefreshEnd: incrementList is NULL");
-      AppMethodBeat.o(205398);
+      ac.w("HABBYGE-MALI.FeedFlowCallback", "mRefreshEndListener, onRefreshEnd: incrementList is NULL");
+      AppMethodBeat.o(195231);
       return;
     }
-    ad.w("HABBYGE-MALI.FeedFlowCallback", "mRefreshEndListener, onRefreshEnd: %s, %d", new Object[] { Integer.valueOf(parama.pullType), Integer.valueOf(localList.size()) });
-    if (this.KFa != null)
+    ac.w("HABBYGE-MALI.FeedFlowCallback", "mRefreshEndListener, onRefreshEnd: %s, %d", new Object[] { Integer.valueOf(parama.pullType), Integer.valueOf(localList.size()) });
+    if (this.qln != null)
     {
-      parama = (com.tencent.mm.view.recyclerview.d)this.KFa.get();
+      parama = (d)this.qln.get();
       if (parama != null)
       {
-        this.KFc.KFf = false;
-        parama.getRecyclerView().post(this.KFc);
+        this.qlp.qls = false;
+        parama.getRecyclerView().post(this.qlp);
       }
     }
-    AppMethodBeat.o(205398);
+    AppMethodBeat.o(195231);
   }
   
   public final void b(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(205396);
-    if (u(paramRecyclerView) == null)
+    AppMethodBeat.i(195229);
+    if (r(paramRecyclerView) == null)
     {
-      AppMethodBeat.o(205396);
+      AppMethodBeat.o(195229);
       return;
     }
     Object localObject2;
-    if (this.KFa != null)
+    if (this.qln != null)
     {
-      localObject2 = (com.tencent.mm.view.recyclerview.d)this.KFa.get();
+      localObject2 = (d)this.qln.get();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
     for (Object localObject1 = localObject2;; localObject1 = null)
     {
       localObject2 = paramRecyclerView.getAdapter();
-      if ((localObject2 instanceof com.tencent.mm.view.recyclerview.d))
+      if ((localObject2 instanceof d))
       {
-        localObject1 = (com.tencent.mm.view.recyclerview.d)localObject2;
-        this.KFa = new WeakReference(localObject1);
+        localObject1 = (d)localObject2;
+        this.qln = new WeakReference(localObject1);
       }
       for (;;)
       {
         if (localObject1 != null)
         {
-          ((com.tencent.mm.view.recyclerview.d)localObject1).b(this.lWH);
-          ((com.tencent.mm.view.recyclerview.d)localObject1).a(this.lWH);
+          ((d)localObject1).b(this.myJ);
+          ((d)localObject1).a(this.myJ);
         }
-        if (this.pGj != null) {
-          this.pGj.k(paramRecyclerView, paramInt);
+        if (this.qlm != null) {
+          this.qlm.k(paramRecyclerView, paramInt);
         }
-        AppMethodBeat.o(205396);
+        AppMethodBeat.o(195229);
         return;
       }
     }
   }
   
-  public final void ccd()
+  public final void cjq()
   {
-    AppMethodBeat.i(205395);
-    j.KHt.b(this);
-    this.pGj = null;
-    com.tencent.mm.hellhoundlib.a.adm();
-    com.tencent.mm.hellhoundlib.a.b(this.pGi, this.KFd);
-    this.KFb = null;
-    if (this.KFa != null)
+    AppMethodBeat.i(195228);
+    j.qnH.b(this);
+    this.qlm = null;
+    com.tencent.mm.hellhoundlib.a.aeC();
+    com.tencent.mm.hellhoundlib.a.b(this.qll, this.qlq);
+    this.qlo = null;
+    if (this.qln != null)
     {
-      com.tencent.mm.view.recyclerview.d locald = (com.tencent.mm.view.recyclerview.d)this.KFa.get();
+      d locald = (d)this.qln.get();
       if (locald != null)
       {
-        locald.b(this.lWH);
-        this.KFa.clear();
-        this.KFa = null;
+        locald.b(this.myJ);
+        this.qln.clear();
+        this.qln = null;
       }
     }
-    AppMethodBeat.o(205395);
+    AppMethodBeat.o(195228);
+  }
+  
+  public final void cjx() {}
+  
+  public final void cjy()
+  {
+    AppMethodBeat.i(195232);
+    if (this.qln != null)
+    {
+      d locald = (d)this.qln.get();
+      if (locald != null)
+      {
+        this.qlp.qls = false;
+        locald.getRecyclerView().post(this.qlp);
+      }
+    }
+    AppMethodBeat.o(195232);
   }
   
   public final void f(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(205397);
-    Object localObject1 = u(paramRecyclerView);
+    AppMethodBeat.i(195230);
+    Object localObject1 = r(paramRecyclerView);
     if (localObject1 == null)
     {
-      AppMethodBeat.o(205397);
+      AppMethodBeat.o(195230);
       return;
     }
-    int i = ((LinearLayoutManager)localObject1).jO();
-    int j = ((LinearLayoutManager)localObject1).jQ();
+    int i = ((LinearLayoutManager)localObject1).jW();
+    int j = ((LinearLayoutManager)localObject1).jY();
     ((LinearLayoutManager)localObject1).getItemCount();
     int k = Math.min(j - i + 1, paramRecyclerView.getChildCount());
     Object localObject2;
-    if (this.KFa != null)
+    if (this.qln != null)
     {
-      localObject2 = (com.tencent.mm.view.recyclerview.d)this.KFa.get();
+      localObject2 = (d)this.qln.get();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
     for (localObject1 = localObject2;; localObject1 = null)
     {
       localObject2 = paramRecyclerView.getAdapter();
-      if ((localObject2 instanceof com.tencent.mm.view.recyclerview.d))
+      if ((localObject2 instanceof d))
       {
-        localObject1 = (com.tencent.mm.view.recyclerview.d)localObject2;
-        this.KFa = new WeakReference(localObject1);
+        localObject1 = (d)localObject2;
+        this.qln = new WeakReference(localObject1);
       }
       for (;;)
       {
         if (localObject1 != null)
         {
-          i = Math.max(i - ((com.tencent.mm.view.recyclerview.d)localObject1).Ibl.size(), 0);
-          j = Math.max(j - ((com.tencent.mm.view.recyclerview.d)localObject1).Ibl.size(), 0);
-          ((com.tencent.mm.view.recyclerview.d)localObject1).b(this.lWH);
-          ((com.tencent.mm.view.recyclerview.d)localObject1).a(this.lWH);
+          i = Math.max(i - ((d)localObject1).JCb.size(), 0);
+          j = Math.max(j - ((d)localObject1).JCb.size(), 0);
+          ((d)localObject1).b(this.myJ);
+          ((d)localObject1).a(this.myJ);
         }
         for (;;)
         {
           j = Math.max(Math.min(j - i + 1, k), 0);
-          if (this.pGj != null) {
-            this.pGj.a(paramRecyclerView, i, j, paramInt);
+          if (this.qlm != null) {
+            this.qlm.a(paramRecyclerView, i, j, paramInt);
           }
-          AppMethodBeat.o(205397);
+          AppMethodBeat.o(195230);
           return;
         }
       }
     }
   }
   
-  public final void fRs() {}
-  
-  public final void fRt()
-  {
-    AppMethodBeat.i(205399);
-    if (this.KFa != null)
-    {
-      com.tencent.mm.view.recyclerview.d locald = (com.tencent.mm.view.recyclerview.d)this.KFa.get();
-      if (locald != null)
-      {
-        this.KFc.KFf = false;
-        locald.getRecyclerView().post(this.KFc);
-      }
-    }
-    AppMethodBeat.o(205399);
-  }
-  
   final class a
     implements Runnable
   {
-    boolean KFf = false;
+    boolean qls = false;
     
     private a() {}
     
     public final void run()
     {
-      AppMethodBeat.i(205392);
-      if (a.this.KFb != null) {
-        a.this.KFb.yx(this.KFf);
+      AppMethodBeat.i(195225);
+      if (a.this.qlo != null) {
+        a.this.qlo.kH(this.qls);
       }
-      AppMethodBeat.o(205392);
+      AppMethodBeat.o(195225);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.a.a
  * JD-Core Version:    0.7.0.1
  */

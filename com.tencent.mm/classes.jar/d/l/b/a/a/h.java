@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 
-@d.l(fvt={1, 1, 15}, fvu={""}, fvv={"expectedReceiverType", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getExpectedReceiverType", "(Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;)Lorg/jetbrains/kotlin/types/KotlinType;", "coerceToExpectedReceiverType", "", "descriptor", "createInlineClassAwareCallerIfNeeded", "Lkotlin/reflect/jvm/internal/calls/Caller;", "M", "Ljava/lang/reflect/Member;", "isDefault", "", "getBoxMethod", "Ljava/lang/reflect/Method;", "Ljava/lang/Class;", "getUnboxMethod", "hasInlineClassReceiver", "toInlineClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;", "kotlin-reflection"})
+@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"expectedReceiverType", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getExpectedReceiverType", "(Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;)Lorg/jetbrains/kotlin/types/KotlinType;", "coerceToExpectedReceiverType", "", "descriptor", "createInlineClassAwareCallerIfNeeded", "Lkotlin/reflect/jvm/internal/calls/Caller;", "M", "Ljava/lang/reflect/Member;", "isDefault", "", "getBoxMethod", "Ljava/lang/reflect/Method;", "Ljava/lang/Class;", "getUnboxMethod", "hasInlineClassReceiver", "toInlineClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;", "kotlin-reflection"})
 public final class h
 {
   public static final <M extends Member> d<M> a(d<? extends M> paramd, b paramb, boolean paramBoolean)
@@ -25,7 +25,7 @@ public final class h
     d.g.b.k.h(paramb, "descriptor");
     if (!d.l.b.a.b.j.e.f((d.l.b.a.b.b.a)paramb))
     {
-      Object localObject1 = paramb.fyq();
+      Object localObject1 = paramb.fQU();
       d.g.b.k.g(localObject1, "descriptor.valueParameters");
       localObject1 = (Iterable)localObject1;
       if (((localObject1 instanceof Collection)) && (((Collection)localObject1).isEmpty())) {
@@ -38,14 +38,14 @@ public final class h
         {
           Object localObject2 = (av)((Iterator)localObject1).next();
           d.g.b.k.g(localObject2, "it");
-          localObject2 = ((av)localObject2).fzr();
+          localObject2 = ((av)localObject2).fRV();
           d.g.b.k.g(localObject2, "it.type");
           if (d.l.b.a.b.j.e.ab((ab)localObject2))
           {
             i = 1;
             if (i == 0)
             {
-              localObject1 = paramb.fyo();
+              localObject1 = paramb.fQS();
               if ((localObject1 == null) || (d.l.b.a.b.j.e.ab((ab)localObject1) != true))
               {
                 if ((paramd instanceof c)) {
@@ -91,13 +91,13 @@ public final class h
   {
     AppMethodBeat.i(56637);
     Class localClass1;
-    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).fxB()))
+    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).fQf()))
     {
       Class localClass2 = af.a((d.l.b.a.b.b.e)paraml);
       localClass1 = localClass2;
       if (localClass2 == null)
       {
-        paraml = (Throwable)new x("Class object for the class " + ((d.l.b.a.b.b.e)paraml).fyB() + " cannot be found (classId=" + d.l.b.a.b.j.d.a.c((d.l.b.a.b.b.h)paraml) + ')');
+        paraml = (Throwable)new x("Class object for the class " + ((d.l.b.a.b.b.e)paraml).fRf() + " cannot be found (classId=" + d.l.b.a.b.j.d.a.c((d.l.b.a.b.b.h)paraml) + ')');
         AppMethodBeat.o(56637);
         throw paraml;
       }
@@ -182,11 +182,11 @@ public final class h
   private static final ab c(b paramb)
   {
     AppMethodBeat.i(56638);
-    Object localObject = paramb.fyl();
-    ak localak = paramb.fym();
+    Object localObject = paramb.fQP();
+    ak localak = paramb.fQQ();
     if (localObject != null)
     {
-      paramb = ((ak)localObject).fzr();
+      paramb = ((ak)localObject).fRV();
       AppMethodBeat.o(56638);
       return paramb;
     }
@@ -197,18 +197,18 @@ public final class h
     }
     if ((paramb instanceof d.l.b.a.b.b.k))
     {
-      paramb = localak.fzr();
+      paramb = localak.fRV();
       AppMethodBeat.o(56638);
       return paramb;
     }
-    localObject = paramb.fxq();
+    localObject = paramb.fPU();
     paramb = (b)localObject;
     if (!(localObject instanceof d.l.b.a.b.b.e)) {
       paramb = null;
     }
     paramb = (d.l.b.a.b.b.e)paramb;
     if (paramb != null) {}
-    for (paramb = paramb.fyA();; paramb = null)
+    for (paramb = paramb.fRe();; paramb = null)
     {
       paramb = (ab)paramb;
       AppMethodBeat.o(56638);
@@ -220,14 +220,14 @@ public final class h
   {
     AppMethodBeat.i(56636);
     d.g.b.k.h(paramab, "$this$toInlineClass");
-    paramab = a((d.l.b.a.b.b.l)paramab.fIW().fxM());
+    paramab = a((d.l.b.a.b.b.l)paramab.gbz().fQq());
     AppMethodBeat.o(56636);
     return paramab;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.a.h
  * JD-Core Version:    0.7.0.1
  */

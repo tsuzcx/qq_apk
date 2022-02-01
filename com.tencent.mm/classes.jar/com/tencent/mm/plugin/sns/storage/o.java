@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.c.f;
+import com.tencent.mm.plugin.sns.b.f;
 import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.protocal.protobuf.amw;
-import com.tencent.mm.protocal.protobuf.cwg;
-import com.tencent.mm.protocal.protobuf.cwh;
-import com.tencent.mm.protocal.protobuf.cwl;
+import com.tencent.mm.protocal.protobuf.aqa;
+import com.tencent.mm.protocal.protobuf.dbs;
+import com.tencent.mm.protocal.protobuf.dbt;
+import com.tencent.mm.protocal.protobuf.dbx;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,8 +21,8 @@ public final class o
 {
   public static final String[] SQL_CREATE;
   public e db;
-  private boolean xiG;
-  private g xiH;
+  private boolean yvx;
+  private g yvy;
   
   static
   {
@@ -35,11 +35,11 @@ public final class o
   {
     super(parame, n.info, "snsExtInfo3", null);
     AppMethodBeat.i(97474);
-    this.xiG = false;
-    this.xiH = null;
+    this.yvx = false;
+    this.yvy = null;
     this.db = parame;
-    this.xiH = paramg;
-    ad.i("MicroMsg.SnsExtStorage", "createExtStorage " + parame + "  " + Thread.currentThread().getId());
+    this.yvy = paramg;
+    ac.i("MicroMsg.SnsExtStorage", "createExtStorage " + parame + "  " + Thread.currentThread().getId());
     AppMethodBeat.o(97474);
   }
   
@@ -69,7 +69,7 @@ public final class o
       paramn.close();
       if (i == 0)
       {
-        ad.v("MicroMsg.SnsExtStorage", "can not get snsextinfo2 %s", new Object[] { paramString });
+        ac.v("MicroMsg.SnsExtStorage", "can not get snsextinfo2 %s", new Object[] { paramString });
         AppMethodBeat.o(97487);
         return null;
         if ((paramn.field_iFlag & 0x1) > 0) {}
@@ -83,15 +83,15 @@ public final class o
           break label18;
         }
       }
-      paramn = "select * from snsExtInfo2 where userName=\"" + bt.aFQ(paramString) + "\"";
-      ad.d("MicroMsg.SnsExtStorage", "get from snsextinfo2 sql %s", new Object[] { paramn });
+      paramn = "select * from snsExtInfo2 where userName=\"" + bs.aLh(paramString) + "\"";
+      ac.d("MicroMsg.SnsExtStorage", "get from snsextinfo2 sql %s", new Object[] { paramn });
       paramn = this.db.a(paramn, null, 2);
       n localn = new n();
       if (paramn.moveToFirst())
       {
         localn.convertFrom(paramn);
         paramn.close();
-        ad.i("MicroMsg.SnsExtStorage", "setSnsUserInfo fix newversion change snsextinfo3 %s", new Object[] { paramString });
+        ac.i("MicroMsg.SnsExtStorage", "setSnsUserInfo fix newversion change snsextinfo3 %s", new Object[] { paramString });
         AppMethodBeat.o(97487);
         return localn;
       }
@@ -104,11 +104,11 @@ public final class o
   public final boolean a(n paramn)
   {
     AppMethodBeat.i(97476);
-    if ((this.xiG) && (this.xiH != null))
+    if ((this.yvx) && (this.yvy != null))
     {
-      bool = this.xiH.a(paramn);
-      if (this.xiH != null) {
-        this.xiH.dtN();
+      bool = this.yvy.a(paramn);
+      if (this.yvy != null) {
+        this.yvy.dIl();
       }
       AppMethodBeat.o(97476);
       return bool;
@@ -118,47 +118,47 @@ public final class o
     return bool;
   }
   
-  public final boolean a(String paramString, cwh paramcwh)
+  public final boolean a(String paramString, dbt paramdbt)
   {
     AppMethodBeat.i(97485);
-    if (paramcwh == null)
+    if (paramdbt == null)
     {
       AppMethodBeat.o(97485);
       return false;
     }
-    paramString = apP(paramString);
-    String str = q.st(paramcwh.ijZ);
-    if ((!bt.isNullOrNil(paramcwh.ijY)) && ((paramString.field_bgUrl == null) || (!paramString.field_bgId.equals(str))))
+    paramString = auY(paramString);
+    String str = q.wW(paramdbt.iKg);
+    if ((!bs.isNullOrNil(paramdbt.iKf)) && ((paramString.field_bgUrl == null) || (!paramString.field_bgId.equals(str))))
     {
       paramString.field_older_bgId = paramString.field_bgId;
       paramString.field_local_flag |= 0x1;
-      paramString.dxL();
-      ad.d("MicroMsg.SnsExtStorage", "bg change");
+      paramString.dMi();
+      ac.d("MicroMsg.SnsExtStorage", "bg change");
     }
     paramString.field_bgId = str;
-    paramString.field_bgUrl = paramcwh.ijY;
-    paramString.field_iFlag = paramcwh.ijX;
-    paramString.field_snsBgId = paramcwh.ijZ;
+    paramString.field_bgUrl = paramdbt.iKf;
+    paramString.field_iFlag = paramdbt.iKe;
+    paramString.field_snsBgId = paramdbt.iKg;
     paramString.field_local_flag |= 0x4;
-    if ((paramcwh.Eoc & 0x1000) == 0)
+    if ((paramdbt.FLb & 0x1000) == 0)
     {
-      if ((paramcwh.Eoc & 0x200) <= 0) {
+      if ((paramdbt.FLb & 0x200) <= 0) {
         break label185;
       }
-      paramcwh.Eoc |= 0x1000;
-      paramcwh.Eod = 4320;
+      paramdbt.FLb |= 0x1000;
+      paramdbt.FLc = 4320;
     }
     for (;;)
     {
-      paramString.a(paramcwh);
+      paramString.a(paramdbt);
       a(paramString);
       AppMethodBeat.o(97485);
       return true;
       label185:
-      if ((paramcwh.Eoc & 0x400) > 0)
+      if ((paramdbt.FLb & 0x400) > 0)
       {
-        paramcwh.Eoc |= 0x1000;
-        paramcwh.Eod = 72;
+        paramdbt.FLb |= 0x1000;
+        paramdbt.FLc = 72;
       }
     }
   }
@@ -166,10 +166,10 @@ public final class o
   public final boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(97491);
-    paramString = apP(paramString);
+    paramString = auY(paramString);
     int k = paramString.field_iFlag;
-    if (paramString.dxO() != null) {}
-    for (int i = paramString.dxO().Eoc;; i = 0)
+    if (paramString.dMl() != null) {}
+    for (int i = paramString.dMl().FLb;; i = 0)
     {
       int j = -1;
       k |= 0x1000;
@@ -192,12 +192,12 @@ public final class o
         for (j = m | 0x800;; j = m & 0xFFFFF7FF)
         {
           paramString.field_iFlag = k;
-          cwh localcwh = paramString.dxO();
-          if (localcwh != null)
+          dbt localdbt = paramString.dMl();
+          if (localdbt != null)
           {
-            localcwh.Eoc = j;
-            localcwh.Eod = i;
-            paramString.a(localcwh);
+            localdbt.FLb = j;
+            localdbt.FLc = i;
+            paramString.a(localdbt);
           }
           c(paramString);
           AppMethodBeat.o(97491);
@@ -208,44 +208,44 @@ public final class o
     }
   }
   
-  public final cwh anu(String paramString)
+  public final dbt asG(String paramString)
   {
     AppMethodBeat.i(97488);
-    paramString = apP(paramString);
+    paramString = auY(paramString);
     if (paramString == null)
     {
-      paramString = new cwh();
+      paramString = new dbt();
       AppMethodBeat.o(97488);
       return paramString;
     }
-    paramString = paramString.dxO();
+    paramString = paramString.dMl();
     AppMethodBeat.o(97488);
     return paramString;
   }
   
-  public final void apM(String paramString)
+  public final void auV(String paramString)
   {
     AppMethodBeat.i(97477);
-    n localn = apP(paramString);
+    n localn = auY(paramString);
     localn.field_userName = paramString;
     super.delete(localn, new String[] { getPrimaryKey() });
     AppMethodBeat.o(97477);
   }
   
-  public final amw apN(String paramString)
+  public final aqa auW(String paramString)
   {
     AppMethodBeat.i(97481);
-    Object localObject = new amw();
+    Object localObject = new aqa();
     new n();
-    paramString = apP(paramString);
+    paramString = auY(paramString);
     try
     {
-      if (!bt.cw(paramString.field_faultS))
+      if (!bs.cv(paramString.field_faultS))
       {
-        paramString = (amw)new amw().parseFrom(paramString.field_faultS);
+        paramString = (aqa)new aqa().parseFrom(paramString.field_faultS);
         localObject = paramString;
         if (paramString == null) {
-          localObject = new amw();
+          localObject = new aqa();
         }
         AppMethodBeat.o(97481);
         return localObject;
@@ -255,34 +255,34 @@ public final class o
     {
       for (;;)
       {
-        ad.e("MicroMsg.SnsExtStorage", "parser field_faultS error");
+        ac.e("MicroMsg.SnsExtStorage", "parser field_faultS error");
         paramString = (String)localObject;
       }
     }
   }
   
-  public final void apO(String paramString)
+  public final void auX(String paramString)
   {
     AppMethodBeat.i(97482);
     new n();
-    n localn = apP(paramString);
+    n localn = auY(paramString);
     localn.field_userName = paramString;
     localn.field_local_flag &= 0xFFFFFFFE;
     c(localn);
     AppMethodBeat.o(97482);
   }
   
-  public final n apP(String paramString)
+  public final n auY(String paramString)
   {
     AppMethodBeat.i(97483);
     n localn2 = new n();
     n localn1 = localn2;
-    if (this.xiH != null)
+    if (this.yvy != null)
     {
       localn1 = localn2;
-      if (this.xiG)
+      if (this.yvx)
       {
-        localn1 = this.xiH.aoF(paramString);
+        localn1 = this.yvy.atR(paramString);
         if (localn1 != null)
         {
           AppMethodBeat.o(97483);
@@ -297,42 +297,42 @@ public final class o
     return localn1;
   }
   
-  public final List<cwl> apQ(String paramString)
+  public final List<dbx> auZ(String paramString)
   {
     AppMethodBeat.i(97493);
-    paramString = apP(paramString).dxM().Eob;
+    paramString = auY(paramString).dMj().FLa;
     AppMethodBeat.o(97493);
     return paramString;
   }
   
-  public final cwh b(String paramString, cwh paramcwh)
+  public final dbt b(String paramString, dbt paramdbt)
   {
     AppMethodBeat.i(97486);
-    n localn = apP(paramString);
+    n localn = auY(paramString);
     if (localn == null)
     {
       paramString = a(paramString, localn);
       if (paramString != null) {
-        if (paramcwh.ijX != -1) {
+        if (paramdbt.iKe != -1) {
           break label56;
         }
       }
       label56:
-      for (i = paramString.field_iFlag;; i = paramcwh.ijX)
+      for (i = paramString.field_iFlag;; i = paramdbt.iKe)
       {
-        paramcwh.ijX = i;
+        paramdbt.iKe = i;
         AppMethodBeat.o(97486);
-        return paramcwh;
+        return paramdbt;
       }
     }
     String str;
     label97:
     int j;
-    if (bt.isNullOrNil(paramcwh.ijY))
+    if (bs.isNullOrNil(paramdbt.iKf))
     {
       str = localn.field_bgUrl;
-      paramcwh.ijY = str;
-      if (paramcwh.ijX != -1) {
+      paramdbt.iKf = str;
+      if (paramdbt.iKe != -1) {
         break label157;
       }
       i = 1;
@@ -341,7 +341,7 @@ public final class o
       }
       j = localn.field_iFlag;
       label108:
-      paramcwh.ijX = j;
+      paramdbt.iKe = j;
       paramString = a(paramString, localn);
       if (paramString != null) {
         if (i == 0) {
@@ -352,31 +352,31 @@ public final class o
     label157:
     label162:
     label171:
-    for (int i = paramString.field_iFlag;; i = paramcwh.ijX)
+    for (int i = paramString.field_iFlag;; i = paramdbt.iKe)
     {
-      paramcwh.ijX = i;
+      paramdbt.iKe = i;
       AppMethodBeat.o(97486);
-      return paramcwh;
-      str = paramcwh.ijY;
+      return paramdbt;
+      str = paramdbt.iKf;
       break;
       i = 0;
       break label97;
-      j = paramcwh.ijX;
+      j = paramdbt.iKe;
       break label108;
     }
   }
   
-  public final cwh b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public final dbt b(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(97492);
-    paramString = apP(paramString).dxO();
+    paramString = auY(paramString).dMl();
     if (paramString == null)
     {
-      ad.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      ac.e("MicroMsg.SnsExtStorage", "userinfo is null");
       AppMethodBeat.o(97492);
       return null;
     }
-    int j = paramString.Eoc;
+    int j = paramString.FLb;
     int i = -1;
     j |= 0x1000;
     if (paramBoolean1) {
@@ -395,8 +395,8 @@ public final class o
       }
       for (;;)
       {
-        paramString.Eoc = j;
-        paramString.Eod = i;
+        paramString.FLb = j;
+        paramString.FLc = i;
         AppMethodBeat.o(97492);
         return paramString;
         j &= 0xFFFFF7FF;
@@ -412,10 +412,10 @@ public final class o
     return bool;
   }
   
-  public final boolean bv(String paramString, boolean paramBoolean)
+  public final boolean bC(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(97489);
-    paramString = apP(paramString);
+    paramString = auY(paramString);
     int i = paramString.field_iFlag;
     if (paramBoolean) {
       i |= 0x1;
@@ -430,23 +430,23 @@ public final class o
     }
   }
   
-  public final cwh bw(String paramString, boolean paramBoolean)
+  public final dbt bD(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(97490);
-    paramString = apP(paramString).dxO();
+    paramString = auY(paramString).dMl();
     if (paramString == null)
     {
-      ad.e("MicroMsg.SnsExtStorage", "userinfo is null");
+      ac.e("MicroMsg.SnsExtStorage", "userinfo is null");
       AppMethodBeat.o(97490);
       return null;
     }
-    int i = paramString.Eoc;
+    int i = paramString.FLb;
     if (paramBoolean) {
       i |= 0x1;
     }
     for (;;)
     {
-      paramString.Eoc = i;
+      paramString.FLb = i;
       AppMethodBeat.o(97490);
       return paramString;
       i &= 0xFFFFFFFE;
@@ -466,27 +466,27 @@ public final class o
     return bool;
   }
   
-  public final void drN()
+  public final void dGm()
   {
     AppMethodBeat.i(97472);
-    ad.d("MicroMsg.SnsExtStorage", "attachCache");
-    this.xiG = true;
+    ac.d("MicroMsg.SnsExtStorage", "attachCache");
+    this.yvx = true;
     AppMethodBeat.o(97472);
   }
   
-  public final void drO()
+  public final void dGn()
   {
     AppMethodBeat.i(97473);
-    this.xiG = false;
-    this.xiH.dtO();
-    ad.d("MicroMsg.SnsExtStorage", "detchCache");
+    this.yvx = false;
+    this.yvy.dIm();
+    ac.d("MicroMsg.SnsExtStorage", "detchCache");
     AppMethodBeat.o(97473);
   }
   
   public final int g(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(97479);
-    paramString1 = apP(paramString1);
+    paramString1 = auY(paramString1);
     paramString1.field_md5 = paramString2;
     paramString1.field_adsession = paramArrayOfByte;
     super.replace(paramString1);
@@ -494,10 +494,10 @@ public final class o
     return 0;
   }
   
-  public final boolean je(String paramString1, String paramString2)
+  public final boolean jC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97480);
-    paramString1 = apP(paramString1);
+    paramString1 = auY(paramString1);
     paramString1.field_newerIds = paramString2;
     boolean bool = super.replace(paramString1);
     AppMethodBeat.o(97480);
@@ -507,7 +507,7 @@ public final class o
   public final int n(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97478);
-    paramString1 = apP(paramString1);
+    paramString1 = auY(paramString1);
     paramString1.field_md5 = paramString2;
     paramString1.field_lastFirstPageRequestErrType = paramInt1;
     paramString1.field_lastFirstPageRequestErrCode = paramInt2;
@@ -519,7 +519,7 @@ public final class o
   public final int o(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(162060);
-    paramString1 = apP(paramString1);
+    paramString1 = auY(paramString1);
     paramString1.field_albumMd5 = paramString2;
     paramString1.field_lastFirstPageRequestErrType = paramInt1;
     paramString1.field_lastFirstPageRequestErrCode = paramInt2;
@@ -528,21 +528,21 @@ public final class o
     return 0;
   }
   
-  public final void x(String paramString, List<cwl> paramList)
+  public final void v(String paramString, List<dbx> paramList)
   {
     AppMethodBeat.i(97494);
     if (paramList == null)
     {
-      ad.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo info is null");
+      ac.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo info is null");
       AppMethodBeat.o(97494);
       return;
     }
-    ad.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo size:%s", new Object[] { Integer.valueOf(paramList.size()) });
-    paramString = apP(paramString);
-    cwg localcwg = paramString.dxM();
-    localcwg.Eob.clear();
-    localcwg.Eob.addAll(paramList);
-    paramString.a(localcwg);
+    ac.i("MicroMsg.SnsExtStorage", "updateSnsYearMonthInfo size:%s", new Object[] { Integer.valueOf(paramList.size()) });
+    paramString = auY(paramString);
+    dbs localdbs = paramString.dMj();
+    localdbs.FLa.clear();
+    localdbs.FLa.addAll(paramList);
+    paramString.a(localdbs);
     c(paramString);
     AppMethodBeat.o(97494);
   }

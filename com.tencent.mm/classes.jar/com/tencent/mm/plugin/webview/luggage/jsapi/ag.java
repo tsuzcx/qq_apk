@@ -7,8 +7,8 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.webview.luggage.c.b;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class ag
@@ -18,11 +18,11 @@ public class ag
   {
     int j = 1;
     AppMethodBeat.i(78578);
-    ad.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
-    JSONObject localJSONObject = b.HG(paramString);
+    ac.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
+    JSONObject localJSONObject = b.LK(paramString);
     if (localJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
+      ac.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
       parama.f("fail_null_data", null);
       AppMethodBeat.o(78578);
       return;
@@ -31,22 +31,22 @@ public class ag
     String str3 = localJSONObject.optString("currentUrl");
     String str1 = localJSONObject.optString("preVerifyAppId");
     paramString = str1;
-    if (bt.isNullOrNil(str1)) {
+    if (bs.isNullOrNil(str1)) {
       paramString = localJSONObject.optString("referrerAppId");
     }
-    if (bt.isNullOrNil(str2))
+    if (bs.isNullOrNil(str2))
     {
       parama.f("invalid_targetAppId", null);
       AppMethodBeat.o(78578);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       parama.f("invalid_referrerAppId", null);
       AppMethodBeat.o(78578);
       return;
     }
-    str1 = bt.nullAsNil(localJSONObject.optString("envVersion"));
+    str1 = bs.nullAsNil(localJSONObject.optString("envVersion"));
     int i = -1;
     switch (str1.hashCode())
     {
@@ -78,7 +78,7 @@ public class ag
   
   public final void b(a<f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

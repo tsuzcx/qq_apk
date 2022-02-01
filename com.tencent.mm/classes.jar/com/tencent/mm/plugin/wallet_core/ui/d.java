@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.wallet.a.f;
 import com.tencent.mm.plugin.wallet.a.h;
@@ -12,8 +12,8 @@ import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,28 +26,28 @@ import junit.framework.Assert;
 
 public final class d
 {
-  public h Ajk;
-  private Map<String, t> Ajl;
-  private Map<String, j> Ajm;
+  public h BBG;
+  private Map<String, t> BBH;
+  private Map<String, j> BBI;
   
   public d(h paramh)
   {
     AppMethodBeat.i(70650);
-    this.Ajk = null;
-    this.Ajl = null;
-    this.Ajm = null;
+    this.BBG = null;
+    this.BBH = null;
+    this.BBI = null;
     Assert.assertNotNull(paramh);
-    this.Ajk = paramh;
-    VL();
+    this.BBG = paramh;
+    WJ();
     AppMethodBeat.o(70650);
   }
   
-  private void VL()
+  private void WJ()
   {
     int j = 0;
     AppMethodBeat.i(70651);
-    this.Ajl = new HashMap();
-    LinkedList localLinkedList = this.Ajk.zOs;
+    this.BBH = new HashMap();
+    LinkedList localLinkedList = this.BBG.BgM;
     int i;
     Object localObject;
     if (localLinkedList != null)
@@ -56,26 +56,26 @@ public final class d
       while (i < localLinkedList.size())
       {
         localObject = (t)localLinkedList.get(i);
-        this.Ajl.put(((t)localObject).zOl, localObject);
+        this.BBH.put(((t)localObject).BgF, localObject);
         i += 1;
       }
     }
-    ad.w("MicroMsg.FavorLogicHelper", "func[initData] favorList null");
-    this.Ajm = new HashMap();
-    if ((this.Ajk.zOt != null) && (this.Ajk.zOt.zOF != null))
+    ac.w("MicroMsg.FavorLogicHelper", "func[initData] favorList null");
+    this.BBI = new HashMap();
+    if ((this.BBG.BgN != null) && (this.BBG.BgN.BgZ != null))
     {
-      localLinkedList = this.Ajk.zOt.zOF;
+      localLinkedList = this.BBG.BgN.BgZ;
       i = j;
       while (i < localLinkedList.size())
       {
         localObject = (j)localLinkedList.get(i);
-        this.Ajm.put(((j)localObject).zOH, localObject);
+        this.BBI.put(((j)localObject).Bhb, localObject);
         i += 1;
       }
       AppMethodBeat.o(70651);
       return;
     }
-    ad.w("MicroMsg.FavorLogicHelper", "func[initData] favorComposeList null");
+    ac.w("MicroMsg.FavorLogicHelper", "func[initData] favorComposeList null");
     AppMethodBeat.o(70651);
   }
   
@@ -84,21 +84,21 @@ public final class d
     AppMethodBeat.i(70664);
     if (paramBankcard == null)
     {
-      ad.w("MicroMsg.FavorLogicHelper", "curBankcard null");
+      ac.w("MicroMsg.FavorLogicHelper", "curBankcard null");
       AppMethodBeat.o(70664);
       return true;
     }
-    if ((paramFavorPayInfo != null) && (!bt.isNullOrNil(paramFavorPayInfo.Aeb)))
+    if ((paramFavorPayInfo != null) && (!bs.isNullOrNil(paramFavorPayInfo.Bwv)))
     {
-      if (paramFavorPayInfo.Aec != 0) {}
-      for (i = 1; (i != 0) && (!bt.isNullOrNil(paramFavorPayInfo.Aed)) && (paramFavorPayInfo.Aeg != null) && (paramFavorPayInfo.Aeg.contains(paramBankcard.field_bindSerial)); i = 0)
+      if (paramFavorPayInfo.Bww != 0) {}
+      for (i = 1; (i != 0) && (!bs.isNullOrNil(paramFavorPayInfo.Bwx)) && (paramFavorPayInfo.BwA != null) && (paramFavorPayInfo.BwA.contains(paramBankcard.field_bindSerial)); i = 0)
       {
         AppMethodBeat.o(70664);
         return false;
       }
     }
-    if (paramFavorPayInfo.Aec != 0) {}
-    for (int i = 1; (i != 0) && (((!bt.isNullOrNil(paramFavorPayInfo.Aed)) && (paramBankcard.field_bankcardType != null) && (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.Aed))) || ((bt.isNullOrNil(paramFavorPayInfo.Aed)) && (paramBankcard.field_bankcardType.equals("CFT")))); i = 0)
+    if (paramFavorPayInfo.Bww != 0) {}
+    for (int i = 1; (i != 0) && (((!bs.isNullOrNil(paramFavorPayInfo.Bwx)) && (paramBankcard.field_bankcardType != null) && (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.Bwx))) || ((bs.isNullOrNil(paramFavorPayInfo.Bwx)) && (paramBankcard.field_bankcardType.equals("CFT")))); i = 0)
     {
       AppMethodBeat.o(70664);
       return true;
@@ -107,10 +107,10 @@ public final class d
     return false;
   }
   
-  public static String[] aun(String paramString)
+  public static String[] azF(String paramString)
   {
     AppMethodBeat.i(70660);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(70660);
       return null;
@@ -120,10 +120,10 @@ public final class d
     return paramString;
   }
   
-  public static List<Bankcard> cf(int paramInt, String paramString)
+  public static List<Bankcard> ci(int paramInt, String paramString)
   {
     AppMethodBeat.i(70665);
-    ArrayList localArrayList1 = s.ecc().sC(true);
+    ArrayList localArrayList1 = s.ery().tD(true);
     if (paramInt != 0) {}
     for (paramInt = 1; paramInt == 0; paramInt = 0)
     {
@@ -133,7 +133,7 @@ public final class d
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
     if (i < localArrayList1.size()) {
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
         if (((Bankcard)localArrayList1.get(i)).field_bankcardType.equals("CFT")) {
           break label140;
@@ -163,7 +163,7 @@ public final class d
     }
   }
   
-  private static String gp(List<String> paramList)
+  private static String gA(List<String> paramList)
   {
     AppMethodBeat.i(70666);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -181,30 +181,30 @@ public final class d
     return paramList;
   }
   
-  public final Map<String, a> auj(String paramString)
+  public final Map<String, a> azB(String paramString)
   {
     AppMethodBeat.i(70652);
-    paramString = bT(paramString, false);
+    paramString = ca(paramString, false);
     AppMethodBeat.o(70652);
     return paramString;
   }
   
-  public final Map<String, a> auk(String paramString)
+  public final Map<String, a> azC(String paramString)
   {
     AppMethodBeat.i(70654);
     HashMap localHashMap = new HashMap();
     LinkedList localLinkedList;
-    if ((this.Ajk.zOt != null) && (this.Ajk.zOt.zOF != null))
+    if ((this.BBG.BgN != null) && (this.BBG.BgN.BgZ != null))
     {
-      localLinkedList = this.Ajk.zOt.zOF;
-      if (!this.Ajm.containsKey(paramString)) {
+      localLinkedList = this.BBG.BgN.BgZ;
+      if (!this.BBI.containsKey(paramString)) {
         break label437;
       }
     }
     label406:
     label412:
     label437:
-    for (double d = ((j)this.Ajm.get(paramString)).zOI;; d = 0.0D)
+    for (double d = ((j)this.BBI.get(paramString)).Bhc;; d = 0.0D)
     {
       int i = 0;
       while (i < localLinkedList.size())
@@ -214,79 +214,79 @@ public final class d
         Object localObject;
         if ((paramString.equals("0")) && (!localj.equals("0")))
         {
-          localObject = localj.zOH;
-          localObject = aun((String)localObject);
+          localObject = localj.Bhb;
+          localObject = azF((String)localObject);
           if ((localObject == null) || (localObject.length <= 0)) {
             break label412;
           }
-          localObject = (t)this.Ajl.get(localObject[0]);
+          localObject = (t)this.BBH.get(localObject[0]);
           if (localObject == null) {
             break label412;
           }
-          if (((t)localObject).zPo == 0) {
+          if (((t)localObject).BhI == 0) {
             break label406;
           }
         }
         for (int j = 1;; j = 0)
         {
-          if ((j == 0) || (((t)localObject).zPr.size() <= 0)) {
+          if ((j == 0) || (((t)localObject).BhL.size() <= 0)) {
             break label412;
           }
-          localIterator = ((t)localObject).zPr.iterator();
+          localIterator = ((t)localObject).BhL.iterator();
           while (localIterator.hasNext())
           {
             String str = z.a((b)localIterator.next());
             a locala = (a)localHashMap.get(str);
-            if ((locala == null) || (localj.zOI > locala.Ajn.zOI))
+            if ((locala == null) || (localj.Bhc > locala.BBJ.Bhc))
             {
               locala = new a();
-              locala.Ajn = localj;
-              locala.uon = ((t)localObject).uon;
-              locala.Ajo = (localj.zOI - d);
-              locala.don = ((t)localObject).zPp;
+              locala.BBJ = localj;
+              locala.vxj = ((t)localObject).vxj;
+              locala.BBK = (localj.Bhc - d);
+              locala.dlW = ((t)localObject).BhJ;
               localHashMap.put(str, locala);
             }
           }
           localObject = localIterator;
-          if (!localj.zOH.startsWith(paramString)) {
+          if (!localj.Bhb.startsWith(paramString)) {
             break;
           }
           localObject = localIterator;
-          if (paramString.equals(localj.zOH)) {
+          if (paramString.equals(localj.Bhb)) {
             break;
           }
-          localObject = localj.zOH.replace(paramString + "-", "");
+          localObject = localj.Bhb.replace(paramString + "-", "");
           break;
         }
         i += 1;
         continue;
-        ad.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
+        ac.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
       }
       AppMethodBeat.o(70654);
       return localHashMap;
     }
   }
   
-  public final List<t> aul(String paramString)
+  public final List<t> azD(String paramString)
   {
     AppMethodBeat.i(70656);
     LinkedList localLinkedList = new LinkedList();
-    if (this.Ajk.zOs != null)
+    if (this.BBG.BgM != null)
     {
-      paramString = auj(paramString);
+      paramString = azB(paramString);
       int i = 0;
-      if (i < this.Ajk.zOs.size())
+      if (i < this.BBG.BgM.size())
       {
-        t localt = (t)this.Ajk.zOs.get(i);
+        t localt = (t)this.BBG.BgM.get(i);
         if (localt != null) {
-          if (localt.zPo == 0) {
+          if (localt.BhI == 0) {
             break label113;
           }
         }
         label113:
         for (int j = 1;; j = 0)
         {
-          if ((j != 0) && (paramString.containsKey(localt.zPp))) {
+          if ((j != 0) && (paramString.containsKey(localt.BhJ))) {
             localLinkedList.add(localt);
           }
           i += 1;
@@ -296,48 +296,48 @@ public final class d
     }
     else
     {
-      ad.w("MicroMsg.FavorLogicHelper", "fucn[getBankFavorListWithSelectedCompId] mFavorInfo.tradeFavList null");
+      ac.w("MicroMsg.FavorLogicHelper", "fucn[getBankFavorListWithSelectedCompId] mFavorInfo.tradeFavList null");
     }
     AppMethodBeat.o(70656);
     return localLinkedList;
   }
   
-  public final j aum(String paramString)
+  public final j azE(String paramString)
   {
     AppMethodBeat.i(70659);
-    paramString = (j)this.Ajm.get(paramString);
+    paramString = (j)this.BBI.get(paramString);
     AppMethodBeat.o(70659);
     return paramString;
   }
   
-  public final String auo(String paramString)
+  public final String azG(String paramString)
   {
     AppMethodBeat.i(70661);
-    paramString = bU(paramString, false);
+    paramString = cb(paramString, false);
     AppMethodBeat.o(70661);
     return paramString;
   }
   
-  public final FavorPayInfo aup(String paramString)
+  public final FavorPayInfo azH(String paramString)
   {
     AppMethodBeat.i(70663);
     FavorPayInfo localFavorPayInfo = new FavorPayInfo();
-    if (this.Ajm.get(paramString) == null)
+    if (this.BBI.get(paramString) == null)
     {
-      localFavorPayInfo.Aeb = "0";
-      if (this.Ajk != null) {
-        localFavorPayInfo.Aee = this.Ajk.zOr;
+      localFavorPayInfo.Bwv = "0";
+      if (this.BBG != null) {
+        localFavorPayInfo.Bwy = this.BBG.BgL;
       }
-      localFavorPayInfo.Aec = 0;
+      localFavorPayInfo.Bww = 0;
       AppMethodBeat.o(70663);
       return localFavorPayInfo;
     }
-    localFavorPayInfo.Aeb = paramString;
-    if (this.Ajk != null) {
-      localFavorPayInfo.Aee = this.Ajk.zOr;
+    localFavorPayInfo.Bwv = paramString;
+    if (this.BBG != null) {
+      localFavorPayInfo.Bwy = this.BBG.BgL;
     }
-    localFavorPayInfo.Aec = 0;
-    paramString = aun(paramString);
+    localFavorPayInfo.Bww = 0;
+    paramString = azF(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(70663);
@@ -348,36 +348,36 @@ public final class d
     {
       if (i >= 0)
       {
-        t localt = (t)this.Ajl.get(paramString[i]);
+        t localt = (t)this.BBH.get(paramString[i]);
         if (localt != null)
         {
           int j;
-          if (localt.zPo != 0) {
+          if (localt.BhI != 0) {
             j = 1;
           }
           while (j != 0)
           {
-            localFavorPayInfo.Aec = 1;
-            if ((localt.zPr != null) && (localt.zPr.size() > 0))
+            localFavorPayInfo.Bww = 1;
+            if ((localt.BhL != null) && (localt.BhL.size() > 0))
             {
-              localFavorPayInfo.Aeg = new LinkedList();
-              Iterator localIterator = localt.zPr.iterator();
+              localFavorPayInfo.BwA = new LinkedList();
+              Iterator localIterator = localt.BhL.iterator();
               for (;;)
               {
                 if (localIterator.hasNext())
                 {
                   b localb = (b)localIterator.next();
-                  localFavorPayInfo.Aeg.add(z.a(localb));
+                  localFavorPayInfo.BwA.add(z.a(localb));
                   continue;
                   j = 0;
                   break;
                 }
               }
             }
-            if (bt.isNullOrNil(localt.zPp)) {
+            if (bs.isNullOrNil(localt.BhJ)) {
               break label286;
             }
-            localFavorPayInfo.Aed = localt.zPp;
+            localFavorPayInfo.Bwx = localt.BhJ;
           }
         }
       }
@@ -391,10 +391,10 @@ public final class d
     }
   }
   
-  public final String auq(String paramString)
+  public final String azI(String paramString)
   {
     AppMethodBeat.i(70667);
-    ArrayList localArrayList2 = s.ecc().sC(true);
+    ArrayList localArrayList2 = s.ery().tD(true);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList1 = new ArrayList();
     int i = 0;
@@ -403,24 +403,24 @@ public final class d
       localHashMap.put(((Bankcard)localArrayList2.get(i)).field_bankcardType, Integer.valueOf(0));
       i += 1;
     }
-    paramString = aun(paramString);
+    paramString = azF(paramString);
     if (paramString != null)
     {
       i = 0;
       if (i < paramString.length)
       {
         localArrayList2 = paramString[i];
-        t localt = (t)this.Ajl.get(localArrayList2);
+        t localt = (t)this.BBH.get(localArrayList2);
         int j;
         if (localt != null) {
-          if (localt.zPo != 0)
+          if (localt.BhI != 0)
           {
             j = 1;
             label128:
             if (j == 0) {
               break label180;
             }
-            if ((localHashMap.containsKey(localt.zPp)) || (bt.isNullOrNil(localt.zPp))) {
+            if ((localHashMap.containsKey(localt.BhJ)) || (bs.isNullOrNil(localt.BhJ))) {
               localArrayList1.add(localArrayList2);
             }
           }
@@ -441,21 +441,21 @@ public final class d
       AppMethodBeat.o(70667);
       return "0";
     }
-    paramString = gp(localArrayList1);
+    paramString = gA(localArrayList1);
     AppMethodBeat.o(70667);
     return paramString;
   }
   
-  public final j bS(String paramString, boolean paramBoolean)
+  public final j bZ(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(70653);
-    if ((!"0".equals(paramString)) && (this.Ajm.containsKey(paramString)))
+    if ((!"0".equals(paramString)) && (this.BBI.containsKey(paramString)))
     {
-      paramString = (j)this.Ajm.get(paramString);
+      paramString = (j)this.BBI.get(paramString);
       AppMethodBeat.o(70653);
       return paramString;
     }
-    paramString = this.Ajm.keySet().iterator();
+    paramString = this.BBI.keySet().iterator();
     label271:
     label272:
     for (;;)
@@ -466,20 +466,20 @@ public final class d
       if (paramString.hasNext())
       {
         localObject1 = (String)paramString.next();
-        localObject1 = (j)this.Ajm.get(localObject1);
-        if ((((j)localObject1).zOJ == null) || (((j)localObject1).zOJ.size() == 0)) {
+        localObject1 = (j)this.BBI.get(localObject1);
+        if ((((j)localObject1).Bhd == null) || (((j)localObject1).Bhd.size() == 0)) {
           continue;
         }
-        j = ((j)localObject1).zOJ.size();
-        Iterator localIterator = ((j)localObject1).zOJ.iterator();
+        j = ((j)localObject1).Bhd.size();
+        Iterator localIterator = ((j)localObject1).Bhd.iterator();
         i = 0;
         if (localIterator.hasNext())
         {
           Object localObject2 = (f)localIterator.next();
-          if (this.Ajl.containsKey(((f)localObject2).zOl))
+          if (this.BBH.containsKey(((f)localObject2).BgF))
           {
-            localObject2 = (t)this.Ajl.get(((f)localObject2).zOl);
-            if ((!((t)localObject2).zPp.equals("")) || (((t)localObject2).zPr.size() != 0) || ((paramBoolean) && (((t)localObject2).zPo != 0))) {
+            localObject2 = (t)this.BBH.get(((f)localObject2).BgF);
+            if ((!((t)localObject2).BhJ.equals("")) || (((t)localObject2).BhL.size() != 0) || ((paramBoolean) && (((t)localObject2).BhI != 0))) {
               break label271;
             }
             i += 1;
@@ -500,22 +500,22 @@ public final class d
     }
   }
   
-  public final Map<String, a> bT(String paramString, boolean paramBoolean)
+  public final Map<String, a> ca(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(70655);
     HashMap localHashMap = new HashMap();
     LinkedList localLinkedList;
-    if ((this.Ajk.zOt != null) && (this.Ajk.zOt.zOF != null))
+    if ((this.BBG.BgN != null) && (this.BBG.BgN.BgZ != null))
     {
-      localLinkedList = this.Ajk.zOt.zOF;
-      if (!this.Ajm.containsKey(paramString)) {
+      localLinkedList = this.BBG.BgN.BgZ;
+      if (!this.BBI.containsKey(paramString)) {
         break label435;
       }
     }
     label138:
     label412:
     label435:
-    for (double d = ((j)this.Ajm.get(paramString)).zOI;; d = 0.0D)
+    for (double d = ((j)this.BBI.get(paramString)).Bhc;; d = 0.0D)
     {
       int i = 0;
       if (i < localLinkedList.size())
@@ -525,13 +525,13 @@ public final class d
         Object localObject;
         if ((paramString.equals("0")) && (!localj.equals("0")))
         {
-          localObject = localj.zOH;
-          localObject = aun((String)localObject);
+          localObject = localj.Bhb;
+          localObject = azF((String)localObject);
           if ((localObject != null) && (localObject.length > 0))
           {
-            localObject = (t)this.Ajl.get(localObject[0]);
+            localObject = (t)this.BBH.get(localObject[0]);
             if (localObject != null) {
-              if (((t)localObject).zPo == 0) {
+              if (((t)localObject).BhI == 0) {
                 break label412;
               }
             }
@@ -539,59 +539,59 @@ public final class d
         }
         for (int j = 1;; j = 0)
         {
-          if ((j != 0) && (!bt.isNullOrNil(((t)localObject).zPp)) && (((t)localObject).zPr.size() <= 0) && ((paramBoolean) || (!((t)localObject).zPp.equalsIgnoreCase("CFT"))))
+          if ((j != 0) && (!bs.isNullOrNil(((t)localObject).BhJ)) && (((t)localObject).BhL.size() <= 0) && ((paramBoolean) || (!((t)localObject).BhJ.equalsIgnoreCase("CFT"))))
           {
-            locala = (a)localHashMap.get(((t)localObject).zPp);
-            if ((locala == null) || (localj.zOI > locala.Ajn.zOI))
+            locala = (a)localHashMap.get(((t)localObject).BhJ);
+            if ((locala == null) || (localj.Bhc > locala.BBJ.Bhc))
             {
               locala = new a();
-              locala.Ajn = localj;
-              locala.uon = ((t)localObject).uon;
-              locala.Ajo = (localj.zOI - d);
-              locala.don = ((t)localObject).zPp;
-              localHashMap.put(((t)localObject).zPp, locala);
+              locala.BBJ = localj;
+              locala.vxj = ((t)localObject).vxj;
+              locala.BBK = (localj.Bhc - d);
+              locala.dlW = ((t)localObject).BhJ;
+              localHashMap.put(((t)localObject).BhJ, locala);
             }
           }
           i += 1;
           break;
           localObject = locala;
-          if (!localj.zOH.startsWith(paramString)) {
+          if (!localj.Bhb.startsWith(paramString)) {
             break label138;
           }
           localObject = locala;
-          if (paramString.equals(localj.zOH)) {
+          if (paramString.equals(localj.Bhb)) {
             break label138;
           }
-          localObject = localj.zOH.replace(paramString + "-", "");
+          localObject = localj.Bhb.replace(paramString + "-", "");
           break label138;
         }
-        ad.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
+        ac.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
       }
       AppMethodBeat.o(70655);
       return localHashMap;
     }
   }
   
-  public final String bU(String paramString, boolean paramBoolean)
+  public final String cb(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(70662);
-    paramString = aun(paramString);
+    paramString = azF(paramString);
     if (paramString != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       if (i < paramString.length)
       {
-        t localt = (t)this.Ajl.get(paramString[i]);
+        t localt = (t)this.BBH.get(paramString[i]);
         if (localt != null) {
-          if (localt.zPo == 0) {
+          if (localt.BhI == 0) {
             break label122;
           }
         }
         label122:
         for (int j = 1;; j = 0)
         {
-          if ((j == 0) || ((bt.isNullOrNil(localt.zPp)) && (!paramBoolean)))
+          if ((j == 0) || ((bs.isNullOrNil(localt.BhJ)) && (!paramBoolean)))
           {
             localStringBuilder.append(paramString[i]);
             localStringBuilder.append("-");
@@ -613,10 +613,10 @@ public final class d
     return "0";
   }
   
-  public final boolean edI()
+  public final boolean etd()
   {
     AppMethodBeat.i(70649);
-    if ((this.Ajl != null) && (this.Ajl.size() > 0))
+    if ((this.BBH != null) && (this.BBH.size() > 0))
     {
       AppMethodBeat.o(70649);
       return true;
@@ -625,20 +625,20 @@ public final class d
     return false;
   }
   
-  public final int edJ()
+  public final int ete()
   {
     AppMethodBeat.i(70657);
-    int i = this.Ajm.size();
+    int i = this.BBI.size();
     AppMethodBeat.o(70657);
     return i;
   }
   
-  public final j edK()
+  public final j etf()
   {
     AppMethodBeat.i(70658);
-    if (!this.Ajm.isEmpty())
+    if (!this.BBI.isEmpty())
     {
-      Object localObject = this.Ajm.entrySet().iterator();
+      Object localObject = this.BBI.entrySet().iterator();
       if (((Iterator)localObject).hasNext())
       {
         localObject = (j)((Map.Entry)((Iterator)localObject).next()).getValue();
@@ -650,10 +650,10 @@ public final class d
     return null;
   }
   
-  public final List<t> edL()
+  public final List<t> etg()
   {
     AppMethodBeat.i(70668);
-    Object localObject = s.ecc().sC(true);
+    Object localObject = s.ery().tD(true);
     HashMap localHashMap = new HashMap();
     int i = 0;
     while (i < ((ArrayList)localObject).size())
@@ -662,7 +662,7 @@ public final class d
       i += 1;
     }
     localObject = new LinkedList();
-    LinkedList localLinkedList = this.Ajk.zOs;
+    LinkedList localLinkedList = this.BBG.BgM;
     if (localLinkedList != null)
     {
       i = 0;
@@ -671,14 +671,14 @@ public final class d
         t localt = (t)localLinkedList.get(i);
         int j;
         if (localt != null) {
-          if (localt.zPo != 0)
+          if (localt.BhI != 0)
           {
             j = 1;
             label128:
             if (j == 0) {
               break label179;
             }
-            if ((localHashMap.containsKey(localt.zPp)) || (bt.isNullOrNil(localt.zPp))) {
+            if ((localHashMap.containsKey(localt.BhJ)) || (bs.isNullOrNil(localt.BhJ))) {
               ((List)localObject).add(localt);
             }
           }
@@ -700,21 +700,21 @@ public final class d
   
   public static final class a
   {
-    public j Ajn;
-    public double Ajo;
-    public String don;
-    public String uon;
+    public j BBJ;
+    public double BBK;
+    public String dlW;
+    public String vxj;
     
     public final String toString()
     {
       AppMethodBeat.i(70648);
       Object localObject = new StringBuffer();
-      if (this.Ajn != null) {
-        ((StringBuffer)localObject).append("|faovrComposeId: " + this.Ajn.zOH);
+      if (this.BBJ != null) {
+        ((StringBuffer)localObject).append("|faovrComposeId: " + this.BBJ.Bhb);
       }
-      ((StringBuffer)localObject).append("|bankName: " + this.uon);
-      ((StringBuffer)localObject).append("|bankFavorAmount: " + this.Ajo);
-      ((StringBuffer)localObject).append("|bankType: " + this.don);
+      ((StringBuffer)localObject).append("|bankName: " + this.vxj);
+      ((StringBuffer)localObject).append("|bankFavorAmount: " + this.BBK);
+      ((StringBuffer)localObject).append("|bankType: " + this.dlW);
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(70648);
       return localObject;

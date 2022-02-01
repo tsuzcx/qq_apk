@@ -10,13 +10,13 @@ final class b$2
   public final void run()
   {
     AppMethodBeat.i(140896);
-    this.KgN.be(0);
+    this.LUx.be(0);
     AppMethodBeat.o(140896);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     me.imid.swipebacklayout.lib.b.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ import com.tencent.mm.ui.am;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"getAttrResId", "", "context", "Landroid/content/Context;", "attributeId", "Landroid/view/View;", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"getAttrResId", "", "context", "Landroid/content/Context;", "attributeId", "Landroid/view/View;", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojisdk_release"})
 public final class c
 {
   public static final void a(ImageView paramImageView, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(105783);
     k.h(paramImageView, "$this$setSvgDrawable");
-    paramImageView.setImageDrawable(am.i(paramImageView.getContext(), paramInt1, paramInt2));
+    paramImageView.setImageDrawable(am.k(paramImageView.getContext(), paramInt1, paramInt2));
     AppMethodBeat.o(105783);
   }
   
-  public static final int ch(Context paramContext)
+  public static final int cn(Context paramContext)
   {
     AppMethodBeat.i(105784);
     if (paramContext == null)

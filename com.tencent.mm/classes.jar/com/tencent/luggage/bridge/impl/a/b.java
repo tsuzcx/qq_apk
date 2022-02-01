@@ -16,12 +16,12 @@ import java.util.Map;
 public class b
   implements a
 {
-  private final List<a.a> bZS;
+  private final List<a.a> bWP;
   
   public b()
   {
     AppMethodBeat.i(140362);
-    this.bZS = new LinkedList();
+    this.bWP = new LinkedList();
     a(new c());
     AppMethodBeat.o(140362);
   }
@@ -34,7 +34,7 @@ public class b
       AppMethodBeat.o(140364);
       return null;
     }
-    Iterator localIterator = this.bZS.iterator();
+    Iterator localIterator = this.bWP.iterator();
     while (localIterator.hasNext())
     {
       a.a locala = (a.a)localIterator.next();
@@ -52,47 +52,47 @@ public class b
   protected final void a(a.a parama)
   {
     AppMethodBeat.i(140366);
-    this.bZS.remove(parama);
-    this.bZS.add(parama);
+    this.bWP.remove(parama);
+    this.bWP.add(parama);
     AppMethodBeat.o(140366);
   }
   
   public final void a(String paramString, a.c paramc)
   {
-    AppMethodBeat.i(194781);
+    AppMethodBeat.i(200919);
     a(paramString, null, paramc);
-    AppMethodBeat.o(194781);
+    AppMethodBeat.o(200919);
   }
   
   public final void a(String paramString, Map<String, String> paramMap, a.c paramc)
   {
-    AppMethodBeat.i(194782);
+    AppMethodBeat.i(200920);
     if (TextUtils.isEmpty(paramString))
     {
       if (paramc != null)
       {
-        paramc.A(null);
-        AppMethodBeat.o(194782);
+        paramc.z(null);
+        AppMethodBeat.o(200920);
       }
     }
     else
     {
-      Iterator localIterator = this.bZS.iterator();
+      Iterator localIterator = this.bWP.iterator();
       while (localIterator.hasNext())
       {
         a.a locala = (a.a)localIterator.next();
         if (locala.match(paramString))
         {
           locala.a(paramString, paramMap, paramc);
-          AppMethodBeat.o(194782);
+          AppMethodBeat.o(200920);
           return;
         }
       }
     }
-    AppMethodBeat.o(194782);
+    AppMethodBeat.o(200920);
   }
   
-  public final Bitmap bR(String paramString)
+  public final Bitmap bH(String paramString)
   {
     AppMethodBeat.i(140363);
     paramString = a(paramString, null, null);
@@ -102,7 +102,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.b
  * JD-Core Version:    0.7.0.1
  */

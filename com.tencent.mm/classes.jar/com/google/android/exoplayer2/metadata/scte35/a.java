@@ -12,38 +12,38 @@ import java.nio.ByteBuffer;
 public final class a
   implements com.google.android.exoplayer2.metadata.a
 {
-  private u bcf;
-  private final m bhs;
-  private final l bjL;
+  private u bcR;
+  private final m bhY;
+  private final l bkq;
   
   public a()
   {
     AppMethodBeat.i(92485);
-    this.bhs = new m();
-    this.bjL = new l();
+    this.bhY = new m();
+    this.bkq = new l();
     AppMethodBeat.o(92485);
   }
   
   public final Metadata a(d paramd)
   {
     AppMethodBeat.i(92486);
-    if ((this.bcf == null) || (paramd.aSr != this.bcf.vY()))
+    if ((this.bcR == null) || (paramd.aTk != this.bcR.vN()))
     {
-      this.bcf = new u(paramd.timeUs);
-      this.bcf.at(paramd.timeUs - paramd.aSr);
+      this.bcR = new u(paramd.timeUs);
+      this.bcR.ap(paramd.timeUs - paramd.aTk);
     }
-    paramd = paramd.aIq;
+    paramd = paramd.aJg;
     byte[] arrayOfByte = paramd.array();
     int i = paramd.limit();
-    this.bhs.q(arrayOfByte, i);
-    this.bjL.q(arrayOfByte, i);
-    this.bjL.ep(39);
-    long l = this.bjL.eo(1);
-    l = this.bjL.eo(32) | l << 32;
-    this.bjL.ep(20);
-    i = this.bjL.eo(12);
-    int j = this.bjL.eo(8);
-    this.bhs.fl(14);
+    this.bhY.n(arrayOfByte, i);
+    this.bkq.n(arrayOfByte, i);
+    this.bkq.ep(39);
+    long l = this.bkq.eo(1);
+    l = this.bkq.eo(32) | l << 32;
+    this.bkq.ep(20);
+    i = this.bkq.eo(12);
+    int j = this.bkq.eo(8);
+    this.bhY.eX(14);
     switch (j)
     {
     default: 
@@ -56,13 +56,13 @@ public final class a
       return paramd;
       paramd = new SpliceNullCommand();
       continue;
-      paramd = SpliceScheduleCommand.y(this.bhs);
+      paramd = SpliceScheduleCommand.y(this.bhY);
       continue;
-      paramd = SpliceInsertCommand.a(this.bhs, l, this.bcf);
+      paramd = SpliceInsertCommand.a(this.bhY, l, this.bcR);
       continue;
-      paramd = TimeSignalCommand.b(this.bhs, l, this.bcf);
+      paramd = TimeSignalCommand.b(this.bhY, l, this.bcR);
       continue;
-      paramd = PrivateCommand.a(this.bhs, i, l);
+      paramd = PrivateCommand.a(this.bhY, i, l);
     }
     paramd = new Metadata(new Metadata.Entry[] { paramd });
     AppMethodBeat.o(92486);

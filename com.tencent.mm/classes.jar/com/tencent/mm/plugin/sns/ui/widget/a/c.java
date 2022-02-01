@@ -6,35 +6,35 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 
 public final class c
   extends a
 {
   protected Bitmap mBmp;
-  private int xYZ;
-  protected int xZa;
-  protected int xZb;
+  private int zlX;
+  protected int zlY;
+  protected int zlZ;
   
   public c(Context paramContext, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(179423);
     this.mBmp = paramBitmap;
-    this.xYU = 14;
+    this.zlR = 14;
     this.mContext = paramContext;
-    this.xZa = paramInt1;
-    this.xZb = paramInt2;
+    this.zlY = paramInt1;
+    this.zlZ = paramInt2;
     paramContext = (WindowManager)paramContext.getSystemService("window");
-    this.xYS = Math.min(paramContext.getDefaultDisplay().getWidth(), paramContext.getDefaultDisplay().getHeight());
-    this.xYT = paramInt3;
-    this.xYZ = ((int)(this.xYT * 1.2D * 20.0D / paramInt4));
-    ad.i(this.TAG, "FallDownScene, w=" + this.xYS + ", h=" + this.xYT + ", speed=" + this.xYZ + ", duration=" + paramInt4);
-    dEu();
+    this.zlP = Math.min(paramContext.getDefaultDisplay().getWidth(), paramContext.getDefaultDisplay().getHeight());
+    this.zlQ = paramInt3;
+    this.zlX = ((int)(this.zlQ * 1.2D * 20.0D / paramInt4));
+    ac.i(this.TAG, "FallDownScene, w=" + this.zlP + ", h=" + this.zlQ + ", speed=" + this.zlX + ", duration=" + paramInt4);
+    dST();
     AppMethodBeat.o(179423);
   }
   
-  private void dEu()
+  private void dST()
   {
     AppMethodBeat.i(179424);
     label414:
@@ -49,35 +49,35 @@ public final class c
       try
       {
         clear();
-        i = -this.xZb / 2;
-        int i3 = -(int)(1.5D * this.xYT);
+        i = -this.zlZ / 2;
+        int i3 = -(int)(1.5D * this.zlQ);
         int i4 = (i3 - i) / 4;
-        m = -this.xZb / 2 + i;
+        m = -this.zlZ / 2 + i;
         int k = 1;
         long l = System.currentTimeMillis();
         n = 0;
         int j = 0;
         i = m;
-        if (n < this.xYU)
+        if (n < this.zlR)
         {
-          ArrayList localArrayList = this.xYW;
+          ArrayList localArrayList = this.zlT;
           i1 = 0;
-          i2 = (int)e.Z(this.xZb / 2, this.xYS - this.xZb / 2);
-          int i5 = (int)e.Z(m, i);
-          int i6 = (int)e.Z(this.xZa, this.xZb);
+          i2 = (int)f.ad(this.zlZ / 2, this.zlP - this.zlZ / 2);
+          int i5 = (int)f.ad(m, i);
+          int i6 = (int)f.ad(this.zlY, this.zlZ);
           b localb = new b(this.mContext, this.mBmp, i6, i6);
-          localb.g(new Point(i2, i5));
+          localb.i(new Point(i2, i5));
           i2 = 0;
-          if (i2 >= this.xYW.size()) {
+          if (i2 >= this.zlT.size()) {
             break label417;
           }
-          if (!((b)this.xYW.get(i2)).contains(localb.dEt())) {
+          if (!((b)this.zlT.get(i2)).contains(localb.dSS())) {
             break label432;
           }
           i2 = 1;
           if (i2 == 0)
           {
-            localb.setPaint(dEq());
+            localb.setPaint(dSO());
             localArrayList.add(localb);
             j += 1;
             if (j < k) {
@@ -86,9 +86,9 @@ public final class c
             j = 0;
             k += 1;
             i1 = i + i4;
-            if (n + k + (k + 1) > this.xYU)
+            if (n + k + (k + 1) > this.zlR)
             {
-              k = this.xYU;
+              k = this.zlR;
               m = i3;
               i1 = i;
               i = m;
@@ -102,20 +102,20 @@ public final class c
             if (i1 <= 20) {
               break label441;
             }
-            localb.setPaint(dEq());
+            localb.setPaint(dSO());
             continue;
           }
         }
         else
         {
-          ad.i(this.TAG, "buildSprites, time=" + (System.currentTimeMillis() - l) + ", count=" + this.xYU + ", " + this);
+          ac.i(this.TAG, "buildSprites, time=" + (System.currentTimeMillis() - l) + ", count=" + this.zlR + ", " + this);
           AppMethodBeat.o(179424);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        ad.e(this.TAG, "buildSprites, exp=" + localThrowable.toString());
+        ac.e(this.TAG, "buildSprites, exp=" + localThrowable.toString());
         AppMethodBeat.o(179424);
         return;
       }
@@ -131,22 +131,22 @@ public final class c
     }
   }
   
-  protected final int dEr()
+  protected final int dSP()
   {
     AppMethodBeat.i(179425);
-    if (this.xYW.isEmpty())
+    if (this.zlT.isEmpty())
     {
       AppMethodBeat.o(179425);
       return 0;
     }
-    int j = this.xYW.size();
+    int j = this.zlT.size();
     int i = 0;
     while (i < j)
     {
-      b localb = (b)this.xYW.get(i);
-      Point localPoint = localb.xZe;
-      localPoint.y += this.xYZ;
-      localb.g(localPoint);
+      b localb = (b)this.zlT.get(i);
+      Point localPoint = localb.zme;
+      localPoint.y += this.zlX;
+      localb.i(localPoint);
       i += 1;
     }
     AppMethodBeat.o(179425);

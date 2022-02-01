@@ -12,14 +12,14 @@ import java.util.List;
 public class a
   extends com.tencent.matrix.e.b
 {
-  private boolean csU = com.tencent.matrix.a.csS.csU;
-  public volatile boolean cuT = false;
-  public b cuU;
+  private boolean cqc = com.tencent.matrix.a.cqa.cqc;
+  public volatile boolean csb = false;
+  public b csc;
   
   public a(b paramb)
   {
-    this.cuU = paramb;
-    paramb = paramb.cvc.iterator();
+    this.csc = paramb;
+    paramb = paramb.csk.iterator();
     while (paramb.hasNext()) {
       ((com.tencent.matrix.a.c.a.a)paramb.next()).a(this);
     }
@@ -27,7 +27,7 @@ public class a
   
   public final <T extends com.tencent.matrix.a.c.a.a> T W(Class<T> paramClass)
   {
-    Iterator localIterator = this.cuU.cvc.iterator();
+    Iterator localIterator = this.csc.csk.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.matrix.a.c.a.a locala = (com.tencent.matrix.a.c.a.a)localIterator.next();
@@ -46,60 +46,60 @@ public class a
   public void init(Application paramApplication, c paramc)
   {
     super.init(paramApplication, paramc);
-    if (this.cuU.cvb) {
-      com.tencent.matrix.a.csS.b(this);
+    if (this.csc.csj) {
+      com.tencent.matrix.a.cqa.b(this);
     }
   }
   
   public boolean isForeground()
   {
-    return this.csU;
+    return this.cqc;
   }
   
   public void onForeground(boolean paramBoolean)
   {
-    this.csU = paramBoolean;
-    Iterator localIterator = this.cuU.cvc.iterator();
+    this.cqc = paramBoolean;
+    Iterator localIterator = this.csc.csk.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.matrix.a.c.a.a)localIterator.next()).bS(paramBoolean);
+      ((com.tencent.matrix.a.c.a.a)localIterator.next()).bT(paramBoolean);
     }
   }
   
   public void start()
   {
     super.start();
-    if (!this.cuT)
+    if (!this.csb)
     {
-      Iterator localIterator = this.cuU.cvc.iterator();
+      Iterator localIterator = this.csc.csk.iterator();
       while (localIterator.hasNext()) {
-        ((com.tencent.matrix.a.c.a.a)localIterator.next()).Hc();
+        ((com.tencent.matrix.a.c.a.a)localIterator.next()).GN();
       }
-      this.cuT = true;
+      this.csb = true;
     }
   }
   
   public void stop()
   {
     super.stop();
-    if (this.cuT)
+    if (this.csb)
     {
-      this.cuT = false;
-      Iterator localIterator = this.cuU.cvc.iterator();
+      this.csb = false;
+      Iterator localIterator = this.csc.csk.iterator();
       while (localIterator.hasNext()) {
-        ((com.tencent.matrix.a.c.a.a)localIterator.next()).Hd();
+        ((com.tencent.matrix.a.c.a.a)localIterator.next()).GO();
       }
     }
   }
   
   public static final class a
   {
-    public a.b cuU = new a.b();
+    public a.b csc = new a.b();
     
     public final a X(Class<? extends com.tencent.matrix.a.c.a.a> paramClass)
     {
       try
       {
-        this.cuU.cvc.add(paramClass.newInstance());
+        this.csc.csk.add(paramClass.newInstance());
         return this;
       }
       catch (Exception paramClass) {}
@@ -109,20 +109,20 @@ public class a
   
   public static final class b
   {
-    public a.c cuW = new b();
-    public long cuX;
-    public long cuY;
-    public long cuZ;
-    public boolean cva = false;
-    public boolean cvb = false;
-    public LinkedList<com.tencent.matrix.a.c.a.a> cvc = new LinkedList();
+    public a.c cse = new b();
+    public long csf;
+    public long csg;
+    public long csh;
+    public boolean csi = false;
+    public boolean csj = false;
+    public LinkedList<com.tencent.matrix.a.c.a.a> csk = new LinkedList();
   }
   
   public static abstract interface c
   {
-    public abstract void GZ();
+    public abstract void GK();
     
-    public abstract void Ha();
+    public abstract void GL();
     
     public abstract void a(b.a parama);
     

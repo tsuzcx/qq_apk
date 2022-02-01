@@ -9,12 +9,12 @@ import d.l.b.a.b.m.c.p;
 
 public final class d
 {
-  public static final d JWR;
+  public static final d LKk;
   
   static
   {
     AppMethodBeat.i(60575);
-    JWR = new d();
+    LKk = new d();
     AppMethodBeat.o(60575);
   }
   
@@ -124,7 +124,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.d
  * JD-Core Version:    0.7.0.1
  */

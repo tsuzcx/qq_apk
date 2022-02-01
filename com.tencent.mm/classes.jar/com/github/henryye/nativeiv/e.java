@@ -9,27 +9,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @SuppressLint({"LongLogTag"})
 public class e
 {
-  private static volatile e aPD = null;
-  b aPE;
+  private static volatile e aQt = null;
+  b aQu;
   
   private e()
   {
     AppMethodBeat.i(127355);
-    this.aPE = new a((byte)0);
-    this.aPE.init();
+    this.aQu = new a((byte)0);
+    this.aQu.init();
     AppMethodBeat.o(127355);
   }
   
-  public static e rf()
+  public static e rp()
   {
     AppMethodBeat.i(127354);
-    if (aPD == null) {
+    if (aQt == null) {
       try
       {
-        if (aPD == null) {
-          aPD = new e();
+        if (aQt == null) {
+          aQt = new e();
         }
-        e locale1 = aPD;
+        e locale1 = aQt;
         return locale1;
       }
       finally
@@ -37,7 +37,7 @@ public class e
         AppMethodBeat.o(127354);
       }
     }
-    e locale2 = aPD;
+    e locale2 = aQt;
     AppMethodBeat.o(127354);
     return locale2;
   }
@@ -73,7 +73,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.github.henryye.nativeiv.e
  * JD-Core Version:    0.7.0.1
  */

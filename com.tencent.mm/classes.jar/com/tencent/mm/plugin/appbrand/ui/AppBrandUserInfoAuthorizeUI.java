@@ -45,41 +45,41 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "currentSelectedUserId", "", "hadShowCloseNote", "", "isOpen", "mOriginalToCompare", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mUserinfoListItems", "mainSwitch", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "wxaUserInfoListOperationController", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController;", "checkUserInfoModified", "finish", "", "getLayoutId", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "processMainSwitchClick", "check", "showUserInfoPanel", "open", "Companion", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "currentSelectedUserId", "", "hadShowCloseNote", "", "isOpen", "mOriginalToCompare", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mUserinfoListItems", "mainSwitch", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "wxaUserInfoListOperationController", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController;", "checkUserInfoModified", "finish", "", "getLayoutId", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "processMainSwitchClick", "check", "showUserInfoPanel", "open", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandUserInfoAuthorizeUI
   extends MMActivity
 {
-  public static final AppBrandUserInfoAuthorizeUI.a lDu;
-  private boolean SE;
+  public static final AppBrandUserInfoAuthorizeUI.a mfo;
+  private boolean Tz;
   private HashMap _$_findViewCache;
-  private p ftP;
-  private final List<o.a> lDo;
-  private List<o.a> lDp;
-  private boolean lDq;
-  private int lDr;
-  private MMSwitchBtn lDs;
-  private b lDt;
+  private p fxw;
+  private final List<o.a> mfi;
+  private List<o.a> mfj;
+  private boolean mfk;
+  private int mfl;
+  private MMSwitchBtn mfm;
+  private b mfn;
   
   static
   {
     AppMethodBeat.i(180683);
-    lDu = new AppBrandUserInfoAuthorizeUI.a((byte)0);
+    mfo = new AppBrandUserInfoAuthorizeUI.a((byte)0);
     AppMethodBeat.o(180683);
   }
   
   public AppBrandUserInfoAuthorizeUI()
   {
     AppMethodBeat.i(180682);
-    this.lDo = ((List)new ArrayList());
+    this.mfi = ((List)new ArrayList());
     AppMethodBeat.o(180682);
   }
   
-  private final boolean boG()
+  private final boolean bvB()
   {
     AppMethodBeat.i(180681);
-    Object localObject1 = this.lDp;
+    Object localObject1 = this.mfj;
     boolean bool2;
-    if ((localObject1 == null) || (((List)localObject1).size() != this.lDo.size())) {
+    if ((localObject1 == null) || (((List)localObject1).size() != this.mfi.size())) {
       bool2 = true;
     }
     boolean bool1;
@@ -87,12 +87,12 @@ public final class AppBrandUserInfoAuthorizeUI
     {
       AppMethodBeat.o(180681);
       return bool2;
-      localObject1 = ((Iterable)this.lDo).iterator();
+      localObject1 = ((Iterable)this.mfi).iterator();
       bool1 = false;
       bool2 = bool1;
     } while (!((Iterator)localObject1).hasNext());
     o.a locala1 = (o.a)((Iterator)localObject1).next();
-    Object localObject2 = this.lDp;
+    Object localObject2 = this.mfj;
     label112:
     int j;
     if (localObject2 != null)
@@ -104,7 +104,7 @@ public final class AppBrandUserInfoAuthorizeUI
         break label156;
       }
       o.a locala2 = (o.a)((Iterator)localObject2).next();
-      if (locala1.jEi != locala2.jEi) {
+      if (locala1.keF != locala2.keF) {
         break label168;
       }
       i = 1;
@@ -125,7 +125,7 @@ public final class AppBrandUserInfoAuthorizeUI
     }
   }
   
-  private final void hc(boolean paramBoolean)
+  private final void hz(boolean paramBoolean)
   {
     AppMethodBeat.i(180679);
     LinearLayout localLinearLayout = (LinearLayout)_$_findCachedViewById(2131306240);
@@ -160,9 +160,9 @@ public final class AppBrandUserInfoAuthorizeUI
   {
     AppMethodBeat.i(180680);
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_result_user_info_list_been_modified", boG());
-    localIntent.putExtra("key_result_is_open", this.SE);
-    localIntent.putExtra("key_result_selected_user_id", this.lDr);
+    localIntent.putExtra("key_result_user_info_list_been_modified", bvB());
+    localIntent.putExtra("key_result_is_open", this.Tz);
+    localIntent.putExtra("key_result_selected_user_id", this.mfl);
     setResult(-1, localIntent);
     super.finish();
     AppMethodBeat.o(180680);
@@ -177,16 +177,16 @@ public final class AppBrandUserInfoAuthorizeUI
   {
     AppMethodBeat.i(180678);
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = this.lDt;
+    paramConfiguration = this.mfn;
     if (paramConfiguration == null) {
-      k.aPZ("wxaUserInfoListOperationController");
+      k.aVY("wxaUserInfoListOperationController");
     }
     if (paramConfiguration != null)
     {
-      paramConfiguration = paramConfiguration.jEQ;
+      paramConfiguration = paramConfiguration.kfn;
       if (paramConfiguration != null)
       {
-        paramConfiguration.eVf();
+        paramConfiguration.fkR();
         AppMethodBeat.o(180678);
         return;
       }
@@ -229,12 +229,12 @@ public final class AppBrandUserInfoAuthorizeUI
     label161:
     for (boolean bool = paramBundle.booleanValue();; bool = false)
     {
-      this.SE = bool;
-      hc(this.SE);
+      this.Tz = bool;
+      hz(this.Tz);
       if ((localObject1 != null) && (str != null)) {
         break label166;
       }
-      com.tencent.d.f.h.fmz();
+      com.tencent.d.f.h.fCP();
       finish();
       AppMethodBeat.o(180676);
       return;
@@ -246,7 +246,7 @@ public final class AppBrandUserInfoAuthorizeUI
       break label100;
     }
     label166:
-    this.lDr = ((MMUserAvatarInfo)localObject1).jEG;
+    this.mfl = ((MMUserAvatarInfo)localObject1).kfd;
     paramBundle = _$_findCachedViewById(2131301997);
     if (paramBundle == null)
     {
@@ -255,9 +255,9 @@ public final class AppBrandUserInfoAuthorizeUI
       throw paramBundle;
     }
     paramBundle = (MMSwitchBtn)paramBundle;
-    paramBundle.setCheck(this.SE);
+    paramBundle.setCheck(this.Tz);
     paramBundle.setSwitchListener((MMSwitchBtn.a)new d(this));
-    this.lDs = paramBundle;
+    this.mfm = paramBundle;
     paramBundle = getIntent().getExtras();
     if (paramBundle != null)
     {
@@ -272,7 +272,7 @@ public final class AppBrandUserInfoAuthorizeUI
     {
       TextView localTextView = (TextView)_$_findCachedViewById(2131298996);
       k.g(localTextView, "desc");
-      Object localObject2 = z.Jhz;
+      Object localObject2 = z.KUT;
       localObject2 = getString(2131756045);
       k.g(localObject2, "getString(R.string.appbr…g_usernifo_authrize_desc)");
       localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { paramBundle }, 1));
@@ -280,7 +280,7 @@ public final class AppBrandUserInfoAuthorizeUI
       localTextView.setText((CharSequence)localObject2);
       localTextView = (TextView)_$_findCachedViewById(2131306230);
       k.g(localTextView, "user_Info_desc");
-      localObject2 = z.Jhz;
+      localObject2 = z.KUT;
       localObject2 = getString(2131756049);
       k.g(localObject2, "getString(R.string.appbr…rize_user_info_list_desc)");
       paramBundle = String.format((String)localObject2, Arrays.copyOf(new Object[] { paramBundle }, 1));
@@ -289,13 +289,13 @@ public final class AppBrandUserInfoAuthorizeUI
       paramBundle = (RecyclerView)_$_findCachedViewById(2131306239);
       k.g(paramBundle, "user_info_list");
       paramBundle.setNestedScrollingEnabled(false);
-      this.lDt = new b((Context)this, (MMUserAvatarInfo)localObject1, "", (b.c)new f(this, str));
-      paramBundle = this.lDt;
+      this.mfn = new b((Context)this, (MMUserAvatarInfo)localObject1, "", (b.c)new f(this, str));
+      paramBundle = this.mfn;
       if (paramBundle == null) {
-        k.aPZ("wxaUserInfoListOperationController");
+        k.aVY("wxaUserInfoListOperationController");
       }
-      paramBundle.jEP = ((a.a)new g(this));
-      paramBundle = new o(this.lDo);
+      paramBundle.kfm = ((a.a)new g(this));
+      paramBundle = new o(this.mfi);
       localObject1 = (RecyclerView)_$_findCachedViewById(2131306239);
       k.g(localObject1, "user_info_list");
       ((RecyclerView)localObject1).setAdapter((RecyclerView.a)paramBundle);
@@ -306,8 +306,8 @@ public final class AppBrandUserInfoAuthorizeUI
       localObject1 = (RecyclerView)_$_findCachedViewById(2131306239);
       k.g(localObject1, "user_info_list");
       ((RecyclerView)localObject1).setItemAnimator(null);
-      paramBundle.lZF = ((o.c)new b(this));
-      paramBundle.lZr = ((o.b)new c(this));
+      paramBundle.mBG = ((o.c)new b(this));
+      paramBundle.mBs = ((o.b)new c(this));
       AppMethodBeat.o(180676);
       return;
       paramBundle = null;
@@ -319,7 +319,7 @@ public final class AppBrandUserInfoAuthorizeUI
   {
     AppMethodBeat.i(180677);
     super.onDestroy();
-    p localp = this.ftP;
+    p localp = this.fxw;
     if (localp != null)
     {
       localp.dismiss();
@@ -335,7 +335,7 @@ public final class AppBrandUserInfoAuthorizeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$OnListItemLongClickListener;", "onLongClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "index", "", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$OnListItemLongClickListener;", "onLongClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "index", "", "plugin-appbrand-integration_release"})
   public static final class b
     implements o.c
   {
@@ -346,16 +346,16 @@ public final class AppBrandUserInfoAuthorizeUI
       AppMethodBeat.i(180661);
       k.h(paramView, "v");
       k.h(parama, "item");
-      parama = AppBrandUserInfoAuthorizeUI.d(this.lDv);
-      TouchableLayout.a locala = TouchableLayout.HYe;
-      int i = TouchableLayout.fiK();
-      locala = TouchableLayout.HYe;
-      parama.a(paramView, paramInt, i, TouchableLayout.fiL());
+      parama = AppBrandUserInfoAuthorizeUI.d(this.mfp);
+      TouchableLayout.a locala = TouchableLayout.JyS;
+      int i = TouchableLayout.fyY();
+      locala = TouchableLayout.JyS;
+      parama.a(paramView, paramInt, i, TouchableLayout.fyZ());
       AppMethodBeat.o(180661);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6$2", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "onChecked", "", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6$2", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$ItemCheckedListener;", "onChecked", "", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "plugin-appbrand-integration_release"})
   public static final class c
     implements o.b
   {
@@ -365,13 +365,13 @@ public final class AppBrandUserInfoAuthorizeUI
     {
       AppMethodBeat.i(180662);
       k.h(parama, "item");
-      AppBrandUserInfoAuthorizeUI.d(this.lDv).b(parama);
-      AppBrandUserInfoAuthorizeUI.a(this.lDv, parama.jEi);
+      AppBrandUserInfoAuthorizeUI.d(this.mfp).b(parama);
+      AppBrandUserInfoAuthorizeUI.a(this.mfp, parama.keF);
       AppMethodBeat.o(180662);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "onStatusChange", "com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$3$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "onStatusChange", "com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$3$1"})
   static final class d
     implements MMSwitchBtn.a
   {
@@ -380,12 +380,12 @@ public final class AppBrandUserInfoAuthorizeUI
     public final void onStatusChange(boolean paramBoolean)
     {
       AppMethodBeat.i(180663);
-      AppBrandUserInfoAuthorizeUI.a(this.lDv, paramBoolean);
+      AppBrandUserInfoAuthorizeUI.a(this.mfp, paramBoolean);
       AppMethodBeat.o(180663);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class e
     implements MenuItem.OnMenuItemClickListener
   {
@@ -394,13 +394,13 @@ public final class AppBrandUserInfoAuthorizeUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(180664);
-      this.lDv.finish();
+      this.mfp.finish();
       AppMethodBeat.o(180664);
       return false;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$4", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "onItemListChanged", "", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "updateAddNewAvatarEntry", "isBan", "", "reachMaxCount", "limitWording", "", "avatarWording", "goAddUserPage", "Lkotlin/Function2;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$4", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "onItemListChanged", "", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$Item;", "updateAddNewAvatarEntry", "isBan", "", "reachMaxCount", "limitWording", "", "avatarWording", "goAddUserPage", "Lkotlin/Function2;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
   public static final class f
     implements b.c
   {
@@ -415,45 +415,45 @@ public final class AppBrandUserInfoAuthorizeUI
       if ((paramBoolean1) || (paramBoolean2)) {
         if (!paramBoolean1)
         {
-          paramString1 = (TextView)this.lDv._$_findCachedViewById(2131306247);
+          paramString1 = (TextView)this.mfp._$_findCachedViewById(2131306247);
           k.g(paramString1, "user_reach_max_count_tip");
           paramString1.setVisibility(0);
-          paramString1 = (LinearLayout)this.lDv._$_findCachedViewById(2131298856);
+          paramString1 = (LinearLayout)this.mfp._$_findCachedViewById(2131298856);
           k.g(paramString1, "create_new_user");
           paramString1.setVisibility(8);
         }
       }
       for (;;)
       {
-        ((LinearLayout)this.lDv._$_findCachedViewById(2131298856)).setOnClickListener((View.OnClickListener)new a(this, paramm));
+        ((LinearLayout)this.mfp._$_findCachedViewById(2131298856)).setOnClickListener((View.OnClickListener)new a(this, paramm));
         AppMethodBeat.o(180666);
         return;
-        paramString1 = (TextView)this.lDv._$_findCachedViewById(2131306247);
+        paramString1 = (TextView)this.mfp._$_findCachedViewById(2131306247);
         k.g(paramString1, "user_reach_max_count_tip");
         paramString1.setVisibility(8);
-        paramString1 = (LinearLayout)this.lDv._$_findCachedViewById(2131298856);
+        paramString1 = (LinearLayout)this.mfp._$_findCachedViewById(2131298856);
         k.g(paramString1, "create_new_user");
         paramString1.setVisibility(8);
         continue;
-        paramString1 = (TextView)this.lDv._$_findCachedViewById(2131306247);
+        paramString1 = (TextView)this.mfp._$_findCachedViewById(2131306247);
         k.g(paramString1, "user_reach_max_count_tip");
         paramString1.setVisibility(8);
-        paramString1 = (LinearLayout)this.lDv._$_findCachedViewById(2131298856);
+        paramString1 = (LinearLayout)this.mfp._$_findCachedViewById(2131298856);
         k.g(paramString1, "create_new_user");
         paramString1.setVisibility(0);
       }
     }
     
-    public final void bl(List<o.a> paramList)
+    public final void bj(List<o.a> paramList)
     {
       AppMethodBeat.i(180667);
       k.h(paramList, "items");
-      if (AppBrandUserInfoAuthorizeUI.a(this.lDv) == null) {
-        AppBrandUserInfoAuthorizeUI.a(this.lDv, (List)new ArrayList((Collection)paramList));
+      if (AppBrandUserInfoAuthorizeUI.a(this.mfp) == null) {
+        AppBrandUserInfoAuthorizeUI.a(this.mfp, (List)new ArrayList((Collection)paramList));
       }
-      AppBrandUserInfoAuthorizeUI.b(this.lDv).clear();
-      AppBrandUserInfoAuthorizeUI.b(this.lDv).addAll((Collection)paramList);
-      paramList = (RecyclerView)this.lDv._$_findCachedViewById(2131306239);
+      AppBrandUserInfoAuthorizeUI.b(this.mfp).clear();
+      AppBrandUserInfoAuthorizeUI.b(this.mfp).addAll((Collection)paramList);
+      paramList = (RecyclerView)this.mfp._$_findCachedViewById(2131306239);
       k.g(paramList, "user_info_list");
       paramList = paramList.getAdapter();
       if (paramList != null)
@@ -465,7 +465,7 @@ public final class AppBrandUserInfoAuthorizeUI
       AppMethodBeat.o(180667);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -475,22 +475,22 @@ public final class AppBrandUserInfoAuthorizeUI
       {
         AppMethodBeat.i(180665);
         paramView = paramm;
-        AppCompatActivity localAppCompatActivity = this.lDw.lDv.getContext();
+        AppCompatActivity localAppCompatActivity = this.mfq.mfp.getContext();
         k.g(localAppCompatActivity, "context");
-        paramView.n(localAppCompatActivity, this.lDw.iQm);
+        paramView.n(localAppCompatActivity, this.mfq.jqw);
         AppMethodBeat.o(180665);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$5", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "onResult", "", "ret", "", "onStart", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$5", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "onResult", "", "ret", "", "onStart", "plugin-appbrand-integration_release"})
   public static final class g
     implements a.a
   {
-    public final void aYu()
+    public final void bfr()
     {
       AppMethodBeat.i(180670);
-      p localp = AppBrandUserInfoAuthorizeUI.c(this.lDv);
+      p localp = AppBrandUserInfoAuthorizeUI.c(this.mfp);
       if (localp != null)
       {
         localp.dismiss();
@@ -503,14 +503,14 @@ public final class AppBrandUserInfoAuthorizeUI
     public final void onStart()
     {
       AppMethodBeat.i(180669);
-      if (AppBrandUserInfoAuthorizeUI.c(this.lDv) == null)
+      if (AppBrandUserInfoAuthorizeUI.c(this.mfp) == null)
       {
-        localObject = this.lDv;
-        Context localContext = (Context)this.lDv.getContext();
-        this.lDv.getString(2131755906);
-        AppBrandUserInfoAuthorizeUI.a((AppBrandUserInfoAuthorizeUI)localObject, com.tencent.mm.ui.base.h.a(localContext, 3, this.lDv.getString(2131756041), false, (DialogInterface.OnCancelListener)AppBrandUserInfoAuthorizeUI.g.a.lDy));
+        localObject = this.mfp;
+        Context localContext = (Context)this.mfp.getContext();
+        this.mfp.getString(2131755906);
+        AppBrandUserInfoAuthorizeUI.a((AppBrandUserInfoAuthorizeUI)localObject, com.tencent.mm.ui.base.h.a(localContext, 3, this.mfp.getString(2131756041), false, (DialogInterface.OnCancelListener)AppBrandUserInfoAuthorizeUI.g.a.mfs));
       }
-      Object localObject = AppBrandUserInfoAuthorizeUI.c(this.lDv);
+      Object localObject = AppBrandUserInfoAuthorizeUI.c(this.mfp);
       if (localObject != null)
       {
         ((p)localObject).show();
@@ -521,7 +521,7 @@ public final class AppBrandUserInfoAuthorizeUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "", "invoke"})
   static final class k
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -532,7 +532,7 @@ public final class AppBrandUserInfoAuthorizeUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "", "invoke"})
   static final class l
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -545,7 +545,7 @@ public final class AppBrandUserInfoAuthorizeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandUserInfoAuthorizeUI
  * JD-Core Version:    0.7.0.1
  */

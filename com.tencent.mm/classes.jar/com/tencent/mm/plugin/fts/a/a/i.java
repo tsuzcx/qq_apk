@@ -2,54 +2,54 @@ package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 
 public abstract class i
   extends a
 {
-  private WeakReference<l> rmb;
-  public j rpD;
-  public k rpE;
+  private WeakReference<l> suV;
+  public j syx;
+  public k syy;
   
   public i(j paramj)
   {
-    this.rpD = paramj;
-    this.rmb = new WeakReference(paramj.rpO);
-    this.rpD.rpO = null;
+    this.syx = paramj;
+    this.suV = new WeakReference(paramj.syI);
+    this.syx.syI = null;
   }
   
   protected void a(k paramk)
   {
-    paramk.roS = h.bc(this.rpD.query, false);
-    paramk.bRZ = -5;
+    paramk.sxM = h.bi(this.syx.query, false);
+    paramk.bPH = -5;
   }
   
   public final boolean execute()
   {
-    Object localObject1 = this.rpD;
-    if (!bt.isNullOrNil(((j)localObject1).query)) {}
+    Object localObject1 = this.syx;
+    if (!bs.isNullOrNil(((j)localObject1).query)) {}
     try
     {
       ((j)localObject1).query = new String(((j)localObject1).query.getBytes("UTF8"), "UTF8");
       label37:
-      this.rpE = new k(this.rpD);
+      this.syy = new k(this.syx);
       try
       {
-        this.rpE.rpP = this;
-        a(this.rpE);
-        this.rpE.bRZ = 0;
-        if (this.rpD.handler == null)
+        this.syy.syJ = this;
+        a(this.syy);
+        this.syy.bPH = 0;
+        if (this.syx.handler == null)
         {
-          localObject1 = (l)this.rmb.get();
+          localObject1 = (l)this.suV.get();
           if (localObject1 != null) {
-            ((l)localObject1).b(this.rpE);
+            ((l)localObject1).b(this.syy);
           }
           return true;
         }
-        this.rpD.handler.post(new Runnable()
+        this.syx.handler.post(new Runnable()
         {
           public final void run()
           {
@@ -67,25 +67,25 @@ public abstract class i
       {
         if ((localException instanceof InterruptedException))
         {
-          this.rpE.bRZ = 1;
+          this.syy.bPH = 1;
           throw localException;
         }
       }
       finally
       {
-        if (this.rpD.handler == null)
+        if (this.syx.handler == null)
         {
-          l locall = (l)this.rmb.get();
+          l locall = (l)this.suV.get();
           if (locall != null) {
-            locall.b(this.rpE);
+            locall.b(this.syy);
           }
         }
         for (;;)
         {
           throw localObject2;
-          this.rpE.bRZ = -1;
+          this.syy.bPH = -1;
           break;
-          this.rpD.handler.post(new Runnable()
+          this.syx.handler.post(new Runnable()
           {
             public final void run()
             {
@@ -108,7 +108,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class u
     AppMethodBeat.o(78556);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

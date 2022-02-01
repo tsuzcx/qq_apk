@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 final class c
 {
-  public TextView ftj;
-  public ImageView fxT;
-  public TextView yFF;
-  public View yFG;
+  public ImageView fBA;
+  public TextView fwQ;
+  public TextView zST;
+  public View zSU;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.c
  * JD-Core Version:    0.7.0.1
  */

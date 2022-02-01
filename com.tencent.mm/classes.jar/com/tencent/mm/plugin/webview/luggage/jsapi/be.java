@@ -7,8 +7,8 @@ import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class be
@@ -19,23 +19,23 @@ public class be
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78627);
-    ad.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
-    String str = parama.bZV.bZb.optString("title");
-    if (!bt.isNullOrNil(parama.bZV.bZb.optString("color")))
+    ac.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
+    String str = parama.bWS.bVY.optString("title");
+    if (!bs.isNullOrNil(parama.bWS.bVY.optString("color")))
     {
-      int i = com.tencent.mm.plugin.webview.ui.tools.e.fj(parama.bZV.bZb.optString("color"), ((f)parama.bZU).mContext.getResources().getColor(2131099874));
-      ((f)parama.bZU).dn(str, i);
+      int i = com.tencent.mm.plugin.webview.ui.tools.e.fr(parama.bWS.bVY.optString("color"), ((f)parama.bWR).mContext.getResources().getColor(2131099874));
+      ((f)parama.bWR).dt(str, i);
     }
     for (;;)
     {
       parama.a("", null);
       AppMethodBeat.o(78627);
       return;
-      ((f)parama.bZU).dn(str, 0);
+      ((f)parama.bWR).dt(str, 0);
     }
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

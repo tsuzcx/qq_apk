@@ -6,28 +6,28 @@ import java.io.File;
 
 final class k
 {
-  private static final File aIP;
-  private static volatile k aIS;
-  private volatile int aIQ;
-  private volatile boolean aIR = true;
+  private static final File aJF;
+  private static volatile k aJI;
+  private volatile int aJG;
+  private volatile boolean aJH = true;
   
   static
   {
     AppMethodBeat.i(77410);
-    aIP = new File("/proc/self/fd");
+    aJF = new File("/proc/self/fd");
     AppMethodBeat.o(77410);
   }
   
-  static k oX()
+  static k ph()
   {
     AppMethodBeat.i(77408);
-    if (aIS == null) {}
+    if (aJI == null) {}
     try
     {
-      if (aIS == null) {
-        aIS = new k();
+      if (aJI == null) {
+        aJI = new k();
       }
-      k localk = aIS;
+      k localk = aJI;
       AppMethodBeat.o(77408);
       return localk;
     }
@@ -37,27 +37,27 @@ final class k
     }
   }
   
-  final boolean oY()
+  final boolean pi()
   {
     boolean bool = false;
     try
     {
       AppMethodBeat.i(77409);
-      int i = this.aIQ + 1;
-      this.aIQ = i;
+      int i = this.aJG + 1;
+      this.aJG = i;
       if (i >= 50)
       {
-        this.aIQ = 0;
-        i = aIP.list().length;
+        this.aJG = 0;
+        i = aJF.list().length;
         if (i < 700) {
           bool = true;
         }
-        this.aIR = bool;
-        if ((!this.aIR) && (Log.isLoggable("Downsampler", 5))) {
+        this.aJH = bool;
+        if ((!this.aJH) && (Log.isLoggable("Downsampler", 5))) {
           new StringBuilder("Excluding HARDWARE bitmap config because we're over the file descriptor limit, file descriptors ").append(i).append(", limit 700");
         }
       }
-      bool = this.aIR;
+      bool = this.aJH;
       AppMethodBeat.o(77409);
       return bool;
     }
@@ -66,7 +66,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.k
  * JD-Core Version:    0.7.0.1
  */

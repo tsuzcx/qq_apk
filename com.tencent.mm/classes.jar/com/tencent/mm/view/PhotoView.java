@@ -25,98 +25,97 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.ImageView.ScaleType;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class PhotoView
   extends AppCompatImageView
 {
-  private Matrix Gbz;
-  private boolean HBc;
-  private ImageView.ScaleType HVA;
-  private boolean HVB;
-  private boolean HVC;
-  private boolean HVD;
-  private boolean HVE;
-  private boolean HVF;
-  private boolean HVG;
-  private boolean HVH;
-  private boolean HVI;
-  private boolean HVJ;
-  private float HVK;
-  private float HVL;
-  private int HVM;
-  private int HVN;
-  private float HVO;
-  private float HVP;
-  private RectF HVQ;
-  private RectF HVR;
-  private RectF HVS;
-  private PointF HVT;
-  private PointF HVU;
-  private PointF HVV;
-  private h HVW;
-  private RectF HVX;
-  private Info HVY;
-  private long HVZ;
-  private int HVp;
-  private int HVq;
-  private float HVr;
-  private int HVs;
-  private int HVt;
-  private int HVu;
-  private int HVv;
-  private Matrix HVw;
-  private Matrix HVx;
-  private f HVy;
-  private ScaleGestureDetector HVz;
-  private Runnable HWa;
-  private View.OnLongClickListener HWb;
-  private i HWc;
-  private e HWd;
-  private ScaleGestureDetector.OnScaleGestureListener HWe;
-  private Runnable HWf;
-  private GestureDetector.OnGestureListener HWg;
-  private Rect HWh;
-  private GestureDetector MQ;
-  private boolean cEP;
-  private RectF cHC;
-  private float cHQ;
-  private boolean csX;
-  private View.OnClickListener pgj;
-  private RectF rMx;
-  private Matrix uv;
+  private Matrix HBo;
+  private boolean Jbz;
+  private float JwA;
+  private RectF JwB;
+  private RectF JwC;
+  private RectF JwD;
+  private PointF JwE;
+  private PointF JwF;
+  private PointF JwG;
+  private h JwH;
+  private RectF JwI;
+  private Info JwJ;
+  private long JwK;
+  private Runnable JwL;
+  private View.OnLongClickListener JwM;
+  private i JwN;
+  private e JwO;
+  private ScaleGestureDetector.OnScaleGestureListener JwP;
+  private Runnable JwQ;
+  private GestureDetector.OnGestureListener JwR;
+  private Rect JwS;
+  private int Jwa;
+  private int Jwb;
+  private float Jwc;
+  private int Jwd;
+  private int Jwe;
+  private int Jwf;
+  private int Jwg;
+  private Matrix Jwh;
+  private Matrix Jwi;
+  private f Jwj;
+  private ScaleGestureDetector Jwk;
+  private ImageView.ScaleType Jwl;
+  private boolean Jwm;
+  private boolean Jwn;
+  private boolean Jwo;
+  private boolean Jwp;
+  private boolean Jwq;
+  private boolean Jwr;
+  private boolean Jws;
+  private boolean Jwt;
+  private boolean Jwu;
+  private float Jwv;
+  private float Jww;
+  private int Jwx;
+  private int Jwy;
+  private float Jwz;
+  private GestureDetector NL;
+  private boolean cBX;
+  private RectF cEK;
+  private float cEY;
+  private boolean cqf;
+  private View.OnClickListener gst;
+  private RectF sUm;
+  private Matrix vt;
   
   public PhotoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164283);
-    this.HVs = 0;
-    this.HVt = 0;
-    this.HVu = 0;
-    this.HVv = 500;
-    this.Gbz = new Matrix();
-    this.HVw = new Matrix();
-    this.HVx = new Matrix();
-    this.uv = new Matrix();
-    this.cEP = false;
-    this.HVF = false;
-    this.cHQ = 1.0F;
-    this.rMx = new RectF();
-    this.HVQ = new RectF();
-    this.HVR = new RectF();
-    this.cHC = new RectF();
-    this.HVS = new RectF();
-    this.HVT = new PointF();
-    this.HVU = new PointF();
-    this.HVV = new PointF();
-    this.HVW = new h();
-    this.HWd = new e()
+    this.Jwd = 0;
+    this.Jwe = 0;
+    this.Jwf = 0;
+    this.Jwg = 500;
+    this.HBo = new Matrix();
+    this.Jwh = new Matrix();
+    this.Jwi = new Matrix();
+    this.vt = new Matrix();
+    this.cBX = false;
+    this.Jwq = false;
+    this.cEY = 1.0F;
+    this.sUm = new RectF();
+    this.JwB = new RectF();
+    this.JwC = new RectF();
+    this.cEK = new RectF();
+    this.JwD = new RectF();
+    this.JwE = new PointF();
+    this.JwF = new PointF();
+    this.JwG = new PointF();
+    this.JwH = new h();
+    this.JwO = new e()
     {
       public final void q(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
       {
@@ -137,32 +136,8 @@ public class PhotoView
         AppMethodBeat.o(164250);
       }
     };
-    this.HWe = new ScaleGestureDetector.OnScaleGestureListener()
-    {
-      public final boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
-      {
-        AppMethodBeat.i(164251);
-        float f = paramAnonymousScaleGestureDetector.getScaleFactor();
-        if ((Float.isNaN(f)) || (Float.isInfinite(f)))
-        {
-          AppMethodBeat.o(164251);
-          return false;
-        }
-        PhotoView.c(PhotoView.this, PhotoView.f(PhotoView.this) * f);
-        PhotoView.d(PhotoView.this).postScale(f, f, paramAnonymousScaleGestureDetector.getFocusX(), paramAnonymousScaleGestureDetector.getFocusY());
-        PhotoView.g(PhotoView.this);
-        AppMethodBeat.o(164251);
-        return true;
-      }
-      
-      public final boolean onScaleBegin(ScaleGestureDetector paramAnonymousScaleGestureDetector)
-      {
-        return true;
-      }
-      
-      public final void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
-    };
-    this.HWf = new Runnable()
+    this.JwP = new PhotoView.2(this);
+    this.JwQ = new Runnable()
     {
       public final void run()
       {
@@ -173,7 +148,7 @@ public class PhotoView
         AppMethodBeat.o(164252);
       }
     };
-    this.HWg = new GestureDetector.SimpleOnGestureListener()
+    this.JwR = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
@@ -207,7 +182,7 @@ public class PhotoView
         for (boolean bool = true;; bool = false)
         {
           PhotoView.c(paramAnonymousMotionEvent, bool);
-          PhotoView.o(PhotoView.this).ak(f2, f1);
+          PhotoView.o(PhotoView.this).ao(f2, f1);
           PhotoView.o(PhotoView.this).start();
           AppMethodBeat.o(164258);
           return false;
@@ -284,7 +259,7 @@ public class PhotoView
               if (f5 > 45.0F)
               {
                 f1 = f4 + 90.0F;
-                PhotoView.o(PhotoView.this).jU((int)PhotoView.c(PhotoView.this), (int)f1);
+                PhotoView.o(PhotoView.this).kg((int)PhotoView.c(PhotoView.this), (int)f1);
                 PhotoView.b(PhotoView.this, f1);
               }
             }
@@ -296,11 +271,11 @@ public class PhotoView
                 break label685;
               }
               i = 2147483647;
-              localh.arE = i;
+              localh.asz = i;
               if (f2 <= 0.0F) {
                 break label691;
               }
-              f1 = Math.abs(PhotoView.p(localh.HWi).left);
+              f1 = Math.abs(PhotoView.p(localh.JwT).left);
               j = (int)f1;
               i = j;
               if (f2 < 0.0F) {
@@ -322,11 +297,11 @@ public class PhotoView
                 break label739;
               }
               i = 2147483647;
-              localh.arF = i;
+              localh.asA = i;
               if (f3 <= 0.0F) {
                 break label745;
               }
-              f1 = Math.abs(PhotoView.p(localh.HWi).top);
+              f1 = Math.abs(PhotoView.p(localh.JwT).top);
               m = (int)f1;
               i = m;
               if (f3 < 0.0F) {
@@ -354,17 +329,17 @@ public class PhotoView
                 n = 0;
                 m = 0;
               }
-              localOverScroller = localh.rMv;
-              i2 = localh.arE;
-              i3 = localh.arF;
+              localOverScroller = localh.sUk;
+              i2 = localh.asz;
+              i3 = localh.asA;
               i4 = (int)f2;
               i5 = (int)f3;
-              if (Math.abs(i1) >= PhotoView.G(localh.HWi) * 2) {
+              if (Math.abs(i1) >= PhotoView.G(localh.JwT) * 2) {
                 break label789;
               }
               i1 = 0;
               label588:
-              if (Math.abs(i) >= PhotoView.G(localh.HWi) * 2) {
+              if (Math.abs(i) >= PhotoView.G(localh.JwT) * 2) {
                 break label802;
               }
             }
@@ -373,7 +348,7 @@ public class PhotoView
             label786:
             label789:
             label802:
-            for (int i = 0;; i = PhotoView.G(localh.HWi))
+            for (int i = 0;; i = PhotoView.G(localh.JwT))
             {
               localOverScroller.fling(i2, i3, i4, i5, j, k, m, n, i1, i);
               PhotoView.o(PhotoView.this).start();
@@ -390,7 +365,7 @@ public class PhotoView
               i = 0;
               break label321;
               label691:
-              f1 = PhotoView.p(localh.HWi).right - PhotoView.q(localh.HWi).right;
+              f1 = PhotoView.p(localh.JwT).right - PhotoView.q(localh.JwT).right;
               break label351;
               label719:
               j = 0;
@@ -405,14 +380,14 @@ public class PhotoView
               i = 0;
               break label421;
               label745:
-              f1 = PhotoView.p(localh.HWi).bottom - PhotoView.q(localh.HWi).bottom;
+              f1 = PhotoView.p(localh.JwT).bottom - PhotoView.q(localh.JwT).bottom;
               break label451;
               m = 0;
               break label485;
               n = i;
               break label496;
               break label510;
-              i1 = PhotoView.G(localh.HWi);
+              i1 = PhotoView.G(localh.JwT);
               break label588;
             }
           }
@@ -434,7 +409,7 @@ public class PhotoView
         if (PhotoView.o(PhotoView.this).isRunning) {
           PhotoView.o(PhotoView.this).stop();
         }
-        if (PhotoView.this.bQ(paramAnonymousFloat1))
+        if (PhotoView.this.cb(paramAnonymousFloat1))
         {
           if ((paramAnonymousFloat1 >= 0.0F) || (PhotoView.p(PhotoView.this).left - paramAnonymousFloat1 <= PhotoView.q(PhotoView.this).left)) {
             break label831;
@@ -455,7 +430,7 @@ public class PhotoView
           }
           PhotoView.d(PhotoView.this).postTranslate(-f1, 0.0F);
           PhotoView.a(PhotoView.this, (int)(PhotoView.r(PhotoView.this) - f1));
-          if (PhotoView.this.bR(paramAnonymousFloat2)) {
+          if (PhotoView.this.cc(paramAnonymousFloat2)) {
             if ((paramAnonymousFloat2 >= 0.0F) || (PhotoView.p(PhotoView.this).top - paramAnonymousFloat2 <= PhotoView.q(PhotoView.this).top)) {
               break label825;
             }
@@ -545,7 +520,7 @@ public class PhotoView
         return false;
       }
     };
-    this.HWh = new Rect();
+    this.JwS = new Rect();
     init();
     AppMethodBeat.o(164283);
   }
@@ -554,27 +529,27 @@ public class PhotoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164284);
-    this.HVs = 0;
-    this.HVt = 0;
-    this.HVu = 0;
-    this.HVv = 500;
-    this.Gbz = new Matrix();
-    this.HVw = new Matrix();
-    this.HVx = new Matrix();
-    this.uv = new Matrix();
-    this.cEP = false;
-    this.HVF = false;
-    this.cHQ = 1.0F;
-    this.rMx = new RectF();
-    this.HVQ = new RectF();
-    this.HVR = new RectF();
-    this.cHC = new RectF();
-    this.HVS = new RectF();
-    this.HVT = new PointF();
-    this.HVU = new PointF();
-    this.HVV = new PointF();
-    this.HVW = new h();
-    this.HWd = new e()
+    this.Jwd = 0;
+    this.Jwe = 0;
+    this.Jwf = 0;
+    this.Jwg = 500;
+    this.HBo = new Matrix();
+    this.Jwh = new Matrix();
+    this.Jwi = new Matrix();
+    this.vt = new Matrix();
+    this.cBX = false;
+    this.Jwq = false;
+    this.cEY = 1.0F;
+    this.sUm = new RectF();
+    this.JwB = new RectF();
+    this.JwC = new RectF();
+    this.cEK = new RectF();
+    this.JwD = new RectF();
+    this.JwE = new PointF();
+    this.JwF = new PointF();
+    this.JwG = new PointF();
+    this.JwH = new h();
+    this.JwO = new e()
     {
       public final void q(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
       {
@@ -595,32 +570,8 @@ public class PhotoView
         AppMethodBeat.o(164250);
       }
     };
-    this.HWe = new ScaleGestureDetector.OnScaleGestureListener()
-    {
-      public final boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
-      {
-        AppMethodBeat.i(164251);
-        float f = paramAnonymousScaleGestureDetector.getScaleFactor();
-        if ((Float.isNaN(f)) || (Float.isInfinite(f)))
-        {
-          AppMethodBeat.o(164251);
-          return false;
-        }
-        PhotoView.c(PhotoView.this, PhotoView.f(PhotoView.this) * f);
-        PhotoView.d(PhotoView.this).postScale(f, f, paramAnonymousScaleGestureDetector.getFocusX(), paramAnonymousScaleGestureDetector.getFocusY());
-        PhotoView.g(PhotoView.this);
-        AppMethodBeat.o(164251);
-        return true;
-      }
-      
-      public final boolean onScaleBegin(ScaleGestureDetector paramAnonymousScaleGestureDetector)
-      {
-        return true;
-      }
-      
-      public final void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
-    };
-    this.HWf = new Runnable()
+    this.JwP = new PhotoView.2(this);
+    this.JwQ = new Runnable()
     {
       public final void run()
       {
@@ -631,7 +582,7 @@ public class PhotoView
         AppMethodBeat.o(164252);
       }
     };
-    this.HWg = new GestureDetector.SimpleOnGestureListener()
+    this.JwR = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
@@ -665,7 +616,7 @@ public class PhotoView
         for (boolean bool = true;; bool = false)
         {
           PhotoView.c(paramAnonymousMotionEvent, bool);
-          PhotoView.o(PhotoView.this).ak(f2, f1);
+          PhotoView.o(PhotoView.this).ao(f2, f1);
           PhotoView.o(PhotoView.this).start();
           AppMethodBeat.o(164258);
           return false;
@@ -742,7 +693,7 @@ public class PhotoView
               if (f5 > 45.0F)
               {
                 f1 = f4 + 90.0F;
-                PhotoView.o(PhotoView.this).jU((int)PhotoView.c(PhotoView.this), (int)f1);
+                PhotoView.o(PhotoView.this).kg((int)PhotoView.c(PhotoView.this), (int)f1);
                 PhotoView.b(PhotoView.this, f1);
               }
             }
@@ -754,11 +705,11 @@ public class PhotoView
                 break label685;
               }
               i = 2147483647;
-              localh.arE = i;
+              localh.asz = i;
               if (f2 <= 0.0F) {
                 break label691;
               }
-              f1 = Math.abs(PhotoView.p(localh.HWi).left);
+              f1 = Math.abs(PhotoView.p(localh.JwT).left);
               j = (int)f1;
               i = j;
               if (f2 < 0.0F) {
@@ -780,11 +731,11 @@ public class PhotoView
                 break label739;
               }
               i = 2147483647;
-              localh.arF = i;
+              localh.asA = i;
               if (f3 <= 0.0F) {
                 break label745;
               }
-              f1 = Math.abs(PhotoView.p(localh.HWi).top);
+              f1 = Math.abs(PhotoView.p(localh.JwT).top);
               m = (int)f1;
               i = m;
               if (f3 < 0.0F) {
@@ -812,17 +763,17 @@ public class PhotoView
                 n = 0;
                 m = 0;
               }
-              localOverScroller = localh.rMv;
-              i2 = localh.arE;
-              i3 = localh.arF;
+              localOverScroller = localh.sUk;
+              i2 = localh.asz;
+              i3 = localh.asA;
               i4 = (int)f2;
               i5 = (int)f3;
-              if (Math.abs(i1) >= PhotoView.G(localh.HWi) * 2) {
+              if (Math.abs(i1) >= PhotoView.G(localh.JwT) * 2) {
                 break label789;
               }
               i1 = 0;
               label588:
-              if (Math.abs(i) >= PhotoView.G(localh.HWi) * 2) {
+              if (Math.abs(i) >= PhotoView.G(localh.JwT) * 2) {
                 break label802;
               }
             }
@@ -831,7 +782,7 @@ public class PhotoView
             label786:
             label789:
             label802:
-            for (int i = 0;; i = PhotoView.G(localh.HWi))
+            for (int i = 0;; i = PhotoView.G(localh.JwT))
             {
               localOverScroller.fling(i2, i3, i4, i5, j, k, m, n, i1, i);
               PhotoView.o(PhotoView.this).start();
@@ -848,7 +799,7 @@ public class PhotoView
               i = 0;
               break label321;
               label691:
-              f1 = PhotoView.p(localh.HWi).right - PhotoView.q(localh.HWi).right;
+              f1 = PhotoView.p(localh.JwT).right - PhotoView.q(localh.JwT).right;
               break label351;
               label719:
               j = 0;
@@ -863,14 +814,14 @@ public class PhotoView
               i = 0;
               break label421;
               label745:
-              f1 = PhotoView.p(localh.HWi).bottom - PhotoView.q(localh.HWi).bottom;
+              f1 = PhotoView.p(localh.JwT).bottom - PhotoView.q(localh.JwT).bottom;
               break label451;
               m = 0;
               break label485;
               n = i;
               break label496;
               break label510;
-              i1 = PhotoView.G(localh.HWi);
+              i1 = PhotoView.G(localh.JwT);
               break label588;
             }
           }
@@ -892,7 +843,7 @@ public class PhotoView
         if (PhotoView.o(PhotoView.this).isRunning) {
           PhotoView.o(PhotoView.this).stop();
         }
-        if (PhotoView.this.bQ(paramAnonymousFloat1))
+        if (PhotoView.this.cb(paramAnonymousFloat1))
         {
           if ((paramAnonymousFloat1 >= 0.0F) || (PhotoView.p(PhotoView.this).left - paramAnonymousFloat1 <= PhotoView.q(PhotoView.this).left)) {
             break label831;
@@ -913,7 +864,7 @@ public class PhotoView
           }
           PhotoView.d(PhotoView.this).postTranslate(-f1, 0.0F);
           PhotoView.a(PhotoView.this, (int)(PhotoView.r(PhotoView.this) - f1));
-          if (PhotoView.this.bR(paramAnonymousFloat2)) {
+          if (PhotoView.this.cc(paramAnonymousFloat2)) {
             if ((paramAnonymousFloat2 >= 0.0F) || (PhotoView.p(PhotoView.this).top - paramAnonymousFloat2 <= PhotoView.q(PhotoView.this).top)) {
               break label825;
             }
@@ -1003,12 +954,12 @@ public class PhotoView
         return false;
       }
     };
-    this.HWh = new Rect();
+    this.JwS = new Rect();
     init();
     AppMethodBeat.o(164284);
   }
   
-  private static int I(Drawable paramDrawable)
+  private static int H(Drawable paramDrawable)
   {
     AppMethodBeat.i(164290);
     int j = paramDrawable.getIntrinsicWidth();
@@ -1024,7 +975,7 @@ public class PhotoView
     return j;
   }
   
-  private static int J(Drawable paramDrawable)
+  private static int I(Drawable paramDrawable)
   {
     AppMethodBeat.i(164291);
     int j = paramDrawable.getIntrinsicHeight();
@@ -1043,34 +994,34 @@ public class PhotoView
   private void a(Info paramInfo)
   {
     AppMethodBeat.i(164318);
-    if (this.csX)
+    if (this.cqf)
     {
       reset();
-      this.HWh.set(paramInfo.HWh);
+      this.JwS.set(paramInfo.JwS);
       Info localInfo = getInfo();
-      float f1 = paramInfo.HVR.width() / localInfo.HVR.width();
-      float f2 = paramInfo.HVR.height() / localInfo.HVR.height();
+      float f1 = paramInfo.JwC.width() / localInfo.JwC.width();
+      float f2 = paramInfo.JwC.height() / localInfo.JwC.height();
       if (f1 < f2)
       {
-        f2 = paramInfo.lEo.left + paramInfo.lEo.width() / 2.0F;
-        float f3 = paramInfo.lEo.top + paramInfo.lEo.height() / 2.0F;
-        float f4 = localInfo.lEo.left + localInfo.lEo.width() / 2.0F;
-        float f5 = localInfo.lEo.top;
-        f5 = localInfo.lEo.height() / 2.0F + f5;
-        this.HVw.reset();
-        this.HVw.postTranslate(f2 - f4, f3 - f5);
-        this.HVw.postScale(f1, f1, f2, f3);
-        this.HVw.postRotate(paramInfo.HVL, f2, f3);
-        fiA();
-        this.HVU.set(f2, f3);
-        this.HVV.set(f2, f3);
-        this.HVW.jT((int)-(f2 - f4), (int)-(f3 - f5));
-        this.HVW.ak(f1, 1.0F);
-        this.HVW.jU((int)paramInfo.HVL, 0);
-        if ((paramInfo.rMx.width() < paramInfo.HVR.width()) || (paramInfo.rMx.height() < paramInfo.HVR.height()))
+        f2 = paramInfo.mgi.left + paramInfo.mgi.width() / 2.0F;
+        float f3 = paramInfo.mgi.top + paramInfo.mgi.height() / 2.0F;
+        float f4 = localInfo.mgi.left + localInfo.mgi.width() / 2.0F;
+        float f5 = localInfo.mgi.top;
+        f5 = localInfo.mgi.height() / 2.0F + f5;
+        this.Jwh.reset();
+        this.Jwh.postTranslate(f2 - f4, f3 - f5);
+        this.Jwh.postScale(f1, f1, f2, f3);
+        this.Jwh.postRotate(paramInfo.Jww, f2, f3);
+        fyN();
+        this.JwF.set(f2, f3);
+        this.JwG.set(f2, f3);
+        this.JwH.kf((int)-(f2 - f4), (int)-(f3 - f5));
+        this.JwH.ao(f1, 1.0F);
+        this.JwH.kg((int)paramInfo.Jww, 0);
+        if ((paramInfo.sUm.width() < paramInfo.JwC.width()) || (paramInfo.sUm.height() < paramInfo.JwC.height()))
         {
-          f2 = paramInfo.rMx.width() / paramInfo.HVR.width();
-          f3 = paramInfo.rMx.height() / paramInfo.HVR.height();
+          f2 = paramInfo.sUm.width() / paramInfo.JwC.width();
+          f3 = paramInfo.sUm.height() / paramInfo.JwC.height();
           f1 = f2;
           if (f2 > 1.0F) {
             f1 = 1.0F;
@@ -1079,7 +1030,7 @@ public class PhotoView
           if (f3 > 1.0F) {
             f2 = 1.0F;
           }
-          if (paramInfo.HVA != ImageView.ScaleType.FIT_START) {
+          if (paramInfo.Jwl != ImageView.ScaleType.FIT_START) {
             break label488;
           }
           paramInfo = new g();
@@ -1087,108 +1038,81 @@ public class PhotoView
       }
       for (;;)
       {
-        this.HVW.a(f1, f2, 1.0F - f1, 1.0F - f2, this.HVq / 3, paramInfo);
-        this.uv.setScale(f1, f2, (this.HVR.left + this.HVR.right) / 2.0F, paramInfo.fiB());
-        this.uv.mapRect(this.HVW.HWt, this.HVR);
-        this.HVX = this.HVW.HWt;
-        this.HVW.start();
+        this.JwH.a(f1, f2, 1.0F - f1, 1.0F - f2, this.Jwb / 3, paramInfo);
+        this.vt.setScale(f1, f2, (this.JwC.left + this.JwC.right) / 2.0F, paramInfo.fyO());
+        this.vt.mapRect(this.JwH.Jxe, this.JwC);
+        this.JwI = this.JwH.Jxe;
+        this.JwH.start();
         AppMethodBeat.o(164318);
         return;
         f1 = f2;
         break;
         label488:
-        if (paramInfo.HVA == ImageView.ScaleType.FIT_END) {
+        if (paramInfo.Jwl == ImageView.ScaleType.FIT_END) {
           paramInfo = new b();
         } else {
           paramInfo = new d();
         }
       }
     }
-    this.HVY = paramInfo;
-    this.HVZ = System.currentTimeMillis();
+    this.JwJ = paramInfo;
+    this.JwK = System.currentTimeMillis();
     AppMethodBeat.o(164318);
   }
   
   private void a(i parami)
   {
     AppMethodBeat.i(164302);
-    this.HVx = parami.HWx;
-    this.HVw = parami.HWw;
-    this.Gbz = parami.HWy;
-    this.uv = parami.oQ;
-    this.HVO = (parami.HWz.width() / 2.0F);
-    this.HVP = (parami.HWz.height() / 2.0F);
-    if (!this.rMx.isEmpty())
+    this.Jwi = parami.Jxi;
+    this.Jwh = parami.Jxh;
+    this.HBo = parami.Jxj;
+    this.vt = parami.pP;
+    this.Jwz = (parami.Jxk.width() / 2.0F);
+    this.JwA = (parami.Jxk.height() / 2.0F);
+    if (!this.sUm.isEmpty())
     {
-      parami.rFY.set(this.rMx);
-      parami.HWD = this.HVT;
+      parami.wzl.set(this.sUm);
+      parami.Jxo = this.JwE;
     }
-    this.rMx = parami.rFY;
-    this.HVQ = parami.HWz;
-    this.HVR = parami.HWA;
-    this.cHC = parami.HWB;
-    this.HVS = parami.HWC;
-    this.HVT = parami.HWD;
-    this.HVU = parami.HWE;
-    this.HVV = parami.HWF;
+    this.sUm = parami.wzl;
+    this.JwB = parami.Jxk;
+    this.JwC = parami.Jxl;
+    this.cEK = parami.Jxm;
+    this.JwD = parami.Jxn;
+    this.JwE = parami.Jxo;
+    this.JwF = parami.Jxp;
+    this.JwG = parami.Jxq;
     AppMethodBeat.o(164302);
   }
   
-  private void fiA()
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(164301);
-    this.HVx.set(this.Gbz);
-    this.HVx.postConcat(this.HVw);
-    setImageMatrix(this.HVx);
-    this.HVw.mapRect(this.HVR, this.HVQ);
-    if (this.HVR.width() > this.rMx.width())
-    {
-      bool1 = true;
-      this.HVI = bool1;
-      if (this.HVR.height() <= this.rMx.height()) {
-        break label117;
-      }
-    }
-    label117:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.HVJ = bool1;
-      AppMethodBeat.o(164301);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  private void fir()
+  private void fyE()
   {
     float f2 = 1.0F;
     AppMethodBeat.i(164292);
-    if (!this.HVC)
+    if (!this.Jwn)
     {
       AppMethodBeat.o(164292);
       return;
     }
-    if (!this.HVD)
+    if (!this.Jwo)
     {
       AppMethodBeat.o(164292);
       return;
     }
-    if (this.HVX != null) {
-      this.HVX.setEmpty();
+    if (this.JwI != null) {
+      this.JwI.setEmpty();
     }
-    this.Gbz.reset();
-    this.HVw.reset();
-    this.HVx.reset();
-    this.uv.reset();
-    this.HVG = false;
+    this.HBo.reset();
+    this.Jwh.reset();
+    this.Jwi.reset();
+    this.vt.reset();
+    this.Jwr = false;
     Drawable localDrawable = getDrawable();
     int i = getWidth();
     int j = getHeight();
-    int k = I(localDrawable);
-    int m = J(localDrawable);
-    this.HVQ.set(0.0F, 0.0F, k, m);
+    int k = H(localDrawable);
+    int m = I(localDrawable);
+    this.JwB.set(0.0F, 0.0F, k, m);
     int n = (i - k) / 2;
     int i1 = (j - m) / 2;
     if (k > i) {}
@@ -1199,85 +1123,85 @@ public class PhotoView
       }
       if (f1 < f2)
       {
-        this.Gbz.reset();
-        this.Gbz.postTranslate(n, i1);
-        this.Gbz.postScale(f1, f1, this.HVT.x, this.HVT.y);
-        this.Gbz.mapRect(this.HVQ);
-        this.HVO = (this.HVQ.width() / 2.0F);
-        this.HVP = (this.HVQ.height() / 2.0F);
-        this.HVU.set(this.HVT);
-        this.HVV.set(this.HVU);
-        fiA();
-        switch (PhotoView.5.xy[this.HVA.ordinal()])
+        this.HBo.reset();
+        this.HBo.postTranslate(n, i1);
+        this.HBo.postScale(f1, f1, this.JwE.x, this.JwE.y);
+        this.HBo.mapRect(this.JwB);
+        this.Jwz = (this.JwB.width() / 2.0F);
+        this.JwA = (this.JwB.height() / 2.0F);
+        this.JwF.set(this.JwE);
+        this.JwG.set(this.JwF);
+        fyN();
+        switch (PhotoView.5.yw[this.Jwl.ordinal()])
         {
         }
       }
       for (;;)
       {
-        this.csX = true;
-        if ((this.HVY != null) && (System.currentTimeMillis() - this.HVZ < this.HVv)) {
-          a(this.HVY);
+        this.cqf = true;
+        if ((this.JwJ != null) && (System.currentTimeMillis() - this.JwK < this.Jwg)) {
+          a(this.JwJ);
         }
-        this.HVY = null;
-        if (this.HWc != null)
+        this.JwJ = null;
+        if (this.JwN != null)
         {
-          a(this.HWc);
-          setImageMatrix(this.HVx);
-          this.HWc = null;
+          a(this.JwN);
+          setImageMatrix(this.Jwi);
+          this.JwN = null;
         }
         AppMethodBeat.o(164292);
         return;
         f1 = f2;
         break;
-        fis();
+        fyF();
         continue;
-        fit();
+        fyG();
         continue;
-        fiu();
+        fyH();
         continue;
-        fiv();
+        fyI();
         continue;
-        fiw();
+        fyJ();
         continue;
-        fix();
+        fyK();
         continue;
-        fiy();
+        fyL();
       }
     }
   }
   
-  private void fis()
+  private void fyF()
   {
     AppMethodBeat.i(164293);
-    if (!this.HVC)
+    if (!this.Jwn)
     {
       AppMethodBeat.o(164293);
       return;
     }
-    if (!this.HVD)
+    if (!this.Jwo)
     {
       AppMethodBeat.o(164293);
       return;
     }
     Drawable localDrawable = getDrawable();
-    int i = I(localDrawable);
-    int j = J(localDrawable);
+    int i = H(localDrawable);
+    int j = I(localDrawable);
     float f1;
     float f2;
-    if ((i > this.rMx.width()) || (j > this.rMx.height()))
+    if ((i > this.sUm.width()) || (j > this.sUm.height()))
     {
-      f1 = i / this.HVR.width();
-      f2 = j / this.HVR.height();
+      f1 = i / this.JwC.width();
+      f2 = j / this.JwC.height();
       if (f1 <= f2) {
         break label159;
       }
     }
     for (;;)
     {
-      this.cHQ = f1;
-      this.HVw.postScale(this.cHQ, this.cHQ, this.HVT.x, this.HVT.y);
-      fiA();
-      fiz();
+      this.cEY = f1;
+      this.Jwh.postScale(this.cEY, this.cEY, this.JwE.x, this.JwE.y);
+      fyN();
+      fyM();
       AppMethodBeat.o(164293);
       return;
       label159:
@@ -1285,25 +1209,25 @@ public class PhotoView
     }
   }
   
-  private void fit()
+  private void fyG()
   {
     AppMethodBeat.i(164294);
     float f1;
     float f2;
-    if ((this.HVR.width() < this.rMx.width()) || (this.HVR.height() < this.rMx.height()))
+    if ((this.JwC.width() < this.sUm.width()) || (this.JwC.height() < this.sUm.height()))
     {
-      f1 = this.rMx.width() / this.HVR.width();
-      f2 = this.rMx.height() / this.HVR.height();
+      f1 = this.sUm.width() / this.JwC.width();
+      f2 = this.sUm.height() / this.JwC.height();
       if (f1 <= f2) {
         break label130;
       }
     }
     for (;;)
     {
-      this.cHQ = f1;
-      this.HVw.postScale(this.cHQ, this.cHQ, this.HVT.x, this.HVT.y);
-      fiA();
-      fiz();
+      this.cEY = f1;
+      this.Jwh.postScale(this.cEY, this.cEY, this.JwE.x, this.JwE.y);
+      fyN();
+      fyM();
       AppMethodBeat.o(164294);
       return;
       label130:
@@ -1311,25 +1235,25 @@ public class PhotoView
     }
   }
   
-  private void fiu()
+  private void fyH()
   {
     AppMethodBeat.i(164295);
     float f1;
     float f2;
-    if ((this.HVR.width() > this.rMx.width()) || (this.HVR.height() > this.rMx.height()))
+    if ((this.JwC.width() > this.sUm.width()) || (this.JwC.height() > this.sUm.height()))
     {
-      f1 = this.rMx.width() / this.HVR.width();
-      f2 = this.rMx.height() / this.HVR.height();
+      f1 = this.sUm.width() / this.JwC.width();
+      f2 = this.sUm.height() / this.JwC.height();
       if (f1 >= f2) {
         break label130;
       }
     }
     for (;;)
     {
-      this.cHQ = f1;
-      this.HVw.postScale(this.cHQ, this.cHQ, this.HVT.x, this.HVT.y);
-      fiA();
-      fiz();
+      this.cEY = f1;
+      this.Jwh.postScale(this.cEY, this.cEY, this.JwE.x, this.JwE.y);
+      fyN();
+      fyM();
       AppMethodBeat.o(164295);
       return;
       label130:
@@ -1337,136 +1261,163 @@ public class PhotoView
     }
   }
   
-  private void fiv()
+  private void fyI()
   {
     AppMethodBeat.i(164296);
-    if (this.HVR.width() < this.rMx.width())
+    if (this.JwC.width() < this.sUm.width())
     {
-      this.cHQ = (this.rMx.width() / this.HVR.width());
-      this.HVw.postScale(this.cHQ, this.cHQ, this.HVT.x, this.HVT.y);
-      fiA();
-      fiz();
+      this.cEY = (this.sUm.width() / this.JwC.width());
+      this.Jwh.postScale(this.cEY, this.cEY, this.JwE.x, this.JwE.y);
+      fyN();
+      fyM();
     }
     AppMethodBeat.o(164296);
   }
   
-  private void fiw()
+  private void fyJ()
   {
     AppMethodBeat.i(164297);
-    fiv();
-    float f = -this.HVR.top;
-    this.HVw.postTranslate(0.0F, f);
-    fiA();
-    fiz();
-    this.HVN = ((int)(f + this.HVN));
+    fyI();
+    float f = -this.JwC.top;
+    this.Jwh.postTranslate(0.0F, f);
+    fyN();
+    fyM();
+    this.Jwy = ((int)(f + this.Jwy));
     AppMethodBeat.o(164297);
   }
   
-  private void fix()
+  private void fyK()
   {
     AppMethodBeat.i(164298);
-    fiv();
-    float f = this.rMx.bottom - this.HVR.bottom;
-    this.HVN = ((int)(this.HVN + f));
-    this.HVw.postTranslate(0.0F, f);
-    fiA();
-    fiz();
+    fyI();
+    float f = this.sUm.bottom - this.JwC.bottom;
+    this.Jwy = ((int)(this.Jwy + f));
+    this.Jwh.postTranslate(0.0F, f);
+    fyN();
+    fyM();
     AppMethodBeat.o(164298);
   }
   
-  private void fiy()
+  private void fyL()
   {
     AppMethodBeat.i(164299);
-    float f1 = this.rMx.width() / this.HVR.width();
-    float f2 = this.rMx.height() / this.HVR.height();
-    this.HVw.postScale(f1, f2, this.HVT.x, this.HVT.y);
-    fiA();
-    fiz();
+    float f1 = this.sUm.width() / this.JwC.width();
+    float f2 = this.sUm.height() / this.JwC.height();
+    this.Jwh.postScale(f1, f2, this.JwE.x, this.JwE.y);
+    fyN();
+    fyM();
     AppMethodBeat.o(164299);
   }
   
-  private void fiz()
+  private void fyM()
   {
     AppMethodBeat.i(164300);
     Drawable localDrawable = getDrawable();
-    int i = I(localDrawable);
-    int j = J(localDrawable);
-    this.HVQ.set(0.0F, 0.0F, i, j);
-    this.Gbz.set(this.HVx);
-    this.Gbz.mapRect(this.HVQ);
-    this.HVO = (this.HVQ.width() / 2.0F);
-    this.HVP = (this.HVQ.height() / 2.0F);
-    this.cHQ = 1.0F;
-    this.HVM = 0;
-    this.HVN = 0;
-    this.HVw.reset();
+    int i = H(localDrawable);
+    int j = I(localDrawable);
+    this.JwB.set(0.0F, 0.0F, i, j);
+    this.HBo.set(this.Jwi);
+    this.HBo.mapRect(this.JwB);
+    this.Jwz = (this.JwB.width() / 2.0F);
+    this.JwA = (this.JwB.height() / 2.0F);
+    this.cEY = 1.0F;
+    this.Jwx = 0;
+    this.Jwy = 0;
+    this.Jwh.reset();
     AppMethodBeat.o(164300);
+  }
+  
+  private void fyN()
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(164301);
+    this.Jwi.set(this.HBo);
+    this.Jwi.postConcat(this.Jwh);
+    setImageMatrix(this.Jwi);
+    this.Jwh.mapRect(this.JwC, this.JwB);
+    if (this.JwC.width() > this.sUm.width())
+    {
+      bool1 = true;
+      this.Jwt = bool1;
+      if (this.JwC.height() <= this.sUm.height()) {
+        break label117;
+      }
+    }
+    label117:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.Jwu = bool1;
+      AppMethodBeat.o(164301);
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
   private void init()
   {
     AppMethodBeat.i(164285);
     super.setScaleType(ImageView.ScaleType.MATRIX);
-    if (this.HVA == null) {
-      this.HVA = ImageView.ScaleType.CENTER_INSIDE;
+    if (this.Jwl == null) {
+      this.Jwl = ImageView.ScaleType.CENTER_INSIDE;
     }
-    this.HVy = new f(this.HWd);
-    this.MQ = new GestureDetector(getContext(), this.HWg);
-    this.HVz = new ScaleGestureDetector(getContext(), this.HWe);
+    this.Jwj = new f(this.JwO);
+    this.NL = new GestureDetector(getContext(), this.JwR);
+    this.Jwk = new ScaleGestureDetector(getContext(), this.JwP);
     float f = getResources().getDisplayMetrics().density;
-    this.HVs = ((int)(f * 30.0F));
-    this.HVt = ((int)(f * 30.0F));
-    this.HVu = ((int)(f * 140.0F));
-    this.HVp = 35;
-    this.HVq = 200;
-    this.HVr = 3.0F;
+    this.Jwd = ((int)(f * 30.0F));
+    this.Jwe = ((int)(f * 30.0F));
+    this.Jwf = ((int)(f * 140.0F));
+    this.Jwa = 35;
+    this.Jwb = 200;
+    this.Jwc = 3.0F;
     AppMethodBeat.o(164285);
   }
   
-  private void k(RectF paramRectF)
+  private void j(RectF paramRectF)
   {
     int j = 0;
     AppMethodBeat.i(164308);
     int i;
-    if (paramRectF.width() <= this.rMx.width())
+    if (paramRectF.width() <= this.sUm.width())
     {
-      if (m(paramRectF)) {
+      if (l(paramRectF)) {
         break label275;
       }
-      i = -(int)((this.rMx.width() - paramRectF.width()) / 2.0F - paramRectF.left);
+      i = -(int)((this.sUm.width() - paramRectF.width()) / 2.0F - paramRectF.left);
     }
     for (;;)
     {
-      if (paramRectF.height() <= this.rMx.height()) {
-        if (!l(paramRectF)) {
-          j = -(int)((this.rMx.height() - paramRectF.height()) / 2.0F - paramRectF.top);
+      if (paramRectF.height() <= this.sUm.height()) {
+        if (!k(paramRectF)) {
+          j = -(int)((this.sUm.height() - paramRectF.height()) / 2.0F - paramRectF.top);
         }
       }
       for (;;)
       {
         if ((i != 0) || (j != 0))
         {
-          if (!this.HVW.rMv.isFinished()) {
-            this.HVW.rMv.abortAnimation();
+          if (!this.JwH.sUk.isFinished()) {
+            this.JwH.sUk.abortAnimation();
           }
-          this.HVW.jT(-i, -j);
+          this.JwH.kf(-i, -j);
         }
         AppMethodBeat.o(164308);
         return;
-        if (paramRectF.left > this.rMx.left)
+        if (paramRectF.left > this.sUm.left)
         {
-          i = (int)(paramRectF.left - this.rMx.left);
+          i = (int)(paramRectF.left - this.sUm.left);
           break;
         }
-        if (paramRectF.right >= this.rMx.right) {
+        if (paramRectF.right >= this.sUm.right) {
           break label275;
         }
-        i = (int)(paramRectF.right - this.rMx.right);
+        i = (int)(paramRectF.right - this.sUm.right);
         break;
-        if (paramRectF.top > this.rMx.top) {
-          j = (int)(paramRectF.top - this.rMx.top);
-        } else if (paramRectF.bottom < this.rMx.bottom) {
-          j = (int)(paramRectF.bottom - this.rMx.bottom);
+        if (paramRectF.top > this.sUm.top) {
+          j = (int)(paramRectF.top - this.sUm.top);
+        } else if (paramRectF.bottom < this.sUm.bottom) {
+          j = (int)(paramRectF.bottom - this.sUm.bottom);
         }
       }
       label275:
@@ -1474,10 +1425,10 @@ public class PhotoView
     }
   }
   
-  private boolean l(RectF paramRectF)
+  private boolean k(RectF paramRectF)
   {
     AppMethodBeat.i(164309);
-    if (Math.abs(Math.round(paramRectF.top) - (this.rMx.height() - paramRectF.height()) / 2.0F) < 1.0F)
+    if (Math.abs(Math.round(paramRectF.top) - (this.sUm.height() - paramRectF.height()) / 2.0F) < 1.0F)
     {
       AppMethodBeat.o(164309);
       return true;
@@ -1486,10 +1437,10 @@ public class PhotoView
     return false;
   }
   
-  private boolean m(RectF paramRectF)
+  private boolean l(RectF paramRectF)
   {
     AppMethodBeat.i(164310);
-    if (Math.abs(Math.round(paramRectF.left) - (this.rMx.width() - paramRectF.width()) / 2.0F) < 1.0F)
+    if (Math.abs(Math.round(paramRectF.left) - (this.sUm.width() - paramRectF.width()) / 2.0F) < 1.0F)
     {
       AppMethodBeat.o(164310);
       return true;
@@ -1501,28 +1452,54 @@ public class PhotoView
   private void reset()
   {
     AppMethodBeat.i(164317);
-    this.HVw.reset();
-    fiA();
-    this.cHQ = 1.0F;
-    this.HVM = 0;
-    this.HVN = 0;
+    this.Jwh.reset();
+    fyN();
+    this.cEY = 1.0F;
+    this.Jwx = 0;
+    this.Jwy = 0;
     AppMethodBeat.o(164317);
   }
   
-  public final boolean bQ(float paramFloat)
+  public boolean canScrollHorizontally(int paramInt)
+  {
+    AppMethodBeat.i(164313);
+    if (this.Jwm)
+    {
+      AppMethodBeat.o(164313);
+      return true;
+    }
+    boolean bool = cb(paramInt);
+    AppMethodBeat.o(164313);
+    return bool;
+  }
+  
+  public boolean canScrollVertically(int paramInt)
+  {
+    AppMethodBeat.i(164314);
+    if (this.Jwm)
+    {
+      AppMethodBeat.o(164314);
+      return true;
+    }
+    boolean bool = cc(paramInt);
+    AppMethodBeat.o(164314);
+    return bool;
+  }
+  
+  public final boolean cb(float paramFloat)
   {
     AppMethodBeat.i(164311);
-    if (this.HVR.width() <= this.rMx.width())
+    if (this.JwC.width() <= this.sUm.width())
     {
       AppMethodBeat.o(164311);
       return false;
     }
-    if ((paramFloat < 0.0F) && (Math.round(this.HVR.left) - paramFloat >= this.rMx.left))
+    if ((paramFloat < 0.0F) && (Math.round(this.JwC.left) - paramFloat >= this.sUm.left))
     {
       AppMethodBeat.o(164311);
       return false;
     }
-    if ((paramFloat > 0.0F) && (Math.round(this.HVR.right) - paramFloat <= this.rMx.right))
+    if ((paramFloat > 0.0F) && (Math.round(this.JwC.right) - paramFloat <= this.sUm.right))
     {
       AppMethodBeat.o(164311);
       return false;
@@ -1531,20 +1508,20 @@ public class PhotoView
     return true;
   }
   
-  public final boolean bR(float paramFloat)
+  public final boolean cc(float paramFloat)
   {
     AppMethodBeat.i(164312);
-    if (this.HVR.height() <= this.rMx.height())
+    if (this.JwC.height() <= this.sUm.height())
     {
       AppMethodBeat.o(164312);
       return false;
     }
-    if ((paramFloat < 0.0F) && (Math.round(this.HVR.top) - paramFloat >= this.rMx.top))
+    if ((paramFloat < 0.0F) && (Math.round(this.JwC.top) - paramFloat >= this.sUm.top))
     {
       AppMethodBeat.o(164312);
       return false;
     }
-    if ((paramFloat > 0.0F) && (Math.round(this.HVR.bottom) - paramFloat <= this.rMx.bottom))
+    if ((paramFloat > 0.0F) && (Math.round(this.JwC.bottom) - paramFloat <= this.sUm.bottom))
     {
       AppMethodBeat.o(164312);
       return false;
@@ -1553,38 +1530,12 @@ public class PhotoView
     return true;
   }
   
-  public boolean canScrollHorizontally(int paramInt)
-  {
-    AppMethodBeat.i(164313);
-    if (this.HVB)
-    {
-      AppMethodBeat.o(164313);
-      return true;
-    }
-    boolean bool = bQ(paramInt);
-    AppMethodBeat.o(164313);
-    return bool;
-  }
-  
-  public boolean canScrollVertically(int paramInt)
-  {
-    AppMethodBeat.i(164314);
-    if (this.HVB)
-    {
-      AppMethodBeat.o(164314);
-      return true;
-    }
-    boolean bool = bR(paramInt);
-    AppMethodBeat.o(164314);
-    return bool;
-  }
-  
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(164306);
     paramCanvas.save();
-    if (this.HVX != null) {
-      paramCanvas.clipRect(this.HVX);
+    if (this.JwI != null) {
+      paramCanvas.clipRect(this.JwI);
     }
     super.draw(paramCanvas);
     paramCanvas.restore();
@@ -1593,7 +1544,7 @@ public class PhotoView
   
   public int getAnimaDuring()
   {
-    return this.HVq;
+    return this.Jwb;
   }
   
   public long getDefaultAnimDuring()
@@ -1606,7 +1557,7 @@ public class PhotoView
     AppMethodBeat.i(164315);
     Object localObject = new Rect();
     int[] arrayOfInt = new int[2];
-    Rect localRect1 = this.HWh;
+    Rect localRect1 = this.JwS;
     Rect localRect2 = new Rect();
     getGlobalVisibleRect(localRect2);
     if ((!localRect1.isEmpty()) && (localRect2.bottom - getHeight() < localRect1.top)) {
@@ -1616,29 +1567,29 @@ public class PhotoView
     arrayOfInt[1] = localRect2.top;
     arrayOfInt[0] = ((int)(arrayOfInt[0] + 0.5F));
     arrayOfInt[1] = ((int)(arrayOfInt[1] + 0.5F));
-    ((Rect)localObject).set(arrayOfInt[0] + (int)this.HVR.left, arrayOfInt[1] + (int)this.HVR.top, arrayOfInt[0] + (int)this.HVR.right, arrayOfInt[1] + (int)this.HVR.bottom);
-    localObject = new Info((Rect)localObject, this.HVR, this.rMx, this.HVQ, this.HVT, this.cHQ, this.HVL, this.HVA, this.HWh);
+    ((Rect)localObject).set(arrayOfInt[0] + (int)this.JwC.left, arrayOfInt[1] + (int)this.JwC.top, arrayOfInt[0] + (int)this.JwC.right, arrayOfInt[1] + (int)this.JwC.bottom);
+    localObject = new Info((Rect)localObject, this.JwC, this.sUm, this.JwB, this.JwE, this.cEY, this.Jww, this.Jwl, this.JwS);
     AppMethodBeat.o(164315);
     return localObject;
   }
   
   public float getMaxScale()
   {
-    return this.HVr;
+    return this.Jwc;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(164303);
-    if (!this.HVC)
+    if (!this.Jwn)
     {
       super.onMeasure(paramInt1, paramInt2);
       AppMethodBeat.o(164303);
       return;
     }
     Object localObject = getDrawable();
-    int j = I((Drawable)localObject);
-    int i = J((Drawable)localObject);
+    int j = H((Drawable)localObject);
+    int i = I((Drawable)localObject);
     int m = View.MeasureSpec.getSize(paramInt1);
     int k = View.MeasureSpec.getSize(paramInt2);
     int i1 = View.MeasureSpec.getMode(paramInt1);
@@ -1666,7 +1617,7 @@ public class PhotoView
       paramInt2 = k;
       k = paramInt1;
       m = paramInt2;
-      if (this.HBc)
+      if (this.Jbz)
       {
         k = paramInt1;
         m = paramInt2;
@@ -1742,13 +1693,13 @@ public class PhotoView
   {
     AppMethodBeat.i(164305);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    ad.i("PhotoView", "[onSizeChanged] w:%s, h:%s, oldw:%s, oldh:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    this.rMx.set(0.0F, 0.0F, paramInt1, paramInt2);
-    this.HVT.set(paramInt1 / 2, paramInt2 / 2);
-    if (!this.HVD)
+    ac.i("PhotoView", "[onSizeChanged] w:%s, h:%s, oldw:%s, oldh:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    this.sUm.set(0.0F, 0.0F, paramInt1, paramInt2);
+    this.JwE.set(paramInt1 / 2, paramInt2 / 2);
+    if (!this.Jwo)
     {
-      this.HVD = true;
-      fir();
+      this.Jwo = true;
+      fyE();
     }
     AppMethodBeat.o(164305);
   }
@@ -1756,17 +1707,17 @@ public class PhotoView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164307);
-    if (this.cEP)
+    if (this.cBX)
     {
-      this.HVX = null;
+      this.JwI = null;
       int i = paramMotionEvent.getActionMasked();
       if (paramMotionEvent.getPointerCount() >= 2) {
-        this.HVB = true;
+        this.Jwm = true;
       }
-      this.MQ.onTouchEvent(paramMotionEvent);
+      this.NL.onTouchEvent(paramMotionEvent);
       f localf;
-      if (this.HVF) {
-        localf = this.HVy;
+      if (this.Jwq) {
+        localf = this.Jwj;
       }
       float f2;
       float f3;
@@ -1776,62 +1727,62 @@ public class PhotoView
       case 3: 
       case 4: 
       default: 
-        this.HVz.onTouchEvent(paramMotionEvent);
-        if (((i == 1) || (i == 3)) && (!this.HVW.isRunning))
+        this.Jwk.onTouchEvent(paramMotionEvent);
+        if (((i == 1) || (i == 3)) && (!this.JwH.isRunning))
         {
-          if ((this.HVH) || (this.HVL % 90.0F != 0.0F))
+          if ((this.Jws) || (this.Jww % 90.0F != 0.0F))
           {
-            f2 = (int)(this.HVL / 90.0F) * 90;
-            f3 = this.HVL % 90.0F;
+            f2 = (int)(this.Jww / 90.0F) * 90;
+            f3 = this.Jww % 90.0F;
             if (f3 <= 45.0F) {
               break label563;
             }
             f1 = f2 + 90.0F;
             label189:
-            this.HVW.jU((int)this.HVL, (int)f1);
-            this.HVL = f1;
+            this.JwH.kg((int)this.Jww, (int)f1);
+            this.Jww = f1;
           }
-          f1 = this.cHQ;
-          if (this.cHQ >= 1.0F) {
+          f1 = this.cEY;
+          if (this.cEY >= 1.0F) {
             break label587;
           }
-          this.HVW.ak(this.cHQ, 1.0F);
+          this.JwH.ao(this.cEY, 1.0F);
           f1 = 1.0F;
         }
         break;
       }
       for (;;)
       {
-        f2 = this.HVR.left + this.HVR.width() / 2.0F;
-        f3 = this.HVR.top + this.HVR.height() / 2.0F;
-        this.HVU.set(f2, f3);
-        this.HVV.set(f2, f3);
-        this.HVM = 0;
-        this.HVN = 0;
-        this.uv.reset();
-        this.uv.postTranslate(-this.HVQ.left, -this.HVQ.top);
-        this.uv.postTranslate(f2 - this.HVO, f3 - this.HVP);
-        this.uv.postScale(f1, f1, f2, f3);
-        this.uv.postRotate(this.HVL, f2, f3);
-        this.uv.mapRect(this.cHC, this.HVQ);
-        k(this.cHC);
-        this.HVW.start();
+        f2 = this.JwC.left + this.JwC.width() / 2.0F;
+        f3 = this.JwC.top + this.JwC.height() / 2.0F;
+        this.JwF.set(f2, f3);
+        this.JwG.set(f2, f3);
+        this.Jwx = 0;
+        this.Jwy = 0;
+        this.vt.reset();
+        this.vt.postTranslate(-this.JwB.left, -this.JwB.top);
+        this.vt.postTranslate(f2 - this.Jwz, f3 - this.JwA);
+        this.vt.postScale(f1, f1, f2, f3);
+        this.vt.postRotate(this.Jww, f2, f3);
+        this.vt.mapRect(this.cEK, this.JwB);
+        j(this.cEK);
+        this.JwH.start();
         AppMethodBeat.o(164307);
         return true;
         if (paramMotionEvent.getPointerCount() != 2) {
           break;
         }
-        localf.HWl = localf.al(paramMotionEvent);
+        localf.JwW = localf.al(paramMotionEvent);
         break;
         if (paramMotionEvent.getPointerCount() <= 1) {
           break;
         }
-        localf.HWm = localf.al(paramMotionEvent);
-        double d = Math.toDegrees(Math.atan(localf.HWm)) - Math.toDegrees(Math.atan(localf.HWl));
+        localf.JwX = localf.al(paramMotionEvent);
+        double d = Math.toDegrees(Math.atan(localf.JwX)) - Math.toDegrees(Math.atan(localf.JwW));
         if (Math.abs(d) <= 120.0D) {
-          localf.HWk.q((float)d, (localf.x2 + localf.x1) / 2.0F, (localf.y2 + localf.y1) / 2.0F);
+          localf.JwV.q((float)d, (localf.x2 + localf.x1) / 2.0F, (localf.y2 + localf.y1) / 2.0F);
         }
-        localf.HWl = localf.HWm;
+        localf.JwW = localf.JwX;
         break;
         label563:
         f1 = f2;
@@ -1841,10 +1792,10 @@ public class PhotoView
         f1 = f2 - 90.0F;
         break label189;
         label587:
-        if (this.cHQ > this.HVr)
+        if (this.cEY > this.Jwc)
         {
-          f1 = this.HVr;
-          this.HVW.ak(this.cHQ, this.HVr);
+          f1 = this.Jwc;
+          this.JwH.ao(this.cEY, this.Jwc);
         }
       }
     }
@@ -1857,19 +1808,19 @@ public class PhotoView
   {
     AppMethodBeat.i(164304);
     super.setAdjustViewBounds(paramBoolean);
-    this.HBc = paramBoolean;
+    this.Jbz = paramBoolean;
     AppMethodBeat.o(164304);
   }
   
   public void setAnimaDuring(int paramInt)
   {
-    this.HVq = paramInt;
+    this.Jwb = paramInt;
   }
   
   public void setGlobalVisibleView(View paramView)
   {
     AppMethodBeat.i(164316);
-    paramView.getGlobalVisibleRect(this.HWh);
+    paramView.getGlobalVisibleRect(this.JwS);
     AppMethodBeat.o(164316);
   }
   
@@ -1880,7 +1831,7 @@ public class PhotoView
     super.setImageDrawable(paramDrawable);
     if (paramDrawable == null)
     {
-      this.HVC = false;
+      this.Jwn = false;
       AppMethodBeat.o(164289);
       return;
     }
@@ -1899,10 +1850,10 @@ public class PhotoView
       AppMethodBeat.o(164289);
       return;
     }
-    if (!this.HVC) {
-      this.HVC = true;
+    if (!this.Jwn) {
+      this.Jwn = true;
     }
-    fir();
+    fyE();
     AppMethodBeat.o(164289);
   }
   
@@ -1926,30 +1877,30 @@ public class PhotoView
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
-    this.HVW.HWu.HWj = paramInterpolator;
+    this.JwH.Jxf.JwU = paramInterpolator;
   }
   
   public void setMaxAnimFromWaiteTime(int paramInt)
   {
-    this.HVv = paramInt;
+    this.Jwg = paramInt;
   }
   
   public void setMaxScale(float paramFloat)
   {
-    this.HVr = paramFloat;
+    this.Jwc = paramFloat;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(164286);
     super.setOnClickListener(paramOnClickListener);
-    this.pgj = paramOnClickListener;
+    this.gst = paramOnClickListener;
     AppMethodBeat.o(164286);
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.HWb = paramOnLongClickListener;
+    this.JwM = paramOnLongClickListener;
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
@@ -1960,11 +1911,11 @@ public class PhotoView
       AppMethodBeat.o(164287);
       return;
     }
-    if (paramScaleType != this.HVA)
+    if (paramScaleType != this.Jwl)
     {
-      this.HVA = paramScaleType;
-      if (this.csX) {
-        fir();
+      this.Jwl = paramScaleType;
+      if (this.cqf) {
+        fyE();
       }
     }
     AppMethodBeat.o(164287);
@@ -1974,15 +1925,15 @@ public class PhotoView
     implements Parcelable
   {
     public static final Parcelable.Creator<Info> CREATOR;
-    ImageView.ScaleType HVA;
-    float HVL;
-    RectF HVQ;
-    RectF HVR;
-    PointF HVT;
-    Rect HWh;
-    float cHQ;
-    public RectF lEo;
-    RectF rMx;
+    RectF JwB;
+    RectF JwC;
+    PointF JwE;
+    Rect JwS;
+    ImageView.ScaleType Jwl;
+    float Jww;
+    float cEY;
+    public RectF mgi;
+    RectF sUm;
     
     static
     {
@@ -1994,46 +1945,46 @@ public class PhotoView
     public Info(Rect paramRect1, RectF paramRectF1, RectF paramRectF2, RectF paramRectF3, PointF paramPointF, float paramFloat1, float paramFloat2, ImageView.ScaleType paramScaleType, Rect paramRect2)
     {
       AppMethodBeat.i(164262);
-      this.lEo = new RectF();
-      this.HVR = new RectF();
-      this.rMx = new RectF();
-      this.HVQ = new RectF();
-      this.HVT = new PointF();
-      this.HWh = new Rect();
-      this.lEo.set(paramRect1);
-      this.HVR.set(paramRectF1);
-      this.rMx.set(paramRectF2);
-      this.cHQ = paramFloat1;
-      this.HVA = paramScaleType;
-      this.HVL = paramFloat2;
-      this.HVQ.set(paramRectF3);
-      this.HVT.set(paramPointF);
-      this.HWh.set(paramRect2);
+      this.mgi = new RectF();
+      this.JwC = new RectF();
+      this.sUm = new RectF();
+      this.JwB = new RectF();
+      this.JwE = new PointF();
+      this.JwS = new Rect();
+      this.mgi.set(paramRect1);
+      this.JwC.set(paramRectF1);
+      this.sUm.set(paramRectF2);
+      this.cEY = paramFloat1;
+      this.Jwl = paramScaleType;
+      this.Jww = paramFloat2;
+      this.JwB.set(paramRectF3);
+      this.JwE.set(paramPointF);
+      this.JwS.set(paramRect2);
       AppMethodBeat.o(164262);
     }
     
     protected Info(Parcel paramParcel)
     {
       AppMethodBeat.i(164265);
-      this.lEo = new RectF();
-      this.HVR = new RectF();
-      this.rMx = new RectF();
-      this.HVQ = new RectF();
-      this.HVT = new PointF();
-      this.HWh = new Rect();
-      this.lEo = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-      this.HVR = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-      this.rMx = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-      this.HVQ = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
-      this.HVT = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
-      this.HWh = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
-      this.cHQ = paramParcel.readFloat();
-      this.HVL = paramParcel.readFloat();
+      this.mgi = new RectF();
+      this.JwC = new RectF();
+      this.sUm = new RectF();
+      this.JwB = new RectF();
+      this.JwE = new PointF();
+      this.JwS = new Rect();
+      this.mgi = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+      this.JwC = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+      this.sUm = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+      this.JwB = ((RectF)paramParcel.readParcelable(RectF.class.getClassLoader()));
+      this.JwE = ((PointF)paramParcel.readParcelable(PointF.class.getClassLoader()));
+      this.JwS = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
+      this.cEY = paramParcel.readFloat();
+      this.Jww = paramParcel.readFloat();
       int i = paramParcel.readInt();
       if (i == -1) {}
       for (paramParcel = null;; paramParcel = ImageView.ScaleType.values()[i])
       {
-        this.HVA = paramParcel;
+        this.Jwl = paramParcel;
         AppMethodBeat.o(164265);
         return;
       }
@@ -2047,7 +1998,7 @@ public class PhotoView
     public String toString()
     {
       AppMethodBeat.i(164263);
-      String str = "Info{mRect=" + this.lEo + ", mImgRect=" + this.HVR + ", mWidgetRect=" + this.rMx + ", mBaseRect=" + this.HVQ + ", mScale=" + this.cHQ + '}';
+      String str = "Info{mRect=" + this.mgi + ", mImgRect=" + this.JwC + ", mWidgetRect=" + this.sUm + ", mBaseRect=" + this.JwB + ", mScale=" + this.cEY + '}';
       AppMethodBeat.o(164263);
       return str;
     }
@@ -2055,16 +2006,16 @@ public class PhotoView
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(164264);
-      paramParcel.writeParcelable(this.lEo, paramInt);
-      paramParcel.writeParcelable(this.HVR, paramInt);
-      paramParcel.writeParcelable(this.rMx, paramInt);
-      paramParcel.writeParcelable(this.HVQ, paramInt);
-      paramParcel.writeParcelable(this.HVT, paramInt);
-      paramParcel.writeParcelable(this.HWh, paramInt);
-      paramParcel.writeFloat(this.cHQ);
-      paramParcel.writeFloat(this.HVL);
-      if (this.HVA == null) {}
-      for (paramInt = -1;; paramInt = this.HVA.ordinal())
+      paramParcel.writeParcelable(this.mgi, paramInt);
+      paramParcel.writeParcelable(this.JwC, paramInt);
+      paramParcel.writeParcelable(this.sUm, paramInt);
+      paramParcel.writeParcelable(this.JwB, paramInt);
+      paramParcel.writeParcelable(this.JwE, paramInt);
+      paramParcel.writeParcelable(this.JwS, paramInt);
+      paramParcel.writeFloat(this.cEY);
+      paramParcel.writeFloat(this.Jww);
+      if (this.Jwl == null) {}
+      for (paramInt = -1;; paramInt = this.Jwl.ordinal())
       {
         paramParcel.writeInt(paramInt);
         AppMethodBeat.o(164264);
@@ -2075,7 +2026,7 @@ public class PhotoView
   
   public static abstract interface a
   {
-    public abstract float fiB();
+    public abstract float fyO();
   }
   
   public final class b
@@ -2083,7 +2034,7 @@ public class PhotoView
   {
     public b() {}
     
-    public final float fiB()
+    public final float fyO()
     {
       AppMethodBeat.i(164260);
       float f = PhotoView.p(PhotoView.this).bottom;
@@ -2092,38 +2043,12 @@ public class PhotoView
     }
   }
   
-  final class c
-    implements Interpolator
-  {
-    Interpolator HWj;
-    
-    private c()
-    {
-      AppMethodBeat.i(164267);
-      this.HWj = new DecelerateInterpolator();
-      AppMethodBeat.o(164267);
-    }
-    
-    public final float getInterpolation(float paramFloat)
-    {
-      AppMethodBeat.i(164268);
-      if (this.HWj != null)
-      {
-        paramFloat = this.HWj.getInterpolation(paramFloat);
-        AppMethodBeat.o(164268);
-        return paramFloat;
-      }
-      AppMethodBeat.o(164268);
-      return paramFloat;
-    }
-  }
-  
   public final class d
     implements PhotoView.a
   {
     public d() {}
     
-    public final float fiB()
+    public final float fyO()
     {
       AppMethodBeat.i(164269);
       float f = (PhotoView.p(PhotoView.this).top + PhotoView.p(PhotoView.this).bottom) / 2.0F;
@@ -2139,9 +2064,9 @@ public class PhotoView
   
   public final class f
   {
-    PhotoView.e HWk;
-    float HWl;
-    float HWm;
+    PhotoView.e JwV;
+    float JwW;
+    float JwX;
     float x1;
     float x2;
     float y1;
@@ -2149,7 +2074,7 @@ public class PhotoView
     
     public f(PhotoView.e parame)
     {
-      this.HWk = parame;
+      this.JwV = parame;
     }
     
     final float al(MotionEvent paramMotionEvent)
@@ -2170,7 +2095,7 @@ public class PhotoView
   {
     public g() {}
     
-    public final float fiB()
+    public final float fyO()
     {
       AppMethodBeat.i(164271);
       float f = PhotoView.p(PhotoView.this).top;
@@ -2182,35 +2107,35 @@ public class PhotoView
   final class h
     implements Runnable
   {
-    OverScroller HWn;
-    Scroller HWo;
-    Scroller HWp;
-    PhotoView.a HWq;
-    int HWr;
-    int HWs;
-    RectF HWt;
-    PhotoView.c HWu;
-    int arE;
-    int arF;
+    OverScroller JwY;
+    Scroller JwZ;
+    Scroller Jxa;
+    PhotoView.a Jxb;
+    int Jxc;
+    int Jxd;
+    RectF Jxe;
+    PhotoView.c Jxf;
+    int asA;
+    int asz;
     boolean isRunning;
-    OverScroller rMv;
-    Scroller xYX;
+    OverScroller sUk;
+    Scroller zlU;
     
     h()
     {
       AppMethodBeat.i(164273);
-      this.HWt = new RectF();
-      this.HWu = new PhotoView.c(PhotoView.this, (byte)0);
+      this.Jxe = new RectF();
+      this.Jxf = new PhotoView.c(PhotoView.this, (byte)0);
       this$1 = PhotoView.this.getContext();
-      this.HWn = new OverScroller(PhotoView.this, this.HWu);
-      this.xYX = new Scroller(PhotoView.this, this.HWu);
-      this.rMv = new OverScroller(PhotoView.this, this.HWu);
-      this.HWo = new Scroller(PhotoView.this, this.HWu);
-      this.HWp = new Scroller(PhotoView.this, this.HWu);
+      this.JwY = new OverScroller(PhotoView.this, this.Jxf);
+      this.zlU = new Scroller(PhotoView.this, this.Jxf);
+      this.sUk = new OverScroller(PhotoView.this, this.Jxf);
+      this.JwZ = new Scroller(PhotoView.this, this.Jxf);
+      this.Jxa = new Scroller(PhotoView.this, this.Jxf);
       AppMethodBeat.o(164273);
     }
     
-    private void fiC()
+    private void fyP()
     {
       AppMethodBeat.i(164281);
       PhotoView.d(PhotoView.this).reset();
@@ -2224,7 +2149,7 @@ public class PhotoView
       AppMethodBeat.o(164281);
     }
     
-    private void fiD()
+    private void fyQ()
     {
       AppMethodBeat.i(164282);
       if (this.isRunning) {
@@ -2236,31 +2161,31 @@ public class PhotoView
     final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, PhotoView.a parama)
     {
       AppMethodBeat.i(164276);
-      this.HWo.startScroll((int)(paramFloat1 * 10000.0F), (int)(paramFloat2 * 10000.0F), (int)(paramFloat3 * 10000.0F), (int)(10000.0F * paramFloat4), paramInt);
-      this.HWq = parama;
+      this.JwZ.startScroll((int)(paramFloat1 * 10000.0F), (int)(paramFloat2 * 10000.0F), (int)(paramFloat3 * 10000.0F), (int)(10000.0F * paramFloat4), paramInt);
+      this.Jxb = parama;
       AppMethodBeat.o(164276);
     }
     
-    final void ak(float paramFloat1, float paramFloat2)
+    final void ao(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(164275);
-      this.xYX.startScroll((int)(paramFloat1 * 10000.0F), 0, (int)((paramFloat2 - paramFloat1) * 10000.0F), 0, PhotoView.F(PhotoView.this));
+      this.zlU.startScroll((int)(paramFloat1 * 10000.0F), 0, (int)((paramFloat2 - paramFloat1) * 10000.0F), 0, PhotoView.F(PhotoView.this));
       AppMethodBeat.o(164275);
     }
     
-    final void jT(int paramInt1, int paramInt2)
+    final void kf(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(164274);
-      this.HWr = 0;
-      this.HWs = 0;
-      this.HWn.startScroll(0, 0, paramInt1, paramInt2, PhotoView.F(PhotoView.this));
+      this.Jxc = 0;
+      this.Jxd = 0;
+      this.JwY.startScroll(0, 0, paramInt1, paramInt2, PhotoView.F(PhotoView.this));
       AppMethodBeat.o(164274);
     }
     
-    final void jU(int paramInt1, int paramInt2)
+    final void kg(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(164277);
-      this.HWp.startScroll(paramInt1, 0, paramInt2 - paramInt1, 0, PhotoView.F(PhotoView.this));
+      this.Jxa.startScroll(paramInt1, 0, paramInt2 - paramInt1, 0, PhotoView.F(PhotoView.this));
       AppMethodBeat.o(164277);
     }
     
@@ -2269,65 +2194,65 @@ public class PhotoView
       int j = 1;
       int k = 0;
       AppMethodBeat.i(164280);
-      if (this.xYX.computeScrollOffset()) {
-        PhotoView.c(PhotoView.this, this.xYX.getCurrX() / 10000.0F);
+      if (this.zlU.computeScrollOffset()) {
+        PhotoView.c(PhotoView.this, this.zlU.getCurrX() / 10000.0F);
       }
       for (int i = 0;; i = 1)
       {
         int m;
         int n;
         int i1;
-        if (this.HWn.computeScrollOffset())
+        if (this.JwY.computeScrollOffset())
         {
-          i = this.HWn.getCurrX();
-          m = this.HWr;
-          n = this.HWn.getCurrY();
-          i1 = this.HWs;
+          i = this.JwY.getCurrX();
+          m = this.Jxc;
+          n = this.JwY.getCurrY();
+          i1 = this.Jxd;
           PhotoView.a(PhotoView.this, i - m + PhotoView.r(PhotoView.this));
           PhotoView.b(PhotoView.this, n - i1 + PhotoView.v(PhotoView.this));
-          this.HWr = this.HWn.getCurrX();
-          this.HWs = this.HWn.getCurrY();
+          this.Jxc = this.JwY.getCurrX();
+          this.Jxd = this.JwY.getCurrY();
           i = 0;
         }
-        if (this.rMv.computeScrollOffset())
+        if (this.sUk.computeScrollOffset())
         {
-          i = this.rMv.getCurrX();
-          m = this.arE;
-          n = this.rMv.getCurrY();
-          i1 = this.arF;
-          this.arE = this.rMv.getCurrX();
-          this.arF = this.rMv.getCurrY();
+          i = this.sUk.getCurrX();
+          m = this.asz;
+          n = this.sUk.getCurrY();
+          i1 = this.asA;
+          this.asz = this.sUk.getCurrX();
+          this.asA = this.sUk.getCurrY();
           PhotoView.a(PhotoView.this, i - m + PhotoView.r(PhotoView.this));
           PhotoView.b(PhotoView.this, n - i1 + PhotoView.v(PhotoView.this));
           i = 0;
         }
-        if (this.HWp.computeScrollOffset())
+        if (this.Jxa.computeScrollOffset())
         {
-          PhotoView.b(PhotoView.this, this.HWp.getCurrX());
+          PhotoView.b(PhotoView.this, this.Jxa.getCurrX());
           i = 0;
         }
-        if ((this.HWo.computeScrollOffset()) || (PhotoView.H(PhotoView.this) != null))
+        if ((this.JwZ.computeScrollOffset()) || (PhotoView.H(PhotoView.this) != null))
         {
-          float f1 = this.HWo.getCurrX() / 10000.0F;
-          float f2 = this.HWo.getCurrY() / 10000.0F;
-          PhotoView.A(PhotoView.this).setScale(f1, f2, (PhotoView.p(PhotoView.this).left + PhotoView.p(PhotoView.this).right) / 2.0F, this.HWq.fiB());
-          PhotoView.A(PhotoView.this).mapRect(this.HWt, PhotoView.p(PhotoView.this));
+          float f1 = this.JwZ.getCurrX() / 10000.0F;
+          float f2 = this.JwZ.getCurrY() / 10000.0F;
+          PhotoView.A(PhotoView.this).setScale(f1, f2, (PhotoView.p(PhotoView.this).left + PhotoView.p(PhotoView.this).right) / 2.0F, this.Jxb.fyO());
+          PhotoView.A(PhotoView.this).mapRect(this.Jxe, PhotoView.p(PhotoView.this));
           if (f1 == 1.0F)
           {
-            this.HWt.left = PhotoView.q(PhotoView.this).left;
-            this.HWt.right = PhotoView.q(PhotoView.this).right;
+            this.Jxe.left = PhotoView.q(PhotoView.this).left;
+            this.Jxe.right = PhotoView.q(PhotoView.this).right;
           }
           if (f2 == 1.0F)
           {
-            this.HWt.top = PhotoView.q(PhotoView.this).top;
-            this.HWt.bottom = PhotoView.q(PhotoView.this).bottom;
+            this.Jxe.top = PhotoView.q(PhotoView.this).top;
+            this.Jxe.bottom = PhotoView.q(PhotoView.this).bottom;
           }
-          PhotoView.b(PhotoView.this, this.HWt);
+          PhotoView.b(PhotoView.this, this.Jxe);
         }
         if (i == 0)
         {
-          fiC();
-          fiD();
+          fyP();
+          fyQ();
           AppMethodBeat.o(164280);
           return;
         }
@@ -2356,7 +2281,7 @@ public class PhotoView
         for (;;)
         {
           if (i != 0) {
-            fiC();
+            fyP();
           }
           PhotoView.this.invalidate();
           if (PhotoView.I(PhotoView.this) != null) {
@@ -2394,7 +2319,7 @@ public class PhotoView
     {
       AppMethodBeat.i(164278);
       this.isRunning = true;
-      fiD();
+      fyQ();
       AppMethodBeat.o(164278);
     }
     
@@ -2402,10 +2327,10 @@ public class PhotoView
     {
       AppMethodBeat.i(164279);
       PhotoView.this.removeCallbacks(this);
-      this.HWn.abortAnimation();
-      this.xYX.abortAnimation();
-      this.rMv.abortAnimation();
-      this.HWp.abortAnimation();
+      this.JwY.abortAnimation();
+      this.zlU.abortAnimation();
+      this.sUk.abortAnimation();
+      this.Jxa.abortAnimation();
       this.isRunning = false;
       AppMethodBeat.o(164279);
     }
@@ -2413,23 +2338,23 @@ public class PhotoView
   
   public static final class i
   {
-    public RectF HWA;
-    RectF HWB;
-    RectF HWC;
-    PointF HWD;
-    PointF HWE;
-    PointF HWF;
-    Matrix HWw;
-    public Matrix HWx;
-    Matrix HWy;
-    RectF HWz;
-    Matrix oQ;
-    public RectF rFY;
+    Matrix Jxh;
+    public Matrix Jxi;
+    Matrix Jxj;
+    RectF Jxk;
+    public RectF Jxl;
+    RectF Jxm;
+    RectF Jxn;
+    PointF Jxo;
+    PointF Jxp;
+    PointF Jxq;
+    Matrix pP;
+    public RectF wzl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.view.PhotoView
  * JD-Core Version:    0.7.0.1
  */

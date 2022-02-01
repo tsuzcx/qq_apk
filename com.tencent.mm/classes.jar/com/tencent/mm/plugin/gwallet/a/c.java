@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public int std;
-  String ste;
+  public int tAT;
+  String tAU;
   
   public c(int paramInt, String paramString)
   {
     AppMethodBeat.i(64601);
-    this.std = paramInt;
+    this.tAT = paramInt;
     if ((paramString == null) || (paramString.trim().length() == 0))
     {
-      this.ste = b.ER(paramInt);
+      this.tAU = b.GN(paramInt);
       AppMethodBeat.o(64601);
       return;
     }
-    this.ste = (paramString + " (response: " + b.ER(paramInt) + ")");
+    this.tAU = (paramString + " (response: " + b.GN(paramInt) + ")");
     AppMethodBeat.o(64601);
   }
   
-  public final int cFr()
+  public final int cSB()
   {
-    switch (this.std)
+    switch (this.tAT)
     {
     default: 
-      return this.std;
+      return this.tAT;
     case 0: 
       return 0;
     case 1: 
@@ -52,20 +52,20 @@ public final class c
   
   public final boolean isSuccess()
   {
-    return this.std == 0;
+    return this.tAT == 0;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(64602);
-    String str = "IapResult: " + this.ste;
+    String str = "IapResult: " + this.tAU;
     AppMethodBeat.o(64602);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.a.c
  * JD-Core Version:    0.7.0.1
  */

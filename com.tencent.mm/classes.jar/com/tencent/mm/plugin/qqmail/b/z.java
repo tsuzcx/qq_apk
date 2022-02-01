@@ -8,68 +8,68 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bo;
 import java.io.IOException;
 import java.util.LinkedList;
 
 public final class z
 {
-  public y uMo;
+  public y vVe;
   
   public z()
   {
     AppMethodBeat.i(122760);
-    String str = (String)g.afB().afk().get(282625, "");
+    String str = (String)g.agR().agA().get(282625, "");
     try
     {
-      this.uMo = new y();
-      this.uMo.parseFrom(Base64.decode(str, 0));
+      this.vVe = new y();
+      this.vVe.parseFrom(Base64.decode(str, 0));
       AppMethodBeat.o(122760);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localException, "", new Object[0]);
-      ad.w("MicroMsg.ShareMailInfoMgr", "parse from config fail");
-      this.uMo = new y();
+      ac.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localException, "", new Object[0]);
+      ac.w("MicroMsg.ShareMailInfoMgr", "parse from config fail");
+      this.vVe = new y();
       AppMethodBeat.o(122760);
     }
   }
   
-  public static void akZ(String paramString)
+  public static void apY(String paramString)
   {
     AppMethodBeat.i(122762);
-    bl localbl = new bl();
-    localbl.nY("qqmail");
-    localbl.kY(bi.uj("qqmail"));
-    localbl.jV(0);
-    localbl.setContent(String.format(aj.getContext().getString(2131763061), new Object[] { paramString }));
-    localbl.setType(1);
-    localbl.setStatus(3);
-    ad.d("MicroMsg.ShareMailInfoMgr", "send mail fail, publish fail message, id: %d", new Object[] { Long.valueOf(((k)g.ab(k.class)).cOI().an(localbl)) });
+    bo localbo = new bo();
+    localbo.re("qqmail");
+    localbo.oA(bi.yp("qqmail"));
+    localbo.jT(0);
+    localbo.setContent(String.format(ai.getContext().getString(2131763061), new Object[] { paramString }));
+    localbo.setType(1);
+    localbo.setStatus(3);
+    ac.d("MicroMsg.ShareMailInfoMgr", "send mail fail, publish fail message, id: %d", new Object[] { Long.valueOf(((k)g.ab(k.class)).dcr().ap(localbo)) });
     AppMethodBeat.o(122762);
   }
   
-  public final void akY(String paramString)
+  public final void apX(String paramString)
   {
     AppMethodBeat.i(122761);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.ShareMailInfoMgr", "remove info fail, info is null");
+      ac.w("MicroMsg.ShareMailInfoMgr", "remove info fail, info is null");
       AppMethodBeat.o(122761);
       return;
     }
     int i = 0;
     for (;;)
     {
-      if (i < this.uMo.tvP.size())
+      if (i < this.vVe.uEi.size())
       {
-        if (((x)this.uMo.tvP.get(i)).uLh.equals(paramString)) {
-          this.uMo.tvP.remove(i);
+        if (((x)this.vVe.uEi.get(i)).vTY.equals(paramString)) {
+          this.vVe.uEi.remove(i);
         }
       }
       else
@@ -87,23 +87,23 @@ public final class z
     AppMethodBeat.i(122763);
     try
     {
-      String str = Base64.encodeToString(this.uMo.toByteArray(), 0);
-      ad.d("MicroMsg.ShareMailInfoMgr", "save %s", new Object[] { str });
-      g.afB().afk().set(282625, str);
+      String str = Base64.encodeToString(this.vVe.toByteArray(), 0);
+      ac.d("MicroMsg.ShareMailInfoMgr", "save %s", new Object[] { str });
+      g.agR().agA().set(282625, str);
       AppMethodBeat.o(122763);
       return;
     }
     catch (IOException localIOException)
     {
-      ad.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localIOException, "", new Object[0]);
-      ad.w("MicroMsg.ShareMailInfoMgr", "save to config fail");
+      ac.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localIOException, "", new Object[0]);
+      ac.w("MicroMsg.ShareMailInfoMgr", "save to config fail");
       AppMethodBeat.o(122763);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.z
  * JD-Core Version:    0.7.0.1
  */

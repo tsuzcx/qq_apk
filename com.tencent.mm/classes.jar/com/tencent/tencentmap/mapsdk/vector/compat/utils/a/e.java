@@ -18,15 +18,15 @@ public class e
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(190551);
+    AppMethodBeat.i(192370);
     paramCanvas.translate(this.b / 2, this.a / 2);
     super.draw(paramCanvas);
-    AppMethodBeat.o(190551);
+    AppMethodBeat.o(192370);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190550);
+    AppMethodBeat.i(192369);
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
@@ -37,7 +37,7 @@ public class e
     for (this.b = 0;; this.b = (paramInt2 - paramInt1))
     {
       setMeasuredDimension(i, i);
-      AppMethodBeat.o(190550);
+      AppMethodBeat.o(192369);
       return;
       this.a = 0;
     }
@@ -45,7 +45,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.a.e
  * JD-Core Version:    0.7.0.1
  */

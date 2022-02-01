@@ -14,20 +14,20 @@ public final class n
   extends k
   implements l
 {
-  private HashSet<k> iYb;
+  private HashSet<k> jys;
   
   public n()
   {
     AppMethodBeat.i(35256);
-    this.iYb = new HashSet();
+    this.jys = new HashSet();
     AppMethodBeat.o(35256);
   }
   
   public final void a(k paramk)
   {
     AppMethodBeat.i(35257);
-    if (!this.iYb.contains(paramk)) {
-      this.iYb.add(paramk);
+    if (!this.jys.contains(paramk)) {
+      this.jys.add(paramk);
     }
     AppMethodBeat.o(35257);
   }
@@ -35,14 +35,14 @@ public final class n
   public final void b(k paramk)
   {
     AppMethodBeat.i(35258);
-    this.iYb.remove(paramk);
+    this.jys.remove(paramk);
     AppMethodBeat.o(35258);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(35259);
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -53,7 +53,7 @@ public final class n
   {
     AppMethodBeat.i(35262);
     super.onConfigurationChanged(paramConfiguration);
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onConfigurationChanged(paramConfiguration);
     }
@@ -62,19 +62,19 @@ public final class n
   
   public final void onFinish()
   {
-    AppMethodBeat.i(191516);
+    AppMethodBeat.i(196471);
     super.onFinish();
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onFinish();
     }
-    AppMethodBeat.o(191516);
+    AppMethodBeat.o(196471);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(35260);
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       if (((k)localIterator.next()).onKeyDown(paramInt, paramKeyEvent))
       {
@@ -90,7 +90,7 @@ public final class n
   {
     AppMethodBeat.i(35261);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
@@ -101,7 +101,7 @@ public final class n
   {
     AppMethodBeat.i(35263);
     super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
@@ -112,7 +112,7 @@ public final class n
   {
     AppMethodBeat.i(35264);
     super.onScrollStateChanged(paramAbsListView, paramInt);
-    Iterator localIterator = this.iYb.iterator();
+    Iterator localIterator = this.jys.iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
     }
@@ -121,7 +121,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.n
  * JD-Core Version:    0.7.0.1
  */

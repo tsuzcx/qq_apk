@@ -13,7 +13,7 @@ import java.util.Set;
 public final class j
   implements h
 {
-  private volatile Map<String, String> aHy;
+  private volatile Map<String, String> aIo;
   private final Map<String, List<i>> headers;
   
   j(Map<String, List<i>> paramMap)
@@ -23,7 +23,7 @@ public final class j
     AppMethodBeat.o(77249);
   }
   
-  private static String r(List<i> paramList)
+  private static String q(List<i> paramList)
   {
     AppMethodBeat.i(77251);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ public final class j
     int i = 0;
     while (i < j)
     {
-      String str = ((i)paramList.get(i)).oL();
+      String str = ((i)paramList.get(i)).oV();
       if (!TextUtils.isEmpty(str))
       {
         localStringBuilder.append(str);
@@ -63,22 +63,22 @@ public final class j
   public final Map<String, String> getHeaders()
   {
     AppMethodBeat.i(77250);
-    if (this.aHy == null) {
+    if (this.aIo == null) {
       try
       {
-        if (this.aHy == null)
+        if (this.aIo == null)
         {
           HashMap localHashMap = new HashMap();
           Iterator localIterator = this.headers.entrySet().iterator();
           while (localIterator.hasNext())
           {
             Map.Entry localEntry = (Map.Entry)localIterator.next();
-            String str = r((List)localEntry.getValue());
+            String str = q((List)localEntry.getValue());
             if (!TextUtils.isEmpty(str)) {
               localHashMap.put(localEntry.getKey(), str);
             }
           }
-          this.aHy = Collections.unmodifiableMap(localMap1);
+          this.aIo = Collections.unmodifiableMap(localMap1);
         }
       }
       finally
@@ -86,7 +86,7 @@ public final class j
         AppMethodBeat.o(77250);
       }
     }
-    Map localMap2 = this.aHy;
+    Map localMap2 = this.aIo;
     AppMethodBeat.o(77250);
     return localMap2;
   }
@@ -109,11 +109,11 @@ public final class j
   
   public static final class a
   {
-    private static final Map<String, List<i>> aHA;
-    private static final String aHz;
-    boolean aHB = true;
-    private boolean aHC = true;
-    Map<String, List<i>> headers = aHA;
+    private static final String aIp;
+    private static final Map<String, List<i>> aIq;
+    boolean aIr = true;
+    private boolean aIs = true;
+    Map<String, List<i>> headers = aIq;
     
     static
     {
@@ -122,12 +122,12 @@ public final class j
       if (TextUtils.isEmpty((CharSequence)localObject)) {}
       for (;;)
       {
-        aHz = (String)localObject;
+        aIp = (String)localObject;
         localObject = new HashMap(2);
-        if (!TextUtils.isEmpty(aHz)) {
-          ((Map)localObject).put("User-Agent", Collections.singletonList(new j.b(aHz)));
+        if (!TextUtils.isEmpty(aIp)) {
+          ((Map)localObject).put("User-Agent", Collections.singletonList(new j.b(aIp)));
         }
-        aHA = Collections.unmodifiableMap((Map)localObject);
+        aIq = Collections.unmodifiableMap((Map)localObject);
         AppMethodBeat.o(77245);
         return;
         int j = ((String)localObject).length();
@@ -183,7 +183,7 @@ public final class j
       return i;
     }
     
-    public final String oL()
+    public final String oV()
     {
       return this.value;
     }

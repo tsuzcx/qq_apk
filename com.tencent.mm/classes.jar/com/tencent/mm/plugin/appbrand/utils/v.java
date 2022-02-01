@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.appbrand.utils;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.d;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -22,7 +23,7 @@ import org.json.JSONObject;
 
 public final class v
 {
-  public static final v.b a(i parami, Map paramMap, v.a parama)
+  public static final v.b a(i parami, Map paramMap, a parama)
   {
     boolean bool2 = false;
     AppMethodBeat.i(140856);
@@ -35,15 +36,15 @@ public final class v
         if (paramMap == null) {
           bool2 = true;
         }
-        ad.e("MicroMsg.NativeBufferUtil", "processNativeBufferToJs fail, invalid argument, jsruntime is null:[%b], map is null:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        parami = v.b.lMJ;
+        ac.e("MicroMsg.NativeBufferUtil", "processNativeBufferToJs fail, invalid argument, jsruntime is null:[%b], map is null:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        parami = v.b.moG;
         AppMethodBeat.o(140856);
         return parami;
       }
     }
-    v.a locala = parama;
+    a locala = parama;
     if (parama == null) {
-      locala = new v.a();
+      locala = new a();
     }
     parama = (k)parami.P(k.class);
     JSONArray localJSONArray = new JSONArray();
@@ -66,7 +67,7 @@ public final class v
         try
         {
           parami = new JSONObject();
-          parami.put(locala.lMG, localObject1);
+          parami.put(locala.moD, localObject1);
           if (parama != null)
           {
             k = parama.getNativeBufferId();
@@ -74,7 +75,7 @@ public final class v
             {
               localObject1 = (ByteBuffer)localObject2;
               if (localObject1 == null) {
-                ad.w("MicroMsg.NativeBufferUtil", "processNativeBufferToJs byteBuffer is null");
+                ac.w("MicroMsg.NativeBufferUtil", "processNativeBufferToJs byteBuffer is null");
               }
             }
           }
@@ -84,11 +85,11 @@ public final class v
     }
     for (;;)
     {
-      ad.w("MicroMsg.NativeBufferUtil", "processNativeBuffer JSONException :%s", new Object[] { parami.getMessage() });
+      ac.w("MicroMsg.NativeBufferUtil", "processNativeBuffer JSONException :%s", new Object[] { parami.getMessage() });
       localIterator.remove();
       break;
       parama.setNativeBuffer(k, (ByteBuffer)localObject1);
-      parami.put(locala.lMH, k);
+      parami.put(locala.moE, k);
       k = ((ByteBuffer)localObject1).capacity();
       i += k;
       for (;;)
@@ -100,30 +101,30 @@ public final class v
         }
         catch (JSONException parami) {}
         localObject1 = new String(Base64.encode(d.q((ByteBuffer)localObject2), 2), StandardCharsets.UTF_8);
-        parami.put(locala.lMI, localObject1);
+        parami.put(locala.moF, localObject1);
       }
       if (parama != null) {}
       for (bool1 = true;; bool1 = false)
       {
-        ad.d("MicroMsg.NativeBufferUtil", "ToJs useX5JSCore %b,bufferSize %d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) });
-        if (i <= locala.jcA) {
+        ac.d("MicroMsg.NativeBufferUtil", "ToJs useX5JSCore %b,bufferSize %d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i) });
+        if (i <= locala.jCN) {
           break;
         }
-        ad.e("MicroMsg.NativeBufferUtil", "bufferSize exceed the limit, bufferSize = %d, limit = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(locala.jcA) });
-        parami = v.b.lMK;
+        ac.e("MicroMsg.NativeBufferUtil", "bufferSize exceed the limit, bufferSize = %d, limit = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(locala.jCN) });
+        parami = v.b.moH;
         AppMethodBeat.o(140856);
         return parami;
       }
       if (j != 0) {
-        paramMap.put(locala.lMF, localJSONArray);
+        paramMap.put(locala.moC, localJSONArray);
       }
-      parami = v.b.lMJ;
+      parami = v.b.moG;
       AppMethodBeat.o(140856);
       return parami;
     }
   }
   
-  public static final v.b a(i parami, JSONObject paramJSONObject, v.a parama)
+  public static final v.b a(i parami, JSONObject paramJSONObject, a parama)
   {
     boolean bool2 = false;
     AppMethodBeat.i(140857);
@@ -135,24 +136,24 @@ public final class v
         if (paramJSONObject == null) {
           bool2 = true;
         }
-        ad.e("MicroMsg.NativeBufferUtil", "processNativeBufferToJs fail, invalid argument, jsruntime is null:[%b], data is null:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        parami = v.b.lMJ;
+        ac.e("MicroMsg.NativeBufferUtil", "processNativeBufferToJs fail, invalid argument, jsruntime is null:[%b], data is null:[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        parami = v.b.moG;
         AppMethodBeat.o(140857);
         return parami;
       }
     }
-    v.a locala = parama;
+    a locala = parama;
     if (parama == null) {
-      locala = new v.a();
+      locala = new a();
     }
-    parama = paramJSONObject.optJSONArray(locala.lMF);
+    parama = paramJSONObject.optJSONArray(locala.moC);
     if (parama == null)
     {
-      parami = v.b.lMJ;
+      parami = v.b.moG;
       AppMethodBeat.o(140857);
       return parami;
     }
-    paramJSONObject.remove(locala.lMF);
+    paramJSONObject.remove(locala.moC);
     int k = parama.length();
     int j = 0;
     int i = 0;
@@ -163,17 +164,17 @@ public final class v
         Object localObject = parama.optJSONObject(j);
         if (localObject != null)
         {
-          String str = ((JSONObject)localObject).optString(locala.lMG);
-          if (!bt.isNullOrNil(str))
+          String str = ((JSONObject)localObject).optString(locala.moD);
+          if (!bs.isNullOrNil(str))
           {
-            int m = ((JSONObject)localObject).optInt(locala.lMH, -1);
+            int m = ((JSONObject)localObject).optInt(locala.moE, -1);
             if (m == -1) {}
             try
             {
-              localObject = ((JSONObject)localObject).optString(locala.lMI, "");
-              if (bt.isNullOrNil((String)localObject))
+              localObject = ((JSONObject)localObject).optString(locala.moF, "");
+              if (bs.isNullOrNil((String)localObject))
               {
-                ad.i("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs base64 is null");
+                ac.i("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs base64 is null");
                 paramJSONObject.put(str, ByteBuffer.allocate(0));
               }
               else
@@ -183,18 +184,18 @@ public final class v
             }
             catch (JSONException localJSONException)
             {
-              ad.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs JSONException :%s", new Object[] { localJSONException.getMessage() });
+              ac.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs JSONException :%s", new Object[] { localJSONException.getMessage() });
             }
             localObject = (k)parami.P(k.class);
             if (localObject == null)
             {
-              ad.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs bufferAddon is null, not support");
+              ac.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs bufferAddon is null, not support");
               break label456;
             }
             localObject = ((k)localObject).getNativeBuffer(m);
             if (localObject == null)
             {
-              ad.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs byteBuffer is null");
+              ac.w("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs byteBuffer is null");
               break label456;
             }
             ((ByteBuffer)localObject).position(0);
@@ -207,15 +208,15 @@ public final class v
       }
       else
       {
-        ad.d("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs bufferSize %d", new Object[] { Integer.valueOf(i) });
-        if (i > locala.jcA)
+        ac.d("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs bufferSize %d", new Object[] { Integer.valueOf(i) });
+        if (i > locala.jCN)
         {
-          ad.e("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs fail, size exceed limit, bufferSize = %d, limit = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(locala.jcA) });
-          parami = v.b.lMK;
+          ac.e("MicroMsg.NativeBufferUtil", "processNativeBufferFromJs fail, size exceed limit, bufferSize = %d, limit = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(locala.jCN) });
+          parami = v.b.moH;
           AppMethodBeat.o(140857);
           return parami;
         }
-        parami = v.b.lMJ;
+        parami = v.b.moG;
         AppMethodBeat.o(140857);
         return parami;
       }
@@ -224,7 +225,7 @@ public final class v
     }
   }
   
-  public static ByteBuffer az(byte[] paramArrayOfByte)
+  public static ByteBuffer ay(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(140855);
     if (paramArrayOfByte == null)
@@ -245,13 +246,23 @@ public final class v
     HashMap localHashMap = new HashMap();
     localHashMap.put("message", "convert native buffer parameter fail, event=" + paramString + ", error=native buffer exceed size limit");
     localHashMap.put("stack", "");
-    paramc.bR("onError", new JSONObject(localHashMap).toString());
+    paramc.bZ("onError", new JSONObject(localHashMap).toString());
     AppMethodBeat.o(140858);
+  }
+  
+  public static class a
+    implements j
+  {
+    public int jCN = 2147483647;
+    public String moC = "__nativeBuffers__";
+    public String moD = "key";
+    public String moE = "id";
+    public String moF = "base64";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.v
  * JD-Core Version:    0.7.0.1
  */

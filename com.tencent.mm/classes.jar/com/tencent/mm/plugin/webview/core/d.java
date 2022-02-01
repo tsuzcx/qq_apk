@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.webview.core;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"})
 public abstract interface d
 {
   public abstract void a(c paramc);
   
-  public abstract boolean ejl();
+  public abstract boolean eyG();
 }
 
 

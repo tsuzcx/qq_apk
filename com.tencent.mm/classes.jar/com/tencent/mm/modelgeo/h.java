@@ -13,23 +13,23 @@ import com.tencent.map.geolocation.internal.LocationLogCallback;
 import com.tencent.map.geolocation.internal.TencentExtraKeys;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class h
 {
-  private static h heQ = null;
+  private static h hFt = null;
   private static Context mContext;
-  private ap heR;
+  private ao hFu;
   
   private h()
   {
     AppMethodBeat.i(150507);
-    HandlerThread localHandlerThread = d.aNZ("SLocationManager");
+    HandlerThread localHandlerThread = d.aTC("SLocationManager");
     localHandlerThread.start();
-    this.heR = new ap(localHandlerThread.getLooper());
-    TencentExtraKeys.setContext(aj.getContext());
+    this.hFu = new ao(localHandlerThread.getLooper());
+    TencentExtraKeys.setContext(ai.getContext());
     try
     {
       TencentExtraKeys.setTencentLogCallback(new LocationLogCallback()
@@ -43,26 +43,26 @@ public final class h
             AppMethodBeat.o(150504);
             return;
           case 2: 
-            ad.v("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ac.v("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           case 3: 
-            ad.d("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ac.d("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           case 4: 
-            ad.i("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ac.i("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           case 5: 
-            ad.w("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ac.w("MicroMsg.SLocationManager", "tag:%s msg:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             AppMethodBeat.o(150504);
             return;
           }
           if (paramAnonymousThrowable != null) {}
           for (paramAnonymousThrowable = paramAnonymousThrowable.getMessage();; paramAnonymousThrowable = "")
           {
-            ad.e("MicroMsg.SLocationManager", "tag:%s msg:%s th:%s", new Object[] { paramAnonymousString1, paramAnonymousString2, paramAnonymousThrowable });
+            ac.e("MicroMsg.SLocationManager", "tag:%s msg:%s th:%s", new Object[] { paramAnonymousString1, paramAnonymousString2, paramAnonymousThrowable });
             break;
           }
         }
@@ -72,19 +72,19 @@ public final class h
     }
     catch (Exception localException)
     {
-      ad.m("MicroMsg.SLocationManager", "", new Object[] { localException });
+      ac.m("MicroMsg.SLocationManager", "", new Object[] { localException });
       AppMethodBeat.o(150507);
     }
   }
   
-  public static h cw(Context paramContext)
+  public static h cF(Context paramContext)
   {
     AppMethodBeat.i(150508);
-    if (heQ == null) {
-      heQ = new h();
+    if (hFt == null) {
+      hFt = new h();
     }
     mContext = paramContext;
-    paramContext = heQ;
+    paramContext = hFt;
     AppMethodBeat.o(150508);
     return paramContext;
   }
@@ -92,7 +92,7 @@ public final class h
   private void execute(Runnable paramRunnable)
   {
     AppMethodBeat.i(150509);
-    this.heR.post(paramRunnable);
+    this.hFu.post(paramRunnable);
     AppMethodBeat.o(150509);
   }
   
@@ -104,19 +104,19 @@ public final class h
       public final void run()
       {
         AppMethodBeat.i(150506);
-        ad.d("MicroMsg.SLocationManager", "requestLocationUpdate %s, isLoaded %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(TencentLocationManagerOptions.isLoadLibraryEnabled()) });
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(584L, 0L, 1L, true);
+        ac.d("MicroMsg.SLocationManager", "requestLocationUpdate %s, isLoaded %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(TencentLocationManagerOptions.isLoadLibraryEnabled()) });
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(584L, 0L, 1L, true);
         TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.getOAID())).setCoordinateType(paramInt);
         TencentLocationRequest localTencentLocationRequest = TencentLocationRequest.create();
         localTencentLocationRequest.setInterval(2000L);
-        ad.i("MicroMsg.SLocationManager", "requestCode %d", new Object[] { Integer.valueOf(TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.getOAID())).requestLocationUpdates(localTencentLocationRequest, paramTencentLocationListener, paramLooper)) });
+        ac.i("MicroMsg.SLocationManager", "requestCode %d", new Object[] { Integer.valueOf(TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.getOAID())).requestLocationUpdates(localTencentLocationRequest, paramTencentLocationListener, paramLooper)) });
         AppMethodBeat.o(150506);
       }
     });
     AppMethodBeat.o(150511);
   }
   
-  public final void axX()
+  public final void aEP()
   {
     AppMethodBeat.i(150510);
     execute(new Runnable()
@@ -124,7 +124,7 @@ public final class h
       public final void run()
       {
         AppMethodBeat.i(150505);
-        ad.d("MicroMsg.SLocationManager", "removeUpdate");
+        ac.d("MicroMsg.SLocationManager", "removeUpdate");
         TencentLocationManager.getInstance(h.mContext, new Pair("oaId", q.getOAID())).removeUpdates(null);
         AppMethodBeat.o(150505);
       }

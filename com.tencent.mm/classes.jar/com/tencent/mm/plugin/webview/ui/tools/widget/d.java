@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 public abstract interface d
 {
-  public abstract boolean f(int paramInt, Bundle paramBundle);
+  public abstract boolean g(int paramInt, Bundle paramBundle);
 }
 
 

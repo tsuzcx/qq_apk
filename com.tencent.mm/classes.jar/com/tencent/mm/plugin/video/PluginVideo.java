@@ -7,7 +7,7 @@ import com.tencent.mm.model.t;
 import com.tencent.mm.modelcontrol.d;
 import com.tencent.mm.modelvideo.n;
 import com.tencent.mm.plugin.video.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class PluginVideo
   extends f
@@ -16,8 +16,8 @@ public class PluginVideo
   public void configure(g paramg)
   {
     AppMethodBeat.i(176825);
-    if (paramg.agu()) {
-      com.tencent.mm.vfs.o.i("video", "video", 19, false);
+    if (paramg.ahL()) {
+      com.tencent.mm.vfs.o.aj("video", "video", 19);
     }
     AppMethodBeat.o(176825);
   }
@@ -25,8 +25,8 @@ public class PluginVideo
   public void execute(g paramg)
   {
     AppMethodBeat.i(127139);
-    ad.i("MicroMsg.PluginVideo", "plugin video execute");
-    if (paramg.agu())
+    ac.i("MicroMsg.PluginVideo", "plugin video execute");
+    if (paramg.ahL())
     {
       pin(new t(com.tencent.mm.modelvideo.o.class));
       pin(new t(d.class));
@@ -42,7 +42,7 @@ public class PluginVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.video.PluginVideo
  * JD-Core Version:    0.7.0.1
  */

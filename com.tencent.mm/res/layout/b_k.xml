@@ -3,6 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.plugin.sns.ui.AdFrameLayout android:orientation="horizontal" android:id="@id/fn_" android:paddingLeft="@dimen/hk" android:paddingTop="@dimen/hk" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/jn" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:id="@id/fn8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/huh" android:layout="@layout/btu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <ViewStub android:id="@id/fq3" android:layout="@layout/b_o" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView android:id="@id/gs" android:background="@null" android:focusable="false" android:src="@drawable/aq8" android:contentDescription="@string/a1d" style="@style/tg" />

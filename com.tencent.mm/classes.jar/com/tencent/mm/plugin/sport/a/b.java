@@ -9,17 +9,17 @@ public abstract interface b
 {
   public abstract void b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3);
   
-  public abstract void dFi();
+  public abstract void dTJ();
   
-  public abstract boolean dFj();
+  public abstract boolean dTK();
   
-  public abstract void dFk();
+  public abstract void dTL();
   
-  public abstract void dFl();
+  public abstract void dTM();
   
   public abstract void g(Activity paramActivity, String paramString);
   
-  public abstract boolean gb(Context paramContext);
+  public abstract boolean gn(Context paramContext);
 }
 
 

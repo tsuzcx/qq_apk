@@ -15,19 +15,19 @@ public final class a
       if ((paramg != null) && (paramg.width > 0) && (paramg.width > 0)) {
         return f.b(paramInputStream, paramg.width, paramg.height);
       }
-      return f.P(paramInputStream);
+      return f.O(paramInputStream);
     }
     return f.a(paramInputStream, 0.0F, paramInt2, paramInt1);
   }
   
   public static boolean d(com.tencent.mm.loader.h.a.a parama)
   {
-    return (parama == null) || (parama.ahO() == b.glM) || (parama.ahO() == b.glL) || (parama.ahO() == b.glN);
+    return (parama == null) || (parama.aoQ() == b.gMz) || (parama.aoQ() == b.gMy) || (parama.aoQ() == b.gMA);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.l.a
  * JD-Core Version:    0.7.0.1
  */

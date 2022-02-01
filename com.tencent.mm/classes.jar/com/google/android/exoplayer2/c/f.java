@@ -8,11 +8,11 @@ public abstract interface f
   
   public abstract boolean b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public abstract int dQ(int paramInt);
+  public abstract int dP(int paramInt);
+  
+  public abstract void dQ(int paramInt);
   
   public abstract void dR(int paramInt);
-  
-  public abstract void dS(int paramInt);
   
   public abstract long getLength();
   
@@ -22,9 +22,9 @@ public abstract interface f
   
   public abstract void readFully(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public abstract void sI();
+  public abstract void sR();
   
-  public abstract long sJ();
+  public abstract long sS();
 }
 
 

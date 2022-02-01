@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,35 +13,40 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ax.b;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.c.a;
+import com.tencent.mm.plugin.wallet_core.model.q;
+import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.wallet_core.c.c.a;
 
 public class OfflineAlertView
   extends LinearLayout
 {
   private View contentView;
-  ViewGroup hSI;
-  com.tencent.mm.pluginsdk.ui.span.h mYs;
-  public int ukO;
-  boolean ukP;
-  private a ukQ;
-  CountDownTimer ukR;
+  ViewGroup isN;
+  com.tencent.mm.pluginsdk.ui.span.h nAR;
+  public int vtK;
+  boolean vtL;
+  private a vtM;
+  CountDownTimer vtN;
   
   public OfflineAlertView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(66351);
-    this.ukO = 0;
+    this.vtK = 0;
     this.contentView = null;
-    this.hSI = null;
-    this.ukP = true;
-    this.ukQ = null;
+    this.isN = null;
+    this.vtL = true;
+    this.vtM = null;
     init();
     AppMethodBeat.o(66351);
   }
@@ -49,11 +55,11 @@ public class OfflineAlertView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(66352);
-    this.ukO = 0;
+    this.vtK = 0;
     this.contentView = null;
-    this.hSI = null;
-    this.ukP = true;
-    this.ukQ = null;
+    this.isN = null;
+    this.vtL = true;
+    this.vtM = null;
     init();
     AppMethodBeat.o(66352);
   }
@@ -62,26 +68,26 @@ public class OfflineAlertView
   {
     AppMethodBeat.i(66353);
     this.contentView = LayoutInflater.from(getContext()).inflate(2131495983, this);
-    this.hSI = ((ViewGroup)this.contentView.findViewById(2131302988));
+    this.isN = ((ViewGroup)this.contentView.findViewById(2131302988));
     AppMethodBeat.o(66353);
   }
   
-  public final boolean II(int paramInt)
+  public final boolean KH(int paramInt)
   {
     AppMethodBeat.i(66360);
     if (isShowing())
     {
-      if (paramInt == this.ukO)
+      if (paramInt == this.vtK)
       {
         AppMethodBeat.o(66360);
         return true;
       }
-      if ((paramInt == 2) && ((this.ukO == 3) || (this.ukO == 4) || (this.ukO == 2) || (this.ukO == 5)))
+      if ((paramInt == 2) && ((this.vtK == 3) || (this.vtK == 4) || (this.vtK == 2) || (this.vtK == 5)))
       {
         AppMethodBeat.o(66360);
         return true;
       }
-      if ((paramInt == 5) && (this.ukO == 4))
+      if ((paramInt == 5) && (this.vtK == 4))
       {
         AppMethodBeat.o(66360);
         return true;
@@ -113,9 +119,9 @@ public class OfflineAlertView
   final void a(final View paramView, View.OnClickListener paramOnClickListener, int paramInt)
   {
     AppMethodBeat.i(66357);
-    this.ukO = paramInt;
+    this.vtK = paramInt;
     setVisibility(0);
-    this.hSI.removeAllViews();
+    this.isN.removeAllViews();
     View localView = LayoutInflater.from(getContext()).inflate(2131495995, null);
     if (paramInt == 6) {
       ((TextView)localView.findViewById(2131296636)).setText(2131761790);
@@ -124,17 +130,27 @@ public class OfflineAlertView
     {
       ViewGroup localViewGroup = (ViewGroup)localView.findViewById(2131304275);
       if (localViewGroup != null) {
-        localViewGroup.setOnClickListener(new OfflineAlertView.11(this, paramView));
+        localViewGroup.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(66348);
+            paramAnonymousView = new Intent();
+            paramAnonymousView.putExtra("wallet_lock_jsapi_scene", 2);
+            d.b(paramView.getContext(), "wallet", ".pwd.ui.WalletSecuritySettingUI", paramAnonymousView);
+            AppMethodBeat.o(66348);
+          }
+        });
       }
-      this.hSI.addView(localView);
+      this.isN.addView(localView);
       ((Button)this.contentView.findViewById(2131300871)).setOnClickListener(paramOnClickListener);
-      this.ukP = false;
+      this.vtL = false;
       paramView.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(66349);
-          ad.i("MicroMsg.OfflineAlertView", "qrCodeView.getHeight%s %s", new Object[] { Integer.valueOf(paramView.getHeight()), Integer.valueOf(paramView.getMeasuredHeight()) });
+          ac.i("MicroMsg.OfflineAlertView", "qrCodeView.getHeight%s %s", new Object[] { Integer.valueOf(paramView.getHeight()), Integer.valueOf(paramView.getMeasuredHeight()) });
           FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)OfflineAlertView.a(OfflineAlertView.this).getLayoutParams();
           if (paramView.getHeight() > 0)
           {
@@ -150,7 +166,7 @@ public class OfflineAlertView
       });
       AppMethodBeat.o(66357);
       return;
-      if (((paramInt == 3) || (paramInt == 1)) && (b.yL((String)g.afB().afk().get(274436, null)))) {
+      if (((paramInt == 3) || (paramInt == 1)) && (b.CQ((String)g.agR().agA().get(274436, null)))) {
         ((TextView)localView.findViewById(2131296636)).setText(2131761799);
       }
     }
@@ -160,9 +176,9 @@ public class OfflineAlertView
   {
     AppMethodBeat.i(66354);
     setVisibility(0);
-    this.hSI.removeAllViews();
+    this.isN.removeAllViews();
     View localView = LayoutInflater.from(getContext()).inflate(2131495992, null);
-    this.hSI.addView(localView);
+    this.isN.addView(localView);
     paramView.post(new Runnable()
     {
       public final void run()
@@ -178,12 +194,12 @@ public class OfflineAlertView
   public final void b(final View paramView, View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(66358);
-    this.ukO = 5;
+    this.vtK = 5;
     setVisibility(0);
-    this.ukP = false;
-    this.hSI.removeAllViews();
+    this.vtL = false;
+    this.isN.removeAllViews();
     View localView = LayoutInflater.from(getContext()).inflate(2131495995, null);
-    this.hSI.addView(localView);
+    this.isN.addView(localView);
     ((TextView)localView.findViewById(2131296636)).setText(2131761787);
     Button localButton = (Button)localView.findViewById(2131300871);
     localButton.setText(2131761786);
@@ -197,7 +213,7 @@ public class OfflineAlertView
       public final void run()
       {
         AppMethodBeat.i(66350);
-        ad.i("MicroMsg.OfflineAlertView", "qrCodeView.getHeight%s %s", new Object[] { Integer.valueOf(paramView.getHeight()), Integer.valueOf(paramView.getMeasuredHeight()) });
+        ac.i("MicroMsg.OfflineAlertView", "qrCodeView.getHeight%s %s", new Object[] { Integer.valueOf(paramView.getHeight()), Integer.valueOf(paramView.getMeasuredHeight()) });
         FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)OfflineAlertView.a(OfflineAlertView.this).getLayoutParams();
         if (paramView.getHeight() > 0)
         {
@@ -217,32 +233,32 @@ public class OfflineAlertView
   public final void dismiss()
   {
     AppMethodBeat.i(66361);
-    if (this.hSI != null) {
-      this.hSI.removeAllViews();
+    if (this.isN != null) {
+      this.isN.removeAllViews();
     }
     setVisibility(8);
-    if (this.ukQ != null) {
-      this.ukQ.onClose();
+    if (this.vtM != null) {
+      this.vtM.onClose();
     }
-    if (this.ukR != null) {
-      this.ukR.cancel();
+    if (this.vtN != null) {
+      this.vtN.cancel();
     }
-    if (this.mYs != null) {
-      k.b(this.mYs);
+    if (this.nAR != null) {
+      k.b(this.nAR);
     }
-    this.ukO = 0;
-    this.ukP = true;
+    this.vtK = 0;
+    this.vtL = true;
     AppMethodBeat.o(66361);
   }
   
-  public final void ee(final View paramView)
+  public final void en(final View paramView)
   {
     AppMethodBeat.i(66355);
     setVisibility(0);
-    this.hSI.removeAllViews();
+    this.isN.removeAllViews();
     View localView = LayoutInflater.from(getContext()).inflate(2131495989, null);
-    this.hSI.addView(localView);
-    com.tencent.mm.plugin.report.service.h.vKh.f(13750, new Object[] { Integer.valueOf(1) });
+    this.isN.addView(localView);
+    com.tencent.mm.plugin.report.service.h.wUl.f(13750, new Object[] { Integer.valueOf(1) });
     paramView.post(new Runnable()
     {
       public final void run()
@@ -271,7 +287,7 @@ public class OfflineAlertView
   
   public void setDialogState(a parama)
   {
-    this.ukQ = parama;
+    this.vtM = parama;
   }
   
   public static abstract interface a

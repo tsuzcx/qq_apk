@@ -1,7 +1,6 @@
 package com.tencent.rtmp;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -115,7 +114,7 @@ public class TXLivePlayer
     AppMethodBeat.o(14025);
   }
   
-  public void setAudioVolumeEvaluationListener(ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
+  public void setAudioVolumeEvaluationListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
     AppMethodBeat.i(14027);
     this.mTXLivePlayerImpl.a(paramITXAudioVolumeEvaluationListener);
@@ -215,7 +214,7 @@ public class TXLivePlayer
     AppMethodBeat.o(14024);
   }
   
-  public void snapshot(ITXSnapshotListener paramITXSnapshotListener)
+  public void snapshot(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
   {
     AppMethodBeat.i(14033);
     this.mTXLivePlayerImpl.a(paramITXSnapshotListener);
@@ -267,16 +266,6 @@ public class TXLivePlayer
     public abstract void onAudioInfoChanged(int paramInt1, int paramInt2, int paramInt3);
     
     public abstract void onPcmDataAvailable(byte[] paramArrayOfByte, long paramLong);
-  }
-  
-  public static abstract interface ITXAudioVolumeEvaluationListener
-  {
-    public abstract void onAudioVolumeEvaluationNotify(int paramInt);
-  }
-  
-  public static abstract interface ITXSnapshotListener
-  {
-    public abstract void onSnapshot(Bitmap paramBitmap);
   }
   
   public static abstract interface ITXVideoRawDataListener

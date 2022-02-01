@@ -32,29 +32,29 @@ import java.util.List;
 public class CollapsingToolbarLayout
   extends FrameLayout
 {
-  private final Rect jL = new Rect();
-  ab kf;
-  private boolean mI = true;
-  private int mJ;
-  private Toolbar mK;
-  private View mL;
-  private View mM;
-  private int mN;
-  private int mO;
-  private int mP;
-  private int mQ;
-  final d mR = new d(this);
-  private boolean mS;
-  private boolean mT;
-  private Drawable mU;
-  Drawable mV;
-  private int mW;
-  private boolean mZ;
-  private ValueAnimator na;
-  private long nb;
-  private int nc = -1;
-  private AppBarLayout.b nd;
-  int ne;
+  private final Rect kK = new Rect();
+  ab le;
+  private boolean nJ = true;
+  private int nK;
+  private Toolbar nL;
+  private View nM;
+  private View nN;
+  private int nO;
+  private int nP;
+  private int nQ;
+  private int nR;
+  final d nS = new d(this);
+  private boolean nT;
+  private boolean nU;
+  private Drawable nV;
+  Drawable nW;
+  private int nX;
+  private boolean nY;
+  private ValueAnimator nZ;
+  private long oa;
+  private int ob = -1;
+  private AppBarLayout.b oc;
+  int od;
   
   public CollapsingToolbarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -64,42 +64,42 @@ public class CollapsingToolbarLayout
   public CollapsingToolbarLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.mR.a(android.support.design.a.a.dT);
+    this.nS.a(android.support.design.a.a.eT);
     paramContext = android.support.design.internal.f.a(paramContext, paramAttributeSet, a.a.CollapsingToolbarLayout, paramInt, 2131821636, new int[0]);
-    this.mR.O(paramContext.getInt(3, 8388691));
-    this.mR.P(paramContext.getInt(0, 8388627));
+    this.nS.O(paramContext.getInt(3, 8388691));
+    this.nS.P(paramContext.getInt(0, 8388627));
     paramInt = paramContext.getDimensionPixelSize(4, 0);
-    this.mQ = paramInt;
-    this.mP = paramInt;
-    this.mO = paramInt;
-    this.mN = paramInt;
+    this.nR = paramInt;
+    this.nQ = paramInt;
+    this.nP = paramInt;
+    this.nO = paramInt;
     if (paramContext.hasValue(7)) {
-      this.mN = paramContext.getDimensionPixelSize(7, 0);
+      this.nO = paramContext.getDimensionPixelSize(7, 0);
     }
     if (paramContext.hasValue(6)) {
-      this.mP = paramContext.getDimensionPixelSize(6, 0);
+      this.nQ = paramContext.getDimensionPixelSize(6, 0);
     }
     if (paramContext.hasValue(8)) {
-      this.mO = paramContext.getDimensionPixelSize(8, 0);
+      this.nP = paramContext.getDimensionPixelSize(8, 0);
     }
     if (paramContext.hasValue(5)) {
-      this.mQ = paramContext.getDimensionPixelSize(5, 0);
+      this.nR = paramContext.getDimensionPixelSize(5, 0);
     }
-    this.mS = paramContext.getBoolean(14, true);
+    this.nT = paramContext.getBoolean(14, true);
     setTitle(paramContext.getText(13));
-    this.mR.R(2131821386);
-    this.mR.Q(2131821360);
+    this.nS.R(2131821386);
+    this.nS.Q(2131821360);
     if (paramContext.hasValue(9)) {
-      this.mR.R(paramContext.getResourceId(9, 0));
+      this.nS.R(paramContext.getResourceId(9, 0));
     }
     if (paramContext.hasValue(1)) {
-      this.mR.Q(paramContext.getResourceId(1, 0));
+      this.nS.Q(paramContext.getResourceId(1, 0));
     }
-    this.nc = paramContext.getDimensionPixelSize(11, -1);
-    this.nb = paramContext.getInt(10, 600);
+    this.ob = paramContext.getDimensionPixelSize(11, -1);
+    this.oa = paramContext.getInt(10, 600);
     setContentScrim(paramContext.getDrawable(2));
     setStatusBarScrim(paramContext.getDrawable(12));
-    this.mJ = paramContext.getResourceId(15, -1);
+    this.nK = paramContext.getResourceId(15, -1);
     paramContext.recycle();
     setWillNotDraw(false);
     t.a(this, new android.support.v4.view.p()
@@ -111,32 +111,32 @@ public class CollapsingToolbarLayout
         if (t.aq(localCollapsingToolbarLayout)) {
           paramAnonymousView = paramAnonymousab;
         }
-        if (!j.equals(localCollapsingToolbarLayout.kf, paramAnonymousView))
+        if (!j.equals(localCollapsingToolbarLayout.le, paramAnonymousView))
         {
-          localCollapsingToolbarLayout.kf = paramAnonymousView;
+          localCollapsingToolbarLayout.le = paramAnonymousView;
           localCollapsingToolbarLayout.requestLayout();
         }
-        return paramAnonymousab.fc();
+        return paramAnonymousab.fk();
       }
     });
   }
   
-  private void bS()
+  private void bZ()
   {
-    if (!this.mI) {
+    if (!this.nJ) {
       return;
     }
-    this.mK = null;
-    this.mL = null;
-    if (this.mJ != -1)
+    this.nL = null;
+    this.nM = null;
+    if (this.nK != -1)
     {
-      this.mK = ((Toolbar)findViewById(this.mJ));
-      if (this.mK != null) {
-        this.mL = m(this.mK);
+      this.nL = ((Toolbar)findViewById(this.nK));
+      if (this.nL != null) {
+        this.nM = m(this.nL);
       }
     }
     int i;
-    if (this.mK == null)
+    if (this.nL == null)
     {
       int j = getChildCount();
       i = 0;
@@ -152,36 +152,36 @@ public class CollapsingToolbarLayout
     label119:
     for (Object localObject = (Toolbar)localObject;; localObject = null)
     {
-      this.mK = ((Toolbar)localObject);
-      bT();
-      this.mI = false;
+      this.nL = ((Toolbar)localObject);
+      ca();
+      this.nJ = false;
       return;
       i += 1;
       break;
     }
   }
   
-  private void bT()
+  private void ca()
   {
-    if ((!this.mS) && (this.mM != null))
+    if ((!this.nT) && (this.nN != null))
     {
-      ViewParent localViewParent = this.mM.getParent();
+      ViewParent localViewParent = this.nN.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.mM);
+        ((ViewGroup)localViewParent).removeView(this.nN);
       }
     }
-    if ((this.mS) && (this.mK != null))
+    if ((this.nT) && (this.nL != null))
     {
-      if (this.mM == null) {
-        this.mM = new View(getContext());
+      if (this.nN == null) {
+        this.nN = new View(getContext());
       }
-      if (this.mM.getParent() == null) {
-        this.mK.addView(this.mM, -1, -1);
+      if (this.nN.getParent() == null) {
+        this.nL.addView(this.nN, -1, -1);
       }
     }
   }
   
-  private void bV()
+  private void cc()
   {
     setContentDescription(getTitle());
   }
@@ -223,10 +223,10 @@ public class CollapsingToolbarLayout
     return localp1;
   }
   
-  final void bU()
+  final void cb()
   {
-    if ((this.mU != null) || (this.mV != null)) {
-      if (getHeight() + this.ne >= getScrimVisibleHeightTrigger()) {
+    if ((this.nV != null) || (this.nW != null)) {
+      if (getHeight() + this.od >= getScrimVisibleHeightTrigger()) {
         break label38;
       }
     }
@@ -246,28 +246,28 @@ public class CollapsingToolbarLayout
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    bS();
-    if ((this.mK == null) && (this.mU != null) && (this.mW > 0))
+    bZ();
+    if ((this.nL == null) && (this.nV != null) && (this.nX > 0))
     {
-      this.mU.mutate().setAlpha(this.mW);
-      this.mU.draw(paramCanvas);
+      this.nV.mutate().setAlpha(this.nX);
+      this.nV.draw(paramCanvas);
     }
-    if ((this.mS) && (this.mT)) {
-      this.mR.draw(paramCanvas);
+    if ((this.nT) && (this.nU)) {
+      this.nS.draw(paramCanvas);
     }
-    if ((this.mV != null) && (this.mW > 0)) {
-      if (this.kf == null) {
+    if ((this.nW != null) && (this.nX > 0)) {
+      if (this.le == null) {
         break label153;
       }
     }
     label153:
-    for (int i = this.kf.getSystemWindowInsetTop();; i = 0)
+    for (int i = this.le.getSystemWindowInsetTop();; i = 0)
     {
       if (i > 0)
       {
-        this.mV.setBounds(0, -this.ne, getWidth(), i - this.ne);
-        this.mV.mutate().setAlpha(this.mW);
-        this.mV.draw(paramCanvas);
+        this.nW.setBounds(0, -this.od, getWidth(), i - this.od);
+        this.nW.mutate().setAlpha(this.nX);
+        this.nW.draw(paramCanvas);
       }
       return;
     }
@@ -276,16 +276,16 @@ public class CollapsingToolbarLayout
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     boolean bool = false;
-    if ((this.mU != null) && (this.mW > 0)) {
-      if ((this.mL == null) || (this.mL == this)) {
-        if (paramView == this.mK)
+    if ((this.nV != null) && (this.nX > 0)) {
+      if ((this.nM == null) || (this.nM == this)) {
+        if (paramView == this.nL)
         {
           i = 1;
           if (i == 0) {
             break label120;
           }
-          this.mU.mutate().setAlpha(this.mW);
-          this.mU.draw(paramCanvas);
+          this.nV.mutate().setAlpha(this.nX);
+          this.nV.draw(paramCanvas);
         }
       }
     }
@@ -298,7 +298,7 @@ public class CollapsingToolbarLayout
       return bool;
       i = 0;
       break;
-      if (paramView == this.mL)
+      if (paramView == this.nM)
       {
         i = 1;
         break;
@@ -313,7 +313,7 @@ public class CollapsingToolbarLayout
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
     boolean bool2 = false;
-    Drawable localDrawable = this.mV;
+    Drawable localDrawable = this.nW;
     boolean bool1 = bool2;
     if (localDrawable != null)
     {
@@ -322,7 +322,7 @@ public class CollapsingToolbarLayout
         bool1 = localDrawable.setState(arrayOfInt) | false;
       }
     }
-    localDrawable = this.mU;
+    localDrawable = this.nV;
     bool2 = bool1;
     if (localDrawable != null)
     {
@@ -332,8 +332,8 @@ public class CollapsingToolbarLayout
       }
     }
     bool1 = bool2;
-    if (this.mR != null) {
-      bool1 = bool2 | this.mR.setState(arrayOfInt);
+    if (this.nS != null) {
+      bool1 = bool2 | this.nS.setState(arrayOfInt);
     }
     if (bool1) {
       invalidate();
@@ -347,74 +347,74 @@ public class CollapsingToolbarLayout
   
   public int getCollapsedTitleGravity()
   {
-    return this.mR.lZ;
+    return this.nS.na;
   }
   
   public Typeface getCollapsedTitleTypeface()
   {
-    d locald = this.mR;
-    if (locald.mk != null) {
-      return locald.mk;
+    d locald = this.nS;
+    if (locald.nl != null) {
+      return locald.nl;
     }
     return Typeface.DEFAULT;
   }
   
   public Drawable getContentScrim()
   {
-    return this.mU;
+    return this.nV;
   }
   
   public int getExpandedTitleGravity()
   {
-    return this.mR.lY;
+    return this.nS.mZ;
   }
   
   public int getExpandedTitleMarginBottom()
   {
-    return this.mQ;
+    return this.nR;
   }
   
   public int getExpandedTitleMarginEnd()
   {
-    return this.mP;
+    return this.nQ;
   }
   
   public int getExpandedTitleMarginStart()
   {
-    return this.mN;
+    return this.nO;
   }
   
   public int getExpandedTitleMarginTop()
   {
-    return this.mO;
+    return this.nP;
   }
   
   public Typeface getExpandedTitleTypeface()
   {
-    d locald = this.mR;
-    if (locald.ml != null) {
-      return locald.ml;
+    d locald = this.nS;
+    if (locald.nm != null) {
+      return locald.nm;
     }
     return Typeface.DEFAULT;
   }
   
   int getScrimAlpha()
   {
-    return this.mW;
+    return this.nX;
   }
   
   public long getScrimAnimationDuration()
   {
-    return this.nb;
+    return this.oa;
   }
   
   public int getScrimVisibleHeightTrigger()
   {
-    if (this.nc >= 0) {
-      return this.nc;
+    if (this.ob >= 0) {
+      return this.ob;
     }
-    if (this.kf != null) {}
-    for (int i = this.kf.getSystemWindowInsetTop();; i = 0)
+    if (this.le != null) {}
+    for (int i = this.le.getSystemWindowInsetTop();; i = 0)
     {
       int j = t.af(this);
       if (j <= 0) {
@@ -427,13 +427,13 @@ public class CollapsingToolbarLayout
   
   public Drawable getStatusBarScrim()
   {
-    return this.mV;
+    return this.nW;
   }
   
   public CharSequence getTitle()
   {
-    if (this.mS) {
-      return this.mR.text;
+    if (this.nT) {
+      return this.nS.text;
     }
     return null;
   }
@@ -445,10 +445,10 @@ public class CollapsingToolbarLayout
     if ((localViewParent instanceof AppBarLayout))
     {
       t.e(this, t.aq((View)localViewParent));
-      if (this.nd == null) {
-        this.nd = new a();
+      if (this.oc == null) {
+        this.oc = new a();
       }
-      ((AppBarLayout)localViewParent).a(this.nd);
+      ((AppBarLayout)localViewParent).a(this.oc);
       t.ap(this);
     }
   }
@@ -456,10 +456,10 @@ public class CollapsingToolbarLayout
   protected void onDetachedFromWindow()
   {
     Object localObject = getParent();
-    if ((this.nd != null) && ((localObject instanceof AppBarLayout)))
+    if ((this.oc != null) && ((localObject instanceof AppBarLayout)))
     {
       localObject = (AppBarLayout)localObject;
-      AppBarLayout.b localb = this.nd;
+      AppBarLayout.b localb = this.oc;
       if ((((AppBarLayout)localObject).listeners != null) && (localb != null)) {
         ((AppBarLayout)localObject).listeners.remove(localb);
       }
@@ -475,9 +475,9 @@ public class CollapsingToolbarLayout
     int k;
     int n;
     Object localObject;
-    if (this.kf != null)
+    if (this.le != null)
     {
-      k = this.kf.getSystemWindowInsetTop();
+      k = this.le.getSystemWindowInsetTop();
       n = getChildCount();
       i = 0;
       while (i < n)
@@ -489,51 +489,51 @@ public class CollapsingToolbarLayout
         i += 1;
       }
     }
-    if ((this.mS) && (this.mM != null))
+    if ((this.nT) && (this.nN != null))
     {
-      if ((!t.aC(this.mM)) || (this.mM.getVisibility() != 0)) {
+      if ((!t.aC(this.nN)) || (this.nN.getVisibility() != 0)) {
         break label404;
       }
       paramBoolean = true;
-      this.mT = paramBoolean;
-      if (this.mT)
+      this.nU = paramBoolean;
+      if (this.nU)
       {
         if (t.Y(this) != 1) {
           break label409;
         }
         i = j;
         label151:
-        if (this.mL == null) {
+        if (this.nM == null) {
           break label415;
         }
-        localObject = this.mL;
+        localObject = this.nM;
         label164:
         n = p((View)localObject);
-        f.a(this, this.mM, this.jL);
-        localObject = this.mR;
-        int i1 = this.jL.left;
+        f.a(this, this.nN, this.kK);
+        localObject = this.nS;
+        int i1 = this.kK.left;
         if (i == 0) {
           break label424;
         }
-        j = this.mK.getTitleMarginEnd();
+        j = this.nL.getTitleMarginEnd();
         label213:
-        int i2 = this.jL.top;
-        int i3 = this.mK.getTitleMarginTop();
-        int i4 = this.jL.right;
+        int i2 = this.kK.top;
+        int i3 = this.nL.getTitleMarginTop();
+        int i4 = this.kK.right;
         if (i == 0) {
           break label436;
         }
-        k = this.mK.getTitleMarginStart();
+        k = this.nL.getTitleMarginStart();
         label254:
-        ((d)localObject).d(i1 + j, i3 + (i2 + n), k + i4, n + this.jL.bottom - this.mK.getTitleMarginBottom());
-        localObject = this.mR;
+        ((d)localObject).d(i1 + j, i3 + (i2 + n), k + i4, n + this.kK.bottom - this.nL.getTitleMarginBottom());
+        localObject = this.nS;
         if (i == 0) {
           break label448;
         }
-        j = this.mP;
+        j = this.nQ;
         label312:
-        k = this.jL.top;
-        n = this.mO;
+        k = this.kK.top;
+        n = this.nP;
         if (i == 0) {
           break label457;
         }
@@ -546,56 +546,56 @@ public class CollapsingToolbarLayout
     label436:
     label448:
     label457:
-    for (int i = this.mN;; i = this.mP)
+    for (int i = this.nO;; i = this.nQ)
     {
-      ((d)localObject).c(j, k + n, paramInt3 - paramInt1 - i, paramInt4 - paramInt2 - this.mQ);
-      this.mR.bQ();
+      ((d)localObject).c(j, k + n, paramInt3 - paramInt1 - i, paramInt4 - paramInt2 - this.nR);
+      this.nS.bX();
       paramInt2 = getChildCount();
       paramInt1 = m;
       while (paramInt1 < paramInt2)
       {
-        o(getChildAt(paramInt1)).cY();
+        o(getChildAt(paramInt1)).df();
         paramInt1 += 1;
       }
       paramBoolean = false;
       break;
       i = 0;
       break label151;
-      localObject = this.mK;
+      localObject = this.nL;
       break label164;
-      j = this.mK.getTitleMarginStart();
+      j = this.nL.getTitleMarginStart();
       break label213;
-      k = this.mK.getTitleMarginEnd();
+      k = this.nL.getTitleMarginEnd();
       break label254;
-      j = this.mN;
+      j = this.nO;
       break label312;
     }
-    if (this.mK != null)
+    if (this.nL != null)
     {
-      if ((this.mS) && (TextUtils.isEmpty(this.mR.text))) {
-        setTitle(this.mK.getTitle());
+      if ((this.nT) && (TextUtils.isEmpty(this.nS.text))) {
+        setTitle(this.nL.getTitle());
       }
-      if ((this.mL != null) && (this.mL != this)) {
+      if ((this.nM != null) && (this.nM != this)) {
         break label535;
       }
-      setMinimumHeight(n(this.mK));
+      setMinimumHeight(n(this.nL));
     }
     for (;;)
     {
-      bU();
+      cb();
       return;
       label535:
-      setMinimumHeight(n(this.mL));
+      setMinimumHeight(n(this.nM));
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    bS();
+    bZ();
     super.onMeasure(paramInt1, paramInt2);
     int i = View.MeasureSpec.getMode(paramInt2);
-    if (this.kf != null) {}
-    for (paramInt2 = this.kf.getSystemWindowInsetTop();; paramInt2 = 0)
+    if (this.le != null) {}
+    for (paramInt2 = this.le.getSystemWindowInsetTop();; paramInt2 = 0)
     {
       if ((i == 0) && (paramInt2 > 0)) {
         super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(paramInt2 + getMeasuredHeight(), 1073741824));
@@ -607,8 +607,8 @@ public class CollapsingToolbarLayout
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.mU != null) {
-      this.mU.setBounds(0, 0, paramInt1, paramInt2);
+    if (this.nV != null) {
+      this.nV.setBounds(0, 0, paramInt1, paramInt2);
     }
   }
   
@@ -616,17 +616,17 @@ public class CollapsingToolbarLayout
   {
     p localp = o(paramView);
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
-    return getHeight() - localp.tD - paramView.getHeight() - localLayoutParams.bottomMargin;
+    return getHeight() - localp.uE - paramView.getHeight() - localLayoutParams.bottomMargin;
   }
   
   public void setCollapsedTitleGravity(int paramInt)
   {
-    this.mR.P(paramInt);
+    this.nS.P(paramInt);
   }
   
   public void setCollapsedTitleTextAppearance(int paramInt)
   {
-    this.mR.Q(paramInt);
+    this.nS.Q(paramInt);
   }
   
   public void setCollapsedTitleTextColor(int paramInt)
@@ -636,36 +636,36 @@ public class CollapsingToolbarLayout
   
   public void setCollapsedTitleTextColor(ColorStateList paramColorStateList)
   {
-    this.mR.d(paramColorStateList);
+    this.nS.d(paramColorStateList);
   }
   
   public void setCollapsedTitleTypeface(Typeface paramTypeface)
   {
-    d locald = this.mR;
-    if (locald.mk != paramTypeface)
+    d locald = this.nS;
+    if (locald.nl != paramTypeface)
     {
-      locald.mk = paramTypeface;
-      locald.bQ();
+      locald.nl = paramTypeface;
+      locald.bX();
     }
   }
   
   public void setContentScrim(Drawable paramDrawable)
   {
     Drawable localDrawable = null;
-    if (this.mU != paramDrawable)
+    if (this.nV != paramDrawable)
     {
-      if (this.mU != null) {
-        this.mU.setCallback(null);
+      if (this.nV != null) {
+        this.nV.setCallback(null);
       }
       if (paramDrawable != null) {
         localDrawable = paramDrawable.mutate();
       }
-      this.mU = localDrawable;
-      if (this.mU != null)
+      this.nV = localDrawable;
+      if (this.nV != null)
       {
-        this.mU.setBounds(0, 0, getWidth(), getHeight());
-        this.mU.setCallback(this);
-        this.mU.setAlpha(this.mW);
+        this.nV.setBounds(0, 0, getWidth(), getHeight());
+        this.nV.setCallback(this);
+        this.nV.setAlpha(this.nX);
       }
       t.W(this);
     }
@@ -688,76 +688,76 @@ public class CollapsingToolbarLayout
   
   public void setExpandedTitleGravity(int paramInt)
   {
-    this.mR.O(paramInt);
+    this.nS.O(paramInt);
   }
   
   public void setExpandedTitleMarginBottom(int paramInt)
   {
-    this.mQ = paramInt;
+    this.nR = paramInt;
     requestLayout();
   }
   
   public void setExpandedTitleMarginEnd(int paramInt)
   {
-    this.mP = paramInt;
+    this.nQ = paramInt;
     requestLayout();
   }
   
   public void setExpandedTitleMarginStart(int paramInt)
   {
-    this.mN = paramInt;
+    this.nO = paramInt;
     requestLayout();
   }
   
   public void setExpandedTitleMarginTop(int paramInt)
   {
-    this.mO = paramInt;
+    this.nP = paramInt;
     requestLayout();
   }
   
   public void setExpandedTitleTextAppearance(int paramInt)
   {
-    this.mR.R(paramInt);
+    this.nS.R(paramInt);
   }
   
   public void setExpandedTitleTextColor(ColorStateList paramColorStateList)
   {
-    this.mR.e(paramColorStateList);
+    this.nS.e(paramColorStateList);
   }
   
   public void setExpandedTitleTypeface(Typeface paramTypeface)
   {
-    d locald = this.mR;
-    if (locald.ml != paramTypeface)
+    d locald = this.nS;
+    if (locald.nm != paramTypeface)
     {
-      locald.ml = paramTypeface;
-      locald.bQ();
+      locald.nm = paramTypeface;
+      locald.bX();
     }
   }
   
   void setScrimAlpha(int paramInt)
   {
-    if (paramInt != this.mW)
+    if (paramInt != this.nX)
     {
-      if ((this.mU != null) && (this.mK != null)) {
-        t.W(this.mK);
+      if ((this.nV != null) && (this.nL != null)) {
+        t.W(this.nL);
       }
-      this.mW = paramInt;
+      this.nX = paramInt;
       t.W(this);
     }
   }
   
   public void setScrimAnimationDuration(long paramLong)
   {
-    this.nb = paramLong;
+    this.oa = paramLong;
   }
   
   public void setScrimVisibleHeightTrigger(int paramInt)
   {
-    if (this.nc != paramInt)
+    if (this.ob != paramInt)
     {
-      this.nc = paramInt;
-      bU();
+      this.ob = paramInt;
+      cb();
     }
   }
   
@@ -769,7 +769,7 @@ public class CollapsingToolbarLayout
     if ((t.ay(this)) && (!isInEditMode()))
     {
       i = 1;
-      if (this.mZ != paramBoolean)
+      if (this.nY != paramBoolean)
       {
         if (i == 0) {
           break label187;
@@ -778,20 +778,20 @@ public class CollapsingToolbarLayout
           break label154;
         }
         i = 255;
-        bS();
-        if (this.na != null) {
+        bZ();
+        if (this.nZ != null) {
           break label167;
         }
-        this.na = new ValueAnimator();
-        this.na.setDuration(this.nb);
-        ValueAnimator localValueAnimator = this.na;
-        if (i <= this.mW) {
+        this.nZ = new ValueAnimator();
+        this.nZ.setDuration(this.oa);
+        ValueAnimator localValueAnimator = this.nZ;
+        if (i <= this.nX) {
           break label159;
         }
-        localTimeInterpolator = android.support.design.a.a.dR;
+        localTimeInterpolator = android.support.design.a.a.eR;
         label93:
         localValueAnimator.setInterpolator(localTimeInterpolator);
-        this.na.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        this.nZ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -802,9 +802,9 @@ public class CollapsingToolbarLayout
     }
     for (;;)
     {
-      this.na.setIntValues(new int[] { this.mW, i });
-      this.na.start();
-      this.mZ = paramBoolean;
+      this.nZ.setIntValues(new int[] { this.nX, i });
+      this.nZ.start();
+      this.nY = paramBoolean;
       return;
       i = 0;
       break;
@@ -812,11 +812,11 @@ public class CollapsingToolbarLayout
       i = 0;
       break label40;
       label159:
-      localTimeInterpolator = android.support.design.a.a.dS;
+      localTimeInterpolator = android.support.design.a.a.eS;
       break label93;
       label167:
-      if (this.na.isRunning()) {
-        this.na.cancel();
+      if (this.nZ.isRunning()) {
+        this.nZ.cancel();
       }
     }
     label187:
@@ -831,22 +831,22 @@ public class CollapsingToolbarLayout
   public void setStatusBarScrim(Drawable paramDrawable)
   {
     Drawable localDrawable = null;
-    if (this.mV != paramDrawable)
+    if (this.nW != paramDrawable)
     {
-      if (this.mV != null) {
-        this.mV.setCallback(null);
+      if (this.nW != null) {
+        this.nW.setCallback(null);
       }
       if (paramDrawable != null) {
         localDrawable = paramDrawable.mutate();
       }
-      this.mV = localDrawable;
-      if (this.mV != null)
+      this.nW = localDrawable;
+      if (this.nW != null)
       {
-        if (this.mV.isStateful()) {
-          this.mV.setState(getDrawableState());
+        if (this.nW.isStateful()) {
+          this.nW.setState(getDrawableState());
         }
-        android.support.v4.graphics.drawable.a.b(this.mV, t.Y(this));
-        paramDrawable = this.mV;
+        android.support.v4.graphics.drawable.a.b(this.nW, t.Y(this));
+        paramDrawable = this.nW;
         if (getVisibility() != 0) {
           break label125;
         }
@@ -856,8 +856,8 @@ public class CollapsingToolbarLayout
     for (boolean bool = true;; bool = false)
     {
       paramDrawable.setVisible(bool, false);
-      this.mV.setCallback(this);
-      this.mV.setAlpha(this.mW);
+      this.nW.setCallback(this);
+      this.nW.setAlpha(this.nX);
       t.W(this);
       return;
     }
@@ -875,17 +875,17 @@ public class CollapsingToolbarLayout
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.mR.setText(paramCharSequence);
-    bV();
+    this.nS.setText(paramCharSequence);
+    cc();
   }
   
   public void setTitleEnabled(boolean paramBoolean)
   {
-    if (paramBoolean != this.mS)
+    if (paramBoolean != this.nT)
     {
-      this.mS = paramBoolean;
-      bV();
-      bT();
+      this.nT = paramBoolean;
+      cc();
+      ca();
       requestLayout();
     }
   }
@@ -896,11 +896,11 @@ public class CollapsingToolbarLayout
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((this.mV != null) && (this.mV.isVisible() != bool)) {
-        this.mV.setVisible(bool, false);
+      if ((this.nW != null) && (this.nW.isVisible() != bool)) {
+        this.nW.setVisible(bool, false);
       }
-      if ((this.mU != null) && (this.mU.isVisible() != bool)) {
-        this.mU.setVisible(bool, false);
+      if ((this.nV != null) && (this.nV.isVisible() != bool)) {
+        this.nV.setVisible(bool, false);
       }
       return;
     }
@@ -908,14 +908,14 @@ public class CollapsingToolbarLayout
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mU) || (paramDrawable == this.mV);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.nV) || (paramDrawable == this.nW);
   }
   
   public static class LayoutParams
     extends FrameLayout.LayoutParams
   {
-    int ng = 0;
-    float nh = 0.5F;
+    int of = 0;
+    float og = 0.5F;
     
     public LayoutParams()
     {
@@ -926,8 +926,8 @@ public class CollapsingToolbarLayout
     {
       super(paramAttributeSet);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.CollapsingToolbarLayout_Layout);
-      this.ng = paramContext.getInt(0, 0);
-      this.nh = paramContext.getFloat(1, 0.5F);
+      this.of = paramContext.getInt(0, 0);
+      this.og = paramContext.getFloat(1, 0.5F);
       paramContext.recycle();
     }
     
@@ -944,14 +944,14 @@ public class CollapsingToolbarLayout
     
     public final void c(AppBarLayout paramAppBarLayout, int paramInt)
     {
-      CollapsingToolbarLayout.this.ne = paramInt;
+      CollapsingToolbarLayout.this.od = paramInt;
       int i;
       label42:
       CollapsingToolbarLayout.LayoutParams localLayoutParams;
       p localp;
-      if (CollapsingToolbarLayout.this.kf != null)
+      if (CollapsingToolbarLayout.this.le != null)
       {
-        i = CollapsingToolbarLayout.this.kf.getSystemWindowInsetTop();
+        i = CollapsingToolbarLayout.this.le.getSystemWindowInsetTop();
         k = CollapsingToolbarLayout.this.getChildCount();
         j = 0;
         if (j >= k) {
@@ -960,7 +960,7 @@ public class CollapsingToolbarLayout
         paramAppBarLayout = CollapsingToolbarLayout.this.getChildAt(j);
         localLayoutParams = (CollapsingToolbarLayout.LayoutParams)paramAppBarLayout.getLayoutParams();
         localp = CollapsingToolbarLayout.o(paramAppBarLayout);
-        switch (localLayoutParams.ng)
+        switch (localLayoutParams.of)
         {
         }
       }
@@ -973,22 +973,22 @@ public class CollapsingToolbarLayout
         localp.G(android.support.v4.b.a.clamp(-paramInt, 0, CollapsingToolbarLayout.this.p(paramAppBarLayout)));
         continue;
         float f = -paramInt;
-        localp.G(Math.round(localLayoutParams.nh * f));
+        localp.G(Math.round(localLayoutParams.og * f));
       }
       label161:
-      CollapsingToolbarLayout.this.bU();
-      if ((CollapsingToolbarLayout.this.mV != null) && (i > 0)) {
+      CollapsingToolbarLayout.this.cb();
+      if ((CollapsingToolbarLayout.this.nW != null) && (i > 0)) {
         t.W(CollapsingToolbarLayout.this);
       }
       int j = CollapsingToolbarLayout.this.getHeight();
       int k = t.af(CollapsingToolbarLayout.this);
-      CollapsingToolbarLayout.this.mR.i(Math.abs(paramInt) / (j - k - i));
+      CollapsingToolbarLayout.this.nS.m(Math.abs(paramInt) / (j - k - i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.CollapsingToolbarLayout
  * JD-Core Version:    0.7.0.1
  */

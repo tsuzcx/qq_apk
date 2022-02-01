@@ -9,7 +9,7 @@ public final class Java2CExDevice
   {
     AppMethodBeat.i(23194);
     Java2CExDevice.class.getClassLoader();
-    j.pq("wechataccessory");
+    j.sC("wechataccessory");
     onCreate();
     initBluetoothAccessoryLib();
     AppMethodBeat.o(23194);

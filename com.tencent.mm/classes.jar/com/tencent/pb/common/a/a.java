@@ -2,27 +2,27 @@ package com.tencent.pb.common.a;
 
 public final class a
 {
-  public static boolean IjA = false;
-  public static int IjB = 533;
-  public static String IjC = "http://dldir1.qq.com/foxmail/home.apk";
-  public static boolean IjD = true;
-  public static boolean IjE = true;
-  public static boolean IjF = true;
-  public static boolean IjG = false;
-  public static boolean IjH = true;
-  public static boolean IjI = false;
-  public static boolean IjJ = false;
-  public static boolean IjK = false;
-  public static boolean IjL = true;
-  public static boolean IjM = true;
-  public static boolean IjN = false;
-  public static boolean IjO = true;
-  public static boolean IjP = false;
-  public static boolean IjQ = false;
-  public static boolean Ijw = false;
-  public static boolean Ijx = true;
-  public static int Ijy = 1500;
-  public static int Ijz = 500;
+  public static boolean JLA = false;
+  public static boolean JLB = false;
+  public static boolean JLh = false;
+  public static boolean JLi = true;
+  public static int JLj = 1500;
+  public static int JLk = 500;
+  public static boolean JLl = false;
+  public static int JLm = 533;
+  public static String JLn = "http://dldir1.qq.com/foxmail/home.apk";
+  public static boolean JLo = true;
+  public static boolean JLp = true;
+  public static boolean JLq = true;
+  public static boolean JLr = false;
+  public static boolean JLs = true;
+  public static boolean JLt = false;
+  public static boolean JLu = false;
+  public static boolean JLv = false;
+  public static boolean JLw = true;
+  public static boolean JLx = true;
+  public static boolean JLy = false;
+  public static boolean JLz = true;
 }
 
 

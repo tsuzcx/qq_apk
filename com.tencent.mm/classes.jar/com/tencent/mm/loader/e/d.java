@@ -7,12 +7,12 @@ import java.io.InputStream;
 public final class d
   implements c
 {
-  public static byte[] p(InputStream paramInputStream)
+  public static byte[] o(InputStream paramInputStream)
   {
-    return q(paramInputStream);
+    return p(paramInputStream);
   }
   
-  private static byte[] q(InputStream paramInputStream)
+  private static byte[] p(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[1024];
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -32,7 +32,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.e.d
  * JD-Core Version:    0.7.0.1
  */

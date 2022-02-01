@@ -18,22 +18,22 @@ import d.g.a.a;
 import d.g.b.u;
 import d.g.b.w;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/View$OnTouchListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "Landroid/view/GestureDetector$OnGestureListener;", "Landroid/view/GestureDetector$OnDoubleTapListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isEnableFling", "", "()Z", "setEnableFling", "(Z)V", "isEnableOverScroll", "setEnableOverScroll", "isEnableScale", "setEnableScale", "isEnableTouch", "setEnableTouch", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "getScaleDetector", "()Landroid/view/ScaleGestureDetector;", "scaleDetector$delegate", "Lkotlin/Lazy;", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "canScrollHorizontally", "direction", "canScrollVertically", "onDoubleTap", "e", "Landroid/view/MotionEvent;", "onDoubleTapEvent", "onDown", "onFling", "e1", "e2", "velocityX", "", "velocityY", "onLongPress", "", "onScale", "detector", "onScaleBegin", "onScaleEnd", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapConfirmed", "onSingleTapUp", "onTouch", "v", "Landroid/view/View;", "event", "onTouchCancel", "libmmui_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/View$OnTouchListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "Landroid/view/GestureDetector$OnGestureListener;", "Landroid/view/GestureDetector$OnDoubleTapListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isEnableFling", "", "()Z", "setEnableFling", "(Z)V", "isEnableOverScroll", "setEnableOverScroll", "isEnableScale", "setEnableScale", "isEnableTouch", "setEnableTouch", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "getScaleDetector", "()Landroid/view/ScaleGestureDetector;", "scaleDetector$delegate", "Lkotlin/Lazy;", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "canScrollHorizontally", "direction", "canScrollVertically", "onDoubleTap", "e", "Landroid/view/MotionEvent;", "onDoubleTapEvent", "onDown", "onFling", "e1", "e2", "velocityX", "", "velocityY", "onLongPress", "", "onScale", "detector", "onScaleBegin", "onScaleEnd", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapConfirmed", "onSingleTapUp", "onTouch", "v", "Landroid/view/View;", "event", "onTouchCancel", "libmmui_release"})
 public class TouchEventLayout
   extends FrameLayout
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener
 {
-  private boolean HEr;
-  private boolean HEs;
-  private boolean HEt;
-  boolean HEu;
-  private final f HEv;
-  private final f rFB;
+  private boolean JeL;
+  private boolean JeM;
+  private boolean JeN;
+  boolean JeO;
+  private final f JeP;
+  private final f rTf;
   
   static
   {
     AppMethodBeat.i(164469);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(TouchEventLayout.class), "scaleDetector", "getScaleDetector()Landroid/view/ScaleGestureDetector;")), (d.l.k)w.a(new u(w.bk(TouchEventLayout.class), "touchDetector", "getTouchDetector()Landroid/view/GestureDetector;")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(TouchEventLayout.class), "scaleDetector", "getScaleDetector()Landroid/view/ScaleGestureDetector;")), (d.l.k)w.a(new u(w.bn(TouchEventLayout.class), "touchDetector", "getTouchDetector()Landroid/view/GestureDetector;")) };
     AppMethodBeat.o(164469);
   }
   
@@ -41,12 +41,12 @@ public class TouchEventLayout
   {
     super(paramContext);
     AppMethodBeat.i(164481);
-    this.HEr = true;
-    this.HEs = true;
-    this.HEt = true;
-    this.HEu = true;
-    this.HEv = g.E((a)new a(this));
-    this.rFB = g.E((a)new b(this));
+    this.JeL = true;
+    this.JeM = true;
+    this.JeN = true;
+    this.JeO = true;
+    this.JeP = g.K((a)new a(this));
+    this.rTf = g.K((a)new b(this));
     AppMethodBeat.o(164481);
   }
   
@@ -54,12 +54,12 @@ public class TouchEventLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164482);
-    this.HEr = true;
-    this.HEs = true;
-    this.HEt = true;
-    this.HEu = true;
-    this.HEv = g.E((a)new a(this));
-    this.rFB = g.E((a)new b(this));
+    this.JeL = true;
+    this.JeM = true;
+    this.JeN = true;
+    this.JeO = true;
+    this.JeP = g.K((a)new a(this));
+    this.rTf = g.K((a)new b(this));
     AppMethodBeat.o(164482);
   }
   
@@ -67,19 +67,19 @@ public class TouchEventLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164483);
-    this.HEr = true;
-    this.HEs = true;
-    this.HEt = true;
-    this.HEu = true;
-    this.HEv = g.E((a)new a(this));
-    this.rFB = g.E((a)new b(this));
+    this.JeL = true;
+    this.JeM = true;
+    this.JeN = true;
+    this.JeO = true;
+    this.JeP = g.K((a)new a(this));
+    this.rTf = g.K((a)new b(this));
     AppMethodBeat.o(164483);
   }
   
   private final ScaleGestureDetector getScaleDetector()
   {
     AppMethodBeat.i(164470);
-    ScaleGestureDetector localScaleGestureDetector = (ScaleGestureDetector)this.HEv.getValue();
+    ScaleGestureDetector localScaleGestureDetector = (ScaleGestureDetector)this.JeP.getValue();
     AppMethodBeat.o(164470);
     return localScaleGestureDetector;
   }
@@ -87,7 +87,7 @@ public class TouchEventLayout
   private final GestureDetector getTouchDetector()
   {
     AppMethodBeat.i(164471);
-    GestureDetector localGestureDetector = (GestureDetector)this.rFB.getValue();
+    GestureDetector localGestureDetector = (GestureDetector)this.rTf.getValue();
     AppMethodBeat.o(164471);
     return localGestureDetector;
   }
@@ -129,7 +129,7 @@ public class TouchEventLayout
     AppMethodBeat.i(164476);
     d.g.b.k.h(paramMotionEvent1, "e1");
     d.g.b.k.h(paramMotionEvent2, "e2");
-    boolean bool = this.HEt;
+    boolean bool = this.JeN;
     AppMethodBeat.o(164476);
     return bool;
   }
@@ -140,7 +140,7 @@ public class TouchEventLayout
   {
     AppMethodBeat.i(164474);
     d.g.b.k.h(paramScaleGestureDetector, "detector");
-    boolean bool = this.HEs;
+    boolean bool = this.JeM;
     AppMethodBeat.o(164474);
     return bool;
   }
@@ -149,7 +149,7 @@ public class TouchEventLayout
   {
     AppMethodBeat.i(164473);
     d.g.b.k.h(paramScaleGestureDetector, "detector");
-    boolean bool = this.HEs;
+    boolean bool = this.JeM;
     AppMethodBeat.o(164473);
     return bool;
   }
@@ -195,12 +195,12 @@ public class TouchEventLayout
     AppMethodBeat.i(164472);
     d.g.b.k.h(paramView, "v");
     d.g.b.k.h(paramMotionEvent, "event");
-    if (!this.HEr)
+    if (!this.JeL)
     {
       AppMethodBeat.o(164472);
       return false;
     }
-    if (this.HEs) {
+    if (this.JeM) {
       getScaleDetector().onTouchEvent(paramMotionEvent);
     }
     getTouchDetector().onTouchEvent(paramMotionEvent);
@@ -213,25 +213,25 @@ public class TouchEventLayout
   
   public void setEnableFling(boolean paramBoolean)
   {
-    this.HEt = paramBoolean;
+    this.JeN = paramBoolean;
   }
   
   public void setEnableOverScroll(boolean paramBoolean)
   {
-    this.HEu = paramBoolean;
+    this.JeO = paramBoolean;
   }
   
   public void setEnableScale(boolean paramBoolean)
   {
-    this.HEs = paramBoolean;
+    this.JeM = paramBoolean;
   }
   
   public void setEnableTouch(boolean paramBoolean)
   {
-    this.HEr = paramBoolean;
+    this.JeL = paramBoolean;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/view/ScaleGestureDetector;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/ScaleGestureDetector;", "invoke"})
   static final class a
     extends d.g.b.l
     implements a<ScaleGestureDetector>
@@ -242,7 +242,7 @@ public class TouchEventLayout
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
   static final class b
     extends d.g.b.l
     implements a<GestureDetector>
@@ -255,7 +255,7 @@ public class TouchEventLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cropview.TouchEventLayout
  * JD-Core Version:    0.7.0.1
  */

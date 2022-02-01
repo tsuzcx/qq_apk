@@ -15,28 +15,28 @@ public abstract class VoidBoolStringStringCallback
     
     static
     {
-      AppMethodBeat.i(190597);
+      AppMethodBeat.i(192980);
       if (!VoidBoolStringStringCallback.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(190597);
+        AppMethodBeat.o(192980);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(190593);
+      AppMethodBeat.i(192976);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(190593);
+        AppMethodBeat.o(192976);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(190593);
+      AppMethodBeat.o(192976);
     }
     
     private native void nativeDestroy(long paramLong);
@@ -45,38 +45,38 @@ public abstract class VoidBoolStringStringCallback
     
     public final void call(boolean paramBoolean, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(190596);
+      AppMethodBeat.i(192979);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramString1 = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(190596);
+        AppMethodBeat.o(192979);
         throw paramString1;
       }
       native_call(this.nativeRef, paramBoolean, paramString1, paramString2);
-      AppMethodBeat.o(190596);
+      AppMethodBeat.o(192979);
     }
     
     public final void destroy()
     {
-      AppMethodBeat.i(190594);
+      AppMethodBeat.i(192977);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(190594);
+      AppMethodBeat.o(192977);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(190595);
+      AppMethodBeat.i(192978);
       destroy();
       super.finalize();
-      AppMethodBeat.o(190595);
+      AppMethodBeat.o(192978);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.gen.VoidBoolStringStringCallback
  * JD-Core Version:    0.7.0.1
  */

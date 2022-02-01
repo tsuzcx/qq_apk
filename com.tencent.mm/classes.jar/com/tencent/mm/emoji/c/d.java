@@ -1,12 +1,12 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.s;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
 import com.tencent.mm.storage.emotion.f;
@@ -14,37 +14,37 @@ import com.tencent.mm.vfs.i;
 
 public abstract class d
 {
-  protected EmojiInfo fLP;
-  protected boolean fMY;
-  protected long fNi;
-  public a fSC;
-  protected boolean fSy;
+  protected EmojiInfo fPB;
+  protected boolean fQJ;
+  protected long fQT;
+  protected boolean fWt;
+  public a fWx;
   
   public d(EmojiInfo paramEmojiInfo, boolean paramBoolean, a parama)
   {
-    this.fLP = paramEmojiInfo;
-    this.fMY = paramBoolean;
-    this.fSC = parama;
-    this.fSy = t.aFn(paramEmojiInfo.gaa());
-    this.fNi = bt.eGO();
-    ad.i("MicroMsg.EmojiUpload", "EmojiUpload: %s, %s, %s", new Object[] { paramEmojiInfo.field_md5, Boolean.valueOf(paramBoolean), Boolean.valueOf(this.fSy) });
+    this.fPB = paramEmojiInfo;
+    this.fQJ = paramBoolean;
+    this.fWx = parama;
+    this.fWt = s.aKE(paramEmojiInfo.ghd());
+    this.fQT = bs.eWj();
+    ac.i("MicroMsg.EmojiUpload", "EmojiUpload: %s, %s, %s", new Object[] { paramEmojiInfo.field_md5, Boolean.valueOf(paramBoolean), Boolean.valueOf(this.fWt) });
   }
   
   protected final void A(int paramInt, String paramString)
   {
-    if (this.fSC != null) {
-      this.fSC.y(paramInt, paramString);
+    if (this.fWx != null) {
+      this.fWx.y(paramInt, paramString);
     }
   }
   
-  public final void acC()
+  public final void adI()
   {
-    if (!ay.isConnected(aj.getContext()))
+    if (!ax.isConnected(ai.getContext()))
     {
       A(5, null);
       return;
     }
-    if (ay.isWifi(aj.getContext()))
+    if (ax.isWifi(ai.getContext()))
     {
       A(6, null);
       return;
@@ -52,29 +52,29 @@ public abstract class d
     A(7, null);
   }
   
-  protected final void lK(int paramInt)
+  protected final void lG(int paramInt)
   {
     A(paramInt, null);
   }
   
-  protected final void pX(String paramString)
+  protected final void tk(String paramString)
   {
-    ad.i("MicroMsg.EmojiUpload", "save emoji gif md5, wxam %b, md5 %s, %s", new Object[] { Boolean.valueOf(this.fLP.fZS()), paramString, this.fLP.field_wxamMd5 });
-    if ((this.fSy) && (!bt.isNullOrNil(paramString)))
+    ac.i("MicroMsg.EmojiUpload", "save emoji gif md5, wxam %b, md5 %s, %s", new Object[] { Boolean.valueOf(this.fPB.fxK()), paramString, this.fPB.field_wxamMd5 });
+    if ((this.fWt) && (!bs.isNullOrNil(paramString)))
     {
-      String str1 = this.fLP.gaa();
-      String str2 = this.fLP.gab();
-      i.lC(str1, EmojiInfo.gac() + paramString);
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().FyY.cz(this.fLP.field_md5, true);
-      this.fLP.field_md5 = paramString;
-      this.fLP.field_externMd5 = this.fLP.field_wxamMd5;
-      this.fLP.a(EmojiInfo.a.FBv);
-      i.lC(str2, this.fLP.gab());
-      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().FyY.J(this.fLP);
+      String str1 = this.fPB.ghd();
+      String str2 = this.fPB.ghe();
+      i.lZ(str1, EmojiInfo.ghf() + paramString);
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().GXZ.cF(this.fPB.field_md5, true);
+      this.fPB.field_md5 = paramString;
+      this.fPB.field_externMd5 = this.fPB.field_wxamMd5;
+      this.fPB.a(EmojiInfo.a.Hav);
+      i.lZ(str2, this.fPB.ghe());
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().GXZ.J(this.fPB);
       return;
     }
-    this.fLP.a(EmojiInfo.a.FBv);
-    ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().FyY.L(this.fLP);
+    this.fPB.a(EmojiInfo.a.Hav);
+    ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().GXZ.L(this.fPB);
   }
   
   public static abstract interface a
@@ -84,7 +84,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.c.d
  * JD-Core Version:    0.7.0.1
  */

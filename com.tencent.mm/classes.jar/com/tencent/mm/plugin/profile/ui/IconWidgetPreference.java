@@ -12,9 +12,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class IconWidgetPreference
   extends Preference
 {
-  private ImageView uCx;
-  private int uCy;
-  private Bitmap uCz;
+  private ImageView vLq;
+  private int vLr;
+  private Bitmap vLs;
   
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,9 +25,9 @@ public class IconWidgetPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27256);
-    this.uCx = null;
-    this.uCy = -1;
-    this.uCz = null;
+    this.vLq = null;
+    this.vLr = -1;
+    this.vLs = null;
     setLayoutResource(2131494804);
     setWidgetLayoutResource(0);
     AppMethodBeat.o(27256);
@@ -36,9 +36,9 @@ public class IconWidgetPreference
   public final void Z(Bitmap paramBitmap)
   {
     AppMethodBeat.i(27258);
-    this.uCz = paramBitmap;
-    if (this.uCx != null) {
-      this.uCx.setImageBitmap(paramBitmap);
+    this.vLs = paramBitmap;
+    if (this.vLq != null) {
+      this.vLq.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(27258);
   }
@@ -47,21 +47,21 @@ public class IconWidgetPreference
   {
     AppMethodBeat.i(27259);
     super.onBindView(paramView);
-    this.uCx = ((ImageView)paramView.findViewById(2131303377));
-    if (this.uCx != null)
+    this.vLq = ((ImageView)paramView.findViewById(2131303377));
+    if (this.vLq != null)
     {
-      this.uCx.setVisibility(8);
-      if (this.uCy != -1)
+      this.vLq.setVisibility(8);
+      if (this.vLr != -1)
       {
-        this.uCx.setImageResource(this.uCy);
-        this.uCx.setVisibility(0);
+        this.vLq.setImageResource(this.vLr);
+        this.vLq.setVisibility(0);
         AppMethodBeat.o(27259);
         return;
       }
-      if (this.uCz != null)
+      if (this.vLs != null)
       {
-        this.uCx.setImageBitmap(this.uCz);
-        this.uCx.setVisibility(0);
+        this.vLq.setImageBitmap(this.vLs);
+        this.vLq.setVisibility(0);
       }
     }
     AppMethodBeat.o(27259);

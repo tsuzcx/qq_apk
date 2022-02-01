@@ -5,11 +5,11 @@ import com.tencent.mm.vending.base.Vending;
 
 public abstract interface y
 {
-  public abstract p Ni(int paramInt);
+  public abstract p Pl(int paramInt);
   
-  public abstract void dzc();
+  public abstract Vending dNA();
   
-  public abstract Vending dzd();
+  public abstract void dNz();
   
   public abstract int getCount();
   

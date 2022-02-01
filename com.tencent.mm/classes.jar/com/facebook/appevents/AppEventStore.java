@@ -2,6 +2,9 @@ package com.facebook.appevents;
 
 import com.facebook.appevents.internal.AppEventUtility;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectStreamClass;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -24,33 +27,33 @@ class AppEventStore
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 17337
-    //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 41	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
-    //   12: invokestatic 45	com/facebook/appevents/AppEventStore:readAndClearStore	()Lcom/facebook/appevents/PersistedEvents;
+    //   6: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 42	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
+    //   12: invokestatic 46	com/facebook/appevents/AppEventStore:readAndClearStore	()Lcom/facebook/appevents/PersistedEvents;
     //   15: astore_2
     //   16: aload_2
     //   17: aload_0
-    //   18: invokevirtual 51	com/facebook/appevents/PersistedEvents:containsKey	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Z
+    //   18: invokevirtual 52	com/facebook/appevents/PersistedEvents:containsKey	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Z
     //   21: ifeq +32 -> 53
     //   24: aload_2
     //   25: aload_0
-    //   26: invokevirtual 55	com/facebook/appevents/PersistedEvents:get	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Ljava/util/List;
+    //   26: invokevirtual 56	com/facebook/appevents/PersistedEvents:get	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Ljava/util/List;
     //   29: aload_1
-    //   30: invokevirtual 61	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
-    //   33: invokeinterface 67 2 0
+    //   30: invokevirtual 62	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
+    //   33: invokeinterface 68 2 0
     //   38: pop
     //   39: aload_2
-    //   40: invokestatic 71	com/facebook/appevents/AppEventStore:saveEventsToDisk	(Lcom/facebook/appevents/PersistedEvents;)V
+    //   40: invokestatic 72	com/facebook/appevents/AppEventStore:saveEventsToDisk	(Lcom/facebook/appevents/PersistedEvents;)V
     //   43: sipush 17337
-    //   46: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: ldc 2
     //   51: monitorexit
     //   52: return
     //   53: aload_2
     //   54: aload_0
     //   55: aload_1
-    //   56: invokevirtual 61	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
-    //   59: invokevirtual 75	com/facebook/appevents/PersistedEvents:addEvents	(Lcom/facebook/appevents/AccessTokenAppIdPair;Ljava/util/List;)V
+    //   56: invokevirtual 62	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
+    //   59: invokevirtual 76	com/facebook/appevents/PersistedEvents:addEvents	(Lcom/facebook/appevents/AccessTokenAppIdPair;Ljava/util/List;)V
     //   62: goto -23 -> 39
     //   65: astore_0
     //   66: ldc 2
@@ -97,30 +100,30 @@ class AppEventStore
     //   2: ldc 2
     //   4: monitorenter
     //   5: sipush 17339
-    //   8: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   11: invokestatic 41	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
-    //   14: invokestatic 113	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   8: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   11: invokestatic 42	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
+    //   14: invokestatic 114	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
     //   17: astore_3
     //   18: new 6	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream
     //   21: dup
-    //   22: new 115	java/io/BufferedInputStream
+    //   22: new 116	java/io/BufferedInputStream
     //   25: dup
     //   26: aload_3
-    //   27: ldc 10
-    //   29: invokevirtual 121	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   32: invokespecial 124	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   35: invokespecial 125	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   27: ldc 11
+    //   29: invokevirtual 122	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   32: invokespecial 125	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   35: invokespecial 126	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   38: astore_0
     //   39: aload_0
-    //   40: invokevirtual 128	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:readObject	()Ljava/lang/Object;
-    //   43: checkcast 47	com/facebook/appevents/PersistedEvents
+    //   40: invokevirtual 129	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:readObject	()Ljava/lang/Object;
+    //   43: checkcast 48	com/facebook/appevents/PersistedEvents
     //   46: astore_1
     //   47: aload_0
-    //   48: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   48: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   51: aload_3
-    //   52: ldc 10
-    //   54: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   57: invokevirtual 143	java/io/File:delete	()Z
+    //   52: ldc 11
+    //   54: invokevirtual 139	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   57: invokevirtual 144	java/io/File:delete	()Z
     //   60: pop
     //   61: aload_1
     //   62: astore_0
@@ -128,12 +131,12 @@ class AppEventStore
     //   64: astore_1
     //   65: aload_0
     //   66: ifnonnull +11 -> 77
-    //   69: new 47	com/facebook/appevents/PersistedEvents
+    //   69: new 48	com/facebook/appevents/PersistedEvents
     //   72: dup
-    //   73: invokespecial 144	com/facebook/appevents/PersistedEvents:<init>	()V
+    //   73: invokespecial 145	com/facebook/appevents/PersistedEvents:<init>	()V
     //   76: astore_1
     //   77: sipush 17339
-    //   80: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: ldc 2
     //   85: monitorexit
     //   86: aload_1
@@ -142,11 +145,11 @@ class AppEventStore
     //   89: aconst_null
     //   90: astore_0
     //   91: aload_0
-    //   92: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   92: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   95: aload_3
-    //   96: ldc 10
-    //   98: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   101: invokevirtual 143	java/io/File:delete	()Z
+    //   96: ldc 11
+    //   98: invokevirtual 139	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   101: invokevirtual 144	java/io/File:delete	()Z
     //   104: pop
     //   105: aconst_null
     //   106: astore_0
@@ -159,11 +162,11 @@ class AppEventStore
     //   117: aconst_null
     //   118: astore_0
     //   119: aload_0
-    //   120: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   120: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   123: aload_3
-    //   124: ldc 10
-    //   126: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   129: invokevirtual 143	java/io/File:delete	()Z
+    //   124: ldc 11
+    //   126: invokevirtual 139	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   129: invokevirtual 144	java/io/File:delete	()Z
     //   132: pop
     //   133: aconst_null
     //   134: astore_0
@@ -174,14 +177,14 @@ class AppEventStore
     //   141: goto -78 -> 63
     //   144: astore_0
     //   145: aload_1
-    //   146: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   146: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   149: aload_3
-    //   150: ldc 10
-    //   152: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   155: invokevirtual 143	java/io/File:delete	()Z
+    //   150: ldc 11
+    //   152: invokevirtual 139	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   155: invokevirtual 144	java/io/File:delete	()Z
     //   158: pop
     //   159: sipush 17339
-    //   162: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: aload_0
     //   166: athrow
     //   167: astore_0
@@ -259,29 +262,29 @@ class AppEventStore
   {
     // Byte code:
     //   0: sipush 17340
-    //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 113	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 114	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
     //   9: astore_3
-    //   10: new 146	java/io/ObjectOutputStream
+    //   10: new 147	java/io/ObjectOutputStream
     //   13: dup
-    //   14: new 148	java/io/BufferedOutputStream
+    //   14: new 149	java/io/BufferedOutputStream
     //   17: dup
     //   18: aload_3
-    //   19: ldc 10
+    //   19: ldc 11
     //   21: iconst_0
-    //   22: invokevirtual 152	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   25: invokespecial 155	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   28: invokespecial 156	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   22: invokevirtual 153	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   25: invokespecial 156	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   28: invokespecial 157	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   31: astore_2
     //   32: aload_2
     //   33: astore_1
     //   34: aload_2
     //   35: aload_0
-    //   36: invokevirtual 160	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   36: invokevirtual 161	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   39: aload_2
-    //   40: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   40: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   43: sipush 17340
-    //   46: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: return
     //   50: astore_0
     //   51: aconst_null
@@ -289,22 +292,22 @@ class AppEventStore
     //   53: aload_0
     //   54: astore_1
     //   55: aload_3
-    //   56: ldc 10
-    //   58: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   61: invokevirtual 143	java/io/File:delete	()Z
+    //   56: ldc 11
+    //   58: invokevirtual 139	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   61: invokevirtual 144	java/io/File:delete	()Z
     //   64: pop
     //   65: aload_0
-    //   66: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   66: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   69: sipush 17340
-    //   72: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   72: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   75: return
     //   76: astore_0
     //   77: aconst_null
     //   78: astore_1
     //   79: aload_1
-    //   80: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   80: invokestatic 135	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   83: sipush 17340
-    //   86: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_0
     //   90: athrow
     //   91: astore_0
@@ -330,6 +333,37 @@ class AppEventStore
     //   55	65	91	finally
     //   55	65	95	java/lang/Exception
     //   34	39	99	java/lang/Exception
+  }
+  
+  static class MovedClassObjectInputStream
+    extends ObjectInputStream
+  {
+    private static final String ACCESS_TOKEN_APP_ID_PAIR_SERIALIZATION_PROXY_V1_CLASS_NAME = "com.facebook.appevents.AppEventsLogger$AccessTokenAppIdPair$SerializationProxyV1";
+    private static final String APP_EVENT_SERIALIZATION_PROXY_V1_CLASS_NAME = "com.facebook.appevents.AppEventsLogger$AppEvent$SerializationProxyV1";
+    
+    public MovedClassObjectInputStream(InputStream paramInputStream)
+    {
+      super();
+    }
+    
+    protected ObjectStreamClass readClassDescriptor()
+    {
+      AppMethodBeat.i(17336);
+      ObjectStreamClass localObjectStreamClass2 = super.readClassDescriptor();
+      ObjectStreamClass localObjectStreamClass1;
+      if (localObjectStreamClass2.getName().equals("com.facebook.appevents.AppEventsLogger$AccessTokenAppIdPair$SerializationProxyV1")) {
+        localObjectStreamClass1 = ObjectStreamClass.lookup(AccessTokenAppIdPair.SerializationProxyV1.class);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(17336);
+        return localObjectStreamClass1;
+        localObjectStreamClass1 = localObjectStreamClass2;
+        if (localObjectStreamClass2.getName().equals("com.facebook.appevents.AppEventsLogger$AppEvent$SerializationProxyV1")) {
+          localObjectStreamClass1 = ObjectStreamClass.lookup(AppEvent.SerializationProxyV1.class);
+        }
+      }
+    }
   }
 }
 

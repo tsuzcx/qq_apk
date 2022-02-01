@@ -3,17 +3,13 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.CountDownLatch;
 
 public class LoadDataWebviewUI
   extends PreLoadWebViewUI
 {
-  private CountDownLatch Bly;
-  
   public LoadDataWebviewUI()
   {
     AppMethodBeat.i(80724);
-    this.Bly = new CountDownLatch(1);
     AppMethodBeat.o(80724);
   }
   

@@ -22,9 +22,9 @@ final class FavoriteImgDetailUI$4
     {
       AppMethodBeat.o(164096);
       return false;
-      paramView = y.arz().E("basescanui@datacenter", true);
-      paramView.m("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
-      paramView.m("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
+      paramView = y.ayq().F("basescanui@datacenter", true);
+      paramView.l("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
+      paramView.l("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
     }
   }
 }

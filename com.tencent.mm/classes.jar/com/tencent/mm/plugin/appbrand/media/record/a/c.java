@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class c
   implements d
 {
-  String kRt = "audio/mp4a-latm";
-  String kRu = "audio/mpeg";
-  d.a kRv = null;
-  int kRw = 0;
-  int kRx = 0;
-  byte[] kRy;
-  int kRz = 0;
+  String lsT = "audio/mp4a-latm";
+  String lsU = "audio/mpeg";
+  d.a lsV = null;
+  int lsW = 0;
+  int lsX = 0;
+  byte[] lsY;
+  int lsZ = 0;
   
   public final void a(d.a parama)
   {
-    this.kRv = parama;
+    this.lsV = parama;
   }
   
   public boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
@@ -29,52 +29,52 @@ public class c
   public final void d(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(146344);
-    if (this.kRv == null)
+    if (this.lsV == null)
     {
-      ad.e("MicroMsg.Record.AudioEncoder", "mEncodeListener is null, return");
+      ac.e("MicroMsg.Record.AudioEncoder", "mEncodeListener is null, return");
       AppMethodBeat.o(146344);
       return;
     }
-    if (this.kRx == 0.0D)
+    if (this.lsX == 0.0D)
     {
-      ad.e("MicroMsg.Record.AudioEncoder", "no frameSize, return");
+      ac.e("MicroMsg.Record.AudioEncoder", "no frameSize, return");
       AppMethodBeat.o(146344);
       return;
     }
-    if (paramInt > this.kRx) {
-      ad.w("MicroMsg.Record.AudioEncoder", "buffSize:%d frameSize:%d, buffSize > frameSize ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kRx) });
+    if (paramInt > this.lsX) {
+      ac.w("MicroMsg.Record.AudioEncoder", "buffSize:%d frameSize:%d, buffSize > frameSize ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.lsX) });
     }
-    ad.d("MicroMsg.Record.AudioEncoder", "bufferedSize:%d, buffSize:%d", new Object[] { Integer.valueOf(this.kRz), Integer.valueOf(paramInt) });
-    int i = this.kRz + paramInt;
-    if ((i >= this.kRx) && (paramArrayOfByte != null))
+    ac.d("MicroMsg.Record.AudioEncoder", "bufferedSize:%d, buffSize:%d", new Object[] { Integer.valueOf(this.lsZ), Integer.valueOf(paramInt) });
+    int i = this.lsZ + paramInt;
+    if ((i >= this.lsX) && (paramArrayOfByte != null))
     {
-      ad.d("MicroMsg.Record.AudioEncoder", "flush all, currentBufferedSize:%d", new Object[] { Integer.valueOf(i) });
-      if (i > this.kRy.length)
+      ac.d("MicroMsg.Record.AudioEncoder", "flush all, currentBufferedSize:%d", new Object[] { Integer.valueOf(i) });
+      if (i > this.lsY.length)
       {
-        ad.i("MicroMsg.Record.AudioEncoder", "expand the end codeBuffer:%d", new Object[] { Integer.valueOf(i) });
-        byte[] arrayOfByte = this.kRy;
-        this.kRy = new byte[i];
-        System.arraycopy(arrayOfByte, 0, this.kRy, 0, this.kRz);
+        ac.i("MicroMsg.Record.AudioEncoder", "expand the end codeBuffer:%d", new Object[] { Integer.valueOf(i) });
+        byte[] arrayOfByte = this.lsY;
+        this.lsY = new byte[i];
+        System.arraycopy(arrayOfByte, 0, this.lsY, 0, this.lsZ);
       }
-      System.arraycopy(paramArrayOfByte, 0, this.kRy, this.kRz, paramInt);
-      this.kRv.c(this.kRy, i, false);
-      this.kRz = 0;
+      System.arraycopy(paramArrayOfByte, 0, this.lsY, this.lsZ, paramInt);
+      this.lsV.c(this.lsY, i, false);
+      this.lsZ = 0;
     }
     for (;;)
     {
       if (paramBoolean)
       {
-        ad.i("MicroMsg.Record.AudioEncoder", "isEnd is true, flush the buffer, bufferedSize:%d", new Object[] { Integer.valueOf(this.kRz) });
-        this.kRv.c(this.kRy, this.kRz, paramBoolean);
-        this.kRz = 0;
+        ac.i("MicroMsg.Record.AudioEncoder", "isEnd is true, flush the buffer, bufferedSize:%d", new Object[] { Integer.valueOf(this.lsZ) });
+        this.lsV.c(this.lsY, this.lsZ, paramBoolean);
+        this.lsZ = 0;
       }
       AppMethodBeat.o(146344);
       return;
       if (paramArrayOfByte != null)
       {
-        System.arraycopy(paramArrayOfByte, 0, this.kRy, this.kRz, paramInt);
-        this.kRz = i;
-        ad.d("MicroMsg.Record.AudioEncoder", "append buff, currentBufferedSize:%d", new Object[] { Integer.valueOf(this.kRz) });
+        System.arraycopy(paramArrayOfByte, 0, this.lsY, this.lsZ, paramInt);
+        this.lsZ = i;
+        ac.d("MicroMsg.Record.AudioEncoder", "append buff, currentBufferedSize:%d", new Object[] { Integer.valueOf(this.lsZ) });
       }
     }
   }
@@ -86,26 +86,26 @@ public class c
     return false;
   }
   
-  public final void r(double paramDouble)
+  public final void q(double paramDouble)
   {
     AppMethodBeat.i(146343);
-    this.kRx = ((int)(1024.0D * paramDouble));
-    ad.i("MicroMsg.Record.AudioEncoder", "setEncodeBuffFrameSize frameKbSize:%b frameByteSize:%d", new Object[] { Double.valueOf(paramDouble), Integer.valueOf(this.kRx) });
-    this.kRy = new byte[this.kRx];
+    this.lsX = ((int)(1024.0D * paramDouble));
+    ac.i("MicroMsg.Record.AudioEncoder", "setEncodeBuffFrameSize frameKbSize:%b frameByteSize:%d", new Object[] { Double.valueOf(paramDouble), Integer.valueOf(this.lsX) });
+    this.lsY = new byte[this.lsX];
     AppMethodBeat.o(146343);
   }
   
-  public final void ti(int paramInt)
+  public final void tZ(int paramInt)
   {
     AppMethodBeat.i(146342);
-    ad.i("MicroMsg.Record.AudioEncoder", "mMinBufferSize:%d", new Object[] { Integer.valueOf(this.kRw) });
-    this.kRw = paramInt;
+    ac.i("MicroMsg.Record.AudioEncoder", "mMinBufferSize:%d", new Object[] { Integer.valueOf(this.lsW) });
+    this.lsW = paramInt;
     AppMethodBeat.o(146342);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.fav.a.f;
 import com.tencent.mm.plugin.fav.a.t;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,20 +25,20 @@ public final class c
     AppMethodBeat.o(101685);
   }
   
-  public final List<f> chX()
+  public final List<f> cpE()
   {
     AppMethodBeat.i(101688);
     Cursor localCursor = this.db.a("select count(*) from FavEditInfo", null, 2);
     if (localCursor == null)
     {
-      ad.e("MicroMsg.Fav.FavEditInfoStorage", "count all edit info, cursor is null");
+      ac.e("MicroMsg.Fav.FavEditInfoStorage", "count all edit info, cursor is null");
       AppMethodBeat.o(101688);
       return null;
     }
     try
     {
       if (localCursor.moveToFirst()) {
-        ad.i("MicroMsg.Fav.FavEditInfoStorage", "get all edit infos, count %d", new Object[] { Integer.valueOf(localCursor.getInt(0)) });
+        ac.i("MicroMsg.Fav.FavEditInfoStorage", "get all edit infos, count %d", new Object[] { Integer.valueOf(localCursor.getInt(0)) });
       }
       localCursor.close();
       localCursor = this.db.a("select * from FavEditInfo", null, 2);
@@ -50,7 +50,7 @@ public final class c
     }
     catch (Exception localException1)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.FavEditInfoStorage", localException1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Fav.FavEditInfoStorage", localException1, "", new Object[0]);
       localCursor.close();
       AppMethodBeat.o(101688);
       return null;
@@ -75,14 +75,14 @@ public final class c
     }
     catch (Exception localException2)
     {
-      ad.printErrStackTrace("MicroMsg.Fav.FavEditInfoStorage", localException2, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Fav.FavEditInfoStorage", localException2, "", new Object[0]);
       localCursor.close();
       AppMethodBeat.o(101688);
     }
     return null;
   }
   
-  public final f pR(long paramLong)
+  public final f tG(long paramLong)
   {
     f localf = null;
     AppMethodBeat.i(101686);
@@ -102,7 +102,7 @@ public final class c
     return localf;
   }
   
-  public final void y(long paramLong, int paramInt)
+  public final void z(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101687);
     this.db.delete("FavEditInfo", "localId=? and type=?", new String[] { String.valueOf(paramLong), String.valueOf(paramInt) });

@@ -1,32 +1,32 @@
 package com.tencent.mm.msgsubscription.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.msgsubscription.util.a.b;
 import com.tencent.mm.msgsubscription.util.a.c;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.io.IOException;
 import java.util.WeakHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/cgi/MMCompatNetworkDispatcher;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "()V", "TAG", "", "mapCompat2MMNetScene", "Ljava/util/WeakHashMap;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "cancel", "", "scene", "send", "", "rr", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IReqResp;", "callback", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IOnSceneEnd;", "checkIsValid", "", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toMMRepRespWrapper", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "plugin-comm_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/cgi/MMCompatNetworkDispatcher;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "()V", "TAG", "", "mapCompat2MMNetScene", "Ljava/util/WeakHashMap;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "cancel", "", "scene", "send", "", "rr", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IReqResp;", "callback", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IOnSceneEnd;", "checkIsValid", "", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toMMRepRespWrapper", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "plugin-comm_release"})
 public final class a
   implements com.tencent.mm.msgsubscription.util.a.a
 {
-  private static final WeakHashMap<com.tencent.mm.msgsubscription.util.a, n> hGO;
-  public static final a hGP;
+  private static final WeakHashMap<com.tencent.mm.msgsubscription.util.a, n> ihq;
+  public static final a ihr;
   
   static
   {
     AppMethodBeat.i(177282);
-    hGP = new a();
-    hGO = new WeakHashMap();
+    ihr = new a();
+    ihq = new WeakHashMap();
     AppMethodBeat.o(177282);
   }
   
@@ -38,9 +38,9 @@ public final class a
       AppMethodBeat.o(177281);
       return;
     }
-    synchronized (hGO)
+    synchronized (ihq)
     {
-      parama = (n)hGO.get(parama);
+      parama = (n)ihq.get(parama);
       if (parama != null) {
         x.a(parama);
       }
@@ -55,35 +55,35 @@ public final class a
     k.h(???, "rr");
     k.h(parama, "scene");
     b.a locala = new b.a();
-    locala.c((com.tencent.mm.bx.a)???.aEx());
-    locala.d((com.tencent.mm.bx.a)???.aEy());
-    locala.wg(???.getUri());
-    locala.nB(???.getType());
-    paramb = IPCRunCgi.a(locala.atI(), (IPCRunCgi.a)new a(???, paramb, parama));
+    locala.c((com.tencent.mm.bw.a)???.aLo());
+    locala.d((com.tencent.mm.bw.a)???.aLp());
+    locala.Am(???.getUri());
+    locala.op(???.getType());
+    paramb = IPCRunCgi.a(locala.aAz(), (IPCRunCgi.a)new a(???, paramb, parama));
     if (paramb != null) {}
-    synchronized (hGO)
+    synchronized (ihq)
     {
-      hGO.put(parama, paramb);
+      ihq.put(parama, paramb);
       AppMethodBeat.o(177280);
       return 0;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "mmrr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "mmrr", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "callback"})
   static final class a
     implements IPCRunCgi.a
   {
     a(a.c paramc, a.b paramb, com.tencent.mm.msgsubscription.util.a parama) {}
     
-    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(177279);
-      a locala = a.hGP;
+      a locala = a.ihr;
       k.g(paramb, "mmrr");
-      if (a.f(paramb.auM())) {}
+      if (a.f(paramb.aBD())) {}
       try
       {
-        this.hGQ.aEy().parseFrom(paramb.auM().toByteArray());
+        this.ihs.aLp().parseFrom(paramb.aBD().toByteArray());
         paramb = paramb;
         if (paramb != null)
         {
@@ -94,7 +94,7 @@ public final class a
       }
       catch (IOException paramb)
       {
-        ad.e("MicroMsg.MMCompatNetworkDispatcher", "parseFrom mmrr uri=" + this.hGQ.getUri() + ", e=" + paramb);
+        ac.e("MicroMsg.MMCompatNetworkDispatcher", "parseFrom mmrr uri=" + this.ihs.getUri() + ", e=" + paramb);
         paramb = paramb;
         if (paramb != null)
         {
@@ -107,7 +107,7 @@ public final class a
       }
       catch (f.a.a.b paramb)
       {
-        ad.e("MicroMsg.MMCompatNetworkDispatcher", "parseFrom mmrr uri=" + this.hGQ.getUri() + ", e=" + paramb);
+        ac.e("MicroMsg.MMCompatNetworkDispatcher", "parseFrom mmrr uri=" + this.ihs.getUri() + ", e=" + paramb);
         paramb = paramb;
         if (paramb != null)
         {
@@ -124,7 +124,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.a.a
  * JD-Core Version:    0.7.0.1
  */

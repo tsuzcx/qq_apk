@@ -7,28 +7,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/WordingInfo;", "Landroid/os/Parcelable;", "PopupTitle", "", "PopupAllow", "PopupCancel", "PopupBottom", "ExampleTitle", "AlwaysReject", "PopupDesc", "SendWording", "MultiRemind", "WxaMultiRemind", "SendBelowMsg", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAlwaysReject", "()Ljava/lang/String;", "getExampleTitle", "getMultiRemind", "getPopupAllow", "getPopupBottom", "getPopupCancel", "getPopupDesc", "getPopupTitle", "getSendBelowMsg", "getSendWording", "getWxaMultiRemind", "describeContents", "", "toString", "writeToParcel", "", "flags", "Companion", "wxbiz-msgsubscription-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/WordingInfo;", "Landroid/os/Parcelable;", "PopupTitle", "", "PopupAllow", "PopupCancel", "PopupBottom", "ExampleTitle", "AlwaysReject", "PopupDesc", "SendWording", "MultiRemind", "WxaMultiRemind", "SendBelowMsg", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAlwaysReject", "()Ljava/lang/String;", "getExampleTitle", "getMultiRemind", "getPopupAllow", "getPopupBottom", "getPopupCancel", "getPopupDesc", "getPopupTitle", "getSendBelowMsg", "getSendWording", "getWxaMultiRemind", "describeContents", "", "toString", "writeToParcel", "", "flags", "Companion", "wxbiz-msgsubscription-sdk_release"})
 public final class WordingInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WordingInfo> CREATOR;
-  public static final WordingInfo.a hGN;
-  public final String hGC;
-  public final String hGD;
-  public final String hGE;
-  public final String hGF;
-  public final String hGG;
-  public final String hGH;
-  public final String hGI;
-  public final String hGJ;
-  private final String hGK;
-  public final String hGL;
-  public final String hGM;
+  public static final a ihp;
+  public final String ihe;
+  public final String ihf;
+  public final String ihg;
+  public final String ihh;
+  public final String ihi;
+  public final String ihj;
+  public final String ihk;
+  public final String ihl;
+  private final String ihm;
+  public final String ihn;
+  public final String iho;
   
   static
   {
     AppMethodBeat.i(149560);
-    hGN = new WordingInfo.a((byte)0);
+    ihp = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(149560);
   }
@@ -41,84 +41,84 @@ public final class WordingInfo
     if (str2 == null) {
       str1 = "";
     }
-    this.hGC = str1;
+    this.ihe = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGD = str1;
+    this.ihf = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGE = str1;
+    this.ihg = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGF = str1;
+    this.ihh = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGG = str1;
+    this.ihi = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGH = str1;
+    this.ihj = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGI = str1;
+    this.ihk = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGJ = str1;
+    this.ihl = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGK = str1;
+    this.ihm = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    this.hGL = str1;
+    this.ihn = str1;
     str1 = paramParcel.readString();
     paramParcel = str1;
     if (str1 == null) {
       paramParcel = "";
     }
-    this.hGM = paramParcel;
+    this.iho = paramParcel;
     AppMethodBeat.o(149559);
   }
   
   public WordingInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
     AppMethodBeat.i(149558);
-    this.hGC = paramString1;
-    this.hGD = paramString2;
-    this.hGE = paramString3;
-    this.hGF = paramString4;
-    this.hGG = paramString5;
-    this.hGH = paramString6;
-    this.hGI = paramString7;
-    this.hGJ = paramString8;
-    this.hGK = paramString9;
-    this.hGL = paramString10;
-    this.hGM = paramString11;
+    this.ihe = paramString1;
+    this.ihf = paramString2;
+    this.ihg = paramString3;
+    this.ihh = paramString4;
+    this.ihi = paramString5;
+    this.ihj = paramString6;
+    this.ihk = paramString7;
+    this.ihl = paramString8;
+    this.ihm = paramString9;
+    this.ihn = paramString10;
+    this.iho = paramString11;
     AppMethodBeat.o(149558);
   }
   
@@ -130,7 +130,7 @@ public final class WordingInfo
   public final String toString()
   {
     AppMethodBeat.i(149557);
-    String str = "WordingInfo(PopupTitle='" + this.hGC + "', PopupAllow='" + this.hGD + "', PopupCancel='" + this.hGE + "', PopupBottom='" + this.hGF + "', ExampleTitle='" + this.hGG + "', AlwaysReject='" + this.hGH + "', PopupDesc='" + this.hGI + "', SendWording='" + this.hGJ + "', MultiRemind='" + this.hGK + "', WxaMultiRemind='" + this.hGL + "')";
+    String str = "WordingInfo(PopupTitle='" + this.ihe + "', PopupAllow='" + this.ihf + "', PopupCancel='" + this.ihg + "', PopupBottom='" + this.ihh + "', ExampleTitle='" + this.ihi + "', AlwaysReject='" + this.ihj + "', PopupDesc='" + this.ihk + "', SendWording='" + this.ihl + "', MultiRemind='" + this.ihm + "', WxaMultiRemind='" + this.ihn + "')";
     AppMethodBeat.o(149557);
     return str;
   }
@@ -139,28 +139,31 @@ public final class WordingInfo
   {
     AppMethodBeat.i(149556);
     k.h(paramParcel, "parcel");
-    paramParcel.writeString(this.hGC);
-    paramParcel.writeString(this.hGD);
-    paramParcel.writeString(this.hGE);
-    paramParcel.writeString(this.hGF);
-    paramParcel.writeString(this.hGG);
-    paramParcel.writeString(this.hGH);
-    paramParcel.writeString(this.hGI);
-    paramParcel.writeString(this.hGJ);
-    paramParcel.writeString(this.hGK);
-    paramParcel.writeString(this.hGL);
-    paramParcel.writeString(this.hGM);
+    paramParcel.writeString(this.ihe);
+    paramParcel.writeString(this.ihf);
+    paramParcel.writeString(this.ihg);
+    paramParcel.writeString(this.ihh);
+    paramParcel.writeString(this.ihi);
+    paramParcel.writeString(this.ihj);
+    paramParcel.writeString(this.ihk);
+    paramParcel.writeString(this.ihl);
+    paramParcel.writeString(this.ihm);
+    paramParcel.writeString(this.ihn);
+    paramParcel.writeString(this.iho);
     AppMethodBeat.o(149556);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/msgsubscription/WordingInfo$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/WordingInfo;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/msgsubscription/WordingInfo;", "wxbiz-msgsubscription-sdk_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/WordingInfo$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/WordingInfo;", "wxbiz-msgsubscription-sdk_release"})
+  public static final class a {}
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/msgsubscription/WordingInfo$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/WordingInfo;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/msgsubscription/WordingInfo;", "wxbiz-msgsubscription-sdk_release"})
   public static final class b
     implements Parcelable.Creator<WordingInfo>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.WordingInfo
  * JD-Core Version:    0.7.0.1
  */

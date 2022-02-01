@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/report/EmojiTabClickReport;", "", "()V", "clickIndex", "", "getClickIndex", "()I", "setClickIndex", "(I)V", "scene", "getScene", "setScene", "timePanelShow", "", "panelShow", "", "openTime", "reportClick", "tabIndex", "productId", "", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/report/EmojiTabClickReport;", "", "()V", "clickIndex", "", "getClickIndex", "()I", "setClickIndex", "(I)V", "scene", "getScene", "setScene", "timePanelShow", "", "panelShow", "", "openTime", "reportClick", "tabIndex", "productId", "", "plugin-emojisdk_release"})
 public final class e
 {
-  private static long fRc;
-  private static int fRd;
-  public static final e fRj;
+  private static long fUX;
+  private static int fUY;
+  public static final e fVe;
   private static int scene;
   
   static
   {
     AppMethodBeat.i(105727);
-    fRj = new e();
+    fVe = new e();
     AppMethodBeat.o(105727);
   }
   
-  public static void lq(long paramLong)
+  public static void oT(long paramLong)
   {
-    fRc = paramLong;
-    fRd = 1;
+    fUX = paramLong;
+    fUY = 1;
   }
   
   public static void setScene(int paramInt)
@@ -34,8 +34,8 @@ public final class e
   {
     AppMethodBeat.i(105726);
     long l = System.currentTimeMillis();
-    h.vKh.f(18231, new Object[] { Long.valueOf(fRc), Integer.valueOf(scene), Integer.valueOf(fRd), Long.valueOf(l), Integer.valueOf(paramInt), paramString });
-    fRd += 1;
+    h.wUl.f(18231, new Object[] { Long.valueOf(fUX), Integer.valueOf(scene), Integer.valueOf(fUY), Long.valueOf(l), Integer.valueOf(paramInt), paramString });
+    fUY += 1;
     AppMethodBeat.o(105726);
   }
 }

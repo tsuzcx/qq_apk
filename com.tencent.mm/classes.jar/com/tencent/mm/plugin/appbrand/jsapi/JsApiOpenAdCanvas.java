@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.ni;
-import com.tencent.mm.g.a.ni.b;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.nr;
+import com.tencent.mm.g.a.nr.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 
 public final class JsApiOpenAdCanvas
@@ -20,23 +20,23 @@ public final class JsApiOpenAdCanvas
 {
   public static final int CTRL_INDEX = 476;
   public static final String NAME = "openADCanvas";
-  private String jyr = "";
-  private JsApiOpenAdCanvasTask jys = null;
+  private String jYO = "";
+  private JsApiOpenAdCanvasTask jYP = null;
   
   static class JsApiOpenAdCanvasTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<JsApiOpenAdCanvasTask> CREATOR;
-    private String dqq;
-    private int dss;
-    private int dsu;
-    private q iIL;
-    private int joH;
-    private m jwG;
-    private WeakReference<Context> jyt;
-    private String jyu;
-    private String jyv;
-    private String jyw;
+    private String dob;
+    private int dqd;
+    private int dqe;
+    private int jOT;
+    private m jXc;
+    private WeakReference<Context> jYQ;
+    private String jYR;
+    private String jYS;
+    private String jYT;
+    private q jiP;
     
     static
     {
@@ -54,52 +54,18 @@ public final class JsApiOpenAdCanvas
     
     public JsApiOpenAdCanvasTask(m paramm, q paramq, int paramInt1, WeakReference<Context> paramWeakReference, String paramString1, int paramInt2, int paramInt3, String paramString2, String paramString3)
     {
-      this.jwG = paramm;
-      this.iIL = paramq;
-      this.joH = paramInt1;
-      this.jyt = paramWeakReference;
-      this.jyu = paramString1;
-      this.dss = paramInt2;
-      this.dsu = paramInt3;
-      this.dqq = paramString2;
-      this.jyv = paramString3;
+      this.jXc = paramm;
+      this.jiP = paramq;
+      this.jOT = paramInt1;
+      this.jYQ = paramWeakReference;
+      this.jYR = paramString1;
+      this.dqd = paramInt2;
+      this.dqe = paramInt3;
+      this.dob = paramString2;
+      this.jYS = paramString3;
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(45564);
-      String str2 = this.jyw;
-      if (this.dss == 0)
-      {
-        Intent localIntent = new Intent();
-        String str1 = str2;
-        if (str2 == null) {
-          str1 = "";
-        }
-        localIntent.putExtra("sns_landing_pages_xml", str1);
-        localIntent.putExtra("sns_landing_pages_pageid", bt.aGi(this.jyu));
-        localIntent.putExtra("sns_landig_pages_from_source", 13);
-        localIntent.putExtra("sns_landing_pages_extra", this.dqq);
-        localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
-        localIntent.putExtra("sns_landing_pages_no_store", this.dsu);
-        localIntent.putExtra("sns_landing_pages_ad_info", this.jyv);
-        d.b((Context)this.jyt.get(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
-        this.iIL.h(this.joH, this.jwG.e("ok", null));
-      }
-      for (;;)
-      {
-        aXn();
-        AppMethodBeat.o(45564);
-        return;
-        if (this.dss == 1) {
-          this.iIL.h(this.joH, this.jwG.e("ok", null));
-        } else {
-          this.iIL.h(this.joH, this.jwG.e("fail", null));
-        }
-      }
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(45565);
       b.c(new Runnable()
@@ -107,14 +73,14 @@ public final class JsApiOpenAdCanvas
         public final void run()
         {
           AppMethodBeat.i(45561);
-          ni localni = new ni();
-          localni.dsq.pageId = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localni.dsq.deE = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.b(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localni.dsq.dss = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.c(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localni.dsq.dsu = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.d(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
-          localni.dsq.dep = 0;
-          com.tencent.mm.sdk.b.a.ESL.l(localni);
-          JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this, localni.dsr.dsv);
+          nr localnr = new nr();
+          localnr.dqb.pageId = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localnr.dqb.dbZ = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.b(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localnr.dqb.dqd = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.c(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localnr.dqb.dqe = JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.d(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
+          localnr.dqb.dbL = 0;
+          com.tencent.mm.sdk.b.a.GpY.l(localnr);
+          JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.a(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this, localnr.dqc.dqf);
           JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.e(JsApiOpenAdCanvas.JsApiOpenAdCanvasTask.this);
           AppMethodBeat.o(45561);
         }
@@ -122,27 +88,61 @@ public final class JsApiOpenAdCanvas
       AppMethodBeat.o(45565);
     }
     
+    public final void aLr()
+    {
+      AppMethodBeat.i(45564);
+      String str2 = this.jYT;
+      if (this.dqd == 0)
+      {
+        Intent localIntent = new Intent();
+        String str1 = str2;
+        if (str2 == null) {
+          str1 = "";
+        }
+        localIntent.putExtra("sns_landing_pages_xml", str1);
+        localIntent.putExtra("sns_landing_pages_pageid", bs.aLz(this.jYR));
+        localIntent.putExtra("sns_landig_pages_from_source", 13);
+        localIntent.putExtra("sns_landing_pages_extra", this.dob);
+        localIntent.putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
+        localIntent.putExtra("sns_landing_pages_no_store", this.dqe);
+        localIntent.putExtra("sns_landing_pages_ad_info", this.jYS);
+        d.b((Context)this.jYQ.get(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", localIntent);
+        this.jiP.h(this.jOT, this.jXc.e("ok", null));
+      }
+      for (;;)
+      {
+        bek();
+        AppMethodBeat.o(45564);
+        return;
+        if (this.dqd == 1) {
+          this.jiP.h(this.jOT, this.jXc.e("ok", null));
+        } else {
+          this.jiP.h(this.jOT, this.jXc.e("fail", null));
+        }
+      }
+    }
+    
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45566);
-      this.jyu = paramParcel.readString();
-      this.dss = paramParcel.readInt();
-      this.dsu = paramParcel.readInt();
-      this.dqq = paramParcel.readString();
-      this.jyv = paramParcel.readString();
-      this.jyw = paramParcel.readString();
+      this.jYR = paramParcel.readString();
+      this.dqd = paramParcel.readInt();
+      this.dqe = paramParcel.readInt();
+      this.dob = paramParcel.readString();
+      this.jYS = paramParcel.readString();
+      this.jYT = paramParcel.readString();
       AppMethodBeat.o(45566);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45567);
-      paramParcel.writeString(this.jyu);
-      paramParcel.writeInt(this.dss);
-      paramParcel.writeInt(this.dsu);
-      paramParcel.writeString(this.dqq);
-      paramParcel.writeString(this.jyv);
-      paramParcel.writeString(this.jyw);
+      paramParcel.writeString(this.jYR);
+      paramParcel.writeInt(this.dqd);
+      paramParcel.writeInt(this.dqe);
+      paramParcel.writeString(this.dob);
+      paramParcel.writeString(this.jYS);
+      paramParcel.writeString(this.jYT);
       AppMethodBeat.o(45567);
     }
   }

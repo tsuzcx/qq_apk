@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String IconUrl;
   public String Title;
-  public String rZo;
+  public String thh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,8 +21,8 @@ public final class cp
       if (this.Title != null) {
         paramVarArgs.d(2, this.Title);
       }
-      if (this.rZo != null) {
-        paramVarArgs.d(3, this.rZo);
+      if (this.thh != null) {
+        paramVarArgs.d(3, this.thh);
       }
       AppMethodBeat.o(41818);
       return 0;
@@ -40,17 +40,17 @@ public final class cp
         paramInt = i + f.a.a.b.b.a.e(2, this.Title);
       }
       i = paramInt;
-      if (this.rZo != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.rZo);
+      if (this.thh != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.thh);
       }
       AppMethodBeat.o(41818);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41818);
@@ -66,15 +66,15 @@ public final class cp
           AppMethodBeat.o(41818);
           return -1;
         case 1: 
-          localcp.IconUrl = locala.KhF.readString();
+          localcp.IconUrl = locala.LVo.readString();
           AppMethodBeat.o(41818);
           return 0;
         case 2: 
-          localcp.Title = locala.KhF.readString();
+          localcp.Title = locala.LVo.readString();
           AppMethodBeat.o(41818);
           return 0;
         }
-        localcp.rZo = locala.KhF.readString();
+        localcp.thh = locala.LVo.readString();
         AppMethodBeat.o(41818);
         return 0;
       }
@@ -85,7 +85,7 @@ public final class cp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cp
  * JD-Core Version:    0.7.0.1
  */

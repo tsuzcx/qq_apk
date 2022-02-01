@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wallet.pay;
 
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;

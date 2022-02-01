@@ -19,11 +19,11 @@ public abstract class n
     this.defaults.a(paramb, paramLooper);
   }
   
-  protected abstract boolean aIE();
+  protected abstract boolean aPv();
   
   public final void b(int paramInt, n paramn, Object paramObject)
   {
-    this.defaults.dR(new a(paramInt, paramn, paramObject));
+    this.defaults.dS(new a(paramInt, paramn, paramObject));
     this.defaults.doNotify();
   }
   
@@ -36,15 +36,15 @@ public abstract class n
   
   final class a
   {
-    int EYH;
-    n EYI;
+    int GvT;
+    n GvU;
     Object obj;
     
     a(int paramInt, n paramn, Object paramObject)
     {
-      this.EYH = paramInt;
+      this.GvT = paramInt;
       this.obj = paramObject;
-      this.EYI = paramn;
+      this.GvU = paramn;
     }
   }
   

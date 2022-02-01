@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.i.a;
-import com.tencent.mm.al.i.b;
-import com.tencent.mm.g.a.fr;
+import com.tencent.mm.ak.i.a;
+import com.tencent.mm.ak.i.b;
+import com.tencent.mm.g.a.fs;
 import com.tencent.mm.sdk.b.a;
 
 public enum b
@@ -11,8 +11,8 @@ public enum b
   static
   {
     AppMethodBeat.i(174719);
-    jaW = new b("INSTANCE");
-    jaX = new b[] { jaW };
+    jBj = new b("INSTANCE");
+    jBk = new b[] { jBj };
     AppMethodBeat.o(174719);
   }
   
@@ -21,32 +21,32 @@ public enum b
   public static void a(String paramString, i.a parama, i.b paramb)
   {
     AppMethodBeat.i(102763);
-    fr localfr = new fr();
-    localfr.dis.op = 1;
-    localfr.dis.fileName = paramString;
-    localfr.dis.diu = true;
-    localfr.dis.cSY = true;
-    localfr.dis.div = parama;
-    localfr.dis.diw = paramb;
-    a.ESL.l(localfr);
+    fs localfs = new fs();
+    localfs.dfN.op = 1;
+    localfs.dfN.fileName = paramString;
+    localfs.dfN.dfP = true;
+    localfs.dfN.cQv = true;
+    localfs.dfN.dfQ = parama;
+    localfs.dfN.dfR = paramb;
+    a.GpY.l(localfs);
     AppMethodBeat.o(102763);
   }
   
   public static void pause()
   {
     AppMethodBeat.i(102764);
-    fr localfr = new fr();
-    localfr.dis.op = 4;
-    a.ESL.l(localfr);
+    fs localfs = new fs();
+    localfs.dfN.op = 4;
+    a.GpY.l(localfs);
     AppMethodBeat.o(102764);
   }
   
   public static void stop()
   {
     AppMethodBeat.i(102765);
-    fr localfr = new fr();
-    localfr.dis.op = 2;
-    a.ESL.l(localfr);
+    fs localfs = new fs();
+    localfs.dfN.op = 2;
+    a.GpY.l(localfs);
     AppMethodBeat.o(102765);
   }
 }

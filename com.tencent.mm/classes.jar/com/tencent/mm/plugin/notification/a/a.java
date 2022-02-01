@@ -6,54 +6,56 @@ import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.f;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 
 public final class a
   implements n.b
 {
   private final int DELAY_TIME;
   private final String TAG;
-  private ap mHandler;
-  public boolean ugU;
+  private ao mHandler;
+  public boolean vpS;
   
   public a()
   {
     AppMethodBeat.i(26721);
     this.TAG = "MicroMsg.NotificationObserver";
     this.DELAY_TIME = 50;
-    this.ugU = false;
-    this.mHandler = new ap(Looper.getMainLooper())
+    this.vpS = false;
+    this.mHandler = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(final Message paramAnonymousMessage)
       {
         AppMethodBeat.i(26720);
         super.handleMessage(paramAnonymousMessage);
         paramAnonymousMessage = paramAnonymousMessage.getData().getString("com.tencent.mm.notification.observer");
-        az.afE().m(new Runnable()
+        az.agU().m(new Runnable()
         {
           public final void run()
           {
             final int i = 0;
             AppMethodBeat.i(26719);
-            if (!g.afz().aeI())
+            if (!g.agP().afY())
             {
-              ad.w("MicroMsg.NotificationObserver", "account not init.");
+              ac.w("MicroMsg.NotificationObserver", "account not init.");
               AppMethodBeat.o(26719);
               return;
             }
-            final int j = f.YZ();
-            az.arV();
-            af localaf = c.apM().aHY(paramAnonymousMessage);
+            final int j = f.ZV();
+            az.ayM();
+            ai localai = c.awB().aNt(paramAnonymousMessage);
             final boolean bool;
-            if (localaf == null)
+            if (localai == null)
             {
               bool = false;
               if (!bool) {
@@ -62,26 +64,26 @@ public final class a
             }
             for (;;)
             {
-              com.tencent.mm.sdk.platformtools.aq.f(new Runnable()
+              ap.f(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(26718);
-                  az.getNotification().kt(j);
+                  az.getNotification().kq(j);
                   if (!bool) {
-                    az.getNotification().y(a.1.1.this.ugW, i);
+                    az.getNotification().y(a.1.1.this.vpU, i);
                   }
-                  ad.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
+                  ac.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
                   com.tencent.mm.sdk.g.b.c(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(26717);
-                      az.getNotification().p(a.1.1.1.this.ugY, a.1.1.this.ugW);
-                      if (a.this.ugU)
+                      az.getNotification().p(a.1.1.1.this.vpW, a.1.1.this.vpU);
+                      if (a.this.vpS)
                       {
-                        a.this.ugU = false;
-                        az.getNotification().cx(false);
+                        a.this.vpS = false;
+                        az.getNotification().cy(false);
                       }
                       AppMethodBeat.o(26717);
                     }
@@ -91,10 +93,10 @@ public final class a
               });
               AppMethodBeat.o(26719);
               return;
-              bool = localaf.Ny();
+              bool = localai.Nw();
               break;
               label94:
-              i = f.pD(paramAnonymousMessage);
+              i = f.sO(paramAnonymousMessage);
             }
           }
         }, 500L);
@@ -107,17 +109,17 @@ public final class a
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(26722);
-    ad.i("MicroMsg.NotificationObserver", "event: %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((!(paramObject instanceof String)) || (bt.isNullOrNil((String)paramObject)))
+    ac.i("MicroMsg.NotificationObserver", "event: %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((!(paramObject instanceof String)) || (bs.isNullOrNil((String)paramObject)))
     {
-      ad.d("MicroMsg.NotificationObserver", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ac.d("MicroMsg.NotificationObserver", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       AppMethodBeat.o(26722);
       return;
     }
-    if (!az.arO()) {
-      az.arV();
+    if (!az.ayF()) {
+      az.ayM();
     }
-    for (paramInt = (int)c.apM().aHW((String)paramObject).fId;; paramInt = 0)
+    for (paramInt = (int)c.awB().aNr((String)paramObject).fLJ;; paramInt = 0)
     {
       this.mHandler.removeMessages(paramInt);
       paramn = Message.obtain();
@@ -133,7 +135,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,13 +28,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bb.b.a;
-import com.tencent.mm.bb.b.c;
-import com.tencent.mm.g.a.og;
-import com.tencent.mm.g.a.ts;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ba.b.a;
+import com.tencent.mm.ba.b.c;
+import com.tencent.mm.g.a.op;
+import com.tencent.mm.g.a.ub;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.w;
@@ -44,18 +44,18 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.setting.model.m;
 import com.tencent.mm.plugin.setting.model.m.1;
 import com.tencent.mm.plugin.setting.model.m.a;
-import com.tencent.mm.plugin.sns.c.o;
+import com.tencent.mm.plugin.sns.b.o;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.bxb;
-import com.tencent.mm.protocal.protobuf.bxc;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.zw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.protocal.protobuf.aav;
+import com.tencent.mm.protocal.protobuf.cbv;
+import com.tencent.mm.protocal.protobuf.cbw;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.RealAlphabetScrollBar;
@@ -76,91 +76,91 @@ import java.util.List<Lcom.tencent.mm.plugin.setting.ui.setting.UnfamiliarContac
 
 public class UnfamiliarContactDetailUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  public static final String fwx;
-  private p ftP;
-  private ArrayList<b> hIP;
-  private boolean wdf;
-  private boolean wdg;
-  private boolean wdh;
-  private RecyclerView wjM;
-  private TextView wjN;
-  private View wjO;
-  private View wjP;
-  private View wjQ;
-  private View wjR;
-  private TextView wjS;
-  private a wjT;
-  private RealAlphabetScrollBar wjU;
-  HashMap<String, Integer> wjV;
-  private HashMap<Integer, String> wjW;
-  private HashSet<Integer> wjX;
-  private d wjY;
-  private int wjZ;
-  private HashSet<String> wka;
-  private m wkb;
-  private boolean wkc;
+  public static final String fAe;
+  private p fxw;
+  private ArrayList<b> ijq;
+  private boolean xot;
+  private boolean xou;
+  private boolean xov;
+  private RecyclerView xvc;
+  private TextView xvd;
+  private View xve;
+  private View xvf;
+  private View xvg;
+  private View xvh;
+  private TextView xvi;
+  private a xvj;
+  private RealAlphabetScrollBar xvk;
+  HashMap<String, Integer> xvl;
+  private HashMap<Integer, String> xvm;
+  private HashSet<Integer> xvn;
+  private d xvo;
+  private int xvp;
+  private HashSet<String> xvq;
+  private m xvr;
+  private boolean xvs;
   
   static
   {
     AppMethodBeat.i(74619);
-    fwx = new String(Character.toChars(123));
+    fAe = new String(Character.toChars(123));
     AppMethodBeat.o(74619);
   }
   
   public UnfamiliarContactDetailUI()
   {
     AppMethodBeat.i(74605);
-    this.wjV = new HashMap();
-    this.wjW = new HashMap();
-    this.hIP = new ArrayList();
-    this.wjX = new HashSet();
-    this.wjZ = -1;
-    this.wka = new HashSet();
-    this.ftP = null;
+    this.xvl = new HashMap();
+    this.xvm = new HashMap();
+    this.ijq = new ArrayList();
+    this.xvn = new HashSet();
+    this.xvp = -1;
+    this.xvq = new HashSet();
+    this.fxw = null;
     AppMethodBeat.o(74605);
   }
   
-  private void fi(List<b> paramList)
+  private void fq(List<b> paramList)
   {
     AppMethodBeat.i(74612);
-    this.wjV.clear();
-    this.wjW.clear();
+    this.xvl.clear();
+    this.xvm.clear();
     int i = 0;
     Iterator localIterator = paramList.iterator();
     Object localObject;
     for (paramList = null; localIterator.hasNext(); paramList = (List<b>)localObject)
     {
       localObject = (b)localIterator.next();
-      if (fwx.equalsIgnoreCase(((b)localObject).wkj)) {
-        ((b)localObject).wkj = "#";
+      if (fAe.equalsIgnoreCase(((b)localObject).xvz)) {
+        ((b)localObject).xvz = "#";
       }
-      localObject = ((b)localObject).wkj;
+      localObject = ((b)localObject).xvz;
       if (!((String)localObject).equalsIgnoreCase(paramList))
       {
-        this.wjV.put(((String)localObject).toUpperCase(), Integer.valueOf(i));
-        this.wjW.put(Integer.valueOf(i), ((String)localObject).toUpperCase());
+        this.xvl.put(((String)localObject).toUpperCase(), Integer.valueOf(i));
+        this.xvm.put(Integer.valueOf(i), ((String)localObject).toUpperCase());
       }
       i += 1;
     }
     AppMethodBeat.o(74612);
   }
   
-  private void iF(boolean paramBoolean)
+  private void ji(boolean paramBoolean)
   {
     AppMethodBeat.i(74613);
-    ad.i("MicroMsg.UnfamiliarContactUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.UnfamiliarContactUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.ftP = p.a(this, getString(2131764557), true, 0, null);
+      this.fxw = p.a(this, getString(2131764557), true, 0, null);
       AppMethodBeat.o(74613);
       return;
     }
-    if ((this.ftP != null) && (this.ftP.isShowing()))
+    if ((this.fxw != null) && (this.fxw.isShowing()))
     {
-      this.ftP.dismiss();
-      this.ftP = null;
+      this.fxw.dismiss();
+      this.fxw = null;
     }
     AppMethodBeat.o(74613);
   }
@@ -199,7 +199,7 @@ public class UnfamiliarContactDetailUI
         for (;;)
         {
           if (UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this) != null) {
-            UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).aql.notifyChanged();
+            UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).arg.notifyChanged();
           }
           AppMethodBeat.o(74568);
           return true;
@@ -221,19 +221,19 @@ public class UnfamiliarContactDetailUI
       }
     });
     View localView = findViewById(2131304649);
-    if (this.wdf)
+    if (this.xot)
     {
       i = 0;
       localView.setVisibility(i);
       localView = findViewById(2131304651);
-      if (!this.wdh) {
+      if (!this.xov) {
         break label351;
       }
       i = 0;
       label90:
       localView.setVisibility(i);
       localView = findViewById(2131304650);
-      if (!this.wdg) {
+      if (!this.xou) {
         break label357;
       }
     }
@@ -242,48 +242,48 @@ public class UnfamiliarContactDetailUI
     for (int i = j;; i = 8)
     {
       localView.setVisibility(i);
-      this.wjM = ((RecyclerView)findViewById(2131306185));
-      this.wjO = findViewById(2131297432);
-      this.wjN = ((TextView)findViewById(2131302229));
-      this.wjY = new d(this.wjX, new g()
+      this.xvc = ((RecyclerView)findViewById(2131306185));
+      this.xve = findViewById(2131297432);
+      this.xvd = ((TextView)findViewById(2131302229));
+      this.xvo = new d(this.xvn, new g()
       {
-        public final void doy()
+        public final void dCI()
         {
           AppMethodBeat.i(182595);
           UnfamiliarContactDetailUI.c(UnfamiliarContactDetailUI.this, false);
           UnfamiliarContactDetailUI.g(UnfamiliarContactDetailUI.this).setText(UnfamiliarContactDetailUI.this.getString(2131764558) + "(" + UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size() + ")");
           if (UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this) != null) {
-            UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).aql.notifyChanged();
+            UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).arg.notifyChanged();
           }
           AppMethodBeat.o(182595);
         }
         
-        public final void doz()
+        public final void dCJ()
         {
           AppMethodBeat.i(74575);
           UnfamiliarContactDetailUI.c(UnfamiliarContactDetailUI.this, true);
           AppMethodBeat.o(74575);
         }
         
-        public final void gV(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void he(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(74574);
-          UnfamiliarContactDetailUI.f.wkA += paramAnonymousInt1;
+          UnfamiliarContactDetailUI.f.xvQ += paramAnonymousInt1;
           UnfamiliarContactDetailUI.c(UnfamiliarContactDetailUI.this, false);
           UnfamiliarContactDetailUI.g(UnfamiliarContactDetailUI.this).setText(UnfamiliarContactDetailUI.this.getString(2131764558) + "(" + UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size() + ")");
           if (UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this) != null) {
-            UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).aql.notifyChanged();
+            UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).arg.notifyChanged();
           }
           if (paramAnonymousInt2 < paramAnonymousInt1)
           {
-            ad.w("MicroMsg.UnfamiliarContactUI", "[onDelSuccess] realDeleteCount:%s count:%s", new Object[] { Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt1) });
+            ac.w("MicroMsg.UnfamiliarContactUI", "[onDelSuccess] realDeleteCount:%s count:%s", new Object[] { Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt1) });
             com.tencent.mm.ui.base.h.c(UnfamiliarContactDetailUI.this.getContext(), UnfamiliarContactDetailUI.this.getString(2131764555, new Object[] { Integer.valueOf(paramAnonymousInt1 - paramAnonymousInt2) }), "", true);
           }
           AppMethodBeat.o(74574);
         }
       });
-      this.wjP = findViewById(2131306182);
-      this.wjP.setOnClickListener(new View.OnClickListener()
+      this.xvf = findViewById(2131306182);
+      this.xvf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -295,19 +295,19 @@ public class UnfamiliarContactDetailUI
               AppMethodBeat.i(74576);
               if (UnfamiliarContactDetailUI.h(UnfamiliarContactDetailUI.this) != null)
               {
-                com.tencent.mm.kernel.g.afC();
-                com.tencent.mm.kernel.g.afA().gcy.a(681, UnfamiliarContactDetailUI.h(UnfamiliarContactDetailUI.this));
+                com.tencent.mm.kernel.g.agS();
+                com.tencent.mm.kernel.g.agQ().ghe.a(681, UnfamiliarContactDetailUI.h(UnfamiliarContactDetailUI.this));
                 paramAnonymous2DialogInterface = UnfamiliarContactDetailUI.h(UnfamiliarContactDetailUI.this);
                 paramAnonymous2DialogInterface.index = 0;
-                paramAnonymous2DialogInterface.tyG = 0;
-                paramAnonymous2DialogInterface.wkt = 0;
-                paramAnonymous2DialogInterface.wku.clear();
-                paramAnonymous2DialogInterface.wkv.clear();
+                paramAnonymous2DialogInterface.uHd = 0;
+                paramAnonymous2DialogInterface.xvJ = 0;
+                paramAnonymous2DialogInterface.xvK.clear();
+                paramAnonymous2DialogInterface.xvL.clear();
                 paramAnonymous2DialogInterface.cancel();
-                if (paramAnonymous2DialogInterface.wkr != null) {
-                  paramAnonymous2DialogInterface.wkr.doz();
+                if (paramAnonymous2DialogInterface.xvH != null) {
+                  paramAnonymous2DialogInterface.xvH.dCJ();
                 }
-                com.tencent.e.h.Iye.aP(paramAnonymous2DialogInterface);
+                com.tencent.e.h.JZN.aS(paramAnonymous2DialogInterface);
               }
               UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this, false);
               AppMethodBeat.o(74576);
@@ -316,14 +316,14 @@ public class UnfamiliarContactDetailUI
           AppMethodBeat.o(74577);
         }
       });
-      this.wjQ = findViewById(2131306183);
-      this.wjQ.setOnClickListener(new View.OnClickListener()
+      this.xvg = findViewById(2131306183);
+      this.xvg.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74580);
           paramAnonymousView = new e(UnfamiliarContactDetailUI.this, 1, false);
-          paramAnonymousView.HrX = new n.c()
+          paramAnonymousView.ISu = new n.c()
           {
             public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
             {
@@ -333,27 +333,27 @@ public class UnfamiliarContactDetailUI
               AppMethodBeat.o(74578);
             }
           };
-          paramAnonymousView.HrY = new n.d()
+          paramAnonymousView.ISv = new n.d()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
               AppMethodBeat.i(74579);
-              com.tencent.mm.kernel.g.afC();
-              com.tencent.mm.kernel.g.afA().gcy.b(681, UnfamiliarContactDetailUI.h(UnfamiliarContactDetailUI.this));
+              com.tencent.mm.kernel.g.agS();
+              com.tencent.mm.kernel.g.agQ().ghe.b(681, UnfamiliarContactDetailUI.h(UnfamiliarContactDetailUI.this));
               UnfamiliarContactDetailUI.a(UnfamiliarContactDetailUI.this, UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this), paramAnonymous2Int);
               UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this, false);
               if (UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this) != null) {
-                UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).aql.notifyChanged();
+                UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).arg.notifyChanged();
               }
               AppMethodBeat.o(74579);
             }
           };
-          paramAnonymousView.csG();
+          paramAnonymousView.cED();
           AppMethodBeat.o(74580);
         }
       });
-      this.wjR = findViewById(2131306184);
-      this.wjR.setOnClickListener(new View.OnClickListener()
+      this.xvh = findViewById(2131306184);
+      this.xvh.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -386,7 +386,7 @@ public class UnfamiliarContactDetailUI
               public final void run()
               {
                 AppMethodBeat.i(74581);
-                UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).aql.notifyChanged();
+                UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).arg.notifyChanged();
                 AppMethodBeat.o(74581);
               }
             });
@@ -397,27 +397,27 @@ public class UnfamiliarContactDetailUI
           }
         }
       });
-      this.wjS = ((TextView)findViewById(2131305880));
-      this.wjM.setLayoutManager(new LinearLayoutManager());
-      this.wjT = new a();
-      this.wjM.setAdapter(this.wjT);
-      this.wjU = ((RealAlphabetScrollBar)findViewById(2131306186));
-      this.wjU.setOnScrollBarTouchListener(new VerticalScrollBar.a()
+      this.xvi = ((TextView)findViewById(2131305880));
+      this.xvc.setLayoutManager(new LinearLayoutManager());
+      this.xvj = new a();
+      this.xvc.setAdapter(this.xvj);
+      this.xvk = ((RealAlphabetScrollBar)findViewById(2131306186));
+      this.xvk.setOnScrollBarTouchListener(new VerticalScrollBar.a()
       {
-        public final void pb(String paramAnonymousString)
+        public final void sn(String paramAnonymousString)
         {
           AppMethodBeat.i(74583);
           Object localObject = UnfamiliarContactDetailUI.this;
-          if ((((UnfamiliarContactDetailUI)localObject).wjV != null) && (((UnfamiliarContactDetailUI)localObject).wjV.containsKey(paramAnonymousString))) {}
-          for (int i = ((Integer)((UnfamiliarContactDetailUI)localObject).wjV.get(paramAnonymousString)).intValue();; i = -1)
+          if ((((UnfamiliarContactDetailUI)localObject).xvl != null) && (((UnfamiliarContactDetailUI)localObject).xvl.containsKey(paramAnonymousString))) {}
+          for (int i = ((Integer)((UnfamiliarContactDetailUI)localObject).xvl.get(paramAnonymousString)).intValue();; i = -1)
           {
-            ad.i("MicroMsg.UnfamiliarContactUI", "[onScollBarTouch] showHead:%s pos:%s", new Object[] { paramAnonymousString, Integer.valueOf(i) });
+            ac.i("MicroMsg.UnfamiliarContactUI", "[onScollBarTouch] showHead:%s pos:%s", new Object[] { paramAnonymousString, Integer.valueOf(i) });
             if (i != -1)
             {
               paramAnonymousString = UnfamiliarContactDetailUI.j(UnfamiliarContactDetailUI.this);
               localObject = c.a(i, new com.tencent.mm.hellhoundlib.b.a());
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/setting/ui/setting/UnfamiliarContactDetailUI$7", "onScollBarTouch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
-              paramAnonymousString.ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/setting/ui/setting/UnfamiliarContactDetailUI$7", "onScollBarTouch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
+              paramAnonymousString.ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0)).intValue());
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, "com/tencent/mm/plugin/setting/ui/setting/UnfamiliarContactDetailUI$7", "onScollBarTouch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
             }
             AppMethodBeat.o(74583);
@@ -438,10 +438,10 @@ public class UnfamiliarContactDetailUI
   {
     AppMethodBeat.i(74606);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(291, this);
-    this.wdf = getIntent().getBooleanExtra("half_year_not_chat", false);
-    this.wdg = getIntent().getBooleanExtra("half_year_not_response", false);
-    this.wdh = getIntent().getBooleanExtra("has_not_same_chatroom", false);
+    com.tencent.mm.kernel.g.agi().a(291, this);
+    this.xot = getIntent().getBooleanExtra("half_year_not_chat", false);
+    this.xou = getIntent().getBooleanExtra("half_year_not_response", false);
+    this.xov = getIntent().getBooleanExtra("has_not_same_chatroom", false);
     initView();
     paramBundle = new h()
     {
@@ -450,16 +450,16 @@ public class UnfamiliarContactDetailUI
       public final void a(UnfamiliarContactDetailUI.e paramAnonymouse)
       {
         AppMethodBeat.i(74587);
-        ad.i("MicroMsg.UnfamiliarContactUI", "[onLoading] type:%s", new Object[] { paramAnonymouse.name() });
+        ac.i("MicroMsg.UnfamiliarContactUI", "[onLoading] type:%s", new Object[] { paramAnonymouse.name() });
         UnfamiliarContactDetailUI.this.findViewById(2131305874).setVisibility(0);
         UnfamiliarContactDetailUI.this.findViewById(2131303518).setVisibility(0);
-        if (paramAnonymouse == UnfamiliarContactDetailUI.e.wky)
+        if (paramAnonymouse == UnfamiliarContactDetailUI.e.xvO)
         {
           UnfamiliarContactDetailUI.k(UnfamiliarContactDetailUI.this).setText(UnfamiliarContactDetailUI.this.getString(2131760709));
           AppMethodBeat.o(74587);
           return;
         }
-        if (paramAnonymouse == UnfamiliarContactDetailUI.e.wkx) {
+        if (paramAnonymouse == UnfamiliarContactDetailUI.e.xvN) {
           UnfamiliarContactDetailUI.k(UnfamiliarContactDetailUI.this).setText(UnfamiliarContactDetailUI.this.getString(2131764565));
         }
         AppMethodBeat.o(74587);
@@ -471,7 +471,7 @@ public class UnfamiliarContactDetailUI
         if (paramAnonymousHashSet == null) {}
         for (int i = 0;; i = paramAnonymousHashSet.size())
         {
-          ad.i("MicroMsg.UnfamiliarContactUI", "[onResult] size:%s", new Object[] { Integer.valueOf(i) });
+          ac.i("MicroMsg.UnfamiliarContactUI", "[onResult] size:%s", new Object[] { Integer.valueOf(i) });
           if (paramAnonymousHashSet != null) {
             UnfamiliarContactDetailUI.a(UnfamiliarContactDetailUI.this, paramAnonymousHashSet);
           }
@@ -483,7 +483,7 @@ public class UnfamiliarContactDetailUI
       public final void onError()
       {
         AppMethodBeat.i(74586);
-        ad.e("MicroMsg.UnfamiliarContactUI", "[onError]");
+        ac.e("MicroMsg.UnfamiliarContactUI", "[onError]");
         UnfamiliarContactDetailUI.this.findViewById(2131305874).setVisibility(0);
         UnfamiliarContactDetailUI.this.findViewById(2131303518).setVisibility(8);
         UnfamiliarContactDetailUI.k(UnfamiliarContactDetailUI.this).setText(UnfamiliarContactDetailUI.this.getString(2131764564));
@@ -493,7 +493,7 @@ public class UnfamiliarContactDetailUI
       public final void onSuccess()
       {
         AppMethodBeat.i(74585);
-        ad.i("MicroMsg.UnfamiliarContactUI", "[onSuccess] size:%s cost:%sms", new Object[] { Integer.valueOf(UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size()), Long.valueOf(System.currentTimeMillis() - this.start) });
+        ac.i("MicroMsg.UnfamiliarContactUI", "[onSuccess] size:%s cost:%sms", new Object[] { Integer.valueOf(UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size()), Long.valueOf(System.currentTimeMillis() - this.start) });
         UnfamiliarContactDetailUI.g(UnfamiliarContactDetailUI.this).setText(UnfamiliarContactDetailUI.this.getString(2131764558) + "(" + UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size() + ")");
         if (UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size() == 0)
         {
@@ -507,16 +507,16 @@ public class UnfamiliarContactDetailUI
         UnfamiliarContactDetailUI.this.findViewById(2131305874).setVisibility(8);
         UnfamiliarContactDetailUI.this.findViewById(2131301449).setVisibility(0);
         if (UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this) != null) {
-          UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).aql.notifyChanged();
+          UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).arg.notifyChanged();
         }
         AppMethodBeat.o(74585);
       }
     };
-    this.wkb = new m(this.wdf, this.wdg, this.wdh, paramBundle);
-    paramBundle = this.wkb;
-    paramBundle.wdp = System.currentTimeMillis();
-    paramBundle.wdo.a(e.wky);
-    paramBundle.nKw.postToWorker(new m.1(paramBundle));
+    this.xvr = new m(this.xot, this.xou, this.xov, paramBundle);
+    paramBundle = this.xvr;
+    paramBundle.xoD = System.currentTimeMillis();
+    paramBundle.xoC.a(UnfamiliarContactDetailUI.e.xvO);
+    paramBundle.onw.postToWorker(new m.1(paramBundle));
     AppMethodBeat.o(74606);
   }
   
@@ -526,15 +526,15 @@ public class UnfamiliarContactDetailUI
     super.onDestroy();
     int i;
     int j;
-    if (this.wdf)
+    if (this.xot)
     {
       i = 1;
-      if (!this.wdh) {
+      if (!this.xov) {
         break label357;
       }
       j = 2;
       label28:
-      if (!this.wdg) {
+      if (!this.xou) {
         break label362;
       }
     }
@@ -543,27 +543,27 @@ public class UnfamiliarContactDetailUI
     for (int k = 4;; k = 0)
     {
       i = k | j | i;
-      com.tencent.mm.plugin.report.service.h.vKh.f(14434, new Object[] { Integer.valueOf(i), Integer.valueOf(f.wkB), Integer.valueOf(f.wkA), Integer.valueOf(f.wkF), Integer.valueOf(f.wkC), Integer.valueOf(f.wkE), Integer.valueOf(f.wkD) });
-      ad.i("MicroMsg.UnfamiliarContactUI", "[%s:%s:%s:%s:%s:%s:%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(f.wkB), Integer.valueOf(f.wkA), Integer.valueOf(f.wkF), Integer.valueOf(f.wkC), Integer.valueOf(f.wkE), Integer.valueOf(f.wkD) });
-      f.wkA = 0;
-      f.wkB = 0;
-      f.wkC = 0;
-      f.wkD = 0;
-      f.wkE = 0;
-      f.wkF = 0;
-      com.tencent.mm.kernel.g.aeS().b(291, this);
-      com.tencent.mm.kernel.g.aeS().b(681, this.wjY);
-      m localm = this.wkb;
-      ad.i("MicroMsg.UnfamiliarContactEngine", "[onDestroy] [%s:%s:%s]", new Object[] { Boolean.valueOf(localm.wdg), Boolean.valueOf(localm.wdf), Boolean.valueOf(localm.wdh) });
-      if (localm.wdn != null)
+      com.tencent.mm.plugin.report.service.h.wUl.f(14434, new Object[] { Integer.valueOf(i), Integer.valueOf(f.xvR), Integer.valueOf(f.xvQ), Integer.valueOf(f.xvV), Integer.valueOf(f.xvS), Integer.valueOf(f.xvU), Integer.valueOf(f.xvT) });
+      ac.i("MicroMsg.UnfamiliarContactUI", "[%s:%s:%s:%s:%s:%s:%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(f.xvR), Integer.valueOf(f.xvQ), Integer.valueOf(f.xvV), Integer.valueOf(f.xvS), Integer.valueOf(f.xvU), Integer.valueOf(f.xvT) });
+      f.xvQ = 0;
+      f.xvR = 0;
+      f.xvS = 0;
+      f.xvT = 0;
+      f.xvU = 0;
+      f.xvV = 0;
+      com.tencent.mm.kernel.g.agi().b(291, this);
+      com.tencent.mm.kernel.g.agi().b(681, this.xvo);
+      m localm = this.xvr;
+      ac.i("MicroMsg.UnfamiliarContactEngine", "[onDestroy] [%s:%s:%s]", new Object[] { Boolean.valueOf(localm.xou), Boolean.valueOf(localm.xot), Boolean.valueOf(localm.xov) });
+      if (localm.xoB != null)
       {
-        m.a locala = localm.wdn;
-        com.tencent.mm.kernel.g.aeS().b(292, locala);
+        m.a locala = localm.xoB;
+        com.tencent.mm.kernel.g.agi().b(292, locala);
       }
-      if (localm.wdq != null) {
-        localm.wdq.cancel();
+      if (localm.xoE != null) {
+        localm.xoE.cancel();
       }
-      localm.nKw.quit();
+      localm.onw.quit();
       AppMethodBeat.o(74608);
       return;
       i = 0;
@@ -592,9 +592,9 @@ public class UnfamiliarContactDetailUI
     AppMethodBeat.i(74607);
     super.onResume();
     int i;
-    if (-1 != this.wjZ)
+    if (-1 != this.xvp)
     {
-      if (-1 != this.wjZ) {
+      if (-1 != this.xvp) {
         break label76;
       }
       i = 0;
@@ -602,27 +602,27 @@ public class UnfamiliarContactDetailUI
     for (;;)
     {
       if (i != 0) {
-        f.wkB += 1;
+        f.xvR += 1;
       }
-      this.wjZ = -1;
-      this.wka.clear();
-      if (this.wjT != null) {
-        this.wjT.aql.notifyChanged();
+      this.xvp = -1;
+      this.xvq.clear();
+      if (this.xvj != null) {
+        this.xvj.arg.notifyChanged();
       }
       AppMethodBeat.o(74607);
       return;
       label76:
-      b localb = (b)this.hIP.get(this.wjZ);
-      af localaf1 = localb.contact;
-      af localaf2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(localaf1.field_username);
-      if ((!com.tencent.mm.n.b.ls(localaf2.field_type)) && (com.tencent.mm.n.b.ls(localaf1.field_type)))
+      b localb = (b)this.ijq.get(this.xvp);
+      ai localai1 = localb.contact;
+      ai localai2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(localai1.field_username);
+      if ((!com.tencent.mm.n.b.ln(localai2.field_type)) && (com.tencent.mm.n.b.ln(localai1.field_type)))
       {
-        this.hIP.remove(this.wjZ);
+        this.ijq.remove(this.xvp);
         i = 1;
       }
       else
       {
-        localb.contact = localaf2;
+        localb.contact = localai2;
         i = 0;
       }
     }
@@ -631,15 +631,15 @@ public class UnfamiliarContactDetailUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(74611);
-    ad.i("MicroMsg.UnfamiliarContactUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramn.getType());
+    ac.i("MicroMsg.UnfamiliarContactUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramn.getType());
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
       Toast.makeText(this, getString(2131764562), 1).show();
     }
     if (paramn.getType() == 291)
     {
-      iF(false);
-      this.wka.clear();
-      this.wjT.aql.notifyChanged();
+      ji(false);
+      this.xvq.clear();
+      this.xvj.arg.notifyChanged();
     }
     AppMethodBeat.o(74611);
   }
@@ -655,7 +655,7 @@ public class UnfamiliarContactDetailUI
   {
     a() {}
     
-    public final UnfamiliarContactDetailUI.b LF(int paramInt)
+    public final UnfamiliarContactDetailUI.b NF(int paramInt)
     {
       AppMethodBeat.i(74593);
       if (UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).size() > paramInt)
@@ -664,12 +664,12 @@ public class UnfamiliarContactDetailUI
         AppMethodBeat.o(74593);
         return localb;
       }
-      UnfamiliarContactDetailUI.b localb = new UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this, new af());
+      UnfamiliarContactDetailUI.b localb = new UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this, new ai());
       AppMethodBeat.o(74593);
       return localb;
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
     {
       AppMethodBeat.i(74590);
       paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131495814, paramViewGroup, false);
@@ -678,28 +678,28 @@ public class UnfamiliarContactDetailUI
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.v paramv, int paramInt)
+    public final void a(RecyclerView.w paramw, int paramInt)
     {
       AppMethodBeat.i(74591);
-      if ((paramv instanceof UnfamiliarContactDetailUI.c))
+      if ((paramw instanceof UnfamiliarContactDetailUI.c))
       {
-        paramv = (UnfamiliarContactDetailUI.c)paramv;
-        paramv.wkn.setTag(Integer.valueOf(paramInt));
-        paramv.arI.setTag(Integer.valueOf(paramInt));
+        paramw = (UnfamiliarContactDetailUI.c)paramw;
+        paramw.xvD.setTag(Integer.valueOf(paramInt));
+        paramw.asD.setTag(Integer.valueOf(paramInt));
         Object localObject = (UnfamiliarContactDetailUI.b)UnfamiliarContactDetailUI.f(UnfamiliarContactDetailUI.this).get(paramInt);
-        a.b.c((ImageView)paramv.fwD.getContentView(), ((UnfamiliarContactDetailUI.b)localObject).contact.field_username);
-        paramv.nkb.setText(com.tencent.mm.pluginsdk.ui.span.k.b(UnfamiliarContactDetailUI.this.getContext(), ((UnfamiliarContactDetailUI.b)localObject).fyo, paramv.nkb.getTextSize()));
-        ImageView localImageView = paramv.wkm;
+        a.b.c((ImageView)paramw.fAk.getContentView(), ((UnfamiliarContactDetailUI.b)localObject).contact.field_username);
+        paramw.nMU.setText(com.tencent.mm.pluginsdk.ui.span.k.b(UnfamiliarContactDetailUI.this.getContext(), ((UnfamiliarContactDetailUI.b)localObject).fBV, paramw.nMU.getTextSize()));
+        ImageView localImageView = paramw.xvC;
         int i;
-        if (((UnfamiliarContactDetailUI.b)localObject).contact.ZP())
+        if (((UnfamiliarContactDetailUI.b)localObject).contact.aaK())
         {
           i = 0;
           localImageView.setVisibility(i);
-          localImageView = paramv.wkl;
+          localImageView = paramw.xvB;
           localObject = ((UnfamiliarContactDetailUI.b)localObject).contact.field_username;
-          if ((o.wzJ != null) && (UnfamiliarContactDetailUI.n(UnfamiliarContactDetailUI.this).size() == 0))
+          if ((o.xMd != null) && (UnfamiliarContactDetailUI.n(UnfamiliarContactDetailUI.this).size() == 0))
           {
-            List localList = o.wzJ.sr(5L);
+            List localList = o.xMd.wU(5L);
             UnfamiliarContactDetailUI.n(UnfamiliarContactDetailUI.this).addAll(localList);
           }
           if (!UnfamiliarContactDetailUI.n(UnfamiliarContactDetailUI.this).contains(localObject)) {
@@ -711,21 +711,21 @@ public class UnfamiliarContactDetailUI
           if (!UnfamiliarContactDetailUI.m(UnfamiliarContactDetailUI.this).containsKey(Integer.valueOf(paramInt))) {
             break label353;
           }
-          paramv.wkk.setVisibility(0);
-          paramv.wkk.setText((CharSequence)UnfamiliarContactDetailUI.m(UnfamiliarContactDetailUI.this).get(Integer.valueOf(paramInt)));
+          paramw.xvA.setVisibility(0);
+          paramw.xvA.setText((CharSequence)UnfamiliarContactDetailUI.m(UnfamiliarContactDetailUI.this).get(Integer.valueOf(paramInt)));
           label263:
           if (!UnfamiliarContactDetailUI.a(UnfamiliarContactDetailUI.this)) {
             break label376;
           }
-          paramv.wko.setPadding(paramv.wko.getPaddingLeft(), paramv.wko.getPaddingTop(), 0, paramv.wko.getPaddingBottom());
+          paramw.xvE.setPadding(paramw.xvE.getPaddingLeft(), paramw.xvE.getPaddingTop(), 0, paramw.xvE.getPaddingBottom());
           if (!UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this).contains(Integer.valueOf(paramInt))) {
             break label365;
           }
-          paramv.hIS.setChecked(true);
+          paramw.ijt.setChecked(true);
         }
         for (;;)
         {
-          paramv.wkn.setVisibility(0);
+          paramw.xvD.setVisibility(0);
           AppMethodBeat.o(74591);
           return;
           i = 8;
@@ -734,14 +734,14 @@ public class UnfamiliarContactDetailUI
           i = 8;
           break label208;
           label353:
-          paramv.wkk.setVisibility(8);
+          paramw.xvA.setVisibility(8);
           break label263;
           label365:
-          paramv.hIS.setChecked(false);
+          paramw.ijt.setChecked(false);
         }
         label376:
-        paramv.wko.setPadding(paramv.wko.getPaddingLeft(), paramv.wko.getPaddingTop(), (int)UnfamiliarContactDetailUI.this.getResources().getDimension(2131165489), paramv.wko.getPaddingBottom());
-        paramv.wkn.setVisibility(8);
+        paramw.xvE.setPadding(paramw.xvE.getPaddingLeft(), paramw.xvE.getPaddingTop(), (int)UnfamiliarContactDetailUI.this.getResources().getDimension(2131165489), paramw.xvE.getPaddingBottom());
+        paramw.xvD.setVisibility(8);
       }
       AppMethodBeat.o(74591);
     }
@@ -757,55 +757,55 @@ public class UnfamiliarContactDetailUI
   
   final class b
   {
-    af contact;
-    String fyo;
-    String wkj;
+    ai contact;
+    String fBV;
+    String xvz;
     
-    public b(af paramaf)
+    public b(ai paramai)
     {
-      this.contact = paramaf;
+      this.contact = paramai;
     }
   }
   
   final class c
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    View arI;
-    MaskLayout fwD;
-    CheckBox hIS;
-    TextView nkb;
-    TextView wkk;
-    ImageView wkl;
-    ImageView wkm;
-    LinearLayout wkn;
-    LinearLayout wko;
+    View asD;
+    MaskLayout fAk;
+    CheckBox ijt;
+    TextView nMU;
+    TextView xvA;
+    ImageView xvB;
+    ImageView xvC;
+    LinearLayout xvD;
+    LinearLayout xvE;
     
     public c(View paramView)
     {
       super();
       AppMethodBeat.i(74596);
-      this.arI = paramView;
-      this.fwD = ((MaskLayout)paramView.findViewById(2131298584));
-      this.nkb = ((TextView)paramView.findViewById(2131298678));
-      this.wkk = ((TextView)paramView.findViewById(2131298583));
-      this.wkl = ((ImageView)paramView.findViewById(2131298713));
-      this.wkm = ((ImageView)paramView.findViewById(2131298714));
-      this.wkn = ((LinearLayout)paramView.findViewById(2131298256));
-      this.hIS = ((CheckBox)paramView.findViewById(2131298255));
-      this.wko = ((LinearLayout)paramView.findViewById(2131301145));
-      this.wkn.setOnClickListener(new View.OnClickListener()
+      this.asD = paramView;
+      this.fAk = ((MaskLayout)paramView.findViewById(2131298584));
+      this.nMU = ((TextView)paramView.findViewById(2131298678));
+      this.xvA = ((TextView)paramView.findViewById(2131298583));
+      this.xvB = ((ImageView)paramView.findViewById(2131298713));
+      this.xvC = ((ImageView)paramView.findViewById(2131298714));
+      this.xvD = ((LinearLayout)paramView.findViewById(2131298256));
+      this.ijt = ((CheckBox)paramView.findViewById(2131298255));
+      this.xvE = ((LinearLayout)paramView.findViewById(2131301145));
+      this.xvD.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74594);
           int i = ((Integer)paramAnonymousView.getTag()).intValue();
-          paramAnonymousView = UnfamiliarContactDetailUI.c.this.hIS;
+          paramAnonymousView = UnfamiliarContactDetailUI.c.this.ijt;
           boolean bool;
-          if (!UnfamiliarContactDetailUI.c.this.hIS.isChecked())
+          if (!UnfamiliarContactDetailUI.c.this.ijt.isChecked())
           {
             bool = true;
             paramAnonymousView.setChecked(bool);
-            if (!UnfamiliarContactDetailUI.c.this.hIS.isChecked()) {
+            if (!UnfamiliarContactDetailUI.c.this.ijt.isChecked()) {
               break label130;
             }
             UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this).add(Integer.valueOf(i));
@@ -836,8 +836,8 @@ public class UnfamiliarContactDetailUI
         {
           AppMethodBeat.i(74595);
           int i = ((Integer)paramAnonymousView.getTag()).intValue();
-          paramAnonymousView = UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).LF(i);
-          ad.i("MicroMsg.UnfamiliarContactUI", "position:%s", new Object[] { Integer.valueOf(i), paramAnonymousView.fyo });
+          paramAnonymousView = UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).NF(i);
+          ac.i("MicroMsg.UnfamiliarContactUI", "position:%s", new Object[] { Integer.valueOf(i), paramAnonymousView.fBV });
           UnfamiliarContactDetailUI.c.a(UnfamiliarContactDetailUI.c.this, paramAnonymousView, i);
           AppMethodBeat.o(74595);
         }
@@ -848,27 +848,27 @@ public class UnfamiliarContactDetailUI
   
   final class d
     extends com.tencent.e.i.b
-    implements com.tencent.mm.al.g
+    implements com.tencent.mm.ak.g
   {
     int index;
-    int tyG;
-    UnfamiliarContactDetailUI.g wkr;
-    Collection<Integer> wks;
-    int wkt;
-    LinkedList<String> wku;
-    LinkedList<j.b> wkv;
+    int uHd;
+    UnfamiliarContactDetailUI.g xvH;
+    Collection<Integer> xvI;
+    int xvJ;
+    LinkedList<String> xvK;
+    LinkedList<j.b> xvL;
     
     d(UnfamiliarContactDetailUI.g paramg)
     {
       AppMethodBeat.i(74599);
-      this.tyG = 0;
-      this.wkt = 0;
+      this.uHd = 0;
+      this.xvJ = 0;
       this.index = 0;
-      this.wku = new LinkedList();
-      this.wkv = new LinkedList();
-      this.wks = paramg;
+      this.xvK = new LinkedList();
+      this.xvL = new LinkedList();
+      this.xvI = paramg;
       Object localObject;
-      this.wkr = localObject;
+      this.xvH = localObject;
       AppMethodBeat.o(74599);
     }
     
@@ -876,10 +876,10 @@ public class UnfamiliarContactDetailUI
     {
       AppMethodBeat.i(182596);
       super.cancel();
-      if (this.wkr != null)
+      if (this.xvH != null)
       {
         UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this).clear();
-        this.wkr.doy();
+        this.xvH.dCI();
       }
       AppMethodBeat.o(182596);
       return false;
@@ -895,57 +895,57 @@ public class UnfamiliarContactDetailUI
       AppMethodBeat.i(74601);
       if (paramn.getType() == 681)
       {
-        if ((((com.tencent.mm.bb.b)paramn).hos == null) || ((b.c)((com.tencent.mm.bb.b)paramn).hos.getRespObj() == null))
+        if ((((com.tencent.mm.ba.b)paramn).hOV == null) || ((b.c)((com.tencent.mm.ba.b)paramn).hOV.getRespObj() == null))
         {
-          ad.e("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] rr is null!");
+          ac.e("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] rr is null!");
           AppMethodBeat.o(74601);
           return;
         }
-        Object localObject = ((b.c)((com.tencent.mm.bb.b)paramn).hos.getRespObj()).hox;
-        if ((((bxb)localObject).Ret != 0) || (((bxb)localObject).DTv == null) || (((bxb)localObject).DTv.DpH == null))
+        Object localObject = ((b.c)((com.tencent.mm.ba.b)paramn).hOV.getRespObj()).hPa;
+        if ((((cbv)localObject).Ret != 0) || (((cbv)localObject).FpR == null) || (((cbv)localObject).FpR.EKK == null))
         {
-          ad.e("MicroMsg.UnfamiliarContactUI", "summeroplog tryStartNetscene onSceneEnd Ret:%d  not ok and no retry.", new Object[] { Integer.valueOf(((bxb)localObject).Ret) });
+          ac.e("MicroMsg.UnfamiliarContactUI", "summeroplog tryStartNetscene onSceneEnd Ret:%d  not ok and no retry.", new Object[] { Integer.valueOf(((cbv)localObject).Ret) });
           AppMethodBeat.o(74601);
           return;
         }
-        paramString = ((com.tencent.mm.bb.b)paramn).hot;
-        paramn = ((bxb)localObject).DTv.DpH;
-        ad.i("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] list size:%s, result:%s", new Object[] { Integer.valueOf(paramString.size()), Integer.valueOf(paramn.size()) });
+        paramString = ((com.tencent.mm.ba.b)paramn).hOW;
+        paramn = ((cbv)localObject).FpR.EKK;
+        ac.i("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] list size:%s, result:%s", new Object[] { Integer.valueOf(paramString.size()), Integer.valueOf(paramn.size()) });
         paramInt1 = 0;
         if (paramInt1 < paramString.size())
         {
           localObject = (j.b)paramString.get(paramInt1);
           if (((j.b)localObject).getCmdId() != 4) {
-            ad.w("MicroMsg.UnfamiliarContactUI", "cmdId:%s operation:%s", new Object[] { Integer.valueOf(((j.b)localObject).getCmdId()), localObject.toString() });
+            ac.w("MicroMsg.UnfamiliarContactUI", "cmdId:%s operation:%s", new Object[] { Integer.valueOf(((j.b)localObject).getCmdId()), localObject.toString() });
           }
           for (;;)
           {
             paramInt1 += 1;
             break;
-            this.tyG -= 1;
-            localObject = (zw)((j.b)localObject).tyM;
+            this.uHd -= 1;
+            localObject = (aav)((j.b)localObject).uHj;
             if (((Integer)paramn.get(paramInt1)).intValue() == 0)
             {
-              this.wkt += 1;
-              localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(z.a(((zw)localObject).Dby));
+              this.xvJ += 1;
+              localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(z.a(((aav)localObject).EuE));
               if (localObject != null)
               {
-                ((af)localObject).Zl();
-                bi.a(((au)localObject).field_username, null);
-                ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().c(((au)localObject).field_username, (af)localObject);
-                ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().aIl(((au)localObject).field_username);
-                this.wku.add(((au)localObject).field_username);
+                ((ai)localObject).aag();
+                bi.a(((av)localObject).field_username, null);
+                ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().c(((av)localObject).field_username, (ai)localObject);
+                ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNG(((av)localObject).field_username);
+                this.xvK.add(((av)localObject).field_username);
               }
             }
             else
             {
-              ad.e("MicroMsg.UnfamiliarContactUI", "delete contact fail! ret:%s", new Object[] { paramn.get(paramInt1), z.a(((zw)localObject).Dby) });
+              ac.e("MicroMsg.UnfamiliarContactUI", "delete contact fail! ret:%s", new Object[] { paramn.get(paramInt1), z.a(((aav)localObject).EuE) });
             }
           }
         }
-        if (this.tyG <= 0)
+        if (this.uHd <= 0)
         {
-          paramString = this.wku.iterator();
+          paramString = this.xvK.iterator();
           while (paramString.hasNext())
           {
             paramn = (String)paramString.next();
@@ -962,9 +962,9 @@ public class UnfamiliarContactDetailUI
             public final void run()
             {
               AppMethodBeat.i(74598);
-              if (UnfamiliarContactDetailUI.d.this.wkr != null)
+              if (UnfamiliarContactDetailUI.d.this.xvH != null)
               {
-                UnfamiliarContactDetailUI.d.this.wkr.gV(UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this).size(), UnfamiliarContactDetailUI.d.this.wkt);
+                UnfamiliarContactDetailUI.d.this.xvH.he(UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this).size(), UnfamiliarContactDetailUI.d.this.xvJ);
                 UnfamiliarContactDetailUI.b(UnfamiliarContactDetailUI.this).clear();
               }
               AppMethodBeat.o(74598);
@@ -978,31 +978,31 @@ public class UnfamiliarContactDetailUI
     public final void run()
     {
       AppMethodBeat.i(74600);
-      this.tyG = this.wks.size();
-      Iterator localIterator = this.wks.iterator();
+      this.uHd = this.xvI.size();
+      Iterator localIterator = this.xvI.iterator();
       while (localIterator.hasNext())
       {
         int i = ((Integer)localIterator.next()).intValue();
         this.index += 1;
-        int j = this.wks.size();
+        int j = this.xvI.size();
         int k = this.index;
         if (UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this) != null)
         {
-          af localaf = UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).LF(i).contact;
-          if (af.aHH(localaf.field_username))
+          ai localai = UnfamiliarContactDetailUI.e(UnfamiliarContactDetailUI.this).NF(i).contact;
+          if (ai.aNc(localai.field_username))
           {
-            ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.a.class)).Be(localaf.field_username);
+            ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.a.class)).Fj(localai.field_username);
           }
           else
           {
-            zw localzw = new zw();
-            localzw.Dby = new cmf().aEE(bt.nullAsNil(localaf.field_username));
-            this.wkv.add(new j.a(4, localzw));
-            if ((this.wkv.size() % 20 == 0) || (k == j))
+            aav localaav = new aav();
+            localaav.EuE = new crm().aJV(bs.nullAsNil(localai.field_username));
+            this.xvL.add(new j.a(4, localaav));
+            if ((this.xvL.size() % 20 == 0) || (k == j))
             {
-              com.tencent.mm.kernel.g.afC();
-              com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.bb.b(this.wkv), 0);
-              this.wkv.clear();
+              com.tencent.mm.kernel.g.agS();
+              com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.ba.b(this.xvL), 0);
+              this.xvL.clear();
             }
           }
         }
@@ -1011,37 +1011,23 @@ public class UnfamiliarContactDetailUI
     }
   }
   
-  public static enum e
-  {
-    static
-    {
-      AppMethodBeat.i(74604);
-      wkx = new e("OVER_ONE_MIN", 0);
-      wky = new e("NORMAL", 1);
-      wkz = new e[] { wkx, wky };
-      AppMethodBeat.o(74604);
-    }
-    
-    private e() {}
-  }
-  
   static final class f
   {
-    static int wkA;
-    static int wkB;
-    static int wkC;
-    static int wkD;
-    static int wkE;
-    static int wkF;
+    static int xvQ;
+    static int xvR;
+    static int xvS;
+    static int xvT;
+    static int xvU;
+    static int xvV;
   }
   
   static abstract interface g
   {
-    public abstract void doy();
+    public abstract void dCI();
     
-    public abstract void doz();
+    public abstract void dCJ();
     
-    public abstract void gV(int paramInt1, int paramInt2);
+    public abstract void he(int paramInt1, int paramInt2);
   }
   
   public static abstract interface h
@@ -1057,7 +1043,7 @@ public class UnfamiliarContactDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI
  * JD-Core Version:    0.7.0.1
  */

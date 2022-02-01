@@ -12,11 +12,11 @@ public class PluginImageBase
   public void configure(g paramg)
   {
     AppMethodBeat.i(177298);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      o.i("image", "image", 19, false);
-      o.i("image2", "image2", 1424, false);
-      o.i("oldimage2", "image2", 531, false);
+      o.aj("image", "image", 19);
+      o.aj("image2", "image2", 1424);
+      o.aj("oldimage2", "image2", 531);
     }
     AppMethodBeat.o(177298);
   }
@@ -24,15 +24,15 @@ public class PluginImageBase
   public void execute(g paramg)
   {
     AppMethodBeat.i(177299);
-    if (paramg.agu()) {
-      pin(d.cGw());
+    if (paramg.ahL()) {
+      pin(d.cTG());
     }
     AppMethodBeat.o(177299);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.image.PluginImageBase
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import com.tencent.mm.sdcard_migrate.util.ExtStorageMigrateException;
 public class MigrateResultCallbackAdapter
   extends MigrateResultCallback
 {
-  protected void VU(int paramInt) {}
+  protected void Yd(int paramInt) {}
   
-  protected void VV(int paramInt) {}
+  protected void Ye(int paramInt) {}
   
   protected void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException) {}
   
-  protected void eEf() {}
+  protected void eTA() {}
   
-  protected void eEg() {}
+  protected void eTz() {}
   
-  protected void iT(int paramInt1, int paramInt2) {}
+  protected void jg(int paramInt1, int paramInt2) {}
 }
 
 

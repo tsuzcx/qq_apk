@@ -2,11 +2,11 @@ package com.tencent.mmkv;
 
 public abstract interface a
 {
-  public abstract c aFG(String paramString);
+  public abstract c aKX(String paramString);
   
-  public abstract c aFH(String paramString);
+  public abstract c aKY(String paramString);
   
-  public abstract void h(String paramString1, int paramInt, String paramString2, String paramString3);
+  public abstract void l(String paramString1, int paramInt, String paramString2, String paramString3);
 }
 
 

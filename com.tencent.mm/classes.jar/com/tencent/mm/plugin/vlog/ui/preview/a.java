@@ -6,99 +6,99 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.plugin.recordvideo.background.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.recordvideo.background.e;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 import d.v;
 import java.util.UUID;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr;", "", "()V", "audioFocos", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "currVideoItem", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "currentSessionId", "", "isMute", "", "isPlayingVideoItem", "isRequestAudioFocus", "isVideoPause", "isVideoPlaying", "()Z", "setVideoPlaying", "(Z)V", "videoView", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoView;", "attachVideoView", "", "parent", "Landroid/view/ViewGroup;", "layoutParams", "Landroid/view/ViewGroup$LayoutParams;", "changeVideoItem", "item", "playing", "checkDetachVideoView", "newParent", "enableReport", "getPlayStatus", "initCreateVideoView", "context", "Landroid/content/Context;", "isVideoNotChangeItem", "onUIDestroy", "onUIPause", "onUIResume", "playVideo", "sameParent", "setMute", "setVideoViewProp", "stopVideo", "detach", "Companion", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr;", "", "()V", "audioFocos", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "currVideoItem", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "currentSessionId", "", "isMute", "", "isPlayingVideoItem", "isRequestAudioFocus", "isVideoPause", "isVideoPlaying", "()Z", "setVideoPlaying", "(Z)V", "videoView", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoView;", "attachVideoView", "", "parent", "Landroid/view/ViewGroup;", "layoutParams", "Landroid/view/ViewGroup$LayoutParams;", "changeVideoItem", "item", "playing", "checkDetachVideoView", "newParent", "enableReport", "getPlayStatus", "initCreateVideoView", "context", "Landroid/content/Context;", "isVideoNotChangeItem", "onUIDestroy", "onUIPause", "onUIResume", "playVideo", "sameParent", "setMute", "setVideoViewProp", "stopVideo", "detach", "Companion", "plugin-vlog_release"})
 public final class a
 {
-  public static final a zcN;
-  public boolean fqj;
-  private boolean yAi;
-  private String yAj;
-  private boolean yAk;
-  public boolean yAm;
-  private b yAn;
-  private boolean yAo;
-  public VLogFakeVideoView zcL;
-  private d zcM;
+  public static final a.a Auz;
+  public VLogFakeVideoView Aux;
+  private e Auy;
+  public boolean ftN;
+  public boolean zNA;
+  private b zNB;
+  private boolean zNC;
+  private boolean zNw;
+  private String zNx;
+  private boolean zNy;
   
   static
   {
     AppMethodBeat.i(111196);
-    zcN = new a((byte)0);
+    Auz = new a.a((byte)0);
     AppMethodBeat.o(111196);
   }
   
   public a()
   {
     AppMethodBeat.i(111195);
-    this.yAn = new b(aj.getContext());
+    this.zNB = new b(ai.getContext());
     AppMethodBeat.o(111195);
   }
   
-  private final void dLw()
+  private final void dZW()
   {
     AppMethodBeat.i(111191);
-    ad.i("MicroMsg.VLogFakeVideoViewMgr", "setVideoViewProp, isMute:" + this.fqj);
-    VLogFakeVideoView localVLogFakeVideoView = this.zcL;
+    ac.i("MicroMsg.VLogFakeVideoViewMgr", "setVideoViewProp, isMute:" + this.ftN);
+    VLogFakeVideoView localVLogFakeVideoView = this.Aux;
     if (localVLogFakeVideoView != null)
     {
-      localVLogFakeVideoView.setMute(this.fqj);
+      localVLogFakeVideoView.setMute(this.ftN);
       AppMethodBeat.o(111191);
       return;
     }
     AppMethodBeat.o(111191);
   }
   
-  private final boolean e(d paramd)
+  private final boolean e(e parame)
   {
-    if (paramd == null) {}
-    d locald;
+    if (parame == null) {}
+    e locale;
     do
     {
       do
       {
         return false;
-      } while (paramd.systemRowid == 0L);
-      locald = this.zcM;
-    } while ((locald == null) || (locald.systemRowid != paramd.systemRowid));
+      } while (parame.systemRowid == 0L);
+      locale = this.Auy;
+    } while ((locale == null) || (locale.systemRowid != parame.systemRowid));
     return true;
   }
   
-  private final void gh(Context paramContext)
+  private final void gt(Context paramContext)
   {
     AppMethodBeat.i(111188);
-    ad.i("MicroMsg.VLogFakeVideoViewMgr", "initCreateVideoView");
-    this.zcL = new VLogFakeVideoView(paramContext, null, 2);
-    this.yAk = false;
+    ac.i("MicroMsg.VLogFakeVideoViewMgr", "initCreateVideoView");
+    this.Aux = new VLogFakeVideoView(paramContext, null, 2);
+    this.zNy = false;
     AppMethodBeat.o(111188);
   }
   
-  private final void u(ViewGroup paramViewGroup)
+  private final void v(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(111186);
     Object localObject1 = new StringBuilder("checkDetachVideoView, videoView:");
-    Object localObject2 = this.zcL;
+    Object localObject2 = this.Aux;
     int i;
     boolean bool;
     if (localObject2 != null)
     {
       i = localObject2.hashCode();
       localObject1 = ((StringBuilder)localObject1).append(i).append(", isPlay:");
-      localObject2 = this.zcL;
+      localObject2 = this.Aux;
       if (localObject2 == null) {
         break label229;
       }
       bool = ((VLogFakeVideoView)localObject2).isPlaying();
       label63:
       localObject2 = ((StringBuilder)localObject1).append(bool).append(", parent:");
-      localObject1 = this.zcL;
+      localObject1 = this.Aux;
       if (localObject1 == null) {
         break label234;
       }
@@ -115,18 +115,18 @@ public final class a
       }
       i = paramViewGroup.hashCode();
       label127:
-      ad.i("MicroMsg.VLogFakeVideoViewMgr", i + ", isPlayingVideoItem:" + this.yAk);
-      localObject1 = this.zcL;
+      ac.i("MicroMsg.VLogFakeVideoViewMgr", i + ", isPlayingVideoItem:" + this.zNy);
+      localObject1 = this.Aux;
       if (localObject1 == null) {
         break label250;
       }
       localObject1 = ((VLogFakeVideoView)localObject1).getParent();
       label171:
-      if ((localObject1 == null) || (v(paramViewGroup))) {
+      if ((localObject1 == null) || (w(paramViewGroup))) {
         break label280;
       }
-      qW(false);
-      paramViewGroup = this.zcL;
+      rU(false);
+      paramViewGroup = this.Aux;
       if (paramViewGroup == null) {
         break label256;
       }
@@ -159,16 +159,16 @@ public final class a
       break label171;
     }
     label261:
-    ((ViewGroup)paramViewGroup).removeView((View)this.zcL);
-    this.zcM = null;
+    ((ViewGroup)paramViewGroup).removeView((View)this.Aux);
+    this.Auy = null;
     label280:
     AppMethodBeat.o(111186);
   }
   
-  private final boolean v(ViewGroup paramViewGroup)
+  private final boolean w(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(111187);
-    Object localObject = this.zcL;
+    Object localObject = this.Aux;
     if (localObject != null) {}
     for (localObject = ((VLogFakeVideoView)localObject).getParent();; localObject = null)
     {
@@ -178,53 +178,53 @@ public final class a
     }
   }
   
-  public final void EN()
+  public final void Er()
   {
     AppMethodBeat.i(111190);
-    ad.m("MicroMsg.VLogFakeVideoViewMgr", "playVideo, " + this.yAi + ' ' + this.yAm + ", " + this.zcM, new Object[0]);
-    dLw();
-    this.yAm = true;
+    ac.m("MicroMsg.VLogFakeVideoViewMgr", "playVideo, " + this.zNw + ' ' + this.zNA + ", " + this.Auy, new Object[0]);
+    dZW();
+    this.zNA = true;
     Object localObject;
-    if (this.zcM != null)
+    if (this.Auy != null)
     {
-      boolean bool = this.yAi;
-      this.yAi = false;
+      boolean bool = this.zNw;
+      this.zNw = false;
       if (!bool) {
         break label154;
       }
-      localObject = this.zcL;
+      localObject = this.Aux;
       if (localObject != null) {
         ((VLogFakeVideoView)localObject).setAlpha(1.0F);
       }
-      localObject = this.zcL;
+      localObject = this.Aux;
       if (localObject != null) {
-        ((VLogFakeVideoView)localObject).b(this.zcM);
+        ((VLogFakeVideoView)localObject).b(this.Auy);
       }
     }
     for (;;)
     {
-      this.yAi = false;
-      this.yAk = true;
-      if (!this.yAo)
+      this.zNw = false;
+      this.zNy = true;
+      if (!this.zNC)
       {
-        this.yAn.requestFocus();
-        this.yAo = true;
+        this.zNB.requestFocus();
+        this.zNC = true;
       }
       AppMethodBeat.o(111190);
       return;
       label154:
-      this.yAj = UUID.randomUUID().toString();
-      VLogFakeVideoView localVLogFakeVideoView = this.zcL;
+      this.zNx = UUID.randomUUID().toString();
+      VLogFakeVideoView localVLogFakeVideoView = this.Aux;
       if (localVLogFakeVideoView != null)
       {
-        d locald = this.zcM;
-        localObject = locald;
-        if (locald == null) {
-          localObject = new d();
+        e locale = this.Auy;
+        localObject = locale;
+        if (locale == null) {
+          localObject = new e();
         }
-        localVLogFakeVideoView.a((d)localObject);
+        localVLogFakeVideoView.a((e)localObject);
       }
-      localObject = this.zcL;
+      localObject = this.Aux;
       if (localObject != null) {
         ((VLogFakeVideoView)localObject).setAlpha(0.0F);
       }
@@ -235,32 +235,32 @@ public final class a
   {
     AppMethodBeat.i(111184);
     k.h(paramViewGroup, "parent");
-    boolean bool = v(paramViewGroup);
-    StringBuilder localStringBuilder = new StringBuilder("attachVideoView, parent:").append(paramViewGroup.hashCode()).append(", isVideoPause:").append(this.yAi).append(", currentSessionId:").append(this.yAj).append(", isPlayingVideoItem:").append(this.yAk).append(" videoView ");
-    Object localObject = this.zcL;
+    boolean bool = w(paramViewGroup);
+    StringBuilder localStringBuilder = new StringBuilder("attachVideoView, parent:").append(paramViewGroup.hashCode()).append(", isVideoPause:").append(this.zNw).append(", currentSessionId:").append(this.zNx).append(", isPlayingVideoItem:").append(this.zNy).append(" videoView ");
+    Object localObject = this.Aux;
     if (localObject != null)
     {
       localObject = Integer.valueOf(((VLogFakeVideoView)localObject).hashCode());
-      ad.i("MicroMsg.VLogFakeVideoViewMgr", localObject + " sameParent " + bool + " this:" + hashCode());
-      u(paramViewGroup);
-      if (this.zcL == null)
+      ac.i("MicroMsg.VLogFakeVideoViewMgr", localObject + " sameParent " + bool + " this:" + hashCode());
+      v(paramViewGroup);
+      if (this.Aux == null)
       {
-        localObject = aj.getContext();
+        localObject = ai.getContext();
         k.g(localObject, "MMApplicationContext.getContext()");
-        gh((Context)localObject);
+        gt((Context)localObject);
       }
       if (bool) {
         break label248;
       }
-      ad.i("MicroMsg.VLogFakeVideoViewMgr", "addView layoutParams:".concat(String.valueOf(paramLayoutParams)));
+      ac.i("MicroMsg.VLogFakeVideoViewMgr", "addView layoutParams:".concat(String.valueOf(paramLayoutParams)));
       if (paramLayoutParams != null) {
         break label233;
       }
-      paramViewGroup.addView((View)this.zcL);
+      paramViewGroup.addView((View)this.Aux);
     }
     for (;;)
     {
-      paramViewGroup = this.zcL;
+      paramViewGroup = this.Aux;
       if (paramViewGroup == null) {
         break label269;
       }
@@ -270,12 +270,12 @@ public final class a
       localObject = null;
       break;
       label233:
-      paramViewGroup.addView((View)this.zcL, paramLayoutParams);
+      paramViewGroup.addView((View)this.Aux, paramLayoutParams);
       continue;
       label248:
       if (paramLayoutParams != null)
       {
-        paramViewGroup = this.zcL;
+        paramViewGroup = this.Aux;
         if (paramViewGroup != null) {
           paramViewGroup.setLayoutParams(paramLayoutParams);
         }
@@ -285,25 +285,25 @@ public final class a
     AppMethodBeat.o(111184);
   }
   
-  public final void a(d paramd, boolean paramBoolean)
+  public final void a(e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(111185);
-    if (paramd == null)
+    if (parame == null)
     {
       AppMethodBeat.o(111185);
       return;
     }
-    if (!e(paramd)) {}
+    if (!e(parame)) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.VLogFakeVideoViewMgr", "change:" + bool + ' ' + this.yAm + ", " + paramBoolean + ", changeVideoItem: origin: " + this.zcM + ", new: " + paramd + ",  change:" + bool + " this:" + hashCode());
+      ac.i("MicroMsg.VLogFakeVideoViewMgr", "change:" + bool + ' ' + this.zNA + ", " + paramBoolean + ", changeVideoItem: origin: " + this.Auy + ", new: " + parame + ",  change:" + bool + " this:" + hashCode());
       if (bool)
       {
-        this.zcM = paramd;
-        if ((this.yAm) || (paramBoolean))
+        this.Auy = parame;
+        if ((this.zNA) || (paramBoolean))
         {
-          qW(false);
-          EN();
+          rU(false);
+          Er();
         }
       }
       AppMethodBeat.o(111185);
@@ -314,15 +314,15 @@ public final class a
   public final void onUIDestroy()
   {
     AppMethodBeat.i(111194);
-    ad.i("MicroMsg.VLogFakeVideoViewMgr", "onUIDestroy " + hashCode());
-    this.yAm = false;
-    u(null);
-    this.zcM = null;
-    this.zcL = null;
-    if (this.yAo)
+    ac.i("MicroMsg.VLogFakeVideoViewMgr", "onUIDestroy " + hashCode());
+    this.zNA = false;
+    v(null);
+    this.Auy = null;
+    this.Aux = null;
+    if (this.zNC)
     {
-      this.yAn.XF();
-      this.yAo = false;
+      this.zNB.YC();
+      this.zNC = false;
     }
     AppMethodBeat.o(111194);
   }
@@ -330,12 +330,12 @@ public final class a
   public final void onUIPause()
   {
     AppMethodBeat.i(111193);
-    ad.i("MicroMsg.VLogFakeVideoViewMgr", "onUIPause " + hashCode());
-    u(null);
-    if (this.yAo)
+    ac.i("MicroMsg.VLogFakeVideoViewMgr", "onUIPause " + hashCode());
+    v(null);
+    if (this.zNC)
     {
-      this.yAn.XF();
-      this.yAo = false;
+      this.zNB.YC();
+      this.zNC = false;
     }
     AppMethodBeat.o(111193);
   }
@@ -343,59 +343,56 @@ public final class a
   public final void onUIResume()
   {
     AppMethodBeat.i(111192);
-    ad.i("MicroMsg.VLogFakeVideoViewMgr", "onUIResume " + hashCode());
-    if (this.yAm)
+    ac.i("MicroMsg.VLogFakeVideoViewMgr", "onUIResume " + hashCode());
+    if (this.zNA)
     {
-      VLogFakeVideoView localVLogFakeVideoView = this.zcL;
+      VLogFakeVideoView localVLogFakeVideoView = this.Aux;
       if (localVLogFakeVideoView != null) {
         localVLogFakeVideoView.onUIResume();
       }
-      if (!this.yAo)
+      if (!this.zNC)
       {
-        this.yAn.requestFocus();
-        this.yAo = true;
+        this.zNB.requestFocus();
+        this.zNC = true;
       }
     }
     AppMethodBeat.o(111192);
   }
   
-  public final void qW(boolean paramBoolean)
+  public final void rU(boolean paramBoolean)
   {
     AppMethodBeat.i(111189);
-    ad.i("MicroMsg.VLogFakeVideoViewMgr", "stopVideo, detach: ".concat(String.valueOf(paramBoolean)));
-    VLogFakeVideoView localVLogFakeVideoView = this.zcL;
+    ac.i("MicroMsg.VLogFakeVideoViewMgr", "stopVideo, detach: ".concat(String.valueOf(paramBoolean)));
+    VLogFakeVideoView localVLogFakeVideoView = this.Aux;
     if (localVLogFakeVideoView != null) {
       localVLogFakeVideoView.setAlpha(0.0F);
     }
-    if (this.yAk)
+    if (this.zNy)
     {
-      this.yAj = null;
-      localVLogFakeVideoView = this.zcL;
+      this.zNx = null;
+      localVLogFakeVideoView = this.Aux;
       if (localVLogFakeVideoView != null) {
         localVLogFakeVideoView.stop();
       }
-      this.yAi = false;
-      if (this.yAo)
+      this.zNw = false;
+      if (this.zNC)
       {
-        this.yAn.XF();
-        this.yAo = false;
+        this.zNB.YC();
+        this.zNC = false;
       }
-      this.yAk = false;
+      this.zNy = false;
     }
     if (paramBoolean)
     {
-      this.yAm = false;
-      u(null);
+      this.zNA = false;
+      v(null);
     }
     AppMethodBeat.o(111189);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.preview.a
  * JD-Core Version:    0.7.0.1
  */

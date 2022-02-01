@@ -10,44 +10,44 @@ public final class h
 {
   public h(i parami)
   {
-    this.Kik = 2064;
-    this.Kil = 3;
-    this.Kin = parami;
+    this.LVT = 2064;
+    this.LVU = 3;
+    this.LVW = parami;
   }
   
-  public final int R(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int Q(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88076);
     f localf = new f();
     g localg = new g();
-    paramInt2 = super.ae(paramArrayOfByte, paramInt1 + 2);
-    super.fME();
+    paramInt2 = super.ad(paramArrayOfByte, paramInt1 + 2);
+    super.gfu();
     int j = paramInt1 + 5;
     switch (paramInt2)
     {
     case 3: 
     case 4: 
     default: 
-      Q(paramArrayOfByte, j, this.KhZ - j - 1);
+      P(paramArrayOfByte, j, this.LVI - j - 1);
       paramInt1 = paramInt2;
     }
     for (;;)
     {
       AppMethodBeat.o(88076);
       return paramInt1;
-      int i = localf.U(paramArrayOfByte, j, this.KhZ - j);
+      int i = localf.T(paramArrayOfByte, j, this.LVI - j);
       paramInt1 = i;
       if (i >= 0)
       {
-        this.Kin.Kis = localf;
-        i = localg.U(paramArrayOfByte, j, this.KhZ - j);
+        this.LVW.LWb = localf;
+        i = localg.T(paramArrayOfByte, j, this.LVI - j);
         paramInt1 = i;
         if (i >= 0)
         {
-          this.Kin.Kit = localg;
+          this.LVW.LWc = localg;
           paramInt1 = paramInt2;
           continue;
-          super.Q(paramArrayOfByte, j, this.KhZ - j - 1);
+          super.P(paramArrayOfByte, j, this.LVI - j - 1);
           paramInt1 = paramInt2;
         }
       }

@@ -6,47 +6,47 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.profile.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
 public final class a
   implements g
 {
-  Activity djj;
-  p rll;
-  b uEY;
-  private av uEZ;
+  Activity dgE;
+  p sue;
+  b vNP;
+  private au vNQ;
   
   public a(Activity paramActivity)
   {
     AppMethodBeat.i(27423);
-    this.uEZ = new av(new av.a()
+    this.vNQ = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(27422);
-        if (!a.this.djj.isFinishing())
+        if (!a.this.dgE.isFinishing())
         {
           a locala = a.this;
-          Activity localActivity = a.this.djj;
-          a.this.djj.getString(2131755906);
-          locala.rll = h.b(localActivity, a.this.djj.getString(2131755936), true, new DialogInterface.OnCancelListener()
+          Activity localActivity = a.this.dgE;
+          a.this.dgE.getString(2131755906);
+          locala.sue = h.b(localActivity, a.this.dgE.getString(2131755936), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(27421);
-              az.aeS().a(a.this.uEY);
-              a.this.rll = null;
+              az.agi().a(a.this.vNP);
+              a.this.sue = null;
               AppMethodBeat.o(27421);
             }
           });
@@ -55,45 +55,45 @@ public final class a
         return false;
       }
     }, false);
-    this.djj = paramActivity;
+    this.dgE = paramActivity;
     AppMethodBeat.o(27423);
   }
   
   private void openWebView(String paramString)
   {
     AppMethodBeat.i(27426);
-    this.uEZ.stopTimer();
-    if (this.rll != null) {
-      this.rll.dismiss();
+    this.vNQ.stopTimer();
+    if (this.sue != null) {
+      this.sue.dismiss();
     }
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-    paramString.putExtra("title", this.djj.getString(2131757902));
+    paramString.putExtra("title", this.dgE.getString(2131757902));
     paramString.putExtra("zoom", true);
     paramString.putExtra("vertical_scroll", false);
-    d.b(this.djj, "webview", ".ui.tools.WebViewUI", paramString);
+    d.b(this.dgE, "webview", ".ui.tools.WebViewUI", paramString);
     AppMethodBeat.o(27426);
   }
   
-  public final void hX(String paramString1, String paramString2)
+  public final void iq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(27424);
     if (paramString1 == null)
     {
-      ad.e("MicroMsg.ViewTWeibo", "null weibo id");
+      ac.e("MicroMsg.ViewTWeibo", "null weibo id");
       AppMethodBeat.o(27424);
       return;
     }
-    az.aeS().a(205, this);
-    this.uEY = new b(bt.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
-    az.aeS().a(this.uEY, 0);
-    this.uEZ.av(3000L, 3000L);
+    az.agi().a(205, this);
+    this.vNP = new b(bs.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
+    az.agi().a(this.vNP, 0);
+    this.vNQ.au(3000L, 3000L);
     AppMethodBeat.o(27424);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(27425);
-    az.aeS().b(205, this);
+    az.agi().b(205, this);
     paramString = (b)paramn;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
@@ -102,15 +102,15 @@ public final class a
       return;
     }
     if (paramInt1 != 4) {
-      ad.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
+      ac.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
     }
-    openWebView("http://t.qq.com/" + paramString.uzy);
+    openWebView("http://t.qq.com/" + paramString.vIr);
     AppMethodBeat.o(27425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

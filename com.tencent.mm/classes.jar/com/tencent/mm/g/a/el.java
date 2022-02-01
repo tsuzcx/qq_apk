@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class el
   extends b
 {
-  public a dgS;
+  public a dem;
   
   public el()
   {
@@ -15,16 +16,18 @@ public final class el
   
   private el(byte paramByte)
   {
-    AppMethodBeat.i(116003);
-    this.dgS = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116002);
+    this.dem = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116003);
+    AppMethodBeat.o(116002);
   }
   
   public static final class a
   {
-    public boolean dfN = false;
+    public Context context;
+    public int op = 0;
+    public String userName;
   }
 }
 

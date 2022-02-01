@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.c;
 
 public final class h
 {
-  int kpC = -1;
-  long kpD = -1L;
+  int kQV = -1;
+  long kQW = -1L;
 }
 
 

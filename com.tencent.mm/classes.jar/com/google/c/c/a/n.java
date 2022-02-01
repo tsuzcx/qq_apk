@@ -35,17 +35,17 @@ final class n
   {
     AppMethodBeat.i(12287);
     StringBuilder localStringBuilder = new StringBuilder();
-    while (paramh.yn())
+    while (paramh.ya())
     {
-      char c = paramh.ym();
+      char c = paramh.xZ();
       paramh.pos += 1;
       a(c, localStringBuilder);
       if (localStringBuilder.length() % 3 == 0)
       {
         a(paramh, localStringBuilder);
-        int i = j.b(paramh.bLg, paramh.pos, 3);
+        int i = j.b(paramh.bIO, paramh.pos, 3);
         if (i != 3) {
-          paramh.bLl = i;
+          paramh.bIT = i;
         }
       }
     }
@@ -56,20 +56,20 @@ final class n
   final void b(h paramh, StringBuilder paramStringBuilder)
   {
     AppMethodBeat.i(12289);
-    paramh.yq();
-    int i = paramh.bLm.bLv - paramh.bLk.length();
+    paramh.yd();
+    int i = paramh.bIU.bJd - paramh.bIS.length();
     int j = paramStringBuilder.length();
     paramh.pos -= j;
-    if ((paramh.yp() > 1) || (i > 1) || (paramh.yp() != i)) {
+    if ((paramh.yc() > 1) || (i > 1) || (paramh.yc() != i)) {
       paramh.e('þ');
     }
-    if (paramh.bLl < 0) {
-      paramh.bLl = 0;
+    if (paramh.bIT < 0) {
+      paramh.bIT = 0;
     }
     AppMethodBeat.o(12289);
   }
   
-  public final int yj()
+  public final int xW()
   {
     return 3;
   }

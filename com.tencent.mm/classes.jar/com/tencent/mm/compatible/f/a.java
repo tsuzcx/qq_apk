@@ -1,41 +1,41 @@
 package com.tencent.mm.compatible.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
 {
-  public int deV;
-  public String fGf;
-  public long fGg;
-  public int fGh;
+  public int dcp;
+  public String fJM;
+  public long fJN;
+  public int fJO;
   
   public a()
   {
     AppMethodBeat.i(155857);
-    this.fGf = null;
-    this.fGg = -1L;
-    this.fGh = -1;
-    this.deV = -1;
-    this.fGf = null;
-    this.fGg = -1L;
-    this.fGh = -1;
-    this.deV = -1;
+    this.fJM = null;
+    this.fJN = -1L;
+    this.fJO = -1;
+    this.dcp = -1;
+    this.fJM = null;
+    this.fJN = -1L;
+    this.fJO = -1;
+    this.dcp = -1;
     AppMethodBeat.o(155857);
   }
   
-  public final String XD()
+  public final String YA()
   {
     AppMethodBeat.i(155858);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.fGf);
+    ((StringBuffer)localObject).append(this.fJM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.fGg);
+    ((StringBuffer)localObject).append(this.fJN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.fGh);
+    ((StringBuffer)localObject).append(this.fJO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.deV);
-    ad.d("MicroMsg.AudioRecorderInfo", " getStatInfo " + ((StringBuffer)localObject).toString());
+    ((StringBuffer)localObject).append(this.dcp);
+    ac.d("MicroMsg.AudioRecorderInfo", " getStatInfo " + ((StringBuffer)localObject).toString());
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(155858);
     return localObject;
@@ -43,7 +43,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ import android.util.TypedValue;
 
 public final class az
 {
-  private TypedValue ahF;
-  public final TypedArray avP;
+  private TypedValue aiz;
+  public final TypedArray awJ;
   private final Context mContext;
   
   private az(Context paramContext, TypedArray paramTypedArray)
   {
     this.mContext = paramContext;
-    this.avP = paramTypedArray;
+    this.awJ = paramTypedArray;
   }
   
   public static az a(Context paramContext, int paramInt, int[] paramArrayOfInt)
@@ -40,48 +40,48 @@ public final class az
   
   public final Typeface a(int paramInt1, int paramInt2, f.a parama)
   {
-    paramInt1 = this.avP.getResourceId(paramInt1, 0);
+    paramInt1 = this.awJ.getResourceId(paramInt1, 0);
     if (paramInt1 == 0) {
       return null;
     }
-    if (this.ahF == null) {
-      this.ahF = new TypedValue();
+    if (this.aiz == null) {
+      this.aiz = new TypedValue();
     }
-    return f.a(this.mContext, paramInt1, this.ahF, paramInt2, parama);
+    return f.a(this.mContext, paramInt1, this.aiz, paramInt2, parama);
   }
   
-  public final Drawable db(int paramInt)
+  public final Drawable da(int paramInt)
   {
-    if (this.avP.hasValue(paramInt))
+    if (this.awJ.hasValue(paramInt))
     {
-      paramInt = this.avP.getResourceId(paramInt, 0);
+      paramInt = this.awJ.getResourceId(paramInt, 0);
       if (paramInt != 0) {
-        return g.iD().b(this.mContext, paramInt, true);
+        return g.iL().b(this.mContext, paramInt, true);
       }
     }
     return null;
   }
   
-  public final float dc(int paramInt)
+  public final float db(int paramInt)
   {
-    return this.avP.getDimension(paramInt, 0.0F);
+    return this.awJ.getDimension(paramInt, 0.0F);
   }
   
   public final boolean getBoolean(int paramInt, boolean paramBoolean)
   {
-    return this.avP.getBoolean(paramInt, paramBoolean);
+    return this.awJ.getBoolean(paramInt, paramBoolean);
   }
   
   public final int getColor(int paramInt1, int paramInt2)
   {
-    return this.avP.getColor(paramInt1, paramInt2);
+    return this.awJ.getColor(paramInt1, paramInt2);
   }
   
   public final ColorStateList getColorStateList(int paramInt)
   {
-    if (this.avP.hasValue(paramInt))
+    if (this.awJ.hasValue(paramInt))
     {
-      int i = this.avP.getResourceId(paramInt, 0);
+      int i = this.awJ.getResourceId(paramInt, 0);
       if (i != 0)
       {
         ColorStateList localColorStateList = a.m(this.mContext, i);
@@ -90,69 +90,69 @@ public final class az
         }
       }
     }
-    return this.avP.getColorStateList(paramInt);
+    return this.awJ.getColorStateList(paramInt);
   }
   
   public final int getDimensionPixelOffset(int paramInt1, int paramInt2)
   {
-    return this.avP.getDimensionPixelOffset(paramInt1, paramInt2);
+    return this.awJ.getDimensionPixelOffset(paramInt1, paramInt2);
   }
   
   public final int getDimensionPixelSize(int paramInt1, int paramInt2)
   {
-    return this.avP.getDimensionPixelSize(paramInt1, paramInt2);
+    return this.awJ.getDimensionPixelSize(paramInt1, paramInt2);
   }
   
   public final Drawable getDrawable(int paramInt)
   {
-    if (this.avP.hasValue(paramInt))
+    if (this.awJ.hasValue(paramInt))
     {
-      int i = this.avP.getResourceId(paramInt, 0);
+      int i = this.awJ.getResourceId(paramInt, 0);
       if (i != 0) {
         return a.l(this.mContext, i);
       }
     }
-    return this.avP.getDrawable(paramInt);
+    return this.awJ.getDrawable(paramInt);
   }
   
   public final float getFloat(int paramInt, float paramFloat)
   {
-    return this.avP.getFloat(paramInt, paramFloat);
+    return this.awJ.getFloat(paramInt, paramFloat);
   }
   
   public final int getInt(int paramInt1, int paramInt2)
   {
-    return this.avP.getInt(paramInt1, paramInt2);
+    return this.awJ.getInt(paramInt1, paramInt2);
   }
   
   public final int getInteger(int paramInt1, int paramInt2)
   {
-    return this.avP.getInteger(paramInt1, paramInt2);
+    return this.awJ.getInteger(paramInt1, paramInt2);
   }
   
   public final int getLayoutDimension(int paramInt1, int paramInt2)
   {
-    return this.avP.getLayoutDimension(paramInt1, paramInt2);
+    return this.awJ.getLayoutDimension(paramInt1, paramInt2);
   }
   
   public final int getResourceId(int paramInt1, int paramInt2)
   {
-    return this.avP.getResourceId(paramInt1, paramInt2);
+    return this.awJ.getResourceId(paramInt1, paramInt2);
   }
   
   public final String getString(int paramInt)
   {
-    return this.avP.getString(paramInt);
+    return this.awJ.getString(paramInt);
   }
   
   public final CharSequence getText(int paramInt)
   {
-    return this.avP.getText(paramInt);
+    return this.awJ.getText(paramInt);
   }
   
   public final boolean hasValue(int paramInt)
   {
-    return this.avP.hasValue(paramInt);
+    return this.awJ.hasValue(paramInt);
   }
 }
 

@@ -18,36 +18,36 @@ import d.n;
 import java.lang.reflect.Type;
 import java.util.List;
 
-@d.l(fvt={1, 1, 15}, fvu={""}, fvv={"Lkotlin/reflect/jvm/internal/KTypeImpl;", "Lkotlin/reflect/KType;", "type", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "computeJavaType", "Lkotlin/Function0;", "Ljava/lang/reflect/Type;", "(Lorg/jetbrains/kotlin/types/KotlinType;Lkotlin/jvm/functions/Function0;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "arguments", "Lkotlin/reflect/KTypeProjection;", "getArguments", "arguments$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "classifier", "Lkotlin/reflect/KClassifier;", "getClassifier", "()Lkotlin/reflect/KClassifier;", "classifier$delegate", "isMarkedNullable", "", "()Z", "javaType", "getJavaType$kotlin_reflection", "()Ljava/lang/reflect/Type;", "javaType$delegate", "getType", "()Lorg/jetbrains/kotlin/types/KotlinType;", "convert", "equals", "other", "", "hashCode", "", "toString", "", "kotlin-reflection", "parameterizedTypeArguments"})
+@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KTypeImpl;", "Lkotlin/reflect/KType;", "type", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "computeJavaType", "Lkotlin/Function0;", "Ljava/lang/reflect/Type;", "(Lorg/jetbrains/kotlin/types/KotlinType;Lkotlin/jvm/functions/Function0;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "arguments", "Lkotlin/reflect/KTypeProjection;", "getArguments", "arguments$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "classifier", "Lkotlin/reflect/KClassifier;", "getClassifier", "()Lkotlin/reflect/KClassifier;", "classifier$delegate", "isMarkedNullable", "", "()Z", "javaType", "getJavaType$kotlin_reflection", "()Ljava/lang/reflect/Type;", "javaType$delegate", "getType", "()Lorg/jetbrains/kotlin/types/KotlinType;", "convert", "equals", "other", "", "hashCode", "", "toString", "", "kotlin-reflection", "parameterizedTypeArguments"})
 public final class u
   implements o
 {
-  private final z.a Jkl;
-  private final z.a Jkm;
-  private final z.a Jkn;
-  public final d.l.b.a.b.m.ab Jko;
+  private final z.a KXF;
+  private final z.a KXG;
+  private final z.a KXH;
+  public final d.l.b.a.b.m.ab KXI;
   
   static
   {
     AppMethodBeat.i(56494);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)d.g.b.w.a(new d.g.b.u(d.g.b.w.bk(u.class), "javaType", "getJavaType$kotlin_reflection()Ljava/lang/reflect/Type;")), (d.l.k)d.g.b.w.a(new d.g.b.u(d.g.b.w.bk(u.class), "classifier", "getClassifier()Lkotlin/reflect/KClassifier;")), (d.l.k)d.g.b.w.a(new d.g.b.u(d.g.b.w.bk(u.class), "arguments", "getArguments()Ljava/util/List;")), (d.l.k)d.g.b.w.a(new s(d.g.b.w.bk(u.class), "parameterizedTypeArguments", "<v#0>")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)d.g.b.w.a(new d.g.b.u(d.g.b.w.bn(u.class), "javaType", "getJavaType$kotlin_reflection()Ljava/lang/reflect/Type;")), (d.l.k)d.g.b.w.a(new d.g.b.u(d.g.b.w.bn(u.class), "classifier", "getClassifier()Lkotlin/reflect/KClassifier;")), (d.l.k)d.g.b.w.a(new d.g.b.u(d.g.b.w.bn(u.class), "arguments", "getArguments()Ljava/util/List;")), (d.l.k)d.g.b.w.a(new s(d.g.b.w.bn(u.class), "parameterizedTypeArguments", "<v#0>")) };
     AppMethodBeat.o(56494);
   }
   
   public u(d.l.b.a.b.m.ab paramab, d.g.a.a<? extends Type> parama)
   {
     AppMethodBeat.i(56501);
-    this.Jko = paramab;
-    this.Jkl = z.G(parama);
-    this.Jkm = z.G((d.g.a.a)new b(this));
-    this.Jkn = z.G((d.g.a.a)new a(this));
+    this.KXI = paramab;
+    this.KXF = z.N(parama);
+    this.KXG = z.N((d.g.a.a)new b(this));
+    this.KXH = z.N((d.g.a.a)new a(this));
     AppMethodBeat.o(56501);
   }
   
   private final c a(d.l.b.a.b.m.ab paramab)
   {
     AppMethodBeat.i(56497);
-    Object localObject = paramab.fIW().fxM();
+    Object localObject = paramab.gbz().fQq();
     if ((localObject instanceof e))
     {
       localObject = af.a((e)localObject);
@@ -58,10 +58,10 @@ public final class u
       }
       if (((Class)localObject).isArray())
       {
-        paramab = (av)j.iD(paramab.fIT());
+        paramab = (av)j.iT(paramab.gbw());
         if (paramab != null)
         {
-          paramab = paramab.fzr();
+          paramab = paramab.fRV();
           if (paramab != null) {}
         }
         else
@@ -78,13 +78,13 @@ public final class u
           AppMethodBeat.o(56497);
           throw paramab;
         }
-        paramab = (c)new g(b.by(d.g.a.a(d.l.b.a.a(paramab))));
+        paramab = (c)new g(b.bB(d.g.a.a(d.l.b.a.a(paramab))));
         AppMethodBeat.o(56497);
         return paramab;
       }
       if (!bc.aF(paramab))
       {
-        paramab = b.bu((Class)localObject);
+        paramab = b.bx((Class)localObject);
         if (paramab != null) {
           break label293;
         }
@@ -120,7 +120,7 @@ public final class u
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(56498);
-    if (((paramObject instanceof u)) && (d.g.b.k.g(this.Jko, ((u)paramObject).Jko)))
+    if (((paramObject instanceof u)) && (d.g.b.k.g(this.KXI, ((u)paramObject).KXI)))
     {
       AppMethodBeat.o(56498);
       return true;
@@ -129,26 +129,26 @@ public final class u
     return false;
   }
   
-  public final Type fwM()
-  {
-    AppMethodBeat.i(56495);
-    Type localType = (Type)this.Jkl.invoke();
-    AppMethodBeat.o(56495);
-    return localType;
-  }
-  
-  public final c fwe()
+  public final c fOI()
   {
     AppMethodBeat.i(56496);
-    c localc = (c)this.Jkm.invoke();
+    c localc = (c)this.KXG.invoke();
     AppMethodBeat.o(56496);
     return localc;
+  }
+  
+  public final Type fPq()
+  {
+    AppMethodBeat.i(56495);
+    Type localType = (Type)this.KXF.invoke();
+    AppMethodBeat.o(56495);
+    return localType;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(56499);
-    int i = this.Jko.hashCode();
+    int i = this.KXI.hashCode();
     AppMethodBeat.o(56499);
     return i;
   }
@@ -156,13 +156,13 @@ public final class u
   public final String toString()
   {
     AppMethodBeat.i(56500);
-    Object localObject = ab.JkB;
-    localObject = ab.b(this.Jko);
+    Object localObject = ab.KXV;
+    localObject = ab.b(this.KXI);
     AppMethodBeat.o(56500);
     return localObject;
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "", "Lkotlin/reflect/KTypeProjection;", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "Lkotlin/reflect/KTypeProjection;", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.a<List<? extends q>>
@@ -172,7 +172,7 @@ public final class u
       super();
     }
     
-    @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "Ljava/lang/reflect/Type;", "invoke", "kotlin/reflect/jvm/internal/KTypeImpl$arguments$2$1$type$1"})
+    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Ljava/lang/reflect/Type;", "invoke", "kotlin/reflect/jvm/internal/KTypeImpl$arguments$2$1$type$1"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<Type>
@@ -183,7 +183,7 @@ public final class u
       }
     }
     
-    @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "", "Ljava/lang/reflect/Type;", "invoke"})
+    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "Ljava/lang/reflect/Type;", "invoke"})
     static final class b
       extends d.g.b.l
       implements d.g.a.a<List<? extends Type>>
@@ -195,7 +195,7 @@ public final class u
     }
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "Lkotlin/reflect/KClassifier;", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/KClassifier;", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<c>
@@ -208,7 +208,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.u
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ final class q$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(96505);
-    q.a(this.xaN).Wm(0);
-    this.xaN.dwm();
-    this.xaN.dwn();
+    q.a(this.ynC).Yv(0);
+    this.ynC.dKL();
+    this.ynC.dKM();
     AppMethodBeat.o(96505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.q.1
  * JD-Core Version:    0.7.0.1
  */

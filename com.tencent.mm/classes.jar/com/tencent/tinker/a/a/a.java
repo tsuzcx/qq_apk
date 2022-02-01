@@ -5,19 +5,19 @@ import com.tencent.tinker.a.a.b.e;
 public final class a
   extends s.a.a<a>
 {
-  public byte IAq;
-  public k IAr;
+  public k KmA;
+  public byte Kmz;
   
   public a(int paramInt, byte paramByte, k paramk)
   {
     super(paramInt);
-    this.IAq = paramByte;
-    this.IAr = paramk;
+    this.Kmz = paramByte;
+    this.KmA = paramk;
   }
   
   private int a(a parama)
   {
-    return this.IAr.b(parama.IAr);
+    return this.KmA.b(parama.KmA);
   }
   
   public final boolean equals(Object paramObject)
@@ -31,7 +31,7 @@ public final class a
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Byte.valueOf(this.IAq), this.IAr });
+    return e.hash(new Object[] { Byte.valueOf(this.Kmz), this.KmA });
   }
 }
 

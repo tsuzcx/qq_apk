@@ -4,7 +4,7 @@ import com.google.android.gms.tasks.Task;
 
 abstract interface ae
 {
-  public abstract Task<String> o(String paramString1, String paramString2);
+  public abstract Task<String> q(String paramString1, String paramString2);
 }
 
 

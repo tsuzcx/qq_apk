@@ -5,47 +5,53 @@ import d.g.b.k;
 
 public final class j
 {
-  private static final Object Jkz;
-  public static volatile boolean KbR;
+  private static final Object KXT;
+  public static volatile boolean LPm;
   
   static
   {
     AppMethodBeat.i(61411);
-    Jkz = new j.1();
-    KbR = false;
+    KXT = new Object()
+    {
+      public final String toString()
+      {
+        return "NULL_VALUE";
+      }
+    };
+    LPm = false;
     AppMethodBeat.o(61411);
   }
   
-  public static <V> Object fu(V paramV)
+  public static <V> Object fx(V paramV)
   {
     AppMethodBeat.i(61407);
     if (paramV == null)
     {
-      paramV = Jkz;
+      paramV = KXT;
       if (paramV == null) {
-        adP(1);
+        agL(1);
       }
       AppMethodBeat.o(61407);
       return paramV;
     }
     if (paramV == null) {
-      adP(2);
+      agL(2);
     }
     AppMethodBeat.o(61407);
     return paramV;
   }
   
-  public static <V> V fv(Object paramObject)
+  public static <V> V fy(Object paramObject)
   {
     AppMethodBeat.i(61409);
     if (paramObject == null) {
-      adP(4);
+      agL(4);
     }
-    paramObject = fw(paramObject);
+    paramObject = fz(paramObject);
     if (paramObject == null) {
-      adP(0);
+      agL(0);
     }
-    if (paramObject == Jkz)
+    if (paramObject == KXT)
     {
       AppMethodBeat.o(61409);
       return null;
@@ -54,13 +60,13 @@ public final class j
     return paramObject;
   }
   
-  public static <V> V fw(Object paramObject)
+  public static <V> V fz(Object paramObject)
   {
     AppMethodBeat.i(61410);
     if ((paramObject instanceof a))
     {
-      paramObject = ((a)paramObject).fKr();
-      if ((KbR) && (c.r(paramObject)))
+      paramObject = ((a)paramObject).gcU();
+      if ((LPm) && (c.r(paramObject)))
       {
         paramObject = new b(paramObject);
         AppMethodBeat.o(61410);
@@ -84,21 +90,21 @@ public final class j
   
   static final class a
   {
-    private final Throwable IzS;
+    private final Throwable KbB;
     
     private a(Throwable paramThrowable)
     {
       AppMethodBeat.i(61403);
-      this.IzS = paramThrowable;
+      this.KbB = paramThrowable;
       AppMethodBeat.o(61403);
     }
     
-    public final Throwable fKr()
+    public final Throwable gcU()
     {
       AppMethodBeat.i(61404);
-      Throwable localThrowable = this.IzS;
+      Throwable localThrowable = this.KbB;
       if (localThrowable == null) {
-        adP(1);
+        agL(1);
       }
       AppMethodBeat.o(61404);
       return localThrowable;
@@ -107,7 +113,7 @@ public final class j
     public final String toString()
     {
       AppMethodBeat.i(61405);
-      String str = this.IzS.toString();
+      String str = this.KbB.toString();
       AppMethodBeat.o(61405);
       return str;
     }
@@ -124,7 +130,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.o.j
  * JD-Core Version:    0.7.0.1
  */

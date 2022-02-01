@@ -9,22 +9,22 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "avatarDrawable", "Landroid/graphics/drawable/LayerDrawable;", "(Landroid/graphics/drawable/LayerDrawable;)V", "TAG", "", "centerX", "", "centerY", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "avatarDrawable", "Landroid/graphics/drawable/LayerDrawable;", "(Landroid/graphics/drawable/LayerDrawable;)V", "TAG", "", "centerX", "", "centerY", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "plugin-story_release"})
 public final class a
   extends com.tencent.mm.particles.a.b
 {
   private final String TAG;
   private final int centerX;
   private final int centerY;
-  private final LayerDrawable ytz;
+  private final LayerDrawable zGS;
   
   public a(LayerDrawable paramLayerDrawable)
   {
     AppMethodBeat.i(120006);
-    this.ytz = paramLayerDrawable;
+    this.zGS = paramLayerDrawable;
     this.TAG = "MicroMsg.CommentConfetti";
-    this.centerX = (this.ytz.getIntrinsicWidth() / 2);
-    this.centerY = (this.ytz.getIntrinsicHeight() / 2);
+    this.centerX = (this.zGS.getIntrinsicWidth() / 2);
+    this.centerY = (this.zGS.getIntrinsicHeight() / 2);
     AppMethodBeat.o(120006);
   }
   
@@ -40,15 +40,15 @@ public final class a
     paramCanvas.save();
     paramCanvas.translate(paramFloat1, paramFloat2);
     paramCanvas.scale(paramFloat3, paramFloat3);
-    paramMatrix = this.ytz.getDrawable(1);
+    paramMatrix = this.zGS.getDrawable(1);
     if (paramMatrix == null)
     {
       paramCanvas = new v("null cannot be cast to non-null type com.tencent.mm.pluginsdk.ui.AvatarRoundDrawable");
       AppMethodBeat.o(120005);
       throw paramCanvas;
     }
-    ((com.tencent.mm.pluginsdk.ui.b)paramMatrix).UD((int)(paramFloat4 * 255.0F));
-    this.ytz.draw(paramCanvas);
+    ((com.tencent.mm.pluginsdk.ui.b)paramMatrix).WN((int)(paramFloat4 * 255.0F));
+    this.zGS.draw(paramCanvas);
     paramCanvas.restore();
     AppMethodBeat.o(120005);
   }
@@ -56,7 +56,7 @@ public final class a
   public final int getHeight()
   {
     AppMethodBeat.i(120004);
-    int i = this.ytz.getIntrinsicHeight();
+    int i = this.zGS.getIntrinsicHeight();
     AppMethodBeat.o(120004);
     return i;
   }
@@ -64,14 +64,14 @@ public final class a
   public final int getWidth()
   {
     AppMethodBeat.i(120003);
-    int i = this.ytz.getIntrinsicWidth();
+    int i = this.zGS.getIntrinsicWidth();
     AppMethodBeat.o(120003);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

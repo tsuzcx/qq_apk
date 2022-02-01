@@ -8,15 +8,15 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.mapsdk.rastercore.MapProvider;
+import com.tencent.mapsdk.rastercore.core.MapContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.b;
-import com.tencent.tencentmap.mapsdk.a.c;
 
 public class MapView
   extends FrameLayout
   implements IMapView
 {
-  private b mMapProvider;
+  private MapProvider mMapProvider;
   private int mMapType;
   private Projection mProjection;
   private UiSettings mUiSettings;
@@ -49,9 +49,9 @@ public class MapView
   {
     AppMethodBeat.i(87463);
     Context localContext = getContext();
-    this.mMapProvider = new b();
-    c.a(localContext.getApplicationContext());
-    this.mapView = this.mMapProvider.a(localContext.getApplicationContext(), paramTencentMapOptions);
+    this.mMapProvider = new MapProvider();
+    MapContext.setContext(localContext.getApplicationContext());
+    this.mapView = this.mMapProvider.getMapView(localContext.getApplicationContext(), paramTencentMapOptions);
     if (this.mapView != null)
     {
       paramTencentMapOptions = new ViewGroup.LayoutParams(-1, -1);
@@ -63,7 +63,7 @@ public class MapView
     AppMethodBeat.o(87463);
   }
   
-  public void addView(View paramView, LayoutParams paramLayoutParams)
+  public void addView(View paramView, MapView.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(87464);
     if ((this.mapView == null) || (paramLayoutParams == null))
@@ -323,30 +323,10 @@ public class MapView
     this.mapView.updateViewLayout(paramView, paramLayoutParams);
     AppMethodBeat.o(87482);
   }
-  
-  public static class LayoutParams
-    extends ViewGroup.LayoutParams
-  {
-    public static final int BOTTOM_CENTER = 81;
-    public static final int CENTER = 17;
-    public int alignment = 17;
-    public int height = 0;
-    public LatLng point = null;
-    public int width = 0;
-    
-    public LayoutParams(int paramInt1, int paramInt2, LatLng paramLatLng, int paramInt3)
-    {
-      super(paramInt2);
-      this.width = paramInt1;
-      this.height = paramInt2;
-      this.point = paramLatLng;
-      this.alignment = paramInt3;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.MapView
  * JD-Core Version:    0.7.0.1
  */

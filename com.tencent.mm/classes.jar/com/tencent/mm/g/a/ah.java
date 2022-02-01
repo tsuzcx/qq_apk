@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ah
   extends b
 {
-  public a dcc;
-  
   public ah()
   {
     this((byte)0);
@@ -16,16 +12,8 @@ public final class ah
   
   private ah(byte paramByte)
   {
-    AppMethodBeat.i(149851);
-    this.dcc = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149851);
-  }
-  
-  public static final class a
-  {
-    public Activity activity;
   }
 }
 

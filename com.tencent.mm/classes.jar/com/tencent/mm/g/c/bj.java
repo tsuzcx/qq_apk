@@ -3,18 +3,47 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class bj
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elb = "content".hashCode();
-  private static final int ezU = "designerIDAndType".hashCode();
+  private static final int eCi = "desc".hashCode();
+  private static final int eng = "content".hashCode();
+  private static final int eol = "updateTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ekE = true;
-  private boolean ezT = true;
+  private boolean eCe = true;
+  private boolean emI = true;
+  private boolean eoi = true;
   public byte[] field_content;
-  public String field_designerIDAndType;
+  public String field_desc;
+  public int field_updateTime;
+  
+  public static c.a Th()
+  {
+    c.a locala = new c.a();
+    locala.GvF = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "desc";
+    locala.GvH.put("desc", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" desc TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "desc";
+    locala.columns[1] = "updateTime";
+    locala.GvH.put("updateTime", "INTEGER");
+    localStringBuilder.append(" updateTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "content";
+    locala.GvH.put("content", "BLOB");
+    localStringBuilder.append(" content BLOB");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +58,11 @@ public abstract class bj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ezU != k) {
+      if (eCi != k) {
         break label65;
       }
-      this.field_designerIDAndType = paramCursor.getString(i);
-      this.ezT = true;
+      this.field_desc = paramCursor.getString(i);
+      this.eCe = true;
     }
     for (;;)
     {
@@ -41,7 +70,9 @@ public abstract class bj
       break label20;
       break;
       label65:
-      if (elb == k) {
+      if (eol == k) {
+        this.field_updateTime = paramCursor.getInt(i);
+      } else if (eng == k) {
         this.field_content = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +83,13 @@ public abstract class bj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ezT) {
-      localContentValues.put("designerIDAndType", this.field_designerIDAndType);
+    if (this.eCe) {
+      localContentValues.put("desc", this.field_desc);
     }
-    if (this.ekE) {
+    if (this.eoi) {
+      localContentValues.put("updateTime", Integer.valueOf(this.field_updateTime));
+    }
+    if (this.emI) {
       localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {

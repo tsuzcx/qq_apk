@@ -6,13 +6,13 @@ import d.l.b.a.b.f.f;
 
 final class r
 {
-  final f JsQ;
+  final f Lgj;
   final String signature;
   
   public r(f paramf, String paramString)
   {
     AppMethodBeat.i(57618);
-    this.JsQ = paramf;
+    this.Lgj = paramf;
     this.signature = paramString;
     AppMethodBeat.o(57618);
   }
@@ -25,7 +25,7 @@ final class r
       if ((paramObject instanceof r))
       {
         paramObject = (r)paramObject;
-        if ((!k.g(this.JsQ, paramObject.JsQ)) || (!k.g(this.signature, paramObject.signature))) {}
+        if ((!k.g(this.Lgj, paramObject.Lgj)) || (!k.g(this.signature, paramObject.signature))) {}
       }
     }
     else
@@ -41,7 +41,7 @@ final class r
   {
     int j = 0;
     AppMethodBeat.i(57620);
-    Object localObject = this.JsQ;
+    Object localObject = this.Lgj;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
@@ -57,14 +57,14 @@ final class r
   public final String toString()
   {
     AppMethodBeat.i(57619);
-    String str = "NameAndSignature(name=" + this.JsQ + ", signature=" + this.signature + ")";
+    String str = "NameAndSignature(name=" + this.Lgj + ", signature=" + this.signature + ")";
     AppMethodBeat.o(57619);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.r
  * JD-Core Version:    0.7.0.1
  */

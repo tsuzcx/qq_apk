@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/hik" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="17.0dip" android:textColor="@color/a_r" android:id="@id/hii" android:background="@drawable/c5u" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:layout_marginBottom="112.0dip" android:text="@string/b09" android:layout_alignParentBottom="true" />
-    <TextView android:textSize="22.0dip" android:textColor="@color/a_r" android:id="@id/hij" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="250.0dip" android:text="@string/hmg" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/hbs" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hmg" style="@style/o8" />
+        <Button android:id="@id/hbr" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hmj" style="@style/o8" />
+        <Button android:id="@id/hbq" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hmf" style="@style/o8" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/jt" android:textColor="@color/fc" android:id="@id/hk0" android:background="@color/BW_0_Alpha_0_2" android:padding="10.0dip" android:scrollbars="vertical" android:layout_width="300.0dip" android:layout_height="115.0dip" android:fadeScrollbars="false" />
+    <TextView android:textSize="@dimen/jt" android:textColor="@color/fc" android:id="@id/hk1" android:background="@color/BW_0_Alpha_0_2" android:padding="10.0dip" android:scrollbars="vertical" android:layout_width="300.0dip" android:layout_height="200.0dip" android:layout_marginTop="5.0dip" android:fadeScrollbars="false" />
+</LinearLayout>

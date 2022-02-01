@@ -13,8 +13,8 @@ import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.ae;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
@@ -31,7 +31,7 @@ public final class a
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.b.a
  * JD-Core Version:    0.7.0.1
  */

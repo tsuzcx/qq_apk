@@ -7,21 +7,21 @@ import java.util.Collection;
 public abstract interface g
   extends i, r, x
 {
-  public abstract Collection<f> fAD();
+  public abstract Collection<k> fOv();
   
-  public abstract g fAE();
+  public abstract b fRH();
   
-  public abstract Collection<q> fAF();
+  public abstract Collection<j> fSt();
   
-  public abstract Collection<n> fAG();
+  public abstract Collection<f> fTh();
   
-  public abstract boolean fAH();
+  public abstract g fTi();
   
-  public abstract Collection<k> fvR();
+  public abstract Collection<q> fTj();
   
-  public abstract Collection<j> fzP();
+  public abstract Collection<n> fTk();
   
-  public abstract b fzd();
+  public abstract boolean fTl();
   
   public abstract boolean isEnum();
   
@@ -29,7 +29,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.g
  * JD-Core Version:    0.7.0.1
  */

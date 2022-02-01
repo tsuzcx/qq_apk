@@ -8,17 +8,17 @@ import android.media.MediaCodecList;
 import android.util.Range;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 
 public final class f
 {
-  private static long tzE = 0L;
+  private static long uIb = 0L;
   
-  public static boolean aVK(String paramString)
+  public static boolean alR(String paramString)
   {
-    AppMethodBeat.i(204037);
+    AppMethodBeat.i(191672);
     for (;;)
     {
       int i;
@@ -30,7 +30,7 @@ public final class f
         i = 0;
         if (i < j)
         {
-          if (!bt.isNullOrNil(c(arrayOfMediaCodecInfo[i], paramString))) {
+          if (!bs.isNullOrNil(c(arrayOfMediaCodecInfo[i], paramString))) {
             localArrayList.add(Integer.valueOf(i));
           }
         }
@@ -39,17 +39,17 @@ public final class f
           boolean bool = localArrayList.isEmpty();
           if (bool)
           {
-            AppMethodBeat.o(204037);
+            AppMethodBeat.o(191672);
             return false;
           }
-          AppMethodBeat.o(204037);
+          AppMethodBeat.o(191672);
           return true;
         }
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("MicroMsg.MediaCodecUtil", paramString, "isSupportHevc error", new Object[0]);
-        AppMethodBeat.o(204037);
+        ac.printErrStackTrace("MicroMsg.MediaCodecUtil", paramString, "isSupportHevc error", new Object[0]);
+        AppMethodBeat.o(191672);
         return false;
       }
       i += 1;
@@ -64,7 +64,7 @@ public final class f
     while (i < paramMediaCodecInfo.length)
     {
       String str = paramMediaCodecInfo[i];
-      if ((!bt.isNullOrNil(str)) && (str.contains("hevc")))
+      if ((!bs.isNullOrNil(str)) && (str.contains("hevc")))
       {
         AppMethodBeat.o(133907);
         return str;
@@ -77,25 +77,25 @@ public final class f
   
   private static String c(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(204038);
+    AppMethodBeat.i(191673);
     paramMediaCodecInfo = paramMediaCodecInfo.getSupportedTypes();
     int i = 0;
     while (i < paramMediaCodecInfo.length)
     {
       String str = paramMediaCodecInfo[i];
-      if ((!bt.isNullOrNil(str)) && (str.contains(paramString)))
+      if ((!bs.isNullOrNil(str)) && (str.contains(paramString)))
       {
-        AppMethodBeat.o(204038);
+        AppMethodBeat.o(191673);
         return str;
       }
       i += 1;
     }
-    AppMethodBeat.o(204038);
+    AppMethodBeat.o(191673);
     return "";
   }
   
   @TargetApi(21)
-  public static boolean cPl()
+  public static boolean dcU()
   {
     AppMethodBeat.i(133903);
     for (;;)
@@ -103,7 +103,7 @@ public final class f
       int i;
       try
       {
-        if (d.lf(21))
+        if (d.kZ(21))
         {
           MediaCodecInfo[] arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
           int j = arrayOfMediaCodecInfo.length;
@@ -113,7 +113,7 @@ public final class f
           if (i < j)
           {
             String str = b(arrayOfMediaCodecInfo[i]);
-            if (!bt.isNullOrNil(str))
+            if (!bs.isNullOrNil(str))
             {
               localArrayList1.add(Integer.valueOf(i));
               localArrayList2.add(str);
@@ -139,7 +139,7 @@ public final class f
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.MediaCodecUtil", localException, "isSupportHevc error", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.MediaCodecUtil", localException, "isSupportHevc error", new Object[0]);
         AppMethodBeat.o(133903);
         return false;
       }
@@ -147,10 +147,10 @@ public final class f
     }
   }
   
-  public static boolean cPm()
+  public static boolean dcV()
   {
     AppMethodBeat.i(133904);
-    if (bt.vM(tzE) > 86400000L)
+    if (bs.Ap(uIb) > 86400000L)
     {
       AppMethodBeat.o(133904);
       return true;
@@ -159,21 +159,21 @@ public final class f
     return false;
   }
   
-  public static String cPn()
+  public static String dcW()
   {
     AppMethodBeat.i(133905);
-    ad.d("MicroMsg.MediaCodecUtil", "check hevc info last rpt time[%d]", new Object[] { Long.valueOf(tzE) });
+    ac.d("MicroMsg.MediaCodecUtil", "check hevc info last rpt time[%d]", new Object[] { Long.valueOf(uIb) });
     for (;;)
     {
       int i;
       int i5;
       try
       {
-        tzE = bt.eGO();
-        if (!d.lf(21)) {
+        uIb = bs.eWj();
+        if (!d.kZ(21)) {
           continue;
         }
-        l = bt.GC();
+        l = bs.Gn();
         localObject1 = new MediaCodecList(1).getCodecInfos();
         j = localObject1.length;
         ArrayList localArrayList1 = new ArrayList();
@@ -182,7 +182,7 @@ public final class f
         if (i < j)
         {
           localObject2 = b(localObject1[i]);
-          if (bt.isNullOrNil((String)localObject2)) {
+          if (bs.isNullOrNil((String)localObject2)) {
             break label859;
           }
           localArrayList1.add(Integer.valueOf(i));
@@ -263,7 +263,7 @@ public final class f
         int i3;
         int i4;
         StringBuilder localStringBuilder;
-        ad.printErrStackTrace("MicroMsg.MediaCodecUtil", localException, "report hevc info error %s", new Object[] { localException.toString() });
+        ac.printErrStackTrace("MicroMsg.MediaCodecUtil", localException, "report hevc info error %s", new Object[] { localException.toString() });
         AppMethodBeat.o(133905);
         return "";
         localException.append(1).append(",");
@@ -272,7 +272,7 @@ public final class f
       catch (Throwable localThrowable)
       {
         int i6;
-        ad.printErrStackTrace("MicroMsg.MediaCodecUtil", localThrowable, "report hevc info error %s", new Object[] { localThrowable.toString() });
+        ac.printErrStackTrace("MicroMsg.MediaCodecUtil", localThrowable, "report hevc info error %s", new Object[] { localThrowable.toString() });
         continue;
         if (i6 == 0) {
           continue;
@@ -281,7 +281,7 @@ public final class f
         continue;
         localThrowable.append(1).append(",");
         continue;
-        String str = cPo();
+        String str = dcX();
         AppMethodBeat.o(133905);
         return str;
       }
@@ -295,7 +295,7 @@ public final class f
         ((StringBuilder)localObject1).append(i2).append(",").append(i3).append(",");
         ((StringBuilder)localObject1).append(i4).append(",").append(i);
         localObject1 = ((StringBuilder)localObject1).toString();
-        ad.i("MicroMsg.MediaCodecUtil", "high api 21 cost[%d] hevc info %s", new Object[] { Long.valueOf(bt.aS(l)), localObject1 });
+        ac.i("MicroMsg.MediaCodecUtil", "high api 21 cost[%d] hevc info %s", new Object[] { Long.valueOf(bs.aO(l)), localObject1 });
         AppMethodBeat.o(133905);
         return localObject1;
         if (bool)
@@ -317,10 +317,10 @@ public final class f
     }
   }
   
-  private static String cPo()
+  private static String dcX()
   {
     AppMethodBeat.i(133906);
-    long l = bt.GC();
+    long l = bs.Gn();
     int j = MediaCodecList.getCodecCount();
     Object localObject1 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
@@ -328,7 +328,7 @@ public final class f
     while (i < j)
     {
       localObject2 = b(MediaCodecList.getCodecInfoAt(i));
-      if (!bt.isNullOrNil((String)localObject2))
+      if (!bs.isNullOrNil((String)localObject2))
       {
         ((ArrayList)localObject1).add(Integer.valueOf(i));
         localArrayList.add(localObject2);
@@ -389,7 +389,7 @@ public final class f
       ((StringBuilder)localObject1).append(((StringBuilder)localObject2).toString()).append(",");
       ((StringBuilder)localObject1).append(localStringBuilder.toString());
       localObject1 = ((StringBuilder)localObject1).toString();
-      ad.i("MicroMsg.MediaCodecUtil", "below api 21 cost[%d] hevc info %s", new Object[] { Long.valueOf(bt.aS(l)), localObject1 });
+      ac.i("MicroMsg.MediaCodecUtil", "below api 21 cost[%d] hevc info %s", new Object[] { Long.valueOf(bs.aO(l)), localObject1 });
       AppMethodBeat.o(133906);
       return localObject1;
       if (bool)

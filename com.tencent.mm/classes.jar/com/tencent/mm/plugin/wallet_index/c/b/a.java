@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.wallet_index.c.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bzz;
-import com.tencent.mm.protocal.protobuf.caa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cex;
+import com.tencent.mm.protocal.protobuf.cey;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class a
   extends w
 {
-  public String Axf;
-  public String Axg;
+  public String BPA;
+  public String BPz;
   private g callback;
   private b rr;
   
@@ -25,24 +25,24 @@ public final class a
   {
     AppMethodBeat.i(71849);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bzz();
-    ((b.a)localObject).gUV = new caa();
+    ((b.a)localObject).hvt = new cex();
+    ((b.a)localObject).hvu = new cey();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payugenprepay";
     ((b.a)localObject).funcId = 1521;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (bzz)this.rr.gUS.gUX;
-    ((bzz)localObject).hnC = paramString1;
-    ((bzz)localObject).CXl = paramString4;
-    ((bzz)localObject).CXk = paramString3;
-    ((bzz)localObject).CXm = paramString5;
-    ((bzz)localObject).CXn = paramString2;
-    ((bzz)localObject).CFH = paramString6;
-    ((bzz)localObject).CWf = paramString7;
-    ((bzz)localObject).DoO = paramString8;
-    ((bzz)localObject).Ctl = paramInt;
-    ad.d("MicroMsg.NetScenePayUGenPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8 }));
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cex)this.rr.hvr.hvw;
+    ((cex)localObject).hOf = paramString1;
+    ((cex)localObject).EpU = paramString4;
+    ((cex)localObject).EpT = paramString3;
+    ((cex)localObject).EpV = paramString5;
+    ((cex)localObject).EpW = paramString2;
+    ((cex)localObject).DYh = paramString6;
+    ((cex)localObject).EoO = paramString7;
+    ((cex)localObject).EJO = paramString8;
+    ((cex)localObject).DLC = paramInt;
+    ac.d("MicroMsg.NetScenePayUGenPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8 }));
     AppMethodBeat.o(71849);
   }
   
@@ -63,22 +63,22 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71850);
-    ad.d("MicroMsg.NetScenePayUGenPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    paramString = (caa)((b)paramq).gUT.gUX;
+    ac.d("MicroMsg.NetScenePayUGenPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    paramString = (cey)((b)paramq).hvs.hvw;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetScenePayUGenPrepay", "rr " + paramString.DoP);
-      this.Axf = paramString.DoP;
-      this.Axg = paramString.DoQ;
+      ac.d("MicroMsg.NetScenePayUGenPrepay", "rr " + paramString.EJP);
+      this.BPz = paramString.EJP;
+      this.BPA = paramString.EJQ;
     }
-    paramString = paramString.oXw;
+    paramString = paramString.pAH;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(71850);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.b.a
  * JD-Core Version:    0.7.0.1
  */

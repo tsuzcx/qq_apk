@@ -7,27 +7,27 @@ import android.util.AttributeSet;
 import android.view.ViewPropertyAnimator;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import d.g.b.k;
-import d.g.b.v.c;
+import d.g.b.v.d;
 import d.k.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/VideoTimeView;", "Landroid/widget/TextView;", "Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "disappearRunnable", "Ljava/lang/Runnable;", "value", "duration", "getDuration", "()I", "setDuration", "(I)V", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "runnable", "makeTimeString", "", "d", "onDetachedFromWindow", "", "onVisibility", "isShow", "", "start", "time", "disappearTime", "", "stop", "Companion", "libmmui_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/widget/cropview/VideoTimeView;", "Landroid/widget/TextView;", "Lcom/tencent/mm/ui/widget/cropview/IBorderVisibilityCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "disappearRunnable", "Ljava/lang/Runnable;", "value", "duration", "getDuration", "()I", "setDuration", "(I)V", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "runnable", "makeTimeString", "", "d", "onDetachedFromWindow", "", "onVisibility", "isShow", "", "start", "time", "disappearTime", "", "stop", "Companion", "libmmui_release"})
 public final class VideoTimeView
   extends TextView
   implements b
 {
-  public static final a HEx;
-  private Runnable cvK;
+  public static final VideoTimeView.a JeR;
+  private Runnable csS;
   private int duration;
-  private final ap hbq;
+  private final ao hBR;
   
   static
   {
     AppMethodBeat.i(164495);
-    HEx = new a((byte)0);
+    JeR = new VideoTimeView.a((byte)0);
     AppMethodBeat.o(164495);
   }
   
@@ -35,7 +35,7 @@ public final class VideoTimeView
   {
     super(paramContext);
     AppMethodBeat.i(164492);
-    this.hbq = new ap(Looper.getMainLooper());
+    this.hBR = new ao(Looper.getMainLooper());
     paramContext = getContext();
     k.g(paramContext, "context");
     setTextSize(0, paramContext.getResources().getDimension(2131165257));
@@ -57,7 +57,7 @@ public final class VideoTimeView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164493);
-    this.hbq = new ap(Looper.getMainLooper());
+    this.hBR = new ao(Looper.getMainLooper());
     paramContext = getContext();
     k.g(paramContext, "context");
     setTextSize(0, paramContext.getResources().getDimension(2131165257));
@@ -79,7 +79,7 @@ public final class VideoTimeView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164494);
-    this.hbq = new ap(Looper.getMainLooper());
+    this.hBR = new ao(Looper.getMainLooper());
     paramContext = getContext();
     k.g(paramContext, "context");
     setTextSize(0, paramContext.getResources().getDimension(2131165257));
@@ -97,7 +97,7 @@ public final class VideoTimeView
     AppMethodBeat.o(164494);
   }
   
-  private void aas(final int paramInt)
+  private void acD(final int paramInt)
   {
     AppMethodBeat.i(164487);
     animate().cancel();
@@ -109,15 +109,15 @@ public final class VideoTimeView
       AppMethodBeat.o(164487);
       return;
     }
-    final v.c localc = new v.c();
-    localc.Jhu = paramInt;
-    setText((CharSequence)(rX(localc.Jhu / 60) + ":" + rX(localc.Jhu % 60)));
-    this.cvK = ((Runnable)new b(this, localc, paramInt));
-    postDelayed(this.cvK, 1000L);
+    final v.d locald = new v.d();
+    locald.KUO = paramInt;
+    setText((CharSequence)(sO(locald.KUO / 60) + ":" + sO(locald.KUO % 60)));
+    this.csS = ((Runnable)new b(this, locald, paramInt));
+    postDelayed(this.csS, 1000L);
     AppMethodBeat.o(164487);
   }
   
-  private static String rX(int paramInt)
+  private static String sO(int paramInt)
   {
     AppMethodBeat.i(164490);
     if (paramInt < 10)
@@ -134,7 +134,7 @@ public final class VideoTimeView
   private void stop()
   {
     AppMethodBeat.i(164488);
-    Runnable localRunnable = this.cvK;
+    Runnable localRunnable = this.csS;
     if (localRunnable != null)
     {
       removeCallbacks(localRunnable);
@@ -161,19 +161,19 @@ public final class VideoTimeView
   {
     AppMethodBeat.i(164485);
     this.duration = paramInt;
-    setText((CharSequence)(rX(paramInt / 60) + ":" + rX(paramInt % 60)));
-    ad.i("MicroMsg.VideoTimeView", "[setDuration] value=".concat(String.valueOf(paramInt)));
+    setText((CharSequence)(sO(paramInt / 60) + ":" + sO(paramInt % 60)));
+    ac.i("MicroMsg.VideoTimeView", "[setDuration] value=".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(164485);
   }
   
   public final void start()
   {
     AppMethodBeat.i(164486);
-    aas(this.duration);
+    acD(this.duration);
     AppMethodBeat.o(164486);
   }
   
-  public final void wT(boolean paramBoolean)
+  public final void yb(boolean paramBoolean)
   {
     AppMethodBeat.i(164491);
     if (paramBoolean)
@@ -186,31 +186,28 @@ public final class VideoTimeView
     AppMethodBeat.o(164491);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/widget/cropview/VideoTimeView$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/ui/widget/cropview/VideoTimeView$start$2", "Ljava/lang/Runnable;", "run", "", "libmmui_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/ui/widget/cropview/VideoTimeView$start$2", "Ljava/lang/Runnable;", "run", "", "libmmui_release"})
   public static final class b
     implements Runnable
   {
-    b(v.c paramc, int paramInt) {}
+    b(v.d paramd, int paramInt) {}
     
     public final void run()
     {
       AppMethodBeat.i(164484);
-      localc.Jhu = h.kK(0, localc.Jhu - 1);
-      this.HEy.setText((CharSequence)(VideoTimeView.aat(localc.Jhu / 60) + ":" + VideoTimeView.aat(localc.Jhu % 60)));
-      if (localc.Jhu <= 0) {
-        localc.Jhu = paramInt;
+      locald.KUO = h.la(0, locald.KUO - 1);
+      this.JeS.setText((CharSequence)(VideoTimeView.acE(locald.KUO / 60) + ":" + VideoTimeView.acE(locald.KUO % 60)));
+      if (locald.KUO <= 0) {
+        locald.KUO = paramInt;
       }
-      this.HEy.postDelayed((Runnable)this, 1000L);
+      this.JeS.postDelayed((Runnable)this, 1000L);
       AppMethodBeat.o(164484);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cropview.VideoTimeView
  * JD-Core Version:    0.7.0.1
  */

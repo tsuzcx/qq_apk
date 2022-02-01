@@ -6,87 +6,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class y
 {
-  public static b cJB;
-  protected a cJA;
+  public static b cGI;
+  protected a cGH;
   
-  public abstract boolean IL();
+  public abstract boolean Iu();
   
-  public abstract u IM();
+  public abstract u Iv();
   
-  public void IN() {}
+  public void Iw() {}
   
   public abstract void a(s params);
   
   public void a(a parama)
   {
-    this.cJA = parama;
+    this.cGH = parama;
   }
   
-  public abstract e bf(Context paramContext);
+  public abstract e bg(Context paramContext);
   
   public abstract void onDestroy();
   
   public static final class a
   {
-    public y.c cJC;
-    public boolean cJD;
-    public boolean cJE;
-    public boolean cJF;
+    public y.c cGJ;
+    public boolean cGK;
+    public boolean cGL;
+    public boolean cGM;
     public String path;
     public Rect rect;
     
     public a(String paramString, y.c paramc, boolean paramBoolean1, boolean paramBoolean2, Rect paramRect, boolean paramBoolean3)
     {
-      this.cJC = paramc;
+      this.cGJ = paramc;
       this.path = paramString;
-      this.cJD = paramBoolean1;
-      this.cJE = paramBoolean2;
+      this.cGK = paramBoolean1;
+      this.cGL = paramBoolean2;
       this.rect = paramRect;
-      this.cJF = paramBoolean3;
+      this.cGM = paramBoolean3;
     }
     
     public static final class a
     {
-      public y.c cJC;
-      public boolean cJD;
-      boolean cJF = false;
-      public boolean cJG = true;
-      public Rect cJH;
+      public y.c cGJ;
+      public boolean cGK;
+      boolean cGM = false;
+      public boolean cGN = true;
+      public Rect cGO;
       public String path;
       
-      public final a Kd()
+      public final a JN()
       {
-        this.cJG = false;
+        this.cGN = false;
         return this;
       }
       
-      public final y.a Ke()
+      public final y.a JO()
       {
         AppMethodBeat.i(149428);
-        y.a locala = new y.a(this.path, this.cJC, this.cJD, this.cJG, this.cJH, this.cJF);
+        y.a locala = new y.a(this.path, this.cGJ, this.cGK, this.cGN, this.cGO, this.cGM);
         AppMethodBeat.o(149428);
         return locala;
       }
       
       public final a a(y.c paramc)
       {
-        this.cJC = paramc;
-        return this;
-      }
-      
-      public final a bX(boolean paramBoolean)
-      {
-        this.cJD = paramBoolean;
+        this.cGJ = paramc;
         return this;
       }
       
       public final a bY(boolean paramBoolean)
       {
-        this.cJF = paramBoolean;
+        this.cGK = paramBoolean;
         return this;
       }
       
-      public final a ek(String paramString)
+      public final a bZ(boolean paramBoolean)
+      {
+        this.cGM = paramBoolean;
+        return this;
+      }
+      
+      public final a dZ(String paramString)
       {
         this.path = paramString;
         return this;
@@ -94,7 +94,7 @@ public abstract class y
       
       public final a i(Rect paramRect)
       {
-        this.cJH = paramRect;
+        this.cGO = paramRect;
         return this;
       }
     }
@@ -102,12 +102,26 @@ public abstract class y
   
   public static abstract interface b
   {
-    public abstract y IO();
+    public abstract y Ix();
+  }
+  
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(149431);
+      cGP = new c("VIDEO", 0);
+      cGQ = new c("PHOTO", 1);
+      cGR = new c[] { cGP, cGQ };
+      AppMethodBeat.o(149431);
+    }
+    
+    private c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.y
  * JD-Core Version:    0.7.0.1
  */

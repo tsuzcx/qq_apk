@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.story.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig$StoryNewFeatureConfig;", "", "visitorEnable", "", "(Z)V", "getVisitorEnable", "()Z", "setVisitorEnable", "component1", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryNewFeatureElementConfig$StoryNewFeatureConfig;", "", "visitorEnable", "", "(Z)V", "getVisitorEnable", "()Z", "setVisitorEnable", "component1", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-story_release"})
 public final class e$a
 {
-  boolean ydT = false;
+  boolean zqT = false;
   
   public final boolean equals(Object paramObject)
   {
@@ -15,7 +15,7 @@ public final class e$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if (this.ydT != paramObject.ydT) {}
+        if (this.zqT != paramObject.zqT) {}
       }
     }
     else {
@@ -32,7 +32,7 @@ public final class e$a
   public final String toString()
   {
     AppMethodBeat.i(118606);
-    String str = "StoryNewFeatureConfig(visitorEnable=" + this.ydT + ")";
+    String str = "StoryNewFeatureConfig(visitorEnable=" + this.zqT + ")";
     AppMethodBeat.o(118606);
     return str;
   }

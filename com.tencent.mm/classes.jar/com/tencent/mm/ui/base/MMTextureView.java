@@ -10,17 +10,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 @TargetApi(14)
 public class MMTextureView
   extends TextureView
 {
-  private Object GaA;
-  private Object GaB;
-  private Field Gay;
-  boolean Gaz = false;
+  private Field HAm;
+  boolean HAn = false;
+  private Object HAo;
+  private Object HAp;
   
   public MMTextureView(Context paramContext)
   {
@@ -37,48 +38,57 @@ public class MMTextureView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void eTh()
+  private void fiR()
   {
     AppMethodBeat.i(164151);
     try
     {
-      ad.i("MicroMsg.MMTextureView", "hookInnerDetach");
+      ac.i("MicroMsg.MMTextureView", "hookInnerDetach");
       Field localField = TextureView.class.getDeclaredField("mLayer");
       localField.setAccessible(true);
-      this.GaA = localField.get(this);
+      this.HAo = localField.get(this);
       localField.set(this, null);
       localField = TextureView.class.getDeclaredField("mSurface");
       localField.setAccessible(true);
-      this.GaB = localField.get(this);
+      this.HAp = localField.get(this);
       localField.set(this, null);
       AppMethodBeat.o(164151);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MMTextureView", localException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MMTextureView", localException, "", new Object[0]);
       AppMethodBeat.o(164151);
     }
   }
   
-  private void eTi()
+  private void fiS()
   {
     AppMethodBeat.i(164152);
     try
     {
-      ad.i("MicroMsg.MMTextureView", "unHookInnerDetach");
-      Field localField = TextureView.class.getDeclaredField("mLayer");
-      localField.setAccessible(true);
-      localField.set(this, this.GaA);
-      localField = TextureView.class.getDeclaredField("mSurface");
-      localField.setAccessible(true);
-      localField.set(this, this.GaB);
+      ac.i("MicroMsg.MMTextureView", "unHookInnerDetach");
+      Field localField;
+      if (this.HAo != null)
+      {
+        localField = TextureView.class.getDeclaredField("mLayer");
+        localField.setAccessible(true);
+        localField.set(this, this.HAo);
+        this.HAo = null;
+      }
+      if (this.HAp != null)
+      {
+        localField = TextureView.class.getDeclaredField("mSurface");
+        localField.setAccessible(true);
+        localField.set(this, this.HAp);
+        this.HAp = null;
+      }
       AppMethodBeat.o(164152);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MMTextureView", localException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MMTextureView", localException, "", new Object[0]);
       AppMethodBeat.o(164152);
     }
   }
@@ -87,49 +97,49 @@ public class MMTextureView
   {
     AppMethodBeat.i(164149);
     super.destroyDrawingCache();
-    if (this.Gaz) {
-      eTi();
+    if (this.HAn) {
+      fiS();
     }
     AppMethodBeat.o(164149);
   }
   
-  public final void eTg()
+  public final void fiQ()
   {
     AppMethodBeat.i(142223);
-    if (d.lg(16))
+    if (d.la(16))
     {
-      ad.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ac.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(142223);
       return;
     }
-    if (d.lh(20))
+    if (d.lb(20))
     {
-      ad.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ac.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(142223);
       return;
     }
-    if (ae.fFH.fCS == 2)
+    if (ae.fJo.fGz == 2)
     {
-      ad.i("MicroMsg.MMTextureView", "do not do sly textureView, config ERROR");
+      ac.i("MicroMsg.MMTextureView", "do not do sly textureView, config ERROR");
       AppMethodBeat.o(142223);
       return;
     }
-    ad.i("MicroMsg.MMTextureView", "detect texture problem, sly");
+    ac.i("MicroMsg.MMTextureView", "detect texture problem, sly");
     try
     {
-      if (this.Gay == null)
+      if (this.HAm == null)
       {
-        this.Gay = TextureView.class.getDeclaredField("mSurface");
-        this.Gay.setAccessible(true);
+        this.HAm = TextureView.class.getDeclaredField("mSurface");
+        this.HAm.setAccessible(true);
       }
-      SurfaceTexture localSurfaceTexture = (SurfaceTexture)this.Gay.get(this);
+      SurfaceTexture localSurfaceTexture = (SurfaceTexture)this.HAm.get(this);
       if (localSurfaceTexture != null) {
         if (!(localSurfaceTexture instanceof r))
         {
           r localr = new r();
           localr.mSurfaceTexture = localSurfaceTexture;
-          this.Gay.set(this, localr);
-          ad.i("MicroMsg.MMTextureView", "detect texture problem, wrap");
+          this.HAm.set(this, localr);
+          ac.i("MicroMsg.MMTextureView", "detect texture problem, wrap");
           AppMethodBeat.o(142223);
           return;
         }
@@ -137,41 +147,63 @@ public class MMTextureView
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      ad.printErrStackTrace("MicroMsg.MMTextureView", localNoSuchFieldException, "", new Object[0]);
-      ad.e("MicroMsg.MMTextureView", "detect texture problem, NoSuchFieldException");
+      ac.printErrStackTrace("MicroMsg.MMTextureView", localNoSuchFieldException, "", new Object[0]);
+      ac.e("MicroMsg.MMTextureView", "detect texture problem, NoSuchFieldException");
       AppMethodBeat.o(142223);
       return;
-      ad.i("MicroMsg.MMTextureView", "detect texture problem, wrapped");
+      ac.i("MicroMsg.MMTextureView", "detect texture problem, wrapped");
       AppMethodBeat.o(142223);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      ad.printErrStackTrace("MicroMsg.MMTextureView", localIllegalArgumentException, "", new Object[0]);
-      ad.e("MicroMsg.MMTextureView", "detect texture problem, IllegalArgumentException");
+      ac.printErrStackTrace("MicroMsg.MMTextureView", localIllegalArgumentException, "", new Object[0]);
+      ac.e("MicroMsg.MMTextureView", "detect texture problem, IllegalArgumentException");
       AppMethodBeat.o(142223);
       return;
-      ad.i("MicroMsg.MMTextureView", "detect texture problem, no wrap");
+      ac.i("MicroMsg.MMTextureView", "detect texture problem, no wrap");
       AppMethodBeat.o(142223);
       return;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      ad.printErrStackTrace("MicroMsg.MMTextureView", localIllegalAccessException, "", new Object[0]);
-      ad.e("MicroMsg.MMTextureView", "detect texture problem, IllegalAccessException");
+      ac.printErrStackTrace("MicroMsg.MMTextureView", localIllegalAccessException, "", new Object[0]);
+      ac.e("MicroMsg.MMTextureView", "detect texture problem, IllegalAccessException");
       AppMethodBeat.o(142223);
+    }
+  }
+  
+  public final void fiT()
+  {
+    AppMethodBeat.i(197189);
+    try
+    {
+      setInterceptDetach(false);
+      fiS();
+      Method localMethod = TextureView.class.getMethod("destroyHardwareLayer", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(this, new Object[0]);
+      localMethod = TextureView.class.getMethod("releaseSurfaceTexture", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(this, new Object[0]);
+      AppMethodBeat.o(197189);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(197189);
     }
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(164150);
-    if (this.Gaz) {
-      eTh();
+    if (this.HAn) {
+      fiR();
     }
     super.onAttachedToWindow();
-    if (this.Gaz) {
-      eTi();
+    if (this.HAn) {
+      fiS();
     }
     AppMethodBeat.o(164150);
   }
@@ -180,9 +212,9 @@ public class MMTextureView
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(142222);
-    if (this.Gaz)
+    if (this.HAn)
     {
-      eTh();
+      fiR();
       AppMethodBeat.o(142222);
       return;
     }
@@ -194,14 +226,14 @@ public class MMTextureView
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.MMTextureView", localException, "unkown error", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MMTextureView", localException, "unkown error", new Object[0]);
       AppMethodBeat.o(142222);
     }
   }
   
   public void setInterceptDetach(boolean paramBoolean)
   {
-    this.Gaz = paramBoolean;
+    this.HAn = paramBoolean;
   }
   
   @TargetApi(16)
@@ -209,7 +241,7 @@ public class MMTextureView
   {
     AppMethodBeat.i(142224);
     super.setSurfaceTexture(paramSurfaceTexture);
-    eTg();
+    fiQ();
     AppMethodBeat.o(142224);
   }
 }

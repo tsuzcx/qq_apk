@@ -8,16 +8,16 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<com.google.android.exoplayer2.f.a> bsj;
+  private final List<com.google.android.exoplayer2.f.a> bqi;
   
   public c(List<com.google.android.exoplayer2.f.a> paramList)
   {
     AppMethodBeat.i(92888);
-    this.bsj = Collections.unmodifiableList(paramList);
+    this.bqi = Collections.unmodifiableList(paramList);
     AppMethodBeat.o(92888);
   }
   
-  public final int am(long paramLong)
+  public final int ai(long paramLong)
   {
     if (paramLong < 0L) {
       return 0;
@@ -25,12 +25,12 @@ final class c
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> aj(long paramLong)
   {
     AppMethodBeat.i(92890);
     if (paramLong >= 0L)
     {
-      localList = this.bsj;
+      localList = this.bqi;
       AppMethodBeat.o(92890);
       return localList;
     }
@@ -39,7 +39,7 @@ final class c
     return localList;
   }
   
-  public final long eR(int paramInt)
+  public final long eE(int paramInt)
   {
     AppMethodBeat.i(92889);
     if (paramInt == 0) {}
@@ -51,7 +51,7 @@ final class c
     }
   }
   
-  public final int uB()
+  public final int uw()
   {
     return 1;
   }

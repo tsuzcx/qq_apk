@@ -10,7 +10,7 @@ public abstract class a<T>
 {
   private Map<String, c> map = new HashMap();
   
-  private c Fr(String paramString)
+  private c Jv(String paramString)
   {
     c localc2 = (c)this.map.get(paramString);
     c localc1 = localc2;
@@ -22,17 +22,17 @@ public abstract class a<T>
     return localc1;
   }
   
-  public final <T extends BaseDrawActionArg> T Fq(String paramString)
+  public final <T extends BaseDrawActionArg> T Ju(String paramString)
   {
-    BaseDrawActionArg localBaseDrawActionArg2 = (BaseDrawActionArg)Fr(paramString).acquire();
+    BaseDrawActionArg localBaseDrawActionArg2 = (BaseDrawActionArg)Jv(paramString).acquire();
     BaseDrawActionArg localBaseDrawActionArg1 = localBaseDrawActionArg2;
     if (localBaseDrawActionArg2 == null) {
-      localBaseDrawActionArg1 = (BaseDrawActionArg)Fs(paramString);
+      localBaseDrawActionArg1 = (BaseDrawActionArg)Jw(paramString);
     }
     return localBaseDrawActionArg1;
   }
   
-  public abstract <T> T Fs(String paramString);
+  public abstract <T> T Jw(String paramString);
   
   public final void a(BaseDrawActionArg paramBaseDrawActionArg)
   {
@@ -42,12 +42,12 @@ public abstract class a<T>
     if (TextUtils.isEmpty(paramBaseDrawActionArg.method)) {
       throw new IllegalStateException("method is empty " + paramBaseDrawActionArg.toString());
     }
-    Fr(paramBaseDrawActionArg.method).release(paramBaseDrawActionArg);
+    Jv(paramBaseDrawActionArg.method).release(paramBaseDrawActionArg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,594 +1,600 @@
 package com.tencent.mm.cd;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.content.res.Resources.Theme;
+import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import android.util.SparseIntArray;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.expt.e.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public final class a
 {
-  private static a EMk;
-  private static final SparseIntArray EMl;
-  private static boolean EMm;
-  private static boolean EMn;
-  private static float density;
-  private static float scale;
+  private static boolean GjB;
+  public static String GjC;
+  public static String GjD;
+  public static String GjE;
+  public static String GjF;
+  public static String GjG;
+  public static String GjH;
+  static float GjI;
+  private static boolean GjJ;
+  static a GjK;
+  private static Boolean GjL;
+  private static Boolean GjM;
+  private static Boolean GjN;
+  private static boolean GjQ;
+  private static boolean GjR;
+  static int oPa;
+  DisplayMetrics GjA;
+  private Method GjO;
+  private Field GjP;
+  DisplayMetrics aHC;
   
   static
   {
-    AppMethodBeat.i(125178);
-    EMk = null;
-    density = -1.0F;
-    EMl = new SparseIntArray();
-    scale = 0.0F;
-    EMm = false;
-    EMn = true;
-    AppMethodBeat.o(125178);
+    AppMethodBeat.i(141210);
+    GjB = true;
+    GjC = "screenResolution_density_dpi";
+    GjD = "screenResolution_density_dpi_new";
+    GjE = "screenResolution_density_report_new";
+    GjF = "screenResolution_density_report_pad";
+    GjG = "screenResolution_target_field";
+    GjH = "screenResolution_isModifyDensity";
+    GjI = 1.0F;
+    GjJ = false;
+    oPa = 0;
+    GjL = null;
+    GjM = null;
+    GjN = null;
+    GjQ = false;
+    GjR = false;
+    if (Build.BRAND != null)
+    {
+      String str = Build.BRAND.toLowerCase();
+      if (((str.contains("huawei")) || (str.contains("honor"))) && (Build.VERSION.SDK_INT == 24)) {
+        GjR = true;
+      }
+    }
+    AppMethodBeat.o(141210);
   }
   
-  private static boolean ad(float paramFloat1, float paramFloat2)
+  public a(DisplayMetrics paramDisplayMetrics)
   {
-    AppMethodBeat.i(125177);
-    if (Math.abs(paramFloat1 - paramFloat2) <= 1.E-005D)
+    AppMethodBeat.i(141187);
+    this.GjO = null;
+    this.GjP = null;
+    this.GjA = paramDisplayMetrics;
+    Object localObject = Build.BRAND;
+    if (!bs.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(125177);
-      return true;
+      localObject = ((String)localObject).toLowerCase();
+      if (((((String)localObject).contains("huawei")) || (((String)localObject).contains("honor"))) && (paramDisplayMetrics != null) && (Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels) == 720) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27)))
+      {
+        ac.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial 720!!");
+        bool = true;
+        GjJ = bool;
+        oPa = aj.getDeviceWidth();
+        if (!ai.ciE()) {
+          break label270;
+        }
+        GjB = eSp();
+        localObject = new IntentFilter();
+        ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
+        ai.getContext().registerReceiver(new BroadcastReceiver()
+        {
+          public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+          {
+            AppMethodBeat.i(141186);
+            if (paramAnonymousIntent.getAction().equalsIgnoreCase("android.intent.action.SCREEN_OFF"))
+            {
+              if (a.eSy())
+              {
+                AppMethodBeat.o(141186);
+                return;
+              }
+              if (a.eSz())
+              {
+                a.eSA();
+                AppMethodBeat.o(141186);
+                return;
+              }
+              if ((a.eSB()) && (a.eSm()))
+              {
+                ac.i("MicroMsg.MMDensityManager", "killSelfAndCallUp ");
+                a.eSA();
+              }
+            }
+            AppMethodBeat.o(141186);
+          }
+        }, (IntentFilter)localObject);
+      }
     }
-    AppMethodBeat.o(125177);
+    label270:
+    do
+    {
+      localObject = ai.getContext().getSharedPreferences(ai.eUX(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean(GjH, eSv());
+      ((SharedPreferences.Editor)localObject).commit();
+      if (!eSv()) {
+        break label340;
+      }
+      this.aHC = c(paramDisplayMetrics);
+      paramDisplayMetrics.setTo(this.aHC);
+      if (Build.VERSION.SDK_INT >= 21) {
+        ai.getContext().getTheme().getResources().getDisplayMetrics().setTo(this.aHC);
+      }
+      ac.i("MicroMsg.MMDensityManager", " Target DisplayMetrics[%s]", new Object[] { this.aHC });
+      AppMethodBeat.o(141187);
+      return;
+      bool = false;
+      break;
+      if (ai.isAppBrandProcess())
+      {
+        if ((eSp()) && (eSq())) {}
+        for (bool = true;; bool = false)
+        {
+          GjB = bool;
+          break;
+        }
+      }
+    } while ((!ai.eVd()) && (!ai.eVe()));
+    if ((eSp()) && (eSr())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      GjB = bool;
+      break;
+    }
+    label340:
+    GjI = 400.0F / (Math.min(this.GjA.widthPixels, paramDisplayMetrics.heightPixels) / this.GjA.density);
+    this.aHC = this.GjA;
+    AppMethodBeat.o(141187);
+  }
+  
+  public static void Ya(int paramInt)
+  {
+    AppMethodBeat.i(141204);
+    aw.aKT(ai.eUX()).putInt(GjG, paramInt);
+    AppMethodBeat.o(141204);
+  }
+  
+  public static void a(a parama)
+  {
+    GjK = parama;
+  }
+  
+  public static DisplayMetrics c(DisplayMetrics paramDisplayMetrics)
+  {
+    AppMethodBeat.i(141188);
+    float f1 = eSx();
+    int i;
+    float f3;
+    label105:
+    float f2;
+    if (aj.fhz())
+    {
+      f1 = 750.0F;
+      i = Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels);
+      f3 = i / f1;
+      ac.i("MicroMsg.MMDensityManager", "applyScreenAdaptiveDensity originWidth:%s, originheight:%s, targetField:%s", new Object[] { Integer.valueOf(paramDisplayMetrics.widthPixels), Integer.valueOf(paramDisplayMetrics.heightPixels), Float.valueOf(f1) });
+      if ((aj.fhC() == 0) || (oPa == 0)) {
+        break label354;
+      }
+      if (i == 0) {
+        break label349;
+      }
+      f1 = oPa / i;
+      if (aj.fhD() == aj.fhC()) {
+        break label344;
+      }
+      f2 = f1 * (aj.fhD() / aj.fhC());
+      label126:
+      f1 = f2;
+      if (f2 < 0.95F) {
+        f1 = 0.95F;
+      }
+      if ((!aj.fhz()) && (!aj.fhA())) {
+        break label327;
+      }
+      f2 = f1;
+      if (f1 > 1.5F) {
+        f2 = 1.5F;
+      }
+      label166:
+      GjI *= f2;
+      f1 = f3 * f2;
+      ac.i("MicroMsg.MMDensityManager", "scale targetDensity:%s , DeviceDpi:%s, WindowDpi:%s, DeviceWidth:%s, DisplayWidth:%s, dpiScale:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(aj.fhC()), Integer.valueOf(aj.fhD()), Integer.valueOf(oPa), Integer.valueOf(i), Float.valueOf(f2) });
+    }
+    for (;;)
+    {
+      f2 = paramDisplayMetrics.scaledDensity / paramDisplayMetrics.density;
+      i = (int)(160.0F * f1);
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      localDisplayMetrics.setTo(paramDisplayMetrics);
+      localDisplayMetrics.scaledDensity = (f2 * f1);
+      localDisplayMetrics.densityDpi = i;
+      localDisplayMetrics.density = f1;
+      AppMethodBeat.o(141188);
+      return localDisplayMetrics;
+      if (aj.fhA())
+      {
+        f1 = 600.0F;
+        break;
+      }
+      GjI = 400.0F / f1;
+      break;
+      label327:
+      f2 = f1;
+      if (f1 <= 1.2F) {
+        break label166;
+      }
+      f2 = 1.2F;
+      break label166;
+      label344:
+      f2 = 1.0F;
+      break label126;
+      label349:
+      f1 = 1.0F;
+      break label105;
+      label354:
+      f1 = f3;
+    }
+  }
+  
+  static String d(DisplayMetrics paramDisplayMetrics)
+  {
+    AppMethodBeat.i(141200);
+    paramDisplayMetrics = String.format("scaledDensity:%s densityDpi:%s density:%s", new Object[] { Float.valueOf(paramDisplayMetrics.scaledDensity), Integer.valueOf(paramDisplayMetrics.densityDpi), Float.valueOf(paramDisplayMetrics.density) });
+    AppMethodBeat.o(141200);
+    return paramDisplayMetrics;
+  }
+  
+  private static void d(Field paramField)
+  {
+    AppMethodBeat.i(141201);
+    if (GjQ)
+    {
+      AppMethodBeat.o(141201);
+      return;
+    }
+    try
+    {
+      paramField.setAccessible(true);
+      Field localField = Field.class.getDeclaredField("accessFlags");
+      localField.setAccessible(true);
+      localField.setInt(paramField, paramField.getModifiers() & 0xFFFFFFEF);
+      AppMethodBeat.o(141201);
+      return;
+    }
+    catch (Exception paramField)
+    {
+      ac.printErrStackTrace("MicroMsg.MMDensityManager", paramField, "", new Object[0]);
+      GjQ = true;
+      AppMethodBeat.o(141201);
+    }
+  }
+  
+  public static float eSl()
+  {
+    return GjI;
+  }
+  
+  public static boolean eSm()
+  {
+    AppMethodBeat.i(141189);
+    try
+    {
+      int i = bs.getInt(b.cmk().b("clicfg_android_density_check_kill_enable", "1", false, true), 1);
+      if (i > 0)
+      {
+        AppMethodBeat.o(141189);
+        return true;
+      }
+      AppMethodBeat.o(141189);
+      return false;
+    }
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenKillSelf", new Object[0]);
+      AppMethodBeat.o(141189);
+    }
     return false;
   }
   
-  public static int ao(Context paramContext, int paramInt)
+  private static boolean eSn()
   {
-    float f1 = 1.4F;
-    AppMethodBeat.i(125149);
-    float f2 = dT(paramContext);
-    if (f2 > 1.4F) {}
+    AppMethodBeat.i(141190);
+    if (GjL == null) {}
+    try
+    {
+      if (bs.getInt(b.cmk().b("clicfg_screen_adaptive_huawei_four", "0", false, true), 1) > 0) {
+        ac.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecialAll!!");
+      }
+      for (GjL = Boolean.TRUE;; GjL = Boolean.FALSE)
+      {
+        boolean bool = GjL.booleanValue();
+        AppMethodBeat.o(141190);
+        return bool;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecialAll", new Object[0]);
+        GjL = Boolean.FALSE;
+      }
+    }
+  }
+  
+  private static boolean eSo()
+  {
+    AppMethodBeat.i(141191);
+    if (GjM == null) {}
+    try
+    {
+      if (bs.getInt(b.cmk().b("clicfg_screen_adaptive_huawei_three", "1", false, true), 1) > 0) {
+        ac.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecial360!!");
+      }
+      for (GjM = Boolean.TRUE;; GjM = Boolean.FALSE)
+      {
+        boolean bool = GjM.booleanValue();
+        AppMethodBeat.o(141191);
+        return bool;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecial360", new Object[0]);
+        GjM = Boolean.FALSE;
+      }
+    }
+  }
+  
+  public static boolean eSp()
+  {
+    AppMethodBeat.i(141192);
+    try
+    {
+      int i = bs.getInt(b.cmk().b("clicfg_screen_adaptive", "1", false, true), 1);
+      if (i > 0)
+      {
+        AppMethodBeat.o(141192);
+        return true;
+      }
+      AppMethodBeat.o(141192);
+      return false;
+    }
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForMM", new Object[0]);
+      AppMethodBeat.o(141192);
+      return false;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      label46:
+      break label46;
+    }
+  }
+  
+  private static boolean eSq()
+  {
+    AppMethodBeat.i(141193);
     for (;;)
     {
-      paramInt = (int)(f1 * ap(paramContext, paramInt));
-      AppMethodBeat.o(125149);
-      return paramInt;
-      f1 = f2;
-    }
-  }
-  
-  public static int ap(Context arg0, int paramInt)
-  {
-    AppMethodBeat.i(125150);
-    if (??? == null)
-    {
-      ad.e("MicroMsg.ResourceHelper", "get dimension pixel size, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(125150);
-      return 0;
-    }
-    int i;
-    synchronized (EMl)
-    {
-      int j = EMl.get(paramInt, 0);
-      i = j;
-      if (j <= 0)
+      try
       {
-        if (EMk != null) {
-          break label109;
+        com.tencent.mm.k.a locala = com.tencent.mm.k.a.a.Xe();
+        if (locala != null)
+        {
+          bool = locala.Kq();
+          int i;
+          if (bs.getInt(b.cmk().b("clicfg_screen_adaptive_appbrand", "1", false, true), 1) > 0)
+          {
+            i = 1;
+            if ((i != 0) && (bool))
+            {
+              AppMethodBeat.o(141193);
+              return true;
+            }
+          }
+          else
+          {
+            i = 0;
+            continue;
+          }
+          AppMethodBeat.o(141193);
+          return false;
         }
-        i = ???.getResources().getDimensionPixelSize(paramInt);
       }
-    }
-    synchronized (EMl)
-    {
-      EMl.put(paramInt, i);
-      AppMethodBeat.o(125150);
-      return i;
-      ??? = finally;
-      AppMethodBeat.o(125150);
-      throw ???;
-      label109:
-      i = EMk.eCP();
-    }
-  }
-  
-  public static String aq(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125151);
-    if (EMk == null)
-    {
-      if (paramContext == null)
+      catch (Exception localException)
       {
-        ad.e("MicroMsg.ResourceHelper", "get string, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125151);
-        return "";
+        ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForAppBrand", new Object[0]);
+        AppMethodBeat.o(141193);
+        return false;
       }
-      paramContext = paramContext.getResources().getString(paramInt);
-      AppMethodBeat.o(125151);
-      return paramContext;
+      boolean bool = false;
     }
-    paramContext = EMk.eCQ();
-    AppMethodBeat.o(125151);
-    return paramContext;
   }
   
-  public static int ar(Context paramContext, int paramInt)
+  private static boolean eSr()
   {
-    AppMethodBeat.i(125155);
-    paramInt = Math.round(paramInt / getDensity(paramContext));
-    AppMethodBeat.o(125155);
-    return paramInt;
-  }
-  
-  public static float dT(Context paramContext)
-  {
-    AppMethodBeat.i(125164);
-    if (scale == 0.0F) {
-      if (paramContext != null) {
-        break label89;
-      }
-    }
-    label89:
-    for (scale = 1.0F;; scale = paramContext.getSharedPreferences(aj.eFD(), 0).getFloat("text_size_scale_key", 1.0F))
+    AppMethodBeat.i(141194);
+    try
     {
-      if (!EMm)
+      int i = bs.getInt(b.cmk().b("clicfg_screen_adaptive_tool", "1", false, true), 1);
+      if (i > 0)
       {
-        EMn = paramContext.getSharedPreferences(aj.eFD(), 0).getBoolean("screenResolution_isModifyDensity", true);
-        EMm = true;
+        AppMethodBeat.o(141194);
+        return true;
       }
-      if ((EMn) && ((scale == 1.1F) || (scale == 0.8F))) {
-        scale = 1.0F;
-      }
-      float f = scale;
-      AppMethodBeat.o(125164);
-      return f;
+      AppMethodBeat.o(141194);
+      return false;
     }
-  }
-  
-  public static int fromDPToPix(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125154);
-    paramInt = Math.round(getDensity(paramContext) * paramInt);
-    AppMethodBeat.o(125154);
-    return paramInt;
-  }
-  
-  public static int g(Context paramContext, float paramFloat)
-  {
-    AppMethodBeat.i(125153);
-    int i = Math.round(getDensity(paramContext) * paramFloat);
-    AppMethodBeat.o(125153);
-    return i;
-  }
-  
-  public static float getDensity(Context paramContext)
-  {
-    AppMethodBeat.i(125152);
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = aj.getContext();
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForTool", new Object[0]);
+      AppMethodBeat.o(141194);
     }
-    float f = localContext.getResources().getDisplayMetrics().density;
-    density = f;
-    AppMethodBeat.o(125152);
+    return false;
+  }
+  
+  public static float eSs()
+  {
+    AppMethodBeat.i(141196);
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+    float f = localDisplayMetrics.density;
+    AppMethodBeat.o(141196);
     return f;
   }
   
-  public static void h(Context paramContext, float paramFloat)
+  static boolean eSu()
   {
-    AppMethodBeat.i(125171);
-    paramContext = paramContext.getSharedPreferences(aj.eFD(), 0).edit();
-    paramContext.putFloat("text_size_scale_key", paramFloat);
-    paramContext.commit();
-    scale = paramFloat;
-    AppMethodBeat.o(125171);
-  }
-  
-  public static float hE(Context paramContext)
-  {
-    AppMethodBeat.i(125156);
-    if (hN(paramContext))
+    AppMethodBeat.i(141199);
+    if ((com.tencent.mm.cc.a.hX(ai.getContext()) == 0.8F) && (eSx() != 440))
     {
-      AppMethodBeat.o(125156);
-      return 0.8F;
-    }
-    AppMethodBeat.o(125156);
-    return 0.875F;
-  }
-  
-  public static float hF(Context paramContext)
-  {
-    AppMethodBeat.i(125157);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125157);
-      return 1.0F;
-    }
-    AppMethodBeat.o(125157);
-    return 1.0F;
-  }
-  
-  public static float hG(Context paramContext)
-  {
-    AppMethodBeat.i(125158);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125158);
-      return 1.1F;
-    }
-    AppMethodBeat.o(125158);
-    return 1.11F;
-  }
-  
-  public static float hH(Context paramContext)
-  {
-    AppMethodBeat.i(125159);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125159);
-      return 1.12F;
-    }
-    AppMethodBeat.o(125159);
-    return 1.25F;
-  }
-  
-  public static float hI(Context paramContext)
-  {
-    AppMethodBeat.i(125160);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125160);
-      return 1.125F;
-    }
-    AppMethodBeat.o(125160);
-    return 1.375F;
-  }
-  
-  public static float hJ(Context paramContext)
-  {
-    AppMethodBeat.i(125161);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125161);
-      return 1.4F;
-    }
-    AppMethodBeat.o(125161);
-    return 1.625F;
-  }
-  
-  public static float hK(Context paramContext)
-  {
-    AppMethodBeat.i(125162);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125162);
-      return 1.55F;
-    }
-    AppMethodBeat.o(125162);
-    return 1.875F;
-  }
-  
-  public static float hL(Context paramContext)
-  {
-    AppMethodBeat.i(125163);
-    if (hN(paramContext))
-    {
-      AppMethodBeat.o(125163);
-      return 1.65F;
-    }
-    AppMethodBeat.o(125163);
-    return 2.025F;
-  }
-  
-  public static float hM(Context paramContext)
-  {
-    float f = 1.0F;
-    AppMethodBeat.i(125165);
-    if (paramContext == null) {}
-    for (;;)
-    {
-      AppMethodBeat.o(125165);
-      return f;
-      f = paramContext.getSharedPreferences(aj.eFD(), 0).getFloat("text_size_scale_key", 1.0F);
-    }
-  }
-  
-  public static boolean hN(Context paramContext)
-  {
-    AppMethodBeat.i(125166);
-    if ((paramContext != null) && (!EMm))
-    {
-      EMn = paramContext.getSharedPreferences(aj.eFD(), 0).getBoolean("screenResolution_isModifyDensity", true);
-      EMm = true;
-    }
-    boolean bool = EMn;
-    AppMethodBeat.o(125166);
-    return bool;
-  }
-  
-  public static int hO(Context paramContext)
-  {
-    AppMethodBeat.i(125167);
-    float f = hM(paramContext);
-    if (f == hE(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 1;
-    }
-    if (f == hF(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 2;
-    }
-    if (f == hG(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 3;
-    }
-    if (f == hH(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 4;
-    }
-    if (f == hI(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 5;
-    }
-    if (f == hJ(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 6;
-    }
-    if (f == hK(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 7;
-    }
-    if (f == hL(paramContext))
-    {
-      AppMethodBeat.o(125167);
-      return 8;
-    }
-    AppMethodBeat.o(125167);
-    return 2;
-  }
-  
-  public static int hP(Context paramContext)
-  {
-    AppMethodBeat.i(125168);
-    float f = hM(paramContext);
-    if (f == 0.875F)
-    {
-      AppMethodBeat.o(125168);
-      return 0;
-    }
-    if (f == 1.0F)
-    {
-      AppMethodBeat.o(125168);
-      return 1;
-    }
-    if (f == 1.11F)
-    {
-      AppMethodBeat.o(125168);
-      return 2;
-    }
-    if (f == 1.25F)
-    {
-      AppMethodBeat.o(125168);
-      return 3;
-    }
-    if (f == 1.375F)
-    {
-      AppMethodBeat.o(125168);
-      return 4;
-    }
-    if ((f == 1.625F) || (ad(f, 1.3F)))
-    {
-      AppMethodBeat.o(125168);
-      return 5;
-    }
-    if ((f == 1.875F) || (ad(f, 1.38F)))
-    {
-      AppMethodBeat.o(125168);
-      return 6;
-    }
-    if ((f == 2.025F) || (ad(f, 1.565F)))
-    {
-      AppMethodBeat.o(125168);
-      return 7;
-    }
-    AppMethodBeat.o(125168);
-    return 1;
-  }
-  
-  public static float hQ(Context paramContext)
-  {
-    AppMethodBeat.i(125169);
-    float f = 1.0F;
-    if (hT(paramContext)) {
-      if (!hN(paramContext)) {
-        break label34;
-      }
-    }
-    label34:
-    for (f = 1.2F;; f = 1.1F)
-    {
-      AppMethodBeat.o(125169);
-      return f;
-    }
-  }
-  
-  public static float hR(Context paramContext)
-  {
-    AppMethodBeat.i(125170);
-    float f2 = 1.0F;
-    float f1 = f2;
-    if (!hN(paramContext))
-    {
-      f1 = f2;
-      if (hT(paramContext)) {
-        f1 = 1.1F;
-      }
-    }
-    AppMethodBeat.o(125170);
-    return f1;
-  }
-  
-  public static boolean hS(Context paramContext)
-  {
-    AppMethodBeat.i(125172);
-    float f = dT(paramContext);
-    scale = f;
-    if (Float.compare(f, hG(paramContext)) > 0)
-    {
-      AppMethodBeat.o(125172);
+      AppMethodBeat.o(141199);
       return true;
     }
-    AppMethodBeat.o(125172);
+    AppMethodBeat.o(141199);
     return false;
   }
   
-  public static boolean hT(Context paramContext)
+  public static boolean eSv()
   {
-    AppMethodBeat.i(125173);
-    float f = dT(paramContext);
-    scale = f;
-    if (Float.compare(f, hH(paramContext)) > 0)
+    AppMethodBeat.i(141202);
+    if ((GjB) && (!eSw()))
     {
-      AppMethodBeat.o(125173);
+      AppMethodBeat.o(141202);
       return true;
     }
-    AppMethodBeat.o(125173);
+    AppMethodBeat.o(141202);
     return false;
   }
   
-  public static boolean hU(Context paramContext)
+  public static boolean eSw()
   {
-    AppMethodBeat.i(125174);
-    float f = dT(paramContext);
-    scale = f;
-    if (f == hE(paramContext))
+    AppMethodBeat.i(141203);
+    String str = Build.BRAND;
+    if (!bs.isNullOrNil(str))
     {
-      AppMethodBeat.o(125174);
-      return true;
+      if (GjR)
+      {
+        AppMethodBeat.o(141203);
+        return true;
+      }
+      if ((eSn()) && (aj.DU()))
+      {
+        ac.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial all!!");
+        AppMethodBeat.o(141203);
+        return true;
+      }
+      if ((eSo()) && (GjJ))
+      {
+        AppMethodBeat.o(141203);
+        return true;
+      }
+      if ((str.contains("samsung")) && (Build.VERSION.SDK_INT == 23))
+      {
+        AppMethodBeat.o(141203);
+        return true;
+      }
     }
-    AppMethodBeat.o(125174);
+    AppMethodBeat.o(141203);
     return false;
   }
   
-  public static int hV(Context paramContext)
+  public static int eSx()
   {
-    AppMethodBeat.i(125175);
-    if (EMk == null)
-    {
-      if (paramContext == null)
-      {
-        ad.e("MicroMsg.ResourceHelper", "get widthPixels but context is null");
-        AppMethodBeat.o(125175);
-        return 0;
-      }
-      int i = paramContext.getResources().getDisplayMetrics().widthPixels;
-      AppMethodBeat.o(125175);
-      return i;
-    }
-    AppMethodBeat.o(125175);
-    return 0;
+    AppMethodBeat.i(141205);
+    int i = aw.aKT(ai.eUX()).getInt(GjG, 400);
+    AppMethodBeat.o(141205);
+    return i;
   }
   
-  public static int hW(Context paramContext)
+  final void eSt()
   {
-    AppMethodBeat.i(125176);
-    if (EMk == null)
+    AppMethodBeat.i(141198);
+    try
     {
-      if (paramContext == null)
+      DisplayMetrics localDisplayMetrics = getDisplayMetrics();
+      if (this.GjO == null)
       {
-        ad.e("MicroMsg.ResourceHelper", "get heightPixels but context is null");
-        AppMethodBeat.o(125176);
-        return 0;
+        Method localMethod = Bitmap.class.getDeclaredMethod("setDefaultDensity", new Class[] { Integer.TYPE });
+        localMethod.setAccessible(true);
+        this.GjO = localMethod;
       }
-      int i = paramContext.getResources().getDisplayMetrics().heightPixels;
-      AppMethodBeat.o(125176);
-      return i;
+      this.GjO.invoke(null, new Object[] { Integer.valueOf(localDisplayMetrics.densityDpi) });
+      if (this.GjP == null)
+      {
+        this.GjP = DisplayMetrics.class.getDeclaredField("DENSITY_DEVICE");
+        d(this.GjP);
+      }
+      this.GjP.setInt(null, localDisplayMetrics.densityDpi);
+      AppMethodBeat.o(141198);
+      return;
     }
-    AppMethodBeat.o(125176);
-    return 0;
+    catch (Exception localException)
+    {
+      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "", new Object[0]);
+      AppMethodBeat.o(141198);
+    }
   }
   
-  public static Drawable l(Context paramContext, int paramInt)
+  public final Configuration g(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(125148);
-    if (EMk == null)
+    AppMethodBeat.i(141197);
+    if (eSv())
     {
-      if (paramContext == null)
-      {
-        ad.e("MicroMsg.ResourceHelper", "get drawable, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125148);
-        return null;
-      }
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      AppMethodBeat.o(125148);
-      return paramContext;
+      paramConfiguration = new Configuration(paramConfiguration);
+      paramConfiguration.densityDpi = getDisplayMetrics().densityDpi;
+      eSt();
+      AppMethodBeat.o(141197);
+      return paramConfiguration;
     }
-    paramContext = EMk.eCO();
-    AppMethodBeat.o(125148);
-    return paramContext;
+    AppMethodBeat.o(141197);
+    return paramConfiguration;
   }
   
-  public static ColorStateList m(Context paramContext, int paramInt)
+  public final DisplayMetrics getDisplayMetrics()
   {
-    AppMethodBeat.i(125147);
-    if (EMk == null)
+    AppMethodBeat.i(141195);
+    if (eSv())
     {
-      if (paramContext == null)
-      {
-        ad.e("MicroMsg.ResourceHelper", "get color state list, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125147);
-        return null;
-      }
-      paramContext = paramContext.getResources().getColorStateList(paramInt);
-      AppMethodBeat.o(125147);
-      return paramContext;
+      localDisplayMetrics = new DisplayMetrics();
+      localDisplayMetrics.setTo(this.aHC);
+      AppMethodBeat.o(141195);
+      return localDisplayMetrics;
     }
-    paramContext = EMk.eCN();
-    AppMethodBeat.o(125147);
-    return paramContext;
-  }
-  
-  public static int n(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125146);
-    if (EMk == null)
-    {
-      if (paramContext == null)
-      {
-        ad.e("MicroMsg.ResourceHelper", "get color, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125146);
-        return 0;
-      }
-      paramInt = paramContext.getResources().getColor(paramInt);
-      AppMethodBeat.o(125146);
-      return paramInt;
-    }
-    paramInt = EMk.eCM();
-    AppMethodBeat.o(125146);
-    return paramInt;
+    DisplayMetrics localDisplayMetrics = this.GjA;
+    AppMethodBeat.o(141195);
+    return localDisplayMetrics;
   }
   
   public static abstract interface a
   {
-    public abstract int eCM();
-    
-    public abstract ColorStateList eCN();
-    
-    public abstract Drawable eCO();
-    
-    public abstract int eCP();
-    
-    public abstract String eCQ();
+    public abstract void Kx();
   }
 }
 

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.luckymoney.b.a;
@@ -16,33 +16,33 @@ import com.tencent.mm.plugin.luckymoney.model.ai;
 import com.tencent.mm.plugin.luckymoney.model.j;
 import com.tencent.mm.plugin.luckymoney.model.k;
 import com.tencent.mm.plugin.walletlock.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.ui.s.b;
 
 public class LuckyMoneyIndexUI
   extends LuckyMoneyBaseUI
 {
   private int mChannel;
-  private LinearLayout tmp;
-  private LinearLayout tmq;
-  private LinearLayout tmr;
+  private LinearLayout uuI;
+  private LinearLayout uuJ;
+  private LinearLayout uuK;
   
-  private void cMv()
+  private void dab()
   {
     AppMethodBeat.i(65606);
-    a.cKP();
-    j localj = a.cKQ().cLt();
+    a.cYv();
+    j localj = a.cYw().cYZ();
     if (localj == null)
     {
       AppMethodBeat.o(65606);
       return;
     }
     ImageView localImageView = (ImageView)findViewById(2131301834);
-    if ((localj.tdb & 0x1) == 1)
+    if ((localj.ulq & 0x1) == 1)
     {
-      ad.i("MicroMsg.LuckyMoneyIndexUI", "initView: topBg use money bg");
+      ac.i("MicroMsg.LuckyMoneyIndexUI", "initView: topBg use money bg");
       localImageView.setImageResource(2131233038);
       AppMethodBeat.o(65606);
       return;
@@ -61,13 +61,13 @@ public class LuckyMoneyIndexUI
     AppMethodBeat.i(65605);
     setMMTitle(2131760973);
     setBackBtn(new LuckyMoneyIndexUI.1(this));
-    this.tmp = ((LinearLayout)findViewById(2131301833));
-    this.tmq = ((LinearLayout)findViewById(2131301831));
-    this.tmr = ((LinearLayout)findViewById(2131301828));
+    this.uuI = ((LinearLayout)findViewById(2131301833));
+    this.uuJ = ((LinearLayout)findViewById(2131301831));
+    this.uuK = ((LinearLayout)findViewById(2131301828));
     ((Button)findViewById(2131301832)).setOnClickListener(new LuckyMoneyIndexUI.2(this));
     ((Button)findViewById(2131301830)).setOnClickListener(new LuckyMoneyIndexUI.3(this));
-    addTextOptionMenu(0, getString(2131760892), new LuckyMoneyIndexUI.4(this), null, r.b.FOI);
-    cMv();
+    addTextOptionMenu(0, getString(2131760892), new LuckyMoneyIndexUI.4(this), null, s.b.Hot);
+    dab();
     AppMethodBeat.o(65605);
   }
   
@@ -77,9 +77,9 @@ public class LuckyMoneyIndexUI
     super.onCreate(paramBundle);
     ((b)g.ab(b.class)).a(this, null);
     initView();
-    doSceneProgress(new ai("v1.0", ((Integer)g.afB().afk().get(ae.a.Fsj, Integer.valueOf(0))).intValue(), (byte)0), false);
+    doSceneProgress(new ai("v1.0", ((Integer)g.agR().agA().get(ah.a.GQa, Integer.valueOf(0))).intValue(), (byte)0), false);
     this.mChannel = getIntent().getIntExtra("pay_channel", -1);
-    com.tencent.mm.plugin.report.service.h.vKh.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+    com.tencent.mm.plugin.report.service.h.wUl.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
     AppMethodBeat.o(65603);
   }
   
@@ -88,7 +88,7 @@ public class LuckyMoneyIndexUI
     AppMethodBeat.i(65604);
     super.onResume();
     b localb = (b)g.ab(b.class);
-    localb.a(this, localb.efN(), null);
+    localb.a(this, localb.evh(), null);
     AppMethodBeat.o(65604);
   }
   
@@ -102,16 +102,16 @@ public class LuckyMoneyIndexUI
         paramString = (ai)paramn;
         paramn = new h.c();
         paramn.textColor = getResources().getColor(2131100589);
-        paramn.tov = 101;
-        h.a(this, this.tmp, paramString.tdy, paramn, "Text");
+        paramn.uwN = 101;
+        h.a(this, this.uuI, paramString.ulN, paramn, "Text");
         paramn = new h.c();
         paramn.textColor = getResources().getColor(2131100589);
-        paramn.tov = 100;
-        h.a(this, this.tmq, paramString.tfp, paramn, "Text");
+        paramn.uwN = 100;
+        h.a(this, this.uuJ, paramString.unE, paramn, "Text");
         paramn = new h.c();
-        paramn.tov = 102;
-        h.a(this, this.tmr, paramString.tfn, paramn, "Pic");
-        cMv();
+        paramn.uwN = 102;
+        h.a(this, this.uuK, paramString.unC, paramn, "Pic");
+        dab();
       }
       AppMethodBeat.o(65607);
       return true;

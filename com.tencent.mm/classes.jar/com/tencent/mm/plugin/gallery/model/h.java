@@ -15,7 +15,7 @@ public final class h<E>
     AppMethodBeat.o(111324);
   }
   
-  private boolean aN(E paramE)
+  private boolean aK(E paramE)
   {
     AppMethodBeat.i(111326);
     synchronized (this.lock)
@@ -37,18 +37,7 @@ public final class h<E>
     }
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(111330);
-    synchronized (this.lock)
-    {
-      super.clear();
-      AppMethodBeat.o(111330);
-      return;
-    }
-  }
-  
-  public final E czJ()
+  public final E cMV()
   {
     AppMethodBeat.i(111325);
     synchronized (this.lock)
@@ -64,12 +53,23 @@ public final class h<E>
     }
   }
   
-  public final void de(E paramE)
+  public final void clear()
+  {
+    AppMethodBeat.i(111330);
+    synchronized (this.lock)
+    {
+      super.clear();
+      AppMethodBeat.o(111330);
+      return;
+    }
+  }
+  
+  public final void dg(E paramE)
   {
     AppMethodBeat.i(111327);
     synchronized (this.lock)
     {
-      if (aN(paramE)) {
+      if (aK(paramE)) {
         super.remove(paramE);
       }
       AppMethodBeat.o(111327);

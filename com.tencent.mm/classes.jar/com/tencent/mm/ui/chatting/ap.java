@@ -2,7 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 public abstract interface ap
 {
-  public abstract void cAy();
+  public abstract void cNI();
 }
 
 

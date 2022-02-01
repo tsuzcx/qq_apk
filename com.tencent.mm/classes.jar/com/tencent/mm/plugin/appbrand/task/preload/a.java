@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.task.preload;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -14,27 +14,27 @@ import org.json.JSONObject;
 
 public class a
 {
-  private static volatile a lxh;
-  private static Map<Integer, LinkedList<Map<Integer, Map<Integer, Float>>>> lxi;
+  private static volatile a lZb;
+  private static Map<Integer, LinkedList<Map<Integer, Map<Integer, Float>>>> lZc;
   
   static
   {
     AppMethodBeat.i(48502);
-    lxi = new HashMap();
-    bnQ();
+    lZc = new HashMap();
+    buM();
     AppMethodBeat.o(48502);
   }
   
-  public static a bnP()
+  public static a buL()
   {
     AppMethodBeat.i(48499);
-    if (lxh == null) {}
+    if (lZb == null) {}
     try
     {
-      if (lxh == null) {
-        lxh = new a();
+      if (lZb == null) {
+        lZb = new a();
       }
-      a locala = lxh;
+      a locala = lZb;
       AppMethodBeat.o(48499);
       return locala;
     }
@@ -44,17 +44,17 @@ public class a
     }
   }
   
-  private static void bnQ()
+  private static void buM()
   {
     AppMethodBeat.i(48500);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pwn, "");
-    if (bt.isNullOrNil((String)localObject1))
+    Object localObject1 = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qaB, "");
+    if (bs.isNullOrNil((String)localObject1))
     {
-      ad.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "clicfg_preload_miniprogram jsonStr error!");
+      ac.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "clicfg_preload_miniprogram jsonStr error!");
       AppMethodBeat.o(48500);
       return;
     }
-    ad.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap jsonStr:%s", new Object[] { localObject1 });
+    ac.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap jsonStr:%s", new Object[] { localObject1 });
     try
     {
       localObject1 = new JSONArray((String)localObject1);
@@ -75,39 +75,39 @@ public class a
           float f3 = (float)((JSONObject)localObject3).optDouble("high");
           localObject3 = new HashMap();
           HashMap localHashMap = new HashMap();
-          localHashMap.put(Integer.valueOf(b.lxj.ordinal()), Float.valueOf(f1));
-          localHashMap.put(Integer.valueOf(b.lxk.ordinal()), Float.valueOf(f2));
-          localHashMap.put(Integer.valueOf(b.lxl.ordinal()), Float.valueOf(f3));
+          localHashMap.put(Integer.valueOf(b.lZd.ordinal()), Float.valueOf(f1));
+          localHashMap.put(Integer.valueOf(b.lZe.ordinal()), Float.valueOf(f2));
+          localHashMap.put(Integer.valueOf(b.lZf.ordinal()), Float.valueOf(f3));
           ((Map)localObject3).put(Integer.valueOf(m), localHashMap);
           localLinkedList.add(localObject3);
           j += 1;
         }
-        lxi.put(Integer.valueOf(k), localLinkedList);
+        lZc.put(Integer.valueOf(k), localLinkedList);
         i += 1;
       }
-      ad.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "scenePredictMap :%s", new Object[] { lxi.toString() });
+      ac.d("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "scenePredictMap :%s", new Object[] { lZc.toString() });
       AppMethodBeat.o(48500);
       return;
     }
     catch (JSONException localJSONException)
     {
-      ad.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap json exception:%s", new Object[] { localJSONException });
-      lxi.clear();
-      lxi = null;
+      ac.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "generateScenePredictMap json exception:%s", new Object[] { localJSONException });
+      lZc.clear();
+      lZc = null;
       AppMethodBeat.o(48500);
     }
   }
   
-  public static Map<Integer, Float> ee(int paramInt1, int paramInt2)
+  public static Map<Integer, Float> eg(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(48501);
-    if ((lxi == null) || (lxi.size() <= 0))
+    if ((lZc == null) || (lZc.size() <= 0))
     {
-      ad.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "getScenePredictRate map null!");
+      ac.e("MicroMsg.Predownload.AppBrandPreloadPredictLevel", "getScenePredictRate map null!");
       AppMethodBeat.o(48501);
       return null;
     }
-    Object localObject = (LinkedList)lxi.get(Integer.valueOf(paramInt1));
+    Object localObject = (LinkedList)lZc.get(Integer.valueOf(paramInt1));
     if (((LinkedList)localObject).size() > 0)
     {
       paramInt1 = 0;

@@ -12,57 +12,57 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class i
 {
-  private View hIZ;
-  MMActivity nqt;
-  View nxk;
-  TextView nxl;
-  TextView nxm;
-  private boolean nxn = false;
+  private View ijA;
+  MMActivity nTt;
+  View oak;
+  TextView oal;
+  TextView oam;
+  private boolean oan = false;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.nqt = paramMMActivity;
-    this.hIZ = paramView;
+    this.nTt = paramMMActivity;
+    this.ijA = paramView;
   }
   
-  public final void bKa()
+  public final void bRn()
   {
     AppMethodBeat.i(113139);
-    this.nxk.setVisibility(8);
+    this.oak.setVisibility(8);
     AppMethodBeat.o(113139);
   }
   
-  public final void cE()
+  public final void cL()
   {
     AppMethodBeat.i(113140);
-    Integer localInteger = (Integer)am.bJa().getValue("key_share_card_show_type");
+    Integer localInteger = (Integer)am.bQn().getValue("key_share_card_show_type");
     Object localObject = localInteger;
     if (localInteger == null) {
       localObject = Integer.valueOf(0);
     }
-    if ((((Integer)localObject).intValue() != 0) && (!b.bJB()))
+    if ((((Integer)localObject).intValue() != 0) && (!b.bQO()))
     {
-      this.nxk.setVisibility(0);
-      this.nxl.setVisibility(0);
+      this.oak.setVisibility(0);
+      this.oal.setVisibility(0);
       localObject = new ShareCardInfo();
-      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).yO(10)))
+      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).zE(10)))
       {
-        this.nxl.setVisibility(0);
-        this.nxl.setText(((ShareCardInfo)localObject).yO(10));
+        this.oal.setVisibility(0);
+        this.oal.setText(((ShareCardInfo)localObject).zE(10));
       }
       while (!TextUtils.isEmpty(""))
       {
-        this.nxm.setVisibility(0);
-        this.nxm.setText("");
+        this.oam.setVisibility(0);
+        this.oam.setText("");
         AppMethodBeat.o(113140);
         return;
-        this.nxl.setVisibility(8);
+        this.oal.setVisibility(8);
       }
-      this.nxm.setVisibility(8);
+      this.oam.setVisibility(8);
       AppMethodBeat.o(113140);
       return;
     }
-    this.nxk.setVisibility(8);
+    this.oak.setVisibility(8);
     AppMethodBeat.o(113140);
   }
 }

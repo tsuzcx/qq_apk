@@ -9,19 +9,19 @@ import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 public final class a
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  public final void aYR()
+  public final void bfM()
   {
     AppMethodBeat.i(144570);
-    if (this.jJH.jJp == null)
+    if (this.kkh.kjP == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "connection is not open.", new Object[0]);
-      a(j.jKh);
+      a(j.kkI);
       done();
       AppMethodBeat.o(144570);
       return;
     }
-    this.jJH.fS(true);
-    a(j.jJZ);
+    this.kkh.go(true);
+    a(j.kkA);
     done();
     AppMethodBeat.o(144570);
   }

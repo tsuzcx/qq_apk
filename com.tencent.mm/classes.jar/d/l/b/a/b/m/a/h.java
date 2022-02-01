@@ -7,18 +7,18 @@ import d.l.b.a.b.m.at;
 public final class h
   implements g
 {
-  private final w JYO;
+  private final w LMh;
   
   private h(w paramw)
   {
-    this.JYO = paramw;
+    this.LMh = paramw;
   }
   
   public static g b(g.a parama)
   {
     AppMethodBeat.i(61048);
     if (parama == null) {
-      adP(0);
+      agL(0);
     }
     parama = new h(new w(new v()
     {
@@ -26,12 +26,12 @@ public final class h
       {
         AppMethodBeat.i(61046);
         if (paramAnonymousat1 == null) {
-          adP(0);
+          agL(0);
         }
         if (paramAnonymousat2 == null) {
-          adP(1);
+          agL(1);
         }
-        if ((paramAnonymousat1.equals(paramAnonymousat2)) || (this.JYP.a(paramAnonymousat1, paramAnonymousat2)))
+        if ((paramAnonymousat1.equals(paramAnonymousat2)) || (this.LMi.a(paramAnonymousat1, paramAnonymousat2)))
         {
           AppMethodBeat.o(61046);
           return true;
@@ -48,12 +48,12 @@ public final class h
   {
     AppMethodBeat.i(61049);
     if (paramab1 == null) {
-      adP(2);
+      agL(2);
     }
     if (paramab2 == null) {
-      adP(3);
+      agL(3);
     }
-    boolean bool = this.JYO.c(paramab1, paramab2);
+    boolean bool = this.LMh.c(paramab1, paramab2);
     AppMethodBeat.o(61049);
     return bool;
   }
@@ -62,19 +62,19 @@ public final class h
   {
     AppMethodBeat.i(61050);
     if (paramab1 == null) {
-      adP(4);
+      agL(4);
     }
     if (paramab2 == null) {
-      adP(5);
+      agL(5);
     }
-    boolean bool = this.JYO.d(paramab1, paramab2);
+    boolean bool = this.LMh.d(paramab1, paramab2);
     AppMethodBeat.o(61050);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.h
  * JD-Core Version:    0.7.0.1
  */

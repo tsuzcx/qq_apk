@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/hkf" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/hke" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_alignParentTop="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hkd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_dark_back" android:layout_marginStart="@dimen/c5" android:layout_alignParentStart="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hkc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/hpe" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/cd" android:src="@raw/icons_need_verify" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="22.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/hph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:text="@string/hmw" android:layout_below="@id/hpe" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/hpd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c_" android:text="@string/hmy" android:layout_below="@id/hph" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hpc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hkc">
+        <Button android:textSize="17.0dip" android:id="@id/hpg" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:text="@string/hmz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/od" />
+    </RelativeLayout>
+</RelativeLayout>

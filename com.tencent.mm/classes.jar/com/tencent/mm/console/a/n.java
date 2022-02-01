@@ -7,8 +7,8 @@ import com.tencent.mm.g.a.bv;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.t;
 
 public final class n
@@ -55,20 +55,20 @@ public final class n
       }
     }
     paramArrayOfString = new bv();
-    com.tencent.mm.sdk.b.a.ESL.l(paramArrayOfString);
+    com.tencent.mm.sdk.b.a.GpY.l(paramArrayOfString);
     t.makeText(paramContext, "clean wx file index now.", 0).show();
     AppMethodBeat.o(20195);
     return true;
     try
     {
-      g.afB().afk().set(ae.a.FqC, Integer.valueOf(1));
+      g.agR().agA().set(ah.a.GOs, Integer.valueOf(1));
       t.makeText(paramContext, "show file now.", 0).show();
       label193:
       AppMethodBeat.o(20195);
       return true;
       try
       {
-        g.afB().afk().set(ae.a.FqC, Integer.valueOf(0));
+        g.agR().agA().set(ah.a.GOs, Integer.valueOf(0));
         t.makeText(paramContext, "hide file now.", 0).show();
         label227:
         AppMethodBeat.o(20195);

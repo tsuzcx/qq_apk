@@ -1,18 +1,26 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.luggage.a.b;
-import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/IAppBrandPreloadedWidgetProvider;", "Lcom/tencent/luggage/base/ICustomize;", "getPreloadedWidget", "WIDGET", "Landroid/view/View;", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Landroid/view/View;", "luggage-wxa-app_release"})
 public abstract interface bc
-  extends b
+  extends ah.b, an, aq
 {
-  public abstract <WIDGET extends View> WIDGET aC(Class<WIDGET> paramClass);
+  public abstract void a(aw paramaw);
+  
+  public abstract void a(ay paramay);
+  
+  public abstract ViewGroup getContainer();
+  
+  public abstract void setupWebViewTouchInterceptor(ay paramay);
+  
+  public static abstract interface a
+    extends b
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bc
  * JD-Core Version:    0.7.0.1
  */

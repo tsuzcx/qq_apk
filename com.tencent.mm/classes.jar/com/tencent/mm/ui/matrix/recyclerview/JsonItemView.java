@@ -13,10 +13,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class JsonItemView
   extends LinearLayout
 {
-  public static int Hkr = 12;
-  private TextView Hks;
-  private TextView Hkt;
-  private ImageView Hku;
+  public static int IKK = 12;
+  private TextView IKL;
+  private TextView IKM;
+  private ImageView IKN;
   private Context mContext;
   
   public JsonItemView(Context paramContext)
@@ -36,53 +36,45 @@ public class JsonItemView
     this.mContext = paramContext;
     setOrientation(1);
     LayoutInflater.from(this.mContext).inflate(2131494529, this, true);
-    this.Hks = ((TextView)findViewById(2131306136));
-    this.Hkt = ((TextView)findViewById(2131306148));
-    this.Hku = ((ImageView)findViewById(2131301215));
+    this.IKL = ((TextView)findViewById(2131306136));
+    this.IKM = ((TextView)findViewById(2131306148));
+    this.IKN = ((ImageView)findViewById(2131301215));
     AppMethodBeat.o(38898);
-  }
-  
-  public final void ao(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(38901);
-    this.Hks.setVisibility(0);
-    this.Hks.setText(paramCharSequence);
-    AppMethodBeat.o(38901);
   }
   
   public final void ap(CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(38901);
+    this.IKL.setVisibility(0);
+    this.IKL.setText(paramCharSequence);
+    AppMethodBeat.o(38901);
+  }
+  
+  public final void aq(CharSequence paramCharSequence)
+  {
     AppMethodBeat.i(38902);
-    this.Hkt.setVisibility(0);
+    this.IKM.setVisibility(0);
     if (paramCharSequence != null) {
-      this.Hkt.setText(paramCharSequence);
+      this.IKM.setText(paramCharSequence);
     }
     AppMethodBeat.o(38902);
   }
   
-  public final void fdf()
+  public final void fta()
   {
     AppMethodBeat.i(38900);
-    this.Hks.setVisibility(8);
+    this.IKL.setVisibility(8);
     AppMethodBeat.o(38900);
   }
   
-  public final void fdg()
+  public final void ftb()
   {
     AppMethodBeat.i(38904);
-    this.Hku.setVisibility(8);
+    this.IKN.setVisibility(8);
     AppMethodBeat.o(38904);
   }
   
-  public CharSequence getRightText()
-  {
-    AppMethodBeat.i(38903);
-    CharSequence localCharSequence = this.Hkt.getText();
-    AppMethodBeat.o(38903);
-    return localCharSequence;
-  }
-  
-  public final void gm(View paramView)
+  public final void gA(View paramView)
   {
     AppMethodBeat.i(38907);
     Object localObject2 = paramView.getLayoutParams();
@@ -102,27 +94,35 @@ public class JsonItemView
     AppMethodBeat.o(38907);
   }
   
+  public CharSequence getRightText()
+  {
+    AppMethodBeat.i(38903);
+    CharSequence localCharSequence = this.IKM.getText();
+    AppMethodBeat.o(38903);
+    return localCharSequence;
+  }
+  
   public void setIconClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(38906);
-    this.Hku.setOnClickListener(paramOnClickListener);
+    this.IKN.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(38906);
   }
   
   public void setRightColor(int paramInt)
   {
     AppMethodBeat.i(38899);
-    this.Hkt.setTextColor(paramInt);
+    this.IKM.setTextColor(paramInt);
     AppMethodBeat.o(38899);
   }
   
   public void setTextSize(float paramFloat) {}
   
-  public final void wC(boolean paramBoolean)
+  public final void xJ(boolean paramBoolean)
   {
     AppMethodBeat.i(38905);
-    this.Hku.setVisibility(0);
-    ImageView localImageView = this.Hku;
+    this.IKN.setVisibility(0);
+    ImageView localImageView = this.IKN;
     if (paramBoolean) {}
     for (int i = 2131232758;; i = 2131232757)
     {

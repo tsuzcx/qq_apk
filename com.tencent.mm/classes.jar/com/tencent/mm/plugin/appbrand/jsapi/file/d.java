@@ -5,12 +5,12 @@ import com.tencent.mm.plugin.appbrand.jsapi.j;
 public class d
   implements j
 {
-  public long cfF = 10L;
-  public long jcK = 10L;
+  public long ccC = 10L;
+  public long jCX = 10L;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.d
  * JD-Core Version:    0.7.0.1
  */

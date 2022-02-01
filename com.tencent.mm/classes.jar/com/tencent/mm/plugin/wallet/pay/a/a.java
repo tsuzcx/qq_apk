@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
 {
@@ -19,39 +19,39 @@ public final class a
     AppMethodBeat.i(69249);
     if ((paramAuthen == null) || (paramOrders == null))
     {
-      ad.i("MicroMsg.CgiManager", "empty authen or orders");
+      ac.i("MicroMsg.CgiManager", "empty authen or orders");
       AppMethodBeat.o(69249);
       return null;
     }
-    PayInfo localPayInfo = paramAuthen.uXi;
+    PayInfo localPayInfo = paramAuthen.wfX;
     String str1 = "";
     if (localPayInfo != null)
     {
-      ad.i("MicroMsg.CgiManager", "get reqKey from payInfo");
-      str1 = localPayInfo.dcE;
+      ac.i("MicroMsg.CgiManager", "get reqKey from payInfo");
+      str1 = localPayInfo.dac;
     }
     String str2 = str1;
-    if (bt.isNullOrNil(str1))
+    if (bs.isNullOrNil(str1))
     {
       str2 = str1;
       if (paramOrders != null)
       {
-        ad.i("MicroMsg.CgiManager", "get reqKey from orders");
-        str2 = paramOrders.dcE;
+        ac.i("MicroMsg.CgiManager", "get reqKey from orders");
+        str2 = paramOrders.dac;
       }
     }
-    if (bt.isNullOrNil(str2))
+    if (bs.isNullOrNil(str2))
     {
-      ad.i("MicroMsg.CgiManager", "empty reqKey!");
+      ac.i("MicroMsg.CgiManager", "empty reqKey!");
       paramAuthen = new com.tencent.mm.plugin.wallet.pay.a.a.b(paramAuthen, paramOrders, paramBoolean);
       AppMethodBeat.o(69249);
       return paramAuthen;
     }
-    ad.i("MicroMsg.CgiManager", "authen reqKey: %s", new Object[] { str2 });
+    ac.i("MicroMsg.CgiManager", "authen reqKey: %s", new Object[] { str2 });
     if ((localPayInfo != null) && (paramOrders != null)) {
-      ad.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.dcE, paramOrders.dcE });
+      ac.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.dac, paramOrders.dac });
     }
-    ad.i("MicroMsg.CgiManager", "authen go new split cgi");
+    ac.i("MicroMsg.CgiManager", "authen go new split cgi");
     if (str2.startsWith("sns_aa_"))
     {
       paramAuthen = new com.tencent.mm.plugin.wallet.pay.a.a.a(paramAuthen, paramOrders, paramBoolean);
@@ -122,35 +122,35 @@ public final class a
     AppMethodBeat.i(69250);
     if ((paramu == null) || (paramOrders == null))
     {
-      ad.e("MicroMsg.CgiManager", "empty verify or orders");
+      ac.e("MicroMsg.CgiManager", "empty verify or orders");
       AppMethodBeat.o(69250);
       return null;
     }
-    PayInfo localPayInfo = paramu.uXi;
+    PayInfo localPayInfo = paramu.wfX;
     String str1 = "";
     if (localPayInfo != null)
     {
-      ad.i("MicroMsg.CgiManager", "get reqKey from payInfo");
-      str1 = localPayInfo.dcE;
+      ac.i("MicroMsg.CgiManager", "get reqKey from payInfo");
+      str1 = localPayInfo.dac;
     }
     String str2 = str1;
-    if (bt.isNullOrNil(str1))
+    if (bs.isNullOrNil(str1))
     {
-      ad.i("MicroMsg.CgiManager", "get reqKey from orders");
-      str2 = paramOrders.dcE;
+      ac.i("MicroMsg.CgiManager", "get reqKey from orders");
+      str2 = paramOrders.dac;
     }
-    if (bt.isNullOrNil(str2))
+    if (bs.isNullOrNil(str2))
     {
-      ad.i("MicroMsg.CgiManager", "empty reqKey!");
+      ac.i("MicroMsg.CgiManager", "empty reqKey!");
       paramu = new com.tencent.mm.plugin.wallet.pay.a.d.g(paramu, paramOrders);
       AppMethodBeat.o(69250);
       return paramu;
     }
     if (localPayInfo != null) {
-      ad.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.dcE, paramOrders.dcE });
+      ac.d("MicroMsg.CgiManager", "reqKey: %s, %s", new Object[] { localPayInfo.dac, paramOrders.dac });
     }
-    ad.i("MicroMsg.CgiManager", "verify reqKey: %s", new Object[] { str2 });
-    ad.i("MicroMsg.CgiManager", "verify go new split cgi");
+    ac.i("MicroMsg.CgiManager", "verify reqKey: %s", new Object[] { str2 });
+    ac.i("MicroMsg.CgiManager", "verify go new split cgi");
     if (str2.startsWith("sns_aa_"))
     {
       paramu = new com.tencent.mm.plugin.wallet.pay.a.d.a(paramu, paramOrders);
@@ -213,11 +213,11 @@ public final class a
   public static com.tencent.mm.plugin.wallet.pay.a.a.c b(Authen paramAuthen, Orders paramOrders, boolean paramBoolean)
   {
     AppMethodBeat.i(69251);
-    s.dZT();
+    s.epp();
     boolean bool1;
     boolean bool2;
-    if ((s.dZU().Ain != null) && (paramAuthen.uXi != null) && (!paramBoolean)) {
-      if ((paramAuthen.uXi.dtb == 31) || (paramAuthen.uXi.dtb == 32) || (paramAuthen.uXi.dtb == 33) || (paramAuthen.uXi.dtb == 42) || (paramAuthen.uXi.dtb == 37) || (paramAuthen.uXi.dtb == 56))
+    if ((s.epq().BAI != null) && (paramAuthen.wfX != null) && (!paramBoolean)) {
+      if ((paramAuthen.wfX.dqL == 31) || (paramAuthen.wfX.dqL == 32) || (paramAuthen.wfX.dqL == 33) || (paramAuthen.wfX.dqL == 42) || (paramAuthen.wfX.dqL == 37) || (paramAuthen.wfX.dqL == 56))
       {
         bool1 = false;
         bool2 = true;
@@ -225,7 +225,7 @@ public final class a
     }
     for (;;)
     {
-      ad.i("MicroMsg.CgiManager", "isLqtSns: %s, isLqtTs: %s, isBalance: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(paramBoolean) });
+      ac.i("MicroMsg.CgiManager", "isLqtSns: %s, isLqtTs: %s, isBalance: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(paramBoolean) });
       if (bool2)
       {
         paramAuthen = new com.tencent.mm.plugin.wallet.pay.a.a.k(paramAuthen, paramOrders, paramBoolean);
@@ -254,15 +254,15 @@ public final class a
   public static com.tencent.mm.plugin.wallet.pay.a.d.b b(u paramu, Orders paramOrders)
   {
     AppMethodBeat.i(69252);
-    s.dZT();
+    s.epp();
     boolean bool1;
     boolean bool2;
-    if ((s.dZU().Ain != null) && (paramu.uXi != null))
+    if ((s.epq().BAI != null) && (paramu.wfX != null))
     {
-      String str = paramu.dca;
-      s.dZT();
-      if (str.equals(s.dZU().Ain.field_bankcardType)) {
-        if ((paramu.uXi.dtb == 31) || (paramu.uXi.dtb == 32) || (paramu.uXi.dtb == 33) || (paramu.uXi.dtb == 42) || (paramu.uXi.dtb == 37) || (paramu.uXi.dtb == 56))
+      String str = paramu.cZz;
+      s.epp();
+      if (str.equals(s.epq().BAI.field_bankcardType)) {
+        if ((paramu.wfX.dqL == 31) || (paramu.wfX.dqL == 32) || (paramu.wfX.dqL == 33) || (paramu.wfX.dqL == 42) || (paramu.wfX.dqL == 37) || (paramu.wfX.dqL == 56))
         {
           bool1 = false;
           bool2 = true;
@@ -271,7 +271,7 @@ public final class a
     }
     for (;;)
     {
-      ad.i("MicroMsg.CgiManager", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      ac.i("MicroMsg.CgiManager", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       if (bool2)
       {
         paramu = new com.tencent.mm.plugin.wallet.pay.a.d.i(paramu, paramOrders);

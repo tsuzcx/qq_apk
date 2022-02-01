@@ -130,7 +130,7 @@ public class AppCompatViewInflater
           if ((paramContext instanceof d))
           {
             paramAttributeSet = paramContext;
-            if (((d)paramContext).aaG == i) {}
+            if (((d)paramContext).abB == i) {}
           }
           else
           {
@@ -235,7 +235,7 @@ public class AppCompatViewInflater
       }
       localObject = paramView;
       if (paramBoolean4) {
-        localObject = aw.ab(paramView);
+        localObject = aw.ac(paramView);
       }
       int i = -1;
       switch (paramString.hashCode())
@@ -370,33 +370,33 @@ public class AppCompatViewInflater
   static final class a
     implements View.OnClickListener
   {
-    private final View WL;
-    private final String WM;
-    private Method WN;
-    private Context WO;
+    private final View XG;
+    private final String XH;
+    private Method XI;
+    private Context XJ;
     
     public a(View paramView, String paramString)
     {
-      this.WL = paramView;
-      this.WM = paramString;
+      this.XG = paramView;
+      this.XH = paramString;
     }
     
     public final void onClick(View paramView)
     {
       Context localContext;
-      if (this.WN == null) {
-        localContext = this.WL.getContext();
+      if (this.XI == null) {
+        localContext = this.XG.getContext();
       }
       while (localContext != null) {
         try
         {
           if (!localContext.isRestricted())
           {
-            Method localMethod = localContext.getClass().getMethod(this.WM, new Class[] { View.class });
+            Method localMethod = localContext.getClass().getMethod(this.XH, new Class[] { View.class });
             if (localMethod != null)
             {
-              this.WN = localMethod;
-              this.WO = localContext;
+              this.XI = localMethod;
+              this.XJ = localContext;
             }
           }
         }
@@ -404,7 +404,7 @@ public class AppCompatViewInflater
         {
           try
           {
-            this.WN.invoke(this.WO, new Object[] { paramView });
+            this.XI.invoke(this.XJ, new Object[] { paramView });
             return;
           }
           catch (IllegalAccessException paramView)
@@ -424,10 +424,10 @@ public class AppCompatViewInflater
           }
         }
       }
-      i = this.WL.getId();
+      i = this.XG.getId();
       if (i == -1) {}
-      for (paramView = "";; paramView = " with id '" + this.WL.getContext().getResources().getResourceEntryName(i) + "'") {
-        throw new IllegalStateException("Could not find method " + this.WM + "(View) in a parent or ancestor Context for android:onClick attribute defined on view " + this.WL.getClass() + paramView);
+      for (paramView = "";; paramView = " with id '" + this.XG.getContext().getResources().getResourceEntryName(i) + "'") {
+        throw new IllegalStateException("Could not find method " + this.XH + "(View) in a parent or ancestor Context for android:onClick attribute defined on view " + this.XG.getClass() + paramView);
       }
     }
   }

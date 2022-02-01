@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aam;
-import com.tencent.mm.protocal.protobuf.aan;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.abl;
+import com.tencent.mm.protocal.protobuf.abm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 public final class a
   extends n
   implements k
 {
-  private String cLR;
-  private com.tencent.mm.al.g callback;
+  private String cIZ;
+  private com.tencent.mm.ak.g callback;
   private b rr;
   
   public a(String paramString)
   {
     AppMethodBeat.i(125511);
-    this.cLR = paramString;
+    this.cIZ = paramString;
     b.a locala = new b.a();
-    locala.gUU = new aam();
-    locala.gUV = new aan();
+    locala.hvt = new abl();
+    locala.hvu = new abm();
     locala.uri = "/cgi-bin/micromsg-bin/delsafedevice";
     locala.funcId = 362;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((aam)this.rr.gUS.gUX).CWZ = paramString;
+    this.rr = locala.aAz();
+    ((abl)this.rr.hvr.hvw).EpI = paramString;
     AppMethodBeat.o(125511);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(125513);
-    if (bt.isNullOrNil(this.cLR))
+    if (bs.isNullOrNil(this.cIZ))
     {
-      ad.e("MicroMsg.NetSceneDelSafeDevice", "null device id");
+      ac.e("MicroMsg.NetSceneDelSafeDevice", "null device id");
       AppMethodBeat.o(125513);
       return -1;
     }
@@ -61,12 +61,12 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125512);
-    ad.d("MicroMsg.NetSceneDelSafeDevice", "NetSceneDelSafeDevice, errType= " + paramInt2 + " errCode = " + paramInt3);
+    ac.d("MicroMsg.NetSceneDelSafeDevice", "NetSceneDelSafeDevice, errType= " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (aan)this.rr.gUT.gUX;
-      com.tencent.mm.kernel.g.afB().afk().set(64, Integer.valueOf(paramq.CuL));
-      ad.d("MicroMsg.NetSceneDelSafeDevice", "NetSceneDelSafeDevice, get safedevice state = " + paramq.CuL);
+      paramq = (abm)this.rr.hvs.hvw;
+      com.tencent.mm.kernel.g.agR().agA().set(64, Integer.valueOf(paramq.DNg));
+      ac.d("MicroMsg.NetSceneDelSafeDevice", "NetSceneDelSafeDevice, get safedevice state = " + paramq.DNg);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(125512);

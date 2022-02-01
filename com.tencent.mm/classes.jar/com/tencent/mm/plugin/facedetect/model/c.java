@@ -4,46 +4,46 @@ import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
   extends a<byte[]>
 {
-  private static int hBa;
-  public static final c pOB;
+  private static int ibB;
+  public static final c qxj;
   
   static
   {
     AppMethodBeat.i(103696);
-    pOB = new c();
-    hBa = 0;
+    qxj = new c();
+    ibB = 0;
     AppMethodBeat.o(103696);
   }
   
   public static void cY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103686);
-    ad.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
-    long l = bt.GC();
+    ac.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
+    long l = bs.Gn();
     int i = 0;
     while (i < 5)
     {
-      pOB.k(new byte[paramInt1 * paramInt2 * 3 / 2]);
+      qxj.k(new byte[paramInt1 * paramInt2 * 3 / 2]);
       i += 1;
     }
-    ad.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(bt.aS(l)) });
+    ac.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(bs.aO(l)) });
     AppMethodBeat.o(103686);
   }
   
-  public final long aoQ()
+  public final long avH()
   {
     AppMethodBeat.i(103689);
-    if (hBa <= 0) {
-      hBa = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (ibB <= 0) {
+      ibB = ((ActivityManager)ai.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (hBa >= 512)
+    if (ibB >= 512)
     {
       AppMethodBeat.o(103689);
       return 20971520L;
@@ -52,15 +52,15 @@ public final class c
     return 10485760L;
   }
   
-  public final long aoR()
+  public final long avI()
   {
     return 20971520L;
   }
   
-  public final void aoS()
+  public final void avJ()
   {
     AppMethodBeat.i(103690);
-    super.aoS();
+    super.avJ();
     AppMethodBeat.o(103690);
   }
   
@@ -81,7 +81,7 @@ public final class c
     //   17: ifnonnull +26 -> 43
     //   20: ldc 35
     //   22: ldc 138
-    //   24: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: aload_1
     //   28: invokevirtual 122	java/lang/Integer:intValue	()I
     //   31: newarray byte
@@ -94,7 +94,7 @@ public final class c
     //   42: areturn
     //   43: ldc 35
     //   45: ldc 144
-    //   47: invokestatic 142	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   47: invokestatic 142	com/tencent/mm/sdk/platformtools/ac:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: aload_2
     //   51: astore_1
     //   52: goto -18 -> 34
@@ -121,7 +121,7 @@ public final class c
     try
     {
       AppMethodBeat.i(103687);
-      super.bL(paramArrayOfByte);
+      super.bJ(paramArrayOfByte);
       AppMethodBeat.o(103687);
       return;
     }

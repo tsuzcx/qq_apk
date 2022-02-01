@@ -3,36 +3,36 @@ package com.tencent.mm.ui.tools;
 import android.text.InputFilter;
 import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class f
   implements InputFilter
 {
-  private int mce;
-  private a mcf;
+  private int mEc;
+  private a mEd;
   
   public f(int paramInt, a parama)
   {
-    this.mce = paramInt;
-    this.mcf = parama;
+    this.mEc = paramInt;
+    this.mEd = parama;
   }
   
   public static int a(String paramString, a parama)
   {
     AppMethodBeat.i(133834);
     int i;
-    if (parama == a.Hrl)
+    if (parama == a.IRI)
     {
-      i = aLK(paramString);
+      i = aRm(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
-    if (parama == a.Hrm)
+    if (parama == a.IRJ)
     {
-      i = aLJ(paramString);
+      i = aRl(paramString);
       AppMethodBeat.o(133834);
       return i;
     }
@@ -40,25 +40,25 @@ public class f
     return 0;
   }
   
-  public static int aLJ(String paramString)
+  public static int aRl(String paramString)
   {
     AppMethodBeat.i(133835);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133835);
       return 0;
     }
     int i = paramString.length();
-    int j = aLL(paramString);
-    int k = aLM(paramString);
+    int j = aRn(paramString);
+    int k = aRo(paramString);
     AppMethodBeat.o(133835);
     return i + j + k;
   }
   
-  private static int aLK(String paramString)
+  private static int aRm(String paramString)
   {
     AppMethodBeat.i(133836);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133836);
       return 0;
@@ -68,10 +68,10 @@ public class f
     return i;
   }
   
-  public static int aLL(String paramString)
+  public static int aRn(String paramString)
   {
     AppMethodBeat.i(133837);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133837);
       return 0;
@@ -96,10 +96,10 @@ public class f
     return i;
   }
   
-  private static int aLM(String paramString)
+  private static int aRo(String paramString)
   {
     AppMethodBeat.i(133838);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(133838);
       return 0;
@@ -121,36 +121,36 @@ public class f
       j += 1;
       break;
       j = paramString.length();
-      k = aLL(paramString);
+      k = aRn(paramString);
       AppMethodBeat.o(133838);
       return j - (k + i);
     }
   }
   
-  public static int cJ(int paramInt, String paramString)
+  public static int cM(int paramInt, String paramString)
   {
     AppMethodBeat.i(133839);
-    if (ac.eFq())
+    if (ab.eUK())
     {
-      i = aLJ(paramString);
+      i = aRl(paramString);
       AppMethodBeat.o(133839);
       return paramInt - i;
     }
-    int i = aLJ(paramString);
+    int i = aRl(paramString);
     AppMethodBeat.o(133839);
     return paramInt - i;
   }
   
-  public static int cK(int paramInt, String paramString)
+  public static int cN(int paramInt, String paramString)
   {
     AppMethodBeat.i(133840);
-    if (ac.eFq())
+    if (ab.eUK())
     {
-      paramInt = Math.round((Math.round(aLJ(paramString)) - paramInt) / 2.0F);
+      paramInt = Math.round((Math.round(aRl(paramString)) - paramInt) / 2.0F);
       AppMethodBeat.o(133840);
       return paramInt;
     }
-    int i = aLJ(paramString);
+    int i = aRl(paramString);
     AppMethodBeat.o(133840);
     return i - paramInt;
   }
@@ -158,7 +158,7 @@ public class f
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(133833);
-    if (a(paramSpanned.toString(), this.mcf) + a(paramCharSequence.toString(), this.mcf) > this.mce)
+    if (a(paramSpanned.toString(), this.mEd) + a(paramCharSequence.toString(), this.mEd) > this.mEc)
     {
       AppMethodBeat.o(133833);
       return "";
@@ -172,9 +172,9 @@ public class f
     static
     {
       AppMethodBeat.i(133832);
-      Hrl = new a("MODE_CHINESE_AS_1", 0);
-      Hrm = new a("MODE_CHINESE_AS_2", 1);
-      Hrn = new a[] { Hrl, Hrm };
+      IRI = new a("MODE_CHINESE_AS_1", 0);
+      IRJ = new a("MODE_CHINESE_AS_2", 1);
+      IRK = new a[] { IRI, IRJ };
       AppMethodBeat.o(133832);
     }
     

@@ -6,15 +6,15 @@ import com.tencent.mm.g.a.d.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tinkerboots.sdk.a;
 
 public final class f
   extends c<d>
 {
-  private static long cGs = 0L;
+  private static long cDA = 0L;
   
   public f()
   {
@@ -26,39 +26,39 @@ public final class f
   private static boolean a(d paramd)
   {
     AppMethodBeat.i(117435);
-    if (paramd.daP.daQ)
+    if (paramd.cYl.cYm)
     {
       AppMethodBeat.o(117435);
       return false;
     }
-    if (!g.afw())
+    if (!g.agM())
     {
       AppMethodBeat.o(117435);
       return false;
     }
-    if (cGs == 0L) {
-      cGs = ((Long)g.afB().afk().get(ae.a.Fql, Long.valueOf(0L))).longValue();
+    if (cDA == 0L) {
+      cDA = ((Long)g.agR().agA().get(ah.a.GOb, Long.valueOf(0L))).longValue();
     }
     long l = System.currentTimeMillis();
-    if ((l - cGs >= 21600000L) && (a.ftM() != null))
+    if ((l - cDA >= 21600000L) && (a.fMx() != null))
     {
-      a.ftM().xP(false);
-      ad.i("MicroMsg.Tinker.TinkerBootsActivateListener", "callback post task and fetchPatchUpdate false");
-      cGs = l;
-      g.afB().afk().set(ae.a.Fql, Long.valueOf(l));
+      a.fMx().zh(false);
+      ac.i("MicroMsg.Tinker.TinkerBootsActivateListener", "callback post task and fetchPatchUpdate false");
+      cDA = l;
+      g.agR().agA().set(ah.a.GOb, Long.valueOf(l));
     }
     AppMethodBeat.o(117435);
     return false;
   }
   
-  public static void qZ(long paramLong)
+  public static void vC(long paramLong)
   {
-    cGs = paramLong;
+    cDA = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.f
  * JD-Core Version:    0.7.0.1
  */

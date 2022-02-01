@@ -11,22 +11,22 @@ final class b
     AppMethodBeat.i(12384);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('\000');
-    while (paramh.yn())
+    while (paramh.ya())
     {
-      localStringBuilder.append(paramh.ym());
+      localStringBuilder.append(paramh.xZ());
       paramh.pos += 1;
-      i = j.b(paramh.bLg, paramh.pos, 5);
+      i = j.b(paramh.bIO, paramh.pos, 5);
       if (i != 5) {
-        paramh.bLl = i;
+        paramh.bIT = i;
       }
     }
     int k = localStringBuilder.length() - 1;
-    int i = paramh.bLk.length() + k + 1;
-    paramh.gi(i);
-    if (paramh.bLm.bLv - i > 0)
+    int i = paramh.bIS.length() + k + 1;
+    paramh.fU(i);
+    if (paramh.bIU.bJd - i > 0)
     {
       i = 1;
-      if ((paramh.yn()) || (i != 0))
+      if ((paramh.ya()) || (i != 0))
       {
         if (k > 249) {
           break label217;
@@ -40,7 +40,7 @@ final class b
       if (i >= k) {
         break label296;
       }
-      j = localStringBuilder.charAt(i) + ((paramh.bLk.length() + 1) * 149 % 255 + 1);
+      j = localStringBuilder.charAt(i) + ((paramh.bIS.length() + 1) * 149 % 255 + 1);
       if (j > 255) {
         break label285;
       }

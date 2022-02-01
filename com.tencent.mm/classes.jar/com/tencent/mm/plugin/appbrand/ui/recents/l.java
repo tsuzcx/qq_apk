@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 import com.tencent.luggage.h.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -14,14 +14,14 @@ import junit.framework.Assert;
 final class l
   extends ArrayList<AppBrandRecentTaskInfo>
 {
-  private final ArrayList<AppBrandRecentTaskInfo> lJd;
-  private final ArrayList<AppBrandRecentTaskInfo> lJe;
+  private final ArrayList<AppBrandRecentTaskInfo> mla;
+  private final ArrayList<AppBrandRecentTaskInfo> mlb;
   
   l()
   {
     AppMethodBeat.i(49209);
-    this.lJd = new ArrayList(50);
-    this.lJe = new ArrayList(10000);
+    this.mla = new ArrayList(50);
+    this.mlb = new ArrayList(10000);
     AppMethodBeat.o(49209);
   }
   
@@ -29,14 +29,14 @@ final class l
   {
     AppMethodBeat.i(49210);
     l locall = new l();
-    b.c(locall.lJd, paramArrayList1);
-    b.c(locall.lJe, paramArrayList2);
+    b.c(locall.mla, paramArrayList1);
+    b.c(locall.mlb, paramArrayList2);
     AppMethodBeat.o(49210);
     return locall;
   }
   
   /* Error */
-  private AppBrandRecentTaskInfo uf(int paramInt)
+  private AppBrandRecentTaskInfo uX(int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -45,11 +45,11 @@ final class l
     //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: iload_1
     //   8: aload_0
-    //   9: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:lJd	Ljava/util/ArrayList;
+    //   9: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:mla	Ljava/util/ArrayList;
     //   12: invokevirtual 50	java/util/ArrayList:size	()I
     //   15: if_icmpge +24 -> 39
     //   18: aload_0
-    //   19: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:lJd	Ljava/util/ArrayList;
+    //   19: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:mla	Ljava/util/ArrayList;
     //   22: iload_1
     //   23: invokevirtual 54	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   26: checkcast 56	com/tencent/mm/plugin/appbrand/appusage/AppBrandRecentTaskInfo
@@ -61,10 +61,10 @@ final class l
     //   37: aload_2
     //   38: areturn
     //   39: aload_0
-    //   40: getfield 27	com/tencent/mm/plugin/appbrand/ui/recents/l:lJe	Ljava/util/ArrayList;
+    //   40: getfield 27	com/tencent/mm/plugin/appbrand/ui/recents/l:mlb	Ljava/util/ArrayList;
     //   43: iload_1
     //   44: aload_0
-    //   45: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:lJd	Ljava/util/ArrayList;
+    //   45: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:mla	Ljava/util/ArrayList;
     //   48: invokevirtual 50	java/util/ArrayList:size	()I
     //   51: isub
     //   52: invokevirtual 54	java/util/ArrayList:get	(I)Ljava/lang/Object;
@@ -95,7 +95,7 @@ final class l
     try
     {
       AppMethodBeat.i(49212);
-      paraml = e(paraml.lJd, paraml.lJe);
+      paraml = e(paraml.mla, paraml.mlb);
       AppMethodBeat.o(49212);
       return paraml;
     }
@@ -113,8 +113,8 @@ final class l
       try
       {
         paramCollection = (l)paramCollection;
-        this.lJd.addAll(paramCollection.lJd);
-        this.lJe.addAll(paramCollection.lJe);
+        this.mla.addAll(paramCollection.mla);
+        this.mlb.addAll(paramCollection.mlb);
         return true;
       }
       finally
@@ -127,11 +127,11 @@ final class l
     return false;
   }
   
-  final ArrayList<AppBrandRecentTaskInfo> bpM()
+  final ArrayList<AppBrandRecentTaskInfo> bwJ()
   {
     try
     {
-      ArrayList localArrayList = this.lJd;
+      ArrayList localArrayList = this.mla;
       return localArrayList;
     }
     finally
@@ -141,11 +141,11 @@ final class l
     }
   }
   
-  final ArrayList<AppBrandRecentTaskInfo> bpN()
+  final ArrayList<AppBrandRecentTaskInfo> bwK()
   {
     try
     {
-      ArrayList localArrayList = this.lJe;
+      ArrayList localArrayList = this.mlb;
       return localArrayList;
     }
     finally
@@ -155,14 +155,14 @@ final class l
     }
   }
   
-  public final l bpO()
+  public final l bwL()
   {
     try
     {
       AppMethodBeat.i(49214);
       l locall = new l();
-      locall.lJd.addAll(this.lJd);
-      locall.lJe.addAll(this.lJe);
+      locall.mla.addAll(this.mla);
+      locall.mlb.addAll(this.mlb);
       AppMethodBeat.o(49214);
       return locall;
     }
@@ -178,8 +178,8 @@ final class l
     try
     {
       AppMethodBeat.i(49218);
-      this.lJd.clear();
-      this.lJe.clear();
+      this.mla.clear();
+      this.mlb.clear();
       AppMethodBeat.o(49218);
       return;
     }
@@ -195,13 +195,13 @@ final class l
     try
     {
       AppMethodBeat.i(49211);
-      this.lJd.clear();
-      if (!bt.gL(paramArrayList1)) {
-        this.lJd.addAll(paramArrayList1);
+      this.mla.clear();
+      if (!bs.gY(paramArrayList1)) {
+        this.mla.addAll(paramArrayList1);
       }
-      this.lJe.clear();
-      if (!bt.gL(paramArrayList2)) {
-        this.lJe.addAll(paramArrayList2);
+      this.mlb.clear();
+      if (!bs.gY(paramArrayList2)) {
+        this.mlb.addAll(paramArrayList2);
       }
       AppMethodBeat.o(49211);
       return this;
@@ -272,8 +272,8 @@ final class l
     try
     {
       AppMethodBeat.i(49215);
-      int i = this.lJd.size();
-      int j = this.lJe.size();
+      int i = this.mla.size();
+      int j = this.mlb.size();
       AppMethodBeat.o(49215);
       return i + j;
     }
@@ -323,7 +323,7 @@ final class l
       localObject2 = new ArrayList(paramInt2 - paramInt1);
       while (paramInt1 < paramInt2)
       {
-        ((ArrayList)localObject2).add(uf(paramInt1));
+        ((ArrayList)localObject2).add(uX(paramInt1));
         paramInt1 += 1;
       }
       AppMethodBeat.o(49220);
@@ -331,7 +331,7 @@ final class l
   }
   
   /* Error */
-  public final AppBrandRecentTaskInfo ug(int paramInt)
+  public final AppBrandRecentTaskInfo uY(int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -340,11 +340,11 @@ final class l
     //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: iload_1
     //   8: aload_0
-    //   9: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:lJd	Ljava/util/ArrayList;
+    //   9: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:mla	Ljava/util/ArrayList;
     //   12: invokevirtual 50	java/util/ArrayList:size	()I
     //   15: if_icmpge +24 -> 39
     //   18: aload_0
-    //   19: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:lJd	Ljava/util/ArrayList;
+    //   19: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:mla	Ljava/util/ArrayList;
     //   22: iload_1
     //   23: invokevirtual 185	java/util/ArrayList:remove	(I)Ljava/lang/Object;
     //   26: checkcast 56	com/tencent/mm/plugin/appbrand/appusage/AppBrandRecentTaskInfo
@@ -356,10 +356,10 @@ final class l
     //   37: aload_2
     //   38: areturn
     //   39: aload_0
-    //   40: getfield 27	com/tencent/mm/plugin/appbrand/ui/recents/l:lJe	Ljava/util/ArrayList;
+    //   40: getfield 27	com/tencent/mm/plugin/appbrand/ui/recents/l:mlb	Ljava/util/ArrayList;
     //   43: iload_1
     //   44: aload_0
-    //   45: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:lJd	Ljava/util/ArrayList;
+    //   45: getfield 25	com/tencent/mm/plugin/appbrand/ui/recents/l:mla	Ljava/util/ArrayList;
     //   48: invokevirtual 50	java/util/ArrayList:size	()I
     //   51: isub
     //   52: invokevirtual 185	java/util/ArrayList:remove	(I)Ljava/lang/Object;
@@ -387,7 +387,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.l
  * JD-Core Version:    0.7.0.1
  */

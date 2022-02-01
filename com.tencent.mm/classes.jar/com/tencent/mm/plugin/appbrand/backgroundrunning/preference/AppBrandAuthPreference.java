@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AppBrandAuthPreference
   extends Preference
 {
-  private boolean dAt;
-  private String iYi;
-  private TextView iYj;
-  private CheckBox iYk;
+  private boolean dyf;
+  private TextView jyA;
+  private CheckBox jyB;
+  private String jyz;
   
   public AppBrandAuthPreference(Context paramContext)
   {
@@ -33,7 +33,7 @@ public class AppBrandAuthPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(44802);
-    this.dAt = false;
+    this.dyf = false;
     setLayoutResource(2131494804);
     AppMethodBeat.o(44802);
   }
@@ -42,15 +42,15 @@ public class AppBrandAuthPreference
   {
     AppMethodBeat.i(44804);
     super.onBindView(paramView);
-    this.iYk = ((CheckBox)paramView.findViewById(2131298255));
-    if (this.iYk != null) {
-      this.iYk.setChecked(this.dAt);
+    this.jyB = ((CheckBox)paramView.findViewById(2131298255));
+    if (this.jyB != null) {
+      this.jyB.setChecked(this.dyf);
     }
-    this.iYj = ((TextView)paramView.findViewById(2131296969));
-    if ((this.iYj != null) && (!bt.isNullOrNil(this.iYi))) {
-      this.iYj.setText(this.iYi);
+    this.jyA = ((TextView)paramView.findViewById(2131296969));
+    if ((this.jyA != null) && (!bs.isNullOrNil(this.jyz))) {
+      this.jyA.setText(this.jyz);
     }
-    Yb(8);
+    aam(8);
     AppMethodBeat.o(44804);
   }
   
@@ -65,19 +65,19 @@ public class AppBrandAuthPreference
     return paramViewGroup;
   }
   
-  public final void qR(int paramInt)
+  public final void rE(int paramInt)
   {
     AppMethodBeat.i(44805);
-    this.iYi = this.mContext.getString(paramInt);
+    this.jyz = this.mContext.getString(paramInt);
     AppMethodBeat.o(44805);
   }
   
   public final void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(44806);
-    this.dAt = paramBoolean;
-    if (this.iYk != null) {
-      this.iYk.setChecked(paramBoolean);
+    this.dyf = paramBoolean;
+    if (this.jyB != null) {
+      this.jyB.setChecked(paramBoolean);
     }
     AppMethodBeat.o(44806);
   }

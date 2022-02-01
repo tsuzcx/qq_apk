@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  private Class<?> aLv;
-  private Class<?> aLw;
-  private Class<?> aLx;
+  private Class<?> aMl;
+  private Class<?> aMm;
+  private Class<?> aMn;
   
   public h() {}
   
@@ -26,9 +26,9 @@ public final class h
   
   public final void d(Class<?> paramClass1, Class<?> paramClass2, Class<?> paramClass3)
   {
-    this.aLv = paramClass1;
-    this.aLw = paramClass2;
-    this.aLx = paramClass3;
+    this.aMl = paramClass1;
+    this.aMm = paramClass2;
+    this.aMn = paramClass3;
   }
   
   public final boolean equals(Object paramObject)
@@ -45,17 +45,17 @@ public final class h
       return false;
     }
     paramObject = (h)paramObject;
-    if (!this.aLv.equals(paramObject.aLv))
+    if (!this.aMl.equals(paramObject.aMl))
     {
       AppMethodBeat.o(77764);
       return false;
     }
-    if (!this.aLw.equals(paramObject.aLw))
+    if (!this.aMm.equals(paramObject.aMm))
     {
       AppMethodBeat.o(77764);
       return false;
     }
-    if (!j.e(this.aLx, paramObject.aLx))
+    if (!j.e(this.aMn, paramObject.aMn))
     {
       AppMethodBeat.o(77764);
       return false;
@@ -67,10 +67,10 @@ public final class h
   public final int hashCode()
   {
     AppMethodBeat.i(77765);
-    int j = this.aLv.hashCode();
-    int k = this.aLw.hashCode();
-    if (this.aLx != null) {}
-    for (int i = this.aLx.hashCode();; i = 0)
+    int j = this.aMl.hashCode();
+    int k = this.aMm.hashCode();
+    if (this.aMn != null) {}
+    for (int i = this.aMn.hashCode();; i = 0)
     {
       AppMethodBeat.o(77765);
       return i + (j * 31 + k) * 31;
@@ -80,14 +80,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(77763);
-    String str = "MultiClassKey{first=" + this.aLv + ", second=" + this.aLw + '}';
+    String str = "MultiClassKey{first=" + this.aMl + ", second=" + this.aMm + '}';
     AppMethodBeat.o(77763);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.h
  * JD-Core Version:    0.7.0.1
  */

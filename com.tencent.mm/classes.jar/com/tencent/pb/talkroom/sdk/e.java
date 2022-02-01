@@ -4,7 +4,7 @@ public abstract interface e
 {
   public abstract boolean F(int paramInt, String paramString1, String paramString2);
   
-  public abstract int WG();
+  public abstract int XE();
   
   public abstract int a(int paramInt1, int paramInt2, b paramb);
   
@@ -12,23 +12,23 @@ public abstract interface e
   
   public abstract boolean c(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract boolean cRJ();
+  public abstract int dfA();
   
-  public abstract int cRK();
+  public abstract boolean dft();
   
-  public abstract boolean cRL();
+  public abstract int dfu();
   
-  public abstract boolean cRM();
+  public abstract boolean dfv();
   
-  public abstract int cRN();
+  public abstract boolean dfw();
   
-  public abstract int cRO();
+  public abstract int dfx();
   
-  public abstract int cRP();
+  public abstract int dfy();
   
-  public abstract int cRQ();
+  public abstract int dfz();
   
-  public abstract boolean nw(boolean paramBoolean);
+  public abstract boolean oq(boolean paramBoolean);
 }
 
 

@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.vfs.q;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class d
 {
-  public static d ovq;
-  public boolean ovr;
-  private Pattern ovs;
+  public static d oYQ;
+  public boolean oYR;
+  private Pattern oYS;
   
   public d()
   {
     AppMethodBeat.i(108423);
-    this.ovr = false;
-    this.ovs = Pattern.compile("_\\d");
+    this.oYR = false;
+    this.oYS = Pattern.compile("_\\d");
     AppMethodBeat.o(108423);
   }
   
-  public static d bUB()
+  public static d cbO()
   {
     AppMethodBeat.i(108424);
-    if (ovq == null) {}
+    if (oYQ == null) {}
     try
     {
-      ovq = new d();
-      d locald = ovq;
+      oYQ = new d();
+      d locald = oYQ;
       AppMethodBeat.o(108424);
       return locald;
     }
@@ -40,13 +40,13 @@ public class d
     }
   }
   
-  public final void Tx(String paramString)
+  public final void XJ(String paramString)
   {
     AppMethodBeat.i(108425);
     paramString = new com.tencent.mm.vfs.e(paramString);
     if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      paramString = paramString.fhW();
+      paramString = paramString.fxX();
       if ((paramString != null) && (paramString.length > 0))
       {
         int j = paramString.length;
@@ -54,22 +54,22 @@ public class d
         if (i < j)
         {
           Object localObject = paramString[i];
-          if (this.ovr)
+          if (this.oYR)
           {
             if (localObject.isDirectory()) {
-              Tx(q.B(localObject.mUri));
+              XJ(q.B(localObject.mUri));
             }
             for (;;)
             {
               i += 1;
               break;
               String str = localObject.getName();
-              if ((this.ovs.matcher(str).find()) || (str.startsWith("temp"))) {
+              if ((this.oYS.matcher(str).find()) || (str.startsWith("temp"))) {
                 localObject.delete();
               }
             }
           }
-          ad.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
+          ac.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
           AppMethodBeat.o(108425);
           return;
         }
@@ -78,13 +78,13 @@ public class d
     AppMethodBeat.o(108425);
   }
   
-  public final void Ty(String paramString)
+  public final void XK(String paramString)
   {
     AppMethodBeat.i(108426);
     paramString = new com.tencent.mm.vfs.e(paramString);
     if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      paramString = paramString.fhW();
+      paramString = paramString.fxX();
       if ((paramString != null) && (paramString.length > 0))
       {
         int j = paramString.length;
@@ -93,7 +93,7 @@ public class d
         {
           Object localObject = paramString[i];
           if (localObject.isDirectory()) {
-            Ty(q.B(localObject.mUri));
+            XK(q.B(localObject.mUri));
           }
           for (;;)
           {

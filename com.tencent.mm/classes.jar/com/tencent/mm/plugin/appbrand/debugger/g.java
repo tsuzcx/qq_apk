@@ -4,30 +4,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.c.e;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.f;
 import d.g.a.a;
 import d.g.b.u;
 import d.g.b.w;
 import d.l.k;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/debugger/MockScanCodeUrl;", "Lcom/tencent/mm/plugin/appbrand/debugger/DebuggerShell$DebuggerAction;", "()V", "handler", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "handler$delegate", "Lkotlin/Lazy;", "name", "", "onAction", "", "intent", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/debugger/MockScanCodeUrl;", "Lcom/tencent/mm/plugin/appbrand/debugger/DebuggerShell$DebuggerAction;", "()V", "handler", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "handler$delegate", "Lkotlin/Lazy;", "name", "", "onAction", "", "intent", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
 public final class g
   implements DebuggerShell.a
 {
-  private final f jgk;
+  private final f jGz;
   
   static
   {
     AppMethodBeat.i(50348);
-    $$delegatedProperties = new k[] { (k)w.a(new u(w.bk(g.class), "handler", "getHandler()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;")) };
+    $$delegatedProperties = new k[] { (k)w.a(new u(w.bn(g.class), "handler", "getHandler()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;")) };
     AppMethodBeat.o(50348);
   }
   
   public g()
   {
     AppMethodBeat.i(50350);
-    this.jgk = d.g.E((a)a.jgl);
+    this.jGz = d.g.K((a)a.jGA);
     AppMethodBeat.o(50350);
   }
   
@@ -39,7 +39,7 @@ public final class g
       paramIntent = paramIntent.getStringExtra("url");
       if (paramIntent != null)
       {
-        ((e)this.jgk.getValue()).a(aj.getContext(), paramIntent, 1011, new Bundle());
+        ((e)this.jGz.getValue()).a(ai.getContext(), paramIntent, 1011, new Bundle());
         AppMethodBeat.o(50349);
         return;
       }
@@ -52,17 +52,17 @@ public final class g
     return "MockScanCodeUrl";
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "invoke"})
   static final class a
     extends d.g.b.l
     implements a<e>
   {
-    public static final a jgl;
+    public static final a jGA;
     
     static
     {
       AppMethodBeat.i(50347);
-      jgl = new a();
+      jGA = new a();
       AppMethodBeat.o(50347);
     }
     
@@ -74,7 +74,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.g
  * JD-Core Version:    0.7.0.1
  */

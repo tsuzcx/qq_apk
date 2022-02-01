@@ -31,21 +31,21 @@ final class c
   public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
     AppMethodBeat.i(121256);
-    final String str = paramd.gbC.getString("id", "");
+    final String str = paramd.ggi.getString("id", "");
     if (paramString.startsWith("wxfile://"))
     {
-      paramd = AppBrandLocalMediaObjectManager.fU(str, paramString);
-      if ((paramd == null) || (TextUtils.isEmpty(paramd.gPG)))
+      paramd = AppBrandLocalMediaObjectManager.cl(str, paramString);
+      if ((paramd == null) || (TextUtils.isEmpty(paramd.hqg)))
       {
         AppMethodBeat.o(121256);
         return null;
       }
-      paramString = paramd.gPG;
+      paramString = paramd.hqg;
       paramd = paramString;
       if (!paramString.startsWith("file://")) {
         paramd = "file://".concat(String.valueOf(paramString));
       }
-      paramd = b.aub().a(paramd, null);
+      paramd = b.aAS().a(paramd, null);
     }
     for (;;)
     {
@@ -53,12 +53,12 @@ final class c
       return paramd;
       if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
       {
-        paramRect = b.aub().a(paramString, null);
+        paramRect = b.aAS().a(paramString, null);
         if (paramRect == null)
         {
-          b.aub().a(new b.k()
+          b.aAS().a(new b.k()
           {
-            public final String AL()
+            public final String Ap()
             {
               return "WxaWidgetIcon";
             }
@@ -75,15 +75,15 @@ final class c
               AppMethodBeat.o(121252);
             }
             
-            public final void auj() {}
+            public final void aBa() {}
             
-            public final void nV()
+            public final void of()
             {
               AppMethodBeat.i(121253);
               Bundle localBundle = new Bundle();
               localBundle.putString("id", str);
               localBundle.putInt("widgetState", 2103);
-              h.a(i.aVi().GW(str), localBundle, f.a.class, null);
+              h.a(i.bcg().La(str), localBundle, f.a.class, null);
               AppMethodBeat.o(121253);
             }
           }, paramString, null, null);
@@ -92,7 +92,7 @@ final class c
       }
       else
       {
-        paramd = a.cy(str, paramString);
+        paramd = a.cI(str, paramString);
         continue;
       }
       paramd = paramRect;
@@ -109,7 +109,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.c
  * JD-Core Version:    0.7.0.1
  */

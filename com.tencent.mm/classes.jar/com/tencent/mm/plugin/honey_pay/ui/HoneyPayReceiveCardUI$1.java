@@ -21,7 +21,7 @@ final class HoneyPayReceiveCardUI$1
     {
       paramu = paramu.data;
       if ((paramu != null) && ((paramu instanceof Bundle)) && (((Bundle)paramu).getBoolean("click_help", false))) {
-        com.tencent.mm.plugin.report.service.h.vKh.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.h.wUl.f(15191, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
       }
     }
     AppMethodBeat.o(64824);
@@ -30,7 +30,7 @@ final class HoneyPayReceiveCardUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayReceiveCardUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,78 +5,25 @@ import java.io.PrintStream;
 
 public final class h
 {
-  l bWt;
-  private final com.d.a.b.a.a bWw;
-  int bWx;
-  com.d.a.c.k<String> bWy = new com.d.a.c.k();
-  com.d.a.c.k<String> bWz = new com.d.a.c.k();
+  l bUb;
+  private final com.d.a.b.a.a bUe;
+  int bUf;
+  com.d.a.c.k<String> bUg = new com.d.a.c.k();
+  com.d.a.c.k<String> bUh = new com.d.a.c.k();
   
   public h(com.d.a.b.a.a parama)
   {
-    this.bWw = parama;
-  }
-  
-  private long Ae()
-  {
-    switch (this.bWx)
-    {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      throw new IllegalArgumentException("ID Length must be 1, 2, 4, or 8");
-    case 1: 
-      return this.bWw.readByte();
-    case 2: 
-      return this.bWw.readShort();
-    case 4: 
-      return this.bWw.readInt();
-    }
-    return this.bWw.readLong();
-  }
-  
-  private void Af()
-  {
-    int j = this.bWw.readInt();
-    int k = this.bWw.readInt();
-    int m = this.bWw.readInt();
-    Object localObject = new m[m];
-    int i = 0;
-    while (i < m)
-    {
-      l locall = this.bWt;
-      long l = Ae();
-      localObject[i] = ((m)locall.bXg.bWm.get(l));
-      i += 1;
-    }
-    localObject = new n(j, k, (m[])localObject);
-    this.bWt.bXg.bWn.d(((n)localObject).bXl, localObject);
-  }
-  
-  private int Ag()
-  {
-    long l = Ae();
-    int i = this.bWw.readInt();
-    Object localObject = this.bWt.gr(i);
-    i = this.bWw.readInt();
-    p localp = p.gv(readUnsignedByte());
-    int j = this.bWt.b(localp);
-    localObject = new a(l, (n)localObject, localp, i, this.bWw.position());
-    this.bWt.a(l, (i)localObject);
-    i *= j;
-    aH(i);
-    return i + (this.bWx + 4 + 4 + 1);
+    this.bUe = parama;
   }
   
   private int a(k paramk)
   {
-    paramk = new j(paramk, Ae());
-    this.bWt.a(paramk);
-    return this.bWx;
+    paramk = new j(paramk, zR());
+    this.bUb.a(paramk);
+    return this.bUf;
   }
   
-  private void aG(long paramLong)
+  private void aC(long paramLong)
   {
     while (paramLong > 0L)
     {
@@ -89,261 +36,314 @@ public final class h
       switch (i)
       {
       default: 
-        throw new IllegalArgumentException("loadHeapDump loop with unknown tag " + i + " with " + this.bWw.An() + " bytes possibly remaining");
+        throw new IllegalArgumentException("loadHeapDump loop with unknown tag " + i + " with " + this.bUe.Aa() + " bytes possibly remaining");
       case 255: 
-        paramLong -= a(k.bWO);
+        paramLong -= a(k.bUw);
         break;
       case 1: 
-        l1 = a(k.bWT);
-        Ae();
-        paramLong = paramLong - l1 - this.bWx;
+        l1 = a(k.bUB);
+        zR();
+        paramLong = paramLong - l1 - this.bUf;
         break;
       case 2: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        j = this.bWw.readInt();
-        localObject1 = this.bWt.gs(i);
-        localObject1 = this.bWt.bT(((o)localObject1).bXq, j);
-        localObject1 = new j(k.bWS, l1, i, (n)localObject1);
-        this.bWt.a((j)localObject1);
-        paramLong -= this.bWx + 4 + 4;
+        l1 = zR();
+        i = this.bUe.readInt();
+        j = this.bUe.readInt();
+        localObject1 = this.bUb.gd(i);
+        localObject1 = this.bUb.bQ(((o)localObject1).bUY, j);
+        localObject1 = new j(k.bUA, l1, i, (n)localObject1);
+        this.bUb.a((j)localObject1);
+        paramLong -= this.bUf + 4 + 4;
         break;
       case 3: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        j = this.bWw.readInt();
-        localObject1 = this.bWt.gs(i);
-        localObject1 = this.bWt.bT(((o)localObject1).bXq, j);
-        localObject1 = new j(k.bWZ, l1, i, (n)localObject1);
-        this.bWt.a((j)localObject1);
-        paramLong -= this.bWx + 4 + 4;
+        l1 = zR();
+        i = this.bUe.readInt();
+        j = this.bUe.readInt();
+        localObject1 = this.bUb.gd(i);
+        localObject1 = this.bUb.bQ(((o)localObject1).bUY, j);
+        localObject1 = new j(k.bUH, l1, i, (n)localObject1);
+        this.bUb.a((j)localObject1);
+        paramLong -= this.bUf + 4 + 4;
         break;
       case 4: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = this.bWt.gs(i);
-        localObject1 = this.bWt.gr(((o)localObject1).bXq);
-        localObject1 = new j(k.bXa, l1, i, (n)localObject1);
-        this.bWt.a((j)localObject1);
-        paramLong -= this.bWx + 4;
+        l1 = zR();
+        i = this.bUe.readInt();
+        localObject1 = this.bUb.gd(i);
+        localObject1 = this.bUb.gc(((o)localObject1).bUY);
+        localObject1 = new j(k.bUI, l1, i, (n)localObject1);
+        this.bUb.a((j)localObject1);
+        paramLong -= this.bUf + 4;
         break;
       case 5: 
-        paramLong -= a(k.bWP);
+        paramLong -= a(k.bUx);
         break;
       case 6: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = this.bWt.gs(i);
-        localObject1 = this.bWt.gr(((o)localObject1).bXq);
-        localObject1 = new j(k.bWU, l1, i, (n)localObject1);
-        this.bWt.a((j)localObject1);
-        paramLong -= this.bWx + 4;
+        l1 = zR();
+        i = this.bUe.readInt();
+        localObject1 = this.bUb.gd(i);
+        localObject1 = this.bUb.gc(((o)localObject1).bUY);
+        localObject1 = new j(k.bUC, l1, i, (n)localObject1);
+        this.bUb.a((j)localObject1);
+        paramLong -= this.bUf + 4;
         break;
       case 7: 
-        paramLong -= a(k.bWV);
+        paramLong -= a(k.bUD);
         break;
       case 8: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = new o(l1, this.bWw.readInt());
-        this.bWt.bXg.bWp.d(i, localObject1);
-        paramLong -= this.bWx + 4 + 4;
+        l1 = zR();
+        i = this.bUe.readInt();
+        localObject1 = new o(l1, this.bUe.readInt());
+        this.bUb.bUO.bTX.d(i, localObject1);
+        paramLong -= this.bUf + 4 + 4;
         break;
       case 32: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = this.bWt.gr(i);
-        l2 = Ae();
-        long l3 = Ae();
-        Ae();
-        Ae();
-        Ae();
-        Ae();
-        int k = this.bWw.readInt();
-        i = this.bWx;
+        l1 = zR();
+        i = this.bUe.readInt();
+        localObject1 = this.bUb.gc(i);
+        l2 = zR();
+        long l3 = zR();
+        zR();
+        zR();
+        zR();
+        zR();
+        int k = this.bUe.readInt();
+        i = this.bUf;
         int m = readUnsignedShort();
         j = 0;
         int n;
         for (i = i * 7 + 4 + 4 + 2; j < m; i = n + 1 + 2 + i)
         {
           readUnsignedShort();
-          localObject2 = p.gv(readUnsignedByte());
-          n = this.bWt.b((p)localObject2);
-          aH(n);
+          localObject2 = p.gg(readUnsignedByte());
+          n = this.bUb.b((p)localObject2);
+          aD(n);
           j += 1;
         }
-        localObject1 = new c(l1, (n)localObject1, (String)this.bWz.get(l1), this.bWw.position());
-        ((c)localObject1).bWb = l2;
-        ((c)localObject1).bWc = l3;
+        localObject1 = new c(l1, (n)localObject1, (String)this.bUh.get(l1), this.bUe.position());
+        ((c)localObject1).bTJ = l2;
+        ((c)localObject1).bTK = l3;
         m = readUnsignedShort();
         i += 2;
         Object localObject2 = new d[m];
         j = 0;
         while (j < m)
         {
-          localObject3 = (String)this.bWy.get(Ae());
-          p localp = p.gv(this.bWw.readByte());
+          localObject3 = (String)this.bUg.get(zR());
+          p localp = p.gg(this.bUe.readByte());
           localObject2[j] = new d(localp, (String)localObject3);
-          aH(this.bWt.b(localp));
-          i += this.bWx + 1 + this.bWt.b(localp);
+          aD(this.bUb.b(localp));
+          i += this.bUf + 1 + this.bUb.b(localp);
           j += 1;
         }
-        ((c)localObject1).bWe = ((d[])localObject2);
+        ((c)localObject1).bTM = ((d[])localObject2);
         m = readUnsignedShort();
         j = i + 2;
         localObject2 = new d[m];
         i = 0;
         while (i < m)
         {
-          localObject3 = (String)this.bWy.get(Ae());
-          localObject2[i] = new d(p.gv(readUnsignedByte()), (String)localObject3);
-          j += this.bWx + 1;
+          localObject3 = (String)this.bUg.get(zR());
+          localObject2[i] = new d(p.gg(readUnsignedByte()), (String)localObject3);
+          j += this.bUf + 1;
           i += 1;
         }
-        ((c)localObject1).bWd = ((d[])localObject2);
-        ((c)localObject1).bWf = k;
-        localObject2 = this.bWt;
-        Object localObject3 = ((l)localObject2).bXg;
-        ((g)localObject3).bWq.a(l1, localObject1);
-        ((g)localObject3).bWr.h(((c)localObject1).mClassName, localObject1);
-        ((i)localObject1).bWC = ((l)localObject2).bXg;
+        ((c)localObject1).bTL = ((d[])localObject2);
+        ((c)localObject1).bTN = k;
+        localObject2 = this.bUb;
+        Object localObject3 = ((l)localObject2).bUO;
+        ((g)localObject3).bTY.a(l1, localObject1);
+        ((g)localObject3).bTZ.h(((c)localObject1).mClassName, localObject1);
+        ((i)localObject1).bUk = ((l)localObject2).bUO;
         paramLong -= j;
         break;
       case 33: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = this.bWt.gr(i);
-        l2 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = new b(l1, (n)localObject1, this.bWw.position());
-        ((i)localObject1).bWB = l2;
-        this.bWt.a(l1, (i)localObject1);
-        aH(i);
-        paramLong -= this.bWx + 4 + this.bWx + 4 + i;
+        l1 = zR();
+        i = this.bUe.readInt();
+        localObject1 = this.bUb.gc(i);
+        l2 = zR();
+        i = this.bUe.readInt();
+        localObject1 = new b(l1, (n)localObject1, this.bUe.position());
+        ((i)localObject1).bUj = l2;
+        this.bUb.a(l1, (i)localObject1);
+        aD(i);
+        paramLong -= this.bUf + 4 + this.bUf + 4 + i;
         break;
       case 34: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        localObject1 = this.bWt.gr(i);
-        i = this.bWw.readInt();
-        l2 = Ae();
-        localObject1 = new a(l1, (n)localObject1, p.bXr, i, this.bWw.position());
-        ((i)localObject1).bWB = l2;
-        this.bWt.a(l1, (i)localObject1);
-        i = this.bWx * i;
-        aH(i);
-        paramLong -= i + (this.bWx + 4 + 4 + this.bWx);
+        l1 = zR();
+        i = this.bUe.readInt();
+        localObject1 = this.bUb.gc(i);
+        i = this.bUe.readInt();
+        l2 = zR();
+        localObject1 = new a(l1, (n)localObject1, p.bUZ, i, this.bUe.position());
+        ((i)localObject1).bUj = l2;
+        this.bUb.a(l1, (i)localObject1);
+        i = this.bUf * i;
+        aD(i);
+        paramLong -= i + (this.bUf + 4 + 4 + this.bUf);
         break;
       case 35: 
-        paramLong -= Ag();
+        paramLong -= zT();
         break;
       case 195: 
         System.err.println("+--- PRIMITIVE ARRAY NODATA DUMP");
-        Ag();
+        zT();
         throw new IllegalArgumentException("Don't know how to load a nodata array");
       case 254: 
-        i = this.bWw.readInt();
-        l1 = Ae();
-        localObject1 = (String)this.bWy.get(l1);
-        this.bWt.f(i, (String)localObject1);
-        paramLong -= this.bWx + 4;
+        i = this.bUe.readInt();
+        l1 = zR();
+        localObject1 = (String)this.bUg.get(l1);
+        this.bUb.f(i, (String)localObject1);
+        paramLong -= this.bUf + 4;
         break;
       case 137: 
-        paramLong -= a(k.bWN);
+        paramLong -= a(k.bUv);
         break;
       case 138: 
-        paramLong -= a(k.bWY);
+        paramLong -= a(k.bUG);
         break;
       case 139: 
-        paramLong -= a(k.bWR);
+        paramLong -= a(k.bUz);
         break;
       case 140: 
-        paramLong -= a(k.bWX);
+        paramLong -= a(k.bUF);
         break;
       case 141: 
-        paramLong -= a(k.bWQ);
+        paramLong -= a(k.bUy);
         break;
       case 142: 
-        l1 = Ae();
-        i = this.bWw.readInt();
-        j = this.bWw.readInt();
-        localObject1 = this.bWt.gs(i);
-        localObject1 = this.bWt.bT(((o)localObject1).bXq, j);
-        localObject1 = new j(k.bWW, l1, i, (n)localObject1);
-        this.bWt.a((j)localObject1);
-        paramLong -= this.bWx + 4 + 4;
+        l1 = zR();
+        i = this.bUe.readInt();
+        j = this.bUe.readInt();
+        localObject1 = this.bUb.gd(i);
+        localObject1 = this.bUb.bQ(((o)localObject1).bUY, j);
+        localObject1 = new j(k.bUE, l1, i, (n)localObject1);
+        this.bUb.a((j)localObject1);
+        paramLong -= this.bUf + 4 + 4;
         break;
       }
-      paramLong -= a(k.bWL);
+      paramLong -= a(k.bUt);
     }
   }
   
-  private void aH(long paramLong)
+  private void aD(long paramLong)
   {
-    this.bWw.aK(this.bWw.position() + paramLong);
+    this.bUe.aG(this.bUe.position() + paramLong);
   }
   
   private int readUnsignedByte()
   {
-    return this.bWw.readByte() & 0xFF;
+    return this.bUe.readByte() & 0xFF;
   }
   
   private int readUnsignedShort()
   {
-    return this.bWw.readShort() & 0xFFFF;
+    return this.bUe.readShort() & 0xFFFF;
   }
   
-  public final l Ad()
+  private long zR()
   {
-    locall = new l(this.bWw);
-    this.bWt = locall;
+    switch (this.bUf)
+    {
+    case 3: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      throw new IllegalArgumentException("ID Length must be 1, 2, 4, or 8");
+    case 1: 
+      return this.bUe.readByte();
+    case 2: 
+      return this.bUe.readShort();
+    case 4: 
+      return this.bUe.readInt();
+    }
+    return this.bUe.readLong();
+  }
+  
+  private void zS()
+  {
+    int j = this.bUe.readInt();
+    int k = this.bUe.readInt();
+    int m = this.bUe.readInt();
+    Object localObject = new m[m];
+    int i = 0;
+    while (i < m)
+    {
+      l locall = this.bUb;
+      long l = zR();
+      localObject[i] = ((m)locall.bUO.bTU.get(l));
+      i += 1;
+    }
+    localObject = new n(j, k, (m[])localObject);
+    this.bUb.bUO.bTV.d(((n)localObject).bUT, localObject);
+  }
+  
+  private int zT()
+  {
+    long l = zR();
+    int i = this.bUe.readInt();
+    Object localObject = this.bUb.gc(i);
+    i = this.bUe.readInt();
+    p localp = p.gg(readUnsignedByte());
+    int j = this.bUb.b(localp);
+    localObject = new a(l, (n)localObject, localp, i, this.bUe.position());
+    this.bUb.a(l, (i)localObject);
+    i *= j;
+    aD(i);
+    return i + (this.bUf + 4 + 4 + 1);
+  }
+  
+  public final l zQ()
+  {
+    locall = new l(this.bUe);
+    this.bUb = locall;
     for (;;)
     {
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        i = this.bWw.readByte();
+        i = this.bUe.readByte();
         if (i != 0)
         {
           localStringBuilder.append((char)i);
-          i = this.bWw.readByte();
+          i = this.bUe.readByte();
           continue;
         }
-        this.bWx = this.bWw.readInt();
-        this.bWt.gu(this.bWx);
-        this.bWw.readLong();
+        this.bUf = this.bUe.readInt();
+        this.bUb.gf(this.bUf);
+        this.bUe.readLong();
       }
       catch (EOFException localEOFException)
       {
-        this.bWt.Al();
-        this.bWt.Am();
-        this.bWz.clear();
-        this.bWy.clear();
+        this.bUb.zY();
+        this.bUb.zZ();
+        this.bUh.clear();
+        this.bUg.clear();
         return locall;
         int i = (int)l;
-        int j = this.bWx;
-        long l = Ae();
+        int j = this.bUf;
+        long l = zR();
         Object localObject = new byte[i - j];
-        this.bWw.A((byte[])localObject);
+        this.bUe.y((byte[])localObject);
         localObject = new String((byte[])localObject, "utf-8");
-        this.bWy.a(l, localObject);
+        this.bUg.a(l, localObject);
         continue;
-        this.bWw.readInt();
-        l = Ae();
-        this.bWw.readInt();
-        localObject = (String)this.bWy.get(Ae());
-        this.bWz.a(l, localObject);
+        this.bUe.readInt();
+        l = zR();
+        this.bUe.readInt();
+        localObject = (String)this.bUg.get(zR());
+        this.bUh.a(l, localObject);
         continue;
-        localObject = new m(Ae(), (String)this.bWy.get(Ae()), (String)this.bWy.get(Ae()), (String)this.bWy.get(Ae()), this.bWw.readInt(), this.bWw.readInt());
-        this.bWt.bXg.bWm.a(((m)localObject).JV, localObject);
+        localObject = new m(zR(), (String)this.bUg.get(zR()), (String)this.bUg.get(zR()), (String)this.bUg.get(zR()), this.bUe.readInt(), this.bUe.readInt());
+        this.bUb.bUO.bTU.a(((m)localObject).KQ, localObject);
         continue;
-        Af();
+        zS();
         continue;
-        aG(l);
-        this.bWt.f(0, "default");
+        aC(l);
+        this.bUb.f(0, "default");
         continue;
-        aG(l);
-        this.bWt.f(0, "default");
+        aC(l);
+        this.bUb.f(0, "default");
         continue;
         continue;
       }
@@ -351,16 +351,16 @@ public final class h
       {
         continue;
       }
-      if (!this.bWw.hasRemaining()) {
+      if (!this.bUe.hasRemaining()) {
         continue;
       }
       i = readUnsignedByte();
-      this.bWw.readInt();
-      l = this.bWw.readInt() & 0xFFFFFFFF;
+      this.bUe.readInt();
+      l = this.bUe.readInt() & 0xFFFFFFFF;
       switch (i)
       {
       case 1: 
-        aH(l);
+        aD(l);
       }
     }
   }

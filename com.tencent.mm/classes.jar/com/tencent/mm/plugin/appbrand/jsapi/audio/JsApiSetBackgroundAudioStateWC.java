@@ -17,8 +17,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.a;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
 import com.tencent.mm.plugin.image.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,14 +36,14 @@ public final class JsApiSetBackgroundAudioStateWC
   protected final void a(String paramString, c paramc)
   {
     AppMethodBeat.i(45956);
-    if (this.jBx != null)
+    if (this.kbT != null)
     {
       k localk = (k)paramc.ar(k.class);
-      this.jBx.dkC = localk.jdS.iOQ;
-      this.jBx.dfM = localk.dfM;
-      this.jBx.dkB = AppBrandRuntimeWCAccessible.c(paramc);
-      ad.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "pkgType:%d, brandName:%s, appUserName", new Object[] { Integer.valueOf(this.jBx.dkC), this.jBx.dfM, this.jBx.dkB });
-      synchronized (y.arz().E(paramString, true))
+      this.kbT.dib = localk.jEg.jpa;
+      this.kbT.ddh = localk.ddh;
+      this.kbT.dia = AppBrandRuntimeWCAccessible.c(paramc);
+      ac.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "pkgType:%d, brandName:%s, appUserName", new Object[] { Integer.valueOf(this.kbT.dib), this.kbT.ddh, this.kbT.dia });
+      synchronized (y.ayq().F(paramString, true))
       {
         f localf = (f)???.get("StickyBannerChangeListener", null);
         paramString = localf;
@@ -51,22 +51,22 @@ public final class JsApiSetBackgroundAudioStateWC
         {
           paramString = new f()
           {
-            public final void bv(String paramAnonymousString, int paramAnonymousInt)
+            public final void bz(String paramAnonymousString, int paramAnonymousInt)
             {
               AppMethodBeat.i(45950);
               String str = localb.getString("appId", "");
               int i = localb.getInt("pkgType", 0);
-              if (((!str.equals(paramAnonymousString)) || (i != paramAnonymousInt)) && (localb.tE("setBackgroundAudioState#isPlaying")) && (g.De(str) != g.b.iCX))
+              if (((!str.equals(paramAnonymousString)) || (i != paramAnonymousInt)) && (localb.xK("setBackgroundAudioState#isPlaying")) && (g.Hh(str) != g.b.jcX))
               {
-                ad.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "onStickyBannerChanged, pause the music");
+                ac.i("MicroMsg.Music.JsApiSetBackgroundAudioState", "onStickyBannerChanged, pause the music");
                 paramAnonymousString = new JSONObject();
               }
               try
               {
                 paramAnonymousString.put("operationType", "pause");
                 label90:
-                JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask localSetBackgroundAudioStateTask = JsApiSetBackgroundAudioStateWC.this.b(JsApiSetBackgroundAudioStateWC.this, JsApiSetBackgroundAudioStateWC.this.jBx.jyl, JsApiSetBackgroundAudioStateWC.this.jBx.joH);
-                localSetBackgroundAudioStateTask.jBA = paramAnonymousString.toString();
+                JsApiSetBackgroundAudioState.SetBackgroundAudioStateTask localSetBackgroundAudioStateTask = JsApiSetBackgroundAudioStateWC.this.b(JsApiSetBackgroundAudioStateWC.this, JsApiSetBackgroundAudioStateWC.this.kbT.jYG, JsApiSetBackgroundAudioStateWC.this.kbT.jOT);
+                localSetBackgroundAudioStateTask.kbW = paramAnonymousString.toString();
                 localSetBackgroundAudioStateTask.appId = str;
                 AppBrandMainProcessService.a(localSetBackgroundAudioStateTask);
                 AppMethodBeat.o(45950);
@@ -78,14 +78,14 @@ public final class JsApiSetBackgroundAudioStateWC
               }
             }
           };
-          ???.m("pkgType", Integer.valueOf(localk.jdS.iOQ));
-          ???.m("StickyBannerChangeListener", paramString);
-          ???.m("appId", paramc.getAppId());
+          ???.l("pkgType", Integer.valueOf(localk.jEg.jpa));
+          ???.l("StickyBannerChangeListener", paramString);
+          ???.l("appId", paramc.getAppId());
         }
-        if ((this.jBx instanceof SetBackgroundAudioListenerTaskWC))
+        if ((this.kbT instanceof SetBackgroundAudioListenerTaskWC))
         {
-          ((SetBackgroundAudioListenerTaskWC)this.jBx).jBG = paramString;
-          ((SetBackgroundAudioListenerTaskWC)this.jBx).jBF = ???;
+          ((SetBackgroundAudioListenerTaskWC)this.kbT).kcc = paramString;
+          ((SetBackgroundAudioListenerTaskWC)this.kbT).kcb = ???;
         }
         AppMethodBeat.o(45956);
         return;
@@ -106,8 +106,8 @@ public final class JsApiSetBackgroundAudioStateWC
     extends JsApiSetBackgroundAudioState.SetBackgroundAudioListenerTask
   {
     private Context context;
-    public y.b jBF;
-    public f jBG;
+    public y.b kcb;
+    public f kcc;
     
     public SetBackgroundAudioListenerTaskWC(a parama, c paramc, int paramInt)
     {
@@ -117,7 +117,7 @@ public final class JsApiSetBackgroundAudioStateWC
       AppMethodBeat.o(45951);
     }
     
-    protected final void rv(int paramInt)
+    protected final void sk(int paramInt)
     {
       AppMethodBeat.i(45952);
       switch (paramInt)
@@ -130,9 +130,9 @@ public final class JsApiSetBackgroundAudioStateWC
         return;
       case 0: 
       case 1: 
-        this.jBF.m("setBackgroundAudioState#isPlaying", Boolean.TRUE);
-        AppBrandStickyBannerLogic.a.d(this.jBG);
-        if (!b.bZ(aj.getContext())) {
+        this.kcb.l("setBackgroundAudioState#isPlaying", Boolean.TRUE);
+        AppBrandStickyBannerLogic.a.d(this.kcc);
+        if (!b.cc(ai.getContext())) {
           AppBrandFloatBallPermissionHelper.a(this.context, 6, null);
         }
         AppMethodBeat.o(45952);
@@ -141,8 +141,8 @@ public final class JsApiSetBackgroundAudioStateWC
       case 3: 
       case 4: 
       case 7: 
-        this.jBF.m("setBackgroundAudioState#isPlaying", Boolean.FALSE);
-        AppBrandStickyBannerLogic.a.c(this.jBG);
+        this.kcb.l("setBackgroundAudioState#isPlaying", Boolean.FALSE);
+        AppBrandStickyBannerLogic.a.c(this.kcc);
         AppMethodBeat.o(45952);
         return;
       case 10: 
@@ -169,10 +169,10 @@ public final class JsApiSetBackgroundAudioStateWC
       super(paramc, paramInt);
     }
     
-    public final String HM(String paramString)
+    public final String LQ(String paramString)
     {
       AppMethodBeat.i(45953);
-      paramString = d.apW() + paramString.hashCode();
+      paramString = d.awL() + paramString.hashCode();
       AppMethodBeat.o(45953);
       return paramString;
     }

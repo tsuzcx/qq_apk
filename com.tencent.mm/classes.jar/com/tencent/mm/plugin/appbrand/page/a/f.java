@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public abstract class f
   extends a
 {
-  public final LinkedList<f.a> lgF = new LinkedList()
+  public final LinkedList<f.a> lGz = new LinkedList()
   {
     public final boolean remove(Object paramAnonymousObject)
     {
@@ -18,21 +18,21 @@ public abstract class f
     }
   };
   
-  public final c.a bkL()
+  public final c.a brA()
   {
     f.a locala = new f.a(this);
-    this.lgF.addFirst(locala);
+    this.lGz.addFirst(locala);
     return locala;
   }
   
   public final void destroy()
   {
-    this.lgF.clear();
+    this.lGz.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.f
  * JD-Core Version:    0.7.0.1
  */

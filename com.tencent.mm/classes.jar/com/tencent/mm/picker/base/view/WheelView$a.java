@@ -7,10 +7,10 @@ public enum WheelView$a
   static
   {
     AppMethodBeat.i(175302);
-    hRT = new a("CLICK", 0);
-    hRU = new a("FLING", 1);
-    hRV = new a("DAGGLE", 2);
-    hRW = new a[] { hRT, hRU, hRV };
+    irY = new a("CLICK", 0);
+    irZ = new a("FLING", 1);
+    isa = new a("DAGGLE", 2);
+    isb = new a[] { irY, irZ, isa };
     AppMethodBeat.o(175302);
   }
   

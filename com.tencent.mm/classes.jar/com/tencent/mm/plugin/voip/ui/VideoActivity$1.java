@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.voip.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.la;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 
 final class VideoActivity$1
-  extends com.tencent.mm.sdk.b.c<kr>
+  extends com.tencent.mm.sdk.b.c<la>
 {
   VideoActivity$1(VideoActivity paramVideoActivity)
   {
     AppMethodBeat.i(161658);
-    this.__eventId = kr.class.getName().hashCode();
+    this.__eventId = la.class.getName().hashCode();
     AppMethodBeat.o(161658);
   }
 }

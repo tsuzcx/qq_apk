@@ -14,36 +14,38 @@ import com.jg.JgClassChecked;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.plugin.account.friend.a.ad;
 import com.tencent.mm.plugin.account.friend.a.ao;
 import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
 public class ContactsSyncService
   extends Service
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static Account hTO;
-  private a iob;
-  private Looper ioc;
+  private static Account itT;
+  private a iOh;
+  private Looper iOi;
   
   public ContactsSyncService()
   {
     AppMethodBeat.i(127817);
-    this.iob = null;
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService construction");
+    this.iOh = null;
+    ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService construction");
     AppMethodBeat.o(127817);
   }
   
-  private void aJy()
+  private void aQp()
   {
     AppMethodBeat.i(127820);
-    if (this.ioc != null) {
-      this.ioc.quit();
+    if (this.iOi != null) {
+      this.iOi.quit();
     }
     AppMethodBeat.o(127820);
   }
@@ -54,24 +56,24 @@ public class ContactsSyncService
     paramIntent = null;
     if (com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.READ_CONTACTS"))
     {
-      if (this.iob == null) {
-        this.iob = new a(getApplicationContext());
+      if (this.iOh == null) {
+        this.iOh = new a(getApplicationContext());
       }
-      paramIntent = this.iob.getSyncAdapterBinder();
+      paramIntent = this.iOh.getSyncAdapterBinder();
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind ret[%s]", new Object[] { paramIntent });
+      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind ret[%s]", new Object[] { paramIntent });
       AppMethodBeat.o(127818);
       return paramIntent;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind no permission");
+      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService onBind no permission");
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(127821);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "contacts sync service destroy");
+    ac.i("MicroMsg.ContactsSyncService", "contacts sync service destroy");
     super.onDestroy();
     AppMethodBeat.o(127821);
   }
@@ -79,37 +81,37 @@ public class ContactsSyncService
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(127819);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType());
+    ac.i("MicroMsg.ContactsSyncService", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramn.getType());
     if (paramn.getType() == 133)
     {
-      com.tencent.mm.kernel.g.aeS().b(133, this);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "uploadcontact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
-      long l1 = ((Long)com.tencent.mm.kernel.g.afB().afk().get(327728, Long.valueOf(0L))).longValue();
+      com.tencent.mm.kernel.g.agi().b(133, this);
+      ac.i("MicroMsg.ContactsSyncService", "uploadcontact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+      long l1 = ((Long)com.tencent.mm.kernel.g.agR().agA().get(327728, Long.valueOf(0L))).longValue();
       long l2 = System.currentTimeMillis();
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ContactsSyncService", "getMFriend : curTime=" + l2 + ", lastTime=" + l1);
+      ac.d("MicroMsg.ContactsSyncService", "getMFriend : curTime=" + l2 + ", lastTime=" + l1);
       if ((paramInt2 != 0) && (l2 - l1 < 86400000L))
       {
-        aJy();
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsSyncService", "uploadmcontact list null, do not do getmfriend.");
+        aQp();
+        ac.e("MicroMsg.ContactsSyncService", "uploadmcontact list null, do not do getmfriend.");
         AppMethodBeat.o(127819);
         return;
       }
-      com.tencent.mm.kernel.g.afB().afk().set(327728, Long.valueOf(l2));
-      com.tencent.mm.kernel.g.aeS().a(32, this);
+      com.tencent.mm.kernel.g.agR().agA().set(327728, Long.valueOf(l2));
+      com.tencent.mm.kernel.g.agi().a(32, this);
       paramString = (ao)paramn;
-      paramString = new com.tencent.mm.plugin.account.friend.a.ad(paramString.ilo, paramString.ilp);
-      com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+      paramString = new ad(paramString.iLv, paramString.iLw);
+      com.tencent.mm.kernel.g.agi().a(paramString, 0);
     }
     if (paramn.getType() == 32)
     {
-      com.tencent.mm.kernel.g.aeS().b(32, this);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "getmfriend onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (!com.tencent.mm.kernel.g.afB().afk().getBoolean(ae.a.FvC, false)))
+      com.tencent.mm.kernel.g.agi().b(32, this);
+      ac.i("MicroMsg.ContactsSyncService", "getmfriend onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (!com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GTw, false)))
       {
-        paramString = new com.tencent.mm.platformtools.g(this, hTO);
-        h.Iye.aP(paramString);
+        paramString = new com.tencent.mm.platformtools.g(this, itT);
+        h.JZN.aS(paramString);
       }
-      aJy();
+      aQp();
     }
     AppMethodBeat.o(127819);
   }
@@ -124,17 +126,17 @@ public class ContactsSyncService
       super(true);
       AppMethodBeat.i(127815);
       this.mContext = paramContext;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl construction");
+      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl construction");
       AppMethodBeat.o(127815);
     }
     
     public final void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
     {
       AppMethodBeat.i(127816);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl onPerformSync");
-      if (!com.tencent.mm.kernel.g.afw())
+      ac.i("MicroMsg.ContactsSyncService", "ContactsSyncService SyncAdapterImpl onPerformSync");
+      if (!com.tencent.mm.kernel.g.agM())
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsSyncService", "ContactsSyncService account not ready, ignore this sync");
+        ac.e("MicroMsg.ContactsSyncService", "ContactsSyncService account not ready, ignore this sync");
         AppMethodBeat.o(127816);
         return;
       }
@@ -150,7 +152,7 @@ public class ContactsSyncService
       catch (Exception paramAccount)
       {
         ContactsSyncService.a(ContactsSyncService.this);
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsSyncService", "ContactsSyncService.onPerformSync error: " + paramAccount.getMessage());
+        ac.e("MicroMsg.ContactsSyncService", "ContactsSyncService.onPerformSync error: " + paramAccount.getMessage());
         AppMethodBeat.o(127816);
       }
     }
@@ -158,7 +160,7 @@ public class ContactsSyncService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.ContactsSyncService
  * JD-Core Version:    0.7.0.1
  */

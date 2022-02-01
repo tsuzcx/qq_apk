@@ -10,29 +10,29 @@ import java.util.List;
 public final class b
   extends s
 {
-  public View.OnClickListener xMw = null;
+  public View.OnClickListener yZl = null;
   
   public b(MMBaseSelectContactUI paramMMBaseSelectContactUI)
   {
     super(paramMMBaseSelectContactUI, null, true, 0);
   }
   
-  public final com.tencent.mm.ui.contact.a.a NK(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a PO(int paramInt)
   {
     AppMethodBeat.i(99812);
-    int i = this.GTr;
+    int i = this.ItC;
     com.tencent.mm.plugin.sns.ui.a.a.a locala = new com.tencent.mm.plugin.sns.ui.a.a.a(paramInt);
     locala.query = this.query;
-    locala.xMw = this.xMw;
-    locala.jpy = ((m)this.rsl.get(paramInt - i - 1));
-    locala.GVT = dqZ();
+    locala.yZl = this.yZl;
+    locala.jPN = ((m)this.sBf.get(paramInt - i - 1));
+    locala.Iwh = dFi();
     AppMethodBeat.o(99812);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

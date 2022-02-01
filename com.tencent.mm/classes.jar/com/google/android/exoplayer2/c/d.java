@@ -10,7 +10,7 @@ public final class d
   public final int a(f paramf, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(91974);
-    paramInt = paramf.dQ(paramInt);
+    paramInt = paramf.dP(paramInt);
     if (paramInt == -1)
     {
       if (paramBoolean)
@@ -31,7 +31,7 @@ public final class d
   public final void a(com.google.android.exoplayer2.i.m paramm, int paramInt)
   {
     AppMethodBeat.i(91975);
-    paramm.fl(paramInt);
+    paramm.eX(paramInt);
     AppMethodBeat.o(91975);
   }
   

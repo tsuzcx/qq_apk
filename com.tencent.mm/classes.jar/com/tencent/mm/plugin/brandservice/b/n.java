@@ -1,91 +1,94 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cnw;
-import com.tencent.mm.protocal.protobuf.cnx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aj;
+import com.tencent.mm.protocal.protobuf.cwf;
+import com.tencent.mm.protocal.protobuf.cwg;
+import com.tencent.mm.protocal.protobuf.oo;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
   private g callback;
-  private String dcm;
-  private b mTj;
-  private long mTl;
-  public cnx mTm;
-  private int scene;
+  private final com.tencent.mm.ak.b rr;
   
-  public n(String paramString, long paramLong, int paramInt)
+  public n(List<oo> paramList)
   {
-    AppMethodBeat.i(5590);
-    this.dcm = paramString;
-    this.mTl = paramLong;
-    this.scene = paramInt;
-    ad.i("MicroMsg.NetSceneSearchHomePageNew", "Constructors: keyword (%s) , businessType (%d), scene (%d)", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(5590);
+    AppMethodBeat.i(5593);
+    Object localObject = new b.a();
+    ((b.a)localObject).hvt = new cwf();
+    ((b.a)localObject).hvu = new cwg();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/setapplist";
+    ((b.a)localObject).funcId = 386;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cwf)this.rr.hvr.hvw;
+    LinkedList localLinkedList = new LinkedList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      oo localoo = (oo)paramList.next();
+      aj localaj = new aj();
+      localaj.ncR = localoo.userName;
+      localLinkedList.add(localaj);
+    }
+    ((cwf)localObject).ncL = localLinkedList.size();
+    ((cwf)localObject).ncM = localLinkedList;
+    ac.i("MicroMsg.BrandService.NetSceneSetAppList", "info: upload size %d, toString %s", new Object[] { Integer.valueOf(localLinkedList.size()), localLinkedList.toString() });
+    AppMethodBeat.o(5593);
   }
   
   public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(5592);
-    ad.i("MicroMsg.NetSceneSearchHomePageNew", "doScene");
+    AppMethodBeat.i(5595);
     this.callback = paramg;
-    if (!bt.isNullOrNil(this.dcm))
-    {
-      paramg = new b.a();
-      paramg.funcId = 1070;
-      paramg.uri = "/cgi-bin/mmbiz-bin/bizsearch/homepage";
-      paramg.gUU = new cnw();
-      paramg.gUV = new cnx();
-      paramg.reqCmdId = 0;
-      paramg.respCmdId = 0;
-      this.mTj = paramg.atI();
-      paramg = (cnw)this.mTj.gUS.gUX;
-      paramg.Dtb = this.dcm;
-      paramg.DLE = f.bCk();
-      paramg.CNp = this.mTl;
-      paramg.EhX = this.scene;
-      ad.i("MicroMsg.NetSceneSearchHomePageNew", "businessTypeList is %d", new Object[] { Long.valueOf(this.mTl) });
-      int i = dispatch(parame, this.mTj, this);
-      AppMethodBeat.o(5592);
-      return i;
-    }
-    ad.e("MicroMsg.NetSceneSearchHomePageNew", "keyword is unavailable");
-    AppMethodBeat.o(5592);
-    return -1;
+    ac.i("MicroMsg.BrandService.NetSceneSetAppList", "do scene");
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(5595);
+    return i;
   }
   
   public final int getType()
   {
-    return 1070;
+    return 386;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5591);
-    ad.i("MicroMsg.NetSceneSearchHomePageNew", "netId (%d) , errType (%d) , errCode (%d) , errMsg (%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (this.mTj != null)) {
-      this.mTm = ((cnx)this.mTj.gUT.gUX);
+    AppMethodBeat.i(5594);
+    ac.i("MicroMsg.BrandService.NetSceneSetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = (cwg)this.rr.hvs.hvw;
+      ac.i("MicroMsg.BrandService.NetSceneSetAppList", "ok, hash code is %d", new Object[] { Integer.valueOf(paramq.ELw) });
+      com.tencent.mm.plugin.brandservice.b.j(196610, Integer.valueOf(paramq.ELw));
+      com.tencent.mm.plugin.brandservice.b.j(196611, Boolean.FALSE);
     }
-    if (this.callback != null) {
+    for (;;)
+    {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(5594);
+      return;
+      com.tencent.mm.plugin.brandservice.b.j(196611, Boolean.TRUE);
     }
-    AppMethodBeat.o(5591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.n
  * JD-Core Version:    0.7.0.1
  */

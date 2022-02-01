@@ -15,23 +15,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class a
   implements b
 {
-  public com.tencent.mm.vending.e.c<Vending> HOQ = new com.tencent.mm.vending.e.c();
-  Map<Class, a> HOR = new ConcurrentHashMap();
-  byte[] HOS = new byte[0];
-  com.tencent.mm.vending.base.a<Object> HOT = new com.tencent.mm.vending.base.a()
+  public com.tencent.mm.vending.e.c<Vending> Jpl = new com.tencent.mm.vending.e.c();
+  Map<Class, a> Jpm = new ConcurrentHashMap();
+  byte[] Jpn = new byte[0];
+  com.tencent.mm.vending.base.a<Object> Jpo = new com.tencent.mm.vending.base.a()
   {
-    public final Object bg(Class<?> paramAnonymousClass)
+    public final Object bj(Class<?> paramAnonymousClass)
     {
       AppMethodBeat.i(74889);
-      a.a locala = (a.a)a.this.HOR.get(paramAnonymousClass);
+      a.a locala = (a.a)a.this.Jpm.get(paramAnonymousClass);
       Object localObject;
       if (locala != null)
       {
-        locala.HPa = true;
-        localObject = locala.aHl();
-        locala.HPa = false;
-        if (locala.HOZ) {
-          locala.HPb = defer(paramAnonymousClass);
+        locala.Jpv = true;
+        localObject = locala.aNZ();
+        locala.Jpv = false;
+        if (locala.Jpu) {
+          locala.Jpw = defer(paramAnonymousClass);
         }
       }
       else
@@ -43,82 +43,82 @@ public abstract class a
       return localObject;
     }
   };
-  private AtomicBoolean HOU = new AtomicBoolean(false);
-  volatile boolean HOV = false;
-  Map<Class, com.tencent.mm.vending.b.c<b>> HOW = new HashMap();
-  public com.tencent.mm.vending.d.a HOX;
+  private AtomicBoolean Jpp = new AtomicBoolean(false);
+  volatile boolean Jpq = false;
+  Map<Class, com.tencent.mm.vending.b.c<b>> Jpr = new HashMap();
+  public com.tencent.mm.vending.d.a Jps;
   Context mContext;
-  private com.tencent.mm.vending.e.c oBq = new com.tencent.mm.vending.e.c();
+  private com.tencent.mm.vending.e.c peQ = new com.tencent.mm.vending.e.c();
   
   public a()
   {
-    this.HOQ.keep(this.HOT);
-    this.HOT.addVendingDataResolvedCallback(new com.tencent.mm.vending.base.a.a() {});
+    this.Jpl.keep(this.Jpo);
+    this.Jpo.addVendingDataResolvedCallback(new com.tencent.mm.vending.base.a.a() {});
   }
   
-  private void fha()
+  private void fxc()
   {
-    if ((Looper.myLooper() == this.HOT.getLooper()) && (!this.HOU.get())) {
+    if ((Looper.myLooper() == this.Jpo.getLooper()) && (!this.Jpp.get())) {
       com.tencent.mm.vending.f.a.e("Vending.Interactor", "This interactor has not call onCreate() yet! Interactor : %s", new Object[] { this });
     }
   }
   
   protected final <_Struct> void a(Class<_Struct> paramClass, a<_Struct> parama)
   {
-    fha();
-    this.HOR.put(paramClass, parama);
+    fxc();
+    this.Jpm.put(paramClass, parama);
   }
   
   public final <_Struct> void a(Class<_Struct> paramClass, b<_Struct> paramb)
   {
-    com.tencent.mm.vending.b.c localc = (com.tencent.mm.vending.b.c)this.HOW.get(paramClass);
+    com.tencent.mm.vending.b.c localc = (com.tencent.mm.vending.b.c)this.Jpr.get(paramClass);
     Object localObject = localc;
     if (localc == null)
     {
-      localObject = new com.tencent.mm.vending.b.c(d.HQL) {};
-      this.HOW.put(paramClass, localObject);
+      localObject = new com.tencent.mm.vending.b.c(d.Jrg) {};
+      this.Jpr.put(paramClass, localObject);
     }
-    ((com.tencent.mm.vending.b.c)localObject).bv(paramb);
-    paramClass = this.HOT.peek(paramClass);
+    ((com.tencent.mm.vending.b.c)localObject).bs(paramb);
+    paramClass = this.Jpo.peek(paramClass);
     if (paramClass != null) {
-      paramb.cf(paramClass);
+      paramb.cd(paramClass);
     }
   }
   
-  public final void bf(Class<?> paramClass)
+  public final void bi(Class<?> paramClass)
   {
-    fha();
-    this.HOT.request(paramClass);
+    fxc();
+    this.Jpo.request(paramClass);
   }
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    this.oBq.keep(parama);
+    this.peQ.keep(parama);
   }
   
   protected void onCreate()
   {
-    this.HOU.set(true);
+    this.Jpp.set(true);
   }
   
   protected void onDestroy()
   {
-    this.oBq.dead();
-    this.HOQ.dead();
+    this.peQ.dead();
+    this.Jpl.dead();
   }
   
   public final <_Struct> _Struct w(Class<_Struct> paramClass)
   {
-    fha();
-    if ((Looper.myLooper() == Looper.getMainLooper()) && (!this.HOV)) {}
-    synchronized (this.HOS)
+    fxc();
+    if ((Looper.myLooper() == Looper.getMainLooper()) && (!this.Jpq)) {}
+    synchronized (this.Jpn)
     {
-      boolean bool = this.HOV;
+      boolean bool = this.Jpq;
       if (!bool) {}
       try
       {
-        this.HOS.wait();
-        return this.HOT.get(paramClass);
+        this.Jpn.wait();
+        return this.Jpo.get(paramClass);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -132,18 +132,18 @@ public abstract class a
   
   public abstract class a<_Struct>
   {
-    boolean HOZ = false;
-    boolean HPa = false;
-    Vending.h HPb;
+    boolean Jpu = false;
+    boolean Jpv = false;
+    Vending.h Jpw;
     
     public a() {}
     
-    protected abstract _Struct aHl();
+    protected abstract _Struct aNZ();
   }
   
   public static abstract interface b<_Struct>
   {
-    public abstract void cf(_Struct param_Struct);
+    public abstract void cd(_Struct param_Struct);
   }
 }
 

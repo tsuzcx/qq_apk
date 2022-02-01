@@ -5,39 +5,39 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.p;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ah.a;
 
 public final class k
 {
-  private static k tEB;
-  public SightParams tEC;
+  private static k uMW;
+  public SightParams uMX;
   
   static
   {
     AppMethodBeat.i(89505);
-    tEB = new k();
+    uMW = new k();
     AppMethodBeat.o(89505);
   }
   
-  public static k cQk()
+  public static k ddS()
   {
-    return tEB;
+    return uMW;
   }
   
-  public static int cQm()
+  public static int ddU()
   {
-    return com.tencent.mm.plugin.mmsight.model.k.tCN.videoBitrate;
+    return com.tencent.mm.plugin.mmsight.model.k.uLk.videoBitrate;
   }
   
-  public static int cQn()
+  public static int ddV()
   {
-    return com.tencent.mm.plugin.mmsight.model.k.tCN.gwG;
+    return com.tencent.mm.plugin.mmsight.model.k.uLk.gXd;
   }
   
-  public static boolean cQo()
+  public static boolean ddW()
   {
     AppMethodBeat.i(89504);
-    if (CaptureMMProxy.getInstance().getInt(ae.a.Fmr, 0) == 1)
+    if (CaptureMMProxy.getInstance().getInt(ah.a.GKg, 0) == 1)
     {
       AppMethodBeat.o(89504);
       return true;
@@ -46,9 +46,9 @@ public final class k
     return false;
   }
   
-  public static String cQp()
+  public static String ddX()
   {
-    switch (com.tencent.mm.plugin.mmsight.model.k.tCN.fEc)
+    switch (com.tencent.mm.plugin.mmsight.model.k.uLk.fHJ)
     {
     default: 
       return "";
@@ -62,7 +62,7 @@ public final class k
   {
     AppMethodBeat.i(89503);
     Object localObject = null;
-    switch (com.tencent.mm.plugin.mmsight.model.k.tCN.fEc)
+    switch (com.tencent.mm.plugin.mmsight.model.k.uLk.fHJ)
     {
     default: 
       paramVideoTransPara = localObject;
@@ -77,14 +77,14 @@ public final class k
     }
   }
   
-  public final SightParams cQl()
+  public final SightParams ddT()
   {
-    return this.tEC;
+    return this.uMX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.k
  * JD-Core Version:    0.7.0.1
  */

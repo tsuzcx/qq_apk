@@ -15,13 +15,13 @@ public final class h
     return paramClass;
   }
   
-  protected final Typeface n(Object paramObject)
+  protected final Typeface p(Object paramObject)
   {
     try
     {
-      Object localObject = Array.newInstance(this.Hb, 1);
+      Object localObject = Array.newInstance(this.HY, 1);
       Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)this.Hh.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
+      paramObject = (Typeface)this.If.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
       return paramObject;
     }
     catch (IllegalAccessException paramObject)

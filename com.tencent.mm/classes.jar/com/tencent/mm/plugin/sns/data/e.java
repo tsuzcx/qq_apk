@@ -4,13 +4,13 @@ import android.view.View;
 
 public final class e
 {
-  public String dgg;
-  public View wAx;
+  public String ddB;
+  public View xMQ;
   
   public e(View paramView, String paramString)
   {
-    this.wAx = paramView;
-    this.dgg = paramString;
+    this.xMQ = paramView;
+    this.ddB = paramString;
   }
 }
 

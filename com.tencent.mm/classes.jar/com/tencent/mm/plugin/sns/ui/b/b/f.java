@@ -13,16 +13,16 @@ import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.item.d.a;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
   extends b
 {
-  AnimatorSet vWT;
-  d.a xOF;
-  private ValueAnimator xOg;
-  private ValueAnimator xOh;
+  AnimatorSet xhG;
+  private ValueAnimator zaW;
+  private ValueAnimator zaX;
+  d.a zbv;
   
   public f(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
@@ -30,9 +30,9 @@ public final class f
     try
     {
       this.activity = paramMMActivity;
-      this.xOF = ((d.a)paramBaseViewHolder);
-      this.xOg = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.xOg.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.zbv = ((d.a)paramBaseViewHolder);
+      this.zaW = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.zaW.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -40,76 +40,76 @@ public final class f
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 1.0F)
           {
-            f.this.xOF.xtU.setScaleX(f);
-            f.this.xOF.xtU.setScaleY(f);
-            f.this.xOF.xtU.setAlpha(f);
+            f.this.zbv.yGK.setScaleX(f);
+            f.this.zbv.yGK.setScaleY(f);
+            f.this.zbv.yGK.setAlpha(f);
           }
           AppMethodBeat.o(99970);
         }
       });
-      this.xOg.setDuration(400L);
-      this.xOg.addListener(new AnimatorListenerAdapter()
+      this.zaW.setDuration(400L);
+      this.zaW.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99971);
-          if (f.this.xOF.fUH)
+          if (f.this.zbv.fYC)
           {
-            ad.i("MicroMsg.FullCardAdClickAnimation", "holder is busy");
+            ac.i("MicroMsg.FullCardAdClickAnimation", "holder is busy");
             paramAnonymousAnimator = f.this;
-            if (paramAnonymousAnimator.vWT != null) {
-              paramAnonymousAnimator.vWT.end();
+            if (paramAnonymousAnimator.xhG != null) {
+              paramAnonymousAnimator.xhG.end();
             }
             AppMethodBeat.o(99971);
             return;
           }
-          f.this.xOF.fUH = true;
+          f.this.zbv.fYC = true;
           AppMethodBeat.o(99971);
         }
       });
-      this.xOh = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.xOh.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.zaX = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.zaX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(99972);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          f.this.xOF.qXs.setAlpha(f);
-          f.this.xOF.xPg.setAlpha(f);
+          f.this.zbv.rXY.setAlpha(f);
+          f.this.zbv.zbW.setAlpha(f);
           AppMethodBeat.o(99972);
         }
       });
-      this.xOh.setDuration(100L);
-      this.vWT = new AnimatorSet();
-      this.vWT.playTogether(new Animator[] { this.xOg, this.xOh });
-      this.vWT.addListener(new AnimatorListenerAdapter()
+      this.zaX.setDuration(100L);
+      this.xhG = new AnimatorSet();
+      this.xhG.playTogether(new Animator[] { this.zaW, this.zaX });
+      this.xhG.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99974);
-          ad.i("MicroMsg.FullCardAdClickAnimation", "onAnimation end");
-          f.this.xOF.xtU.setScaleX(1.0F);
-          f.this.xOF.xtU.setScaleY(1.0F);
-          f.this.xOF.xtU.setAlpha(1.0F);
-          f.this.xOF.qXs.setAlpha(1.0F);
-          f.this.xOF.xPg.setAlpha(1.0F);
-          if (f.this.xOe != null) {
-            f.this.xOe.onAnimationEnd();
+          ac.i("MicroMsg.FullCardAdClickAnimation", "onAnimation end");
+          f.this.zbv.yGK.setScaleX(1.0F);
+          f.this.zbv.yGK.setScaleY(1.0F);
+          f.this.zbv.yGK.setAlpha(1.0F);
+          f.this.zbv.rXY.setAlpha(1.0F);
+          f.this.zbv.zbW.setAlpha(1.0F);
+          if (f.this.zaU != null) {
+            f.this.zaU.onAnimationEnd();
           }
-          f.this.xOF.fUH = false;
-          if (f.this.xOF.xOO.xsv)
+          f.this.zbv.fYC = false;
+          if (f.this.zbv.zbE.yFl)
           {
-            if (f.this.xOF.xOO.xso.getVisibility() == 0)
+            if (f.this.zbv.zbE.yFe.getVisibility() == 0)
             {
-              f.this.xOF.xOO.xso.at(0, false);
-              ad.i("MicroMsg.FullCardAdClickAnimation", "seek newVideoView to 0");
+              f.this.zbv.zbE.yFe.aw(0, false);
+              ac.i("MicroMsg.FullCardAdClickAnimation", "seek newVideoView to 0");
               AppMethodBeat.o(99974);
             }
           }
-          else if (f.this.xOF.xOO.xsn.getVisibility() == 0)
+          else if (f.this.zbv.zbE.yFd.getVisibility() == 0)
           {
-            f.this.xOF.xOO.xsn.wsq.clear();
-            ad.i("MicroMsg.FullCardAdClickAnimation", "seek sightView to 0");
+            f.this.zbv.zbE.yFd.xDG.clear();
+            ac.i("MicroMsg.FullCardAdClickAnimation", "seek sightView to 0");
           }
           AppMethodBeat.o(99974);
         }
@@ -117,7 +117,7 @@ public final class f
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(99973);
-          ad.i("MicroMsg.FullCardAdClickAnimation", "onAnimation start");
+          ac.i("MicroMsg.FullCardAdClickAnimation", "onAnimation start");
           AppMethodBeat.o(99973);
         }
       });
@@ -126,18 +126,18 @@ public final class f
     }
     catch (Throwable paramMMActivity)
     {
-      ad.e("MicroMsg.FullCardAdClickAnimation", "init exp=" + paramMMActivity.toString());
+      ac.e("MicroMsg.FullCardAdClickAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99975);
     }
   }
   
-  public final void ts(long paramLong)
+  public final void xV(long paramLong)
   {
     AppMethodBeat.i(99976);
-    if ((this.vWT != null) && (!this.vWT.isStarted()))
+    if ((this.xhG != null) && (!this.xhG.isStarted()))
     {
-      this.vWT.setStartDelay(paramLong);
-      this.vWT.start();
+      this.xhG.setStartDelay(paramLong);
+      this.xhG.start();
     }
     AppMethodBeat.o(99976);
   }

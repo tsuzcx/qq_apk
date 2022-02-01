@@ -4,73 +4,73 @@ import android.arch.lifecycle.MutableLiveData;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
 
-public abstract class a<K extends cld, P extends c<K>>
+public abstract class a<K extends cqk, P extends c<K>>
 {
-  protected MutableLiveData<K> IcV = new MutableLiveData();
-  protected MutableLiveData<K> IcW = new MutableLiveData();
+  protected MutableLiveData<K> JEx = new MutableLiveData();
+  protected MutableLiveData<K> JEy = new MutableLiveData();
   protected List<a<K>> callbacks = new ArrayList();
-  protected P gVa;
-  protected boolean tss = false;
+  protected P hvz;
+  protected boolean uAL = false;
   
   private void a(a<K> parama, boolean paramBoolean)
   {
-    cld localcld = cLq();
-    if (localcld != null) {}
+    cqk localcqk = cYW();
+    if (localcqk != null) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
         if (parama != null) {
-          parama.dj(localcld);
+          parama.dl(localcqk);
         }
-        this.IcV.postValue(localcld);
+        this.JEx.postValue(localcqk);
       }
       if ((i == 0) || (paramBoolean))
       {
         if ((parama != null) && (!this.callbacks.contains(parama))) {
           this.callbacks.add(parama);
         }
-        fjQ();
+        fAf();
       }
       return;
     }
   }
   
-  private void fjQ()
+  private void fAf()
   {
-    ad.i("MicroMsg.AsyncCgiLoader", "trigger cgi: %s", new Object[] { Boolean.valueOf(this.tss) });
-    if (this.tss) {
+    ac.i("MicroMsg.AsyncCgiLoader", "trigger cgi: %s", new Object[] { Boolean.valueOf(this.uAL) });
+    if (this.uAL) {
       return;
     }
-    this.tss = true;
-    c localc = this.gVa;
+    this.uAL = true;
+    c localc = this.hvz;
     Assert.assertNotNull("cgi must not be null", localc);
-    localc.auK().h(new com.tencent.mm.vending.c.a() {}).b(new com.tencent.mm.vending.c.a() {});
+    localc.aBB().h(new com.tencent.mm.vending.c.a() {}).b(new com.tencent.mm.vending.c.a() {});
   }
   
   public final void a(final a<K> parama, long paramLong)
   {
-    ad.i("MicroMsg.AsyncCgiLoader", "try do cgi: %s, %s", new Object[] { Boolean.TRUE, Long.valueOf(paramLong) });
+    ac.i("MicroMsg.AsyncCgiLoader", "try do cgi: %s, %s", new Object[] { Boolean.TRUE, Long.valueOf(paramLong) });
     if (paramLong <= 0L)
     {
       a(parama, true);
       return;
     }
-    h.Iye.q(new Runnable()
+    h.JZN.q(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(163879);
-        a.a(a.this, parama, this.IcY);
+        a.a(a.this, parama, this.JEA);
         AppMethodBeat.o(163879);
       }
     }, paramLong);
@@ -78,25 +78,25 @@ public abstract class a<K extends cld, P extends c<K>>
   
   public final void b(P paramP)
   {
-    this.gVa = paramP;
+    this.hvz = paramP;
   }
   
   protected abstract void c(c.a<K> parama);
   
-  protected abstract K cLq();
+  protected abstract K cYW();
   
   public final void cancel()
   {
-    if (this.gVa != null) {
-      this.gVa.cancel();
+    if (this.hvz != null) {
+      this.hvz.cancel();
     }
   }
   
   public static abstract interface a<K>
   {
-    public abstract void di(K paramK);
+    public abstract void dk(K paramK);
     
-    public abstract void dj(K paramK);
+    public abstract void dl(K paramK);
   }
 }
 

@@ -6,137 +6,62 @@ import com.tencent.mm.plugin.report.a;
 public final class co
   extends a
 {
-  public String dKt;
-  public String dRD;
-  public long dRE = 0L;
-  public long dRF = 0L;
-  public long dRG = 0L;
-  public long dRH = 0L;
-  public long dRI = 0L;
-  public long dRJ = 0L;
-  public long dRK = 0L;
-  public long dRL = 0L;
-  public long dRM = 0L;
-  public long dRN = 0L;
-  public long dRO = 0L;
-  public long dRP = 0L;
-  public long dRQ = 0L;
-  private String dRR;
-  private String dRS;
-  private String dRT;
-  private String dRU;
-  public long dRV = 0L;
-  public long dRW = 0L;
+  public long dCQ;
+  public long dHY;
+  public long dKB = 0L;
+  public long dPV;
+  public long dPW = 0L;
+  public long dPn;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(94840);
+    AppMethodBeat.i(19864);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dKt);
+    ((StringBuffer)localObject).append(this.dHY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRD);
+    ((StringBuffer)localObject).append(this.dPV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRE);
+    ((StringBuffer)localObject).append(this.dPn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRF);
+    ((StringBuffer)localObject).append(this.dCQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRG);
+    ((StringBuffer)localObject).append(this.dPW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRI);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRW);
+    ((StringBuffer)localObject).append(this.dKB);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(94840);
+    arz((String)localObject);
+    AppMethodBeat.o(19864);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(94841);
+    AppMethodBeat.i(19865);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Username:").append(this.dKt);
+    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PublicID:").append(this.dRD);
+    ((StringBuffer)localObject).append("SelfSendMsg:").append(this.dPV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PublicType:").append(this.dRE);
+    ((StringBuffer)localObject).append("MsgId:").append(this.dPn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SawLikeCount:").append(this.dRF);
+    ((StringBuffer)localObject).append("Action:").append(this.dCQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RealLikeCount:").append(this.dRG);
+    ((StringBuffer)localObject).append("CopyLen:").append(this.dPW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SawLikeLines:").append(this.dRH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RealLikeLines:").append(this.dRI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsLikeCollapsed:").append(this.dRJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SawCommentCount:").append(this.dRK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsLiked:").append(this.dRL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsComment:").append(this.dRM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HadAction:").append(this.dRN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickSpread:").append(this.dRO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BeginTimestamp:").append(this.dRP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimestamp:").append(this.dRQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExpId:").append(this.dRR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("GroupId:").append(this.dRS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SawLikeContent:").append(this.dRT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RealLikeContent:").append(this.dRU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CfgCollapseLines:").append(this.dRV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickShrink:").append(this.dRW);
+    ((StringBuffer)localObject).append("Type:").append(this.dKB);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94841);
+    AppMethodBeat.o(19865);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18448;
+    return 18712;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.co
  * JD-Core Version:    0.7.0.1
  */

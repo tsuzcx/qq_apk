@@ -2,14 +2,14 @@ package com.tencent.mm.compatible.util;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class k
 {
-  public static boolean Ua()
+  public static boolean UV()
   {
     AppMethodBeat.i(155906);
-    if (bt.by(Build.MANUFACTURER, "").toLowerCase().indexOf("samsung".toLowerCase()) >= 0)
+    if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("samsung".toLowerCase()) >= 0)
     {
       AppMethodBeat.o(155906);
       return true;
@@ -18,10 +18,10 @@ public final class k
     return false;
   }
   
-  public static boolean XS()
+  public static boolean YP()
   {
     AppMethodBeat.i(155907);
-    if (bt.by(Build.MANUFACTURER, "").toLowerCase().indexOf("HMD Global".toLowerCase()) >= 0)
+    if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("HMD Global".toLowerCase()) >= 0)
     {
       AppMethodBeat.o(155907);
       return true;
@@ -30,10 +30,10 @@ public final class k
     return false;
   }
   
-  public static boolean XT()
+  public static boolean YQ()
   {
     AppMethodBeat.i(155908);
-    if (bt.by(Build.MANUFACTURER, "").toLowerCase().indexOf("smartisan".toLowerCase()) >= 0)
+    if (bs.bG(Build.MANUFACTURER, "").toLowerCase().indexOf("smartisan".toLowerCase()) >= 0)
     {
       AppMethodBeat.o(155908);
       return true;

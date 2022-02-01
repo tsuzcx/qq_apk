@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,13 +20,13 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
-import com.tencent.mm.plugin.finder.video.c;
+import com.tencent.mm.plugin.finder.video.i;
 import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
 import com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.protocal.protobuf.bmc;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.amq;
+import com.tencent.mm.protocal.protobuf.bqr;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.AnimationLayout;
 import com.tencent.mm.view.HardTouchableLayout;
@@ -46,65 +46,65 @@ import java.util.LinkedList;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(35)
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "animationLayout", "Lcom/tencent/mm/view/AnimationLayout;", "getAnimationLayout", "()Lcom/tencent/mm/view/AnimationLayout;", "animationLayout$delegate", "Lkotlin/Lazy;", "closeBtn", "Landroid/view/View;", "getCloseBtn", "()Landroid/view/View;", "closeBtn$delegate", "curPos", "", "galleryBg", "getGalleryBg", "galleryBg$delegate", "isComeFromCreate", "", "mediaBanner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getMediaBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "mediaBanner$delegate", "mediaList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaList", "()Ljava/util/LinkedList;", "playingAnimation", "refFeedInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRefFeedInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeedInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "touchableLayout", "Lcom/tencent/mm/view/HardTouchableLayout;", "getTouchableLayout", "()Lcom/tencent/mm/view/HardTouchableLayout;", "touchableLayout$delegate", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "checkPlay", "", "position", "finish", "getLayoutId", "initView", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onWindowFocusChanged", "hasFocus", "runEnterAnimation", "runExitAnimation", "Companion", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "animationLayout", "Lcom/tencent/mm/view/AnimationLayout;", "getAnimationLayout", "()Lcom/tencent/mm/view/AnimationLayout;", "animationLayout$delegate", "Lkotlin/Lazy;", "closeBtn", "Landroid/view/View;", "getCloseBtn", "()Landroid/view/View;", "closeBtn$delegate", "curPos", "", "galleryBg", "getGalleryBg", "galleryBg$delegate", "isComeFromCreate", "", "mediaBanner", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "getMediaBanner", "()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "mediaBanner$delegate", "mediaList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaList", "()Ljava/util/LinkedList;", "playingAnimation", "refFeedInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "getRefFeedInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;", "setRefFeedInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderObjectRefInfo;)V", "touchableLayout", "Lcom/tencent/mm/view/HardTouchableLayout;", "getTouchableLayout", "()Lcom/tencent/mm/view/HardTouchableLayout;", "touchableLayout$delegate", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "checkPlay", "", "position", "finish", "getLayoutId", "initView", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onWindowFocusChanged", "hasFocus", "runEnterAnimation", "runExitAnimation", "Companion", "plugin-finder_release"})
 public final class FinderMediaPreviewUI
   extends MMFinderUI
 {
-  public static final a qNF;
+  public static final FinderMediaPreviewUI.a rJd;
   private HashMap _$_findViewCache;
-  final LinkedList<bmd> mediaList;
-  private boolean qMy;
-  private final f qNA;
-  private final f qNB;
-  private akf qNC;
-  private boolean qND;
-  private int qNE;
-  private final f qNx;
-  private final f qNy;
-  private final f qNz;
-  private final c qrq;
+  private boolean iBD;
+  final LinkedList<bqs> mediaList;
+  private final f rIV;
+  private final f rIW;
+  private final f rIX;
+  private final f rIY;
+  private final f rIZ;
+  private amq rJa;
+  private boolean rJb;
+  private int rJc;
+  private final i rbo;
   
   static
   {
     AppMethodBeat.i(167420);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(FinderMediaPreviewUI.class), "mediaBanner", "getMediaBanner()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;")), (d.l.k)w.a(new u(w.bk(FinderMediaPreviewUI.class), "closeBtn", "getCloseBtn()Landroid/view/View;")), (d.l.k)w.a(new u(w.bk(FinderMediaPreviewUI.class), "galleryBg", "getGalleryBg()Landroid/view/View;")), (d.l.k)w.a(new u(w.bk(FinderMediaPreviewUI.class), "animationLayout", "getAnimationLayout()Lcom/tencent/mm/view/AnimationLayout;")), (d.l.k)w.a(new u(w.bk(FinderMediaPreviewUI.class), "touchableLayout", "getTouchableLayout()Lcom/tencent/mm/view/HardTouchableLayout;")) };
-    qNF = new a((byte)0);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(FinderMediaPreviewUI.class), "mediaBanner", "getMediaBanner()Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;")), (d.l.k)w.a(new u(w.bn(FinderMediaPreviewUI.class), "closeBtn", "getCloseBtn()Landroid/view/View;")), (d.l.k)w.a(new u(w.bn(FinderMediaPreviewUI.class), "galleryBg", "getGalleryBg()Landroid/view/View;")), (d.l.k)w.a(new u(w.bn(FinderMediaPreviewUI.class), "animationLayout", "getAnimationLayout()Lcom/tencent/mm/view/AnimationLayout;")), (d.l.k)w.a(new u(w.bn(FinderMediaPreviewUI.class), "touchableLayout", "getTouchableLayout()Lcom/tencent/mm/view/HardTouchableLayout;")) };
+    rJd = new FinderMediaPreviewUI.a((byte)0);
     AppMethodBeat.o(167420);
   }
   
   public FinderMediaPreviewUI()
   {
     AppMethodBeat.i(167432);
-    this.qNx = g.E((d.g.a.a)new h(this));
-    this.qNy = g.E((d.g.a.a)new c(this));
-    this.qNz = g.E((d.g.a.a)new d(this));
-    this.qNA = g.E((d.g.a.a)new b(this));
-    this.qNB = g.E((d.g.a.a)new l(this));
-    this.qrq = new c();
+    this.rIV = g.K((d.g.a.a)new h(this));
+    this.rIW = g.K((d.g.a.a)new c(this));
+    this.rIX = g.K((d.g.a.a)new d(this));
+    this.rIY = g.K((d.g.a.a)new b(this));
+    this.rIZ = g.K((d.g.a.a)new l(this));
+    this.rbo = new i();
     this.mediaList = new LinkedList();
-    this.qND = true;
+    this.rJb = true;
     AppMethodBeat.o(167432);
   }
   
-  private final void Da(int paramInt)
+  private final void Ev(int paramInt)
   {
     AppMethodBeat.i(167428);
-    Object localObject = crj().getPagerView().cj(paramInt);
+    Object localObject = cCa().getPagerView().ci(paramInt);
     if (localObject == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     d.g.b.k.g(localObject, "mediaBanner.pagerView.fi…apterPosition(position)!!");
-    if ((((RecyclerView.v)localObject).lp() == 2) || (((RecyclerView.v)localObject).lp() == 7))
+    if ((((RecyclerView.w)localObject).ly() == 2) || (((RecyclerView.w)localObject).ly() == 7))
     {
-      this.qrq.csl();
+      this.rbo.cDY();
       AppMethodBeat.o(167428);
       return;
     }
-    localObject = (FinderVideoLayout)((RecyclerView.v)localObject).arI.findViewById(2131299975);
+    localObject = (FinderVideoLayout)((RecyclerView.w)localObject).asD.findViewById(2131299975);
     d.g.b.k.g(this.mediaList.get(paramInt), "mediaList[position]");
     if (localObject != null)
     {
-      ((FinderVideoLayout)localObject).getVideoCore().csl();
+      ((FinderVideoLayout)localObject).getVideoCore().cDY();
       FinderItem localFinderItem = new FinderItem();
       localFinderItem.setMediaExtList(new LinkedList());
       localFinderItem.getMediaExtList().addAll((Collection)this.mediaList);
@@ -116,16 +116,16 @@ public final class FinderMediaPreviewUI
     AppMethodBeat.o(167428);
   }
   
-  private final void bKT()
+  private final void bSg()
   {
     AppMethodBeat.i(167431);
-    if (this.qMy)
+    if (this.iBD)
     {
       AppMethodBeat.o(167431);
       return;
     }
-    this.qMy = true;
-    ad.i("Finder.MediaPreviewUI", "runExitAnimation");
+    this.iBD = true;
+    ac.i("Finder.MediaPreviewUI", "runExitAnimation");
     Object localObject = getIntent().getParcelableExtra("crop_info");
     if (localObject == null)
     {
@@ -134,49 +134,49 @@ public final class FinderMediaPreviewUI
       throw ((Throwable)localObject);
     }
     localObject = (ViewAnimHelper.ViewInfo)localObject;
-    AnimationLayout localAnimationLayout = crl();
-    View localView = crk();
+    AnimationLayout localAnimationLayout = cCd();
+    View localView = cCc();
     Window localWindow = getWindow();
     d.g.b.k.g(localWindow, "window");
-    localAnimationLayout.a(localView, localWindow.getDecorView(), (ViewAnimHelper.ViewInfo)localObject, (Animator.AnimatorListener)new j(this), (ValueAnimator.AnimatorUpdateListener)FinderMediaPreviewUI.k.qNH);
+    localAnimationLayout.a(localView, localWindow.getDecorView(), (ViewAnimHelper.ViewInfo)localObject, (Animator.AnimatorListener)new j(this), (ValueAnimator.AnimatorUpdateListener)FinderMediaPreviewUI.k.rJf);
     AppMethodBeat.o(167431);
   }
   
-  private final FinderMediaBanner crj()
+  private final FinderMediaBanner cCa()
   {
     AppMethodBeat.i(167421);
-    FinderMediaBanner localFinderMediaBanner = (FinderMediaBanner)this.qNx.getValue();
+    FinderMediaBanner localFinderMediaBanner = (FinderMediaBanner)this.rIV.getValue();
     AppMethodBeat.o(167421);
     return localFinderMediaBanner;
   }
   
-  private final View crk()
-  {
-    AppMethodBeat.i(167423);
-    View localView = (View)this.qNz.getValue();
-    AppMethodBeat.o(167423);
-    return localView;
-  }
-  
-  private final AnimationLayout crl()
-  {
-    AppMethodBeat.i(167424);
-    AnimationLayout localAnimationLayout = (AnimationLayout)this.qNA.getValue();
-    AppMethodBeat.o(167424);
-    return localAnimationLayout;
-  }
-  
-  private final View getCloseBtn()
+  private final View cCb()
   {
     AppMethodBeat.i(167422);
-    View localView = (View)this.qNy.getValue();
+    View localView = (View)this.rIW.getValue();
     AppMethodBeat.o(167422);
     return localView;
   }
   
+  private final View cCc()
+  {
+    AppMethodBeat.i(167423);
+    View localView = (View)this.rIX.getValue();
+    AppMethodBeat.o(167423);
+    return localView;
+  }
+  
+  private final AnimationLayout cCd()
+  {
+    AppMethodBeat.i(167424);
+    AnimationLayout localAnimationLayout = (AnimationLayout)this.rIY.getValue();
+    AppMethodBeat.o(167424);
+    return localAnimationLayout;
+  }
+  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(199268);
+    AppMethodBeat.i(203239);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -187,7 +187,7 @@ public final class FinderMediaPreviewUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(199268);
+    AppMethodBeat.o(203239);
     return localView1;
   }
   
@@ -208,28 +208,28 @@ public final class FinderMediaPreviewUI
   {
     AppMethodBeat.i(167426);
     super.initView();
-    Object localObject1 = (com.tencent.mm.bx.a)new bmc();
+    Object localObject1 = (com.tencent.mm.bw.a)new bqr();
     Object localObject3 = getIntent().getByteArrayExtra("media_list_");
     label562:
     for (;;)
     {
       try
       {
-        ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject3);
-        localObject3 = (bmc)localObject1;
+        ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject3);
+        localObject3 = (bqr)localObject1;
         localObject1 = localObject3;
         if (localObject3 == null) {
-          localObject1 = new bmc();
+          localObject1 = new bqr();
         }
-        this.mediaList.addAll((Collection)((bmc)localObject1).mediaList);
-        localObject1 = (bmd)this.mediaList.getFirst();
+        this.mediaList.addAll((Collection)((bqr)localObject1).mediaList);
+        localObject1 = (bqs)this.mediaList.getFirst();
         Iterator localIterator = ((Iterable)this.mediaList).iterator();
         f1 = 0.0F;
         if (localIterator.hasNext())
         {
-          localObject3 = (bmd)localIterator.next();
-          float f2 = ((bmd)localObject3).height * 1.0F / ((bmd)localObject3).width;
-          f1 = ((bmd)localObject1).height * 1.0F / ((bmd)localObject1).width;
+          localObject3 = (bqs)localIterator.next();
+          float f2 = ((bqs)localObject3).height * 1.0F / ((bqs)localObject3).width;
+          f1 = ((bqs)localObject1).height * 1.0F / ((bqs)localObject1).width;
           if (f1 >= f2) {
             break label562;
           }
@@ -239,43 +239,43 @@ public final class FinderMediaPreviewUI
       catch (Exception localException)
       {
         float f1;
-        ad.l("safeParser", "", new Object[] { localException });
+        ac.l("safeParser", "", new Object[] { localException });
         Object localObject2 = null;
         continue;
-        localObject2 = crj().getPagerView().getLayoutParams();
+        localObject2 = cCa().getPagerView().getLayoutParams();
         localObject3 = getContext();
         d.g.b.k.g(localObject3, "context");
         localObject3 = ((AppCompatActivity)localObject3).getResources();
         d.g.b.k.g(localObject3, "context.resources");
         ((ViewGroup.LayoutParams)localObject2).width = ((Resources)localObject3).getDisplayMetrics().widthPixels;
-        localObject2 = crj().getPagerView().getLayoutParams();
+        localObject2 = cCa().getPagerView().getLayoutParams();
         localObject3 = getContext();
         d.g.b.k.g(localObject3, "context");
         localObject3 = ((AppCompatActivity)localObject3).getResources();
         d.g.b.k.g(localObject3, "context.resources");
         ((ViewGroup.LayoutParams)localObject2).height = ((int)(f1 * ((Resources)localObject3).getDisplayMetrics().widthPixels));
-        crj().requestLayout();
-        crl().setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(crj().getPagerView().getLayoutParams()));
-        crj().getPagerViewContainer().removeView((View)crj().getPagerView());
-        crl().addView((View)crj().getPagerView());
-        crj().getPagerViewContainer().addView((View)crl(), 0);
-        ((HardTouchableLayout)this.qNB.getValue()).setOnSingleClickListener((HardTouchableLayout.g)new e(this));
-        getCloseBtn().setOnClickListener((View.OnClickListener)new f(this));
-        getCloseBtn().setVisibility(0);
+        cCa().requestLayout();
+        cCd().setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(cCa().getPagerView().getLayoutParams()));
+        cCa().getPagerViewContainer().removeView((View)cCa().getPagerView());
+        cCd().addView((View)cCa().getPagerView());
+        cCa().getPagerViewContainer().addView((View)cCd(), 0);
+        ((HardTouchableLayout)this.rIZ.getValue()).setOnSingleClickListener((HardTouchableLayout.g)new e(this));
+        cCb().setOnClickListener((View.OnClickListener)new f(this));
+        cCb().setVisibility(0);
         localObject2 = getIntent().getByteArrayExtra("ref_feed_info");
         if (localObject2 != null)
         {
-          localObject3 = new akf();
-          ((akf)localObject3).parseFrom((byte[])localObject2);
-          this.qNC = ((akf)localObject3);
+          localObject3 = new amq();
+          ((amq)localObject3).parseFrom((byte[])localObject2);
+          this.rJa = ((amq)localObject3);
         }
-        c.a(this.qrq, (MMActivity)this, null, 6);
-        localObject2 = crj();
-        localObject3 = new FinderMediaBannerAdapter(this.qrq);
+        i.a(this.rbo, (MMActivity)this, null, 6);
+        localObject2 = cCa();
+        localObject3 = new FinderMediaBannerAdapter(this.rbo);
         ((FinderMediaBannerAdapter)localObject3).setItems((List)this.mediaList);
         ((FinderMediaBanner)localObject2).setAdapter((RecyclerView.a)localObject3);
-        crj().setRefFeedInfo(this.qNC);
-        crj().setPageChangeCallback((MediaBanner.c)new g(this));
+        cCa().setRefFeedInfo(this.rJa);
+        cCa().setPageChangeCallback((MediaBanner.c)new g(this));
         AppMethodBeat.o(167426);
         return;
       }
@@ -285,7 +285,7 @@ public final class FinderMediaPreviewUI
   public final void onBackPressed()
   {
     AppMethodBeat.i(167429);
-    bKT();
+    bSg();
     AppMethodBeat.o(167429);
   }
   
@@ -297,10 +297,10 @@ public final class FinderMediaPreviewUI
     getWindow().setFlags(201326592, 201326592);
     setLightNavigationbarIcon();
     initView();
-    if (!this.qMy)
+    if (!this.iBD)
     {
-      this.qMy = true;
-      ad.i("Finder.MediaPreviewUI", "runEnterAnimation");
+      this.iBD = true;
+      ac.i("Finder.MediaPreviewUI", "runEnterAnimation");
       paramBundle = getIntent().getParcelableExtra("crop_info");
       if (paramBundle == null)
       {
@@ -309,8 +309,8 @@ public final class FinderMediaPreviewUI
         throw paramBundle;
       }
       paramBundle = (ViewAnimHelper.ViewInfo)paramBundle;
-      AnimationLayout localAnimationLayout = crl();
-      View localView = crk();
+      AnimationLayout localAnimationLayout = cCd();
+      View localView = cCc();
       Window localWindow = getWindow();
       d.g.b.k.g(localWindow, "window");
       localAnimationLayout.a(localView, localWindow.getDecorView(), paramBundle, (Animator.AnimatorListener)new i(this));
@@ -322,19 +322,16 @@ public final class FinderMediaPreviewUI
   {
     AppMethodBeat.i(167427);
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (this.qND))
+    if ((paramBoolean) && (this.rJb))
     {
-      this.qND = false;
-      Da(0);
+      this.rJb = false;
+      Ev(0);
     }
     AppMethodBeat.at(this, paramBoolean);
     AppMethodBeat.o(167427);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$Companion;", "", "()V", "IS_VLOG_MODE", "", "MEDIA_LIST", "MEDIA_LIST_COUNT", "REF_FEED_INFO", "TAG", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/view/AnimationLayout;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/view/AnimationLayout;", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<AnimationLayout>
@@ -345,7 +342,7 @@ public final class FinderMediaPreviewUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<View>
@@ -356,7 +353,7 @@ public final class FinderMediaPreviewUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class d
     extends d.g.b.l
     implements d.g.a.a<View>
@@ -367,27 +364,27 @@ public final class FinderMediaPreviewUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$initView$2", "Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "onSingleClick", "", "view", "Landroid/view/View;", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$initView$2", "Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "onSingleClick", "", "view", "Landroid/view/View;", "plugin-finder_release"})
   public static final class e
     implements HardTouchableLayout.g
   {
-    public final void dR(View paramView)
+    public final void dV(View paramView)
     {
       AppMethodBeat.i(167407);
       d.g.b.k.h(paramView, "view");
-      if ((((bmd)this.qNG.mediaList.get(FinderMediaPreviewUI.a(this.qNG))).mediaType == 6) || (((bmd)this.qNG.mediaList.get(FinderMediaPreviewUI.a(this.qNG))).mediaType == 4))
+      if ((((bqs)this.rJe.mediaList.get(FinderMediaPreviewUI.a(this.rJe))).mediaType == 6) || (((bqs)this.rJe.mediaList.get(FinderMediaPreviewUI.a(this.rJe))).mediaType == 4))
       {
-        FinderMediaPreviewUI.b(this.qNG);
-        FinderMediaPreviewUI.b(this.qNG);
+        FinderMediaPreviewUI.b(this.rJe);
+        FinderMediaPreviewUI.b(this.rJe);
         AppMethodBeat.o(167407);
         return;
       }
-      FinderMediaPreviewUI.c(this.qNG);
+      FinderMediaPreviewUI.c(this.rJe);
       AppMethodBeat.o(167407);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
@@ -396,30 +393,30 @@ public final class FinderMediaPreviewUI
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(167408);
-      this.qNG.onBackPressed();
+      this.rJe.onBackPressed();
       AppMethodBeat.o(167408);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$initView$6", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$initView$6", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "plugin-finder_release"})
   public static final class g
     implements MediaBanner.c
   {
     public final void ad(int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.i(199267);
-      FinderMediaPreviewUI.a(this.qNG, paramInt);
+      AppMethodBeat.i(203238);
+      FinderMediaPreviewUI.a(this.rJe, paramInt);
       if (!paramBoolean)
       {
-        AppMethodBeat.o(199267);
+        AppMethodBeat.o(203238);
         return;
       }
-      FinderMediaPreviewUI.b(this.qNG, paramInt);
-      AppMethodBeat.o(199267);
+      FinderMediaPreviewUI.b(this.rJe, paramInt);
+      AppMethodBeat.o(203238);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/finder/view/FinderMediaBanner;", "kotlin.jvm.PlatformType", "invoke"})
   static final class h
     extends d.g.b.l
     implements d.g.a.a<FinderMediaBanner>
@@ -430,7 +427,7 @@ public final class FinderMediaPreviewUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$runEnterAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$runEnterAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class i
     implements Animator.AnimatorListener
   {
@@ -439,7 +436,7 @@ public final class FinderMediaPreviewUI
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(167411);
-      FinderMediaPreviewUI.d(this.qNG);
+      FinderMediaPreviewUI.d(this.rJe);
       AppMethodBeat.o(167411);
     }
     
@@ -448,12 +445,12 @@ public final class FinderMediaPreviewUI
     public final void onAnimationStart(Animator paramAnimator)
     {
       AppMethodBeat.i(167412);
-      FinderMediaPreviewUI.e(this.qNG).setVisibility(0);
+      FinderMediaPreviewUI.e(this.rJe).setVisibility(0);
       AppMethodBeat.o(167412);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$runExitAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderMediaPreviewUI$runExitAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class j
     implements Animator.AnimatorListener
   {
@@ -468,8 +465,8 @@ public final class FinderMediaPreviewUI
     {
       AppMethodBeat.i(167414);
       d.g.b.k.h(paramAnimator, "animation");
-      this.qNG.finish();
-      this.qNG.overridePendingTransition(2130771986, 2130771986);
+      this.rJe.finish();
+      this.rJe.overridePendingTransition(2130771986, 2130771986);
       AppMethodBeat.o(167414);
     }
     
@@ -484,12 +481,12 @@ public final class FinderMediaPreviewUI
     {
       AppMethodBeat.i(167413);
       d.g.b.k.h(paramAnimator, "animation");
-      FinderMediaPreviewUI.f(this.qNG).setVisibility(8);
+      FinderMediaPreviewUI.f(this.rJe).setVisibility(8);
       AppMethodBeat.o(167413);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/view/HardTouchableLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/view/HardTouchableLayout;", "kotlin.jvm.PlatformType", "invoke"})
   static final class l
     extends d.g.b.l
     implements d.g.a.a<HardTouchableLayout>
@@ -502,7 +499,7 @@ public final class FinderMediaPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderMediaPreviewUI
  * JD-Core Version:    0.7.0.1
  */

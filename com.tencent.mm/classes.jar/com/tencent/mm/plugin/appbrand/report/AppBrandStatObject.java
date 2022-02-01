@@ -9,14 +9,14 @@ public final class AppBrandStatObject
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandStatObject> CREATOR;
-  public String dbt;
-  public int dzQ;
-  public int dzS;
-  public String dzT;
-  public String jYX;
-  public int lpL;
-  public String lpM;
-  public AppBrandRecommendStatObj lpN;
+  public String cYP;
+  public int dxC;
+  public int dxE;
+  public String dxF;
+  public String kzK;
+  public int lRH;
+  public String lRI;
+  public AppBrandRecommendStatObj lRJ;
   public int scene;
   
   static
@@ -31,15 +31,15 @@ public final class AppBrandStatObject
   protected AppBrandStatObject(Parcel paramParcel)
   {
     AppMethodBeat.i(123535);
-    this.dzS = paramParcel.readInt();
-    this.dzT = paramParcel.readString();
+    this.dxE = paramParcel.readInt();
+    this.dxF = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.dbt = paramParcel.readString();
-    this.lpL = paramParcel.readInt();
-    this.dzQ = paramParcel.readInt();
-    this.jYX = paramParcel.readString();
-    this.lpN = ((AppBrandRecommendStatObj)paramParcel.readParcelable(AppBrandRecommendStatObj.class.getClassLoader()));
-    this.lpM = paramParcel.readString();
+    this.cYP = paramParcel.readString();
+    this.lRH = paramParcel.readInt();
+    this.dxC = paramParcel.readInt();
+    this.kzK = paramParcel.readString();
+    this.lRJ = ((AppBrandRecommendStatObj)paramParcel.readParcelable(AppBrandRecommendStatObj.class.getClassLoader()));
+    this.lRI = paramParcel.readString();
     AppMethodBeat.o(123535);
   }
   
@@ -51,7 +51,7 @@ public final class AppBrandStatObject
   public final String toString()
   {
     AppMethodBeat.i(123533);
-    String str = "AppBrandStatObject{preScene=" + this.dzS + ", preSceneNote='" + this.dzT + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.dbt + '\'' + ", usedState=" + this.lpL + '}';
+    String str = "AppBrandStatObject{preScene=" + this.dxE + ", preSceneNote='" + this.dxF + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.cYP + '\'' + ", usedState=" + this.lRH + '}';
     AppMethodBeat.o(123533);
     return str;
   }
@@ -59,21 +59,21 @@ public final class AppBrandStatObject
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(123534);
-    paramParcel.writeInt(this.dzS);
-    paramParcel.writeString(this.dzT);
+    paramParcel.writeInt(this.dxE);
+    paramParcel.writeString(this.dxF);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeString(this.dbt);
-    paramParcel.writeInt(this.lpL);
-    paramParcel.writeInt(this.dzQ);
-    paramParcel.writeString(this.jYX);
-    paramParcel.writeParcelable(this.lpN, paramInt);
-    paramParcel.writeString(this.lpM);
+    paramParcel.writeString(this.cYP);
+    paramParcel.writeInt(this.lRH);
+    paramParcel.writeInt(this.dxC);
+    paramParcel.writeString(this.kzK);
+    paramParcel.writeParcelable(this.lRJ, paramInt);
+    paramParcel.writeString(this.lRI);
     AppMethodBeat.o(123534);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandStatObject
  * JD-Core Version:    0.7.0.1
  */

@@ -15,25 +15,25 @@ import com.tencent.mm.ui.am;
 public final class f
   extends BaseSmallView
 {
-  private ImageView fxT;
-  private TextView hJf;
+  private ImageView fBA;
+  private TextView ijF;
   private TextView timeTv;
-  private ImageView vkA;
+  private ImageView wtc;
   
   public f(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(115506);
     LayoutInflater.from(paramContext).inflate(2131495886, this);
-    this.vkA = ((ImageView)findViewById(2131306480));
+    this.wtc = ((ImageView)findViewById(2131306480));
     this.timeTv = ((TextView)findViewById(2131306618));
-    this.hJf = ((TextView)findViewById(2131306619));
-    this.fxT = ((ImageView)findViewById(2131306617));
-    this.fxT.setImageDrawable(am.i(getContext(), 2131690359, Color.parseColor("#07C160")));
+    this.ijF = ((TextView)findViewById(2131306619));
+    this.fBA = ((ImageView)findViewById(2131306617));
+    this.fBA.setImageDrawable(am.k(getContext(), 2131690359, Color.parseColor("#07C160")));
     AppMethodBeat.o(115506);
   }
   
-  public final void atk(String paramString)
+  public final void ayB(String paramString)
   {
     AppMethodBeat.i(115507);
     this.timeTv.setTextSize(1, 14.0F);
@@ -42,7 +42,7 @@ public final class f
     AppMethodBeat.o(115507);
   }
   
-  public final void atl(String paramString)
+  public final void ayC(String paramString)
   {
     AppMethodBeat.i(115508);
     this.timeTv.setTextSize(1, 12.0F);
@@ -51,47 +51,47 @@ public final class f
     AppMethodBeat.o(115508);
   }
   
-  public final void cSz()
+  public final void dgi()
   {
     AppMethodBeat.i(184090);
-    this.hJf.setVisibility(0);
-    this.fxT.setImageDrawable(am.i(getContext(), 2131690327, Color.parseColor("#FA5151")));
-    this.hJf.setTextColor(Color.parseColor("#FA5151"));
-    this.hJf.setText(2131764923);
+    this.ijF.setVisibility(0);
+    this.fBA.setImageDrawable(am.k(getContext(), 2131690327, Color.parseColor("#FA5151")));
+    this.ijF.setTextColor(Color.parseColor("#FA5151"));
+    this.ijF.setText(2131764923);
     this.timeTv.setVisibility(8);
-    super.cSz();
+    super.dgi();
     AppMethodBeat.o(184090);
   }
   
-  public final boolean dWm()
+  public final void elA()
+  {
+    AppMethodBeat.i(184877);
+    super.elA();
+    this.wtc.setBackground(am.k(getContext(), 2131234576, getResources().getColor(2131099650)));
+    AppMethodBeat.o(184877);
+  }
+  
+  public final boolean ely()
   {
     AppMethodBeat.i(184087);
-    super.dWm();
+    super.ely();
     this.timeTv.setVisibility(8);
-    this.hJf.setVisibility(0);
-    this.hJf.setTextColor(Color.parseColor("#FA5151"));
-    this.hJf.setText(2131764882);
-    this.fxT.setImageDrawable(am.i(getContext(), 2131690360, Color.parseColor("#FA5151")));
+    this.ijF.setVisibility(0);
+    this.ijF.setTextColor(Color.parseColor("#FA5151"));
+    this.ijF.setText(2131764882);
+    this.fBA.setImageDrawable(am.k(getContext(), 2131690360, Color.parseColor("#FA5151")));
     AppMethodBeat.o(184087);
     return true;
   }
   
-  public final void dWn()
+  public final void elz()
   {
     AppMethodBeat.i(184088);
-    this.fxT.setImageDrawable(am.i(getContext(), 2131690359, Color.parseColor("#07C160")));
-    this.hJf.setVisibility(8);
-    this.hJf.setTextColor(Color.parseColor("#07C160"));
+    this.fBA.setImageDrawable(am.k(getContext(), 2131690359, Color.parseColor("#07C160")));
+    this.ijF.setVisibility(8);
+    this.ijF.setTextColor(Color.parseColor("#07C160"));
     this.timeTv.setVisibility(0);
     AppMethodBeat.o(184088);
-  }
-  
-  public final void dWo()
-  {
-    AppMethodBeat.i(184877);
-    super.dWo();
-    this.vkA.setBackground(am.i(getContext(), 2131234576, getResources().getColor(2131099650)));
-    AppMethodBeat.o(184877);
   }
   
   public final OpenGlRender getBeautyData()
@@ -101,18 +101,18 @@ public final class f
   
   public final void onAnimationEnd() {}
   
-  public final void rL(boolean paramBoolean)
+  public final void sM(boolean paramBoolean)
   {
     AppMethodBeat.i(184091);
     if (paramBoolean)
     {
       this.timeTv.setVisibility(8);
-      this.hJf.setVisibility(0);
-      this.hJf.setText(2131764894);
+      this.ijF.setVisibility(0);
+      this.ijF.setText(2131764894);
       AppMethodBeat.o(184091);
       return;
     }
-    super.rL(false);
+    super.sM(false);
     AppMethodBeat.o(184091);
   }
   
@@ -121,10 +121,10 @@ public final class f
   public final void setVoicePlayDevice(int paramInt)
   {
     AppMethodBeat.i(184089);
-    if (this.zhd != paramInt)
+    if (this.AzM != paramInt)
     {
-      this.zhd = paramInt;
-      this.hJf.setVisibility(0);
+      this.AzM = paramInt;
+      this.ijF.setVisibility(0);
       switch (paramInt)
       {
       }
@@ -135,23 +135,23 @@ public final class f
       super.setVoicePlayDevice(paramInt);
       AppMethodBeat.o(184089);
       return;
-      this.fxT.setImageDrawable(am.i(getContext(), 2131690357, Color.parseColor("#07C160")));
-      this.hJf.setText(2131764878);
+      this.fBA.setImageDrawable(am.k(getContext(), 2131690357, Color.parseColor("#07C160")));
+      this.ijF.setText(2131764878);
       continue;
-      this.fxT.setImageDrawable(am.i(getContext(), 2131690499, Color.parseColor("#07C160")));
-      this.hJf.setText(2131764881);
+      this.fBA.setImageDrawable(am.k(getContext(), 2131690499, Color.parseColor("#07C160")));
+      this.ijF.setText(2131764881);
       continue;
-      this.fxT.setImageDrawable(am.i(getContext(), 2131690395, Color.parseColor("#07C160")));
-      this.hJf.setText(2131764879);
+      this.fBA.setImageDrawable(am.k(getContext(), 2131690395, Color.parseColor("#07C160")));
+      this.ijF.setText(2131764879);
       continue;
-      this.fxT.setImageDrawable(am.i(getContext(), 2131690411, Color.parseColor("#07C160")));
-      this.hJf.setText(2131764880);
+      this.fBA.setImageDrawable(am.k(getContext(), 2131690411, Color.parseColor("#07C160")));
+      this.ijF.setText(2131764880);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.f
  * JD-Core Version:    0.7.0.1
  */

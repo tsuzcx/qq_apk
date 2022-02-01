@@ -2,13 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.x.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.w.f;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class o
-  extends c
+  extends com.tencent.mm.plugin.appbrand.jsapi.base.c
 {
   private static final int CTRL_INDEX = 254;
   public static final String NAME = "updateTextView";
@@ -24,19 +23,19 @@ public final class o
   public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137548);
-    ad.d("MicroMsg.JsApiUpdateTextView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
+    ac.d("MicroMsg.JsApiUpdateTextView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiUpdateTextView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ac.w("MicroMsg.JsApiUpdateTextView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137548);
       return false;
     }
     com.tencent.mm.plugin.appbrand.widget.e locale = (com.tencent.mm.plugin.appbrand.widget.e)((CoverViewContainer)paramView).ax(com.tencent.mm.plugin.appbrand.widget.e.class);
     if (locale == null) {
-      ad.w("MicroMsg.JsApiUpdateTextView", "the target view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
+      ac.w("MicroMsg.JsApiUpdateTextView", "the target view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
     }
-    b.a(locale, paramJSONObject.optJSONObject("label"));
-    com.tencent.mm.plugin.appbrand.jsapi.x.e.b(paramView, paramJSONObject.optJSONObject("style"));
+    com.tencent.mm.plugin.appbrand.jsapi.w.c.a(locale, paramJSONObject.optJSONObject("label"));
+    f.b(paramView, paramJSONObject.optJSONObject("style"));
     boolean bool = super.c(parame, paramInt, paramView, paramJSONObject);
     AppMethodBeat.o(137548);
     return bool;
@@ -44,7 +43,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.o
  * JD-Core Version:    0.7.0.1
  */

@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.gallery.model;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GalleryItem$VideoMediaItem
   extends GalleryItem.MediaItem
 {
   public static final Parcelable.Creator<GalleryItem.MediaItem> CREATOR;
-  public int gta = -1;
-  public String hsS;
-  public String hsT;
-  public int hsU = -1;
-  public int hsV = -1;
+  public int gTI = -1;
+  public String hTu;
+  public String hTv;
+  public int hTw = -1;
+  public int hTx = -1;
   public int videoBitRate = -1;
   public int videoFrameRate = -1;
   public int videoHeight = -1;
@@ -38,16 +38,16 @@ public class GalleryItem$VideoMediaItem
     super(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final String anX()
+  public final String auN()
   {
     AppMethodBeat.i(111320);
-    if (!bt.isNullOrNil(this.pUe))
+    if (!bs.isNullOrNil(this.qCJ))
     {
-      str = this.pUe;
+      str = this.qCJ;
       AppMethodBeat.o(111320);
       return str;
     }
-    String str = this.rBp;
+    String str = this.sKh;
     AppMethodBeat.o(111320);
     return str;
   }
@@ -65,7 +65,7 @@ public class GalleryItem$VideoMediaItem
   public String toString()
   {
     AppMethodBeat.i(111322);
-    String str = "VideoMediaItem{base=" + super.toString() + ", videoTrackMime='" + this.hsS + '\'' + ", audioTrackMime='" + this.hsT + '\'' + ", durationMs=" + this.hsU + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.hsV + ", videoFrameRate=" + this.videoFrameRate + '}';
+    String str = "VideoMediaItem{base=" + super.toString() + ", videoTrackMime='" + this.hTu + '\'' + ", audioTrackMime='" + this.hTv + '\'' + ", durationMs=" + this.hTw + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.hTx + ", videoFrameRate=" + this.videoFrameRate + '}';
     AppMethodBeat.o(111322);
     return str;
   }
@@ -73,21 +73,21 @@ public class GalleryItem$VideoMediaItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(111321);
-    paramParcel.writeString(this.rBp);
-    paramParcel.writeString(this.pUe);
-    paramParcel.writeLong(this.rBs);
+    paramParcel.writeString(this.sKh);
+    paramParcel.writeString(this.qCJ);
+    paramParcel.writeLong(this.sKk);
     paramParcel.writeString(this.mMimeType);
     paramParcel.writeInt(this.videoWidth);
     paramParcel.writeInt(this.videoHeight);
-    paramParcel.writeInt(this.hsU);
-    paramParcel.writeString(this.hsS);
-    paramParcel.writeString(this.hsT);
-    paramParcel.writeInt(this.hsV);
+    paramParcel.writeInt(this.hTw);
+    paramParcel.writeString(this.hTu);
+    paramParcel.writeString(this.hTv);
+    paramParcel.writeInt(this.hTx);
     paramParcel.writeInt(this.videoFrameRate);
     paramParcel.writeInt(this.videoBitRate);
-    paramParcel.writeInt(this.gta);
-    paramParcel.writeLong(this.rBt);
-    paramParcel.writeSerializable(this.Lmm);
+    paramParcel.writeInt(this.gTI);
+    paramParcel.writeLong(this.sKl);
+    paramParcel.writeSerializable(this.sKp);
     AppMethodBeat.o(111321);
   }
 }

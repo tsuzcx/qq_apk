@@ -2,11 +2,11 @@ package d.m;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/sequences/DropTakeSequence;", "T", "Lkotlin/sequences/Sequence;", "drop", "n", "", "take", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/DropTakeSequence;", "T", "Lkotlin/sequences/Sequence;", "drop", "n", "", "take", "kotlin-stdlib"})
 public abstract interface c<T>
   extends h<T>
 {
-  public abstract h<T> fKv();
+  public abstract h<T> gcY();
 }
 
 

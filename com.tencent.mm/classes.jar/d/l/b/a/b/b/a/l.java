@@ -10,22 +10,22 @@ import java.util.List;
 public final class l
   implements g
 {
-  private final g JrM;
-  private final d.g.a.b<d.l.b.a.b.f.b, Boolean> JrN;
+  private final g Lff;
+  private final d.g.a.b<d.l.b.a.b.f.b, Boolean> Lfg;
   
   public l(g paramg, d.g.a.b<? super d.l.b.a.b.f.b, Boolean> paramb)
   {
     AppMethodBeat.i(56975);
-    this.JrM = paramg;
-    this.JrN = paramb;
+    this.Lff = paramg;
+    this.Lfg = paramb;
     AppMethodBeat.o(56975);
   }
   
   private final boolean c(c paramc)
   {
     AppMethodBeat.i(56974);
-    paramc = paramc.fzd();
-    if ((paramc != null) && (((Boolean)this.JrN.aA(paramc)).booleanValue()))
+    paramc = paramc.fRH();
+    if ((paramc != null) && (((Boolean)this.Lfg.ay(paramc)).booleanValue()))
     {
       AppMethodBeat.o(56974);
       return true;
@@ -38,9 +38,9 @@ public final class l
   {
     AppMethodBeat.i(56971);
     k.h(paramb, "fqName");
-    if (((Boolean)this.JrN.aA(paramb)).booleanValue())
+    if (((Boolean)this.Lfg.ay(paramb)).booleanValue())
     {
-      paramb = this.JrM.g(paramb);
+      paramb = this.Lff.g(paramb);
       AppMethodBeat.o(56971);
       return paramb;
     }
@@ -52,9 +52,9 @@ public final class l
   {
     AppMethodBeat.i(56970);
     k.h(paramb, "fqName");
-    if (((Boolean)this.JrN.aA(paramb)).booleanValue())
+    if (((Boolean)this.Lfg.ay(paramb)).booleanValue())
     {
-      boolean bool = this.JrM.h(paramb);
+      boolean bool = this.Lff.h(paramb);
       AppMethodBeat.o(56970);
       return bool;
     }
@@ -65,7 +65,7 @@ public final class l
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56973);
-    Object localObject = (Iterable)this.JrM;
+    Object localObject = (Iterable)this.Lff;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
@@ -86,7 +86,7 @@ public final class l
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56972);
-    Object localObject2 = (Iterable)this.JrM;
+    Object localObject2 = (Iterable)this.Lff;
     Object localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -104,7 +104,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oh;
+import com.tencent.mm.g.a.oq;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 final class NotifyReceiver$a$3
   implements Runnable
@@ -16,31 +16,31 @@ final class NotifyReceiver$a$3
   public final void run()
   {
     AppMethodBeat.i(131898);
-    if (!g.afz().aeI())
+    if (!g.agP().afY())
     {
       AppMethodBeat.o(131898);
       return;
     }
-    if (bt.l((Integer)g.afB().afk().get(15, null)) == 0) {}
+    if (bs.m((Integer)g.agR().agA().get(15, null)) == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.e("MicroMsg.NotifyReceiver", "not init finish , do not post sync task");
+      ac.e("MicroMsg.NotifyReceiver", "not init finish , do not post sync task");
       AppMethodBeat.o(131898);
       return;
     }
-    long l = bt.eGO();
-    if ((l - NotifyReceiver.a.ti() > 0L) && (l - NotifyReceiver.a.ti() < 10000L))
+    long l = bs.eWj();
+    if ((l - NotifyReceiver.a.tr() > 0L) && (l - NotifyReceiver.a.tr() < 10000L))
     {
-      ad.d("MicroMsg.NotifyReceiver", "sync task limit now - last : %d", new Object[] { Long.valueOf(l - NotifyReceiver.a.ti()) });
+      ac.d("MicroMsg.NotifyReceiver", "sync task limit now - last : %d", new Object[] { Long.valueOf(l - NotifyReceiver.a.tr()) });
       AppMethodBeat.o(131898);
       return;
     }
-    NotifyReceiver.a.lf(l);
-    ad.i("MicroMsg.NotifyReceiver", "begin post sync task");
-    l = bt.GC();
-    com.tencent.mm.sdk.b.a.ESL.l(new oh());
-    ad.i("MicroMsg.NotifyReceiver", "end post sync task, cost=%d, Idle done", new Object[] { Long.valueOf(bt.aS(l)) });
-    NotifyReceiver.a.b(this.fjb);
+    NotifyReceiver.a.oH(l);
+    ac.i("MicroMsg.NotifyReceiver", "begin post sync task");
+    l = bs.Gn();
+    com.tencent.mm.sdk.b.a.GpY.l(new oq());
+    ac.i("MicroMsg.NotifyReceiver", "end post sync task, cost=%d, Idle done", new Object[] { Long.valueOf(bs.aO(l)) });
+    NotifyReceiver.a.b(this.fmv);
     AppMethodBeat.o(131898);
   }
   

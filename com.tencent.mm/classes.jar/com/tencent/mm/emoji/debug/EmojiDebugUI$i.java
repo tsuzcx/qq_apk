@@ -1,25 +1,22 @@
 package com.tencent.mm.emoji.debug;
 
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class EmojiDebugUI$i
-  extends d.g.b.l
-  implements a<String>
+  implements MenuItem.OnMenuItemClickListener
 {
-  public static final i fKJ;
+  EmojiDebugUI$i(EmojiDebugUI paramEmojiDebugUI) {}
   
-  static
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(177045);
-    fKJ = new i();
-    AppMethodBeat.o(177045);
-  }
-  
-  EmojiDebugUI$i()
-  {
-    super(0);
+    AppMethodBeat.i(105346);
+    this.fOd.finish();
+    AppMethodBeat.o(105346);
+    return true;
   }
 }
 

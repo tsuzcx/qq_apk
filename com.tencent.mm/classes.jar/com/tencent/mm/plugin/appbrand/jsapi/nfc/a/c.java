@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.ar;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.ae;
 import d.g.b.k;
 import d.l;
@@ -12,18 +12,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "techs", "", "", "data", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "setContext", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiEvent;", "()V", "dispatch", "", "techs", "", "", "data", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "setContext", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class c
   extends ar
 {
   public static final int CTRL_INDEX = 790;
   public static final String NAME = "onNFCDiscovered";
-  public static final a kca;
+  public static final a kCN;
   
   static
   {
     AppMethodBeat.i(183645);
-    kca = new a((byte)0);
+    kCN = new a((byte)0);
     AppMethodBeat.o(183645);
   }
   
@@ -36,19 +36,19 @@ public final class c
       paramHashMap.put("techs", paramList);
       if (paramHashMap == null) {}
     }
-    for (paramList = (Map)paramHashMap;; paramList = ae.b(u.P("techs", paramList)))
+    for (paramList = (Map)paramHashMap;; paramList = ae.b(u.Q("techs", paramList)))
     {
-      C(paramList).aXQ();
+      B(paramList).beN();
       AppMethodBeat.o(183640);
       return;
     }
   }
   
-  public final void aXQ()
+  public final void beN()
   {
     AppMethodBeat.i(183642);
-    ad.d("MicroMsg.AppBrand.JsApiEventOnNFCDiscovered", "dispatch, data: " + getData());
-    super.aXQ();
+    ac.d("MicroMsg.AppBrand.JsApiEventOnNFCDiscovered", "dispatch, data: " + getData());
+    super.beN();
     AppMethodBeat.o(183642);
   }
   
@@ -67,7 +67,7 @@ public final class c
     return paramc;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TECHS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiEventOnNFCDiscovered$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_TECHS", "TAG", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
 }
 

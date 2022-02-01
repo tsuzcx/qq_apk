@@ -18,7 +18,7 @@ public final class j
   {
     AppMethodBeat.i(78702);
     paramf.reload();
-    h.vKh.dB(982, 7);
+    h.wUl.dB(982, 7);
     AppMethodBeat.o(78702);
   }
   

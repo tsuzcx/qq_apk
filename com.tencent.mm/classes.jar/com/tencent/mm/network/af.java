@@ -4,33 +4,33 @@ import android.os.Build.VERSION;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class af
   extends i.a
 {
-  private av gTs;
-  private int hMH;
-  private long hMI;
-  private int hMJ;
-  private final RemoteCallbackList<n> hMK;
+  private au htR;
+  private int ine;
+  private long inf;
+  private int ing;
+  private final RemoteCallbackList<n> inh;
   
   public af()
   {
     AppMethodBeat.i(132934);
-    this.hMH = 4;
-    this.hMJ = 0;
-    this.hMK = new RemoteCallbackList();
-    this.gTs = new av(new av.a()
+    this.ine = 4;
+    this.ing = 0;
+    this.inh = new RemoteCallbackList();
+    this.htR = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(132933);
         int i = af.b(af.this).beginBroadcast();
-        ad.i("MicroMsg.NetworkEvent", "listeners ct : %d", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.NetworkEvent", "listeners ct : %d", new Object[] { Integer.valueOf(i) });
         i -= 1;
         for (;;)
         {
@@ -46,7 +46,7 @@ public final class af
             {
               for (;;)
               {
-                ad.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bt.m(localRemoteException) });
+                ac.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bs.m(localRemoteException) });
               }
             }
           }
@@ -59,9 +59,9 @@ public final class af
     AppMethodBeat.o(132934);
   }
   
-  private boolean pq(int paramInt)
+  private boolean qe(int paramInt)
   {
-    if (paramInt == this.hMH) {}
+    if (paramInt == this.ine) {}
     do
     {
       do
@@ -70,56 +70,56 @@ public final class af
         if (3 != paramInt) {
           break;
         }
-      } while (this.hMH != 2);
-      this.hMH = paramInt;
+      } while (this.ine != 2);
+      this.ine = paramInt;
       return true;
       if (2 != paramInt) {
         break;
       }
-    } while ((this.hMH == 0) || (this.hMH == 1));
-    this.hMJ += 1;
-    if (this.hMJ > 0)
+    } while ((this.ine == 0) || (this.ine == 1));
+    this.ing += 1;
+    if (this.ing > 0)
     {
-      this.hMH = 2;
+      this.ine = 2;
       return true;
       if (4 == paramInt)
       {
-        this.hMJ = 0;
-        this.hMH = 4;
+        this.ing = 0;
+        this.ine = 4;
         return true;
       }
       if ((Build.VERSION.SDK_INT >= 26) && (paramInt == -1))
       {
-        this.hMH = 0;
+        this.ine = 0;
         return true;
       }
     }
-    this.hMH = paramInt;
+    this.ine = paramInt;
     return true;
   }
   
-  public final int aEJ()
+  public final int aLA()
   {
     AppMethodBeat.i(132935);
-    if (0L > bt.lZ(this.hMI)) {}
-    for (int i = 5;; i = this.hMH)
+    if (0L > bs.pN(this.inf)) {}
+    for (int i = 5;; i = this.ine)
     {
-      ad.i("MicroMsg.NetworkEvent", "getNowStatus = %d", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.NetworkEvent", "getNowStatus = %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(132935);
       return i;
     }
   }
   
-  public final void aEK()
+  public final void aLB()
   {
     AppMethodBeat.i(132938);
-    this.hMK.kill();
+    this.inh.kill();
     AppMethodBeat.o(132938);
   }
   
-  public final long aEL()
+  public final long aLC()
   {
-    return this.hMI;
+    return this.inf;
   }
   
   public final boolean c(n paramn)
@@ -127,7 +127,7 @@ public final class af
     AppMethodBeat.i(132936);
     try
     {
-      this.hMK.register(paramn);
+      this.inh.register(paramn);
       AppMethodBeat.o(132936);
       return true;
     }
@@ -135,8 +135,8 @@ public final class af
     {
       for (;;)
       {
-        ad.e("MicroMsg.NetworkEvent", "addListener %s", new Object[] { paramn });
-        ad.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bt.m(paramn) });
+        ac.e("MicroMsg.NetworkEvent", "addListener %s", new Object[] { paramn });
+        ac.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bs.m(paramn) });
       }
     }
   }
@@ -147,42 +147,42 @@ public final class af
     AppMethodBeat.i(132937);
     try
     {
-      boolean bool2 = this.hMK.unregister(paramn);
+      boolean bool2 = this.inh.unregister(paramn);
       bool1 = bool2;
     }
     catch (Exception paramn)
     {
       for (;;)
       {
-        ad.e("MicroMsg.NetworkEvent", "removeListener %s", new Object[] { paramn });
-        ad.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bt.m(paramn) });
+        ac.e("MicroMsg.NetworkEvent", "removeListener %s", new Object[] { paramn });
+        ac.e("MicroMsg.NetworkEvent", "exception:%s", new Object[] { bs.m(paramn) });
       }
     }
     AppMethodBeat.o(132937);
     return bool1;
   }
   
-  public final void pr(int paramInt)
+  public final void qf(int paramInt)
   {
     AppMethodBeat.i(132939);
-    ad.i("MicroMsg.NetworkEvent", "networkChange : %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!pq(paramInt))
+    ac.i("MicroMsg.NetworkEvent", "networkChange : %d", new Object[] { Integer.valueOf(paramInt) });
+    if (!qe(paramInt))
     {
       AppMethodBeat.o(132939);
       return;
     }
-    if ((this.hMH != 0) && (this.hMH != 4) && (this.hMH != 6))
+    if ((this.ine != 0) && (this.ine != 4) && (this.ine != 6))
     {
       AppMethodBeat.o(132939);
       return;
     }
-    this.gTs.av(1000L, 1000L);
+    this.htR.au(1000L, 1000L);
     AppMethodBeat.o(132939);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.af
  * JD-Core Version:    0.7.0.1
  */

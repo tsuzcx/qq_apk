@@ -2,17 +2,17 @@ package android.support.v7.app;
 
 final class h
 {
-  private static h Xg;
-  public long Xh;
-  public long Xi;
+  private static h Yb;
+  public long Yc;
+  public long Yd;
   public int state;
   
-  static h gm()
+  static h gu()
   {
-    if (Xg == null) {
-      Xg = new h();
+    if (Yb == null) {
+      Yb = new h();
     }
-    return Xg;
+    return Yb;
   }
   
   public final void b(long paramLong, double paramDouble1, double paramDouble2)
@@ -33,21 +33,21 @@ final class h
     if (paramDouble1 >= 1.0D)
     {
       this.state = 1;
-      this.Xh = -1L;
-      this.Xi = -1L;
+      this.Yc = -1L;
+      this.Yd = -1L;
       return;
     }
     if (paramDouble1 <= -1.0D)
     {
       this.state = 0;
-      this.Xh = -1L;
-      this.Xi = -1L;
+      this.Yc = -1L;
+      this.Yd = -1L;
       return;
     }
     f1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
-    this.Xh = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
-    this.Xi = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
-    if ((this.Xi < paramLong) && (this.Xh > paramLong))
+    this.Yc = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
+    this.Yd = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
+    if ((this.Yd < paramLong) && (this.Yc > paramLong))
     {
       this.state = 0;
       return;

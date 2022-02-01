@@ -11,55 +11,55 @@ import java.util.List;
 final class y
   implements d.a<Object>, e, e.a
 {
-  private final f<?> aDl;
-  private final e.a aDm;
-  private volatile n.a<?> aDr;
-  private int aFE;
-  private b aFF;
-  private Object aFG;
-  private c aFH;
+  private final f<?> aEc;
+  private final e.a aEd;
+  private volatile n.a<?> aEi;
+  private int aGu;
+  private b aGv;
+  private Object aGw;
+  private c aGx;
   
   y(f<?> paramf, e.a parama)
   {
-    this.aDl = paramf;
-    this.aDm = parama;
+    this.aEc = paramf;
+    this.aEd = parama;
   }
   
-  public final void P(Object paramObject)
+  public final void R(Object paramObject)
   {
     AppMethodBeat.i(77061);
-    i locali = this.aDl.aDD;
-    if ((paramObject != null) && (locali.a(this.aDr.aHI.nL())))
+    i locali = this.aEc.aEu;
+    if ((paramObject != null) && (locali.a(this.aEi.aIy.nV())))
     {
-      this.aFG = paramObject;
-      this.aDm.nQ();
+      this.aGw = paramObject;
+      this.aEd.oa();
       AppMethodBeat.o(77061);
       return;
     }
-    this.aDm.a(this.aDr.aDo, paramObject, this.aDr.aHI, this.aDr.aHI.nL(), this.aFH);
+    this.aEd.a(this.aEi.aEf, paramObject, this.aEi.aIy, this.aEi.aIy.nV(), this.aGx);
     AppMethodBeat.o(77061);
   }
   
   public final void a(com.bumptech.glide.c.h paramh, Exception paramException, com.bumptech.glide.c.a.d<?> paramd, com.bumptech.glide.c.a parama)
   {
     AppMethodBeat.i(77065);
-    this.aDm.a(paramh, paramException, paramd, this.aDr.aHI.nL());
+    this.aEd.a(paramh, paramException, paramd, this.aEi.aIy.nV());
     AppMethodBeat.o(77065);
   }
   
   public final void a(com.bumptech.glide.c.h paramh1, Object paramObject, com.bumptech.glide.c.a.d<?> paramd, com.bumptech.glide.c.a parama, com.bumptech.glide.c.h paramh2)
   {
     AppMethodBeat.i(77064);
-    this.aDm.a(paramh1, paramObject, paramd, this.aDr.aHI.nL(), paramh1);
+    this.aEd.a(paramh1, paramObject, paramd, this.aEi.aIy.nV(), paramh1);
     AppMethodBeat.o(77064);
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(77060);
-    n.a locala = this.aDr;
+    n.a locala = this.aEi;
     if (locala != null) {
-      locala.aHI.cancel();
+      locala.aIy.cancel();
     }
     AppMethodBeat.o(77060);
   }
@@ -67,35 +67,35 @@ final class y
   public final void e(Exception paramException)
   {
     AppMethodBeat.i(77062);
-    this.aDm.a(this.aFH, paramException, this.aDr.aHI, this.aDr.aHI.nL());
+    this.aEd.a(this.aGx, paramException, this.aEi.aIy, this.aEi.aIy.nV());
     AppMethodBeat.o(77062);
   }
   
-  public final boolean nO()
+  public final boolean nY()
   {
     AppMethodBeat.i(77059);
     Object localObject1;
     long l;
-    if (this.aFG != null)
+    if (this.aGw != null)
     {
-      localObject1 = this.aFG;
-      this.aFG = null;
-      l = com.bumptech.glide.h.e.pO();
+      localObject1 = this.aGw;
+      this.aGw = null;
+      l = com.bumptech.glide.h.e.pY();
     }
     try
     {
-      com.bumptech.glide.c.d locald = this.aDl.azC.azD.aAh.t(localObject1.getClass());
+      com.bumptech.glide.c.d locald = this.aEc.aAw.aAx.aBb.t(localObject1.getClass());
       if (locald != null)
       {
-        d locald1 = new d(locald, localObject1, this.aDl.aDv);
-        this.aFH = new c(this.aDr.aDo, this.aDl.aDt);
-        this.aDl.nR().a(this.aFH, locald1);
+        d locald1 = new d(locald, localObject1, this.aEc.aEm);
+        this.aGx = new c(this.aEi.aEf, this.aEc.aEk);
+        this.aEc.ob().a(this.aGx, locald1);
         if (Log.isLoggable("SourceGenerator", 2)) {
-          new StringBuilder("Finished encoding source to cache, key: ").append(this.aFH).append(", data: ").append(localObject1).append(", encoder: ").append(locald).append(", duration: ").append(com.bumptech.glide.h.e.n(l));
+          new StringBuilder("Finished encoding source to cache, key: ").append(this.aGx).append(", data: ").append(localObject1).append(", encoder: ").append(locald).append(", duration: ").append(com.bumptech.glide.h.e.p(l));
         }
-        this.aDr.aHI.cleanup();
-        this.aFF = new b(Collections.singletonList(this.aDr.aDo), this.aDl, this);
-        if ((this.aFF != null) && (this.aFF.nO()))
+        this.aEi.aIy.cleanup();
+        this.aGv = new b(Collections.singletonList(this.aEi.aEf), this.aEc, this);
+        if ((this.aGv != null) && (this.aGv.nY()))
         {
           AppMethodBeat.o(77059);
           return true;
@@ -110,28 +110,28 @@ final class y
     }
     finally
     {
-      this.aDr.aHI.cleanup();
+      this.aEi.aIy.cleanup();
       AppMethodBeat.o(77059);
     }
-    this.aFF = null;
-    this.aDr = null;
+    this.aGv = null;
+    this.aEi = null;
     boolean bool = false;
     if (!bool)
     {
-      if (this.aFE < this.aDl.nS().size()) {}
+      if (this.aGu < this.aEc.oc().size()) {}
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
           break label446;
         }
-        List localList = this.aDl.nS();
-        i = this.aFE;
-        this.aFE = (i + 1);
-        this.aDr = ((n.a)localList.get(i));
-        if ((this.aDr == null) || ((!this.aDl.aDD.a(this.aDr.aHI.nL())) && (!this.aDl.k(this.aDr.aHI.nK())))) {
+        List localList = this.aEc.oc();
+        i = this.aGu;
+        this.aGu = (i + 1);
+        this.aEi = ((n.a)localList.get(i));
+        if ((this.aEi == null) || ((!this.aEc.aEu.a(this.aEi.aIy.nV())) && (!this.aEc.k(this.aEi.aIy.nU())))) {
           break;
         }
-        this.aDr.aHI.a(this.aDl.aDC, this);
+        this.aEi.aIy.a(this.aEc.aEt, this);
         bool = true;
         break;
       }
@@ -141,7 +141,7 @@ final class y
     return bool;
   }
   
-  public final void nQ()
+  public final void oa()
   {
     AppMethodBeat.i(77063);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
@@ -151,7 +151,7 @@ final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.y
  * JD-Core Version:    0.7.0.1
  */

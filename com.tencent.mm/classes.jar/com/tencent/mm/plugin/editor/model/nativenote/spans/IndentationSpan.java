@@ -6,27 +6,27 @@ public class IndentationSpan
   extends LeadingMarginSpan.Standard
   implements g<Integer>, h<Integer>
 {
-  private final boolean opY;
-  private final int oqa;
+  private final int oTA;
+  private final boolean oTy;
   
   private IndentationSpan(int paramInt, boolean paramBoolean)
   {
     super(paramInt);
-    this.oqa = paramInt;
-    this.opY = paramBoolean;
+    this.oTA = paramInt;
+    this.oTy = paramBoolean;
   }
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.opY) {
+    if (this.oTy) {
       return 0;
     }
-    return this.oqa;
+    return this.oTA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.IndentationSpan
  * JD-Core Version:    0.7.0.1
  */

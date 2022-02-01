@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,24 +10,24 @@ import org.json.JSONObject;
 public final class ao
   extends am
 {
-  public String sYt;
-  public String tdq;
+  public String ugH;
+  public String ulF;
   
   public ao(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(65300);
-    this.tdq = paramString3;
-    this.sYt = paramString2;
+    this.ulF = paramString3;
+    this.ugH = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     localHashMap.put("receiveId", paramString3);
-    localHashMap.put("wishing", URLEncoder.encode(bt.nullAsNil(paramString2)));
+    localHashMap.put("wishing", URLEncoder.encode(bs.nullAsNil(paramString2)));
     localHashMap.put("ver", paramString4);
     setRequestData(localHashMap);
     AppMethodBeat.o(65300);
   }
   
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/wishwxhb";
   }

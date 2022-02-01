@@ -8,48 +8,26 @@ import org.json.JSONObject;
 
 final class q
 {
-  private static final long bDH;
-  final String bDI;
-  private final String bDJ;
+  private static final long bBp;
+  final String bBq;
+  private final String bBr;
   private final long timestamp;
   
   static
   {
     AppMethodBeat.i(4200);
-    bDH = TimeUnit.DAYS.toMillis(7L);
+    bBp = TimeUnit.DAYS.toMillis(7L);
     AppMethodBeat.o(4200);
   }
   
   private q(String paramString1, String paramString2, long paramLong)
   {
-    this.bDI = paramString1;
-    this.bDJ = paramString2;
+    this.bBq = paramString1;
+    this.bBr = paramString2;
     this.timestamp = paramLong;
   }
   
-  static String b(String paramString1, String paramString2, long paramLong)
-  {
-    AppMethodBeat.i(4198);
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("token", paramString1);
-      localJSONObject.put("appVersion", paramString2);
-      localJSONObject.put("timestamp", paramLong);
-      paramString1 = localJSONObject.toString();
-      AppMethodBeat.o(4198);
-      return paramString1;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1 = String.valueOf(paramString1);
-      new StringBuilder(String.valueOf(paramString1).length() + 24).append("Failed to encode token: ").append(paramString1);
-      AppMethodBeat.o(4198);
-    }
-    return null;
-  }
-  
-  static q bh(String paramString)
+  static q aY(String paramString)
   {
     AppMethodBeat.i(4197);
     if (TextUtils.isEmpty(paramString))
@@ -78,10 +56,32 @@ final class q
     return paramString;
   }
   
-  final boolean bi(String paramString)
+  static String b(String paramString1, String paramString2, long paramLong)
+  {
+    AppMethodBeat.i(4198);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("token", paramString1);
+      localJSONObject.put("appVersion", paramString2);
+      localJSONObject.put("timestamp", paramLong);
+      paramString1 = localJSONObject.toString();
+      AppMethodBeat.o(4198);
+      return paramString1;
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1 = String.valueOf(paramString1);
+      new StringBuilder(String.valueOf(paramString1).length() + 24).append("Failed to encode token: ").append(paramString1);
+      AppMethodBeat.o(4198);
+    }
+    return null;
+  }
+  
+  final boolean aZ(String paramString)
   {
     AppMethodBeat.i(4199);
-    if ((System.currentTimeMillis() > this.timestamp + bDH) || (!paramString.equals(this.bDJ)))
+    if ((System.currentTimeMillis() > this.timestamp + bBp) || (!paramString.equals(this.bBr)))
     {
       AppMethodBeat.o(4199);
       return true;

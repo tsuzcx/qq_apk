@@ -19,7 +19,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -64,133 +63,133 @@ public class PrefInfoCollector
   private void createOutputs()
   {
     // Byte code:
-    //   0: ldc 100
-    //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 102	java/io/File
+    //   0: ldc 98
+    //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 100	java/io/File
     //   8: dup
-    //   9: invokestatic 108	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   12: invokevirtual 111	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   15: ldc 17
-    //   17: invokespecial 114	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: invokestatic 106	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   12: invokevirtual 109	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   15: ldc 15
+    //   17: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   20: astore_1
     //   21: aload_1
-    //   22: invokevirtual 118	java/io/File:exists	()Z
+    //   22: invokevirtual 116	java/io/File:exists	()Z
     //   25: ifeq +13 -> 38
     //   28: aload_1
-    //   29: invokevirtual 121	java/io/File:delete	()Z
+    //   29: invokevirtual 119	java/io/File:delete	()Z
     //   32: pop
     //   33: aload_1
-    //   34: invokevirtual 124	java/io/File:createNewFile	()Z
+    //   34: invokevirtual 122	java/io/File:createNewFile	()Z
     //   37: pop
-    //   38: getstatic 53	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
-    //   41: ldc 126
+    //   38: getstatic 51	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
+    //   41: ldc 124
     //   43: aload_1
-    //   44: invokestatic 132	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   47: invokevirtual 136	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   50: invokestatic 141	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   44: invokestatic 130	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   47: invokevirtual 134	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   50: invokestatic 139	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   53: aload_0
     //   54: aload_1
-    //   55: invokevirtual 111	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   58: putfield 143	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:reportFilePath	Ljava/lang/String;
+    //   55: invokevirtual 109	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   58: putfield 141	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:reportFilePath	Ljava/lang/String;
     //   61: aload_0
-    //   62: new 145	java/io/FileOutputStream
+    //   62: new 143	java/io/FileOutputStream
     //   65: dup
     //   66: aload_1
-    //   67: invokespecial 148	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   70: putfield 150	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:outputStream	Ljava/io/FileOutputStream;
-    //   73: getstatic 53	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
-    //   76: new 152	java/lang/StringBuilder
+    //   67: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   70: putfield 148	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:outputStream	Ljava/io/FileOutputStream;
+    //   73: getstatic 51	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
+    //   76: new 150	java/lang/StringBuilder
     //   79: dup
-    //   80: ldc 154
-    //   82: invokespecial 157	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   80: ldc 152
+    //   82: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   85: aload_0
-    //   86: getfield 143	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:reportFilePath	Ljava/lang/String;
-    //   89: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 141	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   86: getfield 141	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:reportFilePath	Ljava/lang/String;
+    //   89: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 139	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   98: aload_0
-    //   99: getfield 67	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:xmlSerializer	Lorg/xmlpull/v1/XmlSerializer;
-    //   102: ldc 166
+    //   99: getfield 65	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:xmlSerializer	Lorg/xmlpull/v1/XmlSerializer;
+    //   102: ldc 164
     //   104: iconst_1
-    //   105: invokeinterface 172 3 0
+    //   105: invokeinterface 170 3 0
     //   110: aload_0
-    //   111: getfield 67	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:xmlSerializer	Lorg/xmlpull/v1/XmlSerializer;
+    //   111: getfield 65	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:xmlSerializer	Lorg/xmlpull/v1/XmlSerializer;
     //   114: aload_0
-    //   115: getfield 150	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:outputStream	Ljava/io/FileOutputStream;
-    //   118: ldc 14
-    //   120: invokeinterface 176 3 0
+    //   115: getfield 148	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:outputStream	Ljava/io/FileOutputStream;
+    //   118: ldc 12
+    //   120: invokeinterface 174 3 0
     //   125: aload_0
-    //   126: getfield 67	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:xmlSerializer	Lorg/xmlpull/v1/XmlSerializer;
-    //   129: ldc 14
-    //   131: getstatic 182	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   134: invokeinterface 186 3 0
-    //   139: ldc 100
-    //   141: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: getfield 65	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:xmlSerializer	Lorg/xmlpull/v1/XmlSerializer;
+    //   129: ldc 12
+    //   131: getstatic 180	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   134: invokeinterface 184 3 0
+    //   139: ldc 98
+    //   141: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: return
     //   145: astore_1
-    //   146: getstatic 53	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
-    //   149: ldc 188
+    //   146: getstatic 51	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
+    //   149: ldc 186
     //   151: aload_1
-    //   152: invokestatic 192	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   155: new 194	java/lang/RuntimeException
+    //   152: invokestatic 190	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   155: new 192	java/lang/RuntimeException
     //   158: dup
-    //   159: new 152	java/lang/StringBuilder
+    //   159: new 150	java/lang/StringBuilder
     //   162: dup
-    //   163: ldc 196
-    //   165: invokespecial 157	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   163: ldc 194
+    //   165: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   168: aload_1
-    //   169: invokevirtual 199	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   172: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   169: invokevirtual 197	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   172: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   178: aload_1
-    //   179: invokespecial 202	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   179: invokespecial 200	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   182: astore_1
-    //   183: ldc 100
-    //   185: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   183: ldc 98
+    //   185: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   188: aload_1
     //   189: athrow
     //   190: astore_1
-    //   191: getstatic 53	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
-    //   194: ldc 204
+    //   191: getstatic 51	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
+    //   194: ldc 202
     //   196: aload_1
-    //   197: invokestatic 192	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   200: new 194	java/lang/RuntimeException
+    //   197: invokestatic 190	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   200: new 192	java/lang/RuntimeException
     //   203: dup
-    //   204: new 152	java/lang/StringBuilder
+    //   204: new 150	java/lang/StringBuilder
     //   207: dup
-    //   208: ldc 206
-    //   210: invokespecial 157	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   208: ldc 204
+    //   210: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   213: aload_1
-    //   214: invokevirtual 207	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   217: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   220: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   214: invokevirtual 205	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   217: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   223: aload_1
-    //   224: invokespecial 202	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   224: invokespecial 200	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   227: astore_1
-    //   228: ldc 100
-    //   230: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   228: ldc 98
+    //   230: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   233: aload_1
     //   234: athrow
     //   235: astore_1
-    //   236: getstatic 53	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
-    //   239: ldc 209
+    //   236: getstatic 51	com/tencent/qqmusic/mediaplayer/perf/PrefInfoCollector:TAG	Ljava/lang/String;
+    //   239: ldc 207
     //   241: aload_1
-    //   242: invokestatic 192	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   245: new 194	java/lang/RuntimeException
+    //   242: invokestatic 190	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   245: new 192	java/lang/RuntimeException
     //   248: dup
-    //   249: new 152	java/lang/StringBuilder
+    //   249: new 150	java/lang/StringBuilder
     //   252: dup
-    //   253: ldc 211
-    //   255: invokespecial 157	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   253: ldc 209
+    //   255: invokespecial 155	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   258: aload_1
-    //   259: invokevirtual 207	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   262: invokevirtual 161	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   265: invokevirtual 164	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   259: invokevirtual 205	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   262: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   268: aload_1
-    //   269: invokespecial 202	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   269: invokespecial 200	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   272: astore_1
-    //   273: ldc 100
-    //   275: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   273: ldc 98
+    //   275: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   278: aload_1
     //   279: athrow
     // Local variable table:
@@ -231,25 +230,7 @@ public class PrefInfoCollector
   {
     AppMethodBeat.i(114207);
     Object localObject = new ArrayList(this.prefInfos.entrySet());
-    Collections.sort((List)localObject, new Comparator()
-    {
-      public int compare(Map.Entry<String, Long> paramAnonymousEntry1, Map.Entry<String, Long> paramAnonymousEntry2)
-      {
-        AppMethodBeat.i(114195);
-        if (((String)paramAnonymousEntry1.getKey()).charAt(0) > ((String)paramAnonymousEntry2.getKey()).charAt(0))
-        {
-          AppMethodBeat.o(114195);
-          return 1;
-        }
-        if (((String)paramAnonymousEntry1.getKey()).charAt(0) == ((String)paramAnonymousEntry2.getKey()).charAt(0))
-        {
-          AppMethodBeat.o(114195);
-          return 0;
-        }
-        AppMethodBeat.o(114195);
-        return -1;
-      }
-    });
+    Collections.sort((List)localObject, new PrefInfoCollector.1(this));
     if (!((List)localObject).isEmpty())
     {
       this.xmlSerializer.startTag(NAMESPACE, "root");

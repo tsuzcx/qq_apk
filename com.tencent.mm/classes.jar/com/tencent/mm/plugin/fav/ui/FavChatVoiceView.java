@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.fav.a.n;
 import com.tencent.mm.plugin.fav.a.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.t;
 
 public class FavChatVoiceView
@@ -22,13 +22,13 @@ public class FavChatVoiceView
   implements n.a
 {
   private Context context;
-  private int dkj;
+  private int dhE;
   private int duration;
   private boolean isRunning;
-  private AlphaAnimation orc;
-  private AnimationDrawable ord;
+  private AlphaAnimation oUC;
+  private AnimationDrawable oUD;
   private String path;
-  private n qbm;
+  private n qJS;
   
   public FavChatVoiceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,7 +38,7 @@ public class FavChatVoiceView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aGa();
+    aMN();
     AppMethodBeat.o(106623);
   }
   
@@ -50,33 +50,33 @@ public class FavChatVoiceView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aGa();
+    aMN();
     AppMethodBeat.o(106624);
   }
   
-  private void aGa()
+  private void aMN()
   {
     AppMethodBeat.i(106625);
-    this.orc = new AlphaAnimation(0.1F, 1.0F);
-    this.orc.setDuration(1000L);
-    this.orc.setRepeatCount(-1);
-    this.orc.setRepeatMode(2);
-    this.ord = new com.tencent.mm.ui.e.a();
+    this.oUC = new AlphaAnimation(0.1F, 1.0F);
+    this.oUC.setDuration(1000L);
+    this.oUC.setRepeatCount(-1);
+    this.oUC.setRepeatMode(2);
+    this.oUD = new com.tencent.mm.ui.e.a();
     Drawable localDrawable = getResources().getDrawable(2131689892);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ord.addFrame(localDrawable, 300);
+    this.oUD.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689893);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ord.addFrame(localDrawable, 300);
+    this.oUD.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(2131689894);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.ord.addFrame(localDrawable, 300);
-    this.ord.setOneShot(false);
-    this.ord.setVisible(true, true);
+    this.oUD.addFrame(localDrawable, 300);
+    this.oUD.setOneShot(false);
+    this.oUD.setVisible(true, true);
     AppMethodBeat.o(106625);
   }
   
-  public final void cp(String paramString, int paramInt)
+  public final void cu(String paramString, int paramInt)
   {
     AppMethodBeat.i(106630);
     if (!this.path.equals(paramString)) {
@@ -102,23 +102,23 @@ public class FavChatVoiceView
       {
         AppMethodBeat.i(106622);
         String str2 = FavChatVoiceView.a(FavChatVoiceView.this);
-        if (FavChatVoiceView.b(FavChatVoiceView.this).bTK()) {}
+        if (FavChatVoiceView.b(FavChatVoiceView.this).caY()) {}
         for (String str1 = "true";; str1 = "false")
         {
-          ad.i("MicroMsg.FavChatVoiceView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str2, str1, FavChatVoiceView.b(FavChatVoiceView.this).path });
-          if ((!com.tencent.mm.r.a.ce(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.r.a.cc(FavChatVoiceView.c(FavChatVoiceView.this)))) {
+          ac.i("MicroMsg.FavChatVoiceView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str2, str1, FavChatVoiceView.b(FavChatVoiceView.this).path });
+          if ((!com.tencent.mm.r.a.ci(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.r.a.cf(FavChatVoiceView.c(FavChatVoiceView.this))) && (!com.tencent.mm.r.a.ck(FavChatVoiceView.c(FavChatVoiceView.this)))) {
             break;
           }
           AppMethodBeat.o(106622);
           return;
         }
-        if ((!e.XG()) && (!bt.isNullOrNil(FavChatVoiceView.a(FavChatVoiceView.this))))
+        if ((!e.YD()) && (!bs.isNullOrNil(FavChatVoiceView.a(FavChatVoiceView.this))))
         {
           t.g(paramAnonymousView.getContext(), null);
           AppMethodBeat.o(106622);
           return;
         }
-        if ((bt.by(FavChatVoiceView.a(FavChatVoiceView.this), "").equals(FavChatVoiceView.b(FavChatVoiceView.this).path)) && (FavChatVoiceView.b(FavChatVoiceView.this).bTK()))
+        if ((bs.bG(FavChatVoiceView.a(FavChatVoiceView.this), "").equals(FavChatVoiceView.b(FavChatVoiceView.this).path)) && (FavChatVoiceView.b(FavChatVoiceView.this).caY()))
         {
           FavChatVoiceView.this.stopPlay();
           AppMethodBeat.o(106622);
@@ -141,37 +141,37 @@ public class FavChatVoiceView
   public void setVoiceHelper(n paramn)
   {
     AppMethodBeat.i(106629);
-    this.qbm = paramn;
-    this.qbm.a(this);
+    this.qJS = paramn;
+    this.qJS.a(this);
     AppMethodBeat.o(106629);
   }
   
   public final void stopPlay()
   {
     AppMethodBeat.i(106628);
-    ad.d("MicroMsg.FavChatVoiceView", "stop play");
-    if ((this.orc != null) && (this.orc.isInitialized())) {
+    ac.d("MicroMsg.FavChatVoiceView", "stop play");
+    if ((this.oUC != null) && (this.oUC.isInitialized())) {
       setAnimation(null);
     }
     this.isRunning = false;
     setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131689891), null, null, null);
-    this.ord.stop();
-    this.qbm.stopPlay();
+    this.oUD.stop();
+    this.qJS.stopPlay();
     AppMethodBeat.o(106628);
   }
   
-  public final void z(String paramString1, int paramInt, String paramString2)
+  public final void y(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(106627);
-    this.path = bt.by(paramString1, "");
-    this.dkj = paramInt;
+    this.path = bs.bG(paramString1, "");
+    this.dhE = paramInt;
     setText(paramString2);
     AppMethodBeat.o(106627);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavChatVoiceView
  * JD-Core Version:    0.7.0.1
  */

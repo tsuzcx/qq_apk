@@ -5,18 +5,18 @@ import java.util.Map;
 
 public class n<K, V>
 {
-  static Object[] Me;
-  static int Mf;
-  static Object[] Mg;
-  static int Mh;
-  int[] LM;
-  Object[] LN;
+  static Object[] Nb;
+  static int Nc;
+  static Object[] Nd;
+  static int Ne;
+  int[] MJ;
+  Object[] MK;
   int mSize;
   
   public n()
   {
-    this.LM = d.LP;
-    this.LN = d.LR;
+    this.MJ = d.MM;
+    this.MK = d.MO;
     this.mSize = 0;
   }
   
@@ -24,8 +24,8 @@ public class n<K, V>
   {
     if (paramInt == 0)
     {
-      this.LM = d.LP;
-      this.LN = d.LR;
+      this.MJ = d.MM;
+      this.MK = d.MO;
     }
     for (;;)
     {
@@ -48,14 +48,14 @@ public class n<K, V>
     if (paramArrayOfInt.length == 8) {
       try
       {
-        if (Mh < 10)
+        if (Ne < 10)
         {
-          paramArrayOfObject[0] = Mg;
+          paramArrayOfObject[0] = Nd;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt = (paramInt << 1) - 1;
           break label117;
-          Mg = paramArrayOfObject;
-          Mh += 1;
+          Nd = paramArrayOfObject;
+          Ne += 1;
         }
         return;
       }
@@ -69,14 +69,14 @@ public class n<K, V>
     {
       try
       {
-        if (Mf < 10)
+        if (Nc < 10)
         {
-          paramArrayOfObject[0] = Me;
+          paramArrayOfObject[0] = Nb;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt = (paramInt << 1) - 1;
           break label134;
-          Me = paramArrayOfObject;
-          Mf += 1;
+          Nb = paramArrayOfObject;
+          Nc += 1;
         }
         return;
       }
@@ -106,34 +106,34 @@ public class n<K, V>
     {
       try
       {
-        if (Mg != null)
+        if (Nd != null)
         {
-          Object[] arrayOfObject1 = Mg;
-          this.LN = arrayOfObject1;
-          Mg = (Object[])arrayOfObject1[0];
-          this.LM = ((int[])arrayOfObject1[1]);
+          Object[] arrayOfObject1 = Nd;
+          this.MK = arrayOfObject1;
+          Nd = (Object[])arrayOfObject1[0];
+          this.MJ = ((int[])arrayOfObject1[1]);
           arrayOfObject1[1] = null;
           arrayOfObject1[0] = null;
-          Mh -= 1;
+          Ne -= 1;
           return;
         }
-        this.LM = new int[paramInt];
-        this.LN = new Object[paramInt << 1];
+        this.MJ = new int[paramInt];
+        this.MK = new Object[paramInt << 1];
         return;
       }
       finally {}
       if (paramInt == 4) {
         try
         {
-          if (Me != null)
+          if (Nb != null)
           {
-            Object[] arrayOfObject2 = Me;
-            this.LN = arrayOfObject2;
-            Me = (Object[])arrayOfObject2[0];
-            this.LM = ((int[])arrayOfObject2[1]);
+            Object[] arrayOfObject2 = Nb;
+            this.MK = arrayOfObject2;
+            Nb = (Object[])arrayOfObject2[0];
+            this.MJ = ((int[])arrayOfObject2[1]);
             arrayOfObject2[1] = null;
             arrayOfObject2[0] = null;
-            Mf -= 1;
+            Nc -= 1;
             return;
           }
         }
@@ -155,7 +155,7 @@ public class n<K, V>
     }
   }
   
-  private int eQ()
+  private int eY()
   {
     int m = this.mSize;
     int i;
@@ -168,15 +168,15 @@ public class n<K, V>
       do
       {
         return i;
-        j = c(this.LM, m, 0);
+        j = c(this.MJ, m, 0);
         i = j;
       } while (j < 0);
       i = j;
-    } while (this.LN[(j << 1)] == null);
+    } while (this.MK[(j << 1)] == null);
     int k = j + 1;
-    while ((k < m) && (this.LM[k] == 0))
+    while ((k < m) && (this.MJ[k] == 0))
     {
-      if (this.LN[(k << 1)] == null) {
+      if (this.MK[(k << 1)] == null) {
         return k;
       }
       k += 1;
@@ -184,11 +184,11 @@ public class n<K, V>
     j -= 1;
     for (;;)
     {
-      if ((j < 0) || (this.LM[j] != 0)) {
+      if ((j < 0) || (this.MJ[j] != 0)) {
         break label121;
       }
       i = j;
-      if (this.LN[(j << 1)] == null) {
+      if (this.MK[(j << 1)] == null) {
         break;
       }
       j -= 1;
@@ -210,15 +210,15 @@ public class n<K, V>
       do
       {
         return i;
-        j = c(this.LM, m, paramInt);
+        j = c(this.MJ, m, paramInt);
         i = j;
       } while (j < 0);
       i = j;
-    } while (paramObject.equals(this.LN[(j << 1)]));
+    } while (paramObject.equals(this.MK[(j << 1)]));
     int k = j + 1;
-    while ((k < m) && (this.LM[k] == paramInt))
+    while ((k < m) && (this.MJ[k] == paramInt))
     {
-      if (paramObject.equals(this.LN[(k << 1)])) {
+      if (paramObject.equals(this.MK[(k << 1)])) {
         return k;
       }
       k += 1;
@@ -226,11 +226,11 @@ public class n<K, V>
     j -= 1;
     for (;;)
     {
-      if ((j < 0) || (this.LM[j] != paramInt)) {
+      if ((j < 0) || (this.MJ[j] != paramInt)) {
         break label156;
       }
       i = j;
-      if (paramObject.equals(this.LN[(j << 1)])) {
+      if (paramObject.equals(this.MK[(j << 1)])) {
         break;
       }
       j -= 1;
@@ -247,8 +247,8 @@ public class n<K, V>
     if (this.mSize == 0) {
       if (j > 0)
       {
-        System.arraycopy(paramn.LM, 0, this.LM, 0, j);
-        System.arraycopy(paramn.LN, 0, this.LN, 0, j << 1);
+        System.arraycopy(paramn.MJ, 0, this.MJ, 0, j);
+        System.arraycopy(paramn.MK, 0, this.MK, 0, j << 1);
         this.mSize = j;
       }
     }
@@ -267,11 +267,11 @@ public class n<K, V>
   {
     if (this.mSize > 0)
     {
-      int[] arrayOfInt = this.LM;
-      Object[] arrayOfObject = this.LN;
+      int[] arrayOfInt = this.MJ;
+      Object[] arrayOfObject = this.MK;
       int i = this.mSize;
-      this.LM = d.LP;
-      this.LN = d.LR;
+      this.MJ = d.MM;
+      this.MK = d.MO;
       this.mSize = 0;
       a(arrayOfInt, arrayOfObject, i);
     }
@@ -293,15 +293,15 @@ public class n<K, V>
   public final void ensureCapacity(int paramInt)
   {
     int i = this.mSize;
-    if (this.LM.length < paramInt)
+    if (this.MJ.length < paramInt)
     {
-      int[] arrayOfInt = this.LM;
-      Object[] arrayOfObject = this.LN;
+      int[] arrayOfInt = this.MJ;
+      Object[] arrayOfObject = this.MK;
       aH(paramInt);
       if (this.mSize > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.LM, 0, i);
-        System.arraycopy(arrayOfObject, 0, this.LN, 0, i << 1);
+        System.arraycopy(arrayOfInt, 0, this.MJ, 0, i);
+        System.arraycopy(arrayOfObject, 0, this.MK, 0, i << 1);
       }
       a(arrayOfInt, arrayOfObject, i);
     }
@@ -420,15 +420,15 @@ public class n<K, V>
   {
     int i = indexOfKey(paramObject);
     if (i >= 0) {
-      return this.LN[((i << 1) + 1)];
+      return this.MK[((i << 1) + 1)];
     }
     return null;
   }
   
   public int hashCode()
   {
-    int[] arrayOfInt = this.LM;
-    Object[] arrayOfObject = this.LN;
+    int[] arrayOfInt = this.MJ;
+    Object[] arrayOfObject = this.MK;
     int n = this.mSize;
     int i = 1;
     int j = 0;
@@ -452,7 +452,7 @@ public class n<K, V>
   public final int indexOfKey(Object paramObject)
   {
     if (paramObject == null) {
-      return eQ();
+      return eY();
     }
     return indexOf(paramObject, paramObject.hashCode());
   }
@@ -462,7 +462,7 @@ public class n<K, V>
     int i = 1;
     int j = 1;
     int k = this.mSize * 2;
-    Object[] arrayOfObject = this.LN;
+    Object[] arrayOfObject = this.MK;
     if (paramObject == null)
     {
       i = j;
@@ -492,7 +492,7 @@ public class n<K, V>
   
   public final K keyAt(int paramInt)
   {
-    return this.LN[(paramInt << 1)];
+    return this.MK[(paramInt << 1)];
   }
   
   public V put(K paramK, V paramV)
@@ -503,21 +503,21 @@ public class n<K, V>
     int j;
     if (paramK == null)
     {
-      i = eQ();
+      i = eY();
       j = 0;
     }
     while (i >= 0)
     {
       i = (i << 1) + 1;
-      paramK = this.LN[i];
-      this.LN[i] = paramV;
+      paramK = this.MK[i];
+      this.MK[i] = paramV;
       return paramK;
       j = paramK.hashCode();
       i = indexOf(paramK, j);
     }
     int n = i ^ 0xFFFFFFFF;
     int[] arrayOfInt;
-    if (m >= this.LM.length)
+    if (m >= this.MJ.length)
     {
       if (m >= 8) {
         i = (m >> 1) + m;
@@ -525,8 +525,8 @@ public class n<K, V>
       Object[] arrayOfObject;
       for (;;)
       {
-        arrayOfInt = this.LM;
-        arrayOfObject = this.LN;
+        arrayOfInt = this.MJ;
+        arrayOfObject = this.MK;
         aH(i);
         if (m == this.mSize) {
           break;
@@ -537,25 +537,25 @@ public class n<K, V>
           i = 4;
         }
       }
-      if (this.LM.length > 0)
+      if (this.MJ.length > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.LM, 0, arrayOfInt.length);
-        System.arraycopy(arrayOfObject, 0, this.LN, 0, arrayOfObject.length);
+        System.arraycopy(arrayOfInt, 0, this.MJ, 0, arrayOfInt.length);
+        System.arraycopy(arrayOfObject, 0, this.MK, 0, arrayOfObject.length);
       }
       a(arrayOfInt, arrayOfObject, m);
     }
     if (n < m)
     {
-      arrayOfInt = this.LM;
+      arrayOfInt = this.MJ;
       System.arraycopy(arrayOfInt, n, arrayOfInt, n + 1, m - n);
-      System.arraycopy(this.LN, n << 1, this.LN, n + 1 << 1, this.mSize - n << 1);
+      System.arraycopy(this.MK, n << 1, this.MK, n + 1 << 1, this.mSize - n << 1);
     }
-    if ((m != this.mSize) || (n >= this.LM.length)) {
+    if ((m != this.mSize) || (n >= this.MJ.length)) {
       throw new ConcurrentModificationException();
     }
-    this.LM[n] = j;
-    this.LN[(n << 1)] = paramK;
-    this.LN[((n << 1) + 1)] = paramV;
+    this.MJ[n] = j;
+    this.MK[(n << 1)] = paramK;
+    this.MK[((n << 1) + 1)] = paramV;
     this.mSize += 1;
     return null;
   }
@@ -572,39 +572,39 @@ public class n<K, V>
   public V removeAt(int paramInt)
   {
     int j = 8;
-    Object localObject = this.LN[((paramInt << 1) + 1)];
+    Object localObject = this.MK[((paramInt << 1) + 1)];
     int k = this.mSize;
     if (k <= 1)
     {
-      a(this.LM, this.LN, k);
-      this.LM = d.LP;
-      this.LN = d.LR;
+      a(this.MJ, this.MK, k);
+      this.MJ = d.MM;
+      this.MK = d.MO;
       paramInt = 0;
     }
     while (k != this.mSize)
     {
       throw new ConcurrentModificationException();
       int i = k - 1;
-      if ((this.LM.length > 8) && (this.mSize < this.LM.length / 3))
+      if ((this.MJ.length > 8) && (this.mSize < this.MJ.length / 3))
       {
         if (k > 8) {
           j = (k >> 1) + k;
         }
-        int[] arrayOfInt = this.LM;
-        Object[] arrayOfObject = this.LN;
+        int[] arrayOfInt = this.MJ;
+        Object[] arrayOfObject = this.MK;
         aH(j);
         if (k != this.mSize) {
           throw new ConcurrentModificationException();
         }
         if (paramInt > 0)
         {
-          System.arraycopy(arrayOfInt, 0, this.LM, 0, paramInt);
-          System.arraycopy(arrayOfObject, 0, this.LN, 0, paramInt << 1);
+          System.arraycopy(arrayOfInt, 0, this.MJ, 0, paramInt);
+          System.arraycopy(arrayOfObject, 0, this.MK, 0, paramInt << 1);
         }
         if (paramInt < i)
         {
-          System.arraycopy(arrayOfInt, paramInt + 1, this.LM, paramInt, i - paramInt);
-          System.arraycopy(arrayOfObject, paramInt + 1 << 1, this.LN, paramInt << 1, i - paramInt << 1);
+          System.arraycopy(arrayOfInt, paramInt + 1, this.MJ, paramInt, i - paramInt);
+          System.arraycopy(arrayOfObject, paramInt + 1 << 1, this.MK, paramInt << 1, i - paramInt << 1);
         }
         paramInt = i;
       }
@@ -612,11 +612,11 @@ public class n<K, V>
       {
         if (paramInt < i)
         {
-          System.arraycopy(this.LM, paramInt + 1, this.LM, paramInt, i - paramInt);
-          System.arraycopy(this.LN, paramInt + 1 << 1, this.LN, paramInt << 1, i - paramInt << 1);
+          System.arraycopy(this.MJ, paramInt + 1, this.MJ, paramInt, i - paramInt);
+          System.arraycopy(this.MK, paramInt + 1 << 1, this.MK, paramInt << 1, i - paramInt << 1);
         }
-        this.LN[(i << 1)] = null;
-        this.LN[((i << 1) + 1)] = null;
+        this.MK[(i << 1)] = null;
+        this.MK[((i << 1) + 1)] = null;
         paramInt = i;
       }
     }
@@ -627,8 +627,8 @@ public class n<K, V>
   public V setValueAt(int paramInt, V paramV)
   {
     paramInt = (paramInt << 1) + 1;
-    Object localObject = this.LN[paramInt];
-    this.LN[paramInt] = paramV;
+    Object localObject = this.MK[paramInt];
+    this.MK[paramInt] = paramV;
     return localObject;
   }
   
@@ -678,7 +678,7 @@ public class n<K, V>
   
   public final V valueAt(int paramInt)
   {
-    return this.LN[((paramInt << 1) + 1)];
+    return this.MK[((paramInt << 1) + 1)];
   }
 }
 

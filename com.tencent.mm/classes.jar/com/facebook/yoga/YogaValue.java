@@ -13,9 +13,9 @@ public class YogaValue
   static
   {
     AppMethodBeat.i(18218);
-    UNDEFINED = new YogaValue(1.0E+021F, YogaUnit.UNDEFINED);
+    UNDEFINED = new YogaValue((0.0F / 0.0F), YogaUnit.UNDEFINED);
     ZERO = new YogaValue(0.0F, YogaUnit.POINT);
-    AUTO = new YogaValue(1.0E+021F, YogaUnit.AUTO);
+    AUTO = new YogaValue((0.0F / 0.0F), YogaUnit.AUTO);
     AppMethodBeat.o(18218);
   }
   
@@ -71,7 +71,7 @@ public class YogaValue
       paramObject = (YogaValue)paramObject;
       if (this.unit == paramObject.unit)
       {
-        if ((this.unit == YogaUnit.UNDEFINED) || (Float.compare(this.value, paramObject.value) == 0))
+        if ((this.unit == YogaUnit.UNDEFINED) || (this.unit == YogaUnit.AUTO) || (Float.compare(this.value, paramObject.value) == 0))
         {
           AppMethodBeat.o(18214);
           return true;
@@ -121,7 +121,7 @@ public class YogaValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.facebook.yoga.YogaValue
  * JD-Core Version:    0.7.0.1
  */

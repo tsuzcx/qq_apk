@@ -1,46 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class bvv
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int DSS;
-  public String hNH;
+  public int FkY;
+  public String Flc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152647);
+    AppMethodBeat.i(43111);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.hNH != null) {
-        paramVarArgs.d(1, this.hNH);
+      if (this.Flc == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ContactUsername");
+        AppMethodBeat.o(43111);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(2, this.DSS);
-      AppMethodBeat.o(152647);
+      if (this.Flc != null) {
+        paramVarArgs.d(1, this.Flc);
+      }
+      paramVarArgs.aR(2, this.FkY);
+      AppMethodBeat.o(43111);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hNH == null) {
-        break label258;
+      if (this.Flc == null) {
+        break label306;
       }
     }
-    label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.hNH) + 0;; paramInt = 0)
+    label306:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Flc) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.DSS);
-      AppMethodBeat.o(152647);
+      int i = f.a.a.b.b.a.bx(2, this.FkY);
+      AppMethodBeat.o(43111);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(152647);
+        if (this.Flc == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ContactUsername");
+          AppMethodBeat.o(43111);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(43111);
         return 0;
       }
       if (paramInt == 3)
@@ -50,25 +63,25 @@ public final class bvv
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152647);
+          AppMethodBeat.o(43111);
           return -1;
         case 1: 
-          localbvv.hNH = locala.KhF.readString();
-          AppMethodBeat.o(152647);
+          localbvv.Flc = locala.LVo.readString();
+          AppMethodBeat.o(43111);
           return 0;
         }
-        localbvv.DSS = locala.KhF.xS();
-        AppMethodBeat.o(152647);
+        localbvv.FkY = locala.LVo.xF();
+        AppMethodBeat.o(43111);
         return 0;
       }
-      AppMethodBeat.o(152647);
+      AppMethodBeat.o(43111);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bvv
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
+import com.tencent.mm.plugin.appbrand.z.g;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +34,7 @@ public class RealSetStrokeStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145093);
-    paramd.iYL.setColor(this.color);
+    paramd.jzb.setColor(this.color);
     AppMethodBeat.o(145093);
     return true;
   }
@@ -119,7 +119,7 @@ public class RealSetStrokeStyleActionNormalArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleActionNormalArg
  * JD-Core Version:    0.7.0.1
  */

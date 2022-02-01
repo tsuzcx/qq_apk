@@ -258,6 +258,8 @@
     <item type="layout" name="air">false</item>
     <item type="layout" name="ais">false</item>
     <item type="layout" name="aiu">false</item>
+    <item type="layout" name="aiv">false</item>
+    <item type="layout" name="aiw">false</item>
     <item type="layout" name="aiy">false</item>
     <item type="layout" name="ajb">false</item>
     <item type="layout" name="ajd">false</item>
@@ -434,6 +436,7 @@
     <item type="layout" name="bd9">false</item>
     <item type="layout" name="bd_">false</item>
     <item type="layout" name="bdg">false</item>
+    <item type="layout" name="bdi">false</item>
     <item type="layout" name="bdm">false</item>
     <item type="layout" name="bdt">false</item>
     <item type="layout" name="be2">false</item>
@@ -479,6 +482,7 @@
     <item type="layout" name="bl0">false</item>
     <item type="layout" name="blt">false</item>
     <item type="layout" name="blw">false</item>
+    <item type="layout" name="bm1">false</item>
     <item type="layout" name="bm6">false</item>
     <item type="layout" name="bm9">false</item>
     <item type="layout" name="bma">false</item>
@@ -489,36 +493,49 @@
     <item type="layout" name="bn1">false</item>
     <item type="layout" name="bne">false</item>
     <item type="layout" name="bnm">false</item>
-    <item type="layout" name="bol">false</item>
-    <item type="layout" name="bon">false</item>
-    <item type="layout" name="bow">false</item>
+    <item type="layout" name="bom">false</item>
+    <item type="layout" name="boo">false</item>
+    <item type="layout" name="box">false</item>
     <item type="layout" name="bp_">false</item>
-    <item type="layout" name="bpg">false</item>
-    <item type="layout" name="bpj">false</item>
+    <item type="layout" name="bpa">false</item>
+    <item type="layout" name="bpb">false</item>
+    <item type="layout" name="bph">false</item>
     <item type="layout" name="bpk">false</item>
-    <item type="layout" name="bpm">false</item>
-    <item type="layout" name="bpq">false</item>
-    <item type="layout" name="bpt">false</item>
-    <item type="layout" name="bq3">false</item>
-    <item type="layout" name="bqc">false</item>
-    <item type="layout" name="bqe">false</item>
-    <item type="layout" name="bqg">false</item>
-    <item type="layout" name="bqi">false</item>
-    <item type="layout" name="bqy">false</item>
+    <item type="layout" name="bpl">false</item>
+    <item type="layout" name="bpn">false</item>
+    <item type="layout" name="bpr">false</item>
+    <item type="layout" name="bpu">false</item>
+    <item type="layout" name="bq4">false</item>
+    <item type="layout" name="bqd">false</item>
+    <item type="layout" name="bqf">false</item>
+    <item type="layout" name="bqh">false</item>
+    <item type="layout" name="bqj">false</item>
     <item type="layout" name="bqz">false</item>
     <item type="layout" name="br0">false</item>
     <item type="layout" name="br1">false</item>
-    <item type="layout" name="br3">false</item>
-    <item type="layout" name="br_">false</item>
-    <item type="layout" name="brg">false</item>
-    <item type="layout" name="brv">false</item>
-    <item type="layout" name="bs0">false</item>
-    <item type="layout" name="bs6">false</item>
-    <item type="layout" name="bsg">false</item>
-    <item type="layout" name="bsj">false</item>
-    <item type="layout" name="bsk">false</item>
-    <item type="layout" name="bsr">false</item>
-    <item type="layout" name="bt4">false</item>
-    <item type="layout" name="bte">false</item>
-    <item type="layout" name="btf">false</item>
+    <item type="layout" name="br2">false</item>
+    <item type="layout" name="br4">false</item>
+    <item type="layout" name="bra">false</item>
+    <item type="layout" name="brc">false</item>
+    <item type="layout" name="brd">false</item>
+    <item type="layout" name="bre">false</item>
+    <item type="layout" name="brf">false</item>
+    <item type="layout" name="brl">false</item>
+    <item type="layout" name="brm">false</item>
+    <item type="layout" name="brp">false</item>
+    <item type="layout" name="brt">false</item>
+    <item type="layout" name="bs1">false</item>
+    <item type="layout" name="bs2">false</item>
+    <item type="layout" name="bs3">false</item>
+    <item type="layout" name="bs4">false</item>
+    <item type="layout" name="bs_">false</item>
+    <item type="layout" name="bsf">false</item>
+    <item type="layout" name="bsh">false</item>
+    <item type="layout" name="bsp">false</item>
+    <item type="layout" name="bss">false</item>
+    <item type="layout" name="bst">false</item>
+    <item type="layout" name="bt0">false</item>
+    <item type="layout" name="btc">false</item>
+    <item type="layout" name="btq">false</item>
+    <item type="layout" name="btr">false</item>
 </resources>

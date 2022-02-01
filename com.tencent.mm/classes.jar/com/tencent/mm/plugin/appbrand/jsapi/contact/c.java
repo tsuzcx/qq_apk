@@ -9,16 +9,16 @@ public final class c
 {
   public static final int CTRL_INDEX = 72;
   public static final String NAME = "chooseContact";
-  private final d jOq;
+  private final d koR;
   
   public c()
   {
     AppMethodBeat.i(137497);
-    this.jOq = new d();
+    this.koR = new d();
     AppMethodBeat.o(137497);
   }
   
-  public static String CD(String paramString)
+  public static String GG(String paramString)
   {
     AppMethodBeat.i(137499);
     if (paramString == null)
@@ -38,13 +38,13 @@ public final class c
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137498);
-    this.jOq.a(paramc, paramJSONObject, paramInt);
+    this.koR.a(paramc, paramJSONObject, paramInt);
     AppMethodBeat.o(137498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.c
  * JD-Core Version:    0.7.0.1
  */

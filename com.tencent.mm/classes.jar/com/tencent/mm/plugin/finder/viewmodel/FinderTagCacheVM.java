@@ -2,53 +2,53 @@ package com.tencent.mm.plugin.finder.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyf;
+import com.tencent.mm.protocal.protobuf.aiw;
 import d.l;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM;", "Landroid/arch/lifecycle/ViewModel;", "()V", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Cache;", "get", "tabType", "onCleared", "", "resetCache", "store", "lastSelectedPosition", "lastDataList", "Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "Cache", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM;", "Landroid/arch/lifecycle/ViewModel;", "()V", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Cache;", "get", "tabType", "onCleared", "", "resetCache", "store", "lastSelectedPosition", "lastDataList", "Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "Cache", "Companion", "plugin-finder_release"})
 public final class FinderTagCacheVM
   extends ViewModel
 {
-  public static final b Lhu;
-  public final ConcurrentHashMap<Integer, a> LgZ;
+  public static final FinderTagCacheVM.b scX;
+  public final ConcurrentHashMap<Integer, a> sbP;
   
   static
   {
-    AppMethodBeat.i(200330);
-    Lhu = new b((byte)0);
-    AppMethodBeat.o(200330);
+    AppMethodBeat.i(204455);
+    scX = new FinderTagCacheVM.b((byte)0);
+    AppMethodBeat.o(204455);
   }
   
   public FinderTagCacheVM()
   {
-    AppMethodBeat.i(200329);
-    this.LgZ = new ConcurrentHashMap();
-    AppMethodBeat.o(200329);
+    AppMethodBeat.i(204454);
+    this.sbP = new ConcurrentHashMap();
+    AppMethodBeat.o(204454);
   }
   
   public final void ae()
   {
-    AppMethodBeat.i(200328);
+    AppMethodBeat.i(204453);
     super.ae();
-    this.LgZ.clear();
-    AppMethodBeat.o(200328);
+    this.sbP.clear();
+    AppMethodBeat.o(204453);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Cache;", "", "tabType", "", "(I)V", "lastDataList", "Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "getLastDataList", "()Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "setLastDataList", "(Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;)V", "lastSelectedPosition", "getLastSelectedPosition", "()I", "setLastSelectedPosition", "getTabType", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Cache;", "", "tabType", "", "(I)V", "lastDataList", "Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "getLastDataList", "()Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "setLastDataList", "(Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;)V", "lastSelectedPosition", "getLastSelectedPosition", "()I", "setLastSelectedPosition", "getTabType", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
   public static final class a
   {
-    private final int IoU;
-    public dyf Lhv;
-    public int Lhw;
+    private final int diw;
+    public aiw scY;
+    public int scZ;
     
     public a()
     {
-      AppMethodBeat.i(200326);
-      this.IoU = 4;
-      this.Lhv = new dyf();
-      this.Lhw = -1;
-      AppMethodBeat.o(200326);
+      AppMethodBeat.i(204451);
+      this.diw = 4;
+      this.scY = new aiw();
+      this.scZ = -1;
+      AppMethodBeat.o(204451);
     }
     
     public final boolean equals(Object paramObject)
@@ -58,7 +58,7 @@ public final class FinderTagCacheVM
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if (this.IoU != paramObject.IoU) {}
+          if (this.diw != paramObject.diw) {}
         }
       }
       else {
@@ -69,24 +69,21 @@ public final class FinderTagCacheVM
     
     public final int hashCode()
     {
-      return this.IoU;
+      return this.diw;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(200327);
-      String str = "Cache(tabType=" + this.IoU + ")";
-      AppMethodBeat.o(200327);
+      AppMethodBeat.i(204452);
+      String str = "Cache(tabType=" + this.diw + ")";
+      AppMethodBeat.o(204452);
       return str;
     }
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.FinderTagCacheVM
  * JD-Core Version:    0.7.0.1
  */

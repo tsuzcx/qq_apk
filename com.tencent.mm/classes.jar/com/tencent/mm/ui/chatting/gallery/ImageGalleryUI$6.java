@@ -12,18 +12,18 @@ final class ImageGalleryUI$6
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(36108);
+    AppMethodBeat.i(196557);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     if (f <= 0.1F) {
-      ImageGalleryUI.w(this.GCT).setAlpha(f * 10.0F);
+      ImageGalleryUI.r(this.IcP).setAlpha(f * 10.0F);
     }
     for (;;)
     {
-      ImageGalleryUI.w(this.GCT).setTranslationY(f * (this.pVd - ImageGalleryUI.w(this.GCT).getHeight()));
-      AppMethodBeat.o(36108);
+      ImageGalleryUI.r(this.IcP).setTranslationY(f * (this.qDI - ImageGalleryUI.r(this.IcP).getHeight()));
+      AppMethodBeat.o(196557);
       return;
       if (f >= 0.9F) {
-        ImageGalleryUI.w(this.GCT).setAlpha((1.0F - f) * 10.0F);
+        ImageGalleryUI.r(this.IcP).setAlpha((1.0F - f) * 10.0F);
       }
     }
   }

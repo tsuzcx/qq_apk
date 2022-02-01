@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Property {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tav.coremedia.Property
  * JD-Core Version:    0.7.0.1
  */

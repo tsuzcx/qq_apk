@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet_payu.bind.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.model.c;
@@ -22,15 +22,15 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.o(71999);
   }
   
-  public final com.tencent.mm.plugin.wallet.bind.ui.a dZM()
+  public final com.tencent.mm.plugin.wallet.bind.ui.a epi()
   {
     AppMethodBeat.i(71998);
-    a locala = new a(this, this.zNg);
+    a locala = new a(this, this.BfA);
     AppMethodBeat.o(71998);
     return locala;
   }
   
-  public final void dZN()
+  public final void epj()
   {
     AppMethodBeat.i(71996);
     com.tencent.mm.wallet_core.a.a(this, c.class, null);
@@ -49,7 +49,7 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.i(71997);
     if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.b.a))
     {
-      dZO();
+      epk();
       AppMethodBeat.o(71997);
       return true;
     }
@@ -63,7 +63,7 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void sq(boolean paramBoolean)
+  public final void tr(boolean paramBoolean)
   {
     AppMethodBeat.i(71995);
     if (paramBoolean)

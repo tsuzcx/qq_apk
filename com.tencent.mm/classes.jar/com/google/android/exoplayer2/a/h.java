@@ -7,9 +7,9 @@ import java.nio.ByteBuffer;
 
 public final class h
 {
-  private static final int[] aVo = { 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8 };
-  private static final int[] aVp = { -1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1 };
-  private static final int[] aVq = { 64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680 };
+  private static final int[] aWb = { 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8 };
+  private static final int[] aWc = { -1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1 };
+  private static final int[] aWd = { 64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680 };
   
   public static Format a(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
@@ -17,11 +17,11 @@ public final class h
     paramArrayOfByte = new l(paramArrayOfByte);
     paramArrayOfByte.ep(60);
     int i = paramArrayOfByte.eo(6);
-    int k = aVo[i];
+    int k = aWb[i];
     i = paramArrayOfByte.eo(4);
-    int m = aVp[i];
+    int m = aWc[i];
     i = paramArrayOfByte.eo(5);
-    if (i >= aVq.length)
+    if (i >= aWd.length)
     {
       i = -1;
       paramArrayOfByte.ep(10);
@@ -35,7 +35,7 @@ public final class h
       paramArrayOfByte = Format.a(paramString1, "audio/vnd.dts", i, -1, k + j, m, null, null, paramString2);
       AppMethodBeat.o(91805);
       return paramArrayOfByte;
-      i = aVq[i] * 1000 / 2;
+      i = aWd[i] * 1000 / 2;
       break;
     }
   }

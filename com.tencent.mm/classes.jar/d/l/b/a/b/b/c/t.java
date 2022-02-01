@@ -10,7 +10,7 @@ import d.l.b.a.b.m.ay;
 public abstract class t
   implements e
 {
-  public static final a JuE = new a((byte)0);
+  public static final a LhX = new a((byte)0);
   
   protected abstract h a(i parami);
   
@@ -35,7 +35,7 @@ public abstract class t
         }
         else
         {
-          parami = parame.fyF();
+          parami = parame.fRj();
           k.g(parami, "this.unsubstitutedMemberScope");
         }
         AppMethodBeat.o(57168);
@@ -72,7 +72,7 @@ public abstract class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.t
  * JD-Core Version:    0.7.0.1
  */

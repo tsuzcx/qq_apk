@@ -7,69 +7,69 @@ import com.tencent.soter.a.f.f;
 
 public final class b
 {
-  String ADm;
-  c IvQ;
-  public f IvR;
-  public int IvS;
-  public com.tencent.soter.a.d.b IvT;
-  com.tencent.soter.a.a.a IvU;
-  com.tencent.soter.a.a.b IvV;
+  String BVH;
+  public f JXA;
+  public int JXB;
+  public com.tencent.soter.a.d.b JXC;
+  com.tencent.soter.a.a.a JXD;
+  com.tencent.soter.a.a.b JXE;
+  c JXz;
   Context mContext;
   public int mScene;
-  public com.tencent.soter.a.d.a rcc;
+  public com.tencent.soter.a.d.a skw;
   
   public final String toString()
   {
     AppMethodBeat.i(29);
-    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.ADm + '\'' + ", mIWrapGetChallengeStr=" + this.IvQ + ", mIWrapUploadSignature=" + this.IvR + ", mContext=" + this.mContext + ", mBiometricType=" + this.IvS + '}';
+    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.BVH + '\'' + ", mIWrapGetChallengeStr=" + this.JXz + ", mIWrapUploadSignature=" + this.JXA + ", mContext=" + this.mContext + ", mBiometricType=" + this.JXB + '}';
     AppMethodBeat.o(29);
     return str;
   }
   
   public static final class a
   {
-    public b IvW;
+    public b JXF;
     
     public a()
     {
       AppMethodBeat.i(28);
-      this.IvW = new b((byte)0);
+      this.JXF = new b((byte)0);
       AppMethodBeat.o(28);
     }
     
     public final a a(com.tencent.soter.a.a.a parama)
     {
-      this.IvW.IvU = parama;
+      this.JXF.JXD = parama;
       return this;
     }
     
     public final a a(com.tencent.soter.a.a.b paramb)
     {
-      this.IvW.IvV = paramb;
+      this.JXF.JXE = paramb;
       return this;
     }
     
-    public final a aNV(String paramString)
+    public final a aTy(String paramString)
     {
-      this.IvW.ADm = paramString;
+      this.JXF.BVH = paramString;
       return this;
     }
     
-    public final a abW(int paramInt)
+    public final a aep(int paramInt)
     {
-      this.IvW.mScene = paramInt;
+      this.JXF.mScene = paramInt;
       return this;
     }
     
-    public final a abX(int paramInt)
+    public final a aeq(int paramInt)
     {
-      this.IvW.IvS = paramInt;
+      this.JXF.JXB = paramInt;
       return this;
     }
     
-    public final a kH(Context paramContext)
+    public final a kT(Context paramContext)
     {
-      this.IvW.mContext = paramContext;
+      this.JXF.mContext = paramContext;
       return this;
     }
   }

@@ -6,19 +6,19 @@ import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class a
   extends com.tencent.mm.plugin.appbrand.jsapi.a<h>
 {
-  protected abstract boolean aYB();
-  
-  protected abstract String aYC();
-  
-  protected boolean aYD()
+  protected boolean bfA()
   {
     return true;
   }
+  
+  protected abstract boolean bfy();
+  
+  protected abstract String bfz();
 }
 
 

@@ -13,13 +13,13 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract an fxG();
+  public abstract an fQk();
   
-  public abstract Map<f, g<?>> fzH();
+  public abstract b fRH();
   
-  public abstract b fzd();
+  public abstract ab fRV();
   
-  public abstract ab fzr();
+  public abstract Map<f, g<?>> fSl();
   
   public static final class a
   {
@@ -45,7 +45,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.c
  * JD-Core Version:    0.7.0.1
  */

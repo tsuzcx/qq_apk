@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tmassistantsdk.storage.helper.AstSDKDBHelper_V2;
 import com.tencent.tmassistantsdk.storage.helper.SqliteHelper;
 import java.util.HashMap;
@@ -54,7 +54,7 @@ public class DownloadSettingTable
       for (;;)
       {
         localObject3 = localObject1;
-        ad.printErrStackTrace("DownloadSettingTable", localException, "", new Object[0]);
+        ac.printErrStackTrace("DownloadSettingTable", localException, "", new Object[0]);
         if (localObject1 != null) {
           localObject1.close();
         }
@@ -92,7 +92,7 @@ public class DownloadSettingTable
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
+        ac.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102451);
@@ -120,7 +120,7 @@ public class DownloadSettingTable
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("DownloadSettingTable", paramString1, "", new Object[0]);
       return -2;
     }
     finally
@@ -156,7 +156,7 @@ public class DownloadSettingTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.DownloadSettingTable
  * JD-Core Version:    0.7.0.1
  */

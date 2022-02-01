@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.c.l;
+import com.tencent.mm.plugin.sns.b.l;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,18 +28,6 @@ public final class w
   {
     super(parame, v.info, "snsTagInfo2", null);
     this.db = parame;
-  }
-  
-  public final boolean B(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(97630);
-    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bt.aFQ(paramString) + "\" AND  tagId != " + paramLong;
-    ad.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
-    paramString = this.db.a(paramString, null, 2);
-    boolean bool = paramString.moveToFirst();
-    paramString.close();
-    AppMethodBeat.o(97630);
-    return bool;
   }
   
   public final boolean a(v paramv)
@@ -66,24 +54,24 @@ public final class w
     }
   }
   
-  public final boolean akH(String paramString)
+  public final boolean apG(String paramString)
   {
     AppMethodBeat.i(97632);
-    v localv = tj(5L);
-    if (bt.isNullOrNil(localv.field_memberList))
+    v localv = xM(5L);
+    if (bs.isNullOrNil(localv.field_memberList))
     {
       AppMethodBeat.o(97632);
       return false;
     }
-    boolean bool = bt.S(localv.field_memberList.split(",")).contains(paramString);
+    boolean bool = bs.S(localv.field_memberList.split(",")).contains(paramString);
     AppMethodBeat.o(97632);
     return bool;
   }
   
-  public final boolean drR()
+  public final boolean dGq()
   {
     AppMethodBeat.i(97633);
-    if (dyC().size() == 0)
+    if (dMZ().size() == 0)
     {
       AppMethodBeat.o(97633);
       return false;
@@ -92,7 +80,7 @@ public final class w
     return true;
   }
   
-  public final List<Long> dyC()
+  public final List<Long> dMZ()
   {
     AppMethodBeat.i(97627);
     Cursor localCursor = this.db.a("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
@@ -113,13 +101,13 @@ public final class w
     return localCursor;
   }
   
-  public final List<String> sr(long paramLong)
+  public final List<String> wU(long paramLong)
   {
     AppMethodBeat.i(97625);
-    Object localObject = tj(paramLong);
+    Object localObject = xM(paramLong);
     if ((((v)localObject).field_memberList != null) && (!((v)localObject).field_memberList.equals("")))
     {
-      localObject = bt.S(((v)localObject).field_memberList.split(","));
+      localObject = bs.S(((v)localObject).field_memberList.split(","));
       AppMethodBeat.o(97625);
       return localObject;
     }
@@ -128,15 +116,15 @@ public final class w
     return localObject;
   }
   
-  public final String ss(long paramLong)
+  public final String wV(long paramLong)
   {
     AppMethodBeat.i(97626);
-    String str = tj(paramLong).field_tagName;
+    String str = xM(paramLong).field_tagName;
     AppMethodBeat.o(97626);
     return str;
   }
   
-  public final v tj(long paramLong)
+  public final v xM(long paramLong)
   {
     AppMethodBeat.i(97624);
     Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
@@ -149,17 +137,29 @@ public final class w
     return localv;
   }
   
-  public final int tk(long paramLong)
+  public final int xN(long paramLong)
   {
     AppMethodBeat.i(97629);
     int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
     AppMethodBeat.o(97629);
     return i;
   }
+  
+  public final boolean z(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(97630);
+    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bs.aLh(paramString) + "\" AND  tagId != " + paramLong;
+    ac.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
+    paramString = this.db.a(paramString, null, 2);
+    boolean bool = paramString.moveToFirst();
+    paramString.close();
+    AppMethodBeat.o(97630);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.w
  * JD-Core Version:    0.7.0.1
  */

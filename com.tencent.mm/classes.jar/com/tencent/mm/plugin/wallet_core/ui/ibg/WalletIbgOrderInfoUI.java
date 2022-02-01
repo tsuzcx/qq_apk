@@ -4,27 +4,27 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.jx;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.kf;
 import com.tencent.mm.plugin.wallet_core.c.a.c;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletIbgOrderInfoUI
   extends WalletBaseUI
 {
-  public static Orders zPF;
-  private String AsQ = null;
-  private String AsR = null;
-  private String AsS = null;
-  private String AsT = null;
-  private final int AsU = 1;
-  private final int AsV = 2;
+  public static Orders BhZ;
+  private String BLk = null;
+  private String BLl = null;
+  private String BLm = null;
+  private String BLn = null;
+  private final int BLo = 1;
+  private final int BLp = 2;
+  private String Bgm = null;
   private String mAppId = null;
   private String mTimeStamp = null;
-  private String zNS = null;
   
   public int getLayoutId()
   {
@@ -38,11 +38,11 @@ public class WalletIbgOrderInfoUI
     {
       if (paramInt1 == 1)
       {
-        paramIntent = new jx();
-        paramIntent.dob.requestCode = 25;
-        paramIntent.dob.bRZ = -1;
-        paramIntent.dob.doc = new Intent();
-        com.tencent.mm.sdk.b.a.ESL.l(paramIntent);
+        paramIntent = new kf();
+        paramIntent.dlK.requestCode = 25;
+        paramIntent.dlK.bPH = -1;
+        paramIntent.dlK.dlL = new Intent();
+        com.tencent.mm.sdk.b.a.GpY.l(paramIntent);
       }
       setResult(-1);
       finish();
@@ -56,13 +56,13 @@ public class WalletIbgOrderInfoUI
     super.onCreate(paramBundle);
     addSceneEndListener(1565);
     this.mAppId = getIntent().getStringExtra("appId");
-    this.AsQ = getIntent().getStringExtra("nonceStr");
+    this.BLk = getIntent().getStringExtra("nonceStr");
     this.mTimeStamp = getIntent().getStringExtra("timeStamp");
-    this.zNS = getIntent().getStringExtra("packageExt");
-    this.AsR = getIntent().getStringExtra("paySignature");
-    this.AsS = getIntent().getStringExtra("signtype");
-    this.AsT = getIntent().getStringExtra("url");
-    doSceneForceProgress(new c(this.mAppId, this.AsQ, this.mTimeStamp, this.zNS, this.AsR, this.AsS, this.AsT));
+    this.Bgm = getIntent().getStringExtra("packageExt");
+    this.BLl = getIntent().getStringExtra("paySignature");
+    this.BLm = getIntent().getStringExtra("signtype");
+    this.BLn = getIntent().getStringExtra("url");
+    doSceneForceProgress(new c(this.mAppId, this.BLk, this.mTimeStamp, this.Bgm, this.BLl, this.BLm, this.BLn));
     AppMethodBeat.o(71448);
   }
   
@@ -77,17 +77,17 @@ public class WalletIbgOrderInfoUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(71450);
-    ad.i("MicroMsg.WalletIbgOrderInfoUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
+    ac.i("MicroMsg.WalletIbgOrderInfoUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
     if ((paramn instanceof c))
     {
       removeSceneEndListener(1565);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         paramn = (c)paramn;
-        zPF = paramn.zWL;
-        paramString = zPF;
-        paramInt1 = paramn.zXc;
-        ad.i("MicroMsg.WalletIbgOrderInfoUI", "gotoIbgOrderInfoUI, useNewPage: %s, orders: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+        BhZ = paramn.Bpf;
+        paramString = BhZ;
+        paramInt1 = paramn.Bpw;
+        ac.i("MicroMsg.WalletIbgOrderInfoUI", "gotoIbgOrderInfoUI, useNewPage: %s, orders: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
         if (paramInt1 == 1)
         {
           paramn = new Intent(this, WalletIbgOrderInfoNewUI.class);

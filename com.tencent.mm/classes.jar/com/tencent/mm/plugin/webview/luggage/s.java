@@ -15,16 +15,16 @@ import java.util.LinkedList;
 public class s
   extends com.tencent.luggage.d.f
 {
-  private com.tencent.mm.plugin.webview.modeltools.a AUE;
+  private com.tencent.mm.plugin.webview.modeltools.a CmR;
   
   public s(final Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(78469);
-    this.cad = com.tencent.mm.plugin.webview.luggage.d.a.class;
-    this.cag.J(bp.bQW());
-    this.AUE = new com.tencent.mm.plugin.webview.modeltools.a();
-    this.cal.Bd().a(new e.b()
+    this.bXa = com.tencent.mm.plugin.webview.luggage.d.a.class;
+    this.bXd.A(bp.bYl());
+    this.CmR = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.bXi.AH().a(new e.b()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
@@ -37,7 +37,7 @@ public class s
     AppMethodBeat.o(78469);
   }
   
-  private void elu()
+  private void eAQ()
   {
     AppMethodBeat.i(78471);
     if ((this.mContext instanceof MMActivity))
@@ -45,7 +45,7 @@ public class s
       SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
       if (localSwipeBackLayout != null)
       {
-        if (this.cal.Ba().size() <= 1)
+        if (this.bXi.AE().size() <= 1)
         {
           localSwipeBackLayout.setEnableGesture(true);
           AppMethodBeat.o(78471);
@@ -57,18 +57,18 @@ public class s
     AppMethodBeat.o(78471);
   }
   
-  public final void AY()
+  public final void AC()
   {
     AppMethodBeat.i(78472);
-    ((f)AT()).ekP();
-    elu();
+    ((f)Ax()).eAl();
+    eAQ();
     AppMethodBeat.o(78472);
   }
   
-  public final void AZ()
+  public final void AD()
   {
     AppMethodBeat.i(78473);
-    elu();
+    eAQ();
     AppMethodBeat.o(78473);
   }
   
@@ -76,7 +76,7 @@ public class s
   {
     AppMethodBeat.i(78470);
     super.onResume();
-    elu();
+    eAQ();
     AppMethodBeat.o(78470);
   }
 }

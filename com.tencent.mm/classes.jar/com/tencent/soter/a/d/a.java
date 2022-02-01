@@ -12,47 +12,47 @@ import junit.framework.Assert;
 @Deprecated
 public final class a
 {
-  public CancellationSignal EQJ;
+  public CancellationSignal GnW;
   
   public a()
   {
     AppMethodBeat.i(21);
-    this.EQJ = null;
+    this.GnW = null;
     if (Build.VERSION.SDK_INT >= 16) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      fnn();
+      fDD();
       AppMethodBeat.o(21);
       return;
     }
   }
   
   @SuppressLint({"NewApi"})
-  public final void fnn()
+  public final void fDD()
   {
     AppMethodBeat.i(23);
-    this.EQJ = new CancellationSignal();
+    this.GnW = new CancellationSignal();
     AppMethodBeat.o(23);
   }
   
   @SuppressLint({"NewApi"})
-  public final boolean xw(final boolean paramBoolean)
+  public final boolean yG(final boolean paramBoolean)
   {
     AppMethodBeat.i(22);
     d.v("Soter.SoterFingerprintCanceller", "soter: publishing cancellation. should publish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!this.EQJ.isCanceled())
+    if (!this.GnW.isCanceled())
     {
       if (Build.VERSION.SDK_INT < 23) {
-        g.fnz().ae(new Runnable()
+        g.fDP().ag(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(18);
             d.v("Soter.SoterFingerprintCanceller", "soter: enter worker thread. perform cancel", new Object[0]);
-            a.this.EQJ.cancel();
+            a.this.GnW.cancel();
             if (paramBoolean) {
-              f.fnw().fny();
+              f.fDM().fDO();
             }
             AppMethodBeat.o(18);
           }
@@ -62,22 +62,22 @@ public final class a
       {
         AppMethodBeat.o(22);
         return true;
-        g.fnz().ae(new Runnable()
+        g.fDP().ag(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(19);
-            a.this.EQJ.cancel();
+            a.this.GnW.cancel();
             AppMethodBeat.o(19);
           }
         });
-        g.fnz().o(new Runnable()
+        g.fDP().o(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(20);
             d.w("Soter.SoterFingerprintCanceller", "hy: waiting for %s ms not callback to system callback. cancel manually", new Object[] { Long.valueOf(350L) });
-            f.fnw().fny();
+            f.fDM().fDO();
             AppMethodBeat.o(20);
           }
         }, 350L);

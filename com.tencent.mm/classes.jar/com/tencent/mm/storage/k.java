@@ -2,11 +2,11 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ho;
-import com.tencent.mm.protocal.protobuf.hp;
+import com.tencent.mm.protocal.protobuf.hs;
+import com.tencent.mm.protocal.protobuf.ht;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,7 +35,7 @@ public final class k
     AppMethodBeat.i(32818);
     this.db = paramh;
     long l1 = System.currentTimeMillis();
-    long l2 = paramh.rb(Thread.currentThread().getId());
+    long l2 = paramh.vE(Thread.currentThread().getId());
     long l3 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(Arrays.asList(new String[] { "CREATE INDEX IF NOT EXISTS DeviceIdSessionIndex ON BackupMoveTime ( deviceId,sessionName )" }));
@@ -45,13 +45,13 @@ public final class k
       paramh.execSQL("BackupMoveTime", (String)localArrayList.get(i));
       i += 1;
     }
-    ad.d("MicroMsg.BackupMoveTimeStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
-    paramh.mX(l2);
-    ad.i("MicroMsg.BackupMoveTimeStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    ac.d("MicroMsg.BackupMoveTimeStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
+    paramh.qL(l2);
+    ac.i("MicroMsg.BackupMoveTimeStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
     AppMethodBeat.o(32818);
   }
   
-  private static void a(LinkedList<ho> paramLinkedList, n paramn)
+  private static void a(LinkedList<hs> paramLinkedList, n paramn)
   {
     AppMethodBeat.i(32821);
     if (paramn.field_startTime > paramn.field_endTime)
@@ -60,19 +60,19 @@ public final class k
       return;
     }
     Object localObject = paramLinkedList.iterator();
-    ho localho1;
+    hs localhs1;
     int i;
     for (;;)
     {
       if (((Iterator)localObject).hasNext())
       {
-        localho1 = (ho)((Iterator)localObject).next();
-        if (paramn.field_startTime < localho1.endTime) {
-          if (paramn.field_endTime < localho1.startTime)
+        localhs1 = (hs)((Iterator)localObject).next();
+        if (paramn.field_startTime < localhs1.endTime) {
+          if (paramn.field_endTime < localhs1.startTime)
           {
-            localObject = new ho();
-            ((ho)localObject).startTime = paramn.field_startTime;
-            ((ho)localObject).endTime = paramn.field_endTime;
+            localObject = new hs();
+            ((hs)localObject).startTime = paramn.field_startTime;
+            ((hs)localObject).endTime = paramn.field_endTime;
             paramLinkedList.add(localObject);
             i = 1;
           }
@@ -83,31 +83,31 @@ public final class k
     {
       if (i == 0)
       {
-        localObject = new ho();
-        ((ho)localObject).startTime = paramn.field_startTime;
-        ((ho)localObject).endTime = paramn.field_endTime;
+        localObject = new hs();
+        ((hs)localObject).startTime = paramn.field_startTime;
+        ((hs)localObject).endTime = paramn.field_endTime;
         paramLinkedList.add(localObject);
       }
       AppMethodBeat.o(32821);
       return;
-      if (paramn.field_startTime < localho1.startTime) {
-        localho1.startTime = paramn.field_startTime;
+      if (paramn.field_startTime < localhs1.startTime) {
+        localhs1.startTime = paramn.field_startTime;
       }
-      if (paramn.field_endTime > localho1.endTime)
+      if (paramn.field_endTime > localhs1.endTime)
       {
-        localho1.endTime = paramn.field_endTime;
+        localhs1.endTime = paramn.field_endTime;
         for (;;)
         {
           if (!((Iterator)localObject).hasNext()) {
             break label266;
           }
-          ho localho2 = (ho)((Iterator)localObject).next();
-          if (paramn.field_endTime <= localho2.startTime) {
+          hs localhs2 = (hs)((Iterator)localObject).next();
+          if (paramn.field_endTime <= localhs2.startTime) {
             break label266;
           }
-          if (paramn.field_endTime <= localho2.endTime)
+          if (paramn.field_endTime <= localhs2.endTime)
           {
-            localho1.endTime = localho2.endTime;
+            localhs1.endTime = localhs2.endTime;
             ((Iterator)localObject).remove();
             i = 1;
             break;
@@ -154,16 +154,16 @@ public final class k
               l2 = 9223372036854775807L;
             }
             paramLinkedList1 = "SELECT * FROM BackupMoveTime WHERE deviceId = \"" + paramString + "\" AND sessionName = \"" + str + "\" ";
-            ad.d("MicroMsg.BackupMoveTimeStorage", "getMoveTimeByDeviceIdSession:".concat(String.valueOf(paramLinkedList1)));
+            ac.d("MicroMsg.BackupMoveTimeStorage", "getMoveTimeByDeviceIdSession:".concat(String.valueOf(paramLinkedList1)));
             paramLinkedList1 = this.db.rawQuery(paramLinkedList1, null);
             if (paramLinkedList1 == null)
             {
-              ad.e("MicroMsg.BackupMoveTimeStorage", "getMoveTimeByDeviceIdSession failed, deviceid:%s, sessionName:%s ", new Object[] { paramString, str });
+              ac.e("MicroMsg.BackupMoveTimeStorage", "getMoveTimeByDeviceIdSession failed, deviceid:%s, sessionName:%s ", new Object[] { paramString, str });
               paramLinkedList1 = null;
             }
             for (;;)
             {
-              if ((paramLinkedList1 != null) && (paramLinkedList1.CCE.size() > 0) && (l2 >= ((ho)paramLinkedList1.CCE.getFirst()).startTime) && (l1 <= ((ho)paramLinkedList1.CCE.getLast()).endTime)) {
+              if ((paramLinkedList1 != null) && (paramLinkedList1.DVb.size() > 0) && (l2 >= ((hs)paramLinkedList1.DVb.getFirst()).startTime) && (l1 <= ((hs)paramLinkedList1.DVb.getLast()).endTime)) {
                 break label322;
               }
               paramLinkedList3.add(str);
@@ -183,24 +183,24 @@ public final class k
                 paramLinkedList1 = null;
               }
             }
-            paramLinkedList1 = paramLinkedList1.CCE;
+            paramLinkedList1 = paramLinkedList1.DVb;
             j = 0;
             if ((j >= paramLinkedList1.size()) || (l1 > l2)) {
               break label569;
             }
-            localObject = (ho)paramLinkedList1.get(j);
+            localObject = (hs)paramLinkedList1.get(j);
             k = i;
             l3 = l1;
-            if (l1 <= ((ho)localObject).endTime) {
-              if (l1 < ((ho)localObject).startTime)
+            if (l1 <= ((hs)localObject).endTime) {
+              if (l1 < ((hs)localObject).startTime)
               {
                 i = 1;
                 paramLinkedList3.add(str);
                 paramLinkedList4.add(Long.valueOf(l1));
-                if (l2 < ((ho)localObject).startTime)
+                if (l2 < ((hs)localObject).startTime)
                 {
                   paramLinkedList4.add(Long.valueOf(l2));
-                  l1 = ((ho)localObject).startTime;
+                  l1 = ((hs)localObject).startTime;
                   i = 1;
                 }
               }
@@ -226,8 +226,8 @@ public final class k
       paramLinkedList4.add(Long.valueOf(l1));
       paramLinkedList4.add(Long.valueOf(l2));
       break;
-      paramLinkedList4.add(Long.valueOf(((ho)localObject).startTime));
-      l3 = ((ho)localObject).endTime;
+      paramLinkedList4.add(Long.valueOf(((hs)localObject).startTime));
+      l3 = ((hs)localObject).endTime;
       k = i;
       j += 1;
       i = k;
@@ -238,11 +238,11 @@ public final class k
     }
   }
   
-  public final boolean cWA()
+  public final boolean alL()
   {
     AppMethodBeat.i(32822);
     boolean bool = this.db.execSQL("BackupMoveTime", "delete from BackupMoveTime");
-    ad.i("MicroMsg.BackupMoveTimeStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
+    ac.i("MicroMsg.BackupMoveTimeStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(32822);
     return bool;
   }
@@ -250,18 +250,18 @@ public final class k
   public final void j(String paramString, LinkedList<n> paramLinkedList)
   {
     AppMethodBeat.i(32820);
-    ad.i("MicroMsg.BackupMoveTimeStorage", "start mergeDataByDeviceIdSession.");
+    ac.i("MicroMsg.BackupMoveTimeStorage", "start mergeDataByDeviceIdSession.");
     HashMap localHashMap = new HashMap();
     Object localObject1 = "SELECT * FROM BackupMoveTime WHERE deviceId = \"" + paramString + "\" ";
-    ad.d("MicroMsg.BackupMoveTimeStorage", "getAllDataByDevice:".concat(String.valueOf(localObject1)));
+    ac.d("MicroMsg.BackupMoveTimeStorage", "getAllDataByDevice:".concat(String.valueOf(localObject1)));
     localObject1 = this.db.rawQuery((String)localObject1, null);
     if (localObject1 == null) {
-      ad.e("MicroMsg.BackupMoveTimeStorage", "getAllDataByDevice failed, deviceid:%s", new Object[] { paramString });
+      ac.e("MicroMsg.BackupMoveTimeStorage", "getAllDataByDevice failed, deviceid:%s", new Object[] { paramString });
     }
     Object localObject2;
     while (this.db.delete("BackupMoveTime", "deviceId= ? ", new String[] { String.valueOf(paramString) }) < 0)
     {
-      ad.e("MicroMsg.BackupMoveTimeStorage", "mergeDataByDeviceId delete db failed, deviceid:%s", new Object[] { paramString });
+      ac.e("MicroMsg.BackupMoveTimeStorage", "mergeDataByDeviceId delete db failed, deviceid:%s", new Object[] { paramString });
       AppMethodBeat.o(32820);
       return;
       while (((Cursor)localObject1).moveToNext())
@@ -279,34 +279,34 @@ public final class k
       localObject2 = (j)localHashMap.get(((n)localObject1).field_sessionName);
       if (localObject2 == null)
       {
-        localObject2 = new ho();
-        ((ho)localObject2).startTime = ((n)localObject1).field_startTime;
-        ((ho)localObject2).endTime = ((n)localObject1).field_endTime;
+        localObject2 = new hs();
+        ((hs)localObject2).startTime = ((n)localObject1).field_startTime;
+        ((hs)localObject2).endTime = ((n)localObject1).field_endTime;
         j localj = new j();
         localj.field_deviceId = paramString;
         localj.field_sessionName = ((n)localObject1).field_sessionName;
-        localj.field_moveTime = new hp();
-        localj.field_moveTime.CCE = new LinkedList();
-        localj.field_moveTime.CCE.add(localObject2);
+        localj.field_moveTime = new ht();
+        localj.field_moveTime.DVb = new LinkedList();
+        localj.field_moveTime.DVb.add(localObject2);
         localHashMap.put(((n)localObject1).field_sessionName, localj);
       }
       else
       {
-        a(((j)localObject2).field_moveTime.CCE, (n)localObject1);
+        a(((j)localObject2).field_moveTime.DVb, (n)localObject1);
       }
     }
     paramString = localHashMap.keySet().iterator();
     while (paramString.hasNext())
     {
       paramLinkedList = (String)paramString.next();
-      ad.i("MicroMsg.BackupMoveTimeStorage", "mergeDataByDeviceId insert BackupMoveTimeStorage ret[%b], sessionName:%s", new Object[] { Boolean.valueOf(insert((c)localHashMap.get(paramLinkedList))), paramLinkedList });
+      ac.i("MicroMsg.BackupMoveTimeStorage", "mergeDataByDeviceId insert BackupMoveTimeStorage ret[%b], sessionName:%s", new Object[] { Boolean.valueOf(insert((c)localHashMap.get(paramLinkedList))), paramLinkedList });
     }
     AppMethodBeat.o(32820);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.k
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.widget.b;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.q.c;
+import com.tencent.mm.plugin.appbrand.jsapi.p.c;
 
 @SuppressLint({"AppCompatCustomView"})
 public final class e
   extends f
   implements a
 {
-  private c ckD = null;
+  private c chC = null;
   
   public e(Context paramContext)
   {
@@ -19,7 +19,7 @@ public final class e
   
   public final c getReferrerPolicy()
   {
-    return this.ckD;
+    return this.chC;
   }
   
   public final View getView()
@@ -33,12 +33,12 @@ public final class e
   
   public final void setReferrerPolicy(c paramc)
   {
-    this.ckD = paramc;
+    this.chC = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.e
  * JD-Core Version:    0.7.0.1
  */

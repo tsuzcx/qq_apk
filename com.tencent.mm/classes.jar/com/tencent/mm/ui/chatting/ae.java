@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 public abstract interface ae
 {
-  public abstract void aV(Bundle paramBundle);
+  public abstract void aZ(Bundle paramBundle);
   
-  public abstract void aW(Bundle paramBundle);
+  public abstract void ba(Bundle paramBundle);
   
-  public abstract void eVQ();
+  public abstract void flC();
   
-  public abstract void eVR();
+  public abstract void flD();
   
-  public abstract void eVS();
+  public abstract void flE();
   
   public abstract int getBottomHeight();
   
@@ -22,11 +22,11 @@ public abstract interface ae
   
   public abstract void setIsBottomShowAll(boolean paramBoolean);
   
-  public abstract void vM(boolean paramBoolean);
+  public abstract void wQ(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ae
  * JD-Core Version:    0.7.0.1
  */

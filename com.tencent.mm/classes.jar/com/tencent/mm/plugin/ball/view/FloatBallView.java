@@ -34,10 +34,12 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.ball.c.c;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.s;
+import com.tencent.mm.ui.aj;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -48,156 +50,156 @@ public class FloatBallView
   extends FrameLayout
   implements com.tencent.mm.plugin.ball.c.e
 {
-  private static final int mHA;
-  private static final int mHB;
-  private static final int mHC;
-  private static final int mHD;
-  private static final int mHE;
-  private static final int mHF;
-  private static final int mHG;
-  private static final int mHH;
-  private static final int mHI;
-  private static final int mHJ;
-  private static final int mHK;
-  private static final int mHL;
-  private static final int mHM;
-  private static final int mHN;
-  private static final int mHO;
-  private static final int mHP;
-  private static final int mHQ;
-  private static final int mHe;
-  private static final int mHf;
-  private static final int mHg;
-  private static final int mHh;
-  private static final int mHi;
-  private static final int mHj;
-  private static final int mHk;
-  private static final int mHl;
-  private static final int mHm;
-  private static final int mHn;
-  private static final int mHo;
-  private static final int mHp;
-  private static final int mHq;
-  private static final int mHr;
-  private static final int mHs;
-  private static final int mHt;
-  private static final int mHu;
-  private static final int mHv;
-  private static final int mHw;
-  private static final int mHx;
-  private static final int mHy;
-  private static final int mHz;
-  public Set<com.tencent.mm.plugin.ball.d.b> csT;
-  private int iHo;
-  private View jpE;
-  private long lVv;
-  private boolean mCB;
-  public boolean mFj;
-  private int mHR;
-  private int mHS;
-  private Vibrator mHT;
-  private ValueAnimator mHU;
-  public com.tencent.mm.plugin.ball.b.b mHV;
-  private View mHW;
-  private View mHX;
-  private LinearLayout mHY;
-  public FrameLayout mHZ;
-  public int mHc;
-  private int mHd;
-  private BallInfo mIA;
-  private BallInfo mIB;
-  private String mIC;
-  private List<BallInfo> mIE;
-  private LayoutTransition mIF;
-  private boolean mIG;
-  private boolean mIH;
-  private Point mII;
-  private PointF mIJ;
-  private Point mIK;
-  private float mIL;
-  private int mIM;
-  private boolean mIN;
-  private boolean mIO;
-  private boolean mIP;
-  private boolean mIQ;
-  private boolean mIR;
-  private int mIS;
-  private boolean mIT;
-  private Handler mIU;
-  private Runnable mIV;
-  private boolean mIW;
-  private boolean mIX;
-  private boolean mIY;
-  private int mIZ;
-  private FrameLayout mIa;
-  private FrameLayout mIb;
-  private FrameLayout mIc;
-  private CircleAnimateView mIe;
-  private CircleAnimateView mIf;
-  private CircleAnimateView mIg;
-  private CircleAnimateView mIh;
-  private Drawable mIi;
-  private Drawable mIj;
-  private Drawable mIk;
-  private Drawable mIl;
-  private Drawable mIm;
-  private Drawable mIn;
-  private Drawable mIo;
-  private Drawable mIp;
-  private Drawable mIq;
-  private Drawable mIr;
-  private Drawable mIs;
-  private Drawable mIt;
-  private Drawable mIu;
-  private Drawable mIv;
-  private Drawable mIw;
-  private Drawable mIx;
-  private Drawable mIy;
-  private Drawable mIz;
+  private static final int njA;
+  private static final int njB;
+  private static final int njC;
+  private static final int njD;
+  private static final int njE;
+  private static final int njF;
+  private static final int njG;
+  private static final int njH;
+  private static final int njI;
+  private static final int njJ;
+  private static final int njK;
+  private static final int njL;
+  private static final int njM;
+  private static final int njN;
+  private static final int njO;
+  private static final int njP;
+  private static final int njQ;
+  private static final int njR;
+  private static final int njS;
+  private static final int njT;
+  private static final int njU;
+  private static final int njV;
+  private static final int njj;
+  private static final int njk;
+  private static final int njl;
+  private static final int njm;
+  private static final int njn;
+  private static final int njo;
+  private static final int njp;
+  private static final int njq;
+  private static final int njr;
+  private static final int njs;
+  private static final int njt;
+  private static final int nju;
+  private static final int njv;
+  private static final int njw;
+  private static final int njx;
+  private static final int njy;
+  private static final int njz;
+  public Set<com.tencent.mm.plugin.ball.d.b> cqb;
+  private int gud;
+  private View jPT;
+  private long mxx;
+  private boolean neD;
+  public boolean nho;
+  private int njW;
+  private int njX;
+  private Vibrator njY;
+  private ValueAnimator njZ;
+  public int njh;
+  private int nji;
+  private Drawable nkA;
+  private Drawable nkB;
+  private Drawable nkC;
+  private Drawable nkD;
+  private BallInfo nkE;
+  private BallInfo nkF;
+  private String nkG;
+  private List<BallInfo> nkH;
+  private LayoutTransition nkI;
+  private boolean nkJ;
+  private boolean nkK;
+  private Point nkL;
+  private PointF nkM;
+  private Point nkN;
+  private float nkO;
+  private int nkP;
+  private boolean nkQ;
+  private boolean nkR;
+  private boolean nkS;
+  private boolean nkT;
+  private boolean nkU;
+  private int nkV;
+  private boolean nkW;
+  private Handler nkX;
+  private Runnable nkY;
+  private boolean nkZ;
+  public com.tencent.mm.plugin.ball.b.b nka;
+  private View nkb;
+  private View nkc;
+  private LinearLayout nkd;
+  public FrameLayout nke;
+  private FrameLayout nkf;
+  private FrameLayout nkg;
+  private FrameLayout nkh;
+  private CircleAnimateView nki;
+  private CircleAnimateView nkj;
+  private CircleAnimateView nkk;
+  private CircleAnimateView nkl;
+  private Drawable nkm;
+  private Drawable nkn;
+  private Drawable nko;
+  private Drawable nkp;
+  private Drawable nkq;
+  private Drawable nkr;
+  private Drawable nks;
+  private Drawable nkt;
+  private Drawable nku;
+  private Drawable nkv;
+  private Drawable nkw;
+  private Drawable nkx;
+  private Drawable nky;
+  private Drawable nkz;
+  private boolean nla;
+  private boolean nlb;
+  private int nlc;
   private WindowManager windowManager;
   
   static
   {
     AppMethodBeat.i(106478);
-    mHe = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166306);
-    mHf = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166303);
-    mHg = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166305);
-    mHh = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166304);
-    mHi = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166325);
-    mHj = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166324);
-    mHk = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166337);
-    mHl = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166336);
-    mHm = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166333);
-    mHn = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166332);
-    mHo = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166345);
-    mHp = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166344);
-    mHq = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166348);
-    mHr = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166346);
-    mHs = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166349);
-    mHt = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166347);
-    mHu = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166339);
-    mHv = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166338);
-    mHw = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166342);
-    mHx = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166340);
-    mHy = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166343);
-    mHz = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166341);
-    mHA = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166356);
-    mHB = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166354);
-    mHC = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166357);
-    mHD = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166355);
-    mHE = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166352);
-    mHF = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166350);
-    mHG = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166353);
-    mHH = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166351);
-    mHI = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166331);
-    mHJ = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166307);
-    mHK = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166320);
-    mHL = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166321);
-    mHM = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166318);
-    mHN = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166319);
-    mHO = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166309);
-    mHP = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166311);
-    mHQ = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166310);
+    njj = com.tencent.mm.cc.a.av(ai.getContext(), 2131166306);
+    njk = com.tencent.mm.cc.a.av(ai.getContext(), 2131166303);
+    njl = com.tencent.mm.cc.a.av(ai.getContext(), 2131166305);
+    njm = com.tencent.mm.cc.a.av(ai.getContext(), 2131166304);
+    njn = com.tencent.mm.cc.a.av(ai.getContext(), 2131166325);
+    njo = com.tencent.mm.cc.a.av(ai.getContext(), 2131166324);
+    njp = com.tencent.mm.cc.a.av(ai.getContext(), 2131166337);
+    njq = com.tencent.mm.cc.a.av(ai.getContext(), 2131166336);
+    njr = com.tencent.mm.cc.a.av(ai.getContext(), 2131166333);
+    njs = com.tencent.mm.cc.a.av(ai.getContext(), 2131166332);
+    njt = com.tencent.mm.cc.a.av(ai.getContext(), 2131166345);
+    nju = com.tencent.mm.cc.a.av(ai.getContext(), 2131166344);
+    njv = com.tencent.mm.cc.a.av(ai.getContext(), 2131166348);
+    njw = com.tencent.mm.cc.a.av(ai.getContext(), 2131166346);
+    njx = com.tencent.mm.cc.a.av(ai.getContext(), 2131166349);
+    njy = com.tencent.mm.cc.a.av(ai.getContext(), 2131166347);
+    njz = com.tencent.mm.cc.a.av(ai.getContext(), 2131166339);
+    njA = com.tencent.mm.cc.a.av(ai.getContext(), 2131166338);
+    njB = com.tencent.mm.cc.a.av(ai.getContext(), 2131166342);
+    njC = com.tencent.mm.cc.a.av(ai.getContext(), 2131166340);
+    njD = com.tencent.mm.cc.a.av(ai.getContext(), 2131166343);
+    njE = com.tencent.mm.cc.a.av(ai.getContext(), 2131166341);
+    njF = com.tencent.mm.cc.a.av(ai.getContext(), 2131166356);
+    njG = com.tencent.mm.cc.a.av(ai.getContext(), 2131166354);
+    njH = com.tencent.mm.cc.a.av(ai.getContext(), 2131166357);
+    njI = com.tencent.mm.cc.a.av(ai.getContext(), 2131166355);
+    njJ = com.tencent.mm.cc.a.av(ai.getContext(), 2131166352);
+    njK = com.tencent.mm.cc.a.av(ai.getContext(), 2131166350);
+    njL = com.tencent.mm.cc.a.av(ai.getContext(), 2131166353);
+    njM = com.tencent.mm.cc.a.av(ai.getContext(), 2131166351);
+    njN = com.tencent.mm.cc.a.av(ai.getContext(), 2131166331);
+    njO = com.tencent.mm.cc.a.av(ai.getContext(), 2131166307);
+    njP = com.tencent.mm.cc.a.av(ai.getContext(), 2131166320);
+    njQ = com.tencent.mm.cc.a.av(ai.getContext(), 2131166321);
+    njR = com.tencent.mm.cc.a.av(ai.getContext(), 2131166318);
+    njS = com.tencent.mm.cc.a.av(ai.getContext(), 2131166319);
+    njT = com.tencent.mm.cc.a.av(ai.getContext(), 2131166309);
+    njU = com.tencent.mm.cc.a.av(ai.getContext(), 2131166311);
+    njV = com.tencent.mm.cc.a.av(ai.getContext(), 2131166310);
     AppMethodBeat.o(106478);
   }
   
@@ -215,92 +217,92 @@ public class FloatBallView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106438);
-    this.mHc = 0;
-    this.mHd = 0;
-    this.csT = new CopyOnWriteArraySet();
-    this.mIJ = new PointF();
-    this.mIK = new Point();
-    this.mIL = -1.0F;
-    this.mIM = 0;
-    this.mIN = false;
-    this.mFj = false;
-    this.mIO = true;
-    this.mIP = false;
-    this.mIQ = false;
-    this.mIR = false;
-    this.mIS = 0;
-    this.mIT = false;
-    this.mCB = false;
-    this.mIU = new Handler(Looper.getMainLooper());
-    this.mIV = new Runnable()
+    this.njh = 0;
+    this.nji = 0;
+    this.cqb = new CopyOnWriteArraySet();
+    this.nkM = new PointF();
+    this.nkN = new Point();
+    this.nkO = -1.0F;
+    this.nkP = 0;
+    this.nkQ = false;
+    this.nho = false;
+    this.nkR = true;
+    this.nkS = false;
+    this.nkT = false;
+    this.nkU = false;
+    this.nkV = 0;
+    this.nkW = false;
+    this.neD = false;
+    this.nkX = new Handler(Looper.getMainLooper());
+    this.nkY = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106430);
         FloatBallView.a(FloatBallView.this);
         FloatBallView.b(FloatBallView.this);
-        Iterator localIterator = FloatBallView.this.csT.iterator();
+        Iterator localIterator = FloatBallView.this.cqb.iterator();
         while (localIterator.hasNext()) {
-          ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).bzb();
+          ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).bFX();
         }
         AppMethodBeat.o(106430);
       }
     };
-    this.mIW = false;
-    this.mIX = false;
-    this.mIY = false;
-    this.mIZ = 0;
+    this.nkZ = false;
+    this.nla = false;
+    this.nlb = false;
+    this.nlc = 0;
     View.inflate(paramContext, 2131494557, this);
-    this.mIi = com.tencent.mm.cd.a.l(paramContext, 2131232399);
-    this.mIj = com.tencent.mm.cd.a.l(paramContext, 2131232401);
-    this.mIk = com.tencent.mm.cd.a.l(paramContext, 2131232403);
-    this.mIl = com.tencent.mm.cd.a.l(paramContext, 2131232400);
-    this.mIm = com.tencent.mm.cd.a.l(paramContext, 2131232402);
-    this.mIn = com.tencent.mm.cd.a.l(paramContext, 2131232404);
-    this.mIo = com.tencent.mm.cd.a.l(paramContext, 2131232393);
-    this.mIp = com.tencent.mm.cd.a.l(paramContext, 2131232395);
-    this.mIq = com.tencent.mm.cd.a.l(paramContext, 2131232397);
-    this.mIr = com.tencent.mm.cd.a.l(paramContext, 2131232394);
-    this.mIs = com.tencent.mm.cd.a.l(paramContext, 2131232396);
-    this.mIt = com.tencent.mm.cd.a.l(paramContext, 2131232398);
-    this.mIu = com.tencent.mm.cd.a.l(paramContext, 2131232415);
-    this.mIv = com.tencent.mm.cd.a.l(paramContext, 2131232416);
-    this.mIw = com.tencent.mm.cd.a.l(paramContext, 2131232417);
-    this.mIx = com.tencent.mm.cd.a.l(paramContext, 2131232415);
-    this.mIy = com.tencent.mm.cd.a.l(paramContext, 2131232416);
-    this.mIz = com.tencent.mm.cd.a.l(paramContext, 2131232417);
-    this.mHY = ((LinearLayout)findViewById(2131297110));
-    this.mIb = ((FrameLayout)findViewById(2131297109));
-    this.mHZ = ((FrameLayout)findViewById(2131306552));
-    this.mIa = ((FrameLayout)findViewById(2131303096));
-    this.jpE = findViewById(2131299156);
-    this.mIc = ((FrameLayout)findViewById(2131297111));
-    this.mIe = ((CircleAnimateView)findViewById(2131305994));
-    this.mIf = ((CircleAnimateView)findViewById(2131297430));
-    this.mIg = ((CircleAnimateView)findViewById(2131305769));
-    this.mIh = ((CircleAnimateView)findViewById(2131307194));
-    this.mHV = new com.tencent.mm.plugin.ball.b.b(this);
-    this.mHT = ((Vibrator)paramContext.getSystemService("vibrator"));
+    this.nkm = com.tencent.mm.cc.a.l(paramContext, 2131232399);
+    this.nkn = com.tencent.mm.cc.a.l(paramContext, 2131232401);
+    this.nko = com.tencent.mm.cc.a.l(paramContext, 2131232403);
+    this.nkp = com.tencent.mm.cc.a.l(paramContext, 2131232400);
+    this.nkq = com.tencent.mm.cc.a.l(paramContext, 2131232402);
+    this.nkr = com.tencent.mm.cc.a.l(paramContext, 2131232404);
+    this.nks = com.tencent.mm.cc.a.l(paramContext, 2131232393);
+    this.nkt = com.tencent.mm.cc.a.l(paramContext, 2131232395);
+    this.nku = com.tencent.mm.cc.a.l(paramContext, 2131232397);
+    this.nkv = com.tencent.mm.cc.a.l(paramContext, 2131232394);
+    this.nkw = com.tencent.mm.cc.a.l(paramContext, 2131232396);
+    this.nkx = com.tencent.mm.cc.a.l(paramContext, 2131232398);
+    this.nky = com.tencent.mm.cc.a.l(paramContext, 2131232415);
+    this.nkz = com.tencent.mm.cc.a.l(paramContext, 2131232416);
+    this.nkA = com.tencent.mm.cc.a.l(paramContext, 2131232417);
+    this.nkB = com.tencent.mm.cc.a.l(paramContext, 2131232415);
+    this.nkC = com.tencent.mm.cc.a.l(paramContext, 2131232416);
+    this.nkD = com.tencent.mm.cc.a.l(paramContext, 2131232417);
+    this.nkd = ((LinearLayout)findViewById(2131297110));
+    this.nkg = ((FrameLayout)findViewById(2131297109));
+    this.nke = ((FrameLayout)findViewById(2131306552));
+    this.nkf = ((FrameLayout)findViewById(2131303096));
+    this.jPT = findViewById(2131299156);
+    this.nkh = ((FrameLayout)findViewById(2131297111));
+    this.nki = ((CircleAnimateView)findViewById(2131305994));
+    this.nkj = ((CircleAnimateView)findViewById(2131297430));
+    this.nkk = ((CircleAnimateView)findViewById(2131305769));
+    this.nkl = ((CircleAnimateView)findViewById(2131307194));
+    this.nka = new com.tencent.mm.plugin.ball.b.b(this);
+    this.njY = ((Vibrator)paramContext.getSystemService("vibrator"));
     this.windowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.mHR = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.mII = com.tencent.mm.ui.ai.cf(paramContext);
-    this.mHS = ViewConfiguration.getLongPressTimeout();
-    this.mIF = new LayoutTransition();
-    this.mHY.setLayoutTransition(this.mIF);
-    this.iHo = getResources().getConfiguration().orientation;
+    this.njW = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.nkL = aj.cl(paramContext);
+    this.njX = ViewConfiguration.getLongPressTimeout();
+    this.nkI = new LayoutTransition();
+    this.nkd.setLayoutTransition(this.nkI);
+    this.gud = getResources().getConfiguration().orientation;
     AppMethodBeat.o(106438);
   }
   
-  private int B(boolean paramBoolean1, boolean paramBoolean2)
+  private int C(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(176983);
-    this.mIc.setVisibility(0);
-    boolean bool1 = wY(this.mHc);
-    boolean bool2 = wX(this.mHc);
-    boolean bool3 = wW(this.mHc);
-    boolean bool4 = wV(this.mHc);
-    boolean bool5 = wP(this.mHc);
-    boolean bool6 = wS(this.mHc);
+    this.nkh.setVisibility(0);
+    boolean bool1 = xQ(this.njh);
+    boolean bool2 = xP(this.njh);
+    boolean bool3 = xO(this.njh);
+    boolean bool4 = xN(this.njh);
+    boolean bool5 = xH(this.njh);
+    boolean bool6 = xK(this.njh);
     int i1;
     label100:
     int i2;
@@ -313,95 +315,95 @@ public class FloatBallView
     if (paramBoolean1)
     {
       i1 = 8388611;
-      if ((wZ(this.mHc)) || (!wR(this.mHc))) {
+      if ((xR(this.njh)) || (!xJ(this.njh))) {
         break label364;
       }
       k = 1;
       if ((!bool4) && (k == 0)) {
         break label370;
       }
-      i2 = mHM;
+      i2 = njR;
       if ((paramBoolean2) || (bool5) || (bool6)) {
         break label385;
       }
       if ((!bool4) && (!bool2) && (!bool1) && (k == 0)) {
         break label378;
       }
-      i = mHM;
+      i = njR;
       m = i;
       j = i;
       i = m;
       if ((!bool4) && (k == 0)) {
         break label473;
       }
-      this.mIe.setVisibility(0);
-      this.mIf.setVisibility(8);
-      this.mIg.setVisibility(8);
-      this.mIh.setVisibility(8);
+      this.nki.setVisibility(0);
+      this.nkj.setVisibility(8);
+      this.nkk.setVisibility(8);
+      this.nkl.setVisibility(8);
       m = 0;
       k = m;
-      if (!wZ(this.mHc))
+      if (!xR(this.njh))
       {
         k = m;
-        if (wR(this.mHc)) {
+        if (xJ(this.njh)) {
           k = getAppBrandVoipBallInfoIndex();
         }
       }
-      a(this.mIe, k);
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.mIe.getLayoutParams();
+      a(this.nki, k);
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.nki.getLayoutParams();
       localLayoutParams1.setMargins(j, i2, i, i2);
       localLayoutParams1.gravity = i1;
-      this.mIe.setLayoutParams(localLayoutParams1);
+      this.nki.setLayoutParams(localLayoutParams1);
     }
     label364:
     label370:
     label378:
     while ((!bool3) && (!bool2) && (!bool1))
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.mIc.getLayoutParams();
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.nkh.getLayoutParams();
       localLayoutParams1.gravity = (i1 | 0x10);
-      this.mIc.setLayoutParams(localLayoutParams1);
+      this.nkh.setLayoutParams(localLayoutParams1);
       if ((!bool2) && (!bool1)) {
         break label959;
       }
-      k = mHI;
+      k = njN;
       AppMethodBeat.o(176983);
       return k * 2 + j + i;
       i1 = 8388613;
       break;
       k = 0;
       break label100;
-      i2 = mHK;
+      i2 = njP;
       break label115;
-      i = mHN;
+      i = njS;
       break label153;
       if (paramBoolean1)
       {
         if ((bool5) && (!bool6))
         {
-          j = mHK;
+          j = njP;
           if (!bool5) {
             break label424;
           }
         }
-        for (i = mHK;; i = mHM)
+        for (i = njP;; i = njR)
         {
           break;
-          j = mHL;
+          j = njQ;
           break label404;
         }
       }
       if (bool5)
       {
-        j = mHK;
+        j = njP;
         if ((!bool5) || (bool6)) {
           break label466;
         }
       }
-      for (i = mHK;; i = mHL)
+      for (i = njP;; i = njQ)
       {
         break;
-        j = mHM;
+        j = njR;
         break label441;
       }
     }
@@ -411,124 +413,97 @@ public class FloatBallView
     label441:
     label466:
     label473:
-    this.mIe.setVisibility(0);
-    this.mIf.setVisibility(0);
-    a(this.mIe, 0);
-    a(this.mIf, 1);
+    this.nki.setVisibility(0);
+    this.nkj.setVisibility(0);
+    a(this.nki, 0);
+    a(this.nkj, 1);
     int n;
     int i3;
     if (bool2)
     {
-      this.mIg.setVisibility(0);
-      this.mIh.setVisibility(8);
-      a(this.mIg, 2);
+      this.nkk.setVisibility(0);
+      this.nkl.setVisibility(8);
+      a(this.nkk, 2);
       if (paramBoolean1)
       {
-        m = j + mHI;
+        m = j + njN;
         n = 0;
         k = i;
         i3 = j;
         label575:
-        localLayoutParams1 = (FrameLayout.LayoutParams)this.mIg.getLayoutParams();
+        localLayoutParams1 = (FrameLayout.LayoutParams)this.nkk.getLayoutParams();
         localLayoutParams1.setMargins(i3, 0, n, 0);
         localLayoutParams1.gravity = (i1 | 0x10);
-        this.mIg.setLayoutParams(localLayoutParams1);
+        this.nkk.setLayoutParams(localLayoutParams1);
         n = m;
         m = k;
       }
     }
     for (;;)
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.mIe.getLayoutParams();
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.nki.getLayoutParams();
       localLayoutParams1.setMargins(n, i2, m, 0);
       localLayoutParams1.gravity = i1;
-      this.mIe.setLayoutParams(localLayoutParams1);
-      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.mIf.getLayoutParams();
-      k = mHI;
+      this.nki.setLayoutParams(localLayoutParams1);
+      FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)this.nkj.getLayoutParams();
+      k = njN;
       localLayoutParams2.setMargins(n, localLayoutParams1.topMargin + k, m, i2);
       localLayoutParams2.gravity = i1;
-      this.mIf.setLayoutParams(localLayoutParams2);
+      this.nkj.setLayoutParams(localLayoutParams2);
       break;
       i3 = 0;
-      k = mHI;
+      k = njN;
       n = i;
       k += i;
       m = j;
       break label575;
       if (bool1)
       {
-        this.mIg.setVisibility(0);
-        this.mIh.setVisibility(0);
-        a(this.mIg, 2);
-        a(this.mIh, 3);
+        this.nkk.setVisibility(0);
+        this.nkl.setVisibility(0);
+        a(this.nkk, 2);
+        a(this.nkl, 3);
         if (paramBoolean1)
         {
-          k = mHI;
+          k = njN;
           n = 0;
           m = i;
           k += j;
         }
         for (i3 = j;; i3 = 0)
         {
-          localLayoutParams1 = (FrameLayout.LayoutParams)this.mIg.getLayoutParams();
+          localLayoutParams1 = (FrameLayout.LayoutParams)this.nkk.getLayoutParams();
           localLayoutParams1.setMargins(i3, i2, n, 0);
           localLayoutParams1.gravity = i1;
-          this.mIg.setLayoutParams(localLayoutParams1);
-          localLayoutParams2 = (FrameLayout.LayoutParams)this.mIh.getLayoutParams();
-          int i4 = mHI;
+          this.nkk.setLayoutParams(localLayoutParams1);
+          localLayoutParams2 = (FrameLayout.LayoutParams)this.nkl.getLayoutParams();
+          int i4 = njN;
           localLayoutParams2.setMargins(i3, localLayoutParams1.topMargin + i4, n, 0);
           localLayoutParams2.gravity = i1;
-          this.mIh.setLayoutParams(localLayoutParams2);
+          this.nkl.setLayoutParams(localLayoutParams2);
           n = k;
           break;
-          k = mHI;
+          k = njN;
           n = i;
           m = k + i;
           k = j;
         }
       }
-      this.mIh.setVisibility(8);
-      this.mIg.setVisibility(8);
+      this.nkl.setVisibility(8);
+      this.nkk.setVisibility(8);
       m = i;
       n = j;
     }
     label959:
-    int k = mHI;
+    int k = njN;
     AppMethodBeat.o(176983);
     return k + j + i;
   }
   
-  private void I(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(176984);
-    if (paramInt == 0)
-    {
-      a(this.mIe, paramLong);
-      AppMethodBeat.o(176984);
-      return;
-    }
-    if (paramInt == 1)
-    {
-      a(this.mIf, paramLong);
-      AppMethodBeat.o(176984);
-      return;
-    }
-    if (paramInt == 2)
-    {
-      a(this.mIg, paramLong);
-      AppMethodBeat.o(176984);
-      return;
-    }
-    if (paramInt == 3) {
-      a(this.mIh, paramLong);
-    }
-    AppMethodBeat.o(176984);
-  }
-  
-  private boolean I(MotionEvent paramMotionEvent)
+  private boolean G(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(106453);
-    if ((Math.abs(paramMotionEvent.getRawX() - this.mIJ.x) > this.mHR) || (Math.abs(paramMotionEvent.getRawY() - this.mIJ.y) > this.mHR))
+    if ((Math.abs(paramMotionEvent.getRawX() - this.nkM.x) > this.njW) || (Math.abs(paramMotionEvent.getRawY() - this.nkM.y) > this.njW))
     {
       AppMethodBeat.o(106453);
       return true;
@@ -537,51 +512,78 @@ public class FloatBallView
     return false;
   }
   
-  private int J(MotionEvent paramMotionEvent)
+  private int H(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(106454);
-    int i = (int)Math.max(Math.min(this.mIK.x + paramMotionEvent.getRawX() - this.mIJ.x, this.mII.x), 0.0F);
+    int i = (int)Math.max(Math.min(this.nkN.x + paramMotionEvent.getRawX() - this.nkM.x, this.nkL.x), 0.0F);
     AppMethodBeat.o(106454);
     return i;
   }
   
-  private int K(MotionEvent paramMotionEvent)
+  private void H(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(176984);
+    if (paramInt == 0)
+    {
+      a(this.nki, paramLong);
+      AppMethodBeat.o(176984);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      a(this.nkj, paramLong);
+      AppMethodBeat.o(176984);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      a(this.nkk, paramLong);
+      AppMethodBeat.o(176984);
+      return;
+    }
+    if (paramInt == 3) {
+      a(this.nkl, paramLong);
+    }
+    AppMethodBeat.o(176984);
+  }
+  
+  private int I(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(106455);
-    int i = (int)Math.max(Math.min(this.mIK.y + paramMotionEvent.getRawY() - this.mIJ.y, this.mII.y), 0.0F);
+    int i = (int)Math.max(Math.min(this.nkN.y + paramMotionEvent.getRawY() - this.nkM.y, this.nkL.y), 0.0F);
     AppMethodBeat.o(106455);
     return i;
+  }
+  
+  private void O(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(106475);
+    Iterator localIterator = this.cqb.iterator();
+    while (localIterator.hasNext()) {
+      ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).N(paramMotionEvent);
+    }
+    AppMethodBeat.o(106475);
   }
   
   private void Q(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.mIL = (paramInt / this.mII.y);
+      this.nkO = (paramInt / this.nkL.y);
     }
-    this.mIM = paramInt;
-  }
-  
-  private void Q(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(106475);
-    Iterator localIterator = this.csT.iterator();
-    while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).P(paramMotionEvent);
-    }
-    AppMethodBeat.o(106475);
+    this.nkP = paramInt;
   }
   
   private void a(CircleAnimateView paramCircleAnimateView, int paramInt)
   {
     AppMethodBeat.i(176986);
-    if ((d.h(this.mIE)) && (this.mIE.size() > paramInt))
+    if ((d.h(this.nkH)) && (this.nkH.size() > paramInt))
     {
-      BallInfo localBallInfo = (BallInfo)this.mIE.get(paramInt);
-      paramInt = d.wG(localBallInfo.state);
+      BallInfo localBallInfo = (BallInfo)this.nkH.get(paramInt);
+      paramInt = d.xx(localBallInfo.state);
       if (-1 != paramInt)
       {
         com.tencent.mm.svg.a.a locala = new com.tencent.mm.svg.a.a();
-        if ((!t.av(aj.getContext(), paramInt)) && (locala.i(getResources(), paramInt))) {
+        if ((!s.aB(ai.getContext(), paramInt)) && (locala.i(getResources(), paramInt))) {
           break label117;
         }
         paramCircleAnimateView.setImageResource(paramInt);
@@ -615,18 +617,18 @@ public class FloatBallView
   private void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
     AppMethodBeat.i(176989);
-    if ((this.mIX == paramBoolean1) && (this.mIY == paramBoolean2) && (this.mIW == paramBoolean3) && (this.mIZ == paramInt))
+    if ((this.nla == paramBoolean1) && (this.nlb == paramBoolean2) && (this.nkZ == paramBoolean3) && (this.nlc == paramInt))
     {
       AppMethodBeat.o(176989);
       return;
     }
-    ad.i("MicroMsg.FloatBallView", "updateFloatBallBackground, isSettled:%s, isDockLeft:%s, isManual:%s, state:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(paramInt) });
-    this.mIZ = paramInt;
-    this.mIW = paramBoolean3;
-    this.mIX = paramBoolean1;
-    this.mIY = paramBoolean2;
-    boolean bool1 = wS(paramInt);
-    boolean bool2 = xb(paramInt);
+    ac.i("MicroMsg.FloatBallView", "updateFloatBallBackground, isSettled:%s, isDockLeft:%s, isManual:%s, state:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(paramInt) });
+    this.nlc = paramInt;
+    this.nkZ = paramBoolean3;
+    this.nla = paramBoolean1;
+    this.nlb = paramBoolean2;
+    boolean bool1 = xK(paramInt);
+    boolean bool2 = xT(paramInt);
     if (paramBoolean1)
     {
       if (paramBoolean2)
@@ -635,33 +637,33 @@ public class FloatBallView
         {
           if (bool1)
           {
-            this.mHY.setBackground(this.mIx);
+            this.nkd.setBackground(this.nkB);
             AppMethodBeat.o(176989);
             return;
           }
           if (bool2)
           {
-            this.mHY.setBackground(this.mIr);
+            this.nkd.setBackground(this.nkv);
             AppMethodBeat.o(176989);
             return;
           }
-          this.mHY.setBackground(this.mIl);
+          this.nkd.setBackground(this.nkp);
           AppMethodBeat.o(176989);
           return;
         }
         if (bool1)
         {
-          this.mHY.setBackground(this.mIu);
+          this.nkd.setBackground(this.nky);
           AppMethodBeat.o(176989);
           return;
         }
         if (bool2)
         {
-          this.mHY.setBackground(this.mIo);
+          this.nkd.setBackground(this.nks);
           AppMethodBeat.o(176989);
           return;
         }
-        this.mHY.setBackground(this.mIi);
+        this.nkd.setBackground(this.nkm);
         AppMethodBeat.o(176989);
         return;
       }
@@ -669,33 +671,33 @@ public class FloatBallView
       {
         if (bool1)
         {
-          this.mHY.setBackground(this.mIy);
+          this.nkd.setBackground(this.nkC);
           AppMethodBeat.o(176989);
           return;
         }
         if (bool2)
         {
-          this.mHY.setBackground(this.mIs);
+          this.nkd.setBackground(this.nkw);
           AppMethodBeat.o(176989);
           return;
         }
-        this.mHY.setBackground(this.mIm);
+        this.nkd.setBackground(this.nkq);
         AppMethodBeat.o(176989);
         return;
       }
       if (bool1)
       {
-        this.mHY.setBackground(this.mIv);
+        this.nkd.setBackground(this.nkz);
         AppMethodBeat.o(176989);
         return;
       }
       if (bool2)
       {
-        this.mHY.setBackground(this.mIp);
+        this.nkd.setBackground(this.nkt);
         AppMethodBeat.o(176989);
         return;
       }
-      this.mHY.setBackground(this.mIj);
+      this.nkd.setBackground(this.nkn);
       AppMethodBeat.o(176989);
       return;
     }
@@ -703,133 +705,73 @@ public class FloatBallView
     {
       if (bool1)
       {
-        this.mHY.setBackground(this.mIz);
+        this.nkd.setBackground(this.nkD);
         AppMethodBeat.o(176989);
         return;
       }
       if (bool2)
       {
-        this.mHY.setBackground(this.mIt);
+        this.nkd.setBackground(this.nkx);
         AppMethodBeat.o(176989);
         return;
       }
-      this.mHY.setBackground(this.mIn);
+      this.nkd.setBackground(this.nkr);
       AppMethodBeat.o(176989);
       return;
     }
     if (bool1)
     {
-      this.mHY.setBackground(this.mIw);
+      this.nkd.setBackground(this.nkA);
       AppMethodBeat.o(176989);
       return;
     }
     if (bool2)
     {
-      this.mHY.setBackground(this.mIq);
+      this.nkd.setBackground(this.nku);
       AppMethodBeat.o(176989);
       return;
     }
-    this.mHY.setBackground(this.mIk);
+    this.nkd.setBackground(this.nko);
     AppMethodBeat.o(176989);
   }
   
-  private void bAA()
+  private void bHA()
   {
-    AppMethodBeat.i(176982);
-    int i = B(false, true);
-    this.mIb.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mIb.getLayoutParams();
-    localLayoutParams.gravity = 8388629;
-    int j = mHL;
-    localLayoutParams.setMargins(j, j, i, mHL);
-    this.mIb.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(176982);
-  }
-  
-  private boolean bAB()
-  {
-    AppMethodBeat.i(106451);
-    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
-    int i = localLayoutParams.x;
-    int j = localLayoutParams.y;
-    if (wM(i))
-    {
-      i = Math.max(Math.min(i, this.mII.x), 0);
-      j = Math.max(Math.min(j, this.mII.y), 0);
-      int k = wO(i);
-      int m = wN(j);
-      ad.i("MicroMsg.FloatBallView", "stickToScreenEdgeIfNeed, start:[%s, %s], target:[%s, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-      if ((i != k) || (j != m)) {
-        e(k, m, true, false);
-      }
-      AppMethodBeat.o(106451);
-      return true;
-    }
-    AppMethodBeat.o(106451);
-    return false;
-  }
-  
-  private void bAC()
-  {
-    AppMethodBeat.i(176990);
-    int i = 0;
-    while (i < this.mIE.size())
-    {
-      long l = ((BallInfo)this.mIE.get(i)).progress;
-      if (l >= 0L) {
-        I(i, l);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(176990);
-  }
-  
-  private void bAD()
-  {
-    AppMethodBeat.i(190674);
-    if (this.mFj) {
-      bAE();
-    }
-    AppMethodBeat.o(190674);
-  }
-  
-  private void bAE()
-  {
-    AppMethodBeat.i(190676);
-    ad.i("MicroMsg.FloatBallView", "alvinluo showByTranslation");
+    AppMethodBeat.i(208041);
+    ac.i("MicroMsg.FloatBallView", "alvinluo showByTranslation");
     setNeedTranslateAnimation(false);
     if (getVisibility() == 0)
     {
-      ad.i("MicroMsg.FloatBallView", "showByTranslation float ball already show");
-      AppMethodBeat.o(190676);
+      ac.i("MicroMsg.FloatBallView", "showByTranslation float ball already show");
+      AppMethodBeat.o(208041);
       return;
     }
-    if (this.mHV != null)
+    if (this.nka != null)
     {
-      boolean bool = ut(((WindowManager.LayoutParams)getLayoutParams()).x);
-      this.mHV.P(getCurrentStateWidth(), bool);
+      boolean bool = xE(((WindowManager.LayoutParams)getLayoutParams()).x);
+      this.nka.P(getCurrentStateWidth(), bool);
     }
-    AppMethodBeat.o(190676);
+    AppMethodBeat.o(208041);
   }
   
-  private void bAG()
+  private void bHC()
   {
     AppMethodBeat.i(106468);
     int j;
     int i;
-    if (wZ(this.mHc)) {
-      if (xj(this.mHc))
+    if (xR(this.njh)) {
+      if (yb(this.njh))
       {
-        j = mHo;
-        i = mHp;
+        j = njt;
+        i = nju;
       }
     }
     for (;;)
     {
       WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
-      int k = com.tencent.mm.plugin.ball.f.e.mFO;
-      int m = com.tencent.mm.plugin.ball.f.e.mFM;
-      int n = com.tencent.mm.plugin.ball.f.e.mFN;
+      int k = com.tencent.mm.plugin.ball.f.e.nhT;
+      int m = com.tencent.mm.plugin.ball.f.e.nhR;
+      int n = com.tencent.mm.plugin.ball.f.e.nhS;
       if ((j != 0) && (i != 0))
       {
         localLayoutParams.width = (k + k + j + getExtendWidth());
@@ -840,118 +782,118 @@ public class FloatBallView
         for (;;)
         {
           this.windowManager.updateViewLayout(this, localLayoutParams);
-          ad.i("MicroMsg.FloatBallView", "updateFloatBallViewSize, width:%s, height:%s", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
-          Iterator localIterator = this.csT.iterator();
+          ac.i("MicroMsg.FloatBallView", "updateFloatBallViewSize, width:%s, height:%s", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
+          Iterator localIterator = this.cqb.iterator();
           while (localIterator.hasNext()) {
-            ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).a(localLayoutParams.x, localLayoutParams.y, localLayoutParams.height, this.mIQ, this.mIH);
+            ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).a(localLayoutParams.x, localLayoutParams.y, localLayoutParams.height, this.nkT, this.nkK);
           }
-          if (xk(this.mHc))
+          if (yc(this.njh))
           {
-            j = mHu;
-            i = mHv;
+            j = njz;
+            i = njA;
             break;
           }
-          if ((wT(this.mHc)) && (wP(this.mHc)) && (wX(this.mHc)))
+          if ((xL(this.njh)) && (xH(this.njh)) && (xP(this.njh)))
           {
-            j = mHs;
-            i = mHt;
+            j = njx;
+            i = njy;
             break;
           }
-          if ((wU(this.mHc)) && (wP(this.mHc)) && (wX(this.mHc)))
+          if ((xM(this.njh)) && (xH(this.njh)) && (xP(this.njh)))
           {
-            j = mHy;
-            i = mHz;
+            j = njD;
+            i = njE;
             break;
           }
-          if ((wT(this.mHc)) && ((wP(this.mHc)) || (wQ(this.mHc))))
+          if ((xL(this.njh)) && ((xH(this.njh)) || (xI(this.njh))))
           {
-            j = mHq;
-            i = mHr;
+            j = njv;
+            i = njw;
             break;
           }
-          if ((wU(this.mHc)) && ((wP(this.mHc)) || (wQ(this.mHc))))
+          if ((xM(this.njh)) && ((xH(this.njh)) || (xI(this.njh))))
           {
-            j = mHw;
-            i = mHx;
+            j = njB;
+            i = njC;
             break;
           }
-          if (xa(this.mHc))
+          if (xS(this.njh))
           {
-            j = mHe;
-            i = mHf;
+            j = njj;
+            i = njk;
             break;
           }
-          if (xb(this.mHc))
+          if (xT(this.njh))
           {
-            j = mHO;
-            i = mHO;
+            j = njT;
+            i = njT;
             break;
           }
-          if (xc(this.mHc))
+          if (xU(this.njh))
           {
-            j = mHP;
-            i = mHP;
+            j = njU;
+            i = njU;
             break;
           }
-          if ((xd(this.mHc)) || (xe(this.mHc)))
+          if ((xV(this.njh)) || (xW(this.njh)))
           {
-            j = mHQ;
-            i = mHP;
+            j = njV;
+            i = njU;
             break;
           }
-          if ((xf(this.mHc)) || (xg(this.mHc)))
+          if ((xX(this.njh)) || (xY(this.njh)))
           {
-            j = mHg;
-            i = mHh;
+            j = njl;
+            i = njm;
             break;
           }
-          if ((!xh(this.mHc)) && (!xi(this.mHc))) {
+          if ((!xZ(this.njh)) && (!ya(this.njh))) {
             break label755;
           }
-          j = mHg + mHI;
-          i = mHh;
+          j = njl + njN;
+          i = njm;
           break;
-          if (xj(this.mHc))
+          if (yb(this.njh))
           {
-            j = mHo;
-            i = mHp;
+            j = njt;
+            i = nju;
             break;
           }
-          if (xk(this.mHc))
+          if (yc(this.njh))
           {
-            j = mHu;
-            i = mHv;
+            j = njz;
+            i = njA;
             break;
           }
-          if ((wT(this.mHc)) && (wR(this.mHc)))
+          if ((xL(this.njh)) && (xJ(this.njh)))
           {
-            j = mHq;
-            i = mHr;
+            j = njv;
+            i = njw;
             break;
           }
-          if ((wU(this.mHc)) && (wR(this.mHc)))
+          if ((xM(this.njh)) && (xJ(this.njh)))
           {
-            j = mHw;
-            i = mHx;
+            j = njB;
+            i = njC;
             break;
           }
-          if (wT(this.mHc))
+          if (xL(this.njh))
           {
-            j = mHo;
-            i = mHp;
+            j = njt;
+            i = nju;
             break;
           }
-          if (wU(this.mHc))
+          if (xM(this.njh))
           {
-            j = mHu;
-            i = mHv;
+            j = njz;
+            i = njA;
             break;
           }
-          if (!wR(this.mHc)) {
+          if (!xJ(this.njh)) {
             break label755;
           }
-          j = mHO;
-          i = mHO;
+          j = njT;
+          i = njT;
           break;
           localLayoutParams.width = 0;
           localLayoutParams.height = 0;
@@ -961,7 +903,7 @@ public class FloatBallView
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.FloatBallView", localException, "updateFloatBallViewSize exception", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.FloatBallView", localException, "updateFloatBallViewSize exception", new Object[0]);
         }
         AppMethodBeat.o(106468);
         return;
@@ -972,43 +914,43 @@ public class FloatBallView
     }
   }
   
-  private void bAH()
+  private void bHD()
   {
-    AppMethodBeat.i(190677);
+    AppMethodBeat.i(208042);
     if (((int)getAlpha() == 1) && (getVisibility() == 0))
     {
       int i = getResources().getConfiguration().orientation;
-      if (i != this.iHo)
+      if (i != this.gud)
       {
-        ad.i("MicroMsg.FloatBallView", "alvinluo checkOrientationIfNeed currentOrientation: %d, lastOrientation: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.iHo) });
-        wL(i);
+        ac.i("MicroMsg.FloatBallView", "alvinluo checkOrientationIfNeed currentOrientation: %d, lastOrientation: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.gud) });
+        xC(i);
       }
     }
-    AppMethodBeat.o(190677);
+    AppMethodBeat.o(208042);
   }
   
-  private void bAv()
+  private void bHr()
   {
     AppMethodBeat.i(176977);
-    if (wS(this.mHc))
+    if (xK(this.njh))
     {
-      this.jpE.setVisibility(0);
-      this.mHZ.setVisibility(0);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mHZ.getLayoutParams();
+      this.jPT.setVisibility(0);
+      this.nke.setVisibility(0);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.nke.getLayoutParams();
       int j;
-      if ((wP(this.mHc)) && (wX(this.mHc)))
+      if ((xH(this.njh)) && (xP(this.njh)))
       {
         i = 1;
-        if (!wT(this.mHc)) {
+        if (!xL(this.njh)) {
           break label253;
         }
-        if (!xj(this.mHc)) {
+        if (!yb(this.njh)) {
           break label170;
         }
         if (i == 0) {
           break label156;
         }
-        j = mHC;
+        j = njH;
         label93:
         localLayoutParams.width = j;
         if (i == 0) {
@@ -1017,195 +959,195 @@ public class FloatBallView
       }
       label156:
       label163:
-      for (int i = mHD;; i = mHB)
+      for (int i = njI;; i = njG)
       {
         localLayoutParams.height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         localLayoutParams.setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams(localLayoutParams);
-        this.mIa.setVisibility(8);
+        this.nke.setLayoutParams(localLayoutParams);
+        this.nkf.setVisibility(8);
         AppMethodBeat.o(176977);
         return;
         i = 0;
         break;
-        j = mHA;
+        j = njF;
         break label93;
       }
       label170:
       if (i != 0)
       {
-        j = mHC;
+        j = njH;
         localLayoutParams.width = j;
         if (i == 0) {
           break label246;
         }
       }
       label246:
-      for (i = mHD;; i = mHB)
+      for (i = njI;; i = njG)
       {
         localLayoutParams.height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         localLayoutParams.setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams(localLayoutParams);
-        this.mIa.setVisibility(0);
-        bAw();
+        this.nke.setLayoutParams(localLayoutParams);
+        this.nkf.setVisibility(0);
+        bHs();
         AppMethodBeat.o(176977);
         return;
-        j = mHA;
+        j = njF;
         break;
       }
       label253:
-      if (xk(this.mHc))
+      if (yc(this.njh))
       {
         if (i != 0)
         {
-          j = mHG;
+          j = njL;
           localLayoutParams.width = j;
           if (i == 0) {
             break label336;
           }
         }
-        for (i = mHH;; i = mHF)
+        for (i = njM;; i = njK)
         {
           localLayoutParams.height = i;
-          i = mHL;
-          j = mHL;
+          i = njQ;
+          j = njQ;
           localLayoutParams.setMargins(i, i, j, j);
-          this.mHZ.setLayoutParams(localLayoutParams);
-          this.mIa.setVisibility(8);
+          this.nke.setLayoutParams(localLayoutParams);
+          this.nkf.setVisibility(8);
           AppMethodBeat.o(176977);
           return;
-          j = mHE;
+          j = njJ;
           break;
         }
       }
       label336:
       if (i != 0)
       {
-        j = mHG;
+        j = njL;
         localLayoutParams.width = j;
         if (i == 0) {
           break label419;
         }
       }
       label419:
-      for (i = mHH;; i = mHF)
+      for (i = njM;; i = njK)
       {
         localLayoutParams.height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         localLayoutParams.setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams(localLayoutParams);
-        this.mIa.setVisibility(0);
-        bAw();
+        this.nke.setLayoutParams(localLayoutParams);
+        this.nkf.setVisibility(0);
+        bHs();
         AppMethodBeat.o(176977);
         return;
-        j = mHE;
+        j = njJ;
         break;
       }
     }
-    this.jpE.setVisibility(8);
-    this.mHZ.setVisibility(8);
-    this.mIa.setVisibility(0);
-    bAw();
+    this.jPT.setVisibility(8);
+    this.nke.setVisibility(8);
+    this.nkf.setVisibility(0);
+    bHs();
     AppMethodBeat.o(176977);
   }
   
-  private void bAw()
+  private void bHs()
   {
     AppMethodBeat.i(176978);
-    Object localObject = (LinearLayout.LayoutParams)this.mIa.getLayoutParams();
-    if (wS(this.mHc)) {}
+    Object localObject = (LinearLayout.LayoutParams)this.nkf.getLayoutParams();
+    if (xK(this.njh)) {}
     for (int i = 8388629;; i = 8388627)
     {
       ((LinearLayout.LayoutParams)localObject).gravity = i;
-      this.mIa.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if ((!wP(this.mHc)) || (!wQ(this.mHc))) {
+      this.nkf.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if ((!xH(this.njh)) || (!xI(this.njh))) {
         break;
       }
-      bAz();
+      bHv();
       AppMethodBeat.o(176978);
       return;
     }
-    if ((xl(this.mHc)) || (xa(this.mHc)))
+    if ((yd(this.njh)) || (xS(this.njh)))
     {
-      this.mIc.setVisibility(8);
-      this.mIb.setVisibility(0);
-      localObject = (FrameLayout.LayoutParams)this.mIb.getLayoutParams();
+      this.nkh.setVisibility(8);
+      this.nkg.setVisibility(0);
+      localObject = (FrameLayout.LayoutParams)this.nkg.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).gravity = 8388629;
-      i = mHL;
-      int j = mHL;
+      i = njQ;
+      int j = njQ;
       ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-      this.mIb.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.nkg.setLayoutParams((ViewGroup.LayoutParams)localObject);
       AppMethodBeat.o(176978);
       return;
     }
-    if (wQ(this.mHc))
+    if (xI(this.njh))
     {
-      this.mIb.setVisibility(8);
-      B(true, true);
+      this.nkg.setVisibility(8);
+      C(true, true);
     }
     AppMethodBeat.o(176978);
   }
   
-  private void bAx()
+  private void bHt()
   {
     AppMethodBeat.i(176979);
     LinearLayout.LayoutParams localLayoutParams;
     int i;
     int j;
-    if (wS(this.mHc))
+    if (xK(this.njh))
     {
-      this.jpE.setVisibility(0);
-      this.mHZ.setVisibility(0);
-      localLayoutParams = (LinearLayout.LayoutParams)this.mHZ.getLayoutParams();
-      if ((wP(this.mHc)) && (wX(this.mHc)))
+      this.jPT.setVisibility(0);
+      this.nke.setVisibility(0);
+      localLayoutParams = (LinearLayout.LayoutParams)this.nke.getLayoutParams();
+      if ((xH(this.njh)) && (xP(this.njh)))
       {
         i = 1;
-        if (!wT(this.mHc)) {
+        if (!xL(this.njh)) {
           break label254;
         }
-        if (!xj(this.mHc)) {
+        if (!yb(this.njh)) {
           break label175;
         }
         if (i == 0) {
           break label161;
         }
-        j = mHC;
+        j = njH;
         label93:
         localLayoutParams.width = j;
         if (i == 0) {
           break label168;
         }
-        i = mHD;
+        i = njI;
         label106:
         localLayoutParams.height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         localLayoutParams.setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams(localLayoutParams);
-        this.mIa.setVisibility(8);
+        this.nke.setLayoutParams(localLayoutParams);
+        this.nkf.setVisibility(8);
       }
     }
     for (;;)
     {
-      bAB();
+      bHx();
       AppMethodBeat.o(176979);
       return;
       i = 0;
       break;
       label161:
-      j = mHA;
+      j = njF;
       break label93;
       label168:
-      i = mHB;
+      i = njG;
       break label106;
       label175:
       if (i != 0)
       {
-        j = mHC;
+        j = njH;
         label183:
         localLayoutParams.width = j;
         if (i == 0) {
@@ -1213,40 +1155,40 @@ public class FloatBallView
         }
       }
       label247:
-      for (i = mHD;; i = mHB)
+      for (i = njI;; i = njG)
       {
         localLayoutParams.height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         localLayoutParams.setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams(localLayoutParams);
-        this.mIa.setVisibility(0);
-        bAy();
+        this.nke.setLayoutParams(localLayoutParams);
+        this.nkf.setVisibility(0);
+        bHu();
         break;
-        j = mHA;
+        j = njF;
         break label183;
       }
       label254:
-      if (xk(this.mHc))
+      if (yc(this.njh))
       {
         if (i != 0)
         {
-          j = mHG;
+          j = njL;
           localLayoutParams.width = j;
           if (i == 0) {
             break label333;
           }
         }
-        for (i = mHH;; i = mHF)
+        for (i = njM;; i = njK)
         {
           localLayoutParams.height = i;
-          i = mHL;
-          j = mHL;
+          i = njQ;
+          j = njQ;
           localLayoutParams.setMargins(i, i, j, j);
-          this.mHZ.setLayoutParams(localLayoutParams);
-          this.mIa.setVisibility(8);
+          this.nke.setLayoutParams(localLayoutParams);
+          this.nkf.setVisibility(8);
           break;
-          j = mHE;
+          j = njJ;
           break label272;
         }
       }
@@ -1254,7 +1196,7 @@ public class FloatBallView
       label333:
       if (i != 0)
       {
-        j = mHG;
+        j = njL;
         label348:
         localLayoutParams.width = j;
         if (i == 0) {
@@ -1262,144 +1204,204 @@ public class FloatBallView
         }
       }
       label412:
-      for (i = mHH;; i = mHF)
+      for (i = njM;; i = njK)
       {
         localLayoutParams.height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         localLayoutParams.setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams(localLayoutParams);
-        this.mIa.setVisibility(0);
-        bAy();
+        this.nke.setLayoutParams(localLayoutParams);
+        this.nkf.setVisibility(0);
+        bHu();
         break;
-        j = mHE;
+        j = njJ;
         break label348;
       }
-      this.jpE.setVisibility(8);
-      this.mHZ.setVisibility(8);
-      this.mIa.setVisibility(0);
-      bAy();
+      this.jPT.setVisibility(8);
+      this.nke.setVisibility(8);
+      this.nkf.setVisibility(0);
+      bHu();
     }
   }
   
-  private void bAy()
+  private void bHu()
   {
     AppMethodBeat.i(176980);
-    Object localObject = (LinearLayout.LayoutParams)this.mIa.getLayoutParams();
-    if (wS(this.mHc)) {}
+    Object localObject = (LinearLayout.LayoutParams)this.nkf.getLayoutParams();
+    if (xK(this.njh)) {}
     for (int i = 8388627;; i = 8388629)
     {
       ((LinearLayout.LayoutParams)localObject).gravity = i;
-      this.mIa.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if ((!wP(this.mHc)) || (!wQ(this.mHc))) {
+      this.nkf.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if ((!xH(this.njh)) || (!xI(this.njh))) {
         break;
       }
-      bAA();
+      bHw();
       AppMethodBeat.o(176980);
       return;
     }
-    if ((xl(this.mHc)) || (xa(this.mHc)))
+    if ((yd(this.njh)) || (xS(this.njh)))
     {
-      this.mIc.setVisibility(8);
-      this.mIb.setVisibility(0);
-      localObject = (FrameLayout.LayoutParams)this.mIb.getLayoutParams();
+      this.nkh.setVisibility(8);
+      this.nkg.setVisibility(0);
+      localObject = (FrameLayout.LayoutParams)this.nkg.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).gravity = 8388629;
-      i = mHL;
-      int j = mHL;
+      i = njQ;
+      int j = njQ;
       ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-      this.mIb.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.nkg.setLayoutParams((ViewGroup.LayoutParams)localObject);
       AppMethodBeat.o(176980);
       return;
     }
-    if (wQ(this.mHc))
+    if (xI(this.njh))
     {
-      this.mIb.setVisibility(8);
-      B(false, true);
+      this.nkg.setVisibility(8);
+      C(false, true);
     }
     AppMethodBeat.o(176980);
   }
   
-  private void bAz()
+  private void bHv()
   {
     AppMethodBeat.i(176981);
-    int i = B(true, true);
-    this.mIb.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mIb.getLayoutParams();
+    int i = C(true, true);
+    this.nkg.setVisibility(0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.nkg.getLayoutParams();
     localLayoutParams.gravity = 8388627;
-    int j = mHL;
-    localLayoutParams.setMargins(i, j, j, mHL);
-    this.mIb.setLayoutParams(localLayoutParams);
+    int j = njQ;
+    localLayoutParams.setMargins(i, j, j, njQ);
+    this.nkg.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(176981);
+  }
+  
+  private void bHw()
+  {
+    AppMethodBeat.i(176982);
+    int i = C(false, true);
+    this.nkg.setVisibility(0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.nkg.getLayoutParams();
+    localLayoutParams.gravity = 8388629;
+    int j = njQ;
+    localLayoutParams.setMargins(j, j, i, njQ);
+    this.nkg.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(176982);
+  }
+  
+  private boolean bHx()
+  {
+    AppMethodBeat.i(106451);
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
+    int i = localLayoutParams.x;
+    int j = localLayoutParams.y;
+    if (xD(i))
+    {
+      i = Math.max(Math.min(i, this.nkL.x), 0);
+      j = Math.max(Math.min(j, this.nkL.y), 0);
+      int k = xG(i);
+      int m = xF(j);
+      ac.i("MicroMsg.FloatBallView", "stickToScreenEdgeIfNeed, start:[%s, %s], target:[%s, %s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+      if ((i != k) || (j != m)) {
+        e(k, m, true, false);
+      }
+      AppMethodBeat.o(106451);
+      return true;
+    }
+    AppMethodBeat.o(106451);
+    return false;
+  }
+  
+  private void bHy()
+  {
+    AppMethodBeat.i(176990);
+    int i = 0;
+    while (i < this.nkH.size())
+    {
+      long l = ((BallInfo)this.nkH.get(i)).progress;
+      if (l >= 0L) {
+        H(i, l);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(176990);
+  }
+  
+  private void bHz()
+  {
+    AppMethodBeat.i(208039);
+    if (this.nho) {
+      bHA();
+    }
+    AppMethodBeat.o(208039);
   }
   
   private void bZ(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106443);
-    this.mHd = this.mHc;
-    this.mHc = 0;
-    if (AppForegroundDelegate.cKE.csU) {
-      this.mHc |= 0x20;
+    this.nji = this.njh;
+    this.njh = 0;
+    if (AppForegroundDelegate.cHM.cqc) {
+      this.njh |= 0x20;
     }
     List localList = d.bS(d.bQ(d.bR(paramList)));
-    this.mIE = d.bN(localList);
-    int i = d.wE(d.bW(localList));
+    this.nkH = d.bN(localList);
+    int i = d.xv(d.bW(localList));
     boolean bool3 = d.bO(d.bV(paramList));
     if (bool3) {
-      this.mHc |= 0x1;
+      this.njh |= 0x1;
     }
     boolean bool1;
     label136:
     boolean bool2;
     if (i == 1)
     {
-      this.mHc |= 0x2;
-      this.mIA = d.bT(paramList);
-      if ((this.mIA == null) || (this.mIA.state != 4)) {
+      this.njh |= 0x2;
+      this.nkE = d.bT(paramList);
+      if ((this.nkE == null) || (this.nkE.state != 4)) {
         break label384;
       }
       bool1 = true;
-      if ((this.mIA == null) || (this.mIA.state != 8)) {
+      if ((this.nkE == null) || (this.nkE.state != 8)) {
         break label389;
       }
       bool2 = true;
       label158:
       if (bool1) {
-        this.mHc |= 0x8;
+        this.njh |= 0x8;
       }
       if (bool2) {
-        this.mHc |= 0x10;
+        this.njh |= 0x10;
       }
-      if ((this.mIA != null) && (this.mIA.sk != null)) {
-        setVOIPView(this.mIA.sk);
+      if ((this.nkE != null) && (this.nkE.tk != null)) {
+        setVOIPView(this.nkE.tk);
       }
-      this.mIB = d.bU(paramList);
-      if (this.mIB != null)
+      this.nkF = d.bU(paramList);
+      if (this.nkF != null)
       {
-        if (this.mIB.state != 32) {
+        if (this.nkF.state != 32) {
           break label395;
         }
-        this.mHc |= 0x100;
+        this.njh |= 0x100;
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayoutState, state:[%s => %s], active:%s, passiveCnt:%d, video:%s, audio:%s <<<", new Object[] { Integer.valueOf(this.mHd), Integer.valueOf(this.mHc), Boolean.valueOf(bool3), Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      ac.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayoutState, state:[%s => %s], active:%s, passiveCnt:%d, video:%s, audio:%s <<<", new Object[] { Integer.valueOf(this.nji), Integer.valueOf(this.njh), Boolean.valueOf(bool3), Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       AppMethodBeat.o(106443);
       return;
       if (i == 2)
       {
-        this.mHc |= 0x4;
+        this.njh |= 0x4;
         break;
       }
       if (i == 3)
       {
-        this.mHc |= 0x40;
+        this.njh |= 0x40;
         break;
       }
       if (i != 4) {
         break;
       }
-      this.mHc |= 0x80;
+      this.njh |= 0x80;
       break;
       label384:
       bool1 = false;
@@ -1408,8 +1410,8 @@ public class FloatBallView
       bool2 = false;
       break label158;
       label395:
-      if (this.mIB.state == 64) {
-        this.mHc |= 0x200;
+      if (this.nkF.state == 64) {
+        this.njh |= 0x200;
       }
     }
   }
@@ -1422,14 +1424,14 @@ public class FloatBallView
     while (i < paramList.size())
     {
       BallInfo localBallInfo = (BallInfo)paramList.get(i);
-      localStringBuilder.append(localBallInfo.key).append(localBallInfo.type).append(localBallInfo.dub).append(localBallInfo.kYl).append(localBallInfo.state).append(localBallInfo.mDu).append(localBallInfo.mDv).append(localBallInfo.progress);
-      if ((localBallInfo.type == 9) && (localBallInfo.sk != null)) {
-        localStringBuilder.append(localBallInfo.sk.hashCode());
+      localStringBuilder.append(localBallInfo.key).append(localBallInfo.type).append(localBallInfo.drM).append(localBallInfo.lzV).append(localBallInfo.state).append(localBallInfo.nfB).append(localBallInfo.nfC).append(localBallInfo.progress);
+      if ((localBallInfo.type == 9) && (localBallInfo.tk != null)) {
+        localStringBuilder.append(localBallInfo.tk.hashCode());
       }
       localStringBuilder.append("|");
       i += 1;
     }
-    paramList = com.tencent.mm.sdk.platformtools.ai.du(localStringBuilder.toString());
+    paramList = ah.dg(localStringBuilder.toString());
     AppMethodBeat.o(106474);
     return paramList;
   }
@@ -1437,16 +1439,16 @@ public class FloatBallView
   private void e(boolean paramBoolean, final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
   {
     AppMethodBeat.i(106464);
-    ad.i("MicroMsg.FloatBallView", "start StickyAnimation, stickToLeft:%s, startPositionY: %d, targetPositionY: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
-    if ((this.mHU != null) && (this.mHU.isRunning()))
+    ac.i("MicroMsg.FloatBallView", "start StickyAnimation, stickToLeft:%s, startPositionY: %d, targetPositionY: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+    if ((this.njZ != null) && (this.njZ.isRunning()))
     {
-      ad.i("MicroMsg.FloatBallView", "cancel StickyAnimation");
-      this.mHU.cancel();
+      ac.i("MicroMsg.FloatBallView", "cancel StickyAnimation");
+      this.njZ.cancel();
     }
-    this.mHU = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.mHU.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.mHU.setDuration(100L);
-    this.mHU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.njZ = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.njZ.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.njZ.setDuration(100L);
+    this.njZ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -1460,7 +1462,7 @@ public class FloatBallView
         AppMethodBeat.o(106432);
       }
     });
-    this.mHU.addListener(new AnimatorListenerAdapter()
+    this.njZ.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -1471,105 +1473,105 @@ public class FloatBallView
         AppMethodBeat.o(106433);
       }
     });
-    this.mHU.start();
+    this.njZ.start();
     AppMethodBeat.o(106464);
   }
   
-  private void e(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private void f(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     int i = 8388627;
     int j = 1;
     AppMethodBeat.i(106444);
-    if ((this.mIQ == paramBoolean1) && (this.mIR == paramBoolean2) && (this.mIP == paramBoolean3) && (this.mIS != 0) && (this.mIS == this.mHc))
+    if ((this.nkT == paramBoolean1) && (this.nkU == paramBoolean2) && (this.nkS == paramBoolean3) && (this.nkV != 0) && (this.nkV == this.njh))
     {
-      ad.d("MicroMsg.FloatBallView", "<<< updateFloatBallViewLayout, ignore layout %b %b;%b %b; %b %b; %d %d", new Object[] { Boolean.valueOf(this.mIX), Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.mIR), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.mIP), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.mIS), Integer.valueOf(this.mHc) });
+      ac.d("MicroMsg.FloatBallView", "<<< updateFloatBallViewLayout, ignore layout %b %b;%b %b; %b %b; %d %d", new Object[] { Boolean.valueOf(this.nla), Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.nkU), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.nkS), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.nkV), Integer.valueOf(this.njh) });
       AppMethodBeat.o(106444);
       return;
     }
-    ad.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayout, isSettled:%s, isDockLeft:%s, isManual:%s, lastLayoutState:%s, currentLayoutState:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.mIS), Integer.valueOf(this.mHc) });
-    this.mIP = paramBoolean3;
-    this.mIQ = paramBoolean1;
-    this.mIR = paramBoolean2;
-    this.mIS = this.mHc;
-    bAG();
-    int k = this.mHY.getPaddingLeft();
-    int m = this.mHY.getPaddingRight();
-    int n = this.mHY.getPaddingTop();
-    int i1 = this.mHY.getPaddingBottom();
-    if (wZ(this.mHc))
+    ac.i("MicroMsg.FloatBallView", ">>> updateFloatBallViewLayout, isSettled:%s, isDockLeft:%s, isManual:%s, lastLayoutState:%s, currentLayoutState:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(this.nkV), Integer.valueOf(this.njh) });
+    this.nkS = paramBoolean3;
+    this.nkT = paramBoolean1;
+    this.nkU = paramBoolean2;
+    this.nkV = this.njh;
+    bHC();
+    int k = this.nkd.getPaddingLeft();
+    int m = this.nkd.getPaddingRight();
+    int n = this.nkd.getPaddingTop();
+    int i1 = this.nkd.getPaddingBottom();
+    if (xR(this.njh))
     {
-      localObject = (FrameLayout.LayoutParams)this.mHY.getLayoutParams();
+      localObject = (FrameLayout.LayoutParams)this.nkd.getLayoutParams();
       if (paramBoolean2) {}
       for (;;)
       {
         ((FrameLayout.LayoutParams)localObject).gravity = i;
-        this.mHY.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.nkd.setLayoutParams((ViewGroup.LayoutParams)localObject);
         if (!paramBoolean1) {
           break label700;
         }
         if (!paramBoolean2) {
           break;
         }
-        this.mHY.setPadding(getExtendWidth(), n, m, i1);
-        this.mHY.setLayoutTransition(this.mIF);
-        bAv();
+        this.nkd.setPadding(getExtendWidth(), n, m, i1);
+        this.nkd.setLayoutTransition(this.nkI);
+        bHr();
         AppMethodBeat.o(106444);
         return;
         i = 8388629;
       }
-      this.mHY.setPadding(k, n, getExtendWidth(), i1);
-      if (((xb(this.mHd)) && (xf(this.mHc))) || ((xc(this.mHd)) && (xg(this.mHc))) || ((xd(this.mHd)) && (xh(this.mHc))) || ((xe(this.mHd)) && (xi(this.mHc))))
+      this.nkd.setPadding(k, n, getExtendWidth(), i1);
+      if (((xT(this.nji)) && (xX(this.njh))) || ((xU(this.nji)) && (xY(this.njh))) || ((xV(this.nji)) && (xZ(this.njh))) || ((xW(this.nji)) && (ya(this.njh))))
       {
-        this.mHY.setLayoutTransition(null);
-        bAx();
+        this.nkd.setLayoutTransition(null);
+        bHt();
         AppMethodBeat.o(106444);
         return;
       }
-      if (((xa(this.mHd)) && (xf(this.mHc))) || ((xa(this.mHd)) && (xg(this.mHc))) || ((xa(this.mHd)) && (xh(this.mHc))) || ((xa(this.mHd)) && (xi(this.mHc))))
+      if (((xS(this.nji)) && (xX(this.njh))) || ((xS(this.nji)) && (xY(this.njh))) || ((xS(this.nji)) && (xZ(this.njh))) || ((xS(this.nji)) && (ya(this.njh))))
       {
-        this.mHY.setLayoutTransition(null);
-        bAx();
+        this.nkd.setLayoutTransition(null);
+        bHt();
         AppMethodBeat.o(106444);
         return;
       }
-      if (((xf(this.mHd)) && (xa(this.mHc))) || ((xg(this.mHd)) && (xa(this.mHc))) || ((xh(this.mHd)) && (xa(this.mHc))) || ((xi(this.mHd)) && (xa(this.mHc))))
+      if (((xX(this.nji)) && (xS(this.njh))) || ((xY(this.nji)) && (xS(this.njh))) || ((xZ(this.nji)) && (xS(this.njh))) || ((ya(this.nji)) && (xS(this.njh))))
       {
-        this.mHY.setLayoutTransition(null);
-        bAx();
+        this.nkd.setLayoutTransition(null);
+        bHt();
         AppMethodBeat.o(106444);
         return;
       }
-      this.mHY.setLayoutTransition(this.mIF);
-      bAx();
+      this.nkd.setLayoutTransition(this.nkI);
+      bHt();
       AppMethodBeat.o(106444);
       return;
       label700:
-      if ((xf(this.mHc)) || (xg(this.mHc)) || (xh(this.mHc)) || (xi(this.mHc)))
+      if ((xX(this.njh)) || (xY(this.njh)) || (xZ(this.njh)) || (ya(this.njh)))
       {
         if (paramBoolean2)
         {
-          bAz();
+          bHv();
           AppMethodBeat.o(106444);
           return;
         }
-        bAA();
+        bHw();
         AppMethodBeat.o(106444);
         return;
       }
-      if ((xb(this.mHc)) || (xc(this.mHc)) || (xd(this.mHc)) || (xe(this.mHc)))
+      if ((xT(this.njh)) || (xU(this.njh)) || (xV(this.njh)) || (xW(this.njh)))
       {
-        B(paramBoolean2, false);
+        C(paramBoolean2, false);
         AppMethodBeat.o(106444);
         return;
       }
-      if (xa(this.mHc))
+      if (xS(this.njh))
       {
-        localObject = (FrameLayout.LayoutParams)this.mIb.getLayoutParams();
+        localObject = (FrameLayout.LayoutParams)this.nkg.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity = 17;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         ((FrameLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-        this.mIb.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.nkg.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       AppMethodBeat.o(106444);
       return;
@@ -1578,35 +1580,35 @@ public class FloatBallView
     {
       if (paramBoolean2)
       {
-        this.mHY.setPadding(getExtendWidth(), n, m, i1);
-        this.mHY.setLayoutTransition(this.mIF);
-        localObject = (FrameLayout.LayoutParams)this.mHY.getLayoutParams();
+        this.nkd.setPadding(getExtendWidth(), n, m, i1);
+        this.nkd.setLayoutTransition(this.nkI);
+        localObject = (FrameLayout.LayoutParams)this.nkd.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity = 8388627;
-        this.mHY.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.jpE.setVisibility(8);
-        if (wR(this.mHc))
+        this.nkd.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.jPT.setVisibility(8);
+        if (xJ(this.njh))
         {
-          this.mIa.setVisibility(0);
-          this.mIb.setVisibility(8);
-          this.mIc.setVisibility(0);
-          localObject = (LinearLayout.LayoutParams)this.mIa.getLayoutParams();
+          this.nkf.setVisibility(0);
+          this.nkg.setVisibility(8);
+          this.nkh.setVisibility(0);
+          localObject = (LinearLayout.LayoutParams)this.nkf.getLayoutParams();
           ((LinearLayout.LayoutParams)localObject).gravity = 8388627;
-          this.mIa.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          B(true, true);
-          this.mHZ.setVisibility(0);
-          localObject = (LinearLayout.LayoutParams)this.mHZ.getLayoutParams();
-          if ((!wP(this.mHc)) || (!wX(this.mHc))) {
+          this.nkf.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          C(true, true);
+          this.nke.setVisibility(0);
+          localObject = (LinearLayout.LayoutParams)this.nke.getLayoutParams();
+          if ((!xH(this.njh)) || (!xP(this.njh))) {
             break label1171;
           }
           i = 1;
           label1076:
-          if (!wT(this.mHc)) {
+          if (!xL(this.njh)) {
             break label1193;
           }
           if (i == 0) {
             break label1177;
           }
-          j = mHC;
+          j = njH;
           label1096:
           ((LinearLayout.LayoutParams)localObject).width = j;
           if (i == 0) {
@@ -1616,81 +1618,81 @@ public class FloatBallView
         label1171:
         label1177:
         label1185:
-        for (i = mHD;; i = mHB)
+        for (i = njI;; i = njG)
         {
           ((LinearLayout.LayoutParams)localObject).height = i;
-          i = mHL;
-          j = mHL;
+          i = njQ;
+          j = njQ;
           ((LinearLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-          this.mHZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.nke.setLayoutParams((ViewGroup.LayoutParams)localObject);
           AppMethodBeat.o(106444);
           return;
-          this.mIa.setVisibility(8);
+          this.nkf.setVisibility(8);
           break;
           i = 0;
           break label1076;
-          j = mHA;
+          j = njF;
           break label1096;
         }
         label1193:
-        if (wU(this.mHc))
+        if (xM(this.njh))
         {
           if (i != 0)
           {
-            j = mHG;
+            j = njL;
             ((LinearLayout.LayoutParams)localObject).width = j;
             if (i == 0) {
               break label1284;
             }
           }
-          for (i = mHH;; i = mHF)
+          for (i = njM;; i = njK)
           {
             ((LinearLayout.LayoutParams)localObject).height = i;
-            i = mHL;
-            j = mHL;
+            i = njQ;
+            j = njQ;
             ((LinearLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-            this.mHZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            this.nke.setLayoutParams((ViewGroup.LayoutParams)localObject);
             AppMethodBeat.o(106444);
             return;
-            j = mHE;
+            j = njJ;
             break;
           }
         }
         label1284:
-        this.mHZ.setVisibility(8);
+        this.nke.setVisibility(8);
         AppMethodBeat.o(106444);
         return;
       }
-      this.mHY.setPadding(k, n, getExtendWidth(), i1);
-      this.mHY.setLayoutTransition(this.mIF);
-      localObject = (FrameLayout.LayoutParams)this.mHY.getLayoutParams();
+      this.nkd.setPadding(k, n, getExtendWidth(), i1);
+      this.nkd.setLayoutTransition(this.nkI);
+      localObject = (FrameLayout.LayoutParams)this.nkd.getLayoutParams();
       ((FrameLayout.LayoutParams)localObject).gravity = 8388629;
-      this.mHY.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jpE.setVisibility(8);
-      if (wR(this.mHc))
+      this.nkd.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.jPT.setVisibility(8);
+      if (xJ(this.njh))
       {
-        this.mIa.setVisibility(0);
-        this.mIb.setVisibility(8);
-        this.mIc.setVisibility(0);
-        localObject = (LinearLayout.LayoutParams)this.mIa.getLayoutParams();
+        this.nkf.setVisibility(0);
+        this.nkg.setVisibility(8);
+        this.nkh.setVisibility(0);
+        localObject = (LinearLayout.LayoutParams)this.nkf.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).gravity = 8388629;
-        this.mIa.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        B(false, true);
-        bAB();
-        this.mHZ.setVisibility(0);
-        localObject = (LinearLayout.LayoutParams)this.mHZ.getLayoutParams();
-        if ((!wP(this.mHc)) || (!wX(this.mHc))) {
+        this.nkf.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        C(false, true);
+        bHx();
+        this.nke.setVisibility(0);
+        localObject = (LinearLayout.LayoutParams)this.nke.getLayoutParams();
+        if ((!xH(this.njh)) || (!xP(this.njh))) {
           break label1589;
         }
         i = j;
         label1494:
-        if (!wT(this.mHc)) {
+        if (!xL(this.njh)) {
           break label1611;
         }
         if (i == 0) {
           break label1595;
         }
-        j = mHC;
+        j = njH;
         label1514:
         ((LinearLayout.LayoutParams)localObject).width = j;
         if (i == 0) {
@@ -1700,75 +1702,75 @@ public class FloatBallView
       label1589:
       label1595:
       label1603:
-      for (i = mHD;; i = mHB)
+      for (i = njI;; i = njG)
       {
         ((LinearLayout.LayoutParams)localObject).height = i;
-        i = mHL;
-        j = mHL;
+        i = njQ;
+        j = njQ;
         ((LinearLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-        this.mHZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.nke.setLayoutParams((ViewGroup.LayoutParams)localObject);
         AppMethodBeat.o(106444);
         return;
-        this.mIa.setVisibility(8);
+        this.nkf.setVisibility(8);
         break;
         i = 0;
         break label1494;
-        j = mHA;
+        j = njF;
         break label1514;
       }
       label1611:
-      if (wU(this.mHc))
+      if (xM(this.njh))
       {
         if (i != 0)
         {
-          j = mHG;
+          j = njL;
           ((LinearLayout.LayoutParams)localObject).width = j;
           if (i == 0) {
             break label1702;
           }
         }
-        for (i = mHH;; i = mHF)
+        for (i = njM;; i = njK)
         {
           ((LinearLayout.LayoutParams)localObject).height = i;
-          i = mHL;
-          j = mHL;
+          i = njQ;
+          j = njQ;
           ((LinearLayout.LayoutParams)localObject).setMargins(i, i, j, j);
-          this.mHZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.nke.setLayoutParams((ViewGroup.LayoutParams)localObject);
           AppMethodBeat.o(106444);
           return;
-          j = mHE;
+          j = njJ;
           break;
         }
       }
       label1702:
-      this.mHZ.setVisibility(8);
+      this.nke.setVisibility(8);
       AppMethodBeat.o(106444);
       return;
     }
-    Object localObject = (FrameLayout.LayoutParams)this.mHY.getLayoutParams();
+    Object localObject = (FrameLayout.LayoutParams)this.nkd.getLayoutParams();
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    this.mHY.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.nkd.setLayoutParams((ViewGroup.LayoutParams)localObject);
     AppMethodBeat.o(106444);
   }
   
   private int getAppBrandVoipBallInfoIndex()
   {
-    AppMethodBeat.i(190673);
-    if (d.h(this.mIE))
+    AppMethodBeat.i(208038);
+    if (d.h(this.nkH))
     {
       int i = 0;
-      while (i < this.mIE.size())
+      while (i < this.nkH.size())
       {
-        BallInfo localBallInfo = (BallInfo)this.mIE.get(i);
+        BallInfo localBallInfo = (BallInfo)this.nkH.get(i);
         if ((localBallInfo != null) && (localBallInfo.type == 17))
         {
-          AppMethodBeat.o(190673);
+          AppMethodBeat.o(208038);
           return i;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(190673);
+    AppMethodBeat.o(208038);
     return 0;
   }
   
@@ -1776,31 +1778,31 @@ public class FloatBallView
   {
     AppMethodBeat.i(176991);
     int i = getHeight();
-    if (xj(this.mHc)) {
-      i = mHp;
+    if (yb(this.njh)) {
+      i = nju;
     }
     for (;;)
     {
-      int j = com.tencent.mm.plugin.ball.f.e.mFM;
-      int k = com.tencent.mm.plugin.ball.f.e.mFN;
+      int j = com.tencent.mm.plugin.ball.f.e.nhR;
+      int k = com.tencent.mm.plugin.ball.f.e.nhS;
       AppMethodBeat.o(176991);
       return i + j + k;
-      if (xk(this.mHc)) {
-        i = mHv;
-      } else if ((wT(this.mHc)) && ((wP(this.mHc)) || (wQ(this.mHc)))) {
-        i = mHr;
-      } else if ((wU(this.mHc)) && ((wP(this.mHc)) || (wQ(this.mHc)))) {
-        i = mHx;
-      } else if (xa(this.mHc)) {
-        i = mHf;
-      } else if (xb(this.mHc)) {
-        i = mHj;
-      } else if (xc(this.mHc)) {
-        i = mHl;
-      } else if ((xd(this.mHc)) || (xe(this.mHc))) {
-        i = mHn;
-      } else if ((xf(this.mHc)) || (xg(this.mHc)) || (xh(this.mHc)) || (xi(this.mHc))) {
-        i = mHh;
+      if (yc(this.njh)) {
+        i = njA;
+      } else if ((xL(this.njh)) && ((xH(this.njh)) || (xI(this.njh)))) {
+        i = njw;
+      } else if ((xM(this.njh)) && ((xH(this.njh)) || (xI(this.njh)))) {
+        i = njC;
+      } else if (xS(this.njh)) {
+        i = njk;
+      } else if (xT(this.njh)) {
+        i = njo;
+      } else if (xU(this.njh)) {
+        i = njq;
+      } else if ((xV(this.njh)) || (xW(this.njh))) {
+        i = njs;
+      } else if ((xX(this.njh)) || (xY(this.njh)) || (xZ(this.njh)) || (ya(this.njh))) {
+        i = njm;
       }
     }
   }
@@ -1808,20 +1810,20 @@ public class FloatBallView
   private int getExtendWidth()
   {
     AppMethodBeat.i(106469);
-    if (!this.mIN)
+    if (!this.nkQ)
     {
       AppMethodBeat.o(106469);
       return 0;
     }
-    if (!d.ea(getContext()))
+    if (!d.ei(getContext()))
     {
       AppMethodBeat.o(106469);
       return 0;
     }
     int i = this.windowManager.getDefaultDisplay().getRotation();
-    if (((this.mIH) && (i == 1)) || ((!this.mIH) && (i == 3)))
+    if (((this.nkK) && (i == 1)) || ((!this.nkK) && (i == 3)))
     {
-      i = d.aE(getContext());
+      i = d.aF(getContext());
       AppMethodBeat.o(106469);
       return i;
     }
@@ -1833,8 +1835,8 @@ public class FloatBallView
   {
     AppMethodBeat.i(106466);
     int i = 0;
-    if (!this.mIH) {
-      i = this.mII.x - getCurrentStateWidth();
+    if (!this.nkK) {
+      i = this.nkL.x - getCurrentStateWidth();
     }
     AppMethodBeat.o(106466);
     return i;
@@ -1846,22 +1848,22 @@ public class FloatBallView
     setAlpha(paramFloat);
     if (paramFloat == 0.0F)
     {
-      ad.i("MicroMsg.FloatBallView", "setFloatBallAlphaInternal, GONE");
+      ac.i("MicroMsg.FloatBallView", "setFloatBallAlphaInternal, GONE");
       setVisibility(8);
       AppMethodBeat.o(106461);
       return;
     }
-    ad.i("MicroMsg.FloatBallView", "setFloatBallAlphaInternal, VISIBLE, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
+    ac.i("MicroMsg.FloatBallView", "setFloatBallAlphaInternal, VISIBLE, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
     setVisibility(0);
     AppMethodBeat.o(106461);
   }
   
-  private void wL(int paramInt)
+  private void xC(int paramInt)
   {
-    AppMethodBeat.i(190672);
-    Point localPoint1 = this.mII;
-    this.mII = com.tencent.mm.ui.ai.cf(getContext());
-    Point localPoint2 = this.mII;
+    AppMethodBeat.i(208037);
+    Point localPoint1 = this.nkL;
+    this.nkL = aj.cl(getContext());
+    Point localPoint2 = this.nkL;
     Object localObject;
     int i;
     int j;
@@ -1869,18 +1871,18 @@ public class FloatBallView
     if (localPoint1 != null)
     {
       localObject = localPoint1;
-      ad.i("MicroMsg.FloatBallView", "processOrientationChanged, screenResolution: %s, lastResolution: %s", new Object[] { localPoint2, localObject });
-      if ((this.iHo != paramInt) || ((localPoint1 != null) && ((localPoint1.x != this.mII.x) || (localPoint1.y != this.mII.y))))
+      ac.i("MicroMsg.FloatBallView", "processOrientationChanged, screenResolution: %s, lastResolution: %s", new Object[] { localPoint2, localObject });
+      if ((this.gud != paramInt) || ((localPoint1 != null) && ((localPoint1.x != this.nkL.x) || (localPoint1.y != this.nkL.y))))
       {
-        this.iHo = paramInt;
-        this.mIN = true;
+        this.gud = paramInt;
+        this.nkQ = true;
         localObject = (WindowManager.LayoutParams)getLayoutParams();
         paramInt = ((WindowManager.LayoutParams)localObject).x;
-        i = (int)(this.mII.y * this.mIL);
-        paramInt = Math.max(Math.min(paramInt, this.mII.x), 0);
-        i = Math.max(Math.min(i, this.mII.y), 0);
+        i = (int)(this.nkL.y * this.nkO);
+        paramInt = Math.max(Math.min(paramInt, this.nkL.x), 0);
+        i = Math.max(Math.min(i, this.nkL.y), 0);
         j = getTargetPositionXWhenOrientationChanged();
-        k = wN(i);
+        k = xF(i);
         if (j != 0) {
           break label294;
         }
@@ -1889,19 +1891,19 @@ public class FloatBallView
     label294:
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.FloatBallView", "processOrientationChanged, layoutParams.x: %s, layoutParams.y: %s, stickToLeft:%s, startSticky:[%s, %s]=>[%s, %s]", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localObject).x), Integer.valueOf(((WindowManager.LayoutParams)localObject).y), Boolean.valueOf(bool), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      ac.i("MicroMsg.FloatBallView", "processOrientationChanged, layoutParams.x: %s, layoutParams.y: %s, stickToLeft:%s, startSticky:[%s, %s]=>[%s, %s]", new Object[] { Integer.valueOf(((WindowManager.LayoutParams)localObject).x), Integer.valueOf(((WindowManager.LayoutParams)localObject).y), Boolean.valueOf(bool), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
       e(bool, paramInt, i, j, k);
-      AppMethodBeat.o(190672);
+      AppMethodBeat.o(208037);
       return;
       localObject = "null";
       break;
     }
   }
   
-  private boolean wM(int paramInt)
+  private boolean xD(int paramInt)
   {
     AppMethodBeat.i(176987);
-    if (getCurrentStateWidth() + paramInt != this.mII.x)
+    if (getCurrentStateWidth() + paramInt != this.nkL.x)
     {
       AppMethodBeat.o(176987);
       return true;
@@ -1910,40 +1912,40 @@ public class FloatBallView
     return false;
   }
   
-  private static int wN(int paramInt)
+  private static int xF(int paramInt)
   {
     int i;
-    if (paramInt < com.tencent.mm.plugin.ball.f.e.mFT) {
-      i = com.tencent.mm.plugin.ball.f.e.mFT;
+    if (paramInt < com.tencent.mm.plugin.ball.f.e.nhY) {
+      i = com.tencent.mm.plugin.ball.f.e.nhY;
     }
     do
     {
       return i;
       i = paramInt;
-    } while (paramInt <= com.tencent.mm.plugin.ball.f.e.mFU);
-    return com.tencent.mm.plugin.ball.f.e.mFU;
+    } while (paramInt <= com.tencent.mm.plugin.ball.f.e.nhZ);
+    return com.tencent.mm.plugin.ball.f.e.nhZ;
   }
   
-  private int wO(int paramInt)
+  private int xG(int paramInt)
   {
     AppMethodBeat.i(106465);
     int i = 0;
-    if (!ut(paramInt)) {
-      i = this.mII.x - getCurrentStateWidth();
+    if (!xE(paramInt)) {
+      i = this.nkL.x - getCurrentStateWidth();
     }
     AppMethodBeat.o(106465);
     return i;
   }
   
-  private static boolean wP(int paramInt)
+  private static boolean xH(int paramInt)
   {
     return (paramInt & 0x1) != 0;
   }
   
-  private static boolean wQ(int paramInt)
+  private static boolean xI(int paramInt)
   {
     AppMethodBeat.i(176994);
-    if ((wV(paramInt)) || (wW(paramInt)) || (wX(paramInt)) || (wY(paramInt)))
+    if ((xN(paramInt)) || (xO(paramInt)) || (xP(paramInt)) || (xQ(paramInt)))
     {
       AppMethodBeat.o(176994);
       return true;
@@ -1952,15 +1954,15 @@ public class FloatBallView
     return false;
   }
   
-  public static boolean wR(int paramInt)
+  public static boolean xJ(int paramInt)
   {
     return ((paramInt & 0x100) != 0) || ((paramInt & 0x200) != 0);
   }
   
-  private static boolean wS(int paramInt)
+  private static boolean xK(int paramInt)
   {
     AppMethodBeat.i(176995);
-    if ((wT(paramInt)) || (wU(paramInt)))
+    if ((xL(paramInt)) || (xM(paramInt)))
     {
       AppMethodBeat.o(176995);
       return true;
@@ -1969,45 +1971,45 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean wT(int paramInt)
+  private static boolean xL(int paramInt)
   {
     return (paramInt & 0x8) != 0;
   }
   
-  private static boolean wU(int paramInt)
+  private static boolean xM(int paramInt)
   {
     return (paramInt & 0x10) != 0;
   }
   
-  private static boolean wV(int paramInt)
+  private static boolean xN(int paramInt)
   {
     return (paramInt & 0x2) != 0;
   }
   
-  private static boolean wW(int paramInt)
+  private static boolean xO(int paramInt)
   {
     return (paramInt & 0x4) != 0;
   }
   
-  private static boolean wX(int paramInt)
+  private static boolean xP(int paramInt)
   {
     return (paramInt & 0x40) != 0;
   }
   
-  private static boolean wY(int paramInt)
+  private static boolean xQ(int paramInt)
   {
     return (paramInt & 0x80) != 0;
   }
   
-  private static boolean wZ(int paramInt)
+  private static boolean xR(int paramInt)
   {
     return (paramInt & 0x20) != 0;
   }
   
-  private static boolean xa(int paramInt)
+  private static boolean xS(int paramInt)
   {
     AppMethodBeat.i(176996);
-    if ((wP(paramInt)) && (!wS(paramInt)) && (!wQ(paramInt)))
+    if ((xH(paramInt)) && (!xK(paramInt)) && (!xI(paramInt)))
     {
       AppMethodBeat.o(176996);
       return true;
@@ -2016,10 +2018,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xb(int paramInt)
+  private static boolean xT(int paramInt)
   {
     AppMethodBeat.i(176997);
-    if ((wV(paramInt)) && (!wS(paramInt)) && (!wP(paramInt)))
+    if ((xN(paramInt)) && (!xK(paramInt)) && (!xH(paramInt)))
     {
       AppMethodBeat.o(176997);
       return true;
@@ -2028,10 +2030,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xc(int paramInt)
+  private static boolean xU(int paramInt)
   {
     AppMethodBeat.i(176998);
-    if ((wW(paramInt)) && (!wS(paramInt)) && (!wP(paramInt)))
+    if ((xO(paramInt)) && (!xK(paramInt)) && (!xH(paramInt)))
     {
       AppMethodBeat.o(176998);
       return true;
@@ -2040,10 +2042,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xd(int paramInt)
+  private static boolean xV(int paramInt)
   {
     AppMethodBeat.i(176999);
-    if ((wX(paramInt)) && (!wS(paramInt)) && (!wP(paramInt)))
+    if ((xP(paramInt)) && (!xK(paramInt)) && (!xH(paramInt)))
     {
       AppMethodBeat.o(176999);
       return true;
@@ -2052,22 +2054,22 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xe(int paramInt)
+  private static boolean xW(int paramInt)
   {
-    AppMethodBeat.i(190678);
-    if ((wY(paramInt)) && (!wS(paramInt)) && (!wP(paramInt)))
+    AppMethodBeat.i(208043);
+    if ((xQ(paramInt)) && (!xK(paramInt)) && (!xH(paramInt)))
     {
-      AppMethodBeat.o(190678);
+      AppMethodBeat.o(208043);
       return true;
     }
-    AppMethodBeat.o(190678);
+    AppMethodBeat.o(208043);
     return false;
   }
   
-  private static boolean xf(int paramInt)
+  private static boolean xX(int paramInt)
   {
     AppMethodBeat.i(177000);
-    if ((wV(paramInt)) && (wP(paramInt)) && (!wS(paramInt)))
+    if ((xN(paramInt)) && (xH(paramInt)) && (!xK(paramInt)))
     {
       AppMethodBeat.o(177000);
       return true;
@@ -2076,10 +2078,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xg(int paramInt)
+  private static boolean xY(int paramInt)
   {
     AppMethodBeat.i(177001);
-    if ((wW(paramInt)) && (wP(paramInt)) && (!wS(paramInt)))
+    if ((xO(paramInt)) && (xH(paramInt)) && (!xK(paramInt)))
     {
       AppMethodBeat.o(177001);
       return true;
@@ -2088,10 +2090,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xh(int paramInt)
+  private static boolean xZ(int paramInt)
   {
     AppMethodBeat.i(177002);
-    if ((wX(paramInt)) && (wP(paramInt)) && (!wS(paramInt)))
+    if ((xP(paramInt)) && (xH(paramInt)) && (!xK(paramInt)))
     {
       AppMethodBeat.o(177002);
       return true;
@@ -2100,22 +2102,22 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xi(int paramInt)
+  private static boolean ya(int paramInt)
   {
-    AppMethodBeat.i(190679);
-    if ((wY(paramInt)) && (wP(paramInt)) && (!wS(paramInt)))
+    AppMethodBeat.i(208044);
+    if ((xQ(paramInt)) && (xH(paramInt)) && (!xK(paramInt)))
     {
-      AppMethodBeat.o(190679);
+      AppMethodBeat.o(208044);
       return true;
     }
-    AppMethodBeat.o(190679);
+    AppMethodBeat.o(208044);
     return false;
   }
   
-  private static boolean xj(int paramInt)
+  private static boolean yb(int paramInt)
   {
     AppMethodBeat.i(177003);
-    if ((wT(paramInt)) && (!wP(paramInt)) && (!wQ(paramInt)))
+    if ((xL(paramInt)) && (!xH(paramInt)) && (!xI(paramInt)))
     {
       AppMethodBeat.o(177003);
       return true;
@@ -2124,10 +2126,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xk(int paramInt)
+  private static boolean yc(int paramInt)
   {
     AppMethodBeat.i(177004);
-    if ((wU(paramInt)) && (!wP(paramInt)) && (!wQ(paramInt)))
+    if ((xM(paramInt)) && (!xH(paramInt)) && (!xI(paramInt)))
     {
       AppMethodBeat.o(177004);
       return true;
@@ -2136,10 +2138,10 @@ public class FloatBallView
     return false;
   }
   
-  private static boolean xl(int paramInt)
+  private static boolean yd(int paramInt)
   {
     AppMethodBeat.i(177005);
-    if ((wP(paramInt)) && (wS(paramInt)) && (!wQ(paramInt)))
+    if ((xH(paramInt)) && (xK(paramInt)) && (!xI(paramInt)))
     {
       AppMethodBeat.o(177005);
       return true;
@@ -2152,20 +2154,20 @@ public class FloatBallView
   {
     AppMethodBeat.i(106442);
     paramBallInfo = ca(paramList);
-    if (bt.kU(paramBallInfo, this.mIC))
+    if (bs.lr(paramBallInfo, this.nkG))
     {
-      ad.d("MicroMsg.FloatBallView", "<<< onFloatBallInfoChanged, ignore refresh");
+      ac.d("MicroMsg.FloatBallView", "<<< onFloatBallInfoChanged, ignore refresh");
       AppMethodBeat.o(106442);
       return;
     }
-    ad.i("MicroMsg.FloatBallView", ">>> onFloatBallInfoChanged, ballInfoList:%s", new Object[] { paramList });
-    this.mIC = paramBallInfo;
+    ac.i("MicroMsg.FloatBallView", ">>> onFloatBallInfoChanged, ballInfoList:%s", new Object[] { paramList });
+    this.nkG = paramBallInfo;
     bZ(paramList);
-    bAC();
-    boolean bool = ut(((WindowManager.LayoutParams)getLayoutParams()).x);
-    e(true, bool, false);
-    a(true, bool, false, this.mHc);
-    bAD();
+    bHy();
+    boolean bool = xE(((WindowManager.LayoutParams)getLayoutParams()).x);
+    f(true, bool, false);
+    a(true, bool, false, this.njh);
+    bHz();
     AppMethodBeat.o(106442);
   }
   
@@ -2174,37 +2176,37 @@ public class FloatBallView
     AppMethodBeat.i(184624);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.du(paramBoolean);
-    localb.be(paramAnimatorListenerAdapter);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "hide", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.ado());
+    localb.bb(paramAnimatorListenerAdapter);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "hide", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.aeE());
     if (getVisibility() == 8)
     {
-      ad.i("MicroMsg.FloatBallView", "float ball already hide");
+      ac.i("MicroMsg.FloatBallView", "float ball already hide");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "hide", "(ZLandroid/animation/AnimatorListenerAdapter;)V");
       AppMethodBeat.o(184624);
       return;
     }
-    if ((paramBoolean) && (this.mHV != null))
+    if ((paramBoolean) && (this.nka != null))
     {
-      ad.i("MicroMsg.FloatBallView", "hide with animation");
-      this.mHV.b(paramAnimatorListenerAdapter);
+      ac.i("MicroMsg.FloatBallView", "hide with animation");
+      this.nka.b(paramAnimatorListenerAdapter);
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "hide", "(ZLandroid/animation/AnimatorListenerAdapter;)V");
       AppMethodBeat.o(184624);
       return;
-      ad.i("MicroMsg.FloatBallView", "hide without animation");
+      ac.i("MicroMsg.FloatBallView", "hide without animation");
       setVisibility(8);
     }
   }
   
-  public final void bAF()
+  public final void bHB()
   {
     AppMethodBeat.i(184622);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
     localb.du(false);
-    localb.be(null);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "show", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.ado());
+    localb.bb(null);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "show", "(ZLandroid/animation/AnimatorListenerAdapter;)V", this, localb.aeE());
     c(false, false, null);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "show", "(ZLandroid/animation/AnimatorListenerAdapter;)V");
     AppMethodBeat.o(184622);
@@ -2215,18 +2217,18 @@ public class FloatBallView
     AppMethodBeat.i(184623);
     if ((getVisibility() == 0) && (paramBoolean2))
     {
-      ad.i("MicroMsg.FloatBallView", "float ball already show");
+      ac.i("MicroMsg.FloatBallView", "float ball already show");
       AppMethodBeat.o(184623);
       return;
     }
-    if ((paramBoolean1) && (this.mHV != null))
+    if ((paramBoolean1) && (this.nka != null))
     {
-      ad.i("MicroMsg.FloatBallView", "show with animation");
-      this.mHV.a(paramAnimatorListenerAdapter);
+      ac.i("MicroMsg.FloatBallView", "show with animation");
+      this.nka.a(paramAnimatorListenerAdapter);
       AppMethodBeat.o(184623);
       return;
     }
-    ad.i("MicroMsg.FloatBallView", "show without animation");
+    ac.i("MicroMsg.FloatBallView", "show without animation");
     setVisibility(0);
     AppMethodBeat.o(184623);
   }
@@ -2258,7 +2260,7 @@ public class FloatBallView
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.FloatBallView", localThrowable, "updateBallPosition fail", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.FloatBallView", localThrowable, "updateBallPosition fail", new Object[0]);
       }
     }
     AppMethodBeat.o(106456);
@@ -2267,14 +2269,14 @@ public class FloatBallView
   public final void f(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(106457);
-    this.mIH = ut(paramInt1);
-    a(paramBoolean1, this.mIH, paramBoolean2, this.mHc);
-    e(paramBoolean1, this.mIH, paramBoolean2);
+    this.nkK = xE(paramInt1);
+    a(paramBoolean1, this.nkK, paramBoolean2, this.njh);
+    f(paramBoolean1, this.nkK, paramBoolean2);
     Q(paramInt2, paramBoolean1);
-    ad.i("MicroMsg.FloatBallView", "notifyBallPositionChanged, x:%s, y:%s, isSettled:%s, isManual:%s, isDockLeft:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.mIH) });
-    Iterator localIterator = this.csT.iterator();
+    ac.i("MicroMsg.FloatBallView", "notifyBallPositionChanged, x:%s, y:%s, isSettled:%s, isManual:%s, isDockLeft:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.nkK) });
+    Iterator localIterator = this.cqb.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).a(paramInt1, paramInt2, getCurrentStateHeight(), paramBoolean1, this.mIH);
+      ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).a(paramInt1, paramInt2, getCurrentStateHeight(), paramBoolean1, this.nkK);
     }
     AppMethodBeat.o(106457);
   }
@@ -2288,37 +2290,37 @@ public class FloatBallView
       AppMethodBeat.o(106470);
       return null;
     }
-    if (this.mIH)
+    if (this.nkK)
     {
-      if (wT(this.mHc))
+      if (xL(this.njh))
       {
-        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.mFM + mHB);
+        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.nhR + njG);
         AppMethodBeat.o(106470);
         return localObject;
       }
-      if (wU(this.mHc))
+      if (xM(this.njh))
       {
-        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.mFM + mHF);
+        localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.nhR + njK);
         AppMethodBeat.o(106470);
         return localObject;
       }
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.mFM);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.nhR);
       AppMethodBeat.o(106470);
       return localObject;
     }
-    if (wT(this.mHc))
+    if (xL(this.njh))
     {
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x + com.tencent.mm.plugin.ball.f.e.mFO, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.mFM + mHB);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x + com.tencent.mm.plugin.ball.f.e.nhT, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.nhR + njG);
       AppMethodBeat.o(106470);
       return localObject;
     }
-    if (wU(this.mHc))
+    if (xM(this.njh))
     {
-      localObject = new Point(((WindowManager.LayoutParams)localObject).x + com.tencent.mm.plugin.ball.f.e.mFO, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.mFM + mHF);
+      localObject = new Point(((WindowManager.LayoutParams)localObject).x + com.tencent.mm.plugin.ball.f.e.nhT, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.nhR + njK);
       AppMethodBeat.o(106470);
       return localObject;
     }
-    localObject = new Point(((WindowManager.LayoutParams)localObject).x + com.tencent.mm.plugin.ball.f.e.mFO, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.mFM);
+    localObject = new Point(((WindowManager.LayoutParams)localObject).x + com.tencent.mm.plugin.ball.f.e.nhT, ((WindowManager.LayoutParams)localObject).y + com.tencent.mm.plugin.ball.f.e.nhR);
     AppMethodBeat.o(106470);
     return localObject;
   }
@@ -2328,83 +2330,83 @@ public class FloatBallView
     AppMethodBeat.i(106467);
     int i = getWidth();
     int j;
-    if ((!wZ(this.mHc)) && (wR(this.mHc)))
+    if ((!xR(this.njh)) && (xJ(this.njh)))
     {
-      if (wT(this.mHc)) {
-        i = mHq;
+      if (xL(this.njh)) {
+        i = njv;
       }
       for (;;)
       {
-        j = com.tencent.mm.plugin.ball.f.e.mFO;
+        j = com.tencent.mm.plugin.ball.f.e.nhT;
         AppMethodBeat.o(106467);
         return i + j;
-        if (wU(this.mHc)) {
-          i = mHw;
+        if (xM(this.njh)) {
+          i = njB;
         } else {
-          i = mHi;
+          i = njn;
         }
       }
     }
-    if (xj(this.mHc)) {
-      i = mHo;
+    if (yb(this.njh)) {
+      i = njt;
     }
     for (;;)
     {
-      j = com.tencent.mm.plugin.ball.f.e.mFO;
+      j = com.tencent.mm.plugin.ball.f.e.nhT;
       AppMethodBeat.o(106467);
       return i + j;
-      if (xk(this.mHc)) {
-        i = mHu;
-      } else if ((wT(this.mHc)) && (wP(this.mHc)) && (wX(this.mHc))) {
-        i = mHs;
-      } else if ((wU(this.mHc)) && (wP(this.mHc)) && (wX(this.mHc))) {
-        i = mHy;
-      } else if ((wT(this.mHc)) && ((wP(this.mHc)) || (wQ(this.mHc)))) {
-        i = mHq;
-      } else if ((wU(this.mHc)) && ((wP(this.mHc)) || (wQ(this.mHc)))) {
-        i = mHw;
-      } else if (xa(this.mHc)) {
-        i = mHe;
-      } else if (xb(this.mHc)) {
-        i = mHi;
-      } else if (xc(this.mHc)) {
-        i = mHk;
-      } else if ((xd(this.mHc)) || (xe(this.mHc))) {
-        i = mHm;
-      } else if ((xf(this.mHc)) || (xg(this.mHc))) {
-        i = mHg;
-      } else if ((xh(this.mHc)) || (xi(this.mHc))) {
-        i = mHg + mHI;
+      if (yc(this.njh)) {
+        i = njz;
+      } else if ((xL(this.njh)) && (xH(this.njh)) && (xP(this.njh))) {
+        i = njx;
+      } else if ((xM(this.njh)) && (xH(this.njh)) && (xP(this.njh))) {
+        i = njD;
+      } else if ((xL(this.njh)) && ((xH(this.njh)) || (xI(this.njh)))) {
+        i = njv;
+      } else if ((xM(this.njh)) && ((xH(this.njh)) || (xI(this.njh)))) {
+        i = njB;
+      } else if (xS(this.njh)) {
+        i = njj;
+      } else if (xT(this.njh)) {
+        i = njn;
+      } else if (xU(this.njh)) {
+        i = njp;
+      } else if ((xV(this.njh)) || (xW(this.njh))) {
+        i = njr;
+      } else if ((xX(this.njh)) || (xY(this.njh))) {
+        i = njl;
+      } else if ((xZ(this.njh)) || (ya(this.njh))) {
+        i = njl + njN;
       }
     }
   }
   
   public float getPosYPercentOfScreen()
   {
-    return this.mIL;
+    return this.nkO;
   }
   
   public int getPositionY()
   {
-    return this.mIM;
+    return this.nkP;
   }
   
-  public final void ij(boolean paramBoolean)
+  public final void iJ(boolean paramBoolean)
   {
     AppMethodBeat.i(176992);
-    ad.i("MicroMsg.FloatBallView", "markWechatInForeground, visibility:%s, inForeground:%s", new Object[] { Integer.valueOf(getVisibility()), Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.FloatBallView", "markWechatInForeground, visibility:%s, inForeground:%s", new Object[] { Integer.valueOf(getVisibility()), Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      this.mHc |= 0x20;
+      this.njh |= 0x20;
     }
     for (;;)
     {
-      e(this.mIQ, this.mIR, this.mIP);
+      f(this.nkT, this.nkU, this.nkS);
       AppMethodBeat.o(176992);
       return;
-      this.mHc &= 0xFFFFFFDF;
-      if ((wS(this.mHc)) || (wR(this.mHc)))
+      this.njh &= 0xFFFFFFDF;
+      if ((xK(this.njh)) || (xJ(this.njh)))
       {
-        bAF();
+        bHB();
         if ((int)getAlpha() == 0) {
           setAlpha(1.0F);
         }
@@ -2426,12 +2428,12 @@ public class FloatBallView
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(106441);
-    ad.i("MicroMsg.FloatBallView", "onConfigurationChanged, orientation:%d, lastOrientation: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(this.iHo) });
-    wL(paramConfiguration.orientation);
+    ac.i("MicroMsg.FloatBallView", "onConfigurationChanged, orientation:%d, lastOrientation: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(this.gud) });
+    xC(paramConfiguration.orientation);
     int i = paramConfiguration.orientation;
-    paramConfiguration = this.csT.iterator();
+    paramConfiguration = this.cqb.iterator();
     while (paramConfiguration.hasNext()) {
-      ((com.tencent.mm.plugin.ball.d.b)paramConfiguration.next()).wy(i);
+      ((com.tencent.mm.plugin.ball.d.b)paramConfiguration.next()).nm(i);
     }
     AppMethodBeat.o(106441);
   }
@@ -2441,10 +2443,10 @@ public class FloatBallView
     AppMethodBeat.i(106440);
     com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "onDetachedFromWindow", "()V", this);
     super.onDetachedFromWindow();
-    if (this.mHU != null)
+    if (this.njZ != null)
     {
-      this.mHU.cancel();
-      this.mHU = null;
+      this.njZ.cancel();
+      this.njZ = null;
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ball/view/FloatBallView", "com/tencent/mm/plugin/ball/view/FloatBallView", "onDetachedFromWindow", "()V");
     AppMethodBeat.o(106440);
@@ -2458,7 +2460,7 @@ public class FloatBallView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(106452);
-    if (!this.mIG)
+    if (!this.nkJ)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(106452);
@@ -2472,101 +2474,101 @@ public class FloatBallView
     {
       AppMethodBeat.o(106452);
       return true;
-      this.mIT = false;
-      this.mIJ.x = paramMotionEvent.getRawX();
-      this.mIJ.y = paramMotionEvent.getRawY();
+      this.nkW = false;
+      this.nkM.x = paramMotionEvent.getRawX();
+      this.nkM.y = paramMotionEvent.getRawY();
       paramMotionEvent = (WindowManager.LayoutParams)getLayoutParams();
-      this.mIK.x = paramMotionEvent.x;
-      this.mIK.y = paramMotionEvent.y;
-      a(true, this.mIH, true, this.mHc);
-      if (this.mIN) {
-        e(true, this.mIH, true);
+      this.nkN.x = paramMotionEvent.x;
+      this.nkN.y = paramMotionEvent.y;
+      a(true, this.nkK, true, this.njh);
+      if (this.nkQ) {
+        f(true, this.nkK, true);
       }
-      this.mCB = false;
-      if ((wZ(this.mHc)) && (!xj(this.mHc)) && (!xk(this.mHc)))
+      this.neD = false;
+      if ((xR(this.njh)) && (!yb(this.njh)) && (!yc(this.njh)))
       {
-        this.mIU.postDelayed(this.mIV, this.mHS);
+        this.nkX.postDelayed(this.nkY, this.njX);
         continue;
-        if (this.mCB)
+        if (this.neD)
         {
-          Q(paramMotionEvent);
+          O(paramMotionEvent);
         }
         else
         {
-          if ((!this.mIT) && (I(paramMotionEvent)))
+          if ((!this.nkW) && (G(paramMotionEvent)))
           {
-            this.mIU.removeCallbacks(this.mIV);
-            this.mIT = true;
-            i = this.mIK.x;
-            i = this.mIK.y;
-            localIterator = this.csT.iterator();
+            this.nkX.removeCallbacks(this.nkY);
+            this.nkW = true;
+            i = this.nkN.x;
+            i = this.nkN.y;
+            localIterator = this.cqb.iterator();
             while (localIterator.hasNext()) {
-              ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).bzc();
+              ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).bFY();
             }
           }
-          if (this.mIT)
+          if (this.nkW)
           {
-            e(J(paramMotionEvent), K(paramMotionEvent), false, true);
+            e(H(paramMotionEvent), I(paramMotionEvent), false, true);
             continue;
-            if (this.mCB)
+            if (this.neD)
             {
-              a(true, this.mIH, false, this.mHc);
-              if (this.mIN) {
-                e(true, this.mIH, false);
+              a(true, this.nkK, false, this.njh);
+              if (this.nkQ) {
+                f(true, this.nkK, false);
               }
-              Q(paramMotionEvent);
+              O(paramMotionEvent);
             }
             else
             {
-              this.mIU.removeCallbacks(this.mIV);
-              if ((this.mIT) || (I(paramMotionEvent))) {
+              this.nkX.removeCallbacks(this.nkY);
+              if ((this.nkW) || (G(paramMotionEvent))) {
                 break;
               }
-              a(true, this.mIH, false, this.mHc);
-              if (this.mIN) {
-                e(true, this.mIH, false);
+              a(true, this.nkK, false, this.njh);
+              if (this.nkQ) {
+                f(true, this.nkK, false);
               }
-              e(this.mIK.x, this.mIK.y, true, false);
-              if (this.mIO)
+              e(this.nkN.x, this.nkN.y, true, false);
+              if (this.nkR)
               {
-                float f1 = this.mIJ.x;
-                float f2 = this.mIJ.y;
+                float f1 = this.nkM.x;
+                float f2 = this.nkM.y;
                 long l = System.currentTimeMillis();
-                if (l > this.lVv + 800L)
+                if (l > this.mxx + 800L)
                 {
-                  this.lVv = l;
-                  if (d.r(this.mHX, (int)f1, (int)f2))
+                  this.mxx = l;
+                  if (d.r(this.nkc, (int)f1, (int)f2))
                   {
-                    ad.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked voip");
-                    if ((this.mIA != null) && (g.ab(c.class) != null))
+                    ac.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked voip");
+                    if ((this.nkE != null) && (g.ab(c.class) != null))
                     {
-                      this.mIA.mDw.opType = 3;
-                      ((c)g.ab(c.class)).l(this.mIA);
+                      this.nkE.nfD.opType = 3;
+                      ((c)g.ab(c.class)).m(this.nkE);
                     }
-                    this.mHX.callOnClick();
+                    this.nkc.callOnClick();
                   }
-                  else if ((xk(this.mHc)) || (xj(this.mHc)))
+                  else if ((yc(this.njh)) || (yb(this.njh)))
                   {
-                    ad.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, ignore click");
+                    ac.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, ignore click");
                   }
-                  else if (wZ(this.mHc))
+                  else if (xR(this.njh))
                   {
-                    ad.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, wechat in foreground");
-                    paramMotionEvent = this.csT.iterator();
+                    ac.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, wechat in foreground");
+                    paramMotionEvent = this.cqb.iterator();
                     while (paramMotionEvent.hasNext()) {
-                      ((com.tencent.mm.plugin.ball.d.b)paramMotionEvent.next()).bza();
+                      ((com.tencent.mm.plugin.ball.d.b)paramMotionEvent.next()).bFW();
                     }
                   }
-                  else if ((this.mIB != null) && (g.ab(c.class) != null))
+                  else if ((this.nkF != null) && (g.ab(c.class) != null))
                   {
-                    ad.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked appbrand voip");
-                    this.mIB.mDw.opType = 3;
-                    ((c)g.ab(c.class)).l(this.mIB);
+                    ac.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked appbrand voip");
+                    this.nkF.nfD.opType = 3;
+                    ((c)g.ab(c.class)).m(this.nkF);
                   }
                 }
                 else
                 {
-                  ad.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked too fast!");
+                  ac.i("MicroMsg.FloatBallView", "notifyBallClickedIfNeed, you clicked too fast!");
                 }
               }
             }
@@ -2574,23 +2576,23 @@ public class FloatBallView
         }
       }
     }
-    a(false, this.mIH, false, this.mHc);
-    if (this.mIT)
+    a(false, this.nkK, false, this.njh);
+    if (this.nkW)
     {
-      this.mIT = false;
-      localIterator = this.csT.iterator();
+      this.nkW = false;
+      localIterator = this.cqb.iterator();
       while (localIterator.hasNext()) {
-        ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).bzd();
+        ((com.tencent.mm.plugin.ball.d.b)localIterator.next()).bFZ();
       }
     }
-    int i = J(paramMotionEvent);
-    int j = K(paramMotionEvent);
-    int k = wO(i);
-    int m = wN(j);
+    int i = H(paramMotionEvent);
+    int j = I(paramMotionEvent);
+    int k = xG(i);
+    int m = xF(j);
     if (k == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.FloatBallView", "onTouchEvent, stickToLeft:%s, startSticky:[%s, %s]=>[%s, %s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+      ac.i("MicroMsg.FloatBallView", "onTouchEvent, stickToLeft:%s, startSticky:[%s, %s]=>[%s, %s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
       e(bool, i, j, k, m);
       break;
     }
@@ -2600,43 +2602,43 @@ public class FloatBallView
   {
     AppMethodBeat.i(106473);
     super.setAlpha(paramFloat);
-    ad.m("MicroMsg.FloatBallView", "setAlpha:%s", new Object[] { Float.valueOf(paramFloat) });
-    bAH();
+    ac.m("MicroMsg.FloatBallView", "setAlpha:%s", new Object[] { Float.valueOf(paramFloat) });
+    bHD();
     AppMethodBeat.o(106473);
   }
   
   public void setEnableClick(boolean paramBoolean)
   {
-    AppMethodBeat.i(190675);
-    ad.d("MicroMsg.FloatBallView", "alvinluo setEnableClick enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.mIO = paramBoolean;
-    AppMethodBeat.o(190675);
+    AppMethodBeat.i(208040);
+    ac.d("MicroMsg.FloatBallView", "alvinluo setEnableClick enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.nkR = paramBoolean;
+    AppMethodBeat.o(208040);
   }
   
   public void setFloatBallAlpha(final float paramFloat)
   {
     AppMethodBeat.i(106460);
-    com.tencent.mm.plugin.ball.b.b localb = this.mHV;
-    if ((localb.byL()) || (localb.byM())) {}
+    com.tencent.mm.plugin.ball.b.b localb = this.nka;
+    if ((localb.bFH()) || (localb.bFI())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.m("MicroMsg.FloatBallView", "setFloatBallAlpha later, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
-      localb = this.mHV;
+      ac.m("MicroMsg.FloatBallView", "setFloatBallAlpha later, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
+      localb = this.nka;
       Runnable local2 = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(106431);
-          ad.i("MicroMsg.FloatBallView", "setFloatBallAlpha when animation ends, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
+          ac.i("MicroMsg.FloatBallView", "setFloatBallAlpha when animation ends, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
           FloatBallView.a(FloatBallView.this, paramFloat);
           AppMethodBeat.o(106431);
         }
       };
-      localb.mDp.add(local2);
+      localb.nfv.add(local2);
       AppMethodBeat.o(106460);
       return;
     }
-    ad.m("MicroMsg.FloatBallView", "setFloatBallAlpha right now, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
+    ac.m("MicroMsg.FloatBallView", "setFloatBallAlpha right now, alpha:%s", new Object[] { Float.valueOf(paramFloat) });
     setFloatBallAlphaInternal(paramFloat);
     AppMethodBeat.o(106460);
   }
@@ -2644,47 +2646,47 @@ public class FloatBallView
   public void setInnerView(View paramView)
   {
     AppMethodBeat.i(106471);
-    if (paramView == this.mHW)
+    if (paramView == this.nkb)
     {
       AppMethodBeat.o(106471);
       return;
     }
-    this.mIb.removeAllViews();
-    this.mHW = paramView;
-    if (this.mHW != null)
+    this.nkg.removeAllViews();
+    this.nkb = paramView;
+    if (this.nkb != null)
     {
       paramView = new FrameLayout.LayoutParams(-1, -1);
       paramView.gravity = 17;
-      this.mIb.addView(this.mHW, paramView);
+      this.nkg.addView(this.nkb, paramView);
     }
     AppMethodBeat.o(106471);
   }
   
   public void setNeedTranslateAnimation(boolean paramBoolean)
   {
-    this.mFj = paramBoolean;
+    this.nho = paramBoolean;
   }
   
   public void setVOIPView(View paramView)
   {
     AppMethodBeat.i(176993);
-    if (paramView == this.mHX)
+    if (paramView == this.nkc)
     {
       AppMethodBeat.o(176993);
       return;
     }
     if ((paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
-      ad.i("MicroMsg.FloatBallView", "setVOIPView remove from parent first");
+      ac.i("MicroMsg.FloatBallView", "setVOIPView remove from parent first");
       ((ViewGroup)paramView.getParent()).removeView(paramView);
     }
-    this.mHZ.removeAllViews();
-    this.mHX = paramView;
-    if (this.mHX != null)
+    this.nke.removeAllViews();
+    this.nkc = paramView;
+    if (this.nkc != null)
     {
       paramView = new FrameLayout.LayoutParams(-1, -1);
       paramView.gravity = 17;
-      this.mHZ.addView(this.mHX, paramView);
+      this.nke.addView(this.nkc, paramView);
     }
     AppMethodBeat.o(176993);
   }
@@ -2696,24 +2698,24 @@ public class FloatBallView
     int i = (int)getAlpha();
     if (i == 0)
     {
-      this.mIG = false;
-      ad.m("MicroMsg.FloatBallView", "setVisibility:%s, alphaInt:%s, disableTouch", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      this.nkJ = false;
+      ac.m("MicroMsg.FloatBallView", "setVisibility:%s, alphaInt:%s, disableTouch", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       AppMethodBeat.o(106472);
       return;
     }
     if (i == 1)
     {
-      this.mIG = true;
-      ad.m("MicroMsg.FloatBallView", "setVisibility:%s, alphaInt:%s, enableTouch", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      bAH();
+      this.nkJ = true;
+      ac.m("MicroMsg.FloatBallView", "setVisibility:%s, alphaInt:%s, enableTouch", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      bHD();
     }
     AppMethodBeat.o(106472);
   }
   
-  public final boolean ut(int paramInt)
+  public final boolean xE(int paramInt)
   {
     AppMethodBeat.i(106459);
-    if (getCurrentStateWidth() / 2 + paramInt <= this.mII.x / 2)
+    if (getCurrentStateWidth() / 2 + paramInt <= this.nkL.x / 2)
     {
       AppMethodBeat.o(106459);
       return true;
@@ -2724,7 +2726,7 @@ public class FloatBallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.FloatBallView
  * JD-Core Version:    0.7.0.1
  */

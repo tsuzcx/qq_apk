@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.report.d;
+import com.tencent.mm.plugin.finder.report.e;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.mm.ui.search.FTSEditTextView.a;
@@ -29,7 +29,7 @@ import d.y;
 import java.util.HashMap;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "()V", "TAG", "", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "presenter", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchPresenter;", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "viewCallback", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback;", "getCommentScene", "", "getLayoutId", "initData", "", "initSearchView", "onClickBackBtn", "view", "Landroid/view/View;", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "", "onSearchKeyDown", "onTagClick", "index", "tag", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "()V", "TAG", "", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "presenter", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchPresenter;", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "viewCallback", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback;", "getCommentScene", "", "getLayoutId", "getReportType", "initData", "", "initSearchView", "onClickBackBtn", "view", "Landroid/view/View;", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "", "onSearchKeyDown", "onTagClick", "index", "tag", "plugin-finder_release"})
 public final class FinderMixSearchUI
   extends MMFinderUI
   implements FTSEditTextView.a, a.b
@@ -37,13 +37,13 @@ public final class FinderMixSearchUI
   private final String TAG = "Finder.FinderMixSearchUI";
   private HashMap _$_findViewCache;
   private FinderMixSearchPresenter presenter;
-  private h qHE;
-  private g qHZ;
-  private a qHy;
+  private g rAA;
+  private a rAu;
+  private f rBa;
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(198938);
+    AppMethodBeat.i(202891);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -54,7 +54,7 @@ public final class FinderMixSearchUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(198938);
+    AppMethodBeat.o(202891);
     return localView1;
   }
   
@@ -77,31 +77,31 @@ public final class FinderMixSearchUI
     {
       paramString1 = "";
     }
-    paramString2 = this.qHE;
+    paramString2 = this.rAA;
     if (paramString2 == null) {
-      k.aPZ("historyLogic");
+      k.aVY("historyLogic");
     }
-    paramString2.Zo(paramString1);
-    paramString2 = this.qHZ;
+    paramString2.adW(paramString1);
+    paramString2 = this.rBa;
     if (paramString2 == null) {
-      k.aPZ("viewCallback");
+      k.aVY("viewCallback");
     }
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
-      paramString2.qHD.setVisibility(8);
-      paramString2.lZo.setVisibility(8);
-      paramString2.fPw.setVisibility(8);
+      paramString2.rAz.setVisibility(8);
+      paramString2.gDe.setVisibility(8);
+      paramString2.fTr.setVisibility(8);
     }
     AppMethodBeat.o(166822);
   }
   
-  public final boolean bow()
+  public final boolean bvs()
   {
     AppMethodBeat.i(166825);
     hideVKB();
-    Object localObject1 = this.qHy;
+    Object localObject1 = this.rAu;
     if (localObject1 == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
     localObject1 = ((a)localObject1).getFtsEditText();
     k.g(localObject1, "searchView.ftsEditText");
@@ -122,44 +122,49 @@ public final class FinderMixSearchUI
     {
       localObject1 = "";
     }
-    if (bt.isNullOrNil((String)localObject1))
+    if (bs.isNullOrNil((String)localObject1))
     {
       AppMethodBeat.o(166825);
       return true;
     }
     Object localObject2 = this.presenter;
     if (localObject2 == null) {
-      k.aPZ("presenter");
+      k.aVY("presenter");
     }
-    ((FinderMixSearchPresenter)localObject2).Zn((String)localObject1);
-    localObject2 = this.qHE;
+    ((FinderMixSearchPresenter)localObject2).adV((String)localObject1);
+    localObject2 = this.rAA;
     if (localObject2 == null) {
-      k.aPZ("historyLogic");
+      k.aVY("historyLogic");
     }
-    ((h)localObject2).Zp((String)localObject1);
+    ((g)localObject2).adX((String)localObject1);
     AppMethodBeat.o(166825);
     return true;
   }
   
-  public final void cok() {}
-  
-  public final int getCommentScene()
+  public final int cuI()
   {
     return 23;
   }
+  
+  public final int cvJ()
+  {
+    return 3;
+  }
+  
+  public final void cxG() {}
   
   public final int getLayoutId()
   {
     return 2131494068;
   }
   
-  public final void lb(boolean paramBoolean)
+  public final void lF(boolean paramBoolean)
   {
     AppMethodBeat.i(166823);
     if (paramBoolean)
     {
-      d locald = d.qFr;
-      d.cnB();
+      e locale = e.rxs;
+      e.cwV();
     }
     AppMethodBeat.o(166823);
   }
@@ -183,11 +188,11 @@ public final class FinderMixSearchUI
   public final void onClickClearTextBtn(View paramView)
   {
     AppMethodBeat.i(166824);
-    paramView = this.qHy;
+    paramView = this.rAu;
     if (paramView == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
-    paramView.getFtsEditText().fdj();
+    paramView.getFtsEditText().fte();
     showVKB();
     AppMethodBeat.o(166824);
   }
@@ -196,88 +201,88 @@ public final class FinderMixSearchUI
   {
     AppMethodBeat.i(166818);
     super.onCreate(paramBundle);
-    this.qHy = new a((Context)this);
-    paramBundle = this.qHy;
+    this.rAu = new a((Context)this);
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
     paramBundle.setSearchViewListener((a.b)this);
-    paramBundle = this.qHy;
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
     paramBundle.getFtsEditText().setHint(getString(2131755882));
-    paramBundle = this.qHy;
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
     paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.a)this);
-    paramBundle = this.qHy;
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
     paramBundle.getFtsEditText().setCanDeleteTag(false);
-    paramBundle = this.qHy;
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
-    paramBundle.getFtsEditText().fdj();
-    paramBundle = this.qHy;
+    paramBundle.getFtsEditText().fte();
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
-    paramBundle.getFtsEditText().fdi();
-    paramBundle = this.qHy;
+    paramBundle.getFtsEditText().ftd();
+    paramBundle = this.rAu;
     if (paramBundle == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
-    paramBundle.getFtsEditText().fdg();
+    paramBundle.getFtsEditText().ftb();
     paramBundle = getSupportActionBar();
     if (paramBundle == null) {
-      k.fvU();
+      k.fOy();
     }
     k.g(paramBundle, "supportActionBar!!");
-    Object localObject = this.qHy;
+    Object localObject = this.rAu;
     if (localObject == null) {
-      k.aPZ("searchView");
+      k.aVY("searchView");
     }
     paramBundle.setCustomView((View)localObject);
-    this.qHE = new h((MMActivity)this, (b)new a(this));
+    this.rAA = new g((MMActivity)this, (b)new a(this));
     this.presenter = new FinderMixSearchPresenter((MMActivity)this);
     paramBundle = (MMActivity)this;
     localObject = this.presenter;
     if (localObject == null) {
-      k.aPZ("presenter");
+      k.aVY("presenter");
     }
-    this.qHZ = new g(paramBundle, (f.a)localObject);
+    this.rBa = new f(paramBundle, (e.a)localObject);
     paramBundle = this.presenter;
     if (paramBundle == null) {
-      k.aPZ("presenter");
+      k.aVY("presenter");
     }
-    localObject = this.qHZ;
+    localObject = this.rBa;
     if (localObject == null) {
-      k.aPZ("viewCallback");
+      k.aVY("viewCallback");
     }
-    paramBundle.a((f.b)localObject);
-    paramBundle = this.qHZ;
+    paramBundle.a((e.b)localObject);
+    paramBundle = this.rBa;
     if (paramBundle == null) {
-      k.aPZ("viewCallback");
+      k.aVY("viewCallback");
     }
-    paramBundle.fPw.setOnTouchListener((View.OnTouchListener)new b(this));
+    paramBundle.fTr.setOnTouchListener((View.OnTouchListener)new b(this));
     AppMethodBeat.o(166818);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(166819);
-    Object localObject = this.qHE;
+    Object localObject = this.rAA;
     if (localObject == null) {
-      k.aPZ("historyLogic");
+      k.aVY("historyLogic");
     }
-    ((h)localObject).onDestroy();
+    ((g)localObject).onDestroy();
     localObject = this.presenter;
     if (localObject == null) {
-      k.aPZ("presenter");
+      k.aVY("presenter");
     }
     ((FinderMixSearchPresenter)localObject).onDetach();
     hideVKB();
@@ -291,7 +296,7 @@ public final class FinderMixSearchUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "query", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "query", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements b<String, y>
@@ -302,7 +307,7 @@ public final class FinderMixSearchUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
   static final class b
     implements View.OnTouchListener
   {
@@ -311,8 +316,8 @@ public final class FinderMixSearchUI
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(166817);
-      FinderMixSearchUI.a(this.qIa).getFtsEditText().fbk();
-      this.qIa.hideVKB();
+      FinderMixSearchUI.a(this.rBb).getFtsEditText().frb();
+      this.rBb.hideVKB();
       AppMethodBeat.o(166817);
       return false;
     }
@@ -320,7 +325,7 @@ public final class FinderMixSearchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.search.FinderMixSearchUI
  * JD-Core Version:    0.7.0.1
  */

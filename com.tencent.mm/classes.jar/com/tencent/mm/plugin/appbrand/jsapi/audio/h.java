@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.u;
-import com.tencent.mm.g.a.u.b;
+import com.tencent.mm.g.a.v;
+import com.tencent.mm.g.a.v.b;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import org.json.JSONObject;
 
 public class h
@@ -15,54 +15,54 @@ public class h
 {
   public static final int CTRL_INDEX = 297;
   public static final String NAME = "operateAudio";
-  private k.a jBt;
+  private k.a kbP;
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     long l2 = 0L;
     AppMethodBeat.i(145729);
-    if (!com.tencent.mm.plugin.appbrand.media.a.a.KE(paramc.getAppId()))
+    if (!com.tencent.mm.plugin.appbrand.media.a.a.OL(paramc.getAppId()))
     {
-      ad.e("MicroMsg.Audio.JsApiOperateAudio", "can't do operateAudio, App is paused or background");
+      ac.e("MicroMsg.Audio.JsApiOperateAudio", "can't do operateAudio, App is paused or background");
       paramc.h(paramInt, e("fail:App is paused or background", null));
       AppMethodBeat.o(145729);
       return;
     }
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.Audio.JsApiOperateAudio", "operateAudio data is null");
+      ac.e("MicroMsg.Audio.JsApiOperateAudio", "operateAudio data is null");
       paramc.h(paramInt, e("fail:data is null", null));
       AppMethodBeat.o(145729);
       return;
     }
-    ad.i("MicroMsg.Audio.JsApiOperateAudio", "operateAudio appId:%s, data:%s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
+    ac.i("MicroMsg.Audio.JsApiOperateAudio", "operateAudio appId:%s, data:%s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
     String str1 = paramJSONObject.optString("audioId");
     int i = paramJSONObject.optInt("currentTime", 0);
     String str2 = paramJSONObject.optString("operationType");
     if (TextUtils.isEmpty(str1))
     {
-      ad.e("MicroMsg.Audio.JsApiOperateAudio", "audioId is empty");
+      ac.e("MicroMsg.Audio.JsApiOperateAudio", "audioId is empty");
       paramc.h(paramInt, e("fail:audioId is empty", null));
       AppMethodBeat.o(145729);
       return;
     }
     if (TextUtils.isEmpty(str2))
     {
-      ad.e("MicroMsg.Audio.JsApiOperateAudio", "operationType is empty");
+      ac.e("MicroMsg.Audio.JsApiOperateAudio", "operationType is empty");
       paramc.h(paramInt, e("fail:operationType is empty", null));
       AppMethodBeat.o(145729);
       return;
     }
-    if (this.jBt == null) {
-      this.jBt = new k.a(this, paramc, paramInt);
+    if (this.kbP == null) {
+      this.kbP = new k.a(this, paramc, paramInt);
     }
-    this.jBt.appId = paramc.getAppId();
-    this.jBt.aEC();
+    this.kbP.appId = paramc.getAppId();
+    this.kbP.aLt();
     a locala = new a(this, paramc, paramInt);
     locala.appId = paramc.getAppId();
-    locala.cTr = str1;
-    locala.dbJ = i;
-    locala.jBu = str2;
+    locala.cQO = str1;
+    locala.cZi = i;
+    locala.kbQ = str2;
     if (str2.equalsIgnoreCase("play"))
     {
       long l4 = paramJSONObject.optLong("timestamp", 0L);
@@ -75,18 +75,18 @@ public class h
           l1 = l3 - l4;
         }
       }
-      locala.gST = l1;
-      locala.gSU = l3;
+      locala.hts = l1;
+      locala.htt = l3;
     }
-    paramc = com.tencent.mm.plugin.appbrand.media.a.a.KC(str1);
+    paramc = com.tencent.mm.plugin.appbrand.media.a.a.OJ(str1);
     if (paramc != null)
     {
-      locala.jBv = paramc.jBv;
-      locala.jBw = paramc.jBw;
-      locala.cTn = paramc.cTn;
+      locala.kbR = paramc.kbR;
+      locala.kbS = paramc.kbS;
+      locala.cQK = paramc.cQK;
     }
-    locala.processName = aj.getProcessName();
-    locala.aEC();
+    locala.processName = ai.getProcessName();
+    locala.aLt();
     AppMethodBeat.o(145729);
   }
   
@@ -94,182 +94,182 @@ public class h
     extends a
   {
     public String appId = "";
-    public String cTn = "";
-    public String cTr = "";
-    public int dbJ = 0;
+    public String cQK = "";
+    public String cQO = "";
+    public int cZi = 0;
     public boolean error = false;
-    public long gST;
-    public long gSU;
-    public String hMd;
-    public String jBu = "";
-    public String jBv;
-    public WxaPkg.Info jBw;
-    public int joH;
-    private m jwG;
-    public com.tencent.mm.plugin.appbrand.jsapi.c jyl;
+    public long hts;
+    public long htt;
+    public String imz;
+    public int jOT;
+    private m jXc;
+    public com.tencent.mm.plugin.appbrand.jsapi.c jYG;
+    public String kbQ = "";
+    public String kbR;
+    public WxaPkg.Info kbS;
     public String processName = "";
     
     public a(m paramm, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt)
     {
-      this.jwG = paramm;
-      this.jyl = paramc;
-      this.joH = paramInt;
+      this.jXc = paramm;
+      this.jYG = paramc;
+      this.jOT = paramInt;
     }
     
-    public final void AI()
+    public final void Am()
     {
       AppMethodBeat.i(145728);
-      super.AI();
-      if (this.jyl == null)
+      super.Am();
+      if (this.jYG == null)
       {
-        ad.e("MicroMsg.Audio.JsApiOperateAudio", "server is null");
+        ac.e("MicroMsg.Audio.JsApiOperateAudio", "server is null");
         AppMethodBeat.o(145728);
         return;
       }
       if (this.error)
       {
-        this.jyl.h(this.joH, this.jwG.e("fail:" + this.hMd, null));
+        this.jYG.h(this.jOT, this.jXc.e("fail:" + this.imz, null));
         AppMethodBeat.o(145728);
         return;
       }
-      this.jyl.h(this.joH, this.jwG.e("ok", null));
+      this.jYG.h(this.jOT, this.jXc.e("ok", null));
       AppMethodBeat.o(145728);
     }
     
-    public final void MQ()
+    public final void MO()
     {
       AppMethodBeat.i(145727);
-      ad.i("MicroMsg.Audio.JsApiOperateAudio", "runTask operationType;%s", new Object[] { this.jBu });
+      ac.i("MicroMsg.Audio.JsApiOperateAudio", "runTask operationType;%s", new Object[] { this.kbQ });
       this.error = false;
-      Object localObject1 = this.jBu;
+      Object localObject1 = this.kbQ;
       Object localObject2;
       if (((String)localObject1).equalsIgnoreCase("play"))
       {
-        localObject2 = com.tencent.mm.aj.c.vD(this.cTr);
+        localObject2 = com.tencent.mm.ai.c.zJ(this.cQO);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          ad.e("MicroMsg.Audio.JsApiOperateAudio", "play operate, playParam is null");
-          localObject1 = com.tencent.mm.plugin.appbrand.media.a.b.a(this.appId, this.cTr, this.cTn, this.jBv, this.jBw, this.processName);
+          ac.e("MicroMsg.Audio.JsApiOperateAudio", "play operate, playParam is null");
+          localObject1 = com.tencent.mm.plugin.appbrand.media.a.b.a(this.appId, this.cQO, this.cQK, this.kbR, this.kbS, this.processName);
         }
         if (localObject1 != null)
         {
-          ((com.tencent.mm.aj.b)localObject1).gSX = this.gST;
-          ((com.tencent.mm.aj.b)localObject1).gSY = this.gSU;
+          ((com.tencent.mm.ai.b)localObject1).htw = this.hts;
+          ((com.tencent.mm.ai.b)localObject1).htx = this.htt;
         }
-        localObject2 = this.cTr;
-        ad.d("MicroMsg.AudioPlayerHelper", "resumeAudio, audioId:%s", new Object[] { localObject2 });
-        u localu = new u();
-        localu.dbH.action = 1;
-        localu.dbH.cTr = ((String)localObject2);
-        localu.dbH.dbK = ((com.tencent.mm.aj.b)localObject1);
-        com.tencent.mm.plugin.music.b.a.a(localu);
-        if (localu.dbI.result) {
-          ad.i("MicroMsg.Audio.JsApiOperateAudio", "play audio ok");
+        localObject2 = this.cQO;
+        ac.d("MicroMsg.AudioPlayerHelper", "resumeAudio, audioId:%s", new Object[] { localObject2 });
+        v localv = new v();
+        localv.cZg.action = 1;
+        localv.cZg.cQO = ((String)localObject2);
+        localv.cZg.cZj = ((com.tencent.mm.ai.b)localObject1);
+        com.tencent.mm.plugin.music.b.a.a(localv);
+        if (localv.cZh.result) {
+          ac.i("MicroMsg.Audio.JsApiOperateAudio", "play audio ok");
         }
       }
       for (;;)
       {
         if (this.error) {
-          ad.e("MicroMsg.Audio.JsApiOperateAudio", this.hMd);
+          ac.e("MicroMsg.Audio.JsApiOperateAudio", this.imz);
         }
-        AI();
+        Am();
         AppMethodBeat.o(145727);
         return;
-        if (com.tencent.mm.aj.c.vC(this.cTr))
+        if (com.tencent.mm.ai.c.zI(this.cQO))
         {
           this.error = true;
-          this.hMd = "audio is playing, don't play again";
+          this.imz = "audio is playing, don't play again";
         }
         else
         {
           this.error = true;
-          this.hMd = "play audio fail";
+          this.imz = "play audio fail";
           continue;
           if (((String)localObject1).equalsIgnoreCase("pause"))
           {
-            localObject1 = this.cTr;
-            ad.d("MicroMsg.AudioPlayerHelper", "pauseAudio, audioId:%s", new Object[] { localObject1 });
-            localObject2 = new u();
-            ((u)localObject2).dbH.action = 2;
-            ((u)localObject2).dbH.cTr = ((String)localObject1);
-            com.tencent.mm.plugin.music.b.a.a((u)localObject2);
-            if (((u)localObject2).dbI.result)
+            localObject1 = this.cQO;
+            ac.d("MicroMsg.AudioPlayerHelper", "pauseAudio, audioId:%s", new Object[] { localObject1 });
+            localObject2 = new v();
+            ((v)localObject2).cZg.action = 2;
+            ((v)localObject2).cZg.cQO = ((String)localObject1);
+            com.tencent.mm.plugin.music.b.a.a((v)localObject2);
+            if (((v)localObject2).cZh.result)
             {
-              ad.i("MicroMsg.Audio.JsApiOperateAudio", "pause audio ok");
+              ac.i("MicroMsg.Audio.JsApiOperateAudio", "pause audio ok");
             }
             else
             {
               this.error = true;
-              this.hMd = "pause audio fail";
+              this.imz = "pause audio fail";
             }
           }
           else if (((String)localObject1).equalsIgnoreCase("seek"))
           {
-            ad.i("MicroMsg.Audio.JsApiOperateAudio", "currentTime:%d", new Object[] { Integer.valueOf(this.dbJ) });
-            if (this.dbJ < 0)
+            ac.i("MicroMsg.Audio.JsApiOperateAudio", "currentTime:%d", new Object[] { Integer.valueOf(this.cZi) });
+            if (this.cZi < 0)
             {
-              ad.e("MicroMsg.Audio.JsApiOperateAudio", "currentTime %d is invalid!", new Object[] { Integer.valueOf(this.dbJ) });
+              ac.e("MicroMsg.Audio.JsApiOperateAudio", "currentTime %d is invalid!", new Object[] { Integer.valueOf(this.cZi) });
               this.error = true;
-              this.hMd = "currentTime is invalid";
+              this.imz = "currentTime is invalid";
             }
             else
             {
-              localObject1 = this.cTr;
-              int i = this.dbJ;
-              ad.i("MicroMsg.AudioPlayerHelper", "seekToAudio, audioId:%s, currentTime:%d", new Object[] { localObject1, Integer.valueOf(i) });
-              localObject2 = new u();
-              ((u)localObject2).dbH.action = 4;
-              ((u)localObject2).dbH.cTr = ((String)localObject1);
-              ((u)localObject2).dbH.dbJ = i;
-              com.tencent.mm.plugin.music.b.a.a((u)localObject2);
-              if (((u)localObject2).dbI.result)
+              localObject1 = this.cQO;
+              int i = this.cZi;
+              ac.i("MicroMsg.AudioPlayerHelper", "seekToAudio, audioId:%s, currentTime:%d", new Object[] { localObject1, Integer.valueOf(i) });
+              localObject2 = new v();
+              ((v)localObject2).cZg.action = 4;
+              ((v)localObject2).cZg.cQO = ((String)localObject1);
+              ((v)localObject2).cZg.cZi = i;
+              com.tencent.mm.plugin.music.b.a.a((v)localObject2);
+              if (((v)localObject2).cZh.result)
               {
-                ad.i("MicroMsg.Audio.JsApiOperateAudio", "seek audio ok");
+                ac.i("MicroMsg.Audio.JsApiOperateAudio", "seek audio ok");
               }
               else
               {
                 this.error = true;
-                this.hMd = "seek audio fail";
+                this.imz = "seek audio fail";
               }
             }
           }
           else if (((String)localObject1).equalsIgnoreCase("stop"))
           {
-            localObject1 = this.cTr;
-            localObject2 = new u();
-            ((u)localObject2).dbH.action = 13;
-            ((u)localObject2).dbH.cTr = ((String)localObject1);
-            com.tencent.mm.plugin.music.b.a.a((u)localObject2);
+            localObject1 = this.cQO;
+            localObject2 = new v();
+            ((v)localObject2).cZg.action = 13;
+            ((v)localObject2).cZg.cQO = ((String)localObject1);
+            com.tencent.mm.plugin.music.b.a.a((v)localObject2);
             boolean bool;
-            if (((u)localObject2).dbI.result)
+            if (((v)localObject2).cZh.result)
             {
-              ad.i("MicroMsg.AudioPlayerHelper", "stopAudioOnBackground, audioId:%s", new Object[] { localObject1 });
-              localObject2 = new u();
-              ((u)localObject2).dbH.action = 14;
-              ((u)localObject2).dbH.cTr = ((String)localObject1);
-              com.tencent.mm.plugin.music.b.a.a((u)localObject2);
-              bool = ((u)localObject2).dbI.result;
+              ac.i("MicroMsg.AudioPlayerHelper", "stopAudioOnBackground, audioId:%s", new Object[] { localObject1 });
+              localObject2 = new v();
+              ((v)localObject2).cZg.action = 14;
+              ((v)localObject2).cZg.cQO = ((String)localObject1);
+              com.tencent.mm.plugin.music.b.a.a((v)localObject2);
+              bool = ((v)localObject2).cZh.result;
             }
             for (;;)
             {
               if (!bool) {
                 break label780;
               }
-              ad.i("MicroMsg.Audio.JsApiOperateAudio", "stop audio ok");
+              ac.i("MicroMsg.Audio.JsApiOperateAudio", "stop audio ok");
               break;
-              localObject2 = new u();
-              ((u)localObject2).dbH.action = 17;
-              ((u)localObject2).dbH.cTr = ((String)localObject1);
-              com.tencent.mm.plugin.music.b.a.a((u)localObject2);
-              if (!((u)localObject2).dbI.result)
+              localObject2 = new v();
+              ((v)localObject2).cZg.action = 17;
+              ((v)localObject2).cZg.cQO = ((String)localObject1);
+              com.tencent.mm.plugin.music.b.a.a((v)localObject2);
+              if (!((v)localObject2).cZh.result)
               {
-                ad.i("MicroMsg.AudioPlayerHelper", "stopAudio, audioId:%s", new Object[] { localObject1 });
-                localObject2 = new u();
-                ((u)localObject2).dbH.action = 3;
-                ((u)localObject2).dbH.cTr = ((String)localObject1);
-                com.tencent.mm.plugin.music.b.a.a((u)localObject2);
-                bool = ((u)localObject2).dbI.result;
+                ac.i("MicroMsg.AudioPlayerHelper", "stopAudio, audioId:%s", new Object[] { localObject1 });
+                localObject2 = new v();
+                ((v)localObject2).cZg.action = 3;
+                ((v)localObject2).cZg.cQO = ((String)localObject1);
+                com.tencent.mm.plugin.music.b.a.a((v)localObject2);
+                bool = ((v)localObject2).cZh.result;
               }
               else
               {
@@ -278,13 +278,13 @@ public class h
             }
             label780:
             this.error = true;
-            this.hMd = "stop audio fail";
+            this.imz = "stop audio fail";
           }
           else
           {
-            ad.e("MicroMsg.Audio.JsApiOperateAudio", "operationType is invalid");
+            ac.e("MicroMsg.Audio.JsApiOperateAudio", "operationType is invalid");
             this.error = true;
-            this.hMd = "operationType is invalid";
+            this.imz = "operationType is invalid";
           }
         }
       }
@@ -293,7 +293,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.h
  * JD-Core Version:    0.7.0.1
  */

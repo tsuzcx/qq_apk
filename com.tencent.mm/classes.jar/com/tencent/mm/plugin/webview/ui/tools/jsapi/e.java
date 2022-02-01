@@ -9,65 +9,65 @@ import d.g.b.k;
 import d.y;
 import org.json.JSONObject;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class e
   extends com.tencent.mm.plugin.webview.c.c.a
 {
-  private static final int Bpa = 295;
-  public static final e Bpf;
-  private static final String dAn = "invokeMiniProgramAPI";
+  private static final int CHh = 295;
+  public static final e CHm;
+  private static final String dxZ = "invokeMiniProgramAPI";
   
   static
   {
     AppMethodBeat.i(175672);
-    Bpf = new e();
-    Bpa = 295;
-    dAn = "invokeMiniProgramAPI";
+    CHm = new e();
+    CHh = 295;
+    dxZ = "invokeMiniProgramAPI";
     AppMethodBeat.o(175672);
   }
   
   public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
   {
-    AppMethodBeat.i(188901);
+    AppMethodBeat.i(189470);
     k.h(paramd, "env");
     k.h(paraml, "msg");
     i locali = (i)g.ab(i.class);
     if (locali != null)
     {
-      String str = paraml.ASh.optString("name");
-      Object localObject = paraml.ASh.opt("arg");
-      locali.a(paramd.ARd.getBinderID(), str, localObject);
+      String str = paraml.Cku.optString("name");
+      Object localObject = paraml.Cku.opt("arg");
+      locali.a(paramd.Cjq.getBinderID(), str, localObject);
     }
     for (;;)
     {
-      paramd.ARd.h(paraml.ASg, dAn + ":ok", null);
-      AppMethodBeat.o(188901);
+      paramd.Cjq.j(paraml.Ckt, dxZ + ":ok", null);
+      AppMethodBeat.o(189470);
       return true;
-      ((d.g.a.a)a.Bpg).invoke();
+      ((d.g.a.a)a.CHn).invoke();
     }
   }
   
-  public final int ekB()
+  public final int ezX()
   {
-    return Bpa;
+    return CHh;
   }
   
-  public final String ekC()
+  public final String ezY()
   {
-    return dAn;
+    return dxZ;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.a<y>
   {
-    public static final a Bpg;
+    public static final a CHn;
     
     static
     {
       AppMethodBeat.i(175670);
-      Bpg = new a();
+      CHn = new a();
       AppMethodBeat.o(175670);
     }
     

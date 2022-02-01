@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements ViewPager.d
 {
-  public final void m(View paramView, float paramFloat)
+  public final void n(View paramView, float paramFloat)
   {
     float f2 = 0.0F;
     AppMethodBeat.i(97128);

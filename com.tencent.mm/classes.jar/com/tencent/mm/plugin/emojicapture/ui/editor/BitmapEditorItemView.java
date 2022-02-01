@@ -18,13 +18,13 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/BitmapEditorItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Landroid/graphics/Bitmap;", "bitmap", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "presenter", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "createEditorData", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "matrix", "Landroid/graphics/Matrix;", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "handleRemove", "", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "resume", "setEditing", "editing", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/BitmapEditorItemView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Landroid/graphics/Bitmap;", "bitmap", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "presenter", "Lcom/tencent/mm/plugin/emojicapture/contract/EditorItemContract$IPresenter;", "createEditorData", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "matrix", "Landroid/graphics/Matrix;", "getItemContainer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorItemContainer;", "handleRemove", "", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "pause", "resume", "setEditing", "editing", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
 public final class BitmapEditorItemView
   extends View
   implements c.b
 {
   private Bitmap bitmap;
-  private final c.a oPD;
+  private final c.a psP;
   
   public BitmapEditorItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,7 +35,7 @@ public final class BitmapEditorItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(684);
-    this.oPD = ((c.a)new com.tencent.mm.plugin.emojicapture.e.b((c.b)this));
+    this.psP = ((c.a)new com.tencent.mm.plugin.emojicapture.e.b((c.b)this));
     AppMethodBeat.o(684);
   }
   
@@ -43,18 +43,13 @@ public final class BitmapEditorItemView
   {
     AppMethodBeat.i(678);
     k.h(paramRectF, "bounds");
-    this.oPD.a(paramRectF, paramFloat);
+    this.psP.a(paramRectF, paramFloat);
     AppMethodBeat.o(678);
   }
   
-  public final a ajz()
+  public final a aqy()
   {
     return null;
-  }
-  
-  public final boolean bYI()
-  {
-    return false;
   }
   
   public final com.tencent.mm.media.editor.a.b c(Matrix paramMatrix)
@@ -66,13 +61,18 @@ public final class BitmapEditorItemView
       return null;
     }
     Matrix localMatrix = new Matrix();
-    localMatrix.set(this.oPD.getTouchTracker().dY);
+    localMatrix.set(this.psP.getTouchTracker().eY);
     if (paramMatrix != null) {
       localMatrix.postConcat(paramMatrix);
     }
     paramMatrix = (com.tencent.mm.media.editor.a.b)new d(this.bitmap, localMatrix);
     AppMethodBeat.o(163482);
     return paramMatrix;
+  }
+  
+  public final boolean cfT()
+  {
+    return false;
   }
   
   public final Bitmap getBitmap()
@@ -105,7 +105,7 @@ public final class BitmapEditorItemView
     AppMethodBeat.i(682);
     k.h(paramCanvas, "canvas");
     paramCanvas.save();
-    this.oPD.j(paramCanvas);
+    this.psP.j(paramCanvas);
     if (this.bitmap != null) {
       paramCanvas.drawBitmap(this.bitmap, 0.0F, 0.0F, null);
     }
@@ -117,7 +117,7 @@ public final class BitmapEditorItemView
   {
     AppMethodBeat.i(681);
     k.h(paramMotionEvent, "event");
-    boolean bool = this.oPD.T(paramMotionEvent);
+    boolean bool = this.psP.R(paramMotionEvent);
     AppMethodBeat.o(681);
     return bool;
   }
@@ -131,7 +131,7 @@ public final class BitmapEditorItemView
     AppMethodBeat.i(677);
     this.bitmap = paramBitmap;
     if (paramBitmap != null) {
-      this.oPD.fh(paramBitmap.getWidth(), paramBitmap.getHeight());
+      this.psP.fk(paramBitmap.getWidth(), paramBitmap.getHeight());
     }
     AppMethodBeat.o(677);
   }
@@ -139,14 +139,14 @@ public final class BitmapEditorItemView
   public final void setEditing(boolean paramBoolean)
   {
     AppMethodBeat.i(679);
-    this.oPD.setEditing(paramBoolean);
+    this.psP.setEditing(paramBoolean);
     invalidate();
     AppMethodBeat.o(679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.BitmapEditorItemView
  * JD-Core Version:    0.7.0.1
  */

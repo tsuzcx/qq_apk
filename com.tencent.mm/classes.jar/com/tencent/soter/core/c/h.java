@@ -5,31 +5,31 @@ import junit.framework.Assert;
 
 public final class h
 {
-  private static volatile a IuN;
+  private static volatile a JWw;
   
   static
   {
     AppMethodBeat.i(88671);
-    IuN = new a()
+    JWw = new a()
     {
-      private boolean IuO = false;
+      private boolean JWx = false;
       
-      public final boolean fnc()
+      public final boolean fDs()
       {
-        return this.IuO;
+        return this.JWx;
       }
       
-      public final void fnd()
+      public final void fDt()
       {
         AppMethodBeat.i(88666);
         d.e("Soter.SoterDelegate", "soter: triggered OOM. using default imp, just record the flag", new Object[0]);
-        this.IuO = true;
+        this.JWx = true;
         AppMethodBeat.o(88666);
       }
       
       public final void reset()
       {
-        this.IuO = false;
+        this.JWx = false;
       }
     };
     AppMethodBeat.o(88671);
@@ -39,21 +39,21 @@ public final class h
   {
     AppMethodBeat.i(88667);
     Assert.assertNotNull(parama);
-    IuN = parama;
+    JWw = parama;
     AppMethodBeat.o(88667);
   }
   
-  public static void fnb()
+  public static void fDr()
   {
     AppMethodBeat.i(88668);
-    IuN.fnd();
+    JWw.fDt();
     AppMethodBeat.o(88668);
   }
   
-  public static boolean fnc()
+  public static boolean fDs()
   {
     AppMethodBeat.i(88669);
-    boolean bool = IuN.fnc();
+    boolean bool = JWw.fDs();
     AppMethodBeat.o(88669);
     return bool;
   }
@@ -61,15 +61,15 @@ public final class h
   public static void reset()
   {
     AppMethodBeat.i(88670);
-    IuN.reset();
+    JWw.reset();
     AppMethodBeat.o(88670);
   }
   
   public static abstract interface a
   {
-    public abstract boolean fnc();
+    public abstract boolean fDs();
     
-    public abstract void fnd();
+    public abstract void fDt();
     
     public abstract void reset();
   }

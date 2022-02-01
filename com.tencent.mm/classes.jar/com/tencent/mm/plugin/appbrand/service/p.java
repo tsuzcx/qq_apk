@@ -8,19 +8,19 @@ import java.util.List;
 public abstract interface p
   extends a
 {
-  public abstract void D(Context paramContext, int paramInt);
+  public abstract void G(Context paramContext, int paramInt);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, List<WxaAttributes.WxaEntryInfo> paramList);
   
-  public abstract void b(Context paramContext, int paramInt1, int paramInt2);
+  public abstract void d(Context paramContext, int paramInt1, int paramInt2);
   
-  public abstract void db(Context paramContext);
+  public abstract void dk(Context paramContext);
   
-  public abstract boolean dc(Context paramContext);
+  public abstract boolean dl(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.p
  * JD-Core Version:    0.7.0.1
  */

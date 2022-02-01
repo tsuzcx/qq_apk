@@ -87,8 +87,8 @@
     <permission android:name="com.tencent.mm.matrix.strategynotify" android:protectionLevel="signature"/>
     <uses-permission android:name="com.tencent.mm.matrix.strategynotify"/>
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
-    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
     <permission android:name="com.tencent.mm.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
@@ -692,6 +692,7 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineNewMsgUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.brandservice.ui.timeline.video.BizVideoDetailUI" android:process=":toolsmp" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.brandservice.ui.timeline.BizFastRejectMsgUI"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.brandservice.ui.timeline.video.lite.VideoLiteUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.readerapp.ui.ReaderAppUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.readerapp.ui.ReaderAppIntroUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.readerapp.ui.ReaderAppSubscribeUI"/>
@@ -897,6 +898,10 @@
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLiveVisitorUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLivePostUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLiveMsgUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLiveEndUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLiveNewFansUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderCreateContactUI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderCreateGuideUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.finder.search.FinderContactSearchUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateHidden"/>
@@ -944,6 +949,7 @@
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderConversationTemp2UI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderConversationTemp3UI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderConversationXXUI" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderSayHiBoxUI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderPostAtUI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderAtTimelineUI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.finder.search.FinderContactSearchIncludeFollowUI" android:screenOrientation="portrait" android:theme="@style/p_" android:windowSoftInputMode="adjustPan|stateHidden"/>
@@ -958,6 +964,7 @@
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderNewUIA" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderNewUIB" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderNewUIC" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderThumbPlayerUI" android:screenOrientation="portrait"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderHomeUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderSelectCoverUI" android:screenOrientation="portrait" android:theme="@style/pd"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.ui.FinderFinderMsgUI" android:screenOrientation="portrait"/>
@@ -974,6 +981,9 @@
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLbsStreamFeedUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderLbsStreamListUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.feed.ui.FinderTimelineLbsUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.music.FinderMusicSearchUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.music.FinderMusicTopicUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:name="com.tencent.mm.plugin.finder.music.FinderMusicPlayerUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing|stateHidden"/>
         <uses-library android:name="com.here.android" android:required="false"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.location.ui.RedirectUI" android:theme="@style/pd"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.location.ui.RemarkUI" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan|stateVisible"/>
@@ -1078,6 +1088,7 @@
         <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishUI"/>
         <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSimpleCheckPwdUI"/>
         <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishProgressUI"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishProgressNewUI"/>
         <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanHomeUI"/>
         <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanDetailUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanBeforeHomeUI" android:theme="@style/pd"/>
@@ -1349,6 +1360,7 @@
                 <action android:name="com.tencent.mm.plugin.photoedit.action.clear"/>
             </intent-filter>
         </receiver>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.flutter.ui.MMFlutterActivity" android:screenOrientation="portrait" android:theme="@style/p4"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileUI" android:windowSoftInputMode="stateHidden"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileListUI" android:windowSoftInputMode="stateHidden"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileShowUI" android:theme="@style/pd" android:windowSoftInputMode="stateHidden"/>
@@ -1370,6 +1382,10 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.fav.ui.FavFilterUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.fav.ui.FavoriteIndexUI" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.eggspring.ui.SpringCardActivity" android:screenOrientation="portrait"/>
+        <provider android:authorities="com.tencent.mm.plugin.lite.logic.LiteAppInfo" android:exported="false" android:name="com.tencent.mm.plugin.lite.logic.LiteAppContentProvider"/>
+        <receiver android:exported="false" android:name="com.tencent.mm.plugin.lite.WxaLiteAppTaskPreloadReceiver" android:process=":lite"/>
+        <activity android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|orientation|screenLayout|screenSize|uiMode" android:hardwareAccelerated="true" android:name="com.tencent.mm.plugin.lite.ui.WxaLiteAppProxyUI" android:process=":lite" android:theme="@style/x0" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|orientation|screenLayout|screenSize|uiMode" android:hardwareAccelerated="true" android:name="com.tencent.mm.plugin.lite.ui.WxaLiteAppUI" android:process=":lite" android:theme="@style/x0" android:windowSoftInputMode="adjustPan"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.facedetect.ui.SettingsFacePrintManagerUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.facedetect.ui.FaceInformationConfirmUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.facedetect.ui.FaceDebugUI"/>
@@ -1562,10 +1578,8 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.forcenotify.ui.ForceNotifyListUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.forcenotify.ui.ForceNotifyShowUI"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.forcenotify.ui.ForceNotifyAcceptUI"/>
+        <service android:enabled="true" android:name="com.tencent.mm.gpu.service.GpuHookServiceImpl" android:process=":gpuhook"/>
         <service android:enabled="true" android:exported="true" android:name="com.tencent.mm.plugin.rubbishbin.RubbishBinServiceImpl" android:process=":rubbishbin"/>
-        <activity android:name="com.tencent.mm.plugin.lite.ui.LiteAppUI"/>
-        <activity android:name="com.tencent.mm.plugin.lite.ui.WXALiteAppUI"/>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.flutter.ui.MMFlutterActivity" android:screenOrientation="portrait" android:theme="@style/p4"/>
         <provider android:authorities="com.tencent.mm.plugin.sport" android:exported="false" android:name="com.tencent.mm.plugin.sport.model.SportDataProvider" android:process=":push"/>
         <service android:exported="false" android:name="com.tencent.mm.plugin.sport.model.SportForegroundService" android:process=":push"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.welab.ui.WelabAppInfoUI"/>
@@ -1616,6 +1630,7 @@
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.tencent.mm.plugin.soter.ui.SoterAuthenticationUIWC" android:theme="@style/pd"/>
         <service android:exported="false" android:name="com.tencent.tmassistantsdk.downloadservice.TMAssistantDownloadSDKService" android:process=":TMAssistantDownloadSDKService"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.tencent.mm.plugin.scanner.ui.ScanSampleActivity"/>
+        <service android:exported="false" android:name="com.tencent.mm.plugin.lite.keepalive.WxaLiteAppKeepAliveService" android:process=":lite"/>
         <service android:exported="false" android:name="com.tencent.mm.plugin.cdndownloader.service.CDNDownloadService" android:process=":support"/>
         <service android:exported="false" android:name="com.tencent.mm.plugin.cdndownloader.service.CDNDownloadServiceSlot" android:process=":push"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog" android:screenOrientation="portrait" android:theme="@style/pd"/>
@@ -1632,16 +1647,16 @@
         <receiver android:exported="false" android:name="com.tencent.matrix.report.MatrixReportBroadcast"/>
         <activity android:launchMode="singleTask" android:name="com.tencent.luggage.sdk.customize.impl.FullSdkExternalToolsHelper$SimpleWebViewActivity"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberAddUI"/>
-        <meta-data android:name="com.tencent.mm.BuildInfo.CLIENT_VERSION" android:value="0x27000F39"/>
-        <meta-data android:name="com.tencent.mm.BuildInfo.OPEN_SDK_VERSION" android:value="654315320"/>
+        <meta-data android:name="com.tencent.mm.BuildInfo.CLIENT_VERSION" android:value="0x27001035"/>
+        <meta-data android:name="com.tencent.mm.BuildInfo.OPEN_SDK_VERSION" android:value="654315572"/>
         <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_IS_ARM64" android:value="true"/>
-        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_TAG" android:value="Android_Wechat_RELEASE #3825"/>
+        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_TAG" android:value="Android_Wechat_RELEASE #4139"/>
         <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_OWNER" android:value="amm_code_helper"/>
         <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_HOSTNAME" android:value="VM_53_123_centos"/>
-        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_TIME" android:value="2020-06-01 13:09:21"/>
+        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_TIME" android:value="2020-06-24 20:26:16"/>
         <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_COMMAND" android:value="null"/>
-        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_REV" android:value="0df1aa0dc77dc7cd31651727db10a63bc61ef541"/>
-        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_SVNPATH" android:value="unstable/RB-2020-MAY/finder_patch_release@git"/>
+        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_REV" android:value="f27acdfef08d000160f65a8f43f2c2fc656b5ae2"/>
+        <meta-data android:name="com.tencent.mm.BuildInfo.BUILD_SVNPATH" android:value="RB-2020-JUN@git"/>
         <meta-data android:name="com.tencent.mm.BuildInfo.PATCH_ENABLED" android:value="true"/>
         <service android:exported="false" android:name="com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService" android:process=":tools"/>
         <service android:exported="false" android:name="com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService" android:process=":toolsmp"/>
@@ -1700,6 +1715,7 @@
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/aw"/>
         </provider>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.performance.wxperformancetool.MemoryLeakActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="density|fontScale|keyboard|keyboardHidden|layoutDirection|locale|orientation|screenLayout|screenSize" android:hardwareAccelerated="true" android:name="com.tencent.wax.ui.WxaFlutterActivity" android:theme="@style/x0" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.mm.ui.AlertActivity" android:theme="@style/a02"/>
         <activity android:exported="true" android:icon="@drawable/bzf" android:label="SQLiteLint" android:name="com.tencent.sqlitelint.behaviour.alert.CheckedDatabaseListActivity" android:taskAffinity="com.tencent.sqlitelint"/>
         <activity android:launchMode="singleTop" android:name="com.tencent.sqlitelint.behaviour.alert.CheckResultActivity" android:taskAffinity="com.tencent.sqlitelint"/>
@@ -1806,12 +1822,12 @@
         <activity android:launchMode="singleInstance" android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_00_T" android:theme="@android:style/Theme.Translucent"/>
         <activity android:launchMode="singleInstance" android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_01_T" android:theme="@android:style/Theme.Translucent"/>
         <activity android:launchMode="singleInstance" android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_02_T" android:theme="@android:style/Theme.Translucent"/>
-        <meta-data android:name="tinker_version" android:value="1.9.14.6-INTERNALv1-mz"/>
+        <meta-data android:name="tinker_version" android:value="1.9.14.7-fix2-INTERNALv4"/>
         <meta-data android:name="org.chromium.content.browser.NUM_SANDBOXED_SERVICES" android:value="1"/>
         <meta-data android:name="org.chromium.content.browser.SANDBOXED_SERVICES_NAME" android:value="com.tencent.smtt.sandbox.SandboxedProcessService"/>
         <service android:exported="true" android:isolatedProcess="true" android:name="com.tencent.smtt.sandbox.SandboxedProcessService0" android:process=":isolated_process0"/>
         <service android:exported="true" android:isolatedProcess="false" android:name="com.tencent.smtt.sandbox.SandboxedProcessService1" android:process=":isolated_process1"/>
         <uses-library android:name="soterkeystore" android:required="false"/>
-        <meta-data android:name="TINKER_ID" android:value="tinker_id_0df1aa0dc77dc7cd31651727db10a63bc61ef541_arm64-v8a"/>
+        <meta-data android:name="TINKER_ID" android:value="tinker_id_f27acdfef08d000160f65a8f43f2c2fc656b5ae2_arm64-v8a"/>
     </application>
 </manifest>

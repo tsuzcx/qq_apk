@@ -3,51 +3,51 @@ package com.tencent.mm.plugin.d.a.b.a;
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.d.a.b.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 @TargetApi(18)
 public class f
   extends a
 {
   static final String TAG;
-  public static String mPv;
-  public static String mPw;
-  public long mPA = 0L;
-  public long mPB = 0L;
-  public int mPx = -1;
-  public int mPy = -1;
-  public int mPz = -1;
+  public static String nrH;
+  public static String nrI;
+  public int nrJ = -1;
+  public int nrK = -1;
+  public int nrL = -1;
+  public long nrM = 0L;
+  public long nrN = 0L;
   
   static
   {
     AppMethodBeat.i(22584);
     TAG = f.class.getName();
-    mPv = h.mOb;
-    mPw = h.mOc;
+    nrH = h.nqn;
+    nrI = h.nqo;
     AppMethodBeat.o(22584);
   }
   
   public f()
   {
-    this.mOt = null;
-    this.mOu = 8;
-    this.mNN = 1L;
+    this.nqF = null;
+    this.nqG = 8;
+    this.npZ = 1L;
   }
   
-  public final byte[] bBD()
+  public final byte[] bIB()
   {
     AppMethodBeat.i(22583);
-    if (this.mPx < 0)
+    if (this.nrJ < 0)
     {
-      ad.e(TAG, "stepCount is invalid");
+      ac.e(TAG, "stepCount is invalid");
       AppMethodBeat.o(22583);
       return null;
     }
-    if (this.mPy >= 0) {}
+    if (this.nrK >= 0) {}
     for (int i = 7;; i = 4)
     {
       int j = i;
-      if (this.mPz >= 0) {
+      if (this.nrL >= 0) {
         j = i + 3;
       }
       byte[] arrayOfByte = new byte[j];
@@ -56,13 +56,13 @@ public class f
       i = 1;
       while (j < 3)
       {
-        arrayOfByte[i] = ((byte)(this.mPx >> j * 8 & 0xFF));
+        arrayOfByte[i] = ((byte)(this.nrJ >> j * 8 & 0xFF));
         i += 1;
         j += 1;
       }
       j = i;
       int k;
-      if (this.mPy >= 0)
+      if (this.nrK >= 0)
       {
         arrayOfByte[0] = ((byte)(arrayOfByte[0] | 0x2));
         k = 0;
@@ -72,12 +72,12 @@ public class f
           if (k >= 3) {
             break;
           }
-          arrayOfByte[i] = ((byte)(this.mPy >> k * 8 & 0xFF));
+          arrayOfByte[i] = ((byte)(this.nrK >> k * 8 & 0xFF));
           i += 1;
           k += 1;
         }
       }
-      if (this.mPz >= 0)
+      if (this.nrL >= 0)
       {
         arrayOfByte[0] = 4;
         k = 0;
@@ -85,7 +85,7 @@ public class f
         j = k;
         while (j < 3)
         {
-          arrayOfByte[i] = ((byte)(this.mPz >> j * 8 & 0xFF));
+          arrayOfByte[i] = ((byte)(this.nrL >> j * 8 & 0xFF));
           j += 1;
           i += 1;
         }

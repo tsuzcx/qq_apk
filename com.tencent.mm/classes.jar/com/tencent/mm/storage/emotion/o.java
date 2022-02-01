@@ -1,60 +1,77 @@
 package com.tencent.mm.storage.emotion;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bm;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
+import java.io.IOException;
 
 public final class o
-  extends bm
+  extends j<n>
+  implements g.a
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  public e db;
   
   static
   {
-    AppMethodBeat.i(105121);
-    c.a locala = new c.a();
-    locala.EYt = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "prodcutID";
-    locala.EYv.put("prodcutID", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" prodcutID TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "prodcutID";
-    locala.columns[1] = "totalCount";
-    locala.EYv.put("totalCount", "INTEGER");
-    localStringBuilder.append(" totalCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "continuCount";
-    locala.EYv.put("continuCount", "INTEGER");
-    localStringBuilder.append(" continuCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "flag";
-    locala.EYv.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "modifyTime";
-    locala.EYv.put("modifyTime", "LONG");
-    localStringBuilder.append(" modifyTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "showTipsTime";
-    locala.EYv.put("showTipsTime", "LONG");
-    localStringBuilder.append(" showTipsTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "setFlagTime";
-    locala.EYv.put("setFlagTime", "LONG");
-    localStringBuilder.append(" setFlagTime LONG");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(105121);
+    AppMethodBeat.i(105120);
+    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "EmotionRewardInfo") };
+    AppMethodBeat.o(105120);
   }
   
-  public final c.a getDBInfo()
+  public o(e parame)
   {
-    return null;
+    super(parame, n.info, "EmotionRewardInfo", null);
+    this.db = parame;
+  }
+  
+  public final int a(g paramg)
+  {
+    this.db = paramg;
+    return 0;
+  }
+  
+  public final GetEmotionRewardResponse aPd(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(105119);
+    if (bs.isNullOrNil(paramString))
+    {
+      ac.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
+      AppMethodBeat.o(105119);
+      return null;
+    }
+    Cursor localCursor = this.db.a("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    paramString = localObject;
+    if (localCursor != null)
+    {
+      paramString = localObject;
+      if (!localCursor.moveToFirst()) {}
+    }
+    try
+    {
+      paramString = new GetEmotionRewardResponse();
+      paramString.parseFrom(localCursor.getBlob(0));
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(105119);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bs.m(paramString) });
+        paramString = localObject;
+      }
+    }
   }
 }
 

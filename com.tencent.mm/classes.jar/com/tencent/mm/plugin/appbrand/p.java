@@ -11,12 +11,12 @@ public abstract interface p
   
   public static final class a
   {
-    private static final Set<p> iGR;
+    private static final Set<p> jgU;
     
     static
     {
       AppMethodBeat.i(43958);
-      iGR = new HashSet();
+      jgU = new HashSet();
       AppMethodBeat.o(43958);
     }
     
@@ -24,9 +24,9 @@ public abstract interface p
     {
       AppMethodBeat.i(43956);
       if (paramp != null) {
-        synchronized (iGR)
+        synchronized (jgU)
         {
-          iGR.add(paramp);
+          jgU.add(paramp);
           AppMethodBeat.o(43956);
           return;
         }
@@ -34,12 +34,12 @@ public abstract interface p
       AppMethodBeat.o(43956);
     }
     
-    static Set<p> aNt()
+    static Set<p> aUj()
     {
       AppMethodBeat.i(43957);
-      synchronized (iGR)
+      synchronized (jgU)
       {
-        HashSet localHashSet = new HashSet(iGR);
+        HashSet localHashSet = new HashSet(jgU);
         AppMethodBeat.o(43957);
         return localHashSet;
       }
@@ -48,7 +48,7 @@ public abstract interface p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.p
  * JD-Core Version:    0.7.0.1
  */

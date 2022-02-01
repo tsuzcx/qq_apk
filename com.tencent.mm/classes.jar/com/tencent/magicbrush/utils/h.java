@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/utils/Util;", "", "()V", "TAG", "", "currentTicks", "", "format", "args", "", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "isNullOrNil", "", "str", "loadLibrary", "", "libName", "loader", "Ljava/lang/ClassLoader;", "nullAsNil", "qualityClose", "c", "Ljava/io/Closeable;", "quietlyClose", "closeable", "ticksToNow", "tick", "forEachCopyOnWrite", "T", "", "action", "Lkotlin/Function1;", "lock", "lib-magicbrush-nano_release"})
+@l(fNY={1, 1, 13}, fNZ={""}, fOa={"Lcom/tencent/magicbrush/utils/Util;", "", "()V", "TAG", "", "currentTicks", "", "format", "args", "", "(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;", "isNullOrNil", "", "str", "loadLibrary", "", "libName", "loader", "Ljava/lang/ClassLoader;", "nullAsNil", "qualityClose", "c", "Ljava/io/Closeable;", "quietlyClose", "closeable", "ticksToNow", "tick", "forEachCopyOnWrite", "T", "", "action", "Lkotlin/Function1;", "lock", "lib-magicbrush-nano_release"})
 public final class h
 {
-  public static final h csR;
+  public static final h cpZ;
   
   static
   {
     AppMethodBeat.i(140303);
-    csR = new h();
+    cpZ = new h();
     AppMethodBeat.o(140303);
   }
   
-  public static final long GC()
+  public static final long Gn()
   {
     AppMethodBeat.i(140300);
     long l = SystemClock.elapsedRealtime();
@@ -26,7 +26,7 @@ public final class h
     return l;
   }
   
-  public static final long aS(long paramLong)
+  public static final long aO(long paramLong)
   {
     AppMethodBeat.i(140301);
     long l = SystemClock.elapsedRealtime();
@@ -34,7 +34,7 @@ public final class h
     return l - paramLong;
   }
   
-  public static final void cP(String paramString)
+  public static final void cE(String paramString)
   {
     AppMethodBeat.i(140302);
     k.h(paramString, "libName");
@@ -57,7 +57,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.h
  * JD-Core Version:    0.7.0.1
  */

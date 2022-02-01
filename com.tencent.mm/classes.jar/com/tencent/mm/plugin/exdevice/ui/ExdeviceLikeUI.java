@@ -16,13 +16,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.br.d;
 import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
 import java.util.ArrayList;
@@ -33,11 +35,11 @@ public class ExdeviceLikeUI
   extends MMActivity
 {
   private String mAppName;
-  private ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> pdv;
-  private boolean pdw;
-  private ListView pdx;
-  private a pdy;
-  private final int pdz = 30;
+  private ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> pGG;
+  private boolean pGH;
+  private ListView pGI;
+  private a pGJ;
+  private final int pGK = 30;
   
   public int getLayoutId()
   {
@@ -51,13 +53,13 @@ public class ExdeviceLikeUI
     this.mAppName = getIntent().getStringExtra("app_username");
     paramBundle = getIntent().getStringExtra("key_rank_info");
     Object localObject1 = getIntent().getStringExtra("key_rank_semi");
-    this.pdw = getIntent().getBooleanExtra("key_is_like_read_only", false);
-    if (!bt.isNullOrNil(paramBundle))
+    this.pGH = getIntent().getBooleanExtra("key_is_like_read_only", false);
+    if (!bs.isNullOrNil(paramBundle))
     {
       String str = this.mAppName;
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ExdeviceMsgXmlParser", paramBundle);
-      if (bt.isNullOrNil(paramBundle)) {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ExdeviceMsgXmlParser", "like info is null or nil");
+      ac.d("MicroMsg.ExdeviceMsgXmlParser", paramBundle);
+      if (bs.isNullOrNil(paramBundle)) {
+        ac.e("MicroMsg.ExdeviceMsgXmlParser", "like info is null or nil");
       }
       Map localMap;
       do
@@ -65,13 +67,13 @@ public class ExdeviceLikeUI
         do
         {
           paramBundle = null;
-          this.pdv = paramBundle;
-          this.pdx = ((ListView)findViewById(2131299554));
-          this.pdx.setEmptyView(findViewById(2131299457));
-          this.pdy = new a();
-          this.pdx.setAdapter(this.pdy);
-          if (!this.pdw) {
-            this.pdx.setOnItemClickListener(new AdapterView.OnItemClickListener()
+          this.pGG = paramBundle;
+          this.pGI = ((ListView)findViewById(2131299554));
+          this.pGI.setEmptyView(findViewById(2131299457));
+          this.pGJ = new a();
+          this.pGI.setAdapter(this.pGJ);
+          if (!this.pGH) {
+            this.pGI.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
               public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
               {
@@ -82,16 +84,16 @@ public class ExdeviceLikeUI
                 paramAnonymousAdapterView.putExtra("rank_id", paramAnonymousView.field_rankID);
                 paramAnonymousAdapterView.putExtra("device_type", 1);
                 paramAnonymousView = ExdeviceLikeUI.this;
-                paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousAdapterView);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.adn(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lS(0));
+                paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 ExdeviceLikeUI.this.finish();
                 AppMethodBeat.o(24039);
               }
             });
           }
-          this.pdx.setOnItemClickListener(new AdapterView.OnItemClickListener()
+          this.pGI.setOnItemClickListener(new AdapterView.OnItemClickListener()
           {
             public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
             {
@@ -101,13 +103,13 @@ public class ExdeviceLikeUI
               paramAnonymousView.putExtra("rank_id", paramAnonymousAdapterView.field_rankID);
               paramAnonymousView.putExtra("device_type", 1);
               paramAnonymousView.putExtra("locate_to_username", paramAnonymousAdapterView.field_username);
-              paramAnonymousView.putExtra("app_username", v.sh("gh_43f2581f6fd6"));
+              paramAnonymousView.putExtra("app_username", v.wk("gh_43f2581f6fd6"));
               d.b(ExdeviceLikeUI.this, "exdevice", ".ui.ExdeviceRankInfoUI", paramAnonymousView);
               AppMethodBeat.o(24040);
             }
           });
           setMMTitle(2131758550);
-          if (!this.pdw) {
+          if (!this.pGH) {
             addTextOptionMenu(0, getString(2131758548), new MenuItem.OnMenuItemClickListener()
             {
               public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -119,9 +121,9 @@ public class ExdeviceLikeUI
                 ((Intent)localObject).putExtra("key_is_latest", true);
                 ((Intent)localObject).putExtra("device_type", 1);
                 paramAnonymousMenuItem = ExdeviceLikeUI.this;
-                localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+                localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/exdevice/ui/ExdeviceLikeUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 ExdeviceLikeUI.this.finish();
                 AppMethodBeat.o(24037);
@@ -141,9 +143,9 @@ public class ExdeviceLikeUI
           });
           AppMethodBeat.o(24044);
           return;
-          paramBundle = k.b.ar(paramBundle, (String)localObject1);
+          paramBundle = k.b.az(paramBundle, (String)localObject1);
         } while (paramBundle == null);
-        localMap = paramBundle.gHc;
+        localMap = paramBundle.hhD;
         localObject1 = new ArrayList();
       } while ((localMap == null) || (localMap.isEmpty()));
       int i = 0;
@@ -152,10 +154,10 @@ public class ExdeviceLikeUI
       for (paramBundle = "";; paramBundle = Integer.valueOf(i))
       {
         localObject2 = (String)localMap.get(paramBundle + ".username");
-        if (!bt.isNullOrNil((String)localObject2)) {
+        if (!bs.isNullOrNil((String)localObject2)) {
           break label363;
         }
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ExdeviceMsgXmlParser", "should break now : %d", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.ExdeviceMsgXmlParser", "should break now : %d", new Object[] { Integer.valueOf(i) });
         paramBundle = (Bundle)localObject1;
         break;
       }
@@ -189,7 +191,7 @@ public class ExdeviceLikeUI
         ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject5).field_appusername = str;
         ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject5).field_rankID = ((String)localObject3);
         ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject5).field_username = ((String)localObject2);
-        ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject5).field_timestamp = bt.getInt(paramBundle, 0);
+        ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject5).field_timestamp = bs.getInt(paramBundle, 0);
         ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject5).field_liketips = ((String)localObject4);
         ((ArrayList)localObject1).add(localObject5);
         i += 1;
@@ -201,11 +203,11 @@ public class ExdeviceLikeUI
       }
     }
     paramBundle = getIntent().getStringExtra("rank_id");
-    if (!bt.isNullOrNil(paramBundle)) {}
+    if (!bs.isNullOrNil(paramBundle)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.pdv = com.tencent.mm.plugin.exdevice.model.ad.bZL().UO(paramBundle);
+      this.pGG = ad.cgU().Za(paramBundle);
       break;
     }
   }
@@ -256,23 +258,23 @@ public class ExdeviceLikeUI
         {
           paramView = LayoutInflater.from(ExdeviceLikeUI.this).inflate(2131493867, paramViewGroup, false);
           paramViewGroup = new a();
-          paramViewGroup.fuj = ((ImageView)paramView.findViewById(2131299543));
-          paramViewGroup.pdB = ((NoMeasuredTextView)paramView.findViewById(2131299597));
-          paramViewGroup.hJf = ((TextView)paramView.findViewById(2131299589));
+          paramViewGroup.fxQ = ((ImageView)paramView.findViewById(2131299543));
+          paramViewGroup.pGM = ((NoMeasuredTextView)paramView.findViewById(2131299597));
+          paramViewGroup.ijF = ((TextView)paramView.findViewById(2131299589));
           paramViewGroup.timeTv = ((TextView)paramView.findViewById(2131299588));
-          paramViewGroup.pdB.setTextSize(0, ExdeviceLikeUI.this.getResources().getDimension(2131165517));
-          paramViewGroup.pdB.setTextColor(ExdeviceLikeUI.this.getResources().getColor(2131100711));
-          paramViewGroup.pdB.setSingleLine(true);
-          paramViewGroup.pdB.setShouldEllipsize(true);
+          paramViewGroup.pGM.setTextSize(0, ExdeviceLikeUI.this.getResources().getDimension(2131165517));
+          paramViewGroup.pGM.setTextColor(ExdeviceLikeUI.this.getResources().getColor(2131100711));
+          paramViewGroup.pGM.setSingleLine(true);
+          paramViewGroup.pGM.setShouldEllipsize(true);
           paramView.setTag(paramViewGroup);
           label172:
-          a.b.v(paramViewGroup.fuj, locale.field_username);
-          paramViewGroup.pdB.setText(k.b(ExdeviceLikeUI.this, v.sh(locale.field_username), paramViewGroup.pdB.getTextSize()));
-          if ((bt.isNullOrNil(locale.field_liketips)) || (paramViewGroup.hJf == null)) {
+          a.b.v(paramViewGroup.fxQ, locale.field_username);
+          paramViewGroup.pGM.setText(k.b(ExdeviceLikeUI.this, v.wk(locale.field_username), paramViewGroup.pGM.getTextSize()));
+          if ((bs.isNullOrNil(locale.field_liketips)) || (paramViewGroup.ijF == null)) {
             break label343;
           }
-          paramViewGroup.hJf.setVisibility(0);
-          paramViewGroup.hJf.setText(locale.field_liketips);
+          paramViewGroup.ijF.setVisibility(0);
+          paramViewGroup.ijF.setText(locale.field_liketips);
           label251:
           paramInt = (int)((System.currentTimeMillis() / 1000L - locale.field_timestamp) / 60L + 1L);
           if (paramInt > 30) {
@@ -290,10 +292,10 @@ public class ExdeviceLikeUI
         paramViewGroup = (a)paramView.getTag();
         break label172;
         label343:
-        if (paramViewGroup.hJf == null) {
+        if (paramViewGroup.ijF == null) {
           break label251;
         }
-        paramViewGroup.hJf.setVisibility(8);
+        paramViewGroup.ijF.setVisibility(8);
         break label251;
         label362:
         paramViewGroup.timeTv.setText(h.c(ExdeviceLikeUI.this, locale.field_timestamp * 1000L, true));
@@ -302,9 +304,9 @@ public class ExdeviceLikeUI
     
     final class a
     {
-      ImageView fuj;
-      TextView hJf;
-      NoMeasuredTextView pdB;
+      ImageView fxQ;
+      TextView ijF;
+      NoMeasuredTextView pGM;
       TextView timeTv;
       
       a() {}

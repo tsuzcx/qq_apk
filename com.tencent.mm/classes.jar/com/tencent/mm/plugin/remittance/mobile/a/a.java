@@ -5,16 +5,16 @@ import com.tencent.mm.wallet_core.c.l.a;
 public abstract class a<InputType>
   implements l.a<InputType>
 {
-  public void djE() {}
+  public void dxG() {}
   
-  public final int djF()
+  public final int dxH()
   {
     return 1149;
   }
   
-  public void djG() {}
+  public void dxI() {}
   
-  public final void djH() {}
+  public final void dxJ() {}
 }
 
 

@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.Comparator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/comparisons/ReverseOrderComparator;", "Ljava/util/Comparator;", "", "", "Lkotlin/Comparator;", "()V", "compare", "", "a", "b", "reversed", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/comparisons/ReverseOrderComparator;", "Ljava/util/Comparator;", "", "", "Lkotlin/Comparator;", "()V", "compare", "", "a", "b", "reversed", "kotlin-stdlib"})
 public final class f
   implements Comparator<Comparable<? super Object>>
 {
-  public static final f Jgt;
+  public static final f KTN;
   
   static
   {
     AppMethodBeat.i(129001);
-    Jgt = new f();
+    KTN = new f();
     AppMethodBeat.o(129001);
   }
   
   public final Comparator<Comparable<Object>> reversed()
   {
-    return (Comparator)e.Jgs;
+    return (Comparator)e.KTM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "T", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 public final class MediaItemView$f
   implements View.OnClickListener
 {
@@ -16,9 +16,9 @@ public final class MediaItemView$f
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(164952);
-    paramView = this.rFp;
+    paramView = this.sOh;
     k.g(paramView, "mediaSelectBox");
-    CheckBox localCheckBox = this.rFp;
+    CheckBox localCheckBox = this.sOh;
     k.g(localCheckBox, "mediaSelectBox");
     if (!localCheckBox.isChecked()) {}
     for (boolean bool = true;; bool = false)

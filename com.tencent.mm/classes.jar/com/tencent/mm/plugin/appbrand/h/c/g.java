@@ -14,20 +14,20 @@ import java.util.List;
 public class g
 {
   private static final String TAG;
-  private static List<NetworkInterface> jjA;
+  private static List<NetworkInterface> jJN;
   
   static
   {
     AppMethodBeat.i(158991);
     TAG = g.class.getSimpleName();
-    jjA = new ArrayList();
+    jJN = new ArrayList();
     AppMethodBeat.o(158991);
   }
   
-  public static List<NetworkInterface> aUW()
+  public static List<NetworkInterface> bbU()
   {
     AppMethodBeat.i(158988);
-    jjA.clear();
+    jJN.clear();
     for (;;)
     {
       try
@@ -44,7 +44,7 @@ public class g
         Iterator localIterator;
         continue;
       }
-      localObject = jjA;
+      localObject = jJN;
       AppMethodBeat.o(158988);
       return localObject;
       localObject = Collections.list((Enumeration)localObject).iterator();
@@ -54,14 +54,14 @@ public class g
         localIterator = Collections.list(localNetworkInterface.getInetAddresses()).iterator();
         if (localIterator.hasNext()) {
           if (((InetAddress)localIterator.next()).getHostAddress().startsWith("192.168")) {
-            jjA.add(localNetworkInterface);
+            jJN.add(localNetworkInterface);
           }
         }
       }
     }
   }
   
-  public static String aUX()
+  public static String bbV()
   {
     AppMethodBeat.i(158989);
     Object localObject1 = null;
@@ -127,7 +127,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.c.g
  * JD-Core Version:    0.7.0.1
  */

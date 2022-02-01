@@ -8,10 +8,9 @@ import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.report.h;
 import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.a;
 import com.tencent.mm.plugin.appbrand.widget.recentview.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.l;
 
 public final class o
@@ -19,7 +18,7 @@ public final class o
 {
   public o()
   {
-    super(q.kSi.ordinal());
+    super(q.ltI.ordinal());
     AppMethodBeat.i(47662);
     AppMethodBeat.o(47662);
   }
@@ -34,18 +33,18 @@ public final class o
   public final void a(Context paramContext, aa paramaa, String paramString, p paramp)
   {
     AppMethodBeat.i(47664);
-    paramp = paramaa.getRuntime().Ef();
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = paramp.jdS;
-    AppBrandStickyBannerLogic.a.bpb();
-    com.tencent.mm.plugin.appbrand.g.a(paramString, g.d.iDf);
-    AppBrandStickyBannerLogic.a.a(paramContext, paramp.appId, paramp.jdS.iOQ, paramp.dfM, paramp.hGe);
-    h.a(paramString, paramaa.jzm, 13, "", bt.aGK(), 1, 0);
+    paramp = paramaa.getRuntime().DI();
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = paramp.jEg;
+    AppBrandStickyBannerLogic.a.bvW();
+    com.tencent.mm.plugin.appbrand.g.a(paramString, g.d.jdf);
+    AppBrandStickyBannerLogic.a.a(paramContext, paramp.appId, paramp.jEg.jpa, paramp.ddh, paramp.igG);
+    com.tencent.mm.plugin.appbrand.report.g.a(paramString, paramaa.jZJ, 13, "", bs.aNx(), 1, 0);
     AppMethodBeat.o(47664);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.o
  * JD-Core Version:    0.7.0.1
  */

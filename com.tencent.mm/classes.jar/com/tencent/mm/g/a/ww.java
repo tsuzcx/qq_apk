@@ -7,8 +7,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ww
   extends b
 {
-  public a dCp;
-  public b dCq;
+  public a dzI;
+  public b dzJ;
   
   public ww()
   {
@@ -17,34 +17,28 @@ public final class ww
   
   private ww(byte paramByte)
   {
-    AppMethodBeat.i(149895);
-    this.dCp = new a();
-    this.dCq = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116056);
+    this.dzI = new a();
+    this.dzJ = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149895);
+    AppMethodBeat.o(116056);
   }
   
   public static final class a
   {
-    public String content;
     public Context context;
-    public byte[] dCi;
-    public int dCj = 0;
-    public int djq = 0;
-    public String talker;
+    public int type;
   }
   
   public static final class b
   {
-    public boolean dCr = false;
-    public boolean dCs = false;
-    public int type = 0;
+    public boolean dzK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ww
  * JD-Core Version:    0.7.0.1
  */

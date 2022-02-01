@@ -21,17 +21,17 @@ public class AssetReader
   
   public AssetReader(Asset paramAsset)
   {
-    AppMethodBeat.i(201460);
+    AppMethodBeat.i(197521);
     this.status = AVAssetReaderStatus.AssetReaderStatusUnknown;
     this.outputs = new ArrayList();
     this.outputStatusHashMap = new HashMap();
     this.asset = paramAsset;
-    AppMethodBeat.o(201460);
+    AppMethodBeat.o(197521);
   }
   
   private void updateAssetStatus()
   {
-    AppMethodBeat.i(201464);
+    AppMethodBeat.i(197525);
     Iterator localIterator = this.outputs.iterator();
     int i = 1;
     AssetReaderOutput localAssetReaderOutput;
@@ -49,7 +49,7 @@ public class AssetReader
     if (i != 0)
     {
       this.status = AVAssetReaderStatus.AssetReaderStatusCompleted;
-      AppMethodBeat.o(201464);
+      AppMethodBeat.o(197525);
       return;
     }
     localIterator = this.outputs.iterator();
@@ -67,7 +67,7 @@ public class AssetReader
     if (i != 0)
     {
       this.status = AVAssetReaderStatus.AssetReaderStatusReading;
-      AppMethodBeat.o(201464);
+      AppMethodBeat.o(197525);
       return;
     }
     localIterator = this.outputs.iterator();
@@ -77,7 +77,7 @@ public class AssetReader
       if (this.outputStatusHashMap.get(localAssetReaderOutput) == AVAssetReaderStatus.AssetReaderStatusFailed)
       {
         this.status = AVAssetReaderStatus.AssetReaderStatusFailed;
-        AppMethodBeat.o(201464);
+        AppMethodBeat.o(197525);
         return;
       }
     }
@@ -88,37 +88,37 @@ public class AssetReader
       if (this.outputStatusHashMap.get(localAssetReaderOutput) == AVAssetReaderStatus.AssetReaderStatusCancelled)
       {
         this.status = AVAssetReaderStatus.AssetReaderStatusCancelled;
-        AppMethodBeat.o(201464);
+        AppMethodBeat.o(197525);
         return;
       }
     }
-    AppMethodBeat.o(201464);
+    AppMethodBeat.o(197525);
   }
   
   public void addOutput(AssetReaderOutput paramAssetReaderOutput)
   {
-    AppMethodBeat.i(201462);
+    AppMethodBeat.i(197523);
     if (canAddOutput(paramAssetReaderOutput)) {
       this.outputs.add(paramAssetReaderOutput);
     }
-    AppMethodBeat.o(201462);
+    AppMethodBeat.o(197523);
   }
   
   public boolean canAddOutput(AssetReaderOutput paramAssetReaderOutput)
   {
-    AppMethodBeat.i(201461);
+    AppMethodBeat.i(197522);
     if ((paramAssetReaderOutput != null) && (!this.outputs.contains(paramAssetReaderOutput)))
     {
-      AppMethodBeat.o(201461);
+      AppMethodBeat.o(197522);
       return true;
     }
-    AppMethodBeat.o(201461);
+    AppMethodBeat.o(197522);
     return false;
   }
   
   public void cancelReading()
   {
-    AppMethodBeat.i(201465);
+    AppMethodBeat.i(197526);
     Iterator localIterator = this.outputs.iterator();
     while (localIterator.hasNext())
     {
@@ -127,7 +127,7 @@ public class AssetReader
       localAssetReaderOutput.release();
     }
     updateAssetStatus();
-    AppMethodBeat.o(201465);
+    AppMethodBeat.o(197526);
   }
   
   public Asset getAsset()
@@ -162,7 +162,7 @@ public class AssetReader
   
   public boolean startReading(IContextCreate paramIContextCreate)
   {
-    AppMethodBeat.i(201463);
+    AppMethodBeat.i(197524);
     this.contextCreate = paramIContextCreate;
     Iterator localIterator = this.outputs.iterator();
     if (localIterator.hasNext())
@@ -182,33 +182,33 @@ public class AssetReader
     updateAssetStatus();
     if (this.outputs.size() > 0)
     {
-      AppMethodBeat.o(201463);
+      AppMethodBeat.o(197524);
       return true;
     }
-    AppMethodBeat.o(201463);
+    AppMethodBeat.o(197524);
     return false;
   }
   
   public void statusChanged(AssetReaderOutput paramAssetReaderOutput, AVAssetReaderStatus paramAVAssetReaderStatus)
   {
-    AppMethodBeat.i(201466);
+    AppMethodBeat.i(197527);
     this.outputStatusHashMap.put(paramAssetReaderOutput, paramAVAssetReaderStatus);
     updateAssetStatus();
-    AppMethodBeat.o(201466);
+    AppMethodBeat.o(197527);
   }
   
   public static enum AVAssetReaderStatus
   {
     static
     {
-      AppMethodBeat.i(201459);
+      AppMethodBeat.i(197520);
       AssetReaderStatusUnknown = new AVAssetReaderStatus("AssetReaderStatusUnknown", 0);
       AssetReaderStatusReading = new AVAssetReaderStatus("AssetReaderStatusReading", 1);
       AssetReaderStatusCompleted = new AVAssetReaderStatus("AssetReaderStatusCompleted", 2);
       AssetReaderStatusFailed = new AVAssetReaderStatus("AssetReaderStatusFailed", 3);
       AssetReaderStatusCancelled = new AVAssetReaderStatus("AssetReaderStatusCancelled", 4);
       $VALUES = new AVAssetReaderStatus[] { AssetReaderStatusUnknown, AssetReaderStatusReading, AssetReaderStatusCompleted, AssetReaderStatusFailed, AssetReaderStatusCancelled };
-      AppMethodBeat.o(201459);
+      AppMethodBeat.o(197520);
     }
     
     private AVAssetReaderStatus() {}
@@ -216,7 +216,7 @@ public class AssetReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.AssetReader
  * JD-Core Version:    0.7.0.1
  */

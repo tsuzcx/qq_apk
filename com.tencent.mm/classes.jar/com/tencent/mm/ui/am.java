@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class am
 {
-  public static boolean XC(int paramInt)
+  public static boolean ZN(int paramInt)
   {
     AppMethodBeat.i(159117);
     if (1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.3D)
@@ -56,7 +56,7 @@ public final class am
     return paramDrawable;
   }
   
-  public static int eO(int paramInt1, int paramInt2)
+  public static int eR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159112);
     if ((paramInt2 < 0) || (paramInt2 > 100))
@@ -70,7 +70,12 @@ public final class am
     return 0xFFFFFF & paramInt1 | paramInt2 << 24;
   }
   
-  public static Drawable i(Context paramContext, int paramInt1, int paramInt2)
+  private static int jr(int paramInt1, int paramInt2)
+  {
+    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
+  }
+  
+  public static Drawable k(Context paramContext, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159114);
     paramContext = paramContext.getResources().getDrawable(paramInt1);
@@ -81,17 +86,12 @@ public final class am
     return paramContext;
   }
   
-  private static int je(int paramInt1, int paramInt2)
-  {
-    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
-  }
-  
   public static int o(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159113);
     int i = Color.alpha(paramInt2);
     int j = Color.alpha(paramInt1);
-    int k = je(j, i);
+    int k = jr(j, i);
     paramInt1 = Color.argb(k, b(Color.red(paramInt1), j, Color.red(paramInt2), i, k), b(Color.green(paramInt1), j, Color.green(paramInt2), i, k), b(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
     AppMethodBeat.o(159113);
     return paramInt1;

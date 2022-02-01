@@ -13,55 +13,53 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.g;
+import com.tencent.mm.av.g;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.v;
-import com.tencent.mm.modelvideo.r;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.masssend.a.b;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.AnimImageView;
-import com.tencent.mm.ui.q;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 final class c
-  extends q<com.tencent.mm.plugin.masssend.a.a>
+  extends com.tencent.mm.ui.r<com.tencent.mm.plugin.masssend.a.a>
 {
-  private static short twj = 1;
-  private static short twk = 2;
-  private static short twl = 3;
-  private static short twm = 4;
-  int fwP;
-  private MMActivity imP;
-  private LayoutInflater imq;
-  int nCF;
-  private short[] twn;
-  private List<String> two;
-  String twp;
-  e twq;
+  private static short uEB = 1;
+  private static short uEC = 2;
+  private static short uED = 3;
+  private static short uEE = 4;
+  int fAw;
+  private MMActivity iMV;
+  private LayoutInflater iMw;
+  int ofG;
+  private short[] uEF;
+  private List<String> uEG;
+  String uEH;
+  e uEI;
   
   public c(Context paramContext)
   {
     super(paramContext, new com.tencent.mm.plugin.masssend.a.a());
     AppMethodBeat.i(26409);
-    this.twp = "";
-    this.imP = ((MMActivity)paramContext);
-    this.two = new LinkedList();
-    this.nCF = 10;
-    this.fwP = this.nCF;
-    this.imq = y.js(paramContext);
+    this.uEH = "";
+    this.iMV = ((MMActivity)paramContext);
+    this.uEG = new LinkedList();
+    this.ofG = 10;
+    this.fAw = this.ofG;
+    this.iMw = z.jD(paramContext);
     AppMethodBeat.o(26409);
   }
   
-  private static int Gp(int paramInt)
+  private static int Il(int paramInt)
   {
     if (paramInt <= 2) {
       return 100;
@@ -75,7 +73,7 @@ final class c
     return 204;
   }
   
-  private void cOc()
+  private void dbK()
   {
     AppMethodBeat.i(26414);
     int i = getCount();
@@ -84,38 +82,38 @@ final class c
       AppMethodBeat.o(26414);
       return;
     }
-    this.twn = new short[i];
+    this.uEF = new short[i];
     AppMethodBeat.o(26414);
   }
   
-  public final void Wd()
+  public final void Xb()
   {
     AppMethodBeat.i(26411);
-    this.fwP = com.tencent.mm.plugin.masssend.a.h.cNS().cNN();
-    setCursor(com.tencent.mm.plugin.masssend.a.h.cNS().Fn(this.nCF));
-    cOc();
+    this.fAw = com.tencent.mm.plugin.masssend.a.h.dbz().dbu();
+    setCursor(com.tencent.mm.plugin.masssend.a.h.dbz().Hi(this.ofG));
+    dbK();
     super.notifyDataSetChanged();
     AppMethodBeat.o(26411);
   }
   
-  public final void We()
+  public final void Xc()
   {
     AppMethodBeat.i(26410);
-    Wd();
+    Xb();
     AppMethodBeat.o(26410);
   }
   
-  public final void afI(String paramString)
+  public final void akC(String paramString)
   {
     AppMethodBeat.i(26413);
-    this.twp = paramString;
+    this.uEH = paramString;
     notifyDataSetChanged();
     AppMethodBeat.o(26413);
   }
   
-  public final boolean bLj()
+  public final boolean bSw()
   {
-    return this.nCF >= this.fwP;
+    return this.ofG >= this.fAw;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -143,9 +141,9 @@ final class c
         if ((i == 0) && (j == 0)) {
           break label507;
         }
-        this.twn[paramInt] = 2;
+        this.uEF[paramInt] = 2;
         localObject1 = paramViewGroup;
-        if ((this.twn[paramInt] != 1) || (((com.tencent.mm.plugin.masssend.a.a)localObject1).createTime <= 1000L)) {
+        if ((this.uEF[paramInt] != 1) || (((com.tencent.mm.plugin.masssend.a.a)localObject1).createTime <= 1000L)) {
           break label530;
         }
         paramInt = 1;
@@ -158,18 +156,18 @@ final class c
           label260:
           if (paramInt != 0)
           {
-            paramView.sgI.setVisibility(0);
-            paramView.sgI.setText(com.tencent.mm.pluginsdk.g.h.c(this.imP, ((com.tencent.mm.plugin.masssend.a.a)localObject1).createTime, false));
+            paramView.toC.setVisibility(0);
+            paramView.toC.setText(com.tencent.mm.pluginsdk.g.h.c(this.iMV, ((com.tencent.mm.plugin.masssend.a.a)localObject1).createTime, false));
             label214:
             switch (((com.tencent.mm.plugin.masssend.a.a)localObject1).msgType)
             {
             default: 
               localObject2 = (f)paramViewGroup.getTag();
-              ((f)localObject2).tws.setText(this.imP.getResources().getQuantityString(2131623955, ((com.tencent.mm.plugin.masssend.a.a)localObject1).tvK, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.masssend.a.a)localObject1).tvK) }));
-              if (this.two.contains(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNJ()))
+              ((f)localObject2).uEK.setText(this.iMV.getResources().getQuantityString(2131623955, ((com.tencent.mm.plugin.masssend.a.a)localObject1).uEd, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.masssend.a.a)localObject1).uEd) }));
+              if (this.uEG.contains(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbq()))
               {
-                ((f)localObject2).twt.setSingleLine(false);
-                ((f)localObject2).twt.setEllipsize(null);
+                ((f)localObject2).uEL.setSingleLine(false);
+                ((f)localObject2).uEL.setEllipsize(null);
               }
               break;
             }
@@ -180,21 +178,21 @@ final class c
     }
     for (;;)
     {
-      Object localObject3 = ((f)localObject2).twt;
-      MMActivity localMMActivity = this.imP;
+      Object localObject3 = ((f)localObject2).uEL;
+      MMActivity localMMActivity = this.iMV;
       paramView = new ArrayList();
-      if ((((com.tencent.mm.plugin.masssend.a.a)localObject1).cNM() != null) && (!((com.tencent.mm.plugin.masssend.a.a)localObject1).cNM().equals(""))) {
+      if ((((com.tencent.mm.plugin.masssend.a.a)localObject1).dbt() != null) && (!((com.tencent.mm.plugin.masssend.a.a)localObject1).dbt().equals(""))) {
         break label1758;
       }
       paramView = "";
-      ((TextView)localObject3).setText(k.b(localMMActivity, paramView, ((f)localObject2).twt.getTextSize()));
-      paramInt = (int)((f)localObject2).twt.getTextSize();
-      paramView = ((f)localObject2).twt.getText().toString();
-      com.tencent.mm.cd.a.fromDPToPix(this.imP, 255);
+      ((TextView)localObject3).setText(k.b(localMMActivity, paramView, ((f)localObject2).uEL.getTextSize()));
+      paramInt = (int)((f)localObject2).uEL.getTextSize();
+      paramView = ((f)localObject2).uEL.getText().toString();
+      com.tencent.mm.cc.a.fromDPToPix(this.iMV, 255);
       localObject3 = new Paint();
       ((Paint)localObject3).setTextSize(paramInt);
       ((Paint)localObject3).measureText(paramView);
-      ((f)localObject2).tww.setOnClickListener(new b(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNJ()));
+      ((f)localObject2).uEO.setOnClickListener(new b(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbq()));
       AppMethodBeat.o(26412);
       return paramViewGroup;
       i = 0;
@@ -203,10 +201,10 @@ final class c
       j = 0;
       break label82;
       label507:
-      this.twn[paramInt] = 1;
+      this.uEF[paramInt] = 1;
       localObject1 = paramViewGroup;
       break label102;
-      this.twn[paramInt] = 1;
+      this.uEF[paramInt] = 1;
       break label102;
       label530:
       paramInt = 0;
@@ -215,156 +213,156 @@ final class c
       if (paramView != null)
       {
         paramViewGroup = paramView;
-        if (((f)paramView.getTag()).twz == twj) {
+        if (((f)paramView.getTag()).uER == uEB) {
           break label174;
         }
       }
-      paramViewGroup = this.imq.inflate(2131494737, null);
-      ((f)localObject2).tws = ((TextView)paramViewGroup.findViewById(2131302176));
-      ((f)localObject2).twt = ((TextView)paramViewGroup.findViewById(2131302179));
-      ((f)localObject2).twu = ((TextView)paramViewGroup.findViewById(2131302180));
-      ((f)localObject2).tww = ((TextView)paramViewGroup.findViewById(2131302174));
-      ((f)localObject2).sgI = ((TextView)paramViewGroup.findViewById(2131302185));
-      ((f)localObject2).twy = paramViewGroup.findViewById(2131302175);
-      ((f)localObject2).twz = twj;
+      paramViewGroup = this.iMw.inflate(2131494737, null);
+      ((f)localObject2).uEK = ((TextView)paramViewGroup.findViewById(2131302176));
+      ((f)localObject2).uEL = ((TextView)paramViewGroup.findViewById(2131302179));
+      ((f)localObject2).uEM = ((TextView)paramViewGroup.findViewById(2131302180));
+      ((f)localObject2).uEO = ((TextView)paramViewGroup.findViewById(2131302174));
+      ((f)localObject2).toC = ((TextView)paramViewGroup.findViewById(2131302185));
+      ((f)localObject2).uEQ = paramViewGroup.findViewById(2131302175);
+      ((f)localObject2).uER = uEB;
       paramViewGroup.setTag(localObject2);
       break label174;
       localObject2 = new f();
       if (paramView != null)
       {
         paramViewGroup = paramView;
-        if (((f)paramView.getTag()).twz == twm) {
+        if (((f)paramView.getTag()).uER == uEE) {
           break label174;
         }
       }
-      paramViewGroup = this.imq.inflate(2131494739, null);
-      ((f)localObject2).tws = ((TextView)paramViewGroup.findViewById(2131302176));
-      ((f)localObject2).twt = ((TextView)paramViewGroup.findViewById(2131302179));
-      ((f)localObject2).twv = ((TextView)paramViewGroup.findViewById(2131302177));
-      ((f)localObject2).twu = ((TextView)paramViewGroup.findViewById(2131302184));
-      ((f)localObject2).twx = ((AnimImageView)paramViewGroup.findViewById(2131302183));
-      ((f)localObject2).tww = ((TextView)paramViewGroup.findViewById(2131302174));
-      ((f)localObject2).sgI = ((TextView)paramViewGroup.findViewById(2131302185));
-      ((f)localObject2).twy = paramViewGroup.findViewById(2131302175);
-      ((f)localObject2).twz = twm;
+      paramViewGroup = this.iMw.inflate(2131494739, null);
+      ((f)localObject2).uEK = ((TextView)paramViewGroup.findViewById(2131302176));
+      ((f)localObject2).uEL = ((TextView)paramViewGroup.findViewById(2131302179));
+      ((f)localObject2).uEN = ((TextView)paramViewGroup.findViewById(2131302177));
+      ((f)localObject2).uEM = ((TextView)paramViewGroup.findViewById(2131302184));
+      ((f)localObject2).uEP = ((AnimImageView)paramViewGroup.findViewById(2131302183));
+      ((f)localObject2).uEO = ((TextView)paramViewGroup.findViewById(2131302174));
+      ((f)localObject2).toC = ((TextView)paramViewGroup.findViewById(2131302185));
+      ((f)localObject2).uEQ = paramViewGroup.findViewById(2131302175);
+      ((f)localObject2).uER = uEE;
       paramViewGroup.setTag(localObject2);
       break label174;
       localObject2 = new f();
       if (paramView != null)
       {
         paramViewGroup = paramView;
-        if (((f)paramView.getTag()).twz == twk) {
+        if (((f)paramView.getTag()).uER == uEC) {
           break label174;
         }
       }
-      paramViewGroup = this.imq.inflate(2131494736, null);
-      ((f)localObject2).tws = ((TextView)paramViewGroup.findViewById(2131302176));
-      ((f)localObject2).twt = ((TextView)paramViewGroup.findViewById(2131302179));
-      ((f)localObject2).kuM = ((ImageView)paramViewGroup.findViewById(2131302181));
-      ((f)localObject2).tww = ((TextView)paramViewGroup.findViewById(2131302174));
-      ((f)localObject2).sgI = ((TextView)paramViewGroup.findViewById(2131302185));
-      ((f)localObject2).twy = paramViewGroup.findViewById(2131302175);
-      ((f)localObject2).twz = twk;
+      paramViewGroup = this.iMw.inflate(2131494736, null);
+      ((f)localObject2).uEK = ((TextView)paramViewGroup.findViewById(2131302176));
+      ((f)localObject2).uEL = ((TextView)paramViewGroup.findViewById(2131302179));
+      ((f)localObject2).kWb = ((ImageView)paramViewGroup.findViewById(2131302181));
+      ((f)localObject2).uEO = ((TextView)paramViewGroup.findViewById(2131302174));
+      ((f)localObject2).toC = ((TextView)paramViewGroup.findViewById(2131302185));
+      ((f)localObject2).uEQ = paramViewGroup.findViewById(2131302175);
+      ((f)localObject2).uER = uEC;
       paramViewGroup.setTag(localObject2);
       break label174;
       localObject2 = new f();
       if (paramView != null)
       {
         paramViewGroup = paramView;
-        if (((f)paramView.getTag()).twz == twl) {
+        if (((f)paramView.getTag()).uER == uED) {
           break label174;
         }
       }
-      paramViewGroup = this.imq.inflate(2131494738, null);
-      ((f)localObject2).tws = ((TextView)paramViewGroup.findViewById(2131302176));
-      ((f)localObject2).twt = ((TextView)paramViewGroup.findViewById(2131302179));
-      ((f)localObject2).kuM = ((ImageView)paramViewGroup.findViewById(2131302181));
-      ((f)localObject2).twv = ((TextView)paramViewGroup.findViewById(2131302182));
-      ((f)localObject2).tww = ((TextView)paramViewGroup.findViewById(2131302174));
-      ((f)localObject2).sgI = ((TextView)paramViewGroup.findViewById(2131302185));
-      ((f)localObject2).twy = paramViewGroup.findViewById(2131302175);
-      ((f)localObject2).twz = twl;
+      paramViewGroup = this.iMw.inflate(2131494738, null);
+      ((f)localObject2).uEK = ((TextView)paramViewGroup.findViewById(2131302176));
+      ((f)localObject2).uEL = ((TextView)paramViewGroup.findViewById(2131302179));
+      ((f)localObject2).kWb = ((ImageView)paramViewGroup.findViewById(2131302181));
+      ((f)localObject2).uEN = ((TextView)paramViewGroup.findViewById(2131302182));
+      ((f)localObject2).uEO = ((TextView)paramViewGroup.findViewById(2131302174));
+      ((f)localObject2).toC = ((TextView)paramViewGroup.findViewById(2131302185));
+      ((f)localObject2).uEQ = paramViewGroup.findViewById(2131302175);
+      ((f)localObject2).uER = uED;
       paramViewGroup.setTag(localObject2);
       break label174;
-      paramView.sgI.setVisibility(8);
+      paramView.toC.setVisibility(8);
       break label214;
       paramView = (f)paramViewGroup.getTag();
-      paramView.twu.setText(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNK());
-      k.m(paramView.twu, 1);
+      paramView.uEM.setText(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbr());
+      k.m(paramView.uEM, 1);
       break label260;
       paramView = (f)paramViewGroup.getTag();
-      float f = s.mI(((com.tencent.mm.plugin.masssend.a.a)localObject1).tvL);
-      if (((com.tencent.mm.plugin.masssend.a.a)localObject1).cNJ().equals(this.twp))
+      float f = s.qw(((com.tencent.mm.plugin.masssend.a.a)localObject1).uEe);
+      if (((com.tencent.mm.plugin.masssend.a.a)localObject1).dbq().equals(this.uEH))
       {
-        paramView.twx.setVisibility(0);
-        paramView.twx.eSq();
-        paramView.twu.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        paramView.uEP.setVisibility(0);
+        paramView.uEP.fia();
+        paramView.uEM.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       }
       for (;;)
       {
-        paramView.twv.setText(this.imP.getString(2131759570, new Object[] { Integer.valueOf((int)f) }));
-        paramView.twu.setWidth(com.tencent.mm.cd.a.fromDPToPix(paramView.twu.getContext(), Gp((int)f)));
-        paramView.twx.setWidth(com.tencent.mm.cd.a.fromDPToPix(paramView.twu.getContext(), Gp((int)f)));
-        paramView.twu.setOnClickListener(new d(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNJ()));
+        paramView.uEN.setText(this.iMV.getString(2131759570, new Object[] { Integer.valueOf((int)f) }));
+        paramView.uEM.setWidth(com.tencent.mm.cc.a.fromDPToPix(paramView.uEM.getContext(), Il((int)f)));
+        paramView.uEP.setWidth(com.tencent.mm.cc.a.fromDPToPix(paramView.uEM.getContext(), Il((int)f)));
+        paramView.uEM.setOnClickListener(new d(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbq()));
         break;
-        paramView.twx.setVisibility(8);
-        paramView.twx.bTF();
-        paramView.twu.setCompoundDrawablesWithIntrinsicBounds(null, null, this.imP.getResources().getDrawable(2131689927), null);
+        paramView.uEP.setVisibility(8);
+        paramView.uEP.caT();
+        paramView.uEM.setCompoundDrawablesWithIntrinsicBounds(null, null, this.iMV.getResources().getDrawable(2131689927), null);
       }
       paramView = (f)paramViewGroup.getTag();
-      az.arV();
+      az.ayM();
       if (com.tencent.mm.model.c.isSDCardAvailable())
       {
-        com.tencent.mm.plugin.masssend.a.h.cNS();
-        localObject2 = b.afD(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNK());
+        com.tencent.mm.plugin.masssend.a.h.dbz();
+        localObject2 = b.akx(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbr());
         if (localObject2 != null) {
-          paramView.kuM.setImageBitmap((Bitmap)localObject2);
+          paramView.kWb.setImageBitmap((Bitmap)localObject2);
         }
       }
       for (;;)
       {
-        paramView.kuM.setOnClickListener(new a(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNK(), ((com.tencent.mm.plugin.masssend.a.a)localObject1).tvO));
+        paramView.kWb.setOnClickListener(new a(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbr(), ((com.tencent.mm.plugin.masssend.a.a)localObject1).uEh));
         break;
-        com.tencent.mm.plugin.masssend.a.h.cNS();
-        localObject2 = b.j(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNL(), com.tencent.mm.cd.a.getDensity(paramView.kuM.getContext()));
-        paramView.kuM.setImageBitmap((Bitmap)localObject2);
+        com.tencent.mm.plugin.masssend.a.h.dbz();
+        localObject2 = b.j(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbs(), com.tencent.mm.cc.a.getDensity(paramView.kWb.getContext()));
+        paramView.kWb.setImageBitmap((Bitmap)localObject2);
         continue;
-        paramView.kuM.setImageDrawable(com.tencent.mm.cd.a.l(this.imP, 2131233476));
+        paramView.kWb.setImageDrawable(com.tencent.mm.cc.a.l(this.iMV, 2131233476));
       }
       paramView = (f)paramViewGroup.getTag();
-      com.tencent.mm.modelvideo.o.aCI();
-      localObject2 = com.tencent.mm.modelvideo.t.zR(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNK());
-      localObject2 = com.tencent.mm.aw.o.ayF().a((String)localObject2, com.tencent.mm.cd.a.getDensity(paramView.kuM.getContext()), this.imP);
+      com.tencent.mm.modelvideo.o.aJy();
+      localObject2 = com.tencent.mm.modelvideo.t.DW(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbr());
+      localObject2 = com.tencent.mm.av.o.aFx().a((String)localObject2, com.tencent.mm.cc.a.getDensity(paramView.kWb.getContext()), this.iMV);
       if (localObject2 == null)
       {
-        az.arV();
+        az.ayM();
         if (!com.tencent.mm.model.c.isSDCardAvailable()) {
-          paramView.kuM.setImageDrawable(com.tencent.mm.cd.a.l(this.imP, 2131691365));
+          paramView.kWb.setImageDrawable(com.tencent.mm.cc.a.l(this.iMV, 2131691365));
         }
       }
       for (;;)
       {
-        paramView.kuM.setOnClickListener(new c(((com.tencent.mm.plugin.masssend.a.a)localObject1).cNK(), ((com.tencent.mm.plugin.masssend.a.a)localObject1).videoSource, ((com.tencent.mm.plugin.masssend.a.a)localObject1).cJQ, ((com.tencent.mm.plugin.masssend.a.a)localObject1).tvL));
+        paramView.kWb.setOnClickListener(new c(((com.tencent.mm.plugin.masssend.a.a)localObject1).dbr(), ((com.tencent.mm.plugin.masssend.a.a)localObject1).videoSource, ((com.tencent.mm.plugin.masssend.a.a)localObject1).cGX, ((com.tencent.mm.plugin.masssend.a.a)localObject1).uEe));
         if (((com.tencent.mm.plugin.masssend.a.a)localObject1).videoSource != 2) {
           break label1709;
         }
-        paramView.twv.setVisibility(8);
+        paramView.uEN.setVisibility(8);
         break;
-        paramView.kuM.setImageDrawable(com.tencent.mm.cd.a.l(this.imP, 2131100478));
+        paramView.kWb.setImageDrawable(com.tencent.mm.cc.a.l(this.iMV, 2131100478));
         continue;
-        paramView.kuM.setImageBitmap((Bitmap)localObject2);
+        paramView.kWb.setImageBitmap((Bitmap)localObject2);
       }
       label1709:
-      paramView.twv.setVisibility(0);
-      paramView.twv.setText(bt.pL(((com.tencent.mm.plugin.masssend.a.a)localObject1).tvL));
+      paramView.uEN.setVisibility(0);
+      paramView.uEN.setText(bs.qy(((com.tencent.mm.plugin.masssend.a.a)localObject1).uEe));
       break label260;
-      ((f)localObject2).twt.setSingleLine(true);
-      ((f)localObject2).twt.setEllipsize(TextUtils.TruncateAt.END);
+      ((f)localObject2).uEL.setSingleLine(true);
+      ((f)localObject2).uEL.setEllipsize(TextUtils.TruncateAt.END);
     }
     label1758:
-    Object localObject4 = ((com.tencent.mm.plugin.masssend.a.a)localObject1).cNM().split(";");
+    Object localObject4 = ((com.tencent.mm.plugin.masssend.a.a)localObject1).dbt().split(";");
     if ((localObject4 != null) && (localObject4.length > 0)) {
-      paramView = bt.S((String[])localObject4);
+      paramView = bs.S((String[])localObject4);
     }
     for (;;)
     {
@@ -377,7 +375,7 @@ final class c
       paramInt = 0;
       if (paramInt < paramView.size())
       {
-        String str = v.sh((String)paramView.get(paramInt));
+        String str = v.wk((String)paramView.get(paramInt));
         if (paramInt == paramView.size() - 1) {
           ((StringBuilder)localObject4).append(str);
         }
@@ -397,19 +395,19 @@ final class c
     implements View.OnClickListener
   {
     private String fileName;
-    private int tvO;
+    private int uEh;
     
     public a(String paramString, int paramInt)
     {
       this.fileName = paramString;
-      this.tvO = paramInt;
+      this.uEh = paramInt;
     }
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(26405);
-      ad.v("MicroMsg.HistoryAdapter", "image clicked:" + this.fileName);
-      az.arV();
+      ac.v("MicroMsg.HistoryAdapter", "image clicked:" + this.fileName);
+      az.ayM();
       if (!com.tencent.mm.model.c.isSDCardAvailable())
       {
         com.tencent.mm.ui.base.t.g(c.a(c.this), null);
@@ -417,19 +415,19 @@ final class c
         return;
       }
       paramView = new StringBuilder();
-      az.arV();
-      paramView = com.tencent.mm.model.c.apW() + this.fileName;
-      if ((paramView == null) || (paramView.equals("")) || (!i.eK(paramView)))
+      az.ayM();
+      paramView = com.tencent.mm.model.c.awL() + this.fileName;
+      if ((paramView == null) || (paramView.equals("")) || (!i.eA(paramView)))
       {
-        ad.d("MicroMsg.HistoryAdapter", "showImg : imgPath is null");
+        ac.d("MicroMsg.HistoryAdapter", "showImg : imgPath is null");
         AppMethodBeat.o(26405);
         return;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_compress_type", this.tvO);
+      localIntent.putExtra("key_compress_type", this.uEh);
       localIntent.putExtra("key_favorite", false);
       localIntent.putExtra("key_image_path", paramView);
-      com.tencent.mm.plugin.masssend.a.hYt.d(c.a(c.this), localIntent);
+      com.tencent.mm.plugin.masssend.a.iyx.d(c.a(c.this), localIntent);
       AppMethodBeat.o(26405);
     }
   }
@@ -447,14 +445,14 @@ final class c
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(26406);
-      Object localObject = com.tencent.mm.plugin.masssend.a.h.cNS().afE(this.id);
+      Object localObject = com.tencent.mm.plugin.masssend.a.h.dbz().aky(this.id);
       paramView = new Intent(c.a(c.this), MassSendMsgUI.class);
-      paramView.putExtra("mass_send_contact_list", ((com.tencent.mm.plugin.masssend.a.a)localObject).cNM());
+      paramView.putExtra("mass_send_contact_list", ((com.tencent.mm.plugin.masssend.a.a)localObject).dbt());
       paramView.putExtra("mass_send_again", true);
       localObject = c.a(c.this);
-      paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.adn(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryAdapter$OnSendAgainClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((MMActivity)localObject).startActivity((Intent)paramView.lS(0));
+      paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.aeD(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryAdapter$OnSendAgainClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((MMActivity)localObject).startActivity((Intent)paramView.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/masssend/ui/MassSendHistoryAdapter$OnSendAgainClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(26406);
     }
@@ -479,7 +477,7 @@ final class c
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(26407);
-      az.arV();
+      az.ayM();
       if (!com.tencent.mm.model.c.isSDCardAvailable())
       {
         com.tencent.mm.ui.base.t.g(c.a(c.this), null);
@@ -489,10 +487,10 @@ final class c
       if (this.videoSource == 2) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        com.tencent.mm.modelvideo.o.aCI();
-        boolean bool2 = r.zK(com.tencent.mm.modelvideo.t.zQ(this.fileName));
-        ad.i("MicroMsg.HistoryAdapter", "video clicked, path:%s, isExport:%b, typeQt:%b", new Object[] { this.fileName, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        com.tencent.mm.plugin.masssend.a.hYt.a(bool1, bool2, c.a(c.this), this.fileName, this.length, this.size);
+        com.tencent.mm.modelvideo.o.aJy();
+        boolean bool2 = com.tencent.mm.modelvideo.r.DP(com.tencent.mm.modelvideo.t.DV(this.fileName));
+        ac.i("MicroMsg.HistoryAdapter", "video clicked, path:%s, isExport:%b, typeQt:%b", new Object[] { this.fileName, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        com.tencent.mm.plugin.masssend.a.iyx.a(bool1, bool2, c.a(c.this), this.fileName, this.length, this.size);
         AppMethodBeat.o(26407);
         return;
       }
@@ -512,10 +510,10 @@ final class c
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(26408);
-      ad.v("MicroMsg.HistoryAdapter", "voice clicked:" + this.id);
+      ac.v("MicroMsg.HistoryAdapter", "voice clicked:" + this.id);
       if (c.b(c.this) != null)
       {
-        c.a(c.this, c.b(c.this).afJ(this.id));
+        c.a(c.this, c.b(c.this).akD(this.id));
         c.this.notifyDataSetChanged();
       }
       AppMethodBeat.o(26408);
@@ -524,26 +522,26 @@ final class c
   
   static abstract interface e
   {
-    public abstract String afJ(String paramString);
+    public abstract String akD(String paramString);
   }
   
   static final class f
   {
-    ImageView kuM;
-    TextView sgI;
-    TextView tws;
-    TextView twt;
-    TextView twu;
-    TextView twv;
-    TextView tww;
-    AnimImageView twx;
-    View twy;
-    short twz;
+    ImageView kWb;
+    TextView toC;
+    TextView uEK;
+    TextView uEL;
+    TextView uEM;
+    TextView uEN;
+    TextView uEO;
+    AnimImageView uEP;
+    View uEQ;
+    short uER;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.c
  * JD-Core Version:    0.7.0.1
  */

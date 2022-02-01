@@ -6,8 +6,8 @@ import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.f.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class a
 {
@@ -22,34 +22,34 @@ public final class a
       public final void onAudioFocusChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(137438);
-        ad.i("MicroMsg.Music.MusicAudioFocusHelper", "focus change %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.i("MicroMsg.Music.MusicAudioFocusHelper", "focus change %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if ((paramAnonymousInt == -2) || (paramAnonymousInt == -3))
         {
-          ad.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus lossTransient");
-          if (k.cVi().cUV().azH())
+          ac.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus lossTransient");
+          if (k.diO().diB().aGx())
           {
-            k.cVi().cUV().cTO();
+            k.diO().diB().EM();
             AppMethodBeat.o(137438);
           }
         }
         else if ((paramAnonymousInt == 1) || (paramAnonymousInt == 2) || (paramAnonymousInt == 3))
         {
-          ad.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus gain");
-          if (k.cVi().cUV().azH())
+          ac.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus gain");
+          if (k.diO().diB().aGx())
           {
-            k.cVi().cUV().resume();
+            k.diO().diB().resume();
             AppMethodBeat.o(137438);
           }
         }
         else if (paramAnonymousInt == -1)
         {
-          ad.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus loss, passive pause");
-          if (k.cVi().cUV().azH())
+          ac.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus loss, passive pause");
+          if (k.diO().diB().aGx())
           {
-            k.cVi().cUV().cTO();
-            k.cVi();
-            k.cVh();
-            k.cVi().HM(600000);
+            k.diO().diB().EM();
+            k.diO();
+            k.diN();
+            k.diO().JL(600000);
           }
           if (a.this.audioManager != null) {
             a.this.audioManager.abandonAudioFocus(a.this.audioFocusChangeListener);
@@ -58,14 +58,14 @@ public final class a
         AppMethodBeat.o(137438);
       }
     };
-    this.audioManager = ((AudioManager)aj.getContext().getSystemService("audio"));
+    this.audioManager = ((AudioManager)ai.getContext().getSystemService("audio"));
     AppMethodBeat.o(137439);
   }
   
-  public final void bfc()
+  public final void bjF()
   {
     AppMethodBeat.i(137441);
-    ad.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
+    ac.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
     if (this.audioManager == null)
     {
       AppMethodBeat.o(137441);
@@ -87,7 +87,7 @@ public final class a
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.Music.MusicAudioFocusHelper", "request audio focus %b", new Object[] { Boolean.valueOf(bool) });
+      ac.i("MicroMsg.Music.MusicAudioFocusHelper", "request audio focus %b", new Object[] { Boolean.valueOf(bool) });
       if (i != 1) {
         break;
       }
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.a
  * JD-Core Version:    0.7.0.1
  */

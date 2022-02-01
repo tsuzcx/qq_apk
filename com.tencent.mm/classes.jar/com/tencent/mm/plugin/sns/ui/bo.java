@@ -10,63 +10,63 @@ import android.view.animation.ScaleAnimation;
 import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.h.g;
 import com.tencent.mm.plugin.sns.model.af;
 
 public final class bo
 {
-  boolean lUw;
   Context mContext;
-  AbsoluteLayout wMA;
-  protected Animation wMB;
-  protected Animation wMC;
-  boolean wMD;
-  com.tencent.mm.plugin.sns.ui.d.b wMy;
-  FrameLayout wMz;
-  int wxW;
-  private com.tencent.mm.plugin.sns.i.b xjA;
+  boolean mwy;
+  int xJx;
+  com.tencent.mm.plugin.sns.ui.d.b xZe;
+  FrameLayout xZf;
+  AbsoluteLayout xZg;
+  protected Animation xZh;
+  protected Animation xZi;
+  boolean xZj;
+  private com.tencent.mm.plugin.sns.h.b yws;
   
   public bo(Context paramContext, com.tencent.mm.plugin.sns.ui.d.b paramb, FrameLayout paramFrameLayout)
   {
     AppMethodBeat.i(99761);
-    this.wMA = null;
-    this.wMD = false;
-    this.lUw = false;
-    this.wxW = -1;
+    this.xZg = null;
+    this.xZj = false;
+    this.mwy = false;
+    this.xJx = -1;
     this.mContext = paramContext;
-    this.wMy = paramb;
-    this.wMz = paramFrameLayout;
-    this.wMB = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
-    this.wMB = AnimationUtils.loadAnimation(paramContext, 2130772022);
-    this.wMC = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
-    this.wMC = AnimationUtils.loadAnimation(paramContext, 2130772023);
+    this.xZe = paramb;
+    this.xZf = paramFrameLayout;
+    this.xZh = new ScaleAnimation(1.0F, 1.0F, 0.0F, 1.0F, 1, 1.0F, 1, 0.0F);
+    this.xZh = AnimationUtils.loadAnimation(paramContext, 2130772022);
+    this.xZi = new ScaleAnimation(1.0F, 1.0F, 1.0F, 0.0F, 1, 1.0F, 1, 0.0F);
+    this.xZi = AnimationUtils.loadAnimation(paramContext, 2130772023);
     AppMethodBeat.o(99761);
   }
   
-  public final boolean dDa()
+  public final boolean dRx()
   {
     AppMethodBeat.i(99763);
-    if ((this.xjA != null) && (af.dtm().duM())) {
-      this.xjA.duJ();
+    if ((this.yws != null) && (af.dHJ().dJm())) {
+      this.yws.dJj();
     }
-    if (this.wMA != null)
+    if (this.xZg != null)
     {
-      this.wMz.removeView(this.wMA);
-      this.wMA = null;
+      this.xZf.removeView(this.xZg);
+      this.xZg = null;
       AppMethodBeat.o(99763);
       return true;
     }
-    this.wMD = false;
+    this.xZj = false;
     AppMethodBeat.o(99763);
     return false;
   }
   
-  final void eG(final View paramView)
+  final void eT(final View paramView)
   {
     AppMethodBeat.i(99762);
-    this.wMD = true;
-    paramView.startAnimation(this.wMC);
-    this.wMC.setAnimationListener(new Animation.AnimationListener()
+    this.xZj = true;
+    paramView.startAnimation(this.xZi);
+    this.xZi.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -75,9 +75,9 @@ public final class bo
         {
           paramView.clearAnimation();
           paramView.setVisibility(8);
-          bo.this.dDa();
+          bo.this.dRx();
         }
-        bo.this.wMD = false;
+        bo.this.xZj = false;
         AppMethodBeat.o(99760);
       }
       
@@ -85,7 +85,7 @@ public final class bo
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        bo.this.wMD = true;
+        bo.this.xZj = true;
       }
     });
     AppMethodBeat.o(99762);
@@ -93,11 +93,11 @@ public final class bo
   
   final class a
   {
-    View wwV = null;
+    View xIw = null;
     
     public a(View paramView)
     {
-      this.wwV = paramView;
+      this.xIw = paramView;
     }
   }
 }

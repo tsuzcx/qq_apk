@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.GoodsObject;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class ScanFastFocusEngineNative
 {
@@ -28,7 +28,7 @@ public class ScanFastFocusEngineNative
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.ScanFastFocusEngineNative", localException, "alvinluo FocusEngine init exception", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ScanFastFocusEngineNative", localException, "alvinluo FocusEngine init exception", new Object[0]);
       AppMethodBeat.o(51649);
     }
   }
@@ -42,7 +42,7 @@ public class ScanFastFocusEngineNative
     this.points = new ScanPoint[10];
     this.pointCount = 0;
     this.cropObject = new GoodsObject();
-    ad.i("MicroMsg.ScanFastFocusEngineNative", "alvinluo ScanFastFocusEngineNative constructor %s", new Object[] { Integer.valueOf(hashCode()) });
+    ac.i("MicroMsg.ScanFastFocusEngineNative", "alvinluo ScanFastFocusEngineNative constructor %s", new Object[] { Integer.valueOf(hashCode()) });
     init();
     AppMethodBeat.o(51647);
   }
@@ -67,7 +67,7 @@ public class ScanFastFocusEngineNative
   
   public native boolean isUsingAI();
   
-  public native int nativeInit(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2);
+  public native int nativeInit(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, boolean paramBoolean);
   
   public native void nativeRelease();
   
@@ -90,7 +90,7 @@ public class ScanFastFocusEngineNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.ScanFastFocusEngineNative
  * JD-Core Version:    0.7.0.1
  */

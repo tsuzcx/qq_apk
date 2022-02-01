@@ -1,388 +1,297 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.SurfaceTexture;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.view.TextureView.SurfaceTextureListener;
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.base.MMTextureView;
+import com.tencent.mm.protocal.protobuf.dqc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.wxmm.v2conference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.json.JSONObject;
 
 public final class s
-  extends MMTextureView
-  implements TextureView.SurfaceTextureListener, c
 {
-  private TextPaint ga;
-  protected ap iDu;
-  private boolean jrR;
-  private Bitmap mBitmap;
-  private boolean mInited;
-  private Timer mTimer;
-  private int mVideoHeight;
-  private int mVideoWidth;
-  private int mViewId;
-  private String nQk;
-  private int nQl;
-  private int nSI;
-  private Paint nSL;
-  private int nSM;
-  private boolean nSN;
-  private boolean nSO;
-  private String text;
+  byte[] frameData;
+  boolean mStarted;
+  private HandlerThread mThread;
+  Timer mTimer;
+  private j osL;
+  int owb;
+  int owc;
+  public final Map<String, c> owd;
+  private boolean owe;
   
-  public s(Context paramContext, b paramb, JSONObject paramJSONObject)
+  public s(j paramj)
   {
-    super(paramContext);
-    AppMethodBeat.i(90948);
-    this.mViewId = 0;
-    this.nSI = 0;
-    this.nSL = null;
-    this.nQk = "";
-    this.nQl = -1;
-    this.mBitmap = null;
-    this.mVideoWidth = 0;
-    this.mVideoHeight = 0;
-    this.jrR = false;
-    this.mInited = false;
-    this.ga = null;
-    this.text = "";
-    this.nSN = false;
-    this.nSO = false;
-    this.nQl = paramb.nPB;
-    this.nQk = paramb.openId;
-    this.nSL = new Paint();
-    this.nSL.setColor(-16777216);
-    this.nSL.setFilterBitmap(false);
-    setSurfaceTextureListener(this);
-    this.nSN = paramJSONObject.optBoolean("debug", false);
-    if ((this.nSN) || (h.IS_FLAVOR_RED) || (bu.eGT())) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(90942);
+    this.osL = null;
+    this.mThread = null;
+    this.owb = 0;
+    this.owc = 0;
+    this.mTimer = null;
+    this.frameData = new byte[l.bVu().defaultHeight * l.bVu().defaultWidth * 4];
+    this.owd = new HashMap();
+    this.mStarted = false;
+    this.owe = true;
+    this.osL = paramj;
+    AppMethodBeat.o(90942);
+  }
+  
+  private b Wf(String paramString)
+  {
+    AppMethodBeat.i(90945);
+    if (this.osL == null)
     {
-      this.nSN = bool;
-      if (!this.nSN) {
-        break label315;
-      }
-      this.nSM = 0;
-      this.ga = new TextPaint();
-      this.ga.setColor(-65536);
-      this.ga.setTextSize(25.0F);
-      this.ga.setAntiAlias(true);
-      this.nSO = false;
-      this.mTimer = new Timer("CloudVoIP_video_info");
-      this.text = "debug...";
-      this.iDu = new ap();
-      if ((this.mTimer != null) && (!this.nSO) && (this.iDu != null)) {
-        break;
-      }
-      AppMethodBeat.o(90948);
-      return;
+      AppMethodBeat.o(90945);
+      return null;
     }
-    this.nSO = true;
-    paramContext = new TimerTask()
+    Object localObject = this.osL.ots;
+    if (localObject == null)
     {
-      public final void run()
+      AppMethodBeat.o(90945);
+      return null;
+    }
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      b localb = (b)((Iterator)localObject).next();
+      if (localb.openId.equals(paramString))
       {
-        AppMethodBeat.i(90947);
-        s.this.iDu.post(new Runnable()
+        AppMethodBeat.o(90945);
+        return localb;
+      }
+    }
+    AppMethodBeat.o(90945);
+    return null;
+  }
+  
+  final dqc We(String paramString)
+  {
+    AppMethodBeat.i(184492);
+    ac.d("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "getVideoSize");
+    c localc;
+    synchronized (this.owd)
+    {
+      localc = (c)this.owd.get(paramString);
+      if (localc == null)
+      {
+        AppMethodBeat.o(184492);
+        return null;
+      }
+    }
+    paramString = new dqc();
+    paramString.EsY = localc.getMemberId();
+    if (localc.bVo())
+    {
+      ??? = (i)localc;
+      if (((i)???).getHeight() > ((i)???).getWidth()) {}
+      for (i = ((i)???).getHeight();; i = ((i)???).getWidth())
+      {
+        paramString.FXp = i;
+        AppMethodBeat.o(184492);
+        return paramString;
+      }
+    }
+    ??? = (t)localc;
+    if (((t)???).getHeight() > ((t)???).getWidth()) {}
+    for (int i = ((t)???).getHeight();; i = ((t)???).getWidth())
+    {
+      paramString.FXp = i;
+      break;
+    }
+  }
+  
+  public final c a(Context paramContext, JSONObject arg2)
+  {
+    AppMethodBeat.i(90944);
+    if (p.otZ.ouf != p.d.ovS)
+    {
+      ac.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not in room, data:" + ???.toString());
+      AppMethodBeat.o(90944);
+      return null;
+    }
+    String str = ???.optString("openId", "");
+    Object localObject = Wf(str);
+    if (localObject == null)
+    {
+      ac.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "newView failed, not found member, data:" + ???.toString());
+      AppMethodBeat.o(90944);
+      return null;
+    }
+    ac.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "new View, mid:" + ((b)localObject).osF + " data:" + ???.toString());
+    if (???.optString("type", "camera").equals("camera")) {
+      if (this.owe) {
+        paramContext = new n(paramContext, (b)localObject);
+      }
+    }
+    for (;;)
+    {
+      if (paramContext.bVo())
+      {
+        ??? = p.otZ;
+        ac.i("MicroMsg.OpenVoice.OpenVoiceService", "onCameraStart");
+        ???.ag(new p.15(???));
+      }
+      synchronized (this.owd)
+      {
+        localObject = (c)this.owd.get(str);
+        if (localObject != null)
+        {
+          ((c)localObject).uint();
+          this.owd.remove(str);
+        }
+        this.owd.put(str, paramContext);
+        AppMethodBeat.o(90944);
+        return paramContext;
+        paramContext = new i(paramContext, (b)localObject);
+        continue;
+        paramContext = new t(paramContext, (b)localObject, ???);
+      }
+    }
+  }
+  
+  public final boolean bVC()
+  {
+    AppMethodBeat.i(90943);
+    ac.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay");
+    try
+    {
+      try
+      {
+        if (this.mStarted) {
+          return false;
+        }
+        this.mStarted = true;
+        if (this.mTimer != null)
+        {
+          this.mTimer.cancel();
+          this.mTimer = null;
+        }
+        this.mTimer = new Timer();
+        this.mTimer.schedule(new TimerTask()
         {
           public final void run()
           {
-            AppMethodBeat.i(90946);
-            s.a(s.this);
-            AppMethodBeat.o(90946);
+            AppMethodBeat.i(90941);
+            int k = 8;
+            if (k > 0) {}
+            for (;;)
+            {
+              int i;
+              try
+              {
+                if (s.this.isStarted())
+                {
+                  j = 0;
+                  int m = 0;
+                  i = (byte)(j + 1);
+                  if (j < 2)
+                  {
+                    s.this.frameData[0] = i;
+                    ??? = p.otZ;
+                    j = p.aO(s.this.frameData);
+                    int n = l.bVu().field_remoteImgLength;
+                    int i1 = l.bVu().field_remoteImgHeight;
+                    int i2 = l.bVu().field_remoteImgWidth;
+                    int i3 = l.bVu().field_remoteImgMember;
+                    ??? = s.this;
+                    int i4 = ((s)???).owb + 1;
+                    ((s)???).owb = i4;
+                    if (i4 % 100 == 0) {
+                      ac.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "GetVideo, mark:" + (i - 1) + " ret:" + j + ", len:" + s.this.frameData.length + ", rLen:" + n + ", rHeight:" + i1 + ", rWidth:" + i2 + ", rMid:" + i3 + ", drawCnt:" + s.this.owc);
+                    }
+                    if ((j <= 0) || (n <= 0) || (i1 <= 0) || (i2 <= 0)) {
+                      break label518;
+                    }
+                    a locala = new a();
+                    locala.osD = s.this.frameData;
+                    locala.cGX = n;
+                    locala.width = i2;
+                    locala.height = i1;
+                    locala.osE = i3;
+                    synchronized (s.this.owd)
+                    {
+                      Object localObject3 = s.this.owd.entrySet().iterator();
+                      if (!((Iterator)localObject3).hasNext()) {
+                        break label513;
+                      }
+                      c localc = (c)((Map.Entry)((Iterator)localObject3).next()).getValue();
+                      if ((localc == null) || (localc.bVo()) || (localc.getMemberId() != locala.osE)) {
+                        continue;
+                      }
+                      localc.a(locala);
+                      localObject3 = s.this;
+                      ((s)localObject3).owc += 1;
+                      j = 1;
+                      if (j == 0) {
+                        ac.w("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "thread handler, mid:" + locala.osE + " not found");
+                      }
+                      j = i;
+                      m = 1;
+                    }
+                  }
+                  if (m != 0) {
+                    break label506;
+                  }
+                }
+              }
+              catch (Exception localException)
+              {
+                ac.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoMgr", localException, "timer task crash", new Object[0]);
+                AppMethodBeat.o(90941);
+                return;
+              }
+              AppMethodBeat.o(90941);
+              return;
+              label506:
+              k -= 1;
+              break;
+              label513:
+              int j = 0;
+              continue;
+              label518:
+              j = i;
+            }
           }
-        });
-        AppMethodBeat.o(90947);
+        }, 0L, 20L);
+        AppMethodBeat.o(90943);
+        return true;
       }
-    };
-    this.mTimer.schedule(paramContext, 1000L, 1000L);
-    label315:
-    AppMethodBeat.o(90948);
-  }
-  
-  private static int b(byte paramByte)
-  {
-    return (paramByte >> 4 & 0xF) * 16 + (paramByte & 0xF);
-  }
-  
-  public final void a(a parama)
-  {
-    Object localObject1 = null;
-    int i = 0;
-    AppMethodBeat.i(90953);
-    int j;
-    int k;
-    try
-    {
-      if ((!this.jrR) || (!this.mInited)) {
-        return;
-      }
-      if ((this.mVideoWidth != parama.width) || (this.mVideoHeight != parama.height) || (this.mBitmap == null))
+      finally
       {
-        this.mVideoWidth = parama.width;
-        this.mVideoHeight = parama.height;
-        this.mBitmap = Bitmap.createBitmap(parama.width, parama.height, Bitmap.Config.ARGB_8888);
+        AppMethodBeat.o(90943);
       }
-      localObject2 = parama.nPz;
-      j = parama.cJQ;
-      if (j == 0)
-      {
-        parama = (a)localObject1;
-        this.mBitmap.setPixels(parama, 0, this.mVideoWidth, 0, 0, this.mVideoWidth, this.mVideoHeight);
-        parama = this.mBitmap;
-        i = OpenGlRender.FLAG_Angle90;
-        if (parama == null) {}
-      }
-      for (;;)
-      {
-        try
-        {
-          if (!parama.isRecycled()) {
-            continue;
-          }
-          ad.e("MicroMsg.OpenVoice.OpenVoiceVideoView", "DrawBitmap, bitmap is null or recycled");
-        }
-        catch (Exception parama)
-        {
-          ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoView", parama, "drawBitmap unlockCanvasAndPost crash", new Object[0]);
-          continue;
-        }
-        return;
-        j /= 4;
-        localObject1 = new int[j];
-        parama = (a)localObject1;
-        if (i >= j) {
-          break;
-        }
-        localObject1[i] = (b(localObject2[(i * 4)]) | b(localObject2[(i * 4 + 1)]) << 8 | b(localObject2[(i * 4 + 2)]) << 16 | b(localObject2[(i * 4 + 3)]) << 24);
-        i += 1;
-        continue;
-        j = parama.getWidth();
-        k = parama.getHeight();
-        localObject1 = lockCanvas(null);
-        if (localObject1 != null) {
-          break label376;
-        }
-        ad.e("MicroMsg.OpenVoice.OpenVoiceVideoView", "drawBitmap, getCanvas failed, viewId:" + this.mViewId + ", openId:" + this.nQk + ", mId:" + this.nQl);
-      }
-      this.nSI += 1;
-    }
-    finally
-    {
-      AppMethodBeat.o(90953);
-    }
-    label376:
-    Object localObject2 = new Matrix();
-    label421:
-    float f1;
-    float f2;
-    if (i == OpenGlRender.FLAG_Angle270)
-    {
-      ((Matrix)localObject2).setRotate(270.0F, j / 2, k / 2);
-      if (OpenGlRender.FLAG_Mirror == 0)
-      {
-        ((Matrix)localObject2).postScale(-1.0F, 1.0F);
-        ((Matrix)localObject2).postTranslate(j, 0.0F);
-      }
-      if (this.nSI % 50 == 0)
-      {
-        this.nSI = 0;
-        ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "drawBitmap, canvas:[width:" + ((Canvas)localObject1).getWidth() + ", height:" + ((Canvas)localObject1).getHeight() + "], bitmap:[width:" + j + ", height:" + k + "]");
-      }
-      f1 = ((Canvas)localObject1).getWidth() / k;
-      f2 = ((Canvas)localObject1).getHeight() / j;
-      if (f1 <= f2) {
-        break label700;
-      }
-    }
-    for (;;)
-    {
-      ((Matrix)localObject2).postTranslate((k - j) / 2, (j - k) / 2);
-      ((Matrix)localObject2).postScale(f1, f1);
-      ((Canvas)localObject1).drawColor(0, PorterDuff.Mode.CLEAR);
-      if (!parama.isRecycled()) {
-        ((Canvas)localObject1).drawBitmap(parama, (Matrix)localObject2, this.nSL);
-      }
-      if (this.nSN)
-      {
-        this.nSM += 1;
-        new StaticLayout(this.text, this.ga, 300, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).draw((Canvas)localObject1);
-      }
-      unlockCanvasAndPost((Canvas)localObject1);
-      break;
-      if (i != OpenGlRender.FLAG_Angle90) {
-        break label421;
-      }
-      ((Matrix)localObject2).setRotate(90.0F, j / 2, k / 2);
-      break label421;
-      label700:
-      f1 = f2;
-    }
-  }
-  
-  public final void al(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(90949);
-    this.mViewId = paramJSONObject.optInt("viewId");
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "init, viewId:" + this.mViewId + ", openId:" + this.nQk + ", memberId:" + this.nQl + ", data:" + paramJSONObject.toString());
-    try
-    {
-      this.mInited = true;
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(90949);
-    }
-  }
-  
-  public final void am(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(90950);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "update, viewId:" + this.mViewId + ", openId:" + this.nQk + ", memberId:" + this.nQl + ", data:" + paramJSONObject.toString());
-    uint();
-    al(paramJSONObject);
-    AppMethodBeat.o(90950);
-  }
-  
-  public final boolean bOc()
-  {
-    return false;
-  }
-  
-  public final int getMemberId()
-  {
-    return this.nQl;
-  }
-  
-  public final String getOpenId()
-  {
-    return this.nQk;
-  }
-  
-  public final int getViewId()
-  {
-    return this.mViewId;
-  }
-  
-  public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90954);
-    StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureAvailable, surface:");
-    if (paramSurfaceTexture == null) {
-      paramSurfaceTexture = "isNull";
-    }
-    for (;;)
-    {
-      ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", paramSurfaceTexture + ", viewId:" + this.mViewId + ", openId:" + this.nQk + ", mId:" + this.nQl + ", width:" + paramInt1 + ", height:" + paramInt2);
-      eTg();
-      try
-      {
-        paramSurfaceTexture = lockCanvas();
-        paramSurfaceTexture.drawColor(-16777216);
-        unlockCanvasAndPost(paramSurfaceTexture);
-        try
-        {
-          this.jrR = true;
-          return;
-        }
-        finally
-        {
-          AppMethodBeat.o(90954);
-        }
-        paramSurfaceTexture = "nonNull";
-      }
-      catch (Exception paramSurfaceTexture)
-      {
-        for (;;)
-        {
-          ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceVideoView", paramSurfaceTexture, "drawColor for background, unlockCanvasAndPost crash", new Object[0]);
-        }
-      }
-    }
-  }
-  
-  public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    AppMethodBeat.i(90956);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "onSurfaceTextureDestroyed, viewId:" + this.mViewId + ", openId:" + this.nQk + ", mId:" + this.nQl);
-    try
-    {
-      this.jrR = false;
-      if (this.mTimer != null)
-      {
-        this.mTimer.cancel();
-        this.mTimer = null;
-      }
-      if (this.iDu != null) {
-        this.iDu.removeCallbacksAndMessages(null);
-      }
-      AppMethodBeat.o(90956);
       return false;
     }
-    finally
+    catch (Exception localException)
     {
-      AppMethodBeat.o(90956);
+      ac.e("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "startPlay error:" + localException.toString());
+      AppMethodBeat.o(90943);
     }
   }
   
-  public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public final boolean isStarted()
   {
-    AppMethodBeat.i(90955);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "onSurfaceTextureSizeChanged, viewId:" + this.mViewId + ", openId:" + this.nQk + ", mId:" + this.nQl + ", width:" + paramInt1 + ", height:" + paramInt2);
-    AppMethodBeat.o(90955);
-  }
-  
-  public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
-  
-  public final void uint()
-  {
-    AppMethodBeat.i(90951);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "uint, viewId:" + this.mViewId + ", openId:" + this.nQk + ", memberId:" + this.nQl);
     try
     {
-      this.mInited = false;
-      return;
+      boolean bool = this.mStarted;
+      return bool;
     }
-    finally
-    {
-      AppMethodBeat.o(90951);
-    }
-  }
-  
-  public final void zy(int paramInt)
-  {
-    AppMethodBeat.i(90952);
-    if (paramInt == this.nQl)
-    {
-      AppMethodBeat.o(90952);
-      return;
-    }
-    ad.i("MicroMsg.OpenVoice.OpenVoiceVideoView", "updateMemberId, viewId:" + this.mViewId + ", openId:" + this.nQk + ", memberId:[" + this.nQl + "->" + paramInt + "]");
-    this.nQl = paramInt;
-    AppMethodBeat.o(90952);
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.s
  * JD-Core Version:    0.7.0.1
  */

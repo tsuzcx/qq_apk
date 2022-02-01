@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.LinkedList;
 
 public final class rt
   extends b
 {
-  public a dxp;
+  public a duH;
+  public b duI;
   
   public rt()
   {
@@ -15,17 +17,22 @@ public final class rt
   
   private rt(byte paramByte)
   {
-    AppMethodBeat.i(149888);
-    this.dxp = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91218);
+    this.duH = new a();
+    this.duI = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149888);
+    AppMethodBeat.o(91218);
   }
   
   public static final class a
   {
-    public String dxq;
-    public int type;
+    public LinkedList duJ;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

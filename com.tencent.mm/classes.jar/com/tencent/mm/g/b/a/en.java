@@ -6,42 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class en
   extends a
 {
-  public long dMW = 0L;
-  public long dZx = 0L;
-  public long dZy = 0L;
+  public String dEE;
+  public long dUM = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(149940);
+    AppMethodBeat.i(110295);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dMW);
+    ((StringBuffer)localObject).append(this.dEE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZy);
+    ((StringBuffer)localObject).append(this.dUM);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(149940);
+    arz((String)localObject);
+    AppMethodBeat.o(110295);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(149941);
+    AppMethodBeat.i(110296);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickScene:").append(this.dMW);
+    ((StringBuffer)localObject).append("ChatName:").append(this.dEE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReportValue:").append(this.dZx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EntryScene:").append(this.dZy);
+    ((StringBuffer)localObject).append("OperateType:").append(this.dUM);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149941);
+    AppMethodBeat.o(110296);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15661;
+    return 18257;
   }
 }
 

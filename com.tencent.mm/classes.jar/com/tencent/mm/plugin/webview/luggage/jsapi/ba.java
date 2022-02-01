@@ -7,7 +7,7 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.v;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class ba
@@ -18,24 +18,24 @@ public class ba
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78624);
-    String str1 = parama.bZV.bZb.optString("title");
-    String str2 = parama.bZV.bZb.optString("icon_url");
-    String str3 = parama.bZV.bZb.optString("jump_url");
+    String str1 = parama.bWS.bVY.optString("title");
+    String str2 = parama.bWS.bVY.optString("icon_url");
+    String str3 = parama.bWS.bVY.optString("jump_url");
     v localv = new v();
-    if (!bt.isNullOrNil(str1)) {
+    if (!bs.isNullOrNil(str1)) {
       localv.title = str1;
     }
-    if (!bt.isNullOrNil(str2)) {
+    if (!bs.isNullOrNil(str2)) {
       localv.iconUrl = str2;
     }
-    if (!bt.isNullOrNil(str3)) {
+    if (!bs.isNullOrNil(str3)) {
       localv.jumpUrl = str3;
     }
     parama.a("", null);
     AppMethodBeat.o(78624);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

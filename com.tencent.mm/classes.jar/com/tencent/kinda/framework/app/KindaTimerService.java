@@ -4,9 +4,9 @@ import android.os.Looper;
 import com.tencent.kinda.gen.KTimerService;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 
 public class KindaTimerService
   implements KTimerService
@@ -14,14 +14,14 @@ public class KindaTimerService
   private static final String TAG = "KindaTimerService";
   private float interval;
   private boolean needThrottle;
-  private av throttleTimerHandler;
+  private au throttleTimerHandler;
   private VoidCallback timeCheckCallback;
-  private av timerHandler;
+  private au timerHandler;
   
   public KindaTimerService()
   {
     AppMethodBeat.i(18522);
-    this.throttleTimerHandler = new av(Looper.getMainLooper(), new av.a()
+    this.throttleTimerHandler = new au(Looper.getMainLooper(), new au.a()
     {
       public boolean onTimerExpired()
       {
@@ -35,7 +35,7 @@ public class KindaTimerService
   {
     AppMethodBeat.i(18523);
     if (this.throttleTimerHandler == null) {
-      this.throttleTimerHandler = new av(Looper.getMainLooper(), new av.a()
+      this.throttleTimerHandler = new au(Looper.getMainLooper(), new au.a()
       {
         public boolean onTimerExpired()
         {
@@ -72,24 +72,24 @@ public class KindaTimerService
   public void startTimeCheck()
   {
     AppMethodBeat.i(18519);
-    if ((this.timerHandler != null) && (!this.timerHandler.eFX())) {
+    if ((this.timerHandler != null) && (!this.timerHandler.eVs())) {
       this.timerHandler.stopTimer();
     }
-    this.timerHandler = new av(Looper.getMainLooper(), new av.a()
+    this.timerHandler = new au(Looper.getMainLooper(), new au.a()
     {
       public boolean onTimerExpired()
       {
         AppMethodBeat.i(18516);
         KindaTimerService.this.timeCheckCallback.call();
-        ad.d("KindaTimerService", "A callback to C++ from Kinda timer was performed.");
+        ac.d("KindaTimerService", "A callback to C++ from Kinda timer was performed.");
         AppMethodBeat.o(18516);
         return true;
       }
     }, true);
-    av localav = this.timerHandler;
+    au localau = this.timerHandler;
     long l = (this.interval * 1000.0F);
-    localav.av(l, l);
-    ad.d("KindaTimerService", "Kinda timer has started, interval(second): " + this.interval);
+    localau.au(l, l);
+    ac.d("KindaTimerService", "Kinda timer has started, interval(second): " + this.interval);
     AppMethodBeat.o(18519);
   }
   
@@ -99,7 +99,7 @@ public class KindaTimerService
     if (this.timerHandler != null)
     {
       this.timerHandler.stopTimer();
-      ad.d("KindaTimerService", "Kinda timer has stopped.");
+      ac.d("KindaTimerService", "Kinda timer has stopped.");
     }
     AppMethodBeat.o(18520);
   }
@@ -108,7 +108,7 @@ public class KindaTimerService
   {
     AppMethodBeat.i(18521);
     if (this.throttleTimerHandler == null) {
-      this.throttleTimerHandler = new av(Looper.getMainLooper(), new av.a()
+      this.throttleTimerHandler = new au(Looper.getMainLooper(), new au.a()
       {
         public boolean onTimerExpired()
         {
@@ -137,7 +137,7 @@ public class KindaTimerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaTimerService
  * JD-Core Version:    0.7.0.1
  */

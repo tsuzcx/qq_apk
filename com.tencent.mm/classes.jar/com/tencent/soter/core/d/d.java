@@ -26,32 +26,32 @@ public final class d
   extends b
   implements com.tencent.soter.core.c.b
 {
-  protected static a Ivi;
-  private static boolean Ivj;
-  private static f Ivk;
-  private static boolean azx;
-  private static int dgF;
+  protected static a JWR;
+  private static boolean JWS;
+  private static f JWT;
+  private static boolean aAr;
+  private static int dea;
   private static final Object lock;
   public static int uid;
-  private e Iuj;
-  private int Ivd;
-  private int Ive;
-  private long Ivf;
-  private boolean Ivg;
-  private Handler Ivh;
-  private IBinder.DeathRecipient Ivl;
-  private ServiceConnection Ivm;
+  private e JVS;
+  private int JWM;
+  private int JWN;
+  private long JWO;
+  private boolean JWP;
+  private Handler JWQ;
+  private IBinder.DeathRecipient JWU;
+  private ServiceConnection JWV;
   private Context mContext;
-  private boolean oJO;
+  private boolean pnm;
   
   static
   {
     AppMethodBeat.i(88725);
-    dgF = 0;
-    azx = false;
-    Ivj = false;
+    dea = 0;
+    aAr = false;
+    JWS = false;
     lock = new Object();
-    Ivk = new f();
+    JWT = new f();
     uid = 0;
     AppMethodBeat.o(88725);
   }
@@ -59,48 +59,48 @@ public final class d
   public d()
   {
     AppMethodBeat.i(88703);
-    this.oJO = true;
-    this.Ivd = 0;
-    this.Ive = 0;
-    this.Ivf = 0L;
-    this.Ivg = false;
-    this.Ivh = new Handler(Looper.getMainLooper());
-    this.Ivl = new IBinder.DeathRecipient()
+    this.pnm = true;
+    this.JWM = 0;
+    this.JWN = 0;
+    this.JWO = 0L;
+    this.JWP = false;
+    this.JWQ = new Handler(Looper.getMainLooper());
+    this.JWU = new IBinder.DeathRecipient()
     {
       public final void binderDied()
       {
         AppMethodBeat.i(88696);
         com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: binder died", new Object[0]);
-        if (d.Ivi == null)
+        if (d.JWR == null)
         {
           AppMethodBeat.o(88696);
           return;
         }
-        d.Ivi.asBinder().unlinkToDeath(d.a(d.this), 0);
-        d.Ivi = null;
+        d.JWR.asBinder().unlinkToDeath(d.a(d.this), 0);
+        d.JWR = null;
         if (d.b(d.this) != null) {
-          d.b(d.this).dFd();
+          d.b(d.this).dTE();
         }
         synchronized (d.W())
         {
           d.access$302(0);
-          d.this.bZp();
+          d.this.cgy();
           d.c(d.this);
           AppMethodBeat.o(88696);
           return;
         }
       }
     };
-    this.Ivm = new ServiceConnection()
+    this.JWV = new ServiceConnection()
     {
       public final void onBindingDied(ComponentName paramAnonymousComponentName)
       {
         AppMethodBeat.i(88699);
         com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: binding died", new Object[0]);
         d.access$302(0);
-        d.Ivi = null;
+        d.JWR = null;
         d.d(d.this);
-        d.this.bZp();
+        d.this.cgy();
         d.c(d.this);
         AppMethodBeat.o(88699);
       }
@@ -117,12 +117,12 @@ public final class d
         try
         {
           paramAnonymousIBinder.linkToDeath(d.a(d.this), 0);
-          d.Ivi = a.a.P(paramAnonymousIBinder);
+          d.JWR = a.a.P(paramAnonymousIBinder);
           if (d.b(d.this) != null) {
             d.b(d.this).onServiceConnected();
           }
           com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: Binding is done - Service connected", new Object[0]);
-          d.fnh().countDown();
+          d.fDx().countDown();
           AppMethodBeat.o(88697);
           return;
           paramAnonymousIBinder = finally;
@@ -144,14 +144,14 @@ public final class d
         synchronized (d.W())
         {
           d.access$302(0);
-          d.Ivi = null;
+          d.JWR = null;
           d.d(d.this);
           if (d.b(d.this) != null) {
-            d.b(d.this).dFc();
+            d.b(d.this).dTD();
           }
           com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: unBinding is done - Service disconnected", new Object[0]);
           d.c(d.this);
-          d.fnh().countDown();
+          d.fDx().countDown();
           AppMethodBeat.o(88698);
           return;
         }
@@ -160,54 +160,7 @@ public final class d
     AppMethodBeat.o(88703);
   }
   
-  private void fnf()
-  {
-    AppMethodBeat.i(88708);
-    final long l = xk(this.Ive + 3);
-    this.Ivh.postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(88702);
-        if ((!d.e(d.this)) || (!d.fni()))
-        {
-          AppMethodBeat.o(88702);
-          return;
-        }
-        d.f(d.this);
-        if (d.dgF != 2)
-        {
-          com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: bindservice no response: %s", new Object[] { Long.valueOf(l) });
-          d.this.bNf();
-        }
-        AppMethodBeat.o(88702);
-      }
-    }, l * 1000L);
-    AppMethodBeat.o(88708);
-  }
-  
-  private boolean fng()
-  {
-    AppMethodBeat.i(88711);
-    if (Ivi == null)
-    {
-      com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
-      if (this.Iuj != null) {
-        this.Iuj.dFe();
-      }
-      AppMethodBeat.o(88711);
-      return true;
-    }
-    AppMethodBeat.o(88711);
-    return false;
-  }
-  
-  public static boolean isInitializing()
-  {
-    return azx;
-  }
-  
-  private static long xk(long paramLong)
+  private static long BU(long paramLong)
   {
     long l3 = 0L;
     long l2;
@@ -241,16 +194,114 @@ public final class d
     }
   }
   
-  public final void a(e parame)
+  private void fDv()
   {
-    this.Iuj = parame;
+    AppMethodBeat.i(88708);
+    final long l = BU(this.JWN + 3);
+    this.JWQ.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(88702);
+        if ((!d.e(d.this)) || (!d.fDy()))
+        {
+          AppMethodBeat.o(88702);
+          return;
+        }
+        d.f(d.this);
+        if (d.dea != 2)
+        {
+          com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: bindservice no response: %s", new Object[] { Long.valueOf(l) });
+          d.this.bUq();
+        }
+        AppMethodBeat.o(88702);
+      }
+    }, l * 1000L);
+    AppMethodBeat.o(88708);
   }
   
-  public final com.tencent.soter.core.c.f aNO(String paramString)
+  private boolean fDw()
+  {
+    AppMethodBeat.i(88711);
+    if (JWR == null)
+    {
+      com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
+      if (this.JVS != null) {
+        this.JVS.dTF();
+      }
+      AppMethodBeat.o(88711);
+      return true;
+    }
+    AppMethodBeat.o(88711);
+    return false;
+  }
+  
+  public static boolean isInitializing()
+  {
+    return aAr;
+  }
+  
+  public final byte[] BS(long paramLong)
+  {
+    AppMethodBeat.i(88723);
+    com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: finishSign in", new Object[0]);
+    if (!fDh())
+    {
+      AppMethodBeat.o(88723);
+      return null;
+    }
+    if (this.mContext == null)
+    {
+      com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: context is null", new Object[0]);
+      AppMethodBeat.o(88723);
+      return null;
+    }
+    fDu();
+    if (fDw())
+    {
+      com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
+      AppMethodBeat.o(88723);
+      return null;
+    }
+    byte[] arrayOfByte2 = new byte[0];
+    byte[] arrayOfByte1 = arrayOfByte2;
+    Object localObject;
+    try
+    {
+      SoterSignResult localSoterSignResult = JWR.BV(paramLong);
+      arrayOfByte1 = arrayOfByte2;
+      arrayOfByte2 = localSoterSignResult.JWY;
+      arrayOfByte1 = arrayOfByte2;
+      localObject = arrayOfByte2;
+      if (localSoterSignResult.bPH != 0)
+      {
+        arrayOfByte1 = arrayOfByte2;
+        localObject = new Exception("finishSign error");
+        arrayOfByte1 = arrayOfByte2;
+        AppMethodBeat.o(88723);
+        arrayOfByte1 = arrayOfByte2;
+        throw ((Throwable)localObject);
+      }
+    }
+    catch (RemoteException localRemoteException)
+    {
+      com.tencent.soter.core.c.d.b("Soter.SoterCoreTreble", localRemoteException, "soter: finishSign fail: ");
+      localObject = arrayOfByte1;
+      AppMethodBeat.o(88723);
+    }
+    return localObject;
+  }
+  
+  public final void a(e parame)
+  {
+    this.JVS = parame;
+  }
+  
+  public final com.tencent.soter.core.c.f aTr(String paramString)
   {
     AppMethodBeat.i(88717);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: generateAuthKey in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       paramString = new com.tencent.soter.core.c.f(6);
       AppMethodBeat.o(88717);
@@ -263,8 +314,8 @@ public final class d
       AppMethodBeat.o(88717);
       return paramString;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       paramString = new com.tencent.soter.core.c.f(6);
@@ -273,7 +324,7 @@ public final class d
     }
     try
     {
-      if (Ivi.cM(uid, paramString) == 0)
+      if (JWR.cP(uid, paramString) == 0)
       {
         paramString = new com.tencent.soter.core.c.f(0);
         AppMethodBeat.o(88717);
@@ -289,11 +340,11 @@ public final class d
     return paramString;
   }
   
-  public final boolean aNP(String paramString)
+  public final boolean aTs(String paramString)
   {
     AppMethodBeat.i(88721);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: hasAuthKey in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       AppMethodBeat.o(88721);
       return false;
@@ -304,8 +355,8 @@ public final class d
       AppMethodBeat.o(88721);
       return false;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       AppMethodBeat.o(88721);
@@ -313,7 +364,7 @@ public final class d
     }
     try
     {
-      boolean bool = Ivi.cP(uid, paramString);
+      boolean bool = JWR.cS(uid, paramString);
       AppMethodBeat.o(88721);
       return bool;
     }
@@ -325,11 +376,11 @@ public final class d
     return false;
   }
   
-  public final boolean aNQ(String paramString)
+  public final boolean aTt(String paramString)
   {
     AppMethodBeat.i(88719);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: isAuthKeyValid in", new Object[0]);
-    if ((aNP(paramString)) && (aNR(paramString) != null))
+    if ((aTs(paramString)) && (aTu(paramString) != null))
     {
       AppMethodBeat.o(88719);
       return true;
@@ -338,11 +389,11 @@ public final class d
     return false;
   }
   
-  public final i aNR(String paramString)
+  public final i aTu(String paramString)
   {
     AppMethodBeat.i(88720);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: getAuthKeyModel in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       AppMethodBeat.o(88720);
       return null;
@@ -353,8 +404,8 @@ public final class d
       AppMethodBeat.o(88720);
       return null;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       AppMethodBeat.o(88720);
@@ -362,10 +413,10 @@ public final class d
     }
     try
     {
-      paramString = Ivi.cO(uid, paramString).Ivp;
+      paramString = JWR.cR(uid, paramString).JWY;
       if ((paramString != null) && (paramString.length > 0))
       {
-        paramString = cM(paramString);
+        paramString = cL(paramString);
         AppMethodBeat.o(88720);
         return paramString;
       }
@@ -381,12 +432,12 @@ public final class d
     return null;
   }
   
-  public final Signature aNS(String paramString)
+  public final Signature aTv(String paramString)
   {
     return null;
   }
   
-  public final void bNf()
+  public final void bUq()
   {
     AppMethodBeat.i(88707);
     Intent localIntent = new Intent();
@@ -398,24 +449,24 @@ public final class d
       AppMethodBeat.o(88707);
       return;
     }
-    dgF = 1;
-    if (this.Iuj != null) {
-      this.Iuj.dFb();
+    dea = 1;
+    if (this.JVS != null) {
+      this.JVS.dTC();
     }
-    this.Ivf = SystemClock.elapsedRealtime();
-    this.Ivg = this.mContext.bindService(localIntent, this.Ivm, 1);
-    fnf();
+    this.JWO = SystemClock.elapsedRealtime();
+    this.JWP = this.mContext.bindService(localIntent, this.JWV, 1);
+    fDv();
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: bindService binding is start ", new Object[0]);
     AppMethodBeat.o(88707);
   }
   
-  public final void bZp()
+  public final void cgy()
   {
     AppMethodBeat.i(88709);
-    if (this.Ivg) {
+    if (this.JWP) {
       try
       {
-        this.mContext.unbindService(this.Ivm);
+        this.mContext.unbindService(this.JWV);
         return;
       }
       catch (Exception localException)
@@ -425,18 +476,18 @@ public final class d
       }
       finally
       {
-        this.Ivg = false;
+        this.JWP = false;
         AppMethodBeat.o(88709);
       }
     }
     AppMethodBeat.o(88709);
   }
   
-  public final com.tencent.soter.core.c.f cU(String paramString, boolean paramBoolean)
+  public final com.tencent.soter.core.c.f db(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(88718);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: removeAuthKey in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       paramString = new com.tencent.soter.core.c.f(7);
       AppMethodBeat.o(88718);
@@ -449,8 +500,8 @@ public final class d
       AppMethodBeat.o(88718);
       return paramString;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       paramString = new com.tencent.soter.core.c.f(7);
@@ -459,11 +510,11 @@ public final class d
     }
     try
     {
-      if (Ivi.cN(uid, paramString) == 0)
+      if (JWR.cQ(uid, paramString) == 0)
       {
         if (paramBoolean)
         {
-          if (Ivi.abU(uid) == 0)
+          if (JWR.aen(uid) == 0)
           {
             paramString = new com.tencent.soter.core.c.f(0);
             AppMethodBeat.o(88718);
@@ -487,23 +538,23 @@ public final class d
     return paramString;
   }
   
-  public final boolean fmP()
+  public final boolean fDf()
   {
-    return dgF == 2;
+    return dea == 2;
   }
   
-  public final void fmQ()
+  public final void fDg()
   {
     AppMethodBeat.i(88705);
-    this.Ivd = 0;
-    fne();
+    this.JWM = 0;
+    fDu();
     AppMethodBeat.o(88705);
   }
   
-  public final boolean fmR()
+  public final boolean fDh()
   {
     AppMethodBeat.i(88710);
-    if (h.fnc())
+    if (h.fDs())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: the device has already triggered OOM. mark as not support", new Object[0]);
       AppMethodBeat.o(88710);
@@ -513,12 +564,12 @@ public final class d
     return true;
   }
   
-  public final com.tencent.soter.core.c.f fmS()
+  public final com.tencent.soter.core.c.f fDi()
   {
     AppMethodBeat.i(88712);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: generateAppSecureKey in", new Object[0]);
     com.tencent.soter.core.c.f localf1;
-    if (!fmR())
+    if (!fDh())
     {
       localf1 = new com.tencent.soter.core.c.f(4);
       AppMethodBeat.o(88712);
@@ -531,8 +582,8 @@ public final class d
       AppMethodBeat.o(88712);
       return localf1;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       localf1 = new com.tencent.soter.core.c.f(4);
       AppMethodBeat.o(88712);
@@ -540,7 +591,7 @@ public final class d
     }
     try
     {
-      if (Ivi.abR(uid) == 0)
+      if (JWR.aek(uid) == 0)
       {
         localf1 = new com.tencent.soter.core.c.f(0);
         AppMethodBeat.o(88712);
@@ -556,12 +607,12 @@ public final class d
     }
   }
   
-  public final com.tencent.soter.core.c.f fmT()
+  public final com.tencent.soter.core.c.f fDj()
   {
     AppMethodBeat.i(88713);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: removeAppGlobalSecureKey in", new Object[0]);
     com.tencent.soter.core.c.f localf1;
-    if (!fmR())
+    if (!fDh())
     {
       localf1 = new com.tencent.soter.core.c.f(5);
       AppMethodBeat.o(88713);
@@ -574,8 +625,8 @@ public final class d
       AppMethodBeat.o(88713);
       return localf1;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       localf1 = new com.tencent.soter.core.c.f(5);
@@ -584,7 +635,7 @@ public final class d
     }
     try
     {
-      if (Ivi.abU(uid) == 0)
+      if (JWR.aen(uid) == 0)
       {
         localf1 = new com.tencent.soter.core.c.f(0);
         AppMethodBeat.o(88713);
@@ -600,11 +651,11 @@ public final class d
     }
   }
   
-  public final boolean fmU()
+  public final boolean fDk()
   {
     AppMethodBeat.i(88714);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: hasAppGlobalSecureKey in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       AppMethodBeat.o(88714);
       return false;
@@ -615,8 +666,8 @@ public final class d
       AppMethodBeat.o(88714);
       return false;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       AppMethodBeat.o(88714);
@@ -624,7 +675,7 @@ public final class d
     }
     try
     {
-      boolean bool = Ivi.abT(uid);
+      boolean bool = JWR.aem(uid);
       AppMethodBeat.o(88714);
       return bool;
     }
@@ -636,11 +687,11 @@ public final class d
     return false;
   }
   
-  public final boolean fmV()
+  public final boolean fDl()
   {
     AppMethodBeat.i(88715);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: isAppGlobalSecureKeyValid in", new Object[0]);
-    if ((fmU()) && (fmW() != null))
+    if ((fDk()) && (fDm() != null))
     {
       AppMethodBeat.o(88715);
       return true;
@@ -649,11 +700,11 @@ public final class d
     return false;
   }
   
-  public final i fmW()
+  public final i fDm()
   {
     AppMethodBeat.i(88716);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: getAppGlobalSecureKeyModel in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       AppMethodBeat.o(88716);
       return null;
@@ -664,8 +715,8 @@ public final class d
       AppMethodBeat.o(88716);
       return null;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       AppMethodBeat.o(88716);
@@ -673,10 +724,10 @@ public final class d
     }
     try
     {
-      Object localObject = Ivi.abS(uid).Ivp;
+      Object localObject = JWR.ael(uid).JWY;
       if ((localObject != null) && (localObject.length > 0))
       {
-        localObject = cM((byte[])localObject);
+        localObject = cL((byte[])localObject);
         AppMethodBeat.o(88716);
         return localObject;
       }
@@ -692,13 +743,13 @@ public final class d
     return null;
   }
   
-  public final void fne()
+  public final void fDu()
   {
     AppMethodBeat.i(88706);
-    if ((dgF != 2) || (Ivi == null) || (!Ivi.asBinder().isBinderAlive()) || (!Ivi.asBinder().pingBinder()))
+    if ((dea != 2) || (JWR == null) || (!JWR.asBinder().isBinderAlive()) || (!JWR.asBinder().pingBinder()))
     {
       com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: bindServiceIfNeeded try to bind", new Object[0]);
-      bNf();
+      bUq();
       AppMethodBeat.o(88706);
       return;
     }
@@ -706,35 +757,35 @@ public final class d
     AppMethodBeat.o(88706);
   }
   
-  public final boolean kG(Context paramContext)
+  public final boolean kS(Context paramContext)
   {
     AppMethodBeat.i(88704);
     this.mContext = paramContext;
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: initSoter in", new Object[0]);
-    azx = true;
-    paramContext = Ivk;
+    aAr = true;
+    paramContext = JWT;
     Runnable local4 = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(88701);
-        d.this.fne();
+        d.this.fDu();
         com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: initSoter binding", new Object[0]);
         AppMethodBeat.o(88701);
       }
     };
     com.tencent.soter.core.c.d.i("Soter.SyncJob", "doAsSyncJob", new Object[0]);
-    paramContext.BNN = new CountDownLatch(1);
+    paramContext.DfX = new CountDownLatch(1);
     local4.run();
-    if (paramContext.BNN != null) {}
+    if (paramContext.DfX != null) {}
     try
     {
-      paramContext.BNN.await(3000L, TimeUnit.MILLISECONDS);
-      azx = false;
-      if (dgF == 2)
+      paramContext.DfX.await(3000L, TimeUnit.MILLISECONDS);
+      aAr = false;
+      if (dea == 2)
       {
         com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: initSoter finish", new Object[0]);
-        Ivj = true;
+        JWS = true;
         AppMethodBeat.o(88704);
         return true;
       }
@@ -745,18 +796,18 @@ public final class d
       {
         com.tencent.soter.core.c.d.b("Soter.SyncJob", paramContext, "");
       }
-      dgF = 0;
+      dea = 0;
       com.tencent.soter.core.c.d.e("Soter.SoterCoreTreble", "soter: initSoter error", new Object[0]);
       AppMethodBeat.o(88704);
     }
     return false;
   }
   
-  public final SoterSessionResult lQ(String paramString1, String paramString2)
+  public final SoterSessionResult mn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88722);
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: initSigh in", new Object[0]);
-    if (!fmR())
+    if (!fDh())
     {
       AppMethodBeat.o(88722);
       return null;
@@ -767,8 +818,8 @@ public final class d
       AppMethodBeat.o(88722);
       return null;
     }
-    fne();
-    if (fng())
+    fDu();
+    if (fDw())
     {
       com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
       AppMethodBeat.o(88722);
@@ -776,7 +827,7 @@ public final class d
     }
     try
     {
-      paramString1 = Ivi.V(uid, paramString1, paramString2);
+      paramString1 = JWR.V(uid, paramString1, paramString2);
       AppMethodBeat.o(88722);
       return paramString1;
     }
@@ -786,57 +837,6 @@ public final class d
       AppMethodBeat.o(88722);
     }
     return null;
-  }
-  
-  public final byte[] xi(long paramLong)
-  {
-    AppMethodBeat.i(88723);
-    com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: finishSign in", new Object[0]);
-    if (!fmR())
-    {
-      AppMethodBeat.o(88723);
-      return null;
-    }
-    if (this.mContext == null)
-    {
-      com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: context is null", new Object[0]);
-      AppMethodBeat.o(88723);
-      return null;
-    }
-    fne();
-    if (fng())
-    {
-      com.tencent.soter.core.c.d.w("Soter.SoterCoreTreble", "soter: soter service not found", new Object[0]);
-      AppMethodBeat.o(88723);
-      return null;
-    }
-    byte[] arrayOfByte2 = new byte[0];
-    byte[] arrayOfByte1 = arrayOfByte2;
-    Object localObject;
-    try
-    {
-      SoterSignResult localSoterSignResult = Ivi.xl(paramLong);
-      arrayOfByte1 = arrayOfByte2;
-      arrayOfByte2 = localSoterSignResult.Ivp;
-      arrayOfByte1 = arrayOfByte2;
-      localObject = arrayOfByte2;
-      if (localSoterSignResult.bRZ != 0)
-      {
-        arrayOfByte1 = arrayOfByte2;
-        localObject = new Exception("finishSign error");
-        arrayOfByte1 = arrayOfByte2;
-        AppMethodBeat.o(88723);
-        arrayOfByte1 = arrayOfByte2;
-        throw ((Throwable)localObject);
-      }
-    }
-    catch (RemoteException localRemoteException)
-    {
-      com.tencent.soter.core.c.d.b("Soter.SoterCoreTreble", localRemoteException, "soter: finishSign fail: ");
-      localObject = arrayOfByte1;
-      AppMethodBeat.o(88723);
-    }
-    return localObject;
   }
 }
 

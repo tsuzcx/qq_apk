@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.recordvideo.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.i.b.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.media.i.b.e;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/render/RecorderTextureRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "TAG", "", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "setTextureSize", "width", "height", "updateDrawViewSize", "updateTextureSize", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/render/RecorderTextureRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "TAG", "", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "setTextureSize", "width", "height", "updateDrawViewSize", "updateTextureSize", "plugin-recordvideo_release"})
 public final class a
   extends com.tencent.mm.media.i.a
 {
@@ -16,38 +16,38 @@ public final class a
     super(0, 0, 1, 1, 15);
   }
   
-  public final com.tencent.mm.media.i.b.a akj()
+  public final com.tencent.mm.media.i.b.a ajF()
   {
     AppMethodBeat.i(182857);
-    com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new d(this.guI, this.guJ, this.guK, this.guL, this.guM, this.scaleType);
+    com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new e(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
     AppMethodBeat.o(182857);
     return locala;
+  }
+  
+  public final void cR(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(182859);
+    super.cR(paramInt1, paramInt2);
+    AppMethodBeat.o(182859);
   }
   
   public final void cS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(182858);
-    ad.i(this.TAG, "updateTextureSize " + paramInt1 + ", " + paramInt2 + "; " + this.guI + ", " + this.guJ);
+    ac.i(this.TAG, "updateTextureSize " + paramInt1 + ", " + paramInt2 + "; " + this.gqZ + ", " + this.gra);
     AppMethodBeat.o(182858);
   }
   
-  public final void cT(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(182859);
-    super.cT(paramInt1, paramInt2);
-    AppMethodBeat.o(182859);
-  }
+  public final void ee(boolean paramBoolean) {}
   
-  public final void dJ(boolean paramBoolean) {}
-  
-  public final void gM(int paramInt1, int paramInt2)
+  public final void gU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(182856);
     super.cS(paramInt1, paramInt2);
     AppMethodBeat.o(182856);
   }
   
-  public final void mz(int paramInt) {}
+  public final void mE(int paramInt) {}
 }
 
 

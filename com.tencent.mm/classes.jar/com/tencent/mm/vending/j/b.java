@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b<$1>
   extends a
 {
-  public final $1 fhx()
+  public final $1 fxz()
   {
-    AppMethodBeat.i(202390);
+    AppMethodBeat.i(210181);
     Object localObject = get(0);
-    AppMethodBeat.o(202390);
+    AppMethodBeat.o(210181);
     return localObject;
   }
 }

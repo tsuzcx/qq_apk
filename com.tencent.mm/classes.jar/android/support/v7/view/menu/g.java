@@ -9,53 +9,53 @@ import java.util.ArrayList;
 public final class g
   extends BaseAdapter
 {
-  boolean acI;
-  private final int ack;
-  private final boolean act;
-  private int adm = -1;
-  public h ado;
+  boolean adC;
+  private final int ade;
+  private final boolean adn;
+  private int aeg = -1;
+  public h aei;
   private final LayoutInflater mInflater;
   
   public g(h paramh, LayoutInflater paramLayoutInflater, boolean paramBoolean, int paramInt)
   {
-    this.act = paramBoolean;
+    this.adn = paramBoolean;
     this.mInflater = paramLayoutInflater;
-    this.ado = paramh;
-    this.ack = paramInt;
-    ho();
+    this.aei = paramh;
+    this.ade = paramInt;
+    hw();
   }
   
-  private void ho()
+  private void hw()
   {
-    j localj = this.ado.adK;
+    j localj = this.aei.aeE;
     if (localj != null)
     {
-      ArrayList localArrayList = this.ado.hz();
+      ArrayList localArrayList = this.aei.hH();
       int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
         if ((j)localArrayList.get(i) == localj)
         {
-          this.adm = i;
+          this.aeg = i;
           return;
         }
         i += 1;
       }
     }
-    this.adm = -1;
+    this.aeg = -1;
   }
   
   public final j bu(int paramInt)
   {
-    if (this.act) {}
-    for (ArrayList localArrayList = this.ado.hz();; localArrayList = this.ado.hx())
+    if (this.adn) {}
+    for (ArrayList localArrayList = this.aei.hH();; localArrayList = this.aei.hF())
     {
       int i = paramInt;
-      if (this.adm >= 0)
+      if (this.aeg >= 0)
       {
         i = paramInt;
-        if (paramInt >= this.adm) {
+        if (paramInt >= this.aeg) {
           i = paramInt + 1;
         }
       }
@@ -65,8 +65,8 @@ public final class g
   
   public final int getCount()
   {
-    if (this.act) {}
-    for (ArrayList localArrayList = this.ado.hz(); this.adm < 0; localArrayList = this.ado.hx()) {
+    if (this.adn) {}
+    for (ArrayList localArrayList = this.aei.hH(); this.aeg < 0; localArrayList = this.aei.hF()) {
       return localArrayList.size();
     }
     return localArrayList.size() - 1;
@@ -80,7 +80,7 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = this.mInflater.inflate(this.ack, paramViewGroup, false);
+      paramView = this.mInflater.inflate(this.ade, paramViewGroup, false);
     }
     for (;;)
     {
@@ -90,7 +90,7 @@ public final class g
       {
         i = bu(paramInt - 1).getGroupId();
         paramViewGroup = (ListMenuItemView)paramView;
-        if ((!this.ado.hq()) || (j == i)) {
+        if ((!this.aei.hy()) || (j == i)) {
           break label117;
         }
       }
@@ -99,7 +99,7 @@ public final class g
       {
         paramViewGroup.setGroupDividerEnabled(bool);
         paramViewGroup = (p.a)paramView;
-        if (this.acI) {
+        if (this.adC) {
           ((ListMenuItemView)paramView).setForceShowIcon(true);
         }
         paramViewGroup.a(bu(paramInt));
@@ -112,7 +112,7 @@ public final class g
   
   public final void notifyDataSetChanged()
   {
-    ho();
+    hw();
     super.notifyDataSetChanged();
   }
 }

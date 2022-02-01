@@ -10,9 +10,9 @@ import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.n.n;
 import java.util.ArrayList;
@@ -25,52 +25,52 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class ax
 {
-  private static int AZh = 0;
-  private static int AZi = 0;
-  public l AYS;
-  public j AYT;
-  public k AYU;
-  public av AYV;
-  private aj AYW;
-  public f AYX;
-  public b AYY;
-  public g AYZ;
-  public d AZa;
-  private e AZb;
-  private i AZc;
-  private h AZd;
-  private c AZe;
-  public a AZf;
-  private at AZg;
-  public int AZj;
+  private static int Cru = 0;
+  private static int Crv = 0;
+  public l Crf;
+  public j Crg;
+  public k Crh;
+  public av Cri;
+  private aj Crj;
+  public f Crk;
+  public b Crl;
+  public g Crm;
+  public d Crn;
+  private e Cro;
+  private i Crp;
+  private h Crq;
+  private c Crr;
+  public a Crs;
+  private at Crt;
+  public int Crw;
   
   public ax()
   {
     AppMethodBeat.i(175743);
-    this.AZj = ((int)(System.currentTimeMillis() / 1000L));
+    this.Crw = ((int)(System.currentTimeMillis() / 1000L));
     AppMethodBeat.o(175743);
   }
   
-  public static void ax(boolean paramBoolean1, boolean paramBoolean2)
+  public static void aB(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1) {}
-    for (AZh = 1; paramBoolean2; AZh = 0)
+    for (Cru = 1; paramBoolean2; Cru = 0)
     {
-      AZi = 1;
+      Crv = 1;
       return;
     }
-    AZi = 0;
+    Crv = 0;
   }
   
-  public static int baS()
+  public static int bhK()
   {
     AppMethodBeat.i(79075);
-    if (ay.is4G(com.tencent.mm.sdk.platformtools.aj.getContext()))
+    if (com.tencent.mm.sdk.platformtools.ax.is4G(ai.getContext()))
     {
       AppMethodBeat.o(79075);
       return 5;
     }
-    switch (ay.getNetType(com.tencent.mm.sdk.platformtools.aj.getContext()))
+    switch (com.tencent.mm.sdk.platformtools.ax.getNetType(ai.getContext()))
     {
     default: 
       AppMethodBeat.o(79075);
@@ -95,10 +95,10 @@ public final class ax
     return 3;
   }
   
-  public static String emh()
+  public static String cWt()
   {
     AppMethodBeat.i(79076);
-    Object localObject = (ConnectivityManager)com.tencent.mm.sdk.platformtools.aj.getContext().getSystemService("connectivity");
+    Object localObject = (ConnectivityManager)ai.getContext().getSystemService("connectivity");
     if (localObject == null)
     {
       AppMethodBeat.o(79076);
@@ -115,7 +115,7 @@ public final class ax
       AppMethodBeat.o(79076);
       return "WIFI";
     }
-    ad.d("MicroMsg.WebviewReporter", "activeNetInfo extra=%s, type=%d, %s", new Object[] { ((NetworkInfo)localObject).getExtraInfo(), Integer.valueOf(((NetworkInfo)localObject).getType()), ((NetworkInfo)localObject).getExtraInfo() });
+    ac.d("MicroMsg.WebviewReporter", "activeNetInfo extra=%s, type=%d, %s", new Object[] { ((NetworkInfo)localObject).getExtraInfo(), Integer.valueOf(((NetworkInfo)localObject).getType()), ((NetworkInfo)localObject).getExtraInfo() });
     if (((NetworkInfo)localObject).getExtraInfo() != null)
     {
       localObject = ((NetworkInfo)localObject).getExtraInfo().toLowerCase();
@@ -128,7 +128,7 @@ public final class ax
   
   private static void s(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187933);
+    AppMethodBeat.i(188361);
     ArrayList localArrayList = new ArrayList();
     int j = paramVarArgs.length;
     int i = 0;
@@ -137,17 +137,17 @@ public final class ax
       localArrayList.add(String.valueOf(paramVarArgs[i]));
       i += 1;
     }
-    paramVarArgs = com.tencent.mm.plugin.report.service.h.vKh;
-    com.tencent.mm.plugin.report.service.h.h(11215, localArrayList);
+    paramVarArgs = com.tencent.mm.plugin.report.service.h.wUl;
+    com.tencent.mm.plugin.report.service.h.k(11215, localArrayList);
     if ((paramString != null) && (paramString.startsWith("official_mall")))
     {
-      paramString = com.tencent.mm.plugin.report.service.h.vKh;
-      com.tencent.mm.plugin.report.service.h.h(14919, localArrayList);
+      paramString = com.tencent.mm.plugin.report.service.h.wUl;
+      com.tencent.mm.plugin.report.service.h.k(14919, localArrayList);
     }
-    AppMethodBeat.o(187933);
+    AppMethodBeat.o(188361);
   }
   
-  public static void uZ(long paramLong)
+  public static void zC(long paramLong)
   {
     AppMethodBeat.i(79094);
     if (paramLong <= 0L)
@@ -157,26 +157,26 @@ public final class ax
     }
     int i = (int)(System.currentTimeMillis() - paramLong);
     if ((i >= 0) && (i < 20000)) {
-      com.tencent.mm.plugin.report.service.h.vKh.f(16269, new Object[] { Integer.valueOf(i), Integer.valueOf((int)(paramLong / 1000L)) });
+      com.tencent.mm.plugin.report.service.h.wUl.f(16269, new Object[] { Integer.valueOf(i), Integer.valueOf((int)(paramLong / 1000L)) });
     }
     AppMethodBeat.o(79094);
   }
   
-  public final void awM(String paramString)
+  public final void aCe(String paramString)
   {
     AppMethodBeat.i(79092);
     a locala;
-    if (this.AZf != null) {
+    if (this.Crs != null) {
       try
       {
-        locala = this.AZf;
-        boolean bool = locala.dow.containsKey(paramString);
+        locala = this.Crs;
+        boolean bool = locala.dmf.containsKey(paramString);
         if (!bool) {
           break label68;
         }
         try
         {
-          locala.putValue(paramString, Integer.valueOf(locala.dow.getInt(paramString) + 1));
+          locala.putValue(paramString, Integer.valueOf(locala.dmf.getInt(paramString) + 1));
           AppMethodBeat.o(79092);
           return;
         }
@@ -196,226 +196,242 @@ public final class ax
     AppMethodBeat.o(79092);
   }
   
-  public final l emi()
+  public final boolean au(Bundle paramBundle)
+  {
+    AppMethodBeat.i(188359);
+    if (paramBundle != null)
+    {
+      if (this.Crs != null) {
+        this.Crs.dmf = null;
+      }
+      this.Crs = new a(paramBundle);
+      AppMethodBeat.o(188359);
+      return true;
+    }
+    AppMethodBeat.o(188359);
+    return false;
+  }
+  
+  public final l eBD()
   {
     AppMethodBeat.i(79077);
-    if (this.AYS == null) {
-      this.AYS = new l();
+    if (this.Crf == null) {
+      this.Crf = new l();
     }
-    l locall = this.AYS;
+    l locall = this.Crf;
     AppMethodBeat.o(79077);
     return locall;
   }
   
-  public final j emj()
+  public final j eBE()
   {
     AppMethodBeat.i(79078);
-    if (this.AYT == null) {
-      this.AYT = new j();
+    if (this.Crg == null) {
+      this.Crg = new j();
     }
-    j localj = this.AYT;
+    j localj = this.Crg;
     AppMethodBeat.o(79078);
     return localj;
   }
   
-  public final k emk()
+  public final k eBF()
   {
     AppMethodBeat.i(79079);
-    if (this.AYU == null) {
-      this.AYU = new k();
+    if (this.Crh == null) {
+      this.Crh = new k();
     }
-    k localk = this.AYU;
+    k localk = this.Crh;
     AppMethodBeat.o(79079);
     return localk;
   }
   
-  public final e eml()
+  public final e eBG()
   {
     AppMethodBeat.i(79080);
-    if (this.AZb == null) {
-      this.AZb = new e();
+    if (this.Cro == null) {
+      this.Cro = new e();
     }
-    e locale = this.AZb;
+    e locale = this.Cro;
     AppMethodBeat.o(79080);
     return locale;
   }
   
-  public final av emm()
+  public final av eBH()
   {
-    AppMethodBeat.i(187929);
-    if (this.AYV == null) {
-      this.AYV = new av();
+    AppMethodBeat.i(188356);
+    if (this.Cri == null) {
+      this.Cri = new av();
     }
-    av localav = this.AYV;
-    AppMethodBeat.o(187929);
+    av localav = this.Cri;
+    AppMethodBeat.o(188356);
     return localav;
   }
   
-  public final aj emn()
+  public final aj eBI()
   {
-    AppMethodBeat.i(187930);
-    if (this.AYW == null) {
-      this.AYW = new aj();
+    AppMethodBeat.i(188357);
+    if (this.Crj == null) {
+      this.Crj = new aj();
     }
-    aj localaj = this.AYW;
-    AppMethodBeat.o(187930);
+    aj localaj = this.Crj;
+    AppMethodBeat.o(188357);
     return localaj;
   }
   
-  public final f emo()
+  public final f eBJ()
   {
     AppMethodBeat.i(79083);
-    if (this.AYX == null) {
-      this.AYX = new f();
+    if (this.Crk == null) {
+      this.Crk = new f();
     }
-    f localf = this.AYX;
+    f localf = this.Crk;
     AppMethodBeat.o(79083);
     return localf;
   }
   
-  public final b emp()
+  public final b eBK()
   {
     AppMethodBeat.i(79084);
-    if (this.AYY == null) {
-      this.AYY = new b();
+    if (this.Crl == null) {
+      this.Crl = new b();
     }
-    b localb = this.AYY;
+    b localb = this.Crl;
     AppMethodBeat.o(79084);
     return localb;
   }
   
-  public final g emq()
+  public final g eBL()
   {
     AppMethodBeat.i(79085);
-    if (this.AYZ == null) {
-      this.AYZ = new g();
+    if (this.Crm == null) {
+      this.Crm = new g();
     }
-    g localg = this.AYZ;
+    g localg = this.Crm;
     AppMethodBeat.o(79085);
     return localg;
   }
   
-  public final d emr()
+  public final d eBM()
   {
     AppMethodBeat.i(79086);
-    if (this.AZa == null) {
-      this.AZa = new d();
+    if (this.Crn == null) {
+      this.Crn = new d();
     }
-    d locald = this.AZa;
+    d locald = this.Crn;
     AppMethodBeat.o(79086);
     return locald;
   }
   
-  public final i ems()
+  public final i eBN()
   {
     AppMethodBeat.i(79087);
-    if (this.AZc == null) {
-      this.AZc = new i();
+    if (this.Crp == null) {
+      this.Crp = new i();
     }
-    i locali = this.AZc;
+    i locali = this.Crp;
     AppMethodBeat.o(79087);
     return locali;
   }
   
-  public final h emt()
+  public final h eBO()
   {
     AppMethodBeat.i(79088);
-    if (this.AZd == null) {
-      this.AZd = new h();
+    if (this.Crq == null) {
+      this.Crq = new h();
     }
-    h localh = this.AZd;
+    h localh = this.Crq;
     AppMethodBeat.o(79088);
     return localh;
   }
   
-  public final c emu()
+  public final c eBP()
   {
     AppMethodBeat.i(79089);
-    if (this.AZe == null) {
-      this.AZe = new c();
+    if (this.Crr == null) {
+      this.Crr = new c();
     }
-    c localc = this.AZe;
+    c localc = this.Crr;
     AppMethodBeat.o(79089);
     return localc;
   }
   
-  public final at emv()
+  public final at eBQ()
   {
-    AppMethodBeat.i(187931);
-    if (this.AZg == null) {
-      this.AZg = new at();
+    AppMethodBeat.i(188358);
+    if (this.Crt == null) {
+      this.Crt = new at();
     }
-    at localat = this.AZg;
-    AppMethodBeat.o(187931);
+    at localat = this.Crt;
+    AppMethodBeat.o(188358);
     return localat;
   }
   
   public final void report()
   {
-    AppMethodBeat.i(187932);
-    k localk = emk();
-    int i = baS();
-    Iterator localIterator = localk.AZu.entrySet().iterator();
+    AppMethodBeat.i(188360);
+    k localk = eBF();
+    int i = bhK();
+    Iterator localIterator = localk.CrH.entrySet().iterator();
     Object localObject2;
     while (localIterator.hasNext())
     {
       localObject1 = (Map.Entry)localIterator.next();
       localObject2 = (String)((Map.Entry)localObject1).getKey();
       long l = ((Long)((Map.Entry)localObject1).getValue()).longValue();
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 0L, 1L, true);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 0L, 1L, true);
       if ((l >= 0L) && (l <= 180000L))
       {
-        String str = localk.AZr;
+        String str = localk.CrE;
         if (localObject2 == null) {}
         for (localObject1 = localObject2;; localObject1 = ((String)localObject2).replace(",", "!"))
         {
-          s(str, new Object[] { Integer.valueOf(3), Long.valueOf(l), Integer.valueOf(i), localObject1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(AZh), Integer.valueOf(AZi), Integer.valueOf(localk.dEF), localk.AZr });
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(160L, 0L, 1L, false);
-          if (-1 != com.tencent.mm.plugin.webview.h.a.va(l)) {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(160L, com.tencent.mm.plugin.webview.h.a.va(l), 1L, false);
+          s(str, new Object[] { Integer.valueOf(3), Long.valueOf(l), Integer.valueOf(i), localObject1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(Cru), Integer.valueOf(Crv), Integer.valueOf(localk.dCr), localk.CrE });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(160L, 0L, 1L, false);
+          if (-1 != com.tencent.mm.plugin.webview.h.a.zD(l)) {
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(160L, com.tencent.mm.plugin.webview.h.a.zD(l), 1L, false);
           }
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 3L, 1L, true);
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 7L, l, true);
-          if (AZi == 1)
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 3L, 1L, true);
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 7L, l, true);
+          if (Crv == 1)
           {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 16L, 1L, true);
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 17L, l, true);
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 16L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 17L, l, true);
           }
-          ad.i("MicroMsg.WebviewReporter", "WebviewOpenUrlReporter.report url : %s, cost time : %d, netType : %d, %d, %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { localObject2, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(AZh), Integer.valueOf(AZi), Integer.valueOf(localk.dEF), localk.AZr });
+          ac.i("MicroMsg.WebviewReporter", "WebviewOpenUrlReporter.report url : %s, cost time : %d, netType : %d, %d, %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { localObject2, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(Cru), Integer.valueOf(Crv), Integer.valueOf(localk.dCr), localk.CrE });
           break;
         }
       }
     }
-    Object localObject1 = emm();
-    if (!bt.isNullOrNil(((av)localObject1).AYI)) {
-      ad.d("MicroMsg.WebviewReporter", "WebViewVisitReporter report viewID = %s", new Object[] { ((av)localObject1).AYI });
+    Object localObject1 = eBH();
+    if (!bs.isNullOrNil(((av)localObject1).CqV)) {
+      ac.d("MicroMsg.WebviewReporter", "WebViewVisitReporter report viewID = %s", new Object[] { ((av)localObject1).CqV });
     }
     try
     {
-      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)IPCVoid.fZS, av.a.AYQ.getClass(), (d)new av.b((av)localObject1));
-      localObject1 = emn();
-      if (!bt.isNullOrNil(((aj)localObject1).gKw))
+      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)IPCVoid.gey, av.a.Crd.getClass(), (d)new av.b((av)localObject1));
+      localObject1 = eBI();
+      if (!bs.isNullOrNil(((aj)localObject1).hkW))
       {
-        localObject2 = ((aj)localObject1).gKw;
+        localObject2 = ((aj)localObject1).hkW;
         if (localObject2 == null) {
-          k.fvU();
+          k.fOy();
         }
-        if (n.mA((String)localObject2, "wrd")) {}
+        if (n.nb((String)localObject2, "wrd")) {}
       }
       else
       {
-        emj().report();
-        eml().report();
-        localObject1 = emp();
-        i = baS();
-        if (!((b)localObject1).AZl) {
+        eBE().report();
+        eBG().report();
+        localObject1 = eBK();
+        i = bhK();
+        if (!((b)localObject1).Cry) {
           break label928;
         }
         if (!((b)localObject1).loadFinished) {
           break label879;
         }
-        com.tencent.mm.plugin.report.service.h.vKh.f(11575, new Object[] { ((b)localObject1).dAl, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(i) });
-        AppMethodBeat.o(187932);
+        com.tencent.mm.plugin.report.service.h.wUl.f(11575, new Object[] { ((b)localObject1).dxX, Integer.valueOf(1), Integer.valueOf(1), Integer.valueOf(i) });
+        AppMethodBeat.o(188360);
         return;
       }
     }
@@ -423,54 +439,54 @@ public final class ax
     {
       for (;;)
       {
-        ad.w("MicroMsg.WebviewReporter", "invokeAsResult error, %s", new Object[] { localRemoteException });
+        ac.w("MicroMsg.WebviewReporter", "invokeAsResult error, %s", new Object[] { localRemoteException });
         continue;
         localObject2 = new StringBuffer();
         ((StringBuffer)localObject2).append("iswebviewreadtime=1");
         ((StringBuffer)localObject2).append("&publishid=");
-        ((StringBuffer)localObject2).append(localRemoteException.gKw);
+        ((StringBuffer)localObject2).append(localRemoteException.hkW);
         ((StringBuffer)localObject2).append("&staytime=");
-        ((StringBuffer)localObject2).append(localRemoteException.dsf);
+        ((StringBuffer)localObject2).append(localRemoteException.dpQ);
         ((StringBuffer)localObject2).append("&allstaytime=");
         ((StringBuffer)localObject2).append(System.currentTimeMillis() - localRemoteException.enterTime);
         ((StringBuffer)localObject2).append("&maxscrolly=");
-        ((StringBuffer)localObject2).append(localRemoteException.AYn);
+        ((StringBuffer)localObject2).append(localRemoteException.CqA);
         ((StringBuffer)localObject2).append("&totalscrolly=");
-        ((StringBuffer)localObject2).append(localRemoteException.xJD);
+        ((StringBuffer)localObject2).append(localRemoteException.yWt);
         ((StringBuffer)localObject2).append("&scene=");
         ((StringBuffer)localObject2).append(localRemoteException.scene);
         ((StringBuffer)localObject2).append("&entertime=");
         ((StringBuffer)localObject2).append(localRemoteException.enterTime);
         ((StringBuffer)localObject2).append("&screenheight=");
-        ((StringBuffer)localObject2).append(com.tencent.mm.cd.a.hW(com.tencent.mm.sdk.platformtools.aj.getContext()));
+        ((StringBuffer)localObject2).append(com.tencent.mm.cc.a.ih(ai.getContext()));
         Bundle localBundle = new Bundle();
         localBundle.putString("reportString", ((StringBuffer)localObject2).toString());
         try
         {
-          com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)localBundle, aj.a.AYo.getClass(), null);
+          com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)localBundle, aj.a.CqB.getClass(), null);
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "TopStory report", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "TopStory report", new Object[0]);
         }
       }
       label879:
-      com.tencent.mm.plugin.report.service.h.vKh.f(11575, new Object[] { localException.dAl, Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(i) });
-      AppMethodBeat.o(187932);
+      com.tencent.mm.plugin.report.service.h.wUl.f(11575, new Object[] { localException.dxX, Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(i) });
+      AppMethodBeat.o(188360);
       return;
     }
     label928:
-    com.tencent.mm.plugin.report.service.h.vKh.f(11575, new Object[] { localException.dAl, Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(i) });
-    AppMethodBeat.o(187932);
+    com.tencent.mm.plugin.report.service.h.wUl.f(11575, new Object[] { localException.dxX, Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(i) });
+    AppMethodBeat.o(188360);
   }
   
-  public final void x(String paramString, Object paramObject)
+  public final void y(String paramString, Object paramObject)
   {
     AppMethodBeat.i(79091);
-    if (this.AZf != null) {
+    if (this.Crs != null) {
       try
       {
-        this.AZf.putValue(paramString, paramObject);
+        this.Crs.putValue(paramString, paramObject);
         AppMethodBeat.o(79091);
         return;
       }
@@ -481,37 +497,37 @@ public final class ax
   
   public final class a
   {
-    public Bundle dow = null;
+    public Bundle dmf = null;
     
-    public a(Bundle paramBundle)
+    a(Bundle paramBundle)
     {
-      this.dow = paramBundle;
+      this.dmf = paramBundle;
     }
     
     public final void putValue(String paramString, Object paramObject)
     {
       AppMethodBeat.i(79061);
-      if (this.dow != null)
+      if (this.dmf != null)
       {
         if ((paramObject instanceof String))
         {
-          this.dow.putString(paramString, (String)paramObject);
+          this.dmf.putString(paramString, (String)paramObject);
           AppMethodBeat.o(79061);
           return;
         }
         if ((paramObject instanceof Boolean))
         {
-          this.dow.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
+          this.dmf.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
           AppMethodBeat.o(79061);
           return;
         }
         if ((paramObject instanceof Integer))
         {
-          this.dow.putInt(paramString, ((Integer)paramObject).intValue());
+          this.dmf.putInt(paramString, ((Integer)paramObject).intValue());
           AppMethodBeat.o(79061);
           return;
         }
-        ad.w("MicroMsg.WebviewReporter", "put unknow type value.");
+        ac.w("MicroMsg.WebviewReporter", "put unknow type value.");
       }
       AppMethodBeat.o(79061);
     }
@@ -519,28 +535,28 @@ public final class ax
   
   public static final class b
   {
-    public boolean AZl = false;
-    String dAl;
+    public boolean Cry = false;
+    String dxX;
     public boolean loadFinished = false;
     
-    public final b awN(String paramString)
+    public final b aCf(String paramString)
     {
-      this.dAl = paramString;
+      this.dxX = paramString;
       return this;
     }
   }
   
   public static final class c
   {
-    private boolean AZm = false;
-    public boolean qhl = false;
+    private boolean Crz = false;
+    public boolean qPN = false;
     
-    public final void bV(String paramString)
+    public final void bL(String paramString)
     {
-      AppMethodBeat.i(187914);
-      if ((!this.qhl) || (this.AZm))
+      AppMethodBeat.i(188341);
+      if ((!this.qPN) || (this.Crz))
       {
-        AppMethodBeat.o(187914);
+        AppMethodBeat.o(188341);
         return;
       }
       try
@@ -548,56 +564,48 @@ public final class ax
         Object localObject = Uri.parse(paramString);
         if (!paramString.startsWith("http"))
         {
-          ad.i("MicroMsg.WebviewReporter.DomainReporter", "onPageFinished, url not startswith http");
-          AppMethodBeat.o(187914);
+          ac.i("MicroMsg.WebviewReporter.DomainReporter", "onPageFinished, url not startswith http");
+          AppMethodBeat.o(188341);
           return;
         }
         localObject = ((Uri)localObject).getHost();
         if ((localObject != null) && (((String)localObject).equalsIgnoreCase("v.html5.qq.com")))
         {
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(283L, 0L, 1L, true);
-          this.AZm = true;
-          ad.i("MicroMsg.WebviewReporter.DomainReporter", "onPageFinished, domain visit reported, url = %s", new Object[] { paramString });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(283L, 0L, 1L, true);
+          this.Crz = true;
+          ac.i("MicroMsg.WebviewReporter.DomainReporter", "onPageFinished, domain visit reported, url = %s", new Object[] { paramString });
         }
-        AppMethodBeat.o(187914);
+        AppMethodBeat.o(188341);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.WebviewReporter.DomainReporter", "onPageFinished, parse url fail, url = %s", new Object[] { paramString });
-        AppMethodBeat.o(187914);
+        ac.e("MicroMsg.WebviewReporter.DomainReporter", "onPageFinished, parse url fail, url = %s", new Object[] { paramString });
+        AppMethodBeat.o(188341);
       }
     }
   }
   
   public static final class d
   {
-    private ArrayList<String> AZn;
+    private ArrayList<String> CrA;
     
     public d()
     {
-      AppMethodBeat.i(187915);
-      this.AZn = new ArrayList();
-      AppMethodBeat.o(187915);
+      AppMethodBeat.i(188342);
+      this.CrA = new ArrayList();
+      AppMethodBeat.o(188342);
     }
     
-    public final void report()
+    public final d B(Object... paramVarArgs)
     {
-      AppMethodBeat.i(187917);
-      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
-      com.tencent.mm.plugin.report.service.h.h(11577, this.AZn);
-      AppMethodBeat.o(187917);
-    }
-    
-    public final d z(Object... paramVarArgs)
-    {
-      AppMethodBeat.i(187916);
+      AppMethodBeat.i(188343);
       int j = paramVarArgs.length;
       int i = 0;
       if (i < j)
       {
         Object localObject = paramVarArgs[i];
-        ArrayList localArrayList = this.AZn;
+        ArrayList localArrayList = this.CrA;
         if (localObject == null) {}
         for (localObject = "";; localObject = localObject.toString())
         {
@@ -606,120 +614,128 @@ public final class ax
           break;
         }
       }
-      AppMethodBeat.o(187916);
-      return this;
-    }
-  }
-  
-  public final class e
-  {
-    private ConcurrentHashMap<String, Long> AZo;
-    private ConcurrentHashMap<String, Long> AZp;
-    private boolean AZq;
-    private String AZr;
-    private int dEF;
-    private String lst;
-    
-    public e()
-    {
-      AppMethodBeat.i(79063);
-      this.lst = "";
-      this.AZq = true;
-      this.AZo = new ConcurrentHashMap();
-      this.AZp = new ConcurrentHashMap();
-      AppMethodBeat.o(79063);
-    }
-    
-    public final void awO(String paramString)
-    {
-      AppMethodBeat.i(187918);
-      if (bt.isNullOrNil(paramString))
-      {
-        ad.e("MicroMsg.WebviewReporter", "WebViewRenderReporter.onPageStart failed, url is null");
-        AppMethodBeat.o(187918);
-        return;
-      }
-      this.lst = paramString;
-      this.AZq = true;
-      if (!this.AZo.containsKey(paramString)) {
-        this.AZo.put(paramString, Long.valueOf(bt.eGO()));
-      }
-      if (!this.AZp.containsKey(paramString)) {
-        this.AZp.put(paramString, Long.valueOf(bt.eGO()));
-      }
-      AppMethodBeat.o(187918);
-    }
-    
-    public final void awP(String paramString)
-    {
-      AppMethodBeat.i(187919);
-      if (bt.isNullOrNil(paramString))
-      {
-        ad.e("MicroMsg.WebviewReporter", "WebViewRenderReporter.onLoadResource failed, url is null");
-        AppMethodBeat.o(187919);
-        return;
-      }
-      try
-      {
-        if ((!bt.isNullOrNil(this.lst)) && (!paramString.equals(this.lst)) && (this.AZq))
-        {
-          if (this.AZo.containsKey(this.lst))
-          {
-            long l1 = ((Long)this.AZo.get(this.lst)).longValue();
-            long l2 = bt.eGO();
-            this.AZo.put(this.lst, Long.valueOf(l2 - l1));
-          }
-          this.AZq = false;
-        }
-        AppMethodBeat.o(187919);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        ad.printErrStackTrace("MicroMsg.WebviewReporter", paramString, "onLoadResource", new Object[0]);
-        AppMethodBeat.o(187919);
-      }
-    }
-    
-    public final void awQ(String paramString)
-    {
-      AppMethodBeat.i(187920);
-      if (bt.isNullOrNil(paramString))
-      {
-        ad.e("MicroMsg.WebviewReporter", "WebViewRenderReporter.onPageFinish failed, url is null");
-        AppMethodBeat.o(187920);
-        return;
-      }
-      try
-      {
-        if (this.AZp.containsKey(paramString))
-        {
-          long l1 = ((Long)this.AZp.get(paramString)).longValue();
-          long l2 = bt.eGO();
-          this.AZp.put(paramString, Long.valueOf(l2 - l1));
-        }
-        AppMethodBeat.o(187920);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        ad.printErrStackTrace("MicroMsg.WebviewReporter", paramString, "onPageFinish", new Object[0]);
-        AppMethodBeat.o(187920);
-      }
-    }
-    
-    public final e cr(int paramInt, String paramString)
-    {
-      this.dEF = paramInt;
-      this.AZr = paramString;
+      AppMethodBeat.o(188343);
       return this;
     }
     
     public final void report()
     {
-      AppMethodBeat.i(187921);
-      int i = ax.baS();
-      Iterator localIterator = this.AZo.entrySet().iterator();
+      AppMethodBeat.i(188344);
+      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+      com.tencent.mm.plugin.report.service.h.k(11577, this.CrA);
+      AppMethodBeat.o(188344);
+    }
+  }
+  
+  public final class e
+  {
+    private ConcurrentHashMap<String, Long> CrB;
+    private ConcurrentHashMap<String, Long> CrC;
+    private boolean CrD;
+    private String CrE;
+    private int dCr;
+    private String lUn;
+    
+    public e()
+    {
+      AppMethodBeat.i(79063);
+      this.lUn = "";
+      this.CrD = true;
+      this.CrB = new ConcurrentHashMap();
+      this.CrC = new ConcurrentHashMap();
+      AppMethodBeat.o(79063);
+    }
+    
+    public final void aCg(String paramString)
+    {
+      AppMethodBeat.i(188345);
+      if (bs.isNullOrNil(paramString))
+      {
+        ac.e("MicroMsg.WebviewReporter", "WebViewRenderReporter.onPageStart failed, url is null");
+        AppMethodBeat.o(188345);
+        return;
+      }
+      this.lUn = paramString;
+      this.CrD = true;
+      if (!this.CrB.containsKey(paramString)) {
+        this.CrB.put(paramString, Long.valueOf(bs.eWj()));
+      }
+      if (!this.CrC.containsKey(paramString)) {
+        this.CrC.put(paramString, Long.valueOf(bs.eWj()));
+      }
+      AppMethodBeat.o(188345);
+    }
+    
+    public final void aCh(String paramString)
+    {
+      AppMethodBeat.i(188346);
+      if (bs.isNullOrNil(paramString))
+      {
+        ac.e("MicroMsg.WebviewReporter", "WebViewRenderReporter.onLoadResource failed, url is null");
+        AppMethodBeat.o(188346);
+        return;
+      }
+      try
+      {
+        if ((!bs.isNullOrNil(this.lUn)) && (!paramString.equals(this.lUn)) && (this.CrD))
+        {
+          if (this.CrB.containsKey(this.lUn))
+          {
+            long l1 = ((Long)this.CrB.get(this.lUn)).longValue();
+            long l2 = bs.eWj();
+            this.CrB.put(this.lUn, Long.valueOf(l2 - l1));
+          }
+          this.CrD = false;
+        }
+        AppMethodBeat.o(188346);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        ac.printErrStackTrace("MicroMsg.WebviewReporter", paramString, "onLoadResource", new Object[0]);
+        AppMethodBeat.o(188346);
+      }
+    }
+    
+    public final void aCi(String paramString)
+    {
+      AppMethodBeat.i(188347);
+      if (bs.isNullOrNil(paramString))
+      {
+        ac.e("MicroMsg.WebviewReporter", "WebViewRenderReporter.onPageFinish failed, url is null");
+        AppMethodBeat.o(188347);
+        return;
+      }
+      try
+      {
+        if (this.CrC.containsKey(paramString))
+        {
+          long l1 = ((Long)this.CrC.get(paramString)).longValue();
+          long l2 = bs.eWj();
+          this.CrC.put(paramString, Long.valueOf(l2 - l1));
+        }
+        AppMethodBeat.o(188347);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        ac.printErrStackTrace("MicroMsg.WebviewReporter", paramString, "onPageFinish", new Object[0]);
+        AppMethodBeat.o(188347);
+      }
+    }
+    
+    public final e cu(int paramInt, String paramString)
+    {
+      this.dCr = paramInt;
+      this.CrE = paramString;
+      return this;
+    }
+    
+    public final void report()
+    {
+      AppMethodBeat.i(188348);
+      int i = ax.bhK();
+      Iterator localIterator = this.CrB.entrySet().iterator();
       Object localObject;
       String str;
       long l;
@@ -730,27 +746,27 @@ public final class ax
         l = ((Long)((Map.Entry)localObject).getValue()).longValue();
         if ((l < 0L) || (l > 180000L))
         {
-          AppMethodBeat.o(187921);
+          AppMethodBeat.o(188348);
           return;
         }
-        localObject = this.AZr;
+        localObject = this.CrE;
         if (str == null) {}
         for (;;)
         {
-          ax.t((String)localObject, new Object[] { Integer.valueOf(5), Long.valueOf(l), Integer.valueOf(i), str, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
-          if (ax.AZh == 1)
+          ax.t((String)localObject, new Object[] { Integer.valueOf(5), Long.valueOf(l), Integer.valueOf(i), str, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
+          if (ax.Cru == 1)
           {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 18L, 1L, true);
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 19L, l, true);
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 18L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 19L, l, true);
           }
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 8L, 1L, true);
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 9L, l, true);
-          ad.i("MicroMsg.WebviewReporter", "WebViewRenderReporter.report DomReady cost time : %d, netType : %d, coreType %d, httpType %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 8L, 1L, true);
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 9L, l, true);
+          ac.i("MicroMsg.WebviewReporter", "WebViewRenderReporter.report DomReady cost time : %d, netType : %d, coreType %d, httpType %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
           break;
           str = str.replace(",", "!");
         }
       }
-      localIterator = this.AZp.entrySet().iterator();
+      localIterator = this.CrC.entrySet().iterator();
       if (localIterator.hasNext())
       {
         localObject = (Map.Entry)localIterator.next();
@@ -758,63 +774,63 @@ public final class ax
         l = ((Long)((Map.Entry)localObject).getValue()).longValue();
         if ((l < 0L) || (l > 180000L))
         {
-          AppMethodBeat.o(187921);
+          AppMethodBeat.o(188348);
           return;
         }
-        localObject = this.AZr;
+        localObject = this.CrE;
         if (str == null) {}
         for (;;)
         {
-          ax.t((String)localObject, new Object[] { Integer.valueOf(6), Long.valueOf(l), Integer.valueOf(i), str, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
-          if (ax.AZh == 1)
+          ax.t((String)localObject, new Object[] { Integer.valueOf(6), Long.valueOf(l), Integer.valueOf(i), str, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
+          if (ax.Cru == 1)
           {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 20L, 1L, true);
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 21L, l, true);
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 20L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 21L, l, true);
           }
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 10L, 1L, true);
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 11L, l, true);
-          ad.i("MicroMsg.WebviewReporter", "WebViewRenderReporter.report Render cost time : %d, netType : %d, coreType %d, httpType %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 10L, 1L, true);
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 11L, l, true);
+          ac.i("MicroMsg.WebviewReporter", "WebViewRenderReporter.report Render cost time : %d, netType : %d, coreType %d, httpType %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
           break;
           str = str.replace(",", "!");
         }
       }
-      AppMethodBeat.o(187921);
+      AppMethodBeat.o(188348);
     }
   }
   
   public final class f
   {
-    public String AZr;
-    private boolean cel;
-    public int dEF;
+    public String CrE;
+    private boolean cbi;
+    public int dCr;
     private long startTime;
     public String url;
     
     public f()
     {
       AppMethodBeat.i(79068);
-      this.cel = false;
-      this.startTime = bt.eGO();
+      this.cbi = false;
+      this.startTime = bs.eWj();
       AppMethodBeat.o(79068);
     }
     
     public final void report()
     {
-      AppMethodBeat.i(187922);
+      AppMethodBeat.i(188349);
       int i;
       long l;
       String str2;
-      if (!this.cel)
+      if (!this.cbi)
       {
-        this.cel = true;
-        i = ax.baS();
-        l = bt.eGO() - this.startTime;
+        this.cbi = true;
+        i = ax.bhK();
+        l = bs.eWj() - this.startTime;
         if ((l < 0L) || (l > 180000L))
         {
-          AppMethodBeat.o(187922);
+          AppMethodBeat.o(188349);
           return;
         }
-        str2 = this.AZr;
+        str2 = this.CrE;
         if (this.url != null) {
           break label241;
         }
@@ -822,9 +838,9 @@ public final class ax
       label241:
       for (String str1 = this.url;; str1 = this.url.replace(",", "!"))
       {
-        ax.t(str2, new Object[] { Integer.valueOf(4), Long.valueOf(l), Integer.valueOf(i), str1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
-        ad.i("MicroMsg.WebviewReporter", "WebViewTotalTimeReporter.report url : %s, cost time : %d, netType : %d, %d, %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { this.url, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
-        AppMethodBeat.o(187922);
+        ax.t(str2, new Object[] { Integer.valueOf(4), Long.valueOf(l), Integer.valueOf(i), str1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
+        ac.i("MicroMsg.WebviewReporter", "WebViewTotalTimeReporter.report url : %s, cost time : %d, netType : %d, %d, %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { this.url, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
+        AppMethodBeat.o(188349);
         return;
       }
     }
@@ -832,23 +848,23 @@ public final class ax
   
   public static final class g
   {
-    private ArrayList<String> AZn;
+    private ArrayList<String> CrA;
     
     public g()
     {
-      AppMethodBeat.i(187923);
-      this.AZn = new ArrayList();
-      AppMethodBeat.o(187923);
+      AppMethodBeat.i(188350);
+      this.CrA = new ArrayList();
+      AppMethodBeat.o(188350);
     }
     
-    public final g A(Object... paramVarArgs)
+    public final g C(Object... paramVarArgs)
     {
-      AppMethodBeat.i(187924);
+      AppMethodBeat.i(188351);
       int i = 0;
       if (i < 2)
       {
         Object localObject = paramVarArgs[i];
-        ArrayList localArrayList = this.AZn;
+        ArrayList localArrayList = this.CrA;
         if (localObject != null) {}
         for (localObject = localObject.toString();; localObject = "")
         {
@@ -857,159 +873,159 @@ public final class ax
           break;
         }
       }
-      AppMethodBeat.o(187924);
+      AppMethodBeat.o(188351);
       return this;
     }
     
     public final void report()
     {
-      AppMethodBeat.i(187925);
-      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
-      com.tencent.mm.plugin.report.service.h.h(11576, this.AZn);
-      AppMethodBeat.o(187925);
+      AppMethodBeat.i(188352);
+      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+      com.tencent.mm.plugin.report.service.h.k(11576, this.CrA);
+      AppMethodBeat.o(188352);
     }
   }
   
   public static final class h
   {
-    public List<String> AZs;
+    public List<String> CrF;
   }
   
   public static final class i
   {
-    public List<String> AZs;
+    public List<String> CrF;
   }
   
   public final class j
   {
-    private String AZr;
-    private HashMap<String, Long> AZt;
-    private int dEF;
+    private String CrE;
+    private HashMap<String, Long> CrG;
+    private int dCr;
     
     public j()
     {
       AppMethodBeat.i(79071);
-      this.AZt = new HashMap();
+      this.CrG = new HashMap();
       AppMethodBeat.o(79071);
     }
     
-    public final void cb(String paramString, boolean paramBoolean)
+    public final void ch(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(79072);
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.WebviewReporter", "WebviewOpenUrl.stopLoadUrl failed, url is null");
+        ac.e("MicroMsg.WebviewReporter", "WebviewOpenUrl.stopLoadUrl failed, url is null");
         AppMethodBeat.o(79072);
         return;
       }
-      if (this.AZt.containsKey(paramString))
+      if (this.CrG.containsKey(paramString))
       {
         if (paramBoolean)
         {
-          long l1 = ((Long)this.AZt.get(paramString)).longValue();
-          long l2 = bt.eGO();
-          this.AZt.put(paramString, Long.valueOf(l2 - l1));
+          long l1 = ((Long)this.CrG.get(paramString)).longValue();
+          long l2 = bs.eWj();
+          this.CrG.put(paramString, Long.valueOf(l2 - l1));
           AppMethodBeat.o(79072);
           return;
         }
-        this.AZt.put(paramString, Long.valueOf(-1L));
+        this.CrG.put(paramString, Long.valueOf(-1L));
       }
       AppMethodBeat.o(79072);
     }
     
     public final void report()
     {
-      AppMethodBeat.i(187926);
-      int i = ax.baS();
-      Iterator localIterator = this.AZt.entrySet().iterator();
+      AppMethodBeat.i(188353);
+      int i = ax.bhK();
+      Iterator localIterator = this.CrG.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (Map.Entry)localIterator.next();
         String str1 = (String)((Map.Entry)localObject).getKey();
         long l = ((Long)((Map.Entry)localObject).getValue()).longValue();
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 2L, 1L, true);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 2L, 1L, true);
         if (l == -1L)
         {
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 13L, 1L, true);
-          ad.i("MicroMsg.WebviewReporter", "WebviewGetA8keyReporter.report fail url : %s, netType : %d", new Object[] { str1, Integer.valueOf(i) });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 13L, 1L, true);
+          ac.i("MicroMsg.WebviewReporter", "WebviewGetA8keyReporter.report fail url : %s, netType : %d", new Object[] { str1, Integer.valueOf(i) });
         }
         if ((l >= 0L) && (l <= 60000L))
         {
-          String str2 = this.AZr;
+          String str2 = this.CrE;
           if (str1 == null) {}
           for (localObject = str1;; localObject = str1.replace(",", "!"))
           {
-            ax.t(str2, new Object[] { Integer.valueOf(2), Long.valueOf(l), Integer.valueOf(i), localObject, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.AZh), Integer.valueOf(ax.AZi), Integer.valueOf(this.dEF), this.AZr });
-            ad.i("MicroMsg.WebviewReporter", "WebviewGetA8keyReporter.report url : %s, cost time : %d, netType : %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { str1, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(this.dEF), this.AZr });
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(32L, 6L, l, true);
+            ax.t(str2, new Object[] { Integer.valueOf(2), Long.valueOf(l), Integer.valueOf(i), localObject, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(ax.Cru), Integer.valueOf(ax.Crv), Integer.valueOf(this.dCr), this.CrE });
+            ac.i("MicroMsg.WebviewReporter", "WebviewGetA8keyReporter.report url : %s, cost time : %d, netType : %d, getA8KeyScene:%d, prePublishid:%s", new Object[] { str1, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(this.dCr), this.CrE });
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(32L, 6L, l, true);
             break;
           }
         }
       }
-      AppMethodBeat.o(187926);
+      AppMethodBeat.o(188353);
     }
   }
   
   public final class k
   {
-    String AZr;
-    HashMap<String, Long> AZu;
-    int dEF;
+    String CrE;
+    HashMap<String, Long> CrH;
+    int dCr;
     
     public k()
     {
       AppMethodBeat.i(79074);
-      this.AZu = new HashMap();
+      this.CrH = new HashMap();
       AppMethodBeat.o(79074);
     }
     
-    public final void awR(String paramString)
+    public final void aCj(String paramString)
     {
-      AppMethodBeat.i(187927);
-      if (bt.isNullOrNil(paramString))
+      AppMethodBeat.i(188354);
+      if (bs.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.WebviewReporter", "WebviewOpenUrl.startLoadUrl failed, url is null");
-        AppMethodBeat.o(187927);
+        ac.e("MicroMsg.WebviewReporter", "WebviewOpenUrl.startLoadUrl failed, url is null");
+        AppMethodBeat.o(188354);
         return;
       }
-      if (!this.AZu.containsKey(paramString)) {
-        this.AZu.put(paramString, Long.valueOf(bt.eGO()));
+      if (!this.CrH.containsKey(paramString)) {
+        this.CrH.put(paramString, Long.valueOf(bs.eWj()));
       }
-      AppMethodBeat.o(187927);
+      AppMethodBeat.o(188354);
     }
     
-    public final void awS(String paramString)
+    public final void aCk(String paramString)
     {
-      AppMethodBeat.i(187928);
-      if (bt.isNullOrNil(paramString))
+      AppMethodBeat.i(188355);
+      if (bs.isNullOrNil(paramString))
       {
-        ad.e("MicroMsg.WebviewReporter", "WebviewOpenUrl.stopLoadUrl failed, url is null");
-        AppMethodBeat.o(187928);
+        ac.e("MicroMsg.WebviewReporter", "WebviewOpenUrl.stopLoadUrl failed, url is null");
+        AppMethodBeat.o(188355);
         return;
       }
-      if (this.AZu.containsKey(paramString))
+      if (this.CrH.containsKey(paramString))
       {
-        long l1 = ((Long)this.AZu.get(paramString)).longValue();
-        long l2 = bt.eGO();
-        this.AZu.put(paramString, Long.valueOf(l2 - l1));
+        long l1 = ((Long)this.CrH.get(paramString)).longValue();
+        long l2 = bs.eWj();
+        this.CrH.put(paramString, Long.valueOf(l2 - l1));
       }
-      AppMethodBeat.o(187928);
+      AppMethodBeat.o(188355);
     }
     
-    public final k cs(int paramInt, String paramString)
+    public final k cv(int paramInt, String paramString)
     {
-      this.dEF = paramInt;
-      this.AZr = paramString;
+      this.dCr = paramInt;
+      this.CrE = paramString;
       return this;
     }
   }
   
   public final class l
   {
-    public String AZr;
-    public int dEF;
-    public boolean dhg = true;
-    public long lrf;
+    public String CrE;
+    public int dCr;
+    public boolean deB = true;
+    public long lTa;
     public String url;
     
     public l() {}

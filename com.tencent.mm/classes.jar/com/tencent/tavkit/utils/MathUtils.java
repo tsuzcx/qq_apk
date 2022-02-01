@@ -10,34 +10,34 @@ public class MathUtils
 {
   private static CGRect rect(CGRect paramCGRect1, CGRect paramCGRect2)
   {
-    AppMethodBeat.i(204800);
+    AppMethodBeat.i(192172);
     paramCGRect1 = size(paramCGRect1.size, paramCGRect2.size);
     paramCGRect1 = new CGRect(paramCGRect2.origin.x + (paramCGRect2.size.width - paramCGRect1.width) / 2.0F, paramCGRect2.origin.y + (paramCGRect2.size.height - paramCGRect1.height) / 2.0F, paramCGRect1.width, paramCGRect1.height);
-    AppMethodBeat.o(204800);
+    AppMethodBeat.o(192172);
     return paramCGRect1;
   }
   
   private static CGRect rectFill(CGRect paramCGRect1, CGRect paramCGRect2)
   {
-    AppMethodBeat.i(204806);
+    AppMethodBeat.i(192178);
     paramCGRect1 = sizeFill(paramCGRect1.size, paramCGRect2.size);
     paramCGRect1 = new CGRect(paramCGRect2.origin.x + (paramCGRect2.size.width - paramCGRect1.width) / 2.0F, paramCGRect2.origin.y + (paramCGRect2.size.height - paramCGRect1.height) / 2.0F, paramCGRect1.width, paramCGRect1.height);
-    AppMethodBeat.o(204806);
+    AppMethodBeat.o(192178);
     return paramCGRect1;
   }
   
   private static CGRect rectFit(CGRect paramCGRect1, CGRect paramCGRect2)
   {
-    AppMethodBeat.i(204803);
+    AppMethodBeat.i(192175);
     paramCGRect1 = sizeFit(paramCGRect1.size, paramCGRect2.size);
     paramCGRect1 = new CGRect(paramCGRect2.origin.x + (paramCGRect2.size.width - paramCGRect1.width) / 2.0F, paramCGRect2.origin.y + (paramCGRect2.size.height - paramCGRect1.height) / 2.0F, paramCGRect1.width, paramCGRect1.height);
-    AppMethodBeat.o(204803);
+    AppMethodBeat.o(192175);
     return paramCGRect1;
   }
   
   private static CGSize size(CGSize paramCGSize1, CGSize paramCGSize2)
   {
-    AppMethodBeat.i(204801);
+    AppMethodBeat.i(192173);
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
@@ -46,7 +46,7 @@ public class MathUtils
     }
     for (;;)
     {
-      AppMethodBeat.o(204801);
+      AppMethodBeat.o(192173);
       return localCGSize;
       if (f1 > f2) {
         localCGSize.height = (f1 * paramCGSize1.height);
@@ -56,7 +56,7 @@ public class MathUtils
   
   private static CGSize sizeFill(CGSize paramCGSize1, CGSize paramCGSize2)
   {
-    AppMethodBeat.i(204807);
+    AppMethodBeat.i(192179);
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
@@ -65,7 +65,7 @@ public class MathUtils
     }
     for (;;)
     {
-      AppMethodBeat.o(204807);
+      AppMethodBeat.o(192179);
       return localCGSize;
       if (f1 > f2) {
         localCGSize.height = (f1 * paramCGSize1.height);
@@ -75,7 +75,7 @@ public class MathUtils
   
   private static CGSize sizeFit(CGSize paramCGSize1, CGSize paramCGSize2)
   {
-    AppMethodBeat.i(204804);
+    AppMethodBeat.i(192176);
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
@@ -84,7 +84,7 @@ public class MathUtils
     }
     for (;;)
     {
-      AppMethodBeat.o(204804);
+      AppMethodBeat.o(192176);
       return localCGSize;
       if (f1 < f2) {
         localCGSize.height = Math.round(f1 * paramCGSize1.height);
@@ -94,33 +94,33 @@ public class MathUtils
   
   public static Matrix transformBySourceRect(CGRect paramCGRect1, CGRect paramCGRect2)
   {
-    AppMethodBeat.i(204799);
+    AppMethodBeat.i(192171);
     paramCGRect2 = rect(paramCGRect1, paramCGRect2);
     float f1 = paramCGRect2.size.width / paramCGRect1.size.width;
     float f2 = paramCGRect2.size.height / paramCGRect1.size.height;
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
     localMatrix.postTranslate(paramCGRect2.origin.x - f1 * paramCGRect1.origin.x, paramCGRect2.origin.y - f2 * paramCGRect1.origin.y);
-    AppMethodBeat.o(204799);
+    AppMethodBeat.o(192171);
     return localMatrix;
   }
   
   public static Matrix transformBySourceRectFill(CGRect paramCGRect1, CGRect paramCGRect2)
   {
-    AppMethodBeat.i(204805);
+    AppMethodBeat.i(192177);
     paramCGRect2 = rectFill(paramCGRect1, paramCGRect2);
     float f1 = paramCGRect2.size.width / paramCGRect1.size.width;
     float f2 = paramCGRect2.size.height / paramCGRect1.size.height;
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
     localMatrix.postTranslate(paramCGRect2.origin.x - f1 * paramCGRect1.origin.x, paramCGRect2.origin.y - f2 * paramCGRect1.origin.y);
-    AppMethodBeat.o(204805);
+    AppMethodBeat.o(192177);
     return localMatrix;
   }
   
   public static Matrix transformBySourceRectFit(CGRect paramCGRect1, CGRect paramCGRect2)
   {
-    AppMethodBeat.i(204802);
+    AppMethodBeat.i(192174);
     paramCGRect2 = rectFit(paramCGRect1, paramCGRect2);
     float f1 = paramCGRect2.size.width / paramCGRect1.size.width;
     float f2 = paramCGRect2.size.height / paramCGRect1.size.height;
@@ -131,13 +131,13 @@ public class MathUtils
     float f6 = paramCGRect1.origin.y;
     localMatrix.postScale(f1, f2);
     localMatrix.postTranslate(f3 - f4 * f1, f5 - f6 * f2);
-    AppMethodBeat.o(204802);
+    AppMethodBeat.o(192174);
     return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.utils.MathUtils
  * JD-Core Version:    0.7.0.1
  */

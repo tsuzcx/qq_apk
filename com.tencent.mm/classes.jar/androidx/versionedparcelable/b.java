@@ -8,12 +8,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b
   extends a
 {
-  private final int LZ;
-  private final int Mc;
-  private final SparseIntArray ayK;
-  private final Parcel ayL;
-  private int ayM;
-  private int ayN;
+  private final int MW;
+  private final int MZ;
+  private final SparseIntArray azE;
+  private final Parcel azF;
+  private int azG;
+  private int azH;
   private final String mPrefix;
   
   b(Parcel paramParcel)
@@ -26,13 +26,13 @@ final class b
   private b(Parcel paramParcel, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(62411);
-    this.ayK = new SparseIntArray();
-    this.ayM = -1;
-    this.ayN = 0;
-    this.ayL = paramParcel;
-    this.LZ = paramInt1;
-    this.Mc = paramInt2;
-    this.ayN = this.LZ;
+    this.azE = new SparseIntArray();
+    this.azG = -1;
+    this.azH = 0;
+    this.azF = paramParcel;
+    this.MW = paramInt1;
+    this.MZ = paramInt2;
+    this.azH = this.MW;
     this.mPrefix = paramString;
     AppMethodBeat.o(62411);
   }
@@ -40,66 +40,66 @@ final class b
   public final void a(Parcelable paramParcelable)
   {
     AppMethodBeat.i(62419);
-    this.ayL.writeParcelable(paramParcelable, 0);
+    this.azF.writeParcelable(paramParcelable, 0);
     AppMethodBeat.o(62419);
   }
   
-  public final boolean dj(int paramInt)
+  public final boolean di(int paramInt)
   {
     AppMethodBeat.i(62412);
     int j;
     do
     {
-      if (this.ayN >= this.Mc) {
+      if (this.azH >= this.MZ) {
         break;
       }
-      this.ayL.setDataPosition(this.ayN);
-      int i = this.ayL.readInt();
-      j = this.ayL.readInt();
-      this.ayN = (i + this.ayN);
+      this.azF.setDataPosition(this.azH);
+      int i = this.azF.readInt();
+      j = this.azF.readInt();
+      this.azH = (i + this.azH);
     } while (j != paramInt);
-    for (paramInt = this.ayL.dataPosition(); paramInt == -1; paramInt = -1)
+    for (paramInt = this.azF.dataPosition(); paramInt == -1; paramInt = -1)
     {
       AppMethodBeat.o(62412);
       return false;
     }
-    this.ayL.setDataPosition(paramInt);
+    this.azF.setDataPosition(paramInt);
     AppMethodBeat.o(62412);
     return true;
   }
   
-  public final void dk(int paramInt)
+  public final void dj(int paramInt)
   {
     AppMethodBeat.i(62413);
-    mS();
-    this.ayM = paramInt;
-    this.ayK.put(paramInt, this.ayL.dataPosition());
+    nc();
+    this.azG = paramInt;
+    this.azE.put(paramInt, this.azF.dataPosition());
     writeInt(0);
     writeInt(paramInt);
     AppMethodBeat.o(62413);
   }
   
-  public final void mS()
+  public final void nc()
   {
     AppMethodBeat.i(62414);
-    if (this.ayM >= 0)
+    if (this.azG >= 0)
     {
-      int i = this.ayK.get(this.ayM);
-      int j = this.ayL.dataPosition();
-      this.ayL.setDataPosition(i);
-      this.ayL.writeInt(j - i);
-      this.ayL.setDataPosition(j);
+      int i = this.azE.get(this.azG);
+      int j = this.azF.dataPosition();
+      this.azF.setDataPosition(i);
+      this.azF.writeInt(j - i);
+      this.azF.setDataPosition(j);
     }
     AppMethodBeat.o(62414);
   }
   
-  protected final a mT()
+  protected final a nd()
   {
     AppMethodBeat.i(62415);
-    Object localObject = this.ayL;
-    int j = this.ayL.dataPosition();
-    if (this.ayN == this.LZ) {}
-    for (int i = this.Mc;; i = this.ayN)
+    Object localObject = this.azF;
+    int j = this.azF.dataPosition();
+    if (this.azH == this.MW) {}
+    for (int i = this.MZ;; i = this.azH)
     {
       localObject = new b((Parcel)localObject, j, i, this.mPrefix + "  ");
       AppMethodBeat.o(62415);
@@ -107,25 +107,25 @@ final class b
     }
   }
   
-  public final byte[] mU()
+  public final byte[] ne()
   {
     AppMethodBeat.i(62422);
-    int i = this.ayL.readInt();
+    int i = this.azF.readInt();
     if (i < 0)
     {
       AppMethodBeat.o(62422);
       return null;
     }
     byte[] arrayOfByte = new byte[i];
-    this.ayL.readByteArray(arrayOfByte);
+    this.azF.readByteArray(arrayOfByte);
     AppMethodBeat.o(62422);
     return arrayOfByte;
   }
   
-  public final <T extends Parcelable> T mV()
+  public final <T extends Parcelable> T nf()
   {
     AppMethodBeat.i(62423);
-    Parcelable localParcelable = this.ayL.readParcelable(getClass().getClassLoader());
+    Parcelable localParcelable = this.azF.readParcelable(getClass().getClassLoader());
     AppMethodBeat.o(62423);
     return localParcelable;
   }
@@ -133,7 +133,7 @@ final class b
   public final int readInt()
   {
     AppMethodBeat.i(62420);
-    int i = this.ayL.readInt();
+    int i = this.azF.readInt();
     AppMethodBeat.o(62420);
     return i;
   }
@@ -141,7 +141,7 @@ final class b
   public final String readString()
   {
     AppMethodBeat.i(62421);
-    String str = this.ayL.readString();
+    String str = this.azF.readString();
     AppMethodBeat.o(62421);
     return str;
   }
@@ -151,32 +151,32 @@ final class b
     AppMethodBeat.i(62416);
     if (paramArrayOfByte != null)
     {
-      this.ayL.writeInt(paramArrayOfByte.length);
-      this.ayL.writeByteArray(paramArrayOfByte);
+      this.azF.writeInt(paramArrayOfByte.length);
+      this.azF.writeByteArray(paramArrayOfByte);
       AppMethodBeat.o(62416);
       return;
     }
-    this.ayL.writeInt(-1);
+    this.azF.writeInt(-1);
     AppMethodBeat.o(62416);
   }
   
   public final void writeInt(int paramInt)
   {
     AppMethodBeat.i(62417);
-    this.ayL.writeInt(paramInt);
+    this.azF.writeInt(paramInt);
     AppMethodBeat.o(62417);
   }
   
   public final void writeString(String paramString)
   {
     AppMethodBeat.i(62418);
-    this.ayL.writeString(paramString);
+    this.azF.writeString(paramString);
     AppMethodBeat.o(62418);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     androidx.versionedparcelable.b
  * JD-Core Version:    0.7.0.1
  */

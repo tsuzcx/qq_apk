@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String country;
-  public String evA;
-  public String evz;
-  public String hdQ;
+  public String exV;
+  public String exW;
+  public String hEt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,14 +19,14 @@ public final class g
       if (this.country != null) {
         paramVarArgs.d(1, this.country);
       }
-      if (this.evz != null) {
-        paramVarArgs.d(2, this.evz);
+      if (this.exV != null) {
+        paramVarArgs.d(2, this.exV);
       }
-      if (this.evA != null) {
-        paramVarArgs.d(3, this.evA);
+      if (this.exW != null) {
+        paramVarArgs.d(3, this.exW);
       }
-      if (this.hdQ != null) {
-        paramVarArgs.d(4, this.hdQ);
+      if (this.hEt != null) {
+        paramVarArgs.d(4, this.hEt);
       }
       AppMethodBeat.o(91273);
       return 0;
@@ -40,25 +40,25 @@ public final class g
     for (int i = f.a.a.b.b.a.e(1, this.country) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.evz != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.evz);
+      if (this.exV != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.exV);
       }
       i = paramInt;
-      if (this.evA != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.evA);
+      if (this.exW != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.exW);
       }
       paramInt = i;
-      if (this.hdQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.hdQ);
+      if (this.hEt != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.hEt);
       }
       AppMethodBeat.o(91273);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(91273);
@@ -74,19 +74,19 @@ public final class g
           AppMethodBeat.o(91273);
           return -1;
         case 1: 
-          localg.country = locala.KhF.readString();
+          localg.country = locala.LVo.readString();
           AppMethodBeat.o(91273);
           return 0;
         case 2: 
-          localg.evz = locala.KhF.readString();
+          localg.exV = locala.LVo.readString();
           AppMethodBeat.o(91273);
           return 0;
         case 3: 
-          localg.evA = locala.KhF.readString();
+          localg.exW = locala.LVo.readString();
           AppMethodBeat.o(91273);
           return 0;
         }
-        localg.hdQ = locala.KhF.readString();
+        localg.hEt = locala.LVo.readString();
         AppMethodBeat.o(91273);
         return 0;
       }
@@ -97,7 +97,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.g
  * JD-Core Version:    0.7.0.1
  */

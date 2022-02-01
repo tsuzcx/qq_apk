@@ -13,39 +13,39 @@ import java.util.Set;
 @SuppressLint({"UseSparseArrays"})
 public final class r
 {
-  private static final HashMap<Integer, g> BTI;
-  private static volatile List<g> BTJ;
+  private static final HashMap<Integer, g> DlY;
+  private static volatile List<g> DlZ;
   
   static
   {
     AppMethodBeat.i(152069);
     HashMap localHashMap = new HashMap(1);
-    BTI = localHashMap;
+    DlY = localHashMap;
     localHashMap.put(Integer.valueOf("CheckResUpdatePlugin".hashCode()), new b.a());
-    BTJ = null;
+    DlZ = null;
     AppMethodBeat.o(152069);
   }
   
-  public static Collection<g> ewM()
+  public static Collection<g> eMg()
   {
     AppMethodBeat.i(152068);
-    if (BTJ != null)
+    if (DlZ != null)
     {
-      localObject = BTJ;
+      localObject = DlZ;
       AppMethodBeat.o(152068);
       return localObject;
     }
     Object localObject = new LinkedList();
-    Iterator localIterator = BTI.keySet().iterator();
+    Iterator localIterator = DlY.keySet().iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      g localg = (g)BTI.get(Integer.valueOf(i));
+      g localg = (g)DlY.get(Integer.valueOf(i));
       if (localg != null) {
         ((LinkedList)localObject).add(localg);
       }
     }
-    BTJ = (List)localObject;
+    DlZ = (List)localObject;
     AppMethodBeat.o(152068);
     return localObject;
   }
@@ -54,7 +54,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.c.r
  * JD-Core Version:    0.7.0.1
  */

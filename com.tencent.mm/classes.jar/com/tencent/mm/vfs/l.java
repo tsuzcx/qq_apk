@@ -8,21 +8,21 @@ public final class l
 {
   public l(e parame)
   {
-    super(i.a(parame.mUri, parame.fhR(), false));
+    super(i.a(parame.mUri, parame.fxS(), false));
     AppMethodBeat.i(13320);
     AppMethodBeat.o(13320);
   }
   
   public l(e parame, boolean paramBoolean)
   {
-    super(i.a(parame.mUri, parame.fhR(), paramBoolean));
+    super(i.a(parame.mUri, parame.fxS(), paramBoolean));
     AppMethodBeat.i(170172);
     AppMethodBeat.o(170172);
   }
   
   public l(String paramString)
   {
-    super(i.cM(paramString, false));
+    super(i.cS(paramString, false));
     AppMethodBeat.i(13319);
     AppMethodBeat.o(13319);
   }

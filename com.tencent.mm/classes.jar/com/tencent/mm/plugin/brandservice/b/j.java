@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aj;
-import com.tencent.mm.protocal.protobuf.aop;
-import com.tencent.mm.protocal.protobuf.aoq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.bil;
+import com.tencent.mm.protocal.protobuf.bim;
+import com.tencent.mm.protocal.protobuf.cmu;
+import com.tencent.mm.protocal.protobuf.cmv;
+import com.tencent.mm.protocal.protobuf.cti;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -20,74 +23,123 @@ public final class j
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  LinkedList<String> mTh;
-  private final com.tencent.mm.al.b rr;
+  private static long nvA = 0L;
+  private com.tencent.mm.ak.g callback;
+  private b rr;
   
-  public j()
+  public static boolean bJt()
   {
-    AppMethodBeat.i(5577);
-    Object localObject1 = new b.a();
-    ((b.a)localObject1).gUU = new aop();
-    ((b.a)localObject1).gUV = new aoq();
-    ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/getapplist";
-    ((b.a)localObject1).funcId = 387;
-    ((b.a)localObject1).reqCmdId = 0;
-    ((b.a)localObject1).respCmdId = 0;
-    this.rr = ((b.a)localObject1).atI();
-    this.mTh = new LinkedList();
-    aop localaop = (aop)this.rr.gUS.gUX;
-    com.tencent.mm.kernel.g.afC();
-    Object localObject2 = com.tencent.mm.kernel.g.afB().afk().get(196610, null);
-    if (localObject2 == null) {}
-    for (localObject1 = "null";; localObject1 = localObject2.toString())
+    AppMethodBeat.i(5580);
+    if (System.currentTimeMillis() - nvA > 3600000L)
     {
-      ad.i("MicroMsg.BrandService.BrandServiceApplication", "get config, key[%d], value[%s]", new Object[] { Integer.valueOf(196610), localObject1 });
-      localaop.Dqu = bt.a((Integer)localObject2, 0);
-      ad.i("MicroMsg.BrandService.NetSceneGetAppList", "info: request hash code %d", new Object[] { Integer.valueOf(localaop.Dqu) });
-      AppMethodBeat.o(5577);
-      return;
+      AppMethodBeat.o(5580);
+      return true;
+    }
+    AppMethodBeat.o(5580);
+    return false;
+  }
+  
+  public static LinkedList<cmu> bJu()
+  {
+    AppMethodBeat.i(5583);
+    try
+    {
+      Object localObject = com.tencent.mm.vfs.i.aU(com.tencent.mm.kernel.g.agR().ghC + "search_biz_recommend", 0, 2147483647);
+      if (localObject != null)
+      {
+        cmv localcmv = new cmv();
+        localcmv.parseFrom((byte[])localObject);
+        ac.d("MicroMsg.BrandService.NetSceneGroupRecommendBiz", "GroupCount2: %d", new Object[] { Integer.valueOf(localcmv.GroupCount) });
+        localObject = localcmv.FAg;
+        AppMethodBeat.o(5583);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      ac.d("MicroMsg.BrandService.NetSceneGroupRecommendBiz", localException.getMessage());
+      ac.printErrStackTrace("MicroMsg.BrandService.NetSceneGroupRecommendBiz", localException, "", new Object[0]);
+      LinkedList localLinkedList = new LinkedList();
+      AppMethodBeat.o(5583);
+      return localLinkedList;
     }
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
-    AppMethodBeat.i(5579);
+    AppMethodBeat.i(5581);
+    nvA = System.currentTimeMillis();
     this.callback = paramg;
-    ad.i("MicroMsg.BrandService.NetSceneGetAppList", "do scene");
+    paramg = new b.a();
+    paramg.hvt = new bil();
+    paramg.hvu = new bim();
+    paramg.uri = "/cgi-bin/micromsg-bin/grouprecommendbiz";
+    paramg.funcId = 456;
+    paramg.reqCmdId = 0;
+    paramg.respCmdId = 0;
+    this.rr = paramg.aAz();
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(5579);
+    AppMethodBeat.o(5581);
     return i;
   }
   
   public final int getType()
   {
-    return 387;
+    return 456;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5578);
-    ad.w("MicroMsg.BrandService.NetSceneGetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(5582);
+    ac.d("MicroMsg.BrandService.NetSceneGroupRecommendBiz", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (aoq)this.rr.gUT.gUX;
-      ad.i("MicroMsg.BrandService.NetSceneGetAppList", "ok, hash code is %d, count is %d", new Object[] { Integer.valueOf(paramq.Dqu), Integer.valueOf(paramq.mAK) });
-      com.tencent.mm.plugin.brandservice.b.j(196610, Integer.valueOf(paramq.Dqu));
-      paramq = paramq.mAL.iterator();
-      while (paramq.hasNext())
+      paramq = (bim)this.rr.hvs.hvw;
+      if (paramq.EXz.GroupCount <= 0) {
+        break label329;
+      }
+      ac.d("MicroMsg.BrandService.NetSceneGroupRecommendBiz", "GroupCount, %d", new Object[] { Integer.valueOf(paramq.EXz.GroupCount) });
+      try
       {
-        paramArrayOfByte = (aj)paramq.next();
-        this.mTh.add(paramArrayOfByte.mAQ);
+        paramArrayOfByte = paramq.EXz.toByteArray();
+        com.tencent.mm.vfs.i.f(com.tencent.mm.kernel.g.agR().ghC + "search_biz_recommend", paramArrayOfByte, paramArrayOfByte.length);
+        paramq = paramq.EXz.FAg.iterator();
+        while (paramq.hasNext())
+        {
+          paramArrayOfByte = ((cmu)paramq.next()).FAf.iterator();
+          while (paramArrayOfByte.hasNext())
+          {
+            cti localcti = (cti)paramArrayOfByte.next();
+            com.tencent.mm.aj.i locali = new com.tencent.mm.aj.i();
+            locali.username = z.a(localcti.EuE);
+            locali.huF = localcti.Eof;
+            locali.huE = localcti.Eog;
+            locali.drx = -1;
+            locali.exK = 3;
+            locali.ez(true);
+            p.aBw().b(locali);
+          }
+        }
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      }
+      catch (IOException paramq)
+      {
+        ac.d("MicroMsg.BrandService.NetSceneGroupRecommendBiz", paramq.getMessage());
+        ac.printErrStackTrace("MicroMsg.BrandService.NetSceneGroupRecommendBiz", paramq, "", new Object[0]);
       }
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(5578);
+    for (;;)
+    {
+      AppMethodBeat.o(5582);
+      return;
+      label329:
+      com.tencent.mm.vfs.i.deleteFile(com.tencent.mm.kernel.g.agR().ghC + "search_biz_recommend");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class w
 {
-  public static final w aTc = new w()
+  public static final w aTU = new w()
   {
     public final w.a a(int paramAnonymousInt, w.a paramAnonymousa, boolean paramAnonymousBoolean)
     {
@@ -24,17 +24,17 @@ public abstract class w
       throw paramAnonymousb;
     }
     
-    public final int aa(Object paramAnonymousObject)
+    public final int ac(Object paramAnonymousObject)
     {
       return -1;
     }
     
-    public final int rP()
+    public final int rZ()
     {
       return 0;
     }
     
-    public final int rQ()
+    public final int sa()
     {
       return 0;
     }
@@ -42,14 +42,14 @@ public abstract class w
   
   public final int a(int paramInt1, a parama, b paramb, int paramInt2)
   {
-    int i = a(paramInt1, parama, false).aRV;
-    if (a(i, paramb).aTq == paramInt1)
+    int i = a(paramInt1, parama, false).aSQ;
+    if (a(i, paramb).aUi == paramInt1)
     {
       paramInt1 = bd(i, paramInt2);
       if (paramInt1 == -1) {
         return -1;
       }
-      return a(paramInt1, paramb).aTp;
+      return a(paramInt1, paramb).aUh;
     }
     return paramInt1 + 1;
   }
@@ -61,20 +61,20 @@ public abstract class w
   
   public final Pair<Integer, Long> a(b paramb, a parama, int paramInt, long paramLong1, long paramLong2)
   {
-    a.bn(paramInt, rP());
+    a.bl(paramInt, rZ());
     a(paramInt, paramb, false, paramLong2);
     paramLong2 = paramLong1;
     if (paramLong1 == -9223372036854775807L)
     {
-      paramLong1 = paramb.aTr;
+      paramLong1 = paramb.aUj;
       paramLong2 = paramLong1;
       if (paramLong1 == -9223372036854775807L) {
         return null;
       }
     }
-    paramInt = paramb.aTp;
-    paramLong2 = paramb.aTs + paramLong2;
-    for (paramLong1 = a(paramInt, parama, false).aSz; (paramLong1 != -9223372036854775807L) && (paramLong2 >= paramLong1) && (paramInt < paramb.aTq); paramLong1 = a(paramInt, parama, false).aSz)
+    paramInt = paramb.aUh;
+    paramLong2 = paramb.aUk + paramLong2;
+    for (paramLong1 = a(paramInt, parama, false).aTs; (paramLong1 != -9223372036854775807L) && (paramLong2 >= paramLong1) && (paramInt < paramb.aUi); paramLong1 = a(paramInt, parama, false).aTs)
     {
       paramLong2 -= paramLong1;
       paramInt += 1;
@@ -91,7 +91,7 @@ public abstract class w
   
   public abstract b a(int paramInt, b paramb, boolean paramBoolean, long paramLong);
   
-  public abstract int aa(Object paramObject);
+  public abstract int ac(Object paramObject);
   
   public final boolean b(int paramInt1, a parama, b paramb, int paramInt2)
   {
@@ -106,14 +106,14 @@ public abstract class w
     default: 
       throw new IllegalStateException();
     case 0: 
-      if (paramInt1 == rP() - 1) {
+      if (paramInt1 == rZ() - 1) {
         i = -1;
       }
     case 1: 
       return i;
       return paramInt1 + 1;
     }
-    if (paramInt1 == rP() - 1) {
+    if (paramInt1 == rZ() - 1) {
       return 0;
     }
     return paramInt1 + 1;
@@ -121,40 +121,40 @@ public abstract class w
   
   public final boolean isEmpty()
   {
-    return rP() == 0;
+    return rZ() == 0;
   }
   
-  public abstract int rP();
+  public abstract int rZ();
   
-  public abstract int rQ();
+  public abstract int sa();
   
   public static final class a
   {
-    public Object aRG;
-    public int aRV;
-    public long aSz;
-    public Object aTd;
-    public long aTe;
-    long[] aTf;
-    int[] aTg;
-    private int[] aTh;
-    int[] aTi;
-    private long[][] aTj;
-    long aTk;
+    public Object aSB;
+    public int aSQ;
+    public Object aTV;
+    public long aTW;
+    public long[] aTX;
+    public int[] aTY;
+    public int[] aTZ;
+    public long aTs;
+    public int[] aUa;
+    public long[][] aUb;
+    public long aUc;
     
-    public final int C(long paramLong)
+    public final int E(long paramLong)
     {
       AppMethodBeat.i(92923);
-      if (this.aTf == null)
+      if (this.aTX == null)
       {
         AppMethodBeat.o(92923);
         return -1;
       }
-      int i = this.aTf.length - 1;
-      while ((i >= 0) && ((this.aTf[i] == -9223372036854775808L) || (this.aTf[i] > paramLong))) {
+      int i = this.aTX.length - 1;
+      while ((i >= 0) && ((this.aTX[i] == -9223372036854775808L) || (this.aTX[i] > paramLong))) {
         i -= 1;
       }
-      if ((i >= 0) && (!dJ(i)))
+      if ((i >= 0) && (!dI(i)))
       {
         AppMethodBeat.o(92923);
         return i;
@@ -163,19 +163,19 @@ public abstract class w
       return -1;
     }
     
-    public final int D(long paramLong)
+    public final int F(long paramLong)
     {
       AppMethodBeat.i(92924);
-      if (this.aTf == null)
+      if (this.aTX == null)
       {
         AppMethodBeat.o(92924);
         return -1;
       }
       int i = 0;
-      while ((i < this.aTf.length) && (this.aTf[i] != -9223372036854775808L) && ((paramLong >= this.aTf[i]) || (dJ(i)))) {
+      while ((i < this.aTX.length) && (this.aTX[i] != -9223372036854775808L) && ((paramLong >= this.aTX[i]) || (dI(i)))) {
         i += 1;
       }
-      if (i < this.aTf.length)
+      if (i < this.aTX.length)
       {
         AppMethodBeat.o(92924);
         return i;
@@ -184,76 +184,45 @@ public abstract class w
       return -1;
     }
     
-    public final a a(Object paramObject1, Object paramObject2, long paramLong1, long paramLong2)
-    {
-      this.aTd = paramObject1;
-      this.aRG = paramObject2;
-      this.aRV = 0;
-      this.aSz = paramLong1;
-      this.aTe = paramLong2;
-      this.aTf = null;
-      this.aTg = null;
-      this.aTh = null;
-      this.aTi = null;
-      this.aTj = null;
-      this.aTk = -9223372036854775807L;
-      return this;
-    }
-    
     public final boolean be(int paramInt1, int paramInt2)
     {
-      return paramInt2 < this.aTh[paramInt1];
+      return paramInt2 < this.aTZ[paramInt1];
     }
     
     public final long bf(int paramInt1, int paramInt2)
     {
-      if (paramInt2 >= this.aTj[paramInt1].length) {
+      if (paramInt2 >= this.aUb[paramInt1].length) {
         return -9223372036854775807L;
       }
-      return this.aTj[paramInt1][paramInt2];
+      return this.aUb[paramInt1][paramInt2];
     }
     
-    public final boolean dJ(int paramInt)
+    public final boolean dI(int paramInt)
     {
-      return (this.aTg[paramInt] != -1) && (this.aTi[paramInt] == this.aTg[paramInt]);
+      return (this.aTY[paramInt] != -1) && (this.aUa[paramInt] == this.aTY[paramInt]);
     }
     
-    public final int rR()
+    public final int sb()
     {
-      if (this.aTf == null) {
+      if (this.aTX == null) {
         return 0;
       }
-      return this.aTf.length;
+      return this.aTX.length;
     }
   }
   
   public static final class b
   {
-    public long aSz;
-    public Object aTd;
-    public long aTl;
-    public long aTm;
-    public boolean aTn;
-    public boolean aTo;
-    public int aTp;
-    public int aTq;
-    public long aTr;
+    public Object aTV;
     public long aTs;
-    
-    public final b a(Object paramObject, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, long paramLong3, long paramLong4, int paramInt, long paramLong5)
-    {
-      this.aTd = paramObject;
-      this.aTl = paramLong1;
-      this.aTm = paramLong2;
-      this.aTn = paramBoolean1;
-      this.aTo = paramBoolean2;
-      this.aTr = paramLong3;
-      this.aSz = paramLong4;
-      this.aTp = 0;
-      this.aTq = paramInt;
-      this.aTs = paramLong5;
-      return this;
-    }
+    public long aUd;
+    public long aUe;
+    public boolean aUf;
+    public boolean aUg;
+    public int aUh;
+    public int aUi;
+    public long aUj;
+    public long aUk;
   }
 }
 

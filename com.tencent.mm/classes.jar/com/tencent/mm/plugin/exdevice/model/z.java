@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aur;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.protocal.protobuf.aut;
-import com.tencent.mm.protocal.protobuf.auu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.axx;
+import com.tencent.mm.protocal.protobuf.axy;
+import com.tencent.mm.protocal.protobuf.axz;
+import com.tencent.mm.protocal.protobuf.aya;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public final class z
   extends n
   implements k
 {
-  b fUF;
-  private g gbr;
-  private String oWm;
+  b fYA;
+  private g gfX;
+  private String pzx;
   
-  public z(LinkedList<aus> paramLinkedList, String paramString1, String paramString2)
+  public z(LinkedList<axy> paramLinkedList, String paramString1, String paramString2)
   {
     AppMethodBeat.i(23424);
-    this.oWm = "";
-    this.fUF = null;
-    this.gbr = null;
-    this.oWm = paramString2;
+    this.pzx = "";
+    this.fYA = null;
+    this.gfX = null;
+    this.pzx = paramString2;
     paramString2 = new b.a();
-    paramString2.gUU = new aut();
-    paramString2.gUV = new auu();
+    paramString2.hvt = new axz();
+    paramString2.hvu = new aya();
     paramString2.uri = "/cgi-bin/micromsg-bin/getharddeviceoperticket";
     paramString2.funcId = 543;
     paramString2.reqCmdId = 0;
     paramString2.respCmdId = 0;
-    this.fUF = paramString2.atI();
-    paramString2 = (aut)this.fUF.gUS.gUX;
-    if (!bt.isNullOrNil(paramString1))
+    this.fYA = paramString2.aAz();
+    paramString2 = (axz)this.fYA.hvr.hvw;
+    if (!bs.isNullOrNil(paramString1))
     {
-      aur localaur = new aur();
-      localaur.CEP = paramString1;
-      paramString2.Duv = localaur;
+      axx localaxx = new axx();
+      localaxx.DXp = paramString1;
+      paramString2.EPE = localaxx;
     }
-    paramString2.Duu = paramLinkedList;
+    paramString2.EPD = paramLinkedList;
     AppMethodBeat.o(23424);
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(23425);
-    this.gbr = paramg;
-    int i = dispatch(parame, this.fUF, this);
+    this.gfX = paramg;
+    int i = dispatch(parame, this.fYA, this);
     AppMethodBeat.o(23425);
     return i;
   }
@@ -68,9 +68,9 @@ public final class z
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23426);
-    ad.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gbr != null) {
-      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ac.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gfX != null) {
+      this.gfX.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(23426);
   }

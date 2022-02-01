@@ -2,95 +2,71 @@ package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.b.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 
 public final class g
 {
-  public static HashMap<String, String> hUN;
-  public static final a roA;
-  public static final a roB;
-  public static b roC;
-  public static HashMap<String, String[]> roD;
-  public static final a roi;
-  public static final a roj;
-  public static final a rok;
-  public static final a rol;
-  public static final a rom;
-  public static final a ron;
-  public static final a roo;
-  public static final a rop;
-  public static final a roq;
-  public static final a ror;
-  public static final a ros;
-  public static final a rot;
-  public static final a rou;
-  public static final a rov;
-  public static final a rox;
-  public static final a roy;
-  public static final a roz;
+  public static HashMap<String, String> iuR;
+  public static final a sxc;
+  public static final a sxd;
+  public static final a sxe;
+  public static final a sxf;
+  public static final a sxg;
+  public static final a sxh;
+  public static final a sxi;
+  public static final a sxj;
+  public static final a sxk;
+  public static final a sxl;
+  public static final a sxm;
+  public static final a sxn;
+  public static final a sxo;
+  public static final a sxp;
+  public static final a sxq;
+  public static final a sxr;
+  public static final a sxs;
+  public static final a sxt;
+  public static final a sxu;
+  public static b sxv;
+  public static HashMap<String, String[]> sxw;
   
   static
   {
     AppMethodBeat.i(131669);
-    roi = new a(19968, 40869);
-    roj = new a(40870, 40907);
-    rok = new a(13312, 19893);
-    rol = new a(131072, 173782);
-    rom = new a(173824, 177972);
-    ron = new a(177984, 178205);
-    roo = new a(12032, 12245);
-    rop = new a(63744, 64217);
-    roq = new a(194560, 195101);
-    ror = new a(59413, 59503);
-    ros = new a(58368, 58856);
-    rot = new a(58880, 59087);
-    rou = new a(12736, 12771);
-    rov = new a(12272, 12283);
-    rox = new a(12549, 12576);
-    roy = new a(12704, 12730);
-    roz = new a(65, 90);
-    roA = new a(97, 122);
-    roB = new a(48, 57);
-    roC = new b();
-    hUN = new HashMap();
-    roD = new HashMap();
+    sxc = new a(19968, 40869);
+    sxd = new a(40870, 40907);
+    sxe = new a(13312, 19893);
+    sxf = new a(131072, 173782);
+    sxg = new a(173824, 177972);
+    sxh = new a(177984, 178205);
+    sxi = new a(12032, 12245);
+    sxj = new a(63744, 64217);
+    sxk = new a(194560, 195101);
+    sxl = new a(59413, 59503);
+    sxm = new a(58368, 58856);
+    sxn = new a(58880, 59087);
+    sxo = new a(12736, 12771);
+    sxp = new a(12272, 12283);
+    sxq = new a(12549, 12576);
+    sxr = new a(12704, 12730);
+    sxs = new a(65, 90);
+    sxt = new a(97, 122);
+    sxu = new a(48, 57);
+    sxv = new b();
+    iuR = new HashMap();
+    sxw = new HashMap();
     AppMethodBeat.o(131669);
   }
   
   public static boolean A(char paramChar)
   {
-    AppMethodBeat.i(131665);
-    if ((roi.DE(paramChar)) || (roj.DE(paramChar)) || (rok.DE(paramChar)) || (rol.DE(paramChar)) || (rom.DE(paramChar)) || (ron.DE(paramChar)))
-    {
-      AppMethodBeat.o(131665);
-      return true;
-    }
-    AppMethodBeat.o(131665);
-    return false;
-  }
-  
-  public static boolean B(char paramChar)
-  {
-    AppMethodBeat.i(131666);
-    if ((roz.DE(paramChar)) || (roA.DE(paramChar)))
-    {
-      AppMethodBeat.o(131666);
-      return true;
-    }
-    AppMethodBeat.o(131666);
-    return false;
-  }
-  
-  public static boolean C(char paramChar)
-  {
     AppMethodBeat.i(131667);
-    boolean bool = roB.DE(paramChar);
+    boolean bool = sxu.FA(paramChar);
     AppMethodBeat.o(131667);
     return bool;
   }
   
-  public static final String abe(String paramString)
+  public static final String afW(String paramString)
   {
     AppMethodBeat.i(131668);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -100,10 +76,10 @@ public final class g
     if (i < j)
     {
       char c = paramString[i];
-      if (A(c))
+      if (y(c))
       {
-        String str = (String)hUN.get(String.valueOf(c));
-        if (!bt.isNullOrNil(str)) {
+        String str = (String)iuR.get(String.valueOf(c));
+        if (!bs.isNullOrNil(str)) {
           localStringBuffer.append(str);
         }
       }
@@ -119,26 +95,50 @@ public final class g
     return paramString;
   }
   
+  public static boolean y(char paramChar)
+  {
+    AppMethodBeat.i(131665);
+    if ((sxc.FA(paramChar)) || (sxd.FA(paramChar)) || (sxe.FA(paramChar)) || (sxf.FA(paramChar)) || (sxg.FA(paramChar)) || (sxh.FA(paramChar)))
+    {
+      AppMethodBeat.o(131665);
+      return true;
+    }
+    AppMethodBeat.o(131665);
+    return false;
+  }
+  
+  public static boolean z(char paramChar)
+  {
+    AppMethodBeat.i(131666);
+    if ((sxs.FA(paramChar)) || (sxt.FA(paramChar)))
+    {
+      AppMethodBeat.o(131666);
+      return true;
+    }
+    AppMethodBeat.o(131666);
+    return false;
+  }
+  
   public static final class a
   {
     int bottom;
-    int roE;
+    int sxx;
     
     public a(int paramInt1, int paramInt2)
     {
       this.bottom = paramInt1;
-      this.roE = paramInt2;
+      this.sxx = paramInt2;
     }
     
-    public final boolean DE(int paramInt)
+    public final boolean FA(int paramInt)
     {
-      return (paramInt >= this.bottom) && (paramInt <= this.roE);
+      return (paramInt >= this.bottom) && (paramInt <= this.sxx);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.g
  * JD-Core Version:    0.7.0.1
  */

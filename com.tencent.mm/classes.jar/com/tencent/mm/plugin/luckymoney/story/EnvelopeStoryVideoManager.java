@@ -17,8 +17,9 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.e;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.an.e;
+import com.tencent.mm.an.f;
+import com.tencent.mm.i.a;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
@@ -26,10 +27,10 @@ import com.tencent.mm.i.h.a;
 import com.tencent.mm.modelvideo.b.a;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.pluginsdk.ui.h.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aw;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayOutputStream;
@@ -45,188 +46,188 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class EnvelopeStoryVideoManager
   implements LifecycleObserver
 {
-  private static Set<String> tiG;
-  private boolean cSW;
-  private boolean fqj;
-  private com.tencent.mm.compatible.util.b hDB;
-  MMActivity nqA;
-  private int tiE;
-  Map<Integer, c> tiF;
+  private static Set<String> uqV;
+  private boolean cQt;
+  private boolean ftN;
+  private com.tencent.mm.compatible.util.b ied;
+  MMActivity nTA;
+  private int uqT;
+  Map<Integer, c> uqU;
   
   static
   {
     AppMethodBeat.i(163670);
-    tiG = new HashSet();
+    uqV = new HashSet();
     AppMethodBeat.o(163670);
   }
   
   public EnvelopeStoryVideoManager()
   {
     AppMethodBeat.i(163655);
-    this.tiE = -1;
-    this.fqj = true;
-    this.hDB = new com.tencent.mm.compatible.util.b(aj.getContext());
-    this.cSW = false;
-    this.tiF = new HashMap();
+    this.uqT = -1;
+    this.ftN = true;
+    this.ied = new com.tencent.mm.compatible.util.b(ai.getContext());
+    this.cQt = false;
+    this.uqU = new HashMap();
     AppMethodBeat.o(163655);
   }
   
-  public static ax Km()
+  public static aw JW()
   {
-    AppMethodBeat.i(201265);
-    ax localax = ax.aFC(cMf());
-    AppMethodBeat.o(201265);
-    return localax;
+    AppMethodBeat.i(210290);
+    aw localaw = aw.aKT(cZL());
+    AppMethodBeat.o(210290);
+    return localaw;
   }
   
   private void a(Context paramContext, FrameLayout paramFrameLayout, ImageView paramImageView, ProgressBar paramProgressBar, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(174360);
-    ad.i("MicroMsg.EnvelopeStoryVideoManager", "preapre video view");
-    final c localc = (c)this.tiF.get(Integer.valueOf(paramInt3));
-    if ((localc == null) || (localc.tiX == null))
+    ac.i("MicroMsg.EnvelopeStoryVideoManager", "preapre video view");
+    final c localc = (c)this.uqU.get(Integer.valueOf(paramInt3));
+    if ((localc == null) || (localc.uro == null))
     {
       localc = new c();
-      localc.tiX = new EnvelopeStoryVideoView(paramContext);
+      localc.uro = new EnvelopeStoryVideoView(paramContext);
       localc.url = paramString;
       localc.sessionId = UUID.randomUUID().toString();
-      localc.pev = paramImageView;
-      localc.tja = paramProgressBar;
-      localc.tiY = ((ViewGroup)paramFrameLayout.findViewById(2131301966));
-      localc.kth = ((ImageView)paramFrameLayout.findViewById(2131301967));
-      localc.kty = ((ImageView)paramFrameLayout.findViewById(2131301784));
-      localc.tiZ = ((ViewGroup)paramFrameLayout.findViewById(2131301782));
-      localc.tiX.setIsShowBasicControls(false);
-      localc.tiX.tjd = new EnvelopeStoryVideoView.a()
+      localc.pHG = paramImageView;
+      localc.urr = paramProgressBar;
+      localc.urp = ((ViewGroup)paramFrameLayout.findViewById(2131301966));
+      localc.kUw = ((ImageView)paramFrameLayout.findViewById(2131301967));
+      localc.kUN = ((ImageView)paramFrameLayout.findViewById(2131301784));
+      localc.urq = ((ViewGroup)paramFrameLayout.findViewById(2131301782));
+      localc.uro.setIsShowBasicControls(false);
+      localc.uro.uru = new EnvelopeStoryVideoView.a()
       {
         public final void a(EnvelopeStoryVideoView paramAnonymousEnvelopeStoryVideoView)
         {
           AppMethodBeat.i(182457);
-          int i = localc.tiW.addAndGet(1);
-          localc.tiV = paramAnonymousEnvelopeStoryVideoView.getVideoDurationSec();
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "sessionId: %s, current loop count: %s", new Object[] { localc.sessionId, Integer.valueOf(i) });
+          int i = localc.urn.addAndGet(1);
+          localc.urm = paramAnonymousEnvelopeStoryVideoView.getVideoDurationSec();
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "sessionId: %s, current loop count: %s", new Object[] { localc.sessionId, Integer.valueOf(i) });
           AppMethodBeat.o(182457);
         }
       };
-      localc.tiX.setIMMVideoViewCallback(new h.b()
+      localc.uro.setIMMVideoViewCallback(new h.b()
       {
         public final void c(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(182459);
-          ad.e("MicroMsg.EnvelopeStoryVideoManager", "onError: %s, %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2, paramAnonymousString3 });
-          com.tencent.mm.plugin.report.service.h.vKh.f(19228, new Object[] { localc.url, Integer.valueOf(localc.tiX.getVideoDurationSec()), Integer.valueOf(2), Integer.valueOf(localc.tiS), Integer.valueOf(localc.tiX.getRealPlayDurationSec()), Integer.valueOf(localc.rzE), Integer.valueOf(0), Integer.valueOf(paramAnonymousInt1) });
+          ac.e("MicroMsg.EnvelopeStoryVideoManager", "onError: %s, %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2, paramAnonymousString3 });
+          com.tencent.mm.plugin.report.service.h.wUl.f(19228, new Object[] { localc.url, Integer.valueOf(localc.uro.getVideoDurationSec()), Integer.valueOf(2), Integer.valueOf(localc.urh), Integer.valueOf(localc.uro.getRealPlayDurationSec()), Integer.valueOf(localc.sIw), Integer.valueOf(0), Integer.valueOf(paramAnonymousInt1) });
           AppMethodBeat.o(182459);
         }
         
         public final void d(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2) {}
         
-        public final void db(String paramAnonymousString1, String paramAnonymousString2)
+        public final void jdMethod_do(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(182460);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "on prepared: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
-          localc.tiV = localc.tiX.getVideoDurationSec();
-          aq.n(new Runnable()
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "on prepared: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          localc.urm = localc.uro.getVideoDurationSec();
+          ap.n(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(182458);
-              if (EnvelopeStoryVideoManager.6.this.tiI.tja != null) {
-                EnvelopeStoryVideoManager.6.this.tiI.tja.setVisibility(8);
+              if (EnvelopeStoryVideoManager.6.this.uqX.urr != null) {
+                EnvelopeStoryVideoManager.6.this.uqX.urr.setVisibility(8);
               }
-              if (EnvelopeStoryVideoManager.6.this.tiI.tiX.getParent() != null) {
-                ((ViewGroup)EnvelopeStoryVideoManager.6.this.tiI.tiX.getParent()).bringToFront();
+              if (EnvelopeStoryVideoManager.6.this.uqX.uro.getParent() != null) {
+                ((ViewGroup)EnvelopeStoryVideoManager.6.this.uqX.uro.getParent()).bringToFront();
               }
-              EnvelopeStoryVideoManager.6.this.tiI.kty.setVisibility(0);
+              EnvelopeStoryVideoManager.6.this.uqX.kUN.setVisibility(0);
               AppMethodBeat.o(182458);
             }
           }, 10L);
           AppMethodBeat.o(182460);
         }
         
-        public final void dc(String paramAnonymousString1, String paramAnonymousString2)
+        public final void dp(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(182461);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "on video end: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "on video end: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
           AppMethodBeat.o(182461);
         }
         
-        public final void dd(String paramAnonymousString1, String paramAnonymousString2)
+        public final void dq(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(182462);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoPause: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoPause: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
           AppMethodBeat.o(182462);
         }
         
-        public final void de(String paramAnonymousString1, String paramAnonymousString2)
+        public final void dr(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(182463);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoPlay: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoPlay: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
           AppMethodBeat.o(182463);
         }
         
-        public final void dg(String paramAnonymousString1, String paramAnonymousString2)
+        public final void ds(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(182464);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoWaiting: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
-          localc.tiR = ((int)SystemClock.elapsedRealtime() / 1000);
-          if (localc.tja != null)
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoWaiting: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          localc.urg = ((int)SystemClock.elapsedRealtime() / 1000);
+          if (localc.urr != null)
           {
-            localc.tja.bringToFront();
-            localc.tja.setVisibility(0);
+            localc.urr.bringToFront();
+            localc.urr.setVisibility(0);
           }
           AppMethodBeat.o(182464);
         }
         
-        public final void dh(String paramAnonymousString1, String paramAnonymousString2)
+        public final void dt(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(182465);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoWaitingEnd: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
-          if (localc.tiR > 0)
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoWaitingEnd: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          if (localc.urg > 0)
           {
             paramAnonymousString1 = localc;
-            paramAnonymousString1.rzE = ((int)(paramAnonymousString1.rzE + (SystemClock.elapsedRealtime() / 1000L - localc.tiR)));
-            localc.tiR = 0;
+            paramAnonymousString1.sIw = ((int)(paramAnonymousString1.sIw + (SystemClock.elapsedRealtime() / 1000L - localc.urg)));
+            localc.urg = 0;
           }
-          if (localc.tja != null) {
-            localc.tja.setVisibility(8);
+          if (localc.urr != null) {
+            localc.urr.setVisibility(8);
           }
           AppMethodBeat.o(182465);
         }
         
-        public final void jw(String paramAnonymousString1, String paramAnonymousString2)
+        public final void eJ(String paramAnonymousString1, String paramAnonymousString2)
         {
-          AppMethodBeat.i(201263);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoFirstFrameDraw: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
-          AppMethodBeat.o(201263);
+          AppMethodBeat.i(207104);
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "onVideoFirstFrameDraw: %s, %s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          AppMethodBeat.o(207104);
         }
       });
-      localc.kth.setOnClickListener(new View.OnClickListener()
+      localc.kUw.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(174356);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "click play btn");
-          if ((localc.tiX != null) && (localc.tiX.isPlaying()))
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "click play btn");
+          if ((localc.uro != null) && (localc.uro.isPlaying()))
           {
             AppMethodBeat.o(174356);
             return;
           }
-          localc.kth.setVisibility(4);
+          localc.kUw.setVisibility(4);
           EnvelopeStoryVideoManager.a(EnvelopeStoryVideoManager.this, localc);
           AppMethodBeat.o(174356);
         }
       });
-      localc.tiX.setMute(this.fqj);
+      localc.uro.setMute(this.ftN);
       a(localc);
-      localc.tiY.setOnClickListener(new View.OnClickListener()
+      localc.urp.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(182466);
           boolean bool1;
-          if ((EnvelopeStoryVideoManager.b(EnvelopeStoryVideoManager.this) != -1) && (localc.tiX != null))
+          if ((EnvelopeStoryVideoManager.b(EnvelopeStoryVideoManager.this) != -1) && (localc.uro != null))
           {
-            boolean bool2 = localc.tiX.tjb;
+            boolean bool2 = localc.uro.urs;
             paramAnonymousView = EnvelopeStoryVideoManager.this;
             if (bool2) {
               break label102;
@@ -238,7 +239,7 @@ public class EnvelopeStoryVideoManager
             }
             EnvelopeStoryVideoManager.c(EnvelopeStoryVideoManager.this).requestFocus();
             EnvelopeStoryVideoManager.b(EnvelopeStoryVideoManager.this, true);
-            localc.tiX.setMute(false);
+            localc.uro.setMute(false);
           }
           for (;;)
           {
@@ -251,19 +252,19 @@ public class EnvelopeStoryVideoManager
             label107:
             if (EnvelopeStoryVideoManager.d(EnvelopeStoryVideoManager.this))
             {
-              EnvelopeStoryVideoManager.c(EnvelopeStoryVideoManager.this).XF();
+              EnvelopeStoryVideoManager.c(EnvelopeStoryVideoManager.this).YC();
               EnvelopeStoryVideoManager.b(EnvelopeStoryVideoManager.this, false);
             }
-            localc.tiX.setMute(true);
+            localc.uro.setMute(true);
           }
         }
       });
       paramContext = new FrameLayout.LayoutParams(paramInt1, paramInt2);
       paramContext.gravity = 17;
-      paramFrameLayout.addView(localc.tiX, 0, paramContext);
-      localc.tiY.setLayoutParams(paramContext);
-      this.tiF.put(Integer.valueOf(paramInt3), localc);
-      aq.f(new Runnable()
+      paramFrameLayout.addView(localc.uro, 0, paramContext);
+      localc.urp.setLayoutParams(paramContext);
+      this.uqU.put(Integer.valueOf(paramInt3), localc);
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -272,39 +273,39 @@ public class EnvelopeStoryVideoManager
           AppMethodBeat.o(174345);
         }
       });
-      localc.tiX.setSessionId(localc.sessionId);
-      localc.tiX.setIOnlineVideoProxy(new b(localc));
-      localc.tiX.c(false, localc.url, 0);
-      localc.hxP = localc.tiX.getMediaId();
+      localc.uro.setSessionId(localc.sessionId);
+      localc.uro.setIOnlineVideoProxy(new b(localc));
+      localc.uro.c(false, localc.url, 0);
+      localc.hYq = localc.uro.getMediaId();
       b(localc);
       AppMethodBeat.o(174360);
       return;
     }
-    localc.tiX.setMute(this.fqj);
+    localc.uro.setMute(this.ftN);
     a(localc);
-    aq.n(new Runnable()
+    ap.n(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(174346);
-        if ((localc.aUR) && (localc.tiX.Nb()))
+        if ((localc.aVE) && (localc.uro.MZ()))
         {
-          localc.tiX.onUIResume();
-          localc.tiT = localc.tiX.getCurrPosSec();
-          localc.tiU = 0L;
+          localc.uro.onUIResume();
+          localc.urj = localc.uro.getCurrPosSec();
+          localc.urk = 0L;
         }
         for (;;)
         {
-          localc.tiW.set(1);
+          localc.urn.set(1);
           AppMethodBeat.o(174346);
           return;
-          if (localc.tiX.isPlaying())
+          if (localc.uro.isPlaying())
           {
-            ad.w("MicroMsg.EnvelopeStoryVideoManager", "resume fail, restart play");
-            localc.tiX.stop();
-            localc.tiX.start();
-            localc.tiT = 0L;
-            localc.tiU = 0L;
+            ac.w("MicroMsg.EnvelopeStoryVideoManager", "resume fail, restart play");
+            localc.uro.stop();
+            localc.uro.start();
+            localc.urj = 0L;
+            localc.urk = 0L;
           }
         }
       }
@@ -315,13 +316,13 @@ public class EnvelopeStoryVideoManager
   private static void a(c paramc)
   {
     AppMethodBeat.i(174361);
-    if (paramc.tiX.tjb)
+    if (paramc.uro.urs)
     {
-      paramc.kty.setImageResource(2131690762);
+      paramc.kUN.setImageResource(2131690762);
       AppMethodBeat.o(174361);
       return;
     }
-    paramc.kty.setImageResource(2131690768);
+    paramc.kUN.setImageResource(2131690768);
     AppMethodBeat.o(174361);
   }
   
@@ -329,7 +330,7 @@ public class EnvelopeStoryVideoManager
   {
     int i = 2;
     AppMethodBeat.i(174367);
-    ad.i("MicroMsg.EnvelopeStoryVideoManager", "trigger download video: %s, %s, %s", new Object[] { paramString1, paramString2, paramString3 });
+    ac.i("MicroMsg.EnvelopeStoryVideoManager", "trigger download video: %s, %s, %s", new Object[] { paramString1, paramString2, paramString3 });
     long l = SystemClock.elapsedRealtime();
     com.tencent.mm.i.h localh = new com.tencent.mm.i.h();
     localh.field_mediaId = paramString1;
@@ -337,52 +338,52 @@ public class EnvelopeStoryVideoManager
     localh.url = paramString3;
     if (paramBoolean)
     {
-      localh.foc = i;
+      localh.frw = i;
       localh.field_preloadRatio = 20;
-      localh.fnY = new EnvelopeStoryVideoManager.10(paramString3, l);
+      localh.frs = new EnvelopeStoryVideoManager.10(paramString3, l);
       if (parama == null) {
         break label212;
       }
     }
     label212:
-    for (localh.fnH = parama;; localh.fnH = new EnvelopeStoryVideoManager.2(paramString2))
+    for (localh.frb = parama;; localh.frb = new EnvelopeStoryVideoManager.2(paramString2))
     {
-      localh.fnX = 3;
+      localh.frr = 3;
       localh.field_fullpath = paramString2;
       localh.field_filemd5 = paramString4;
       localh.allow_mobile_net_download = true;
-      localh.foj = parama1;
-      localh.field_fileType = com.tencent.mm.i.a.MediaType_VIDEO;
+      localh.frE = parama1;
+      localh.field_fileType = a.MediaType_VIDEO;
       localh.field_requestVideoFormat = 1;
-      localh.fnW = localh.foc;
+      localh.frq = localh.frw;
       if (!paramBoolean) {
         break label255;
       }
-      if (!tiG.contains(paramString1)) {
+      if (!uqV.contains(paramString1)) {
         break label228;
       }
-      ad.w("MicroMsg.EnvelopeStoryVideoManager", "contains preload task: %s", new Object[] { paramString1 });
+      ac.w("MicroMsg.EnvelopeStoryVideoManager", "contains preload task: %s", new Object[] { paramString1 });
       AppMethodBeat.o(174367);
       return;
       i = 1;
       break;
     }
     label228:
-    tiG.add(paramString1);
-    f.awL().b(localh, -1);
+    uqV.add(paramString1);
+    f.aDD().b(localh, -1);
     AppMethodBeat.o(174367);
     return;
     label255:
-    if (tiG.contains(paramString1))
+    if (uqV.contains(paramString1))
     {
-      ad.i("MicroMsg.EnvelopeStoryVideoManager", "need cancel preload task");
-      f.awL().xL(paramString1);
+      ac.i("MicroMsg.EnvelopeStoryVideoManager", "need cancel preload task");
+      f.aDD().BR(paramString1);
     }
-    o.aCJ().a(localh);
+    o.aJz().a(localh);
     AppMethodBeat.o(174367);
   }
   
-  public static String afr(String paramString)
+  public static String akl(String paramString)
   {
     AppMethodBeat.i(163663);
     paramString = "MMVideo_" + paramString.hashCode();
@@ -390,7 +391,7 @@ public class EnvelopeStoryVideoManager
     return paramString;
   }
   
-  public static String afs(String paramString)
+  public static String akm(String paramString)
   {
     AppMethodBeat.i(163664);
     paramString = EnvelopeStoryVideoView.ROOT_PATH + "MMVideo_" + paramString.hashCode() + ".mp4";
@@ -402,69 +403,69 @@ public class EnvelopeStoryVideoManager
   {
     AppMethodBeat.i(174362);
     if (c(paramc)) {
-      paramc.tiX.setLocal(true);
+      paramc.uro.setLocal(true);
     }
-    paramc.pev.bringToFront();
-    if (paramc.tiQ > 0)
+    paramc.pHG.bringToFront();
+    if (paramc.urf > 0)
     {
-      ad.d("MicroMsg.EnvelopeStoryVideoManager", "start play: %s", new Object[] { Integer.valueOf(paramc.tiQ) });
-      paramc.tiX.c(paramc.tiQ, true);
-      paramc.tiT = paramc.tiQ;
+      ac.d("MicroMsg.EnvelopeStoryVideoManager", "start play: %s", new Object[] { Integer.valueOf(paramc.urf) });
+      paramc.uro.c(paramc.urf, true);
+      paramc.urj = paramc.urf;
     }
-    for (paramc.tiU = 0L;; paramc.tiU = 0L)
+    for (paramc.urk = 0L;; paramc.urk = 0L)
     {
-      paramc.tiW.set(1);
-      if (!this.cSW)
+      paramc.urn.set(1);
+      if (!this.cQt)
       {
-        this.hDB.requestFocus();
-        this.cSW = true;
+        this.ied.requestFocus();
+        this.cQt = true;
       }
-      paramc.aUR = true;
-      a.tjg += 1;
-      a.tjf.add(paramc.url);
+      paramc.aVE = true;
+      b.urz += 1;
+      b.ury.add(paramc.url);
       AppMethodBeat.o(174362);
       return;
-      paramc.tiX.start();
-      paramc.tiT = 0L;
+      paramc.uro.start();
+      paramc.urj = 0L;
     }
   }
   
   private static boolean c(c paramc)
   {
     AppMethodBeat.i(174363);
-    boolean bool2 = i.eK(afs(paramc.url));
-    if (ax.aFC(cMf()).getInt(paramc.hxP, 0) == 1) {}
+    boolean bool2 = i.eA(akm(paramc.url));
+    if (aw.aKT(cZL()).getInt(paramc.hYq, 0) == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      ad.i("MicroMsg.EnvelopeStoryVideoManager", "can play local: %s, %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      ac.i("MicroMsg.EnvelopeStoryVideoManager", "can play local: %s, %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       if ((!bool2) || (!bool1)) {
         break;
       }
-      paramc.tiS = 1;
+      paramc.urh = 1;
       AppMethodBeat.o(174363);
       return true;
     }
     if (bool2) {}
-    for (paramc.tiS = 3;; paramc.tiS = 2)
+    for (paramc.urh = 3;; paramc.urh = 2)
     {
-      ax.aFC(cMf()).putInt(paramc.hxP, 0);
+      aw.aKT(cZL()).putInt(paramc.hYq, 0);
       AppMethodBeat.o(174363);
       return false;
     }
   }
   
-  private c cMe()
+  private c cZK()
   {
     AppMethodBeat.i(174366);
-    c localc = (c)this.tiF.get(Integer.valueOf(this.tiE));
+    c localc = (c)this.uqU.get(Integer.valueOf(this.uqT));
     AppMethodBeat.o(174366);
     return localc;
   }
   
-  private static String cMf()
+  private static String cZL()
   {
     AppMethodBeat.i(163666);
-    String str = aj.getPackageName() + "_luckymoney_story_video";
+    String str = ai.getPackageName() + "_luckymoney_story_video";
     AppMethodBeat.o(163666);
     return str;
   }
@@ -472,57 +473,57 @@ public class EnvelopeStoryVideoManager
   public final void a(Context paramContext, FrameLayout paramFrameLayout, ImageView paramImageView, ProgressBar paramProgressBar, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(174364);
-    ad.i("MicroMsg.EnvelopeStoryVideoManager", "update position: %s, %s, %s", new Object[] { Integer.valueOf(this.tiE), Integer.valueOf(paramInt3), paramString });
-    if (paramInt3 != this.tiE)
+    ac.i("MicroMsg.EnvelopeStoryVideoManager", "update position: %s, %s, %s", new Object[] { Integer.valueOf(this.uqT), Integer.valueOf(paramInt3), paramString });
+    if (paramInt3 != this.uqT)
     {
-      c localc = (c)this.tiF.get(Integer.valueOf(this.tiE));
+      c localc = (c)this.uqU.get(Integer.valueOf(this.uqT));
       if (localc != null)
       {
-        ad.i("MicroMsg.EnvelopeStoryVideoManager", "pause previous video");
-        if (localc.aUR)
+        ac.i("MicroMsg.EnvelopeStoryVideoManager", "pause previous video");
+        if (localc.aVE)
         {
-          localc.tiU = localc.tiX.getCurrPosSec();
-          localc.tiX.onUIPause();
+          localc.urk = localc.uro.getCurrPosSec();
+          localc.uro.onUIPause();
         }
       }
-      this.tiE = paramInt3;
+      this.uqT = paramInt3;
       if (paramBoolean) {
         a(paramContext, paramFrameLayout, paramImageView, paramProgressBar, paramString, paramInt1, paramInt2, paramInt3);
       }
       AppMethodBeat.o(174364);
       return;
     }
-    ad.w("MicroMsg.EnvelopeStoryVideoManager", "skip same position");
+    ac.w("MicroMsg.EnvelopeStoryVideoManager", "skip same position");
     AppMethodBeat.o(174364);
   }
   
-  public final void cMd()
+  public final void cZJ()
   {
     AppMethodBeat.i(174365);
-    ad.i("MicroMsg.EnvelopeStoryVideoManager", "release video view: %s", new Object[] { Integer.valueOf(this.tiF.size()) });
-    if (this.cSW)
+    ac.i("MicroMsg.EnvelopeStoryVideoManager", "release video view: %s", new Object[] { Integer.valueOf(this.uqU.size()) });
+    if (this.cQt)
     {
-      this.hDB.XF();
-      this.cSW = false;
+      this.ied.YC();
+      this.cQt = false;
     }
-    Iterator localIterator = this.tiF.entrySet().iterator();
+    Iterator localIterator = this.uqU.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ad.d("MicroMsg.EnvelopeStoryVideoManager", "do stop");
+      ac.d("MicroMsg.EnvelopeStoryVideoManager", "do stop");
       c localc = (c)localEntry.getValue();
-      if (localc.tiR > 0) {
-        localc.rzE = ((int)(localc.rzE + (SystemClock.elapsedRealtime() / 1000L - localc.tiR)));
+      if (localc.urg > 0) {
+        localc.sIw = ((int)(localc.sIw + (SystemClock.elapsedRealtime() / 1000L - localc.urg)));
       }
-      com.tencent.mm.plugin.report.service.h.vKh.f(19228, new Object[] { localc.url, Integer.valueOf(localc.tiX.getVideoDurationSec()), Integer.valueOf(1), Integer.valueOf(localc.tiS), Integer.valueOf(localc.tiX.getRealPlayDurationSec()), Integer.valueOf(localc.rzE), Integer.valueOf(0), Integer.valueOf(0) });
-      if (((c)localEntry.getValue()).tiX.getParent() != null)
+      com.tencent.mm.plugin.report.service.h.wUl.f(19228, new Object[] { localc.url, Integer.valueOf(localc.uro.getVideoDurationSec()), Integer.valueOf(1), Integer.valueOf(localc.urh), Integer.valueOf(localc.uro.getRealPlayDurationSec()), Integer.valueOf(localc.sIw), Integer.valueOf(0), Integer.valueOf(0) });
+      if (((c)localEntry.getValue()).uro.getParent() != null)
       {
-        ((ViewGroup)((c)localEntry.getValue()).tiX.getParent()).removeView(((c)localEntry.getValue()).tiX);
-        localc.tiX.stop();
+        ((ViewGroup)((c)localEntry.getValue()).uro.getParent()).removeView(((c)localEntry.getValue()).uro);
+        localc.uro.stop();
       }
     }
-    this.tiF.clear();
-    this.tiE = -1;
+    this.uqU.clear();
+    this.uqT = -1;
     AppMethodBeat.o(174365);
   }
   
@@ -537,14 +538,14 @@ public class EnvelopeStoryVideoManager
   public void onUIPause()
   {
     AppMethodBeat.i(163660);
-    if (this.cSW)
+    if (this.cQt)
     {
-      this.hDB.XF();
-      this.cSW = false;
+      this.ied.YC();
+      this.cQt = false;
     }
-    c localc = cMe();
+    c localc = cZK();
     if (localc != null) {
-      localc.tiX.onUIPause();
+      localc.uro.onUIPause();
     }
     AppMethodBeat.o(163660);
   }
@@ -553,14 +554,14 @@ public class EnvelopeStoryVideoManager
   public void onUIResume()
   {
     AppMethodBeat.i(163659);
-    c localc = cMe();
+    c localc = cZK();
     if (localc != null)
     {
-      localc.tiX.onUIResume();
-      if (localc.tiX.isPlaying())
+      localc.uro.onUIResume();
+      if (localc.uro.isPlaying())
       {
-        this.hDB.requestFocus();
-        this.cSW = true;
+        this.ied.requestFocus();
+        this.cQt = true;
       }
     }
     AppMethodBeat.o(163659);
@@ -569,11 +570,11 @@ public class EnvelopeStoryVideoManager
   public final class a
     implements h.a
   {
-    EnvelopeStoryVideoManager.c tiM;
+    EnvelopeStoryVideoManager.c urb;
     
     public a(EnvelopeStoryVideoManager.c paramc)
     {
-      this.tiM = paramc;
+      this.urb = paramc;
     }
     
     public final void a(String paramString, int paramInt, d paramd)
@@ -581,39 +582,39 @@ public class EnvelopeStoryVideoManager
       AppMethodBeat.i(163648);
       if ((paramd != null) && (paramd.field_retCode == 0))
       {
-        ad.i("MicroMsg.EnvelopeStoryVideoManager", "download finish: %s", new Object[] { paramString });
-        EnvelopeStoryVideoManager.Km().putInt(paramString, 1).commit();
+        ac.i("MicroMsg.EnvelopeStoryVideoManager", "download finish: %s", new Object[] { paramString });
+        EnvelopeStoryVideoManager.JW().putInt(paramString, 1).commit();
       }
-      this.tiM.tiX.am(paramString, paramInt);
+      this.urb.uro.aq(paramString, paramInt);
       AppMethodBeat.o(163648);
     }
     
     public final void a(final String paramString1, final long paramLong1, long paramLong2, final String paramString2)
     {
-      AppMethodBeat.i(201264);
-      aq.f(new Runnable()
+      AppMethodBeat.i(207105);
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(163644);
-          EnvelopeStoryVideoManager.a.this.tiM.tiX.Bl(paramLong1);
+          EnvelopeStoryVideoManager.a.this.urb.uro.qq(paramLong1);
           AppMethodBeat.o(163644);
         }
       });
-      AppMethodBeat.o(201264);
+      AppMethodBeat.o(207105);
     }
     
-    public final void k(String paramString, long paramLong1, long paramLong2)
+    public final void i(String paramString, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(163647);
-      this.tiM.tiX.k(paramString, paramLong1, paramLong2);
+      this.urb.uro.i(paramString, paramLong1, paramLong2);
       AppMethodBeat.o(163647);
     }
     
     public final void onDataAvailable(String paramString, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(163646);
-      this.tiM.tiX.onDataAvailable(paramString, paramLong1, paramLong2);
+      this.urb.uro.onDataAvailable(paramString, paramLong1, paramLong2);
       AppMethodBeat.o(163646);
     }
   }
@@ -621,26 +622,26 @@ public class EnvelopeStoryVideoManager
   final class b
     implements com.tencent.mm.modelvideo.b
   {
-    EnvelopeStoryVideoManager.c tiM;
+    EnvelopeStoryVideoManager.c urb;
     
     public b(EnvelopeStoryVideoManager.c paramc)
     {
-      this.tiM = paramc;
+      this.urb = paramc;
     }
     
     public final void a(b.a parama) {}
     
-    public final void fy(String paramString)
+    public final void fo(String paramString)
     {
       AppMethodBeat.i(163652);
-      o.aCJ().j(paramString, null);
+      o.aJz().j(paramString, null);
       AppMethodBeat.o(163652);
     }
     
     public final boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(163654);
-      boolean bool = o.aCJ().isVideoDataAvailable(paramString, paramInt1, paramInt2);
+      boolean bool = o.aJz().isVideoDataAvailable(paramString, paramInt1, paramInt2);
       AppMethodBeat.o(163654);
       return bool;
     }
@@ -648,34 +649,34 @@ public class EnvelopeStoryVideoManager
     public final void q(String paramString1, final String paramString2, final String paramString3)
     {
       AppMethodBeat.i(163651);
-      EnvelopeStoryVideoManager.a locala = new EnvelopeStoryVideoManager.a(EnvelopeStoryVideoManager.this, this.tiM);
-      EnvelopeStoryVideoManager.a(paramString1, paramString2, paramString3, this.tiM.md5, false, new g.a()
+      EnvelopeStoryVideoManager.a locala = new EnvelopeStoryVideoManager.a(EnvelopeStoryVideoManager.this, this.urb);
+      EnvelopeStoryVideoManager.a(paramString1, paramString2, paramString3, this.urb.md5, false, new g.a()
       {
         public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(163650);
-          ad.i("MicroMsg.EnvelopeStoryVideoManager", "cdn callback: %s, %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt) });
+          ac.i("MicroMsg.EnvelopeStoryVideoManager", "cdn callback: %s, %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt) });
           if (paramAnonymousInt != 0)
           {
             i.deleteFile(paramString2);
-            if (EnvelopeStoryVideoManager.b.this.tiM.hxP.equals(paramAnonymousString))
+            if (EnvelopeStoryVideoManager.b.this.urb.hYq.equals(paramAnonymousString))
             {
-              ad.w("MicroMsg.EnvelopeStoryVideoManager", "download video fail: %s", new Object[] { paramString3 });
-              EnvelopeStoryVideoManager.b.this.tiM.tiZ.setVisibility(0);
-              EnvelopeStoryVideoManager.b.this.tiM.tiZ.setOnClickListener(new View.OnClickListener()
+              ac.w("MicroMsg.EnvelopeStoryVideoManager", "download video fail: %s", new Object[] { paramString3 });
+              EnvelopeStoryVideoManager.b.this.urb.urq.setVisibility(0);
+              EnvelopeStoryVideoManager.b.this.urb.urq.setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymous2View)
                 {
                   AppMethodBeat.i(163649);
-                  ad.i("MicroMsg.EnvelopeStoryVideoManager", "click retry btn");
-                  EnvelopeStoryVideoManager.b.this.tiM.sessionId = UUID.randomUUID().toString();
-                  EnvelopeStoryVideoManager.b.this.tiM.tiX.setSessionId(EnvelopeStoryVideoManager.b.this.tiM.sessionId);
-                  EnvelopeStoryVideoManager.b.this.tiM.tiX.setLocal(false);
-                  EnvelopeStoryVideoManager.a(EnvelopeStoryVideoManager.this, EnvelopeStoryVideoManager.b.this.tiM);
+                  ac.i("MicroMsg.EnvelopeStoryVideoManager", "click retry btn");
+                  EnvelopeStoryVideoManager.b.this.urb.sessionId = UUID.randomUUID().toString();
+                  EnvelopeStoryVideoManager.b.this.urb.uro.setSessionId(EnvelopeStoryVideoManager.b.this.urb.sessionId);
+                  EnvelopeStoryVideoManager.b.this.urb.uro.setLocal(false);
+                  EnvelopeStoryVideoManager.a(EnvelopeStoryVideoManager.this, EnvelopeStoryVideoManager.b.this.urb);
                   AppMethodBeat.o(163649);
                 }
               });
-              com.tencent.mm.plugin.report.service.h.vKh.f(19228, new Object[] { EnvelopeStoryVideoManager.b.this.tiM.url, Integer.valueOf(EnvelopeStoryVideoManager.b.this.tiM.tiX.getVideoDurationSec()), Integer.valueOf(2), Integer.valueOf(EnvelopeStoryVideoManager.b.this.tiM.tiS), Integer.valueOf(EnvelopeStoryVideoManager.b.this.tiM.tiX.getRealPlayDurationSec()), Integer.valueOf(EnvelopeStoryVideoManager.b.this.tiM.rzE), Integer.valueOf(0), Integer.valueOf(-9999) });
+              com.tencent.mm.plugin.report.service.h.wUl.f(19228, new Object[] { EnvelopeStoryVideoManager.b.this.urb.url, Integer.valueOf(EnvelopeStoryVideoManager.b.this.urb.uro.getVideoDurationSec()), Integer.valueOf(2), Integer.valueOf(EnvelopeStoryVideoManager.b.this.urb.urh), Integer.valueOf(EnvelopeStoryVideoManager.b.this.urb.uro.getRealPlayDurationSec()), Integer.valueOf(EnvelopeStoryVideoManager.b.this.urb.sIw), Integer.valueOf(0), Integer.valueOf(-9999) });
             }
           }
           AppMethodBeat.o(163650);
@@ -695,45 +696,45 @@ public class EnvelopeStoryVideoManager
     public final void requestVideoData(String paramString, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(163653);
-      ad.d("MicroMsg.EnvelopeStoryVideoManager", "request video data: %s", new Object[] { paramString });
-      o.aCJ();
-      e.q(paramString, paramInt1, paramInt2);
+      ac.d("MicroMsg.EnvelopeStoryVideoManager", "request video data: %s", new Object[] { paramString });
+      o.aJz();
+      e.p(paramString, paramInt1, paramInt2);
       AppMethodBeat.o(163653);
     }
   }
   
   public static final class c
   {
-    boolean aUR;
-    boolean fqj;
-    String hxP;
-    ImageView kth;
-    ImageView kty;
+    boolean aVE;
+    boolean ftN;
+    String hYq;
+    ImageView kUN;
+    ImageView kUw;
     String md5;
-    ImageView pev;
-    int rzE;
+    ImageView pHG;
+    int sIw;
     String sessionId;
-    int tiQ;
-    int tiR;
-    int tiS;
-    long tiT;
-    long tiU;
-    long tiV;
-    AtomicInteger tiW;
-    EnvelopeStoryVideoView tiX;
-    ViewGroup tiY;
-    ViewGroup tiZ;
-    ProgressBar tja;
+    int urf;
+    int urg;
+    int urh;
+    long urj;
+    long urk;
     String url;
+    long urm;
+    AtomicInteger urn;
+    EnvelopeStoryVideoView uro;
+    ViewGroup urp;
+    ViewGroup urq;
+    ProgressBar urr;
     
     public c()
     {
       AppMethodBeat.i(182469);
-      this.fqj = true;
-      this.aUR = false;
-      this.tiR = 0;
-      this.rzE = 0;
-      this.tiW = new AtomicInteger(1);
+      this.ftN = true;
+      this.aVE = false;
+      this.urg = 0;
+      this.sIw = 0;
+      this.urn = new AtomicInteger(1);
       AppMethodBeat.o(182469);
     }
   }

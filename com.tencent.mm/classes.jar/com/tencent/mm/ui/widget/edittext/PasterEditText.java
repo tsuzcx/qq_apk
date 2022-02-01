@@ -10,15 +10,15 @@ public class PasterEditText
   extends EditText
 {
   private Context context;
-  private int lAM;
-  private ClipboardManager xyK;
+  private int mcI;
+  private ClipboardManager yLy;
   
   public PasterEditText(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(168813);
-    this.xyK = null;
-    this.lAM = 0;
+    this.yLy = null;
+    this.mcI = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(168813);
@@ -28,8 +28,8 @@ public class PasterEditText
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159400);
-    this.xyK = null;
-    this.lAM = 0;
+    this.yLy = null;
+    this.mcI = 0;
     this.context = paramContext;
     init();
     AppMethodBeat.o(159400);
@@ -39,8 +39,8 @@ public class PasterEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159401);
-    this.xyK = null;
-    this.lAM = 0;
+    this.yLy = null;
+    this.mcI = 0;
     init();
     AppMethodBeat.o(159401);
   }
@@ -48,21 +48,21 @@ public class PasterEditText
   private void init()
   {
     AppMethodBeat.i(159402);
-    this.xyK = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
+    this.yLy = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
     AppMethodBeat.o(159402);
   }
   
   public int getPasterLen()
   {
-    return this.lAM;
+    return this.mcI;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(159403);
     if (paramInt == 16908322) {
-      if ((this.xyK != null) && (this.xyK.getText() != null) && ((this.xyK.getText() instanceof String)) && (this.xyK.getText() != null) && (this.xyK.getText().length() > 0)) {
-        this.lAM += this.xyK.getText().length();
+      if ((this.yLy != null) && (this.yLy.getText() != null) && ((this.yLy.getText() instanceof String)) && (this.yLy.getText() != null) && (this.yLy.getText().length() > 0)) {
+        this.mcI += this.yLy.getText().length();
       }
     }
     for (boolean bool = super.onTextContextMenuItem(paramInt);; bool = super.onTextContextMenuItem(paramInt))

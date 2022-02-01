@@ -1,40 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
+import android.content.Context;
+import android.view.accessibility.AccessibilityManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class c
   extends a
 {
-  public static final int CTRL_INDEX = 94;
-  public static final String NAME = "enableCompass";
+  private static final int CTRL_INDEX = 851;
+  private static final String NAME = "checkIsOpenAccessibility";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137628);
-    final l locall = new l("enableCompass");
-    paramJSONObject = locall.a(paramc, paramJSONObject, new c.b(paramc)
+    AppMethodBeat.i(206816);
+    paramJSONObject = (AccessibilityManager)paramc.getContext().getSystemService("accessibility");
+    if (paramJSONObject == null)
     {
-      public final void onDestroy()
+      ac.w("MicroMsg.AppBrand.Accessibility.ViewAccessibilityHelper", "isTalkBackAccessibilityEnabled, accessibilityManager is null");
+      paramJSONObject = null;
+    }
+    while (paramJSONObject == null)
+    {
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(206816);
+      return;
+      paramJSONObject = paramJSONObject.getEnabledAccessibilityServiceList(1);
+      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty())) {}
+      for (int i = 1;; i = 0)
       {
-        AppMethodBeat.i(137626);
-        g.b(paramc.getAppId(), this);
-        locall.a(this);
-        AppMethodBeat.o(137626);
+        if (i != 0) {
+          break label104;
+        }
+        ac.i("MicroMsg.AppBrand.Accessibility.ViewAccessibilityHelper", "isTalkBackAccessibilityEnabled, isTalkBackAccessibilityEnabled: false");
+        paramJSONObject = Boolean.FALSE;
+        break;
       }
-    }, "JsApi#SensorMagneticField" + paramc.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(1) })));
-    paramc.h(paramInt, k(paramJSONObject.errMsg, paramJSONObject.values));
-    AppMethodBeat.o(137628);
+      label104:
+      paramJSONObject = Boolean.TRUE;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("open", paramJSONObject);
+    paramc.h(paramInt, k("ok", localHashMap));
+    AppMethodBeat.o(206816);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.c
  * JD-Core Version:    0.7.0.1
  */

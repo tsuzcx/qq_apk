@@ -4,10 +4,10 @@ import android.net.Uri;
 
 public final class ar
 {
-  public static ar BRb = null;
-  public static long BRc = -1L;
-  public String BQZ = "";
-  public String[] BRa = null;
+  public static ar Djr = null;
+  public static long Djs = -1L;
+  public String Djp = "";
+  public String[] Djq = null;
   public int code = -1;
   public String[] projection = null;
   public String selection = "";
@@ -20,14 +20,14 @@ public final class ar
     this.projection = paramArrayOfString1;
     this.selection = paramString1;
     this.selectionArgs = paramArrayOfString2;
-    this.BQZ = paramString2;
+    this.Djp = paramString2;
     this.code = paramInt;
-    this.BRa = paramArrayOfString3;
+    this.Djq = paramArrayOfString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import com.tencent.mm.plugin.game.f.a;
 public class FixAspectRatioImageView
   extends AppCompatImageView
 {
-  private float rQP;
+  private float rcc;
   
   public FixAspectRatioImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(40891);
-    this.rQP = 0.0F;
+    this.rcc = 0.0F;
     c(paramContext, paramAttributeSet, 0);
     AppMethodBeat.o(40891);
   }
@@ -26,7 +26,7 @@ public class FixAspectRatioImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(40892);
-    this.rQP = 0.0F;
+    this.rcc = 0.0F;
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(40892);
   }
@@ -35,7 +35,7 @@ public class FixAspectRatioImageView
   {
     AppMethodBeat.i(40893);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, f.a.FixAspectRatioImageView, paramInt, 0);
-    this.rQP = paramContext.getFloat(0, 0.0F);
+    this.rcc = paramContext.getFloat(0, 0.0F);
     paramContext.recycle();
     AppMethodBeat.o(40893);
   }
@@ -43,10 +43,10 @@ public class FixAspectRatioImageView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(40894);
-    if (this.rQP != 0.0F)
+    if (this.rcc != 0.0F)
     {
       paramInt1 = View.MeasureSpec.getSize(paramInt1);
-      paramInt2 = (int)(this.rQP * paramInt1);
+      paramInt2 = (int)(this.rcc * paramInt1);
       super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
       AppMethodBeat.o(40894);
       return;

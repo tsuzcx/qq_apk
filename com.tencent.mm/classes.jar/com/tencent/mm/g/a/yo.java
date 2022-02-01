@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class yo
   extends b
 {
-  public a aSo;
+  public a dCf;
   
   public yo()
   {
@@ -15,21 +15,21 @@ public final class yo
   
   private yo(byte paramByte)
   {
-    AppMethodBeat.i(203657);
-    this.aSo = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91236);
+    this.dCf = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(203657);
+    AppMethodBeat.o(91236);
   }
   
   public static final class a
   {
-    public int IoU;
+    public String cRZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.yo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ax.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.aw.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,28 +15,28 @@ public final class c
   extends BaseAdapter
 {
   private Context context;
-  private List<b.a> frK;
-  private String iiW;
+  private List<b.a> fvr;
+  private String iJd;
   private List<b.a> list;
-  int[] sGj;
-  boolean sGk;
+  int[] tNQ;
+  boolean tNR;
   
   public c(Context paramContext, List<b.a> paramList)
   {
     AppMethodBeat.i(38986);
-    this.frK = new ArrayList();
-    this.sGk = false;
+    this.fvr = new ArrayList();
+    this.tNR = false;
     this.context = paramContext;
     this.list = paramList;
-    cIc();
-    cId();
+    cVn();
+    cVo();
     AppMethodBeat.o(38986);
   }
   
-  private static String Fp(int paramInt)
+  private static String Hk(int paramInt)
   {
     AppMethodBeat.i(38993);
-    if (ac.eFs())
+    if (ab.eUM())
     {
       String str = Integer.toString(paramInt) + "劃";
       AppMethodBeat.o(38993);
@@ -47,50 +47,50 @@ public final class c
     return String.valueOf(c);
   }
   
-  private void cIc()
+  private void cVn()
   {
     AppMethodBeat.i(38987);
     int i = 0;
     int j = this.list.size();
     while (i < j)
     {
-      this.frK.add(this.list.get(i));
+      this.fvr.add(this.list.get(i));
       i += 1;
     }
     AppMethodBeat.o(38987);
   }
   
-  private void cId()
+  private void cVo()
   {
     AppMethodBeat.i(38988);
-    this.sGj = new int[this.list.size()];
+    this.tNQ = new int[this.list.size()];
     int j = this.list.size();
     int i = 0;
     while (i < j)
     {
-      this.sGj[i] = ((b.a)this.list.get(i)).hkQ;
+      this.tNQ[i] = ((b.a)this.list.get(i)).hLt;
       i += 1;
     }
     AppMethodBeat.o(38988);
   }
   
-  public final void BW(String paramString)
+  public final void FZ(String paramString)
   {
     AppMethodBeat.i(38991);
     if (paramString != null)
     {
-      this.iiW = paramString.trim();
+      this.iJd = paramString.trim();
       this.list.clear();
-      int j = this.frK.size();
+      int j = this.fvr.size();
       int i = 0;
       while (i < j)
       {
-        if ((((b.a)this.frK.get(i)).hkO.toUpperCase().contains(this.iiW.toUpperCase())) || (((b.a)this.frK.get(i)).hkP.toUpperCase().contains(this.iiW.toUpperCase())) || (((b.a)this.frK.get(i)).hkN.contains(this.iiW))) {
-          this.list.add(this.frK.get(i));
+        if ((((b.a)this.fvr.get(i)).hLr.toUpperCase().contains(this.iJd.toUpperCase())) || (((b.a)this.fvr.get(i)).hLs.toUpperCase().contains(this.iJd.toUpperCase())) || (((b.a)this.fvr.get(i)).hLq.contains(this.iJd))) {
+          this.list.add(this.fvr.get(i));
         }
         i += 1;
       }
-      cId();
+      cVo();
       super.notifyDataSetChanged();
     }
     AppMethodBeat.o(38991);
@@ -124,31 +124,31 @@ public final class c
     label88:
     int i;
     if (paramView == null) {
-      if (!ac.eFs())
+      if (!ab.eUM())
       {
         paramView = View.inflate(this.context, 2131493668, null);
         paramViewGroup = new a();
-        paramViewGroup.sGm = ((TextView)paramView.findViewById(2131298724));
-        paramViewGroup.fsI = ((TextView)paramView.findViewById(2131298729));
-        paramViewGroup.sGn = ((TextView)paramView.findViewById(2131298734));
+        paramViewGroup.tNT = ((TextView)paramView.findViewById(2131298724));
+        paramViewGroup.fwp = ((TextView)paramView.findViewById(2131298729));
+        paramViewGroup.tNU = ((TextView)paramView.findViewById(2131298734));
         paramView.setTag(paramViewGroup);
         if (paramInt <= 0) {
           break label201;
         }
-        i = this.sGj[(paramInt - 1)];
+        i = this.tNQ[(paramInt - 1)];
         label102:
         if (paramInt != 0) {
           break label207;
         }
-        paramViewGroup.sGm.setVisibility(0);
-        paramViewGroup.sGm.setText(Fp(this.sGj[paramInt]));
+        paramViewGroup.tNT.setVisibility(0);
+        paramViewGroup.tNT.setText(Hk(this.tNQ[paramInt]));
         label130:
-        paramViewGroup.fsI.setText(locala.hkO);
-        paramViewGroup.sGn.setText(locala.hkN);
-        if (!this.sGk) {
+        paramViewGroup.fwp.setText(locala.hLr);
+        paramViewGroup.tNU.setText(locala.hLq);
+        if (!this.tNR) {
           break label261;
         }
-        paramViewGroup.sGn.setVisibility(0);
+        paramViewGroup.tNU.setVisibility(0);
       }
     }
     for (;;)
@@ -163,29 +163,29 @@ public final class c
       i = -1;
       break label102;
       label207:
-      if ((paramInt > 0) && (this.sGj[paramInt] != i))
+      if ((paramInt > 0) && (this.tNQ[paramInt] != i))
       {
-        paramViewGroup.sGm.setVisibility(0);
-        paramViewGroup.sGm.setText(Fp(this.sGj[paramInt]));
+        paramViewGroup.tNT.setVisibility(0);
+        paramViewGroup.tNT.setText(Hk(this.tNQ[paramInt]));
         break label130;
       }
-      paramViewGroup.sGm.setVisibility(8);
+      paramViewGroup.tNT.setVisibility(8);
       break label130;
       label261:
-      paramViewGroup.sGn.setVisibility(4);
+      paramViewGroup.tNU.setVisibility(4);
     }
   }
   
   static final class a
   {
-    TextView fsI;
-    TextView sGm;
-    TextView sGn;
+    TextView fwp;
+    TextView tNT;
+    TextView tNU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.c
  * JD-Core Version:    0.7.0.1
  */

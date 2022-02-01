@@ -5,16 +5,16 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageNavigateBackDefaultInterceptor;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "()V", "intercept", "", "runtime", "scene", "", "continueNavigateBack", "Ljava/lang/Runnable;", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageNavigateBackDefaultInterceptor;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "()V", "intercept", "", "runtime", "scene", "", "continueNavigateBack", "Ljava/lang/Runnable;", "luggage-wxa-app_release"})
 public final class a
   implements d<AppBrandRuntime>
 {
-  public static final a lgN;
+  public static final a lGH;
   
   static
   {
     AppMethodBeat.i(176460);
-    lgN = new a();
+    lGH = new a();
     AppMethodBeat.o(176460);
   }
   
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.c.a
  * JD-Core Version:    0.7.0.1
  */

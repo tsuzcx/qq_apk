@@ -1,16 +1,16 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.j;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.k;
+import com.tencent.liteav.basic.d.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 public class s
-  extends g
+  extends h
 {
   public int r;
   public int s;
@@ -25,7 +25,7 @@ public class s
   {
     this("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nattribute vec4 inputTextureCoordinate2;\nattribute vec4 inputTextureCoordinate3;\n \nvarying vec2 textureCoordinate;\nvarying vec2 textureCoordinate2;\nvarying vec2 textureCoordinate3;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n    textureCoordinate2 = inputTextureCoordinate2.xy;\n    textureCoordinate3 = inputTextureCoordinate3.xy;\n}", paramString);
     AppMethodBeat.i(15072);
-    a(j.a, false, true);
+    a(k.a, false, true);
     AppMethodBeat.o(15072);
   }
   
@@ -35,7 +35,7 @@ public class s
     AppMethodBeat.i(15073);
     this.t = -1;
     this.w = -1;
-    a(j.a, false, true);
+    a(k.a, false, true);
     AppMethodBeat.o(15073);
   }
   
@@ -64,21 +64,21 @@ public class s
     AppMethodBeat.o(15077);
   }
   
-  public void a(j paramj, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(15079);
-    paramj = k.a(paramj, paramBoolean1, paramBoolean2);
+    AppMethodBeat.i(193039);
+    paramk = l.a(paramk, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramj);
+    localFloatBuffer.put(paramk);
     localFloatBuffer.flip();
     this.x = localByteBuffer;
     localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramj);
+    localFloatBuffer.put(paramk);
     localFloatBuffer.flip();
     this.y = localByteBuffer;
-    AppMethodBeat.o(15079);
+    AppMethodBeat.o(193039);
   }
   
   public boolean b()

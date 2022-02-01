@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.InputStream;
 import org.json.JSONObject;
 
 public abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
   /* Error */
   static boolean c(String paramString, InputStream paramInputStream)
@@ -35,7 +35,7 @@ public abstract class a
     //   26: aload 6
     //   28: astore_3
     //   29: aload_0
-    //   30: invokevirtual 30	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   30: invokevirtual 30	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
     //   33: invokevirtual 34	com/tencent/mm/vfs/e:mkdirs	()Z
     //   36: pop
     //   37: aload 5
@@ -43,7 +43,7 @@ public abstract class a
     //   41: aload 6
     //   43: astore_3
     //   44: aload_0
-    //   45: invokestatic 40	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   45: invokestatic 40	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   48: astore_0
     //   49: aload_0
     //   50: astore 4
@@ -86,11 +86,11 @@ public abstract class a
     //   111: iconst_0
     //   112: aload_0
     //   113: aastore
-    //   114: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   114: invokestatic 64	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   117: aload 4
-    //   119: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   119: invokestatic 70	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   122: aload_1
-    //   123: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   123: invokestatic 70	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   126: iconst_0
     //   127: ireturn
     //   128: aload_0
@@ -100,16 +100,16 @@ public abstract class a
     //   133: aload_0
     //   134: invokevirtual 73	java/io/OutputStream:flush	()V
     //   137: aload_0
-    //   138: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   138: invokestatic 70	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   141: aload_1
-    //   142: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   142: invokestatic 70	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   145: iconst_1
     //   146: ireturn
     //   147: astore_0
     //   148: aload_3
-    //   149: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   149: invokestatic 70	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   152: aload_1
-    //   153: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   153: invokestatic 70	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   156: aload_0
     //   157: athrow
     // Local variable table:
@@ -140,16 +140,16 @@ public abstract class a
     //   133	137	147	finally
   }
   
-  abstract boolean In(String paramString);
+  abstract boolean Ms(String paramString);
   
-  abstract String Io(String paramString);
+  abstract String Mt(String paramString);
   
-  abstract void Ip(String paramString);
+  abstract void Mu(String paramString);
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
     paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bs.isNullOrNil(paramJSONObject))
     {
       paramc.h(paramInt, e("fail filePath invalid", null));
       return;
@@ -164,7 +164,7 @@ public abstract class a
           AppMethodBeat.o(139864);
           return;
         }
-        InputStream localInputStream = paramc.Ee().ET(paramJSONObject);
+        InputStream localInputStream = paramc.DH().IW(paramJSONObject);
         if (localInputStream == null) {}
         try
         {
@@ -178,23 +178,23 @@ public abstract class a
           boolean bool;
           int i;
           a locala;
-          bt.d(localInputStream);
+          bs.d(localInputStream);
           AppMethodBeat.o(139864);
         }
-        str1 = org.apache.commons.a.c.getExtension(paramJSONObject);
-        localObject2 = d.aGE(str1);
-        if (!a.this.In((String)localObject2))
+        str1 = org.apache.commons.a.d.getExtension(paramJSONObject);
+        localObject2 = com.tencent.mm.sdk.f.d.aLW(str1);
+        if (!a.this.Ms((String)localObject2))
         {
           paramc.h(paramInt, a.this.e("fail invalid file type", null));
-          bt.d(localInputStream);
+          bs.d(localInputStream);
           AppMethodBeat.o(139864);
           return;
         }
-        str1 = a.this.Io(str1);
+        str1 = a.this.Mt(str1);
         bool = a.c(str1, localInputStream);
         if (bool)
         {
-          a.this.Ip(str1);
+          a.this.Mu(str1);
           com.tencent.mm.sdk.f.b.k(str1, paramc.getContext());
         }
         localObject2 = paramc;
@@ -204,7 +204,7 @@ public abstract class a
         String str2;
         for (str1 = "ok";; str2 = "fail")
         {
-          ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2).h(i, locala.e(str1, null));
+          ((c)localObject2).h(i, locala.e(str1, null));
           break;
         }
       }
@@ -212,7 +212,7 @@ public abstract class a
     a locala = (a)paramc.K(a.class);
     if (locala == null)
     {
-      ad.w("MicroMsg.AppBrand.BaseJsApiSaveToPhotosAlbum", "NULL permissionInterface with appId:%s, run directly", new Object[] { paramc.getAppId() });
+      ac.w("MicroMsg.AppBrand.BaseJsApiSaveToPhotosAlbum", "NULL permissionInterface with appId:%s, run directly", new Object[] { paramc.getAppId() });
       paramJSONObject.run();
       return;
     }
@@ -220,9 +220,9 @@ public abstract class a
     {
       public final void run()
       {
-        AppMethodBeat.i(194746);
+        AppMethodBeat.i(206803);
         paramc.h(paramInt, a.this.e("fail:system permission denied", null));
-        AppMethodBeat.o(194746);
+        AppMethodBeat.o(206803);
       }
     });
   }
@@ -235,7 +235,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.a
  * JD-Core Version:    0.7.0.1
  */

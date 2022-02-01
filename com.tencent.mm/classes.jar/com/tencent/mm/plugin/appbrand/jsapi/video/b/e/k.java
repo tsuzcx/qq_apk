@@ -17,20 +17,20 @@ public final class k
   @Deprecated
   public static boolean a(HttpsURLConnection paramHttpsURLConnection)
   {
-    AppMethodBeat.i(194031);
+    AppMethodBeat.i(194378);
     X509TrustManager local1 = new X509TrustManager()
     {
       public final void checkClientTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
       {
-        AppMethodBeat.i(194028);
+        AppMethodBeat.i(194375);
         h.log(3, "SSLUtil", "checkClientTrusted");
-        AppMethodBeat.o(194028);
+        AppMethodBeat.o(194375);
       }
       
       public final void checkServerTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
       {
-        AppMethodBeat.i(194029);
-        if (a.bcR().cxf)
+        AppMethodBeat.i(194376);
+        if (a.bjM().cuo)
         {
           int i = 0;
           while (i < paramAnonymousArrayOfX509Certificate.length)
@@ -46,7 +46,7 @@ public final class k
             i += 1;
           }
         }
-        AppMethodBeat.o(194029);
+        AppMethodBeat.o(194376);
       }
       
       public final X509Certificate[] getAcceptedIssuers()
@@ -64,26 +64,26 @@ public final class k
       {
         public final boolean verify(String paramAnonymousString, SSLSession paramAnonymousSSLSession)
         {
-          AppMethodBeat.i(194030);
+          AppMethodBeat.i(194377);
           h.log(3, "SSLUtil", "verifying ".concat(String.valueOf(paramAnonymousString)));
-          AppMethodBeat.o(194030);
+          AppMethodBeat.o(194377);
           return true;
         }
       });
-      AppMethodBeat.o(194031);
+      AppMethodBeat.o(194378);
       return true;
     }
     catch (Exception paramHttpsURLConnection)
     {
       h.log(6, "SSLUtil", "disableSSLCertVerify failed ".concat(String.valueOf(paramHttpsURLConnection)));
-      AppMethodBeat.o(194031);
+      AppMethodBeat.o(194378);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.k
  * JD-Core Version:    0.7.0.1
  */

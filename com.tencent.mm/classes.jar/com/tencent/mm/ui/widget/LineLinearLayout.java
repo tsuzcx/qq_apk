@@ -8,12 +8,12 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class LineLinearLayout
   extends LinearLayout
 {
-  private int HyP;
+  private int IZn;
   private Paint mPaint;
   private Rect mRect;
   
@@ -32,7 +32,7 @@ public class LineLinearLayout
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setColor(-571543826);
     this.mPaint.setStrokeWidth(Math.round(a.getDensity(getContext()) * 0.5F));
-    this.HyP = a.fromDPToPix(paramContext, 44);
+    this.IZn = a.fromDPToPix(paramContext, 44);
     AppMethodBeat.o(143337);
   }
   
@@ -42,9 +42,9 @@ public class LineLinearLayout
     int j = getMeasuredHeight();
     Paint localPaint = this.mPaint;
     int i = 1;
-    while (this.HyP * i < j)
+    while (this.IZn * i < j)
     {
-      paramCanvas.drawLine(0.0F, this.HyP * i, getMeasuredWidth(), this.HyP * i, localPaint);
+      paramCanvas.drawLine(0.0F, this.IZn * i, getMeasuredWidth(), this.IZn * i, localPaint);
       i += 1;
     }
     super.onDraw(paramCanvas);
@@ -53,7 +53,7 @@ public class LineLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.LineLinearLayout
  * JD-Core Version:    0.7.0.1
  */

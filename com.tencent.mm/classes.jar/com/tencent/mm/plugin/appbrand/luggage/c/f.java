@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
 import com.tencent.mm.plugin.appbrand.appcache.be;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.page.u;
 import com.tencent.mm.plugin.m.a.a.a.a.d;
 import d.g.b.k;
 import java.util.ArrayList;
@@ -18,17 +18,17 @@ import java.util.Map;
 public class f
   extends o
 {
-  com.tencent.mm.plugin.m.a.a.a kPX;
+  com.tencent.mm.plugin.m.a.a.a lrw;
   
   public f(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
     super(paramAppBrandRuntimeContainerWC);
   }
   
-  public final com.tencent.mm.plugin.appbrand.q aLW()
+  public final com.tencent.mm.plugin.appbrand.q aSM()
   {
     AppMethodBeat.i(47570);
-    g localg2 = e.KB(this.mAppId);
+    g localg2 = e.OI(this.mAppId);
     g localg1 = localg2;
     if (localg2 == null) {
       localg1 = new g();
@@ -37,22 +37,22 @@ public class f
     return localg1;
   }
   
-  public final t aLX()
+  public final u aSN()
   {
     AppMethodBeat.i(47569);
-    c localc = new c(com.tencent.mm.sdk.f.a.iV(this.mContext), this);
+    c localc = new c(com.tencent.mm.sdk.f.a.jg(this.mContext), this);
     AppMethodBeat.o(47569);
     return localc;
   }
   
-  public final void aNh()
+  public final void aTX()
   {
     AppMethodBeat.i(175012);
-    super.aNh();
-    com.tencent.mm.plugin.m.a.a.a locala = this.kPX;
-    if (locala.kTU != null)
+    super.aTX();
+    com.tencent.mm.plugin.m.a.a.a locala = this.lrw;
+    if (locala.lvz != null)
     {
-      Object localObject1 = be.U((AppBrandRuntime)locala.kTU);
+      Object localObject1 = be.U((AppBrandRuntime)locala.lvz);
       if (localObject1 == null)
       {
         localObject1 = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.appcache.IWxaPkgRuntimeReader");
@@ -62,10 +62,10 @@ public class f
       localObject1 = (com.tencent.mm.plugin.appbrand.appcache.q)localObject1;
       HashMap localHashMap1 = new HashMap();
       List localList = (List)new ArrayList();
-      Object localObject2 = ((com.tencent.mm.plugin.appbrand.appcache.q)localObject1).aPx();
+      Object localObject2 = ((com.tencent.mm.plugin.appbrand.appcache.q)localObject1).aWp();
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = (List)d.a.v.Jgl;
+        localObject1 = (List)d.a.v.KTF;
       }
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
@@ -77,20 +77,20 @@ public class f
         k.g(str, "info.fileName");
         localMap.put("fileName", str);
         localMap = (Map)localHashMap2;
-        str = ((WxaPkg.Info)localObject2).iNF;
+        str = ((WxaPkg.Info)localObject2).jnN;
         k.g(str, "info.pkgFilePath");
         localMap.put("pkgFilePath", str);
-        ((Map)localHashMap2).put("fileOffset", Integer.valueOf(((WxaPkg.Info)localObject2).iLR));
-        ((Map)localHashMap2).put("fileLength", Integer.valueOf(((WxaPkg.Info)localObject2).iLS));
+        ((Map)localHashMap2).put("fileOffset", Integer.valueOf(((WxaPkg.Info)localObject2).jlY));
+        ((Map)localHashMap2).put("fileLength", Integer.valueOf(((WxaPkg.Info)localObject2).jlZ));
         localList.add(localHashMap2);
       }
       localObject1 = (Map)localHashMap1;
-      localObject2 = new com.google.a.g().xl().toJson(localList);
+      localObject2 = new com.google.a.g().wY().toJson(localList);
       k.g(localObject2, "GsonBuilder().create().toJson(filesInfo)");
       ((Map)localObject1).put("filesInfo", localObject2);
-      localObject1 = locala.tqZ;
-      localObject2 = com.tencent.mm.plugin.m.a.a.a.a.tro;
-      com.tencent.mm.plugin.m.a.a.a.a.cMW().f(((d)localObject1).trd, "sendFilesInfo", localHashMap1);
+      localObject1 = locala.uzr;
+      localObject2 = com.tencent.mm.plugin.m.a.a.a.a.uzG;
+      com.tencent.mm.plugin.m.a.a.a.a.daD().f(((d)localObject1).uzv, "sendFilesInfo", localHashMap1);
     }
     AppMethodBeat.o(175012);
   }
@@ -99,7 +99,7 @@ public class f
   {
     AppMethodBeat.i(47572);
     super.onCreate();
-    this.kPX = new com.tencent.mm.plugin.m.a.a.a(com.tencent.mm.sdk.f.a.iV(this.mContext), this, "wxa", "com.tencent.mm/appbrand_flutter_ui");
+    this.lrw = new com.tencent.mm.plugin.m.a.a.a(com.tencent.mm.sdk.f.a.jg(this.mContext), this, "wxa", "com.tencent.mm/appbrand_flutter_ui");
     AppMethodBeat.o(47572);
   }
   
@@ -107,13 +107,13 @@ public class f
   {
     AppMethodBeat.i(47568);
     super.onResume();
-    e.Kz(this.mAppId);
+    e.OG(this.mAppId);
     AppMethodBeat.o(47568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.f
  * JD-Core Version:    0.7.0.1
  */

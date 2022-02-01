@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.game.luggage.a.a;
 import com.tencent.mm.plugin.game.luggage.a.b;
 import com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager;
 import com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager.BatteryChangedReceiver;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class PluginLuggageGame
   extends f
@@ -19,7 +19,7 @@ public class PluginLuggageGame
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(83013);
-    if ((paramg.agu()) || (paramg.ra(":tools")) || (paramg.ra(":toolsmp"))) {
+    if ((paramg.ahL()) || (paramg.up(":tools")) || (paramg.up(":toolsmp"))) {
       com.tencent.mm.kernel.g.a(a.class, new e(new c()));
     }
     AppMethodBeat.o(83013);
@@ -28,23 +28,23 @@ public class PluginLuggageGame
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(83014);
-    if (BatteryManager.Bmr == null) {
-      BatteryManager.Bmr = new BatteryManager.BatteryChangedReceiver((byte)0);
+    if (BatteryManager.CEy == null) {
+      BatteryManager.CEy = new BatteryManager.BatteryChangedReceiver((byte)0);
     }
     paramc = new IntentFilter();
     paramc.addAction("android.intent.action.BATTERY_OKAY");
     paramc.addAction("android.intent.action.BATTERY_LOW");
-    aj.getContext().registerReceiver(BatteryManager.Bmr, paramc);
+    ai.getContext().registerReceiver(BatteryManager.CEy, paramc);
     AppMethodBeat.o(83014);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(83015);
-    if (BatteryManager.Bmr != null) {
-      aj.getContext().unregisterReceiver(BatteryManager.Bmr);
+    if (BatteryManager.CEy != null) {
+      ai.getContext().unregisterReceiver(BatteryManager.CEy);
     }
-    BatteryManager.Bmr = null;
+    BatteryManager.CEy = null;
     AppMethodBeat.o(83015);
   }
 }

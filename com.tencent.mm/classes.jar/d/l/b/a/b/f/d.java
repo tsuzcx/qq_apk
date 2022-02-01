@@ -22,11 +22,11 @@ public final class d
       AppMethodBeat.o(59318);
       return true;
     }
-    paramb1 = paramb1.qV();
+    paramb1 = paramb1.rf();
     k.g(paramb1, "this.asString()");
-    paramb2 = paramb2.qV();
+    paramb2 = paramb2.rf();
     k.g(paramb2, "packageName.asString()");
-    if ((n.mA(paramb1, paramb2)) && (paramb1.charAt(paramb2.length()) == '.'))
+    if ((n.nb(paramb1, paramb2)) && (paramb1.charAt(paramb2.length()) == '.'))
     {
       AppMethodBeat.o(59318);
       return true;
@@ -47,14 +47,14 @@ public final class d
     }
     if (k.g(paramb1, paramb2))
     {
-      paramb1 = b.JLP;
+      paramb1 = b.Lzi;
       k.g(paramb1, "FqName.ROOT");
       AppMethodBeat.o(59319);
       return paramb1;
     }
-    paramb1 = paramb1.qV();
+    paramb1 = paramb1.rf();
     k.g(paramb1, "asString()");
-    int i = paramb2.qV().length();
+    int i = paramb2.rf().length();
     if (paramb1 == null)
     {
       paramb1 = new v("null cannot be cast to non-null type java.lang.String");
@@ -70,7 +70,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.f.d
  * JD-Core Version:    0.7.0.1
  */

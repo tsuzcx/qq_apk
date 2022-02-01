@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.SpanWatcher;
@@ -29,10 +29,10 @@ import com.tencent.mm.plugin.wenote.model.nativenote.spans.m;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.n;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.t;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.edittext.PasterEditText;
 import java.util.ArrayList;
 
@@ -40,72 +40,72 @@ public class WXRTEditText
   extends PasterEditText
   implements SpanWatcher
 {
-  c BEd;
-  private WXRTEditText BEe;
-  private j BEf;
-  private com.tencent.mm.plugin.wenote.model.nativenote.c.b BEg;
-  public int acD;
-  private av cbR;
-  public boolean omD;
-  public int omF;
-  private int onQ;
-  private int onR;
-  private boolean onS;
-  private boolean onT;
-  private int onU;
-  private int onV;
-  private String onW;
-  public String onX;
-  private Spannable onY;
-  int onZ;
-  public RecyclerView.v oob;
-  private boolean ooc;
-  private boolean ood;
-  private boolean ooe;
-  private boolean oof;
-  private boolean oog;
-  private boolean ooh;
-  private boolean ooi;
-  public boolean ook;
-  public boolean ool;
-  private int oom;
-  private Paint oon;
-  private boolean oop;
-  private Path ooq;
-  private int oor;
-  private int oos;
-  private int oot;
-  private boolean oou;
-  TextWatcher oov;
-  int oow;
+  c CWk;
+  private WXRTEditText CWl;
+  private j CWm;
+  private com.tencent.mm.plugin.wenote.model.nativenote.c.b CWn;
+  public int adx;
+  private au bYO;
+  public boolean oQd;
+  public int oQf;
+  public RecyclerView.w oRB;
+  private boolean oRC;
+  private boolean oRD;
+  private boolean oRE;
+  private boolean oRF;
+  private boolean oRG;
+  private boolean oRH;
+  private boolean oRI;
+  public boolean oRK;
+  public boolean oRL;
+  private int oRM;
+  private Paint oRN;
+  private boolean oRP;
+  private Path oRQ;
+  private int oRR;
+  private int oRS;
+  private int oRT;
+  private boolean oRU;
+  TextWatcher oRV;
+  int oRW;
+  private int oRq;
+  private int oRr;
+  private boolean oRs;
+  private boolean oRt;
+  private int oRu;
+  private int oRv;
+  private String oRw;
+  public String oRx;
+  private Spannable oRy;
+  int oRz;
   
   public WXRTEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(30482);
-    this.onQ = -1;
-    this.onR = -1;
-    this.onS = false;
-    this.onX = "";
-    this.onZ = 0;
-    this.BEe = null;
-    this.acD = 0;
-    this.omD = false;
-    this.ooh = false;
-    this.ook = false;
-    this.omF = 0;
-    this.ool = false;
-    this.oom = -1;
-    this.oon = null;
-    this.cbR = null;
-    this.BEg = null;
-    this.oop = false;
-    this.ooq = null;
-    this.oor = -1;
-    this.oos = -1;
-    this.oot = -1;
-    this.oou = false;
-    this.oov = new TextWatcher()
+    this.oRq = -1;
+    this.oRr = -1;
+    this.oRs = false;
+    this.oRx = "";
+    this.oRz = 0;
+    this.CWl = null;
+    this.adx = 0;
+    this.oQd = false;
+    this.oRH = false;
+    this.oRK = false;
+    this.oQf = 0;
+    this.oRL = false;
+    this.oRM = -1;
+    this.oRN = null;
+    this.bYO = null;
+    this.CWn = null;
+    this.oRP = false;
+    this.oRQ = null;
+    this.oRR = -1;
+    this.oRS = -1;
+    this.oRT = -1;
+    this.oRU = false;
+    this.oRV = new TextWatcher()
     {
       /* Error */
       public final void afterTextChanged(Editable paramAnonymousEditable)
@@ -117,36 +117,36 @@ public class WXRTEditText
         //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   8: ldc 28
         //   10: ldc 29
-        //   12: invokestatic 35	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+        //   12: invokestatic 35	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
         //   15: aload_1
         //   16: invokevirtual 39	java/lang/Object:toString	()Ljava/lang/String;
         //   19: astore_3
         //   20: aload_0
-        //   21: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   24: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   21: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   24: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   27: ifnonnull +348 -> 375
         //   30: ldc 45
         //   32: astore_1
         //   33: aload_0
-        //   34: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   34: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   37: invokestatic 49	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:f	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)I
         //   40: ifeq +12 -> 52
         //   43: aload_0
-        //   44: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   44: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   47: ldc 45
-        //   49: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   49: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   52: aload_0
-        //   53: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   53: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   56: invokestatic 52	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:d	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   59: ifne +165 -> 224
         //   62: aload_0
-        //   63: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   63: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   66: invokevirtual 56	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelection	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/e;
-        //   69: getfield 62	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:asw	I
+        //   69: getfield 62	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:atr	I
         //   72: aload_0
-        //   73: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   73: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   76: invokevirtual 56	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelection	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/e;
-        //   79: getfield 65	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:Mc	I
+        //   79: getfield 65	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:MZ	I
         //   82: if_icmpne +142 -> 224
         //   85: aload_1
         //   86: ldc 67
@@ -176,7 +176,7 @@ public class WXRTEditText
         //   140: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   143: ifeq +81 -> 224
         //   146: aload_0
-        //   147: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   147: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   150: invokevirtual 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getText	()Landroid/text/Editable;
         //   153: aload_1
         //   154: invokevirtual 95	java/lang/String:length	()I
@@ -188,35 +188,35 @@ public class WXRTEditText
         //   171: arraylength
         //   172: ifle +52 -> 224
         //   175: aload_0
-        //   176: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   176: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   179: invokevirtual 108	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionStart	()I
         //   182: istore_2
         //   183: aload_0
-        //   184: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   184: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   187: iconst_1
         //   188: invokestatic 112	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Z)Z
         //   191: pop
         //   192: aload_0
-        //   193: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   193: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   196: invokevirtual 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getText	()Landroid/text/Editable;
         //   199: ldc 67
         //   201: invokeinterface 115 2 0
         //   206: pop
         //   207: aload_0
-        //   208: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   208: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   211: iconst_0
         //   212: invokestatic 112	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Z)Z
         //   215: pop
         //   216: aload_0
-        //   217: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   217: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   220: iload_2
         //   221: invokevirtual 118	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:setSelection	(I)V
         //   224: aload_0
-        //   225: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   225: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   228: invokestatic 122	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:g	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
         //   231: ifnull +105 -> 336
         //   234: aload_0
-        //   235: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   235: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   238: invokestatic 52	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:d	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   241: ifne +95 -> 336
         //   244: aload_1
@@ -224,35 +224,35 @@ public class WXRTEditText
         //   246: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   249: ifne +87 -> 336
         //   252: aload_0
-        //   253: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   256: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bSI	()Landroid/text/Spannable;
+        //   253: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   256: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bZX	()Landroid/text/Spannable;
         //   259: astore_1
         //   260: aload_0
-        //   261: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   261: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   264: aload_3
-        //   265: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   265: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   268: aload_0
-        //   269: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   269: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   272: invokestatic 122	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:g	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
         //   275: astore_3
         //   276: aload_0
-        //   277: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   277: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   280: invokestatic 130	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:h	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   283: astore 4
         //   285: aload_0
-        //   286: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   286: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   289: invokestatic 133	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:i	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Landroid/text/Spannable;
         //   292: astore 5
         //   294: aload_0
-        //   295: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   295: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   298: invokestatic 136	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:j	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)I
         //   301: pop
         //   302: aload_0
-        //   303: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   303: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   306: invokestatic 139	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:k	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)I
         //   309: pop
         //   310: aload_0
-        //   311: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   311: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   314: invokevirtual 108	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionStart	()I
         //   317: pop
         //   318: aload_3
@@ -260,22 +260,22 @@ public class WXRTEditText
         //   321: aload 5
         //   323: aload_1
         //   324: aload_0
-        //   325: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   325: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   328: invokevirtual 142	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionEnd	()I
         //   331: invokeinterface 147 5 0
         //   336: aload_0
-        //   337: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   337: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   340: invokestatic 150	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:e	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   343: pop
         //   344: aload_0
-        //   345: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   345: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   348: invokestatic 153	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:l	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   351: pop
         //   352: aload_0
-        //   353: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   353: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   356: invokestatic 156	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:m	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)V
         //   359: aload_0
-        //   360: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   360: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   363: invokestatic 159	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:n	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)V
         //   366: sipush 30480
         //   369: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -283,8 +283,8 @@ public class WXRTEditText
         //   373: monitorexit
         //   374: return
         //   375: aload_0
-        //   376: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   379: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   376: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   379: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   382: astore_1
         //   383: goto -350 -> 33
         //   386: astore_1
@@ -321,13 +321,13 @@ public class WXRTEditText
         //   2: sipush 30478
         //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   8: aload_0
-        //   9: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   9: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   12: invokestatic 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:c	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Ljava/lang/String;
         //   15: ifnonnull +113 -> 128
         //   18: ldc 45
         //   20: astore 5
         //   22: aload_0
-        //   23: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   23: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   26: invokestatic 52	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:d	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   29: ifne +90 -> 119
         //   32: aload_1
@@ -336,36 +336,36 @@ public class WXRTEditText
         //   40: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   43: ifne +76 -> 119
         //   46: aload_0
-        //   47: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   47: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   50: aload_0
-        //   51: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   51: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   54: invokevirtual 108	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionStart	()I
         //   57: invokestatic 174	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;I)I
         //   60: pop
         //   61: aload_0
-        //   62: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   62: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   65: aload_0
-        //   66: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   66: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   69: invokevirtual 142	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionEnd	()I
         //   72: invokestatic 177	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:b	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;I)I
         //   75: pop
         //   76: aload_0
-        //   77: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   77: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   80: aload_1
         //   81: invokeinterface 171 1 0
         //   86: invokestatic 180	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Ljava/lang/String;)Ljava/lang/String;
         //   89: pop
         //   90: aload_0
-        //   91: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   91: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   94: aload_0
-        //   95: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   95: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   98: invokestatic 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:c	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Ljava/lang/String;
-        //   101: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   101: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   104: aload_0
-        //   105: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   105: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   108: aload_0
-        //   109: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   112: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bSI	()Landroid/text/Spannable;
+        //   109: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   112: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bZX	()Landroid/text/Spannable;
         //   115: invokestatic 183	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Landroid/text/Spannable;)Landroid/text/Spannable;
         //   118: pop
         //   119: sipush 30478
@@ -374,7 +374,7 @@ public class WXRTEditText
         //   126: monitorexit
         //   127: return
         //   128: aload_0
-        //   129: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   129: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   132: invokestatic 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:c	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Ljava/lang/String;
         //   135: astore 5
         //   137: goto -115 -> 22
@@ -415,7 +415,7 @@ public class WXRTEditText
         }
       }
     };
-    this.oow = 0;
+    this.oRW = 0;
     init();
     AppMethodBeat.o(30482);
   }
@@ -424,29 +424,29 @@ public class WXRTEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(30483);
-    this.onQ = -1;
-    this.onR = -1;
-    this.onS = false;
-    this.onX = "";
-    this.onZ = 0;
-    this.BEe = null;
-    this.acD = 0;
-    this.omD = false;
-    this.ooh = false;
-    this.ook = false;
-    this.omF = 0;
-    this.ool = false;
-    this.oom = -1;
-    this.oon = null;
-    this.cbR = null;
-    this.BEg = null;
-    this.oop = false;
-    this.ooq = null;
-    this.oor = -1;
-    this.oos = -1;
-    this.oot = -1;
-    this.oou = false;
-    this.oov = new TextWatcher()
+    this.oRq = -1;
+    this.oRr = -1;
+    this.oRs = false;
+    this.oRx = "";
+    this.oRz = 0;
+    this.CWl = null;
+    this.adx = 0;
+    this.oQd = false;
+    this.oRH = false;
+    this.oRK = false;
+    this.oQf = 0;
+    this.oRL = false;
+    this.oRM = -1;
+    this.oRN = null;
+    this.bYO = null;
+    this.CWn = null;
+    this.oRP = false;
+    this.oRQ = null;
+    this.oRR = -1;
+    this.oRS = -1;
+    this.oRT = -1;
+    this.oRU = false;
+    this.oRV = new TextWatcher()
     {
       /* Error */
       public final void afterTextChanged(Editable paramAnonymousEditable)
@@ -458,36 +458,36 @@ public class WXRTEditText
         //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   8: ldc 28
         //   10: ldc 29
-        //   12: invokestatic 35	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+        //   12: invokestatic 35	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
         //   15: aload_1
         //   16: invokevirtual 39	java/lang/Object:toString	()Ljava/lang/String;
         //   19: astore_3
         //   20: aload_0
-        //   21: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   24: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   21: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   24: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   27: ifnonnull +348 -> 375
         //   30: ldc 45
         //   32: astore_1
         //   33: aload_0
-        //   34: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   34: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   37: invokestatic 49	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:f	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)I
         //   40: ifeq +12 -> 52
         //   43: aload_0
-        //   44: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   44: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   47: ldc 45
-        //   49: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   49: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   52: aload_0
-        //   53: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   53: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   56: invokestatic 52	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:d	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   59: ifne +165 -> 224
         //   62: aload_0
-        //   63: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   63: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   66: invokevirtual 56	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelection	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/e;
-        //   69: getfield 62	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:asw	I
+        //   69: getfield 62	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:atr	I
         //   72: aload_0
-        //   73: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   73: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   76: invokevirtual 56	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelection	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/e;
-        //   79: getfield 65	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:Mc	I
+        //   79: getfield 65	com/tencent/mm/plugin/wenote/model/nativenote/manager/e:MZ	I
         //   82: if_icmpne +142 -> 224
         //   85: aload_1
         //   86: ldc 67
@@ -517,7 +517,7 @@ public class WXRTEditText
         //   140: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   143: ifeq +81 -> 224
         //   146: aload_0
-        //   147: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   147: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   150: invokevirtual 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getText	()Landroid/text/Editable;
         //   153: aload_1
         //   154: invokevirtual 95	java/lang/String:length	()I
@@ -529,35 +529,35 @@ public class WXRTEditText
         //   171: arraylength
         //   172: ifle +52 -> 224
         //   175: aload_0
-        //   176: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   176: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   179: invokevirtual 108	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionStart	()I
         //   182: istore_2
         //   183: aload_0
-        //   184: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   184: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   187: iconst_1
         //   188: invokestatic 112	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Z)Z
         //   191: pop
         //   192: aload_0
-        //   193: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   193: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   196: invokevirtual 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getText	()Landroid/text/Editable;
         //   199: ldc 67
         //   201: invokeinterface 115 2 0
         //   206: pop
         //   207: aload_0
-        //   208: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   208: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   211: iconst_0
         //   212: invokestatic 112	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Z)Z
         //   215: pop
         //   216: aload_0
-        //   217: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   217: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   220: iload_2
         //   221: invokevirtual 118	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:setSelection	(I)V
         //   224: aload_0
-        //   225: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   225: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   228: invokestatic 122	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:g	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
         //   231: ifnull +105 -> 336
         //   234: aload_0
-        //   235: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   235: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   238: invokestatic 52	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:d	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   241: ifne +95 -> 336
         //   244: aload_1
@@ -565,35 +565,35 @@ public class WXRTEditText
         //   246: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   249: ifne +87 -> 336
         //   252: aload_0
-        //   253: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   256: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bSI	()Landroid/text/Spannable;
+        //   253: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   256: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bZX	()Landroid/text/Spannable;
         //   259: astore_1
         //   260: aload_0
-        //   261: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   261: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   264: aload_3
-        //   265: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   265: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   268: aload_0
-        //   269: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   269: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   272: invokestatic 122	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:g	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
         //   275: astore_3
         //   276: aload_0
-        //   277: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   277: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   280: invokestatic 130	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:h	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   283: astore 4
         //   285: aload_0
-        //   286: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   286: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   289: invokestatic 133	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:i	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Landroid/text/Spannable;
         //   292: astore 5
         //   294: aload_0
-        //   295: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   295: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   298: invokestatic 136	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:j	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)I
         //   301: pop
         //   302: aload_0
-        //   303: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   303: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   306: invokestatic 139	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:k	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)I
         //   309: pop
         //   310: aload_0
-        //   311: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   311: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   314: invokevirtual 108	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionStart	()I
         //   317: pop
         //   318: aload_3
@@ -601,22 +601,22 @@ public class WXRTEditText
         //   321: aload 5
         //   323: aload_1
         //   324: aload_0
-        //   325: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   325: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   328: invokevirtual 142	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionEnd	()I
         //   331: invokeinterface 147 5 0
         //   336: aload_0
-        //   337: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   337: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   340: invokestatic 150	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:e	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   343: pop
         //   344: aload_0
-        //   345: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   345: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   348: invokestatic 153	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:l	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   351: pop
         //   352: aload_0
-        //   353: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   353: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   356: invokestatic 156	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:m	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)V
         //   359: aload_0
-        //   360: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   360: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   363: invokestatic 159	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:n	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)V
         //   366: sipush 30480
         //   369: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -624,8 +624,8 @@ public class WXRTEditText
         //   373: monitorexit
         //   374: return
         //   375: aload_0
-        //   376: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   379: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   376: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   379: getfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   382: astore_1
         //   383: goto -350 -> 33
         //   386: astore_1
@@ -662,13 +662,13 @@ public class WXRTEditText
         //   2: sipush 30478
         //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   8: aload_0
-        //   9: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   9: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   12: invokestatic 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:c	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Ljava/lang/String;
         //   15: ifnonnull +113 -> 128
         //   18: ldc 45
         //   20: astore 5
         //   22: aload_0
-        //   23: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   23: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   26: invokestatic 52	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:d	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Z
         //   29: ifne +90 -> 119
         //   32: aload_1
@@ -677,36 +677,36 @@ public class WXRTEditText
         //   40: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
         //   43: ifne +76 -> 119
         //   46: aload_0
-        //   47: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   47: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   50: aload_0
-        //   51: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   51: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   54: invokevirtual 108	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionStart	()I
         //   57: invokestatic 174	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;I)I
         //   60: pop
         //   61: aload_0
-        //   62: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   62: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   65: aload_0
-        //   66: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   66: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   69: invokevirtual 142	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getSelectionEnd	()I
         //   72: invokestatic 177	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:b	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;I)I
         //   75: pop
         //   76: aload_0
-        //   77: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   77: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   80: aload_1
         //   81: invokeinterface 171 1 0
         //   86: invokestatic 180	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Ljava/lang/String;)Ljava/lang/String;
         //   89: pop
         //   90: aload_0
-        //   91: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   91: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   94: aload_0
-        //   95: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   95: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   98: invokestatic 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:c	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Ljava/lang/String;
-        //   101: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:onX	Ljava/lang/String;
+        //   101: putfield 43	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRx	Ljava/lang/String;
         //   104: aload_0
-        //   105: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   105: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   108: aload_0
-        //   109: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
-        //   112: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bSI	()Landroid/text/Spannable;
+        //   109: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   112: invokevirtual 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:bZX	()Landroid/text/Spannable;
         //   115: invokestatic 183	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:a	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;Landroid/text/Spannable;)Landroid/text/Spannable;
         //   118: pop
         //   119: sipush 30478
@@ -715,7 +715,7 @@ public class WXRTEditText
         //   126: monitorexit
         //   127: return
         //   128: aload_0
-        //   129: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:BEh	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
+        //   129: getfield 14	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText$2:CWo	Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;
         //   132: invokestatic 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:c	(Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText;)Ljava/lang/String;
         //   135: astore 5
         //   137: goto -115 -> 22
@@ -756,7 +756,7 @@ public class WXRTEditText
         }
       }
     };
-    this.oow = 0;
+    this.oRW = 0;
     init();
     AppMethodBeat.o(30483);
   }
@@ -765,7 +765,7 @@ public class WXRTEditText
   {
     AppMethodBeat.i(30500);
     int i = getSelectionStart();
-    com.tencent.mm.cg.g localg = com.tencent.mm.cg.g.eIa();
+    com.tencent.mm.cf.g localg = com.tencent.mm.cf.g.eXw();
     getContext();
     setSpannableText(localg.b(paramSpannable, getTextSize()));
     int j = getText().length() - paramSpannable.length();
@@ -782,7 +782,7 @@ public class WXRTEditText
     AppMethodBeat.o(30500);
   }
   
-  private void bSN()
+  private void cac()
   {
     AppMethodBeat.i(30505);
     Editable localEditable = getText();
@@ -792,19 +792,19 @@ public class WXRTEditText
     AppMethodBeat.o(30505);
   }
   
-  private void bSO()
+  private void cad()
   {
     AppMethodBeat.i(30513);
-    if (this.cbR == null)
+    if (this.bYO == null)
     {
-      this.cbR = new av(new av.a()
+      this.bYO = new au(new au.a()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(30481);
           if ((WXRTEditText.o(WXRTEditText.this) != null) && (WXRTEditText.o(WXRTEditText.this).getType() == 1))
           {
-            int i = WXRTEditText.o(WXRTEditText.this).ooZ;
+            int i = WXRTEditText.o(WXRTEditText.this).oSz;
             WXRTEditText.p(WXRTEditText.this);
             WXRTEditText.this.Z(i, false);
           }
@@ -815,40 +815,40 @@ public class WXRTEditText
       AppMethodBeat.o(30513);
       return;
     }
-    this.cbR.stopTimer();
+    this.bYO.stopTimer();
     AppMethodBeat.o(30513);
   }
   
-  private void bSP()
+  private void cae()
   {
     AppMethodBeat.i(30515);
-    if (this.BEg == null)
+    if (this.CWn == null)
     {
-      this.BEg = new com.tencent.mm.plugin.wenote.model.nativenote.c.b();
+      this.CWn = new com.tencent.mm.plugin.wenote.model.nativenote.c.b();
       AppMethodBeat.o(30515);
       return;
     }
-    this.BEg.reset();
+    this.CWn.reset();
     AppMethodBeat.o(30515);
   }
   
-  private void fb(int paramInt1, int paramInt2)
+  private void fe(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30516);
-    if (this.onZ == 2)
+    if (this.oRz == 2)
     {
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().A(this.oom, 1, this.oom, 1);
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().A(this.oRM, 1, this.oRM, 1);
       AppMethodBeat.o(30516);
       return;
     }
-    if (this.onZ == 1)
+    if (this.oRz == 1)
     {
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().A(this.oom, 0, this.oom, 0);
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().A(this.oRM, 0, this.oRM, 0);
       AppMethodBeat.o(30516);
       return;
     }
-    com.tencent.mm.plugin.wenote.model.nativenote.c.e locale = com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT();
-    int i = this.oom;
+    com.tencent.mm.plugin.wenote.model.nativenote.c.e locale = com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm();
+    int i = this.oRM;
     locale.A(i, paramInt1, i, paramInt2);
     AppMethodBeat.o(30516);
   }
@@ -858,12 +858,12 @@ public class WXRTEditText
     AppMethodBeat.i(30508);
     try
     {
-      if ((this.BEf == null) || (this.ooi))
+      if ((this.CWm == null) || (this.oRI))
       {
-        this.BEf = new j(getText());
-        this.ooi = false;
+        this.CWm = new j(getText());
+        this.oRI = false;
       }
-      j localj = this.BEf;
+      j localj = this.CWm;
       return localj;
     }
     finally
@@ -875,18 +875,18 @@ public class WXRTEditText
   private void init()
   {
     AppMethodBeat.i(30485);
-    this.BEe = this;
-    removeTextChangedListener(this.oov);
-    addTextChangedListener(this.oov);
-    setMovementMethod(com.tencent.mm.plugin.wenote.model.nativenote.spans.i.esX());
-    this.oom = -1;
-    this.oon = new Paint(1);
-    this.oon.setColor(1347529272);
-    this.BEg = new com.tencent.mm.plugin.wenote.model.nativenote.c.b();
-    this.ooq = new Path();
-    this.oor = -1;
-    this.oos = -1;
-    this.oot = -1;
+    this.CWl = this;
+    removeTextChangedListener(this.oRV);
+    addTextChangedListener(this.oRV);
+    setMovementMethod(com.tencent.mm.plugin.wenote.model.nativenote.spans.i.eIq());
+    this.oRM = -1;
+    this.oRN = new Paint(1);
+    this.oRN.setColor(1347529272);
+    this.CWn = new com.tencent.mm.plugin.wenote.model.nativenote.c.b();
+    this.oRQ = new Path();
+    this.oRR = -1;
+    this.oRS = -1;
+    this.oRT = -1;
     if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.isEnabled())
     {
       setHighlightColor(0);
@@ -917,8 +917,8 @@ public class WXRTEditText
   {
     try
     {
-      if (!this.oog) {
-        this.oof = paramBoolean;
+      if (!this.oRG) {
+        this.oRF = paramBoolean;
       }
       return;
     }
@@ -977,20 +977,20 @@ public class WXRTEditText
       }
       else
       {
-        if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().isEditable())
+        if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().isEditable())
         {
           requestFocus();
           setIgnoreSelectChangeByMultiSelect(true);
           setSelection(i, paramInt);
           setIgnoreSelectChangeByMultiSelect(false);
-          if (this.BEd != null)
+          if (this.CWk != null)
           {
-            this.BEd.e(true, 50L);
-            this.BEd.zZ(1);
+            this.CWk.e(true, 50L);
+            this.CWk.AR(1);
           }
         }
-        fb(i, paramInt);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().H(true, true);
+        fe(i, paramInt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().J(true, true);
         AppMethodBeat.o(30514);
         return;
       }
@@ -1004,13 +1004,13 @@ public class WXRTEditText
   public final String a(i parami)
   {
     AppMethodBeat.i(30497);
-    if (parami == i.BEj)
+    if (parami == i.CWq)
     {
       parami = getText().toString();
       AppMethodBeat.o(30497);
       return parami;
     }
-    if (parami == i.BEk)
+    if (parami == i.CWr)
     {
       parami = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a(getText());
       AppMethodBeat.o(30497);
@@ -1023,24 +1023,24 @@ public class WXRTEditText
   public final <V, C extends com.tencent.mm.plugin.wenote.model.nativenote.spans.g<V>> void a(t<V, C> paramt, V paramV)
   {
     AppMethodBeat.i(30504);
-    if ((!this.ooh) && (!this.ooe))
+    if ((!this.oRH) && (!this.oRE))
     {
-      if (this.onT) {}
-      for (Spannable localSpannable = null;; localSpannable = bSI())
+      if (this.oRt) {}
+      for (Spannable localSpannable = null;; localSpannable = bZX())
       {
         paramt.a(this, paramV);
         try
         {
-          if ((this.BEd != null) && (!this.onT))
+          if ((this.CWk != null) && (!this.oRt))
           {
-            paramt = bSI();
-            paramV = this.BEd;
+            paramt = bZX();
+            paramV = this.CWk;
             getSelectionStart();
             getSelectionEnd();
             getSelectionStart();
             paramV.a(this, localSpannable, paramt, getSelectionEnd());
           }
-          this.ooi = true;
+          this.oRI = true;
           return;
         }
         finally
@@ -1052,18 +1052,18 @@ public class WXRTEditText
     AppMethodBeat.o(30504);
   }
   
-  public final void bSH()
+  public final void bZW()
   {
     AppMethodBeat.i(30490);
-    if (this.BEd != null)
+    if (this.CWk != null)
     {
-      this.BEd.e(true, 50L);
-      this.BEd.zZ(1);
+      this.CWk.e(true, 50L);
+      this.CWk.AR(1);
     }
     AppMethodBeat.o(30490);
   }
   
-  public final Spannable bSI()
+  public final Spannable bZX()
   {
     AppMethodBeat.i(30494);
     Object localObject = super.getText();
@@ -1077,11 +1077,11 @@ public class WXRTEditText
     }
   }
   
-  public final void bSJ()
+  public final void bZY()
   {
     try
     {
-      this.onT = true;
+      this.oRt = true;
       return;
     }
     finally
@@ -1091,11 +1091,11 @@ public class WXRTEditText
     }
   }
   
-  public final void bSK()
+  public final void bZZ()
   {
     try
     {
-      this.onT = false;
+      this.oRt = false;
       return;
     }
     finally
@@ -1105,11 +1105,11 @@ public class WXRTEditText
     }
   }
   
-  public final void bSL()
+  public final void caa()
   {
     try
     {
-      this.onS = true;
+      this.oRs = true;
       return;
     }
     finally
@@ -1119,11 +1119,11 @@ public class WXRTEditText
     }
   }
   
-  public final void bSM()
+  public final void cab()
   {
     try
     {
-      this.onS = false;
+      this.oRs = false;
       return;
     }
     finally
@@ -1145,7 +1145,7 @@ public class WXRTEditText
   {
     AppMethodBeat.i(30510);
     Object localObject = getParagraphsInSelection();
-    localObject = (m[])getText().getSpans(((e)localObject).asw, ((e)localObject).Mc, m.class);
+    localObject = (m[])getText().getSpans(((e)localObject).atr, ((e)localObject).MZ, m.class);
     AppMethodBeat.o(30510);
     return localObject;
   }
@@ -1154,20 +1154,20 @@ public class WXRTEditText
   {
     AppMethodBeat.i(30509);
     Object localObject = getParagraphsInSelection();
-    localObject = getText().subSequence(((e)localObject).asw, ((e)localObject).Mc).toString().trim();
+    localObject = getText().subSequence(((e)localObject).atr, ((e)localObject).MZ).toString().trim();
     AppMethodBeat.o(30509);
     return localObject;
   }
   
   public int getEditTextType()
   {
-    return this.onZ;
+    return this.oRz;
   }
   
   public ArrayList<n> getParagraphs()
   {
     AppMethodBeat.i(30507);
-    ArrayList localArrayList = getRTLayout().ooD;
+    ArrayList localArrayList = getRTLayout().oSd;
     AppMethodBeat.o(30507);
     return localArrayList;
   }
@@ -1178,20 +1178,20 @@ public class WXRTEditText
     AppMethodBeat.i(30506);
     Object localObject = getRTLayout();
     e locale = new e(this);
-    int j = ((j)localObject).getLineForOffset(locale.asw);
+    int j = ((j)localObject).getLineForOffset(locale.atr);
     int i;
     int m;
     if (locale.isEmpty())
     {
-      i = locale.Mc;
+      i = locale.MZ;
       m = ((j)localObject).getLineForOffset(i);
-      if ((((j)localObject).ooC != 0) && (j >= 0)) {
+      if ((((j)localObject).oSc != 0) && (j >= 0)) {
         break label119;
       }
       i = 0;
       label71:
       j = k;
-      if (((j)localObject).ooC != 0)
+      if (((j)localObject).oSc != 0)
       {
         if (m >= 0) {
           break label174;
@@ -1204,39 +1204,39 @@ public class WXRTEditText
       localObject = new e(i, j);
       AppMethodBeat.o(30506);
       return localObject;
-      i = locale.Mc - 1;
+      i = locale.MZ - 1;
       break;
       label119:
-      if (j < ((j)localObject).ooC)
+      if (j < ((j)localObject).oSc)
       {
-        i = ((n)((j)localObject).ooD.get(j)).asw;
+        i = ((n)((j)localObject).oSd.get(j)).atr;
         break label71;
       }
-      i = ((n)((j)localObject).ooD.get(((j)localObject).ooC - 1)).Mc - 1;
+      i = ((n)((j)localObject).oSd.get(((j)localObject).oSc - 1)).MZ - 1;
       break label71;
       label174:
-      if (m < ((j)localObject).ooC) {
-        j = ((n)((j)localObject).ooD.get(m)).Mc;
+      if (m < ((j)localObject).oSc) {
+        j = ((n)((j)localObject).oSd.get(m)).MZ;
       } else {
-        j = ((n)((j)localObject).ooD.get(((j)localObject).ooC - 1)).Mc - 1;
+        j = ((n)((j)localObject).oSd.get(((j)localObject).oSc - 1)).MZ - 1;
       }
     }
   }
   
   public int getPosInDataList()
   {
-    return this.oom;
+    return this.oRM;
   }
   
   public int getRecyclerItemPosition()
   {
     AppMethodBeat.i(30498);
-    if (this.oob.lm() == -1)
+    if (this.oRB.lu() == -1)
     {
       AppMethodBeat.o(30498);
       return 0;
     }
-    int i = this.oob.lm();
+    int i = this.oRB.lu();
     AppMethodBeat.o(30498);
     return i;
   }
@@ -1246,9 +1246,9 @@ public class WXRTEditText
     AppMethodBeat.i(30495);
     Object localObject = getText();
     e locale = getSelection();
-    if ((locale.asw >= 0) && (locale.Mc >= 0) && (locale.Mc <= ((Spannable)localObject).length()))
+    if ((locale.atr >= 0) && (locale.MZ >= 0) && (locale.MZ <= ((Spannable)localObject).length()))
     {
-      localObject = ((Spannable)localObject).subSequence(locale.asw, locale.Mc).toString();
+      localObject = ((Spannable)localObject).subSequence(locale.atr, locale.MZ).toString();
       AppMethodBeat.o(30495);
       return localObject;
     }
@@ -1273,15 +1273,15 @@ public class WXRTEditText
     int m;
     int k;
     int i;
-    if ((com.tencent.mm.plugin.wenote.model.nativenote.c.e.isEnabled()) && (this.onZ == 0))
+    if ((com.tencent.mm.plugin.wenote.model.nativenote.c.e.isEnabled()) && (this.oRz == 0))
     {
       localObject = getText();
       if (localObject != null)
       {
-        locald = com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().esU();
+        locald = com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().eIn();
         j = -1;
         m = 0;
-        switch (com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().Af(this.oom))
+        switch (com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().AX(this.oRM))
         {
         default: 
           k = 0;
@@ -1299,9 +1299,9 @@ public class WXRTEditText
         super.onDraw(paramCanvas);
         AppMethodBeat.o(30511);
         return;
-      } while (locald.startOffset == locald.opi);
+      } while (locald.startOffset == locald.oSI);
       j = locald.startOffset;
-      i = locald.opi;
+      i = locald.oSI;
       k = 0;
       break;
       j = 0;
@@ -1315,24 +1315,24 @@ public class WXRTEditText
       k = 0;
       break;
       j = 0;
-      i = locald.opi;
+      i = locald.oSI;
       k = 1;
       break;
       localObject = getLayout();
     } while (localObject == null);
-    if (this.oor == -1) {
-      this.oor = getPaddingLeft();
+    if (this.oRR == -1) {
+      this.oRR = getPaddingLeft();
     }
-    if (this.oos == -1) {
-      this.oos = getPaddingTop();
+    if (this.oRS == -1) {
+      this.oRS = getPaddingTop();
     }
-    if (this.oot == -1) {
-      this.oot = getPaddingBottom();
+    if (this.oRT == -1) {
+      this.oRT = getPaddingBottom();
     }
-    if (this.ooq == null) {
-      this.ooq = new Path();
+    if (this.oRQ == null) {
+      this.oRQ = new Path();
     }
-    this.ooq.reset();
+    this.oRQ.reset();
     label544:
     label832:
     for (;;)
@@ -1354,64 +1354,64 @@ public class WXRTEditText
           break;
         }
         i2 = ((Layout)localObject).getWidth();
-        f1 = ((Layout)localObject).getPrimaryHorizontal(j) + this.oor;
-        f2 = ((Layout)localObject).getLineTop(n) + this.oos;
-        f3 = ((Layout)localObject).getLineBottom(n) + this.oos;
-        f4 = ((Layout)localObject).getPrimaryHorizontal(i) + this.oor;
-        f5 = ((Layout)localObject).getLineTop(i1) + this.oos;
-        f6 = ((Layout)localObject).getLineBottom(i1) + this.oos;
+        f1 = ((Layout)localObject).getPrimaryHorizontal(j) + this.oRR;
+        f2 = ((Layout)localObject).getLineTop(n) + this.oRS;
+        f3 = ((Layout)localObject).getLineBottom(n) + this.oRS;
+        f4 = ((Layout)localObject).getPrimaryHorizontal(i) + this.oRR;
+        f5 = ((Layout)localObject).getLineTop(i1) + this.oRS;
+        f6 = ((Layout)localObject).getLineBottom(i1) + this.oRS;
         if ((k == 0) || (m == 0)) {
           break label544;
         }
-        this.ooq.addRect(this.oor, 0.0F, this.oor + i2, f6 + this.oot, Path.Direction.CW);
-        if (this.ooq.isEmpty()) {
+        this.oRQ.addRect(this.oRR, 0.0F, this.oRR + i2, f6 + this.oRT, Path.Direction.CW);
+        if (this.oRQ.isEmpty()) {
           break;
         }
-        if (this.oon == null)
+        if (this.oRN == null)
         {
-          this.oon = new Paint(1);
-          this.oon.setColor(1347529272);
+          this.oRN = new Paint(1);
+          this.oRN.setColor(1347529272);
         }
-        paramCanvas.drawPath(this.ooq, this.oon);
+        paramCanvas.drawPath(this.oRQ, this.oRN);
       }
       catch (Exception localException)
       {
-        ad.e("noteeditor.WXRTEditText", "tryDrawCover: ", new Object[] { localException });
+        ac.e("noteeditor.WXRTEditText", "tryDrawCover: ", new Object[] { localException });
       }
       break;
       if (n == i1)
       {
         if (k != 0) {
-          this.ooq.addRect(this.oor, 0.0F, f4, f6, Path.Direction.CW);
+          this.oRQ.addRect(this.oRR, 0.0F, f4, f6, Path.Direction.CW);
         } else if (m != 0) {
-          this.ooq.addRect(f1, f2, this.oor + i2, f6 + this.oot, Path.Direction.CW);
+          this.oRQ.addRect(f1, f2, this.oRR + i2, f6 + this.oRT, Path.Direction.CW);
         } else {
-          this.ooq.addRect(f1, f2, f4, f6, Path.Direction.CW);
+          this.oRQ.addRect(f1, f2, f4, f6, Path.Direction.CW);
         }
       }
       else
       {
         if (k != 0)
         {
-          this.ooq.addRect(this.oor, 0.0F, this.oor + i2, f3, Path.Direction.CW);
-          this.ooq.addRect(this.oor, f5, f4, f6, Path.Direction.CW);
+          this.oRQ.addRect(this.oRR, 0.0F, this.oRR + i2, f3, Path.Direction.CW);
+          this.oRQ.addRect(this.oRR, f5, f4, f6, Path.Direction.CW);
         }
         for (;;)
         {
           if (i1 - n <= 1) {
             break label832;
           }
-          this.ooq.addRect(this.oor, f3, this.oor + i2, f5, Path.Direction.CW);
+          this.oRQ.addRect(this.oRR, f3, this.oRR + i2, f5, Path.Direction.CW);
           break;
           if (m != 0)
           {
-            this.ooq.addRect(f1, f2, this.oor + i2, f3, Path.Direction.CW);
-            this.ooq.addRect(this.oor, f5, this.oor + i2, f6 + this.oot, Path.Direction.CW);
+            this.oRQ.addRect(f1, f2, this.oRR + i2, f3, Path.Direction.CW);
+            this.oRQ.addRect(this.oRR, f5, this.oRR + i2, f6 + this.oRT, Path.Direction.CW);
           }
           else
           {
-            this.ooq.addRect(f1, f2, this.oor + i2, f3, Path.Direction.CW);
-            this.ooq.addRect(this.oor, f5, f4, f6, Path.Direction.CW);
+            this.oRQ.addRect(f1, f2, this.oRR + i2, f3, Path.Direction.CW);
+            this.oRQ.addRect(this.oRR, f5, f4, f6, Path.Direction.CW);
           }
         }
       }
@@ -1421,14 +1421,14 @@ public class WXRTEditText
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     AppMethodBeat.i(30492);
-    this.oou = false;
-    this.onQ = -1;
-    this.onR = -1;
+    this.oRU = false;
+    this.oRq = -1;
+    this.oRr = -1;
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
-    if (this.BEd != null) {
-      this.BEd.a(this, paramBoolean, getRecyclerItemPosition());
+    if (this.CWk != null) {
+      this.CWk.a(this, paramBoolean, getRecyclerItemPosition());
     }
-    if ((paramBoolean) && (!this.oou)) {
+    if ((paramBoolean) && (!this.oRU)) {
       onSelectionChanged(getSelectionStart(), getSelectionEnd());
     }
     AppMethodBeat.o(30492);
@@ -1439,10 +1439,10 @@ public class WXRTEditText
     AppMethodBeat.i(30493);
     try
     {
-      if (this.onS) {
+      if (this.oRs) {
         return;
       }
-      this.oou = true;
+      this.oRU = true;
       if (paramInt1 < 0)
       {
         AppMethodBeat.o(30493);
@@ -1453,10 +1453,10 @@ public class WXRTEditText
     {
       AppMethodBeat.o(30493);
     }
-    if ((this.onQ != paramInt1) || (this.onR != paramInt2))
+    if ((this.oRq != paramInt1) || (this.oRr != paramInt2))
     {
-      this.onQ = paramInt1;
-      this.onR = paramInt2;
+      this.oRq = paramInt1;
+      this.oRr = paramInt2;
       super.onSelectionChanged(paramInt1, paramInt2);
       if (paramInt2 <= paramInt1) {
         break label247;
@@ -1465,31 +1465,31 @@ public class WXRTEditText
     label247:
     for (boolean bool = true;; bool = false)
     {
-      this.ood = bool;
-      if ((!this.ooe) && (!this.oof))
+      this.oRD = bool;
+      if ((!this.oRE) && (!this.oRF))
       {
-        this.oog = true;
+        this.oRG = true;
         u.a(this, new t[0]);
-        this.oog = false;
+        this.oRG = false;
         setParagraphsAreUp2Date(true);
       }
-      if (this.BEd != null)
+      if (this.CWk != null)
       {
-        this.ooh = true;
-        this.BEd.a(this, paramInt1, paramInt2);
-        this.ooh = false;
+        this.oRH = true;
+        this.CWk.a(this, paramInt1, paramInt2);
+        this.oRH = false;
       }
-      if ((com.tencent.mm.plugin.wenote.model.nativenote.c.e.isEnabled()) && (!this.oop) && (hasFocus()) && (this.oom >= 0))
+      if ((com.tencent.mm.plugin.wenote.model.nativenote.c.e.isEnabled()) && (!this.oRP) && (hasFocus()) && (this.oRM >= 0))
       {
-        fb(paramInt1, paramInt2);
-        if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().Af(this.oom) == 1)
+        fe(paramInt1, paramInt2);
+        if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().AX(this.oRM) == 1)
         {
-          com.tencent.mm.plugin.wenote.model.nativenote.c.e locale = com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT();
+          com.tencent.mm.plugin.wenote.model.nativenote.c.e locale = com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm();
           if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.mHasInit)
           {
             locale.f(true, 0L);
-            locale.bTf();
-            locale.bTd();
+            locale.cau();
+            locale.cas();
           }
         }
       }
@@ -1501,7 +1501,7 @@ public class WXRTEditText
   public void onSpanAdded(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30501);
-    this.ooc = true;
+    this.oRC = true;
     if (((paramObject instanceof com.tencent.mm.plugin.wenote.model.nativenote.spans.g)) && ((paramObject instanceof ParagraphStyle))) {
       setParagraphsAreUp2Date(false);
     }
@@ -1511,7 +1511,7 @@ public class WXRTEditText
   public void onSpanChanged(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(30503);
-    this.ooc = true;
+    this.oRC = true;
     if (((paramObject instanceof com.tencent.mm.plugin.wenote.model.nativenote.spans.g)) && ((paramObject instanceof ParagraphStyle))) {
       setParagraphsAreUp2Date(false);
     }
@@ -1521,7 +1521,7 @@ public class WXRTEditText
   public void onSpanRemoved(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30502);
-    this.ooc = true;
+    this.oRC = true;
     if (((paramObject instanceof com.tencent.mm.plugin.wenote.model.nativenote.spans.g)) && ((paramObject instanceof ParagraphStyle))) {
       setParagraphsAreUp2Date(false);
     }
@@ -1538,7 +1538,7 @@ public class WXRTEditText
     //   7: ldc_w 626
     //   10: if_icmpne +20 -> 30
     //   13: aload_0
-    //   14: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:BEd	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
+    //   14: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:CWk	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
     //   17: invokeinterface 629 1 0
     //   22: sipush 30499
     //   25: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1560,7 +1560,7 @@ public class WXRTEditText
     //   57: if_icmpne +20 -> 77
     //   60: aload_0
     //   61: iconst_0
-    //   62: putfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oow	I
+    //   62: putfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRW	I
     //   65: aload_0
     //   66: invokevirtual 183	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getText	()Landroid/text/Editable;
     //   69: astore 4
@@ -1571,23 +1571,23 @@ public class WXRTEditText
     //   78: ldc_w 639
     //   81: if_icmpne +43 -> 124
     //   84: aload_0
-    //   85: getfield 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:omD	Z
+    //   85: getfield 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oQd	Z
     //   88: ifeq +36 -> 124
     //   91: aload_0
-    //   92: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:BEd	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
+    //   92: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:CWk	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
     //   95: ifnull +24 -> 119
     //   98: aload_0
-    //   99: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:BEd	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
+    //   99: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:CWk	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
     //   102: iconst_0
     //   103: lconst_0
     //   104: invokeinterface 360 4 0
     //   109: aload_0
-    //   110: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:BEd	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
+    //   110: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:CWk	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
     //   113: iconst_0
     //   114: invokeinterface 363 2 0
     //   119: aload_0
     //   120: iconst_0
-    //   121: putfield 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:omD	Z
+    //   121: putfield 91	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oQd	Z
     //   124: sipush 30499
     //   127: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: iload_3
@@ -1598,7 +1598,7 @@ public class WXRTEditText
     //   139: aload_0
     //   140: invokevirtual 168	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:getContext	()Landroid/content/Context;
     //   143: pop
-    //   144: invokestatic 644	com/tencent/mm/plugin/wenote/model/nativenote/manager/f:bSp	()I
+    //   144: invokestatic 644	com/tencent/mm/plugin/wenote/model/nativenote/manager/f:bZE	()I
     //   147: istore_2
     //   148: iload_2
     //   149: iconst_2
@@ -1609,7 +1609,7 @@ public class WXRTEditText
     //   160: iconst_3
     //   161: if_icmpne -114 -> 47
     //   164: aload_0
-    //   165: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:BEd	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
+    //   165: getfield 252	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:CWk	Lcom/tencent/mm/plugin/wenote/model/nativenote/b/c;
     //   168: aload_0
     //   169: invokeinterface 646 2 0
     //   174: sipush 30499
@@ -1620,12 +1620,12 @@ public class WXRTEditText
     //   184: ldc_w 566
     //   187: ldc_w 648
     //   190: iconst_1
-    //   191: anewarray 197	java/lang/Object
+    //   191: anewarray 199	java/lang/Object
     //   194: dup
     //   195: iconst_0
     //   196: aload 4
     //   198: aastore
-    //   199: invokestatic 573	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   199: invokestatic 573	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   202: sipush 30499
     //   205: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   208: iconst_0
@@ -1634,24 +1634,24 @@ public class WXRTEditText
     //   212: ldc_w 566
     //   215: ldc_w 650
     //   218: iconst_1
-    //   219: anewarray 197	java/lang/Object
+    //   219: anewarray 199	java/lang/Object
     //   222: dup
     //   223: iconst_0
     //   224: aload_0
-    //   225: getfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oow	I
+    //   225: getfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRW	I
     //   228: invokestatic 656	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   231: aastore
-    //   232: invokestatic 573	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   232: invokestatic 573	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   235: aload_0
-    //   236: getfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oow	I
+    //   236: getfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRW	I
     //   239: iconst_3
     //   240: if_icmpge +45 -> 285
     //   243: aload_0
     //   244: aload_0
-    //   245: getfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oow	I
+    //   245: getfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRW	I
     //   248: iconst_1
     //   249: iadd
-    //   250: putfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oow	I
+    //   250: putfield 126	com/tencent/mm/plugin/wenote/model/nativenote/manager/WXRTEditText:oRW	I
     //   253: aload_0
     //   254: new 658	android/text/SpannableStringBuilder
     //   257: dup
@@ -1701,7 +1701,7 @@ public class WXRTEditText
       localObject1 = getText();
       if (localObject1 == null)
       {
-        bSP();
+        cae();
         AppMethodBeat.o(30512);
         return true;
       }
@@ -1709,7 +1709,7 @@ public class WXRTEditText
       i = getOffsetForPosition(paramMotionEvent.getX(), paramMotionEvent.getY());
       if ((j < 0) || (i < 0) || (i > j))
       {
-        bSP();
+        cae();
         AppMethodBeat.o(30512);
         return true;
       }
@@ -1729,42 +1729,42 @@ public class WXRTEditText
             Object localObject2 = getLayout();
             k = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k), j);
             localObject2 = (k[])getText().getSpans(k, k + 1, k.class);
-            if ((com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().isEditable()) && (j < b.bSG()) && (localObject2.length != 0))
+            if ((com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().isEditable()) && (j < b.bZV()) && (localObject2.length != 0))
             {
-              ad.i("noteeditor.WXRTEditText", "clicked todo");
-              this.BEd.esG();
+              ac.i("noteeditor.WXRTEditText", "clicked todo");
+              this.CWk.eHZ();
               localObject2[0].a(this, (Spannable)localObject1, paramMotionEvent, localObject2[0]);
             }
             else
             {
-              bSP();
-              this.BEg.a(1, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), paramMotionEvent.getX(), paramMotionEvent.getY(), i);
-              bSO();
-              this.cbR.av(500L, 0L);
+              cae();
+              this.CWn.a(1, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), paramMotionEvent.getX(), paramMotionEvent.getY(), i);
+              cad();
+              this.bYO.au(500L, 0L);
               continue;
-              bSP();
-              bSO();
+              cae();
+              cad();
             }
           }
-          bSO();
-        } while (this.BEg == null);
-        localObject1 = this.BEg;
+          cad();
+        } while (this.CWn == null);
+        localObject1 = this.CWn;
         float f1 = paramMotionEvent.getRawX();
         float f2 = paramMotionEvent.getRawY();
         float f3 = paramMotionEvent.getX();
         float f4 = paramMotionEvent.getY();
-        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).opa = f1;
-        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).opb = f2;
-        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).opc = f3;
-        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).opd = f4;
-        if (((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).nBH != 1) {
+        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oSA = f1;
+        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oSB = f2;
+        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oSC = f3;
+        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oSD = f4;
+        if (((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oeH != 1) {
           break;
         }
-        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).ope = i;
-        j = this.BEg.getType();
-        bSP();
+        ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oSE = i;
+        j = this.CWn.getType();
+        cae();
       } while (j != 2);
-      if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().isEditable()) {
+      if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().isEditable()) {
         if (hasFocus())
         {
           if ((getSelectionStart() != getSelectionEnd()) || (i != getSelectionStart())) {
@@ -1780,29 +1780,29 @@ public class WXRTEditText
       setIgnoreSelectChangeByMultiSelect(true);
       setSelection(i);
       setIgnoreSelectChangeByMultiSelect(false);
-      if (this.BEd != null)
+      if (this.CWk != null)
       {
-        this.BEd.e(true, 50L);
-        this.BEd.zZ(1);
+        this.CWk.e(true, 50L);
+        this.CWk.AR(1);
       }
-      fb(i, i);
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().H(bool2, bool1);
+      fe(i, i);
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().J(bool2, bool1);
       break;
-      ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).ope = 0;
+      ((com.tencent.mm.plugin.wenote.model.nativenote.c.b)localObject1).oSE = 0;
       break label391;
       requestFocus();
       bool1 = false;
       bool2 = false;
       continue;
-      paramMotionEvent = com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().esU();
+      paramMotionEvent = com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().eIn();
       bool1 = bool2;
-      if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT().bTe())
+      if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm().cat())
       {
         bool1 = bool2;
-        if (paramMotionEvent.bSV() == 1)
+        if (paramMotionEvent.cak() == 1)
         {
           bool1 = bool2;
-          if (paramMotionEvent.cWU == this.oom)
+          if (paramMotionEvent.cUq == this.oRM)
           {
             bool1 = bool2;
             if (paramMotionEvent.startOffset == i) {
@@ -1811,21 +1811,21 @@ public class WXRTEditText
           }
         }
       }
-      fb(i, i);
-      paramMotionEvent = com.tencent.mm.plugin.wenote.model.nativenote.c.e.esT();
+      fe(i, i);
+      paramMotionEvent = com.tencent.mm.plugin.wenote.model.nativenote.c.e.eIm();
       if (!com.tencent.mm.plugin.wenote.model.nativenote.c.e.mHasInit) {
         break;
       }
-      paramMotionEvent.bTf();
-      paramMotionEvent.bTd();
+      paramMotionEvent.cau();
+      paramMotionEvent.cas();
       paramMotionEvent.f(true, 50L);
-      paramMotionEvent.jx(true);
-      paramMotionEvent.jw(bool1);
+      paramMotionEvent.ka(true);
+      paramMotionEvent.jZ(bool1);
       break;
-      if ((paramMotionEvent.getAction() == 1) && (this.BEd != null))
+      if ((paramMotionEvent.getAction() == 1) && (this.CWk != null))
       {
-        this.BEd.e(true, 300L);
-        this.BEd.zZ(1);
+        this.CWk.e(true, 300L);
+        this.CWk.AR(1);
       }
       bool1 = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(30512);
@@ -1838,12 +1838,12 @@ public class WXRTEditText
   
   public void setEditTextType(int paramInt)
   {
-    this.onZ = paramInt;
+    this.oRz = paramInt;
   }
   
   public void setIgnoreSelectChangeByMultiSelect(boolean paramBoolean)
   {
-    this.oop = paramBoolean;
+    this.oRP = paramBoolean;
   }
   
   public void setMaxHeight(int paramInt)
@@ -1855,19 +1855,19 @@ public class WXRTEditText
   
   public void setPosInDataList(int paramInt)
   {
-    this.oom = paramInt;
+    this.oRM = paramInt;
   }
   
   public void setRichTextEditing(String paramString)
   {
     AppMethodBeat.i(30486);
-    bSJ();
-    if (!bt.isNullOrNil(paramString)) {
-      setSpannableText(com.tencent.mm.plugin.wenote.model.nativenote.a.a.Tc(paramString));
+    bZY();
+    if (!bs.isNullOrNil(paramString)) {
+      setSpannableText(com.tencent.mm.plugin.wenote.model.nativenote.a.a.Xo(paramString));
     }
     for (;;)
     {
-      bSK();
+      bZZ();
       AppMethodBeat.o(30486);
       return;
       setText("");
@@ -1877,22 +1877,22 @@ public class WXRTEditText
   public void setSpannableText(Spanned paramSpanned)
   {
     AppMethodBeat.i(30487);
-    bSJ();
-    bSL();
+    bZY();
+    caa();
     super.setText(paramSpanned, TextView.BufferType.EDITABLE);
-    bSM();
-    bSN();
+    cab();
+    cac();
     u.a(this, new t[0]);
-    bSK();
+    bZZ();
     AppMethodBeat.o(30487);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(30488);
-    bSJ();
+    bZY();
     super.setText(paramString);
-    bSK();
+    bZZ();
     AppMethodBeat.o(30488);
   }
   
@@ -1905,7 +1905,7 @@ public class WXRTEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText
  * JD-Core Version:    0.7.0.1
  */

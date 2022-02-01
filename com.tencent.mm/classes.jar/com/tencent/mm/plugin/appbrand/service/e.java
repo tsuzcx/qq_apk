@@ -1,11 +1,14 @@
 package com.tencent.mm.plugin.appbrand.service;
 
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.storage.ap;
 
 public abstract interface e
   extends a
 {
-  public abstract String get(String paramString1, String paramString2);
+  public abstract boolean btZ();
+  
+  public abstract void c(ap paramap);
 }
 
 

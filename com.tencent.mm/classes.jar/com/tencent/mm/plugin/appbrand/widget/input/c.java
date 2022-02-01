@@ -17,51 +17,51 @@ public abstract class c<Input extends EditText,  extends ab>
   extends com.tencent.mm.ui.widget.g
   implements aa
 {
-  final String KDA;
-  public final View.OnFocusChangeListener KDB = new View.OnFocusChangeListener()
+  public final int mCo;
+  public af mCp;
+  public final WeakReference<com.tencent.mm.plugin.appbrand.page.aa> mCq;
+  public ae mCr;
+  final String mCs;
+  public final View.OnFocusChangeListener mCt = new View.OnFocusChangeListener()
   {
     public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
     {
       AppMethodBeat.i(136308);
-      c.this.hA(paramAnonymousBoolean);
+      c.this.hY(paramAnonymousBoolean);
       if (paramAnonymousBoolean)
       {
-        o.a((com.tencent.mm.plugin.appbrand.page.aa)c.this.mar.get(), (ab)c.this.bsJ());
-        ((ab)c.this.bsJ()).setInputId(c.this.mao);
-        o.b((com.tencent.mm.plugin.appbrand.page.aa)c.this.mar.get(), c.this);
+        o.a((com.tencent.mm.plugin.appbrand.page.aa)c.this.mCq.get(), (ab)c.this.bzJ());
+        ((ab)c.this.bzJ()).setInputId(c.this.mCo);
+        o.b((com.tencent.mm.plugin.appbrand.page.aa)c.this.mCq.get(), c.this);
       }
       AppMethodBeat.o(136308);
     }
   };
-  private final com.tencent.mm.ui.tools.b.c.a KDC = new p.a()
+  private final com.tencent.mm.ui.tools.b.c.a mCu = new p.a()
   {
-    public final void ck(String paramAnonymousString)
+    public final void ca(String paramAnonymousString)
     {
       AppMethodBeat.i(168762);
-      if (c.this.bsJ() != null) {
-        c.a(c.this, c.this.bsJ().getEditableText());
+      if (c.this.bzJ() != null) {
+        c.a(c.this, c.this.bzJ().getEditableText());
       }
       AppMethodBeat.o(168762);
     }
   };
-  public af KDy;
-  public ae KDz;
-  public final int mao;
-  public final WeakReference<com.tencent.mm.plugin.appbrand.page.aa> mar;
   
   c(String paramString, com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt)
   {
-    this.KDA = paramString;
-    this.mar = new WeakReference(paramaa);
-    this.mao = paramInt;
+    this.mCs = paramString;
+    this.mCq = new WeakReference(paramaa);
+    this.mCo = paramInt;
   }
   
   private void b(Editable paramEditable)
   {
     af localaf;
-    if (this.KDy != null)
+    if (this.mCp != null)
     {
-      localaf = this.KDy;
+      localaf = this.mCp;
       if (paramEditable != null) {
         break label34;
       }
@@ -69,19 +69,19 @@ public abstract class c<Input extends EditText,  extends ab>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.mdM);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.mFL);
       return;
     }
   }
   
-  public abstract boolean NK(String paramString);
+  public abstract boolean RT(String paramString);
   
   final void a(Editable paramEditable)
   {
     af localaf;
-    if (this.KDy != null)
+    if (this.mCp != null)
     {
-      localaf = this.KDy;
+      localaf = this.mCp;
       if (paramEditable != null) {
         break label34;
       }
@@ -89,19 +89,19 @@ public abstract class c<Input extends EditText,  extends ab>
     label34:
     for (String str = "";; str = paramEditable.toString())
     {
-      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.mdK);
+      localaf.a(str, Selection.getSelectionEnd(paramEditable), af.a.mFJ);
       return;
     }
   }
   
   public final void a(String paramString, Integer paramInteger)
   {
-    NK(paramString);
+    RT(paramString);
     if (paramInteger == null) {}
     for (int i = -1;; i = paramInteger.intValue())
     {
       paramString = Integer.valueOf(i);
-      ja(paramString.intValue(), paramString.intValue());
+      et(paramString.intValue(), paramString.intValue());
       return;
     }
   }
@@ -113,18 +113,18 @@ public abstract class c<Input extends EditText,  extends ab>
     for (;;)
     {
       return false;
-      if (paramh.mgI == null) {
-        paramh.mgI = Integer.valueOf(140);
+      if (paramh.mIJ == null) {
+        paramh.mIJ = Integer.valueOf(140);
       }
-      while (bsJ() != null)
+      while (bzJ() != null)
       {
-        paramh = p.a(bsJ()).aaj(paramh.mgI.intValue());
-        paramh.HuM = false;
-        paramh.mcf = f.a.Hrl;
-        paramh.a(this.KDC);
+        paramh = p.a(bzJ()).acw(paramh.mIJ.intValue());
+        paramh.IVj = false;
+        paramh.mEd = f.a.IRI;
+        paramh.a(this.mCu);
         return true;
-        if (paramh.mgI.intValue() <= 0) {
-          paramh.mgI = Integer.valueOf(2147483647);
+        if (paramh.mIJ.intValue() <= 0) {
+          paramh.mIJ = Integer.valueOf(2147483647);
         }
       }
     }
@@ -137,92 +137,92 @@ public abstract class c<Input extends EditText,  extends ab>
   
   protected abstract h b(h paramh);
   
-  public abstract Input bsJ();
-  
-  public abstract Rect bsK();
-  
-  public final boolean bsL()
+  public final Editable bxZ()
   {
-    return bsN();
+    if (bzJ() == null) {
+      return null;
+    }
+    return bzJ().getEditableText();
   }
   
-  public final Input bsM()
+  public abstract Input bzJ();
+  
+  public abstract Rect bzK();
+  
+  public final boolean bzL()
   {
-    return bsJ();
+    return bzN();
   }
   
-  public final boolean bsN()
+  public final Input bzM()
   {
-    EditText localEditText = bsJ();
+    return bzJ();
+  }
+  
+  public final boolean bzN()
+  {
+    EditText localEditText = bzJ();
     if (localEditText == null) {
       return false;
     }
-    ((ab)localEditText).b(this.KDB);
+    ((ab)localEditText).b(this.mCt);
     localEditText.removeTextChangedListener(this);
     ((ab)localEditText).destroy();
-    Object localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.mar.get();
+    Object localObject = (com.tencent.mm.plugin.appbrand.page.aa)this.mCq.get();
     if (localObject == null) {
       return false;
     }
-    localObject = (g)((com.tencent.mm.plugin.appbrand.page.aa)localObject).bjD();
+    localObject = (g)((com.tencent.mm.plugin.appbrand.page.aa)localObject).bqu();
     if (localObject == null) {
       return false;
     }
-    ((g)localObject).cY(localEditText);
+    ((g)localObject).da(localEditText);
     return true;
   }
   
-  public final Editable fQZ()
+  protected final void et(int paramInt1, int paramInt2)
   {
-    if (bsJ() == null) {
-      return null;
-    }
-    return bsJ().getEditableText();
+    b.a(bzJ(), paramInt1, paramInt2);
   }
   
   public final int getInputId()
   {
-    return this.mao;
+    return this.mCo;
   }
   
-  protected abstract boolean hA(boolean paramBoolean);
-  
-  protected final void ja(int paramInt1, int paramInt2)
-  {
-    b.a(bsJ(), paramInt1, paramInt2);
-  }
+  protected abstract boolean hY(boolean paramBoolean);
   
   public final boolean u(com.tencent.mm.plugin.appbrand.page.aa paramaa)
   {
-    return (paramaa != null) && (paramaa == this.mar.get());
+    return (paramaa != null) && (paramaa == this.mCq.get());
   }
   
-  public final void uQ(int paramInt)
+  public final void vH(int paramInt)
   {
-    if (this.KDz != null) {
-      this.KDz.uS(paramInt);
+    if (this.mCr != null) {
+      this.mCr.vJ(paramInt);
     }
   }
   
   public static enum a
   {
-    private static final android.support.v4.e.b<a> KDE;
+    private static final android.support.v4.e.b<a> mCN;
     
     static
     {
       AppMethodBeat.i(177116);
-      KDF = new a[0];
-      KDE = new android.support.v4.e.b();
+      mCO = new a[0];
+      mCN = new android.support.v4.e.b();
       AppMethodBeat.o(177116);
     }
     
     public static c a(String paramString, com.tencent.mm.plugin.appbrand.page.aa paramaa, e parame)
     {
       AppMethodBeat.i(136312);
-      Iterator localIterator = KDE.iterator();
+      Iterator localIterator = mCN.iterator();
       while (localIterator.hasNext())
       {
-        c localc = ((a)localIterator.next()).bsP();
+        c localc = ((a)localIterator.next()).bzP();
         if (localc != null)
         {
           AppMethodBeat.o(136312);
@@ -241,13 +241,13 @@ public abstract class c<Input extends EditText,  extends ab>
     
     public static abstract interface a
     {
-      public abstract c bsP();
+      public abstract c bzP();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

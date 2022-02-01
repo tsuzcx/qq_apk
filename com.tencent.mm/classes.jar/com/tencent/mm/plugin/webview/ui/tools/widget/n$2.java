@@ -5,7 +5,7 @@ import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class n$2
   implements View.OnLongClickListener
 {
@@ -14,7 +14,7 @@ final class n$2
   public final boolean onLongClick(View paramView)
   {
     AppMethodBeat.i(82692);
-    n.g(this.Bvo);
+    n.g(this.CNx);
     AppMethodBeat.o(82692);
     return false;
   }

@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ipcall.model.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends com.tencent.mm.plugin.ipcall.model.b.a
 {
-  public final void Ca() {}
+  public final void BE() {}
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(25512);
     if (paramc != null)
     {
-      ad.d("MicroMsg.IPCallCancelService", "call cancel scene, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(paramc.roomId), Integer.valueOf(paramc.sBa) });
-      paramc = new com.tencent.mm.plugin.ipcall.model.e.a(paramc.roomId, paramc.sAY, paramc.dxK, paramc.sBz, paramc.sBa, paramc.sAZ);
-      az.aeS().a(paramc, 0);
+      ac.d("MicroMsg.IPCallCancelService", "call cancel scene, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(paramc.roomId), Integer.valueOf(paramc.tII) });
+      paramc = new com.tencent.mm.plugin.ipcall.model.e.a(paramc.roomId, paramc.tIG, paramc.dvw, paramc.tJh, paramc.tII, paramc.tIH);
+      az.agi().a(paramc, 0);
     }
     AppMethodBeat.o(25512);
   }
   
-  public final int[] cHx()
+  public final int[] cUI()
   {
     return new int[] { 843 };
   }

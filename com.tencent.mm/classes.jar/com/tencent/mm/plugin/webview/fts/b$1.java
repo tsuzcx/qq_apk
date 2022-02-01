@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
@@ -22,12 +22,12 @@ final class b$1
   public final void b(k paramk)
   {
     AppMethodBeat.i(77886);
-    final b.f localf = (b.f)paramk.rma;
-    ad.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener ret %d, webViewId %s", new Object[] { Integer.valueOf(paramk.bRZ), Integer.valueOf(localf.AOQ) });
+    final b.f localf = (b.f)paramk.suU;
+    ac.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener ret %d, webViewId %s", new Object[] { Integer.valueOf(paramk.bPH), Integer.valueOf(localf.Chg) });
     final JSONObject localJSONObject1;
     JSONArray localJSONArray1;
     JSONArray localJSONArray2;
-    if (paramk.bRZ == 0)
+    if (paramk.bPH == 0)
     {
       localJSONObject1 = new JSONObject();
       try
@@ -35,7 +35,7 @@ final class b$1
         localJSONObject1.put("ret", 0);
         localJSONArray1 = new JSONArray();
         localJSONArray2 = new JSONArray();
-        paramk = paramk.rpQ.iterator();
+        paramk = paramk.syK.iterator();
         while (paramk.hasNext())
         {
           m localm = (m)paramk.next();
@@ -45,33 +45,33 @@ final class b$1
             localJSONObject2.put("timeStamp", localm.timestamp);
             localJSONArray2.put(localJSONObject2);
             continue;
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(77885);
-                if (localf.AOQ != 0)
+                if (localf.Chg != 0)
                 {
-                  ad.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener callback， id %d", new Object[] { Integer.valueOf(localf.AOQ) });
-                  com.tencent.mm.plugin.webview.ui.tools.jsapi.f localf = g.TO(localf.AOQ);
+                  ac.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener callback， id %d", new Object[] { Integer.valueOf(localf.Chg) });
+                  com.tencent.mm.plugin.webview.ui.tools.jsapi.f localf = g.VW(localf.Chg);
                   String str = localJSONObject1.toString();
                   Bundle localBundle = new Bundle();
                   localBundle.putString("data", str);
                   try
                   {
-                    if (localf.ASw != null)
+                    if (localf.CkJ != null)
                     {
-                      localf.ASw.f(143, localBundle);
+                      localf.CkJ.g(143, localBundle);
                       AppMethodBeat.o(77885);
                       return;
                     }
-                    ad.i("MicroMsg.MsgHandler", "callbacker is null");
+                    ac.i("MicroMsg.MsgHandler", "callbacker is null");
                     AppMethodBeat.o(77885);
                     return;
                   }
                   catch (RemoteException localRemoteException)
                   {
-                    ad.w("MicroMsg.MsgHandler", "onGetSearchHistory exception" + localRemoteException.getMessage());
+                    ac.w("MicroMsg.MsgHandler", "onGetSearchHistory exception" + localRemoteException.getMessage());
                   }
                 }
                 AppMethodBeat.o(77885);

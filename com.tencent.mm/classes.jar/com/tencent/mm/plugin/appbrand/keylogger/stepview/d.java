@@ -10,37 +10,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends LinearLayout
 {
-  private ImageView jFL;
-  private TextView kFd;
+  private ImageView kgj;
+  private TextView lgw;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(194895);
+    AppMethodBeat.i(201050);
     LayoutInflater.from(paramContext).inflate(2131496160, this);
-    this.kFd = ((TextView)findViewById(2131298996));
-    this.jFL = ((ImageView)findViewById(2131300874));
-    AppMethodBeat.o(194895);
+    this.lgw = ((TextView)findViewById(2131298996));
+    this.kgj = ((ImageView)findViewById(2131300874));
+    AppMethodBeat.o(201050);
   }
   
   public final void setStep(c paramc)
   {
-    AppMethodBeat.i(194896);
+    AppMethodBeat.i(201051);
     if (paramc == null)
     {
-      this.kFd.setText(null);
-      this.jFL.setImageDrawable(null);
-      AppMethodBeat.o(194896);
+      this.lgw.setText(null);
+      this.kgj.setImageDrawable(null);
+      AppMethodBeat.o(201051);
       return;
     }
-    this.kFd.setText(paramc.kFf);
-    this.jFL.setImageResource(a.sF(paramc.mState));
-    AppMethodBeat.o(194896);
+    this.lgw.setText(paramc.lgy);
+    this.kgj.setImageResource(a.tw(paramc.mState));
+    AppMethodBeat.o(201051);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.d
  * JD-Core Version:    0.7.0.1
  */

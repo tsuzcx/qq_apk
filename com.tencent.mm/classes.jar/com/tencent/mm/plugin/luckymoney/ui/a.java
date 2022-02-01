@@ -12,21 +12,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends e
 {
-  a tjq;
+  a urJ;
   
   public a(Context paramContext)
   {
     super(paramContext, 2131820861);
     AppMethodBeat.i(65412);
-    gl();
+    gt();
     AppMethodBeat.o(65412);
   }
   
   public final void onBackPressed()
   {
     AppMethodBeat.i(65414);
-    if (this.tjq != null) {
-      this.tjq.cMh();
+    if (this.urJ != null) {
+      this.urJ.cZN();
     }
     AppMethodBeat.o(65414);
   }
@@ -45,7 +45,7 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void cMh();
+    public abstract void cZN();
   }
 }
 

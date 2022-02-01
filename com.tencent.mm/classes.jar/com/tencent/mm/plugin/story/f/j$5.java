@@ -5,24 +5,24 @@ import com.tencent.mm.plugin.story.i.e;
 import com.tencent.mm.storagebase.h.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
 final class j$5
   implements h.b
 {
-  public static final 5 yfm;
+  public static final 5 zsm;
   
   static
   {
     AppMethodBeat.i(118677);
-    yfm = new 5();
+    zsm = new 5();
     AppMethodBeat.o(118677);
   }
   
   public final String[] getSQLs()
   {
     AppMethodBeat.i(118676);
-    Object localObject = e.yoQ;
-    localObject = e.dKx();
+    Object localObject = e.zCp;
+    localObject = e.dYY();
     AppMethodBeat.o(118676);
     return localObject;
   }

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.d.i.a;
-import com.tencent.mm.g.a.dh;
-import com.tencent.mm.g.a.dh.a;
-import com.tencent.mm.g.a.hh;
+import com.tencent.mm.g.a.di;
+import com.tencent.mm.g.a.di.a;
+import com.tencent.mm.g.a.hn;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.plugin.emoji.e.j;
@@ -17,13 +17,13 @@ import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
 import com.tencent.mm.protocal.protobuf.GetEmotionListResponse;
 import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
 import com.tencent.mm.protocal.protobuf.PackThumbExt;
-import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.r;
+import com.tencent.mm.storage.emotion.s;
 import com.tencent.mm.ui.MMActivity;
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -36,40 +36,40 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class h
-  extends com.tencent.mm.w.a.a.a
-  implements com.tencent.mm.al.g
+  extends com.tencent.mm.flutter.a.a.a
+  implements com.tencent.mm.ak.g
 {
-  private byte[] oxi;
-  private byte[] oxj;
-  private b oxk;
-  private b oxl;
-  private a oxm;
-  private c oxn;
-  public Map<String, Boolean> oxo;
-  private com.tencent.mm.sdk.b.c<dh> oxp;
-  private com.tencent.mm.sdk.b.c<hh> oxq;
+  private byte[] paI;
+  private byte[] paJ;
+  private b paK;
+  private b paL;
+  private a paM;
+  private c paN;
+  public Map<String, Boolean> paO;
+  private com.tencent.mm.sdk.b.c<di> paP;
+  private com.tencent.mm.sdk.b.c<hn> paQ;
   
   public h()
   {
     AppMethodBeat.i(108599);
-    this.oxo = new HashMap();
-    this.oxp = new com.tencent.mm.sdk.b.c()
+    this.paO = new HashMap();
+    this.paP = new com.tencent.mm.sdk.b.c()
     {
-      private boolean a(dh paramAnonymousdh)
+      private boolean a(di paramAnonymousdi)
       {
         AppMethodBeat.i(108596);
-        ad.i("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "EmotionStateChange %s %d %d", new Object[] { paramAnonymousdh.dfs.dft, Integer.valueOf(paramAnonymousdh.dfs.progress), Integer.valueOf(paramAnonymousdh.dfs.status) });
-        com.tencent.mm.w.a.b.b localb;
+        ac.i("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "EmotionStateChange %s %d %d", new Object[] { paramAnonymousdi.dcN.dcO, Integer.valueOf(paramAnonymousdi.dcN.progress), Integer.valueOf(paramAnonymousdi.dcN.status) });
+        com.tencent.mm.flutter.a.b.b localb;
         String str;
         int i;
         int j;
         JSONObject localJSONObject;
-        if (h.this.oxo.containsKey(paramAnonymousdh.dfs.dft))
+        if (h.this.paO.containsKey(paramAnonymousdi.dcN.dcO))
         {
-          localb = (com.tencent.mm.w.a.b.b)((com.tencent.mm.plugin.flutter.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.flutter.a.a.class)).aN(com.tencent.mm.w.a.b.b.class);
-          str = paramAnonymousdh.dfs.dft;
-          i = paramAnonymousdh.dfs.status;
-          j = paramAnonymousdh.dfs.progress;
+          localb = (com.tencent.mm.flutter.a.b.b)((com.tencent.mm.plugin.flutter.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.flutter.a.a.class)).aO(com.tencent.mm.flutter.a.b.b.class);
+          str = paramAnonymousdi.dcN.dcO;
+          i = paramAnonymousdi.dcN.status;
+          j = paramAnonymousdi.dcN.progress;
           localJSONObject = new JSONObject();
         }
         try
@@ -78,9 +78,9 @@ public class h
           localJSONObject.put("status", i);
           localJSONObject.put("progress", j);
           label156:
-          localb.f("onEmoticonDownloadCallback", localJSONObject.toString());
-          if (paramAnonymousdh.dfs.progress >= 100) {
-            h.this.oxo.remove(paramAnonymousdh.dfs.dft);
+          localb.e("onEmoticonDownloadCallback", localJSONObject.toString());
+          if (paramAnonymousdi.dcN.progress >= 100) {
+            h.this.paO.remove(paramAnonymousdi.dcN.dcO);
           }
           AppMethodBeat.o(108596);
           return false;
@@ -91,7 +91,7 @@ public class h
         }
       }
     };
-    this.oxq = new com.tencent.mm.sdk.b.c() {};
+    this.paQ = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(108599);
   }
   
@@ -106,7 +106,7 @@ public class h
         AppMethodBeat.o(108627);
         return paramLinkedList;
       }
-      if ((localObject1 instanceof cmf))
+      if ((localObject1 instanceof crm))
       {
         localObject1 = new LinkedList();
         paramLinkedList = paramLinkedList.iterator();
@@ -116,7 +116,7 @@ public class h
         AppMethodBeat.o(108627);
         return localObject1;
       }
-      if ((localObject1 instanceof com.tencent.mm.bx.a))
+      if ((localObject1 instanceof com.tencent.mm.bw.a))
       {
         localObject1 = new LinkedList();
         paramLinkedList = paramLinkedList.iterator();
@@ -317,8 +317,8 @@ public class h
     {
       paramJSONObject.put("finish", 1);
       label13:
-      paramd.bUU().result = paramJSONObject.toString();
-      paramd.bUU().callback.run();
+      paramd.cch().result = paramJSONObject.toString();
+      paramd.cch().callback.run();
       AppMethodBeat.o(108620);
       return;
     }
@@ -414,7 +414,7 @@ public class h
         {
           localHashMap.put(localObject1.getName(), localObject2);
         }
-        else if ((localObject2 instanceof com.tencent.mm.bx.a))
+        else if ((localObject2 instanceof com.tencent.mm.bw.a))
         {
           localObject2 = b(localObject2, localObject1.getType());
           localHashMap.put(localObject1.getName(), localObject2);
@@ -442,66 +442,66 @@ public class h
   {
     AppMethodBeat.i(108621);
     if (paramJSONObject != null) {}
-    for (paramd.bUU().result = paramJSONObject.toString();; paramd.bUU().result = null)
+    for (paramd.cch().result = paramJSONObject.toString();; paramd.cch().result = null)
     {
-      paramd.bUU().callback.run();
+      paramd.cch().callback.run();
       AppMethodBeat.o(108621);
       return;
     }
   }
   
-  public final void a(int paramInt, com.tencent.mm.w.c paramc)
+  public final void a(int paramInt, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108616);
-    ((com.tencent.mm.plugin.websearch.api.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.i.class)).a(aj.getContext(), new h.1(this, paramc, paramInt));
+    ((com.tencent.mm.plugin.websearch.api.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.websearch.api.h.class)).a(ai.getContext(), new h.1(this, paramc, paramInt));
     paramc.result = "{}";
     paramc.callback.run();
     AppMethodBeat.o(108616);
   }
   
-  public final void a(String paramString, int paramInt, com.tencent.mm.w.c paramc)
+  public final void a(String paramString, int paramInt, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108607);
-    if (this.oxm != null)
+    if (this.paM != null)
     {
-      com.tencent.mm.kernel.g.aeS().b(412, this);
-      com.tencent.mm.kernel.g.aeS().a(this.oxm);
+      com.tencent.mm.kernel.g.agi().b(412, this);
+      com.tencent.mm.kernel.g.agi().a(this.paM);
     }
-    this.oxm = new a(paramString, paramInt);
-    this.oxm.oxv = paramc;
-    com.tencent.mm.kernel.g.aeS().a(412, this);
-    com.tencent.mm.kernel.g.aeS().a(this.oxm, 0);
+    this.paM = new a(paramString, paramInt);
+    this.paM.paV = paramc;
+    com.tencent.mm.kernel.g.agi().a(412, this);
+    com.tencent.mm.kernel.g.agi().a(this.paM, 0);
     AppMethodBeat.o(108607);
   }
   
-  public final void a(String paramString, com.tencent.mm.w.c paramc)
+  public final void a(String paramString, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108606);
-    if (this.oxn != null)
+    if (this.paN != null)
     {
-      com.tencent.mm.kernel.g.aeS().b(822, this);
-      com.tencent.mm.kernel.g.aeS().a(this.oxn);
+      com.tencent.mm.kernel.g.agi().b(822, this);
+      com.tencent.mm.kernel.g.agi().a(this.paN);
     }
-    this.oxn = new c(paramString, o.oyW);
-    this.oxn.oxv = paramc;
-    com.tencent.mm.kernel.g.aeS().a(822, this);
-    com.tencent.mm.kernel.g.aeS().a(this.oxn, 0);
+    this.paN = new c(paramString, o.pcw);
+    this.paN.paV = paramc;
+    com.tencent.mm.kernel.g.agi().a(822, this);
+    com.tencent.mm.kernel.g.agi().a(this.paN, 0);
     AppMethodBeat.o(108606);
   }
   
-  public final void a(String paramString1, String paramString2, com.tencent.mm.w.c paramc)
+  public final void a(String paramString1, String paramString2, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108611);
-    this.oxp.alive();
-    this.oxo.put(paramString1, Boolean.TRUE);
+    this.paP.alive();
+    this.paO.put(paramString1, Boolean.TRUE);
     paramString1 = new com.tencent.mm.plugin.emoji.f.g(paramString1, null, paramString2);
     long l = System.currentTimeMillis();
     paramString2 = new StringBuilder();
-    com.tencent.mm.kernel.g.afz();
-    paramString2 = com.tencent.mm.ao.c.a("downzip", l, com.tencent.mm.kernel.a.getUin(), "emoji");
-    paramString1.oyB = true;
-    paramString1.hhN = paramString2;
-    com.tencent.mm.kernel.g.aeS().a(paramString1, 0);
+    com.tencent.mm.kernel.g.agP();
+    paramString2 = com.tencent.mm.an.c.a("downzip", l, com.tencent.mm.kernel.a.getUin(), "emoji");
+    paramString1.pcb = true;
+    paramString1.hIq = paramString2;
+    com.tencent.mm.kernel.g.agi().a(paramString1, 0);
     paramc.result = paramString2;
     paramc.callback.run();
     AppMethodBeat.o(108611);
@@ -511,31 +511,31 @@ public class h
   {
     AppMethodBeat.i(108608);
     paramString2 = new com.tencent.mm.plugin.emoji.f.g(paramString1, paramString2, paramString3);
-    if (com.tencent.mm.plugin.emoji.h.a.Up(paramString1))
+    if (com.tencent.mm.plugin.emoji.h.a.YB(paramString1))
     {
-      ad.d("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "stop tuzi downloading");
-      com.tencent.mm.plugin.emoji.f.a.bVg().bVi();
+      ac.d("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "stop tuzi downloading");
+      com.tencent.mm.plugin.emoji.f.a.cct().ccv();
     }
     for (;;)
     {
       if (!TextUtils.isEmpty(paramString4))
       {
-        com.tencent.mm.ao.f.awL().xL(paramString4);
-        ad.d("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "[onClickClose] cancel RecvTask. CdnClientId:%s", new Object[] { paramString4 });
+        com.tencent.mm.an.f.aDD().BR(paramString4);
+        ac.d("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "[onClickClose] cancel RecvTask. CdnClientId:%s", new Object[] { paramString4 });
       }
-      k.bVe().g(paramString1, paramInt, 0, paramString4);
+      k.ccr().h(paramString1, paramInt, 0, paramString4);
       paramString1 = new com.tencent.mm.plugin.emoji.f.q(paramString1, 2);
-      com.tencent.mm.kernel.g.afA().gcy.a(paramString1, 0);
+      com.tencent.mm.kernel.g.agQ().ghe.a(paramString1, 0);
       AppMethodBeat.o(108608);
       return;
-      com.tencent.mm.kernel.g.afA().gcy.a(paramString2);
-      if (this.oxo.containsKey(paramString1)) {
-        this.oxo.remove(paramString1);
+      com.tencent.mm.kernel.g.agQ().ghe.a(paramString2);
+      if (this.paO.containsKey(paramString1)) {
+        this.paO.remove(paramString1);
       }
     }
   }
   
-  public final void a(final String paramString, final Map<String, Object> paramMap, final com.tencent.mm.w.c paramc)
+  public final void a(final String paramString, final Map<String, Object> paramMap, final com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108618);
     Object localObject = (PackThumbExt)a(paramMap, PackThumbExt.class);
@@ -550,53 +550,53 @@ public class h
     paramMap.field_activityid = ((PackThumbExt)localObject).ActivityID;
     paramMap.field_groupId = paramString;
     paramMap.field_catalog = 84;
-    paramMap.field_reserved4 |= EmojiInfo.LCl;
-    paramString = new com.tencent.mm.vfs.e(aj.getContext().getCacheDir(), ((PackThumbExt)localObject).Md5);
+    paramMap.field_reserved4 |= EmojiInfo.Kgm;
+    paramString = new com.tencent.mm.vfs.e(ai.getContext().getCacheDir(), ((PackThumbExt)localObject).Md5);
     if (!paramString.exists())
     {
-      if (paramMap.fZM())
+      if (paramMap.fdp())
       {
         paramMap = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().s(paramMap);
-        com.tencent.mm.vfs.i.e(com.tencent.mm.vfs.q.B(paramString.fhU()), paramMap, paramMap.length);
+        com.tencent.mm.vfs.i.e(com.tencent.mm.vfs.q.B(paramString.fxV()), paramMap, paramMap.length);
       }
     }
     else
     {
-      paramc.result = com.tencent.mm.vfs.q.B(paramString.fhU());
+      paramc.result = com.tencent.mm.vfs.q.B(paramString.fxV());
       paramc.callback.run();
       AppMethodBeat.o(108618);
       return;
     }
-    localObject = com.tencent.mm.emoji.loader.e.fLn;
+    localObject = com.tencent.mm.emoji.loader.e.fOZ;
     com.tencent.mm.emoji.loader.e.a(paramMap, new i.a()
     {
-      public final void df(boolean paramAnonymousBoolean)
+      public final void de(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(108595);
         if (paramAnonymousBoolean)
         {
           byte[] arrayOfByte = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().s(paramMap);
-          com.tencent.mm.vfs.i.e(com.tencent.mm.vfs.q.B(paramString.fhU()), arrayOfByte, arrayOfByte.length);
-          com.tencent.e.h.Iye.aN(new Runnable()
+          com.tencent.mm.vfs.i.e(com.tencent.mm.vfs.q.B(paramString.fxV()), arrayOfByte, arrayOfByte.length);
+          com.tencent.e.h.JZN.aQ(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(108593);
-              h.2.this.oxr.result = com.tencent.mm.vfs.q.B(h.2.this.oxt.fhU());
-              h.2.this.oxr.callback.run();
+              h.2.this.paR.result = com.tencent.mm.vfs.q.B(h.2.this.paT.fxV());
+              h.2.this.paR.callback.run();
               AppMethodBeat.o(108593);
             }
           });
           AppMethodBeat.o(108595);
           return;
         }
-        com.tencent.e.h.Iye.aN(new Runnable()
+        com.tencent.e.h.JZN.aQ(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(108594);
-            h.2.this.oxr.result = "";
-            h.2.this.oxr.callback.run();
+            h.2.this.paR.result = "";
+            h.2.this.paR.callback.run();
             AppMethodBeat.o(108594);
           }
         });
@@ -606,7 +606,7 @@ public class h
     AppMethodBeat.o(108618);
   }
   
-  public final void a(Map<String, Object> paramMap, String paramString, com.tencent.mm.w.c paramc)
+  public final void a(Map<String, Object> paramMap, String paramString, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108617);
     paramMap = (EmotionDetail)a(paramMap, EmotionDetail.class);
@@ -616,36 +616,36 @@ public class h
     AppMethodBeat.o(108617);
   }
   
-  public final void b(com.tencent.mm.w.c paramc)
+  public final void b(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108602);
-    if (this.oxk != null)
+    if (this.paK != null)
     {
-      com.tencent.mm.kernel.g.aeS().b(411, this);
-      com.tencent.mm.kernel.g.aeS().a(this.oxk);
+      com.tencent.mm.kernel.g.agi().b(411, this);
+      com.tencent.mm.kernel.g.agi().a(this.paK);
     }
-    this.oxk = new b(5, this.oxi);
-    this.oxk.oxv = paramc;
-    com.tencent.mm.kernel.g.aeS().a(411, this);
-    com.tencent.mm.kernel.g.aeS().a(this.oxk, 0);
+    this.paK = new b(5, this.paI);
+    this.paK.paV = paramc;
+    com.tencent.mm.kernel.g.agi().a(411, this);
+    com.tencent.mm.kernel.g.agi().a(this.paK, 0);
     AppMethodBeat.o(108602);
   }
   
-  public final void b(String paramString, com.tencent.mm.w.c paramc)
+  public final void b(String paramString, com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108612);
-    ad.d("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "checkLocalEmotionData");
-    if ((com.tencent.mm.kernel.g.afB().isSDCardAvailable()) && (k.getEmojiStorageMgr().FyZ.aJp(paramString)))
+    ac.d("MicroMsg.Flutter.FlutterEmoticonMethodChannelLogic", "checkLocalEmotionData");
+    if ((com.tencent.mm.kernel.g.agR().isSDCardAvailable()) && (k.getEmojiStorageMgr().GYa.aOL(paramString)))
     {
-      if (k.getEmojiStorageMgr().FyY.aJr(paramString) <= 0) {
+      if (k.getEmojiStorageMgr().GXZ.aON(paramString) <= 0) {
         break label174;
       }
       Object localObject = new StringBuilder();
-      com.tencent.mm.emoji.d.a locala = com.tencent.mm.emoji.d.a.fSR;
-      localObject = new com.tencent.mm.vfs.e(com.tencent.mm.emoji.d.a.acD() + paramString);
+      com.tencent.mm.emoji.d.a locala = com.tencent.mm.emoji.d.a.fWM;
+      localObject = new com.tencent.mm.vfs.e(com.tencent.mm.emoji.d.a.adJ() + paramString);
       if (((com.tencent.mm.vfs.e)localObject).exists())
       {
-        localObject = ((com.tencent.mm.vfs.e)localObject).fhW();
+        localObject = ((com.tencent.mm.vfs.e)localObject).fxX();
         if ((localObject != null) && (localObject.length > 0))
         {
           paramc.result = Boolean.TRUE;
@@ -653,8 +653,8 @@ public class h
           AppMethodBeat.o(108612);
           return;
         }
-        k.getEmojiStorageMgr().FyZ.aJq(paramString);
-        k.getEmojiStorageMgr().FyY.aJB(paramString);
+        k.getEmojiStorageMgr().GYa.aOM(paramString);
+        k.getEmojiStorageMgr().GXZ.aOX(paramString);
       }
     }
     for (;;)
@@ -664,14 +664,14 @@ public class h
       AppMethodBeat.o(108612);
       return;
       label174:
-      k.getEmojiStorageMgr().FyY.aJB(paramString);
+      k.getEmojiStorageMgr().GXZ.aOX(paramString);
     }
   }
   
-  public final void c(com.tencent.mm.w.c paramc)
+  public final void c(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108603);
-    Map localMap = k.bVe().owX;
+    Map localMap = k.ccr().pax;
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -692,14 +692,14 @@ public class h
   {
     AppMethodBeat.i(108600);
     super.create();
-    this.oxq.alive();
+    this.paQ.alive();
     AppMethodBeat.o(108600);
   }
   
-  public final void d(com.tencent.mm.w.c paramc)
+  public final void d(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108604);
-    Object localObject = k.getEmojiStorageMgr().FyZ.eNk();
+    Object localObject = k.getEmojiStorageMgr().GYa.fcO();
     JSONObject localJSONObject1 = new JSONObject();
     localObject = ((HashMap)localObject).entrySet().iterator();
     while (((Iterator)localObject).hasNext())
@@ -722,31 +722,31 @@ public class h
   {
     AppMethodBeat.i(108601);
     super.destroy();
-    this.oxq.dead();
-    this.oxp.dead();
+    this.paQ.dead();
+    this.paP.dead();
     AppMethodBeat.o(108601);
   }
   
-  public final void e(com.tencent.mm.w.c paramc)
+  public final void e(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108605);
-    if (this.oxl != null)
+    if (this.paL != null)
     {
-      com.tencent.mm.kernel.g.aeS().b(411, this);
-      com.tencent.mm.kernel.g.aeS().a(this.oxl);
+      com.tencent.mm.kernel.g.agi().b(411, this);
+      com.tencent.mm.kernel.g.agi().a(this.paL);
     }
-    this.oxl = new b(9, this.oxj);
-    this.oxl.oxv = paramc;
-    com.tencent.mm.kernel.g.aeS().a(411, this);
-    com.tencent.mm.kernel.g.aeS().a(this.oxl, 0);
+    this.paL = new b(9, this.paJ);
+    this.paL.paV = paramc;
+    com.tencent.mm.kernel.g.agi().a(411, this);
+    com.tencent.mm.kernel.g.agi().a(this.paL, 0);
     AppMethodBeat.o(108605);
   }
   
-  public final void f(com.tencent.mm.w.c paramc)
+  public final void f(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108609);
-    this.oxi = null;
-    GetEmotionListResponse localGetEmotionListResponse = k.getEmojiStorageMgr().Fzb.WO(5);
+    this.paI = null;
+    GetEmotionListResponse localGetEmotionListResponse = k.getEmojiStorageMgr().GYc.YY(5);
     if ((localGetEmotionListResponse != null) && (localGetEmotionListResponse.EmotionList.size() > 0) && (localGetEmotionListResponse.BannerSetList.size() > 0))
     {
       paramc.result = a(localGetEmotionListResponse).toString();
@@ -759,11 +759,11 @@ public class h
     AppMethodBeat.o(108609);
   }
   
-  public final void g(com.tencent.mm.w.c paramc)
+  public final void g(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108610);
-    this.oxj = null;
-    GetEmotionListResponse localGetEmotionListResponse = k.getEmojiStorageMgr().Fzb.WO(9);
+    this.paJ = null;
+    GetEmotionListResponse localGetEmotionListResponse = k.getEmojiStorageMgr().GYc.YY(9);
     if ((localGetEmotionListResponse != null) && (localGetEmotionListResponse.EmotionList.size() > 0) && (localGetEmotionListResponse.BannerSetList.size() > 0))
     {
       paramc.result = a(localGetEmotionListResponse).toString();
@@ -776,133 +776,133 @@ public class h
     AppMethodBeat.o(108610);
   }
   
-  public final void h(com.tencent.mm.w.c paramc)
+  public final void h(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108613);
-    paramc.result = (aj.getContext().getString(2131758243) + ac.eFu());
+    paramc.result = (ai.getContext().getString(2131758243) + ab.eUO());
     paramc.callback.run();
     AppMethodBeat.o(108613);
   }
   
-  public final void i(com.tencent.mm.w.c paramc)
+  public final void i(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108614);
-    paramc.result = (aj.getContext().getString(2131758289) + ac.eFu());
+    paramc.result = (ai.getContext().getString(2131758289) + ab.eUO());
     paramc.callback.run();
     AppMethodBeat.o(108614);
   }
   
-  public final void j(com.tencent.mm.w.c paramc)
+  public final void j(com.tencent.mm.flutter.c paramc)
   {
     AppMethodBeat.i(108615);
-    String str = y.tD("emoje_stroe");
-    y.arz().E(str, true).m("prePublishId", "emoje_stroe");
+    String str = y.xJ("emoje_stroe");
+    y.ayq().F(str, true).l("prePublishId", "emoje_stroe");
     paramc.result = str;
     paramc.callback.run();
     AppMethodBeat.o(108615);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(108619);
     if ((paramn instanceof com.tencent.mm.plugin.emoji.f.n))
     {
-      com.tencent.mm.kernel.g.aeS().b(411, this);
-      if (!paramn.equals(this.oxk)) {
+      com.tencent.mm.kernel.g.agi().b(411, this);
+      if (!paramn.equals(this.paK)) {
         break label191;
       }
       if ((paramInt1 != 0) && (paramInt1 != 4)) {
         break label180;
       }
-      this.oxi = this.oxk.oyQ;
-      paramString = this.oxk.bVs();
+      this.paI = this.paK.pcq;
+      paramString = this.paK.ccF();
       if ((paramInt2 != 0) && (paramInt2 != 2)) {
         break label166;
       }
       if ((paramString == null) || (paramString.EmotionList.size() <= 0)) {
         break label152;
       }
-      b(this.oxk, a(paramString));
+      b(this.paK, a(paramString));
     }
     for (;;)
     {
-      this.oxk = null;
+      this.paK = null;
       AppMethodBeat.o(108619);
       return;
       if ((paramn instanceof l))
       {
-        com.tencent.mm.kernel.g.aeS().b(412, this);
+        com.tencent.mm.kernel.g.agi().b(412, this);
         break;
       }
       if (!(paramn instanceof o)) {
         break;
       }
-      com.tencent.mm.kernel.g.aeS().b(822, this);
+      com.tencent.mm.kernel.g.agi().b(822, this);
       break;
       label152:
-      a(this.oxk, a(paramString));
+      a(this.paK, a(paramString));
       continue;
       label166:
-      a(this.oxk, a(paramString));
+      a(this.paK, a(paramString));
       continue;
       label180:
-      b(this.oxk, null);
+      b(this.paK, null);
     }
     label191:
-    if (paramn.equals(this.oxl))
+    if (paramn.equals(this.paL))
     {
       if ((paramInt1 == 0) || (paramInt1 == 4))
       {
-        this.oxj = this.oxl.oyQ;
-        paramString = this.oxl.bVs();
+        this.paJ = this.paL.pcq;
+        paramString = this.paL.ccF();
         if ((paramInt2 == 0) || (paramInt2 == 2)) {
           if ((paramString != null) && (paramString.EmotionList.size() > 0)) {
-            b(this.oxl, a(paramString));
+            b(this.paL, a(paramString));
           }
         }
       }
       for (;;)
       {
-        this.oxl = null;
+        this.paL = null;
         AppMethodBeat.o(108619);
         return;
-        a(this.oxl, a(paramString));
+        a(this.paL, a(paramString));
         continue;
-        a(this.oxl, a(paramString));
+        a(this.paL, a(paramString));
         continue;
-        b(this.oxl, null);
+        b(this.paL, null);
       }
     }
-    if (paramn.equals(this.oxm))
+    if (paramn.equals(this.paM))
     {
       if (((paramInt1 == 0) && (paramInt2 == 0)) || ((paramInt1 == 4) && (paramInt2 == 5)))
       {
-        paramString = this.oxm.bVq();
-        b(this.oxm, a(paramString));
+        paramString = this.paM.ccD();
+        b(this.paM, a(paramString));
       }
       for (;;)
       {
-        this.oxm = null;
+        this.paM = null;
         AppMethodBeat.o(108619);
         return;
-        b(this.oxm, null);
+        b(this.paM, null);
       }
     }
-    if (paramn.equals(this.oxn))
+    if (paramn.equals(this.paN))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label439;
       }
-      paramString = this.oxn.bVu();
-      b(this.oxn, a(paramString));
+      paramString = this.paN.ccH();
+      b(this.paN, a(paramString));
     }
     for (;;)
     {
-      this.oxn = null;
+      this.paN = null;
       AppMethodBeat.o(108619);
       return;
       label439:
-      b(this.oxn, null);
+      b(this.paN, null);
     }
   }
   
@@ -910,16 +910,16 @@ public class h
     extends l
     implements h.d
   {
-    com.tencent.mm.w.c oxv;
+    com.tencent.mm.flutter.c paV;
     
     public a(String paramString, int paramInt)
     {
       super(5, paramInt);
     }
     
-    public final com.tencent.mm.w.c bUU()
+    public final com.tencent.mm.flutter.c cch()
     {
-      return this.oxv;
+      return this.paV;
     }
   }
   
@@ -927,16 +927,16 @@ public class h
     extends com.tencent.mm.plugin.emoji.f.n
     implements h.d
   {
-    com.tencent.mm.w.c oxv;
+    com.tencent.mm.flutter.c paV;
     
     public b(int paramInt, byte[] paramArrayOfByte)
     {
       super(paramArrayOfByte, 2);
     }
     
-    public final com.tencent.mm.w.c bUU()
+    public final com.tencent.mm.flutter.c cch()
     {
-      return this.oxv;
+      return this.paV;
     }
   }
   
@@ -944,27 +944,27 @@ public class h
     extends o
     implements h.d
   {
-    com.tencent.mm.w.c oxv;
+    com.tencent.mm.flutter.c paV;
     
     public c(String paramString, int paramInt)
     {
       super(paramInt);
     }
     
-    public final com.tencent.mm.w.c bUU()
+    public final com.tencent.mm.flutter.c cch()
     {
-      return this.oxv;
+      return this.paV;
     }
   }
   
   static abstract interface d
   {
-    public abstract com.tencent.mm.w.c bUU();
+    public abstract com.tencent.mm.flutter.c cch();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.h
  * JD-Core Version:    0.7.0.1
  */

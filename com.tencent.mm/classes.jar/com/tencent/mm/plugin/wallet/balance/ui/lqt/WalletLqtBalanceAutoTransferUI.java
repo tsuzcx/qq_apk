@@ -15,18 +15,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.co.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.cn.f;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.b;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.d;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.e;
-import com.tencent.mm.protocal.protobuf.brx;
-import com.tencent.mm.protocal.protobuf.bwm;
-import com.tencent.mm.protocal.protobuf.cbb;
-import com.tencent.mm.protocal.protobuf.cep;
-import com.tencent.mm.protocal.protobuf.dbu;
-import com.tencent.mm.protocal.protobuf.wy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bwo;
+import com.tencent.mm.protocal.protobuf.cbg;
+import com.tencent.mm.protocal.protobuf.cgb;
+import com.tencent.mm.protocal.protobuf.cjs;
+import com.tencent.mm.protocal.protobuf.dhg;
+import com.tencent.mm.protocal.protobuf.xq;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import com.tencent.mm.ui.widget.picker.c;
@@ -39,75 +39,75 @@ import java.util.LinkedList;
 public class WalletLqtBalanceAutoTransferUI
   extends WalletBaseUI
 {
-  private TextView kEu;
-  private TextView kFd;
-  private TextView sYS;
-  private MMSwitchBtn zHT;
-  private TextView zHU;
-  private TextView zHV;
-  private FrameLayout zHW;
-  private LinearLayout zHX;
-  private View zHY;
-  private int zHZ;
-  private dbu zIa;
-  private dbu zIb;
-  private cbb zIc;
-  private String zId;
-  private View zIe;
+  private MMSwitchBtn Baf;
+  private TextView Bag;
+  private TextView Bah;
+  private FrameLayout Bai;
+  private LinearLayout Baj;
+  private View Bak;
+  private int Bal;
+  private dhg Bam;
+  private dhg Ban;
+  private cgb Bao;
+  private String Bap;
+  private View Baq;
+  private TextView lfN;
+  private TextView lgw;
+  private TextView uhg;
   
-  private String a(dbu paramdbu)
+  private String a(dhg paramdhg)
   {
     AppMethodBeat.i(68768);
     DecimalFormat localDecimalFormat = new DecimalFormat("00");
-    paramdbu = getString(2131765379, new Object[] { localDecimalFormat.format(paramdbu.Etx / 60), localDecimalFormat.format(paramdbu.nrv / 60) });
+    paramdhg = getString(2131765379, new Object[] { localDecimalFormat.format(paramdhg.FQz / 60), localDecimalFormat.format(paramdhg.nUv / 60) });
     AppMethodBeat.o(68768);
-    return paramdbu;
+    return paramdhg;
   }
   
-  private void dZn()
+  private void eoJ()
   {
     AppMethodBeat.i(68764);
-    this.zHT.setCheck(true);
-    this.zIe.setVisibility(8);
-    dZp();
+    this.Baf.setCheck(true);
+    this.Baq.setVisibility(8);
+    eoL();
     AppMethodBeat.o(68764);
   }
   
-  private void dZo()
+  private void eoK()
   {
     AppMethodBeat.i(68765);
-    this.zHT.setCheck(false);
-    this.zIe.setVisibility(8);
-    dZq();
+    this.Baf.setCheck(false);
+    this.Baq.setVisibility(8);
+    eoM();
     AppMethodBeat.o(68765);
   }
   
-  private void dZp()
+  private void eoL()
   {
     AppMethodBeat.i(68766);
-    this.zHX.setVisibility(0);
-    this.zHY.setVisibility(0);
+    this.Baj.setVisibility(0);
+    this.Bak.setVisibility(0);
     AppMethodBeat.o(68766);
   }
   
-  private void dZq()
+  private void eoM()
   {
     AppMethodBeat.i(68767);
-    this.zHX.setVisibility(8);
-    this.zHY.setVisibility(8);
+    this.Baj.setVisibility(8);
+    this.Bak.setVisibility(8);
     AppMethodBeat.o(68767);
   }
   
-  private void dZr()
+  private void eoN()
   {
     AppMethodBeat.i(68769);
-    if (this.zIa != null)
+    if (this.Bam != null)
     {
-      this.sYS.setText(a(this.zIa));
+      this.uhg.setText(a(this.Bam));
       AppMethodBeat.o(68769);
       return;
     }
-    this.sYS.setText("");
+    this.uhg.setText("");
     AppMethodBeat.o(68769);
   }
   
@@ -119,40 +119,40 @@ public class WalletLqtBalanceAutoTransferUI
   public void initView()
   {
     AppMethodBeat.i(68762);
-    this.zHT = ((MMSwitchBtn)findViewById(2131301359));
-    this.kEu = ((TextView)findViewById(2131301368));
-    this.kFd = ((TextView)findViewById(2131301363));
-    this.sYS = ((TextView)findViewById(2131301365));
-    this.zHX = ((LinearLayout)findViewById(2131301366));
-    this.zHY = findViewById(2131301362);
-    this.zHU = ((TextView)findViewById(2131301361));
-    this.zHV = ((TextView)findViewById(2131301367));
-    this.zHW = ((FrameLayout)findViewById(2131301360));
-    this.zIe = findViewById(2131301364);
-    this.zHT.setSwitchListener(new MMSwitchBtn.a()
+    this.Baf = ((MMSwitchBtn)findViewById(2131301359));
+    this.lfN = ((TextView)findViewById(2131301368));
+    this.lgw = ((TextView)findViewById(2131301363));
+    this.uhg = ((TextView)findViewById(2131301365));
+    this.Baj = ((LinearLayout)findViewById(2131301366));
+    this.Bak = findViewById(2131301362);
+    this.Bag = ((TextView)findViewById(2131301361));
+    this.Bah = ((TextView)findViewById(2131301367));
+    this.Bai = ((FrameLayout)findViewById(2131301360));
+    this.Baq = findViewById(2131301364);
+    this.Baf.setSwitchListener(new MMSwitchBtn.a()
     {
-      long zIf = 0L;
+      long Bar = 0L;
       
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
         boolean bool = true;
         AppMethodBeat.i(68752);
-        ad.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "click switch: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        ac.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "click switch: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         long l = SystemClock.elapsedRealtime();
-        if (l - this.zIf < 1000L)
+        if (l - this.Bar < 1000L)
         {
-          ad.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "skip");
+          ac.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "skip");
           MMSwitchBtn localMMSwitchBtn = WalletLqtBalanceAutoTransferUI.a(WalletLqtBalanceAutoTransferUI.this);
           if (!paramAnonymousBoolean) {}
           for (paramAnonymousBoolean = bool;; paramAnonymousBoolean = false)
           {
             localMMSwitchBtn.setCheck(paramAnonymousBoolean);
-            this.zIf = l;
+            this.Bar = l;
             AppMethodBeat.o(68752);
             return;
           }
         }
-        this.zIf = l;
+        this.Bar = l;
         if (paramAnonymousBoolean)
         {
           WalletLqtBalanceAutoTransferUI.a(WalletLqtBalanceAutoTransferUI.this, 16);
@@ -163,12 +163,12 @@ public class WalletLqtBalanceAutoTransferUI
         AppMethodBeat.o(68752);
       }
     });
-    this.zHX.setOnClickListener(new View.OnClickListener()
+    this.Baj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68753);
-        ad.d("MicroMsg.WalletLqtBalanceAutoTransferUI", "click time layout");
+        ac.d("MicroMsg.WalletLqtBalanceAutoTransferUI", "click time layout");
         WalletLqtBalanceAutoTransferUI.c(WalletLqtBalanceAutoTransferUI.this);
         AppMethodBeat.o(68753);
       }
@@ -179,7 +179,7 @@ public class WalletLqtBalanceAutoTransferUI
   public void onActivityResult(int paramInt1, int paramInt2, final Intent paramIntent)
   {
     AppMethodBeat.i(68763);
-    ad.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "on activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "on activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     String str = "";
     if (paramIntent != null) {
       str = paramIntent.getStringExtra("encrypt_pwd");
@@ -188,13 +188,13 @@ public class WalletLqtBalanceAutoTransferUI
     {
       if (paramInt2 == -1)
       {
-        ad.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "do open");
+        ac.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "do open");
         paramIntent = g.c(getContext(), false, null);
-        new d(str).auK().b(new a() {});
+        new d(str).aBB().b(new a() {});
         AppMethodBeat.o(68763);
         return;
       }
-      dZo();
+      eoK();
       AppMethodBeat.o(68763);
       return;
     }
@@ -202,13 +202,13 @@ public class WalletLqtBalanceAutoTransferUI
     {
       if (paramInt2 == -1)
       {
-        ad.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "do close");
+        ac.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "do close");
         paramIntent = g.c(getContext(), false, null);
-        new b(str).auK().b(new a() {});
+        new b(str).aBB().b(new a() {});
         AppMethodBeat.o(68763);
         return;
       }
-      dZn();
+      eoJ();
       AppMethodBeat.o(68763);
       return;
     }
@@ -227,8 +227,8 @@ public class WalletLqtBalanceAutoTransferUI
     if (getIntent().getIntExtra("show_open_toast", 0) == 1) {
       Toast.makeText(this, 2131765378, 0).show();
     }
-    ad.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "do qry setting");
-    new e().auK().b(new a() {});
+    ac.i("MicroMsg.WalletLqtBalanceAutoTransferUI", "do qry setting");
+    new e().aBB().b(new a() {});
     AppMethodBeat.o(68761);
   }
   

@@ -6,22 +6,22 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class MMCallBackScrollView
   extends ScrollView
 {
-  private ap mHandler;
+  private ao mHandler;
   private int mState;
-  private int uJi;
-  private a uJj;
+  private int vRZ;
+  private a vSa;
   
   public MMCallBackScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27680);
     this.mState = 0;
-    this.mHandler = new ap()
+    this.mHandler = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -47,7 +47,7 @@ public class MMCallBackScrollView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27681);
     this.mState = 0;
-    this.mHandler = new ap()
+    this.mHandler = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -68,13 +68,13 @@ public class MMCallBackScrollView
     AppMethodBeat.o(27681);
   }
   
-  private void JH(int paramInt)
+  private void LG(int paramInt)
   {
     AppMethodBeat.i(27679);
-    if ((this.uJj != null) && (this.mState != paramInt))
+    if ((this.vSa != null) && (this.mState != paramInt))
     {
       this.mState = paramInt;
-      this.uJj.cq(paramInt);
+      this.vSa.cp(paramInt);
     }
     AppMethodBeat.o(27679);
   }
@@ -83,7 +83,7 @@ public class MMCallBackScrollView
   {
     AppMethodBeat.i(27682);
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    this.uJi = getScrollY();
+    this.vRZ = getScrollY();
     switch (paramMotionEvent.getAction())
     {
     }
@@ -95,19 +95,19 @@ public class MMCallBackScrollView
       {
         this.mHandler.sendMessageDelayed(this.mHandler.obtainMessage(), 5L);
         continue;
-        JH(1);
+        LG(1);
       }
     }
   }
   
   public void setMMOnScrollListener(a parama)
   {
-    this.uJj = parama;
+    this.vSa = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cq(int paramInt);
+    public abstract void cp(int paramInt);
   }
 }
 

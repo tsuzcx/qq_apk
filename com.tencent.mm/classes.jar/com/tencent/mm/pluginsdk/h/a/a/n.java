@@ -1,19 +1,24 @@
 package com.tencent.mm.pluginsdk.h.a.a;
 
 import android.database.Cursor;
+import android.database.SQLException;
 import android.util.SparseArray;
-import com.tencent.mm.al.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.pluginsdk.h.a.a.a.a;
 import com.tencent.mm.pluginsdk.h.a.c.q.a;
 import com.tencent.mm.pluginsdk.h.a.c.s;
 import com.tencent.mm.pluginsdk.h.a.c.t;
-import com.tencent.mm.protocal.protobuf.cla;
-import com.tencent.mm.protocal.protobuf.clc;
-import com.tencent.mm.protocal.protobuf.vk;
+import com.tencent.mm.protocal.protobuf.cqd;
+import com.tencent.mm.protocal.protobuf.cqh;
+import com.tencent.mm.protocal.protobuf.cqi;
+import com.tencent.mm.protocal.protobuf.cqj;
+import com.tencent.mm.protocal.protobuf.vu;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.wcdb.database.SQLiteException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,27 +26,27 @@ import java.util.List;
 import java.util.Locale;
 
 public abstract class n
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
-  protected static final SparseArray<a> BSW = new SparseArray();
-  protected final List<clc> BSV = new LinkedList();
+  protected static final SparseArray<a> Dlm = new SparseArray();
+  protected final List<cqj> Dll = new LinkedList();
   private volatile g callback;
   
   n()
   {
-    int[] arrayOfInt = i.BSy;
+    int[] arrayOfInt = i.DkO;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = arrayOfInt[i];
-      Object localObject = (a)BSW.get(k);
-      if ((localObject == null) || (!((a)localObject).xq(k)))
+      Object localObject = (a)Dlm.get(k);
+      if ((localObject == null) || (!((a)localObject).yi(k)))
       {
-        localObject = new clc();
-        ((clc)localObject).mBH = k;
-        this.BSV.add(localObject);
+        localObject = new cqj();
+        ((cqj)localObject).ndI = k;
+        this.Dll.add(localObject);
       }
       i += 1;
     }
@@ -49,102 +54,149 @@ public abstract class n
   
   public static void a(a parama)
   {
-    BSW.put(39, parama);
+    Dlm.put(39, parama);
   }
   
   public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
     this.callback = paramg;
-    ad.d(getTag(), "before dispatch");
-    Iterator localIterator = this.BSV.iterator();
-    while (localIterator.hasNext())
+    ac.d(getTag(), "before dispatch");
+    try
     {
-      clc localclc = (clc)localIterator.next();
-      int i = localclc.mBH;
-      paramg = q.a.ewL();
-      if (!paramg.jqw)
+      Iterator localIterator = this.Dll.iterator();
+      if (localIterator.hasNext())
       {
-        paramg = null;
-        if (paramg != null) {
-          break label212;
-        }
-      }
-      Object localObject;
-      s locals;
-      for (paramg = Collections.emptyList();; paramg = Collections.emptyList())
-      {
-        localObject = new StringBuilder("{ ");
-        paramg = paramg.iterator();
-        while (paramg.hasNext())
+        localcqj = (cqj)localIterator.next();
+        i = localcqj.ndI;
+        paramg = q.a.eMf();
+        if (!paramg.jQO)
         {
-          locals = (s)paramg.next();
-          i = bt.getInt(locals.field_fileVersion, -1);
-          if (i >= 0)
+          paramg = null;
+          if (paramg != null) {
+            break label232;
+          }
+          paramg = Collections.emptyList();
+          localObject = new StringBuilder("{ ");
+          paramg = paramg.iterator();
+          while (paramg.hasNext())
           {
-            cla localcla = new cla();
-            localcla.DYI = locals.field_subType;
-            localcla.Egx = i;
-            localcla.Egv = locals.field_keyVersion;
-            localcla.BSu = locals.field_EID;
-            localclc.EgC.add(localcla);
-            ((StringBuilder)localObject).append(locals.field_subType).append(", ");
+            locals = (s)paramg.next();
+            i = bs.getInt(locals.field_fileVersion, -1);
+            if (i >= 0)
+            {
+              cqh localcqh = new cqh();
+              localcqh.FvC = locals.field_subType;
+              localcqh.FDx = i;
+              localcqh.FDv = locals.field_keyVersion;
+              localcqh.DkK = locals.field_EID;
+              localcqj.FDC.add(localcqh);
+              ((StringBuilder)localObject).append(locals.field_subType).append(", ");
+            }
           }
         }
-        paramg = paramg.BTE.gPa;
-        break;
-        label212:
-        localObject = paramg.a("ResDownloaderRecordTable", null, "urlKey" + String.format(Locale.US, " like '%d.%%.data'", new Object[] { Integer.valueOf(i) }) + " and groupId1=" + String.format(Locale.US, "'%s'", new Object[] { "CheckResUpdate" }), null, null, null, null, 2);
-        if ((localObject != null) && (!((Cursor)localObject).isClosed())) {
-          break label314;
-        }
       }
-      label314:
-      if (((Cursor)localObject).moveToFirst())
-      {
-        paramg = new LinkedList();
-        do
-        {
-          locals = new s();
-          locals.convertFrom((Cursor)localObject);
-          paramg.add(locals);
-        } while (((Cursor)localObject).moveToNext());
-      }
+    }
+    catch (SQLiteException parame)
+    {
       for (;;)
       {
-        ((Cursor)localObject).close();
-        break;
-        paramg = Collections.emptyList();
+        cqj localcqj;
+        int i;
+        s locals;
+        ac.e(getTag(), "doScene get SQLException(%s), return -1", new Object[] { parame });
+        return -1;
+        paramg = paramg.DlU.hpA;
+        continue;
+        Object localObject = paramg.a("ResDownloaderRecordTable", null, "urlKey" + String.format(Locale.US, " like '%d.%%.data'", new Object[] { Integer.valueOf(i) }) + " and groupId1=" + String.format(Locale.US, "'%s'", new Object[] { "CheckResUpdate" }), null, null, null, null, 2);
+        if ((localObject == null) || (((Cursor)localObject).isClosed()))
+        {
+          paramg = Collections.emptyList();
+        }
+        else
+        {
+          if (((Cursor)localObject).moveToFirst())
+          {
+            paramg = new LinkedList();
+            do
+            {
+              locals = new s();
+              locals.convertFrom((Cursor)localObject);
+              paramg.add(locals);
+            } while (((Cursor)localObject).moveToNext());
+          }
+          for (;;)
+          {
+            ((Cursor)localObject).close();
+            break;
+            paramg = Collections.emptyList();
+          }
+          ((StringBuilder)localObject).append(" }");
+          ac.i(getTag(), "before doScene, add subtypeList(%s) in type(%d)", new Object[] { ((StringBuilder)localObject).toString(), Integer.valueOf(localcqj.ndI) });
+        }
       }
-      ((StringBuilder)localObject).append(" }");
-      ad.i(getTag(), "before doScene, add subtypeList(%s) in type(%d)", new Object[] { ((StringBuilder)localObject).toString(), Integer.valueOf(localclc.mBH) });
+      return dispatch(parame, eLX(), this);
     }
-    return dispatch(parame, ewD(), this);
+    catch (SQLException parame)
+    {
+      label202:
+      label232:
+      break label202;
+    }
   }
   
-  protected abstract com.tencent.mm.network.q ewD();
+  protected abstract com.tencent.mm.network.q eLX();
   
   protected abstract String getTag();
   
-  protected abstract vk h(com.tencent.mm.network.q paramq);
+  protected abstract vu h(com.tencent.mm.network.q paramq);
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    ad.i(getTag(), "onGYNetEnd errType(%d), errCode(%d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i(getTag(), "onGYNetEnd errType(%d), errCode(%d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     String str;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       paramArrayOfByte = h(paramq);
       str = getTag();
-      if (!bt.gL(paramArrayOfByte.CXx)) {
+      if (!bs.gY(paramArrayOfByte.Eqg)) {
         break label128;
       }
     }
     label128:
-    for (paramq = "null";; paramq = String.valueOf(paramArrayOfByte.CXx.size()))
+    for (paramq = "null";; paramq = String.valueOf(paramArrayOfByte.Eqg.size()))
     {
-      ad.i(str, "response.Res.size() = %s", new Object[] { paramq });
-      if (!bt.gL(paramArrayOfByte.CXx)) {
-        b.c(new n.1(this, paramArrayOfByte.CXx), "NetSceneCheckResUpdate-ResponseHandlingThread");
+      ac.i(str, "response.Res.size() = %s", new Object[] { paramq });
+      if (!bs.gY(paramArrayOfByte.Eqg)) {
+        b.c(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(152002);
+            Iterator localIterator = this.Dln.iterator();
+            if (localIterator.hasNext())
+            {
+              cqi localcqi = (cqi)localIterator.next();
+              Object localObject2 = n.this.getTag();
+              int i = localcqi.ndI;
+              if (bs.gY(localcqi.FDB)) {}
+              for (Object localObject1 = "null";; localObject1 = String.valueOf(localcqi.FDB.size()))
+              {
+                ac.i((String)localObject2, "resType(%d) responses.size() = %s", new Object[] { Integer.valueOf(i), localObject1 });
+                if (bs.gY(localcqi.FDB)) {
+                  break;
+                }
+                localObject1 = localcqi.FDB.iterator();
+                while (((Iterator)localObject1).hasNext())
+                {
+                  localObject2 = (cqd)((Iterator)localObject1).next();
+                  n.a(n.this, localcqi.ndI, (cqd)localObject2);
+                }
+                break;
+              }
+            }
+            AppMethodBeat.o(152002);
+          }
+        }, "NetSceneCheckResUpdate-ResponseHandlingThread");
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       return;
@@ -153,7 +205,7 @@ public abstract class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.a.n
  * JD-Core Version:    0.7.0.1
  */

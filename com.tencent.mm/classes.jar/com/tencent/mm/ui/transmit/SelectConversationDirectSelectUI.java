@@ -8,8 +8,8 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.plugin.appbrand.ui.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.a;
 
 @i
@@ -22,16 +22,16 @@ public class SelectConversationDirectSelectUI
     AppMethodBeat.i(169902);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("Select_Conv_User");
-    if (!bt.isNullOrNil(paramBundle))
+    if (!bs.isNullOrNil(paramBundle))
     {
-      ad.d("MicroMsg.SelectConversationDirectSelectUI", "hy: request direct select username");
+      ac.d("MicroMsg.SelectConversationDirectSelectUI", "hy: request direct select username");
       setContentViewVisibility(8);
       overridePendingTransition(0, 0);
       r.b(getWindow());
       r.c(getWindow(), false);
       getWindow().setBackgroundDrawable(new ColorDrawable(0));
       setBackGroundColorResource(2131100464);
-      amr(paramBundle);
+      ary(paramBundle);
       AppMethodBeat.o(169902);
       return;
     }
@@ -56,7 +56,7 @@ public class SelectConversationDirectSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SelectConversationDirectSelectUI
  * JD-Core Version:    0.7.0.1
  */

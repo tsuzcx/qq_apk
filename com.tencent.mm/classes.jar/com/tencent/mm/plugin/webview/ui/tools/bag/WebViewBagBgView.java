@@ -11,35 +11,35 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class WebViewBagBgView
   extends View
 {
-  boolean BjA;
-  private RectF BjB;
-  private int Bjt;
-  private int Bju;
-  private float Bjv;
-  private float Bjw;
-  private float Bjx;
-  private int Bjy;
-  private int Bjz;
-  int ark;
+  private int CBG;
+  private int CBH;
+  private float CBI;
+  private float CBJ;
+  private float CBK;
+  private int CBL;
+  private int CBM;
+  boolean CBN;
+  private RectF CBO;
+  int asf;
   private Paint mPaint;
   long mStartTime;
-  int yGI;
+  int zTW;
   
   public WebViewBagBgView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(80429);
-    this.Bjt = -7829368;
-    this.Bju = -65536;
-    this.Bjv = 0.0F;
+    this.CBG = -7829368;
+    this.CBH = -65536;
+    this.CBI = 0.0F;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.Bjz = -1;
+    this.CBM = -1;
     AppMethodBeat.o(80429);
   }
   
@@ -47,38 +47,38 @@ public class WebViewBagBgView
   {
     AppMethodBeat.i(80430);
     super.onDraw(paramCanvas);
-    if (this.Bjx == this.Bjw) {
-      this.Bjw -= 0.001F;
+    if (this.CBK == this.CBJ) {
+      this.CBJ -= 0.001F;
     }
-    float f1 = this.Bjw;
-    float f2 = this.Bjx;
-    int i = this.Bjt;
-    int j = this.Bju;
+    float f1 = this.CBJ;
+    float f2 = this.CBK;
+    int i = this.CBG;
+    int j = this.CBH;
     Object localObject = Shader.TileMode.CLAMP;
     localObject = new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { i, j }, null, (Shader.TileMode)localObject);
     this.mPaint.setShader((Shader)localObject);
-    paramCanvas.drawOval(this.BjB, this.mPaint);
-    if ((this.BjA) && (this.Bjx > 0.0F))
+    paramCanvas.drawOval(this.CBO, this.mPaint);
+    if ((this.CBN) && (this.CBK > 0.0F))
     {
-      this.Bjw -= this.Bjv;
-      if (this.Bjw >= -this.Bjy) {
+      this.CBJ -= this.CBI;
+      if (this.CBJ >= -this.CBL) {
         break label211;
       }
-      f1 = -this.Bjy;
-      this.Bjw = f1;
-      if (this.Bjz - this.Bjw >= this.Bjy) {
+      f1 = -this.CBL;
+      this.CBJ = f1;
+      if (this.CBM - this.CBJ >= this.CBL) {
         break label219;
       }
     }
     label211:
     label219:
-    for (f1 = this.Bjz;; f1 = this.Bjw + this.Bjy)
+    for (f1 = this.CBM;; f1 = this.CBJ + this.CBL)
     {
-      this.Bjx = f1;
-      postInvalidateDelayed(this.yGI);
+      this.CBK = f1;
+      postInvalidateDelayed(this.zTW);
       AppMethodBeat.o(80430);
       return;
-      f1 = this.Bjw;
+      f1 = this.CBJ;
       break;
     }
   }
@@ -87,55 +87,55 @@ public class WebViewBagBgView
   {
     AppMethodBeat.i(80431);
     super.onMeasure(paramInt1, paramInt2);
-    this.Bjz = View.MeasureSpec.getSize(paramInt1);
-    this.BjB = new RectF(0.0F, 0.0F, this.Bjz, this.Bjz);
-    this.Bjy = (this.Bjz / 2);
-    vb(System.currentTimeMillis());
+    this.CBM = View.MeasureSpec.getSize(paramInt1);
+    this.CBO = new RectF(0.0F, 0.0F, this.CBM, this.CBM);
+    this.CBL = (this.CBM / 2);
+    zE(System.currentTimeMillis());
     AppMethodBeat.o(80431);
   }
   
   public void setAngryColor(int paramInt)
   {
-    this.Bju = paramInt;
+    this.CBH = paramInt;
   }
   
   public void setStartColor(int paramInt)
   {
-    this.Bjt = paramInt;
+    this.CBG = paramInt;
   }
   
-  final void vb(long paramLong)
+  final void zE(long paramLong)
   {
     AppMethodBeat.i(80432);
-    if (this.Bjz < 0)
+    if (this.CBM < 0)
     {
-      ad.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.Bjz) });
+      ac.i("MicroMsg.WebViewBagBgView", "doUpdateAngryInfo not measured, mDiameter:%d", new Object[] { Integer.valueOf(this.CBM) });
       AppMethodBeat.o(80432);
       return;
     }
-    this.Bjv = (this.Bjz * 2 / (this.ark / this.yGI));
+    this.CBI = (this.CBM * 2 / (this.asf / this.zTW));
     if (paramLong - this.mStartTime <= 0L)
     {
-      f = this.Bjz;
-      this.Bjw = f;
-      if (this.Bjz - this.Bjw >= this.Bjy) {
+      f = this.CBM;
+      this.CBJ = f;
+      if (this.CBM - this.CBJ >= this.CBL) {
         break label188;
       }
     }
     label188:
-    for (float f = this.Bjz;; f = this.Bjw + this.Bjy)
+    for (float f = this.CBM;; f = this.CBJ + this.CBL)
     {
-      this.Bjx = f;
+      this.CBK = f;
       AppMethodBeat.o(80432);
       return;
-      int i = (int)((float)(paramLong - this.mStartTime) / this.yGI);
-      this.Bjw = (this.Bjz - (i + 1) * this.Bjv);
-      if (this.Bjw < -this.Bjy)
+      int i = (int)((float)(paramLong - this.mStartTime) / this.zTW);
+      this.CBJ = (this.CBM - (i + 1) * this.CBI);
+      if (this.CBJ < -this.CBL)
       {
-        f = -this.Bjy;
+        f = -this.CBL;
         break;
       }
-      f = this.Bjw;
+      f = this.CBJ;
       break;
     }
   }

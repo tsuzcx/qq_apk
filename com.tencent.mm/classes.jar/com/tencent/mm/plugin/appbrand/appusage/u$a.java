@@ -9,38 +9,38 @@ import java.util.Map;
 public final class u$a
   extends u
 {
-  static final c.a gLr;
-  static final String[] iLd;
+  static final c.a hlR;
+  static final String[] jlk;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44576);
-    iLd = new String[] { "username", "versionType" };
+    jlk = new String[] { "username", "versionType" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).EYt = new Field[4];
+    ((c.a)localObject1).GvF = new Field[4];
     ((c.a)localObject1).columns = new String[5];
     Object localObject2 = new StringBuilder();
     ((c.a)localObject1).columns[0] = "username";
-    ((c.a)localObject1).EYv.put("username", "TEXT");
+    ((c.a)localObject1).GvH.put("username", "TEXT");
     ((StringBuilder)localObject2).append(" username TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[1] = "versionType";
-    ((c.a)localObject1).EYv.put("versionType", "INTEGER");
+    ((c.a)localObject1).GvH.put("versionType", "INTEGER");
     ((StringBuilder)localObject2).append(" versionType INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[2] = "updateTime";
-    ((c.a)localObject1).EYv.put("updateTime", "LONG");
+    ((c.a)localObject1).GvH.put("updateTime", "LONG");
     ((StringBuilder)localObject2).append(" updateTime LONG");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[3] = "orderSequence";
-    ((c.a)localObject1).EYv.put("orderSequence", "LONG");
+    ((c.a)localObject1).GvH.put("orderSequence", "LONG");
     ((StringBuilder)localObject2).append(" orderSequence LONG");
     ((c.a)localObject1).columns[4] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    gLr = (c.a)localObject1;
+    hlR = (c.a)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = iLd;
+    localObject2 = jlk;
     int j = localObject2.length;
     while (i < j)
     {
@@ -51,14 +51,14 @@ public final class u$a
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = gLr;
+    Object localObject3 = hlR;
     ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44576);
   }
   
   public final c.a getDBInfo()
   {
-    return gLr;
+    return hlR;
   }
 }
 

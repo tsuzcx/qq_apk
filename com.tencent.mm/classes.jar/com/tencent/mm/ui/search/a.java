@@ -11,27 +11,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends LinearLayout
 {
-  public ImageView BVS;
-  private FTSEditTextView Hlg;
-  public View Hlh;
-  private boolean Hli;
-  private b Hlj;
-  private a Hlk;
-  private View sUG;
+  private ImageView Doj;
+  private View ILA;
+  private boolean ILB;
+  private b ILC;
+  private a ILD;
+  private FTSEditTextView ILz;
+  private View ucS;
   
   public a(Context paramContext)
   {
-    this(paramContext, false);
+    this(paramContext, (byte)0);
   }
   
-  public a(Context paramContext, boolean paramBoolean)
+  private a(Context paramContext, byte paramByte)
   {
     super(paramContext);
-    AppMethodBeat.i(164206);
-    this.Hli = paramBoolean;
+    AppMethodBeat.i(197200);
+    this.ILB = false;
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494183, this, true);
-    this.sUG = findViewById(2131297690);
-    this.sUG.setOnClickListener(new View.OnClickListener()
+    this.ucS = findViewById(2131297690);
+    this.ucS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -42,47 +42,44 @@ public final class a
         AppMethodBeat.o(164204);
       }
     });
-    this.BVS = ((ImageView)findViewById(2131304422));
-    this.BVS.setVisibility(0);
-    this.Hlg = ((FTSEditTextView)findViewById(2131300315));
-    if (this.Hli)
+    this.Doj = ((ImageView)findViewById(2131304422));
+    this.Doj.setVisibility(0);
+    this.ILz = ((FTSEditTextView)findViewById(2131300315));
+    if (this.ILB)
     {
-      this.Hlh = findViewById(2131300316);
-      this.Hlh.setVisibility(0);
-      this.Hlh.setOnClickListener(new View.OnClickListener()
+      this.ILA = findViewById(2131300316);
+      this.ILA.setVisibility(0);
+      this.ILA.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(164205);
           if (a.b(a.this) != null) {
-            a.b(a.this).onClickSearchButton(paramAnonymousView);
+            a.b(a.this);
           }
           AppMethodBeat.o(164205);
         }
       });
     }
-    AppMethodBeat.o(164206);
+    AppMethodBeat.o(197200);
   }
   
   public final FTSEditTextView getFtsEditText()
   {
-    return this.Hlg;
+    return this.ILz;
   }
   
   public final void setImageSearchListener(a parama)
   {
-    this.Hlk = parama;
+    this.ILD = parama;
   }
   
   public final void setSearchViewListener(b paramb)
   {
-    this.Hlj = paramb;
+    this.ILC = paramb;
   }
   
-  public static abstract interface a
-  {
-    public abstract void onClickSearchButton(View paramView);
-  }
+  public static abstract interface a {}
   
   public static abstract interface b
   {
@@ -91,7 +88,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.search.a
  * JD-Core Version:    0.7.0.1
  */

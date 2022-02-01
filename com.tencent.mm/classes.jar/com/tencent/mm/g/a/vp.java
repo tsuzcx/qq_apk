@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class vp
   extends b
 {
-  public a dBf;
+  public a dys;
+  public b dyt;
   
   public vp()
   {
@@ -15,22 +16,27 @@ public final class vp
   
   private vp(byte paramByte)
   {
-    AppMethodBeat.i(140990);
-    this.dBf = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19840);
+    this.dys = new a();
+    this.dyt = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(140990);
+    AppMethodBeat.o(19840);
   }
   
   public static final class a
   {
-    public String className;
-    public int dBg = -1;
+    public String drG;
+    public int drH = 0;
+    public int drI = 0;
+    public int opType = 0;
   }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.vp
  * JD-Core Version:    0.7.0.1
  */

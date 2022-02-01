@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 @Deprecated
 public class HCETransparentUI
   extends HellActivity
 {
-  private ResultReceiver JX;
+  private ResultReceiver KS;
   
   public void finish()
   {
@@ -27,8 +27,8 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136179);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.HCETransparentUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    a.kbz.rS(paramInt1);
+    ac.i("MicroMsg.HCETransparentUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    a.kCm.sI(paramInt1);
     AppMethodBeat.o(136179);
   }
   
@@ -38,9 +38,9 @@ public class HCETransparentUI
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
     setContentView(2131494432);
-    this.JX = ((ResultReceiver)getIntent().getParcelableExtra("HCE_Result_Receiver"));
-    a.kbz.a(this, this.JX);
-    a.kbz.resetStatus();
+    this.KS = ((ResultReceiver)getIntent().getParcelableExtra("HCE_Result_Receiver"));
+    a.kCm.a(this, this.KS);
+    a.kCm.resetStatus();
     AppMethodBeat.o(136177);
   }
   
@@ -55,7 +55,7 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136180);
     super.onPause();
-    a.kbz.dismissDialog();
+    a.kCm.dismissDialog();
     AppMethodBeat.o(136180);
   }
   
@@ -63,11 +63,11 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136178);
     super.onResume();
-    ad.i("MicroMsg.HCETransparentUI", "alvinluo onResume");
+    ac.i("MicroMsg.HCETransparentUI", "alvinluo onResume");
     overridePendingTransition(0, 0);
     ComponentName localComponentName = new ComponentName(this, HCEService.class.getCanonicalName());
-    a.kbz.b(localComponentName);
-    a.kbz.bbc();
+    a.kCm.b(localComponentName);
+    a.kCm.bhU();
     AppMethodBeat.o(136178);
   }
   
@@ -79,7 +79,7 @@ public class HCETransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCETransparentUI
  * JD-Core Version:    0.7.0.1
  */

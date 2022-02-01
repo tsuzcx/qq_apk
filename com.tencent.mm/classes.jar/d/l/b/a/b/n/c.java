@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class c
 {
-  public final boolean dhg;
+  public final boolean deB;
   
   private c(boolean paramBoolean)
   {
-    this.dhg = paramBoolean;
+    this.deB = paramBoolean;
   }
   
   public static final class a
     extends c
   {
-    public static final a JZQ;
+    public static final a LNj;
     
     static
     {
       AppMethodBeat.i(61279);
-      JZQ = new a();
+      LNj = new a();
       AppMethodBeat.o(61279);
     }
     
@@ -46,12 +46,12 @@ public abstract class c
   public static final class c
     extends c
   {
-    public static final c JZR;
+    public static final c LNk;
     
     static
     {
       AppMethodBeat.i(61281);
-      JZR = new c();
+      LNk = new c();
       AppMethodBeat.o(61281);
     }
     
@@ -63,7 +63,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.c
  * JD-Core Version:    0.7.0.1
  */

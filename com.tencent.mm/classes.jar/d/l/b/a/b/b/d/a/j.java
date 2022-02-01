@@ -5,28 +5,28 @@ import d.l.b.a.b.k.a.l;
 
 public final class j
 {
-  public static final a JvN;
-  public final l JvL;
-  public final a JvM;
+  public static final a Ljg;
+  public final l Lje;
+  public final a Ljf;
   
   static
   {
     AppMethodBeat.i(57382);
-    JvN = new a((byte)0);
+    Ljg = new a((byte)0);
     AppMethodBeat.o(57382);
   }
   
   private j(l paraml, a parama)
   {
-    this.JvL = paraml;
-    this.JvM = parama;
+    this.Lje = paraml;
+    this.Ljf = parama;
   }
   
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.j
  * JD-Core Version:    0.7.0.1
  */

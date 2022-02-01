@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ue
   extends b
 {
-  public a dzw;
+  public a dwT;
   
   public ue()
   {
@@ -15,17 +15,16 @@ public final class ue
   
   private ue(byte paramByte)
   {
-    AppMethodBeat.i(125649);
-    this.dzw = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125645);
+    this.dwT = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125649);
+    AppMethodBeat.o(125645);
   }
   
   public static final class a
   {
-    public String id;
-    public int type;
+    public long dwO = -1L;
   }
 }
 

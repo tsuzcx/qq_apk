@@ -37,7 +37,7 @@ public final class BackwardSupportUtil$b
     return i;
   }
   
-  public static String ic(Context paramContext)
+  public static String in(Context paramContext)
   {
     AppMethodBeat.i(156066);
     Object localObject = paramContext.getResources().getDisplayMetrics();
@@ -66,7 +66,7 @@ public final class BackwardSupportUtil$b
     }
   }
   
-  public static String id(Context paramContext)
+  public static String io(Context paramContext)
   {
     AppMethodBeat.i(175899);
     paramContext = paramContext.getResources().getDisplayMetrics();

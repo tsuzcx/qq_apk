@@ -9,25 +9,25 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class MMVisiblePasswordEditText
   extends EditText
 {
-  final Drawable Gbn;
-  final Drawable Gbo;
-  private boolean Gbp;
-  public String mgy;
+  final Drawable HBc;
+  final Drawable HBd;
+  private boolean HBe;
+  public String mIy;
   
   public MMVisiblePasswordEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142318);
-    this.mgy = "";
-    this.Gbn = getResources().getDrawable(2131690744);
-    this.Gbo = getResources().getDrawable(2131690745);
-    this.Gbp = false;
-    caY();
+    this.mIy = "";
+    this.HBc = getResources().getDrawable(2131690744);
+    this.HBd = getResources().getDrawable(2131690745);
+    this.HBe = false;
+    cih();
     AppMethodBeat.o(142318);
   }
   
@@ -35,22 +35,22 @@ public class MMVisiblePasswordEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142319);
-    this.mgy = "";
-    this.Gbn = getResources().getDrawable(2131690744);
-    this.Gbo = getResources().getDrawable(2131690745);
-    this.Gbp = false;
-    caY();
+    this.mIy = "";
+    this.HBc = getResources().getDrawable(2131690744);
+    this.HBd = getResources().getDrawable(2131690745);
+    this.HBe = false;
+    cih();
     AppMethodBeat.o(142319);
   }
   
-  private void caY()
+  private void cih()
   {
     AppMethodBeat.i(142320);
-    this.Gbn.setBounds(0, 0, this.Gbn.getIntrinsicWidth(), this.Gbn.getIntrinsicHeight());
-    this.Gbo.setBounds(0, 0, this.Gbo.getIntrinsicWidth(), this.Gbo.getIntrinsicHeight());
-    ad.d("MicroMsg.MMVisiblePasswordEditText", "closeEye width %d height %d", new Object[] { Integer.valueOf(this.Gbn.getIntrinsicWidth()), Integer.valueOf(this.Gbn.getIntrinsicHeight()) });
-    eTm();
-    setHeight(this.Gbn.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
+    this.HBc.setBounds(0, 0, this.HBc.getIntrinsicWidth(), this.HBc.getIntrinsicHeight());
+    this.HBd.setBounds(0, 0, this.HBd.getIntrinsicWidth(), this.HBd.getIntrinsicHeight());
+    ac.d("MicroMsg.MMVisiblePasswordEditText", "closeEye width %d height %d", new Object[] { Integer.valueOf(this.HBc.getIntrinsicWidth()), Integer.valueOf(this.HBc.getIntrinsicHeight()) });
+    fiX();
+    setHeight(this.HBc.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
     setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -68,7 +68,7 @@ public class MMVisiblePasswordEditText
           AppMethodBeat.o(142317);
           return false;
         }
-        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMVisiblePasswordEditText.this.Gbn.getIntrinsicWidth())
+        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMVisiblePasswordEditText.this.HBc.getIntrinsicWidth())
         {
           paramAnonymousView = MMVisiblePasswordEditText.this;
           if (MMVisiblePasswordEditText.a(MMVisiblePasswordEditText.this)) {
@@ -89,15 +89,15 @@ public class MMVisiblePasswordEditText
     AppMethodBeat.o(142320);
   }
   
-  private void eTm()
+  private void fiX()
   {
     AppMethodBeat.i(142321);
     int i = getSelectionStart();
     int j = getSelectionEnd();
-    if (this.Gbp)
+    if (this.HBe)
     {
       setInputType(1);
-      eTn();
+      fiY();
     }
     for (;;)
     {
@@ -105,27 +105,27 @@ public class MMVisiblePasswordEditText
       AppMethodBeat.o(142321);
       return;
       setInputType(129);
-      eTo();
+      fiZ();
     }
   }
   
-  private void eTn()
+  private void fiY()
   {
     AppMethodBeat.i(142322);
-    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.Gbo, getCompoundDrawables()[3]);
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.HBd, getCompoundDrawables()[3]);
     AppMethodBeat.o(142322);
   }
   
-  private void eTo()
+  private void fiZ()
   {
     AppMethodBeat.i(142323);
-    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.Gbn, getCompoundDrawables()[3]);
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.HBc, getCompoundDrawables()[3]);
     AppMethodBeat.o(142323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMVisiblePasswordEditText
  * JD-Core Version:    0.7.0.1
  */

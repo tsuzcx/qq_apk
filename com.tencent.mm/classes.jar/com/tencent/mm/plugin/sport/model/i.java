@@ -6,22 +6,22 @@ import android.os.Bundle;
 public final class i
   extends MatrixCursor
 {
-  private Bundle dow;
+  private Bundle dmf;
   
   public i(String[] paramArrayOfString, Bundle paramBundle)
   {
     super(paramArrayOfString);
-    this.dow = paramBundle;
+    this.dmf = paramBundle;
   }
   
   public final Bundle getExtras()
   {
-    return this.dow;
+    return this.dmf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.i
  * JD-Core Version:    0.7.0.1
  */

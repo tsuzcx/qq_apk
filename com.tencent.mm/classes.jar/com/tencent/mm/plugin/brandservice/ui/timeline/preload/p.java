@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.k;
 import d.l;
+import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"resettableLazy", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazy;", "PROPTYPE", "manager", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazyManager;", "init", "Lkotlin/Function0;", "resettableManager", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazyManager;", "", "()V", "managedDelegates", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Resettable;", "getManagedDelegates", "()Ljava/util/LinkedList;", "register", "", "managed", "reset", "plugin-brandservice_release"})
 public final class p
 {
-  public static final <PROPTYPE> n<PROPTYPE> a(o paramo, a<? extends PROPTYPE> parama)
+  public final LinkedList<n> nHp;
+  
+  public p()
   {
-    AppMethodBeat.i(6732);
-    k.h(paramo, "manager");
-    k.h(parama, "init");
-    paramo = new n(paramo, parama);
-    AppMethodBeat.o(6732);
-    return paramo;
+    AppMethodBeat.i(6731);
+    this.nHp = new LinkedList();
+    AppMethodBeat.o(6731);
   }
 }
 

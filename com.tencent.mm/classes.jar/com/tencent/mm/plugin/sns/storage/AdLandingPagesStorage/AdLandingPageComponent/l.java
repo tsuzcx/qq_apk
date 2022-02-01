@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 public final class l
   extends p
 {
-  public String wVK;
-  public String wVL;
-  public int wVM;
-  public int wVN;
-  public int wVO;
+  public int yiA;
+  public int yiB;
+  public int yiC;
+  public String yiy;
+  public String yiz;
 }
 
 

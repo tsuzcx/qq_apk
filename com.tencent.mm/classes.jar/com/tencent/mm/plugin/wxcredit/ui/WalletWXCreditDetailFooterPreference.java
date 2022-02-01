@@ -14,10 +14,10 @@ public class WalletWXCreditDetailFooterPreference
   extends Preference
   implements View.OnClickListener
 {
-  private TextView BLi;
-  private TextView BLj;
+  private TextView Ddq;
+  private TextView Ddr;
   private LayoutInflater mInflater;
-  View.OnClickListener tOp;
+  View.OnClickListener uWS;
   
   public WalletWXCreditDetailFooterPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,18 +37,18 @@ public class WalletWXCreditDetailFooterPreference
   {
     AppMethodBeat.i(72359);
     super.onBindView(paramView);
-    this.BLi = ((TextView)paramView.findViewById(2131306854));
-    this.BLj = ((TextView)paramView.findViewById(2131306852));
-    this.BLi.setOnClickListener(this);
-    this.BLj.setOnClickListener(this);
+    this.Ddq = ((TextView)paramView.findViewById(2131306854));
+    this.Ddr = ((TextView)paramView.findViewById(2131306852));
+    this.Ddq.setOnClickListener(this);
+    this.Ddr.setOnClickListener(this);
     AppMethodBeat.o(72359);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(72360);
-    if (this.tOp != null) {
-      this.tOp.onClick(paramView);
+    if (this.uWS != null) {
+      this.uWS.onClick(paramView);
     }
     AppMethodBeat.o(72360);
   }

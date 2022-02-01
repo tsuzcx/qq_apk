@@ -25,7 +25,7 @@ public final class k
     d.g.b.k.h(paramCollection1, "oldValueParameters");
     d.g.b.k.h(parama, "newOwner");
     if (paramCollection.size() == paramCollection1.size()) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
     {
       paramCollection = (Throwable)new AssertionError("Different value parameters sizes: Enhanced = " + paramCollection.size() + ", Old = " + paramCollection1.size());
       AppMethodBeat.o(57732);
@@ -40,17 +40,17 @@ public final class k
       paramCollection = (l)((o)localObject1).first;
       Object localObject2 = (av)((o)localObject1).second;
       i = ((av)localObject2).getIndex();
-      localObject1 = ((av)localObject2).fxF();
-      f localf = ((av)localObject2).fyB();
+      localObject1 = ((av)localObject2).fQj();
+      f localf = ((av)localObject2).fRf();
       d.g.b.k.g(localf, "oldParameter.name");
-      ab localab = paramCollection.Jko;
-      boolean bool1 = paramCollection.JzI;
-      boolean bool2 = ((av)localObject2).fzw();
-      boolean bool3 = ((av)localObject2).fzx();
-      if (((av)localObject2).fzu() != null) {}
-      for (paramCollection = d.l.b.a.b.j.d.a.F((d.l.b.a.b.b.l)parama).fza().l(paramCollection.Jko);; paramCollection = null)
+      ab localab = paramCollection.KXI;
+      boolean bool1 = paramCollection.Lnb;
+      boolean bool2 = ((av)localObject2).fSa();
+      boolean bool3 = ((av)localObject2).fSb();
+      if (((av)localObject2).fRY() != null) {}
+      for (paramCollection = d.l.b.a.b.j.d.a.F((d.l.b.a.b.b.l)parama).fRE().l(paramCollection.KXI);; paramCollection = null)
       {
-        localObject2 = ((av)localObject2).fxG();
+        localObject2 = ((av)localObject2).fQk();
         d.g.b.k.g(localObject2, "oldParameter.source");
         paramCollection1.add(new aj(parama, null, i, (d.l.b.a.b.b.a.g)localObject1, localf, localab, bool1, bool2, bool3, paramCollection, (an)localObject2));
         break;
@@ -74,7 +74,7 @@ public final class k
         AppMethodBeat.o(57733);
         return null;
       }
-      localObject = locale.fxr();
+      localObject = locale.fPV();
       parame = (e)localObject;
       if (!(localObject instanceof d.l.b.a.b.d.a.c.a.l)) {
         parame = null;
@@ -88,7 +88,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.b.k
  * JD-Core Version:    0.7.0.1
  */

@@ -9,32 +9,32 @@ import android.view.ViewGroup;
 public abstract class o
   extends f
 {
-  private int Sg;
-  private int Sh;
+  private int Tb;
+  private int Tc;
   private LayoutInflater mInflater;
   
   @Deprecated
   public o(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.Sh = paramInt;
-    this.Sg = paramInt;
+    this.Tc = paramInt;
+    this.Tb = paramInt;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
   public final View newDropDownView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    return this.mInflater.inflate(this.Sh, paramViewGroup, false);
+    return this.mInflater.inflate(this.Tc, paramViewGroup, false);
   }
   
   public View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
-    return this.mInflater.inflate(this.Sg, paramViewGroup, false);
+    return this.mInflater.inflate(this.Tb, paramViewGroup, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.widget.o
  * JD-Core Version:    0.7.0.1
  */

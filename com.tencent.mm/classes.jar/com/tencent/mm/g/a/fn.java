@@ -3,13 +3,12 @@ package com.tencent.mm.g.a;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class fn
   extends b
 {
-  public a dhW;
-  public b dhX;
+  public a dfo;
+  public b dfp;
   
   public fn()
   {
@@ -18,31 +17,22 @@ public final class fn
   
   private fn(byte paramByte)
   {
-    AppMethodBeat.i(116017);
-    this.dhW = new a();
-    this.dhX = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116016);
+    this.dfo = new a();
+    this.dfp = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116017);
+    AppMethodBeat.o(116016);
   }
   
   public static final class a
   {
-    public Cursor dhY;
+    public String dfq;
   }
   
   public static final class b
   {
-    public String dhZ;
-    public int dia;
-    public String dib;
-    public long dic;
-    public int did;
-    public List die;
-    public List dif;
-    public int dig;
-    public int dih;
-    public int mediaType;
+    public Cursor dfh;
   }
 }
 

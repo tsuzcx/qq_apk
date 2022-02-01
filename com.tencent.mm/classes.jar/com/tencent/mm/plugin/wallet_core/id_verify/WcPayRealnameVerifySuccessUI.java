@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -20,11 +20,11 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WcPayRealnameVerifySuccessUI
   extends WalletBaseUI
 {
-  private ImageView jFL;
-  private TextView kEu;
-  private TextView kFd;
-  private Button zZQ;
-  private Button zZR;
+  private Button Bsk;
+  private Button Bsl;
+  private ImageView kgj;
+  private TextView lfN;
+  private TextView lgw;
   
   public int getLayoutId()
   {
@@ -39,22 +39,22 @@ public class WcPayRealnameVerifySuccessUI
     hideActionbarLine();
     showHomeBtn(false);
     setMMTitle("");
-    this.kEu = ((TextView)findViewById(2131307091));
-    this.kFd = ((TextView)findViewById(2131307090));
-    this.jFL = ((ImageView)findViewById(2131307092));
-    this.zZQ = ((Button)findViewById(2131307088));
-    this.zZR = ((Button)findViewById(2131307089));
+    this.lfN = ((TextView)findViewById(2131307091));
+    this.lgw = ((TextView)findViewById(2131307090));
+    this.kgj = ((ImageView)findViewById(2131307092));
+    this.Bsk = ((Button)findViewById(2131307088));
+    this.Bsl = ((Button)findViewById(2131307089));
     if (getInput().getInt("realname_verify_process_finish_err_jump") == 1)
     {
-      this.zZQ.setVisibility(0);
-      this.zZR.setVisibility(0);
-      this.jFL.setImageDrawable(am.i(getContext(), 2131690567, getResources().getColor(2131099804)));
+      this.Bsk.setVisibility(0);
+      this.Bsl.setVisibility(0);
+      this.kgj.setImageDrawable(am.k(getContext(), 2131690567, getResources().getColor(2131099804)));
       paramBundle = getInput().getString("realname_verify_process_finish_page");
-      if (!bt.isNullOrNil(paramBundle)) {
-        this.zZQ.setText(paramBundle);
+      if (!bs.isNullOrNil(paramBundle)) {
+        this.Bsk.setText(paramBundle);
       }
-      this.zZR.setText(2131755691);
-      this.zZQ.setOnClickListener(new View.OnClickListener()
+      this.Bsl.setText(2131755691);
+      this.Bsk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -63,7 +63,7 @@ public class WcPayRealnameVerifySuccessUI
           AppMethodBeat.o(70134);
         }
       });
-      this.zZR.setOnClickListener(new View.OnClickListener()
+      this.Bsl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -77,13 +77,13 @@ public class WcPayRealnameVerifySuccessUI
     {
       paramBundle = getInput().getString("realname_verify_process_finish_title");
       String str = getInput().getString("realname_verify_process_finish_desc");
-      if (!bt.isNullOrNil(paramBundle)) {
-        this.kEu.setText(paramBundle);
+      if (!bs.isNullOrNil(paramBundle)) {
+        this.lfN.setText(paramBundle);
       }
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
-        this.kFd.setText(str);
-        this.kFd.setVisibility(0);
+        this.lgw.setText(str);
+        this.lgw.setVisibility(0);
       }
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
@@ -97,14 +97,14 @@ public class WcPayRealnameVerifySuccessUI
       });
       AppMethodBeat.o(70137);
       return;
-      this.zZQ.setVisibility(8);
-      this.zZR.setVisibility(0);
-      this.jFL.setImageResource(2131691082);
+      this.Bsk.setVisibility(8);
+      this.Bsl.setVisibility(0);
+      this.kgj.setImageResource(2131691082);
       paramBundle = getInput().getString("realname_verify_process_finish_page");
-      if (!bt.isNullOrNil(paramBundle)) {
-        this.zZR.setText(paramBundle);
+      if (!bs.isNullOrNil(paramBundle)) {
+        this.Bsl.setText(paramBundle);
       }
-      this.zZR.setOnClickListener(new View.OnClickListener()
+      this.Bsl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {

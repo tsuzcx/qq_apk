@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class m
 {
-  private d JNc;
-  private g JNd;
-  private volatile boolean JNe;
-  protected volatile q JNf;
+  private d LAv;
+  private g LAw;
+  private volatile boolean LAx;
+  protected volatile q LAy;
   
   /* Error */
   public final q d(q paramq)
@@ -16,35 +16,35 @@ public class m
     //   0: ldc 17
     //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 25	d/l/b/a/b/h/m:JNf	Ld/l/b/a/b/h/q;
+    //   6: getfield 25	d/l/b/a/b/h/m:LAy	Ld/l/b/a/b/h/q;
     //   9: ifnonnull +14 -> 23
     //   12: aload_0
     //   13: monitorenter
     //   14: aload_0
-    //   15: getfield 25	d/l/b/a/b/h/m:JNf	Ld/l/b/a/b/h/q;
+    //   15: getfield 25	d/l/b/a/b/h/m:LAy	Ld/l/b/a/b/h/q;
     //   18: ifnull +17 -> 35
     //   21: aload_0
     //   22: monitorexit
     //   23: aload_0
-    //   24: getfield 25	d/l/b/a/b/h/m:JNf	Ld/l/b/a/b/h/q;
+    //   24: getfield 25	d/l/b/a/b/h/m:LAy	Ld/l/b/a/b/h/q;
     //   27: astore_1
     //   28: ldc 17
     //   30: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: aload_1
     //   34: areturn
     //   35: aload_0
-    //   36: getfield 30	d/l/b/a/b/h/m:JNc	Ld/l/b/a/b/h/d;
+    //   36: getfield 30	d/l/b/a/b/h/m:LAv	Ld/l/b/a/b/h/d;
     //   39: ifnull +44 -> 83
     //   42: aload_0
     //   43: aload_1
     //   44: invokeinterface 36 1 0
     //   49: aload_0
-    //   50: getfield 30	d/l/b/a/b/h/m:JNc	Ld/l/b/a/b/h/d;
+    //   50: getfield 30	d/l/b/a/b/h/m:LAv	Ld/l/b/a/b/h/d;
     //   53: aload_0
-    //   54: getfield 38	d/l/b/a/b/h/m:JNd	Ld/l/b/a/b/h/g;
+    //   54: getfield 38	d/l/b/a/b/h/m:LAw	Ld/l/b/a/b/h/g;
     //   57: invokeinterface 44 3 0
     //   62: checkcast 32	d/l/b/a/b/h/q
-    //   65: putfield 25	d/l/b/a/b/h/m:JNf	Ld/l/b/a/b/h/q;
+    //   65: putfield 25	d/l/b/a/b/h/m:LAy	Ld/l/b/a/b/h/q;
     //   68: aload_0
     //   69: monitorexit
     //   70: goto -47 -> 23
@@ -57,7 +57,7 @@ public class m
     //   82: athrow
     //   83: aload_0
     //   84: aload_1
-    //   85: putfield 25	d/l/b/a/b/h/m:JNf	Ld/l/b/a/b/h/q;
+    //   85: putfield 25	d/l/b/a/b/h/m:LAy	Ld/l/b/a/b/h/q;
     //   88: goto -20 -> 68
     //   91: astore_1
     //   92: goto -24 -> 68
@@ -78,23 +78,23 @@ public class m
   
   public final q e(q paramq)
   {
-    q localq = this.JNf;
-    this.JNf = paramq;
-    this.JNc = null;
-    this.JNe = true;
+    q localq = this.LAy;
+    this.LAy = paramq;
+    this.LAv = null;
+    this.LAx = true;
     return localq;
   }
   
-  public final int yf()
+  public final int xS()
   {
     AppMethodBeat.i(59500);
-    if (this.JNe)
+    if (this.LAx)
     {
-      i = this.JNf.yf();
+      i = this.LAy.xS();
       AppMethodBeat.o(59500);
       return i;
     }
-    int i = this.JNc.size();
+    int i = this.LAv.size();
     AppMethodBeat.o(59500);
     return i;
   }

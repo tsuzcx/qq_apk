@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.co.c;
+import com.tencent.mm.cn.c;
 import com.tencent.mm.plugin.wallet_core.d.d;
 
 final class s$21

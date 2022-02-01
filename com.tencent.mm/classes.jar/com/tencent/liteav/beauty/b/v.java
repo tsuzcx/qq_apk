@@ -1,7 +1,7 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
@@ -44,17 +44,17 @@ public class v
   {
     AppMethodBeat.i(15099);
     float f = r();
-    g localg = (g)this.r.get(0);
-    int i = GLES20.glGetUniformLocation(localg.p(), "texelWidthOffset");
-    int j = GLES20.glGetUniformLocation(localg.p(), "texelHeightOffset");
-    localg.a(i, f / this.e);
-    localg.a(j, 0.0F);
+    h localh = (h)this.r.get(0);
+    int i = GLES20.glGetUniformLocation(localh.p(), "texelWidthOffset");
+    int j = GLES20.glGetUniformLocation(localh.p(), "texelHeightOffset");
+    localh.a(i, f / this.e);
+    localh.a(j, 0.0F);
     f = q();
-    localg = (g)this.r.get(1);
-    i = GLES20.glGetUniformLocation(localg.p(), "texelWidthOffset");
-    j = GLES20.glGetUniformLocation(localg.p(), "texelHeightOffset");
-    localg.a(i, 0.0F);
-    localg.a(j, f / this.f);
+    localh = (h)this.r.get(1);
+    i = GLES20.glGetUniformLocation(localh.p(), "texelWidthOffset");
+    j = GLES20.glGetUniformLocation(localh.p(), "texelHeightOffset");
+    localh.a(i, 0.0F);
+    localh.a(j, f / this.f);
     AppMethodBeat.o(15099);
   }
 }

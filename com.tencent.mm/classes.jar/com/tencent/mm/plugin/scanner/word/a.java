@@ -2,12 +2,7 @@ package com.tencent.mm.plugin.scanner.word;
 
 public abstract interface a<T, R>
 {
-  public abstract void a(T paramT, a<T, R> parama);
-  
-  public static abstract interface a<T, R>
-  {
-    public abstract void E(T paramT, R paramR);
-  }
+  public abstract void a(T paramT, a.a<T, R> parama);
 }
 
 

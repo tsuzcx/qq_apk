@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bwt;
-import com.tencent.mm.protocal.protobuf.bwu;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cbn;
+import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
-  extends a<bwt, bwu>
+  extends a<cbn, cbo>
 {
   public b(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(64871);
-    bwt localbwt = new bwt();
-    localbwt.dlB = paramString1;
-    localbwt.DSY = paramString2;
-    localbwt.DSZ = com.tencent.mm.bx.b.cd(paramArrayOfByte);
-    this.sYa = localbwt;
+    cbn localcbn = new cbn();
+    localcbn.djj = paramString1;
+    localcbn.Fpu = paramString2;
+    localcbn.Fpv = com.tencent.mm.bw.b.cc(paramArrayOfByte);
+    this.ugo = localcbn;
     AppMethodBeat.o(64871);
   }
   
-  protected final void cKU()
+  protected final void cYA()
   {
     AppMethodBeat.i(64872);
-    ad.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiStart ");
+    ac.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiStart ");
     AppMethodBeat.o(64872);
   }
   
-  protected final void cKV()
+  protected final void cYB()
   {
     AppMethodBeat.i(64873);
-    ad.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiEnd ");
+    ac.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiEnd ");
     AppMethodBeat.o(64873);
   }
   

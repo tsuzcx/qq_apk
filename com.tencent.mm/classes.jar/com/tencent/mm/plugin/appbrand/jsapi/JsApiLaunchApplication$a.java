@@ -6,42 +6,42 @@ import com.tencent.mm.pluginsdk.model.app.am;
 final class JsApiLaunchApplication$a
   implements am
 {
-  volatile boolean doI;
-  volatile boolean gWb;
-  volatile boolean jxM;
-  volatile boolean jxN;
-  a jxO;
+  volatile boolean dmq;
+  volatile boolean hwA;
+  volatile boolean jYi;
+  volatile boolean jYj;
+  a jYk;
   
   JsApiLaunchApplication$a(a parama)
   {
-    this.jxO = parama;
+    this.jYk = parama;
   }
   
-  final void fN(boolean paramBoolean)
+  final void gj(boolean paramBoolean)
   {
     AppMethodBeat.i(45508);
-    this.doI = paramBoolean;
-    this.jxN = true;
-    if ((this.gWb) && (this.jxO != null)) {
-      this.jxO.t(paramBoolean, this.jxM);
+    this.dmq = paramBoolean;
+    this.jYj = true;
+    if ((this.hwA) && (this.jYk != null)) {
+      this.jYk.u(paramBoolean, this.jYi);
     }
     AppMethodBeat.o(45508);
   }
   
-  public final void u(boolean paramBoolean1, boolean paramBoolean2)
+  public final void v(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(195800);
-    this.gWb = true;
-    this.jxM = paramBoolean1;
-    if ((this.jxN) && (this.jxO != null)) {
-      this.jxO.t(this.doI, paramBoolean1);
+    AppMethodBeat.i(186563);
+    this.hwA = true;
+    this.jYi = paramBoolean1;
+    if ((this.jYj) && (this.jYk != null)) {
+      this.jYk.u(this.dmq, paramBoolean1);
     }
-    AppMethodBeat.o(195800);
+    AppMethodBeat.o(186563);
   }
   
   static abstract interface a
   {
-    public abstract void t(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void u(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

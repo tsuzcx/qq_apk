@@ -1,67 +1,189 @@
 package com.tencent.mm.plugin.finder.upload.action;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
-import com.tencent.mm.plugin.finder.cgi.e;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.loader.g.a.a;
+import com.tencent.mm.loader.g.a.g;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.k;
 import d.l;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedId", "", "objectNonceId", "", "like", "", "scene", "", "uicallback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;JLjava/lang/String;ZILcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "getFeedId", "()J", "getFinderObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getLike", "()Z", "getObjectNonceId", "()Ljava/lang/String;", "getScene", "()I", "doSomething", "", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "toString", "uniqueId", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/action/FavActionMgr;", "", "()V", "actionQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/plugin/finder/upload/action/FavActionTask;", "feedMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/upload/action/FavAction;", "queue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "tryTask", "Ljava/lang/Runnable;", "doFav", "", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "like", "", "scene", "", "callback", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionMgr$ILikeActionCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "doPost", "action", "favCount", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "isFav", "isWxScene", "removeLikeCache", "removeUnuseAction", "tryNext", "Companion", "KeyData", "plugin-finder_release"})
 public final class c
-  extends b
 {
-  private final dzp contextObj;
-  public final long feedId;
-  public final String objectNonceId;
-  public final FinderItem qRJ;
-  public final boolean qRK;
-  public final int scene;
+  private static final String TAG = "Finder.FavActionMgr";
+  private static final c rNM;
+  public static final c.a rNN;
+  private com.tencent.mm.loader.g.d<d> rMy;
+  private final Runnable rMz;
+  private final ConcurrentLinkedQueue<e> rNK;
+  private final ConcurrentHashMap<Long, b> rNL;
   
-  public c(FinderItem paramFinderItem, long paramLong, String paramString, boolean paramBoolean, dzp paramdzp)
+  static
   {
-    AppMethodBeat.i(199557);
-    this.qRJ = paramFinderItem;
-    this.feedId = paramLong;
-    this.objectNonceId = paramString;
-    this.qRK = paramBoolean;
-    this.scene = 2;
-    this.contextObj = paramdzp;
-    AppMethodBeat.o(199557);
+    AppMethodBeat.i(203526);
+    rNN = new c.a((byte)0);
+    TAG = "Finder.FavActionMgr";
+    rNM = new c();
+    AppMethodBeat.o(203526);
   }
   
-  public final void a(final e.b paramb)
+  public c()
   {
-    AppMethodBeat.i(167807);
-    k.h(paramb, "callback");
-    super.a(paramb);
-    new e(this, this.contextObj).auK().g((a)new a(this, paramb));
-    AppMethodBeat.o(167807);
+    AppMethodBeat.i(203525);
+    this.rMy = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new a(100), new g(1, (byte)0), 1, "finder_action_fav_post_quene"));
+    this.rNK = new ConcurrentLinkedQueue();
+    this.rNL = new ConcurrentHashMap();
+    this.rMz = ((Runnable)new c.c(this));
+    AppMethodBeat.o(203525);
   }
   
-  public final String abi()
+  private final void a(e parame)
   {
-    AppMethodBeat.i(167806);
-    String str = "id_" + this.feedId + '_' + this.qRK;
-    AppMethodBeat.o(167806);
-    return str;
+    AppMethodBeat.i(203524);
+    this.rMy.a((com.tencent.mm.loader.g.c)new d(parame), (com.tencent.mm.loader.g.f)new c.b(this, parame));
+    AppMethodBeat.o(203524);
   }
   
-  public final String toString()
+  public final void a(b paramb)
   {
-    AppMethodBeat.i(167805);
-    String str = "action_" + this.feedId + '_' + this.qRK + '_' + this.scene + '_' + this.qRH;
-    AppMethodBeat.o(167805);
-    return str;
+    AppMethodBeat.i(203521);
+    k.h(paramb, "action");
+    b localb = (b)this.rNL.get(Long.valueOf(paramb.dig));
+    if (localb != null)
+    {
+      String str;
+      StringBuilder localStringBuilder;
+      if (h.DEBUG)
+      {
+        str = TAG;
+        localStringBuilder = new StringBuilder("removeLikeCache ").append(paramb).append(" result ");
+        if (paramb.rNV < localb.rNV) {
+          break label130;
+        }
+      }
+      label130:
+      for (boolean bool = true;; bool = false)
+      {
+        ac.i(str, bool);
+        if (paramb.rNV >= localb.rNV) {
+          this.rNL.remove(Long.valueOf(paramb.dig));
+        }
+        AppMethodBeat.o(203521);
+        return;
+      }
+    }
+    AppMethodBeat.o(203521);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class a<_Ret, _Var>
-    implements a<_Ret, _Var>
+  public final void cCq()
   {
-    a(c paramc, e.b paramb) {}
+    AppMethodBeat.i(203522);
+    e locale;
+    boolean bool;
+    do
+    {
+      if (this.rNK.size() <= 0)
+      {
+        AppMethodBeat.o(203522);
+        return;
+      }
+      locale = (e)this.rNK.poll();
+      bool = locale.isValid();
+      ac.i(TAG, "tryNext isValid:" + bool + " action:" + locale + " size:" + this.rNK.size());
+    } while (!bool);
+    k.g(locale, "action");
+    a(locale);
+    AppMethodBeat.o(203522);
+  }
+  
+  public final boolean h(FinderObject paramFinderObject)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(203519);
+    k.h(paramFinderObject, "feed");
+    if (paramFinderObject.id == 0L)
+    {
+      if (paramFinderObject.favFlag == 1)
+      {
+        AppMethodBeat.o(203519);
+        return true;
+      }
+      AppMethodBeat.o(203519);
+      return false;
+    }
+    if (paramFinderObject.favFlag == 1) {
+      bool = true;
+    }
+    Object localObject = (b)this.rNL.get(Long.valueOf(paramFinderObject.id));
+    if (localObject != null) {
+      bool = ((b)localObject).rNH;
+    }
+    String str;
+    StringBuilder localStringBuilder;
+    if (h.DEBUG)
+    {
+      str = TAG;
+      localStringBuilder = new StringBuilder("isLike test ").append(paramFinderObject.id).append(" isLike:");
+      localObject = (b)this.rNL.get(Long.valueOf(paramFinderObject.id));
+      if (localObject == null) {
+        break label195;
+      }
+    }
+    label195:
+    for (localObject = Boolean.valueOf(((b)localObject).rNH);; localObject = null)
+    {
+      ac.i(str, localObject + " favFlag:" + paramFinderObject.favFlag + " result:" + bool);
+      AppMethodBeat.o(203519);
+      return bool;
+    }
+  }
+  
+  public final int i(FinderObject paramFinderObject)
+  {
+    AppMethodBeat.i(203520);
+    k.h(paramFinderObject, "feed");
+    if (paramFinderObject.id == 0L)
+    {
+      i = paramFinderObject.favCount;
+      AppMethodBeat.o(203520);
+      return i;
+    }
+    boolean bool1;
+    b localb;
+    if (paramFinderObject.favFlag == 1)
+    {
+      bool1 = true;
+      localb = (b)this.rNL.get(Long.valueOf(paramFinderObject.id));
+      if (localb == null) {
+        break label105;
+      }
+    }
+    label105:
+    for (boolean bool2 = localb.rNH;; bool2 = bool1)
+    {
+      if ((!bool1) || (true == bool2)) {
+        break label111;
+      }
+      i = paramFinderObject.favCount;
+      AppMethodBeat.o(203520);
+      return i - 1;
+      bool1 = false;
+      break;
+    }
+    label111:
+    if ((!bool1) && (bool2))
+    {
+      i = paramFinderObject.favCount;
+      AppMethodBeat.o(203520);
+      return i + 1;
+    }
+    int i = paramFinderObject.favCount;
+    AppMethodBeat.o(203520);
+    return i;
   }
 }
 

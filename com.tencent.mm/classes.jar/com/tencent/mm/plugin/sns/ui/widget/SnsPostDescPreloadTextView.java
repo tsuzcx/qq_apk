@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.PLTextView;
+import com.tencent.mm.kiss.widget.textview.a.a;
 import com.tencent.mm.kiss.widget.textview.c;
 import com.tencent.mm.kiss.widget.textview.d;
 
@@ -12,8 +13,8 @@ public class SnsPostDescPreloadTextView
 {
   private static int hitCount = 0;
   private static int missCount = 0;
-  private boolean xYq = true;
-  private int xYr = 0;
+  private boolean zln = true;
+  private int zlo = 0;
   
   public SnsPostDescPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,22 +29,22 @@ public class SnsPostDescPreloadTextView
   private int getPostDescWidth()
   {
     AppMethodBeat.i(100551);
-    if (this.xYr > 0)
+    if (this.zlo > 0)
     {
-      i = this.xYr;
+      i = this.zlo;
       AppMethodBeat.o(100551);
       return i;
     }
-    int i = f.dEn().getViewWidth();
+    int i = f.dSL().getViewWidth();
     AppMethodBeat.o(100551);
     return i;
   }
   
-  public final com.tencent.mm.kiss.widget.textview.a.a agF()
+  public final a ahW()
   {
     AppMethodBeat.i(100547);
-    this.xYq = true;
-    com.tencent.mm.kiss.widget.textview.a.a locala = f.dEn().getTextViewConfig();
+    this.zln = true;
+    a locala = f.dSL().getTextViewConfig();
     AppMethodBeat.o(100547);
     return locala;
   }
@@ -64,25 +65,25 @@ public class SnsPostDescPreloadTextView
     }
     if (paramInt < 7)
     {
-      if (!this.xYq) {
+      if (!this.zln) {
         break label147;
       }
-      setConfig(f.dEn().dEo());
-      this.xYq = false;
+      setConfig(f.dSL().dSM());
+      this.zln = false;
       paramInt = i;
     }
     for (;;)
     {
       if (paramInt != 0)
       {
-        com.tencent.mm.kiss.widget.textview.f localf2 = c.ggt.a(getConfig(), getText());
+        com.tencent.mm.kiss.widget.textview.f localf2 = c.gkZ.a(getConfig(), getText());
         com.tencent.mm.kiss.widget.textview.f localf1 = localf2;
         if (localf2 == null)
         {
           paramInt = getPostDescWidth();
           localf1 = localf2;
           if (paramInt > 0) {
-            localf1 = d.a(getText(), paramInt, getConfig()).agD();
+            localf1 = d.a(getText(), paramInt, getConfig()).ahU();
           }
         }
         if (localf1 != null) {
@@ -91,10 +92,10 @@ public class SnsPostDescPreloadTextView
       }
       AppMethodBeat.o(100548);
       return;
-      if (!this.xYq)
+      if (!this.zln)
       {
-        setConfig(f.dEn().getTextViewConfig());
-        this.xYq = true;
+        setConfig(f.dSL().getTextViewConfig());
+        this.zln = true;
         paramInt = i;
       }
       else
@@ -107,31 +108,17 @@ public class SnsPostDescPreloadTextView
   
   public void setSpecialWidth(int paramInt)
   {
-    this.xYr = paramInt;
+    this.zlo = paramInt;
   }
   
   public final void x(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(100550);
-    Context localContext;
-    float f;
-    if (paramCharSequence != null)
-    {
-      localContext = getContext();
-      paramCharSequence = paramCharSequence.toString();
-      f = getConfig().textSize;
-      if (!(getTag() instanceof com.tencent.mm.pluginsdk.ui.c.a)) {
-        break label83;
-      }
+    if (paramCharSequence != null) {
+      setText(paramCharSequence, true);
     }
-    label83:
-    for (boolean bool = com.tencent.mm.plugin.sns.g.a.anZ(((com.tencent.mm.pluginsdk.ui.c.a)getTag()).getUserName());; bool = false)
-    {
-      setText(g.a(localContext, paramCharSequence, f, bool), true);
-      missCount += 1;
-      AppMethodBeat.o(100550);
-      return;
-    }
+    missCount += 1;
+    AppMethodBeat.o(100550);
   }
   
   public final void y(CharSequence paramCharSequence)

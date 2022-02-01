@@ -11,10 +11,10 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.mmsight.model.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.nio.ByteBuffer;
 
 @TargetApi(16)
@@ -24,159 +24,159 @@ public class h
   private final int TIMEOUT_USEC;
   private int audioBitrate;
   int audioSampleRate;
-  volatile com.tencent.mm.audio.b.c cXI;
-  volatile boolean dsU;
-  private int gnH;
-  z gqj;
-  final Object gqv;
-  private boolean guv;
-  private int hBe;
-  int kQL;
+  volatile com.tencent.mm.audio.b.c cVe;
+  volatile boolean dqE;
+  private int gOt;
+  z gQR;
+  final Object gRd;
+  private boolean gVa;
+  private int ibF;
+  int lsl;
   private MediaFormat mAudioFormat;
   private long startTime;
-  private MediaCodec.BufferInfo tDY;
-  long tDZ;
-  int tEa;
-  int tEb;
-  long tEc;
-  long tEd;
-  boolean tEe;
-  private boolean tEf;
-  public c.a tEg;
-  o tEh;
-  private final Object tEi;
-  volatile boolean tEj;
-  boolean tEk;
-  ap tEl;
-  protected boolean tEm;
-  boolean tEn;
-  final Object tEo;
-  c.b tEp;
-  long tEq;
-  private long tEr;
-  boolean tEs;
-  ap tEt;
-  Runnable tEu;
-  private com.tencent.mm.audio.b.c.a tEv;
+  private boolean uMA;
+  public c.a uMB;
+  o uMC;
+  private final Object uMD;
+  volatile boolean uME;
+  boolean uMF;
+  ao uMG;
+  protected boolean uMH;
+  boolean uMI;
+  final Object uMJ;
+  c.b uMK;
+  long uML;
+  private long uMM;
+  boolean uMN;
+  ao uMO;
+  Runnable uMP;
+  private com.tencent.mm.audio.b.c.a uMQ;
+  private MediaCodec.BufferInfo uMt;
+  long uMu;
+  int uMv;
+  int uMw;
+  long uMx;
+  long uMy;
+  boolean uMz;
   
   public h(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(89482);
-    this.tDZ = 0L;
+    this.uMu = 0L;
     this.TIMEOUT_USEC = 10000;
-    this.tEe = false;
-    this.tEf = false;
-    this.tEg = null;
+    this.uMz = false;
+    this.uMA = false;
+    this.uMB = null;
     this.startTime = 0L;
-    this.gqv = new Object();
-    this.tEi = new Object();
-    this.tEj = false;
-    this.tEk = true;
-    this.guv = false;
-    this.tEl = new ap(Looper.getMainLooper())
+    this.gRd = new Object();
+    this.uMD = new Object();
+    this.uME = false;
+    this.uMF = true;
+    this.gVa = false;
+    this.uMG = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(89477);
-        if (h.this.tEg != null)
+        if (h.this.uMB != null)
         {
-          h.this.tEg.aoB();
-          h.this.tEg = null;
+          h.this.uMB.avs();
+          h.this.uMB = null;
         }
         AppMethodBeat.o(89477);
       }
     };
-    this.cXI = null;
-    this.tEo = new byte[0];
-    this.dsU = false;
-    this.tEq = 0L;
-    this.tEr = -1L;
-    this.tEs = false;
-    this.tEu = new Runnable()
+    this.cVe = null;
+    this.uMJ = new byte[0];
+    this.dqE = false;
+    this.uML = 0L;
+    this.uMM = -1L;
+    this.uMN = false;
+    this.uMP = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(89478);
-        if (h.this.cXI == null)
+        if (h.this.cVe == null)
         {
           AppMethodBeat.o(89478);
           return;
         }
-        h.this.tEs = true;
-        h.this.cQi();
+        h.this.uMN = true;
+        h.this.ddQ();
         AppMethodBeat.o(89478);
       }
     };
-    this.tEv = new com.tencent.mm.audio.b.c.a()
+    this.uMQ = new com.tencent.mm.audio.b.c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void cf(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(89480);
-        ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "on rec error, %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "on rec error, %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         AppMethodBeat.o(89480);
       }
       
-      public final void w(byte[] arg1, int paramAnonymousInt)
+      public final void u(byte[] arg1, int paramAnonymousInt)
       {
         AppMethodBeat.i(89479);
-        h.this.tEl.sendEmptyMessage(0);
+        h.this.uMG.sendEmptyMessage(0);
         paramAnonymousInt = 0;
-        if (!h.this.tEe) {
+        if (!h.this.uMz) {
           paramAnonymousInt = 1;
         }
         if (paramAnonymousInt == 0) {
-          h.this.kQL += 128;
+          h.this.lsl += 128;
         }
-        boolean bool = h.this.tEm;
+        boolean bool = h.this.uMH;
         h localh;
         if (paramAnonymousInt == 0)
         {
           localh = h.this;
-          if (!localh.tEk) {
+          if (!localh.uMF) {
             break label207;
           }
-          if (!localh.tEj) {
+          if (!localh.uME) {
             break label245;
           }
         }
         for (;;)
         {
-          if ((bool) && (!h.this.tEs)) {}
-          synchronized (h.this.tEo)
+          if ((bool) && (!h.this.uMN)) {}
+          synchronized (h.this.uMJ)
           {
-            if (h.this.tEp != null)
+            if (h.this.uMK != null)
             {
-              ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "do aac stop callback");
-              h.this.tEp.aoA();
-              h.this.tEp = null;
-              h.this.tEn = true;
-              h.this.tEs = true;
-              h.this.tEt.removeCallbacks(h.this.tEu);
-              h.this.tEt.post(h.this.tEu);
+              ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "do aac stop callback");
+              h.this.uMK.avr();
+              h.this.uMK = null;
+              h.this.uMI = true;
+              h.this.uMN = true;
+              h.this.uMO.removeCallbacks(h.this.uMP);
+              h.this.uMO.post(h.this.uMP);
               AppMethodBeat.o(89479);
               return;
               label207:
-              synchronized (localh.gqv)
+              synchronized (localh.gRd)
               {
-                if (!localh.tEj) {}
+                if (!localh.uME) {}
               }
               label245:
-              if (0L == localh.tDZ) {
-                localh.tDZ = System.nanoTime();
+              if (0L == localh.uMu) {
+                localh.uMu = System.nanoTime();
               }
-              if ((localh.tEh != null) && (localh.tEh.tEQ <= 0L)) {
-                localh.tEh.tEQ = System.nanoTime();
+              if ((localh.uMC != null) && (localh.uMC.uNl <= 0L)) {
+                localh.uMC.uNl = System.nanoTime();
               }
-              if (localh.gqj == null) {
+              if (localh.gQR == null) {
                 continue;
               }
-              if (localh.dsU)
+              if (localh.dqE)
               {
-                ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "not start now");
+                ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "not start now");
                 continue;
               }
-              if (localh.gqj == null) {
-                ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "send audio to encoder error, encoder is null, end:".concat(String.valueOf(bool)));
+              if (localh.gQR == null) {
+                ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "send audio to encoder error, encoder is null, end:".concat(String.valueOf(bool)));
               }
               for (;;)
               {
@@ -184,129 +184,129 @@ public class h
                 break;
                 try
                 {
-                  ??? = localh.gqj.getInputBuffers();
-                  paramAnonymousInt = localh.gqj.dequeueInputBuffer(10000L);
-                  localh.tEa = paramAnonymousInt;
+                  ??? = localh.gQR.getInputBuffers();
+                  paramAnonymousInt = localh.gQR.dequeueInputBuffer(10000L);
+                  localh.uMv = paramAnonymousInt;
                   if (paramAnonymousInt < 0)
                   {
-                    ad.d("MicroMsg.MMSightAACMediaCodecRecorder", "audio no input available, drain first");
+                    ac.d("MicroMsg.MMSightAACMediaCodecRecorder", "audio no input available, drain first");
                     paramAnonymousInt = 0;
                     while (paramAnonymousInt < 5)
                     {
                       localh.drainEncoder(false);
-                      localh.tEa = localh.gqj.dequeueInputBuffer(10000L);
-                      if (localh.tEa >= 0) {
+                      localh.uMv = localh.gQR.dequeueInputBuffer(10000L);
+                      if (localh.uMv >= 0) {
                         break;
                       }
                       paramAnonymousInt += 1;
                     }
                   }
-                  if (localh.gqj != null) {
+                  if (localh.gQR != null) {
                     break label488;
                   }
-                  ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "send audio to encoder error, encoder is null, end:".concat(String.valueOf(bool)));
+                  ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "send audio to encoder error, encoder is null, end:".concat(String.valueOf(bool)));
                 }
                 catch (Throwable ???)
                 {
-                  ad.e("MicroMsg.MMSightAACMediaCodecRecorder", "_offerAudioEncoder exception " + ???.getMessage());
+                  ac.e("MicroMsg.MMSightAACMediaCodecRecorder", "_offerAudioEncoder exception " + ???.getMessage());
                 }
                 continue;
                 label488:
-                if (localh.tEa >= 0)
+                if (localh.uMv >= 0)
                 {
-                  ??? = ???[localh.tEa];
+                  ??? = ???[localh.uMv];
                   ((ByteBuffer)???).clear();
                   ((ByteBuffer)???).put(???);
                   ((ByteBuffer)???).position(0);
-                  localh.tEb = ???.length;
-                  localh.tEc = System.nanoTime();
-                  localh.tEc -= localh.tEb / localh.audioSampleRate / 1000000000;
-                  if (localh.tEb == -3) {
-                    ad.e("MicroMsg.MMSightAACMediaCodecRecorder", "Audio read error");
+                  localh.uMw = ???.length;
+                  localh.uMx = System.nanoTime();
+                  localh.uMx -= localh.uMw / localh.audioSampleRate / 1000000000;
+                  if (localh.uMw == -3) {
+                    ac.e("MicroMsg.MMSightAACMediaCodecRecorder", "Audio read error");
                   }
-                  long l2 = localh.tEc;
-                  if (localh.tEh != null) {}
-                  for (long l1 = localh.tEh.tEQ;; l1 = localh.tDZ)
+                  long l2 = localh.uMx;
+                  if (localh.uMC != null) {}
+                  for (long l1 = localh.uMC.uNl;; l1 = localh.uMu)
                   {
-                    localh.tEd = ((l2 - l1) / 1000L);
-                    localh.tEd -= localh.tEq * 1000L;
-                    ad.v("MicroMsg.MMSightAACMediaCodecRecorder", "queueing " + localh.tEb + " audio bytes with pts " + localh.tEd + ", end:" + bool + ", enqueue:" + localh.tEa);
+                    localh.uMy = ((l2 - l1) / 1000L);
+                    localh.uMy -= localh.uML * 1000L;
+                    ac.v("MicroMsg.MMSightAACMediaCodecRecorder", "queueing " + localh.uMw + " audio bytes with pts " + localh.uMy + ", end:" + bool + ", enqueue:" + localh.uMv);
                     if (!bool) {
                       break label753;
                     }
-                    ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "EOS received in sendAudioToEncoder");
-                    localh.gqj.a(localh.tEa, localh.tEb, localh.tEd, 4);
+                    ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "EOS received in sendAudioToEncoder");
+                    localh.gQR.a(localh.uMv, localh.uMw, localh.uMy, 4);
                     break;
                   }
                   label753:
-                  localh.gqj.a(localh.tEa, localh.tEb, localh.tEd, 0);
+                  localh.gQR.a(localh.uMv, localh.uMw, localh.uMy, 0);
                 }
               }
             }
-            ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "aac stop callback is null");
+            ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "aac stop callback is null");
           }
         }
       }
     };
     this.audioBitrate = paramInt2;
     this.audioSampleRate = paramInt1;
-    this.gnH = paramInt3;
-    if (this.gnH <= 0) {
-      this.gnH = 1;
+    this.gOt = paramInt3;
+    if (this.gOt <= 0) {
+      this.gOt = 1;
     }
-    this.tEh = null;
-    this.tEk = ((b)g.ab(b.class)).a(b.a.pqb, true);
-    this.guv = paramBoolean;
-    ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "create MMSightAACMediaCodecRecorder, audioBitrate: %s, audioSampleRate: %s, audioChannelCount:%s, isUseFFmpegMuxer:%s", new Object[] { Integer.valueOf(this.audioBitrate), Integer.valueOf(this.audioSampleRate), Integer.valueOf(this.gnH), Boolean.valueOf(this.guv) });
+    this.uMC = null;
+    this.uMF = ((b)g.ab(b.class)).a(b.a.pTM, true);
+    this.gVa = paramBoolean;
+    ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "create MMSightAACMediaCodecRecorder, audioBitrate: %s, audioSampleRate: %s, audioChannelCount:%s, isUseFFmpegMuxer:%s", new Object[] { Integer.valueOf(this.audioBitrate), Integer.valueOf(this.audioSampleRate), Integer.valueOf(this.gOt), Boolean.valueOf(this.gVa) });
     AppMethodBeat.o(89482);
   }
   
-  private void cQj()
+  private void ddR()
   {
     AppMethodBeat.i(89491);
-    if ((this.tEj) || (0L == this.startTime))
+    if ((this.uME) || (0L == this.startTime))
     {
       AppMethodBeat.o(89491);
       return;
     }
-    this.tEj = true;
+    this.uME = true;
     try
     {
-      if (this.gqj != null)
+      if (this.gQR != null)
       {
-        ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "stop encoder");
-        this.gqj.stop();
-        this.gqj.release();
-        this.gqj = null;
+        ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "stop encoder");
+        this.gQR.stop();
+        this.gQR.release();
+        this.gQR = null;
       }
       return;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.MMSightAACMediaCodecRecorder", "clear error: %s", new Object[] { localException.getMessage() });
+      ac.e("MicroMsg.MMSightAACMediaCodecRecorder", "clear error: %s", new Object[] { localException.getMessage() });
       return;
     }
     finally
     {
-      this.gqj = null;
+      this.gQR = null;
       AppMethodBeat.o(89491);
     }
   }
   
   /* Error */
-  public int D(int paramInt, String arg2)
+  public int E(int paramInt, String arg2)
   {
     // Byte code:
     //   0: ldc 218
     //   2: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 88	com/tencent/mm/plugin/mmsight/model/a/h:tEf	Z
+    //   6: getfield 88	com/tencent/mm/plugin/mmsight/model/a/h:uMA	Z
     //   9: ifne +45 -> 54
     //   12: aload_0
-    //   13: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
+    //   13: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
     //   16: ifnull +38 -> 54
     //   19: aload_0
-    //   20: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:tEp	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
+    //   20: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:uMK	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
     //   23: ifnonnull +409 -> 432
     //   26: iconst_1
     //   27: istore_3
@@ -319,16 +319,16 @@ public class h
     //   38: iload_3
     //   39: invokestatic 176	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   42: aastore
-    //   43: invokestatic 213	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   43: invokestatic 213	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   46: aload_0
-    //   47: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
-    //   50: invokevirtual 228	com/tencent/mm/audio/b/c:Ob	()Z
+    //   47: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
+    //   50: invokevirtual 228	com/tencent/mm/audio/b/c:NX	()Z
     //   53: pop
     //   54: aload_0
-    //   55: getfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gqj	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   55: getfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gQR	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   58: ifnull +55 -> 113
     //   61: aload_0
-    //   62: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:tEp	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
+    //   62: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:uMK	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
     //   65: ifnonnull +372 -> 437
     //   68: iconst_1
     //   69: istore_3
@@ -341,39 +341,39 @@ public class h
     //   80: iload_3
     //   81: invokestatic 176	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   84: aastore
-    //   85: invokestatic 213	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   85: invokestatic 213	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   88: aload_0
-    //   89: invokevirtual 233	com/tencent/mm/plugin/mmsight/model/a/h:ajF	()V
+    //   89: invokevirtual 233	com/tencent/mm/plugin/mmsight/model/a/h:aqE	()V
     //   92: aload_0
-    //   93: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:tEp	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
+    //   93: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:uMK	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
     //   96: ifnull +17 -> 113
     //   99: aload_0
-    //   100: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:tEp	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
+    //   100: getfield 220	com/tencent/mm/plugin/mmsight/model/a/h:uMK	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
     //   103: invokeinterface 238 1 0
     //   108: aload_0
     //   109: aconst_null
-    //   110: putfield 220	com/tencent/mm/plugin/mmsight/model/a/h:tEp	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
+    //   110: putfield 220	com/tencent/mm/plugin/mmsight/model/a/h:uMK	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
     //   113: aload_0
     //   114: iconst_0
-    //   115: putfield 240	com/tencent/mm/plugin/mmsight/model/a/h:kQL	I
+    //   115: putfield 240	com/tencent/mm/plugin/mmsight/model/a/h:lsl	I
     //   118: aload_0
     //   119: iconst_0
-    //   120: putfield 242	com/tencent/mm/plugin/mmsight/model/a/h:tEm	Z
+    //   120: putfield 242	com/tencent/mm/plugin/mmsight/model/a/h:uMH	Z
     //   123: aload_0
-    //   124: getfield 117	com/tencent/mm/plugin/mmsight/model/a/h:tEo	Ljava/lang/Object;
+    //   124: getfield 117	com/tencent/mm/plugin/mmsight/model/a/h:uMJ	Ljava/lang/Object;
     //   127: astore_2
     //   128: aload_2
     //   129: monitorenter
     //   130: aload_0
     //   131: iconst_0
-    //   132: putfield 244	com/tencent/mm/plugin/mmsight/model/a/h:tEn	Z
+    //   132: putfield 244	com/tencent/mm/plugin/mmsight/model/a/h:uMI	Z
     //   135: aload_0
     //   136: aconst_null
-    //   137: putfield 220	com/tencent/mm/plugin/mmsight/model/a/h:tEp	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
+    //   137: putfield 220	com/tencent/mm/plugin/mmsight/model/a/h:uMK	Lcom/tencent/mm/plugin/mmsight/model/a/c$b;
     //   140: aload_2
     //   141: monitorexit
     //   142: aload_0
-    //   143: getfield 88	com/tencent/mm/plugin/mmsight/model/a/h:tEf	Z
+    //   143: getfield 88	com/tencent/mm/plugin/mmsight/model/a/h:uMA	Z
     //   146: ifne +60 -> 206
     //   149: aload_0
     //   150: new 224	com/tencent/mm/audio/b/c
@@ -381,38 +381,38 @@ public class h
     //   154: aload_0
     //   155: getfield 139	com/tencent/mm/plugin/mmsight/model/a/h:audioSampleRate	I
     //   158: aload_0
-    //   159: getfield 141	com/tencent/mm/plugin/mmsight/model/a/h:gnH	I
+    //   159: getfield 141	com/tencent/mm/plugin/mmsight/model/a/h:gOt	I
     //   162: iconst_5
     //   163: invokespecial 247	com/tencent/mm/audio/b/c:<init>	(III)V
-    //   166: putfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
+    //   166: putfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
     //   169: aload_0
-    //   170: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
+    //   170: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
     //   173: iconst_1
     //   174: invokevirtual 250	com/tencent/mm/audio/b/c:setAudioSource	(I)V
     //   177: aload_0
-    //   178: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
+    //   178: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
     //   181: sipush 128
-    //   184: invokevirtual 253	com/tencent/mm/audio/b/c:hX	(I)V
+    //   184: invokevirtual 253	com/tencent/mm/audio/b/c:hH	(I)V
     //   187: aload_0
-    //   188: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
+    //   188: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
     //   191: iconst_1
-    //   192: invokevirtual 257	com/tencent/mm/audio/b/c:cr	(Z)V
+    //   192: invokevirtual 257	com/tencent/mm/audio/b/c:cs	(Z)V
     //   195: aload_0
-    //   196: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cXI	Lcom/tencent/mm/audio/b/c;
+    //   196: getfield 115	com/tencent/mm/plugin/mmsight/model/a/h:cVe	Lcom/tencent/mm/audio/b/c;
     //   199: aload_0
-    //   200: getfield 135	com/tencent/mm/plugin/mmsight/model/a/h:tEv	Lcom/tencent/mm/audio/b/c$a;
-    //   203: putfield 260	com/tencent/mm/audio/b/c:cYv	Lcom/tencent/mm/audio/b/c$a;
+    //   200: getfield 135	com/tencent/mm/plugin/mmsight/model/a/h:uMQ	Lcom/tencent/mm/audio/b/c$a;
+    //   203: putfield 260	com/tencent/mm/audio/b/c:cVR	Lcom/tencent/mm/audio/b/c$a;
     //   206: aload_0
-    //   207: getfield 262	com/tencent/mm/plugin/mmsight/model/a/h:tEt	Lcom/tencent/mm/sdk/platformtools/ap;
+    //   207: getfield 262	com/tencent/mm/plugin/mmsight/model/a/h:uMO	Lcom/tencent/mm/sdk/platformtools/ao;
     //   210: ifnonnull +244 -> 454
     //   213: ldc 163
     //   215: ldc_w 264
-    //   218: invokestatic 196	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   218: invokestatic 196	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   221: aload_0
-    //   222: new 266	com/tencent/mm/sdk/platformtools/ap
+    //   222: new 266	com/tencent/mm/sdk/platformtools/ao
     //   225: dup
-    //   226: invokespecial 267	com/tencent/mm/sdk/platformtools/ap:<init>	()V
-    //   229: putfield 262	com/tencent/mm/plugin/mmsight/model/a/h:tEt	Lcom/tencent/mm/sdk/platformtools/ap;
+    //   226: invokespecial 267	com/tencent/mm/sdk/platformtools/ao:<init>	()V
+    //   229: putfield 262	com/tencent/mm/plugin/mmsight/model/a/h:uMO	Lcom/tencent/mm/sdk/platformtools/ao;
     //   232: ldc 163
     //   234: ldc_w 269
     //   237: iconst_2
@@ -429,12 +429,12 @@ public class h
     //   254: getfield 137	com/tencent/mm/plugin/mmsight/model/a/h:audioBitrate	I
     //   257: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   260: aastore
-    //   261: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   261: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   264: aload_0
     //   265: new 271	android/media/MediaCodec$BufferInfo
     //   268: dup
     //   269: invokespecial 272	android/media/MediaCodec$BufferInfo:<init>	()V
-    //   272: putfield 274	com/tencent/mm/plugin/mmsight/model/a/h:tDY	Landroid/media/MediaCodec$BufferInfo;
+    //   272: putfield 274	com/tencent/mm/plugin/mmsight/model/a/h:uMt	Landroid/media/MediaCodec$BufferInfo;
     //   275: aload_0
     //   276: new 276	android/media/MediaFormat
     //   279: dup
@@ -460,7 +460,7 @@ public class h
     //   325: getfield 279	com/tencent/mm/plugin/mmsight/model/a/h:mAudioFormat	Landroid/media/MediaFormat;
     //   328: ldc_w 296
     //   331: aload_0
-    //   332: getfield 141	com/tencent/mm/plugin/mmsight/model/a/h:gnH	I
+    //   332: getfield 141	com/tencent/mm/plugin/mmsight/model/a/h:gOt	I
     //   335: invokevirtual 292	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
     //   338: aload_0
     //   339: getfield 279	com/tencent/mm/plugin/mmsight/model/a/h:mAudioFormat	Landroid/media/MediaFormat;
@@ -472,7 +472,7 @@ public class h
     //   353: getfield 279	com/tencent/mm/plugin/mmsight/model/a/h:mAudioFormat	Landroid/media/MediaFormat;
     //   356: ldc_w 300
     //   359: aload_0
-    //   360: getfield 141	com/tencent/mm/plugin/mmsight/model/a/h:gnH	I
+    //   360: getfield 141	com/tencent/mm/plugin/mmsight/model/a/h:gOt	I
     //   363: sipush 16384
     //   366: imul
     //   367: invokevirtual 292	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
@@ -480,29 +480,29 @@ public class h
     //   371: ldc_w 283
     //   374: iconst_0
     //   375: invokestatic 304	com/tencent/mm/compatible/deviceinfo/z:q	(Ljava/lang/String;Z)Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   378: putfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gqj	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   378: putfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gQR	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   381: aload_0
-    //   382: getfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gqj	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   382: getfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gQR	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   385: aload_0
     //   386: getfield 279	com/tencent/mm/plugin/mmsight/model/a/h:mAudioFormat	Landroid/media/MediaFormat;
     //   389: aconst_null
     //   390: iconst_1
     //   391: invokevirtual 307	com/tencent/mm/compatible/deviceinfo/z:a	(Landroid/media/MediaFormat;Landroid/view/Surface;I)V
     //   394: aload_0
-    //   395: getfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gqj	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   395: getfield 191	com/tencent/mm/plugin/mmsight/model/a/h:gQR	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   398: invokevirtual 310	com/tencent/mm/compatible/deviceinfo/z:start	()V
     //   401: aload_0
-    //   402: getfield 100	com/tencent/mm/plugin/mmsight/model/a/h:tEk	Z
+    //   402: getfield 100	com/tencent/mm/plugin/mmsight/model/a/h:uMF	Z
     //   405: ifeq +104 -> 509
     //   408: aload_0
     //   409: iconst_0
-    //   410: putfield 98	com/tencent/mm/plugin/mmsight/model/a/h:tEj	Z
+    //   410: putfield 98	com/tencent/mm/plugin/mmsight/model/a/h:uME	Z
     //   413: aload_0
     //   414: invokestatic 316	java/lang/System:currentTimeMillis	()J
     //   417: putfield 92	com/tencent/mm/plugin/mmsight/model/a/h:startTime	J
     //   420: aload_0
     //   421: iconst_0
-    //   422: putfield 86	com/tencent/mm/plugin/mmsight/model/a/h:tEe	Z
+    //   422: putfield 86	com/tencent/mm/plugin/mmsight/model/a/h:uMz	Z
     //   425: ldc 218
     //   427: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   430: iconst_0
@@ -521,8 +521,8 @@ public class h
     //   451: aload 4
     //   453: athrow
     //   454: aload_0
-    //   455: getfield 262	com/tencent/mm/plugin/mmsight/model/a/h:tEt	Lcom/tencent/mm/sdk/platformtools/ap;
-    //   458: invokevirtual 319	com/tencent/mm/sdk/platformtools/ap:getLooper	()Landroid/os/Looper;
+    //   455: getfield 262	com/tencent/mm/plugin/mmsight/model/a/h:uMO	Lcom/tencent/mm/sdk/platformtools/ao;
+    //   458: invokevirtual 319	com/tencent/mm/sdk/platformtools/ao:getLooper	()Landroid/os/Looper;
     //   461: invokestatic 322	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   464: if_acmpeq -232 -> 232
     //   467: ldc 163
@@ -532,28 +532,28 @@ public class h
     //   476: dup
     //   477: iconst_0
     //   478: aload_0
-    //   479: getfield 262	com/tencent/mm/plugin/mmsight/model/a/h:tEt	Lcom/tencent/mm/sdk/platformtools/ap;
-    //   482: invokevirtual 319	com/tencent/mm/sdk/platformtools/ap:getLooper	()Landroid/os/Looper;
+    //   479: getfield 262	com/tencent/mm/plugin/mmsight/model/a/h:uMO	Lcom/tencent/mm/sdk/platformtools/ao;
+    //   482: invokevirtual 319	com/tencent/mm/sdk/platformtools/ao:getLooper	()Landroid/os/Looper;
     //   485: aastore
     //   486: dup
     //   487: iconst_1
     //   488: invokestatic 322	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   491: aastore
-    //   492: invokestatic 327	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   492: invokestatic 327	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   495: aload_0
-    //   496: new 266	com/tencent/mm/sdk/platformtools/ap
+    //   496: new 266	com/tencent/mm/sdk/platformtools/ao
     //   499: dup
-    //   500: invokespecial 267	com/tencent/mm/sdk/platformtools/ap:<init>	()V
-    //   503: putfield 262	com/tencent/mm/plugin/mmsight/model/a/h:tEt	Lcom/tencent/mm/sdk/platformtools/ap;
+    //   500: invokespecial 267	com/tencent/mm/sdk/platformtools/ao:<init>	()V
+    //   503: putfield 262	com/tencent/mm/plugin/mmsight/model/a/h:uMO	Lcom/tencent/mm/sdk/platformtools/ao;
     //   506: goto -274 -> 232
     //   509: aload_0
-    //   510: getfield 94	com/tencent/mm/plugin/mmsight/model/a/h:gqv	Ljava/lang/Object;
+    //   510: getfield 94	com/tencent/mm/plugin/mmsight/model/a/h:gRd	Ljava/lang/Object;
     //   513: astore_2
     //   514: aload_2
     //   515: monitorenter
     //   516: aload_0
     //   517: iconst_0
-    //   518: putfield 98	com/tencent/mm/plugin/mmsight/model/a/h:tEj	Z
+    //   518: putfield 98	com/tencent/mm/plugin/mmsight/model/a/h:uME	Z
     //   521: aload_0
     //   522: invokestatic 316	java/lang/System:currentTimeMillis	()J
     //   525: putfield 92	com/tencent/mm/plugin/mmsight/model/a/h:startTime	J
@@ -578,13 +578,13 @@ public class h
     //   558: aload_2
     //   559: invokevirtual 330	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   562: aastore
-    //   563: invokestatic 334	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   563: invokestatic 334	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   566: aload_0
-    //   567: invokevirtual 233	com/tencent/mm/plugin/mmsight/model/a/h:ajF	()V
+    //   567: invokevirtual 233	com/tencent/mm/plugin/mmsight/model/a/h:aqE	()V
     //   570: ldc_w 336
     //   573: ldc_w 338
-    //   576: invokestatic 196	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   579: getstatic 344	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   576: invokestatic 196	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   579: getstatic 344	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   582: ldc2_w 345
     //   585: ldc2_w 347
     //   588: lconst_1
@@ -592,7 +592,7 @@ public class h
     //   590: invokevirtual 352	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   593: aload_0
     //   594: iconst_0
-    //   595: putfield 86	com/tencent/mm/plugin/mmsight/model/a/h:tEe	Z
+    //   595: putfield 86	com/tencent/mm/plugin/mmsight/model/a/h:uMz	Z
     //   598: ldc 218
     //   600: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   603: iconst_m1
@@ -600,7 +600,7 @@ public class h
     //   605: astore_2
     //   606: aload_0
     //   607: iconst_0
-    //   608: putfield 86	com/tencent/mm/plugin/mmsight/model/a/h:tEe	Z
+    //   608: putfield 86	com/tencent/mm/plugin/mmsight/model/a/h:uMz	Z
     //   611: ldc 218
     //   613: invokestatic 184	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   616: aload_2
@@ -631,27 +631,27 @@ public class h
   {
     int i = 0;
     AppMethodBeat.i(89486);
-    ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "start, onPcmReady: %s", new Object[] { parama });
-    this.tEg = parama;
-    if (!this.tEf)
+    ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "start, onPcmReady: %s", new Object[] { parama });
+    this.uMB = parama;
+    if (!this.uMA)
     {
-      if (this.cXI == null)
+      if (this.cVe == null)
       {
-        ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "start, pcmrecorder is null");
+        ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "start, pcmrecorder is null");
         AppMethodBeat.o(89486);
         return -1;
       }
-      if (!this.cXI.Ok()) {}
+      if (!this.cVe.Og()) {}
     }
     for (;;)
     {
-      this.tEq = 0L;
-      this.tEr = -1L;
+      this.uML = 0L;
+      this.uMM = -1L;
       AppMethodBeat.o(89486);
       return i;
       i = -1;
       continue;
-      this.tEl.sendEmptyMessage(0);
+      this.uMG.sendEmptyMessage(0);
     }
   }
   
@@ -660,10 +660,10 @@ public class h
     AppMethodBeat.i(89487);
     boolean bool1;
     boolean bool2;
-    if (this.cXI == null)
+    if (this.cVe == null)
     {
       bool1 = true;
-      if (this.tEp != null) {
+      if (this.uMK != null) {
         break label102;
       }
       bool2 = true;
@@ -676,8 +676,8 @@ public class h
     label107:
     for (boolean bool3 = true;; bool3 = false)
     {
-      ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "call stop, pcmRecorder null[%B], old stopCallback null[%B]new stopCallback null[%B], pcmMarkStop[%B]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(this.tEm) });
-      if ((this.cXI != null) || (this.tEf)) {
+      ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "call stop, pcmRecorder null[%B], old stopCallback null[%B]new stopCallback null[%B], pcmMarkStop[%B]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(this.uMH) });
+      if ((this.cVe != null) || (this.uMA)) {
         break label113;
       }
       AppMethodBeat.o(89487);
@@ -688,31 +688,31 @@ public class h
       break label24;
     }
     label113:
-    this.tEm = true;
-    synchronized (this.tEo)
+    this.uMH = true;
+    synchronized (this.uMJ)
     {
-      this.tEp = paramb;
-      if ((this.tEn) && (paramb != null))
+      this.uMK = paramb;
+      if ((this.uMI) && (paramb != null))
       {
-        ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "has stop, directly call stop callback");
-        paramb.aoA();
-        this.tEp = null;
+        ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "has stop, directly call stop callback");
+        paramb.avr();
+        this.uMK = null;
       }
-      aq.n(new Runnable()
+      ap.n(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(89481);
           try
           {
-            h.this.ajF();
-            h.this.cQi();
+            h.this.aqE();
+            h.this.ddQ();
             AppMethodBeat.o(89481);
             return;
           }
           catch (Exception localException)
           {
-            ad.e("MicroMsg.MMSightAACMediaCodecRecorder", "delay to stop encoder error: %s", new Object[] { localException.getMessage() });
+            ac.e("MicroMsg.MMSightAACMediaCodecRecorder", "delay to stop encoder error: %s", new Object[] { localException.getMessage() });
             AppMethodBeat.o(89481);
           }
         }
@@ -725,54 +725,63 @@ public class h
   protected void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89494);
-    if ((this.tEh != null) && ((paramBufferInfo.flags & 0x4) == 0)) {
-      this.tEh.j(paramByteBuffer, paramBufferInfo);
+    if ((this.uMC != null) && ((paramBufferInfo.flags & 0x4) == 0)) {
+      this.uMC.j(paramByteBuffer, paramBufferInfo);
     }
     AppMethodBeat.o(89494);
   }
   
-  protected final void ajF()
+  protected final void aqE()
   {
     AppMethodBeat.i(89490);
-    if (this.tEk)
+    if (this.uMF)
     {
-      cQj();
+      ddR();
       AppMethodBeat.o(89490);
       return;
     }
-    synchronized (this.gqv)
+    synchronized (this.gRd)
     {
-      cQj();
+      ddR();
       AppMethodBeat.o(89490);
       return;
     }
   }
   
-  protected boolean aoi()
+  protected boolean auZ()
   {
     return false;
   }
   
-  public final void cQe()
+  public final void clear()
   {
-    this.tEe = true;
+    AppMethodBeat.i(89488);
+    ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "clear");
+    aqE();
+    ddQ();
+    AppMethodBeat.o(89488);
   }
   
-  public final com.tencent.mm.audio.b.c.a cQf()
+  public final void ddM()
   {
-    return this.tEv;
+    this.uMz = true;
   }
   
-  final void cQi()
+  public final com.tencent.mm.audio.b.c.a ddN()
+  {
+    return this.uMQ;
+  }
+  
+  final void ddQ()
   {
     try
     {
       AppMethodBeat.i(89489);
-      if ((this.cXI != null) && (!this.tEf))
+      if ((this.cVe != null) && (!this.uMA))
       {
-        ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "stop pcm recorder");
-        this.cXI.Ob();
-        this.cXI = null;
+        ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "stop pcm recorder");
+        this.cVe.NX();
+        this.cVe = null;
       }
       AppMethodBeat.o(89489);
       return;
@@ -780,21 +789,12 @@ public class h
     finally {}
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(89488);
-    ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "clear");
-    ajF();
-    cQi();
-    AppMethodBeat.o(89488);
-  }
-  
   final void drainEncoder(boolean paramBoolean)
   {
     AppMethodBeat.i(89492);
-    if (this.gqj == null)
+    if (this.gQR == null)
     {
-      ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "drain audio encoder error, encoder is null, end:".concat(String.valueOf(paramBoolean)));
+      ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "drain audio encoder error, encoder is null, end:".concat(String.valueOf(paramBoolean)));
       AppMethodBeat.o(89492);
       return;
     }
@@ -808,101 +808,101 @@ public class h
     {
       try
       {
-        ByteBuffer[] arrayOfByteBuffer = this.gqj.getOutputBuffers();
-        this.hBe = this.gqj.dequeueOutputBuffer(this.tDY, 10000L);
-        ad.v("MicroMsg.MMSightAACMediaCodecRecorder", "outputBufferIndex-->%s", new Object[] { Integer.valueOf(this.hBe) });
-        if (this.hBe == -1)
+        ByteBuffer[] arrayOfByteBuffer = this.gQR.getOutputBuffers();
+        this.ibF = this.gQR.dequeueOutputBuffer(this.uMt, 10000L);
+        ac.v("MicroMsg.MMSightAACMediaCodecRecorder", "outputBufferIndex-->%s", new Object[] { Integer.valueOf(this.ibF) });
+        if (this.ibF == -1)
         {
-          ad.d("MicroMsg.MMSightAACMediaCodecRecorder", "no output available, break");
+          ac.d("MicroMsg.MMSightAACMediaCodecRecorder", "no output available, break");
           AppMethodBeat.o(89492);
           return;
         }
       }
       catch (Exception localException1)
       {
-        ad.e("MicroMsg.MMSightAACMediaCodecRecorder", "drainEncoder error: %s", new Object[] { localException1.getMessage() });
+        ac.e("MicroMsg.MMSightAACMediaCodecRecorder", "drainEncoder error: %s", new Object[] { localException1.getMessage() });
         AppMethodBeat.o(89492);
         return;
       }
       Object localObject1;
-      if (this.hBe == -3)
+      if (this.ibF == -3)
       {
-        localObject1 = this.gqj.getOutputBuffers();
+        localObject1 = this.gQR.getOutputBuffers();
       }
-      else if (this.hBe == -2)
+      else if (this.ibF == -2)
       {
-        localMediaFormat = this.gqj.getOutputFormat();
-        ad.d("MicroMsg.MMSightAACMediaCodecRecorder", "encoder output format changed: ".concat(String.valueOf(localMediaFormat)));
-        if (this.tEh != null) {
-          this.tEh.l(localMediaFormat);
+        localMediaFormat = this.gQR.getOutputFormat();
+        ac.d("MicroMsg.MMSightAACMediaCodecRecorder", "encoder output format changed: ".concat(String.valueOf(localMediaFormat)));
+        if (this.uMC != null) {
+          this.uMC.g(localMediaFormat);
         }
       }
-      else if (this.hBe < 0)
+      else if (this.ibF < 0)
       {
-        ad.v("MicroMsg.MMSightAACMediaCodecRecorder", "unexpected result from encoder.dequeueOutputBuffer: %s", new Object[] { Integer.valueOf(this.hBe) });
+        ac.v("MicroMsg.MMSightAACMediaCodecRecorder", "unexpected result from encoder.dequeueOutputBuffer: %s", new Object[] { Integer.valueOf(this.ibF) });
       }
       else
       {
-        ad.v("MicroMsg.MMSightAACMediaCodecRecorder", "perform encoding");
-        localMediaFormat = localObject1[this.hBe];
+        ac.v("MicroMsg.MMSightAACMediaCodecRecorder", "perform encoding");
+        localMediaFormat = localObject1[this.ibF];
         if (localMediaFormat == null)
         {
-          localObject1 = new RuntimeException("encoderOutputBuffer " + this.hBe + " was null");
+          localObject1 = new RuntimeException("encoderOutputBuffer " + this.ibF + " was null");
           AppMethodBeat.o(89492);
           throw ((Throwable)localObject1);
         }
-        if ((this.tDY.flags & 0x2) != 0)
+        if ((this.uMt.flags & 0x2) != 0)
         {
-          ad.v("MicroMsg.MMSightAACMediaCodecRecorder", "ignoring BUFFER_FLAG_CODEC_CONFIG,size: %s, %s", new Object[] { Integer.valueOf(this.tDY.size), Boolean.valueOf(aoi()) });
-          if (aoi()) {
-            this.tDY.size = 0;
+          ac.v("MicroMsg.MMSightAACMediaCodecRecorder", "ignoring BUFFER_FLAG_CODEC_CONFIG,size: %s, %s", new Object[] { Integer.valueOf(this.uMt.size), Boolean.valueOf(auZ()) });
+          if (auZ()) {
+            this.uMt.size = 0;
           }
         }
         Object localObject2;
-        if (this.tDY.size != 0)
+        if (this.uMt.size != 0)
         {
-          if ((this.tEh != null) && (!this.tEh.isStart))
+          if ((this.uMC != null) && (!this.uMC.isStart))
           {
-            localObject2 = this.gqj.getOutputFormat();
-            this.tEh.l((MediaFormat)localObject2);
+            localObject2 = this.gQR.getOutputFormat();
+            this.uMC.g((MediaFormat)localObject2);
           }
-          localMediaFormat.position(this.tDY.offset);
-          localMediaFormat.limit(this.tDY.offset + this.tDY.size);
-          boolean bool = this.guv;
+          localMediaFormat.position(this.uMt.offset);
+          localMediaFormat.limit(this.uMt.offset + this.uMt.size);
+          boolean bool = this.gVa;
           if (!bool) {
             break label678;
           }
         }
         try
         {
-          localObject2 = this.tDY;
-          if (this.gqj.getOutputFormat() == null) {
+          localObject2 = this.uMt;
+          if (this.gQR.getOutputFormat() == null) {
             break label710;
           }
-          i = this.gqj.getOutputFormat().getInteger("aac-profile");
-          if (this.gqj.getOutputFormat() == null) {
+          i = this.gQR.getOutputFormat().getInteger("aac-profile");
+          if (this.gQR.getOutputFormat() == null) {
             break label715;
           }
-          j = a.GR(this.gqj.getOutputFormat().getInteger("sample-rate"));
-          if (this.gqj.getOutputFormat() == null) {
+          j = a.IN(this.gQR.getOutputFormat().getInteger("sample-rate"));
+          if (this.gQR.getOutputFormat() == null) {
             break label720;
           }
-          k = this.gqj.getOutputFormat().getInteger("channel-count");
+          k = this.gQR.getOutputFormat().getInteger("channel-count");
           a(localMediaFormat, (MediaCodec.BufferInfo)localObject2, i, j, k);
-          this.gqj.releaseOutputBuffer(this.hBe, false);
-          if ((this.tDY.flags & 0x4) != 0)
+          this.gQR.releaseOutputBuffer(this.ibF, false);
+          if ((this.uMt.flags & 0x4) != 0)
           {
             if (paramBoolean) {
               break label691;
             }
-            ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "reached end of stream unexpectedly");
+            ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "reached end of stream unexpectedly");
             AppMethodBeat.o(89492);
             return;
           }
         }
         catch (Exception localException2)
         {
-          localBufferInfo = this.tDY;
+          localBufferInfo = this.uMt;
           if (this.mAudioFormat == null) {
             break label726;
           }
@@ -913,7 +913,7 @@ public class h
     label623:
     if (this.mAudioFormat != null)
     {
-      j = a.GR(this.mAudioFormat.getInteger("sample-rate"));
+      j = a.IN(this.mAudioFormat.getInteger("sample-rate"));
       if (this.mAudioFormat == null) {
         break label736;
       }
@@ -930,10 +930,10 @@ public class h
     {
       a(localMediaFormat, localBufferInfo, i, j, k);
       break label554;
-      h(localMediaFormat, this.tDY);
+      h(localMediaFormat, this.uMt);
       break label554;
-      ad.w("MicroMsg.MMSightAACMediaCodecRecorder", "do stop audio encoder");
-      ajF();
+      ac.w("MicroMsg.MMSightAACMediaCodecRecorder", "do stop audio encoder");
+      aqE();
       AppMethodBeat.o(89492);
       return;
       i = 2;
@@ -952,39 +952,39 @@ public class h
   protected void h(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
     AppMethodBeat.i(89493);
-    if ((this.tEh != null) && ((paramBufferInfo.flags & 0x4) == 0)) {
-      this.tEh.j(paramByteBuffer, paramBufferInfo);
+    if ((this.uMC != null) && ((paramBufferInfo.flags & 0x4) == 0)) {
+      this.uMC.j(paramByteBuffer, paramBufferInfo);
     }
     AppMethodBeat.o(89493);
   }
   
-  public void mO(int paramInt) {}
+  public void nC(int paramInt) {}
   
-  public final void nf(boolean paramBoolean)
+  public final void nY(boolean paramBoolean)
   {
-    this.tEf = paramBoolean;
+    this.uMA = paramBoolean;
   }
   
   public final void pause()
   {
     AppMethodBeat.i(89483);
-    this.tEe = false;
-    this.dsU = true;
-    this.tEr = bt.GC();
-    ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "pause, time:%s", new Object[] { Long.valueOf(this.tEr) });
+    this.uMz = false;
+    this.dqE = true;
+    this.uMM = bs.Gn();
+    ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "pause, time:%s", new Object[] { Long.valueOf(this.uMM) });
     AppMethodBeat.o(89483);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(89484);
-    ad.i("MicroMsg.MMSightAACMediaCodecRecorder", "resume, pauseTime:%s", new Object[] { Long.valueOf(this.tEr) });
-    this.dsU = false;
-    if (this.tEr > 0L) {
-      this.tEq += bt.aS(this.tEr);
+    ac.i("MicroMsg.MMSightAACMediaCodecRecorder", "resume, pauseTime:%s", new Object[] { Long.valueOf(this.uMM) });
+    this.dqE = false;
+    if (this.uMM > 0L) {
+      this.uML += bs.aO(this.uMM);
     }
-    this.tEr = 0L;
-    this.tEe = true;
+    this.uMM = 0L;
+    this.uMz = true;
     AppMethodBeat.o(89484);
   }
 }

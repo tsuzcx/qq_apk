@@ -9,7 +9,7 @@ import android.view.View.OnDragListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.r;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 
 final class SnsUploadUI$12
@@ -30,16 +30,16 @@ final class SnsUploadUI$12
         switch (i)
         {
         default: 
-          ad.e("MicroMsg.SnsUploadUI", "Unknown action type received by OnDragListener.");
+          ac.e("MicroMsg.SnsUploadUI", "Unknown action type received by OnDragListener.");
         }
         for (;;)
         {
           AppMethodBeat.o(99581);
           return bool;
           bool = true;
-          ad.i("MicroMsg.SnsUploadUI", "ACTION: [%s]", new Object[] { Integer.valueOf(i) });
+          ac.i("MicroMsg.SnsUploadUI", "ACTION: [%s]", new Object[] { Integer.valueOf(i) });
           continue;
-          ad.i("MicroMsg.SnsUploadUI", "ACTION_DROP");
+          ac.i("MicroMsg.SnsUploadUI", "ACTION_DROP");
           paramAnonymousView = paramAnonymousDragEvent.getClipData();
           if (paramAnonymousView != null)
           {
@@ -50,7 +50,7 @@ final class SnsUploadUI$12
             {
               Object localObject2 = paramAnonymousView.getItemAt(i);
               if (localObject2 == null) {
-                ad.e("MicroMsg.SnsUploadUI", "item == null");
+                ac.e("MicroMsg.SnsUploadUI", "item == null");
               }
               for (;;)
               {
@@ -59,16 +59,16 @@ final class SnsUploadUI$12
                 Object localObject1;
                 if (((ClipData.Item)localObject2).getIntent() != null)
                 {
-                  localObject1 = SnsUploadUI.12.this.xKE;
+                  localObject1 = SnsUploadUI.12.this.yXt;
                   localObject2 = ((ClipData.Item)localObject2).getIntent();
-                  localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  ((SnsUploadUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+                  localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  ((SnsUploadUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
                   com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$2$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 }
                 else if (((ClipData.Item)localObject2).getUri() != null)
                 {
-                  localObject1 = new r(SnsUploadUI.12.this.xKE.getContext(), ((ClipData.Item)localObject2).getUri());
+                  localObject1 = new r(SnsUploadUI.12.this.yXt.getContext(), ((ClipData.Item)localObject2).getUri());
                   if ((((r)localObject1).fileType != 0) && (((r)localObject1).filePath != null)) {}
                   switch (((r)localObject1).fileType)
                   {
@@ -77,18 +77,18 @@ final class SnsUploadUI$12
                   case 3: 
                     paramAnonymousDragEvent.add(((r)localObject1).filePath);
                     continue;
-                    ad.e("MicroMsg.SnsUploadUI", "get file path failed");
+                    ac.e("MicroMsg.SnsUploadUI", "get file path failed");
                   }
                 }
               }
             }
             if (paramAnonymousDragEvent.size() < 0)
             {
-              ad.e("MicroMsg.SnsUploadUI", "no image file available");
+              ac.e("MicroMsg.SnsUploadUI", "no image file available");
               AppMethodBeat.o(99581);
               return true;
             }
-            ((ak)SnsUploadUI.e(SnsUploadUI.12.this.xKE)).b(paramAnonymousDragEvent, 0, false);
+            ((ak)SnsUploadUI.e(SnsUploadUI.12.this.yXt)).b(paramAnonymousDragEvent, 0, false);
             bool = true;
           }
           else
@@ -98,15 +98,15 @@ final class SnsUploadUI$12
         }
       }
     };
-    if (SnsUploadUI.f(this.xKE) != null) {
-      SnsUploadUI.f(this.xKE).setOnDragListener(local1);
+    if (SnsUploadUI.f(this.yXt) != null) {
+      SnsUploadUI.f(this.yXt).setOnDragListener(local1);
     }
     AppMethodBeat.o(99582);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.12
  * JD-Core Version:    0.7.0.1
  */

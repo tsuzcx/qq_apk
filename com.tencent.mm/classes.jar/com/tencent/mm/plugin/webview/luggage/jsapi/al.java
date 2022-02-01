@@ -12,11 +12,11 @@ import com.tencent.luggage.d.g;
 import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class al
@@ -27,34 +27,34 @@ public class al
   public final void b(final a<f>.a parama)
   {
     AppMethodBeat.i(78590);
-    ad.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
-    final String str = parama.bZV.bZb.optString("url");
-    ad.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
-    if (bt.isNullOrNil(str))
+    ac.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
+    final String str = parama.bWS.bVY.optString("url");
+    ac.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
+    if (bs.isNullOrNil(str))
     {
       parama.a("fail", null);
       AppMethodBeat.o(78590);
       return;
     }
     Object localObject = Uri.parse(str);
-    if ((bt.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com"))))
+    if ((bs.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com"))))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("rawUrl", str);
-      d.b(((f)parama.bZU).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      d.b(((f)parama.bWR).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
       parama.a("", null);
       AppMethodBeat.o(78590);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(78589);
         Bundle localBundle = new Bundle();
         localBundle.putString("rawUrl", str);
-        localBundle.putBoolean("from_find_more_friend", ((f)parama.bZU).mParams.getBoolean("from_find_more_friend", false));
-        ((f)parama.bZU).bZZ.Bb().h(str, localBundle);
+        localBundle.putBoolean("from_find_more_friend", ((f)parama.bWR).mParams.getBoolean("from_find_more_friend", false));
+        ((f)parama.bWR).bWW.AF().h(str, localBundle);
         AppMethodBeat.o(78589);
       }
     });
@@ -62,7 +62,7 @@ public class al
     AppMethodBeat.o(78590);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

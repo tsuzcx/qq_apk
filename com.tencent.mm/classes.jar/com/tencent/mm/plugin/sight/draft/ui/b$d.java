@@ -7,9 +7,9 @@ public enum b$d
   static
   {
     AppMethodBeat.i(28673);
-    wty = new d("NORMAL", 0);
-    wtz = new d("EDIT", 1);
-    wtA = new d[] { wty, wtz };
+    xEO = new d("NORMAL", 0);
+    xEP = new d("EDIT", 1);
+    xEQ = new d[] { xEO, xEP };
     AppMethodBeat.o(28673);
   }
   

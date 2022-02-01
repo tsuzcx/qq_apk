@@ -5,11 +5,11 @@ import android.os.IInterface;
 public abstract interface g
   extends IInterface
 {
-  public abstract void hB(int paramInt);
+  public abstract void hk(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.g
  * JD-Core Version:    0.7.0.1
  */

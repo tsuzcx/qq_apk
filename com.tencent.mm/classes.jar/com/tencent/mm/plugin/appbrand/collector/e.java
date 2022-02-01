@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.collector;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
@@ -14,28 +14,28 @@ public final class e
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramTimePoint == null)
     {
-      ad.i("MicroMsg.CostTimeUtil", "print failed, headPoint is null.");
+      ac.i("MicroMsg.CostTimeUtil", "print failed, headPoint is null.");
       AppMethodBeat.o(146106);
       return localStringBuilder;
     }
     localStringBuilder.append(0).append(". ").append(paramTimePoint.name).append(" : ");
-    localStringBuilder.append(paramTimePoint.jaS);
+    localStringBuilder.append(paramTimePoint.jBf);
     localStringBuilder.append(", ");
-    localStringBuilder.append(paramTimePoint.jaR.get());
+    localStringBuilder.append(paramTimePoint.jBe.get());
     localStringBuilder.append(", ");
-    localStringBuilder.append(paramTimePoint.jaS.get() - paramTimePoint.jaS.get());
+    localStringBuilder.append(paramTimePoint.jBf.get() - paramTimePoint.jBf.get());
     int i = 0;
     TimePoint localTimePoint;
-    for (Object localObject = paramTimePoint; ((TimePoint)localObject).jaT.get() != null; localObject = localTimePoint)
+    for (Object localObject = paramTimePoint; ((TimePoint)localObject).jBg.get() != null; localObject = localTimePoint)
     {
-      localTimePoint = (TimePoint)((TimePoint)localObject).jaT.get();
+      localTimePoint = (TimePoint)((TimePoint)localObject).jBg.get();
       localStringBuilder.append("\n");
       localStringBuilder.append(i + 1).append(". ").append(localTimePoint.name).append(" : ");
-      localStringBuilder.append((localTimePoint.jaS.get() - ((TimePoint)localObject).jaS.get()) / 1000000.0D);
+      localStringBuilder.append((localTimePoint.jBf.get() - ((TimePoint)localObject).jBf.get()) / 1000000.0D);
       i += 1;
     }
     localStringBuilder.append("\n");
-    localStringBuilder.append("total cost : ").append((((TimePoint)localObject).jaS.get() - paramTimePoint.jaS.get()) / 1000000.0D);
+    localStringBuilder.append("total cost : ").append((((TimePoint)localObject).jBf.get() - paramTimePoint.jBf.get()) / 1000000.0D);
     AppMethodBeat.o(146106);
     return localStringBuilder;
   }

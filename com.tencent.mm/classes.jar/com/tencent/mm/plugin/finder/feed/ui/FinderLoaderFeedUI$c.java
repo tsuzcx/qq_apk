@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.finder.feed.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "run"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "M", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "V", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "P", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "run"})
 final class FinderLoaderFeedUI$c
   implements Runnable
 {
-  public static final c qzE;
+  public static final c rqr;
   
   static
   {
     AppMethodBeat.i(166130);
-    qzE = new c();
+    rqr = new c();
     AppMethodBeat.o(166130);
   }
   

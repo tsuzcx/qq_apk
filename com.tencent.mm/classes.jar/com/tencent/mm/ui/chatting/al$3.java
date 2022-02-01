@@ -14,7 +14,7 @@ final class al$3
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(34898);
-    Iterator localIterator = this.GqG.iterator();
+    Iterator localIterator = this.HQy.iterator();
     while (localIterator.hasNext()) {
       paraml.add((String)localIterator.next());
     }

@@ -2,40 +2,54 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bgb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bjt;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
 {
-  static void a(bgb parambgb)
+  static void a(bjt parambjt)
   {
     AppMethodBeat.i(122169);
-    if (parambgb == null)
+    if (parambjt == null)
     {
       AppMethodBeat.o(122169);
       return;
     }
-    b(parambgb);
+    b(parambjt);
     AppMethodBeat.o(122169);
   }
   
-  private static void b(bgb parambgb)
+  private static void b(bjt parambjt)
   {
     AppMethodBeat.i(122171);
     try
     {
-      b.o("mmkv_key_hell_PFLOW", parambgb.toByteArray());
+      b.o("mmkv_key_hell_PFLOW", parambjt.toByteArray());
       AppMethodBeat.o(122171);
       return;
     }
-    catch (Exception parambgb)
+    catch (Exception parambjt)
     {
-      ad.printErrStackTrace("HellPageFlowDao", parambgb, "HABBYGE-MALI, HellPageFlowDao.writeBack crash", new Object[0]);
+      ac.printErrStackTrace("HellPageFlowDao", parambjt, "HABBYGE-MALI, HellPageFlowDao.writeBack crash", new Object[0]);
       AppMethodBeat.o(122171);
     }
   }
   
-  private static bgb cdA()
+  public static bjt clh()
+  {
+    AppMethodBeat.i(122170);
+    bjt localbjt2 = cli();
+    bjt localbjt1 = localbjt2;
+    if (localbjt2 == null)
+    {
+      localbjt1 = new bjt();
+      b(localbjt1);
+    }
+    AppMethodBeat.o(122170);
+    return localbjt1;
+  }
+  
+  private static bjt cli()
   {
     AppMethodBeat.i(122172);
     byte[] arrayOfByte = b.getBytes("mmkv_key_hell_PFLOW");
@@ -44,33 +58,19 @@ public final class a
       AppMethodBeat.o(122172);
       return null;
     }
-    bgb localbgb = new bgb();
+    bjt localbjt = new bjt();
     try
     {
-      localbgb.parseFrom(arrayOfByte);
+      localbjt.parseFrom(arrayOfByte);
       AppMethodBeat.o(122172);
-      return localbgb;
+      return localbjt;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("HellPageFlowDao", localException, "HABBYGE-MALI, HellPageFlowDao.read crash", new Object[0]);
+      ac.printErrStackTrace("HellPageFlowDao", localException, "HABBYGE-MALI, HellPageFlowDao.read crash", new Object[0]);
       AppMethodBeat.o(122172);
     }
     return null;
-  }
-  
-  public static bgb cdz()
-  {
-    AppMethodBeat.i(122170);
-    bgb localbgb2 = cdA();
-    bgb localbgb1 = localbgb2;
-    if (localbgb2 == null)
-    {
-      localbgb1 = new bgb();
-      b(localbgb1);
-    }
-    AppMethodBeat.o(122170);
-    return localbgb1;
   }
   
   public static void reset()
@@ -78,13 +78,13 @@ public final class a
     AppMethodBeat.i(122173);
     long l = System.currentTimeMillis();
     b.o("mmkv_key_hell_PFLOW", new byte[0]);
-    ad.i("HellPageFlowDao", "HABBYGE-MALI, HellPageFlowDao-reset-time: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ac.i("HellPageFlowDao", "HABBYGE-MALI, HellPageFlowDao-reset-time: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(122173);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.d.a
  * JD-Core Version:    0.7.0.1
  */

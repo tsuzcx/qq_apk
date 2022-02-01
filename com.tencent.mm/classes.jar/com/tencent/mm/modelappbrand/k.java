@@ -20,15 +20,15 @@ public abstract interface k
   
   public abstract boolean a(String paramString, View paramView, Bundle paramBundle, k.b paramb);
   
-  public abstract b.h atN();
+  public abstract b.h aAE();
   
   public abstract b.f dc(int paramInt1, int paramInt2);
   
-  public abstract void g(int paramInt, Bundle paramBundle);
+  public abstract void h(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.k
  * JD-Core Version:    0.7.0.1
  */

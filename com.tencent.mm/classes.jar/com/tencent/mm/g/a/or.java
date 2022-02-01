@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class or
   extends b
 {
-  public a dtR;
-  public b dtS;
+  public a dra;
   
   public or()
   {
@@ -16,32 +15,25 @@ public final class or
   
   private or(byte paramByte)
   {
-    AppMethodBeat.i(155374);
-    this.dtR = new a();
-    this.dtS = new b();
-    this.ESR = false;
+    AppMethodBeat.i(104419);
+    this.dra = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(155374);
+    AppMethodBeat.o(104419);
   }
   
   public static final class a
   {
-    public String dtT;
-    public String dtU;
-    public String dtV;
-    public int dtW = 0;
-    public int dtX = 0;
-    public int opType = 0;
-  }
-  
-  public static final class b
-  {
-    public boolean dew;
+    public String drb;
+    public int drc;
+    public long drd;
+    public String query;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.or
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,19 @@ import org.b.g.c;
 
 public final class e
 {
-  public final List<d> Kny;
+  public final List<d> Mbh;
   
   public e()
   {
     AppMethodBeat.i(40530);
-    this.Kny = new ArrayList();
+    this.Mbh = new ArrayList();
     AppMethodBeat.o(40530);
   }
   
   public e(List<d> paramList)
   {
     AppMethodBeat.i(40531);
-    this.Kny = new ArrayList(paramList);
+    this.Mbh = new ArrayList(paramList);
     AppMethodBeat.o(40531);
   }
   
@@ -40,18 +40,18 @@ public final class e
         return;
       }
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      this.Kny.add(new d((String)localEntry.getKey(), (String)localEntry.getValue()));
+      this.Mbh.add(new d((String)localEntry.getKey(), (String)localEntry.getValue()));
     }
   }
   
   public final void a(e parame)
   {
     AppMethodBeat.i(40534);
-    this.Kny.addAll(parame.Kny);
+    this.Mbh.addAll(parame.Mbh);
     AppMethodBeat.o(40534);
   }
   
-  public final void aRF(String paramString)
+  public final void aXF(String paramString)
   {
     AppMethodBeat.i(40535);
     String[] arrayOfString;
@@ -73,22 +73,22 @@ public final class e
     if (paramString.length > 1) {}
     for (paramString = c.decode(paramString[1]);; paramString = "")
     {
-      this.Kny.add(new d(str, paramString));
+      this.Mbh.add(new d(str, paramString));
       i += 1;
       break;
     }
   }
   
-  public final String fNj()
+  public final String gfZ()
   {
     AppMethodBeat.i(40533);
-    if (this.Kny.size() == 0)
+    if (this.Mbh.size() == 0)
     {
       AppMethodBeat.o(40533);
       return "";
     }
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.Kny.iterator();
+    Iterator localIterator = this.Mbh.iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -98,13 +98,13 @@ public final class e
         return localObject;
       }
       d locald = (d)localIterator.next();
-      ((StringBuilder)localObject).append('&').append(locald.fNi());
+      ((StringBuilder)localObject).append('&').append(locald.gfY());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.d.e
  * JD-Core Version:    0.7.0.1
  */

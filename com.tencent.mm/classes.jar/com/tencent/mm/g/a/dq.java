@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class dq
   extends b
 {
-  public a dfR;
-  public b dfS;
+  public a ddk;
+  public b ddl;
   
   public dq()
   {
@@ -16,23 +16,24 @@ public final class dq
   
   private dq(byte paramByte)
   {
-    AppMethodBeat.i(115982);
-    this.dfR = new a();
-    this.dfS = new b();
-    this.ESR = false;
+    AppMethodBeat.i(115981);
+    this.ddk = new a();
+    this.ddl = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(115982);
+    AppMethodBeat.o(115981);
   }
   
   public static final class a
   {
-    public String cLR;
-    public String dfT;
+    public String cIZ;
+    public String ddh;
+    public boolean ddi = false;
   }
   
   public static final class b
   {
-    public boolean dfO;
+    public boolean ddj;
   }
 }
 

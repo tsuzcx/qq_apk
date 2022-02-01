@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_ecard.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -26,12 +26,12 @@ public class WalletOpenLqbProxyUI
     paramBundle = getProcess();
     if (paramBundle != null)
     {
-      int i = getInput().getInt(com.tencent.mm.plugin.wallet_ecard.a.a.AvM, 0);
-      String str = getInput().getString(com.tencent.mm.plugin.wallet_ecard.a.a.AvS);
-      ad.i("MicroMsg.WalletOpenLqbProxyUI", "WalletOpenLqbProxyUI onCreate, openScene: %s, extraData: %s", new Object[] { Integer.valueOf(i), str });
+      int i = getInput().getInt(com.tencent.mm.plugin.wallet_ecard.a.a.BOg, 0);
+      String str = getInput().getString(com.tencent.mm.plugin.wallet_ecard.a.a.BOm);
+      ac.i("MicroMsg.WalletOpenLqbProxyUI", "WalletOpenLqbProxyUI onCreate, openScene: %s, extraData: %s", new Object[] { Integer.valueOf(i), str });
       if (i == 3)
       {
-        getNetController().q(new Object[] { Integer.valueOf(i), str });
+        getNetController().s(new Object[] { Integer.valueOf(i), str });
         AppMethodBeat.o(71795);
         return;
       }

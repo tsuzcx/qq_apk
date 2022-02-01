@@ -7,9 +7,9 @@ import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.media.d.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.a.m;
 import d.g.a.q;
 import d.g.a.r;
@@ -20,143 +20,143 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeVideoRemuxer;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "Lcom/tencent/mm/media/remuxer/IMediaCodecRemuxer;", "musicPath", "", "imageList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "mixType", "", "outputFilePath", "outputWidth", "outputHeight", "outputBitrate", "outputAudioBitrate", "outputAudioSampleRate", "outputFps", "startTimeMs", "", "endTimeMs", "useX264Encode", "", "finishCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "path", "", "(Ljava/lang/String;Ljava/util/ArrayList;ILjava/lang/String;IIIIIIJJZLkotlin/jvm/functions/Function1;)V", "TAG", "audioCodec", "Lcom/tencent/mm/media/codec/MediaCodecAACCodec;", "audioMixHandlerThread", "Landroid/os/HandlerThread;", "backgroundExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "blendBitmapProvider", "Landroid/graphics/Bitmap;", "decodeFrameCount", "decoder", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeDecoder;", "delayCheckFinishEncodeRunnable", "Ljava/lang/Runnable;", "drawFrameCount", "encodeFrameCount", "encoder", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "initFinish", "inputHeight", "inputWidth", "isAudioRemuxFinish", "isDecodeEnd", "isFinishEncode", "isInvokeEndCallback", "isVideoRemuxFinish", "mixMuxerController", "Lcom/tencent/mm/media/remuxer/MixMuxerController;", "getMixType", "()I", "setMixType", "(I)V", "musicExtractorWrapper", "remuxCost", "Lcom/tencent/mm/media/util/CodeMan;", "remuxEndTime", "remuxStartTick", "remuxStartTime", "remuxerCallback", "Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerCallback;", "startOnInitFinish", "getUseX264Encode", "()Z", "setUseX264Encode", "(Z)V", "videoDuration", "videoFps", "videoMixHandlerThread", "x264Encoder", "Lcom/tencent/mm/media/encoder/X264TransEncoder;", "checkFinishEncode", "finishEncode", "finishRemux", "isVideo", "generateEncodeConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "onDecoderEncoderFailed", "isDecoder", "remux", "remuxImpl", "runAudioMix", "setVideoBlendBitmap", "bitmap", "setVideoBlendBitmapProvider", "setVideoBlurBgProvider", "blurBgProvider", "Companion", "plugin-recordvideo_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeVideoRemuxer;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "Lcom/tencent/mm/media/remuxer/IMediaCodecRemuxer;", "musicPath", "", "imageList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "mixType", "", "outputFilePath", "outputWidth", "outputHeight", "outputBitrate", "outputAudioBitrate", "outputAudioSampleRate", "outputFps", "startTimeMs", "", "endTimeMs", "useX264Encode", "", "finishCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "path", "", "(Ljava/lang/String;Ljava/util/ArrayList;ILjava/lang/String;IIIIIIJJZLkotlin/jvm/functions/Function1;)V", "TAG", "audioCodec", "Lcom/tencent/mm/media/codec/MediaCodecAACCodec;", "audioMixHandlerThread", "Landroid/os/HandlerThread;", "backgroundExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "blendBitmapProvider", "Landroid/graphics/Bitmap;", "decodeFrameCount", "decoder", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeDecoder;", "delayCheckFinishEncodeRunnable", "Ljava/lang/Runnable;", "drawFrameCount", "encodeFrameCount", "encoder", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "initFinish", "inputHeight", "inputWidth", "isAudioRemuxFinish", "isDecodeEnd", "isFinishEncode", "isInvokeEndCallback", "isVideoRemuxFinish", "mixMuxerController", "Lcom/tencent/mm/media/remuxer/MixMuxerController;", "getMixType", "()I", "setMixType", "(I)V", "musicExtractorWrapper", "remuxCost", "Lcom/tencent/mm/media/util/CodeMan;", "remuxEndTime", "remuxStartTick", "remuxStartTime", "remuxerCallback", "Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerCallback;", "startOnInitFinish", "getUseX264Encode", "()Z", "setUseX264Encode", "(Z)V", "videoDuration", "videoFps", "videoMixHandlerThread", "x264Encoder", "Lcom/tencent/mm/media/encoder/X264TransEncoder;", "checkFinishEncode", "finishEncode", "finishRemux", "isVideo", "generateEncodeConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "onDecoderEncoderFailed", "isDecoder", "remux", "remuxImpl", "runAudioMix", "setVideoBlendBitmap", "bitmap", "setVideoBlendBitmapProvider", "setVideoBlurBgProvider", "blurBgProvider", "Companion", "plugin-recordvideo_release"})
 public final class e
   extends com.tencent.mm.media.h.d
   implements com.tencent.mm.media.h.c
 {
-  private static final long gtT = 1000L;
-  private static final long gtU = 1000L;
-  public static final e.a vfb;
+  private static final long gUy = 1000L;
+  private static final long gUz = 1000L;
+  public static final e.a wnO;
   private final String TAG;
-  private volatile boolean gmH;
-  private int gmO;
-  private int gmX;
-  private volatile boolean gqt;
-  private int gsY;
-  private int gsZ;
-  private d.g.a.b<? super Long, Bitmap> gsq;
-  private final Runnable gtB;
-  private final String gtC;
-  private int gtF;
-  private int gtG;
-  private int gtH;
-  private int gtI;
-  private int gtJ;
-  private int gtL;
-  private d.g.a.b<? super String, y> gtS;
-  private long gtb;
-  private com.tencent.mm.media.d.b gtc;
-  private com.tencent.mm.media.d.g gtd;
-  private com.tencent.mm.media.a.a gte;
-  private com.tencent.mm.media.h.i gtg;
-  private com.tencent.mm.media.e.a gth;
-  private com.tencent.mm.media.e.a gti;
-  private HandlerThread gtj;
-  private HandlerThread gtk;
-  private boolean gtl;
-  private boolean gtm;
-  private com.tencent.mm.media.h.g gtn;
-  private long gtp;
-  private final com.tencent.mm.media.j.a gtq;
-  private boolean gtr;
-  private boolean gts;
-  private boolean gtt;
-  private int gtu;
-  private int gtv;
+  private int gNB;
+  private int gNK;
+  private volatile boolean gNu;
+  private volatile boolean gRb;
+  private d.g.a.b<? super Long, Bitmap> gSX;
+  private int gTG;
+  private int gTH;
+  private long gTJ;
+  private com.tencent.mm.media.d.b gTK;
+  private com.tencent.mm.media.d.g gTL;
+  private com.tencent.mm.media.a.a gTM;
+  private com.tencent.mm.media.h.i gTO;
+  private com.tencent.mm.media.e.a gTP;
+  private com.tencent.mm.media.e.a gTQ;
+  private HandlerThread gTR;
+  private HandlerThread gTS;
+  private boolean gTT;
+  private boolean gTU;
+  private com.tencent.mm.media.h.g gTV;
+  private long gTX;
+  private final com.tencent.mm.media.j.a gTY;
+  private boolean gTZ;
+  private boolean gUa;
+  private boolean gUb;
+  private int gUc;
+  private int gUd;
+  private final Runnable gUj;
+  private final String gUk;
+  private int gUm;
+  private int gUn;
+  private int gUo;
+  private int gUq;
+  private d.g.a.b<? super String, y> gUx;
+  private int grA;
+  private int grB;
   private final String outputFilePath;
   private long remuxEndTime;
-  private ArrayList<String> veU;
-  private d veZ;
-  boolean vfa;
   private int videoDuration;
   private int videoFps;
+  private ArrayList<String> wnH;
+  private d wnM;
+  boolean wnN;
   
   static
   {
     AppMethodBeat.i(75300);
-    vfb = new e.a((byte)0);
-    gtT = 1000L;
-    gtU = 1000L;
+    wnO = new e.a((byte)0);
+    gUy = 1000L;
+    gUz = 1000L;
     AppMethodBeat.o(75300);
   }
   
   public e(String paramString1, final ArrayList<String> paramArrayList, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong1, long paramLong2, boolean paramBoolean, d.g.a.b<? super String, y> paramb)
   {
     AppMethodBeat.i(75299);
-    this.gtC = paramString1;
-    this.veU = paramArrayList;
-    this.gmX = paramInt1;
+    this.gUk = paramString1;
+    this.wnH = paramArrayList;
+    this.gNK = paramInt1;
     this.outputFilePath = paramString2;
-    this.gtF = paramInt2;
-    this.gtG = paramInt3;
-    this.gtH = paramInt4;
-    this.gtI = paramInt5;
-    this.gtJ = paramInt6;
-    this.gtL = paramInt7;
-    this.vfa = paramBoolean;
-    this.gtS = paramb;
+    this.grA = paramInt2;
+    this.grB = paramInt3;
+    this.gUm = paramInt4;
+    this.gUn = paramInt5;
+    this.gUo = paramInt6;
+    this.gUq = paramInt7;
+    this.wnN = paramBoolean;
+    this.gUx = paramb;
     this.TAG = "MicroMsg.MediaCodecRemuxerFake";
     this.videoDuration = -1;
-    this.gtb = paramLong1;
+    this.gTJ = paramLong1;
     this.remuxEndTime = -1L;
-    this.gtq = new com.tencent.mm.media.j.a("remuxCost");
-    paramString1 = this.veU.iterator();
+    this.gTY = new com.tencent.mm.media.j.a("remuxCost");
+    paramString1 = this.wnH.iterator();
     do
     {
       if (!paramString1.hasNext()) {
         break;
       }
-    } while (com.tencent.mm.vfs.i.eK((String)paramString1.next()));
+    } while (com.tencent.mm.vfs.i.eA((String)paramString1.next()));
     for (paramInt1 = 0;; paramInt1 = 1)
     {
-      if ((paramInt1 == 0) || (bt.isNullOrNil(this.outputFilePath)) || (this.gtF <= 0) || (this.gtG <= 0))
+      if ((paramInt1 == 0) || (bs.isNullOrNil(this.outputFilePath)) || (this.grA <= 0) || (this.grB <= 0))
       {
-        ad.e(this.TAG, "create MediaCodecRemuxer error, outputFilePath:" + this.outputFilePath + ", outputWidth:" + this.gtF + ", outputHeight:" + this.gtG + ", videoFps:" + this.videoFps + ", outputFps:" + this.gtL);
-        paramString1 = com.tencent.mm.media.j.d.gwr;
-        com.tencent.mm.media.j.d.alM();
+        ac.e(this.TAG, "create MediaCodecRemuxer error, outputFilePath:" + this.outputFilePath + ", outputWidth:" + this.grA + ", outputHeight:" + this.grB + ", videoFps:" + this.videoFps + ", outputFps:" + this.gUq);
+        paramString1 = com.tencent.mm.media.j.d.gWO;
+        com.tencent.mm.media.j.d.asG();
         paramString1 = (Throwable)new IllegalArgumentException("create MediaCodecRemuxer error");
         AppMethodBeat.o(75299);
         throw paramString1;
       }
-      paramString1 = com.tencent.mm.media.j.d.gwr;
-      com.tencent.mm.media.j.d.mB(this.gmX);
-      com.tencent.mm.vfs.i.aMF(com.tencent.mm.vfs.i.aMQ(this.outputFilePath));
-      com.tencent.mm.plugin.recordvideo.b.e.vgG.dhq();
-      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.vgG;
-      this.gsY = com.tencent.mm.plugin.recordvideo.b.e.getWidth();
-      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.vgG;
-      this.gsZ = com.tencent.mm.plugin.recordvideo.b.e.getHeight();
-      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.vgG;
+      paramString1 = com.tencent.mm.media.j.d.gWO;
+      com.tencent.mm.media.j.d.np(this.gNK);
+      com.tencent.mm.vfs.i.aSh(com.tencent.mm.vfs.i.aSs(this.outputFilePath));
+      com.tencent.mm.plugin.recordvideo.b.e.wps.duW();
+      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.wps;
+      this.gTG = com.tencent.mm.plugin.recordvideo.b.e.getWidth();
+      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.wps;
+      this.gTH = com.tencent.mm.plugin.recordvideo.b.e.getHeight();
+      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.wps;
       this.videoFps = com.tencent.mm.plugin.recordvideo.b.e.getFrameRate();
-      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.vgG;
-      this.videoDuration = com.tencent.mm.plugin.recordvideo.b.e.dhm();
+      paramString1 = com.tencent.mm.plugin.recordvideo.b.e.wps;
+      this.videoDuration = com.tencent.mm.plugin.recordvideo.b.e.duT();
       if (paramLong2 == 0L)
       {
         this.remuxEndTime = this.videoDuration;
-        if (!this.vfa) {
+        if (!this.wnN) {
           break label1041;
         }
-        ad.i(this.TAG, "mixMuxerController init useX264Encode, bitrate %s, width %s, height %s, fps %s", new Object[] { Integer.valueOf(this.gtH), Integer.valueOf(this.gtF), Integer.valueOf(this.gtG), Integer.valueOf(this.gtL) });
-        paramString1 = new com.tencent.mm.media.h.i(this.gtb, this.remuxEndTime, this.gtH, this.gtF, this.gtG, this.vfa, this.gtL);
+        ac.i(this.TAG, "mixMuxerController init useX264Encode, bitrate %s, width %s, height %s, fps %s", new Object[] { Integer.valueOf(this.gUm), Integer.valueOf(this.grA), Integer.valueOf(this.grB), Integer.valueOf(this.gUq) });
+        paramString1 = new com.tencent.mm.media.h.i(this.gTJ, this.remuxEndTime, this.gUm, this.grA, this.grB, this.wnN, this.gUq);
         label486:
-        this.gtg = paramString1;
-        ad.m(this.TAG, "create MediaCodecRemuxer, outputFilePath: " + this.outputFilePath + ", inputWidth: " + this.gsY + ", inputHeight: " + this.gsZ + ", videoFps: " + this.videoFps + " ,outputBitrate :" + this.gtH + ", outputAudioBitrate:" + this.gtI + " , outputWidth: " + this.gtF + ", outputHeight: " + this.gtG + ',' + " startTimeMs: " + paramLong1 + ", endTimeMs: " + paramLong2 + " , outputFps: " + this.gtL + " , videoDuration: " + this.videoDuration + " , remuxStartTime: " + this.gtb + " ,remuxEndTime: " + this.remuxEndTime, new Object[0]);
-        this.gti = null;
-        this.gtn = new com.tencent.mm.media.h.g(this.gtg, this.gti, this.outputFilePath, this.gmX, this.gtJ);
-        if (com.tencent.mm.vfs.i.eK(this.gtC))
+        this.gTO = paramString1;
+        ac.m(this.TAG, "create MediaCodecRemuxer, outputFilePath: " + this.outputFilePath + ", inputWidth: " + this.gTG + ", inputHeight: " + this.gTH + ", videoFps: " + this.videoFps + " ,outputBitrate :" + this.gUm + ", outputAudioBitrate:" + this.gUn + " , outputWidth: " + this.grA + ", outputHeight: " + this.grB + ',' + " startTimeMs: " + paramLong1 + ", endTimeMs: " + paramLong2 + " , outputFps: " + this.gUq + " , videoDuration: " + this.videoDuration + " , remuxStartTime: " + this.gTJ + " ,remuxEndTime: " + this.remuxEndTime, new Object[0]);
+        this.gTQ = null;
+        this.gTV = new com.tencent.mm.media.h.g(this.gTO, this.gTQ, this.outputFilePath, this.gNK, this.gUo);
+        if (com.tencent.mm.vfs.i.eA(this.gUk))
         {
-          paramString1 = this.gtC;
+          paramString1 = this.gUk;
           if (paramString1 == null) {
-            k.fvU();
+            k.fOy();
           }
           paramString1 = new com.tencent.mm.media.e.a(paramString1);
-          if (paramString1.gre)
+          if (paramString1.gRM)
           {
-            paramArrayList = com.tencent.mm.media.j.d.gwr;
-            com.tencent.mm.media.j.d.alR();
+            paramArrayList = com.tencent.mm.media.j.d.gWO;
+            com.tencent.mm.media.j.d.asJ();
           }
-          this.gth = paramString1;
+          this.gTP = paramString1;
         }
       }
       for (;;)
@@ -165,15 +165,15 @@ public final class e
         {
           try
           {
-            if (this.gtL > 0)
+            if (this.gUq > 0)
             {
-              paramInt1 = Math.min(this.gtL, this.videoFps);
+              paramInt1 = Math.min(this.gUq, this.videoFps);
               paramArrayList = new com.tencent.mm.media.b.d();
-              paramArrayList.bitrate = this.gtH;
+              paramArrayList.bitrate = this.gUm;
               paramArrayList.frameRate = paramInt1;
-              paramArrayList.gni = this.gtG;
-              paramArrayList.gnh = this.gtF;
-              paramArrayList.gnn = true;
+              paramArrayList.gNV = this.grB;
+              paramArrayList.gNU = this.grA;
+              paramArrayList.gNZ = true;
               paramb = (m)new j(this);
               locala = (d.g.a.a)new k(this);
             }
@@ -182,228 +182,158 @@ public final class e
           {
             final d.g.a.a locala;
             label1041:
-            ad.printErrStackTrace(this.TAG, (Throwable)paramString1, "remux impl error", new Object[0]);
+            ac.printErrStackTrace(this.TAG, (Throwable)paramString1, "remux impl error", new Object[0]);
             continue;
             paramString1 = (com.tencent.mm.media.d.b)new com.tencent.mm.media.d.e(paramArrayList, (d.g.a.b)new f(paramb, locala));
             continue;
             paramString1 = (com.tencent.mm.media.d.b)new com.tencent.mm.media.d.e(paramArrayList, (d.g.a.b)new h(paramb, locala));
             continue;
-            ad.printErrStackTrace(this.TAG, (Throwable)paramString2, "create encoder error", new Object[0]);
-            paramString1 = com.tencent.mm.media.j.d.gwr;
-            com.tencent.mm.media.j.d.alS();
-            dhd();
-            paramString1 = com.tencent.mm.plugin.recordvideo.d.c.vpz;
-            com.tencent.mm.plugin.recordvideo.d.c.diB();
+            ac.printErrStackTrace(this.TAG, (Throwable)paramString2, "create encoder error", new Object[0]);
+            paramString1 = com.tencent.mm.media.j.d.gWO;
+            com.tencent.mm.media.j.d.asK();
+            duL();
+            paramString1 = com.tencent.mm.plugin.recordvideo.d.d.wyq;
+            com.tencent.mm.plugin.recordvideo.d.d.dwu();
             continue;
             paramString1 = null;
             continue;
           }
           try
           {
-            if (this.vfa)
+            if (this.wnN)
             {
-              ad.i(this.TAG, "useX264Encode");
-              this.gtd = new com.tencent.mm.media.d.g(this.gtg.gmW, paramArrayList.gnh, paramArrayList.gni);
-              paramString1 = this.gtd;
+              ac.i(this.TAG, "useX264Encode");
+              this.gTL = new com.tencent.mm.media.d.g(this.gTO.gNJ, paramArrayList.gNU, paramArrayList.gNV);
+              paramString1 = this.gTL;
               if (paramString1 != null) {
                 paramString1.start();
               }
-              if ((this.gtd != null) || (this.gtc != null))
+              if ((this.gTL != null) || (this.gTK != null))
               {
-                if (this.gtc == null) {
+                if (this.gTK == null) {
                   continue;
                 }
-                paramString1 = this.gtc;
+                paramString1 = this.gTK;
                 if (paramString1 == null) {
-                  k.fvU();
+                  k.fOy();
                 }
                 paramString1 = paramString1.getInputSurface();
-                this.veZ = new d(this.veU, this.gtb, this.remuxEndTime, paramString1, this.gtF, this.gtG, this.vfa, this.gtL, (m)new i(this, paramArrayList));
+                this.wnM = new d(this.wnH, this.gTJ, this.remuxEndTime, paramString1, this.grA, this.grB, this.wnN, this.gUq, (m)new i(this, paramArrayList));
               }
-              this.gtB = ((Runnable)new b(this));
+              this.gUj = ((Runnable)new b(this));
               AppMethodBeat.o(75299);
               return;
               this.remuxEndTime = paramLong2;
               break;
-              paramString1 = new com.tencent.mm.media.h.i(this.gtb, this.remuxEndTime, this.gtH, this.vfa);
+              paramString1 = new com.tencent.mm.media.h.i(this.gTJ, this.remuxEndTime, this.gUm, this.wnN);
               break label486;
               paramInt1 = this.videoFps;
               continue;
             }
-            if (!com.tencent.mm.compatible.util.d.lf(23)) {
+            if (!com.tencent.mm.compatible.util.d.kZ(23)) {
               continue;
             }
             paramString1 = (com.tencent.mm.media.d.b)new f(paramArrayList, (d.g.a.b)new e(paramb, locala));
-            this.gtc = paramString1;
+            this.gTK = paramString1;
             continue;
-            paramArrayList.gnn = false;
+            paramArrayList.gNZ = false;
           }
           catch (Exception paramString2)
           {
-            if (!paramArrayList.gnn) {
+            if (!paramArrayList.gNZ) {
               continue;
             }
           }
         }
         try
         {
-          if (!com.tencent.mm.compatible.util.d.lf(23)) {
+          if (!com.tencent.mm.compatible.util.d.kZ(23)) {
             continue;
           }
           paramString1 = (com.tencent.mm.media.d.b)new f(paramArrayList, (d.g.a.b)new g(paramb, locala));
-          this.gtc = paramString1;
-          paramString1 = com.tencent.mm.plugin.recordvideo.d.c.vpz;
-          com.tencent.mm.plugin.recordvideo.d.c.diC();
+          this.gTK = paramString1;
+          paramString1 = com.tencent.mm.plugin.recordvideo.d.d.wyq;
+          com.tencent.mm.plugin.recordvideo.d.d.dwv();
         }
         catch (Exception paramString1)
         {
-          ad.printErrStackTrace(this.TAG, (Throwable)paramString2, "create encoder again error", new Object[0]);
-          paramString1 = com.tencent.mm.media.j.d.gwr;
-          com.tencent.mm.media.j.d.alS();
-          dhd();
-          paramString1 = com.tencent.mm.plugin.recordvideo.d.c.vpz;
-          com.tencent.mm.plugin.recordvideo.d.c.diB();
+          ac.printErrStackTrace(this.TAG, (Throwable)paramString2, "create encoder again error", new Object[0]);
+          paramString1 = com.tencent.mm.media.j.d.gWO;
+          com.tencent.mm.media.j.d.asK();
+          duL();
+          paramString1 = com.tencent.mm.plugin.recordvideo.d.d.wyq;
+          com.tencent.mm.plugin.recordvideo.d.d.dwu();
         }
       }
     }
   }
   
-  private final void ajF()
+  private final void aqE()
   {
     AppMethodBeat.i(75296);
-    ad.i(this.TAG, "finishEncode %s", new Object[] { Boolean.valueOf(this.vfa) });
+    ac.i(this.TAG, "finishEncode %s", new Object[] { Boolean.valueOf(this.wnN) });
     Object localObject;
-    if (this.vfa)
+    if (this.wnN)
     {
-      localObject = this.gtd;
+      localObject = this.gTL;
       if (localObject != null) {
         com.tencent.mm.media.d.g.a((com.tencent.mm.media.d.g)localObject);
       }
-      dH(true);
+      ec(true);
     }
     for (;;)
     {
-      aq.az(this.gtB);
-      this.gqt = true;
+      ap.aB(this.gUj);
+      this.gRb = true;
       AppMethodBeat.o(75296);
       return;
-      localObject = this.gtc;
+      localObject = this.gTK;
       if (localObject != null) {
-        ((com.tencent.mm.media.d.b)localObject).ajF();
+        ((com.tencent.mm.media.d.b)localObject).aqE();
       }
     }
   }
   
-  private final void dH(boolean paramBoolean)
-  {
-    for (;;)
-    {
-      Object localObject1;
-      long l;
-      com.tencent.mm.media.j.d locald;
-      try
-      {
-        AppMethodBeat.i(75297);
-        ad.i(this.TAG, "finishRemux, isVideo: " + paramBoolean + ", isAudioRemuxFinish:" + this.gtt + ", isVideoRemuxFinish:" + this.gts + ", isInvokeEndCallback:" + this.gtr);
-        if (paramBoolean)
-        {
-          this.gts = true;
-          if ((!this.gtt) || (!this.gts) || (this.gtr)) {
-            break label374;
-          }
-          this.gtq.agL();
-          this.gtr = true;
-          localObject1 = this.gti;
-          if (localObject1 != null) {
-            ((com.tencent.mm.media.e.a)localObject1).release();
-          }
-          localObject1 = this.gtn;
-          if (localObject1 != null)
-          {
-            localObject1 = ((com.tencent.mm.media.h.g)localObject1).gun;
-            if (localObject1 != null) {
-              ((d.g.a.b)localObject1).aA(this.gtS);
-            }
-          }
-          localObject1 = this.gtj;
-          if (localObject1 != null) {
-            ((HandlerThread)localObject1).quitSafely();
-          }
-          localObject1 = this.gtk;
-          if (localObject1 != null) {
-            ((HandlerThread)localObject1).quitSafely();
-          }
-          l = bt.aS(this.gtp);
-          ad.i(this.TAG, "remux used " + l + " decodeFrame:" + this.gtu + ", encodeFrame:" + this.gmO + ", drawFrameCount:" + this.gtv);
-        }
-      }
-      finally {}
-      try
-      {
-        localObject1 = com.tencent.mm.plugin.sight.base.e.ano(this.outputFilePath);
-        if (localObject1 == null) {
-          break label374;
-        }
-        locald = com.tencent.mm.media.j.d.gwr;
-        com.tencent.mm.media.j.d.x(this.gmX, l);
-        locald = com.tencent.mm.media.j.d.gwr;
-        com.tencent.mm.media.j.d.e(((com.tencent.mm.plugin.sight.base.a)localObject1).videoBitrate, ((com.tencent.mm.plugin.sight.base.a)localObject1).frameRate, this.videoFps);
-        if (this.gtu / this.gmO < 1.5D) {
-          break label374;
-        }
-        localObject1 = com.tencent.mm.media.j.d.gwr;
-        com.tencent.mm.media.j.d.amb();
-        AppMethodBeat.o(75297);
-        return;
-      }
-      catch (Exception localException) {}
-      this.gtt = true;
-      continue;
-      label374:
-      AppMethodBeat.o(75297);
-    }
-  }
-  
-  private final void dhd()
+  private final void duL()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(75298);
-        ad.i(this.TAG, "onDecoderEncoderFailed, isDecoder:false");
-        if (!this.gtr)
+        ac.i(this.TAG, "onDecoderEncoderFailed, isDecoder:false");
+        if (!this.gTZ)
         {
-          this.gtq.agL();
-          this.gtr = true;
+          this.gTY.aic();
+          this.gTZ = true;
           try
           {
-            localObject1 = this.gti;
+            localObject1 = this.gTQ;
             if (localObject1 != null) {
               ((com.tencent.mm.media.e.a)localObject1).release();
             }
-            localObject1 = this.gtj;
+            localObject1 = this.gTR;
             if (localObject1 != null) {
               ((HandlerThread)localObject1).quit();
             }
-            localObject1 = this.gtk;
+            localObject1 = this.gTS;
             if (localObject1 != null) {
               ((HandlerThread)localObject1).quit();
             }
             com.tencent.mm.vfs.i.deleteFile(this.outputFilePath);
-            long l = bt.aS(this.gtp);
-            ad.i(this.TAG, "onDecoderEncoderFailed, finish, costTime:".concat(String.valueOf(l)));
+            long l = bs.aO(this.gTX);
+            ac.i(this.TAG, "onDecoderEncoderFailed, finish, costTime:".concat(String.valueOf(l)));
           }
           catch (Exception localException)
           {
             Object localObject1;
-            ad.printErrStackTrace(this.TAG, (Throwable)localException, "onDecoderEncoderFailed error:" + localException.getMessage(), new Object[0]);
+            ac.printErrStackTrace(this.TAG, (Throwable)localException, "onDecoderEncoderFailed error:" + localException.getMessage(), new Object[0]);
             continue;
           }
-          localObject1 = this.gtS;
+          localObject1 = this.gUx;
           if (localObject1 != null)
           {
-            ((d.g.a.b)localObject1).aA(null);
+            ((d.g.a.b)localObject1).ay(null);
             AppMethodBeat.o(75298);
             return;
           }
@@ -414,54 +344,124 @@ public final class e
     }
   }
   
-  public final int akd()
+  private final void ec(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      Object localObject1;
+      long l;
+      com.tencent.mm.media.j.d locald;
+      try
+      {
+        AppMethodBeat.i(75297);
+        ac.i(this.TAG, "finishRemux, isVideo: " + paramBoolean + ", isAudioRemuxFinish:" + this.gUb + ", isVideoRemuxFinish:" + this.gUa + ", isInvokeEndCallback:" + this.gTZ);
+        if (paramBoolean)
+        {
+          this.gUa = true;
+          if ((!this.gUb) || (!this.gUa) || (this.gTZ)) {
+            break label374;
+          }
+          this.gTY.aic();
+          this.gTZ = true;
+          localObject1 = this.gTQ;
+          if (localObject1 != null) {
+            ((com.tencent.mm.media.e.a)localObject1).release();
+          }
+          localObject1 = this.gTV;
+          if (localObject1 != null)
+          {
+            localObject1 = ((com.tencent.mm.media.h.g)localObject1).gUS;
+            if (localObject1 != null) {
+              ((d.g.a.b)localObject1).ay(this.gUx);
+            }
+          }
+          localObject1 = this.gTR;
+          if (localObject1 != null) {
+            ((HandlerThread)localObject1).quitSafely();
+          }
+          localObject1 = this.gTS;
+          if (localObject1 != null) {
+            ((HandlerThread)localObject1).quitSafely();
+          }
+          l = bs.aO(this.gTX);
+          ac.i(this.TAG, "remux used " + l + " decodeFrame:" + this.gUc + ", encodeFrame:" + this.gNB + ", drawFrameCount:" + this.gUd);
+        }
+      }
+      finally {}
+      try
+      {
+        localObject1 = com.tencent.mm.plugin.sight.base.e.asx(this.outputFilePath);
+        if (localObject1 == null) {
+          break label374;
+        }
+        locald = com.tencent.mm.media.j.d.gWO;
+        com.tencent.mm.media.j.d.w(this.gNK, l);
+        locald = com.tencent.mm.media.j.d.gWO;
+        com.tencent.mm.media.j.d.f(((com.tencent.mm.plugin.sight.base.a)localObject1).videoBitrate, ((com.tencent.mm.plugin.sight.base.a)localObject1).frameRate, this.videoFps);
+        if (this.gUc / this.gNB < 1.5D) {
+          break label374;
+        }
+        localObject1 = com.tencent.mm.media.j.d.gWO;
+        com.tencent.mm.media.j.d.asT();
+        AppMethodBeat.o(75297);
+        return;
+      }
+      catch (Exception localException) {}
+      this.gUb = true;
+      continue;
+      label374:
+      AppMethodBeat.o(75297);
+    }
+  }
+  
+  public final int arc()
   {
     AppMethodBeat.i(75294);
-    ad.i(this.TAG, "start remux, initFinish:" + this.gtl);
-    this.gtp = bt.GC();
-    this.gtq.ghu.reset();
+    ac.i(this.TAG, "start remux, initFinish:" + this.gTT);
+    this.gTX = bs.Gn();
+    this.gTY.gma.reset();
     Object localObject;
-    if (ad.getLogLevel() > 0)
+    if (ac.getLogLevel() > 0)
     {
-      localObject = com.tencent.mm.plugin.recordvideo.b.e.vgG;
-      if (!com.tencent.mm.plugin.recordvideo.b.e.dho()) {
-        this.gtl = false;
+      localObject = com.tencent.mm.plugin.recordvideo.b.e.wps;
+      if (!com.tencent.mm.plugin.recordvideo.b.e.duU()) {
+        this.gTT = false;
       }
     }
-    if (this.gtl)
+    if (this.gTT)
     {
-      localObject = com.tencent.mm.plugin.recordvideo.d.c.vpz;
-      com.tencent.mm.plugin.recordvideo.d.c.diA();
-      localObject = this.gtj;
+      localObject = com.tencent.mm.plugin.recordvideo.d.d.wyq;
+      com.tencent.mm.plugin.recordvideo.d.d.dwt();
+      localObject = this.gTR;
       if (localObject != null) {
         ((HandlerThread)localObject).quit();
       }
-      this.gtj = com.tencent.mm.ad.c.a("MediaCodecRemux_audioMix", false, (d.g.a.a)new c(this));
-      localObject = this.gtk;
+      this.gTR = com.tencent.mm.ac.c.a("MediaCodecRemux_audioMix", false, (d.g.a.a)new c(this));
+      localObject = this.gTS;
       if (localObject != null) {
         ((HandlerThread)localObject).quit();
       }
-      if (this.veZ != null) {
-        this.gtk = com.tencent.mm.ad.c.a("MediaCodecRemux_videoMix", false, (d.g.a.a)new d(this));
+      if (this.wnM != null) {
+        this.gTS = com.tencent.mm.ac.c.a("MediaCodecRemux_videoMix", false, (d.g.a.a)new d(this));
       }
     }
     for (;;)
     {
       AppMethodBeat.o(75294);
       return 0;
-      this.gtm = true;
+      this.gTU = true;
     }
   }
   
-  public final void e(d.g.a.b<? super Long, Bitmap> paramb)
+  public final void j(d.g.a.b<? super Long, Bitmap> paramb)
   {
     AppMethodBeat.i(75293);
     k.h(paramb, "blendBitmapProvider");
-    this.gsq = paramb;
+    this.gSX = paramb;
     AppMethodBeat.o(75293);
   }
   
-  public final void f(d.g.a.b<? super Long, Bitmap> paramb)
+  public final void k(d.g.a.b<? super Long, Bitmap> paramb)
   {
     AppMethodBeat.i(75295);
     k.h(paramb, "blurBgProvider");
@@ -475,7 +475,7 @@ public final class e
     AppMethodBeat.o(75292);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -484,18 +484,18 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(75277);
-      ad.i(e.a(this.vfc), "decode end after " + e.aki() + ", isFinishEncode:" + e.s(this.vfc));
-      if (!e.s(this.vfc))
+      ac.i(e.a(this.wnP), "decode end after " + e.arg() + ", isFinishEncode:" + e.s(this.wnP));
+      if (!e.s(this.wnP))
       {
-        com.tencent.mm.media.j.d locald = com.tencent.mm.media.j.d.gwr;
-        com.tencent.mm.media.j.d.amp();
-        e.t(this.vfc);
+        com.tencent.mm.media.j.d locald = com.tencent.mm.media.j.d.gWO;
+        com.tencent.mm.media.j.d.ath();
+        e.t(this.wnP);
       }
       AppMethodBeat.o(75277);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -506,7 +506,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "()Lkotlin/Unit;"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "()Lkotlin/Unit;"})
   static final class d
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -517,7 +517,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
   static final class e
     extends d.g.b.l
     implements d.g.a.b<com.tencent.mm.media.d.b, y>
@@ -528,7 +528,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
   static final class f
     extends d.g.b.l
     implements d.g.a.b<com.tencent.mm.media.d.b, y>
@@ -539,7 +539,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
   static final class g
     extends d.g.b.l
     implements d.g.a.b<com.tencent.mm.media.d.b, y>
@@ -550,7 +550,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "invoke"})
   static final class h
     extends d.g.b.l
     implements d.g.a.b<com.tencent.mm.media.d.b, y>
@@ -561,7 +561,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeDecoder;", "succ", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeDecoder;", "succ", "", "invoke"})
   static final class i
     extends d.g.b.l
     implements m<d, Boolean, y>
@@ -571,7 +571,7 @@ public final class e
       super();
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "<anonymous parameter 0>", "Ljava/nio/ByteBuffer;", "pts", "", "<anonymous parameter 2>", "Landroid/media/MediaCodec$BufferInfo;", "duplicate", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Ljava/nio/ByteBuffer;", "pts", "", "<anonymous parameter 2>", "Landroid/media/MediaCodec$BufferInfo;", "duplicate", "", "invoke"})
     static final class a
       extends d.g.b.l
       implements r<ByteBuffer, Long, MediaCodec.BufferInfo, Boolean, y>
@@ -582,7 +582,7 @@ public final class e
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
     static final class b
       extends d.g.b.l
       implements d.g.a.a<y>
@@ -594,7 +594,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "byteBuffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "byteBuffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "invoke"})
   static final class j
     extends d.g.b.l
     implements m<ByteBuffer, MediaCodec.BufferInfo, y>
@@ -605,7 +605,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class k
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -616,7 +616,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "buffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "format", "Landroid/media/MediaFormat;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "buffer", "Ljava/nio/ByteBuffer;", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "format", "Landroid/media/MediaFormat;", "invoke"})
   static final class l
     extends d.g.b.l
     implements q<ByteBuffer, MediaCodec.BufferInfo, MediaFormat, y>
@@ -627,7 +627,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class m
     extends d.g.b.l
     implements d.g.a.a<y>

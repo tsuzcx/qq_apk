@@ -6,115 +6,115 @@ import com.google.b.a.e;
 public final class a$av
   extends e
 {
-  public int ImF = 0;
-  public int ImG = 0;
-  public int ImH = 0;
-  public int ImI = 0;
-  public int ImJ = 0;
-  public int ImK = 0;
-  public int ImL = 0;
-  public int ImM = 0;
-  public int ImN = 0;
-  public int ImO = 0;
-  public int hcd = 0;
-  public int hce = 0;
+  public int JOp = 0;
+  public int JOq = 0;
+  public int JOr = 0;
+  public int JOs = 0;
+  public int JOt = 0;
+  public int JOu = 0;
+  public int JOv = 0;
+  public int JOw = 0;
+  public int JOx = 0;
+  public int JOy = 0;
+  public int hCF = 0;
+  public int hCG = 0;
   
   public a$av()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.ImF != 0) {
-      paramb.by(1, this.ImF);
+    if (this.JOp != 0) {
+      paramb.bv(1, this.JOp);
     }
-    if (this.hcd != 0) {
-      paramb.by(2, this.hcd);
+    if (this.hCF != 0) {
+      paramb.bv(2, this.hCF);
     }
-    if (this.hce != 0) {
-      paramb.by(3, this.hce);
+    if (this.hCG != 0) {
+      paramb.bv(3, this.hCG);
     }
-    if (this.ImG != 0) {
-      paramb.by(4, this.ImG);
+    if (this.JOq != 0) {
+      paramb.bv(4, this.JOq);
     }
-    if (this.ImH != 0) {
-      paramb.by(5, this.ImH);
+    if (this.JOr != 0) {
+      paramb.bv(5, this.JOr);
     }
-    if (this.ImI != 0) {
-      paramb.by(6, this.ImI);
+    if (this.JOs != 0) {
+      paramb.bv(6, this.JOs);
     }
-    if (this.ImJ != 0) {
-      paramb.by(7, this.ImJ);
+    if (this.JOt != 0) {
+      paramb.bv(7, this.JOt);
     }
-    if (this.ImK != 0) {
-      paramb.by(8, this.ImK);
+    if (this.JOu != 0) {
+      paramb.bv(8, this.JOu);
     }
-    if (this.ImL != 0) {
-      paramb.by(9, this.ImL);
+    if (this.JOv != 0) {
+      paramb.bv(9, this.JOv);
     }
-    if (this.ImM != 0) {
-      paramb.by(10, this.ImM);
+    if (this.JOw != 0) {
+      paramb.bv(10, this.JOw);
     }
-    if (this.ImN != 0) {
-      paramb.by(11, this.ImN);
+    if (this.JOx != 0) {
+      paramb.bv(11, this.JOx);
     }
-    if (this.ImO != 0) {
-      paramb.by(12, this.ImO);
+    if (this.JOy != 0) {
+      paramb.bv(12, this.JOy);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.ImF != 0) {
-      i = j + b.bA(1, this.ImF);
+    if (this.JOp != 0) {
+      i = j + b.bx(1, this.JOp);
     }
     j = i;
-    if (this.hcd != 0) {
-      j = i + b.bA(2, this.hcd);
+    if (this.hCF != 0) {
+      j = i + b.bx(2, this.hCF);
     }
     i = j;
-    if (this.hce != 0) {
-      i = j + b.bA(3, this.hce);
+    if (this.hCG != 0) {
+      i = j + b.bx(3, this.hCG);
     }
     j = i;
-    if (this.ImG != 0) {
-      j = i + b.bA(4, this.ImG);
+    if (this.JOq != 0) {
+      j = i + b.bx(4, this.JOq);
     }
     i = j;
-    if (this.ImH != 0) {
-      i = j + b.bA(5, this.ImH);
+    if (this.JOr != 0) {
+      i = j + b.bx(5, this.JOr);
     }
     j = i;
-    if (this.ImI != 0) {
-      j = i + b.bA(6, this.ImI);
+    if (this.JOs != 0) {
+      j = i + b.bx(6, this.JOs);
     }
     i = j;
-    if (this.ImJ != 0) {
-      i = j + b.bA(7, this.ImJ);
+    if (this.JOt != 0) {
+      i = j + b.bx(7, this.JOt);
     }
     j = i;
-    if (this.ImK != 0) {
-      j = i + b.bA(8, this.ImK);
+    if (this.JOu != 0) {
+      j = i + b.bx(8, this.JOu);
     }
     i = j;
-    if (this.ImL != 0) {
-      i = j + b.bA(9, this.ImL);
+    if (this.JOv != 0) {
+      i = j + b.bx(9, this.JOv);
     }
     j = i;
-    if (this.ImM != 0) {
-      j = i + b.bA(10, this.ImM);
+    if (this.JOw != 0) {
+      j = i + b.bx(10, this.JOw);
     }
     i = j;
-    if (this.ImN != 0) {
-      i = j + b.bA(11, this.ImN);
+    if (this.JOx != 0) {
+      i = j + b.bx(11, this.JOx);
     }
     j = i;
-    if (this.ImO != 0) {
-      j = i + b.bA(12, this.ImO);
+    if (this.JOy != 0) {
+      j = i + b.bx(12, this.JOy);
     }
     return j;
   }

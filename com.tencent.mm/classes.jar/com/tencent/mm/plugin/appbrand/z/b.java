@@ -1,31 +1,55 @@
 package com.tencent.mm.plugin.appbrand.z;
 
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
-public abstract interface b
+public final class b
 {
-  public abstract String[] getKeys();
-  
-  public static final class a
+  public static String ei(String paramString1, String paramString2)
   {
-    public static String r(String[] paramArrayOfString)
+    AppMethodBeat.i(201062);
+    try
     {
-      AppMethodBeat.i(146130);
-      String str1 = " PRIMARY KEY ( ";
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str2 = paramArrayOfString[i];
-        str1 = str1 + ", " + str2;
-        i += 1;
-      }
-      paramArrayOfString = str1.replaceFirst(",", "");
-      paramArrayOfString = paramArrayOfString + " )";
-      paramArrayOfString = "" + "," + paramArrayOfString;
-      AppMethodBeat.o(146130);
-      return paramArrayOfString;
+      paramString1 = ai.getContext().getPackageManager().getApplicationInfo(ai.getContext().getPackageName(), 128).metaData.getString(paramString1, paramString2);
+      AppMethodBeat.o(201062);
+      return paramString1;
     }
+    catch (PackageManager.NameNotFoundException paramString1)
+    {
+      ac.l("Luggage.AndroidPackageUtil", "", new Object[] { paramString1 });
+      AppMethodBeat.o(201062);
+    }
+    return paramString2;
+  }
+  
+  public static PackageInfo getPackageInfo(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(140800);
+    if (paramString == null)
+    {
+      ac.e("Luggage.AndroidPackageUtil", "getPackageInfo fail, packageName is null");
+      AppMethodBeat.o(140800);
+      return null;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      AppMethodBeat.o(140800);
+      return paramContext;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      ac.w("Luggage.AndroidPackageUtil", paramContext.getMessage());
+      AppMethodBeat.o(140800);
+    }
+    return null;
   }
 }
 

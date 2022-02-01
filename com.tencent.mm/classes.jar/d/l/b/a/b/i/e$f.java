@@ -9,12 +9,12 @@ final class e$f
   extends l
   implements b<av, String>
 {
-  public static final f JPj;
+  public static final f LCD;
   
   static
   {
     AppMethodBeat.i(59707);
-    JPj = new f();
+    LCD = new f();
     AppMethodBeat.o(59707);
   }
   

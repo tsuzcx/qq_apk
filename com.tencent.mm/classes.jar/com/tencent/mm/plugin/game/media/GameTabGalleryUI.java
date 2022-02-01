@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.f.f;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,13 +15,13 @@ import org.json.JSONException;
 public class GameTabGalleryUI
   extends MMActivity
 {
-  private static final int rSy;
-  private m rSz;
+  private static final int taq;
+  private m tar;
   
   static
   {
     AppMethodBeat.i(41075);
-    rSy = "GameTabGalleryUI".hashCode() & 0xFFFF;
+    taq = "GameTabGalleryUI".hashCode() & 0xFFFF;
     AppMethodBeat.o(41075);
   }
   
@@ -34,7 +34,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41074);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((paramInt1 == rSy) && (paramInt2 == -1))
+    if ((paramInt1 == taq) && (paramInt2 == -1))
     {
       setResult(paramInt2, paramIntent);
       finish();
@@ -46,20 +46,20 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41070);
     super.onCreate(paramBundle);
-    this.rSz = new m(getContext(), rSy);
+    this.tar = new m(getContext(), taq);
     boolean bool = getIntent().getBooleanExtra("game_haowan_ignore_video_preview", true);
-    this.rSz.setIgnoreVideoPreview(bool);
+    this.tar.setIgnoreVideoPreview(bool);
     Object localObject = getIntent().getStringExtra("game_haowan_local_albums_info");
     paramBundle = new JSONArray();
-    if (!bt.isNullOrNil((String)localObject)) {}
+    if (!bs.isNullOrNil((String)localObject)) {}
     for (;;)
     {
       try
       {
         localObject = new JSONArray((String)localObject);
         paramBundle = (Bundle)localObject;
-        this.rSz.setLocalAlbumInfos(paramBundle);
-        setContentView(this.rSz);
+        this.tar.setLocalAlbumInfos(paramBundle);
+        setContentView(this.tar);
         setMMTitle(2131759882);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
@@ -89,7 +89,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41072);
     super.onPause();
-    f.d(false, true, true);
+    f.e(false, true, true);
     AppMethodBeat.o(41072);
   }
   
@@ -97,7 +97,7 @@ public class GameTabGalleryUI
   {
     AppMethodBeat.i(41071);
     super.onResume();
-    f.d(true, true, true);
+    f.e(true, true, true);
     AppMethodBeat.o(41071);
   }
   
@@ -109,7 +109,7 @@ public class GameTabGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameTabGalleryUI
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface b
   extends IInterface
 {
-  public abstract void e(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  public abstract void f(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
-  public abstract void x(String paramString, long paramLong1, long paramLong2);
+  public abstract void u(String paramString, long paramLong1, long paramLong2);
   
   public static abstract class a
     extends Binder
@@ -50,12 +50,12 @@ public abstract interface b
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-        e(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+        f(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-      x(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      u(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     }
@@ -75,7 +75,7 @@ public abstract interface b
         return this.mRemote;
       }
       
-      public final void e(String paramString1, int paramInt1, int paramInt2, String paramString2)
+      public final void f(String paramString1, int paramInt1, int paramInt2, String paramString2)
       {
         AppMethodBeat.i(120704);
         Parcel localParcel1 = Parcel.obtain();
@@ -99,7 +99,7 @@ public abstract interface b
         }
       }
       
-      public final void x(String paramString, long paramLong1, long paramLong2)
+      public final void u(String paramString, long paramLong1, long paramLong2)
       {
         AppMethodBeat.i(120705);
         Parcel localParcel1 = Parcel.obtain();

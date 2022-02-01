@@ -3,38 +3,125 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class dx
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int ePr;
-  private static final int ePv = "inviteUserName".hashCode();
-  private static final int ePy = "memberUuid".hashCode();
-  private static final int ePz = "memberId".hashCode();
-  private static final int ejR = "status".hashCode();
-  private static final int ekS;
-  private static final int ekU = "createTime".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS MMStoryInfo_id_Index ON MMStoryInfo(storyID)" };
+  private static final int eRK = "storyID".hashCode();
+  private static final int eRL;
+  private static final int eRM = "itemStoryFlag".hashCode();
+  private static final int eRN = "readCount".hashCode();
+  private static final int eRO = "favoriteTime".hashCode();
+  private static final int emW = "userName".hashCode();
+  private static final int emX = "localFlag".hashCode();
+  private static final int emY = "createTime".hashCode();
+  private static final int enb;
+  private static final int eng;
+  private static final int enh;
+  private static final int eni;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ePm = true;
-  private boolean ePq = true;
-  private boolean ePw = true;
-  private boolean ePx = true;
-  private boolean ejO = true;
-  private boolean ekv = true;
-  private boolean ekx = true;
-  public long field_createTime;
-  public String field_inviteUserName;
-  public long field_memberId;
-  public long field_memberUuid;
-  public int field_status;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eRF = true;
+  private boolean eRG = true;
+  private boolean eRH = true;
+  private boolean eRI = true;
+  private boolean eRJ = true;
+  private boolean emA = true;
+  private boolean emB = true;
+  private boolean emE = true;
+  private boolean emI = true;
+  private boolean emJ = true;
+  private boolean emK = true;
+  private boolean emz = true;
+  public byte[] field_attrBuf;
+  public int field_commentListCount;
+  public byte[] field_content;
+  public int field_createTime;
+  public int field_favoriteTime;
+  public int field_itemStoryFlag;
+  public int field_localFlag;
+  public byte[] field_postBuf;
+  public int field_readCount;
+  public int field_sourceType;
+  public long field_storyID;
+  public int field_type;
   public String field_userName;
-  public String field_wxGroupId;
   
   static
   {
-    ePr = "wxGroupId".hashCode();
-    ekS = "userName".hashCode();
+    eRL = "commentListCount".hashCode();
+    eng = "content".hashCode();
+    enh = "attrBuf".hashCode();
+    eni = "postBuf".hashCode();
+    enb = "sourceType".hashCode();
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  public static c.a Th()
+  {
+    c.a locala = new c.a();
+    locala.GvF = new Field[13];
+    locala.columns = new String[14];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "storyID";
+    locala.GvH.put("storyID", "LONG");
+    localStringBuilder.append(" storyID LONG");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "userName";
+    locala.GvH.put("userName", "TEXT");
+    localStringBuilder.append(" userName TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "localFlag";
+    locala.GvH.put("localFlag", "INTEGER");
+    localStringBuilder.append(" localFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "createTime";
+    locala.GvH.put("createTime", "INTEGER");
+    localStringBuilder.append(" createTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "commentListCount";
+    locala.GvH.put("commentListCount", "INTEGER");
+    localStringBuilder.append(" commentListCount INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "content";
+    locala.GvH.put("content", "BLOB");
+    localStringBuilder.append(" content BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "attrBuf";
+    locala.GvH.put("attrBuf", "BLOB");
+    localStringBuilder.append(" attrBuf BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "postBuf";
+    locala.GvH.put("postBuf", "BLOB");
+    localStringBuilder.append(" postBuf BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "sourceType";
+    locala.GvH.put("sourceType", "INTEGER");
+    localStringBuilder.append(" sourceType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "type";
+    locala.GvH.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "itemStoryFlag";
+    locala.GvH.put("itemStoryFlag", "INTEGER");
+    localStringBuilder.append(" itemStoryFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "readCount";
+    locala.GvH.put("readCount", "INTEGER");
+    localStringBuilder.append(" readCount INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "favoriteTime";
+    locala.GvH.put("favoriteTime", "INTEGER");
+    localStringBuilder.append(" favoriteTime INTEGER");
+    locala.columns[13] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -50,10 +137,10 @@ public abstract class dx
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ePy != k) {
+      if (eRK != k) {
         break label60;
       }
-      this.field_memberUuid = paramCursor.getLong(i);
+      this.field_storyID = paramCursor.getLong(i);
     }
     for (;;)
     {
@@ -61,18 +148,30 @@ public abstract class dx
       break label20;
       break;
       label60:
-      if (ePr == k) {
-        this.field_wxGroupId = paramCursor.getString(i);
-      } else if (ekS == k) {
+      if (emW == k) {
         this.field_userName = paramCursor.getString(i);
-      } else if (ePv == k) {
-        this.field_inviteUserName = paramCursor.getString(i);
-      } else if (ePz == k) {
-        this.field_memberId = paramCursor.getLong(i);
-      } else if (ejR == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getLong(i);
+      } else if (emX == k) {
+        this.field_localFlag = paramCursor.getInt(i);
+      } else if (emY == k) {
+        this.field_createTime = paramCursor.getInt(i);
+      } else if (eRL == k) {
+        this.field_commentListCount = paramCursor.getInt(i);
+      } else if (eng == k) {
+        this.field_content = paramCursor.getBlob(i);
+      } else if (enh == k) {
+        this.field_attrBuf = paramCursor.getBlob(i);
+      } else if (eni == k) {
+        this.field_postBuf = paramCursor.getBlob(i);
+      } else if (enb == k) {
+        this.field_sourceType = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (eRM == k) {
+        this.field_itemStoryFlag = paramCursor.getInt(i);
+      } else if (eRN == k) {
+        this.field_readCount = paramCursor.getInt(i);
+      } else if (eRO == k) {
+        this.field_favoriteTime = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -82,26 +181,44 @@ public abstract class dx
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ePw) {
-      localContentValues.put("memberUuid", Long.valueOf(this.field_memberUuid));
+    if (this.eRF) {
+      localContentValues.put("storyID", Long.valueOf(this.field_storyID));
     }
-    if (this.ePm) {
-      localContentValues.put("wxGroupId", this.field_wxGroupId);
-    }
-    if (this.ekv) {
+    if (this.emz) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.ePq) {
-      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    if (this.emA) {
+      localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
     }
-    if (this.ePx) {
-      localContentValues.put("memberId", Long.valueOf(this.field_memberId));
+    if (this.emB) {
+      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
     }
-    if (this.ejO) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.eRG) {
+      localContentValues.put("commentListCount", Integer.valueOf(this.field_commentListCount));
     }
-    if (this.ekx) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.emI) {
+      localContentValues.put("content", this.field_content);
+    }
+    if (this.emJ) {
+      localContentValues.put("attrBuf", this.field_attrBuf);
+    }
+    if (this.emK) {
+      localContentValues.put("postBuf", this.field_postBuf);
+    }
+    if (this.emE) {
+      localContentValues.put("sourceType", Integer.valueOf(this.field_sourceType));
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.eRH) {
+      localContentValues.put("itemStoryFlag", Integer.valueOf(this.field_itemStoryFlag));
+    }
+    if (this.eRI) {
+      localContentValues.put("readCount", Integer.valueOf(this.field_readCount));
+    }
+    if (this.eRJ) {
+      localContentValues.put("favoriteTime", Integer.valueOf(this.field_favoriteTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -111,7 +228,7 @@ public abstract class dx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.dx
  * JD-Core Version:    0.7.0.1
  */

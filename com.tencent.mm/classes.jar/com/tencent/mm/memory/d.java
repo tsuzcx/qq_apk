@@ -5,32 +5,32 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public abstract class d<T, S>
 {
-  protected Queue<T> gDN = new ConcurrentLinkedQueue();
-  protected S gDO;
+  protected Queue<T> heo = new ConcurrentLinkedQueue();
+  protected S hep;
   
   public d(S paramS)
   {
-    this.gDO = paramS;
+    this.hep = paramS;
   }
   
-  public final S aoT()
+  public final S avK()
   {
-    return this.gDO;
+    return this.hep;
   }
   
   public final T pop()
   {
-    return this.gDN.poll();
+    return this.heo.poll();
   }
   
   public final void put(T paramT)
   {
-    this.gDN.add(paramT);
+    this.heo.add(paramT);
   }
   
   public final int size()
   {
-    return this.gDN.size();
+    return this.heo.size();
   }
 }
 

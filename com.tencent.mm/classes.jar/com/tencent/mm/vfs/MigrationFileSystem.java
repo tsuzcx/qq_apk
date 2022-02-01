@@ -22,14 +22,14 @@ public class MigrationFileSystem
   extends DelegateFileSystem
 {
   public static final Parcelable.Creator<MigrationFileSystem> CREATOR;
-  private final FileSystem[] HRf;
-  private final String HSc;
-  private final String HSd;
-  private final String HSe;
-  private final String HSf;
-  List<FileSystem> HSg;
-  private boolean HSh;
-  private boolean HSi;
+  private final FileSystem[] JrM;
+  private final String JsH;
+  private final String JsI;
+  private final String JsJ;
+  private final String JsK;
+  List<FileSystem> JsL;
+  private boolean JsM;
+  private boolean JsN;
   
   static
   {
@@ -43,7 +43,7 @@ public class MigrationFileSystem
     AppMethodBeat.i(13131);
     q.a(paramParcel, MigrationFileSystem.class, 6);
     int j = paramParcel.readInt();
-    this.HRf = new FileSystem[j];
+    this.JrM = new FileSystem[j];
     int i = 0;
     while (i < j)
     {
@@ -54,14 +54,14 @@ public class MigrationFileSystem
         AppMethodBeat.o(13131);
         throw paramParcel;
       }
-      this.HRf[i] = localFileSystem;
+      this.JrM[i] = localFileSystem;
       i += 1;
     }
-    this.HSc = paramParcel.readString();
-    this.HSd = paramParcel.readString();
-    this.HSe = paramParcel.readString();
-    this.HSf = paramParcel.readString();
-    this.HSg = Arrays.asList(this.HRf);
+    this.JsH = paramParcel.readString();
+    this.JsI = paramParcel.readString();
+    this.JsJ = paramParcel.readString();
+    this.JsK = paramParcel.readString();
+    this.JsL = Arrays.asList(this.JrM);
     AppMethodBeat.o(13131);
   }
   
@@ -79,17 +79,17 @@ public class MigrationFileSystem
   
   public MigrationFileSystem(String paramString1, String paramString2, String paramString3, FileSystem paramFileSystem, FileSystem... paramVarArgs)
   {
-    AppMethodBeat.i(186966);
+    AppMethodBeat.i(192576);
     if (paramFileSystem == null)
     {
       paramString1 = new IllegalArgumentException("destination == null");
-      AppMethodBeat.o(186966);
+      AppMethodBeat.o(192576);
       throw paramString1;
     }
-    this.HSc = paramString1;
-    this.HSd = paramString2;
-    this.HSe = paramString3;
-    this.HSf = null;
+    this.JsH = paramString1;
+    this.JsI = paramString2;
+    this.JsJ = paramString3;
+    this.JsK = null;
     paramString1 = new FileSystem[paramVarArgs.length + 1];
     paramString1[0] = paramFileSystem;
     int i = 1;
@@ -113,9 +113,9 @@ public class MigrationFileSystem
       if (i == paramString1.length) {}
       for (;;)
       {
-        this.HRf = paramString1;
-        this.HSg = Arrays.asList(this.HRf);
-        AppMethodBeat.o(186966);
+        this.JrM = paramString1;
+        this.JsL = Arrays.asList(this.JrM);
+        AppMethodBeat.o(192576);
         return;
         paramString1 = (FileSystem[])Arrays.copyOf(paramString1, i);
       }
@@ -124,33 +124,33 @@ public class MigrationFileSystem
   
   private static boolean t(List<FileSystem> paramList, String paramString)
   {
-    AppMethodBeat.i(186967);
-    paramString = q.aMW(paramString);
+    AppMethodBeat.i(192577);
+    paramString = q.aSz(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(186967);
+      AppMethodBeat.o(192577);
       return false;
     }
     FileSystem localFileSystem = (FileSystem)paramList.get(0);
-    if (localFileSystem.aMD(paramString))
+    if (localFileSystem.aSf(paramString))
     {
-      AppMethodBeat.o(186967);
+      AppMethodBeat.o(192577);
       return false;
     }
     int j = paramList.size();
     int i = 1;
     while (i < j)
     {
-      FileSystem.a locala = ((FileSystem)paramList.get(i)).aME(paramString);
-      if ((locala != null) && (locala.HRB))
+      FileSystem.a locala = ((FileSystem)paramList.get(i)).aSg(paramString);
+      if ((locala != null) && (locala.Jsg))
       {
-        boolean bool = localFileSystem.aMF(paramString);
-        AppMethodBeat.o(186967);
+        boolean bool = localFileSystem.aSh(paramString);
+        AppMethodBeat.o(192577);
         return bool;
       }
       i += 1;
     }
-    AppMethodBeat.o(186967);
+    AppMethodBeat.o(192577);
     return false;
   }
   
@@ -161,7 +161,7 @@ public class MigrationFileSystem
     //   0: sipush 13138
     //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 157	com/tencent/mm/vfs/MigrationFileSystem:HSh	Z
+    //   7: getfield 157	com/tencent/mm/vfs/MigrationFileSystem:JsM	Z
     //   10: ifeq +2242 -> 2252
     //   13: iconst_0
     //   14: istore 14
@@ -190,7 +190,7 @@ public class MigrationFileSystem
     //   48: lconst_0
     //   49: lstore 21
     //   51: aload_0
-    //   52: getfield 100	com/tencent/mm/vfs/MigrationFileSystem:HSg	Ljava/util/List;
+    //   52: getfield 100	com/tencent/mm/vfs/MigrationFileSystem:JsL	Ljava/util/List;
     //   55: astore 30
     //   57: lload 21
     //   59: lstore 23
@@ -413,7 +413,7 @@ public class MigrationFileSystem
     //   498: iload 11
     //   500: istore 16
     //   502: aload 35
-    //   504: getfield 145	com/tencent/mm/vfs/FileSystem$a:HRB	Z
+    //   504: getfield 145	com/tencent/mm/vfs/FileSystem$a:Jsg	Z
     //   507: istore 27
     //   509: iload 27
     //   511: ifeq +433 -> 944
@@ -435,10 +435,10 @@ public class MigrationFileSystem
     //   542: istore 16
     //   544: aload 31
     //   546: aload 35
-    //   548: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   548: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   551: aload 33
     //   553: aload 35
-    //   555: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   555: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   558: invokeinterface 205 4 0
     //   563: istore 27
     //   565: iload 27
@@ -461,7 +461,7 @@ public class MigrationFileSystem
     //   598: istore 16
     //   600: aload 32
     //   602: aload 35
-    //   604: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   604: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   607: invokevirtual 209	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   610: pop
     //   611: iload 11
@@ -489,7 +489,7 @@ public class MigrationFileSystem
     //   652: istore 16
     //   654: aload 32
     //   656: aload 35
-    //   658: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   658: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   661: invokevirtual 209	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   664: ifeq +52 -> 716
     //   667: lload 21
@@ -510,7 +510,7 @@ public class MigrationFileSystem
     //   695: istore 16
     //   697: aload 31
     //   699: aload 35
-    //   701: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   701: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   704: invokeinterface 148 2 0
     //   709: pop
     //   710: iload 4
@@ -539,7 +539,7 @@ public class MigrationFileSystem
     //   753: istore 16
     //   755: aload 28
     //   757: aload 35
-    //   759: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   759: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   762: invokevirtual 210	java/util/TreeSet:add	(Ljava/lang/Object;)Z
     //   765: pop
     //   766: iload 14
@@ -665,8 +665,8 @@ public class MigrationFileSystem
     //   970: iload 11
     //   972: istore 16
     //   974: aload 35
-    //   976: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
-    //   979: invokestatic 123	com/tencent/mm/vfs/q:aMW	(Ljava/lang/String;)Ljava/lang/String;
+    //   976: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
+    //   979: invokestatic 123	com/tencent/mm/vfs/q:aSz	(Ljava/lang/String;)Ljava/lang/String;
     //   982: astore 29
     //   984: iload 4
     //   986: istore 17
@@ -762,7 +762,7 @@ public class MigrationFileSystem
     //   1162: istore 16
     //   1164: aload 31
     //   1166: aload 35
-    //   1168: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1168: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1171: invokeinterface 133 2 0
     //   1176: ifeq +114 -> 1290
     //   1179: lload 21
@@ -783,7 +783,7 @@ public class MigrationFileSystem
     //   1207: istore 16
     //   1209: aload 33
     //   1211: aload 35
-    //   1213: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1213: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1216: invokeinterface 242 2 0
     //   1221: pop
     //   1222: iload 10
@@ -812,7 +812,7 @@ public class MigrationFileSystem
     //   1264: ldc 248
     //   1266: invokespecial 249	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1269: aload 35
-    //   1271: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1271: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1274: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1277: invokevirtual 256	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1280: invokestatic 262	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
@@ -839,10 +839,10 @@ public class MigrationFileSystem
     //   1322: istore 14
     //   1324: aload 31
     //   1326: aload 35
-    //   1328: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1328: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1331: aload 33
     //   1333: aload 35
-    //   1335: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1335: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1338: invokeinterface 205 4 0
     //   1343: ifeq +76 -> 1419
     //   1346: lload 21
@@ -869,7 +869,7 @@ public class MigrationFileSystem
     //   1386: ldc_w 264
     //   1389: invokespecial 249	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1392: aload 35
-    //   1394: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1394: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1397: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1400: invokevirtual 256	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1403: invokestatic 262	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
@@ -899,7 +899,7 @@ public class MigrationFileSystem
     //   1449: iload 6
     //   1451: istore 14
     //   1453: aload_0
-    //   1454: getfield 266	com/tencent/mm/vfs/MigrationFileSystem:HSi	Z
+    //   1454: getfield 266	com/tencent/mm/vfs/MigrationFileSystem:JsN	Z
     //   1457: ifne +835 -> 2292
     //   1460: lload 21
     //   1462: lstore 23
@@ -921,10 +921,10 @@ public class MigrationFileSystem
     //   1492: istore 14
     //   1494: aload 31
     //   1496: aload 35
-    //   1498: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1498: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1501: aload 33
     //   1503: aload 35
-    //   1505: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1505: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1508: invokeinterface 270 4 0
     //   1513: pop2
     //   1514: lload 21
@@ -947,7 +947,7 @@ public class MigrationFileSystem
     //   1546: istore 14
     //   1548: aload 33
     //   1550: aload 35
-    //   1552: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1552: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1555: invokeinterface 242 2 0
     //   1560: pop
     //   1561: lload 21
@@ -974,7 +974,7 @@ public class MigrationFileSystem
     //   1601: ldc_w 272
     //   1604: invokespecial 249	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1607: aload 35
-    //   1609: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1609: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1612: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1615: invokevirtual 256	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1618: invokestatic 262	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
@@ -1001,7 +1001,7 @@ public class MigrationFileSystem
     //   1657: iload 4
     //   1659: istore 14
     //   1661: aload 35
-    //   1663: getfield 276	com/tencent/mm/vfs/FileSystem$a:HRz	J
+    //   1663: getfield 276	com/tencent/mm/vfs/FileSystem$a:Jse	J
     //   1666: lstore 25
     //   1668: lload 25
     //   1670: lload 21
@@ -1039,7 +1039,7 @@ public class MigrationFileSystem
     //   1731: ldc_w 280
     //   1734: invokespecial 249	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1737: aload 35
-    //   1739: getfield 202	com/tencent/mm/vfs/FileSystem$a:EQk	Ljava/lang/String;
+    //   1739: getfield 202	com/tencent/mm/vfs/FileSystem$a:Gnx	Ljava/lang/String;
     //   1742: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1745: ldc_w 282
     //   1748: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1103,7 +1103,7 @@ public class MigrationFileSystem
     //   1868: iload 11
     //   1870: istore 16
     //   1872: aload 29
-    //   1874: invokestatic 123	com/tencent/mm/vfs/q:aMW	(Ljava/lang/String;)Ljava/lang/String;
+    //   1874: invokestatic 123	com/tencent/mm/vfs/q:aSz	(Ljava/lang/String;)Ljava/lang/String;
     //   1877: astore 29
     //   1879: goto -92 -> 1787
     //   1882: iload_2
@@ -1434,22 +1434,22 @@ public class MigrationFileSystem
   
   public final boolean a(String paramString1, FileSystem paramFileSystem, String paramString2)
   {
-    AppMethodBeat.i(186968);
+    AppMethodBeat.i(192578);
     boolean bool = super.a(paramString1, paramFileSystem, paramString2);
-    if ((!bool) && (t(this.HSg, paramString1)))
+    if ((!bool) && (t(this.JsL, paramString1)))
     {
       bool = super.a(paramString1, paramFileSystem, paramString2);
-      AppMethodBeat.o(186968);
+      AppMethodBeat.o(192578);
       return bool;
     }
-    AppMethodBeat.o(186968);
+    AppMethodBeat.o(192578);
     return bool;
   }
   
-  public final ReadableByteChannel aMA(String paramString)
+  public final ReadableByteChannel aSc(String paramString)
   {
     AppMethodBeat.i(13134);
-    Object localObject = this.HSg;
+    Object localObject = this.JsL;
     FileNotFoundException localFileNotFoundException1 = null;
     Iterator localIterator = ((List)localObject).iterator();
     for (;;)
@@ -1460,7 +1460,7 @@ public class MigrationFileSystem
       localObject = (FileSystem)localIterator.next();
       try
       {
-        localObject = ((FileSystem)localObject).aMA(paramString);
+        localObject = ((FileSystem)localObject).aSc(paramString);
         if (localObject != null)
         {
           AppMethodBeat.o(13134);
@@ -1490,12 +1490,12 @@ public class MigrationFileSystem
     }
   }
   
-  public final boolean aMD(String paramString)
+  public final boolean aSf(String paramString)
   {
     AppMethodBeat.i(13135);
-    Iterator localIterator = this.HSg.iterator();
+    Iterator localIterator = this.JsL.iterator();
     while (localIterator.hasNext()) {
-      if (((FileSystem)localIterator.next()).aMD(paramString))
+      if (((FileSystem)localIterator.next()).aSf(paramString))
       {
         AppMethodBeat.o(13135);
         return true;
@@ -1505,13 +1505,13 @@ public class MigrationFileSystem
     return false;
   }
   
-  public final FileSystem.a aME(String paramString)
+  public final FileSystem.a aSg(String paramString)
   {
     AppMethodBeat.i(13136);
-    Iterator localIterator = this.HSg.iterator();
+    Iterator localIterator = this.JsL.iterator();
     while (localIterator.hasNext())
     {
-      FileSystem.a locala = ((FileSystem)localIterator.next()).aME(paramString);
+      FileSystem.a locala = ((FileSystem)localIterator.next()).aSg(paramString);
       if (locala != null)
       {
         AppMethodBeat.o(13136);
@@ -1522,26 +1522,26 @@ public class MigrationFileSystem
     return null;
   }
   
-  public final void bN(Map<String, String> paramMap)
+  public final void bS(Map<String, String> paramMap)
   {
     AppMethodBeat.i(13137);
     boolean bool1;
     int j;
     label33:
     int i;
-    if (q.P(this.HSc, paramMap) != null)
+    if (q.Q(this.JsH, paramMap) != null)
     {
       bool1 = true;
-      if (q.P(this.HSd, paramMap) == null) {
+      if (q.Q(this.JsI, paramMap) == null) {
         break label107;
       }
       j = 1;
-      if (q.P(this.HSe, paramMap) == null) {
+      if (q.Q(this.JsJ, paramMap) == null) {
         break label112;
       }
       i = 1;
       label46:
-      if (q.P(this.HSf, paramMap) == null) {
+      if (q.Q(this.JsK, paramMap) == null) {
         break label117;
       }
     }
@@ -1550,12 +1550,12 @@ public class MigrationFileSystem
     label117:
     for (boolean bool2 = true;; bool2 = false)
     {
-      localObject1 = this.HRf;
+      localObject1 = this.JrM;
       int m = localObject1.length;
       int k = 0;
       while (k < m)
       {
-        localObject1[k].bN(paramMap);
+        localObject1[k].bS(paramMap);
         k += 1;
       }
       bool1 = false;
@@ -1565,15 +1565,15 @@ public class MigrationFileSystem
       i = 0;
       break label46;
     }
-    ArrayList localArrayList = new ArrayList(this.HRf.length);
-    localArrayList.add(this.HRf[0]);
+    ArrayList localArrayList = new ArrayList(this.JrM.length);
+    localArrayList.add(this.JrM[0]);
     HashSet localHashSet = new HashSet();
     Object localObject1 = null;
     paramMap = (Map<String, String>)localObject1;
     Object localObject2;
-    if ((this.HRf[0] instanceof NativeFileSystem))
+    if ((this.JrM[0] instanceof NativeFileSystem))
     {
-      localObject2 = ((NativeFileSystem)this.HRf[0]).HSl;
+      localObject2 = ((NativeFileSystem)this.JrM[0]).JsQ;
       paramMap = (Map<String, String>)localObject1;
       if (localObject2 != null)
       {
@@ -1590,17 +1590,17 @@ public class MigrationFileSystem
     {
       localHashSet.add(localObject2);
       j = 1;
-      if (j < this.HRf.length)
+      if (j < this.JrM.length)
       {
-        if (!(this.HRf[j] instanceof NativeFileSystem)) {
-          localArrayList.add(this.HRf[j]);
+        if (!(this.JrM[j] instanceof NativeFileSystem)) {
+          localArrayList.add(this.JrM[j]);
         }
         for (;;)
         {
           j += 1;
           break;
-          NativeFileSystem localNativeFileSystem = (NativeFileSystem)this.HRf[j];
-          String str = localNativeFileSystem.HSl;
+          NativeFileSystem localNativeFileSystem = (NativeFileSystem)this.JrM[j];
+          String str = localNativeFileSystem.JsQ;
           localObject2 = paramMap;
           if (str != null)
           {
@@ -1644,9 +1644,9 @@ public class MigrationFileSystem
           paramMap = (Map<String, String>)localObject2;
         }
       }
-      this.HSg = localArrayList;
-      this.HSh = bool1;
-      this.HSi = bool2;
+      this.JsL = localArrayList;
+      this.JsM = bool1;
+      this.JsN = bool2;
       AppMethodBeat.o(13137);
       return;
     }
@@ -1654,35 +1654,35 @@ public class MigrationFileSystem
   
   public final long c(String paramString1, FileSystem paramFileSystem, String paramString2)
   {
-    AppMethodBeat.i(186969);
+    AppMethodBeat.i(192579);
     try
     {
       l = super.c(paramString1, paramFileSystem, paramString2);
-      AppMethodBeat.o(186969);
+      AppMethodBeat.o(192579);
       return l;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
       long l;
-      if (t(this.HSg, paramString1))
+      if (t(this.JsL, paramString1))
       {
         l = super.c(paramString1, paramFileSystem, paramString2);
-        AppMethodBeat.o(186969);
+        AppMethodBeat.o(192579);
         return l;
       }
-      AppMethodBeat.o(186969);
+      AppMethodBeat.o(192579);
       throw localFileNotFoundException;
     }
   }
   
-  public final WritableByteChannel cL(String paramString, boolean paramBoolean)
+  public final WritableByteChannel cR(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(170156);
-    List localList = this.HSg;
+    List localList = this.JsL;
     FileSystem localFileSystem = (FileSystem)localList.get(0);
     try
     {
-      WritableByteChannel localWritableByteChannel = localFileSystem.cL(paramString, paramBoolean);
+      WritableByteChannel localWritableByteChannel = localFileSystem.cR(paramString, paramBoolean);
       AppMethodBeat.o(170156);
       return localWritableByteChannel;
     }
@@ -1690,7 +1690,7 @@ public class MigrationFileSystem
     {
       if ((!paramBoolean) && (t(localList, paramString)))
       {
-        paramString = localFileSystem.cL(paramString, false);
+        paramString = localFileSystem.cR(paramString, false);
         AppMethodBeat.o(170156);
         return paramString;
       }
@@ -1699,14 +1699,14 @@ public class MigrationFileSystem
     }
   }
   
-  public final OutputStream cM(String paramString, boolean paramBoolean)
+  public final OutputStream cS(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(170155);
-    List localList = this.HSg;
+    List localList = this.JsL;
     FileSystem localFileSystem = (FileSystem)localList.get(0);
     try
     {
-      OutputStream localOutputStream = localFileSystem.cM(paramString, paramBoolean);
+      OutputStream localOutputStream = localFileSystem.cS(paramString, paramBoolean);
       AppMethodBeat.o(170155);
       return localOutputStream;
     }
@@ -1714,7 +1714,7 @@ public class MigrationFileSystem
     {
       if ((!paramBoolean) && (t(localList, paramString)))
       {
-        paramString = localFileSystem.cM(paramString, false);
+        paramString = localFileSystem.cS(paramString, false);
         AppMethodBeat.o(170155);
         return paramString;
       }
@@ -1723,39 +1723,39 @@ public class MigrationFileSystem
     }
   }
   
-  protected final Iterable<FileSystem> fhB()
+  protected final Iterable<FileSystem> fxD()
   {
-    return this.HSg;
+    return this.JsL;
   }
   
-  public final boolean fhN()
+  public final boolean fxO()
   {
-    AppMethodBeat.i(186970);
-    Iterator localIterator = this.HSg.subList(1, this.HSg.size()).iterator();
+    AppMethodBeat.i(192580);
+    Iterator localIterator = this.JsL.subList(1, this.JsL.size()).iterator();
     while (localIterator.hasNext())
     {
-      Iterable localIterable = ((FileSystem)localIterator.next()).cN("", false);
+      Iterable localIterable = ((FileSystem)localIterator.next()).cT("", false);
       if ((localIterable != null) && (localIterable.iterator().hasNext()))
       {
-        AppMethodBeat.o(186970);
+        AppMethodBeat.o(192580);
         return false;
       }
     }
-    AppMethodBeat.o(186970);
+    AppMethodBeat.o(192580);
     return true;
   }
   
-  protected final FileSystem gj(String paramString, int paramInt)
+  protected final FileSystem gn(String paramString, int paramInt)
   {
     AppMethodBeat.i(13132);
-    List localList = this.HSg;
+    List localList = this.JsL;
     if ((paramInt == 1) || (paramInt == 3))
     {
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         FileSystem localFileSystem = (FileSystem)localIterator.next();
-        if (localFileSystem.aMD(paramString))
+        if (localFileSystem.aSf(paramString))
         {
           AppMethodBeat.o(13132);
           return localFileSystem;
@@ -1770,7 +1770,7 @@ public class MigrationFileSystem
   public final InputStream openRead(String paramString)
   {
     AppMethodBeat.i(13133);
-    Object localObject = this.HSg;
+    Object localObject = this.JsL;
     FileNotFoundException localFileNotFoundException1 = null;
     Iterator localIterator = ((List)localObject).iterator();
     for (;;)
@@ -1815,17 +1815,17 @@ public class MigrationFileSystem
   {
     AppMethodBeat.i(13139);
     Object localObject = new StringBuilder("Migration [(");
-    if (this.HSh) {
+    if (this.JsM) {
       ((StringBuilder)localObject).append('P');
     }
-    if (this.HSi) {
+    if (this.JsN) {
       ((StringBuilder)localObject).append('N');
     }
-    ((StringBuilder)localObject).append(") ").append(((FileSystem)this.HSg.get(0)).toString()).append(" <= ");
+    ((StringBuilder)localObject).append(") ").append(((FileSystem)this.JsL.get(0)).toString()).append(" <= ");
     int i = 1;
-    while (i < this.HSg.size())
+    while (i < this.JsL.size())
     {
-      ((StringBuilder)localObject).append(((FileSystem)this.HSg.get(i)).toString()).append(", ");
+      ((StringBuilder)localObject).append(((FileSystem)this.JsL.get(i)).toString()).append(", ");
       i += 1;
     }
     ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 2);
@@ -1838,8 +1838,8 @@ public class MigrationFileSystem
   {
     AppMethodBeat.i(13140);
     q.b(paramParcel, MigrationFileSystem.class, 6);
-    paramParcel.writeInt(this.HRf.length);
-    FileSystem[] arrayOfFileSystem = this.HRf;
+    paramParcel.writeInt(this.JrM.length);
+    FileSystem[] arrayOfFileSystem = this.JrM;
     int j = arrayOfFileSystem.length;
     int i = 0;
     while (i < j)
@@ -1847,10 +1847,10 @@ public class MigrationFileSystem
       paramParcel.writeParcelable(arrayOfFileSystem[i], paramInt);
       i += 1;
     }
-    paramParcel.writeString(this.HSc);
-    paramParcel.writeString(this.HSd);
-    paramParcel.writeString(this.HSe);
-    paramParcel.writeString(this.HSf);
+    paramParcel.writeString(this.JsH);
+    paramParcel.writeString(this.JsI);
+    paramParcel.writeString(this.JsJ);
+    paramParcel.writeString(this.JsK);
     AppMethodBeat.o(13140);
   }
 }

@@ -5,30 +5,31 @@ import com.eclipsesource.v8.V8Inspector;
 import com.eclipsesource.v8.V8Inspector.JsInspectorChannelServer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.s;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.r;
 import com.tencent.mm.plugin.appbrand.utils.e;
-import com.tencent.mm.protocal.protobuf.dnr;
-import com.tencent.mm.protocal.protobuf.dns;
-import com.tencent.mm.protocal.protobuf.dnt;
-import com.tencent.mm.protocal.protobuf.dnu;
-import com.tencent.mm.protocal.protobuf.dnw;
-import com.tencent.mm.protocal.protobuf.dnx;
-import com.tencent.mm.protocal.protobuf.doa;
-import com.tencent.mm.protocal.protobuf.doc;
-import com.tencent.mm.protocal.protobuf.doe;
-import com.tencent.mm.protocal.protobuf.dog;
-import com.tencent.mm.protocal.protobuf.doh;
-import com.tencent.mm.protocal.protobuf.doi;
-import com.tencent.mm.protocal.protobuf.dok;
-import com.tencent.mm.protocal.protobuf.don;
-import com.tencent.mm.protocal.protobuf.dot;
-import com.tencent.mm.protocal.protobuf.dou;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.l.a;
+import com.tencent.mm.protocal.protobuf.dti;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.dtk;
+import com.tencent.mm.protocal.protobuf.dtl;
+import com.tencent.mm.protocal.protobuf.dtn;
+import com.tencent.mm.protocal.protobuf.dto;
+import com.tencent.mm.protocal.protobuf.dtr;
+import com.tencent.mm.protocal.protobuf.dtt;
+import com.tencent.mm.protocal.protobuf.dtv;
+import com.tencent.mm.protocal.protobuf.dtx;
+import com.tencent.mm.protocal.protobuf.dty;
+import com.tencent.mm.protocal.protobuf.dtz;
+import com.tencent.mm.protocal.protobuf.dub;
+import com.tencent.mm.protocal.protobuf.due;
+import com.tencent.mm.protocal.protobuf.duk;
+import com.tencent.mm.protocal.protobuf.dul;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.af;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -43,38 +44,38 @@ import org.json.JSONArray;
 
 public final class p
 {
-  private static final Map<String, String[]> jhg;
-  l chM;
-  t jgT;
-  v jgW;
-  private ag<Integer, Long> jhh;
-  private boolean jhi;
-  private long jhj;
-  private LinkedList<o> jhk;
-  private final int jhl;
-  private int jhm;
-  private long jhn;
+  private static final Map<String, String[]> jHv;
+  l ceH;
+  private final int jHA;
+  private int jHB;
+  private long jHC;
+  t jHi;
+  v jHl;
+  private af<Integer, Long> jHw;
+  private boolean jHx;
+  private long jHy;
+  private LinkedList<o> jHz;
   Timer mTimer;
   
   static
   {
     AppMethodBeat.i(147077);
     HashMap localHashMap = new HashMap();
-    jhg = localHashMap;
+    jHv = localHashMap;
     localHashMap.put("publishHandler", new String[] { "String", "String", "String" });
-    jhg.put("invokeHandler", new String[] { "String", "String", "Number" });
+    jHv.put("invokeHandler", new String[] { "String", "String", "Number" });
     AppMethodBeat.o(147077);
   }
   
   public p()
   {
     AppMethodBeat.i(147049);
-    this.jhh = new ag(100);
-    this.jhi = false;
-    this.jhk = new LinkedList();
-    this.jhl = 5000;
-    this.jhm = 0;
-    this.jhn = 0L;
+    this.jHw = new af(100);
+    this.jHx = false;
+    this.jHz = new LinkedList();
+    this.jHA = 5000;
+    this.jHB = 0;
+    this.jHC = 0L;
     V8Inspector.setServer(new V8Inspector.JsInspectorChannelServer()
     {
       public final int notify(long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString)
@@ -93,7 +94,7 @@ public final class p
     AppMethodBeat.o(147049);
   }
   
-  private static int[] GF(String paramString)
+  private static int[] KJ(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(147074);
@@ -119,49 +120,49 @@ public final class p
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.RemoteDebugMsgMrg", paramString.getMessage());
+      ac.e("MicroMsg.RemoteDebugMsgMrg", paramString.getMessage());
       localObject2 = localObject1;
       AppMethodBeat.o(147074);
     }
   }
   
-  private void a(dnr paramdnr)
+  private void a(dti paramdti)
   {
     AppMethodBeat.i(147057);
-    if (this.chM.aUf() == paramdnr.EEk)
+    if (this.ceH.bbd() == paramdti.Gbx)
     {
       AppMethodBeat.o(147057);
       return;
     }
-    if (paramdnr.EEk) {
-      this.chM.fA(true);
+    if (paramdti.Gbx) {
+      this.ceH.fW(true);
     }
     for (;;)
     {
-      this.jgW.aUw();
-      this.jgW.aUB();
+      this.jHl.bbu();
+      this.jHl.bbz();
       AppMethodBeat.o(147057);
       return;
-      this.chM.fA(false);
+      this.ceH.fW(false);
     }
   }
   
-  private void a(dns paramdns)
+  private void a(dtj paramdtj)
   {
     AppMethodBeat.i(147051);
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "onCallInterface, method: %s, call_id %d", new Object[] { paramdns.EEm, Integer.valueOf(paramdns.EEo) });
-    String str = paramdns.EEm;
-    LinkedList localLinkedList1 = paramdns.EEn;
-    if (!jhg.containsKey(str))
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "onCallInterface, method: %s, call_id %d", new Object[] { paramdtj.Gbz, Integer.valueOf(paramdtj.GbB) });
+    String str = paramdtj.Gbz;
+    LinkedList localLinkedList1 = paramdtj.GbA;
+    if (!jHv.containsKey(str))
     {
-      ad.w("MicroMsg.RemoteDebugMsgMrg", "onCallInterface, methodWithArgs is null");
+      ac.w("MicroMsg.RemoteDebugMsgMrg", "onCallInterface, methodWithArgs is null");
       AppMethodBeat.o(147051);
       return;
     }
-    Object localObject = (String[])jhg.get(str);
+    Object localObject = (String[])jHv.get(str);
     if (localLinkedList1.size() < localObject.length)
     {
-      ad.w("MicroMsg.RemoteDebugMsgMrg", "onCallInterface, methodArgValueList.size() < methodArgList.size()");
+      ac.w("MicroMsg.RemoteDebugMsgMrg", "onCallInterface, methodArgValueList.size() < methodArgList.size()");
       AppMethodBeat.o(147051);
       return;
     }
@@ -170,7 +171,7 @@ public final class p
     if (i < localObject.length)
     {
       if ("Number".equals(localObject[i])) {
-        localLinkedList2.add(Integer.valueOf(bt.getInt((String)localLinkedList1.get(i), 0)));
+        localLinkedList2.add(Integer.valueOf(bs.getInt((String)localLinkedList1.get(i), 0)));
       }
       for (;;)
       {
@@ -193,7 +194,7 @@ public final class p
       switch (i)
       {
       default: 
-        ad.w("MicroMsg.RemoteDebugMsgMrg", "onCallInterface callMethod is null");
+        ac.w("MicroMsg.RemoteDebugMsgMrg", "onCallInterface callMethod is null");
         AppMethodBeat.o(147051);
         return;
         if (str.equals("publishHandler"))
@@ -207,17 +208,17 @@ public final class p
         break;
       }
     }
-    this.chM.jgn.b((String)String.class.cast(localLinkedList2.get(0)), (String)String.class.cast(localLinkedList2.get(1)), GF((String)String.class.cast(localLinkedList2.get(2))));
+    this.ceH.jGC.b((String)String.class.cast(localLinkedList2.get(0)), (String)String.class.cast(localLinkedList2.get(1)), KJ((String)String.class.cast(localLinkedList2.get(2))));
     localObject = null;
     label394:
     int j;
     if (localObject != null)
     {
       localObject = String.valueOf(localObject);
-      if (!bt.isNullOrNil((String)localObject)) {
-        W(paramdns.EEo, (String)localObject);
+      if (!bs.isNullOrNil((String)localObject)) {
+        X(paramdtj.GbB, (String)localObject);
       }
-      j = paramdns.computeSize();
+      j = paramdtj.computeSize();
       if (localObject != null) {
         break label509;
       }
@@ -228,90 +229,90 @@ public final class p
       q.a(str, localLinkedList1, l, j, i);
       AppMethodBeat.o(147051);
       return;
-      localObject = this.chM.jgn.w((String)String.class.cast(localLinkedList2.get(0)), (String)String.class.cast(localLinkedList2.get(1)), ((Integer)Integer.class.cast(localLinkedList2.get(2))).intValue());
+      localObject = this.ceH.jGC.x((String)String.class.cast(localLinkedList2.get(0)), (String)String.class.cast(localLinkedList2.get(1)), ((Integer)Integer.class.cast(localLinkedList2.get(2))).intValue());
       break;
       localObject = "";
       break label394;
     }
   }
   
-  private static void a(dnu paramdnu)
+  private static void a(dtl paramdtl)
   {
     AppMethodBeat.i(147059);
-    V8Inspector.onReceiveData(paramdnu.EEp, paramdnu.DFl);
+    V8Inspector.onReceiveData(paramdtl.GbC, paramdtl.FaF);
     AppMethodBeat.o(147059);
   }
   
-  private void a(doa paramdoa)
+  private void a(dtr paramdtr)
   {
     AppMethodBeat.i(147058);
-    ad.d("MicroMsg.RemoteDebugMsgMrg", "onDomOp");
-    int i = this.chM.jgn.Dl().aLK().getCurrentPage().getCurrentPageView().aOd();
-    if (paramdoa.EEy != i)
+    ac.d("MicroMsg.RemoteDebugMsgMrg", "onDomOp");
+    int i = this.ceH.jGC.CO().aSA().getCurrentPage().getCurrentPageView().aUT();
+    if (paramdtr.GbL != i)
     {
-      ad.w("MicroMsg.RemoteDebugMsgMrg", "onDomOp id not current webViewId %d/%d", new Object[] { Integer.valueOf(paramdoa.EEy), Integer.valueOf(i) });
+      ac.w("MicroMsg.RemoteDebugMsgMrg", "onDomOp id not current webViewId %d/%d", new Object[] { Integer.valueOf(paramdtr.GbL), Integer.valueOf(i) });
       AppMethodBeat.o(147058);
       return;
     }
-    this.chM.jgn.b("remoteDebugCommand", paramdoa.EEx, null);
+    this.ceH.jGC.b("remoteDebugCommand", paramdtr.GbK, null);
     AppMethodBeat.o(147058);
   }
   
-  private void a(doc paramdoc)
+  private void a(dtt paramdtt)
   {
     AppMethodBeat.i(147061);
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "onEvaluateCallback %d", new Object[] { Integer.valueOf(paramdoc.EEz) });
-    int i = paramdoc.EEz;
-    String str = paramdoc.dld;
-    b localb = (b)this.chM.jgI.remove(Integer.valueOf(i));
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "onEvaluateCallback %d", new Object[] { Integer.valueOf(paramdtt.GbM) });
+    int i = paramdtt.GbM;
+    String str = paramdtt.diM;
+    b localb = (b)this.ceH.jGX.remove(Integer.valueOf(i));
     if (localb == null)
     {
       AppMethodBeat.o(147061);
       return;
     }
-    ValueCallback localValueCallback = localb.jgh;
+    ValueCallback localValueCallback = localb.jGw;
     if (localValueCallback != null) {
       localValueCallback.onReceiveValue(str);
     }
-    ad.d("MicroMsg.RemoteDebugMsgMrg", "onEvaluateCallback, callback id: " + i + " ret: " + str);
-    q.a(localb, paramdoc.computeSize());
+    ac.d("MicroMsg.RemoteDebugMsgMrg", "onEvaluateCallback, callback id: " + i + " ret: " + str);
+    q.a(localb, paramdtt.computeSize());
     AppMethodBeat.o(147061);
   }
   
-  private void a(dog paramdog)
+  private void a(dtx paramdtx)
   {
     AppMethodBeat.i(147060);
-    doh localdoh = new doh();
-    localdoh.EEC = paramdog.EEC;
-    localdoh.CvW = q.aUu();
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "onPing netType %d", new Object[] { Integer.valueOf(localdoh.CvW) });
-    a(u.a(localdoh, this.chM, "pong"));
+    dty localdty = new dty();
+    localdty.GbP = paramdtx.GbP;
+    localdty.DOr = q.bbs();
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "onPing netType %d", new Object[] { Integer.valueOf(localdty.DOr) });
+    a(u.a(localdty, this.ceH, "pong"));
     AppMethodBeat.o(147060);
   }
   
-  public static void a(doi paramdoi)
+  public static void a(dtz paramdtz)
   {
     AppMethodBeat.i(147050);
-    paramdoi.EEl = "WeixinJSCore";
-    Iterator localIterator = jhg.keySet().iterator();
+    paramdtz.Gby = "WeixinJSCore";
+    Iterator localIterator = jHv.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (((String[])jhg.get(str)).length > 5)
+      if (((String[])jHv.get(str)).length > 5)
       {
-        ad.e("MicroMsg.RemoteDebugMsgMrg", "Interface method only support five arguments!");
+        ac.e("MicroMsg.RemoteDebugMsgMrg", "Interface method only support five arguments!");
       }
       else
       {
-        doe localdoe = new doe();
-        localdoe.EEm = str;
+        dtv localdtv = new dtv();
+        localdtv.Gbz = str;
         int i = 0;
-        while (i < ((String[])jhg.get(str)).length)
+        while (i < ((String[])jHv.get(str)).length)
         {
-          localdoe.EEn.add(((String[])jhg.get(str))[i]);
+          localdtv.GbA.add(((String[])jHv.get(str))[i]);
           i += 1;
         }
-        paramdoi.EED.add(localdoe);
+        paramdtz.GbQ.add(localdtv);
       }
     }
     AppMethodBeat.o(147050);
@@ -339,50 +340,50 @@ public final class p
     try
     {
       AppMethodBeat.i(147065);
-      if (bt.gL(paramLinkedList))
+      if (bs.gY(paramLinkedList))
       {
         AppMethodBeat.o(147065);
         return;
       }
-      localObject = new dok();
-      ((dok)localObject).EEK = this.chM.jgo;
-      ((dok)localObject).EEL = this.chM.aUd();
+      localObject = new dub();
+      ((dub)localObject).GbW = this.ceH.jGD;
+      ((dub)localObject).GbX = this.ceH.bbb();
       Iterator localIterator = paramLinkedList.iterator();
       while (localIterator.hasNext())
       {
         o localo = (o)localIterator.next();
-        ((dok)localObject).EEA.add(localo.jha);
+        ((dub)localObject).GbN.add(localo.jHp);
       }
       localObject = u.a(1006, (a)localObject);
     }
     finally {}
-    if ((!this.chM.isBusy()) || (paramBoolean2))
+    if ((!this.ceH.isBusy()) || (paramBoolean2))
     {
-      ad.d("MicroMsg.RemoteDebugMsgMrg", "sendMsg size %d", new Object[] { Integer.valueOf(paramLinkedList.size()) });
-      this.jgT.a((dnw)localObject);
+      ac.d("MicroMsg.RemoteDebugMsgMrg", "sendMsg size %d", new Object[] { Integer.valueOf(paramLinkedList.size()) });
+      this.jHi.a((dtn)localObject);
     }
     for (;;)
     {
       if (paramBoolean1) {
         x(paramLinkedList);
       }
-      paramLinkedList = this.chM;
-      paramLinkedList.jgv = System.currentTimeMillis();
-      paramLinkedList.jgx = System.currentTimeMillis();
-      if (!this.chM.isBusy()) {
-        this.jhm = 0;
+      paramLinkedList = this.ceH;
+      paramLinkedList.jGK = System.currentTimeMillis();
+      paramLinkedList.jGM = System.currentTimeMillis();
+      if (!this.ceH.isBusy()) {
+        this.jHB = 0;
       }
       paramLinkedList = new k();
-      paramLinkedList.size = ((dnw)localObject).computeSize();
-      paramLinkedList.jgi = System.currentTimeMillis();
-      this.chM.jgG.put(((dnw)localObject).uuid, paramLinkedList);
+      paramLinkedList.size = ((dtn)localObject).computeSize();
+      paramLinkedList.jGx = System.currentTimeMillis();
+      this.ceH.jGV.put(((dtn)localObject).uuid, paramLinkedList);
       AppMethodBeat.o(147065);
       break;
-      ad.d("MicroMsg.RemoteDebugMsgMrg", "sendMsg busy");
+      ac.d("MicroMsg.RemoteDebugMsgMrg", "sendMsg busy");
     }
   }
   
-  private void aUm()
+  private void bbk()
   {
     for (;;)
     {
@@ -391,20 +392,20 @@ public final class p
       {
         AppMethodBeat.i(147053);
         i = 0;
-        if (i < this.chM.jgH.size())
+        if (i < this.ceH.jGW.size())
         {
           int j;
           if (i == 0)
           {
-            j = this.chM.aUd();
-            int k = ((dnx)this.chM.jgH.get(i)).htk;
+            j = this.ceH.bbb();
+            int k = ((dto)this.ceH.jGW.get(i)).hTM;
             if (j - k != 1) {
               dG(j + 1, k - 1);
             }
           }
           else
           {
-            j = ((dnx)this.chM.jgH.get(i - 1)).htk;
+            j = ((dto)this.ceH.jGW.get(i - 1)).hTM;
             continue;
           }
         }
@@ -419,30 +420,30 @@ public final class p
     }
   }
   
-  private void aUn()
+  private void bbl()
   {
     AppMethodBeat.i(147063);
     long l = System.currentTimeMillis();
     for (;;)
     {
-      synchronized (this.chM.mLock)
+      synchronized (this.ceH.mLock)
       {
-        if ((this.jhi) && (l - this.jhj < 32L))
+        if ((this.jHx) && (l - this.jHy < 32L))
         {
           AppMethodBeat.o(147063);
           return;
         }
-        this.jhj = l;
-        if (bt.gL(this.jhk))
+        this.jHy = l;
+        if (bs.gY(this.jHz))
         {
           AppMethodBeat.o(147063);
           return;
         }
-        this.jhi = true;
-        i = (int)(16L - (System.currentTimeMillis() - this.chM.jgv));
+        this.jHx = true;
+        i = (int)(16L - (System.currentTimeMillis() - this.ceH.jGK));
         if (i > 0)
         {
-          e.bqm().j(new Runnable()
+          e.bxj().j(new Runnable()
           {
             public final void run()
             {
@@ -467,13 +468,13 @@ public final class p
     }
   }
   
-  private LinkedList<dnx> w(LinkedList<dnx> paramLinkedList)
+  private LinkedList<dto> w(LinkedList<dto> paramLinkedList)
   {
     for (;;)
     {
       LinkedList localLinkedList1;
       LinkedList localLinkedList2;
-      dnx localdnx;
+      dto localdto;
       try
       {
         AppMethodBeat.i(147056);
@@ -485,35 +486,35 @@ public final class p
         }
         localLinkedList1 = new LinkedList();
         localLinkedList2 = new LinkedList();
-        this.chM.jgH.addAll(paramLinkedList);
-        Collections.sort(this.chM.jgH, new Comparator() {});
-        i = this.chM.aUd();
-        paramLinkedList = this.chM.jgH.iterator();
+        this.ceH.jGW.addAll(paramLinkedList);
+        Collections.sort(this.ceH.jGW, new Comparator() {});
+        i = this.ceH.bbb();
+        paramLinkedList = this.ceH.jGW.iterator();
         if (!paramLinkedList.hasNext()) {
           break label167;
         }
-        localdnx = (dnx)paramLinkedList.next();
-        if (localdnx == null) {
+        localdto = (dto)paramLinkedList.next();
+        if (localdto == null) {
           continue;
         }
-        if (localdnx.htk <= i)
+        if (localdto.hTM <= i)
         {
-          localLinkedList2.add(localdnx);
+          localLinkedList2.add(localdto);
           continue;
         }
-        if (localdnx.htk - i != 1) {
+        if (localdto.hTM - i != 1) {
           break label167;
         }
       }
       finally {}
-      localLinkedList1.add(localdnx);
-      int i = localdnx.htk;
+      localLinkedList1.add(localdto);
+      int i = localdto.hTM;
       continue;
       label167:
-      this.chM.qU(i);
-      this.chM.jgH.removeAll(localLinkedList1);
-      this.chM.jgH.removeAll(localLinkedList2);
-      ad.d("MicroMsg.RemoteDebugMsgMrg", "getHandleMsgList size: %d", new Object[] { Integer.valueOf(localLinkedList1.size()) });
+      this.ceH.rH(i);
+      this.ceH.jGW.removeAll(localLinkedList1);
+      this.ceH.jGW.removeAll(localLinkedList2);
+      ac.d("MicroMsg.RemoteDebugMsgMrg", "getHandleMsgList size: %d", new Object[] { Integer.valueOf(localLinkedList1.size()) });
       AppMethodBeat.o(147056);
       paramLinkedList = localLinkedList1;
     }
@@ -529,9 +530,9 @@ public final class p
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 123
     //   10: ldc_w 633
-    //   13: invokestatic 329	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   13: invokestatic 330	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   16: aload_1
-    //   17: invokestatic 492	com/tencent/mm/sdk/platformtools/bt:gL	(Ljava/util/List;)Z
+    //   17: invokestatic 493	com/tencent/mm/sdk/platformtools/bs:gY	(Ljava/util/List;)Z
     //   20: ifeq +12 -> 32
     //   23: ldc_w 631
     //   26: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -539,8 +540,8 @@ public final class p
     //   30: monitorexit
     //   31: return
     //   32: aload_0
-    //   33: getfield 137	com/tencent/mm/plugin/appbrand/debugger/p:chM	Lcom/tencent/mm/plugin/appbrand/debugger/l;
-    //   36: getfield 636	com/tencent/mm/plugin/appbrand/debugger/l:jgF	Ljava/util/LinkedList;
+    //   33: getfield 137	com/tencent/mm/plugin/appbrand/debugger/p:ceH	Lcom/tencent/mm/plugin/appbrand/debugger/l;
+    //   36: getfield 636	com/tencent/mm/plugin/appbrand/debugger/l:jGU	Ljava/util/LinkedList;
     //   39: aload_1
     //   40: invokevirtual 614	java/util/LinkedList:addAll	(Ljava/util/Collection;)Z
     //   43: pop
@@ -562,26 +563,26 @@ public final class p
     //   32	50	53	finally
   }
   
-  public final void W(int paramInt, String paramString)
+  public final void X(int paramInt, String paramString)
   {
     AppMethodBeat.i(147052);
-    dnt localdnt = new dnt();
-    localdnt.EEo = paramInt;
-    localdnt.dld = paramString;
-    a(u.a(localdnt, this.chM, "callInterfaceResult"));
+    dtk localdtk = new dtk();
+    localdtk.GbB = paramInt;
+    localdtk.diM = paramString;
+    a(u.a(localdtk, this.ceH, "callInterfaceResult"));
     AppMethodBeat.o(147052);
   }
   
   public final void a(o paramo)
   {
     AppMethodBeat.i(147062);
-    if (!this.chM.aUh()) {}
-    synchronized (this.chM.mLock)
+    if (!this.ceH.bbf()) {}
+    synchronized (this.ceH.mLock)
     {
-      if ((System.currentTimeMillis() - this.chM.jgv <= 16L) || (this.jhi))
+      if ((System.currentTimeMillis() - this.ceH.jGK <= 16L) || (this.jHx))
       {
-        this.jhk.add(paramo);
-        aUn();
+        this.jHz.add(paramo);
+        bbl();
         AppMethodBeat.o(147062);
         return;
       }
@@ -595,38 +596,38 @@ public final class p
   
   public final void a(t paramt, l paraml, v paramv)
   {
-    this.jgT = paramt;
-    this.chM = paraml;
-    this.jgW = paramv;
+    this.jHi = paramt;
+    this.ceH = paraml;
+    this.jHl = paramv;
   }
   
-  public final void aUo()
+  public final void bbm()
   {
     int i = 0;
     try
     {
       AppMethodBeat.i(147067);
-      if (this.chM.isBusy())
+      if (this.ceH.isBusy())
       {
         AppMethodBeat.o(147067);
         return;
       }
       long l = System.currentTimeMillis();
       LinkedList localLinkedList = new LinkedList();
-      Iterator localIterator = this.chM.jgF.iterator();
+      Iterator localIterator = this.ceH.jGU.iterator();
       for (;;)
       {
         if (localIterator.hasNext())
         {
           o localo = (o)localIterator.next();
-          if (l - localo.jgi > 5000L)
+          if (l - localo.jGx > 5000L)
           {
-            localo.jgi = System.currentTimeMillis();
+            localo.jGx = System.currentTimeMillis();
             localLinkedList.add(localo);
-            i = localo.jhb + i;
+            i = localo.jHq + i;
             if ((i >= 65536L) || (localLinkedList.size() > 800))
             {
-              ad.i("MicroMsg.RemoteDebugMsgMrg", "try2ReSendMsg size %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+              ac.i("MicroMsg.RemoteDebugMsgMrg", "try2ReSendMsg size %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
               a(localLinkedList, false);
               localLinkedList.clear();
             }
@@ -634,9 +635,9 @@ public final class p
         }
         else
         {
-          if (!bt.gL(localLinkedList))
+          if (!bs.gY(localLinkedList))
           {
-            ad.i("MicroMsg.RemoteDebugMsgMrg", "try2ReSendMsg size %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+            ac.i("MicroMsg.RemoteDebugMsgMrg", "try2ReSendMsg size %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
             a(localLinkedList, false);
           }
           AppMethodBeat.o(147067);
@@ -647,7 +648,7 @@ public final class p
     finally {}
   }
   
-  public final boolean aUp()
+  public final boolean bbn()
   {
     for (;;)
     {
@@ -655,25 +656,25 @@ public final class p
       {
         AppMethodBeat.i(147068);
         long l = System.currentTimeMillis();
-        if (l - this.jhn < this.jhm)
+        if (l - this.jHC < this.jHB)
         {
           AppMethodBeat.o(147068);
           bool = false;
           return bool;
         }
-        this.jhn = l;
-        if (this.jhm < 5000)
+        this.jHC = l;
+        if (this.jHB < 5000)
         {
-          this.jhm += 1000;
+          this.jHB += 1000;
           LinkedList localLinkedList1 = new LinkedList();
-          localObject = this.chM.jgF.iterator();
+          localObject = this.ceH.jGU.iterator();
           if (((Iterator)localObject).hasNext())
           {
             o localo = (o)((Iterator)localObject).next();
-            if (l - localo.jgi <= 5000L) {
+            if (l - localo.jGx <= 5000L) {
               continue;
             }
-            localo.jgi = System.currentTimeMillis();
+            localo.jGx = System.currentTimeMillis();
             localLinkedList1.add(localo);
             a(localLinkedList1, false, true);
             AppMethodBeat.o(147068);
@@ -682,16 +683,16 @@ public final class p
         }
         else
         {
-          this.jhm = 2000;
+          this.jHB = 2000;
           continue;
         }
-        if (this.chM.jgF.size() <= 0) {
+        if (this.ceH.jGU.size() <= 0) {
           break label239;
         }
       }
       finally {}
-      Object localObject = (o)this.chM.jgF.get(0);
-      ((o)localObject).jgi = System.currentTimeMillis();
+      Object localObject = (o)this.ceH.jGU.get(0);
+      ((o)localObject).jGx = System.currentTimeMillis();
       localLinkedList2.add(localObject);
       a(localLinkedList2, false, true);
       AppMethodBeat.o(147068);
@@ -703,15 +704,15 @@ public final class p
     }
   }
   
-  final void aUq()
+  final void bbo()
   {
     AppMethodBeat.i(147070);
-    this.chM.setStatus(4);
-    this.jgT.GH("quit");
+    this.ceH.setStatus(4);
+    this.jHi.KL("quit");
     AppMethodBeat.o(147070);
   }
   
-  public final void aUr()
+  public final void bbp()
   {
     for (;;)
     {
@@ -719,33 +720,33 @@ public final class p
       try
       {
         AppMethodBeat.i(147072);
-        ad.d("MicroMsg.RemoteDebugMsgMrg", "removeSendingMsg");
+        ac.d("MicroMsg.RemoteDebugMsgMrg", "removeSendingMsg");
         LinkedList localLinkedList = new LinkedList();
-        Iterator localIterator = this.chM.jgF.iterator();
+        Iterator localIterator = this.ceH.jGU.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         localo = (o)localIterator.next();
-        if (localo.jha == null)
+        if (localo.jHp == null)
         {
           localLinkedList.add(localo);
           continue;
         }
-        if (localo.jha.htk > this.chM.aUe()) {
+        if (localo.jHp.hTM > this.ceH.bbc()) {
           continue;
         }
       }
       finally {}
       localCollection.add(localo);
     }
-    this.chM.jgF.removeAll(localCollection);
+    this.ceH.jGU.removeAll(localCollection);
     AppMethodBeat.o(147072);
   }
   
-  public final void aUs()
+  public final void bbq()
   {
     AppMethodBeat.i(147073);
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "onClose");
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "onClose");
     if (this.mTimer != null) {
       this.mTimer.cancel();
     }
@@ -755,27 +756,27 @@ public final class p
   public final void dG(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(147054);
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "sync minSeq %d, maxSeq %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "sync minSeq %d, maxSeq %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 > paramInt2)
     {
       AppMethodBeat.o(147054);
       return;
     }
     long l = System.currentTimeMillis();
-    if ((this.jhh.get(Integer.valueOf(paramInt1)) != null) && (l - ((Long)this.jhh.get(Integer.valueOf(paramInt1))).longValue() < 3000L))
+    if ((this.jHw.get(Integer.valueOf(paramInt1)) != null) && (l - ((Long)this.jHw.get(Integer.valueOf(paramInt1))).longValue() < 3000L))
     {
-      ad.i("MicroMsg.RemoteDebugMsgMrg", "sync too fast!");
+      ac.i("MicroMsg.RemoteDebugMsgMrg", "sync too fast!");
       AppMethodBeat.o(147054);
       return;
     }
-    this.jhh.put(Integer.valueOf(paramInt1), Long.valueOf(l));
-    Object localObject = new dou();
-    ((dou)localObject).EEK = this.chM.jgo;
-    ((dou)localObject).EEX = paramInt1;
-    ((dou)localObject).EEY = paramInt2;
+    this.jHw.put(Integer.valueOf(paramInt1), Long.valueOf(l));
+    Object localObject = new dul();
+    ((dul)localObject).GbW = this.ceH.jGD;
+    ((dul)localObject).Gcj = paramInt1;
+    ((dul)localObject).Gck = paramInt2;
     localObject = u.a(1005, (a)localObject);
-    this.jgT.a((dnw)localObject);
-    this.chM.jgy = System.currentTimeMillis();
+    this.jHi.a((dtn)localObject);
+    this.ceH.jGN = System.currentTimeMillis();
     AppMethodBeat.o(147054);
   }
   
@@ -787,62 +788,62 @@ public final class p
       try
       {
         AppMethodBeat.i(147071);
-        ad.d("MicroMsg.RemoteDebugMsgMrg", "removeSendingMsg with min max");
+        ac.d("MicroMsg.RemoteDebugMsgMrg", "removeSendingMsg with min max");
         LinkedList localLinkedList = new LinkedList();
-        Iterator localIterator = this.chM.jgF.iterator();
+        Iterator localIterator = this.ceH.jGU.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         localo = (o)localIterator.next();
-        if (localo.jha == null)
+        if (localo.jHp == null)
         {
           localLinkedList.add(localo);
           continue;
         }
-        if (localo.jha.htk < paramInt1) {
+        if (localo.jHp.hTM < paramInt1) {
           continue;
         }
       }
       finally {}
-      if (localo.jha.htk <= paramInt2) {
+      if (localo.jHp.hTM <= paramInt2) {
         localCollection.add(localo);
       }
     }
-    this.chM.jgF.removeAll(localCollection);
+    this.ceH.jGU.removeAll(localCollection);
     AppMethodBeat.o(147071);
   }
   
   public final void quit()
   {
     AppMethodBeat.i(147069);
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "quit");
-    Object localObject = new dot();
-    ((dot)localObject).EEK = this.chM.jgo;
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "quit");
+    Object localObject = new duk();
+    ((duk)localObject).GbW = this.ceH.jGD;
     localObject = u.a(1004, (a)localObject);
-    this.jgT.a((dnw)localObject);
+    this.jHi.a((dtn)localObject);
     AppMethodBeat.o(147069);
   }
   
-  final void v(LinkedList<dnx> paramLinkedList)
+  final void v(LinkedList<dto> paramLinkedList)
   {
     AppMethodBeat.i(147055);
-    if (bt.gL(paramLinkedList))
+    if (bs.gY(paramLinkedList))
     {
-      ad.w("MicroMsg.RemoteDebugMsgMrg", "handleMsg list is null");
+      ac.w("MicroMsg.RemoteDebugMsgMrg", "handleMsg list is null");
       AppMethodBeat.o(147055);
       return;
     }
     Iterator localIterator = w(paramLinkedList).iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (dnx)localIterator.next();
+      Object localObject = (dto)localIterator.next();
       byte[] arrayOfByte;
       label83:
       int i;
-      if (u.qX(((dnx)localObject).EiC))
+      if (u.rK(((dto)localObject).FFA))
       {
-        arrayOfByte = s.H(((dnx)localObject).DcU.wA);
-        localObject = ((dnx)localObject).category;
+        arrayOfByte = s.F(((dto)localObject).Ewb.xy);
+        localObject = ((dto)localObject).category;
         i = -1;
         switch (((String)localObject).hashCode())
         {
@@ -855,9 +856,9 @@ public final class p
         default: 
           break;
         case 0: 
-          a((dns)new dns().parseFrom(arrayOfByte));
+          a((dtj)new dtj().parseFrom(arrayOfByte));
           break;
-          arrayOfByte = ((dnx)localObject).DcU.wA;
+          arrayOfByte = ((dto)localObject).Ewb.xy;
           break label83;
           if (((String)localObject).equals("callInterface"))
           {
@@ -890,25 +891,25 @@ public final class p
           break;
         }
       }
-      a((doc)new doc().parseFrom(arrayOfByte));
+      a((dtt)new dtt().parseFrom(arrayOfByte));
       continue;
-      a((dog)new dog().parseFrom(arrayOfByte));
+      a((dtx)new dtx().parseFrom(arrayOfByte));
       continue;
-      a((dnr)new dnr().parseFrom(arrayOfByte));
+      a((dti)new dti().parseFrom(arrayOfByte));
       continue;
-      a((doa)new doa().parseFrom(arrayOfByte));
+      a((dtr)new dtr().parseFrom(arrayOfByte));
       continue;
-      a((dnu)new dnu().parseFrom(arrayOfByte));
+      a((dtl)new dtl().parseFrom(arrayOfByte));
     }
-    ad.i("MicroMsg.RemoteDebugMsgMrg", "handleMsg size %d, ack %d", new Object[] { Integer.valueOf(paramLinkedList.size()), Integer.valueOf(this.chM.aUd()) });
-    this.chM.qW(paramLinkedList.size());
-    aUm();
+    ac.i("MicroMsg.RemoteDebugMsgMrg", "handleMsg size %d, ack %d", new Object[] { Integer.valueOf(paramLinkedList.size()), Integer.valueOf(this.ceH.bbb()) });
+    this.ceH.rJ(paramLinkedList.size());
+    bbk();
     AppMethodBeat.o(147055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.p
  * JD-Core Version:    0.7.0.1
  */

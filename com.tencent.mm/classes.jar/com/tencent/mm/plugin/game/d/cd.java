@@ -5,10 +5,10 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class cd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public f rZp;
-  public String sda;
+  public f thi;
+  public String tkU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,58 +16,58 @@ public final class cd
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.rZp == null)
+      if (this.thi == null)
       {
         paramVarArgs = new b("Not all required fields were included: AppItem");
         AppMethodBeat.o(41804);
         throw paramVarArgs;
       }
-      if (this.sda == null)
+      if (this.tkU == null)
       {
         paramVarArgs = new b("Not all required fields were included: Rank");
         AppMethodBeat.o(41804);
         throw paramVarArgs;
       }
-      if (this.rZp != null)
+      if (this.thi != null)
       {
-        paramVarArgs.kX(1, this.rZp.computeSize());
-        this.rZp.writeFields(paramVarArgs);
+        paramVarArgs.ln(1, this.thi.computeSize());
+        this.thi.writeFields(paramVarArgs);
       }
-      if (this.sda != null) {
-        paramVarArgs.d(2, this.sda);
+      if (this.tkU != null) {
+        paramVarArgs.d(2, this.tkU);
       }
       AppMethodBeat.o(41804);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.rZp == null) {
+      if (this.thi == null) {
         break label466;
       }
     }
     label466:
-    for (paramInt = f.a.a.a.kW(1, this.rZp.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lm(1, this.thi.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.sda != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.sda);
+      if (this.tkU != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.tkU);
       }
       AppMethodBeat.o(41804);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.rZp == null)
+        if (this.thi == null)
         {
           paramVarArgs = new b("Not all required fields were included: AppItem");
           AppMethodBeat.o(41804);
           throw paramVarArgs;
         }
-        if (this.sda == null)
+        if (this.tkU == null)
         {
           paramVarArgs = new b("Not all required fields were included: Rank");
           AppMethodBeat.o(41804);
@@ -87,7 +87,7 @@ public final class cd
           AppMethodBeat.o(41804);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -95,14 +95,14 @@ public final class cd
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new f();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcd.rZp = ((f)localObject1);
+            for (boolean bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcd.thi = ((f)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(41804);
           return 0;
         }
-        localcd.sda = ((f.a.a.a.a)localObject1).KhF.readString();
+        localcd.tkU = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(41804);
         return 0;
       }
@@ -113,7 +113,7 @@ public final class cd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cd
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,17 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.topstory.a.h;
 import com.tencent.mm.plugin.topstory.a.i;
-import com.tencent.mm.plugin.websearch.api.ab;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agu;
-import com.tencent.mm.protocal.protobuf.ahd;
-import com.tencent.mm.protocal.protobuf.dcy;
-import com.tencent.mm.protocal.protobuf.ddb;
-import com.tencent.mm.protocal.protobuf.xp;
+import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.aht;
+import com.tencent.mm.protocal.protobuf.aic;
+import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.protocal.protobuf.yh;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,85 +29,85 @@ import org.json.JSONObject;
 
 public final class p
 {
-  public static final p yQo;
-  ddb yQp;
+  public static final p Aee;
+  dio Aef;
   
   static
   {
     AppMethodBeat.i(126175);
-    yQo = new p();
+    Aee = new p();
     AppMethodBeat.o(126175);
   }
   
-  public static void a(MMActivity paramMMActivity, dcy paramdcy, ddb paramddb)
+  public static void a(MMActivity paramMMActivity, dil paramdil, dio paramdio)
   {
     AppMethodBeat.i(126174);
     cs localcs = new cs();
-    ago localago = new ago();
-    agu localagu = new agu();
-    afy localafy = new afy();
-    if (bt.isNullOrNil(paramddb.rUO)) {}
-    for (Object localObject = paramMMActivity.getString(2131762231);; localObject = paramddb.rUO)
+    ahn localahn = new ahn();
+    aht localaht = new aht();
+    agx localagx = new agx();
+    if (bs.isNullOrNil(paramdio.tcG)) {}
+    for (Object localObject = paramMMActivity.getString(2131762231);; localObject = paramdio.tcG)
     {
-      localafy.aDr(paramddb.oYa);
-      localafy.aDl(paramddb.oYb);
-      localafy.aDm((String)localObject);
-      localafy.aDu(paramddb.AGx);
-      localafy.uw(true);
-      localafy.ux(true);
-      localafy.VD(5);
-      ahd localahd = new ahd();
-      localahd.aEB(paramddb.AGx);
-      localahd.aEy(paramddb.oYb);
-      localahd.aEz((String)localObject);
-      localago.b(localahd);
-      localObject = new ab();
-      ((ab)localObject).AGs = paramddb.rNP;
-      ((ab)localObject).AGt = paramddb.EuP;
-      ((ab)localObject).AGu = paramdcy.jko;
-      ((ab)localObject).AGv = paramddb.EuO;
-      ((ab)localObject).AGw = 100201L;
-      ((ab)localObject).oYa = paramddb.oYa;
-      ((ab)localObject).oYb = paramddb.oYb;
-      ((ab)localObject).rUO = paramddb.rUO;
-      ((ab)localObject).AGx = paramddb.AGx;
-      ((ab)localObject).AGy = paramddb.AGy;
-      ((ab)localObject).AGz = paramddb.AGz;
-      ((ab)localObject).source = paramddb.source;
-      ((ab)localObject).kqB = paramddb.kqB;
-      ((ab)localObject).AGA = paramddb.AGA;
-      ((ab)localObject).AGB = paramddb.AGB;
+      localagx.aII(paramdio.pBl);
+      localagx.aIC(paramdio.pBm);
+      localagx.aID((String)localObject);
+      localagx.aIL(paramdio.BYP);
+      localagx.vy(true);
+      localagx.vz(true);
+      localagx.XM(5);
+      aic localaic = new aic();
+      localaic.aJS(paramdio.BYP);
+      localaic.aJP(paramdio.pBm);
+      localaic.aJQ((String)localObject);
+      localahn.b(localaic);
+      localObject = new aa();
+      ((aa)localObject).BYK = paramdio.sVF;
+      ((aa)localObject).BYL = paramdio.FRQ;
+      ((aa)localObject).BYM = paramdil.jKB;
+      ((aa)localObject).BYN = paramdio.FRP;
+      ((aa)localObject).BYO = 100201L;
+      ((aa)localObject).pBl = paramdio.pBl;
+      ((aa)localObject).pBm = paramdio.pBm;
+      ((aa)localObject).tcG = paramdio.tcG;
+      ((aa)localObject).BYP = paramdio.BYP;
+      ((aa)localObject).BYQ = paramdio.BYQ;
+      ((aa)localObject).BYR = paramdio.BYR;
+      ((aa)localObject).source = paramdio.source;
+      ((aa)localObject).kRU = paramdio.kRU;
+      ((aa)localObject).BYS = paramdio.BYS;
+      ((aa)localObject).BYT = paramdio.BYT;
       LinkedList localLinkedList = new LinkedList();
-      localLinkedList.addAll(paramdcy.AFX);
-      localLinkedList.addAll(paramddb.AFX);
-      ((ab)localObject).AGD = h.gh(paramddb.rNO).toString();
-      ((ab)localObject).AGC = gi(localLinkedList).toString();
-      ((ab)localObject).AGE = paramddb.EuX;
-      ((ab)localObject).thumbUrl = paramddb.EuM;
-      paramdcy = new StringBuilder();
-      ((ab)localObject).b(paramdcy, null, null, null, 0, 0);
-      localahd.aED(paramdcy.toString());
-      localagu.aEl(u.aqG());
-      localagu.aEm(u.aqG());
-      localagu.VM(3);
-      localagu.vv(bt.eGO());
-      localagu.aEs(paramddb.oYa);
-      localagu.aEn(paramddb.oYa);
-      localcs.deQ.title = localafy.title;
-      localcs.deQ.deS = localago;
-      localcs.deQ.deW = 25;
-      localcs.deQ.scene = 2;
-      localcs.deQ.type = 5;
-      localcs.deQ.activity = paramMMActivity;
-      localago.a(localagu);
-      localago.mVb.add(localafy);
-      a.ESL.l(localcs);
+      localLinkedList.addAll(paramdil.BYq);
+      localLinkedList.addAll(paramdio.BYq);
+      ((aa)localObject).BYV = h.go(paramdio.sVE).toString();
+      ((aa)localObject).BYU = gp(localLinkedList).toString();
+      ((aa)localObject).BYW = paramdio.FRY;
+      ((aa)localObject).thumbUrl = paramdio.FRN;
+      paramdil = new StringBuilder();
+      ((aa)localObject).a(paramdil, null, null, null, 0, 0);
+      localaic.aJU(paramdil.toString());
+      localaht.aJC(u.axw());
+      localaht.aJD(u.axw());
+      localaht.XV(3);
+      localaht.zY(bs.eWj());
+      localaht.aJJ(paramdio.pBl);
+      localaht.aJE(paramdio.pBl);
+      localcs.dck.title = localagx.title;
+      localcs.dck.dcm = localahn;
+      localcs.dck.dcq = 25;
+      localcs.dck.scene = 2;
+      localcs.dck.type = 5;
+      localcs.dck.activity = paramMMActivity;
+      localahn.a(localaht);
+      localahn.nxC.add(localagx);
+      a.GpY.l(localcs);
       AppMethodBeat.o(126174);
       return;
     }
   }
   
-  static JSONArray gi(List<xp> paramList)
+  static JSONArray gp(List<yh> paramList)
   {
     AppMethodBeat.i(126173);
     JSONArray localJSONArray = new JSONArray();
@@ -118,10 +118,10 @@ public final class p
       try
       {
         JSONObject localJSONObject = new JSONObject();
-        xp localxp = (xp)paramList.get(i);
-        localJSONObject.put("key", localxp.key);
-        localJSONObject.put("uintValue", localxp.CZi);
-        localJSONObject.put("textValue", localxp.CZj);
+        yh localyh = (yh)paramList.get(i);
+        localJSONObject.put("key", localyh.key);
+        localJSONObject.put("uintValue", localyh.ErV);
+        localJSONObject.put("textValue", localyh.ErW);
         localJSONArray.put(localJSONObject);
         label91:
         i += 1;
@@ -136,9 +136,9 @@ public final class p
     }
   }
   
-  static boolean k(ddb paramddb)
+  static boolean k(dio paramdio)
   {
-    return (paramddb.EuX != 100201L) && (paramddb.EuX != 100203L);
+    return (paramdio.FRY != 100201L) && (paramdio.FRY != 100203L);
   }
   
   public final void a(b paramb, int paramInt1, int paramInt2, Intent paramIntent)
@@ -148,8 +148,8 @@ public final class p
     {
       if (paramInt2 == -1)
       {
-        Toast.makeText(aj.getContext(), 2131755894, 1).show();
-        i.a(paramb.dOH(), this.yQp, "1", u.aqG(), "");
+        Toast.makeText(ai.getContext(), 2131755894, 1).show();
+        i.a(paramb.edh(), this.Aef, "1", u.axw(), "");
         AppMethodBeat.o(126172);
       }
     }
@@ -164,7 +164,7 @@ public final class p
         if (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          if (w.pF(str))
+          if (w.sQ(str))
           {
             paramIntent.append(3);
             paramIntent.append(";");
@@ -178,7 +178,7 @@ public final class p
             paramIntent.append(";");
           }
         }
-        i.a(paramb.dOH(), this.yQp, paramIntent.toString(), u.aqG(), localStringBuilder.toString());
+        i.a(paramb.edh(), this.Aef, paramIntent.toString(), u.axw(), localStringBuilder.toString());
       }
     }
     AppMethodBeat.o(126172);

@@ -3,17 +3,17 @@ package com.d.a.c;
 final class o<E>
   extends c<E>
 {
-  private n<E> bYj;
+  private n<E> bVR;
   
   public o(n<E> paramn)
   {
     super(paramn);
-    this.bYj = paramn;
+    this.bVR = paramn;
   }
   
-  protected final E gA(int paramInt)
+  protected final E gl(int paramInt)
   {
-    return this.bYj.bYf[paramInt];
+    return this.bVR.bVN[paramInt];
   }
 }
 

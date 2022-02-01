@@ -9,127 +9,127 @@ import java.util.concurrent.ConcurrentHashMap;
 public class g
   implements f
 {
-  public final Set<f.f> jvM;
-  public final Set<f.b> jvN;
-  public final Set<f.d> jvO;
-  public final Set<f.c> jvP;
-  public final Set<f.a> jvQ;
-  public final Set<Object> jvR;
-  public final Set<f.e> jvS;
-  public final Set<Object> jvT;
-  private boolean jvU;
+  public final Set<f.f> jWi;
+  public final Set<f.b> jWj;
+  public final Set<f.d> jWk;
+  public final Set<f.c> jWl;
+  public final Set<f.a> jWm;
+  public final Set<Object> jWn;
+  public final Set<f.e> jWo;
+  public final Set<Object> jWp;
+  private boolean jWq;
   
   public g()
   {
     AppMethodBeat.i(140627);
-    this.jvM = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvN = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvO = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvP = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvQ = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvR = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvS = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvT = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.jvU = true;
+    this.jWi = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWj = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWk = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWl = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWm = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWn = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWo = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWp = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jWq = true;
     AppMethodBeat.o(140627);
   }
   
   public final void a(f.b paramb)
   {
     AppMethodBeat.i(140630);
-    this.jvN.add(paramb);
+    this.jWj.add(paramb);
     AppMethodBeat.o(140630);
   }
   
   public final void a(f.c paramc)
   {
     AppMethodBeat.i(140634);
-    this.jvP.add(paramc);
+    this.jWl.add(paramc);
     AppMethodBeat.o(140634);
   }
   
   public final void a(f.d paramd)
   {
     AppMethodBeat.i(140632);
-    this.jvO.add(paramd);
+    this.jWk.add(paramd);
     AppMethodBeat.o(140632);
   }
   
   public final void a(f.e parame)
   {
     AppMethodBeat.i(174622);
-    this.jvS.add(parame);
+    this.jWo.add(parame);
     AppMethodBeat.o(174622);
   }
   
   public final void a(f.f paramf)
   {
     AppMethodBeat.i(140628);
-    this.jvM.add(paramf);
+    this.jWi.add(paramf);
     AppMethodBeat.o(140628);
   }
   
   public final void b(f.b paramb)
   {
     AppMethodBeat.i(140631);
-    this.jvN.remove(paramb);
+    this.jWj.remove(paramb);
     AppMethodBeat.o(140631);
   }
   
   public final void b(f.c paramc)
   {
     AppMethodBeat.i(140635);
-    this.jvP.remove(paramc);
+    this.jWl.remove(paramc);
     AppMethodBeat.o(140635);
   }
   
   public final void b(f.d paramd)
   {
     AppMethodBeat.i(140633);
-    this.jvO.remove(paramd);
+    this.jWk.remove(paramd);
     AppMethodBeat.o(140633);
   }
   
   public final void b(f.e parame)
   {
     AppMethodBeat.i(174623);
-    this.jvS.remove(parame);
+    this.jWo.remove(parame);
     AppMethodBeat.o(174623);
   }
   
   public final void b(f.f paramf)
   {
     AppMethodBeat.i(140629);
-    this.jvM.remove(paramf);
+    this.jWi.remove(paramf);
     AppMethodBeat.o(140629);
   }
   
-  public final void fL(boolean paramBoolean)
+  public final void gh(boolean paramBoolean)
   {
     AppMethodBeat.i(174621);
     Iterator localIterator;
-    if ((this.jvU == true) && (!paramBoolean)) {
-      localIterator = this.jvT.iterator();
+    if ((this.jWq == true) && (!paramBoolean)) {
+      localIterator = this.jWp.iterator();
     }
     while (localIterator.hasNext())
     {
       localIterator.next();
       continue;
-      if ((!this.jvU) && (paramBoolean == true))
+      if ((!this.jWq) && (paramBoolean == true))
       {
-        localIterator = this.jvS.iterator();
+        localIterator = this.jWo.iterator();
         while (localIterator.hasNext()) {
-          ((f.e)localIterator.next()).Dv();
+          ((f.e)localIterator.next()).CY();
         }
       }
     }
-    this.jvU = paramBoolean;
+    this.jWq = paramBoolean;
     AppMethodBeat.o(174621);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g
  * JD-Core Version:    0.7.0.1
  */

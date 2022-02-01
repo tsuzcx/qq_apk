@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.l;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/config/WxaDevExtJsonInfoUtils;", "", "()V", "parseDevVersionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "", "data-model_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/config/WxaDevExtJsonInfoUtils;", "", "()V", "parseDevVersionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "", "data-model_release"})
 public final class y
 {
-  public static final y jfS;
+  public static final y jGh;
   
   static
   {
     AppMethodBeat.i(179493);
-    jfS = new y();
+    jGh = new y();
     AppMethodBeat.o(179493);
   }
   
-  public static final WxaAttributes.WxaVersionInfo Gx(String paramString)
+  public static final WxaAttributes.WxaVersionInfo KB(String paramString)
   {
     AppMethodBeat.i(179492);
     for (;;)
@@ -48,19 +48,19 @@ public final class y
       }
       localObject = new JSONObject(paramString);
       localWxaVersionInfo = new WxaAttributes.WxaVersionInfo();
-      localWxaVersionInfo.aAS = 0;
-      localWxaVersionInfo.moduleList = WxaAttributes.WxaVersionModuleInfo.Gv(((JSONObject)localObject).optString("module_list"));
-      localWxaVersionInfo.huK = WxaAttributes.WxaWidgetInfo.Gw(((JSONObject)localObject).optString("widget_list"));
-      if (!bt.gL(localWxaVersionInfo.moduleList))
+      localWxaVersionInfo.aBM = 0;
+      localWxaVersionInfo.moduleList = WxaAttributes.WxaVersionModuleInfo.Kz(((JSONObject)localObject).optString("module_list"));
+      localWxaVersionInfo.hVm = WxaAttributes.WxaWidgetInfo.KA(((JSONObject)localObject).optString("widget_list"));
+      if (!bs.gY(localWxaVersionInfo.moduleList))
       {
         bool = true;
-        localWxaVersionInfo.jfD = bool;
-        if (localWxaVersionInfo.jfD)
+        localWxaVersionInfo.jFS = bool;
+        if (localWxaVersionInfo.jFS)
         {
           paramString = ((JSONObject)localObject).optString("entrance_module");
-          localWxaVersionInfo.jfE = paramString;
-          localWxaVersionInfo.jfB = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionInfo.huK, ((JSONObject)localObject).optString("separated_plugin_list"), 22);
-          localWxaVersionInfo.jfF = ((JSONObject)localObject).optString("client_js_ext_info");
+          localWxaVersionInfo.jFT = paramString;
+          localWxaVersionInfo.jFQ = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionInfo.hVm, ((JSONObject)localObject).optString("separated_plugin_list"), 22);
+          localWxaVersionInfo.jFU = ((JSONObject)localObject).optString("client_js_ext_info");
           AppMethodBeat.o(179492);
           return localWxaVersionInfo;
         }
@@ -82,7 +82,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.y
  * JD-Core Version:    0.7.0.1
  */

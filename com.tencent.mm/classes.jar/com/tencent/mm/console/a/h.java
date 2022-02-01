@@ -4,9 +4,11 @@ import android.content.Context;
 import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fw;
+import com.tencent.mm.g.a.fx;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bw;
 import java.util.Calendar;
 
 public final class h
@@ -24,7 +26,7 @@ public final class h
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20183);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(20183);
       return false;
@@ -64,29 +66,29 @@ public final class h
       i = 2;
       break;
       i = Integer.valueOf(paramArrayOfString[2]).intValue();
-      com.tencent.mm.sdk.platformtools.bt.eGJ();
+      bs.eWe();
       paramContext = Calendar.getInstance();
       paramContext.set(11, 0);
       paramContext.set(12, 0);
       paramContext.set(13, 0);
       long l1 = paramContext.getTimeInMillis();
       long l2 = System.currentTimeMillis();
-      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, com.tencent.mm.storage.bt.eMY());
+      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).b("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), i, bw.fcC());
       continue;
-      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).dFk();
+      ((com.tencent.mm.plugin.sport.a.b)g.ab(com.tencent.mm.plugin.sport.a.b.class)).dTL();
       Process.killProcess(Process.myPid());
       continue;
-      paramContext = new fw();
-      paramContext.diH.action = 2;
-      paramContext.diH.diK = Integer.valueOf(paramArrayOfString[2]).intValue();
-      paramContext.diH.bfb = 1L;
-      com.tencent.mm.sdk.b.a.ESL.a(paramContext, Looper.getMainLooper());
+      paramContext = new fx();
+      paramContext.dgc.action = 2;
+      paramContext.dgc.dgf = Integer.valueOf(paramArrayOfString[2]).intValue();
+      paramContext.dgc.bfN = 1L;
+      com.tencent.mm.sdk.b.a.GpY.a(paramContext, Looper.getMainLooper());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,34 +3,78 @@ package com.google.android.exoplayer2.source.a;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.h.g;
 import com.google.android.exoplayer2.h.j;
-import com.google.android.exoplayer2.h.t.c;
-import com.google.android.exoplayer2.i.a;
+import com.google.android.exoplayer2.i.x;
+import java.util.Arrays;
 
 public abstract class c
-  implements t.c
+  extends a
 {
-  protected final g aWG;
-  public final j bml;
-  public final Format bmm;
-  public final int bmn;
-  public final Object bmo;
-  public final long bmp;
-  public final long bmq;
-  public final int type;
+  private volatile boolean blQ;
+  public byte[] data;
+  private int limit;
   
-  public c(g paramg, j paramj, int paramInt1, Format paramFormat, int paramInt2, Object paramObject, long paramLong1, long paramLong2)
+  public c(g paramg, j paramj, Format paramFormat, int paramInt, Object paramObject, byte[] paramArrayOfByte)
   {
-    this.aWG = ((g)a.checkNotNull(paramg));
-    this.bml = ((j)a.checkNotNull(paramj));
-    this.type = paramInt1;
-    this.bmm = paramFormat;
-    this.bmn = paramInt2;
-    this.bmo = paramObject;
-    this.bmp = paramLong1;
-    this.bmq = paramLong2;
+    super(paramg, paramj, 3, paramFormat, paramInt, paramObject, -9223372036854775807L, -9223372036854775807L);
+    this.data = paramArrayOfByte;
   }
   
-  public abstract long ub();
+  protected abstract void f(byte[] paramArrayOfByte, int paramInt);
+  
+  public final void tV()
+  {
+    this.blQ = true;
+  }
+  
+  public final boolean tW()
+  {
+    return this.blQ;
+  }
+  
+  public final void tX()
+  {
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        this.aXs.a(this.bmN);
+        this.limit = 0;
+        if ((i == -1) || (this.blQ)) {
+          break;
+        }
+        if (this.data == null)
+        {
+          this.data = new byte[16384];
+          int j = this.aXs.read(this.data, this.limit, 16384);
+          i = j;
+          if (j == -1) {
+            continue;
+          }
+          this.limit += j;
+          i = j;
+          continue;
+        }
+        if (this.data.length >= this.limit + 16384) {
+          continue;
+        }
+      }
+      finally
+      {
+        x.a(this.aXs);
+      }
+      this.data = Arrays.copyOf(this.data, this.data.length + 16384);
+    }
+    if (!this.blQ) {
+      f(this.data, this.limit);
+    }
+    x.a(this.aXs);
+  }
+  
+  public final long uj()
+  {
+    return this.limit;
+  }
 }
 
 

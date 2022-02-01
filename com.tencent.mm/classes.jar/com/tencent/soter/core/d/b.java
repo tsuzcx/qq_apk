@@ -10,7 +10,7 @@ import java.security.Signature;
 
 public abstract class b
 {
-  protected static i cM(byte[] paramArrayOfByte)
+  protected static i cL(byte[] paramArrayOfByte)
   {
     Object localObject = null;
     if (paramArrayOfByte == null) {
@@ -60,44 +60,44 @@ public abstract class b
     return locali;
   }
   
+  public abstract byte[] BS(long paramLong);
+  
   public void a(e parame) {}
   
-  public abstract f aNO(String paramString);
+  public abstract f aTr(String paramString);
   
-  public abstract boolean aNP(String paramString);
+  public abstract boolean aTs(String paramString);
   
-  public abstract boolean aNQ(String paramString);
+  public abstract boolean aTt(String paramString);
   
-  public abstract i aNR(String paramString);
+  public abstract i aTu(String paramString);
   
-  public abstract Signature aNS(String paramString);
+  public abstract Signature aTv(String paramString);
   
-  public abstract f cU(String paramString, boolean paramBoolean);
+  public abstract f db(String paramString, boolean paramBoolean);
   
-  public boolean fmP()
+  public boolean fDf()
   {
     return true;
   }
   
-  public void fmQ() {}
+  public void fDg() {}
   
-  public abstract boolean fmR();
+  public abstract boolean fDh();
   
-  public abstract f fmS();
+  public abstract f fDi();
   
-  public abstract f fmT();
+  public abstract f fDj();
   
-  public abstract boolean fmU();
+  public abstract boolean fDk();
   
-  public abstract boolean fmV();
+  public abstract boolean fDl();
   
-  public abstract i fmW();
+  public abstract i fDm();
   
-  public abstract boolean kG(Context paramContext);
+  public abstract boolean kS(Context paramContext);
   
-  public abstract SoterSessionResult lQ(String paramString1, String paramString2);
-  
-  public abstract byte[] xi(long paramLong);
+  public abstract SoterSessionResult mn(String paramString1, String paramString2);
 }
 
 

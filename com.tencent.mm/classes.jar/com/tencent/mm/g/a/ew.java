@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ew
   extends b
 {
-  public a dht;
+  public a deM;
+  public b deN;
   
   public ew()
   {
@@ -15,18 +16,23 @@ public final class ew
   
   private ew(byte paramByte)
   {
-    AppMethodBeat.i(19797);
-    this.dht = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19796);
+    this.deM = new a();
+    this.deN = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19797);
+    AppMethodBeat.o(19796);
   }
   
   public static final class a
   {
-    public int dgF;
-    public long dhq;
+    public boolean ddi = false;
     public String mac;
+  }
+  
+  public static final class b
+  {
+    public boolean ddj;
   }
 }
 

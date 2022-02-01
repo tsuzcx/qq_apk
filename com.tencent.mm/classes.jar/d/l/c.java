@@ -2,7 +2,7 @@ package d.l;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/reflect/KClassifier;", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/reflect/KClassifier;", "", "kotlin-stdlib"})
 public abstract interface c {}
 
 

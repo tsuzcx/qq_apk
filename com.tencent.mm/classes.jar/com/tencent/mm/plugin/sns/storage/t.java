@@ -8,68 +8,68 @@ import com.tencent.mm.plugin.sns.data.q;
 public final class t
 {
   long createTime;
-  private int ijI;
+  private int iJP;
   public int offset;
   public int type;
   private String userName;
-  public int xiB;
-  private long xjh;
-  public int xji;
-  public String xjj;
-  private int xjk;
-  private long xjl;
-  public String xjm;
-  public byte[] xjn;
+  private long yvY;
+  public int yvZ;
+  public int yvp;
+  public String ywa;
+  private int ywb;
+  private long ywc;
+  public String ywd;
+  public byte[] ywe;
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(97596);
-    this.xiB = paramCursor.getInt(0);
+    this.yvp = paramCursor.getInt(0);
     long l = paramCursor.getLong(1);
-    this.xjh = l;
-    this.xjm = q.st(l);
+    this.yvY = l;
+    this.ywd = q.wW(l);
     this.type = paramCursor.getInt(2);
     this.createTime = paramCursor.getLong(3);
     this.userName = paramCursor.getString(4);
-    this.xji = paramCursor.getInt(5);
+    this.yvZ = paramCursor.getInt(5);
     this.offset = paramCursor.getInt(6);
-    this.ijI = paramCursor.getInt(7);
-    this.xjj = paramCursor.getString(8);
-    this.xjk = paramCursor.getInt(9);
-    this.xjl = paramCursor.getLong(10);
-    this.xjm = paramCursor.getString(11);
-    this.xjn = paramCursor.getBlob(12);
+    this.iJP = paramCursor.getInt(7);
+    this.ywa = paramCursor.getString(8);
+    this.ywb = paramCursor.getInt(9);
+    this.ywc = paramCursor.getLong(10);
+    this.ywd = paramCursor.getString(11);
+    this.ywe = paramCursor.getBlob(12);
     AppMethodBeat.o(97596);
   }
   
-  public final ContentValues dyv()
+  public final ContentValues dMS()
   {
     AppMethodBeat.i(97595);
     ContentValues localContentValues = new ContentValues();
-    localContentValues.put("seqId", Long.valueOf(this.xjh));
+    localContentValues.put("seqId", Long.valueOf(this.yvY));
     localContentValues.put("type", Integer.valueOf(this.type));
     localContentValues.put("createTime", Long.valueOf(this.createTime));
     localContentValues.put("userName", this.userName);
-    localContentValues.put("totallen", Integer.valueOf(this.xji));
+    localContentValues.put("totallen", Integer.valueOf(this.yvZ));
     localContentValues.put("offset", Integer.valueOf(this.offset));
-    localContentValues.put("local_flag", Integer.valueOf(this.ijI));
-    localContentValues.put("tmp_path", this.xjj);
-    localContentValues.put("nums", Integer.valueOf(this.xjk));
-    localContentValues.put("try_times", Long.valueOf(this.xjl));
-    localContentValues.put("StrId", this.xjm);
-    localContentValues.put("upload_buf", this.xjn);
+    localContentValues.put("local_flag", Integer.valueOf(this.iJP));
+    localContentValues.put("tmp_path", this.ywa);
+    localContentValues.put("nums", Integer.valueOf(this.ywb));
+    localContentValues.put("try_times", Long.valueOf(this.ywc));
+    localContentValues.put("StrId", this.ywd);
+    localContentValues.put("upload_buf", this.ywe);
     AppMethodBeat.o(97595);
     return localContentValues;
   }
   
-  public final void dyw()
+  public final void dMT()
   {
-    this.ijI |= 0x4;
+    this.iJP |= 0x4;
   }
   
-  public final void dyx()
+  public final void dMU()
   {
-    this.ijI &= 0xFFFFFFFB;
+    this.iJP &= 0xFFFFFFFB;
   }
 }
 

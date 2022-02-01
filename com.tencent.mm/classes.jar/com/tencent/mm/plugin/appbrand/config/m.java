@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.text.TextUtils;
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public enum m
 {
-  private static final a jed;
-  private static final a jee;
+  private static final a jEr;
+  private static final a jEs;
   
   static
   {
     AppMethodBeat.i(147003);
-    jef = new m[0];
-    jed = new a((byte)0);
-    jee = new a((byte)0);
+    jEt = new m[0];
+    jEr = new a((byte)0);
+    jEs = new a((byte)0);
     AppMethodBeat.o(147003);
   }
   
-  public static int FS(String paramString)
+  public static int JW(String paramString)
   {
     AppMethodBeat.i(147000);
-    int j = jed.FU(paramString);
+    int j = jEr.JY(paramString);
     i = j;
     if (j <= 0) {
       localObject = null;
     }
     try
     {
-      x.aTU();
+      x.baS();
       WxaAttributes localWxaAttributes = x.e(paramString, new String[] { "dynamicInfo" });
       localObject = localWxaAttributes;
     }
@@ -37,9 +37,9 @@ public enum m
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
+        ac.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
         continue;
-        i = localObject.aTO().jfn.cfO;
+        i = localObject.baM().jFC.ccL;
         continue;
         i = 5;
       }
@@ -47,28 +47,28 @@ public enum m
     if (localObject == null)
     {
       i = -1;
-      ad.i("MicroMsg.AppServiceSettingsResolver", "readAppFileStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
+      ac.i("MicroMsg.AppServiceSettingsResolver", "readAppFileStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
       if (localObject == null) {
         break label137;
       }
-      i = localObject.aTO().jfn.cfO;
-      bi(paramString, i);
+      i = localObject.baM().jFC.ccL;
+      bm(paramString, i);
       AppMethodBeat.o(147000);
       return i * 1048576;
     }
   }
   
-  public static int FT(String paramString)
+  public static int JX(String paramString)
   {
     AppMethodBeat.i(147002);
-    int j = jee.FU(paramString);
+    int j = jEs.JY(paramString);
     i = j;
     if (j <= 0) {
       localObject = null;
     }
     try
     {
-      x.aTU();
+      x.baS();
       WxaAttributes localWxaAttributes = x.e(paramString, new String[] { "dynamicInfo" });
       localObject = localWxaAttributes;
     }
@@ -76,9 +76,9 @@ public enum m
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
+        ac.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
         continue;
-        i = localObject.aTO().jfn.jfp;
+        i = localObject.baM().jFC.jFE;
         continue;
         i = 5;
       }
@@ -86,43 +86,43 @@ public enum m
     if (localObject == null)
     {
       i = -1;
-      ad.i("MicroMsg.AppServiceSettingsResolver", "readAppOpendataLocalStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
+      ac.i("MicroMsg.AppServiceSettingsResolver", "readAppOpendataLocalStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
       if (localObject == null) {
         break label137;
       }
-      i = localObject.aTO().jfn.jfp;
-      bj(paramString, i);
+      i = localObject.baM().jFC.jFE;
+      bn(paramString, i);
       AppMethodBeat.o(147002);
       return i * 1048576;
     }
   }
   
-  public static void bi(String paramString, int paramInt)
+  public static void bm(String paramString, int paramInt)
   {
     AppMethodBeat.i(146999);
-    jed.put(paramString, paramInt);
+    jEr.put(paramString, paramInt);
     AppMethodBeat.o(146999);
   }
   
-  public static void bj(String paramString, int paramInt)
+  public static void bn(String paramString, int paramInt)
   {
     AppMethodBeat.i(147001);
-    jee.put(paramString, paramInt);
+    jEs.put(paramString, paramInt);
     AppMethodBeat.o(147001);
   }
   
   static final class a
   {
-    private final SparseIntArray jeg;
+    private final SparseIntArray jEu;
     
     private a()
     {
       AppMethodBeat.i(146994);
-      this.jeg = new SparseIntArray();
+      this.jEu = new SparseIntArray();
       AppMethodBeat.o(146994);
     }
     
-    public final int FU(String paramString)
+    public final int JY(String paramString)
     {
       AppMethodBeat.i(146996);
       if (TextUtils.isEmpty(paramString))
@@ -130,9 +130,9 @@ public enum m
         AppMethodBeat.o(146996);
         return -1;
       }
-      synchronized (this.jeg)
+      synchronized (this.jEu)
       {
-        int i = this.jeg.get(paramString.hashCode(), -1);
+        int i = this.jEu.get(paramString.hashCode(), -1);
         AppMethodBeat.o(146996);
         return i;
       }
@@ -146,9 +146,9 @@ public enum m
         AppMethodBeat.o(146995);
         return;
       }
-      synchronized (this.jeg)
+      synchronized (this.jEu)
       {
-        this.jeg.put(paramString.hashCode(), paramInt);
+        this.jEu.put(paramString.hashCode(), paramInt);
         AppMethodBeat.o(146995);
         return;
       }
@@ -157,7 +157,7 @@ public enum m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.m
  * JD-Core Version:    0.7.0.1
  */

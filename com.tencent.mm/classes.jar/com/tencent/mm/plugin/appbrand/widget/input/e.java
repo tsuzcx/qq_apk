@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.h;
+import com.tencent.mm.plugin.appbrand.z.h;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class e
 {
-  private static final h<com.tencent.mm.plugin.appbrand.page.aa, aa> maF;
+  private static final h<com.tencent.mm.plugin.appbrand.page.aa, aa> mCD;
   
   static
   {
     AppMethodBeat.i(136329);
-    maF = new h();
+    mCD = new h();
     AppMethodBeat.o(136329);
   }
   
@@ -24,7 +24,7 @@ public final class e
       AppMethodBeat.o(136328);
       return null;
     }
-    paramaa = maF.cD(paramaa);
+    paramaa = mCD.cC(paramaa);
     if (paramaa != null)
     {
       paramaa = paramaa.iterator();
@@ -45,14 +45,14 @@ public final class e
   public static void a(com.tencent.mm.plugin.appbrand.page.aa paramaa, aa paramaa1)
   {
     AppMethodBeat.i(136326);
-    maF.h(paramaa, paramaa1);
+    mCD.h(paramaa, paramaa1);
     AppMethodBeat.o(136326);
   }
   
   public static void v(com.tencent.mm.plugin.appbrand.page.aa paramaa)
   {
     AppMethodBeat.i(136327);
-    maF.cE(paramaa);
+    mCD.cD(paramaa);
     AppMethodBeat.o(136327);
   }
   
@@ -63,7 +63,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e
  * JD-Core Version:    0.7.0.1
  */

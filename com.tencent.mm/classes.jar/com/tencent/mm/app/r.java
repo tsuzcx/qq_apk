@@ -2,7 +2,7 @@ package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tinker.entry.ApplicationLike;
 import com.tencent.tinker.lib.e.b;
 import com.tencent.tinker.loader.TinkerRuntimeException;
@@ -13,17 +13,17 @@ import java.util.HashMap;
 
 public final class r
 {
-  static ApplicationLike cKY;
-  static String cLC = "";
-  String cLD;
-  String cLE;
-  long cLF;
-  long cLG;
+  static String cIK = "";
+  static ApplicationLike cIg;
+  String cIL;
+  String cIM;
+  long cIN;
+  long cIO;
   
   public r(ApplicationLike paramApplicationLike)
   {
-    cKY = paramApplicationLike;
-    d.cKY = paramApplicationLike;
+    cIg = paramApplicationLike;
+    d.cIg = paramApplicationLike;
   }
   
   static final boolean D(File paramFile)
@@ -75,22 +75,22 @@ public final class r
     {
       if (paramApplicationLike != null)
       {
-        a.glY = (String)paramApplicationLike.get("patch.rev");
-        a.gma = (String)paramApplicationLike.get("NEW_TINKER_ID");
-        ad.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s patch tinkerId:%s ", new Object[] { a.glY, a.gma });
+        a.gML = (String)paramApplicationLike.get("patch.rev");
+        a.gMN = (String)paramApplicationLike.get("NEW_TINKER_ID");
+        ac.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s patch tinkerId:%s ", new Object[] { a.gML, a.gMN });
       }
       AppMethodBeat.o(125024);
       return;
     }
   }
   
-  static String ez(String paramString)
+  static String eo(String paramString)
   {
     AppMethodBeat.i(125025);
     try
     {
-      File localFile = SharePatchFileUtil.getPatchDirectory(cKY.getApplication());
-      String str = SharePatchFileUtil.getPatchVersionDirectory(b.d(cKY));
+      File localFile = SharePatchFileUtil.getPatchDirectory(cIg.getApplication());
+      String str = SharePatchFileUtil.getPatchVersionDirectory(b.d(cIg));
       localFile = new File(localFile.getAbsolutePath(), str);
       paramString = new File(localFile.getAbsolutePath() + "/lib/lib/" + paramString).getAbsolutePath();
       AppMethodBeat.o(125025);
@@ -98,7 +98,7 @@ public final class r
     }
     catch (Throwable paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MMApplicationLikeImpl", paramString, "[-] Fail to get patched native libs path.", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MMApplicationLikeImpl", paramString, "[-] Fail to get patched native libs path.", new Object[0]);
       AppMethodBeat.o(125025);
     }
     return null;
@@ -157,7 +157,7 @@ public final class r
     //   106: ldc 17
     //   108: iconst_0
     //   109: anewarray 4	java/lang/Object
-    //   112: invokestatic 162	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   112: invokestatic 162	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   115: sipush 128
     //   118: newarray byte
     //   120: astore 5
@@ -221,7 +221,7 @@ public final class r
     //   233: ldc 17
     //   235: iconst_0
     //   236: anewarray 4	java/lang/Object
-    //   239: invokestatic 162	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   239: invokestatic 162	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   242: aload 4
     //   244: ifnull -31 -> 213
     //   247: aload 4

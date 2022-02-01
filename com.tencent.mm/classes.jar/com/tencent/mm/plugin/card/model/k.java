@@ -15,23 +15,23 @@ public final class k
   {
     AppMethodBeat.i(112784);
     c.a locala = new c.a();
-    locala.EYt = new Field[4];
+    locala.GvF = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "code_id";
-    locala.EYv.put("code_id", "TEXT");
+    locala.GvH.put("code_id", "TEXT");
     localStringBuilder.append(" code_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "card_id";
-    locala.EYv.put("card_id", "TEXT");
+    locala.GvH.put("card_id", "TEXT");
     localStringBuilder.append(" card_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "code";
-    locala.EYv.put("code", "TEXT");
+    locala.GvH.put("code", "TEXT");
     localStringBuilder.append(" code TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.EYv.put("status", "INTEGER");
+    locala.GvH.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();

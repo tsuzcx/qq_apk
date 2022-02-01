@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ci;
+import com.tencent.mm.g.b.a.dw;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.protocal.protobuf.aqc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -23,12 +28,15 @@ import com.tencent.mm.ui.base.preference.f;
 public class SettingsAboutCamera
   extends MMPreference
 {
+  private long oAP;
   private f screen;
-  private final String wfo = "settings_auto_mul_terminal_sync";
-  private final String wfp = "settings_take_photo_auto_save_photo";
-  private final String wfq = "settings_take_photo_auto_save_video";
-  private final String wfr = "settings_sns_auto_play_switch";
-  private final String wfs = "settings_sns_auto_play_tip";
+  private final String xqC = "settings_auto_mul_terminal_sync";
+  private final String xqD = "settings_take_photo_auto_save_photo";
+  private final String xqE = "settings_take_photo_auto_save_video";
+  private final String xqF = "settings_sns_auto_play_switch";
+  private final String xqG = "settings_sns_auto_play_tip";
+  private final String xqH = "settings_voip_audio_switch_mobile_net";
+  private final String xqI = "settings_voip_audio_switch_mobile_net_tip";
   
   public int getResourceId()
   {
@@ -51,45 +59,76 @@ public class SettingsAboutCamera
         return true;
       }
     });
-    boolean bool = ((Boolean)g.afB().afk().get(ae.a.Fnm, Boolean.TRUE)).booleanValue();
-    Object localObject = (CheckBoxPreference)this.screen.aKk("settings_auto_mul_terminal_sync");
-    ((Preference)localObject).GfV = false;
-    ((CheckBoxPreference)localObject).lG = bool;
-    bool = ((Boolean)g.afB().afk().get(ae.a.Fno, Boolean.TRUE)).booleanValue();
-    localObject = (CheckBoxPreference)this.screen.aKk("settings_take_photo_auto_save_photo");
-    ((Preference)localObject).GfV = false;
-    ((CheckBoxPreference)localObject).lG = bool;
-    bool = ((Boolean)g.afB().afk().get(ae.a.Fnp, Boolean.TRUE)).booleanValue();
-    localObject = (CheckBoxPreference)this.screen.aKk("settings_take_photo_auto_save_video");
-    ((CheckBoxPreference)localObject).lG = bool;
-    ((Preference)localObject).GfV = false;
-    bool = ((Boolean)g.afB().afk().get(ae.a.Fnq, Boolean.TRUE)).booleanValue();
-    localObject = (CheckBoxPreference)this.screen.aKk("settings_sns_auto_play_switch");
-    ((CheckBoxPreference)localObject).lG = bool;
-    ((Preference)localObject).GfV = false;
-    this.screen.notifyDataSetChanged();
-    if (((b)g.ab(b.class)).a(b.a.pjO, 0) == 1) {}
+    boolean bool = ((Boolean)g.agR().agA().get(ah.a.GLb, Boolean.TRUE)).booleanValue();
+    Object localObject = (CheckBoxPreference)this.screen.aPN("settings_auto_mul_terminal_sync");
+    ((Preference)localObject).HFK = false;
+    ((CheckBoxPreference)localObject).mF = bool;
+    bool = ((Boolean)g.agR().agA().get(ah.a.GLd, Boolean.TRUE)).booleanValue();
+    localObject = (CheckBoxPreference)this.screen.aPN("settings_take_photo_auto_save_photo");
+    ((Preference)localObject).HFK = false;
+    ((CheckBoxPreference)localObject).mF = bool;
+    bool = ((Boolean)g.agR().agA().get(ah.a.GLe, Boolean.TRUE)).booleanValue();
+    localObject = (CheckBoxPreference)this.screen.aPN("settings_take_photo_auto_save_video");
+    ((CheckBoxPreference)localObject).mF = bool;
+    ((Preference)localObject).HFK = false;
+    bool = ((Boolean)g.agR().agA().get(ah.a.GLf, Boolean.TRUE)).booleanValue();
+    localObject = (CheckBoxPreference)this.screen.aPN("settings_sns_auto_play_switch");
+    ((CheckBoxPreference)localObject).mF = bool;
+    ((Preference)localObject).HFK = false;
+    if (SettingsAboutSystemUI.dBX())
+    {
+      if ((this.oAP & 0x0) != 0L)
+      {
+        i = 1;
+        if (i != 0) {
+          break label464;
+        }
+        bool = true;
+        label258:
+        localObject = (CheckBoxPreference)this.screen.aPN("settings_voip_audio_switch_mobile_net");
+        ((CheckBoxPreference)localObject).mF = bool;
+        ((Preference)localObject).HFK = false;
+      }
+    }
+    else
+    {
+      this.screen.notifyDataSetChanged();
+      if (((b)g.ab(b.class)).a(b.a.pNf, 0) != 1) {
+        break label469;
+      }
+    }
+    label464:
+    label469:
     for (int i = 1;; i = 0)
     {
       localObject = Build.MODEL.toLowerCase();
-      String str = ((b)g.ab(b.class)).a(b.a.pjP, "");
+      String str = ((b)g.ab(b.class)).a(b.a.pNg, "");
       int j = i;
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
         j = i;
         if (str.contains((CharSequence)localObject))
         {
-          ad.i("ui.settings.SettingsAboutCamera", "model %s is hit, expt:%s", new Object[] { localObject, str });
+          ac.i("ui.settings.SettingsAboutCamera", "model %s is hit, expt:%s", new Object[] { localObject, str });
           j = 0;
         }
       }
       if (j == 0)
       {
-        this.screen.cE("settings_sns_auto_play_switch", true);
-        this.screen.cE("settings_sns_auto_play_tip", true);
+        this.screen.cK("settings_sns_auto_play_switch", true);
+        this.screen.cK("settings_sns_auto_play_tip", true);
+      }
+      if (!SettingsAboutSystemUI.dBX())
+      {
+        this.screen.cK("settings_voip_audio_switch_mobile_net", true);
+        this.screen.cK("settings_voip_audio_switch_mobile_net_tip", true);
       }
       AppMethodBeat.o(74014);
       return;
+      i = 0;
+      break;
+      bool = false;
+      break label258;
     }
   }
   
@@ -97,6 +136,7 @@ public class SettingsAboutCamera
   {
     AppMethodBeat.i(74012);
     super.onCreate(paramBundle);
+    this.oAP = u.axB();
     initView();
     AppMethodBeat.o(74012);
   }
@@ -106,25 +146,25 @@ public class SettingsAboutCamera
     int j = 1;
     AppMethodBeat.i(74015);
     super.onDestroy();
-    ci localci = new ci();
-    localci.dQW = 2;
-    if (((Boolean)g.afB().afk().get(ae.a.Fnm, Boolean.TRUE)).booleanValue())
+    dw localdw = new dw();
+    localdw.dSL = 2;
+    if (((Boolean)g.agR().agA().get(ah.a.GLb, Boolean.TRUE)).booleanValue())
     {
       i = 1;
-      localci.dQX = i;
-      if (!((Boolean)g.afB().afk().get(ae.a.Fno, Boolean.TRUE)).booleanValue()) {
+      localdw.dSM = i;
+      if (!((Boolean)g.agR().agA().get(ah.a.GLd, Boolean.TRUE)).booleanValue()) {
         break label164;
       }
       i = 1;
       label81:
-      localci.dQY = i;
-      if (!((Boolean)g.afB().afk().get(ae.a.Fnp, Boolean.TRUE)).booleanValue()) {
+      localdw.dSN = i;
+      if (!((Boolean)g.agR().agA().get(ah.a.GLe, Boolean.TRUE)).booleanValue()) {
         break label169;
       }
       i = 1;
       label112:
-      localci.dQZ = i;
-      if (!((Boolean)g.afB().afk().get(ae.a.Fnq, Boolean.TRUE)).booleanValue()) {
+      localdw.dSO = i;
+      if (!((Boolean)g.agR().agA().get(ah.a.GLf, Boolean.TRUE)).booleanValue()) {
         break label174;
       }
     }
@@ -133,8 +173,8 @@ public class SettingsAboutCamera
     label174:
     for (int i = j;; i = 2)
     {
-      localci.dRa = i;
-      localci.aBj();
+      localdw.dSP = i;
+      localdw.aHZ();
       AppMethodBeat.o(74015);
       return;
       i = 2;
@@ -148,117 +188,145 @@ public class SettingsAboutCamera
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    int j = 1;
     int k = 1;
     int m = 1;
-    int i = 1;
+    int n = 1;
+    int j = 1;
     AppMethodBeat.i(74013);
     paramf = paramPreference.mKey;
     boolean bool;
-    ae.a locala;
+    ae localae;
+    ah.a locala;
     if (paramf.equals("settings_auto_mul_terminal_sync"))
     {
-      bool = ((Boolean)g.afB().afk().get(ae.a.Fnm, Boolean.TRUE)).booleanValue();
-      paramPreference = g.afB().afk();
-      locala = ae.a.Fnm;
+      bool = ((Boolean)g.agR().agA().get(ah.a.GLb, Boolean.TRUE)).booleanValue();
+      localae = g.agR().agA();
+      locala = ah.a.GLb;
       if (!bool)
       {
         bool = true;
-        paramPreference.set(locala, Boolean.valueOf(bool));
+        localae.set(locala, Boolean.valueOf(bool));
       }
     }
     else
     {
       if (paramf.equals("settings_take_photo_auto_save_photo"))
       {
-        bool = ((Boolean)g.afB().afk().get(ae.a.Fno, Boolean.TRUE)).booleanValue();
-        paramPreference = g.afB().afk();
-        locala = ae.a.Fno;
+        bool = ((Boolean)g.agR().agA().get(ah.a.GLd, Boolean.TRUE)).booleanValue();
+        localae = g.agR().agA();
+        locala = ah.a.GLd;
         if (bool) {
-          break label342;
+          break label494;
         }
         bool = true;
-        label136:
-        paramPreference.set(locala, Boolean.valueOf(bool));
+        label141:
+        localae.set(locala, Boolean.valueOf(bool));
       }
       if (paramf.equals("settings_take_photo_auto_save_video"))
       {
-        bool = ((Boolean)g.afB().afk().get(ae.a.Fnp, Boolean.TRUE)).booleanValue();
-        paramPreference = g.afB().afk();
-        locala = ae.a.Fnp;
+        bool = ((Boolean)g.agR().agA().get(ah.a.GLe, Boolean.TRUE)).booleanValue();
+        localae = g.agR().agA();
+        locala = ah.a.GLe;
         if (bool) {
-          break label348;
+          break label500;
         }
         bool = true;
-        label199:
-        paramPreference.set(locala, Boolean.valueOf(bool));
+        label206:
+        localae.set(locala, Boolean.valueOf(bool));
       }
       if (paramf.equals("settings_sns_auto_play_switch"))
       {
-        bool = ((Boolean)g.afB().afk().get(ae.a.Fnq, Boolean.TRUE)).booleanValue();
-        paramPreference = g.afB().afk();
-        locala = ae.a.Fnq;
+        bool = ((Boolean)g.agR().agA().get(ah.a.GLf, Boolean.TRUE)).booleanValue();
+        localae = g.agR().agA();
+        locala = ah.a.GLf;
         if (bool) {
-          break label354;
+          break label506;
         }
         bool = true;
-        label262:
-        paramPreference.set(locala, Boolean.valueOf(bool));
+        label271:
+        localae.set(locala, Boolean.valueOf(bool));
       }
-      paramPreference = new ci();
-      paramPreference.dQW = 3;
-      if (!bt.kU(paramf, "settings_auto_mul_terminal_sync")) {
-        break label365;
+      if (paramf.equals("settings_voip_audio_switch_mobile_net"))
+      {
+        bool = ((CheckBoxPreference)paramPreference).isChecked();
+        ac.i("ui.settings.SettingsAboutCamera", "switch ext change : open = " + bool + " item value = 137438953472 functionId = 58");
+        if (!bool) {
+          break label512;
+        }
+        this.oAP &= 0xFFFFFFFF;
+        label347:
+        if (!bool) {
+          break label527;
+        }
+        i = 1;
+        label354:
+        paramPreference = new aqc();
+        paramPreference.EIY = 58;
+        paramPreference.vVH = i;
+        ((k)g.ab(k.class)).awA().c(new j.a(23, paramPreference));
+        g.agR().agA().set(147457, Long.valueOf(this.oAP));
       }
-      if (!((Boolean)g.afB().afk().get(ae.a.Fnm, Boolean.TRUE)).booleanValue()) {
-        break label360;
+      paramPreference = new dw();
+      paramPreference.dSL = 3;
+      if (!bs.lr(paramf, "settings_auto_mul_terminal_sync")) {
+        break label537;
       }
-      label319:
-      paramPreference.dQX = i;
+      if (!((Boolean)g.agR().agA().get(ah.a.GLb, Boolean.TRUE)).booleanValue()) {
+        break label532;
+      }
+      i = j;
+      label470:
+      paramPreference.dSM = i;
     }
-    label342:
-    label348:
-    label354:
-    label360:
-    label365:
+    label494:
+    label500:
+    label506:
     do
     {
-      paramPreference.aBj();
+      paramPreference.aHZ();
       AppMethodBeat.o(74013);
       return false;
       bool = false;
       break;
       bool = false;
-      break label136;
+      break label141;
       bool = false;
-      break label199;
+      break label206;
       bool = false;
-      break label262;
+      break label271;
+      this.oAP |= 0x0;
+      break label347;
       i = 2;
-      break label319;
-      if (bt.kU(paramf, "settings_take_photo_auto_save_photo"))
+      break label354;
+      i = 2;
+      break label470;
+      if (bs.lr(paramf, "settings_take_photo_auto_save_photo"))
       {
-        if (((Boolean)g.afB().afk().get(ae.a.Fno, Boolean.TRUE)).booleanValue()) {}
-        for (i = j;; i = 2)
-        {
-          paramPreference.dQY = i;
-          break;
-        }
-      }
-      if (bt.kU(paramf, "settings_take_photo_auto_save_video"))
-      {
-        if (((Boolean)g.afB().afk().get(ae.a.Fnp, Boolean.TRUE)).booleanValue()) {}
+        if (((Boolean)g.agR().agA().get(ah.a.GLd, Boolean.TRUE)).booleanValue()) {}
         for (i = k;; i = 2)
         {
-          paramPreference.dQZ = i;
+          paramPreference.dSN = i;
           break;
         }
       }
-    } while (!bt.kU(paramf, "settings_sns_auto_play_switch"));
-    if (((Boolean)g.afB().afk().get(ae.a.Fnq, Boolean.TRUE)).booleanValue()) {}
-    for (i = m;; i = 2)
+      if (bs.lr(paramf, "settings_take_photo_auto_save_video"))
+      {
+        if (((Boolean)g.agR().agA().get(ah.a.GLe, Boolean.TRUE)).booleanValue()) {}
+        for (i = m;; i = 2)
+        {
+          paramPreference.dSO = i;
+          break;
+        }
+      }
+    } while (!bs.lr(paramf, "settings_sns_auto_play_switch"));
+    label512:
+    label527:
+    label532:
+    label537:
+    if (((Boolean)g.agR().agA().get(ah.a.GLf, Boolean.TRUE)).booleanValue()) {}
+    for (int i = n;; i = 2)
     {
-      paramPreference.dRa = i;
+      paramPreference.dSP = i;
       break;
     }
   }
@@ -271,7 +339,7 @@ public class SettingsAboutCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAboutCamera
  * JD-Core Version:    0.7.0.1
  */

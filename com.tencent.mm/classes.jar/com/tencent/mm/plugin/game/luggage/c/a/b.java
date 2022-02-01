@@ -5,10 +5,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.game.luggage.ipc.CommonLogicTask;
-import com.tencent.mm.protocal.protobuf.bfe;
-import com.tencent.mm.protocal.protobuf.bpp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,15 +20,15 @@ import java.util.Map;
 public final class b
 {
   private String mAppId;
-  List<bpp> rPD;
-  Map<Integer, a> rPE;
+  List<bug> sXu;
+  Map<Integer, a> sXv;
   
   public b(String paramString)
   {
     AppMethodBeat.i(83096);
     this.mAppId = paramString;
-    this.rPE = new HashMap();
-    cBy();
+    this.sXv = new HashMap();
+    cOJ();
     a(new h());
     a(new f());
     a(new j());
@@ -42,34 +42,34 @@ public final class b
   private void a(a parama)
   {
     AppMethodBeat.i(83097);
-    this.rPE.put(Integer.valueOf(parama.id), parama);
+    this.sXv.put(Integer.valueOf(parama.id), parama);
     AppMethodBeat.o(83097);
   }
   
-  private void cBy()
+  private void cOJ()
   {
     AppMethodBeat.i(83098);
-    this.rPD = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.Bok;
+    this.sXu = com.tencent.mm.plugin.webview.ui.tools.game.menu.a.CGr;
     try
     {
       Object localObject1 = new CommonLogicTask();
       ((CommonLogicTask)localObject1).type = 9;
-      ((CommonLogicTask)localObject1).dow.putString("game_hv_menu_appid", this.mAppId);
+      ((CommonLogicTask)localObject1).dmf.putString("game_hv_menu_appid", this.mAppId);
       AppBrandMainProcessService.b((MainProcessTask)localObject1);
-      localObject1 = ((CommonLogicTask)localObject1).dow.getString("game_hv_menu_pbcache");
-      if (!bt.isNullOrNil((String)localObject1))
+      localObject1 = ((CommonLogicTask)localObject1).dmf.getString("game_hv_menu_pbcache");
+      if (!bs.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).getBytes("ISO-8859-1");
-        localObject2 = new bfe();
-        ((bfe)localObject2).parseFrom((byte[])localObject1);
-        if (!bt.gL(((bfe)localObject2).DCl))
+        localObject2 = new biw();
+        ((biw)localObject2).parseFrom((byte[])localObject1);
+        if (!bs.gY(((biw)localObject2).EXH))
         {
-          this.rPD = ((bfe)localObject2).DCl;
-          ad.i("MicroMsg.H5GameMenuHelp", "use net menu data");
+          this.sXu = ((biw)localObject2).EXH;
+          ac.i("MicroMsg.H5GameMenuHelp", "use net menu data");
         }
       }
-      Collections.sort(this.rPD, new Comparator() {});
-      int j = ((bpp)this.rPD.get(this.rPD.size() - 1)).DOa;
+      Collections.sort(this.sXu, new Comparator() {});
+      int j = ((bug)this.sXu.get(this.sXu.size() - 1)).Fkr;
       localObject1 = new ArrayList();
       int i = 0;
       while (i < j)
@@ -82,17 +82,17 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.H5GameMenuHelp", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
+        ac.e("MicroMsg.H5GameMenuHelp", "get cache hv game menu fail! exception:%s", new Object[] { localException.getMessage() });
       }
-      Object localObject2 = this.rPD.iterator();
+      Object localObject2 = this.sXu.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        bpp localbpp = (bpp)((Iterator)localObject2).next();
-        if ((localbpp.DOa > 0) && (localbpp.DOa <= localException.size())) {
-          localException.set(localbpp.DOa - 1, localbpp);
+        bug localbug = (bug)((Iterator)localObject2).next();
+        if ((localbug.Fkr > 0) && (localbug.Fkr <= localException.size())) {
+          localException.set(localbug.Fkr - 1, localbug);
         }
       }
-      this.rPD = localException;
+      this.sXu = localException;
       AppMethodBeat.o(83098);
     }
   }

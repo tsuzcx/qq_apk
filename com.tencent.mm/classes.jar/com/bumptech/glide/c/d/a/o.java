@@ -15,13 +15,13 @@ import java.io.InputStream;
 public final class o
   implements k<InputStream, Bitmap>
 {
-  private final b aCQ;
-  private final h aIn;
+  private final b aDH;
+  private final h aJd;
   
   public o(h paramh, b paramb)
   {
-    this.aIn = paramh;
-    this.aCQ = paramb;
+    this.aJd = paramh;
+    this.aDH = paramb;
   }
   
   private u<Bitmap> a(InputStream paramInputStream, int paramInt1, int paramInt2, j paramj)
@@ -37,7 +37,7 @@ public final class o
       a locala = new a(paramInputStream, locald);
       try
       {
-        paramj = this.aIn.a(localg, paramInt1, paramInt2, paramj, locala);
+        paramj = this.aJd.a(localg, paramInt1, paramInt2, paramj, locala);
         return paramj;
       }
       finally
@@ -49,26 +49,26 @@ public final class o
         paramInputStream.release();
         AppMethodBeat.o(77432);
       }
-      paramInputStream = new m(paramInputStream, this.aCQ);
+      paramInputStream = new m(paramInputStream, this.aDH);
     }
   }
   
   static final class a
     implements h.a
   {
-    private final m aCP;
-    private final d aIV;
+    private final m aDG;
+    private final d aJL;
     
     a(m paramm, d paramd)
     {
-      this.aCP = paramm;
-      this.aIV = paramd;
+      this.aDG = paramm;
+      this.aJL = paramd;
     }
     
     public final void a(e parame, Bitmap paramBitmap)
     {
       AppMethodBeat.i(77431);
-      IOException localIOException = this.aIV.aLr;
+      IOException localIOException = this.aJL.aMh;
       if (localIOException != null)
       {
         if (paramBitmap != null) {
@@ -80,17 +80,17 @@ public final class o
       AppMethodBeat.o(77431);
     }
     
-    public final void oW()
+    public final void pg()
     {
       AppMethodBeat.i(77430);
-      this.aCP.pa();
+      this.aDG.pk();
       AppMethodBeat.o(77430);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.o
  * JD-Core Version:    0.7.0.1
  */

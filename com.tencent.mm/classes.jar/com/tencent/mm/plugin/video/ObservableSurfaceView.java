@@ -6,26 +6,26 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class ObservableSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  protected SurfaceHolder jao;
-  private a yYP;
-  protected boolean yYQ;
-  protected boolean yYR;
-  protected boolean yYS;
+  private a AmE;
+  protected boolean AmF;
+  protected boolean AmG;
+  protected boolean AmH;
+  protected SurfaceHolder jAB;
   
   public ObservableSurfaceView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(127126);
-    this.yYP = null;
-    this.yYQ = false;
-    this.yYR = false;
-    this.yYS = false;
+    this.AmE = null;
+    this.AmF = false;
+    this.AmG = false;
+    this.AmH = false;
     init();
     AppMethodBeat.o(127126);
   }
@@ -34,10 +34,10 @@ public class ObservableSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(127127);
-    this.yYP = null;
-    this.yYQ = false;
-    this.yYR = false;
-    this.yYS = false;
+    this.AmE = null;
+    this.AmF = false;
+    this.AmG = false;
+    this.AmH = false;
     init();
     AppMethodBeat.o(127127);
   }
@@ -46,10 +46,10 @@ public class ObservableSurfaceView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(127128);
-    this.yYP = null;
-    this.yYQ = false;
-    this.yYR = false;
-    this.yYS = false;
+    this.AmE = null;
+    this.AmF = false;
+    this.AmG = false;
+    this.AmH = false;
     init();
     AppMethodBeat.o(127128);
   }
@@ -57,27 +57,27 @@ public class ObservableSurfaceView
   private void init()
   {
     AppMethodBeat.i(127129);
-    this.jao = getHolder();
-    this.jao.addCallback(this);
+    this.jAB = getHolder();
+    this.jAB.addCallback(this);
     AppMethodBeat.o(127129);
   }
   
-  public final boolean dQT()
+  public final boolean efs()
   {
-    return this.yYQ;
+    return this.AmF;
   }
   
   public SurfaceHolder getSurfaceHolder()
   {
-    return this.jao;
+    return this.jAB;
   }
   
   public void setNeedSetType(boolean paramBoolean)
   {
     AppMethodBeat.i(127130);
-    this.yYS = paramBoolean;
-    if (this.yYS) {
-      this.jao.setType(3);
+    this.AmH = paramBoolean;
+    if (this.AmH) {
+      this.jAB.setType(3);
     }
     AppMethodBeat.o(127130);
   }
@@ -85,9 +85,9 @@ public class ObservableSurfaceView
   public void setSurfaceChangeCallback(a parama)
   {
     AppMethodBeat.i(127131);
-    this.yYP = parama;
-    if (this.yYS) {
-      this.jao.setType(3);
+    this.AmE = parama;
+    if (this.AmH) {
+      this.jAB.setType(3);
     }
     AppMethodBeat.o(127131);
   }
@@ -95,16 +95,16 @@ public class ObservableSurfaceView
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(127132);
-    ad.d("MicroMsg.ObservableSurfaceView", "surfaceChanged");
-    this.yYR = true;
+    ac.d("MicroMsg.ObservableSurfaceView", "surfaceChanged");
+    this.AmG = true;
     try
     {
-      this.jao.removeCallback(this);
+      this.jAB.removeCallback(this);
       label27:
-      this.jao = paramSurfaceHolder;
-      this.jao.addCallback(this);
-      if (this.yYP != null) {
-        this.yYP.a(this.jao);
+      this.jAB = paramSurfaceHolder;
+      this.jAB.addCallback(this);
+      if (this.AmE != null) {
+        this.AmE.a(this.jAB);
       }
       AppMethodBeat.o(127132);
       return;
@@ -117,18 +117,18 @@ public class ObservableSurfaceView
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.yYQ = true;
+    this.AmF = true;
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.yYQ = false;
-    this.yYR = false;
+    this.AmF = false;
+    this.AmG = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.video.ObservableSurfaceView
  * JD-Core Version:    0.7.0.1
  */

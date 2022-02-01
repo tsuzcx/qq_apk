@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class au
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String content;
-  public int fBI;
+  public int fFp;
   public String iconUrl;
   public String name;
-  public int tfT;
-  public int tfU;
   public String type;
+  public int uoi;
+  public int uoj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,7 +19,7 @@ public final class au
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.fBI);
+      paramVarArgs.aR(1, this.fFp);
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
@@ -29,17 +29,17 @@ public final class au
       if (this.content != null) {
         paramVarArgs.d(4, this.content);
       }
-      paramVarArgs.aR(5, this.tfT);
+      paramVarArgs.aR(5, this.uoi);
       if (this.iconUrl != null) {
         paramVarArgs.d(6, this.iconUrl);
       }
-      paramVarArgs.aR(7, this.tfU);
+      paramVarArgs.aR(7, this.uoj);
       AppMethodBeat.o(91259);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.fBI) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.fFp) + 0;
       paramInt = i;
       if (this.name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
@@ -52,21 +52,21 @@ public final class au
       if (this.content != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.content);
       }
-      i = paramInt + f.a.a.b.b.a.bA(5, this.tfT);
+      i = paramInt + f.a.a.b.b.a.bx(5, this.uoi);
       paramInt = i;
       if (this.iconUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(6, this.iconUrl);
       }
-      i = f.a.a.b.b.a.bA(7, this.tfU);
+      i = f.a.a.b.b.a.bx(7, this.uoj);
       AppMethodBeat.o(91259);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(91259);
@@ -82,31 +82,31 @@ public final class au
         AppMethodBeat.o(91259);
         return -1;
       case 1: 
-        localau.fBI = locala.KhF.xS();
+        localau.fFp = locala.LVo.xF();
         AppMethodBeat.o(91259);
         return 0;
       case 2: 
-        localau.name = locala.KhF.readString();
+        localau.name = locala.LVo.readString();
         AppMethodBeat.o(91259);
         return 0;
       case 3: 
-        localau.type = locala.KhF.readString();
+        localau.type = locala.LVo.readString();
         AppMethodBeat.o(91259);
         return 0;
       case 4: 
-        localau.content = locala.KhF.readString();
+        localau.content = locala.LVo.readString();
         AppMethodBeat.o(91259);
         return 0;
       case 5: 
-        localau.tfT = locala.KhF.xS();
+        localau.uoi = locala.LVo.xF();
         AppMethodBeat.o(91259);
         return 0;
       case 6: 
-        localau.iconUrl = locala.KhF.readString();
+        localau.iconUrl = locala.LVo.readString();
         AppMethodBeat.o(91259);
         return 0;
       }
-      localau.tfU = locala.KhF.xS();
+      localau.uoj = locala.LVo.xF();
       AppMethodBeat.o(91259);
       return 0;
     }

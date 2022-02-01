@@ -13,7 +13,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.model.bn;
 import com.tencent.mm.model.bn.a;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
@@ -37,12 +37,12 @@ import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.c.z;
 import e.a.a.f;
 import e.a.a.i;
@@ -61,86 +61,86 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static String nqb;
-  private static String und;
-  public static String une;
-  public static int unf;
-  public static String ung;
-  public static String unh;
-  public static String uni;
-  public static int unj;
-  public static int unk;
-  public static long unl;
-  public static boolean unm;
-  public static String unn;
-  public static String uno;
-  private static Comparator<Bankcard> unp;
-  private static Comparator<a> unq;
+  public static String nTb;
+  private static String vvZ;
+  public static String vwa;
+  public static int vwb;
+  public static String vwc;
+  public static String vwd;
+  public static String vwe;
+  public static int vwf;
+  public static int vwg;
+  public static long vwh;
+  public static boolean vwi;
+  public static String vwj;
+  public static String vwk;
+  private static Comparator<Bankcard> vwl;
+  private static Comparator<a> vwm;
   
   static
   {
     AppMethodBeat.i(66629);
-    und = "";
-    une = "";
-    unf = 1;
-    ung = "";
-    unh = "";
-    uni = "";
-    unj = 1;
-    unk = 0;
-    unl = 0L;
-    unm = false;
-    nqb = "";
-    unn = "";
-    uno = "";
-    unp = new a.5();
-    unq = new a.6();
+    vvZ = "";
+    vwa = "";
+    vwb = 1;
+    vwc = "";
+    vwd = "";
+    vwe = "";
+    vwf = 1;
+    vwg = 0;
+    vwh = 0L;
+    vwi = false;
+    nTb = "";
+    vwj = "";
+    vwk = "";
+    vwl = new a.5();
+    vwm = new Comparator() {};
     AppMethodBeat.o(66629);
   }
   
-  public static void IN(int paramInt)
+  public static void KM(int paramInt)
   {
     AppMethodBeat.i(66568);
-    k.cYr();
-    k.bp(196640, String.valueOf(paramInt));
+    k.dlZ();
+    k.bu(196640, String.valueOf(paramInt));
     AppMethodBeat.o(66568);
   }
   
-  public static void IO(int paramInt)
+  public static void KN(int paramInt)
   {
     AppMethodBeat.i(66569);
-    k.cYr();
-    k.bp(196642, String.valueOf(paramInt));
+    k.dlZ();
+    k.bu(196642, String.valueOf(paramInt));
     AppMethodBeat.o(66569);
   }
   
-  public static void IP(int paramInt)
+  public static void KO(int paramInt)
   {
     AppMethodBeat.i(66594);
-    k.cYr();
-    k.bp(196644, String.valueOf(paramInt));
+    k.dlZ();
+    k.bu(196644, String.valueOf(paramInt));
     AppMethodBeat.o(66594);
   }
   
-  public static void IQ(int paramInt)
+  public static void KP(int paramInt)
   {
     AppMethodBeat.i(66622);
     int i = paramInt;
     if (paramInt < 0) {
       i = 0;
     }
-    com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqn, Integer.valueOf(i));
+    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GOd, Integer.valueOf(i));
     AppMethodBeat.o(66622);
   }
   
-  public static void IR(int paramInt)
+  public static void KQ(int paramInt)
   {
     AppMethodBeat.i(182496);
     if (paramInt > 0)
     {
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fpt, Integer.valueOf(paramInt));
-      k.ujt = paramInt;
-      ad.i("MicroMsg.WalletOfflineUtil", "set token num: %s", new Object[] { Integer.valueOf(paramInt) });
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNj, Integer.valueOf(paramInt));
+      k.vsp = paramInt;
+      ac.i("MicroMsg.WalletOfflineUtil", "set token num: %s", new Object[] { Integer.valueOf(paramInt) });
     }
     AppMethodBeat.o(182496);
   }
@@ -149,7 +149,7 @@ public final class a
   {
     AppMethodBeat.i(66585);
     PayInfo localPayInfo = new PayInfo();
-    localPayInfo.dtc = 5;
+    localPayInfo.dqM = 5;
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("key_pay_info", localPayInfo);
     localBundle.putBoolean("key_need_bind_response", true);
@@ -158,16 +158,16 @@ public final class a
     if (paramInt2 >= 0) {
       localBundle.putInt("key_entry_scene", paramInt2);
     }
-    if (!s.ecc().ecF())
+    if (!s.ery().esa())
     {
-      if (s.ecc().ecH())
+      if (s.ery().esc())
       {
         localBundle.putBoolean("key_is_bind_bankcard", true);
         com.tencent.mm.wallet_core.a.a(paramActivity, com.tencent.mm.plugin.offline.d.class, localBundle);
         AppMethodBeat.o(66585);
         return;
       }
-      if (s.ecc().ecG())
+      if (s.ery().esb())
       {
         localBundle.putBoolean("key_is_bind_bankcard", true);
         com.tencent.mm.wallet_core.a.a(paramActivity, com.tencent.mm.plugin.offline.d.class, localBundle);
@@ -183,7 +183,7 @@ public final class a
   {
     AppMethodBeat.i(66586);
     PayInfo localPayInfo = new PayInfo();
-    localPayInfo.dtc = 5;
+    localPayInfo.dqM = 5;
     paramBundle.putParcelable("key_pay_info", localPayInfo);
     paramBundle.putBoolean("key_need_bind_response", true);
     paramBundle.putInt("key_bind_scene", 5);
@@ -193,41 +193,41 @@ public final class a
     }
     if (paramBundle != null)
     {
-      com.tencent.mm.wallet_core.c.ab.jZ(6, paramBundle.getInt("key_bind_scene"));
-      z.abt(paramBundle.getInt("key_bind_scene"));
+      com.tencent.mm.wallet_core.c.ab.km(6, paramBundle.getInt("key_bind_scene"));
+      z.adM(paramBundle.getInt("key_bind_scene"));
     }
     for (;;)
     {
       ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).startBindCardUseCase(paramActivity, paramBundle);
       AppMethodBeat.o(66586);
       return;
-      com.tencent.mm.wallet_core.c.ab.jZ(6, 0);
-      z.abt(0);
+      com.tencent.mm.wallet_core.c.ab.km(6, 0);
+      z.adM(0);
     }
   }
   
   public static void a(Activity paramActivity, s.f paramf)
   {
     AppMethodBeat.i(66579);
-    ad.i("MicroMsg.WalletOfflineUtil", "hy: whole pay msg coming. direct parse");
-    if ((paramf == null) || (paramf.ukK == null))
+    ac.i("MicroMsg.WalletOfflineUtil", "hy: whole pay msg coming. direct parse");
+    if ((paramf == null) || (paramf.vtG == null))
     {
-      ad.e("MicroMsg.WalletOfflineUtil", "order == null");
+      ac.e("MicroMsg.WalletOfflineUtil", "order == null");
       AppMethodBeat.o(66579);
       return;
     }
-    if (!cZj())
+    if (!dmR())
     {
       AppMethodBeat.o(66579);
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("key_orders", paramf.ukK);
+    localBundle.putParcelable("key_orders", paramf.vtG);
     localBundle.putInt("key_pay_type", 2);
-    if (paramf.dDs != null)
+    if (paramf.dBe != null)
     {
       RealnameGuideHelper localRealnameGuideHelper = new RealnameGuideHelper();
-      localRealnameGuideHelper.b(paramf.dDs.dCT, paramf.dDs.dCU, paramf.dDs.dCV, paramf.dDs.dCW, paramf.dDs.dCX, 8);
+      localRealnameGuideHelper.b(paramf.dBe.dAF, paramf.dBe.dAG, paramf.dBe.dAH, paramf.dBe.dAI, paramf.dBe.dAJ, 8);
       localBundle.putParcelable("key_realname_guide_helper", localRealnameGuideHelper);
     }
     if ((paramActivity instanceof WalletOfflineCoinPurseUI))
@@ -243,14 +243,14 @@ public final class a
   public static void a(Activity paramActivity, String paramString, n paramn)
   {
     AppMethodBeat.i(66583);
-    ad.i("MicroMsg.WalletOfflineUtil", "hy: only transid coming. do old way");
+    ac.i("MicroMsg.WalletOfflineUtil", "hy: only transid coming. do old way");
     if (TextUtils.isEmpty(paramString))
     {
-      ad.e("MicroMsg.WalletOfflineUtil", "transid == null");
+      ac.e("MicroMsg.WalletOfflineUtil", "transid == null");
       AppMethodBeat.o(66583);
       return;
     }
-    if (!cZj())
+    if (!dmR())
     {
       AppMethodBeat.o(66583);
       return;
@@ -258,7 +258,7 @@ public final class a
     Bundle localBundle = new Bundle();
     if ((paramn instanceof com.tencent.mm.plugin.offline.a.e))
     {
-      paramn = ((com.tencent.mm.plugin.offline.a.e)paramn).ujM;
+      paramn = ((com.tencent.mm.plugin.offline.a.e)paramn).vsI;
       if (paramn != null) {
         localBundle.putParcelable("key_realname_guide_helper", paramn);
       }
@@ -294,8 +294,8 @@ public final class a
     AppMethodBeat.i(66582);
     if (paramMap != null)
     {
-      paramOrders.AfJ = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.is_use_show_info"), 0);
-      paramOrders.AfL = new ArrayList();
+      paramOrders.Byd = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.is_use_show_info"), 0);
+      paramOrders.Byf = new ArrayList();
       int i = 0;
       if (i < 255)
       {
@@ -305,16 +305,16 @@ public final class a
           Orders.ShowInfo localShowInfo = new Orders.ShowInfo();
           localShowInfo.name = ((String)paramMap.get(str + "name"));
           localShowInfo.value = ((String)paramMap.get(str + "value"));
-          localShowInfo.rVi = ((String)paramMap.get(str + "name_color"));
-          localShowInfo.AgM = ((String)paramMap.get(str + "value_color"));
+          localShowInfo.tda = ((String)paramMap.get(str + "name_color"));
+          localShowInfo.Bzg = ((String)paramMap.get(str + "value_color"));
           str = str + "value_attr.";
-          localShowInfo.AgN = bt.getInt((String)paramMap.get(str + "link_type"), 0);
-          localShowInfo.AgO = ((String)paramMap.get(str + "link_weapp"));
-          localShowInfo.AgP = ((String)paramMap.get(str + "link_addr"));
-          localShowInfo.AgQ = ((String)paramMap.get(str + "link_url"));
-          localShowInfo.AgR = bt.getInt((String)paramMap.get(str + "text_attr"), 0);
-          if ((!bt.isNullOrNil(localShowInfo.name)) || (!bt.isNullOrNil(localShowInfo.value))) {
-            paramOrders.AfL.add(localShowInfo);
+          localShowInfo.Bzh = bs.getInt((String)paramMap.get(str + "link_type"), 0);
+          localShowInfo.Bzi = ((String)paramMap.get(str + "link_weapp"));
+          localShowInfo.Bzj = ((String)paramMap.get(str + "link_addr"));
+          localShowInfo.Bzk = ((String)paramMap.get(str + "link_url"));
+          localShowInfo.Bzl = bs.getInt((String)paramMap.get(str + "text_attr"), 0);
+          if ((!bs.isNullOrNil(localShowInfo.name)) || (!bs.isNullOrNil(localShowInfo.value))) {
+            paramOrders.Byf.add(localShowInfo);
           }
           i += 1;
           break;
@@ -324,244 +324,43 @@ public final class a
     AppMethodBeat.o(66582);
   }
   
-  public static void ajK(String paramString)
-  {
-    AppMethodBeat.i(66572);
-    k.cYr();
-    k.bp(196631, paramString);
-    AppMethodBeat.o(66572);
-  }
-  
-  public static void ajL(String paramString)
-  {
-    AppMethodBeat.i(66577);
-    s.ecc();
-    am.atX(paramString);
-    AppMethodBeat.o(66577);
-  }
-  
-  public static void ajM(String paramString)
-  {
-    AppMethodBeat.i(66600);
-    k.cYr();
-    k.bp(196656, paramString);
-    ung = paramString;
-    AppMethodBeat.o(66600);
-  }
-  
-  public static LinkedList<a> ajN(String paramString)
-  {
-    AppMethodBeat.i(66602);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(66602);
-      return null;
-    }
-    try
-    {
-      paramString = y(new JSONArray(paramString));
-      AppMethodBeat.o(66602);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      ad.printErrStackTrace("MicroMsg.WalletOfflineUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(66602);
-    }
-    return null;
-  }
-  
-  public static void ajO(String paramString)
-  {
-    AppMethodBeat.i(66606);
-    k.cYr();
-    k.bp(196616, paramString);
-    AppMethodBeat.o(66606);
-  }
-  
-  public static void ajP(String paramString)
-  {
-    AppMethodBeat.i(66610);
-    k.cYr();
-    k.bp(196615, paramString);
-    uni = paramString;
-    AppMethodBeat.o(66610);
-  }
-  
-  private static LinkedList<b> ajQ(String paramString)
-  {
-    AppMethodBeat.i(66611);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(66611);
-      return null;
-    }
-    try
-    {
-      paramString = z(new JSONArray(paramString));
-      AppMethodBeat.o(66611);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      ad.printErrStackTrace("MicroMsg.WalletOfflineUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(66611);
-    }
-    return null;
-  }
-  
-  public static String ajR(String paramString)
-  {
-    AppMethodBeat.i(66615);
-    LinkedList localLinkedList = ajQ(cZC());
-    if (localLinkedList == null)
-    {
-      AppMethodBeat.o(66615);
-      return "";
-    }
-    int i = 0;
-    b localb;
-    if (i < localLinkedList.size())
-    {
-      localb = (b)localLinkedList.get(i);
-      if ((localb == null) || (!paramString.equals(localb.dca))) {}
-    }
-    for (paramString = localb.odo;; paramString = "")
-    {
-      AppMethodBeat.o(66615);
-      return paramString;
-      i += 1;
-      break;
-    }
-  }
-  
-  public static String ajS(String paramString)
-  {
-    int j = 0;
-    AppMethodBeat.i(66616);
-    Object localObject = ajN(cZy());
-    LinkedList localLinkedList = ajQ(cZC());
-    if ((localObject == null) || (localLinkedList == null) || (((LinkedList)localObject).size() == 0) || (localLinkedList.size() == 0))
-    {
-      ad.e("MicroMsg.WalletOfflineUtil", "getBankLogoUrl() cardList == null || cardLogoList == null || cardList.size() == 0 || cardLogoList.size() == 0");
-      AppMethodBeat.o(66616);
-      return "";
-    }
-    int i = 0;
-    a locala;
-    if (i < ((LinkedList)localObject).size())
-    {
-      locala = (a)((LinkedList)localObject).get(i);
-      if ((locala == null) || (!paramString.equals(locala.uns))) {}
-    }
-    for (paramString = locala.dca;; paramString = "")
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        ad.e("MicroMsg.WalletOfflineUtil", "getBankLogoUrl() bank_type == null, can not find this bank_type");
-        AppMethodBeat.o(66616);
-        return "";
-        i += 1;
-        break;
-      }
-      i = j;
-      if (i < localLinkedList.size())
-      {
-        localObject = (b)localLinkedList.get(i);
-        if ((localObject == null) || (!paramString.equals(((b)localObject).dca))) {}
-      }
-      for (paramString = ((b)localObject).odo;; paramString = "")
-      {
-        AppMethodBeat.o(66616);
-        return paramString;
-        i += 1;
-        break;
-      }
-    }
-  }
-  
-  public static void ajT(String paramString)
-  {
-    AppMethodBeat.i(66618);
-    com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fpr, paramString);
-    AppMethodBeat.o(66618);
-  }
-  
-  public static void ajU(String paramString)
-  {
-    AppMethodBeat.i(66620);
-    com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqm, paramString);
-    AppMethodBeat.o(66620);
-  }
-  
-  public static void ajV(String paramString)
-  {
-    AppMethodBeat.i(66624);
-    com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqo, paramString);
-    AppMethodBeat.o(66624);
-  }
-  
-  public static void ajW(String paramString)
-  {
-    AppMethodBeat.i(66628);
-    ad.i("MicroMsg.WalletOfflineUtil", "launch 3rd app: %s", new Object[] { paramString });
-    paramString = com.tencent.mm.pluginsdk.model.app.h.j(paramString, true, false);
-    if (paramString == null)
-    {
-      ad.w("MicroMsg.WalletOfflineUtil", "can not find app info");
-      AppMethodBeat.o(66628);
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    Object localObject = new JumpToOfflinePay.Resp();
-    ((JumpToOfflinePay.Resp)localObject).errCode = 0;
-    ((JumpToOfflinePay.Resp)localObject).toBundle(localBundle);
-    localObject = new MMessageActV2.Args();
-    ((MMessageActV2.Args)localObject).targetPkgName = paramString.field_packageName;
-    ((MMessageActV2.Args)localObject).bundle = localBundle;
-    com.tencent.mm.pluginsdk.model.app.q.aS(localBundle);
-    com.tencent.mm.pluginsdk.model.app.q.aT(localBundle);
-    MMessageActV2.send(aj.getContext(), (MMessageActV2.Args)localObject);
-    AppMethodBeat.o(66628);
-  }
-  
-  public static Orders am(Map<String, String> paramMap)
+  public static Orders ao(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66580);
     Orders localOrders = new Orders();
     Orders.Commodity localCommodity = new Orders.Commodity();
-    localCommodity.uob = ((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_uin"));
-    localCommodity.uoc = ((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_name"));
-    localCommodity.uod = ((String)paramMap.get(".sysmsg.paymsg.user_roll.sale_uin"));
-    localCommodity.uoe = ((String)paramMap.get(".sysmsg.paymsg.user_roll.sale_name"));
-    localCommodity.dcF = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trans_id"));
+    localCommodity.vwX = ((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_uin"));
+    localCommodity.vwY = ((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_name"));
+    localCommodity.vwZ = ((String)paramMap.get(".sysmsg.paymsg.user_roll.sale_uin"));
+    localCommodity.vxa = ((String)paramMap.get(".sysmsg.paymsg.user_roll.sale_name"));
+    localCommodity.dad = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trans_id"));
     localCommodity.desc = ((String)paramMap.get(".sysmsg.paymsg.user_roll.goods_name"));
-    localCommodity.nUf = (bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.pay_num"), -1) / 100.0D);
-    localCommodity.uoi = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trade_state"));
-    localCommodity.uoj = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trade_state_name"));
-    localCommodity.uon = ((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_bank_name"));
-    localCommodity.uou = ((String)paramMap.get(".sysmsg.paymsg.user_roll.discount"));
-    localCommodity.uol = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.modify_timestamp"), 0);
-    localCommodity.uop = ((String)paramMap.get(".sysmsg.paymsg.user_roll.fee_type"));
-    localCommodity.uoq = ((String)paramMap.get(".sysmsg.paymsg.user_roll.appusername"));
-    localCommodity.unT = ((String)paramMap.get(".sysmsg.paymsg.user_roll.app_telephone"));
-    localCommodity.AfY = (bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_bank_name"), -1) / 100.0D);
+    localCommodity.oxA = (bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.pay_num"), -1) / 100.0D);
+    localCommodity.vxe = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trade_state"));
+    localCommodity.vxf = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trade_state_name"));
+    localCommodity.vxj = ((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_bank_name"));
+    localCommodity.vxq = ((String)paramMap.get(".sysmsg.paymsg.user_roll.discount"));
+    localCommodity.vxh = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.modify_timestamp"), 0);
+    localCommodity.vxl = ((String)paramMap.get(".sysmsg.paymsg.user_roll.fee_type"));
+    localCommodity.vxm = ((String)paramMap.get(".sysmsg.paymsg.user_roll.appusername"));
+    localCommodity.vwP = ((String)paramMap.get(".sysmsg.paymsg.user_roll.app_telephone"));
+    localCommodity.Bys = (bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.buy_bank_name"), -1) / 100.0D);
     Object localObject1 = new Orders.Promotions();
     ((Orders.Promotions)localObject1).name = ((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.nickname"));
-    ((Orders.Promotions)localObject1).uoq = ((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.username"));
-    ((Orders.Promotions)localObject1).type = Orders.AfW;
-    localCommodity.AfZ = ((Orders.Promotions)localObject1).uoq;
-    ((Orders.Promotions)localObject1).uwS = ((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.logo_round_url"));
+    ((Orders.Promotions)localObject1).vxm = ((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.username"));
+    ((Orders.Promotions)localObject1).type = Orders.Byq;
+    localCommodity.Byt = ((Orders.Promotions)localObject1).vxm;
+    ((Orders.Promotions)localObject1).vFL = ((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.logo_round_url"));
     ((Orders.Promotions)localObject1).url = ((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.subscribe_biz_url"));
-    int j = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.recommend_level"), 1);
-    localCommodity.Afn = j;
-    localCommodity.Agc = ((String)paramMap.get(".sysmsg.paymsg.user_roll.rateinfo"));
-    localCommodity.Agd = ((String)paramMap.get(".sysmsg.paymsg.user_roll.discount_rateinfo"));
-    localCommodity.Age = ((String)paramMap.get(".sysmsg.paymsg.user_roll.original_feeinfo"));
-    if (!bt.isNullOrNil(((Orders.Promotions)localObject1).name))
+    int j = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.subscribe_biz_info.recommend_level"), 1);
+    localCommodity.BxH = j;
+    localCommodity.Byw = ((String)paramMap.get(".sysmsg.paymsg.user_roll.rateinfo"));
+    localCommodity.Byx = ((String)paramMap.get(".sysmsg.paymsg.user_roll.discount_rateinfo"));
+    localCommodity.Byy = ((String)paramMap.get(".sysmsg.paymsg.user_roll.original_feeinfo"));
+    if (!bs.isNullOrNil(((Orders.Promotions)localObject1).name))
     {
-      localCommodity.Agi = true;
-      localCommodity.Agh.add(localObject1);
+      localCommodity.ByC = true;
+      localCommodity.ByB.add(localObject1);
     }
     int i = 0;
     Orders.Promotions localPromotions;
@@ -606,49 +405,49 @@ public final class a
         str15 = (String)paramMap.get(".sysmsg.paymsg.user_roll.activity_info.record.get_award_params");
         str16 = (String)paramMap.get(".sysmsg.paymsg.user_roll.activity_info.record.query_award_status_params");
         label781:
-        if (!bt.isNullOrNil(str1)) {
+        if (!bs.isNullOrNil(str1)) {
           break label2130;
         }
-        ad.i("MicroMsg.WalletOfflineUtil", "hy: activity end. total size: %d", new Object[] { Integer.valueOf(i + 1) });
+        ac.i("MicroMsg.WalletOfflineUtil", "hy: activity end. total size: %d", new Object[] { Integer.valueOf(i + 1) });
       }
     }
     else
     {
       localObject1 = (String)paramMap.get(".sysmsg.paymsg.user_roll.link_ativity_info.text");
       str1 = (String)paramMap.get(".sysmsg.paymsg.user_roll.link_ativity_info.url");
-      localCommodity.Agj.text = ((String)localObject1);
-      localCommodity.Agj.url = str1;
+      localCommodity.ByD.text = ((String)localObject1);
+      localCommodity.ByD.url = str1;
       localObject1 = (String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_name");
       str1 = (String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_logo");
       localObject2 = (String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_desc");
       str2 = (String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_username");
       str3 = (String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_path");
-      if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil(str1)) && (!bt.isNullOrNil((String)localObject2)) && (!bt.isNullOrNil(str2)))
+      if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil(str1)) && (!bs.isNullOrNil((String)localObject2)) && (!bs.isNullOrNil(str2)))
       {
-        localCommodity.Agf = new Orders.RecommendTinyAppInfo();
-        localCommodity.Agf.zVm = ((String)localObject1);
-        localCommodity.Agf.Afb = str1;
-        localCommodity.Agf.Afc = ((String)localObject2);
-        localCommodity.Agf.zHs = str2;
-        localCommodity.Agf.zHt = str3;
-        localCommodity.Agf.Afd = ((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_tinyapp_btn_text"));
-        localCommodity.Agf.AgE = bt.getLong((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_id"), 0L);
-        localCommodity.Agf.AgF = bt.getLong((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_type"), 0L);
-        localCommodity.Agf.AgH = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.send_record_id"), 0);
-        localCommodity.Agf.AgI = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.user_record_id"), 0);
-        localCommodity.Agf.AgJ = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_mch_id"), 0);
-        localCommodity.Agf.AgG = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.award_id"), 0);
-        localCommodity.Agf.Afe = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_version"), 0);
+        localCommodity.Byz = new Orders.RecommendTinyAppInfo();
+        localCommodity.Byz.BnG = ((String)localObject1);
+        localCommodity.Byz.Bxv = str1;
+        localCommodity.Byz.Bxw = ((String)localObject2);
+        localCommodity.Byz.AZE = str2;
+        localCommodity.Byz.AZF = str3;
+        localCommodity.Byz.Bxx = ((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_tinyapp_btn_text"));
+        localCommodity.Byz.ByY = bs.getLong((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_id"), 0L);
+        localCommodity.Byz.ByZ = bs.getLong((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_type"), 0L);
+        localCommodity.Byz.Bzb = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.send_record_id"), 0);
+        localCommodity.Byz.Bzc = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.user_record_id"), 0);
+        localCommodity.Byz.Bzd = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.activity_mch_id"), 0);
+        localCommodity.Byz.Bza = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.award_id"), 0);
+        localCommodity.Byz.Bxy = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.tinyapp_info.tinyapp_version"), 0);
       }
-      localOrders.Afx = new ArrayList();
-      localOrders.Afx.add(localCommodity);
-      localOrders.AfH = bt.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.is_use_new_paid_succ_page"), 0);
-      localOrders.AfI = ((String)paramMap.get(".sysmsg.paymsg.user_roll.pay_succ_btn_wording"));
-      localOrders.Afp = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trade_state_name"));
-      localOrders.Afn = j;
-      localOrders.dcE = ((String)paramMap.get(".sysmsg.req_key"));
+      localOrders.BxR = new ArrayList();
+      localOrders.BxR.add(localCommodity);
+      localOrders.Byb = bs.getInt((String)paramMap.get(".sysmsg.paymsg.user_roll.is_use_new_paid_succ_page"), 0);
+      localOrders.Byc = ((String)paramMap.get(".sysmsg.paymsg.user_roll.pay_succ_btn_wording"));
+      localOrders.BxJ = ((String)paramMap.get(".sysmsg.paymsg.user_roll.trade_state_name"));
+      localOrders.BxH = j;
+      localOrders.dac = ((String)paramMap.get(".sysmsg.req_key"));
       a(localOrders, paramMap);
-      localCommodity.AfY = (bt.getDouble((String)paramMap.get(".sysmsg.paymsg.user_roll.original_total_fee"), -1.0D) / 100.0D);
+      localCommodity.Bys = (bs.getDouble((String)paramMap.get(".sysmsg.paymsg.user_roll.original_total_fee"), -1.0D) / 100.0D);
       if (TextUtils.isEmpty((String)paramMap.get(".sysmsg.paymsg.user_roll.discount_array.record.favor_desc"))) {
         break label2387;
       }
@@ -667,9 +466,9 @@ public final class a
         break label2339;
       }
       localObject2 = new Orders.DiscountInfo();
-      ((Orders.DiscountInfo)localObject2).vzN = ((String)paramMap.get(str1));
-      ((Orders.DiscountInfo)localObject2).Agt = bt.getDouble((String)paramMap.get(localObject1), 0.0D);
-      localCommodity.Agb.add(localObject2);
+      ((Orders.DiscountInfo)localObject2).wJS = ((String)paramMap.get(str1));
+      ((Orders.DiscountInfo)localObject2).ByN = bs.getDouble((String)paramMap.get(localObject1), 0.0D);
+      localCommodity.Byv.add(localObject2);
       i += 1;
       break label1363;
       localObject1 = (String)paramMap.get(".sysmsg.paymsg.user_roll.activity_info.record" + i + ".icon");
@@ -692,291 +491,299 @@ public final class a
       str16 = (String)paramMap.get(".sysmsg.paymsg.user_roll.activity_info.record" + i + ".query_award_status_params");
       break label781;
       label2130:
-      localPromotions.uwS = ((String)localObject1);
+      localPromotions.vFL = ((String)localObject1);
       localPromotions.name = str1;
       localPromotions.url = ((String)localObject2);
-      localPromotions.AeZ = str2;
-      localPromotions.type = Orders.AfX;
-      localPromotions.Agu = bt.getInt(str3, 0);
+      localPromotions.Bxt = str2;
+      localPromotions.type = Orders.Byr;
+      localPromotions.ByO = bs.getInt(str3, 0);
       localPromotions.title = str4;
-      localPromotions.LvT = bt.getInt(str5, 0);
-      localPromotions.zWi = bt.getLong(str6, 0L);
-      localPromotions.AeW = bt.getInt(str7, 0);
-      localPromotions.LvU = bt.getInt(str8, 0);
-      localPromotions.AeX = bt.getInt(str9, 0);
-      localPromotions.LvV = str10;
-      localPromotions.LvW = str11;
-      localPromotions.LvX = str12;
-      localPromotions.AeY = bt.getLong(str13, 0L);
-      localPromotions.LvY = bt.getInt(str14, 0);
-      localPromotions.LvZ = str15;
-      localPromotions.Lwa = str16;
+      localPromotions.DeE = bs.getInt(str5, 0);
+      localPromotions.BoC = bs.getLong(str6, 0L);
+      localPromotions.Bxq = bs.getInt(str7, 0);
+      localPromotions.DeF = bs.getInt(str8, 0);
+      localPromotions.Bxr = bs.getInt(str9, 0);
+      localPromotions.DeG = str10;
+      localPromotions.DeH = str11;
+      localPromotions.DeI = str12;
+      localPromotions.Bxs = bs.getLong(str13, 0L);
+      localPromotions.DeJ = bs.getInt(str14, 0);
+      localPromotions.GZQ = str15;
+      localPromotions.GZR = str16;
       localObject1 = e(paramMap, i);
       if (localObject1 != null) {
-        localPromotions.AgD = ((e.a.a.c)localObject1);
+        localPromotions.ByX = ((e.a.a.c)localObject1);
       }
-      localCommodity.Agh.add(localPromotions);
+      localCommodity.ByB.add(localPromotions);
       i += 1;
       break;
     }
     label2339:
-    ad.e("MicroMsg.WalletOfflineUtil", "favor_desc_key is " + str1 + ", payment_amount_key is " + (String)localObject1 + ", break");
+    ac.e("MicroMsg.WalletOfflineUtil", "favor_desc_key is " + str1 + ", payment_amount_key is " + (String)localObject1 + ", break");
     for (;;)
     {
       AppMethodBeat.o(66580);
       return localOrders;
       label2387:
-      ad.e("MicroMsg.WalletOfflineUtil", ".sysmsg.paymsg.user_roll.discount_array.record.favor_desc value is empty");
+      ac.e("MicroMsg.WalletOfflineUtil", ".sysmsg.paymsg.user_roll.discount_array.record.favor_desc value is empty");
     }
   }
   
-  public static void as(Activity paramActivity)
+  public static void aoI(String paramString)
+  {
+    AppMethodBeat.i(66572);
+    k.dlZ();
+    k.bu(196631, paramString);
+    AppMethodBeat.o(66572);
+  }
+  
+  public static void aoJ(String paramString)
+  {
+    AppMethodBeat.i(66577);
+    s.ery();
+    am.azp(paramString);
+    AppMethodBeat.o(66577);
+  }
+  
+  public static void aoK(String paramString)
+  {
+    AppMethodBeat.i(66600);
+    k.dlZ();
+    k.bu(196656, paramString);
+    vwc = paramString;
+    AppMethodBeat.o(66600);
+  }
+  
+  public static LinkedList<a> aoL(String paramString)
+  {
+    AppMethodBeat.i(66602);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(66602);
+      return null;
+    }
+    try
+    {
+      paramString = y(new JSONArray(paramString));
+      AppMethodBeat.o(66602);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ac.printErrStackTrace("MicroMsg.WalletOfflineUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(66602);
+    }
+    return null;
+  }
+  
+  public static void aoM(String paramString)
+  {
+    AppMethodBeat.i(66606);
+    k.dlZ();
+    k.bu(196616, paramString);
+    AppMethodBeat.o(66606);
+  }
+  
+  public static void aoN(String paramString)
+  {
+    AppMethodBeat.i(66610);
+    k.dlZ();
+    k.bu(196615, paramString);
+    vwe = paramString;
+    AppMethodBeat.o(66610);
+  }
+  
+  private static LinkedList<b> aoO(String paramString)
+  {
+    AppMethodBeat.i(66611);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(66611);
+      return null;
+    }
+    try
+    {
+      paramString = z(new JSONArray(paramString));
+      AppMethodBeat.o(66611);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      ac.printErrStackTrace("MicroMsg.WalletOfflineUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(66611);
+    }
+    return null;
+  }
+  
+  public static String aoP(String paramString)
+  {
+    AppMethodBeat.i(66615);
+    LinkedList localLinkedList = aoO(dnk());
+    if (localLinkedList == null)
+    {
+      AppMethodBeat.o(66615);
+      return "";
+    }
+    int i = 0;
+    b localb;
+    if (i < localLinkedList.size())
+    {
+      localb = (b)localLinkedList.get(i);
+      if ((localb == null) || (!paramString.equals(localb.cZz))) {}
+    }
+    for (paramString = localb.oGN;; paramString = "")
+    {
+      AppMethodBeat.o(66615);
+      return paramString;
+      i += 1;
+      break;
+    }
+  }
+  
+  public static String aoQ(String paramString)
+  {
+    int j = 0;
+    AppMethodBeat.i(66616);
+    Object localObject = aoL(dng());
+    LinkedList localLinkedList = aoO(dnk());
+    if ((localObject == null) || (localLinkedList == null) || (((LinkedList)localObject).size() == 0) || (localLinkedList.size() == 0))
+    {
+      ac.e("MicroMsg.WalletOfflineUtil", "getBankLogoUrl() cardList == null || cardLogoList == null || cardList.size() == 0 || cardLogoList.size() == 0");
+      AppMethodBeat.o(66616);
+      return "";
+    }
+    int i = 0;
+    a locala;
+    if (i < ((LinkedList)localObject).size())
+    {
+      locala = (a)((LinkedList)localObject).get(i);
+      if ((locala == null) || (!paramString.equals(locala.vwo))) {}
+    }
+    for (paramString = locala.cZz;; paramString = "")
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        ac.e("MicroMsg.WalletOfflineUtil", "getBankLogoUrl() bank_type == null, can not find this bank_type");
+        AppMethodBeat.o(66616);
+        return "";
+        i += 1;
+        break;
+      }
+      i = j;
+      if (i < localLinkedList.size())
+      {
+        localObject = (b)localLinkedList.get(i);
+        if ((localObject == null) || (!paramString.equals(((b)localObject).cZz))) {}
+      }
+      for (paramString = ((b)localObject).oGN;; paramString = "")
+      {
+        AppMethodBeat.o(66616);
+        return paramString;
+        i += 1;
+        break;
+      }
+    }
+  }
+  
+  public static void aoR(String paramString)
+  {
+    AppMethodBeat.i(66618);
+    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNh, paramString);
+    AppMethodBeat.o(66618);
+  }
+  
+  public static void aoS(String paramString)
+  {
+    AppMethodBeat.i(66620);
+    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GOc, paramString);
+    AppMethodBeat.o(66620);
+  }
+  
+  public static void aoT(String paramString)
+  {
+    AppMethodBeat.i(66624);
+    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GOe, paramString);
+    AppMethodBeat.o(66624);
+  }
+  
+  public static void aoU(String paramString)
+  {
+    AppMethodBeat.i(66628);
+    ac.i("MicroMsg.WalletOfflineUtil", "launch 3rd app: %s", new Object[] { paramString });
+    paramString = com.tencent.mm.pluginsdk.model.app.h.k(paramString, true, false);
+    if (paramString == null)
+    {
+      ac.w("MicroMsg.WalletOfflineUtil", "can not find app info");
+      AppMethodBeat.o(66628);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    Object localObject = new JumpToOfflinePay.Resp();
+    ((JumpToOfflinePay.Resp)localObject).errCode = 0;
+    ((JumpToOfflinePay.Resp)localObject).toBundle(localBundle);
+    localObject = new MMessageActV2.Args();
+    ((MMessageActV2.Args)localObject).targetPkgName = paramString.field_packageName;
+    ((MMessageActV2.Args)localObject).bundle = localBundle;
+    com.tencent.mm.pluginsdk.model.app.q.aW(localBundle);
+    com.tencent.mm.pluginsdk.model.app.q.aX(localBundle);
+    MMessageActV2.send(ai.getContext(), (MMessageActV2.Args)localObject);
+    AppMethodBeat.o(66628);
+  }
+  
+  public static void aw(Activity paramActivity)
   {
     AppMethodBeat.i(66589);
     a(paramActivity, "freeze", paramActivity.getString(2131765964), 0, -1);
     AppMethodBeat.o(66589);
   }
   
-  public static void at(Activity paramActivity)
+  public static void ax(Activity paramActivity)
   {
     AppMethodBeat.i(66590);
     k(paramActivity, -1);
     AppMethodBeat.o(66590);
   }
   
-  public static void au(Activity paramActivity)
+  public static void ay(Activity paramActivity)
   {
     AppMethodBeat.i(66607);
-    com.tencent.mm.ui.base.h.cf(paramActivity, paramActivity.getResources().getString(2131765962));
-    if (!TextUtils.isEmpty(cZA())) {
-      com.tencent.mm.wallet_core.ui.e.aS(paramActivity, cZA());
+    com.tencent.mm.ui.base.h.cg(paramActivity, paramActivity.getResources().getString(2131765962));
+    if (!TextUtils.isEmpty(dni())) {
+      com.tencent.mm.wallet_core.ui.e.aT(paramActivity, dni());
     }
     AppMethodBeat.o(66607);
   }
   
-  public static boolean cB(Context paramContext)
+  public static boolean cK(Context paramContext)
   {
     AppMethodBeat.i(66617);
     Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
-      ad.d("MicroMsg.WalletOfflineUtil", "topActivity:" + ((ComponentName)localObject).flattenToString());
+      ac.d("MicroMsg.WalletOfflineUtil", "topActivity:" + ((ComponentName)localObject).flattenToString());
       if (!((ComponentName)localObject).getPackageName().equals(paramContext.getPackageName()))
       {
-        ad.i("MicroMsg.WalletOfflineUtil", "is in backGround.");
+        ac.i("MicroMsg.WalletOfflineUtil", "is in backGround.");
         AppMethodBeat.o(66617);
         return false;
       }
     }
-    if (((KeyguardManager)aj.getContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode())
+    if (((KeyguardManager)ai.getContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode())
     {
       AppMethodBeat.o(66617);
       return false;
     }
-    ad.i("MicroMsg.WalletOfflineUtil", "is in foreGround.");
+    ac.i("MicroMsg.WalletOfflineUtil", "is in foreGround.");
     AppMethodBeat.o(66617);
     return true;
   }
   
-  private static String cZA()
-  {
-    AppMethodBeat.i(66605);
-    k.cYr();
-    String str = k.IH(196616);
-    AppMethodBeat.o(66605);
-    return str;
-  }
-  
-  public static boolean cZB()
-  {
-    int j = 0;
-    AppMethodBeat.i(66608);
-    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pwT, 0) == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      ad.i("MicroMsg.WalletOfflineUtil", "pass same md5 case");
-      AppMethodBeat.o(66608);
-      return true;
-    }
-    ArrayList localArrayList = s.ecc().sC(true);
-    Object localObject = ajN(cZy());
-    if ((localObject == null) || (localArrayList.size() != ((LinkedList)localObject).size()))
-    {
-      AppMethodBeat.o(66608);
-      return false;
-    }
-    Collections.sort((List)localObject, unq);
-    Collections.sort(localArrayList, unp);
-    StringBuilder localStringBuilder = new StringBuilder();
-    i = 0;
-    while (i < ((LinkedList)localObject).size())
-    {
-      localStringBuilder.append(((a)((LinkedList)localObject).get(i)).uns);
-      i += 1;
-    }
-    localObject = new StringBuilder();
-    i = j;
-    while (i < localArrayList.size())
-    {
-      ((StringBuilder)localObject).append(((Bankcard)localArrayList.get(i)).field_bindSerial);
-      i += 1;
-    }
-    boolean bool = ai.du(localStringBuilder.toString()).equals(ai.du(((StringBuilder)localObject).toString()));
-    AppMethodBeat.o(66608);
-    return bool;
-  }
-  
-  private static String cZC()
-  {
-    AppMethodBeat.i(66609);
-    if (TextUtils.isEmpty(uni))
-    {
-      k.cYr();
-      str = k.IH(196615);
-      uni = str;
-      AppMethodBeat.o(66609);
-      return str;
-    }
-    String str = uni;
-    AppMethodBeat.o(66609);
-    return str;
-  }
-  
-  public static int cZD()
-  {
-    AppMethodBeat.i(66613);
-    k.cYr();
-    String str = k.IH(196649);
-    if ((TextUtils.isEmpty(str)) || (!isNumeric(str)))
-    {
-      AppMethodBeat.o(66613);
-      return 0;
-    }
-    int i = bt.getInt(str, 0);
-    AppMethodBeat.o(66613);
-    return i;
-  }
-  
-  public static boolean cZE()
-  {
-    AppMethodBeat.i(66614);
-    String str = cZr();
-    if (TextUtils.isEmpty(str))
-    {
-      AppMethodBeat.o(66614);
-      return false;
-    }
-    long l1 = cZD();
-    long l2 = Long.valueOf(str).longValue();
-    if (System.currentTimeMillis() / 1000L - l2 >= l1)
-    {
-      AppMethodBeat.o(66614);
-      return true;
-    }
-    AppMethodBeat.o(66614);
-    return false;
-  }
-  
-  public static String cZF()
-  {
-    AppMethodBeat.i(66619);
-    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fpr, "");
-    if (localObject != null)
-    {
-      localObject = (String)localObject;
-      AppMethodBeat.o(66619);
-      return localObject;
-    }
-    AppMethodBeat.o(66619);
-    return null;
-  }
-  
-  public static String cZG()
-  {
-    AppMethodBeat.i(66621);
-    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fqm, "");
-    if (localObject != null)
-    {
-      localObject = (String)localObject;
-      AppMethodBeat.o(66621);
-      return localObject;
-    }
-    AppMethodBeat.o(66621);
-    return null;
-  }
-  
-  public static int cZH()
-  {
-    AppMethodBeat.i(66623);
-    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fqn, null);
-    if (localObject != null) {}
-    for (int i = ((Integer)localObject).intValue();; i = 0)
-    {
-      int j = i;
-      if (i < 0) {
-        j = 0;
-      }
-      AppMethodBeat.o(66623);
-      return j;
-    }
-  }
-  
-  public static String cZI()
-  {
-    AppMethodBeat.i(66625);
-    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fqo, "");
-    if (localObject != null)
-    {
-      localObject = (String)localObject;
-      AppMethodBeat.o(66625);
-      return localObject;
-    }
-    AppMethodBeat.o(66625);
-    return null;
-  }
-  
-  public static boolean cZJ()
-  {
-    AppMethodBeat.i(66627);
-    boolean bool2 = false;
-    Object localObject = com.tencent.mm.model.c.d.aty().qu("100232");
-    if (((com.tencent.mm.storage.c)localObject).isValid())
-    {
-      localObject = ((com.tencent.mm.storage.c)localObject).eJy();
-      if ((((Map)localObject).containsKey("open")) && ("1".equals(((Map)localObject).get("open")))) {
-        ad.e("MicroMsg.WalletOfflineUtil", "deprecated abtest 100232 enabled.");
-      }
-    }
-    localObject = com.tencent.mm.model.c.d.aty().qu("100261");
-    boolean bool1 = bool2;
-    if (((com.tencent.mm.storage.c)localObject).isValid())
-    {
-      localObject = ((com.tencent.mm.storage.c)localObject).eJy();
-      bool1 = bool2;
-      if (((Map)localObject).containsKey("open"))
-      {
-        bool1 = bool2;
-        if ("1".equals(((Map)localObject).get("open"))) {
-          bool1 = true;
-        }
-      }
-    }
-    ad.i("MicroMsg.WalletOfflineUtil", "isPosEnabled: ".concat(String.valueOf(bool1)));
-    AppMethodBeat.o(66627);
-    return bool1;
-  }
-  
-  public static int cZK()
-  {
-    return k.ujt;
-  }
-  
-  public static boolean cZi()
+  public static boolean dmQ()
   {
     AppMethodBeat.i(66558);
-    k.cYr();
-    String str = k.IH(196630);
+    k.dlZ();
+    String str = k.KG(196630);
     if ((str != null) && (str.equals("1")))
     {
       AppMethodBeat.o(66558);
@@ -986,11 +793,11 @@ public final class a
     return false;
   }
   
-  public static boolean cZj()
+  public static boolean dmR()
   {
     AppMethodBeat.i(66559);
-    k.cYr();
-    String str = k.IH(196641);
+    k.dlZ();
+    String str = k.KG(196641);
     if ((str != null) && (str.equals("1")))
     {
       AppMethodBeat.o(66559);
@@ -1001,21 +808,21 @@ public final class a
   }
   
   @Deprecated
-  public static Bankcard cZk()
+  public static Bankcard dmS()
   {
     AppMethodBeat.i(66560);
-    s.ecc();
-    Object localObject2 = am.edk();
-    ad.i("MicroMsg.WalletPayOrderMgr", "step 1 getSelectedBindBankCard %s", new Object[] { localObject2 });
-    Object localObject3 = s.ecc();
+    s.ery();
+    Object localObject2 = am.esF();
+    ac.i("MicroMsg.WalletPayOrderMgr", "step 1 getSelectedBindBankCard %s", new Object[] { localObject2 });
+    Object localObject3 = s.ery();
     Object localObject1;
-    if (((am)localObject3).Aif == null)
+    if (((am)localObject3).BAz == null)
     {
       localObject1 = null;
       if (localObject1 != null) {
         break label508;
       }
-      localObject1 = s.ecc().sC(true);
+      localObject1 = s.ery().tD(true);
     }
     label508:
     for (;;)
@@ -1029,21 +836,21 @@ public final class a
         localObject3 = (Bankcard)((List)localObject1).get(i);
         if ((localObject3 != null) && (((String)localObject2).equals(((Bankcard)localObject3).field_bindSerial)))
         {
-          ad.i("MicroMsg.WalletPayOrderMgr", "step 2 micropay: %s, forbidword: %s", new Object[] { Boolean.valueOf(((Bankcard)localObject3).field_support_micropay), ((Bankcard)localObject3).field_forbidWord });
+          ac.i("MicroMsg.WalletPayOrderMgr", "step 2 micropay: %s, forbidword: %s", new Object[] { Boolean.valueOf(((Bankcard)localObject3).field_support_micropay), ((Bankcard)localObject3).field_forbidWord });
           if (((Bankcard)localObject3).field_support_micropay)
           {
             AppMethodBeat.o(66560);
             return localObject3;
             localObject1 = new ArrayList();
-            if ((((am)localObject3).zHd != null) && (!((am)localObject3).ecH())) {
-              ((ArrayList)localObject1).add(((am)localObject3).zHd);
+            if ((((am)localObject3).AZp != null) && (!((am)localObject3).esc())) {
+              ((ArrayList)localObject1).add(((am)localObject3).AZp);
             }
-            if ((((am)localObject3).Ain != null) && (!((am)localObject3).ecH())) {
-              ((ArrayList)localObject1).add(((am)localObject3).Ain);
+            if ((((am)localObject3).BAI != null) && (!((am)localObject3).esc())) {
+              ((ArrayList)localObject1).add(((am)localObject3).BAI);
             }
-            if (((am)localObject3).Aif.size() > 0)
+            if (((am)localObject3).BAz.size() > 0)
             {
-              localObject3 = ((am)localObject3).Aif.iterator();
+              localObject3 = ((am)localObject3).BAz.iterator();
               while (((Iterator)localObject3).hasNext()) {
                 ((ArrayList)localObject1).add((Bankcard)((Iterator)localObject3).next());
               }
@@ -1054,14 +861,14 @@ public final class a
         i += 1;
       }
       label254:
-      ad.i("MicroMsg.WalletPayOrderMgr", "step 3 clear default bindserial");
-      s.ecc();
-      am.atX("");
-      s.ecc();
-      localObject2 = am.edq();
-      if ((localObject2 != null) && (bt.isNullOrNil(((Bankcard)localObject2).field_forbidWord)))
+      ac.i("MicroMsg.WalletPayOrderMgr", "step 3 clear default bindserial");
+      s.ery();
+      am.azp("");
+      s.ery();
+      localObject2 = am.esL();
+      if ((localObject2 != null) && (bs.isNullOrNil(((Bankcard)localObject2).field_forbidWord)))
       {
-        ad.i("MicroMsg.WalletPayOrderMgr", "do change main card: %s", new Object[] { ((Bankcard)localObject2).field_bankcardType });
+        ac.i("MicroMsg.WalletPayOrderMgr", "do change main card: %s", new Object[] { ((Bankcard)localObject2).field_bankcardType });
         AppMethodBeat.o(66560);
         return localObject2;
       }
@@ -1069,25 +876,25 @@ public final class a
       while (i < ((List)localObject1).size())
       {
         localObject2 = (Bankcard)((List)localObject1).get(i);
-        if ((localObject2 != null) && (((Bankcard)localObject2).field_support_micropay) && (!((Bankcard)localObject2).ebv()))
+        if ((localObject2 != null) && (((Bankcard)localObject2).field_support_micropay) && (!((Bankcard)localObject2).eqR()))
         {
-          ad.i("MicroMsg.WalletPayOrderMgr", "do change first card: %s", new Object[] { ((Bankcard)localObject2).field_bankcardType });
+          ac.i("MicroMsg.WalletPayOrderMgr", "do change first card: %s", new Object[] { ((Bankcard)localObject2).field_bankcardType });
           AppMethodBeat.o(66560);
           return localObject2;
         }
         i += 1;
       }
-      localObject1 = s.ecc().zHd;
+      localObject1 = s.ery().AZp;
       if ((localObject1 != null) && (((Bankcard)localObject1).field_support_micropay))
       {
-        ad.i("MicroMsg.WalletPayOrderMgr", "do change balance: %s", new Object[] { ((Bankcard)localObject1).field_bankcardType });
+        ac.i("MicroMsg.WalletPayOrderMgr", "do change balance: %s", new Object[] { ((Bankcard)localObject1).field_bankcardType });
         AppMethodBeat.o(66560);
         return localObject1;
       }
-      localObject1 = s.ecc().Ain;
-      if ((localObject1 != null) && (((Bankcard)localObject1).field_support_micropay) && (bt.isNullOrNil(((Bankcard)localObject1).field_forbidWord)))
+      localObject1 = s.ery().BAI;
+      if ((localObject1 != null) && (((Bankcard)localObject1).field_support_micropay) && (bs.isNullOrNil(((Bankcard)localObject1).field_forbidWord)))
       {
-        ad.i("MicroMsg.WalletPayOrderMgr", "do change balance: %s", new Object[] { ((Bankcard)localObject1).field_bankcardType });
+        ac.i("MicroMsg.WalletPayOrderMgr", "do change balance: %s", new Object[] { ((Bankcard)localObject1).field_bankcardType });
         AppMethodBeat.o(66560);
         return localObject1;
       }
@@ -1096,16 +903,16 @@ public final class a
     }
   }
   
-  public static Bankcard cZl()
+  public static Bankcard dmT()
   {
     AppMethodBeat.i(66561);
-    Object localObject = cZk();
-    if ((localObject != null) && (((Bankcard)localObject).field_support_micropay) && (bt.isNullOrNil(((Bankcard)localObject).field_forbidWord)))
+    Object localObject = dmS();
+    if ((localObject != null) && (((Bankcard)localObject).field_support_micropay) && (bs.isNullOrNil(((Bankcard)localObject).field_forbidWord)))
     {
       AppMethodBeat.o(66561);
       return localObject;
     }
-    localObject = s.ecc().sC(true);
+    localObject = s.ery().tD(true);
     int i = 0;
     while (i < ((List)localObject).size())
     {
@@ -1121,60 +928,60 @@ public final class a
     return null;
   }
   
-  public static Bankcard cZm()
+  public static Bankcard dmU()
   {
     AppMethodBeat.i(66562);
-    s.ecc();
-    Bankcard localBankcard = am.edq();
+    s.ery();
+    Bankcard localBankcard = am.esL();
     AppMethodBeat.o(66562);
     return localBankcard;
   }
   
-  public static int cZn()
+  public static int dmV()
   {
     AppMethodBeat.i(66563);
-    int i = s.ecc().sC(true).size();
+    int i = s.ery().tD(true).size();
     AppMethodBeat.o(66563);
     return i;
   }
   
-  public static List<Bankcard> cZo()
+  public static List<Bankcard> dmW()
   {
     AppMethodBeat.i(66565);
     ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = s.ecc().edc();
+    ArrayList localArrayList2 = s.ery().esx();
     int i = 0;
     while (i < localArrayList2.size())
     {
       localArrayList1.add((Bankcard)localArrayList2.get(i));
       i += 1;
     }
-    ad.i("MicroMsg.WalletOfflineUtil", "getOfflineBindBankCardList() list size is " + localArrayList1.size());
+    ac.i("MicroMsg.WalletOfflineUtil", "getOfflineBindBankCardList() list size is " + localArrayList1.size());
     AppMethodBeat.o(66565);
     return localArrayList1;
   }
   
-  public static int cZp()
+  public static int dmX()
   {
     AppMethodBeat.i(66566);
-    k.cYr();
-    String str = k.IH(196629);
+    k.dlZ();
+    String str = k.KG(196629);
     if ((TextUtils.isEmpty(str)) || (!isNumeric(str)))
     {
       AppMethodBeat.o(66566);
       return 0;
     }
-    int i = bt.getInt(str, 0);
+    int i = bs.getInt(str, 0);
     AppMethodBeat.o(66566);
     return i;
   }
   
-  private static int cZq()
+  private static int dmY()
   {
     int j = 0;
     AppMethodBeat.i(66567);
-    k.cYr();
-    String str = k.IH(196640);
+    k.dlZ();
+    String str = k.KG(196640);
     int i = j;
     if (!TextUtils.isEmpty(str))
     {
@@ -1193,176 +1000,369 @@ public final class a
     {
       AppMethodBeat.o(66567);
       return i;
-      i = bt.getInt(str, 0);
+      i = bs.getInt(str, 0);
       break;
       label62:
       i = 20000;
     }
   }
   
-  public static String cZr()
+  public static String dmZ()
   {
     AppMethodBeat.i(66570);
-    k.cYr();
-    String str = k.IH(196632);
+    k.dlZ();
+    String str = k.KG(196632);
     AppMethodBeat.o(66570);
     return str;
   }
   
-  public static String cZs()
+  public static String dna()
   {
     AppMethodBeat.i(66571);
-    k.cYr();
-    String str = k.IH(196631);
+    k.dlZ();
+    String str = k.KG(196631);
     AppMethodBeat.o(66571);
     return str;
   }
   
-  public static String cZt()
+  public static String dnb()
   {
     AppMethodBeat.i(66576);
-    s.ecc();
-    String str = am.edk();
+    s.ery();
+    String str = am.esF();
     AppMethodBeat.o(66576);
     return str;
   }
   
-  public static void cZu()
+  public static void dnc()
   {
     AppMethodBeat.i(66578);
-    ad.i("MicroMsg.WalletOfflineUtil", "clear offline data");
-    k.cYr();
-    k.bp(196630, "0");
-    k.cYr();
-    k.bp(196626, "");
-    k.cYr();
-    k.bp(196627, "");
-    k.cYr();
-    k.bp(196628, "");
-    k.cYr();
-    k.bp(196617, "");
-    k.cYr();
-    k.bp(196632, "");
-    k.cYr();
-    k.bp(196641, "");
-    k.cYr();
-    k.bp(196647, "");
-    k.cYr();
-    k.bp(196649, "");
-    q("", "", "", "");
-    IR(0);
-    k.cYr();
-    k.bp(196629, "0");
-    ajK("");
-    k.cYr();
-    k.cYs().ukv = null;
-    k.cYr();
-    k.cYu();
-    k.cYr();
-    String str = k.IH(196617);
-    com.tencent.mm.wallet_core.c.b.fjR();
+    ac.i("MicroMsg.WalletOfflineUtil", "clear offline data");
+    k.dlZ();
+    k.bu(196630, "0");
+    k.dlZ();
+    k.bu(196626, "");
+    k.dlZ();
+    k.bu(196627, "");
+    k.dlZ();
+    k.bu(196628, "");
+    k.dlZ();
+    k.bu(196617, "");
+    k.dlZ();
+    k.bu(196632, "");
+    k.dlZ();
+    k.bu(196641, "");
+    k.dlZ();
+    k.bu(196647, "");
+    k.dlZ();
+    k.bu(196649, "");
+    s("", "", "", "");
+    KQ(0);
+    k.dlZ();
+    k.bu(196629, "0");
+    aoI("");
+    k.dlZ();
+    k.dma().vtr = null;
+    k.dlZ();
+    k.dmc();
+    k.dlZ();
+    String str = k.KG(196617);
+    com.tencent.mm.wallet_core.c.b.fAg();
     com.tencent.mm.wallet_core.c.b.clearToken(str);
-    ajP("");
-    ajM("");
+    aoN("");
+    aoK("");
     AppMethodBeat.o(66578);
   }
   
-  public static void cZv()
+  public static void dnd()
   {
     AppMethodBeat.i(66593);
-    k.cYr();
-    k.bp(196643, "1");
+    k.dlZ();
+    k.bu(196643, "1");
     AppMethodBeat.o(66593);
   }
   
-  public static int cZw()
+  public static int dne()
   {
     AppMethodBeat.i(66595);
-    k.cYr();
-    String str = k.IH(196644);
+    k.dlZ();
+    String str = k.KG(196644);
     if ((TextUtils.isEmpty(str)) || (!isNumeric(str)))
     {
       AppMethodBeat.o(66595);
       return 0;
     }
-    int i = bt.getInt(str, 0);
+    int i = bs.getInt(str, 0);
     AppMethodBeat.o(66595);
     return i;
   }
   
-  public static String cZx()
+  public static String dnf()
   {
     AppMethodBeat.i(66598);
-    if (!TextUtils.isEmpty(une))
+    if (!TextUtils.isEmpty(vwa))
     {
-      str = une;
+      str = vwa;
       AppMethodBeat.o(66598);
       return str;
     }
-    cZz();
-    if (TextUtils.isEmpty(une)) {
-      ad.e("MicroMsg.WalletOfflineUtil", "offline_token_v2 is null");
+    dnh();
+    if (TextUtils.isEmpty(vwa)) {
+      ac.e("MicroMsg.WalletOfflineUtil", "offline_token_v2 is null");
     }
-    String str = une;
+    String str = vwa;
     AppMethodBeat.o(66598);
     return str;
   }
   
-  public static String cZy()
+  public static String dng()
   {
     AppMethodBeat.i(66599);
-    if (!TextUtils.isEmpty(ung))
+    if (!TextUtils.isEmpty(vwc))
     {
-      str = ung;
+      str = vwc;
       AppMethodBeat.o(66599);
       return str;
     }
-    if (TextUtils.isEmpty(ung))
+    if (TextUtils.isEmpty(vwc))
     {
-      k.cYr();
-      str = k.IH(196656);
-      ung = str;
+      k.dlZ();
+      str = k.KG(196656);
+      vwc = str;
       AppMethodBeat.o(66599);
       return str;
     }
-    if (TextUtils.isEmpty(ung)) {
-      ad.e("MicroMsg.WalletOfflineUtil", "offline_card_list is null");
+    if (TextUtils.isEmpty(vwc)) {
+      ac.e("MicroMsg.WalletOfflineUtil", "offline_card_list is null");
     }
-    String str = ung;
+    String str = vwc;
     AppMethodBeat.o(66599);
     return str;
   }
   
-  private static void cZz()
+  private static void dnh()
   {
     AppMethodBeat.i(66601);
-    com.tencent.mm.kernel.g.afA().gcy.a(new bn(new bn.a()
+    com.tencent.mm.kernel.g.agQ().ghe.a(new bn(new bn.a()
     {
       public final void a(com.tencent.mm.network.e paramAnonymouse)
       {
         AppMethodBeat.i(66555);
-        if ((paramAnonymouse == null) || (paramAnonymouse.avg() == null))
+        if ((paramAnonymouse == null) || (paramAnonymouse.aBZ() == null))
         {
-          ad.e("MicroMsg.WalletOfflineUtil", "doLocalProxyScene dispatcher == null || dispatcher.getAccInfo() == null");
+          ac.e("MicroMsg.WalletOfflineUtil", "doLocalProxyScene dispatcher == null || dispatcher.getAccInfo() == null");
           AppMethodBeat.o(66555);
           return;
         }
-        byte[] arrayOfByte = paramAnonymouse.avg().wh("offline_token");
+        byte[] arrayOfByte = paramAnonymouse.aBZ().An("offline_token");
         if (arrayOfByte != null) {
-          a.es(new String(arrayOfByte));
+          a.eh(new String(arrayOfByte));
         }
-        arrayOfByte = paramAnonymouse.avg().wh("offline_token_V2");
+        arrayOfByte = paramAnonymouse.aBZ().An("offline_token_V2");
         if (arrayOfByte != null) {
-          a.une = new String(arrayOfByte);
+          a.vwa = new String(arrayOfByte);
         }
-        paramAnonymouse = paramAnonymouse.avg().wh("offline_key_list");
+        paramAnonymouse = paramAnonymouse.aBZ().An("offline_key_list");
         if (paramAnonymouse != null) {
-          a.unh = new String(paramAnonymouse);
+          a.vwd = new String(paramAnonymouse);
         }
         AppMethodBeat.o(66555);
       }
     }), 0);
     AppMethodBeat.o(66601);
+  }
+  
+  private static String dni()
+  {
+    AppMethodBeat.i(66605);
+    k.dlZ();
+    String str = k.KG(196616);
+    AppMethodBeat.o(66605);
+    return str;
+  }
+  
+  public static boolean dnj()
+  {
+    int j = 0;
+    AppMethodBeat.i(66608);
+    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qbi, 0) == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      ac.i("MicroMsg.WalletOfflineUtil", "pass same md5 case");
+      AppMethodBeat.o(66608);
+      return true;
+    }
+    ArrayList localArrayList = s.ery().tD(true);
+    Object localObject = aoL(dng());
+    if ((localObject == null) || (localArrayList.size() != ((LinkedList)localObject).size()))
+    {
+      AppMethodBeat.o(66608);
+      return false;
+    }
+    Collections.sort((List)localObject, vwm);
+    Collections.sort(localArrayList, vwl);
+    StringBuilder localStringBuilder = new StringBuilder();
+    i = 0;
+    while (i < ((LinkedList)localObject).size())
+    {
+      localStringBuilder.append(((a)((LinkedList)localObject).get(i)).vwo);
+      i += 1;
+    }
+    localObject = new StringBuilder();
+    i = j;
+    while (i < localArrayList.size())
+    {
+      ((StringBuilder)localObject).append(((Bankcard)localArrayList.get(i)).field_bindSerial);
+      i += 1;
+    }
+    boolean bool = ah.dg(localStringBuilder.toString()).equals(ah.dg(((StringBuilder)localObject).toString()));
+    AppMethodBeat.o(66608);
+    return bool;
+  }
+  
+  private static String dnk()
+  {
+    AppMethodBeat.i(66609);
+    if (TextUtils.isEmpty(vwe))
+    {
+      k.dlZ();
+      str = k.KG(196615);
+      vwe = str;
+      AppMethodBeat.o(66609);
+      return str;
+    }
+    String str = vwe;
+    AppMethodBeat.o(66609);
+    return str;
+  }
+  
+  public static int dnl()
+  {
+    AppMethodBeat.i(66613);
+    k.dlZ();
+    String str = k.KG(196649);
+    if ((TextUtils.isEmpty(str)) || (!isNumeric(str)))
+    {
+      AppMethodBeat.o(66613);
+      return 0;
+    }
+    int i = bs.getInt(str, 0);
+    AppMethodBeat.o(66613);
+    return i;
+  }
+  
+  public static boolean dnm()
+  {
+    AppMethodBeat.i(66614);
+    String str = dmZ();
+    if (TextUtils.isEmpty(str))
+    {
+      AppMethodBeat.o(66614);
+      return false;
+    }
+    long l1 = dnl();
+    long l2 = Long.valueOf(str).longValue();
+    if (System.currentTimeMillis() / 1000L - l2 >= l1)
+    {
+      AppMethodBeat.o(66614);
+      return true;
+    }
+    AppMethodBeat.o(66614);
+    return false;
+  }
+  
+  public static String dnn()
+  {
+    AppMethodBeat.i(66619);
+    Object localObject = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNh, "");
+    if (localObject != null)
+    {
+      localObject = (String)localObject;
+      AppMethodBeat.o(66619);
+      return localObject;
+    }
+    AppMethodBeat.o(66619);
+    return null;
+  }
+  
+  public static String dno()
+  {
+    AppMethodBeat.i(66621);
+    Object localObject = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOc, "");
+    if (localObject != null)
+    {
+      localObject = (String)localObject;
+      AppMethodBeat.o(66621);
+      return localObject;
+    }
+    AppMethodBeat.o(66621);
+    return null;
+  }
+  
+  public static int dnp()
+  {
+    AppMethodBeat.i(66623);
+    Object localObject = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOd, null);
+    if (localObject != null) {}
+    for (int i = ((Integer)localObject).intValue();; i = 0)
+    {
+      int j = i;
+      if (i < 0) {
+        j = 0;
+      }
+      AppMethodBeat.o(66623);
+      return j;
+    }
+  }
+  
+  public static String dnq()
+  {
+    AppMethodBeat.i(66625);
+    Object localObject = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GOe, "");
+    if (localObject != null)
+    {
+      localObject = (String)localObject;
+      AppMethodBeat.o(66625);
+      return localObject;
+    }
+    AppMethodBeat.o(66625);
+    return null;
+  }
+  
+  public static boolean dnr()
+  {
+    AppMethodBeat.i(66627);
+    boolean bool2 = false;
+    Object localObject = com.tencent.mm.model.c.d.aAp().tJ("100232");
+    if (((com.tencent.mm.storage.c)localObject).isValid())
+    {
+      localObject = ((com.tencent.mm.storage.c)localObject).eYV();
+      if ((((Map)localObject).containsKey("open")) && ("1".equals(((Map)localObject).get("open")))) {
+        ac.e("MicroMsg.WalletOfflineUtil", "deprecated abtest 100232 enabled.");
+      }
+    }
+    localObject = com.tencent.mm.model.c.d.aAp().tJ("100261");
+    boolean bool1 = bool2;
+    if (((com.tencent.mm.storage.c)localObject).isValid())
+    {
+      localObject = ((com.tencent.mm.storage.c)localObject).eYV();
+      bool1 = bool2;
+      if (((Map)localObject).containsKey("open"))
+      {
+        bool1 = bool2;
+        if ("1".equals(((Map)localObject).get("open"))) {
+          bool1 = true;
+        }
+      }
+    }
+    ac.i("MicroMsg.WalletOfflineUtil", "isPosEnabled: ".concat(String.valueOf(bool1)));
+    AppMethodBeat.o(66627);
+    return bool1;
+  }
+  
+  public static int dns()
+  {
+    return k.vsp;
   }
   
   private static e.a.a.c e(Map<String, String> paramMap, int paramInt)
@@ -1376,29 +1376,29 @@ public final class a
         break label2417;
       }
       localc = new e.a.a.c();
-      localc.KgW = bt.getInt((String)paramMap.get(str + "is_query_others"), 0);
-      localc.DcQ = ((String)paramMap.get(str + "draw_lottery_params"));
-      localc.Den = bt.getInt((String)paramMap.get(str + "is_show_btn"), 0);
-      localc.Del = bt.nullAsNil((String)paramMap.get(str + "exposure_info_modify_params"));
+      localc.LUG = bs.getInt((String)paramMap.get(str + "is_query_others"), 0);
+      localc.EvX = ((String)paramMap.get(str + "draw_lottery_params"));
+      localc.Ext = bs.getInt((String)paramMap.get(str + "is_show_btn"), 0);
+      localc.Exr = bs.nullAsNil((String)paramMap.get(str + "exposure_info_modify_params"));
       localObject1 = new e.a.a.a();
       localObject2 = str + "btn_info.";
-      ((e.a.a.a)localObject1).KgO = ((String)paramMap.get((String)localObject2 + "btn_words"));
-      ((e.a.a.a)localObject1).KgP = ((String)paramMap.get((String)localObject2 + "btn_color"));
-      ((e.a.a.a)localObject1).KgQ = bt.getInt((String)paramMap.get((String)localObject2 + "btn_op_type"), 0);
+      ((e.a.a.a)localObject1).LUy = ((String)paramMap.get((String)localObject2 + "btn_words"));
+      ((e.a.a.a)localObject1).LUz = ((String)paramMap.get((String)localObject2 + "btn_color"));
+      ((e.a.a.a)localObject1).LUA = bs.getInt((String)paramMap.get((String)localObject2 + "btn_op_type"), 0);
       ((e.a.a.a)localObject1).url = ((String)paramMap.get((String)localObject2 + "url"));
-      ((e.a.a.a)localObject1).Dvu = ((String)paramMap.get((String)localObject2 + "get_lottery_params"));
+      ((e.a.a.a)localObject1).EQP = ((String)paramMap.get((String)localObject2 + "get_lottery_params"));
       localObject2 = (String)localObject2 + "mini_app_info.";
-      ((e.a.a.a)localObject1).KgR = new e.a.a.g();
-      ((e.a.a.a)localObject1).KgR.DVJ = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_username"));
-      ((e.a.a.a)localObject1).KgR.DVK = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_path"));
-      ((e.a.a.a)localObject1).KgR.DVL = bt.getInt((String)paramMap.get((String)localObject2 + "activity_tinyapp_version"), 0);
-      if ((!bt.isNullOrNil(((e.a.a.a)localObject1).KgO)) || (!bt.isNullOrNil(((e.a.a.a)localObject1).url)) || (!bt.isNullOrNil(((e.a.a.a)localObject1).Dvu)) || (!bt.isNullOrNil(((e.a.a.a)localObject1).KgR.DVJ)) || (!bt.isNullOrNil(((e.a.a.a)localObject1).KgR.DVK))) {
-        localc.Deo = ((e.a.a.a)localObject1);
+      ((e.a.a.a)localObject1).LUB = new e.a.a.g();
+      ((e.a.a.a)localObject1).LUB.Fsx = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_username"));
+      ((e.a.a.a)localObject1).LUB.Fsy = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_path"));
+      ((e.a.a.a)localObject1).LUB.Fsz = bs.getInt((String)paramMap.get((String)localObject2 + "activity_tinyapp_version"), 0);
+      if ((!bs.isNullOrNil(((e.a.a.a)localObject1).LUy)) || (!bs.isNullOrNil(((e.a.a.a)localObject1).url)) || (!bs.isNullOrNil(((e.a.a.a)localObject1).EQP)) || (!bs.isNullOrNil(((e.a.a.a)localObject1).LUB.Fsx)) || (!bs.isNullOrNil(((e.a.a.a)localObject1).LUB.Fsy))) {
+        localc.Exu = ((e.a.a.a)localObject1);
       }
-      localc.KgX = bt.getInt((String)paramMap.get(str + "user_opertaion_type"), 0);
-      localc.KgY = bt.getInt((String)paramMap.get(str + "is_show_layer"), 0);
-      localc.Kha = ((String)paramMap.get(str + "background_img_whole"));
-      localc.Dem = new LinkedList();
+      localc.LUH = bs.getInt((String)paramMap.get(str + "user_opertaion_type"), 0);
+      localc.LUI = bs.getInt((String)paramMap.get(str + "is_show_layer"), 0);
+      localc.LUK = ((String)paramMap.get(str + "background_img_whole"));
+      localc.Exs = new LinkedList();
       paramInt = 0;
       label713:
       if (paramInt >= 255) {
@@ -1412,16 +1412,16 @@ public final class a
     for (Object localObject1 = str + "single_exposure_info_list.record.";; localObject1 = str + "single_exposure_info_list.record" + paramInt + ".")
     {
       localObject2 = new i();
-      ((i)localObject2).uwS = ((String)paramMap.get((String)localObject1 + "logo"));
-      ((i)localObject2).KhA = ((String)paramMap.get((String)localObject1 + "award_name"));
-      ((i)localObject2).KhB = ((String)paramMap.get((String)localObject1 + "award_description"));
-      ((i)localObject2).KhC = ((String)paramMap.get((String)localObject1 + "background_img"));
-      ((i)localObject2).KhD = ((String)paramMap.get((String)localObject1 + "award_name_color"));
-      ((i)localObject2).KhE = ((String)paramMap.get((String)localObject1 + "award_description_color"));
-      if ((!bt.isNullOrNil(((i)localObject2).uwS)) || (!bt.isNullOrNil(((i)localObject2).KhA)) || (!bt.isNullOrNil(((i)localObject2).KhB)) || (!bt.isNullOrNil(((i)localObject2).KhC)) || (!bt.isNullOrNil(((i)localObject2).KhD)) || (!bt.isNullOrNil(((i)localObject2).KhE))) {
-        localc.Dem.add(localObject2);
+      ((i)localObject2).vFL = ((String)paramMap.get((String)localObject1 + "logo"));
+      ((i)localObject2).LVj = ((String)paramMap.get((String)localObject1 + "award_name"));
+      ((i)localObject2).LVk = ((String)paramMap.get((String)localObject1 + "award_description"));
+      ((i)localObject2).LVl = ((String)paramMap.get((String)localObject1 + "background_img"));
+      ((i)localObject2).LVm = ((String)paramMap.get((String)localObject1 + "award_name_color"));
+      ((i)localObject2).LVn = ((String)paramMap.get((String)localObject1 + "award_description_color"));
+      if ((!bs.isNullOrNil(((i)localObject2).vFL)) || (!bs.isNullOrNil(((i)localObject2).LVj)) || (!bs.isNullOrNil(((i)localObject2).LVk)) || (!bs.isNullOrNil(((i)localObject2).LVl)) || (!bs.isNullOrNil(((i)localObject2).LVm)) || (!bs.isNullOrNil(((i)localObject2).LVn))) {
+        localc.Exs.add(localObject2);
       }
-      if ((bt.isNullOrNil(((i)localObject2).KhA)) || (bt.isNullOrNil(((i)localObject2).KhB))) {
+      if ((bs.isNullOrNil(((i)localObject2).LVj)) || (bs.isNullOrNil(((i)localObject2).LVk))) {
         break label1125;
       }
       paramInt += 1;
@@ -1430,47 +1430,47 @@ public final class a
       break;
     }
     label1125:
-    localc.KgZ = new f();
+    localc.LUJ = new f();
     localObject1 = str + "layer_info.";
-    localc.KgZ.Khn = ((String)paramMap.get((String)localObject1 + "layer_title"));
-    localc.KgZ.Kho = ((String)paramMap.get((String)localObject1 + "layer_logo"));
-    localc.KgZ.Khp = ((String)paramMap.get((String)localObject1 + "layer_type"));
-    localc.KgZ.Khq = ((String)paramMap.get((String)localObject1 + "layer_name"));
-    localc.KgZ.Khr = ((String)paramMap.get((String)localObject1 + "layer_description"));
-    localc.KgZ.Khs = bt.getInt((String)paramMap.get((String)localObject1 + "is_show_layer_btn"), 0);
-    localc.KgZ.Kht = new e.a.a.e();
+    localc.LUJ.LUX = ((String)paramMap.get((String)localObject1 + "layer_title"));
+    localc.LUJ.LUY = ((String)paramMap.get((String)localObject1 + "layer_logo"));
+    localc.LUJ.LUZ = ((String)paramMap.get((String)localObject1 + "layer_type"));
+    localc.LUJ.LVa = ((String)paramMap.get((String)localObject1 + "layer_name"));
+    localc.LUJ.LVb = ((String)paramMap.get((String)localObject1 + "layer_description"));
+    localc.LUJ.LVc = bs.getInt((String)paramMap.get((String)localObject1 + "is_show_layer_btn"), 0);
+    localc.LUJ.LVd = new e.a.a.e();
     Object localObject2 = (String)localObject1 + "layer_btn_info.";
-    localc.KgZ.Kht.KgO = ((String)paramMap.get((String)localObject2 + "btn_words"));
-    localc.KgZ.Kht.KgP = ((String)paramMap.get((String)localObject2 + "btn_color"));
-    localc.KgZ.Kht.KgQ = bt.getInt((String)paramMap.get((String)localObject2 + "btn_op_type"), 0);
-    localc.KgZ.Kht.Dvu = ((String)paramMap.get((String)localObject2 + "get_lottery_params"));
-    localc.KgZ.Kht.url = ((String)paramMap.get((String)localObject2 + "url"));
+    localc.LUJ.LVd.LUy = ((String)paramMap.get((String)localObject2 + "btn_words"));
+    localc.LUJ.LVd.LUz = ((String)paramMap.get((String)localObject2 + "btn_color"));
+    localc.LUJ.LVd.LUA = bs.getInt((String)paramMap.get((String)localObject2 + "btn_op_type"), 0);
+    localc.LUJ.LVd.EQP = ((String)paramMap.get((String)localObject2 + "get_lottery_params"));
+    localc.LUJ.LVd.url = ((String)paramMap.get((String)localObject2 + "url"));
     localObject2 = (String)localObject2 + "mini_app_info.";
-    localc.KgZ.Kht.KgR = new e.a.a.g();
-    localc.KgZ.Kht.KgR.DVJ = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_username"));
-    localc.KgZ.Kht.KgR.DVK = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_path"));
-    localc.KgZ.Kht.KgR.DVL = bt.getInt((String)paramMap.get((String)localObject2 + "activity_tinyapp_version"), 0);
-    if (!bt.isNullOrNil((String)paramMap.get((String)localObject1 + "voice_url"))) {
-      localc.KgZ.Khu = new com.tencent.mm.bx.b(((String)paramMap.get((String)localObject1 + "voice_url")).getBytes());
+    localc.LUJ.LVd.LUB = new e.a.a.g();
+    localc.LUJ.LVd.LUB.Fsx = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_username"));
+    localc.LUJ.LVd.LUB.Fsy = ((String)paramMap.get((String)localObject2 + "activity_tinyapp_path"));
+    localc.LUJ.LVd.LUB.Fsz = bs.getInt((String)paramMap.get((String)localObject2 + "activity_tinyapp_version"), 0);
+    if (!bs.isNullOrNil((String)paramMap.get((String)localObject1 + "voice_url"))) {
+      localc.LUJ.LVe = new com.tencent.mm.bw.b(((String)paramMap.get((String)localObject1 + "voice_url")).getBytes());
     }
-    if (!bt.isNullOrNil((String)paramMap.get((String)localObject1 + "voice_data"))) {
-      localc.KgZ.Khv = new com.tencent.mm.bx.b(((String)paramMap.get((String)localObject1 + "voice_data")).getBytes());
+    if (!bs.isNullOrNil((String)paramMap.get((String)localObject1 + "voice_data"))) {
+      localc.LUJ.EgO = new com.tencent.mm.bw.b(((String)paramMap.get((String)localObject1 + "voice_data")).getBytes());
     }
     localObject1 = new e.a.a.b();
     String str = str + "draw_lottery_info.";
     ((e.a.a.b)localObject1).url = ((String)paramMap.get(str + "url"));
-    ((e.a.a.b)localObject1).KgS = ((String)paramMap.get(str + "animation_wording"));
-    ((e.a.a.b)localObject1).KgT = ((String)paramMap.get(str + "animation_wording_color"));
-    ((e.a.a.b)localObject1).Exg = bt.getInt((String)paramMap.get(str + "op_type"), 0);
-    ((e.a.a.b)localObject1).KgU = ((String)paramMap.get(str + "after_animation_wording"));
-    ((e.a.a.b)localObject1).KgV = ((String)paramMap.get(str + "after_animation_wording_color"));
+    ((e.a.a.b)localObject1).LUC = ((String)paramMap.get(str + "animation_wording"));
+    ((e.a.a.b)localObject1).LUD = ((String)paramMap.get(str + "animation_wording_color"));
+    ((e.a.a.b)localObject1).FUi = bs.getInt((String)paramMap.get(str + "op_type"), 0);
+    ((e.a.a.b)localObject1).LUE = ((String)paramMap.get(str + "after_animation_wording"));
+    ((e.a.a.b)localObject1).LUF = ((String)paramMap.get(str + "after_animation_wording_color"));
     str = str + "mini_app_info.";
-    ((e.a.a.b)localObject1).KgR = new e.a.a.g();
-    ((e.a.a.b)localObject1).KgR.DVJ = ((String)paramMap.get(str + "activity_tinyapp_username"));
-    ((e.a.a.b)localObject1).KgR.DVK = ((String)paramMap.get(str + "activity_tinyapp_path"));
-    ((e.a.a.b)localObject1).KgR.DVL = bt.getInt((String)paramMap.get(str + "activity_tinyapp_version"), 0);
-    if ((!bt.isNullOrNil(((e.a.a.b)localObject1).url)) || (!bt.isNullOrNil(((e.a.a.b)localObject1).KgS)) || (!bt.isNullOrNil(((e.a.a.b)localObject1).KgT)) || (!bt.isNullOrNil(((e.a.a.b)localObject1).KgR.DVJ)) || (!bt.isNullOrNil(((e.a.a.b)localObject1).KgR.DVK))) {
-      localc.Khb = ((e.a.a.b)localObject1);
+    ((e.a.a.b)localObject1).LUB = new e.a.a.g();
+    ((e.a.a.b)localObject1).LUB.Fsx = ((String)paramMap.get(str + "activity_tinyapp_username"));
+    ((e.a.a.b)localObject1).LUB.Fsy = ((String)paramMap.get(str + "activity_tinyapp_path"));
+    ((e.a.a.b)localObject1).LUB.Fsz = bs.getInt((String)paramMap.get(str + "activity_tinyapp_version"), 0);
+    if ((!bs.isNullOrNil(((e.a.a.b)localObject1).url)) || (!bs.isNullOrNil(((e.a.a.b)localObject1).LUC)) || (!bs.isNullOrNil(((e.a.a.b)localObject1).LUD)) || (!bs.isNullOrNil(((e.a.a.b)localObject1).LUB.Fsx)) || (!bs.isNullOrNil(((e.a.a.b)localObject1).LUB.Fsy))) {
+      localc.LUL = ((e.a.a.b)localObject1);
     }
     AppMethodBeat.o(66581);
     return localc;
@@ -1482,30 +1482,38 @@ public final class a
   public static void e(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(66592);
-    com.tencent.mm.ui.base.h.a(paramActivity, false, paramString, "", paramActivity.getString(2131765981), paramActivity.getString(2131755691), new DialogInterface.OnClickListener()new a.2
+    com.tencent.mm.ui.base.h.a(paramActivity, false, paramString, "", paramActivity.getString(2131765981), paramActivity.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66552);
-        a.cZu();
-        a.at(this.val$activity);
+        a.dnc();
+        a.ax(this.val$activity);
         this.val$activity.finish();
         AppMethodBeat.o(66552);
       }
-    }, new a.2(paramActivity));
+    }, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(66553);
+        this.val$activity.finish();
+        AppMethodBeat.o(66553);
+      }
+    });
     AppMethodBeat.o(66592);
   }
   
-  public static void fF(Context paramContext)
+  public static void fR(Context paramContext)
   {
     AppMethodBeat.i(66573);
-    String str = ac.eFu();
+    String str = com.tencent.mm.sdk.platformtools.ab.eUO();
     if ("zh_CN".equals(str)) {
       str = paramContext.getString(2131764607);
     }
     for (;;)
     {
-      com.tencent.mm.wallet_core.ui.e.aS(paramContext, str);
+      com.tencent.mm.wallet_core.ui.e.aT(paramContext, str);
       AppMethodBeat.o(66573);
       return;
       if ("zh_TW".equals(str)) {
@@ -1522,8 +1530,8 @@ public final class a
   {
     AppMethodBeat.i(66626);
     int i;
-    if (ay.isConnected(paramContext)) {
-      if (ay.isWifi(paramContext)) {
+    if (ax.isConnected(paramContext)) {
+      if (ax.isWifi(paramContext)) {
         i = 1;
       }
     }
@@ -1531,15 +1539,15 @@ public final class a
     {
       AppMethodBeat.o(66626);
       return i;
-      if (ay.is2G(paramContext))
+      if (ax.is2G(paramContext))
       {
         i = 2;
       }
-      else if (ay.is3G(paramContext))
+      else if (ax.is3G(paramContext))
       {
         i = 3;
       }
-      else if (ay.is4G(paramContext))
+      else if (ax.is4G(paramContext))
       {
         i = 4;
       }
@@ -1555,17 +1563,17 @@ public final class a
   public static String getToken()
   {
     AppMethodBeat.i(66596);
-    if (!TextUtils.isEmpty(und))
+    if (!TextUtils.isEmpty(vvZ))
     {
-      str = und;
+      str = vvZ;
       AppMethodBeat.o(66596);
       return str;
     }
-    cZz();
-    if (TextUtils.isEmpty(und)) {
-      ad.e("MicroMsg.WalletOfflineUtil", "token is null");
+    dnh();
+    if (TextUtils.isEmpty(vvZ)) {
+      ac.e("MicroMsg.WalletOfflineUtil", "token is null");
     }
-    String str = und;
+    String str = vvZ;
     AppMethodBeat.o(66596);
     return str;
   }
@@ -1573,8 +1581,8 @@ public final class a
   public static String getTokenPin()
   {
     AppMethodBeat.i(66604);
-    k.cYr();
-    String str = k.IH(196647);
+    k.dlZ();
+    String str = k.KG(196647);
     AppMethodBeat.o(66604);
     return str;
   }
@@ -1609,15 +1617,15 @@ public final class a
   public static void k(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(66591);
-    a(paramActivity, "create", "", cZq(), paramInt);
+    a(paramActivity, "create", "", dmY(), paramInt);
     AppMethodBeat.o(66591);
   }
   
-  public static List<Bankcard> nT(boolean paramBoolean)
+  public static List<Bankcard> oN(boolean paramBoolean)
   {
     AppMethodBeat.i(66564);
     ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = s.ecc().sD(true);
+    ArrayList localArrayList2 = s.ery().tE(true);
     int i = 0;
     if ((localArrayList2 != null) && (i < localArrayList2.size()))
     {
@@ -1632,37 +1640,37 @@ public final class a
         localArrayList1.add(localBankcard);
       }
     }
-    ad.i("MicroMsg.WalletOfflineUtil", "getBindBankCardList() list size is " + localArrayList1.size());
+    ac.i("MicroMsg.WalletOfflineUtil", "getBindBankCardList() list size is " + localArrayList1.size());
     AppMethodBeat.o(66564);
     return localArrayList1;
   }
   
-  public static void q(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static void s(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(66597);
-    und = paramString1;
-    une = paramString2;
-    ung = paramString3;
-    unh = paramString4;
-    ajM(ung);
-    com.tencent.mm.kernel.g.afA().gcy.a(new bn(new bn.a()
+    vvZ = paramString1;
+    vwa = paramString2;
+    vwc = paramString3;
+    vwd = paramString4;
+    aoK(vwc);
+    com.tencent.mm.kernel.g.agQ().ghe.a(new bn(new bn.a()
     {
       public final void a(com.tencent.mm.network.e paramAnonymouse)
       {
         AppMethodBeat.i(66554);
-        if ((paramAnonymouse == null) || (paramAnonymouse.avg() == null))
+        if ((paramAnonymouse == null) || (paramAnonymouse.aBZ() == null))
         {
           AppMethodBeat.o(66554);
           return;
         }
-        if (a.und != null) {
-          paramAnonymouse.avg().i("offline_token", a.und.getBytes());
+        if (a.vvZ != null) {
+          paramAnonymouse.aBZ().i("offline_token", a.vvZ.getBytes());
         }
-        if (a.une != null) {
-          paramAnonymouse.avg().i("offline_token_V2", a.une.getBytes());
+        if (a.vwa != null) {
+          paramAnonymouse.aBZ().i("offline_token_V2", a.vwa.getBytes());
         }
-        if (a.unh != null) {
-          paramAnonymouse.avg().i("offline_key_list", a.unh.getBytes());
+        if (a.vwd != null) {
+          paramAnonymouse.aBZ().i("offline_key_list", a.vwd.getBytes());
         }
         AppMethodBeat.o(66554);
       }
@@ -1686,10 +1694,10 @@ public final class a
       if (localJSONObject != null)
       {
         a locala = new a();
-        locala.unr = localJSONObject.optInt("card_id");
-        locala.dca = localJSONObject.optString("bank_type");
-        locala.uns = localJSONObject.optString("bind_serial");
-        locala.unt = localJSONObject.optString("forbid_word");
+        locala.vwn = localJSONObject.optInt("card_id");
+        locala.cZz = localJSONObject.optString("bank_type");
+        locala.vwo = localJSONObject.optString("bind_serial");
+        locala.vwp = localJSONObject.optString("forbid_word");
         localLinkedList.add(locala);
       }
       i += 1;
@@ -1714,8 +1722,8 @@ public final class a
       if (localJSONObject != null)
       {
         b localb = new b();
-        localb.dca = localJSONObject.optString("bank_type");
-        localb.odo = localJSONObject.optString("icon_url");
+        localb.cZz = localJSONObject.optString("bank_type");
+        localb.oGN = localJSONObject.optString("icon_url");
         localLinkedList.add(localb);
       }
       i += 1;
@@ -1726,16 +1734,16 @@ public final class a
   
   public static final class a
   {
-    public String dca;
-    public int unr;
-    public String uns;
-    public String unt;
+    public String cZz;
+    public int vwn;
+    public String vwo;
+    public String vwp;
   }
   
   public static final class b
   {
-    public String dca;
-    public String odo;
+    public String cZz;
+    public String oGN;
   }
 }
 

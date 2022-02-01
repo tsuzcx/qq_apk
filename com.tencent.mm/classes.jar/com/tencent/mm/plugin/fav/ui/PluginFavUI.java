@@ -11,16 +11,16 @@ public class PluginFavUI
   extends f
   implements com.tencent.mm.kernel.a.b.b, c
 {
-  private com.tencent.mm.plugin.fav.ui.d.a qgG;
-  private a qgH;
-  private q qgI;
+  private com.tencent.mm.plugin.fav.ui.d.a qPi;
+  private a qPj;
+  private q qPk;
   
   public PluginFavUI()
   {
     AppMethodBeat.i(107082);
-    this.qgG = new com.tencent.mm.plugin.fav.ui.d.a();
-    this.qgH = new a();
-    this.qgI = new q();
+    this.qPi = new com.tencent.mm.plugin.fav.ui.d.a();
+    this.qPj = new a();
+    this.qPk = new q();
     AppMethodBeat.o(107082);
   }
   
@@ -29,9 +29,9 @@ public class PluginFavUI
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(107083);
-    this.qgG.alive();
-    this.qgH.alive();
-    this.qgI.alive();
+    this.qPi.alive();
+    this.qPj.alive();
+    this.qPk.alive();
     ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.a()
     {
       public final boolean execute()
@@ -56,9 +56,9 @@ public class PluginFavUI
   public void onAccountRelease()
   {
     AppMethodBeat.i(107084);
-    this.qgG.dead();
-    this.qgH.dead();
-    this.qgI.dead();
+    this.qPi.dead();
+    this.qPj.dead();
+    this.qPk.dead();
     AppMethodBeat.o(107084);
   }
   
@@ -66,7 +66,7 @@ public class PluginFavUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.PluginFavUI
  * JD-Core Version:    0.7.0.1
  */

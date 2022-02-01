@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ef
   extends b
 {
-  public a dgL;
+  public a dee;
   
   public ef()
   {
@@ -15,16 +15,16 @@ public final class ef
   
   private ef(byte paramByte)
   {
-    AppMethodBeat.i(115997);
-    this.dgL = new a();
-    this.ESR = false;
+    AppMethodBeat.i(115996);
+    this.dee = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(115997);
+    AppMethodBeat.o(115996);
   }
   
   public static final class a
   {
-    public int op = 0;
+    public boolean def;
   }
 }
 

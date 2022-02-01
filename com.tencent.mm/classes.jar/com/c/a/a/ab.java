@@ -13,17 +13,17 @@ import java.util.List;
 final class ab
   extends c
 {
-  private static ab bVc;
-  WifiManager bOZ;
-  private final BroadcastReceiver bVd;
-  private final IntentFilter bVe;
-  private ac bVf;
-  private long bVg;
+  private static ab bSK;
+  WifiManager bMH;
+  private final BroadcastReceiver bSL;
+  private final IntentFilter bSM;
+  private ac bSN;
+  private long bSO;
   
   private ab()
   {
     AppMethodBeat.i(87930);
-    this.bVd = new BroadcastReceiver()
+    this.bSL = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -33,7 +33,7 @@ final class ab
           paramAnonymousContext = ab.this;
           try
           {
-            paramAnonymousIntent = paramAnonymousContext.bOZ.getScanResults();
+            paramAnonymousIntent = paramAnonymousContext.bMH.getScanResults();
             if ((paramAnonymousIntent != null) && (!paramAnonymousIntent.isEmpty())) {
               break label67;
             }
@@ -53,23 +53,23 @@ final class ab
         AppMethodBeat.o(87929);
       }
     };
-    this.bVe = new IntentFilter("android.net.wifi.SCAN_RESULTS");
-    this.bVg = 10000L;
+    this.bSM = new IntentFilter("android.net.wifi.SCAN_RESULTS");
+    this.bSO = 10000L;
     AppMethodBeat.o(87930);
   }
   
   private boolean isAvailable()
   {
-    return this.bOZ != null;
+    return this.bMH != null;
   }
   
-  static ab zz()
+  static ab zm()
   {
     AppMethodBeat.i(87931);
-    if (bVc == null) {
-      bVc = new ab();
+    if (bSK == null) {
+      bSK = new ab();
     }
-    ab localab = bVc;
+    ab localab = bSK;
     AppMethodBeat.o(87931);
     return localab;
   }
@@ -82,14 +82,14 @@ final class ab
       AppMethodBeat.o(87934);
       return;
     }
-    paramContext.registerReceiver(this.bVd, this.bVe, null, paramHandler);
-    this.bVg = parama.bOU;
-    parama = this.bOZ;
+    paramContext.registerReceiver(this.bSL, this.bSM, null, paramHandler);
+    this.bSO = parama.bMC;
+    parama = this.bMH;
     if (paramHandler != null) {}
     for (;;)
     {
-      this.bVf = new ac(parama, paramHandler);
-      this.bVf.q(this.bVg, 0L);
+      this.bSN = new ac(parama, paramHandler);
+      this.bSN.n(this.bSO, 0L);
       AppMethodBeat.o(87934);
       return;
       paramHandler = new Handler(paramContext.getMainLooper());
@@ -138,14 +138,14 @@ final class ab
     //   25	36	39	finally
   }
   
-  final void ar(Context paramContext)
+  final void as(Context paramContext)
   {
     AppMethodBeat.i(87933);
-    this.bOZ = ((WifiManager)paramContext.getSystemService("wifi"));
+    this.bMH = ((WifiManager)paramContext.getSystemService("wifi"));
     AppMethodBeat.o(87933);
   }
   
-  final void as(Context paramContext)
+  final void at(Context paramContext)
   {
     AppMethodBeat.i(87935);
     if (!isAvailable())
@@ -153,46 +153,46 @@ final class ab
       AppMethodBeat.o(87935);
       return;
     }
-    paramContext.unregisterReceiver(this.bVd);
-    this.bVf.stop();
+    paramContext.unregisterReceiver(this.bSL);
+    this.bSN.stop();
     AppMethodBeat.o(87935);
   }
   
-  final void yR() {}
+  final void yE() {}
   
-  final void yS()
+  final void yF()
   {
     AppMethodBeat.i(87936);
-    if ((!isAvailable()) || (!this.isRunning) || (this.bVg >= 90000L))
+    if ((!isAvailable()) || (!this.isRunning) || (this.bSO >= 90000L))
     {
       AppMethodBeat.o(87936);
       return;
     }
-    this.bVf.q(90000L, 0L);
+    this.bSN.n(90000L, 0L);
     AppMethodBeat.o(87936);
   }
   
-  final void yT()
+  final void yG()
   {
     AppMethodBeat.i(87937);
-    if ((!isAvailable()) || (!this.isRunning) || (this.bVg >= 90000L))
+    if ((!isAvailable()) || (!this.isRunning) || (this.bSO >= 90000L))
     {
       AppMethodBeat.o(87937);
       return;
     }
-    this.bVf.q(this.bVg, 0L);
+    this.bSN.n(this.bSO, 0L);
     AppMethodBeat.o(87937);
   }
   
   static final class a
     extends p
   {
-    final List<ScanResult> bVi;
+    final List<ScanResult> bSQ;
     
     a(List<ScanResult> paramList)
     {
       super();
-      this.bVi = paramList;
+      this.bSQ = paramList;
     }
   }
 }

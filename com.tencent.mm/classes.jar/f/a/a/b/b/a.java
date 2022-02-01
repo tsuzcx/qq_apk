@@ -1,7 +1,7 @@
 package f.a.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.io.UnsupportedEncodingException;
 
 public final class a
@@ -19,7 +19,7 @@ public final class a
     AppMethodBeat.o(2425);
   }
   
-  public static int aB(long paramLong)
+  public static int ax(long paramLong)
   {
     if ((0xFFFFFF80 & paramLong) == 0L) {
       return 1;
@@ -59,24 +59,24 @@ public final class a
       AppMethodBeat.o(2437);
       return 0;
     }
-    paramInt = fY(paramInt);
-    int i = ga(paramb.wA.length);
-    int j = paramb.wA.length;
+    paramInt = fK(paramInt);
+    int i = fM(paramb.xy.length);
+    int j = paramb.xy.length;
     AppMethodBeat.o(2437);
     return paramInt + i + j;
   }
   
-  public static int bA(int paramInt1, int paramInt2)
+  public static int bx(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2435);
     if (paramInt2 >= 0)
     {
-      paramInt1 = fY(paramInt1);
-      paramInt2 = ga(paramInt2);
+      paramInt1 = fK(paramInt1);
+      paramInt2 = fM(paramInt2);
       AppMethodBeat.o(2435);
       return paramInt1 + paramInt2;
     }
-    paramInt1 = fY(paramInt1);
+    paramInt1 = fK(paramInt1);
     AppMethodBeat.o(2435);
     return paramInt1 + 10;
   }
@@ -97,7 +97,7 @@ public final class a
       AppMethodBeat.o(2438);
       return;
     }
-    s(paramArrayOfByte, paramArrayOfByte.length);
+    q(paramArrayOfByte, paramArrayOfByte.length);
     AppMethodBeat.o(2438);
   }
   
@@ -112,8 +112,8 @@ public final class a
     try
     {
       paramString = paramString.getBytes("UTF-8");
-      paramInt = fY(paramInt);
-      int i = ga(paramString.length);
+      paramInt = fK(paramInt);
+      int i = fM(paramString.length);
       int j = paramString.length;
       AppMethodBeat.o(2436);
       return j + (paramInt + i);
@@ -126,15 +126,15 @@ public final class a
     }
   }
   
-  public static int fY(int paramInt)
+  public static int fK(int paramInt)
   {
     AppMethodBeat.i(2441);
-    paramInt = ga(f.a.a.b.a.bD(paramInt, 0));
+    paramInt = fM(f.a.a.b.a.bA(paramInt, 0));
     AppMethodBeat.o(2441);
     return paramInt;
   }
   
-  public static int ga(int paramInt)
+  public static int fM(int paramInt)
   {
     if ((paramInt & 0xFFFFFF80) == 0) {
       return 1;
@@ -151,16 +151,16 @@ public final class a
     return 5;
   }
   
-  public static int q(int paramInt, long paramLong)
+  public static int p(int paramInt, long paramLong)
   {
     AppMethodBeat.i(2434);
-    paramInt = fY(paramInt);
-    int i = aB(paramLong);
+    paramInt = fK(paramInt);
+    int i = ax(paramLong);
     AppMethodBeat.o(2434);
     return paramInt + i;
   }
   
-  private void s(byte[] paramArrayOfByte, int paramInt)
+  private void q(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(2439);
     if (paramArrayOfByte == null)
@@ -195,14 +195,14 @@ public final class a
       AppMethodBeat.o(2432);
       return;
     }
-    bC(paramInt, 2);
+    bz(paramInt, 2);
     paramb = paramb.toByteArray();
-    fZ(paramb.length);
+    fL(paramb.length);
     cY(paramb);
     AppMethodBeat.o(2432);
   }
   
-  public final void aA(long paramLong)
+  public final void aw(long paramLong)
   {
     AppMethodBeat.i(2443);
     for (;;)
@@ -218,18 +218,11 @@ public final class a
     }
   }
   
-  public final void bC(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(2440);
-    fZ(f.a.a.b.a.bD(paramInt1, paramInt2));
-    AppMethodBeat.o(2440);
-  }
-  
-  public final void bf(int paramInt, boolean paramBoolean)
+  public final void bk(int paramInt, boolean paramBoolean)
   {
     int i = 0;
     AppMethodBeat.i(2430);
-    bC(paramInt, 0);
+    bz(paramInt, 0);
     paramInt = i;
     if (paramBoolean) {
       paramInt = 1;
@@ -238,18 +231,25 @@ public final class a
     AppMethodBeat.o(2430);
   }
   
-  public final void by(int paramInt1, int paramInt2)
+  public final void bv(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2429);
-    bC(paramInt1, 0);
+    bz(paramInt1, 0);
     if (paramInt2 >= 0)
     {
-      fZ(paramInt2);
+      fL(paramInt2);
       AppMethodBeat.o(2429);
       return;
     }
-    aA(paramInt2);
+    aw(paramInt2);
     AppMethodBeat.o(2429);
+  }
+  
+  public final void bz(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(2440);
+    fL(f.a.a.b.a.bA(paramInt1, paramInt2));
+    AppMethodBeat.o(2440);
   }
   
   public final void d(int paramInt, String paramString)
@@ -260,9 +260,9 @@ public final class a
       AppMethodBeat.o(2431);
       return;
     }
-    bC(paramInt, 2);
+    bz(paramInt, 2);
     paramString = paramString.getBytes("UTF-8");
-    fZ(paramString.length);
+    fL(paramString.length);
     cY(paramString);
     AppMethodBeat.o(2431);
   }
@@ -270,7 +270,7 @@ public final class a
   public final void e(int paramInt, double paramDouble)
   {
     AppMethodBeat.i(2426);
-    bC(paramInt, 1);
+    bz(paramInt, 1);
     long l = Double.doubleToLongBits(paramDouble);
     c((byte)((int)l & 0xFF));
     c((byte)((int)(l >> 8) & 0xFF));
@@ -283,7 +283,7 @@ public final class a
     AppMethodBeat.o(2426);
   }
   
-  public final void fZ(int paramInt)
+  public final void fL(int paramInt)
   {
     AppMethodBeat.i(2442);
     for (;;)
@@ -299,26 +299,26 @@ public final class a
     }
   }
   
-  public final void kX(int paramInt1, int paramInt2)
+  public final void ln(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2433);
-    bC(paramInt1, 2);
-    fZ(paramInt2);
+    bz(paramInt1, 2);
+    fL(paramInt2);
     AppMethodBeat.o(2433);
   }
   
-  public final void o(int paramInt, long paramLong)
+  public final void n(int paramInt, long paramLong)
   {
     AppMethodBeat.i(2428);
-    bC(paramInt, 0);
-    aA(paramLong);
+    bz(paramInt, 0);
+    aw(paramLong);
     AppMethodBeat.o(2428);
   }
   
   public final void x(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(2427);
-    bC(paramInt, 5);
+    bz(paramInt, 5);
     paramInt = Float.floatToIntBits(paramFloat);
     c((byte)(paramInt & 0xFF));
     c((byte)(paramInt >> 8 & 0xFF));

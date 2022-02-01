@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.report.service.h;
 import java.util.HashSet;
 import java.util.List;
@@ -21,65 +21,65 @@ import java.util.Set;
 public final class a
   extends RecyclerView.a<a>
 {
-  private long fll;
-  private c fvx;
-  List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> mWc;
-  Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> mWd;
-  MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> mWe;
-  private int mWf;
-  private long mWg;
+  private long foF;
+  private c fze;
+  List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> nyB;
+  Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> nyC;
+  MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> nyD;
+  private int nyE;
+  private long nyF;
   
   public a(List<com.tencent.mm.plugin.brandservice.ui.timeline.b.a> paramList, MutableLiveData<Set<com.tencent.mm.plugin.brandservice.ui.timeline.b.a>> paramMutableLiveData, long paramLong1, long paramLong2, int paramInt)
   {
     AppMethodBeat.i(5840);
-    this.mWc = paramList;
-    this.mWd = new HashSet();
-    this.mWe = paramMutableLiveData;
-    paramMutableLiveData.setValue(this.mWd);
+    this.nyB = paramList;
+    this.nyC = new HashSet();
+    this.nyD = paramMutableLiveData;
+    paramMutableLiveData.setValue(this.nyC);
     paramList = new c.a();
-    paramList.hki = 2131231342;
-    paramList.hjT = true;
-    paramList.gkG = true;
-    this.fvx = paramList.azc();
-    this.mWg = paramLong1;
-    this.fll = paramLong2;
-    this.mWf = paramInt;
+    paramList.hKL = 2131231342;
+    paramList.hKw = true;
+    paramList.gLt = true;
+    this.fze = paramList.aFT();
+    this.nyF = paramLong1;
+    this.foF = paramLong2;
+    this.nyE = paramInt;
     AppMethodBeat.o(5840);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(5841);
-    int i = this.mWc.size();
+    int i = this.nyB.size();
     AppMethodBeat.o(5841);
     return i;
   }
   
   static final class a
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    ImageView ikp;
-    CheckBox mWk;
-    TextView mWl;
-    TextView mWm;
-    TextView mWn;
+    ImageView iKw;
+    CheckBox nyJ;
+    TextView nyK;
+    TextView nyL;
+    TextView nyM;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(5839);
-      this.mWk = ((CheckBox)paramView.findViewById(2131301220));
-      this.mWl = ((TextView)paramView.findViewById(2131306109));
-      this.mWm = ((TextView)paramView.findViewById(2131306147));
-      this.mWn = ((TextView)paramView.findViewById(2131306119));
-      this.ikp = ((ImageView)paramView.findViewById(2131301204));
+      this.nyJ = ((CheckBox)paramView.findViewById(2131301220));
+      this.nyK = ((TextView)paramView.findViewById(2131306109));
+      this.nyL = ((TextView)paramView.findViewById(2131306147));
+      this.nyM = ((TextView)paramView.findViewById(2131306119));
+      this.iKw = ((ImageView)paramView.findViewById(2131301204));
       AppMethodBeat.o(5839);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a
  * JD-Core Version:    0.7.0.1
  */

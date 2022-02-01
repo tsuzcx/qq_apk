@@ -36,9 +36,9 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.recharge.model.b;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -48,29 +48,29 @@ public class MallEditText
   extends LinearLayout
   implements View.OnFocusChangeListener
 {
+  private TextView gIk;
   private int gravity;
-  private TextView icz;
+  public boolean iZB;
+  private boolean iZD;
+  private int iZE;
+  private int iZF;
+  private View.OnFocusChangeListener iZu;
+  private ImageView iZw;
+  private String iZx;
+  private String iZy;
+  private int iZz;
   private int imeOptions;
   private int inputType;
-  private boolean izA;
-  private int izB;
-  private int izC;
-  private View.OnFocusChangeListener izr;
-  private ImageView izt;
-  private String izu;
-  private String izv;
-  private int izw;
-  public boolean izy;
-  private boolean jUS;
-  private b uXj;
-  AutoCompleteTextView uXk;
-  boolean uXl;
-  private a uXm;
-  private List<String[]> uXn;
-  private com.tencent.mm.plugin.recharge.model.a uXo;
-  private Runnable uXp;
-  private boolean uXq;
-  private int uXr;
+  private boolean kvD;
+  private b wfY;
+  AutoCompleteTextView wfZ;
+  boolean wga;
+  private a wgb;
+  private List<String[]> wgc;
+  private com.tencent.mm.plugin.recharge.model.a wgd;
+  private Runnable wge;
+  private boolean wgf;
+  private int wgg;
   
   public MallEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -81,55 +81,55 @@ public class MallEditText
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67135);
-    this.uXm = null;
-    this.izu = "";
-    this.izv = "";
+    this.wgb = null;
+    this.iZx = "";
+    this.iZy = "";
     this.inputType = 1;
-    this.jUS = true;
-    this.izC = -1;
-    this.izB = 1;
+    this.kvD = true;
+    this.iZF = -1;
+    this.iZE = 1;
     this.gravity = 19;
-    this.izw = -1;
-    this.izA = false;
-    this.uXo = null;
-    this.izy = true;
-    this.uXp = null;
-    this.uXq = false;
-    this.uXr = 0;
+    this.iZz = -1;
+    this.iZD = false;
+    this.wgd = null;
+    this.iZB = true;
+    this.wge = null;
+    this.wgf = false;
+    this.wgg = 0;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MallEditText, paramInt, 0);
     paramInt = paramAttributeSet.getResourceId(7, 0);
     if (paramInt != 0) {
-      this.izu = paramContext.getString(paramInt);
+      this.iZx = paramContext.getString(paramInt);
     }
     paramInt = paramAttributeSet.getResourceId(8, 0);
     if (paramInt != 0) {
-      this.izv = paramContext.getString(paramInt);
+      this.iZy = paramContext.getString(paramInt);
     }
     this.inputType = paramAttributeSet.getInteger(4, 1);
-    this.izy = paramAttributeSet.getBoolean(3, true);
+    this.iZB = paramAttributeSet.getBoolean(3, true);
     this.gravity = paramAttributeSet.getInt(0, 19);
-    this.jUS = paramAttributeSet.getBoolean(1, true);
-    this.izC = paramAttributeSet.getInteger(2, -1);
-    this.izw = paramAttributeSet.getInteger(6, 0);
+    this.kvD = paramAttributeSet.getBoolean(1, true);
+    this.iZF = paramAttributeSet.getInteger(2, -1);
+    this.iZz = paramAttributeSet.getInteger(6, 0);
     this.imeOptions = paramAttributeSet.getInteger(5, 5);
     paramAttributeSet.recycle();
     paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131495202, this, true);
-    this.icz = ((TextView)paramAttributeSet.findViewById(2131306253));
-    this.uXk = ((AutoCompleteTextView)paramAttributeSet.findViewById(2131300744));
-    if (com.tencent.mm.cd.a.hS(paramContext))
+    this.gIk = ((TextView)paramAttributeSet.findViewById(2131306253));
+    this.wfZ = ((AutoCompleteTextView)paramAttributeSet.findViewById(2131300744));
+    if (com.tencent.mm.cc.a.id(paramContext))
     {
-      this.uXk.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165517) * com.tencent.mm.cd.a.hH(getContext()));
+      this.wfZ.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165517) * com.tencent.mm.cc.a.hS(getContext()));
       label289:
-      this.izt = ((ImageView)paramAttributeSet.findViewById(2131301009));
-      ad.d("MicroMsg.MallEditText", "setFormat editType:" + this.izw);
-      this.uXk.setImeOptions(this.imeOptions);
-      switch (this.izw)
+      this.iZw = ((ImageView)paramAttributeSet.findViewById(2131301009));
+      ac.d("MicroMsg.MallEditText", "setFormat editType:" + this.iZz);
+      this.wfZ.setImeOptions(this.imeOptions);
+      switch (this.iZz)
       {
       default: 
         label364:
         this.inputType = 1;
         label369:
-        this.uXk.addTextChangedListener(new TextWatcher()
+        this.wfZ.addTextChangedListener(new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymousEditable) {}
           
@@ -213,13 +213,13 @@ public class MallEditText
             AppMethodBeat.o(67116);
           }
         });
-        this.uXk.setOnFocusChangeListener(this);
-        if (!bt.isNullOrNil(this.izu)) {
-          this.uXk.setHint(this.izu);
+        this.wfZ.setOnFocusChangeListener(this);
+        if (!bs.isNullOrNil(this.iZx)) {
+          this.wfZ.setHint(this.iZx);
         }
         if (this.inputType == 2)
         {
-          this.uXk.setKeyListener(new NumberKeyListener()
+          this.wfZ.setKeyListener(new NumberKeyListener()
           {
             protected final char[] getAcceptedChars()
             {
@@ -232,86 +232,86 @@ public class MallEditText
             }
           });
           label436:
-          this.uXk.setGravity(this.gravity);
-          if (!this.jUS)
+          this.wfZ.setGravity(this.gravity);
+          if (!this.kvD)
           {
-            this.uXk.setEnabled(false);
-            this.uXk.setTextColor(getResources().getColor(2131100711));
-            this.uXk.setFocusable(false);
-            this.uXk.setClickable(false);
+            this.wfZ.setEnabled(false);
+            this.wfZ.setTextColor(getResources().getColor(2131100711));
+            this.wfZ.setFocusable(false);
+            this.wfZ.setClickable(false);
           }
-          if (this.izy) {
+          if (this.iZB) {
             break label724;
           }
-          this.izA = true;
-          this.uXk.setEnabled(false);
-          this.uXk.setFocusable(false);
-          this.uXk.setClickable(false);
+          this.iZD = true;
+          this.wfZ.setEnabled(false);
+          this.wfZ.setFocusable(false);
+          this.wfZ.setClickable(false);
         }
         break;
       }
     }
     for (;;)
     {
-      if (this.izC != -1) {
-        this.uXk.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.izC) });
+      if (this.iZF != -1) {
+        this.wfZ.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.iZF) });
       }
-      ad.d("MicroMsg.MallEditText", "initData editType:" + this.izw);
-      switch (this.izw)
+      ac.d("MicroMsg.MallEditText", "initData editType:" + this.iZz);
+      switch (this.iZz)
       {
       default: 
         AppMethodBeat.o(67135);
         return;
-        this.uXk.setTextSize(0, com.tencent.mm.cd.a.ao(paramContext, 2131165517));
+        this.wfZ.setTextSize(0, com.tencent.mm.cc.a.au(paramContext, 2131165517));
         break label289;
-        this.izB = 13;
-        this.izC = 13;
+        this.iZE = 13;
+        this.iZF = 13;
         this.inputType = 2;
         setInfoTvImageResource(2131233803);
-        this.izt.setVisibility(0);
+        this.iZw.setVisibility(0);
         break label369;
-        if (this.izy) {
+        if (this.iZB) {
           break label364;
         }
-        this.izt.setImageResource(2131233284);
-        this.izt.setVisibility(0);
+        this.iZw.setImageResource(2131233284);
+        this.iZw.setVisibility(0);
         break label364;
-        this.uXk.setInputType(this.inputType);
-        this.uXk.setRawInputType(this.inputType);
+        this.wfZ.setInputType(this.inputType);
+        this.wfZ.setRawInputType(this.inputType);
         break label436;
         label724:
-        this.izA = false;
+        this.iZD = false;
       }
     }
-    ad.d("MicroMsg.MallEditText", "setMobileEditTv");
-    paramContext = com.tencent.mm.plugin.recharge.a.a.dfC().dfD();
-    this.uXm = new a((byte)0);
-    this.uXm.eD(paramContext);
+    ac.d("MicroMsg.MallEditText", "setMobileEditTv");
+    paramContext = com.tencent.mm.plugin.recharge.a.a.dtj().dtk();
+    this.wgb = new a((byte)0);
+    this.wgb.eH(paramContext);
     if ((paramContext != null) && (paramContext.size() > 0))
     {
-      this.uXo = ((com.tencent.mm.plugin.recharge.model.a)paramContext.get(0));
-      setInput(this.uXo);
+      this.wgd = ((com.tencent.mm.plugin.recharge.model.a)paramContext.get(0));
+      setInput(this.wgd);
     }
     for (;;)
     {
       if ((paramContext == null) || (paramContext.size() == 0))
       {
-        g.afC();
-        paramContext = (String)g.afB().afk().get(6, null);
-        this.uXk.setText(paramContext);
-        this.uXk.setSelection(this.uXk.getText().length());
-        dfG();
+        g.agS();
+        paramContext = (String)g.agR().agA().get(6, null);
+        this.wfZ.setText(paramContext);
+        this.wfZ.setSelection(this.wfZ.getText().length());
+        dtn();
       }
-      this.uXk.setAdapter(this.uXm);
-      this.uXk.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.wfZ.setAdapter(this.wgb);
+      this.wfZ.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(67118);
-          MallEditText.a(MallEditText.this, MallEditText.d(MallEditText.this).JW(paramAnonymousInt));
+          MallEditText.a(MallEditText.this, MallEditText.d(MallEditText.this).LV(paramAnonymousInt));
           if (MallEditText.e(MallEditText.this) != null)
           {
-            ad.d("MicroMsg.MallEditText", "onItemClick record.record " + MallEditText.e(MallEditText.this).uWD + ", record.name " + MallEditText.e(MallEditText.this).name);
+            ac.d("MicroMsg.MallEditText", "onItemClick record.record " + MallEditText.e(MallEditText.this).wfs + ", record.name " + MallEditText.e(MallEditText.this).name);
             MallEditText.this.setInput(MallEditText.e(MallEditText.this));
           }
           MallEditText.a(MallEditText.this).dismissDropDown();
@@ -319,7 +319,7 @@ public class MallEditText
         }
       });
       break;
-      if (this.uXn == null) {
+      if (this.wgc == null) {
         new Runnable()
         {
           public final void run()
@@ -327,13 +327,13 @@ public class MallEditText
             AppMethodBeat.i(67117);
             try
             {
-              MallEditText.a(MallEditText.this, com.tencent.mm.pluginsdk.a.dk(MallEditText.this.getContext()));
+              MallEditText.a(MallEditText.this, com.tencent.mm.pluginsdk.a.dt(MallEditText.this.getContext()));
               AppMethodBeat.o(67117);
               return;
             }
             catch (Exception localException)
             {
-              ad.printErrStackTrace("MicroMsg.MallEditText", localException, "", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.MallEditText", localException, "", new Object[0]);
               AppMethodBeat.o(67117);
             }
           }
@@ -342,29 +342,29 @@ public class MallEditText
     }
   }
   
-  private void dfG()
+  private void dtn()
   {
     AppMethodBeat.i(67141);
-    boolean bool = aKX();
-    if (bool != this.izA)
+    boolean bool = aRO();
+    if (bool != this.iZD)
     {
-      ad.d("MicroMsg.MallEditText", "View:" + this.izv + ", editType:" + this.izw + " inputValid change to " + bool);
-      this.izA = bool;
-      if (this.uXj != null) {
-        this.uXj.onInputValidChange(this.izA);
+      ac.d("MicroMsg.MallEditText", "View:" + this.iZy + ", editType:" + this.iZz + " inputValid change to " + bool);
+      this.iZD = bool;
+      if (this.wfY != null) {
+        this.wfY.onInputValidChange(this.iZD);
       }
       if (!bool)
       {
-        if (this.icz.getVisibility() == 0)
+        if (this.gIk.getVisibility() == 0)
         {
-          this.icz.setText("");
-          this.icz.setVisibility(8);
+          this.gIk.setText("");
+          this.gIk.setVisibility(8);
         }
-        this.uXo = null;
+        this.wgd = null;
       }
     }
-    if (this.uXj != null) {
-      this.uXj.dfI();
+    if (this.wfY != null) {
+      this.wfY.dtp();
     }
     AppMethodBeat.o(67141);
   }
@@ -372,51 +372,51 @@ public class MallEditText
   private void setInputForce(com.tencent.mm.plugin.recharge.model.a parama)
   {
     AppMethodBeat.i(67140);
-    this.uXo = parama;
+    this.wgd = parama;
     if (parama != null)
     {
-      KeyListener localKeyListener = this.uXk.getKeyListener();
-      this.uXk.setKeyListener(null);
-      this.uXk.setText(parama.uWD);
-      this.uXk.setSelection(this.uXk.getText().length());
-      this.uXk.setKeyListener(localKeyListener);
-      dfG();
-      ad.d("MicroMsg.MallEditText", "editTv.setText " + parama.uWD + ", name " + parama.name + ", isInputValid " + this.izA);
-      if ((!bt.isNullOrNil(parama.name)) && (this.izA))
+      KeyListener localKeyListener = this.wfZ.getKeyListener();
+      this.wfZ.setKeyListener(null);
+      this.wfZ.setText(parama.wfs);
+      this.wfZ.setSelection(this.wfZ.getText().length());
+      this.wfZ.setKeyListener(localKeyListener);
+      dtn();
+      ac.d("MicroMsg.MallEditText", "editTv.setText " + parama.wfs + ", name " + parama.name + ", isInputValid " + this.iZD);
+      if ((!bs.isNullOrNil(parama.name)) && (this.iZD))
       {
-        this.icz.setText(parama.name);
-        this.icz.setVisibility(0);
+        this.gIk.setText(parama.name);
+        this.gIk.setVisibility(0);
         AppMethodBeat.o(67140);
         return;
       }
-      this.icz.setText("");
-      this.icz.setVisibility(8);
+      this.gIk.setText("");
+      this.gIk.setVisibility(8);
       AppMethodBeat.o(67140);
       return;
     }
-    this.uXk.setText("");
-    dfG();
-    ad.d("MicroMsg.MallEditText", "editTv.setText null");
-    this.icz.setText("");
-    this.icz.setVisibility(8);
+    this.wfZ.setText("");
+    dtn();
+    ac.d("MicroMsg.MallEditText", "editTv.setText null");
+    this.gIk.setText("");
+    this.gIk.setVisibility(8);
     AppMethodBeat.o(67140);
   }
   
-  public final boolean aKX()
+  public final boolean aRO()
   {
     AppMethodBeat.i(67143);
-    switch (this.izw)
+    switch (this.iZz)
     {
     default: 
-      if (this.uXk.getText().length() >= this.izB)
+      if (this.wfZ.getText().length() >= this.iZE)
       {
         AppMethodBeat.o(67143);
         return true;
       }
       break;
     case 1: 
-      String str = this.uXk.getText().toString();
-      if ((str.length() >= this.izB) && (str.length() <= this.izC) && (PhoneNumberUtils.isGlobalPhoneNumber(b.CD(str))))
+      String str = this.wfZ.getText().toString();
+      if ((str.length() >= this.iZE) && (str.length() <= this.iZF) && (PhoneNumberUtils.isGlobalPhoneNumber(b.GG(str))))
       {
         AppMethodBeat.o(67143);
         return true;
@@ -428,23 +428,23 @@ public class MallEditText
     return false;
   }
   
-  public final boolean dfH()
+  public final boolean dto()
   {
     AppMethodBeat.i(67145);
     if (getVisibility() == 0)
     {
-      if (bt.isNullOrNil(getText()))
+      if (bs.isNullOrNil(getText()))
       {
-        ad.d("MicroMsg.MallEditText", "View:" + this.izv + ", editType:" + this.izw + " checkInputValid : empty ");
+        ac.d("MicroMsg.MallEditText", "View:" + this.iZy + ", editType:" + this.iZz + " checkInputValid : empty ");
         AppMethodBeat.o(67145);
         return false;
       }
-      if (this.izA)
+      if (this.iZD)
       {
         AppMethodBeat.o(67145);
         return true;
       }
-      ad.d("MicroMsg.MallEditText", "View:" + this.izv + ", editType:" + this.izw + " checkInputValid : illegal ");
+      ac.d("MicroMsg.MallEditText", "View:" + this.iZy + ", editType:" + this.iZz + " checkInputValid : illegal ");
       AppMethodBeat.o(67145);
       return false;
     }
@@ -455,21 +455,21 @@ public class MallEditText
   public void getFocus()
   {
     AppMethodBeat.i(67152);
-    this.uXk.findFocus();
+    this.wfZ.findFocus();
     AppMethodBeat.o(67152);
   }
   
   public com.tencent.mm.plugin.recharge.model.a getInputRecord()
   {
     AppMethodBeat.i(67151);
-    if (this.uXo != null)
+    if (this.wgd != null)
     {
-      locala = this.uXo;
+      locala = this.wgd;
       AppMethodBeat.o(67151);
       return locala;
     }
-    this.uXo = new com.tencent.mm.plugin.recharge.model.a(getText(), this.icz.getText().toString(), 0);
-    com.tencent.mm.plugin.recharge.model.a locala = this.uXo;
+    this.wgd = new com.tencent.mm.plugin.recharge.model.a(getText(), this.gIk.getText().toString(), 0);
+    com.tencent.mm.plugin.recharge.model.a locala = this.wgd;
     AppMethodBeat.o(67151);
     return locala;
   }
@@ -477,14 +477,14 @@ public class MallEditText
   public String getText()
   {
     AppMethodBeat.i(67142);
-    switch (this.izw)
+    switch (this.iZz)
     {
     default: 
-      str = bt.by(this.uXk.getText().toString(), "");
+      str = bs.bG(this.wfZ.getText().toString(), "");
       AppMethodBeat.o(67142);
       return str;
     }
-    String str = bt.by(this.uXk.getText().toString(), "");
+    String str = bs.bG(this.wfZ.getText().toString(), "");
     AppMethodBeat.o(67142);
     return str;
   }
@@ -492,19 +492,19 @@ public class MallEditText
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(67148);
-    if (this.izr != null) {
-      this.izr.onFocusChange(this, paramBoolean);
+    if (this.iZu != null) {
+      this.iZu.onFocusChange(this, paramBoolean);
     }
-    if (!this.uXq) {}
+    if (!this.wgf) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((bool == paramBoolean) && (!paramBoolean) && (this.uXp != null)) {
-        this.uXp.run();
+      if ((bool == paramBoolean) && (!paramBoolean) && (this.wge != null)) {
+        this.wge.run();
       }
-      this.uXq = paramBoolean;
-      ad.d("MicroMsg.MallEditText", "View:" + this.izv + ", editType:" + this.izw + " onFocusChange to " + paramBoolean);
-      if (this.uXj != null) {
-        this.uXj.onInputValidChange(this.izA);
+      this.wgf = paramBoolean;
+      ac.d("MicroMsg.MallEditText", "View:" + this.iZy + ", editType:" + this.iZz + " onFocusChange to " + paramBoolean);
+      if (this.wfY != null) {
+        this.wfY.onInputValidChange(this.iZD);
       }
       AppMethodBeat.o(67148);
       return;
@@ -513,27 +513,27 @@ public class MallEditText
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    return !this.izy;
+    return !this.iZB;
   }
   
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
     AppMethodBeat.i(67144);
-    this.uXk.setEllipsize(paramTruncateAt);
+    this.wfZ.setEllipsize(paramTruncateAt);
     AppMethodBeat.o(67144);
   }
   
   public void setHintStr(String paramString)
   {
     AppMethodBeat.i(67136);
-    this.uXk.setHint(paramString);
+    this.wfZ.setHint(paramString);
     AppMethodBeat.o(67136);
   }
   
   public void setImeOptions(int paramInt)
   {
     AppMethodBeat.i(67149);
-    this.uXk.setImeOptions(paramInt);
+    this.wfZ.setImeOptions(paramInt);
     AppMethodBeat.o(67149);
   }
   
@@ -543,8 +543,8 @@ public class MallEditText
     if (paramInt == 2131232862) {}
     for (boolean bool = true;; bool = false)
     {
-      this.uXl = bool;
-      this.izt.setImageResource(paramInt);
+      this.wga = bool;
+      this.iZw.setImageResource(paramInt);
       AppMethodBeat.o(67138);
       return;
     }
@@ -553,37 +553,37 @@ public class MallEditText
   public void setInfoTvOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(67137);
-    this.izt.setOnClickListener(paramOnClickListener);
+    this.iZw.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(67137);
   }
   
   public void setInput(com.tencent.mm.plugin.recharge.model.a parama)
   {
     AppMethodBeat.i(67139);
-    this.uXo = parama;
+    this.wgd = parama;
     if (parama != null)
     {
-      this.uXk.setText(parama.uWD);
-      this.uXk.setSelection(this.uXk.getText().length());
-      dfG();
-      ad.d("MicroMsg.MallEditText", "editTv.setText " + parama.uWD + ", name " + parama.name + ", isInputValid " + this.izA);
-      if ((!bt.isNullOrNil(parama.name)) && (this.izA))
+      this.wfZ.setText(parama.wfs);
+      this.wfZ.setSelection(this.wfZ.getText().length());
+      dtn();
+      ac.d("MicroMsg.MallEditText", "editTv.setText " + parama.wfs + ", name " + parama.name + ", isInputValid " + this.iZD);
+      if ((!bs.isNullOrNil(parama.name)) && (this.iZD))
       {
-        this.icz.setText(parama.name);
-        this.icz.setVisibility(0);
+        this.gIk.setText(parama.name);
+        this.gIk.setVisibility(0);
         AppMethodBeat.o(67139);
         return;
       }
-      this.icz.setText("");
-      this.icz.setVisibility(8);
+      this.gIk.setText("");
+      this.gIk.setVisibility(8);
       AppMethodBeat.o(67139);
       return;
     }
-    this.uXk.setText("");
-    dfG();
-    ad.d("MicroMsg.MallEditText", "editTv.setText null");
-    this.icz.setText("");
-    this.icz.setVisibility(8);
+    this.wfZ.setText("");
+    dtn();
+    ac.d("MicroMsg.MallEditText", "editTv.setText null");
+    this.gIk.setText("");
+    this.gIk.setVisibility(8);
     AppMethodBeat.o(67139);
   }
   
@@ -591,14 +591,14 @@ public class MallEditText
   {
     AppMethodBeat.i(67146);
     super.setOnClickListener(paramOnClickListener);
-    this.uXk.setOnClickListener(paramOnClickListener);
+    this.wfZ.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(67146);
   }
   
   public void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
     AppMethodBeat.i(67150);
-    this.uXk.setOnEditorActionListener(paramOnEditorActionListener);
+    this.wfZ.setOnEditorActionListener(paramOnEditorActionListener);
     AppMethodBeat.o(67150);
   }
   
@@ -606,34 +606,34 @@ public class MallEditText
   {
     AppMethodBeat.i(67147);
     super.setOnFocusChangeListener(paramOnFocusChangeListener);
-    this.izr = paramOnFocusChangeListener;
+    this.iZu = paramOnFocusChangeListener;
     AppMethodBeat.o(67147);
   }
   
   public void setOnInputValidChangeListener(b paramb)
   {
-    this.uXj = paramb;
+    this.wfY = paramb;
   }
   
   final class a
     extends BaseAdapter
     implements Filterable
   {
-    public List<com.tencent.mm.plugin.recharge.model.a> uXt;
-    public boolean uXu;
-    private List<com.tencent.mm.plugin.recharge.model.a> uXv;
-    private a uXw;
-    private String uXx;
+    public List<com.tencent.mm.plugin.recharge.model.a> wgi;
+    public boolean wgj;
+    private List<com.tencent.mm.plugin.recharge.model.a> wgk;
+    private a wgl;
+    private String wgm;
     
     private a()
     {
       AppMethodBeat.i(67127);
-      this.uXt = new ArrayList();
-      this.uXu = false;
+      this.wgi = new ArrayList();
+      this.wgj = false;
       AppMethodBeat.o(67127);
     }
     
-    public final com.tencent.mm.plugin.recharge.model.a JW(int paramInt)
+    public final com.tencent.mm.plugin.recharge.model.a LV(int paramInt)
     {
       com.tencent.mm.plugin.recharge.model.a locala1 = null;
       for (;;)
@@ -641,7 +641,7 @@ public class MallEditText
         try
         {
           AppMethodBeat.i(67131);
-          if (!this.uXu) {
+          if (!this.wgj) {
             break label79;
           }
           if (paramInt == 0)
@@ -649,9 +649,9 @@ public class MallEditText
             AppMethodBeat.o(67131);
             return locala1;
           }
-          if (paramInt <= this.uXt.size())
+          if (paramInt <= this.wgi.size())
           {
-            locala1 = (com.tencent.mm.plugin.recharge.model.a)this.uXt.get(paramInt - 1);
+            locala1 = (com.tencent.mm.plugin.recharge.model.a)this.wgi.get(paramInt - 1);
             AppMethodBeat.o(67131);
             continue;
           }
@@ -660,9 +660,9 @@ public class MallEditText
         finally {}
         continue;
         label79:
-        if (paramInt < this.uXt.size())
+        if (paramInt < this.wgi.size())
         {
-          com.tencent.mm.plugin.recharge.model.a locala2 = (com.tencent.mm.plugin.recharge.model.a)this.uXt.get(paramInt);
+          com.tencent.mm.plugin.recharge.model.a locala2 = (com.tencent.mm.plugin.recharge.model.a)this.wgi.get(paramInt);
           AppMethodBeat.o(67131);
         }
         else
@@ -672,12 +672,12 @@ public class MallEditText
       }
     }
     
-    public final void eD(List<com.tencent.mm.plugin.recharge.model.a> paramList)
+    public final void eH(List<com.tencent.mm.plugin.recharge.model.a> paramList)
     {
       AppMethodBeat.i(67128);
-      this.uXv = paramList;
-      this.uXt.clear();
-      this.uXu = false;
+      this.wgk = paramList;
+      this.wgi.clear();
+      this.wgj = false;
       AppMethodBeat.o(67128);
     }
     
@@ -685,15 +685,15 @@ public class MallEditText
     {
       AppMethodBeat.i(67130);
       int i;
-      if (this.uXu)
+      if (this.wgj)
       {
-        i = this.uXt.size();
+        i = this.wgi.size();
         AppMethodBeat.o(67130);
         return i + 2;
       }
-      if (this.uXt.size() > 0)
+      if (this.wgi.size() > 0)
       {
-        i = this.uXt.size();
+        i = this.wgi.size();
         AppMethodBeat.o(67130);
         return i + 1;
       }
@@ -704,11 +704,11 @@ public class MallEditText
     public final Filter getFilter()
     {
       AppMethodBeat.i(67129);
-      ad.d("MicroMsg.MallEditText", "getFilter");
-      if (this.uXw == null) {
-        this.uXw = new a((byte)0);
+      ac.d("MicroMsg.MallEditText", "getFilter");
+      if (this.wgl == null) {
+        this.wgl = new a((byte)0);
       }
-      a locala = this.uXw;
+      a locala = this.wgl;
       AppMethodBeat.o(67129);
       return locala;
     }
@@ -721,14 +721,14 @@ public class MallEditText
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(67133);
-      if (this.uXu)
+      if (this.wgj)
       {
         if (paramInt == 0)
         {
           AppMethodBeat.o(67133);
           return 2;
         }
-        if (paramInt <= this.uXt.size())
+        if (paramInt <= this.wgi.size())
         {
           AppMethodBeat.o(67133);
           return 0;
@@ -736,7 +736,7 @@ public class MallEditText
         AppMethodBeat.o(67133);
         return 3;
       }
-      if (paramInt < this.uXt.size())
+      if (paramInt < this.wgi.size())
       {
         AppMethodBeat.o(67133);
         return 0;
@@ -764,10 +764,10 @@ public class MallEditText
         {
           paramViewGroup = View.inflate(MallEditText.this.getContext(), 2131495205, null);
           localc = new MallEditText.c(MallEditText.this, (byte)0);
-          localc.uXB = ((TextView)paramViewGroup.findViewById(2131302023));
-          localc.ftj = ((TextView)paramViewGroup.findViewById(2131302022));
+          localc.wgq = ((TextView)paramViewGroup.findViewById(2131302023));
+          localc.fwQ = ((TextView)paramViewGroup.findViewById(2131302022));
           paramViewGroup.setTag(localc);
-          locala = JW(paramInt);
+          locala = LV(paramInt);
           paramView = paramViewGroup;
           if (locala == null) {
             continue;
@@ -777,20 +777,20 @@ public class MallEditText
             continue;
           }
           paramView = paramViewGroup;
-          if (localc.uXB == null) {
+          if (localc.wgq == null) {
             continue;
           }
           paramView = paramViewGroup;
-          if (localc.ftj == null) {
+          if (localc.fwQ == null) {
             continue;
           }
-          paramView = b.alm(locala.uWD);
-          ad.d("MicroMsg.MallEditText", "record.record " + paramView + ", record.name " + locala.name);
-          if (com.tencent.mm.plugin.recharge.model.a.uWB.equals(locala.uWE)) {
+          paramView = b.aql(locala.wfs);
+          ac.d("MicroMsg.MallEditText", "record.record " + paramView + ", record.name " + locala.name);
+          if (com.tencent.mm.plugin.recharge.model.a.wfq.equals(locala.wft)) {
             break label399;
           }
           paramView = new SpannableStringBuilder(paramView);
-          int[] arrayOfInt = locala.uWE;
+          int[] arrayOfInt = locala.wft;
           int k = arrayOfInt.length;
           i = 0;
           if (i >= k) {
@@ -820,10 +820,10 @@ public class MallEditText
           }
         }
         label325:
-        localc.uXB.setText(paramView);
+        localc.wgq.setText(paramView);
         label334:
-        if ((locala.name != null) && (!bt.isNullOrNil(locala.name.trim()))) {
-          localc.ftj.setText(MallEditText.this.getResources().getString(2131761165, new Object[] { locala.name }));
+        if ((locala.name != null) && (!bs.isNullOrNil(locala.name.trim()))) {
+          localc.fwQ.setText(MallEditText.this.getResources().getString(2131761165, new Object[] { locala.name }));
         }
         for (;;)
         {
@@ -831,9 +831,9 @@ public class MallEditText
           paramView = paramViewGroup;
           break;
           label399:
-          localc.uXB.setText(paramView);
+          localc.wgq.setText(paramView);
           break label334;
-          localc.ftj.setText("");
+          localc.fwQ.setText("");
         }
         paramView = View.inflate(MallEditText.this.getContext(), 2131495204, null);
         paramView.setOnClickListener(new View.OnClickListener()
@@ -852,9 +852,9 @@ public class MallEditText
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(67120);
-            com.tencent.mm.plugin.recharge.a.a.dfC().eD(null);
+            com.tencent.mm.plugin.recharge.a.a.dtj().eH(null);
             MallEditText.this.setInput(null);
-            MallEditText.d(MallEditText.this).eD(new LinkedList());
+            MallEditText.d(MallEditText.this).eH(new LinkedList());
             MallEditText.d(MallEditText.this).notifyDataSetChanged();
             AppMethodBeat.o(67120);
           }
@@ -884,12 +884,12 @@ public class MallEditText
     {
       private a() {}
       
-      private static int[] ib(String paramString1, String paramString2)
+      private static int[] iu(String paramString1, String paramString2)
       {
         AppMethodBeat.i(67126);
         if (paramString1.equals(paramString2))
         {
-          paramString1 = com.tencent.mm.plugin.recharge.model.a.uWB;
+          paramString1 = com.tencent.mm.plugin.recharge.model.a.wfq;
           AppMethodBeat.o(67126);
           return paramString1;
         }
@@ -930,7 +930,7 @@ public class MallEditText
             return arrayOfInt;
           }
         }
-        paramString1 = com.tencent.mm.plugin.recharge.model.a.uWC;
+        paramString1 = com.tencent.mm.plugin.recharge.model.a.wfr;
         AppMethodBeat.o(67126);
         return paramString1;
       }
@@ -946,7 +946,7 @@ public class MallEditText
           localFilterResults = new Filter.FilterResults();
           localArrayList = new ArrayList();
           if (paramCharSequence != null) {}
-          for (localObject1 = b.CD(paramCharSequence.toString()); ((String)localObject1).equals(MallEditText.a.a(MallEditText.a.this)); localObject1 = "")
+          for (localObject1 = b.GG(paramCharSequence.toString()); ((String)localObject1).equals(MallEditText.a.a(MallEditText.a.this)); localObject1 = "")
           {
             MallEditText.a(MallEditText.this).post(new Runnable()
             {
@@ -961,18 +961,18 @@ public class MallEditText
             return localFilterResults;
           }
           MallEditText.a.a(MallEditText.a.this, (String)localObject1);
-          if (MallEditText.this.aKX()) {
+          if (MallEditText.this.aRO()) {
             break label362;
           }
-          if (bt.isNullOrNil(MallEditText.a.a(MallEditText.a.this))) {
+          if (bs.isNullOrNil(MallEditText.a.a(MallEditText.a.this))) {
             break label342;
           }
-          ad.d("MicroMsg.MallEditText", "performFiltering ".concat(String.valueOf(paramCharSequence)));
+          ac.d("MicroMsg.MallEditText", "performFiltering ".concat(String.valueOf(paramCharSequence)));
           paramCharSequence = MallEditText.a.b(MallEditText.a.this).iterator();
           while (paramCharSequence.hasNext())
           {
             localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
-            if (((com.tencent.mm.plugin.recharge.model.a)localObject1).uWD.startsWith(MallEditText.a.a(MallEditText.a.this))) {
+            if (((com.tencent.mm.plugin.recharge.model.a)localObject1).wfs.startsWith(MallEditText.a.a(MallEditText.a.this))) {
               localArrayList.add(localObject1);
             }
           }
@@ -998,12 +998,12 @@ public class MallEditText
         {
           for (;;)
           {
-            paramCharSequence = MallEditText.a.this.uXt;
-            MallEditText.a.this.uXt = localArrayList;
-            MallEditText.a.this.uXu = bool;
-            localFilterResults.count = MallEditText.a.this.uXt.size();
-            localFilterResults.values = MallEditText.a.this.uXt;
-            ad.d("MicroMsg.MallEditText", "results.count " + localFilterResults.count);
+            paramCharSequence = MallEditText.a.this.wgi;
+            MallEditText.a.this.wgi = localArrayList;
+            MallEditText.a.this.wgj = bool;
+            localFilterResults.count = MallEditText.a.this.wgi.size();
+            localFilterResults.values = MallEditText.a.this.wgi;
+            ac.d("MicroMsg.MallEditText", "results.count " + localFilterResults.count);
             paramCharSequence.clear();
             AppMethodBeat.o(67125);
             break;
@@ -1013,14 +1013,14 @@ public class MallEditText
             break label215;
             label362:
             long l = System.currentTimeMillis();
-            ad.d("MicroMsg.MallEditText", "performFiltering ".concat(String.valueOf(paramCharSequence)));
+            ac.d("MicroMsg.MallEditText", "performFiltering ".concat(String.valueOf(paramCharSequence)));
             paramCharSequence = MallEditText.a.b(MallEditText.a.this).iterator();
             while (paramCharSequence.hasNext())
             {
               localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
-              if (((com.tencent.mm.plugin.recharge.model.a)localObject1).uWD.equals(MallEditText.a.a(MallEditText.a.this)))
+              if (((com.tencent.mm.plugin.recharge.model.a)localObject1).wfs.equals(MallEditText.a.a(MallEditText.a.this)))
               {
-                ((com.tencent.mm.plugin.recharge.model.a)localObject1).uWE = com.tencent.mm.plugin.recharge.model.a.uWB;
+                ((com.tencent.mm.plugin.recharge.model.a)localObject1).wft = com.tencent.mm.plugin.recharge.model.a.wfq;
                 localArrayList.clear();
                 localArrayList.add(localObject1);
               }
@@ -1032,25 +1032,25 @@ public class MallEditText
             }
             try
             {
-              MallEditText.a(MallEditText.this, com.tencent.mm.pluginsdk.a.dk(MallEditText.this.getContext()));
+              MallEditText.a(MallEditText.this, com.tencent.mm.pluginsdk.a.dt(MallEditText.this.getContext()));
               if (MallEditText.f(MallEditText.this) != null)
               {
                 paramCharSequence = MallEditText.f(MallEditText.this).iterator();
                 if (paramCharSequence.hasNext())
                 {
                   localObject2 = (String[])paramCharSequence.next();
-                  str = b.CD(localObject2[2]);
-                  localObject1 = ib(MallEditText.a.a(MallEditText.a.this), str);
-                  if (!com.tencent.mm.plugin.recharge.model.a.uWB.equals(localObject1)) {
+                  str = b.GG(localObject2[2]);
+                  localObject1 = iu(MallEditText.a.a(MallEditText.a.this), str);
+                  if (!com.tencent.mm.plugin.recharge.model.a.wfq.equals(localObject1)) {
                     break label680;
                   }
                   paramCharSequence = new com.tencent.mm.plugin.recharge.model.a(str, localObject2[1], 1);
-                  paramCharSequence.uWE = com.tencent.mm.plugin.recharge.model.a.uWB;
+                  paramCharSequence.wft = com.tencent.mm.plugin.recharge.model.a.wfq;
                   localArrayList.clear();
                   localArrayList.add(paramCharSequence);
                 }
               }
-              ad.d("MicroMsg.MallEditText", " search phone number cost " + (System.currentTimeMillis() - l) + " ms ");
+              ac.d("MicroMsg.MallEditText", " search phone number cost " + (System.currentTimeMillis() - l) + " ms ");
               bool = true;
             }
             catch (Exception paramCharSequence)
@@ -1059,22 +1059,22 @@ public class MallEditText
               {
                 Object localObject2;
                 String str;
-                ad.printErrStackTrace("MicroMsg.MallEditText", paramCharSequence, "", new Object[0]);
+                ac.printErrStackTrace("MicroMsg.MallEditText", paramCharSequence, "", new Object[0]);
                 continue;
                 label680:
-                if ((!com.tencent.mm.plugin.recharge.model.a.uWC.equals(localObject1)) && (localArrayList.size() < 5))
+                if ((!com.tencent.mm.plugin.recharge.model.a.wfr.equals(localObject1)) && (localArrayList.size() < 5))
                 {
                   localObject2 = new com.tencent.mm.plugin.recharge.model.a(str, localObject2[1], 1);
-                  ((com.tencent.mm.plugin.recharge.model.a)localObject2).uWE = ((int[])localObject1);
+                  ((com.tencent.mm.plugin.recharge.model.a)localObject2).wft = ((int[])localObject1);
                   localArrayList.add(localObject2);
                 }
               }
             }
           }
-          if ((localArrayList.size() == 1) && (MallEditText.this.aKX()))
+          if ((localArrayList.size() == 1) && (MallEditText.this.aRO()))
           {
             paramCharSequence = (com.tencent.mm.plugin.recharge.model.a)localArrayList.get(0);
-            if (com.tencent.mm.plugin.recharge.model.a.uWB.equals(paramCharSequence.uWE))
+            if (com.tencent.mm.plugin.recharge.model.a.wfq.equals(paramCharSequence.wft))
             {
               MallEditText.a(MallEditText.this).post(new Runnable()
               {
@@ -1082,7 +1082,7 @@ public class MallEditText
                 {
                   AppMethodBeat.i(67124);
                   MallEditText.a(MallEditText.this, paramCharSequence);
-                  if (!bt.isNullOrNil(MallEditText.e(MallEditText.this).name))
+                  if (!bs.isNullOrNil(MallEditText.e(MallEditText.this).name))
                   {
                     MallEditText.g(MallEditText.this).setText(MallEditText.e(MallEditText.this).name);
                     MallEditText.g(MallEditText.this).setVisibility(0);
@@ -1109,15 +1109,15 @@ public class MallEditText
   
   public static abstract interface b
   {
-    public abstract void dfI();
+    public abstract void dtp();
     
     public abstract void onInputValidChange(boolean paramBoolean);
   }
   
   final class c
   {
-    TextView ftj;
-    TextView uXB;
+    TextView fwQ;
+    TextView wgq;
     
     private c() {}
   }

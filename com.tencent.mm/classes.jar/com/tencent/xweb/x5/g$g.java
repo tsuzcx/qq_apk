@@ -1,31 +1,29 @@
 package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
-import com.tencent.xweb.n;
 
 public final class g$g
-  extends n
+  extends com.tencent.xweb.JsResult
 {
-  public JsPromptResult ISb;
+  public com.tencent.smtt.export.external.interfaces.JsResult KEx;
   
-  public g$g(JsPromptResult paramJsPromptResult)
+  public g$g(com.tencent.smtt.export.external.interfaces.JsResult paramJsResult)
   {
-    this.ISb = paramJsPromptResult;
+    this.KEx = paramJsResult;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(153857);
-    this.ISb.cancel();
-    AppMethodBeat.o(153857);
+    AppMethodBeat.i(153855);
+    this.KEx.cancel();
+    AppMethodBeat.o(153855);
   }
   
   public final void confirm()
   {
-    AppMethodBeat.i(153856);
-    this.ISb.confirm();
-    AppMethodBeat.o(153856);
+    AppMethodBeat.i(153854);
+    this.KEx.confirm();
+    AppMethodBeat.o(153854);
   }
   
   public final void confirmWithResult(String paramString) {}

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class eg
   extends b
 {
-  public a dgM;
+  public a deg;
   
   public eg()
   {
@@ -15,16 +15,16 @@ public final class eg
   
   private eg(byte paramByte)
   {
-    AppMethodBeat.i(115998);
-    this.dgM = new a();
-    this.ESR = false;
+    AppMethodBeat.i(115997);
+    this.deg = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(115998);
+    AppMethodBeat.o(115997);
   }
   
   public static final class a
   {
-    public int dgN = -1;
+    public int op = 0;
   }
 }
 

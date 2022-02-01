@@ -53,6 +53,7 @@ public class ShareFileLockHelper
         }
         catch (Exception localException1)
         {
+          ShareTinkerLog.e("Tinker.FileLockHelper", "getInfoLock Thread failed time:10", new Object[0]);
           continue;
           this.fileLock = localObject;
           return;
@@ -64,6 +65,7 @@ public class ShareFileLockHelper
         }
         catch (Exception localException2)
         {
+          ShareTinkerLog.e("Tinker.FileLockHelper", "getInfoLock Thread sleep exception", new Object[] { localException2 });
           i = j;
         }
       }

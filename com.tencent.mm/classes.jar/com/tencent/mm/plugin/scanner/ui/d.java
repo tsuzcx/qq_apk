@@ -10,8 +10,8 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class d
@@ -20,24 +20,24 @@ public final class d
   private Context context;
   String mTitle;
   private View mView;
-  private View.OnTouchListener ryf;
+  private View.OnTouchListener sGX;
   private TextView titleTv;
-  private TextView uCm;
-  private final int vRQ;
-  private TextView vRR;
-  public boolean vRS;
-  public boolean vRT;
-  private Boolean vRU;
-  private ViewTreeObserver.OnGlobalLayoutListener vRV;
-  a vRW;
+  private TextView vLf;
+  private final int xcB;
+  private TextView xcC;
+  public boolean xcD;
+  public boolean xcE;
+  private Boolean xcF;
+  private ViewTreeObserver.OnGlobalLayoutListener xcG;
+  a xcH;
   
   public d(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(51791);
-    this.vRQ = 5;
-    this.vRS = false;
-    this.vRT = false;
+    this.xcB = 5;
+    this.xcD = false;
+    this.xcE = false;
     setLayoutResource(2131494852);
     this.context = paramActivity;
     AppMethodBeat.o(51791);
@@ -62,93 +62,93 @@ public final class d
     if (this.titleTv == null) {
       this.titleTv = ((TextView)paramView.findViewById(16908310));
     }
-    if (this.uCm == null) {
-      this.uCm = ((TextView)paramView.findViewById(16908304));
+    if (this.vLf == null) {
+      this.vLf = ((TextView)paramView.findViewById(16908304));
     }
-    if (this.vRR == null) {
-      this.vRR = ((TextView)paramView.findViewById(2131302452));
+    if (this.xcC == null) {
+      this.xcC = ((TextView)paramView.findViewById(2131302452));
     }
-    if (this.ryf == null)
+    if (this.sGX == null)
     {
-      this.ryf = new View.OnTouchListener()
+      this.sGX = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(51789);
           if (paramAnonymousMotionEvent.getAction() == 0)
           {
-            ad.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
+            ac.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
             d.a(d.this).setVisibility(4);
             d.b(d.this).setMaxLines(2000);
-            d.this.vRS = true;
+            d.this.xcD = true;
             if (d.c(d.this) != null)
             {
               d.c(d.this).a(d.this.mKey, Boolean.TRUE);
-              d.c(d.this).dmb();
+              d.c(d.this).dAh();
             }
           }
           AppMethodBeat.o(51789);
           return false;
         }
       };
-      this.vRR.setOnTouchListener(this.ryf);
+      this.xcC.setOnTouchListener(this.sGX);
     }
-    if (this.vRW != null)
+    if (this.xcH != null)
     {
-      this.vRU = this.vRW.amD(this.mKey);
-      if (this.vRU != null) {
-        if (this.vRU.booleanValue())
+      this.xcF = this.xcH.arM(this.mKey);
+      if (this.xcF != null) {
+        if (this.xcF.booleanValue())
         {
-          this.vRR.setVisibility(8);
-          this.uCm.setMaxLines(2000);
+          this.xcC.setVisibility(8);
+          this.vLf.setMaxLines(2000);
         }
       }
     }
     for (;;)
     {
-      if (this.vRV == null)
+      if (this.xcG == null)
       {
-        this.vRV = new ViewTreeObserver.OnGlobalLayoutListener()
+        this.xcG = new ViewTreeObserver.OnGlobalLayoutListener()
         {
           public final void onGlobalLayout()
           {
             AppMethodBeat.i(51790);
-            ad.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + d.b(d.this).getHeight() + ", summaryTv.getLineHeight() = " + d.b(d.this).getLineHeight());
+            ac.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + d.b(d.this).getHeight() + ", summaryTv.getLineHeight() = " + d.b(d.this).getLineHeight());
             if ((d.b(d.this).getText() != null) && (d.b(d.this).getHeight() > 0) && (d.b(d.this).getLineHeight() > 0) && (d.d(d.this) == null))
             {
-              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.vRT) && (!d.this.vRS))
+              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.xcE) && (!d.this.xcD))
               {
                 d.a(d.this).setVisibility(0);
                 d.b(d.this).setMaxLines(5);
-                d.this.vRT = true;
-                if ((d.c(d.this) != null) && (d.c(d.this).amD(d.this.mKey) == null))
+                d.this.xcE = true;
+                if ((d.c(d.this) != null) && (d.c(d.this).arM(d.this.mKey) == null))
                 {
                   d.c(d.this).a(d.this.mKey, Boolean.FALSE);
-                  d.c(d.this).dmb();
+                  d.c(d.this).dAh();
                 }
               }
-              ad.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + d.b(d.this).getHeight() / d.b(d.this).getLineHeight());
+              ac.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + d.b(d.this).getHeight() / d.b(d.this).getLineHeight());
             }
             d.b(d.this).getViewTreeObserver().removeGlobalOnLayoutListener(this);
             AppMethodBeat.o(51790);
           }
         };
-        this.uCm.getViewTreeObserver().addOnGlobalLayoutListener(this.vRV);
+        this.vLf.getViewTreeObserver().addOnGlobalLayoutListener(this.xcG);
       }
-      if (!bt.isNullOrNil(this.mTitle)) {
+      if (!bs.isNullOrNil(this.mTitle)) {
         break;
       }
       this.titleTv.setVisibility(8);
       AppMethodBeat.o(51793);
       return;
-      this.vRR.setVisibility(0);
-      this.uCm.setMaxLines(5);
+      this.xcC.setVisibility(0);
+      this.vLf.setMaxLines(5);
       continue;
-      this.vRR.setVisibility(8);
-      this.uCm.setMaxLines(6);
+      this.xcC.setVisibility(8);
+      this.vLf.setMaxLines(6);
       continue;
-      this.vRR.setVisibility(8);
-      this.uCm.setMaxLines(6);
+      this.xcC.setVisibility(8);
+      this.vLf.setMaxLines(6);
     }
     this.titleTv.setText(this.mTitle);
     this.titleTv.setVisibility(0);
@@ -159,9 +159,9 @@ public final class d
   {
     public abstract void a(String paramString, Boolean paramBoolean);
     
-    public abstract Boolean amD(String paramString);
+    public abstract Boolean arM(String paramString);
     
-    public abstract void dmb();
+    public abstract void dAh();
   }
 }
 

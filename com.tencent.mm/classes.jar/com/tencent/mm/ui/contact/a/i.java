@@ -12,35 +12,35 @@ import com.tencent.mm.plugin.fts.ui.m;
 public final class i
   extends a
 {
-  private b GZQ;
-  a.a GZR;
-  private CharSequence rvR;
+  private b IAi;
+  a.a IAj;
+  private CharSequence sEJ;
   
   public i(int paramInt)
   {
     super(6, paramInt);
     AppMethodBeat.i(102963);
-    this.GZQ = new b();
-    this.GZR = new a();
+    this.IAi = new b();
+    this.IAj = new a();
     AppMethodBeat.o(102963);
   }
   
   public final void a(Context paramContext, a.a parama)
   {
     AppMethodBeat.i(102964);
-    this.rvR = com.tencent.mm.plugin.fts.a.f.a(paramContext.getString(2131762920), paramContext.getString(2131762919), e.b(this.query, this.query)).rpj;
+    this.sEJ = com.tencent.mm.plugin.fts.a.f.a(paramContext.getString(2131762920), paramContext.getString(2131762919), e.c(this.query, this.query)).syd;
     AppMethodBeat.o(102964);
   }
   
-  public final a.b aHr()
+  public final a.b aOg()
   {
-    return this.GZQ;
+    return this.IAi;
   }
   
   public final class a
     extends a.a
   {
-    public TextView rvw;
+    public TextView sEo;
     
     public a()
     {
@@ -60,8 +60,8 @@ public final class i
     {
       AppMethodBeat.i(102961);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495363, paramViewGroup, false);
-      paramViewGroup = (i.a)i.this.GZR;
-      paramViewGroup.rvw = ((TextView)paramContext.findViewById(2131301013));
+      paramViewGroup = (i.a)i.this.IAj;
+      paramViewGroup.sEo = ((TextView)paramContext.findViewById(2131301013));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102961);
       return paramContext;
@@ -71,11 +71,11 @@ public final class i
     {
       AppMethodBeat.i(102962);
       paramContext = (i.a)parama;
-      m.a(i.a(i.this), paramContext.rvw);
+      m.a(i.a(i.this), paramContext.sEo);
       AppMethodBeat.o(102962);
     }
     
-    public final boolean aHs()
+    public final boolean aOh()
     {
       return false;
     }
@@ -83,7 +83,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.i
  * JD-Core Version:    0.7.0.1
  */

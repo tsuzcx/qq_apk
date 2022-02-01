@@ -1,124 +1,39 @@
 package com.tencent.mm.plugin.appbrand.o;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.widget.dialog.g;
-import com.tencent.mm.plugin.appbrand.widget.dialog.k;
-import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
-import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.network.k;
+import com.tencent.mm.protocal.protobuf.bmw;
+import com.tencent.mm.protocal.protobuf.bmx;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
-  implements DialogInterface
+  extends e
+  implements k
 {
-  private DialogInterface.OnCancelListener Vb;
-  private av irp;
-  public android.arch.a.c.a<Context, k.a> kTO;
-  private k.a kTP;
-  private boolean mCanceled = false;
-  private boolean mDismissed = false;
-  
-  public final d a(DialogInterface.OnCancelListener paramOnCancelListener)
+  public d(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, e.a<e> parama)
   {
-    AppMethodBeat.i(147345);
-    this.Vb = paramOnCancelListener;
-    if (this.kTP != null) {
-      this.kTP.setOnCancelListener(this.Vb);
-    }
-    AppMethodBeat.o(147345);
-    return this;
+    super(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramInt4, parama);
   }
   
-  public final void ag(final AppBrandRuntime paramAppBrandRuntime)
+  protected final b.a bpe()
   {
-    AppMethodBeat.i(147344);
-    if (!aq.isMainThread())
-    {
-      aq.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(147342);
-          d.this.ag(paramAppBrandRuntime);
-          AppMethodBeat.o(147342);
-        }
-      });
-      AppMethodBeat.o(147344);
-      return;
-    }
-    this.irp = new av(Looper.getMainLooper(), new av.a()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(147343);
-        if ((d.a(d.this)) || (d.b(d.this)))
-        {
-          AppMethodBeat.o(147343);
-          return false;
-        }
-        Object localObject1 = com.tencent.mm.sdk.f.a.iV(paramAppBrandRuntime.mContext);
-        if (localObject1 == null) {
-          localObject1 = paramAppBrandRuntime.mContext;
-        }
-        for (;;)
-        {
-          if (d.c(d.this) == null) {}
-          for (k.a locala = null;; locala = (k.a)d.c(d.this).apply(localObject1))
-          {
-            Object localObject2 = locala;
-            if (locala == null) {
-              localObject2 = new g((Context)localObject1);
-            }
-            ((k.a)localObject2).setOnCancelListener(d.d(d.this));
-            ((k.a)localObject2).setCancelable(true);
-            ((k.a)localObject2).setCanceledOnTouchOutside(false);
-            paramAppBrandRuntime.hKb.b((k)localObject2);
-            d.a(d.this, (k.a)localObject2);
-            AppMethodBeat.o(147343);
-            return false;
-          }
-        }
-      }
-    }, false);
-    this.irp.av(500L, 500L);
-    AppMethodBeat.o(147344);
-  }
-  
-  public final void cancel()
-  {
-    AppMethodBeat.i(147346);
-    this.mCanceled = true;
-    if (this.kTP != null)
-    {
-      this.kTP.cancel();
-      AppMethodBeat.o(147346);
-      return;
-    }
-    if (this.Vb != null) {
-      this.Vb.onCancel(this);
-    }
-    AppMethodBeat.o(147346);
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(147347);
-    this.mDismissed = true;
-    if (this.kTP != null) {
-      this.kTP.dismiss();
-    }
-    AppMethodBeat.o(147347);
+    AppMethodBeat.i(47752);
+    ac.d("MicroMsg.webview.NetSceneJSOperateImportantWxData", "getReqRespBuidler");
+    b.a locala = new b.a();
+    locala.hvt = new bmw();
+    locala.hvu = new bmx();
+    locala.uri = "/cgi-bin/mmbiz-bin/js-operatewxdata-vip";
+    locala.funcId = 1912;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    AppMethodBeat.o(47752);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.o.d
  * JD-Core Version:    0.7.0.1
  */

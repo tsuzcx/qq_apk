@@ -3,21 +3,21 @@ package com.tencent.mm.g.a;
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.support.v4.app.Fragment;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.ahc;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.aib;
 import com.tencent.mm.ui.widget.snackbar.a.c;
 
 public final class cs$a
 {
   public Activity activity;
-  public String deE;
-  public ago deS;
-  public ahc deT;
-  public int deU = 0;
-  public int deV = 0;
-  public int deW = 0;
-  public DialogInterface.OnClickListener deX;
-  public a.c deY;
+  public String dbZ;
+  public ahn dcm;
+  public aib dcn;
+  public int dco = 0;
+  public int dcp = 0;
+  public int dcq = 0;
+  public DialogInterface.OnClickListener dcr;
+  public a.c dcs;
   public String desc;
   public Fragment fragment;
   public int scene = 0;
@@ -27,7 +27,7 @@ public final class cs$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.cs.a
  * JD-Core Version:    0.7.0.1
  */

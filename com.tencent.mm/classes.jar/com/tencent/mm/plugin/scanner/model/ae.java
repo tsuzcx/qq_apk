@@ -1,126 +1,250 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.scanner.d.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.qbar.a.a;
-import d.g.b.k;
-import d.l;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/model/WxScanCodeResultFilter;", "Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "()V", "directJumpWhiteCode", "", "directJumpWhiteListCode", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "Companion", "plugin-scan_release"})
 public final class ae
-  implements c
 {
-  public static final a vQn;
-  private boolean vQm;
+  public static ae xaP;
+  public String bLs;
+  public String exO;
+  public String koE;
+  public String kow;
+  public String title;
+  public String url;
+  public c xaA;
+  c xaB;
+  public String xaC;
+  public a xaD;
+  public a xaE;
+  public a xaF;
+  public a xaG;
+  public List<String> xaH;
+  public List<String> xaI;
+  public List<String> xaJ;
+  public List<String> xaK;
+  public List<String> xaL;
+  public String xaM;
+  public String xaN;
+  public String xaO;
+  public b xay;
+  c xaz;
   
-  static
+  public static final class a
   {
-    AppMethodBeat.i(195455);
-    vQn = new a((byte)0);
-    AppMethodBeat.o(195455);
-  }
-  
-  public ae()
-  {
-    AppMethodBeat.i(195454);
-    int i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.psC, 0);
-    if (i != 0) {}
-    for (boolean bool = true;; bool = false)
+    private String country;
+    private String hEv;
+    private String hUi;
+    private String koI;
+    private String koJ;
+    private String xaQ;
+    private String xaR;
+    
+    public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
     {
-      this.vQm = bool;
-      ad.i("MicroMsg.WxScanCodeResultFilter", "alvinluo WxScanCodeResultFilter init config: %d, directJumpWhiteCode: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.vQm) });
-      AppMethodBeat.o(195454);
-      return;
-    }
-  }
-  
-  public final List<a.a> fc(List<? extends a.a> paramList)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(195453);
-    k.h(paramList, "codeResultList");
-    if (paramList.size() <= 1)
-    {
-      AppMethodBeat.o(195453);
-      return paramList;
-    }
-    List localList2 = (List)new ArrayList();
-    List localList1 = (List)new ArrayList();
-    Object localObject = ((Iterable)paramList).iterator();
-    int i = 0;
-    while (((Iterator)localObject).hasNext())
-    {
-      a.a locala = (a.a)((Iterator)localObject).next();
-      if (com.tencent.qbar.b.aNA(locala.data))
-      {
-        i += 1;
+      AppMethodBeat.i(51651);
+      String str = paramString1;
+      if (paramString1 == null) {
+        str = "";
       }
-      else
-      {
-        localList2.add(locala);
-        if (com.tencent.qbar.b.aNz(locala.data)) {
-          localList1.add(locala);
-        }
+      this.xaQ = str;
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
       }
-    }
-    int j;
-    int k;
-    int m;
-    int n;
-    boolean bool1;
-    if ((i != paramList.size()) && (localList1.size() == 1)) {
-      if (i == paramList.size() - localList1.size())
-      {
-        localObject = localList1;
-        j = localList1.size();
-        k = localList2.size();
-        m = paramList.size();
-        n = ((List)localObject).size();
-        if (((List)localObject).size() != 1) {
-          break label360;
-        }
-        bool1 = true;
-        label233:
-        if (((List)localObject).size() != paramList.size()) {
-          break label366;
-        }
+      this.xaR = paramString1;
+      paramString1 = paramString3;
+      if (paramString3 == null) {
+        paramString1 = "";
       }
+      this.koI = paramString1;
+      paramString1 = paramString4;
+      if (paramString4 == null) {
+        paramString1 = "";
+      }
+      this.hEv = paramString1;
+      paramString1 = paramString5;
+      if (paramString5 == null) {
+        paramString1 = "";
+      }
+      this.hUi = paramString1;
+      paramString1 = paramString6;
+      if (paramString6 == null) {
+        paramString1 = "";
+      }
+      this.koJ = paramString1;
+      paramString1 = paramString7;
+      if (paramString7 == null) {
+        paramString1 = "";
+      }
+      this.country = paramString1;
+      AppMethodBeat.o(51651);
     }
-    for (;;)
+    
+    public final String bgx()
     {
-      ad.i("MicroMsg.WxScanCodeResultFilter", "alvinluo filter badCodeNum: %d, whiteCodeNum: %d, commonCodeNum: %d, originNum: %d, finalNum: %d, directJump: %b, showMultiCode: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      AppMethodBeat.o(195453);
-      return localObject;
-      if (i == 0)
+      AppMethodBeat.i(51652);
+      if ((bs.aLj(this.xaQ)) || (bs.aLj(this.xaR)) || (bs.aLj(this.koI)) || (bs.aLj(this.hEv)) || (bs.aLj(this.hUi)) || (bs.aLj(this.country)))
       {
-        if (this.vQm)
+        localObject = new StringBuilder();
+        if (this.country.length() > 0)
         {
-          localObject = localList1;
-          break;
+          ((StringBuilder)localObject).append(this.country);
+          ((StringBuilder)localObject).append("\n");
         }
-        localObject = paramList;
-        break;
+        if (this.hUi.length() > 0) {
+          ((StringBuilder)localObject).append(this.hUi + " ");
+        }
+        if (this.hEv.length() > 0) {
+          ((StringBuilder)localObject).append(this.hEv);
+        }
+        if ((this.hUi.length() > 0) || (this.hEv.length() > 0)) {
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.koI.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.koI + " ");
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.xaR.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.xaR);
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.xaQ.length() > 0)
+        {
+          ((StringBuilder)localObject).append(this.xaQ);
+          ((StringBuilder)localObject).append("\n");
+        }
+        if (this.koJ.length() > 0) {
+          ((StringBuilder)localObject).append(this.koJ);
+        }
+        str = ((StringBuilder)localObject).toString();
+        localObject = str;
+        if (str.endsWith("\n")) {
+          localObject = str.substring(0, str.length() - 1);
+        }
+        AppMethodBeat.o(51652);
+        return localObject;
       }
-      localObject = paramList;
-      break;
-      localObject = paramList;
-      break;
-      label360:
-      bool1 = false;
-      break label233;
-      label366:
-      bool2 = false;
+      Object localObject = new StringBuilder();
+      if (this.xaQ.length() > 0)
+      {
+        ((StringBuilder)localObject).append(this.xaQ);
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.xaR.length() > 0)
+      {
+        ((StringBuilder)localObject).append(this.xaR);
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.koI.length() > 0)
+      {
+        ((StringBuilder)localObject).append(this.koI);
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.hEv.length() > 0) {
+        ((StringBuilder)localObject).append(this.hEv + " ");
+      }
+      if (this.hUi.length() > 0) {
+        ((StringBuilder)localObject).append(this.hUi + " ");
+      }
+      if (this.koJ.length() > 0) {
+        ((StringBuilder)localObject).append(this.koJ);
+      }
+      if ((this.hEv.length() > 0) || (this.hUi.length() > 0)) {
+        ((StringBuilder)localObject).append("\n");
+      }
+      if (this.country.length() > 0) {
+        ((StringBuilder)localObject).append(this.country);
+      }
+      String str = ((StringBuilder)localObject).toString();
+      localObject = str;
+      if (str.endsWith("\n")) {
+        localObject = str.substring(0, str.length() - 1);
+      }
+      AppMethodBeat.o(51652);
+      return localObject;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/model/WxScanCodeResultFilter$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
-  public static final class a {}
+  public static final class b
+  {
+    private String firstName;
+    private String lastName;
+    private String middleName;
+    
+    public b(String paramString1, String paramString2, String paramString3)
+    {
+      AppMethodBeat.i(51653);
+      String str = paramString1;
+      if (paramString1 == null) {
+        str = "";
+      }
+      this.firstName = str;
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
+      this.middleName = paramString1;
+      paramString1 = paramString3;
+      if (paramString3 == null) {
+        paramString1 = "";
+      }
+      this.lastName = paramString1;
+      AppMethodBeat.o(51653);
+    }
+    
+    public final String bgx()
+    {
+      AppMethodBeat.i(51654);
+      Object localObject = new StringBuilder();
+      if ((bs.aLj(this.firstName)) || (bs.aLj(this.middleName)) || (bs.aLj(this.lastName)))
+      {
+        if (this.lastName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.lastName);
+        }
+        if (this.middleName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.middleName);
+        }
+        if (this.firstName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.firstName);
+        }
+      }
+      for (;;)
+      {
+        localObject = ((StringBuilder)localObject).toString();
+        AppMethodBeat.o(51654);
+        return localObject;
+        if (this.firstName.trim().length() > 0) {
+          ((StringBuilder)localObject).append(this.firstName);
+        }
+        if (this.middleName.trim().length() > 0)
+        {
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.middleName);
+        }
+        if (this.lastName.trim().length() > 0)
+        {
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(this.lastName);
+        }
+      }
+    }
+  }
+  
+  public static final class c
+  {
+    public String gSN;
+    public String xaS;
+    
+    public c(String paramString1, String paramString2)
+    {
+      this.gSN = paramString1;
+      this.xaS = paramString2;
+    }
+  }
 }
 
 

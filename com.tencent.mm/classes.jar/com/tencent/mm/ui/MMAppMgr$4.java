@@ -5,7 +5,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 
 final class MMAppMgr$4
   implements CompoundButton.OnCheckedChangeListener
@@ -13,8 +13,8 @@ final class MMAppMgr$4
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AppMethodBeat.i(33406);
-    az.arV();
-    paramCompoundButton = c.afk();
+    az.ayM();
+    paramCompoundButton = c.agA();
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {

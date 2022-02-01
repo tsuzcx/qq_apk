@@ -5,7 +5,7 @@ import com.tencent.mm.compatible.deviceinfo.af;
 
 public final class l
 {
-  public static boolean XU()
+  public static boolean YR()
   {
     AppMethodBeat.i(155909);
     String str = af.get("ro.mediatek.platform");

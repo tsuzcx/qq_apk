@@ -9,22 +9,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
+import com.tencent.mm.aj.c;
 import com.tencent.mm.plugin.account.friend.a.h;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.ui.q;
-import com.tencent.mm.ui.q.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.r.a;
 
 @Deprecated
 final class d
-  extends q<com.tencent.mm.plugin.account.friend.a.g>
+  extends r<com.tencent.mm.plugin.account.friend.a.g>
 {
-  private String iiy;
-  a iqv;
-  private int[] mv;
+  private String iIG;
+  a iQC;
+  private int[] nw;
   
-  public d(Context paramContext, q.a parama)
+  public d(Context paramContext, r.a parama)
   {
     super(paramContext, new com.tencent.mm.plugin.account.friend.a.g());
     AppMethodBeat.i(127952);
@@ -32,31 +32,31 @@ final class d
     AppMethodBeat.o(127952);
   }
   
-  public final void BW(String paramString)
+  public final void FZ(String paramString)
   {
     AppMethodBeat.i(127955);
-    this.iiy = bt.aFQ(paramString.trim());
-    cHX();
-    Wd();
+    this.iIG = bs.aLh(paramString.trim());
+    cVi();
+    Xb();
     AppMethodBeat.o(127955);
   }
   
-  public final void Wd()
+  public final void Xb()
   {
     AppMethodBeat.i(127954);
-    setCursor(com.tencent.mm.plugin.account.a.getFacebookFrdStg().Cj(this.iiy));
-    this.mv = new int[getCount()];
-    if ((this.iqv != null) && (this.iiy != null)) {
-      this.iqv.pY(getCursor().getCount());
+    setCursor(com.tencent.mm.plugin.account.a.getFacebookFrdStg().Gm(this.iIG));
+    this.nw = new int[getCount()];
+    if ((this.iQC != null) && (this.iIG != null)) {
+      this.iQC.qL(getCursor().getCount());
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(127954);
   }
   
-  public final void We()
+  public final void Xc()
   {
     AppMethodBeat.i(127953);
-    Wd();
+    Xb();
     AppMethodBeat.o(127953);
   }
   
@@ -68,24 +68,24 @@ final class d
     {
       paramViewGroup = new b();
       paramView = View.inflate(this.context, 2131493929, null);
-      paramViewGroup.fuj = ((ImageView)paramView.findViewById(2131298722));
-      paramViewGroup.iiF = ((TextView)paramView.findViewById(2131303561));
-      paramViewGroup.ikq = ((TextView)paramView.findViewById(2131303556));
-      paramViewGroup.iqw = ((TextView)paramView.findViewById(2131303557));
-      paramViewGroup.iqx = ((TextView)paramView.findViewById(2131303559));
-      paramViewGroup.iqy = ((ImageView)paramView.findViewById(2131303564));
+      paramViewGroup.fxQ = ((ImageView)paramView.findViewById(2131298722));
+      paramViewGroup.iIN = ((TextView)paramView.findViewById(2131303561));
+      paramViewGroup.iKx = ((TextView)paramView.findViewById(2131303556));
+      paramViewGroup.iQD = ((TextView)paramView.findViewById(2131303557));
+      paramViewGroup.iQE = ((TextView)paramView.findViewById(2131303559));
+      paramViewGroup.iQF = ((ImageView)paramView.findViewById(2131303564));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.iiF.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, ((com.tencent.mm.plugin.account.friend.a.g)localObject).aIF(), paramViewGroup.iiF.getTextSize()));
-      paramViewGroup.iqx.setVisibility(8);
-      paramViewGroup.iqy.setVisibility(0);
-      switch (this.mv[paramInt])
+      paramViewGroup.iIN.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, ((com.tencent.mm.plugin.account.friend.a.g)localObject).aPw(), paramViewGroup.iIN.getTextSize()));
+      paramViewGroup.iQE.setVisibility(8);
+      paramViewGroup.iQF.setVisibility(0);
+      switch (this.nw[paramInt])
       {
       case 1: 
       default: 
         label196:
-        localObject = c.vH(((com.tencent.mm.plugin.account.friend.a.g)localObject).evr);
+        localObject = c.zN(((com.tencent.mm.plugin.account.friend.a.g)localObject).exN);
         if (localObject == null) {
-          paramViewGroup.fuj.setImageDrawable(com.tencent.mm.cd.a.l(this.context, 2131690013));
+          paramViewGroup.fxQ.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690013));
         }
         break;
       }
@@ -96,51 +96,51 @@ final class d
       return paramView;
       paramViewGroup = (b)paramView.getTag();
       break;
-      paramViewGroup.iqw.setVisibility(8);
-      paramViewGroup.ikq.setVisibility(0);
-      paramViewGroup.ikq.setText(2131759666);
-      paramViewGroup.ikq.setTextColor(this.context.getResources().getColor(2131099893));
+      paramViewGroup.iQD.setVisibility(8);
+      paramViewGroup.iKx.setVisibility(0);
+      paramViewGroup.iKx.setText(2131759666);
+      paramViewGroup.iKx.setTextColor(this.context.getResources().getColor(2131099893));
       break label196;
-      if ((((com.tencent.mm.plugin.account.friend.a.g)localObject).status != 102) && (!((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHT(((com.tencent.mm.plugin.account.friend.a.g)localObject).getUsername())))
+      if ((((com.tencent.mm.plugin.account.friend.a.g)localObject).status != 102) && (!((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNo(((com.tencent.mm.plugin.account.friend.a.g)localObject).getUsername())))
       {
-        paramViewGroup.ikq.setVisibility(8);
-        paramViewGroup.iqw.setVisibility(0);
+        paramViewGroup.iKx.setVisibility(8);
+        paramViewGroup.iQD.setVisibility(0);
         break label196;
       }
       if (((com.tencent.mm.plugin.account.friend.a.g)localObject).status == 102)
       {
-        paramViewGroup.ikq.setVisibility(8);
-        paramViewGroup.iqw.setVisibility(8);
-        paramViewGroup.iqy.setVisibility(8);
+        paramViewGroup.iKx.setVisibility(8);
+        paramViewGroup.iQD.setVisibility(8);
+        paramViewGroup.iQF.setVisibility(8);
         break label196;
       }
-      paramViewGroup.ikq.setVisibility(0);
-      paramViewGroup.ikq.setText(2131759662);
-      paramViewGroup.ikq.setTextColor(this.context.getResources().getColor(2131099892));
-      paramViewGroup.iqw.setVisibility(8);
+      paramViewGroup.iKx.setVisibility(0);
+      paramViewGroup.iKx.setText(2131759662);
+      paramViewGroup.iKx.setTextColor(this.context.getResources().getColor(2131099892));
+      paramViewGroup.iQD.setVisibility(8);
       break label196;
-      paramViewGroup.fuj.setImageBitmap((Bitmap)localObject);
+      paramViewGroup.fxQ.setImageBitmap((Bitmap)localObject);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void pY(int paramInt);
+    public abstract void qL(int paramInt);
   }
   
   static final class b
   {
-    ImageView fuj;
-    TextView iiF;
-    TextView ikq;
-    TextView iqw;
-    TextView iqx;
-    ImageView iqy;
+    ImageView fxQ;
+    TextView iIN;
+    TextView iKx;
+    TextView iQD;
+    TextView iQE;
+    ImageView iQF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.d
  * JD-Core Version:    0.7.0.1
  */

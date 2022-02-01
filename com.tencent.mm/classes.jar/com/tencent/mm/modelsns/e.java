@@ -1,33 +1,33 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class e
 {
-  public static int htt;
-  public static e htu;
+  public static int hTV;
+  public static e hTW;
   
   static
   {
     AppMethodBeat.i(125681);
-    htt = 0;
-    htu = new e();
+    hTV = 0;
+    hTW = new e();
     AppMethodBeat.o(125681);
   }
   
-  public static void aBk()
+  public static void aIa()
   {
     AppMethodBeat.i(125680);
-    c localc = com.tencent.mm.model.c.d.aty().qu("100024");
-    ad.i("MicroMsg.StatisticsOplogAbTest", "test " + localc.field_rawXML + " " + localc.isValid());
+    c localc = com.tencent.mm.model.c.d.aAp().tJ("100024");
+    ac.i("MicroMsg.StatisticsOplogAbTest", "test " + localc.field_rawXML + " " + localc.isValid());
     if (localc.isValid())
     {
-      htt = bt.aGh((String)localc.eJy().get("Switch"));
-      ad.i("MicroMsg.StatisticsOplogAbTest", "switchVal " + htt);
+      hTV = bs.aLy((String)localc.eYV().get("Switch"));
+      ac.i("MicroMsg.StatisticsOplogAbTest", "switchVal " + hTV);
     }
     AppMethodBeat.o(125680);
   }

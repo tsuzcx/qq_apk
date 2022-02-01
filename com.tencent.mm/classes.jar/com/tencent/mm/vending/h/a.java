@@ -6,7 +6,7 @@ public abstract interface a
 {
   public abstract void c(Runnable paramRunnable, long paramLong);
   
-  public abstract void fm();
+  public abstract void fu();
   
   public abstract Looper getLooper();
   

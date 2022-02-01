@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.SightParams;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class c$6
   implements View.OnClickListener
@@ -19,8 +19,8 @@ final class c$6
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(30817);
-    ad.i("MicroMsg.WNNoteFootPannel", "go to GalleryEntryUI");
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().X(-1, false);
+    ac.i("MicroMsg.WNNoteFootPannel", "go to GalleryEntryUI");
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().X(-1, false);
     Intent localIntent = new Intent();
     localIntent.putExtra("max_select_count", 9);
     localIntent.putExtra("query_source_type", 13);
@@ -33,17 +33,17 @@ final class c$6
       paramView = new SightParams(4, 0);
     }
     localObject = "micromsg_" + System.currentTimeMillis();
-    String str1 = b.ais() + (String)localObject + ".mp4";
-    String str2 = b.ais() + (String)localObject + ".jpeg";
+    String str1 = b.aps() + (String)localObject + ".mp4";
+    String str2 = b.aps() + (String)localObject + ".jpeg";
     int i = localIntent.getIntExtra("key_pick_local_media_duration", 60);
     SightParams localSightParams = new SightParams(4, 1);
-    localSightParams.tAY = 2;
+    localSightParams.uJv = 2;
     localSightParams.mode = 0;
-    if (localSightParams.gCB == null) {
-      localSightParams.gCB = new VideoTransPara();
+    if (localSightParams.hcZ == null) {
+      localSightParams.hcZ = new VideoTransPara();
     }
-    localSightParams.gCB.duration = i;
-    localSightParams.p((String)localObject, str1, str2, b.ais() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
+    localSightParams.hcZ.duration = i;
+    localSightParams.r((String)localObject, str1, str2, b.aps() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
     localIntent.putExtra("KEY_SIGHT_PARAMS", paramView);
     localIntent.putExtra("record_video_force_sys_camera", false);
     localIntent.putExtra("record_video_is_sight_capture", true);
@@ -55,7 +55,7 @@ final class c$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.c.6
  * JD-Core Version:    0.7.0.1
  */

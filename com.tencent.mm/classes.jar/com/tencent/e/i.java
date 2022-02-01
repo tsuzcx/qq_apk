@@ -8,19 +8,11 @@ public abstract interface i
 {
   public abstract b a(String paramString, int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue);
   
+  public abstract d<?> a(Runnable paramRunnable, long paramLong1, long paramLong2);
+  
   public abstract d<?> a(Runnable paramRunnable, long paramLong, String paramString);
   
   public abstract <T> d<T> a(Callable<T> paramCallable, String paramString);
-  
-  public abstract d<?> aN(Runnable paramRunnable);
-  
-  public abstract boolean aNW(String paramString);
-  
-  public abstract b aNX(String paramString);
-  
-  public abstract d<?> aO(Runnable paramRunnable);
-  
-  public abstract d<?> aP(Runnable paramRunnable);
   
   public abstract d<?> aQ(Runnable paramRunnable);
   
@@ -28,13 +20,25 @@ public abstract interface i
   
   public abstract d<?> aS(Runnable paramRunnable);
   
+  public abstract d<?> aT(Runnable paramRunnable);
+  
+  public abstract b aTA(String paramString);
+  
+  public abstract boolean aTz(String paramString);
+  
+  public abstract d<?> aU(Runnable paramRunnable);
+  
+  public abstract d<?> aV(Runnable paramRunnable);
+  
+  public abstract d<?> b(Runnable paramRunnable, long paramLong, String paramString);
+  
   public abstract <T> d<T> d(Callable<T> paramCallable);
   
   public abstract d<?> f(Runnable paramRunnable, String paramString);
   
-  public abstract boolean fnO();
+  public abstract boolean fEe();
   
-  public abstract a fnP();
+  public abstract a fEf();
   
   public abstract d<?> g(Runnable paramRunnable, String paramString);
   

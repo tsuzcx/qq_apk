@@ -60,7 +60,7 @@ public class KindaActionSheetImpl
     for (boolean bool = true;; bool = false)
     {
       this.sheet = new e(localActivity, 1, bool);
-      this.sheet.HrX = new n.c()
+      this.sheet.ISu = new n.c()
       {
         public void onCreateMMMenu(l paramAnonymousl)
         {
@@ -75,7 +75,7 @@ public class KindaActionSheetImpl
           AppMethodBeat.o(18830);
         }
       };
-      this.sheet.HrY = new n.d()
+      this.sheet.ISv = new n.d()
       {
         public void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -86,7 +86,7 @@ public class KindaActionSheetImpl
           AppMethodBeat.o(18831);
         }
       };
-      this.sheet.csG();
+      this.sheet.cED();
       AppMethodBeat.o(18834);
       return;
     }

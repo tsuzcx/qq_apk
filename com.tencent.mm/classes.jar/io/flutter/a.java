@@ -2,21 +2,23 @@ package io.flutter;
 
 public final class a
 {
-  private static int azO = 3;
+  private static int aAI = 3;
   
-  public static void ftS() {}
+  public static void fMD() {}
   
-  public static void ftT() {}
+  public static void fME() {}
   
-  public static void ftU() {}
+  public static void fMF() {}
   
-  public static void ftV() {}
+  public static void fMG() {}
   
-  public static void ftW() {}
+  public static void fMH() {}
+  
+  public static void fMI() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.a
  * JD-Core Version:    0.7.0.1
  */

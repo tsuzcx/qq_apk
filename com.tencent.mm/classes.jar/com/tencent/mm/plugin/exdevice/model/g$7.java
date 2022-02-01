@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cw;
+import com.tencent.mm.g.c.cy;
 import com.tencent.mm.plugin.exdevice.i.b;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.au.a;
 import java.util.List;
 
 final class g$7
-  implements av.a
+  implements au.a
 {
   g$7(g paramg) {}
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(23325);
-    int j = this.oVB.oVm.size();
+    int j = this.pyM.pyx.size();
     int i = 0;
     while (i < j)
     {
-      if ((((b)this.oVB.oVm.get(i)).eKt.contains("internet_to_device")) && (((b)this.oVB.oVm.get(i)).eKt.contains("wechat_to_device")) && (!this.oVB.oVn.contains(this.oVB.oVm.get(i))))
+      if ((((b)this.pyM.pyx.get(i)).eNl.contains("internet_to_device")) && (((b)this.pyM.pyx.get(i)).eNl.contains("wechat_to_device")) && (!this.pyM.pyy.contains(this.pyM.pyx.get(i))))
       {
-        this.oVB.oVn.add(this.oVB.oVm.get(i));
-        g.cS(this.oVB.oVn);
+        this.pyM.pyy.add(this.pyM.pyx.get(i));
+        g.cU(this.pyM.pyy);
       }
       i += 1;
     }
@@ -31,7 +31,7 @@ final class g$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g.7
  * JD-Core Version:    0.7.0.1
  */

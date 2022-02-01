@@ -16,29 +16,29 @@ public final class c
   
   public static final class c
   {
-    public int fXK;
-    public int fXL;
-    public int fXM;
-    public int[] fXN;
-    public long fXu;
+    public long gcb;
+    public int gcr;
+    public int gcs;
+    public int gct;
+    public int[] gcu;
     public int scene;
     
     public c(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
     {
       AppMethodBeat.i(62457);
       this.scene = paramInt1;
-      this.fXu = paramLong;
-      this.fXK = paramInt2;
-      this.fXL = paramInt3;
-      this.fXM = paramInt4;
-      this.fXN = ((int[])paramArrayOfInt.clone());
+      this.gcb = paramLong;
+      this.gcr = paramInt2;
+      this.gcs = paramInt3;
+      this.gct = paramInt4;
+      this.gcu = ((int[])paramArrayOfInt.clone());
       AppMethodBeat.o(62457);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(62458);
-      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.fXu + ", cpulevel:" + this.fXK + ", gpulevel:" + this.fXL + ", iolevel:" + this.fXM + ", bindtids size:" + this.fXN.length + "]";
+      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.gcb + ", cpulevel:" + this.gcr + ", gpulevel:" + this.gcs + ", iolevel:" + this.gct + ", bindtids size:" + this.gcu.length + "]";
       AppMethodBeat.o(62458);
       return str;
     }

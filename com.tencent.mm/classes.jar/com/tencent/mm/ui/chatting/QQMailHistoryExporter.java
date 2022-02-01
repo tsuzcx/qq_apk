@@ -2,11 +2,11 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.kp;
-import com.tencent.mm.g.a.kp.b;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.ky;
+import com.tencent.mm.g.a.ky.b;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.c;
@@ -19,12 +19,11 @@ import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.ui.tools.x;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bl.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bo.a;
 import com.tencent.mm.vfs.e;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,32 +32,40 @@ import java.util.List;
 
 public final class QQMailHistoryExporter
 {
-  private static final String Gqt;
-  private static final char[] lMb;
-  private static final String[] lMc;
-  private List<bl> GmU;
-  private String Gqq = null;
+  private static final String HQl;
+  private static final char[] mnY;
+  private static final String[] mnZ;
+  private List<bo> HMK;
+  private String HQi = null;
   private Context context;
-  private af dpQ = null;
+  private ai dnB = null;
   private float textSize = 1.0F;
   
   static
   {
     AppMethodBeat.i(34858);
-    Gqt = "<img id=\"%d:%d\" src=\"%s\" height=\"100\" onclick=\"" + x.kG("weixin://img_onclick/", "this.id + '@@' + this.src") + "\"></img>";
-    lMb = new char[] { 60, 62, 34, 39, 38, 10 };
-    lMc = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "<br />" };
+    HQl = "<img id=\"%d:%d\" src=\"%s\" height=\"100\" onclick=\"" + x.ld("weixin://img_onclick/", "this.id + '@@' + this.src") + "\"></img>";
+    mnY = new char[] { 60, 62, 34, 39, 38, 10 };
+    mnZ = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "<br />" };
     AppMethodBeat.o(34858);
   }
   
-  public QQMailHistoryExporter(Context paramContext, List<bl> paramList, af paramaf)
+  public QQMailHistoryExporter(Context paramContext, List<bo> paramList, ai paramai)
   {
     this.context = paramContext;
-    this.GmU = paramList;
-    this.dpQ = paramaf;
+    this.HMK = paramList;
+    this.dnB = paramai;
   }
   
-  private static String aGf(String paramString)
+  private static String Bb(long paramLong)
+  {
+    AppMethodBeat.i(34857);
+    String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date(paramLong));
+    AppMethodBeat.o(34857);
+    return str;
+  }
+  
+  private static String aLw(String paramString)
   {
     AppMethodBeat.i(34851);
     if (paramString == null)
@@ -73,15 +80,15 @@ public final class QQMailHistoryExporter
     {
       char c = paramString.charAt(i);
       int m = 1;
-      int j = lMb.length - 1;
+      int j = mnY.length - 1;
       for (;;)
       {
         int k = m;
         if (j >= 0)
         {
-          if (lMb[j] == c)
+          if (mnY[j] == c)
           {
-            localStringBuffer.append(lMc[j]);
+            localStringBuffer.append(mnZ[j]);
             k = 0;
           }
         }
@@ -101,141 +108,141 @@ public final class QQMailHistoryExporter
     return paramString;
   }
   
-  private String bj(bl parambl)
+  private String bl(bo parambo)
   {
     AppMethodBeat.i(34854);
     Object localObject = null;
-    if (parambl.eJN()) {
+    if (parambo.eZl()) {
       localObject = String.format("[%s]", new Object[] { this.context.getString(2131758203) });
     }
     for (;;)
     {
-      ad.d("MicroMsg.QQMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject });
-      parambl = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bk(parambl), Float.valueOf(this.textSize), localObject });
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.QQMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject });
+      parambo = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bm(parambo), Float.valueOf(this.textSize), localObject });
       AppMethodBeat.o(34854);
-      return parambl;
-      if (parambl.eLT())
+      return parambo;
+      if (parambo.fbx())
       {
-        if (parambl.field_isSend == 1) {
+        if (parambo.field_isSend == 1) {
           localObject = this.context.getString(2131758201);
         } else {
           localObject = this.context.getString(2131758200);
         }
       }
-      else if (parambl.cxD())
+      else if (parambo.cKP())
       {
-        localObject = new kp();
-        ((kp)localObject).dpf.doZ = 1;
-        ((kp)localObject).dpf.dbD = parambl;
-        com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
-        localObject = String.format("[%s]", new Object[] { ((kp)localObject).dpg.dld });
+        localObject = new ky();
+        ((ky)localObject).dmP.dmJ = 1;
+        ((ky)localObject).dmP.cZc = parambo;
+        com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
+        localObject = String.format("[%s]", new Object[] { ((ky)localObject).dmQ.diM });
       }
-      else if (parambl.cxB())
+      else if (parambo.cKN())
       {
-        localObject = bl(parambl);
+        localObject = bn(parambo);
       }
-      else if (parambl.eLX())
+      else if (parambo.fbB())
       {
-        az.arV();
-        localObject = c.apO().agC(parambl.field_content).nickname;
+        az.ayM();
+        localObject = c.awD().alw(parambo.field_content).nickname;
         localObject = String.format("[%s: %s]", new Object[] { this.context.getString(2131758195), localObject });
       }
-      else if (parambl.cjM())
+      else if (parambo.crt())
       {
         localObject = this.context.getString(2131758202);
-        o.aCI();
-        localObject = String.format("[%s: %s(%s)]", new Object[] { localObject, new e(t.zQ(parambl.field_imgPath)).getName(), this.context.getString(2131758194) });
+        o.aJy();
+        localObject = String.format("[%s: %s(%s)]", new Object[] { localObject, new e(t.DV(parambo.field_imgPath)).getName(), this.context.getString(2131758194) });
       }
-      else if ((parambl.eLY()) || (parambl.eLZ()))
+      else if ((parambo.fbC()) || (parambo.fbD()))
       {
         localObject = String.format("[%s]", new Object[] { this.context.getString(2131758196) });
       }
     }
   }
   
-  private String bk(bl parambl)
+  private String bm(bo parambo)
   {
     AppMethodBeat.i(34856);
     String str = null;
-    if (!w.pF(this.dpQ.field_username)) {
-      str = v.sh(parambl.field_talker);
+    if (!w.sQ(this.dnB.field_username)) {
+      str = v.wk(parambo.field_talker);
     }
     for (;;)
     {
-      if (parambl.field_isSend == 1)
+      if (parambo.field_isSend == 1)
       {
-        ad.i("MicroMsg.QQMailHistoryExporter", "isSend");
-        str = u.aqI();
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.QQMailHistoryExporter", "isSend");
+        str = u.axy();
       }
-      long l = parambl.field_createTime;
-      parambl = new SimpleDateFormat("HH:mm").format(new Date(l));
+      long l = parambo.field_createTime;
+      parambo = new SimpleDateFormat("HH:mm").format(new Date(l));
       Object localObject = new StringBuilder("");
       ((StringBuilder)localObject).append(str);
       ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(parambl);
-      parambl = ((StringBuilder)localObject).toString();
+      ((StringBuilder)localObject).append(parambo);
+      parambo = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(34856);
-      return parambl;
-      localObject = parambl.field_content;
-      int i = bi.uc((String)localObject);
+      return parambo;
+      localObject = parambo.field_content;
+      int i = bi.yi((String)localObject);
       if (i != -1) {
-        str = v.sh(((String)localObject).substring(0, i).trim());
+        str = v.wk(((String)localObject).substring(0, i).trim());
       }
     }
   }
   
-  private String bl(bl parambl)
+  private String bn(bo parambo)
   {
     AppMethodBeat.i(34855);
-    Object localObject2 = parambl.field_content;
+    Object localObject2 = parambo.field_content;
     Object localObject1 = localObject2;
-    if (w.pF(this.dpQ.field_username))
+    if (w.sQ(this.dnB.field_username))
     {
-      ad.d("MicroMsg.QQMailHistoryExporter", "chatroom msg, parse it");
-      int i = bi.uc(parambl.field_content);
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.QQMailHistoryExporter", "chatroom msg, parse it");
+      int i = bi.yi(parambo.field_content);
       localObject1 = localObject2;
       if (i != -1) {
-        localObject1 = parambl.field_content.substring(i + 1).trim();
+        localObject1 = parambo.field_content.substring(i + 1).trim();
       }
     }
-    localObject2 = k.b.rx(bt.aGg((String)localObject1));
+    localObject2 = k.b.vA(bs.aLx((String)localObject1));
     if (localObject2 == null)
     {
-      ad.w("MicroMsg.QQMailHistoryExporter", "appmsg content is null");
-      parambl = String.format("[%s]", new Object[] { this.context.getString(2131758193) });
+      com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.QQMailHistoryExporter", "appmsg content is null");
+      parambo = String.format("[%s]", new Object[] { this.context.getString(2131758193) });
       AppMethodBeat.o(34855);
-      return parambl;
+      return parambo;
     }
-    g localg = com.tencent.mm.pluginsdk.model.app.h.j(((k.b)localObject2).appId, true, false);
-    if ((localg == null) || (bt.isNullOrNil(localg.field_appName)))
+    g localg = com.tencent.mm.pluginsdk.model.app.h.k(((k.b)localObject2).appId, true, false);
+    if ((localg == null) || (bs.isNullOrNil(localg.field_appName)))
     {
       localObject1 = ((k.b)localObject2).appName;
       localObject1 = com.tencent.mm.pluginsdk.model.app.h.a(this.context, localg, (String)localObject1);
-      if (!parambl.eMa()) {
+      if (!parambo.fbF()) {
         break label233;
       }
-      if (!bt.isNullOrNil((String)localObject1)) {
+      if (!bs.isNullOrNil((String)localObject1)) {
         break label204;
       }
-      parambl = aGf(((k.b)localObject2).title);
+      parambo = aLw(((k.b)localObject2).title);
     }
     for (;;)
     {
       AppMethodBeat.o(34855);
-      return parambl;
+      return parambo;
       localObject1 = localg.field_appName;
       break;
       label204:
-      parambl = String.format("[%s: %s]", new Object[] { localObject1, aGf(((k.b)localObject2).title) });
+      parambo = String.format("[%s: %s]", new Object[] { localObject1, aLw(((k.b)localObject2).title) });
       continue;
       label233:
-      if (parambl.eMb())
+      if (parambo.fbG())
       {
-        localObject1 = ac.b(parambl, (k.b)localObject2);
-        if (!bt.isNullOrNil((String)localObject1))
+        localObject1 = ac.b(parambo, (k.b)localObject2);
+        if (!bs.isNullOrNil((String)localObject1))
         {
           localObject2 = "file://".concat(String.valueOf(localObject1));
-          parambl = String.format(Gqt, new Object[] { Long.valueOf(parambl.field_msgId), Long.valueOf(parambl.field_msgSvrId), localObject2, localObject1 });
+          parambo = String.format(HQl, new Object[] { Long.valueOf(parambo.field_msgId), Long.valueOf(parambo.field_msgSvrId), localObject2, localObject1 });
         }
       }
       else
@@ -244,190 +251,182 @@ public final class QQMailHistoryExporter
         {
         case 7: 
         default: 
-          parambl = String.format("[%s]", new Object[] { this.context.getString(2131758193) });
+          parambo = String.format("[%s]", new Object[] { this.context.getString(2131758193) });
           break;
         case 3: 
-          if (bt.isNullOrNil(((k.b)localObject2).description))
+          if (bs.isNullOrNil(((k.b)localObject2).description))
           {
-            parambl = String.format("[%s: %s]", new Object[] { this.context.getString(2131758199), aGf(((k.b)localObject2).title) });
+            parambo = String.format("[%s: %s]", new Object[] { this.context.getString(2131758199), aLw(((k.b)localObject2).title) });
             continue;
           }
-          parambl = String.format("[%s: %s-%s]", new Object[] { this.context.getString(2131758199), aGf(((k.b)localObject2).title), aGf(((k.b)localObject2).description) });
+          parambo = String.format("[%s: %s-%s]", new Object[] { this.context.getString(2131758199), aLw(((k.b)localObject2).title), aLw(((k.b)localObject2).description) });
           break;
         case 8: 
-          parambl = String.format("[%s]", new Object[] { this.context.getString(2131758196) });
+          parambo = String.format("[%s]", new Object[] { this.context.getString(2131758196) });
           break;
         case 6: 
-          if (bt.isNullOrNil(((k.b)localObject2).description))
+          if (bs.isNullOrNil(((k.b)localObject2).description))
           {
-            parambl = String.format("[%s: %s]", new Object[] { this.context.getString(2131758197), aGf(((k.b)localObject2).title) });
+            parambo = String.format("[%s: %s]", new Object[] { this.context.getString(2131758197), aLw(((k.b)localObject2).title) });
             continue;
           }
-          parambl = String.format("[%s: %s-%s(%s)]", new Object[] { this.context.getString(2131758197), aGf(((k.b)localObject2).title), aGf(((k.b)localObject2).description), this.context.getString(2131758194) });
+          parambo = String.format("[%s: %s-%s(%s)]", new Object[] { this.context.getString(2131758197), aLw(((k.b)localObject2).title), aLw(((k.b)localObject2).description), this.context.getString(2131758194) });
           break;
         case 2: 
-          localObject1 = ac.b(parambl, (k.b)localObject2);
-          if (!bt.isNullOrNil((String)localObject1))
+          localObject1 = ac.b(parambo, (k.b)localObject2);
+          if (!bs.isNullOrNil((String)localObject1))
           {
             localObject2 = "file://".concat(String.valueOf(localObject1));
-            parambl = String.format(Gqt, new Object[] { Long.valueOf(parambl.field_msgId), Long.valueOf(parambl.field_msgSvrId), localObject2, localObject1 });
+            parambo = String.format(HQl, new Object[] { Long.valueOf(parambo.field_msgId), Long.valueOf(parambo.field_msgSvrId), localObject2, localObject1 });
           }
           break;
         case 1: 
-          if (bt.isNullOrNil((String)localObject1))
+          if (bs.isNullOrNil((String)localObject1))
           {
-            parambl = aGf(((k.b)localObject2).title);
+            parambo = aLw(((k.b)localObject2).title);
             continue;
           }
-          parambl = String.format("[%s: %s]", new Object[] { localObject1, aGf(((k.b)localObject2).title) });
+          parambo = String.format("[%s: %s]", new Object[] { localObject1, aLw(((k.b)localObject2).title) });
           break;
         case 4: 
         case 5: 
-          parambl = String.format("[%s: %s]", new Object[] { aGf(((k.b)localObject2).title), aGf(((k.b)localObject2).url) });
+          parambo = String.format("[%s: %s]", new Object[] { aLw(((k.b)localObject2).title), aLw(((k.b)localObject2).url) });
           break;
         }
       }
-      parambl = "";
+      parambo = "";
     }
   }
   
-  private String eWd()
+  private String flP()
   {
     AppMethodBeat.i(34853);
     Object localObject;
-    if (!w.pF(this.dpQ.field_username))
+    if (!w.sQ(this.dnB.field_username))
     {
       str1 = this.context.getString(2131763060);
-      localObject = this.dpQ.ZW();
-      az.arV();
-      str1 = String.format(str1, new Object[] { localObject, c.afk().get(4, null) });
+      localObject = this.dnB.aaR();
+      az.ayM();
+      str1 = String.format(str1, new Object[] { localObject, c.agA().get(4, null) });
       AppMethodBeat.o(34853);
       return str1;
     }
-    if (bt.isNullOrNil(this.dpQ.field_nickname))
+    if (bs.isNullOrNil(this.dnB.field_nickname))
     {
-      localObject = q.rW(this.dpQ.field_username).iterator();
+      localObject = q.vZ(this.dnB.field_username).iterator();
       String str2;
       for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
-        str2 = v.sh((String)((Iterator)localObject).next());
+        str2 = v.wk((String)((Iterator)localObject).next());
       }
     }
-    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.dpQ.ZW())
+    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.dnB.aaR())
     {
       str1 = String.format(this.context.getString(2131763059), new Object[] { str1 });
       break;
     }
   }
   
-  private static String wy(long paramLong)
-  {
-    AppMethodBeat.i(34857);
-    String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date(paramLong));
-    AppMethodBeat.o(34857);
-    return str;
-  }
-  
-  public final String eWc()
+  public final String flO()
   {
     AppMethodBeat.i(34852);
-    ad.i("MicroMsg.QQMailHistoryExporter", "selectItems.size = %d", new Object[] { Integer.valueOf(this.GmU.size()) });
-    if (com.tencent.mm.cd.a.hS(this.context)) {
-      this.textSize = com.tencent.mm.cd.a.dT(this.context);
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.QQMailHistoryExporter", "selectItems.size = %d", new Object[] { Integer.valueOf(this.HMK.size()) });
+    if (com.tencent.mm.cc.a.id(this.context)) {
+      this.textSize = com.tencent.mm.cc.a.eb(this.context);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<div id=\"history\">\n");
-    localStringBuilder.append(String.format("<p style=\"font-size:%fem;\">Dear:</p> <br> <p style=\"text-indent:2em; font-size:%fem;\">%s</p> <br>", new Object[] { Float.valueOf(this.textSize), Float.valueOf(this.textSize), eWd() }));
-    Iterator localIterator = this.GmU.iterator();
-    bl localbl;
+    localStringBuilder.append(String.format("<p style=\"font-size:%fem;\">Dear:</p> <br> <p style=\"text-indent:2em; font-size:%fem;\">%s</p> <br>", new Object[] { Float.valueOf(this.textSize), Float.valueOf(this.textSize), flP() }));
+    Iterator localIterator = this.HMK.iterator();
+    bo localbo;
     label200:
     Object localObject;
     if (localIterator.hasNext())
     {
-      localbl = (bl)localIterator.next();
-      if (this.Gqq == null)
+      localbo = (bo)localIterator.next();
+      if (this.HQi == null)
       {
-        this.Gqq = wy(localbl.field_createTime);
-        localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.Gqq }));
-        if (!localbl.isText()) {
+        this.HQi = Bb(localbo.field_createTime);
+        localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.HQi }));
+        if (!localbo.isText()) {
           break label510;
         }
-        if (!localbl.isText()) {
+        if (!localbo.isText()) {
           break label504;
         }
-        if (localbl.field_isSend != 1) {
+        if (localbo.field_isSend != 1) {
           break label360;
         }
-        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bk(localbl), Float.valueOf(this.textSize), aGf(localbl.field_content) });
+        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bm(localbo), Float.valueOf(this.textSize), aLw(localbo.field_content) });
       }
     }
     for (;;)
     {
       localStringBuilder.append((String)localObject);
       break;
-      localObject = wy(localbl.field_createTime);
-      if (((String)localObject).equals(this.Gqq)) {
+      localObject = Bb(localbo.field_createTime);
+      if (((String)localObject).equals(this.HQi)) {
         break label200;
       }
-      this.Gqq = ((String)localObject);
+      this.HQi = ((String)localObject);
       localStringBuilder.append("<br>");
-      localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.Gqq }));
+      localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.HQi }));
       break label200;
       label360:
-      if (!w.pF(this.dpQ.field_username))
+      if (!w.sQ(this.dnB.field_username))
       {
-        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bk(localbl), Float.valueOf(this.textSize), aGf(localbl.field_content) });
+        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bm(localbo), Float.valueOf(this.textSize), aLw(localbo.field_content) });
       }
       else
       {
-        int i = bi.uc(localbl.field_content);
+        int i = bi.yi(localbo.field_content);
         if (i != -1)
         {
-          localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bk(localbl), Float.valueOf(this.textSize), aGf(localbl.field_content.substring(i + 1).trim()) });
+          localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bm(localbo), Float.valueOf(this.textSize), aLw(localbo.field_content.substring(i + 1).trim()) });
           continue;
           label504:
           localObject = null;
           continue;
           label510:
-          if (localbl.eJO())
+          if (localbo.eZm())
           {
-            if (localbl.eJO())
+            if (localbo.eZm())
             {
-              long l1 = localbl.field_msgId;
-              long l2 = localbl.field_msgSvrId;
-              String str = ac.ww(l1);
+              long l1 = localbo.field_msgId;
+              long l2 = localbo.field_msgSvrId;
+              String str = ac.AZ(l1);
               localObject = str;
-              if (bt.isNullOrNil(str)) {
-                localObject = ac.wx(l2);
+              if (bs.isNullOrNil(str)) {
+                localObject = ac.Ba(l2);
               }
-              ad.d("MicroMsg.QQMailHistoryExporter", "hdPath[%s]", new Object[] { localObject });
-              if (!bt.isNullOrNil((String)localObject))
+              com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.QQMailHistoryExporter", "hdPath[%s]", new Object[] { localObject });
+              if (!bs.isNullOrNil((String)localObject))
               {
                 str = "file://".concat(String.valueOf(localObject));
-                localObject = String.format(Gqt, new Object[] { Long.valueOf(localbl.field_msgId), Long.valueOf(localbl.field_msgSvrId), str, localObject });
+                localObject = String.format(HQl, new Object[] { Long.valueOf(localbo.field_msgId), Long.valueOf(localbo.field_msgSvrId), str, localObject });
               }
             }
-            for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bk(localbl), Float.valueOf(this.textSize), localObject });; localObject = null)
+            for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bm(localbo), Float.valueOf(this.textSize), localObject });; localObject = null)
             {
               localStringBuilder.append((String)localObject);
               break;
             }
           }
-          if (localbl.cxB())
+          if (localbo.cKN())
           {
-            localObject = k.b.rx(localbl.field_content);
+            localObject = k.b.vA(localbo.field_content);
             if ((localObject != null) && ((((k.b)localObject).type == 53) || (((k.b)localObject).type == 57)))
             {
               if ((localObject != null) && ((((k.b)localObject).type == 53) || (((k.b)localObject).type == 57))) {}
-              for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bk(localbl), Float.valueOf(this.textSize), aGf(((k.b)localObject).title) });; localObject = null)
+              for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bm(localbo), Float.valueOf(this.textSize), aLw(((k.b)localObject).title) });; localObject = null)
               {
                 localStringBuilder.append((String)localObject);
                 break;
               }
             }
-            localStringBuilder.append(bj(localbl));
+            localStringBuilder.append(bl(localbo));
             break;
           }
-          localStringBuilder.append(bj(localbl));
+          localStringBuilder.append(bl(localbo));
           break;
           localStringBuilder.append("\n</div>\n");
           localObject = localStringBuilder.toString();
@@ -441,7 +440,7 @@ public final class QQMailHistoryExporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.QQMailHistoryExporter
  * JD-Core Version:    0.7.0.1
  */

@@ -23,116 +23,129 @@ public class TinkerUncaughtHandler
   public void uncaughtException(Thread paramThread, java.lang.Throwable paramThrowable)
   {
     // Byte code:
-    //   0: new 46	java/lang/StringBuilder
-    //   3: dup
-    //   4: ldc 48
-    //   6: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   9: aload_2
-    //   10: invokestatic 57	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   13: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: pop
-    //   17: aload_0
-    //   18: getfield 31	com/tencent/tinker/loader/TinkerUncaughtHandler:ueh	Ljava/lang/Thread$UncaughtExceptionHandler;
-    //   21: aload_1
-    //   22: aload_2
-    //   23: invokeinterface 63 3 0
+    //   0: ldc 10
+    //   2: new 46	java/lang/StringBuilder
+    //   5: dup
+    //   6: ldc 48
+    //   8: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   11: aload_2
+    //   12: invokestatic 57	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   15: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   21: iconst_0
+    //   22: anewarray 4	java/lang/Object
+    //   25: invokestatic 71	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   28: aload_0
-    //   29: getfield 39	com/tencent/tinker/loader/TinkerUncaughtHandler:crashFile	Ljava/io/File;
-    //   32: ifnull +34 -> 66
-    //   35: invokestatic 29	java/lang/Thread:getDefaultUncaughtExceptionHandler	()Ljava/lang/Thread$UncaughtExceptionHandler;
-    //   38: instanceof 2
-    //   41: ifeq +25 -> 66
-    //   44: aload_0
-    //   45: getfield 39	com/tencent/tinker/loader/TinkerUncaughtHandler:crashFile	Ljava/io/File;
-    //   48: invokevirtual 69	java/io/File:getParentFile	()Ljava/io/File;
-    //   51: astore_1
-    //   52: aload_1
-    //   53: invokevirtual 73	java/io/File:exists	()Z
-    //   56: ifne +11 -> 67
-    //   59: aload_1
-    //   60: invokevirtual 76	java/io/File:mkdirs	()Z
-    //   63: ifne +4 -> 67
-    //   66: return
-    //   67: new 78	java/io/PrintWriter
-    //   70: dup
-    //   71: new 80	java/io/FileWriter
-    //   74: dup
-    //   75: aload_0
-    //   76: getfield 39	com/tencent/tinker/loader/TinkerUncaughtHandler:crashFile	Ljava/io/File;
-    //   79: iconst_0
-    //   80: invokespecial 83	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
-    //   83: invokespecial 86	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
-    //   86: astore_3
-    //   87: aload_3
-    //   88: astore_1
-    //   89: aload_3
-    //   90: new 46	java/lang/StringBuilder
-    //   93: dup
-    //   94: ldc 88
-    //   96: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   99: aload_0
-    //   100: getfield 23	com/tencent/tinker/loader/TinkerUncaughtHandler:context	Landroid/content/Context;
-    //   103: invokestatic 94	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getProcessName	(Landroid/content/Context;)Ljava/lang/String;
-    //   106: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokevirtual 101	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   115: aload_3
-    //   116: astore_1
-    //   117: aload_3
-    //   118: aload_2
-    //   119: invokestatic 104	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getExceptionCauseString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   122: invokevirtual 101	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   125: aload_3
-    //   126: invokestatic 108	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   129: invokestatic 114	android/os/Process:myPid	()I
-    //   132: invokestatic 118	android/os/Process:killProcess	(I)V
-    //   135: return
-    //   136: astore 4
-    //   138: aconst_null
-    //   139: astore_2
+    //   29: getfield 31	com/tencent/tinker/loader/TinkerUncaughtHandler:ueh	Ljava/lang/Thread$UncaughtExceptionHandler;
+    //   32: aload_1
+    //   33: aload_2
+    //   34: invokeinterface 73 3 0
+    //   39: aload_0
+    //   40: getfield 39	com/tencent/tinker/loader/TinkerUncaughtHandler:crashFile	Ljava/io/File;
+    //   43: ifnull +45 -> 88
+    //   46: invokestatic 29	java/lang/Thread:getDefaultUncaughtExceptionHandler	()Ljava/lang/Thread$UncaughtExceptionHandler;
+    //   49: instanceof 2
+    //   52: ifeq +36 -> 88
+    //   55: aload_0
+    //   56: getfield 39	com/tencent/tinker/loader/TinkerUncaughtHandler:crashFile	Ljava/io/File;
+    //   59: invokevirtual 79	java/io/File:getParentFile	()Ljava/io/File;
+    //   62: astore_1
+    //   63: aload_1
+    //   64: invokevirtual 83	java/io/File:exists	()Z
+    //   67: ifne +22 -> 89
+    //   70: aload_1
+    //   71: invokevirtual 86	java/io/File:mkdirs	()Z
+    //   74: ifne +15 -> 89
+    //   77: ldc 10
+    //   79: ldc 88
+    //   81: iconst_0
+    //   82: anewarray 4	java/lang/Object
+    //   85: invokestatic 71	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   88: return
+    //   89: new 90	java/io/PrintWriter
+    //   92: dup
+    //   93: new 92	java/io/FileWriter
+    //   96: dup
+    //   97: aload_0
+    //   98: getfield 39	com/tencent/tinker/loader/TinkerUncaughtHandler:crashFile	Ljava/io/File;
+    //   101: iconst_0
+    //   102: invokespecial 95	java/io/FileWriter:<init>	(Ljava/io/File;Z)V
+    //   105: invokespecial 98	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
+    //   108: astore_3
+    //   109: aload_3
+    //   110: astore_1
+    //   111: aload_3
+    //   112: new 46	java/lang/StringBuilder
+    //   115: dup
+    //   116: ldc 100
+    //   118: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   121: aload_0
+    //   122: getfield 23	com/tencent/tinker/loader/TinkerUncaughtHandler:context	Landroid/content/Context;
+    //   125: invokestatic 106	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getProcessName	(Landroid/content/Context;)Ljava/lang/String;
+    //   128: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokevirtual 109	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   137: aload_3
+    //   138: astore_1
+    //   139: aload_3
     //   140: aload_2
-    //   141: astore_1
-    //   142: new 46	java/lang/StringBuilder
-    //   145: dup
-    //   146: ldc 120
-    //   148: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   151: aload 4
-    //   153: invokestatic 57	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   156: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: pop
-    //   160: aload_2
-    //   161: invokestatic 108	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   164: goto -35 -> 129
-    //   167: astore_2
-    //   168: aconst_null
-    //   169: astore_1
-    //   170: aload_1
-    //   171: invokestatic 108	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   174: aload_2
-    //   175: athrow
-    //   176: astore_2
-    //   177: goto -7 -> 170
-    //   180: astore 4
-    //   182: aload_3
-    //   183: astore_2
-    //   184: goto -44 -> 140
+    //   141: invokestatic 112	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:getExceptionCauseString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   144: invokevirtual 109	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   147: aload_3
+    //   148: invokestatic 116	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   151: invokestatic 122	android/os/Process:myPid	()I
+    //   154: invokestatic 126	android/os/Process:killProcess	(I)V
+    //   157: return
+    //   158: astore 4
+    //   160: aconst_null
+    //   161: astore_2
+    //   162: aload_2
+    //   163: astore_1
+    //   164: ldc 10
+    //   166: new 46	java/lang/StringBuilder
+    //   169: dup
+    //   170: ldc 128
+    //   172: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   175: aload 4
+    //   177: invokestatic 57	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   180: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: iconst_0
+    //   187: anewarray 4	java/lang/Object
+    //   190: invokestatic 71	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   193: aload_2
+    //   194: invokestatic 116	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   197: goto -46 -> 151
+    //   200: astore_2
+    //   201: aconst_null
+    //   202: astore_1
+    //   203: aload_1
+    //   204: invokestatic 116	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   207: aload_2
+    //   208: athrow
+    //   209: astore_2
+    //   210: goto -7 -> 203
+    //   213: astore 4
+    //   215: aload_3
+    //   216: astore_2
+    //   217: goto -55 -> 162
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	187	0	this	TinkerUncaughtHandler
-    //   0	187	1	paramThread	Thread
-    //   0	187	2	paramThrowable	java.lang.Throwable
-    //   86	97	3	localPrintWriter	java.io.PrintWriter
-    //   136	16	4	localIOException1	java.io.IOException
-    //   180	1	4	localIOException2	java.io.IOException
+    //   0	220	0	this	TinkerUncaughtHandler
+    //   0	220	1	paramThread	Thread
+    //   0	220	2	paramThrowable	java.lang.Throwable
+    //   108	108	3	localPrintWriter	java.io.PrintWriter
+    //   158	18	4	localIOException1	java.io.IOException
+    //   213	1	4	localIOException2	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   67	87	136	java/io/IOException
-    //   67	87	167	finally
-    //   89	115	176	finally
-    //   117	125	176	finally
-    //   142	160	176	finally
-    //   89	115	180	java/io/IOException
-    //   117	125	180	java/io/IOException
+    //   89	109	158	java/io/IOException
+    //   89	109	200	finally
+    //   111	137	209	finally
+    //   139	147	209	finally
+    //   164	193	209	finally
+    //   111	137	213	java/io/IOException
+    //   139	147	213	java/io/IOException
   }
 }
 

@@ -7,62 +7,62 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public final class MobileRemitHistoryRecodUI$c
   extends RecyclerView.h
 {
   private int dividerHeight;
-  private Paint fse;
-  private Paint ftg;
-  private int fth;
+  private Paint fvL;
+  private Paint fwN;
+  private int fwO;
   
   public MobileRemitHistoryRecodUI$c(Context paramContext)
   {
     AppMethodBeat.i(67702);
     this.dividerHeight = a.g(paramContext, 0.5F);
-    this.fth = a.fromDPToPix(paramContext, 16);
-    this.fse = new Paint();
-    this.fse.setColor(paramContext.getResources().getColor(2131099656));
-    this.ftg = new Paint();
-    this.ftg.setColor(paramContext.getResources().getColor(2131099679));
+    this.fwO = a.fromDPToPix(paramContext, 16);
+    this.fvL = new Paint();
+    this.fvL.setColor(paramContext.getResources().getColor(2131099656));
+    this.fwN = new Paint();
+    this.fwN.setColor(paramContext.getResources().getColor(2131099679));
     AppMethodBeat.o(67702);
   }
   
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(67703);
-    super.a(paramCanvas, paramRecyclerView, params);
+    super.a(paramCanvas, paramRecyclerView, paramt);
     int j = paramRecyclerView.getChildCount();
     int k = paramRecyclerView.getPaddingLeft();
-    int m = this.fth;
+    int m = this.fwO;
     int n = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
     int i = 0;
     if (i < j)
     {
-      params = paramRecyclerView.getChildAt(i);
-      float f1 = params.getBottom();
-      float f2 = params.getBottom() + this.dividerHeight;
+      paramt = paramRecyclerView.getChildAt(i);
+      float f1 = paramt.getBottom();
+      float f2 = paramt.getBottom() + this.dividerHeight;
       if (i == j - 1) {
-        paramCanvas.drawRect(k, f1, n, f2, this.ftg);
+        paramCanvas.drawRect(k, f1, n, f2, this.fwN);
       }
       for (;;)
       {
         i += 1;
         break;
-        paramCanvas.drawRect(k + m, f1, n, f2, this.fse);
+        paramCanvas.drawRect(k + m, f1, n, f2, this.fvL);
       }
     }
     AppMethodBeat.o(67703);
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(67704);
-    super.a(paramRect, paramView, paramRecyclerView, params);
+    super.a(paramRect, paramView, paramRecyclerView, paramt);
     paramRect.bottom = this.dividerHeight;
     AppMethodBeat.o(67704);
   }

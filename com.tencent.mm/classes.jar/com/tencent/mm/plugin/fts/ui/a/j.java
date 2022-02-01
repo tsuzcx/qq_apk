@@ -20,22 +20,22 @@ public final class j
   extends a
 {
   public int actionType;
-  public com.tencent.mm.plugin.fts.a.a.m jpy;
-  public CharSequence qji;
-  public String qjl;
-  public CharSequence rvI;
-  public String rvJ;
-  public d rvK;
-  private b rvL;
-  a rvM;
+  public com.tencent.mm.plugin.fts.a.a.m jPN;
+  public CharSequence qRK;
+  public String qRN;
+  public CharSequence sEA;
+  public String sEB;
+  public d sEC;
+  private b sED;
+  a sEE;
   
   public j(int paramInt)
   {
     super(3, paramInt);
     AppMethodBeat.i(112087);
     this.actionType = -1;
-    this.rvL = new b();
-    this.rvM = new a();
+    this.sED = new b();
+    this.sEE = new a();
     AppMethodBeat.o(112087);
   }
   
@@ -44,19 +44,19 @@ public final class j
     boolean bool2 = true;
     AppMethodBeat.i(112088);
     super.a(paramContext, parama, paramVarArgs);
-    this.rvK = ((d)this.jpy.userData);
-    if (this.rvK == null)
+    this.sEC = ((d)this.jPN.userData);
+    if (this.sEC == null)
     {
       AppMethodBeat.o(112088);
       return;
     }
-    this.qji = this.rvK.field_title;
-    this.rvI = this.rvK.field_tag;
-    this.qjl = this.rvK.field_iconPath;
-    this.rvJ = this.rvK.field_androidUrl;
-    this.actionType = this.rvK.field_actionType;
+    this.qRK = this.sEC.field_title;
+    this.sEA = this.sEC.field_tag;
+    this.qRN = this.sEC.field_iconPath;
+    this.sEB = this.sEC.field_androidUrl;
+    this.actionType = this.sEC.field_actionType;
     boolean bool1;
-    switch (this.jpy.roM)
+    switch (this.jPN.sxF)
     {
     default: 
       AppMethodBeat.o(112088);
@@ -66,10 +66,10 @@ public final class j
     }
     for (;;)
     {
-      this.qji = com.tencent.mm.plugin.fts.a.f.a(e.a(this.qji, this.roS, bool2, bool1)).rpj;
+      this.qRK = com.tencent.mm.plugin.fts.a.f.a(e.a(this.qRK, this.sxM, bool2, bool1)).syd;
       AppMethodBeat.o(112088);
       return;
-      this.rvI = com.tencent.mm.plugin.fts.a.f.a(e.a(this.rvI, this.roS)).rpj;
+      this.sEA = com.tencent.mm.plugin.fts.a.f.a(e.a(this.sEA, this.sxM)).syd;
       break;
       bool1 = false;
       continue;
@@ -78,28 +78,28 @@ public final class j
     }
   }
   
-  public final String aWt()
+  public final a.b adW()
   {
-    return this.rvK.field_title;
+    return this.sED;
   }
   
-  public final int aWu()
+  public final String bdr()
   {
-    return this.jpy.rqc;
+    return this.sEC.field_title;
   }
   
-  public final a.b acQ()
+  public final int bds()
   {
-    return this.rvL;
+    return this.jPN.syW;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView frr;
-    public TextView hJe;
-    public TextView ica;
+    public ImageView fuY;
+    public TextView iCg;
+    public TextView ijE;
     
     public a()
     {
@@ -119,10 +119,10 @@ public final class j
     {
       AppMethodBeat.i(112084);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494192, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.rvM;
-      paramViewGroup.frr = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.ica = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.hJe = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup = (j.a)j.this.sEE;
+      paramViewGroup.fuY = ((ImageView)paramContext.findViewById(2131297008));
+      paramViewGroup.iCg = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup.ijE = ((TextView)paramContext.findViewById(2131299008));
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112084);
@@ -134,17 +134,17 @@ public final class j
       AppMethodBeat.i(112085);
       parama = (j.a)parama;
       parama1 = (j)parama1;
-      com.tencent.mm.plugin.fts.ui.m.q(parama.contentView, j.this.rqz);
-      com.tencent.mm.plugin.fts.ui.m.a(j.this.qji, parama.ica);
-      com.tencent.mm.plugin.fts.ui.m.a(j.this.rvI, parama.hJe);
-      com.tencent.mm.plugin.fts.ui.m.a(paramContext, parama.frr, null, parama1.qjl, 2131690253, true);
+      com.tencent.mm.plugin.fts.ui.m.q(parama.contentView, j.this.szt);
+      com.tencent.mm.plugin.fts.ui.m.a(j.this.qRK, parama.iCg);
+      com.tencent.mm.plugin.fts.ui.m.a(j.this.sEA, parama.ijE);
+      com.tencent.mm.plugin.fts.ui.m.a(paramContext, parama.fuY, null, parama1.qRN, 2131690253, true);
       AppMethodBeat.o(112085);
     }
     
     public final boolean a(Context paramContext, a paramVarArgs)
     {
       AppMethodBeat.i(112086);
-      boolean bool = ((n)g.ad(n.class)).getItemClickHandler(j.this.nBH).a(paramContext, paramVarArgs);
+      boolean bool = ((n)g.ad(n.class)).getItemClickHandler(j.this.oeH).a(paramContext, paramVarArgs);
       AppMethodBeat.o(112086);
       return bool;
     }
@@ -152,7 +152,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.j
  * JD-Core Version:    0.7.0.1
  */

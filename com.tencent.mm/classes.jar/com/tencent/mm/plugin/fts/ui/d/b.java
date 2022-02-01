@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.h;
 import com.tencent.mm.plugin.fts.ui.a.q;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.HashSet;
 import java.util.List;
 
@@ -23,66 +23,66 @@ public final class b
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(ap paramap, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ao paramao, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112168);
     j localj = new j();
-    localj.iWB = 32;
+    localj.jwR = 32;
     localj.query = this.query;
-    localj.rpM = paramHashSet;
-    localj.rpN = com.tencent.mm.plugin.fts.a.c.a.rqm;
-    localj.rpO = this;
-    localj.handler = paramap;
-    paramap = ((n)g.ad(n.class)).search(2, localj);
+    localj.syG = paramHashSet;
+    localj.syH = com.tencent.mm.plugin.fts.a.c.a.szg;
+    localj.syI = this;
+    localj.handler = paramao;
+    paramao = ((n)g.ad(n.class)).search(2, localj);
     AppMethodBeat.o(112168);
-    return paramap;
+    return paramao;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
     AppMethodBeat.i(112170);
-    int i = paramInt - parama.rqs - 1;
+    int i = paramInt - parama.szm - 1;
     m localm = null;
     Object localObject = localm;
-    if (i < parama.kLN.size())
+    if (i < parama.lnk.size())
     {
       localObject = localm;
       if (i >= 0)
       {
-        localm = (m)parama.kLN.get(i);
-        if (!localm.roN.equals("create_chatroom​")) {
+        localm = (m)parama.lnk.get(i);
+        if (!localm.sxG.equals("create_chatroom​")) {
           break label110;
         }
         localObject = new h(paramInt);
-        ((h)localObject).roS = parama.roS;
+        ((h)localObject).sxM = parama.sxM;
       }
     }
     for (;;)
     {
       if (localObject != null) {
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).rqB = (i + 1);
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).szv = (i + 1);
       }
       AppMethodBeat.o(112170);
       return localObject;
       label110:
       localObject = new q(paramInt);
-      ((q)localObject).jpy = localm;
-      ((q)localObject).roS = parama.roS;
-      ((q)localObject).fI(localm.type, localm.roM);
+      ((q)localObject).jPN = localm;
+      ((q)localObject).sxM = parama.sxM;
+      ((q)localObject).fP(localm.type, localm.sxF);
     }
   }
   
   public final void a(k paramk, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112169);
-    if (dF(paramk.rpQ))
+    if (dJ(paramk.syK))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -3;
-      paramHashSet.kLN = paramk.rpQ;
-      paramHashSet.roS = paramk.roS;
-      paramHashSet.qpI = false;
-      this.rsD.add(paramHashSet);
+      paramHashSet.lnk = paramk.syK;
+      paramHashSet.sxM = paramk.sxM;
+      paramHashSet.qYO = false;
+      this.sBx.add(paramHashSet);
     }
     AppMethodBeat.o(112169);
   }
@@ -94,7 +94,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.b
  * JD-Core Version:    0.7.0.1
  */

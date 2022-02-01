@@ -17,15 +17,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.z;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public class GameFeedTitleDescView
   extends LinearLayout
 {
-  private TextView kEu;
-  private TextView kFd;
-  private LinearLayout sja;
+  private TextView lfN;
+  private TextView lgw;
+  private LinearLayout tqT;
   
   public GameFeedTitleDescView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,7 +35,7 @@ public class GameFeedTitleDescView
   private static int a(TextView paramTextView, String paramString, int paramInt)
   {
     AppMethodBeat.i(42138);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(42138);
       return 0;
@@ -52,26 +52,26 @@ public class GameFeedTitleDescView
   public final void b(String paramString1, String paramString2, LinkedList<z> paramLinkedList)
   {
     AppMethodBeat.i(42137);
-    if ((bt.isNullOrNil(paramString1)) && (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) && (bs.isNullOrNil(paramString2)))
     {
       setVisibility(8);
       AppMethodBeat.o(42137);
       return;
     }
     setVisibility(0);
-    if (!bt.gL(paramLinkedList))
+    if (!bs.gY(paramLinkedList))
     {
-      this.sja.setVisibility(0);
+      this.tqT.setVisibility(0);
       Object localObject1;
       Object localObject2;
-      while (this.sja.getChildCount() < paramLinkedList.size() + 1)
+      while (this.tqT.getChildCount() < paramLinkedList.size() + 1)
       {
         localObject1 = new ImageView(getContext());
         localObject2 = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(2131165444), getResources().getDimensionPixelSize(2131165444));
         ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, getResources().getDimensionPixelSize(2131165437), 0);
         ((LinearLayout.LayoutParams)localObject2).gravity = 16;
         ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
-        this.sja.addView((View)localObject1, 0, (ViewGroup.LayoutParams)localObject2);
+        this.tqT.addView((View)localObject1, 0, (ViewGroup.LayoutParams)localObject2);
       }
       int i = 0;
       int j;
@@ -82,48 +82,48 @@ public class GameFeedTitleDescView
           break;
         }
         localObject1 = (z)paramLinkedList.get(i);
-        localObject2 = (ImageView)this.sja.getChildAt(i);
-        e.cEB().m((ImageView)localObject2, ((z)localObject1).sah);
+        localObject2 = (ImageView)this.tqT.getChildAt(i);
+        e.cRL().m((ImageView)localObject2, ((z)localObject1).tia);
         ((ImageView)localObject2).setVisibility(0);
         i += 1;
       }
-      while (j < this.sja.getChildCount() - 1)
+      while (j < this.tqT.getChildCount() - 1)
       {
-        this.sja.getChildAt(j).setVisibility(8);
+        this.tqT.getChildAt(j).setVisibility(8);
         j += 1;
       }
-      if (!bt.isNullOrNil(paramString1)) {
-        ((TextView)this.sja.getChildAt(j)).setText(paramString1);
+      if (!bs.isNullOrNil(paramString1)) {
+        ((TextView)this.tqT.getChildAt(j)).setText(paramString1);
       }
-      this.kEu.setVisibility(8);
-      if (bt.isNullOrNil(paramString2)) {
+      this.lfN.setVisibility(8);
+      if (bs.isNullOrNil(paramString2)) {
         break label417;
       }
-      this.kFd.setText(paramString2);
-      this.kFd.setVisibility(0);
+      this.lgw.setText(paramString2);
+      this.lgw.setVisibility(0);
     }
     for (;;)
     {
-      if (a(this.kEu, paramString1, c.getScreenWidth(getContext()) - ((ViewGroup)getParent()).getPaddingLeft() - ((ViewGroup)getParent()).getPaddingRight()) <= 1) {
+      if (a(this.lfN, paramString1, c.getScreenWidth(getContext()) - ((ViewGroup)getParent()).getPaddingLeft() - ((ViewGroup)getParent()).getPaddingRight()) <= 1) {
         break label429;
       }
-      this.kFd.setMaxLines(1);
+      this.lgw.setMaxLines(1);
       AppMethodBeat.o(42137);
       return;
-      this.sja.setVisibility(8);
-      if (!bt.isNullOrNil(paramString1))
+      this.tqT.setVisibility(8);
+      if (!bs.isNullOrNil(paramString1))
       {
-        this.kEu.setText(paramString1);
-        this.kEu.setVisibility(0);
+        this.lfN.setText(paramString1);
+        this.lfN.setVisibility(0);
         break;
       }
-      this.kEu.setVisibility(8);
+      this.lfN.setVisibility(8);
       break;
       label417:
-      this.kFd.setVisibility(8);
+      this.lgw.setVisibility(8);
     }
     label429:
-    this.kFd.setMaxLines(2);
+    this.lgw.setMaxLines(2);
     AppMethodBeat.o(42137);
   }
   
@@ -132,9 +132,9 @@ public class GameFeedTitleDescView
     AppMethodBeat.i(42136);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131494308, this, true);
-    this.sja = ((LinearLayout)localView.findViewById(2131306250));
-    this.kEu = ((TextView)localView.findViewById(2131305902));
-    this.kFd = ((TextView)localView.findViewById(2131298996));
+    this.tqT = ((LinearLayout)localView.findViewById(2131306250));
+    this.lfN = ((TextView)localView.findViewById(2131305902));
+    this.lgw = ((TextView)localView.findViewById(2131298996));
     AppMethodBeat.o(42136);
   }
 }

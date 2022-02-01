@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.support.v4.view.t;
 import android.view.View;
 import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.ViewGroup;
@@ -15,23 +16,22 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.game.a.l;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.f;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.j;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.s.a.c.b;
+import com.tencent.mm.plugin.appbrand.page.r;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.r.a.c.b;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
 import com.tencent.mm.plugin.appbrand.widget.input.w;
 import com.tencent.mm.plugin.appbrand.widget.m;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.am;
 import d.g.b.k;
-import d.n.n;
 import d.v;
 import java.util.List;
 import java.util.Locale;
@@ -39,14 +39,14 @@ import java.util.Locale;
 public class AppBrandRuntimeContainerWC
   extends com.tencent.luggage.sdk.d.a
 {
-  public final Class[] iFA;
-  private boolean iFz;
+  private boolean jfB;
+  public final Class[] jfC;
   
   static
   {
     AppMethodBeat.i(43852);
-    p.a.a(f.kPv);
-    p.a.a(com.tencent.mm.plugin.appbrand.luggage.c.b.kPK);
+    p.a.a(f.lqU);
+    p.a.a(com.tencent.mm.plugin.appbrand.luggage.c.b.lrj);
     AppMethodBeat.o(43852);
   }
   
@@ -54,27 +54,27 @@ public class AppBrandRuntimeContainerWC
   {
     super(paramg, o.class);
     AppMethodBeat.i(43841);
-    this.iFz = false;
-    this.iFA = new Class[] { j.class };
-    paramg = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.ppi, "null");
+    this.jfB = false;
+    this.jfC = new Class[] { j.class };
+    paramg = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pST, "null");
     k.h(paramg, "blackList");
     Object localObject = Locale.US;
     k.g(localObject, "Locale.US");
     paramg = paramg.toLowerCase((Locale)localObject);
     k.g(paramg, "(this as java.lang.String).toLowerCase(locale)");
-    paramg = n.a((CharSequence)paramg, new String[] { ";" });
+    paramg = d.n.n.a((CharSequence)paramg, new String[] { ";" });
     boolean bool;
     if (paramg.contains("all")) {
       bool = true;
     }
     for (;;)
     {
-      this.iFg = bool;
+      this.jfi = bool;
       if (Build.VERSION.SDK_INT >= 21)
       {
         getContext();
-        if (com.tencent.mm.plugin.appbrand.widget.input.a.bsH()) {
-          m.a(com.tencent.mm.sdk.f.a.iV(this.mContext), com.tencent.mm.sdk.f.a.iV(this.mContext).getWindow().getDecorView());
+        if (com.tencent.mm.plugin.appbrand.widget.input.a.bzH()) {
+          m.a(com.tencent.mm.sdk.f.a.jg(this.mContext), com.tencent.mm.sdk.f.a.jg(this.mContext).getWindow().getDecorView());
         }
       }
       if (Build.VERSION.SDK_INT >= 26) {
@@ -84,12 +84,12 @@ public class AppBrandRuntimeContainerWC
           {
             AppMethodBeat.i(174649);
             Object localObject;
-            if (android.support.v4.view.t.aC(AppBrandRuntimeContainerWC.this.mContentView))
+            if (t.aC(AppBrandRuntimeContainerWC.this.mContentView))
             {
-              localObject = com.tencent.mm.sdk.f.a.iV(AppBrandRuntimeContainerWC.this.mContext);
+              localObject = com.tencent.mm.sdk.f.a.jg(AppBrandRuntimeContainerWC.this.mContext);
               if ((localObject != null) && (((Activity)localObject).getWindow() != null))
               {
-                bool = am.XC(((Activity)localObject).getWindow().getNavigationBarColor());
+                bool = am.ZN(((Activity)localObject).getWindow().getNavigationBarColor());
                 localObject = ((Activity)localObject).getWindow();
                 if (bool) {
                   break label73;
@@ -99,7 +99,7 @@ public class AppBrandRuntimeContainerWC
             label73:
             for (boolean bool = true;; bool = false)
             {
-              ai.d((Window)localObject, bool);
+              aj.d((Window)localObject, bool);
               AppMethodBeat.o(174649);
               return;
             }
@@ -141,20 +141,20 @@ public class AppBrandRuntimeContainerWC
       return;
     }
     paramConfiguration.uiMode &= 0xFFFFFFCF;
-    if (!ai.Eq()) {}
+    if (!aj.DT()) {}
     for (paramConfiguration.uiMode |= 0x10;; paramConfiguration.uiMode |= 0x20)
     {
-      aj.getContext().getResources().updateConfiguration(paramConfiguration, aj.getResources().getDisplayMetrics());
+      ai.getContext().getResources().updateConfiguration(paramConfiguration, ai.getResources().getDisplayMetrics());
       AppMethodBeat.o(180171);
       return;
     }
   }
   
-  private void aMP()
+  private void aTF()
   {
     AppMethodBeat.i(43845);
-    if (((com.tencent.mm.sdk.f.a.iV(this.mContext) instanceof AppBrandPluginUI)) && (((Boolean)l.jqp.ajp()).booleanValue())) {
-      com.tencent.mm.ui.base.b.be(com.tencent.mm.sdk.f.a.iV(this.mContext));
+    if (((com.tencent.mm.sdk.f.a.jg(this.mContext) instanceof AppBrandPluginUI)) && (((Boolean)com.tencent.mm.plugin.appbrand.game.a.n.jQG.aqp()).booleanValue())) {
+      com.tencent.mm.ui.base.b.bi(com.tencent.mm.sdk.f.a.jg(this.mContext));
     }
     AppMethodBeat.o(43845);
   }
@@ -168,7 +168,7 @@ public class AppBrandRuntimeContainerWC
       return;
     }
     int i;
-    if (((paramAppBrandInitConfig instanceof AppBrandInitConfigLU)) && (((AppBrandInitConfigLU)paramAppBrandInitConfig).CZ()))
+    if (((paramAppBrandInitConfig instanceof AppBrandInitConfigLU)) && (((AppBrandInitConfigLU)paramAppBrandInitConfig).CC()))
     {
       i = 1;
       if (i == 0) {
@@ -176,7 +176,7 @@ public class AppBrandRuntimeContainerWC
       }
     }
     label85:
-    for (paramAppBrandInitConfig = w.dg(this.mContentView);; paramAppBrandInitConfig = com.tencent.luggage.game.widget.input.a.co(this.mContentView))
+    for (paramAppBrandInitConfig = w.di(this.mContentView);; paramAppBrandInitConfig = com.tencent.luggage.game.widget.input.a.co(this.mContentView))
     {
       if ((paramAppBrandInitConfig != null) && ((paramAppBrandInitConfig.getParent() instanceof ViewGroup))) {
         ((ViewGroup)paramAppBrandInitConfig.getParent()).removeView(paramAppBrandInitConfig);
@@ -188,12 +188,12 @@ public class AppBrandRuntimeContainerWC
     }
   }
   
-  public final boolean DT()
+  public final boolean Dw()
   {
     AppMethodBeat.i(43846);
     if (getStackSize() <= 0)
     {
-      by(false);
+      bx(false);
       AppMethodBeat.o(43846);
       return true;
     }
@@ -206,17 +206,17 @@ public class AppBrandRuntimeContainerWC
     AppMethodBeat.i(43842);
     super.a(paramLayoutParams);
     int j;
-    if ((com.tencent.mm.sdk.f.a.iV(this.mContext) != null) && (com.tencent.mm.sdk.f.a.iV(this.mContext).getWindow() != null))
+    if ((com.tencent.mm.sdk.f.a.jg(this.mContext) != null) && (com.tencent.mm.sdk.f.a.jg(this.mContext).getWindow() != null))
     {
-      paramLayoutParams = com.tencent.mm.sdk.f.a.iV(this.mContext).getWindow().getDecorView();
+      paramLayoutParams = com.tencent.mm.sdk.f.a.jg(this.mContext).getWindow().getDecorView();
       if ((paramLayoutParams.getWindowSystemUiVisibility() & 0x2) == 0)
       {
         paramLayoutParams = paramLayoutParams.getBackground();
         if ((paramLayoutParams instanceof m))
         {
           paramLayoutParams = (m)paramLayoutParams;
-          j = com.tencent.mm.sdk.f.a.iV(this.mContext).getWindow().getNavigationBarColor();
-          if (j == paramLayoutParams.lQF) {
+          j = com.tencent.mm.sdk.f.a.jg(this.mContext).getWindow().getNavigationBarColor();
+          if (j == paramLayoutParams.msI) {
             break label118;
           }
         }
@@ -225,7 +225,7 @@ public class AppBrandRuntimeContainerWC
     label118:
     for (int i = 1;; i = 0)
     {
-      paramLayoutParams.lQF = j;
+      paramLayoutParams.msI = j;
       if (i != 0) {
         paramLayoutParams.invalidateSelf();
       }
@@ -252,24 +252,24 @@ public class AppBrandRuntimeContainerWC
     AppMethodBeat.o(43844);
   }
   
-  public final void by(boolean paramBoolean)
+  public final void bx(boolean paramBoolean)
   {
     AppMethodBeat.i(43847);
-    if (this.iFz)
+    if (this.jfB)
     {
-      ad.i("MicroMsg.AppBrandRuntimeContainerWC", "closeActivity(%b), mKeepActivityFrontOnce=TRUE", new Object[] { Boolean.valueOf(paramBoolean) });
+      ac.i("MicroMsg.AppBrandRuntimeContainerWC", "closeActivity(%b), mKeepActivityFrontOnce=TRUE", new Object[] { Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(43847);
       return;
     }
-    super.by(paramBoolean);
-    if (((com.tencent.mm.sdk.f.a.iV(this.mContext) instanceof AppBrandPluginUI)) && (com.tencent.mm.sdk.f.a.iV(this.mContext).isFinishing()))
+    super.bx(paramBoolean);
+    if (((com.tencent.mm.sdk.f.a.jg(this.mContext) instanceof AppBrandPluginUI)) && (com.tencent.mm.sdk.f.a.jg(this.mContext).isFinishing()))
     {
       AppBrandRuntime localAppBrandRuntime = getActiveRuntime();
       if (localAppBrandRuntime != null) {}
       try
       {
-        if (localAppBrandRuntime.aLK().getCurrentPage().mSwiping) {
-          com.tencent.mm.sdk.f.a.iV(this.mContext).overridePendingTransition(0, 0);
+        if (localAppBrandRuntime.aSA().getCurrentPage().mSwiping) {
+          com.tencent.mm.sdk.f.a.jg(this.mContext).overridePendingTransition(0, 0);
         }
         AppMethodBeat.o(43847);
         return;
@@ -283,8 +283,8 @@ public class AppBrandRuntimeContainerWC
   {
     AppMethodBeat.i(180169);
     AppBrandRuntime localAppBrandRuntime = getActiveRuntime();
-    if (((localAppBrandRuntime instanceof o)) && (((o)localAppBrandRuntime).CZ())) {}
-    for (int i = com.tencent.mm.cd.a.n(getContext(), 2131100017);; i = super.getWindowColor())
+    if (((localAppBrandRuntime instanceof o)) && (((o)localAppBrandRuntime).CC())) {}
+    for (int i = com.tencent.mm.cc.a.n(getContext(), 2131100017);; i = super.getWindowColor())
     {
       AppMethodBeat.o(180169);
       return i;
@@ -295,7 +295,7 @@ public class AppBrandRuntimeContainerWC
   {
     AppMethodBeat.i(180170);
     a(paramConfiguration);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -311,13 +311,13 @@ public class AppBrandRuntimeContainerWC
   public void setWindowDescription(c.b paramb)
   {
     AppMethodBeat.i(174652);
-    Activity localActivity = com.tencent.mm.sdk.f.a.iV(this.mContext);
+    Activity localActivity = com.tencent.mm.sdk.f.a.jg(this.mContext);
     if (localActivity == null)
     {
       AppMethodBeat.o(174652);
       return;
     }
-    if (((localActivity instanceof AppBrandUI)) && (((AppBrandUI)localActivity).aMC())) {
+    if (((localActivity instanceof AppBrandUI)) && (((AppBrandUI)localActivity).aTs())) {
       super.setWindowDescription(paramb);
     }
     AppMethodBeat.o(174652);
@@ -325,7 +325,7 @@ public class AppBrandRuntimeContainerWC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC
  * JD-Core Version:    0.7.0.1
  */

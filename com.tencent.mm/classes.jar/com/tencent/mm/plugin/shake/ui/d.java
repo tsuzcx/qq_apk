@@ -11,49 +11,49 @@ import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.ui.r;
 import java.util.GregorianCalendar;
 
 final class d
-  extends q<f>
+  extends r<f>
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  int woJ;
+  int xAa;
   
   public d(Context paramContext)
   {
     super(paramContext, new f());
     AppMethodBeat.i(28416);
-    this.woJ = 20;
+    this.xAa = 20;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(28416);
   }
   
-  public final void LO(int paramInt)
+  public final void NO(int paramInt)
   {
     AppMethodBeat.i(28417);
-    cHX();
-    this.woJ = paramInt;
-    Wd();
+    cVi();
+    this.xAa = paramInt;
+    Xb();
     AppMethodBeat.o(28417);
   }
   
-  public final void Wd()
+  public final void Xb()
   {
     AppMethodBeat.i(28419);
-    setCursor(m.dpc().LJ(this.woJ));
+    setCursor(m.dDm().NJ(this.xAa));
     super.notifyDataSetChanged();
     AppMethodBeat.o(28419);
   }
   
-  public final void We()
+  public final void Xc()
   {
     AppMethodBeat.i(28418);
-    Wd();
+    Xb();
     AppMethodBeat.o(28418);
   }
   
@@ -69,22 +69,22 @@ final class d
     {
       paramViewGroup = this.mInflater.inflate(2131495417, paramViewGroup, false);
       localObject1 = new a();
-      ((a)localObject1).woK = ((MMImageView)paramViewGroup.findViewById(2131304694));
-      ((a)localObject1).kEu = ((TextView)paramViewGroup.findViewById(2131304696));
-      ((a)localObject1).kFd = ((TextView)paramViewGroup.findViewById(2131304693));
-      ((a)localObject1).sYS = ((TextView)paramViewGroup.findViewById(2131304695));
+      ((a)localObject1).xAb = ((MMImageView)paramViewGroup.findViewById(2131304694));
+      ((a)localObject1).lfN = ((TextView)paramViewGroup.findViewById(2131304696));
+      ((a)localObject1).lgw = ((TextView)paramViewGroup.findViewById(2131304693));
+      ((a)localObject1).uhg = ((TextView)paramViewGroup.findViewById(2131304695));
       paramViewGroup.setTag(localObject1);
       localObject2 = (f)getItem(paramInt);
-      e.a(((a)localObject1).woK, ((f)localObject2).field_thumburl, 2131689584, false);
-      if (!bt.isNullOrNil(((f)localObject2).field_title)) {
+      e.a(((a)localObject1).xAb, ((f)localObject2).field_thumburl, 2131689584, false);
+      if (!bs.isNullOrNil(((f)localObject2).field_title)) {
         break label234;
       }
-      ((a)localObject1).kEu.setVisibility(8);
-      if (!bt.isNullOrNil(((f)localObject2).field_desc)) {
+      ((a)localObject1).lfN.setVisibility(8);
+      if (!bs.isNullOrNil(((f)localObject2).field_desc)) {
         break label274;
       }
-      ((a)localObject1).kFd.setVisibility(8);
-      localObject1 = ((a)localObject1).sYS;
+      ((a)localObject1).lgw.setVisibility(8);
+      localObject1 = ((a)localObject1).uhg;
       paramView = this.mContext;
       l1 = ((f)localObject2).field_createtime * 1000L;
       localObject2 = new GregorianCalendar();
@@ -102,12 +102,12 @@ final class d
       paramViewGroup = paramView;
       break;
       label234:
-      ((a)localObject1).kEu.setText(k.b(this.mContext, ((f)localObject2).field_title, ((a)localObject1).kEu.getTextSize()));
-      ((a)localObject1).kEu.setVisibility(0);
+      ((a)localObject1).lfN.setText(k.b(this.mContext, ((f)localObject2).field_title, ((a)localObject1).lfN.getTextSize()));
+      ((a)localObject1).lfN.setVisibility(0);
       break label141;
       label274:
-      ((a)localObject1).kFd.setText(k.b(this.mContext, ((f)localObject2).field_desc, ((a)localObject1).kFd.getTextSize()));
-      ((a)localObject1).kFd.setVisibility(0);
+      ((a)localObject1).lgw.setText(k.b(this.mContext, ((f)localObject2).field_desc, ((a)localObject1).lgw.getTextSize()));
+      ((a)localObject1).lgw.setVisibility(0);
       break label162;
       label314:
       long l2 = ((GregorianCalendar)localObject2).getTimeInMillis();
@@ -157,17 +157,17 @@ final class d
   
   final class a
   {
-    TextView kEu;
-    TextView kFd;
-    TextView sYS;
-    MMImageView woK;
+    TextView lfN;
+    TextView lgw;
+    TextView uhg;
+    MMImageView xAb;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.d
  * JD-Core Version:    0.7.0.1
  */

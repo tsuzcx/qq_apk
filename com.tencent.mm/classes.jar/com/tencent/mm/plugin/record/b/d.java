@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.uz;
-import com.tencent.mm.protocal.protobuf.va;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.vj;
+import com.tencent.mm.protocal.protobuf.vk;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class d
   extends n
@@ -21,26 +21,26 @@ public final class d
 {
   private g callback;
   private b rr;
-  private a vaa;
+  private a wiO;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, a parama)
   {
     AppMethodBeat.i(9462);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new uz();
-    ((b.a)localObject).gUV = new va();
+    ((b.a)localObject).hvt = new vj();
+    ((b.a)localObject).hvu = new vk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkmd5";
     ((b.a)localObject).funcId = 939;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (uz)this.rr.gUS.gUX;
-    ((uz)localObject).fileid = paramString1;
-    ((uz)localObject).md5 = paramString2;
-    ((uz)localObject).CWS = paramString3;
-    ((uz)localObject).CWT = paramInt;
-    this.vaa = parama;
-    ad.i("MicroMsg.NetSceneCheckMd5", "summersafecdn NetSceneCheckMd5 fileid[%s], md5[%s], newmd5[%s], crc[%d], stack[%s]", new Object[] { ((uz)localObject).fileid, ((uz)localObject).md5, ((uz)localObject).CWS, Integer.valueOf(((uz)localObject).CWT), bt.eGN() });
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (vj)this.rr.hvr.hvw;
+    ((vj)localObject).fileid = paramString1;
+    ((vj)localObject).md5 = paramString2;
+    ((vj)localObject).EpB = paramString3;
+    ((vj)localObject).EpC = paramInt;
+    this.wiO = parama;
+    ac.i("MicroMsg.NetSceneCheckMd5", "summersafecdn NetSceneCheckMd5 fileid[%s], md5[%s], newmd5[%s], crc[%d], stack[%s]", new Object[] { ((vj)localObject).fileid, ((vj)localObject).md5, ((vj)localObject).EpB, Integer.valueOf(((vj)localObject).EpC), bs.eWi() });
     AppMethodBeat.o(9462);
   }
   
@@ -61,14 +61,14 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(9464);
-    ad.i("MicroMsg.NetSceneCheckMd5", "summersafecdn onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.NetSceneCheckMd5", "summersafecdn onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (this.vaa != null)
+    if (this.wiO != null)
     {
       if ((paramInt2 == 0) && (paramInt3 == 0)) {
         break label101;
       }
-      paramString = this.vaa;
+      paramString = this.wiO;
     }
     for (;;)
     {
@@ -76,12 +76,12 @@ public final class d
       paramq = paramString;
       for (paramString = paramArrayOfByte;; paramString = paramArrayOfByte)
       {
-        paramq.ar(paramString, paramInt2, paramInt3);
+        paramq.aq(paramString, paramInt2, paramInt3);
         AppMethodBeat.o(9464);
         return;
         label101:
-        paramq = (va)((b)paramq).gUT.gUX;
-        paramString = this.vaa;
+        paramq = (vk)((b)paramq).hvs.hvw;
+        paramString = this.wiO;
         if (paramq == null) {
           break;
         }
@@ -93,12 +93,12 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void ar(String paramString, int paramInt1, int paramInt2);
+    public abstract void aq(String paramString, int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.d
  * JD-Core Version:    0.7.0.1
  */

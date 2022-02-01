@@ -37,58 +37,58 @@ import android.view.ViewDebug.ExportedProperty;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 @SuppressLint({"ResourceAsColor"})
 public class NoMeasuredTextView
   extends View
 {
-  private static final BoringLayout.Metrics GcF;
-  private String FUT;
-  private int FUU;
-  private int FUV;
-  private boolean FZC;
-  private int GbX;
-  private Editable.Factory GbY;
-  private Spannable.Factory GbZ;
-  private int GcA;
-  private int GcB;
-  private int GcC;
-  private int GcD;
-  private NoMeasuredTextView.c GcE;
-  private TextUtils.TruncateAt Gca;
-  private CharSequence Gcb;
-  private NoMeasuredTextView.a Gcc;
-  private KeyListener Gcd;
-  private Layout Gce;
-  private float Gcf;
-  private float Gcg;
-  private int Gch;
-  private int Gci;
-  private int Gcj;
-  private int Gck;
-  private boolean Gcl;
-  private boolean Gcm;
-  private int Gcn;
-  private boolean Gco;
-  private BoringLayout Gcp;
-  private boolean Gcq;
-  private int Gcr;
-  private Paint.FontMetricsInt Gcs;
-  private boolean Gct;
-  private boolean Gcu;
-  private b Gcv;
-  private boolean Gcw;
-  public boolean Gcx;
-  private boolean Gcy;
-  private boolean Gcz;
-  private int Hu;
-  private TextPaint avD;
+  private static final BoringLayout.Metrics HCu;
+  private int HBM;
+  private Editable.Factory HBN;
+  private Spannable.Factory HBO;
+  private TextUtils.TruncateAt HBP;
+  private CharSequence HBQ;
+  private NoMeasuredTextView.a HBR;
+  private KeyListener HBS;
+  private Layout HBT;
+  private float HBU;
+  private float HBV;
+  private int HBW;
+  private int HBX;
+  private int HBY;
+  private int HBZ;
+  private boolean HCa;
+  private boolean HCb;
+  private int HCc;
+  private boolean HCd;
+  private BoringLayout HCe;
+  private boolean HCf;
+  private int HCg;
+  private Paint.FontMetricsInt HCh;
+  private boolean HCi;
+  private boolean HCj;
+  private b HCk;
+  private boolean HCl;
+  public boolean HCm;
+  private boolean HCn;
+  private boolean HCo;
+  private int HCp;
+  private int HCq;
+  private int HCr;
+  private int HCs;
+  private NoMeasuredTextView.c HCt;
+  private String HuH;
+  private int HuI;
+  private int HuJ;
+  private boolean Hzq;
+  private int Is;
+  private TextPaint awy;
   private int mMaxWidth;
   private int mMinWidth;
   private CharSequence mText;
-  private ColorStateList uJF;
+  private ColorStateList vSw;
   
   static
   {
@@ -96,7 +96,7 @@ public class NoMeasuredTextView
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
     localPaint.measureText("H");
-    GcF = new BoringLayout.Metrics();
+    HCu = new BoringLayout.Metrics();
     AppMethodBeat.o(142448);
   }
   
@@ -104,114 +104,63 @@ public class NoMeasuredTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142376);
-    this.GbY = Editable.Factory.getInstance();
-    this.GbZ = Spannable.Factory.getInstance();
-    this.Gca = null;
-    this.Gcc = NoMeasuredTextView.a.GcG;
-    this.Hu = 51;
-    this.Gcf = 1.0F;
-    this.Gcg = 0.0F;
-    this.Gch = 2147483647;
-    this.Gci = 1;
-    this.Gcj = 0;
-    this.Gck = 1;
+    this.HBN = Editable.Factory.getInstance();
+    this.HBO = Spannable.Factory.getInstance();
+    this.HBP = null;
+    this.HBR = NoMeasuredTextView.a.HCv;
+    this.Is = 51;
+    this.HBU = 1.0F;
+    this.HBV = 0.0F;
+    this.HBW = 2147483647;
+    this.HBX = 1;
+    this.HBY = 0;
+    this.HBZ = 1;
     this.mMaxWidth = 2147483647;
-    this.Gcl = false;
+    this.HCa = false;
     this.mMinWidth = 0;
-    this.Gcm = false;
-    this.Gcn = -1;
-    this.Gco = true;
-    this.Gcq = false;
-    this.Gct = false;
-    this.Gcu = false;
-    this.Gcw = false;
-    this.Gcx = false;
-    this.Gcy = false;
-    this.Gcz = false;
-    this.GcA = -1;
-    this.GcB = -1;
-    this.GcC = -1;
-    this.GcD = -1;
+    this.HCb = false;
+    this.HCc = -1;
+    this.HCd = true;
+    this.HCf = false;
+    this.HCi = false;
+    this.HCj = false;
+    this.HCl = false;
+    this.HCm = false;
+    this.HCn = false;
+    this.HCo = false;
+    this.HCp = -1;
+    this.HCq = -1;
+    this.HCr = -1;
+    this.HCs = -1;
     this.mText = "";
-    this.Gcb = "";
-    this.avD = new TextPaint(1);
-    this.avD.density = getResources().getDisplayMetrics().density;
+    this.HBQ = "";
+    this.awy = new TextPaint(1);
+    this.awy.density = getResources().getDisplayMetrics().density;
     setDrawingCacheEnabled(false);
-    this.Gcs = this.avD.getFontMetricsInt();
-    eTs();
+    this.HCh = this.awy.getFontMetricsInt();
+    fjd();
     setSingleLine(true);
     setEllipsize(null);
     AppMethodBeat.o(142376);
   }
   
-  private void XP(int paramInt)
-  {
-    AppMethodBeat.i(142439);
-    if (this.Gcq)
-    {
-      eTs();
-      invalidate();
-      AppMethodBeat.o(142439);
-      return;
-    }
-    if (getWidth() == 0)
-    {
-      requestLayout();
-      invalidate();
-      AppMethodBeat.o(142439);
-      return;
-    }
-    if (this.Gce == null)
-    {
-      eTr();
-      if (this.Gce.getHeight() != getHeight()) {
-        requestLayout();
-      }
-      invalidate();
-      AppMethodBeat.o(142439);
-      return;
-    }
-    int i = this.Gce.getHeight();
-    int j = this.Gce.getWidth();
-    jn(j, j - paramInt);
-    if (this.Gca != TextUtils.TruncateAt.MARQUEE)
-    {
-      if ((getLayoutParams().height != -2) && (getLayoutParams().height != -1))
-      {
-        invalidate();
-        AppMethodBeat.o(142439);
-        return;
-      }
-      paramInt = this.Gce.getHeight();
-      if ((paramInt == i) && (paramInt == getHeight()))
-      {
-        invalidate();
-        AppMethodBeat.o(142439);
-        return;
-      }
-    }
-    requestLayout();
-    invalidate();
-    AppMethodBeat.o(142439);
-  }
-  
   private void a(Drawable paramDrawable1, Drawable paramDrawable2)
   {
     AppMethodBeat.i(142378);
-    Object localObject2 = this.Gcv;
+    Object localObject2 = this.HCk;
     int i;
     if ((paramDrawable1 != null) || (paramDrawable2 != null))
     {
       i = 1;
       if (i != 0) {
-        break label200;
+        break label198;
       }
       if (localObject2 != null)
       {
-        if (((b)localObject2).GcX != 0) {
-          break label60;
+        if (((b)localObject2).HCM != 0) {
+          break label58;
         }
-        this.Gcv = null;
+        this.HCk = null;
       }
     }
     for (;;)
@@ -221,66 +170,66 @@ public class NoMeasuredTextView
       return;
       i = 0;
       break;
-      label60:
-      if (((b)localObject2).GcN != null) {
-        ((b)localObject2).GcN.setCallback(null);
+      label58:
+      if (((b)localObject2).HCC != null) {
+        ((b)localObject2).HCC.setCallback(null);
       }
-      ((b)localObject2).GcN = null;
-      if (((b)localObject2).GcL != null) {
-        ((b)localObject2).GcL.setCallback(null);
+      ((b)localObject2).HCC = null;
+      if (((b)localObject2).HCA != null) {
+        ((b)localObject2).HCA.setCallback(null);
       }
-      ((b)localObject2).GcL = null;
-      if (((b)localObject2).GcO != null) {
-        ((b)localObject2).GcO.setCallback(null);
+      ((b)localObject2).HCA = null;
+      if (((b)localObject2).HCD != null) {
+        ((b)localObject2).HCD.setCallback(null);
       }
-      ((b)localObject2).GcO = null;
-      if (((b)localObject2).GcM != null) {
-        ((b)localObject2).GcM.setCallback(null);
+      ((b)localObject2).HCD = null;
+      if (((b)localObject2).HCB != null) {
+        ((b)localObject2).HCB.setCallback(null);
       }
-      ((b)localObject2).GcM = null;
-      ((b)localObject2).GcV = 0;
-      ((b)localObject2).GcR = 0;
+      ((b)localObject2).HCB = null;
+      ((b)localObject2).HCK = 0;
+      ((b)localObject2).HCG = 0;
       paramDrawable1 = (Drawable)localObject2;
-      paramDrawable1.GcW = 0;
-      paramDrawable1.GcS = 0;
-      label177:
-      paramDrawable1.GcT = 0;
-      paramDrawable1.GcP = 0;
-      paramDrawable1.GcU = 0;
-      paramDrawable1.GcQ = 0;
+      paramDrawable1.HCL = 0;
+      paramDrawable1.HCH = 0;
+      label175:
+      paramDrawable1.HCI = 0;
+      paramDrawable1.HCE = 0;
+      paramDrawable1.HCJ = 0;
+      paramDrawable1.HCF = 0;
     }
-    label200:
+    label198:
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new b();
-      this.Gcv = ((b)localObject1);
+      this.HCk = ((b)localObject1);
     }
-    if ((((b)localObject1).GcN != paramDrawable1) && (((b)localObject1).GcN != null)) {
-      ((b)localObject1).GcN.setCallback(null);
+    if ((((b)localObject1).HCC != paramDrawable1) && (((b)localObject1).HCC != null)) {
+      ((b)localObject1).HCC.setCallback(null);
     }
-    ((b)localObject1).GcN = paramDrawable1;
-    if ((((b)localObject1).GcL != null) && (((b)localObject1).GcL != null)) {
-      ((b)localObject1).GcL.setCallback(null);
+    ((b)localObject1).HCC = paramDrawable1;
+    if ((((b)localObject1).HCA != null) && (((b)localObject1).HCA != null)) {
+      ((b)localObject1).HCA.setCallback(null);
     }
-    ((b)localObject1).GcL = null;
-    if ((((b)localObject1).GcO != paramDrawable2) && (((b)localObject1).GcO != null)) {
-      ((b)localObject1).GcO.setCallback(null);
+    ((b)localObject1).HCA = null;
+    if ((((b)localObject1).HCD != paramDrawable2) && (((b)localObject1).HCD != null)) {
+      ((b)localObject1).HCD.setCallback(null);
     }
-    ((b)localObject1).GcO = paramDrawable2;
-    if ((((b)localObject1).GcM != null) && (((b)localObject1).GcM != null)) {
-      ((b)localObject1).GcM.setCallback(null);
+    ((b)localObject1).HCD = paramDrawable2;
+    if ((((b)localObject1).HCB != null) && (((b)localObject1).HCB != null)) {
+      ((b)localObject1).HCB.setCallback(null);
     }
-    ((b)localObject1).GcM = null;
-    localObject2 = ((b)localObject1).GcK;
+    ((b)localObject1).HCB = null;
+    localObject2 = ((b)localObject1).HCz;
     int[] arrayOfInt = getDrawableState();
     if (paramDrawable1 != null)
     {
       paramDrawable1.setState(arrayOfInt);
       paramDrawable1.copyBounds((Rect)localObject2);
       paramDrawable1.setCallback(this);
-      ((b)localObject1).GcR = ((Rect)localObject2).width();
-      ((b)localObject1).GcV = ((Rect)localObject2).height();
+      ((b)localObject1).HCG = ((Rect)localObject2).width();
+      ((b)localObject1).HCK = ((Rect)localObject2).height();
     }
     for (;;)
     {
@@ -291,12 +240,12 @@ public class NoMeasuredTextView
       paramDrawable2.setState(arrayOfInt);
       paramDrawable2.copyBounds((Rect)localObject2);
       paramDrawable2.setCallback(this);
-      ((b)localObject1).GcS = ((Rect)localObject2).width();
-      ((b)localObject1).GcW = ((Rect)localObject2).height();
+      ((b)localObject1).HCH = ((Rect)localObject2).width();
+      ((b)localObject1).HCL = ((Rect)localObject2).height();
       paramDrawable1 = (Drawable)localObject1;
-      break label177;
-      ((b)localObject1).GcV = 0;
-      ((b)localObject1).GcR = 0;
+      break label175;
+      ((b)localObject1).HCK = 0;
+      ((b)localObject1).HCG = 0;
     }
   }
   
@@ -317,13 +266,13 @@ public class NoMeasuredTextView
       if (getMeasuredWidth() > 0)
       {
         localCharSequence = paramCharSequence;
-        if (this.GcE != null)
+        if (this.HCt != null)
         {
           localCharSequence = paramCharSequence;
-          if (!bt.isNullOrNil(this.FUT))
+          if (!bs.isNullOrNil(this.HuH))
           {
-            localCharSequence = this.GcE.a(this, paramCharSequence, this.FUT, this.FUU, this.FUV);
-            this.FUT = null;
+            localCharSequence = this.HCt.a(this, paramCharSequence, this.HuH, this.HuI, this.HuJ);
+            this.HuH = null;
           }
         }
       }
@@ -331,96 +280,147 @@ public class NoMeasuredTextView
       int j;
       if ((localCharSequence instanceof Spanned))
       {
-        this.Gcq = false;
-        if ((parama != NoMeasuredTextView.a.GcI) && (this.Gcd == null)) {
+        this.HCf = false;
+        if ((parama != NoMeasuredTextView.a.HCx) && (this.HBS == null)) {
           break label241;
         }
-        paramCharSequence = this.GbY.newEditable(localCharSequence);
+        paramCharSequence = this.HBN.newEditable(localCharSequence);
         int i = getCompoundPaddingRight();
         j = getCompoundPaddingLeft() + i;
         localCharSequence = paramCharSequence;
-        if (this.Gcu)
+        if (this.HCj)
         {
-          if (!this.Gcl) {
+          if (!this.HCa) {
             break label264;
           }
           i = this.mMaxWidth;
           if (getMeasuredWidth() > 0) {
             i = Math.min(this.mMaxWidth, getMeasuredWidth());
           }
-          localCharSequence = TextUtils.ellipsize(paramCharSequence, this.avD, i - j, TextUtils.TruncateAt.END);
+          localCharSequence = TextUtils.ellipsize(paramCharSequence, this.awy, i - j, TextUtils.TruncateAt.END);
         }
       }
       for (;;)
       {
-        this.Gcc = parama;
+        this.HBR = parama;
         this.mText = localCharSequence;
-        this.Gcb = localCharSequence;
-        XP(j);
+        this.HBQ = localCharSequence;
+        aaa(j);
         AppMethodBeat.o(142424);
         return;
-        this.Gcq = true;
+        this.HCf = true;
         break;
         label241:
         paramCharSequence = localCharSequence;
-        if (parama != NoMeasuredTextView.a.GcH) {
+        if (parama != NoMeasuredTextView.a.HCw) {
           break label131;
         }
-        paramCharSequence = this.GbZ.newSpannable(localCharSequence);
+        paramCharSequence = this.HBO.newSpannable(localCharSequence);
         break label131;
         label264:
         if (getMeasuredWidth() > 0)
         {
-          localCharSequence = TextUtils.ellipsize(paramCharSequence, this.avD, getMeasuredWidth() - j, TextUtils.TruncateAt.END);
+          localCharSequence = TextUtils.ellipsize(paramCharSequence, this.awy, getMeasuredWidth() - j, TextUtils.TruncateAt.END);
         }
         else
         {
-          this.Gct = true;
+          this.HCi = true;
           localCharSequence = paramCharSequence;
         }
       }
     }
   }
   
-  private void eTq()
+  private void aaa(int paramInt)
   {
-    if (((this.Gce instanceof BoringLayout)) && (this.Gcp == null)) {
-      this.Gcp = ((BoringLayout)this.Gce);
+    AppMethodBeat.i(142439);
+    if (this.HCf)
+    {
+      fjd();
+      invalidate();
+      AppMethodBeat.o(142439);
+      return;
     }
-    this.Gce = null;
+    if (getWidth() == 0)
+    {
+      requestLayout();
+      invalidate();
+      AppMethodBeat.o(142439);
+      return;
+    }
+    if (this.HBT == null)
+    {
+      fjc();
+      if (this.HBT.getHeight() != getHeight()) {
+        requestLayout();
+      }
+      invalidate();
+      AppMethodBeat.o(142439);
+      return;
+    }
+    int i = this.HBT.getHeight();
+    int j = this.HBT.getWidth();
+    jA(j, j - paramInt);
+    if (this.HBP != TextUtils.TruncateAt.MARQUEE)
+    {
+      if ((getLayoutParams().height != -2) && (getLayoutParams().height != -1))
+      {
+        invalidate();
+        AppMethodBeat.o(142439);
+        return;
+      }
+      paramInt = this.HBT.getHeight();
+      if ((paramInt == i) && (paramInt == getHeight()))
+      {
+        invalidate();
+        AppMethodBeat.o(142439);
+        return;
+      }
+    }
+    requestLayout();
+    invalidate();
+    AppMethodBeat.o(142439);
   }
   
-  private void eTr()
+  private void fjb()
+  {
+    if (((this.HBT instanceof BoringLayout)) && (this.HCe == null)) {
+      this.HCe = ((BoringLayout)this.HBT);
+    }
+    this.HBT = null;
+  }
+  
+  private void fjc()
   {
     AppMethodBeat.i(142433);
-    if (this.Gcl) {}
+    if (this.HCa) {}
     for (int i = this.mMaxWidth - getCompoundPaddingLeft() - getCompoundPaddingRight();; i = getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight())
     {
       int j = i;
       if (i <= 0) {
         j = 0;
       }
-      jn(j, j);
+      jA(j, j);
       AppMethodBeat.o(142433);
       return;
     }
   }
   
-  private void eTs()
+  private void fjd()
   {
     AppMethodBeat.i(142438);
-    if (this.Gcr == 0) {
-      this.Gcr = ((int)(Math.ceil(this.Gcs.descent - this.Gcs.ascent) + 2.0D));
+    if (this.HCg == 0) {
+      this.HCg = ((int)(Math.ceil(this.HCh.descent - this.HCh.ascent) + 2.0D));
     }
     AppMethodBeat.o(142438);
   }
   
   private int getBottomVerticalOffset$1385f2()
   {
-    AppMethodBeat.i(204018);
+    AppMethodBeat.i(210325);
     int j = 0;
-    int k = this.Hu & 0x70;
-    Layout localLayout = this.Gce;
+    int k = this.Is & 0x70;
+    Layout localLayout = this.HBT;
     int i = j;
     int m;
     int n;
@@ -438,7 +438,7 @@ public class NoMeasuredTextView
     label82:
     for (i = m - n;; i = m - n >> 1)
     {
-      AppMethodBeat.o(204018);
+      AppMethodBeat.o(210325);
       return i;
     }
   }
@@ -446,7 +446,7 @@ public class NoMeasuredTextView
   private int getDesiredHeight()
   {
     AppMethodBeat.i(142437);
-    Layout localLayout = this.Gce;
+    Layout localLayout = this.HBT;
     if (localLayout == null)
     {
       AppMethodBeat.o(142437);
@@ -457,29 +457,29 @@ public class NoMeasuredTextView
     int m = getCompoundPaddingBottom() + i;
     i = localLayout.getLineTop(j) + m;
     int k;
-    if (this.Gci == 1)
+    if (this.HBX == 1)
     {
       k = j;
-      if (j > this.Gch)
+      if (j > this.HBW)
       {
-        i = localLayout.getLineTop(this.Gch) + localLayout.getBottomPadding() + m;
-        k = this.Gch;
+        i = localLayout.getLineTop(this.HBW) + localLayout.getBottomPadding() + m;
+        k = this.HBW;
       }
-      if (this.Gck != 1) {
+      if (this.HBZ != 1) {
         break label161;
       }
       j = i;
-      if (k < this.Gcj) {
+      if (k < this.HBY) {
         j = getLineHeight();
       }
     }
     label161:
-    for (j = i + (this.Gcj - k) * j;; j = Math.max(i, this.Gcj))
+    for (j = i + (this.HBY - k) * j;; j = Math.max(i, this.HBY))
     {
       i = Math.max(j, getSuggestedMinimumHeight());
       AppMethodBeat.o(142437);
       return i;
-      i = Math.min(i, this.Gch);
+      i = Math.min(i, this.HBW);
       k = j;
       break;
     }
@@ -489,8 +489,8 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142427);
     int j = 0;
-    int k = this.Hu & 0x70;
-    Layout localLayout = this.Gce;
+    int k = this.Is & 0x70;
+    Layout localLayout = this.HBT;
     int i = j;
     int m;
     int n;
@@ -513,7 +513,7 @@ public class NoMeasuredTextView
     }
   }
   
-  private void jn(int paramInt1, int paramInt2)
+  private void jA(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142434);
     if (paramInt1 < 0) {
@@ -522,11 +522,11 @@ public class NoMeasuredTextView
     for (;;)
     {
       Layout.Alignment localAlignment;
-      switch (this.Hu & 0x7)
+      switch (this.Is & 0x7)
       {
       default: 
         localAlignment = Layout.Alignment.ALIGN_NORMAL;
-        if ((this.Gca == null) || (this.Gcd != null)) {
+        if ((this.HBP == null) || (this.HBS != null)) {
           break;
         }
       }
@@ -535,7 +535,7 @@ public class NoMeasuredTextView
         if (i == 0) {
           break label146;
         }
-        this.Gce = new StaticLayout(this.Gcb, 0, this.Gcb.length(), this.avD, paramInt1, localAlignment, this.Gcf, this.Gcg, this.Gco, this.Gca, paramInt2);
+        this.HBT = new StaticLayout(this.HBQ, 0, this.HBQ.length(), this.awy, paramInt1, localAlignment, this.HBU, this.HBV, this.HCd, this.HBP, paramInt2);
         AppMethodBeat.o(142434);
         return;
         localAlignment = Layout.Alignment.ALIGN_CENTER;
@@ -544,7 +544,7 @@ public class NoMeasuredTextView
         break;
       }
       label146:
-      this.Gce = new StaticLayout(this.Gcb, this.avD, paramInt1, localAlignment, this.Gcf, this.Gcg, this.Gco);
+      this.HBT = new StaticLayout(this.HBQ, this.awy, paramInt1, localAlignment, this.HBU, this.HBV, this.HCd);
       AppMethodBeat.o(142434);
       return;
     }
@@ -553,14 +553,14 @@ public class NoMeasuredTextView
   private void setRawTextSize(float paramFloat)
   {
     AppMethodBeat.i(142401);
-    if (paramFloat != this.avD.getTextSize())
+    if (paramFloat != this.awy.getTextSize())
     {
-      this.avD.setTextSize(paramFloat);
-      this.Gcs = this.avD.getFontMetricsInt();
-      this.Gcr = ((int)(Math.ceil(this.Gcs.descent - this.Gcs.ascent) + 2.0D));
-      if (this.Gce != null)
+      this.awy.setTextSize(paramFloat);
+      this.HCh = this.awy.getFontMetricsInt();
+      this.HCg = ((int)(Math.ceil(this.HCh.descent - this.HCh.ascent) + 2.0D));
+      if (this.HBT != null)
       {
-        eTq();
+        fjb();
         requestLayout();
         invalidate();
       }
@@ -572,10 +572,10 @@ public class NoMeasuredTextView
   {
     int i = 0;
     AppMethodBeat.i(142419);
-    int j = this.uJF.getColorForState(getDrawableState(), 0);
-    if (j != this.GbX)
+    int j = this.vSw.getColorForState(getDrawableState(), 0);
+    if (j != this.HBM)
     {
-      this.GbX = j;
+      this.HBM = j;
       i = 1;
     }
     if (i != 0) {
@@ -584,19 +584,19 @@ public class NoMeasuredTextView
     AppMethodBeat.o(142419);
   }
   
-  public final void aM(String paramString, int paramInt1, int paramInt2)
+  public final void aP(String paramString, int paramInt1, int paramInt2)
   {
-    this.FUT = paramString;
-    this.FUU = paramInt1;
-    this.FUV = paramInt2;
+    this.HuH = paramString;
+    this.HuI = paramInt1;
+    this.HuJ = paramInt2;
   }
   
   protected int computeHorizontalScrollRange()
   {
     AppMethodBeat.i(142444);
-    if (this.Gce != null)
+    if (this.HBT != null)
     {
-      i = this.Gce.getWidth();
+      i = this.HBT.getWidth();
       AppMethodBeat.o(142444);
       return i;
     }
@@ -618,9 +618,9 @@ public class NoMeasuredTextView
   protected int computeVerticalScrollRange()
   {
     AppMethodBeat.i(142445);
-    if (this.Gce != null)
+    if (this.HBT != null)
     {
-      i = this.Gce.getHeight();
+      i = this.HBT.getHeight();
       AppMethodBeat.o(142445);
       return i;
     }
@@ -633,24 +633,24 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142383);
     super.drawableStateChanged();
-    if ((this.uJF != null) && (this.uJF.isStateful())) {
+    if ((this.vSw != null) && (this.vSw.isStateful())) {
       updateTextColors();
     }
-    b localb = this.Gcv;
+    b localb = this.HCk;
     if (localb != null)
     {
       int[] arrayOfInt = getDrawableState();
-      if ((localb.GcL != null) && (localb.GcL.isStateful())) {
-        localb.GcL.setState(arrayOfInt);
+      if ((localb.HCA != null) && (localb.HCA.isStateful())) {
+        localb.HCA.setState(arrayOfInt);
       }
-      if ((localb.GcM != null) && (localb.GcM.isStateful())) {
-        localb.GcM.setState(arrayOfInt);
+      if ((localb.HCB != null) && (localb.HCB.isStateful())) {
+        localb.HCB.setState(arrayOfInt);
       }
-      if ((localb.GcN != null) && (localb.GcN.isStateful())) {
-        localb.GcN.setState(arrayOfInt);
+      if ((localb.HCC != null) && (localb.HCC.isStateful())) {
+        localb.HCC.setState(arrayOfInt);
       }
-      if ((localb.GcO != null) && (localb.GcO.isStateful())) {
-        localb.GcO.setState(arrayOfInt);
+      if ((localb.HCD != null) && (localb.HCD.isStateful())) {
+        localb.HCD.setState(arrayOfInt);
       }
     }
     AppMethodBeat.o(142383);
@@ -659,17 +659,17 @@ public class NoMeasuredTextView
   public int getBaseline()
   {
     AppMethodBeat.i(142432);
-    if (this.Gce == null)
+    if (this.HBT == null)
     {
       i = super.getBaseline();
       AppMethodBeat.o(142432);
       return i;
     }
-    if ((this.Hu & 0x70) != 48) {}
+    if ((this.Is & 0x70) != 48) {}
     for (int i = getVerticalOffset$1385f2();; i = 0)
     {
       int j = getExtendedPaddingTop();
-      int k = this.Gce.getLineBaseline(0);
+      int k = this.HBT.getLineBaseline(0);
       AppMethodBeat.o(142432);
       return i + j + k;
     }
@@ -677,18 +677,18 @@ public class NoMeasuredTextView
   
   public int getCompoundDrawablePadding()
   {
-    b localb = this.Gcv;
+    b localb = this.HCk;
     if (localb != null) {
-      return localb.GcX;
+      return localb.HCM;
     }
     return 0;
   }
   
   public Drawable[] getCompoundDrawables()
   {
-    b localb = this.Gcv;
+    b localb = this.HCk;
     if (localb != null) {
-      return new Drawable[] { localb.GcN, localb.GcL, localb.GcO, localb.GcM };
+      return new Drawable[] { localb.HCC, localb.HCA, localb.HCD, localb.HCB };
     }
     return new Drawable[] { null, null, null, null };
   }
@@ -696,16 +696,16 @@ public class NoMeasuredTextView
   public int getCompoundPaddingBottom()
   {
     AppMethodBeat.i(142388);
-    b localb = this.Gcv;
-    if ((localb == null) || (localb.GcM == null) || (!this.Gcz))
+    b localb = this.HCk;
+    if ((localb == null) || (localb.HCB == null) || (!this.HCo))
     {
       i = getPaddingBottom();
       AppMethodBeat.o(142388);
       return i;
     }
     int i = getPaddingBottom();
-    int j = localb.GcX;
-    int k = localb.GcQ;
+    int j = localb.HCM;
+    int k = localb.HCF;
     AppMethodBeat.o(142388);
     return k + (i + j);
   }
@@ -713,16 +713,16 @@ public class NoMeasuredTextView
   public int getCompoundPaddingLeft()
   {
     AppMethodBeat.i(142389);
-    b localb = this.Gcv;
-    if ((localb == null) || (localb.GcN == null) || (!this.Gcw))
+    b localb = this.HCk;
+    if ((localb == null) || (localb.HCC == null) || (!this.HCl))
     {
       i = getPaddingLeft();
       AppMethodBeat.o(142389);
       return i;
     }
     int i = getPaddingLeft();
-    int j = localb.GcX;
-    int k = localb.GcR;
+    int j = localb.HCM;
+    int k = localb.HCG;
     AppMethodBeat.o(142389);
     return k + (i + j);
   }
@@ -730,16 +730,16 @@ public class NoMeasuredTextView
   public int getCompoundPaddingRight()
   {
     AppMethodBeat.i(142390);
-    b localb = this.Gcv;
-    if ((localb == null) || (localb.GcO == null) || (!this.Gcx))
+    b localb = this.HCk;
+    if ((localb == null) || (localb.HCD == null) || (!this.HCm))
     {
       i = getPaddingRight();
       AppMethodBeat.o(142390);
       return i;
     }
     int i = getPaddingRight();
-    int j = localb.GcX;
-    int k = localb.GcS;
+    int j = localb.HCM;
+    int k = localb.HCH;
     AppMethodBeat.o(142390);
     return k + (i + j);
   }
@@ -747,23 +747,23 @@ public class NoMeasuredTextView
   public int getCompoundPaddingTop()
   {
     AppMethodBeat.i(142387);
-    b localb = this.Gcv;
-    if ((localb == null) || (localb.GcL == null) || (!this.Gcy))
+    b localb = this.HCk;
+    if ((localb == null) || (localb.HCA == null) || (!this.HCn))
     {
       i = getPaddingTop();
       AppMethodBeat.o(142387);
       return i;
     }
     int i = getPaddingTop();
-    int j = localb.GcX;
-    int k = localb.GcP;
+    int j = localb.HCM;
+    int k = localb.HCE;
     AppMethodBeat.o(142387);
     return k + (i + j);
   }
   
   public final int getCurrentTextColor()
   {
-    return this.GbX;
+    return this.HBM;
   }
   
   protected boolean getDefaultEditable()
@@ -787,19 +787,19 @@ public class NoMeasuredTextView
   @ViewDebug.ExportedProperty
   public TextUtils.TruncateAt getEllipsize()
   {
-    return this.Gca;
+    return this.HBP;
   }
   
   public int getExtendedPaddingBottom()
   {
     AppMethodBeat.i(142392);
-    if ((this.Gce == null) || (this.Gci != 1))
+    if ((this.HBT == null) || (this.HBX != 1))
     {
       i = getCompoundPaddingBottom();
       AppMethodBeat.o(142392);
       return i;
     }
-    if (this.Gce.getLineCount() <= this.Gch)
+    if (this.HBT.getLineCount() <= this.HBW)
     {
       i = getCompoundPaddingBottom();
       AppMethodBeat.o(142392);
@@ -808,13 +808,13 @@ public class NoMeasuredTextView
     int j = getCompoundPaddingTop();
     int i = getCompoundPaddingBottom();
     j = getHeight() - j - i;
-    int k = this.Gce.getLineTop(this.Gch);
+    int k = this.HBT.getLineTop(this.HBW);
     if (k >= j)
     {
       AppMethodBeat.o(142392);
       return i;
     }
-    int m = this.Hu & 0x70;
+    int m = this.Is & 0x70;
     if (m == 48)
     {
       AppMethodBeat.o(142392);
@@ -833,13 +833,13 @@ public class NoMeasuredTextView
   public int getExtendedPaddingTop()
   {
     AppMethodBeat.i(142391);
-    if ((this.Gce == null) || (this.Gci != 1))
+    if ((this.HBT == null) || (this.HBX != 1))
     {
       i = getCompoundPaddingTop();
       AppMethodBeat.o(142391);
       return i;
     }
-    if (this.Gce.getLineCount() <= this.Gch)
+    if (this.HBT.getLineCount() <= this.HBW)
     {
       i = getCompoundPaddingTop();
       AppMethodBeat.o(142391);
@@ -848,13 +848,13 @@ public class NoMeasuredTextView
     int i = getCompoundPaddingTop();
     int j = getCompoundPaddingBottom();
     j = getHeight() - i - j;
-    int k = this.Gce.getLineTop(this.Gch);
+    int k = this.HBT.getLineTop(this.HBW);
     if (k >= j)
     {
       AppMethodBeat.o(142391);
       return i;
     }
-    int m = this.Hu & 0x70;
+    int m = this.Is & 0x70;
     if (m == 48)
     {
       AppMethodBeat.o(142391);
@@ -873,7 +873,7 @@ public class NoMeasuredTextView
   public void getFocusedRect(Rect paramRect)
   {
     AppMethodBeat.i(142430);
-    if (this.Gce == null)
+    if (this.HBT == null)
     {
       super.getFocusedRect(paramRect);
       AppMethodBeat.o(142430);
@@ -886,15 +886,15 @@ public class NoMeasuredTextView
       AppMethodBeat.o(142430);
       return;
     }
-    int j = this.Gce.getLineForOffset(i);
-    paramRect.top = this.Gce.getLineTop(j);
-    paramRect.bottom = this.Gce.getLineBottom(j);
-    paramRect.left = ((int)this.Gce.getPrimaryHorizontal(i));
+    int j = this.HBT.getLineForOffset(i);
+    paramRect.top = this.HBT.getLineTop(j);
+    paramRect.bottom = this.HBT.getLineBottom(j);
+    paramRect.left = ((int)this.HBT.getPrimaryHorizontal(i));
     paramRect.right = (paramRect.left + 1);
     int k = getCompoundPaddingLeft();
     j = getExtendedPaddingTop();
     i = j;
-    if ((this.Hu & 0x70) != 48) {
+    if ((this.Is & 0x70) != 48) {
       i = j + getVerticalOffset$1385f2();
     }
     paramRect.offset(k, i);
@@ -903,20 +903,20 @@ public class NoMeasuredTextView
   
   public int getGravity()
   {
-    return this.Hu;
+    return this.Is;
   }
   
   public final Layout getLayout()
   {
-    return this.Gce;
+    return this.HBT;
   }
   
   public int getLineCount()
   {
     AppMethodBeat.i(142431);
-    if (this.Gce != null)
+    if (this.HBT != null)
     {
-      int i = this.Gce.getLineCount();
+      int i = this.HBT.getLineCount();
       AppMethodBeat.o(142431);
       return i;
     }
@@ -927,20 +927,20 @@ public class NoMeasuredTextView
   public int getLineHeight()
   {
     AppMethodBeat.i(142377);
-    int i = Math.round(this.avD.getFontMetricsInt(null) * this.Gcf + this.Gcg);
+    int i = Math.round(this.awy.getFontMetricsInt(null) * this.HBU + this.HBV);
     AppMethodBeat.o(142377);
     return i;
   }
   
   public TextPaint getPaint()
   {
-    return this.avD;
+    return this.awy;
   }
   
   public int getPaintFlags()
   {
     AppMethodBeat.i(142408);
-    int i = this.avD.getFlags();
+    int i = this.awy.getFlags();
     AppMethodBeat.o(142408);
     return i;
   }
@@ -971,13 +971,13 @@ public class NoMeasuredTextView
   
   public final ColorStateList getTextColors()
   {
-    return this.uJF;
+    return this.vSw;
   }
   
   public float getTextScaleX()
   {
     AppMethodBeat.i(142402);
-    float f = this.avD.getTextScaleX();
+    float f = this.awy.getTextScaleX();
     AppMethodBeat.o(142402);
     return f;
   }
@@ -985,18 +985,18 @@ public class NoMeasuredTextView
   public float getTextSize()
   {
     AppMethodBeat.i(142398);
-    float f = this.avD.getTextSize();
+    float f = this.awy.getTextSize();
     AppMethodBeat.o(142398);
     return f;
   }
   
   public int getTotalPaddingBottom()
   {
-    AppMethodBeat.i(142396);
+    AppMethodBeat.i(197196);
     int k = getExtendedPaddingBottom();
     int j = 0;
-    int m = this.Hu & 0x70;
-    Layout localLayout = this.Gce;
+    int m = this.Is & 0x70;
+    Layout localLayout = this.HBT;
     int i = j;
     int n;
     int i1;
@@ -1014,7 +1014,7 @@ public class NoMeasuredTextView
     label92:
     for (i = n - i1;; i = n - i1 >> 1)
     {
-      AppMethodBeat.o(142396);
+      AppMethodBeat.o(197196);
       return i + k;
     }
   }
@@ -1047,7 +1047,7 @@ public class NoMeasuredTextView
   public Typeface getTypeface()
   {
     AppMethodBeat.i(142404);
-    Typeface localTypeface = this.avD.getTypeface();
+    Typeface localTypeface = this.awy.getTypeface();
     AppMethodBeat.o(142404);
     return localTypeface;
   }
@@ -1069,12 +1069,12 @@ public class NoMeasuredTextView
       localRect = paramDrawable.getBounds();
       m = getScrollX();
       k = getScrollY();
-      localb = this.Gcv;
+      localb = this.HCk;
       i = k;
       j = m;
       if (localb != null)
       {
-        if (paramDrawable != localb.GcN) {
+        if (paramDrawable != localb.HCC) {
           break label152;
         }
         i = getCompoundPaddingTop();
@@ -1082,7 +1082,7 @@ public class NoMeasuredTextView
         i1 = getBottom();
         i2 = getTop();
         j = m + getPaddingLeft();
-        i = k + ((i1 - i2 - n - i - localb.GcV) / 2 + i);
+        i = k + ((i1 - i2 - n - i - localb.HCK) / 2 + i);
       }
     }
     for (;;)
@@ -1091,32 +1091,32 @@ public class NoMeasuredTextView
       AppMethodBeat.o(142385);
       return;
       label152:
-      if (paramDrawable == localb.GcO)
+      if (paramDrawable == localb.HCD)
       {
         i = getCompoundPaddingTop();
         n = getCompoundPaddingBottom();
         i1 = getBottom();
         i2 = getTop();
-        j = m + (getRight() - getLeft() - getPaddingRight() - localb.GcS);
-        i = k + ((i1 - i2 - n - i - localb.GcW) / 2 + i);
+        j = m + (getRight() - getLeft() - getPaddingRight() - localb.HCH);
+        i = k + ((i1 - i2 - n - i - localb.HCL) / 2 + i);
       }
-      else if (paramDrawable == localb.GcL)
+      else if (paramDrawable == localb.HCA)
       {
         i = getCompoundPaddingLeft();
         j = getCompoundPaddingRight();
-        j = m + ((getRight() - getLeft() - j - i - localb.GcT) / 2 + i);
+        j = m + ((getRight() - getLeft() - j - i - localb.HCI) / 2 + i);
         i = k + getPaddingTop();
       }
       else
       {
         i = k;
         j = m;
-        if (paramDrawable == localb.GcM)
+        if (paramDrawable == localb.HCB)
         {
           i = getCompoundPaddingLeft();
           j = getCompoundPaddingRight();
-          j = m + (i + (getRight() - getLeft() - j - i - localb.GcU) / 2);
-          i = k + (getBottom() - getTop() - getPaddingBottom() - localb.GcQ);
+          j = m + (i + (getRight() - getLeft() - j - i - localb.HCJ) / 2);
+          i = k + (getBottom() - getTop() - getPaddingBottom() - localb.HCF);
         }
       }
     }
@@ -1138,7 +1138,7 @@ public class NoMeasuredTextView
     int i6 = getTop();
     int k = getWidth();
     int n = getHeight();
-    Object localObject = this.Gcv;
+    Object localObject = this.HCk;
     float f3 = -1.0F;
     float f1 = f3;
     float f2;
@@ -1146,79 +1146,79 @@ public class NoMeasuredTextView
     {
       i7 = i5 - i6 - i7 - i1;
       int i8 = i3 - i4 - i - m;
-      if ((this.Gcw) && (((b)localObject).GcN != null))
+      if ((this.HCl) && (((b)localObject).HCC != null))
       {
         paramCanvas.save();
-        paramCanvas.translate(getPaddingLeft() + j, i2 + i1 + (i7 - ((b)localObject).GcV) / 2);
-        ((b)localObject).GcN.draw(paramCanvas);
+        paramCanvas.translate(getPaddingLeft() + j, i2 + i1 + (i7 - ((b)localObject).HCK) / 2);
+        ((b)localObject).HCC.draw(paramCanvas);
         paramCanvas.restore();
       }
       f2 = f3;
-      if (this.Gcx)
+      if (this.HCm)
       {
         f2 = f3;
-        if (((b)localObject).GcO != null)
+        if (((b)localObject).HCD != null)
         {
           paramCanvas.save();
-          if (!this.Gcq) {
+          if (!this.HCf) {
             break label694;
           }
-          f1 = this.avD.measureText(this.mText, 0, this.mText.length());
+          f1 = this.awy.measureText(this.mText, 0, this.mText.length());
           f2 = f1;
-          paramCanvas.translate(f2 + j - getPaddingRight(), i2 + i1 + (i7 - ((b)localObject).GcW) / 2);
-          ((b)localObject).GcO.draw(paramCanvas);
+          paramCanvas.translate(f2 + j - getPaddingRight(), i2 + i1 + (i7 - ((b)localObject).HCL) / 2);
+          ((b)localObject).HCD.draw(paramCanvas);
           paramCanvas.restore();
           f2 = f1;
         }
       }
-      if ((this.Gcy) && (((b)localObject).GcL != null))
+      if ((this.HCn) && (((b)localObject).HCA != null))
       {
         paramCanvas.save();
-        paramCanvas.translate(j + m + (i8 - ((b)localObject).GcT) / 2, getPaddingTop() + i2);
-        ((b)localObject).GcL.draw(paramCanvas);
+        paramCanvas.translate(j + m + (i8 - ((b)localObject).HCI) / 2, getPaddingTop() + i2);
+        ((b)localObject).HCA.draw(paramCanvas);
         paramCanvas.restore();
       }
       f1 = f2;
-      if (this.Gcz)
+      if (this.HCo)
       {
         f1 = f2;
-        if (((b)localObject).GcM != null)
+        if (((b)localObject).HCB != null)
         {
           paramCanvas.save();
-          paramCanvas.translate(j + m + (i8 - ((b)localObject).GcU) / 2, i2 + i5 - i6 - getPaddingBottom() - ((b)localObject).GcQ);
-          ((b)localObject).GcM.draw(paramCanvas);
+          paramCanvas.translate(j + m + (i8 - ((b)localObject).HCJ) / 2, i2 + i5 - i6 - getPaddingBottom() - ((b)localObject).HCF);
+          ((b)localObject).HCB.draw(paramCanvas);
           paramCanvas.restore();
           f1 = f2;
         }
       }
     }
-    i1 = this.GbX;
-    this.avD.setColor(i1);
-    this.avD.drawableState = getDrawableState();
+    i1 = this.HBM;
+    this.awy.setColor(i1);
+    this.awy.drawableState = getDrawableState();
     paramCanvas.save();
     i1 = getExtendedPaddingTop();
     i7 = getExtendedPaddingBottom();
     paramCanvas.clipRect(m + j, i1 + i2, i3 - i4 - i + j, i5 - i6 - i7 + i2);
     j = 0;
     i = 0;
-    if ((this.Hu & 0x70) != 48)
+    if ((this.Is & 0x70) != 48)
     {
       j = getVerticalOffset$1385f2();
       i = getVerticalOffset$1385f2();
     }
     paramCanvas.translate(m, i1 + j);
-    if (this.Gcq)
+    if (this.HCf)
     {
-      f3 = (n - (this.Gcs.bottom - this.Gcs.top)) / 2 - this.Gcs.top;
+      f3 = (n - (this.HCh.bottom - this.HCh.top)) / 2 - this.HCh.top;
       j = 0;
       i = j;
-      if ((this.Hu & 0x7) != 3) {}
-      switch (this.Hu & 0x7)
+      if ((this.Is & 0x7) != 3) {}
+      switch (this.Is & 0x7)
       {
       default: 
         i = j;
         label656:
-        paramCanvas.drawText(this.mText, 0, this.mText.length(), i, f3, this.avD);
+        paramCanvas.drawText(this.mText, 0, this.mText.length(), i, f3, this.awy);
       }
     }
     for (;;)
@@ -1227,32 +1227,32 @@ public class NoMeasuredTextView
       AppMethodBeat.o(142429);
       return;
       label694:
-      f2 = (float)Math.ceil(Layout.getDesiredWidth(this.Gcb, this.avD));
+      f2 = (float)Math.ceil(Layout.getDesiredWidth(this.HBQ, this.awy));
       f1 = -1.0F;
       break;
       f2 = f1;
       if (f1 == -1.0F) {
-        f2 = this.avD.measureText(this.mText, 0, this.mText.length());
+        f2 = this.awy.measureText(this.mText, 0, this.mText.length());
       }
       i = (int)(k - getPaddingRight() - f2);
       break label656;
       f2 = f1;
       if (f1 == -1.0F) {
-        f2 = this.avD.measureText(this.mText, 0, this.mText.length());
+        f2 = this.awy.measureText(this.mText, 0, this.mText.length());
       }
       i = (int)(k - getPaddingRight() - f2) / 2;
       break label656;
-      if (this.Gce == null) {
-        eTr();
+      if (this.HBT == null) {
+        fjc();
       }
-      localObject = this.Gce;
+      localObject = this.HBT;
       try
       {
         ((Layout)localObject).draw(paramCanvas, null, null, i - j);
       }
       catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
       {
-        ad.printErrStackTrace("TextView", localIndexOutOfBoundsException, "", new Object[0]);
+        ac.printErrStackTrace("TextView", localIndexOutOfBoundsException, "", new Object[0]);
       }
     }
   }
@@ -1264,7 +1264,7 @@ public class NoMeasuredTextView
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     CharSequence localCharSequence2 = getContentDescription();
     CharSequence localCharSequence1 = localCharSequence2;
-    if (bt.isNullOrNil((String)localCharSequence2)) {
+    if (bs.isNullOrNil((String)localCharSequence2)) {
       localCharSequence1 = getText();
     }
     paramAccessibilityNodeInfo.setText(localCharSequence1);
@@ -1275,18 +1275,18 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142425);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.Gct) && (getMeasuredWidth() > 0))
+    if ((this.HCi) && (getMeasuredWidth() > 0))
     {
-      if ((bt.isNullOrNil(this.FUT)) || (this.GcE == null)) {
+      if ((bs.isNullOrNil(this.HuH)) || (this.HCt == null)) {
         break label99;
       }
-      CharSequence localCharSequence = this.GcE.a(this, this.mText, this.FUT, this.FUU, this.FUV);
-      this.FUT = null;
+      CharSequence localCharSequence = this.HCt.a(this, this.mText, this.HuH, this.HuI, this.HuJ);
+      this.HuH = null;
       setText(localCharSequence);
     }
     for (;;)
     {
-      this.Gct = false;
+      this.HCi = false;
       AppMethodBeat.o(142425);
       return;
       label99:
@@ -1303,32 +1303,32 @@ public class NoMeasuredTextView
     int i = View.MeasureSpec.getSize(paramInt2);
     if (j == 0)
     {
-      setMeasuredDimension(j, this.Gcr);
+      setMeasuredDimension(j, this.HCg);
       AppMethodBeat.o(142436);
       return;
     }
-    if (this.Gcq)
+    if (this.HCf)
     {
-      if (this.Gcr == 0) {
-        eTs();
+      if (this.HCg == 0) {
+        fjd();
       }
-      setMeasuredDimension(j, this.Gcr);
+      setMeasuredDimension(j, this.HCg);
       AppMethodBeat.o(142436);
       return;
     }
     paramInt1 = getCompoundPaddingLeft() + getCompoundPaddingRight();
-    if (this.Gcl)
+    if (this.HCa)
     {
       paramInt1 = this.mMaxWidth - paramInt1;
-      if (this.Gce != null) {
+      if (this.HBT != null) {
         break label165;
       }
-      jn(paramInt1, paramInt1);
+      jA(paramInt1, paramInt1);
       label122:
       if (k != 1073741824) {
         break label196;
       }
-      this.Gcn = -1;
+      this.HCc = -1;
       paramInt1 = i;
     }
     for (;;)
@@ -1340,20 +1340,20 @@ public class NoMeasuredTextView
       paramInt1 = j - paramInt1;
       break;
       label165:
-      if (this.Gce.getWidth() != paramInt1) {}
+      if (this.HBT.getWidth() != paramInt1) {}
       for (paramInt2 = 1;; paramInt2 = 0)
       {
         if (paramInt2 == 0) {
           break label194;
         }
-        jn(paramInt1, paramInt1);
+        jA(paramInt1, paramInt1);
         break;
       }
       label194:
       break label122;
       label196:
       paramInt2 = getDesiredHeight();
-      this.Gcn = paramInt2;
+      this.HCc = paramInt2;
       paramInt1 = paramInt2;
       if (k == -2147483648) {
         paramInt1 = Math.min(paramInt2, i);
@@ -1364,7 +1364,7 @@ public class NoMeasuredTextView
   public void setCompoundDrawablePadding(int paramInt)
   {
     AppMethodBeat.i(142386);
-    b localb2 = this.Gcv;
+    b localb2 = this.HCk;
     b localb1;
     if (paramInt == 0) {
       if (localb2 != null) {
@@ -1373,7 +1373,7 @@ public class NoMeasuredTextView
     }
     for (;;)
     {
-      localb1.GcX = paramInt;
+      localb1.HCM = paramInt;
       invalidate();
       requestLayout();
       AppMethodBeat.o(142386);
@@ -1382,7 +1382,7 @@ public class NoMeasuredTextView
       if (localb2 == null)
       {
         localb1 = new b();
-        this.Gcv = localb1;
+        this.HCk = localb1;
       }
     }
   }
@@ -1390,9 +1390,9 @@ public class NoMeasuredTextView
   public void setCompoundLeftDrawablesWithIntrinsicBounds(int paramInt)
   {
     AppMethodBeat.i(142381);
-    if (paramInt != this.GcA)
+    if (paramInt != this.HCp)
     {
-      this.GcA = paramInt;
+      this.HCp = paramInt;
       setCompoundLeftDrawablesWithIntrinsicBounds(getResources().getDrawable(paramInt));
     }
     AppMethodBeat.o(142381);
@@ -1406,7 +1406,7 @@ public class NoMeasuredTextView
       AppMethodBeat.o(142379);
       return;
     }
-    if ((this.Gcv != null) && (this.Gcv.GcN == paramDrawable))
+    if ((this.HCk != null) && (this.HCk.HCC == paramDrawable))
     {
       AppMethodBeat.o(142379);
       return;
@@ -1419,9 +1419,9 @@ public class NoMeasuredTextView
   public void setCompoundRightDrawablesWithIntrinsicBounds(int paramInt)
   {
     AppMethodBeat.i(142382);
-    if (paramInt != this.GcB)
+    if (paramInt != this.HCq)
     {
-      this.GcB = paramInt;
+      this.HCq = paramInt;
       setCompoundRightDrawablesWithIntrinsicBounds(getResources().getDrawable(paramInt));
     }
     AppMethodBeat.o(142382);
@@ -1435,7 +1435,7 @@ public class NoMeasuredTextView
       AppMethodBeat.o(142380);
       return;
     }
-    if ((this.Gcv != null) && (this.Gcv.GcO == paramDrawable))
+    if ((this.HCk != null) && (this.HCk.HCD == paramDrawable))
     {
       AppMethodBeat.o(142380);
       return;
@@ -1448,47 +1448,47 @@ public class NoMeasuredTextView
   public void setDrawDownDrawable(boolean paramBoolean)
   {
     AppMethodBeat.i(142375);
-    if (this.Gcz != paramBoolean) {
+    if (this.HCo != paramBoolean) {
       invalidate();
     }
-    this.Gcz = paramBoolean;
+    this.HCo = paramBoolean;
     AppMethodBeat.o(142375);
   }
   
   public void setDrawLeftDrawable(boolean paramBoolean)
   {
     AppMethodBeat.i(142372);
-    if (this.Gcw != paramBoolean) {
+    if (this.HCl != paramBoolean) {
       invalidate();
     }
-    this.Gcw = paramBoolean;
+    this.HCl = paramBoolean;
     AppMethodBeat.o(142372);
   }
   
   public void setDrawRightDrawable(boolean paramBoolean)
   {
     AppMethodBeat.i(142373);
-    if (this.Gcx != paramBoolean) {
+    if (this.HCm != paramBoolean) {
       invalidate();
     }
-    this.Gcx = paramBoolean;
+    this.HCm = paramBoolean;
     AppMethodBeat.o(142373);
   }
   
   public void setDrawTopDrawable(boolean paramBoolean)
   {
     AppMethodBeat.i(142374);
-    if (this.Gcy != paramBoolean) {
+    if (this.HCn != paramBoolean) {
       invalidate();
     }
-    this.Gcy = paramBoolean;
+    this.HCn = paramBoolean;
     AppMethodBeat.o(142374);
   }
   
   public final void setEditableFactory(Editable.Factory paramFactory)
   {
     AppMethodBeat.i(142420);
-    this.GbY = paramFactory;
+    this.HBN = paramFactory;
     setText(this.mText);
     AppMethodBeat.o(142420);
   }
@@ -1496,10 +1496,10 @@ public class NoMeasuredTextView
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
     AppMethodBeat.i(142443);
-    this.Gca = paramTruncateAt;
-    if (this.Gce != null)
+    this.HBP = paramTruncateAt;
+    if (this.HBT != null)
     {
-      eTq();
+      fjb();
       requestLayout();
       invalidate();
     }
@@ -1519,15 +1519,15 @@ public class NoMeasuredTextView
         i = paramInt | 0x30;
       }
       paramInt = 0;
-      if ((i & 0x7) != (this.Hu & 0x7)) {
+      if ((i & 0x7) != (this.Is & 0x7)) {
         paramInt = 1;
       }
-      if (i != this.Hu) {
+      if (i != this.Is) {
         invalidate();
       }
-      this.Hu = i;
-      if ((this.Gce != null) && (paramInt != 0)) {
-        jn(this.Gce.getWidth(), getWidth() - getCompoundPaddingLeft() - getCompoundPaddingRight());
+      this.Is = i;
+      if ((this.HBT != null) && (paramInt != 0)) {
+        jA(this.HBT.getWidth(), getWidth() - getCompoundPaddingLeft() - getCompoundPaddingRight());
       }
       AppMethodBeat.o(142407);
       return;
@@ -1537,10 +1537,10 @@ public class NoMeasuredTextView
   public void setHeight(int paramInt)
   {
     AppMethodBeat.i(142415);
-    this.Gcj = paramInt;
-    this.Gch = paramInt;
-    this.Gck = 2;
-    this.Gci = 2;
+    this.HBY = paramInt;
+    this.HBW = paramInt;
+    this.HBZ = 2;
+    this.HBX = 2;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142415);
@@ -1549,10 +1549,10 @@ public class NoMeasuredTextView
   public void setIncludeFontPadding(boolean paramBoolean)
   {
     AppMethodBeat.i(142435);
-    this.Gco = paramBoolean;
-    if (this.Gce != null)
+    this.HCd = paramBoolean;
+    if (this.HBT != null)
     {
-      eTq();
+      fjb();
       requestLayout();
       invalidate();
     }
@@ -1561,16 +1561,16 @@ public class NoMeasuredTextView
   
   public void setLayoutCallback(NoMeasuredTextView.c paramc)
   {
-    this.GcE = paramc;
+    this.HCt = paramc;
   }
   
   public void setLines(int paramInt)
   {
     AppMethodBeat.i(142414);
-    this.Gcj = paramInt;
-    this.Gch = paramInt;
-    this.Gck = 1;
-    this.Gci = 1;
+    this.HBY = paramInt;
+    this.HBW = paramInt;
+    this.HBZ = 1;
+    this.HBX = 1;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142414);
@@ -1579,8 +1579,8 @@ public class NoMeasuredTextView
   public void setMaxHeight(int paramInt)
   {
     AppMethodBeat.i(142413);
-    this.Gch = paramInt;
-    this.Gci = 2;
+    this.HBW = paramInt;
+    this.HBX = 2;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142413);
@@ -1589,8 +1589,8 @@ public class NoMeasuredTextView
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(142412);
-    this.Gch = paramInt;
-    this.Gci = 1;
+    this.HBW = paramInt;
+    this.HBX = 1;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142412);
@@ -1600,7 +1600,7 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142417);
     this.mMaxWidth = paramInt;
-    this.Gcl = true;
+    this.HCa = true;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142417);
@@ -1609,8 +1609,8 @@ public class NoMeasuredTextView
   public void setMinHeight(int paramInt)
   {
     AppMethodBeat.i(142411);
-    this.Gcj = paramInt;
-    this.Gck = 2;
+    this.HBY = paramInt;
+    this.HBZ = 2;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142411);
@@ -1619,8 +1619,8 @@ public class NoMeasuredTextView
   public void setMinLines(int paramInt)
   {
     AppMethodBeat.i(142410);
-    this.Gcj = paramInt;
-    this.Gck = 1;
+    this.HBY = paramInt;
+    this.HBZ = 1;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142410);
@@ -1630,7 +1630,7 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142416);
     this.mMinWidth = paramInt;
-    this.Gcm = true;
+    this.HCb = true;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142416);
@@ -1640,7 +1640,7 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142397);
     if ((paramInt1 != getPaddingLeft()) || (paramInt3 != getPaddingRight()) || (paramInt2 != getPaddingTop()) || (paramInt4 != getPaddingBottom())) {
-      eTq();
+      fjb();
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     invalidate();
@@ -1650,12 +1650,12 @@ public class NoMeasuredTextView
   public void setPaintFlags(int paramInt)
   {
     AppMethodBeat.i(142409);
-    if (this.avD.getFlags() != paramInt)
+    if (this.awy.getFlags() != paramInt)
     {
-      this.avD.setFlags(paramInt);
-      if (this.Gce != null)
+      this.awy.setFlags(paramInt);
+      if (this.HBT != null)
       {
-        eTq();
+        fjb();
         requestLayout();
         invalidate();
       }
@@ -1665,13 +1665,13 @@ public class NoMeasuredTextView
   
   public void setShouldEllipsize(boolean paramBoolean)
   {
-    this.Gcu = paramBoolean;
+    this.HCj = paramBoolean;
   }
   
   public void setSingleLine(boolean paramBoolean)
   {
     AppMethodBeat.i(142442);
-    this.FZC = paramBoolean;
+    this.Hzq = paramBoolean;
     if (paramBoolean)
     {
       setLines(1);
@@ -1685,7 +1685,7 @@ public class NoMeasuredTextView
   public final void setSpannableFactory(Spannable.Factory paramFactory)
   {
     AppMethodBeat.i(142421);
-    this.GbZ = paramFactory;
+    this.HBO = paramFactory;
     setText(this.mText);
     AppMethodBeat.o(142421);
   }
@@ -1700,14 +1700,14 @@ public class NoMeasuredTextView
   public final void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142422);
-    a(paramCharSequence, this.Gcc);
+    a(paramCharSequence, this.HBR);
     AppMethodBeat.o(142422);
   }
   
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(142405);
-    this.uJF = ColorStateList.valueOf(paramInt);
+    this.vSw = ColorStateList.valueOf(paramInt);
     updateTextColors();
     AppMethodBeat.o(142405);
   }
@@ -1721,12 +1721,12 @@ public class NoMeasuredTextView
       AppMethodBeat.o(142406);
       throw paramColorStateList;
     }
-    if (this.uJF == paramColorStateList)
+    if (this.vSw == paramColorStateList)
     {
       AppMethodBeat.o(142406);
       return;
     }
-    this.uJF = paramColorStateList;
+    this.vSw = paramColorStateList;
     updateTextColors();
     AppMethodBeat.o(142406);
   }
@@ -1734,7 +1734,7 @@ public class NoMeasuredTextView
   public final void setTextKeepState(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142423);
-    NoMeasuredTextView.a locala = this.Gcc;
+    NoMeasuredTextView.a locala = this.HBR;
     int i = getSelectionStart();
     int j = getSelectionEnd();
     int k = paramCharSequence.length();
@@ -1768,12 +1768,12 @@ public class NoMeasuredTextView
   public void setTypeface(Typeface paramTypeface)
   {
     AppMethodBeat.i(142403);
-    if (this.avD.getTypeface() != paramTypeface)
+    if (this.awy.getTypeface() != paramTypeface)
     {
-      this.avD.setTypeface(paramTypeface);
-      if (this.Gce != null)
+      this.awy.setTypeface(paramTypeface);
+      if (this.HBT != null)
       {
-        eTq();
+        fjb();
         requestLayout();
         invalidate();
       }
@@ -1786,8 +1786,8 @@ public class NoMeasuredTextView
     AppMethodBeat.i(142418);
     this.mMinWidth = paramInt;
     this.mMaxWidth = paramInt;
-    this.Gcm = true;
-    this.Gcl = true;
+    this.HCb = true;
+    this.HCa = true;
     requestLayout();
     invalidate();
     AppMethodBeat.o(142418);
@@ -1797,9 +1797,9 @@ public class NoMeasuredTextView
   {
     AppMethodBeat.i(142384);
     boolean bool = super.verifyDrawable(paramDrawable);
-    if ((!bool) && (this.Gcv != null))
+    if ((!bool) && (this.HCk != null))
     {
-      if ((paramDrawable == this.Gcv.GcN) || (paramDrawable == this.Gcv.GcL) || (paramDrawable == this.Gcv.GcO) || (paramDrawable == this.Gcv.GcM))
+      if ((paramDrawable == this.HCk.HCC) || (paramDrawable == this.HCk.HCA) || (paramDrawable == this.HCk.HCD) || (paramDrawable == this.HCk.HCB))
       {
         AppMethodBeat.o(142384);
         return true;
@@ -1813,32 +1813,32 @@ public class NoMeasuredTextView
   
   final class b
   {
-    final Rect GcK;
-    Drawable GcL;
-    Drawable GcM;
-    Drawable GcN;
-    Drawable GcO;
-    int GcP;
-    int GcQ;
-    int GcR;
-    int GcS;
-    int GcT;
-    int GcU;
-    int GcV;
-    int GcW;
-    int GcX;
+    Drawable HCA;
+    Drawable HCB;
+    Drawable HCC;
+    Drawable HCD;
+    int HCE;
+    int HCF;
+    int HCG;
+    int HCH;
+    int HCI;
+    int HCJ;
+    int HCK;
+    int HCL;
+    int HCM;
+    final Rect HCz;
     
     b()
     {
       AppMethodBeat.i(142371);
-      this.GcK = new Rect();
+      this.HCz = new Rect();
       AppMethodBeat.o(142371);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.NoMeasuredTextView
  * JD-Core Version:    0.7.0.1
  */

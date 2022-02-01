@@ -10,25 +10,25 @@ import com.tencent.toybrick.f.a;
 public final class e
   extends g<e, a>
 {
-  public static final int IGe = 2131495638;
-  private int xYA;
+  public static final int Ksp = 2131495638;
+  private int zlx;
   
   public final void a(a parama)
   {
     AppMethodBeat.i(159952);
-    if (this.xYA == 0) {
-      this.xYA = ((int)this.IGH.getResources().getDimension(2131165289));
+    if (this.zlx == 0) {
+      this.zlx = ((int)this.KsS.getResources().getDimension(2131165289));
     }
-    parama.arI.setLayoutParams(new RecyclerView.LayoutParams(-1, this.xYA));
+    parama.asD.setLayoutParams(new RecyclerView.LayoutParams(-1, this.zlx));
     AppMethodBeat.o(159952);
   }
   
-  public final g.b fpi()
+  public final g.b fHq()
   {
-    return g.b.IGV;
+    return g.b.Ktg;
   }
   
-  public final a gG(View paramView)
+  public final a gY(View paramView)
   {
     AppMethodBeat.i(159953);
     paramView = new a(paramView);
@@ -38,7 +38,7 @@ public final class e
   
   public final int getLayoutResource()
   {
-    return IGe;
+    return Ksp;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,19 +9,19 @@ import java.util.regex.Pattern;
 
 public final class k
 {
-  private static final Pattern jmw;
+  private static final Pattern jMJ;
   
   static
   {
-    AppMethodBeat.i(196705);
-    jmw = Pattern.compile("(\\$\\{[^\\}]+\\})");
-    AppMethodBeat.o(196705);
+    AppMethodBeat.i(198589);
+    jMJ = Pattern.compile("(\\$\\{[^\\}]+\\})");
+    AppMethodBeat.o(198589);
   }
   
-  public static List<a> afR(String paramString)
+  public static List<a> akL(String paramString)
   {
-    AppMethodBeat.i(196704);
-    Matcher localMatcher = jmw.matcher(paramString);
+    AppMethodBeat.i(198588);
+    Matcher localMatcher = jMJ.matcher(paramString);
     paramString = new ArrayList();
     try
     {
@@ -29,15 +29,15 @@ public final class k
       {
         String str1 = localMatcher.group(0);
         String str2 = str1.substring(2, str1.length() - 1);
-        ad.i("MicroMsg.SysMsgTemplateHelper", "parse template, group:%s,value:%s", new Object[] { str1, str2 });
+        ac.i("MicroMsg.SysMsgTemplateHelper", "parse template, group:%s,value:%s", new Object[] { str1, str2 });
         paramString.add(new a(str1, str2));
       }
       return paramString;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SysMsgTemplateHelper", localException, "parseParams error!", new Object[0]);
-      AppMethodBeat.o(196704);
+      ac.printErrStackTrace("MicroMsg.SysMsgTemplateHelper", localException, "parseParams error!", new Object[0]);
+      AppMethodBeat.o(198588);
     }
   }
   
@@ -54,9 +54,9 @@ public final class k
     
     public final String toString()
     {
-      AppMethodBeat.i(196703);
+      AppMethodBeat.i(198587);
       String str = "group:" + this.group + ",value:" + this.value;
-      AppMethodBeat.o(196703);
+      AppMethodBeat.o(198587);
       return str;
     }
   }

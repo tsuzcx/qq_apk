@@ -11,14 +11,14 @@ public final class w
   extends v
   implements k
 {
-  public static boolean JWS;
-  public static final a JXK;
-  private boolean JXJ;
+  public static boolean LKl;
+  public static final a LLd;
+  private boolean LLc;
   
   static
   {
     AppMethodBeat.i(60738);
-    JXK = new a((byte)0);
+    LLd = new a((byte)0);
     AppMethodBeat.o(60738);
   }
   
@@ -33,7 +33,7 @@ public final class w
   {
     AppMethodBeat.i(60734);
     d.g.b.k.h(parami, "kotlinTypeRefiner");
-    Object localObject = parami.aL((ab)this.JXH);
+    Object localObject = parami.aL((ab)this.LLa);
     if (localObject == null)
     {
       parami = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -41,7 +41,7 @@ public final class w
       throw parami;
     }
     localObject = (aj)localObject;
-    parami = parami.aL((ab)this.JXI);
+    parami = parami.aL((ab)this.LLb);
     if (parami == null)
     {
       parami = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -57,9 +57,9 @@ public final class w
   {
     AppMethodBeat.i(60730);
     d.g.b.k.h(paramab, "replacement");
-    bg localbg = paramab.fJW();
+    bg localbg = paramab.gcz();
     if ((localbg instanceof v)) {}
-    for (paramab = localbg;; paramab = ac.a((aj)localbg, ((aj)localbg).xW(true)))
+    for (paramab = localbg;; paramab = ac.a((aj)localbg, ((aj)localbg).zo(true)))
     {
       paramab = (ab)be.a(paramab, (ab)localbg);
       AppMethodBeat.o(60730);
@@ -78,13 +78,13 @@ public final class w
     AppMethodBeat.i(60732);
     d.g.b.k.h(paramc, "renderer");
     d.g.b.k.h(parami, "options");
-    if (parami.fIp())
+    if (parami.gaS())
     {
-      paramc = "(" + paramc.b((ab)this.JXH) + ".." + paramc.b((ab)this.JXI) + ')';
+      paramc = "(" + paramc.b((ab)this.LLa) + ".." + paramc.b((ab)this.LLb) + ')';
       AppMethodBeat.o(60732);
       return paramc;
     }
-    paramc = paramc.a(paramc.b((ab)this.JXH), paramc.b((ab)this.JXI), a.aN(this));
+    paramc = paramc.a(paramc.b((ab)this.LLa), paramc.b((ab)this.LLb), a.aN(this));
     AppMethodBeat.o(60732);
     return paramc;
   }
@@ -93,55 +93,55 @@ public final class w
   {
     AppMethodBeat.i(60731);
     d.g.b.k.h(paramg, "newAnnotations");
-    paramg = ac.a(this.JXH.d(paramg), this.JXI.d(paramg));
+    paramg = ac.a(this.LLa.d(paramg), this.LLb.d(paramg));
     AppMethodBeat.o(60731);
     return paramg;
   }
   
-  public final aj fBP()
+  public final aj fUt()
   {
     int j = 1;
     AppMethodBeat.i(60728);
-    if ((!JWS) || (this.JXJ)) {}
+    if ((!LKl) || (this.LLc)) {}
     boolean bool;
     do
     {
-      localObject = this.JXH;
+      localObject = this.LLa;
       AppMethodBeat.o(60728);
       return localObject;
-      this.JXJ = true;
-      if (!y.am((ab)this.JXH)) {}
-      for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+      this.LLc = true;
+      if (!y.am((ab)this.LLa)) {}
+      for (int i = 1; (aa.KTq) && (i == 0); i = 0)
       {
-        localObject = (Throwable)new AssertionError("Lower bound of a flexible type can not be flexible: " + this.JXH);
+        localObject = (Throwable)new AssertionError("Lower bound of a flexible type can not be flexible: " + this.LLa);
         AppMethodBeat.o(60728);
         throw ((Throwable)localObject);
       }
-      if (!y.am((ab)this.JXI)) {}
-      for (i = j; (aa.JfW) && (i == 0); i = 0)
+      if (!y.am((ab)this.LLb)) {}
+      for (i = j; (aa.KTq) && (i == 0); i = 0)
       {
-        localObject = (Throwable)new AssertionError("Upper bound of a flexible type can not be flexible: " + this.JXI);
+        localObject = (Throwable)new AssertionError("Upper bound of a flexible type can not be flexible: " + this.LLb);
         AppMethodBeat.o(60728);
         throw ((Throwable)localObject);
       }
-      bool = d.g.b.k.g(this.JXH, this.JXI);
-      if ((aa.JfW) && (!(bool ^ true)))
+      bool = d.g.b.k.g(this.LLa, this.LLb);
+      if ((aa.KTq) && (!(bool ^ true)))
       {
-        localObject = (Throwable)new AssertionError("Lower and upper bounds are equal: " + this.JXH + " == " + this.JXI);
+        localObject = (Throwable)new AssertionError("Lower and upper bounds are equal: " + this.LLa + " == " + this.LLb);
         AppMethodBeat.o(60728);
         throw ((Throwable)localObject);
       }
-      bool = d.l.b.a.b.m.a.g.JYN.c((ab)this.JXH, (ab)this.JXI);
-    } while ((!aa.JfW) || (bool));
-    Object localObject = (Throwable)new AssertionError("Lower bound " + this.JXH + " of a flexible type must be a subtype of the upper bound " + this.JXI);
+      bool = d.l.b.a.b.m.a.g.LMg.c((ab)this.LLa, (ab)this.LLb);
+    } while ((!aa.KTq) || (bool));
+    Object localObject = (Throwable)new AssertionError("Lower bound " + this.LLa + " of a flexible type must be a subtype of the upper bound " + this.LLb);
     AppMethodBeat.o(60728);
     throw ((Throwable)localObject);
   }
   
-  public final boolean fBS()
+  public final boolean fUw()
   {
     AppMethodBeat.i(60729);
-    if (((this.JXH.fIW().fxM() instanceof as)) && (d.g.b.k.g(this.JXH.fIW(), this.JXI.fIW())))
+    if (((this.LLa.gbz().fQq() instanceof as)) && (d.g.b.k.g(this.LLa.gbz(), this.LLb.gbz())))
     {
       AppMethodBeat.o(60729);
       return true;
@@ -150,10 +150,10 @@ public final class w
     return false;
   }
   
-  public final bg xV(boolean paramBoolean)
+  public final bg zn(boolean paramBoolean)
   {
     AppMethodBeat.i(60733);
-    bg localbg = ac.a(this.JXH.xW(paramBoolean), this.JXI.xW(paramBoolean));
+    bg localbg = ac.a(this.LLa.zo(paramBoolean), this.LLb.zo(paramBoolean));
     AppMethodBeat.o(60733);
     return localbg;
   }
@@ -162,7 +162,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.w
  * JD-Core Version:    0.7.0.1
  */

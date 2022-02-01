@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.iq;
-import com.tencent.mm.protocal.protobuf.ir;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.iw;
+import com.tencent.mm.protocal.protobuf.ix;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -22,22 +22,22 @@ public final class r
   implements k
 {
   private g callback;
-  private int fFh;
+  private int fIO;
   private final b rr;
   
   public r(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(112808);
-    this.fFh = 0;
+    this.fIO = 0;
     b.a locala = new b.a();
-    locala.gUU = new iq();
-    locala.gUV = new ir();
+    locala.hvt = new iw();
+    locala.hvu = new ix();
     locala.uri = "/cgi-bin/micromsg-bin/batchdelcarditem";
     locala.funcId = 1077;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((iq)this.rr.gUS.gUX).CEl = paramLinkedList;
+    this.rr = locala.aAz();
+    ((iw)this.rr.hvr.hvw).DWL = paramLinkedList;
     AppMethodBeat.o(112808);
   }
   
@@ -58,19 +58,19 @@ public final class r
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112810);
-    ad.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = ((ir)this.rr.gUT.gUX).CEm;
+      paramq = ((ix)this.rr.hvs.hvw).DWM;
       if (paramq != null) {
         break label121;
       }
       paramInt1 = 0;
-      ad.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, resp list count = %d", new Object[] { Integer.valueOf(paramInt1) });
+      ac.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, resp list count = %d", new Object[] { Integer.valueOf(paramInt1) });
       if ((paramq != null) && (paramq.size() != 0)) {
         break label130;
       }
-      ad.e("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd fail, resp list is null");
+      ac.e("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd fail, resp list is null");
     }
     for (;;)
     {
@@ -81,7 +81,7 @@ public final class r
       paramInt1 = paramq.size();
       break;
       label130:
-      this.fFh = 0;
+      this.fIO = 0;
       paramq = paramq.iterator();
       label250:
       while (paramq.hasNext())
@@ -90,7 +90,7 @@ public final class r
         boolean bool;
         if (TextUtils.isEmpty(paramArrayOfByte))
         {
-          ad.e("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem fail, id is null");
+          ac.e("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem fail, id is null");
           bool = false;
         }
         for (;;)
@@ -98,21 +98,21 @@ public final class r
           if (bool) {
             break label250;
           }
-          this.fFh += 1;
+          this.fIO += 1;
           break;
           CardInfo localCardInfo = new CardInfo();
           localCardInfo.field_card_id = paramArrayOfByte;
-          bool = am.bIV().delete(localCardInfo, new String[0]);
-          ad.i("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem, delRet = %b", new Object[] { Boolean.valueOf(bool) });
+          bool = am.bQi().delete(localCardInfo, new String[0]);
+          ac.i("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem, delRet = %b", new Object[] { Boolean.valueOf(bool) });
         }
       }
-      ad.d("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, %d fail items", new Object[] { Integer.valueOf(this.fFh) });
+      ac.d("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, %d fail items", new Object[] { Integer.valueOf(this.fIO) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.r
  * JD-Core Version:    0.7.0.1
  */

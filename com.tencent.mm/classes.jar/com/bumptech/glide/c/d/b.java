@@ -9,18 +9,18 @@ import java.security.MessageDigest;
 public final class b<T>
   implements m<T>
 {
-  private static final m<?> aIj;
+  private static final m<?> aIZ;
   
   static
   {
     AppMethodBeat.i(77347);
-    aIj = new b();
+    aIZ = new b();
     AppMethodBeat.o(77347);
   }
   
-  public static <T> b<T> oQ()
+  public static <T> b<T> pa()
   {
-    return (b)aIj;
+    return (b)aIZ;
   }
   
   public final u<T> a(Context paramContext, u<T> paramu, int paramInt1, int paramInt2)
@@ -32,7 +32,7 @@ public final class b<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.b
  * JD-Core Version:    0.7.0.1
  */

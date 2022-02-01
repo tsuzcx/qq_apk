@@ -9,9 +9,9 @@ public final class b
 {
   public static int e(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(204022);
+    AppMethodBeat.i(197246);
     int i = (int)TypedValue.applyDimension(1, paramFloat, paramContext.getResources().getDisplayMetrics());
-    AppMethodBeat.o(204022);
+    AppMethodBeat.o(197246);
     return i;
   }
 }

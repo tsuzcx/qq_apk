@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.page.b;
 
 public abstract interface h
 {
-  public abstract void CH();
+  public abstract void Cl();
   
-  public abstract void CI();
+  public abstract void Cm();
   
-  public abstract boolean CK();
+  public abstract boolean Co();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.h
  * JD-Core Version:    0.7.0.1
  */

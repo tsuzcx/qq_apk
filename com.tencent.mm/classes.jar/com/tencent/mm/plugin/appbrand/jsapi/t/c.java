@@ -1,93 +1,153 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.game.g.b.10;
-import com.tencent.mm.plugin.appbrand.game.g.b.4;
-import com.tencent.mm.plugin.appbrand.game.g.b.9;
-import com.tencent.mm.plugin.appbrand.game.g.d;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import org.json.JSONException;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
+import com.tencent.mm.plugin.appbrand.utils.n;
+import com.tencent.mm.plugin.appbrand.utils.n.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class c
-  extends b
+  extends a
 {
-  public static final int CTRL_INDEX = 686;
-  public static final String NAME = "operateMediaContainer";
+  public static final int CTRL_INDEX = 94;
+  public static final String NAME = "enableCompass";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(46755);
-    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: %s %s", new Object[] { "operateMediaContainer", paramJSONObject.toString() });
-    Object localObject1 = paramJSONObject.optString("operationType");
-    if (((String)localObject1).equalsIgnoreCase("create"))
+    AppMethodBeat.i(137628);
+    final l locall = new l("enableCompass");
+    paramJSONObject = locall.a(paramc, paramJSONObject, new b(paramc)
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-      paramc = new d() {};
-      ad.i("MicroMsg.GameRecorderMgr", "hy: trigger createMediaContainer");
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.4((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46755);
-      return;
-    }
-    if (((String)localObject1).equalsIgnoreCase("export"))
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(137626);
+        g.b(paramc.getAppId(), this);
+        locall.a(this);
+        AppMethodBeat.o(137626);
+      }
+    }, "JsApi#SensorMagneticField" + paramc.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(1) })));
+    paramc.h(paramInt, k(paramJSONObject.errMsg, paramJSONObject.values));
+    AppMethodBeat.o(137628);
+  }
+  
+  public static final class a
+    extends ar
+  {
+    private static final int CTRL_INDEX = 95;
+    private static final String NAME = "onCompassChange";
+  }
+  
+  static abstract class b
+    extends l.a
+    implements SensorEventListener
+  {
+    private n kKp;
+    private boolean kKt;
+    private float[] kKu = new float[3];
+    private float[] kKv = new float[3];
+    private String kKw = "unknow";
+    private int kKx = 0;
+    c.a kKy = new c.a();
+    
+    b(final com.tencent.mm.plugin.appbrand.jsapi.c paramc)
     {
-      int i = paramJSONObject.optInt("containerId");
-      localObject1 = paramJSONObject.optString("mimeType");
-      if (bt.isNullOrNil((String)localObject1))
+      this.kKy.h(paramc);
+      this.kKp = new n(i.kKR.biJ(), new n.a()
       {
-        paramc.h(paramInt, e(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      Object localObject2 = c(paramc, i + "." + (String)localObject1);
-      if ((localObject2 == null) || (bt.isNullOrNil(((b.a)localObject2).jqW)) || (bt.isNullOrNil(((b.a)localObject2).jqX)))
-      {
-        ad.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: %s, alloc file failed", new Object[] { "operateMediaContainer" });
-        paramc.h(paramInt, e(String.format("fail: internal create file failed", new Object[0]), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      try
-      {
-        paramJSONObject.put("filePath", ((b.a)localObject2).jqW);
-        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-        localObject2 = new d() {};
-        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.9((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (d)localObject2));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(46755);
-        return;
-      }
+        public final boolean k(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(137627);
+          ac.v("MicroMsg.JsApiEnableCompass", "onAction.");
+          paramAnonymousVarArgs = new float[3];
+          Object localObject = new float[9];
+          SensorManager.getRotationMatrix((float[])localObject, null, c.b.a(c.b.this), c.b.b(c.b.this));
+          SensorManager.getOrientation((float[])localObject, paramAnonymousVarArgs);
+          localObject = new HashMap();
+          float f2 = (float)Math.toDegrees(paramAnonymousVarArgs[0]);
+          float f1 = f2;
+          if (f2 < 0.0F) {
+            f1 = f2 + 360.0F;
+          }
+          ((Map)localObject).put("direction", Float.valueOf(f1));
+          if (c.b.c(c.b.this).equalsIgnoreCase("unknow")) {
+            ((Map)localObject).put("accuracy", c.b.c(c.b.this) + "{value:" + c.b.d(c.b.this) + "}");
+          }
+          for (;;)
+          {
+            c.b.this.kKy.B((Map)localObject);
+            boolean bool = k.a.kKY.a(c.b.this.kKy, paramc);
+            AppMethodBeat.o(137627);
+            return bool;
+            ((Map)localObject).put("accuracy", c.b.c(c.b.this));
+          }
+        }
+      });
     }
-    if (((String)localObject1).equalsIgnoreCase("remove"))
+    
+    public final void biL()
     {
-      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
-      paramc = new d() {};
-      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jth.postToWorker(new b.10((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
-      AppMethodBeat.o(46755);
-      return;
+      this.kKt = true;
     }
-    ad.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: invalid operate type: %s", new Object[] { localObject1 });
-    paramc.h(paramInt, e(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
-    AppMethodBeat.o(46755);
+    
+    public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+    
+    public void onSensorChanged(SensorEvent paramSensorEvent)
+    {
+      if (this.kKt) {
+        return;
+      }
+      if ((paramSensorEvent.values == null) || (paramSensorEvent.values.length < 3))
+      {
+        ac.w("MicroMsg.JsApiEnableCompass", "compass sensor callback data invalidate.");
+        return;
+      }
+      if (paramSensorEvent.sensor.getType() == 2)
+      {
+        this.kKv = paramSensorEvent.values;
+        switch (paramSensorEvent.accuracy)
+        {
+        default: 
+          this.kKw = "unknow";
+          this.kKx = paramSensorEvent.accuracy;
+        }
+      }
+      for (;;)
+      {
+        ac.v("MicroMsg.JsApiEnableCompass", "try to do frequency limit action(%s).", new Object[] { Boolean.valueOf(this.kKp.m(new Object[0])) });
+        return;
+        this.kKw = "low";
+        continue;
+        this.kKw = "medium";
+        continue;
+        this.kKw = "high";
+        continue;
+        this.kKw = "unreliable";
+        continue;
+        this.kKw = "no-contact";
+        continue;
+        if (paramSensorEvent.sensor.getType() != 1) {
+          break;
+        }
+        this.kKu = paramSensorEvent.values;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.c
  * JD-Core Version:    0.7.0.1
  */

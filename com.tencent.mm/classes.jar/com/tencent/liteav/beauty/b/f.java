@@ -1,12 +1,12 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class f
-  extends g
+  extends h
 {
   private int[] A;
   private float B = 4.0F;
@@ -14,7 +14,7 @@ public class f
   int s;
   boolean t;
   private d u;
-  private g v;
+  private h v;
   private c w;
   private a x;
   private b y;
@@ -152,7 +152,7 @@ public class f
       if (bool1) {
         bool2 = this.y.a();
       }
-      this.v = new g();
+      this.v = new h();
       this.v.a(true);
       bool1 = bool2;
       if (bool2) {

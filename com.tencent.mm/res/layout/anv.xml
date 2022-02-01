@@ -3,12 +3,12 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/t9">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/cn1" android:layout_width="@dimen/ta" android:layout_height="@dimen/ta" android:layout_marginLeft="@dimen/t_" android:scaleType="fitCenter" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" android:layout_weight="1.0">
             <TextView android:textSize="@dimen/td" android:textColor="@color/y4" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t_" />
-            <TextView android:textSize="@dimen/tc" android:textColor="@color/fr" android:id="@id/b__" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t_" android:layout_marginTop="2.0dip" />
+            <TextView android:textSize="@dimen/tc" android:textColor="@color/fr" android:id="@id/b__" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t_" android:layout_marginTop="2.0dip" android:maxLines="2" />
         </LinearLayout>
-        <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RadioButton android:textSize="0.0dip" android:id="@id/epj" android:background="@drawable/a9_" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/t_" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
+        <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RadioButton android:textSize="0.0dip" android:id="@id/epj" android:background="@drawable/a9_" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/t_" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
         </LinearLayout>
     </LinearLayout>
     <ImageView android:layout_gravity="bottom" android:id="@id/bdj" android:layout_marginLeft="@dimen/t_" style="@style/hp" />

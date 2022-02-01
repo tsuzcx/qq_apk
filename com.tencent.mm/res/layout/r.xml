@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/c9g" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.view.AnimationLayout android:id="@id/kl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/c9g" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    </com.tencent.mm.view.AnimationLayout>
 </RelativeLayout>

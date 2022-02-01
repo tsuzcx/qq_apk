@@ -2,8 +2,8 @@ package com.tencent.mm.compatible.util;
 
 import androidx.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -96,7 +96,7 @@ public class Exif
     this.imageHeight = this.mExif.getAttributeInt("ImageLength", 0);
     this.fileSource = this.mExif.getAttributeInt("FileSource", 0);
     this.sceneType = this.mExif.getAttributeInt("SceneType", 0);
-    Object localObject = this.mExif.mQ();
+    Object localObject = this.mExif.na();
     if (localObject != null)
     {
       this.latitude = localObject[0];
@@ -189,7 +189,7 @@ public class Exif
     }
     catch (ParseException localParseException)
     {
-      ad.printErrStackTrace("MicroMsg.Exif", localParseException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Exif", localParseException, "", new Object[0]);
       AppMethodBeat.o(155899);
     }
     return 0L;
@@ -230,12 +230,12 @@ public class Exif
     catch (Exception localException)
     {
       localObject2 = localObject1;
-      ad.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
+      ac.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
       return -1;
     }
     finally
     {
-      bt.d(localObject2);
+      bs.d(localObject2);
       AppMethodBeat.o(155892);
     }
   }
@@ -252,7 +252,7 @@ public class Exif
     }
     catch (Exception localException)
     {
-      ad.w("MicroMsg.Exif", "Cannot read EXIF from stream '%s': %s", new Object[] { paramInputStream, localException.getMessage() });
+      ac.w("MicroMsg.Exif", "Cannot read EXIF from stream '%s': %s", new Object[] { paramInputStream, localException.getMessage() });
       AppMethodBeat.o(155893);
     }
     return -1;

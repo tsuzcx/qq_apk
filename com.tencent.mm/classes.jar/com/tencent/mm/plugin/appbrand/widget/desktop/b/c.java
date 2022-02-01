@@ -7,108 +7,108 @@ import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.appusage.ai;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandDesktopViewStorageHelper;", "", "()V", "TAG", "", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandCollectionStorageWithCache;", "usageStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache;", "asyncPreloadData", "", "obtainCollectionStorage", "obtainUsageStorage", "release", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandDesktopViewStorageHelper;", "", "()V", "TAG", "", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandCollectionStorageWithCache;", "usageStorage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandUsageStorageWithCache;", "asyncPreloadData", "", "obtainCollectionStorage", "obtainUsageStorage", "release", "plugin-appbrand-integration_release"})
 public final class c
 {
-  private static e lXB;
-  private static b lXC;
-  public static final c lXD;
+  private static e mzD;
+  private static b mzE;
+  public static final c mzF;
   
   static
   {
-    AppMethodBeat.i(196524);
-    lXD = new c();
-    AppMethodBeat.o(196524);
+    AppMethodBeat.i(187485);
+    mzF = new c();
+    AppMethodBeat.o(187485);
   }
   
-  public static void bsz()
+  public static void bzz()
   {
-    AppMethodBeat.i(196522);
-    com.tencent.e.h.Iye.aQ((Runnable)a.lXE);
-    AppMethodBeat.o(196522);
+    AppMethodBeat.i(187483);
+    com.tencent.e.h.JZN.aT((Runnable)a.mzG);
+    AppMethodBeat.o(187483);
   }
   
   public static void release()
   {
-    AppMethodBeat.i(196523);
-    com.tencent.d.f.h.fmz();
-    lXB = null;
-    lXC = null;
-    AppMethodBeat.o(196523);
+    AppMethodBeat.i(187484);
+    com.tencent.d.f.h.fCP();
+    mzD = null;
+    mzE = null;
+    AppMethodBeat.o(187484);
   }
   
-  public final e bsx()
+  public final e bzx()
   {
     try
     {
-      AppMethodBeat.i(196520);
-      if (lXB == null)
+      AppMethodBeat.i(187481);
+      if (mzD == null)
       {
         localObject1 = (ai)g.ab(ai.class);
         if (localObject1 != null) {
-          lXB = new e((ai)localObject1);
+          mzD = new e((ai)localObject1);
         }
       }
-      Object localObject1 = lXB;
-      AppMethodBeat.o(196520);
+      Object localObject1 = mzD;
+      AppMethodBeat.o(187481);
       return localObject1;
     }
     finally {}
   }
   
-  public final b bsy()
+  public final b bzy()
   {
     try
     {
-      AppMethodBeat.i(196521);
-      if (lXC == null)
+      AppMethodBeat.i(187482);
+      if (mzE == null)
       {
         localObject1 = (ah)g.ab(ah.class);
         if (localObject1 != null) {
-          lXC = new b((ah)localObject1);
+          mzE = new b((ah)localObject1);
         }
       }
-      Object localObject1 = lXC;
-      AppMethodBeat.o(196521);
+      Object localObject1 = mzE;
+      AppMethodBeat.o(187482);
       return localObject1;
     }
     finally {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    public static final a lXE;
+    public static final a mzG;
     
     static
     {
-      AppMethodBeat.i(196519);
-      lXE = new a();
-      AppMethodBeat.o(196519);
+      AppMethodBeat.i(187480);
+      mzG = new a();
+      AppMethodBeat.o(187480);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(196518);
-      Object localObject = c.lXD.bsx();
+      AppMethodBeat.i(187479);
+      Object localObject = c.mzF.bzx();
       if (localObject != null) {
-        ((e)localObject).bsv();
+        ((e)localObject).bzv();
       }
-      localObject = c.lXD.bsy();
+      localObject = c.mzF.bzy();
       if (localObject != null)
       {
-        ((b)localObject).bsv();
-        AppMethodBeat.o(196518);
+        ((b)localObject).bzv();
+        AppMethodBeat.o(187479);
         return;
       }
-      AppMethodBeat.o(196518);
+      AppMethodBeat.o(187479);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b.c
  * JD-Core Version:    0.7.0.1
  */

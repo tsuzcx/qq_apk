@@ -11,16 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class TrackPointAnimAvatar
   extends RelativeLayout
 {
-  private ImageView ikp;
+  private ImageView iKw;
   private Context mContext;
-  private LinearLayout sXp;
-  private Animation sXq;
-  private Animation sXr;
+  private LinearLayout ufC;
+  private Animation ufD;
+  private Animation ufE;
   private String username;
   
   public TrackPointAnimAvatar(Context paramContext)
@@ -41,16 +41,16 @@ public class TrackPointAnimAvatar
     AppMethodBeat.o(56194);
   }
   
-  private void cKE()
+  private void cYj()
   {
     AppMethodBeat.i(56198);
-    this.sXq = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
-    this.sXq.setDuration(500L);
-    this.sXq.setFillAfter(true);
-    this.sXr = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
-    this.sXr.setDuration(500L);
-    this.sXr.setFillAfter(true);
-    this.sXq.setAnimationListener(new Animation.AnimationListener()
+    this.ufD = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
+    this.ufD.setDuration(500L);
+    this.ufD.setFillAfter(true);
+    this.ufE = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
+    this.ufE.setDuration(500L);
+    this.ufE.setFillAfter(true);
+    this.ufD.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -64,7 +64,7 @@ public class TrackPointAnimAvatar
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.sXr.setAnimationListener(new Animation.AnimationListener()
+    this.ufE.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -85,20 +85,20 @@ public class TrackPointAnimAvatar
   {
     AppMethodBeat.i(56196);
     View localView = View.inflate(this.mContext, 2131495802, this);
-    this.sXp = ((LinearLayout)localView.findViewById(2131296671));
-    this.ikp = ((ImageView)localView.findViewById(2131296670));
-    cKE();
+    this.ufC = ((LinearLayout)localView.findViewById(2131296671));
+    this.iKw = ((ImageView)localView.findViewById(2131296670));
+    cYj();
     AppMethodBeat.o(56196);
   }
   
   public void setUser(String paramString)
   {
     AppMethodBeat.i(56197);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
       this.username = paramString;
-      if (this.ikp != null) {
-        a.b.d(this.ikp, this.username);
+      if (this.iKw != null) {
+        a.b.d(this.iKw, this.username);
       }
     }
     AppMethodBeat.o(56197);

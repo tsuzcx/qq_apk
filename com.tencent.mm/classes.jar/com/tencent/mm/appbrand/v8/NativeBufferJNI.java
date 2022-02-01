@@ -13,11 +13,11 @@ public class NativeBufferJNI
   {
     AppMethodBeat.i(144016);
     h.class.getClassLoader();
-    j.pq("mmv8");
+    j.sC("mmv8");
     h.class.getClassLoader();
-    j.pq("mmnode");
+    j.sC("mmnode");
     h.class.getClassLoader();
-    j.pq("mmj2v8");
+    j.sC("mmj2v8");
     AppMethodBeat.o(144016);
   }
   
@@ -123,7 +123,7 @@ public class NativeBufferJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.NativeBufferJNI
  * JD-Core Version:    0.7.0.1
  */

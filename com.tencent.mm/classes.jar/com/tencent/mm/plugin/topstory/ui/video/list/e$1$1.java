@@ -5,10 +5,10 @@ import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.ui.video.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -21,10 +21,10 @@ final class e$1$1
   public final void run()
   {
     AppMethodBeat.i(126423);
-    ad.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "show education pop window");
-    f.a locala = new f.a(aj.getContext());
-    locala.aMo(e.f(this.yRY.yRX).cKW().getString(2131764516)).wZ(true);
-    locala.aaF(2131755793).b(new f.c()
+    ac.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "show education pop window");
+    f.a locala = new f.a(ai.getContext());
+    locala.aRQ(e.f(this.AfN.AfM).cYC().getString(2131764516)).yi(true);
+    locala.acQ(2131755793).b(new f.c()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString) {}
     }).b(new DialogInterface.OnDismissListener()
@@ -32,7 +32,7 @@ final class e$1$1
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(126422);
-        g.afB().afk().set(ae.a.FsP, Integer.valueOf(1));
+        g.agR().agA().set(ah.a.GQH, Integer.valueOf(1));
         AppMethodBeat.o(126422);
       }
     }).show();

@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.stub.f;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Map<Ljava.lang.String;Ljava.lang.Object;>;
@@ -13,28 +13,28 @@ import java.util.Set;
 
 public final class n
 {
-  private static Set<String> ASn;
-  private static String ASo;
-  private static String ASp;
-  private static String lst;
+  private static Set<String> CkA;
+  private static String CkB;
+  private static String CkC;
+  private static String lUn;
   
   static
   {
-    AppMethodBeat.i(189699);
-    ASn = new HashSet();
-    ASo = "";
-    lst = "";
-    ASp = "";
-    AppMethodBeat.o(189699);
+    AppMethodBeat.i(205328);
+    CkA = new HashSet();
+    CkB = "";
+    lUn = "";
+    CkC = "";
+    AppMethodBeat.o(205328);
   }
   
-  public static void H(String paramString, Map<String, Object> paramMap)
+  public static void I(String paramString, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189696);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(205325);
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WebViewSecurityUtil", "function name is null or nil.");
-      AppMethodBeat.o(189696);
+      ac.e("MicroMsg.WebViewSecurityUtil", "function name is null or nil.");
+      AppMethodBeat.o(205325);
       return;
     }
     boolean bool2 = false;
@@ -47,23 +47,23 @@ public final class n
     String str1 = "";
     if (paramMap != null)
     {
-      bool2 = bt.l((Boolean)paramMap.get("fromMenu"));
-      localObject = bt.nullAsNil((String)paramMap.get("keyParam"));
-      str2 = bt.by((String)paramMap.get("appId"), "");
-      bool1 = bt.l((Boolean)paramMap.get("isSuccess"));
-      k = bt.l((Integer)paramMap.get("permissionValue"));
-      j = bt.l((Integer)paramMap.get("baseErrorCode"));
-      i = bt.l((Integer)paramMap.get("jsapiErrorCode"));
-      str1 = bt.by((String)paramMap.get("containerEnv"), "");
+      bool2 = bs.l((Boolean)paramMap.get("fromMenu"));
+      localObject = bs.nullAsNil((String)paramMap.get("keyParam"));
+      str2 = bs.bG((String)paramMap.get("appId"), "");
+      bool1 = bs.l((Boolean)paramMap.get("isSuccess"));
+      k = bs.m((Integer)paramMap.get("permissionValue"));
+      j = bs.m((Integer)paramMap.get("baseErrorCode"));
+      i = bs.m((Integer)paramMap.get("jsapiErrorCode"));
+      str1 = bs.bG((String)paramMap.get("containerEnv"), "");
     }
-    String str3 = x.aCL(bt.nullAsNil(ASo));
-    String str4 = x.aCL(bt.nullAsNil(lst));
+    String str3 = x.aId(bs.nullAsNil(CkB));
+    String str4 = x.aId(bs.nullAsNil(lUn));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str3);
     localStringBuilder.append(",");
     localStringBuilder.append(str4);
     localStringBuilder.append(",");
-    if (ASp == null)
+    if (CkC == null)
     {
       paramMap = "";
       localStringBuilder.append(paramMap);
@@ -108,12 +108,12 @@ public final class n
         localStringBuilder.append(i);
       }
       paramMap = localStringBuilder.toString();
-      ad.d("MicroMsg.WebViewSecurityUtil", "report: %s", new Object[] { paramMap });
-      h.vKh.kvStat(10417, paramMap);
-      if (!bt.isNullOrNil(str1)) {
-        h.vKh.kvStat(18816, paramMap);
+      ac.d("MicroMsg.WebViewSecurityUtil", "report: %s", new Object[] { paramMap });
+      h.wUl.kvStat(10417, paramMap);
+      if (!bs.isNullOrNil(str1)) {
+        h.wUl.kvStat(18816, paramMap);
       }
-      if (awe(paramString))
+      if (aBw(paramString))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(str3);
@@ -141,14 +141,14 @@ public final class n
     {
       ((StringBuilder)localObject).append(paramString);
       paramString = ((StringBuilder)localObject).toString();
-      ad.d("MicroMsg.WebViewSecurityUtil", "report importantJsApi %s", new Object[] { paramString });
-      h.vKh.kvStat(17048, paramString);
-      if (!bt.isNullOrNil(str1)) {
-        h.vKh.kvStat(18817, paramString);
+      ac.d("MicroMsg.WebViewSecurityUtil", "report importantJsApi %s", new Object[] { paramString });
+      h.wUl.kvStat(17048, paramString);
+      if (!bs.isNullOrNil(str1)) {
+        h.wUl.kvStat(18817, paramString);
       }
-      AppMethodBeat.o(189696);
+      AppMethodBeat.o(205325);
       return;
-      paramMap = ASp;
+      paramMap = CkC;
       break;
       paramMap = paramString;
       break label277;
@@ -161,7 +161,7 @@ public final class n
   
   public static void a(f paramf)
   {
-    AppMethodBeat.i(189695);
+    AppMethodBeat.i(205324);
     int i;
     if (paramf == null) {
       i = 1;
@@ -175,25 +175,25 @@ public final class n
       try
       {
         label18:
-        ASo = str;
+        CkB = str;
         if (i != 0)
         {
           str = "";
           label29:
-          lst = str;
+          lUn = str;
           if (i == 0) {
             break label75;
           }
         }
         label75:
-        for (paramf = "";; paramf = paramf.eng())
+        for (paramf = "";; paramf = paramf.eCA())
         {
-          ASp = paramf;
-          AppMethodBeat.o(189695);
+          CkC = paramf;
+          AppMethodBeat.o(205324);
           return;
           i = 0;
           break;
-          str = paramf.ene();
+          str = paramf.eCy();
           break label18;
           str = paramf.getCurrentUrl();
           break label29;
@@ -202,118 +202,118 @@ public final class n
       }
       catch (Exception paramf)
       {
-        ad.w("MicroMsg.WebViewSecurityUtil", "report, ex = " + paramf.getMessage());
-        AppMethodBeat.o(189695);
+        ac.w("MicroMsg.WebViewSecurityUtil", "report, ex = " + paramf.getMessage());
+        AppMethodBeat.o(205324);
       }
     }
   }
   
   public static void a(Map<String, Object> paramMap, boolean paramBoolean, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189694);
+    AppMethodBeat.i(205323);
     if (paramMap != null)
     {
       paramMap.put("fromMenu", Boolean.valueOf(paramBoolean));
       paramMap.put("keyParam", paramString1);
-      if (bt.isNullOrNil((String)paramMap.get("appId"))) {
+      if (bs.isNullOrNil((String)paramMap.get("appId"))) {
         paramMap.put("appId", paramString2);
       }
     }
-    AppMethodBeat.o(189694);
+    AppMethodBeat.o(205323);
   }
   
-  public static void aH(String paramString1, String paramString2, String paramString3)
+  public static boolean aBw(String paramString)
   {
-    ASo = paramString1;
-    lst = paramString2;
-    ASp = paramString3;
-  }
-  
-  public static boolean awe(String paramString)
-  {
-    AppMethodBeat.i(189697);
-    ekK();
-    boolean bool = ASn.contains(paramString);
-    AppMethodBeat.o(189697);
+    AppMethodBeat.i(205326);
+    eAg();
+    boolean bool = CkA.contains(paramString);
+    AppMethodBeat.o(205326);
     return bool;
   }
   
-  private static void ekK()
+  public static void aK(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(189698);
-    if (ASn.size() > 0)
+    CkB = paramString1;
+    lUn = paramString2;
+    CkC = paramString3;
+  }
+  
+  private static void eAg()
+  {
+    AppMethodBeat.i(205327);
+    if (CkA.size() > 0)
     {
-      AppMethodBeat.o(189698);
+      AppMethodBeat.o(205327);
       return;
     }
-    ASn.add("openUrlByExtBrowser");
-    ASn.add("startVoipCall");
-    ASn.add("getCurrentSSID");
-    ASn.add("chooseVideo");
-    ASn.add("uploadVideo");
-    ASn.add("getOpenDeviceId");
-    ASn.add("chooseIdCard");
-    ASn.add("recordVideo");
-    ASn.add("chooseMedia");
-    ASn.add("requestWxFacePictureVerify");
-    ASn.add("requestWxFacePictureVerifyUnionVideo");
-    ASn.add("openRealnameAuth");
-    ASn.add("getInstallState");
-    ASn.add("addDownloadTask");
-    ASn.add("cancelDownloadTask");
-    ASn.add("queryDownloadTask");
-    ASn.add("installDownloadTask");
-    ASn.add("launch3rdApp");
-    ASn.add("pauseDownloadTask");
-    ASn.add("resumeDownloadTask");
-    ASn.add("launchApplication");
-    ASn.add("addDownloadTaskStraight");
-    ASn.add("profile");
-    ASn.add("addContact");
-    ASn.add("jumpToBizProfile");
-    ASn.add("startTempSession");
-    ASn.add("quicklyAddBrandContact");
-    ASn.add("openBizChat");
-    ASn.add("shareTimeline");
-    ASn.add("sendAppMessage");
-    ASn.add("sendServiceAppMessage");
-    ASn.add("getSendC2CMessageRequest");
-    ASn.add("shareQQ");
-    ASn.add("selectSingleContact");
-    ASn.add("sendAppMessageToSpecifiedContact");
-    ASn.add("sendSingleAppMessage");
-    ASn.add("openWeApp");
-    ASn.add("launchMiniProgram");
-    ASn.add("addCustomMenuItems");
-    ASn.add("openUrlWithExtraWebview");
-    ASn.add("enableFullScreen");
-    ASn.add("openCustomWebview");
-    ASn.add("openSpecificView");
-    ASn.add("getBrandWCPayBindCardRequest");
-    ASn.add("getTransferMoneyRequest");
-    ASn.add("verifyWCPayPassword");
-    ASn.add("getRecevieBizHongBaoRequest");
-    ASn.add("getH5PrepayRequest");
-    ASn.add("getH5TransactionRequest");
-    ASn.add("getWebPayCheckoutCounterRequst");
-    ASn.add("getWCPayRealnameVerify");
-    ASn.add("unbindBankCard");
-    ASn.add("idCardRealnameVerify");
-    ASn.add("openLuckyMoneyDetailView");
-    ASn.add("setWCPayPassword");
-    ASn.add("openOfflinePayView");
-    ASn.add("faceVerifyForPay");
-    ASn.add("scanLicence");
-    ASn.add("openBusinessView");
-    ASn.add("getBrandWCPayRequest");
-    ASn.add("requestJointPayment");
-    ASn.add("editAddress");
-    ASn.add("getLatestAddress");
-    ASn.add("openLocation");
-    ASn.add("chooseInvoiceTitle");
-    ASn.add("requireSoterBiometricAuthentication");
-    ASn.add("getOAID");
-    AppMethodBeat.o(189698);
+    CkA.add("openUrlByExtBrowser");
+    CkA.add("startVoipCall");
+    CkA.add("getCurrentSSID");
+    CkA.add("chooseVideo");
+    CkA.add("uploadVideo");
+    CkA.add("getOpenDeviceId");
+    CkA.add("chooseIdCard");
+    CkA.add("recordVideo");
+    CkA.add("chooseMedia");
+    CkA.add("requestWxFacePictureVerify");
+    CkA.add("requestWxFacePictureVerifyUnionVideo");
+    CkA.add("openRealnameAuth");
+    CkA.add("getInstallState");
+    CkA.add("addDownloadTask");
+    CkA.add("cancelDownloadTask");
+    CkA.add("queryDownloadTask");
+    CkA.add("installDownloadTask");
+    CkA.add("launch3rdApp");
+    CkA.add("pauseDownloadTask");
+    CkA.add("resumeDownloadTask");
+    CkA.add("launchApplication");
+    CkA.add("addDownloadTaskStraight");
+    CkA.add("profile");
+    CkA.add("addContact");
+    CkA.add("jumpToBizProfile");
+    CkA.add("startTempSession");
+    CkA.add("quicklyAddBrandContact");
+    CkA.add("openBizChat");
+    CkA.add("shareTimeline");
+    CkA.add("sendAppMessage");
+    CkA.add("sendServiceAppMessage");
+    CkA.add("getSendC2CMessageRequest");
+    CkA.add("shareQQ");
+    CkA.add("selectSingleContact");
+    CkA.add("sendAppMessageToSpecifiedContact");
+    CkA.add("sendSingleAppMessage");
+    CkA.add("openWeApp");
+    CkA.add("launchMiniProgram");
+    CkA.add("addCustomMenuItems");
+    CkA.add("openUrlWithExtraWebview");
+    CkA.add("enableFullScreen");
+    CkA.add("openCustomWebview");
+    CkA.add("openSpecificView");
+    CkA.add("getBrandWCPayBindCardRequest");
+    CkA.add("getTransferMoneyRequest");
+    CkA.add("verifyWCPayPassword");
+    CkA.add("getRecevieBizHongBaoRequest");
+    CkA.add("getH5PrepayRequest");
+    CkA.add("getH5TransactionRequest");
+    CkA.add("getWebPayCheckoutCounterRequst");
+    CkA.add("getWCPayRealnameVerify");
+    CkA.add("unbindBankCard");
+    CkA.add("idCardRealnameVerify");
+    CkA.add("openLuckyMoneyDetailView");
+    CkA.add("setWCPayPassword");
+    CkA.add("openOfflinePayView");
+    CkA.add("faceVerifyForPay");
+    CkA.add("scanLicence");
+    CkA.add("openBusinessView");
+    CkA.add("getBrandWCPayRequest");
+    CkA.add("requestJointPayment");
+    CkA.add("editAddress");
+    CkA.add("getLatestAddress");
+    CkA.add("openLocation");
+    CkA.add("chooseInvoiceTitle");
+    CkA.add("requireSoterBiometricAuthentication");
+    CkA.add("getOAID");
+    AppMethodBeat.o(205327);
   }
 }
 

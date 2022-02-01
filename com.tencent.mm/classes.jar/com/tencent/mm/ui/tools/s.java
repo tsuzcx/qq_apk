@@ -27,7 +27,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.MMListPopupWindow;
 import com.tencent.mm.ui.base.o;
@@ -35,33 +35,33 @@ import com.tencent.mm.ui.base.o;
 public abstract class s
   implements View.OnKeyListener, ViewTreeObserver.OnGlobalLayoutListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private MMListPopupWindow GlI;
-  private int GlJ = 2131820865;
-  private ViewGroup HtZ;
-  private PopupWindow.OnDismissListener Hua;
-  private boolean Hub = true;
-  private View Huc;
-  private int Hud;
-  private int Hue = 0;
-  private int Huf = 0;
-  private float Hug = 0.0F;
-  private float Huh = 0.0F;
-  private ViewTreeObserver acK;
-  private int aek;
+  private MMListPopupWindow HLx;
+  private int HLy = 2131820865;
+  private int IUA;
+  private int IUB = 0;
+  private int IUC = 0;
+  private float IUD = 0.0F;
+  private float IUE = 0.0F;
+  private ViewGroup IUw;
+  private PopupWindow.OnDismissListener IUx;
+  private boolean IUy = true;
+  private View IUz;
+  private ViewTreeObserver adE;
+  private int afe;
   private int dividerHeight;
-  private boolean kBm = false;
+  private boolean lcE = false;
   protected Context mContext;
-  private int mJv = 0;
-  private boolean mfl = false;
-  private View nO;
-  private BaseAdapter nxo;
-  private DialogInterface.OnCancelListener vQI;
+  private boolean mHk = false;
+  private int nly = 0;
+  private View oP;
+  private BaseAdapter oao;
+  private DialogInterface.OnCancelListener xbq;
   
   public s(Context paramContext)
   {
     this.mContext = paramContext;
     paramContext = paramContext.getResources();
-    this.aek = Math.min(paramContext.getDisplayMetrics().widthPixels * 4 / 5, paramContext.getDimensionPixelSize(2131165522));
+    this.afe = Math.min(paramContext.getDisplayMetrics().widthPixels * 4 / 5, paramContext.getDimensionPixelSize(2131165522));
     ViewGroup localViewGroup;
     if ((this.mContext instanceof Activity))
     {
@@ -71,18 +71,18 @@ public abstract class s
       }
     }
     label183:
-    for (this.nO = localViewGroup.getChildAt(0);; this.nO = localViewGroup)
+    for (this.oP = localViewGroup.getChildAt(0);; this.oP = localViewGroup)
     {
       this.dividerHeight = BackwardSupportUtil.b.g(this.mContext, 1.0F);
-      this.Hue = (paramContext.getDimensionPixelSize(2131165516) * 2);
-      this.mJv = paramContext.getDimensionPixelSize(2131165255);
-      this.Huf = BackwardSupportUtil.b.g(this.mContext, 36.0F);
-      this.nxo = VY();
+      this.IUB = (paramContext.getDimensionPixelSize(2131165516) * 2);
+      this.nly = paramContext.getDimensionPixelSize(2131165255);
+      this.IUC = BackwardSupportUtil.b.g(this.mContext, 36.0F);
+      this.oao = WW();
       return;
     }
   }
   
-  private boolean aov()
+  private boolean aly()
   {
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
     return localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels;
@@ -109,10 +109,10 @@ public abstract class s
     label127:
     for (;;)
     {
-      if (this.HtZ == null) {
-        this.HtZ = new FrameLayout(this.mContext);
+      if (this.IUw == null) {
+        this.IUw = new FrameLayout(this.mContext);
       }
-      localView = paramListAdapter.getView(j, localView, this.HtZ);
+      localView = paramListAdapter.getView(j, localView, this.IUw);
       localView.measure(n, i1);
       k = Math.max(k, localView.getMeasuredWidth());
       j += 1;
@@ -121,16 +121,16 @@ public abstract class s
     }
   }
   
-  protected abstract BaseAdapter VY();
+  protected abstract BaseAdapter WW();
   
   public final void dismiss()
   {
     if (isShowing()) {
-      this.GlI.dismiss();
+      this.HLx.dismiss();
     }
   }
   
-  public boolean hM()
+  public boolean hU()
   {
     Object localObject1 = new Rect();
     int i;
@@ -142,7 +142,7 @@ public abstract class s
     if ((this.mContext instanceof AppCompatActivity))
     {
       i = ((AppCompatActivity)this.mContext).getSupportActionBar().getHeight();
-      k = ao.ap(this.mContext, 2131165303);
+      k = ao.av(this.mContext, 2131165303);
       j = i;
       if ((this.mContext instanceof Activity))
       {
@@ -155,36 +155,36 @@ public abstract class s
         }
         j = i + (j - ((Rect)localObject1).height());
       }
-      this.kBm = aov();
-      if (this.GlI == null) {
-        this.GlI = new MMListPopupWindow(this.mContext, null, 0);
+      this.lcE = aly();
+      if (this.HLx == null) {
+        this.HLx = new MMListPopupWindow(this.mContext, null, 0);
       }
-      this.GlI.setOnDismissListener(this);
-      this.GlI.aos = this;
-      this.GlI.setAdapter(this.nxo);
-      this.GlI.setModal(true);
-      this.GlI.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131233518));
-      this.GlI.setAnimationStyle(this.GlJ);
-      this.GlI.aof = k;
-      this.GlI.aoq = this.nO;
-      if (this.nO != null)
+      this.HLx.setOnDismissListener(this);
+      this.HLx.apn = this;
+      this.HLx.setAdapter(this.oao);
+      this.HLx.setModal(true);
+      this.HLx.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131233518));
+      this.HLx.setAnimationStyle(this.HLy);
+      this.HLx.apa = k;
+      this.HLx.apl = this.oP;
+      if (this.oP != null)
       {
-        if (this.acK != null) {
+        if (this.adE != null) {
           break label869;
         }
         bool = true;
         label276:
-        this.acK = this.nO.getViewTreeObserver();
-        ad.v("MicroMsg.SubMenuHelperBase", "tryshow addGlobalListener:%b", new Object[] { Boolean.valueOf(bool) });
+        this.adE = this.oP.getViewTreeObserver();
+        ac.v("MicroMsg.SubMenuHelperBase", "tryshow addGlobalListener:%b", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          this.acK.addOnGlobalLayoutListener(this);
+          this.adE.addOnGlobalLayoutListener(this);
         }
       }
-      this.GlI.setVerticalOffset(j);
-      this.GlI.mfl = this.mfl;
-      this.GlI.setContentWidth(Math.min(b(this.nxo), this.aek));
-      this.GlI.jY();
-      if ((this.Hug != 0.0F) && (this.Huh != 0.0F))
+      this.HLx.setVerticalOffset(j);
+      this.HLx.mHk = this.mHk;
+      this.HLx.setContentWidth(Math.min(b(this.oao), this.afe));
+      this.HLx.kg();
+      if ((this.IUD != 0.0F) && (this.IUE != 0.0F))
       {
         localObject1 = new DisplayMetrics();
         ((Activity)this.mContext).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
@@ -208,44 +208,44 @@ public abstract class s
     {
       if (i != 0)
       {
-        i = (int)(this.Huh * j);
+        i = (int)(this.IUE * j);
         label503:
-        ad.d("MicroMsg.SubMenuHelperBase", "menuHeightPercentPort(%f), menuHeightPercentLand(%f), frameHeight(%d), decorViewHeight(%d), menuHeight(%d)", new Object[] { Float.valueOf(this.Hug), Float.valueOf(this.Huh), Integer.valueOf(((Rect)localObject1).height()), Integer.valueOf(j), Integer.valueOf(i) });
-        i = Math.round(i / this.mJv);
-        if ((i <= 0) || (this.nxo == null)) {
+        ac.d("MicroMsg.SubMenuHelperBase", "menuHeightPercentPort(%f), menuHeightPercentLand(%f), frameHeight(%d), decorViewHeight(%d), menuHeight(%d)", new Object[] { Float.valueOf(this.IUD), Float.valueOf(this.IUE), Integer.valueOf(((Rect)localObject1).height()), Integer.valueOf(j), Integer.valueOf(i) });
+        i = Math.round(i / this.nly);
+        if ((i <= 0) || (this.oao == null)) {
           break label933;
         }
-        j = this.mJv * i + this.Hue;
-        if ((j == 0) || (j >= this.nxo.getCount() * this.mJv)) {
+        j = this.nly * i + this.IUB;
+        if ((j == 0) || (j >= this.oao.getCount() * this.nly)) {
           break label892;
         }
-        j = this.mJv;
-        k = this.Hue;
-        int m = this.Huf;
-        this.GlI.aoe = ((i - 1) * j + k + m);
+        j = this.nly;
+        k = this.IUB;
+        int m = this.IUC;
+        this.HLx.aoZ = ((i - 1) * j + k + m);
       }
       for (;;)
       {
-        if ((this.GlI != null) && (this.Huc != null))
+        if ((this.HLx != null) && (this.IUz != null))
         {
-          localObject1 = this.GlI;
-          localObject2 = this.Huc;
-          bool = ((MMListPopupWindow)localObject1).iAs.isShowing();
+          localObject1 = this.HLx;
+          localObject2 = this.IUz;
+          bool = ((MMListPopupWindow)localObject1).jat.isShowing();
           if (bool) {
-            ((MMListPopupWindow)localObject1).jX();
+            ((MMListPopupWindow)localObject1).kf();
           }
-          ((MMListPopupWindow)localObject1).aoo = ((View)localObject2);
+          ((MMListPopupWindow)localObject1).apj = ((View)localObject2);
           if (bool) {
             ((MMListPopupWindow)localObject1).show();
           }
-          this.GlI.aop = this.Hud;
+          this.HLx.apk = this.IUA;
         }
-        this.GlI.show();
-        this.GlI.FYm.setOnKeyListener(this);
-        this.GlI.FYm.setSelector(new ColorDrawable(this.mContext.getResources().getColor(2131101053)));
-        this.GlI.FYm.setDividerHeight(0);
-        this.GlI.FYm.setVerticalScrollBarEnabled(true);
-        this.GlI.FYm.setHorizontalScrollBarEnabled(false);
+        this.HLx.show();
+        this.HLx.Hyb.setOnKeyListener(this);
+        this.HLx.Hyb.setSelector(new ColorDrawable(this.mContext.getResources().getColor(2131101053)));
+        this.HLx.Hyb.setDividerHeight(0);
+        this.HLx.Hyb.setVerticalScrollBarEnabled(true);
+        this.HLx.Hyb.setHorizontalScrollBarEnabled(false);
         return true;
         localObject2 = this.mContext.getResources().getDisplayMetrics();
         if (((DisplayMetrics)localObject2).widthPixels > ((DisplayMetrics)localObject2).heightPixels)
@@ -264,55 +264,55 @@ public abstract class s
         label875:
         i = 0;
         break label431;
-        i = (int)(this.Hug * j);
+        i = (int)(this.IUD * j);
         break label503;
         label892:
-        ad.w("MicroMsg.SubMenuHelperBase", "[cpan] menuheight:%d,listHeight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.nxo.getCount() * this.mJv) });
+        ac.w("MicroMsg.SubMenuHelperBase", "[cpan] menuheight:%d,listHeight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.oao.getCount() * this.nly) });
         continue;
-        ad.e("MicroMsg.SubMenuHelperBase", "[cpan] setpopuHeight error.");
+        ac.e("MicroMsg.SubMenuHelperBase", "[cpan] setpopuHeight error.");
       }
     }
   }
   
   public final boolean isShowing()
   {
-    return (this.GlI != null) && (this.GlI.iAs.isShowing());
+    return (this.HLx != null) && (this.HLx.jat.isShowing());
   }
   
   public void onDismiss()
   {
-    if (this.acK != null)
+    if (this.adE != null)
     {
-      if (!this.acK.isAlive()) {
-        this.acK = this.nO.getViewTreeObserver();
+      if (!this.adE.isAlive()) {
+        this.adE = this.oP.getViewTreeObserver();
       }
-      this.acK.removeGlobalOnLayoutListener(this);
-      this.acK = null;
+      this.adE.removeGlobalOnLayoutListener(this);
+      this.adE = null;
     }
-    if (this.vQI != null) {
-      this.vQI.onCancel(null);
+    if (this.xbq != null) {
+      this.xbq.onCancel(null);
     }
-    if (this.Hua != null) {
-      this.Hua.onDismiss();
+    if (this.IUx != null) {
+      this.IUx.onDismiss();
     }
   }
   
   public void onGlobalLayout()
   {
-    ad.v("MicroMsg.SubMenuHelperBase", "onGlobalLayout showing:%b, anchorshown:%b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.nO.isShown()) });
+    ac.v("MicroMsg.SubMenuHelperBase", "onGlobalLayout showing:%b, anchorshown:%b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.oP.isShown()) });
     if (isShowing())
     {
-      View localView = this.nO;
+      View localView = this.oP;
       if ((localView != null) && (localView.isShown())) {
         break label64;
       }
       dismiss();
     }
     label64:
-    while ((!isShowing()) || (this.kBm == aov())) {
+    while ((!isShowing()) || (this.lcE == aly())) {
       return;
     }
-    this.GlI.dismiss();
+    this.HLx.dismiss();
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -322,7 +322,7 @@ public abstract class s
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    ad.v("MicroMsg.SubMenuHelperBase", "onKey");
+    ac.v("MicroMsg.SubMenuHelperBase", "onKey");
     if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
     {
       dismiss();
@@ -331,20 +331,20 @@ public abstract class s
     return false;
   }
   
-  public final void wI(boolean paramBoolean)
+  public final void xP(boolean paramBoolean)
   {
-    this.mfl = paramBoolean;
+    this.mHk = paramBoolean;
     if (paramBoolean)
     {
-      this.GlJ = 2131820809;
+      this.HLy = 2131820809;
       return;
     }
-    this.GlJ = 2131820865;
+    this.HLy = 2131820865;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.s
  * JD-Core Version:    0.7.0.1
  */

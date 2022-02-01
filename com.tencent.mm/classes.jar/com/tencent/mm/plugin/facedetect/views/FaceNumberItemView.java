@@ -13,22 +13,22 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Timer;
 
 public class FaceNumberItemView
   extends View
 {
-  static final long pVP = 29L;
-  Timer pVO;
-  private boolean pVQ;
-  private Paint pVR;
-  private RectF pVS;
-  private Bitmap pVT;
-  private int pVU;
-  int pVV;
-  Runnable pVW;
+  static final long qEu = 29L;
+  int qEA;
+  Runnable qEB;
+  Timer qEt;
+  private boolean qEv;
+  private Paint qEw;
+  private RectF qEx;
+  private Bitmap qEy;
+  private int qEz;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,14 +39,14 @@ public class FaceNumberItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104166);
-    this.pVO = null;
-    this.pVQ = false;
-    this.pVR = null;
-    this.pVS = null;
-    this.pVT = null;
-    this.pVU = 17;
-    this.pVV = 0;
-    this.pVW = new Runnable()
+    this.qEt = null;
+    this.qEv = false;
+    this.qEw = null;
+    this.qEx = null;
+    this.qEy = null;
+    this.qEz = 17;
+    this.qEA = 0;
+    this.qEB = new Runnable()
     {
       public final void run()
       {
@@ -58,25 +58,25 @@ public class FaceNumberItemView
           AppMethodBeat.o(104163);
           return;
         }
-        FaceNumberItemView.this.cgW();
+        FaceNumberItemView.this.coD();
         AppMethodBeat.o(104163);
       }
     };
     setLayerType(1, null);
-    this.pVR = new Paint();
-    this.pVR.setColor(paramContext.getResources().getColor(2131100331));
-    this.pVR.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.pVS = new RectF();
+    this.qEw = new Paint();
+    this.qEw.setColor(paramContext.getResources().getColor(2131100331));
+    this.qEw.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.qEx = new RectF();
     AppMethodBeat.o(104166);
   }
   
-  public final void cgW()
+  public final void coD()
   {
     AppMethodBeat.i(104169);
-    if (this.pVO != null)
+    if (this.qEt != null)
     {
-      this.pVO.cancel();
-      this.pVO = null;
+      this.qEt.cancel();
+      this.qEt = null;
     }
     AppMethodBeat.o(104169);
   }
@@ -87,35 +87,35 @@ public class FaceNumberItemView
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.pVU == 17)
+    if (this.qEz == 17)
     {
-      f2 = getWidth() - this.pVT.getWidth() >> 1;
-      f1 = getHeight() - this.pVT.getHeight() >> 1;
+      f2 = getWidth() - this.qEy.getWidth() >> 1;
+      f1 = getHeight() - this.qEy.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.pVQ) {
-        paramCanvas.drawBitmap(this.pVT, f2, f1, null);
+      if (!this.qEv) {
+        paramCanvas.drawBitmap(this.qEy, f2, f1, null);
       }
-      this.pVS.set(f2, 0.0F, this.pVT.getWidth() * this.pVV / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.pVS, this.pVR);
+      this.qEx.set(f2, 0.0F, this.qEy.getWidth() * this.qEA / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.qEx, this.qEw);
       AppMethodBeat.o(104170);
       return;
-      if (this.pVU == 3)
+      if (this.qEz == 3)
       {
-        f1 = getHeight() - this.pVT.getHeight() >> 1;
+        f1 = getHeight() - this.qEy.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.pVU == 5)
+      else if (this.qEz == 5)
       {
-        f2 = getWidth() - this.pVT.getWidth();
-        f1 = getHeight() - this.pVT.getHeight() >> 1;
+        f2 = getWidth() - this.qEy.getWidth();
+        f1 = getHeight() - this.qEy.getHeight() >> 1;
       }
       else
       {
-        ad.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.pVT.getWidth() >> 1;
-        f1 = getHeight() - this.pVT.getHeight() >> 1;
+        ac.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
+        f2 = getWidth() - this.qEy.getWidth() >> 1;
+        f1 = getHeight() - this.qEy.getHeight() >> 1;
       }
     }
   }
@@ -123,8 +123,8 @@ public class FaceNumberItemView
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(104168);
-    ad.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.pVU = paramInt;
+    ac.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
+    this.qEz = paramInt;
     AppMethodBeat.o(104168);
   }
   
@@ -139,11 +139,11 @@ public class FaceNumberItemView
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.pVT = localBitmap2;
+      this.qEy = localBitmap2;
       AppMethodBeat.o(104167);
       return;
     }
-    this.pVT = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    this.qEy = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
     AppMethodBeat.o(104167);
   }
 }

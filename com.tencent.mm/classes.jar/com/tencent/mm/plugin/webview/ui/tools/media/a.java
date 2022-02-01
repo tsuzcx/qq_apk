@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
 public final class a
 {
-  public static final a Bsg;
+  public static final a CKm;
   private static final String TAG = "MicroMsg.KV18589Report";
   
   static
   {
     AppMethodBeat.i(82580);
-    Bsg = new a();
+    CKm = new a();
     TAG = "MicroMsg.KV18589Report";
     AppMethodBeat.o(82580);
   }
   
-  public static void aB(int paramInt1, int paramInt2, int paramInt3)
+  public static void aC(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82579);
     h localh;
     switch (paramInt1)
     {
     default: 
-      localh = h.vKh;
+      localh = h.wUl;
       switch (paramInt2)
       {
       default: 
@@ -38,7 +38,7 @@ public final class a
       localh.f(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
       AppMethodBeat.o(82579);
       return;
-      localh = h.vKh;
+      localh = h.wUl;
       switch (paramInt2)
       {
       default: 
@@ -53,7 +53,7 @@ public final class a
         continue;
         paramInt1 = 3;
       }
-      localh = h.vKh;
+      localh = h.wUl;
       switch (paramInt2)
       {
       default: 
@@ -74,11 +74,11 @@ public final class a
     }
   }
   
-  public static void iF(int paramInt1, int paramInt2)
+  public static void iS(int paramInt1, int paramInt2)
   {
     int i = 2;
     AppMethodBeat.i(82578);
-    h localh = h.vKh;
+    h localh = h.wUl;
     switch (paramInt1)
     {
     }

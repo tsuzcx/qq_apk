@@ -12,12 +12,12 @@ public abstract class y
   extends k
   implements ab
 {
-  public final b JrG;
+  public final b LeZ;
   
   public y(d.l.b.a.b.b.y paramy, b paramb)
   {
-    super(paramy, g.a.fzI(), paramb.fHf(), an.JqJ);
-    this.JrG = paramb;
+    super(paramy, g.a.fSm(), paramb.fZJ(), an.Lec);
+    this.LeZ = paramb;
   }
   
   public final <R, D> R a(n<R, D> paramn, D paramD)
@@ -26,35 +26,35 @@ public abstract class y
     return paramn.a((ab)this, paramD);
   }
   
-  public an fxG()
+  public an fQk()
   {
-    an localan = an.JqJ;
+    an localan = an.Lec;
     d.g.b.k.g(localan, "SourceElement.NO_SOURCE");
     return localan;
   }
   
-  public final d.l.b.a.b.b.y fzc()
+  public final d.l.b.a.b.b.y fRG()
   {
-    l locall = super.fxq();
+    l locall = super.fPU();
     if (locall == null) {
       throw new v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ModuleDescriptor");
     }
     return (d.l.b.a.b.b.y)locall;
   }
   
-  public final b fzd()
+  public final b fRH()
   {
-    return this.JrG;
+    return this.LeZ;
   }
   
   public String toString()
   {
-    return "package " + this.JrG;
+    return "package " + this.LeZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.y
  * JD-Core Version:    0.7.0.1
  */

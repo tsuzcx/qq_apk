@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.u;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.an;
 import com.tencent.toybrick.b.b;
@@ -19,10 +19,10 @@ import com.tencent.toybrick.d.a.a;
 public abstract class VerticalToyUI<T extends com.tencent.toybrick.g.a>
   extends BaseToyUI<g>
 {
-  private a.a IGb;
-  private b IHB;
-  private com.tencent.toybrick.d.a IHC;
-  protected T IHD = null;
+  private a.a Ksm;
+  private b KtM;
+  private com.tencent.toybrick.d.a KtN;
+  protected T KtO = null;
   
   static
   {
@@ -40,24 +40,24 @@ public abstract class VerticalToyUI<T extends com.tencent.toybrick.g.a>
     try
     {
       throw new NullPointerException();
-      this.IHC = new com.tencent.toybrick.d.a(this);
-      this.IGb = this.IHC.IGb;
+      this.KtN = new com.tencent.toybrick.d.a(this);
+      this.Ksm = this.KtN.Ksm;
       paramBundle = (RecyclerView)findViewById(2131306297);
       getBaseContext();
       Object localObject = new LinearLayoutManager();
-      ((LinearLayoutManager)localObject).anF = 4;
+      ((LinearLayoutManager)localObject).aoA = 4;
       ((LinearLayoutManager)localObject).aw(true);
       paramBundle.setLayoutManager((RecyclerView.i)localObject);
-      localObject = new b(this, this.IGb);
-      this.IHB = ((b)localObject);
+      localObject = new b(this, this.Ksm);
+      this.KtM = ((b)localObject);
       paramBundle.setAdapter((RecyclerView.a)localObject);
-      paramBundle.setRecycledViewPool(com.tencent.toybrick.b.a.fph());
-      paramBundle.setViewCacheExtension(new RecyclerView.t() {});
+      paramBundle.setRecycledViewPool(com.tencent.toybrick.b.a.fHp());
+      paramBundle.setViewCacheExtension(new RecyclerView.u() {});
       localObject = new c(this);
-      ((c)localObject).IGb = this.IGb;
+      ((c)localObject).Ksm = this.Ksm;
       paramBundle.a((RecyclerView.h)localObject);
-      if (this.IHB != null) {
-        this.IHB.aql.notifyChanged();
+      if (this.KtM != null) {
+        this.KtM.arg.notifyChanged();
       }
       return;
     }
@@ -85,7 +85,7 @@ public abstract class VerticalToyUI<T extends com.tencent.toybrick.g.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.toybrick.ui.VerticalToyUI
  * JD-Core Version:    0.7.0.1
  */

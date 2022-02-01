@@ -31,12 +31,12 @@ public final class g
       AppMethodBeat.o(145369);
       return false;
     }
-    paramPath.lineTo(com.tencent.mm.plugin.appbrand.aa.g.f(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.aa.g.f(paramJSONArray, 1));
+    paramPath.lineTo(com.tencent.mm.plugin.appbrand.z.g.f(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.z.g.f(paramJSONArray, 1));
     AppMethodBeat.o(145369);
     return true;
   }
   
-  public final BasePathActionArg aTb()
+  public final BasePathActionArg baa()
   {
     AppMethodBeat.i(145371);
     PathLineToActionArg localPathLineToActionArg = new PathLineToActionArg();
@@ -51,7 +51,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.g
  * JD-Core Version:    0.7.0.1
  */

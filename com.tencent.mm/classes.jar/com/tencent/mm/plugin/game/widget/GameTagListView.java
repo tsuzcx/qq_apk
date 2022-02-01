@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public class GameTagListView
@@ -28,7 +28,7 @@ public class GameTagListView
   public final void h(LinkedList<String> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(42623);
-    if (bt.gL(paramLinkedList))
+    if (bs.gY(paramLinkedList))
     {
       setVisibility(8);
       AppMethodBeat.o(42623);
@@ -57,7 +57,7 @@ public class GameTagListView
       if (i < paramLinkedList.size())
       {
         localObject1 = (String)paramLinkedList.get(i);
-        ad.d("MicroMsg.GameTagListView", (String)localObject1);
+        ac.d("MicroMsg.GameTagListView", (String)localObject1);
         localObject2 = (TextView)getChildAt(i);
         ((TextView)localObject2).setVisibility(0);
         ((TextView)localObject2).setText((CharSequence)localObject1);

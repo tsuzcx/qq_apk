@@ -8,29 +8,37 @@ public abstract class gq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ;
-  private static final int emE = "recordId".hashCode();
-  private static final int ffb;
-  private static final int key_HASHCODE;
+  private static final int eBr = "md5".hashCode();
+  private static final int epb;
+  private static final int evD = "downloadUrl".hashCode();
+  private static final int fid = "pkgId".hashCode();
+  private static final int fie;
+  private static final int fif;
+  private static final int fig = "pkgSize".hashCode();
+  private static final int fih = "downloadNetType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE;
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  private boolean els = true;
-  private boolean emC = true;
-  private boolean ffa = true;
-  public String field_appId;
-  public String field_domin;
-  public String field_key;
-  public int field_recordId;
-  public String field_value;
+  private boolean eAF = true;
+  private boolean eoW = true;
+  private boolean evv = true;
+  private boolean fhY = true;
+  private boolean fhZ = true;
+  private boolean fia = true;
+  private boolean fib = true;
+  private boolean fic = true;
+  public int field_downloadNetType;
+  public String field_downloadUrl;
+  public String field_md5;
+  public String field_oldPath;
+  public String field_oldVersion;
+  public String field_pkgId;
+  public int field_pkgSize;
+  public String field_version;
   
   static
   {
-    elJ = "appId".hashCode();
-    ffb = "domin".hashCode();
-    key_HASHCODE = "key".hashCode();
-    value_HASHCODE = "value".hashCode();
+    epb = "version".hashCode();
+    fie = "oldVersion".hashCode();
+    fif = "oldPath".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -46,11 +54,11 @@ public abstract class gq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (emE != k) {
+      if (fid != k) {
         break label65;
       }
-      this.field_recordId = paramCursor.getInt(i);
-      this.emC = true;
+      this.field_pkgId = paramCursor.getString(i);
+      this.fhY = true;
     }
     for (;;)
     {
@@ -58,14 +66,20 @@ public abstract class gq
       break label20;
       break;
       label65:
-      if (elJ == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (ffb == k) {
-        this.field_domin = paramCursor.getString(i);
-      } else if (key_HASHCODE == k) {
-        this.field_key = paramCursor.getString(i);
-      } else if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getString(i);
+      if (epb == k) {
+        this.field_version = paramCursor.getString(i);
+      } else if (fie == k) {
+        this.field_oldVersion = paramCursor.getString(i);
+      } else if (fif == k) {
+        this.field_oldPath = paramCursor.getString(i);
+      } else if (eBr == k) {
+        this.field_md5 = paramCursor.getString(i);
+      } else if (evD == k) {
+        this.field_downloadUrl = paramCursor.getString(i);
+      } else if (fig == k) {
+        this.field_pkgSize = paramCursor.getInt(i);
+      } else if (fih == k) {
+        this.field_downloadNetType = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -75,20 +89,29 @@ public abstract class gq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emC) {
-      localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
+    if (this.fhY) {
+      localContentValues.put("pkgId", this.field_pkgId);
     }
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eoW) {
+      localContentValues.put("version", this.field_version);
     }
-    if (this.ffa) {
-      localContentValues.put("domin", this.field_domin);
+    if (this.fhZ) {
+      localContentValues.put("oldVersion", this.field_oldVersion);
     }
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fia) {
+      localContentValues.put("oldPath", this.field_oldPath);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.eAF) {
+      localContentValues.put("md5", this.field_md5);
+    }
+    if (this.evv) {
+      localContentValues.put("downloadUrl", this.field_downloadUrl);
+    }
+    if (this.fib) {
+      localContentValues.put("pkgSize", Integer.valueOf(this.field_pkgSize));
+    }
+    if (this.fic) {
+      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

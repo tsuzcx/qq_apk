@@ -5,11 +5,11 @@ import com.bumptech.glide.f.b;
 public abstract class a<Z>
   implements e<Z>
 {
-  private b aLh;
+  private b aLX;
   
   public final void h(b paramb)
   {
-    this.aLh = paramb;
+    this.aLX = paramb;
   }
   
   public final void onDestroy() {}
@@ -18,14 +18,14 @@ public abstract class a<Z>
   
   public final void onStop() {}
   
-  public final b pK()
+  public final b pU()
   {
-    return this.aLh;
+    return this.aLX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.f.a.a
  * JD-Core Version:    0.7.0.1
  */

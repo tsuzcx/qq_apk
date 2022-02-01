@@ -6,20 +6,19 @@ import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.PreInitCallback;
 import com.tencent.xweb.WebView.c;
-import com.tencent.xweb.af;
+import com.tencent.xweb.ah;
 import com.tencent.xweb.b;
 import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 import com.tencent.xweb.internal.IJsRuntime;
 import com.tencent.xweb.internal.IWebStorage;
 import com.tencent.xweb.internal.IWebView;
+import com.tencent.xweb.internal.IWebViewDatabase;
 import com.tencent.xweb.internal.j.a;
-import com.tencent.xweb.r;
-import com.tencent.xweb.r.a;
 import com.tencent.xweb.s;
-import com.tencent.xweb.util.g;
-import com.tencent.xweb.xwalk.updater.Scheduler;
-import com.tencent.xweb.xwalk.updater.a.a;
+import com.tencent.xweb.s.a;
+import com.tencent.xweb.xwalk.updater.a.b;
+import com.tencent.xweb.xwalk.updater.c;
 import java.lang.reflect.Method;
 import org.xwalk.core.WebViewExtension;
 import org.xwalk.core.WebViewExtensionListener;
@@ -43,7 +42,7 @@ public class XWalkWebFactory
     AppMethodBeat.i(185205);
     this.mIsDebugMode = false;
     this.mIsDebugModeReplase = false;
-    r.a(new a((byte)0));
+    s.a(new a((byte)0));
     AppMethodBeat.o(185205);
   }
   
@@ -52,7 +51,7 @@ public class XWalkWebFactory
     AppMethodBeat.i(154485);
     if (sInstance == null)
     {
-      af.frp();
+      ah.fJR();
       sInstance = new XWalkWebFactory();
     }
     XWalkWebFactory localXWalkWebFactory = sInstance;
@@ -263,7 +262,7 @@ public class XWalkWebFactory
   public void clearAllWebViewCache(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(154496);
-    if (WebView.getCurWebType() != WebView.c.INC)
+    if (WebView.getCurWebType() != WebView.c.KzZ)
     {
       AppMethodBeat.o(154496);
       return;
@@ -304,10 +303,10 @@ public class XWalkWebFactory
     AppMethodBeat.i(154487);
     try
     {
-      if (j.gX(paramWebView.getContext()))
+      if (k.hi(paramWebView.getContext()))
       {
         WebViewExtension.updateExtension(false);
-        paramWebView = new j(paramWebView);
+        paramWebView = new k(paramWebView);
         AppMethodBeat.o(154487);
         return paramWebView;
       }
@@ -325,9 +324,9 @@ public class XWalkWebFactory
   public IWebStorage createWebviewStorage()
   {
     AppMethodBeat.i(154499);
-    i locali = new i();
+    j localj = new j();
     AppMethodBeat.o(154499);
-    return locali;
+    return localj;
   }
   
   public Object excute(String paramString, Object[] paramArrayOfObject)
@@ -359,8 +358,8 @@ public class XWalkWebFactory
         org.xwalk.core.Log.e("XWalkWebFactory", "STR_CMD_INVOKE_TO_RUNTIME failed , err = " + paramString.getMessage());
       }
     }
-    label796:
     label799:
+    label802:
     for (;;)
     {
       AppMethodBeat.o(154486);
@@ -372,31 +371,31 @@ public class XWalkWebFactory
           AppMethodBeat.o(154486);
           return null;
         }
-        paramString = a.ey(paramArrayOfObject[0]);
+        paramString = a.eA(paramArrayOfObject[0]);
         AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_GET_DEBUG_VIEW"))
       {
-        paramString = new c((WebView)paramArrayOfObject[0]);
+        paramString = new d((WebView)paramArrayOfObject[0]);
         AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_GET_UPDATER"))
       {
-        paramString = new o.a();
+        paramString = new p.a();
         AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_GET_PLUGIN_UPDATER"))
       {
-        paramString = new com.tencent.xweb.xwalk.a.i();
+        paramString = new com.tencent.xweb.xwalk.a.j();
         AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_CLEAR_SCHEDULER"))
       {
-        Scheduler.a(null);
+        c.fLZ().e(null);
         AppMethodBeat.o(154486);
         return null;
       }
@@ -414,15 +413,15 @@ public class XWalkWebFactory
       {
         try
         {
-          paramString = com.tencent.xweb.xwalk.updater.a.aPF(XWalkEnvironment.getUpdateConfigFullPath());
+          paramString = com.tencent.xweb.xwalk.updater.a.aVz(XWalkEnvironment.getUpdateConfigFullPath());
           if (paramString == null)
           {
             XWalkEnvironment.addXWalkInitializeLog("recheck cmds ConfigParser failed ");
             AppMethodBeat.o(154486);
             return null;
           }
-          com.tencent.xweb.a.a(paramString.IVp, paramString.IVn, true);
-          g.xs(68L);
+          com.tencent.xweb.a.a(paramString.KHW, paramString.KHU, true);
+          com.tencent.xweb.util.g.Cf(68L);
         }
         catch (Exception paramString)
         {
@@ -432,28 +431,28 @@ public class XWalkWebFactory
       else if (paramString.equals("STR_CMD_SET_DEBUG_MODE_REPLACE_NOW"))
       {
         tryLoadLocalAssetRuntime((Context)paramArrayOfObject[0], true);
-        c.hr((Context)paramArrayOfObject[0]);
+        d.hC((Context)paramArrayOfObject[0]);
       }
       else
       {
         if (paramString.equals("BASE_CONTEXT_CHANGED")) {
-          if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0) || (!(paramArrayOfObject[0] instanceof j))) {
-            break label796;
+          if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0) || (!(paramArrayOfObject[0] instanceof k))) {
+            break label799;
           }
         }
-        for (paramString = (j)paramArrayOfObject[0];; paramString = null)
+        for (paramString = (k)paramArrayOfObject[0];; paramString = null)
         {
           for (;;)
           {
             for (;;)
             {
               if ((paramString == null) || (XWalkCoreWrapper.getInstance() == null)) {
-                break label799;
+                break label802;
               }
-              if (paramString.ITM == null) {
+              if (paramString.KGo == null) {
                 org.xwalk.core.Log.e("XWWebView", "getXWalkBridge mwebview == null");
               }
-              for (paramString = null;; paramString = paramString.ITM.getBridge())
+              for (paramString = null;; paramString = paramString.KGo.getBridge())
               {
                 XWalkCoreWrapper.getInstance();
                 XWalkCoreWrapper.invokeRuntimeChannel(80001, new Object[] { paramString });
@@ -476,7 +475,7 @@ public class XWalkWebFactory
                 break;
               }
               if (!paramString.equals("STR_CMD_FORCE_DARK_MODE_COMMAND")) {
-                break label699;
+                break label702;
               }
               try
               {
@@ -491,7 +490,7 @@ public class XWalkWebFactory
               }
             }
             break;
-            label699:
+            label702:
             if (!paramString.equals("STR_CMD_FORCE_DARK_MODE_BEHAVIOR_COMMAND")) {
               break;
             }
@@ -516,17 +515,17 @@ public class XWalkWebFactory
   public CookieInternal.ICookieManagerInternal getCookieManager()
   {
     AppMethodBeat.i(154497);
-    d locald = new d();
+    e locale = new e();
     AppMethodBeat.o(154497);
-    return locald;
+    return locale;
   }
   
   public CookieInternal.ICookieSyncManagerInternal getCookieSyncManager()
   {
     AppMethodBeat.i(154498);
-    e locale = new e();
+    f localf = new f();
     AppMethodBeat.o(154498);
-    return locale;
+    return localf;
   }
   
   public IJsRuntime getJsCore(JsRuntime.JsRuntimeType paramJsRuntimeType, Context paramContext)
@@ -534,7 +533,7 @@ public class XWalkWebFactory
     Object localObject = null;
     AppMethodBeat.i(154490);
     initWebviewCore(paramContext, null);
-    switch (1.ISl[paramJsRuntimeType.ordinal()])
+    switch (1.KEI[paramJsRuntimeType.ordinal()])
     {
     default: 
       paramContext = localObject;
@@ -544,23 +543,31 @@ public class XWalkWebFactory
       AppMethodBeat.o(154490);
       return paramContext;
       paramContext = localObject;
-      if (com.tencent.xweb.xwalk.updater.d.isXWalkReady()) {
-        if (paramJsRuntimeType == JsRuntime.JsRuntimeType.IMJ)
+      if (com.tencent.xweb.xwalk.updater.e.isXWalkReady()) {
+        if (paramJsRuntimeType == JsRuntime.JsRuntimeType.Kzh)
         {
-          paramContext = new h();
+          paramContext = new i();
           paramContext.init(0);
         }
         else
         {
           paramContext = localObject;
-          if (paramJsRuntimeType == JsRuntime.JsRuntimeType.IMK)
+          if (paramJsRuntimeType == JsRuntime.JsRuntimeType.Kzi)
           {
-            paramContext = new h();
+            paramContext = new i();
             paramContext.init(1);
           }
         }
       }
     }
+  }
+  
+  public IWebViewDatabase getWebViewDatabase()
+  {
+    AppMethodBeat.i(208931);
+    t localt = new t();
+    AppMethodBeat.o(208931);
+    return localt;
   }
   
   public boolean hasInited()
@@ -598,14 +605,14 @@ public class XWalkWebFactory
   public void initInterface()
   {
     AppMethodBeat.i(183744);
-    com.tencent.xweb.internal.i.a(WebView.c.INC, new m());
+    com.tencent.xweb.internal.i.a(WebView.c.KzZ, new n());
     AppMethodBeat.o(183744);
   }
   
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(154491);
-    boolean bool = b.ld(paramContext);
+    boolean bool = b.lr(paramContext);
     if (paramPreInitCallback != null)
     {
       if (!bool) {
@@ -618,7 +625,7 @@ public class XWalkWebFactory
       AppMethodBeat.o(154491);
       return bool;
       label33:
-      paramPreInitCallback.aNK();
+      paramPreInitCallback.aUA();
     }
   }
   
@@ -631,15 +638,15 @@ public class XWalkWebFactory
   }
   
   static final class a
-    implements r.a
+    implements s.a
   {
-    public final void bvj()
+    public final void bCg()
     {
       AppMethodBeat.i(185203);
-      if (!"true".equalsIgnoreCase(com.tencent.xweb.a.lW("dis_refresh_main_cmd", "tools")))
+      if (!"true".equalsIgnoreCase(com.tencent.xweb.a.mx("dis_refresh_main_cmd", "tools")))
       {
-        com.tencent.xweb.a.fqt();
-        s.refresh();
+        com.tencent.xweb.a.fIO();
+        com.tencent.xweb.t.refresh();
         AppMethodBeat.o(185203);
         return;
       }
@@ -647,12 +654,12 @@ public class XWalkWebFactory
       AppMethodBeat.o(185203);
     }
     
-    public final void bvk()
+    public final void bCh()
     {
       AppMethodBeat.i(185204);
-      if (!"true".equalsIgnoreCase(com.tencent.xweb.a.lW("dis_refresh_plugin_cmd", "tools")))
+      if (!"true".equalsIgnoreCase(com.tencent.xweb.a.mx("dis_refresh_plugin_cmd", "tools")))
       {
-        b.fqB();
+        b.fIW();
         AppMethodBeat.o(185204);
         return;
       }
@@ -660,19 +667,19 @@ public class XWalkWebFactory
       AppMethodBeat.o(185204);
     }
     
-    public final void vG(int paramInt)
+    public final void wx(int paramInt)
     {
       AppMethodBeat.i(185202);
       if (paramInt == 0)
       {
-        if (!af.frr())
+        if (!ah.fJT())
         {
           AppMethodBeat.o(185202);
           return;
         }
         paramInt = XWalkEnvironment.getAvailableVersion();
         int i = XWalkEnvironment.getInstalledNewstVersionForCurAbi();
-        if ((paramInt <= 0) && (i > 0) && (!"true".equalsIgnoreCase(com.tencent.xweb.a.aOM("dis_reinit_web_core")))) {
+        if ((paramInt <= 0) && (i > 0) && (!"true".equalsIgnoreCase(com.tencent.xweb.a.aUy("dis_reinit_web_core")))) {
           WebView.reinitToXWeb();
         }
       }
@@ -682,59 +689,59 @@ public class XWalkWebFactory
   
   static final class b
   {
-    private static boolean IRe = false;
-    private static boolean ISn = false;
-    private static boolean peC = false;
+    private static boolean KDA = false;
+    private static boolean KEK = false;
+    private static boolean pHN = false;
     
     public static boolean hasInited()
     {
-      return peC;
+      return pHN;
     }
     
     public static boolean hasInitedCallback()
     {
-      return IRe;
+      return KDA;
     }
     
     public static void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
     {
       AppMethodBeat.i(154484);
-      if (IRe)
+      if (KDA)
       {
         AppMethodBeat.o(154484);
         return;
       }
       org.xwalk.core.Log.i("XWebViewHelper", "initCallback");
       WebViewExtension.SetExtension(paramWebViewExtensionListener);
-      IRe = true;
+      KDA = true;
       AppMethodBeat.o(154484);
     }
     
     public static boolean isCoreReady()
     {
-      return ISn;
+      return KEK;
     }
     
-    public static boolean ld(Context paramContext)
+    public static boolean lr(Context paramContext)
     {
       AppMethodBeat.i(154483);
       boolean bool;
-      if (peC)
+      if (pHN)
       {
-        bool = peC;
+        bool = pHN;
         AppMethodBeat.o(154483);
         return bool;
       }
       org.xwalk.core.Log.i("XWebViewHelper", "preInit");
-      if (j.gX(paramContext))
+      if (k.hi(paramContext))
       {
         org.xwalk.core.Log.i("XWebViewHelper", "preInit finished");
-        peC = true;
-        ISn = true;
+        pHN = true;
+        KEK = true;
       }
       for (;;)
       {
-        bool = peC;
+        bool = pHN;
         AppMethodBeat.o(154483);
         return bool;
         org.xwalk.core.Log.i("XWebViewHelper", "preInit xwalk is not available");

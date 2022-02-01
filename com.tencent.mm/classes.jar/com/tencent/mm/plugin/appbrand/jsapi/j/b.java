@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.q.p.c;
+import com.tencent.mm.plugin.appbrand.p.p.c;
 import java.util.HashMap;
 
 public final class b
@@ -12,12 +12,12 @@ public final class b
 {
   private static final int CTRL_INDEX = 530;
   private static final String NAME = "onLocalServiceEvent";
-  private static b kai;
+  private static b kAV;
   
   static
   {
     AppMethodBeat.i(144183);
-    kai = new b();
+    kAV = new b();
     AppMethodBeat.o(144183);
   }
   
@@ -37,16 +37,16 @@ public final class b
       localHashMap.put("event", paramString);
       if ((TextUtils.equals(paramString, "found")) || (TextUtils.equals(paramString, "lost")) || (TextUtils.equals(paramString, "resolveFail")))
       {
-        localHashMap.put("serviceType", paramc1.gLm);
-        localHashMap.put("serviceName", paramc1.kVV);
+        localHashMap.put("serviceType", paramc1.hlM);
+        localHashMap.put("serviceName", paramc1.lxF);
         if (!TextUtils.equals(paramString, "resolveFail"))
         {
           localHashMap.put("ip", paramc1.ip);
           localHashMap.put("port", Integer.valueOf(paramc1.port));
-          localHashMap.put("attributes", paramc1.kVU);
+          localHashMap.put("attributes", paramc1.lxE);
         }
       }
-      kai.C(localHashMap).h(paramc).aXQ();
+      kAV.B(localHashMap).h(paramc).beN();
       AppMethodBeat.o(144182);
       return;
     }
@@ -76,7 +76,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.b
  * JD-Core Version:    0.7.0.1
  */

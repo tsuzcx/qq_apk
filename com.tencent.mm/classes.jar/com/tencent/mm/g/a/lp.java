@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lp
   extends b
 {
-  public a dqp;
+  public a dny;
   
   public lp()
   {
@@ -15,23 +15,22 @@ public final class lp
   
   private lp(byte paramByte)
   {
-    AppMethodBeat.i(149874);
-    this.dqp = new a();
-    this.ESR = false;
+    AppMethodBeat.i(149872);
+    this.dny = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149874);
+    AppMethodBeat.o(149872);
   }
   
   public static final class a
   {
-    public String businessType;
-    public String dqq;
-    public int errCode;
+    public String dnz;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.lp
  * JD-Core Version:    0.7.0.1
  */

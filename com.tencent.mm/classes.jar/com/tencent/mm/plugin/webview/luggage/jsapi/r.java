@@ -7,11 +7,11 @@ import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
@@ -26,14 +26,14 @@ public class r
   {
     AppMethodBeat.i(175742);
     Intent localIntent = new Intent();
-    String str3 = ((f)parama.bZU).getUrl();
+    String str3 = ((f)parama.bWR).getUrl();
     localIntent.putExtra("req_url", str3);
-    String str2 = ((f)parama.bZU).ATn.getAppId();
+    String str2 = ((f)parama.bWR).ClA.getAppId();
     String str1 = str2;
-    if (bt.isNullOrNil(str2))
+    if (bs.isNullOrNil(str2))
     {
       str1 = str2;
-      if (!bt.isNullOrNil(str3))
+      if (!bs.isNullOrNil(str3))
       {
         str1 = str2;
         if (Uri.parse(str3).getHost().equals("game.weixin.qq.com")) {
@@ -43,26 +43,26 @@ public class r
     }
     localIntent.putExtra("req_app_id", str1);
     localIntent.putExtra("launch_from_webview", true);
-    ((MMActivity)((f)parama.bZU).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((MMActivity)((f)parama.bWR).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(175741);
         if (paramAnonymousInt1 == (r.this.hashCode() & 0xFFFF))
         {
-          ((MMActivity)((f)parama.bZU).mContext).mmSetOnActivityResultCallback(null);
+          ((MMActivity)((f)parama.bWR).mContext).mmSetOnActivityResultCallback(null);
           if ((paramAnonymousInt2 == -1) && (paramAnonymousIntent != null))
           {
-            String str1 = bt.by(paramAnonymousIntent.getStringExtra("nationalCode"), "");
-            String str2 = bt.by(paramAnonymousIntent.getStringExtra("userName"), "");
-            String str3 = bt.by(paramAnonymousIntent.getStringExtra("telNumber"), "");
-            String str4 = bt.by(paramAnonymousIntent.getStringExtra("addressPostalCode"), "");
-            String str5 = bt.by(paramAnonymousIntent.getStringExtra("proviceFirstStageName"), "");
-            String str6 = bt.by(paramAnonymousIntent.getStringExtra("addressCitySecondStageName"), "");
-            String str7 = bt.by(paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName"), "");
-            paramAnonymousIntent = bt.by(paramAnonymousIntent.getStringExtra("addressDetailInfo"), "");
-            ad.i("MicroMsg.JsApiEditAddress", "first =  " + str5 + " ; detail =" + paramAnonymousIntent + "; second = " + str6 + " ; tel = " + str3 + "; third = " + str7);
-            if (!bt.isNullOrNil(str2))
+            String str1 = bs.bG(paramAnonymousIntent.getStringExtra("nationalCode"), "");
+            String str2 = bs.bG(paramAnonymousIntent.getStringExtra("userName"), "");
+            String str3 = bs.bG(paramAnonymousIntent.getStringExtra("telNumber"), "");
+            String str4 = bs.bG(paramAnonymousIntent.getStringExtra("addressPostalCode"), "");
+            String str5 = bs.bG(paramAnonymousIntent.getStringExtra("proviceFirstStageName"), "");
+            String str6 = bs.bG(paramAnonymousIntent.getStringExtra("addressCitySecondStageName"), "");
+            String str7 = bs.bG(paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName"), "");
+            paramAnonymousIntent = bs.bG(paramAnonymousIntent.getStringExtra("addressDetailInfo"), "");
+            ac.i("MicroMsg.JsApiEditAddress", "first =  " + str5 + " ; detail =" + paramAnonymousIntent + "; second = " + str6 + " ; tel = " + str3 + "; third = " + str7);
+            if (!bs.isNullOrNil(str2))
             {
               HashMap localHashMap = new HashMap();
               localHashMap.put("nationalCode", str1);
@@ -89,11 +89,11 @@ public class r
         AppMethodBeat.o(175741);
       }
     });
-    d.a(((f)parama.bZU).mContext, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
+    d.a(((f)parama.bWR).mContext, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175742);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

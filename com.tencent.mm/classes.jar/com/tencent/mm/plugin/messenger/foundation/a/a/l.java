@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.e.g;
 public abstract interface l
   extends g
 {
-  public abstract long agk(String paramString);
+  public abstract long ale(String paramString);
 }
 
 

@@ -5,27 +5,27 @@ import com.tencent.mm.network.k;
 
 public final class bl
 {
-  public static a gOE = null;
+  public static a hpe = null;
   
   public static k a(k paramk)
   {
     AppMethodBeat.i(132251);
-    if (gOE == null)
+    if (hpe == null)
     {
       AppMethodBeat.o(132251);
       return paramk;
     }
-    paramk = gOE.asp();
+    paramk = hpe.azg();
     AppMethodBeat.o(132251);
     return paramk;
   }
   
-  public static int aso()
+  public static int azf()
   {
     AppMethodBeat.i(132252);
-    if (gOE != null)
+    if (hpe != null)
     {
-      int i = gOE.aso();
+      int i = hpe.azf();
       AppMethodBeat.o(132252);
       return i;
     }
@@ -35,9 +35,9 @@ public final class bl
   
   public static abstract interface a
   {
-    public abstract int aso();
+    public abstract int azf();
     
-    public abstract k asp();
+    public abstract k azg();
   }
 }
 

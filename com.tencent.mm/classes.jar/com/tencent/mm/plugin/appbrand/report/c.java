@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.debugger.n;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.x;
-import com.tencent.mm.plugin.appbrand.page.aw;
-import com.tencent.mm.plugin.appbrand.page.bd;
+import com.tencent.mm.plugin.appbrand.page.ar;
+import com.tencent.mm.plugin.appbrand.page.ay;
 import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.xweb.WebView;
 
 public enum c
 {
-  public static final c[] lpf;
+  public static final c[] lRf;
   
   static
   {
     AppMethodBeat.i(48043);
-    loV = new c("X5", 0);
-    loW = new c("MMV8", 1);
-    loX = new c("WebViewBased", 2);
-    loY = new c("NativeScript", 3);
-    loZ = new c("NodeJS", 4);
-    lpa = new c("J2V8", 5);
-    lpb = new c("WebViewX5", 6);
-    lpc = new c("WebViewXW", 7);
-    lpd = new c("WebViewSystem", 8);
-    lpe = new c("Invalid", 9);
-    lpg = new c[] { loV, loW, loX, loY, loZ, lpa, lpb, lpc, lpd, lpe };
-    lpf = new c[] { loW, lpa, loZ };
+    lQV = new c("X5", 0);
+    lQW = new c("MMV8", 1);
+    lQX = new c("WebViewBased", 2);
+    lQY = new c("NativeScript", 3);
+    lQZ = new c("NodeJS", 4);
+    lRa = new c("J2V8", 5);
+    lRb = new c("WebViewX5", 6);
+    lRc = new c("WebViewXW", 7);
+    lRd = new c("WebViewSystem", 8);
+    lRe = new c("Invalid", 9);
+    lRg = new c[] { lQV, lQW, lQX, lQY, lQZ, lRa, lRb, lRc, lRd, lRe };
+    lRf = new c[] { lQW, lRa, lQZ };
     AppMethodBeat.o(48043);
   }
   
@@ -38,28 +38,28 @@ public enum c
     AppMethodBeat.i(48041);
     if ((parami instanceof com.tencent.mm.plugin.appbrand.jsruntime.c))
     {
-      parami = lpa;
+      parami = lRa;
       AppMethodBeat.o(48041);
       return parami;
     }
     if ((parami instanceof x))
     {
-      parami = loZ;
+      parami = lQZ;
       AppMethodBeat.o(48041);
       return parami;
     }
     if ((parami instanceof n))
     {
-      parami = lpe;
+      parami = lRe;
       AppMethodBeat.o(48041);
       return parami;
     }
-    if ((parami instanceof bd))
+    if ((parami instanceof ay))
     {
-      if (!(parami instanceof aw)) {
+      if (!(parami instanceof ar)) {
         break label221;
       }
-      parami = ((aw)parami).leN;
+      parami = ((ar)parami).lED;
     }
     label221:
     for (;;)
@@ -69,24 +69,24 @@ public enum c
         parami = (WebView)parami;
         if (parami.isSysKernel())
         {
-          parami = lpd;
+          parami = lRd;
           AppMethodBeat.o(48041);
           return parami;
         }
         if (parami.isXWalkKernel())
         {
-          parami = lpc;
+          parami = lRc;
           AppMethodBeat.o(48041);
           return parami;
         }
         if (parami.getX5WebViewExtension() != null)
         {
-          parami = lpb;
+          parami = lRb;
           AppMethodBeat.o(48041);
           return parami;
         }
       }
-      parami = lpe;
+      parami = lRe;
       AppMethodBeat.o(48041);
       return parami;
       if (h.DEBUG)
@@ -99,7 +99,7 @@ public enum c
           throw parami;
         }
       }
-      parami = lpe;
+      parami = lRe;
       AppMethodBeat.o(48041);
       return parami;
     }
@@ -119,7 +119,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.c
  * JD-Core Version:    0.7.0.1
  */

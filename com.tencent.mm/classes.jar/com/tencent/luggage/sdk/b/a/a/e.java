@@ -9,10 +9,10 @@ import com.tencent.mm.plugin.appbrand.jsruntime.m;
 import com.tencent.mm.plugin.appbrand.jsruntime.m.a;
 import com.tencent.mm.plugin.appbrand.jsruntime.q;
 import com.tencent.mm.plugin.appbrand.jsruntime.v;
-import com.tencent.mm.plugin.appbrand.q.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.plugin.appbrand.p.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.websocket.libwcwss.WcwssNative;
 import com.tencent.mm.websocket.libwcwss.WcwssNative.IWcWssReportListener;
 import com.tencent.mm.websocket.libwcwss.WcwssNative.IWcWssWebSocketListener;
@@ -22,41 +22,41 @@ import javax.net.ssl.X509TrustManager;
 
 public final class e
 {
-  String cgE;
-  int cgF;
-  com.tencent.mm.plugin.appbrand.q.a cgG;
-  private boolean cgH;
-  private final a cgI;
-  String cgl;
-  private boolean cgm;
+  String cdA;
+  int cdB;
+  com.tencent.mm.plugin.appbrand.p.a cdC;
+  private boolean cdD;
+  private final a cdE;
+  String cdh;
+  private boolean cdi;
   X509TrustManager mTrustManager;
   
   public e()
   {
     AppMethodBeat.i(146775);
-    this.cgE = null;
-    this.cgF = -1;
-    this.cgG = null;
+    this.cdA = null;
+    this.cdB = -1;
+    this.cdC = null;
     this.mTrustManager = null;
-    this.cgH = false;
-    this.cgm = true;
-    this.cgl = null;
-    this.cgI = new a(new Runnable()
+    this.cdD = false;
+    this.cdi = true;
+    this.cdh = null;
+    this.cdE = new a(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(146772);
         synchronized (e.this)
         {
-          if (e.this.cgE != null)
+          if (e.this.cdA != null)
           {
-            ad.i("Luggage.WcWssNativeInstallHelper", "destroyTask destroyWcWssBinding mContextId:%s", new Object[] { e.this.cgE });
-            WcwssNative.destoryWcwss(e.this.cgE);
-            e.this.cgE = null;
+            ac.i("Luggage.WcWssNativeInstallHelper", "destroyTask destroyWcWssBinding mContextId:%s", new Object[] { e.this.cdA });
+            WcwssNative.destoryWcwss(e.this.cdA);
+            e.this.cdA = null;
             AppMethodBeat.o(146772);
             return;
           }
-          ad.e("Luggage.WcWssNativeInstallHelper", "destroyTask mContextId is null");
+          ac.e("Luggage.WcWssNativeInstallHelper", "destroyTask mContextId is null");
         }
       }
     });
@@ -66,25 +66,25 @@ public final class e
   public static int a(String paramString, byte[][] paramArrayOfByte, X509TrustManager paramX509TrustManager)
   {
     AppMethodBeat.i(146781);
-    ad.i("Luggage.WcWssNativeInstallHelper", "certifivate verify for ".concat(String.valueOf(paramString)));
+    ac.i("Luggage.WcWssNativeInstallHelper", "certifivate verify for ".concat(String.valueOf(paramString)));
     try
     {
       AndroidCertVerifyResult localAndroidCertVerifyResult2 = X509Util.verifyServerCertificates(paramArrayOfByte, "RSA", paramString, 1, paramX509TrustManager);
-      ad.i("Luggage.WcWssNativeInstallHelper", "host %s rsa verify result %d, isknownroots %b, ishostmatched %b", new Object[] { paramString, Integer.valueOf(localAndroidCertVerifyResult2.getStatus()), Boolean.valueOf(localAndroidCertVerifyResult2.isIssuedByKnownRoot()), Boolean.valueOf(localAndroidCertVerifyResult2.isIssuedByHostMatched()) });
+      ac.i("Luggage.WcWssNativeInstallHelper", "host %s rsa verify result %d, isknownroots %b, ishostmatched %b", new Object[] { paramString, Integer.valueOf(localAndroidCertVerifyResult2.getStatus()), Boolean.valueOf(localAndroidCertVerifyResult2.isIssuedByKnownRoot()), Boolean.valueOf(localAndroidCertVerifyResult2.isIssuedByHostMatched()) });
       AndroidCertVerifyResult localAndroidCertVerifyResult1 = localAndroidCertVerifyResult2;
       if (localAndroidCertVerifyResult2.getStatus() != 0)
       {
         localAndroidCertVerifyResult1 = X509Util.verifyServerCertificates(paramArrayOfByte, "ECDSA", paramString, 1, paramX509TrustManager);
-        ad.i("Luggage.WcWssNativeInstallHelper", "host %s ecdsa verify result %d, isknownroots %b, ishostmatched %b", new Object[] { paramString, Integer.valueOf(localAndroidCertVerifyResult1.getStatus()), Boolean.valueOf(localAndroidCertVerifyResult1.isIssuedByKnownRoot()), Boolean.valueOf(localAndroidCertVerifyResult1.isIssuedByHostMatched()) });
+        ac.i("Luggage.WcWssNativeInstallHelper", "host %s ecdsa verify result %d, isknownroots %b, ishostmatched %b", new Object[] { paramString, Integer.valueOf(localAndroidCertVerifyResult1.getStatus()), Boolean.valueOf(localAndroidCertVerifyResult1.isIssuedByKnownRoot()), Boolean.valueOf(localAndroidCertVerifyResult1.isIssuedByHostMatched()) });
       }
       if (localAndroidCertVerifyResult1.getStatus() != 0) {
-        ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 7L, 1L, false);
+        ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 7L, 1L, false);
       }
       if ((localAndroidCertVerifyResult1.getStatus() == 0) && (!localAndroidCertVerifyResult1.isIssuedByHostMatched())) {
-        ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 8L, 1L, false);
+        ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 8L, 1L, false);
       }
       if ((localAndroidCertVerifyResult1.getStatus() == 0) && (!localAndroidCertVerifyResult1.isIssuedByKnownRoot())) {
-        ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 9L, 1L, false);
+        ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).idkeyStat(972L, 9L, 1L, false);
       }
       if ((localAndroidCertVerifyResult1.getStatus() == 0) && (localAndroidCertVerifyResult1.isIssuedByKnownRoot()))
       {
@@ -96,7 +96,7 @@ public final class e
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("Luggage.WcWssNativeInstallHelper", paramString, "doCertificateVerify Exception", new Object[0]);
+      ac.printErrStackTrace("Luggage.WcWssNativeInstallHelper", paramString, "doCertificateVerify Exception", new Object[0]);
       AppMethodBeat.o(146781);
     }
     return -1;
@@ -107,38 +107,38 @@ public final class e
     AppMethodBeat.i(146780);
     try
     {
-      int i = ay.getNetType(aj.getContext());
-      ad.i("Luggage.WcWssNativeInstallHelper", "getStatisticsNetType ret:%d", new Object[] { Integer.valueOf(i) });
+      int i = ax.getNetType(ai.getContext());
+      ac.i("Luggage.WcWssNativeInstallHelper", "getStatisticsNetType ret:%d", new Object[] { Integer.valueOf(i) });
       if (i == -1)
       {
         AppMethodBeat.o(146780);
         return -1;
       }
-      boolean bool = ay.is2G(aj.getContext());
+      boolean bool = ax.is2G(ai.getContext());
       if (bool)
       {
         AppMethodBeat.o(146780);
         return 3;
       }
-      bool = ay.is3G(aj.getContext());
+      bool = ax.is3G(ai.getContext());
       if (bool)
       {
         AppMethodBeat.o(146780);
         return 4;
       }
-      bool = ay.is4G(aj.getContext());
+      bool = ax.is4G(ai.getContext());
       if (bool)
       {
         AppMethodBeat.o(146780);
         return 5;
       }
-      bool = ay.isWifi(i);
+      bool = ax.isWifi(i);
       if (bool)
       {
         AppMethodBeat.o(146780);
         return 1;
       }
-      bool = ay.isWap(i);
+      bool = ax.isWap(i);
       if (bool)
       {
         AppMethodBeat.o(146780);
@@ -149,7 +149,7 @@ public final class e
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("Luggage.WcWssNativeInstallHelper", localException, "getStatisticsNetType_", new Object[0]);
+      ac.printErrStackTrace("Luggage.WcWssNativeInstallHelper", localException, "getStatisticsNetType_", new Object[0]);
       AppMethodBeat.o(146780);
     }
     return -1;
@@ -158,37 +158,37 @@ public final class e
   public final void a(final i parami, final com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt)
   {
     AppMethodBeat.i(146777);
-    ad.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding");
+    ac.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding");
     Object localObject1 = (e.b)paramc.K(e.b.class);
     if (localObject1 != null) {
-      this.cgH = ((e.b)localObject1).isOpen();
+      this.cdD = ((e.b)localObject1).isOpen();
     }
-    if (!this.cgH)
+    if (!this.cdD)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding xSwitch false");
+      ac.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding xSwitch false");
       AppMethodBeat.o(146777);
       return;
     }
     if (parami == null)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding jsruntime is null");
+      ac.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding jsruntime is null");
       AppMethodBeat.o(146777);
       return;
     }
-    this.cgl = String.valueOf(paramInt);
+    this.cdh = String.valueOf(paramInt);
     com.tencent.mm.websocket.libwcwss.a.loadLibraries();
     localObject1 = (q)parami.P(q.class);
     if (localObject1 == null)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding jsThreadHandler is null");
+      ac.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding jsThreadHandler is null");
       AppMethodBeat.o(146777);
       return;
     }
     Object localObject2 = (b)paramc.K(b.class);
     if (localObject2 != null)
     {
-      this.cgm = ((b)localObject2).Dw();
-      ad.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding xLibUVSwitch:%b ", new Object[] { Boolean.valueOf(this.cgm) });
+      this.cdi = ((b)localObject2).CZ();
+      ac.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding xLibUVSwitch:%b ", new Object[] { Boolean.valueOf(this.cdi) });
     }
     localObject2 = new WcwssNative.IWcWssReportListener()
     {
@@ -203,7 +203,7 @@ public final class e
       public final void onIdKeyStat(int[] paramAnonymousArrayOfInt1, int[] paramAnonymousArrayOfInt2, int[] paramAnonymousArrayOfInt3)
       {
         AppMethodBeat.i(146767);
-        ad.d("Luggage.WcWssNativeInstallHelper", "MMWcWss onIdKeyStat");
+        ac.d("Luggage.WcWssNativeInstallHelper", "MMWcWss onIdKeyStat");
         ArrayList localArrayList = new ArrayList();
         int i = 0;
         while (i < paramAnonymousArrayOfInt1.length)
@@ -211,15 +211,15 @@ public final class e
           localArrayList.add(new IDKey(paramAnonymousArrayOfInt1[i], paramAnonymousArrayOfInt2[i], paramAnonymousArrayOfInt3[i]));
           i += 1;
         }
-        ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).b(localArrayList, false);
+        ((com.tencent.mm.plugin.appbrand.t.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.a.class)).b(localArrayList, false);
         AppMethodBeat.o(146767);
       }
       
       public final void onKvStat(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(146766);
-        ad.d("Luggage.WcWssNativeInstallHelper", "MMWcWss onKvStat logId:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        ((com.tencent.mm.plugin.appbrand.u.b)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.b.class)).kvStat(paramAnonymousInt, paramAnonymousString);
+        ac.d("Luggage.WcWssNativeInstallHelper", "MMWcWss onKvStat logId:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ((com.tencent.mm.plugin.appbrand.t.b)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.t.b.class)).kvStat(paramAnonymousInt, paramAnonymousString);
         AppMethodBeat.o(146766);
       }
     };
@@ -228,15 +228,15 @@ public final class e
       public final int doCertificateVerify(String paramAnonymousString1, long paramAnonymousLong, String paramAnonymousString2, byte[][] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(146770);
-        if ((e.this.cgG == null) || (e.this.mTrustManager == null))
+        if ((e.this.cdC == null) || (e.this.mTrustManager == null))
         {
-          e.this.cgG = ((com.tencent.mm.plugin.appbrand.q.a)paramc.ar(com.tencent.mm.plugin.appbrand.q.a.class));
-          if (e.this.cgG == null) {
+          e.this.cdC = ((com.tencent.mm.plugin.appbrand.p.a)paramc.ar(com.tencent.mm.plugin.appbrand.p.a.class));
+          if (e.this.cdC == null) {
             break label114;
           }
-          e.this.mTrustManager = j.b(e.this.cgG);
+          e.this.mTrustManager = j.b(e.this.cdC);
           if (e.this.mTrustManager == null) {
-            ad.e("Luggage.WcWssNativeInstallHelper", "MMWcWss doCertificateVerify getTrustManager fail");
+            ac.e("Luggage.WcWssNativeInstallHelper", "MMWcWss doCertificateVerify getTrustManager fail");
           }
         }
         for (;;)
@@ -245,20 +245,20 @@ public final class e
           AppMethodBeat.o(146770);
           return i;
           label114:
-          ad.e("Luggage.WcWssNativeInstallHelper", "MMWcWss doCertificateVerify getConfig fail");
+          ac.e("Luggage.WcWssNativeInstallHelper", "MMWcWss doCertificateVerify getConfig fail");
         }
       }
       
       public final void onStateChange(final String paramAnonymousString, final long paramAnonymousLong, int paramAnonymousInt)
       {
         AppMethodBeat.i(146769);
-        this.cgK.post(new Runnable()
+        this.cdG.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(146768);
-            ad.d("Luggage.WcWssNativeInstallHelper", "MMWcWss jsThreadHandler run onCallBack contextId:%s", new Object[] { paramAnonymousString });
-            WcwssNative.updateInterface(paramAnonymousString, paramAnonymousLong, this.qf);
+            ac.d("Luggage.WcWssNativeInstallHelper", "MMWcWss jsThreadHandler run onCallBack contextId:%s", new Object[] { paramAnonymousString });
+            WcwssNative.updateInterface(paramAnonymousString, paramAnonymousLong, this.rf);
             AppMethodBeat.o(146768);
           }
         });
@@ -269,25 +269,25 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(146771);
-        ad.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding setCallback ");
-        if (e.this.cgE != null)
+        ac.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding setCallback ");
+        if (e.this.cdA != null)
         {
-          ad.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding mContextId != null");
+          ac.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding mContextId != null");
           AppMethodBeat.o(146771);
           return;
         }
         v localv = (v)parami.P(v.class);
         if (localv == null)
         {
-          ad.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding v8Addon is null");
+          ac.e("Luggage.WcWssNativeInstallHelper", "createWcWssBinding v8Addon is null");
           AppMethodBeat.o(146771);
           return;
         }
-        e.this.cgE = WcwssNative.initWcwss(localv.getIsolatePtr(), localv.LU(), 0L);
-        if (e.this.cgE != null) {
-          e.this.cgF = WcwssNative.setCallback(e.this.cgE, this.cgO, this.cgP);
+        e.this.cdA = WcwssNative.initWcwss(localv.getIsolatePtr(), localv.LS(), 0L);
+        if (e.this.cdA != null) {
+          e.this.cdB = WcwssNative.setCallback(e.this.cdA, this.cdK, this.cdL);
         }
-        ad.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding setCallback mContextId:%s,mInitCallBack:%d", new Object[] { e.this.cgE, Integer.valueOf(e.this.cgF) });
+        ac.i("Luggage.WcWssNativeInstallHelper", "createWcWssBinding setCallback mContextId:%s,mInitCallBack:%d", new Object[] { e.this.cdA, Integer.valueOf(e.this.cdB) });
         AppMethodBeat.o(146771);
       }
     });
@@ -297,43 +297,43 @@ public final class e
   public final void b(i parami)
   {
     AppMethodBeat.i(146778);
-    ad.i("Luggage.WcWssNativeInstallHelper", "destroyWcWssBinding mContextId:%s", new Object[] { this.cgE });
-    if (!this.cgH)
+    ac.i("Luggage.WcWssNativeInstallHelper", "destroyWcWssBinding mContextId:%s", new Object[] { this.cdA });
+    if (!this.cdD)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "destroyWcWssBinding xSwitch false");
+      ac.e("Luggage.WcWssNativeInstallHelper", "destroyWcWssBinding xSwitch false");
       AppMethodBeat.o(146778);
       return;
     }
     if (parami == null)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "destroyWcWssBinding jsruntime is null");
+      ac.e("Luggage.WcWssNativeInstallHelper", "destroyWcWssBinding jsruntime is null");
       AppMethodBeat.o(146778);
       return;
     }
-    ((m)parami.P(m.class)).a(this.cgI);
+    ((m)parami.P(m.class)).a(this.cdE);
     AppMethodBeat.o(146778);
   }
   
   public final void b(i parami, final com.tencent.mm.plugin.appbrand.jsapi.c paramc)
   {
     AppMethodBeat.i(146779);
-    ad.i("Luggage.WcWssNativeInstallHelper", "initConfigWcWss mContextId:%s", new Object[] { this.cgE });
-    if (!this.cgH)
+    ac.i("Luggage.WcWssNativeInstallHelper", "initConfigWcWss mContextId:%s", new Object[] { this.cdA });
+    if (!this.cdD)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss xSwitch false");
+      ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss xSwitch false");
       AppMethodBeat.o(146779);
       return;
     }
     if (parami == null)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss jsruntime is null");
+      ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss jsruntime is null");
       AppMethodBeat.o(146779);
       return;
     }
     parami = (q)parami.P(q.class);
     if (parami == null)
     {
-      ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss jsThreadHandler is null");
+      ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss jsThreadHandler is null");
       AppMethodBeat.o(146779);
       return;
     }
@@ -342,59 +342,59 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(146773);
-        ad.i("Luggage.WcWssNativeInstallHelper", "initConfigWcWss initConfig mContextId:%s", new Object[] { e.this.cgE });
-        if (e.this.cgE == null)
+        ac.i("Luggage.WcWssNativeInstallHelper", "initConfigWcWss initConfig mContextId:%s", new Object[] { e.this.cdA });
+        if (e.this.cdA == null)
         {
-          ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss mContextId is null");
+          ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss mContextId is null");
           AppMethodBeat.o(146773);
           return;
         }
-        Object localObject = (com.tencent.mm.plugin.appbrand.q.a)paramc.ar(com.tencent.mm.plugin.appbrand.q.a.class);
+        Object localObject = (com.tencent.mm.plugin.appbrand.p.a)paramc.ar(com.tencent.mm.plugin.appbrand.p.a.class);
         if (localObject != null)
         {
-          ad.i("Luggage.WcWssNativeInstallHelper", "wcwss mbzType:%s,,websocketTimeoutMS:%d,userAgentString :%s,referer:%s,mode:%d", new Object[] { e.this.cgl, Integer.valueOf(((com.tencent.mm.plugin.appbrand.q.a)localObject).kUq), ((com.tencent.mm.plugin.appbrand.q.a)localObject).kUx, ((com.tencent.mm.plugin.appbrand.q.a)localObject).referer, Integer.valueOf(((com.tencent.mm.plugin.appbrand.q.a)localObject).mode) });
+          ac.i("Luggage.WcWssNativeInstallHelper", "wcwss mbzType:%s,,websocketTimeoutMS:%d,userAgentString :%s,referer:%s,mode:%d", new Object[] { e.this.cdh, Integer.valueOf(((com.tencent.mm.plugin.appbrand.p.a)localObject).lwa), ((com.tencent.mm.plugin.appbrand.p.a)localObject).lwh, ((com.tencent.mm.plugin.appbrand.p.a)localObject).referer, Integer.valueOf(((com.tencent.mm.plugin.appbrand.p.a)localObject).mode) });
           HashMap localHashMap = new HashMap();
-          localHashMap.put("referer", ((com.tencent.mm.plugin.appbrand.q.a)localObject).referer);
-          localHashMap.put("User-Agent", ((com.tencent.mm.plugin.appbrand.q.a)localObject).kUx);
-          localHashMap.put("bzType", e.this.cgl);
-          localHashMap.put("mode", String.valueOf(((com.tencent.mm.plugin.appbrand.q.a)localObject).mode));
-          localHashMap.put("timeout", String.valueOf(((com.tencent.mm.plugin.appbrand.q.a)localObject).kUq));
-          WcwssNative.initConfig(e.this.cgE, localHashMap);
-          if (((com.tencent.mm.plugin.appbrand.q.a)localObject).mode != 0)
+          localHashMap.put("referer", ((com.tencent.mm.plugin.appbrand.p.a)localObject).referer);
+          localHashMap.put("User-Agent", ((com.tencent.mm.plugin.appbrand.p.a)localObject).lwh);
+          localHashMap.put("bzType", e.this.cdh);
+          localHashMap.put("mode", String.valueOf(((com.tencent.mm.plugin.appbrand.p.a)localObject).mode));
+          localHashMap.put("timeout", String.valueOf(((com.tencent.mm.plugin.appbrand.p.a)localObject).lwa));
+          WcwssNative.initConfig(e.this.cdA, localHashMap);
+          if (((com.tencent.mm.plugin.appbrand.p.a)localObject).mode != 0)
           {
-            if (((com.tencent.mm.plugin.appbrand.q.a)localObject).mode == 1)
+            if (((com.tencent.mm.plugin.appbrand.p.a)localObject).mode == 1)
             {
-              if ((((com.tencent.mm.plugin.appbrand.q.a)localObject).kUu == null) || (((com.tencent.mm.plugin.appbrand.q.a)localObject).kUu.size() == 0)) {
-                ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss blacklistHeaders is null");
+              if ((((com.tencent.mm.plugin.appbrand.p.a)localObject).lwe == null) || (((com.tencent.mm.plugin.appbrand.p.a)localObject).lwe.size() == 0)) {
+                ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss blacklistHeaders is null");
               }
-              for (localObject = null;; localObject = ((com.tencent.mm.plugin.appbrand.q.a)localObject).kUu)
+              for (localObject = null;; localObject = ((com.tencent.mm.plugin.appbrand.p.a)localObject).lwe)
               {
-                WcwssNative.initConfigWhiteBlack(e.this.cgE, null, (ArrayList)localObject);
+                WcwssNative.initConfigWhiteBlack(e.this.cdA, null, (ArrayList)localObject);
                 AppMethodBeat.o(146773);
                 return;
               }
             }
-            if (((com.tencent.mm.plugin.appbrand.q.a)localObject).mode == 2)
+            if (((com.tencent.mm.plugin.appbrand.p.a)localObject).mode == 2)
             {
-              if ((((com.tencent.mm.plugin.appbrand.q.a)localObject).kUv == null) || (((com.tencent.mm.plugin.appbrand.q.a)localObject).kUv.size() == 0)) {
-                ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss whitelistHeaders is null");
+              if ((((com.tencent.mm.plugin.appbrand.p.a)localObject).lwf == null) || (((com.tencent.mm.plugin.appbrand.p.a)localObject).lwf.size() == 0)) {
+                ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss whitelistHeaders is null");
               }
-              for (localObject = null;; localObject = ((com.tencent.mm.plugin.appbrand.q.a)localObject).kUv)
+              for (localObject = null;; localObject = ((com.tencent.mm.plugin.appbrand.p.a)localObject).lwf)
               {
-                WcwssNative.initConfigWhiteBlack(e.this.cgE, (ArrayList)localObject, null);
+                WcwssNative.initConfigWhiteBlack(e.this.cdA, (ArrayList)localObject, null);
                 AppMethodBeat.o(146773);
                 return;
               }
             }
-            ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss invalid mode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.appbrand.q.a)localObject).mode) });
+            ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss invalid mode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.appbrand.p.a)localObject).mode) });
             AppMethodBeat.o(146773);
             return;
           }
-          ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss invalid mode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.appbrand.q.a)localObject).mode) });
+          ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss invalid mode:%d", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.appbrand.p.a)localObject).mode) });
           AppMethodBeat.o(146773);
           return;
         }
-        ad.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss networkConfig is null");
+        ac.e("Luggage.WcWssNativeInstallHelper", "initConfigWcWss networkConfig is null");
         AppMethodBeat.o(146773);
       }
     });
@@ -420,7 +420,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a.e
  * JD-Core Version:    0.7.0.1
  */

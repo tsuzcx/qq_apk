@@ -6,17 +6,17 @@ import com.google.b.a.e;
 public final class a$v
   extends e
 {
-  public int BX = 0;
-  public int CrQ = 0;
-  public int IkG = 0;
-  public int IlP = 0;
-  public int IlQ = 0;
+  public int CW = 0;
+  public int DKi = 0;
+  public int JMr = 0;
+  public int JNA = 0;
+  public int JNB = 0;
   public int ret = 0;
   public String userName = "";
   
   public a$v()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -24,57 +24,57 @@ public final class a$v
     if (!this.userName.equals("")) {
       paramb.d(2, this.userName);
     }
-    if (this.BX != 0) {
-      paramb.by(3, this.BX);
+    if (this.CW != 0) {
+      paramb.bv(3, this.CW);
     }
-    if (this.IlP != 0) {
-      paramb.bz(4, this.IlP);
+    if (this.JNA != 0) {
+      paramb.bw(4, this.JNA);
     }
     if (this.ret != 0) {
-      paramb.by(5, this.ret);
+      paramb.bv(5, this.ret);
     }
-    if (this.IlQ != 0) {
-      paramb.by(6, this.IlQ);
+    if (this.JNB != 0) {
+      paramb.bv(6, this.JNB);
     }
-    if (this.IkG != 0) {
-      paramb.bz(7, this.IkG);
+    if (this.JMr != 0) {
+      paramb.bw(7, this.JMr);
     }
-    if (this.CrQ != 0) {
-      paramb.bz(8, this.CrQ);
+    if (this.DKi != 0) {
+      paramb.bw(8, this.DKi);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.userName.equals("")) {
       i = j + b.e(2, this.userName);
     }
     j = i;
-    if (this.BX != 0) {
-      j = i + b.bA(3, this.BX);
+    if (this.CW != 0) {
+      j = i + b.bx(3, this.CW);
     }
     i = j;
-    if (this.IlP != 0) {
-      i = j + b.bB(4, this.IlP);
+    if (this.JNA != 0) {
+      i = j + b.by(4, this.JNA);
     }
     j = i;
     if (this.ret != 0) {
-      j = i + b.bA(5, this.ret);
+      j = i + b.bx(5, this.ret);
     }
     i = j;
-    if (this.IlQ != 0) {
-      i = j + b.bA(6, this.IlQ);
+    if (this.JNB != 0) {
+      i = j + b.bx(6, this.JNB);
     }
     j = i;
-    if (this.IkG != 0) {
-      j = i + b.bB(7, this.IkG);
+    if (this.JMr != 0) {
+      j = i + b.by(7, this.JMr);
     }
     i = j;
-    if (this.CrQ != 0) {
-      i = j + b.bB(8, this.CrQ);
+    if (this.DKi != 0) {
+      i = j + b.by(8, this.DKi);
     }
     return i;
   }

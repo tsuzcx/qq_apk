@@ -13,8 +13,8 @@ import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.modelappbrand.n.a;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.ConsolePanel;
 import com.tencent.mm.plugin.appbrand.wxawidget.console.d;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public class WidgetConsoleUI
@@ -22,21 +22,21 @@ public class WidgetConsoleUI
   implements n.a
 {
   String appId;
-  int dkC;
+  int dib;
   String id;
-  ConsolePanel joa;
+  ConsolePanel jOm;
   int pkgVersion;
   
-  private boolean aVQ()
+  private boolean bcO()
   {
     AppMethodBeat.i(121487);
     Intent localIntent = getIntent();
     String str = localIntent.getStringExtra("id");
     this.appId = localIntent.getStringExtra("app_id");
-    this.dkC = localIntent.getIntExtra("pkg_type", 0);
+    this.dib = localIntent.getIntExtra("pkg_type", 0);
     this.pkgVersion = localIntent.getIntExtra("pkg_version", 0);
     setMMSubTitle(String.format("(%s)", new Object[] { str }));
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(121487);
       return false;
@@ -46,10 +46,10 @@ public class WidgetConsoleUI
       AppMethodBeat.o(121487);
       return true;
     }
-    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().b(this.id, this);
-    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().a(str, this);
+    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().b(this.id, this);
+    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().a(str, this);
     this.id = str;
-    d.a(this.joa);
+    d.a(this.jOm);
     AppMethodBeat.o(121487);
     return true;
   }
@@ -83,7 +83,60 @@ public class WidgetConsoleUI
     return 2131496107;
   }
   
-  public final void nA(int paramInt)
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(121485);
+    super.onCreate(paramBundle);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(121483);
+        WidgetConsoleUI.this.finish();
+        AppMethodBeat.o(121483);
+        return false;
+      }
+    });
+    setMMTitle(2131766307);
+    this.jOm = ((ConsolePanel)findViewById(2131298582));
+    if (!bcO())
+    {
+      finish();
+      AppMethodBeat.o(121485);
+      return;
+    }
+    AppMethodBeat.o(121485);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(121489);
+    super.onDestroy();
+    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAC().b(this.id, this);
+    d.b(this.jOm);
+    AppMethodBeat.o(121489);
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(121486);
+    super.onNewIntent(paramIntent);
+    if (!bcO())
+    {
+      finish();
+      AppMethodBeat.o(121486);
+      return;
+    }
+    AppMethodBeat.o(121486);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void oo(int paramInt)
   {
     AppMethodBeat.i(121488);
     final String str;
@@ -94,7 +147,7 @@ public class WidgetConsoleUI
     }
     for (;;)
     {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -114,59 +167,6 @@ public class WidgetConsoleUI
       continue;
       str = "(STOP)";
     }
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(121485);
-    super.onCreate(paramBundle);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(121483);
-        WidgetConsoleUI.this.finish();
-        AppMethodBeat.o(121483);
-        return false;
-      }
-    });
-    setMMTitle(2131766307);
-    this.joa = ((ConsolePanel)findViewById(2131298582));
-    if (!aVQ())
-    {
-      finish();
-      AppMethodBeat.o(121485);
-      return;
-    }
-    AppMethodBeat.o(121485);
-  }
-  
-  public void onDestroy()
-  {
-    AppMethodBeat.i(121489);
-    super.onDestroy();
-    ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().b(this.id, this);
-    d.b(this.joa);
-    AppMethodBeat.o(121489);
-  }
-  
-  public void onNewIntent(Intent paramIntent)
-  {
-    AppMethodBeat.i(121486);
-    super.onNewIntent(paramIntent);
-    if (!aVQ())
-    {
-      finish();
-      AppMethodBeat.o(121486);
-      return;
-    }
-    AppMethodBeat.o(121486);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

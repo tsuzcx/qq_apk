@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 public abstract interface a
   extends com.tencent.mm.plugin.luckymoney.appbrand.ui.a<c>
 {
-  public abstract void d(int paramInt1, int paramInt2, String paramString, int paramInt3);
+  public abstract void c(int paramInt1, int paramInt2, String paramString, int paramInt3);
   
-  public abstract void e(int paramInt1, int paramInt2, String paramString, int paramInt3);
+  public abstract void d(int paramInt1, int paramInt2, String paramString, int paramInt3);
 }
 
 

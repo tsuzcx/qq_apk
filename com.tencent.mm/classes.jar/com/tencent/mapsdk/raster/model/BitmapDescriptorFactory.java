@@ -7,8 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
+import com.tencent.mapsdk.rastercore.core.MapContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.c;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -96,7 +96,7 @@ public final class BitmapDescriptorFactory
     // Byte code:
     //   0: ldc 91
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 97	com/tencent/tencentmap/mapsdk/a/c:a	()Landroid/content/Context;
+    //   5: invokestatic 97	com/tencent/mapsdk/rastercore/core/MapContext:getContext	()Landroid/content/Context;
     //   8: astore_1
     //   9: aload_1
     //   10: ifnull +31 -> 41
@@ -110,13 +110,13 @@ public final class BitmapDescriptorFactory
     //   26: invokestatic 63	com/tencent/mapsdk/raster/model/BitmapDescriptorFactory:fromBitmap	(Landroid/graphics/Bitmap;)Lcom/tencent/mapsdk/raster/model/BitmapDescriptor;
     //   29: astore_2
     //   30: aload_1
-    //   31: invokestatic 114	com/tencent/tencentmap/mapsdk/a/d:a	(Ljava/io/Closeable;)V
+    //   31: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   34: ldc 91
     //   36: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_2
     //   40: areturn
     //   41: aconst_null
-    //   42: invokestatic 114	com/tencent/tencentmap/mapsdk/a/d:a	(Ljava/io/Closeable;)V
+    //   42: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   45: ldc 91
     //   47: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   50: aconst_null
@@ -125,7 +125,7 @@ public final class BitmapDescriptorFactory
     //   53: aconst_null
     //   54: astore_1
     //   55: aload_1
-    //   56: invokestatic 114	com/tencent/tencentmap/mapsdk/a/d:a	(Ljava/io/Closeable;)V
+    //   56: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   59: ldc 91
     //   61: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aconst_null
@@ -134,7 +134,7 @@ public final class BitmapDescriptorFactory
     //   67: aconst_null
     //   68: astore_2
     //   69: aload_2
-    //   70: invokestatic 114	com/tencent/tencentmap/mapsdk/a/d:a	(Ljava/io/Closeable;)V
+    //   70: invokestatic 115	com/tencent/mapsdk/rastercore/tools/IO:safeClose	(Ljava/io/Closeable;)V
     //   73: ldc 91
     //   75: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: aload_1
@@ -177,7 +177,7 @@ public final class BitmapDescriptorFactory
     AppMethodBeat.i(87524);
     try
     {
-      Object localObject = c.a();
+      Object localObject = MapContext.getContext();
       if (localObject != null)
       {
         localObject = new FrameLayout((Context)localObject);
@@ -210,7 +210,7 @@ public final class BitmapDescriptorFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.BitmapDescriptorFactory
  * JD-Core Version:    0.7.0.1
  */

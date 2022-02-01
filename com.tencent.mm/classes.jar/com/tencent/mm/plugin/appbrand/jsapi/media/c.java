@@ -7,10 +7,12 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
+import com.tencent.luggage.h.e.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
-import com.tencent.mm.co.g;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.cn.g;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.widget.a.e.b;
 import com.tencent.mm.vending.g.b;
@@ -23,69 +25,76 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow;", "", "mComponent", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "mSourceType", "", "mCapture", "mMediaType", "mShowRawButton", "", "maxDuration", "maxCount", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;IIIZII)V", "mMaxCount", "mMaxDuration", "goAlbumUI", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "goSightCaptureUI", "startChoose", "Companion", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow;", "", "mComponent", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "mSourceType", "", "mCapture", "mMediaType", "mShowRawButton", "", "maxDuration", "maxCount", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;IIIZII)V", "mMaxCount", "mMaxDuration", "goAlbumUI", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "goSightCaptureUI", "startChoose", "Companion", "plugin-appbrand-integration_release"})
 public final class c
 {
-  public static final a jWg;
-  private final com.tencent.mm.plugin.appbrand.jsapi.c cfX;
-  private final int jWb;
-  private final int jWc;
-  private final int jWd;
-  private final int jWe;
-  private final boolean jWf;
+  public static final a kwS;
+  private final com.tencent.mm.plugin.appbrand.jsapi.c ccU;
+  private final int kwN;
+  private final int kwO;
+  private final int kwP;
+  private final int kwQ;
+  private final boolean kwR;
   private final int mMaxCount;
   
   static
   {
     AppMethodBeat.i(50542);
-    jWg = new a((byte)0);
+    kwS = new a((byte)0);
     AppMethodBeat.o(50542);
   }
   
   public c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
   {
     AppMethodBeat.i(50541);
-    this.cfX = paramc;
-    this.jWc = paramInt1;
-    this.jWd = paramInt2;
-    this.jWe = paramInt3;
-    this.jWf = paramBoolean;
-    this.jWb = Math.min(Math.max(paramInt4, 1), 60);
+    this.ccU = paramc;
+    this.kwO = paramInt1;
+    this.kwP = paramInt2;
+    this.kwQ = paramInt3;
+    this.kwR = paramBoolean;
+    this.kwN = Math.min(Math.max(paramInt4, 1), 60);
     this.mMaxCount = Math.min(Math.max(1, 1), 9);
     AppMethodBeat.o(50541);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     b(c paramc) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "<anonymous parameter 0>", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "<anonymous parameter 0>", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     c(c paramc) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "sightParams", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "kotlin.jvm.PlatformType", "call"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult;", "sightParams", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "kotlin.jvm.PlatformType", "call"})
   static final class d<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     d(c paramc) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Boolean;)Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  static final class e<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    e(c paramc) {}
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/Boolean;)Lcom/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaResult$CANCELED;"})
   static final class f<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     f(c paramc) {}
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onClick", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$1"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onClick", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$1"})
     static final class a
       implements com.tencent.mm.ui.widget.a.e.a
     {
@@ -94,12 +103,12 @@ public final class c
       public final void onClick()
       {
         AppMethodBeat.i(160624);
-        this.jWl.D(new Object[] { b.a.jVZ });
+        this.kwX.F(new Object[] { b.a.kwL });
         AppMethodBeat.o(160624);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "<anonymous parameter 2>", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$2"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "<anonymous parameter 2>", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$2"})
     static final class b
       implements View.OnCreateContextMenuListener
     {
@@ -108,13 +117,13 @@ public final class c
       public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
       {
         AppMethodBeat.i(160625);
-        paramContextMenu.add(0, 1, 0, (CharSequence)c.a(this.jWk.jWh).getContext().getString(2131755747));
-        paramContextMenu.add(0, 2, 1, (CharSequence)c.a(this.jWk.jWh).getContext().getString(2131755754));
+        paramContextMenu.add(0, 1, 0, (CharSequence)c.a(this.kwW.kwT).getContext().getString(2131755747));
+        paramContextMenu.add(0, 2, 1, (CharSequence)c.a(this.kwW.kwT).getContext().getString(2131755754));
         AppMethodBeat.o(160625);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$3"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$3"})
     static final class c
       implements n.d
     {
@@ -127,21 +136,21 @@ public final class c
         switch (paramMenuItem.getItemId())
         {
         default: 
-          paramMenuItem = g.en(b.a.jVZ);
+          paramMenuItem = g.eo(b.a.kwL);
         }
         for (;;)
         {
           paramMenuItem.b((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {});
           AppMethodBeat.o(160627);
           return;
-          paramMenuItem = c.c(this.jWk.jWh);
+          paramMenuItem = c.c(this.kwW.kwT);
           continue;
-          paramMenuItem = c.d(this.jWk.jWh);
+          paramMenuItem = c.d(this.kwW.kwT);
         }
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onDismiss", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$4"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onDismiss", "com/tencent/mm/plugin/appbrand/jsapi/media/ChooseMediaWorkFlow$startChoose$2$2$4"})
     static final class d
       implements e.b
     {
@@ -150,7 +159,7 @@ public final class c
       public final void onDismiss()
       {
         AppMethodBeat.i(160628);
-        this.jWl.D(new Object[] { b.a.jVZ });
+        this.kwX.F(new Object[] { b.a.kwL });
         AppMethodBeat.o(160628);
       }
     }
@@ -158,7 +167,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.c
  * JD-Core Version:    0.7.0.1
  */

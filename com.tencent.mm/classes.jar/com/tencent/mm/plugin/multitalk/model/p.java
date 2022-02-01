@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.multitalk.model;
 import android.content.Context;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
 import com.tencent.mm.app.n.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.aw;
@@ -17,12 +17,12 @@ import com.tencent.mm.model.t;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.multitalk.b.c;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.aa;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,16 +32,16 @@ public class p
 {
   private static HashMap<Integer, h.b> baseDBFactories;
   private n.a appForegroundListener;
-  private cf.a rmQ;
-  private d tQd;
-  private f tQe;
-  private m tQf;
-  private i tQg;
-  private a tQh;
-  private h tQi;
-  private com.tencent.mm.plugin.multitalk.b.a tQj;
-  private c tQk;
-  private g tQl;
+  private cf.a svK;
+  private d uYD;
+  private f uYE;
+  private m uYF;
+  private i uYG;
+  private a uYH;
+  private h uYI;
+  private com.tencent.mm.plugin.multitalk.b.a uYJ;
+  private c uYK;
+  private g uYL;
   
   static
   {
@@ -69,17 +69,17 @@ public class p
   {
     AppMethodBeat.i(114624);
     this.appForegroundListener = new p.1(this);
-    this.rmQ = new cf.a()
+    this.svK = new cf.a()
     {
-      public final boolean asU()
+      public final boolean azL()
       {
         AppMethodBeat.i(114622);
-        ad.w("MicroMsg.SubCoreMultiTalk", "HERE UninitForUEH is called! multitalk");
+        ac.w("MicroMsg.SubCoreMultiTalk", "HERE UninitForUEH is called! multitalk");
         if (p.a(p.this) != null)
         {
-          p.a(p.this).mm(true);
-          if (p.a(p.this).tOI != null) {
-            ad.i("MicroMsg.SubCoreMultiTalk", "dump multiTalkGroup: %s", new Object[] { j.g(p.a(p.this).tOI) });
+          p.a(p.this).nf(true);
+          if (p.a(p.this).uXk != null) {
+            ac.i("MicroMsg.SubCoreMultiTalk", "dump multiTalkGroup: %s", new Object[] { j.g(p.a(p.this).uXk) });
           }
         }
         AppMethodBeat.o(114622);
@@ -89,14 +89,25 @@ public class p
     AppMethodBeat.o(114624);
   }
   
-  public static void cSI()
+  public static g dgA()
   {
-    AppMethodBeat.i(189961);
-    cSN();
-    AppMethodBeat.o(189961);
+    AppMethodBeat.i(114635);
+    if (dgs().uYL == null) {
+      dgs().uYL = new g();
+    }
+    g localg = dgs().uYL;
+    AppMethodBeat.o(114635);
+    return localg;
   }
   
-  public static p cSJ()
+  public static void dgr()
+  {
+    AppMethodBeat.i(200695);
+    dgw();
+    AppMethodBeat.o(200695);
+  }
+  
+  public static p dgs()
   {
     AppMethodBeat.i(114625);
     p localp = (p)t.ap(p.class);
@@ -104,110 +115,99 @@ public class p
     return localp;
   }
   
-  public static com.tencent.mm.plugin.multitalk.b.a cSK()
+  public static com.tencent.mm.plugin.multitalk.b.a dgt()
   {
     AppMethodBeat.i(114626);
-    com.tencent.mm.kernel.g.afz();
+    com.tencent.mm.kernel.g.agP();
     if (com.tencent.mm.kernel.a.getUin() == 0)
     {
       localObject = new b();
       AppMethodBeat.o(114626);
       throw ((Throwable)localObject);
     }
-    if (cSJ().tQj == null) {
-      cSJ().tQj = new com.tencent.mm.plugin.multitalk.b.a(com.tencent.mm.kernel.g.afB().gda);
+    if (dgs().uYJ == null) {
+      dgs().uYJ = new com.tencent.mm.plugin.multitalk.b.a(com.tencent.mm.kernel.g.agR().ghG);
     }
-    Object localObject = cSJ().tQj;
+    Object localObject = dgs().uYJ;
     AppMethodBeat.o(114626);
     return localObject;
   }
   
-  public static c cSL()
+  public static c dgu()
   {
     AppMethodBeat.i(114627);
-    com.tencent.mm.kernel.g.afz();
+    com.tencent.mm.kernel.g.agP();
     if (com.tencent.mm.kernel.a.getUin() == 0)
     {
       localObject = new b();
       AppMethodBeat.o(114627);
       throw ((Throwable)localObject);
     }
-    if (cSJ().tQk == null) {
-      cSJ().tQk = new c(com.tencent.mm.kernel.g.afB().gda);
+    if (dgs().uYK == null) {
+      dgs().uYK = new c(com.tencent.mm.kernel.g.agR().ghG);
     }
-    Object localObject = cSJ().tQk;
+    Object localObject = dgs().uYK;
     AppMethodBeat.o(114627);
     return localObject;
   }
   
-  public static i cSM()
+  public static i dgv()
   {
     AppMethodBeat.i(114628);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cSJ().tQg == null) {
-      cSJ().tQg = new i();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dgs().uYG == null) {
+      dgs().uYG = new i();
     }
-    i locali = cSJ().tQg;
+    i locali = dgs().uYG;
     AppMethodBeat.o(114628);
     return locali;
   }
   
-  public static d cSN()
+  public static d dgw()
   {
     AppMethodBeat.i(114629);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cSJ().tQd == null) {
-      cSJ().tQd = new d();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dgs().uYD == null) {
+      dgs().uYD = new d();
     }
-    d locald = cSJ().tQd;
+    d locald = dgs().uYD;
     AppMethodBeat.o(114629);
     return locald;
   }
   
-  public static f cSO()
+  public static f dgx()
   {
     AppMethodBeat.i(114630);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cSJ().tQe == null) {
-      cSJ().tQe = new f();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dgs().uYE == null) {
+      dgs().uYE = new f();
     }
-    f localf = cSJ().tQe;
+    f localf = dgs().uYE;
     AppMethodBeat.o(114630);
     return localf;
   }
   
-  public static m cSP()
+  public static m dgy()
   {
     AppMethodBeat.i(114631);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cSJ().tQf == null) {
-      cSJ().tQf = new m();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dgs().uYF == null) {
+      dgs().uYF = new m();
     }
-    m localm = cSJ().tQf;
+    m localm = dgs().uYF;
     AppMethodBeat.o(114631);
     return localm;
   }
   
-  public static h cSQ()
+  public static h dgz()
   {
     AppMethodBeat.i(114634);
-    if (cSJ().tQi == null) {
-      cSJ().tQi = new h();
+    if (dgs().uYI == null) {
+      dgs().uYI = new h();
     }
-    h localh = cSJ().tQi;
+    h localh = dgs().uYI;
     AppMethodBeat.o(114634);
     return localh;
-  }
-  
-  public static g cSR()
-  {
-    AppMethodBeat.i(114635);
-    if (cSJ().tQl == null) {
-      cSJ().tQl = new g();
-    }
-    g localg = cSJ().tQl;
-    AppMethodBeat.o(114635);
-    return localg;
   }
   
   public void clearPluginData(int paramInt) {}
@@ -220,12 +220,12 @@ public class p
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(114632);
-    this.tQh = new a();
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("multivoip", this.tQh, true);
-    com.tencent.mm.kernel.g.afD().a(this.rmQ);
+    this.uYH = new a();
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("multivoip", this.uYH, true);
+    com.tencent.mm.kernel.g.agT().a(this.svK);
     this.appForegroundListener.alive();
-    com.tencent.mm.kernel.g.b(a.class, cSQ());
-    cSQ().cSC();
+    com.tencent.mm.kernel.g.b(a.class, dgz());
+    dgz().dgl();
     AppMethodBeat.o(114632);
   }
   
@@ -233,43 +233,43 @@ public class p
   {
     AppMethodBeat.i(114633);
     Object localObject;
-    if (this.tQd != null)
+    if (this.uYD != null)
     {
-      localObject = this.tQd;
-      com.tencent.mm.kernel.g.aeS().b(1918, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1919, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1927, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1928, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1929, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1931, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1932, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1933, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1935, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1937, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1938, (com.tencent.mm.al.g)localObject);
-      com.tencent.mm.kernel.g.aeS().b(1939, (com.tencent.mm.al.g)localObject);
-      this.tQd = null;
+      localObject = this.uYD;
+      com.tencent.mm.kernel.g.agi().b(1918, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1919, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1927, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1928, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1929, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1931, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1932, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1933, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1935, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1937, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1938, (com.tencent.mm.ak.g)localObject);
+      com.tencent.mm.kernel.g.agi().b(1939, (com.tencent.mm.ak.g)localObject);
+      this.uYD = null;
     }
-    if (this.tQe != null)
+    if (this.uYE != null)
     {
-      localObject = this.tQe;
-      aj.getContext().unregisterReceiver(((f)localObject).tPf);
-      com.tencent.mm.sdk.b.a.ESL.d(((f)localObject).tPg);
-      ((f)localObject).g(false, false, false);
-      this.tQe = null;
+      localObject = this.uYE;
+      ai.getContext().unregisterReceiver(((f)localObject).uXH);
+      com.tencent.mm.sdk.b.a.GpY.d(((f)localObject).gGt);
+      ((f)localObject).h(false, false, false);
+      this.uYE = null;
     }
-    if (this.tQf != null)
+    if (this.uYF != null)
     {
-      this.tQf.cSH();
-      this.tQf = null;
+      this.uYF.dgq();
+      this.uYF = null;
     }
-    if (this.tQg != null)
+    if (this.uYG != null)
     {
-      this.tQg.reset();
-      this.tQg = null;
+      this.uYG.reset();
+      this.uYG = null;
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("multivoip", this.tQh, true);
-    com.tencent.mm.kernel.g.afD().b(this.rmQ);
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("multivoip", this.uYH, true);
+    com.tencent.mm.kernel.g.agT().b(this.svK);
     com.tencent.mm.kernel.g.ac(a.class);
     AppMethodBeat.o(114633);
   }
@@ -284,22 +284,22 @@ public class p
     public final void a(f.a parama)
     {
       AppMethodBeat.i(114623);
-      Object localObject1 = p.cSR();
-      String str = z.a(parama.fTo.Cxz);
-      Object localObject2 = bw.K(str, "sysmsg");
+      Object localObject1 = p.dgA();
+      String str = z.a(parama.fXi.DPV);
+      Object localObject2 = bv.L(str, "sysmsg");
       if ((String)((Map)localObject2).get(".sysmsg.multivoip.notfriendnotifydata") != null)
       {
-        ad.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive notfriendnotifydata msg:".concat(String.valueOf(str)));
+        ac.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive notfriendnotifydata msg:".concat(String.valueOf(str)));
         AppMethodBeat.o(114623);
         return;
       }
       str = (String)((Map)localObject2).get(".sysmsg.multivoip.notifydata");
       if (str != null)
       {
-        localObject1 = Base64.decode(bt.by(str, "").getBytes(), 0);
-        ad.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive " + z.a(parama.fTo.Cxz) + " buffer len " + localObject1.length);
-        p.cSN().tOr.cL(bt.l((Integer)com.tencent.mm.kernel.g.afB().gcR.get(1)), u.aqG());
-        p.cSN().tOr.cF((byte[])localObject1);
+        localObject1 = Base64.decode(bs.bG(str, "").getBytes(), 0);
+        ac.i("MicroMsg.SubCoreMultiTalk.MultiTalkMsgRecevie", "receive " + z.a(parama.fXi.DPV) + " buffer len " + localObject1.length);
+        p.dgw().uWU.cO(bs.m((Integer)com.tencent.mm.kernel.g.agR().ghx.get(1)), u.axw());
+        p.dgw().uWU.cE((byte[])localObject1);
         AppMethodBeat.o(114623);
         return;
       }
@@ -315,7 +315,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.p
  * JD-Core Version:    0.7.0.1
  */

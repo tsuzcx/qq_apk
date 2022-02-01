@@ -1,65 +1,65 @@
 package com.tencent.mm.plugin.eggspring.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ats;
-import com.tencent.mm.protocal.protobuf.att;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.awy;
+import com.tencent.mm.protocal.protobuf.awz;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneHasLuckyBag;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "keyWord", "", "appId", "queryTicket", "", "(Ljava/lang/String;Ljava/lang/String;J)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "luckyBagInfo", "Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "getLuckyBagInfo", "()Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "setLuckyBagInfo", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;)V", "getQueryTicket", "()J", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-eggspring_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneHasLuckyBag;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "keyWord", "", "appId", "queryTicket", "", "(Ljava/lang/String;Ljava/lang/String;J)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "luckyBagInfo", "Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "getLuckyBagInfo", "()Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "setLuckyBagInfo", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;)V", "getQueryTicket", "()J", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-eggspring_release"})
 public final class c
   extends n
   implements com.tencent.mm.network.k
 {
-  public static final a osh;
+  public static final c.a oVH;
   private final String appId;
   private g callback;
-  private final String hpg;
-  public com.tencent.mm.plugin.eggspring.b.c osf;
-  public final long osg;
+  private final String hPI;
+  public com.tencent.mm.plugin.eggspring.b.c oVF;
+  public final long oVG;
   private b rr;
   
   static
   {
     AppMethodBeat.i(108164);
-    osh = new a((byte)0);
+    oVH = new c.a((byte)0);
     AppMethodBeat.o(108164);
   }
   
   public c(String paramString1, String paramString2, long paramLong)
   {
     AppMethodBeat.i(108163);
-    this.hpg = paramString1;
+    this.hPI = paramString1;
     this.appId = paramString2;
-    this.osg = paramLong;
+    this.oVG = paramLong;
     paramString1 = new b.a();
-    paramString1.c((a)new ats());
-    paramString1.d((a)new att());
-    paramString1.wg("/cgi-bin/mmoc-bin/expressionad/getexpression");
-    paramString1.nB(2757);
-    paramString1.nD(0);
-    paramString1.nE(0);
-    paramString1 = paramString1.atI();
+    paramString1.c((a)new awy());
+    paramString1.d((a)new awz());
+    paramString1.Am("/cgi-bin/mmoc-bin/expressionad/getexpression");
+    paramString1.op(2757);
+    paramString1.or(0);
+    paramString1.os(0);
+    paramString1 = paramString1.aAz();
     d.g.b.k.g(paramString1, "builder.buildInstance()");
     this.rr = paramString1;
-    paramString1 = this.rr.auL();
+    paramString1 = this.rr.aBC();
     if (paramString1 == null)
     {
       paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetExpressionReq");
       AppMethodBeat.o(108163);
       throw paramString1;
     }
-    paramString1 = (ats)paramString1;
-    paramString1.dcm = this.hpg;
-    paramString1.dlB = this.appId;
+    paramString1 = (awy)paramString1;
+    paramString1.cZL = this.hPI;
+    paramString1.djj = this.appId;
     AppMethodBeat.o(108163);
   }
   
@@ -82,80 +82,77 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(108162);
-    ad.i("MicroMsg.NetSceneHasLuckyBag", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.NetSceneHasLuckyBag", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = this.rr.auM();
+      paramq = this.rr.aBD();
       if (paramq == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetExpressionResp");
         AppMethodBeat.o(108162);
         throw paramString;
       }
-      paramq = (att)paramq;
-      ad.i("MicroMsg.NetSceneHasLuckyBag", "ret[%s] msg[%s] hasLuckyBag[%s] traceId[%s] interval[%s].", new Object[] { Integer.valueOf(paramq.ret), paramq.bLg, Integer.valueOf(paramq.DtK), paramq.DtA, Integer.valueOf(paramq.fWw) });
+      paramq = (awz)paramq;
+      ac.i("MicroMsg.NetSceneHasLuckyBag", "ret[%s] msg[%s] hasLuckyBag[%s] traceId[%s] interval[%s].", new Object[] { Integer.valueOf(paramq.ret), paramq.bIO, Integer.valueOf(paramq.EOS), paramq.EOI, Integer.valueOf(paramq.gbd) });
       if (paramq.ret == 0)
       {
-        this.osf = new com.tencent.mm.plugin.eggspring.b.c();
-        switch (paramq.DtK)
+        this.oVF = new com.tencent.mm.plugin.eggspring.b.c();
+        switch (paramq.EOS)
         {
         default: 
-          ad.e("MicroMsg.NetSceneHasLuckyBag", "err!!![%s].", new Object[] { Integer.valueOf(paramq.DtK) });
+          ac.e("MicroMsg.NetSceneHasLuckyBag", "err!!![%s].", new Object[] { Integer.valueOf(paramq.EOS) });
         }
       }
     }
     for (;;)
     {
-      if (paramq.fWw > 0)
+      if (paramq.gbd > 0)
       {
-        paramArrayOfByte = this.osf;
+        paramArrayOfByte = this.oVF;
         if (paramArrayOfByte == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        paramArrayOfByte.fWw = paramq.fWw;
+        paramArrayOfByte.gbd = paramq.gbd;
       }
       paramq = this.callback;
       if (paramq == null) {
-        d.g.b.k.aPZ("callback");
+        d.g.b.k.aVY("callback");
       }
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
       AppMethodBeat.o(108162);
       return;
-      paramArrayOfByte = this.osf;
+      paramArrayOfByte = this.oVF;
       if (paramArrayOfByte == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      paramArrayOfByte.orY = true;
-      paramArrayOfByte = this.osf;
+      paramArrayOfByte.oVy = true;
+      paramArrayOfByte = this.oVF;
       if (paramArrayOfByte == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      paramArrayOfByte.iYE = paramq.DtA;
-      paramArrayOfByte = this.osf;
+      paramArrayOfByte.jyU = paramq.EOI;
+      paramArrayOfByte = this.oVF;
       if (paramArrayOfByte == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      paramArrayOfByte.hpg = this.hpg;
-      paramArrayOfByte = this.osf;
+      paramArrayOfByte.hPI = this.hPI;
+      paramArrayOfByte = this.oVF;
       if (paramArrayOfByte == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       paramArrayOfByte.appId = this.appId;
       continue;
-      paramArrayOfByte = this.osf;
+      paramArrayOfByte = this.oVF;
       if (paramArrayOfByte == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
-      paramArrayOfByte.orY = false;
+      paramArrayOfByte.oVy = false;
     }
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneHasLuckyBag$Companion;", "", "()V", "TAG", "", "plugin-eggspring_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.c.c
  * JD-Core Version:    0.7.0.1
  */

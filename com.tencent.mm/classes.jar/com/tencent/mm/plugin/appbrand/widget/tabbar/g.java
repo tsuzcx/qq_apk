@@ -14,15 +14,15 @@ public final class g
     super(paramString, paramc, paramq);
   }
   
-  public final void buM()
+  public final void bBJ()
   {
     AppMethodBeat.i(135546);
-    if (this.mns != null) {
-      b.aub().a(new b.k()
+    if (this.mPt != null) {
+      b.aAS().a(new b.k()
       {
-        public final String AL()
+        public final String Ap()
         {
-          return g.this.mns;
+          return g.this.mPt;
         }
         
         public final void E(Bitmap paramAnonymousBitmap)
@@ -32,22 +32,22 @@ public final class g
           AppMethodBeat.o(135544);
         }
         
-        public final void auj() {}
+        public final void aBa() {}
         
-        public final void nV()
+        public final void of()
         {
           AppMethodBeat.i(135545);
-          g.this.mnt.a("Failed to load icon via network", g.this);
+          g.this.mPu.a("Failed to load icon via network", g.this);
           AppMethodBeat.o(135545);
         }
-      }, this.mns, null);
+      }, this.mPt, null);
     }
     AppMethodBeat.o(135546);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.g
  * JD-Core Version:    0.7.0.1
  */

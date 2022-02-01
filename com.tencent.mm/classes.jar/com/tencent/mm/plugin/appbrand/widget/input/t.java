@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class t
   extends r
@@ -14,27 +14,27 @@ final class t
     super(paramContext);
   }
   
-  public final void btq()
+  public final void bAq()
   {
     AppMethodBeat.i(136475);
     try
     {
-      aj.dl(this).restartInput(this);
+      aj.dn(this).restartInput(this);
       AppMethodBeat.o(136475);
       return;
     }
     catch (RuntimeException localRuntimeException1)
     {
-      ad.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection restartInput re=%s", new Object[] { localRuntimeException1 });
+      ac.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection restartInput re=%s", new Object[] { localRuntimeException1 });
       try
       {
-        aj.dl(this).showSoftInput(this, 0);
+        aj.dn(this).showSoftInput(this, 0);
         AppMethodBeat.o(136475);
         return;
       }
       catch (RuntimeException localRuntimeException2)
       {
-        ad.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection showSoftInput re=%s", new Object[] { localRuntimeException2 });
+        ac.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection showSoftInput re=%s", new Object[] { localRuntimeException2 });
         AppMethodBeat.o(136475);
       }
     }
@@ -43,7 +43,7 @@ final class t
   public final View getInputPanel()
   {
     AppMethodBeat.i(136473);
-    w localw = w.dg(this);
+    w localw = w.di(this);
     AppMethodBeat.o(136473);
     return localw;
   }
@@ -51,7 +51,7 @@ final class t
   public final void setPasswordMode(boolean paramBoolean)
   {
     AppMethodBeat.i(136474);
-    btL();
+    bAK();
     int i = getInputType() | 0x1;
     if (paramBoolean) {
       i |= 0x80;
@@ -60,7 +60,7 @@ final class t
     {
       setInputType(i);
       super.setPasswordMode(paramBoolean);
-      btM();
+      bAL();
       AppMethodBeat.o(136474);
       return;
       i &= 0xFFFFFF7F;
@@ -69,7 +69,7 @@ final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.t
  * JD-Core Version:    0.7.0.1
  */

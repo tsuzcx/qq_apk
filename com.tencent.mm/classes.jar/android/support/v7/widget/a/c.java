@@ -8,7 +8,7 @@ import android.view.View;
 final class c
   implements b
 {
-  static final b ayl = new c();
+  static final b azf = new c();
   
   public final void a(RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {

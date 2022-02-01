@@ -9,10 +9,10 @@ public class SetPwdInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<SetPwdInfo> CREATOR;
-  public int Abe;
-  public String tfG;
-  public String tfH;
-  public String tfI;
+  public int Bty;
+  public String unV;
+  public String unW;
+  public String unX;
   
   static
   {
@@ -23,19 +23,19 @@ public class SetPwdInfo
   
   public SetPwdInfo()
   {
-    this.tfH = "";
-    this.tfI = "";
+    this.unW = "";
+    this.unX = "";
   }
   
   protected SetPwdInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70202);
-    this.tfH = "";
-    this.tfI = "";
-    this.Abe = paramParcel.readInt();
-    this.tfG = paramParcel.readString();
-    this.tfH = paramParcel.readString();
-    this.tfI = paramParcel.readString();
+    this.unW = "";
+    this.unX = "";
+    this.Bty = paramParcel.readInt();
+    this.unV = paramParcel.readString();
+    this.unW = paramParcel.readString();
+    this.unX = paramParcel.readString();
     AppMethodBeat.o(70202);
   }
   
@@ -47,10 +47,10 @@ public class SetPwdInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70203);
-    paramParcel.writeInt(this.Abe);
-    paramParcel.writeString(this.tfG);
-    paramParcel.writeString(this.tfH);
-    paramParcel.writeString(this.tfI);
+    paramParcel.writeInt(this.Bty);
+    paramParcel.writeString(this.unV);
+    paramParcel.writeString(this.unW);
+    paramParcel.writeString(this.unX);
     AppMethodBeat.o(70203);
   }
 }

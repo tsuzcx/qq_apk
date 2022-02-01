@@ -12,11 +12,9 @@ import java.util.Vector;
 public final class e
   implements b
 {
-  private static e Ika = null;
-  private final SparseArray<Set<b>> Ikb = new SparseArray();
-  private d Ikc = null;
-  private Vector<d> gVJ = new Vector();
-  private Vector<d> gVK = new Vector();
+  private static e JLL = null;
+  private final SparseArray<Set<b>> JLM = new SparseArray();
+  private d JLN = null;
   private final Handler handler = new Handler(Looper.getMainLooper())
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -24,21 +22,23 @@ public final class e
       e.this.a((d)paramAnonymousMessage.obj);
     }
   };
+  private Vector<d> hwi = new Vector();
+  private Vector<d> hwj = new Vector();
   
-  private void auW()
+  private void aBP()
   {
-    if (this.gVK.size() > 0)
+    if (this.hwj.size() > 0)
     {
-      d locald = (d)this.gVK.get(0);
+      d locald = (d)this.hwj.get(0);
       int i = 1;
-      while (i < this.gVK.size())
+      while (i < this.hwj.size())
       {
-        this.gVK.get(i);
+        this.hwj.get(i);
         i += 1;
       }
-      if (flm())
+      if (fBD())
       {
-        this.gVK.remove(locald);
+        this.hwj.remove(locald);
         b(locald);
       }
     }
@@ -46,9 +46,9 @@ public final class e
   
   private void b(final d paramd)
   {
-    if (flm())
+    if (fBD())
     {
-      this.gVJ.add(paramd);
+      this.hwi.add(paramd);
       int i = paramd.a(this);
       if (i < 0)
       {
@@ -65,34 +65,34 @@ public final class e
     }
     for (;;)
     {
-      auW();
+      aBP();
       return;
-      this.gVK.add(paramd);
+      this.hwj.add(paramd);
     }
   }
   
-  public static e fll()
+  public static e fBC()
   {
-    if (Ika == null) {}
+    if (JLL == null) {}
     try
     {
-      if (Ika == null) {
-        Ika = new e();
+      if (JLL == null) {
+        JLL = new e();
       }
-      return Ika;
+      return JLL;
     }
     finally {}
   }
   
-  private boolean flm()
+  private boolean fBD()
   {
-    return this.gVJ.size() < 20;
+    return this.hwi.size() < 20;
   }
   
   public final void a(final int paramInt1, final int paramInt2, final String paramString, final d paramd)
   {
-    this.gVJ.remove(paramd);
-    auW();
+    this.hwi.remove(paramd);
+    aBP();
     this.handler.post(new Runnable()
     {
       public final void run()
@@ -117,11 +117,11 @@ public final class e
   
   public final void a(int paramInt, b paramb)
   {
-    if (this.Ikb.get(paramInt) == null) {
-      this.Ikb.put(paramInt, new HashSet());
+    if (this.JLM.get(paramInt) == null) {
+      this.JLM.put(paramInt, new HashSet());
     }
-    if (!((Set)this.Ikb.get(paramInt)).contains(paramb)) {
-      ((Set)this.Ikb.get(paramInt)).add(paramb);
+    if (!((Set)this.JLM.get(paramInt)).contains(paramb)) {
+      ((Set)this.JLM.get(paramInt)).add(paramb);
     }
   }
   
@@ -133,7 +133,7 @@ public final class e
       if ((i == 102) || (i == 104) || (i == 103))
       {
         com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
-        this.Ikc = paramd;
+        this.JLN = paramd;
       }
     }
     if (paramd == null) {

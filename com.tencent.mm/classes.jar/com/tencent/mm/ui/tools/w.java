@@ -16,8 +16,8 @@ import android.text.style.ImageSpan;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,16 +25,16 @@ import java.util.List;
 
 public final class w
 {
-  List<b> Huo;
-  WeakReference<EditText> Hup;
-  ArrayList<String> Huq;
-  boolean Hur;
+  List<b> IUL;
+  WeakReference<EditText> IUM;
+  ArrayList<String> IUN;
+  boolean IUO;
   String mText;
   
   public w(EditText paramEditText)
   {
     AppMethodBeat.i(143290);
-    this.Hup = new WeakReference(paramEditText);
+    this.IUM = new WeakReference(paramEditText);
     AppMethodBeat.o(143290);
   }
   
@@ -66,8 +66,8 @@ public final class w
         int k = localb.start;
         int m = localb.length;
         if ((k < 0) || (m <= 0) || (k + m > str.length())) {
-          ad.i("MicroMsg.WordsChecker", "start : %d, length : %d.", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-        } else if (localb.Huu) {
+          ac.i("MicroMsg.WordsChecker", "start : %d, length : %d.", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
+        } else if (localb.IUR) {
           localSpannableStringBuilder.append(a(paramArrayList, str.substring(k, k + m), localTextPaint));
         } else {
           localSpannableStringBuilder.append(str.substring(k, k + m));
@@ -91,7 +91,7 @@ public final class w
   static List<b> l(String paramString, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(143294);
-    if ((bt.isNullOrNil(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0))
+    if ((bs.isNullOrNil(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0))
     {
       AppMethodBeat.o(143294);
       return null;
@@ -110,7 +110,7 @@ public final class w
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
           int n = paramString.indexOf(str, j);
           if ((n < 0) || ((n >= k) && ((n != k) || (str.length() <= i)))) {
@@ -142,12 +142,12 @@ public final class w
     }
   }
   
-  final b aah(int paramInt)
+  final b acu(int paramInt)
   {
     AppMethodBeat.i(143291);
-    if (this.Huo != null)
+    if (this.IUL != null)
     {
-      Iterator localIterator = this.Huo.iterator();
+      Iterator localIterator = this.IUL.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
@@ -165,52 +165,52 @@ public final class w
   public static final class a
     extends Drawable
   {
-    private static int Hma;
-    private RectF BjB;
-    private float Hmb;
-    private float Hmc;
-    private float Hus;
-    private float Hut;
-    private Paint gao;
+    private static int IMv;
+    private RectF CBO;
+    private float IMw;
+    private float IMx;
+    private float IUP;
+    private float IUQ;
+    private Paint geV;
     private String mText;
-    private Paint tju;
+    private Paint urN;
     
     public a(Context paramContext, String paramString, Paint paramPaint)
     {
       AppMethodBeat.i(143284);
-      this.gao = new Paint(1);
-      this.gao.setColor(-7829368);
-      this.tju = paramPaint;
-      Hma = BackwardSupportUtil.b.g(paramContext, 2.0F);
-      this.Hus = Hma;
-      this.Hut = Hma;
+      this.geV = new Paint(1);
+      this.geV.setColor(-7829368);
+      this.urN = paramPaint;
+      IMv = BackwardSupportUtil.b.g(paramContext, 2.0F);
+      this.IUP = IMv;
+      this.IUQ = IMv;
       this.mText = paramString;
-      this.Hmb = this.tju.measureText(this.mText);
-      paramContext = this.tju.getFontMetrics();
-      this.Hmc = ((float)Math.ceil(paramContext.bottom - paramContext.top));
-      setBounds(0, 0, (int)(this.Hmb + Hma * 2 + Hma * 2), (int)this.Hmc);
-      ad.i("MicroMsg.TextDrawable", "setText(%s).", new Object[] { paramString });
+      this.IMw = this.urN.measureText(this.mText);
+      paramContext = this.urN.getFontMetrics();
+      this.IMx = ((float)Math.ceil(paramContext.bottom - paramContext.top));
+      setBounds(0, 0, (int)(this.IMw + IMv * 2 + IMv * 2), (int)this.IMx);
+      ac.i("MicroMsg.TextDrawable", "setText(%s).", new Object[] { paramString });
       AppMethodBeat.o(143284);
     }
     
     public final void draw(Canvas paramCanvas)
     {
       AppMethodBeat.i(143285);
-      paramCanvas.drawRoundRect(this.BjB, this.Hus, this.Hut, this.gao);
+      paramCanvas.drawRoundRect(this.CBO, this.IUP, this.IUQ, this.geV);
       Rect localRect = getBounds();
-      int i = (int)((localRect.right - localRect.left - (this.BjB.right - this.BjB.left) + Hma * 2) / 2.0F);
-      Paint.FontMetricsInt localFontMetricsInt = this.tju.getFontMetricsInt();
+      int i = (int)((localRect.right - localRect.left - (this.CBO.right - this.CBO.left) + IMv * 2) / 2.0F);
+      Paint.FontMetricsInt localFontMetricsInt = this.urN.getFontMetricsInt();
       int j = localRect.top;
       int k = (localRect.bottom - localRect.top - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2;
       int m = localFontMetricsInt.top;
-      paramCanvas.drawText(this.mText, i, k + j - m, this.tju);
+      paramCanvas.drawText(this.mText, i, k + j - m, this.urN);
       AppMethodBeat.o(143285);
     }
     
     public final int getOpacity()
     {
       AppMethodBeat.i(143288);
-      if (this.gao.getAlpha() < 255)
+      if (this.geV.getAlpha() < 255)
       {
         AppMethodBeat.o(143288);
         return -3;
@@ -222,9 +222,9 @@ public final class w
     public final void setAlpha(int paramInt)
     {
       AppMethodBeat.i(143286);
-      if (paramInt != this.gao.getAlpha())
+      if (paramInt != this.geV.getAlpha())
       {
-        this.gao.setAlpha(paramInt);
+        this.geV.setAlpha(paramInt);
         invalidateSelf();
       }
       AppMethodBeat.o(143286);
@@ -234,10 +234,10 @@ public final class w
     {
       AppMethodBeat.i(143289);
       super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-      Paint.FontMetrics localFontMetrics = this.tju.getFontMetrics();
-      float f1 = Hma + paramInt1;
+      Paint.FontMetrics localFontMetrics = this.urN.getFontMetrics();
+      float f1 = IMv + paramInt1;
       float f2 = paramInt2;
-      this.BjB = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - Hma, paramInt4);
+      this.CBO = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - IMv, paramInt4);
       invalidateSelf();
       AppMethodBeat.o(143289);
     }
@@ -245,7 +245,7 @@ public final class w
     public final void setColorFilter(ColorFilter paramColorFilter)
     {
       AppMethodBeat.i(143287);
-      this.gao.setColorFilter(paramColorFilter);
+      this.geV.setColorFilter(paramColorFilter);
       invalidateSelf();
       AppMethodBeat.o(143287);
     }
@@ -253,7 +253,7 @@ public final class w
   
   static final class b
   {
-    boolean Huu;
+    boolean IUR;
     int length;
     int start;
     
@@ -261,7 +261,7 @@ public final class w
     {
       this.start = paramInt1;
       this.length = paramInt2;
-      this.Huu = paramBoolean;
+      this.IUR = paramBoolean;
     }
   }
 }

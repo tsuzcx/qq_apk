@@ -21,44 +21,44 @@ import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
 import com.tencent.mm.pluginsdk.ui.chat.n;
 import com.tencent.mm.pluginsdk.ui.chat.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.ui.BasePanelKeybordLayout;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VoiceInputFooter
   extends BasePanelKeybordLayout
 {
-  n BWH;
-  ImageButton BWI;
-  private ImageButton BWJ;
-  private boolean BWK;
-  private boolean BWL;
-  private final int BWM;
-  private final int BWN;
-  private a BWO;
-  private ChatFooterPanel fSY;
-  private MMActivity imP;
-  LinearLayout tLI;
-  MMEditText xEy;
+  n DoY;
+  ImageButton DoZ;
+  private ImageButton Dpa;
+  private boolean Dpb;
+  private boolean Dpc;
+  private final int Dpd;
+  private final int Dpe;
+  private a Dpf;
+  private ChatFooterPanel fWT;
+  private MMActivity iMV;
+  LinearLayout uUm;
+  MMEditText yRm;
   
   public VoiceInputFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31262);
-    this.xEy = null;
-    this.BWK = false;
-    this.BWL = false;
-    this.BWM = 1;
-    this.BWN = 2;
-    this.imP = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)y.js(this.imP).inflate(2131495861, this);
-    this.BWJ = ((ImageButton)paramContext.findViewById(2131296629));
-    this.BWJ.setOnClickListener(new View.OnClickListener()
+    this.yRm = null;
+    this.Dpb = false;
+    this.Dpc = false;
+    this.Dpd = 1;
+    this.Dpe = 2;
+    this.iMV = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)z.jD(this.iMV).inflate(2131495861, this);
+    this.Dpa = ((ImageButton)paramContext.findViewById(2131296629));
+    this.Dpa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -67,8 +67,8 @@ public class VoiceInputFooter
         AppMethodBeat.o(31257);
       }
     });
-    this.BWI = ((ImageButton)paramContext.findViewById(2131296558));
-    this.BWI.setOnClickListener(new View.OnClickListener()
+    this.DoZ = ((ImageButton)paramContext.findViewById(2131296558));
+    this.DoZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -77,40 +77,24 @@ public class VoiceInputFooter
         AppMethodBeat.o(31258);
       }
     });
-    if (e.Cgj == null)
+    if (e.DyA == null)
     {
-      this.fSY = new d(this.imP);
+      this.fWT = new d(this.iMV);
       AppMethodBeat.o(31262);
       return;
     }
-    this.fSY = e.Cgj.es(getContext());
-    this.fSY.setEntranceScene(ChatFooterPanel.BUT);
-    this.fSY.setVisibility(8);
-    this.tLI = ((LinearLayout)findViewById(2131304239));
-    this.tLI.setOnClickListener(null);
-    int i = z.in(getContext());
-    this.tLI.addView(this.fSY, -1, i);
-    this.fSY.exn();
-    this.fSY.onResume();
-    this.fSY.setOnTextOperationListener(new ChatFooterPanel.a()
+    this.fWT = e.DyA.eA(getContext());
+    this.fWT.setEntranceScene(ChatFooterPanel.Dnj);
+    this.fWT.setVisibility(8);
+    this.uUm = ((LinearLayout)findViewById(2131304239));
+    this.uUm.setOnClickListener(null);
+    int i = y.iy(getContext());
+    this.uUm.addView(this.fWT, -1, i);
+    this.fWT.eMH();
+    this.fWT.onResume();
+    this.fWT.setOnTextOperationListener(new ChatFooterPanel.a()
     {
-      public final void append(String paramAnonymousString)
-      {
-        AppMethodBeat.i(31260);
-        try
-        {
-          VoiceInputFooter.e(VoiceInputFooter.this).aMd(paramAnonymousString);
-          AppMethodBeat.o(31260);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          ad.printErrStackTrace("MicroMsg.VoiceInputFooter", paramAnonymousString, "", new Object[0]);
-          AppMethodBeat.o(31260);
-        }
-      }
-      
-      public final void btF()
+      public final void amb()
       {
         AppMethodBeat.i(31259);
         VoiceInputFooter.e(VoiceInputFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
@@ -118,14 +102,30 @@ public class VoiceInputFooter
         AppMethodBeat.o(31259);
       }
       
-      public final void cqY() {}
+      public final void amc() {}
       
-      public final void lf(boolean paramAnonymousBoolean) {}
+      public final void append(String paramAnonymousString)
+      {
+        AppMethodBeat.i(31260);
+        try
+        {
+          VoiceInputFooter.e(VoiceInputFooter.this).aRF(paramAnonymousString);
+          AppMethodBeat.o(31260);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          ac.printErrStackTrace("MicroMsg.VoiceInputFooter", paramAnonymousString, "", new Object[0]);
+          AppMethodBeat.o(31260);
+        }
+      }
+      
+      public final void dS(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(31262);
   }
   
-  private static void lI(int paramInt)
+  private static void lA(int paramInt)
   {
     AppMethodBeat.i(31269);
     VoiceInputBehavior localVoiceInputBehavior = new VoiceInputBehavior();
@@ -134,10 +134,10 @@ public class VoiceInputFooter
     }
     for (;;)
     {
-      ad.i("MicroMsg.VoiceInputFooter", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(localVoiceInputBehavior.cancel), Integer.valueOf(localVoiceInputBehavior.send), Integer.valueOf(localVoiceInputBehavior.click), Integer.valueOf(localVoiceInputBehavior.longClick), Long.valueOf(localVoiceInputBehavior.longClickTime), Integer.valueOf(localVoiceInputBehavior.textClick), Integer.valueOf(localVoiceInputBehavior.textChangeCount), Long.valueOf(localVoiceInputBehavior.textChangeTime), Integer.valueOf(localVoiceInputBehavior.textChangeReturn), Long.valueOf(localVoiceInputBehavior.voiceInputTime), Integer.valueOf(localVoiceInputBehavior.fail), Integer.valueOf(localVoiceInputBehavior.clear), Integer.valueOf(localVoiceInputBehavior.smileIconClick), Integer.valueOf(localVoiceInputBehavior.voiceIconClick), Integer.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClickTime) });
+      ac.i("MicroMsg.VoiceInputFooter", "report cancel = %s send = %s click = %s longClick = %s longClickTime = %s textClick = %s textChangeCount = %s textChangeTime = %s textChangeReturn = %s voiceInputTime = %s fail = %s clear = %s smileIconClick = %s voiceIconClick = %s fullScreenVoiceLongClick = %s fullScreenVoiceLongClickTime = %s", new Object[] { Integer.valueOf(localVoiceInputBehavior.cancel), Integer.valueOf(localVoiceInputBehavior.send), Integer.valueOf(localVoiceInputBehavior.click), Integer.valueOf(localVoiceInputBehavior.longClick), Long.valueOf(localVoiceInputBehavior.longClickTime), Integer.valueOf(localVoiceInputBehavior.textClick), Integer.valueOf(localVoiceInputBehavior.textChangeCount), Long.valueOf(localVoiceInputBehavior.textChangeTime), Integer.valueOf(localVoiceInputBehavior.textChangeReturn), Long.valueOf(localVoiceInputBehavior.voiceInputTime), Integer.valueOf(localVoiceInputBehavior.fail), Integer.valueOf(localVoiceInputBehavior.clear), Integer.valueOf(localVoiceInputBehavior.smileIconClick), Integer.valueOf(localVoiceInputBehavior.voiceIconClick), Integer.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClick), Long.valueOf(localVoiceInputBehavior.fullScreenVoiceLongClickTime) });
       log_13905 locallog_13905 = new log_13905();
       locallog_13905.viOp_ = localVoiceInputBehavior;
-      h.vKh.c(13905, locallog_13905);
+      h.wUl.c(13905, locallog_13905);
       AppMethodBeat.o(31269);
       return;
       if (paramInt != 2) {
@@ -148,19 +148,19 @@ public class VoiceInputFooter
     AppMethodBeat.o(31269);
   }
   
-  final void btD()
+  final void bAD()
   {
     AppMethodBeat.i(31266);
-    this.BWL = false;
-    this.fSY.onPause();
-    this.fSY.setVisibility(8);
+    this.Dpc = false;
+    this.fWT.onPause();
+    this.fWT.setVisibility(8);
     AppMethodBeat.o(31266);
   }
   
-  public final boolean dCK()
+  public final boolean dRh()
   {
     AppMethodBeat.i(31263);
-    if (this.fSY.getVisibility() == 0)
+    if (this.fWT.getVisibility() == 0)
     {
       AppMethodBeat.o(31263);
       return true;
@@ -169,10 +169,10 @@ public class VoiceInputFooter
     return false;
   }
   
-  public final boolean exK()
+  public final boolean eNe()
   {
     AppMethodBeat.i(31264);
-    if (this.BWH.getVisibility() == 0)
+    if (this.DoY.getVisibility() == 0)
     {
       AppMethodBeat.o(31264);
       return true;
@@ -181,18 +181,18 @@ public class VoiceInputFooter
     return false;
   }
   
-  final void exL()
+  final void eNf()
   {
     AppMethodBeat.i(31265);
-    this.BWK = false;
-    if (this.BWH != null)
+    this.Dpb = false;
+    if (this.DoY != null)
     {
-      this.BWH.pause();
-      this.BWH.setVisibility(8);
-      this.BWJ.setImageResource(2131234518);
-      this.BWI.setVisibility(0);
-      if (this.BWO != null) {
-        this.BWO.tZ(false);
+      this.DoY.pause();
+      this.DoY.setVisibility(8);
+      this.Dpa.setImageResource(2131234518);
+      this.DoZ.setVisibility(0);
+      if (this.Dpf != null) {
+        this.Dpf.va(false);
       }
     }
     AppMethodBeat.o(31265);
@@ -202,8 +202,8 @@ public class VoiceInputFooter
   {
     AppMethodBeat.i(31267);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.fSY);
-    localArrayList.add(this.BWH);
+    localArrayList.add(this.fWT);
+    localArrayList.add(this.DoY);
     AppMethodBeat.o(31267);
     return localArrayList;
   }
@@ -211,27 +211,27 @@ public class VoiceInputFooter
   public final void release()
   {
     AppMethodBeat.i(31268);
-    if (this.fSY != null)
+    if (this.fWT != null)
     {
-      this.fSY.exm();
-      this.fSY.destroy();
+      this.fWT.eMG();
+      this.fWT.destroy();
     }
-    if (this.BWH != null) {
-      this.BWH.destroy();
+    if (this.DoY != null) {
+      this.DoY.destroy();
     }
     AppMethodBeat.o(31268);
   }
   
   public void setVoiceInputFooterListener(a parama)
   {
-    this.BWO = parama;
+    this.Dpf = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void exN();
+    public abstract void eNh();
     
-    public abstract void tZ(boolean paramBoolean);
+    public abstract void va(boolean paramBoolean);
   }
 }
 

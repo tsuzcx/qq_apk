@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bx;
+import com.tencent.mm.g.c.bz;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends bx
+  extends bz
 {
   public static c.a info;
   
@@ -15,56 +15,56 @@ public final class d
   {
     AppMethodBeat.i(131673);
     c.a locala = new c.a();
-    locala.EYt = new Field[12];
+    locala.GvF = new Field[12];
     locala.columns = new String[13];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "featureId";
-    locala.EYv.put("featureId", "INTEGER PRIMARY KEY ");
+    locala.GvH.put("featureId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" featureId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "featureId";
+    locala.GvG = "featureId";
     locala.columns[1] = "title";
-    locala.EYv.put("title", "TEXT");
+    locala.GvH.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "titlePY";
-    locala.EYv.put("titlePY", "TEXT");
+    locala.GvH.put("titlePY", "TEXT");
     localStringBuilder.append(" titlePY TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "titleShortPY";
-    locala.EYv.put("titleShortPY", "TEXT");
+    locala.GvH.put("titleShortPY", "TEXT");
     localStringBuilder.append(" titleShortPY TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "tag";
-    locala.EYv.put("tag", "TEXT");
+    locala.GvH.put("tag", "TEXT");
     localStringBuilder.append(" tag TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "actionType";
-    locala.EYv.put("actionType", "INTEGER default '0' ");
+    locala.GvH.put("actionType", "INTEGER default '0' ");
     localStringBuilder.append(" actionType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "url";
-    locala.EYv.put("url", "TEXT");
+    locala.GvH.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "helpUrl";
-    locala.EYv.put("helpUrl", "TEXT");
+    locala.GvH.put("helpUrl", "TEXT");
     localStringBuilder.append(" helpUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "updateUrl";
-    locala.EYv.put("updateUrl", "TEXT");
+    locala.GvH.put("updateUrl", "TEXT");
     localStringBuilder.append(" updateUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "androidUrl";
-    locala.EYv.put("androidUrl", "TEXT");
+    locala.GvH.put("androidUrl", "TEXT");
     localStringBuilder.append(" androidUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "iconPath";
-    locala.EYv.put("iconPath", "TEXT");
+    locala.GvH.put("iconPath", "TEXT");
     localStringBuilder.append(" iconPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "timestamp";
-    locala.EYv.put("timestamp", "LONG default '0' ");
+    locala.GvH.put("timestamp", "LONG default '0' ");
     localStringBuilder.append(" timestamp LONG default '0' ");
     locala.columns[12] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -102,7 +102,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.d
  * JD-Core Version:    0.7.0.1
  */

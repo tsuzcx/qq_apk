@@ -2,147 +2,84 @@ package com.tencent.mm.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.az;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.n.b;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import junit.framework.Assert;
 
 public final class x
 {
-  private static final List<a> gMx;
+  private static final List<a> hmX;
   
   static
   {
     AppMethodBeat.i(42940);
-    gMx = new ArrayList();
+    hmX = new ArrayList();
     AppMethodBeat.o(42940);
   }
   
-  public static List<String> X(String paramString, int paramInt)
+  private static boolean D(ai paramai)
   {
-    AppMethodBeat.i(42937);
-    ArrayList localArrayList = null;
-    Object localObject = null;
-    if (!g.afw()) {
-      ad.w("MicroMsg.ConversationLogic", "get Total Unread Talker T, but has not set uin");
-    }
-    for (;;)
+    AppMethodBeat.i(194038);
+    if ((paramai != null) && ((int)paramai.fLJ != 0))
     {
-      AppMethodBeat.o(42937);
-      return localObject;
-      localObject = ((k)g.ab(k.class)).apR().fL(paramString, paramInt);
-      if (((Cursor)localObject).moveToNext())
+      if ((paramai.Nw()) && (paramai.WE()))
       {
-        localArrayList = new ArrayList();
-        do
-        {
-          ad.d("MicroMsg.ConversationLogic", "jacks need notify talker display name: %s", new Object[] { ((Cursor)localObject).getString(0) });
-          localArrayList.add(((Cursor)localObject).getString(0));
-        } while (((Cursor)localObject).moveToNext());
+        AppMethodBeat.o(194038);
+        return true;
       }
-      ((Cursor)localObject).close();
-      localObject = localArrayList;
-      if (localArrayList != null)
+      if ((w.sQ(paramai.field_username)) && (paramai.exT == 0))
       {
-        paramString = ((k)g.ab(k.class)).apR().aIx(paramString);
-        localObject = localArrayList;
-        if (paramString != null)
-        {
-          paramString.moveToFirst();
-          while (!paramString.isAfterLast())
-          {
-            localObject = ((k)g.ab(k.class)).apM().aHY(paramString.getString(0));
-            if ((localObject != null) && (((au)localObject).evx == 0))
-            {
-              ad.d("MicroMsg.ConversationLogic", "jacks need mute notify:  %s", new Object[] { ((af)localObject).ZW() });
-              localArrayList.remove(((af)localObject).ZW());
-            }
-            paramString.moveToNext();
-          }
-          paramString.close();
-          localObject = localArrayList;
-        }
+        AppMethodBeat.o(194038);
+        return true;
       }
     }
-  }
-  
-  private static int a(String paramString, Cursor paramCursor)
-  {
-    AppMethodBeat.i(42932);
-    if ((paramCursor != null) && (paramCursor.getCount() > 0)) {
-      paramCursor.moveToFirst();
-    }
-    for (int i = paramCursor.getInt(0);; i = 0)
-    {
-      if (paramCursor != null) {
-        paramCursor.close();
-      }
-      if (i <= 0)
-      {
-        AppMethodBeat.o(42932);
-        return 0;
-      }
-      paramString = ((k)g.ab(k.class)).apR().aIx(paramString);
-      if (paramString == null)
-      {
-        ad.w("MicroMsg.ConversationLogic", "cursor is null, return");
-        AppMethodBeat.o(42932);
-        return i;
-      }
-      paramString.moveToFirst();
-      if (!paramString.isAfterLast())
-      {
-        paramCursor = ((k)g.ab(k.class)).apM().aHY(paramString.getString(0));
-        if ((paramCursor == null) || (paramCursor.evx != 0)) {
-          break label209;
-        }
-        i -= paramString.getInt(1);
-        ad.d("MicroMsg.ConversationLogic", "unreadcheck chatroom mute %s, unRead %d,", new Object[] { paramCursor.field_username, Integer.valueOf(i) });
-      }
-      label209:
-      for (;;)
-      {
-        paramString.moveToNext();
-        break;
-        paramString.close();
-        i = Math.max(0, i);
-        AppMethodBeat.o(42932);
-        return i;
-      }
-    }
+    AppMethodBeat.o(194038);
+    return false;
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(42939);
     Assert.assertNotNull(parama);
-    synchronized (gMx)
+    synchronized (hmX)
     {
-      gMx.add(parama);
+      hmX.add(parama);
       AppMethodBeat.o(42939);
       return;
     }
   }
   
-  public static int av(String paramString1, String paramString2)
+  public static int aD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(42935);
-    if (!g.afw())
+    if (!g.agM())
     {
-      ad.w("MicroMsg.ConversationLogic", "get total unread, but has not set uin");
+      ac.w("MicroMsg.ConversationLogic", "get total unread, but has not set uin");
       AppMethodBeat.o(42935);
       return 0;
     }
-    paramString1 = ((k)g.ab(k.class)).apR().ld(paramString1, paramString2);
+    paramString1 = ((k)g.ab(k.class)).awG().lA(paramString1, paramString2);
     if ((paramString1 != null) && (paramString1.getCount() > 0)) {
       paramString1.moveToFirst();
     }
@@ -156,11 +93,11 @@ public final class x
     }
   }
   
-  public static int aw(String paramString1, String paramString2)
+  public static int aE(String paramString1, String paramString2)
   {
     int j = 0;
     AppMethodBeat.i(42938);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(42938);
       return 0;
@@ -175,17 +112,17 @@ public final class x
       }
     }
     PInt localPInt = new PInt();
-    List localList = gMx;
+    List localList = hmX;
     i = 0;
     boolean bool1 = false;
     for (;;)
     {
       try
       {
-        if (i >= gMx.size()) {
+        if (i >= hmX.size()) {
           break label166;
         }
-        a locala = (a)gMx.get(i);
+        a locala = (a)hmX.get(i);
         if (locala == null) {
           break label175;
         }
@@ -215,89 +152,160 @@ public final class x
     }
   }
   
-  public static int d(String paramString, List<String> paramList)
+  public static List<String> ayp()
   {
-    AppMethodBeat.i(42934);
-    if (!g.afw())
+    AppMethodBeat.i(194039);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("floatbottle");
+    if (!g.agR().agA().getBoolean(ah.a.GJO, true))
     {
-      ad.w("MicroMsg.ConversationLogic", "get total unread with black list, but has not set uin");
-      AppMethodBeat.o(42934);
-      return 0;
+      localArrayList.add("notifymessage");
+      ac.d("MicroMsg.ConversationLogic", "add service notify message into show unread count blacklist.");
     }
-    long l = bt.GC();
-    Cursor localCursor = ((k)g.ab(k.class)).apR().H(paramString, paramList);
-    int j = a(paramString, localCursor);
-    localCursor.close();
-    l = bt.aS(l);
-    if (paramList == null) {}
-    for (int i = -1;; i = paramList.size())
+    if (!g.agR().agA().getBoolean(ah.a.GJP, true))
     {
-      ad.i("MicroMsg.ConversationLogic", "get count %d with black list use %d ms, blacklist size:%s", new Object[] { Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(i) });
-      AppMethodBeat.o(42934);
-      return j;
+      localArrayList.add("appbrandcustomerservicemsg");
+      ac.d("MicroMsg.ConversationLogic", "add wxa custom session notify message into show unread count blacklist.");
     }
+    localArrayList.add("appbrand_notify_message");
+    localArrayList.add("officialaccounts");
+    ac.d("MicroMsg.ConversationLogic", "getUnreadCountBlacklist blacklist(%s).", new Object[] { localArrayList });
+    AppMethodBeat.o(194039);
+    return localArrayList;
   }
   
-  public static int e(String paramString, List<String> paramList)
+  private static Set<String> c(Set<String> paramSet)
   {
-    AppMethodBeat.i(42936);
-    if (!g.afw())
+    AppMethodBeat.i(194036);
+    Object localObject = ayp();
+    HashSet localHashSet = new HashSet((Collection)localObject);
+    paramSet = new HashSet(paramSet);
+    paramSet.removeAll((Collection)localObject);
+    if (!paramSet.isEmpty())
     {
-      ad.w("MicroMsg.ConversationLogic", "get Total Unread Talker, but has not set uin");
-      AppMethodBeat.o(42936);
-      return 0;
-    }
-    long l = bt.GC();
-    paramList = ((k)g.ab(k.class)).apR().I(paramString, paramList);
-    if (paramList.getCount() > 0) {
-      paramList.moveToFirst();
-    }
-    for (int j = paramList.getInt(0);; j = 0)
-    {
-      paramList.close();
-      if (j <= 0)
+      paramSet = ((k)g.ab(k.class)).awB().hl(new ArrayList(paramSet));
+      if (paramSet != null)
       {
-        AppMethodBeat.o(42936);
-        return 0;
-      }
-      paramString = ((k)g.ab(k.class)).apR().aIx(paramString);
-      if (paramString == null)
-      {
-        ad.i("MicroMsg.ConversationLogic", "[getTotalUnreadTalker] cursor is null!cost %d ms count:%s ", new Object[] { Long.valueOf(bt.aS(l)), Integer.valueOf(j) });
-        AppMethodBeat.o(42936);
-        return j;
-      }
-      paramString.moveToFirst();
-      int i = 0;
-      if (!paramString.isAfterLast())
-      {
-        paramList = ((k)g.ab(k.class)).apM().aHY(paramString.getString(0));
-        if ((paramList == null) || (paramList.evx != 0)) {
-          break label280;
+        paramSet.moveToFirst();
+        while (!paramSet.isAfterLast())
+        {
+          localObject = new ai();
+          ((ai)localObject).convertFrom(paramSet);
+          if (D((ai)localObject))
+          {
+            ac.d("MicroMsg.ConversationLogic", "ignore contact %s", new Object[] { ((av)localObject).field_username });
+            localHashSet.add(((av)localObject).field_username);
+          }
+          paramSet.moveToNext();
         }
-        j -= 1;
-        i += 1;
-      }
-      label280:
-      for (;;)
-      {
-        paramString.moveToNext();
-        break;
-        paramString.close();
-        ad.i("MicroMsg.ConversationLogic", "[getTotalUnreadTalker] cost %d ms count:%s mute:%s", new Object[] { Long.valueOf(bt.aS(l)), Integer.valueOf(j), Integer.valueOf(i) });
-        i = Math.max(0, j);
-        AppMethodBeat.o(42936);
-        return i;
+        paramSet.close();
       }
     }
+    AppMethodBeat.o(194036);
+    return localHashSet;
   }
   
-  public static int tz(String paramString)
+  public static int xC(String paramString)
   {
     AppMethodBeat.i(42933);
-    int i = d(paramString, new LinkedList());
+    if (!g.agM())
+    {
+      ac.w("MicroMsg.ConversationLogic", "get total unread with black list, but has not set uin");
+      AppMethodBeat.o(42933);
+      return 0;
+    }
+    long l = bs.Gn();
+    paramString = xD(paramString).values().iterator();
+    for (int i = 0; paramString.hasNext(); i = ((ap)paramString.next()).field_unReadCount + i) {}
+    ac.i("MicroMsg.ConversationLogic", "get count %d with black list use %d ms", new Object[] { Integer.valueOf(i), Long.valueOf(bs.aO(l)) });
     AppMethodBeat.o(42933);
     return i;
+  }
+  
+  public static HashMap<String, ap> xD(String paramString)
+  {
+    AppMethodBeat.i(194034);
+    long l = bs.Gn();
+    Object localObject = ((k)g.ab(k.class)).awG().aNS(paramString);
+    paramString = new HashMap();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(194034);
+      return paramString;
+    }
+    HashSet localHashSet = new HashSet();
+    ((Cursor)localObject).moveToFirst();
+    while (!((Cursor)localObject).isAfterLast())
+    {
+      ap localap = new ap();
+      localap.convertFrom((Cursor)localObject);
+      localHashSet.add(localap.field_username);
+      paramString.put(localap.field_username, localap);
+      ((Cursor)localObject).moveToNext();
+    }
+    ((Cursor)localObject).close();
+    localObject = c(localHashSet).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramString.remove((String)((Iterator)localObject).next());
+    }
+    ac.i("MicroMsg.ConversationLogic", "[getUnreadConversation] cost %d ms  unread conversations: %s, stack:%s", new Object[] { Long.valueOf(bs.aO(l)), paramString.keySet(), bs.eWi() });
+    AppMethodBeat.o(194034);
+    return paramString;
+  }
+  
+  public static Map<String, ai> xE(String paramString)
+  {
+    AppMethodBeat.i(194035);
+    HashMap localHashMap = new HashMap();
+    if (!g.agM())
+    {
+      ac.w("MicroMsg.ConversationLogic", "get Total Unread Talker, but has not set uin");
+      AppMethodBeat.o(194035);
+      return localHashMap;
+    }
+    long l = bs.Gn();
+    paramString = ((k)g.ab(k.class)).awG().aNT(paramString);
+    if (paramString != null)
+    {
+      List localList = ayp();
+      paramString.moveToFirst();
+      if (!paramString.isAfterLast())
+      {
+        ai localai = new ai();
+        localai.convertFrom(paramString);
+        if ((!localList.contains(localai.field_username)) && (!D(localai))) {
+          localHashMap.put(localai.field_username, localai);
+        }
+        for (;;)
+        {
+          paramString.moveToNext();
+          break;
+          ac.d("MicroMsg.ConversationLogic", "ignore contact %s", new Object[] { localai.field_username });
+        }
+      }
+      paramString.close();
+    }
+    ac.i("MicroMsg.ConversationLogic", "[getTotalUnreadTalker] cost %d ms  unread contact: %s, stack %s", new Object[] { Long.valueOf(bs.aO(l)), localHashMap.keySet(), bs.eWi() });
+    AppMethodBeat.o(194035);
+    return localHashMap;
+  }
+  
+  public static boolean xF(String paramString)
+  {
+    AppMethodBeat.i(194037);
+    if (!bs.isNullOrNil(paramString))
+    {
+      if (ayp().contains(paramString))
+      {
+        AppMethodBeat.o(194037);
+        return true;
+      }
+      boolean bool = D(((k)g.ab(k.class)).awB().aNt(paramString));
+      AppMethodBeat.o(194037);
+      return bool;
+    }
+    AppMethodBeat.o(194037);
+    return false;
   }
   
   public static abstract interface a
@@ -307,7 +315,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.x
  * JD-Core Version:    0.7.0.1
  */

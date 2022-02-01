@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,38 +13,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public final class m
-  extends RecyclerView.v
+  extends RecyclerView.w
 {
-  public final CheckBox fti;
-  public final ProgressBar iiP;
-  public final View nMf;
-  public final ImageView nMg;
-  public final MMPinProgressBtn nMh;
-  public final TextView nMi;
-  public final TextView nMj;
-  public final View nMk;
-  public final TextView nMl;
-  public final ImageView nMm;
-  public final View nMn;
-  public ImageView nMo;
+  public final CheckBox fwP;
+  public final ProgressBar iIW;
+  public final View opf;
+  public final ImageView opg;
+  public final MMPinProgressBtn oph;
+  public final TextView opi;
+  public final TextView opj;
+  public final View opk;
+  public final TextView opl;
+  public final ImageView opm;
+  public final View opn;
+  public ImageView opo;
   
   private m(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(123301);
-    this.nMf = paramView.findViewById(2131298738);
-    this.nMg = ((ImageView)paramView.findViewById(2131298824));
-    this.nMh = ((MMPinProgressBtn)paramView.findViewById(2131299229));
-    this.iiP = ((ProgressBar)paramView.findViewById(2131301506));
-    this.nMk = paramView.findViewById(2131306391);
-    this.nMl = ((TextView)paramView.findViewById(2131306401));
-    this.nMi = ((TextView)paramView.findViewById(2131299933));
-    this.nMj = ((TextView)paramView.findViewById(2131299934));
-    this.nMm = ((ImageView)paramView.findViewById(2131302165));
-    this.fti = ((CheckBox)paramView.findViewById(2131304502));
-    this.nMn = paramView.findViewById(2131304539);
-    this.nMo = ((ImageView)paramView.findViewById(2131299520));
-    this.nMg.setOnClickListener(new View.OnClickListener()
+    this.opf = paramView.findViewById(2131298738);
+    this.opg = ((ImageView)paramView.findViewById(2131298824));
+    this.oph = ((MMPinProgressBtn)paramView.findViewById(2131299229));
+    this.iIW = ((ProgressBar)paramView.findViewById(2131301506));
+    this.opk = paramView.findViewById(2131306391);
+    this.opl = ((TextView)paramView.findViewById(2131306401));
+    this.opi = ((TextView)paramView.findViewById(2131299933));
+    this.opj = ((TextView)paramView.findViewById(2131299934));
+    this.opm = ((ImageView)paramView.findViewById(2131302165));
+    this.fwP = ((CheckBox)paramView.findViewById(2131304502));
+    this.opn = paramView.findViewById(2131304539);
+    this.opo = ((ImageView)paramView.findViewById(2131299520));
+    this.opg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -59,7 +59,7 @@ public final class m
         AppMethodBeat.o(123299);
       }
     });
-    this.nMn.setOnClickListener(new View.OnClickListener()
+    this.opn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -71,23 +71,23 @@ public final class m
           return;
         }
         boolean bool;
-        if (!m.this.fti.isChecked()) {
+        if (!m.this.fwP.isChecked()) {
           bool = true;
         }
         while (paramAnonymousView.isEnable())
         {
-          m.this.fti.setChecked(bool);
+          m.this.fwP.setChecked(bool);
           paramAnonymousView.a(bool, paramAnonymousView, m.this);
           if (!bool)
           {
-            m.this.nMm.setVisibility(0);
+            m.this.opm.setVisibility(0);
             AppMethodBeat.o(123300);
             return;
             bool = false;
           }
           else
           {
-            m.this.nMm.setVisibility(8);
+            m.this.opm.setVisibility(8);
           }
         }
         AppMethodBeat.o(123300);
@@ -96,7 +96,7 @@ public final class m
     AppMethodBeat.o(123301);
   }
   
-  public static RecyclerView.v o(ViewGroup paramViewGroup)
+  public static RecyclerView.w o(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(123302);
     paramViewGroup = new m(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493532, paramViewGroup, false));
@@ -106,7 +106,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.m
  * JD-Core Version:    0.7.0.1
  */

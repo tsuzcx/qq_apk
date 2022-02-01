@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,9 +22,9 @@ public abstract class d
   implements View.OnClickListener
 {
   private Context context;
-  public String oiJ;
-  public List<String> qhi = new LinkedList();
-  public SparseArray<SpannableString> qhj = new SparseArray();
+  public String oMj;
+  public List<String> qPK = new LinkedList();
+  public SparseArray<SpannableString> qPL = new SparseArray();
   
   public d(Context paramContext)
   {
@@ -33,14 +33,14 @@ public abstract class d
   
   private String getItem(int paramInt)
   {
-    return (String)this.qhi.get(paramInt);
+    return (String)this.qPK.get(paramInt);
   }
   
-  protected abstract void Ve(String paramString);
+  protected abstract void Zq(String paramString);
   
   public int getCount()
   {
-    return this.qhi.size();
+    return this.qPK.size();
   }
   
   public long getItemId(int paramInt)
@@ -57,27 +57,27 @@ public abstract class d
       paramViewGroup.setOnClickListener(this);
     }
     TextView localTextView = (TextView)paramViewGroup.findViewById(2131304424);
-    String str = bt.by(getItem(paramInt), "");
+    String str = bs.bG(getItem(paramInt), "");
     int i = (int)localTextView.getTextSize();
     paramInt = str.hashCode();
-    paramView = (SpannableString)this.qhj.get(paramInt);
+    paramView = (SpannableString)this.qPL.get(paramInt);
     if (paramView != null) {}
     for (;;)
     {
       localTextView.setText(paramView);
       return paramViewGroup;
       paramView = new SpannableString(k.b(this.context, str, i));
-      i = str.indexOf(this.oiJ);
+      i = str.indexOf(this.oMj);
       if (-1 == i)
       {
-        ad.w("MicroMsg.FavoriteTagSearchAdapter", "high light %s error", new Object[] { str });
+        ac.w("MicroMsg.FavoriteTagSearchAdapter", "high light %s error", new Object[] { str });
       }
       else
       {
-        int j = this.oiJ.length() + i;
+        int j = this.oMj.length() + i;
         paramView.setSpan(new ForegroundColorSpan(this.context.getResources().getColor(2131101171)), i, j, 33);
         paramView.setSpan(new StyleSpan(1), i, j, 33);
-        this.qhj.put(paramInt, paramView);
+        this.qPL.put(paramInt, paramView);
       }
     }
   }
@@ -85,8 +85,8 @@ public abstract class d
   public void onClick(View paramView)
   {
     paramView = ((TextView)paramView.findViewById(2131304424)).getText().toString();
-    ad.d("MicroMsg.FavoriteTagSearchAdapter", "select search tag %s", new Object[] { paramView });
-    Ve(paramView);
+    ac.d("MicroMsg.FavoriteTagSearchAdapter", "select search tag %s", new Object[] { paramView });
+    Zq(paramView);
   }
 }
 

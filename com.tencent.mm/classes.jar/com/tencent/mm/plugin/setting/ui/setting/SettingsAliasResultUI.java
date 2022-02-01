@@ -14,18 +14,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingsAliasResultUI
   extends MMActivity
 {
-  private String eKn;
-  private TextView hJe;
-  private TextView wgo;
-  private Button wgp;
-  private ImageView wgq;
-  private boolean wgr;
+  private String eNf;
+  private TextView ijE;
+  private TextView xrE;
+  private Button xrF;
+  private ImageView xrG;
+  private boolean xrH;
   
   public int getLayoutId()
   {
@@ -36,10 +36,10 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74112);
     setMMTitle(2131761319);
-    this.hJe = ((TextView)findViewById(2131299008));
-    this.wgo = ((TextView)findViewById(2131296639));
-    this.wgp = ((Button)findViewById(2131304612));
-    this.wgq = ((ImageView)findViewById(2131303000));
+    this.ijE = ((TextView)findViewById(2131299008));
+    this.xrE = ((TextView)findViewById(2131296639));
+    this.xrF = ((Button)findViewById(2131304612));
+    this.xrG = ((ImageView)findViewById(2131303000));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -50,15 +50,15 @@ public class SettingsAliasResultUI
         return true;
       }
     });
-    this.wgo.setText(this.eKn);
-    if (!this.wgr)
+    this.xrE.setText(this.eNf);
+    if (!this.xrH)
     {
-      this.wgp.setVisibility(0);
-      this.hJe.setText(getString(2131761324));
+      this.xrF.setVisibility(0);
+      this.ijE.setText(getString(2131761324));
     }
     for (;;)
     {
-      this.wgp.setOnClickListener(new View.OnClickListener()
+      this.xrF.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -71,8 +71,8 @@ public class SettingsAliasResultUI
       });
       AppMethodBeat.o(74112);
       return;
-      this.wgp.setVisibility(8);
-      this.hJe.setText(getString(2131761325));
+      this.xrF.setVisibility(8);
+      this.ijE.setText(getString(2131761325));
     }
   }
   
@@ -90,8 +90,8 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74109);
     super.onCreate(paramBundle);
-    this.eKn = ((String)g.afB().afk().get(42, null));
-    this.wgr = getIntent().getBooleanExtra("has_pwd", true);
+    this.eNf = ((String)g.agR().agA().get(42, null));
+    this.xrH = getIntent().getBooleanExtra("has_pwd", true);
     initView();
     AppMethodBeat.o(74109);
   }
@@ -118,7 +118,7 @@ public class SettingsAliasResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAliasResultUI
  * JD-Core Version:    0.7.0.1
  */

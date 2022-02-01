@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.protocal.protobuf.cct;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.chv;
+import com.tencent.mm.protocal.protobuf.chw;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class h
   extends n
@@ -20,31 +20,31 @@ public final class h
 {
   private g callback;
   private b rr;
-  public ccs sCU;
-  private cct sCV;
+  public chv tKC;
+  private chw tKD;
   
   public h(int paramInt, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(25472);
     this.rr = null;
-    this.sCU = null;
-    this.sCV = null;
+    this.tKC = null;
+    this.tKD = null;
     this.callback = null;
     b.a locala = new b.a();
-    locala.gUU = new ccs();
-    locala.gUV = new cct();
+    locala.hvt = new chv();
+    locala.hvu = new chw();
     locala.funcId = 824;
     locala.uri = "/cgi-bin/micromsg-bin/pstnheartbeat";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     long l = System.currentTimeMillis();
-    this.sCU = ((ccs)this.rr.gUS.gUX);
-    this.sCU.DdZ = paramInt;
-    this.sCU.Dea = paramLong1;
-    this.sCU.DYX = paramLong2;
-    this.sCU.DYU = l;
-    ad.d("MicroMsg.NetSceneIPCallHeartBeat", "heartbeat, roomId: %d, roomKey: %d, callSeq: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l) });
+    this.tKC = ((chv)this.rr.hvr.hvw);
+    this.tKC.Exf = paramInt;
+    this.tKC.Exg = paramLong1;
+    this.tKC.FvT = paramLong2;
+    this.tKC.FvQ = l;
+    ac.d("MicroMsg.NetSceneIPCallHeartBeat", "heartbeat, roomId: %d, roomKey: %d, callSeq: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(l) });
     AppMethodBeat.o(25472);
   }
   
@@ -65,8 +65,8 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25474);
-    ad.i("MicroMsg.NetSceneIPCallHeartBeat", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.sCV = ((cct)((b)paramq).gUT.gUX);
+    ac.i("MicroMsg.NetSceneIPCallHeartBeat", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.tKD = ((chw)((b)paramq).hvs.hvw);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

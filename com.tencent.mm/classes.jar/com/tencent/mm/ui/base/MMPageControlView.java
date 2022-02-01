@@ -12,10 +12,10 @@ import java.util.Map;
 public class MMPageControlView
   extends LinearLayout
 {
-  protected int FYA;
+  protected int Hyp;
   protected Context context;
   protected int count;
-  protected ImageView djK;
+  protected ImageView dhf;
   protected Map<Integer, ImageView> map;
   
   public MMPageControlView(Context paramContext)
@@ -23,7 +23,7 @@ public class MMPageControlView
     super(paramContext);
     AppMethodBeat.i(142054);
     this.map = new HashMap();
-    this.FYA = 2131494916;
+    this.Hyp = 2131494916;
     this.context = paramContext;
     AppMethodBeat.o(142054);
   }
@@ -33,12 +33,12 @@ public class MMPageControlView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142055);
     this.map = new HashMap();
-    this.FYA = 2131494916;
+    this.Hyp = 2131494916;
     this.context = paramContext;
     AppMethodBeat.o(142055);
   }
   
-  protected void MK(int paramInt)
+  protected void ON(int paramInt)
   {
     AppMethodBeat.i(142056);
     removeAllViews();
@@ -51,58 +51,58 @@ public class MMPageControlView
     int i = 0;
     if (i < j)
     {
-      this.djK = null;
+      this.dhf = null;
       if (paramInt == i)
       {
         if (this.map.size() > i) {
-          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dhf = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.djK == null)
+        if (this.dhf == null)
         {
-          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.djK);
+          this.dhf = ((ImageView)View.inflate(this.context, this.Hyp, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.dhf);
         }
-        this.djK.setSelected(true);
+        this.dhf.setSelected(true);
       }
       for (;;)
       {
         if (i == 0) {
-          this.djK.setPadding(0, 0, 0, 0);
+          this.dhf.setPadding(0, 0, 0, 0);
         }
-        addView(this.djK);
+        addView(this.dhf);
         i += 1;
         break;
         if (this.map.size() > i) {
-          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.dhf = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.djK == null)
+        if (this.dhf == null)
         {
-          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
-          this.map.put(Integer.valueOf(i), this.djK);
+          this.dhf = ((ImageView)View.inflate(this.context, this.Hyp, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.dhf);
         }
-        this.djK.setSelected(false);
+        this.dhf.setSelected(false);
       }
     }
     AppMethodBeat.o(142056);
   }
   
-  public final void jl(int paramInt1, int paramInt2)
+  public final void jy(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142052);
     this.count = paramInt1;
-    MK(paramInt2);
+    ON(paramInt2);
     AppMethodBeat.o(142052);
   }
   
   public void setIndicatorLayoutRes(int paramInt)
   {
-    this.FYA = paramInt;
+    this.Hyp = paramInt;
   }
   
   public void setPage(int paramInt)
   {
     AppMethodBeat.i(142053);
-    MK(paramInt);
+    ON(paramInt);
     AppMethodBeat.o(142053);
   }
 }

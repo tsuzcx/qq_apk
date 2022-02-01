@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wallet.pay.a;
 
 public final class d
 {
-  public String tfH;
-  public String tfI;
-  public String zPA;
-  public String zPB;
-  public int zPz;
+  public int BhT;
+  public String BhU;
+  public String BhV;
+  public String unW;
+  public String unX;
 }
 
 

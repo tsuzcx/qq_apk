@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.modelstat.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.List;
 
 public final class c
@@ -18,71 +18,71 @@ public final class c
   implements g
 {
   private Context context;
-  float fjD;
-  float fjE;
-  private b.a fjJ;
-  d gXu;
-  int wlD;
-  int wlE;
-  boolean wlF;
-  boolean wlG;
-  b wlH;
-  a wlI;
-  private int wlJ;
-  ap wlK;
-  Runnable wlL;
+  float fmX;
+  float fmY;
+  private b.a fnd;
+  d hxT;
+  int xwT;
+  int xwU;
+  boolean xwV;
+  boolean xwW;
+  b xwX;
+  a xwY;
+  private int xwZ;
+  ao xxa;
+  Runnable xxb;
   
   public c(Context paramContext, l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28094);
-    this.fjD = -85.0F;
-    this.fjE = -1000.0F;
-    this.wlD = 1;
-    this.wlE = -1000;
-    this.wlF = false;
-    this.wlG = true;
-    this.wlJ = 0;
-    this.wlK = new ap();
-    this.wlL = new Runnable()
+    this.fmX = -85.0F;
+    this.fmY = -1000.0F;
+    this.xwT = 1;
+    this.xwU = -1000;
+    this.xwV = false;
+    this.xwW = true;
+    this.xwZ = 0;
+    this.xxa = new ao();
+    this.xxb = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28092);
-        if ((c.this.wlK != null) && (c.this.wlL != null)) {
-          c.this.wlK.removeCallbacks(c.this.wlL);
+        if ((c.this.xxa != null) && (c.this.xxb != null)) {
+          c.this.xxa.removeCallbacks(c.this.xxb);
         }
-        if (c.this.wlI != null) {
-          az.aeS().a(c.this.wlI);
+        if (c.this.xwY != null) {
+          az.agi().a(c.this.xwY);
         }
-        if ((c.this.wlH != null) && (c.this.wlH.dCi != null)) {
-          c.this.wlI = new a(c.this.wlH.dCi);
+        if ((c.this.xwX != null) && (c.this.xwX.dzW != null)) {
+          c.this.xwY = new a(c.this.xwX.dzW);
         }
-        if (c.this.wlI != null) {
-          az.aeS().a(c.this.wlI, 0);
+        if (c.this.xwY != null) {
+          az.agi().a(c.this.xwY, 0);
         }
         AppMethodBeat.o(28092);
       }
     };
-    this.fjJ = new b.a()
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(28093);
-        e locale = e.aBE();
+        e locale = e.aIu();
         boolean bool1;
         if (paramAnonymousInt == 0)
         {
           bool1 = false;
-          if (c.this.gXu != null) {
+          if (c.this.hxT != null) {
             break label112;
           }
         }
         label112:
-        for (boolean bool2 = false;; bool2 = c.this.gXu.hem)
+        for (boolean bool2 = false;; bool2 = c.this.hxT.hEP)
         {
           locale.a(2002, bool1, bool2, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-          ad.i("MicroMsg.ShakeFriendService", "getlocaion lat %f lng %f hasGetLbsInfo " + c.this.wlF, new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+          ac.i("MicroMsg.ShakeFriendService", "getlocaion lat %f lng %f hasGetLbsInfo " + c.this.xwV, new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
           if (paramAnonymousBoolean) {
             break label127;
           }
@@ -92,14 +92,14 @@ public final class c
           break;
         }
         label127:
-        if ((c.this.wlG) && (c.this.fjD == -85.0F) && (c.this.fjE == -1000.0F))
+        if ((c.this.xwW) && (c.this.fmX == -85.0F) && (c.this.fmY == -1000.0F))
         {
-          c.this.wlG = false;
-          c.this.fjD = paramAnonymousFloat2;
-          c.this.fjE = paramAnonymousFloat1;
-          c.this.wlE = ((int)paramAnonymousDouble2);
-          c.this.wlD = paramAnonymousInt;
-          c.this.wlF = true;
+          c.this.xwW = false;
+          c.this.fmX = paramAnonymousFloat2;
+          c.this.fmY = paramAnonymousFloat1;
+          c.this.xwU = ((int)paramAnonymousDouble2);
+          c.this.xwT = paramAnonymousInt;
+          c.this.xwV = true;
         }
         AppMethodBeat.o(28093);
         return false;
@@ -109,24 +109,24 @@ public final class c
     AppMethodBeat.o(28094);
   }
   
-  private void doE()
+  private void dCO()
   {
     AppMethodBeat.i(28097);
-    this.gXu = d.axT();
-    this.wlG = true;
-    this.gXu.a(this.fjJ, true);
+    this.hxT = d.aEL();
+    this.xwW = true;
+    this.hxT.a(this.fnd, true);
     AppMethodBeat.o(28097);
   }
   
-  public final void doF()
+  public final void dCP()
   {
     AppMethodBeat.i(28101);
-    super.doF();
-    az.aeS().b(161, this);
-    az.aeS().b(162, this);
-    az.aeS().b(1251, this);
-    if (this.gXu != null) {
-      this.gXu.c(this.fjJ);
+    super.dCP();
+    az.agi().b(161, this);
+    az.agi().b(162, this);
+    az.agi().b(1251, this);
+    if (this.hxT != null) {
+      this.hxT.c(this.fnd);
     }
     AppMethodBeat.o(28101);
   }
@@ -134,10 +134,10 @@ public final class c
   public final void init()
   {
     AppMethodBeat.i(28095);
-    az.aeS().a(161, this);
-    az.aeS().a(162, this);
-    az.aeS().a(1251, this);
-    doE();
+    az.agi().a(161, this);
+    az.agi().a(162, this);
+    az.agi().a(1251, this);
+    dCO();
     AppMethodBeat.o(28095);
   }
   
@@ -152,51 +152,51 @@ public final class c
       AppMethodBeat.o(28102);
       return;
       paramString = (b)paramn;
-      if ((paramString.doD() == 3) || (paramString.doD() == 4))
+      if ((paramString.dCN() == 3) || (paramString.dCN() == 4))
       {
-        ad.v("MicroMsg.ShakeFriendService", "onSceneEnd ignore location report response");
+        ac.v("MicroMsg.ShakeFriendService", "onSceneEnd ignore location report response");
         AppMethodBeat.o(28102);
         return;
       }
       if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
       {
-        ad.e("MicroMsg.ShakeFriendService", "onSceneEnd reprot failed");
-        this.wlU.c(null, 3L);
+        ac.e("MicroMsg.ShakeFriendService", "onSceneEnd reprot failed");
+        this.xxk.d(null, 3L);
         AppMethodBeat.o(28102);
         return;
       }
-      this.wlK.postDelayed(this.wlL, 3000L);
+      this.xxa.postDelayed(this.xxb, 3000L);
       AppMethodBeat.o(28102);
       return;
       paramString = (a)paramn;
       if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
       {
-        this.wlU.c(null, 3L);
+        this.xxk.d(null, 3L);
         AppMethodBeat.o(28102);
         return;
       }
-      paramString = paramString.wlB;
+      paramString = paramString.xwR;
       if (paramString.size() == 0)
       {
-        ad.i("MicroMsg.ShakeFriendService", "empty shake get list");
-        this.wlU.c(null, 3L);
+        ac.i("MicroMsg.ShakeFriendService", "empty shake get list");
+        this.xxk.d(null, 3L);
         AppMethodBeat.o(28102);
         return;
       }
-      this.wlU.c(paramString, 1L);
+      this.xxk.d(paramString, 1L);
       AppMethodBeat.o(28102);
       return;
       paramString = (com.tencent.mm.plugin.shake.c.a.b)paramn;
       if ((paramInt2 != 0) || (paramInt1 != 0))
       {
-        if (this.wlU != null)
+        if (this.xxk != null)
         {
-          this.wlU.a(1251, null, 2L);
+          this.xxk.a(1251, null, 2L);
           AppMethodBeat.o(28102);
         }
       }
-      else if (this.wlU != null) {
-        this.wlU.a(1251, paramString.wmn, 1L);
+      else if (this.xxk != null) {
+        this.xxk.a(1251, paramString.xxD, 1L);
       }
     }
   }
@@ -204,8 +204,8 @@ public final class c
   public final void pause()
   {
     AppMethodBeat.i(28099);
-    if (this.gXu != null) {
-      this.gXu.c(this.fjJ);
+    if (this.hxT != null) {
+      this.hxT.c(this.fnd);
     }
     AppMethodBeat.o(28099);
   }
@@ -213,14 +213,14 @@ public final class c
   public final void reset()
   {
     AppMethodBeat.i(28098);
-    if (this.wlH != null) {
-      az.aeS().a(this.wlH);
+    if (this.xwX != null) {
+      az.agi().a(this.xwX);
     }
-    if (this.wlI != null) {
-      az.aeS().a(this.wlI);
+    if (this.xwY != null) {
+      az.agi().a(this.xwY);
     }
-    if ((this.wlK != null) && (this.wlL != null)) {
-      this.wlK.removeCallbacks(this.wlL);
+    if ((this.xxa != null) && (this.xxb != null)) {
+      this.xxa.removeCallbacks(this.xxb);
     }
     AppMethodBeat.o(28098);
   }
@@ -228,8 +228,8 @@ public final class c
   public final void resume()
   {
     AppMethodBeat.i(28100);
-    if (this.gXu != null) {
-      this.gXu.a(this.fjJ, true);
+    if (this.hxT != null) {
+      this.hxT.a(this.fnd, true);
     }
     AppMethodBeat.o(28100);
   }
@@ -239,21 +239,21 @@ public final class c
     AppMethodBeat.i(28096);
     reset();
     init();
-    this.wlH = new b(this.fjE, this.fjD, this.wlE, this.wlD, "", "");
-    az.aeS().a(this.wlH, 0);
-    if (!this.wlF)
+    this.xwX = new b(this.fmY, this.fmX, this.xwU, this.xwT, "", "");
+    az.agi().a(this.xwX, 0);
+    if (!this.xwV)
     {
-      if (this.gXu == null) {
-        doE();
+      if (this.hxT == null) {
+        dCO();
       }
-      this.gXu.b(this.fjJ, true);
+      this.hxT.b(this.fnd, true);
     }
     AppMethodBeat.o(28096);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.c
  * JD-Core Version:    0.7.0.1
  */

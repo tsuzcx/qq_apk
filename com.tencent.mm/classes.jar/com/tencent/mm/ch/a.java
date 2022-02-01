@@ -1,55 +1,81 @@
 package com.tencent.mm.ch;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.TextPaint;
-import android.text.style.ReplacementSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public final class a
-  extends ReplacementSpan
+public final class a<T>
+  implements b.a<T>
 {
-  private int Fbb;
+  private final Object GzG;
+  private HashSet<Object<T>> jys;
+  private final String mName;
+  private T mValue;
   
-  public a(int paramInt)
+  private a(String paramString)
   {
-    this.Fbb = paramInt;
+    AppMethodBeat.i(133213);
+    this.GzG = new Object();
+    this.mName = paramString;
+    this.jys = new HashSet();
+    AppMethodBeat.o(133213);
   }
   
-  private TextPaint a(Paint paramPaint)
+  a(String paramString, T paramT)
   {
-    AppMethodBeat.i(152792);
-    paramPaint = new TextPaint(paramPaint);
-    paramPaint.setTextSize(this.Fbb);
-    AppMethodBeat.o(152792);
-    return paramPaint;
+    this(paramString);
+    this.mValue = paramT;
   }
   
-  public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public final T get()
   {
-    AppMethodBeat.i(152791);
-    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
-    paramPaint = a(paramPaint);
-    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
-    paramCharSequence = paramCharSequence.toString();
-    paramInt1 = localFontMetricsInt.descent;
-    paramCanvas.drawText(paramCharSequence, paramFloat, paramInt4 - ((localFontMetricsInt.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2 - (paramInt5 + paramInt3) / 2), paramPaint);
-    AppMethodBeat.o(152791);
+    return this.mValue;
   }
   
-  public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public final String name()
   {
-    AppMethodBeat.i(152790);
-    paramCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
-    paramInt1 = (int)a(paramPaint).measureText(paramCharSequence.toString());
-    AppMethodBeat.o(152790);
-    return paramInt1;
+    return this.mName;
+  }
+  
+  final void set(T arg1)
+  {
+    AppMethodBeat.i(133214);
+    Object localObject1 = this.mValue;
+    int i;
+    if ((??? == localObject1) || ((??? != null) && (???.equals(localObject1)))) {
+      i = 1;
+    }
+    while (i == 0)
+    {
+      this.mValue = ???;
+      synchronized (this.GzG)
+      {
+        localObject1 = this.jys.iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label87;
+        }
+        ((Iterator)localObject1).next();
+      }
+      i = 0;
+      continue;
+      label87:
+      AppMethodBeat.o(133214);
+      return;
+    }
+    AppMethodBeat.o(133214);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(133215);
+    String str = "Status: " + this.mName;
+    AppMethodBeat.o(133215);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ch.a
  * JD-Core Version:    0.7.0.1
  */

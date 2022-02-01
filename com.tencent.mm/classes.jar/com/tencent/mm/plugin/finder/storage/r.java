@@ -1,46 +1,36 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dzj;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.h;
+import android.support.v7.widget.RecyclerView.i;
+import android.support.v7.widget.RecyclerView.n;
+import android.support.v7.widget.RecyclerView.w;
+import android.view.ViewGroup;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.recyclerview.c;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "", "viewItemPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;)V", "feedItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFeedItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedItem", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "lbsItem", "Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "getLbsItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;", "setLbsItem", "(Lcom/tencent/mm/plugin/finder/storage/FinderLbsItem;)V", "localItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "getLocalItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "setLocalItem", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;)V", "viewId", "", "getViewId", "()J", "setViewId", "(J)V", "getViewItemPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "viewType", "", "getViewType", "()I", "setViewType", "(I)V", "isSame", "", "otherItem", "Companion", "plugin-finder_release"})
-public final class r
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "", "getIfReachBottom", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "viewParent", "Landroid/view/ViewGroup;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+public abstract interface r
 {
-  public static final int KXf = 1;
-  public static final int KXg = 2;
-  public static final int KXh = 3;
-  public static final a KXi;
-  public p KXb;
-  public FinderItem KXc;
-  public s KXd;
-  public final dzj KXe;
-  public int nBH;
-  public long trO;
+  public abstract c A(d.g.a.b<? super Integer, ? extends com.tencent.mm.view.recyclerview.b<?>> paramb);
   
-  static
-  {
-    AppMethodBeat.i(199022);
-    KXi = new a((byte)0);
-    KXf = 1;
-    KXg = 2;
-    KXh = 3;
-    AppMethodBeat.o(199022);
-  }
+  public abstract c cuS();
   
-  public r(dzj paramdzj)
-  {
-    AppMethodBeat.i(199021);
-    this.KXe = paramdzj;
-    AppMethodBeat.o(199021);
-  }
+  public abstract RecyclerView.n e(MMActivity paramMMActivity);
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/FinderMixItem$Companion;", "", "()V", "VIEW_ITEM_FEED", "", "getVIEW_ITEM_FEED", "()I", "VIEW_ITEM_LBS", "getVIEW_ITEM_LBS", "VIEW_ITEM_LOCAL", "getVIEW_ITEM_LOCAL", "plugin-finder_release"})
-  public static final class a {}
+  public abstract RecyclerView.i eL(Context paramContext);
+  
+  public abstract RecyclerView.h getItemDecoration();
+  
+  public abstract RecyclerView.w q(ViewGroup paramViewGroup);
+  
+  public abstract boolean x(RecyclerView paramRecyclerView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.r
  * JD-Core Version:    0.7.0.1
  */

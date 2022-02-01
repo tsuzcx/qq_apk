@@ -10,12 +10,12 @@ import com.tencent.mm.pluginsdk.m;
 public final class Plugin
   implements d
 {
-  private a uKE;
+  private a vTv;
   
   public Plugin()
   {
     AppMethodBeat.i(122626);
-    this.uKE = new a();
+    this.vTv = new a();
     AppMethodBeat.o(122626);
   }
   
@@ -37,12 +37,12 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.uKE;
+    return this.vTv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.Plugin
  * JD-Core Version:    0.7.0.1
  */

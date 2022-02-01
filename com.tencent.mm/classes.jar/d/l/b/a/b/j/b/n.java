@@ -29,30 +29,30 @@ import java.util.Set;
 public final class n
   implements at
 {
-  public static final a JSj;
-  private final aj JDL;
-  public final Set<ab> JSh;
-  private final f JSi;
-  private final y Jon;
+  public static final a LFC;
+  public final Set<ab> LFA;
+  private final f LFB;
+  private final y LbH;
+  private final aj Lre;
   private final long value;
   
   static
   {
     AppMethodBeat.i(60083);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(n.class), "supertypes", "getSupertypes()Ljava/util/List;")) };
-    JSj = new a((byte)0);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(n.class), "supertypes", "getSupertypes()Ljava/util/List;")) };
+    LFC = new a((byte)0);
     AppMethodBeat.o(60083);
   }
   
   private n(long paramLong, y paramy, Set<? extends ab> paramSet)
   {
     AppMethodBeat.i(60088);
-    g.a locala = d.l.b.a.b.b.a.g.JrB;
-    this.JDL = ac.a(g.a.fzI(), this);
-    this.JSi = d.g.E((a)new b(this));
+    g.a locala = d.l.b.a.b.b.a.g.LeU;
+    this.Lre = ac.a(g.a.fSm(), this);
+    this.LFB = d.g.K((a)new b(this));
     this.value = paramLong;
-    this.Jon = paramy;
-    this.JSh = paramSet;
+    this.LbH = paramy;
+    this.LFA = paramSet;
     AppMethodBeat.o(60088);
   }
   
@@ -60,12 +60,12 @@ public final class n
   {
     AppMethodBeat.i(60087);
     d.g.b.k.h(paramat, "constructor");
-    Object localObject = (Iterable)this.JSh;
+    Object localObject = (Iterable)this.LFA;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (d.g.b.k.g(((ab)((Iterator)localObject).next()).fIW(), paramat))
+        if (d.g.b.k.g(((ab)((Iterator)localObject).next()).gbz(), paramat))
         {
           AppMethodBeat.o(60087);
           return true;
@@ -76,41 +76,41 @@ public final class n
     return false;
   }
   
-  public final h fxM()
+  public final h fQq()
   {
     return null;
   }
   
-  public final boolean fxO()
+  public final boolean fQs()
   {
     return false;
   }
   
-  public final Collection<ab> fzP()
-  {
-    AppMethodBeat.i(60084);
-    Collection localCollection = (Collection)this.JSi.getValue();
-    AppMethodBeat.o(60084);
-    return localCollection;
-  }
-  
-  public final d.l.b.a.b.a.g fza()
+  public final d.l.b.a.b.a.g fRE()
   {
     AppMethodBeat.i(60085);
-    d.l.b.a.b.a.g localg = this.Jon.fza();
+    d.l.b.a.b.a.g localg = this.LbH.fRE();
     AppMethodBeat.o(60085);
     return localg;
   }
   
+  public final Collection<ab> fSt()
+  {
+    AppMethodBeat.i(60084);
+    Collection localCollection = (Collection)this.LFB.getValue();
+    AppMethodBeat.o(60084);
+    return localCollection;
+  }
+  
   public final List<as> getParameters()
   {
-    return (List)v.Jgl;
+    return (List)v.KTF;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60086);
-    String str = "IntegerLiteralType" + new StringBuilder("[").append(j.a((Iterable)this.JSh, (CharSequence)",", null, null, 0, null, (b)n.c.JSo, 30)).append(']').toString();
+    String str = "IntegerLiteralType" + new StringBuilder("[").append(j.a((Iterable)this.LFA, (CharSequence)",", null, null, 0, null, (b)c.LFH, 30)).append(']').toString();
     AppMethodBeat.o(60086);
     return str;
   }
@@ -120,7 +120,7 @@ public final class n
     private static aj a(n paramn, aj paramaj)
     {
       AppMethodBeat.i(60079);
-      if (paramn.JSh.contains(paramaj))
+      if (paramn.LFA.contains(paramaj))
       {
         AppMethodBeat.o(60079);
         return paramaj;
@@ -129,11 +129,11 @@ public final class n
       return null;
     }
     
-    public static aj v(Collection<? extends aj> paramCollection)
+    public static aj w(Collection<? extends aj> paramCollection)
     {
       AppMethodBeat.i(60078);
       d.g.b.k.h(paramCollection, "types");
-      n.a.a locala = n.a.a.JSl;
+      a locala = a.LFE;
       if (paramCollection.isEmpty())
       {
         AppMethodBeat.o(60078);
@@ -151,32 +151,32 @@ public final class n
       {
         Object localObject1 = (aj)localIterator.next();
         paramCollection = (aj)paramCollection;
-        Object localObject2 = n.JSj;
+        Object localObject2 = n.LFC;
         if ((paramCollection == null) || (localObject1 == null))
         {
           paramCollection = null;
         }
         else
         {
-          localObject2 = paramCollection.fIW();
-          Object localObject3 = ((aj)localObject1).fIW();
+          localObject2 = paramCollection.gbz();
+          Object localObject3 = ((aj)localObject1).gbz();
           if (((localObject2 instanceof n)) && ((localObject3 instanceof n)))
           {
             localObject2 = (n)localObject2;
             paramCollection = (n)localObject3;
             Object localObject4;
-            switch (o.ciE[locala.ordinal()])
+            switch (o.cfA[locala.ordinal()])
             {
             default: 
               paramCollection = new m();
               AppMethodBeat.o(60078);
               throw paramCollection;
             case 1: 
-              localObject1 = (Iterable)((n)localObject2).JSh;
-              paramCollection = (Iterable)paramCollection.JSh;
+              localObject1 = (Iterable)((n)localObject2).LFA;
+              paramCollection = (Iterable)paramCollection.LFA;
               d.g.b.k.h(localObject1, "$this$intersect");
               d.g.b.k.h(paramCollection, "other");
-              localObject1 = j.r((Iterable)localObject1);
+              localObject1 = j.q((Iterable)localObject1);
               localObject3 = (Collection)localObject1;
               d.g.b.k.h(localObject3, "$this$retainAll");
               d.g.b.k.h(paramCollection, "elements");
@@ -187,15 +187,15 @@ public final class n
               {
                 paramCollection = (Collection)paramCollection;
                 label296:
-                aa.eL(localObject3).retainAll(paramCollection);
+                aa.eO(localObject3).retainAll(paramCollection);
               }
               break;
             }
-            for (paramCollection = (Collection<? extends aj>)localObject1;; paramCollection = j.a((Iterable)((n)localObject2).JSh, (Iterable)paramCollection.JSh))
+            for (paramCollection = (Collection<? extends aj>)localObject1;; paramCollection = j.a((Iterable)((n)localObject2).LFA, (Iterable)paramCollection.LFA))
             {
               paramCollection = new n(n.c((n)localObject2), n.d((n)localObject2), paramCollection, (byte)0);
-              localObject1 = d.l.b.a.b.b.a.g.JrB;
-              paramCollection = ac.a(g.a.fzI(), paramCollection);
+              localObject1 = d.l.b.a.b.b.a.g.LeU;
+              paramCollection = ac.a(g.a.fSm(), paramCollection);
               break;
               if ((paramCollection instanceof Collection))
               {
@@ -216,7 +216,7 @@ public final class n
                 }
               }
               label426:
-              paramCollection = (Collection)j.l(paramCollection);
+              paramCollection = (Collection)j.k(paramCollection);
               break label296;
             }
           }
@@ -233,6 +233,22 @@ public final class n
       AppMethodBeat.o(60078);
       return paramCollection;
     }
+    
+    static enum a
+    {
+      static
+      {
+        AppMethodBeat.i(60074);
+        a locala1 = new a("COMMON_SUPER_TYPE", 0);
+        LFD = locala1;
+        a locala2 = new a("INTERSECTION_TYPE", 1);
+        LFE = locala2;
+        LFF = new a[] { locala1, locala2 };
+        AppMethodBeat.o(60074);
+      }
+      
+      private a() {}
+    }
   }
   
   static final class b
@@ -244,10 +260,29 @@ public final class n
       super();
     }
   }
+  
+  static final class c
+    extends l
+    implements b<ab, String>
+  {
+    public static final c LFH;
+    
+    static
+    {
+      AppMethodBeat.i(60082);
+      LFH = new c();
+      AppMethodBeat.o(60082);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.n
  * JD-Core Version:    0.7.0.1
  */

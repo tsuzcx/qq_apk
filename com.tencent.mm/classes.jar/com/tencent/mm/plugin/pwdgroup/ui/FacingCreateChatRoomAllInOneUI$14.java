@@ -12,14 +12,14 @@ final class FacingCreateChatRoomAllInOneUI$14
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(27635);
-    FacingCreateChatRoomAllInOneUI.f(this.uIU);
-    FacingCreateChatRoomAllInOneUI.d(this.uIU);
+    FacingCreateChatRoomAllInOneUI.f(this.vRL);
+    FacingCreateChatRoomAllInOneUI.d(this.vRL);
     AppMethodBeat.o(27635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.14
  * JD-Core Version:    0.7.0.1
  */

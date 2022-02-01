@@ -8,12 +8,12 @@ import com.tencent.mm.ui.MMActivity;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinishing", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "libmmui_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinishing", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "libmmui_release"})
 public abstract class UIComponent
   extends SimpleUIComponent
 {
-  private boolean LCZ;
-  public View jGG;
+  private boolean Isa;
+  public View khe;
   
   public UIComponent(Fragment paramFragment)
   {
@@ -25,29 +25,23 @@ public abstract class UIComponent
     super(paramMMActivity);
   }
   
-  public void ba(Bundle paramBundle) {}
+  public void Z(Bundle paramBundle) {}
   
-  public void be(Bundle paramBundle) {}
+  public void aa(Bundle paramBundle) {}
   
-  public void fTo()
+  public void cFW()
   {
-    this.LCZ = true;
+    this.Isa = false;
   }
   
-  public void fXn()
+  public void cGh() {}
+  
+  public void cvj()
   {
-    this.LCZ = false;
+    this.Isa = true;
   }
   
-  public void fXy() {}
-  
-  public final void gT(View paramView)
-  {
-    k.h(paramView, "<set-?>");
-    this.jGG = paramView;
-  }
-  
-  public final boolean gak()
+  public final boolean fqL()
   {
     return this.fragment != null;
   }
@@ -59,11 +53,17 @@ public abstract class UIComponent
   
   public final View getRootView()
   {
-    View localView = this.jGG;
+    View localView = this.khe;
     if (localView == null) {
-      k.aPZ("rootView");
+      k.aVY("rootView");
     }
     return localView;
+  }
+  
+  public final void gz(View paramView)
+  {
+    k.h(paramView, "<set-?>");
+    this.khe = paramView;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -93,7 +93,7 @@ public abstract class UIComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponent
  * JD-Core Version:    0.7.0.1
  */

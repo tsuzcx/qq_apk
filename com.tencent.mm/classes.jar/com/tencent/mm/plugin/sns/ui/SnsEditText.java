@@ -7,37 +7,37 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.d.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.sns.c.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class SnsEditText
   extends MMEditText
 {
   private Context context;
-  private int lAM;
-  private boolean sOU;
-  private ClipboardManager xyK;
-  private boolean xyL;
-  private int xyM;
-  private int xyN;
-  private int xyO;
+  private int mcI;
+  private boolean tXh;
   private float y;
+  private int yLA;
+  private int yLB;
+  private int yLC;
+  private ClipboardManager yLy;
+  private boolean yLz;
   
   public SnsEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98694);
-    this.xyK = null;
-    this.lAM = 0;
-    this.xyL = false;
-    this.xyM = 0;
-    this.xyN = 0;
-    this.sOU = false;
-    this.xyO = 10;
+    this.yLy = null;
+    this.mcI = 0;
+    this.yLz = false;
+    this.yLA = 0;
+    this.yLB = 0;
+    this.tXh = false;
+    this.yLC = 10;
     this.context = paramContext;
-    this.xyK = ((ClipboardManager)aj.getContext().getSystemService("clipboard"));
+    this.yLy = ((ClipboardManager)ai.getContext().getSystemService("clipboard"));
     addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
@@ -58,13 +58,13 @@ public class SnsEditText
         {
           if (SnsEditText.a(SnsEditText.this))
           {
-            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.wzN))
+            if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.xMh))
             {
               SnsEditText.a(SnsEditText.this, 0);
               AppMethodBeat.o(98692);
               return;
             }
-            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.wzN) {
+            if (paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this) > a.xMh) {
               SnsEditText.a(SnsEditText.this, paramAnonymousCharSequence.length() - SnsEditText.b(SnsEditText.this));
             }
           }
@@ -73,7 +73,7 @@ public class SnsEditText
         }
         catch (Exception paramAnonymousCharSequence)
         {
-          ad.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SnsEditText", paramAnonymousCharSequence, "", new Object[0]);
           AppMethodBeat.o(98692);
         }
       }
@@ -83,14 +83,14 @@ public class SnsEditText
   
   public int getPasterLen()
   {
-    return this.lAM;
+    return this.mcI;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
     AppMethodBeat.i(98695);
     if (paramInt == 16908322) {
-      this.xyL = true;
+      this.yLz = true;
     }
     boolean bool = super.onTextContextMenuItem(paramInt);
     AppMethodBeat.o(98695);
@@ -101,8 +101,8 @@ public class SnsEditText
   {
     AppMethodBeat.i(98696);
     if (paramMotionEvent.getAction() == 2) {
-      if (Math.abs(this.y - paramMotionEvent.getY()) > this.xyO) {
-        this.sOU = true;
+      if (Math.abs(this.y - paramMotionEvent.getY()) > this.yLC) {
+        this.tXh = true;
       }
     }
     for (;;)
@@ -113,22 +113,22 @@ public class SnsEditText
       return bool;
       if (paramMotionEvent.getAction() == 1)
       {
-        if (this.sOU)
+        if (this.tXh)
         {
-          this.sOU = false;
+          this.tXh = false;
           AppMethodBeat.o(98696);
           return true;
         }
       }
       else {
-        this.sOU = false;
+        this.tXh = false;
       }
     }
   }
   
   public void setPasterLen(int paramInt)
   {
-    this.lAM = paramInt;
+    this.mcI = paramInt;
   }
 }
 

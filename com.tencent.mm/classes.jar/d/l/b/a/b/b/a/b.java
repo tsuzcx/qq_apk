@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   implements a
 {
-  private final g Jrg;
+  private final g Lez;
   
   public b(g paramg)
   {
     AppMethodBeat.i(56924);
-    this.Jrg = paramg;
+    this.Lez = paramg;
     AppMethodBeat.o(56924);
   }
   
-  public g fxF()
+  public g fQj()
   {
     AppMethodBeat.i(56925);
-    g localg = this.Jrg;
+    g localg = this.Lez;
     if (localg == null) {
-      adP(1);
+      agL(1);
     }
     AppMethodBeat.o(56925);
     return localg;
@@ -27,7 +27,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.b
  * JD-Core Version:    0.7.0.1
  */

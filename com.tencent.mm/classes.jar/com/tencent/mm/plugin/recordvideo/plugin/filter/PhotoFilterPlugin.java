@@ -19,8 +19,8 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.y.a.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.x.a.a;
 import d.g.a.b;
 import d.g.b.k;
 import d.y;
@@ -30,47 +30,47 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "defaultWeight", "", "getDefaultWeight", "()F", "itemViews", "", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "getItemViews", "()Ljava/util/List;", "lastSelectedIndex", "", "getLastSelectedIndex", "()I", "setLastSelectedIndex", "(I)V", "progressDescTv", "Landroid/widget/TextView;", "getProgressDescTv", "()Landroid/widget/TextView;", "seekBar", "Landroid/widget/SeekBar;", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBarLayout", "Landroid/view/ViewGroup;", "getSeekBarLayout", "()Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "weightMap", "", "getWeightMap", "()Ljava/util/Map;", "setWeightMap", "(Ljava/util/Map;)V", "onBackPress", "", "postFuncType", "", "index", "colorWeight", "setPreImage", "bitmap", "Landroid/graphics/Bitmap;", "setStatus", "setVisibility", "visibility", "ViewHolder", "plugin-recordvideo_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "defaultWeight", "", "getDefaultWeight", "()F", "itemViews", "", "Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "getItemViews", "()Ljava/util/List;", "lastSelectedIndex", "", "getLastSelectedIndex", "()I", "setLastSelectedIndex", "(I)V", "progressDescTv", "Landroid/widget/TextView;", "getProgressDescTv", "()Landroid/widget/TextView;", "seekBar", "Landroid/widget/SeekBar;", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBarLayout", "Landroid/view/ViewGroup;", "getSeekBarLayout", "()Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "weightMap", "", "getWeightMap", "()Ljava/util/Map;", "setWeightMap", "(Ljava/util/Map;)V", "onBackPress", "", "postFuncType", "", "index", "colorWeight", "setPreImage", "bitmap", "Landroid/graphics/Bitmap;", "setStatus", "setVisibility", "visibility", "ViewHolder", "plugin-recordvideo_release"})
 public final class PhotoFilterPlugin
   extends RelativeLayout
   implements t
 {
   private final String TAG;
-  private final SeekBar mhD;
-  private d vjo;
-  private final List<a> vml;
-  private final ViewGroup vmm;
-  private final TextView vmn;
-  private int vmo;
-  private Map<Integer, Float> vmp;
-  private final float vmq;
+  private final SeekBar mJE;
+  private d rTT;
+  private final List<a> wuT;
+  private final ViewGroup wuU;
+  private final TextView wuV;
+  private int wuW;
+  private Map<Integer, Float> wuX;
+  private final float wuY;
   
   public PhotoFilterPlugin(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163462);
     this.TAG = "MicroMsg.PhotoFilterPlugin";
-    this.vml = ((List)new ArrayList());
-    this.vmp = ((Map)new LinkedHashMap());
-    this.vmq = 0.8F;
+    this.wuT = ((List)new ArrayList());
+    this.wuX = ((Map)new LinkedHashMap());
+    this.wuY = 0.8F;
     LayoutInflater.from(paramContext).inflate(2131495088, (ViewGroup)this, true);
     paramAttributeSet = findViewById(2131304489);
     k.g(paramAttributeSet, "findViewById(R.id.seekbar_layout)");
-    this.vmm = ((ViewGroup)paramAttributeSet);
+    this.wuU = ((ViewGroup)paramAttributeSet);
     paramAttributeSet = findViewById(2131299962);
     k.g(paramAttributeSet, "findViewById(R.id.filter_seek_bar)");
-    this.mhD = ((SeekBar)paramAttributeSet);
+    this.mJE = ((SeekBar)paramAttributeSet);
     paramAttributeSet = findViewById(2131299963);
     k.g(paramAttributeSet, "findViewById(R.id.filter_seek_bar_desc)");
-    this.vmn = ((TextView)paramAttributeSet);
+    this.wuV = ((TextView)paramAttributeSet);
     paramAttributeSet = (b)new b(this);
-    this.mhD.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new SeekBar.OnSeekBarChangeListener()
+    this.mJE.setOnSeekBarChangeListener((SeekBar.OnSeekBarChangeListener)new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(163449);
-        ad.d(this.vmr.getTAG(), "onProgressChanged ".concat(String.valueOf(paramAnonymousInt)));
-        this.vmr.getProgressDescTv().setText((CharSequence)(paramAnonymousInt + '%'));
+        ac.d(this.wuZ.getTAG(), "onProgressChanged ".concat(String.valueOf(paramAnonymousInt)));
+        this.wuZ.getProgressDescTv().setText((CharSequence)(paramAnonymousInt + '%'));
         AppMethodBeat.o(163449);
       }
       
@@ -79,33 +79,31 @@ public final class PhotoFilterPlugin
       public final void onStopTrackingTouch(SeekBar paramAnonymousSeekBar)
       {
         AppMethodBeat.i(163450);
-        PhotoFilterPlugin localPhotoFilterPlugin = this.vmr;
-        int i = this.vmr.getLastSelectedIndex();
+        PhotoFilterPlugin localPhotoFilterPlugin = this.wuZ;
+        int i = this.wuZ.getLastSelectedIndex();
         if (paramAnonymousSeekBar == null) {
-          k.fvU();
+          k.fOy();
         }
         PhotoFilterPlugin.a(localPhotoFilterPlugin, i, paramAnonymousSeekBar.getProgress() / 100.0F);
         AppMethodBeat.o(163450);
       }
     });
     LinearLayout localLinearLayout = (LinearLayout)findViewById(2131303246);
-    Object localObject = com.tencent.mm.y.a.fVL;
-    localObject = ((Iterable)com.tencent.mm.y.a.acV()).iterator();
+    Object localObject = com.tencent.mm.x.a.fZG;
+    localObject = ((Iterable)com.tencent.mm.x.a.aeb()).iterator();
     while (((Iterator)localObject).hasNext())
     {
       a.a locala = (a.a)((Iterator)localObject).next();
       View localView = LayoutInflater.from(paramContext).inflate(2131495087, (ViewGroup)localLinearLayout, false);
       localLinearLayout.addView(localView);
-      List localList = this.vml;
+      List localList = this.wuT;
       k.g(localView, "itemView");
       localList.add(new a(localView, locala.type, locala.name, paramAttributeSet));
     }
     AppMethodBeat.o(163462);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     AppMethodBeat.i(163461);
     if (getVisibility() == 0)
@@ -118,34 +116,36 @@ public final class PhotoFilterPlugin
     return false;
   }
   
+  public final void awk() {}
+  
   public final float getDefaultWeight()
   {
-    return this.vmq;
+    return this.wuY;
   }
   
   public final List<a> getItemViews()
   {
-    return this.vml;
+    return this.wuT;
   }
   
   public final int getLastSelectedIndex()
   {
-    return this.vmo;
+    return this.wuW;
   }
   
   public final TextView getProgressDescTv()
   {
-    return this.vmn;
+    return this.wuV;
   }
   
   public final SeekBar getSeekBar()
   {
-    return this.mhD;
+    return this.mJE;
   }
   
   public final ViewGroup getSeekBarLayout()
   {
-    return this.vmm;
+    return this.wuU;
   }
   
   public final String getTAG()
@@ -155,7 +155,7 @@ public final class PhotoFilterPlugin
   
   public final Map<Integer, Float> getWeightMap()
   {
-    return this.vmp;
+    return this.wuX;
   }
   
   public final String name()
@@ -177,14 +177,14 @@ public final class PhotoFilterPlugin
   
   public final void setLastSelectedIndex(int paramInt)
   {
-    this.vmo = paramInt;
+    this.wuW = paramInt;
   }
   
   public final void setPreImage(final Bitmap paramBitmap)
   {
     AppMethodBeat.i(163459);
     k.h(paramBitmap, "bitmap");
-    h.Iye.aP((Runnable)new c(this, paramBitmap));
+    h.JZN.aS((Runnable)new c(this, paramBitmap));
     AppMethodBeat.o(163459);
   }
   
@@ -192,7 +192,7 @@ public final class PhotoFilterPlugin
   {
     AppMethodBeat.i(163458);
     k.h(paramd, "status");
-    this.vjo = paramd;
+    this.rTT = paramd;
     AppMethodBeat.o(163458);
   }
   
@@ -201,7 +201,7 @@ public final class PhotoFilterPlugin
     AppMethodBeat.i(163460);
     super.setVisibility(paramInt);
     if (paramInt == 0) {
-      ((a)this.vml.get(this.vmo)).dis();
+      ((a)this.wuT.get(this.wuW)).dwh();
     }
     AppMethodBeat.o(163460);
   }
@@ -210,61 +210,61 @@ public final class PhotoFilterPlugin
   {
     AppMethodBeat.i(163457);
     k.h(paramMap, "<set-?>");
-    this.vmp = paramMap;
+    this.wuX = paramMap;
     AppMethodBeat.o(163457);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "", "effectLayout", "Landroid/view/View;", "index", "", "effectName", "", "onSelect", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "(Landroid/view/View;ILjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "effectIv", "Landroid/widget/ImageView;", "getEffectIv", "()Landroid/widget/ImageView;", "getEffectLayout", "()Landroid/view/View;", "getEffectName", "()Ljava/lang/String;", "effectTv", "Landroid/widget/TextView;", "getEffectTv", "()Landroid/widget/TextView;", "filtered", "", "getFiltered", "()Z", "setFiltered", "(Z)V", "getIndex", "()I", "maskView", "getMaskView", "getOnSelect", "()Lkotlin/jvm/functions/Function1;", "selected", "setImage", "bitmap", "Landroid/graphics/Bitmap;", "unselected", "plugin-recordvideo_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/filter/PhotoFilterPlugin$ViewHolder;", "", "effectLayout", "Landroid/view/View;", "index", "", "effectName", "", "onSelect", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "(Landroid/view/View;ILjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "effectIv", "Landroid/widget/ImageView;", "getEffectIv", "()Landroid/widget/ImageView;", "getEffectLayout", "()Landroid/view/View;", "getEffectName", "()Ljava/lang/String;", "effectTv", "Landroid/widget/TextView;", "getEffectTv", "()Landroid/widget/TextView;", "filtered", "", "getFiltered", "()Z", "setFiltered", "(Z)V", "getIndex", "()I", "maskView", "getMaskView", "getOnSelect", "()Lkotlin/jvm/functions/Function1;", "selected", "setImage", "bitmap", "Landroid/graphics/Bitmap;", "unselected", "plugin-recordvideo_release"})
   public static final class a
   {
+    final View gGk;
     final int index;
-    final View lRB;
-    final ImageView vms;
-    private final TextView vmt;
-    boolean vmu;
-    private final View vmv;
-    private final String vmw;
-    private final b<Integer, y> vmx;
+    final ImageView wva;
+    private final TextView wvb;
+    boolean wvc;
+    private final View wvd;
+    private final String wve;
+    private final b<Integer, y> wvf;
     
     public a(View paramView, int paramInt, String paramString, b<? super Integer, y> paramb)
     {
       AppMethodBeat.i(163453);
-      this.vmv = paramView;
+      this.wvd = paramView;
       this.index = paramInt;
-      this.vmw = paramString;
-      this.vmx = paramb;
-      paramView = this.vmv.findViewById(2131303245);
+      this.wve = paramString;
+      this.wvf = paramb;
+      paramView = this.wvd.findViewById(2131303245);
       k.g(paramView, "effectLayout.findViewById(R.id.photo_effect_iv)");
-      this.vms = ((ImageView)paramView);
-      paramView = this.vmv.findViewById(2131303247);
+      this.wva = ((ImageView)paramView);
+      paramView = this.wvd.findViewById(2131303247);
       k.g(paramView, "effectLayout.findViewById(R.id.photo_effect_mask)");
-      this.lRB = paramView;
-      paramView = this.vmv.findViewById(2131303248);
+      this.gGk = paramView;
+      paramView = this.wvd.findViewById(2131303248);
       k.g(paramView, "effectLayout.findViewByI….id.photo_effect_name_tv)");
-      this.vmt = ((TextView)paramView);
-      this.vmv.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.wvb = ((TextView)paramView);
+      this.wvd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(163451);
-          this.vmy.dis();
+          this.wvg.dwh();
           AppMethodBeat.o(163451);
         }
       });
-      this.vmt.setText((CharSequence)this.vmw);
+      this.wvb.setText((CharSequence)this.wve);
       AppMethodBeat.o(163453);
     }
     
-    public final void dis()
+    public final void dwh()
     {
       AppMethodBeat.i(163452);
-      this.lRB.setVisibility(8);
-      this.vmx.aA(Integer.valueOf(this.index));
+      this.gGk.setVisibility(8);
+      this.wvf.ay(Integer.valueOf(this.index));
       AppMethodBeat.o(163452);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "index", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "index", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements b<Integer, y>
@@ -275,7 +275,7 @@ public final class PhotoFilterPlugin
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -284,25 +284,25 @@ public final class PhotoFilterPlugin
     public final void run()
     {
       AppMethodBeat.i(163456);
-      Iterator localIterator = ((Iterable)this.vmr.getItemViews()).iterator();
+      Iterator localIterator = ((Iterable)this.wuZ.getItemViews()).iterator();
       while (localIterator.hasNext())
       {
         PhotoFilterPlugin.a locala = (PhotoFilterPlugin.a)localIterator.next();
-        if (!locala.vmu)
+        if (!locala.wvc)
         {
-          Object localObject = com.tencent.mm.y.a.fVL;
-          com.tencent.mm.y.a.v(paramBitmap);
-          int k = com.tencent.mm.cd.a.ap(this.vmr.getContext(), 2131165301);
-          int j = com.tencent.mm.cd.a.ap(this.vmr.getContext(), 2131165301);
+          Object localObject = com.tencent.mm.x.a.fZG;
+          com.tencent.mm.x.a.v(paramBitmap);
+          int k = com.tencent.mm.cc.a.av(this.wuZ.getContext(), 2131165301);
+          int j = com.tencent.mm.cc.a.av(this.wuZ.getContext(), 2131165301);
           int i;
           if (paramBitmap.getWidth() > paramBitmap.getHeight()) {
             i = (int)(paramBitmap.getWidth() / paramBitmap.getHeight() * j);
           }
           for (;;)
           {
-            localObject = com.tencent.mm.y.a.fVL;
-            localObject = com.tencent.mm.y.a.a(paramBitmap, locala.index, i, j, this.vmr.getDefaultWeight());
-            this.vmr.post((Runnable)new a(locala, (Bitmap)localObject));
+            localObject = com.tencent.mm.x.a.fZG;
+            localObject = com.tencent.mm.x.a.a(paramBitmap, locala.index, i, j, this.wuZ.getDefaultWeight());
+            this.wuZ.post((Runnable)new a(locala, (Bitmap)localObject));
             break;
             i = k;
             if (paramBitmap.getWidth() < paramBitmap.getHeight())
@@ -316,7 +316,7 @@ public final class PhotoFilterPlugin
       AppMethodBeat.o(163456);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -325,11 +325,11 @@ public final class PhotoFilterPlugin
       public final void run()
       {
         AppMethodBeat.i(163455);
-        PhotoFilterPlugin.a locala = this.vmz;
-        Bitmap localBitmap = this.vmA;
+        PhotoFilterPlugin.a locala = this.wvh;
+        Bitmap localBitmap = this.wvi;
         k.h(localBitmap, "bitmap");
-        locala.vms.setImageBitmap(localBitmap);
-        locala.vmu = true;
+        locala.wva.setImageBitmap(localBitmap);
+        locala.wvc = true;
         AppMethodBeat.o(163455);
       }
     }
@@ -337,7 +337,7 @@ public final class PhotoFilterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.filter.PhotoFilterPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,45 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
 
 public final class dvj
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int EJA;
-  public boolean EJo;
-  public String EJw;
-  public b EJx;
-  public int EJy;
-  public int EJz;
+  public int GcQ;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50123);
+    AppMethodBeat.i(91730);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bg(1, this.EJo);
-      if (this.EJw != null) {
-        paramVarArgs.d(2, this.EJw);
+      paramVarArgs.aR(1, this.GcQ);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      if (this.EJx != null) {
-        paramVarArgs.c(3, this.EJx);
-      }
-      paramVarArgs.aR(4, this.EJy);
-      paramVarArgs.aR(5, this.EJz);
-      paramVarArgs.aR(6, this.EJA);
-      AppMethodBeat.o(50123);
+      AppMethodBeat.o(91730);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.fY(1) + 1 + 0;
+      int i = f.a.a.b.b.a.bx(1, this.GcQ) + 0;
       paramInt = i;
-      if (this.EJw != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.EJw);
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
-      i = paramInt;
-      if (this.EJx != null) {
-        i = paramInt + f.a.a.b.b.a.b(3, this.EJx);
-      }
-      paramInt = f.a.a.b.b.a.bA(4, this.EJy);
-      int j = f.a.a.b.b.a.bA(5, this.EJz);
-      int k = f.a.a.b.b.a.bA(6, this.EJA);
-      AppMethodBeat.o(50123);
-      return i + paramInt + j + k;
+      AppMethodBeat.o(91730);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(50123);
+      AppMethodBeat.o(91730);
       return 0;
     }
     if (paramInt == 3)
@@ -67,40 +49,24 @@ public final class dvj
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(50123);
+        AppMethodBeat.o(91730);
         return -1;
       case 1: 
-        localdvj.EJo = locala.KhF.fHu();
-        AppMethodBeat.o(50123);
-        return 0;
-      case 2: 
-        localdvj.EJw = locala.KhF.readString();
-        AppMethodBeat.o(50123);
-        return 0;
-      case 3: 
-        localdvj.EJx = locala.KhF.fMu();
-        AppMethodBeat.o(50123);
-        return 0;
-      case 4: 
-        localdvj.EJy = locala.KhF.xS();
-        AppMethodBeat.o(50123);
-        return 0;
-      case 5: 
-        localdvj.EJz = locala.KhF.xS();
-        AppMethodBeat.o(50123);
+        localdvj.GcQ = locala.LVo.xF();
+        AppMethodBeat.o(91730);
         return 0;
       }
-      localdvj.EJA = locala.KhF.xS();
-      AppMethodBeat.o(50123);
+      localdvj.url = locala.LVo.readString();
+      AppMethodBeat.o(91730);
       return 0;
     }
-    AppMethodBeat.o(50123);
+    AppMethodBeat.o(91730);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvj
  * JD-Core Version:    0.7.0.1
  */

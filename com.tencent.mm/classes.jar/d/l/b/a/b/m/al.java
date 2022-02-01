@@ -10,14 +10,14 @@ public final class al
   extends n
   implements bd
 {
-  private final aj JCQ;
-  private final ab JXM;
+  private final ab LLf;
+  private final aj Lqj;
   
   public al(aj paramaj, ab paramab)
   {
     AppMethodBeat.i(60801);
-    this.JCQ = paramaj;
-    this.JXM = paramab;
+    this.Lqj = paramaj;
+    this.LLf = paramab;
     AppMethodBeat.o(60801);
   }
   
@@ -25,14 +25,14 @@ public final class al
   {
     AppMethodBeat.i(60797);
     k.h(parami, "kotlinTypeRefiner");
-    ab localab = parami.aL((ab)this.JCQ);
+    ab localab = parami.aL((ab)this.Lqj);
     if (localab == null)
     {
       parami = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
       AppMethodBeat.o(60797);
       throw parami;
     }
-    parami = new al((aj)localab, parami.aL(this.JXM));
+    parami = new al((aj)localab, parami.aL(this.LLf));
     AppMethodBeat.o(60797);
     return parami;
   }
@@ -41,7 +41,7 @@ public final class al
   {
     AppMethodBeat.i(60792);
     k.h(paramg, "newAnnotations");
-    paramg = be.b(((bg)this.JCQ).b(paramg), this.JXM);
+    paramg = be.b(((bg)this.Lqj).b(paramg), this.LLf);
     if (paramg == null)
     {
       paramg = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -53,25 +53,25 @@ public final class al
     return paramg;
   }
   
-  protected final aj fBP()
+  protected final aj fUt()
   {
-    return this.JCQ;
+    return this.Lqj;
   }
   
-  public final bg fJT()
+  public final bg gcw()
   {
-    return (bg)this.JCQ;
+    return (bg)this.Lqj;
   }
   
-  public final ab fJU()
+  public final ab gcx()
   {
-    return this.JXM;
+    return this.LLf;
   }
   
-  public final aj xW(boolean paramBoolean)
+  public final aj zo(boolean paramBoolean)
   {
     AppMethodBeat.i(60794);
-    Object localObject = be.b(((bg)this.JCQ).xV(paramBoolean), (ab)this.JXM.fJW().xV(paramBoolean));
+    Object localObject = be.b(((bg)this.Lqj).zn(paramBoolean), (ab)this.LLf.gcz().zn(paramBoolean));
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -85,7 +85,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.al
  * JD-Core Version:    0.7.0.1
  */

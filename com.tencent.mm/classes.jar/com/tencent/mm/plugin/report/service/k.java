@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.report.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kf;
+import com.tencent.mm.g.a.kn;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.t;
 import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,23 +19,23 @@ import java.util.List;
 public class k
   implements aw
 {
-  private static HashMap<Integer, h.b> npa;
-  private c mYr;
-  private r.a npc;
-  public boolean vIQ;
-  public HashMap<String, List<d>> vKN;
-  public HashMap<String, String> vKO;
+  private static HashMap<Integer, h.b> nSa;
+  private c nAQ;
+  private r.a nSc;
+  public boolean wSU;
+  public HashMap<String, List<d>> wUR;
+  public HashMap<String, String> wUS;
   
   static
   {
     AppMethodBeat.i(143938);
     HashMap localHashMap = new HashMap();
-    npa = localHashMap;
+    nSa = localHashMap;
     localHashMap.put(Integer.valueOf("DUPLICATEKVLOG_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.report.a.b.SQL_CREATE;
+        return com.tencent.mm.plugin.report.b.b.SQL_CREATE;
       }
     });
     AppMethodBeat.o(143938);
@@ -44,12 +44,12 @@ public class k
   public k()
   {
     AppMethodBeat.i(143932);
-    this.vIQ = false;
-    this.mYr = new c() {};
+    this.wSU = false;
+    this.nAQ = new c() {};
     AppMethodBeat.o(143932);
   }
   
-  public static k dkR()
+  public static k dyU()
   {
     AppMethodBeat.i(143935);
     k localk = (k)t.ap(k.class);
@@ -57,13 +57,13 @@ public class k
     return localk;
   }
   
-  public final void am(String paramString1, String paramString2, String paramString3)
+  public final void an(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(143937);
-    if ((this.vIQ) && (this.vKO != null))
+    if ((this.wSU) && (this.wUS != null))
     {
-      ad.v("MicroMsg.SubCoreReport", "put kv info [%s %s %s]", new Object[] { paramString1, paramString2, paramString3 });
-      this.vKO.put(ai.du(paramString1), paramString2 + paramString3);
+      ac.v("MicroMsg.SubCoreReport", "put kv info [%s %s %s]", new Object[] { paramString1, paramString2, paramString3 });
+      this.wUS.put(ah.dg(paramString1), paramString2 + paramString3);
     }
     AppMethodBeat.o(143937);
   }
@@ -75,70 +75,70 @@ public class k
     return null;
   }
   
-  public final void oT(boolean paramBoolean)
-  {
-    AppMethodBeat.i(193476);
-    this.vIQ = paramBoolean;
-    e.oQ(this.vIQ);
-    com.tencent.mm.plugin.report.a.oQ(this.vIQ);
-    AppMethodBeat.o(193476);
-  }
-  
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(143934);
     long l = System.currentTimeMillis();
-    String str = g.afB().cachePath + "CommonOneMicroMsg.db";
-    this.npc = r.a(hashCode(), str, npa, false);
-    ad.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), bt.eGN() });
-    com.tencent.mm.sdk.b.a.ESL.c(this.mYr);
-    this.vKN = new HashMap();
-    this.vKO = new HashMap();
+    String str = g.agR().cachePath + "CommonOneMicroMsg.db";
+    this.nSc = r.a(hashCode(), str, nSa, false);
+    ac.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), bs.eWi() });
+    com.tencent.mm.sdk.b.a.GpY.c(this.nAQ);
+    this.wUR = new HashMap();
+    this.wUS = new HashMap();
     AppMethodBeat.o(143934);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(143933);
-    if (dkR() != null)
+    if (dyU() != null)
     {
-      k localk = dkR();
-      if (localk.npc != null)
+      k localk = dyU();
+      if (localk.nSc != null)
       {
-        localk.npc.pK(localk.hashCode());
-        localk.npc = null;
+        localk.nSc.qx(localk.hashCode());
+        localk.nSc = null;
       }
     }
-    com.tencent.mm.sdk.b.a.ESL.d(this.mYr);
-    if (this.vKN != null) {
-      this.vKN.clear();
+    com.tencent.mm.sdk.b.a.GpY.d(this.nAQ);
+    if (this.wUR != null) {
+      this.wUR.clear();
     }
-    if (this.vKO != null) {
-      this.vKO.clear();
+    if (this.wUS != null) {
+      this.wUS.clear();
     }
     AppMethodBeat.o(143933);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
   
-  public final void y(long paramLong, String paramString)
+  public final void pR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(206470);
+    this.wSU = paramBoolean;
+    e.pO(this.wSU);
+    com.tencent.mm.plugin.report.a.pO(this.wSU);
+    AppMethodBeat.o(206470);
+  }
+  
+  public final void w(long paramLong, String paramString)
   {
     AppMethodBeat.i(143936);
     Object localObject;
-    if ((this.vIQ) && (this.vKN != null))
+    if ((this.wSU) && (this.wUR != null))
     {
-      ad.v("MicroMsg.SubCoreReport", "put kv info [%d %s]", new Object[] { Long.valueOf(paramLong), paramString });
-      localObject = (List)this.vKN.get(String.valueOf(paramLong));
+      ac.v("MicroMsg.SubCoreReport", "put kv info [%d %s]", new Object[] { Long.valueOf(paramLong), paramString });
+      localObject = (List)this.wUR.get(String.valueOf(paramLong));
       if (localObject == null)
       {
         localObject = new LinkedList();
         bool = false;
-        ((List)localObject).add(0, new d(paramLong, paramString, bt.eGO(), bool));
-        this.vKN.put(String.valueOf(paramLong), localObject);
-        localObject = new kf();
-        ((kf)localObject).doB.doC = paramLong;
-        ((kf)localObject).doB.content = paramString;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+        ((List)localObject).add(0, new d(paramLong, paramString, bs.eWj(), bool));
+        this.wUR.put(String.valueOf(paramLong), localObject);
+        localObject = new kn();
+        ((kn)localObject).dmk.dml = paramLong;
+        ((kn)localObject).dmk.content = paramString;
+        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
       }
     }
     else
@@ -147,11 +147,11 @@ public class k
       return;
     }
     d locald = (d)((List)localObject).get(((List)localObject).size() - 1);
-    if (bt.vM(locald.vJM) < 1000L) {}
+    if (bs.Ap(locald.wTQ) < 1000L) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        locald.vJO = true;
+        locald.wTS = true;
       }
       break;
     }

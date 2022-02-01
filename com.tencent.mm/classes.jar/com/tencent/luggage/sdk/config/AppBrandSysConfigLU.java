@@ -19,41 +19,41 @@ public class AppBrandSysConfigLU
   implements Parcelable, j
 {
   public static final Parcelable.Creator<AppBrandSysConfigLU> CREATOR;
-  public int cfA;
-  public int cfB;
-  public int cfC;
-  public boolean cfD;
-  public boolean cfE;
-  public long cfF;
-  public int cfG;
-  public ArrayList<String> cfH;
-  public ArrayList<String> cfI;
-  public ArrayList<String> cfJ;
-  public ArrayList<String> cfK;
-  public ArrayList<String> cfL;
-  public boolean cfM;
-  public int cfN;
-  public int cfO;
-  public int cfP;
-  public long cfQ;
-  public AppBrandGlobalSystemConfig cfR;
-  public String[] cfS;
-  public long cfT;
-  public int cfU;
-  public List<WxaAttributes.WxaPluginCodeInfo> cfV;
-  public boolean cfe;
-  public String cfp;
-  public boolean cfq;
-  public boolean cfr;
+  public boolean ccA;
+  public boolean ccB;
+  public long ccC;
+  public int ccD;
+  public ArrayList<String> ccE;
+  public ArrayList<String> ccF;
+  public ArrayList<String> ccG;
+  public ArrayList<String> ccH;
+  public ArrayList<String> ccI;
+  public boolean ccJ;
+  public int ccK;
+  public int ccL;
+  public int ccM;
+  public long ccN;
+  public AppBrandGlobalSystemConfig ccO;
+  public String[] ccP;
+  public long ccQ;
+  public int ccR;
+  public List<WxaAttributes.WxaPluginCodeInfo> ccS;
+  public boolean ccb;
+  public String ccm;
+  public boolean ccn;
+  public boolean cco;
   @Deprecated
-  public boolean cfs;
-  public boolean cft;
-  public AppRuntimeApiPermissionBundle cfu;
-  public HashMap<String, AppRuntimeApiPermissionBundle> cfv;
-  public String cfw;
-  public int cfx;
-  public int cfy;
-  public int cfz;
+  public boolean ccp;
+  public boolean ccq;
+  public AppRuntimeApiPermissionBundle ccr;
+  public HashMap<String, AppRuntimeApiPermissionBundle> ccs;
+  public String cct;
+  public int ccu;
+  public int ccv;
+  public int ccw;
+  public int ccx;
+  public int ccy;
+  public int ccz;
   
   static
   {
@@ -65,115 +65,115 @@ public class AppBrandSysConfigLU
   public AppBrandSysConfigLU()
   {
     AppMethodBeat.i(146705);
-    this.cfq = false;
-    this.cfr = false;
-    this.cfs = false;
-    this.cft = false;
-    this.cfe = false;
-    this.cfQ = 0L;
-    this.cfS = new String[0];
+    this.ccn = false;
+    this.cco = false;
+    this.ccp = false;
+    this.ccq = false;
+    this.ccb = false;
+    this.ccN = 0L;
+    this.ccP = new String[0];
     AppMethodBeat.o(146705);
   }
   
   protected AppBrandSysConfigLU(Parcel paramParcel)
   {
     AppMethodBeat.i(146708);
-    this.cfq = false;
-    this.cfr = false;
-    this.cfs = false;
-    this.cft = false;
-    this.cfe = false;
-    this.cfQ = 0L;
-    this.cfS = new String[0];
-    this.dfM = paramParcel.readString();
-    this.cfp = paramParcel.readString();
+    this.ccn = false;
+    this.cco = false;
+    this.ccp = false;
+    this.ccq = false;
+    this.ccb = false;
+    this.ccN = 0L;
+    this.ccP = new String[0];
+    this.ddh = paramParcel.readString();
+    this.ccm = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.hGe = paramParcel.readString();
+    this.igG = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.cfq = bool1;
+      this.ccn = bool1;
       if (paramParcel.readByte() == 0) {
         break label533;
       }
       bool1 = true;
       label104:
-      this.cfr = bool1;
+      this.cco = bool1;
       if (paramParcel.readByte() == 0) {
         break label538;
       }
       bool1 = true;
       label118:
-      this.cfs = bool1;
-      this.cfu = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
-      this.jdL = paramParcel.readInt();
-      this.cfx = paramParcel.readInt();
-      this.cfy = paramParcel.readInt();
-      this.cfz = paramParcel.readInt();
-      this.cfA = paramParcel.readInt();
-      this.cfB = paramParcel.readInt();
-      this.cfC = paramParcel.readInt();
+      this.ccp = bool1;
+      this.ccr = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
+      this.jDZ = paramParcel.readInt();
+      this.ccu = paramParcel.readInt();
+      this.ccv = paramParcel.readInt();
+      this.ccw = paramParcel.readInt();
+      this.ccx = paramParcel.readInt();
+      this.ccy = paramParcel.readInt();
+      this.ccz = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label543;
       }
       bool1 = true;
       label204:
-      this.cfD = bool1;
+      this.ccA = bool1;
       if (paramParcel.readByte() == 0) {
         break label548;
       }
       bool1 = true;
       label218:
-      this.cfE = bool1;
-      this.cfF = paramParcel.readLong();
-      this.cfG = paramParcel.readInt();
-      this.cfH = paramParcel.createStringArrayList();
-      this.cfI = paramParcel.createStringArrayList();
-      this.cfJ = paramParcel.createStringArrayList();
-      this.cfK = paramParcel.createStringArrayList();
-      this.cfL = paramParcel.createStringArrayList();
-      this.jdS = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
-      this.cfR = ((AppBrandGlobalSystemConfig)paramParcel.readParcelable(AppBrandGlobalSystemConfig.class.getClassLoader()));
+      this.ccB = bool1;
+      this.ccC = paramParcel.readLong();
+      this.ccD = paramParcel.readInt();
+      this.ccE = paramParcel.createStringArrayList();
+      this.ccF = paramParcel.createStringArrayList();
+      this.ccG = paramParcel.createStringArrayList();
+      this.ccH = paramParcel.createStringArrayList();
+      this.ccI = paramParcel.createStringArrayList();
+      this.jEg = ((WxaPkgWrappingInfo)paramParcel.readParcelable(WxaPkgWrappingInfo.class.getClassLoader()));
+      this.ccO = ((AppBrandGlobalSystemConfig)paramParcel.readParcelable(AppBrandGlobalSystemConfig.class.getClassLoader()));
       if (paramParcel.readByte() <= 0) {
         break label553;
       }
       bool1 = true;
       label320:
-      this.jdM = bool1;
+      this.jEa = bool1;
       if (paramParcel.readByte() <= 0) {
         break label558;
       }
       bool1 = true;
       label334:
-      this.jdN = bool1;
-      this.jdQ = paramParcel.readInt();
-      this.jdR = paramParcel.readInt();
-      this.cfN = paramParcel.readInt();
+      this.jEb = bool1;
+      this.jEe = paramParcel.readInt();
+      this.jEf = paramParcel.readInt();
+      this.ccK = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label563;
       }
       bool1 = true;
       label373:
-      this.cfM = bool1;
-      this.cfQ = paramParcel.readLong();
-      this.cfw = paramParcel.readString();
-      this.cfS = new String[paramParcel.readInt()];
-      paramParcel.readStringArray(this.cfS);
-      this.cfO = paramParcel.readInt();
-      this.cfP = paramParcel.readInt();
-      this.jdT = paramParcel.readInt();
+      this.ccJ = bool1;
+      this.ccN = paramParcel.readLong();
+      this.cct = paramParcel.readString();
+      this.ccP = new String[paramParcel.readInt()];
+      paramParcel.readStringArray(this.ccP);
+      this.ccL = paramParcel.readInt();
+      this.ccM = paramParcel.readInt();
+      this.jEh = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label568;
       }
       bool1 = true;
       label447:
-      this.jdU = bool1;
+      this.jEi = bool1;
       if (paramParcel.readInt() != 1) {
         break label573;
       }
       bool1 = true;
       label462:
-      this.jdO = bool1;
+      this.jEc = bool1;
       if (paramParcel.readInt() != 1) {
         break label578;
       }
@@ -190,11 +190,11 @@ public class AppBrandSysConfigLU
     label578:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdP = bool1;
-      this.cfT = paramParcel.readLong();
-      this.cfV = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-      this.cfU = paramParcel.readInt();
-      this.cfv = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
+      this.jEd = bool1;
+      this.ccQ = paramParcel.readLong();
+      this.ccS = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
+      this.ccR = paramParcel.readInt();
+      this.ccs = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
       AppMethodBeat.o(146708);
       return;
       bool1 = false;
@@ -228,9 +228,9 @@ public class AppBrandSysConfigLU
   public String toString()
   {
     AppMethodBeat.i(146706);
-    StringBuilder localStringBuilder = new StringBuilder("AppBrandSysConfigLU{, brandName='").append(this.dfM).append('\'').append(", appId='").append(this.appId).append('\'').append(", appIconUrl='").append(this.hGe).append('\'').append(", debugEnabled=").append(this.cfq).append(", performancePanelEnabled=").append(this.cfr).append(", maxWebViewDepth=").append(this.jdL).append(", maxBackgroundLifeSpan=").append(this.cfx).append(", maxRequestConcurrent=").append(this.cfy).append(", maxUploadConcurrent=").append(this.cfz).append(", maxDownloadConcurrent=").append(this.cfA).append(", maxWebsocketConnect=").append(this.cfB).append(", websocketSkipPortCheck=").append(this.cfD).append(", requestDomains=").append(this.cfH).append(", socketDomains=").append(this.cfI).append(", uploadDomains=").append(this.cfJ).append(", downloadDomains=").append(this.cfK).append(", downloadDomains=").append(this.cfL).append(", appPkgInfo=").append(this.jdS).append(", systemSettings=").append(this.cfR).append(", runningFlag=").append(this.cfT).append(", operationInfo=").append(this.cfw).append(", kvStorageScheme=").append(this.jdT).append(", TLSSkipHostnameCheck=").append(this.cfE).append(", kvStoragePerformanceReportOn=").append(this.jdU).append(", pluginPermissionBundleMap=");
-    if (this.cfv == null) {}
-    for (String str = "0";; str = String.valueOf(this.cfv.size()))
+    StringBuilder localStringBuilder = new StringBuilder("AppBrandSysConfigLU{, brandName='").append(this.ddh).append('\'').append(", appId='").append(this.appId).append('\'').append(", appIconUrl='").append(this.igG).append('\'').append(", debugEnabled=").append(this.ccn).append(", performancePanelEnabled=").append(this.cco).append(", maxWebViewDepth=").append(this.jDZ).append(", maxBackgroundLifeSpan=").append(this.ccu).append(", maxRequestConcurrent=").append(this.ccv).append(", maxUploadConcurrent=").append(this.ccw).append(", maxDownloadConcurrent=").append(this.ccx).append(", maxWebsocketConnect=").append(this.ccy).append(", websocketSkipPortCheck=").append(this.ccA).append(", requestDomains=").append(this.ccE).append(", socketDomains=").append(this.ccF).append(", uploadDomains=").append(this.ccG).append(", downloadDomains=").append(this.ccH).append(", downloadDomains=").append(this.ccI).append(", appPkgInfo=").append(this.jEg).append(", systemSettings=").append(this.ccO).append(", runningFlag=").append(this.ccQ).append(", operationInfo=").append(this.cct).append(", kvStorageScheme=").append(this.jEh).append(", TLSSkipHostnameCheck=").append(this.ccB).append(", kvStoragePerformanceReportOn=").append(this.jEi).append(", pluginPermissionBundleMap=");
+    if (this.ccs == null) {}
+    for (String str = "0";; str = String.valueOf(this.ccs.size()))
     {
       str = str + '}';
       AppMethodBeat.o(146706);
@@ -242,97 +242,97 @@ public class AppBrandSysConfigLU
   {
     int i = 1;
     AppMethodBeat.i(146707);
-    paramParcel.writeString(this.dfM);
-    paramParcel.writeString(this.cfp);
+    paramParcel.writeString(this.ddh);
+    paramParcel.writeString(this.ccm);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.hGe);
+    paramParcel.writeString(this.igG);
     byte b;
-    if (this.cfq)
+    if (this.ccn)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.cfr) {
+      if (!this.cco) {
         break label460;
       }
       b = 1;
       label64:
       paramParcel.writeByte(b);
-      if (!this.cfs) {
+      if (!this.ccp) {
         break label465;
       }
       b = 1;
       label78:
       paramParcel.writeByte(b);
-      paramParcel.writeParcelable(this.cfu, paramInt);
-      paramParcel.writeInt(this.jdL);
-      paramParcel.writeInt(this.cfx);
-      paramParcel.writeInt(this.cfy);
-      paramParcel.writeInt(this.cfz);
-      paramParcel.writeInt(this.cfA);
-      paramParcel.writeInt(this.cfB);
-      paramParcel.writeInt(this.cfC);
-      if (!this.cfD) {
+      paramParcel.writeParcelable(this.ccr, paramInt);
+      paramParcel.writeInt(this.jDZ);
+      paramParcel.writeInt(this.ccu);
+      paramParcel.writeInt(this.ccv);
+      paramParcel.writeInt(this.ccw);
+      paramParcel.writeInt(this.ccx);
+      paramParcel.writeInt(this.ccy);
+      paramParcel.writeInt(this.ccz);
+      if (!this.ccA) {
         break label470;
       }
       b = 1;
       label157:
       paramParcel.writeByte(b);
-      if (!this.cfE) {
+      if (!this.ccB) {
         break label475;
       }
       b = 1;
       label171:
       paramParcel.writeByte(b);
-      paramParcel.writeLong(this.cfF);
-      paramParcel.writeInt(this.cfG);
-      paramParcel.writeStringList(this.cfH);
-      paramParcel.writeStringList(this.cfI);
-      paramParcel.writeStringList(this.cfJ);
-      paramParcel.writeStringList(this.cfK);
-      paramParcel.writeStringList(this.cfL);
-      paramParcel.writeParcelable(this.jdS, paramInt);
-      paramParcel.writeParcelable(this.cfR, paramInt);
-      if (!this.jdM) {
+      paramParcel.writeLong(this.ccC);
+      paramParcel.writeInt(this.ccD);
+      paramParcel.writeStringList(this.ccE);
+      paramParcel.writeStringList(this.ccF);
+      paramParcel.writeStringList(this.ccG);
+      paramParcel.writeStringList(this.ccH);
+      paramParcel.writeStringList(this.ccI);
+      paramParcel.writeParcelable(this.jEg, paramInt);
+      paramParcel.writeParcelable(this.ccO, paramInt);
+      if (!this.jEa) {
         break label480;
       }
       b = 1;
       label259:
       paramParcel.writeByte(b);
-      if (!this.jdN) {
+      if (!this.jEb) {
         break label485;
       }
       b = 1;
       label273:
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.jdQ);
-      paramParcel.writeInt(this.jdR);
-      paramParcel.writeInt(this.cfN);
-      if (!this.cfM) {
+      paramParcel.writeInt(this.jEe);
+      paramParcel.writeInt(this.jEf);
+      paramParcel.writeInt(this.ccK);
+      if (!this.ccJ) {
         break label490;
       }
       paramInt = 1;
       label311:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.cfQ);
-      paramParcel.writeString(this.cfw);
-      paramParcel.writeInt(this.cfS.length);
-      paramParcel.writeStringArray(this.cfS);
-      paramParcel.writeInt(this.cfO);
-      paramParcel.writeInt(this.cfP);
-      paramParcel.writeInt(this.jdT);
-      if (!this.jdU) {
+      paramParcel.writeLong(this.ccN);
+      paramParcel.writeString(this.cct);
+      paramParcel.writeInt(this.ccP.length);
+      paramParcel.writeStringArray(this.ccP);
+      paramParcel.writeInt(this.ccL);
+      paramParcel.writeInt(this.ccM);
+      paramParcel.writeInt(this.jEh);
+      if (!this.jEi) {
         break label495;
       }
       paramInt = 1;
       label382:
       paramParcel.writeInt(paramInt);
-      if (!this.jdO) {
+      if (!this.jEc) {
         break label500;
       }
       paramInt = 1;
       label396:
       paramParcel.writeInt(paramInt);
-      if (!this.jdP) {
+      if (!this.jEd) {
         break label505;
       }
     }
@@ -349,10 +349,10 @@ public class AppBrandSysConfigLU
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.cfT);
-      paramParcel.writeTypedList(this.cfV);
-      paramParcel.writeInt(this.cfU);
-      paramParcel.writeMap(this.cfv);
+      paramParcel.writeLong(this.ccQ);
+      paramParcel.writeTypedList(this.ccS);
+      paramParcel.writeInt(this.ccR);
+      paramParcel.writeMap(this.ccs);
       AppMethodBeat.o(146707);
       return;
       b = 0;
@@ -380,7 +380,7 @@ public class AppBrandSysConfigLU
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.AppBrandSysConfigLU
  * JD-Core Version:    0.7.0.1
  */

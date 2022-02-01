@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.record.a.g;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,19 +20,19 @@ public final class m
     this.db = parame;
   }
   
-  public final void Kb(int paramInt)
+  public final void Ma(int paramInt)
   {
     AppMethodBeat.i(9517);
-    ad.d("MicroMsg.RecordMsgStorage", "delete record msg item, local id %d, result %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.db.delete("RecordMessageInfo", "localId=?", new String[] { String.valueOf(paramInt) })) });
+    ac.d("MicroMsg.RecordMsgStorage", "delete record msg item, local id %d, result %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.db.delete("RecordMessageInfo", "localId=?", new String[] { String.valueOf(paramInt) })) });
     AppMethodBeat.o(9517);
   }
   
-  public final com.tencent.mm.plugin.record.a.j Kc(int paramInt)
+  public final com.tencent.mm.plugin.record.a.j Mb(int paramInt)
   {
     Object localObject2 = null;
     AppMethodBeat.i(9518);
     Object localObject1 = "SELECT * FROM RecordMessageInfo WHERE localId=".concat(String.valueOf(paramInt));
-    ad.d("MicroMsg.RecordMsgStorage", "get by local id, sql[%s], local[%d]", new Object[] { localObject1, Integer.valueOf(paramInt) });
+    ac.d("MicroMsg.RecordMsgStorage", "get by local id, sql[%s], local[%d]", new Object[] { localObject1, Integer.valueOf(paramInt) });
     Cursor localCursor = this.db.a((String)localObject1, null, 2);
     localObject1 = localObject2;
     if (localCursor != null)
@@ -51,7 +51,7 @@ public final class m
     return localObject1;
   }
   
-  public final List<com.tencent.mm.plugin.record.a.j> dgd()
+  public final List<com.tencent.mm.plugin.record.a.j> dtK()
   {
     AppMethodBeat.i(9516);
     LinkedList localLinkedList = new LinkedList();
@@ -74,14 +74,14 @@ public final class m
           {
             for (;;)
             {
-              ad.e("MicroMsg.RecordMsgStorage", "convert recordInfo Exception: " + localException.getMessage());
+              ac.e("MicroMsg.RecordMsgStorage", "convert recordInfo Exception: " + localException.getMessage());
             }
           }
         }
       }
       localCursor.close();
     }
-    ad.d("MicroMsg.RecordMsgStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    ac.d("MicroMsg.RecordMsgStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
     AppMethodBeat.o(9516);
     return localLinkedList;
   }

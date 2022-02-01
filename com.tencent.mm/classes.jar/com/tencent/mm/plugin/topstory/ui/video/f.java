@@ -12,16 +12,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.plugin.topstory.a.h;
 import com.tencent.mm.plugin.topstory.ui.PluginTopStoryUI;
 import com.tencent.mm.pluginsdk.ui.h.b;
 import com.tencent.mm.pluginsdk.ui.h.e;
-import com.tencent.mm.protocal.protobuf.dcw;
-import com.tencent.mm.protocal.protobuf.ddb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dij;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import java.util.HashMap;
@@ -30,67 +31,67 @@ import java.util.UUID;
 public abstract class f
   extends RelativeLayout
 {
-  public static c yNO;
-  protected ImageView nMg;
+  public static c AbF;
+  public b Acd;
+  protected FrameLayout Ace;
+  public TextView Acf;
+  protected View Acg;
+  protected TextView Ach;
+  protected ImageView Aci;
+  protected ImageView Acj;
+  protected Button Ack;
+  protected TextView Acl;
+  protected TextView Acm;
+  protected View Acn;
+  protected View Aco;
+  protected View Acp;
+  protected View Acq;
+  protected View Acr;
+  public FrameLayout Acs;
+  public ImageView Act;
+  public ImageView Acu;
+  public a Acv;
+  protected TextView Acw;
+  public a Acx = a.Acy;
+  protected ImageView opg;
   public String sessionId = "";
   protected TextView titleTv;
-  public ddb yLU;
-  protected View yOA;
-  public FrameLayout yOB;
-  public ImageView yOC;
-  public ImageView yOD;
-  public a yOE;
-  protected TextView yOF;
-  public f.a yOG = f.a.yOH;
-  public b yOm;
-  protected FrameLayout yOn;
-  public TextView yOo;
-  protected View yOp;
-  protected TextView yOq;
-  protected ImageView yOr;
-  protected ImageView yOs;
-  protected Button yOt;
-  protected TextView yOu;
-  protected TextView yOv;
-  protected View yOw;
-  protected View yOx;
-  protected View yOy;
-  protected View yOz;
+  public dio zZN;
   
   static
   {
     c.a locala = new c.a();
-    locala.hjU = true;
-    locala.hjT = true;
-    yNO = locala.azc();
+    locala.hKx = true;
+    locala.hKw = true;
+    AbF = locala.aFT();
   }
   
   public f(Context paramContext, b paramb, a parama)
   {
     super(paramContext);
-    this.yOm = paramb;
-    this.yOE = parama;
+    this.Acd = paramb;
+    this.Acv = parama;
     init();
   }
   
-  public final void a(ddb paramddb, int paramInt)
+  public final void a(dio paramdio, int paramInt)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "updateView position:%s", new Object[] { Integer.valueOf(paramInt) });
-    this.yLU = paramddb;
-    cE();
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "updateView position:%s", new Object[] { Integer.valueOf(paramInt) });
+    this.zZN = paramdio;
+    cL();
   }
   
-  public boolean aj(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean am(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject1 = this.yOm.dOU();
-    Object localObject2 = h.dNX();
-    int i = this.yOm.dOV();
-    if (!this.yOm.dOE().isConnected())
+    Object localObject1 = this.Acd.edu();
+    Object localObject2 = h.ecx();
+    int i = this.Acd.edv();
+    if (!this.Acd.ede().isConnected())
     {
-      this.yOG = f.a.yOJ;
-      dPf();
-      jv(getNoNetTip(), getContext().getString(2131764699));
-      this.yOm.dOJ().a(this, c(this.yLU));
+      this.Acx = a.AcA;
+      edF();
+      jT(getNoNetTip(), getContext().getString(2131764699));
+      this.Acd.edj().a(this, c(this.zZN));
       return false;
     }
     if ((!((String)localObject2).equals("wifi")) && (!((String)localObject2).equals(localObject1)))
@@ -100,183 +101,183 @@ public abstract class f
       }
       if ((i != 1) && (i != 2))
       {
-        this.yOm.Pj(1);
-        if (this.yOF == null) {
+        this.Acd.Rp(1);
+        if (this.Acw == null) {
           break label682;
         }
-        this.yOF.setVisibility(0);
-        this.yOF.setAlpha(1.0F);
-        this.yOF.animate().alpha(0.0F).setDuration(3000L).start();
+        this.Acw.setVisibility(0);
+        this.Acw.setAlpha(1.0F);
+        this.Acw.animate().alpha(0.0F).setDuration(3000L).start();
       }
     }
-    this.yOm.asI((String)localObject2);
-    dPi();
-    this.yOG = f.a.yOH;
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStartPlayContainerStatus");
-    this.yOx.setVisibility(0);
-    this.yOz.setVisibility(8);
-    this.yOw.setVisibility(8);
-    this.yOB.setVisibility(8);
-    this.yOy.setVisibility(0);
-    this.yOA.setVisibility(8);
-    this.yOp.setVisibility(0);
-    this.yOp.setVisibility(0);
-    this.yOp.setAlpha(0.0F);
-    this.yOp.animate().setDuration(4000L).setInterpolator(new AccelerateInterpolator()).alpha(1.0F).start();
-    this.nMg.setVisibility(0);
-    this.yOo.setVisibility(8);
-    this.yOn.setVisibility(0);
-    this.yOn.setAlpha(0.0F);
-    this.yOm.dOJ().a(this, c(this.yLU));
-    localObject1 = this.yOm.dOJ();
-    Object localObject3 = this.yOm;
-    localObject2 = this.yLU;
+    this.Acd.axR((String)localObject2);
+    edI();
+    this.Acx = a.Acy;
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStartPlayContainerStatus");
+    this.Aco.setVisibility(0);
+    this.Acq.setVisibility(8);
+    this.Acn.setVisibility(8);
+    this.Acs.setVisibility(8);
+    this.Acp.setVisibility(0);
+    this.Acr.setVisibility(8);
+    this.Acg.setVisibility(0);
+    this.Acg.setVisibility(0);
+    this.Acg.setAlpha(0.0F);
+    this.Acg.animate().setDuration(4000L).setInterpolator(new AccelerateInterpolator()).alpha(1.0F).start();
+    this.opg.setVisibility(0);
+    this.Acf.setVisibility(8);
+    this.Ace.setVisibility(0);
+    this.Ace.setAlpha(0.0F);
+    this.Acd.edj().a(this, c(this.zZN));
+    localObject1 = this.Acd.edj();
+    Object localObject3 = this.Acd;
+    localObject2 = this.zZN;
     String str = this.sessionId;
-    int j = this.yOE.dOD();
+    int j = this.Acv.edd();
     HashMap localHashMap = ((PluginTopStoryUI)com.tencent.mm.kernel.g.ad(PluginTopStoryUI.class)).getVideoPlayProgressMap();
-    if (localHashMap.containsKey(((ddb)localObject2).rNP)) {}
-    for (i = ((Integer)localHashMap.get(((ddb)localObject2).rNP)).intValue();; i = 0)
+    if (localHashMap.containsKey(((dio)localObject2).sVF)) {}
+    for (i = ((Integer)localHashMap.get(((dio)localObject2).sVF)).intValue();; i = 0)
     {
-      ad.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "startPlay, pos:%s, vid:%s videoProgress: %d", new Object[] { Integer.valueOf(j), ((ddb)localObject2).rNP, Integer.valueOf(i) });
-      if (((ddb)localObject2).EuY != null) {
-        ad.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "video %s secondVideoInfo %d %d", new Object[] { ((ddb)localObject2).rNP, Integer.valueOf(((ddb)localObject2).EuY.Euq), Integer.valueOf(((ddb)localObject2).EuY.Eur) });
+      ac.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "startPlay, pos:%s, vid:%s videoProgress: %d", new Object[] { Integer.valueOf(j), ((dio)localObject2).sVF, Integer.valueOf(i) });
+      if (((dio)localObject2).FRZ != null) {
+        ac.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "video %s secondVideoInfo %d %d", new Object[] { ((dio)localObject2).sVF, Integer.valueOf(((dio)localObject2).FRZ.FRr), Integer.valueOf(((dio)localObject2).FRZ.FRs) });
       }
-      if (((ddb)localObject2).Evh != null) {
-        ((ddb)localObject2).Evh.ddw = false;
+      if (((dio)localObject2).FSi != null) {
+        ((dio)localObject2).FSi.daU = false;
       }
-      if (((r)localObject1).yLY != null)
+      if (((r)localObject1).zZQ != null)
       {
-        if ((!((r)localObject1).yLY.roQ.equals(((ddb)localObject2).roQ)) || (paramBoolean2))
+        if ((!((r)localObject1).zZQ.sxK.equals(((dio)localObject2).sxK)) || (paramBoolean2))
         {
-          ((r)localObject1).yQq.stop();
-          ((b)localObject3).dOF().b(((b)localObject3).dOH());
-          ((b)localObject3).dOF().dPI();
+          ((r)localObject1).Aeg.stop();
+          ((b)localObject3).edf().b(((b)localObject3).edh());
+          ((b)localObject3).edf().eeh();
         }
       }
       else
       {
-        if (!bt.isNullOrNil(((ddb)localObject2).videoUrl)) {
+        if (!bs.isNullOrNil(((dio)localObject2).videoUrl)) {
           break label756;
         }
-        ad.e("MicroMsg.TopStory.TopStoryVideoViewMgr", "start play video url is null %s %s %s", new Object[] { str, ((ddb)localObject2).rNP, ((ddb)localObject2).title });
+        ac.e("MicroMsg.TopStory.TopStoryVideoViewMgr", "start play video url is null %s %s %s", new Object[] { str, ((dio)localObject2).sVF, ((dio)localObject2).title });
       }
       return true;
       label682:
-      t.makeText(this.yOm.cKW(), 2131764483, 0).show();
+      t.makeText(this.Acd.cYC(), 2131764483, 0).show();
       break;
       label704:
       if (i == 2) {
         break;
       }
-      dPh();
-      this.yOm.dOJ().a(this, c(this.yLU));
+      edH();
+      this.Acd.edj().a(this, c(this.zZN));
       return false;
-      localHashMap.put(((ddb)localObject2).rNP, Integer.valueOf(0));
+      localHashMap.put(((dio)localObject2).sVF, Integer.valueOf(0));
     }
     label756:
-    ((b)localObject3).dOF().a((ddb)localObject2, j, str);
-    ((r)localObject1).yOm.dOF().i((ddb)localObject2);
-    ((r)localObject1).yQq.setLoop(false);
-    ((r)localObject1).yQq.setVideoInfo((ddb)localObject2);
-    ((r)localObject1).yQq.setMute(((b)localObject3).Ny());
-    ((r)localObject1).yQq.setKeepScreenOn(true);
+    ((b)localObject3).edf().a((dio)localObject2, j, str);
+    ((r)localObject1).Acd.edf().i((dio)localObject2);
+    ((r)localObject1).Aeg.setLoop(false);
+    ((r)localObject1).Aeg.setVideoInfo((dio)localObject2);
+    ((r)localObject1).Aeg.setMute(((b)localObject3).Nw());
+    ((r)localObject1).Aeg.setKeepScreenOn(true);
     if (i == 0) {
-      ((r)localObject1).yQq.asJ(str);
+      ((r)localObject1).Aeg.axS(str);
     }
     for (;;)
     {
-      ((r)localObject1).yQq.dPL();
-      ((r)localObject1).yLY = ((ddb)localObject2);
-      ((r)localObject1).yQs = true;
-      ((r)localObject1).yQt = false;
+      ((r)localObject1).Aeg.eek();
+      ((r)localObject1).zZQ = ((dio)localObject2);
+      ((r)localObject1).Aei = true;
+      ((r)localObject1).Aej = false;
       break;
-      localObject3 = ((r)localObject1).yQq;
+      localObject3 = ((r)localObject1).Aeg;
       ((q)localObject3).sessionId = str;
       ((q)localObject3).C(i, true);
     }
   }
   
-  public void bGO() {}
+  public void bOb() {}
   
-  public h.e c(ddb paramddb)
+  public h.e c(dio paramdio)
   {
-    return h.e.BVq;
+    return h.e.DnH;
   }
   
-  protected void cE()
+  protected void cL()
   {
-    this.nMg.setImageDrawable(null);
-    com.tencent.mm.aw.o.ayJ().a(this.yLU.EuM, this.nMg, yNO);
-    if (this.yOF != null)
+    this.opg.setImageDrawable(null);
+    com.tencent.mm.av.o.aFB().a(this.zZN.FRN, this.opg, AbF);
+    if (this.Acw != null)
     {
-      this.yOF.animate().cancel();
-      this.yOF.setVisibility(8);
+      this.Acw.animate().cancel();
+      this.Acw.setVisibility(8);
     }
   }
   
-  public abstract void dPa();
+  public abstract void edA();
   
-  public abstract void dPb();
+  public abstract void edB();
   
-  public void dPc()
+  public void edC()
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setPlayingContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.yOE.dOD()) });
-    this.yOx.setVisibility(8);
-    this.nMg.setVisibility(8);
-    this.yOo.setVisibility(8);
-    this.yOw.setVisibility(8);
-    this.yOn.setVisibility(0);
-    this.yOn.setAlpha(1.0F);
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setPlayingContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.Acv.edd()) });
+    this.Aco.setVisibility(8);
+    this.opg.setVisibility(8);
+    this.Acf.setVisibility(8);
+    this.Acn.setVisibility(8);
+    this.Ace.setVisibility(0);
+    this.Ace.setAlpha(1.0F);
   }
   
-  public final void dPd()
+  public final void edD()
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStopContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.yOE.dOD()) });
-    this.nMg.setVisibility(0);
-    this.yOx.setVisibility(0);
-    this.yOB.setVisibility(8);
-    this.yOy.setVisibility(8);
-    this.yOw.setVisibility(0);
-    this.yOz.setVisibility(0);
-    this.yOr.setVisibility(0);
-    this.yOs.setVisibility(8);
-    this.yOv.setVisibility(8);
-    this.yOq.setVisibility(8);
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setStopContainerStatus, pos:%d", new Object[] { Integer.valueOf(this.Acv.edd()) });
+    this.opg.setVisibility(0);
+    this.Aco.setVisibility(0);
+    this.Acs.setVisibility(8);
+    this.Acp.setVisibility(8);
+    this.Acn.setVisibility(0);
+    this.Acq.setVisibility(0);
+    this.Aci.setVisibility(0);
+    this.Acj.setVisibility(8);
+    this.Acm.setVisibility(8);
+    this.Ach.setVisibility(8);
   }
   
-  public final void dPe()
+  public final void edE()
   {
-    jv(getNoNetTip(), this.yOm.cKW().getString(2131764699));
-    getContext().getString(2131764481, new Object[] { bt.a(this.yLU.EuU, 100.0D) });
+    jT(getNoNetTip(), this.Acd.cYC().getString(2131764699));
+    getContext().getString(2131764481, new Object[] { bs.a(this.zZN.FRV, 100.0D) });
   }
   
-  public void dPf() {}
+  public void edF() {}
   
-  public void dPg() {}
+  public void edG() {}
   
-  public final void dPh()
+  public final void edH()
   {
-    this.yOG = f.a.yOI;
-    dPf();
-    jv(getMobileNetTip(), getContext().getString(2131764459));
+    this.Acx = a.Acz;
+    edF();
+    jT(getMobileNetTip(), getContext().getString(2131764459));
   }
   
-  public final String dPi()
+  public final String edI()
   {
     this.sessionId = UUID.randomUUID().toString();
     return this.sessionId;
   }
   
-  public final void dPj()
+  public final void edJ()
   {
-    this.yOB.setVisibility(0);
+    this.Acs.setVisibility(0);
   }
   
-  public void dPk() {}
+  public void edK() {}
   
-  public void dPl() {}
+  public void edL() {}
   
-  public boolean dPm()
+  public boolean edM()
   {
     return false;
   }
@@ -285,17 +286,17 @@ public abstract class f
   
   public a getItemUIComponent()
   {
-    return this.yOE;
+    return this.Acv;
   }
   
   protected abstract int getLayoutId();
   
   protected String getMobileNetTip()
   {
-    if (this.yLU.EuU == 0L) {
+    if (this.zZN.FRV == 0L) {
       return getContext().getString(2131764482);
     }
-    return getContext().getString(2131764481, new Object[] { bt.a(this.yLU.EuU, 100.0D) });
+    return getContext().getString(2131764481, new Object[] { bs.a(this.zZN.FRV, 100.0D) });
   }
   
   public String getNoNetTip()
@@ -303,79 +304,94 @@ public abstract class f
     return getContext().getString(2131764685);
   }
   
-  public f.a getPauseReason()
+  public a getPauseReason()
   {
-    return this.yOG;
+    return this.Acx;
   }
   
   public abstract h.b getVideoViewCallback();
   
   public FrameLayout getVideoViewParent()
   {
-    return this.yOn;
+    return this.Ace;
   }
   
   protected void init()
   {
     LayoutInflater.from(getContext()).inflate(getLayoutId(), this);
-    this.yOn = ((FrameLayout)findViewById(2131306412));
-    this.yOo = ((TextView)findViewById(2131303532));
-    this.yOw = findViewById(2131305889);
-    this.yOx = findViewById(2131306311);
-    this.yOy = findViewById(2131306402);
-    this.yOz = findViewById(2131306312);
-    this.yOA = findViewById(2131306349);
-    this.yOp = findViewById(2131306353);
-    this.nMg = ((ImageView)findViewById(2131298824));
-    this.yOq = ((TextView)findViewById(2131306394));
+    this.Ace = ((FrameLayout)findViewById(2131306412));
+    this.Acf = ((TextView)findViewById(2131303532));
+    this.Acn = findViewById(2131305889);
+    this.Aco = findViewById(2131306311);
+    this.Acp = findViewById(2131306402);
+    this.Acq = findViewById(2131306312);
+    this.Acr = findViewById(2131306349);
+    this.Acg = findViewById(2131306353);
+    this.opg = ((ImageView)findViewById(2131298824));
+    this.Ach = ((TextView)findViewById(2131306394));
     this.titleTv = ((TextView)findViewById(2131305948));
-    this.yOr = ((ImageView)findViewById(2131298815));
-    this.yOs = ((ImageView)findViewById(2131298816));
-    this.yOv = ((TextView)findViewById(2131304079));
-    this.yOt = ((Button)findViewById(2131305869));
-    this.yOu = ((TextView)findViewById(2131305870));
-    this.yOC = ((ImageView)findViewById(2131303297));
-    this.yOD = ((ImageView)findViewById(2131303296));
-    this.yOB = ((FrameLayout)findViewById(2131303298));
-    this.yOF = ((TextView)findViewById(2131302710));
+    this.Aci = ((ImageView)findViewById(2131298815));
+    this.Acj = ((ImageView)findViewById(2131298816));
+    this.Acm = ((TextView)findViewById(2131304079));
+    this.Ack = ((Button)findViewById(2131305869));
+    this.Acl = ((TextView)findViewById(2131305870));
+    this.Act = ((ImageView)findViewById(2131303297));
+    this.Acu = ((ImageView)findViewById(2131303296));
+    this.Acs = ((FrameLayout)findViewById(2131303298));
+    this.Acw = ((TextView)findViewById(2131302710));
   }
   
-  public final void jv(String paramString1, String paramString2)
+  public final void jT(String paramString1, String paramString2)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setWarningTipContainerStatus %s %s", new Object[] { paramString1, paramString2 });
-    this.nMg.setVisibility(0);
-    this.yOx.setVisibility(0);
-    this.yOy.setVisibility(0);
-    this.yOw.setVisibility(0);
-    this.yOz.setVisibility(8);
-    this.yOA.setVisibility(0);
-    this.yOp.setVisibility(8);
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "setWarningTipContainerStatus %s %s", new Object[] { paramString1, paramString2 });
+    this.opg.setVisibility(0);
+    this.Aco.setVisibility(0);
+    this.Acp.setVisibility(0);
+    this.Acn.setVisibility(0);
+    this.Acq.setVisibility(8);
+    this.Acr.setVisibility(0);
+    this.Acg.setVisibility(8);
     if (!TextUtils.isEmpty(paramString1))
     {
-      this.yOu.setText(paramString1);
-      this.yOu.setVisibility(0);
+      this.Acl.setText(paramString1);
+      this.Acl.setVisibility(0);
     }
     while (!TextUtils.isEmpty(paramString2))
     {
-      this.yOt.setText(paramString2);
-      this.yOt.setVisibility(0);
+      this.Ack.setText(paramString2);
+      this.Ack.setVisibility(0);
       return;
-      this.yOu.setVisibility(8);
+      this.Acl.setVisibility(8);
     }
-    this.yOt.setVisibility(8);
+    this.Ack.setVisibility(8);
   }
   
   public final void seekTo(int paramInt)
   {
-    ad.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "seek to position=%d current=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.yOm.dOJ().getCurrPosSec()) });
-    Object localObject = this.yOm.dOJ();
-    if (((r)localObject).yQq != null) {
-      ((r)localObject).yQq.C(paramInt, true);
+    ac.i("MicroMsg.TopStory.TopStoryBaseVideoContainer", "seek to position=%d current=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.Acd.edj().getCurrPosSec()) });
+    Object localObject = this.Acd.edj();
+    if (((r)localObject).Aeg != null) {
+      ((r)localObject).Aeg.C(paramInt, true);
     }
-    localObject = this.yOm.dOF().yQm;
+    localObject = this.Acd.edf().Aec;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.topstory.a.b.b)localObject).yLE = 1L;
+      ((com.tencent.mm.plugin.topstory.a.b.b)localObject).zZx = 1L;
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(126071);
+      Acy = new a("UNKNOWN", 0);
+      Acz = new a("MOBILE_NET", 1);
+      AcA = new a("NO_NET", 2);
+      AcB = new a[] { Acy, Acz, AcA };
+      AppMethodBeat.o(126071);
+    }
+    
+    private a() {}
   }
 }
 

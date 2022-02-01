@@ -9,14 +9,14 @@ import java.util.Set;
 
 public final class b
 {
-  private static final Map<String, Set<c>> fZD;
-  private static final Set<Object> fZQ;
+  private static final Map<String, Set<c>> gej;
+  private static final Set<Object> gew;
   
   static
   {
     AppMethodBeat.i(158826);
-    fZQ = new HashSet();
-    fZD = new HashMap();
+    gew = new HashSet();
+    gej = new HashMap();
     AppMethodBeat.o(158826);
   }
   
@@ -32,14 +32,14 @@ public final class b
     label125:
     for (;;)
     {
-      synchronized (fZD)
+      synchronized (gej)
       {
-        localObject = (Set)fZD.get(paramString);
+        localObject = (Set)gej.get(paramString);
         if (localObject != null) {
           break label125;
         }
         localObject = new HashSet();
-        fZD.put(paramString, localObject);
+        gej.put(paramString, localObject);
         com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
       }
       try
@@ -66,9 +66,9 @@ public final class b
       return false;
     }
     Set localSet;
-    synchronized (fZD)
+    synchronized (gej)
     {
-      localSet = (Set)fZD.get(paramString);
+      localSet = (Set)gej.get(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158824);
@@ -87,21 +87,21 @@ public final class b
     }
   }
   
-  public static void bj(Object paramObject)
+  public static void bg(Object paramObject)
   {
     AppMethodBeat.i(158821);
-    fZQ.add(paramObject);
+    gew.add(paramObject);
     AppMethodBeat.o(158821);
   }
   
-  public static void bk(Object paramObject)
+  public static void bh(Object paramObject)
   {
     AppMethodBeat.i(158822);
-    fZQ.remove(paramObject);
+    gew.remove(paramObject);
     AppMethodBeat.o(158822);
   }
   
-  public static void qt(String paramString)
+  public static void tI(String paramString)
   {
     AppMethodBeat.i(158825);
     if ((paramString == null) || (paramString.length() == 0))
@@ -110,9 +110,9 @@ public final class b
       return;
     }
     Set localSet;
-    synchronized (fZD)
+    synchronized (gej)
     {
-      localSet = (Set)fZD.remove(paramString);
+      localSet = (Set)gej.remove(paramString);
       if (localSet == null)
       {
         AppMethodBeat.o(158825);
@@ -140,7 +140,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.f.b
  * JD-Core Version:    0.7.0.1
  */

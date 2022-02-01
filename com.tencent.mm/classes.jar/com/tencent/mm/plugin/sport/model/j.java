@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.sport.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.ConfigFileStorageProxyMMKV;
-import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ad;
 
 public final class j
-  extends aa
+  extends ad
 {
   public j(String paramString)
   {
@@ -19,9 +19,9 @@ public final class j
       try
       {
         AppMethodBeat.i(149327);
-        if (eKu())
+        if (eZW())
         {
-          paramLong = this.Ffq.getLong(paramInt, paramLong);
+          paramLong = this.GDd.getLong(paramInt, paramLong);
           AppMethodBeat.o(149327);
           return paramLong;
         }
@@ -53,9 +53,9 @@ public final class j
       {
         AppMethodBeat.i(149329);
         Object localObject;
-        if (eKu())
+        if (eZW())
         {
-          localObject = this.Ffq;
+          localObject = this.GDd;
           if ((((ConfigFileStorageProxyMMKV)localObject).get(paramInt, paramString) instanceof String))
           {
             paramString = (String)((ConfigFileStorageProxyMMKV)localObject).get(paramInt, paramString);
@@ -106,7 +106,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.j
  * JD-Core Version:    0.7.0.1
  */

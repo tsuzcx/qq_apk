@@ -9,9 +9,9 @@ public final class PrivateCommand
   extends SpliceCommand
 {
   public static final Parcelable.Creator<PrivateCommand> CREATOR;
-  public final long bjI;
-  public final long bjJ;
-  public final byte[] bjK;
+  public final long bkn;
+  public final long bko;
+  public final byte[] bkp;
   
   static
   {
@@ -22,25 +22,25 @@ public final class PrivateCommand
   
   private PrivateCommand(long paramLong1, byte[] paramArrayOfByte, long paramLong2)
   {
-    this.bjI = paramLong2;
-    this.bjJ = paramLong1;
-    this.bjK = paramArrayOfByte;
+    this.bkn = paramLong2;
+    this.bko = paramLong1;
+    this.bkp = paramArrayOfByte;
   }
   
   private PrivateCommand(Parcel paramParcel)
   {
     AppMethodBeat.i(92481);
-    this.bjI = paramParcel.readLong();
-    this.bjJ = paramParcel.readLong();
-    this.bjK = new byte[paramParcel.readInt()];
-    paramParcel.readByteArray(this.bjK);
+    this.bkn = paramParcel.readLong();
+    this.bko = paramParcel.readLong();
+    this.bkp = new byte[paramParcel.readInt()];
+    paramParcel.readByteArray(this.bkp);
     AppMethodBeat.o(92481);
   }
   
   static PrivateCommand a(m paramm, int paramInt, long paramLong)
   {
     AppMethodBeat.i(92482);
-    long l = paramm.df();
+    long l = paramm.dm();
     byte[] arrayOfByte = new byte[paramInt - 4];
     paramm.readBytes(arrayOfByte, 0, arrayOfByte.length);
     paramm = new PrivateCommand(l, arrayOfByte, paramLong);
@@ -51,10 +51,10 @@ public final class PrivateCommand
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92483);
-    paramParcel.writeLong(this.bjI);
-    paramParcel.writeLong(this.bjJ);
-    paramParcel.writeInt(this.bjK.length);
-    paramParcel.writeByteArray(this.bjK);
+    paramParcel.writeLong(this.bkn);
+    paramParcel.writeLong(this.bko);
+    paramParcel.writeInt(this.bkp.length);
+    paramParcel.writeByteArray(this.bkp);
     AppMethodBeat.o(92483);
   }
 }

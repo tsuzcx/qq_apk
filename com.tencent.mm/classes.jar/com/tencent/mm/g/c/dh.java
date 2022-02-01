@@ -3,56 +3,36 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class dh
   extends c
 {
-  public static final String COL_EXPIRE_AT = "expire_at";
-  public static final String COL_KEY = "key";
-  public static final String COL_VALUE = "value";
   public static final String[] INDEX_CREATE = new String[0];
-  public static final String TABLE_NAME = "KindaCacheTable";
-  private static final String TAG = "MicroMsg.SDK.BaseKindaCacheTable";
-  private static final int expire_at_HASHCODE = "expire_at".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eJK;
+  private static final int eOb = "phonenumber".hashCode();
+  private static final int eOc = "calltime".hashCode();
+  private static final int eOd = "addressId".hashCode();
+  private static final int eOe = "phoneType".hashCode();
+  private static final int elV;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE = "value".hashCode();
-  private boolean __hadSetexpire_at = true;
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  public long field_expire_at;
-  public String field_key;
-  public byte[] field_value;
+  private boolean eJB = true;
+  private boolean eNX = true;
+  private boolean eNY = true;
+  private boolean eNZ = true;
+  private boolean eOa = true;
+  private boolean elS = true;
+  public long field_addressId;
+  public long field_calltime;
+  public long field_duration;
+  public int field_phoneType;
+  public String field_phonenumber;
+  public int field_status;
   
-  private final void buildBuff() {}
-  
-  public static c.a initAutoDBInfo(Class<?> paramClass)
+  static
   {
-    paramClass = new c.a();
-    paramClass.EYt = new Field[3];
-    paramClass.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramClass.columns[0] = "key";
-    paramClass.EYv.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    paramClass.EYu = "key";
-    paramClass.columns[1] = "value";
-    paramClass.EYv.put("value", "BLOB");
-    localStringBuilder.append(" value BLOB");
-    localStringBuilder.append(", ");
-    paramClass.columns[2] = "expire_at";
-    paramClass.EYv.put("expire_at", "LONG");
-    localStringBuilder.append(" expire_at LONG");
-    paramClass.columns[3] = "rowid";
-    paramClass.sql = localStringBuilder.toString();
-    return paramClass;
+    eJK = "duration".hashCode();
+    elV = "status".hashCode();
   }
-  
-  private final void parseBuff() {}
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -67,22 +47,27 @@ public abstract class dh
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label65;
+      if (eOb != k) {
+        break label60;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_phonenumber = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getBlob(i);
-      } else if (expire_at_HASHCODE == k) {
-        this.field_expire_at = paramCursor.getLong(i);
+      label60:
+      if (eOc == k) {
+        this.field_calltime = paramCursor.getLong(i);
+      } else if (eJK == k) {
+        this.field_duration = paramCursor.getLong(i);
+      } else if (elV == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eOd == k) {
+        this.field_addressId = paramCursor.getLong(i);
+      } else if (eOe == k) {
+        this.field_phoneType = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -91,28 +76,34 @@ public abstract class dh
   
   public ContentValues convertTo()
   {
-    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.eNX) {
+      localContentValues.put("phonenumber", this.field_phonenumber);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.eNY) {
+      localContentValues.put("calltime", Long.valueOf(this.field_calltime));
     }
-    if (this.__hadSetexpire_at) {
-      localContentValues.put("expire_at", Long.valueOf(this.field_expire_at));
+    if (this.eJB) {
+      localContentValues.put("duration", Long.valueOf(this.field_duration));
+    }
+    if (this.elS) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.eNZ) {
+      localContentValues.put("addressId", Long.valueOf(this.field_addressId));
+    }
+    if (this.eOa) {
+      localContentValues.put("phoneType", Integer.valueOf(this.field_phoneType));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dh
  * JD-Core Version:    0.7.0.1
  */

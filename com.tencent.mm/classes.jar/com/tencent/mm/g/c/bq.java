@@ -8,39 +8,13 @@ public abstract class bq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eAI;
-  private static final int eBa = "msgContent".hashCode();
-  private static final int eBb;
-  private static final int eBc = "chatroomName".hashCode();
-  private static final int ekU;
-  private static final int epC = "isSend".hashCode();
-  private static final int erT = "talker".hashCode();
+  private static final int eCG = "exptId".hashCode();
+  private static final int eCM = "exptKey".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eAX = true;
-  private boolean eAY = true;
-  private boolean eAZ = true;
-  private boolean eAt = true;
-  private boolean ekx = true;
-  private boolean epn = true;
-  private boolean erF = true;
-  public String field_chatroomName;
-  public long field_createTime;
-  public String field_encryptTalker;
-  public int field_isSend;
-  public String field_msgContent;
-  public long field_svrId;
-  public String field_talker;
-  public int field_type;
-  
-  static
-  {
-    eAI = "encryptTalker".hashCode();
-    eBb = "svrId".hashCode();
-    type_HASHCODE = "type".hashCode();
-    ekU = "createTime".hashCode();
-  }
+  private boolean eCB = true;
+  private boolean eCL = true;
+  public int field_exptId;
+  public String field_exptKey;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -55,31 +29,20 @@ public abstract class bq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eBa != k) {
-        break label60;
+      if (eCM != k) {
+        break label65;
       }
-      this.field_msgContent = paramCursor.getString(i);
+      this.field_exptKey = paramCursor.getString(i);
+      this.eCL = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (epC == k) {
-        this.field_isSend = paramCursor.getInt(i);
-      } else if (erT == k) {
-        this.field_talker = paramCursor.getString(i);
-      } else if (eAI == k) {
-        this.field_encryptTalker = paramCursor.getString(i);
-      } else if (eBb == k) {
-        this.field_svrId = paramCursor.getLong(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (eBc == k) {
-        this.field_chatroomName = paramCursor.getString(i);
+      label65:
+      if (eCG == k) {
+        this.field_exptId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -89,41 +52,11 @@ public abstract class bq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_msgContent == null) {
-      this.field_msgContent = "";
+    if (this.eCL) {
+      localContentValues.put("exptKey", this.field_exptKey);
     }
-    if (this.eAX) {
-      localContentValues.put("msgContent", this.field_msgContent);
-    }
-    if (this.epn) {
-      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
-    }
-    if (this.field_talker == null) {
-      this.field_talker = "";
-    }
-    if (this.erF) {
-      localContentValues.put("talker", this.field_talker);
-    }
-    if (this.field_encryptTalker == null) {
-      this.field_encryptTalker = "";
-    }
-    if (this.eAt) {
-      localContentValues.put("encryptTalker", this.field_encryptTalker);
-    }
-    if (this.eAY) {
-      localContentValues.put("svrId", Long.valueOf(this.field_svrId));
-    }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.ekx) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.field_chatroomName == null) {
-      this.field_chatroomName = "";
-    }
-    if (this.eAZ) {
-      localContentValues.put("chatroomName", this.field_chatroomName);
+    if (this.eCB) {
+      localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

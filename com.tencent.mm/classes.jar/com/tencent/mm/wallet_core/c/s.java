@@ -3,7 +3,7 @@ package com.tencent.mm.wallet_core.c;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.g.b.a.p;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.ab;
@@ -12,11 +12,12 @@ import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.protocal.protobuf.bb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public abstract class s
   private m jumpRemind;
   private String payAppUrl = "";
   private String payFlag = "";
-  protected com.tencent.mm.al.b rr;
+  protected com.tencent.mm.ak.b rr;
   private String wappay_jumped_url = "";
   
   public static e getRetModel(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, int paramInt4, String paramString3, int paramInt5, String paramString4)
@@ -57,33 +58,33 @@ public abstract class s
     {
       if (paramInt3 != 0)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: resolve busi error: plat ret is error");
-        locale.f(1000, paramInt3, paramString2, 1);
+        ac.w("MicroMsg.NetScenePayBase", "hy: resolve busi error: plat ret is error");
+        locale.e(1000, paramInt3, paramString2, 1);
         return locale;
       }
       if (paramInt4 != 0)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: resolve busi error: errType is error");
-        locale.f(1000, paramInt4, paramString3, 2);
+        ac.w("MicroMsg.NetScenePayBase", "hy: resolve busi error: errType is error");
+        locale.e(1000, paramInt4, paramString3, 2);
         return locale;
       }
       if (paramInt5 != 0)
       {
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: resolve busi error: retCode is error");
+        ac.w("MicroMsg.NetScenePayBase", "hy: resolve busi error: retCode is error");
         if ((paramInt5 != -10089) && (paramInt5 != -10088))
         {
-          locale.f(1000, paramInt5, paramString4, 2);
+          locale.e(1000, paramInt5, paramString4, 2);
           return locale;
         }
-        locale.f(1000, 2, paramString4, 2);
+        locale.e(1000, 2, paramString4, 2);
         return locale;
       }
-      if (!bt.isNullOrNil(paramString3))
+      if (!bs.isNullOrNil(paramString3))
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "finModel.errMsg = biz_errMsg");
+        ac.i("MicroMsg.NetScenePayBase", "finModel.errMsg = biz_errMsg");
         locale.errMsg = paramString3;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "hy: all's OK");
+      ac.i("MicroMsg.NetScenePayBase", "hy: all's OK");
       return locale;
     }
     getRetModel(paramInt1, paramInt2, paramString1, locale);
@@ -94,11 +95,11 @@ public abstract class s
   {
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: resolve system error.");
-      paramString = bw.K(paramString, "e");
+      ac.w("MicroMsg.NetScenePayBase", "hy: resolve system error.");
+      paramString = bv.L(paramString, "e");
       if (paramString != null)
       {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetScenePayBase", "hy: CDN error!");
+        ac.d("MicroMsg.NetScenePayBase", "hy: CDN error!");
         parame.errMsg = ((String)paramString.get(".e.Content"));
       }
     }
@@ -108,12 +109,12 @@ public abstract class s
     }
     if ((paramInt2 == -1) || (paramInt2 == -500))
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: network error");
-      parame.errMsg = aj.getContext().getString(2131765520);
+      ac.w("MicroMsg.NetScenePayBase", "hy: network error");
+      parame.errMsg = ai.getContext().getString(2131765520);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: unknown system error");
-    parame.errMsg = aj.getContext().getString(2131765224);
+    ac.w("MicroMsg.NetScenePayBase", "hy: unknown system error");
+    parame.errMsg = ai.getContext().getString(2131765224);
   }
   
   public void addRequestData(Map<String, String> paramMap)
@@ -160,14 +161,14 @@ public abstract class s
   
   public abstract void configRequest(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract int doSceneSimulately(com.tencent.mm.al.b paramb, com.tencent.mm.network.e parame, g paramg);
+  public abstract int doSceneSimulately(com.tencent.mm.ak.b paramb, com.tencent.mm.network.e parame, g paramg);
   
   public int getCgicmdForKV()
   {
     return getPayCgicmd();
   }
   
-  public com.tencent.mm.al.b getCommReqResp()
+  public com.tencent.mm.ak.b getCommReqResp()
   {
     return this.rr;
   }
@@ -186,7 +187,7 @@ public abstract class s
   
   public abstract int getPayCgicmd();
   
-  public abstract x getRetModel(com.tencent.mm.al.b paramb);
+  public abstract x getRetModel(com.tencent.mm.ak.b paramb);
   
   public String getReturnUrl()
   {
@@ -230,24 +231,24 @@ public abstract class s
   {
     this.SVR_ERR_TYPE = paramInt2;
     this.SVR_ERR_CODE = paramInt3;
-    if ((ab.hWz) && (1686 == getPayCgicmd()))
+    if ((ab.iwD) && (1686 == getPayCgicmd()))
     {
       paramInt3 = -1;
       paramInt2 = 3;
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "cgi: %d, rrType %d, rrCgi %s, PayCgicmd %s, errType %d, errCode %d, errMsg %s, this: %s ", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramq.getType()), paramq.getUri(), Integer.valueOf(getPayCgicmd()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, toString() });
-      Object localObject1 = getRetModel((com.tencent.mm.al.b)paramq);
-      int i = ((x)localObject1).DEw;
-      String str2 = ((x)localObject1).DEx;
-      int j = ((x)localObject1).IdR;
-      String str1 = ((x)localObject1).oXw;
+      ac.i("MicroMsg.NetScenePayBase", "cgi: %d, rrType %d, rrCgi %s, PayCgicmd %s, errType %d, errCode %d, errMsg %s, this: %s ", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramq.getType()), paramq.getUri(), Integer.valueOf(getPayCgicmd()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, toString() });
+      Object localObject1 = getRetModel((com.tencent.mm.ak.b)paramq);
+      int i = ((x)localObject1).EZR;
+      String str2 = ((x)localObject1).EZS;
+      int j = ((x)localObject1).JFt;
+      String str1 = ((x)localObject1).pAH;
       paramInt1 = -10088;
-      paramq = aj.getContext().getString(2131765224);
+      paramq = ai.getContext().getString(2131765224);
       paramArrayOfByte = null;
-      localObject1 = z.b(((x)localObject1).DEv);
-      if (!bt.isNullOrNil((String)localObject1)) {}
+      localObject1 = z.b(((x)localObject1).EZQ);
+      if (!bs.isNullOrNil((String)localObject1)) {}
       for (;;)
       {
         try
@@ -285,21 +286,21 @@ public abstract class s
               if (((JSONObject)localObject1).optInt("del_cert", 0) != 0)
               {
                 paramArrayOfByte = paramq;
-                ad.fkc();
+                ad.fAs();
                 paramArrayOfByte = paramq;
                 localObject2 = ad.getCrtNo();
                 paramArrayOfByte = paramq;
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "clean token %s", new Object[] { localObject2 });
+                ac.i("MicroMsg.NetScenePayBase", "clean token %s", new Object[] { localObject2 });
                 paramArrayOfByte = paramq;
-                ad.fkc().aNb((String)localObject2);
+                ad.fAs().aSE((String)localObject2);
               }
               paramArrayOfByte = paramq;
-              this.jumpRemind = m.bz((JSONObject)localObject1);
+              this.jumpRemind = m.bA((JSONObject)localObject1);
               paramArrayOfByte = paramq;
               this.hasRevServerRep = true;
               paramArrayOfByte = (byte[])localObject1;
               localObject1 = str1;
-              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "tenpayResp: cgi: %d, cmd: %d, errType: %d, errCode: %d, errMsg: %s, platRet: %d, platMsg: %s, biz_ErrType: %d, biz_ErrMsg: %s, retcode: %d, retMsg: %s, json: %s this %s", new Object[] { Integer.valueOf(getType()), Integer.valueOf(getPayCgicmd()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(i), str2, Integer.valueOf(j), localObject1, Integer.valueOf(paramInt1), paramq, paramArrayOfByte, toString() });
+              ac.i("MicroMsg.NetScenePayBase", "tenpayResp: cgi: %d, cmd: %d, errType: %d, errCode: %d, errMsg: %s, platRet: %d, platMsg: %s, biz_ErrType: %d, biz_ErrMsg: %s, retcode: %d, retMsg: %s, json: %s this %s", new Object[] { Integer.valueOf(getType()), Integer.valueOf(getPayCgicmd()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(i), str2, Integer.valueOf(j), localObject1, Integer.valueOf(paramInt1), paramq, paramArrayOfByte, toString() });
               paramString = getRetModel(paramInt2, paramInt3, paramString, i, str2, j, (String)localObject1, paramInt1, paramq);
               reportCellInfo(paramInt2, paramInt3);
               if (paramArrayOfByte == null) {
@@ -313,13 +314,13 @@ public abstract class s
               if (!this.isChildConsume) {
                 continue;
               }
-              com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetScenePayBase", "hy: user consumed the call back");
+              ac.d("MicroMsg.NetScenePayBase", "hy: user consumed the call back");
               return;
             }
             paramArrayOfByte = paramq;
             this.crt_wording = "";
             continue;
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: json resolve error: error when resolving error code : " + localException1.toString());
+            ac.w("MicroMsg.NetScenePayBase", "hy: json resolve error: error when resolving error code : " + localException1.toString());
           }
           catch (Exception localException1)
           {
@@ -333,14 +334,14 @@ public abstract class s
           continue;
         }
         paramInt1 = -10089;
-        localObject1 = aj.getContext().getString(2131765337);
+        localObject1 = ai.getContext().getString(2131765337);
         continue;
-        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.NetScenePayBase", "hy: respString is null");
+        ac.w("MicroMsg.NetScenePayBase", "hy: respString is null");
         localObject1 = localException1;
         continue;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "hy: ret code is not ok and should not resolve when error");
+        ac.i("MicroMsg.NetScenePayBase", "hy: ret code is not ok and should not resolve when error");
         continue;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "hy: no json object when doing business");
+        ac.i("MicroMsg.NetScenePayBase", "hy: no json object when doing business");
         continue;
         this.callback.onSceneEnd(paramString.errType, paramString.errCode, paramString.errMsg, this);
         return;
@@ -362,41 +363,41 @@ public abstract class s
     onGYNetEnd2(parame, paramJSONObject);
   }
   
-  public abstract void putToReqText(com.tencent.mm.al.b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t);
+  public abstract void putToReqText(com.tencent.mm.ak.b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t);
   
   public void putToRequest(StringBuilder paramStringBuilder, String paramString)
   {
     paramStringBuilder.append(paramString);
   }
   
-  public abstract void putToWXReqText(com.tencent.mm.al.b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t);
+  public abstract void putToWXReqText(com.tencent.mm.ak.b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t);
   
   public void reportCellInfo(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 0) {}
     try
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetScenePayBase", "errType is OK, reportCellInfo do nothing");
+      ac.e("MicroMsg.NetScenePayBase", "errType is OK, reportCellInfo do nothing");
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetScenePayBase", "reportCellInfo error. %s", new Object[] { localException.getMessage() });
+      ac.e("MicroMsg.NetScenePayBase", "reportCellInfo error. %s", new Object[] { localException.getMessage() });
       return;
     }
     if (!k.shouldReportCellInfo())
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetScenePayBase", "shouldReportCellInfo is false, reportCellInfo do nothing");
+      ac.e("MicroMsg.NetScenePayBase", "shouldReportCellInfo is false, reportCellInfo do nothing");
       return;
     }
-    Object localObject1 = k.ebS();
-    if ((localObject1 != null) && (!bt.isNullOrNil(((az)localObject1).Cvi)) && (!bt.isNullOrNil(((az)localObject1).Cvj)))
+    Object localObject1 = k.ero();
+    if ((localObject1 != null) && (!bs.isNullOrNil(((bb)localObject1).DND)) && (!bs.isNullOrNil(((bb)localObject1).DNE)))
     {
       int i = getPayCgicmd();
-      String str7 = ((az)localObject1).Cvi;
-      String str8 = ((az)localObject1).Cvh;
-      String str9 = ((az)localObject1).Cvj;
-      if (!bt.isNullOrNil(str9))
+      String str7 = ((bb)localObject1).DND;
+      String str8 = ((bb)localObject1).DNC;
+      String str9 = ((bb)localObject1).DNE;
+      if (!bs.isNullOrNil(str9))
       {
         int j = str9.length();
         localObject1 = "";
@@ -410,7 +411,7 @@ public abstract class s
         Object localObject2;
         if (j > 5000)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetScenePayBase", "reportCellInfo. cell info is too long to report");
+          ac.e("MicroMsg.NetScenePayBase", "reportCellInfo. cell info is too long to report");
           str1 = str6;
           str2 = str5;
           str3 = str4;
@@ -418,20 +419,20 @@ public abstract class s
         }
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetScenePayBase", "reportCellInfo do report");
+          ac.e("MicroMsg.NetScenePayBase", "reportCellInfo do report");
           localObject3 = new p();
-          ((p)localObject3).dHR = i;
-          ((p)localObject3).dHS = paramInt1;
-          ((p)localObject3).dHT = paramInt2;
-          ((p)localObject3).dHU = ((p)localObject3).t("EncryptKey", str7, true);
-          ((p)localObject3).dHV = ((p)localObject3).t("EncryptUserinfo", str8, true);
-          ((p)localObject3).dHW = ((p)localObject3).t("EncryptCellinfoLength", String.valueOf(j), true);
-          ((p)localObject3).dHX = ((p)localObject3).t("EncryptCellinfo_01", (String)localObject1, true);
-          ((p)localObject3).dHY = ((p)localObject3).t("EncryptCellinfo_02", str1, true);
-          ((p)localObject3).dHZ = ((p)localObject3).t("EncryptCellinfo_03", str2, true);
-          ((p)localObject3).dIa = ((p)localObject3).t("EncryptCellinfo_04", str3, true);
-          ((p)localObject3).dIb = ((p)localObject3).t("EncryptCellinfo_05", (String)localObject2, true);
-          ((p)localObject3).aBj();
+          ((p)localObject3).dFE = i;
+          ((p)localObject3).dFF = paramInt1;
+          ((p)localObject3).dFG = paramInt2;
+          ((p)localObject3).dFH = ((p)localObject3).t("EncryptKey", str7, true);
+          ((p)localObject3).dFI = ((p)localObject3).t("EncryptUserinfo", str8, true);
+          ((p)localObject3).dFJ = ((p)localObject3).t("EncryptCellinfoLength", String.valueOf(j), true);
+          ((p)localObject3).dFK = ((p)localObject3).t("EncryptCellinfo_01", (String)localObject1, true);
+          ((p)localObject3).dFL = ((p)localObject3).t("EncryptCellinfo_02", str1, true);
+          ((p)localObject3).dFM = ((p)localObject3).t("EncryptCellinfo_03", str2, true);
+          ((p)localObject3).dFN = ((p)localObject3).t("EncryptCellinfo_04", str3, true);
+          ((p)localObject3).dFO = ((p)localObject3).t("EncryptCellinfo_05", (String)localObject2, true);
+          ((p)localObject3).aHZ();
           return;
           if (j > 4000)
           {
@@ -491,7 +492,7 @@ public abstract class s
     return false;
   }
   
-  public void setCommReqResp(com.tencent.mm.al.b paramb)
+  public void setCommReqResp(com.tencent.mm.ak.b paramb)
   {
     this.rr = paramb;
   }
@@ -514,49 +515,49 @@ public abstract class s
     }
     if (paramPayInfo == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.NetScenePayBase", "Cmd : " + getPayCgicmd() + ", payInfo is null");
+      ac.e("MicroMsg.NetScenePayBase", "Cmd : " + getPayCgicmd() + ", payInfo is null");
       ((Map)localObject).put("devicename", Build.MODEL);
       setWXRequestData((Map)localObject);
       return;
     }
-    paramMap1.put("req_key", paramPayInfo.dcE);
+    paramMap1.put("req_key", paramPayInfo.dac);
     paramMap1.put("partner_id", paramPayInfo.partnerId);
-    paramMap1.put("pay_sign", paramPayInfo.dCx);
-    if (paramPayInfo.Cov >= 0) {
-      paramMap1.put("auto_deduct_flag", paramPayInfo.Cov);
+    paramMap1.put("pay_sign", paramPayInfo.dAj);
+    if (paramPayInfo.DGN >= 0) {
+      paramMap1.put("auto_deduct_flag", paramPayInfo.DGN);
     }
-    if (paramPayInfo.dtb > 0) {
-      paramMap1.put("pay_scene", paramPayInfo.dtb);
+    if (paramPayInfo.dqL > 0) {
+      paramMap1.put("pay_scene", paramPayInfo.dqL);
     }
-    if (paramPayInfo.dtc >= 0) {
-      paramMap1.put("bindbankscene", paramPayInfo.dtc);
+    if (paramPayInfo.dqM >= 0) {
+      paramMap1.put("bindbankscene", paramPayInfo.dqM);
     }
-    if (!bt.isNullOrNil(paramPayInfo.Cow)) {
-      paramMap1.put("deduct_bank_type", paramPayInfo.Cow);
+    if (!bs.isNullOrNil(paramPayInfo.DGO)) {
+      paramMap1.put("deduct_bank_type", paramPayInfo.DGO);
     }
-    if (!bt.isNullOrNil(paramPayInfo.Cox)) {
-      paramMap1.put("deduct_bind_serial", paramPayInfo.Cox);
+    if (!bs.isNullOrNil(paramPayInfo.DGP)) {
+      paramMap1.put("deduct_bind_serial", paramPayInfo.DGP);
     }
     if (paramBoolean) {
       paramMap1.put("use_touch", "0");
     }
     for (;;)
     {
-      paramMap1.put("fp_identify_num", paramPayInfo.ApX);
-      if (!TextUtils.isEmpty(paramPayInfo.dlK)) {
-        paramMap1.put("encrypted_pay_info", URLEncoder.encode(paramPayInfo.dlK));
+      paramMap1.put("fp_identify_num", paramPayInfo.BIr);
+      if (!TextUtils.isEmpty(paramPayInfo.djs)) {
+        paramMap1.put("encrypted_pay_info", URLEncoder.encode(paramPayInfo.djs));
       }
-      if (!TextUtils.isEmpty(paramPayInfo.dlL)) {
-        paramMap1.put("encrypted_rsa_sign", URLEncoder.encode(paramPayInfo.dlL));
+      if (!TextUtils.isEmpty(paramPayInfo.djt)) {
+        paramMap1.put("encrypted_rsa_sign", URLEncoder.encode(paramPayInfo.djt));
       }
       ((Map)localObject).put("uuid", paramPayInfo.uuid);
       ((Map)localObject).put("appid", paramPayInfo.appId);
-      ((Map)localObject).put("appsource", paramPayInfo.Axg);
+      ((Map)localObject).put("appsource", paramPayInfo.BPA);
       ((Map)localObject).put("channel", paramPayInfo.channel);
       ((Map)localObject).put("devicename", Build.MODEL);
-      ((Map)localObject).put("soter_req", paramPayInfo.dsE);
+      ((Map)localObject).put("soter_req", paramPayInfo.dqo);
       return;
-      paramMap1.put("use_touch", paramPayInfo.ApW);
+      paramMap1.put("use_touch", paramPayInfo.BIq);
     }
   }
   
@@ -569,13 +570,13 @@ public abstract class s
     if (localObject1 != null) {
       ((Map)localObject1).remove("uin");
     }
-    if (!com.tencent.mm.pluginsdk.wallet.e.eBc()) {
-      ((Map)localObject1).put("jsapi_reqkey", com.tencent.mm.pluginsdk.wallet.e.eBd());
+    if (!com.tencent.mm.pluginsdk.wallet.e.eQw()) {
+      ((Map)localObject1).put("jsapi_reqkey", com.tencent.mm.pluginsdk.wallet.e.eQx());
     }
     this._request = ((Map)localObject1);
     configRequest(true, true);
     paramMap = (String)((Map)localObject1).get("req_key");
-    getCommReqResp().getReqObj().setRouteInfo(com.tencent.mm.wallet_core.ui.e.aNn(paramMap));
+    getCommReqResp().getReqObj().setRouteInfo(com.tencent.mm.wallet_core.ui.e.aSQ(paramMap));
     StringBuilder localStringBuilder;
     if (localObject1 != null)
     {
@@ -589,7 +590,7 @@ public abstract class s
         Object localObject2 = paramMap[i];
         String str = (String)((Map)localObject1).get(localObject2);
         k = j;
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
           if (j != 0) {
             localStringBuilder.append("&");
@@ -601,10 +602,10 @@ public abstract class s
         }
         i += 1;
       }
-      if (!com.tencent.mm.sdk.a.b.eEQ()) {
+      if (!com.tencent.mm.sdk.a.b.eUk()) {
         break label418;
       }
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "RQ: Cmd : " + getPayCgicmd() + ", req = " + localStringBuilder.toString() + " " + toString() + " " + bt.eGN().toString());
+      ac.i("MicroMsg.NetScenePayBase", "RQ: Cmd : " + getPayCgicmd() + ", req = " + localStringBuilder.toString() + " " + toString() + " " + bs.eWi().toString());
       localObject1 = getEncryptUrl(localStringBuilder.toString());
       if (j == 0) {
         break label473;
@@ -621,9 +622,9 @@ public abstract class s
       paramMap = localStringBuilder.toString().getBytes();
       paramMap = new SKBuiltinBuffer_t().setBuffer(paramMap);
       putToReqText(this.rr, paramMap);
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "setRequestData getPayCgicmd: %s type: %s this: %s cgi %s ", new Object[] { Integer.valueOf(getPayCgicmd()), Integer.valueOf(getType()), toString(), this.rr.getUri() });
+      ac.i("MicroMsg.NetScenePayBase", "setRequestData getPayCgicmd: %s type: %s this: %s cgi %s ", new Object[] { Integer.valueOf(getPayCgicmd()), Integer.valueOf(getType()), toString(), this.rr.getUri() });
       return;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "RQ: Cmd : " + getPayCgicmd() + ", req = " + localStringBuilder.toString() + " " + toString());
+      ac.i("MicroMsg.NetScenePayBase", "RQ: Cmd : " + getPayCgicmd() + ", req = " + localStringBuilder.toString() + " " + toString());
       break;
     }
   }
@@ -633,19 +634,19 @@ public abstract class s
     configRequest(false, false);
     if (paramMap != null)
     {
-      Object localObject1 = k.ebS();
+      Object localObject1 = k.ero();
       if (localObject1 != null)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetScenePayBase", "location found");
-        paramMap.put("province", ((az)localObject1).evz);
+        ac.i("MicroMsg.NetScenePayBase", "location found");
+        paramMap.put("province", ((bb)localObject1).exV);
         if (!paramMap.containsKey("city")) {
-          paramMap.put("city", ((az)localObject1).evA);
+          paramMap.put("city", ((bb)localObject1).exW);
         }
-        paramMap.put("location_timestamp", ((az)localObject1).Cve);
-        paramMap.put("encrypt_key", ((az)localObject1).Cvi);
-        paramMap.put("encrypt_userinfo", ((az)localObject1).Cvh);
+        paramMap.put("location_timestamp", ((bb)localObject1).DNz);
+        paramMap.put("encrypt_key", ((bb)localObject1).DND);
+        paramMap.put("encrypt_userinfo", ((bb)localObject1).DNC);
         if (k.shouldReportCellInfo()) {
-          paramMap.put("encrypt_cellinfo", ((az)localObject1).Cvj);
+          paramMap.put("encrypt_cellinfo", ((bb)localObject1).DNE);
         }
       }
       localObject1 = paramMap.keySet().toArray();
@@ -658,7 +659,7 @@ public abstract class s
         Object localObject2 = localObject1[i];
         String str = (String)paramMap.get(localObject2);
         k = j;
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
           if (j != 0) {
             localStringBuilder.append("&");
@@ -670,10 +671,10 @@ public abstract class s
         }
         i += 1;
       }
-      if (com.tencent.mm.sdk.a.b.eEQ()) {
-        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetScenePayBase", "Cmd : " + getPayCgicmd() + ", wxreq = " + localStringBuilder.toString());
+      if (com.tencent.mm.sdk.a.b.eUk()) {
+        ac.d("MicroMsg.NetScenePayBase", "Cmd : " + getPayCgicmd() + ", wxreq = " + localStringBuilder.toString());
       }
-      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetScenePayBase", "wxreq: " + localStringBuilder.toString());
+      ac.d("MicroMsg.NetScenePayBase", "wxreq: " + localStringBuilder.toString());
       paramMap = localStringBuilder.toString().getBytes();
       paramMap = new SKBuiltinBuffer_t().setBuffer(paramMap);
       putToWXReqText(this.rr, paramMap);

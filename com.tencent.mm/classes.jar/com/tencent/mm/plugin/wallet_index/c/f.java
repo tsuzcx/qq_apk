@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aow;
-import com.tencent.mm.protocal.protobuf.aox;
-import com.tencent.mm.protocal.protobuf.bhi;
-import com.tencent.mm.protocal.protobuf.bhj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.asa;
+import com.tencent.mm.protocal.protobuf.asb;
+import com.tencent.mm.protocal.protobuf.bla;
+import com.tencent.mm.protocal.protobuf.blb;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class f
   extends w
 {
-  public bhi Axj;
-  public bhj Axk;
+  public bla BPD;
+  public blb BPE;
   private g callback;
   public int errCode;
   private b rr;
@@ -28,24 +28,24 @@ public final class f
   {
     AppMethodBeat.i(71819);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new aow();
-    ((b.a)localObject).gUV = new aox();
+    ((b.a)localObject).hvt = new asa();
+    ((b.a)localObject).hvu = new asb();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/boss/getandroidiappackage";
     ((b.a)localObject).funcId = 1130;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (aow)this.rr.gUS.gUX;
-    ((aow)localObject).dlB = paramString1;
-    ((aow)localObject).DqA = paramInt1;
-    ((aow)localObject).DqB = Integer.parseInt(paramString2);
-    ((aow)localObject).desc = paramString3;
-    ((aow)localObject).count = paramInt2;
-    ((aow)localObject).scene = 13;
-    ((aow)localObject).DqC = paramString4;
-    ((aow)localObject).DqD = paramString5;
-    ((aow)localObject).sign = paramString6;
-    ((aow)localObject).DqE = paramString7;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (asa)this.rr.hvr.hvw;
+    ((asa)localObject).djj = paramString1;
+    ((asa)localObject).ELC = paramInt1;
+    ((asa)localObject).ELD = Integer.parseInt(paramString2);
+    ((asa)localObject).desc = paramString3;
+    ((asa)localObject).count = paramInt2;
+    ((asa)localObject).scene = 13;
+    ((asa)localObject).ELE = paramString4;
+    ((asa)localObject).ELF = paramString5;
+    ((asa)localObject).sign = paramString6;
+    ((asa)localObject).ELG = paramString7;
     AppMethodBeat.o(71819);
   }
   
@@ -66,21 +66,21 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(71820);
-    ad.e("MicroMsg.NetSceneGetAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
+    ac.e("MicroMsg.NetSceneGetAndroidIapPackage", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(71820);
       return;
     }
-    paramString = (aox)this.rr.gUT.gUX;
-    ad.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.dmD + ",errMsg:" + paramString.dmE);
-    paramInt1 = paramString.dmD;
-    paramq = paramString.dmE;
+    paramString = (asb)this.rr.hvs.hvw;
+    ac.e("MicroMsg.NetSceneGetAndroidIapPackage", "business: errCode:" + paramString.dkl + ",errMsg:" + paramString.dkm);
+    paramInt1 = paramString.dkl;
+    paramq = paramString.dkm;
     if (paramInt1 == 0)
     {
-      this.Axj = paramString.DqF;
-      this.Axk = paramString.DqG;
+      this.BPD = paramString.ELH;
+      this.BPE = paramString.ELI;
     }
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(71820);
@@ -88,7 +88,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.f
  * JD-Core Version:    0.7.0.1
  */

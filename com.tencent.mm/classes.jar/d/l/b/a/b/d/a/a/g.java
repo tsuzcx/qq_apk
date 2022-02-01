@@ -12,16 +12,16 @@ import d.l.b.a.b.f.b;
 
 public abstract interface g
 {
-  public static final g Jzj = new g()
+  public static final g LmC = new g()
   {
     public final void a(l paramAnonymousl, k paramAnonymousk)
     {
       AppMethodBeat.i(57675);
       if (paramAnonymousl == null) {
-        adP(3);
+        agL(3);
       }
       if (paramAnonymousk == null) {
-        adP(4);
+        agL(4);
       }
       AppMethodBeat.o(57675);
     }
@@ -30,10 +30,10 @@ public abstract interface g
     {
       AppMethodBeat.i(57674);
       if (paramAnonymousq == null) {
-        adP(1);
+        agL(1);
       }
       if (paramAnonymousam == null) {
-        adP(2);
+        agL(2);
       }
       AppMethodBeat.o(57674);
     }
@@ -42,7 +42,7 @@ public abstract interface g
     {
       AppMethodBeat.i(57677);
       if (paramAnonymousg == null) {
-        adP(7);
+        agL(7);
       }
       AppMethodBeat.o(57677);
     }
@@ -51,10 +51,10 @@ public abstract interface g
     {
       AppMethodBeat.i(57676);
       if (paramAnonymousn == null) {
-        adP(5);
+        agL(5);
       }
       if (paramAnonymousah == null) {
-        adP(6);
+        agL(6);
       }
       AppMethodBeat.o(57676);
     }
@@ -63,7 +63,7 @@ public abstract interface g
     {
       AppMethodBeat.i(57673);
       if (paramAnonymousb == null) {
-        adP(0);
+        agL(0);
       }
       AppMethodBeat.o(57673);
       return null;
@@ -82,7 +82,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.g
  * JD-Core Version:    0.7.0.1
  */

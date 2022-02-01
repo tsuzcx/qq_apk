@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 
 public abstract interface ah
 {
-  public static final ah iHQ = new ah()
+  public static final ah jhS = new ah()
   {
     public final Boolean b(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC)
     {
@@ -20,7 +20,7 @@ public abstract interface ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ah
  * JD-Core Version:    0.7.0.1
  */

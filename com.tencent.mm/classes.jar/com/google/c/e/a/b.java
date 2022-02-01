@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  final byte[] bMk;
-  private int bMl;
+  final byte[] bJS;
+  private int bJT;
   
   b(int paramInt)
   {
     AppMethodBeat.i(12222);
-    this.bMk = new byte[paramInt];
-    this.bMl = 0;
+    this.bJS = new byte[paramInt];
+    this.bJT = 0;
     AppMethodBeat.o(12222);
   }
   
@@ -20,9 +20,9 @@ final class b
     int i = 0;
     if (i < paramInt)
     {
-      int k = this.bMl;
-      this.bMl = (k + 1);
-      byte[] arrayOfByte = this.bMk;
+      int k = this.bJT;
+      this.bJT = (k + 1);
+      byte[] arrayOfByte = this.bJS;
       if (paramBoolean) {}
       for (int j = 1;; j = 0)
       {
@@ -35,7 +35,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.e.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.f;
-import com.tencent.mm.protocal.protobuf.amz;
-import com.tencent.mm.protocal.protobuf.bgb;
-import com.tencent.mm.protocal.protobuf.bgc;
-import com.tencent.mm.protocal.protobuf.bge;
-import com.tencent.mm.protocal.protobuf.bxt;
-import com.tencent.mm.protocal.protobuf.bxx;
-import com.tencent.mm.protocal.protobuf.cqr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aqd;
+import com.tencent.mm.protocal.protobuf.bjt;
+import com.tencent.mm.protocal.protobuf.bju;
+import com.tencent.mm.protocal.protobuf.bjw;
+import com.tencent.mm.protocal.protobuf.cco;
+import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.protocal.protobuf.cvy;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vending.j.c;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,99 +25,99 @@ import org.json.JSONObject;
 
 final class g
 {
-  static String a(bge parambge, String paramString)
+  static String a(bjw parambjw, String paramString)
   {
-    AppMethodBeat.i(190899);
-    Object localObject = parambge.DDT.iterator();
+    AppMethodBeat.i(195294);
+    Object localObject = parambjw.EZo.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      bxx localbxx = (bxx)((Iterator)localObject).next();
-      if ((localbxx != null) && (localbxx.sessionId.equals(paramString)))
+      ccs localccs = (ccs)((Iterator)localObject).next();
+      if ((localccs != null) && (localccs.sessionId.equals(paramString)))
       {
-        parambge = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.WI(localbxx.DUm);
-        AppMethodBeat.o(190899);
-        return parambge;
+        parambjw = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.abf(localccs.FqZ);
+        AppMethodBeat.o(195294);
+        return parambjw;
       }
     }
-    parambge = parambge.DDV.iterator();
-    while (parambge.hasNext())
+    parambjw = parambjw.EZq.iterator();
+    while (parambjw.hasNext())
     {
-      localObject = (bxt)parambge.next();
-      if ((localObject != null) && ((((bxt)localObject).dpw.equals(paramString)) || ((((bxt)localObject).DDP + "_" + ((bxt)localObject).startTime).equals(paramString))))
+      localObject = (cco)parambjw.next();
+      if ((localObject != null) && ((((cco)localObject).dnh.equals(paramString)) || ((((cco)localObject).qoi + "_" + ((cco)localObject).startTime).equals(paramString))))
       {
-        parambge = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.WI(((bxt)localObject).DUm);
-        AppMethodBeat.o(190899);
-        return parambge;
+        parambjw = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.abf(((cco)localObject).FqZ);
+        AppMethodBeat.o(195294);
+        return parambjw;
       }
     }
-    AppMethodBeat.o(190899);
+    AppMethodBeat.o(195294);
     return null;
   }
   
-  private static List<c<String, String>> a(bge parambge, bgb parambgb, bxx parambxx)
+  private static List<c<String, String>> a(bjw parambjw, bjt parambjt, ccs paramccs)
   {
     AppMethodBeat.i(177400);
-    parambgb = j.d(parambgb);
-    parambxx = i.a(parambgb, parambxx);
-    i.U(parambxx);
-    ad.w("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, toJson, flow: %d, %d", new Object[] { Integer.valueOf(parambgb.size()), Integer.valueOf(parambxx.size()) });
-    if ((parambgb.isEmpty()) || (parambxx.isEmpty()))
+    parambjt = j.d(parambjt);
+    paramccs = i.a(parambjt, paramccs);
+    i.V(paramccs);
+    ac.w("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, toJson, flow: %d, %d", new Object[] { Integer.valueOf(parambjt.size()), Integer.valueOf(paramccs.size()) });
+    if ((parambjt.isEmpty()) || (paramccs.isEmpty()))
     {
-      ad.i("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, toJson, PageFlowMap Empty: %d", new Object[] { Integer.valueOf(parambxx.size()) });
+      ac.i("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, toJson, PageFlowMap Empty: %d", new Object[] { Integer.valueOf(paramccs.size()) });
       AppMethodBeat.o(177400);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator1 = parambxx.entrySet().iterator();
+    Iterator localIterator1 = paramccs.entrySet().iterator();
     while (localIterator1.hasNext())
     {
-      parambgb = (List)((Map.Entry)localIterator1.next()).getValue();
-      if (!parambgb.isEmpty())
+      parambjt = (List)((Map.Entry)localIterator1.next()).getValue();
+      if (!parambjt.isEmpty())
       {
-        cqr localcqr1 = (cqr)parambgb.get(0);
-        if (localcqr1.qHI)
+        cvy localcvy1 = (cvy)parambjt.get(0);
+        if (localcvy1.rAJ)
         {
-          JSONObject localJSONObject1 = i.j(parambge);
+          JSONObject localJSONObject1 = i.j(parambjw);
           if (localJSONObject1 != null)
           {
             JSONArray localJSONArray = new JSONArray();
-            Iterator localIterator2 = parambgb.iterator();
+            Iterator localIterator2 = parambjt.iterator();
             while (localIterator2.hasNext())
             {
-              cqr localcqr2 = (cqr)localIterator2.next();
-              ad.d("HellSessionPageDetailReport", "HABBYGE-MALI, HellSessionPageDetaiReport, toJson, flow: %s, %s, %b, %d", new Object[] { Long.valueOf(localcqr2.Doj), localcqr2.dpw, Boolean.valueOf(localcqr2.EjC), Integer.valueOf(localcqr2.EjD.size()) });
+              cvy localcvy2 = (cvy)localIterator2.next();
+              ac.d("HellSessionPageDetailReport", "HABBYGE-MALI, HellSessionPageDetaiReport, toJson, flow: %s, %s, %b, %d", new Object[] { Long.valueOf(localcvy2.EJj), localcvy2.dnh, Boolean.valueOf(localcvy2.FGA), Integer.valueOf(localcvy2.FGB.size()) });
               JSONObject localJSONObject2 = new JSONObject();
               try
               {
-                localJSONObject2.put("pagePathId", localcqr2.Doj);
-                localJSONObject2.put("sessionId", localcqr2.dpw);
-                parambxx = a(parambge, localcqr2.dpw);
-                parambgb = parambxx;
-                if (parambxx == null) {
-                  parambgb = "";
+                localJSONObject2.put("pagePathId", localcvy2.EJj);
+                localJSONObject2.put("sessionId", localcvy2.dnh);
+                paramccs = a(parambjw, localcvy2.dnh);
+                parambjt = paramccs;
+                if (paramccs == null) {
+                  parambjt = "";
                 }
-                localJSONObject2.put("lastSessionId", parambgb);
-                localJSONObject2.put("pagePath", a(localcqr2.EjD, localJSONObject2));
+                localJSONObject2.put("lastSessionId", parambjt);
+                localJSONObject2.put("pagePath", a(localcvy2.FGB, localJSONObject2));
                 localJSONArray.put(localJSONObject2);
               }
-              catch (Exception parambgb)
+              catch (Exception parambjt)
               {
-                ad.printErrStackTrace("HellSessionPageDetailReport", parambgb, "HABBYGE-MALI, toJson, crash-1: %s", new Object[] { parambgb.getMessage() });
+                ac.printErrStackTrace("HellSessionPageDetailReport", parambjt, "HABBYGE-MALI, toJson, crash-1: %s", new Object[] { parambjt.getMessage() });
               }
             }
             if (localJSONArray.length() > 0) {
               try
               {
                 localJSONObject1.put("content", localJSONArray);
-                if (!TextUtils.isEmpty(localcqr1.Doi))
+                if (!TextUtils.isEmpty(localcvy1.EJi))
                 {
-                  ad.i("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, sidJSONObject: %s", new Object[] { localJSONObject1.toString() });
-                  localArrayList.add(com.tencent.mm.vending.j.a.L(localcqr1.Doi, localJSONObject1.toString()));
+                  ac.i("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, sidJSONObject: %s", new Object[] { localJSONObject1.toString() });
+                  localArrayList.add(com.tencent.mm.vending.j.a.L(localcvy1.EJi, localJSONObject1.toString()));
                 }
               }
-              catch (Exception parambgb)
+              catch (Exception parambjt)
               {
-                ad.printErrStackTrace("HellSessionPageDetailReport", parambgb, "HABBYGE-MALI, createJSONObjectHead, crash-2: %s", new Object[] { parambgb.getMessage() });
+                ac.printErrStackTrace("HellSessionPageDetailReport", parambjt, "HABBYGE-MALI, createJSONObjectHead, crash-2: %s", new Object[] { parambjt.getMessage() });
               }
             }
           }
@@ -128,7 +128,7 @@ final class g
     return localArrayList;
   }
   
-  private static JSONArray a(List<bgc> paramList, JSONObject paramJSONObject)
+  private static JSONArray a(List<bju> paramList, JSONObject paramJSONObject)
   {
     long l1 = 0L;
     AppMethodBeat.i(169360);
@@ -138,17 +138,17 @@ final class g
     {
       while (i < paramList.size())
       {
-        bgc localbgc = (bgc)paramList.get(i);
+        bju localbju = (bju)paramList.get(i);
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("pageName", localbgc.DDP);
-        localJSONObject.put("tbe", localbgc.startTime);
-        long l2 = Math.max(localbgc.duration, 0L);
+        localJSONObject.put("pageName", localbju.qoi);
+        localJSONObject.put("tbe", localbju.startTime);
+        long l2 = Math.max(localbju.duration, 0L);
         localJSONObject.put("in", l2);
         l1 += l2;
         if (i == 0) {
-          paramJSONObject.put("tbe", localbgc.startTime);
+          paramJSONObject.put("tbe", localbju.startTime);
         }
-        j.a(localJSONObject, localbgc, false);
+        j.a(localJSONObject, localbju, false);
         localJSONArray.put(localJSONObject);
         i += 1;
       }
@@ -158,47 +158,47 @@ final class g
     {
       for (;;)
       {
-        ad.printErrStackTrace("HellSessionPageDetailReport", paramList, "HABBYGE-MALI, createPagePathJsonArray json crash", new Object[0]);
+        ac.printErrStackTrace("HellSessionPageDetailReport", paramList, "HABBYGE-MALI, createPagePathJsonArray json crash", new Object[0]);
       }
     }
     AppMethodBeat.o(169360);
     return localJSONArray;
   }
   
-  static void a(bge parambge, bgb parambgb, amz paramamz, bxx parambxx)
+  static void a(bjw parambjw, bjt parambjt, aqd paramaqd, ccs paramccs)
   {
     AppMethodBeat.i(177399);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.cbn()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (com.tencent.mm.plugin.expt.hellhound.core.b.getUin() == 0))
     {
-      ad.e("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, report: fetchHellhoundConfig FALSE !!");
+      ac.e("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, report: fetchHellhoundConfig FALSE !!");
       AppMethodBeat.o(177399);
       return;
     }
-    parambgb = a(parambge, parambgb, parambxx);
-    if (parambgb == null) {
-      ad.e("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, _reportSessionPage: logIdJsonList == null !!");
+    parambjt = a(parambjw, parambjt, paramccs);
+    if (parambjt == null) {
+      ac.e("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail, _reportSessionPage: logIdJsonList == null !!");
     }
     for (;;)
     {
-      cX(b.a(parambge, paramamz));
+      cZ(b.a(parambjw, paramaqd));
       AppMethodBeat.o(177399);
       return;
-      ad.i("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail: %d", new Object[] { Integer.valueOf(parambgb.size()) });
-      cX(parambgb);
+      ac.i("HellSessionPageDetailReport", "HABBYGE-MALI, SessionPageDetail: %d", new Object[] { Integer.valueOf(parambjt.size()) });
+      cZ(parambjt);
     }
   }
   
-  private static void cX(List<c<String, String>> paramList)
+  private static void cZ(List<c<String, String>> paramList)
   {
     AppMethodBeat.i(122238);
-    if (cY(h(paramList, f.cdo()))) {
-      f.pp(System.currentTimeMillis());
+    if (da(h(paramList, f.ckW()))) {
+      f.te(System.currentTimeMillis());
     }
     AppMethodBeat.o(122238);
   }
   
   /* Error */
-  private static boolean cY(List<c<String, String>> paramList)
+  private static boolean da(List<c<String, String>> paramList)
   {
     // Byte code:
     //   0: ldc_w 357
@@ -222,7 +222,7 @@ final class g
     //   39: invokeinterface 273 1 0
     //   44: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   47: aastore
-    //   48: invokestatic 143	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: invokestatic 143	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   51: aload_0
     //   52: invokeinterface 179 1 0
     //   57: astore_0
@@ -273,8 +273,8 @@ final class g
     //   154: ifne +32 -> 186
     //   157: ldc 116
     //   159: ldc_w 381
-    //   162: invokestatic 383	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   165: getstatic 389	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   162: invokestatic 383	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   165: getstatic 389	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   168: sipush 19354
     //   171: iconst_1
     //   172: anewarray 4	java/lang/Object
@@ -300,7 +300,7 @@ final class g
     //   208: aload 5
     //   210: invokevirtual 236	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   213: aastore
-    //   214: invokestatic 240	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   214: invokestatic 240	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   217: ldc 116
     //   219: ldc_w 397
     //   222: iconst_2
@@ -315,15 +315,15 @@ final class g
     //   235: iconst_1
     //   236: aload 4
     //   238: aastore
-    //   239: invokestatic 143	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   239: invokestatic 143	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   242: aload_3
     //   243: iconst_0
     //   244: invokevirtual 400	com/tencent/mm/vending/j/b:get	(I)Ljava/lang/Object;
     //   247: checkcast 43	java/lang/String
     //   250: iconst_m1
-    //   251: invokestatic 406	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   251: invokestatic 406	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
     //   254: aload 4
-    //   256: invokestatic 412	com/tencent/mm/plugin/expt/hellhound/a/f/f/d:aL	(ILjava/lang/String;)Z
+    //   256: invokestatic 412	com/tencent/mm/plugin/expt/hellhound/a/f/f/d:aO	(ILjava/lang/String;)Z
     //   259: pop
     //   260: iconst_1
     //   261: istore_2
@@ -435,14 +435,14 @@ final class g
     AppMethodBeat.o(184380);
     return paramList;
     label255:
-    ad.printErrStackTrace("HellSessionPageDetailReport", paramList, "HABBYGE-MALI, restoreSessionMap crash: %s", new Object[] { paramList.getMessage() });
+    ac.printErrStackTrace("HellSessionPageDetailReport", paramList, "HABBYGE-MALI, restoreSessionMap crash: %s", new Object[] { paramList.getMessage() });
     AppMethodBeat.o(184380);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.f.g
  * JD-Core Version:    0.7.0.1
  */

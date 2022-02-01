@@ -19,83 +19,83 @@ public class ScanMaskView
   extends View
 {
   private Paint mPaint;
-  private Path oMy;
-  private Rect vTA;
-  private Rect vTB;
-  private Rect vTC;
-  private Rect vTD;
-  private Rect vTE;
-  private Rect vTF;
-  private Rect vTG;
-  private Rect vTH;
-  private Rect vTI;
-  private int vTJ;
-  private long vTK;
-  private boolean vTL;
-  private int vTM;
-  private float vTN;
-  private float vTO;
-  private float vTP;
-  private float vTQ;
-  private Paint vTR;
-  private ValueAnimator vTS;
-  private a vTT;
-  private Bitmap vTs;
-  private Bitmap vTt;
-  private Bitmap vTu;
-  private Bitmap vTv;
-  int vTw;
-  int vTx;
-  private boolean vTy;
-  private Rect vTz;
+  private Path ppS;
+  private float xeA;
+  private float xeB;
+  private Paint xeC;
+  private ValueAnimator xeD;
+  private a xeE;
+  private Bitmap xed;
+  private Bitmap xee;
+  private Bitmap xef;
+  private Bitmap xeg;
+  int xeh;
+  int xei;
+  private boolean xej;
+  private Rect xek;
+  private Rect xel;
+  private Rect xem;
+  private Rect xen;
+  private Rect xeo;
+  private Rect xep;
+  private Rect xeq;
+  private Rect xer;
+  private Rect xes;
+  private Rect xet;
+  private int xeu;
+  private long xev;
+  private boolean xew;
+  private int xex;
+  private float xey;
+  private float xez;
   
   public ScanMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51913);
-    this.vTs = null;
-    this.vTt = null;
-    this.vTu = null;
-    this.vTv = null;
-    this.vTw = 0;
-    this.vTx = 0;
-    this.vTy = false;
-    this.vTz = new Rect();
-    this.vTA = new Rect();
-    this.vTB = new Rect();
-    this.vTC = new Rect();
-    this.vTD = new Rect();
-    this.vTE = new Rect();
-    this.vTF = new Rect();
-    this.vTG = new Rect();
-    this.vTH = new Rect();
-    this.oMy = new Path();
-    this.vTJ = 2131100819;
-    this.vTK = 0L;
-    this.vTL = false;
-    this.vTM = 300;
-    this.vTN = 0.0F;
-    this.vTO = 0.0F;
-    this.vTP = 0.0F;
-    this.vTQ = 0.0F;
-    this.vTS = null;
+    this.xed = null;
+    this.xee = null;
+    this.xef = null;
+    this.xeg = null;
+    this.xeh = 0;
+    this.xei = 0;
+    this.xej = false;
+    this.xek = new Rect();
+    this.xel = new Rect();
+    this.xem = new Rect();
+    this.xen = new Rect();
+    this.xeo = new Rect();
+    this.xep = new Rect();
+    this.xeq = new Rect();
+    this.xer = new Rect();
+    this.xes = new Rect();
+    this.ppS = new Path();
+    this.xeu = 2131100819;
+    this.xev = 0L;
+    this.xew = false;
+    this.xex = 300;
+    this.xey = 0.0F;
+    this.xez = 0.0F;
+    this.xeA = 0.0F;
+    this.xeB = 0.0F;
+    this.xeD = null;
     AppMethodBeat.o(51913);
   }
   
   public int getMaskAnimDuration()
   {
-    return this.vTM;
+    return this.xex;
   }
   
   public Rect getMaskRect()
   {
-    return this.vTI;
+    return this.xet;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(51914);
-    if ((this.vTI == null) || (this.vTy))
+    if ((this.xet == null) || (this.xej))
     {
       AppMethodBeat.o(51914);
       return;
@@ -104,71 +104,71 @@ public class ScanMaskView
     System.currentTimeMillis();
     int i = paramCanvas.save();
     this.mPaint.reset();
-    if (d.lg(18))
+    if (d.la(18))
     {
-      this.vTE.left = 0;
-      this.vTE.top = this.vTI.top;
-      this.vTE.right = this.vTI.left;
-      this.vTE.bottom = this.vTI.bottom;
-      this.vTF.left = this.vTI.left;
-      this.vTF.top = 0;
-      this.vTF.right = this.vTI.right;
-      this.vTF.bottom = this.vTI.top;
-      this.vTG.left = this.vTI.right;
-      this.vTG.top = this.vTI.top;
-      this.vTG.right = getWidth();
-      this.vTG.bottom = this.vTI.bottom;
-      this.vTH.left = this.vTI.left;
-      this.vTH.top = this.vTI.bottom;
-      this.vTH.right = this.vTI.right;
-      this.vTH.bottom = getHeight();
-      this.vTA.left = 0;
-      this.vTA.top = 0;
-      this.vTA.right = this.vTI.left;
-      this.vTA.bottom = this.vTI.top;
-      this.vTB.left = this.vTI.right;
-      this.vTB.top = 0;
-      this.vTB.right = getWidth();
-      this.vTB.bottom = this.vTI.top;
-      this.vTC.left = 0;
-      this.vTC.top = this.vTI.bottom;
-      this.vTC.right = this.vTI.left;
-      this.vTC.bottom = getHeight();
-      this.vTD.left = this.vTI.right;
-      this.vTD.top = this.vTI.bottom;
-      this.vTD.right = getWidth();
-      this.vTD.bottom = getHeight();
+      this.xep.left = 0;
+      this.xep.top = this.xet.top;
+      this.xep.right = this.xet.left;
+      this.xep.bottom = this.xet.bottom;
+      this.xeq.left = this.xet.left;
+      this.xeq.top = 0;
+      this.xeq.right = this.xet.right;
+      this.xeq.bottom = this.xet.top;
+      this.xer.left = this.xet.right;
+      this.xer.top = this.xet.top;
+      this.xer.right = getWidth();
+      this.xer.bottom = this.xet.bottom;
+      this.xes.left = this.xet.left;
+      this.xes.top = this.xet.bottom;
+      this.xes.right = this.xet.right;
+      this.xes.bottom = getHeight();
+      this.xel.left = 0;
+      this.xel.top = 0;
+      this.xel.right = this.xet.left;
+      this.xel.bottom = this.xet.top;
+      this.xem.left = this.xet.right;
+      this.xem.top = 0;
+      this.xem.right = getWidth();
+      this.xem.bottom = this.xet.top;
+      this.xen.left = 0;
+      this.xen.top = this.xet.bottom;
+      this.xen.right = this.xet.left;
+      this.xen.bottom = getHeight();
+      this.xeo.left = this.xet.right;
+      this.xeo.top = this.xet.bottom;
+      this.xeo.right = getWidth();
+      this.xeo.bottom = getHeight();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTE, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xep, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTF, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xeq, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTG, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xer, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTH, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xes, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTA, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xel, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTB, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xem, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTC, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xen, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.vTD, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xeo, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
       paramCanvas.restore();
     }
     for (;;)
@@ -181,43 +181,43 @@ public class ScanMaskView
       this.mPaint.setStrokeWidth(1.0F);
       this.mPaint.setColor(-3355444);
       this.mPaint.setAntiAlias(true);
-      paramCanvas.drawRect(this.vTI, this.mPaint);
+      paramCanvas.drawRect(this.xet, this.mPaint);
       System.currentTimeMillis();
       System.currentTimeMillis();
-      paramCanvas.drawBitmap(this.vTs, this.vTI.left, this.vTI.top, this.vTR);
-      paramCanvas.drawBitmap(this.vTt, this.vTI.right - this.vTw, this.vTI.top, this.vTR);
-      paramCanvas.drawBitmap(this.vTu, this.vTI.left, this.vTI.bottom - this.vTx, this.vTR);
-      paramCanvas.drawBitmap(this.vTv, this.vTI.right - this.vTw, this.vTI.bottom - this.vTx, this.vTR);
+      paramCanvas.drawBitmap(this.xed, this.xet.left, this.xet.top, this.xeC);
+      paramCanvas.drawBitmap(this.xee, this.xet.right - this.xeh, this.xet.top, this.xeC);
+      paramCanvas.drawBitmap(this.xef, this.xet.left, this.xet.bottom - this.xei, this.xeC);
+      paramCanvas.drawBitmap(this.xeg, this.xet.right - this.xeh, this.xet.bottom - this.xei, this.xeC);
       System.currentTimeMillis();
       super.onDraw(paramCanvas);
       System.currentTimeMillis();
       AppMethodBeat.o(51914);
       return;
-      paramCanvas.clipRect(this.vTI, Region.Op.DIFFERENCE);
-      paramCanvas.drawColor(getResources().getColor(this.vTJ));
+      paramCanvas.clipRect(this.xet, Region.Op.DIFFERENCE);
+      paramCanvas.drawColor(getResources().getColor(this.xeu));
     }
   }
   
   public void setMaskAnimaListener(a parama)
   {
-    this.vTT = parama;
+    this.xeE = parama;
   }
   
   public void setMaskColorRsid(int paramInt)
   {
-    this.vTJ = paramInt;
+    this.xeu = paramInt;
   }
   
   public void setMastAnimaDuration(int paramInt)
   {
-    this.vTM = paramInt;
+    this.xex = paramInt;
   }
   
   static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanMaskView
  * JD-Core Version:    0.7.0.1
  */

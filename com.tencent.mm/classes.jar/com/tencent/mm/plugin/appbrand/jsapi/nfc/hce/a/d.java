@@ -6,23 +6,23 @@ import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class d
 {
-  private static boolean bbl()
+  private static boolean bid()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
   @TargetApi(21)
-  public static boolean bbm()
+  public static boolean bie()
   {
     AppMethodBeat.i(136185);
-    if (bbl())
+    if (bid())
     {
-      boolean bool = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.nfc.hce");
+      boolean bool = ai.getContext().getPackageManager().hasSystemFeature("android.hardware.nfc.hce");
       AppMethodBeat.o(136185);
       return bool;
     }
@@ -30,10 +30,10 @@ public final class d
     return false;
   }
   
-  public static boolean bbn()
+  public static boolean bif()
   {
     AppMethodBeat.i(136186);
-    Context localContext = aj.getContext();
+    Context localContext = ai.getContext();
     if (!localContext.getPackageManager().hasSystemFeature("android.hardware.nfc"))
     {
       AppMethodBeat.o(136186);
@@ -48,13 +48,13 @@ public final class d
     return true;
   }
   
-  public static boolean bbo()
+  public static boolean big()
   {
     AppMethodBeat.i(136187);
-    NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(aj.getContext());
+    NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(ai.getContext());
     if (localNfcAdapter == null)
     {
-      ad.i("MicroMsg.HceUtils", "alvinluo no nfc chip !");
+      ac.i("MicroMsg.HceUtils", "alvinluo no nfc chip !");
       AppMethodBeat.o(136187);
       return false;
     }

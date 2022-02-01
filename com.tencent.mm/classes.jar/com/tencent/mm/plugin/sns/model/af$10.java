@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cv;
+import com.tencent.mm.g.a.cw;
 import com.tencent.mm.sdk.b.c;
 
 final class af$10
-  extends c<cv>
+  extends c<cw>
 {
   af$10(af paramaf)
   {
     AppMethodBeat.i(160654);
-    this.__eventId = cv.class.getName().hashCode();
+    this.__eventId = cw.class.getName().hashCode();
     AppMethodBeat.o(160654);
   }
 }

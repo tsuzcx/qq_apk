@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public final class j
 {
-  public ArrayList<q> cTm = null;
-  public String nvm = "";
-  public String nvn = "";
-  public String nvo = "";
+  public ArrayList<q> cQJ = null;
+  public String nYm = "";
+  public String nYn = "";
+  public String nYo = "";
 }
 
 

@@ -6,42 +6,57 @@ import com.tencent.mm.plugin.report.a;
 public final class ej
   extends a
 {
-  public long dZl = 0L;
-  public long dZm = 0L;
+  public String dEE;
+  public long dIi = 0L;
+  public String dUC;
+  public long dUK = 0L;
+  public long dUy = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(91241);
+    AppMethodBeat.i(110284);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dZl);
+    ((StringBuffer)localObject).append(this.dEE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZm);
+    ((StringBuffer)localObject).append(this.dUy);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dIi);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUK);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUC);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(91241);
+    arz((String)localObject);
+    AppMethodBeat.o(110284);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(91242);
+    AppMethodBeat.i(110285);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("clickScene:").append(this.dZl);
+    ((StringBuffer)localObject).append("ChatName:").append(this.dEE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("switchWay:").append(this.dZm);
+    ((StringBuffer)localObject).append("SessionID:").append(this.dUy);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickType:").append(this.dIi);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SourceType:").append(this.dUK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Identifier:").append(this.dUC);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91242);
+    AppMethodBeat.o(110285);
     return localObject;
   }
   
   public final int getId()
   {
-    return 17573;
+    return 18258;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ej
  * JD-Core Version:    0.7.0.1
  */

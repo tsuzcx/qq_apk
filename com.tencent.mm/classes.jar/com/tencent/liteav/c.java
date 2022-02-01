@@ -9,8 +9,8 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Surface;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.g.a;
+import com.tencent.liteav.basic.d.h.a;
+import com.tencent.liteav.basic.d.m;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
@@ -21,7 +21,6 @@ import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.beauty.TXBeautyManager;
-import com.tencent.liteav.beauty.b.o;
 import com.tencent.liteav.renderer.TXCGLSurfaceView;
 import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -44,9 +43,9 @@ public class c
   private WeakReference<n> H;
   private boolean I;
   private WeakReference<a> J;
-  private g K;
-  private g L;
-  private g M;
+  private com.tencent.liteav.basic.d.h K;
+  private com.tencent.liteav.basic.d.h L;
+  private com.tencent.liteav.basic.d.h M;
   private com.tencent.liteav.beauty.b.k N;
   private byte[] O;
   private boolean P;
@@ -82,7 +81,7 @@ public class c
   private Surface w;
   private int x;
   private int y;
-  private com.tencent.liteav.basic.d.d z;
+  private com.tencent.liteav.basic.d.e z;
   
   public c(Context paramContext)
   {
@@ -411,7 +410,7 @@ public class c
       {
         if ((this.w != null) && (this.z == null) && (this.c != null) && (this.c.f() != null))
         {
-          this.z = new com.tencent.liteav.basic.d.d();
+          this.z = new com.tencent.liteav.basic.d.e();
           this.z.a(this.c.f(), this.w);
           this.z.a(this.s);
           this.z.b(this.W);
@@ -509,7 +508,7 @@ public class c
     }
     int i1 = paramb.a;
     int i7;
-    g localg;
+    com.tencent.liteav.basic.d.h localh;
     if (this.W == 1)
     {
       i7 = 1;
@@ -518,23 +517,23 @@ public class c
       }
       if (this.L == null)
       {
-        localg = new g();
-        localg.a();
-        localg.a(true);
-        localg.a(paramb.e, paramb.f);
+        localh = new com.tencent.liteav.basic.d.h();
+        localh.a();
+        localh.a(true);
+        localh.a(paramb.e, paramb.f);
         if (paramb.e <= paramb.f) {
           break label373;
         }
-        localg.h();
+        localh.h();
         label108:
-        this.L = localg;
+        this.L = localh;
       }
-      localg = this.L;
-      if (localg == null) {
+      localh = this.L;
+      if (localh == null) {
         break label398;
       }
-      localg.a(paramb.e, paramb.f);
-      i1 = localg.b(paramb.a);
+      localh.a(paramb.e, paramb.f);
+      i1 = localh.b(paramb.a);
     }
     label389:
     label398:
@@ -549,20 +548,20 @@ public class c
       {
         if (this.M == null)
         {
-          localg = new g();
-          localg.a();
-          localg.a(true);
-          localg.a(paramb.e, paramb.f);
-          this.M = localg;
+          localh = new com.tencent.liteav.basic.d.h();
+          localh.a();
+          localh.a(true);
+          localh.a(paramb.e, paramb.f);
+          this.M = localh;
         }
-        localg = this.M;
+        localh = this.M;
         i2 = i1;
-        if (localg != null)
+        if (localh != null)
         {
           GLES20.glViewport(0, 0, paramb.e, paramb.f);
           i4 = paramb.e;
           i5 = paramb.f;
-          arrayOfFloat = localg.a(i4, i5, null, com.tencent.liteav.basic.util.d.a(i4, i5, paramb.e, paramb.f), 0);
+          arrayOfFloat = localh.a(i4, i5, null, com.tencent.liteav.basic.util.d.a(i4, i5, paramb.e, paramb.f), 0);
           i6 = (720 - this.r) % 360;
           if ((i6 != 90) && (i6 != 270)) {
             break label381;
@@ -576,15 +575,15 @@ public class c
       }
       for (int i3 = paramb.e;; i3 = paramb.f)
       {
-        localg.a(i4, i5, i6, arrayOfFloat, i2 / i3, false, false);
-        localg.b(i1);
-        i2 = localg.l();
+        localh.a(i4, i5, i6, arrayOfFloat, i2 / i3, false, false);
+        localh.b(i1);
+        i2 = localh.l();
         AppMethodBeat.o(16194);
         return i2;
         i7 = 0;
         break;
         label373:
-        localg.g();
+        localh.g();
         break label108;
         label381:
         i2 = paramb.e;
@@ -686,24 +685,24 @@ public class c
         if (this.G != 1) {
           break;
         }
-        localObject1 = new o(1);
-        ((g)localObject1).a(true);
-        if (!((g)localObject1).a()) {
+        localObject1 = new com.tencent.liteav.beauty.b.o(1);
+        ((com.tencent.liteav.basic.d.h)localObject1).a(true);
+        if (!((com.tencent.liteav.basic.d.h)localObject1).a()) {
           break label445;
         }
-        ((g)localObject1).a(paramb.e, paramb.f);
-        ((g)localObject1).a(new g.a()
+        ((com.tencent.liteav.basic.d.h)localObject1).a(paramb.e, paramb.f);
+        ((com.tencent.liteav.basic.d.h)localObject1).a(new h.a()
         {
           public void a(int paramAnonymousInt)
           {
             AppMethodBeat.i(182275);
-            g localg = c.m(c.this);
+            com.tencent.liteav.basic.d.h localh = c.m(c.this);
             n localn = (n)this.a.get();
-            if ((localg != null) && (localn != null))
+            if ((localh != null) && (localn != null))
             {
               TXSVideoFrame localTXSVideoFrame = new TXSVideoFrame();
-              localTXSVideoFrame.width = localg.n();
-              localTXSVideoFrame.height = localg.o();
+              localTXSVideoFrame.width = localh.n();
+              localTXSVideoFrame.height = localh.o();
               localTXSVideoFrame.pts = TXCTimeUtil.generatePtsMS();
               localn.onRenderVideoFrame(c.this.getID(), c.n(c.this), localTXSVideoFrame);
               c.a(c.this, localTXSVideoFrame.data);
@@ -711,14 +710,14 @@ public class c
             AppMethodBeat.o(182275);
           }
         });
-        this.K = ((g)localObject1);
+        this.K = ((com.tencent.liteav.basic.d.h)localObject1);
       }
       localObject1 = this.K;
       if (localObject1 != null)
       {
         GLES20.glViewport(0, 0, paramb.e, paramb.f);
-        ((g)localObject1).a(paramb.e, paramb.f);
-        ((g)localObject1).b(i1);
+        ((com.tencent.liteav.basic.d.h)localObject1).a(paramb.e, paramb.f);
+        ((com.tencent.liteav.basic.d.h)localObject1).b(i1);
       }
     } while ((!this.I) || (this.O == null));
     label257:
@@ -747,7 +746,7 @@ public class c
       }
       this.O = null;
       break;
-      localObject1 = new o(3);
+      localObject1 = new com.tencent.liteav.beauty.b.o(3);
       break label214;
       label445:
       TXCLog.i("TXCCaptureAndEnc", "init filter error ");
@@ -1334,54 +1333,54 @@ public class c
     AppMethodBeat.o(16104);
   }
   
-  public void a(final com.tencent.liteav.basic.d.n paramn)
+  public void a(final com.tencent.liteav.basic.d.o paramo)
   {
-    AppMethodBeat.i(16127);
+    AppMethodBeat.i(193041);
     if (this.u != null)
     {
       TXCGLSurfaceView localTXCGLSurfaceView = this.u.getGLSurfaceView();
       if (localTXCGLSurfaceView != null)
       {
-        localTXCGLSurfaceView.a(new com.tencent.liteav.basic.d.n()
+        localTXCGLSurfaceView.a(new com.tencent.liteav.basic.d.o()
         {
           public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
           {
             AppMethodBeat.i(182434);
-            if (paramn != null) {
-              paramn.onTakePhotoComplete(paramAnonymousBitmap);
+            if (paramo != null) {
+              paramo.onTakePhotoComplete(paramAnonymousBitmap);
             }
             AppMethodBeat.o(182434);
           }
         });
-        AppMethodBeat.o(16127);
+        AppMethodBeat.o(193041);
         return;
       }
-      if (paramn != null) {
-        paramn.onTakePhotoComplete(null);
+      if (paramo != null) {
+        paramo.onTakePhotoComplete(null);
       }
-      AppMethodBeat.o(16127);
+      AppMethodBeat.o(193041);
       return;
     }
     if (this.z != null)
     {
-      this.z.a(new com.tencent.liteav.basic.d.n()
+      this.z.a(new com.tencent.liteav.basic.d.o()
       {
         public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
         {
           AppMethodBeat.i(182273);
-          if (paramn != null) {
-            paramn.onTakePhotoComplete(paramAnonymousBitmap);
+          if (paramo != null) {
+            paramo.onTakePhotoComplete(paramAnonymousBitmap);
           }
           AppMethodBeat.o(182273);
         }
       });
-      AppMethodBeat.o(16127);
+      AppMethodBeat.o(193041);
       return;
     }
-    if (paramn != null) {
-      paramn.onTakePhotoComplete(null);
+    if (paramo != null) {
+      paramo.onTakePhotoComplete(null);
     }
-    AppMethodBeat.o(16127);
+    AppMethodBeat.o(193041);
   }
   
   public void a(TXSNALPacket paramTXSNALPacket, int paramInt)
@@ -1573,7 +1572,7 @@ public class c
     for (;;)
     {
       this.o = 0;
-      this.c = new b(this.m, this.n, (com.tencent.liteav.basic.d.l)localObject, bool);
+      this.c = new b(this.m, this.n, (m)localObject, bool);
       y();
       q(this.B);
       this.c.a(getID());
@@ -1591,7 +1590,7 @@ public class c
       TXCKeyPointReportProxy.a(30003);
       AppMethodBeat.o(16121);
       return;
-      localObject = new com.tencent.liteav.basic.d.e();
+      localObject = new com.tencent.liteav.basic.d.f();
       bool = false;
     }
   }

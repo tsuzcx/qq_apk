@@ -1,27 +1,29 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ad;
 
-final class ac
-  extends HellActivity
+public final class ac
 {
-  public final void onCreate(Bundle paramBundle)
+  static final Bundle bu(Context paramContext)
   {
-    AppMethodBeat.i(160031);
-    super.onCreate(paramBundle);
-    ad.i("WxSplash.SuicideHackActivity", "onCreate");
-    finish();
-    AppMethodBeat.o(160031);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.at(this, paramBoolean);
+    AppMethodBeat.i(123475);
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData;
+      AppMethodBeat.o(123475);
+      return paramContext;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.SetupBaseBuildInfo", paramContext, "", new Object[0]);
+      AppMethodBeat.o(123475);
+    }
+    return null;
   }
 }
 

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 public final class j
 {
-  private static d bVS = new d(f.bVO, "=", (byte)0);
+  private static d bTA = new d(f.bTw, "=", (byte)0);
   
   static <V> V a(Map<?, V> paramMap, @Nullable Object paramObject)
   {
@@ -36,7 +36,7 @@ public final class j
   
   static <K, V> Iterator<K> b(Iterator<Map.Entry<K, V>> paramIterator)
   {
-    return h.a(paramIterator, a.bVT);
+    return h.a(paramIterator, a.bTB);
   }
   
   static boolean b(Map<?, ?> paramMap, Object paramObject)
@@ -73,10 +73,10 @@ public final class j
   
   static <K, V> Iterator<V> c(Iterator<Map.Entry<K, V>> paramIterator)
   {
-    return h.a(paramIterator, a.bVU);
+    return h.a(paramIterator, a.bTC);
   }
   
-  public static int gq(int paramInt)
+  public static int gb(int paramInt)
   {
     if (paramInt < 3)
     {
@@ -96,7 +96,7 @@ public final class j
     return new g(paramK, paramV);
   }
   
-  public static <K, V> HashMap<K, V> zT()
+  public static <K, V> HashMap<K, V> zG()
   {
     return new HashMap();
   }
@@ -106,8 +106,8 @@ public final class j
   {
     static
     {
-      a locala = bVT;
-      locala = bVU;
+      a locala = bTB;
+      locala = bTC;
     }
     
     private a() {}
@@ -118,7 +118,7 @@ public final class j
   {
     public void clear()
     {
-      zJ().clear();
+      zw().clear();
     }
     
     public boolean contains(Object paramObject)
@@ -129,13 +129,13 @@ public final class j
       {
         paramObject = (Map.Entry)paramObject;
         Object localObject1 = paramObject.getKey();
-        Object localObject2 = j.a(zJ(), localObject1);
+        Object localObject2 = j.a(zw(), localObject1);
         bool1 = bool2;
         if (a.equal(localObject2, paramObject.getValue())) {
           if (localObject2 == null)
           {
             bool1 = bool2;
-            if (!zJ().containsKey(localObject1)) {}
+            if (!zw().containsKey(localObject1)) {}
           }
           else
           {
@@ -148,7 +148,7 @@ public final class j
     
     public boolean isEmpty()
     {
-      return zJ().isEmpty();
+      return zw().isEmpty();
     }
     
     public boolean remove(Object paramObject)
@@ -156,7 +156,7 @@ public final class j
       if (contains(paramObject))
       {
         paramObject = (Map.Entry)paramObject;
-        return zJ().keySet().remove(paramObject.getKey());
+        return zw().keySet().remove(paramObject.getKey());
       }
       return false;
     }
@@ -181,7 +181,7 @@ public final class j
       }
       catch (UnsupportedOperationException localUnsupportedOperationException)
       {
-        HashSet localHashSet = new HashSet(j.gq(paramCollection.size()));
+        HashSet localHashSet = new HashSet(j.gb(paramCollection.size()));
         paramCollection = paramCollection.iterator();
         while (paramCollection.hasNext())
         {
@@ -190,67 +190,67 @@ public final class j
             localHashSet.add(((Map.Entry)localObject).getKey());
           }
         }
-        return zJ().keySet().retainAll(localHashSet);
+        return zw().keySet().retainAll(localHashSet);
       }
     }
     
     public int size()
     {
-      return zJ().size();
+      return zw().size();
     }
     
-    abstract Map<K, V> zJ();
+    abstract Map<K, V> zw();
   }
   
   static abstract class c<K, V>
     extends AbstractMap<K, V>
   {
-    private transient Set<K> bVJ;
-    private transient Collection<V> bVK;
-    private transient Set<Map.Entry<K, V>> bVV;
+    private transient Set<Map.Entry<K, V>> bTD;
+    private transient Set<K> bTr;
+    private transient Collection<V> bTs;
     
     public Set<Map.Entry<K, V>> entrySet()
     {
-      Set localSet2 = this.bVV;
+      Set localSet2 = this.bTD;
       Set localSet1 = localSet2;
       if (localSet2 == null)
       {
-        localSet1 = zI();
-        this.bVV = localSet1;
+        localSet1 = zv();
+        this.bTD = localSet1;
       }
       return localSet1;
     }
     
     public Set<K> keySet()
     {
-      Set localSet2 = this.bVJ;
+      Set localSet2 = this.bTr;
       Set localSet1 = localSet2;
       if (localSet2 == null)
       {
-        localSet1 = zD();
-        this.bVJ = localSet1;
+        localSet1 = zq();
+        this.bTr = localSet1;
       }
       return localSet1;
     }
     
     public Collection<V> values()
     {
-      Collection localCollection = this.bVK;
+      Collection localCollection = this.bTs;
       Object localObject = localCollection;
       if (localCollection == null)
       {
         localObject = new j.e(this);
-        this.bVK = ((Collection)localObject);
+        this.bTs = ((Collection)localObject);
       }
       return localObject;
     }
     
-    Set<K> zD()
+    Set<K> zq()
     {
       return new j.d(this);
     }
     
-    abstract Set<Map.Entry<K, V>> zI();
+    abstract Set<Map.Entry<K, V>> zv();
   }
   
   static class d<K, V>

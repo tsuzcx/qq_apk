@@ -1,37 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.permission.c;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.cl;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import org.json.JSONObject;
 
-public final class i
-  extends p
+public abstract class i<CONTEXT extends com.tencent.mm.plugin.appbrand.d, Extension>
+  extends a<CONTEXT>
 {
-  public static final int CTRL_INDEX = 520;
-  public static final String NAME = "onVoIPChatInterrupted";
+  final Class<Extension> aMt;
   
-  public i()
+  protected i(Class<Extension> paramClass)
   {
-    AppMethodBeat.i(180259);
-    c.Me("onVoIPChatInterrupted");
-    AppMethodBeat.o(180259);
+    this.aMt = paramClass;
   }
   
-  final class a
+  protected abstract void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt, Extension paramExtension);
+  
+  public final boolean bex()
   {
-    String cyH;
-    int errCode;
-    
-    public a(String paramString, int paramInt)
-    {
-      this.cyH = paramString;
-      this.errCode = paramInt;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.i
  * JD-Core Version:    0.7.0.1
  */

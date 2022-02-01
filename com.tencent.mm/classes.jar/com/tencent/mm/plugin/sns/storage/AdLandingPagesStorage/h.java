@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.i;
 
@@ -20,55 +20,55 @@ public final class h
     AppMethodBeat.o(97322);
   }
   
-  public static void a(String paramString, f.a parama)
-  {
-    AppMethodBeat.i(97323);
-    b("adId", paramString, false, 41, parama);
-    AppMethodBeat.o(97323);
-  }
-  
   private static void a(String paramString1, String paramString2, f.a parama)
   {
     AppMethodBeat.i(97326);
-    if ((bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramString1)))
+    if ((bs.isNullOrNil(paramString2)) || (bs.isNullOrNil(paramString1)))
     {
-      parama.dsA();
+      parama.dFD();
       AppMethodBeat.o(97326);
       return;
     }
-    ad.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download new img for " + paramString2 + " for adid:" + paramString1);
-    e.a(paramString2, dxm(), iW(paramString1, paramString2), 0, parama);
+    ac.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download new img for " + paramString2 + " for adid:" + paramString1);
+    e.a(paramString2, dLL(), ju(paramString1, paramString2), 0, parama);
     AppMethodBeat.o(97326);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean, f.a parama)
+  {
+    AppMethodBeat.i(200316);
+    b("adId", paramString, paramBoolean, 41, parama);
+    AppMethodBeat.o(200316);
   }
   
   public static void b(String paramString1, String paramString2, f.a parama)
   {
-    AppMethodBeat.i(187511);
-    if ((bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramString1)))
+    AppMethodBeat.i(200317);
+    if ((bs.isNullOrNil(paramString2)) || (bs.isNullOrNil(paramString1)))
     {
-      parama.dsA();
-      AppMethodBeat.o(187511);
+      parama.dFD();
+      AppMethodBeat.o(200317);
       return;
     }
-    ad.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "downloadSightForAdLandingPagesByCdn, url=" + paramString2 + ", adId=" + paramString1);
-    e.a(paramString2, dxm(), iX(paramString1, paramString2), 1, parama);
-    AppMethodBeat.o(187511);
+    ac.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "downloadSightForAdLandingPagesByCdn, url=" + paramString2 + ", adId=" + paramString1);
+    e.a(paramString2, dLL(), jv(paramString1, paramString2), 1, parama);
+    AppMethodBeat.o(200317);
   }
   
   private static void b(String paramString1, String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
     AppMethodBeat.i(97324);
-    ad.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download img for " + paramString2 + " for adid:" + paramString1);
-    e.a(paramString2, iU(paramString1, paramString2), paramBoolean, paramInt, parama);
+    ac.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "start download img for " + paramString2 + " for adid:" + paramString1);
+    e.a(paramString2, js(paramString1, paramString2), paramBoolean, paramInt, parama);
     AppMethodBeat.o(97324);
   }
   
   public static void c(String paramString1, String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
     AppMethodBeat.i(97325);
-    if ((bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramString1)))
+    if ((bs.isNullOrNil(paramString2)) || (bs.isNullOrNil(paramString1)))
     {
-      parama.dsA();
+      parama.dFD();
       AppMethodBeat.o(97325);
       return;
     }
@@ -85,67 +85,67 @@ public final class h
   public static void d(String paramString1, String paramString2, boolean paramBoolean, int paramInt, f.a parama)
   {
     AppMethodBeat.i(97327);
-    ad.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "downloadSightForAdLandingPages, url=" + paramString2 + ", adId=" + paramString1);
-    e.a(paramString2, iV(paramString1, paramString2), paramBoolean, paramInt, parama);
+    ac.i("MicroMsg.AdLandingPagesDownloadResourceHelper", "downloadSightForAdLandingPages, url=" + paramString2 + ", adId=" + paramString1);
+    e.a(paramString2, jt(paramString1, paramString2), paramBoolean, paramInt, parama);
     AppMethodBeat.o(97327);
   }
   
-  public static String dxm()
+  public static String dLL()
   {
     AppMethodBeat.i(97328);
-    String str = b.aih() + "sns_ad_landingpages/";
+    String str = b.aph() + "sns_ad_landingpages/";
     AppMethodBeat.o(97328);
     return str;
   }
   
-  public static String iU(String paramString1, String paramString2)
+  public static String js(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97318);
-    paramString1 = dxm() + iW(paramString1, paramString2);
+    paramString1 = dLL() + ju(paramString1, paramString2);
     AppMethodBeat.o(97318);
     return paramString1;
   }
   
-  public static String iV(String paramString1, String paramString2)
+  public static String jt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97319);
-    i.aMF(dxm());
-    paramString2 = ai.du(paramString2);
-    paramString1 = dxm() + paramString1 + "_sight_" + paramString2;
+    i.aSh(dLL());
+    paramString2 = ah.dg(paramString2);
+    paramString1 = dLL() + paramString1 + "_sight_" + paramString2;
     AppMethodBeat.o(97319);
     return paramString1;
   }
   
-  private static String iW(String paramString1, String paramString2)
+  private static String ju(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97320);
-    paramString2 = ai.du(paramString2);
+    paramString2 = ah.dg(paramString2);
     paramString1 = paramString1 + "_img_" + paramString2;
     AppMethodBeat.o(97320);
     return paramString1;
   }
   
-  private static String iX(String paramString1, String paramString2)
+  private static String jv(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187510);
-    paramString2 = ai.du(paramString2);
+    AppMethodBeat.i(200315);
+    paramString2 = ah.dg(paramString2);
     paramString1 = paramString1 + "_sight_" + paramString2;
-    AppMethodBeat.o(187510);
+    AppMethodBeat.o(200315);
     return paramString1;
   }
   
-  public static Bitmap iY(String paramString1, String paramString2)
+  public static Bitmap jw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(97321);
-    if ((bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramString1)))
+    if ((bs.isNullOrNil(paramString2)) || (bs.isNullOrNil(paramString1)))
     {
       AppMethodBeat.o(97321);
       return null;
     }
     try
     {
-      paramString1 = iU(paramString1, paramString2);
-      if ((!TextUtils.isEmpty(paramString1)) && (i.eK(paramString1)))
+      paramString1 = js(paramString1, paramString2);
+      if ((!TextUtils.isEmpty(paramString1)) && (i.eA(paramString1)))
       {
         paramString1 = f.decodeFile(paramString1);
         AppMethodBeat.o(97321);
@@ -154,7 +154,7 @@ public final class h
     }
     catch (Exception paramString1)
     {
-      ad.e("MicroMsg.AdLandingPagesDownloadResourceHelper", "%s", new Object[] { bt.m(paramString1) });
+      ac.e("MicroMsg.AdLandingPagesDownloadResourceHelper", "%s", new Object[] { bs.m(paramString1) });
       AppMethodBeat.o(97321);
     }
     return null;

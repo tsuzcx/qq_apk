@@ -8,16 +8,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.r;
 
 public class c
-  extends q<CardInfo>
+  extends r<CardInfo>
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c nwE;
-  private n.a nyh;
+  private com.tencent.mm.plugin.card.base.c nZE;
+  private n.a obh;
   
   public c(Context paramContext, n.a parama)
   {
@@ -25,33 +25,33 @@ public class c
     AppMethodBeat.i(113174);
     this.TAG = "MicroMsg.CardAdapter";
     this.count = 0;
-    this.nyh = parama;
-    vw(true);
-    this.nwE = new l(paramContext, this);
+    this.obh = parama;
+    wy(true);
+    this.nZE = new l(paramContext, this);
     AppMethodBeat.o(113174);
   }
   
-  public void Wd()
+  public void Xb()
   {
     AppMethodBeat.i(113175);
-    ad.v("MicroMsg.CardAdapter", "resetCursor");
-    cHX();
-    Cursor localCursor = am.bIV().a(this.nyh);
+    ac.v("MicroMsg.CardAdapter", "resetCursor");
+    cVi();
+    Cursor localCursor = am.bQi().a(this.obh);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
-      ad.v("MicroMsg.CardAdapter", "card count:" + this.count);
+      ac.v("MicroMsg.CardAdapter", "card count:" + this.count);
     }
     setCursor(localCursor);
     notifyDataSetChanged();
     AppMethodBeat.o(113175);
   }
   
-  public void We()
+  public void Xc()
   {
     AppMethodBeat.i(113176);
-    cHX();
-    Wd();
+    cVi();
+    Xb();
     AppMethodBeat.o(113176);
   }
   
@@ -59,7 +59,7 @@ public class c
   {
     AppMethodBeat.i(113177);
     paramViewGroup = (CardInfo)getItem(paramInt);
-    paramView = this.nwE.a(paramInt, paramView, paramViewGroup);
+    paramView = this.nZE.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113177);
     return paramView;
   }
@@ -67,9 +67,9 @@ public class c
   public void release()
   {
     AppMethodBeat.i(113178);
-    cHX();
-    this.nwE.release();
-    this.nwE = null;
+    cVi();
+    this.nZE.release();
+    this.nZE = null;
     AppMethodBeat.o(113178);
   }
 }

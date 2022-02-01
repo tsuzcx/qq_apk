@@ -12,7 +12,7 @@ public class d
 {
   private static boolean b(Transition paramTransition)
   {
-    return (!h(paramTransition.zi)) || (!h(paramTransition.zk)) || (!h(paramTransition.zl));
+    return (!g(paramTransition.Ah)) || (!g(paramTransition.Aj)) || (!g(paramTransition.Ak));
   }
   
   public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
@@ -40,7 +40,7 @@ public class d
     if (paramObject != null) {
       ((Transition)paramObject).a(new Transition.b()
       {
-        public final Rect dk()
+        public final Rect dr()
         {
           if ((paramRect == null) || (paramRect.isEmpty())) {
             return null;
@@ -60,7 +60,7 @@ public class d
       a(paramView, localRect);
       paramObject.a(new Transition.b()
       {
-        public final Rect dk()
+        public final Rect dr()
         {
           return localRect;
         }
@@ -71,7 +71,7 @@ public class d
   public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
   {
     paramObject = (TransitionSet)paramObject;
-    ArrayList localArrayList = paramObject.zj;
+    ArrayList localArrayList = paramObject.Ai;
     localArrayList.clear();
     int j = paramArrayList.size();
     int i = 0;
@@ -91,11 +91,11 @@ public class d
     {
       public final void a(Transition paramAnonymousTransition) {}
       
-      public final void dg() {}
+      public final void dn() {}
       
-      public final void dh() {}
+      public final void jdMethod_do() {}
       
-      public final void dl()
+      public final void ds()
       {
         if (paramObject2 != null) {
           d.this.b(paramObject2, paramArrayList1, null);
@@ -122,14 +122,14 @@ public class d
       if ((paramObject instanceof TransitionSet))
       {
         paramObject = (TransitionSet)paramObject;
-        j = paramObject.zU.size();
+        j = paramObject.AS.size();
         while (i < j)
         {
           a(paramObject.ap(i), paramArrayList);
           i += 1;
         }
       }
-      else if ((!b(paramObject)) && (h(paramObject.zj)))
+      else if ((!b(paramObject)) && (g(paramObject.Ai)))
       {
         j = paramArrayList.size();
         i = 0;
@@ -147,8 +147,8 @@ public class d
     paramObject = (TransitionSet)paramObject;
     if (paramObject != null)
     {
-      paramObject.zj.clear();
-      paramObject.zj.addAll(paramArrayList2);
+      paramObject.Ai.clear();
+      paramObject.Ai.addAll(paramArrayList2);
       b(paramObject, paramArrayList1, paramArrayList2);
     }
   }
@@ -205,11 +205,11 @@ public class d
         }
       }
       
-      public final void dg() {}
+      public final void dn() {}
       
-      public final void dh() {}
+      public final void jdMethod_do() {}
       
-      public final void dl() {}
+      public final void ds() {}
     });
   }
   
@@ -221,7 +221,7 @@ public class d
     if ((paramObject instanceof TransitionSet))
     {
       paramObject = (TransitionSet)paramObject;
-      j = paramObject.zU.size();
+      j = paramObject.AS.size();
       while (i < j)
       {
         b(paramObject.ap(i), paramArrayList1, paramArrayList2);
@@ -230,7 +230,7 @@ public class d
     }
     if (!b(paramObject))
     {
-      ArrayList localArrayList = paramObject.zj;
+      ArrayList localArrayList = paramObject.Ai;
       if ((localArrayList.size() == paramArrayList1.size()) && (localArrayList.containsAll(paramArrayList1)))
       {
         if (paramArrayList2 == null) {}
@@ -260,21 +260,21 @@ public class d
     }
   }
   
-  public final boolean f(Object paramObject)
+  public final boolean h(Object paramObject)
   {
     return paramObject instanceof Transition;
   }
   
-  public final Object g(Object paramObject)
+  public final Object i(Object paramObject)
   {
     Transition localTransition = null;
     if (paramObject != null) {
-      localTransition = ((Transition)paramObject).dq();
+      localTransition = ((Transition)paramObject).dx();
     }
     return localTransition;
   }
   
-  public final Object h(Object paramObject)
+  public final Object j(Object paramObject)
   {
     if (paramObject == null) {
       return null;
@@ -286,7 +286,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.d
  * JD-Core Version:    0.7.0.1
  */

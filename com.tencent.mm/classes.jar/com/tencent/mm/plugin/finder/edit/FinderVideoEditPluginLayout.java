@@ -14,13 +14,10 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dc;
+import com.tencent.mm.g.b.a.eq;
 import com.tencent.mm.plugin.recordvideo.b.f;
-import com.tencent.mm.plugin.recordvideo.d.b;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.recordvideo.model.audio.c;
-import com.tencent.mm.plugin.recordvideo.plugin.ab;
 import com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditorVideoPlayView;
 import com.tencent.mm.plugin.recordvideo.plugin.h;
 import com.tencent.mm.plugin.recordvideo.plugin.i;
@@ -33,17 +30,16 @@ import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.j;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.sdk.platformtools.ad;
 import d.g.b.k;
 import d.l;
 import d.v;
 import java.util.ArrayList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditorVideoPluginLayoutNew;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "invertMatrix", "Landroid/graphics/Matrix;", "getPlayerView", "Landroid/view/View;", "getScale", "", "values", "", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "startRemux", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditorVideoPluginLayoutNew;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "invertMatrix", "Landroid/graphics/Matrix;", "getPlayerView", "Landroid/view/View;", "getScale", "", "values", "", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "startRemux", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
 public final class FinderVideoEditPluginLayout
   extends EditorVideoPluginLayoutNew
 {
-  private Matrix qrV;
+  private Matrix rcD;
   
   public FinderVideoEditPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -71,10 +67,10 @@ public final class FinderVideoEditPluginLayout
     k.h(parama, "navigator");
     k.h(paramRecordConfigProvider, "configProvider");
     super.a(parama, paramRecordConfigProvider);
-    parama = paramRecordConfigProvider.hsl;
+    parama = paramRecordConfigProvider.hSN;
     if (parama != null)
     {
-      paramRecordConfigProvider = getPreviewPlugin().tFN.getParent();
+      paramRecordConfigProvider = getPreviewPlugin().uOi.getParent();
       k.g(paramRecordConfigProvider, "previewPlugin.videoPlayView.parent");
       paramRecordConfigProvider = paramRecordConfigProvider.getParent();
       if (paramRecordConfigProvider == null)
@@ -89,7 +85,7 @@ public final class FinderVideoEditPluginLayout
       localObject = new WxCropOperationLayout((Context)localObject);
       ((WxCropOperationLayout)localObject).getVisibilityRect().set((Rect)parama.getParcelable("cropRect"));
       paramRecordConfigProvider.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      ((WxCropOperationLayout)localObject).setStyle(WxCropOperationLayout.j.LpL);
+      ((WxCropOperationLayout)localObject).setStyle(WxCropOperationLayout.j.wzI);
       ((WxCropOperationLayout)localObject).bringToFront();
       localObject = parama.getFloatArray("matrix");
       paramRecordConfigProvider = parama.getFloatArray("offset");
@@ -103,16 +99,16 @@ public final class FinderVideoEditPluginLayout
       {
         parama = new Matrix();
         parama.setValues((float[])localObject);
-        getPreviewPlugin().tFN.setScaleX(n((float[])localObject));
-        getPreviewPlugin().tFN.setScaleY(n((float[])localObject));
-        getPreviewPlugin().tFN.setTranslationX(f1);
-        getPreviewPlugin().tFN.setTranslationY(f2);
-        ad.i("MicroMsg.EditorVideoPluginLayoutNew", "translationX=" + getPreviewPlugin().tFN.getTranslationX() + " translationY=" + getPreviewPlugin().tFN.getTranslationY() + ' ' + "scaleX=" + getPreviewPlugin().tFN.getScaleX() + " offsetX=" + f1 + " offsetY=" + f2 + " matrix=" + parama);
-        this.qrV = new Matrix();
-        parama.invert(this.qrV);
+        getPreviewPlugin().uOi.setScaleX(n((float[])localObject));
+        getPreviewPlugin().uOi.setScaleY(n((float[])localObject));
+        getPreviewPlugin().uOi.setTranslationX(f1);
+        getPreviewPlugin().uOi.setTranslationY(f2);
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.EditorVideoPluginLayoutNew", "translationX=" + getPreviewPlugin().uOi.getTranslationX() + " translationY=" + getPreviewPlugin().uOi.getTranslationY() + ' ' + "scaleX=" + getPreviewPlugin().uOi.getScaleX() + " offsetX=" + f1 + " offsetY=" + f2 + " matrix=" + parama);
+        this.rcD = new Matrix();
+        parama.invert(this.rcD);
       }
     }
-    getCropVideoPlugin().vlV = true;
+    getCropVideoPlugin().wuB = true;
     AppMethodBeat.o(165506);
   }
   
@@ -121,47 +117,47 @@ public final class FinderVideoEditPluginLayout
     int j = 0;
     AppMethodBeat.i(165509);
     k.h(paramc, "status");
-    switch (a.ciE[paramc.ordinal()])
+    switch (a.cfA[paramc.ordinal()])
     {
     default: 
-      if (paramc != d.c.vob) {
-        ad.e("MicroMsg.EditorVideoPluginLayoutNew", "unknown status ".concat(String.valueOf(paramc)));
+      if (paramc != d.c.wwI) {
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.EditorVideoPluginLayoutNew", "unknown status ".concat(String.valueOf(paramc)));
       }
       super.a(paramc, paramBundle);
       AppMethodBeat.o(165509);
       return;
     }
-    paramc = getBgPlugin().diq();
+    paramc = getBgPlugin().dwb();
     getPreviewPlugin().release();
     getItemContainerPlugin().onPause();
     getAddMusicPlugin().onPause();
-    if (getMoreMenuPlugin().vjK) {}
+    if (getMoreMenuPlugin().wsv) {}
     for (int i = 1;; i = 0)
     {
-      paramBundle = CaptureDataManager.vhw;
+      paramBundle = CaptureDataManager.wqi;
       k.g(paramBundle, "CaptureDataManager.INSTANCE");
       paramBundle.getExtData().putInt("key_extra_feature_flag", i);
-      if (getMoreMenuPlugin().boX == 2)
+      if (getMoreMenuPlugin().bns == 2)
       {
-        paramBundle = CaptureDataManager.vhw;
+        paramBundle = CaptureDataManager.wqi;
         k.g(paramBundle, "CaptureDataManager.INSTANCE");
-        paramBundle.getExtData().putString("key_group_list", getMoreMenuPlugin().dik());
-        paramc = new f(getAddMusicPlugin().vmE.getMuteOrigin(), getAddMusicPlugin().vgH, getItemContainerPlugin().d(this.qrV), getItemContainerPlugin().did(), getItemContainerPlugin().die(), getPreviewPlugin().cUL, getPreviewPlugin().gBm, new ArrayList(), paramc);
-        ad.i("MicroMsg.EditorVideoPluginLayoutNew", "edit config: ".concat(String.valueOf(paramc)));
+        paramBundle.getExtData().putString("key_group_list", getMoreMenuPlugin().dvU());
+        paramc = new f(getAddMusicPlugin().wvm.getMuteOrigin(), getAddMusicPlugin().wpt, getItemContainerPlugin().d(this.rcD), getItemContainerPlugin().dvN(), getItemContainerPlugin().dvO(), getPreviewPlugin().cSh, getPreviewPlugin().hbI, new ArrayList(), paramc);
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.EditorVideoPluginLayoutNew", "edit config: ".concat(String.valueOf(paramc)));
         getReMuxPlugin().a(paramc);
-        paramc = b.vpp;
-        b.v("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(getItemContainerPlugin().dig()));
-        paramc = b.vpp;
-        b.v("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(getItemContainerPlugin().dih()));
-        paramc = b.vpp;
-        if (getAddMusicPlugin().vgH != null) {
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        com.tencent.mm.plugin.recordvideo.d.c.w("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(getItemContainerPlugin().dvQ()));
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        com.tencent.mm.plugin.recordvideo.d.c.w("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(getItemContainerPlugin().dvR()));
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        if (getAddMusicPlugin().wpt != null) {
           break label502;
         }
         i = 0;
         label336:
-        b.v("KEY_SELECT_MUSIC_INT", Integer.valueOf(i));
-        paramc = b.vpp;
-        if (!getAddMusicPlugin().vmE.getMuteOrigin()) {
+        com.tencent.mm.plugin.recordvideo.d.c.w("KEY_SELECT_MUSIC_INT", Integer.valueOf(i));
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        if (!getAddMusicPlugin().wvm.getMuteOrigin()) {
           break label507;
         }
       }
@@ -169,34 +165,34 @@ public final class FinderVideoEditPluginLayout
       label507:
       for (i = 0;; i = 1)
       {
-        b.v("KEY_SELECT_ORIGIN_INT", Integer.valueOf(i));
-        paramc = b.vpp;
-        b.v("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
-        paramc = b.vpp;
-        b.Kp(13);
-        paramc = b.vpp;
-        b.diy().fm(System.currentTimeMillis());
-        paramc = b.vpp;
+        com.tencent.mm.plugin.recordvideo.d.c.w("KEY_SELECT_ORIGIN_INT", Integer.valueOf(i));
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        com.tencent.mm.plugin.recordvideo.d.c.w("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        com.tencent.mm.plugin.recordvideo.d.c.Mo(13);
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
+        com.tencent.mm.plugin.recordvideo.d.c.dwr().iz(System.currentTimeMillis());
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.wyg;
         paramc = getConfigProvider();
         i = j;
         if (paramc != null) {
           i = paramc.scene;
         }
-        b.Kq(i);
-        paramc = c.vjb;
-        paramc = c.dhW();
+        com.tencent.mm.plugin.recordvideo.d.c.Mp(i);
+        paramc = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
+        paramc = com.tencent.mm.plugin.recordvideo.model.audio.c.dvH();
         if (paramc == null) {
           break label512;
         }
-        paramc.dhT();
+        paramc.dvE();
         AppMethodBeat.o(165509);
         return;
-        if (getMoreMenuPlugin().boX != 3) {
+        if (getMoreMenuPlugin().bns != 3) {
           break;
         }
-        paramBundle = CaptureDataManager.vhw;
+        paramBundle = CaptureDataManager.wqi;
         k.g(paramBundle, "CaptureDataManager.INSTANCE");
-        paramBundle.getExtData().putString("key_black_list", getMoreMenuPlugin().dik());
+        paramBundle.getExtData().putString("key_black_list", getMoreMenuPlugin().dvU());
         break;
         i = 1;
         break label336;
@@ -222,7 +218,7 @@ public final class FinderVideoEditPluginLayout
     return localObject;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout$getPlayerView$playerView$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "setVideoCenter", "", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout$getPlayerView$playerView$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "setVideoCenter", "", "plugin-finder_release"})
   public static final class a
     extends EditorVideoPlayView
   {
@@ -231,12 +227,12 @@ public final class FinderVideoEditPluginLayout
       super();
     }
     
-    public final void bGA() {}
+    public final void bNN() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.edit.FinderVideoEditPluginLayout
  * JD-Core Version:    0.7.0.1
  */

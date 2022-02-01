@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.remittance.bankcard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.SpellMap;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.math.BigDecimal;
 
 public final class a
 {
-  public static double Kv(int paramInt)
+  public static double Mu(int paramInt)
   {
     AppMethodBeat.i(67397);
-    double d = il(String.valueOf(paramInt), "100");
+    double d = iF(String.valueOf(paramInt), "100");
     AppMethodBeat.o(67397);
     return d;
   }
   
-  public static char ama(String paramString)
+  public static char arf(String paramString)
   {
     AppMethodBeat.i(67398);
     paramString = SpellMap.v(paramString.charAt(0));
-    ad.d("MicroMsg.BankRemitUtil", "pinyin: %s", new Object[] { paramString });
-    if (!bt.isNullOrNil(paramString))
+    ac.d("MicroMsg.BankRemitUtil", "pinyin: %s", new Object[] { paramString });
+    if (!bs.isNullOrNil(paramString))
     {
       char c = paramString.toUpperCase().charAt(0);
       AppMethodBeat.o(67398);
@@ -31,12 +31,12 @@ public final class a
     return '#';
   }
   
-  public static long ik(String paramString1, String paramString2)
+  public static long iE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67394);
     try
     {
-      if (bt.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
+      if (bs.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
       for (paramString1 = "0";; paramString1 = paramString1.trim())
       {
         long l = new BigDecimal(paramString1).divide(new BigDecimal(paramString2.trim()), 0, 4).longValue();
@@ -47,17 +47,17 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(67394);
     }
   }
   
-  public static double il(String paramString1, String paramString2)
+  public static double iF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67395);
     try
     {
-      if (bt.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
+      if (bs.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
       for (paramString1 = "0";; paramString1 = paramString1.trim())
       {
         double d = new BigDecimal(paramString1).divide(new BigDecimal(paramString2.trim()), 2, 4).doubleValue();
@@ -68,18 +68,18 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(67395);
     }
   }
   
-  public static double im(String paramString1, String paramString2)
+  public static double iG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67396);
     try
     {
-      double d1 = bt.getDouble(paramString1, 0.0D);
-      double d2 = bt.getDouble(paramString2, 0.0D);
+      double d1 = bs.getDouble(paramString1, 0.0D);
+      double d2 = bs.getDouble(paramString2, 0.0D);
       if (d1 == 0.0D) {
         paramString1 = "0";
       }
@@ -93,7 +93,7 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(67396);
     }
     return 0.0D;

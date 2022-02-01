@@ -10,12 +10,12 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public class TextProgressBar
   extends ProgressBar
 {
-  private int EI;
+  private int FG;
   private Context mContext;
   private Paint mPaint;
   private String mText;
@@ -30,7 +30,7 @@ public class TextProgressBar
   private void setText(int paramInt)
   {
     AppMethodBeat.i(42628);
-    this.EI = paramInt;
+    this.FG = paramInt;
     this.mText = (String.valueOf(paramInt) + "%");
     AppMethodBeat.o(42628);
   }
@@ -51,7 +51,7 @@ public class TextProgressBar
       float f1 = getWidth() / 2 - ((Rect)localObject).centerX();
       float f2 = getHeight() / 2 - ((Rect)localObject).centerY();
       paramCanvas.drawText(this.mText, f1, f2, this.mPaint);
-      float f3 = this.EI / 100.0F * getWidth();
+      float f3 = this.FG / 100.0F * getWidth();
       if (f3 > f1)
       {
         localObject = new Paint();
@@ -87,7 +87,7 @@ public class TextProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.TextProgressBar
  * JD-Core Version:    0.7.0.1
  */

@@ -28,12 +28,12 @@ public abstract class f
   public static final class a
     extends f
   {
-    public static final a Kaa;
+    public static final a LNt;
     
     static
     {
       AppMethodBeat.i(61298);
-      Kaa = new a();
+      LNt = new a();
       AppMethodBeat.o(61298);
     }
     
@@ -46,7 +46,7 @@ public abstract class f
     {
       AppMethodBeat.i(61297);
       k.h(paramt, "functionDescriptor");
-      if (paramt.fym() != null)
+      if (paramt.fQQ() != null)
       {
         AppMethodBeat.o(61297);
         return true;
@@ -59,12 +59,12 @@ public abstract class f
   public static final class b
     extends f
   {
-    public static final b Kab;
+    public static final b LNu;
     
     static
     {
       AppMethodBeat.i(61300);
-      Kab = new b();
+      LNu = new b();
       AppMethodBeat.o(61300);
     }
     
@@ -77,7 +77,7 @@ public abstract class f
     {
       AppMethodBeat.i(61299);
       k.h(paramt, "functionDescriptor");
-      if ((paramt.fym() != null) || (paramt.fyl() != null))
+      if ((paramt.fQQ() != null) || (paramt.fQP() != null))
       {
         AppMethodBeat.o(61299);
         return true;
@@ -89,7 +89,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.n.f
  * JD-Core Version:    0.7.0.1
  */

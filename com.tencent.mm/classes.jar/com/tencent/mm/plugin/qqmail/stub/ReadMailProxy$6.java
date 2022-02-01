@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.qqmail.stub;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 
 final class ReadMailProxy$6
   implements Runnable
@@ -15,9 +15,9 @@ final class ReadMailProxy$6
   public final void run()
   {
     AppMethodBeat.i(122821);
-    bl localbl = ((k)g.ab(k.class)).cOI().rm(this.cNT);
-    localbl.setContent(localbl.field_content.replaceFirst("<digest>.*</digest>", "<digest>" + this.oww + "</digest>"));
-    ((k)g.ab(k.class)).cOI().a(this.cNT, localbl);
+    bo localbo = ((k)g.ab(k.class)).dcr().vP(this.cLo);
+    localbo.setContent(localbo.field_content.replaceFirst("<digest>.*</digest>", "<digest>" + this.oZW + "</digest>"));
+    ((k)g.ab(k.class)).dcr().a(this.cLo, localbo);
     AppMethodBeat.o(122821);
   }
 }

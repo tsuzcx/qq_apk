@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.groupsolitaire.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class GroupSolitatireEditUI$4
   implements DialogInterface.OnClickListener
@@ -13,7 +13,7 @@ final class GroupSolitatireEditUI$4
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(110430);
-    ad.i("MicroMsg.groupsolitaire.GroupSolitatireEditUI", "back_dialot cancel");
+    ac.i("MicroMsg.groupsolitaire.GroupSolitatireEditUI", "back_dialot cancel");
     AppMethodBeat.o(110430);
   }
 }

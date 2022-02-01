@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.wepkg.utils;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class WepkgRunCgi
 {
-  static com.tencent.mm.al.b n(Parcel paramParcel)
+  static com.tencent.mm.ak.b o(Parcel paramParcel)
   {
     AppMethodBeat.i(110806);
     b.a locala = new b.a();
@@ -23,19 +23,19 @@ public final class WepkgRunCgi
     paramParcel.readByteArray(arrayOfByte);
     try
     {
-      locala.gUU = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
+      locala.hvt = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
       label48:
       str = paramParcel.readString();
       arrayOfByte = new byte[paramParcel.readInt()];
       paramParcel.readByteArray(arrayOfByte);
       try
       {
-        locala.gUV = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
+        locala.hvu = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
         locala.uri = paramParcel.readString();
         locala.funcId = paramParcel.readInt();
         locala.reqCmdId = paramParcel.readInt();
         locala.respCmdId = paramParcel.readInt();
-        paramParcel = locala.atI();
+        paramParcel = locala.aAz();
         AppMethodBeat.o(110806);
         return paramParcel;
       }
@@ -46,11 +46,11 @@ public final class WepkgRunCgi
           if ((localException3 instanceof f.a.a.b)) {
             try
             {
-              locala.gUV = ((a)Class.forName(str).newInstance());
+              locala.hvu = ((a)Class.forName(str).newInstance());
             }
             catch (Exception localException1)
             {
-              ad.e("MicroMsg.Wepkg.WepkgRunCgi", "readCommReqRespFromParcel, resp fields not ready, re-create one but exp = %s", new Object[] { bt.m(localException1) });
+              ac.e("MicroMsg.Wepkg.WepkgRunCgi", "readCommReqRespFromParcel, resp fields not ready, re-create one but exp = %s", new Object[] { bs.m(localException1) });
             }
           }
         }
@@ -67,13 +67,13 @@ public final class WepkgRunCgi
     implements x.a
   {
     public static final Parcelable.Creator<RemoteCgiTask> CREATOR;
-    public int BJR;
-    private com.tencent.mm.al.b BJS;
-    public com.tencent.mm.al.b BJT;
-    public WepkgRunCgi.a BJU;
-    private String jyg;
-    private int oTe;
-    private int oTq;
+    public int Dca;
+    private com.tencent.mm.ak.b Dcb;
+    public com.tencent.mm.ak.b Dcc;
+    public WepkgRunCgi.a Dcd;
+    private String jYB;
+    private int pwB;
+    private int pwp;
     
     static
     {
@@ -84,45 +84,45 @@ public final class WepkgRunCgi
     
     public RemoteCgiTask()
     {
-      this.BJR = 0;
+      this.Dca = 0;
     }
     
     RemoteCgiTask(Parcel paramParcel)
     {
       AppMethodBeat.i(110804);
-      this.BJR = 0;
+      this.Dca = 0;
       e(paramParcel);
       AppMethodBeat.o(110804);
     }
     
-    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb, n paramn)
+    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb, n paramn)
     {
       AppMethodBeat.i(110800);
-      this.oTq = paramInt1;
-      this.oTe = paramInt2;
-      this.jyg = paramString;
-      this.BJS = paramb;
-      this.BJR = 2;
-      aXw();
+      this.pwB = paramInt1;
+      this.pwp = paramInt2;
+      this.jYB = paramString;
+      this.Dcb = paramb;
+      this.Dca = 2;
+      bet();
       AppMethodBeat.o(110800);
       return 0;
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(110801);
-      d.bk(this);
-      if (this.BJU != null) {
-        this.BJU.a(this.oTq, this.oTe, this.jyg, this.BJS);
-      }
-      AppMethodBeat.o(110801);
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(110799);
-      x.a(this.BJT, this, true);
+      x.a(this.Dcc, this, true);
       AppMethodBeat.o(110799);
+    }
+    
+    public final void aLr()
+    {
+      AppMethodBeat.i(110801);
+      d.bh(this);
+      if (this.Dcd != null) {
+        this.Dcd.a(this.pwB, this.pwp, this.jYB, this.Dcb);
+      }
+      AppMethodBeat.o(110801);
     }
     
     public final int describeContents()
@@ -134,21 +134,21 @@ public final class WepkgRunCgi
     {
       AppMethodBeat.i(110803);
       super.e(paramParcel);
-      this.BJR = paramParcel.readInt();
-      switch (this.BJR)
+      this.Dca = paramParcel.readInt();
+      switch (this.Dca)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(110803);
         return;
-        this.BJT = WepkgRunCgi.n(paramParcel);
+        this.Dcc = WepkgRunCgi.o(paramParcel);
         AppMethodBeat.o(110803);
         return;
-        this.oTq = paramParcel.readInt();
-        this.oTe = paramParcel.readInt();
-        this.jyg = paramParcel.readString();
-        this.BJS = WepkgRunCgi.n(paramParcel);
+        this.pwB = paramParcel.readInt();
+        this.pwp = paramParcel.readInt();
+        this.jYB = paramParcel.readString();
+        this.Dcb = WepkgRunCgi.o(paramParcel);
       }
     }
     
@@ -156,28 +156,28 @@ public final class WepkgRunCgi
     {
       AppMethodBeat.i(110802);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.BJR);
-      switch (this.BJR)
+      paramParcel.writeInt(this.Dca);
+      switch (this.Dca)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(110802);
         return;
-        WepkgRunCgi.a(this.BJT, paramParcel);
+        WepkgRunCgi.a(this.Dcc, paramParcel);
         AppMethodBeat.o(110802);
         return;
-        paramParcel.writeInt(this.oTq);
-        paramParcel.writeInt(this.oTe);
-        paramParcel.writeString(this.jyg);
-        WepkgRunCgi.a(this.BJS, paramParcel);
+        paramParcel.writeInt(this.pwB);
+        paramParcel.writeInt(this.pwp);
+        paramParcel.writeString(this.jYB);
+        WepkgRunCgi.a(this.Dcb, paramParcel);
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb);
+    public abstract void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb);
   }
 }
 

@@ -21,35 +21,35 @@ import com.tencent.mm.plugin.appbrand.widget.h;
 public final class g
   extends LinearLayout
 {
-  private ImageView kXS;
-  private TextView kXT;
-  private Button kXU;
+  private ImageView lzC;
+  private TextView lzD;
+  private Button lzE;
   
   public g(Context paramContext, c paramc)
   {
     super(paramContext);
     AppMethodBeat.i(147440);
     inflate(getContext(), 2131492993, this);
-    this.kXS = ((ImageView)findViewById(2131296714));
-    this.kXT = ((TextView)findViewById(2131296716));
-    this.kXU = ((Button)findViewById(2131296713));
-    this.kXT.setText(getResources().getString(2131760993, new Object[] { paramc.DY().dfM }));
-    paramContext = (LinearLayout.LayoutParams)this.kXS.getLayoutParams();
-    if ((paramc.getAppConfig() != null) && (paramc.getAppConfig().aTm() != null) && (paramc.getAppConfig().aTm().aTr())) {}
+    this.lzC = ((ImageView)findViewById(2131296714));
+    this.lzD = ((TextView)findViewById(2131296716));
+    this.lzE = ((Button)findViewById(2131296713));
+    this.lzD.setText(getResources().getString(2131760993, new Object[] { paramc.DB().ddh }));
+    paramContext = (LinearLayout.LayoutParams)this.lzC.getLayoutParams();
+    if ((paramc.getAppConfig() != null) && (paramc.getAppConfig().bak() != null) && (paramc.getAppConfig().bak().bap())) {}
     for (;;)
     {
       if (i != 0)
       {
-        paramContext.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165765);
-        this.kXS.setLayoutParams(paramContext);
+        paramContext.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165765);
+        this.lzC.setLayoutParams(paramContext);
         requestLayout();
       }
       paramContext = new ColorMatrix();
       paramContext.setSaturation(0.0F);
       paramContext = new ColorMatrixColorFilter(paramContext);
-      this.kXS.setColorFilter(paramContext);
-      b.aub().a(this.kXS, paramc.DY().hGe, ((h)paramc.ab(h.class)).bra(), com.tencent.mm.modelappbrand.a.g.gSK);
-      this.kXU.setVisibility(8);
+      this.lzC.setColorFilter(paramContext);
+      b.aAS().a(this.lzC, paramc.DB().igG, ((h)paramc.ab(h.class)).bya(), com.tencent.mm.modelappbrand.a.g.htk);
+      this.lzE.setVisibility(8);
       setBackgroundColor(-1);
       AppMethodBeat.o(147440);
       return;
@@ -59,7 +59,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.g
  * JD-Core Version:    0.7.0.1
  */

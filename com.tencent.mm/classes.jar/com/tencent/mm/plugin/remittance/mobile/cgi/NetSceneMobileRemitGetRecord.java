@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bgf;
-import com.tencent.mm.protocal.protobuf.dea;
-import com.tencent.mm.protocal.protobuf.deb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bjx;
+import com.tencent.mm.protocal.protobuf.djp;
+import com.tencent.mm.protocal.protobuf.djq;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,26 +23,26 @@ public final class NetSceneMobileRemitGetRecord
   extends a
 {
   private final String TAG;
-  private deb vxo;
+  private djq wHt;
   
   public NetSceneMobileRemitGetRecord(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67639);
     this.TAG = "MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord";
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new dea();
-    ((b.a)localObject).gUV = new deb();
+    ((b.a)localObject).hvt = new djp();
+    ((b.a)localObject).hvu = new djq();
     ((b.a)localObject).funcId = 2993;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/transferphonegethisrcvrs";
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dea)this.rr.gUS.gUX;
-    ((dea)localObject).EvD = paramString1;
-    ((dea)localObject).EvE = paramString2;
-    ad.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord", "do scene NetSceneMobileRemitGetRecord last_id:%s homepage_ext:%s", new Object[] { paramString1, paramString2 });
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (djp)this.rr.hvr.hvw;
+    ((djp)localObject).FSG = paramString1;
+    ((djp)localObject).FSH = paramString2;
+    ac.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord", "do scene NetSceneMobileRemitGetRecord last_id:%s homepage_ext:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(67639);
   }
   
-  public static ArrayList<HisRcvrParcel> aF(LinkedList<bgf> paramLinkedList)
+  public static ArrayList<HisRcvrParcel> aM(LinkedList<bjx> paramLinkedList)
   {
     AppMethodBeat.i(67641);
     if (paramLinkedList == null)
@@ -53,13 +53,13 @@ public final class NetSceneMobileRemitGetRecord
     ArrayList localArrayList = new ArrayList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
-      localArrayList.add(new HisRcvrParcel((bgf)paramLinkedList.next()));
+      localArrayList.add(new HisRcvrParcel((bjx)paramLinkedList.next()));
     }
     AppMethodBeat.o(67641);
     return localArrayList;
   }
   
-  public static ArrayList<bgf> eT(List<HisRcvrParcel> paramList)
+  public static ArrayList<bjx> eZ(List<HisRcvrParcel> paramList)
   {
     AppMethodBeat.i(67642);
     if (paramList == null)
@@ -72,14 +72,14 @@ public final class NetSceneMobileRemitGetRecord
     while (paramList.hasNext())
     {
       HisRcvrParcel localHisRcvrParcel = (HisRcvrParcel)paramList.next();
-      bgf localbgf = new bgf();
-      localbgf.id = localHisRcvrParcel.id;
-      localbgf.vxp = localHisRcvrParcel.vxp;
-      localbgf.vxq = localHisRcvrParcel.vxq;
-      localbgf.nrG = localHisRcvrParcel.nrG;
-      localbgf.timestamp = localHisRcvrParcel.timestamp;
-      localbgf.vxr = localHisRcvrParcel.vxr;
-      localArrayList.add(localbgf);
+      bjx localbjx = new bjx();
+      localbjx.id = localHisRcvrParcel.id;
+      localbjx.wHu = localHisRcvrParcel.wHu;
+      localbjx.wHv = localHisRcvrParcel.wHv;
+      localbjx.nUG = localHisRcvrParcel.nUG;
+      localbjx.timestamp = localHisRcvrParcel.timestamp;
+      localbjx.wHw = localHisRcvrParcel.wHw;
+      localArrayList.add(localbjx);
     }
     AppMethodBeat.o(67642);
     return localArrayList;
@@ -88,28 +88,28 @@ public final class NetSceneMobileRemitGetRecord
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(67640);
-    ad.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.vxo = ((deb)((b)paramq).gUT.gUX);
-    ad.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.vxo.ntx), this.vxo.nty });
+    ac.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.wHt = ((djq)((b)paramq).hvs.hvw);
+    ac.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecord", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.wHt.nWx), this.wHt.nWy });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67640);
   }
   
-  public final deb djB()
+  public final djq dxD()
   {
-    if (this.vxo == null) {
+    if (this.wHt == null) {
       return null;
     }
-    return this.vxo;
+    return this.wHt;
   }
   
   public final void e(q paramq)
   {
-    paramq = (deb)((b)paramq).gUT.gUX;
-    this.IdO = paramq.ntx;
-    this.IdP = paramq.nty;
+    paramq = (djq)((b)paramq).hvs.hvw;
+    this.JFq = paramq.nWx;
+    this.JFr = paramq.nWy;
   }
   
   public final int getType()
@@ -122,11 +122,11 @@ public final class NetSceneMobileRemitGetRecord
   {
     public static final Parcelable.Creator<HisRcvrParcel> CREATOR;
     public String id;
-    public String nrG;
+    public String nUG;
     public long timestamp;
-    public String vxp;
-    public String vxq;
-    public int vxr;
+    public String wHu;
+    public String wHv;
+    public int wHw;
     
     static
     {
@@ -141,22 +141,22 @@ public final class NetSceneMobileRemitGetRecord
     {
       AppMethodBeat.i(67636);
       this.id = paramParcel.readString();
-      this.vxp = paramParcel.readString();
-      this.vxq = paramParcel.readString();
-      this.nrG = paramParcel.readString();
+      this.wHu = paramParcel.readString();
+      this.wHv = paramParcel.readString();
+      this.nUG = paramParcel.readString();
       this.timestamp = paramParcel.readLong();
-      this.vxr = paramParcel.readInt();
+      this.wHw = paramParcel.readInt();
       AppMethodBeat.o(67636);
     }
     
-    protected HisRcvrParcel(bgf parambgf)
+    protected HisRcvrParcel(bjx parambjx)
     {
-      this.id = parambgf.id;
-      this.vxp = parambgf.vxp;
-      this.vxq = parambgf.vxq;
-      this.nrG = parambgf.nrG;
-      this.timestamp = parambgf.timestamp;
-      this.vxr = parambgf.vxr;
+      this.id = parambjx.id;
+      this.wHu = parambjx.wHu;
+      this.wHv = parambjx.wHv;
+      this.nUG = parambjx.nUG;
+      this.timestamp = parambjx.timestamp;
+      this.wHw = parambjx.wHw;
     }
     
     public int describeContents()
@@ -168,18 +168,18 @@ public final class NetSceneMobileRemitGetRecord
     {
       AppMethodBeat.i(67637);
       paramParcel.writeString(this.id);
-      paramParcel.writeString(this.vxp);
-      paramParcel.writeString(this.vxq);
-      paramParcel.writeString(this.nrG);
+      paramParcel.writeString(this.wHu);
+      paramParcel.writeString(this.wHv);
+      paramParcel.writeString(this.nUG);
       paramParcel.writeLong(this.timestamp);
-      paramParcel.writeInt(this.vxr);
+      paramParcel.writeInt(this.wHw);
       AppMethodBeat.o(67637);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.cgi.NetSceneMobileRemitGetRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,18 @@ import java.util.List;
 public final class b
   extends c
 {
-  public final long aSz;
-  public final long bmp;
-  public final int bpS;
-  public final long bpT;
-  public final boolean bpU;
-  public final int bpV;
-  public final int bpW;
-  public final long bpX;
-  public final boolean bpY;
-  public final boolean bpZ;
-  public final boolean bqa;
-  public final a bqb;
+  public final long aTs;
+  public final long bmR;
+  public final boolean boA;
+  public final boolean boB;
+  public final a boC;
+  public final int bot;
+  public final long bou;
+  public final boolean bov;
+  public final int bow;
+  public final int box;
+  public final long boy;
+  public final boolean boz;
   public final List<a> segments;
   public final int version;
   
@@ -26,23 +26,23 @@ public final class b
   {
     super(paramString, paramList);
     AppMethodBeat.i(62888);
-    this.bpS = paramInt1;
-    this.bmp = paramLong2;
-    this.bpU = paramBoolean1;
-    this.bpV = paramInt2;
-    this.bpW = paramInt3;
+    this.bot = paramInt1;
+    this.bmR = paramLong2;
+    this.bov = paramBoolean1;
+    this.bow = paramInt2;
+    this.box = paramInt3;
     this.version = paramInt4;
-    this.bpX = paramLong3;
-    this.bpY = paramBoolean2;
-    this.bpZ = paramBoolean3;
-    this.bqa = paramBoolean4;
-    this.bqb = parama;
+    this.boy = paramLong3;
+    this.boz = paramBoolean2;
+    this.boA = paramBoolean3;
+    this.boB = paramBoolean4;
+    this.boC = parama;
     this.segments = Collections.unmodifiableList(paramList1);
     if (!paramList1.isEmpty())
     {
       paramString = (a)paramList1.get(paramList1.size() - 1);
-      paramLong2 = paramString.bqe;
-      this.aSz = (paramString.aSz + paramLong2);
+      paramLong2 = paramString.boE;
+      this.aTs = (paramString.aTs + paramLong2);
       if (paramLong1 != -9223372036854775807L) {
         break label166;
       }
@@ -50,48 +50,48 @@ public final class b
     }
     for (;;)
     {
-      this.bpT = paramLong2;
+      this.bou = paramLong2;
       AppMethodBeat.o(62888);
       return;
-      this.aSz = 0L;
+      this.aTs = 0L;
       break;
       label166:
       paramLong2 = paramLong1;
       if (paramLong1 < 0L) {
-        paramLong2 = paramLong1 + this.aSz;
+        paramLong2 = paramLong1 + this.aTs;
       }
     }
   }
   
-  public final long uw()
+  public final long us()
   {
-    return this.bmp + this.aSz;
+    return this.bmR + this.aTs;
   }
   
   public static final class a
     implements Comparable<Long>
   {
-    public final long aSz;
-    public final boolean bds;
-    public final int bqd;
-    public final long bqe;
-    public final String bqf;
-    public final String bqg;
-    public final long bqh;
-    public final long bqi;
+    public final long aTs;
+    public final boolean bee;
+    public final int boD;
+    public final long boE;
+    public final String boF;
+    public final String boG;
+    public final long boH;
+    public final long boI;
     public final String url;
     
     public a(String paramString1, long paramLong1, int paramInt, long paramLong2, boolean paramBoolean, String paramString2, String paramString3, long paramLong3, long paramLong4)
     {
       this.url = paramString1;
-      this.aSz = paramLong1;
-      this.bqd = paramInt;
-      this.bqe = paramLong2;
-      this.bds = paramBoolean;
-      this.bqf = paramString2;
-      this.bqg = paramString3;
-      this.bqh = paramLong3;
-      this.bqi = paramLong4;
+      this.aTs = paramLong1;
+      this.boD = paramInt;
+      this.boE = paramLong2;
+      this.bee = paramBoolean;
+      this.boF = paramString2;
+      this.boG = paramString3;
+      this.boH = paramLong3;
+      this.boI = paramLong4;
     }
     
     public a(String paramString, long paramLong1, long paramLong2)

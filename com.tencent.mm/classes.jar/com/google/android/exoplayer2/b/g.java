@@ -7,39 +7,39 @@ import java.util.LinkedList;
 public abstract class g<I extends e, O extends f, E extends Exception>
   implements c<I, O, E>
 {
-  private int aWh;
-  private final Thread aWn;
-  private final LinkedList<I> aWo = new LinkedList();
-  private final LinkedList<O> aWp = new LinkedList();
-  protected final I[] aWq;
-  private final O[] aWr;
-  protected int aWs;
-  private int aWt;
-  private I aWu;
-  private boolean aWv;
+  private int aWU;
+  private final Thread aWZ;
+  private final LinkedList<I> aXa = new LinkedList();
+  private final LinkedList<O> aXb = new LinkedList();
+  protected final I[] aXc;
+  private final O[] aXd;
+  protected int aXe;
+  private int aXf;
+  private I aXg;
+  private boolean aXh;
   private E exception;
   private final Object lock = new Object();
   private boolean released;
   
   protected g(I[] paramArrayOfI, O[] paramArrayOfO)
   {
-    this.aWq = paramArrayOfI;
-    this.aWs = 2;
+    this.aXc = paramArrayOfI;
+    this.aXe = 2;
     int i = 0;
-    while (i < this.aWs)
+    while (i < this.aXe)
     {
-      this.aWq[i] = sB();
+      this.aXc[i] = sK();
       i += 1;
     }
-    this.aWr = paramArrayOfO;
-    this.aWt = 2;
+    this.aXd = paramArrayOfO;
+    this.aXf = 2;
     i = j;
-    while (i < this.aWt)
+    while (i < this.aXf)
     {
-      this.aWr[i] = sC();
+      this.aXd[i] = sL();
       i += 1;
     }
-    this.aWn = new Thread()
+    this.aWZ = new Thread()
     {
       public final void run()
       {
@@ -50,7 +50,7 @@ public abstract class g<I extends e, O extends f, E extends Exception>
           boolean bool;
           do
           {
-            bool = localg.sz();
+            bool = localg.sI();
           } while (bool);
           AppMethodBeat.o(91856);
           return;
@@ -63,52 +63,47 @@ public abstract class g<I extends e, O extends f, E extends Exception>
         }
       }
     };
-    this.aWn.start();
+    this.aWZ.start();
   }
   
   private void a(I paramI)
   {
     paramI.clear();
-    e[] arrayOfe = this.aWq;
-    int i = this.aWs;
-    this.aWs = (i + 1);
+    e[] arrayOfe = this.aXc;
+    int i = this.aXe;
+    this.aXe = (i + 1);
     arrayOfe[i] = paramI;
   }
   
   private void b(O paramO)
   {
     paramO.clear();
-    f[] arrayOff = this.aWr;
-    int i = this.aWt;
-    this.aWt = (i + 1);
+    f[] arrayOff = this.aXd;
+    int i = this.aXf;
+    this.aXf = (i + 1);
     arrayOff[i] = paramO;
   }
   
-  private boolean sA()
-  {
-    return (!this.aWo.isEmpty()) && (this.aWt > 0);
-  }
-  
-  private I sw()
+  private I sF()
   {
     for (;;)
     {
       synchronized (this.lock)
       {
-        if (this.aWu == null)
+        if (this.aXg == null)
         {
           bool = true;
           a.checkState(bool);
-          if (this.aWs == 0)
+          if (this.aXe == 0)
           {
             localObject1 = null;
-            this.aWu = ((e)localObject1);
-            localObject1 = this.aWu;
+            this.aXg = ((e)localObject1);
+            localObject1 = this.aXg;
             return localObject1;
           }
-          Object localObject1 = this.aWq;
-          int i = this.aWs - 1;
-          this.aWs = i;
+          Object localObject1 = this.aXc;
+          int i = this.aXe - 1;
+          this.aXe = i;
           localObject1 = localObject1[i];
         }
       }
@@ -116,23 +111,28 @@ public abstract class g<I extends e, O extends f, E extends Exception>
     }
   }
   
-  private O sx()
+  private O sG()
   {
     synchronized (this.lock)
     {
-      if (this.aWp.isEmpty()) {
+      if (this.aXb.isEmpty()) {
         return null;
       }
-      f localf = (f)this.aWp.removeFirst();
+      f localf = (f)this.aXb.removeFirst();
       return localf;
     }
   }
   
-  private void sy()
+  private void sH()
   {
-    if (sA()) {
+    if (sJ()) {
       this.lock.notify();
     }
+  }
+  
+  private boolean sJ()
+  {
+    return (!this.aXa.isEmpty()) && (this.aXf > 0);
   }
   
   protected abstract E a(I paramI, O paramO, boolean paramBoolean);
@@ -142,7 +142,7 @@ public abstract class g<I extends e, O extends f, E extends Exception>
     synchronized (this.lock)
     {
       b(paramO);
-      sy();
+      sH();
       return;
     }
   }
@@ -151,19 +151,19 @@ public abstract class g<I extends e, O extends f, E extends Exception>
   {
     synchronized (this.lock)
     {
-      this.aWv = true;
-      this.aWh = 0;
-      if (this.aWu != null)
+      this.aXh = true;
+      this.aWU = 0;
+      if (this.aXg != null)
       {
-        a(this.aWu);
-        this.aWu = null;
+        a(this.aXg);
+        this.aXg = null;
       }
-      if (!this.aWo.isEmpty()) {
-        a((e)this.aWo.removeFirst());
+      if (!this.aXa.isEmpty()) {
+        a((e)this.aXa.removeFirst());
       }
     }
-    while (!this.aWp.isEmpty()) {
-      b((f)this.aWp.removeFirst());
+    while (!this.aXb.isEmpty()) {
+      b((f)this.aXb.removeFirst());
     }
   }
   
@@ -176,42 +176,38 @@ public abstract class g<I extends e, O extends f, E extends Exception>
     }
   }
   
-  protected abstract I sB();
-  
-  protected abstract O sC();
-  
-  final boolean sz()
+  final boolean sI()
   {
     synchronized (this.lock)
     {
-      if ((!this.released) && (!sA())) {
+      if ((!this.released) && (!sJ())) {
         this.lock.wait();
       }
     }
     if (this.released) {
       return false;
     }
-    e locale = (e)this.aWo.removeFirst();
-    Object localObject5 = this.aWr;
-    int i = this.aWt - 1;
-    this.aWt = i;
+    e locale = (e)this.aXa.removeFirst();
+    Object localObject5 = this.aXd;
+    int i = this.aXf - 1;
+    this.aXf = i;
     localObject5 = localObject5[i];
-    boolean bool = this.aWv;
-    this.aWv = false;
-    if (locale.sq()) {
-      ((f)localObject5).dM(4);
+    boolean bool = this.aXh;
+    this.aXh = false;
+    if (locale.sz()) {
+      ((f)localObject5).dL(4);
     }
     for (;;)
     {
       synchronized (this.lock)
       {
-        if (this.aWv)
+        if (this.aXh)
         {
           b((f)localObject5);
           a(locale);
           return true;
-          if (locale.sp()) {
-            ((f)localObject5).dM(-2147483648);
+          if (locale.sy()) {
+            ((f)localObject5).dL(-2147483648);
           }
           this.exception = a(locale, (f)localObject5, bool);
           if (this.exception == null) {
@@ -222,17 +218,21 @@ public abstract class g<I extends e, O extends f, E extends Exception>
             return false;
           }
         }
-        if (((f)localObject5).sp())
+        if (((f)localObject5).sy())
         {
-          this.aWh += 1;
+          this.aWU += 1;
           b((f)localObject5);
         }
       }
-      ((f)localObject5).aWh = this.aWh;
-      this.aWh = 0;
-      this.aWp.addLast(localObject5);
+      ((f)localObject5).aWU = this.aWU;
+      this.aWU = 0;
+      this.aXb.addLast(localObject5);
     }
   }
+  
+  protected abstract I sK();
+  
+  protected abstract O sL();
 }
 
 

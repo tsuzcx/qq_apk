@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract interface i
 {
-  public abstract b S(List<e> paramList);
+  public abstract b J(List<e> paramList);
   
   public abstract void init();
 }

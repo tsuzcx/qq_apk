@@ -5,31 +5,31 @@ import android.media.browse.MediaBrowser.ConnectionCallback;
 final class a$b<T extends a.a>
   extends MediaBrowser.ConnectionCallback
 {
-  protected final T Ix;
+  protected final T Ju;
   
   public a$b(T paramT)
   {
-    this.Ix = paramT;
+    this.Ju = paramT;
   }
   
   public final void onConnected()
   {
-    this.Ix.onConnected();
+    this.Ju.onConnected();
   }
   
   public final void onConnectionFailed()
   {
-    this.Ix.onConnectionFailed();
+    this.Ju.onConnectionFailed();
   }
   
   public final void onConnectionSuspended()
   {
-    this.Ix.onConnectionSuspended();
+    this.Ju.onConnectionSuspended();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.a.b
  * JD-Core Version:    0.7.0.1
  */

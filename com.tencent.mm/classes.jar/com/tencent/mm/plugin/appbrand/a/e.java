@@ -7,13 +7,13 @@ import com.tencent.mm.plugin.appbrand.appcache.bf;
 public abstract interface e
   extends a
 {
-  public abstract bf aOk();
+  public abstract bf aVa();
   
-  public abstract al aOl();
+  public abstract al aVb();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

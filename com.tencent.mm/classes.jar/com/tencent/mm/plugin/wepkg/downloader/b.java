@@ -5,9 +5,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public final class b
 {
-  private static volatile b BHB;
+  private static volatile b CZJ;
   public static Object lock;
-  h BHC;
+  h CZK;
   
   static
   {
@@ -19,20 +19,20 @@ public final class b
   private b()
   {
     AppMethodBeat.i(110590);
-    this.BHC = new h("WePkgDownloadExcutor", new LinkedBlockingQueue(24));
+    this.CZK = new h("WePkgDownloadExcutor", new LinkedBlockingQueue(24));
     AppMethodBeat.o(110590);
   }
   
-  public static b etE()
+  public static b eIX()
   {
     AppMethodBeat.i(110589);
-    if (BHB == null) {}
+    if (CZJ == null) {}
     synchronized (lock)
     {
-      if (BHB == null) {
-        BHB = new b();
+      if (CZJ == null) {
+        CZJ = new b();
       }
-      ??? = BHB;
+      ??? = CZJ;
       AppMethodBeat.o(110589);
       return ???;
     }

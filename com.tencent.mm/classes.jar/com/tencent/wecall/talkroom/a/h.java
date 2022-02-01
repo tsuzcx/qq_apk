@@ -13,7 +13,7 @@ public final class h
 {
   public String groupId;
   public int roomId;
-  public long sAY;
+  public long tIG;
   
   public h(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
@@ -25,18 +25,18 @@ public final class h
       try
       {
         locall.groupId = paramString;
-        locall.zkT = paramInt1;
-        locall.zkU = paramLong;
-        locall.nPB = paramInt2;
-        locall.IkH = 2;
-        locall.netType = k.kR(com.tencent.pb.common.c.c.ztG);
+        locall.ADE = paramInt1;
+        locall.ADF = paramLong;
+        locall.osF = paramInt2;
+        locall.JMs = 2;
+        locall.netType = k.lf(com.tencent.pb.common.c.c.AMx);
         if (paramInt3 != 0) {
           continue;
         }
-        locall.IkS = 0;
-        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(locall.IkS) });
+        locall.JMD = 0;
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(locall.JMD) });
         this.mNetType = 3;
-        this.IjW = com.tencent.wecall.talkroom.model.c.fpJ().aOs(paramString);
+        this.JLH = com.tencent.wecall.talkroom.model.c.fIe().aUe(paramString);
       }
       catch (Exception paramString)
       {
@@ -46,11 +46,11 @@ public final class h
       c(211, locall);
       AppMethodBeat.o(175625);
       return;
-      locall.IkS = 1;
+      locall.JMD = 1;
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62546);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -73,7 +73,7 @@ public final class h
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSVoiceRedirectReq";
   }

@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.aa.l;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionCoverImageInfo;
@@ -33,15 +32,16 @@ import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.game.preload.ui.BootstrapProgressBar;
 import com.tencent.mm.plugin.appbrand.launching.q;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.s.a.e.b;
-import com.tencent.mm.plugin.appbrand.y.b.b;
+import com.tencent.mm.plugin.appbrand.r.a.e.b;
+import com.tencent.mm.plugin.appbrand.x.b.b;
+import com.tencent.mm.plugin.appbrand.z.l;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.util.LinkedList;
 import java.util.List;
@@ -52,84 +52,84 @@ import java.util.TimerTask;
 @SuppressLint({"ViewConstructor"})
 final class d
   extends com.tencent.mm.ui.statusbar.b
-  implements q, v
+  implements q, u
 {
-  private o iEx;
-  public final boolean iGa;
-  private ThreeDotsLoadingView luZ;
-  private ImageView lyK;
-  private ImageView lyL;
-  private ImageView lyM;
-  private TextView lyN;
-  private LinearLayout lyO;
-  private com.tencent.mm.plugin.appbrand.widget.actionbar.b lyP;
-  private TextView lyQ;
-  private e.b lyR;
-  private TextView lyS;
-  private boolean lyT;
-  private Runnable lyU;
-  private RelativeLayout lyV;
-  private TextView lyW;
-  private boolean lyX;
-  private boolean lyY;
-  private boolean lyZ;
-  private int lza;
-  private boolean lzb;
-  private int lzc;
-  private RelativeLayout lzd;
-  private ImageView lze;
-  private BootstrapProgressBar lzf;
-  private boolean lzg;
-  private boolean lzh;
-  private Boolean lzi;
+  private o jez;
+  public final boolean jgc;
+  private ThreeDotsLoadingView lWT;
+  private ImageView maH;
+  private ImageView maI;
+  private ImageView maJ;
+  private TextView maK;
+  private LinearLayout maL;
+  private com.tencent.mm.plugin.appbrand.widget.actionbar.b maM;
+  private TextView maN;
+  private e.b maO;
+  private TextView maP;
+  private boolean maQ;
+  private Runnable maR;
+  private RelativeLayout maS;
+  private TextView maT;
+  private boolean maU;
+  private boolean maV;
+  private boolean maW;
+  private int maX;
+  private boolean maY;
+  private int maZ;
+  private RelativeLayout mba;
+  private ImageView mbb;
+  private BootstrapProgressBar mbc;
+  private boolean mbd;
+  private boolean mbe;
+  private Boolean mbf;
   
   public d(Context paramContext, o paramo)
   {
     super(paramContext);
     AppMethodBeat.i(48602);
-    this.lyR = e.b.lmO;
-    this.lyU = null;
-    this.lyX = false;
-    this.lyY = false;
-    this.lyZ = false;
-    this.lzb = false;
-    this.lzc = 30;
+    this.maO = e.b.lOQ;
+    this.maR = null;
+    this.maU = false;
+    this.maV = false;
+    this.maW = false;
+    this.maY = false;
+    this.maZ = 30;
     boolean bool1;
     label230:
     Object localObject2;
-    if ((bu.eGT()) || (DebuggerShell.aTY()) || (bu.eGR()) || (h.IS_FLAVOR_RED))
+    if ((bt.eWo()) || (DebuggerShell.baW()) || (bt.eWm()) || (h.IS_FLAVOR_RED))
     {
       bool1 = true;
-      this.iGa = bool1;
-      this.iEx = paramo;
-      ad.i("MicroMsg.AppBrandGameUILoadingSplash", "init");
+      this.jgc = bool1;
+      this.jez = paramo;
+      ac.i("MicroMsg.AppBrandGameUILoadingSplash", "init");
       setClickable(true);
       setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       LayoutInflater.from(getContext()).inflate(2131493063, this);
-      this.lzd = ((RelativeLayout)findViewById(2131296717));
-      this.lze = ((ImageView)findViewById(2131296718));
-      this.lzf = ((BootstrapProgressBar)findViewById(2131296719));
-      com.tencent.mm.plugin.appbrand.game.preload.e.aWX().dK(999, 1);
-      if ((((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pqS, false)) && (this.iEx != null))
+      this.mba = ((RelativeLayout)findViewById(2131296717));
+      this.mbb = ((ImageView)findViewById(2131296718));
+      this.mbc = ((BootstrapProgressBar)findViewById(2131296719));
+      com.tencent.mm.plugin.appbrand.game.preload.e.bdV().dK(999, 1);
+      if ((((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUF, false)) && (this.jez != null))
       {
-        final long l = bt.GC();
-        paramo = this.iEx.aNc();
-        if (paramo.cfl.jfA != null) {
+        final long l = bs.Gn();
+        paramo = this.jez.aTS();
+        if (paramo.cch.jFP != null) {
           break label1131;
         }
         paramContext = null;
-        if (bt.isNullOrNil(paramContext)) {
+        if (bs.isNullOrNil(paramContext)) {
           break label1145;
         }
-        this.lyX = true;
-        ad.i("MicroMsg.AppBrandGameUILoadingSplash", "loadingImgUrl:%s", new Object[] { paramContext });
-        com.tencent.mm.plugin.appbrand.game.preload.e.aWX().dK(1000, 1);
-        com.tencent.mm.cj.a.post(new d.3(this, paramContext, new com.tencent.mm.plugin.appbrand.game.preload.a.a()
+        this.maU = true;
+        ac.i("MicroMsg.AppBrandGameUILoadingSplash", "loadingImgUrl:%s", new Object[] { paramContext });
+        com.tencent.mm.plugin.appbrand.game.preload.e.bdV().dK(1000, 1);
+        com.tencent.mm.ci.a.post(new d.3(this, paramContext, new com.tencent.mm.plugin.appbrand.game.preload.a.a()
         {
           public final void a(final Bitmap paramAnonymousBitmap, final long paramAnonymousLong)
           {
             AppMethodBeat.i(48589);
-            ad.i("MicroMsg.AppBrandGameUILoadingSplash", "onLoadingImageLoaded");
+            ac.i("MicroMsg.AppBrandGameUILoadingSplash", "onLoadingImageLoaded");
             d.a(d.this);
             if (d.b(d.this) != null) {
               l.runOnUiThread(new Runnable()
@@ -143,8 +143,8 @@ final class d
                     if (d.c(d.this)) {
                       d.d(d.this);
                     }
-                    com.tencent.mm.plugin.appbrand.game.preload.e.aWX().dK(1002, (int)bt.aS(d.2.this.lzl));
-                    com.tencent.mm.plugin.appbrand.game.preload.e.aWX().dK(1001, (int)paramAnonymousLong);
+                    com.tencent.mm.plugin.appbrand.game.preload.e.bdV().dK(1002, (int)bs.aO(d.2.this.mbi));
+                    com.tencent.mm.plugin.appbrand.game.preload.e.bdV().dK(1001, (int)paramAnonymousLong);
                   }
                   AppMethodBeat.o(48588);
                 }
@@ -153,34 +153,34 @@ final class d
             AppMethodBeat.o(48589);
           }
         }));
-        if (paramo.cfl.jfA != null) {
+        if (paramo.cch.jFP != null) {
           break label1158;
         }
         paramContext = (Context)localObject1;
         label303:
-        if (bt.isNullOrNil(paramContext)) {
+        if (bs.isNullOrNil(paramContext)) {
           break label1172;
         }
-        this.lza = Color.parseColor(paramContext);
-        this.lzf.setProgressColor(this.lza);
-        ad.i("MicroMsg.AppBrandGameUILoadingSplash", "loadingProgressBarColor:%s", new Object[] { Integer.valueOf(this.lza) });
+        this.maX = Color.parseColor(paramContext);
+        this.mbc.setProgressColor(this.maX);
+        ac.i("MicroMsg.AppBrandGameUILoadingSplash", "loadingProgressBarColor:%s", new Object[] { Integer.valueOf(this.maX) });
         label351:
-        this.lzf.setAnimated(true);
-        this.lzf.setStriped(true);
-        aq.n(new Runnable()
+        this.mbc.setAnimated(true);
+        this.mbc.setStriped(true);
+        ap.n(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(48591);
             d.f(d.this);
-            ad.i("MicroMsg.AppBrandGameUILoadingSplash", "mCustomSplashScreenDelayTimeEnd");
+            ac.i("MicroMsg.AppBrandGameUILoadingSplash", "mCustomSplashScreenDelayTimeEnd");
             if (d.g(d.this)) {
               d.d(d.this);
             }
             AppMethodBeat.o(48591);
           }
         }, 1000L);
-        aq.n(new Runnable()
+        ap.n(new Runnable()
         {
           public final void run()
           {
@@ -200,59 +200,59 @@ final class d
         }, 2000L);
       }
       label395:
-      this.lyV = ((RelativeLayout)findViewById(2131296727));
-      this.lyK = ((ImageView)findViewById(2131296723));
-      this.lyK.setImageDrawable(com.tencent.mm.modelappbrand.a.a.aua());
-      this.lyN = ((TextView)findViewById(2131296724));
-      this.lyL = ((ImageView)findViewById(2131296731));
-      this.luZ = ((ThreeDotsLoadingView)findViewById(2131296726));
-      this.lyM = ((ImageView)findViewById(2131296725));
-      this.lyO = ((LinearLayout)findViewById(2131296721));
-      this.lyQ = ((TextView)findViewById(2131296728));
-      this.lyS = ((TextView)findViewById(2131301494));
-      this.lyW = ((TextView)findViewById(2131296730));
-      paramContext = (RelativeLayout.LayoutParams)this.luZ.getLayoutParams();
-      paramo = (RelativeLayout.LayoutParams)this.lyM.getLayoutParams();
-      localObject1 = (RelativeLayout.LayoutParams)this.lyL.getLayoutParams();
-      this.lyP = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(getContext());
-      this.lyP.setFullscreenMode(true);
+      this.maS = ((RelativeLayout)findViewById(2131296727));
+      this.maH = ((ImageView)findViewById(2131296723));
+      this.maH.setImageDrawable(com.tencent.mm.modelappbrand.a.a.aAR());
+      this.maK = ((TextView)findViewById(2131296724));
+      this.maI = ((ImageView)findViewById(2131296731));
+      this.lWT = ((ThreeDotsLoadingView)findViewById(2131296726));
+      this.maJ = ((ImageView)findViewById(2131296725));
+      this.maL = ((LinearLayout)findViewById(2131296721));
+      this.maN = ((TextView)findViewById(2131296728));
+      this.maP = ((TextView)findViewById(2131301494));
+      this.maT = ((TextView)findViewById(2131296730));
+      paramContext = (RelativeLayout.LayoutParams)this.lWT.getLayoutParams();
+      paramo = (RelativeLayout.LayoutParams)this.maJ.getLayoutParams();
+      localObject1 = (RelativeLayout.LayoutParams)this.maI.getLayoutParams();
+      this.maM = new com.tencent.mm.plugin.appbrand.widget.actionbar.b(getContext());
+      this.maM.setFullscreenMode(true);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject2).gravity = 21;
-      ((LinearLayout.LayoutParams)localObject2).rightMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165772);
-      ((LinearLayout.LayoutParams)localObject2).topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165773);
-      this.lyO.addView(this.lyP.getActionView(), (ViewGroup.LayoutParams)localObject2);
-      if (this.iEx.aNc().originalFlag != 1) {
+      ((LinearLayout.LayoutParams)localObject2).rightMargin = com.tencent.mm.cc.a.av(getContext(), 2131165772);
+      ((LinearLayout.LayoutParams)localObject2).topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165773);
+      this.maL.addView(this.maM.getActionView(), (ViewGroup.LayoutParams)localObject2);
+      if (this.jez.aTS().originalFlag != 1) {
         break label1203;
       }
-      this.lyM.setVisibility(0);
+      this.maJ.setVisibility(0);
       label690:
-      localObject2 = (RelativeLayout.LayoutParams)this.lzf.getLayoutParams();
-      this.lyR = this.iEx.getWindowAndroid().getOrientationHandler().aNL();
-      ad.i("MicroMsg.AppBrandGameUILoadingSplash", "mLastDeviceOrientation :%s", new Object[] { this.lyR });
-      if ((this.lyR != e.b.lmQ) && (this.lyR != e.b.lmR) && (this.lyR != e.b.lmS) && (this.lyR != e.b.lmT)) {
+      localObject2 = (RelativeLayout.LayoutParams)this.mbc.getLayoutParams();
+      this.maO = this.jez.getWindowAndroid().getOrientationHandler().aUB();
+      ac.i("MicroMsg.AppBrandGameUILoadingSplash", "mLastDeviceOrientation :%s", new Object[] { this.maO });
+      if ((this.maO != e.b.lOS) && (this.maO != e.b.lOT) && (this.maO != e.b.lOU) && (this.maO != e.b.lOV)) {
         break label1247;
       }
-      if (this.lyM.getVisibility() != 0) {
+      if (this.maJ.getVisibility() != 0) {
         break label1215;
       }
-      paramContext.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165778);
-      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165774);
-      paramo.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165781);
-      this.lyM.setLayoutParams(paramo);
+      paramContext.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165778);
+      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165774);
+      paramo.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165781);
+      this.maJ.setLayoutParams(paramo);
       label843:
-      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165768);
-      ((RelativeLayout.LayoutParams)localObject2).width = com.tencent.mm.cd.a.ap(getContext(), 2131165769);
-      this.luZ.setLayoutParams(paramContext);
-      this.lzf.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      this.lyL.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165768);
+      ((RelativeLayout.LayoutParams)localObject2).width = com.tencent.mm.cc.a.av(getContext(), 2131165769);
+      this.lWT.setLayoutParams(paramContext);
+      this.mbc.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      this.maI.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       L(getResources().getColor(2131099650), true);
-      this.lyP.setBackgroundColor(0);
-      paramContext = this.lyP;
-      if (this.lzi == null) {
-        this.lzi = Boolean.valueOf(ai.Eq());
+      this.maM.setBackgroundColor(0);
+      paramContext = this.maM;
+      if (this.mbf == null) {
+        this.mbf = Boolean.valueOf(aj.DT());
       }
       bool1 = bool2;
-      if (!this.lzi.booleanValue()) {
+      if (!this.mbf.booleanValue()) {
         bool1 = true;
       }
       paramContext.setForegroundStyle(bool1);
@@ -261,39 +261,39 @@ final class d
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(48597);
-          com.tencent.mm.plugin.appbrand.g.a(d.e(d.this).mAppId, g.d.iDc);
+          com.tencent.mm.plugin.appbrand.g.a(d.e(d.this).mAppId, g.d.jdc);
           d.e(d.this).finish();
           AppMethodBeat.o(48597);
         }
       };
-      this.lyP.setCloseButtonClickListener(paramContext);
-      this.lyP.setBackButtonClickListener(paramContext);
+      this.maM.setCloseButtonClickListener(paramContext);
+      this.maM.setBackButtonClickListener(paramContext);
       r.s(getContext(), true);
-      if (this.lyX) {
+      if (this.maU) {
         break label1373;
       }
-      this.luZ.ffb();
+      this.lWT.fuW();
     }
     for (;;)
     {
-      if ((this.iGa) || (this.iEx.iDx.iOP == 1) || (this.iEx.iDx.iOP == 2))
+      if ((this.jgc) || (this.jez.jdx.joY == 1) || (this.jez.jdx.joY == 2))
       {
-        paramContext = b.b.lvr;
-        localObject1 = com.tencent.mm.plugin.appbrand.y.a.a.bnj();
-        localObject2 = new com.tencent.mm.plugin.appbrand.y.c()
+        paramContext = b.b.lXl;
+        localObject1 = com.tencent.mm.plugin.appbrand.x.a.a.buf();
+        localObject2 = new com.tencent.mm.plugin.appbrand.x.c()
         {
           public final void a(String paramAnonymousString, b.b paramAnonymousb, long paramAnonymousLong)
           {
             AppMethodBeat.i(48586);
-            ad.i("MicroMsg.AppBrandGameUILoadingSplash", "onStepEnd sessionId:%s,step:%s,cost:%d", new Object[] { paramAnonymousString, paramAnonymousb.name(), Long.valueOf(paramAnonymousLong) });
-            d.boc();
+            ac.i("MicroMsg.AppBrandGameUILoadingSplash", "onStepEnd sessionId:%s,step:%s,cost:%d", new Object[] { paramAnonymousString, paramAnonymousb.name(), Long.valueOf(paramAnonymousLong) });
+            d.buY();
             AppMethodBeat.o(48586);
           }
           
-          public final void dR(final String paramAnonymousString1, final String paramAnonymousString2)
+          public final void ed(final String paramAnonymousString1, final String paramAnonymousString2)
           {
             AppMethodBeat.i(48587);
-            ad.e("MicroMsg.AppBrandGameUILoadingSplash", "onJsError message:%s,stackTrace:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+            ac.e("MicroMsg.AppBrandGameUILoadingSplash", "onJsError message:%s,stackTrace:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
             l.runOnUiThread(new Runnable()
             {
               public final void run()
@@ -306,12 +306,12 @@ final class d
             AppMethodBeat.o(48587);
           }
         };
-        paramo = (List)((com.tencent.mm.plugin.appbrand.y.a)localObject1).kax.get("WeAppLaunch");
+        paramo = (List)((com.tencent.mm.plugin.appbrand.x.a)localObject1).kBk.get("WeAppLaunch");
         paramContext = paramo;
         if (paramo == null)
         {
           paramContext = new LinkedList();
-          ((com.tencent.mm.plugin.appbrand.y.a)localObject1).kax.put("WeAppLaunch", paramContext);
+          ((com.tencent.mm.plugin.appbrand.x.a)localObject1).kBk.put("WeAppLaunch", paramContext);
         }
         paramContext.add(localObject2);
       }
@@ -320,51 +320,51 @@ final class d
       bool1 = false;
       break;
       label1131:
-      paramContext = paramo.cfl.jfA.jfw;
+      paramContext = paramo.cch.jFP.jFL;
       break label230;
       label1145:
-      com.tencent.mm.plugin.appbrand.game.preload.e.aWX().dK(1000, 0);
+      com.tencent.mm.plugin.appbrand.game.preload.e.bdV().dK(1000, 0);
       break label395;
       label1158:
-      paramContext = paramo.cfl.jfA.jfx;
+      paramContext = paramo.cch.jFP.jFM;
       break label303;
       label1172:
-      this.lza = getContext().getResources().getColor(2131099927);
-      this.lzf.setProgressColor(this.lza);
+      this.maX = getContext().getResources().getColor(2131099927);
+      this.mbc.setProgressColor(this.maX);
       break label351;
       label1203:
-      this.lyM.setVisibility(8);
+      this.maJ.setVisibility(8);
       break label690;
       label1215:
-      paramContext.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165782);
-      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165775);
+      paramContext.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165782);
+      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165775);
       break label843;
       label1247:
-      if (this.lyM.getVisibility() == 0)
+      if (this.maJ.getVisibility() == 0)
       {
-        paramContext.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165780);
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165775);
-        paramo.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165783);
-        this.lyM.setLayoutParams(paramo);
+        paramContext.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165780);
+        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165775);
+        paramo.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165783);
+        this.maJ.setLayoutParams(paramo);
       }
       for (;;)
       {
-        ((RelativeLayout.LayoutParams)localObject2).width = com.tencent.mm.cd.a.ap(getContext(), 2131165771);
-        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165770);
+        ((RelativeLayout.LayoutParams)localObject2).width = com.tencent.mm.cc.a.av(getContext(), 2131165771);
+        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165770);
         break;
-        paramContext.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165779);
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165775);
+        paramContext.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165779);
+        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165775);
       }
       label1373:
-      this.luZ.setVisibility(4);
-      this.lyQ.setVisibility(4);
+      this.lWT.setVisibility(4);
+      this.maN.setVisibility(4);
     }
   }
   
-  public final void bhu()
+  public final void boo()
   {
     AppMethodBeat.i(48604);
-    ad.w("MicroMsg.AppBrandGameUILoadingSplash", "animateHide");
+    ac.w("MicroMsg.AppBrandGameUILoadingSplash", "animateHide");
     post(new Runnable()
     {
       public final void run()
@@ -373,7 +373,7 @@ final class d
         final ViewParent localViewParent = d.this.getParent();
         if (!(localViewParent instanceof ViewGroup))
         {
-          ad.i("MicroMsg.AppBrandGameUILoadingSplash", "animateHide, wrong ViewGroup");
+          ac.i("MicroMsg.AppBrandGameUILoadingSplash", "animateHide, wrong ViewGroup");
           AppMethodBeat.o(48595);
           return;
         }
@@ -390,9 +390,9 @@ final class d
               public final void run()
               {
                 AppMethodBeat.i(48593);
-                ad.i("MicroMsg.AppBrandGameUILoadingSplash", "animateHide, remove splash");
+                ac.i("MicroMsg.AppBrandGameUILoadingSplash", "animateHide, remove splash");
                 d.this.setVisibility(8);
-                ((ViewGroup)d.6.1.this.lzq).removeView(d.this);
+                ((ViewGroup)d.6.1.this.mbn).removeView(d.this);
                 AppMethodBeat.o(48593);
               }
             });
@@ -406,11 +406,11 @@ final class d
     AppMethodBeat.o(48604);
   }
   
-  public final void dB(String paramString1, String paramString2)
+  public final void dN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(48603);
-    com.tencent.mm.modelappbrand.a.b.aub().a(this.lyK, paramString1, null, com.tencent.mm.modelappbrand.a.g.gSK);
-    this.lyN.setText(paramString2);
+    com.tencent.mm.modelappbrand.a.b.aAS().a(this.maH, paramString1, null, com.tencent.mm.modelappbrand.a.g.htk);
+    this.maK.setText(paramString2);
     AppMethodBeat.o(48603);
   }
   
@@ -423,70 +423,70 @@ final class d
   {
     AppMethodBeat.i(48605);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    e.b localb = this.iEx.getWindowAndroid().getOrientationHandler().aNL();
+    e.b localb = this.jez.getWindowAndroid().getOrientationHandler().aUB();
     RelativeLayout.LayoutParams localLayoutParams1;
     RelativeLayout.LayoutParams localLayoutParams2;
     RelativeLayout.LayoutParams localLayoutParams3;
     RelativeLayout.LayoutParams localLayoutParams4;
-    if (localb != this.lyR)
+    if (localb != this.maO)
     {
-      this.lyR = localb;
-      localLayoutParams1 = (RelativeLayout.LayoutParams)this.luZ.getLayoutParams();
-      localLayoutParams2 = (RelativeLayout.LayoutParams)this.lyM.getLayoutParams();
-      localLayoutParams3 = (RelativeLayout.LayoutParams)this.lzf.getLayoutParams();
-      localLayoutParams4 = (RelativeLayout.LayoutParams)this.lyL.getLayoutParams();
-      if ((localb != e.b.lmQ) && (localb != e.b.lmR) && (localb != e.b.lmS) && (localb != e.b.lmT)) {
+      this.maO = localb;
+      localLayoutParams1 = (RelativeLayout.LayoutParams)this.lWT.getLayoutParams();
+      localLayoutParams2 = (RelativeLayout.LayoutParams)this.maJ.getLayoutParams();
+      localLayoutParams3 = (RelativeLayout.LayoutParams)this.mbc.getLayoutParams();
+      localLayoutParams4 = (RelativeLayout.LayoutParams)this.maI.getLayoutParams();
+      if ((localb != e.b.lOS) && (localb != e.b.lOT) && (localb != e.b.lOU) && (localb != e.b.lOV)) {
         break label296;
       }
-      if (this.lyM.getVisibility() != 0) {
+      if (this.maJ.getVisibility() != 0) {
         break label263;
       }
-      localLayoutParams1.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165778);
-      localLayoutParams4.bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165774);
-      localLayoutParams2.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165781);
-      this.lyM.setLayoutParams(localLayoutParams2);
+      localLayoutParams1.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165778);
+      localLayoutParams4.bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165774);
+      localLayoutParams2.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165781);
+      this.maJ.setLayoutParams(localLayoutParams2);
     }
     for (;;)
     {
-      localLayoutParams3.width = com.tencent.mm.cd.a.ap(getContext(), 2131165769);
-      localLayoutParams3.bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165768);
-      this.lzf.setLayoutParams(localLayoutParams3);
-      this.luZ.setLayoutParams(localLayoutParams1);
-      this.lyL.setLayoutParams(localLayoutParams4);
+      localLayoutParams3.width = com.tencent.mm.cc.a.av(getContext(), 2131165769);
+      localLayoutParams3.bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165768);
+      this.mbc.setLayoutParams(localLayoutParams3);
+      this.lWT.setLayoutParams(localLayoutParams1);
+      this.maI.setLayoutParams(localLayoutParams4);
       requestLayout();
       AppMethodBeat.o(48605);
       return;
       label263:
-      localLayoutParams1.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165782);
-      localLayoutParams4.bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165775);
+      localLayoutParams1.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165782);
+      localLayoutParams4.bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165775);
     }
     label296:
-    if (this.lyM.getVisibility() == 0)
+    if (this.maJ.getVisibility() == 0)
     {
-      localLayoutParams1.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165780);
-      localLayoutParams4.bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165775);
-      localLayoutParams2.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165783);
-      this.lyM.setLayoutParams(localLayoutParams2);
+      localLayoutParams1.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165780);
+      localLayoutParams4.bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165775);
+      localLayoutParams2.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165783);
+      this.maJ.setLayoutParams(localLayoutParams2);
     }
     for (;;)
     {
-      localLayoutParams3.width = com.tencent.mm.cd.a.ap(getContext(), 2131165771);
-      localLayoutParams3.bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165770);
+      localLayoutParams3.width = com.tencent.mm.cc.a.av(getContext(), 2131165771);
+      localLayoutParams3.bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165770);
       break;
-      localLayoutParams1.topMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165779);
-      localLayoutParams4.bottomMargin = com.tencent.mm.cd.a.ap(getContext(), 2131165775);
+      localLayoutParams1.topMargin = com.tencent.mm.cc.a.av(getContext(), 2131165779);
+      localLayoutParams4.bottomMargin = com.tencent.mm.cc.a.av(getContext(), 2131165775);
     }
   }
   
-  public final void qp(final int paramInt)
+  public final void rc(final int paramInt)
   {
     AppMethodBeat.i(48607);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(48596);
-        ad.i("MicroMsg.AppBrandGameUILoadingSplash", "onDataTransferState  state=" + paramInt);
+        ac.i("MicroMsg.AppBrandGameUILoadingSplash", "onDataTransferState  state=" + paramInt);
         if (paramInt == 3)
         {
           if (d.m(d.this))
@@ -508,53 +508,53 @@ final class d
   public final void setProgress(int paramInt)
   {
     AppMethodBeat.i(48606);
-    if (!this.lyX)
+    if (!this.maU)
     {
       if (paramInt < 100)
       {
-        this.lyQ.setText(String.format("%d%%", new Object[] { Integer.valueOf(paramInt / 2) }));
+        this.maN.setText(String.format("%d%%", new Object[] { Integer.valueOf(paramInt / 2) }));
         AppMethodBeat.o(48606);
         return;
       }
-      if (!this.lzg)
+      if (!this.mbd)
       {
-        this.lzg = true;
+        this.mbd = true;
         new Timer(true).scheduleAtFixedRate(new b(), 0L, 50L);
         AppMethodBeat.o(48606);
       }
     }
-    else if ((!this.lyY) && (this.lzb))
+    else if ((!this.maV) && (this.maY))
     {
       if (paramInt < 100)
       {
-        this.lyQ.setText(String.format("%d%%", new Object[] { Integer.valueOf(paramInt / 2) }));
+        this.maN.setText(String.format("%d%%", new Object[] { Integer.valueOf(paramInt / 2) }));
         AppMethodBeat.o(48606);
         return;
       }
-      if (!this.lzg)
+      if (!this.mbd)
       {
-        this.lzg = true;
+        this.mbd = true;
         new Timer(true).scheduleAtFixedRate(new b(), 0L, 100L);
         AppMethodBeat.o(48606);
       }
     }
     else if (paramInt < 100)
     {
-      if (this.lzd.getVisibility() == 0)
+      if (this.mba.getVisibility() == 0)
       {
-        this.lzf.setProgress(paramInt / 2);
+        this.mbc.setProgress(paramInt / 2);
         AppMethodBeat.o(48606);
       }
     }
-    else if (!this.lzh)
+    else if (!this.mbe)
     {
-      this.lzh = true;
-      new Timer(true).scheduleAtFixedRate(new a(), 0L, 1000 / this.lzc);
+      this.mbe = true;
+      new Timer(true).scheduleAtFixedRate(new a(), 0L, 1000 / this.maZ);
     }
     AppMethodBeat.o(48606);
   }
   
-  public final void tc(int paramInt) {}
+  public final void tT(int paramInt) {}
   
   public final class a
     extends TimerTask
@@ -573,7 +573,7 @@ final class d
         return;
       }
       this.progress += 0.33F;
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -605,7 +605,7 @@ final class d
         return;
       }
       this.progress += 1;
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -632,7 +632,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.d
  * JD-Core Version:    0.7.0.1
  */

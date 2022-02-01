@@ -3,25 +3,25 @@ package com.tencent.luggage.d;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class i
 {
-  public ConcurrentHashMap<f, Boolean> car;
+  public ConcurrentHashMap<f, Boolean> bXo;
   private Handler mMainHandler;
   
   public i()
   {
     AppMethodBeat.i(140410);
-    this.car = new ConcurrentHashMap();
+    this.bXo = new ConcurrentHashMap();
     this.mMainHandler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(140410);
   }
   
-  private static boolean Be()
+  private static boolean AI()
   {
     AppMethodBeat.i(140411);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
@@ -36,21 +36,21 @@ public final class i
   final boolean O(Class<? extends f> paramClass)
   {
     AppMethodBeat.i(140413);
-    if (!Be())
+    if (!AI())
     {
-      ad.e("LuggagePageEventBus", "notifyListener on non-UI thread");
+      ac.e("LuggagePageEventBus", "notifyListener on non-UI thread");
       AppMethodBeat.o(140413);
       return false;
     }
-    Iterator localIterator = this.car.keySet().iterator();
+    Iterator localIterator = this.bXo.keySet().iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
       if (paramClass.isInstance(localf))
       {
         boolean bool = localf.call();
-        if (((Boolean)this.car.get(localf)).booleanValue()) {
-          this.car.remove(localf);
+        if (((Boolean)this.bXo.get(localf)).booleanValue()) {
+          this.bXo.remove(localf);
         }
         if (bool)
         {
@@ -66,7 +66,7 @@ public final class i
   public final void a(f paramf)
   {
     AppMethodBeat.i(140412);
-    this.car.put(paramf, Boolean.TRUE);
+    this.bXo.put(paramf, Boolean.TRUE);
     AppMethodBeat.o(140412);
   }
   

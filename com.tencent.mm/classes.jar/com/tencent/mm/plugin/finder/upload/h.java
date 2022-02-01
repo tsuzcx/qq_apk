@@ -5,40 +5,107 @@ import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.plugin.finder.storage.b;
+import com.tencent.mm.plugin.finder.utils.n;
+import com.tencent.mm.plugin.finder.utils.p;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.a;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.protocal.protobuf.bme;
-import com.tencent.mm.protocal.protobuf.bmm;
-import com.tencent.mm.protocal.protobuf.dxw;
-import com.tencent.mm.protocal.protobuf.dxx;
-import com.tencent.mm.protocal.protobuf.ebw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.protocal.protobuf.bqt;
+import com.tencent.mm.protocal.protobuf.brc;
+import com.tencent.mm.protocal.protobuf.dix;
+import com.tencent.mm.protocal.protobuf.yo;
+import com.tencent.mm.protocal.protobuf.yp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.vfs.i;
+import d.g.b.k;
 import d.l;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/upload/FinderPostUtil;", "", "()V", "TAG", "", "checkThumbFileExist", "", "thumbFile", "genFeedPostInfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "genLocalImageMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "filePath", "thumbUrl", "cropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "genLocalTextCardMedia", "genLocalVideoMedia", "coverUrl", "getFakeVideoMedia", "info", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "getThumbWidthHeight", "Landroid/graphics/Point;", "mediaType", "", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderPostUtil;", "", "()V", "TAG", "", "checkThumbFileExist", "", "thumbFile", "genFeedPostInfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "genLocalImageMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "filePath", "thumbUrl", "cropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "genLocalTextCardMedia", "genLocalVideoMedia", "coverUrl", "getFakeVideoMedia", "info", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "getThumbWidthHeight", "Landroid/graphics/Point;", "mediaType", "", "plugin-finder_release"})
 public final class h
 {
   private static final String TAG = "Finder.FinderPostUtil";
-  public static final h qRq;
+  public static final h rNr;
   
   static
   {
     AppMethodBeat.i(167785);
-    qRq = new h();
+    rNr = new h();
     TAG = "Finder.FinderPostUtil";
     AppMethodBeat.o(167785);
   }
   
-  public static boolean ZJ(String paramString)
+  public static bqs a(yo paramyo, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(203510);
+    k.h(paramyo, "info");
+    k.h(paramString1, "thumbUrl");
+    k.h(paramString2, "coverUrl");
+    ac.i(TAG, "getFakeVideoMedia  info:" + paramyo + "  thumbUrl:" + paramString1);
+    bqs localbqs = new bqs();
+    localbqs.url = "";
+    localbqs.mediaType = 4;
+    localbqs.thumbUrl = paramString1;
+    localbqs.coverUrl = paramString2;
+    localbqs.mediaId = ah.dg(((dix)paramyo.Esk.get(0)).path);
+    localbqs.width = paramyo.AmP.gNU;
+    localbqs.height = paramyo.AmP.gNV;
+    localbqs.FfQ = paramyo;
+    localbqs.FfP = false;
+    localbqs.rvh = new brc();
+    AppMethodBeat.o(203510);
+    return localbqs;
+  }
+  
+  public static bqs a(String paramString1, String paramString2, brc parambrc, String paramString3)
+  {
+    AppMethodBeat.i(203508);
+    k.h(paramString1, "filePath");
+    k.h(paramString2, "thumbUrl");
+    k.h(paramString3, "coverUrl");
+    ac.i(TAG, "gen video media url %s, thumbUrl %s", new Object[] { paramString1, paramString2 });
+    bqs localbqs = new bqs();
+    localbqs.mediaType = 4;
+    localbqs.url = paramString1;
+    localbqs.thumbUrl = paramString2;
+    localbqs.mediaId = ah.dg(paramString1);
+    localbqs.fileSize = ((int)i.aSp(paramString1));
+    localbqs.coverUrl = paramString3;
+    paramString2 = n.rPN;
+    paramString1 = n.aeB(paramString1);
+    if (paramString1 != null)
+    {
+      localbqs.width = paramString1.width;
+      localbqs.height = paramString1.height;
+      localbqs.bitrate = paramString1.videoBitrate;
+      localbqs.videoDuration = paramString1.getVideoDuration();
+      if ((parambrc != null) && (parambrc.hbI > 0)) {
+        localbqs.videoDuration = (parambrc.hbI / 1000);
+      }
+    }
+    localbqs.FfM = 1;
+    if (parambrc == null) {
+      localbqs.FfP = false;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(203508);
+      return localbqs;
+      localbqs.FfP = true;
+      localbqs.width = parambrc.width;
+      localbqs.height = parambrc.height;
+      localbqs.rvh = parambrc;
+    }
+  }
+  
+  public static boolean aev(String paramString)
   {
     AppMethodBeat.i(167780);
-    d.g.b.k.h(paramString, "thumbFile");
-    if (com.tencent.mm.vfs.i.eK(paramString))
+    k.h(paramString, "thumbFile");
+    if (i.eA(paramString))
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
@@ -53,75 +120,21 @@ public final class h
     return false;
   }
   
-  public static bmd a(dxw paramdxw, String paramString1, String paramString2)
+  public static bqt cCA()
   {
-    AppMethodBeat.i(199534);
-    d.g.b.k.h(paramdxw, "info");
-    d.g.b.k.h(paramString1, "thumbUrl");
-    d.g.b.k.h(paramString2, "coverUrl");
-    ad.i(TAG, "getFakeVideoMedia  info:" + paramdxw + "  thumbUrl:" + paramString1);
-    bmd localbmd = new bmd();
-    localbmd.url = "";
-    localbmd.mediaType = 4;
-    localbmd.thumbUrl = paramString1;
-    localbmd.coverUrl = paramString2;
-    localbmd.mediaId = ai.du(((ebw)paramdxw.LwS.get(0)).path);
-    localbmd.width = paramdxw.Lqd.gnh;
-    localbmd.height = paramdxw.Lqd.gni;
-    localbmd.LzL = paramdxw;
-    localbmd.DJD = false;
-    localbmd.qDR = new bmm();
-    AppMethodBeat.o(199534);
-    return localbmd;
+    AppMethodBeat.i(167779);
+    bqt localbqt = new bqt();
+    localbqt.clientId = ("FinderLocal_" + System.nanoTime());
+    AppMethodBeat.o(167779);
+    return localbqt;
   }
   
-  public static bmd a(String paramString1, String paramString2, bmm parambmm, String paramString3)
-  {
-    AppMethodBeat.i(199532);
-    d.g.b.k.h(paramString1, "filePath");
-    d.g.b.k.h(paramString2, "thumbUrl");
-    d.g.b.k.h(paramString3, "coverUrl");
-    ad.i(TAG, "gen video media url %s, thumbUrl %s", new Object[] { paramString1, paramString2 });
-    bmd localbmd = new bmd();
-    localbmd.mediaType = 4;
-    localbmd.url = paramString1;
-    localbmd.thumbUrl = paramString2;
-    localbmd.mediaId = ai.du(paramString1);
-    localbmd.fileSize = ((int)com.tencent.mm.vfs.i.aMN(paramString1));
-    localbmd.coverUrl = paramString3;
-    paramString2 = com.tencent.mm.plugin.finder.utils.i.qTa;
-    paramString1 = com.tencent.mm.plugin.finder.utils.i.ZP(paramString1);
-    if (paramString1 != null)
-    {
-      localbmd.width = paramString1.width;
-      localbmd.height = paramString1.height;
-      localbmd.bitrate = paramString1.videoBitrate;
-      localbmd.videoDuration = paramString1.getVideoDuration();
-      if ((parambmm != null) && (parambmm.gBm > 0)) {
-        localbmd.videoDuration = (parambmm.gBm / 1000);
-      }
-    }
-    localbmd.DJA = 1;
-    if (parambmm == null) {
-      localbmd.DJD = false;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(199532);
-      return localbmd;
-      localbmd.DJD = true;
-      localbmd.width = parambmm.width;
-      localbmd.height = parambmm.height;
-      localbmd.qDR = parambmm;
-    }
-  }
-  
-  public static Point cY(String paramString, int paramInt)
+  public static Point de(String paramString, int paramInt)
   {
     AppMethodBeat.i(167784);
-    Object localObject = b.qJA;
-    int i = b.coG();
-    if (!bt.isNullOrNil(paramString)) {
+    Object localObject = b.rCU;
+    int i = b.cye();
+    if (!bs.isNullOrNil(paramString)) {
       switch (paramInt)
       {
       }
@@ -135,7 +148,7 @@ public final class h
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       f.decodeFile(paramString, (BitmapFactory.Options)localObject);
       paramString = Exif.fromFile(paramString);
-      d.g.b.k.g(paramString, "Exif.fromFile(filePath)");
+      k.g(paramString, "Exif.fromFile(filePath)");
       if (paramString.getOrientationInDegree() % 180 != 0)
       {
         paramInt = ((BitmapFactory.Options)localObject).outHeight;
@@ -155,11 +168,11 @@ public final class h
       paramString = new Point((int)(((BitmapFactory.Options)localObject).outWidth * f), i);
       AppMethodBeat.o(167784);
       return paramString;
-      localObject = com.tencent.mm.plugin.finder.utils.i.qTa;
+      localObject = n.rPN;
       if (paramString == null) {
-        d.g.b.k.fvU();
+        k.fOy();
       }
-      paramString = com.tencent.mm.plugin.finder.utils.i.ZP(paramString);
+      paramString = n.aeB(paramString);
     } while (paramString == null);
     paramInt = Math.min(paramString.width, paramString.height);
     i = Math.min(paramInt, i);
@@ -176,85 +189,76 @@ public final class h
     return paramString;
   }
   
-  public static bme crF()
+  public static bqs gi(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(167779);
-    bme localbme = new bme();
-    localbme.clientId = ("FinderLocal_" + System.nanoTime());
-    AppMethodBeat.o(167779);
-    return localbme;
-  }
-  
-  public static bmd fV(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(167782);
-    d.g.b.k.h(paramString1, "filePath");
-    d.g.b.k.h(paramString2, "thumbUrl");
-    ad.i(TAG, "gen img media url %s, thumbUrl %s", new Object[] { paramString1, paramString2 });
-    bmd localbmd = new bmd();
-    localbmd.mediaType = 7;
-    Object localObject = paramString1;
-    if (SightVideoJNI.getMp4RotateVFS(paramString1) != 0)
-    {
-      localObject = com.tencent.mm.plugin.finder.utils.k.qTp;
-      String str = com.tencent.mm.plugin.finder.utils.k.ZX(paramString1);
-      localObject = paramString1;
-      if (com.tencent.mm.vfs.i.eK(str)) {
-        localObject = str;
-      }
-    }
-    localbmd.url = ((String)localObject);
-    localbmd.thumbUrl = paramString2;
-    localbmd.mediaId = ai.du(localbmd.url);
-    paramString1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-    paramString1 = localbmd.url;
-    d.g.b.k.g(paramString1, "media.url");
-    paramString1 = com.tencent.mm.plugin.finder.utils.i.ZQ(paramString1);
-    localbmd.width = paramString1.x;
-    localbmd.height = paramString1.y;
-    localbmd.DJA = 1;
-    AppMethodBeat.o(167782);
-    return localbmd;
-  }
-  
-  public static bmd mQ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(199530);
-    d.g.b.k.h(paramString1, "filePath");
-    d.g.b.k.h(paramString2, "thumbUrl");
-    ad.i(TAG, "gen img media url %s, thumbUrl %s", new Object[] { paramString1, paramString2 });
-    bmd localbmd = new bmd();
-    localbmd.mediaType = 2;
+    AppMethodBeat.i(203506);
+    k.h(paramString1, "filePath");
+    k.h(paramString2, "thumbUrl");
+    ac.i(TAG, "gen img media url %s, thumbUrl %s", new Object[] { paramString1, paramString2 });
+    bqs localbqs = new bqs();
+    localbqs.mediaType = 2;
     Object localObject2 = Exif.fromFile(paramString1);
-    d.g.b.k.g(localObject2, "Exif.fromFile(filePath)");
+    k.g(localObject2, "Exif.fromFile(filePath)");
     Object localObject1 = paramString1;
     if (((Exif)localObject2).getOrientationInDegree() != 0)
     {
-      localObject1 = com.tencent.mm.plugin.finder.utils.k.qTp;
-      localObject2 = com.tencent.mm.plugin.finder.utils.k.ZX(paramString1);
+      localObject1 = p.rQw;
+      localObject2 = p.aeJ(paramString1);
       localObject1 = paramString1;
-      if (com.tencent.mm.vfs.i.eK((String)localObject2)) {
+      if (i.eA((String)localObject2)) {
         localObject1 = localObject2;
       }
     }
-    localbmd.url = ((String)localObject1);
-    localbmd.thumbUrl = paramString2;
-    localbmd.mediaId = ai.du(localbmd.url);
-    paramString1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-    paramString1 = localbmd.url;
-    d.g.b.k.g(paramString1, "media.url");
-    paramString1 = com.tencent.mm.plugin.finder.utils.i.ZQ(paramString1);
-    localbmd.width = paramString1.x;
-    localbmd.height = paramString1.y;
-    localbmd.DJA = 1;
-    localbmd.DJD = false;
-    AppMethodBeat.o(199530);
-    return localbmd;
+    localbqs.url = ((String)localObject1);
+    localbqs.thumbUrl = paramString2;
+    localbqs.mediaId = ah.dg(localbqs.url);
+    paramString1 = n.rPN;
+    paramString1 = localbqs.url;
+    k.g(paramString1, "media.url");
+    paramString1 = n.aeC(paramString1);
+    localbqs.width = paramString1.x;
+    localbqs.height = paramString1.y;
+    localbqs.FfM = 1;
+    localbqs.FfP = false;
+    AppMethodBeat.o(203506);
+    return localbqs;
+  }
+  
+  public static bqs gk(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(167782);
+    k.h(paramString1, "filePath");
+    k.h(paramString2, "thumbUrl");
+    ac.i(TAG, "gen img media url %s, thumbUrl %s", new Object[] { paramString1, paramString2 });
+    bqs localbqs = new bqs();
+    localbqs.mediaType = 7;
+    Object localObject = paramString1;
+    if (SightVideoJNI.getMp4RotateVFS(paramString1) != 0)
+    {
+      localObject = p.rQw;
+      String str = p.aeJ(paramString1);
+      localObject = paramString1;
+      if (i.eA(str)) {
+        localObject = str;
+      }
+    }
+    localbqs.url = ((String)localObject);
+    localbqs.thumbUrl = paramString2;
+    localbqs.mediaId = ah.dg(localbqs.url);
+    paramString1 = n.rPN;
+    paramString1 = localbqs.url;
+    k.g(paramString1, "media.url");
+    paramString1 = n.aeC(paramString1);
+    localbqs.width = paramString1.x;
+    localbqs.height = paramString1.y;
+    localbqs.FfM = 1;
+    AppMethodBeat.o(167782);
+    return localbqs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.h
  * JD-Core Version:    0.7.0.1
  */

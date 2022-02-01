@@ -13,42 +13,22 @@ import java.util.List;
 
 public final class d
 {
-  public static boolean RJ(int paramInt)
+  public static boolean TS(int paramInt)
   {
     AppMethodBeat.i(71638);
     if (paramInt == 8) {}
-    for (boolean bool = s.eca().RB(paramInt);; bool = s.eca().aIG())
+    for (boolean bool = s.erw().TK(paramInt);; bool = s.erw().aPx())
     {
       AppMethodBeat.o(71638);
       return bool;
     }
   }
   
-  public static boolean a(Bankcard paramBankcard, int paramInt)
+  public static ArrayList<Bankcard> TT(int paramInt)
   {
-    AppMethodBeat.i(71637);
-    if (paramBankcard == null)
-    {
-      AppMethodBeat.o(71637);
-      return false;
-    }
-    if (paramInt == 8)
-    {
-      paramBankcard = j(paramBankcard);
-      paramBankcard.field_scene = 8;
-    }
-    for (boolean bool = s.eca().a(paramBankcard);; bool = s.ebZ().f(paramBankcard))
-    {
-      AppMethodBeat.o(71637);
-      return bool;
-    }
-  }
-  
-  public static ArrayList<Bankcard> efs()
-  {
-    AppMethodBeat.i(71639);
-    Object localObject1 = s.eca();
-    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.AbO + " != 0 OR cardType & " + BankcardScene.AbN + " != 0) and scene=8";
+    AppMethodBeat.i(207314);
+    Object localObject1 = s.erw();
+    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.Bui + " != 0 OR cardType & " + BankcardScene.Buh + " != 0) and scene=" + paramInt;
     localObject2 = ((c)localObject1).db.a((String)localObject2, null, 2);
     if (localObject2 == null) {
       localObject1 = null;
@@ -56,7 +36,7 @@ public final class d
     BankcardScene localBankcardScene;
     while (localObject1 == null)
     {
-      AppMethodBeat.o(71639);
+      AppMethodBeat.o(207314);
       return null;
       localObject1 = null;
       if (((Cursor)localObject2).moveToFirst())
@@ -76,7 +56,7 @@ public final class d
     while (((Iterator)localObject1).hasNext())
     {
       localBankcardScene = (BankcardScene)((Iterator)localObject1).next();
-      Bankcard localBankcard = new Bankcard(localBankcardScene.AbP, localBankcardScene.AbQ, localBankcardScene.Abk, localBankcardScene.AbR, localBankcardScene.AbS, localBankcardScene.AbT, localBankcardScene.AbU, localBankcardScene.AbV, localBankcardScene.AbW, localBankcardScene.AbX, localBankcardScene.AbY, localBankcardScene.AbZ, localBankcardScene.Aca, localBankcardScene.Acb, localBankcardScene.Acc, localBankcardScene.Abi, localBankcardScene.Acd, localBankcardScene.Ace, localBankcardScene.Acf, localBankcardScene.Acg, localBankcardScene.Ach, localBankcardScene.Aci, localBankcardScene.Acj, localBankcardScene.Ack, localBankcardScene.Acl, localBankcardScene.Acm, localBankcardScene.Acn, localBankcardScene.Aco, localBankcardScene.Acp, localBankcardScene.Acq, localBankcardScene.Acr, localBankcardScene.Acs, localBankcardScene.Act, localBankcardScene.zHs, localBankcardScene.zHt);
+      Bankcard localBankcard = new Bankcard(localBankcardScene.Buj, localBankcardScene.Buk, localBankcardScene.BtE, localBankcardScene.Bul, localBankcardScene.Bum, localBankcardScene.Bun, localBankcardScene.Buo, localBankcardScene.Bup, localBankcardScene.Buq, localBankcardScene.Bur, localBankcardScene.Bus, localBankcardScene.But, localBankcardScene.Buu, localBankcardScene.Buv, localBankcardScene.Buw, localBankcardScene.BtC, localBankcardScene.Bux, localBankcardScene.Buy, localBankcardScene.Buz, localBankcardScene.BuA, localBankcardScene.BuB, localBankcardScene.BuC, localBankcardScene.BuD, localBankcardScene.BuE, localBankcardScene.BuF, localBankcardScene.BuG, localBankcardScene.BuH, localBankcardScene.BuI, localBankcardScene.BuJ, localBankcardScene.BuK, localBankcardScene.BuL, localBankcardScene.BuM, localBankcardScene.BuN, localBankcardScene.AZE, localBankcardScene.AZF);
       localBankcard.field_bindSerial = localBankcardScene.field_bindSerial;
       localBankcard.field_cardType = localBankcardScene.field_cardType;
       localBankcard.field_bankcardState = localBankcardScene.field_bankcardState;
@@ -117,16 +97,51 @@ public final class d
       localBankcard.field_support_lqt_turn_out = localBankcardScene.field_support_lqt_turn_out;
       localBankcard.field_is_hightlight_pre_arrive_time_wording = localBankcardScene.field_is_hightlight_pre_arrive_time_wording;
       localBankcard.field_card_state_name = localBankcardScene.field_card_state_name;
+      localBankcard.field_prompt_info_prompt_text = localBankcardScene.field_prompt_info_prompt_text;
+      localBankcard.field_prompt_info_jump_text = localBankcardScene.field_prompt_info_jump_text;
+      localBankcard.field_prompt_info_jump_url = localBankcardScene.field_prompt_info_jump_url;
       ((ArrayList)localObject2).add(localBankcard);
     }
-    AppMethodBeat.o(71639);
+    AppMethodBeat.o(207314);
     return localObject2;
+  }
+  
+  public static boolean a(Bankcard paramBankcard, int paramInt)
+  {
+    AppMethodBeat.i(71637);
+    if (paramBankcard == null)
+    {
+      AppMethodBeat.o(71637);
+      return false;
+    }
+    boolean bool;
+    if (paramInt == 8)
+    {
+      paramBankcard = j(paramBankcard);
+      paramBankcard.field_scene = 8;
+      bool = s.erw().a(paramBankcard);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(71637);
+      return bool;
+      if (paramInt == 12)
+      {
+        paramBankcard = j(paramBankcard);
+        paramBankcard.field_scene = 12;
+        bool = s.erw().a(paramBankcard);
+      }
+      else
+      {
+        bool = s.erv().f(paramBankcard);
+      }
+    }
   }
   
   private static BankcardScene j(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71640);
-    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.AbP, paramBankcard.AbQ, paramBankcard.Abk, paramBankcard.AbR, paramBankcard.AbS, paramBankcard.AbT, paramBankcard.AbU, paramBankcard.AbV, paramBankcard.AbW, paramBankcard.AbX, paramBankcard.AbY, paramBankcard.AbZ, paramBankcard.Aca, paramBankcard.Acb, paramBankcard.Acc, paramBankcard.Abi, paramBankcard.Acd, paramBankcard.Ace, paramBankcard.Acf, paramBankcard.Acg, paramBankcard.Ach, paramBankcard.Aci, paramBankcard.Acj, paramBankcard.Ack, paramBankcard.Acl, paramBankcard.Acm, paramBankcard.Acn, paramBankcard.Aco, paramBankcard.Acp, paramBankcard.Acq, paramBankcard.Acr, paramBankcard.Acs, paramBankcard.Act, paramBankcard.zHs, paramBankcard.zHt);
+    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.Buj, paramBankcard.Buk, paramBankcard.BtE, paramBankcard.Bul, paramBankcard.Bum, paramBankcard.Bun, paramBankcard.Buo, paramBankcard.Bup, paramBankcard.Buq, paramBankcard.Bur, paramBankcard.Bus, paramBankcard.But, paramBankcard.Buu, paramBankcard.Buv, paramBankcard.Buw, paramBankcard.BtC, paramBankcard.Bux, paramBankcard.Buy, paramBankcard.Buz, paramBankcard.BuA, paramBankcard.BuB, paramBankcard.BuC, paramBankcard.BuD, paramBankcard.BuE, paramBankcard.BuF, paramBankcard.BuG, paramBankcard.BuH, paramBankcard.BuI, paramBankcard.BuJ, paramBankcard.BuK, paramBankcard.BuL, paramBankcard.BuM, paramBankcard.BuN, paramBankcard.AZE, paramBankcard.AZF);
     localBankcardScene.field_bindSerial = paramBankcard.field_bindSerial;
     localBankcardScene.field_cardType = paramBankcard.field_cardType;
     localBankcardScene.field_bankcardState = paramBankcard.field_bankcardState;
@@ -167,6 +182,9 @@ public final class d
     localBankcardScene.field_support_lqt_turn_out = paramBankcard.field_support_lqt_turn_out;
     localBankcardScene.field_is_hightlight_pre_arrive_time_wording = paramBankcard.field_is_hightlight_pre_arrive_time_wording;
     localBankcardScene.field_card_state_name = paramBankcard.field_card_state_name;
+    localBankcardScene.field_prompt_info_prompt_text = paramBankcard.field_prompt_info_prompt_text;
+    localBankcardScene.field_prompt_info_jump_text = paramBankcard.field_prompt_info_jump_text;
+    localBankcardScene.field_prompt_info_jump_url = paramBankcard.field_prompt_info_jump_url;
     AppMethodBeat.o(71640);
     return localBankcardScene;
   }
@@ -179,23 +197,40 @@ public final class d
       AppMethodBeat.o(71636);
       return false;
     }
+    ArrayList localArrayList;
+    BankcardScene localBankcardScene;
     if (paramInt == 8)
     {
-      ArrayList localArrayList = new ArrayList();
+      localArrayList = new ArrayList();
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        BankcardScene localBankcardScene = j((Bankcard)paramList.next());
+        localBankcardScene = j((Bankcard)paramList.next());
         localBankcardScene.field_scene = 8;
         localArrayList.add(localBankcardScene);
       }
-      s.eca().go(localArrayList);
+      s.erw().gz(localArrayList);
     }
     for (;;)
     {
       AppMethodBeat.o(71636);
       return true;
-      s.ebZ().go(paramList);
+      if (paramInt == 12)
+      {
+        localArrayList = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localBankcardScene = j((Bankcard)paramList.next());
+          localBankcardScene.field_scene = 12;
+          localArrayList.add(localBankcardScene);
+        }
+        s.erw().gz(localArrayList);
+      }
+      else
+      {
+        s.erv().gz(paramList);
+      }
     }
   }
 }

@@ -80,9 +80,9 @@ public class WxaPluginPkgInfo
   public long lastModified()
   {
     AppMethodBeat.i(178562);
-    if (i.eK(this.pkgPath))
+    if (i.eA(this.pkgPath))
     {
-      long l = i.aMO(this.pkgPath);
+      long l = i.aSq(this.pkgPath);
       AppMethodBeat.o(178562);
       return l;
     }
@@ -131,7 +131,7 @@ public class WxaPluginPkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.WxaPluginPkgInfo
  * JD-Core Version:    0.7.0.1
  */

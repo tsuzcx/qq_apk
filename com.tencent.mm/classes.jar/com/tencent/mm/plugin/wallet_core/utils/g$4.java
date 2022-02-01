@@ -13,15 +13,15 @@ public final class g$4
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AppMethodBeat.i(71654);
-    if (this.Avv != null) {
-      this.Avv.setEnabled(paramBoolean);
+    if (this.BNP != null) {
+      this.BNP.setEnabled(paramBoolean);
     }
     AppMethodBeat.o(71654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.g.4
  * JD-Core Version:    0.7.0.1
  */

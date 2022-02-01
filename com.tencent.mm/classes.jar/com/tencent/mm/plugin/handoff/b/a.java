@@ -15,12 +15,12 @@ import com.tencent.mm.plugin.handoff.model.HandOffFile;
 import com.tencent.mm.plugin.handoff.model.HandOffFile.a;
 import com.tencent.mm.plugin.handoff.model.HandOffMP;
 import com.tencent.mm.plugin.handoff.model.HandOffURL;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.ago;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.ahn;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.a.ae;
 import d.a.j;
 import d.l;
@@ -38,35 +38,35 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/handoff/service/HandOffService;", "Lcom/tencent/mm/plugin/handoff/api/IHandOffService;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "()V", "FIX_DELAY", "", "MSG_FIX", "", "TAG", "", "fileCache", "Landroid/support/v4/util/ArrayMap;", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "Lcom/tencent/mm/pluginsdk/model/app/AppAttachInfo;", "fileStack", "", "fixHandler", "Lcom/tencent/mm/plugin/handoff/service/HandOffService$FixHandler;", "isForeground", "", "isInQB", "items", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "qbFile", "statusManager", "Lcom/tencent/mm/plugin/handoff/service/StatusManager;", "wc", "webPageStack", "add", "", "handOff", "addHandOffFromBall", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "addWindowFromBall", "allList", "ballInfo2HandOff", "cache", "cancelUpload", "id", "del", "key", "delAllFloatingWindow", "doFix", "fixHandOffIfNeed", "getHandOffById", "getHandOffByKey", "mod", "modFromBallInfo", "onAppBackground", "onAppForeground", "onFileCreate", "onFileDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onQBFileCreate", "onQBFileDestroy", "onQBFileUpdate", "onRegister", "onUnregister", "onWebViewCreate", "onWebViewDestroy", "restoreFromBallInfoList", "ballInfoList", "", "uploadFail", "arg", "uploadStart", "info", "uploadSuccess", "appId", "sdkVersion", "mediaId", "cdnURL", "aesKey", "uploading", "uploadedSize", "upsert", "FixHandler", "plugin-handoff_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffService;", "Lcom/tencent/mm/plugin/handoff/api/IHandOffService;", "Lcom/tencent/mm/kernel/service/IServiceLifeCycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "()V", "FIX_DELAY", "", "MSG_FIX", "", "TAG", "", "fileCache", "Landroid/support/v4/util/ArrayMap;", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "Lcom/tencent/mm/pluginsdk/model/app/AppAttachInfo;", "fileStack", "", "fixHandler", "Lcom/tencent/mm/plugin/handoff/service/HandOffService$FixHandler;", "isForeground", "", "isInQB", "items", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "qbFile", "statusManager", "Lcom/tencent/mm/plugin/handoff/service/StatusManager;", "wc", "webPageStack", "add", "", "handOff", "addHandOffFromBall", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "addWindowFromBall", "allList", "ballInfo2HandOff", "cache", "cancelUpload", "id", "del", "key", "delAllFloatingWindow", "doFix", "fixHandOffIfNeed", "getHandOffById", "getHandOffByKey", "mod", "modFromBallInfo", "onAppBackground", "onAppForeground", "onFileCreate", "onFileDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onQBFileCreate", "onQBFileDestroy", "onQBFileUpdate", "onRegister", "onUnregister", "onWebViewCreate", "onWebViewDestroy", "restoreFromBallInfoList", "ballInfoList", "", "uploadFail", "arg", "uploadStart", "info", "uploadSuccess", "appId", "sdkVersion", "mediaId", "cdnURL", "aesKey", "uploading", "uploadedSize", "upsert", "FixHandler", "plugin-handoff_release"})
 public final class a
   implements b, com.tencent.mm.plugin.handoff.a.a, k.a
 {
-  private static boolean ctF;
-  private static final android.support.v4.e.a<String, o<HandOffFile, com.tencent.mm.pluginsdk.model.app.c>> stA;
-  private static final Set<String> stB;
-  private static final Set<String> stC;
-  private static boolean stD;
-  private static final c stE;
-  private static final a stF;
-  public static final a stG;
-  static HandOff stx;
-  private static HandOff sty;
-  private static ConcurrentHashMap<String, HandOff> stz;
+  private static boolean cqM;
+  static HandOff tBn;
+  private static HandOff tBo;
+  private static ConcurrentHashMap<String, HandOff> tBp;
+  private static final android.support.v4.e.a<String, o<HandOffFile, com.tencent.mm.pluginsdk.model.app.c>> tBq;
+  private static final Set<String> tBr;
+  private static final Set<String> tBs;
+  private static boolean tBt;
+  private static final c tBu;
+  private static final a tBv;
+  public static final a tBw;
   
   static
   {
     AppMethodBeat.i(10371);
-    stG = new a();
-    stz = new ConcurrentHashMap();
-    stA = new android.support.v4.e.a();
-    stB = (Set)new LinkedHashSet();
-    stC = (Set)new LinkedHashSet();
-    ctF = true;
-    stE = new c();
+    tBw = new a();
+    tBp = new ConcurrentHashMap();
+    tBq = new android.support.v4.e.a();
+    tBr = (Set)new LinkedHashSet();
+    tBs = (Set)new LinkedHashSet();
+    cqM = true;
+    tBu = new c();
     Looper localLooper = Looper.getMainLooper();
     d.g.b.k.g(localLooper, "Looper.getMainLooper()");
-    stF = new a(localLooper);
+    tBv = new a(localLooper);
     AppMethodBeat.o(10371);
   }
   
@@ -89,52 +89,52 @@ public final class a
       ((HandOff)localObject).createTime = paramBallInfo.createTime;
       AppMethodBeat.o(10341);
       return localObject;
-      localObject = bt.nullAsNil(paramBallInfo.name);
-      str1 = bt.nullAsNil(paramBallInfo.hsl.getString("rawUrl"));
-      String str2 = bt.nullAsNil(paramBallInfo.dub);
+      localObject = bs.nullAsNil(paramBallInfo.name);
+      str1 = bs.nullAsNil(paramBallInfo.hSN.getString("rawUrl"));
+      String str2 = bs.nullAsNil(paramBallInfo.drM);
       d.g.b.k.g(localObject, "title");
       d.g.b.k.g(str1, "url");
       d.g.b.k.g(str2, "icon");
       localObject = (HandOff)new HandOffURL((String)localObject, str1, str2, 2, null, null, null, 112);
       continue;
-      localObject = bt.nullAsNil(paramBallInfo.dub);
-      str1 = bt.nullAsNil(paramBallInfo.name);
-      str2 = bt.nullAsNil(paramBallInfo.hsl.getString("appId"));
-      String str3 = bt.nullAsNil(paramBallInfo.hsl.getString("username"));
+      localObject = bs.nullAsNil(paramBallInfo.drM);
+      str1 = bs.nullAsNil(paramBallInfo.name);
+      str2 = bs.nullAsNil(paramBallInfo.hSN.getString("appId"));
+      String str3 = bs.nullAsNil(paramBallInfo.hSN.getString("username"));
       d.g.b.k.g(localObject, "icon");
       d.g.b.k.g(str1, "title");
       d.g.b.k.g(str2, "appId");
       d.g.b.k.g(str3, "username");
       localObject = (HandOff)new HandOffMP((String)localObject, str1, str2, "", str3, 2);
       continue;
-      localObject = HandOffFile.sts;
+      localObject = HandOffFile.tBi;
       localObject = (HandOff)HandOffFile.a.L(paramBallInfo);
     }
     AppMethodBeat.o(10341);
     return null;
   }
   
-  public static void cFy()
+  public static void cSI()
   {
     AppMethodBeat.i(10368);
-    ad.i("HandOffService", "onAppForeground");
-    ctF = true;
-    c localc = stE;
-    Collection localCollection = stz.values();
+    ac.i("HandOffService", "onAppForeground");
+    cqM = true;
+    c localc = tBu;
+    Collection localCollection = tBp.values();
     d.g.b.k.g(localCollection, "items.values");
     localc.l(localCollection);
     AppMethodBeat.o(10368);
   }
   
-  public static void cFz()
+  public static void cSJ()
   {
     AppMethodBeat.i(10369);
-    ad.i("HandOffService", "onAppBackground");
-    ctF = false;
-    if (!stD)
+    ac.i("HandOffService", "onAppBackground");
+    cqM = false;
+    if (!tBt)
     {
-      c localc = stE;
-      Collection localCollection = stz.values();
+      c localc = tBu;
+      Collection localCollection = tBp.values();
       d.g.b.k.g(localCollection, "items.values");
       Object localObject1 = (Iterable)localCollection;
       localCollection = (Collection)new ArrayList();
@@ -143,7 +143,7 @@ public final class a
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((Iterator)localObject1).next();
-        if (((HandOff)localObject2).stk == 1) {}
+        if (((HandOff)localObject2).tBa == 1) {}
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
@@ -162,14 +162,14 @@ public final class a
   {
     AppMethodBeat.i(10353);
     d.g.b.k.h(paramHandOff, "handOff");
-    ((Map)stz).put(paramHandOff.key, paramHandOff);
-    if (((paramHandOff instanceof HandOffFile)) && (((HandOffFile)paramHandOff).dep == 2) && (d.g.b.k.g(paramHandOff.id, "-1")))
+    ((Map)tBp).put(paramHandOff.key, paramHandOff);
+    if (((paramHandOff instanceof HandOffFile)) && (((HandOffFile)paramHandOff).dbL == 2) && (d.g.b.k.g(paramHandOff.id, "-1")))
     {
       com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.g.ad(af.class);
       d.g.b.k.g(locala, "MMKernel.plugin(IPluginFav::class.java)");
       ((af)locala).getFavItemInfoStorage().add((k.a)this);
     }
-    stE.k(paramHandOff);
+    tBu.k(paramHandOff);
     AppMethodBeat.o(10353);
   }
   
@@ -177,11 +177,11 @@ public final class a
   {
     AppMethodBeat.i(10354);
     d.g.b.k.h(paramHandOff, "handOff");
-    HandOff localHandOff = (HandOff)stz.get(paramHandOff.key);
+    HandOff localHandOff = (HandOff)tBp.get(paramHandOff.key);
     if (localHandOff != null)
     {
       localHandOff.j(paramHandOff);
-      paramHandOff = stE;
+      paramHandOff = tBu;
       d.g.b.k.g(localHandOff, "it");
       paramHandOff.l(localHandOff);
       AppMethodBeat.o(10354);
@@ -197,7 +197,7 @@ public final class a
     paramBallInfo = M(paramBallInfo);
     if (paramBallInfo != null)
     {
-      stG.k(paramBallInfo);
+      tBw.k(paramBallInfo);
       AppMethodBeat.o(10351);
       return;
     }
@@ -222,10 +222,10 @@ public final class a
   {
     AppMethodBeat.i(10346);
     d.g.b.k.h(paramHandOff, "handOff");
-    stB.add(paramHandOff.key);
+    tBr.add(paramHandOff.key);
     e(paramHandOff);
-    stF.removeMessages(1);
-    ad.i("HandOffService", "onWebViewCreate: numWebPages = " + stB.size());
+    tBv.removeMessages(1);
+    ac.i("HandOffService", "onWebViewCreate: numWebPages = " + tBr.size());
     AppMethodBeat.o(10346);
   }
   
@@ -236,15 +236,15 @@ public final class a
     d.g.b.k.h(paramm, "eventData");
     Object localObject = com.tencent.mm.kernel.g.ad(af.class);
     d.g.b.k.g(localObject, "MMKernel.plugin(IPluginFav::class.java)");
-    localObject = ((af)localObject).getFavItemInfoStorage().pS(Long.parseLong(paramString));
-    if ((localObject != null) && (((com.tencent.mm.plugin.fav.a.g)localObject).field_type == 8) && (paramm.jqR == 3))
+    localObject = ((af)localObject).getFavItemInfoStorage().tH(Long.parseLong(paramString));
+    if ((localObject != null) && (((com.tencent.mm.plugin.fav.a.g)localObject).field_type == 8) && (paramm.jRj == 3))
     {
-      paramString = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.mVb;
+      paramString = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.nxC;
       d.g.b.k.g(paramString, "favItemInfo.field_favProto.dataList");
-      paramm = (afy)j.iz((List)paramString);
+      paramm = (agx)j.iP((List)paramString);
       if (paramm != null)
       {
-        paramString = (CharSequence)paramm.eCd();
+        paramString = (CharSequence)paramm.eRy();
         int i;
         if ((paramString == null) || (paramString.length() == 0))
         {
@@ -252,8 +252,8 @@ public final class a
           if (i != 0) {
             break label364;
           }
-          str = paramm.eCg();
-          paramString = stz.values();
+          str = paramm.eRB();
+          paramString = tBp.values();
           d.g.b.k.g(paramString, "items.values");
           Iterator localIterator = ((Iterable)paramString).iterator();
           label169:
@@ -262,7 +262,7 @@ public final class a
           }
           paramString = localIterator.next();
           HandOff localHandOff = (HandOff)paramString;
-          if ((!(localHandOff instanceof HandOffFile)) || (!d.g.b.k.g(((HandOffFile)localHandOff).md5, str)) || (!d.g.b.k.g(((HandOffFile)localHandOff).stn, "-1"))) {
+          if ((!(localHandOff instanceof HandOffFile)) || (!d.g.b.k.g(((HandOffFile)localHandOff).md5, str)) || (!d.g.b.k.g(((HandOffFile)localHandOff).tBd, "-1"))) {
             break label277;
           }
           i = 1;
@@ -295,15 +295,15 @@ public final class a
         }
         label287:
         paramString = (HandOffFile)paramString;
-        String str = paramm.eCd();
+        String str = paramm.eRy();
         d.g.b.k.g(str, "favDataItem.cdnDataUrl");
-        paramString.adA(str);
-        paramm = paramm.eCe();
+        paramString.ais(str);
+        paramm = paramm.eRz();
         d.g.b.k.g(paramm, "favDataItem.cdnDataKey");
-        paramString.adB(paramm);
+        paramString.ait(paramm);
         paramm = String.valueOf(((com.tencent.mm.plugin.fav.a.g)localObject).field_id);
         d.g.b.k.h(paramm, "<set-?>");
-        paramString.stn = paramm;
+        paramString.tBd = paramm;
         l((HandOff)paramString);
         AppMethodBeat.o(10370);
         return;
@@ -318,13 +318,13 @@ public final class a
     AppMethodBeat.i(10358);
     d.g.b.k.h(paramString, "id");
     d.g.b.k.h(paramc, "info");
-    Iterator localIterator = ((Map)stz).entrySet().iterator();
+    Iterator localIterator = ((Map)tBp).entrySet().iterator();
     while (localIterator.hasNext())
     {
       HandOff localHandOff = (HandOff)((Map.Entry)localIterator.next()).getValue();
       if (((localHandOff instanceof HandOffFile)) && (d.g.b.k.g(localHandOff.id, paramString)))
       {
-        ((Map)stA).put(paramString, new o(localHandOff, paramc));
+        ((Map)tBq).put(paramString, new o(localHandOff, paramc));
         AppMethodBeat.o(10358);
         return true;
       }
@@ -333,11 +333,45 @@ public final class a
     return false;
   }
   
-  public final HandOff adx(String paramString)
+  public final void ag(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(10361);
+    d.g.b.k.h(paramString1, "id");
+    d.g.b.k.h(paramString2, "cdnURL");
+    d.g.b.k.h(paramString3, "aesKey");
+    o localo = (o)tBq.get(paramString1);
+    if (localo != null)
+    {
+      ((HandOffFile)localo.first).ais(paramString2);
+      ((HandOffFile)localo.first).ait(paramString3);
+      tBu.n((HandOff)localo.first);
+      tBq.remove(paramString1);
+      AppMethodBeat.o(10361);
+      return;
+    }
+    ac.e("HandOffService", "error in file upload success, handoff with id [" + paramString1 + "] lost!");
+    AppMethodBeat.o(10361);
+  }
+  
+  public final void ahM()
+  {
+    AppMethodBeat.i(10342);
+    ac.i("HandOffService", "onRegister");
+    AppMethodBeat.o(10342);
+  }
+  
+  public final void ahN()
+  {
+    AppMethodBeat.i(10343);
+    ac.i("HandOffService", "onUnregister");
+    AppMethodBeat.o(10343);
+  }
+  
+  public final HandOff aip(String paramString)
   {
     AppMethodBeat.i(10350);
     d.g.b.k.h(paramString, "id");
-    Object localObject = stz.values();
+    Object localObject = tBp.values();
     d.g.b.k.g(localObject, "items.values");
     Iterator localIterator = ((Iterable)localObject).iterator();
     int i;
@@ -366,71 +400,37 @@ public final class a
     }
   }
   
-  public final void ady(String paramString)
+  public final void aiq(String paramString)
   {
     AppMethodBeat.i(10363);
     d.g.b.k.h(paramString, "id");
-    o localo = (o)stA.get(paramString);
+    o localo = (o)tBq.get(paramString);
     if (localo != null)
     {
       ((com.tencent.mm.pluginsdk.model.app.c)localo.second).field_status = 105L;
-      stA.remove(paramString);
+      tBq.remove(paramString);
       AppMethodBeat.o(10363);
       return;
     }
-    ad.e("HandOffService", "error in cancel file upload, handoff with md5 [" + paramString + "] lost!");
+    ac.e("HandOffService", "error in cancel file upload, handoff with md5 [" + paramString + "] lost!");
     AppMethodBeat.o(10363);
   }
   
-  public final void af(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(10361);
-    d.g.b.k.h(paramString1, "id");
-    d.g.b.k.h(paramString2, "cdnURL");
-    d.g.b.k.h(paramString3, "aesKey");
-    o localo = (o)stA.get(paramString1);
-    if (localo != null)
-    {
-      ((HandOffFile)localo.first).adA(paramString2);
-      ((HandOffFile)localo.first).adB(paramString3);
-      stE.n((HandOff)localo.first);
-      stA.remove(paramString1);
-      AppMethodBeat.o(10361);
-      return;
-    }
-    ad.e("HandOffService", "error in file upload success, handoff with id [" + paramString1 + "] lost!");
-    AppMethodBeat.o(10361);
-  }
-  
-  public final void agv()
-  {
-    AppMethodBeat.i(10342);
-    ad.i("HandOffService", "onRegister");
-    AppMethodBeat.o(10342);
-  }
-  
-  public final void agw()
-  {
-    AppMethodBeat.i(10343);
-    ad.i("HandOffService", "onUnregister");
-    AppMethodBeat.o(10343);
-  }
-  
-  public final boolean au(String paramString, long paramLong)
+  public final boolean aw(String paramString, long paramLong)
   {
     AppMethodBeat.i(10359);
     d.g.b.k.h(paramString, "id");
-    Object localObject = (o)stA.get(paramString);
+    Object localObject = (o)tBq.get(paramString);
     if (localObject != null)
     {
-      paramString = stE;
+      paramString = tBu;
       localObject = (HandOff)((o)localObject).first;
       d.g.b.k.h(localObject, "handOff");
       paramString.b(7, (Collection)j.listOf(localObject));
       AppMethodBeat.o(10359);
       return true;
     }
-    ad.w("HandOffService", "error in file uploading, handoff with id [" + paramString + "] lost!");
+    ac.w("HandOffService", "error in file uploading, handoff with id [" + paramString + "] lost!");
     AppMethodBeat.o(10359);
     return false;
   }
@@ -439,12 +439,12 @@ public final class a
   {
     AppMethodBeat.i(10347);
     d.g.b.k.h(paramHandOff, "handOff");
-    if (stB.contains(paramHandOff.key))
+    if (tBr.contains(paramHandOff.key))
     {
-      stB.remove(paramHandOff.key);
+      tBr.remove(paramHandOff.key);
       del(paramHandOff.key);
     }
-    ad.i("HandOffService", "onWebViewDestroy: numWebPages = " + stB.size());
+    ac.i("HandOffService", "onWebViewDestroy: numWebPages = " + tBr.size());
     AppMethodBeat.o(10347);
   }
   
@@ -452,36 +452,36 @@ public final class a
   {
     AppMethodBeat.i(10348);
     d.g.b.k.h(paramHandOff, "handOff");
-    stC.add(paramHandOff.key);
+    tBs.add(paramHandOff.key);
     e(paramHandOff);
-    stF.removeMessages(1);
-    ad.i("HandOffService", "onFileCreate: filePages = " + stC.size() + ", key = " + paramHandOff.key);
+    tBv.removeMessages(1);
+    ac.i("HandOffService", "onFileCreate: filePages = " + tBs.size() + ", key = " + paramHandOff.key);
     AppMethodBeat.o(10348);
   }
   
-  public final void cFs()
+  public final void cSC()
   {
     AppMethodBeat.i(10344);
-    stF.removeMessages(1);
-    stF.sendEmptyMessageDelayed(1, 10000L);
+    tBv.removeMessages(1);
+    tBv.sendEmptyMessageDelayed(1, 10000L);
     AppMethodBeat.o(10344);
   }
   
-  public final void cFt()
+  public final void cSD()
   {
     AppMethodBeat.i(10357);
-    ad.d("HandOffService", "passive all list");
-    if (ctF)
+    ac.d("HandOffService", "passive all list");
+    if (cqM)
     {
-      localc = stE;
-      localCollection = stz.values();
+      localc = tBu;
+      localCollection = tBp.values();
       d.g.b.k.g(localCollection, "items.values");
       localc.l(localCollection);
       AppMethodBeat.o(10357);
       return;
     }
-    c localc = stE;
-    Collection localCollection = stz.values();
+    c localc = tBu;
+    Collection localCollection = tBp.values();
     d.g.b.k.g(localCollection, "items.values");
     Object localObject1 = (Iterable)localCollection;
     localCollection = (Collection)new ArrayList();
@@ -491,7 +491,7 @@ public final class a
     {
       Object localObject2 = ((Iterator)localObject1).next();
       HandOff localHandOff = (HandOff)localObject2;
-      if ((localHandOff.stk == 2) || ((stD) && (localHandOff.getDataType() == 1))) {}
+      if ((localHandOff.tBa == 2) || ((tBt) && (localHandOff.getDataType() == 1))) {}
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
@@ -505,31 +505,31 @@ public final class a
     AppMethodBeat.o(10357);
   }
   
-  public final HandOff cFu()
+  public final HandOff cSE()
   {
-    return stx;
+    return tBn;
   }
   
   public final void d(HandOff paramHandOff)
   {
     AppMethodBeat.i(10349);
     d.g.b.k.h(paramHandOff, "handOff");
-    if (stC.contains(paramHandOff.key))
+    if (tBs.contains(paramHandOff.key))
     {
-      stC.remove(paramHandOff.key);
+      tBs.remove(paramHandOff.key);
       del(paramHandOff.key);
     }
-    ad.i("HandOffService", "onFileDestroy: filePages = " + stC.size() + ", key = " + paramHandOff.key);
+    ac.i("HandOffService", "onFileDestroy: filePages = " + tBs.size() + ", key = " + paramHandOff.key);
     AppMethodBeat.o(10349);
   }
   
-  public final void dR(List<? extends BallInfo> paramList)
+  public final void dV(List<? extends BallInfo> paramList)
   {
     AppMethodBeat.i(10345);
     d.g.b.k.h(paramList, "ballInfoList");
-    ad.i("HandOffService", "restore from ballInfoList");
-    stz.clear();
-    stA.clear();
+    ac.i("HandOffService", "restore from ballInfoList");
+    tBp.clear();
+    tBq.clear();
     Object localObject = (Iterable)paramList;
     paramList = (Collection)new ArrayList();
     localObject = ((Iterable)localObject).iterator();
@@ -547,16 +547,16 @@ public final class a
     while (((Iterator)localObject).hasNext())
     {
       localHandOff = (HandOff)((Iterator)localObject).next();
-      paramList.add(u.P(localHandOff.key, localHandOff));
+      paramList.add(u.Q(localHandOff.key, localHandOff));
     }
-    ae.a((Iterable)paramList, (Map)stz);
+    ae.a((Iterable)paramList, (Map)tBp);
     try
     {
-      com.tencent.mm.kernel.g.afz();
-      if (com.tencent.mm.kernel.a.aeH())
+      com.tencent.mm.kernel.g.agP();
+      if (com.tencent.mm.kernel.a.afX())
       {
-        paramList = stE;
-        localObject = stz.values();
+        paramList = tBu;
+        localObject = tBp.values();
         d.g.b.k.g(localObject, "items.values");
         paramList.j((Collection)localObject);
         AppMethodBeat.o(10345);
@@ -565,7 +565,7 @@ public final class a
     }
     catch (Exception paramList)
     {
-      ad.printErrStackTrace("HandOffService", (Throwable)paramList, "restoreFromBallInfoList fail, exp:%s", new Object[] { paramList });
+      ac.printErrStackTrace("HandOffService", (Throwable)paramList, "restoreFromBallInfoList fail, exp:%s", new Object[] { paramList });
       AppMethodBeat.o(10345);
     }
   }
@@ -574,10 +574,10 @@ public final class a
   {
     AppMethodBeat.i(10356);
     d.g.b.k.h(paramString, "key");
-    paramString = (HandOff)stz.remove(paramString);
+    paramString = (HandOff)tBp.remove(paramString);
     if (paramString != null)
     {
-      c localc = stE;
+      c localc = tBu;
       d.g.b.k.g(paramString, "it");
       localc.m(paramString);
       AppMethodBeat.o(10356);
@@ -590,124 +590,124 @@ public final class a
   {
     AppMethodBeat.i(10355);
     d.g.b.k.h(paramHandOff, "handOff");
-    if (stz.containsKey(paramHandOff.key))
+    if (tBp.containsKey(paramHandOff.key))
     {
-      l(paramHandOff.cFw());
+      l(paramHandOff.cSG());
       AppMethodBeat.o(10355);
       return;
     }
-    k(paramHandOff.cFw());
+    k(paramHandOff.cSG());
     AppMethodBeat.o(10355);
-  }
-  
-  public final void e(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(10362);
-    d.g.b.k.h(paramString1, "id");
-    d.g.b.k.h(paramString2, "appId");
-    d.g.b.k.h(paramString3, "mediaId");
-    o localo = (o)stA.get(paramString1);
-    if (localo != null)
-    {
-      HandOffFile localHandOffFile = (HandOffFile)localo.first;
-      d.g.b.k.h(paramString2, "<set-?>");
-      localHandOffFile.appId = paramString2;
-      ((HandOffFile)localo.first).mKl = paramInt;
-      paramString2 = (HandOffFile)localo.first;
-      d.g.b.k.h(paramString3, "<set-?>");
-      paramString2.mediaId = paramString3;
-      stE.n((HandOff)localo.first);
-      stA.remove(paramString1);
-      AppMethodBeat.o(10362);
-      return;
-    }
-    ad.e("HandOffService", "error in file upload success, handoff with md5 [" + paramString1 + "] lost!");
-    AppMethodBeat.o(10362);
   }
   
   public final void f(HandOff paramHandOff)
   {
     AppMethodBeat.i(10364);
     if (paramHandOff != null) {}
-    for (paramHandOff = paramHandOff.cFw();; paramHandOff = null)
+    for (paramHandOff = paramHandOff.cSG();; paramHandOff = null)
     {
-      stx = paramHandOff;
+      tBn = paramHandOff;
       AppMethodBeat.o(10364);
       return;
     }
+  }
+  
+  public final void f(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    AppMethodBeat.i(10362);
+    d.g.b.k.h(paramString1, "id");
+    d.g.b.k.h(paramString2, "appId");
+    d.g.b.k.h(paramString3, "mediaId");
+    o localo = (o)tBq.get(paramString1);
+    if (localo != null)
+    {
+      HandOffFile localHandOffFile = (HandOffFile)localo.first;
+      d.g.b.k.h(paramString2, "<set-?>");
+      localHandOffFile.appId = paramString2;
+      ((HandOffFile)localo.first).nmu = paramInt;
+      paramString2 = (HandOffFile)localo.first;
+      d.g.b.k.h(paramString3, "<set-?>");
+      paramString2.mediaId = paramString3;
+      tBu.n((HandOff)localo.first);
+      tBq.remove(paramString1);
+      AppMethodBeat.o(10362);
+      return;
+    }
+    ac.e("HandOffService", "error in file upload success, handoff with md5 [" + paramString1 + "] lost!");
+    AppMethodBeat.o(10362);
   }
   
   public final void g(HandOff paramHandOff)
   {
     AppMethodBeat.i(10365);
     d.g.b.k.h(paramHandOff, "handOff");
-    ad.i("HandOffService", "onQBFileCreate");
-    stD = true;
-    sty = paramHandOff;
+    ac.i("HandOffService", "onQBFileCreate");
+    tBt = true;
+    tBo = paramHandOff;
     c(paramHandOff);
     AppMethodBeat.o(10365);
-  }
-  
-  public final void gO(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(10360);
-    d.g.b.k.h(paramString1, "id");
-    d.g.b.k.h(paramString2, "arg");
-    Object localObject = (o)stA.get(paramString1);
-    if (localObject != null)
-    {
-      paramString2 = stE;
-      localObject = (HandOff)((o)localObject).first;
-      d.g.b.k.h(localObject, "handOff");
-      paramString2.b(8, (Collection)j.listOf(localObject));
-      stA.remove(paramString1);
-      AppMethodBeat.o(10360);
-      return;
-    }
-    paramString2 = new d.n.k("opcode=\"\\d+\"").c((CharSequence)paramString2, "opcode=\"8\"");
-    paramString2 = new d.n.k("seq=\"\\d+\"").c((CharSequence)paramString2, "seq=\"<![CSEQ]>\"");
-    localObject = stE;
-    d.g.b.k.h(paramString2, "msg");
-    ((c)localObject).stY.add(paramString2);
-    ((c)localObject).cFD();
-    ad.w("HandOffService", "error in file upload fail, handoff with id [" + paramString1 + "] lost!");
-    AppMethodBeat.o(10360);
   }
   
   public final void h(HandOff paramHandOff)
   {
     AppMethodBeat.i(10366);
     d.g.b.k.h(paramHandOff, "handOff");
-    ad.i("HandOffService", "onQBFileDestroy");
-    stD = false;
-    paramHandOff = sty;
+    ac.i("HandOffService", "onQBFileDestroy");
+    tBt = false;
+    paramHandOff = tBo;
     if (paramHandOff != null)
     {
-      stG.d(paramHandOff);
-      sty = null;
+      tBw.d(paramHandOff);
+      tBo = null;
       AppMethodBeat.o(10366);
       return;
     }
     AppMethodBeat.o(10366);
   }
   
+  public final void hf(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(10360);
+    d.g.b.k.h(paramString1, "id");
+    d.g.b.k.h(paramString2, "arg");
+    Object localObject = (o)tBq.get(paramString1);
+    if (localObject != null)
+    {
+      paramString2 = tBu;
+      localObject = (HandOff)((o)localObject).first;
+      d.g.b.k.h(localObject, "handOff");
+      paramString2.b(8, (Collection)j.listOf(localObject));
+      tBq.remove(paramString1);
+      AppMethodBeat.o(10360);
+      return;
+    }
+    paramString2 = new d.n.k("opcode=\"\\d+\"").d((CharSequence)paramString2, "opcode=\"8\"");
+    paramString2 = new d.n.k("seq=\"\\d+\"").d((CharSequence)paramString2, "seq=\"<![CSEQ]>\"");
+    localObject = tBu;
+    d.g.b.k.h(paramString2, "msg");
+    ((c)localObject).tBO.add(paramString2);
+    ((c)localObject).cSN();
+    ac.w("HandOffService", "error in file upload fail, handoff with id [" + paramString1 + "] lost!");
+    AppMethodBeat.o(10360);
+  }
+  
   public final void i(HandOff paramHandOff)
   {
     AppMethodBeat.i(10367);
     d.g.b.k.h(paramHandOff, "handOff");
-    ad.i("HandOffService", "onQBFileDestroy");
-    HandOff localHandOff = sty;
+    ac.i("HandOffService", "onQBFileDestroy");
+    HandOff localHandOff = tBo;
     if (localHandOff != null)
     {
       localHandOff.j(paramHandOff);
-      stG.e(localHandOff);
+      tBw.e(localHandOff);
       AppMethodBeat.o(10367);
       return;
     }
     AppMethodBeat.o(10367);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/handoff/service/HandOffService$FixHandler;", "Landroid/os/Handler;", "looper", "Landroid/os/Looper;", "(Landroid/os/Looper;)V", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-handoff_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/service/HandOffService$FixHandler;", "Landroid/os/Handler;", "looper", "Landroid/os/Looper;", "(Landroid/os/Looper;)V", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-handoff_release"})
   public static final class a
     extends Handler
   {
@@ -721,15 +721,15 @@ public final class a
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(10339);
-      paramMessage = a.stG;
-      a.cFA();
+      paramMessage = a.tBw;
+      a.cSK();
       AppMethodBeat.o(10339);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.b.a
  * JD-Core Version:    0.7.0.1
  */

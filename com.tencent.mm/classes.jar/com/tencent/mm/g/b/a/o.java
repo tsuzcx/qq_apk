@@ -6,24 +6,24 @@ import com.tencent.mm.plugin.report.a;
 public final class o
   extends a
 {
-  public int dHQ;
+  public int dFD;
   
-  public final String PV()
+  public final String PR()
   {
     AppMethodBeat.i(63295);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHQ);
+    ((StringBuffer)localObject).append(this.dFD);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
+    arz((String)localObject);
     AppMethodBeat.o(63295);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
     AppMethodBeat.i(63296);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ActionType:").append(this.dHQ);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dFD);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(63296);
     return localObject;
@@ -36,7 +36,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.b.a.o
  * JD-Core Version:    0.7.0.1
  */

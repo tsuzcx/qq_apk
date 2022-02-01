@@ -11,31 +11,31 @@ import com.tencent.mm.plugin.facedetect.b.o;
 import com.tencent.mm.plugin.facedetect.b.s;
 import com.tencent.mm.plugin.facedetect.b.t;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
   extends a
 {
   boolean isRetry = false;
-  private String pOm;
-  private String pOn;
-  private int pOo;
+  private String qwU;
+  private String qwV;
+  private int qwW;
   
   c(Context paramContext, f paramf, int paramInt1, int paramInt2)
   {
     super(paramContext, paramf, paramInt1, paramInt2);
-    this.pOi = true;
-    this.pOo = paramInt1;
+    this.qwQ = true;
+    this.qwW = paramInt1;
   }
   
   private void a(final int paramInt1, final int paramInt2, final String paramString, final boolean paramBoolean, final Bundle paramBundle)
   {
     AppMethodBeat.i(103658);
     b(paramInt1, paramInt2, paramString, paramBundle);
-    Object localObject = aj.getContext();
+    Object localObject = ai.getContext();
     if (paramString == null) {}
     for (String str1 = ((Context)localObject).getString(2131758686);; str1 = paramString)
     {
@@ -58,7 +58,7 @@ public final class c
             if (paramBoolean)
             {
               paramAnonymousView = c.this;
-              paramAnonymousView.cfw();
+              paramAnonymousView.cnd();
               paramAnonymousView.isRetry = true;
               AppMethodBeat.o(103647);
               return;
@@ -87,7 +87,7 @@ public final class c
   
   private String getResultKey()
   {
-    switch (this.pOo)
+    switch (this.qwW)
     {
     case 2: 
     case 5: 
@@ -100,12 +100,12 @@ public final class c
     return "faceverify_ticket";
   }
   
-  public final void aN(int paramInt, String paramString)
+  public final void aQ(int paramInt, String paramString)
   {
     AppMethodBeat.i(103656);
-    ad.i("MicroMsg.FaceDetectLoginController", "alvinluo onCancel, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (!FaceDetectReporter.cfV().pPu) {
-      FaceDetectReporter.cfV().a(FaceDetectReporter.BY(this.pOo), this.isRetry, 2, 1, paramInt);
+    ac.i("MicroMsg.FaceDetectLoginController", "alvinluo onCancel, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    if (!FaceDetectReporter.cnC().qyc) {
+      FaceDetectReporter.cnC().a(FaceDetectReporter.CT(this.qwW), this.isRetry, 2, 1, paramInt);
     }
     a(1, paramInt, paramString, null);
     AppMethodBeat.o(103656);
@@ -114,9 +114,9 @@ public final class c
   public final void c(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(103655);
-    ad.i("MicroMsg.FaceDetectLoginController", "alvinluo onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!FaceDetectReporter.cfV().pPu) {
-      FaceDetectReporter.cfV().a(FaceDetectReporter.BY(this.pOo), this.isRetry, 3, paramInt1, paramInt2);
+    ac.i("MicroMsg.FaceDetectLoginController", "alvinluo onError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (!FaceDetectReporter.cnC().qyc) {
+      FaceDetectReporter.cnC().a(FaceDetectReporter.CT(this.qwW), this.isRetry, 3, paramInt1, paramInt2);
     }
     if (paramBundle != null)
     {
@@ -134,44 +134,35 @@ public final class c
   public final boolean c(int paramInt, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(103653);
-    ad.i("MicroMsg.FaceDetectLoginController", "alvinluo onUploadEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), paramString });
+    ac.i("MicroMsg.FaceDetectLoginController", "alvinluo onUploadEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0), paramString });
     if (paramInt != 0)
     {
-      FaceDetectReporter.cfV().a(FaceDetectReporter.BY(this.pOo), this.isRetry, 1, 2, 90012);
+      FaceDetectReporter.cnC().a(FaceDetectReporter.CT(this.qwW), this.isRetry, 1, 2, 90012);
       a(paramInt, 0, paramString, false, null);
       AppMethodBeat.o(103653);
       return true;
     }
-    if ((paramBundle == null) || (bt.isNullOrNil(paramBundle.getString("key_pic_cdn_id"))))
+    if ((paramBundle == null) || (bs.isNullOrNil(paramBundle.getString("key_pic_cdn_id"))))
     {
-      ad.e("MicroMsg.FaceDetectLoginController", "hy: not return cdn id!");
+      ac.e("MicroMsg.FaceDetectLoginController", "hy: not return cdn id!");
       a(4, 6, "not return cdn id", false, null);
       AppMethodBeat.o(103653);
       return true;
     }
-    this.pOm = paramBundle.getString("key_pic_cdn_id");
-    this.pOn = paramBundle.getString("key_cdn_aes_key");
-    ad.v("MicroMsg.FaceDetectLoginController", "hy: start upload: picCdnId: %s, aes key: %s", new Object[] { this.pOm, this.pOn });
+    this.qwU = paramBundle.getString("key_pic_cdn_id");
+    this.qwV = paramBundle.getString("key_cdn_aes_key");
+    ac.v("MicroMsg.FaceDetectLoginController", "hy: start upload: picCdnId: %s, aes key: %s", new Object[] { this.qwU, this.qwV });
     AppMethodBeat.o(103653);
     return false;
   }
   
-  public final Bundle cfA()
-  {
-    AppMethodBeat.i(103657);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("k_bio_id", cfx());
-    AppMethodBeat.o(103657);
-    return localBundle;
-  }
-  
-  public final com.tencent.mm.al.n cfz()
+  public final com.tencent.mm.ak.n cng()
   {
     AppMethodBeat.i(103649);
-    long l = cfx();
-    Object localObject = this.pOm;
-    String str = this.pOn;
-    switch (this.pOo)
+    long l = cne();
+    Object localObject = this.qwU;
+    String str = this.qwV;
+    switch (this.qwW)
     {
     case 2: 
     default: 
@@ -195,10 +186,19 @@ public final class c
     return localObject;
   }
   
-  public final void f(final int paramInt1, final int paramInt2, final String paramString, final com.tencent.mm.al.n paramn)
+  public final Bundle cnh()
+  {
+    AppMethodBeat.i(103657);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("k_bio_id", cne());
+    AppMethodBeat.o(103657);
+    return localBundle;
+  }
+  
+  public final void f(final int paramInt1, final int paramInt2, final String paramString, final com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(103654);
-    ad.i("MicroMsg.FaceDetectLoginController", "alvinluo onVerifyEnd sceneType: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.FaceDetectLoginController", "alvinluo onVerifyEnd sceneType: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     Object localObject;
     FaceDetectReporter localFaceDetectReporter;
     int j;
@@ -207,22 +207,22 @@ public final class c
     {
       localObject = (e)paramn;
       paramn = new Bundle();
-      paramn.putString(getResultKey(), ((e)localObject).cft());
+      paramn.putString(getResultKey(), ((e)localObject).cna());
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        localFaceDetectReporter = FaceDetectReporter.cfV();
-        j = this.pOf;
-        bool = ((e)localObject).cfs();
-        if (this.pOh != null) {}
-        for (i = this.pOh.pNr;; i = 0)
+        localFaceDetectReporter = FaceDetectReporter.cnC();
+        j = this.qwN;
+        bool = ((e)localObject).cmZ();
+        if (this.qwP != null) {}
+        for (i = this.qwP.qvZ;; i = 0)
         {
           localFaceDetectReporter.a(j, bool, 0, paramInt1, paramInt2, i);
-          localObject = com.tencent.mm.plugin.facedetect.ui.a.cgv();
-          ((com.tencent.mm.plugin.facedetect.ui.c)localObject).pTw = true;
-          ((com.tencent.mm.plugin.facedetect.ui.c)localObject).pTE = aj.getResources().getString(2131760594);
+          localObject = com.tencent.mm.plugin.facedetect.ui.a.coc();
+          ((com.tencent.mm.plugin.facedetect.ui.c)localObject).qCb = true;
+          ((com.tencent.mm.plugin.facedetect.ui.c)localObject).qCj = ai.getResources().getString(2131760594);
           ((com.tencent.mm.plugin.facedetect.ui.c)localObject).status = 2;
           a(false, true, (com.tencent.mm.plugin.facedetect.ui.c)localObject);
-          aq.n(new Runnable()
+          ap.n(new Runnable()
           {
             public final void run()
             {
@@ -235,18 +235,18 @@ public final class c
           return;
         }
       }
-      localFaceDetectReporter = FaceDetectReporter.cfV();
-      j = this.pOf;
-      bool = ((e)localObject).cfs();
-      if (this.pOh == null) {
+      localFaceDetectReporter = FaceDetectReporter.cnC();
+      j = this.qwN;
+      bool = ((e)localObject).cmZ();
+      if (this.qwP == null) {
         break label284;
       }
     }
     label284:
-    for (int i = this.pOh.pNr;; i = 0)
+    for (int i = this.qwP.qvZ;; i = 0)
     {
       localFaceDetectReporter.a(j, bool, 1, paramInt1, paramInt2, i);
-      a(paramInt1, paramInt2, paramString, ((e)localObject).cfs(), paramn);
+      a(paramInt1, paramInt2, paramString, ((e)localObject).cmZ(), paramn);
       AppMethodBeat.o(103654);
       return;
     }
@@ -255,8 +255,8 @@ public final class c
   public final void onRelease()
   {
     AppMethodBeat.i(103651);
-    if (!FaceDetectReporter.cfV().pPu) {
-      FaceDetectReporter.cfV().a(FaceDetectReporter.BY(this.pOo), this.isRetry, 2, 1, 90006);
+    if (!FaceDetectReporter.cnC().qyc) {
+      FaceDetectReporter.cnC().a(FaceDetectReporter.CT(this.qwW), this.isRetry, 2, 1, 90006);
     }
     AppMethodBeat.o(103651);
   }
@@ -264,22 +264,22 @@ public final class c
   public final void onStart()
   {
     AppMethodBeat.i(103650);
-    ad.i("MicroMsg.FaceDetectLoginController", "alvinluo onStart and create report session");
-    FaceDetectReporter.cfV().cfW();
-    FaceDetectReporter.cfV().ab(FaceDetectReporter.BY(this.pOo), this.isRetry);
+    ac.i("MicroMsg.FaceDetectLoginController", "alvinluo onStart and create report session");
+    FaceDetectReporter.cnC().cnD();
+    FaceDetectReporter.cnC().ab(FaceDetectReporter.CT(this.qwW), this.isRetry);
     AppMethodBeat.o(103650);
   }
   
   public final void t(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(103652);
-    ad.v("MicroMsg.FaceDetectLoginController", "alvinluo onCollectEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.v("MicroMsg.FaceDetectLoginController", "alvinluo onCollectEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     AppMethodBeat.o(103652);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.c.c
  * JD-Core Version:    0.7.0.1
  */

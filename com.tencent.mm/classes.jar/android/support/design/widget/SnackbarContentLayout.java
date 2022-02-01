@@ -20,16 +20,16 @@ public class SnackbarContentLayout
   implements a
 {
   private int maxWidth;
-  private TextView qE;
-  private Button qF;
-  private int qG;
+  private TextView rE;
+  private Button rF;
+  private int rG;
   
   public SnackbarContentLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.SnackbarLayout);
     this.maxWidth = paramContext.getDimensionPixelSize(0, -1);
-    this.qG = paramContext.getDimensionPixelSize(2, -1);
+    this.rG = paramContext.getDimensionPixelSize(2, -1);
     paramContext.recycle();
   }
   
@@ -51,51 +51,51 @@ public class SnackbarContentLayout
       setOrientation(paramInt1);
       bool = true;
     }
-    if ((this.qE.getPaddingTop() != paramInt2) || (this.qE.getPaddingBottom() != paramInt3))
+    if ((this.rE.getPaddingTop() != paramInt2) || (this.rE.getPaddingBottom() != paramInt3))
     {
-      e(this.qE, paramInt2, paramInt3);
+      e(this.rE, paramInt2, paramInt3);
       bool = true;
     }
     return bool;
   }
   
-  public final void bn()
+  public final void bu()
   {
-    this.qE.setAlpha(0.0F);
-    this.qE.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
-    if (this.qF.getVisibility() == 0)
+    this.rE.setAlpha(0.0F);
+    this.rE.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
+    if (this.rF.getVisibility() == 0)
     {
-      this.qF.setAlpha(0.0F);
-      this.qF.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
+      this.rF.setAlpha(0.0F);
+      this.rF.animate().alpha(1.0F).setDuration(180L).setStartDelay(70L).start();
     }
   }
   
-  public final void bo()
+  public final void bv()
   {
-    this.qE.setAlpha(1.0F);
-    this.qE.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
-    if (this.qF.getVisibility() == 0)
+    this.rE.setAlpha(1.0F);
+    this.rE.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
+    if (this.rF.getVisibility() == 0)
     {
-      this.qF.setAlpha(1.0F);
-      this.qF.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
+      this.rF.setAlpha(1.0F);
+      this.rF.animate().alpha(0.0F).setDuration(180L).setStartDelay(0L).start();
     }
   }
   
   public Button getActionView()
   {
-    return this.qF;
+    return this.rF;
   }
   
   public TextView getMessageView()
   {
-    return this.qE;
+    return this.rE;
   }
   
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.qE = ((TextView)findViewById(2131304885));
-    this.qF = ((Button)findViewById(2131304884));
+    this.rE = ((TextView)findViewById(2131304885));
+    this.rF = ((Button)findViewById(2131304884));
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -113,10 +113,10 @@ public class SnackbarContentLayout
     }
     int j = getResources().getDimensionPixelSize(2131166129);
     int k = getResources().getDimensionPixelSize(2131166128);
-    if (this.qE.getLayout().getLineCount() > 1)
+    if (this.rE.getLayout().getLineCount() > 1)
     {
       paramInt1 = 1;
-      if ((paramInt1 == 0) || (this.qG <= 0) || (this.qF.getMeasuredWidth() <= this.qG)) {
+      if ((paramInt1 == 0) || (this.rG <= 0) || (this.rF.getMeasuredWidth() <= this.rG)) {
         break label140;
       }
       if (!f(1, j, j - k)) {
@@ -149,7 +149,7 @@ public class SnackbarContentLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.SnackbarContentLayout
  * JD-Core Version:    0.7.0.1
  */

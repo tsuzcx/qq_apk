@@ -6,52 +6,52 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.WebView;
 
 public final class p
 {
-  private static String Cnw = null;
-  private static final String[] Cnx = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
+  private static String DFP = null;
+  private static final String[] DFQ = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
   
-  public static void fL(int paramInt1, int paramInt2)
+  public static void fS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133688);
     if ((paramInt1 <= 0) || (paramInt1 > 7))
     {
-      ad.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
+      ac.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(133688);
       return;
     }
-    iQ(paramInt1, paramInt2);
-    Object localObject = aj.getContext();
+    jd(paramInt1, paramInt2);
+    Object localObject = ai.getContext();
     int i = WebView.getInstalledTbsCoreVersion((Context)localObject);
     int j = WebView.getTbsSDKVersion((Context)localObject);
-    localObject = hn((Context)localObject);
-    h.vKh.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
+    localObject = hy((Context)localObject);
+    h.wUl.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
     AppMethodBeat.o(133688);
   }
   
-  private static String hn(Context paramContext)
+  private static String hy(Context paramContext)
   {
     AppMethodBeat.i(133689);
-    if (Cnw != null)
+    if (DFP != null)
     {
-      paramContext = Cnw;
+      paramContext = DFP;
       AppMethodBeat.o(133689);
       return paramContext;
     }
     try
     {
-      paramContext = paramContext.getPackageManager().getApplicationInfo(aj.getPackageName(), 128);
+      paramContext = paramContext.getPackageManager().getApplicationInfo(ai.getPackageName(), 128);
       if ((paramContext != null) && (paramContext.metaData != null))
       {
         paramContext = paramContext.metaData.getString("com.tencent.mtt.TBS_CODE");
-        if (!bt.isNullOrNil(paramContext))
+        if (!bs.isNullOrNil(paramContext))
         {
-          Cnw = paramContext;
+          DFP = paramContext;
           AppMethodBeat.o(133689);
           return paramContext;
         }
@@ -59,29 +59,29 @@ public final class p
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
+      ac.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(133689);
     }
     return null;
   }
   
-  private static void iQ(int paramInt1, int paramInt2)
+  private static void jd(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133690);
-    ad.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), Cnx[paramInt1], Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), DFQ[paramInt1], Integer.valueOf(paramInt2) });
     AppMethodBeat.o(133690);
   }
   
-  public static void lI(int paramInt)
+  public static void lA(int paramInt)
   {
     AppMethodBeat.i(133687);
-    fL(paramInt, 0);
+    fS(paramInt, 0);
     AppMethodBeat.o(133687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.p
  * JD-Core Version:    0.7.0.1
  */

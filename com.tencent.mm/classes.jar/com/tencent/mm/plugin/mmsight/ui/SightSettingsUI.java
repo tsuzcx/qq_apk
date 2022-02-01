@@ -14,9 +14,9 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.d;
@@ -27,17 +27,17 @@ import java.util.List;
 public class SightSettingsUI
   extends MMActivity
 {
-  private d fLo;
-  private ListView izP;
-  private LinkedList<b> qPR;
-  private CaptureMMProxy tBs;
-  private a tLy;
+  private d fPa;
+  private LinkedList<b> gFp;
+  private ListView gFr;
+  private CaptureMMProxy uJP;
+  private a uUc;
   
   public SightSettingsUI()
   {
     AppMethodBeat.i(94737);
-    this.fLo = new d(this);
-    this.qPR = new LinkedList();
+    this.fPa = new d(this);
+    this.gFp = new LinkedList();
     AppMethodBeat.o(94737);
   }
   
@@ -50,13 +50,13 @@ public class SightSettingsUI
   {
     AppMethodBeat.i(94738);
     super.onCreate(paramBundle);
-    this.tBs = new CaptureMMProxy(this.fLo);
-    this.fLo.connect(new Runnable()
+    this.uJP = new CaptureMMProxy(this.fPa);
+    this.fPa.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94730);
-        ad.i("MicroMsg.SightSettingsUI", "has connect");
+        ac.i("MicroMsg.SightSettingsUI", "has connect");
         SightSettingsUI.a(SightSettingsUI.this);
         AppMethodBeat.o(94730);
       }
@@ -78,7 +78,7 @@ public class SightSettingsUI
   {
     AppMethodBeat.i(94739);
     super.onDestroy();
-    this.fLo.release();
+    this.fPa.release();
     AppMethodBeat.o(94739);
   }
   
@@ -133,10 +133,10 @@ public class SightSettingsUI
       AppMethodBeat.i(94735);
       paramView = new TextView(SightSettingsUI.this);
       paramViewGroup = (SightSettingsUI.b)getItem(paramInt);
-      paramView.setText(paramViewGroup.qPW + "->:" + paramViewGroup.Hc(((Integer)SightSettingsUI.b(paramViewGroup.tLz).get(paramViewGroup.qPX, Integer.valueOf(0))).intValue()));
+      paramView.setText(paramViewGroup.gFw + "->:" + paramViewGroup.IZ(((Integer)SightSettingsUI.b(paramViewGroup.uUd).get(paramViewGroup.gFx, Integer.valueOf(0))).intValue()));
       paramView.setGravity(17);
       paramView.setTextSize(1, 20.0F);
-      paramView.setHeight(com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 50));
+      paramView.setHeight(com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 50));
       if (paramInt % 2 == 1) {
         paramView.setBackgroundColor(Color.parseColor("#e2efda"));
       }
@@ -149,13 +149,13 @@ public class SightSettingsUI
           LinkedList localLinkedList1 = new LinkedList();
           LinkedList localLinkedList2 = new LinkedList();
           int i = 0;
-          while (i < paramAnonymousView.qPY.length)
+          while (i < paramAnonymousView.gFy.length)
           {
-            localLinkedList1.add(paramAnonymousView.qPY[i]);
+            localLinkedList1.add(paramAnonymousView.gFy[i]);
             localLinkedList2.add(Integer.valueOf(i));
             i += 1;
           }
-          h.a(paramAnonymousView.tLz, "", localLinkedList1, localLinkedList2, "", new SightSettingsUI.b.1(paramAnonymousView));
+          h.a(paramAnonymousView.uUd, "", localLinkedList1, localLinkedList2, "", new SightSettingsUI.b.1(paramAnonymousView));
           AppMethodBeat.o(94732);
         }
       });
@@ -166,36 +166,36 @@ public class SightSettingsUI
   
   final class b
   {
-    public String qPW;
-    ae.a qPX;
-    String[] qPY;
-    int[] tLC;
+    public String gFw;
+    ah.a gFx;
+    String[] gFy;
+    int[] uUg;
     
-    public b(String paramString, ae.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
+    public b(String paramString, ah.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
     {
-      this.qPW = paramString;
-      this.qPY = paramArrayOfString;
-      this.qPX = parama;
-      this.tLC = paramArrayOfInt;
+      this.gFw = paramString;
+      this.gFy = paramArrayOfString;
+      this.gFx = parama;
+      this.uUg = paramArrayOfInt;
     }
     
-    final String Hc(int paramInt)
+    final String IZ(int paramInt)
     {
       int i = 0;
-      while (i < this.tLC.length)
+      while (i < this.uUg.length)
       {
-        if ((paramInt == this.tLC[i]) && (i < this.qPY.length)) {
-          return this.qPY[i];
+        if ((paramInt == this.uUg[i]) && (i < this.gFy.length)) {
+          return this.gFy[i];
         }
         i += 1;
       }
-      return this.qPY[0];
+      return this.gFy[0];
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.SightSettingsUI
  * JD-Core Version:    0.7.0.1
  */

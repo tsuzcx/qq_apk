@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.btz;
 import com.tencent.mm.sdk.b.b;
 
 public final class pr
   extends b
 {
-  public a dvs;
+  public a dsD;
+  public b dsE;
   
   public pr()
   {
@@ -15,21 +17,30 @@ public final class pr
   
   private pr(byte paramByte)
   {
-    AppMethodBeat.i(168780);
-    this.dvs = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125624);
+    this.dsD = new a();
+    this.dsE = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(168780);
+    AppMethodBeat.o(125624);
   }
   
   public static final class a
   {
-    public boolean dvt = false;
+    public String username;
+  }
+  
+  public static final class b
+  {
+    public btz dsF;
+    public btz dsG;
+    public btz dsH;
+    public btz dsI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.pr
  * JD-Core Version:    0.7.0.1
  */

@@ -13,30 +13,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.d.b;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.ui.z;
 import java.util.HashMap;
 
 public class CollapsibleTextView
   extends LinearLayout
 {
   private Context context;
-  private String diQ;
-  private String dpC;
-  private ap handler;
+  private String dgl;
+  private String dnn;
+  private ao handler;
   private boolean hasCheck;
   private boolean isAd;
   private CharSequence text;
-  private int xkG;
-  protected SnsPostDescPreloadTextView xlE;
-  protected SnsTextView xlF;
-  protected TextView xlG;
-  private String xlH;
-  private String xlI;
-  private HashMap<String, Integer> xlJ;
-  protected bf xlK;
-  private Runnable xlL;
+  private int yxy;
+  private String yyA;
+  private HashMap<String, Integer> yyB;
+  protected bf yyC;
+  private Runnable yyD;
+  protected SnsPostDescPreloadTextView yyw;
+  protected SnsTextView yyx;
+  protected TextView yyy;
+  private String yyz;
   
   public CollapsibleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,62 +44,62 @@ public class CollapsibleTextView
     AppMethodBeat.i(97837);
     this.isAd = false;
     this.hasCheck = true;
-    this.handler = new ap(Looper.getMainLooper());
-    this.xkG = 0;
-    this.xlL = new Runnable()
+    this.handler = new ao(Looper.getMainLooper());
+    this.yxy = 0;
+    this.yyD = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(97836);
-        if ((CollapsibleTextView.this.xlE != null) && ((CollapsibleTextView.this.xlE.getTag() instanceof ba)) && (((ba)CollapsibleTextView.this.xlE.getTag()).dpC.equals(CollapsibleTextView.a(CollapsibleTextView.this))))
+        if ((CollapsibleTextView.this.yyw != null) && ((CollapsibleTextView.this.yyw.getTag() instanceof ba)) && (((ba)CollapsibleTextView.this.yyw.getTag()).dnn.equals(CollapsibleTextView.a(CollapsibleTextView.this))))
         {
-          CollapsibleTextView.this.xlE.setMaxLines(6);
-          CollapsibleTextView.this.xlG.setVisibility(0);
-          CollapsibleTextView.this.xlG.setText(CollapsibleTextView.b(CollapsibleTextView.this));
+          CollapsibleTextView.this.yyw.setMaxLines(6);
+          CollapsibleTextView.this.yyy.setVisibility(0);
+          CollapsibleTextView.this.yyy.setText(CollapsibleTextView.b(CollapsibleTextView.this));
         }
         AppMethodBeat.o(97836);
       }
     };
     this.context = paramContext;
-    this.xlH = this.context.getString(2131763800);
-    this.xlI = this.context.getString(2131763799);
-    paramContext = y.js(this.context).inflate(2131493549, this);
+    this.yyz = this.context.getString(2131763800);
+    this.yyA = this.context.getString(2131763799);
+    paramContext = z.jD(this.context).inflate(2131493549, this);
     paramContext.setPadding(0, -3, 0, 0);
-    this.xlE = ((SnsPostDescPreloadTextView)paramContext.findViewById(2131299008));
-    this.xlG = ((TextView)paramContext.findViewById(2131299006));
-    this.xlF = ((SnsTextView)paramContext.findViewById(2131299009));
+    this.yyw = ((SnsPostDescPreloadTextView)paramContext.findViewById(2131299008));
+    this.yyy = ((TextView)paramContext.findViewById(2131299006));
+    this.yyx = ((SnsTextView)paramContext.findViewById(2131299009));
     AppMethodBeat.o(97837);
   }
   
   public final void a(int paramInt, CharSequence paramCharSequence, TextView.BufferType paramBufferType, HashMap<String, Integer> paramHashMap, String paramString1, String paramString2, be parambe, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(97838);
-    this.context = parambe.imP;
-    this.xlJ = paramHashMap;
+    this.context = parambe.iMV;
+    this.yyB = paramHashMap;
     this.text = paramCharSequence;
     this.isAd = paramBoolean;
-    this.diQ = paramString1;
-    this.dpC = paramString2;
-    this.xkG = paramInt;
-    this.xlH = this.context.getString(2131763800);
-    this.xlI = this.context.getString(2131763799);
-    this.xlF.setOriginText(paramString3);
-    paramString2 = new ba(this.dpC, this.diQ, false, false, 1);
-    paramString2.userName = this.xlK.kGt;
+    this.dgl = paramString1;
+    this.dnn = paramString2;
+    this.yxy = paramInt;
+    this.yyz = this.context.getString(2131763800);
+    this.yyA = this.context.getString(2131763799);
+    this.yyx.setOriginText(paramString3);
+    paramString2 = new ba(this.dnn, this.dgl, false, false, 1);
+    paramString2.userName = this.yyC.lhM;
     if (paramInt == 0)
     {
-      this.xlE.setText(paramString3);
-      this.xlF.setVisibility(8);
-      this.xlG.setVisibility(0);
-      this.xlE.setVisibility(0);
+      this.yyw.setText(paramCharSequence);
+      this.yyx.setVisibility(8);
+      this.yyy.setVisibility(0);
+      this.yyw.setVisibility(0);
       paramCharSequence = new n(this.context);
-      this.xlE.setOnTouchListener(paramCharSequence);
-      this.xlE.setTag(paramString2);
+      this.yyw.setOnTouchListener(paramCharSequence);
+      this.yyw.setTag(paramString2);
       if (paramHashMap.get(paramString1) == null)
       {
         this.hasCheck = false;
-        this.xlG.setVisibility(8);
-        this.xlE.setMaxLines(8);
+        this.yyy.setVisibility(8);
+        this.yyw.setMaxLines(8);
         AppMethodBeat.o(97838);
         return;
       }
@@ -111,34 +111,34 @@ public class CollapsibleTextView
       {
         AppMethodBeat.o(97838);
         return;
-        this.xlG.setVisibility(8);
+        this.yyy.setVisibility(8);
         AppMethodBeat.o(97838);
         return;
-        this.xlE.setMaxLines(6);
-        this.xlG.setVisibility(0);
-        this.xlG.setText(this.xlH);
+        this.yyw.setMaxLines(6);
+        this.yyy.setVisibility(0);
+        this.yyy.setText(this.yyz);
         AppMethodBeat.o(97838);
         return;
-        this.xlE.setMaxLines(2147483647);
-        this.xlG.setVisibility(0);
-        this.xlG.setText(this.xlI);
+        this.yyw.setMaxLines(2147483647);
+        this.yyy.setVisibility(0);
+        this.yyy.setText(this.yyA);
       }
     }
-    this.xlF.setText(paramCharSequence, paramBufferType);
-    this.xlF.setTag(paramString2);
-    this.xlF.setVisibility(0);
-    this.xlG.setVisibility(8);
-    this.xlE.setVisibility(8);
-    this.xlF.setOnClickListener(parambe.wMy.xTO);
+    this.yyx.setText(paramCharSequence, paramBufferType);
+    this.yyx.setTag(paramString2);
+    this.yyx.setVisibility(0);
+    this.yyy.setVisibility(8);
+    this.yyw.setVisibility(8);
+    this.yyx.setOnClickListener(parambe.xZe.zgK);
     AppMethodBeat.o(97838);
   }
   
   public int getSpreadHeight()
   {
     AppMethodBeat.i(97839);
-    ad.i("MicroMsg.CollapsibleTextView", "count:" + this.xlE.getLineCount() + "  height:" + this.xlE.getLineHeight());
-    int i = this.xlE.getLineCount();
-    int j = this.xlE.getLineHeight();
+    ac.i("MicroMsg.CollapsibleTextView", "count:" + this.yyw.getLineCount() + "  height:" + this.yyw.getLineHeight());
+    int i = this.yyw.getLineCount();
+    int j = this.yyw.getLineHeight();
     AppMethodBeat.o(97839);
     return (i - 7) * j;
   }
@@ -147,7 +147,7 @@ public class CollapsibleTextView
   {
     AppMethodBeat.i(97843);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.xkG == 0) && (!this.isAd))
+    if ((this.yxy == 0) && (!this.isAd))
     {
       if (this.hasCheck)
       {
@@ -155,14 +155,14 @@ public class CollapsibleTextView
         return;
       }
       this.hasCheck = true;
-      if (this.xlE.getLineCount() <= 7)
+      if (this.yyw.getLineCount() <= 7)
       {
-        this.xlJ.put(this.diQ, Integer.valueOf(0));
+        this.yyB.put(this.dgl, Integer.valueOf(0));
         AppMethodBeat.o(97843);
         return;
       }
-      this.xlJ.put(this.diQ, Integer.valueOf(1));
-      this.handler.post(this.xlL);
+      this.yyB.put(this.dgl, Integer.valueOf(1));
+      this.handler.post(this.yyD);
     }
     AppMethodBeat.o(97843);
   }
@@ -170,9 +170,9 @@ public class CollapsibleTextView
   public void setClickable(boolean paramBoolean)
   {
     AppMethodBeat.i(97842);
-    this.xlG.setClickable(paramBoolean);
-    this.xlF.setClickable(paramBoolean);
-    this.xlE.setClickable(paramBoolean);
+    this.yyy.setClickable(paramBoolean);
+    this.yyx.setClickable(paramBoolean);
+    this.yyw.setClickable(paramBoolean);
     super.setClickable(paramBoolean);
     AppMethodBeat.o(97842);
   }
@@ -180,9 +180,9 @@ public class CollapsibleTextView
   public void setLongClickable(boolean paramBoolean)
   {
     AppMethodBeat.i(97841);
-    this.xlG.setLongClickable(paramBoolean);
-    this.xlF.setLongClickable(paramBoolean);
-    this.xlE.setLongClickable(paramBoolean);
+    this.yyy.setLongClickable(paramBoolean);
+    this.yyx.setLongClickable(paramBoolean);
+    this.yyw.setLongClickable(paramBoolean);
     super.setLongClickable(paramBoolean);
     AppMethodBeat.o(97841);
   }
@@ -190,8 +190,8 @@ public class CollapsibleTextView
   public void setOpClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(97840);
-    if (this.xlG != null) {
-      this.xlG.setOnClickListener(paramOnClickListener);
+    if (this.yyy != null) {
+      this.yyy.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(97840);
   }

@@ -6,188 +6,128 @@ import com.tencent.mm.plugin.report.a;
 public final class fx
   extends a
 {
-  public long dKe = 0L;
-  public long dYT = 0L;
-  private String dYa = "";
-  private String eaK = "";
-  private String eag = "";
-  public long eai = 0L;
-  public a eeH;
-  private String eeI = "";
-  public long eeJ = 0L;
-  public long eeK = 0L;
+  private String dJb = "";
+  private String dZT;
+  private String dZU = "";
+  private long eaM = 0L;
+  private long eaQ = 0L;
+  private long eaR;
+  private long eaT = 0L;
+  private String eaU;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(43652);
+    AppMethodBeat.i(43464);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eag);
+    ((StringBuffer)localObject).append(this.dJb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYT);
+    ((StringBuffer)localObject).append(this.dZU);
     ((StringBuffer)localObject).append(",");
-    if (this.eeH != null) {}
-    for (int i = this.eeH.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eai);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eeI);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eeJ);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eeK);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eaK);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dYa);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dKe);
-      localObject = ((StringBuffer)localObject).toString();
-      ams((String)localObject);
-      AppMethodBeat.o(43652);
-      return localObject;
-    }
-  }
-  
-  public final String PW()
-  {
-    AppMethodBeat.i(43653);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.eag);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.dYT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.eeH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eai);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Provider:").append(this.eeI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Version:").append(this.eeJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Stage:").append(this.eeK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("networkType:").append(this.eaK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InstanceId:").append(this.dYa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dKe);
+    ((StringBuffer)localObject).append(this.eaM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eaT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eaQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eaR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eaU);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dZT);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43653);
+    arz((String)localObject);
+    AppMethodBeat.o(43464);
     return localObject;
   }
   
-  public final fx a(a parama)
+  public final String PS()
   {
-    this.eeH = parama;
-    return this;
+    AppMethodBeat.i(43465);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("Username:").append(this.dJb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Appid:").append(this.dZU);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AppVersion:").append(this.eaM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsFirstHit:").append(this.eaT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ReportId:").append(this.eaQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PackageType:").append(this.eaR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ModuleName:").append(this.eaU);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("InstanceId:").append(this.dZT);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(43465);
+    return localObject;
   }
   
   public final int getId()
   {
-    return 17120;
+    return 16634;
   }
   
-  public final fx je(long paramLong)
+  public final fx kp(long paramLong)
   {
-    this.dYT = paramLong;
+    this.eaM = paramLong;
     return this;
   }
   
-  public final fx jf(long paramLong)
+  public final fx kq(long paramLong)
   {
-    this.eai = paramLong;
+    this.eaT = paramLong;
     return this;
   }
   
-  public final fx jg(long paramLong)
+  public final fx kr(long paramLong)
   {
-    this.eeJ = paramLong;
+    this.eaQ = paramLong;
     return this;
   }
   
-  public final fx jh(long paramLong)
+  public final fx ks(long paramLong)
   {
-    this.eeK = paramLong;
+    this.eaR = paramLong;
     return this;
   }
   
-  public final fx ji(long paramLong)
+  public final fx nu(String paramString)
   {
-    this.dKe = paramLong;
+    AppMethodBeat.i(43460);
+    this.dJb = t("Username", paramString, true);
+    AppMethodBeat.o(43460);
     return this;
   }
   
-  public final fx lD(String paramString)
+  public final fx nv(String paramString)
   {
-    AppMethodBeat.i(180162);
-    this.eag = t("AppId", paramString, true);
-    AppMethodBeat.o(180162);
+    AppMethodBeat.i(43461);
+    this.dZU = t("Appid", paramString, true);
+    AppMethodBeat.o(43461);
     return this;
   }
   
-  public final fx lE(String paramString)
+  public final fx nw(String paramString)
   {
-    AppMethodBeat.i(180163);
-    this.eeI = t("Provider", paramString, true);
-    AppMethodBeat.o(180163);
+    AppMethodBeat.i(43462);
+    this.eaU = t("ModuleName", paramString, true);
+    AppMethodBeat.o(43462);
     return this;
   }
   
-  public final fx lF(String paramString)
+  public final fx nx(String paramString)
   {
-    AppMethodBeat.i(180164);
-    this.eaK = t("networkType", paramString, true);
-    AppMethodBeat.o(180164);
+    AppMethodBeat.i(43463);
+    this.dZT = t("InstanceId", paramString, true);
+    AppMethodBeat.o(43463);
     return this;
-  }
-  
-  public final fx lG(String paramString)
-  {
-    AppMethodBeat.i(180165);
-    this.dYa = t("InstanceId", paramString, true);
-    AppMethodBeat.o(180165);
-    return this;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43651);
-      eeL = new a("release", 0, 1);
-      eeM = new a("debug", 1, 2);
-      eeN = new a("demo", 2, 3);
-      eeO = new a[] { eeL, eeM, eeN };
-      AppMethodBeat.o(43651);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a jd(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return eeL;
-      case 2: 
-        return eeM;
-      }
-      return eeN;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fx
  * JD-Core Version:    0.7.0.1
  */

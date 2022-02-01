@@ -7,7 +7,7 @@ import com.tencent.mm.loader.e.c.c;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/DefaultImageLoader;", "Lcom/tencent/mm/loader/Loader;", "", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "(Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;)V", "load", "Lcom/tencent/mm/loader/builder/RequestBuilder;", "url", "", "view", "Landroid/widget/ImageView;", "options", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "Lcom/tencent/mm/loader/builder/BitmapRequestBuilder;", "urlThumb", "loadAssert", "assertPath", "loadDrawable", "context", "Landroid/content/Context;", "drawable", "resId", "", "loadLocal", "loadLocalFile", "filePath", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/DefaultImageLoader;", "Lcom/tencent/mm/loader/Loader;", "", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "(Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;)V", "load", "Lcom/tencent/mm/loader/builder/RequestBuilder;", "url", "", "view", "Landroid/widget/ImageView;", "options", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "Lcom/tencent/mm/loader/builder/BitmapRequestBuilder;", "urlThumb", "loadAssert", "assertPath", "loadDrawable", "context", "Landroid/content/Context;", "drawable", "resId", "", "loadLocal", "loadLocalFile", "filePath", "libimageloader_release"})
 public final class a
   extends d<String>
 {
@@ -21,40 +21,40 @@ public final class a
     k.h(paramString, "url");
     k.h(paramImageView, "view");
     k.h(parame, "options");
-    paramString = new com.tencent.mm.loader.a.a(new com.tencent.mm.loader.h.a.a(paramString), this.fLg);
+    paramString = new com.tencent.mm.loader.a.a(new com.tencent.mm.loader.h.a.a(paramString), this.fOS);
     com.tencent.mm.loader.e.c.b localb;
-    if (parame.gjz)
+    if (parame.gKl)
     {
-      localb = (com.tencent.mm.loader.e.c.b)new com.tencent.mm.loader.e.c.a(new c(0.5F).ahw());
+      localb = (com.tencent.mm.loader.e.c.b)new com.tencent.mm.loader.e.c.a(new c(0.5F).aoy());
       k.h(localb, "_transcoder");
-      if (paramString.gih != null) {
+      if (paramString.gIQ != null) {
         break label108;
       }
-      paramString.gih = new com.tencent.mm.loader.e.c.a(localb);
+      paramString.gIQ = new com.tencent.mm.loader.e.c.a(localb);
     }
     for (;;)
     {
       paramString.a(parame).c(paramImageView);
       return;
       label108:
-      com.tencent.mm.loader.e.c.a locala = paramString.gih;
+      com.tencent.mm.loader.e.c.a locala = paramString.gIQ;
       if (locala != null) {
-        locala.c(localb);
+        locala.b(localb);
       }
     }
   }
   
-  public final com.tencent.mm.loader.a.b<String, Bitmap> rd(String paramString)
+  public final com.tencent.mm.loader.a.b<String, Bitmap> vf(String paramString)
   {
     k.h(paramString, "filePath");
-    paramString = com.tencent.mm.loader.h.a.a.a(paramString, com.tencent.mm.loader.h.a.b.glN);
+    paramString = com.tencent.mm.loader.h.a.a.a(paramString, com.tencent.mm.loader.h.a.b.gMA);
     k.g(paramString, "DataItem.create(filePath, DataType.LOCAL_PATH)");
-    return (com.tencent.mm.loader.a.b)new com.tencent.mm.loader.a.a(paramString, this.fLg);
+    return (com.tencent.mm.loader.a.b)new com.tencent.mm.loader.a.a(paramString, this.fOS);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.a
  * JD-Core Version:    0.7.0.1
  */

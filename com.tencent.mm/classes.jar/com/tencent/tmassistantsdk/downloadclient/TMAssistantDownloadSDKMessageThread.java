@@ -5,14 +5,14 @@ import android.os.HandlerThread;
 import android.os.Message;
 import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.tmassistantsdk.util.ParamPair;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TMAssistantDownloadSDKMessageThread
-  extends ap
+  extends ao
 {
   private static TMAssistantDownloadSDKMessageThread mInstance = null;
   private static HandlerThread mMessagehandlerThread = null;
@@ -32,7 +32,7 @@ public class TMAssistantDownloadSDKMessageThread
     {
       AppMethodBeat.i(101903);
       if (mInstance == null) {
-        mInstance = new TMAssistantDownloadSDKMessageThread(a.aOc("TMAssistantDownloadSDKMessageThread"));
+        mInstance = new TMAssistantDownloadSDKMessageThread(a.aTF("TMAssistantDownloadSDKMessageThread"));
       }
       TMAssistantDownloadSDKMessageThread localTMAssistantDownloadSDKMessageThread = mInstance;
       AppMethodBeat.o(101903);
@@ -181,7 +181,7 @@ public class TMAssistantDownloadSDKMessageThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKMessageThread
  * JD-Core Version:    0.7.0.1
  */

@@ -22,112 +22,112 @@ import java.util.List;
 public final class d
   implements b
 {
-  private static final TextPaint IiD;
-  private static Comparator<Integer> IiE;
-  public static boolean cxf;
-  private c IiF;
-  private char[] IiG;
-  private int IiH;
-  private float IiI;
-  private boolean IiJ;
-  private float IiK;
-  private float IiL;
-  private float IiM;
-  private RectF IiN;
-  private RectF IiO;
-  private LinkedList<Integer> IiP;
-  private float IiQ;
-  private float[] Iid;
-  private int Iin;
-  public int Mc;
-  public int asw;
+  private static final TextPaint JKo;
+  private static Comparator<Integer> JKp;
+  public static boolean cuo;
+  private float[] JJM;
+  private int JJY;
+  private LinkedList<Integer> JKA;
+  private float JKB;
+  private c JKq;
+  private char[] JKr;
+  private int JKs;
+  private float JKt;
+  private boolean JKu;
+  private float JKv;
+  private float JKw;
+  private float JKx;
+  private RectF JKy;
+  private RectF JKz;
+  public int MZ;
+  public int atr;
   private float mHeight;
   private float mWidth;
   
   static
   {
     AppMethodBeat.i(39757);
-    IiD = new TextPaint(1);
-    IiE = new Comparator() {};
-    cxf = false;
+    JKo = new TextPaint(1);
+    JKp = new Comparator() {};
+    cuo = false;
     AppMethodBeat.o(39757);
   }
   
   public d(c paramc, char[] paramArrayOfChar, int paramInt1, int paramInt2, float paramFloat1, float[] paramArrayOfFloat, float paramFloat2, float paramFloat3, float paramFloat4, TextPaint paramTextPaint, boolean paramBoolean, float paramFloat5, int paramInt3, int paramInt4, float paramFloat6)
   {
     AppMethodBeat.i(39746);
-    this.IiK = -1.0F;
-    this.IiL = 0.0F;
-    this.IiM = 0.0F;
-    this.IiN = new RectF();
-    this.IiO = new RectF();
-    this.IiP = null;
-    this.IiF = paramc;
-    this.IiG = paramArrayOfChar;
-    this.asw = paramInt1;
-    this.Mc = paramInt2;
-    this.IiH = paramInt3;
-    this.Iid = paramArrayOfFloat;
-    this.IiI = paramFloat4;
-    this.IiL = paramFloat5;
-    this.IiJ = paramBoolean;
+    this.JKv = -1.0F;
+    this.JKw = 0.0F;
+    this.JKx = 0.0F;
+    this.JKy = new RectF();
+    this.JKz = new RectF();
+    this.JKA = null;
+    this.JKq = paramc;
+    this.JKr = paramArrayOfChar;
+    this.atr = paramInt1;
+    this.MZ = paramInt2;
+    this.JKs = paramInt3;
+    this.JJM = paramArrayOfFloat;
+    this.JKt = paramFloat4;
+    this.JKw = paramFloat5;
+    this.JKu = paramBoolean;
     this.mHeight = paramFloat3;
     this.mWidth = paramFloat2;
-    this.IiM = paramFloat6;
-    this.Iin = paramInt4;
+    this.JKx = paramFloat6;
+    this.JJY = paramInt4;
     paramc = paramTextPaint.getFontMetrics();
     paramFloat3 = paramc.leading - paramc.top;
     paramFloat4 = paramc.bottom;
     paramFloat5 = paramc.leading;
-    this.IiQ = ((this.mHeight - paramc.bottom + paramc.top) / 2.0F + paramFloat1 - paramc.top);
-    this.IiN.set(0.0F, this.IiQ - paramFloat3, 0.0F + paramFloat2, paramFloat4 - paramFloat5 + this.IiQ);
-    this.IiO.set(0.0F, this.IiQ - paramFloat3, 0.0F + paramFloat6, this.IiN.top + this.mHeight);
+    this.JKB = ((this.mHeight - paramc.bottom + paramc.top) / 2.0F + paramFloat1 - paramc.top);
+    this.JKy.set(0.0F, this.JKB - paramFloat3, 0.0F + paramFloat2, paramFloat4 - paramFloat5 + this.JKB);
+    this.JKz.set(0.0F, this.JKB - paramFloat3, 0.0F + paramFloat6, this.JKy.top + this.mHeight);
     AppMethodBeat.o(39746);
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
     AppMethodBeat.i(39756);
-    this.asw = paramObjectInputStream.readInt();
-    this.Mc = paramObjectInputStream.readInt();
-    this.Iid = ((float[])paramObjectInputStream.readObject());
-    this.IiN = new RectF(paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat());
-    this.IiJ = paramObjectInputStream.readBoolean();
-    this.IiI = paramObjectInputStream.readFloat();
-    this.IiK = paramObjectInputStream.readFloat();
+    this.atr = paramObjectInputStream.readInt();
+    this.MZ = paramObjectInputStream.readInt();
+    this.JJM = ((float[])paramObjectInputStream.readObject());
+    this.JKy = new RectF(paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat());
+    this.JKu = paramObjectInputStream.readBoolean();
+    this.JKt = paramObjectInputStream.readFloat();
+    this.JKv = paramObjectInputStream.readFloat();
     AppMethodBeat.o(39756);
   }
   
   private void writeObject(ObjectOutputStream paramObjectOutputStream)
   {
     AppMethodBeat.i(39755);
-    paramObjectOutputStream.writeInt(this.asw);
-    paramObjectOutputStream.writeInt(this.Mc);
-    paramObjectOutputStream.writeObject(this.Iid);
-    paramObjectOutputStream.writeFloat(this.IiN.left);
-    paramObjectOutputStream.writeFloat(this.IiN.top);
-    paramObjectOutputStream.writeFloat(this.IiN.right);
-    paramObjectOutputStream.writeFloat(this.IiN.bottom);
-    paramObjectOutputStream.writeBoolean(this.IiJ);
-    paramObjectOutputStream.writeFloat(this.IiI);
-    paramObjectOutputStream.writeFloat(flc());
+    paramObjectOutputStream.writeInt(this.atr);
+    paramObjectOutputStream.writeInt(this.MZ);
+    paramObjectOutputStream.writeObject(this.JJM);
+    paramObjectOutputStream.writeFloat(this.JKy.left);
+    paramObjectOutputStream.writeFloat(this.JKy.top);
+    paramObjectOutputStream.writeFloat(this.JKy.right);
+    paramObjectOutputStream.writeFloat(this.JKy.bottom);
+    paramObjectOutputStream.writeBoolean(this.JKu);
+    paramObjectOutputStream.writeFloat(this.JKt);
+    paramObjectOutputStream.writeFloat(fBt());
     AppMethodBeat.o(39755);
   }
   
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, float paramFloat)
   {
     AppMethodBeat.i(39747);
-    float f2 = flc();
+    float f2 = fBt();
     Paint.FontMetrics localFontMetrics = paramTextPaint.getFontMetrics();
     float f1 = (this.mHeight - localFontMetrics.bottom + localFontMetrics.top) / 2.0F + paramFloat - localFontMetrics.top;
-    int j = this.asw;
-    int k = this.Mc;
-    Object localObject1 = this.IiF.Iiw.IiV;
-    Object localObject2 = this.IiF.Iiw.IiW;
-    LineBackgroundSpan[] arrayOfLineBackgroundSpan = (LineBackgroundSpan[])this.IiF.Iiw.IiU;
+    int j = this.atr;
+    int k = this.MZ;
+    Object localObject1 = this.JKq.JKh.JKG;
+    Object localObject2 = this.JKq.JKh.JKH;
+    LineBackgroundSpan[] arrayOfLineBackgroundSpan = (LineBackgroundSpan[])this.JKq.JKh.JKF;
     LinkedList localLinkedList = new LinkedList();
     int i = 0;
-    while (i < this.IiF.Iiw.IiT)
+    while (i < this.JKq.JKh.JKE)
     {
       if ((localObject1[i] < k) && (localObject2[i] > j)) {
         localLinkedList.add(arrayOfLineBackgroundSpan[i]);
@@ -136,33 +136,33 @@ public final class d
     }
     localObject1 = localLinkedList.iterator();
     while (((Iterator)localObject1).hasNext()) {
-      ((LineBackgroundSpan)((Iterator)localObject1).next()).drawBackground(paramCanvas, paramTextPaint, (int)this.IiN.left, (int)this.IiN.right, (int)this.IiN.top, (int)f1, (int)this.IiN.bottom, this.IiF.getText(), this.asw, this.Mc, this.IiH);
+      ((LineBackgroundSpan)((Iterator)localObject1).next()).drawBackground(paramCanvas, paramTextPaint, (int)this.JKy.left, (int)this.JKy.right, (int)this.JKy.top, (int)f1, (int)this.JKy.bottom, this.JKq.getText(), this.atr, this.MZ, this.JKs);
     }
-    if (cxf) {}
+    if (cuo) {}
     for (localObject1 = new StringBuilder("canvas w=").append(paramCanvas.getWidth()).append(" canvas h=").append(paramCanvas.getHeight()).append('\n');; localObject1 = null)
     {
-      int m = this.asw;
+      int m = this.atr;
       i = 0;
-      k = this.asw;
+      k = this.atr;
       f2 = 0.0F + f2;
       int n;
-      if (k < this.Mc)
+      if (k < this.MZ)
       {
         j = i;
         float f4;
         float f3;
-        if (k + 1 < this.Mc)
+        if (k + 1 < this.MZ)
         {
           j = i;
           f4 = f1;
           n = m;
           f3 = f2;
-          if (this.Iid[(k + 1)] == 0.0F) {
+          if (this.JJM[(k + 1)] == 0.0F) {
             break label561;
           }
           j = i;
           if (i == 0) {
-            if ((!this.IiJ) || (this.Iid[(k + 1)] != this.IiL)) {
+            if ((!this.JKu) || (this.JJM[(k + 1)] != this.JKw)) {
               break label586;
             }
           }
@@ -179,19 +179,19 @@ public final class d
           {
             j = i;
             n = k + 1;
-            localObject2 = (ImageSpan)this.IiF.Iiq.kh(m, n);
+            localObject2 = (ImageSpan)this.JKq.JKb.ku(m, n);
             if (localObject2 == null) {
               break label592;
             }
-            IiD.set(paramTextPaint);
-            ((ImageSpan)localObject2).draw(paramCanvas, "", m, n, f2, 0, (int)f1, (int)(this.mHeight + paramFloat), IiD);
+            JKo.set(paramTextPaint);
+            ((ImageSpan)localObject2).draw(paramCanvas, "", m, n, f2, 0, (int)f1, (int)(this.mHeight + paramFloat), JKo);
             f3 = f2;
             if (j != 0) {
-              f3 = f2 + this.IiL;
+              f3 = f2 + this.JKw;
             }
             j = 0;
-            f3 += this.Iid[m] + this.IiI;
-            if (cxf) {
+            f3 += this.JJM[m] + this.JKt;
+            if (cuo) {
               ((StringBuilder)localObject1).append(f3).append(',');
             }
             f4 = f1;
@@ -205,26 +205,26 @@ public final class d
         }
         label592:
         i = 0;
-        IiD.set(paramTextPaint);
-        localObject2 = (AbsoluteSizeSpan)this.IiF.Iir.kh(m, n);
+        JKo.set(paramTextPaint);
+        localObject2 = (AbsoluteSizeSpan)this.JKq.JKc.ku(m, n);
         if (localObject2 != null)
         {
           i = 1;
-          ((AbsoluteSizeSpan)localObject2).updateDrawState(IiD);
+          ((AbsoluteSizeSpan)localObject2).updateDrawState(JKo);
         }
-        localObject2 = (RelativeSizeSpan)this.IiF.Iis.kh(m, n);
+        localObject2 = (RelativeSizeSpan)this.JKq.JKd.ku(m, n);
         if (localObject2 != null)
         {
           i = 1;
-          ((RelativeSizeSpan)localObject2).updateDrawState(IiD);
+          ((RelativeSizeSpan)localObject2).updateDrawState(JKo);
         }
-        localObject2 = (ForegroundColorSpan)this.IiF.Iiu.kh(m, n);
+        localObject2 = (ForegroundColorSpan)this.JKq.JKf.ku(m, n);
         if (localObject2 != null) {
-          ((ForegroundColorSpan)localObject2).updateDrawState(IiD);
+          ((ForegroundColorSpan)localObject2).updateDrawState(JKo);
         }
-        localObject2 = (ClickableSpan)this.IiF.Iiv.kh(m, n);
+        localObject2 = (ClickableSpan)this.JKq.JKg.ku(m, n);
         if (localObject2 != null) {
-          ((ClickableSpan)localObject2).updateDrawState(IiD);
+          ((ClickableSpan)localObject2).updateDrawState(JKo);
         }
         if (i == 0) {
           break label800;
@@ -234,7 +234,7 @@ public final class d
       label800:
       for (;;)
       {
-        paramCanvas.drawText(this.IiG, m, n - m, f2, f1, IiD);
+        paramCanvas.drawText(this.JKr, m, n - m, f2, f1, JKo);
         break;
         AppMethodBeat.o(39747);
         return;
@@ -242,27 +242,27 @@ public final class d
     }
   }
   
-  public final int abD(int paramInt)
+  public final int adW(int paramInt)
   {
     AppMethodBeat.i(39751);
-    int k = this.asw;
-    float f1 = this.IiN.left + flc();
-    int n = this.asw;
-    int m = this.asw;
+    int k = this.atr;
+    float f1 = this.JKy.left + fBt();
+    int n = this.atr;
+    int m = this.atr;
     int i = 0;
-    if (m < this.Mc)
+    if (m < this.MZ)
     {
       int j = i;
-      if (m + 1 < this.Mc)
+      if (m + 1 < this.MZ)
       {
         j = i;
-        if (this.Iid[(m + 1)] != 0.0F)
+        if (this.JJM[(m + 1)] != 0.0F)
         {
           j = i;
           if (i != 0) {
             break label156;
           }
-          if ((this.IiJ) && (this.Iid[(m + 1)] == this.IiL))
+          if ((this.JKu) && (this.JJM[(m + 1)] == this.JKw))
           {
             i = 1;
             label118:
@@ -288,9 +288,9 @@ public final class d
         label156:
         float f2 = f1;
         if (j != 0) {
-          f2 = f1 + this.IiL;
+          f2 = f1 + this.JKw;
         }
-        f1 = f2 + (this.Iid[n] + this.IiI);
+        f1 = f2 + (this.JJM[n] + this.JKt);
         if ((f2 <= paramInt) && (paramInt < f1))
         {
           AppMethodBeat.o(39751);
@@ -298,19 +298,19 @@ public final class d
         }
         if (f2 > paramInt)
         {
-          paramInt = this.asw;
+          paramInt = this.atr;
           AppMethodBeat.o(39751);
           return paramInt;
         }
-        if (paramInt > this.IiN.right)
+        if (paramInt > this.JKy.right)
         {
-          if (this.Mc == this.IiG.length)
+          if (this.MZ == this.JKr.length)
           {
-            paramInt = this.Mc;
+            paramInt = this.MZ;
             AppMethodBeat.o(39751);
             return paramInt;
           }
-          paramInt = this.Mc;
+          paramInt = this.MZ;
           AppMethodBeat.o(39751);
           return paramInt - 1;
         }
@@ -319,7 +319,7 @@ public final class d
         n = m + 1;
       }
     }
-    paramInt = this.Mc;
+    paramInt = this.MZ;
     AppMethodBeat.o(39751);
     return paramInt;
   }
@@ -335,15 +335,15 @@ public final class d
     if ((paramObject instanceof b))
     {
       paramObject = (b)paramObject;
-      if ((paramObject.getStart() != this.asw) || (paramObject.getEnd() != this.Mc) || (!paramObject.fkY().equals(this.IiN)) || (paramObject.flb() != this.IiJ) || (paramObject.fla() != this.IiI) || (paramObject.flc() != this.IiK))
+      if ((paramObject.getStart() != this.atr) || (paramObject.getEnd() != this.MZ) || (!paramObject.fBp().equals(this.JKy)) || (paramObject.fBs() != this.JKu) || (paramObject.fBr() != this.JKt) || (paramObject.fBt() != this.JKv))
       {
         AppMethodBeat.o(39752);
         return false;
       }
-      int i = this.asw;
-      while (i < this.Mc)
+      int i = this.atr;
+      while (i < this.MZ)
       {
-        if (this.Iid[i] != paramObject.fkX()[i])
+        if (this.JJM[i] != paramObject.fBo()[i])
         {
           AppMethodBeat.o(39752);
           return false;
@@ -357,88 +357,88 @@ public final class d
     return false;
   }
   
-  public final float[] fkX()
+  public final float[] fBo()
   {
-    return this.Iid;
+    return this.JJM;
   }
   
-  public final RectF fkY()
+  public final RectF fBp()
   {
-    return this.IiN;
+    return this.JKy;
   }
   
-  public final RectF fkZ()
+  public final RectF fBq()
   {
-    return this.IiO;
+    return this.JKz;
   }
   
-  public final float fla()
+  public final float fBr()
   {
-    return this.IiI;
+    return this.JKt;
   }
   
-  public final boolean flb()
+  public final boolean fBs()
   {
-    return this.IiJ;
+    return this.JKu;
   }
   
-  public final float flc()
+  public final float fBt()
   {
     AppMethodBeat.i(39749);
-    if (this.IiK != -1.0F)
+    if (this.JKv != -1.0F)
     {
-      f1 = this.IiK;
+      f1 = this.JKv;
       AppMethodBeat.o(39749);
       return f1;
     }
-    if ((this.Iin & 0x7) == 1)
+    if ((this.JJY & 0x7) == 1)
     {
-      int j = this.asw;
-      int i = this.asw;
+      int j = this.atr;
+      int i = this.atr;
       float f2;
-      for (f1 = 0.0F; i < this.Mc; f1 = f2)
+      for (f1 = 0.0F; i < this.MZ; f1 = f2)
       {
         int k;
-        if (i + 1 < this.Mc)
+        if (i + 1 < this.MZ)
         {
           k = j;
           f2 = f1;
-          if (this.Iid[(i + 1)] == 0.0F) {}
+          if (this.JJM[(i + 1)] == 0.0F) {}
         }
         else
         {
-          f2 = f1 + (this.Iid[j] + this.IiI);
+          f2 = f1 + (this.JJM[j] + this.JKt);
           k = i + 1;
         }
         i += 1;
         j = k;
       }
     }
-    for (float f1 = (this.IiM - f1) / 2.0F;; f1 = 0.0F)
+    for (float f1 = (this.JKx - f1) / 2.0F;; f1 = 0.0F)
     {
       f1 = Math.max(0.0F, f1);
-      if ((this.IiF.Iiq.kh(this.asw, this.asw + 1) == null) && (this.IiF.flg().containsKey(Character.valueOf(this.IiG[this.asw]))))
+      if ((this.JKq.JKb.ku(this.atr, this.atr + 1) == null) && (this.JKq.fBx().containsKey(Character.valueOf(this.JKr[this.atr]))))
       {
-        f1 -= ((Float)this.IiF.flg().get(Character.valueOf(this.IiG[this.asw]))).floatValue();
-        this.IiK = f1;
+        f1 -= ((Float)this.JKq.fBx().get(Character.valueOf(this.JKr[this.atr]))).floatValue();
+        this.JKv = f1;
         AppMethodBeat.o(39749);
         return f1;
       }
-      this.IiK = f1;
-      f1 = this.IiK;
+      this.JKv = f1;
+      f1 = this.JKv;
       AppMethodBeat.o(39749);
       return f1;
     }
   }
   
-  public final float fld()
+  public final float fBu()
   {
-    return this.IiQ;
+    return this.JKB;
   }
   
   public final int getEnd()
   {
-    return this.Mc;
+    return this.MZ;
   }
   
   public final float getHeight()
@@ -449,26 +449,26 @@ public final class d
   public final float getPrimaryHorizontal(int paramInt)
   {
     AppMethodBeat.i(39750);
-    float f1 = this.IiN.left + flc();
-    int m = this.asw;
-    int k = this.asw;
+    float f1 = this.JKy.left + fBt();
+    int m = this.atr;
+    int k = this.atr;
     int i = 0;
-    if ((k < this.Mc) && (k < paramInt))
+    if ((k < this.MZ) && (k < paramInt))
     {
       int j = i;
       int n;
       float f2;
-      if (k + 1 < this.Mc)
+      if (k + 1 < this.MZ)
       {
         j = i;
         n = m;
         f2 = f1;
-        if (this.Iid[(k + 1)] == 0.0F) {
+        if (this.JJM[(k + 1)] == 0.0F) {
           break label181;
         }
         j = i;
         if (i == 0) {
-          if ((!this.IiJ) || (this.Iid[(k + 1)] != this.IiL)) {
+          if ((!this.JKu) || (this.JJM[(k + 1)] != this.JKw)) {
             break label200;
           }
         }
@@ -485,9 +485,9 @@ public final class d
           j = i;
           f2 = f1;
           if (j != 0) {
-            f2 = f1 + this.IiL;
+            f2 = f1 + this.JKw;
           }
-          f2 += this.Iid[m] + this.IiI;
+          f2 += this.JJM[m] + this.JKt;
           j = 0;
           n = k + 1;
         }
@@ -504,7 +504,7 @@ public final class d
   
   public final int getStart()
   {
-    return this.asw;
+    return this.atr;
   }
   
   public final float getWidth()
@@ -515,17 +515,17 @@ public final class d
   public final int hashCode()
   {
     AppMethodBeat.i(39753);
-    int i = this.asw;
-    int j = this.Mc;
+    int i = this.atr;
+    int j = this.MZ;
     int k = (int)this.mHeight;
     int m = (int)this.mWidth;
-    int n = (int)this.IiK;
-    int i1 = this.IiN.hashCode();
+    int n = (int)this.JKv;
+    int i1 = this.JKy.hashCode();
     AppMethodBeat.o(39753);
     return i + j + k + m + n + i1;
   }
   
-  public final RectF kg(int paramInt1, int paramInt2)
+  public final RectF kt(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(39748);
     RectF localRectF = new RectF();
@@ -534,20 +534,20 @@ public final class d
       AppMethodBeat.o(39748);
       return localRectF;
     }
-    float f1 = flc();
-    int i = this.asw;
+    float f1 = fBt();
+    int i = this.atr;
     while (i < paramInt1)
     {
-      f1 += this.Iid[i] + this.IiI;
+      f1 += this.JJM[i] + this.JKt;
       i += 1;
     }
     float f2 = f1;
     while (paramInt1 < paramInt2)
     {
-      f2 += this.Iid[paramInt1] + this.IiI;
+      f2 += this.JJM[paramInt1] + this.JKt;
       paramInt1 += 1;
     }
-    localRectF.set(f1, this.IiN.top, f2, this.IiN.bottom);
+    localRectF.set(f1, this.JKy.top, f2, this.JKy.bottom);
     AppMethodBeat.o(39748);
     return localRectF;
   }
@@ -555,7 +555,7 @@ public final class d
   public final String toString()
   {
     AppMethodBeat.i(39754);
-    String str = "MeasuredLine{mStart=" + this.asw + ", mEnd=" + this.Mc + ", mLetter=" + this.IiI + ", isSmartLetter=" + this.IiJ + ", mHeight=" + this.mHeight + ", mWidth=" + this.mWidth + ", mLeftOffset=" + this.IiK + ", mLineRect=" + this.IiN + ", mLineRect=" + this.IiO + '}';
+    String str = "MeasuredLine{mStart=" + this.atr + ", mEnd=" + this.MZ + ", mLetter=" + this.JKt + ", isSmartLetter=" + this.JKu + ", mHeight=" + this.mHeight + ", mWidth=" + this.mWidth + ", mLeftOffset=" + this.JKv + ", mLineRect=" + this.JKy + ", mLineRect=" + this.JKz + '}';
     AppMethodBeat.o(39754);
     return str;
   }

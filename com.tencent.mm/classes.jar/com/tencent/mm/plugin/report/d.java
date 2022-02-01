@@ -18,9 +18,9 @@ public abstract interface d
   
   public abstract void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean);
   
-  public abstract void e(String paramString1, String paramString2, Map<String, Object> paramMap);
-  
   public abstract void f(int paramInt, Object... paramVarArgs);
+  
+  public abstract void g(String paramString1, String paramString2, Map<String, Object> paramMap);
   
   public abstract void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean);
   

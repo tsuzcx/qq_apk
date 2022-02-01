@@ -46,7 +46,7 @@ public abstract class i$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-      paramInt1 = aEJ();
+      paramInt1 = aLA();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -72,12 +72,12 @@ public abstract class i$a
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-      aEK();
+      aLB();
       paramParcel2.writeNoException();
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.network.INetworkEvent_AIDL");
-    long l = aEL();
+    long l = aLC();
     paramParcel2.writeNoException();
     paramParcel2.writeLong(l);
     return true;
@@ -93,7 +93,7 @@ public abstract class i$a
       this.mRemote = paramIBinder;
     }
     
-    public final int aEJ()
+    public final int aLA()
     {
       AppMethodBeat.i(132740);
       Parcel localParcel1 = Parcel.obtain();
@@ -114,7 +114,7 @@ public abstract class i$a
       }
     }
     
-    public final void aEK()
+    public final void aLB()
     {
       AppMethodBeat.i(132743);
       Parcel localParcel1 = Parcel.obtain();
@@ -134,7 +134,7 @@ public abstract class i$a
       }
     }
     
-    public final long aEL()
+    public final long aLC()
     {
       AppMethodBeat.i(132744);
       Parcel localParcel1 = Parcel.obtain();
@@ -313,7 +313,7 @@ public abstract class i$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.i.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class Plugin
   implements d
@@ -20,15 +20,15 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(25273);
-    boolean bool = aj.getContext().getSharedPreferences(aj.eFD() + "_google_aid", g.XN()).getBoolean("already_report_googleaid", false);
-    ad.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = ai.getContext().getSharedPreferences(ai.eUX() + "_google_aid", g.YK()).getBoolean("already_report_googleaid", false);
+    ac.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool) {
       try
       {
-        i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(aj.getContext());
+        i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(ai.getContext());
         if ((i != 1) && (i != 9))
         {
-          aj.getContext();
+          ai.getContext();
           new Object() {};
           b.c(new Runnable()
           {
@@ -46,11 +46,11 @@ public class Plugin
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Plugin.gai", localException, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.Plugin.gai", localException, "", new Object[0]);
           int i = 9;
         }
-        ad.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
-        aj.getContext().getSharedPreferences(aj.eFD() + "_google_aid", g.XN()).edit().putBoolean("already_report_googleaid", true).commit();
+        ac.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
+        ai.getContext().getSharedPreferences(ai.eUX() + "_google_aid", g.YK()).edit().putBoolean("already_report_googleaid", true).commit();
       }
     }
     AppMethodBeat.o(25273);
@@ -79,7 +79,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gai.Plugin
  * JD-Core Version:    0.7.0.1
  */

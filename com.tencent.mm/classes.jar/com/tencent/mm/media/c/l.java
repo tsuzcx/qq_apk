@@ -1,7 +1,7 @@
 package com.tencent.mm.media.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.j;
 import d.a.v;
 import d.g.b.k;
@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/VfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/VfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
 public final class l
   implements c
 {
@@ -23,7 +23,7 @@ public final class l
     k.h(paramList, "frames");
     k.h(paramMap, "parents");
     k.h(paramMap1, "outPts");
-    ad.i(this.TAG, "use vfr decode strategy");
+    ac.i(this.TAG, "use vfr decode strategy");
     int i = 0;
     Object localObject1 = ((Iterable)paramList).iterator();
     if (((Iterator)localObject1).hasNext()) {
@@ -32,9 +32,9 @@ public final class l
         int j = paramList.size() - i;
         i = j * paramInt2 / paramInt1;
         paramList = j.D(paramList, j);
-        localObject1 = v.Jgl;
+        localObject1 = v.KTF;
         paramLong = System.currentTimeMillis();
-        localObject1 = d.gnE;
+        localObject1 = d.gOq;
         k.h(paramList, "frames");
         j = paramList.size();
         localObject1 = new ArrayList(j);
@@ -101,18 +101,18 @@ public final class l
                 }
                 ((List)localObject4).remove(0);
               }
-              k = ((Number)j.iy((List)localObject4)).intValue();
+              k = ((Number)j.iO((List)localObject4)).intValue();
               ((List)((List)localObject2).get(paramInt1)).set(paramInt2, Long.valueOf(((Number)((List)((List)localObject2).get(paramInt1 - 1)).get(k)).longValue() + (((Number)paramList.get(paramInt2)).longValue() - ((Number)paramList.get(k)).longValue()) * (((Number)paramList.get(paramInt2)).longValue() - ((Number)paramList.get(k)).longValue())));
               ((List)((List)localObject3).get(paramInt1)).set(paramInt2, Integer.valueOf(k));
               while (((List)localObject4).size() > 1)
               {
-                d1 = d.a(paramInt2, ((Number)((List)localObject4).get(j.iw((List)localObject4))).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
-                d2 = d.a(((Number)((List)localObject4).get(j.iw((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.iw((List)localObject4) - 1)).intValue(), paramList);
-                double d3 = d.a(((Number)((List)localObject4).get(j.iw((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.iw((List)localObject4) - 1)).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
-                if (d1 * d2 >= d.a(paramInt2, ((Number)((List)localObject4).get(j.iw((List)localObject4))).intValue(), paramList) * d3) {
+                d1 = d.a(paramInt2, ((Number)((List)localObject4).get(j.iM((List)localObject4))).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
+                d2 = d.a(((Number)((List)localObject4).get(j.iM((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.iM((List)localObject4) - 1)).intValue(), paramList);
+                double d3 = d.a(((Number)((List)localObject4).get(j.iM((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.iM((List)localObject4) - 1)).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
+                if (d1 * d2 >= d.a(paramInt2, ((Number)((List)localObject4).get(j.iM((List)localObject4))).intValue(), paramList) * d3) {
                   break;
                 }
-                ((List)localObject4).remove(j.iw((List)localObject4));
+                ((List)localObject4).remove(j.iM((List)localObject4));
               }
               ((List)localObject4).add(Integer.valueOf(paramInt2));
               paramInt2 += 1;
@@ -132,7 +132,7 @@ public final class l
           paramInt1 -= 1;
         }
         long l = System.currentTimeMillis();
-        ad.i(this.TAG, "DropFrame, total frames = " + paramList.size() + ", remain frames = " + i + ", cost " + (l - paramLong) + "ms");
+        ac.i(this.TAG, "DropFrame, total frames = " + paramList.size() + ", remain frames = " + i + ", cost " + (l - paramLong) + "ms");
         paramLong = -1L;
         paramList = j.b((Iterable)localObject1, (Iterable)paramList).iterator();
         label1133:
@@ -165,7 +165,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.media.c.l
  * JD-Core Version:    0.7.0.1
  */

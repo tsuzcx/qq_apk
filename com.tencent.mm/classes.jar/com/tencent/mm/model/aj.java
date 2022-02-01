@@ -2,31 +2,31 @@ package com.tencent.mm.model;
 
 import com.tencent.mm.sdk.e.d;
 import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.storage.x;
 import java.util.List;
 
 public abstract interface aj
-  extends d<w>, g
+  extends d<x>, g
 {
-  public abstract String sh(String paramString);
+  public abstract void w(String paramString, long paramLong);
   
-  public abstract w tH(String paramString);
+  public abstract String wk(String paramString);
   
-  public abstract w tI(String paramString);
+  public abstract x xN(String paramString);
   
-  public abstract String tJ(String paramString);
+  public abstract x xO(String paramString);
   
-  public abstract String tK(String paramString);
+  public abstract String xP(String paramString);
   
-  public abstract List<String> tL(String paramString);
+  public abstract String xQ(String paramString);
   
-  public abstract boolean tM(String paramString);
+  public abstract List<String> xR(String paramString);
   
-  public abstract boolean tN(String paramString);
+  public abstract boolean xS(String paramString);
   
-  public abstract int tO(String paramString);
+  public abstract boolean xT(String paramString);
   
-  public abstract void v(String paramString, long paramLong);
+  public abstract int xU(String paramString);
 }
 
 

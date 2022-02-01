@@ -16,22 +16,22 @@ public class ad
   {
     boolean bool2 = true;
     AppMethodBeat.i(78570);
-    int i = parama.bZV.bZb.optInt("id");
+    int i = parama.bWS.bVY.optInt("id");
     if (i <= 0) {
       parama.a("fail", null);
     }
-    String str = parama.bZV.bZb.optString("value");
+    String str = parama.bWS.bVY.optString("value");
     boolean bool1;
-    if (parama.bZV.bZb.optInt("is_important") > 0)
+    if (parama.bWS.bVY.optInt("is_important") > 0)
     {
       bool1 = true;
-      if (parama.bZV.bZb.optInt("is_report_now") <= 0) {
+      if (parama.bWS.bVY.optInt("is_report_now") <= 0) {
         break label108;
       }
     }
     for (;;)
     {
-      h.vKh.a(i, str, bool2, bool1);
+      h.wUl.a(i, str, bool2, bool1);
       parama.a("", null);
       AppMethodBeat.o(78570);
       return;
@@ -42,7 +42,7 @@ public class ad
     }
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

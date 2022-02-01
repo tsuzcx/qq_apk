@@ -24,25 +24,25 @@ import java.util.Set;
 public final class a
   implements b
 {
-  private final d.g.a.b<q, Boolean> JAD;
-  private final Map<f, List<q>> JAE;
-  private final Map<f, n> JAF;
-  private final g JAG;
-  final d.g.a.b<p, Boolean> JAH;
+  private final d.g.a.b<q, Boolean> LnW;
+  private final Map<f, List<q>> LnX;
+  private final Map<f, n> LnY;
+  private final g LnZ;
+  final d.g.a.b<p, Boolean> Loa;
   
   public a(g paramg, d.g.a.b<? super p, Boolean> paramb)
   {
     AppMethodBeat.i(57777);
-    this.JAG = paramg;
-    this.JAH = paramb;
-    this.JAD = ((d.g.a.b)new a(this));
-    paramg = i.a(j.u((Iterable)this.JAG.fAF()), this.JAD);
+    this.LnZ = paramg;
+    this.Loa = paramb;
+    this.LnW = ((d.g.a.b)new a(this));
+    paramg = i.a(j.t((Iterable)this.LnZ.fTj()), this.LnW);
     Object localObject1 = (Map)new LinkedHashMap();
     Iterator localIterator = paramg.iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = localIterator.next();
-      f localf = ((q)localObject2).fyB();
+      f localf = ((q)localObject2).fRf();
       paramb = ((Map)localObject1).get(localf);
       paramg = paramb;
       if (paramb == null)
@@ -52,41 +52,41 @@ public final class a
       }
       ((List)paramg).add(localObject2);
     }
-    this.JAE = ((Map)localObject1);
-    paramb = i.a(j.u((Iterable)this.JAG.fAG()), this.JAH);
+    this.LnX = ((Map)localObject1);
+    paramb = i.a(j.t((Iterable)this.LnZ.fTk()), this.Loa);
     paramg = (Map)new LinkedHashMap();
     paramb = paramb.iterator();
     while (paramb.hasNext())
     {
       localObject1 = paramb.next();
-      paramg.put(((n)localObject1).fyB(), localObject1);
+      paramg.put(((n)localObject1).fRf(), localObject1);
     }
-    this.JAF = paramg;
+    this.LnY = paramg;
     AppMethodBeat.o(57777);
   }
   
-  public final Set<f> fBD()
+  public final Set<f> fUh()
   {
     AppMethodBeat.i(57774);
-    Object localObject2 = i.a(j.u((Iterable)this.JAG.fAF()), this.JAD);
+    Object localObject2 = i.a(j.t((Iterable)this.LnZ.fTj()), this.LnW);
     Object localObject1 = (Collection)new LinkedHashSet();
     localObject2 = ((h)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((q)((Iterator)localObject2).next()).fyB());
+      ((Collection)localObject1).add(((q)((Iterator)localObject2).next()).fRf());
     }
     localObject1 = (Set)localObject1;
     AppMethodBeat.o(57774);
     return localObject1;
   }
   
-  public final Set<f> fBE()
+  public final Set<f> fUi()
   {
     AppMethodBeat.i(57776);
-    Object localObject2 = i.a(j.u((Iterable)this.JAG.fAG()), this.JAH);
+    Object localObject2 = i.a(j.t((Iterable)this.LnZ.fTk()), this.Loa);
     Object localObject1 = (Collection)new LinkedHashSet();
     localObject2 = ((h)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((n)((Iterator)localObject2).next()).fyB());
+      ((Collection)localObject1).add(((n)((Iterator)localObject2).next()).fRf());
     }
     localObject1 = (Set)localObject1;
     AppMethodBeat.o(57776);
@@ -97,14 +97,14 @@ public final class a
   {
     AppMethodBeat.i(57773);
     k.h(paramf, "name");
-    paramf = (List)this.JAE.get(paramf);
+    paramf = (List)this.LnX.get(paramf);
     if (paramf != null)
     {
       paramf = (Collection)paramf;
       AppMethodBeat.o(57773);
       return paramf;
     }
-    paramf = (Collection)v.Jgl;
+    paramf = (Collection)v.KTF;
     AppMethodBeat.o(57773);
     return paramf;
   }
@@ -113,7 +113,7 @@ public final class a
   {
     AppMethodBeat.i(57775);
     k.h(paramf, "name");
-    paramf = (n)this.JAF.get(paramf);
+    paramf = (n)this.LnY.get(paramf);
     AppMethodBeat.o(57775);
     return paramf;
   }
@@ -130,7 +130,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.soter.core.a.a.b;
 import com.tencent.soter.core.a.a.d;
@@ -21,16 +21,16 @@ import java.security.SignatureException;
 public class SoterTestUI
   extends MMActivity
 {
-  private Button ybh = null;
-  private Button ybi = null;
-  private Button ybj = null;
-  private Button ybk = null;
-  private Button ybl = null;
-  private Button ybm = null;
-  private Button ybn = null;
-  private Button ybo = null;
-  private Button ybp = null;
-  private TextView ybq = null;
+  private Button zoh = null;
+  private Button zoi = null;
+  private Button zoj = null;
+  private Button zok = null;
+  private Button zol = null;
+  private Button zom = null;
+  private Button zon = null;
+  private Button zoo = null;
+  private Button zop = null;
+  private TextView zoq = null;
   
   public int getLayoutId()
   {
@@ -41,23 +41,23 @@ public class SoterTestUI
   {
     AppMethodBeat.i(130918);
     super.onCreate(paramBundle);
-    this.ybh = ((Button)findViewById(2131305127));
-    this.ybi = ((Button)findViewById(2131305122));
-    this.ybj = ((Button)findViewById(2131305126));
-    this.ybk = ((Button)findViewById(2131305124));
-    this.ybl = ((Button)findViewById(2131305121));
-    this.ybm = ((Button)findViewById(2131305125));
-    this.ybn = ((Button)findViewById(2131305123));
-    this.ybo = ((Button)findViewById(2131305120));
-    this.ybp = ((Button)findViewById(2131305119));
-    this.ybq = ((TextView)findViewById(2131304144));
-    this.ybh.setOnClickListener(new View.OnClickListener()
+    this.zoh = ((Button)findViewById(2131305127));
+    this.zoi = ((Button)findViewById(2131305122));
+    this.zoj = ((Button)findViewById(2131305126));
+    this.zok = ((Button)findViewById(2131305124));
+    this.zol = ((Button)findViewById(2131305121));
+    this.zom = ((Button)findViewById(2131305125));
+    this.zon = ((Button)findViewById(2131305123));
+    this.zoo = ((Button)findViewById(2131305120));
+    this.zop = ((Button)findViewById(2131305119));
+    this.zoq = ((TextView)findViewById(2131304144));
+    this.zoh.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130905);
         TextView localTextView = SoterTestUI.a(SoterTestUI.this);
-        if (com.tencent.soter.a.a.fnk()) {}
+        if (com.tencent.soter.a.a.fDA()) {}
         for (paramAnonymousView = "passed";; paramAnonymousView = "not support")
         {
           localTextView.setText(paramAnonymousView);
@@ -66,12 +66,12 @@ public class SoterTestUI
         }
       }
     });
-    this.ybi.setOnClickListener(new View.OnClickListener()
+    this.zoi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130906);
-        paramAnonymousView = com.tencent.soter.core.a.fmS();
+        paramAnonymousView = com.tencent.soter.core.a.fDi();
         TextView localTextView = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "passed";; paramAnonymousView = "not support")
@@ -82,12 +82,12 @@ public class SoterTestUI
         }
       }
     });
-    this.ybj.setOnClickListener(new View.OnClickListener()
+    this.zoj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130907);
-        paramAnonymousView = com.tencent.soter.core.a.fmT();
+        paramAnonymousView = com.tencent.soter.core.a.fDj();
         TextView localTextView = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "passed";; paramAnonymousView = "not passed")
@@ -98,12 +98,12 @@ public class SoterTestUI
         }
       }
     });
-    this.ybk.setOnClickListener(new View.OnClickListener()
+    this.zok.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130908);
-        paramAnonymousView = com.tencent.soter.core.a.fmW();
+        paramAnonymousView = com.tencent.soter.core.a.fDm();
         if (paramAnonymousView == null)
         {
           SoterTestUI.a(SoterTestUI.this).setText("not passed: no certificate");
@@ -114,12 +114,12 @@ public class SoterTestUI
         AppMethodBeat.o(130908);
       }
     });
-    this.ybl.setOnClickListener(new View.OnClickListener()
+    this.zol.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130909);
-        paramAnonymousView = com.tencent.soter.core.a.aNO("sample_auth_key_name");
+        paramAnonymousView = com.tencent.soter.core.a.aTr("sample_auth_key_name");
         TextView localTextView = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "pass";; paramAnonymousView = "not passed")
@@ -130,12 +130,12 @@ public class SoterTestUI
         }
       }
     });
-    this.ybm.setOnClickListener(new View.OnClickListener()
+    this.zom.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130910);
-        paramAnonymousView = com.tencent.soter.core.a.cU("sample_auth_key_name", false);
+        paramAnonymousView = com.tencent.soter.core.a.db("sample_auth_key_name", false);
         TextView localTextView = SoterTestUI.a(SoterTestUI.this);
         if (paramAnonymousView.isSuccess()) {}
         for (paramAnonymousView = "pass";; paramAnonymousView = "not passed")
@@ -146,12 +146,12 @@ public class SoterTestUI
         }
       }
     });
-    this.ybn.setOnClickListener(new View.OnClickListener()
+    this.zon.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130911);
-        paramAnonymousView = com.tencent.soter.core.a.aNR("sample_auth_key_name");
+        paramAnonymousView = com.tencent.soter.core.a.aTu("sample_auth_key_name");
         if (paramAnonymousView == null)
         {
           SoterTestUI.a(SoterTestUI.this).setText("not passed: no certificate");
@@ -162,39 +162,39 @@ public class SoterTestUI
         AppMethodBeat.o(130911);
       }
     });
-    this.ybo.setOnClickListener(new View.OnClickListener()
+    this.zoo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(130917);
-        paramAnonymousView = com.tencent.soter.core.a.aNS("sample_auth_key_name");
+        paramAnonymousView = com.tencent.soter.core.a.aTv("sample_auth_key_name");
         if (paramAnonymousView != null) {}
         try
         {
           paramAnonymousView.update("challenge".getBytes());
           paramAnonymousView.sign();
-          ad.e("MicroMsg.SoterTestUI", "hy: should NOT happen if no exception");
+          ac.e("MicroMsg.SoterTestUI", "hy: should NOT happen if no exception");
           SoterTestUI.a(SoterTestUI.this).setText("not passed: signature success without fingerprint authentication");
           AppMethodBeat.o(130917);
           return;
         }
         catch (SignatureException localSignatureException)
         {
-          ad.e("MicroMsg.SoterTestUI", "hy: occurred exception when sign: " + localSignatureException.toString());
-          com.tencent.soter.core.a.a locala = com.tencent.soter.core.a.a.kF(SoterTestUI.this);
-          if ((!com.tencent.soter.core.a.a.Iul.isHardwareDetected(locala.mContext)) || (!locala.hasEnrolledFingerprints())) {
+          ac.e("MicroMsg.SoterTestUI", "hy: occurred exception when sign: " + localSignatureException.toString());
+          com.tencent.soter.core.a.a locala = com.tencent.soter.core.a.a.kR(SoterTestUI.this);
+          if ((!com.tencent.soter.core.a.a.JVU.isHardwareDetected(locala.mContext)) || (!locala.hasEnrolledFingerprints())) {
             break label150;
           }
           locala.a(new a.d(paramAnonymousView), null, new a.b()
           {
-            public final void dFh()
+            public final void dTI()
             {
               AppMethodBeat.i(130914);
-              ad.i("MicroMsg.SoterTestUI", "hy: onAuthenticationSucceeded");
+              ac.i("MicroMsg.SoterTestUI", "hy: onAuthenticationSucceeded");
               try
               {
                 paramAnonymousView.update("challenge".getBytes());
-                Object localObject = com.tencent.soter.core.a.cL(paramAnonymousView.sign());
+                Object localObject = com.tencent.soter.core.a.cK(paramAnonymousView.sign());
                 TextView localTextView = SoterTestUI.a(SoterTestUI.this);
                 if (localObject == null) {}
                 for (localObject = "not pass: exception occurs";; localObject = ((j)localObject).toString())
@@ -207,7 +207,7 @@ public class SoterTestUI
               }
               catch (SignatureException localSignatureException)
               {
-                ad.e("MicroMsg.SoterTestUI", "hy: occurred exception when sign: " + localSignatureException.toString());
+                ac.e("MicroMsg.SoterTestUI", "hy: occurred exception when sign: " + localSignatureException.toString());
                 AppMethodBeat.o(130914);
               }
             }
@@ -222,31 +222,31 @@ public class SoterTestUI
             public final void onAuthenticationError(int paramAnonymous2Int, CharSequence paramAnonymous2CharSequence)
             {
               AppMethodBeat.i(130912);
-              ad.i("MicroMsg.SoterTestUI", "hy: onAuthenticationError");
+              ac.i("MicroMsg.SoterTestUI", "hy: onAuthenticationError");
               AppMethodBeat.o(130912);
             }
             
             public final void onAuthenticationFailed()
             {
               AppMethodBeat.i(130915);
-              ad.i("MicroMsg.SoterTestUI", "hy: onAuthenticationFailed");
+              ac.i("MicroMsg.SoterTestUI", "hy: onAuthenticationFailed");
               AppMethodBeat.o(130915);
             }
             
             public final void onAuthenticationHelp(int paramAnonymous2Int, CharSequence paramAnonymous2CharSequence)
             {
               AppMethodBeat.i(130913);
-              ad.i("MicroMsg.SoterTestUI", "hy: onAuthenticationHelp");
+              ac.i("MicroMsg.SoterTestUI", "hy: onAuthenticationHelp");
               AppMethodBeat.o(130913);
             }
           });
           AppMethodBeat.o(130917);
           return;
           label150:
-          ad.e("MicroMsg.SoterTestUI", "hy: no hardware detected or no fingerprint registered");
+          ac.e("MicroMsg.SoterTestUI", "hy: no hardware detected or no fingerprint registered");
           AppMethodBeat.o(130917);
         }
-        ad.e("MicroMsg.SoterTestUI", "hy: signature is null. do sign failed");
+        ac.e("MicroMsg.SoterTestUI", "hy: signature is null. do sign failed");
         AppMethodBeat.o(130917);
         return;
       }

@@ -6,7 +6,7 @@ import java.util.Map;
 public abstract class al
   extends s
 {
-  private static final String[] Bn = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
+  private static final String[] Cl = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
   
   static int a(u paramu, int paramInt)
   {
@@ -53,12 +53,12 @@ public abstract class al
   
   public final String[] getPropagationProperties()
   {
-    return Bn;
+    return Cl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.al
  * JD-Core Version:    0.7.0.1
  */

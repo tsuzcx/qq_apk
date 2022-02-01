@@ -8,7 +8,7 @@ import d.l;
 import java.util.Iterator;
 import org.json.JSONArray;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"toDoubleArray", "", "Lorg/json/JSONArray;", "toJsonArray", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"toDoubleArray", "", "Lorg/json/JSONArray;", "toJsonArray", "plugin-sticker_release"})
 public final class b
 {
   public static final double[] P(JSONArray paramJSONArray)
@@ -16,7 +16,7 @@ public final class b
     AppMethodBeat.i(105887);
     k.h(paramJSONArray, "$this$toDoubleArray");
     double[] arrayOfDouble = new double[paramJSONArray.length()];
-    Iterator localIterator = ((Iterable)h.kJ(0, paramJSONArray.length())).iterator();
+    Iterator localIterator = ((Iterable)h.kZ(0, paramJSONArray.length())).iterator();
     while (localIterator.hasNext())
     {
       int i = ((ab)localIterator).nextInt();
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sticker.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.liteav.videoencoder;
 
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.module.a;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -13,11 +13,11 @@ public class c
   extends a
 {
   protected JSONArray mEncFmt = null;
-  protected g mEncodeFilter;
+  protected h mEncodeFilter;
   private boolean mEncodeFirstGOP = false;
   protected Object mGLContextExternal = null;
   protected boolean mInit;
-  protected g mInputFilter;
+  protected h mInputFilter;
   protected int mInputHeight = 0;
   protected int mInputTextureID = -1;
   protected int mInputWidth = 0;

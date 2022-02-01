@@ -4,8 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.sortview.a;
 import com.tencent.mm.ui.base.sortview.a.a;
 import com.tencent.mm.ui.base.sortview.a.b;
@@ -13,8 +12,8 @@ import com.tencent.mm.ui.base.sortview.a.b;
 public final class d
   extends a
 {
-  private static a.b mTz;
-  String mTA;
+  private static a.b nvR;
+  String nvS;
   
   public d(Object paramObject)
   {
@@ -24,40 +23,40 @@ public final class d
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     if ((this.data instanceof String)) {
-      this.mTA = ((String)this.data);
+      this.nvS = ((String)this.data);
     }
   }
   
-  public final a.b bCt()
+  public final a.b bJw()
   {
     AppMethodBeat.i(5680);
-    if (mTz == null) {
-      mTz = new a.b()
+    if (nvR == null) {
+      nvR = new a.b()
       {
         public final void a(Context paramAnonymousContext, a.a paramAnonymousa, a paramAnonymousVarArgs)
         {
           AppMethodBeat.i(5678);
           if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null))
           {
-            ad.e("MicroMsg.CatalogDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+            ac.e("MicroMsg.CatalogDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
             AppMethodBeat.o(5678);
             return;
           }
           if (!(paramAnonymousa instanceof d.a))
           {
-            ad.e("MicroMsg.CatalogDataItem", "The ViewHolder is not a instance of CatalogViewHolder.");
+            ac.e("MicroMsg.CatalogDataItem", "The ViewHolder is not a instance of CatalogViewHolder.");
             AppMethodBeat.o(5678);
             return;
           }
           if (!(paramAnonymousVarArgs instanceof d))
           {
-            ad.e("MicroMsg.CatalogDataItem", "The DataItem is not a instance of CatalogDataItem.");
+            ac.e("MicroMsg.CatalogDataItem", "The DataItem is not a instance of CatalogDataItem.");
             AppMethodBeat.o(5678);
             return;
           }
           paramAnonymousContext = (d.a)paramAnonymousa;
           paramAnonymousa = (d)paramAnonymousVarArgs;
-          e.c(paramAnonymousContext.mTt, paramAnonymousa.mTA);
+          com.tencent.mm.plugin.brandservice.b.d.c(paramAnonymousContext.nvL, paramAnonymousa.nvS);
           AppMethodBeat.o(5678);
         }
         
@@ -65,7 +64,7 @@ public final class d
         {
           AppMethodBeat.i(5679);
           if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof d.a))) {
-            ((d.a)paramAnonymousa).mTt = ((TextView)paramAnonymousView.findViewById(2131297925));
+            ((d.a)paramAnonymousa).nvL = ((TextView)paramAnonymousView.findViewById(2131297925));
           }
           AppMethodBeat.o(5679);
         }
@@ -87,12 +86,12 @@ public final class d
         }
       };
     }
-    a.b localb = mTz;
+    a.b localb = nvR;
     AppMethodBeat.o(5680);
     return localb;
   }
   
-  public final a.a bCu()
+  public final a.a bJx()
   {
     AppMethodBeat.i(5681);
     a locala = new a();
@@ -103,12 +102,12 @@ public final class d
   public static final class a
     implements a.a
   {
-    public TextView mTt;
+    public TextView nvL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.d
  * JD-Core Version:    0.7.0.1
  */

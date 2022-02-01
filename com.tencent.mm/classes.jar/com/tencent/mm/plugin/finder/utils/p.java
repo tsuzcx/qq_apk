@@ -1,155 +1,334 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ym;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.storage.b;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM.b;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM.e;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import d.g.b.k;
-import d.l;
+import com.tencent.mm.plugin.finder.loader.a;
+import com.tencent.mm.plugin.finder.loader.f;
+import com.tencent.mm.plugin.finder.loader.j;
+import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.vfs.i;
+import d.o;
+import d.v;
 import d.y;
+import java.nio.charset.Charset;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/utils/FinderLbsLogic;", "", "()V", "TAG", "", "checkLocationBeforeCgi", "", "noPermission", "Lkotlin/Function0;", "cacheInvalid", "cacheValid", "checkLocationPermission", "", "requestLocationPermission", "activity", "Lcom/tencent/mm/ui/MMActivity;", "syncWaitLbs", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/utils/PathRouter;", "", "()V", "finderAccDataPath", "", "finderAccPath", "finderAvatarPath", "getFinderAvatarPath", "()Ljava/lang/String;", "finderCapturePath", "getFinderCapturePath", "finderConstantsDataPath", "getFinderConstantsDataPath", "finderConstantsPath", "getFinderConstantsPath", "finderCoverImagePath", "getFinderCoverImagePath", "finderImgPath", "getFinderImgPath", "finderPostPath", "getFinderPostPath", "finderTmpPath", "getFinderTmpPath", "finderVideoPath", "getFinderVideoPath", "folderArray", "", "Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "getFolderArray", "()[Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "[Lcom/tencent/mm/plugin/finder/utils/FinderFolder;", "checkToCreateDir", "", "path", "noMedia", "", "cleanFile", "dumpCacheDir", "genPostVideoTmpPath", "username", "getAvatarFilePath", "avatar", "Lcom/tencent/mm/plugin/finder/loader/FinderAvatar;", "getAvatarFileTmpPath", "getCaptureFilePath", "getConstantsDataPath", "getConstantsPath", "getCoverImageFilePath", "cover", "Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "getExifRotatedFilePath", "origFilePath", "getImageFilePath", "image", "Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "getImageFileTmpPath", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "getMyFinderAvatarTempPath", "getNormalFileTmpPath", "getNormalJpegTmpPath", "getPostImagePath", "suffix", "getPostImageThumbPath", "imagePath", "getPostMediaDir", "getPostMediaTmpDir", "getPostMediaTmpPath", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "getPostPath", "fileName", "getPostVideoCoverPath", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover;", "getPostVideoPath", "getPostVideoThumbPath", "videoPath", "getTmpTextImagePath", "getUrlImageFilePath", "Lcom/tencent/mm/plugin/finder/loader/FinderUrlImage;", "getUrlImageTmpPath", "getVideoCoverFilePath", "getVideoFilePath", "getVideoFileTmpPath", "inPostDir", "makeImageFilePath", "plugin-finder_release"})
 public final class p
 {
-  public static final p LaH;
-  private static final String TAG = "Finder.FinderLbsLogic";
+  private static final String rQk;
+  private static final String rQl;
+  private static final String rQm;
+  private static final String rQn;
+  private static final String rQo;
+  private static final String rQp;
+  private static final String rQq;
+  private static final String rQr;
+  private static final String rQs;
+  private static final String rQt;
+  private static final String rQu;
+  private static final e[] rQv;
+  public static final p rQw;
   
   static
   {
-    AppMethodBeat.i(199632);
-    LaH = new p();
-    TAG = "Finder.FinderLbsLogic";
-    AppMethodBeat.o(199632);
+    AppMethodBeat.i(167988);
+    rQw = new p();
+    Object localObject1 = new StringBuilder();
+    Object localObject2 = com.tencent.mm.kernel.g.agR();
+    d.g.b.k.g(localObject2, "MMKernel.storage()");
+    rQk = ((com.tencent.mm.kernel.e)localObject2).getAccPath() + "finder/";
+    localObject1 = new StringBuilder();
+    localObject2 = com.tencent.mm.kernel.g.agR();
+    d.g.b.k.g(localObject2, "MMKernel.storage()");
+    rQl = ((com.tencent.mm.kernel.e)localObject2).agv() + "finder/";
+    rQm = rQk + "image/";
+    rQn = rQk + "avatar/";
+    rQo = rQk + "cover/";
+    rQp = rQk + "video/";
+    rQq = rQk + "tmp/";
+    rQr = rQk + "capture/";
+    rQs = rQk + "post/";
+    rQt = rQk + "constants/";
+    rQu = rQl + "constants/";
+    localObject1 = new e[11];
+    localObject1[0] = new e(rQk, "finderAccPath", 0L, true, false);
+    localObject1[1] = new e(rQs, "finderPostPath", 0L, true, false);
+    localObject1[2] = new e(rQt, "finderConstantsPath", 0L, true, false);
+    localObject2 = rQm;
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[3] = new e((String)localObject2, "finderImgPath", com.tencent.mm.plugin.finder.storage.b.cyC(), false, 24);
+    localObject2 = rQn;
+    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[4] = new e((String)localObject2, "finderAvatarPath", com.tencent.mm.plugin.finder.storage.b.cyD(), false, 24);
+    localObject2 = rQo;
+    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[5] = new e((String)localObject2, "finderCoverImagePath", com.tencent.mm.plugin.finder.storage.b.cyE(), false, 24);
+    localObject2 = rQp;
+    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[6] = new e((String)localObject2, "finderVideoPath", com.tencent.mm.plugin.finder.storage.b.cyF(), false, 24);
+    localObject2 = rQq;
+    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[7] = new e((String)localObject2, "finderTmpPath", com.tencent.mm.plugin.finder.storage.b.cyG(), false, 24);
+    localObject2 = rQr;
+    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[8] = new e((String)localObject2, "finderCapturePath", com.tencent.mm.plugin.finder.storage.b.cyH(), false, 24);
+    localObject1[9] = new e(cDw(), "finderPostMediaDir", 0L, false, 8);
+    localObject2 = cDv();
+    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    localObject1[10] = new e((String)localObject2, "finderPostMediaTmpDir", com.tencent.mm.plugin.finder.storage.b.cyI(), false, 24);
+    rQv = (e[])localObject1;
+    int i = 0;
+    while (i < 11)
+    {
+      localObject1[i].cCN();
+      i += 1;
+    }
+    ac.i("Finder.Loader", "finderAccPath:" + rQk + " finderImgPath:" + rQm + " finderVideoPath:" + rQp + " finderCapturePath:" + rQr);
+    AppMethodBeat.o(167988);
   }
   
-  public static void a(d.g.a.a<y> parama1, d.g.a.a<y> parama2, d.g.a.a<y> parama3)
+  public static String a(a parama)
   {
-    AppMethodBeat.i(199628);
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.LCX;
-    k.g(com.tencent.mm.ui.component.a.bE(PluginFinder.class).get(FinderGlobalLocationVM.class), "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    if (!FinderGlobalLocationVM.fXe())
-    {
-      parama1.invoke();
-      AppMethodBeat.o(199628);
-      return;
-    }
-    long l1 = ce.asQ();
-    long l2 = FinderGlobalLocationVM.fXg();
-    parama1 = b.qJA;
-    if (l1 - l2 < b.fUD())
-    {
-      parama3.invoke();
-      AppMethodBeat.o(199628);
-      return;
-    }
-    parama2.invoke();
-    AppMethodBeat.o(199628);
+    AppMethodBeat.i(167979);
+    d.g.b.k.h(parama, "avatar");
+    parama = rQn + parama.rtf;
+    AppMethodBeat.o(167979);
+    return parama;
   }
   
-  public static boolean fVQ()
+  public static String a(com.tencent.mm.plugin.finder.loader.d paramd)
   {
-    AppMethodBeat.i(199629);
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.LCX;
-    k.g(com.tencent.mm.ui.component.a.bE(PluginFinder.class).get(FinderGlobalLocationVM.class), "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    boolean bool = FinderGlobalLocationVM.fXe();
-    AppMethodBeat.o(199629);
-    return bool;
+    AppMethodBeat.i(167980);
+    d.g.b.k.h(paramd, "cover");
+    paramd = rQo + paramd.rtf;
+    AppMethodBeat.o(167980);
+    return paramd;
   }
   
-  public static boolean fVR()
+  public static String a(f paramf)
   {
-    AppMethodBeat.i(199631);
-    try
-    {
-      synchronized (new Object())
-      {
-        ad.i(TAG, "start syncWaitLbs");
-        new a(???).alive();
-        Object localObject2 = com.tencent.mm.ui.component.a.LCX;
-        localObject2 = com.tencent.mm.ui.component.a.bE(PluginFinder.class).get(FinderGlobalLocationVM.class);
-        k.g(localObject2, "UICProvider.of(PluginFin…alLocationVM::class.java)");
-        localObject2 = (FinderGlobalLocationVM)localObject2;
-        if (!FinderGlobalLocationVM.fXe()) {
-          ad.w("Finder.GlobalLocationVM", "[requestLocation] without perssion.");
-        }
-        for (int i = 0; i != 0; i = 1)
-        {
-          ad.i(TAG, "wait syncWaitLbs");
-          localObject2 = b.qJA;
-          ???.wait(b.fUE());
-          ad.i(TAG, "syncWaitLbs ok");
-          AppMethodBeat.o(199631);
-          return true;
-          ad.i("Finder.GlobalLocationVM", "[requestLocation]...");
-          com.tencent.mm.ad.c.b(null, (d.g.a.a)new FinderGlobalLocationVM.b((FinderGlobalLocationVM)localObject2));
-        }
-        ad.i(TAG, "syncWaitLbs no permission");
-        AppMethodBeat.o(199631);
-        return false;
-      }
-      return false;
-    }
-    catch (Throwable localThrowable)
-    {
-      ad.printErrStackTrace(TAG, localThrowable, "syncWaitLbs exception", new Object[0]);
-      AppMethodBeat.o(199631);
-    }
+    AppMethodBeat.i(167976);
+    d.g.b.k.h(paramf, "image");
+    paramf = rQm + paramf.abW();
+    AppMethodBeat.o(167976);
+    return paramf;
   }
   
-  public static void g(MMActivity paramMMActivity)
+  public static String a(f paramf, String paramString)
   {
-    AppMethodBeat.i(199630);
-    k.h(paramMMActivity, "activity");
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.LCX;
-    k.g(com.tencent.mm.ui.component.a.bE(PluginFinder.class).get(FinderGlobalLocationVM.class), "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    k.h(paramMMActivity, "activity");
-    if ((Build.VERSION.SDK_INT > 23) && (!paramMMActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_COARSE_LOCATION")))
-    {
-      h.a((Context)paramMMActivity, paramMMActivity.getString(2131761869), paramMMActivity.getString(2131761885), paramMMActivity.getString(2131760598), paramMMActivity.getString(2131755691), false, (DialogInterface.OnClickListener)new FinderGlobalLocationVM.e(paramMMActivity), (DialogInterface.OnClickListener)new FinderGlobalLocationVM.f(paramMMActivity));
-      AppMethodBeat.o(199630);
-      return;
-    }
-    FinderGlobalLocationVM.r(paramMMActivity);
-    AppMethodBeat.o(199630);
+    AppMethodBeat.i(203673);
+    d.g.b.k.h(paramf, "image");
+    d.g.b.k.h(paramString, "suffix");
+    paramf = cDw() + paramf.abW() + "_" + paramString;
+    AppMethodBeat.o(203673);
+    return paramf;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/utils/FinderLbsLogic$syncWaitLbs$1$listener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FinderLocationRefreshEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class a
-    extends com.tencent.mm.sdk.b.c<ym>
+  public static String a(j paramj)
   {
-    a(Object paramObject) {}
-    
-    private boolean fVT()
+    AppMethodBeat.i(167977);
+    d.g.b.k.h(paramj, "image");
+    paramj = rQq + paramj.abW();
+    AppMethodBeat.o(167977);
+    return paramj;
+  }
+  
+  public static String a(com.tencent.mm.plugin.finder.loader.k paramk)
+  {
+    AppMethodBeat.i(167975);
+    d.g.b.k.h(paramk, "image");
+    paramk = rQm + paramk.abW();
+    AppMethodBeat.o(167975);
+    return paramk;
+  }
+  
+  public static String a(com.tencent.mm.plugin.finder.loader.l paraml)
+  {
+    AppMethodBeat.i(167974);
+    d.g.b.k.h(paraml, "video");
+    paraml = rQp + paraml.abW();
+    AppMethodBeat.o(167974);
+    return paraml;
+  }
+  
+  public static String a(com.tencent.mm.plugin.finder.loader.l paraml, String paramString)
+  {
+    AppMethodBeat.i(167983);
+    d.g.b.k.h(paraml, "video");
+    d.g.b.k.h(paramString, "suffix");
+    paraml = cDw() + paraml.abW() + "_" + paramString;
+    AppMethodBeat.o(167983);
+    return paraml;
+  }
+  
+  public static String a(m paramm)
+  {
+    AppMethodBeat.i(203670);
+    d.g.b.k.h(paramm, "image");
+    paramm = rQm + paramm.abW();
+    AppMethodBeat.o(203670);
+    return paramm;
+  }
+  
+  public static String a(m paramm, String paramString)
+  {
+    AppMethodBeat.i(203674);
+    d.g.b.k.h(paramm, "image");
+    d.g.b.k.h(paramString, "suffix");
+    paramm = cDw() + paramm.abW() + "_" + paramString;
+    AppMethodBeat.o(203674);
+    return paramm;
+  }
+  
+  public static String aeJ(String paramString)
+  {
+    AppMethodBeat.i(167982);
+    d.g.b.k.h(paramString, "origFilePath");
+    paramString = rQq + ah.dg(paramString).toString() + "_" + i.aSq(paramString) + "_rotated";
+    AppMethodBeat.o(167982);
+    return paramString;
+  }
+  
+  public static String aeK(String paramString)
+  {
+    AppMethodBeat.i(203672);
+    d.g.b.k.h(paramString, "fileName");
+    paramString = cDw() + paramString;
+    AppMethodBeat.o(203672);
+    return paramString;
+  }
+  
+  public static String aeL(String paramString)
+  {
+    AppMethodBeat.i(167984);
+    d.g.b.k.h(paramString, "videoPath");
+    paramString = cDw() + "video_" + ah.dg(paramString) + "_" + i.aSq(paramString) + "_thumb";
+    AppMethodBeat.o(167984);
+    return paramString;
+  }
+  
+  public static String cDm()
+  {
+    return rQm;
+  }
+  
+  public static String cDn()
+  {
+    return rQp;
+  }
+  
+  public static String cDo()
+  {
+    return rQq;
+  }
+  
+  public static e[] cDp()
+  {
+    return rQv;
+  }
+  
+  public static void cDq()
+  {
+    int j = 0;
+    AppMethodBeat.i(203669);
+    e[] arrayOfe = rQv;
+    int k = arrayOfe.length;
+    int i = 0;
+    while (i < k)
     {
-      AppMethodBeat.i(199626);
-      dead();
-      synchronized (this.LaI)
-      {
-        Object localObject2 = p.LaH;
-        ad.i(p.fVS(), "notify syncWaitLbs");
-        this.LaI.notifyAll();
-        localObject2 = y.JfV;
-        AppMethodBeat.o(199626);
-        return true;
-      }
+      i.deleteDir(arrayOfe[i].path);
+      i += 1;
     }
+    arrayOfe = rQv;
+    k = arrayOfe.length;
+    i = j;
+    while (i < k)
+    {
+      arrayOfe[i].cCN();
+      i += 1;
+    }
+    ac.i("Finder.Loader", "cleanFile finderAccPath:" + rQk + " finderImgPath:" + rQm + " finderVideoPath:" + rQp + " finderCapturePath:" + rQr);
+    AppMethodBeat.o(203669);
+  }
+  
+  public static String cDr()
+  {
+    AppMethodBeat.i(167978);
+    Object localObject1 = new StringBuilder().append(rQr);
+    Object localObject2 = String.valueOf(System.currentTimeMillis());
+    Charset localCharset = d.n.d.UTF_8;
+    if (localObject2 == null)
+    {
+      localObject1 = new v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(167978);
+      throw ((Throwable)localObject1);
+    }
+    localObject2 = ((String)localObject2).getBytes(localCharset);
+    d.g.b.k.g(localObject2, "(this as java.lang.String).getBytes(charset)");
+    localObject1 = com.tencent.mm.b.g.getMessageDigest((byte[])localObject2);
+    AppMethodBeat.o(167978);
+    return localObject1;
+  }
+  
+  public static String cDs()
+  {
+    AppMethodBeat.i(203671);
+    String str = rQq + System.nanoTime() + ".jpg";
+    AppMethodBeat.o(203671);
+    return str;
+  }
+  
+  public static String cDt()
+  {
+    return rQt;
+  }
+  
+  public static String cDu()
+  {
+    return rQu;
+  }
+  
+  public static String cDv()
+  {
+    AppMethodBeat.i(167985);
+    String str = rQs + "media_tmp/";
+    AppMethodBeat.o(167985);
+    return str;
+  }
+  
+  public static String cDw()
+  {
+    AppMethodBeat.i(167986);
+    String str = rQs + "posting/";
+    AppMethodBeat.o(167986);
+    return str;
+  }
+  
+  public static String cDx()
+  {
+    AppMethodBeat.i(167987);
+    com.tencent.mm.ac.b localb = new com.tencent.mm.ac.b("dumpCacheDir");
+    Object localObject = "";
+    e[] arrayOfe = rQv;
+    int j = arrayOfe.length;
+    int i = 0;
+    while (i < j)
+    {
+      o localo = arrayOfe[i].cCO();
+      localObject = (String)localObject + (String)localo.first + "\n";
+      i += 1;
+    }
+    localObject = new StringBuilder().append(rQk).append(": \n ").append((String)localObject).append("  ");
+    localb.aic();
+    localObject = y.KTp;
+    AppMethodBeat.o(167987);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.p
  * JD-Core Version:    0.7.0.1
  */

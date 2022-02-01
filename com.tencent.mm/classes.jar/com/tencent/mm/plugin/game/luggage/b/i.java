@@ -11,8 +11,8 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.plugin.game.luggage.d.f;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,11 +28,11 @@ public class i
   public final void b(final a<f>.a parama)
   {
     AppMethodBeat.i(180134);
-    ad.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
-    Object localObject = parama.bZV.bZb;
+    ac.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
+    Object localObject = parama.bWS.bVY;
     if (localObject == null)
     {
-      ad.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
+      ac.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
       parama.a("null_data", null);
       AppMethodBeat.o(180134);
       return;
@@ -46,7 +46,7 @@ public class i
     if (i == 10008) {
       try
       {
-        localJSONObject.put("page_start_time", ((f)parama.bZU).rQx.Bnx);
+        localJSONObject.put("page_start_time", ((f)parama.bWR).sYo.CFE);
         parama.a("", localJSONObject);
         AppMethodBeat.o(180134);
         return;
@@ -60,7 +60,7 @@ public class i
     }
     if (i == 10009)
     {
-      ((f)parama.bZU).rQy = bt.getLong(localJSONException, System.currentTimeMillis());
+      ((f)parama.bWR).sYp = bs.getLong(localJSONException, System.currentTimeMillis());
       parama.a("", null);
       AppMethodBeat.o(180134);
       return;
@@ -69,7 +69,7 @@ public class i
     AppMethodBeat.o(180134);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

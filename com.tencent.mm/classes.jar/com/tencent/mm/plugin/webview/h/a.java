@@ -8,14 +8,14 @@ import java.util.Map;
 
 public final class a
 {
-  private static final Map<Integer, Integer> BbP;
-  private static final Map<Integer, Integer> BbQ;
-  private static final Map<Integer, Integer> BbR;
-  private static final Map<String, Integer> BbS;
+  private static final Map<Integer, Integer> Cub;
+  private static final Map<Integer, Integer> Cuc;
+  private static final Map<Integer, Integer> Cud;
+  private static final Map<String, Integer> Cue;
   
   static
   {
-    AppMethodBeat.i(189766);
+    AppMethodBeat.i(205395);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(-1), Integer.valueOf(5));
     localHashMap.put(Integer.valueOf(-2), Integer.valueOf(6));
@@ -32,7 +32,7 @@ public final class a
     localHashMap.put(Integer.valueOf(-13), Integer.valueOf(17));
     localHashMap.put(Integer.valueOf(-14), Integer.valueOf(18));
     localHashMap.put(Integer.valueOf(-15), Integer.valueOf(19));
-    BbP = Collections.unmodifiableMap(localHashMap);
+    Cub = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(-1), Integer.valueOf(4));
     localHashMap.put(Integer.valueOf(-2), Integer.valueOf(5));
@@ -40,12 +40,12 @@ public final class a
     localHashMap.put(Integer.valueOf(-4), Integer.valueOf(7));
     localHashMap.put(Integer.valueOf(-5), Integer.valueOf(8));
     localHashMap.put(Integer.valueOf(-6), Integer.valueOf(9));
-    BbQ = Collections.unmodifiableMap(localHashMap);
+    Cuc = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(0), Integer.valueOf(0));
     localHashMap.put(Integer.valueOf(1), Integer.valueOf(1));
     localHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
-    BbR = Collections.unmodifiableMap(localHashMap);
+    Cud = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put("imagePreview", Integer.valueOf(2));
     localHashMap.put("profile", Integer.valueOf(3));
@@ -67,70 +67,70 @@ public final class a
     localHashMap.put("chooseImage", Integer.valueOf(22));
     localHashMap.put("scanCover", Integer.valueOf(23));
     localHashMap.put("openGameWebView", Integer.valueOf(28));
-    BbS = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(189766);
+    Cue = Collections.unmodifiableMap(localHashMap);
+    AppMethodBeat.o(205395);
   }
   
-  public static int SY(int paramInt)
+  public static int Vg(int paramInt)
   {
-    AppMethodBeat.i(189761);
-    Integer localInteger2 = (Integer)BbP.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(205390);
+    Integer localInteger2 = (Integer)Cub.get(Integer.valueOf(paramInt));
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
-      localInteger1 = (Integer)BbP.get(Integer.valueOf(-1));
+      localInteger1 = (Integer)Cub.get(Integer.valueOf(-1));
     }
     paramInt = localInteger1.intValue();
-    AppMethodBeat.o(189761);
+    AppMethodBeat.o(205390);
     return paramInt;
   }
   
-  public static int SZ(int paramInt)
+  public static int Vh(int paramInt)
   {
-    AppMethodBeat.i(189762);
-    Integer localInteger2 = (Integer)BbQ.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(205391);
+    Integer localInteger2 = (Integer)Cuc.get(Integer.valueOf(paramInt));
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
-      localInteger1 = (Integer)BbQ.get(Integer.valueOf(-1));
+      localInteger1 = (Integer)Cuc.get(Integer.valueOf(-1));
     }
     paramInt = localInteger1.intValue();
-    AppMethodBeat.o(189762);
+    AppMethodBeat.o(205391);
     return paramInt;
   }
   
-  public static int Ta(int paramInt)
+  public static int Vi(int paramInt)
   {
-    AppMethodBeat.i(189763);
-    Integer localInteger2 = (Integer)BbR.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(205392);
+    Integer localInteger2 = (Integer)Cud.get(Integer.valueOf(paramInt));
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(-1);
     }
     paramInt = localInteger1.intValue();
-    AppMethodBeat.o(189763);
+    AppMethodBeat.o(205392);
     return paramInt;
   }
   
-  public static void Tb(int paramInt)
+  public static void Vj(int paramInt)
   {
-    AppMethodBeat.i(189765);
-    h.vKh.idkeyStat(1061L, paramInt, 1L, false);
-    AppMethodBeat.o(189765);
+    AppMethodBeat.i(205394);
+    h.wUl.idkeyStat(1061L, paramInt, 1L, false);
+    AppMethodBeat.o(205394);
   }
   
-  public static int axs(String paramString)
+  public static int aCK(String paramString)
   {
-    AppMethodBeat.i(189764);
-    Integer localInteger = (Integer)BbS.get(paramString);
+    AppMethodBeat.i(205393);
+    Integer localInteger = (Integer)Cue.get(paramString);
     paramString = localInteger;
     if (localInteger == null) {
       paramString = Integer.valueOf(-1);
     }
     int i = paramString.intValue();
-    AppMethodBeat.o(189764);
+    AppMethodBeat.o(205393);
     return i;
   }
   
-  public static int va(long paramLong)
+  public static int zD(long paramLong)
   {
     if (paramLong < 0L) {
       return -1;

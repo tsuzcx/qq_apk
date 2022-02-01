@@ -7,8 +7,8 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.model.u.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class c$1
   extends n.a
@@ -18,10 +18,10 @@ final class c$1
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(114801);
-    if ((g.afw()) && (g.afz().gcn))
+    if ((g.agM()) && (g.agP().ggT))
     {
-      g.afz();
-      a.aeC();
+      g.agP();
+      a.afS();
     }
     AppMethodBeat.o(114801);
   }
@@ -29,28 +29,29 @@ final class c$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(114800);
-    if ((g.afw()) && (g.afz().gcn))
+    if ((g.agM()) && (g.agP().ggT))
     {
-      g.afz();
-      if (!a.aeC()) {
-        b.SX().v(new Runnable()
+      g.agP();
+      if (!a.afS()) {
+        b.TR().w(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(114799);
-            u localu = c.dRQ();
-            if (localu.zmb != null)
+            u localu = c.ehb();
+            u.b localb = localu.AEP;
+            if (localb != null)
             {
-              ad.i("MicroMsg.Voip.VoipService", "on voip resume");
-              String str = localu.zmb.toUser;
-              boolean bool1 = localu.zmb.zmp;
-              boolean bool2 = localu.zmb.zmq;
-              localu.cSm();
-              localu.a(aj.getContext(), str, bool1, bool2, true);
+              ac.i("MicroMsg.Voip.VoipService", "on voip resume");
+              String str = localb.toUser;
+              boolean bool1 = localb.AFd;
+              boolean bool2 = localb.AFe;
+              localu.dfW();
+              localu.a(ai.getContext(), str, bool1, bool2, true);
               AppMethodBeat.o(114799);
               return;
             }
-            ad.i("MicroMsg.Voip.VoipService", "do not need voip resume");
+            ac.i("MicroMsg.Voip.VoipService", "do not need voip resume");
             AppMethodBeat.o(114799);
           }
         });
@@ -61,7 +62,7 @@ final class c$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.c.1
  * JD-Core Version:    0.7.0.1
  */

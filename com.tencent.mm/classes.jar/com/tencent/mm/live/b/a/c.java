@@ -1,19 +1,17 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.live.b.f;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.eas;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.azh;
+import com.tencent.mm.protocal.protobuf.azi;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.l;
 import d.o;
 import d.v;
@@ -23,72 +21,74 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveOnlineByRoom;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "(JLjava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getLiveId", "()J", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineByRoomRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineByRoomResponse;", "getWechatRoomId", "()Ljava/lang/String;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveOnlineByRoom;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "ignoreErr", "", "(JLjava/lang/String;Z)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getIgnoreErr", "()Z", "getLiveId", "()J", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineByRoomRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/GetLiveOnlineByRoomResponse;", "getWechatRoomId", "()Ljava/lang/String;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class c
   extends n
   implements com.tencent.mm.network.k
 {
   private static final String TAG = "MicroMsg.LiveNetScene.NetSceneGetLiveOnlineByRoom";
-  public static final a zbd;
-  private final long DlB;
-  private g callback;
-  private b iaa;
-  private final String qVO;
-  private eae zbb;
-  private eaf zbc;
+  public static final c.a gvP;
+  private com.tencent.mm.ak.g callback;
+  private final long gmP;
+  private final String gsT;
+  private b gvE;
+  private azh gvM;
+  private azi gvN;
+  public final boolean gvO;
   
   static
   {
-    AppMethodBeat.i(202699);
-    zbd = new a((byte)0);
+    AppMethodBeat.i(189890);
+    gvP = new c.a((byte)0);
     TAG = "MicroMsg.LiveNetScene.NetSceneGetLiveOnlineByRoom";
-    AppMethodBeat.o(202699);
+    AppMethodBeat.o(189890);
   }
   
-  public c(long paramLong, String paramString)
+  public c(long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(202698);
-    this.DlB = paramLong;
-    this.qVO = paramString;
+    AppMethodBeat.i(189889);
+    this.gmP = paramLong;
+    this.gsT = paramString;
+    this.gvO = paramBoolean;
     paramString = new b.a();
-    paramString.c((a)new eae());
-    paramString.d((a)new eaf());
-    paramString.nB(3662);
-    paramString.wg("/cgi-bin/micromsg-bin/getliveonlinebyroom");
-    paramString.nD(0);
-    paramString.nE(0);
-    paramString = paramString.atI();
+    paramString.c((a)new azh());
+    paramString.d((a)new azi());
+    paramString.op(3662);
+    paramString.Am("/cgi-bin/micromsg-bin/getliveonlinebyroom");
+    paramString.or(0);
+    paramString.os(0);
+    paramString = paramString.aAz();
     d.g.b.k.g(paramString, "builder.buildInstance()");
-    this.iaa = paramString;
-    paramString = this.iaa.auL();
+    this.gvE = paramString;
+    paramString = this.gvE.aBC();
     if (paramString == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveOnlineByRoomRequest");
-      AppMethodBeat.o(202698);
+      AppMethodBeat.o(189889);
       throw paramString;
     }
-    this.zbb = ((eae)paramString);
-    paramString = this.zbb;
+    this.gvM = ((azh)paramString);
+    paramString = this.gvM;
     if (paramString != null) {
-      paramString.LwA = this.DlB;
+      paramString.DMV = this.gmP;
     }
-    paramString = this.zbb;
+    paramString = this.gvM;
     if (paramString != null)
     {
-      paramString.EEF = this.qVO;
-      AppMethodBeat.o(202698);
+      paramString.DMW = this.gsT;
+      AppMethodBeat.o(189889);
       return;
     }
-    AppMethodBeat.o(202698);
+    AppMethodBeat.o(189889);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
   {
-    AppMethodBeat.i(202697);
-    ad.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "doScene");
+    AppMethodBeat.i(189888);
+    ac.i("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "doScene");
     this.callback = paramg;
-    int i = dispatch(parame, (q)this.iaa, (com.tencent.mm.network.k)this);
-    AppMethodBeat.o(202697);
+    int i = dispatch(parame, (q)this.gvE, (com.tencent.mm.network.k)this);
+    AppMethodBeat.o(189888);
     return i;
   }
   
@@ -99,24 +99,24 @@ public final class c
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(202696);
-    ad.i(TAG, "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(189887);
+    ac.i(TAG, "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(202696);
+      AppMethodBeat.o(189887);
       throw paramString;
     }
-    paramq = ((b)paramq).auM();
+    paramq = ((b)paramq).aBD();
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLiveOnlineByRoomResponse");
-      AppMethodBeat.o(202696);
+      AppMethodBeat.o(189887);
       throw paramString;
     }
-    this.zbc = ((eaf)paramq);
+    this.gvN = ((azi)paramq);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "onGYNetEnd error");
+      ac.e("MicroMsg.LiveNetScene.NetSceneGetLiveInfo", "onGYNetEnd error");
     }
     do
     {
@@ -125,18 +125,18 @@ public final class c
         break;
       }
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(202696);
+      AppMethodBeat.o(189887);
       return;
-      paramArrayOfByte = this.zbc;
+      paramArrayOfByte = this.gvN;
     } while (paramArrayOfByte == null);
-    paramq = f.rGw;
-    if (f.eND().get(this.qVO) == null)
+    paramq = com.tencent.mm.live.b.g.guG;
+    if (com.tencent.mm.live.b.g.akC().get(this.gsT) == null)
     {
-      paramq = f.rGw;
-      ((Map)f.eND()).put(this.qVO, new o(new ArrayList(), Integer.valueOf(0)));
+      paramq = com.tencent.mm.live.b.g.guG;
+      ((Map)com.tencent.mm.live.b.g.akC()).put(this.gsT, new o(new ArrayList(), Integer.valueOf(0)));
     }
-    paramq = f.rGw;
-    paramq = (o)f.eND().get(this.qVO);
+    paramq = com.tencent.mm.live.b.g.guG;
+    paramq = (o)com.tencent.mm.live.b.g.akC().get(this.gsT);
     Object localObject2;
     if (paramq != null)
     {
@@ -146,7 +146,7 @@ public final class c
       }
       if (paramq != null)
       {
-        localObject1 = paramArrayOfByte.LyT;
+        localObject1 = paramArrayOfByte.EQK;
         d.g.b.k.g(localObject1, "it.identity_id_list");
         localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList();
@@ -164,8 +164,8 @@ public final class c
         }
         Object localObject3 = ((Iterator)localObject2).next();
         String str = (String)localObject3;
-        f localf = f.rGw;
-        if (!bt.kU(f.eNI(), str)) {}
+        com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.guG;
+        if (!bs.lr(com.tencent.mm.live.b.g.akH(), str)) {}
         for (paramInt1 = 1;; paramInt1 = 0)
         {
           if (paramInt1 == 0) {
@@ -180,24 +180,21 @@ public final class c
       label378:
       paramq.addAll((Collection)localObject1);
     }
-    Object localObject1 = f.rGw;
-    localObject1 = f.eNG();
+    Object localObject1 = com.tencent.mm.live.b.g.guG;
+    localObject1 = com.tencent.mm.live.b.g.akF();
     if (paramq != null) {}
     for (paramInt1 = paramq.size();; paramInt1 = 0)
     {
-      ((eas)localObject1).LyP = paramInt1;
-      ad.i(TAG, "it.identity_id_list:" + paramArrayOfByte.LyT);
+      ((bqd)localObject1).EQE = paramInt1;
+      ac.i(TAG, "it.identity_id_list:" + paramArrayOfByte.EQK);
       break;
     }
-    AppMethodBeat.o(202696);
+    AppMethodBeat.o(189887);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/cgi/NetSceneGetLiveOnlineByRoom$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-logic_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.a.c
  * JD-Core Version:    0.7.0.1
  */

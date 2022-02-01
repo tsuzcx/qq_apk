@@ -16,41 +16,41 @@ import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.d.q;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.protocal.protobuf.xo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class h
   implements ab
 {
-  protected g nId;
-  protected MMActivity nqt;
+  protected MMActivity nTt;
+  protected g old;
   
   public h(g paramg, MMActivity paramMMActivity)
   {
-    this.nId = paramg;
-    this.nqt = paramMMActivity;
+    this.old = paramg;
+    this.nTt = paramMMActivity;
   }
   
-  public abstract boolean bMC();
+  public abstract boolean bTN();
   
-  public abstract boolean bMD();
+  public abstract boolean bTO();
   
   public void c(ViewGroup paramViewGroup, final com.tencent.mm.plugin.card.base.b paramb)
   {
     Object localObject1;
     Object localObject2;
-    if (bMC())
+    if (bTN())
     {
       localObject1 = (TextView)paramViewGroup.findViewById(2131298408);
-      localObject2 = this.nId.code;
-      if ((!paramb.bHP()) && ((bt.isNullOrNil((String)localObject2)) || (((String)localObject2).length() > 40))) {
+      localObject2 = this.old.code;
+      if ((!paramb.bPc()) && ((bs.isNullOrNil((String)localObject2)) || (((String)localObject2).length() > 40))) {
         break label299;
       }
-      ((TextView)localObject1).setText(n.Rt((String)localObject2));
-      if (paramb.bHK())
+      ((TextView)localObject1).setText(n.VF((String)localObject2));
+      if (paramb.bOX())
       {
         ((TextView)localObject1).setVisibility(0);
         ((TextView)localObject1).setOnLongClickListener(new View.OnLongClickListener()
@@ -60,33 +60,33 @@ public abstract class h
             AppMethodBeat.i(113672);
             if (paramAnonymousView.getId() == 2131298408)
             {
-              q.CP(paramb.bHW().code);
-              com.tencent.mm.ui.base.h.cf(h.this.nqt, p.getString(2131755702));
+              q.GS(paramb.bPj().code);
+              com.tencent.mm.ui.base.h.cg(h.this.nTt, p.getString(2131755702));
             }
             AppMethodBeat.o(113672);
             return false;
           }
         });
-        this.nId.d(c.nJe);
+        this.old.d(c.ome);
       }
     }
-    else if (bMD())
+    else if (bTO())
     {
       localObject1 = (LinearLayout)paramViewGroup.findViewById(2131298395);
-      if ((paramb == null) || (paramb.bHV() == null) || (paramb.bHV().CSi == null) || (bt.isNullOrNil(paramb.bHV().CSi.title))) {
+      if ((paramb == null) || (paramb.bPi() == null) || (paramb.bPi().EkT == null) || (bs.isNullOrNil(paramb.bPi().EkT.title))) {
         break label321;
       }
       paramViewGroup.findViewById(2131298387).setVisibility(8);
       ((LinearLayout)localObject1).setVisibility(0);
-      localObject2 = paramb.bHV().CSi;
+      localObject2 = paramb.bPi().EkT;
       TextView localTextView = (TextView)paramViewGroup.findViewById(2131298397);
-      localTextView.setText(((xo)localObject2).title);
-      String str = paramb.bHV().gHT;
-      if (!bt.isNullOrNil(str)) {
-        localTextView.setTextColor(l.Rm(str));
+      localTextView.setText(((yg)localObject2).title);
+      String str = paramb.bPi().hiu;
+      if (!bs.isNullOrNil(str)) {
+        localTextView.setTextColor(l.Vy(str));
       }
       paramViewGroup = (TextView)paramViewGroup.findViewById(2131298396);
-      localObject2 = ((xo)localObject2).nrt;
+      localObject2 = ((yg)localObject2).nUt;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label308;
       }
@@ -103,33 +103,33 @@ public abstract class h
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(113673);
-          if (paramb.bHO())
+          if (paramb.bPb())
           {
             paramAnonymousView = new j.b();
-            com.tencent.mm.plugin.card.d.b.a(h.this.nId.nqt, paramAnonymousView.nrh, paramAnonymousView.nri, false, paramb);
+            com.tencent.mm.plugin.card.d.b.a(h.this.old.nTt, paramAnonymousView.nUh, paramAnonymousView.nUi, false, paramb);
           }
           for (;;)
           {
             t.finish();
             AppMethodBeat.o(113673);
             return;
-            paramAnonymousView = paramb.bHV().CSi;
-            if ((paramAnonymousView != null) && (!bt.isNullOrNil(paramAnonymousView.CRr)) && (!bt.isNullOrNil(paramAnonymousView.CRq)))
+            paramAnonymousView = paramb.bPi().EkT;
+            if ((paramAnonymousView != null) && (!bs.isNullOrNil(paramAnonymousView.Ekc)) && (!bs.isNullOrNil(paramAnonymousView.Ekb)))
             {
               int i;
-              if (h.this.nqt.getIntent() != null)
+              if (h.this.nTt.getIntent() != null)
               {
-                i = h.this.nqt.getIntent().getIntExtra("key_from_scene", 3);
+                i = h.this.nTt.getIntent().getIntExtra("key_from_scene", 3);
                 label127:
-                if (h.this.nqt.getIntent() == null) {
+                if (h.this.nTt.getIntent() == null) {
                   break label238;
                 }
               }
               label238:
-              for (int j = h.this.nqt.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
+              for (int j = h.this.nTt.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
               {
-                com.tencent.mm.plugin.card.d.b.a(paramb.bHZ(), paramAnonymousView, i, j);
-                com.tencent.mm.plugin.report.service.h.vKh.f(11941, new Object[] { Integer.valueOf(20), paramb.bHZ(), paramb.bIa(), "", paramAnonymousView.title });
+                com.tencent.mm.plugin.card.d.b.a(paramb.bPm(), paramAnonymousView, i, j);
+                com.tencent.mm.plugin.report.service.h.wUl.f(11941, new Object[] { Integer.valueOf(20), paramb.bPm(), paramb.bPn(), "", paramAnonymousView.title });
                 break;
                 i = 3;
                 break label127;
@@ -137,13 +137,13 @@ public abstract class h
             }
             if ((paramAnonymousView != null) && (!TextUtils.isEmpty(paramAnonymousView.url)))
             {
-              String str = l.R(paramAnonymousView.url, paramAnonymousView.CSH);
-              com.tencent.mm.plugin.card.d.b.a(h.this.nId.nqt, str, 1);
-              com.tencent.mm.plugin.report.service.h.vKh.f(11941, new Object[] { Integer.valueOf(9), paramb.bHZ(), paramb.bIa(), "", paramAnonymousView.title });
-              if (l.a(paramAnonymousView, paramb.bHZ()))
+              String str = l.S(paramAnonymousView.url, paramAnonymousView.Els);
+              com.tencent.mm.plugin.card.d.b.a(h.this.old.nTt, str, 1);
+              com.tencent.mm.plugin.report.service.h.wUl.f(11941, new Object[] { Integer.valueOf(9), paramb.bPm(), paramb.bPn(), "", paramAnonymousView.title });
+              if (l.a(paramAnonymousView, paramb.bPm()))
               {
-                l.Rr(paramb.bHZ());
-                com.tencent.mm.plugin.card.d.b.b(h.this.nId.nqt, paramb.bHV().nsK);
+                l.VD(paramb.bPm());
+                com.tencent.mm.plugin.card.d.b.b(h.this.old.nTt, paramb.bPi().nVK);
               }
             }
           }

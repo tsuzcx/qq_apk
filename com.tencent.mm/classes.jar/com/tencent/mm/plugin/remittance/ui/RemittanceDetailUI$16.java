@@ -13,13 +13,13 @@ final class RemittanceDetailUI$16
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(68141);
-    h.cf(this.vHk.getContext(), this.vHk.getString(2131762455));
+    h.cg(this.wRp.getContext(), this.wRp.getString(2131762455));
     AppMethodBeat.o(68141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceDetailUI.16
  * JD-Core Version:    0.7.0.1
  */

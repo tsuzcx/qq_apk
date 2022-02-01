@@ -5,11 +5,11 @@ import android.view.MotionEvent;
 public abstract interface d
   extends c
 {
-  public abstract boolean N(MotionEvent paramMotionEvent);
+  public abstract boolean L(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.base.d
  * JD-Core Version:    0.7.0.1
  */

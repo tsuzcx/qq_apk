@@ -10,22 +10,22 @@ import java.util.Map;
 
 public final class b
 {
-  public static HashMap<Long, Long> nmE;
-  public static HashMap<Long, String> nmF;
-  private static Map<String, List<String>> qSp;
-  private static Map<String, List<String>> qSq;
+  public static HashMap<Long, Long> nPE;
+  public static HashMap<Long, String> nPF;
+  private static Map<String, List<String>> rOO;
+  private static Map<String, List<String>> rOP;
   
   static
   {
     AppMethodBeat.i(42491);
-    qSp = new HashMap();
-    qSq = new HashMap();
-    nmE = new HashMap();
-    nmF = new HashMap();
+    rOO = new HashMap();
+    rOP = new HashMap();
+    nPE = new HashMap();
+    nPF = new HashMap();
     AppMethodBeat.o(42491);
   }
   
-  public static String k(Context paramContext, long paramLong)
+  public static String l(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(42490);
     GregorianCalendar localGregorianCalendar = new GregorianCalendar();
@@ -35,18 +35,18 @@ public final class b
       return "";
     }
     long l1 = localGregorianCalendar.getTimeInMillis();
-    if (nmE.containsKey(Long.valueOf(paramLong))) {
-      if (l1 - ((Long)nmE.get(Long.valueOf(paramLong))).longValue() < 60000L)
+    if (nPE.containsKey(Long.valueOf(paramLong))) {
+      if (l1 - ((Long)nPE.get(Long.valueOf(paramLong))).longValue() < 60000L)
       {
-        if (nmF.containsKey(Long.valueOf(paramLong)))
+        if (nPF.containsKey(Long.valueOf(paramLong)))
         {
-          paramContext = (String)nmF.get(Long.valueOf(paramLong));
+          paramContext = (String)nPF.get(Long.valueOf(paramLong));
           AppMethodBeat.o(42490);
           return paramContext;
         }
       }
       else {
-        nmE.remove(Long.valueOf(paramLong));
+        nPE.remove(Long.valueOf(paramLong));
       }
     }
     if (l1 - paramLong < 60000L)
@@ -63,8 +63,8 @@ public final class b
         i = 1;
       }
       paramContext = paramContext.getResources().getQuantityString(2131623946, i, new Object[] { Integer.valueOf(i) });
-      nmF.put(Long.valueOf(paramLong), paramContext);
-      nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      nPF.put(Long.valueOf(paramLong), paramContext);
+      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
       AppMethodBeat.o(42490);
       return paramContext;
     }
@@ -78,8 +78,8 @@ public final class b
         i = 1;
       }
       paramContext = paramContext.getResources().getQuantityString(2131623945, i, new Object[] { Integer.valueOf(i) });
-      nmF.put(Long.valueOf(paramLong), paramContext);
-      nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      nPF.put(Long.valueOf(paramLong), paramContext);
+      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
       AppMethodBeat.o(42490);
       return paramContext;
     }
@@ -87,8 +87,8 @@ public final class b
     if ((l2 > 0L) && (l2 <= 86400000L))
     {
       paramContext = paramContext.getString(2131759551);
-      nmF.put(Long.valueOf(paramLong), paramContext);
-      nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      nPF.put(Long.valueOf(paramLong), paramContext);
+      nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
       AppMethodBeat.o(42490);
       return paramContext;
     }
@@ -98,15 +98,15 @@ public final class b
       i = 1;
     }
     paramContext = paramContext.getResources().getQuantityString(2131623947, i, new Object[] { Integer.valueOf(i) });
-    nmF.put(Long.valueOf(paramLong), paramContext);
-    nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+    nPF.put(Long.valueOf(paramLong), paramContext);
+    nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
     AppMethodBeat.o(42490);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -3,41 +3,34 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class nx
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int CLx;
-  public int CLy;
-  public int CLz;
+  public int EdQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103204);
+    AppMethodBeat.i(124459);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.CLx);
-      paramVarArgs.aR(2, this.CLy);
-      paramVarArgs.aR(3, this.CLz);
-      AppMethodBeat.o(103204);
+      ((f.a.a.c.a)paramVarArgs[0]).aR(1, this.EdQ);
+      AppMethodBeat.o(124459);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bA(1, this.CLx);
-      int i = f.a.a.b.b.a.bA(2, this.CLy);
-      int j = f.a.a.b.b.a.bA(3, this.CLz);
-      AppMethodBeat.o(103204);
-      return paramInt + 0 + i + j;
+      paramInt = f.a.a.b.b.a.bx(1, this.EdQ);
+      AppMethodBeat.o(124459);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(103204);
+      AppMethodBeat.o(124459);
       return 0;
     }
     if (paramInt == 3)
@@ -47,28 +40,20 @@ public final class nx
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(103204);
+        AppMethodBeat.o(124459);
         return -1;
-      case 1: 
-        localnx.CLx = locala.KhF.xS();
-        AppMethodBeat.o(103204);
-        return 0;
-      case 2: 
-        localnx.CLy = locala.KhF.xS();
-        AppMethodBeat.o(103204);
-        return 0;
       }
-      localnx.CLz = locala.KhF.xS();
-      AppMethodBeat.o(103204);
+      localnx.EdQ = locala.LVo.xF();
+      AppMethodBeat.o(124459);
       return 0;
     }
-    AppMethodBeat.o(103204);
+    AppMethodBeat.o(124459);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.nx
  * JD-Core Version:    0.7.0.1
  */

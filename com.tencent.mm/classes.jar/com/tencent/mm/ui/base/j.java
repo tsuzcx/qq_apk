@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract class j
 {
-  protected a FXC;
+  protected a Hxr;
   
   public abstract View e(int paramInt, View paramView);
   
@@ -16,12 +16,12 @@ public abstract class j
   
   public static abstract interface a
   {
-    public abstract void bCM();
+    public abstract void bJU();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.j
  * JD-Core Version:    0.7.0.1
  */

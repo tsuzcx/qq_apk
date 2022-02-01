@@ -7,45 +7,45 @@ public class d
   extends a
 {
   static final String TAG;
-  public static String mOU;
-  public static String mOV;
-  public static String mOv;
-  private final int mOW = 1;
-  private final int mOX = 4;
-  private final int mOY = 6;
-  private final int mOZ = 8;
-  private final int mPa = 16;
-  String mPb = "";
-  a mPc = null;
+  public static String nqH;
+  public static String nrg;
+  public static String nrh;
+  private final int nri = 1;
+  private final int nrj = 4;
+  private final int nrk = 6;
+  private final int nrl = 8;
+  private final int nrm = 16;
+  String nrn = "";
+  a nro = null;
   
   static
   {
     AppMethodBeat.i(22579);
     TAG = d.class.getName();
-    mOv = h.mOl;
-    mOU = h.mOm;
-    mOV = h.mOn;
+    nqH = h.nqx;
+    nrg = h.nqy;
+    nrh = h.nqz;
     AppMethodBeat.o(22579);
   }
   
   public d()
   {
-    this.mOt = null;
-    this.mOu = 2;
-    this.mNN = 4L;
+    this.nqF = null;
+    this.nqG = 2;
+    this.npZ = 4L;
   }
   
-  public final byte[] bBD()
+  public final byte[] bIB()
   {
     return null;
   }
   
   final class a
   {
-    public int mPd = 0;
-    public int mPe = 0;
-    public int mPf = 0;
-    public int mPg = 0;
+    public int nrp = 0;
+    public int nrq = 0;
+    public int nrr = 0;
+    public int nrs = 0;
     
     public a() {}
   }

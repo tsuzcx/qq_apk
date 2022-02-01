@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public d tsi;
+  public d uAB;
   
   public e()
   {
@@ -34,7 +34,7 @@ public final class e
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65992);
-    ad.d("MicroMsg.NetSceneGetEUInfo", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("MicroMsg.NetSceneGetEUInfo", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(65992);
@@ -42,15 +42,15 @@ public final class e
     }
     try
     {
-      this.tsi = new d(paramJSONObject.toString());
-      g.afC();
-      g.afB().afk().set(ae.a.FtG, paramJSONObject.toString());
+      this.uAB = new d(paramJSONObject.toString());
+      g.agS();
+      g.agR().agA().set(ah.a.GRA, paramJSONObject.toString());
       AppMethodBeat.o(65992);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.NetSceneGetEUInfo", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.NetSceneGetEUInfo", paramString, "", new Object[0]);
       AppMethodBeat.o(65992);
     }
   }

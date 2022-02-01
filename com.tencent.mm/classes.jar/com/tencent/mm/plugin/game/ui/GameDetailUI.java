@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.a.a;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMBaseActivity;
 
 @com.tencent.mm.ui.base.a(19)
@@ -19,16 +19,16 @@ public class GameDetailUI
     AppMethodBeat.i(42009);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("game_app_id");
-    Object localObject = com.tencent.mm.plugin.game.model.a.ds(paramBundle, getIntent().getIntExtra("game_report_from_scene", 0));
-    if ((((a.a)localObject).dtM == 2) && (!bt.isNullOrNil(((a.a)localObject).url))) {
-      c.A(getBaseContext(), ((a.a)localObject).url, "game_center_detail");
+    Object localObject = com.tencent.mm.plugin.game.model.a.dy(paramBundle, getIntent().getIntExtra("game_report_from_scene", 0));
+    if ((((a.a)localObject).drx == 2) && (!bs.isNullOrNil(((a.a)localObject).url))) {
+      c.z(getBaseContext(), ((a.a)localObject).url, "game_center_detail");
     }
     for (;;)
     {
       finish();
       AppMethodBeat.o(42009);
       return;
-      int i = e.cCV();
+      int i = e.cQf();
       if (i == 2)
       {
         c.m(this, paramBundle, 0);
@@ -39,8 +39,8 @@ public class GameDetailUI
       }
       else
       {
-        localObject = bt.iL(this);
-        if ((bt.isNullOrNil((String)localObject)) || (((String)localObject).toLowerCase().equals("cn"))) {
+        localObject = bs.iW(this);
+        if ((bs.isNullOrNil((String)localObject)) || (((String)localObject).toLowerCase().equals("cn"))) {
           c.m(this, paramBundle, 0);
         } else {
           c.f(this, getIntent().getExtras());

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.finder.loader;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.finder.storage.m;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-finder_release"})
 public final class e
   extends com.tencent.mm.loader.b.a.a<j>
 {
@@ -40,25 +40,25 @@ public final class e
     k.h(parame, "opts");
     k.h(paramf, "reaper");
     parame = c(parama, parame, paramf);
-    ad.v("Finder.Loader", "url " + parama + " and path " + parame + " fileret " + i.eK(parame) + " type " + ((j)parama.value()).cmR());
-    if (i.eK(parame))
+    ac.v("Finder.Loader", "url " + parama + " and path " + parame + " fileret " + i.eA(parame) + " type " + ((j)parama.value()).cwj());
+    if (i.eA(parame))
     {
-      parama = com.tencent.mm.loader.h.b.a.ri(parame);
+      parama = com.tencent.mm.loader.h.b.a.vk(parame);
       AppMethodBeat.o(166314);
       return parama;
     }
-    if (((j)parama.value()).cmR() == h.qJZ)
+    if (((j)parama.value()).cwj() == m.rDR)
     {
-      if (i.eK(((j)parama.value()).cmT()))
+      if (i.eA(((j)parama.value()).aik()))
       {
-        parama = com.tencent.mm.loader.h.b.a.ri(((j)parama.value()).cmT());
+        parama = com.tencent.mm.loader.h.b.a.vk(((j)parama.value()).aik());
         AppMethodBeat.o(166314);
         return parama;
       }
     }
-    else if (i.eK(((j)parama.value()).getUrl()))
+    else if (i.eA(((j)parama.value()).getUrl()))
     {
-      parama = com.tencent.mm.loader.h.b.a.ri(((j)parama.value()).getUrl());
+      parama = com.tencent.mm.loader.h.b.a.vk(((j)parama.value()).getUrl());
       AppMethodBeat.o(166314);
       return parama;
     }
@@ -79,7 +79,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.e
  * JD-Core Version:    0.7.0.1
  */

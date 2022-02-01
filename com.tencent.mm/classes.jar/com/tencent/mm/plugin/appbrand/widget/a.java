@@ -394,7 +394,7 @@ public class a
     AppMethodBeat.o(131444);
   }
   
-  public final int uq(int paramInt)
+  public final int vi(int paramInt)
   {
     AppMethodBeat.i(131420);
     paramInt = super.getDimensionPixelOffset(paramInt);
@@ -402,7 +402,7 @@ public class a
     return paramInt;
   }
   
-  public final int ur(int paramInt)
+  public final int vj(int paramInt)
   {
     AppMethodBeat.i(131422);
     paramInt = super.getDimensionPixelSize(paramInt);

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
 import com.tencent.mm.model.cc.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
   implements cc.a
@@ -12,8 +12,8 @@ public final class f
   public final void a(f.a parama)
   {
     AppMethodBeat.i(95179);
-    ad.i("MicroMsg.NewYearSnsCtrl2016NotifyLsn", "receivemsg NewYearSnsCtrl2016NotifyLsn");
-    b.lI(59);
+    ac.i("MicroMsg.NewYearSnsCtrl2016NotifyLsn", "receivemsg NewYearSnsCtrl2016NotifyLsn");
+    b.lA(59);
     AppMethodBeat.o(95179);
   }
   

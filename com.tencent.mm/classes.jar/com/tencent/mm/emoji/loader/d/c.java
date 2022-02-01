@@ -7,13 +7,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.a.b;
 import com.tencent.mm.emoji.loader.e;
 import com.tencent.mm.emoji.view.CoverEmojiStatusView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.a.a;
-import d.y;
+import d.l;
 import java.lang.ref.WeakReference;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Landroid/widget/ImageView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/widget/ImageView;)V", "createTask", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoad", "", "success", "", "start", "async", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Landroid/widget/ImageView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/widget/ImageView;)V", "createTask", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoad", "", "success", "", "start", "async", "plugin-emojisdk_release"})
 public final class c
   extends j<ImageView>
 {
@@ -24,27 +24,27 @@ public final class c
     AppMethodBeat.o(105462);
   }
   
-  protected final com.tencent.mm.emoji.loader.e.c abd()
+  protected final com.tencent.mm.emoji.loader.e.c acb()
   {
     AppMethodBeat.i(105460);
-    Object localObject = e.fLn;
-    localObject = e.d(this.fLP);
+    Object localObject = e.fOZ;
+    localObject = e.d(this.fPB);
     AppMethodBeat.o(105460);
     return localObject;
   }
   
-  public final void dg(boolean paramBoolean)
+  public final void df(boolean paramBoolean)
   {
     AppMethodBeat.i(105461);
-    super.dg(paramBoolean);
-    Object localObject1 = this.fMm;
+    super.df(paramBoolean);
+    Object localObject1 = this.fPY;
     if (localObject1 != null) {}
     for (localObject1 = (ImageView)((WeakReference)localObject1).get();; localObject1 = null)
     {
-      Object localObject2 = b.fLw;
-      localObject2 = b.pT(this.fLP.JS());
-      ad.d(d.abb(), "onLoad: " + this.fLP.JS() + ", " + localObject2);
-      com.tencent.mm.ad.c.g((a)new a(paramBoolean, (Bitmap)localObject2, (ImageView)localObject1));
+      Object localObject2 = b.fPi;
+      localObject2 = b.te(this.fPB.JC());
+      ac.d(d.abZ(), "onLoad: " + this.fPB.JC() + ", " + localObject2);
+      com.tencent.mm.ac.c.g((a)new c.a(paramBoolean, (Bitmap)localObject2, (ImageView)localObject1));
       AppMethodBeat.o(105461);
       return;
     }
@@ -53,22 +53,22 @@ public final class c
   public final void start(boolean paramBoolean)
   {
     AppMethodBeat.i(105459);
-    Object localObject = b.fLw;
-    localObject = b.pT(this.fLP.JS());
-    ad.d(d.abb(), "start: " + this.fLP.JS() + ", " + localObject);
+    Object localObject = b.fPi;
+    localObject = b.te(this.fPB.JC());
+    ac.d(d.abZ(), "start: " + this.fPB.JC() + ", " + localObject);
     if (localObject != null)
     {
-      dg(true);
+      df(true);
       AppMethodBeat.o(105459);
       return;
     }
-    localObject = this.fMm;
+    localObject = this.fPY;
     if (localObject != null) {}
     for (localObject = (ImageView)((WeakReference)localObject).get();; localObject = null)
     {
       if (!(localObject instanceof CoverEmojiStatusView))
       {
-        localObject = this.fMm;
+        localObject = this.fPY;
         if (localObject != null)
         {
           localObject = (ImageView)((WeakReference)localObject).get();
@@ -82,21 +82,10 @@ public final class c
       return;
     }
   }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class a
-    extends d.g.b.l
-    implements a<y>
-  {
-    a(boolean paramBoolean, Bitmap paramBitmap, ImageView paramImageView)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ch
 {
-  public static boolean bW(Object paramObject)
+  public static boolean bU(Object paramObject)
   {
     AppMethodBeat.i(150192);
     if ((paramObject instanceof Boolean)) {
@@ -51,7 +51,7 @@ public final class ch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ch
  * JD-Core Version:    0.7.0.1
  */

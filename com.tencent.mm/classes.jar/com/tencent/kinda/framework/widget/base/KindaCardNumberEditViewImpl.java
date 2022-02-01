@@ -50,7 +50,7 @@ public class KindaCardNumberEditViewImpl
     }
     for (;;)
     {
-      TenpaySecureEditText.setSalt(e.fkB());
+      TenpaySecureEditText.setSalt(e.fAR());
       this.cardNumberView.setFilters(new InputFilter[] { new InputFilter.LengthFilter(24) });
       this.cardNumberView.addTextChangedListener(new TextWatcher()
       {
@@ -65,8 +65,8 @@ public class KindaCardNumberEditViewImpl
           {
             paramAnonymousCharSequence = KindaCardNumberEditViewImpl.this.m_callback;
             TenpaySecureEditText localTenpaySecureEditText = KindaCardNumberEditViewImpl.this.cardNumberView;
-            b.fjk();
-            paramAnonymousCharSequence.onTextChanged(localTenpaySecureEditText.getEncryptDataWithHash(false, b.fjl()));
+            b.fzz();
+            paramAnonymousCharSequence.onTextChanged(localTenpaySecureEditText.getEncryptDataWithHash(false, b.fzA()));
           }
           AppMethodBeat.o(18873);
         }
@@ -79,12 +79,12 @@ public class KindaCardNumberEditViewImpl
       {
         public void onCallBackKinda()
         {
-          AppMethodBeat.i(186433);
+          AppMethodBeat.i(207395);
           KViewOnClickCallback localKViewOnClickCallback = KindaCardNumberEditViewImpl.this.getOnClickCallback();
           if (localKViewOnClickCallback != null) {
             localKViewOnClickCallback.onClick(KindaCardNumberEditViewImpl.this);
           }
-          AppMethodBeat.o(186433);
+          AppMethodBeat.o(207395);
         }
       });
       paramContext = this.cardNumberView;
@@ -132,8 +132,8 @@ public class KindaCardNumberEditViewImpl
   {
     AppMethodBeat.i(18876);
     Object localObject = this.cardNumberView;
-    b.fjk();
-    localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(false, b.fjl());
+    b.fzz();
+    localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(false, b.fzA());
     AppMethodBeat.o(18876);
     return localObject;
   }

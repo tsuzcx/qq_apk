@@ -15,13 +15,13 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 
 public class RoundedCornerFrameLayout
   extends FrameLayout
 {
-  private a HBG;
-  private Bitmap HBH;
+  private a Jcc;
+  private Bitmap Jcd;
   private Paint paint;
   
   public RoundedCornerFrameLayout(Context paramContext)
@@ -52,7 +52,7 @@ public class RoundedCornerFrameLayout
   {
     AppMethodBeat.i(143453);
     float f = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundedCornerFrameLayout, paramInt, 0).getDimension(0, 0.0F);
-    this.HBG = new a(f, f, f, f);
+    this.Jcc = new a(f, f, f, f);
     this.paint = new Paint(1);
     this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     setWillNotDraw(false);
@@ -69,9 +69,9 @@ public class RoundedCornerFrameLayout
     }
     int i = paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), null, 31);
     super.draw(paramCanvas);
-    if ((this.HBG.HBI > 0.0F) || (this.HBG.HBJ > 0.0F) || (this.HBG.HBK > 0.0F) || (this.HBG.HBL > 0.0F))
+    if ((this.Jcc.Jce > 0.0F) || (this.Jcc.Jcf > 0.0F) || (this.Jcc.Jcg > 0.0F) || (this.Jcc.Jch > 0.0F))
     {
-      if (this.HBH == null)
+      if (this.Jcd == null)
       {
         int j = paramCanvas.getWidth();
         int k = paramCanvas.getHeight();
@@ -79,21 +79,21 @@ public class RoundedCornerFrameLayout
         Canvas localCanvas = new Canvas(localBitmap);
         Path localPath = new Path();
         RectF localRectF = new RectF(0.0F, 0.0F, j, k);
-        float f1 = this.HBG.HBI;
-        float f2 = this.HBG.HBI;
-        float f3 = this.HBG.HBJ;
-        float f4 = this.HBG.HBJ;
-        float f5 = this.HBG.HBL;
-        float f6 = this.HBG.HBL;
-        float f7 = this.HBG.HBK;
-        float f8 = this.HBG.HBK;
+        float f1 = this.Jcc.Jce;
+        float f2 = this.Jcc.Jce;
+        float f3 = this.Jcc.Jcf;
+        float f4 = this.Jcc.Jcf;
+        float f5 = this.Jcc.Jch;
+        float f6 = this.Jcc.Jch;
+        float f7 = this.Jcc.Jcg;
+        float f8 = this.Jcc.Jcg;
         Path.Direction localDirection = Path.Direction.CCW;
         localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, f5, f6, f7, f8 }, localDirection);
         localPath.setFillType(Path.FillType.WINDING);
         localCanvas.drawPath(localPath, new Paint(1));
-        this.HBH = localBitmap;
+        this.Jcd = localBitmap;
       }
-      paramCanvas.drawBitmap(this.HBH, 0.0F, 0.0F, this.paint);
+      paramCanvas.drawBitmap(this.Jcd, 0.0F, 0.0F, this.paint);
     }
     paramCanvas.restoreToCount(i);
     AppMethodBeat.o(143457);
@@ -102,13 +102,13 @@ public class RoundedCornerFrameLayout
   public final void l(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     AppMethodBeat.i(143455);
-    this.HBG.HBI = paramFloat1;
-    this.HBG.HBJ = paramFloat2;
-    this.HBG.HBK = paramFloat3;
-    this.HBG.HBL = paramFloat4;
-    if (this.HBH != null)
+    this.Jcc.Jce = paramFloat1;
+    this.Jcc.Jcf = paramFloat2;
+    this.Jcc.Jcg = paramFloat3;
+    this.Jcc.Jch = paramFloat4;
+    if (this.Jcd != null)
     {
-      this.HBH = null;
+      this.Jcd = null;
       postInvalidate();
     }
     AppMethodBeat.o(143455);
@@ -118,7 +118,7 @@ public class RoundedCornerFrameLayout
   {
     AppMethodBeat.i(143456);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.HBH = null;
+    this.Jcd = null;
     AppMethodBeat.o(143456);
   }
   
@@ -131,23 +131,23 @@ public class RoundedCornerFrameLayout
   
   final class a
   {
-    float HBI;
-    float HBJ;
-    float HBK;
-    float HBL;
+    float Jce;
+    float Jcf;
+    float Jcg;
+    float Jch;
     
     a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      this.HBI = paramFloat1;
-      this.HBJ = paramFloat2;
-      this.HBK = paramFloat3;
-      this.HBL = paramFloat4;
+      this.Jce = paramFloat1;
+      this.Jcf = paramFloat2;
+      this.Jcg = paramFloat3;
+      this.Jch = paramFloat4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.RoundedCornerFrameLayout
  * JD-Core Version:    0.7.0.1
  */

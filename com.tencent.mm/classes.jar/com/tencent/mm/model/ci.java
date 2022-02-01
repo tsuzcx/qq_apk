@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public final class ci
 {
-  public static boolean gPE = false;
-  private static ci gPH = null;
-  private ArrayList<String> gPF;
-  private String gPG;
+  public static boolean hqe = false;
+  private static ci hqh = null;
+  private ArrayList<String> hqf;
+  private String hqg;
   
   /* Error */
   public ci(String paramString, boolean paramBoolean)
@@ -22,10 +22,10 @@ public final class ci
     //   10: new 35	java/util/ArrayList
     //   13: dup
     //   14: invokespecial 36	java/util/ArrayList:<init>	()V
-    //   17: putfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   17: putfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   20: aload_0
     //   21: ldc 40
-    //   23: putfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   23: putfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   26: aload_0
     //   27: new 44	java/lang/StringBuilder
     //   30: dup
@@ -35,11 +35,11 @@ public final class ci
     //   38: ldc 51
     //   40: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: putfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   46: putfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   49: new 57	java/io/RandomAccessFile
     //   52: dup
     //   53: aload_0
-    //   54: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   54: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   57: ldc 59
     //   59: invokespecial 62	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: astore 6
@@ -66,15 +66,15 @@ public final class ci
     //   99: aastore
     //   100: dup
     //   101: iconst_2
-    //   102: getstatic 87	com/tencent/mm/protocal/d:CpK	I
+    //   102: getstatic 87	com/tencent/mm/protocal/d:DIc	I
     //   105: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   108: aastore
     //   109: dup
     //   110: iconst_3
     //   111: aload_0
-    //   112: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   112: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   115: aastore
-    //   116: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   116: invokestatic 97	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   119: lload 4
     //   121: lconst_0
     //   122: lcmp
@@ -118,7 +118,7 @@ public final class ci
     //   201: aload 6
     //   203: astore_1
     //   204: aload_0
-    //   205: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   205: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   208: aload 7
     //   210: invokevirtual 126	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   213: pop
@@ -129,7 +129,7 @@ public final class ci
     //   220: anewarray 4	java/lang/Object
     //   223: dup
     //   224: iconst_0
-    //   225: getstatic 87	com/tencent/mm/protocal/d:CpK	I
+    //   225: getstatic 87	com/tencent/mm/protocal/d:DIc	I
     //   228: invokestatic 92	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   231: aastore
     //   232: invokestatic 112	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -137,16 +137,16 @@ public final class ci
     //   237: aload 6
     //   239: astore_1
     //   240: aload_0
-    //   241: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   241: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   244: invokevirtual 130	java/util/ArrayList:size	()I
     //   247: ifeq +30 -> 277
     //   250: aload 6
     //   252: astore_1
     //   253: aload 7
     //   255: aload_0
-    //   256: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   256: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   259: aload_0
-    //   260: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   260: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   263: invokevirtual 130	java/util/ArrayList:size	()I
     //   266: iconst_1
     //   267: isub
@@ -156,11 +156,11 @@ public final class ci
     //   277: aload 6
     //   279: astore_1
     //   280: iconst_1
-    //   281: putstatic 17	com/tencent/mm/model/ci:gPE	Z
+    //   281: putstatic 17	com/tencent/mm/model/ci:hqe	Z
     //   284: aload 6
     //   286: astore_1
     //   287: aload_0
-    //   288: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   288: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   291: aload 7
     //   293: invokevirtual 126	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   296: pop
@@ -187,7 +187,7 @@ public final class ci
     //   343: astore_1
     //   344: iload_3
     //   345: aload_0
-    //   346: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   346: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   349: invokevirtual 130	java/util/ArrayList:size	()I
     //   352: if_icmpge +270 -> 622
     //   355: aload 6
@@ -198,7 +198,7 @@ public final class ci
     //   365: aload 7
     //   367: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   370: aload_0
-    //   371: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   371: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   374: iload_3
     //   375: invokevirtual 134	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   378: checkcast 108	java/lang/String
@@ -224,7 +224,7 @@ public final class ci
     //   418: aload 6
     //   420: invokevirtual 145	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   423: ldc 40
-    //   425: invokestatic 151	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   425: invokestatic 151	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   428: astore 7
     //   430: aload 6
     //   432: astore_1
@@ -247,9 +247,9 @@ public final class ci
     //   465: dup
     //   466: iconst_1
     //   467: aload_0
-    //   468: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   468: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   471: aastore
-    //   472: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   472: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   475: goto -74 -> 401
     //   478: astore 7
     //   480: aload 6
@@ -263,19 +263,19 @@ public final class ci
     //   494: iconst_0
     //   495: ldc 40
     //   497: aastore
-    //   498: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   498: invokestatic 164	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   501: aload 6
     //   503: invokevirtual 167	java/io/RandomAccessFile:close	()V
-    //   506: getstatic 19	com/tencent/mm/model/ci:gPH	Lcom/tencent/mm/model/ci;
+    //   506: getstatic 19	com/tencent/mm/model/ci:hqh	Lcom/tencent/mm/model/ci;
     //   509: ifnull +29 -> 538
-    //   512: getstatic 19	com/tencent/mm/model/ci:gPH	Lcom/tencent/mm/model/ci;
+    //   512: getstatic 19	com/tencent/mm/model/ci:hqh	Lcom/tencent/mm/model/ci;
     //   515: aload_0
     //   516: if_acmpeq +22 -> 538
-    //   519: getstatic 19	com/tencent/mm/model/ci:gPH	Lcom/tencent/mm/model/ci;
-    //   522: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   519: getstatic 19	com/tencent/mm/model/ci:hqh	Lcom/tencent/mm/model/ci;
+    //   522: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   525: invokevirtual 130	java/util/ArrayList:size	()I
     //   528: aload_0
-    //   529: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   529: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   532: invokevirtual 130	java/util/ArrayList:size	()I
     //   535: if_icmplt +195 -> 730
     //   538: ldc 27
@@ -300,9 +300,9 @@ public final class ci
     //   573: dup
     //   574: iconst_1
     //   575: aload_0
-    //   576: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   576: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   579: aastore
-    //   580: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   580: invokestatic 158	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   583: goto -182 -> 401
     //   586: astore 7
     //   588: aload_1
@@ -318,7 +318,7 @@ public final class ci
     //   606: aload 6
     //   608: astore_1
     //   609: aload_0
-    //   610: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   610: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   613: aload 7
     //   615: invokevirtual 126	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   618: pop
@@ -331,7 +331,7 @@ public final class ci
     //   630: anewarray 4	java/lang/Object
     //   633: dup
     //   634: iconst_0
-    //   635: getstatic 17	com/tencent/mm/model/ci:gPE	Z
+    //   635: getstatic 17	com/tencent/mm/model/ci:hqe	Z
     //   638: invokestatic 81	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   641: aastore
     //   642: dup
@@ -341,9 +341,9 @@ public final class ci
     //   647: dup
     //   648: iconst_2
     //   649: aload_0
-    //   650: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
+    //   650: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
     //   653: aastore
-    //   654: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   654: invokestatic 97	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   657: aload 6
     //   659: invokevirtual 167	java/io/RandomAccessFile:close	()V
     //   662: goto -156 -> 506
@@ -357,7 +357,7 @@ public final class ci
     //   676: iconst_0
     //   677: ldc 40
     //   679: aastore
-    //   680: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   680: invokestatic 164	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   683: goto -177 -> 506
     //   686: astore_1
     //   687: ldc 68
@@ -369,7 +369,7 @@ public final class ci
     //   697: iconst_0
     //   698: ldc 40
     //   700: aastore
-    //   701: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   701: invokestatic 164	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   704: goto -198 -> 506
     //   707: astore 6
     //   709: ldc 68
@@ -381,17 +381,17 @@ public final class ci
     //   720: iconst_0
     //   721: ldc 40
     //   723: aastore
-    //   724: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   724: invokestatic 164	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   727: goto -128 -> 599
-    //   730: getstatic 19	com/tencent/mm/model/ci:gPH	Lcom/tencent/mm/model/ci;
+    //   730: getstatic 19	com/tencent/mm/model/ci:hqh	Lcom/tencent/mm/model/ci;
     //   733: aload_0
-    //   734: getfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
-    //   737: putfield 38	com/tencent/mm/model/ci:gPF	Ljava/util/ArrayList;
+    //   734: getfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
+    //   737: putfield 38	com/tencent/mm/model/ci:hqf	Ljava/util/ArrayList;
     //   740: aload_0
-    //   741: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
-    //   744: getstatic 19	com/tencent/mm/model/ci:gPH	Lcom/tencent/mm/model/ci;
-    //   747: getfield 42	com/tencent/mm/model/ci:gPG	Ljava/lang/String;
-    //   750: invokestatic 188	com/tencent/mm/vfs/i:lC	(Ljava/lang/String;Ljava/lang/String;)J
+    //   741: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
+    //   744: getstatic 19	com/tencent/mm/model/ci:hqh	Lcom/tencent/mm/model/ci;
+    //   747: getfield 42	com/tencent/mm/model/ci:hqg	Ljava/lang/String;
+    //   750: invokestatic 188	com/tencent/mm/vfs/i:lZ	(Ljava/lang/String;Ljava/lang/String;)J
     //   753: pop2
     //   754: ldc 27
     //   756: invokestatic 170	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -480,22 +480,22 @@ public final class ci
     //   26	64	767	java/lang/Exception
   }
   
-  public static String nr(int paramInt)
+  public static String of(int paramInt)
   {
     AppMethodBeat.i(132291);
-    if (gPH != null)
+    if (hqh != null)
     {
-      ci localci = gPH;
+      ci localci = hqh;
       String str = "";
-      if (paramInt >= localci.gPF.size()) {
+      if (paramInt >= localci.hqf.size()) {
         paramInt = 0;
       }
-      while (paramInt < localci.gPF.size())
+      while (paramInt < localci.hqf.size())
       {
-        str = str + (String)localci.gPF.get(paramInt) + ";";
+        str = str + (String)localci.hqf.get(paramInt) + ";";
         paramInt += 1;
         continue;
-        paramInt = localci.gPF.size() - paramInt;
+        paramInt = localci.hqf.size() - paramInt;
       }
       AppMethodBeat.o(132291);
       return str;
@@ -504,10 +504,10 @@ public final class ci
     return "";
   }
   
-  public static void uy(String paramString)
+  public static void yE(String paramString)
   {
     AppMethodBeat.i(132290);
-    gPH = new ci(paramString, true);
+    hqh = new ci(paramString, true);
     AppMethodBeat.o(132290);
   }
 }

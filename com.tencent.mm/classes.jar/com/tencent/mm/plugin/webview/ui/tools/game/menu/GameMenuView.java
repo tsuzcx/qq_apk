@@ -15,13 +15,13 @@ import com.tencent.mm.ui.base.m;
 public class GameMenuView
   extends LinearLayout
 {
-  private View BoE;
-  private LinearLayout BoF;
-  private LinearLayout BoG;
-  private f BoH;
-  private b.c BoI;
-  private b.a BoJ;
-  private boolean kBm;
+  private View CGL;
+  private LinearLayout CGM;
+  private LinearLayout CGN;
+  private f CGO;
+  private b.c CGP;
+  private b.a CGQ;
+  private boolean lcE;
   private Context mContext;
   private LayoutInflater mInflater;
   
@@ -29,14 +29,14 @@ public class GameMenuView
   {
     super(paramContext, null);
     AppMethodBeat.i(80983);
-    this.kBm = false;
+    this.lcE = false;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
     paramContext = this.mContext.getResources().getDisplayMetrics();
     if (paramContext.widthPixels > paramContext.heightPixels) {
       bool = true;
     }
-    this.kBm = bool;
+    this.lcE = bool;
     initView();
     AppMethodBeat.o(80983);
   }
@@ -45,7 +45,7 @@ public class GameMenuView
   {
     super(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(80985);
-    this.kBm = false;
+    this.lcE = false;
     this.mContext = paramContext;
     initView();
     AppMethodBeat.o(80985);
@@ -54,16 +54,16 @@ public class GameMenuView
   private void initView()
   {
     AppMethodBeat.i(80986);
-    if (this.kBm)
+    if (this.lcE)
     {
       setOrientation(0);
       this.mInflater.inflate(2131494349, this, true);
     }
     for (View localView = this.mInflater.inflate(2131494346, this, true);; localView = this.mInflater.inflate(2131494347, this, true))
     {
-      this.BoE = localView.findViewById(2131300509);
-      this.BoF = ((LinearLayout)localView.findViewById(2131300508));
-      this.BoG = ((LinearLayout)localView.findViewById(2131300510));
+      this.CGL = localView.findViewById(2131300509);
+      this.CGM = ((LinearLayout)localView.findViewById(2131300508));
+      this.CGN = ((LinearLayout)localView.findViewById(2131300510));
       AppMethodBeat.o(80986);
       return;
       setOrientation(1);
@@ -74,7 +74,7 @@ public class GameMenuView
   public void setAdapter(f paramf)
   {
     AppMethodBeat.i(80984);
-    this.BoH = paramf;
+    this.CGO = paramf;
     paramf.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()
@@ -97,12 +97,12 @@ public class GameMenuView
   
   public void setDismissListener(b.a parama)
   {
-    this.BoJ = parama;
+    this.CGQ = parama;
   }
   
   public void setGameMenuItemSelectedListener(b.c paramc)
   {
-    this.BoI = paramc;
+    this.CGP = paramc;
   }
 }
 

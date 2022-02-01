@@ -14,27 +14,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.ui.GameCenterActivity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 @com.tencent.mm.ui.base.a(19)
 public class GameTabBridgeUI
   extends GameCenterActivity
 {
-  private BroadcastReceiver snZ;
+  private BroadcastReceiver tvS;
   
   public GameTabBridgeUI()
   {
     AppMethodBeat.i(42439);
-    this.snZ = new BroadcastReceiver()
+    this.tvS = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(42438);
         if ((paramAnonymousIntent != null) && ("com.tencent.mm.ACTION_EXIT".equals(paramAnonymousIntent.getAction())) && (GameTabBridgeUI.this != null) && (!GameTabBridgeUI.this.isFinishing()))
         {
-          ad.i("MicroMsg.GameTabBridgeUI", "GameTabBridgeUI exit!");
+          ac.i("MicroMsg.GameTabBridgeUI", "GameTabBridgeUI exit!");
           GameTabBridgeUI.this.finish();
         }
         AppMethodBeat.o(42438);
@@ -43,18 +43,18 @@ public class GameTabBridgeUI
     AppMethodBeat.o(42439);
   }
   
-  private void cEu()
+  private void cRE()
   {
     AppMethodBeat.i(42446);
-    if (bt.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
+    if (bs.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
       localIntent.putExtra("preferred_tab", 2);
-      com.tencent.mm.bs.d.e(this, ".ui.LauncherUI", localIntent);
+      com.tencent.mm.br.d.e(this, ".ui.LauncherUI", localIntent);
       finish();
       overridePendingTransition(2130772140, 2130772145);
-      ad.i("MicroMsg.GameTabBridgeUI", "back to FindMoreFriendsUI");
+      ac.i("MicroMsg.GameTabBridgeUI", "back to FindMoreFriendsUI");
     }
     AppMethodBeat.o(42446);
   }
@@ -62,23 +62,23 @@ public class GameTabBridgeUI
   private void goBack()
   {
     AppMethodBeat.i(42445);
-    ad.i("MicroMsg.GameTabBridgeUI", "GameTabHomeUI goBack!");
-    cEu();
+    ac.i("MicroMsg.GameTabBridgeUI", "GameTabHomeUI goBack!");
+    cRE();
     sendBroadcast(new Intent("com.tencent.mm.ACTION_EXIT"), "com.tencent.mm.permission.MM_MESSAGE");
     AppMethodBeat.o(42445);
   }
   
-  public final boolean cDZ()
+  public final boolean cRj()
   {
     return false;
   }
   
-  public final int cEa()
+  public final int cRk()
   {
     return 0;
   }
   
-  public final int cEb()
+  public final int cRl()
   {
     return 0;
   }
@@ -114,12 +114,12 @@ public class GameTabBridgeUI
   {
     AppMethodBeat.i(42440);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.GameTabBridgeUI", "%s create", new Object[] { getClass().getSimpleName() });
-    GameTabWidget.jJO = hashCode();
+    ac.i("MicroMsg.GameTabBridgeUI", "%s create", new Object[] { getClass().getSimpleName() });
+    GameTabWidget.kko = hashCode();
     initView();
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mm.ACTION_EXIT");
-    registerReceiver(this.snZ, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
+    registerReceiver(this.tvS, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
     paramBundle = getIntent();
     GameTabData localGameTabData = (GameTabData)paramBundle.getParcelableExtra("tab_data");
     String str = paramBundle.getStringExtra("tab_key");
@@ -136,7 +136,7 @@ public class GameTabBridgeUI
   {
     AppMethodBeat.i(42443);
     super.onDestroy();
-    unregisterReceiver(this.snZ);
+    unregisterReceiver(this.tvS);
     AppMethodBeat.o(42443);
   }
   

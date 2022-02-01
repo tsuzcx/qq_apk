@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.messenger.d;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
+import com.tencent.mm.ak.f.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.f;
 import com.tencent.mm.plugin.messenger.a.f.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Map;
 
 public abstract class e
 {
-  private f.c tzi = new f.c()
+  private f.c uHF = new f.c()
   {
     public final void a(Map<String, String> paramAnonymousMap, f.a paramAnonymousa)
     {
-      AppMethodBeat.i(196727);
+      AppMethodBeat.i(198611);
       e.this.b(paramAnonymousMap, paramAnonymousa);
-      AppMethodBeat.o(196727);
+      AppMethodBeat.o(198611);
     }
     
     public final void b(String paramAnonymousString, Map<String, String> paramAnonymousMap, Bundle paramAnonymousBundle)
     {
-      AppMethodBeat.i(196728);
+      AppMethodBeat.i(198612);
       if (paramAnonymousMap == null)
       {
-        ad.w("MicroMsg.SysMsgTemp.SysMsgTemplateReceivedHandlerBase", "hy: non map!!");
-        AppMethodBeat.o(196728);
+        ac.w("MicroMsg.SysMsgTemp.SysMsgTemplateReceivedHandlerBase", "hy: non map!!");
+        AppMethodBeat.o(198612);
         return;
       }
-      ad.i("MicroMsg.SysMsgTemp.SysMsgTemplateReceivedHandlerBase", "onClickLink linkType:%s", new Object[] { paramAnonymousString });
+      ac.i("MicroMsg.SysMsgTemp.SysMsgTemplateReceivedHandlerBase", "onClickLink linkType:%s", new Object[] { paramAnonymousString });
       e.this.c(paramAnonymousString, paramAnonymousMap, paramAnonymousBundle);
-      AppMethodBeat.o(196728);
+      AppMethodBeat.o(198612);
     }
   };
   
   public e()
   {
-    ((f)g.ab(f.class)).a(cPd(), this.tzi);
+    ((f)g.ab(f.class)).a(dcM(), this.uHF);
   }
   
   protected static String l(Map<String, String> paramMap, String paramString)
@@ -50,9 +50,9 @@ public abstract class e
     }
     for (;;)
     {
-      if (!bt.isNullOrNil((String)paramMap.get(str)))
+      if (!bs.isNullOrNil((String)paramMap.get(str)))
       {
-        if (bt.kU((String)paramMap.get(str + ".$type"), paramString)) {
+        if (bs.lr((String)paramMap.get(str + ".$type"), paramString)) {
           return str;
         }
         i += 1;
@@ -66,16 +66,16 @@ public abstract class e
   
   protected abstract void c(String paramString, Map<String, String> paramMap, Bundle paramBundle);
   
-  protected abstract String cPd();
+  protected abstract String dcM();
   
   public final void release()
   {
-    ((f)g.ab(f.class)).b(cPd(), this.tzi);
+    ((f)g.ab(f.class)).b(dcM(), this.uHF);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.d.e
  * JD-Core Version:    0.7.0.1
  */

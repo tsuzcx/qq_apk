@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
 {
@@ -12,7 +12,7 @@ public final class b
   public final boolean isValid()
   {
     AppMethodBeat.i(28867);
-    if (!bt.isNullOrNil(this.username))
+    if (!bs.isNullOrNil(this.username))
     {
       AppMethodBeat.o(28867);
       return true;

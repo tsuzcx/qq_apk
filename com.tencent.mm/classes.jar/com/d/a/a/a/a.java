@@ -26,7 +26,7 @@ public class a
     checkNotNull(paramCollection);
     Object localObject = paramCollection;
     if ((paramCollection instanceof m)) {
-      localObject = ((m)paramCollection).zU();
+      localObject = ((m)paramCollection).zH();
     }
     if (((localObject instanceof Set)) && (((Collection)localObject).size() > paramSet.size())) {
       return h.a(paramSet.iterator(), (Collection)localObject);
@@ -85,7 +85,7 @@ public class a
     return false;
   }
   
-  public static void bn(boolean paramBoolean)
+  public static void bm(boolean paramBoolean)
   {
     if (!paramBoolean) {
       throw new IllegalStateException(String.valueOf("no calls to next() since the last call to remove()"));
@@ -107,7 +107,7 @@ public class a
   }
   
   @CheckReturnValue
-  public a bH(String paramString)
+  public a by(String paramString)
   {
     checkNotNull(paramString);
     return new c(this, this, paramString);

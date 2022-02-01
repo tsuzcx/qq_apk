@@ -11,27 +11,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements l<Bitmap>
 {
-  public static final i<Integer> aIl;
-  public static final i<Bitmap.CompressFormat> aIm;
-  private final b azE;
+  public static final i<Integer> aJb;
+  public static final i<Bitmap.CompressFormat> aJc;
+  private final b aAy;
   
   static
   {
     AppMethodBeat.i(77355);
-    aIl = i.b("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionQuality", Integer.valueOf(90));
-    aIm = i.O("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionFormat");
+    aJb = i.b("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionQuality", Integer.valueOf(90));
+    aJc = i.Q("com.bumptech.glide.load.resource.bitmap.BitmapEncoder.CompressionFormat");
     AppMethodBeat.o(77355);
   }
   
   @Deprecated
   public c()
   {
-    this.azE = null;
+    this.aAy = null;
   }
   
   public c(b paramb)
   {
-    this.azE = paramb;
+    this.aAy = paramb;
   }
   
   /* Error */
@@ -45,7 +45,7 @@ public final class c
     //   11: checkcast 72	android/graphics/Bitmap
     //   14: astore 11
     //   16: aload_3
-    //   17: getstatic 47	com/bumptech/glide/c/d/a/c:aIm	Lcom/bumptech/glide/c/i;
+    //   17: getstatic 47	com/bumptech/glide/c/d/a/c:aJc	Lcom/bumptech/glide/c/i;
     //   20: invokevirtual 77	com/bumptech/glide/c/j:a	(Lcom/bumptech/glide/c/i;)Ljava/lang/Object;
     //   23: checkcast 79	android/graphics/Bitmap$CompressFormat
     //   26: astore 8
@@ -57,10 +57,10 @@ public final class c
     //   39: aload 11
     //   41: invokevirtual 86	android/graphics/Bitmap:getHeight	()I
     //   44: pop
-    //   45: invokestatic 92	com/bumptech/glide/h/e:pO	()J
+    //   45: invokestatic 92	com/bumptech/glide/h/e:pY	()J
     //   48: lstore 5
     //   50: aload_3
-    //   51: getstatic 39	com/bumptech/glide/c/d/a/c:aIl	Lcom/bumptech/glide/c/i;
+    //   51: getstatic 39	com/bumptech/glide/c/d/a/c:aJb	Lcom/bumptech/glide/c/i;
     //   54: invokevirtual 77	com/bumptech/glide/c/j:a	(Lcom/bumptech/glide/c/i;)Ljava/lang/Object;
     //   57: checkcast 27	java/lang/Integer
     //   60: invokevirtual 95	java/lang/Integer:intValue	()I
@@ -77,7 +77,7 @@ public final class c
     //   81: aload 10
     //   83: astore 9
     //   85: aload_0
-    //   86: getfield 57	com/bumptech/glide/c/d/a/c:azE	Lcom/bumptech/glide/c/b/a/b;
+    //   86: getfield 57	com/bumptech/glide/c/d/a/c:aAy	Lcom/bumptech/glide/c/b/a/b;
     //   89: ifnull +24 -> 113
     //   92: aload 10
     //   94: astore_1
@@ -87,7 +87,7 @@ public final class c
     //   102: dup
     //   103: aload 10
     //   105: aload_0
-    //   106: getfield 57	com/bumptech/glide/c/d/a/c:azE	Lcom/bumptech/glide/c/b/a/b;
+    //   106: getfield 57	com/bumptech/glide/c/d/a/c:aAy	Lcom/bumptech/glide/c/b/a/b;
     //   109: invokespecial 105	com/bumptech/glide/c/a/c:<init>	(Ljava/io/OutputStream;Lcom/bumptech/glide/c/b/a/b;)V
     //   112: astore_2
     //   113: aload_2
@@ -128,12 +128,12 @@ public final class c
     //   181: ldc 149
     //   183: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: lload 5
-    //   188: invokestatic 153	com/bumptech/glide/h/e:n	(J)D
+    //   188: invokestatic 153	com/bumptech/glide/h/e:p	(J)D
     //   191: invokevirtual 156	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
     //   194: ldc 158
     //   196: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   199: aload_3
-    //   200: getstatic 47	com/bumptech/glide/c/d/a/c:aIm	Lcom/bumptech/glide/c/i;
+    //   200: getstatic 47	com/bumptech/glide/c/d/a/c:aJc	Lcom/bumptech/glide/c/i;
     //   203: invokevirtual 77	com/bumptech/glide/c/j:a	(Lcom/bumptech/glide/c/i;)Ljava/lang/Object;
     //   206: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   209: ldc 160
@@ -243,12 +243,12 @@ public final class c
   
   public final com.bumptech.glide.c.c b(j paramj)
   {
-    return com.bumptech.glide.c.c.aCj;
+    return com.bumptech.glide.c.c.aDb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.c
  * JD-Core Version:    0.7.0.1
  */

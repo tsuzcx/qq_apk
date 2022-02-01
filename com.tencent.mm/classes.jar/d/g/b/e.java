@@ -25,23 +25,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/jvm/internal/ClassReference;", "Lkotlin/reflect/KClass;", "", "Lkotlin/jvm/internal/ClassBasedDeclarationContainer;", "jClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "constructors", "", "Lkotlin/reflect/KFunction;", "getConstructors", "()Ljava/util/Collection;", "isAbstract", "", "isAbstract$annotations", "()V", "()Z", "isCompanion", "isCompanion$annotations", "isData", "isData$annotations", "isFinal", "isFinal$annotations", "isInner", "isInner$annotations", "isOpen", "isOpen$annotations", "isSealed", "isSealed$annotations", "getJClass", "()Ljava/lang/Class;", "members", "Lkotlin/reflect/KCallable;", "getMembers", "nestedClasses", "getNestedClasses", "objectInstance", "getObjectInstance", "()Ljava/lang/Object;", "qualifiedName", "", "getQualifiedName", "()Ljava/lang/String;", "sealedSubclasses", "sealedSubclasses$annotations", "getSealedSubclasses", "simpleName", "getSimpleName", "supertypes", "Lkotlin/reflect/KType;", "supertypes$annotations", "getSupertypes", "typeParameters", "Lkotlin/reflect/KTypeParameter;", "typeParameters$annotations", "getTypeParameters", "visibility", "Lkotlin/reflect/KVisibility;", "visibility$annotations", "getVisibility", "()Lkotlin/reflect/KVisibility;", "equals", "other", "error", "", "hashCode", "", "isInstance", "value", "toString", "Companion", "kotlin-stdlib"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/ClassReference;", "Lkotlin/reflect/KClass;", "", "Lkotlin/jvm/internal/ClassBasedDeclarationContainer;", "jClass", "Ljava/lang/Class;", "(Ljava/lang/Class;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "constructors", "", "Lkotlin/reflect/KFunction;", "getConstructors", "()Ljava/util/Collection;", "isAbstract", "", "isAbstract$annotations", "()V", "()Z", "isCompanion", "isCompanion$annotations", "isData", "isData$annotations", "isFinal", "isFinal$annotations", "isInner", "isInner$annotations", "isOpen", "isOpen$annotations", "isSealed", "isSealed$annotations", "getJClass", "()Ljava/lang/Class;", "members", "Lkotlin/reflect/KCallable;", "getMembers", "nestedClasses", "getNestedClasses", "objectInstance", "getObjectInstance", "()Ljava/lang/Object;", "qualifiedName", "", "getQualifiedName", "()Ljava/lang/String;", "sealedSubclasses", "sealedSubclasses$annotations", "getSealedSubclasses", "simpleName", "getSimpleName", "supertypes", "Lkotlin/reflect/KType;", "supertypes$annotations", "getSupertypes", "typeParameters", "Lkotlin/reflect/KTypeParameter;", "typeParameters$annotations", "getTypeParameters", "visibility", "Lkotlin/reflect/KVisibility;", "visibility$annotations", "getVisibility", "()Lkotlin/reflect/KVisibility;", "equals", "other", "error", "", "hashCode", "", "isInstance", "value", "toString", "Companion", "kotlin-stdlib"})
 public final class e
   implements d, d.l.b<Object>
 {
-  private static final Map<Class<? extends d.c<?>>, Integer> Jhk;
-  private static final HashMap<String, String> Jhl;
-  private static final HashMap<String, String> Jhm;
-  private static final HashMap<String, String> Jhn;
-  private static final Map<String, String> Jho;
-  public static final a Jhp;
-  private final Class<?> Jhj;
+  private static final Map<Class<? extends d.c<?>>, Integer> KUD;
+  private static final HashMap<String, String> KUE;
+  private static final HashMap<String, String> KUF;
+  private static final HashMap<String, String> KUG;
+  private static final Map<String, String> KUH;
+  public static final a KUI;
+  private final Class<?> KUC;
   
   static
   {
     int i = 0;
-    AppMethodBeat.i(186825);
-    Jhp = new a((byte)0);
+    AppMethodBeat.i(186155);
+    KUI = new a((byte)0);
     Object localObject2 = (Iterable)d.a.j.listOf(new Class[] { d.g.a.a.class, d.g.a.b.class, m.class, q.class, r.class, s.class, t.class, d.g.a.u.class, v.class, w.class, d.g.a.c.class, d.g.a.d.class, d.g.a.e.class, f.class, g.class, h.class, i.class, d.g.a.j.class, d.g.a.k.class, d.g.a.l.class, d.g.a.n.class, d.g.a.o.class, p.class });
     Object localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
@@ -50,12 +50,12 @@ public final class e
     {
       localObject3 = ((Iterator)localObject2).next();
       if (i < 0) {
-        d.a.j.fvx();
+        d.a.j.fOc();
       }
-      ((Collection)localObject1).add(d.u.P((Class)localObject3, Integer.valueOf(i)));
+      ((Collection)localObject1).add(d.u.Q((Class)localObject3, Integer.valueOf(i)));
       i += 1;
     }
-    Jhk = ae.z((Iterable)localObject1);
+    KUD = ae.y((Iterable)localObject1);
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("boolean", "kotlin.Boolean");
     ((HashMap)localObject1).put("char", "kotlin.Char");
@@ -65,7 +65,7 @@ public final class e
     ((HashMap)localObject1).put("float", "kotlin.Float");
     ((HashMap)localObject1).put("long", "kotlin.Long");
     ((HashMap)localObject1).put("double", "kotlin.Double");
-    Jhl = (HashMap)localObject1;
+    KUE = (HashMap)localObject1;
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("java.lang.Boolean", "kotlin.Boolean");
     ((HashMap)localObject1).put("java.lang.Character", "kotlin.Char");
@@ -75,7 +75,7 @@ public final class e
     ((HashMap)localObject1).put("java.lang.Float", "kotlin.Float");
     ((HashMap)localObject1).put("java.lang.Long", "kotlin.Long");
     ((HashMap)localObject1).put("java.lang.Double", "kotlin.Double");
-    Jhm = (HashMap)localObject1;
+    KUF = (HashMap)localObject1;
     localObject1 = new HashMap();
     ((HashMap)localObject1).put("java.lang.Object", "kotlin.Any");
     ((HashMap)localObject1).put("java.lang.String", "kotlin.String");
@@ -96,9 +96,9 @@ public final class e
     ((HashMap)localObject1).put("java.util.Map$Entry", "kotlin.collections.Map.Entry");
     ((HashMap)localObject1).put("kotlin.jvm.internal.StringCompanionObject", "kotlin.String.Companion");
     ((HashMap)localObject1).put("kotlin.jvm.internal.EnumCompanionObject", "kotlin.Enum.Companion");
-    ((HashMap)localObject1).putAll((Map)Jhl);
-    ((HashMap)localObject1).putAll((Map)Jhm);
-    localObject2 = Jhl.values();
+    ((HashMap)localObject1).putAll((Map)KUE);
+    ((HashMap)localObject1).putAll((Map)KUF);
+    localObject2 = KUE.values();
     k.g(localObject2, "primitiveFqNames.values");
     localObject2 = ((Iterable)localObject2).iterator();
     Object localObject4;
@@ -109,10 +109,10 @@ public final class e
       localObject4 = (String)localObject4;
       StringBuilder localStringBuilder = new StringBuilder("kotlin.jvm.internal.");
       k.g(localObject4, "kotlinName");
-      localObject4 = d.u.P(d.n.n.a((String)localObject4, '.') + "CompanionObject", (String)localObject4 + ".Companion");
+      localObject4 = d.u.Q(d.n.n.b((String)localObject4, '.') + "CompanionObject", (String)localObject4 + ".Companion");
       ((Map)localObject3).put(((d.o)localObject4).first, ((d.o)localObject4).second);
     }
-    localObject2 = Jhk.entrySet().iterator();
+    localObject2 = KUD.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -120,23 +120,23 @@ public final class e
       i = ((Number)((Map.Entry)localObject3).getValue()).intValue();
       ((HashMap)localObject1).put(((Class)localObject4).getName(), "kotlin.Function".concat(String.valueOf(i)));
     }
-    Jhn = (HashMap)localObject1;
+    KUG = (HashMap)localObject1;
     localObject2 = (Map)localObject1;
-    localObject1 = (Map)new LinkedHashMap(ae.adL(((Map)localObject2).size()));
+    localObject1 = (Map)new LinkedHashMap(ae.agH(((Map)localObject2).size()));
     localObject2 = ((Iterable)((Map)localObject2).entrySet()).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = ((Iterator)localObject2).next();
-      ((Map)localObject1).put(((Map.Entry)localObject3).getKey(), d.n.n.a((String)((Map.Entry)localObject3).getValue(), '.'));
+      ((Map)localObject1).put(((Map.Entry)localObject3).getKey(), d.n.n.b((String)((Map.Entry)localObject3).getValue(), '.'));
     }
-    Jho = (Map)localObject1;
-    AppMethodBeat.o(186825);
+    KUH = (Map)localObject1;
+    AppMethodBeat.o(186155);
   }
   
   public e(Class<?> paramClass)
   {
     AppMethodBeat.i(129340);
-    this.Jhj = paramClass;
+    this.KUC = paramClass;
     AppMethodBeat.o(129340);
   }
   
@@ -152,15 +152,15 @@ public final class e
     return false;
   }
   
-  public final Class<?> fvP()
+  public final Class<?> fOt()
   {
-    return this.Jhj;
+    return this.KUC;
   }
   
-  public final String fvQ()
+  public final String fOu()
   {
     AppMethodBeat.i(129336);
-    Class localClass = this.Jhj;
+    Class localClass = this.KUC;
     k.h(localClass, "jClass");
     if (localClass.isAnonymousClass())
     {
@@ -178,7 +178,7 @@ public final class e
       k.g(localObject, "componentType");
       if (((Class)localObject).isPrimitive())
       {
-        localObject = (String)Jhn.get(((Class)localObject).getName());
+        localObject = (String)KUG.get(((Class)localObject).getName());
         if (localObject == null) {}
       }
       for (str = (String)localObject + "Array";; str = null)
@@ -191,7 +191,7 @@ public final class e
         return "kotlin.Array";
       }
     }
-    String str = (String)Jhn.get(localClass.getName());
+    String str = (String)KUG.get(localClass.getName());
     Object localObject = str;
     if (str == null) {
       localObject = localClass.getCanonicalName();
@@ -200,22 +200,22 @@ public final class e
     return localObject;
   }
   
-  public final Collection<d.l.e<Object>> fvR()
+  public final Collection<d.l.e<Object>> fOv()
   {
-    AppMethodBeat.i(186824);
+    AppMethodBeat.i(186154);
     Throwable localThrowable = (Throwable)new d.g.b();
-    AppMethodBeat.o(186824);
+    AppMethodBeat.o(186154);
     throw localThrowable;
   }
   
   public final String getSimpleName()
   {
-    AppMethodBeat.i(186823);
-    Class localClass = this.Jhj;
+    AppMethodBeat.i(186153);
+    Class localClass = this.KUC;
     k.h(localClass, "jClass");
     if (localClass.isAnonymousClass())
     {
-      AppMethodBeat.o(186823);
+      AppMethodBeat.o(186153);
       return null;
     }
     if (localClass.isLocalClass())
@@ -225,7 +225,7 @@ public final class e
       if (localObject1 != null)
       {
         k.g(str, "name");
-        localObject1 = d.n.n.mF(str, ((Method)localObject1).getName() + "$");
+        localObject1 = d.n.n.nf(str, ((Method)localObject1).getName() + "$");
         localObject2 = localObject1;
         if (localObject1 != null) {}
       }
@@ -238,15 +238,15 @@ public final class e
         k.g(str, "name");
       }
       label173:
-      for (localObject2 = d.n.n.mF(str, ((Constructor)localObject1).getName() + "$");; localObject2 = null)
+      for (localObject2 = d.n.n.nf(str, ((Constructor)localObject1).getName() + "$");; localObject2 = null)
       {
         localObject1 = localObject2;
         if (localObject2 != null) {
           break;
         }
         k.g(str, "name");
-        localObject1 = d.n.n.mE(str, str);
-        AppMethodBeat.o(186823);
+        localObject1 = d.n.n.ne(str, str);
+        AppMethodBeat.o(186153);
         return localObject1;
       }
     }
@@ -256,7 +256,7 @@ public final class e
       k.g(localObject1, "componentType");
       if (((Class)localObject1).isPrimitive())
       {
-        localObject1 = (String)Jho.get(((Class)localObject1).getName());
+        localObject1 = (String)KUH.get(((Class)localObject1).getName());
         if (localObject1 == null) {}
       }
       for (localObject2 = (String)localObject1 + "Array";; localObject2 = null)
@@ -265,16 +265,16 @@ public final class e
         if (localObject2 != null) {
           break;
         }
-        AppMethodBeat.o(186823);
+        AppMethodBeat.o(186153);
         return "Array";
       }
     }
-    Object localObject2 = (String)Jho.get(localClass.getName());
+    Object localObject2 = (String)KUH.get(localClass.getName());
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = localClass.getSimpleName();
     }
-    AppMethodBeat.o(186823);
+    AppMethodBeat.o(186153);
     return localObject1;
   }
   
@@ -289,12 +289,12 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(129339);
-    String str = this.Jhj.toString() + " (Kotlin reflection is not available)";
+    String str = this.KUC.toString() + " (Kotlin reflection is not available)";
     AppMethodBeat.o(129339);
     return str;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/jvm/internal/ClassReference$Companion;", "", "()V", "FUNCTION_CLASSES", "", "Ljava/lang/Class;", "Lkotlin/Function;", "", "classFqNames", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "primitiveFqNames", "primitiveWrapperFqNames", "simpleNames", "getClassQualifiedName", "jClass", "getClassSimpleName", "isInstance", "", "value", "kotlin-stdlib"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/ClassReference$Companion;", "", "()V", "FUNCTION_CLASSES", "", "Ljava/lang/Class;", "Lkotlin/Function;", "", "classFqNames", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "primitiveFqNames", "primitiveWrapperFqNames", "simpleNames", "getClassQualifiedName", "jClass", "getClassSimpleName", "isInstance", "", "value", "kotlin-stdlib"})
   public static final class a {}
 }
 

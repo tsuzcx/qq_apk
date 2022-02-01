@@ -20,14 +20,14 @@ public final class c
     this.appId = paramString;
   }
   
-  public final void MQ()
+  public final void MO()
   {
     AppMethodBeat.i(136752);
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "runTask, appId:%s", new Object[] { this.appId });
-    e locale = e.MN();
-    synchronized (locale.cTF)
+    e locale = e.ML();
+    synchronized (locale.cRc)
     {
-      Iterator localIterator = locale.cTE.iterator();
+      Iterator localIterator = locale.cRb.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
@@ -37,10 +37,10 @@ public final class c
         }
       }
     }
-    localObject2.cTE.clear();
+    localObject2.cRb.clear();
     localObject2.cache.clear();
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "delete all pcm cache File");
-    ??? = e.MN().MP();
+    ??? = e.ML().MN();
     if (((ArrayList)???).size() > 0) {
       a.b(this.appId, (ArrayList)???);
     }

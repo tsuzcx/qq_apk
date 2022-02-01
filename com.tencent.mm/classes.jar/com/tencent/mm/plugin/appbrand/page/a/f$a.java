@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public final class f$a
   implements c.a
 {
-  CharSequence Jj = null;
+  CharSequence Ke = null;
   Drawable mDrawable = null;
   int mStatus = -2147483648;
   
@@ -20,12 +20,12 @@ public final class f$a
   public final void dismiss()
   {
     AppMethodBeat.i(135301);
-    this.lgG.L(new Runnable()
+    this.lGA.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135295);
-        f.b(f.a.this.lgG).remove(f.a.this);
+        f.b(f.a.this.lGA).remove(f.a.this);
         AppMethodBeat.o(135295);
       }
     });
@@ -35,14 +35,14 @@ public final class f$a
   public final void setDescription(final CharSequence paramCharSequence)
   {
     AppMethodBeat.i(135298);
-    this.lgG.L(new Runnable()
+    this.lGA.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135292);
-        f.a.this.Jj = paramCharSequence;
+        f.a.this.Ke = paramCharSequence;
         if (f.a.a(f.a.this)) {
-          f.a.this.lgG.A(paramCharSequence);
+          f.a.this.lGA.A(paramCharSequence);
         }
         AppMethodBeat.o(135292);
       }
@@ -53,14 +53,14 @@ public final class f$a
   public final void setLogo(final int paramInt)
   {
     AppMethodBeat.i(135297);
-    this.lgG.L(new Runnable()
+    this.lGA.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135291);
         try
         {
-          f.a.this.setLogo(b.l(f.a.this.lgG.getContext(), paramInt));
+          f.a.this.setLogo(b.l(f.a.this.lGA.getContext(), paramInt));
           AppMethodBeat.o(135291);
           return;
         }
@@ -77,14 +77,14 @@ public final class f$a
   public final void setLogo(final Drawable paramDrawable)
   {
     AppMethodBeat.i(135296);
-    this.lgG.L(new Runnable()
+    this.lGA.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135290);
         f.a.this.mDrawable = paramDrawable;
         if (f.a.a(f.a.this)) {
-          f.a.this.lgG.x(f.a.this.mDrawable);
+          f.a.this.lGA.x(f.a.this.mDrawable);
         }
         AppMethodBeat.o(135290);
       }
@@ -95,14 +95,14 @@ public final class f$a
   public final void setStatus(final int paramInt)
   {
     AppMethodBeat.i(135300);
-    this.lgG.L(new Runnable()
+    this.lGA.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135294);
         f.a.this.mStatus = paramInt;
         if (f.a.a(f.a.this)) {
-          f.a.this.lgG.tp(paramInt);
+          f.a.this.lGA.ug(paramInt);
         }
         AppMethodBeat.o(135294);
       }
@@ -110,17 +110,17 @@ public final class f$a
     AppMethodBeat.o(135300);
   }
   
-  public final void tC(final int paramInt)
+  public final void us(final int paramInt)
   {
     AppMethodBeat.i(135299);
-    this.lgG.L(new Runnable()
+    this.lGA.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135293);
         try
         {
-          f.a.this.setDescription(f.a.this.lgG.getContext().getResources().getString(paramInt));
+          f.a.this.setDescription(f.a.this.lGA.getContext().getResources().getString(paramInt));
           AppMethodBeat.o(135293);
           return;
         }

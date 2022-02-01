@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.wear.model.f;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f;
 import com.tencent.mm.plugin.wear.model.g;
-import com.tencent.mm.protocal.protobuf.drn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.dxe;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.bo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,45 +21,45 @@ import java.util.List;
 public final class j
   extends b
 {
-  private int dbk;
-  private boolean drn;
+  private int cYG;
+  private boolean doY;
   private String talker;
   
   public j(String paramString, int paramInt, boolean paramBoolean)
   {
     this.talker = paramString;
-    this.dbk = paramInt;
-    this.drn = paramBoolean;
+    this.cYG = paramInt;
+    this.doY = paramBoolean;
   }
   
-  private static String aw(ArrayList<bl> paramArrayList)
+  private static String aI(ArrayList<bo> paramArrayList)
   {
     AppMethodBeat.i(30131);
     StringBuffer localStringBuffer = new StringBuffer();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      bl localbl = (bl)paramArrayList.next();
-      localStringBuffer.append(localbl.field_msgId);
-      localStringBuffer.append(localbl.field_talker);
-      localStringBuffer.append(localbl.field_content);
-      localStringBuffer.append(localbl.getType());
-      localStringBuffer.append(localbl.field_createTime);
+      bo localbo = (bo)paramArrayList.next();
+      localStringBuffer.append(localbo.field_msgId);
+      localStringBuffer.append(localbo.field_talker);
+      localStringBuffer.append(localbo.field_content);
+      localStringBuffer.append(localbo.getType());
+      localStringBuffer.append(localbo.field_createTime);
     }
-    paramArrayList = ai.du(localStringBuffer.toString());
+    paramArrayList = ah.dg(localStringBuffer.toString());
     AppMethodBeat.o(30131);
     return paramArrayList;
   }
   
-  private static String j(String paramString, ArrayList<bl> paramArrayList)
+  private static String j(String paramString, ArrayList<bo> paramArrayList)
   {
     AppMethodBeat.i(30130);
-    ad.d("MicroMsg.WearNotificationCreateTask", "Talker: %s, MsgSize: %d", new Object[] { paramString, Integer.valueOf(paramArrayList.size()) });
+    ac.d("MicroMsg.WearNotificationCreateTask", "Talker: %s, MsgSize: %d", new Object[] { paramString, Integer.valueOf(paramArrayList.size()) });
     StringBuffer localStringBuffer = new StringBuffer();
     int i = paramArrayList.size() - 1;
     while (i >= 0)
     {
-      localStringBuffer.append(c(paramString, (bl)paramArrayList.get(i)));
+      localStringBuffer.append(c(paramString, (bo)paramArrayList.get(i)));
       localStringBuffer.append("​​");
       i -= 1;
     }
@@ -76,74 +76,74 @@ public final class j
   protected final void send()
   {
     AppMethodBeat.i(30132);
-    ad.d("MicroMsg.WearNotificationCreateTask", "start to execute notification create task");
-    f localf = com.tencent.mm.plugin.wear.model.a.egT().auM(this.talker);
+    ac.d("MicroMsg.WearNotificationCreateTask", "start to execute notification create task");
+    f localf = com.tencent.mm.plugin.wear.model.a.ewn().aAd(this.talker);
     Object localObject1 = new ArrayList();
-    int j = this.dbk - localf.AEp;
+    int j = this.cYG - localf.BWJ;
     int i = j;
     if (j < 0) {
       i = 0;
     }
-    ad.d("MicroMsg.WearNotificationCreateTask", "limit=%d", new Object[] { Integer.valueOf(i) });
-    az.arV();
-    Object localObject2 = c.apO().dE(this.talker, i).iterator();
+    ac.d("MicroMsg.WearNotificationCreateTask", "limit=%d", new Object[] { Integer.valueOf(i) });
+    az.ayM();
+    Object localObject2 = c.awD().dK(this.talker, i).iterator();
     label145:
     while (((Iterator)localObject2).hasNext())
     {
-      bl localbl = (bl)((Iterator)localObject2).next();
-      if (localbl.isSystem()) {}
+      bo localbo = (bo)((Iterator)localObject2).next();
+      if (localbo.isSystem()) {}
       for (i = 0;; i = 1)
       {
         if (i == 0) {
           break label145;
         }
-        ((ArrayList)localObject1).add(localbl);
+        ((ArrayList)localObject1).add(localbo);
         break;
       }
     }
-    ad.i("MicroMsg.WearNotificationCreateTask", "receiveUnreadMsgList.size=%d", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+    ac.i("MicroMsg.WearNotificationCreateTask", "receiveUnreadMsgList.size=%d", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
     if (((ArrayList)localObject1).size() == 0)
     {
       AppMethodBeat.o(30132);
       return;
     }
-    localObject2 = aw((ArrayList)localObject1);
+    localObject2 = aI((ArrayList)localObject1);
     if (localf.md5.equals(localObject2))
     {
-      ad.i("MicroMsg.WearNotificationCreateTask", "same md5, not to update");
+      ac.i("MicroMsg.WearNotificationCreateTask", "same md5, not to update");
       AppMethodBeat.o(30132);
       return;
     }
     localf.md5 = ((String)localObject2);
-    localObject2 = new drn();
-    ((drn)localObject2).sdO = localf.id;
-    ((drn)localObject2).Egc = localf.talker;
-    ((drn)localObject2).Title = com.tencent.mm.plugin.wear.model.h.auR(localf.talker);
-    ((drn)localObject2).gKr = j(localf.talker, (ArrayList)localObject1);
-    ((drn)localObject2).EjI = this.dbk;
-    ((drn)localObject2).EGD = this.drn;
+    localObject2 = new dxe();
+    ((dxe)localObject2).tlI = localf.id;
+    ((dxe)localObject2).FDc = localf.talker;
+    ((dxe)localObject2).Title = com.tencent.mm.plugin.wear.model.h.aAi(localf.talker);
+    ((dxe)localObject2).hkR = j(localf.talker, (ArrayList)localObject1);
+    ((dxe)localObject2).FGG = this.cYG;
+    ((dxe)localObject2).GdP = this.doY;
     boolean bool;
-    if (!bv.eGV()) {
+    if (!bu.eWq()) {
       bool = true;
     }
     for (;;)
     {
-      ((drn)localObject2).EGC = bool;
-      localObject1 = com.tencent.mm.plugin.wear.model.h.auQ(localf.talker);
+      ((dxe)localObject2).GdO = bool;
+      localObject1 = com.tencent.mm.plugin.wear.model.h.aAh(localf.talker);
       if (localObject1 != null) {
-        ((drn)localObject2).EGl = new com.tencent.mm.bx.b(com.tencent.mm.plugin.wear.model.h.ap((Bitmap)localObject1));
+        ((dxe)localObject2).Gdx = new com.tencent.mm.bw.b(com.tencent.mm.plugin.wear.model.h.aq((Bitmap)localObject1));
       }
-      ad.d("MicroMsg.WearNotificationCreateTask", "generate notification content and ready to send");
+      ac.d("MicroMsg.WearNotificationCreateTask", "generate notification content and ready to send");
       try
       {
-        com.tencent.mm.plugin.wear.model.a.egZ();
-        r.a(20003, ((drn)localObject2).toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.a.ewt();
+        r.a(20003, ((dxe)localObject2).toByteArray(), true);
         label370:
-        ad.d("MicroMsg.WearNotificationCreateTask", "start to update notification status");
-        com.tencent.mm.plugin.wear.model.a.egT().a(localf);
-        com.tencent.mm.plugin.wear.model.a.egT().auP(this.talker);
-        com.tencent.mm.plugin.wear.model.c.a.in(6, 0);
-        com.tencent.mm.plugin.wear.model.c.a.RQ(1);
+        ac.d("MicroMsg.WearNotificationCreateTask", "start to update notification status");
+        com.tencent.mm.plugin.wear.model.a.ewn().a(localf);
+        com.tencent.mm.plugin.wear.model.a.ewn().aAg(this.talker);
+        com.tencent.mm.plugin.wear.model.c.a.iC(6, 0);
+        com.tencent.mm.plugin.wear.model.c.a.Ua(1);
         AppMethodBeat.o(30132);
         return;
         bool = false;
@@ -157,7 +157,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.j
  * JD-Core Version:    0.7.0.1
  */

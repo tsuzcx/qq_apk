@@ -1,0 +1,129 @@
+package com.tencent.mm.live.b.a;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.bqn;
+import com.tencent.mm.protocal.protobuf.bqo;
+import com.tencent.mm.sdk.platformtools.ac;
+import d.l;
+
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveVerify;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "isVerify", "", "Ljava/lang/Boolean;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/LiveVerifyRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/LiveVerifyResponse;", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/LiveVerifyResponse;", "setResponse", "(Lcom/tencent/mm/protocal/protobuf/LiveVerifyResponse;)V", "verifyUrl", "", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "getVerifyUrl", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+public final class v
+  extends n
+  implements com.tencent.mm.network.k
+{
+  public static final a gwV;
+  private g callback;
+  public String guM;
+  private b gvE;
+  private bqn gwS;
+  private bqo gwT;
+  public Boolean gwU;
+  
+  static
+  {
+    AppMethodBeat.i(189966);
+    gwV = new a((byte)0);
+    AppMethodBeat.o(189966);
+  }
+  
+  public v()
+  {
+    AppMethodBeat.i(189965);
+    Object localObject = new b.a();
+    ((b.a)localObject).c((a)new bqn());
+    ((b.a)localObject).d((a)new bqo());
+    ((b.a)localObject).op(3895);
+    ((b.a)localObject).Am("/cgi-bin/micromsg-bin/liveverify");
+    ((b.a)localObject).or(0);
+    ((b.a)localObject).os(0);
+    localObject = ((b.a)localObject).aAz();
+    d.g.b.k.g(localObject, "builder.buildInstance()");
+    this.gvE = ((b)localObject);
+    localObject = this.gvE.aBC();
+    if (localObject == null)
+    {
+      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LiveVerifyRequest");
+      AppMethodBeat.o(189965);
+      throw ((Throwable)localObject);
+    }
+    this.gwS = ((bqn)localObject);
+    ac.i("MicroMsg.LiveNetScene.NetSceneLiveVerify", "live verify request.");
+    AppMethodBeat.o(189965);
+  }
+  
+  public final int doScene(e parame, g paramg)
+  {
+    AppMethodBeat.i(189963);
+    ac.i("MicroMsg.LiveNetScene.NetSceneLiveVerify", "doScene");
+    this.callback = paramg;
+    int i = dispatch(parame, (q)this.gvE, (com.tencent.mm.network.k)this);
+    AppMethodBeat.o(189963);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 3895;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(189964);
+    if (paramq == null)
+    {
+      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+      AppMethodBeat.o(189964);
+      throw paramString;
+    }
+    paramq = ((b)paramq).aBD();
+    if (paramq == null)
+    {
+      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LiveVerifyResponse");
+      AppMethodBeat.o(189964);
+      throw paramString;
+    }
+    this.gwT = ((bqo)paramq);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = this.gwT;
+      if (paramq != null)
+      {
+        this.gwU = Boolean.valueOf(paramq.DTg);
+        this.guM = paramq.DTh;
+        paramArrayOfByte = new StringBuilder("onGYNetEnd isVerify:");
+        if (this.gwU != null) {
+          break label181;
+        }
+      }
+    }
+    label181:
+    for (paramq = "null";; paramq = this.gwU)
+    {
+      ac.i("MicroMsg.LiveNetScene.NetSceneLiveVerify", paramq);
+      paramq = this.callback;
+      if (paramq == null) {
+        break;
+      }
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+      AppMethodBeat.o(189964);
+      return;
+    }
+    AppMethodBeat.o(189964);
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveVerify$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  public static final class a {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.live.b.a.v
+ * JD-Core Version:    0.7.0.1
+ */

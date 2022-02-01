@@ -5,14 +5,14 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.g;
-import com.tencent.mm.bu.b;
+import com.tencent.mm.bt.b;
 import com.tencent.mm.sdk.platformtools.f;
 
 public final class c
   extends a
 {
-  private Bitmap Iae;
-  private Bitmap Iaf;
+  private Bitmap JAU;
+  private Bitmap JAV;
   
   public c(Context paramContext, b paramb)
   {
@@ -22,23 +22,23 @@ public final class c
   protected final Bitmap a(g paramg, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
-    if (paramg == g.cJx)
+    if (paramg == g.cGE)
     {
       if (paramBoolean) {
-        localBitmap = this.Iaf;
+        localBitmap = this.JAV;
       }
     }
     else {
       return localBitmap;
     }
-    return this.Iae;
+    return this.JAU;
   }
   
-  protected final boolean abl(int paramInt)
+  protected final boolean adD(int paramInt)
   {
     AppMethodBeat.i(9426);
-    boolean bool = super.abl(paramInt);
-    switch (1.Cpr[abk(paramInt).ordinal()])
+    boolean bool = super.adD(paramInt);
+    switch (1.DHJ[adC(paramInt).ordinal()])
     {
     }
     for (;;)
@@ -49,18 +49,18 @@ public final class c
     }
   }
   
-  protected final void fiT()
+  protected final void fzg()
   {
     AppMethodBeat.i(9425);
-    super.fiT();
-    this.Iae = f.B(getResources().getDrawable(2131690010));
-    this.Iaf = f.B(getResources().getDrawable(2131690009));
+    super.fzg();
+    this.JAU = f.A(getResources().getDrawable(2131690010));
+    this.JAV = f.A(getResources().getDrawable(2131690009));
     AppMethodBeat.o(9425);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.footer.c
  * JD-Core Version:    0.7.0.1
  */

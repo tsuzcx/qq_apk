@@ -3,6 +3,7 @@ package com.google.android.exoplayer2.h;
 import android.content.Context;
 import android.net.Uri;
 import com.google.android.exoplayer2.i.a;
+import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -10,47 +11,47 @@ import java.lang.reflect.InvocationTargetException;
 public final class m
   implements g
 {
-  private g aWG;
-  private final g bwU;
-  private g bwV;
-  private g bwW;
-  private g bwX;
-  private g bwY;
-  private final x<? super g> bws;
+  private g aXs;
+  private final g buQ;
+  private g buR;
+  private g buS;
+  private g buT;
+  private g buU;
+  private final w<? super g> bur;
   private final Context context;
   
-  public m(Context paramContext, x<? super g> paramx, g paramg)
+  public m(Context paramContext, w<? super g> paramw, g paramg)
   {
     AppMethodBeat.i(93059);
     this.context = paramContext.getApplicationContext();
-    this.bws = paramx;
-    this.bwU = ((g)a.checkNotNull(paramg));
+    this.bur = paramw;
+    this.buQ = ((g)a.checkNotNull(paramg));
     AppMethodBeat.o(93059);
   }
   
-  private g vn()
+  private g vg()
   {
     AppMethodBeat.i(93064);
-    if (this.bwW == null) {
-      this.bwW = new c(this.context, this.bws);
+    if (this.buS == null) {
+      this.buS = new c(this.context, this.bur);
     }
-    g localg = this.bwW;
+    g localg = this.buS;
     AppMethodBeat.o(93064);
     return localg;
   }
   
-  private g vo()
+  private g vh()
   {
     AppMethodBeat.i(93065);
-    if (this.bwY == null) {}
+    if (this.buU == null) {}
     try
     {
-      this.bwY = ((g)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
+      this.buU = ((g)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
       label38:
-      if (this.bwY == null) {
-        this.bwY = this.bwU;
+      if (this.buU == null) {
+        this.buU = this.buQ;
       }
-      g localg = this.bwY;
+      g localg = this.buU;
       AppMethodBeat.o(93065);
       return localg;
     }
@@ -81,51 +82,51 @@ public final class m
     AppMethodBeat.i(93060);
     boolean bool;
     String str;
-    if (this.aWG == null)
+    if (this.aXs == null)
     {
       bool = true;
       a.checkState(bool);
       str = paramj.uri.getScheme();
-      if (!com.google.android.exoplayer2.i.x.o(paramj.uri)) {
+      if (!x.o(paramj.uri)) {
         break label116;
       }
       if (!paramj.uri.getPath().startsWith("/android_asset/")) {
         break label83;
       }
-      this.aWG = vn();
+      this.aXs = vg();
     }
     for (;;)
     {
-      long l = this.aWG.a(paramj);
+      long l = this.aXs.a(paramj);
       AppMethodBeat.o(93060);
       return l;
       bool = false;
       break;
       label83:
-      if (this.bwV == null) {
-        this.bwV = new q(this.bws);
+      if (this.buR == null) {
+        this.buR = new q(this.bur);
       }
-      this.aWG = this.bwV;
+      this.aXs = this.buR;
       continue;
       label116:
       if ("asset".equals(str))
       {
-        this.aWG = vn();
+        this.aXs = vg();
       }
       else if ("content".equals(str))
       {
-        if (this.bwX == null) {
-          this.bwX = new e(this.context, this.bws);
+        if (this.buT == null) {
+          this.buT = new e(this.context, this.bur);
         }
-        this.aWG = this.bwX;
+        this.aXs = this.buT;
       }
       else if ("rtmp".equals(str))
       {
-        this.aWG = vo();
+        this.aXs = vh();
       }
       else
       {
-        this.aWG = this.bwU;
+        this.aXs = this.buQ;
       }
     }
   }
@@ -133,15 +134,15 @@ public final class m
   public final void close()
   {
     AppMethodBeat.i(93063);
-    if (this.aWG != null) {
+    if (this.aXs != null) {
       try
       {
-        this.aWG.close();
+        this.aXs.close();
         return;
       }
       finally
       {
-        this.aWG = null;
+        this.aXs = null;
         AppMethodBeat.o(93063);
       }
     }
@@ -151,12 +152,12 @@ public final class m
   public final Uri getUri()
   {
     AppMethodBeat.i(93062);
-    if (this.aWG == null)
+    if (this.aXs == null)
     {
       AppMethodBeat.o(93062);
       return null;
     }
-    Uri localUri = this.aWG.getUri();
+    Uri localUri = this.aXs.getUri();
     AppMethodBeat.o(93062);
     return localUri;
   }
@@ -164,7 +165,7 @@ public final class m
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93061);
-    paramInt1 = this.aWG.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.aXs.read(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(93061);
     return paramInt1;
   }

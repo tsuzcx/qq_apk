@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rs
   extends b
 {
-  public a dxo;
+  public a duF;
   
   public rs()
   {
@@ -15,16 +16,19 @@ public final class rs
   
   private rs(byte paramByte)
   {
-    AppMethodBeat.i(91040);
-    this.dxo = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19832);
+    this.duF = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91040);
+    AppMethodBeat.o(19832);
   }
   
   public static final class a
   {
-    public int dtM = 0;
+    public String[] cYr;
+    public Context context;
+    public boolean duG = false;
+    public String[] selectionArgs;
   }
 }
 

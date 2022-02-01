@@ -8,9 +8,9 @@ public abstract interface g
 {
   public abstract void a(a parama);
   
-  public abstract boolean aMC();
+  public abstract boolean aTs();
   
-  public abstract FrameLayout bnJ();
+  public abstract FrameLayout buF();
   
   public abstract void finish();
   
@@ -25,7 +25,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.g
  * JD-Core Version:    0.7.0.1
  */

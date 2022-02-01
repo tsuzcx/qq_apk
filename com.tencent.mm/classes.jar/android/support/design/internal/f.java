@@ -8,17 +8,17 @@ import android.util.AttributeSet;
 
 public final class f
 {
-  private static final int[] iA = { 2130968815 };
-  private static final int[] iB = { 2130968818 };
+  private static final int[] jA = { 2130968818 };
+  private static final int[] jz = { 2130968815 };
   
   private static void F(Context paramContext)
   {
-    a(paramContext, iA, "Theme.AppCompat");
+    a(paramContext, jz, "Theme.AppCompat");
   }
   
   private static void G(Context paramContext)
   {
-    a(paramContext, iB, "Theme.MaterialComponents");
+    a(paramContext, jA, "Theme.MaterialComponents");
   }
   
   public static TypedArray a(Context paramContext, AttributeSet paramAttributeSet, int[] paramArrayOfInt1, int paramInt1, int paramInt2, int... paramVarArgs)

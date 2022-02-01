@@ -10,23 +10,23 @@ public final class a$ak
   
   public a$ak()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.ret != 0) {
-      paramb.by(1, this.ret);
+      paramb.bv(1, this.ret);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (this.ret != 0) {
-      i = j + b.bA(1, this.ret);
+      i = j + b.bx(1, this.ret);
     }
     return i;
   }

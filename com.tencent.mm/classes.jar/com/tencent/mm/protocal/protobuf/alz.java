@@ -4,58 +4,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class alz
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public bgc DmZ;
-  public int Dna = -1;
-  public int Dnb = -1;
-  public boolean Dnc = false;
-  public int Dnd = -1;
-  public int type = -1;
+  public LinkedList<FinderContact> EFw;
+  public int EFx;
+  
+  public alz()
+  {
+    AppMethodBeat.i(195093);
+    this.EFw = new LinkedList();
+    AppMethodBeat.o(195093);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122490);
+    AppMethodBeat.i(195094);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.type);
-      if (this.DmZ != null)
-      {
-        paramVarArgs.kX(2, this.DmZ.computeSize());
-        this.DmZ.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aR(3, this.Dna);
-      paramVarArgs.aR(4, this.Dnb);
-      paramVarArgs.bg(5, this.Dnc);
-      paramVarArgs.aR(6, this.Dnd);
-      AppMethodBeat.o(122490);
+      paramVarArgs.e(1, 8, this.EFw);
+      paramVarArgs.aR(2, this.EFx);
+      AppMethodBeat.o(195094);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bA(1, this.type) + 0;
-      paramInt = i;
-      if (this.DmZ != null) {
-        paramInt = i + f.a.a.a.kW(2, this.DmZ.computeSize());
-      }
-      i = f.a.a.b.b.a.bA(3, this.Dna);
-      int j = f.a.a.b.b.a.bA(4, this.Dnb);
-      int k = f.a.a.b.b.a.fY(5);
-      int m = f.a.a.b.b.a.bA(6, this.Dnd);
-      AppMethodBeat.o(122490);
-      return paramInt + i + j + (k + 1) + m;
+      paramInt = f.a.a.a.c(1, 8, this.EFw);
+      i = f.a.a.b.b.a.bx(2, this.EFx);
+      AppMethodBeat.o(195094);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.EFw.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(122490);
+      AppMethodBeat.o(195094);
       return 0;
     }
     if (paramInt == 3)
@@ -66,51 +56,35 @@ public final class alz
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(122490);
+        AppMethodBeat.o(195094);
         return -1;
       case 1: 
-        localalz.type = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(122490);
-        return 0;
-      case 2: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bgc();
+          localObject1 = new FinderContact();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((bgc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localalz.DmZ = ((bgc)localObject1);
+          for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localalz.EFw.add(localObject1);
           paramInt += 1;
         }
-        AppMethodBeat.o(122490);
-        return 0;
-      case 3: 
-        localalz.Dna = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(122490);
-        return 0;
-      case 4: 
-        localalz.Dnb = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(122490);
-        return 0;
-      case 5: 
-        localalz.Dnc = ((f.a.a.a.a)localObject1).KhF.fHu();
-        AppMethodBeat.o(122490);
+        AppMethodBeat.o(195094);
         return 0;
       }
-      localalz.Dnd = ((f.a.a.a.a)localObject1).KhF.xS();
-      AppMethodBeat.o(122490);
+      localalz.EFx = ((f.a.a.a.a)localObject1).LVo.xF();
+      AppMethodBeat.o(195094);
       return 0;
     }
-    AppMethodBeat.o(122490);
+    AppMethodBeat.o(195094);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.alz
  * JD-Core Version:    0.7.0.1
  */

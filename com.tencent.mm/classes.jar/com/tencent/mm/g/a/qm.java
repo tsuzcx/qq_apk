@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
 
 public final class qm
   extends b
 {
-  public a dwd;
+  public a dtv;
   
   public qm()
   {
@@ -17,17 +16,21 @@ public final class qm
   
   private qm(byte paramByte)
   {
-    AppMethodBeat.i(91217);
-    this.dwd = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125627);
+    this.dtv = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91217);
+    AppMethodBeat.o(125627);
   }
   
   public static final class a
   {
-    public Context context;
-    public Intent intent;
+    public SnsAdClick dtu;
+    public int dtw;
+    public String dtx;
+    public int errorCode;
+    public long timestamp;
+    public String url;
   }
 }
 

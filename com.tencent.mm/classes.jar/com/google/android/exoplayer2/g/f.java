@@ -1,39 +1,37 @@
 package com.google.android.exoplayer2.g;
 
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.o;
 
 public abstract interface f
 {
-  public abstract void aj(long paramLong);
+  public abstract void af(long paramLong);
   
-  public abstract Format fe(int paramInt);
+  public abstract Format eR(int paramInt);
   
-  public abstract int ff(int paramInt);
+  public abstract int eS(int paramInt);
   
-  public abstract boolean fg(int paramInt);
+  public abstract boolean eT(int paramInt);
   
   public abstract int getSelectedIndex();
   
   public abstract int indexOf(int paramInt);
   
-  public abstract int j(Format paramFormat);
-  
   public abstract int length();
   
-  public abstract int up();
+  public abstract o uU();
   
-  public abstract Object uq();
+  public abstract Format uV();
   
-  public abstract p va();
+  public abstract int uW();
   
-  public abstract Format vb();
+  public abstract int ul();
   
-  public abstract int vc();
+  public abstract Object um();
   
   public static abstract interface a
   {
-    public abstract f a(p paramp, int... paramVarArgs);
+    public abstract f a(o paramo, int... paramVarArgs);
   }
 }
 

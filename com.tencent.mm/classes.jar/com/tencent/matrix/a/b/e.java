@@ -11,8 +11,8 @@ import java.util.List;
 
 public final class e
 {
-  private static boolean ctV;
-  private static b.b ctW = new b.b()
+  private static boolean crd;
+  private static b.b cre = new b.b()
   {
     public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
@@ -20,46 +20,46 @@ public final class e
       e.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
     }
   };
-  private static b ctX = new b("power", "android.os.IPowerManager", ctW);
-  private static List<e.b> ctY = new ArrayList();
+  private static b crf = new b("power", "android.os.IPowerManager", cre);
+  private static List<b> crg = new ArrayList();
   
   /* Error */
-  public static void a(e.b paramb)
+  public static void a(b paramb)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 32	com/tencent/matrix/a/b/e:ctY	Ljava/util/List;
+    //   3: getstatic 33	com/tencent/matrix/a/b/e:crg	Ljava/util/List;
     //   6: aload_0
-    //   7: invokeinterface 55 2 0
+    //   7: invokeinterface 56 2 0
     //   12: istore_1
     //   13: iload_1
     //   14: ifeq +7 -> 21
     //   17: ldc 2
     //   19: monitorexit
     //   20: return
-    //   21: getstatic 32	com/tencent/matrix/a/b/e:ctY	Ljava/util/List;
+    //   21: getstatic 33	com/tencent/matrix/a/b/e:crg	Ljava/util/List;
     //   24: aload_0
-    //   25: invokeinterface 58 2 0
+    //   25: invokeinterface 59 2 0
     //   30: pop
-    //   31: getstatic 60	com/tencent/matrix/a/b/e:ctV	Z
+    //   31: getstatic 61	com/tencent/matrix/a/b/e:crd	Z
     //   34: ifne -17 -> 17
-    //   37: getstatic 32	com/tencent/matrix/a/b/e:ctY	Ljava/util/List;
-    //   40: invokeinterface 64 1 0
+    //   37: getstatic 33	com/tencent/matrix/a/b/e:crg	Ljava/util/List;
+    //   40: invokeinterface 65 1 0
     //   45: ifne -28 -> 17
-    //   48: ldc 66
-    //   50: ldc 68
+    //   48: ldc 67
+    //   50: ldc 69
     //   52: iconst_1
     //   53: anewarray 4	java/lang/Object
     //   56: dup
     //   57: iconst_0
-    //   58: getstatic 46	com/tencent/matrix/a/b/e:ctX	Lcom/tencent/matrix/a/d/b;
-    //   61: invokevirtual 71	com/tencent/matrix/a/d/b:doHook	()Z
-    //   64: invokestatic 77	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   58: getstatic 47	com/tencent/matrix/a/b/e:crf	Lcom/tencent/matrix/a/d/b;
+    //   61: invokevirtual 72	com/tencent/matrix/a/d/b:doHook	()Z
+    //   64: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   67: aastore
-    //   68: invokestatic 83	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 84	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: iconst_1
-    //   72: putstatic 60	com/tencent/matrix/a/b/e:ctV	Z
+    //   72: putstatic 61	com/tencent/matrix/a/b/e:crd	Z
     //   75: goto -58 -> 17
     //   78: astore_0
     //   79: ldc 2
@@ -68,7 +68,7 @@ public final class e
     //   83: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	84	0	paramb	e.b
+    //   0	84	0	paramb	b
     //   12	2	1	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -76,15 +76,15 @@ public final class e
     //   21	75	78	finally
   }
   
-  public static void b(e.b paramb)
+  public static void b(b paramb)
   {
     try
     {
-      ctY.remove(paramb);
-      if ((ctV) && (ctY.isEmpty()))
+      crg.remove(paramb);
+      if ((crd) && (crg.isEmpty()))
       {
-        c.i("Matrix.PowerManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(ctX.doUnHook()) });
-        ctV = false;
+        c.i("Matrix.PowerManagerServiceHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(crf.doUnHook()) });
+        crd = false;
       }
       return;
     }
@@ -97,12 +97,19 @@ public final class e
   
   static final class a
   {
-    WorkSource cut;
-    String cuu;
+    WorkSource crB;
+    String crC;
     int flags;
     String packageName;
     String tag;
     IBinder token;
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(IBinder paramIBinder, int paramInt);
+    
+    public abstract void a(IBinder paramIBinder, int paramInt, String paramString1, String paramString2, WorkSource paramWorkSource, String paramString3);
   }
   
   static final class c
@@ -113,7 +120,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ public class AppBrandSysConfigWC
   extends AppBrandSysConfigLU
 {
   public static final Parcelable.Creator<AppBrandSysConfigWC> CREATOR;
-  public boolean jdV;
-  public boolean jdW;
-  public boolean jdX;
-  public int jdY;
-  public ICommLibReader jdZ;
+  public boolean jEj;
+  public boolean jEk;
+  public boolean jEl;
+  public int jEm;
+  public ICommLibReader jEn;
   
   static
   {
@@ -33,14 +33,14 @@ public class AppBrandSysConfigWC
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.jdV = bool1;
+      this.jEj = bool1;
       if (paramParcel.readInt() != 1) {
         break label83;
       }
       bool1 = true;
       label36:
-      this.jdW = bool1;
-      this.jdY = paramParcel.readInt();
+      this.jEk = bool1;
+      this.jEm = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label88;
       }
@@ -49,8 +49,8 @@ public class AppBrandSysConfigWC
     label88:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdX = bool1;
-      this.jdZ = ICommLibReader.b.g(paramParcel);
+      this.jEl = bool1;
+      this.jEn = ICommLibReader.b.g(paramParcel);
       AppMethodBeat.o(44846);
       return;
       bool1 = false;
@@ -66,18 +66,18 @@ public class AppBrandSysConfigWC
     AppMethodBeat.i(44847);
     super.writeToParcel(paramParcel, paramInt);
     byte b;
-    if (this.jdV)
+    if (this.jEj)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.jdW) {
+      if (!this.jEk) {
         break label89;
       }
       i = 1;
       label38:
       paramParcel.writeInt(i);
-      paramParcel.writeInt(this.jdY);
-      if (!this.jdX) {
+      paramParcel.writeInt(this.jEm);
+      if (!this.jEl) {
         break label95;
       }
     }
@@ -86,7 +86,7 @@ public class AppBrandSysConfigWC
     for (int i = j;; i = 0)
     {
       paramParcel.writeInt(i);
-      ICommLibReader.b.a(this.jdZ, paramParcel, paramInt);
+      ICommLibReader.b.a(this.jEn, paramParcel, paramInt);
       AppMethodBeat.o(44847);
       return;
       b = 0;
@@ -98,7 +98,7 @@ public class AppBrandSysConfigWC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC
  * JD-Core Version:    0.7.0.1
  */

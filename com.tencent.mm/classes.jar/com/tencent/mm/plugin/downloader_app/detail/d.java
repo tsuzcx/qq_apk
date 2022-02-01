@@ -12,37 +12,37 @@ import com.tencent.mm.plugin.game.luggage.a;
 import com.tencent.mm.plugin.game.luggage.e;
 import com.tencent.mm.plugin.game.luggage.f;
 import com.tencent.mm.plugin.game.luggage.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
 {
-  private static k ohb;
-  private static String ohc = "";
-  private static String ohd = "action_id";
-  private static String ohe = "preload_url";
-  private static String ohf = "detail_url";
-  private static int ohg = 1;
-  private static int ohh = 2;
-  private static int ohi = 3;
-  private static int ohj = 4;
+  private static k oKB;
+  private static String oKC = "";
+  private static String oKD = "action_id";
+  private static String oKE = "preload_url";
+  private static String oKF = "detail_url";
+  private static int oKG = 1;
+  private static int oKH = 2;
+  private static int oKI = 3;
+  private static int oKJ = 4;
   
-  public static void SA(String paramString)
+  public static void WM(String paramString)
   {
     AppMethodBeat.i(8813);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8813);
       return;
     }
-    if ((!aj.eFJ()) && (!aj.eFK()))
+    if ((!ai.eVd()) && (!ai.eVe()))
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putInt(ohd, ohi);
-      ((Bundle)localObject).putString(ohe, paramString);
+      ((Bundle)localObject).putInt(oKD, oKI);
+      ((Bundle)localObject).putString(oKE, paramString);
       a.b((Parcelable)localObject, a.class, null);
       AppMethodBeat.o(8813);
       return;
@@ -58,47 +58,47 @@ public final class d
       }
       localObject = paramString.substring(k, i);
     }
-    if (!bt.isNullOrNil((String)localObject)) {}
+    if (!bs.isNullOrNil((String)localObject)) {}
     for (paramString = paramString.replace((CharSequence)localObject, "");; paramString = "")
     {
-      if ((!bt.isNullOrNil(paramString)) && (!paramString.equals(ohc)))
+      if ((!bs.isNullOrNil(paramString)) && (!paramString.equals(oKC)))
       {
-        ohc = paramString;
-        ad.i("MicroMsg.PreloadDetailHelp", "setPreloadlUrl : %s", new Object[] { ohc });
-        bQQ();
+        oKC = paramString;
+        ac.i("MicroMsg.PreloadDetailHelp", "setPreloadlUrl : %s", new Object[] { oKC });
+        bYg();
       }
       AppMethodBeat.o(8813);
       return;
     }
   }
   
-  private static void bQQ()
+  private static void bYg()
   {
     AppMethodBeat.i(8814);
-    if ((!aj.eFJ()) && (!aj.eFK()))
+    if ((!ai.eVd()) && (!ai.eVe()))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(ohd, ohg);
+      localBundle.putInt(oKD, oKG);
       a.b(localBundle, a.class, null);
       AppMethodBeat.o(8814);
       return;
     }
-    if (bt.isNullOrNil(ohc))
+    if (bs.isNullOrNil(oKC))
     {
       AppMethodBeat.o(8814);
       return;
     }
-    f.a(b.class, ohc, new f.a()
+    f.a(b.class, oKC, new f.a()
     {
-      public final void AI()
+      public final void Am()
       {
         AppMethodBeat.i(8809);
-        if (d.bQR() != null) {
+        if (d.bYh() != null) {
           d.destroy();
         }
-        d.a(f.aq(aj.getContext(), d.ohc));
-        if (d.bQR() != null) {
-          e.a(d.bQR(), d.ohc, false);
+        d.a(f.ar(ai.getContext(), d.oKC));
+        if (d.bYh() != null) {
+          e.a(d.bYh(), d.oKC, false);
         }
         AppMethodBeat.o(8809);
       }
@@ -109,27 +109,27 @@ public final class d
   public static void destroy()
   {
     AppMethodBeat.i(8817);
-    if ((!aj.eFJ()) && (!aj.eFK()))
+    if ((!ai.eVd()) && (!ai.eVe()))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(ohd, ohh);
+      localBundle.putInt(oKD, oKH);
       a.b(localBundle, a.class, null);
       AppMethodBeat.o(8817);
       return;
     }
-    if (ohb != null)
+    if (oKB != null)
     {
-      ohb.destroy();
-      ohb = null;
+      oKB.destroy();
+      oKB = null;
     }
     AppMethodBeat.o(8817);
   }
   
-  public static k ep(Context paramContext)
+  public static k ex(Context paramContext)
   {
     AppMethodBeat.i(8815);
-    if (ohb != null) {
-      ohb.setContext(paramContext);
+    if (oKB != null) {
+      oKB.setContext(paramContext);
     }
     p.postDelayed(new Runnable()
     {
@@ -140,8 +140,8 @@ public final class d
         AppMethodBeat.o(8810);
       }
     }, 50L);
-    paramContext = ohb;
-    ohb = null;
+    paramContext = oKB;
+    oKB = null;
     AppMethodBeat.o(8815);
     return paramContext;
   }
@@ -149,21 +149,21 @@ public final class d
   public static void setUrl(String paramString)
   {
     AppMethodBeat.i(8816);
-    if ((aj.eFJ()) || (aj.eFK()))
+    if ((ai.eVd()) || (ai.eVe()))
     {
-      if (ohb != null)
+      if (oKB != null)
       {
-        ad.i("MicroMsg.PreloadDetailHelp", "setUrl: %s", new Object[] { paramString });
+        ac.i("MicroMsg.PreloadDetailHelp", "setUrl: %s", new Object[] { paramString });
         paramString = Uri.parse(paramString).getQueryParameter("appid");
-        ohb.a(new c()
+        oKB.a(new c()
         {
-          public final JSONObject AM()
+          public final JSONObject Aq()
           {
             AppMethodBeat.i(8811);
             JSONObject localJSONObject = new JSONObject();
             try
             {
-              localJSONObject.put("appid", this.iHZ);
+              localJSONObject.put("appid", this.jib);
               label25:
               AppMethodBeat.o(8811);
               return localJSONObject;
@@ -185,8 +185,8 @@ public final class d
     else
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(ohd, ohj);
-      localBundle.putString(ohf, paramString);
+      localBundle.putInt(oKD, oKJ);
+      localBundle.putString(oKF, paramString);
       a.b(localBundle, a.class, null);
     }
     AppMethodBeat.o(8816);

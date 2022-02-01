@@ -9,20 +9,20 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class FreeWifiStateView
   extends ImageView
 {
   private int bottom;
-  private ap gAC;
+  private ao gox;
   private int left;
   private Context mContext;
   private Paint mPaint;
-  int pdd;
-  private int pde;
-  private Runnable pdf;
+  int pGo;
+  private int pGp;
+  private Runnable pGq;
   private int right;
   private int state;
   private int top;
@@ -36,13 +36,13 @@ public class FreeWifiStateView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(25140);
-    this.pdd = 2;
+    this.pGo = 2;
     this.left = -1;
     this.top = -1;
     this.right = -1;
     this.bottom = -1;
-    this.pde = -1;
-    this.pdf = new Runnable()
+    this.pGp = -1;
+    this.pGq = new Runnable()
     {
       public final void run()
       {
@@ -57,16 +57,16 @@ public class FreeWifiStateView
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.left = a.fromDPToPix(this.mContext, 2);
     this.top = this.left;
-    this.pde = a.fromDPToPix(this.mContext, 3);
-    this.gAC = new ap(Looper.getMainLooper());
+    this.pGp = a.fromDPToPix(this.mContext, 3);
+    this.gox = new ao(Looper.getMainLooper());
     AppMethodBeat.o(25140);
   }
   
-  private void Bh(int paramInt)
+  private void BZ(int paramInt)
   {
     AppMethodBeat.i(25143);
-    this.gAC.removeCallbacks(this.pdf);
-    this.gAC.postDelayed(this.pdf, paramInt);
+    this.gox.removeCallbacks(this.pGq);
+    this.gox.postDelayed(this.pGq, paramInt);
     AppMethodBeat.o(25143);
   }
   
@@ -78,19 +78,19 @@ public class FreeWifiStateView
     {
       int i = getWidth() / 2;
       this.mPaint.setARGB(255, 103, 209, 79);
-      this.mPaint.setStrokeWidth(this.pde);
+      this.mPaint.setStrokeWidth(this.pGp);
       if (this.right == -1) {
         this.right = (i * 2 - this.left);
       }
       if (this.bottom == -1) {
         this.bottom = this.right;
       }
-      paramCanvas.drawArc(new RectF(this.left, this.top, this.right, this.bottom), 270.0F, this.pdd, false, this.mPaint);
-      this.pdd += 5;
-      if (this.pdd > 365) {
-        this.pdd = 0;
+      paramCanvas.drawArc(new RectF(this.left, this.top, this.right, this.bottom), 270.0F, this.pGo, false, this.mPaint);
+      this.pGo += 5;
+      if (this.pGo > 365) {
+        this.pGo = 0;
       }
-      Bh(100);
+      BZ(100);
     }
     AppMethodBeat.o(25142);
   }
@@ -99,7 +99,7 @@ public class FreeWifiStateView
   {
     AppMethodBeat.i(25141);
     this.state = paramInt;
-    Bh(10);
+    BZ(10);
     AppMethodBeat.o(25141);
   }
 }

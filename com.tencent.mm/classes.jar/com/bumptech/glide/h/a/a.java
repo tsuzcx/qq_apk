@@ -9,12 +9,15 @@ import java.util.List;
 
 public final class a
 {
-  private static final a.d<Object> aLA;
+  private static final d<Object> aMq;
   
   static
   {
     AppMethodBeat.i(77794);
-    aLA = new a.1();
+    aMq = new d()
+    {
+      public final void reset(Object paramAnonymousObject) {}
+    };
     AppMethodBeat.o(77794);
   }
   
@@ -29,12 +32,12 @@ public final class a
   private static <T extends c> l.a<T> a(l.a<T> parama, a<T> parama1)
   {
     AppMethodBeat.i(77792);
-    parama = a(parama, parama1, aLA);
+    parama = a(parama, parama1, aMq);
     AppMethodBeat.o(77792);
     return parama;
   }
   
-  private static <T> l.a<T> a(l.a<T> parama, a<T> parama1, a.d<T> paramd)
+  private static <T> l.a<T> a(l.a<T> parama, a<T> parama1, d<T> paramd)
   {
     AppMethodBeat.i(77793);
     parama = new b(parama, parama1, paramd);
@@ -50,41 +53,41 @@ public final class a
     return parama;
   }
   
-  public static <T> l.a<List<T>> pT()
+  public static <T> l.a<List<T>> qd()
   {
     AppMethodBeat.i(77791);
-    l.a locala = a(new l.c(20), new a.2(), new a.3());
+    l.a locala = a(new l.c(20), new a()new d {}, new d() {});
     AppMethodBeat.o(77791);
     return locala;
   }
   
   public static abstract interface a<T>
   {
-    public abstract T ok();
+    public abstract T ou();
   }
   
   static final class b<T>
     implements l.a<T>
   {
-    private final l.a<T> aDJ;
-    private final a.a<T> aLB;
-    private final a.d<T> aLC;
+    private final l.a<T> aEA;
+    private final a.a<T> aMr;
+    private final a.d<T> aMs;
     
     b(l.a<T> parama, a.a<T> parama1, a.d<T> paramd)
     {
-      this.aDJ = parama;
-      this.aLB = parama1;
-      this.aLC = paramd;
+      this.aEA = parama;
+      this.aMr = parama1;
+      this.aMs = paramd;
     }
     
     public final T acquire()
     {
       AppMethodBeat.i(77787);
-      Object localObject2 = this.aDJ.acquire();
+      Object localObject2 = this.aEA.acquire();
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = this.aLB.ok();
+        localObject2 = this.aMr.ou();
         localObject1 = localObject2;
         if (Log.isLoggable("FactoryPools", 2))
         {
@@ -93,7 +96,7 @@ public final class a
         }
       }
       if ((localObject1 instanceof a.c)) {
-        ((a.c)localObject1).oc().aI(false);
+        ((a.c)localObject1).om().aI(false);
       }
       AppMethodBeat.o(77787);
       return localObject1;
@@ -103,10 +106,10 @@ public final class a
     {
       AppMethodBeat.i(77788);
       if ((paramT instanceof a.c)) {
-        ((a.c)paramT).oc().aI(true);
+        ((a.c)paramT).om().aI(true);
       }
-      this.aLC.reset(paramT);
-      boolean bool = this.aDJ.release(paramT);
+      this.aMs.reset(paramT);
+      boolean bool = this.aEA.release(paramT);
       AppMethodBeat.o(77788);
       return bool;
     }
@@ -114,12 +117,17 @@ public final class a
   
   public static abstract interface c
   {
-    public abstract b oc();
+    public abstract b om();
+  }
+  
+  public static abstract interface d<T>
+  {
+    public abstract void reset(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.bumptech.glide.h.a.a
  * JD-Core Version:    0.7.0.1
  */

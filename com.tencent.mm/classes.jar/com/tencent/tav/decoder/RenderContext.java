@@ -54,7 +54,7 @@ public class RenderContext
   
   public RenderContext(int paramInt1, int paramInt2, Surface paramSurface, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(201826);
+    AppMethodBeat.i(197887);
     this.isSharedContext = false;
     this.released = false;
     this.threadId = -1L;
@@ -68,12 +68,12 @@ public class RenderContext
     this.height = paramInt2;
     eglSetup(paramEGLContext);
     makeCurrent();
-    AppMethodBeat.o(201826);
+    AppMethodBeat.o(197887);
   }
   
   public static boolean checkEglActionSuccess(String paramString)
   {
-    AppMethodBeat.i(201836);
+    AppMethodBeat.i(197897);
     String str = "";
     for (int i = 0;; i = 1)
     {
@@ -89,32 +89,32 @@ public class RenderContext
     }
     if (i == 0)
     {
-      AppMethodBeat.o(201836);
+      AppMethodBeat.o(197897);
       return true;
     }
-    AppMethodBeat.o(201836);
+    AppMethodBeat.o(197897);
     return false;
   }
   
   public static void checkEglError(String paramString)
   {
-    AppMethodBeat.i(201835);
+    AppMethodBeat.i(197896);
     checkEglActionSuccess(paramString);
-    AppMethodBeat.o(201835);
+    AppMethodBeat.o(197896);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(201830);
+    AppMethodBeat.i(197891);
     if (this.threadId != Thread.currentThread().getId()) {
       Logger.e("RenderContext", "Thread wrong!! ", new RuntimeException());
     }
-    AppMethodBeat.o(201830);
+    AppMethodBeat.o(197891);
   }
   
   public static int createTexture(int paramInt)
   {
-    AppMethodBeat.i(201844);
+    AppMethodBeat.i(197905);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     int i = arrayOfInt[0];
@@ -125,7 +125,7 @@ public class RenderContext
     GLES20.glTexParameteri(paramInt, 10242, 33071);
     GLES20.glTexParameteri(paramInt, 10243, 33071);
     checkEglError("glTexParameter");
-    AppMethodBeat.o(201844);
+    AppMethodBeat.o(197905);
     return i;
   }
   
@@ -471,10 +471,10 @@ public class RenderContext
     {
       try
       {
-        AppMethodBeat.i(201837);
+        AppMethodBeat.i(197898);
         if (this.released)
         {
-          AppMethodBeat.o(201837);
+          AppMethodBeat.o(197898);
           paramInt = j;
           return paramInt;
         }
@@ -490,7 +490,7 @@ public class RenderContext
           Logger.e("RenderContext", " " + GLES20.glGetShaderInfoLog(j));
           GLES20.glDeleteShader(j);
           paramInt = i;
-          AppMethodBeat.o(201837);
+          AppMethodBeat.o(197898);
         }
         else
         {
@@ -553,7 +553,7 @@ public class RenderContext
   
   private void releaseReleadingSurface()
   {
-    AppMethodBeat.i(201839);
+    AppMethodBeat.i(197900);
     checkThread();
     int i = 0;
     while (i < this.releasingSurfaceCache.size())
@@ -561,7 +561,7 @@ public class RenderContext
       release((Surface)this.releasingSurfaceCache.remove(i));
       i += 1;
     }
-    AppMethodBeat.o(201839);
+    AppMethodBeat.o(197900);
   }
   
   public Surface createOutputSurface(int paramInt1, int paramInt2, int paramInt3)
@@ -571,12 +571,12 @@ public class RenderContext
       String str;
       try
       {
-        AppMethodBeat.i(201838);
+        AppMethodBeat.i(197899);
         Surface localSurface1;
         if (this.released)
         {
           localSurface1 = null;
-          AppMethodBeat.o(201838);
+          AppMethodBeat.o(197899);
           return localSurface1;
         }
         checkThread();
@@ -588,7 +588,7 @@ public class RenderContext
           if (localSurface1 != null)
           {
             this.activeSurfaceCache.put(localSurface1, str);
-            AppMethodBeat.o(201838);
+            AppMethodBeat.o(197899);
             continue;
           }
         }
@@ -600,7 +600,7 @@ public class RenderContext
       Surface localSurface2 = new Surface(localVideoTexture.surfaceTexture());
       this.videoTextureMap.put(localSurface2, localVideoTexture);
       this.activeSurfaceCache.put(localSurface2, str);
-      AppMethodBeat.o(201838);
+      AppMethodBeat.o(197899);
     }
   }
   
@@ -676,20 +676,20 @@ public class RenderContext
   
   public long getEglSurfaceHandle()
   {
-    AppMethodBeat.i(201831);
+    AppMethodBeat.i(197892);
     if (this.eglSurface != null)
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
         l = this.eglSurface.getNativeHandle();
-        AppMethodBeat.o(201831);
+        AppMethodBeat.o(197892);
         return l;
       }
       long l = this.eglSurface.getHandle();
-      AppMethodBeat.o(201831);
+      AppMethodBeat.o(197892);
       return l;
     }
-    AppMethodBeat.o(201831);
+    AppMethodBeat.o(197892);
     return 0L;
   }
   
@@ -768,11 +768,11 @@ public class RenderContext
     {
       try
       {
-        AppMethodBeat.i(201843);
+        AppMethodBeat.i(197904);
         checkThread();
         if (this.released)
         {
-          AppMethodBeat.o(201843);
+          AppMethodBeat.o(197904);
           return;
         }
         makeCurrent();
@@ -823,7 +823,7 @@ public class RenderContext
       this._eglContext = null;
       this.eglSurface = null;
       this.surface = null;
-      AppMethodBeat.o(201843);
+      AppMethodBeat.o(197904);
     }
   }
   
@@ -939,40 +939,40 @@ public class RenderContext
   
   public String toString()
   {
-    AppMethodBeat.i(201845);
+    AppMethodBeat.i(197906);
     String str = "RenderContext{_eglContext=" + this._eglContext + ", isSharedContext=" + this.isSharedContext + ", released=" + this.released + '}';
-    AppMethodBeat.o(201845);
+    AppMethodBeat.o(197906);
     return str;
   }
   
   public void updateViewport(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(201828);
+    AppMethodBeat.i(197889);
     makeCurrent();
     GLES20.glViewport(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(201828);
+    AppMethodBeat.o(197889);
   }
   
   public void updateViewport(CGRect paramCGRect)
   {
-    AppMethodBeat.i(201827);
+    AppMethodBeat.i(197888);
     if ((paramCGRect == null) || (paramCGRect.origin == null) || (paramCGRect.size == null))
     {
-      AppMethodBeat.o(201827);
+      AppMethodBeat.o(197888);
       return;
     }
     this.glViewportRect = paramCGRect;
     updateViewport((int)paramCGRect.origin.x, (int)paramCGRect.origin.y, (int)paramCGRect.size.width, (int)paramCGRect.size.height);
-    AppMethodBeat.o(201827);
+    AppMethodBeat.o(197888);
   }
   
   public VideoTexture videoTextureForSurface(Surface paramSurface)
   {
     try
     {
-      AppMethodBeat.i(201842);
+      AppMethodBeat.i(197903);
       paramSurface = (VideoTexture)this.videoTextureMap.get(paramSurface);
-      AppMethodBeat.o(201842);
+      AppMethodBeat.o(197903);
       return paramSurface;
     }
     finally
@@ -989,7 +989,7 @@ public class RenderContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.RenderContext
  * JD-Core Version:    0.7.0.1
  */

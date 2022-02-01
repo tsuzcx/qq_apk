@@ -1,31 +1,102 @@
 package com.tencent.mm.plugin.finder.view;
 
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.y;
+import com.tencent.mm.pluginsdk.ui.span.o;
+import com.tencent.mm.sdk.platformtools.ac;
+import d.g.b.k;
+import d.l;
+import d.v;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class FinderFeedExposeLayout$l
-  extends d.g.b.l
-  implements b<String, y>
+  implements View.OnTouchListener
 {
-  public static final l LeN;
+  FinderFeedExposeLayout$l(FinderFeedExposeLayout paramFinderFeedExposeLayout, Spannable paramSpannable, FinderFeedExposeLayout.a parama) {}
   
-  static
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200083);
-    LeN = new l();
-    AppMethodBeat.o(200083);
-  }
-  
-  FinderFeedExposeLayout$l()
-  {
-    super(1);
+    AppMethodBeat.i(168338);
+    k.g(paramMotionEvent, "event");
+    int j = paramMotionEvent.getAction();
+    if (paramView == null)
+    {
+      paramView = new v("null cannot be cast to non-null type android.widget.TextView");
+      AppMethodBeat.o(168338);
+      throw paramView;
+    }
+    paramView = (TextView)paramView;
+    Spannable localSpannable = this.rGF;
+    Object localObject1;
+    int k;
+    int i;
+    if ((j == 1) || (j == 3))
+    {
+      localObject1 = (ClickableSpan[])localSpannable.getSpans(0, this.rGF.length(), ClickableSpan.class);
+      if (localObject1 != null)
+      {
+        k = localObject1.length;
+        i = 0;
+        while (i < k)
+        {
+          Object localObject2 = localObject1[i];
+          if ((localObject2 instanceof o))
+          {
+            ((o)localObject2).setIsPressed(false);
+            this.rXr.nMU.invalidate();
+          }
+          i += 1;
+        }
+      }
+    }
+    if ((j == 1) || (j == 0))
+    {
+      i = (int)paramMotionEvent.getX();
+      k = (int)paramMotionEvent.getY();
+      int m = paramView.getTotalPaddingLeft();
+      int n = paramView.getTotalPaddingTop();
+      int i1 = paramView.getScrollX();
+      int i2 = paramView.getScrollY();
+      localObject1 = paramView.getLayout();
+      i = ((Layout)localObject1).getOffsetForHorizontal(((Layout)localObject1).getLineForVertical(k - n + i2), i - m + i1);
+      localObject1 = (ClickableSpan[])localSpannable.getSpans(i, i, ClickableSpan.class);
+      if (localObject1.length != 0)
+      {
+        localObject1 = localObject1[0];
+        if (j == 1) {
+          ((ClickableSpan)localObject1).onClick((View)paramView);
+        }
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      ac.i(FinderFeedExposeLayout.b(this.rXk), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
+      AppMethodBeat.o(168338);
+      return bool;
+      if (j != 0) {
+        break;
+      }
+      if ((localObject1 instanceof o))
+      {
+        ((o)localObject1).setIsPressed(true);
+        this.rXr.nMU.invalidate();
+      }
+      Selection.setSelection(localSpannable, localSpannable.getSpanStart(localObject1), localSpannable.getSpanEnd(localObject1));
+      break;
+      Selection.removeSelection(localSpannable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderFeedExposeLayout.l
  * JD-Core Version:    0.7.0.1
  */

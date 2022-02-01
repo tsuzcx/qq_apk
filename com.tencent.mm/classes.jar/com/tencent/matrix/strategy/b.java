@@ -6,9 +6,9 @@ import java.util.HashMap;
 public final class b
   extends MatrixStrategyCaller
 {
-  private static final HashMap<String, Boolean> cAV = new HashMap();
+  private static final HashMap<String, Boolean> cye = new HashMap();
   
-  public static void HL() {}
+  public static void Hw() {}
   
   public final void onStrategyNotify(String paramString, boolean paramBoolean) {}
 }

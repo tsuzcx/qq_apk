@@ -8,28 +8,28 @@ import java.util.Arrays;
 public final class a$an
   extends e
 {
-  public byte[] buffer = g.bIZ;
+  public byte[] buffer = g.bGH;
   public int iLen = 0;
   
   public a$an()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bz(1, this.iLen);
-    if (!Arrays.equals(this.buffer, g.bIZ)) {
+    paramb.bw(1, this.iLen);
+    if (!Arrays.equals(this.buffer, g.bGH)) {
       paramb.b(2, this.buffer);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg() + b.bB(1, this.iLen);
+    int j = super.xT() + b.by(1, this.iLen);
     int i = j;
-    if (!Arrays.equals(this.buffer, g.bIZ)) {
+    if (!Arrays.equals(this.buffer, g.bGH)) {
       i = j + b.c(2, this.buffer);
     }
     return i;

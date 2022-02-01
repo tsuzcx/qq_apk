@@ -1,36 +1,36 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.ly;
+import com.tencent.mm.g.a.mh;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
 import java.util.ArrayList;
 
 public abstract class b
-  extends c<ly>
+  extends c<mh>
 {
-  protected ArrayList<String> BNJ = new ArrayList(3);
+  protected ArrayList<String> DfT = new ArrayList(3);
   
   public b()
   {
     super(0);
-    this.__eventId = ly.class.getName().hashCode();
+    this.__eventId = mh.class.getName().hashCode();
   }
   
   public static void a(String paramString, b paramb)
   {
-    if (!paramb.BNJ.contains(paramString)) {
-      paramb.BNJ.add(paramString);
+    if (!paramb.DfT.contains(paramString)) {
+      paramb.DfT.add(paramString);
     }
-    a.ESL.c(paramb);
-    e.aAx(paramString);
+    a.GpY.c(paramb);
+    e.aFP(paramString);
   }
   
   public static void b(String paramString, b paramb)
   {
-    e.aAy(paramString);
-    a.ESL.d(paramb);
-    if (paramb.BNJ.contains(paramString)) {
-      paramb.BNJ.remove(paramString);
+    e.aFQ(paramString);
+    a.GpY.d(paramb);
+    if (paramb.DfT.contains(paramString)) {
+      paramb.DfT.remove(paramString);
     }
   }
   
@@ -38,7 +38,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.b
  * JD-Core Version:    0.7.0.1
  */

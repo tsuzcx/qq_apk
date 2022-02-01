@@ -6,13 +6,13 @@ import com.google.b.a.e;
 public final class a$ad
   extends e
 {
-  public a.aw IkD = null;
-  public int Imj = 0;
+  public a.aw JMo = null;
+  public int JNU = 0;
   public String groupId = "";
   
   public a$ad()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -20,29 +20,29 @@ public final class a$ad
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.IkD != null) {
-      paramb.a(2, this.IkD);
+    if (this.JMo != null) {
+      paramb.a(2, this.JMo);
     }
-    if (this.Imj != 0) {
-      paramb.by(3, this.Imj);
+    if (this.JNU != 0) {
+      paramb.bv(3, this.JNU);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.IkD != null) {
-      j = i + b.b(2, this.IkD);
+    if (this.JMo != null) {
+      j = i + b.b(2, this.JMo);
     }
     i = j;
-    if (this.Imj != 0) {
-      i = j + b.bA(3, this.Imj);
+    if (this.JNU != 0) {
+      i = j + b.bx(3, this.JNU);
     }
     return i;
   }

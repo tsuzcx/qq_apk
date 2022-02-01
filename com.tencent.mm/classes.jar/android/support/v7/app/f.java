@@ -8,41 +8,41 @@ import java.util.Map;
 
 final class f
 {
-  private static Field WP;
-  private static boolean WQ;
-  private static Class WR;
-  private static boolean WS;
-  private static Field WT;
-  private static boolean WU;
-  private static Field WV;
-  private static boolean WW;
+  private static Field XK;
+  private static boolean XL;
+  private static Class XM;
+  private static boolean XN;
+  private static Field XO;
+  private static boolean XP;
+  private static Field XQ;
+  private static boolean XR;
   
-  private static void J(Object paramObject)
+  private static void L(Object paramObject)
   {
-    if (!WS) {}
+    if (!XN) {}
     try
     {
-      WR = Class.forName("android.content.res.ThemedResourceCache");
+      XM = Class.forName("android.content.res.ThemedResourceCache");
       label14:
-      WS = true;
-      if (WR == null) {}
+      XN = true;
+      if (XM == null) {}
       for (;;)
       {
         return;
-        if (!WU) {}
+        if (!XP) {}
         try
         {
-          Field localField = WR.getDeclaredField("mUnthemedEntries");
-          WT = localField;
+          Field localField = XM.getDeclaredField("mUnthemedEntries");
+          XO = localField;
           localField.setAccessible(true);
           label49:
-          WU = true;
-          if (WT == null) {
+          XP = true;
+          if (XO == null) {
             continue;
           }
           try
           {
-            paramObject = (LongSparseArray)WT.get(paramObject);
+            paramObject = (LongSparseArray)XO.get(paramObject);
             if (paramObject == null) {
               continue;
             }
@@ -91,18 +91,18 @@ final class f
   
   private static void b(Resources paramResources)
   {
-    if (!WQ) {}
+    if (!XL) {}
     try
     {
       Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      WP = localField;
+      XK = localField;
       localField.setAccessible(true);
       label23:
-      WQ = true;
-      if (WP != null) {}
+      XL = true;
+      if (XK != null) {}
       try
       {
-        paramResources = (Map)WP.get(paramResources);
+        paramResources = (Map)XK.get(paramResources);
         if (paramResources != null) {
           paramResources.clear();
         }
@@ -124,24 +124,24 @@ final class f
   
   private static void c(Resources paramResources)
   {
-    if (!WQ) {}
+    if (!XL) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      WP = (Field)localObject1;
+      XK = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label23:
-      WQ = true;
+      XL = true;
       Object localObject2 = null;
       localObject1 = localObject2;
-      if (WP != null) {}
+      if (XK != null) {}
       try
       {
-        localObject1 = WP.get(paramResources);
+        localObject1 = XK.get(paramResources);
         if (localObject1 == null) {
           return;
         }
-        J(localObject1);
+        L(localObject1);
         return;
       }
       catch (IllegalAccessException paramResources)
@@ -161,44 +161,44 @@ final class f
   private static void d(Resources paramResources)
   {
     Object localObject2 = null;
-    if (!WW) {}
+    if (!XR) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      WV = (Field)localObject1;
+      XQ = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label25:
-      WW = true;
-      if (WV == null) {}
+      XR = true;
+      if (XQ == null) {}
       for (;;)
       {
         return;
         try
         {
-          paramResources = WV.get(paramResources);
+          paramResources = XQ.get(paramResources);
           if (paramResources == null) {
             continue;
           }
-          if (WQ) {}
+          if (XL) {}
         }
         catch (IllegalAccessException paramResources)
         {
           try
           {
             localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-            WP = (Field)localObject1;
+            XK = (Field)localObject1;
             ((Field)localObject1).setAccessible(true);
             label73:
-            WQ = true;
+            XL = true;
             localObject1 = localObject2;
-            if (WP != null) {}
+            if (XK != null) {}
             try
             {
-              localObject1 = WP.get(paramResources);
+              localObject1 = XK.get(paramResources);
               if (localObject1 == null) {
                 continue;
               }
-              J(localObject1);
+              L(localObject1);
               return;
               paramResources = paramResources;
               paramResources = null;

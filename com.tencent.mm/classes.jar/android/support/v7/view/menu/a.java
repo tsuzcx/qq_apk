@@ -18,25 +18,25 @@ import android.view.View;
 public final class a
   implements android.support.v4.a.a.b
 {
-  private int CW = 16;
-  private CharSequence Eo;
-  private final int abG;
-  private final int abH;
-  private final int abI;
-  private CharSequence abJ;
-  private char abK;
-  private int abL = 4096;
-  private char abM;
-  private int abN = 4096;
-  private Drawable abO;
-  private int abP = 0;
-  private MenuItem.OnMenuItemClickListener abQ;
-  private CharSequence abR;
-  private CharSequence abS;
-  private ColorStateList abT = null;
-  private PorterDuff.Mode abU = null;
-  private boolean abV = false;
-  private boolean abW = false;
+  private int DU = 16;
+  private CharSequence Fm;
+  private final int acA;
+  private final int acB;
+  private final int acC;
+  private CharSequence acD;
+  private char acE;
+  private int acF = 4096;
+  private char acG;
+  private int acH = 4096;
+  private Drawable acI;
+  private int acJ = 0;
+  private MenuItem.OnMenuItemClickListener acK;
+  private CharSequence acL;
+  private CharSequence acM;
+  private ColorStateList acN = null;
+  private PorterDuff.Mode acO = null;
+  private boolean acP = false;
+  private boolean acQ = false;
   private Context mContext;
   private final int mId;
   private Intent mIntent;
@@ -45,23 +45,23 @@ public final class a
   {
     this.mContext = paramContext;
     this.mId = 16908332;
-    this.abG = 0;
-    this.abH = 0;
-    this.abI = 0;
-    this.Eo = paramCharSequence;
+    this.acA = 0;
+    this.acB = 0;
+    this.acC = 0;
+    this.Fm = paramCharSequence;
   }
   
-  private void hc()
+  private void hk()
   {
-    if ((this.abO != null) && ((this.abV) || (this.abW)))
+    if ((this.acI != null) && ((this.acP) || (this.acQ)))
     {
-      this.abO = android.support.v4.graphics.drawable.a.i(this.abO);
-      this.abO = this.abO.mutate();
-      if (this.abV) {
-        android.support.v4.graphics.drawable.a.a(this.abO, this.abT);
+      this.acI = android.support.v4.graphics.drawable.a.i(this.acI);
+      this.acI = this.acI.mutate();
+      if (this.acP) {
+        android.support.v4.graphics.drawable.a.a(this.acI, this.acN);
       }
-      if (this.abW) {
-        android.support.v4.graphics.drawable.a.a(this.abO, this.abU);
+      if (this.acQ) {
+        android.support.v4.graphics.drawable.a.a(this.acI, this.acO);
       }
     }
   }
@@ -76,7 +76,7 @@ public final class a
     return false;
   }
   
-  public final android.support.v4.view.b eg()
+  public final android.support.v4.view.b eo()
   {
     return null;
   }
@@ -98,37 +98,37 @@ public final class a
   
   public final int getAlphabeticModifiers()
   {
-    return this.abN;
+    return this.acH;
   }
   
   public final char getAlphabeticShortcut()
   {
-    return this.abM;
+    return this.acG;
   }
   
   public final CharSequence getContentDescription()
   {
-    return this.abR;
+    return this.acL;
   }
   
   public final int getGroupId()
   {
-    return this.abG;
+    return this.acA;
   }
   
   public final Drawable getIcon()
   {
-    return this.abO;
+    return this.acI;
   }
   
   public final ColorStateList getIconTintList()
   {
-    return this.abT;
+    return this.acN;
   }
   
   public final PorterDuff.Mode getIconTintMode()
   {
-    return this.abU;
+    return this.acO;
   }
   
   public final Intent getIntent()
@@ -148,17 +148,17 @@ public final class a
   
   public final int getNumericModifiers()
   {
-    return this.abL;
+    return this.acF;
   }
   
   public final char getNumericShortcut()
   {
-    return this.abK;
+    return this.acE;
   }
   
   public final int getOrder()
   {
-    return this.abI;
+    return this.acC;
   }
   
   public final SubMenu getSubMenu()
@@ -168,20 +168,20 @@ public final class a
   
   public final CharSequence getTitle()
   {
-    return this.Eo;
+    return this.Fm;
   }
   
   public final CharSequence getTitleCondensed()
   {
-    if (this.abJ != null) {
-      return this.abJ;
+    if (this.acD != null) {
+      return this.acD;
     }
-    return this.Eo;
+    return this.Fm;
   }
   
   public final CharSequence getTooltipText()
   {
-    return this.abS;
+    return this.acM;
   }
   
   public final boolean hasSubMenu()
@@ -196,33 +196,33 @@ public final class a
   
   public final boolean isCheckable()
   {
-    return (this.CW & 0x1) != 0;
+    return (this.DU & 0x1) != 0;
   }
   
   public final boolean isChecked()
   {
-    return (this.CW & 0x2) != 0;
+    return (this.DU & 0x2) != 0;
   }
   
   public final boolean isEnabled()
   {
-    return (this.CW & 0x10) != 0;
+    return (this.DU & 0x10) != 0;
   }
   
   public final boolean isVisible()
   {
-    return (this.CW & 0x8) == 0;
+    return (this.DU & 0x8) == 0;
   }
   
   public final android.support.v4.a.a.b k(CharSequence paramCharSequence)
   {
-    this.abR = paramCharSequence;
+    this.acL = paramCharSequence;
     return this;
   }
   
   public final android.support.v4.a.a.b l(CharSequence paramCharSequence)
   {
-    this.abS = paramCharSequence;
+    this.acM = paramCharSequence;
     return this;
   }
   
@@ -233,79 +233,79 @@ public final class a
   
   public final MenuItem setAlphabeticShortcut(char paramChar)
   {
-    this.abM = Character.toLowerCase(paramChar);
+    this.acG = Character.toLowerCase(paramChar);
     return this;
   }
   
   public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
   {
-    this.abM = Character.toLowerCase(paramChar);
-    this.abN = KeyEvent.normalizeMetaState(paramInt);
+    this.acG = Character.toLowerCase(paramChar);
+    this.acH = KeyEvent.normalizeMetaState(paramInt);
     return this;
   }
   
   public final MenuItem setCheckable(boolean paramBoolean)
   {
-    int j = this.CW;
+    int j = this.DU;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      this.CW = (i | j & 0xFFFFFFFE);
+      this.DU = (i | j & 0xFFFFFFFE);
       return this;
     }
   }
   
   public final MenuItem setChecked(boolean paramBoolean)
   {
-    int j = this.CW;
+    int j = this.DU;
     if (paramBoolean) {}
     for (int i = 2;; i = 0)
     {
-      this.CW = (i | j & 0xFFFFFFFD);
+      this.DU = (i | j & 0xFFFFFFFD);
       return this;
     }
   }
   
   public final MenuItem setEnabled(boolean paramBoolean)
   {
-    int j = this.CW;
+    int j = this.DU;
     if (paramBoolean) {}
     for (int i = 16;; i = 0)
     {
-      this.CW = (i | j & 0xFFFFFFEF);
+      this.DU = (i | j & 0xFFFFFFEF);
       return this;
     }
   }
   
   public final MenuItem setIcon(int paramInt)
   {
-    this.abP = paramInt;
-    this.abO = android.support.v4.content.b.l(this.mContext, paramInt);
-    hc();
+    this.acJ = paramInt;
+    this.acI = android.support.v4.content.b.l(this.mContext, paramInt);
+    hk();
     return this;
   }
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.abO = paramDrawable;
-    this.abP = 0;
-    hc();
+    this.acI = paramDrawable;
+    this.acJ = 0;
+    hk();
     return this;
   }
   
   public final MenuItem setIconTintList(ColorStateList paramColorStateList)
   {
-    this.abT = paramColorStateList;
-    this.abV = true;
-    hc();
+    this.acN = paramColorStateList;
+    this.acP = true;
+    hk();
     return this;
   }
   
   public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
   {
-    this.abU = paramMode;
-    this.abW = true;
-    hc();
+    this.acO = paramMode;
+    this.acQ = true;
+    hk();
     return this;
   }
   
@@ -317,14 +317,14 @@ public final class a
   
   public final MenuItem setNumericShortcut(char paramChar)
   {
-    this.abK = paramChar;
+    this.acE = paramChar;
     return this;
   }
   
   public final MenuItem setNumericShortcut(char paramChar, int paramInt)
   {
-    this.abK = paramChar;
-    this.abL = KeyEvent.normalizeMetaState(paramInt);
+    this.acE = paramChar;
+    this.acF = KeyEvent.normalizeMetaState(paramInt);
     return this;
   }
   
@@ -335,23 +335,23 @@ public final class a
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.abQ = paramOnMenuItemClickListener;
+    this.acK = paramOnMenuItemClickListener;
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2)
   {
-    this.abK = paramChar1;
-    this.abM = Character.toLowerCase(paramChar2);
+    this.acE = paramChar1;
+    this.acG = Character.toLowerCase(paramChar2);
     return this;
   }
   
   public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
   {
-    this.abK = paramChar1;
-    this.abL = KeyEvent.normalizeMetaState(paramInt1);
-    this.abM = Character.toLowerCase(paramChar2);
-    this.abN = KeyEvent.normalizeMetaState(paramInt2);
+    this.acE = paramChar1;
+    this.acF = KeyEvent.normalizeMetaState(paramInt1);
+    this.acG = Character.toLowerCase(paramChar2);
+    this.acH = KeyEvent.normalizeMetaState(paramInt2);
     return this;
   }
   
@@ -359,29 +359,29 @@ public final class a
   
   public final MenuItem setTitle(int paramInt)
   {
-    this.Eo = this.mContext.getResources().getString(paramInt);
+    this.Fm = this.mContext.getResources().getString(paramInt);
     return this;
   }
   
   public final MenuItem setTitle(CharSequence paramCharSequence)
   {
-    this.Eo = paramCharSequence;
+    this.Fm = paramCharSequence;
     return this;
   }
   
   public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
   {
-    this.abJ = paramCharSequence;
+    this.acD = paramCharSequence;
     return this;
   }
   
   public final MenuItem setVisible(boolean paramBoolean)
   {
-    int j = this.CW;
+    int j = this.DU;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
-      this.CW = (i | j & 0x8);
+      this.DU = (i | j & 0x8);
       return this;
     }
   }

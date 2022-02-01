@@ -8,13 +8,29 @@ public abstract class db
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ejI = "payMsgId".hashCode();
-  private static final int ejL = "msgId".hashCode();
+  private static final int eAs = "sort".hashCode();
+  private static final int eNs;
+  private static final int eNt = "appusername".hashCode();
+  private static final int eNy;
+  private static final int eok;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ejE = true;
-  private boolean ejH = true;
-  public long field_msgId;
-  public String field_payMsgId;
+  private boolean eNp = true;
+  private boolean eNq = true;
+  private boolean eNx = true;
+  private boolean eoh = true;
+  private boolean ezS = true;
+  public String field_appusername;
+  public String field_rankID;
+  public int field_sort;
+  public int field_step;
+  public String field_username;
+  
+  static
+  {
+    eNs = "rankID".hashCode();
+    eok = "username".hashCode();
+    eNy = "step".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +45,25 @@ public abstract class db
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ejI != k) {
-        break label65;
+      if (eNt != k) {
+        break label60;
       }
-      this.field_payMsgId = paramCursor.getString(i);
-      this.ejE = true;
+      this.field_appusername = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (ejL == k) {
-        this.field_msgId = paramCursor.getLong(i);
+      label60:
+      if (eNs == k) {
+        this.field_rankID = paramCursor.getString(i);
+      } else if (eok == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eNy == k) {
+        this.field_step = paramCursor.getInt(i);
+      } else if (eAs == k) {
+        this.field_sort = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +73,20 @@ public abstract class db
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ejE) {
-      localContentValues.put("payMsgId", this.field_payMsgId);
+    if (this.eNq) {
+      localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.ejH) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.eNp) {
+      localContentValues.put("rankID", this.field_rankID);
+    }
+    if (this.eoh) {
+      localContentValues.put("username", this.field_username);
+    }
+    if (this.eNx) {
+      localContentValues.put("step", Integer.valueOf(this.field_step));
+    }
+    if (this.ezS) {
+      localContentValues.put("sort", Integer.valueOf(this.field_sort));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -3,17 +3,17 @@ package com.d.a.c;
 final class t<T>
   implements s<T>
 {
-  private final T[] bYk;
+  private final T[] bVS;
   private int pos;
   
   public t(T[] paramArrayOfT)
   {
-    this.bYk = paramArrayOfT;
+    this.bVS = paramArrayOfT;
   }
   
   public final boolean as(T paramT)
   {
-    Object[] arrayOfObject = this.bYk;
+    Object[] arrayOfObject = this.bVS;
     int i = this.pos;
     this.pos = (i + 1);
     arrayOfObject[i] = paramT;

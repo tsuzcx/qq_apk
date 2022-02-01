@@ -14,8 +14,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.lang.ref.WeakReference;
 
 public final class d
@@ -23,14 +23,14 @@ public final class d
 {
   public d()
   {
-    super(q.kRZ.ordinal());
+    super(q.ltz.ordinal());
     AppMethodBeat.i(47623);
     AppMethodBeat.o(47623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.d
  * JD-Core Version:    0.7.0.1
  */

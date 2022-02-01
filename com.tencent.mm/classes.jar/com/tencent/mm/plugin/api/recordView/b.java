@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.api.recordView;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
 {
-  private static int Q(String paramString, int paramInt)
+  private static int V(String paramString, int paramInt)
   {
     AppMethodBeat.i(89208);
     int[] arrayOfInt = new int[1];
@@ -16,7 +16,7 @@ public final class b
     GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
     if (arrayOfInt[0] == 0)
     {
-      ad.e("loadShader error, infoLog: %s", GLES20.glGetShaderInfoLog(paramInt));
+      ac.e("loadShader error, infoLog: %s", GLES20.glGetShaderInfoLog(paramInt));
       AppMethodBeat.o(89208);
       return 0;
     }
@@ -24,7 +24,7 @@ public final class b
     return paramInt;
   }
   
-  public static int akA()
+  public static int aru()
   {
     AppMethodBeat.i(89207);
     int[] arrayOfInt = new int[1];
@@ -39,21 +39,21 @@ public final class b
     return i;
   }
   
-  public static int ap(String paramString1, String paramString2)
+  public static int ax(String paramString1, String paramString2)
   {
     AppMethodBeat.i(89209);
     int[] arrayOfInt = new int[1];
-    int i = Q(paramString1, 35633);
+    int i = V(paramString1, 35633);
     if (i == 0)
     {
-      ad.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
+      ac.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
       AppMethodBeat.o(89209);
       return 0;
     }
-    int j = Q(paramString2, 35632);
+    int j = V(paramString2, 35632);
     if (j == 0)
     {
-      ad.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
+      ac.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
       AppMethodBeat.o(89209);
       return 0;
     }
@@ -64,7 +64,7 @@ public final class b
     GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
     if (arrayOfInt[0] <= 0)
     {
-      ad.e("MicroMsg.MMSightCameraGLUtil", "link program failed");
+      ac.e("MicroMsg.MMSightCameraGLUtil", "link program failed");
       AppMethodBeat.o(89209);
       return 0;
     }

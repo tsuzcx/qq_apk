@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.RealNameBundle;
 import com.tencent.mm.plugin.wallet_core.model.BindCardOrder;
 import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.j;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.tenpay.model.m;
@@ -17,11 +17,11 @@ public final class b
   extends m
   implements j
 {
+  public BindCardOrder Bon;
+  public int Boo;
   public String desc;
-  public String huS;
+  public String hVu;
   public String title;
-  public BindCardOrder zVT;
-  public int zVU;
   
   public b(u paramu)
   {
@@ -34,31 +34,31 @@ public final class b
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     localHashMap1.put("flag", paramu.flag);
-    localHashMap1.put("passwd", paramu.ijt);
-    localHashMap1.put("verify_code", paramu.Ahs);
+    localHashMap1.put("passwd", paramu.iJA);
+    localHashMap1.put("verify_code", paramu.BzM);
     localHashMap1.put("token", paramu.token);
-    if (paramu.Aht) {}
+    if (paramu.BzN) {}
     for (String str = "1";; str = "0")
     {
       localHashMap1.put("bind_flag", str);
       if (paramInt > 0)
       {
         localHashMap1.put("realname_scene", String.valueOf(paramInt));
-        ad.i("MicroMsg.NetSenceTenPayBase", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
+        ac.i("MicroMsg.NetSenceTenPayBase", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
       }
       if (paramRealNameBundle != null) {
-        paramRealNameBundle.aM(localHashMap1);
+        paramRealNameBundle.aQ(localHashMap1);
       }
-      if (!bt.isNullOrNil(paramu.dca)) {
-        localHashMap1.put("bank_type", paramu.dca);
+      if (!bs.isNullOrNil(paramu.cZz)) {
+        localHashMap1.put("bank_type", paramu.cZz);
       }
       localHashMap1.put("session_id", paramString);
-      if (z.fjX())
+      if (z.fAn())
       {
         localHashMap2.put("uuid_for_bindcard", z.getBindCardUuid());
-        localHashMap2.put("bindcard_scene", z.fjY());
+        localHashMap2.put("bindcard_scene", z.fAo());
       }
-      setPayInfo(paramu.uXi, localHashMap1, localHashMap2);
+      setPayInfo(paramu.wfX, localHashMap1, localHashMap2);
       setRequestData(localHashMap1);
       setWXRequestData(localHashMap2);
       AppMethodBeat.o(174437);
@@ -84,12 +84,12 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69886);
-    this.zVT = new BindCardOrder();
-    this.zVT.aS(paramJSONObject);
+    this.Bon = new BindCardOrder();
+    this.Bon.aT(paramJSONObject);
     this.title = paramJSONObject.optString("title");
     this.desc = paramJSONObject.optString("desc");
-    this.huS = paramJSONObject.optString("page");
-    this.zVU = paramJSONObject.optInt("err_jump_page");
+    this.hVu = paramJSONObject.optString("page");
+    this.Boo = paramJSONObject.optInt("err_jump_page");
     AppMethodBeat.o(69886);
   }
 }

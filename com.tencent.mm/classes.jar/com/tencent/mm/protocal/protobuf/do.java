@@ -3,95 +3,84 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class do
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Cyi;
-  public int Cyj;
-  public int bvE;
-  public float bvI;
-  public int bzj;
-  public int ksP;
-  public int ksQ;
+  public String DQC;
+  public String dlQ;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103178);
+    AppMethodBeat.i(168751);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.bzj);
-      paramVarArgs.aR(2, this.bvE);
-      paramVarArgs.x(3, this.bvI);
-      paramVarArgs.aR(4, this.Cyi);
-      paramVarArgs.aR(5, this.Cyj);
-      paramVarArgs.aR(6, this.ksP);
-      paramVarArgs.aR(7, this.ksQ);
-      AppMethodBeat.o(103178);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bA(1, this.bzj);
-      int i = f.a.a.b.b.a.bA(2, this.bvE);
-      int j = f.a.a.b.b.a.fY(3);
-      int k = f.a.a.b.b.a.bA(4, this.Cyi);
-      int m = f.a.a.b.b.a.bA(5, this.Cyj);
-      int n = f.a.a.b.b.a.bA(6, this.ksP);
-      int i1 = f.a.a.b.b.a.bA(7, this.ksQ);
-      AppMethodBeat.o(103178);
-      return paramInt + 0 + i + (j + 4) + k + m + n + i1;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      AppMethodBeat.o(103178);
+      if (this.dlQ != null) {
+        paramVarArgs.d(2, this.dlQ);
+      }
+      if (this.DQC != null) {
+        paramVarArgs.d(3, this.DQC);
+      }
+      AppMethodBeat.o(168751);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.title == null) {
+        break label334;
+      }
+    }
+    label334:
+    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      do localdo = (do)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.dlQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dlQ);
+      }
+      i = paramInt;
+      if (this.DQC != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DQC);
+      }
+      AppMethodBeat.o(168751);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(103178);
-        return -1;
-      case 1: 
-        localdo.bzj = locala.KhF.xS();
-        AppMethodBeat.o(103178);
-        return 0;
-      case 2: 
-        localdo.bvE = locala.KhF.xS();
-        AppMethodBeat.o(103178);
-        return 0;
-      case 3: 
-        localdo.bvI = Float.intBitsToFloat(locala.KhF.fHx());
-        AppMethodBeat.o(103178);
-        return 0;
-      case 4: 
-        localdo.Cyi = locala.KhF.xS();
-        AppMethodBeat.o(103178);
-        return 0;
-      case 5: 
-        localdo.Cyj = locala.KhF.xS();
-        AppMethodBeat.o(103178);
-        return 0;
-      case 6: 
-        localdo.ksP = locala.KhF.xS();
-        AppMethodBeat.o(103178);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        AppMethodBeat.o(168751);
         return 0;
       }
-      localdo.ksQ = locala.KhF.xS();
-      AppMethodBeat.o(103178);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        do localdo = (do)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(168751);
+          return -1;
+        case 1: 
+          localdo.title = locala.LVo.readString();
+          AppMethodBeat.o(168751);
+          return 0;
+        case 2: 
+          localdo.dlQ = locala.LVo.readString();
+          AppMethodBeat.o(168751);
+          return 0;
+        }
+        localdo.DQC = locala.LVo.readString();
+        AppMethodBeat.o(168751);
+        return 0;
+      }
+      AppMethodBeat.o(168751);
+      return -1;
     }
-    AppMethodBeat.o(103178);
-    return -1;
   }
 }
 

@@ -5,32 +5,32 @@ import d.a.ab;
 import d.l;
 import java.util.NoSuchElementException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/ranges/IntProgressionIterator;", "Lkotlin/collections/IntIterator;", "first", "", "last", "step", "(III)V", "finalElement", "hasNext", "", "next", "getStep", "()I", "nextInt", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/IntProgressionIterator;", "Lkotlin/collections/IntIterator;", "first", "", "last", "step", "(III)V", "finalElement", "hasNext", "", "next", "getStep", "()I", "nextInt", "kotlin-stdlib"})
 public final class c
   extends ab
 {
-  private final int JhK;
-  private boolean JhL;
-  private int JhM;
-  private final int jzV;
+  private final int KVe;
+  private boolean KVf;
+  private int KVg;
+  private final int kar;
   
   public c(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(129304);
-    this.jzV = paramInt3;
-    this.JhK = paramInt2;
-    if (this.jzV > 0) {
+    this.kar = paramInt3;
+    this.KVe = paramInt2;
+    if (this.kar > 0) {
       if (paramInt1 <= paramInt2)
       {
-        this.JhL = bool;
-        if (!this.JhL) {
+        this.KVf = bool;
+        if (!this.KVf) {
           break label75;
         }
       }
     }
     for (;;)
     {
-      this.JhM = paramInt1;
+      this.KVg = paramInt1;
       AppMethodBeat.o(129304);
       return;
       bool = false;
@@ -41,34 +41,34 @@ public final class c
       bool = false;
       break;
       label75:
-      paramInt1 = this.JhK;
+      paramInt1 = this.KVe;
     }
   }
   
   public final boolean hasNext()
   {
-    return this.JhL;
+    return this.KVf;
   }
   
   public final int nextInt()
   {
     AppMethodBeat.i(129303);
-    int i = this.JhM;
-    if (i == this.JhK)
+    int i = this.KVg;
+    if (i == this.KVe)
     {
-      if (!this.JhL)
+      if (!this.KVf)
       {
         Throwable localThrowable = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129303);
         throw localThrowable;
       }
-      this.JhL = false;
+      this.KVf = false;
     }
     for (;;)
     {
       AppMethodBeat.o(129303);
       return i;
-      this.JhM += this.jzV;
+      this.KVg += this.kar;
     }
   }
 }

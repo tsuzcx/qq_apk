@@ -7,56 +7,56 @@ import com.google.b.a.e;
 public final class a$n
   extends e
 {
-  private static volatile n[] IkZ;
-  public int CrQ = 0;
-  public String Ila = "";
+  private static volatile n[] JMK;
+  public int DKi = 0;
+  public String JML = "";
   public String nickname = "";
   
   public a$n()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static n[] flq()
+  public static n[] fBH()
   {
-    if (IkZ == null) {}
-    synchronized (c.bIR)
+    if (JMK == null) {}
+    synchronized (c.bGz)
     {
-      if (IkZ == null) {
-        IkZ = new n[0];
+      if (JMK == null) {
+        JMK = new n[0];
       }
-      return IkZ;
+      return JMK;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.CrQ != 0) {
-      paramb.bz(1, this.CrQ);
+    if (this.DKi != 0) {
+      paramb.bw(1, this.DKi);
     }
     if (!this.nickname.equals("")) {
       paramb.d(2, this.nickname);
     }
-    if (!this.Ila.equals("")) {
-      paramb.d(3, this.Ila);
+    if (!this.JML.equals("")) {
+      paramb.d(3, this.JML);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.CrQ != 0) {
-      i = j + b.bB(1, this.CrQ);
+    if (this.DKi != 0) {
+      i = j + b.by(1, this.DKi);
     }
     j = i;
     if (!this.nickname.equals("")) {
       j = i + b.e(2, this.nickname);
     }
     i = j;
-    if (!this.Ila.equals("")) {
-      i = j + b.e(3, this.Ila);
+    if (!this.JML.equals("")) {
+      i = j + b.e(3, this.JML);
     }
     return i;
   }

@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.wallet_core.c.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.model.Orders.DiscountInfo;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Promotions;
-import com.tencent.mm.protocal.protobuf.byy;
-import com.tencent.mm.protocal.protobuf.byz;
-import com.tencent.mm.protocal.protobuf.bzc;
-import com.tencent.mm.protocal.protobuf.bzj;
-import com.tencent.mm.protocal.protobuf.bzk;
-import com.tencent.mm.protocal.protobuf.bzl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cdu;
+import com.tencent.mm.protocal.protobuf.cdv;
+import com.tencent.mm.protocal.protobuf.cdy;
+import com.tencent.mm.protocal.protobuf.cef;
+import com.tencent.mm.protocal.protobuf.ceg;
+import com.tencent.mm.protocal.protobuf.cej;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.w;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -31,31 +31,31 @@ import java.util.List;
 public final class c
   extends w
 {
+  public Orders Bpf;
+  public int Bpw;
   private g callback;
   private b rr;
-  public Orders zWL;
-  public int zXc;
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     AppMethodBeat.i(69973);
-    this.zXc = 0;
+    this.Bpw = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bzj();
-    ((b.a)localObject).gUV = new bzk();
+    ((b.a)localObject).hvt = new cef();
+    ((b.a)localObject).hvu = new ceg();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payibgjsgettransaction";
     ((b.a)localObject).funcId = 1565;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (bzj)this.rr.gUS.gUX;
-    ((bzj)localObject).hnC = paramString1;
-    ((bzj)localObject).CXl = paramString4;
-    ((bzj)localObject).CXk = paramString2;
-    ((bzj)localObject).CXm = paramString5;
-    ((bzj)localObject).CXn = paramString6;
-    ((bzj)localObject).CFH = paramString3;
-    ((bzj)localObject).CWf = paramString7;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cef)this.rr.hvr.hvw;
+    ((cef)localObject).hOf = paramString1;
+    ((cef)localObject).EpU = paramString4;
+    ((cef)localObject).EpT = paramString2;
+    ((cef)localObject).EpV = paramString5;
+    ((cef)localObject).EpW = paramString6;
+    ((cef)localObject).DYh = paramString3;
+    ((cef)localObject).EoO = paramString7;
     AppMethodBeat.o(69973);
   }
   
@@ -76,8 +76,8 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(69974);
-    ad.i("MicroMsg.NetSceneIbgGetTransaction", "hy: get h5 transaction: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramArrayOfByte = (bzk)((b)paramq).gUT.gUX;
+    ac.i("MicroMsg.NetSceneIbgGetTransaction", "hy: get h5 transaction: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramArrayOfByte = (ceg)((b)paramq).hvs.hvw;
     paramInt1 = paramInt3;
     paramq = paramString;
     if (paramInt3 == 0)
@@ -86,102 +86,102 @@ public final class c
       paramq = paramString;
       if (paramInt2 == 0)
       {
-        paramInt1 = paramArrayOfByte.oXv;
-        paramq = paramArrayOfByte.oXw;
+        paramInt1 = paramArrayOfByte.pAG;
+        paramq = paramArrayOfByte.pAH;
       }
     }
-    ad.i("MicroMsg.NetSceneIbgGetTransaction", "resp.IsUseNewPage: %s", new Object[] { Integer.valueOf(paramArrayOfByte.DWg) });
-    this.zXc = paramArrayOfByte.DWg;
-    this.zWL = new Orders();
-    this.zWL.zWA = 1;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.DWd == null)) {
-      ad.e("MicroMsg.NetSceneIbgGetTransaction", "hy: info not valid");
+    ac.i("MicroMsg.NetSceneIbgGetTransaction", "resp.IsUseNewPage: %s", new Object[] { Integer.valueOf(paramArrayOfByte.FsU) });
+    this.Bpw = paramArrayOfByte.FsU;
+    this.Bpf = new Orders();
+    this.Bpf.BoU = 1;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.FsR == null)) {
+      ac.e("MicroMsg.NetSceneIbgGetTransaction", "hy: info not valid");
     }
     for (;;)
     {
       paramString = paramq;
-      if (bt.isNullOrNil(paramq)) {
-        paramString = aj.getContext().getString(2131765224);
+      if (bs.isNullOrNil(paramq)) {
+        paramString = ai.getContext().getString(2131765224);
       }
       this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
       AppMethodBeat.o(69974);
       return;
-      this.zWL.dcH = paramArrayOfByte.DWd.DWj;
+      this.Bpf.daf = paramArrayOfByte.FsR.Ftb;
       paramString = new Orders.Commodity();
-      paramString.dcF = paramArrayOfByte.DWd.vBv;
-      paramString.desc = paramArrayOfByte.DWd.hiN;
-      paramString.nUf = (paramArrayOfByte.DWd.DWj / 100.0D);
-      paramString.uoi = String.valueOf(paramArrayOfByte.DWd.DWl);
-      paramString.uoj = paramArrayOfByte.DWd.DWm;
-      paramString.uon = paramArrayOfByte.DWd.DWi;
-      paramString.uol = paramArrayOfByte.DWd.DWh;
-      paramString.uop = paramArrayOfByte.DWd.uop;
-      paramString.uoe = paramArrayOfByte.DWd.DWk;
-      paramString.AfY = (paramArrayOfByte.DWd.DWn / 100.0D);
+      paramString.dad = paramArrayOfByte.FsR.wLA;
+      paramString.desc = paramArrayOfByte.FsR.hJq;
+      paramString.oxA = (paramArrayOfByte.FsR.Ftb / 100.0D);
+      paramString.vxe = String.valueOf(paramArrayOfByte.FsR.Ftd);
+      paramString.vxf = paramArrayOfByte.FsR.Fte;
+      paramString.vxj = paramArrayOfByte.FsR.Fta;
+      paramString.vxh = paramArrayOfByte.FsR.FsZ;
+      paramString.vxl = paramArrayOfByte.FsR.vxl;
+      paramString.vxa = paramArrayOfByte.FsR.Ftc;
+      paramString.Bys = (paramArrayOfByte.FsR.Ftf / 100.0D);
       Object localObject1;
-      if (paramArrayOfByte.DWe != null)
+      if (paramArrayOfByte.FsS != null)
       {
-        paramString.uoq = paramArrayOfByte.DWe.CRC;
+        paramString.vxm = paramArrayOfByte.FsS.Ekn;
         localObject1 = new Orders.Promotions();
-        ((Orders.Promotions)localObject1).name = paramArrayOfByte.DWe.DVO;
-        ((Orders.Promotions)localObject1).uoq = paramArrayOfByte.DWe.CRC;
-        paramString.AfZ = paramArrayOfByte.DWe.CRC;
-        ((Orders.Promotions)localObject1).uwS = paramArrayOfByte.DWe.gGR;
-        paramString.Afn = paramArrayOfByte.DWe.DVM;
-        ((Orders.Promotions)localObject1).type = Orders.AfW;
-        if (!bt.isNullOrNil(((Orders.Promotions)localObject1).name))
+        ((Orders.Promotions)localObject1).name = paramArrayOfByte.FsS.FsC;
+        ((Orders.Promotions)localObject1).vxm = paramArrayOfByte.FsS.Ekn;
+        paramString.Byt = paramArrayOfByte.FsS.Ekn;
+        ((Orders.Promotions)localObject1).vFL = paramArrayOfByte.FsS.hhs;
+        paramString.BxH = paramArrayOfByte.FsS.FsA;
+        ((Orders.Promotions)localObject1).type = Orders.Byq;
+        if (!bs.isNullOrNil(((Orders.Promotions)localObject1).name))
         {
-          paramString.Agh.add(localObject1);
-          paramString.Agi = true;
+          paramString.ByB.add(localObject1);
+          paramString.ByC = true;
         }
       }
       Object localObject2;
       Object localObject3;
-      for (this.zWL.Afn = paramArrayOfByte.DWe.DVM; (paramArrayOfByte.DWd.DWo != null) && (paramArrayOfByte.DWd.DWo.size() > 0); this.zWL.Afn = 0)
+      for (this.Bpf.BxH = paramArrayOfByte.FsS.FsA; (paramArrayOfByte.FsR.Ftg != null) && (paramArrayOfByte.FsR.Ftg.size() > 0); this.Bpf.BxH = 0)
       {
-        paramString.Agb = new ArrayList();
-        localObject1 = paramArrayOfByte.DWd.DWo.iterator();
+        paramString.Byv = new ArrayList();
+        localObject1 = paramArrayOfByte.FsR.Ftg.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (bzc)((Iterator)localObject1).next();
+          localObject2 = (cdy)((Iterator)localObject1).next();
           localObject3 = new Orders.DiscountInfo();
-          ((Orders.DiscountInfo)localObject3).vzN = ((bzc)localObject2).DVP;
-          paramString.Agb.add(localObject3);
+          ((Orders.DiscountInfo)localObject3).wJS = ((cdy)localObject2).FsD;
+          paramString.Byv.add(localObject3);
         }
-        ad.i("MicroMsg.NetSceneIbgGetTransaction", "hy: no biz info");
+        ac.i("MicroMsg.NetSceneIbgGetTransaction", "hy: no biz info");
       }
-      if ((paramArrayOfByte.DWf != null) && (paramArrayOfByte.DWf.size() > 0))
+      if ((paramArrayOfByte.FsT != null) && (paramArrayOfByte.FsT.size() > 0))
       {
-        paramString.Agh = new ArrayList();
-        localObject1 = paramArrayOfByte.DWf.iterator();
+        paramString.ByB = new ArrayList();
+        localObject1 = paramArrayOfByte.FsT.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (byy)((Iterator)localObject1).next();
+          localObject2 = (cdu)((Iterator)localObject1).next();
           localObject3 = new Orders.Promotions();
-          ((Orders.Promotions)localObject3).type = Orders.AfX;
-          ((Orders.Promotions)localObject3).url = ((byy)localObject2).url;
-          ((Orders.Promotions)localObject3).name = ((byy)localObject2).doh;
-          ((Orders.Promotions)localObject3).uwS = ((byy)localObject2).dub;
-          ((Orders.Promotions)localObject3).AeZ = ((byy)localObject2).Aox;
-          ((Orders.Promotions)localObject3).Agu = bt.getInt(((byy)localObject2).type, 0);
-          ((Orders.Promotions)localObject3).title = ((byy)localObject2).title;
-          ((Orders.Promotions)localObject3).zWi = ((byy)localObject2).AgE;
-          ((Orders.Promotions)localObject3).LvT = ((int)((byy)localObject2).AgF);
-          ((Orders.Promotions)localObject3).LvV = ((byy)localObject2).Afa;
-          ((Orders.Promotions)localObject3).LvU = ((int)((byy)localObject2).AgG);
-          ((Orders.Promotions)localObject3).AeW = ((byy)localObject2).AgH;
-          ((Orders.Promotions)localObject3).AeX = ((byy)localObject2).AgI;
-          ((Orders.Promotions)localObject3).LvW = ((byy)localObject2).DVJ;
-          ((Orders.Promotions)localObject3).LvX = ((byy)localObject2).DVK;
-          ((Orders.Promotions)localObject3).AeY = ((byy)localObject2).AgJ;
-          ((Orders.Promotions)localObject3).LvY = ((byy)localObject2).DVL;
-          paramString.Agh.add(localObject3);
+          ((Orders.Promotions)localObject3).type = Orders.Byr;
+          ((Orders.Promotions)localObject3).url = ((cdu)localObject2).url;
+          ((Orders.Promotions)localObject3).name = ((cdu)localObject2).dlQ;
+          ((Orders.Promotions)localObject3).vFL = ((cdu)localObject2).drM;
+          ((Orders.Promotions)localObject3).Bxt = ((cdu)localObject2).BGR;
+          ((Orders.Promotions)localObject3).ByO = bs.getInt(((cdu)localObject2).type, 0);
+          ((Orders.Promotions)localObject3).title = ((cdu)localObject2).title;
+          ((Orders.Promotions)localObject3).BoC = ((cdu)localObject2).ByY;
+          ((Orders.Promotions)localObject3).DeE = ((int)((cdu)localObject2).ByZ);
+          ((Orders.Promotions)localObject3).DeG = ((cdu)localObject2).Bxu;
+          ((Orders.Promotions)localObject3).DeF = ((int)((cdu)localObject2).Bza);
+          ((Orders.Promotions)localObject3).Bxq = ((cdu)localObject2).Bzb;
+          ((Orders.Promotions)localObject3).Bxr = ((cdu)localObject2).Bzc;
+          ((Orders.Promotions)localObject3).DeH = ((cdu)localObject2).Fsx;
+          ((Orders.Promotions)localObject3).DeI = ((cdu)localObject2).Fsy;
+          ((Orders.Promotions)localObject3).Bxs = ((cdu)localObject2).Bzd;
+          ((Orders.Promotions)localObject3).DeJ = ((cdu)localObject2).Fsz;
+          paramString.ByB.add(localObject3);
         }
       }
-      this.zWL.Afx = new ArrayList();
-      this.zWL.Afx.add(paramString);
-      this.zWL.Afp = paramArrayOfByte.DWd.DWm;
-      ad.i("MicroMsg.NetSceneIbgGetTransaction", "formatOrders finish, mOrder.commoditys.size: %s, mOrder: %s", new Object[] { Integer.valueOf(this.zWL.Afx.size()), this.zWL });
+      this.Bpf.BxR = new ArrayList();
+      this.Bpf.BxR.add(paramString);
+      this.Bpf.BxJ = paramArrayOfByte.FsR.Fte;
+      ac.i("MicroMsg.NetSceneIbgGetTransaction", "formatOrders finish, mOrder.commoditys.size: %s, mOrder: %s", new Object[] { Integer.valueOf(this.Bpf.BxR.size()), this.Bpf });
     }
   }
 }

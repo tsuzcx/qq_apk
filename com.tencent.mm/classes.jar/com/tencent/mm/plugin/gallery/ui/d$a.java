@@ -24,13 +24,13 @@ final class d$a
     paramView = new Intent();
     paramView.setAction("android.intent.action.VIEW");
     Object localObject = new e(this.filePath);
-    m.a(this.rJm.mContext, paramView, (e)localObject, "video/*");
+    m.a(this.sRb.mContext, paramView, (e)localObject, "video/*");
     try
     {
-      localObject = this.rJm.mContext;
-      paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.adn(), "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject).startActivity((Intent)paramView.lS(0));
+      localObject = this.sRb.mContext;
+      paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.aeD(), "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramView.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/gallery/ui/ImageAdapter$VideoItemClickListener", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(111515);
       return;

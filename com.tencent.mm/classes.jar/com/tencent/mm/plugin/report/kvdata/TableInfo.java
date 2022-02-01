@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class TableInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public long count_;
   public String name_;
@@ -24,7 +24,7 @@ public class TableInfo
       if (this.name_ != null) {
         paramVarArgs.d(1, this.name_);
       }
-      paramVarArgs.aG(2, this.count_);
+      paramVarArgs.aO(2, this.count_);
       AppMethodBeat.o(151540);
       return 0;
     }
@@ -36,15 +36,15 @@ public class TableInfo
     label306:
     for (paramInt = f.a.a.b.b.a.e(1, this.name_) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.q(2, this.count_);
+      int i = f.a.a.b.b.a.p(2, this.count_);
       AppMethodBeat.o(151540);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.name_ == null)
@@ -66,11 +66,11 @@ public class TableInfo
           AppMethodBeat.o(151540);
           return -1;
         case 1: 
-          localTableInfo.name_ = locala.KhF.readString();
+          localTableInfo.name_ = locala.LVo.readString();
           AppMethodBeat.o(151540);
           return 0;
         }
-        localTableInfo.count_ = locala.KhF.xT();
+        localTableInfo.count_ = locala.LVo.xG();
         AppMethodBeat.o(151540);
         return 0;
       }
@@ -81,7 +81,7 @@ public class TableInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.TableInfo
  * JD-Core Version:    0.7.0.1
  */

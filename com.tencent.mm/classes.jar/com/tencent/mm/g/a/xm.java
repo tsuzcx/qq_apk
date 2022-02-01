@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class xm
   extends b
 {
-  public a dDD;
-  public b dDE;
-  
   public xm()
   {
     this((byte)0);
@@ -16,17 +12,9 @@ public final class xm
   
   private xm(byte paramByte)
   {
-    AppMethodBeat.i(91229);
-    this.dDD = new a();
-    this.dDE = new b();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91229);
   }
-  
-  public static final class a {}
-  
-  public static final class b {}
 }
 
 

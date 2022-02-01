@@ -12,14 +12,14 @@ import java.lang.ref.WeakReference;
 
 public final class x
 {
-  private WeakReference<View> Oe;
-  Runnable Of = null;
-  Runnable Og = null;
-  int Oh = -1;
+  private WeakReference<View> Pb;
+  Runnable Pc = null;
+  Runnable Pd = null;
+  int Pe = -1;
   
   x(View paramView)
   {
-    this.Oe = new WeakReference(paramView);
+    this.Pb = new WeakReference(paramView);
   }
   
   private void a(final View paramView, final y paramy)
@@ -48,9 +48,45 @@ public final class x
     paramView.animate().setListener(null);
   }
   
+  public final x A(float paramFloat)
+  {
+    View localView = (View)this.Pb.get();
+    if (localView != null) {
+      localView.animate().alpha(paramFloat);
+    }
+    return this;
+  }
+  
+  public final x B(float paramFloat)
+  {
+    View localView = (View)this.Pb.get();
+    if (localView != null) {
+      localView.animate().translationY(paramFloat);
+    }
+    return this;
+  }
+  
+  public final x C(float paramFloat)
+  {
+    View localView = (View)this.Pb.get();
+    if (localView != null) {
+      localView.animate().scaleX(paramFloat);
+    }
+    return this;
+  }
+  
+  public final x D(float paramFloat)
+  {
+    View localView = (View)this.Pb.get();
+    if (localView != null) {
+      localView.animate().scaleY(paramFloat);
+    }
+    return this;
+  }
+  
   public final x a(final aa paramaa)
   {
-    final View localView = (View)this.Oe.get();
+    final View localView = (View)this.Pb.get();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 19))
     {
       ValueAnimator.AnimatorUpdateListener local2 = null;
@@ -59,7 +95,7 @@ public final class x
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            paramaa.fb();
+            paramaa.fj();
           }
         };
       }
@@ -70,7 +106,7 @@ public final class x
   
   public final x a(y paramy)
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null)
     {
       if (Build.VERSION.SDK_INT >= 16) {
@@ -87,7 +123,7 @@ public final class x
   
   public final x a(Interpolator paramInterpolator)
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null) {
       localView.animate().setInterpolator(paramInterpolator);
     }
@@ -96,7 +132,7 @@ public final class x
   
   public final void cancel()
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null) {
       localView.animate().cancel();
     }
@@ -104,25 +140,25 @@ public final class x
   
   public final long getDuration()
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null) {
       return localView.animate().getDuration();
     }
     return 0L;
   }
   
-  public final x h(long paramLong)
+  public final x j(long paramLong)
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null) {
       localView.animate().setDuration(paramLong);
     }
     return this;
   }
   
-  public final x i(long paramLong)
+  public final x k(long paramLong)
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null) {
       localView.animate().setStartDelay(paramLong);
     }
@@ -131,69 +167,33 @@ public final class x
   
   public final void start()
   {
-    View localView = (View)this.Oe.get();
+    View localView = (View)this.Pb.get();
     if (localView != null) {
       localView.animate().start();
     }
   }
   
-  public final x w(float paramFloat)
-  {
-    View localView = (View)this.Oe.get();
-    if (localView != null) {
-      localView.animate().alpha(paramFloat);
-    }
-    return this;
-  }
-  
-  public final x x(float paramFloat)
-  {
-    View localView = (View)this.Oe.get();
-    if (localView != null) {
-      localView.animate().translationY(paramFloat);
-    }
-    return this;
-  }
-  
-  public final x y(float paramFloat)
-  {
-    View localView = (View)this.Oe.get();
-    if (localView != null) {
-      localView.animate().scaleX(paramFloat);
-    }
-    return this;
-  }
-  
-  public final x z(float paramFloat)
-  {
-    View localView = (View)this.Oe.get();
-    if (localView != null) {
-      localView.animate().scaleY(paramFloat);
-    }
-    return this;
-  }
-  
   static final class a
     implements y
   {
-    x Ol;
-    boolean Om;
+    x Pi;
+    boolean Pj;
     
     a(x paramx)
     {
-      this.Ol = paramx;
+      this.Pi = paramx;
     }
     
     public final void aH(View paramView)
     {
-      this.Om = false;
-      if (this.Ol.Oh >= 0) {
+      this.Pj = false;
+      if (this.Pi.Pe >= 0) {
         paramView.setLayerType(2, null);
       }
-      if (this.Ol.Of != null)
+      if (this.Pi.Pc != null)
       {
-        localObject = this.Ol.Of;
-        this.Ol.Of = null;
+        localObject = this.Pi.Pc;
+        this.Pi.Pc = null;
         ((Runnable)localObject).run();
       }
       Object localObject = paramView.getTag(2113929216);
@@ -209,17 +209,17 @@ public final class x
     
     public final void aI(View paramView)
     {
-      if (this.Ol.Oh >= 0)
+      if (this.Pi.Pe >= 0)
       {
-        paramView.setLayerType(this.Ol.Oh, null);
-        this.Ol.Oh = -1;
+        paramView.setLayerType(this.Pi.Pe, null);
+        this.Pi.Pe = -1;
       }
-      if ((Build.VERSION.SDK_INT >= 16) || (!this.Om))
+      if ((Build.VERSION.SDK_INT >= 16) || (!this.Pj))
       {
-        if (this.Ol.Og != null)
+        if (this.Pi.Pd != null)
         {
-          localObject = this.Ol.Og;
-          this.Ol.Og = null;
+          localObject = this.Pi.Pd;
+          this.Pi.Pd = null;
           ((Runnable)localObject).run();
         }
         localObject = paramView.getTag(2113929216);
@@ -233,7 +233,7 @@ public final class x
         if (localObject != null) {
           ((y)localObject).aI(paramView);
         }
-        this.Om = true;
+        this.Pj = true;
         return;
       }
     }

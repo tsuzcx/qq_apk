@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -9,9 +9,9 @@ import java.util.concurrent.Future;
 
 public final class d
 {
-  private static volatile d BHM;
+  private static volatile d CZU;
   private static Object lock;
-  HashMap<String, c> BHN;
+  HashMap<String, c> CZV;
   
   static
   {
@@ -23,20 +23,20 @@ public final class d
   private d()
   {
     AppMethodBeat.i(110598);
-    this.BHN = new HashMap();
+    this.CZV = new HashMap();
     AppMethodBeat.o(110598);
   }
   
-  public static d etG()
+  public static d eIZ()
   {
     AppMethodBeat.i(110597);
-    if (BHM == null) {}
+    if (CZU == null) {}
     synchronized (lock)
     {
-      if (BHM == null) {
-        BHM = new d();
+      if (CZU == null) {
+        CZU = new d();
       }
-      ??? = BHM;
+      ??? = CZU;
       AppMethodBeat.o(110597);
       return ???;
     }
@@ -45,35 +45,35 @@ public final class d
   final boolean a(c paramc)
   {
     AppMethodBeat.i(110600);
-    if (this.BHN.containsKey(paramc.BHD.BId))
+    if (this.CZV.containsKey(paramc.CZL.Dal))
     {
-      paramc.BHJ = true;
+      paramc.CZR = true;
       for (;;)
       {
         try
         {
-          HttpURLConnection localHttpURLConnection = paramc.BHF;
+          HttpURLConnection localHttpURLConnection = paramc.CZN;
           if (localHttpURLConnection == null) {}
         }
         catch (Exception localException2)
         {
-          ad.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
+          ac.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
           continue;
         }
         try
         {
-          paramc.BHF.getInputStream().close();
-          paramc.BHF.disconnect();
-          if (paramc.BHE != null) {
-            paramc.BHE.cancel(false);
+          paramc.CZN.getInputStream().close();
+          paramc.CZN.disconnect();
+          if (paramc.CZM != null) {
+            paramc.CZM.cancel(false);
           }
-          this.BHN.remove(paramc.BHD.BId);
+          this.CZV.remove(paramc.CZL.Dal);
           AppMethodBeat.o(110600);
           return true;
         }
         catch (Exception localException1)
         {
-          ad.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
+          ac.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
         }
       }
     }
@@ -81,11 +81,11 @@ public final class d
     return false;
   }
   
-  public final boolean azQ(String paramString)
+  public final boolean aFh(String paramString)
   {
     AppMethodBeat.i(110599);
-    if (this.BHN.containsKey(paramString)) {
-      this.BHN.remove(paramString);
+    if (this.CZV.containsKey(paramString)) {
+      this.CZV.remove(paramString);
     }
     AppMethodBeat.o(110599);
     return true;

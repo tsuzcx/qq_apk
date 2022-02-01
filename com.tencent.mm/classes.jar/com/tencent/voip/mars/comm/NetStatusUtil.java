@@ -786,11 +786,11 @@ public class NetStatusUtil
     //   191: dup
     //   192: invokespecial 431	com/tencent/mm/hellhoundlib/b/a:<init>	()V
     //   195: aload 8
-    //   197: invokevirtual 435	com/tencent/mm/hellhoundlib/b/a:bd	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   197: invokevirtual 435	com/tencent/mm/hellhoundlib/b/a:ba	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
     //   200: astore 7
     //   202: aload_0
     //   203: aload 7
-    //   205: invokevirtual 439	com/tencent/mm/hellhoundlib/b/a:adn	()[Ljava/lang/Object;
+    //   205: invokevirtual 439	com/tencent/mm/hellhoundlib/b/a:aeD	()[Ljava/lang/Object;
     //   208: ldc_w 440
     //   211: ldc_w 441
     //   214: ldc_w 442
@@ -801,7 +801,7 @@ public class NetStatusUtil
     //   229: aload_0
     //   230: aload 7
     //   232: iconst_0
-    //   233: invokevirtual 457	com/tencent/mm/hellhoundlib/b/a:lS	(I)Ljava/lang/Object;
+    //   233: invokevirtual 457	com/tencent/mm/hellhoundlib/b/a:lR	(I)Ljava/lang/Object;
     //   236: checkcast 376	android/content/Intent
     //   239: invokevirtual 459	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   242: aload_0
@@ -877,9 +877,9 @@ public class NetStatusUtil
         Object localObject1 = new Intent("/");
         ((Intent)localObject1).setComponent(new ComponentName("com.android.providers.subscribedfeeds", "com.android.settings.ManageAccountsSettings"));
         ((Intent)localObject1).setAction("android.intent.action.VIEW");
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55617);
         return;
@@ -891,9 +891,9 @@ public class NetStatusUtil
           Object localObject2 = new Intent("/");
           ((Intent)localObject2).setComponent(new ComponentName("com.htc.settings.accountsync", "com.htc.settings.accountsync.ManageAccountsSettings"));
           ((Intent)localObject2).setAction("android.intent.action.VIEW");
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(55617);
           return;
@@ -910,9 +910,9 @@ public class NetStatusUtil
         Object localObject3 = new Intent("/");
         ((Intent)localObject3).setComponent(new ComponentName("com.android.settings", "com.android.settings.DevelopmentSettings"));
         ((Intent)localObject3).setAction("android.intent.action.VIEW");
-        localObject3 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject3);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).adn(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).lS(0));
+        localObject3 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject3);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aeD(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55617);
         return;
@@ -927,9 +927,9 @@ public class NetStatusUtil
       {
         Object localObject4 = new Intent();
         ((Intent)localObject4).setAction("android.settings.WIFI_IP_SETTINGS");
-        localObject4 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject4);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).adn(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).lS(0));
+        localObject4 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject4);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject4).aeD(), "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/voip/mars/comm/NetStatusUtil", "startSettingItent", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55617);
         return;

@@ -1,277 +1,176 @@
 package com.tencent.mm.live.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.live.core.core.b.c;
+import com.tencent.mm.live.core.core.trtc.a.a;
+import com.tencent.mm.live.core.core.trtc.a.a.d;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.protocal.protobuf.bqi;
+import com.tencent.mm.protocal.protobuf.bqj;
+import com.tencent.mm.protocal.protobuf.bqk;
+import com.tencent.mm.protocal.protobuf.bql;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.trtc.TRTCCloudDef.TRTCParams;
+import d.g.b.k;
 import d.l;
+import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants;", "", "()V", "AnchorErrStastus", "Companion", "Confetti", "LiveConfigBitSet", "LiveMsgType", "LiveStatus", "Log", "MMKV", "MenuItem", "TestMMKV", "TimeOut", "TrtcRole", "UIRouter", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveCgiUtil;", "", "()V", "checkCookiesDeprecated", "", "errType", "", "errCode", "parseAnchorStatusJson", "Lcom/tencent/mm/json/JSONObject;", "status", "Lcom/tencent/mm/protobuf/ByteString;", "processLiveCgiSDKResponse", "", "name", "", "liveSdkInfo", "Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;", "liveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "processLiveSdkParams", "liveSdkParam", "Lcom/tencent/mm/protocal/protobuf/LiveSdkParams;", "setupAnchorStatusJson", "plugin-logic_release"})
 public final class e
 {
-  private static final String qYk = "https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d&liveid=%s&liveidentityid=%s&liveroomid=%s";
-  private static final String qYl = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=live_forensic/index";
-  public static final a qYm;
+  public static final e gtg;
   
   static
   {
-    AppMethodBeat.i(202588);
-    qYm = new a((byte)0);
-    qYk = "https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d&liveid=%s&liveidentityid=%s&liveroomid=%s";
-    qYl = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=live_forensic/index";
-    AppMethodBeat.o(202588);
+    AppMethodBeat.i(189753);
+    gtg = new e();
+    AppMethodBeat.o(189753);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$Companion;", "", "()V", "ExposeH5Url", "", "getExposeH5Url", "()Ljava/lang/String;", "VISITOR_GUIDE_URL", "getVISITOR_GUIDE_URL", "plugin-logic_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$Confetti;", "", "()V", "CONFETTI_SIZE", "", "getCONFETTI_SIZE", "()I", "plugin-logic_release"})
-  public static final class b
+  public static void a(bqk parambqk, TRTCCloudDef.TRTCParams paramTRTCParams)
   {
-    private static final int qYn;
-    public static final b qYo;
-    
-    static
+    AppMethodBeat.i(189752);
+    k.h(parambqk, "liveSdkParam");
+    Object localObject1 = parambqk.FfA;
+    parambqk = parambqk.FfC;
+    Object localObject2;
+    int i;
+    if (localObject1 != null)
     {
-      AppMethodBeat.i(202579);
-      qYo = new b();
-      qYn = ao.fromDPToPix(aj.getContext(), 32);
-      AppMethodBeat.o(202579);
+      if (((bql)localObject1).FfD > 0)
+      {
+        localObject2 = a.aiX();
+        k.g(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((a)localObject2).aiY();
+        k.g(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((d)localObject2).setVideoResolution(((bql)localObject1).FfD);
+      }
+      if (((bql)localObject1).FfF > 0)
+      {
+        localObject2 = a.aiX();
+        k.g(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((a)localObject2).aiY();
+        k.g(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((d)localObject2).mB(((bql)localObject1).FfF);
+      }
+      if (((bql)localObject1).FfG > 0)
+      {
+        localObject2 = a.aiX();
+        k.g(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((a)localObject2).aiY();
+        k.g(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((d)localObject2).setVideoBitrate(((bql)localObject1).FfG);
+      }
+      if (((bql)localObject1).FfI > 0)
+      {
+        localObject2 = a.aiX();
+        k.g(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((a)localObject2).aiY();
+        k.g(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((d)localObject2).mC(((bql)localObject1).FfI);
+      }
+      i = ((bql)localObject1).FfJ;
+      if (i >= 0) {
+        break label330;
+      }
     }
-    
-    public static int elZ()
+    for (;;)
     {
-      return qYn;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$LiveMsgType;", "", "()V", "MM_LIVE_SYS_MSG", "", "getMM_LIVE_SYS_MSG", "()I", "MM_LIVE_TEXT_MSG", "getMM_LIVE_TEXT_MSG", "plugin-logic_release"})
-  public static final class c
-  {
-    private static final int qYp = 1;
-    private static final int qYq = 10001;
-    public static final c qYs;
-    
-    static
-    {
-      AppMethodBeat.i(202580);
-      qYs = new c();
-      qYp = 1;
-      qYq = 10001;
-      AppMethodBeat.o(202580);
-    }
-    
-    public static int ema()
-    {
-      return qYp;
-    }
-    
-    public static int emb()
-    {
-      return qYq;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$LiveStatus;", "", "()V", "MM_LIVE_STATUS_END", "", "getMM_LIVE_STATUS_END", "()I", "MM_LIVE_STATUS_OPEN", "getMM_LIVE_STATUS_OPEN", "MM_LIVE_STATUS_REPLAY", "getMM_LIVE_STATUS_REPLAY", "MM_LIVE_STATUS_REPLAY_END", "getMM_LIVE_STATUS_REPLAY_END", "MM_LIVE_STATUS_REPLAY_SEND_MSG", "getMM_LIVE_STATUS_REPLAY_SEND_MSG", "plugin-logic_release"})
-  public static final class d
-  {
-    private static final int qZR = 1;
-    private static final int qZT = 2;
-    private static final int raB = 3;
-    private static final int raC = 4;
-    private static final int raD = 5;
-    public static final d raJ;
-    
-    static
-    {
-      AppMethodBeat.i(202581);
-      raJ = new d();
-      qZR = 1;
-      qZT = 2;
-      raB = 3;
-      raC = 4;
-      raD = 5;
-      AppMethodBeat.o(202581);
-    }
-    
-    public static int emd()
-    {
-      return raC;
-    }
-    
-    public static int eni()
-    {
-      return raD;
+      if ((parambqk != null) && (paramTRTCParams != null))
+      {
+        ac.i("MicroMsg.LiveCoreSdk", "userDefineRecordId:" + parambqk.Ffk);
+        localObject1 = parambqk.Ffl;
+        localObject2 = parambqk.Ffk;
+        if ((!bs.isNullOrNil((String)localObject1)) || (!bs.isNullOrNil((String)localObject2)))
+        {
+          parambqk = new i();
+          if (!bs.isNullOrNil((String)localObject1)) {
+            parambqk.i("userdefine_streamid_main", localObject1);
+          }
+          if (!bs.isNullOrNil((String)localObject2)) {
+            parambqk.i("userdefine_record_id", localObject2);
+          }
+          localObject1 = new i();
+          ((i)localObject1).i("Str_uc_params", parambqk);
+          paramTRTCParams.businessInfo = ((i)localObject1).toString();
+        }
+      }
+      AppMethodBeat.o(189752);
+      return;
+      label330:
+      if (1 >= i)
+      {
+        localObject2 = a.aiX();
+        k.g(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((a)localObject2).aiY();
+        k.g(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((d)localObject2).mA(((bql)localObject1).FfJ);
+      }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$MMKV;", "", "()V", "ANCHOR_VERIFY", "", "getANCHOR_VERIFY", "()Ljava/lang/String;", "KEY_ANCHOR_LIVE_ID", "getKEY_ANCHOR_LIVE_ID", "KEY_VISITOR_MIC_DIALOG", "getKEY_VISITOR_MIC_DIALOG", "TAG_LIVE_CORE", "getTAG_LIVE_CORE", "plugin-logic_release"})
-  public static final class e
+  public static void a(String paramString, bqj parambqj, bqd parambqd, TRTCCloudDef.TRTCParams paramTRTCParams, c paramc)
   {
-    private static final String rBi = "anchor_verify";
-    private static final String rBk = "key_visitor_mic_dialog";
-    public static final e rBl;
-    private static final String raK = "tag_live_core";
-    private static final String rdq = "key_anchor_live_id";
-    
-    static
+    AppMethodBeat.i(189751);
+    k.h(paramString, "name");
+    k.h(parambqj, "liveSdkInfo");
+    k.h(parambqd, "liveInfo");
+    k.h(paramTRTCParams, "trtcParams");
+    k.h(paramc, "liveRoomInfo");
+    paramTRTCParams.roomId = parambqj.Ffr;
+    paramTRTCParams.sdkAppId = parambqj.Ffq;
+    paramTRTCParams.privateMapKey = z.a(parambqj.Ffu);
+    paramTRTCParams.userId = parambqj.Ffe;
+    paramTRTCParams.userSig = z.a(parambqj.Fft);
+    int i = parambqj.Ffs;
+    f.i locali = f.i.gtM;
+    if (i != f.i.akw())
     {
-      AppMethodBeat.i(202582);
-      rBl = new e();
-      raK = "tag_live_core";
-      rdq = "key_anchor_live_id";
-      rBi = "anchor_verify";
-      rBk = "key_visitor_mic_dialog";
-      AppMethodBeat.o(202582);
+      locali = f.i.gtM;
+      if (i != f.i.akx()) {}
     }
-    
-    public static String equ()
+    for (i = 21;; i = 20)
     {
-      return raK;
+      paramTRTCParams.role = i;
+      k.h(paramString, "<set-?>");
+      paramc.gmR = paramString;
+      paramc.gmP = parambqd.DMV;
+      paramString = parambqj.Ffz;
+      k.g(paramString, "liveSdkInfo.live_cdn_url");
+      k.h(paramString, "<set-?>");
+      paramc.gnO = paramString;
+      paramc.gnQ = parambqj.Ffw;
+      paramString = new bqk();
+      parambqj = parambqj.Ffv;
+      k.g(parambqj, "liveSdkInfo.sdk_params");
+      paramString = paramString.parseFrom(parambqj.getBytes());
+      if (paramString != null) {
+        break;
+      }
+      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LiveSdkParams");
+      AppMethodBeat.o(189751);
+      throw paramString;
     }
-    
-    public static String eqv()
-    {
-      return rdq;
-    }
-    
-    public static String eqw()
-    {
-      return rBi;
-    }
+    paramString = (bqk)paramString;
+    paramc.gnP = paramString.FfC.Ffm;
+    paramc.appId = paramString.FfC.Ffo;
+    paramc.gnR = paramString.FfC.Ffp;
+    a(paramString, paramTRTCParams);
+    AppMethodBeat.o(189751);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$MenuItem;", "", "()V", "MENU_BAN_COMMENT", "", "getMENU_BAN_COMMENT", "()I", "MENU_QUIT_LIVE", "getMENU_QUIT_LIVE", "plugin-logic_release"})
-  public static final class f
+  public static boolean cT(int paramInt1, int paramInt2)
   {
-    private static final int rBm = 0;
-    public static final f rDA;
-    private static final int rDi = 1;
-    
-    static
-    {
-      AppMethodBeat.i(202583);
-      rDA = new f();
-      rDi = 1;
-      AppMethodBeat.o(202583);
-    }
-    
-    public static int eNb()
-    {
-      return rDi;
-    }
-    
-    public static int euW()
-    {
-      return rBm;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$TestMMKV;", "", "()V", "TEST_MMKV_LIVE_FACE_VERIFY", "", "getTEST_MMKV_LIVE_FACE_VERIFY", "()Ljava/lang/String;", "TEST_MMKV_LIVE_SKIP_MOBILE_VERIFY", "getTEST_MMKV_LIVE_SKIP_MOBILE_VERIFY", "plugin-logic_release"})
-  public static final class g
-  {
-    private static final String rFv = "test_mmkv_live_face_verify";
-    private static final String rFy = "test_mmkv_live_skip_mobile_verify";
-    public static final g rFz;
-    
-    static
-    {
-      AppMethodBeat.i(202584);
-      rFz = new g();
-      rFv = "test_mmkv_live_face_verify";
-      rFy = "test_mmkv_live_skip_mobile_verify";
-      AppMethodBeat.o(202584);
-    }
-    
-    public static String eNc()
-    {
-      return rFv;
-    }
-    
-    public static String eNd()
-    {
-      return rFy;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$TimeOut;", "", "()V", "GET_MESSAGE_TIMEOUT", "", "getGET_MESSAGE_TIMEOUT", "()J", "REPLAY_TIMEOUT", "getREPLAY_TIMEOUT", "plugin-logic_release"})
-  public static final class h
-  {
-    private static final long rFA = 604800000L;
-    private static final long rFC = 5000L;
-    public static final h rFD;
-    
-    static
-    {
-      AppMethodBeat.i(202585);
-      rFD = new h();
-      rFA = 604800000L;
-      rFC = 5000L;
-      AppMethodBeat.o(202585);
-    }
-    
-    public static long eNw()
-    {
-      return rFC;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$TrtcRole;", "", "()V", "TRTC_ROLE_ANCHOR", "", "getTRTC_ROLE_ANCHOR", "()I", "TRTC_ROLE_AUDIENCE", "getTRTC_ROLE_AUDIENCE", "plugin-logic_release"})
-  public static final class i
-  {
-    private static final int rFE = 0;
-    private static final int rFF = 1;
-    public static final i rFG;
-    
-    static
-    {
-      AppMethodBeat.i(202586);
-      rFG = new i();
-      rFF = 1;
-      AppMethodBeat.o(202586);
-    }
-    
-    public static int eNx()
-    {
-      return rFE;
-    }
-    
-    public static int eNy()
-    {
-      return rFF;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LiveConstants$UIRouter;", "", "()V", "ROUTER_TO_ANCHOR_LIVE", "", "getROUTER_TO_ANCHOR_LIVE", "()I", "ROUTER_TO_REPLAY_LIVE", "getROUTER_TO_REPLAY_LIVE", "ROUTER_TO_VISITOR_LIVE", "getROUTER_TO_VISITOR_LIVE", "plugin-logic_release"})
-  public static final class j
-  {
-    private static final int rFH = 0;
-    private static final int rFI = 1;
-    private static final int rFJ = 2;
-    public static final j rFK;
-    
-    static
-    {
-      AppMethodBeat.i(202587);
-      rFK = new j();
-      rFI = 1;
-      rFJ = 2;
-      AppMethodBeat.o(202587);
-    }
-    
-    public static int eNA()
-    {
-      return rFI;
-    }
-    
-    public static int eNz()
-    {
-      return rFH;
-    }
+    return (paramInt1 == 4) && (paramInt2 == -100020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.e
  * JD-Core Version:    0.7.0.1
  */

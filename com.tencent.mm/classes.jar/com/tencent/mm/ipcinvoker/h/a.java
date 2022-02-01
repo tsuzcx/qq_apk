@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements com.tencent.mm.ipcinvoker.h.a.a
 {
-  public final void b(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
+  public final void printLog(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158834);
     if (paramInt < 4)
@@ -20,7 +20,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.h.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,58 +5,58 @@ import java.io.Serializable;
 public final class d
   implements Serializable
 {
-  public boolean cmI = false;
+  public boolean cjK = false;
+  public int gpC = 15;
+  public boolean gpD = true;
+  public boolean gpE = false;
+  public int gpF = 0;
+  private boolean gpG = true;
+  private boolean gpH = false;
+  public boolean gpI = false;
+  public boolean gpJ = false;
+  public boolean gpK = false;
+  public boolean gpL = true;
+  public int gpM = 0;
+  public boolean gpN = true;
+  private transient boolean gpw = true;
   public int mQosMode = 1;
   public int mQosPreference = 2;
   public int mVideoBitrate = 600;
   public int mVideoResolution = 108;
-  private boolean qGY = false;
-  public boolean qGZ = false;
-  private transient boolean qGj = true;
-  public int qGp = 15;
-  public boolean qGq = true;
-  public boolean qGs = false;
-  public int qGt = 0;
-  private boolean qGy = true;
-  public boolean qHJ = false;
-  public boolean qHK = false;
-  public boolean qHL = true;
-  public int qHY = 0;
-  public boolean qJb = true;
   
-  public final void BA(int paramInt)
+  public final boolean ajm()
   {
-    this.qGp = paramInt;
+    return this.gpD;
   }
   
-  public final void BE(int paramInt)
+  public final void dF(boolean paramBoolean)
   {
-    this.mQosPreference = paramInt;
+    this.gpD = paramBoolean;
   }
   
-  public final void Bz(int paramInt)
+  public final void dG(boolean paramBoolean)
+  {
+    this.gpN = paramBoolean;
+  }
+  
+  public final void dH(boolean paramBoolean)
+  {
+    this.gpG = paramBoolean;
+  }
+  
+  public final void mA(int paramInt)
   {
     this.mQosMode = paramInt;
   }
   
-  public final boolean crr()
+  public final void mB(int paramInt)
   {
-    return this.qGq;
+    this.gpC = paramInt;
   }
   
-  public final void kN(boolean paramBoolean)
+  public final void mC(int paramInt)
   {
-    this.qGq = paramBoolean;
-  }
-  
-  public final void kO(boolean paramBoolean)
-  {
-    this.qJb = paramBoolean;
-  }
-  
-  public final void kP(boolean paramBoolean)
-  {
-    this.qGy = paramBoolean;
+    this.mQosPreference = paramInt;
   }
   
   public final void setVideoBitrate(int paramInt)
@@ -71,7 +71,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.a.d
  * JD-Core Version:    0.7.0.1
  */

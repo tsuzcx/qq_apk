@@ -5,7 +5,7 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface ag
   extends ab
 {
-  public abstract void YQ(int paramInt);
+  public abstract void abb(int paramInt);
   
   public abstract void keepSignalling();
   

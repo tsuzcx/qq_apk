@@ -15,10 +15,10 @@ public final class c
     return paramString;
   }
   
-  public static HandlerThread aGG(String paramString)
+  public static HandlerThread aLY(String paramString)
   {
     AppMethodBeat.i(183236);
-    paramString = a.gt(paramString, 5);
+    paramString = a.gx(paramString, 5);
     AppMethodBeat.o(183236);
     return paramString;
   }

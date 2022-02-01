@@ -4,40 +4,97 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bg;
-import com.tencent.mm.protocal.protobuf.bh;
 import com.tencent.mm.protocal.protobuf.bi;
-import com.tencent.mm.protocal.protobuf.dbj;
-import com.tencent.mm.protocal.protobuf.dcm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bj;
+import com.tencent.mm.protocal.protobuf.bk;
+import com.tencent.mm.protocal.protobuf.dgv;
+import com.tencent.mm.protocal.protobuf.dhz;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class d
 {
-  private static volatile d pEx;
-  public e pEy;
+  private static volatile d qjk;
+  public e qjl;
   
   private d()
   {
     AppMethodBeat.i(121883);
-    this.pEy = new e();
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.cbv())
+    this.qjl = new e();
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.ciE())
     {
-      ad.i("ActivityStackDao", "habbyge-mali, ActivityStackDao reset");
+      ac.i("ActivityStackDao", "habbyge-mali, ActivityStackDao reset");
       com.tencent.mm.plugin.expt.hellhound.core.a.b.o("hell_astackd_mmkv_key", new byte[0]);
     }
     AppMethodBeat.o(121883);
   }
   
-  public static void VP(String paramString)
+  public static void a(String paramString1, String paramString2, a parama)
+  {
+    AppMethodBeat.i(121891);
+    bk localbk = c.ciP();
+    if (localbk.DOi == null) {
+      localbk.DOi = new bi();
+    }
+    switch (b.1.qjj[parama.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      c.a(localbk);
+      AppMethodBeat.o(121891);
+      return;
+      if (localbk.DOi.DNX == null) {
+        localbk.DOi.DNX = new bj();
+      }
+      if (localbk.DOi.DNX.DOc == null) {
+        localbk.DOi.DNX.DOc = new dhz();
+      }
+      localbk.DOi.DNX.DOc.activityName = paramString1;
+      localbk.DOi.DNX.DOc.EIR = paramString2;
+      localbk.DOi.DNX.state = a.qjd.value;
+      continue;
+      if (localbk.DOi.DNY == null) {
+        localbk.DOi.DNY = new bj();
+      }
+      if (localbk.DOi.DNY.DOc == null) {
+        localbk.DOi.DNY.DOc = new dhz();
+      }
+      localbk.DOi.DNY.DOc.activityName = paramString1;
+      localbk.DOi.DNY.DOc.EIR = paramString2;
+      localbk.DOi.DNY.state = a.qje.value;
+      continue;
+      if (localbk.DOi.DNZ == null) {
+        localbk.DOi.DNZ = new bj();
+      }
+      if (localbk.DOi.DNZ.DOc == null) {
+        localbk.DOi.DNZ.DOc = new dhz();
+      }
+      localbk.DOi.DNZ.DOc.activityName = paramString1;
+      localbk.DOi.DNZ.DOc.EIR = paramString2;
+      localbk.DOi.DNZ.state = a.qjf.value;
+      continue;
+      if (localbk.DOi.DOa == null) {
+        localbk.DOi.DOa = new bj();
+      }
+      if (localbk.DOi.DOa.DOc == null) {
+        localbk.DOi.DOa.DOc = new dhz();
+      }
+      localbk.DOi.DOa.DOc.activityName = paramString1;
+      localbk.DOi.DOa.DOc.EIR = paramString2;
+      localbk.DOi.DOa.state = a.qjg.value;
+    }
+  }
+  
+  public static void aae(String paramString)
   {
     AppMethodBeat.i(121888);
-    bi localbi;
+    bk localbk;
     int i;
     if (!TextUtils.isEmpty(paramString))
     {
-      localbi = c.cbE();
-      if ((localbi != null) && (!localbi.CvM.isEmpty()) && (!TextUtils.isEmpty(paramString))) {
+      localbk = c.ciP();
+      if ((localbk != null) && (!localbk.DOh.isEmpty()) && (!TextUtils.isEmpty(paramString))) {
         break label53;
       }
       i = 0;
@@ -45,34 +102,34 @@ public final class d
     for (;;)
     {
       if (i != 0) {
-        c.a(localbi);
+        c.a(localbk);
       }
       AppMethodBeat.o(121888);
       return;
       label53:
-      Object localObject = (dbj)localbi.CvM.getLast();
+      Object localObject = (dgv)localbk.DOh.getLast();
       if (localObject == null)
       {
         i = 0;
       }
-      else if (((dbj)localObject).EsW.isEmpty())
+      else if (((dgv)localObject).FPY.isEmpty())
       {
         i = 0;
       }
       else
       {
-        localObject = (bh)((dbj)localObject).EsW.getLast();
+        localObject = (bj)((dgv)localObject).FPY.getLast();
         if (localObject == null)
         {
           i = 0;
         }
-        else if (((bh)localObject).CvH.activityName.equals(paramString))
+        else if (((bj)localObject).DOc.activityName.equals(paramString))
         {
           i = 0;
         }
         else
         {
-          paramString = g.a(localbi, paramString);
+          paramString = g.a(localbk, paramString);
           i = ((Integer)paramString.get(0)).intValue();
           int j = ((Integer)paramString.get(1)).intValue();
           if (i < 0)
@@ -81,18 +138,18 @@ public final class d
           }
           else
           {
-            paramString = (dbj)localbi.CvM.remove(i);
-            i = paramString.EsW.size();
+            paramString = (dgv)localbk.DOh.remove(i);
+            i = paramString.FPY.size();
             if (j < i - 1)
             {
               i -= 1;
               while (i > j)
               {
-                paramString.EsW.remove(i);
+                paramString.FPY.remove(i);
                 i -= 1;
               }
             }
-            localbi.CvM.addLast(paramString);
+            localbk.DOh.addLast(paramString);
             i = 1;
           }
         }
@@ -100,73 +157,16 @@ public final class d
     }
   }
   
-  public static void a(String paramString1, String paramString2, a parama)
-  {
-    AppMethodBeat.i(121891);
-    bi localbi = c.cbE();
-    if (localbi.CvN == null) {
-      localbi.CvN = new bg();
-    }
-    switch (b.1.pEw[parama.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      c.a(localbi);
-      AppMethodBeat.o(121891);
-      return;
-      if (localbi.CvN.CvC == null) {
-        localbi.CvN.CvC = new bh();
-      }
-      if (localbi.CvN.CvC.CvH == null) {
-        localbi.CvN.CvC.CvH = new dcm();
-      }
-      localbi.CvN.CvC.CvH.activityName = paramString1;
-      localbi.CvN.CvC.CvH.DnR = paramString2;
-      localbi.CvN.CvC.state = a.pEq.value;
-      continue;
-      if (localbi.CvN.CvD == null) {
-        localbi.CvN.CvD = new bh();
-      }
-      if (localbi.CvN.CvD.CvH == null) {
-        localbi.CvN.CvD.CvH = new dcm();
-      }
-      localbi.CvN.CvD.CvH.activityName = paramString1;
-      localbi.CvN.CvD.CvH.DnR = paramString2;
-      localbi.CvN.CvD.state = a.pEr.value;
-      continue;
-      if (localbi.CvN.CvE == null) {
-        localbi.CvN.CvE = new bh();
-      }
-      if (localbi.CvN.CvE.CvH == null) {
-        localbi.CvN.CvE.CvH = new dcm();
-      }
-      localbi.CvN.CvE.CvH.activityName = paramString1;
-      localbi.CvN.CvE.CvH.DnR = paramString2;
-      localbi.CvN.CvE.state = a.pEs.value;
-      continue;
-      if (localbi.CvN.CvF == null) {
-        localbi.CvN.CvF = new bh();
-      }
-      if (localbi.CvN.CvF.CvH == null) {
-        localbi.CvN.CvF.CvH = new dcm();
-      }
-      localbi.CvN.CvF.CvH.activityName = paramString1;
-      localbi.CvN.CvF.CvH.DnR = paramString2;
-      localbi.CvN.CvF.state = a.pEt.value;
-    }
-  }
-  
-  public static d cbG()
+  public static d ciR()
   {
     AppMethodBeat.i(121882);
-    if (pEx == null) {}
+    if (qjk == null) {}
     try
     {
-      if (pEx == null) {
-        pEx = new d();
+      if (qjk == null) {
+        qjk = new d();
       }
-      d locald = pEx;
+      d locald = qjk;
       AppMethodBeat.o(121882);
       return locald;
     }
@@ -176,84 +176,84 @@ public final class d
     }
   }
   
-  public static com.tencent.mm.vending.j.c<String, String> cbH()
+  public static com.tencent.mm.vending.j.c<String, String> ciS()
   {
     AppMethodBeat.i(121892);
-    Object localObject = c.cbE();
-    if (((bi)localObject).CvN == null)
+    Object localObject = c.ciP();
+    if (((bk)localObject).DOi == null)
     {
       localObject = com.tencent.mm.vending.j.a.L(null, null);
       AppMethodBeat.o(121892);
       return localObject;
     }
-    if (((bi)localObject).CvN.CvC == null)
+    if (((bk)localObject).DOi.DNX == null)
     {
       localObject = com.tencent.mm.vending.j.a.L(null, null);
       AppMethodBeat.o(121892);
       return localObject;
     }
-    localObject = com.tencent.mm.vending.j.a.L(((bi)localObject).CvN.CvC.CvH.activityName, ((bi)localObject).CvN.CvC.CvH.DnR);
+    localObject = com.tencent.mm.vending.j.a.L(((bk)localObject).DOi.DNX.DOc.activityName, ((bk)localObject).DOi.DNX.DOc.EIR);
     AppMethodBeat.o(121892);
     return localObject;
   }
   
-  public static com.tencent.mm.vending.j.c<String, String> cbI()
+  public static com.tencent.mm.vending.j.c<String, String> ciT()
   {
     AppMethodBeat.i(121893);
-    Object localObject = c.cbE();
-    if (((bi)localObject).CvN == null)
+    Object localObject = c.ciP();
+    if (((bk)localObject).DOi == null)
     {
       localObject = com.tencent.mm.vending.j.a.L(null, null);
       AppMethodBeat.o(121893);
       return localObject;
     }
-    if (((bi)localObject).CvN.CvD == null)
+    if (((bk)localObject).DOi.DNY == null)
     {
       localObject = com.tencent.mm.vending.j.a.L(null, null);
       AppMethodBeat.o(121893);
       return localObject;
     }
-    localObject = com.tencent.mm.vending.j.a.L(((bi)localObject).CvN.CvD.CvH.activityName, ((bi)localObject).CvN.CvD.CvH.DnR);
+    localObject = com.tencent.mm.vending.j.a.L(((bk)localObject).DOi.DNY.DOc.activityName, ((bk)localObject).DOi.DNY.DOc.EIR);
     AppMethodBeat.o(121893);
     return localObject;
   }
   
-  public static com.tencent.mm.vending.j.c<String, String> cbJ()
+  public static com.tencent.mm.vending.j.c<String, String> ciU()
   {
     AppMethodBeat.i(121894);
-    Object localObject = c.cbE();
-    if (((bi)localObject).CvN == null)
+    Object localObject = c.ciP();
+    if (((bk)localObject).DOi == null)
     {
       localObject = com.tencent.mm.vending.j.a.L(null, null);
       AppMethodBeat.o(121894);
       return localObject;
     }
-    if (((bi)localObject).CvN.CvE == null)
+    if (((bk)localObject).DOi.DNZ == null)
     {
       localObject = com.tencent.mm.vending.j.a.L(null, null);
       AppMethodBeat.o(121894);
       return localObject;
     }
-    localObject = com.tencent.mm.vending.j.a.L(((bi)localObject).CvN.CvE.CvH.activityName, ((bi)localObject).CvN.CvE.CvH.DnR);
+    localObject = com.tencent.mm.vending.j.a.L(((bk)localObject).DOi.DNZ.DOc.activityName, ((bk)localObject).DOi.DNZ.DOc.EIR);
     AppMethodBeat.o(121894);
     return localObject;
   }
   
-  public static bh cbK()
+  public static bj ciV()
   {
     AppMethodBeat.i(121895);
-    Object localObject = c.cbE();
-    if (((bi)localObject).CvN == null)
+    Object localObject = c.ciP();
+    if (((bk)localObject).DOi == null)
     {
       AppMethodBeat.o(121895);
       return null;
     }
-    localObject = ((bi)localObject).CvN.CvE;
+    localObject = ((bk)localObject).DOi.DNZ;
     AppMethodBeat.o(121895);
     return localObject;
   }
   
-  public static void fs(String paramString1, String paramString2)
+  public static void fF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121889);
     if ((paramString1 == null) || (paramString2 == null))
@@ -261,11 +261,11 @@ public final class d
       AppMethodBeat.o(121889);
       return;
     }
-    bi localbi = c.cbE();
-    if ((localbi.CvN != null) && (localbi.CvN.CvD != null) && (paramString1.equals(localbi.CvN.CvD.CvH.activityName))) {
-      localbi.CvN.CvD.CvI = paramString2;
+    bk localbk = c.ciP();
+    if ((localbk.DOi != null) && (localbk.DOi.DNY != null) && (paramString1.equals(localbk.DOi.DNY.DOc.activityName))) {
+      localbk.DOi.DNY.DOd = paramString2;
     }
-    paramString1 = g.a(localbi, paramString1);
+    paramString1 = g.a(localbk, paramString1);
     int i = ((Integer)paramString1.get(0)).intValue();
     int j = ((Integer)paramString1.get(1)).intValue();
     if ((i < 0) || (j < 0))
@@ -273,12 +273,12 @@ public final class d
       AppMethodBeat.o(121889);
       return;
     }
-    ((bh)((dbj)localbi.CvM.get(i)).EsW.get(j)).CvI = paramString2;
-    c.a(localbi);
+    ((bj)((dgv)localbk.DOh.get(i)).FPY.get(j)).DOd = paramString2;
+    c.a(localbk);
     AppMethodBeat.o(121889);
   }
   
-  public static void ft(String paramString1, String paramString2)
+  public static void fG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121890);
     if ((paramString1 == null) || (paramString2 == null))
@@ -286,16 +286,16 @@ public final class d
       AppMethodBeat.o(121890);
       return;
     }
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cbS().pEO.cbN() == 8)
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cjd().qjB.ciY() == 8)
     {
       AppMethodBeat.o(121890);
       return;
     }
-    bi localbi = c.cbE();
-    if ((localbi.CvN != null) && (localbi.CvN.CvE != null) && (paramString1.equals(localbi.CvN.CvE.CvH.activityName))) {
-      localbi.CvN.CvE.CvI = paramString2;
+    bk localbk = c.ciP();
+    if ((localbk.DOi != null) && (localbk.DOi.DNZ != null) && (paramString1.equals(localbk.DOi.DNZ.DOc.activityName))) {
+      localbk.DOi.DNZ.DOd = paramString2;
     }
-    paramString1 = g.a(localbi, paramString1);
+    paramString1 = g.a(localbk, paramString1);
     int i = ((Integer)paramString1.get(0)).intValue();
     int j = ((Integer)paramString1.get(1)).intValue();
     if ((i < 0) || (j < 0))
@@ -303,18 +303,18 @@ public final class d
       AppMethodBeat.o(121890);
       return;
     }
-    ((bh)((dbj)localbi.CvM.get(i)).EsW.get(j)).CvJ = paramString2;
-    c.a(localbi);
+    ((bj)((dgv)localbk.DOh.get(i)).FPY.get(j)).DOe = paramString2;
+    c.a(localbk);
     AppMethodBeat.o(121890);
   }
   
   public final void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
     AppMethodBeat.i(184310);
-    Object localObject2 = this.pEy;
+    Object localObject2 = this.qjl;
     if (TextUtils.isEmpty(paramString3))
     {
-      ad.e("ActivityStackWrapper", "habbyge-mali, push: toActivity is NULL");
+      ac.e("ActivityStackWrapper", "habbyge-mali, push: toActivity is NULL");
       AppMethodBeat.o(184310);
       return;
     }
@@ -322,36 +322,36 @@ public final class d
     int i;
     if (!TextUtils.isEmpty(paramString4))
     {
-      localObject3 = g.cbM();
-      localObject1 = (bi)((com.tencent.mm.vending.j.b)localObject3).get(0);
-      localObject3 = (bh)((com.tencent.mm.vending.j.c)localObject3).get(1);
-      if ((localObject3 != null) && (((bh)localObject3).CvH != null) && (((bh)localObject3).CvH.activityName.equals(paramString3)) && (TextUtils.isEmpty(((bh)localObject3).CvH.DnR))) {}
+      localObject3 = g.ciX();
+      localObject1 = (bk)((com.tencent.mm.vending.j.b)localObject3).get(0);
+      localObject3 = (bj)((com.tencent.mm.vending.j.c)localObject3).get(1);
+      if ((localObject3 != null) && (((bj)localObject3).DOc != null) && (((bj)localObject3).DOc.activityName.equals(paramString3)) && (TextUtils.isEmpty(((bj)localObject3).DOc.EIR))) {}
       for (i = 1; i != 0; i = 0)
       {
-        ((bh)localObject3).CvH.DnR = paramString4;
-        c.a((bi)localObject1);
+        ((bj)localObject3).DOc.EIR = paramString4;
+        c.a((bk)localObject1);
         AppMethodBeat.o(184310);
         return;
       }
     }
-    Object localObject1 = new bh();
-    ((bh)localObject1).CvH = new dcm();
-    ((bh)localObject1).CvH.activityName = paramString3;
-    ((bh)localObject1).CvH.timestamp = paramLong;
+    Object localObject1 = new bj();
+    ((bj)localObject1).DOc = new dhz();
+    ((bj)localObject1).DOc.activityName = paramString3;
+    ((bj)localObject1).DOc.timestamp = paramLong;
     if (!TextUtils.isEmpty(paramString1)) {
-      ((bh)localObject1).CvK = paramString1;
+      ((bj)localObject1).DOf = paramString1;
     }
     if (!TextUtils.isEmpty(paramString2)) {
-      ((bh)localObject1).CvJ = paramString2;
+      ((bj)localObject1).DOe = paramString2;
     }
-    paramString2 = ((bh)localObject1).CvH;
+    paramString2 = ((bj)localObject1).DOc;
     paramString1 = paramString4;
     if (paramString4 == null) {
       paramString1 = "";
     }
-    paramString2.DnR = paramString1;
-    ((bh)localObject1).flags = paramInt;
-    ((bh)localObject1).state = a.pEq.value;
+    paramString2.EIR = paramString1;
+    ((bj)localObject1).flags = paramInt;
+    ((bj)localObject1).state = a.qjd.value;
     if (paramInt == 0) {
       paramInt = 0;
     }
@@ -365,31 +365,31 @@ public final class d
         return;
         if ((0x10000000 & paramInt) == 268435456)
         {
-          paramInt = ((bh)localObject1).flags;
+          paramInt = ((bj)localObject1).flags;
           if ((0x8000000 & paramInt) == 134217728)
           {
             paramInt = 3;
           }
           else if ((0x8000 & paramInt) == 32768)
           {
-            paramString1 = ((e)localObject2).pEz;
-            if (!TextUtils.isEmpty(((bh)localObject1).CvH.activityName))
+            paramString1 = ((e)localObject2).qjm;
+            if (!TextUtils.isEmpty(((bj)localObject1).DOc.activityName))
             {
-              paramString2 = c.cbE();
+              paramString2 = c.ciP();
               paramString3 = g.e(paramString2);
-              paramString4 = g.a(paramString2, (bh)localObject1);
+              paramString4 = g.a(paramString2, (bj)localObject1);
               if (paramString4 == null)
               {
                 paramInt = 101;
                 continue;
               }
-              paramString4 = (dbj)paramString4.get(0);
-              paramString4.EsW.clear();
-              paramString4.EsV = false;
-              paramString4.EsW.addLast(localObject1);
+              paramString4 = (dgv)paramString4.get(0);
+              paramString4.FPY.clear();
+              paramString4.FPX = false;
+              paramString4.FPY.addLast(localObject1);
               c.a(paramString2);
-              if (paramString1.pEC != null) {
-                paramString1.pEC.a((bh)localObject1, paramString3);
+              if (paramString1.qjp != null) {
+                paramString1.qjp.a((bj)localObject1, paramString3);
               }
             }
             paramInt = 100;
@@ -400,8 +400,8 @@ public final class d
           }
           else
           {
-            paramString1 = ((e)localObject2).pEz;
-            if (TextUtils.isEmpty(((bh)localObject1).CvH.activityName)) {
+            paramString1 = ((e)localObject2).qjm;
+            if (TextUtils.isEmpty(((bj)localObject1).DOc.activityName)) {
               paramInt = 0;
             }
             for (;;)
@@ -411,32 +411,32 @@ public final class d
               }
               paramInt = 101;
               break;
-              paramString2 = c.cbE();
+              paramString2 = c.ciP();
               paramString3 = g.e(paramString2);
-              localObject3 = g.a(paramString2, (bh)localObject1);
+              localObject3 = g.a(paramString2, (bj)localObject1);
               if (localObject3 == null)
               {
                 paramInt = 0;
               }
               else
               {
-                paramString4 = (dbj)((com.tencent.mm.vending.j.b)localObject3).get(0);
+                paramString4 = (dgv)((com.tencent.mm.vending.j.b)localObject3).get(0);
                 paramInt = ((Integer)((com.tencent.mm.vending.j.c)localObject3).get(1)).intValue();
-                paramString2.CvM.remove(paramInt);
-                paramString2.CvM.addLast(paramString4);
-                localObject3 = (bh)paramString4.EsW.getLast();
-                if ((localObject3 != null) && (!h.a(((bh)localObject3).CvH, ((bh)localObject1).CvH)))
+                paramString2.DOh.remove(paramInt);
+                paramString2.DOh.addLast(paramString4);
+                localObject3 = (bj)paramString4.FPY.getLast();
+                if ((localObject3 != null) && (!h.a(((bj)localObject3).DOc, ((bj)localObject1).DOc)))
                 {
-                  paramInt = paramString4.EsW.size() - 1;
-                  while ((paramInt >= 0) && (!h.a(((bh)paramString4.EsW.get(paramInt)).CvH, ((bh)localObject1).CvH)))
+                  paramInt = paramString4.FPY.size() - 1;
+                  while ((paramInt >= 0) && (!h.a(((bj)paramString4.FPY.get(paramInt)).DOc, ((bj)localObject1).DOc)))
                   {
-                    paramString4.EsW.remove(paramInt);
+                    paramString4.FPY.remove(paramInt);
                     paramInt -= 1;
                   }
                 }
                 c.a(paramString2);
-                if (paramString1.pEC != null) {
-                  paramString1.pEC.a((bh)localObject1, paramString3);
+                if (paramString1.qjp != null) {
+                  paramString1.qjp.a((bj)localObject1, paramString3);
                 }
                 paramInt = 1;
               }
@@ -459,45 +459,45 @@ public final class d
           }
           else
           {
-            paramString1 = ((e)localObject2).pEz;
-            paramString2 = c.cbE();
+            paramString1 = ((e)localObject2).qjm;
+            paramString2 = c.ciP();
             paramString3 = g.e(paramString2);
-            paramString4 = g.c(paramString2, (bh)localObject1);
+            paramString4 = g.c(paramString2, (bj)localObject1);
             i = ((Integer)paramString4.get(0)).intValue();
             j = ((Integer)paramString4.get(1)).intValue();
             if (j < 0) {
-              g.b(paramString2, (bh)localObject1);
+              g.b(paramString2, (bj)localObject1);
             }
             for (;;)
             {
               c.a(paramString2);
-              if (paramString1.pEC != null) {
-                paramString1.pEC.a((bh)localObject1, paramString3);
+              if (paramString1.qjp != null) {
+                paramString1.qjp.a((bj)localObject1, paramString3);
               }
               paramInt = 100;
               break;
-              if (i == paramString2.CvM.size() - 1) {
+              if (i == paramString2.DOh.size() - 1) {
                 paramInt = 1;
               }
               for (;;)
               {
                 if (paramInt != 0)
                 {
-                  paramString4 = (dbj)paramString2.CvM.getLast();
+                  paramString4 = (dgv)paramString2.DOh.getLast();
                   if (paramString4 == null)
                   {
-                    g.b(paramString2, (bh)localObject1);
+                    g.b(paramString2, (bj)localObject1);
                     break;
                     paramInt = 0;
                     continue;
                   }
-                  g.b(paramString2, (bh)paramString4.EsW.remove(j));
+                  g.b(paramString2, (bj)paramString4.FPY.remove(j));
                   break;
                 }
               }
-              paramString4 = (dbj)paramString2.CvM.remove(i);
-              paramString2.CvM.addLast(paramString4);
-              g.b(paramString2, (bh)paramString4.EsW.remove(j));
+              paramString4 = (dgv)paramString2.DOh.remove(i);
+              paramString2.DOh.addLast(paramString4);
+              g.b(paramString2, (bj)paramString4.FPY.remove(j));
             }
           }
         }
@@ -507,52 +507,52 @@ public final class d
         }
         break;
       case 0: 
-        paramString1 = ((e)localObject2).pEz;
-        paramString2 = c.cbE();
+        paramString1 = ((e)localObject2).qjm;
+        paramString2 = c.ciP();
         paramString3 = g.e(paramString2);
         if (g.b(paramString2)) {
-          g.a(paramString2, (bh)localObject1, false);
+          g.a(paramString2, (bj)localObject1, false);
         }
         for (;;)
         {
           c.a(paramString2);
-          if (paramString1.pEC != null) {
-            paramString1.pEC.a((bh)localObject1, paramString3);
+          if (paramString1.qjp != null) {
+            paramString1.qjp.a((bj)localObject1, paramString3);
           }
           AppMethodBeat.o(184310);
           return;
-          g.b(paramString2, (bh)localObject1);
+          g.b(paramString2, (bj)localObject1);
         }
       case 2: 
-        paramString1 = ((e)localObject2).pEz;
-        paramString2 = c.cbE();
+        paramString1 = ((e)localObject2).qjm;
+        paramString2 = c.ciP();
         paramString3 = g.e(paramString2);
         if (g.b(paramString2)) {
-          g.a(paramString2, (bh)localObject1, false);
+          g.a(paramString2, (bj)localObject1, false);
         }
         for (;;)
         {
           c.a(paramString2);
-          if (paramString1.pEC != null) {
-            paramString1.pEC.a((bh)localObject1, paramString3);
+          if (paramString1.qjp != null) {
+            paramString1.qjp.a((bj)localObject1, paramString3);
           }
           AppMethodBeat.o(184310);
           return;
-          paramString4 = g.c(paramString2, (bh)localObject1);
+          paramString4 = g.c(paramString2, (bj)localObject1);
           i = ((Integer)paramString4.get(0)).intValue();
           j = ((Integer)paramString4.get(1)).intValue();
           if (j >= 0) {
             break;
           }
-          g.b(paramString2, (bh)localObject1);
+          g.b(paramString2, (bj)localObject1);
         }
-        if (i == paramString2.CvM.size() - 1)
+        if (i == paramString2.DOh.size() - 1)
         {
           paramInt = 1;
           if (paramInt == 0) {
             break label1295;
           }
-          if (j != ((dbj)paramString2.CvM.getLast()).EsW.size() - 1) {
+          if (j != ((dgv)paramString2.DOh.getLast()).FPY.size() - 1) {
             break label1285;
           }
           paramInt = 1;
@@ -564,13 +564,13 @@ public final class d
         for (;;)
         {
           if (paramInt == 1) {
-            paramString1.a(paramString2, j + 1, (bh)localObject1);
+            paramString1.a(paramString2, j + 1, (bj)localObject1);
           }
           if (paramInt != 2) {
             break;
           }
-          paramString1.b(paramString2, i + 1, (bh)localObject1);
-          paramString1.a(paramString2, j + 1, (bh)localObject1);
+          paramString1.b(paramString2, i + 1, (bj)localObject1);
+          paramString1.a(paramString2, j + 1, (bj)localObject1);
           break;
           paramInt = 0;
           break label1199;
@@ -581,36 +581,36 @@ public final class d
           paramInt = 2;
         }
       case 1: 
-        paramString1 = ((e)localObject2).pEz;
-        paramString2 = c.cbE();
+        paramString1 = ((e)localObject2).qjm;
+        paramString2 = c.ciP();
         paramString3 = g.e(paramString2);
         if (g.b(paramString2)) {
-          g.a(paramString2, (bh)localObject1, false);
+          g.a(paramString2, (bj)localObject1, false);
         }
         for (;;)
         {
           c.a(paramString2);
-          if (paramString1.pEC != null) {
-            paramString1.pEC.a((bh)localObject1, paramString3);
+          if (paramString1.qjp != null) {
+            paramString1.qjp.a((bj)localObject1, paramString3);
           }
           AppMethodBeat.o(184310);
           return;
           paramString4 = g.c(paramString2);
-          if ((paramString4 == null) || (!h.a(((bh)localObject1).CvH, paramString4.CvH))) {
-            g.b(paramString2, (bh)localObject1);
+          if ((paramString4 == null) || (!h.a(((bj)localObject1).DOc, paramString4.DOc))) {
+            g.b(paramString2, (bj)localObject1);
           }
         }
       case 3: 
-        paramString1 = ((e)localObject2).pEz;
-        paramString2 = c.cbE();
+        paramString1 = ((e)localObject2).qjm;
+        paramString2 = c.ciP();
         paramString3 = g.e(paramString2);
         paramString4 = g.d(paramString2);
         if (paramString4 == null)
         {
-          g.a(paramString2, (bh)localObject1, true);
+          g.a(paramString2, (bj)localObject1, true);
           c.a(paramString2);
-          if (paramString1.pEC != null) {
-            paramString1.pEC.a((bh)localObject1, paramString3);
+          if (paramString1.qjp != null) {
+            paramString1.qjp.a((bj)localObject1, paramString3);
           }
           AppMethodBeat.o(184310);
           return;
@@ -619,18 +619,18 @@ public final class d
         i = paramString4.size() - 1;
         if (i >= 0)
         {
-          localObject2 = (dbj)paramString4.get(i);
-          if ((localObject2 == null) || (!((dbj)localObject2).EsV)) {
+          localObject2 = (dgv)paramString4.get(i);
+          if ((localObject2 == null) || (!((dgv)localObject2).FPX)) {
             break label1653;
           }
-          j = ((dbj)localObject2).EsW.size() - 1;
+          j = ((dgv)localObject2).FPY.size() - 1;
           if (j < 0) {
             break label1653;
           }
-          localObject3 = (bh)((dbj)localObject2).EsW.get(j);
-          if ((localObject3 != null) && (h.a(((bh)localObject1).CvH, ((bh)localObject3).CvH)))
+          localObject3 = (bj)((dgv)localObject2).FPY.get(j);
+          if ((localObject3 != null) && (h.a(((bj)localObject1).DOc, ((bj)localObject3).DOc)))
           {
-            paramString4.addLast((dbj)paramString4.remove(i));
+            paramString4.addLast((dgv)paramString4.remove(i));
             paramInt = 1;
           }
         }
@@ -648,17 +648,17 @@ public final class d
           if (paramInt != 0) {
             break label1430;
           }
-          g.a(paramString2, (bh)localObject1, true);
+          g.a(paramString2, (bj)localObject1, true);
           break label1430;
-          paramString1 = ((e)localObject2).pEz;
-          paramString2 = c.cbE();
+          paramString1 = ((e)localObject2).qjm;
+          paramString2 = c.ciP();
           paramString3 = g.e(paramString2);
-          g.a(paramString2, (bh)localObject1, false);
+          g.a(paramString2, (bj)localObject1, false);
           c.a(paramString2);
-          if (paramString1.pEC == null) {
+          if (paramString1.qjp == null) {
             break;
           }
-          paramString1.pEC.a((bh)localObject1, paramString3);
+          paramString1.qjp.a((bj)localObject1, paramString3);
           break;
         }
         label1285:
@@ -678,7 +678,7 @@ public final class d
   public final void a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(121884);
-    Object localObject2 = this.pEy;
+    Object localObject2 = this.qjl;
     int j;
     Object localObject1;
     int i;
@@ -686,39 +686,39 @@ public final class d
     {
       if (TextUtils.isEmpty(paramString2))
       {
-        ad.e("ActivityStackWrapper", "habbyge-mali, push: aName=null, action: %s", new Object[] { paramIntent.getAction() });
+        ac.e("ActivityStackWrapper", "habbyge-mali, push: aName=null, action: %s", new Object[] { paramIntent.getAction() });
         AppMethodBeat.o(121884);
         return;
       }
       j = paramIntent.getFlags();
       if (!TextUtils.isEmpty(paramString3))
       {
-        localObject1 = g.cbM();
-        paramIntent = (bi)((com.tencent.mm.vending.j.b)localObject1).get(0);
-        localObject1 = (bh)((com.tencent.mm.vending.j.c)localObject1).get(1);
-        if ((localObject1 != null) && (((bh)localObject1).CvH != null) && (((bh)localObject1).CvH.activityName.equals(paramString2)) && (TextUtils.isEmpty(((bh)localObject1).CvH.DnR))) {}
+        localObject1 = g.ciX();
+        paramIntent = (bk)((com.tencent.mm.vending.j.b)localObject1).get(0);
+        localObject1 = (bj)((com.tencent.mm.vending.j.c)localObject1).get(1);
+        if ((localObject1 != null) && (((bj)localObject1).DOc != null) && (((bj)localObject1).DOc.activityName.equals(paramString2)) && (TextUtils.isEmpty(((bj)localObject1).DOc.EIR))) {}
         for (i = 1; i != 0; i = 0)
         {
-          ((bh)localObject1).CvH.DnR = paramString3;
+          ((bj)localObject1).DOc.EIR = paramString3;
           c.a(paramIntent);
           AppMethodBeat.o(121884);
           return;
         }
       }
-      localObject1 = new bh();
-      ((bh)localObject1).CvH = new dcm();
-      ((bh)localObject1).CvH.activityName = paramString2;
+      localObject1 = new bj();
+      ((bj)localObject1).DOc = new dhz();
+      ((bj)localObject1).DOc.activityName = paramString2;
       if (!TextUtils.isEmpty(paramString1)) {
-        ((bh)localObject1).CvK = paramString1;
+        ((bj)localObject1).DOf = paramString1;
       }
-      paramString1 = ((bh)localObject1).CvH;
+      paramString1 = ((bj)localObject1).DOc;
       paramIntent = paramString3;
       if (paramString3 == null) {
         paramIntent = "";
       }
-      paramString1.DnR = paramIntent;
-      ((bh)localObject1).flags = j;
-      ((bh)localObject1).state = a.pEq.value;
+      paramString1.EIR = paramIntent;
+      ((bj)localObject1).flags = j;
+      ((bj)localObject1).state = a.qjd.value;
       if (j != 0) {
         break label319;
       }
@@ -736,31 +736,31 @@ public final class d
         return;
         if ((0x10000000 & j) == 268435456)
         {
-          i = ((bh)localObject1).flags;
+          i = ((bj)localObject1).flags;
           if ((0x8000000 & i) == 134217728)
           {
             i = 3;
           }
           else if ((0x8000 & i) == 32768)
           {
-            paramIntent = ((e)localObject2).pEz;
-            if (!TextUtils.isEmpty(((bh)localObject1).CvH.activityName))
+            paramIntent = ((e)localObject2).qjm;
+            if (!TextUtils.isEmpty(((bj)localObject1).DOc.activityName))
             {
-              paramString1 = c.cbE();
+              paramString1 = c.ciP();
               paramString2 = g.e(paramString1);
-              paramString3 = g.a(paramString1, (bh)localObject1);
+              paramString3 = g.a(paramString1, (bj)localObject1);
               if (paramString3 == null)
               {
                 i = 101;
                 continue;
               }
-              paramString3 = (dbj)paramString3.get(0);
-              paramString3.EsW.clear();
-              paramString3.EsV = false;
-              paramString3.EsW.addLast(localObject1);
+              paramString3 = (dgv)paramString3.get(0);
+              paramString3.FPY.clear();
+              paramString3.FPX = false;
+              paramString3.FPY.addLast(localObject1);
               c.a(paramString1);
-              if (paramIntent.pEC != null) {
-                paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+              if (paramIntent.qjp != null) {
+                paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
               }
             }
             i = 100;
@@ -771,8 +771,8 @@ public final class d
           }
           else
           {
-            paramIntent = ((e)localObject2).pEz;
-            if (TextUtils.isEmpty(((bh)localObject1).CvH.activityName)) {
+            paramIntent = ((e)localObject2).qjm;
+            if (TextUtils.isEmpty(((bj)localObject1).DOc.activityName)) {
               i = 0;
             }
             for (;;)
@@ -782,32 +782,32 @@ public final class d
               }
               i = 101;
               break;
-              paramString1 = c.cbE();
+              paramString1 = c.ciP();
               paramString2 = g.e(paramString1);
-              localObject3 = g.a(paramString1, (bh)localObject1);
+              localObject3 = g.a(paramString1, (bj)localObject1);
               if (localObject3 == null)
               {
                 i = 0;
               }
               else
               {
-                paramString3 = (dbj)((com.tencent.mm.vending.j.b)localObject3).get(0);
+                paramString3 = (dgv)((com.tencent.mm.vending.j.b)localObject3).get(0);
                 i = ((Integer)((com.tencent.mm.vending.j.c)localObject3).get(1)).intValue();
-                paramString1.CvM.remove(i);
-                paramString1.CvM.addLast(paramString3);
-                localObject3 = (bh)paramString3.EsW.getLast();
-                if ((localObject3 != null) && (!h.a(((bh)localObject3).CvH, ((bh)localObject1).CvH)))
+                paramString1.DOh.remove(i);
+                paramString1.DOh.addLast(paramString3);
+                localObject3 = (bj)paramString3.FPY.getLast();
+                if ((localObject3 != null) && (!h.a(((bj)localObject3).DOc, ((bj)localObject1).DOc)))
                 {
-                  i = paramString3.EsW.size() - 1;
-                  while ((i >= 0) && (!h.a(((bh)paramString3.EsW.get(i)).CvH, ((bh)localObject1).CvH)))
+                  i = paramString3.FPY.size() - 1;
+                  while ((i >= 0) && (!h.a(((bj)paramString3.FPY.get(i)).DOc, ((bj)localObject1).DOc)))
                   {
-                    paramString3.EsW.remove(i);
+                    paramString3.FPY.remove(i);
                     i -= 1;
                   }
                 }
                 c.a(paramString1);
-                if (paramIntent.pEC != null) {
-                  paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+                if (paramIntent.qjp != null) {
+                  paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
                 }
                 i = 1;
               }
@@ -830,45 +830,45 @@ public final class d
           }
           else
           {
-            paramIntent = ((e)localObject2).pEz;
-            paramString1 = c.cbE();
+            paramIntent = ((e)localObject2).qjm;
+            paramString1 = c.ciP();
             paramString2 = g.e(paramString1);
-            paramString3 = g.c(paramString1, (bh)localObject1);
+            paramString3 = g.c(paramString1, (bj)localObject1);
             j = ((Integer)paramString3.get(0)).intValue();
             k = ((Integer)paramString3.get(1)).intValue();
             if (k < 0) {
-              g.b(paramString1, (bh)localObject1);
+              g.b(paramString1, (bj)localObject1);
             }
             for (;;)
             {
               c.a(paramString1);
-              if (paramIntent.pEC != null) {
-                paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+              if (paramIntent.qjp != null) {
+                paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
               }
               i = 100;
               break;
-              if (j == paramString1.CvM.size() - 1) {
+              if (j == paramString1.DOh.size() - 1) {
                 i = 1;
               }
               for (;;)
               {
                 if (i != 0)
                 {
-                  paramString3 = (dbj)paramString1.CvM.getLast();
+                  paramString3 = (dgv)paramString1.DOh.getLast();
                   if (paramString3 == null)
                   {
-                    g.b(paramString1, (bh)localObject1);
+                    g.b(paramString1, (bj)localObject1);
                     break;
                     i = 0;
                     continue;
                   }
-                  g.b(paramString1, (bh)paramString3.EsW.remove(k));
+                  g.b(paramString1, (bj)paramString3.FPY.remove(k));
                   break;
                 }
               }
-              paramString3 = (dbj)paramString1.CvM.remove(j);
-              paramString1.CvM.addLast(paramString3);
-              g.b(paramString1, (bh)paramString3.EsW.remove(k));
+              paramString3 = (dgv)paramString1.DOh.remove(j);
+              paramString1.DOh.addLast(paramString3);
+              g.b(paramString1, (bj)paramString3.FPY.remove(k));
             }
           }
         }
@@ -878,52 +878,52 @@ public final class d
         }
         break;
       case 0: 
-        paramIntent = ((e)localObject2).pEz;
-        paramString1 = c.cbE();
+        paramIntent = ((e)localObject2).qjm;
+        paramString1 = c.ciP();
         paramString2 = g.e(paramString1);
         if (g.b(paramString1)) {
-          g.a(paramString1, (bh)localObject1, false);
+          g.a(paramString1, (bj)localObject1, false);
         }
         for (;;)
         {
           c.a(paramString1);
-          if (paramIntent.pEC != null) {
-            paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+          if (paramIntent.qjp != null) {
+            paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
           }
           AppMethodBeat.o(121884);
           return;
-          g.b(paramString1, (bh)localObject1);
+          g.b(paramString1, (bj)localObject1);
         }
       case 2: 
-        paramIntent = ((e)localObject2).pEz;
-        paramString1 = c.cbE();
+        paramIntent = ((e)localObject2).qjm;
+        paramString1 = c.ciP();
         paramString2 = g.e(paramString1);
         if (g.b(paramString1)) {
-          g.a(paramString1, (bh)localObject1, false);
+          g.a(paramString1, (bj)localObject1, false);
         }
         for (;;)
         {
           c.a(paramString1);
-          if (paramIntent.pEC != null) {
-            paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+          if (paramIntent.qjp != null) {
+            paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
           }
           AppMethodBeat.o(121884);
           return;
-          paramString3 = g.c(paramString1, (bh)localObject1);
+          paramString3 = g.c(paramString1, (bj)localObject1);
           j = ((Integer)paramString3.get(0)).intValue();
           k = ((Integer)paramString3.get(1)).intValue();
           if (k >= 0) {
             break;
           }
-          g.b(paramString1, (bh)localObject1);
+          g.b(paramString1, (bj)localObject1);
         }
-        if (j == paramString1.CvM.size() - 1)
+        if (j == paramString1.DOh.size() - 1)
         {
           i = 1;
           if (i == 0) {
             break label1353;
           }
-          if (k != ((dbj)paramString1.CvM.getLast()).EsW.size() - 1) {
+          if (k != ((dgv)paramString1.DOh.getLast()).FPY.size() - 1) {
             break label1341;
           }
           i = 1;
@@ -935,13 +935,13 @@ public final class d
         for (;;)
         {
           if (i == 1) {
-            paramIntent.a(paramString1, k + 1, (bh)localObject1);
+            paramIntent.a(paramString1, k + 1, (bj)localObject1);
           }
           if (i != 2) {
             break;
           }
-          paramIntent.b(paramString1, j + 1, (bh)localObject1);
-          paramIntent.a(paramString1, k + 1, (bh)localObject1);
+          paramIntent.b(paramString1, j + 1, (bj)localObject1);
+          paramIntent.a(paramString1, k + 1, (bj)localObject1);
           break;
           i = 0;
           break label1248;
@@ -952,36 +952,36 @@ public final class d
           i = 2;
         }
       case 1: 
-        paramIntent = ((e)localObject2).pEz;
-        paramString1 = c.cbE();
+        paramIntent = ((e)localObject2).qjm;
+        paramString1 = c.ciP();
         paramString2 = g.e(paramString1);
         if (g.b(paramString1)) {
-          g.a(paramString1, (bh)localObject1, false);
+          g.a(paramString1, (bj)localObject1, false);
         }
         for (;;)
         {
           c.a(paramString1);
-          if (paramIntent.pEC != null) {
-            paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+          if (paramIntent.qjp != null) {
+            paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
           }
           AppMethodBeat.o(121884);
           return;
           paramString3 = g.c(paramString1);
-          if ((paramString3 == null) || (!h.a(((bh)localObject1).CvH, paramString3.CvH))) {
-            g.b(paramString1, (bh)localObject1);
+          if ((paramString3 == null) || (!h.a(((bj)localObject1).DOc, paramString3.DOc))) {
+            g.b(paramString1, (bj)localObject1);
           }
         }
       case 3: 
-        paramIntent = ((e)localObject2).pEz;
-        paramString1 = c.cbE();
+        paramIntent = ((e)localObject2).qjm;
+        paramString1 = c.ciP();
         paramString2 = g.e(paramString1);
         paramString3 = g.d(paramString1);
         if (paramString3 == null)
         {
-          g.a(paramString1, (bh)localObject1, true);
+          g.a(paramString1, (bj)localObject1, true);
           c.a(paramString1);
-          if (paramIntent.pEC != null) {
-            paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+          if (paramIntent.qjp != null) {
+            paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
           }
           AppMethodBeat.o(121884);
           return;
@@ -990,18 +990,18 @@ public final class d
         j = paramString3.size() - 1;
         if (j >= 0)
         {
-          localObject2 = (dbj)paramString3.get(j);
-          if ((localObject2 == null) || (!((dbj)localObject2).EsV)) {
+          localObject2 = (dgv)paramString3.get(j);
+          if ((localObject2 == null) || (!((dgv)localObject2).FPX)) {
             break label1720;
           }
-          k = ((dbj)localObject2).EsW.size() - 1;
+          k = ((dgv)localObject2).FPY.size() - 1;
           if (k < 0) {
             break label1720;
           }
-          localObject3 = (bh)((dbj)localObject2).EsW.get(k);
-          if ((localObject3 != null) && (h.a(((bh)localObject1).CvH, ((bh)localObject3).CvH)))
+          localObject3 = (bj)((dgv)localObject2).FPY.get(k);
+          if ((localObject3 != null) && (h.a(((bj)localObject1).DOc, ((bj)localObject3).DOc)))
           {
-            paramString3.addLast((dbj)paramString3.remove(j));
+            paramString3.addLast((dgv)paramString3.remove(j));
             i = 1;
           }
         }
@@ -1024,17 +1024,17 @@ public final class d
           if (i != 0) {
             break label1491;
           }
-          g.a(paramString1, (bh)localObject1, true);
+          g.a(paramString1, (bj)localObject1, true);
           break label1491;
-          paramIntent = ((e)localObject2).pEz;
-          paramString1 = c.cbE();
+          paramIntent = ((e)localObject2).qjm;
+          paramString1 = c.ciP();
           paramString2 = g.e(paramString1);
-          g.a(paramString1, (bh)localObject1, false);
+          g.a(paramString1, (bj)localObject1, false);
           c.a(paramString1);
-          if (paramIntent.pEC == null) {
+          if (paramIntent.qjp == null) {
             break;
           }
-          paramIntent.pEC.a(paramActivity, (bh)localObject1, paramString2);
+          paramIntent.qjp.a(paramActivity, (bj)localObject1, paramString2);
           break;
         }
         i = 100;
@@ -1047,7 +1047,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.d
  * JD-Core Version:    0.7.0.1
  */

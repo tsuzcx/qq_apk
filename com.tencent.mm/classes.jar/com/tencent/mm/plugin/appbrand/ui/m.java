@@ -10,19 +10,19 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ac.e;
+import com.tencent.mm.plugin.appbrand.ab.e;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.k;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.widget.d;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 
 public final class m
-  implements z
+  implements y
 {
   private static int a(AppBrandStatObject paramAppBrandStatObject)
   {
@@ -35,29 +35,29 @@ public final class m
   private static void a(final AppBrandRuntime paramAppBrandRuntime, final int paramInt, final Runnable paramRunnable)
   {
     AppMethodBeat.i(48868);
-    if (!t.ay(paramAppBrandRuntime.iDA))
+    if (!t.ay(paramAppBrandRuntime.jdA))
     {
-      paramAppBrandRuntime.iDA.setWillNotDraw(true);
-      paramAppBrandRuntime.iDA.post(new Runnable()
+      paramAppBrandRuntime.jdA.setWillNotDraw(true);
+      paramAppBrandRuntime.jdA.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(175084);
-          m.b(this.iOB, paramInt, paramRunnable);
+          m.b(this.joK, paramInt, paramRunnable);
           AppMethodBeat.o(175084);
         }
       });
       AppMethodBeat.o(48868);
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(aj.getContext(), paramInt);
+    Animation localAnimation = AnimationUtils.loadAnimation(ai.getContext(), paramInt);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(175085);
-        if (this.iGG != null) {
-          aq.f(this.iGG);
+        if (this.jgJ != null) {
+          ap.f(this.jgJ);
         }
         AppMethodBeat.o(175085);
       }
@@ -67,11 +67,11 @@ public final class m
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(175086);
-        paramAppBrandRuntime.iDA.setWillNotDraw(false);
+        paramAppBrandRuntime.jdA.setWillNotDraw(false);
         AppMethodBeat.o(175086);
       }
     });
-    paramAppBrandRuntime.iDA.startAnimation(localAnimation);
+    paramAppBrandRuntime.jdA.startAnimation(localAnimation);
     AppMethodBeat.o(48868);
   }
   
@@ -81,7 +81,7 @@ public final class m
     if ((paramAppBrandRuntime instanceof o))
     {
       paramAppBrandRuntime = (o)paramAppBrandRuntime;
-      if ((paramAppBrandRuntime.aMT()) || (paramAppBrandRuntime.DZ().cfo.scene == 1099))
+      if ((paramAppBrandRuntime.aTJ()) || (paramAppBrandRuntime.DC().ccl.scene == 1099))
       {
         AppMethodBeat.o(48869);
         return true;
@@ -106,7 +106,7 @@ public final class m
       AppMethodBeat.o(48864);
       return;
     }
-    AppBrandStatObject localAppBrandStatObject = ((AppBrandInitConfigWC)paramAppBrandInitConfig).cfo;
+    AppBrandStatObject localAppBrandStatObject = ((AppBrandInitConfigWC)paramAppBrandInitConfig).ccl;
     try
     {
       boolean bool = k.a(paramActivity, paramAppBrandInitConfig, localAppBrandStatObject);
@@ -123,9 +123,9 @@ public final class m
         AppMethodBeat.o(48864);
         return;
       }
-      if ((((AppBrandInitConfigWC)paramAppBrandInitConfig).jdl) || (((AppBrandInitConfigWC)paramAppBrandInitConfig).launchMode == 1))
+      if ((((AppBrandInitConfigWC)paramAppBrandInitConfig).jDy) || (((AppBrandInitConfigWC)paramAppBrandInitConfig).launchMode == 1))
       {
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.lLF, MMFragmentActivity.a.lLG);
+        paramActivity.overridePendingTransition(MMFragmentActivity.a.mnC, MMFragmentActivity.a.mnD);
         AppMethodBeat.o(48864);
         return;
       }
@@ -166,10 +166,10 @@ public final class m
         if (i == 0) {
           break label246;
         }
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.lLH, MMFragmentActivity.a.lLI);
+        paramActivity.overridePendingTransition(MMFragmentActivity.a.mnE, MMFragmentActivity.a.mnF);
         AppMethodBeat.o(48864);
         return;
-        i = localAppBrandStatObject.dzS;
+        i = localAppBrandStatObject.dxE;
         break;
       }
       label246:
@@ -202,7 +202,7 @@ public final class m
     }
     if (ar(paramAppBrandRuntime1))
     {
-      i = MMFragmentActivity.a.lLF;
+      i = MMFragmentActivity.a.mnC;
       a(paramAppBrandRuntime1, i, new Runnable()
       {
         public final void run()
@@ -211,8 +211,8 @@ public final class m
           if ((paramAppBrandRuntime1 instanceof o)) {
             ((o)paramAppBrandRuntime1).onEnterAnimationComplete();
           }
-          if (this.lCX != null) {
-            this.lCX.run();
+          if (this.meR != null) {
+            this.meR.run();
           }
           AppMethodBeat.o(48861);
         }
@@ -224,7 +224,7 @@ public final class m
       }
     }
     label73:
-    for (int i = MMFragmentActivity.a.lLG;; i = 2130771986)
+    for (int i = MMFragmentActivity.a.mnD;; i = 2130771986)
     {
       a(paramAppBrandRuntime2, i, null);
       AppMethodBeat.o(48866);
@@ -244,7 +244,7 @@ public final class m
     }
     if (ar(paramAppBrandRuntime2))
     {
-      i = MMFragmentActivity.a.lLI;
+      i = MMFragmentActivity.a.mnF;
       a(paramAppBrandRuntime2, i, paramRunnable);
       if (paramAppBrandRuntime1 != null) {
         if (!ar(paramAppBrandRuntime2)) {
@@ -253,7 +253,7 @@ public final class m
       }
     }
     label70:
-    for (int i = MMFragmentActivity.a.lLH;; i = 2130771986)
+    for (int i = MMFragmentActivity.a.mnE;; i = 2130771986)
     {
       a(paramAppBrandRuntime1, i, null);
       AppMethodBeat.o(48867);
@@ -287,7 +287,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.m
  * JD-Core Version:    0.7.0.1
  */

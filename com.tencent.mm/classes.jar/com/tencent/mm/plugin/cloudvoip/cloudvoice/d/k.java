@@ -6,7 +6,7 @@ import android.util.SparseArray;
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.wxmm.IConfCallBack;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,14 +14,14 @@ import java.util.Iterator;
 
 final class k
 {
-  private IConfCallBack nQu;
-  final SparseArray<HashSet<a>> nQv;
+  final SparseArray<HashSet<a>> otA;
+  private IConfCallBack otz;
   
   k()
   {
     AppMethodBeat.i(90820);
-    this.nQu = null;
-    this.nQv = new SparseArray(5);
+    this.otz = null;
+    this.otA = new SparseArray(5);
     AppMethodBeat.o(90820);
   }
   
@@ -29,18 +29,18 @@ final class k
   {
     int i = 1;
     AppMethodBeat.i(90822);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: registering event id: %d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: registering event id: %d", new Object[] { Integer.valueOf(paramInt) });
     for (;;)
     {
       try
       {
-        HashSet localHashSet = (HashSet)this.nQv.get(paramInt);
+        HashSet localHashSet = (HashSet)this.otA.get(paramInt);
         if (localHashSet == null)
         {
           localHashSet = new HashSet(1);
           localHashSet.add(parama);
           if (i != 0) {
-            this.nQv.append(paramInt, localHashSet);
+            this.otA.append(paramInt, localHashSet);
           }
           return;
         }
@@ -58,7 +58,7 @@ final class k
     AppMethodBeat.i(90823);
     try
     {
-      HashSet localHashSet = (HashSet)this.nQv.get(paramInt);
+      HashSet localHashSet = (HashSet)this.otA.get(paramInt);
       if (localHashSet != null) {
         localHashSet.remove(parama);
       }
@@ -70,43 +70,47 @@ final class k
     }
   }
   
-  final IConfCallBack iU(boolean paramBoolean)
+  final IConfCallBack jx(boolean paramBoolean)
   {
     AppMethodBeat.i(90821);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: trigger validate callback %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: trigger validate callback %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        this.nQu = new IConfCallBack()
+        this.otz = new IConfCallBack()
         {
           public final byte[] callBackFromConf(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
           {
             AppMethodBeat.i(90818);
-            ad.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: triggered native callback: %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            HashSet localHashSet = (HashSet)k.this.nQv.get(paramAnonymousInt1);
+            ac.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: triggered native callback: %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            HashSet localHashSet = (HashSet)k.this.otA.get(paramAnonymousInt1);
             if ((localHashSet != null) && (localHashSet.size() > 0))
             {
               ArrayList localArrayList = new ArrayList(1);
-              Object localObject = new byte[1];
+              Object localObject1 = new byte[1];
               Iterator localIterator = localHashSet.iterator();
               while (localIterator.hasNext())
               {
                 k.a locala = (k.a)localIterator.next();
                 if (locala != null)
                 {
-                  byte[] arrayOfByte = locala.cR(locala.k(paramAnonymousInt2, locala.aN(paramAnonymousArrayOfByte)));
-                  localObject = arrayOfByte;
-                  if (!locala.bOg())
+                  Object localObject3 = locala.k(paramAnonymousInt2, locala.aM(paramAnonymousArrayOfByte));
+                  Object localObject2 = localObject1;
+                  if (localObject3 != null) {
+                    localObject2 = locala.cQ(localObject3);
+                  }
+                  localObject1 = localObject2;
+                  if (!locala.bVt())
                   {
                     localArrayList.add(locala);
-                    localObject = arrayOfByte;
+                    localObject1 = localObject2;
                   }
                 }
                 else
                 {
-                  ad.e("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: item is null! weired");
+                  ac.e("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: item is null! weired");
                 }
               }
               paramAnonymousArrayOfByte = localArrayList.iterator();
@@ -114,9 +118,9 @@ final class k
                 localHashSet.remove((k.a)paramAnonymousArrayOfByte.next());
               }
               AppMethodBeat.o(90818);
-              return localObject;
+              return localObject1;
             }
-            ad.w("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: nobody's listening to event %d, what a pity!", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+            ac.w("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: nobody's listening to event %d, what a pity!", new Object[] { Integer.valueOf(paramAnonymousInt1) });
             paramAnonymousArrayOfByte = new byte[1];
             AppMethodBeat.o(90818);
             return paramAnonymousArrayOfByte;
@@ -125,31 +129,31 @@ final class k
           public final void callbackWriteLog(int paramAnonymousInt1, String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt2, String paramAnonymousString3, String paramAnonymousString4, int paramAnonymousInt3)
           {
             AppMethodBeat.i(90819);
-            if (paramAnonymousInt1 >= c.bOb()) {
+            if (paramAnonymousInt1 >= c.bVn()) {
               Xlog.logWrite2(paramAnonymousInt1, "CloudVoIPNative:".concat(String.valueOf(paramAnonymousString1)), paramAnonymousString2, paramAnonymousString3, Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramAnonymousString4);
             }
             AppMethodBeat.o(90819);
           }
         };
-        this.nQv.clear();
-        IConfCallBack localIConfCallBack = this.nQu;
+        this.otA.clear();
+        IConfCallBack localIConfCallBack = this.otz;
         return localIConfCallBack;
       }
       finally
       {
         AppMethodBeat.o(90821);
       }
-      this.nQu = null;
+      this.otz = null;
     }
   }
   
   static abstract interface a<InParamType, OutParamType>
   {
-    public abstract InParamType aN(byte[] paramArrayOfByte);
+    public abstract InParamType aM(byte[] paramArrayOfByte);
     
-    public abstract boolean bOg();
+    public abstract boolean bVt();
     
-    public abstract byte[] cR(OutParamType paramOutParamType);
+    public abstract byte[] cQ(OutParamType paramOutParamType);
     
     public abstract OutParamType k(int paramInt, InParamType paramInParamType);
   }

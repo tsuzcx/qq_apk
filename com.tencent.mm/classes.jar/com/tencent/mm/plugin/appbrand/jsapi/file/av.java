@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 final class av
@@ -21,8 +21,8 @@ final class av
     }
     catch (Exception paramc)
     {
-      ad.e("MicroMsg.AppBrand.UnitAppendFile", "call with path(%s), put append fail ex = %s", new Object[] { paramString, paramc });
-      paramc = new i.a("fail " + l.iSr.name(), new Object[0]);
+      ac.e("MicroMsg.AppBrand.UnitAppendFile", "call with path(%s), put append fail ex = %s", new Object[] { paramString, paramc });
+      paramc = new i.a("fail " + l.jsC.name(), new Object[0]);
       AppMethodBeat.o(128908);
     }
     return paramc;
@@ -30,7 +30,7 @@ final class av
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.av
  * JD-Core Version:    0.7.0.1
  */

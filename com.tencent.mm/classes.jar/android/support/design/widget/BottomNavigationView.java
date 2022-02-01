@@ -34,12 +34,12 @@ import android.widget.FrameLayout.LayoutParams;
 public class BottomNavigationView
   extends FrameLayout
 {
-  private final BottomNavigationPresenter hH = new BottomNavigationPresenter();
-  private final h hI;
-  private final BottomNavigationMenuView hK;
-  private MenuInflater kT;
-  private b kU;
-  private a kV;
+  private final BottomNavigationPresenter iK = new BottomNavigationPresenter();
+  private final h iL;
+  private final BottomNavigationMenuView iN;
+  private MenuInflater lS;
+  private b lT;
+  private a lU;
   
   public BottomNavigationView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,19 +49,19 @@ public class BottomNavigationView
   public BottomNavigationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.hI = new a(paramContext);
-    this.hK = new BottomNavigationMenuView(paramContext);
+    this.iL = new a(paramContext);
+    this.iN = new BottomNavigationMenuView(paramContext);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
-    this.hK.setLayoutParams(localLayoutParams);
-    this.hH.hK = this.hK;
-    this.hH.id = 1;
-    this.hK.setPresenter(this.hH);
-    this.hI.a(this.hH);
-    this.hH.a(getContext(), this.hI);
+    this.iN.setLayoutParams(localLayoutParams);
+    this.iK.iN = this.iN;
+    this.iK.id = 1;
+    this.iN.setPresenter(this.iK);
+    this.iL.a(this.iK);
+    this.iK.a(getContext(), this.iL);
     paramAttributeSet = f.b(paramContext, paramAttributeSet, a.a.BottomNavigationView, paramInt, 2131821634, new int[] { 6, 5 });
     if (paramAttributeSet.hasValue(4)) {
-      this.hK.setIconTintList(paramAttributeSet.getColorStateList(4));
+      this.iN.setIconTintList(paramAttributeSet.getColorStateList(4));
     }
     for (;;)
     {
@@ -81,17 +81,17 @@ public class BottomNavigationView
       setLabelVisibilityMode(paramAttributeSet.getInteger(8, -1));
       setItemHorizontalTranslationEnabled(paramAttributeSet.getBoolean(2, true));
       paramInt = paramAttributeSet.getResourceId(1, 0);
-      this.hK.setItemBackgroundRes(paramInt);
+      this.iN.setItemBackgroundRes(paramInt);
       if (paramAttributeSet.hasValue(9))
       {
         paramInt = paramAttributeSet.getResourceId(9, 0);
-        this.hH.hL = true;
-        getMenuInflater().inflate(paramInt, this.hI);
-        this.hH.hL = false;
-        this.hH.p(true);
+        this.iK.iO = true;
+        getMenuInflater().inflate(paramInt, this.iL);
+        this.iK.iO = false;
+        this.iK.p(true);
       }
-      paramAttributeSet.avP.recycle();
-      addView(this.hK, localLayoutParams);
+      paramAttributeSet.awJ.recycle();
+      addView(this.iN, localLayoutParams);
       if (Build.VERSION.SDK_INT < 21)
       {
         paramAttributeSet = new View(paramContext);
@@ -99,14 +99,14 @@ public class BottomNavigationView
         paramAttributeSet.setLayoutParams(new FrameLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131166102)));
         addView(paramAttributeSet);
       }
-      this.hI.a(new h.a()
+      this.iL.a(new h.a()
       {
         public final boolean a(h paramAnonymoush, MenuItem paramAnonymousMenuItem)
         {
           if ((BottomNavigationView.a(BottomNavigationView.this) != null) && (paramAnonymousMenuItem.getItemId() == BottomNavigationView.this.getSelectedItemId())) {
             BottomNavigationView.a(BottomNavigationView.this);
           }
-          while ((BottomNavigationView.b(BottomNavigationView.this) != null) && (!BottomNavigationView.b(BottomNavigationView.this).bE())) {
+          while ((BottomNavigationView.b(BottomNavigationView.this) != null) && (!BottomNavigationView.b(BottomNavigationView.this).bL())) {
             return true;
           }
           return false;
@@ -115,57 +115,57 @@ public class BottomNavigationView
         public final void b(h paramAnonymoush) {}
       });
       return;
-      this.hK.setIconTintList(this.hK.bf());
+      this.iN.setIconTintList(this.iN.bm());
     }
   }
   
   private MenuInflater getMenuInflater()
   {
-    if (this.kT == null) {
-      this.kT = new g(getContext());
+    if (this.lS == null) {
+      this.lS = new g(getContext());
     }
-    return this.kT;
+    return this.lS;
   }
   
   public Drawable getItemBackground()
   {
-    return this.hK.getItemBackground();
+    return this.iN.getItemBackground();
   }
   
   @Deprecated
   public int getItemBackgroundResource()
   {
-    return this.hK.getItemBackgroundRes();
+    return this.iN.getItemBackgroundRes();
   }
   
   public int getItemIconSize()
   {
-    return this.hK.getItemIconSize();
+    return this.iN.getItemIconSize();
   }
   
   public ColorStateList getItemIconTintList()
   {
-    return this.hK.getIconTintList();
+    return this.iN.getIconTintList();
   }
   
   public int getItemTextAppearanceActive()
   {
-    return this.hK.getItemTextAppearanceActive();
+    return this.iN.getItemTextAppearanceActive();
   }
   
   public int getItemTextAppearanceInactive()
   {
-    return this.hK.getItemTextAppearanceInactive();
+    return this.iN.getItemTextAppearanceInactive();
   }
   
   public ColorStateList getItemTextColor()
   {
-    return this.hK.getItemTextColor();
+    return this.iN.getItemTextColor();
   }
   
   public int getLabelVisibilityMode()
   {
-    return this.hK.getLabelVisibilityMode();
+    return this.iN.getLabelVisibilityMode();
   }
   
   public int getMaxItemCount()
@@ -175,12 +175,12 @@ public class BottomNavigationView
   
   public Menu getMenu()
   {
-    return this.hI;
+    return this.iL;
   }
   
   public int getSelectedItemId()
   {
-    return this.hK.getSelectedItemId();
+    return this.iN.getSelectedItemId();
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -191,40 +191,40 @@ public class BottomNavigationView
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Mm);
-    this.hI.dispatchRestoreInstanceState(paramParcelable.kX);
+    super.onRestoreInstanceState(paramParcelable.Nj);
+    this.iL.dispatchRestoreInstanceState(paramParcelable.lW);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.kX = new Bundle();
-    this.hI.e(localSavedState.kX);
+    localSavedState.lW = new Bundle();
+    this.iL.e(localSavedState.lW);
     return localSavedState;
   }
   
   public void setItemBackground(Drawable paramDrawable)
   {
-    this.hK.setItemBackground(paramDrawable);
+    this.iN.setItemBackground(paramDrawable);
   }
   
   public void setItemBackgroundResource(int paramInt)
   {
-    this.hK.setItemBackgroundRes(paramInt);
+    this.iN.setItemBackgroundRes(paramInt);
   }
   
   public void setItemHorizontalTranslationEnabled(boolean paramBoolean)
   {
-    if (this.hK.hu != paramBoolean)
+    if (this.iN.ix != paramBoolean)
     {
-      this.hK.setItemHorizontalTranslationEnabled(paramBoolean);
-      this.hH.p(false);
+      this.iN.setItemHorizontalTranslationEnabled(paramBoolean);
+      this.iK.p(false);
     }
   }
   
   public void setItemIconSize(int paramInt)
   {
-    this.hK.setItemIconSize(paramInt);
+    this.iN.setItemIconSize(paramInt);
   }
   
   public void setItemIconSizeRes(int paramInt)
@@ -234,47 +234,47 @@ public class BottomNavigationView
   
   public void setItemIconTintList(ColorStateList paramColorStateList)
   {
-    this.hK.setIconTintList(paramColorStateList);
+    this.iN.setIconTintList(paramColorStateList);
   }
   
   public void setItemTextAppearanceActive(int paramInt)
   {
-    this.hK.setItemTextAppearanceActive(paramInt);
+    this.iN.setItemTextAppearanceActive(paramInt);
   }
   
   public void setItemTextAppearanceInactive(int paramInt)
   {
-    this.hK.setItemTextAppearanceInactive(paramInt);
+    this.iN.setItemTextAppearanceInactive(paramInt);
   }
   
   public void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.hK.setItemTextColor(paramColorStateList);
+    this.iN.setItemTextColor(paramColorStateList);
   }
   
   public void setLabelVisibilityMode(int paramInt)
   {
-    if (this.hK.getLabelVisibilityMode() != paramInt)
+    if (this.iN.getLabelVisibilityMode() != paramInt)
     {
-      this.hK.setLabelVisibilityMode(paramInt);
-      this.hH.p(false);
+      this.iN.setLabelVisibilityMode(paramInt);
+      this.iK.p(false);
     }
   }
   
   public void setOnNavigationItemReselectedListener(a parama)
   {
-    this.kV = parama;
+    this.lU = parama;
   }
   
   public void setOnNavigationItemSelectedListener(b paramb)
   {
-    this.kU = paramb;
+    this.lT = paramb;
   }
   
   public void setSelectedItemId(int paramInt)
   {
-    MenuItem localMenuItem = this.hI.findItem(paramInt);
-    if ((localMenuItem != null) && (!this.hI.a(localMenuItem, this.hH, 0))) {
+    MenuItem localMenuItem = this.iL.findItem(paramInt);
+    if ((localMenuItem != null) && (!this.iL.a(localMenuItem, this.iK, 0))) {
       localMenuItem.setChecked(true);
     }
   }
@@ -283,12 +283,12 @@ public class BottomNavigationView
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-    Bundle kX;
+    Bundle lW;
     
     public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
       super(paramClassLoader);
-      this.kX = paramParcel.readBundle(paramClassLoader);
+      this.lW = paramParcel.readBundle(paramClassLoader);
     }
     
     public SavedState(Parcelable paramParcelable)
@@ -299,7 +299,7 @@ public class BottomNavigationView
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeBundle(this.kX);
+      paramParcel.writeBundle(this.lW);
     }
   }
   
@@ -307,12 +307,12 @@ public class BottomNavigationView
   
   public static abstract interface b
   {
-    public abstract boolean bE();
+    public abstract boolean bL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.BottomNavigationView
  * JD-Core Version:    0.7.0.1
  */

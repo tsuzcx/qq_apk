@@ -7,64 +7,64 @@ import com.google.b.a.e;
 public final class a$ar
   extends e
 {
-  private static volatile ar[] Imx;
-  public int DlI = 0;
-  public int Imy = 0;
+  private static volatile ar[] JOh;
+  public int EFp = 0;
+  public int JOi = 0;
   public int fps = 0;
-  public int nPB = 0;
+  public int osF = 0;
   
   public a$ar()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static ar[] flw()
+  public static ar[] fBN()
   {
-    if (Imx == null) {}
-    synchronized (c.bIR)
+    if (JOh == null) {}
+    synchronized (c.bGz)
     {
-      if (Imx == null) {
-        Imx = new ar[0];
+      if (JOh == null) {
+        JOh = new ar[0];
       }
-      return Imx;
+      return JOh;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.nPB != 0) {
-      paramb.by(1, this.nPB);
+    if (this.osF != 0) {
+      paramb.bv(1, this.osF);
     }
-    if (this.Imy != 0) {
-      paramb.by(2, this.Imy);
+    if (this.JOi != 0) {
+      paramb.bv(2, this.JOi);
     }
     if (this.fps != 0) {
-      paramb.by(3, this.fps);
+      paramb.bv(3, this.fps);
     }
-    if (this.DlI != 0) {
-      paramb.by(4, this.DlI);
+    if (this.EFp != 0) {
+      paramb.bv(4, this.EFp);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.nPB != 0) {
-      i = j + b.bA(1, this.nPB);
+    if (this.osF != 0) {
+      i = j + b.bx(1, this.osF);
     }
     j = i;
-    if (this.Imy != 0) {
-      j = i + b.bA(2, this.Imy);
+    if (this.JOi != 0) {
+      j = i + b.bx(2, this.JOi);
     }
     i = j;
     if (this.fps != 0) {
-      i = j + b.bA(3, this.fps);
+      i = j + b.bx(3, this.fps);
     }
     j = i;
-    if (this.DlI != 0) {
-      j = i + b.bA(4, this.DlI);
+    if (this.EFp != 0) {
+      j = i + b.bx(4, this.EFp);
     }
     return j;
   }

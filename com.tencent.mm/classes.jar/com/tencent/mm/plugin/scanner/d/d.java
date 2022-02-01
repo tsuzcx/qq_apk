@@ -5,41 +5,41 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.op;
-import com.tencent.mm.g.a.op.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.oy;
+import com.tencent.mm.g.a.oy.b;
 import com.tencent.mm.network.ae;
 import com.tencent.mm.plugin.scanner.util.c;
 import com.tencent.mm.plugin.scanner.view.b;
 import com.tencent.mm.pluginsdk.d.d;
 import com.tencent.mm.pluginsdk.ui.tools.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.scanlib.ui.ScanView;
 
 public final class d
   extends e
-  implements com.tencent.mm.al.g, e.a
+  implements com.tencent.mm.ak.g, e.a
 {
-  private int vQu;
-  private boolean vQv;
-  private c vQw;
-  private a vQx;
-  private b vQy;
+  private int xbb;
+  private boolean xbc;
+  private c xbd;
+  private a xbe;
+  private b xbf;
   
   public d(int paramInt1, int paramInt2, ScanView paramScanView, a parama, b paramb)
   {
     AppMethodBeat.i(51660);
     this.mode = paramInt1;
-    this.vQu = paramInt2;
-    this.vQz = paramScanView;
-    this.vQx = parama;
+    this.xbb = paramInt2;
+    this.xbg = paramScanView;
+    this.xbe = parama;
     this.context = paramScanView.getContext();
-    this.vQy = paramb;
-    this.vQv = true;
-    com.tencent.mm.kernel.g.aeS().a(971, this);
+    this.xbf = paramb;
+    this.xbc = true;
+    com.tencent.mm.kernel.g.agi().a(971, this);
     AppMethodBeat.o(51660);
   }
   
@@ -53,52 +53,51 @@ public final class d
     }
     String str1 = paramBundle.getString("result_content", "");
     String str2 = paramBundle.getString("result_code_name", "");
-    int j = d.d.aAo(str2);
-    int k = paramBundle.getInt("result_code_version", 0);
-    int m = paramBundle.getInt("qbar_string_scan_source", 0);
-    ad.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(j), str2, Integer.valueOf(k) });
+    int i = d.d.aFG(str2);
+    int j = paramBundle.getInt("result_code_version", 0);
+    int k = paramBundle.getInt("qbar_string_scan_source", 0);
+    ac.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(i), str2, Integer.valueOf(j) });
     Activity localActivity;
     b localb;
-    if (!bt.isNullOrNil(str1))
+    if (!bs.isNullOrNil(str1))
     {
-      paramBundle = new op();
-      paramBundle.dtO.dtQ = str2;
-      paramBundle.dtO.scanResult = str1;
-      paramBundle.dtO.dtM = 1;
-      com.tencent.mm.sdk.b.a.ESL.l(paramBundle);
-      if (paramBundle.dtP.ret == 1)
+      paramBundle = new oy();
+      paramBundle.drz.drB = str2;
+      paramBundle.drz.scanResult = str1;
+      paramBundle.drz.drx = 1;
+      com.tencent.mm.sdk.b.a.GpY.l(paramBundle);
+      if (paramBundle.drA.ret == 1)
       {
-        if (this.vQx != null)
+        if (this.xbe != null)
         {
-          this.vQx.bKq();
+          this.xbe.bRD();
           AppMethodBeat.o(51661);
         }
       }
       else
       {
-        if (this.vQw != null) {
-          this.vQw.dnf();
+        if (this.xbd != null) {
+          this.xbd.dBn();
         }
-        if ((j == 19) || (j == 22)) {}
-        for (int i = 1; i != 0; i = 0)
+        if (d.d.Wn(i))
         {
-          this.vQw = new c();
-          this.vQw.a((Activity)this.vQz.getContext(), str1, m, str2, j, k, this, this.vQy, null, this.vQu, false, -1, this.vQv);
+          this.xbd = new c();
+          this.xbd.a((Activity)this.xbg.getContext(), str1, k, str2, i, j, this, this.xbf, null, this.xbb, false, -1, this.xbc);
           AppMethodBeat.o(51661);
           return;
         }
         paramBundle = new com.tencent.mm.plugin.scanner.util.a();
-        localActivity = (Activity)this.vQz.getContext();
-        localb = this.vQy;
-        if (m != 1) {
-          break label351;
+        localActivity = (Activity)this.xbg.getContext();
+        localb = this.xbf;
+        if (k != 1) {
+          break label331;
         }
       }
     }
-    label351:
+    label331:
     for (boolean bool = true;; bool = false)
     {
-      paramBundle.a(localActivity, this, localb, str1, bool, k, str2, null, this.vQu, false, -1, this.vQv);
+      paramBundle.a(localActivity, this, localb, str1, bool, j, str2, null, this.xbb, false, -1, this.xbc);
       AppMethodBeat.o(51661);
       return;
     }
@@ -107,9 +106,9 @@ public final class d
   public final void destroy()
   {
     AppMethodBeat.i(51664);
-    com.tencent.mm.kernel.g.aeS().b(971, this);
-    if (this.vQw != null) {
-      this.vQw.dnf();
+    com.tencent.mm.kernel.g.agi().b(971, this);
+    if (this.xbd != null) {
+      this.xbd.dBn();
     }
     AppMethodBeat.o(51664);
   }
@@ -117,7 +116,7 @@ public final class d
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(51662);
-    ad.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     int i;
     switch (paramInt1)
     {
@@ -126,20 +125,20 @@ public final class d
     }
     while (i != 0)
     {
-      r(0, null);
+      s(0, null);
       AppMethodBeat.o(51662);
       return;
-      if (com.tencent.mm.kernel.g.aeS().auS())
+      if (com.tencent.mm.kernel.g.agi().aBL())
       {
-        com.tencent.mm.kernel.g.aeS().getNetworkServerIp();
+        com.tencent.mm.kernel.g.agi().getNetworkServerIp();
         new StringBuilder().append(paramInt2);
       }
       for (;;)
       {
         i = 1;
         break;
-        if (ae.cJ(this.context)) {
-          k.hm(this.context);
+        if (ae.cS(this.context)) {
+          k.hx(this.context);
         } else {
           Toast.makeText(this.context, this.context.getString(2131759510, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
         }
@@ -149,7 +148,7 @@ public final class d
     }
     if ((paramInt1 == 4) && (paramInt2 == -2004))
     {
-      h.j(this.context, 2131762118, 2131755906);
+      h.l(this.context, 2131762118, 2131755906);
       AppMethodBeat.o(51662);
       return;
     }
@@ -160,15 +159,15 @@ public final class d
       return;
     }
     if (paramn.getType() == 971) {
-      r(3, null);
+      s(3, null);
     }
     AppMethodBeat.o(51662);
   }
   
-  public final void r(int paramInt, Bundle paramBundle)
+  public final void s(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(51663);
-    ad.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     }
@@ -178,27 +177,27 @@ public final class d
       return;
       AppMethodBeat.o(51663);
       return;
-      this.vQz.onResume();
+      this.xbg.onResume();
       AppMethodBeat.o(51663);
       return;
-      this.vQz.onResume();
+      this.xbg.onResume();
       AppMethodBeat.o(51663);
       return;
-      if (this.vQx != null)
+      if (this.xbe != null)
       {
-        this.vQx.bKq();
+        this.xbe.bRD();
         AppMethodBeat.o(51663);
         return;
-        this.vQz.onPause();
+        this.xbg.onPause();
         AppMethodBeat.o(51663);
         return;
-        if (this.vQx != null)
+        if (this.xbe != null)
         {
-          this.vQx.dlK();
+          this.xbe.dzQ();
           AppMethodBeat.o(51663);
           return;
-          if (this.vQx != null) {
-            this.vQx.dlL();
+          if (this.xbe != null) {
+            this.xbe.dzR();
           }
         }
       }
@@ -208,14 +207,14 @@ public final class d
   public static abstract interface a
     extends e.b
   {
-    public abstract void dlK();
+    public abstract void dzQ();
     
-    public abstract void dlL();
+    public abstract void dzR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.d.d
  * JD-Core Version:    0.7.0.1
  */

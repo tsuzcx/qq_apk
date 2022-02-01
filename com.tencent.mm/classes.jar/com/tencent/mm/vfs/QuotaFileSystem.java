@@ -31,16 +31,16 @@ public class QuotaFileSystem
   implements Handler.Callback
 {
   public static final Parcelable.Creator<QuotaFileSystem> CREATOR;
-  private final FileSystem HRw;
-  private final Iterable<FileSystem> HRx;
-  private final long HSB;
-  private final long HSC;
-  private final boolean HSD;
-  private final Object HSE;
-  private HashMap<String, Long> HSF;
-  private final Handler HSG;
-  private final long HSH;
-  private final long kSM;
+  private final FileSystem JrA;
+  private final Iterable<FileSystem> JrB;
+  private final boolean JrC;
+  private final Object JrD;
+  private HashMap<String, Long> JrE;
+  private final Handler JrF;
+  private final long JrG;
+  private final long JrH;
+  private final long JrI;
+  private final long lum;
   
   static
   {
@@ -52,98 +52,98 @@ public class QuotaFileSystem
   protected QuotaFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13189);
-    this.HSE = new Object();
-    this.HSH = 60000L;
+    this.JrD = new Object();
+    this.JrG = 60000L;
     q.a(paramParcel, QuotaFileSystem.class, 2);
-    this.HRw = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.HRw == null)
+    this.JrA = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.JrA == null)
     {
       paramParcel = new IllegalArgumentException("Wrong wrapped filesystem.");
       AppMethodBeat.o(13189);
       throw paramParcel;
     }
-    this.HRx = Collections.singletonList(this.HRw);
-    this.HSB = paramParcel.readLong();
-    this.HSC = paramParcel.readLong();
-    this.kSM = paramParcel.readLong();
+    this.JrB = Collections.singletonList(this.JrA);
+    this.JrH = paramParcel.readLong();
+    this.JrI = paramParcel.readLong();
+    this.lum = paramParcel.readLong();
     boolean bool;
     if (paramParcel.readByte() != 0)
     {
       bool = true;
-      this.HSD = bool;
-      if (!this.HSD) {
+      this.JrC = bool;
+      if (!this.JrC) {
         break label182;
       }
-      this.HSF = new HashMap();
+      this.JrE = new HashMap();
     }
-    for (this.HSG = new Handler(a.gap().LDp.getLooper(), this);; this.HSG = null)
+    for (this.JrF = new Handler(a.ghk().KgB.getLooper(), this);; this.JrF = null)
     {
-      fhO();
+      fxP();
       AppMethodBeat.o(13189);
       return;
       bool = false;
       break;
       label182:
-      this.HSF = null;
+      this.JrE = null;
     }
   }
   
   public QuotaFileSystem(FileSystem paramFileSystem, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(13188);
-    this.HSE = new Object();
-    this.HSH = 60000L;
-    this.HRw = paramFileSystem;
-    this.HRx = Collections.singletonList(this.HRw);
-    this.HSB = paramLong1;
-    this.HSC = paramLong2;
-    this.kSM = 7776000000L;
-    this.HSD = true;
-    if (this.HSD) {
-      this.HSF = new HashMap();
+    this.JrD = new Object();
+    this.JrG = 60000L;
+    this.JrA = paramFileSystem;
+    this.JrB = Collections.singletonList(this.JrA);
+    this.JrH = paramLong1;
+    this.JrI = paramLong2;
+    this.lum = 7776000000L;
+    this.JrC = true;
+    if (this.JrC) {
+      this.JrE = new HashMap();
     }
-    for (this.HSG = new Handler(a.gap().LDp.getLooper(), this);; this.HSG = null)
+    for (this.JrF = new Handler(a.ghk().KgB.getLooper(), this);; this.JrF = null)
     {
-      fhO();
+      fxP();
       AppMethodBeat.o(13188);
       return;
-      this.HSF = null;
+      this.JrE = null;
     }
   }
   
-  private void cR(String paramString, boolean paramBoolean)
+  private void cW(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13191);
-    if (!this.HSD)
+    if (!this.JrC)
     {
       AppMethodBeat.o(13191);
       return;
     }
     if (paramBoolean) {
-      synchronized (this.HSE)
+      synchronized (this.JrD)
       {
-        this.HSF.remove(paramString);
+        this.JrE.remove(paramString);
         AppMethodBeat.o(13191);
         return;
       }
     }
     long l = System.currentTimeMillis();
-    synchronized (this.HSE)
+    synchronized (this.JrD)
     {
-      paramBoolean = this.HSF.isEmpty();
-      this.HSF.put(paramString, Long.valueOf(l));
+      paramBoolean = this.JrE.isEmpty();
+      this.JrE.put(paramString, Long.valueOf(l));
       if (paramBoolean) {
-        this.HSG.sendMessageDelayed(Message.obtain(), 60000L);
+        this.JrF.sendMessageDelayed(Message.obtain(), 60000L);
       }
       AppMethodBeat.o(13191);
       return;
     }
   }
   
-  private void fhO()
+  private void fxP()
   {
     AppMethodBeat.i(13190);
-    if (this.HSC < this.HSB)
+    if (this.JrI < this.JrH)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Cleaning threshold must not less than target size.");
       AppMethodBeat.o(13190);
@@ -175,13 +175,13 @@ public class QuotaFileSystem
     {
       try
       {
-        i2 = this.HRw.fhA();
+        i2 = this.JrA.fxC();
         if ((i2 & 0x1) == 0)
         {
           k = n;
           m = i;
           l1 = l2;
-          Log.w("VFS.QuotaFileSystem", "No quota operation can be done on read-only file system: " + this.HRw.toString());
+          Log.w("VFS.QuotaFileSystem", "No quota operation can be done on read-only file system: " + this.JrA.toString());
           super.a(paramCancellationSignal);
           AppMethodBeat.o(13198);
           return;
@@ -192,7 +192,7 @@ public class QuotaFileSystem
         k = n;
         m = i;
         l1 = l2;
-        Log.w("VFS.QuotaFileSystem", "No quota operation can be done on non-listable file system: " + this.HRw.toString());
+        Log.w("VFS.QuotaFileSystem", "No quota operation can be done on non-listable file system: " + this.JrA.toString());
         continue;
         if (!(paramCancellationSignal instanceof OperationCanceledException)) {
           break label2137;
@@ -215,26 +215,26 @@ public class QuotaFileSystem
       k = n;
       m = i;
       l1 = l2;
-      k(1, new Object[] { "destination", this.HRw });
+      k(1, new Object[] { "destination", this.JrA });
       k = n;
       m = i;
       l1 = l2;
-      if (this.HSD)
+      if (this.JrC)
       {
         localObject1 = null;
         k = n;
         m = i;
         l1 = l2;
-        localObject2 = this.HSE;
+        localObject2 = this.JrD;
         k = n;
         m = i;
         l1 = l2;
         try
         {
-          if (!this.HSF.isEmpty())
+          if (!this.JrE.isEmpty())
           {
-            localObject1 = this.HSF;
-            this.HSF = new HashMap();
+            localObject1 = this.JrE;
+            this.JrE = new HashMap();
           }
           if (localObject1 != null)
           {
@@ -261,7 +261,7 @@ public class QuotaFileSystem
               k = n;
               m = i;
               l1 = l2;
-              this.HRw.cf((String)((Map.Entry)localObject2).getKey(), ((Long)((Map.Entry)localObject2).getValue()).longValue());
+              this.JrA.ch((String)((Map.Entry)localObject2).getKey(), ((Long)((Map.Entry)localObject2).getValue()).longValue());
             }
           }
           k = n;
@@ -287,7 +287,7 @@ public class QuotaFileSystem
       k = n;
       m = i;
       l1 = l2;
-      localObject1 = this.HRw.cN("", true);
+      localObject1 = this.JrA.cT("", true);
       if (localObject1 == null)
       {
         k = n;
@@ -318,7 +318,7 @@ public class QuotaFileSystem
           k = j;
           m = i;
           l1 = l2;
-          if (((FileSystem.a)localObject2).HRz < 0L)
+          if (((FileSystem.a)localObject2).Jse < 0L)
           {
             k = j;
             m = i;
@@ -333,7 +333,7 @@ public class QuotaFileSystem
               k = j;
               m = i;
               l1 = l2;
-              boolean bool = ((FileSystem.a)localObject2).HRB;
+              boolean bool = ((FileSystem.a)localObject2).Jsg;
               if (!bool) {
                 break label2205;
               }
@@ -356,13 +356,13 @@ public class QuotaFileSystem
             k = j;
             m = i;
             l1 = l2;
-            l3 = ((FileSystem.a)localObject2).HRz;
+            l3 = ((FileSystem.a)localObject2).Jse;
           }
         }
         k = j;
         m = i;
         l1 = l2;
-        Log.i("VFS.QuotaFileSystem", "Total size: " + l2 + ", Cleaning threshold: " + this.HSC);
+        Log.i("VFS.QuotaFileSystem", "Total size: " + l2 + ", Cleaning threshold: " + this.JrI);
         k = j;
         m = i;
         l1 = l2;
@@ -370,7 +370,7 @@ public class QuotaFileSystem
         k = j;
         m = i;
         l1 = l2;
-        if (l2 > this.HSC) {
+        if (l2 > this.JrI) {
           break;
         }
         k = j;
@@ -408,23 +408,23 @@ public class QuotaFileSystem
         k = j;
         m = i;
         l1 = l2;
-        if (locala.HRB)
+        if (locala.Jsg)
         {
           k = j;
           m = i;
           l1 = l2;
-          if (!((HashMap)localObject2).containsKey(locala.EQk))
+          if (!((HashMap)localObject2).containsKey(locala.Gnx))
           {
             k = j;
             m = i;
             l1 = l2;
-            ((HashMap)localObject2).put(locala.EQk, new a(locala));
+            ((HashMap)localObject2).put(locala.Gnx, new a(locala));
           }
         }
         k = j;
         m = i;
         l1 = l2;
-        String str = q.aMW(locala.EQk);
+        String str = q.aSz(locala.Gnx);
         if (str != null)
         {
           k = j;
@@ -446,7 +446,7 @@ public class QuotaFileSystem
           k = j;
           m = i;
           l1 = l2;
-          ((a)localObject1).mRc += 1;
+          ((a)localObject1).nts += 1;
         }
       }
       k = j;
@@ -478,7 +478,7 @@ public class QuotaFileSystem
         k = j;
         m = i;
         l1 = l2;
-        if (!((FileSystem.a)localObject4).HRB)
+        if (!((FileSystem.a)localObject4).Jsg)
         {
           k = j;
           m = i;
@@ -491,7 +491,7 @@ public class QuotaFileSystem
       l1 = l2;
       Collections.sort((List)localObject3, new Comparator()
       {
-        private final long HSI;
+        private final long JrJ;
       });
       k = j;
       m = i;
@@ -505,15 +505,15 @@ public class QuotaFileSystem
       {
         try
         {
-          if ((l1 > this.HSB) && (n >= 0))
+          if ((l1 > this.JrH) && (n >= 0))
           {
             paramCancellationSignal.throwIfCanceled();
             localObject2 = (FileSystem.a)((ArrayList)localObject3).get(n);
-            localObject4 = ((FileSystem.a)localObject2).EQk;
-            if (!this.HRw.vv((String)localObject4)) {
+            localObject4 = ((FileSystem.a)localObject2).Gnx;
+            if (!this.JrA.zB((String)localObject4)) {
               break label2192;
             }
-            if (((FileSystem.a)localObject2).HRz < 0L)
+            if (((FileSystem.a)localObject2).Jse < 0L)
             {
               l2 = ((FileSystem.a)localObject2).size;
               l2 = l1 - l2;
@@ -529,7 +529,7 @@ public class QuotaFileSystem
           }
           try
           {
-            localObject2 = q.aMW((String)localObject4);
+            localObject2 = q.aSz((String)localObject4);
             if (localObject2 == null) {}
           }
           catch (Exception paramCancellationSignal)
@@ -548,13 +548,13 @@ public class QuotaFileSystem
           localObject4 = (a)((HashMap)localObject1).get(localObject2);
           if (localObject4 != null)
           {
-            j = ((a)localObject4).mRc - 1;
-            ((a)localObject4).mRc = j;
-            if ((j == 0) && (this.HRw.cO((String)localObject2, false)))
+            j = ((a)localObject4).nts - 1;
+            ((a)localObject4).nts = j;
+            if ((j == 0) && (this.JrA.cU((String)localObject2, false)))
             {
-              if (((a)localObject4).HSK.HRz < 0L)
+              if (((a)localObject4).JrL.Jse < 0L)
               {
-                l1 = ((a)localObject4).HSK.size;
+                l1 = ((a)localObject4).JrL.size;
                 l2 -= l1;
                 i -= 1;
                 j = i;
@@ -564,12 +564,12 @@ public class QuotaFileSystem
                 j = i;
                 l1 = l2;
                 m = k;
-                localObject2 = q.aMW((String)localObject2);
+                localObject2 = q.aSz((String)localObject2);
                 continue;
-                l2 = ((FileSystem.a)localObject2).HRz;
+                l2 = ((FileSystem.a)localObject2).Jse;
                 continue;
               }
-              l1 = ((a)localObject4).HSK.HRz;
+              l1 = ((a)localObject4).JrL.Jse;
               continue;
             }
           }
@@ -602,7 +602,7 @@ public class QuotaFileSystem
         j = i;
         l1 = l2;
         m = k;
-        if (((a)localObject2).mRc != 0) {
+        if (((a)localObject2).nts != 0) {
           break label2186;
         }
         j = i;
@@ -612,25 +612,25 @@ public class QuotaFileSystem
         j = i;
         l1 = l2;
         m = k;
-        if (!this.HRw.cO(((a)localObject2).HSK.EQk, false)) {
+        if (!this.JrA.cU(((a)localObject2).JrL.Gnx, false)) {
           break label2186;
         }
         j = i;
         l1 = l2;
         m = k;
-        if (((a)localObject2).HSK.HRz < 0L)
+        if (((a)localObject2).JrL.Jse < 0L)
         {
           j = i;
           l1 = l2;
           m = k;
-          l3 = ((a)localObject2).HSK.size;
+          l3 = ((a)localObject2).JrL.size;
           l1 = l3;
           break label2212;
         }
         j = i;
         l1 = l2;
         m = k;
-        l3 = ((a)localObject2).HSK.HRz;
+        l3 = ((a)localObject2).JrL.Jse;
         l1 = l3;
         break label2212;
       }
@@ -677,50 +677,50 @@ public class QuotaFileSystem
     }
   }
   
-  public final ReadableByteChannel aMA(String paramString)
+  public final ReadableByteChannel aSc(String paramString)
   {
     AppMethodBeat.i(13193);
-    ReadableByteChannel localReadableByteChannel = this.HRw.aMA(paramString);
-    cR(paramString, false);
+    ReadableByteChannel localReadableByteChannel = this.JrA.aSc(paramString);
+    cW(paramString, false);
     AppMethodBeat.o(13193);
     return localReadableByteChannel;
   }
   
-  public final ByteChannel aMB(String paramString)
+  public final ByteChannel aSd(String paramString)
   {
     AppMethodBeat.i(13196);
-    ByteChannel localByteChannel = this.HRw.aMB(paramString);
-    cR(paramString, true);
+    ByteChannel localByteChannel = this.JrA.aSd(paramString);
+    cW(paramString, true);
     AppMethodBeat.o(13196);
     return localByteChannel;
   }
   
-  public final WritableByteChannel cL(String paramString, boolean paramBoolean)
+  public final WritableByteChannel cR(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13195);
-    WritableByteChannel localWritableByteChannel = this.HRw.cL(paramString, paramBoolean);
-    cR(paramString, true);
+    WritableByteChannel localWritableByteChannel = this.JrA.cR(paramString, paramBoolean);
+    cW(paramString, true);
     AppMethodBeat.o(13195);
     return localWritableByteChannel;
   }
   
-  public final OutputStream cM(String paramString, boolean paramBoolean)
+  public final OutputStream cS(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(13194);
-    OutputStream localOutputStream = this.HRw.cM(paramString, paramBoolean);
-    cR(paramString, true);
+    OutputStream localOutputStream = this.JrA.cS(paramString, paramBoolean);
+    cW(paramString, true);
     AppMethodBeat.o(13194);
     return localOutputStream;
   }
   
-  protected final Iterable<FileSystem> fhB()
+  protected final Iterable<FileSystem> fxD()
   {
-    return this.HRx;
+    return this.JrB;
   }
   
-  protected final FileSystem gj(String paramString, int paramInt)
+  protected final FileSystem gn(String paramString, int paramInt)
   {
-    return this.HRw;
+    return this.JrA;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -728,13 +728,13 @@ public class QuotaFileSystem
     AppMethodBeat.i(13199);
     for (;;)
     {
-      synchronized (this.HSE)
+      synchronized (this.JrD)
       {
-        if (this.HSF.isEmpty()) {
+        if (this.JrE.isEmpty()) {
           break label152;
         }
-        paramMessage = this.HSF;
-        this.HSF = new HashMap();
+        paramMessage = this.JrE;
+        this.JrE = new HashMap();
         if (paramMessage == null) {
           break label144;
         }
@@ -742,7 +742,7 @@ public class QuotaFileSystem
         if (((Iterator)???).hasNext())
         {
           Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
-          this.HRw.cf((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
+          this.JrA.ch((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
         }
       }
       Log.d("VFS.QuotaFileSystem", "Flush access time cache entries: " + paramMessage.size());
@@ -754,11 +754,11 @@ public class QuotaFileSystem
     }
   }
   
-  public final ParcelFileDescriptor lw(String paramString1, String paramString2)
+  public final ParcelFileDescriptor lT(String paramString1, String paramString2)
   {
     AppMethodBeat.i(13197);
-    ParcelFileDescriptor localParcelFileDescriptor = this.HRw.lw(paramString1, paramString2);
-    cR(paramString1, paramString2.contains("w"));
+    ParcelFileDescriptor localParcelFileDescriptor = this.JrA.lT(paramString1, paramString2);
+    cW(paramString1, paramString2.contains("w"));
     AppMethodBeat.o(13197);
     return localParcelFileDescriptor;
   }
@@ -766,8 +766,8 @@ public class QuotaFileSystem
   public final InputStream openRead(String paramString)
   {
     AppMethodBeat.i(13192);
-    InputStream localInputStream = this.HRw.openRead(paramString);
-    cR(paramString, false);
+    InputStream localInputStream = this.JrA.openRead(paramString);
+    cW(paramString, false);
     AppMethodBeat.o(13192);
     return localInputStream;
   }
@@ -775,8 +775,8 @@ public class QuotaFileSystem
   public String toString()
   {
     AppMethodBeat.i(13200);
-    long l = this.HSB / 1024L / 1024L;
-    String str = "QuotaFS [" + l + "MB | " + this.HRw.toString() + "]";
+    long l = this.JrH / 1024L / 1024L;
+    String str = "QuotaFS [" + l + "MB | " + this.JrA.toString() + "]";
     AppMethodBeat.o(13200);
     return str;
   }
@@ -785,11 +785,11 @@ public class QuotaFileSystem
   {
     AppMethodBeat.i(13201);
     q.b(paramParcel, QuotaFileSystem.class, 2);
-    paramParcel.writeParcelable(this.HRw, paramInt);
-    paramParcel.writeLong(this.HSB);
-    paramParcel.writeLong(this.HSC);
-    paramParcel.writeLong(this.kSM);
-    if (this.HSD) {}
+    paramParcel.writeParcelable(this.JrA, paramInt);
+    paramParcel.writeLong(this.JrH);
+    paramParcel.writeLong(this.JrI);
+    paramParcel.writeLong(this.lum);
+    if (this.JrC) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -800,19 +800,19 @@ public class QuotaFileSystem
   
   static final class a
   {
-    FileSystem.a HSK;
-    int mRc;
+    FileSystem.a JrL;
+    int nts;
     
     a(FileSystem.a parama)
     {
-      this.HSK = parama;
-      this.mRc = 0;
+      this.JrL = parama;
+      this.nts = 0;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(13187);
-      String str = "children: " + this.mRc + " [" + this.HSK + "]";
+      String str = "children: " + this.nts + " [" + this.JrL + "]";
       AppMethodBeat.o(13187);
       return str;
     }

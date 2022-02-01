@@ -10,9 +10,9 @@ public final class f
 {
   public f()
   {
-    super(q.kSA.ordinal());
-    AppMethodBeat.i(196040);
-    AppMethodBeat.o(196040);
+    super(q.lua.ordinal());
+    AppMethodBeat.i(186864);
+    AppMethodBeat.o(186864);
   }
   
   public static final class a
@@ -24,7 +24,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.f
  * JD-Core Version:    0.7.0.1
  */

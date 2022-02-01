@@ -1,108 +1,106 @@
 package com.tencent.mm.plugin.fav.ui.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gn;
-import com.tencent.mm.g.a.gn.a;
-import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.g.a.go;
+import com.tencent.mm.g.a.go.a;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.o;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
-  extends c<gn>
+  extends c<go>
 {
-  private o qcI;
-  private ag<Long, com.tencent.mm.plugin.fav.a.g> qkz;
+  private o qLn;
+  private com.tencent.mm.sdk.platformtools.af<Long, com.tencent.mm.plugin.fav.a.g> qTb;
   
   public a()
   {
     AppMethodBeat.i(107443);
-    this.qkz = new ag(10);
-    this.__eventId = gn.class.getName().hashCode();
+    this.qTb = new com.tencent.mm.sdk.platformtools.af(10);
+    this.__eventId = go.class.getName().hashCode();
     AppMethodBeat.o(107443);
   }
   
-  private boolean a(gn paramgn)
+  private boolean a(go paramgo)
   {
     AppMethodBeat.i(107444);
     com.tencent.mm.plugin.fav.a.g localg2;
     com.tencent.mm.plugin.fav.a.g localg1;
-    if (paramgn.djH.deL != 0L) {
-      if (paramgn.djH.djO)
+    if (paramgo.dhc.dcg != 0L) {
+      if (paramgo.dhc.dhj)
       {
-        localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(paramgn.djH.deL);
+        localg2 = ((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getFavItemInfoStorage().tH(paramgo.dhc.dcg);
         localg1 = localg2;
         if (localg2 != null)
         {
-          this.qkz.put(Long.valueOf(paramgn.djH.deL), localg2);
+          this.qTb.put(Long.valueOf(paramgo.dhc.dcg), localg2);
           localg1 = localg2;
         }
       }
     }
     for (;;)
     {
-      ad.d("MicroMsg.FavImageServiceListener", "image serivce callback type %d, localId %d", new Object[] { Integer.valueOf(paramgn.djH.opType), Long.valueOf(paramgn.djH.deL) });
-      if ((localg1 == null) && (paramgn.djH.opType != 3) && (paramgn.djH.opType != 4))
+      ac.d("MicroMsg.FavImageServiceListener", "image serivce callback type %d, localId %d", new Object[] { Integer.valueOf(paramgo.dhc.opType), Long.valueOf(paramgo.dhc.dcg) });
+      if ((localg1 == null) && (paramgo.dhc.opType != 3) && (paramgo.dhc.opType != 4))
       {
         AppMethodBeat.o(107444);
         return false;
-        localg1 = (com.tencent.mm.plugin.fav.a.g)this.qkz.get(Long.valueOf(paramgn.djH.deL));
+        localg1 = (com.tencent.mm.plugin.fav.a.g)this.qTb.get(Long.valueOf(paramgo.dhc.dcg));
         if (localg1 == null) {}
         for (boolean bool = true;; bool = false)
         {
-          ad.d("MicroMsg.FavImageServiceListener", "get item from cache itemInfo is null? %B", new Object[] { Boolean.valueOf(bool) });
+          ac.d("MicroMsg.FavImageServiceListener", "get item from cache itemInfo is null? %B", new Object[] { Boolean.valueOf(bool) });
           if (localg1 != null) {
             break label558;
           }
-          localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(paramgn.djH.deL);
+          localg2 = ((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getFavItemInfoStorage().tH(paramgo.dhc.dcg);
           localg1 = localg2;
           if (localg2 == null) {
             break;
           }
-          this.qkz.put(Long.valueOf(paramgn.djH.deL), localg2);
+          this.qTb.put(Long.valueOf(paramgo.dhc.dcg), localg2);
           localg1 = localg2;
           break;
         }
       }
-      switch (paramgn.djH.opType)
+      switch (paramgo.dhc.opType)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(107444);
         return false;
-        paramgn.djI.djP = o.a(paramgn.djH.djJ, localg1);
+        paramgo.dhd.dhk = o.a(paramgo.dhc.dhe, localg1);
         continue;
-        ad.d("MicroMsg.FavImageServiceListener", "get img from Cache %s", new Object[] { Boolean.valueOf(paramgn.djH.djM) });
-        if (paramgn.djH.djM)
+        ac.d("MicroMsg.FavImageServiceListener", "get img from Cache %s", new Object[] { Boolean.valueOf(paramgo.dhc.dhh) });
+        if (paramgo.dhc.dhh)
         {
-          paramgn.djI.djP = o.l(paramgn.djH.djJ);
+          paramgo.dhd.dhk = o.l(paramgo.dhc.dhe);
         }
         else
         {
-          paramgn.djI.djP = o.b(paramgn.djH.djJ, localg1, paramgn.djH.maxWidth);
+          paramgo.dhd.dhk = o.b(paramgo.dhc.dhe, localg1, paramgo.dhc.maxWidth);
           continue;
-          if (this.qcI == null)
+          if (this.qLn == null)
           {
-            ad.w("MicroMsg.FavImageServiceListener", "imageServer is null");
+            ac.w("MicroMsg.FavImageServiceListener", "imageServer is null");
           }
           else
           {
-            this.qcI.b(paramgn.djH.djK, paramgn.djH.djJ, localg1, paramgn.djH.djL, paramgn.djH.width, paramgn.djH.height);
+            this.qLn.b(paramgo.dhc.dhf, paramgo.dhc.dhe, localg1, paramgo.dhc.dhg, paramgo.dhc.width, paramgo.dhc.height);
             continue;
-            ad.d("MicroMsg.FavImageServiceListener", "create image server");
-            if (this.qcI != null) {
-              this.qcI.destory();
+            ac.d("MicroMsg.FavImageServiceListener", "create image server");
+            if (this.qLn != null) {
+              this.qLn.destory();
             }
-            this.qcI = new o(paramgn.djH.context, 16);
+            this.qLn = new o(paramgo.dhc.context, 16);
             continue;
-            ad.d("MicroMsg.FavImageServiceListener", "destroy image server");
-            if (this.qcI != null)
+            ac.d("MicroMsg.FavImageServiceListener", "destroy image server");
+            if (this.qLn != null)
             {
-              this.qcI.destory();
-              this.qcI = null;
+              this.qLn.destory();
+              this.qLn = null;
             }
           }
         }
@@ -115,7 +113,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

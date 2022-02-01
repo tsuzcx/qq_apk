@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ig
   extends b
 {
-  public a dmd;
-  public b dme;
+  public a dju;
+  public b djv;
   
   public ig()
   {
@@ -16,27 +18,31 @@ public final class ig
   
   private ig(byte paramByte)
   {
-    AppMethodBeat.i(155368);
-    this.dmd = new a();
-    this.dme = new b();
-    this.ESR = false;
+    AppMethodBeat.i(117546);
+    this.dju = new a();
+    this.djv = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(155368);
+    AppMethodBeat.o(117546);
   }
   
   public static final class a
   {
-    public String dmf;
+    public int actionCode;
+    public Context context;
+    public Bundle djw;
+    public String result;
+    public String username;
   }
   
   public static final class b
   {
-    public String userName;
+    public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ig
  * JD-Core Version:    0.7.0.1
  */

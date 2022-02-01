@@ -3,181 +3,192 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class ge
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNM;
-  private static final int elq = "scene".hashCode();
-  private static final int ezO;
-  private static final int fbG;
-  private static final int fbH;
-  private static final int fbI;
-  private static final int fbJ;
-  private static final int fbK;
-  private static final int fbL;
-  private static final int fbM;
-  private static final int fbN;
-  private static final int fbO;
-  private static final int fbP;
-  private static final int fbQ;
-  private static final int fbR;
-  private static final int fbS;
-  private static final int fbT;
+  private static final int eIC;
+  private static final int eKa = "taskId".hashCode();
+  private static final int eQG;
+  private static final int elV;
+  private static final int fbR = "baseItemData".hashCode();
+  private static final int fbT = "mixFlag".hashCode();
   private static final int fbU;
-  private static final int fbV;
-  private static final int fbW;
-  private static final int fbX;
-  private static final int fbY;
-  private static final int fbZ;
-  private static final int fca;
-  private static final int fcb;
-  private static final int fcc;
-  private static final int fcd;
-  private static final int fce;
-  private static final int fcf;
-  private static final int fcg;
-  private static final int fch;
-  private static final int fci;
-  private static final int fcj;
-  private static final int fck;
-  private static final int fcl;
-  private static final int fcm;
-  private static final int fcn;
-  private static final int fco;
-  private static final int fcp;
-  private static final int fcq;
-  private static final int fcr;
-  private static final int fct = "fakePk".hashCode();
+  private static final int fdA;
+  private static final int fdB;
+  private static final int fdC;
+  private static final int fdD;
+  private static final int fdE = "blurBgPath".hashCode();
+  private static final int fdF = "fromScene".hashCode();
+  private static final int fds;
+  private static final int fdt;
+  private static final int fdu;
+  private static final int fdv;
+  private static final int fdw;
+  private static final int fdx;
+  private static final int fdy;
+  private static final int fdz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNG = true;
-  private boolean elo = true;
-  private boolean ezK = true;
-  private boolean faU = true;
-  private boolean faV = true;
-  private boolean faW = true;
-  private boolean faX = true;
-  private boolean faY = true;
-  private boolean faZ = true;
-  private boolean fbA = true;
-  private boolean fbB = true;
-  private boolean fbC = true;
-  private boolean fbD = true;
-  private boolean fbE = true;
-  private boolean fbF = true;
-  private boolean fba = true;
-  private boolean fbb = true;
-  private boolean fbc = true;
-  private boolean fbd = true;
-  private boolean fbe = true;
-  private boolean fbf = true;
-  private boolean fbg = true;
-  private boolean fbh = true;
-  private boolean fbi = true;
-  private boolean fbj = true;
-  private boolean fbk = true;
-  private boolean fbl = true;
-  private boolean fbm = true;
-  private boolean fbn = true;
-  private boolean fbo = true;
-  private boolean fbp = true;
-  private boolean fbq = true;
-  private boolean fbr = true;
-  private boolean fbs = true;
-  private boolean fbt = true;
-  private boolean fbu = true;
-  private boolean fbv = true;
-  private boolean fbw = true;
-  private boolean fbx = true;
-  private boolean fby = true;
-  private boolean fbz = true;
-  private boolean fcs = true;
-  public String field_arrive_type;
-  public String field_avail_save_wording;
-  public String field_bankName;
-  public String field_bankPhone;
-  public int field_bankcardClientType;
-  public int field_bankcardState;
-  public int field_bankcardTag;
-  public String field_bankcardTail;
-  public String field_bankcardType;
-  public String field_bankcardTypeName;
-  public String field_bindSerial;
-  public String field_bizUsername;
-  public int field_cardType;
-  public String field_card_bottom_wording;
-  public String field_card_state_name;
-  public double field_dayQuotaKind;
-  public double field_dayQuotaVirtual;
-  public String field_desc;
-  public String field_ext_msg;
-  public int field_fakePk;
-  public long field_fetchArriveTime;
-  public String field_fetchArriveTimeWording;
-  public String field_fetch_charge_info;
-  public double field_fetch_charge_rate;
-  public String field_forbidWord;
-  public String field_forbid_title;
-  public String field_forbid_url;
-  public double field_full_fetch_charge_fee;
-  public int field_is_hightlight_pre_arrive_time_wording;
-  public String field_mobile;
-  public String field_no_micro_word;
-  public double field_onceQuotaKind;
-  public double field_onceQuotaVirtual;
-  public String field_repay_url;
-  public int field_scene;
-  public int field_supportTag;
-  public int field_support_lqt_turn_in;
-  public int field_support_lqt_turn_out;
-  public boolean field_support_micropay;
-  public String field_tips;
-  public String field_trueName;
-  public int field_wxcreditState;
+  private boolean eIq = true;
+  private boolean eJR = true;
+  private boolean eQA = true;
+  private boolean elS = true;
+  private boolean fbM = true;
+  private boolean fbO = true;
+  private boolean fbP = true;
+  private boolean fde = true;
+  private boolean fdf = true;
+  private boolean fdg = true;
+  private boolean fdh = true;
+  private boolean fdi = true;
+  private boolean fdj = true;
+  private boolean fdk = true;
+  private boolean fdl = true;
+  private boolean fdm = true;
+  private boolean fdn = true;
+  private boolean fdo = true;
+  private boolean fdp = true;
+  private boolean fdq = true;
+  private boolean fdr = true;
+  public int field_audioBitrate;
+  public int field_audioChannelCount;
+  public int field_audioSampleRate;
+  public byte[] field_baseItemData;
+  public String field_blurBgPath;
+  public long field_expiredTime;
+  public byte[] field_extraConfig;
+  public int field_frameRate;
+  public int field_fromScene;
+  public byte[] field_location;
+  public int field_mixFlag;
+  public int field_mixRetryTime;
+  public String field_reportInfo;
+  public int field_status;
+  public int field_targetHeight;
+  public int field_targetWidth;
+  public String field_taskId;
+  public long field_timeStamp;
+  public String field_userData;
+  public int field_videoBitrate;
+  public int field_videoRotate;
   
   static
   {
-    fbG = "bindSerial".hashCode();
-    fbH = "cardType".hashCode();
-    fbI = "bankcardState".hashCode();
-    fbJ = "forbidWord".hashCode();
-    fbK = "bankName".hashCode();
-    fbL = "bankcardType".hashCode();
-    fbM = "bankcardTypeName".hashCode();
-    fbN = "bankcardTag".hashCode();
-    fbO = "bankcardTail".hashCode();
-    fbP = "supportTag".hashCode();
-    fbQ = "mobile".hashCode();
-    fbR = "trueName".hashCode();
-    ezO = "desc".hashCode();
-    fbS = "bankPhone".hashCode();
-    fbT = "bizUsername".hashCode();
-    fbU = "onceQuotaKind".hashCode();
-    fbV = "onceQuotaVirtual".hashCode();
-    fbW = "dayQuotaKind".hashCode();
-    fbX = "dayQuotaVirtual".hashCode();
-    fbY = "fetchArriveTime".hashCode();
-    fbZ = "fetchArriveTimeWording".hashCode();
-    fca = "repay_url".hashCode();
-    fcb = "wxcreditState".hashCode();
-    fcc = "bankcardClientType".hashCode();
-    fcd = "ext_msg".hashCode();
-    fce = "support_micropay".hashCode();
-    fcf = "arrive_type".hashCode();
-    fcg = "avail_save_wording".hashCode();
-    fch = "fetch_charge_rate".hashCode();
-    fci = "full_fetch_charge_fee".hashCode();
-    fcj = "fetch_charge_info".hashCode();
-    eNM = "tips".hashCode();
-    fck = "forbid_title".hashCode();
-    fcl = "forbid_url".hashCode();
-    fcm = "no_micro_word".hashCode();
-    fcn = "card_bottom_wording".hashCode();
-    fco = "support_lqt_turn_in".hashCode();
-    fcp = "support_lqt_turn_out".hashCode();
-    fcq = "is_hightlight_pre_arrive_time_wording".hashCode();
-    fcr = "card_state_name".hashCode();
+    eQG = "timeStamp".hashCode();
+    fbU = "mixRetryTime".hashCode();
+    eIC = "expiredTime".hashCode();
+    elV = "status".hashCode();
+    fds = "targetWidth".hashCode();
+    fdt = "targetHeight".hashCode();
+    fdu = "videoBitrate".hashCode();
+    fdv = "audioBitrate".hashCode();
+    fdw = "audioSampleRate".hashCode();
+    fdx = "audioChannelCount".hashCode();
+    fdy = "frameRate".hashCode();
+    fdz = "videoRotate".hashCode();
+    fdA = "extraConfig".hashCode();
+    fdB = "reportInfo".hashCode();
+    fdC = "userData".hashCode();
+    fdD = "location".hashCode();
+  }
+  
+  public static c.a Th()
+  {
+    c.a locala = new c.a();
+    locala.GvF = new Field[21];
+    locala.columns = new String[22];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "taskId";
+    locala.GvH.put("taskId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" taskId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "taskId";
+    locala.columns[1] = "baseItemData";
+    locala.GvH.put("baseItemData", "BLOB");
+    localStringBuilder.append(" baseItemData BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "timeStamp";
+    locala.GvH.put("timeStamp", "LONG");
+    localStringBuilder.append(" timeStamp LONG");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "mixRetryTime";
+    locala.GvH.put("mixRetryTime", "INTEGER");
+    localStringBuilder.append(" mixRetryTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "expiredTime";
+    locala.GvH.put("expiredTime", "LONG");
+    localStringBuilder.append(" expiredTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "status";
+    locala.GvH.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "targetWidth";
+    locala.GvH.put("targetWidth", "INTEGER");
+    localStringBuilder.append(" targetWidth INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "targetHeight";
+    locala.GvH.put("targetHeight", "INTEGER");
+    localStringBuilder.append(" targetHeight INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "videoBitrate";
+    locala.GvH.put("videoBitrate", "INTEGER");
+    localStringBuilder.append(" videoBitrate INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "audioBitrate";
+    locala.GvH.put("audioBitrate", "INTEGER");
+    localStringBuilder.append(" audioBitrate INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "audioSampleRate";
+    locala.GvH.put("audioSampleRate", "INTEGER");
+    localStringBuilder.append(" audioSampleRate INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "audioChannelCount";
+    locala.GvH.put("audioChannelCount", "INTEGER");
+    localStringBuilder.append(" audioChannelCount INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "frameRate";
+    locala.GvH.put("frameRate", "INTEGER");
+    localStringBuilder.append(" frameRate INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "videoRotate";
+    locala.GvH.put("videoRotate", "INTEGER");
+    localStringBuilder.append(" videoRotate INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "extraConfig";
+    locala.GvH.put("extraConfig", "BLOB");
+    localStringBuilder.append(" extraConfig BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "reportInfo";
+    locala.GvH.put("reportInfo", "TEXT");
+    localStringBuilder.append(" reportInfo TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "userData";
+    locala.GvH.put("userData", "TEXT");
+    localStringBuilder.append(" userData TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[17] = "location";
+    locala.GvH.put("location", "BLOB");
+    localStringBuilder.append(" location BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[18] = "mixFlag";
+    locala.GvH.put("mixFlag", "INTEGER");
+    localStringBuilder.append(" mixFlag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[19] = "blurBgPath";
+    locala.GvH.put("blurBgPath", "TEXT");
+    localStringBuilder.append(" blurBgPath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[20] = "fromScene";
+    locala.GvH.put("fromScene", "INTEGER");
+    localStringBuilder.append(" fromScene INTEGER");
+    locala.columns[21] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -186,18 +197,18 @@ public abstract class ge
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fct != k) {
+      if (eKa != k) {
         break label65;
       }
-      this.field_fakePk = paramCursor.getInt(i);
-      this.fcs = true;
+      this.field_taskId = paramCursor.getString(i);
+      this.eJR = true;
     }
     for (;;)
     {
@@ -205,150 +216,48 @@ public abstract class ge
       break label20;
       break;
       label65:
-      if (fbG == k)
-      {
-        this.field_bindSerial = paramCursor.getString(i);
-      }
-      else if (fbH == k)
-      {
-        this.field_cardType = paramCursor.getInt(i);
-      }
-      else if (fbI == k)
-      {
-        this.field_bankcardState = paramCursor.getInt(i);
-      }
-      else if (fbJ == k)
-      {
-        this.field_forbidWord = paramCursor.getString(i);
-      }
-      else if (fbK == k)
-      {
-        this.field_bankName = paramCursor.getString(i);
-      }
-      else if (fbL == k)
-      {
-        this.field_bankcardType = paramCursor.getString(i);
-      }
-      else if (fbM == k)
-      {
-        this.field_bankcardTypeName = paramCursor.getString(i);
-      }
-      else if (fbN == k)
-      {
-        this.field_bankcardTag = paramCursor.getInt(i);
-      }
-      else if (fbO == k)
-      {
-        this.field_bankcardTail = paramCursor.getString(i);
-      }
-      else if (fbP == k)
-      {
-        this.field_supportTag = paramCursor.getInt(i);
-      }
-      else if (fbQ == k)
-      {
-        this.field_mobile = paramCursor.getString(i);
-      }
-      else if (fbR == k)
-      {
-        this.field_trueName = paramCursor.getString(i);
-      }
-      else if (ezO == k)
-      {
-        this.field_desc = paramCursor.getString(i);
-      }
-      else if (fbS == k)
-      {
-        this.field_bankPhone = paramCursor.getString(i);
-      }
-      else if (fbT == k)
-      {
-        this.field_bizUsername = paramCursor.getString(i);
-      }
-      else if (fbU == k)
-      {
-        this.field_onceQuotaKind = paramCursor.getDouble(i);
-      }
-      else if (fbV == k)
-      {
-        this.field_onceQuotaVirtual = paramCursor.getDouble(i);
-      }
-      else if (fbW == k)
-      {
-        this.field_dayQuotaKind = paramCursor.getDouble(i);
-      }
-      else if (fbX == k)
-      {
-        this.field_dayQuotaVirtual = paramCursor.getDouble(i);
-      }
-      else if (fbY == k)
-      {
-        this.field_fetchArriveTime = paramCursor.getLong(i);
-      }
-      else if (fbZ == k)
-      {
-        this.field_fetchArriveTimeWording = paramCursor.getString(i);
-      }
-      else if (fca == k)
-      {
-        this.field_repay_url = paramCursor.getString(i);
-      }
-      else if (fcb == k)
-      {
-        this.field_wxcreditState = paramCursor.getInt(i);
-      }
-      else if (fcc == k)
-      {
-        this.field_bankcardClientType = paramCursor.getInt(i);
-      }
-      else if (fcd == k)
-      {
-        this.field_ext_msg = paramCursor.getString(i);
-      }
-      else
-      {
-        if (fce == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_support_micropay = bool;
-            break;
-          }
-        }
-        if (fcf == k) {
-          this.field_arrive_type = paramCursor.getString(i);
-        } else if (fcg == k) {
-          this.field_avail_save_wording = paramCursor.getString(i);
-        } else if (fch == k) {
-          this.field_fetch_charge_rate = paramCursor.getDouble(i);
-        } else if (fci == k) {
-          this.field_full_fetch_charge_fee = paramCursor.getDouble(i);
-        } else if (fcj == k) {
-          this.field_fetch_charge_info = paramCursor.getString(i);
-        } else if (eNM == k) {
-          this.field_tips = paramCursor.getString(i);
-        } else if (fck == k) {
-          this.field_forbid_title = paramCursor.getString(i);
-        } else if (fcl == k) {
-          this.field_forbid_url = paramCursor.getString(i);
-        } else if (fcm == k) {
-          this.field_no_micro_word = paramCursor.getString(i);
-        } else if (fcn == k) {
-          this.field_card_bottom_wording = paramCursor.getString(i);
-        } else if (fco == k) {
-          this.field_support_lqt_turn_in = paramCursor.getInt(i);
-        } else if (fcp == k) {
-          this.field_support_lqt_turn_out = paramCursor.getInt(i);
-        } else if (fcq == k) {
-          this.field_is_hightlight_pre_arrive_time_wording = paramCursor.getInt(i);
-        } else if (fcr == k) {
-          this.field_card_state_name = paramCursor.getString(i);
-        } else if (elq == k) {
-          this.field_scene = paramCursor.getInt(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (fbR == k) {
+        this.field_baseItemData = paramCursor.getBlob(i);
+      } else if (eQG == k) {
+        this.field_timeStamp = paramCursor.getLong(i);
+      } else if (fbU == k) {
+        this.field_mixRetryTime = paramCursor.getInt(i);
+      } else if (eIC == k) {
+        this.field_expiredTime = paramCursor.getLong(i);
+      } else if (elV == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fds == k) {
+        this.field_targetWidth = paramCursor.getInt(i);
+      } else if (fdt == k) {
+        this.field_targetHeight = paramCursor.getInt(i);
+      } else if (fdu == k) {
+        this.field_videoBitrate = paramCursor.getInt(i);
+      } else if (fdv == k) {
+        this.field_audioBitrate = paramCursor.getInt(i);
+      } else if (fdw == k) {
+        this.field_audioSampleRate = paramCursor.getInt(i);
+      } else if (fdx == k) {
+        this.field_audioChannelCount = paramCursor.getInt(i);
+      } else if (fdy == k) {
+        this.field_frameRate = paramCursor.getInt(i);
+      } else if (fdz == k) {
+        this.field_videoRotate = paramCursor.getInt(i);
+      } else if (fdA == k) {
+        this.field_extraConfig = paramCursor.getBlob(i);
+      } else if (fdB == k) {
+        this.field_reportInfo = paramCursor.getString(i);
+      } else if (fdC == k) {
+        this.field_userData = paramCursor.getString(i);
+      } else if (fdD == k) {
+        this.field_location = paramCursor.getBlob(i);
+      } else if (fbT == k) {
+        this.field_mixFlag = paramCursor.getInt(i);
+      } else if (fdE == k) {
+        this.field_blurBgPath = paramCursor.getString(i);
+      } else if (fdF == k) {
+        this.field_fromScene = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -356,131 +265,68 @@ public abstract class ge
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fcs) {
-      localContentValues.put("fakePk", Integer.valueOf(this.field_fakePk));
+    if (this.eJR) {
+      localContentValues.put("taskId", this.field_taskId);
     }
-    if (this.faU) {
-      localContentValues.put("bindSerial", this.field_bindSerial);
+    if (this.fbM) {
+      localContentValues.put("baseItemData", this.field_baseItemData);
     }
-    if (this.faV) {
-      localContentValues.put("cardType", Integer.valueOf(this.field_cardType));
+    if (this.eQA) {
+      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
-    if (this.faW) {
-      localContentValues.put("bankcardState", Integer.valueOf(this.field_bankcardState));
+    if (this.fbP) {
+      localContentValues.put("mixRetryTime", Integer.valueOf(this.field_mixRetryTime));
     }
-    if (this.faX) {
-      localContentValues.put("forbidWord", this.field_forbidWord);
+    if (this.eIq) {
+      localContentValues.put("expiredTime", Long.valueOf(this.field_expiredTime));
     }
-    if (this.faY) {
-      localContentValues.put("bankName", this.field_bankName);
+    if (this.elS) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.faZ) {
-      localContentValues.put("bankcardType", this.field_bankcardType);
+    if (this.fde) {
+      localContentValues.put("targetWidth", Integer.valueOf(this.field_targetWidth));
     }
-    if (this.fba) {
-      localContentValues.put("bankcardTypeName", this.field_bankcardTypeName);
+    if (this.fdf) {
+      localContentValues.put("targetHeight", Integer.valueOf(this.field_targetHeight));
     }
-    if (this.fbb) {
-      localContentValues.put("bankcardTag", Integer.valueOf(this.field_bankcardTag));
+    if (this.fdg) {
+      localContentValues.put("videoBitrate", Integer.valueOf(this.field_videoBitrate));
     }
-    if (this.fbc) {
-      localContentValues.put("bankcardTail", this.field_bankcardTail);
+    if (this.fdh) {
+      localContentValues.put("audioBitrate", Integer.valueOf(this.field_audioBitrate));
     }
-    if (this.fbd) {
-      localContentValues.put("supportTag", Integer.valueOf(this.field_supportTag));
+    if (this.fdi) {
+      localContentValues.put("audioSampleRate", Integer.valueOf(this.field_audioSampleRate));
     }
-    if (this.fbe) {
-      localContentValues.put("mobile", this.field_mobile);
+    if (this.fdj) {
+      localContentValues.put("audioChannelCount", Integer.valueOf(this.field_audioChannelCount));
     }
-    if (this.fbf) {
-      localContentValues.put("trueName", this.field_trueName);
+    if (this.fdk) {
+      localContentValues.put("frameRate", Integer.valueOf(this.field_frameRate));
     }
-    if (this.ezK) {
-      localContentValues.put("desc", this.field_desc);
+    if (this.fdl) {
+      localContentValues.put("videoRotate", Integer.valueOf(this.field_videoRotate));
     }
-    if (this.fbg) {
-      localContentValues.put("bankPhone", this.field_bankPhone);
+    if (this.fdm) {
+      localContentValues.put("extraConfig", this.field_extraConfig);
     }
-    if (this.fbh) {
-      localContentValues.put("bizUsername", this.field_bizUsername);
+    if (this.fdn) {
+      localContentValues.put("reportInfo", this.field_reportInfo);
     }
-    if (this.fbi) {
-      localContentValues.put("onceQuotaKind", Double.valueOf(this.field_onceQuotaKind));
+    if (this.fdo) {
+      localContentValues.put("userData", this.field_userData);
     }
-    if (this.fbj) {
-      localContentValues.put("onceQuotaVirtual", Double.valueOf(this.field_onceQuotaVirtual));
+    if (this.fdp) {
+      localContentValues.put("location", this.field_location);
     }
-    if (this.fbk) {
-      localContentValues.put("dayQuotaKind", Double.valueOf(this.field_dayQuotaKind));
+    if (this.fbO) {
+      localContentValues.put("mixFlag", Integer.valueOf(this.field_mixFlag));
     }
-    if (this.fbl) {
-      localContentValues.put("dayQuotaVirtual", Double.valueOf(this.field_dayQuotaVirtual));
+    if (this.fdq) {
+      localContentValues.put("blurBgPath", this.field_blurBgPath);
     }
-    if (this.fbm) {
-      localContentValues.put("fetchArriveTime", Long.valueOf(this.field_fetchArriveTime));
-    }
-    if (this.fbn) {
-      localContentValues.put("fetchArriveTimeWording", this.field_fetchArriveTimeWording);
-    }
-    if (this.fbo) {
-      localContentValues.put("repay_url", this.field_repay_url);
-    }
-    if (this.fbp) {
-      localContentValues.put("wxcreditState", Integer.valueOf(this.field_wxcreditState));
-    }
-    if (this.fbq) {
-      localContentValues.put("bankcardClientType", Integer.valueOf(this.field_bankcardClientType));
-    }
-    if (this.fbr) {
-      localContentValues.put("ext_msg", this.field_ext_msg);
-    }
-    if (this.fbs) {
-      localContentValues.put("support_micropay", Boolean.valueOf(this.field_support_micropay));
-    }
-    if (this.fbt) {
-      localContentValues.put("arrive_type", this.field_arrive_type);
-    }
-    if (this.fbu) {
-      localContentValues.put("avail_save_wording", this.field_avail_save_wording);
-    }
-    if (this.fbv) {
-      localContentValues.put("fetch_charge_rate", Double.valueOf(this.field_fetch_charge_rate));
-    }
-    if (this.fbw) {
-      localContentValues.put("full_fetch_charge_fee", Double.valueOf(this.field_full_fetch_charge_fee));
-    }
-    if (this.fbx) {
-      localContentValues.put("fetch_charge_info", this.field_fetch_charge_info);
-    }
-    if (this.eNG) {
-      localContentValues.put("tips", this.field_tips);
-    }
-    if (this.fby) {
-      localContentValues.put("forbid_title", this.field_forbid_title);
-    }
-    if (this.fbz) {
-      localContentValues.put("forbid_url", this.field_forbid_url);
-    }
-    if (this.fbA) {
-      localContentValues.put("no_micro_word", this.field_no_micro_word);
-    }
-    if (this.fbB) {
-      localContentValues.put("card_bottom_wording", this.field_card_bottom_wording);
-    }
-    if (this.fbC) {
-      localContentValues.put("support_lqt_turn_in", Integer.valueOf(this.field_support_lqt_turn_in));
-    }
-    if (this.fbD) {
-      localContentValues.put("support_lqt_turn_out", Integer.valueOf(this.field_support_lqt_turn_out));
-    }
-    if (this.fbE) {
-      localContentValues.put("is_hightlight_pre_arrive_time_wording", Integer.valueOf(this.field_is_hightlight_pre_arrive_time_wording));
-    }
-    if (this.fbF) {
-      localContentValues.put("card_state_name", this.field_card_state_name);
-    }
-    if (this.elo) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.fdr) {
+      localContentValues.put("fromScene", Integer.valueOf(this.field_fromScene));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -490,7 +336,7 @@ public abstract class ge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.ge
  * JD-Core Version:    0.7.0.1
  */

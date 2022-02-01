@@ -85,17 +85,17 @@ public abstract class j
   {
     AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(paramInt2);
     Object localObject = obtainAccessibilityNodeInfo(paramInt1);
-    localAccessibilityEvent.getText().add(((c)localObject).Op.getText());
-    localAccessibilityEvent.setContentDescription(((c)localObject).Op.getContentDescription());
-    localAccessibilityEvent.setScrollable(((c)localObject).Op.isScrollable());
-    localAccessibilityEvent.setPassword(((c)localObject).Op.isPassword());
-    localAccessibilityEvent.setEnabled(((c)localObject).Op.isEnabled());
-    localAccessibilityEvent.setChecked(((c)localObject).Op.isChecked());
+    localAccessibilityEvent.getText().add(((c)localObject).Pm.getText());
+    localAccessibilityEvent.setContentDescription(((c)localObject).Pm.getContentDescription());
+    localAccessibilityEvent.setScrollable(((c)localObject).Pm.isScrollable());
+    localAccessibilityEvent.setPassword(((c)localObject).Pm.isPassword());
+    localAccessibilityEvent.setEnabled(((c)localObject).Pm.isEnabled());
+    localAccessibilityEvent.setChecked(((c)localObject).Pm.isChecked());
     onPopulateEventForVirtualView(paramInt1, localAccessibilityEvent);
     if ((localAccessibilityEvent.getText().isEmpty()) && (localAccessibilityEvent.getContentDescription() == null)) {
       throw new RuntimeException("Callbacks must add text or a content description in populateEventForVirtualViewId()");
     }
-    localAccessibilityEvent.setClassName(((c)localObject).Op.getClassName());
+    localAccessibilityEvent.setClassName(((c)localObject).Pm.getClassName());
     localObject = this.mHost;
     if (Build.VERSION.SDK_INT >= 16) {
       localAccessibilityEvent.setSource((View)localObject, paramInt1);
@@ -121,14 +121,14 @@ public abstract class j
     localc.setBoundsInScreen(INVALID_PARENT_BOUNDS);
     localc.setParent(this.mHost);
     onPopulateNodeForVirtualView(paramInt, localc);
-    if ((localc.Op.getText() == null) && (localc.Op.getContentDescription() == null)) {
+    if ((localc.Pm.getText() == null) && (localc.Pm.getContentDescription() == null)) {
       throw new RuntimeException("Callbacks must add text or a content description in populateNodeForVirtualViewId()");
     }
     localc.getBoundsInParent(this.mTempParentRect);
     if (this.mTempParentRect.equals(INVALID_PARENT_BOUNDS)) {
       throw new RuntimeException("Callbacks must set parent bounds in populateNodeForVirtualViewId()");
     }
-    int i = localc.Op.getActions();
+    int i = localc.Pm.getActions();
     if ((i & 0x40) != 0) {
       throw new RuntimeException("Callbacks must not add ACTION_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
     }
@@ -138,7 +138,7 @@ public abstract class j
     localc.setPackageName(this.mHost.getContext().getPackageName());
     Object localObject = this.mHost;
     if (Build.VERSION.SDK_INT >= 16) {
-      localc.Op.setSource((View)localObject, paramInt);
+      localc.Pm.setSource((View)localObject, paramInt);
     }
     boolean bool;
     if (this.mAccessibilityFocusedVirtualViewId == paramInt)
@@ -164,16 +164,16 @@ public abstract class j
         break label498;
       }
       localc.getBoundsInParent(this.mTempScreenRect);
-      if (localc.Oq == -1) {
+      if (localc.Pn == -1) {
         break label463;
       }
       localObject = c.a(AccessibilityNodeInfo.obtain());
-      for (paramInt = localc.Oq; paramInt != -1; paramInt = ((c)localObject).Oq)
+      for (paramInt = localc.Pn; paramInt != -1; paramInt = ((c)localObject).Pn)
       {
         View localView = this.mHost;
-        ((c)localObject).Oq = -1;
+        ((c)localObject).Pn = -1;
         if (Build.VERSION.SDK_INT >= 16) {
-          ((c)localObject).Op.setParent(localView, -1);
+          ((c)localObject).Pm.setParent(localView, -1);
         }
         ((c)localObject).setBoundsInParent(INVALID_PARENT_BOUNDS);
         onPopulateNodeForVirtualView(paramInt, (c)localObject);
@@ -187,11 +187,11 @@ public abstract class j
       bool = false;
       break label243;
       label435:
-      if (localc.Op.isFocusable()) {
+      if (localc.Pm.isFocusable()) {
         localc.addAction(1);
       }
     }
-    ((c)localObject).Op.recycle();
+    ((c)localObject).Pm.recycle();
     label463:
     this.mTempScreenRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
     label498:
@@ -215,7 +215,7 @@ public abstract class j
     t.onInitializeAccessibilityNodeInfo(this.mHost, localc);
     ArrayList localArrayList = new ArrayList();
     getVisibleVirtualViews(localArrayList);
-    if ((localc.Op.getChildCount() > 0) && (localArrayList.size() > 0)) {
+    if ((localc.Pm.getChildCount() > 0) && (localArrayList.size() > 0)) {
       throw new RuntimeException("Views cannot have both real and virtual children");
     }
     int j = localArrayList.size();
@@ -225,7 +225,7 @@ public abstract class j
       View localView = this.mHost;
       int k = ((Integer)localArrayList.get(i)).intValue();
       if (Build.VERSION.SDK_INT >= 16) {
-        localc.Op.addChild(localView, k);
+        localc.Pm.addChild(localView, k);
       }
       i += 1;
     }
@@ -326,7 +326,7 @@ public abstract class j
     {
       paramRect = SPARSE_VALUES_ADAPTER;
       localObject = NODE_ADAPTER;
-      j = paramRect.I(localo);
+      j = paramRect.K(localo);
       localArrayList = new ArrayList(j);
       while (i < j)
       {
@@ -690,7 +690,7 @@ public abstract class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.widget.j
  * JD-Core Version:    0.7.0.1
  */

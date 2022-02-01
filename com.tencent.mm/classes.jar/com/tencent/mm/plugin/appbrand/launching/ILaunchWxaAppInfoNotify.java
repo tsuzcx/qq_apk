@@ -14,14 +14,14 @@ import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
 import com.tencent.mm.plugin.appbrand.jsapi.fakenative.OpenBusinessViewUtil;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
-import com.tencent.mm.protocal.protobuf.uw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.vg;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Locale;
 
 public abstract interface ILaunchWxaAppInfoNotify
 {
-  public static final ILaunchWxaAppInfoNotify kJK = new ILaunchWxaAppInfoNotify()
+  public static final ILaunchWxaAppInfoNotify llg = new ILaunchWxaAppInfoNotify()
   {
     private final String TAG = "MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]";
     
@@ -35,7 +35,7 @@ public abstract interface ILaunchWxaAppInfoNotify
       }
       try
       {
-        paramAnonymousau = String.format(Locale.US, "bytes[%d]", new Object[] { Integer.valueOf(paramAnonymousau.field_jsapiInfo.CWN.wA.length) });
+        paramAnonymousau = String.format(Locale.US, "bytes[%d]", new Object[] { Integer.valueOf(paramAnonymousau.field_jsapiInfo.Epw.xy.length) });
         AppMethodBeat.o(47171);
         return paramAnonymousau;
       }
@@ -50,28 +50,28 @@ public abstract interface ILaunchWxaAppInfoNotify
     public final void a(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, au paramAnonymousau)
     {
       AppMethodBeat.i(47170);
-      Object localObject = k.Ke(paramAnonymousString2);
+      Object localObject = k.Ol(paramAnonymousString2);
       if (localObject != null)
       {
-        ad.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyLaunchInfoUpdate [update deferred process] appId[%s], type[%d], sessionId[%s], %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, a(paramAnonymousau) });
+        ac.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyLaunchInfoUpdate [update deferred process] appId[%s], type[%d], sessionId[%s], %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, a(paramAnonymousau) });
         ((k)localObject).a(paramAnonymousString1, paramAnonymousInt, paramAnonymousString2, paramAnonymousau);
       }
       try
       {
-        ad.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyLaunchInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, a(paramAnonymousau) });
+        ac.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyLaunchInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, a(paramAnonymousau) });
         localObject = new ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper();
         ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).appId = paramAnonymousString1;
-        ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).gXn = paramAnonymousInt;
-        ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).cfu = new AppRuntimeApiPermissionBundle(paramAnonymousau.field_jsapiInfo);
+        ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).hxM = paramAnonymousInt;
+        ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).ccr = new AppRuntimeApiPermissionBundle(paramAnonymousau.field_jsapiInfo);
         AppBrandLaunchErrorAction.a locala = AppBrandLaunchErrorAction.CREATOR;
-        ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).kJL = AppBrandLaunchErrorAction.a.a(paramAnonymousString1, paramAnonymousInt, paramAnonymousau);
+        ((ILaunchWxaAppInfoNotify.LaunchInfoIpcWrapper)localObject).llh = AppBrandLaunchErrorAction.a.a(paramAnonymousString1, paramAnonymousInt, paramAnonymousau);
         com.tencent.mm.plugin.appbrand.ipc.e.b(paramAnonymousString1, (Parcelable)localObject);
         AppMethodBeat.o(47170);
         return;
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", localThrowable, "notifyLaunchInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, a(paramAnonymousau) });
+        ac.printErrStackTrace("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", localThrowable, "notifyLaunchInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], %s", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, a(paramAnonymousau) });
         AppMethodBeat.o(47170);
       }
     }
@@ -79,14 +79,14 @@ public abstract interface ILaunchWxaAppInfoNotify
     public final void a(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2, HashMap<String, AppRuntimeApiPermissionBundle> paramAnonymousHashMap)
     {
       int j = 0;
-      AppMethodBeat.i(196008);
-      Object localObject = k.Ke(paramAnonymousString2);
+      AppMethodBeat.i(186832);
+      Object localObject = k.Ol(paramAnonymousString2);
       if (localObject != null)
       {
         if (paramAnonymousHashMap == null)
         {
           i = 0;
-          ad.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyPluginPermissionInfoUpdate [update deferred process] appId[%s], type[%d], sessionId[%s], pluginMapSize:[%d]", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, Integer.valueOf(i) });
+          ac.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyPluginPermissionInfoUpdate [update deferred process] appId[%s], type[%d], sessionId[%s], pluginMapSize:[%d]", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, Integer.valueOf(i) });
           ((k)localObject).a(paramAnonymousString1, paramAnonymousInt, paramAnonymousString2, paramAnonymousHashMap);
         }
       }
@@ -99,13 +99,13 @@ public abstract interface ILaunchWxaAppInfoNotify
       {
         try
         {
-          ad.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyPluginPermissionInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], pluginMapSize:[%d]", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, Integer.valueOf(i) });
+          ac.i("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", "notifyPluginPermissionInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], pluginMapSize:[%d]", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, Integer.valueOf(i) });
           localObject = new ILaunchWxaAppInfoNotify.PluginIpcWrapper();
           ((ILaunchWxaAppInfoNotify.PluginIpcWrapper)localObject).appId = paramAnonymousString1;
-          ((ILaunchWxaAppInfoNotify.PluginIpcWrapper)localObject).gXn = paramAnonymousInt;
-          ((ILaunchWxaAppInfoNotify.PluginIpcWrapper)localObject).kJM = paramAnonymousHashMap;
+          ((ILaunchWxaAppInfoNotify.PluginIpcWrapper)localObject).hxM = paramAnonymousInt;
+          ((ILaunchWxaAppInfoNotify.PluginIpcWrapper)localObject).lli = paramAnonymousHashMap;
           com.tencent.mm.plugin.appbrand.ipc.e.b(paramAnonymousString1, (Parcelable)localObject);
-          AppMethodBeat.o(196008);
+          AppMethodBeat.o(186832);
           return;
         }
         catch (Throwable localThrowable)
@@ -121,8 +121,8 @@ public abstract interface ILaunchWxaAppInfoNotify
       label226:
       for (i = j;; i = paramAnonymousHashMap.size())
       {
-        ad.printErrStackTrace("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", localThrowable, "notifyPluginPermissionInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], pluginMapSize:[%d]", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, Integer.valueOf(i) });
-        AppMethodBeat.o(196008);
+        ac.printErrStackTrace("MicroMsg.AppBrand.ILaunchWxaAppInfoNotify.INSTANCE[permission]", localThrowable, "notifyPluginPermissionInfoUpdate [update remote] appId[%s], type[%d], sessionId[%s], pluginMapSize:[%d]", new Object[] { paramAnonymousString1, Integer.valueOf(paramAnonymousInt), paramAnonymousString2, Integer.valueOf(i) });
+        AppMethodBeat.o(186832);
         return;
       }
     }
@@ -137,9 +137,9 @@ public abstract interface ILaunchWxaAppInfoNotify
   {
     public static final Parcelable.Creator<LaunchInfoIpcWrapper> CREATOR;
     public String appId;
-    public AppRuntimeApiPermissionBundle cfu;
-    public int gXn;
-    public AppBrandLaunchErrorAction kJL;
+    public AppRuntimeApiPermissionBundle ccr;
+    public int hxM;
+    public AppBrandLaunchErrorAction llh;
     
     static
     {
@@ -154,9 +154,9 @@ public abstract interface ILaunchWxaAppInfoNotify
     {
       AppMethodBeat.i(47174);
       this.appId = paramParcel.readString();
-      this.gXn = paramParcel.readInt();
-      this.cfu = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
-      this.kJL = ((AppBrandLaunchErrorAction)paramParcel.readParcelable(AppBrandLaunchErrorAction.class.getClassLoader()));
+      this.hxM = paramParcel.readInt();
+      this.ccr = ((AppRuntimeApiPermissionBundle)paramParcel.readParcelable(AppRuntimeApiPermissionBundle.class.getClassLoader()));
+      this.llh = ((AppBrandLaunchErrorAction)paramParcel.readParcelable(AppBrandLaunchErrorAction.class.getClassLoader()));
       AppMethodBeat.o(47174);
     }
     
@@ -169,9 +169,9 @@ public abstract interface ILaunchWxaAppInfoNotify
     {
       AppMethodBeat.i(47173);
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.gXn);
-      paramParcel.writeParcelable(this.cfu, paramInt);
-      paramParcel.writeParcelable(this.kJL, paramInt);
+      paramParcel.writeInt(this.hxM);
+      paramParcel.writeParcelable(this.ccr, paramInt);
+      paramParcel.writeParcelable(this.llh, paramInt);
       AppMethodBeat.o(47173);
     }
   }
@@ -181,25 +181,25 @@ public abstract interface ILaunchWxaAppInfoNotify
   {
     public static final Parcelable.Creator<PluginIpcWrapper> CREATOR;
     public String appId;
-    public int gXn;
-    public HashMap<String, AppRuntimeApiPermissionBundle> kJM;
+    public int hxM;
+    public HashMap<String, AppRuntimeApiPermissionBundle> lli;
     
     static
     {
-      AppMethodBeat.i(196012);
+      AppMethodBeat.i(186836);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(196012);
+      AppMethodBeat.o(186836);
     }
     
     PluginIpcWrapper() {}
     
     PluginIpcWrapper(Parcel paramParcel)
     {
-      AppMethodBeat.i(196011);
+      AppMethodBeat.i(186835);
       this.appId = paramParcel.readString();
-      this.gXn = paramParcel.readInt();
-      this.kJM = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
-      AppMethodBeat.o(196011);
+      this.hxM = paramParcel.readInt();
+      this.lli = paramParcel.readHashMap(AppRuntimeApiPermissionBundle.class.getClassLoader());
+      AppMethodBeat.o(186835);
     }
     
     public int describeContents()
@@ -209,17 +209,17 @@ public abstract interface ILaunchWxaAppInfoNotify
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(196010);
+      AppMethodBeat.i(186834);
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.gXn);
-      paramParcel.writeMap(this.kJM);
-      AppMethodBeat.o(196010);
+      paramParcel.writeInt(this.hxM);
+      paramParcel.writeMap(this.lli);
+      AppMethodBeat.o(186834);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ILaunchWxaAppInfoNotify
  * JD-Core Version:    0.7.0.1
  */

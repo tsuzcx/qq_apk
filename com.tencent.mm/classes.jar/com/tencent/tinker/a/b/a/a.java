@@ -4,26 +4,26 @@ import com.tencent.tinker.a.c.b;
 
 public abstract class a
 {
-  final b ICe = new b();
-  public int amn = 0;
+  final b Kon = new b();
+  public int anh = 0;
   
-  public final int foW()
+  public final int fHe()
   {
-    int i = this.ICe.indexOfKey(this.amn);
+    int i = this.Kon.indexOfKey(this.anh);
     if (i < 0) {
-      return this.amn;
+      return this.anh;
     }
-    return this.ICe.ICp[i];
+    return this.Kon.Koy[i];
   }
   
-  protected final void foX()
+  protected final void fHf()
   {
-    this.amn += 1;
+    this.anh += 1;
   }
   
-  public final void ku(int paramInt1, int paramInt2)
+  public final void kL(int paramInt1, int paramInt2)
   {
-    this.ICe.put(paramInt1, paramInt2);
+    this.Kon.put(paramInt1, paramInt2);
   }
 }
 

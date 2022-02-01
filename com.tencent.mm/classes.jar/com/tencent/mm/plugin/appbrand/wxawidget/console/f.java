@@ -4,11 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
 {
-  public static boolean dr(View paramView)
+  public static boolean dt(View paramView)
   {
     AppMethodBeat.i(121658);
     if (paramView == null)
@@ -38,7 +38,7 @@ public final class f
     {
       for (;;)
       {
-        ad.e("MicroMsg.InputMethodHelper", "hide VKB(View) exception %s", new Object[] { paramView });
+        ac.e("MicroMsg.InputMethodHelper", "hide VKB(View) exception %s", new Object[] { paramView });
         boolean bool = false;
       }
     }

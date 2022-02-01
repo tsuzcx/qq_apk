@@ -1,11 +1,11 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
-  extends g
+  extends h
 {
   private float r = 2.0F;
   private int s;

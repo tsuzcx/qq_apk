@@ -13,7 +13,7 @@ class i
 {
   protected static Typeface a(Context paramContext, InputStream paramInputStream)
   {
-    paramContext = j.U(paramContext);
+    paramContext = j.V(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -61,8 +61,8 @@ class i
         break label137;
       }
       ? = paramArrayOfT[paramInt];
-      m = Math.abs(parama.r(?) - i);
-      if (parama.q(?) != i1) {
+      m = Math.abs(parama.t(?) - i);
+      if (parama.s(?) != i1) {
         break label131;
       }
     }
@@ -95,7 +95,7 @@ class i
   
   public Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    paramContext = j.U(paramContext);
+    paramContext = j.V(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -120,11 +120,11 @@ class i
   
   public Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    paramb = (c.c)a(paramb.GD, paramInt, new a() {});
+    paramb = (c.c)a(paramb.HB, paramInt, new a() {});
     if (paramb == null) {
       return null;
     }
-    return d.a(paramContext, paramResources, paramb.GI, paramb.mFileName, paramInt);
+    return d.a(paramContext, paramResources, paramb.HG, paramb.mFileName, paramInt);
   }
   
   /* Error */
@@ -194,9 +194,9 @@ class i
   
   static abstract interface a<T>
   {
-    public abstract boolean q(T paramT);
+    public abstract boolean s(T paramT);
     
-    public abstract int r(T paramT);
+    public abstract int t(T paramT);
   }
 }
 

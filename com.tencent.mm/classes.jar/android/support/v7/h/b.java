@@ -3,86 +3,86 @@ package android.support.v7.h;
 public final class b
   implements d
 {
-  final d aak;
-  int aal = 0;
-  int aam = -1;
-  int aan = -1;
-  Object aao = null;
+  final d abf;
+  int abg = 0;
+  int abh = -1;
+  int abj = -1;
+  Object abk = null;
   
   public b(d paramd)
   {
-    this.aak = paramd;
+    this.abf = paramd;
   }
   
   public final void E(int paramInt1, int paramInt2)
   {
-    if ((this.aal == 1) && (paramInt1 >= this.aam) && (paramInt1 <= this.aam + this.aan))
+    if ((this.abg == 1) && (paramInt1 >= this.abh) && (paramInt1 <= this.abh + this.abj))
     {
-      this.aan += paramInt2;
-      this.aam = Math.min(paramInt1, this.aam);
+      this.abj += paramInt2;
+      this.abh = Math.min(paramInt1, this.abh);
       return;
     }
-    gQ();
-    this.aam = paramInt1;
-    this.aan = paramInt2;
-    this.aal = 1;
+    gY();
+    this.abh = paramInt1;
+    this.abj = paramInt2;
+    this.abg = 1;
   }
   
   public final void F(int paramInt1, int paramInt2)
   {
-    if ((this.aal == 2) && (this.aam >= paramInt1) && (this.aam <= paramInt1 + paramInt2))
+    if ((this.abg == 2) && (this.abh >= paramInt1) && (this.abh <= paramInt1 + paramInt2))
     {
-      this.aan += paramInt2;
-      this.aam = paramInt1;
+      this.abj += paramInt2;
+      this.abh = paramInt1;
       return;
     }
-    gQ();
-    this.aam = paramInt1;
-    this.aan = paramInt2;
-    this.aal = 2;
+    gY();
+    this.abh = paramInt1;
+    this.abj = paramInt2;
+    this.abg = 2;
   }
   
   public final void G(int paramInt1, int paramInt2)
   {
-    gQ();
-    this.aak.G(paramInt1, paramInt2);
+    gY();
+    this.abf.G(paramInt1, paramInt2);
   }
   
   public final void c(int paramInt1, int paramInt2, Object paramObject)
   {
-    if ((this.aal == 3) && (paramInt1 <= this.aam + this.aan) && (paramInt1 + paramInt2 >= this.aam) && (this.aao == paramObject))
+    if ((this.abg == 3) && (paramInt1 <= this.abh + this.abj) && (paramInt1 + paramInt2 >= this.abh) && (this.abk == paramObject))
     {
-      int i = this.aam;
-      int j = this.aan;
-      this.aam = Math.min(paramInt1, this.aam);
-      this.aan = (Math.max(i + j, paramInt1 + paramInt2) - this.aam);
+      int i = this.abh;
+      int j = this.abj;
+      this.abh = Math.min(paramInt1, this.abh);
+      this.abj = (Math.max(i + j, paramInt1 + paramInt2) - this.abh);
       return;
     }
-    gQ();
-    this.aam = paramInt1;
-    this.aan = paramInt2;
-    this.aao = paramObject;
-    this.aal = 3;
+    gY();
+    this.abh = paramInt1;
+    this.abj = paramInt2;
+    this.abk = paramObject;
+    this.abg = 3;
   }
   
-  public final void gQ()
+  public final void gY()
   {
-    if (this.aal == 0) {
+    if (this.abg == 0) {
       return;
     }
-    switch (this.aal)
+    switch (this.abg)
     {
     }
     for (;;)
     {
-      this.aao = null;
-      this.aal = 0;
+      this.abk = null;
+      this.abg = 0;
       return;
-      this.aak.E(this.aam, this.aan);
+      this.abf.E(this.abh, this.abj);
       continue;
-      this.aak.F(this.aam, this.aan);
+      this.abf.F(this.abh, this.abj);
       continue;
-      this.aak.c(this.aam, this.aan, this.aao);
+      this.abf.c(this.abh, this.abj, this.abk);
     }
   }
 }

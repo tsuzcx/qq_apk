@@ -2,14 +2,19 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "", "call", "", "incrementCount", "", "plugin-finder_release"})
-public abstract interface g
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitRequest;", "", "initDone", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;)V", "getInitDone", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "plugin-finder_release"})
+public abstract class g
 {
-  public abstract void call(int paramInt);
+  final f roq;
+  
+  public g(f paramf)
+  {
+    this.roq = paramf;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.g
  * JD-Core Version:    0.7.0.1
  */

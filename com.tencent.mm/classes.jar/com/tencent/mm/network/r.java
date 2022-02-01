@@ -19,11 +19,11 @@ public abstract interface r
   
   public abstract void a(j paramj, int paramInt1, int paramInt2, String paramString);
   
-  public abstract h avm();
+  public abstract h aCf();
   
-  public abstract i avn();
+  public abstract i aCg();
   
-  public abstract int avo();
+  public abstract int aCh();
   
   public abstract boolean getIsLongPolling();
   
@@ -99,7 +99,7 @@ public abstract interface r
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-        locali = avn();
+        locali = aCg();
         paramParcel2.writeNoException();
         paramParcel1 = localh;
         if (locali != null) {
@@ -109,7 +109,7 @@ public abstract interface r
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-        localh = avm();
+        localh = aCf();
         paramParcel2.writeNoException();
         paramParcel1 = locali;
         if (localh != null) {
@@ -161,7 +161,7 @@ public abstract interface r
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.network.IReqResp_AIDL");
-        paramInt1 = avo();
+        paramInt1 = aCh();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -442,12 +442,7 @@ public abstract interface r
         //   33	80	101	finally
       }
       
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final h avm()
+      public final h aCf()
       {
         AppMethodBeat.i(132760);
         Parcel localParcel1 = Parcel.obtain();
@@ -468,7 +463,7 @@ public abstract interface r
         }
       }
       
-      public final i avn()
+      public final i aCg()
       {
         AppMethodBeat.i(132759);
         Parcel localParcel1 = Parcel.obtain();
@@ -489,7 +484,7 @@ public abstract interface r
         }
       }
       
-      public final int avo()
+      public final int aCh()
       {
         AppMethodBeat.i(132768);
         Parcel localParcel1 = Parcel.obtain();
@@ -510,10 +505,15 @@ public abstract interface r
         }
       }
       
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
       public final boolean getIsLongPolling()
       {
         boolean bool = false;
-        AppMethodBeat.i(202269);
+        AppMethodBeat.i(206890);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -531,7 +531,7 @@ public abstract interface r
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(202269);
+          AppMethodBeat.o(206890);
         }
       }
       
@@ -562,7 +562,7 @@ public abstract interface r
       
       public final int getLongPollingTimeout()
       {
-        AppMethodBeat.i(202270);
+        AppMethodBeat.i(206891);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -577,7 +577,7 @@ public abstract interface r
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(202270);
+          AppMethodBeat.o(206891);
         }
       }
       

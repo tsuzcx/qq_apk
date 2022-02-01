@@ -196,7 +196,7 @@ public final class c
     //   44	49	226	java/lang/Exception
   }
   
-  public static boolean aPq(String paramString)
+  public static boolean aVj(String paramString)
   {
     AppMethodBeat.i(156996);
     try
@@ -213,23 +213,23 @@ public final class c
     return false;
   }
   
-  public static FileLock aPr(String paramString)
+  public static FileLock aVk(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(195175);
-    String str = kY(XWalkEnvironment.getApplicationContext()) + File.separator + "xweb_lock";
+    AppMethodBeat.i(205087);
+    String str = lm(XWalkEnvironment.getApplicationContext()) + File.separator + "xweb_lock";
     File localFile = new File(str);
     if ((!localFile.exists()) && (!localFile.mkdir()))
     {
       Log.e("FileUtils", "getFileLocker mkdir failed");
-      AppMethodBeat.o(195175);
+      AppMethodBeat.o(205087);
       return null;
     }
     paramString = str + File.separator + paramString;
     try
     {
       paramString = new RandomAccessFile(paramString, "rw").getChannel().tryLock();
-      AppMethodBeat.o(195175);
+      AppMethodBeat.o(205087);
       return paramString;
     }
     catch (FileNotFoundException paramString)
@@ -450,7 +450,7 @@ public final class c
   }
   
   /* Error */
-  public static boolean f(File paramFile1, File paramFile2)
+  public static boolean g(File paramFile1, File paramFile2)
   {
     // Byte code:
     //   0: ldc 196
@@ -678,307 +678,19 @@ public final class c
     //   35	44	333	java/lang/Exception
   }
   
-  /* Error */
-  public static boolean kP(String paramString1, String paramString2)
+  public static String lm(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 215
-    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 77	java/io/FileInputStream
-    //   8: dup
-    //   9: aload_0
-    //   10: invokespecial 216	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   13: astore_2
-    //   14: aload_2
-    //   15: invokevirtual 217	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   18: astore 6
-    //   20: new 67	java/io/FileOutputStream
-    //   23: dup
-    //   24: aload_1
-    //   25: invokespecial 218	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   28: astore_3
-    //   29: aload_3
-    //   30: invokevirtual 219	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   33: astore 4
-    //   35: aload 4
-    //   37: aload 6
-    //   39: lconst_0
-    //   40: aload 6
-    //   42: invokevirtual 223	java/nio/channels/FileChannel:size	()J
-    //   45: invokevirtual 227	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   48: pop2
-    //   49: aload 4
-    //   51: iconst_1
-    //   52: invokevirtual 231	java/nio/channels/FileChannel:force	(Z)V
-    //   55: aload_2
-    //   56: invokevirtual 232	java/io/FileInputStream:close	()V
-    //   59: aload_3
-    //   60: invokevirtual 233	java/io/FileOutputStream:close	()V
-    //   63: aload 6
-    //   65: ifnull +8 -> 73
-    //   68: aload 6
-    //   70: invokevirtual 234	java/nio/channels/FileChannel:close	()V
-    //   73: aload 4
-    //   75: ifnull +8 -> 83
-    //   78: aload 4
-    //   80: invokevirtual 234	java/nio/channels/FileChannel:close	()V
-    //   83: ldc 215
-    //   85: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   88: iconst_1
-    //   89: ireturn
-    //   90: astore 5
-    //   92: aconst_null
-    //   93: astore_2
-    //   94: aconst_null
-    //   95: astore 4
-    //   97: aconst_null
-    //   98: astore_3
-    //   99: aconst_null
-    //   100: astore 6
-    //   102: ldc 26
-    //   104: ldc 236
-    //   106: iconst_4
-    //   107: anewarray 4	java/lang/Object
-    //   110: dup
-    //   111: iconst_0
-    //   112: aload 5
-    //   114: invokevirtual 240	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   117: invokevirtual 245	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   120: aastore
-    //   121: dup
-    //   122: iconst_1
-    //   123: aload 5
-    //   125: invokevirtual 38	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   128: aastore
-    //   129: dup
-    //   130: iconst_2
-    //   131: aload_0
-    //   132: aastore
-    //   133: dup
-    //   134: iconst_3
-    //   135: aload_1
-    //   136: aastore
-    //   137: invokestatic 111	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   140: invokestatic 51	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   143: aload 4
-    //   145: ifnull +8 -> 153
-    //   148: aload 4
-    //   150: invokevirtual 232	java/io/FileInputStream:close	()V
-    //   153: aload_2
-    //   154: ifnull +7 -> 161
-    //   157: aload_2
-    //   158: invokevirtual 233	java/io/FileOutputStream:close	()V
-    //   161: aload 6
-    //   163: ifnull +8 -> 171
-    //   166: aload 6
-    //   168: invokevirtual 234	java/nio/channels/FileChannel:close	()V
-    //   171: aload_3
-    //   172: ifnull +7 -> 179
-    //   175: aload_3
-    //   176: invokevirtual 234	java/nio/channels/FileChannel:close	()V
-    //   179: ldc 215
-    //   181: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: iconst_0
-    //   185: ireturn
-    //   186: astore_0
-    //   187: aconst_null
-    //   188: astore_2
-    //   189: aconst_null
-    //   190: astore 4
-    //   192: aconst_null
-    //   193: astore_3
-    //   194: aconst_null
-    //   195: astore 6
-    //   197: aload 4
-    //   199: ifnull +8 -> 207
-    //   202: aload 4
-    //   204: invokevirtual 232	java/io/FileInputStream:close	()V
-    //   207: aload_2
-    //   208: ifnull +7 -> 215
-    //   211: aload_2
-    //   212: invokevirtual 233	java/io/FileOutputStream:close	()V
-    //   215: aload 6
-    //   217: ifnull +8 -> 225
-    //   220: aload 6
-    //   222: invokevirtual 234	java/nio/channels/FileChannel:close	()V
-    //   225: aload_3
-    //   226: ifnull +7 -> 233
-    //   229: aload_3
-    //   230: invokevirtual 234	java/nio/channels/FileChannel:close	()V
-    //   233: ldc 215
-    //   235: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   238: aload_0
-    //   239: athrow
-    //   240: astore_0
-    //   241: goto -182 -> 59
-    //   244: astore_0
-    //   245: goto -182 -> 63
-    //   248: astore_0
-    //   249: goto -176 -> 73
-    //   252: astore_0
-    //   253: goto -170 -> 83
-    //   256: astore_0
-    //   257: goto -104 -> 153
-    //   260: astore_0
-    //   261: goto -100 -> 161
-    //   264: astore_0
-    //   265: goto -94 -> 171
-    //   268: astore_0
-    //   269: goto -90 -> 179
-    //   272: astore_1
-    //   273: goto -66 -> 207
-    //   276: astore_1
-    //   277: goto -62 -> 215
-    //   280: astore_1
-    //   281: goto -56 -> 225
-    //   284: astore_1
-    //   285: goto -52 -> 233
-    //   288: astore_0
-    //   289: aconst_null
-    //   290: astore_1
-    //   291: aload_2
-    //   292: astore 4
-    //   294: aconst_null
-    //   295: astore_3
-    //   296: aconst_null
-    //   297: astore 6
-    //   299: aload_1
-    //   300: astore_2
-    //   301: goto -104 -> 197
-    //   304: astore_0
-    //   305: aconst_null
-    //   306: astore_1
-    //   307: aload_2
-    //   308: astore 4
-    //   310: aconst_null
-    //   311: astore_3
-    //   312: aload_1
-    //   313: astore_2
-    //   314: goto -117 -> 197
-    //   317: astore_0
-    //   318: aload_2
-    //   319: astore 4
-    //   321: aconst_null
-    //   322: astore_1
-    //   323: aload_3
-    //   324: astore_2
-    //   325: aload_1
-    //   326: astore_3
-    //   327: goto -130 -> 197
-    //   330: astore_0
-    //   331: aload_2
-    //   332: astore_1
-    //   333: aload 4
-    //   335: astore 5
-    //   337: aload_3
-    //   338: astore_2
-    //   339: aload_1
-    //   340: astore 4
-    //   342: aload 5
-    //   344: astore_3
-    //   345: goto -148 -> 197
-    //   348: astore_0
-    //   349: goto -152 -> 197
-    //   352: astore 5
-    //   354: aconst_null
-    //   355: astore 7
-    //   357: aload_2
-    //   358: astore 4
-    //   360: aconst_null
-    //   361: astore_3
-    //   362: aconst_null
-    //   363: astore 6
-    //   365: aload 7
-    //   367: astore_2
-    //   368: goto -266 -> 102
-    //   371: astore 5
-    //   373: aconst_null
-    //   374: astore 7
-    //   376: aload_2
-    //   377: astore 4
-    //   379: aconst_null
-    //   380: astore_3
-    //   381: aload 7
-    //   383: astore_2
-    //   384: goto -282 -> 102
-    //   387: astore 5
-    //   389: aload_2
-    //   390: astore 4
-    //   392: aconst_null
-    //   393: astore 7
-    //   395: aload_3
-    //   396: astore_2
-    //   397: aload 7
-    //   399: astore_3
-    //   400: goto -298 -> 102
-    //   403: astore 5
-    //   405: aload_2
-    //   406: astore 7
-    //   408: aload 4
-    //   410: astore 8
-    //   412: aload_3
-    //   413: astore_2
-    //   414: aload 7
-    //   416: astore 4
-    //   418: aload 8
-    //   420: astore_3
-    //   421: goto -319 -> 102
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	424	0	paramString1	String
-    //   0	424	1	paramString2	String
-    //   13	401	2	localObject1	Object
-    //   28	393	3	localObject2	Object
-    //   33	384	4	localObject3	Object
-    //   90	34	5	localException1	Exception
-    //   335	8	5	localObject4	Object
-    //   352	1	5	localException2	Exception
-    //   371	1	5	localException3	Exception
-    //   387	1	5	localException4	Exception
-    //   403	1	5	localException5	Exception
-    //   18	346	6	localFileChannel	FileChannel
-    //   355	60	7	localObject5	Object
-    //   410	9	8	localObject6	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	14	90	java/lang/Exception
-    //   5	14	186	finally
-    //   55	59	240	java/lang/Exception
-    //   59	63	244	java/lang/Exception
-    //   68	73	248	java/io/IOException
-    //   78	83	252	java/io/IOException
-    //   148	153	256	java/lang/Exception
-    //   157	161	260	java/lang/Exception
-    //   166	171	264	java/io/IOException
-    //   175	179	268	java/io/IOException
-    //   202	207	272	java/lang/Exception
-    //   211	215	276	java/lang/Exception
-    //   220	225	280	java/io/IOException
-    //   229	233	284	java/io/IOException
-    //   14	20	288	finally
-    //   20	29	304	finally
-    //   29	35	317	finally
-    //   35	55	330	finally
-    //   102	143	348	finally
-    //   14	20	352	java/lang/Exception
-    //   20	29	371	java/lang/Exception
-    //   29	35	387	java/lang/Exception
-    //   35	55	403	java/lang/Exception
-  }
-  
-  public static String kY(Context paramContext)
-  {
-    AppMethodBeat.i(195174);
+    AppMethodBeat.i(205086);
     if (paramContext == null)
     {
       Log.e("FileUtils", "getDataRootPath null == context");
-      AppMethodBeat.o(195174);
+      AppMethodBeat.o(205086);
       return "";
     }
     if (paramContext.getApplicationInfo() == null)
     {
       Log.e("FileUtils", "getDataRootPath null == getApplicationInfo()");
-      AppMethodBeat.o(195174);
+      AppMethodBeat.o(205086);
       return "";
     }
     String str2 = paramContext.getApplicationInfo().dataDir;
@@ -993,11 +705,299 @@ public final class c
       str1 = "/data/data/" + paramContext.getPackageName();
       Log.e("FileUtils", "getDataRootPath null == context.getApplicationInfo().dataDir");
     }
-    AppMethodBeat.o(195174);
+    AppMethodBeat.o(205086);
     return str1;
   }
   
-  public static boolean mg(String paramString1, String paramString2)
+  /* Error */
+  public static boolean lm(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: ldc 242
+    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 77	java/io/FileInputStream
+    //   8: dup
+    //   9: aload_0
+    //   10: invokespecial 243	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: invokevirtual 244	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   18: astore 6
+    //   20: new 67	java/io/FileOutputStream
+    //   23: dup
+    //   24: aload_1
+    //   25: invokespecial 245	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   28: astore_3
+    //   29: aload_3
+    //   30: invokevirtual 246	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   33: astore 4
+    //   35: aload 4
+    //   37: aload 6
+    //   39: lconst_0
+    //   40: aload 6
+    //   42: invokevirtual 250	java/nio/channels/FileChannel:size	()J
+    //   45: invokevirtual 254	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
+    //   48: pop2
+    //   49: aload 4
+    //   51: iconst_1
+    //   52: invokevirtual 258	java/nio/channels/FileChannel:force	(Z)V
+    //   55: aload_2
+    //   56: invokevirtual 259	java/io/FileInputStream:close	()V
+    //   59: aload_3
+    //   60: invokevirtual 260	java/io/FileOutputStream:close	()V
+    //   63: aload 6
+    //   65: ifnull +8 -> 73
+    //   68: aload 6
+    //   70: invokevirtual 261	java/nio/channels/FileChannel:close	()V
+    //   73: aload 4
+    //   75: ifnull +8 -> 83
+    //   78: aload 4
+    //   80: invokevirtual 261	java/nio/channels/FileChannel:close	()V
+    //   83: ldc 242
+    //   85: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: iconst_1
+    //   89: ireturn
+    //   90: astore 5
+    //   92: aconst_null
+    //   93: astore_2
+    //   94: aconst_null
+    //   95: astore 4
+    //   97: aconst_null
+    //   98: astore_3
+    //   99: aconst_null
+    //   100: astore 6
+    //   102: ldc 26
+    //   104: ldc_w 263
+    //   107: iconst_4
+    //   108: anewarray 4	java/lang/Object
+    //   111: dup
+    //   112: iconst_0
+    //   113: aload 5
+    //   115: invokevirtual 267	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   118: invokevirtual 272	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   121: aastore
+    //   122: dup
+    //   123: iconst_1
+    //   124: aload 5
+    //   126: invokevirtual 38	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   129: aastore
+    //   130: dup
+    //   131: iconst_2
+    //   132: aload_0
+    //   133: aastore
+    //   134: dup
+    //   135: iconst_3
+    //   136: aload_1
+    //   137: aastore
+    //   138: invokestatic 111	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   141: invokestatic 51	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: aload 4
+    //   146: ifnull +8 -> 154
+    //   149: aload 4
+    //   151: invokevirtual 259	java/io/FileInputStream:close	()V
+    //   154: aload_2
+    //   155: ifnull +7 -> 162
+    //   158: aload_2
+    //   159: invokevirtual 260	java/io/FileOutputStream:close	()V
+    //   162: aload 6
+    //   164: ifnull +8 -> 172
+    //   167: aload 6
+    //   169: invokevirtual 261	java/nio/channels/FileChannel:close	()V
+    //   172: aload_3
+    //   173: ifnull +7 -> 180
+    //   176: aload_3
+    //   177: invokevirtual 261	java/nio/channels/FileChannel:close	()V
+    //   180: ldc 242
+    //   182: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: iconst_0
+    //   186: ireturn
+    //   187: astore_0
+    //   188: aconst_null
+    //   189: astore_2
+    //   190: aconst_null
+    //   191: astore 4
+    //   193: aconst_null
+    //   194: astore_3
+    //   195: aconst_null
+    //   196: astore 6
+    //   198: aload 4
+    //   200: ifnull +8 -> 208
+    //   203: aload 4
+    //   205: invokevirtual 259	java/io/FileInputStream:close	()V
+    //   208: aload_2
+    //   209: ifnull +7 -> 216
+    //   212: aload_2
+    //   213: invokevirtual 260	java/io/FileOutputStream:close	()V
+    //   216: aload 6
+    //   218: ifnull +8 -> 226
+    //   221: aload 6
+    //   223: invokevirtual 261	java/nio/channels/FileChannel:close	()V
+    //   226: aload_3
+    //   227: ifnull +7 -> 234
+    //   230: aload_3
+    //   231: invokevirtual 261	java/nio/channels/FileChannel:close	()V
+    //   234: ldc 242
+    //   236: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   239: aload_0
+    //   240: athrow
+    //   241: astore_0
+    //   242: goto -183 -> 59
+    //   245: astore_0
+    //   246: goto -183 -> 63
+    //   249: astore_0
+    //   250: goto -177 -> 73
+    //   253: astore_0
+    //   254: goto -171 -> 83
+    //   257: astore_0
+    //   258: goto -104 -> 154
+    //   261: astore_0
+    //   262: goto -100 -> 162
+    //   265: astore_0
+    //   266: goto -94 -> 172
+    //   269: astore_0
+    //   270: goto -90 -> 180
+    //   273: astore_1
+    //   274: goto -66 -> 208
+    //   277: astore_1
+    //   278: goto -62 -> 216
+    //   281: astore_1
+    //   282: goto -56 -> 226
+    //   285: astore_1
+    //   286: goto -52 -> 234
+    //   289: astore_0
+    //   290: aconst_null
+    //   291: astore_1
+    //   292: aload_2
+    //   293: astore 4
+    //   295: aconst_null
+    //   296: astore_3
+    //   297: aconst_null
+    //   298: astore 6
+    //   300: aload_1
+    //   301: astore_2
+    //   302: goto -104 -> 198
+    //   305: astore_0
+    //   306: aconst_null
+    //   307: astore_1
+    //   308: aload_2
+    //   309: astore 4
+    //   311: aconst_null
+    //   312: astore_3
+    //   313: aload_1
+    //   314: astore_2
+    //   315: goto -117 -> 198
+    //   318: astore_0
+    //   319: aload_2
+    //   320: astore 4
+    //   322: aconst_null
+    //   323: astore_1
+    //   324: aload_3
+    //   325: astore_2
+    //   326: aload_1
+    //   327: astore_3
+    //   328: goto -130 -> 198
+    //   331: astore_0
+    //   332: aload_2
+    //   333: astore_1
+    //   334: aload 4
+    //   336: astore 5
+    //   338: aload_3
+    //   339: astore_2
+    //   340: aload_1
+    //   341: astore 4
+    //   343: aload 5
+    //   345: astore_3
+    //   346: goto -148 -> 198
+    //   349: astore_0
+    //   350: goto -152 -> 198
+    //   353: astore 5
+    //   355: aconst_null
+    //   356: astore 7
+    //   358: aload_2
+    //   359: astore 4
+    //   361: aconst_null
+    //   362: astore_3
+    //   363: aconst_null
+    //   364: astore 6
+    //   366: aload 7
+    //   368: astore_2
+    //   369: goto -267 -> 102
+    //   372: astore 5
+    //   374: aconst_null
+    //   375: astore 7
+    //   377: aload_2
+    //   378: astore 4
+    //   380: aconst_null
+    //   381: astore_3
+    //   382: aload 7
+    //   384: astore_2
+    //   385: goto -283 -> 102
+    //   388: astore 5
+    //   390: aload_2
+    //   391: astore 4
+    //   393: aconst_null
+    //   394: astore 7
+    //   396: aload_3
+    //   397: astore_2
+    //   398: aload 7
+    //   400: astore_3
+    //   401: goto -299 -> 102
+    //   404: astore 5
+    //   406: aload_2
+    //   407: astore 7
+    //   409: aload 4
+    //   411: astore 8
+    //   413: aload_3
+    //   414: astore_2
+    //   415: aload 7
+    //   417: astore 4
+    //   419: aload 8
+    //   421: astore_3
+    //   422: goto -320 -> 102
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	425	0	paramString1	String
+    //   0	425	1	paramString2	String
+    //   13	402	2	localObject1	Object
+    //   28	394	3	localObject2	Object
+    //   33	385	4	localObject3	Object
+    //   90	35	5	localException1	Exception
+    //   336	8	5	localObject4	Object
+    //   353	1	5	localException2	Exception
+    //   372	1	5	localException3	Exception
+    //   388	1	5	localException4	Exception
+    //   404	1	5	localException5	Exception
+    //   18	347	6	localFileChannel	FileChannel
+    //   356	60	7	localObject5	Object
+    //   411	9	8	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   5	14	90	java/lang/Exception
+    //   5	14	187	finally
+    //   55	59	241	java/lang/Exception
+    //   59	63	245	java/lang/Exception
+    //   68	73	249	java/io/IOException
+    //   78	83	253	java/io/IOException
+    //   149	154	257	java/lang/Exception
+    //   158	162	261	java/lang/Exception
+    //   167	172	265	java/io/IOException
+    //   176	180	269	java/io/IOException
+    //   203	208	273	java/lang/Exception
+    //   212	216	277	java/lang/Exception
+    //   221	226	281	java/io/IOException
+    //   230	234	285	java/io/IOException
+    //   14	20	289	finally
+    //   20	29	305	finally
+    //   29	35	318	finally
+    //   35	55	331	finally
+    //   102	144	349	finally
+    //   14	20	353	java/lang/Exception
+    //   20	29	372	java/lang/Exception
+    //   29	35	388	java/lang/Exception
+    //   35	55	404	java/lang/Exception
+  }
+  
+  public static boolean mH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156993);
     File localFile = new File(paramString2);
@@ -1013,7 +1013,7 @@ public final class c
     int i = 0;
     while (i < paramString1.length)
     {
-      if ((paramString1[i].isFile()) && (!f(paramString1[i], new File(new File(paramString2).getAbsolutePath() + File.separator + paramString1[i].getName()))))
+      if ((paramString1[i].isFile()) && (!g(paramString1[i], new File(new File(paramString2).getAbsolutePath() + File.separator + paramString1[i].getName()))))
       {
         AppMethodBeat.o(156993);
         return false;
@@ -1025,7 +1025,7 @@ public final class c
     return true;
   }
   
-  public static boolean mh(String paramString1, String paramString2)
+  public static boolean mI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156994);
     Object localObject = new File(paramString2);
@@ -1041,12 +1041,12 @@ public final class c
     int i = 0;
     while (i < localObject.length)
     {
-      if ((localObject[i].isFile()) && (!f(localObject[i], new File(new File(paramString2).getAbsolutePath() + File.separator + localObject[i].getName()))))
+      if ((localObject[i].isFile()) && (!g(localObject[i], new File(new File(paramString2).getAbsolutePath() + File.separator + localObject[i].getName()))))
       {
         AppMethodBeat.o(156994);
         return false;
       }
-      if ((localObject[i].isDirectory()) && (!mh(paramString1 + "/" + localObject[i].getName(), paramString2 + "/" + localObject[i].getName())))
+      if ((localObject[i].isDirectory()) && (!mI(paramString1 + "/" + localObject[i].getName(), paramString2 + "/" + localObject[i].getName())))
       {
         AppMethodBeat.o(156994);
         return false;
@@ -1080,7 +1080,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.c
  * JD-Core Version:    0.7.0.1
  */

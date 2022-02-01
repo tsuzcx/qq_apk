@@ -11,14 +11,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   implements q, u<BitmapDrawable>
 {
-  private final Resources aHZ;
-  private final u<Bitmap> aIT;
+  private final Resources aIP;
+  private final u<Bitmap> aJJ;
   
   private l(Resources paramResources, u<Bitmap> paramu)
   {
     AppMethodBeat.i(77412);
-    this.aHZ = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
-    this.aIT = ((u)i.checkNotNull(paramu, "Argument must not be null"));
+    this.aIP = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
+    this.aJJ = ((u)i.checkNotNull(paramu, "Argument must not be null"));
     AppMethodBeat.o(77412);
   }
   
@@ -38,7 +38,7 @@ public final class l
   public final int getSize()
   {
     AppMethodBeat.i(77413);
-    int i = this.aIT.getSize();
+    int i = this.aJJ.getSize();
     AppMethodBeat.o(77413);
     return i;
   }
@@ -46,13 +46,13 @@ public final class l
   public final void initialize()
   {
     AppMethodBeat.i(77415);
-    if ((this.aIT instanceof q)) {
-      ((q)this.aIT).initialize();
+    if ((this.aJJ instanceof q)) {
+      ((q)this.aJJ).initialize();
     }
     AppMethodBeat.o(77415);
   }
   
-  public final Class<BitmapDrawable> oo()
+  public final Class<BitmapDrawable> oy()
   {
     return BitmapDrawable.class;
   }
@@ -60,13 +60,13 @@ public final class l
   public final void recycle()
   {
     AppMethodBeat.i(77414);
-    this.aIT.recycle();
+    this.aJJ.recycle();
     AppMethodBeat.o(77414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.l
  * JD-Core Version:    0.7.0.1
  */

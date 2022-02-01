@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.b;
+import com.tencent.mm.an.b;
 import com.tencent.mm.g.b.a.h;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayOutputStream;
 
 public final class d
 {
-  public static int hZm = 20301;
-  private String dpa;
-  private a hZn;
-  private long hZo;
-  private g.a hhW;
+  public static int izq = 20301;
+  private String dmK;
+  private g.a hIz;
+  private a izr;
+  private long izs;
   private String mediaId;
   
   public d(String paramString, a parama)
   {
     AppMethodBeat.i(63324);
-    this.hZo = 0L;
-    this.hhW = new g.a()
+    this.izs = 0L;
+    this.hIz = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(63323);
         if (paramAnonymousInt == -21005)
         {
-          ad.d("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          ac.d("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
           AppMethodBeat.o(63323);
           return 0;
         }
         if ((paramAnonymousd != null) && (paramAnonymousd.field_retCode == 0))
         {
-          ad.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
-          d.a(d.this).bB(paramAnonymousd.field_fileUrl, paramAnonymousd.field_thumbUrl);
-          ad.i("MicroMsg.Aa.AAImagUpload", "uploadsns cdndone pass: " + (System.currentTimeMillis() - d.b(d.this)) + " " + paramAnonymousd.field_filemd5);
-          new h(com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(d.b(d.this)), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(d.hZm), Long.valueOf(paramAnonymousd.field_fileLength), paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fns })).aBj();
+          ac.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          d.a(d.this).bJ(paramAnonymousd.field_fileUrl, paramAnonymousd.field_thumbUrl);
+          ac.i("MicroMsg.Aa.AAImagUpload", "uploadsns cdndone pass: " + (System.currentTimeMillis() - d.b(d.this)) + " " + paramAnonymousd.field_filemd5);
+          new h(com.tencent.mm.plugin.report.a.u(new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(d.b(d.this)), Long.valueOf(bs.eWj()), Integer.valueOf(com.tencent.mm.an.c.cD(ai.getContext())), Integer.valueOf(d.izq), Long.valueOf(paramAnonymousd.field_fileLength), paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fqM })).aHZ();
           AppMethodBeat.o(63323);
           return 0;
         }
         if ((paramAnonymousd != null) && (paramAnonymousd.field_retCode != 0))
         {
-          ad.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
-          paramAnonymousString = com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), Integer.valueOf(1), Long.valueOf(d.b(d.this)), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(d.hZm), Long.valueOf(paramAnonymousd.field_fileLength), paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fns });
-          new h(paramAnonymousString).aBj();
-          new com.tencent.mm.g.b.a.f(paramAnonymousString).aBj();
-          d.a(d.this).aHb();
+          ac.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          paramAnonymousString = com.tencent.mm.plugin.report.a.u(new Object[] { Integer.valueOf(paramAnonymousd.field_retCode), Integer.valueOf(1), Long.valueOf(d.b(d.this)), Long.valueOf(bs.eWj()), Integer.valueOf(com.tencent.mm.an.c.cD(ai.getContext())), Integer.valueOf(d.izq), Long.valueOf(paramAnonymousd.field_fileLength), paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fqM });
+          new h(paramAnonymousString).aHZ();
+          new com.tencent.mm.g.b.a.f(paramAnonymousString).aHZ();
+          d.a(d.this).aNP();
           AppMethodBeat.o(63323);
           return 0;
         }
         if (paramAnonymousInt != 0)
         {
-          ad.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          ac.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
           if (paramAnonymousd != null) {
-            new h(com.tencent.mm.plugin.report.a.s(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(1), Long.valueOf(d.b(d.this)), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(d.hZm), Long.valueOf(paramAnonymousd.field_fileLength), paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fns })).aBj();
+            new h(com.tencent.mm.plugin.report.a.u(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(1), Long.valueOf(d.b(d.this)), Long.valueOf(bs.eWj()), Integer.valueOf(com.tencent.mm.an.c.cD(ai.getContext())), Integer.valueOf(d.izq), Long.valueOf(paramAnonymousd.field_fileLength), paramAnonymousd.field_transInfo, "", "", "", "", "", "", "", paramAnonymousd.fqM })).aHZ();
           }
-          d.a(d.this).aHb();
+          d.a(d.this).aNP();
           AppMethodBeat.o(63323);
           return 0;
         }
-        ad.d("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+        ac.d("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
         AppMethodBeat.o(63323);
         return 0;
       }
@@ -74,37 +74,37 @@ public final class d
         return null;
       }
     };
-    this.hZo = System.currentTimeMillis();
-    this.dpa = paramString;
-    this.hZn = parama;
-    if (bt.isNullOrNil(this.dpa)) {}
-    for (parama = "";; parama = com.tencent.mm.b.g.getMessageDigest(this.dpa.getBytes()))
+    this.izs = System.currentTimeMillis();
+    this.dmK = paramString;
+    this.izr = parama;
+    if (bs.isNullOrNil(this.dmK)) {}
+    for (parama = "";; parama = com.tencent.mm.b.g.getMessageDigest(this.dmK.getBytes()))
     {
       this.mediaId = parama;
-      ad.i("MicroMsg.Aa.AAImagUpload", "AAImagUpload imgPath:%s mediaId:%s", new Object[] { paramString, this.mediaId });
+      ac.i("MicroMsg.Aa.AAImagUpload", "AAImagUpload imgPath:%s mediaId:%s", new Object[] { paramString, this.mediaId });
       AppMethodBeat.o(63324);
       return;
     }
   }
   
-  public final boolean aHa()
+  public final boolean aNO()
   {
     AppMethodBeat.i(63325);
     com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-    localg.fnH = this.hhW;
+    localg.frb = this.hIz;
     localg.field_mediaId = this.mediaId;
-    localg.field_fullpath = this.dpa;
+    localg.field_fullpath = this.dmK;
     localg.field_thumbpath = "";
     localg.field_fileType = 20301;
     localg.field_talker = "";
-    localg.field_priority = com.tencent.mm.i.a.fmV;
+    localg.field_priority = com.tencent.mm.i.a.fqp;
     localg.field_needStorage = true;
     localg.field_isStreamMedia = false;
     localg.field_appType = 249;
     localg.field_bzScene = 2;
-    if (!com.tencent.mm.ao.f.awL().e(localg))
+    if (!com.tencent.mm.an.f.aDD().f(localg))
     {
-      ad.e("MicroMsg.Aa.AAImagUpload", "cdntra addSendTask failed. mediaId:%s", new Object[] { this.mediaId });
+      ac.e("MicroMsg.Aa.AAImagUpload", "cdntra addSendTask failed. mediaId:%s", new Object[] { this.mediaId });
       AppMethodBeat.o(63325);
       return false;
     }
@@ -114,14 +114,14 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void aHb();
+    public abstract void aNP();
     
-    public abstract void bB(String paramString1, String paramString2);
+    public abstract void bJ(String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.d
  * JD-Core Version:    0.7.0.1
  */

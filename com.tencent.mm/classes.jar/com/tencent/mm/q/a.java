@@ -7,16 +7,16 @@ import android.os.StatFs;
 import android.preference.PreferenceManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.File;
 
 public final class a
 {
-  public static int fIk = -1;
-  public static final long[] fIl = { 17179869184L, 34359738368L, 68719476736L, 137438953472L, 274877906944L };
-  public static final long[] fIm = { 104857600L, 314572800L, 524288000L, 1073741824L, 1073741824L };
+  public static int fLQ = -1;
+  public static final long[] fLR = { 17179869184L, 34359738368L, 68719476736L, 137438953472L, 274877906944L };
+  public static final long[] fLS = { 104857600L, 314572800L, 314572800L, 314572800L, 314572800L };
   
-  public static int aac()
+  public static int aaY()
   {
     AppMethodBeat.i(150029);
     long l2 = 0L;
@@ -45,24 +45,24 @@ public final class a
       for (;;)
       {
         long l3 = 0L;
-        ad.e("MicroMsg.DbChecker", "get db spare space error");
+        ac.e("MicroMsg.DbChecker", "get db spare space error");
         continue;
-        if (fIk < 0)
+        if (fLQ < 0)
         {
-          fIk = fIl.length - 1;
+          fLQ = fLR.length - 1;
           i = 0;
         }
         for (;;)
         {
-          if (i < fIl.length)
+          if (i < fLR.length)
           {
-            if (l3 < fIl[i]) {
-              fIk = i;
+            if (l3 < fLR[i]) {
+              fLQ = i;
             }
           }
           else
           {
-            if (l1 >= fIm[fIk]) {
+            if (l1 >= fLS[fLQ]) {
               break label273;
             }
             i = 1;
@@ -77,7 +77,7 @@ public final class a
       if (l1 < 52428800L)
       {
         i = 2;
-        ad.i("MicroMsg.DbChecker", "checkRomSparespace[%d] available:%d all:%d freeSize :%d availPercent %f mobileSizeIndex %d", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf(d), Integer.valueOf(fIk) });
+        ac.i("MicroMsg.DbChecker", "checkRomSparespace[%d] available:%d all:%d freeSize :%d availPercent %f mobileSizeIndex %d", new Object[] { Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l4), Double.valueOf(d), Integer.valueOf(fLQ) });
         AppMethodBeat.o(150029);
         return i;
       }

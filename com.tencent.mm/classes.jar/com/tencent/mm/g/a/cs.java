@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cs
   extends b
 {
-  public cs.a deQ;
-  public b deR;
+  public cs.a dck;
+  public b dcl;
   
   public cs()
   {
@@ -17,9 +17,9 @@ public final class cs
   private cs(byte paramByte)
   {
     AppMethodBeat.i(127402);
-    this.deQ = new cs.a();
-    this.deR = new b();
-    this.ESR = false;
+    this.dck = new cs.a();
+    this.dcl = new b();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(127402);
   }

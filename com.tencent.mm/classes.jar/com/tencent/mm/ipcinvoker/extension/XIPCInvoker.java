@@ -20,7 +20,7 @@ public final class XIPCInvoker
       AppMethodBeat.o(158811);
       return null;
     }
-    paramString = paramString.fZL;
+    paramString = paramString.ger;
     AppMethodBeat.o(158811);
     return paramString;
   }
@@ -36,8 +36,8 @@ public final class XIPCInvoker
     implements Parcelable
   {
     public static final Parcelable.Creator<WrapperParcelable> CREATOR;
-    Object fZL;
-    String fZO;
+    Object ger;
+    String geu;
     
     static
     {
@@ -50,8 +50,8 @@ public final class XIPCInvoker
     
     public WrapperParcelable(String paramString, Object paramObject)
     {
-      this.fZO = paramString;
-      this.fZL = paramObject;
+      this.geu = paramString;
+      this.ger = paramObject;
     }
     
     public int describeContents()
@@ -62,15 +62,15 @@ public final class XIPCInvoker
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(158808);
-      paramParcel.writeString(this.fZO);
-      if (this.fZL != null)
+      paramParcel.writeString(this.geu);
+      if (this.ger != null)
       {
-        a locala = c.bi(this.fZL);
+        a locala = c.bf(this.ger);
         if (locala != null)
         {
           paramParcel.writeInt(1);
           paramParcel.writeString(locala.getClass().getName());
-          locala.a(this.fZL, paramParcel);
+          locala.a(this.ger, paramParcel);
           AppMethodBeat.o(158808);
           return;
         }
@@ -84,13 +84,51 @@ public final class XIPCInvoker
     implements com.tencent.mm.ipcinvoker.b<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
   {}
   
+  static final class b
+    implements d, com.tencent.mm.ipcinvoker.e.a
+  {
+    d<XIPCInvoker.WrapperParcelable> ges;
+    com.tencent.mm.ipcinvoker.e.a get;
+    
+    b(d<XIPCInvoker.WrapperParcelable> paramd)
+    {
+      AppMethodBeat.i(158803);
+      this.ges = paramd;
+      if ((paramd instanceof com.tencent.mm.ipcinvoker.e.a)) {
+        this.get = ((com.tencent.mm.ipcinvoker.e.a)paramd);
+      }
+      AppMethodBeat.o(158803);
+    }
+    
+    public final void a(com.tencent.mm.ipcinvoker.e.b paramb)
+    {
+      AppMethodBeat.i(158805);
+      if (this.get == null)
+      {
+        AppMethodBeat.o(158805);
+        return;
+      }
+      this.get.a(paramb);
+      AppMethodBeat.o(158805);
+    }
+    
+    public final void bc(Object paramObject)
+    {
+      AppMethodBeat.i(158804);
+      if (this.ges != null) {
+        this.ges.bc(new XIPCInvoker.WrapperParcelable(null, paramObject));
+      }
+      AppMethodBeat.o(158804);
+    }
+  }
+  
   static class c
     implements k<XIPCInvoker.WrapperParcelable, XIPCInvoker.WrapperParcelable>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.XIPCInvoker
  * JD-Core Version:    0.7.0.1
  */

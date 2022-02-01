@@ -9,17 +9,17 @@ import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class MMCopiableTextView
   extends EditText
   implements View.OnLongClickListener
 {
   private final String TAG;
-  private int mfE;
-  private int oIQ;
+  private int mHD;
+  private int pmq;
   
   public MMCopiableTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -58,13 +58,13 @@ public class MMCopiableTextView
   {
     AppMethodBeat.i(109432);
     paramView = getEditableText().toString();
-    if ((!bt.isNullOrNil(paramView)) && (this.mfE > 0) && (this.oIQ > 0) && (this.oIQ > this.mfE))
+    if ((!bs.isNullOrNil(paramView)) && (this.mHD > 0) && (this.pmq > 0) && (this.pmq > this.mHD))
     {
-      ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+      ClipboardManager localClipboardManager = (ClipboardManager)ai.getContext().getSystemService("clipboard");
       if (localClipboardManager != null)
       {
-        localClipboardManager.setText(paramView.substring(this.mfE, this.oIQ).trim());
-        ad.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { localClipboardManager.getText() });
+        localClipboardManager.setText(paramView.substring(this.mHD, this.pmq).trim());
+        ac.i("MicroMsg.MMCopiableTextView", "copy text :%s", new Object[] { localClipboardManager.getText() });
       }
       Toast.makeText(getContext(), 2131755702, 0).show();
     }
@@ -74,12 +74,12 @@ public class MMCopiableTextView
   
   public void setEndIndex(int paramInt)
   {
-    this.oIQ = paramInt;
+    this.pmq = paramInt;
   }
   
   public void setStartIndex(int paramInt)
   {
-    this.mfE = paramInt;
+    this.mHD = paramInt;
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Intent;
 import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
   extends a<com.tencent.mm.plugin.appbrand.jsapi.h>

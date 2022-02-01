@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class StoryLoadIconPreference
   extends Preference
 {
-  private StoryAvatarDotsView fyc;
-  private b.h fyd;
-  private int fye;
-  private int fyf;
-  private int fyg;
-  private int fyh;
-  private int fyi;
-  private ArrayList<String> fyj;
+  private StoryAvatarDotsView fBJ;
+  private b.h fBK;
+  private int fBL;
+  private int fBM;
+  private int fBN;
+  private int fBO;
+  private int fBP;
+  private ArrayList<String> fBQ;
   private Context mContext;
   private View mView;
   
@@ -31,10 +31,10 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(13018);
     this.mView = null;
-    this.fyh = -1;
-    this.fyi = -1;
-    this.fyj = new ArrayList();
-    bU(paramContext);
+    this.fBO = -1;
+    this.fBP = -1;
+    this.fBQ = new ArrayList();
+    bX(paramContext);
     AppMethodBeat.o(13018);
   }
   
@@ -43,14 +43,14 @@ public class StoryLoadIconPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13019);
     this.mView = null;
-    this.fyh = -1;
-    this.fyi = -1;
-    this.fyj = new ArrayList();
-    bU(paramContext);
+    this.fBO = -1;
+    this.fBP = -1;
+    this.fBQ = new ArrayList();
+    bX(paramContext);
     AppMethodBeat.o(13019);
   }
   
-  private void bU(Context paramContext)
+  private void bX(Context paramContext)
   {
     AppMethodBeat.i(13020);
     setLayoutResource(2131494804);
@@ -62,32 +62,32 @@ public class StoryLoadIconPreference
   {
     AppMethodBeat.i(13022);
     super.onBindView(paramView);
-    this.fye = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 21);
-    this.fyg = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 2);
-    this.fyf = com.tencent.mm.cd.a.fromDPToPix(this.mContext, this.fye);
-    this.fyh = this.mContext.getResources().getColor(2131100498);
-    this.fyc = ((StoryAvatarDotsView)paramView.findViewById(2131305458));
-    this.fyc.setIconSize(this.fye + this.fyg * 2);
-    this.fyc.setIconGap(this.fyf / 2);
-    if (this.fyc != null)
+    this.fBL = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 21);
+    this.fBN = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 2);
+    this.fBM = com.tencent.mm.cc.a.fromDPToPix(this.mContext, this.fBL);
+    this.fBO = this.mContext.getResources().getColor(2131100498);
+    this.fBJ = ((StoryAvatarDotsView)paramView.findViewById(2131305458));
+    this.fBJ.setIconSize(this.fBL + this.fBN * 2);
+    this.fBJ.setIconGap(this.fBM / 2);
+    if (this.fBJ != null)
     {
-      if (this.fyj.size() > 0)
+      if (this.fBQ.size() > 0)
       {
-        this.fyc.setVisibility(0);
-        this.fyc.setIconLayerCount(Math.min(this.fyj.size(), 3));
-        if (this.fyd == null) {
-          this.fyd = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.fye, this.fyg, this.fyh);
+        this.fBJ.setVisibility(0);
+        this.fBJ.setIconLayerCount(Math.min(this.fBQ.size(), 3));
+        if (this.fBK == null) {
+          this.fBK = new com.tencent.mm.plugin.appbrand.ui.widget.a(this.fBL, this.fBN, this.fBO);
         }
         int i = 0;
-        while (i < this.fyc.getChildCount())
+        while (i < this.fBJ.getChildCount())
         {
-          a.b.a(this.fyc.us(i), (String)this.fyj.get(i), 0.5F, false);
+          a.b.a(this.fBJ.vk(i), (String)this.fBQ.get(i), 0.5F, false);
           i += 1;
         }
         AppMethodBeat.o(13022);
         return;
       }
-      this.fyc.setVisibility(8);
+      this.fBJ.setVisibility(8);
     }
     AppMethodBeat.o(13022);
   }
@@ -110,7 +110,7 @@ public class StoryLoadIconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.story.StoryLoadIconPreference
  * JD-Core Version:    0.7.0.1
  */

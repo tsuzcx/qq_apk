@@ -20,14 +20,14 @@ public class VFSFileProvider
   extends ContentProvider
 {
   private static final String[] COLUMNS;
-  private static final Pattern HTb;
-  private String FX;
+  private static final Pattern Jtw;
+  private String GV;
   
   static
   {
     AppMethodBeat.i(13316);
     COLUMNS = new String[] { "_display_name", "_size" };
-    HTb = Pattern.compile("/");
+    Jtw = Pattern.compile("/");
     AppMethodBeat.o(13316);
   }
   
@@ -44,7 +44,7 @@ public class VFSFileProvider
     if (((String)localObject).startsWith("/")) {
       paramUri = ((String)localObject).substring(1);
     }
-    String[] arrayOfString = HTb.split(paramUri, 3);
+    String[] arrayOfString = Jtw.split(paramUri, 3);
     if (arrayOfString.length < 2)
     {
       AppMethodBeat.o(13308);
@@ -94,7 +94,7 @@ public class VFSFileProvider
       AppMethodBeat.o(13309);
       throw paramContext;
     }
-    this.FX = paramProviderInfo.authority;
+    this.GV = paramProviderInfo.authority;
     AppMethodBeat.o(13309);
   }
   
@@ -177,11 +177,11 @@ public class VFSFileProvider
       AppMethodBeat.o(13315);
       throw paramUri;
     }
-    localObject = a.gap().a((Uri)localObject, null);
+    localObject = a.ghk().a((Uri)localObject, null);
     if (((a.e)localObject).valid()) {
       try
       {
-        paramUri = ((a.e)localObject).HRC.lw(((a.e)localObject).path, paramString);
+        paramUri = ((a.e)localObject).Jsh.lT(((a.e)localObject).path, paramString);
         AppMethodBeat.o(13315);
         return paramUri;
       }
@@ -259,7 +259,7 @@ public class VFSFileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSFileProvider
  * JD-Core Version:    0.7.0.1
  */

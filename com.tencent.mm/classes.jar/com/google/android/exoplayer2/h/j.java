@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 public final class j
 {
-  public final byte[] bwy;
-  public final long bwz;
+  public final long absoluteStreamPosition;
+  public final byte[] buv;
   public final int flags;
   public final String key;
   public final long length;
@@ -62,8 +62,8 @@ public final class j
     {
       a.checkArgument(bool);
       this.uri = paramUri;
-      this.bwy = paramArrayOfByte;
-      this.bwz = paramLong1;
+      this.buv = paramArrayOfByte;
+      this.absoluteStreamPosition = paramLong1;
       this.position = paramLong2;
       this.length = paramLong3;
       this.key = paramString;
@@ -77,7 +77,7 @@ public final class j
     }
   }
   
-  private j l(long paramLong1, long paramLong2)
+  private j j(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(93048);
     if ((paramLong1 == 0L) && (this.length == paramLong2))
@@ -85,26 +85,26 @@ public final class j
       AppMethodBeat.o(93048);
       return this;
     }
-    j localj = new j(this.uri, this.bwy, this.bwz + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
+    j localj = new j(this.uri, this.buv, this.absoluteStreamPosition + paramLong1, this.position + paramLong1, paramLong2, this.key, this.flags);
     AppMethodBeat.o(93048);
     return localj;
   }
   
-  public final j ap(long paramLong)
+  public final j al(long paramLong)
   {
     long l = -1L;
     AppMethodBeat.i(93047);
     if (this.length == -1L) {}
     for (;;)
     {
-      j localj = l(paramLong, l);
+      j localj = j(paramLong, l);
       AppMethodBeat.o(93047);
       return localj;
       l = this.length - paramLong;
     }
   }
   
-  public final boolean fh(int paramInt)
+  public final boolean isFlagSet(int paramInt)
   {
     return (this.flags & paramInt) == paramInt;
   }
@@ -112,7 +112,7 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(93046);
-    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.bwy) + ", " + this.bwz + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
+    String str = "DataSpec[" + this.uri + ", " + Arrays.toString(this.buv) + ", " + this.absoluteStreamPosition + ", " + this.position + ", " + this.length + ", " + this.key + ", " + this.flags + "]";
     AppMethodBeat.o(93046);
     return str;
   }

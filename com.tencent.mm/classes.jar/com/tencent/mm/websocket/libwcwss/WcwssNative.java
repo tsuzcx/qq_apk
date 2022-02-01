@@ -35,17 +35,15 @@ public class WcwssNative
       public final int doCertificateVerify(String paramAnonymousString1, long paramAnonymousLong, String paramAnonymousString2, byte[][] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(3492);
-        Object localObject1 = WcwssNative.TAG;
-        new StringBuilder("WcwssNative MMWcWss doCertificateVerify callback contextId:").append(paramAnonymousString1).append(",wcwssId:").append(paramAnonymousLong).append(",hostname:").append(paramAnonymousString2);
-        localObject1 = null;
+        WcwssNative.IWcWssWebSocketListener localIWcWssWebSocketListener = null;
         synchronized (WcwssNative.listenerlock)
         {
           if (WcwssNative.gMapCallbacks.containsKey(paramAnonymousString1)) {
-            localObject1 = (WcwssNative.IWcWssWebSocketListener)WcwssNative.gMapCallbacks.get(paramAnonymousString1);
+            localIWcWssWebSocketListener = (WcwssNative.IWcWssWebSocketListener)WcwssNative.gMapCallbacks.get(paramAnonymousString1);
           }
-          if (localObject1 != null)
+          if (localIWcWssWebSocketListener != null)
           {
-            int i = ((WcwssNative.IWcWssWebSocketListener)localObject1).doCertificateVerify(paramAnonymousString1, paramAnonymousLong, paramAnonymousString2, paramAnonymousArrayOfByte);
+            int i = localIWcWssWebSocketListener.doCertificateVerify(paramAnonymousString1, paramAnonymousLong, paramAnonymousString2, paramAnonymousArrayOfByte);
             AppMethodBeat.o(3492);
             return i;
           }
@@ -58,17 +56,15 @@ public class WcwssNative
       public final void onStateChange(String paramAnonymousString, long paramAnonymousLong, int paramAnonymousInt)
       {
         AppMethodBeat.i(3491);
-        Object localObject1 = WcwssNative.TAG;
-        new StringBuilder("WcwssNative MMWcWss onStateChange callback contextId:").append(paramAnonymousString).append(",wcwssId:").append(paramAnonymousLong).append(",state:").append(paramAnonymousInt);
-        localObject1 = null;
+        WcwssNative.IWcWssWebSocketListener localIWcWssWebSocketListener = null;
         synchronized (WcwssNative.listenerlock)
         {
           if (WcwssNative.gMapCallbacks.containsKey(paramAnonymousString)) {
-            localObject1 = (WcwssNative.IWcWssWebSocketListener)WcwssNative.gMapCallbacks.get(paramAnonymousString);
+            localIWcWssWebSocketListener = (WcwssNative.IWcWssWebSocketListener)WcwssNative.gMapCallbacks.get(paramAnonymousString);
           }
-          if (localObject1 != null)
+          if (localIWcWssWebSocketListener != null)
           {
-            ((WcwssNative.IWcWssWebSocketListener)localObject1).onStateChange(paramAnonymousString, paramAnonymousLong, paramAnonymousInt);
+            localIWcWssWebSocketListener.onStateChange(paramAnonymousString, paramAnonymousLong, paramAnonymousInt);
             AppMethodBeat.o(3491);
             return;
           }
@@ -82,7 +78,6 @@ public class WcwssNative
       public final int getNetworkType()
       {
         AppMethodBeat.i(3493);
-        ??? = WcwssNative.TAG;
         synchronized (WcwssNative.lock)
         {
           if (WcwssNative.mCallerWcWssReportListener != null)
@@ -99,7 +94,6 @@ public class WcwssNative
       public final void onIdKeyStat(int[] paramAnonymousArrayOfInt1, int[] paramAnonymousArrayOfInt2, int[] paramAnonymousArrayOfInt3)
       {
         AppMethodBeat.i(3495);
-        ??? = WcwssNative.TAG;
         synchronized (WcwssNative.lock)
         {
           if (WcwssNative.mCallerWcWssReportListener != null) {
@@ -113,7 +107,6 @@ public class WcwssNative
       public final void onKvStat(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(3494);
-        ??? = WcwssNative.TAG;
         synchronized (WcwssNative.lock)
         {
           if (WcwssNative.mCallerWcWssReportListener != null) {
@@ -195,9 +188,9 @@ public class WcwssNative
   @Keep
   public static String initWcwss(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(187230);
+    AppMethodBeat.i(192981);
     int i = initBindingWcwss(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(187230);
+    AppMethodBeat.o(192981);
     return String.valueOf(i);
   }
   
@@ -249,7 +242,6 @@ public class WcwssNative
   public static void updateInterface(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(3501);
-    new StringBuilder("WcwssNative MMWcWss updateInterface contextId:").append(paramString).append(",wcwssId:").append(paramLong).append(",state:").append(paramInt);
     updateNativeInterface(paramString, paramLong, paramInt);
     AppMethodBeat.o(3501);
   }
@@ -288,7 +280,7 @@ public class WcwssNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.websocket.libwcwss.WcwssNative
  * JD-Core Version:    0.7.0.1
  */

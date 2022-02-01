@@ -1,51 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.page.aa;
 
 public final class b
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends y<aa>
 {
-  private static final int CTRL_INDEX = 223;
-  private static final String NAME = "getBeacons";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(144674);
-    ad.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
-    paramJSONObject = new JSONArray();
-    Object localObject = a.Ic(paramc.getAppId());
-    if (localObject != null)
-    {
-      localObject = ((a.a)localObject).jRy;
-      if ((localObject != null) && (((Map)localObject).size() > 0))
-      {
-        localObject = ((Map)localObject).values().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          paramJSONObject.put((JSONObject)((Iterator)localObject).next());
-        }
-      }
-    }
-    else
-    {
-      ad.e("MicroMsg.JsApiGetBeacons", "not found device");
-    }
-    localObject = new HashMap();
-    ((Map)localObject).put("beacons", paramJSONObject);
-    paramc.h(paramInt, k("ok", (Map)localObject));
-    AppMethodBeat.o(144674);
-  }
+  private static final int CTRL_INDEX = 583;
+  private static final String NAME = "getSelectedTextRange";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c.b
  * JD-Core Version:    0.7.0.1
  */

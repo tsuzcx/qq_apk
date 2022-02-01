@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lj
   extends b
 {
-  public a dpV;
+  public a dnd;
   
   public lj()
   {
@@ -15,18 +15,18 @@ public final class lj
   
   private lj(byte paramByte)
   {
-    AppMethodBeat.i(19821);
-    this.dpV = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19819);
+    this.dnd = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19821);
+    AppMethodBeat.o(19819);
   }
   
   public static final class a
   {
-    public byte[] dpW;
-    public int dpX;
-    public boolean dpY;
+    public boolean cEQ;
+    public long dne;
+    public long progress;
   }
 }
 

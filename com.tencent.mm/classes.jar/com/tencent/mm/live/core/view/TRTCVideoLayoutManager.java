@@ -8,7 +8,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -19,94 +19,94 @@ public class TRTCVideoLayoutManager
   implements b.b
 {
   private static final String TAG;
+  public WeakReference<a> gph;
+  private ArrayList<b> gsL;
+  private ArrayList<RelativeLayout.LayoutParams> gsM;
+  private ArrayList<RelativeLayout.LayoutParams> gsN;
+  private ArrayList<RelativeLayout.LayoutParams> gsO;
+  private String gsP;
   private int mCount;
   private int mMode;
-  public WeakReference<a> qED;
-  private ArrayList<b> qVa;
-  private ArrayList<RelativeLayout.LayoutParams> qVn;
-  private ArrayList<RelativeLayout.LayoutParams> qVo;
-  private ArrayList<RelativeLayout.LayoutParams> qVp;
-  private String qVq;
   
   static
   {
-    AppMethodBeat.i(205584);
+    AppMethodBeat.i(209117);
     TAG = TRTCVideoLayoutManager.class.getSimpleName();
-    AppMethodBeat.o(205584);
+    AppMethodBeat.o(209117);
   }
   
   public TRTCVideoLayoutManager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(205559);
+    AppMethodBeat.i(209092);
     this.mCount = 0;
-    aL(paramContext);
-    AppMethodBeat.o(205559);
+    aM(paramContext);
+    AppMethodBeat.o(209092);
   }
   
   public TRTCVideoLayoutManager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(205560);
+    AppMethodBeat.i(209093);
     this.mCount = 0;
-    aL(paramContext);
-    AppMethodBeat.o(205560);
+    aM(paramContext);
+    AppMethodBeat.o(209093);
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
-    AppMethodBeat.i(205561);
-    this.qVa = new ArrayList();
+    AppMethodBeat.i(209094);
+    this.gsL = new ArrayList();
     Object localObject = new b(paramContext, false);
     ((b)localObject).setVisibility(8);
     ((b)localObject).setBackgroundColor(-16777216);
-    ((b)localObject).qUH = false;
+    ((b)localObject).gsE = false;
     ((b)localObject).a(this);
-    ((b)localObject).dRc();
+    ((b)localObject).ajX();
     b localb = new b((byte)0);
-    localb.qVL = ((b)localObject);
+    localb.gsR = ((b)localObject);
     localb.index = 0;
-    this.qVa.add(localb);
+    this.gsL.add(localb);
     localObject = new b(paramContext, true);
     ((b)localObject).setVisibility(8);
     ((b)localObject).setBackgroundColor(-16777216);
-    ((b)localObject).qUH = false;
+    ((b)localObject).gsE = false;
     ((b)localObject).a(this);
-    ((b)localObject).dRc();
+    ((b)localObject).ajX();
     localb = new b((byte)0);
-    localb.qVL = ((b)localObject);
+    localb.gsR = ((b)localObject);
     localb.index = 1;
-    this.qVa.add(localb);
+    this.gsL.add(localb);
     paramContext = new b(paramContext, true);
     paramContext.setVisibility(8);
     paramContext.setBackgroundColor(-16777216);
-    paramContext.qUH = false;
+    paramContext.gsE = false;
     paramContext.a(this);
-    paramContext.dRc();
+    paramContext.ajX();
     localObject = new b((byte)0);
-    ((b)localObject).qVL = paramContext;
+    ((b)localObject).gsR = paramContext;
     ((b)localObject).index = 1;
-    this.qVa.add(localObject);
+    this.gsL.add(localObject);
     this.mMode = 1;
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(205558);
+        AppMethodBeat.i(209091);
         TRTCVideoLayoutManager.a(TRTCVideoLayoutManager.this);
-        AppMethodBeat.o(205558);
+        AppMethodBeat.o(209091);
       }
     });
-    AppMethodBeat.o(205561);
+    AppMethodBeat.o(209094);
   }
   
-  private void dRi()
+  private void akb()
   {
-    AppMethodBeat.i(205575);
-    if ((this.qVo == null) || (this.qVo.size() == 0) || (this.qVp == null) || (this.qVp.size() == 0))
+    AppMethodBeat.i(209108);
+    if ((this.gsN == null) || (this.gsN.size() == 0) || (this.gsO == null) || (this.gsO.size() == 0))
     {
-      this.qVo = c.l(getContext(), getWidth(), getHeight());
-      this.qVp = c.m(getContext(), getWidth(), getHeight());
+      this.gsN = c.b(getContext(), getWidth(), getHeight());
+      this.gsO = c.c(getContext(), getWidth(), getHeight());
     }
     ArrayList localArrayList;
     int i;
@@ -116,19 +116,19 @@ public class TRTCVideoLayoutManager
     int k;
     if (this.mCount <= 4)
     {
-      localArrayList = this.qVo;
+      localArrayList = this.gsN;
       i = 0;
       j = 1;
-      if (i >= this.qVa.size()) {
+      if (i >= this.gsL.size()) {
         break label224;
       }
-      localb = (b)this.qVa.get(i);
-      localb.qVL.qUH = false;
-      localb.qVL.setOnClickListener(null);
-      if (!localb.userId.equals(this.qVq)) {
+      localb = (b)this.gsL.get(i);
+      localb.gsR.gsE = false;
+      localb.gsR.setOnClickListener(null);
+      if (!localb.userId.equals(this.gsP)) {
         break label189;
       }
-      localb.qVL.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(0));
+      localb.gsR.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(0));
       k = j;
     }
     for (;;)
@@ -136,438 +136,153 @@ public class TRTCVideoLayoutManager
       i += 1;
       j = k;
       break label95;
-      localArrayList = this.qVp;
+      localArrayList = this.gsO;
       break;
       label189:
       k = j;
       if (j < localArrayList.size())
       {
-        localb.qVL.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(j));
+        localb.gsR.setLayoutParams((ViewGroup.LayoutParams)localArrayList.get(j));
         k = j + 1;
       }
     }
     label224:
-    AppMethodBeat.o(205575);
+    AppMethodBeat.o(209108);
   }
   
   private b k(b paramb)
   {
-    AppMethodBeat.i(205574);
-    Iterator localIterator = this.qVa.iterator();
+    AppMethodBeat.i(209107);
+    Iterator localIterator = this.gsL.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.qVL == paramb)
+      if (localb.gsR == paramb)
       {
-        AppMethodBeat.o(205574);
+        AppMethodBeat.o(209107);
         return localb;
       }
     }
-    AppMethodBeat.o(205574);
+    AppMethodBeat.o(209107);
     return null;
   }
   
-  public final void aUh(String paramString)
+  public final TXCloudVideoView S(String paramString, int paramInt)
   {
-    AppMethodBeat.i(205571);
+    AppMethodBeat.i(209100);
     if (paramString == null)
     {
-      AppMethodBeat.o(205571);
-      return;
-    }
-    b localb;
-    if (this.mMode == 1)
-    {
-      localb = (b)this.qVa.get(0);
-      if ((paramString.equals(localb.userId)) && (localb.streamType == 0)) {
-        aaq(1);
-      }
-    }
-    Object localObject = this.qVa.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localb = (b)((Iterator)localObject).next();
-      if ((localb.streamType == 0) && (paramString.equals(localb.userId)))
-      {
-        this.mCount -= 1;
-        if ((this.mMode == 2) && (this.mCount == 4)) {
-          dRi();
-        }
-        paramString = localb.qVL;
-        localObject = getContext();
-        int i = getWidth();
-        getHeight();
-        paramString.setLayoutParams(c.aQ((Context)localObject, i));
-        localb.qVL.setVisibility(8);
-        localb.userId = "";
-        localb.streamType = -1;
-        AppMethodBeat.o(205571);
-        return;
-      }
-    }
-    AppMethodBeat.o(205571);
-  }
-  
-  public final int aUi(String paramString)
-  {
-    AppMethodBeat.i(205578);
-    int i = 0;
-    if (i < this.qVa.size())
-    {
-      b localb = (b)this.qVa.get(i);
-      if ((localb.qVL.mVideoView == null) || (!bt.kU(paramString, localb.userId)) || (localb.streamType != 0)) {}
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(205578);
-      return i;
-      i += 1;
-      break;
-      i = -1;
-    }
-  }
-  
-  public final void aaq(int paramInt)
-  {
-    AppMethodBeat.i(205576);
-    if ((paramInt <= 0) || (this.qVa.size() <= paramInt))
-    {
-      AppMethodBeat.o(205576);
-      return;
-    }
-    b localb1 = (b)this.qVa.get(paramInt);
-    ViewGroup.LayoutParams localLayoutParams1 = localb1.qVL.getLayoutParams();
-    b localb2 = (b)this.qVa.get(0);
-    ViewGroup.LayoutParams localLayoutParams2 = localb2.qVL.getLayoutParams();
-    localb1.qVL.setLayoutParams(localLayoutParams2);
-    localb1.index = 0;
-    localb2.qVL.setLayoutParams(localLayoutParams1);
-    localb2.index = paramInt;
-    localb1.qVL.qUH = false;
-    localb1.qVL.setOnClickListener(null);
-    localb2.qVL.qUH = true;
-    this.qVa.set(0, localb1);
-    this.qVa.set(paramInt, localb2);
-    paramInt = 0;
-    while (paramInt < this.qVa.size())
-    {
-      bringChildToFront(((b)this.qVa.get(paramInt)).qVL);
-      paramInt += 1;
-    }
-    AppMethodBeat.o(205576);
-  }
-  
-  public final void abp(int paramInt)
-  {
-    AppMethodBeat.i(205579);
-    int i = 1;
-    if (i < this.qVa.size())
-    {
-      b localb = (b)this.qVa.get(i);
-      if ((localb.qVL != null) && (localb.qVL.qUx != null))
-      {
-        if (paramInt != 1) {
-          break label78;
-        }
-        localb.qVL.setLayoutParams(c.aP(getContext(), getWidth()));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label78:
-        if (paramInt == 2) {
-          localb.qVL.setLayoutParams(c.G(getContext(), getWidth()));
-        }
-      }
-    }
-    AppMethodBeat.o(205579);
-  }
-  
-  public final SurfaceView dRd()
-  {
-    AppMethodBeat.i(205568);
-    Object localObject = this.qVa.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      b localb = (b)((Iterator)localObject).next();
-      if (localb.qVL.qUx != null)
-      {
-        localb.userId = "";
-        localb.streamType = 0;
-        localb.qVL.setVisibility(0);
-        this.mCount += 1;
-        if ((this.mMode == 2) && (this.mCount == 5)) {
-          dRi();
-        }
-        localb.qVL.aUg("");
-        localObject = localb.qVL.qUx;
-        AppMethodBeat.o(205568);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(205568);
-    return null;
-  }
-  
-  public final void dRf()
-  {
-    AppMethodBeat.i(205572);
-    Iterator localIterator = this.qVa.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.qVL.qUx != null)
-      {
-        if (localb.index == 0) {
-          aaq(1);
-        }
-        this.mCount -= 1;
-        if ((this.mMode == 2) && (this.mCount == 4)) {
-          dRi();
-        }
-        b localb1 = localb.qVL;
-        Context localContext = getContext();
-        int i = getWidth();
-        getHeight();
-        localb1.setLayoutParams(c.aQ(localContext, i));
-        localb.qVL.setVisibility(8);
-        localb.userId = "";
-        localb.streamType = -1;
-      }
-    }
-    AppMethodBeat.o(205572);
-  }
-  
-  public final void dRh()
-  {
-    AppMethodBeat.i(205573);
-    Iterator localIterator = this.qVa.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if ((localb.qVL.mVideoView != null) && (localb.qVL.getParent() != null) && ((localb.qVL.getParent() instanceof ViewGroup)))
-      {
-        ViewGroup localViewGroup = (ViewGroup)localb.qVL.getParent();
-        localViewGroup.removeView(localb.qVL);
-        localViewGroup.addView(localb.qVL);
-      }
-    }
-    AppMethodBeat.o(205573);
-  }
-  
-  public final void g(b paramb)
-  {
-    AppMethodBeat.i(205562);
-    if (this.qED != null) {}
-    for (a locala = (a)this.qED.get();; locala = null)
-    {
-      if (locala != null) {
-        k(paramb);
-      }
-      AppMethodBeat.o(205562);
-      return;
-    }
-  }
-  
-  public final TXCloudVideoView gP(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(205567);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(205567);
+      AppMethodBeat.o(209100);
       return null;
     }
-    Iterator localIterator = this.qVa.iterator();
+    Iterator localIterator = this.gsL.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if ((localb.qVL.mVideoView != null) && ((("".equals(localb.userId)) && (localb.streamType == -1)) || ((bt.kU(paramString, localb.userId)) && (localb.streamType == paramInt))))
+      if ((localb.gsR.mVideoView != null) && ((("".equals(localb.userId)) && (localb.streamType == -1)) || ((bs.lr(paramString, localb.userId)) && (localb.streamType == paramInt))))
       {
         localb.userId = paramString;
         localb.streamType = paramInt;
-        localb.qVL.setVisibility(0);
+        localb.gsR.setVisibility(0);
         this.mCount += 1;
         if ((this.mMode == 2) && (this.mCount == 5)) {
-          dRi();
+          akb();
         }
-        localb.qVL.aUg("");
-        paramString = localb.qVL.mVideoView;
-        AppMethodBeat.o(205567);
+        localb.gsR.uK("");
+        paramString = localb.gsR.mVideoView;
+        AppMethodBeat.o(209100);
         return paramString;
       }
     }
-    AppMethodBeat.o(205567);
+    AppMethodBeat.o(209100);
     return null;
   }
   
-  public RelativeLayout getCameraContentView()
+  public final SurfaceView ajY()
   {
-    AppMethodBeat.i(205577);
-    int i = 0;
-    while (i < this.qVa.size())
+    AppMethodBeat.i(209101);
+    Object localObject = this.gsL.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      Object localObject = (b)this.qVa.get(i);
-      if (((b)localObject).qVL.qUx != null)
+      b localb = (b)((Iterator)localObject).next();
+      if (localb.gsR.gss != null)
       {
-        localObject = ((b)localObject).qVL;
-        AppMethodBeat.o(205577);
+        localb.userId = "";
+        localb.streamType = 0;
+        localb.gsR.setVisibility(0);
+        this.mCount += 1;
+        if ((this.mMode == 2) && (this.mCount == 5)) {
+          akb();
+        }
+        localb.gsR.uK("");
+        localObject = localb.gsR.gss;
+        AppMethodBeat.o(209101);
         return localObject;
       }
-      i += 1;
     }
-    AppMethodBeat.o(205577);
+    AppMethodBeat.o(209101);
     return null;
   }
   
-  public int getCameraViewHeight()
+  public final void ajZ()
   {
-    AppMethodBeat.i(205570);
-    Iterator localIterator = this.qVa.iterator();
+    AppMethodBeat.i(209105);
+    Iterator localIterator = this.gsL.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.qVL.qUx != null)
+      if (localb.gsR.gss != null)
       {
-        if (localb.qVL.getLayoutParams() == null)
-        {
-          AppMethodBeat.o(205570);
-          return -1;
+        if (localb.index == 0) {
+          mS(1);
         }
-        int i = localb.qVL.getLayoutParams().height;
-        AppMethodBeat.o(205570);
-        return i;
+        this.mCount -= 1;
+        if ((this.mMode == 2) && (this.mCount == 4)) {
+          akb();
+        }
+        b localb1 = localb.gsR;
+        Context localContext = getContext();
+        int i = getWidth();
+        getHeight();
+        localb1.setLayoutParams(c.E(localContext, i));
+        localb.gsR.setVisibility(8);
+        localb.userId = "";
+        localb.streamType = -1;
       }
     }
-    AppMethodBeat.o(205570);
-    return -1;
+    AppMethodBeat.o(209105);
   }
   
-  public int getCameraViewWidth()
+  public final void aka()
   {
-    AppMethodBeat.i(205569);
-    Iterator localIterator = this.qVa.iterator();
+    AppMethodBeat.i(209106);
+    Iterator localIterator = this.gsL.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.qVL.qUx != null)
+      if ((localb.gsR.mVideoView != null) && (localb.gsR.getParent() != null) && ((localb.gsR.getParent() instanceof ViewGroup)))
       {
-        if (localb.qVL.getLayoutParams() == null)
-        {
-          AppMethodBeat.o(205569);
-          return -1;
-        }
-        int i = localb.qVL.getLayoutParams().width;
-        AppMethodBeat.o(205569);
-        return i;
+        ViewGroup localViewGroup = (ViewGroup)localb.gsR.getParent();
+        localViewGroup.removeView(localb.gsR);
+        localViewGroup.addView(localb.gsR);
       }
     }
-    AppMethodBeat.o(205569);
-    return -1;
+    AppMethodBeat.o(209106);
   }
   
-  public int getRemoteViewIndex()
+  public final void c(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(205581);
-    int i = 0;
-    while (i < this.qVa.size())
-    {
-      if (((b)this.qVa.get(i)).qVL.mVideoView != null)
-      {
-        AppMethodBeat.o(205581);
-        return i;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(205581);
-    return 0;
-  }
-  
-  public final void h(b paramb)
-  {
-    AppMethodBeat.i(205563);
-    if (this.qED != null) {}
-    for (a locala = (a)this.qED.get();; locala = null)
-    {
-      if (locala != null) {
-        k(paramb);
-      }
-      AppMethodBeat.o(205563);
-      return;
-    }
-  }
-  
-  public final void i(b paramb)
-  {
-    AppMethodBeat.i(205564);
-    if (this.qED != null) {}
-    for (a locala = (a)this.qED.get();; locala = null)
-    {
-      if (locala != null) {
-        k(paramb);
-      }
-      AppMethodBeat.o(205564);
-      return;
-    }
-  }
-  
-  public final void j(b paramb)
-  {
-    AppMethodBeat.i(205565);
-    if (this.qED != null) {}
-    for (a locala = (a)this.qED.get();; locala = null)
-    {
-      if (locala != null) {
-        k(paramb);
-      }
-      AppMethodBeat.o(205565);
-      return;
-    }
-  }
-  
-  public void setGestureListener(b.a parama)
-  {
-    AppMethodBeat.i(205582);
-    int i = 0;
-    while (i < this.qVa.size())
-    {
-      ((b)this.qVa.get(i)).qVL.qUK = parama;
-      i += 1;
-    }
-    AppMethodBeat.o(205582);
-  }
-  
-  public void setIVideoLayoutListener(a parama)
-  {
-    AppMethodBeat.i(205566);
-    if (parama == null)
-    {
-      this.qED = null;
-      AppMethodBeat.o(205566);
-      return;
-    }
-    this.qED = new WeakReference(parama);
-    AppMethodBeat.o(205566);
-  }
-  
-  public void setMySelfUserId(String paramString)
-  {
-    this.qVq = paramString;
-  }
-  
-  public final void w(int paramInt1, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(205580);
+    AppMethodBeat.i(209113);
     int i = 1;
-    if (i < this.qVa.size())
+    if (i < this.gsL.size())
     {
-      b localb = (b)this.qVa.get(i);
-      if ((localb.qVL != null) && (bt.kU(localb.userId, paramString)) && (localb.streamType == paramInt2))
+      b localb = (b)this.gsL.get(i);
+      if ((localb.gsR != null) && (bs.lr(localb.userId, paramString)) && (localb.streamType == paramInt2))
       {
         if (paramInt1 != 1) {
           break label97;
         }
-        localb.qVL.setLayoutParams(c.aP(getContext(), getWidth()));
+        localb.gsR.setLayoutParams(c.D(getContext(), getWidth()));
       }
       for (;;)
       {
@@ -575,26 +290,311 @@ public class TRTCVideoLayoutManager
         break;
         label97:
         if (paramInt1 == 2) {
-          localb.qVL.setLayoutParams(c.G(getContext(), getWidth()));
+          localb.gsR.setLayoutParams(c.C(getContext(), getWidth()));
         }
       }
     }
-    AppMethodBeat.o(205580);
+    AppMethodBeat.o(209113);
+  }
+  
+  public final void g(b paramb)
+  {
+    AppMethodBeat.i(209095);
+    if (this.gph != null) {}
+    for (a locala = (a)this.gph.get();; locala = null)
+    {
+      if (locala != null) {
+        k(paramb);
+      }
+      AppMethodBeat.o(209095);
+      return;
+    }
+  }
+  
+  public RelativeLayout getCameraContentView()
+  {
+    AppMethodBeat.i(209110);
+    int i = 0;
+    while (i < this.gsL.size())
+    {
+      Object localObject = (b)this.gsL.get(i);
+      if (((b)localObject).gsR.gss != null)
+      {
+        localObject = ((b)localObject).gsR;
+        AppMethodBeat.o(209110);
+        return localObject;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(209110);
+    return null;
+  }
+  
+  public int getCameraViewHeight()
+  {
+    AppMethodBeat.i(209103);
+    Iterator localIterator = this.gsL.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (localb.gsR.gss != null)
+      {
+        if (localb.gsR.getLayoutParams() == null)
+        {
+          AppMethodBeat.o(209103);
+          return -1;
+        }
+        int i = localb.gsR.getLayoutParams().height;
+        AppMethodBeat.o(209103);
+        return i;
+      }
+    }
+    AppMethodBeat.o(209103);
+    return -1;
+  }
+  
+  public int getCameraViewWidth()
+  {
+    AppMethodBeat.i(209102);
+    Iterator localIterator = this.gsL.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (localb.gsR.gss != null)
+      {
+        if (localb.gsR.getLayoutParams() == null)
+        {
+          AppMethodBeat.o(209102);
+          return -1;
+        }
+        int i = localb.gsR.getLayoutParams().width;
+        AppMethodBeat.o(209102);
+        return i;
+      }
+    }
+    AppMethodBeat.o(209102);
+    return -1;
+  }
+  
+  public int getRemoteViewIndex()
+  {
+    AppMethodBeat.i(209114);
+    int i = 0;
+    while (i < this.gsL.size())
+    {
+      if (((b)this.gsL.get(i)).gsR.mVideoView != null)
+      {
+        AppMethodBeat.o(209114);
+        return i;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(209114);
+    return 0;
+  }
+  
+  public final void h(b paramb)
+  {
+    AppMethodBeat.i(209096);
+    if (this.gph != null) {}
+    for (a locala = (a)this.gph.get();; locala = null)
+    {
+      if (locala != null) {
+        k(paramb);
+      }
+      AppMethodBeat.o(209096);
+      return;
+    }
+  }
+  
+  public final void i(b paramb)
+  {
+    AppMethodBeat.i(209097);
+    if (this.gph != null) {}
+    for (a locala = (a)this.gph.get();; locala = null)
+    {
+      if (locala != null) {
+        k(paramb);
+      }
+      AppMethodBeat.o(209097);
+      return;
+    }
+  }
+  
+  public final void j(b paramb)
+  {
+    AppMethodBeat.i(209098);
+    if (this.gph != null) {}
+    for (a locala = (a)this.gph.get();; locala = null)
+    {
+      if (locala != null) {
+        k(paramb);
+      }
+      AppMethodBeat.o(209098);
+      return;
+    }
+  }
+  
+  public final void mS(int paramInt)
+  {
+    AppMethodBeat.i(209109);
+    if ((paramInt <= 0) || (this.gsL.size() <= paramInt))
+    {
+      AppMethodBeat.o(209109);
+      return;
+    }
+    b localb1 = (b)this.gsL.get(paramInt);
+    ViewGroup.LayoutParams localLayoutParams1 = localb1.gsR.getLayoutParams();
+    b localb2 = (b)this.gsL.get(0);
+    ViewGroup.LayoutParams localLayoutParams2 = localb2.gsR.getLayoutParams();
+    localb1.gsR.setLayoutParams(localLayoutParams2);
+    localb1.index = 0;
+    localb2.gsR.setLayoutParams(localLayoutParams1);
+    localb2.index = paramInt;
+    localb1.gsR.gsE = false;
+    localb1.gsR.setOnClickListener(null);
+    localb2.gsR.gsE = true;
+    this.gsL.set(0, localb1);
+    this.gsL.set(paramInt, localb2);
+    paramInt = 0;
+    while (paramInt < this.gsL.size())
+    {
+      bringChildToFront(((b)this.gsL.get(paramInt)).gsR);
+      paramInt += 1;
+    }
+    AppMethodBeat.o(209109);
+  }
+  
+  public final void mT(int paramInt)
+  {
+    AppMethodBeat.i(209112);
+    int i = 1;
+    if (i < this.gsL.size())
+    {
+      b localb = (b)this.gsL.get(i);
+      if ((localb.gsR != null) && (localb.gsR.gss != null))
+      {
+        if (paramInt != 1) {
+          break label78;
+        }
+        localb.gsR.setLayoutParams(c.D(getContext(), getWidth()));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label78:
+        if (paramInt == 2) {
+          localb.gsR.setLayoutParams(c.C(getContext(), getWidth()));
+        }
+      }
+    }
+    AppMethodBeat.o(209112);
+  }
+  
+  public void setGestureListener(b.a parama)
+  {
+    AppMethodBeat.i(209115);
+    int i = 0;
+    while (i < this.gsL.size())
+    {
+      ((b)this.gsL.get(i)).gsR.gsH = parama;
+      i += 1;
+    }
+    AppMethodBeat.o(209115);
+  }
+  
+  public void setIVideoLayoutListener(a parama)
+  {
+    AppMethodBeat.i(209099);
+    if (parama == null)
+    {
+      this.gph = null;
+      AppMethodBeat.o(209099);
+      return;
+    }
+    this.gph = new WeakReference(parama);
+    AppMethodBeat.o(209099);
+  }
+  
+  public void setMySelfUserId(String paramString)
+  {
+    this.gsP = paramString;
+  }
+  
+  public final void uL(String paramString)
+  {
+    AppMethodBeat.i(209104);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(209104);
+      return;
+    }
+    b localb;
+    if (this.mMode == 1)
+    {
+      localb = (b)this.gsL.get(0);
+      if ((paramString.equals(localb.userId)) && (localb.streamType == 0)) {
+        mS(1);
+      }
+    }
+    Object localObject = this.gsL.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localb = (b)((Iterator)localObject).next();
+      if ((localb.streamType == 0) && (paramString.equals(localb.userId)))
+      {
+        this.mCount -= 1;
+        if ((this.mMode == 2) && (this.mCount == 4)) {
+          akb();
+        }
+        paramString = localb.gsR;
+        localObject = getContext();
+        int i = getWidth();
+        getHeight();
+        paramString.setLayoutParams(c.E((Context)localObject, i));
+        localb.gsR.setVisibility(8);
+        localb.userId = "";
+        localb.streamType = -1;
+        AppMethodBeat.o(209104);
+        return;
+      }
+    }
+    AppMethodBeat.o(209104);
+  }
+  
+  public final int uM(String paramString)
+  {
+    AppMethodBeat.i(209111);
+    int i = 0;
+    if (i < this.gsL.size())
+    {
+      b localb = (b)this.gsL.get(i);
+      if ((localb.gsR.mVideoView == null) || (!bs.lr(paramString, localb.userId)) || (localb.streamType != 0)) {}
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(209111);
+      return i;
+      i += 1;
+      break;
+      i = -1;
+    }
   }
   
   public static abstract interface a {}
   
   static final class b
   {
+    public b gsR;
     public int index = -1;
-    public b qVL;
     public int streamType = -1;
     public String userId = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.view.TRTCVideoLayoutManager
  * JD-Core Version:    0.7.0.1
  */

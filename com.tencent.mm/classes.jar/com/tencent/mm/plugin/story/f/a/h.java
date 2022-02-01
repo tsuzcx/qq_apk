@@ -2,202 +2,204 @@ package com.tencent.mm.plugin.story.f.a;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n.b;
+import com.tencent.mm.ak.n.b;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.story.f.b.b.b;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.n.a;
+import com.tencent.mm.protocal.ad;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cxy;
-import com.tencent.mm.protocal.protobuf.cyd;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.protocal.protobuf.cyt;
-import com.tencent.mm.protocal.protobuf.cyz;
-import com.tencent.mm.protocal.protobuf.cza;
-import com.tencent.mm.protocal.protobuf.czb;
-import com.tencent.mm.protocal.protobuf.czc;
-import com.tencent.mm.protocal.protobuf.czd;
-import com.tencent.mm.protocal.protobuf.xd;
-import com.tencent.mm.protocal.protobuf.xe;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import d.g.b.v.e;
+import com.tencent.mm.protocal.protobuf.ddk;
+import com.tencent.mm.protocal.protobuf.ddp;
+import com.tencent.mm.protocal.protobuf.ddy;
+import com.tencent.mm.protocal.protobuf.def;
+import com.tencent.mm.protocal.protobuf.del;
+import com.tencent.mm.protocal.protobuf.dem;
+import com.tencent.mm.protocal.protobuf.den;
+import com.tencent.mm.protocal.protobuf.deo;
+import com.tencent.mm.protocal.protobuf.dep;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.protocal.protobuf.xw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import d.g.b.v.f;
 import d.l;
 import d.v;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "selector", "", "(I)V", "MAX_SYNC_COUNT", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "respHandler", "Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$RespHandler;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "processEnd", "processStoryComment", "", "item", "Lcom/tencent/mm/protocal/protobuf/CmdItem;", "h", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "processStoryCommentDel", "processStoryPost", "processStoryPostDel", "processStoryVisit", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "Companion", "RespHandler", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "selector", "", "(I)V", "MAX_SYNC_COUNT", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "respHandler", "Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$RespHandler;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "processEnd", "processStoryComment", "", "item", "Lcom/tencent/mm/protocal/protobuf/CmdItem;", "h", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "processStoryCommentDel", "processStoryPost", "processStoryPostDel", "processStoryVisit", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "Companion", "RespHandler", "plugin-story_release"})
 public final class h
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements com.tencent.mm.network.k
 {
   private static final String TAG = "MicroMsg.StoryCgi.NetSceneStorySync";
-  private static final LinkedList<Object> ygw;
-  public static final a ygx;
-  com.tencent.mm.al.g callback;
-  final com.tencent.mm.al.b rr;
-  private b ygu;
-  private final int ygv;
+  private static final LinkedList<Object> ztw;
+  public static final h.a ztx;
+  com.tencent.mm.ak.g callback;
+  final com.tencent.mm.ak.b rr;
+  private b ztu;
+  private final int ztv;
   
   static
   {
     AppMethodBeat.i(118838);
-    ygx = new a((byte)0);
+    ztx = new h.a((byte)0);
     TAG = "MicroMsg.StoryCgi.NetSceneStorySync";
-    ygw = new LinkedList();
+    ztw = new LinkedList();
     AppMethodBeat.o(118838);
   }
   
   public h()
   {
     AppMethodBeat.i(118837);
-    this.ygu = new b();
-    this.ygv = 10;
-    Object localObject = new com.tencent.mm.al.b.a();
-    ((com.tencent.mm.al.b.a)localObject).c((com.tencent.mm.bx.a)new czb());
-    ((com.tencent.mm.al.b.a)localObject).d((com.tencent.mm.bx.a)new czc());
-    ((com.tencent.mm.al.b.a)localObject).wg("/cgi-bin/micromsg-bin/mmstorysync");
-    ((com.tencent.mm.al.b.a)localObject).nB(513);
-    ((com.tencent.mm.al.b.a)localObject).nD(0);
-    ((com.tencent.mm.al.b.a)localObject).nE(0);
-    localObject = ((com.tencent.mm.al.b.a)localObject).atI();
+    this.ztu = new b();
+    this.ztv = 10;
+    Object localObject = new com.tencent.mm.ak.b.a();
+    ((com.tencent.mm.ak.b.a)localObject).c((com.tencent.mm.bw.a)new den());
+    ((com.tencent.mm.ak.b.a)localObject).d((com.tencent.mm.bw.a)new deo());
+    ((com.tencent.mm.ak.b.a)localObject).Am("/cgi-bin/micromsg-bin/mmstorysync");
+    ((com.tencent.mm.ak.b.a)localObject).op(513);
+    ((com.tencent.mm.ak.b.a)localObject).or(0);
+    ((com.tencent.mm.ak.b.a)localObject).os(0);
+    localObject = ((com.tencent.mm.ak.b.a)localObject).aAz();
     d.g.b.k.g(localObject, "builder.buildInstance()");
-    this.rr = ((com.tencent.mm.al.b)localObject);
-    localObject = this.rr.auL();
+    this.rr = ((com.tencent.mm.ak.b)localObject);
+    localObject = this.rr.aBC();
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncRequest");
       AppMethodBeat.o(118837);
       throw ((Throwable)localObject);
     }
-    ((czb)localObject).CRw = 128;
+    ((den)localObject).Ekh = 128;
     AppMethodBeat.o(118837);
   }
   
-  public static boolean c(xd paramxd, ap paramap)
+  public static boolean c(xv paramxv, ao paramao)
   {
     AppMethodBeat.i(118830);
-    d.g.b.k.h(paramxd, "item");
-    d.g.b.k.h(paramap, "h");
+    d.g.b.k.h(paramxv, "item");
+    d.g.b.k.h(paramao, "h");
     try
     {
-      localObject1 = new cyz();
-      paramxd = paramxd.CYZ;
-      d.g.b.k.g(paramxd, "item.CmdBuf");
-      paramxd = ((cyz)localObject1).parseFrom(paramxd.getBuffer().toByteArray());
-      if (paramxd == null)
+      localObject1 = new del();
+      paramxv = paramxv.ErM;
+      d.g.b.k.g(paramxv, "item.CmdBuf");
+      paramxv = ((del)localObject1).parseFrom(paramxv.getBuffer().toByteArray());
+      if (paramxv == null)
       {
-        paramxd = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
+        paramxv = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
         AppMethodBeat.o(118830);
-        throw paramxd;
+        throw paramxv;
       }
     }
-    catch (Exception paramxd)
+    catch (Exception paramxv)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "StorySyncMsg parse error!");
+      ac.w(TAG, "StorySyncMsg parse error!");
       AppMethodBeat.o(118830);
       return false;
     }
-    paramxd = (cyz)paramxd;
-    Object localObject1 = paramxd.EqX.sdQ;
-    int i = paramxd.EqX.CreateTime;
-    long l = paramxd.Id;
-    Object localObject2 = com.tencent.mm.plugin.story.f.n.yfw;
+    paramxv = (del)paramxv;
+    Object localObject1 = paramxv.FNZ.tlK;
+    int i = paramxv.FNZ.CreateTime;
+    long l = paramxv.Id;
+    Object localObject2 = com.tencent.mm.plugin.story.f.n.zsw;
     d.g.b.k.g(localObject1, "username");
-    com.tencent.mm.plugin.story.i.j localj = n.a.a((String)localObject1, l, i, paramxd.EqX.Eqj, false);
-    localObject2 = com.tencent.mm.plugin.story.f.k.yfq;
+    com.tencent.mm.plugin.story.i.j localj = n.a.a((String)localObject1, l, i, paramxv.FNZ.FNl, false);
+    localObject2 = com.tencent.mm.plugin.story.f.k.zsq;
     com.tencent.mm.plugin.story.f.k.a((String)localObject1, localj);
     localObject1 = TAG;
-    localObject2 = new StringBuilder("processStoryPost username:").append(paramxd.EqX.sdQ).append(" createTime:").append(paramxd.EqX.CreateTime).append(" id:").append(paramxd.Id).append(" scope:");
+    localObject2 = new StringBuilder("processStoryPost username:").append(paramxv.FNZ.tlK).append(" createTime:").append(paramxv.FNZ.CreateTime).append(" id:").append(paramxv.Id).append(" scope:");
     if (localj != null)
     {
-      paramxd = localj.dKH();
-      if (paramxd == null) {}
+      paramxv = localj.dZi();
+      if (paramxv == null) {}
     }
-    for (paramxd = Integer.valueOf(paramxd.Erc);; paramxd = null)
+    for (paramxv = Integer.valueOf(paramxv.FOe);; paramxv = null)
     {
-      com.tencent.mm.sdk.platformtools.ad.i((String)localObject1, paramxd);
-      paramxd = ygw.iterator();
-      while (paramxd.hasNext()) {
-        paramxd.next();
+      ac.i((String)localObject1, paramxv);
+      paramxv = ztw.iterator();
+      while (paramxv.hasNext()) {
+        paramxv.next();
       }
     }
-    paramap.sendEmptyMessage(0);
+    paramao.sendEmptyMessage(0);
     AppMethodBeat.o(118830);
     return true;
   }
   
-  public static boolean d(xd paramxd, ap paramap)
+  public static boolean d(xv paramxv, ao paramao)
   {
     AppMethodBeat.i(118831);
-    d.g.b.k.h(paramxd, "item");
-    d.g.b.k.h(paramap, "h");
+    d.g.b.k.h(paramxv, "item");
+    d.g.b.k.h(paramao, "h");
     Object localObject1;
     try
     {
-      localObject1 = new cyz();
-      paramxd = paramxd.CYZ;
-      d.g.b.k.g(paramxd, "item.CmdBuf");
-      paramxd = ((cyz)localObject1).parseFrom(paramxd.getBuffer().toByteArray());
-      if (paramxd == null)
+      localObject1 = new del();
+      paramxv = paramxv.ErM;
+      d.g.b.k.g(paramxv, "item.CmdBuf");
+      paramxv = ((del)localObject1).parseFrom(paramxv.getBuffer().toByteArray());
+      if (paramxv == null)
       {
-        paramxd = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
+        paramxv = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
         AppMethodBeat.o(118831);
-        throw paramxd;
+        throw paramxv;
       }
     }
-    catch (Exception paramxd)
+    catch (Exception paramxv)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "StorySyncMsg parse error!");
+      ac.w(TAG, "StorySyncMsg parse error!");
       AppMethodBeat.o(118831);
       return false;
     }
-    paramxd = (cyz)paramxd;
-    String str = paramxd.EqX.sdQ;
-    int i = paramxd.EqX.CreateTime;
-    long l = paramxd.Id;
-    paramxd = com.tencent.mm.plugin.story.f.n.yfw;
+    paramxv = (del)paramxv;
+    String str = paramxv.FNZ.tlK;
+    int i = paramxv.FNZ.CreateTime;
+    long l = paramxv.Id;
+    paramxv = com.tencent.mm.plugin.story.f.n.zsw;
     d.g.b.k.g(str, "username");
     n.a.a(str, l, i, null, true);
-    paramxd = com.tencent.mm.plugin.story.f.n.yfw;
-    com.tencent.mm.plugin.story.i.j localj = n.a.arx(str);
-    Object localObject2 = localj.dKH();
-    paramxd = ((czd)localObject2).Era;
-    if (paramxd != null)
+    paramxv = com.tencent.mm.plugin.story.f.n.zsw;
+    com.tencent.mm.plugin.story.i.j localj = n.a.awG(str);
+    Object localObject2 = localj.dZi();
+    paramxv = ((dep)localObject2).FOc;
+    if (paramxv != null)
     {
-      paramxd = paramxd.DaC;
-      if (paramxd != null)
+      paramxv = paramxv.Etz;
+      if (paramxv != null)
       {
-        paramxd = (cym)d.a.j.C((List)paramxd, 0);
-        if (paramxd != null)
+        paramxv = (ddy)d.a.j.C((List)paramxv, 0);
+        if (paramxv != null)
         {
-          paramxd = paramxd.DMQ;
-          localObject1 = ((czd)localObject2).Era;
+          paramxv = paramxv.Fjh;
+          localObject1 = ((dep)localObject2).FOc;
           if (localObject1 == null) {
             break label444;
           }
-          localObject1 = ((cyd)localObject1).DaC;
+          localObject1 = ((ddp)localObject1).Etz;
           if (localObject1 == null) {
             break label444;
           }
-          localObject1 = (cym)d.a.j.C((List)localObject1, 0);
+          localObject1 = (ddy)d.a.j.C((List)localObject1, 0);
           if (localObject1 == null) {
             break label444;
           }
-          localObject1 = ((cym)localObject1).Url;
+          localObject1 = ((ddy)localObject1).Url;
           label248:
-          localObject2 = ((czd)localObject2).Era;
+          localObject2 = ((dep)localObject2).FOc;
           if (localObject2 == null) {
             break label450;
           }
-          localObject2 = ((cyd)localObject2).DaC;
+          localObject2 = ((ddp)localObject2).Etz;
           if (localObject2 == null) {
             break label450;
           }
-          localObject2 = (cym)d.a.j.C((List)localObject2, 0);
+          localObject2 = (ddy)d.a.j.C((List)localObject2, 0);
           if (localObject2 == null) {
             break label450;
           }
@@ -206,254 +208,254 @@ public final class h
     }
     label444:
     label450:
-    for (float f = ((cym)localObject2).EqD;; f = 0.0F)
+    for (float f = ((ddy)localObject2).FNF;; f = 0.0F)
     {
-      localObject2 = com.tencent.mm.plugin.story.f.k.yfq;
-      com.tencent.mm.plugin.story.f.k.a(str, localj.field_storyID, localj.field_createTime, paramxd, (String)localObject1, (f * 1000.0F));
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "processStoryPostDel username:" + str + " createTime:" + i + " id:" + l + " lastCreateTime:" + localj.field_createTime + " lastId:" + localj.field_storyID + "   ulonglong " + com.tencent.mm.ad.c.ly(l));
-      paramxd = ygw.iterator();
-      while (paramxd.hasNext()) {
-        paramxd.next();
+      localObject2 = com.tencent.mm.plugin.story.f.k.zsq;
+      com.tencent.mm.plugin.story.f.k.a(str, localj.field_storyID, localj.field_createTime, paramxv, (String)localObject1, (f * 1000.0F));
+      ac.i(TAG, "processStoryPostDel username:" + str + " createTime:" + i + " id:" + l + " lastCreateTime:" + localj.field_createTime + " lastId:" + localj.field_storyID + "   ulonglong " + com.tencent.mm.ac.c.pb(l));
+      paramxv = ztw.iterator();
+      while (paramxv.hasNext()) {
+        paramxv.next();
       }
-      paramxd = null;
+      paramxv = null;
       break;
       localObject1 = null;
       break label248;
     }
-    paramap.sendEmptyMessage(0);
+    paramao.sendEmptyMessage(0);
     AppMethodBeat.o(118831);
     return true;
   }
   
-  public static boolean e(xd paramxd, ap paramap)
+  public static boolean e(xv paramxv, ao paramao)
   {
     AppMethodBeat.i(118832);
-    d.g.b.k.h(paramxd, "item");
-    d.g.b.k.h(paramap, "h");
+    d.g.b.k.h(paramxv, "item");
+    d.g.b.k.h(paramao, "h");
     try
     {
-      localObject1 = new cyz();
-      paramxd = paramxd.CYZ;
-      d.g.b.k.g(paramxd, "item.CmdBuf");
-      paramxd = ((cyz)localObject1).parseFrom(paramxd.getBuffer().toByteArray());
-      if (paramxd == null)
+      localObject1 = new del();
+      paramxv = paramxv.ErM;
+      d.g.b.k.g(paramxv, "item.CmdBuf");
+      paramxv = ((del)localObject1).parseFrom(paramxv.getBuffer().toByteArray());
+      if (paramxv == null)
       {
-        paramxd = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
+        paramxv = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
         AppMethodBeat.o(118832);
-        throw paramxd;
+        throw paramxv;
       }
     }
-    catch (Exception paramxd)
+    catch (Exception paramxv)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "StorySyncMsg parse error: " + paramxd.getMessage());
+      ac.w(TAG, "StorySyncMsg parse error: " + paramxv.getMessage());
       AppMethodBeat.o(118832);
       return false;
     }
-    paramxd = (cyz)paramxd;
-    Object localObject1 = paramxd.EqX.sdQ;
-    int i = paramxd.EqX.CreateTime;
-    long l = paramxd.Id;
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "processStoryComment username:" + (String)localObject1 + " createTime:" + i + " id:" + l + " ulonglong " + com.tencent.mm.ad.c.ly(l));
-    localObject1 = com.tencent.mm.plugin.story.f.b.b.ygY;
-    d.g.b.k.h(paramxd, "syncMsg");
-    com.tencent.mm.sdk.platformtools.ad.i(com.tencent.mm.plugin.story.f.b.b.TAG, "addSyncComment " + paramxd.Id + ' ' + paramxd.EqX.Ema + ' ' + paramxd.EqX.CreateTime);
-    localObject1 = new v.e();
-    Object localObject2 = com.tencent.mm.plugin.story.f.j.yfh;
-    ((v.e)localObject1).Jhw = j.b.dHg().tS(paramxd.EqX.Id);
-    if ((com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw == null)
+    paramxv = (del)paramxv;
+    Object localObject1 = paramxv.FNZ.tlK;
+    int i = paramxv.FNZ.CreateTime;
+    long l = paramxv.Id;
+    ac.i(TAG, "processStoryComment username:" + (String)localObject1 + " createTime:" + i + " id:" + l + " ulonglong " + com.tencent.mm.ac.c.pb(l));
+    localObject1 = com.tencent.mm.plugin.story.f.b.b.ztY;
+    d.g.b.k.h(paramxv, "syncMsg");
+    ac.i(com.tencent.mm.plugin.story.f.b.b.TAG, "addSyncComment " + paramxv.Id + ' ' + paramxv.FNZ.FIZ + ' ' + paramxv.FNZ.CreateTime);
+    localObject1 = new v.f();
+    Object localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
+    ((v.f)localObject1).KUQ = j.b.dVH().yv(paramxv.FNZ.Id);
+    if ((com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ == null)
     {
-      ((v.e)localObject1).Jhw = new com.tencent.mm.plugin.story.i.c();
-      ((com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw).field_storyId = paramxd.Id;
+      ((v.f)localObject1).KUQ = new com.tencent.mm.plugin.story.i.c();
+      ((com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ).field_storyId = paramxv.Id;
     }
-    com.tencent.mm.plugin.story.f.b.b.a(paramxd);
-    if (((com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw).field_readCommentTime == 0) {
-      ((com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw).field_readCommentTime = 1;
+    com.tencent.mm.plugin.story.f.b.b.a(paramxv);
+    if (((com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ).field_readCommentTime == 0) {
+      ((com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ).field_readCommentTime = 1;
     }
-    localObject2 = (com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw;
-    String str = paramxd.EqX.sdQ;
+    localObject2 = (com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ;
+    String str = paramxv.FNZ.tlK;
     d.g.b.k.g(str, "syncMsg.SyncMsgDetail.FromUserName");
-    ((com.tencent.mm.plugin.story.i.c)localObject2).arQ(str);
-    localObject2 = (com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw;
-    str = paramxd.EqX.Eqj.mAQ;
+    ((com.tencent.mm.plugin.story.i.c)localObject2).awZ(str);
+    localObject2 = (com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ;
+    str = paramxv.FNZ.FNl.ncR;
     d.g.b.k.g(str, "syncMsg.SyncMsgDetail.StoryObject.UserName");
-    ((com.tencent.mm.plugin.story.i.c)localObject2).arC(str);
-    ((com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw).field_syncCommentId = paramxd.EqX.Ema;
-    ((com.tencent.mm.plugin.story.i.c)((v.e)localObject1).Jhw).field_syncCommentTime = paramxd.EqX.CreateTime;
-    paramxd = com.tencent.mm.plugin.story.f.j.yfh;
-    j.b.dHg().replace((com.tencent.mm.sdk.e.c)((v.e)localObject1).Jhw);
-    com.tencent.mm.ad.c.g((d.g.a.a)new com.tencent.mm.plugin.story.f.b.b.a((v.e)localObject1));
-    paramxd = ygw.iterator();
-    while (paramxd.hasNext()) {
-      paramxd.next();
+    ((com.tencent.mm.plugin.story.i.c)localObject2).awL(str);
+    ((com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ).field_syncCommentId = paramxv.FNZ.FIZ;
+    ((com.tencent.mm.plugin.story.i.c)((v.f)localObject1).KUQ).field_syncCommentTime = paramxv.FNZ.CreateTime;
+    paramxv = com.tencent.mm.plugin.story.f.j.zsh;
+    j.b.dVH().replace((com.tencent.mm.sdk.e.c)((v.f)localObject1).KUQ);
+    com.tencent.mm.ac.c.g((d.g.a.a)new com.tencent.mm.plugin.story.f.b.b.a((v.f)localObject1));
+    paramxv = ztw.iterator();
+    while (paramxv.hasNext()) {
+      paramxv.next();
     }
-    paramap.sendEmptyMessage(0);
+    paramao.sendEmptyMessage(0);
     AppMethodBeat.o(118832);
     return true;
   }
   
-  public static boolean f(xd paramxd, ap paramap)
+  public static boolean f(xv paramxv, ao paramao)
   {
     AppMethodBeat.i(118833);
-    d.g.b.k.h(paramxd, "item");
-    d.g.b.k.h(paramap, "h");
+    d.g.b.k.h(paramxv, "item");
+    d.g.b.k.h(paramao, "h");
     try
     {
-      localcyz = new cyz();
-      paramxd = paramxd.CYZ;
-      d.g.b.k.g(paramxd, "item.CmdBuf");
-      paramxd = localcyz.parseFrom(paramxd.getBuffer().toByteArray());
-      if (paramxd == null)
+      localdel = new del();
+      paramxv = paramxv.ErM;
+      d.g.b.k.g(paramxv, "item.CmdBuf");
+      paramxv = localdel.parseFrom(paramxv.getBuffer().toByteArray());
+      if (paramxv == null)
       {
-        paramxd = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
+        paramxv = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
         AppMethodBeat.o(118833);
-        throw paramxd;
+        throw paramxv;
       }
     }
-    catch (Exception paramxd)
+    catch (Exception paramxv)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "StorySyncMsg parse error:  " + paramxd.getMessage());
+      ac.w(TAG, "StorySyncMsg parse error:  " + paramxv.getMessage());
       AppMethodBeat.o(118833);
       return false;
     }
-    cyz localcyz = (cyz)paramxd;
-    paramxd = localcyz.EqX.sdQ;
-    int i = localcyz.EqX.CreateTime;
-    long l = localcyz.Id;
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "processStoryVisit username:" + paramxd + " createTime:" + i + " id:" + l + " ulonglong " + com.tencent.mm.ad.c.ly(l));
-    paramxd = com.tencent.mm.plugin.story.f.b.b.ygY;
-    d.g.b.k.h(localcyz, "syncMsg");
-    boolean bool = com.tencent.mm.plugin.story.c.a.e.ydS.dGh();
-    com.tencent.mm.sdk.platformtools.ad.i(com.tencent.mm.plugin.story.f.b.b.TAG, "addSyncVisit " + localcyz.Id + ' ' + localcyz.EqX.Ema + ' ' + localcyz.EqX.CreateTime + " enableVisit:" + bool);
-    com.tencent.mm.plugin.story.f.b.b.a(localcyz);
-    v.e locale = new v.e();
-    paramxd = com.tencent.mm.plugin.story.f.j.yfh;
-    locale.Jhw = j.b.dHg().tS(localcyz.EqX.Id);
-    if ((com.tencent.mm.plugin.story.i.c)locale.Jhw == null)
+    del localdel = (del)paramxv;
+    paramxv = localdel.FNZ.tlK;
+    int i = localdel.FNZ.CreateTime;
+    long l = localdel.Id;
+    ac.i(TAG, "processStoryVisit username:" + paramxv + " createTime:" + i + " id:" + l + " ulonglong " + com.tencent.mm.ac.c.pb(l));
+    paramxv = com.tencent.mm.plugin.story.f.b.b.ztY;
+    d.g.b.k.h(localdel, "syncMsg");
+    boolean bool = com.tencent.mm.plugin.story.c.a.e.zqS.dUI();
+    ac.i(com.tencent.mm.plugin.story.f.b.b.TAG, "addSyncVisit " + localdel.Id + ' ' + localdel.FNZ.FIZ + ' ' + localdel.FNZ.CreateTime + " enableVisit:" + bool);
+    com.tencent.mm.plugin.story.f.b.b.a(localdel);
+    v.f localf = new v.f();
+    paramxv = com.tencent.mm.plugin.story.f.j.zsh;
+    localf.KUQ = j.b.dVH().yv(localdel.FNZ.Id);
+    if ((com.tencent.mm.plugin.story.i.c)localf.KUQ == null)
     {
-      locale.Jhw = new com.tencent.mm.plugin.story.i.c();
-      ((com.tencent.mm.plugin.story.i.c)locale.Jhw).field_storyId = localcyz.Id;
+      localf.KUQ = new com.tencent.mm.plugin.story.i.c();
+      ((com.tencent.mm.plugin.story.i.c)localf.KUQ).field_storyId = localdel.Id;
     }
     Object localObject;
-    if (((com.tencent.mm.plugin.story.i.c)locale.Jhw).field_readCommentTime == 0)
+    if (((com.tencent.mm.plugin.story.i.c)localf.KUQ).field_readCommentTime == 0)
     {
-      if (!bt.isNullOrNil(localcyz.EqX.gKr)) {
+      if (!bs.isNullOrNil(localdel.FNZ.hkR)) {
         break label636;
       }
-      paramxd = localcyz.EqX.Eqj.EqO;
-      d.g.b.k.g(paramxd, "bubbleList");
-      paramxd = (cxy)d.a.j.C((List)paramxd, paramxd.size() - 2);
-      if (paramxd == null) {
+      paramxv = localdel.FNZ.FNl.FNQ;
+      d.g.b.k.g(paramxv, "bubbleList");
+      paramxv = (ddk)d.a.j.C((List)paramxv, paramxv.size() - 2);
+      if (paramxv == null) {
         break label631;
       }
-      paramxd = Integer.valueOf(paramxd.CreateTime);
-      localObject = (com.tencent.mm.plugin.story.i.c)locale.Jhw;
-      if (paramxd == null) {
+      paramxv = Integer.valueOf(paramxv.CreateTime);
+      localObject = (com.tencent.mm.plugin.story.i.c)localf.KUQ;
+      if (paramxv == null) {
         break label694;
       }
     }
     label694:
-    for (i = paramxd.intValue();; i = 1)
+    for (i = paramxv.intValue();; i = 1)
     {
       ((com.tencent.mm.plugin.story.i.c)localObject).field_readCommentTime = i;
-      paramxd = (com.tencent.mm.plugin.story.i.c)locale.Jhw;
-      localObject = localcyz.EqX.sdQ;
+      paramxv = (com.tencent.mm.plugin.story.i.c)localf.KUQ;
+      localObject = localdel.FNZ.tlK;
       d.g.b.k.g(localObject, "syncMsg.SyncMsgDetail.FromUserName");
-      paramxd.arQ((String)localObject);
-      paramxd = (com.tencent.mm.plugin.story.i.c)locale.Jhw;
-      localObject = localcyz.EqX.Eqj.mAQ;
+      paramxv.awZ((String)localObject);
+      paramxv = (com.tencent.mm.plugin.story.i.c)localf.KUQ;
+      localObject = localdel.FNZ.FNl.ncR;
       d.g.b.k.g(localObject, "syncMsg.SyncMsgDetail.StoryObject.UserName");
-      paramxd.arC((String)localObject);
-      ((com.tencent.mm.plugin.story.i.c)locale.Jhw).field_syncCommentId = localcyz.EqX.Ema;
-      ((com.tencent.mm.plugin.story.i.c)locale.Jhw).field_syncCommentTime = localcyz.EqX.CreateTime;
-      paramxd = com.tencent.mm.plugin.story.f.j.yfh;
-      j.b.dHg().replace((com.tencent.mm.sdk.e.c)locale.Jhw);
-      com.tencent.mm.ad.c.g((d.g.a.a)new b.b(locale));
-      paramxd = ygw.iterator();
-      while (paramxd.hasNext()) {
-        paramxd.next();
+      paramxv.awL((String)localObject);
+      ((com.tencent.mm.plugin.story.i.c)localf.KUQ).field_syncCommentId = localdel.FNZ.FIZ;
+      ((com.tencent.mm.plugin.story.i.c)localf.KUQ).field_syncCommentTime = localdel.FNZ.CreateTime;
+      paramxv = com.tencent.mm.plugin.story.f.j.zsh;
+      j.b.dVH().replace((com.tencent.mm.sdk.e.c)localf.KUQ);
+      com.tencent.mm.ac.c.g((d.g.a.a)new b.b(localf));
+      paramxv = ztw.iterator();
+      while (paramxv.hasNext()) {
+        paramxv.next();
       }
       label631:
-      paramxd = null;
+      paramxv = null;
       break;
       label636:
-      paramxd = localcyz.EqX.Eqj.EqM;
-      d.g.b.k.g(paramxd, "commentList");
-      paramxd = (cxy)d.a.j.C((List)paramxd, paramxd.size() - 2);
-      if (paramxd != null)
+      paramxv = localdel.FNZ.FNl.FNO;
+      d.g.b.k.g(paramxv, "commentList");
+      paramxv = (ddk)d.a.j.C((List)paramxv, paramxv.size() - 2);
+      if (paramxv != null)
       {
-        i = paramxd.CreateTime;
-        paramxd = Integer.valueOf(i);
+        i = paramxv.CreateTime;
+        paramxv = Integer.valueOf(i);
         break;
       }
-      paramxd = null;
+      paramxv = null;
       break;
     }
-    paramap.sendEmptyMessage(0);
+    paramao.sendEmptyMessage(0);
     AppMethodBeat.o(118833);
     return true;
   }
   
-  public static boolean g(xd paramxd, ap paramap)
+  public static boolean g(xv paramxv, ao paramao)
   {
     AppMethodBeat.i(118834);
-    d.g.b.k.h(paramxd, "item");
-    d.g.b.k.h(paramap, "h");
+    d.g.b.k.h(paramxv, "item");
+    d.g.b.k.h(paramao, "h");
     try
     {
-      localObject = new cyz();
-      paramxd = paramxd.CYZ;
-      d.g.b.k.g(paramxd, "item.CmdBuf");
-      paramxd = ((cyz)localObject).parseFrom(paramxd.getBuffer().toByteArray());
-      if (paramxd == null)
+      localObject = new del();
+      paramxv = paramxv.ErM;
+      d.g.b.k.g(paramxv, "item.CmdBuf");
+      paramxv = ((del)localObject).parseFrom(paramxv.getBuffer().toByteArray());
+      if (paramxv == null)
       {
-        paramxd = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
+        paramxv = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncMsg");
         AppMethodBeat.o(118834);
-        throw paramxd;
+        throw paramxv;
       }
     }
-    catch (Exception paramxd)
+    catch (Exception paramxv)
     {
-      com.tencent.mm.sdk.platformtools.ad.w(TAG, "StorySyncMsg parse error!");
+      ac.w(TAG, "StorySyncMsg parse error!");
       AppMethodBeat.o(118834);
       return false;
     }
-    paramxd = (cyz)paramxd;
-    Object localObject = paramxd.EqX.sdQ;
-    int i = paramxd.EqX.CreateTime;
-    long l = paramxd.Id;
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "processStoryCommentDel username:" + (String)localObject + " createTime:" + i + " id:" + l);
-    localObject = com.tencent.mm.plugin.story.f.b.b.ygY;
-    d.g.b.k.h(paramxd, "syncMsg");
-    com.tencent.mm.sdk.platformtools.ad.i(com.tencent.mm.plugin.story.f.b.b.TAG, "delSyncComment " + paramxd.Id + ' ' + paramxd.EqX.Ema);
-    com.tencent.mm.plugin.story.f.b.b.g(paramxd.EqX.Id, paramxd.EqX.Ema, paramxd.EqX.gKr);
-    com.tencent.mm.plugin.story.f.b.b.tH(paramxd.EqX.Id);
-    paramxd = ygw.iterator();
-    while (paramxd.hasNext()) {
-      paramxd.next();
+    paramxv = (del)paramxv;
+    Object localObject = paramxv.FNZ.tlK;
+    int i = paramxv.FNZ.CreateTime;
+    long l = paramxv.Id;
+    ac.i(TAG, "processStoryCommentDel username:" + (String)localObject + " createTime:" + i + " id:" + l);
+    localObject = com.tencent.mm.plugin.story.f.b.b.ztY;
+    d.g.b.k.h(paramxv, "syncMsg");
+    ac.i(com.tencent.mm.plugin.story.f.b.b.TAG, "delSyncComment " + paramxv.Id + ' ' + paramxv.FNZ.FIZ);
+    com.tencent.mm.plugin.story.f.b.b.j(paramxv.FNZ.Id, paramxv.FNZ.FIZ, paramxv.FNZ.hkR);
+    com.tencent.mm.plugin.story.f.b.b.yk(paramxv.FNZ.Id);
+    paramxv = ztw.iterator();
+    while (paramxv.hasNext()) {
+      paramxv.next();
     }
-    paramap.sendEmptyMessage(0);
+    paramao.sendEmptyMessage(0);
     AppMethodBeat.o(118834);
     return true;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(118835);
     d.g.b.k.h(parame, "dispatcher");
     d.g.b.k.h(paramg, "callback");
-    Object localObject1 = com.tencent.mm.kernel.g.afB();
+    Object localObject1 = com.tencent.mm.kernel.g.agR();
     d.g.b.k.g(localObject1, "MMKernel.storage()");
-    Object localObject2 = bt.aGd(bt.nullAsNil((String)((com.tencent.mm.kernel.e)localObject1).afk().get(8195)));
+    Object localObject2 = bs.aLu(bs.nullAsNil((String)((com.tencent.mm.kernel.e)localObject1).agA().get(8195)));
     localObject1 = new SKBuiltinBuffer_t();
     ((SKBuiltinBuffer_t)localObject1).setBuffer((byte[])localObject2);
-    localObject2 = this.rr.auL();
+    localObject2 = this.rr.aBC();
     if (localObject2 == null)
     {
       parame = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncRequest");
       AppMethodBeat.o(118835);
       throw parame;
     }
-    ((czb)localObject2).CRx = ((SKBuiltinBuffer_t)localObject1);
+    ((den)localObject2).Eki = ((SKBuiltinBuffer_t)localObject1);
     this.callback = paramg;
     int i = dispatch(parame, (q)this.rr, (com.tencent.mm.network.k)this);
     AppMethodBeat.o(118835);
@@ -468,29 +470,29 @@ public final class h
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(118836);
-    com.tencent.mm.sdk.platformtools.ad.d(TAG, "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ac.d(TAG, "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       paramq = this.callback;
       if (paramq == null) {
-        d.g.b.k.aPZ("callback");
+        d.g.b.k.aVY("callback");
       }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.al.n)this);
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.ak.n)this);
       AppMethodBeat.o(118836);
       return;
     }
-    paramq = this.rr.auM();
+    paramq = this.rr.aBD();
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncResponse");
       AppMethodBeat.o(118836);
       throw paramString;
     }
-    czc localczc = (czc)paramq;
-    paramq = localczc.CRA;
+    deo localdeo = (deo)paramq;
+    paramq = localdeo.Ekl;
     if (paramq != null)
     {
-      paramArrayOfByte = paramq.mAL;
+      paramArrayOfByte = paramq.ncM;
       paramq = paramArrayOfByte;
       if (paramArrayOfByte != null) {}
     }
@@ -500,30 +502,30 @@ public final class h
     }
     if (paramq.size() > 0)
     {
-      paramString = this.ygu;
+      paramString = this.ztu;
       d.g.b.k.h(paramq, "cmdList");
-      paramString.pJl = paramq;
-      paramString.qaZ.sendEmptyMessage(0);
+      paramString.qrS = paramq;
+      paramString.qJF.sendEmptyMessage(0);
       AppMethodBeat.o(118836);
       return;
     }
-    if (localczc.CRx != null)
+    if (localdeo.Eki != null)
     {
-      paramq = localczc.CRx;
+      paramq = localdeo.Eki;
       d.g.b.k.g(paramq, "resp.KeyBuf");
       if (paramq.getBuffer() != null)
       {
-        paramq = localczc.CRx;
+        paramq = localdeo.Eki;
         d.g.b.k.g(paramq, "resp.KeyBuf");
         paramq = paramq.getBuffer().toByteArray();
-        paramArrayOfByte = this.rr.auL();
+        paramArrayOfByte = this.rr.aBC();
         if (paramArrayOfByte == null)
         {
           paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncRequest");
           AppMethodBeat.o(118836);
           throw paramString;
         }
-        paramq = com.tencent.mm.protocal.ad.k(((czb)paramArrayOfByte).CRx.getBuffer().toByteArray(), paramq);
+        paramq = ad.k(((den)paramArrayOfByte).Eki.getBuffer().toByteArray(), paramq);
         if (paramq != null)
         {
           if (paramq.length != 0) {
@@ -542,15 +544,15 @@ public final class h
     {
       if (paramInt1 != 0)
       {
-        paramArrayOfByte = com.tencent.mm.kernel.g.afB();
+        paramArrayOfByte = com.tencent.mm.kernel.g.agR();
         d.g.b.k.g(paramArrayOfByte, "MMKernel.storage()");
-        paramArrayOfByte.afk().set(8195, bt.cy(paramq));
+        paramArrayOfByte.agA().set(8195, bs.cx(paramq));
       }
       paramq = this.callback;
       if (paramq == null) {
-        d.g.b.k.aPZ("callback");
+        d.g.b.k.aVY("callback");
       }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.al.n)this);
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.ak.n)this);
       AppMethodBeat.o(118836);
       return;
       paramInt1 = 0;
@@ -560,86 +562,83 @@ public final class h
   
   public final int securityLimitCount()
   {
-    return this.ygv;
+    return this.ztv;
   }
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.gVB;
+    return n.b.hwa;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$Companion;", "", "()V", "MM_STORY_SYNCCMD_COMMENT", "", "MM_STORY_SYNCCMD_COMMENT_DEL", "MM_STORY_SYNCCMD_POST", "MM_STORY_SYNCCMD_POST_DEL", "MM_STORY_SYNCCMD_VISIT", "TAG", "", "notifyList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/story/model/IOnStoryNotify;", "addNotifyListener", "", "listener", "removeNotifyListener", "plugin-story_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$RespHandler;", "", "(Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync;)V", "cmdList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/CmdItem;", "getCmdList", "()Ljava/util/LinkedList;", "setCmdList", "(Ljava/util/LinkedList;)V", "h", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getH", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setH", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "delaWithCmdList", "", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$RespHandler;", "", "(Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStorySync;)V", "cmdList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/CmdItem;", "getCmdList", "()Ljava/util/LinkedList;", "setCmdList", "(Ljava/util/LinkedList;)V", "h", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getH", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setH", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "delaWithCmdList", "", "plugin-story_release"})
   public final class b
   {
-    LinkedList<xd> pJl;
-    ap qaZ;
+    ao qJF;
+    LinkedList<xv> qrS;
     
     public b()
     {
       AppMethodBeat.i(118829);
-      this.qaZ = ((ap)new a(this));
+      this.qJF = ((ao)new a(this));
       AppMethodBeat.o(118829);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$RespHandler$h$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-story_release"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/model/cgi/NetSceneStorySync$RespHandler$h$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-story_release"})
     public static final class a
-      extends ap
+      extends ao
     {
       public final void handleMessage(final Message paramMessage)
       {
         AppMethodBeat.i(118828);
         d.g.b.k.h(paramMessage, "msg");
-        if (!com.tencent.mm.kernel.g.afz().aeI())
+        if (!com.tencent.mm.kernel.g.agP().afY())
         {
           AppMethodBeat.o(118828);
           return;
         }
-        if (this.ygz.pJl != null)
+        if (this.ztz.qrS != null)
         {
-          paramMessage = this.ygz.pJl;
+          paramMessage = this.ztz.qrS;
           if (paramMessage == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
           if (!paramMessage.isEmpty()) {}
         }
         else
         {
-          paramMessage = this.ygz.ygy;
-          localObject1 = paramMessage.rr.auM();
+          paramMessage = this.ztz.zty;
+          localObject1 = paramMessage.rr.aBD();
           if (localObject1 == null)
           {
             paramMessage = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncResponse");
             AppMethodBeat.o(118828);
             throw paramMessage;
           }
-          localObject1 = (czc)localObject1;
-          Object localObject2 = paramMessage.rr.auL();
+          localObject1 = (deo)localObject1;
+          Object localObject2 = paramMessage.rr.aBC();
           if (localObject2 == null)
           {
             paramMessage = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StorySyncRequest");
             AppMethodBeat.o(118828);
             throw paramMessage;
           }
-          localObject2 = (czb)localObject2;
-          byte[] arrayOfByte = ((czc)localObject1).CRx.getBuffer().toByteArray();
-          arrayOfByte = com.tencent.mm.protocal.ad.k(((czb)localObject2).CRx.getBuffer().toByteArray(), arrayOfByte);
+          localObject2 = (den)localObject2;
+          byte[] arrayOfByte = ((deo)localObject1).Eki.getBuffer().toByteArray();
+          arrayOfByte = ad.k(((den)localObject2).Eki.getBuffer().toByteArray(), arrayOfByte);
           if ((arrayOfByte != null) && (arrayOfByte.length > 0))
           {
-            com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.afB();
+            com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.agR();
             d.g.b.k.g(locale, "MMKernel.storage()");
-            locale.afk().set(8195, bt.cy(arrayOfByte));
+            locale.agA().set(8195, bs.cx(arrayOfByte));
           }
-          ((czb)localObject2).CRx.setBuffer(arrayOfByte);
-          if ((((czc)localObject1).CNq & ((czb)localObject2).CRw) == 0)
+          ((den)localObject2).Eki.setBuffer(arrayOfByte);
+          if ((((deo)localObject1).EfS & ((den)localObject2).Ekh) == 0)
           {
             localObject1 = paramMessage.callback;
             if (localObject1 == null) {
-              d.g.b.k.aPZ("callback");
+              d.g.b.k.aVY("callback");
             }
-            ((com.tencent.mm.al.g)localObject1).onSceneEnd(0, 0, "", (com.tencent.mm.al.n)paramMessage);
+            ((com.tencent.mm.ak.g)localObject1).onSceneEnd(0, 0, "", (com.tencent.mm.ak.n)paramMessage);
             AppMethodBeat.o(118828);
             return;
           }
@@ -647,24 +646,24 @@ public final class h
           d.g.b.k.g(localObject1, "dispatcher()");
           localObject2 = paramMessage.callback;
           if (localObject2 == null) {
-            d.g.b.k.aPZ("callback");
+            d.g.b.k.aVY("callback");
           }
-          paramMessage.doScene((com.tencent.mm.network.e)localObject1, (com.tencent.mm.al.g)localObject2);
+          paramMessage.doScene((com.tencent.mm.network.e)localObject1, (com.tencent.mm.ak.g)localObject2);
           AppMethodBeat.o(118828);
           return;
         }
-        paramMessage = this.ygz.pJl;
+        paramMessage = this.ztz.qrS;
         if (paramMessage == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        paramMessage = (xd)paramMessage.getFirst();
-        com.tencent.mm.sdk.platformtools.ad.d(h.access$getTAG$cp(), "cmdId = " + paramMessage.CYY);
-        Object localObject1 = this.ygz.pJl;
+        paramMessage = (xv)paramMessage.getFirst();
+        ac.d(h.access$getTAG$cp(), "cmdId = " + paramMessage.ErL);
+        Object localObject1 = this.ztz.qrS;
         if (localObject1 == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
         ((LinkedList)localObject1).removeFirst();
-        switch (paramMessage.CYY)
+        switch (paramMessage.ErL)
         {
         case 5: 
         case 6: 
@@ -673,116 +672,116 @@ public final class h
           AppMethodBeat.o(118828);
           return;
         case 1: 
-          localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
-          j.b.dhI().post((Runnable)new a(this, paramMessage));
+          localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
+          j.b.dvq().post((Runnable)new a(this, paramMessage));
           AppMethodBeat.o(118828);
           return;
         case 2: 
-          localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
-          j.b.dhI().post((Runnable)new b(this, paramMessage));
+          localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
+          j.b.dvq().post((Runnable)new b(this, paramMessage));
           AppMethodBeat.o(118828);
           return;
         case 3: 
-          localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
-          j.b.dhI().post((Runnable)new c(this, paramMessage));
+          localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
+          j.b.dvq().post((Runnable)new c(this, paramMessage));
           AppMethodBeat.o(118828);
           return;
         case 7: 
-          localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
-          j.b.dhI().post((Runnable)new d(this, paramMessage));
+          localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
+          j.b.dvq().post((Runnable)new d(this, paramMessage));
           AppMethodBeat.o(118828);
           return;
         }
-        localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
-        j.b.dhI().post((Runnable)new e(this, paramMessage));
+        localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
+        j.b.dvq().post((Runnable)new e(this, paramMessage));
         AppMethodBeat.o(118828);
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
       static final class a
         implements Runnable
       {
-        a(h.b.a parama, xd paramxd) {}
+        a(h.b.a parama, xv paramxv) {}
         
         public final void run()
         {
           AppMethodBeat.i(118823);
-          xd localxd = paramMessage;
-          d.g.b.k.g(localxd, "item");
-          if (!h.c(localxd, (ap)this.ygA)) {
-            this.ygA.sendEmptyMessage(0);
+          xv localxv = paramMessage;
+          d.g.b.k.g(localxv, "item");
+          if (!h.c(localxv, (ao)this.ztA)) {
+            this.ztA.sendEmptyMessage(0);
           }
           AppMethodBeat.o(118823);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
       static final class b
         implements Runnable
       {
-        b(h.b.a parama, xd paramxd) {}
+        b(h.b.a parama, xv paramxv) {}
         
         public final void run()
         {
           AppMethodBeat.i(118824);
-          xd localxd = paramMessage;
-          d.g.b.k.g(localxd, "item");
-          if (!h.d(localxd, (ap)this.ygA)) {
-            this.ygA.sendEmptyMessage(0);
+          xv localxv = paramMessage;
+          d.g.b.k.g(localxv, "item");
+          if (!h.d(localxv, (ao)this.ztA)) {
+            this.ztA.sendEmptyMessage(0);
           }
           AppMethodBeat.o(118824);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
       static final class c
         implements Runnable
       {
-        c(h.b.a parama, xd paramxd) {}
+        c(h.b.a parama, xv paramxv) {}
         
         public final void run()
         {
           AppMethodBeat.i(118825);
-          xd localxd = paramMessage;
-          d.g.b.k.g(localxd, "item");
-          if (!h.e(localxd, (ap)this.ygA)) {
-            this.ygA.sendEmptyMessage(0);
+          xv localxv = paramMessage;
+          d.g.b.k.g(localxv, "item");
+          if (!h.e(localxv, (ao)this.ztA)) {
+            this.ztA.sendEmptyMessage(0);
           }
           AppMethodBeat.o(118825);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
       static final class d
         implements Runnable
       {
-        d(h.b.a parama, xd paramxd) {}
+        d(h.b.a parama, xv paramxv) {}
         
         public final void run()
         {
           AppMethodBeat.i(118826);
-          xd localxd = paramMessage;
-          d.g.b.k.g(localxd, "item");
-          if (!h.f(localxd, (ap)this.ygA)) {
-            this.ygA.sendEmptyMessage(0);
+          xv localxv = paramMessage;
+          d.g.b.k.g(localxv, "item");
+          if (!h.f(localxv, (ao)this.ztA)) {
+            this.ztA.sendEmptyMessage(0);
           }
           AppMethodBeat.o(118826);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+      @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
       static final class e
         implements Runnable
       {
-        e(h.b.a parama, xd paramxd) {}
+        e(h.b.a parama, xv paramxv) {}
         
         public final void run()
         {
           AppMethodBeat.i(118827);
-          xd localxd = paramMessage;
-          d.g.b.k.g(localxd, "item");
-          if (!h.g(localxd, (ap)this.ygA)) {
-            this.ygA.sendEmptyMessage(0);
+          xv localxv = paramMessage;
+          d.g.b.k.g(localxv, "item");
+          if (!h.g(localxv, (ao)this.ztA)) {
+            this.ztA.sendEmptyMessage(0);
           }
           AppMethodBeat.o(118827);
         }
@@ -792,7 +791,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.a.h
  * JD-Core Version:    0.7.0.1
  */

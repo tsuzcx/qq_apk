@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class ar
 {
-  private static a iNc;
-  private static ICommLibReader iNd = null;
+  private static a jnk;
+  private static ICommLibReader jnl = null;
   
   public static void a(a parama)
   {
-    iNc = parama;
+    jnk = parama;
   }
   
-  public static ICommLibReader aPR()
+  public static ICommLibReader aWJ()
   {
     AppMethodBeat.i(184407);
     try
     {
-      ICommLibReader localICommLibReader = iNd;
-      ad.i("MicroMsg.AppBrand.WxaCommLibPreloadSessionInMM", "getCurrentAcceptedCommLibReader [%s], stacktrace=%s", new Object[] { localICommLibReader, Log.getStackTraceString(new Throwable()) });
+      ICommLibReader localICommLibReader = jnl;
+      ac.i("MicroMsg.AppBrand.WxaCommLibPreloadSessionInMM", "getCurrentAcceptedCommLibReader [%s], stacktrace=%s", new Object[] { localICommLibReader, Log.getStackTraceString(new Throwable()) });
       AppMethodBeat.o(184407);
       return localICommLibReader;
     }
@@ -36,9 +36,9 @@ public final class ar
     AppMethodBeat.i(90567);
     try
     {
-      iNd = paramICommLibReader;
-      if (iNc != null) {
-        iNc.b(paramICommLibReader);
+      jnl = paramICommLibReader;
+      if (jnk != null) {
+        jnk.b(paramICommLibReader);
       }
       AppMethodBeat.o(90567);
       return;
@@ -56,7 +56,7 @@ public final class ar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kq;
+import com.tencent.mm.g.a.kz;
 import com.tencent.mm.sdk.b.c;
 
 final class LoginHistoryUI$1
-  extends c<kq>
+  extends c<kz>
 {
   LoginHistoryUI$1(LoginHistoryUI paramLoginHistoryUI)
   {
     AppMethodBeat.i(161701);
-    this.__eventId = kq.class.getName().hashCode();
+    this.__eventId = kz.class.getName().hashCode();
     AppMethodBeat.o(161701);
   }
 }

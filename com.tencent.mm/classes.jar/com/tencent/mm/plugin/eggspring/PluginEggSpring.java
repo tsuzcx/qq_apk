@@ -6,7 +6,7 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.eggspring.a.a;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.n.n;
@@ -17,23 +17,23 @@ public class PluginEggSpring
   extends f
   implements c, a
 {
-  public static final String orA;
-  private static final String orx;
-  public static final String ory;
-  public static final String orz;
+  private static final String oUX;
+  public static final String oUY;
+  public static final String oUZ;
+  public static final String oVa;
   
   static
   {
     AppMethodBeat.i(108141);
-    orx = com.tencent.mm.loader.j.b.aiY();
+    oUX = com.tencent.mm.loader.j.b.apY();
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = com.tencent.mm.plugin.eggspring.b.b.orX;
+    Object localObject = com.tencent.mm.plugin.eggspring.b.b.oVx;
     localObject = new StringBuilder();
-    String str = com.tencent.mm.loader.j.b.aia();
+    String str = com.tencent.mm.loader.j.b.apa();
     k.g(str, "CConstants.DATAROOT_PUBLIC_PATH()");
-    ory = ((StringBuilder)localObject).append(n.h(str, "/data/user/0", "/data/data", false)).append("/emoji/").toString() + "egg_spring/";
-    orz = ory + "loading_lucky_bag";
-    orA = ory + "lucky_bag";
+    oUY = ((StringBuilder)localObject).append(n.h(str, "/data/user/0", "/data/data", false)).append("/emoji/").toString() + "egg_spring/";
+    oUZ = oUY + "loading_lucky_bag";
+    oVa = oUY + "lucky_bag";
     AppMethodBeat.o(108141);
   }
   
@@ -47,7 +47,7 @@ public class PluginEggSpring
     //   4: istore_3
     //   5: ldc 104
     //   7: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 110	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   10: invokestatic 110	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   13: invokevirtual 116	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   16: astore 5
     //   18: aload 5
@@ -72,11 +72,11 @@ public class PluginEggSpring
     //   58: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: return
     //   62: aload_1
-    //   63: invokevirtual 140	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   63: invokevirtual 140	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
     //   66: invokevirtual 143	com/tencent/mm/vfs/e:mkdirs	()Z
     //   69: pop
     //   70: aload_1
-    //   71: invokestatic 149	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   71: invokestatic 149	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   74: astore 8
     //   76: aload_0
     //   77: aload 7
@@ -104,7 +104,7 @@ public class PluginEggSpring
     //   120: iload 4
     //   122: invokestatic 172	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   125: aastore
-    //   126: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload 7
     //   131: ifnull +179 -> 310
     //   134: aload 7
@@ -118,7 +118,7 @@ public class PluginEggSpring
     //   149: ldc 179
     //   151: iconst_0
     //   152: anewarray 166	java/lang/Object
-    //   155: invokestatic 183	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   155: invokestatic 183	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   158: ldc 104
     //   160: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: return
@@ -128,7 +128,7 @@ public class PluginEggSpring
     //   168: ldc 185
     //   170: iconst_0
     //   171: anewarray 166	java/lang/Object
-    //   174: invokestatic 183	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: invokestatic 183	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   177: iconst_0
     //   178: istore_3
     //   179: goto -95 -> 84
@@ -154,7 +154,7 @@ public class PluginEggSpring
     //   219: ldc 187
     //   221: iconst_0
     //   222: anewarray 166	java/lang/Object
-    //   225: invokestatic 183	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   225: invokestatic 183	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   228: iconst_0
     //   229: istore 4
     //   231: goto -131 -> 100
@@ -281,32 +281,32 @@ public class PluginEggSpring
   private void initDir()
   {
     AppMethodBeat.i(108137);
-    copyAsset("loading_lucky_bag", orz);
-    copyAsset("lucky_bag", orA);
+    copyAsset("loading_lucky_bag", oUZ);
+    copyAsset("lucky_bag", oVa);
     AppMethodBeat.o(108137);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(108139);
-    ad.i("MicroMsg.PluginEggSpring", "execute");
+    ac.i("MicroMsg.PluginEggSpring", "execute");
     AppMethodBeat.o(108139);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(108135);
-    ad.i("MicroMsg.PluginEggSpring", "onAccountInitialized");
+    ac.i("MicroMsg.PluginEggSpring", "onAccountInitialized");
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(108134);
-        if (1 == ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pwd, 0))
+        if (1 == ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qar, 0))
         {
-          ad.i("MicroMsg.PluginEggSpring", "clear useless media.");
-          i.cO(PluginEggSpring.orx, true);
-          i.cO(PluginEggSpring.ory, true);
+          ac.i("MicroMsg.PluginEggSpring", "clear useless media.");
+          i.cU(PluginEggSpring.oUX, true);
+          i.cU(PluginEggSpring.oUY, true);
           AppMethodBeat.o(108134);
           return;
         }
@@ -320,13 +320,13 @@ public class PluginEggSpring
   public void onAccountRelease()
   {
     AppMethodBeat.i(108136);
-    ad.i("MicroMsg.PluginEggSpring", "onAccountRelease");
+    ac.i("MicroMsg.PluginEggSpring", "onAccountRelease");
     AppMethodBeat.o(108136);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.PluginEggSpring
  * JD-Core Version:    0.7.0.1
  */

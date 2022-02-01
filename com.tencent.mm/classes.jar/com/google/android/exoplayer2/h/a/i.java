@@ -6,7 +6,7 @@ import java.util.TreeSet;
 
 final class i
 {
-  final TreeSet<m> byg;
+  final TreeSet<m> bvP;
   public final int id;
   public final String key;
   long length;
@@ -17,7 +17,7 @@ final class i
     this.id = paramInt;
     this.key = paramString;
     this.length = paramLong;
-    this.byg = new TreeSet();
+    this.bvP = new TreeSet();
     AppMethodBeat.o(92977);
   }
   
@@ -31,33 +31,33 @@ final class i
   public final void a(m paramm)
   {
     AppMethodBeat.i(92978);
-    this.byg.add(paramm);
+    this.bvP.add(paramm);
     AppMethodBeat.o(92978);
   }
   
-  public final m aq(long paramLong)
+  public final m am(long paramLong)
   {
     AppMethodBeat.i(92979);
     m localm1 = m.j(this.key, paramLong);
-    m localm2 = (m)this.byg.floor(localm1);
+    m localm2 = (m)this.bvP.floor(localm1);
     if ((localm2 != null) && (localm2.position + localm2.length > paramLong))
     {
       AppMethodBeat.o(92979);
       return localm2;
     }
-    localm1 = (m)this.byg.ceiling(localm1);
+    localm1 = (m)this.bvP.ceiling(localm1);
     if (localm1 == null)
     {
       localm1 = m.k(this.key, paramLong);
       AppMethodBeat.o(92979);
       return localm1;
     }
-    localm1 = m.h(this.key, paramLong, localm1.position - paramLong);
+    localm1 = m.g(this.key, paramLong, localm1.position - paramLong);
     AppMethodBeat.o(92979);
     return localm1;
   }
   
-  public final int vx()
+  public final int vo()
   {
     AppMethodBeat.i(92980);
     int i = this.id;

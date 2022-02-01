@@ -15,19 +15,19 @@ final class LuckyMoneyF2FQRCodeUI$13
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(65078);
-    paramView = new Intent(this.tbO, LuckyMoneyBeforeDetailUI.class);
-    paramView.putExtra("key_sendid", LuckyMoneyF2FQRCodeUI.v(this.tbO));
-    paramAdapterView = this.tbO;
-    paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.a(paramAdapterView, paramView.adn(), "com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FQRCodeUI$7", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramAdapterView.startActivity((Intent)paramView.lS(0));
+    paramView = new Intent(this.ukd, LuckyMoneyBeforeDetailUI.class);
+    paramView.putExtra("key_sendid", LuckyMoneyF2FQRCodeUI.v(this.ukd));
+    paramAdapterView = this.ukd;
+    paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
+    com.tencent.mm.hellhoundlib.a.a.a(paramAdapterView, paramView.aeD(), "com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FQRCodeUI$7", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramAdapterView.startActivity((Intent)paramView.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramAdapterView, "com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FQRCodeUI$7", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(65078);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FQRCodeUI.13
  * JD-Core Version:    0.7.0.1
  */

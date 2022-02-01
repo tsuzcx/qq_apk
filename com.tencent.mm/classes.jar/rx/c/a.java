@@ -13,16 +13,34 @@ import rx.i;
 public final class a<T>
   extends i<T>
 {
-  private final i<? super T> Kpc;
+  private final i<? super T> McL;
   boolean done;
   
   public a(i<? super T> parami)
   {
     super(parami);
-    this.Kpc = parami;
+    this.McL = parami;
   }
   
-  public final void fNs()
+  public final void gd(T paramT)
+  {
+    AppMethodBeat.i(90434);
+    try
+    {
+      if (!this.done) {
+        this.McL.gd(paramT);
+      }
+      AppMethodBeat.o(90434);
+      return;
+    }
+    catch (Throwable paramT)
+    {
+      b.a(paramT, this);
+      AppMethodBeat.o(90434);
+    }
+  }
+  
+  public final void ggi()
   {
     AppMethodBeat.i(90432);
     if (!this.done)
@@ -30,10 +48,10 @@ public final class a<T>
       this.done = true;
       try
       {
-        this.Kpc.fNs();
+        this.McL.ggi();
         try
         {
-          fNw();
+          ggm();
           AppMethodBeat.o(90432);
           return;
         }
@@ -50,7 +68,7 @@ public final class a<T>
       }
       catch (Throwable localThrowable2)
       {
-        b.I(localThrowable2);
+        b.J(localThrowable2);
         c.onError(localThrowable2);
         locald = new d(localThrowable2.getMessage(), localThrowable2);
         AppMethodBeat.o(90432);
@@ -60,7 +78,7 @@ public final class a<T>
       {
         try
         {
-          fNw();
+          ggm();
           AppMethodBeat.o(90432);
           throw localObject;
         }
@@ -75,42 +93,24 @@ public final class a<T>
     }
   }
   
-  public final void fV(T paramT)
-  {
-    AppMethodBeat.i(90434);
-    try
-    {
-      if (!this.done) {
-        this.Kpc.fV(paramT);
-      }
-      AppMethodBeat.o(90434);
-      return;
-    }
-    catch (Throwable paramT)
-    {
-      b.a(paramT, this);
-      AppMethodBeat.o(90434);
-    }
-  }
-  
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90433);
-    b.I(paramThrowable);
+    b.J(paramThrowable);
     if (!this.done)
     {
       this.done = true;
       c.onError(paramThrowable);
       try
       {
-        this.Kpc.onError(paramThrowable);
+        this.McL.onError(paramThrowable);
         AppMethodBeat.o(90433);
       }
       catch (f localf)
       {
         try
         {
-          fNw();
+          ggm();
           AppMethodBeat.o(90433);
           return;
         }
@@ -124,7 +124,7 @@ public final class a<T>
         localf = localf;
         try
         {
-          fNw();
+          ggm();
           AppMethodBeat.o(90433);
           throw localf;
         }
@@ -141,7 +141,7 @@ public final class a<T>
         c.onError(localThrowable2);
         try
         {
-          fNw();
+          ggm();
           paramThrowable = new e("Error occurred when trying to propagate error to Observer.onError", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable2 }), (byte)0));
           AppMethodBeat.o(90433);
           throw paramThrowable;
@@ -159,7 +159,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.c.a
  * JD-Core Version:    0.7.0.1
  */

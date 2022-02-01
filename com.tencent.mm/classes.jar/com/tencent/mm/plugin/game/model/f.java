@@ -2,28 +2,29 @@ package com.tencent.mm.plugin.game.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.g.a.hp;
-import com.tencent.mm.g.a.hp.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.a.c.d;
+import com.tencent.mm.av.o;
+import com.tencent.mm.g.a.hw;
+import com.tencent.mm.g.a.hw.a;
 import com.tencent.mm.plugin.game.commlib.e.b.a;
 import com.tencent.mm.plugin.game.ui.GameRegionPreference.a;
-import com.tencent.mm.plugin.recordvideo.background.d.b;
+import com.tencent.mm.plugin.recordvideo.background.e.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKImageItem;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem;
 import com.tencent.mm.plugin.webview.model.an;
-import com.tencent.mm.protocal.protobuf.aer;
-import com.tencent.mm.protocal.protobuf.bfe;
-import com.tencent.mm.protocal.protobuf.bpp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.afq;
+import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -33,20 +34,20 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static final String rVs;
+  private static final String tdk;
   
   static
   {
     AppMethodBeat.i(41406);
-    rVs = com.tencent.mm.plugin.game.commlib.e.b.b(b.a.rOH) + "hvmenu/";
+    tdk = com.tencent.mm.plugin.game.commlib.e.b.b(b.a.sWx) + "hvmenu/";
     AppMethodBeat.o(41406);
   }
   
-  public static void a(hp paramhp)
+  public static void a(hw paramhw)
   {
     AppMethodBeat.i(41401);
-    int i = paramhp.dll.BX;
-    ad.i("MicroMsg.GameCommOpertionProcessor", "cmd:%d", new Object[] { Integer.valueOf(i) });
+    int i = paramhw.diU.CW;
+    ac.i("MicroMsg.GameCommOpertionProcessor", "cmd:%d", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
     }
@@ -54,105 +55,105 @@ public final class f
     {
       AppMethodBeat.o(41401);
       return;
-      Object localObject2 = paramhp.dll.context;
+      Object localObject2 = paramhw.diU.context;
       Object localObject1;
       if (localObject2 != null)
       {
         localObject1 = new JSONObject();
-        localObject2 = e.eW((Context)localObject2);
+        localObject2 = e.fj((Context)localObject2);
         if (localObject2 == null) {}
       }
       try
       {
         ((JSONObject)localObject1).put("gameRegionName", e.a((GameRegionPreference.a)localObject2));
         label178:
-        paramhp.dlm.result = ((JSONObject)localObject1).toString();
+        paramhw.diV.result = ((JSONObject)localObject1).toString();
         AppMethodBeat.o(41401);
         return;
-        paramhp = paramhp.dll.dln;
-        ad.i("MicroMsg.GameCommOpertionProcessor", "update hv menu! appid:%s", new Object[] { paramhp });
-        if (!bt.isNullOrNil(paramhp))
+        paramhw = paramhw.diU.param;
+        ac.i("MicroMsg.GameCommOpertionProcessor", "update hv menu! appid:%s", new Object[] { paramhw });
+        if (!bs.isNullOrNil(paramhw))
         {
-          com.tencent.mm.kernel.g.aeS().a(1369, new com.tencent.mm.al.g()
+          com.tencent.mm.kernel.g.agi().a(1369, new com.tencent.mm.ak.g()
           {
             public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
             {
               AppMethodBeat.i(41398);
               if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
               {
-                ad.i("MicroMsg.GameCommOpertionProcessor", "pull menu data success. appid:%s", new Object[] { this.iHZ });
-                com.tencent.mm.kernel.g.aeS().b(1369, this);
-                aq.f(new Runnable()
+                ac.i("MicroMsg.GameCommOpertionProcessor", "pull menu data success. appid:%s", new Object[] { this.jib });
+                com.tencent.mm.kernel.g.agi().b(1369, this);
+                ap.f(new Runnable()
                 {
                   public final void run()
                   {
                     AppMethodBeat.i(41397);
-                    f.a(this.rVt, f.1.this.iHZ);
+                    f.a(this.tdl, f.1.this.jib);
                     AppMethodBeat.o(41397);
                   }
                 });
                 AppMethodBeat.o(41398);
                 return;
               }
-              ad.i("MicroMsg.GameCommOpertionProcessor", "pull menu data fail. appid:%s", new Object[] { this.iHZ });
+              ac.i("MicroMsg.GameCommOpertionProcessor", "pull menu data fail. appid:%s", new Object[] { this.jib });
               AppMethodBeat.o(41398);
             }
           });
-          paramhp = new as(paramhp);
-          com.tencent.mm.kernel.g.aeS().a(paramhp, 0);
+          paramhw = new as(paramhw);
+          com.tencent.mm.kernel.g.agi().a(paramhw, 0);
         }
         AppMethodBeat.o(41401);
         return;
-        localObject1 = paramhp.dll.dln;
-        ad.i("MicroMsg.GameCommOpertionProcessor", "get hv menu! appid:%s", new Object[] { localObject1 });
-        if (!bt.isNullOrNil((String)localObject1))
+        localObject1 = paramhw.diU.param;
+        ac.i("MicroMsg.GameCommOpertionProcessor", "get hv menu! appid:%s", new Object[] { localObject1 });
+        if (!bs.isNullOrNil((String)localObject1))
         {
-          localObject2 = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBe().abW("pb_game_hv_menu_".concat(String.valueOf(localObject1)));
-          if (!bt.cw((byte[])localObject2)) {
+          localObject2 = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOn().agO("pb_game_hv_menu_".concat(String.valueOf(localObject1)));
+          if (!bs.cv((byte[])localObject2)) {
             try
             {
               localObject2 = new String((byte[])localObject2, "ISO-8859-1");
-              paramhp.dlm.result = ((String)localObject2);
-              ad.i("MicroMsg.GameCommOpertionProcessor", "get hv menu success! appid:%s", new Object[] { localObject1 });
+              paramhw.diV.result = ((String)localObject2);
+              ac.i("MicroMsg.GameCommOpertionProcessor", "get hv menu success! appid:%s", new Object[] { localObject1 });
               AppMethodBeat.o(41401);
               return;
             }
-            catch (UnsupportedEncodingException paramhp) {}
+            catch (UnsupportedEncodingException paramhw) {}
           }
         }
         AppMethodBeat.o(41401);
         return;
-        b(paramhp);
+        b(paramhw);
         AppMethodBeat.o(41401);
         return;
-        localObject1 = paramhp.dll.context;
+        localObject1 = paramhw.diU.context;
         Object localObject3;
         if (localObject1 != null)
         {
           localObject3 = new JSONObject();
-          localObject2 = e.fe((Context)localObject1);
+          localObject2 = e.fr((Context)localObject1);
           localObject1 = localObject2;
-          if (bt.isNullOrNil((String)localObject2)) {
-            localObject1 = e.cCM();
+          if (bs.isNullOrNil((String)localObject2)) {
+            localObject1 = e.cPW();
           }
         }
         try
         {
           ((JSONObject)localObject3).put("regionCode", localObject1);
           label434:
-          paramhp.dlm.result = ((JSONObject)localObject3).toString();
+          paramhw.diV.result = ((JSONObject)localObject3).toString();
           AppMethodBeat.o(41401);
           return;
-          com.tencent.mm.plugin.game.commlib.b.cBq().lL(true);
+          com.tencent.mm.plugin.game.commlib.b.cOz().mE(true);
           AppMethodBeat.o(41401);
           return;
           localObject3 = new com.tencent.mm.plugin.game.media.a();
-          if (!bt.isNullOrNil(paramhp.dll.dln)) {
+          if (!bs.isNullOrNil(paramhw.diU.param)) {
             localObject1 = null;
           }
           try
           {
-            localObject2 = new JSONObject(paramhp.dll.dln).optJSONArray("albumInfos");
+            localObject2 = new JSONObject(paramhw.diU.param).optJSONArray("albumInfos");
             localObject1 = localObject2;
           }
           catch (JSONException localJSONException3)
@@ -161,29 +162,29 @@ public final class f
             break label511;
           }
           ((com.tencent.mm.plugin.game.media.a)localObject3).v((JSONArray)localObject1);
-          localObject2 = ((com.tencent.mm.plugin.game.media.a)localObject3).cBU();
+          localObject2 = ((com.tencent.mm.plugin.game.media.a)localObject3).cPf();
           localObject1 = new JSONObject();
           try
           {
             ((JSONObject)localObject1).put("newVideoDesc", localObject2);
             label539:
-            paramhp.dlm.result = ((JSONObject)localObject1).toString();
+            paramhw.diV.result = ((JSONObject)localObject1).toString();
             AppMethodBeat.o(41401);
             return;
-            if (!bt.isNullOrNil(paramhp.dll.dln))
+            if (!bs.isNullOrNil(paramhw.diU.param))
             {
               try
               {
-                paramhp = new JSONObject(paramhp.dll.dln);
-                i = paramhp.optInt("basic_type");
-                if (!paramhp.optBoolean("ban")) {
+                paramhw = new JSONObject(paramhw.diU.param);
+                i = paramhw.optInt("basic_type");
+                if (!paramhw.optBoolean("ban")) {
                   break label617;
                 }
-                e.Ew(i);
+                e.Gs(i);
                 AppMethodBeat.o(41401);
                 return;
               }
-              catch (JSONException paramhp) {}
+              catch (JSONException paramhw) {}
             }
             else
             {
@@ -191,16 +192,16 @@ public final class f
               return;
             }
             label617:
-            e.Ex(i);
+            e.Gt(i);
             AppMethodBeat.o(41401);
             return;
-            c(paramhp);
+            c(paramhw);
             AppMethodBeat.o(41401);
             return;
-            d(paramhp);
+            d(paramhw);
             AppMethodBeat.o(41401);
             return;
-            e(paramhp);
+            e(paramhw);
           }
           catch (JSONException localJSONException2)
           {
@@ -219,10 +220,10 @@ public final class f
     }
   }
   
-  private static void a(final List<bpp> paramList, final a parama)
+  private static void a(final List<bug> paramList, final a parama)
   {
     AppMethodBeat.i(41402);
-    if (bt.gL(paramList))
+    if (bs.gY(paramList))
     {
       if (parama != null) {
         parama.onComplete();
@@ -230,26 +231,26 @@ public final class f
       AppMethodBeat.o(41402);
       return;
     }
-    bpp localbpp = (bpp)paramList.remove(0);
-    if ((localbpp == null) || (bt.isNullOrNil(localbpp.ThumbUrl)))
+    bug localbug = (bug)paramList.remove(0);
+    if ((localbug == null) || (bs.isNullOrNil(localbug.ThumbUrl)))
     {
-      ad.e("MicroMsg.GameCommOpertionProcessor", "menu is null or thumburl is null");
+      ac.e("MicroMsg.GameCommOpertionProcessor", "menu is null or thumburl is null");
       AppMethodBeat.o(41402);
       return;
     }
-    Object localObject = rVs + com.tencent.mm.b.g.getMessageDigest(localbpp.ThumbUrl.getBytes());
+    Object localObject = tdk + com.tencent.mm.b.g.getMessageDigest(localbug.ThumbUrl.getBytes());
     c.a locala = new c.a();
-    locala.hjU = true;
-    locala.gjt = ((String)localObject);
-    localObject = locala.azc();
-    o.ayJ().a(localbpp.ThumbUrl, (c)localObject, new com.tencent.mm.aw.a.c.d()
+    locala.hKx = true;
+    locala.gKe = ((String)localObject);
+    localObject = locala.aFT();
+    o.aFB().a(localbug.ThumbUrl, (c)localObject, new d()
     {
-      public final void en(boolean paramAnonymousVarArgs)
+      public final void eI(boolean paramAnonymousVarArgs)
       {
         AppMethodBeat.i(41400);
         if (paramAnonymousVarArgs)
         {
-          ad.i("MicroMsg.GameCommOpertionProcessor", "menu icon download success! thumburl:%s", new Object[] { this.rVv.ThumbUrl });
+          ac.i("MicroMsg.GameCommOpertionProcessor", "menu icon download success! thumburl:%s", new Object[] { this.tdn.ThumbUrl });
           f.b(paramList, parama);
         }
         AppMethodBeat.o(41400);
@@ -258,7 +259,7 @@ public final class f
     AppMethodBeat.o(41402);
   }
   
-  private static WebViewJSSDKFileItem acy(String paramString)
+  private static WebViewJSSDKFileItem ahq(String paramString)
   {
     AppMethodBeat.i(183857);
     for (;;)
@@ -292,11 +293,11 @@ public final class f
     return null;
   }
   
-  private static void b(hp paramhp)
+  private static void b(hw paramhw)
   {
     AppMethodBeat.i(41403);
-    paramhp = paramhp.dll.dln;
-    if (bt.isNullOrNil(paramhp))
+    paramhw = paramhw.diU.param;
+    if (bs.isNullOrNil(paramhw))
     {
       AppMethodBeat.o(41403);
       return;
@@ -306,61 +307,61 @@ public final class f
     boolean bool;
     try
     {
-      localObject = new JSONObject(paramhp);
-      j = bt.getInt(((JSONObject)localObject).getString("game_page_report_id"), 0);
+      localObject = new JSONObject(paramhw);
+      j = bs.getInt(((JSONObject)localObject).getString("game_page_report_id"), 0);
       bool = ((JSONObject)localObject).getBoolean("game_page_report_instantly");
-      paramhp = ((JSONObject)localObject).optString("game_page_report_format_data");
+      paramhw = ((JSONObject)localObject).optString("game_page_report_format_data");
       localObject = ((JSONObject)localObject).optString("game_page_report_tabs_format_data");
-      ad.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, reportId:%d, reportInstantly:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), paramhp, localObject });
+      ac.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, reportId:%d, reportInstantly:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), paramhw, localObject });
       if (j == 0)
       {
-        ad.i("MicroMsg.GameCommOpertionProcessor", "reportId format exception");
+        ac.i("MicroMsg.GameCommOpertionProcessor", "reportId format exception");
         AppMethodBeat.o(41403);
         return;
       }
     }
-    catch (JSONException paramhp)
+    catch (JSONException paramhw)
     {
-      ad.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, err1:%s", new Object[] { paramhp.getMessage() });
+      ac.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, err1:%s", new Object[] { paramhw.getMessage() });
       AppMethodBeat.o(41403);
       return;
     }
-    if (!bt.isNullOrNil(paramhp))
+    if (!bs.isNullOrNil(paramhw))
     {
       if (bool)
       {
-        com.tencent.mm.plugin.game.e.a.bg(j, paramhp);
+        com.tencent.mm.plugin.game.e.a.bl(j, paramhw);
         AppMethodBeat.o(41403);
         return;
       }
-      h.vKh.kvStat(j, paramhp);
+      h.wUl.kvStat(j, paramhw);
       AppMethodBeat.o(41403);
       return;
     }
-    if (!bt.isNullOrNil((String)localObject)) {}
+    if (!bs.isNullOrNil((String)localObject)) {}
     for (;;)
     {
       int i;
       try
       {
-        paramhp = new JSONArray((String)localObject);
+        paramhw = new JSONArray((String)localObject);
         i = 0;
-        if (i >= paramhp.length()) {
+        if (i >= paramhw.length()) {
           break label293;
         }
-        localObject = paramhp.getString(i);
-        if (bt.isNullOrNil((String)localObject)) {
+        localObject = paramhw.getString(i);
+        if (bs.isNullOrNil((String)localObject)) {
           break label300;
         }
         if (bool) {
-          com.tencent.mm.plugin.game.e.a.bg(j, (String)localObject);
+          com.tencent.mm.plugin.game.e.a.bl(j, (String)localObject);
         } else {
-          h.vKh.kvStat(j, (String)localObject);
+          h.wUl.kvStat(j, (String)localObject);
         }
       }
-      catch (JSONException paramhp)
+      catch (JSONException paramhw)
       {
-        ad.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, err2:%s", new Object[] { paramhp.getMessage() });
+        ac.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, err2:%s", new Object[] { paramhw.getMessage() });
       }
       AppMethodBeat.o(41403);
       return;
@@ -372,12 +373,12 @@ public final class f
     }
   }
   
-  private static void c(hp paramhp)
+  private static void c(hw paramhw)
   {
     AppMethodBeat.i(183854);
-    Object localObject1 = e.cCY();
+    Object localObject1 = e.cQi();
     Object localObject2;
-    if (!bt.isNullOrNil((String)localObject1))
+    if (!bs.isNullOrNil((String)localObject1))
     {
       localObject2 = ((String)localObject1).split(",");
       localObject1 = new JSONArray();
@@ -386,7 +387,7 @@ public final class f
       while (i < j)
       {
         String str = localObject2[i];
-        if (!bt.isNullOrNil(str)) {
+        if (!bs.isNullOrNil(str)) {
           ((JSONArray)localObject1).put(Integer.valueOf(str));
         }
         i += 1;
@@ -397,7 +398,7 @@ public final class f
     {
       ((JSONObject)localObject2).put("basic_type", localObject1);
       label94:
-      paramhp.dlm.result = ((JSONObject)localObject2).toString();
+      paramhw.diV.result = ((JSONObject)localObject2).toString();
       AppMethodBeat.o(183854);
       return;
     }
@@ -407,12 +408,12 @@ public final class f
     }
   }
   
-  private static void d(hp paramhp)
+  private static void d(hw paramhw)
   {
     AppMethodBeat.i(183855);
     JSONArray localJSONArray1 = new JSONArray();
-    if (!bt.isNullOrNil(paramhp.dll.dln)) {
-      ad.i("MicroMsg.GameCommOpertionProcessor", "saveMediaLocalIds params:%s", new Object[] { paramhp.dll.dln });
+    if (!bs.isNullOrNil(paramhw.diU.param)) {
+      ac.i("MicroMsg.GameCommOpertionProcessor", "saveMediaLocalIds params:%s", new Object[] { paramhw.diU.param });
     }
     for (;;)
     {
@@ -420,12 +421,12 @@ public final class f
       WebViewJSSDKFileItem localWebViewJSSDKFileItem;
       try
       {
-        JSONArray localJSONArray2 = new JSONArray(paramhp.dll.dln);
+        JSONArray localJSONArray2 = new JSONArray(paramhw.diU.param);
         i = 0;
         if (i < localJSONArray2.length())
         {
           String str2 = localJSONArray2.getString(i);
-          localWebViewJSSDKFileItem = com.tencent.mm.plugin.webview.modeltools.g.emF().awC(str2);
+          localWebViewJSSDKFileItem = com.tencent.mm.plugin.webview.modeltools.g.eCa().aBU(str2);
           if (localWebViewJSSDKFileItem == null)
           {
             localJSONArray1.put(false);
@@ -435,11 +436,11 @@ public final class f
             String str1 = null;
             if (localWebViewJSSDKFileItem.mediaType == 1)
             {
-              str1 = ((WebViewJSSDKImageItem)localWebViewJSSDKFileItem).fZv().toString();
-              if (bt.isNullOrNil(str1)) {
+              str1 = ((WebViewJSSDKImageItem)localWebViewJSSDKFileItem).fcF().toString();
+              if (bs.isNullOrNil(str1)) {
                 break label261;
               }
-              ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).abX(str2);
+              ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).agP(str2);
               ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).p(str2, str1.getBytes());
               localJSONArray1.put(true);
             }
@@ -453,14 +454,14 @@ public final class f
         ((JSONObject)localObject).put("result", localJSONArray1);
         label201:
         localObject = ((JSONObject)localObject).toString();
-        ad.i("MicroMsg.GameCommOpertionProcessor", "saveMediaLocalIds result:%s", new Object[] { localObject });
-        paramhp.dlm.result = ((String)localObject);
+        ac.i("MicroMsg.GameCommOpertionProcessor", "saveMediaLocalIds result:%s", new Object[] { localObject });
+        paramhw.diV.result = ((String)localObject);
         AppMethodBeat.o(183855);
         return;
         if (localWebViewJSSDKFileItem.mediaType != 4) {
           continue;
         }
-        localObject = ((WebViewJSSDKVideoItem)localWebViewJSSDKFileItem).fZv().toString();
+        localObject = ((WebViewJSSDKVideoItem)localWebViewJSSDKFileItem).fcF().toString();
         continue;
         label261:
         localJSONArray1.put(false);
@@ -473,7 +474,7 @@ public final class f
     }
   }
   
-  private static void e(hp paramhp)
+  private static void e(hw paramhw)
   {
     AppMethodBeat.i(183856);
     Object localObject1 = new JSONArray();
@@ -481,34 +482,34 @@ public final class f
     Object localObject2;
     int j;
     JSONObject localJSONObject;
-    if (!bt.isNullOrNil(paramhp.dll.dln))
+    if (!bs.isNullOrNil(paramhw.diU.param))
     {
-      ad.i("MicroMsg.GameCommOpertionProcessor", "checkMediaLocalIds params:%s", new Object[] { paramhp.dll.dln });
+      ac.i("MicroMsg.GameCommOpertionProcessor", "checkMediaLocalIds params:%s", new Object[] { paramhw.diU.param });
       try
       {
-        JSONArray localJSONArray = new JSONArray(paramhp.dll.dln);
+        JSONArray localJSONArray = new JSONArray(paramhw.diU.param);
         i = 0;
         if (i < localJSONArray.length())
         {
           localObject2 = localJSONArray.getString(i);
-          Object localObject3 = com.tencent.mm.plugin.webview.modeltools.g.emF().awC((String)localObject2);
-          if ((localObject3 != null) && (i.eK(((WebViewJSSDKFileItem)localObject3).jau)) && ((bt.isNullOrNil(((WebViewJSSDKFileItem)localObject3).jMa)) || (i.eK(((WebViewJSSDKFileItem)localObject3).jMa))))
+          Object localObject3 = com.tencent.mm.plugin.webview.modeltools.g.eCa().aBU((String)localObject2);
+          if ((localObject3 != null) && (i.eA(((WebViewJSSDKFileItem)localObject3).jAH)) && ((bs.isNullOrNil(((WebViewJSSDKFileItem)localObject3).kmB)) || (i.eA(((WebViewJSSDKFileItem)localObject3).kmB))))
           {
             ((JSONArray)localObject1).put(true);
           }
           else if (((String)localObject2).startsWith("weixin://bgmixid/"))
           {
             localObject2 = ((String)localObject2).replace("weixin://bgmixid/", "");
-            localObject3 = com.tencent.mm.plugin.recordvideo.background.f.vdH;
-            localObject2 = com.tencent.mm.plugin.recordvideo.background.f.alz((String)localObject2);
+            localObject3 = com.tencent.mm.plugin.recordvideo.background.g.wmx;
+            localObject2 = com.tencent.mm.plugin.recordvideo.background.g.aqy((String)localObject2);
             if (localObject2 != null)
             {
-              j = ((com.tencent.mm.plugin.recordvideo.background.d)localObject2).field_status;
-              localObject3 = d.b.vdD;
-              if (j == d.b.blq())
+              j = ((com.tencent.mm.plugin.recordvideo.background.e)localObject2).field_status;
+              localObject3 = e.b.wmt;
+              if (j == e.b.bsf())
               {
-                localObject2 = ((com.tencent.mm.plugin.recordvideo.background.d)localObject2).dgC();
-                if ((localObject2 == null) || (!i.eK(((aer)localObject2).vhU)) || (!i.eK(((aer)localObject2).DeV))) {
+                localObject2 = ((com.tencent.mm.plugin.recordvideo.background.e)localObject2).duk();
+                if ((localObject2 == null) || (!i.eA(((afq)localObject2).wqG)) || (!i.eA(((afq)localObject2).Eyb))) {
                   break label333;
                 }
                 ((JSONArray)localObject1).put(true);
@@ -529,12 +530,12 @@ public final class f
       {
         localJSONObject.put("result", localObject1);
         localObject1 = localJSONObject.toString();
-        ad.i("MicroMsg.GameCommOpertionProcessor", "checkMediaLocalIds result:%s", new Object[] { localObject1 });
-        paramhp.dlm.result = ((String)localObject1);
+        ac.i("MicroMsg.GameCommOpertionProcessor", "checkMediaLocalIds result:%s", new Object[] { localObject1 });
+        paramhw.diV.result = ((String)localObject1);
         AppMethodBeat.o(183856);
         return;
-        localObject2 = ((com.tencent.mm.plugin.recordvideo.background.d)localObject2).dgC();
-        if ((localObject2 != null) && (i.eK(((aer)localObject2).vhT)))
+        localObject2 = ((com.tencent.mm.plugin.recordvideo.background.e)localObject2).duk();
+        if ((localObject2 != null) && (i.eA(((afq)localObject2).wqF)))
         {
           ((JSONArray)localObject1).put(true);
         }
@@ -543,18 +544,18 @@ public final class f
           label333:
           ((JSONArray)localObject1).put(false);
           break label467;
-          if (bt.isNullOrNil((String)localObject2)) {
+          if (bs.isNullOrNil((String)localObject2)) {
             break label474;
           }
-          localObject2 = ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).abW((String)localObject2);
+          localObject2 = ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).agO((String)localObject2);
           if ((localObject2 == null) || (localObject2.length == 0)) {
             break label474;
           }
-          localObject2 = acy(new String((byte[])localObject2));
-          if ((localObject2 == null) || (!i.eK(((WebViewJSSDKFileItem)localObject2).jau)) || ((!bt.isNullOrNil(((WebViewJSSDKFileItem)localObject2).jMa)) && (!i.eK(((WebViewJSSDKFileItem)localObject2).jMa)))) {
+          localObject2 = ahq(new String((byte[])localObject2));
+          if ((localObject2 == null) || (!i.eA(((WebViewJSSDKFileItem)localObject2).jAH)) || ((!bs.isNullOrNil(((WebViewJSSDKFileItem)localObject2).kmB)) && (!i.eA(((WebViewJSSDKFileItem)localObject2).kmB)))) {
             break label474;
           }
-          com.tencent.mm.plugin.webview.modeltools.g.emF().a((WebViewJSSDKFileItem)localObject2);
+          com.tencent.mm.plugin.webview.modeltools.g.eCa().a((WebViewJSSDKFileItem)localObject2);
           j = 1;
           if (j != 0) {
             ((JSONArray)localObject1).put(true);

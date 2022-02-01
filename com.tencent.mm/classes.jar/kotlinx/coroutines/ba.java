@@ -2,36 +2,38 @@ package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import kotlinx.coroutines.a.m;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "DISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
-public final class ba
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/DisposeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+final class ba
+  extends h
 {
-  private static final m Kei;
-  private static final m Kej;
+  private final az LQD;
   
-  static
+  public ba(az paramaz)
   {
-    AppMethodBeat.i(190035);
-    Kei = new m("REMOVED_TASK");
-    Kej = new m("CLOSED_EMPTY");
-    AppMethodBeat.o(190035);
+    AppMethodBeat.i(118047);
+    this.LQD = paramaz;
+    AppMethodBeat.o(118047);
   }
   
-  public static final long xL(long paramLong)
+  public final String toString()
   {
-    if (paramLong <= 0L) {
-      return 0L;
-    }
-    if (paramLong >= 9223372036854L) {
-      return 9223372036854775807L;
-    }
-    return 1000000L * paramLong;
+    AppMethodBeat.i(118046);
+    String str = "DisposeOnCancel[" + this.LQD + ']';
+    AppMethodBeat.o(118046);
+    return str;
+  }
+  
+  public final void u(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118044);
+    this.LQD.dispose();
+    AppMethodBeat.o(118044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ba
  * JD-Core Version:    0.7.0.1
  */

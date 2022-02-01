@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
@@ -22,9 +21,9 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class PerformancePanel
   extends FrameLayout
 {
-  MMSwitchBtn joh;
-  MMSwitchBtn joi;
-  MMSwitchBtn joj;
+  MMSwitchBtn jOt;
+  MMSwitchBtn jOu;
+  MMSwitchBtn jOv;
   
   public PerformancePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,21 +52,21 @@ public class PerformancePanel
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(121659);
-        Object localObject = c.Fz("jsapi_draw_canvas").toString();
+        Object localObject = c.JD("jsapi_draw_canvas").toString();
         paramAnonymousView = new StringBuilder();
         if ((localObject != null) && (((String)localObject).length() > 0))
         {
-          int i = c.cp("jsapi_draw_canvas", "__invoke_jsapi_data_size");
+          int i = c.cz("jsapi_draw_canvas", "__invoke_jsapi_data_size");
           paramAnonymousView.append("data size :").append(i).append("\n").append((String)localObject);
         }
         localObject = (IPCString)h.a("com.tencent.mm:support", new IPCString("widget_launch"), PerformancePanel.e.class);
         if (localObject != null) {
           paramAnonymousView.append("\n\n").append(localObject);
         }
-        if (f.aTf()) {
-          paramAnonymousView.append("\n\n").append(f.aTg());
+        if (f.bae()) {
+          paramAnonymousView.append("\n\n").append(f.baf());
         }
-        this.jol.setText(paramAnonymousView.toString());
+        this.jOx.setText(paramAnonymousView.toString());
         AppMethodBeat.o(121659);
       }
     });
@@ -79,12 +78,12 @@ public class PerformancePanel
         h.a("com.tencent.mm:support", null, PerformancePanel.a.class, null);
         c.clear();
         f.reset();
-        this.jol.setText(c.Fz("jsapi_draw_canvas").toString());
+        this.jOx.setText(c.JD("jsapi_draw_canvas").toString());
         AppMethodBeat.o(121660);
       }
     });
     localObject = (MMSwitchBtn)findViewById(2131303021);
-    boolean bool = c.aTe();
+    boolean bool = c.bad();
     ((MMSwitchBtn)localObject).setCheck(bool);
     ((MMSwitchBtn)localObject).setSwitchListener(new MMSwitchBtn.a()
     {
@@ -92,19 +91,19 @@ public class PerformancePanel
       {
         AppMethodBeat.i(121661);
         h.a("com.tencent.mm:support", new IPCBoolean(paramAnonymousBoolean), PerformancePanel.d.class, null);
-        c.fx(paramAnonymousBoolean);
+        c.fT(paramAnonymousBoolean);
         localView.setEnabled(paramAnonymousBoolean);
-        PerformancePanel.this.joh.setEnabled(paramAnonymousBoolean);
-        PerformancePanel.this.joi.setEnabled(paramAnonymousBoolean);
-        PerformancePanel.this.joj.setEnabled(paramAnonymousBoolean);
+        PerformancePanel.this.jOt.setEnabled(paramAnonymousBoolean);
+        PerformancePanel.this.jOu.setEnabled(paramAnonymousBoolean);
+        PerformancePanel.this.jOv.setEnabled(paramAnonymousBoolean);
         AppMethodBeat.o(121661);
       }
     });
     localView.setEnabled(bool);
-    this.joh = ((MMSwitchBtn)findViewById(2131298446));
-    this.joh.setEnabled(bool);
-    this.joh.setCheck(c.FC("jsapi_draw_canvas"));
-    this.joh.setSwitchListener(new MMSwitchBtn.a()
+    this.jOt = ((MMSwitchBtn)findViewById(2131298446));
+    this.jOt.setEnabled(bool);
+    this.jOt.setCheck(c.JG("jsapi_draw_canvas"));
+    this.jOt.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -112,18 +111,18 @@ public class PerformancePanel
         h.a("com.tencent.mm:support", new IPCBoolean(paramAnonymousBoolean), PerformancePanel.b.class, null);
         if (paramAnonymousBoolean)
         {
-          c.FA("jsapi_draw_canvas");
+          c.JE("jsapi_draw_canvas");
           AppMethodBeat.o(121662);
           return;
         }
-        c.FB("jsapi_draw_canvas");
+        c.JF("jsapi_draw_canvas");
         AppMethodBeat.o(121662);
       }
     });
-    this.joi = ((MMSwitchBtn)findViewById(2131298492));
-    this.joi.setEnabled(bool);
-    this.joi.setCheck(c.FC("widget_launch"));
-    this.joi.setSwitchListener(new MMSwitchBtn.a()
+    this.jOu = ((MMSwitchBtn)findViewById(2131298492));
+    this.jOu.setEnabled(bool);
+    this.jOu.setCheck(c.JG("widget_launch"));
+    this.jOu.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -131,32 +130,28 @@ public class PerformancePanel
         h.a("com.tencent.mm:support", new IPCBoolean(paramAnonymousBoolean), PerformancePanel.c.class, null);
         if (paramAnonymousBoolean)
         {
-          c.FA("widget_launch");
+          c.JE("widget_launch");
           AppMethodBeat.o(121663);
           return;
         }
-        c.FB("widget_launch");
+        c.JF("widget_launch");
         AppMethodBeat.o(121663);
       }
     });
-    this.joj = ((MMSwitchBtn)findViewById(2131298491));
-    this.joj.setEnabled(bool);
-    this.joj.setCheck(f.aTf());
-    this.joj.setSwitchListener(new MMSwitchBtn.a()
+    this.jOv = ((MMSwitchBtn)findViewById(2131298491));
+    this.jOv.setEnabled(bool);
+    this.jOv.setCheck(f.bae());
+    this.jOv.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(121664);
-        f.fy(paramAnonymousBoolean);
+        f.fU(paramAnonymousBoolean);
         AppMethodBeat.o(121664);
       }
     });
     AppMethodBeat.o(121672);
   }
-  
-  static class a
-    implements b<IPCVoid, IPCVoid>
-  {}
   
   static class b
     implements b<IPCBoolean, IPCVoid>
@@ -164,14 +159,6 @@ public class PerformancePanel
   
   static class c
     implements b<IPCBoolean, IPCVoid>
-  {}
-  
-  static class d
-    implements b<IPCBoolean, IPCVoid>
-  {}
-  
-  static class e
-    implements k<IPCString, IPCString>
   {}
 }
 

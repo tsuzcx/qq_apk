@@ -26,13 +26,13 @@ import java.util.ArrayList;
 final class g
   extends ActionBar
 {
-  u WX;
-  boolean WY;
-  Window.Callback WZ;
-  private boolean Xa;
-  private boolean Xb;
-  private ArrayList<Object> Xc = new ArrayList();
-  private final Runnable Xd = new Runnable()
+  u XS;
+  boolean XT;
+  Window.Callback XU;
+  private boolean XV;
+  private boolean XW;
+  private ArrayList<Object> XX = new ArrayList();
+  private final Runnable XY = new Runnable()
   {
     public final void run()
     {
@@ -42,12 +42,12 @@ final class g
       for (localh = (h)localMenu;; localh = null)
       {
         if (localh != null) {
-          localh.ht();
+          localh.hB();
         }
         try
         {
           localMenu.clear();
-          if ((!localg.WZ.onCreatePanelMenu(0, localMenu)) || (!localg.WZ.onPreparePanel(0, null, localMenu))) {
+          if ((!localg.XU.onCreatePanelMenu(0, localMenu)) || (!localg.XU.onPreparePanel(0, null, localMenu))) {
             localMenu.clear();
           }
           return;
@@ -57,32 +57,32 @@ final class g
           if (localh == null) {
             break;
           }
-          localh.hu();
+          localh.hC();
         }
       }
     }
   };
-  private final Toolbar.b Xe = new Toolbar.b()
+  private final Toolbar.b XZ = new Toolbar.b()
   {
     public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
     {
-      return g.this.WZ.onMenuItemSelected(0, paramAnonymousMenuItem);
+      return g.this.XU.onMenuItemSelected(0, paramAnonymousMenuItem);
     }
   };
   
   g(Toolbar paramToolbar, CharSequence paramCharSequence, Window.Callback paramCallback)
   {
-    this.WX = new ba(paramToolbar, false);
-    this.WZ = new c(paramCallback);
-    this.WX.setWindowCallback(this.WZ);
-    paramToolbar.setOnMenuItemClickListener(this.Xe);
-    this.WX.setWindowTitle(paramCharSequence);
+    this.XS = new ba(paramToolbar, false);
+    this.XU = new c(paramCallback);
+    this.XS.setWindowCallback(this.XU);
+    paramToolbar.setOnMenuItemClickListener(this.XZ);
+    this.XS.setWindowTitle(paramCharSequence);
   }
   
   private void setDisplayOptions(int paramInt1, int paramInt2)
   {
-    int i = this.WX.getDisplayOptions();
-    this.WX.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    int i = this.XS.getDisplayOptions();
+    this.XS.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
   }
   
   public final void Q(boolean paramBoolean) {}
@@ -91,16 +91,16 @@ final class g
   
   public final void S(boolean paramBoolean)
   {
-    if (paramBoolean == this.Xb) {}
+    if (paramBoolean == this.XW) {}
     for (;;)
     {
       return;
-      this.Xb = paramBoolean;
-      int j = this.Xc.size();
+      this.XW = paramBoolean;
+      int j = this.XX.size();
       int i = 0;
       while (i < j)
       {
-        this.Xc.get(i);
+        this.XX.get(i);
         i += 1;
       }
     }
@@ -109,101 +109,101 @@ final class g
   public final boolean b(KeyEvent paramKeyEvent)
   {
     if (paramKeyEvent.getAction() == 1) {
-      fP();
+      fX();
     }
     return true;
   }
   
   public final boolean collapseActionView()
   {
-    if (this.WX.hasExpandedActionView())
+    if (this.XS.hasExpandedActionView())
     {
-      this.WX.collapseActionView();
+      this.XS.collapseActionView();
       return true;
     }
     return false;
   }
   
-  public final void fK()
+  public final void fS()
   {
-    this.WX.setIcon(2131234429);
+    this.XS.setIcon(2131234429);
   }
   
-  public final void fL()
+  public final void fT()
   {
     setDisplayOptions(0, 2);
   }
   
-  public final void fM()
+  public final void fU()
   {
     setDisplayOptions(0, 8);
   }
   
-  public final void fN()
+  public final void fV()
   {
     setDisplayOptions(16, 16);
   }
   
-  public final boolean fP()
+  public final boolean fX()
   {
-    return this.WX.showOverflowMenu();
+    return this.XS.showOverflowMenu();
   }
   
-  public final boolean fQ()
+  public final boolean fY()
   {
-    return this.WX.hideOverflowMenu();
+    return this.XS.hideOverflowMenu();
   }
   
-  public final boolean fR()
+  public final boolean fZ()
   {
-    this.WX.iV().removeCallbacks(this.Xd);
-    t.b(this.WX.iV(), this.Xd);
+    this.XS.jd().removeCallbacks(this.XY);
+    t.b(this.XS.jd(), this.XY);
     return true;
   }
   
   public final View getCustomView()
   {
-    return this.WX.getCustomView();
+    return this.XS.getCustomView();
   }
   
   public final int getDisplayOptions()
   {
-    return this.WX.getDisplayOptions();
+    return this.XS.getDisplayOptions();
   }
   
   public final int getHeight()
   {
-    return this.WX.getHeight();
+    return this.XS.getHeight();
   }
   
   final Menu getMenu()
   {
-    if (!this.Xa)
+    if (!this.XV)
     {
-      this.WX.a(new a(), new b());
-      this.Xa = true;
+      this.XS.a(new a(), new b());
+      this.XV = true;
     }
-    return this.WX.getMenu();
+    return this.XS.getMenu();
   }
   
   public final Context getThemedContext()
   {
-    return this.WX.getContext();
+    return this.XS.getContext();
   }
   
   public final CharSequence getTitle()
   {
-    return this.WX.getTitle();
+    return this.XS.getTitle();
   }
   
   public final void hide()
   {
-    this.WX.setVisibility(8);
+    this.XS.setVisibility(8);
   }
   
   public final boolean isShowing()
   {
-    return this.WX.getVisibility() == 0;
+    return this.XS.getVisibility() == 0;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
@@ -213,7 +213,7 @@ final class g
   
   final void onDestroy()
   {
-    this.WX.iV().removeCallbacks(this.Xd);
+    this.XS.jd().removeCallbacks(this.XY);
   }
   
   public final boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
@@ -245,12 +245,12 @@ final class g
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    this.WX.setBackgroundDrawable(paramDrawable);
+    this.XS.setBackgroundDrawable(paramDrawable);
   }
   
   public final void setCustomView(int paramInt)
   {
-    setCustomView(LayoutInflater.from(this.WX.getContext()).inflate(paramInt, this.WX.iV(), false));
+    setCustomView(LayoutInflater.from(this.XS.getContext()).inflate(paramInt, this.XS.jd(), false));
   }
   
   public final void setCustomView(View paramView)
@@ -259,7 +259,7 @@ final class g
     if (paramView != null) {
       paramView.setLayoutParams(localLayoutParams);
     }
-    this.WX.setCustomView(paramView);
+    this.XS.setCustomView(paramView);
   }
   
   public final void setDisplayHomeAsUpEnabled(boolean paramBoolean)
@@ -280,54 +280,54 @@ final class g
   
   public final void setElevation(float paramFloat)
   {
-    t.k(this.WX.iV(), paramFloat);
+    t.k(this.XS.jd(), paramFloat);
   }
   
   public final void setHomeActionContentDescription(int paramInt)
   {
-    this.WX.setNavigationContentDescription(paramInt);
+    this.XS.setNavigationContentDescription(paramInt);
   }
   
   public final void setLogo(Drawable paramDrawable)
   {
-    this.WX.setLogo(paramDrawable);
+    this.XS.setLogo(paramDrawable);
   }
   
   public final void setWindowTitle(CharSequence paramCharSequence)
   {
-    this.WX.setWindowTitle(paramCharSequence);
+    this.XS.setWindowTitle(paramCharSequence);
   }
   
   public final void show()
   {
-    this.WX.setVisibility(0);
+    this.XS.setVisibility(0);
   }
   
   final class a
     implements o.a
   {
-    private boolean VZ;
+    private boolean WU;
     
     a() {}
     
     public final void a(h paramh, boolean paramBoolean)
     {
-      if (this.VZ) {
+      if (this.WU) {
         return;
       }
-      this.VZ = true;
-      g.this.WX.dismissPopupMenus();
-      if (g.this.WZ != null) {
-        g.this.WZ.onPanelClosed(108, paramh);
+      this.WU = true;
+      g.this.XS.dismissPopupMenus();
+      if (g.this.XU != null) {
+        g.this.XU.onPanelClosed(108, paramh);
       }
-      this.VZ = false;
+      this.WU = false;
     }
     
     public final boolean d(h paramh)
     {
-      if (g.this.WZ != null)
+      if (g.this.XU != null)
       {
-        g.this.WZ.onMenuOpened(108, paramh);
+        g.this.XU.onMenuOpened(108, paramh);
         return true;
       }
       return false;
@@ -346,18 +346,18 @@ final class g
     
     public final void b(h paramh)
     {
-      if (g.this.WZ != null)
+      if (g.this.XU != null)
       {
-        if (!g.this.WX.isOverflowMenuShowing()) {
+        if (!g.this.XS.isOverflowMenuShowing()) {
           break label41;
         }
-        g.this.WZ.onPanelClosed(108, paramh);
+        g.this.XU.onPanelClosed(108, paramh);
       }
       label41:
-      while (!g.this.WZ.onPreparePanel(0, null, paramh)) {
+      while (!g.this.XU.onPreparePanel(0, null, paramh)) {
         return;
       }
-      g.this.WZ.onMenuOpened(108, paramh);
+      g.this.XU.onMenuOpened(108, paramh);
     }
   }
   
@@ -372,7 +372,7 @@ final class g
     public final View onCreatePanelView(int paramInt)
     {
       if (paramInt == 0) {
-        return new View(g.this.WX.getContext());
+        return new View(g.this.XS.getContext());
       }
       return super.onCreatePanelView(paramInt);
     }
@@ -380,10 +380,10 @@ final class g
     public final boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
     {
       boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
-      if ((bool) && (!g.this.WY))
+      if ((bool) && (!g.this.XT))
       {
-        g.this.WX.hU();
-        g.this.WY = true;
+        g.this.XS.ic();
+        g.this.XT = true;
       }
       return bool;
     }

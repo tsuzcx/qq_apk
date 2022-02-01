@@ -7,29 +7,29 @@ import com.tencent.mm.plugin.appbrand.menu.a.a;
 public final class p
 {
   public final int id;
-  public final y.b jBF;
-  public final boolean kRW;
-  public boolean kRX;
-  public final a kRY;
+  public final y.b kcb;
+  public final boolean ltw;
+  public boolean ltx;
+  public final a lty;
   
   public p(int paramInt, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(134917);
-    this.jBF = new y.b();
+    this.kcb = new y.b();
     this.id = paramInt;
-    this.kRW = paramBoolean;
-    this.kRY = parama;
+    this.ltw = paramBoolean;
+    this.lty = parama;
     AppMethodBeat.o(134917);
   }
   
-  public final y.b bid()
+  public final y.b boX()
   {
-    return this.jBF;
+    return this.kcb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.p
  * JD-Core Version:    0.7.0.1
  */

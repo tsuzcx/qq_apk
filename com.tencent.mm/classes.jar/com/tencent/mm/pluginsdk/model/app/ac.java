@@ -1,29 +1,28 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.an.f;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.tz;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.uj;
+import com.tencent.mm.protocal.protobuf.uk;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public final class ac
   extends n
   implements k
 {
-  private final a BQi;
+  private final a Diw;
   private g callback;
   private b rr;
   
@@ -31,36 +30,36 @@ public final class ac
   {
     AppMethodBeat.i(31048);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new tz();
-    ((b.a)localObject).gUV = new ua();
+    ((b.a)localObject).hvt = new uj();
+    ((b.a)localObject).hvu = new uk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkbigfileupload";
     ((b.a)localObject).funcId = 727;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (tz)this.rr.gUS.gUX;
-    if ((paramb != null) && (!bt.isNullOrNil(paramb.fMw)) && (!bt.isNullOrNil(paramb.filemd5)))
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (uj)this.rr.hvr.hvw;
+    if ((paramb != null) && (!bs.isNullOrNil(paramb.fQi)) && (!bs.isNullOrNil(paramb.filemd5)))
     {
-      ((tz)localObject).COP = paramb.fMw;
-      ((tz)localObject).CVJ = paramb.filemd5;
-      ((tz)localObject).CVK = paramb.title;
-      ((tz)localObject).CCi = paramb.gHf;
+      ((uj)localObject).EhA = paramb.fQi;
+      ((uj)localObject).Eot = paramb.filemd5;
+      ((uj)localObject).Eou = paramb.title;
+      ((uj)localObject).DUF = paramb.hhG;
     }
-    for (((tz)localObject).CCh = paramb.gHe;; ((tz)localObject).CCh = ((int)i.aMN(paramString1)))
+    for (((uj)localObject).DUE = paramb.hhF;; ((uj)localObject).DUE = ((int)i.aSp(paramString1)))
     {
-      ((tz)localObject).CAG = com.tencent.mm.i.a.fmX;
-      ((tz)localObject).sdP = paramString2;
-      ((tz)localObject).sdQ = u.aqG();
-      this.BQi = parama;
-      ad.i("MicroMsg.NetSceneCheckBigFileUpload", "summerbig NetSceneCheckBigFileUpload content[%s], aesKey[%s] md5[%s] FileName[%s] FileSize[%d] FileExt[%s] talker[%s], fromUserName[%s], stack[%s]", new Object[] { paramb, ((tz)localObject).COP, ((tz)localObject).CVJ, ((tz)localObject).CVK, Long.valueOf(((tz)localObject).CCh), ((tz)localObject).CCi, ((tz)localObject).sdP, ((tz)localObject).sdQ, bt.eGN() });
+      ((uj)localObject).DTc = com.tencent.mm.i.a.fqr;
+      ((uj)localObject).tlJ = paramString2;
+      ((uj)localObject).tlK = u.axw();
+      this.Diw = parama;
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneCheckBigFileUpload", "summerbig NetSceneCheckBigFileUpload content[%s], aesKey[%s] md5[%s] FileName[%s] FileSize[%d] FileExt[%s] talker[%s], fromUserName[%s], stack[%s]", new Object[] { paramb, ((uj)localObject).EhA, ((uj)localObject).Eot, ((uj)localObject).Eou, Long.valueOf(((uj)localObject).DUE), ((uj)localObject).DUF, ((uj)localObject).tlJ, ((uj)localObject).tlK, bs.eWi() });
       AppMethodBeat.o(31048);
       return;
-      f.awM();
-      ((tz)localObject).COP = com.tencent.mm.ao.a.awE();
-      f.awM();
-      ((tz)localObject).CVJ = com.tencent.mm.ao.a.xE(paramString1);
-      ((tz)localObject).CVK = i.aMS(paramString1);
-      ((tz)localObject).CCi = i.RK(paramString1);
+      f.aDE();
+      ((uj)localObject).EhA = com.tencent.mm.an.a.aDw();
+      f.aDE();
+      ((uj)localObject).Eot = com.tencent.mm.an.a.BK(paramString1);
+      ((uj)localObject).Eou = i.aSu(paramString1);
+      ((uj)localObject).DUF = i.VW(paramString1);
     }
   }
   
@@ -81,23 +80,23 @@ public final class ac
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(31050);
-    ad.d("MicroMsg.NetSceneCheckBigFileUpload", "summerbig onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneCheckBigFileUpload", "summerbig onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetSceneCheckBigFileUpload", "summerbig onGYNetEnd errType = " + paramInt2 + ", errCode = " + paramInt3);
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.NetSceneCheckBigFileUpload", "summerbig onGYNetEnd errType = " + paramInt2 + ", errCode = " + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (this.BQi != null) {
-        this.BQi.a("", "", "", "", "", 0L);
+      if (this.Diw != null) {
+        this.Diw.a("", "", "", "", "", 0L);
       }
       AppMethodBeat.o(31050);
       return;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    paramString = (tz)((b)paramq).gUS.gUX;
-    paramq = (ua)((b)paramq).gUT.gUX;
-    ad.d("MicroMsg.NetSceneCheckBigFileUpload", "summersafecdn onGYNetEnd Signature[%s], fuin[%d], faeskey[%s], fSignature[%s]", new Object[] { paramq.ijP, Integer.valueOf(paramq.CVL), paramq.CVM, paramq.CVN });
-    if (this.BQi != null) {
-      this.BQi.a(paramString.CVJ, paramString.COP, paramq.ijP, paramq.CVM, paramq.CVN, paramString.CCh);
+    paramString = (uj)((b)paramq).hvr.hvw;
+    paramq = (uk)((b)paramq).hvs.hvw;
+    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneCheckBigFileUpload", "summersafecdn onGYNetEnd Signature[%s], fuin[%d], faeskey[%s], fSignature[%s]", new Object[] { paramq.iJW, Integer.valueOf(paramq.Eov), paramq.Eow, paramq.Eox });
+    if (this.Diw != null) {
+      this.Diw.a(paramString.Eot, paramString.EhA, paramq.iJW, paramq.Eow, paramq.Eox, paramString.DUE);
     }
     AppMethodBeat.o(31050);
   }
@@ -109,7 +108,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wxcredit.b;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -42,7 +42,7 @@ public class WalletWXCreditOpenNotifyUI
         return true;
       }
     });
-    ((TextView)findViewById(2131306845)).setText(com.tencent.mm.wallet_core.ui.e.E(getInput().getDouble("key_total_amount")));
+    ((TextView)findViewById(2131306845)).setText(com.tencent.mm.wallet_core.ui.e.D(getInput().getDouble("key_total_amount")));
     Button localButton = (Button)findViewById(2131302852);
     localButton.setOnClickListener(new View.OnClickListener()
     {
@@ -69,8 +69,8 @@ public class WalletWXCreditOpenNotifyUI
   {
     AppMethodBeat.i(72385);
     super.onCreate(paramBundle);
-    g.afC();
-    g.afB().afk().set(196658, Boolean.FALSE);
+    g.agS();
+    g.agR().agA().set(196658, Boolean.FALSE);
     initView();
     AppMethodBeat.o(72385);
   }
@@ -88,7 +88,7 @@ public class WalletWXCreditOpenNotifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditOpenNotifyUI
  * JD-Core Version:    0.7.0.1
  */

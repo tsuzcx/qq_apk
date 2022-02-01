@@ -12,11 +12,11 @@ import com.tencent.mm.plugin.wepkg.event.ForceUpdateNotify;
 import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
 import com.tencent.mm.plugin.wepkg.model.e;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
 import java.util.HashSet;
@@ -26,53 +26,53 @@ import java.util.regex.Pattern;
 
 public final class c
 {
-  private static final Pattern jmw;
-  public boolean BHg;
-  private com.tencent.mm.plugin.wepkg.model.g BHh;
-  private WepkgVersion BHi;
-  private com.tencent.mm.plugin.wepkg.event.a BHj;
-  private e BHk;
-  private boolean BHl;
-  private boolean BHm;
-  public com.tencent.mm.plugin.wepkg.event.b BHn;
-  private boolean BHo;
-  private Set<String> BHp;
-  private long BHq;
-  public boolean BHr;
-  private String BHs;
-  public boolean BHt;
-  private long aLL;
-  private av cOx;
-  public String rQe;
-  private GameWebPerformanceInfo rQk;
-  private String rXp;
+  private static final Pattern jMJ;
+  private String CZA;
+  public boolean CZB;
+  public boolean CZo;
+  private com.tencent.mm.plugin.wepkg.model.g CZp;
+  private WepkgVersion CZq;
+  private com.tencent.mm.plugin.wepkg.event.a CZr;
+  private e CZs;
+  private boolean CZt;
+  private boolean CZu;
+  public com.tencent.mm.plugin.wepkg.event.b CZv;
+  private boolean CZw;
+  private Set<String> CZx;
+  private long CZy;
+  public boolean CZz;
+  private long aMB;
+  private au cLS;
+  public String sXV;
+  private GameWebPerformanceInfo sYb;
+  private String tfh;
   
   static
   {
     AppMethodBeat.i(110556);
-    jmw = Pattern.compile(".*#.*wechat_redirect");
+    jMJ = Pattern.compile(".*#.*wechat_redirect");
     AppMethodBeat.o(110556);
   }
   
   public c()
   {
     AppMethodBeat.i(110539);
-    this.aLL = 0L;
-    this.BHg = false;
-    this.BHl = false;
-    this.BHm = false;
-    this.BHo = false;
-    this.BHp = new HashSet();
-    this.BHr = true;
-    this.cOx = new av(new av.a()
+    this.aMB = 0L;
+    this.CZo = false;
+    this.CZt = false;
+    this.CZu = false;
+    this.CZw = false;
+    this.CZx = new HashSet();
+    this.CZz = true;
+    this.cLS = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(110538);
         if ((c.b(c.this)) && (!c.c(c.this)))
         {
-          ad.i("MicroMsg.Wepkg.WePkgPlugin", "white screen");
-          aq.f(new Runnable()
+          ac.i("MicroMsg.Wepkg.WePkgPlugin", "white screen");
+          ap.f(new Runnable()
           {
             public final void run()
             {
@@ -80,36 +80,36 @@ public final class c
               AppMethodBeat.i(110537);
               try
               {
-                ad.i("MicroMsg.Wepkg.WePkgPlugin", "load url from net");
-                if (!bt.isNullOrNil(c.this.etr())) {
+                ac.i("MicroMsg.Wepkg.WePkgPlugin", "load url from net");
+                if (!bs.isNullOrNil(c.this.eIK())) {
                   i = 1;
                 }
                 c.d(c.this);
-                int j = c.etw();
+                int j = c.eIP();
                 if (j > 1)
                 {
                   if (c.e(c.this) != null)
                   {
                     if (i == 0) {
-                      break label171;
+                      break label172;
                     }
-                    com.tencent.mm.plugin.wepkg.utils.a.b("whiteScreen", c.f(c.this), c.e(c.this).fUW, c.e(c.this).version, 1L, 0L, null);
+                    com.tencent.mm.plugin.wepkg.utils.a.b("whiteScreen", c.f(c.this), c.e(c.this).fYR, c.e(c.this).version, 1L, 0L, null);
                   }
                   for (;;)
                   {
-                    h.vKh.idkeyStat(859L, 13L, 1L, false);
-                    String str = d.aAg(c.f(c.this));
-                    b.Mf(str);
-                    com.tencent.mm.plugin.wepkg.model.c.etK().fn(str, 1);
-                    c.etx();
+                    h.wUl.idkeyStat(859L, 13L, 1L, false);
+                    String str = d.aFy(c.f(c.this));
+                    b.Ql(str);
+                    com.tencent.mm.plugin.wepkg.model.c.eJd().az(str, 1, 2);
+                    c.eIQ();
                     c.g(c.this);
                     AppMethodBeat.o(110537);
                     return;
-                    label171:
-                    com.tencent.mm.plugin.wepkg.utils.a.b("whiteScreen", c.f(c.this), c.e(c.this).fUW, c.e(c.this).version, -1L, 0L, null);
+                    label172:
+                    com.tencent.mm.plugin.wepkg.utils.a.b("whiteScreen", c.f(c.this), c.e(c.this).fYR, c.e(c.this).version, -1L, 0L, null);
                   }
                 }
-                c.Ua(j + 1);
+                c.Wi(j + 1);
               }
               catch (Exception localException)
               {
@@ -124,30 +124,30 @@ public final class c
         {
           AppMethodBeat.o(110538);
           return false;
-          c.Ua(0);
+          c.Wi(0);
         }
       }
     }, false);
-    b.etl();
-    this.BHk = new e();
-    b.etm();
-    this.BHj = new com.tencent.mm.plugin.wepkg.event.a()
+    b.eIE();
+    this.CZs = new e();
+    b.eIF();
+    this.CZr = new com.tencent.mm.plugin.wepkg.event.a()
     {
-      public final void dH(Object paramAnonymousObject)
+      public final void dI(Object paramAnonymousObject)
       {
         AppMethodBeat.i(110535);
         if ((paramAnonymousObject instanceof ForceUpdateNotify))
         {
           paramAnonymousObject = (ForceUpdateNotify)paramAnonymousObject;
-          if ((paramAnonymousObject != null) && (paramAnonymousObject.BIs != null) && (paramAnonymousObject.BIs.length > 0))
+          if ((paramAnonymousObject != null) && (paramAnonymousObject.DaB != null) && (paramAnonymousObject.DaB.length > 0))
           {
-            paramAnonymousObject = paramAnonymousObject.BIs;
+            paramAnonymousObject = paramAnonymousObject.DaB;
             int j = paramAnonymousObject.length;
             int i = 0;
             while (i < j)
             {
               String str = paramAnonymousObject[i];
-              if ((str.equals(a.eti())) || ((!bt.isNullOrNil(c.a(c.this))) && (str.equals(c.a(c.this)))))
+              if ((str.equals(a.eIB())) || ((!bs.isNullOrNil(c.a(c.this))) && (str.equals(c.a(c.this)))))
               {
                 c.a(c.this, str);
                 AppMethodBeat.o(110535);
@@ -162,18 +162,18 @@ public final class c
         if ((paramAnonymousObject instanceof DownloadBigPkgCompleteNotify))
         {
           paramAnonymousObject = (DownloadBigPkgCompleteNotify)paramAnonymousObject;
-          if ((paramAnonymousObject != null) && (paramAnonymousObject.fUW != null) && ((paramAnonymousObject.fUW.equals(a.eti())) || (paramAnonymousObject.fUW.equals(c.a(c.this))))) {
-            c.a(c.this, paramAnonymousObject.fUW, paramAnonymousObject.success, paramAnonymousObject.BIq);
+          if ((paramAnonymousObject != null) && (paramAnonymousObject.fYR != null) && ((paramAnonymousObject.fYR.equals(a.eIB())) || (paramAnonymousObject.fYR.equals(c.a(c.this))))) {
+            c.a(c.this, paramAnonymousObject.fYR, paramAnonymousObject.success, paramAnonymousObject.Daz);
           }
         }
         AppMethodBeat.o(110535);
       }
     };
-    com.tencent.mm.plugin.wepkg.event.c.a(this.BHj);
+    com.tencent.mm.plugin.wepkg.event.c.a(this.CZr);
     AppMethodBeat.o(110539);
   }
   
-  public static boolean bZ(String paramString)
+  public static boolean bP(String paramString)
   {
     AppMethodBeat.i(177085);
     if ((paramString == null) || (paramString.length() == 0))
@@ -191,92 +191,92 @@ public final class c
     return false;
   }
   
-  public static String etu()
+  public static String eIN()
   {
-    AppMethodBeat.i(204418);
-    String str = a.etj();
-    AppMethodBeat.o(204418);
+    AppMethodBeat.i(210469);
+    String str = a.eIC();
+    AppMethodBeat.o(210469);
     return str;
   }
   
-  private void etv()
+  private void eIO()
   {
-    AppMethodBeat.i(192617);
-    this.BHr = false;
-    ((com.tencent.mm.plugin.game.luggage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.luggage.a.a.class)).acb(this.rXp);
-    AppMethodBeat.o(192617);
+    AppMethodBeat.i(199865);
+    this.CZz = false;
+    ((com.tencent.mm.plugin.game.luggage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.luggage.a.a.class)).agT(this.tfh);
+    AppMethodBeat.o(199865);
   }
   
   public final void a(ConsoleMessage paramConsoleMessage)
   {
     AppMethodBeat.i(110544);
-    this.BHm = true;
+    this.CZu = true;
     if (paramConsoleMessage != null) {}
     for (paramConsoleMessage = paramConsoleMessage.message();; paramConsoleMessage = null)
     {
-      if ((!bt.isNullOrNil(paramConsoleMessage)) && (paramConsoleMessage.equalsIgnoreCase("weixin://whiteScreenEnd")))
+      if ((!bs.isNullOrNil(paramConsoleMessage)) && (paramConsoleMessage.equalsIgnoreCase("weixin://whiteScreenEnd")))
       {
-        ad.i("MicroMsg.Wepkg.WePkgPlugin", "mIsReceivedWhiteScreenEnd: true");
-        this.BHl = true;
+        ac.i("MicroMsg.Wepkg.WePkgPlugin", "mIsReceivedWhiteScreenEnd: true");
+        this.CZt = true;
       }
       AppMethodBeat.o(110544);
       return;
     }
   }
   
-  public final WebResourceResponse azC(String paramString)
+  public final WebResourceResponse aET(String paramString)
   {
     AppMethodBeat.i(110545);
-    ad.d("MicroMsg.Wepkg.WePkgPlugin", "onRequestIntercept, url: ".concat(String.valueOf(paramString)));
-    Object localObject = b.azA(paramString);
+    ac.d("MicroMsg.Wepkg.WePkgPlugin", "onRequestIntercept, url: ".concat(String.valueOf(paramString)));
+    Object localObject = b.aER(paramString);
     if (localObject != null)
     {
-      ad.i("MicroMsg.Wepkg.WePkgPlugin", "onRequestIntercept, rid: ".concat(String.valueOf(localObject)));
-      localObject = a.azw((String)localObject);
+      ac.i("MicroMsg.Wepkg.WePkgPlugin", "onRequestIntercept, rid: ".concat(String.valueOf(localObject)));
+      localObject = a.aEN((String)localObject);
       if (localObject != null)
       {
         AppMethodBeat.o(110545);
         return localObject;
       }
     }
-    localObject = d.aAg(paramString);
-    if (!((String)localObject).equals(this.rXp))
+    localObject = d.aFy(paramString);
+    if (!((String)localObject).equals(this.tfh))
     {
-      ad.i("MicroMsg.Wepkg.WePkgPlugin", "load iframe pkgId:%s", new Object[] { localObject });
-      this.BHk.azU(paramString);
+      ac.i("MicroMsg.Wepkg.WePkgPlugin", "load iframe pkgId:%s", new Object[] { localObject });
+      this.CZs.aFm(paramString);
     }
-    if (this.BHg) {
-      if (this.BHh == null) {
+    if (this.CZo) {
+      if (this.CZp == null) {
         break label207;
       }
     }
     label207:
-    for (localObject = this.BHh.azV(d.aAi(paramString));; localObject = null)
+    for (localObject = this.CZp.aFn(d.aFA(paramString));; localObject = null)
     {
       if (localObject != null)
       {
-        if (this.BHi != null) {
-          com.tencent.mm.plugin.wepkg.utils.a.b("RequestHook", paramString, this.BHi.fUW, this.BHi.version, 1L, 0L, null);
+        if (this.CZq != null) {
+          com.tencent.mm.plugin.wepkg.utils.a.b("RequestHook", paramString, this.CZq.fYR, this.CZq.version, 1L, 0L, null);
         }
-        ad.i("MicroMsg.Wepkg.WePkgPlugin", "hit resource:%s", new Object[] { paramString });
+        ac.i("MicroMsg.Wepkg.WePkgPlugin", "hit resource:%s", new Object[] { paramString });
         AppMethodBeat.o(110545);
         return localObject;
       }
-      paramString = this.BHk.azV(d.aAi(paramString));
+      paramString = this.CZs.aFn(d.aFA(paramString));
       AppMethodBeat.o(110545);
       return paramString;
     }
   }
   
-  public final boolean azD(String paramString)
+  public final boolean aEU(String paramString)
   {
     AppMethodBeat.i(110549);
-    if (jmw.matcher(bt.nullAsNil(paramString)).find())
+    if (jMJ.matcher(bs.nullAsNil(paramString)).find())
     {
       AppMethodBeat.o(110549);
       return false;
     }
-    boolean bool = this.BHg;
+    boolean bool = this.CZo;
     AppMethodBeat.o(110549);
     return bool;
   }
@@ -284,8 +284,8 @@ public final class c
   public final void b(final WebView paramWebView, final boolean paramBoolean)
   {
     AppMethodBeat.i(110547);
-    ad.i("MicroMsg.Wepkg.WePkgPlugin", "useWepkg:".concat(String.valueOf(paramBoolean)));
-    aq.f(new Runnable()
+    ac.i("MicroMsg.Wepkg.WePkgPlugin", "useWepkg:".concat(String.valueOf(paramBoolean)));
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -297,63 +297,63 @@ public final class c
           AppMethodBeat.o(110536);
           return;
         }
-        ad.i("MicroMsg.Wepkg.WePkgPlugin", "injectWepkgState, webview == null");
+        ac.i("MicroMsg.Wepkg.WePkgPlugin", "injectWepkgState, webview == null");
         AppMethodBeat.o(110536);
       }
     });
     AppMethodBeat.o(110547);
   }
   
-  public final boolean ck(String paramString, boolean paramBoolean)
+  public final boolean cq(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(110540);
-    this.rQe = paramString;
-    this.rXp = d.aAg(paramString);
-    Object localObject = b.cj(paramString, paramBoolean);
+    this.sXV = paramString;
+    this.tfh = d.aFy(paramString);
+    Object localObject = b.cp(paramString, paramBoolean);
     if (localObject != null) {
-      if (((com.tencent.mm.plugin.wepkg.model.g)localObject).etJ())
+      if (((com.tencent.mm.plugin.wepkg.model.g)localObject).eJc())
       {
-        this.BHh = ((com.tencent.mm.plugin.wepkg.model.g)localObject);
-        this.BHg = true;
-        this.BHi = this.BHh.BIL;
-        com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.rQe, this.rXp, this.BHi.version, 2L, 0L, null);
-        com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", this.rQe, this.rXp, this.BHi.version, 1L, 0L, null);
-        if (((com.tencent.mm.plugin.wepkg.model.b)localObject).BIx) {
-          com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.rQe, this.rXp, ((com.tencent.mm.plugin.wepkg.model.b)localObject).wfu, 1L, 0L, null);
+        this.CZp = ((com.tencent.mm.plugin.wepkg.model.g)localObject);
+        this.CZo = true;
+        this.CZq = this.CZp.DaU;
+        com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.sXV, this.tfh, this.CZq.version, 2L, 0L, null);
+        com.tencent.mm.plugin.wepkg.utils.a.b("EnterWeb", this.sXV, this.tfh, this.CZq.version, 1L, 0L, null);
+        if (((com.tencent.mm.plugin.wepkg.model.b)localObject).DaG) {
+          com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.sXV, this.tfh, ((com.tencent.mm.plugin.wepkg.model.b)localObject).xqK, 1L, 0L, null);
         }
         label141:
-        String str1 = this.rQe;
-        String str2 = this.rXp;
-        if (this.BHi == null) {
+        String str1 = this.sXV;
+        String str2 = this.tfh;
+        if (this.CZq == null) {
           break label482;
         }
-        localObject = this.BHi.version;
+        localObject = this.CZq.version;
         label169:
         com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", str1, str2, (String)localObject, 0L, 0L, null);
-        if ((this.BHg) && (!bt.isNullOrNil(this.rXp)))
+        if ((this.CZo) && (!bs.isNullOrNil(this.tfh)))
         {
-          if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.game.report.a.b.class)).a(b.a.pjm, 0) != 1) {
+          if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.game.report.a.b.class)).a(b.a.pMD, 0) != 1) {
             break label490;
           }
           paramBoolean = true;
           label225:
-          ad.i("MicroMsg.Wepkg.WePkgPlugin", "isOpenPageCache:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+          ac.i("MicroMsg.Wepkg.WePkgPlugin", "isOpenPageCache:%b", new Object[] { Boolean.valueOf(paramBoolean) });
           if (paramBoolean)
           {
-            this.BHs = ((com.tencent.mm.plugin.game.luggage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.luggage.a.a.class)).aca(this.rXp);
-            if ((this.BHs != null) && (this.BHs.length() < 8)) {
-              this.BHs = null;
+            this.CZA = ((com.tencent.mm.plugin.game.luggage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.luggage.a.a.class)).agS(this.tfh);
+            if ((this.CZA != null) && (this.CZA.length() < 8)) {
+              this.CZA = null;
             }
           }
-          ad.d("MicroMsg.Wepkg.WePkgPlugin", "mPageCache:%s", new Object[] { this.BHs });
+          ac.d("MicroMsg.Wepkg.WePkgPlugin", "mPageCache:%s", new Object[] { this.CZA });
         }
-        ad.i("MicroMsg.Wepkg.WePkgPlugin", "wepkgAvailable:%s, pkgId:%s", new Object[] { Boolean.valueOf(this.BHg), this.rXp });
-        if (this.rQk == null)
+        ac.i("MicroMsg.Wepkg.WePkgPlugin", "wepkgAvailable:%s, pkgId:%s", new Object[] { Boolean.valueOf(this.CZo), this.tfh });
+        if (this.sYb == null)
         {
-          this.rQk = GameWebPerformanceInfo.qd(paramString);
-          this.rQk.fUW = d.aAg(paramString);
-          paramString = this.rQk;
-          if (!this.BHg) {
+          this.sYb = GameWebPerformanceInfo.tq(paramString);
+          this.sYb.fYR = d.aFy(paramString);
+          paramString = this.sYb;
+          if (!this.CZo) {
             break label495;
           }
         }
@@ -364,15 +364,15 @@ public final class c
     label495:
     for (int i = 1;; i = 0)
     {
-      paramString.fUP = i;
-      this.rQk.fVr = a.etj();
-      this.rQk.fVs = ett();
-      paramBoolean = this.BHg;
+      paramString.fYK = i;
+      this.sYb.fZm = a.eIC();
+      this.sYb.fZn = eIM();
+      paramBoolean = this.CZo;
       AppMethodBeat.o(110540);
       return paramBoolean;
-      com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.rQe, this.rXp, ((com.tencent.mm.plugin.wepkg.model.b)localObject).wfu, 3L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Ub(((com.tencent.mm.plugin.wepkg.model.b)localObject).BIw));
+      com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.sXV, this.tfh, ((com.tencent.mm.plugin.wepkg.model.b)localObject).xqK, 3L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Wj(((com.tencent.mm.plugin.wepkg.model.b)localObject).DaF));
       break;
-      com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.rQe, this.rXp, null, 3L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Ub(8));
+      com.tencent.mm.plugin.wepkg.utils.a.b("WepkgUsed", this.sXV, this.tfh, null, 3L, 0L, com.tencent.mm.plugin.wepkg.utils.a.Wj(8));
       break label141;
       localObject = "";
       break label169;
@@ -381,23 +381,23 @@ public final class c
     }
   }
   
-  public final String etr()
+  public final String eIK()
   {
-    if (!this.BHg) {
-      this.BHs = null;
+    if (!this.CZo) {
+      this.CZA = null;
     }
-    return this.BHs;
+    return this.CZA;
   }
   
-  public final boolean ets()
+  public final boolean eIL()
   {
-    return (this.BHi == null) || (!this.BHi.BJt);
+    return (this.CZq == null) || (!this.CZq.DbC);
   }
   
-  public final String ett()
+  public final String eIM()
   {
-    if (this.BHi != null) {
-      return this.BHi.version;
+    if (this.CZq != null) {
+      return this.CZq.version;
     }
     return "";
   }
@@ -405,9 +405,9 @@ public final class c
   public final void o(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(110542);
-    ad.d("MicroMsg.Wepkg.WePkgPlugin", "onPageStarted, url = %s", new Object[] { paramString });
-    this.aLL = System.currentTimeMillis();
-    b(paramWebView, azD(paramString));
+    ac.d("MicroMsg.Wepkg.WePkgPlugin", "onPageStarted, url = %s", new Object[] { paramString });
+    this.aMB = System.currentTimeMillis();
+    b(paramWebView, aEU(paramString));
     AppMethodBeat.o(110542);
   }
   
@@ -417,25 +417,25 @@ public final class c
     if (paramBundle == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.Wepkg.WePkgPlugin", "method = %s, bundler == null ? %b", new Object[] { paramString, Boolean.valueOf(bool) });
-      if ((!bt.isNullOrNil(paramString)) && (paramBundle != null)) {
+      ac.i("MicroMsg.Wepkg.WePkgPlugin", "method = %s, bundler == null ? %b", new Object[] { paramString, Boolean.valueOf(bool) });
+      if ((!bs.isNullOrNil(paramString)) && (paramBundle != null)) {
         break;
       }
       AppMethodBeat.o(110546);
       return null;
     }
-    if ((this.BHg) && (this.BHh != null) && (paramString.equalsIgnoreCase("shouldInterceptMediaUrl")))
+    if ((this.CZo) && (this.CZp != null) && (paramString.equalsIgnoreCase("shouldInterceptMediaUrl")))
     {
       paramString = paramBundle.getString("url");
-      ad.i("MicroMsg.Wepkg.WePkgPlugin", "onMiscCallBack origin mediaUrl:".concat(String.valueOf(paramString)));
-      if (!bt.isNullOrNil(paramString))
+      ac.i("MicroMsg.Wepkg.WePkgPlugin", "onMiscCallBack origin mediaUrl:".concat(String.valueOf(paramString)));
+      if (!bs.isNullOrNil(paramString))
       {
-        ad.i("MicroMsg.Wepkg.WePkgPlugin", "onMiscCallBack replace localPath");
-        paramString = this.BHh.UH(d.aAi(paramString));
-        if (!bt.isNullOrNil(paramString))
+        ac.i("MicroMsg.Wepkg.WePkgPlugin", "onMiscCallBack replace localPath");
+        paramString = this.CZp.YT(d.aFA(paramString));
+        if (!bs.isNullOrNil(paramString))
         {
-          ad.i("MicroMsg.Wepkg.WePkgPlugin", "localFile:".concat(String.valueOf(paramString)));
-          h.vKh.idkeyStat(859L, 14L, 1L, false);
+          ac.i("MicroMsg.Wepkg.WePkgPlugin", "localFile:".concat(String.valueOf(paramString)));
+          h.wUl.idkeyStat(859L, 14L, 1L, false);
           AppMethodBeat.o(110546);
           return paramString;
         }
@@ -448,49 +448,49 @@ public final class c
   public final void p(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(110543);
-    ad.d("MicroMsg.Wepkg.WePkgPlugin", "onPageFinished, url = %s", new Object[] { paramString });
+    ac.d("MicroMsg.Wepkg.WePkgPlugin", "onPageFinished, url = %s", new Object[] { paramString });
     long l;
     String str;
-    if (this.aLL != 0L)
+    if (this.aMB != 0L)
     {
-      l = System.currentTimeMillis() - this.aLL;
-      str = d.aAg(paramString);
-      if (!bt.isNullOrNil(str)) {
+      l = System.currentTimeMillis() - this.aMB;
+      str = d.aFy(paramString);
+      if (!bs.isNullOrNil(str)) {
         break label148;
       }
       com.tencent.mm.plugin.wepkg.utils.a.b("PageLoadTime", paramString, "", null, 2L, l, null);
     }
     for (;;)
     {
-      this.aLL = 0L;
-      if ((this.BHg) && (this.BHh != null) && ((!bt.isNullOrNil(this.BHs)) || (this.BHh.azW(paramString))))
+      this.aMB = 0L;
+      if ((this.CZo) && (this.CZp != null) && ((!bs.isNullOrNil(this.CZA)) || (this.CZp.aFo(paramString))))
       {
-        ad.i("MicroMsg.Wepkg.WePkgPlugin", "startTimer");
-        this.cOx.av(1000L, 1000L);
+        ac.i("MicroMsg.Wepkg.WePkgPlugin", "startTimer");
+        this.cLS.au(1000L, 1000L);
       }
-      b(paramWebView, azD(paramString));
+      b(paramWebView, aEU(paramString));
       AppMethodBeat.o(110543);
       return;
       label148:
-      if ((this.BHg) && (this.BHi != null)) {
-        com.tencent.mm.plugin.wepkg.utils.a.b("PageLoadTime", paramString, this.BHi.fUW, this.BHi.version, 1L, l, null);
+      if ((this.CZo) && (this.CZq != null)) {
+        com.tencent.mm.plugin.wepkg.utils.a.b("PageLoadTime", paramString, this.CZq.fYR, this.CZq.version, 1L, l, null);
       } else {
         com.tencent.mm.plugin.wepkg.utils.a.b("PageLoadTime", paramString, str, null, 0L, l, null);
       }
     }
   }
   
-  public final void tM(boolean paramBoolean)
+  public final void uO(boolean paramBoolean)
   {
     AppMethodBeat.i(110541);
-    this.cOx.stopTimer();
-    if ((paramBoolean) && (!bt.isNullOrNil(this.rXp)))
+    this.cLS.stopTimer();
+    if ((paramBoolean) && (!bs.isNullOrNil(this.tfh)))
     {
-      b.Mf(this.rXp);
-      com.tencent.mm.plugin.wepkg.model.c.etK().fn(this.rXp, 2);
+      b.Ql(this.tfh);
+      com.tencent.mm.plugin.wepkg.model.c.eJd().az(this.tfh, 2, 1);
     }
-    b.eto();
-    com.tencent.mm.plugin.wepkg.event.c.b(this.BHj);
+    b.eIH();
+    com.tencent.mm.plugin.wepkg.event.c.b(this.CZr);
     AppMethodBeat.o(110541);
   }
 }

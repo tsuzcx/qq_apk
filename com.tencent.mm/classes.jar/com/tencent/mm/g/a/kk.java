@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kk
   extends b
 {
-  public a doP;
+  public a dmc;
   
   public kk()
   {
@@ -15,22 +15,23 @@ public final class kk
   
   private kk(byte paramByte)
   {
-    AppMethodBeat.i(89747);
-    this.doP = new a();
-    this.ESR = false;
+    AppMethodBeat.i(128845);
+    this.dmc = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89747);
+    AppMethodBeat.o(128845);
   }
   
   public static final class a
   {
-    public String doQ;
-    public int type = 0;
+    public int dfm;
+    public String djj;
+    public String returnKey;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.kk
  * JD-Core Version:    0.7.0.1
  */

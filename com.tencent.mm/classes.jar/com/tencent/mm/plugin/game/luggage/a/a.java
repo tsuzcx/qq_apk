@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.game.luggage.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String aca(String paramString);
+  public abstract String agS(String paramString);
   
-  public abstract boolean acb(String paramString);
+  public abstract boolean agT(String paramString);
 }
 
 

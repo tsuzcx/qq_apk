@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.a.e;
 import d.a.j;
 import d.g.a.b;
@@ -14,37 +14,37 @@ import java.util.Collection;
 import java.util.List;
 import org.json.JSONArray;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appstorage/KVStorageUtil;", "", "()V", "INTERNAL_KEY_SEPARATOR", "", "MAX_STORAGE_ID", "", "NORMAL_KEY_SEPARATOR", "RET_GET_NO_SUCH_KEY", "", "[Ljava/lang/Object;", "TOTAL_DATA_SIZE_KEY", "TOTAL_STORAGE_ID_KEY", "addStorageId", "", "appId", "storageId", "getter", "Lkotlin/Function1;", "setter", "Lkotlin/Function2;", "calculateDataSize", "key", "data", "checkStorageIdInvalid", "", "generateInternalRecordKey", "generateRecordKey", "separator", "getAllStorageId", "", "getQuota", "removeStorageId", "removeStorageIdAll", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appstorage/KVStorageUtil;", "", "()V", "INTERNAL_KEY_SEPARATOR", "", "MAX_STORAGE_ID", "", "NORMAL_KEY_SEPARATOR", "RET_GET_NO_SUCH_KEY", "", "[Ljava/lang/Object;", "TOTAL_DATA_SIZE_KEY", "TOTAL_STORAGE_ID_KEY", "addStorageId", "", "appId", "storageId", "getter", "Lkotlin/Function1;", "setter", "Lkotlin/Function2;", "calculateDataSize", "key", "data", "checkStorageIdInvalid", "", "generateInternalRecordKey", "generateRecordKey", "separator", "getAllStorageId", "", "getQuota", "removeStorageId", "removeStorageIdAll", "luggage-wechat-full-sdk_release"})
 public final class s
 {
-  public static final Object[] iSV;
-  public static final s iSW;
+  public static final Object[] jtg;
+  public static final s jth;
   
   static
   {
     AppMethodBeat.i(147897);
-    iSW = new s();
-    iSV = new Object[] { o.a.iSR };
+    jth = new s();
+    jtg = new Object[] { o.a.jtc };
     AppMethodBeat.o(147897);
   }
   
-  public static final int U(int paramInt, String paramString)
+  public static final int V(int paramInt, String paramString)
   {
     AppMethodBeat.i(147896);
     k.h(paramString, "appId");
     if (k.g("wxGlobal", paramString))
     {
-      paramInt = AppBrandGlobalSystemConfig.aTv().jco;
+      paramInt = AppBrandGlobalSystemConfig.bat().jCB;
       AppMethodBeat.o(147896);
       return paramInt;
     }
     if ((paramInt == 0) || (paramInt == 2))
     {
-      paramInt = com.tencent.mm.plugin.appbrand.config.m.FS(paramString);
+      paramInt = com.tencent.mm.plugin.appbrand.config.m.JW(paramString);
       AppMethodBeat.o(147896);
       return paramInt;
     }
-    paramInt = com.tencent.mm.plugin.appbrand.config.m.FT(paramString);
+    paramInt = com.tencent.mm.plugin.appbrand.config.m.JX(paramString);
     AppMethodBeat.o(147896);
     return paramInt;
   }
@@ -63,7 +63,7 @@ public final class s
     }
     paramb = new JSONArray((Collection)e.N(paramb));
     paramb.put(paramInt);
-    paramString = cg(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    paramString = cp(paramString, "@@@TOTAL@STORAGE@ID@@@");
     paramb = paramb.toString();
     k.g(paramb, "json.toString()");
     paramm.n(paramString, paramb);
@@ -76,14 +76,14 @@ public final class s
     k.h(paramString, "appId");
     k.h(paramb, "getter");
     k.h(paramm, "setter");
-    paramString = cg(paramString, "@@@TOTAL@STORAGE@ID@@@");
-    if (bt.isNullOrNil(paramString))
+    paramString = cp(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147892);
       return new int[] { 0 };
     }
-    paramString = (String)paramb.aA(paramString);
-    if (bt.isNullOrNil(paramString))
+    paramString = (String)paramb.ay(paramString);
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147892);
       return new int[] { 0 };
@@ -106,7 +106,7 @@ public final class s
     if (!paramString.contains(Integer.valueOf(0))) {
       paramString.add(Integer.valueOf(0));
     }
-    paramString = j.p((Collection)paramString);
+    paramString = j.q((Collection)paramString);
     AppMethodBeat.o(147892);
     return paramString;
   }
@@ -119,7 +119,7 @@ public final class s
     k.h(paramm, "setter");
     paramb = e.Q(a(paramString, paramb, paramm));
     paramb.remove(Integer.valueOf(paramInt));
-    paramString = cg(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    paramString = cp(paramString, "@@@TOTAL@STORAGE@ID@@@");
     paramb = new JSONArray((Collection)paramb).toString();
     k.g(paramb, "JSONArray(list).toString()");
     paramm.n(paramString, paramb);
@@ -132,7 +132,7 @@ public final class s
     k.h(paramString, "appId");
     k.h(paramb, "getter");
     k.h(paramm, "setter");
-    paramm.n(cg(paramString, "@@@TOTAL@STORAGE@ID@@@"), "");
+    paramm.n(cp(paramString, "@@@TOTAL@STORAGE@ID@@@"), "");
     AppMethodBeat.o(147895);
   }
   
@@ -155,7 +155,7 @@ public final class s
     return paramString1;
   }
   
-  public static final int cf(String paramString1, String paramString2)
+  public static final int co(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147889);
     String str = paramString1;
@@ -172,7 +172,7 @@ public final class s
     return i + j;
   }
   
-  private static String cg(String paramString1, String paramString2)
+  private static String cp(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147891);
     k.h(paramString1, "appId");
@@ -182,7 +182,7 @@ public final class s
     return paramString1;
   }
   
-  public static final String n(int paramInt, String paramString1, String paramString2)
+  public static final String m(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147890);
     k.h(paramString1, "appId");
@@ -192,7 +192,7 @@ public final class s
     return paramString1;
   }
   
-  public static final boolean qI(int paramInt)
+  public static final boolean rv(int paramInt)
   {
     if (paramInt < 0) {}
     while (paramInt > 2) {
@@ -203,7 +203,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.s
  * JD-Core Version:    0.7.0.1
  */

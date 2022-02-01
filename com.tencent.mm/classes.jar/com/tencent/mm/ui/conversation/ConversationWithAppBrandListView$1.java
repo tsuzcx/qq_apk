@@ -1,16 +1,16 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ky;
+import com.tencent.mm.g.a.lh;
 import com.tencent.mm.sdk.b.c;
 
 final class ConversationWithAppBrandListView$1
-  extends c<ky>
+  extends c<lh>
 {
   ConversationWithAppBrandListView$1(ConversationWithAppBrandListView paramConversationWithAppBrandListView)
   {
     AppMethodBeat.i(161566);
-    this.__eventId = ky.class.getName().hashCode();
+    this.__eventId = lh.class.getName().hashCode();
     AppMethodBeat.o(161566);
   }
 }

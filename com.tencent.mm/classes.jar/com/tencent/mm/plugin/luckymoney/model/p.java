@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dr;
+import com.tencent.mm.g.c.dv;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class p
-  extends dr
+  extends dv
 {
   public static c.a info;
   
@@ -15,28 +15,28 @@ public final class p
   {
     AppMethodBeat.i(65223);
     c.a locala = new c.a();
-    locala.EYt = new Field[5];
+    locala.GvF = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "subtype";
-    locala.EYv.put("subtype", "INTEGER PRIMARY KEY ");
+    locala.GvH.put("subtype", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" subtype INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "subtype";
+    locala.GvG = "subtype";
     locala.columns[1] = "bubbleMd5";
-    locala.EYv.put("bubbleMd5", "TEXT");
+    locala.GvH.put("bubbleMd5", "TEXT");
     localStringBuilder.append(" bubbleMd5 TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "coverMd5";
-    locala.EYv.put("coverMd5", "TEXT");
+    locala.GvH.put("coverMd5", "TEXT");
     localStringBuilder.append(" coverMd5 TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "minilogoMd5";
-    locala.EYv.put("minilogoMd5", "TEXT");
+    locala.GvH.put("minilogoMd5", "TEXT");
     localStringBuilder.append(" minilogoMd5 TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "version";
-    locala.EYv.put("version", "INTEGER");
+    locala.GvH.put("version", "INTEGER");
     localStringBuilder.append(" version INTEGER");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();

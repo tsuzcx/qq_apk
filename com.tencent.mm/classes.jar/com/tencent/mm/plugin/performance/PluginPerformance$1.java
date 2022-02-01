@@ -7,9 +7,9 @@ import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.a;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class PluginPerformance$1
   implements a
@@ -20,22 +20,22 @@ final class PluginPerformance$1
   {
     int i = 2;
     AppMethodBeat.i(124898);
-    ad.e("MicroMsg.PluginPerformance", "WARNING: bitmap decode oversize \n(%s B/%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(20971520L), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) });
+    ac.e("MicroMsg.PluginPerformance", "WARNING: bitmap decode oversize \n(%s B/%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(20971520L), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) });
     Throwable localThrowable = new Throwable();
-    ad.printErrStackTrace("MicroMsg.PluginPerformance", localThrowable, "bitmap stacktrace", new Object[0]);
+    ac.printErrStackTrace("MicroMsg.PluginPerformance", localThrowable, "bitmap stacktrace", new Object[0]);
     if (paramInt > 52428800) {
-      com.tencent.mm.plugin.report.service.h.vKh.f(18613, new Object[] { this.cLs.mProcessName, Log.getStackTraceString(localThrowable).replace('\n', ';').replace("\t", "") });
+      com.tencent.mm.plugin.report.service.h.wUl.f(18613, new Object[] { this.cIA.mProcessName, Log.getStackTraceString(localThrowable).replace('\n', ';').replace("\t", "") });
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.vKh.dB(1230, i);
-      if (bu.eGT()) {
-        com.tencent.e.h.Iye.aN(new Runnable()
+      com.tencent.mm.plugin.report.service.h.wUl.dB(1230, i);
+      if (bt.eWo()) {
+        com.tencent.e.h.JZN.aQ(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(124897);
-            Toast.makeText(aj.getContext(), String.format("WARNING: large bitmap decode \n(%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) }), 1).show();
+            Toast.makeText(ai.getContext(), String.format("WARNING: large bitmap decode \n(%s B), [w:%s, h:%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight) }), 1).show();
             AppMethodBeat.o(124897);
           }
         });

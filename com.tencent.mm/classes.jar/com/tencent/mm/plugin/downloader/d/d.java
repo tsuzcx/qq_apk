@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.xwalk.core.Log;
 
 public final class d
 {
-  public static Map<Integer, ByteBuffer> H(e parame)
+  public static Map<Integer, ByteBuffer> G(e parame)
   {
     AppMethodBeat.i(177460);
     if ((parame == null) || (!parame.exists()) || (!parame.isFile()))
@@ -23,7 +23,7 @@ public final class d
     LinkedHashMap localLinkedHashMap;
     try
     {
-      localObject = f.J(parame);
+      localObject = f.I(parame);
       a.C((ByteBuffer)localObject);
       localObject = a.c((ByteBuffer)localObject, ((ByteBuffer)localObject).capacity() - 24);
       localLinkedHashMap = new LinkedHashMap();
@@ -47,7 +47,7 @@ public final class d
       for (;;)
       {
         long l;
-        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + q.B(parame.fhU()) + " not have apk signature block");
+        Log.e("MicroMsg.Channel.IdValueReader", "APK : " + q.B(parame.fxV()) + " not have apk signature block");
         continue;
         int j = (int)l;
         int k = localb1.position();
@@ -60,7 +60,7 @@ public final class d
         int m = localb2.getInt();
         localLinkedHashMap.put(Integer.valueOf(m), a.d(localb2, j - 4));
         if (m == 1896449818) {
-          ad.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
+          ac.i("MicroMsg.Channel.V2SchemeUtil", "find V2 signature block Id : 1896449818");
         }
         localb2.position(k + j);
       }
@@ -88,7 +88,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.d
  * JD-Core Version:    0.7.0.1
  */

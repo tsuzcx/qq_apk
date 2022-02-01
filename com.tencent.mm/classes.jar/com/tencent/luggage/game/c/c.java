@@ -14,17 +14,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements g
 {
-  private WebView cbL;
+  private WebView bYI;
   
-  public final g.a By()
+  public final g.a Bc()
   {
     AppMethodBeat.i(130504);
     g.a local1 = new g.a()
     {
-      public final void Bz()
+      public final void Bd()
       {
         AppMethodBeat.i(130500);
-        this.cbM.setJavaScriptEnabled(true);
+        this.bYJ.setJavaScriptEnabled(true);
         AppMethodBeat.o(130500);
       }
     };
@@ -35,12 +35,12 @@ public final class c
   public final void a(final g.b paramb)
   {
     AppMethodBeat.i(130505);
-    this.cbL.setWebViewClient(new WebViewClient()
+    this.bYI.setWebViewClient(new WebViewClient()
     {
       public final void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(130502);
-        paramb.Bx();
+        paramb.Bb();
         AppMethodBeat.o(130502);
       }
       
@@ -48,10 +48,10 @@ public final class c
       public final WebResourceResponse shouldInterceptRequest(WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest)
       {
         AppMethodBeat.i(130501);
-        if (paramb.cd(paramAnonymousWebResourceRequest.getUrl().toString()))
+        if (paramb.bT(paramAnonymousWebResourceRequest.getUrl().toString()))
         {
-          paramAnonymousWebView = paramb.cg(g.b.cck);
-          paramAnonymousWebView = new WebResourceResponse(paramAnonymousWebView.mimeType, paramAnonymousWebView.charset, paramAnonymousWebView.aCO);
+          paramAnonymousWebView = paramb.bW(g.b.bZh);
+          paramAnonymousWebView = new WebResourceResponse(paramAnonymousWebView.mimeType, paramAnonymousWebView.charset, paramAnonymousWebView.aDF);
           AppMethodBeat.o(130501);
           return paramAnonymousWebView;
         }
@@ -62,57 +62,57 @@ public final class c
     AppMethodBeat.o(130505);
   }
   
-  public final void au(Context paramContext)
+  public final void av(Context paramContext)
   {
     AppMethodBeat.i(130503);
-    this.cbL = new WebView(paramContext);
+    this.bYI = new WebView(paramContext);
     AppMethodBeat.o(130503);
   }
   
-  public final void bO(String paramString)
+  public final void bE(String paramString)
   {
     AppMethodBeat.i(130510);
-    this.cbL.evaluateJavascript(paramString, null);
+    this.bYI.evaluateJavascript(paramString, null);
     AppMethodBeat.o(130510);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(130511);
-    this.cbL.destroy();
+    this.bYI.destroy();
     AppMethodBeat.o(130511);
   }
   
   public final View getView()
   {
-    return this.cbL;
+    return this.bYI;
   }
   
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(130506);
-    this.cbL.loadUrl(paramString);
+    this.bYI.loadUrl(paramString);
     AppMethodBeat.o(130506);
   }
   
   public final void requestLayout()
   {
     AppMethodBeat.i(130509);
-    this.cbL.requestLayout();
+    this.bYI.requestLayout();
     AppMethodBeat.o(130509);
   }
   
   public final void setTranslationY(float paramFloat)
   {
     AppMethodBeat.i(130507);
-    this.cbL.setTranslationY(paramFloat);
+    this.bYI.setTranslationY(paramFloat);
     AppMethodBeat.o(130507);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(130508);
-    this.cbL.setVisibility(paramInt);
+    this.bYI.setVisibility(paramInt);
     AppMethodBeat.o(130508);
   }
 }

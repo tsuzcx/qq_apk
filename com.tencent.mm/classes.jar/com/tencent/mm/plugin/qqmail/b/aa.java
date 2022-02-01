@@ -3,81 +3,80 @@ package com.tencent.mm.plugin.qqmail.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class aa
 {
-  ac uKG;
-  ArrayList<ab> uMp;
-  z uMq;
-  boolean uMr;
-  ac.f uMs;
-  ac.e uMt;
+  ac vTx;
+  ArrayList<ab> vVf;
+  z vVg;
+  boolean vVh;
+  ac.f vVi;
+  ac.e vVj;
   
   public aa()
   {
     AppMethodBeat.i(122766);
-    this.uMp = new ArrayList();
-    this.uKG = ((o)g.ad(o.class)).getShareModeMailAppService();
-    this.uMq = null;
-    this.uMr = false;
-    this.uMs = new ac.f()
+    this.vVf = new ArrayList();
+    this.vTx = ((o)g.ad(o.class)).getShareModeMailAppService();
+    this.vVg = null;
+    this.vVh = false;
+    this.vVi = new ac.f()
     {
-      public final void aq(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ap(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(122764);
         if (paramAnonymousInt1 == paramAnonymousInt2)
         {
-          ad.i("MicroMsg.ShareMailQueue", "finished one job, queue.size = %d", new Object[] { Integer.valueOf(aa.this.uMp.size()) });
-          if (aa.this.uMq != null) {
-            aa.this.uMq.akY(paramAnonymousString);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareMailQueue", "finished one job, queue.size = %d", new Object[] { Integer.valueOf(aa.this.vVf.size()) });
+          if (aa.this.vVg != null) {
+            aa.this.vVg.apX(paramAnonymousString);
           }
-          if (aa.this.uMp.size() > 0)
+          if (aa.this.vVf.size() > 0)
           {
-            ad.i("MicroMsg.ShareMailQueue", "continue to send next mail");
-            paramAnonymousString = (ab)aa.this.uMp.remove(0);
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareMailQueue", "continue to send next mail");
+            paramAnonymousString = (ab)aa.this.vVf.remove(0);
             aa.this.b(paramAnonymousString);
-            aa.this.uKG.a(this, aa.this.uMt);
+            aa.this.vTx.a(this, aa.this.vVj);
             AppMethodBeat.o(122764);
             return;
           }
-          ad.i("MicroMsg.ShareMailQueue", "finished sent all mails");
-          aa.this.uMr = false;
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareMailQueue", "finished sent all mails");
+          aa.this.vVh = false;
         }
         AppMethodBeat.o(122764);
       }
     };
-    this.uMt = new ac.e()
+    this.vVj = new ac.e()
     {
-      public final void ala(String paramAnonymousString)
+      public final void apZ(String paramAnonymousString)
       {
         AppMethodBeat.i(122765);
         z localz;
-        if (aa.this.uMq != null)
+        if (aa.this.vVg != null)
         {
-          localz = aa.this.uMq;
-          if (!bt.isNullOrNil(paramAnonymousString)) {
+          localz = aa.this.vVg;
+          if (!bs.isNullOrNil(paramAnonymousString)) {
             break label104;
           }
-          ad.w("MicroMsg.ShareMailInfoMgr", "notify fail error, subject is null");
+          com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.ShareMailInfoMgr", "notify fail error, subject is null");
         }
-        while (aa.this.uMp.size() > 0)
+        while (aa.this.vVf.size() > 0)
         {
-          ad.i("MicroMsg.ShareMailQueue", "continue to send next mail");
-          paramAnonymousString = (ab)aa.this.uMp.remove(0);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareMailQueue", "continue to send next mail");
+          paramAnonymousString = (ab)aa.this.vVf.remove(0);
           aa.this.b(paramAnonymousString);
-          aa.this.uKG.a(aa.this.uMs, this);
+          aa.this.vTx.a(aa.this.vVi, this);
           AppMethodBeat.o(122765);
           return;
           label104:
-          z.akZ(paramAnonymousString);
-          localz.akY(paramAnonymousString);
+          z.apY(paramAnonymousString);
+          localz.apX(paramAnonymousString);
         }
-        ad.i("MicroMsg.ShareMailQueue", "final job fail");
-        aa.this.uMr = false;
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ShareMailQueue", "final job fail");
+        aa.this.vVh = false;
         AppMethodBeat.o(122765);
       }
     };
@@ -87,38 +86,38 @@ public final class aa
   public final void a(ab paramab)
   {
     AppMethodBeat.i(122767);
-    if (!g.afz().aeI())
+    if (!g.agP().afY())
     {
       AppMethodBeat.o(122767);
       return;
     }
-    if (this.uMq == null) {
-      this.uMq = new z();
+    if (this.vVg == null) {
+      this.vVg = new z();
     }
-    z localz = this.uMq;
-    String str = paramab.uLh;
-    if (bt.isNullOrNil(str)) {
-      ad.w("MicroMsg.ShareMailInfoMgr", "add info fail, info is null");
+    z localz = this.vVg;
+    String str = paramab.vTY;
+    if (bs.isNullOrNil(str)) {
+      com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.ShareMailInfoMgr", "add info fail, info is null");
     }
     for (;;)
     {
-      this.uMp.add(paramab);
-      ad.d("MicroMsg.ShareMailQueue", "add a new job, queue.size: %d", new Object[] { Integer.valueOf(this.uMp.size()) });
-      if (!this.uMr)
+      this.vVf.add(paramab);
+      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ShareMailQueue", "add a new job, queue.size: %d", new Object[] { Integer.valueOf(this.vVf.size()) });
+      if (!this.vVh)
       {
-        ad.d("MicroMsg.ShareMailQueue", "start execute");
-        if (this.uMp.size() > 0)
+        com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.ShareMailQueue", "start execute");
+        if (this.vVf.size() > 0)
         {
-          this.uMr = true;
-          b((ab)this.uMp.remove(0));
-          this.uKG.a(this.uMs, this.uMt);
+          this.vVh = true;
+          b((ab)this.vVf.remove(0));
+          this.vTx.a(this.vVi, this.vVj);
         }
       }
       AppMethodBeat.o(122767);
       return;
       x localx = new x();
-      localx.uLh = str;
-      localz.uMo.tvP.add(localx);
+      localx.vTY = str;
+      localz.vVe.uEi.add(localx);
       localz.save();
     }
   }
@@ -126,15 +125,15 @@ public final class aa
   final void b(ab paramab)
   {
     AppMethodBeat.i(122768);
-    this.uKG.clearData();
-    this.uKG.dpv = paramab.dpv;
-    this.uKG.uLh = paramab.uLh;
-    this.uKG.uLJ = paramab.uLJ;
-    this.uKG.uLK = paramab.uLK;
-    this.uKG.uMv = paramab.uMv;
-    this.uKG.at(paramab.uMw);
-    this.uKG.au(paramab.uMx);
-    this.uKG.av(paramab.uMy);
+    this.vTx.clearData();
+    this.vTx.dng = paramab.dng;
+    this.vTx.vTY = paramab.vTY;
+    this.vTx.vUz = paramab.vUz;
+    this.vTx.vUA = paramab.vUA;
+    this.vTx.vVl = paramab.vVl;
+    this.vTx.av(paramab.vVm);
+    this.vTx.aw(paramab.vVn);
+    this.vTx.ax(paramab.vVo);
     AppMethodBeat.o(122768);
   }
 }

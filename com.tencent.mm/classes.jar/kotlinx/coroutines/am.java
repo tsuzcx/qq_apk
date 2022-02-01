@@ -2,54 +2,49 @@ package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.d;
-import d.d.f;
 import d.l;
+import d.p;
+import d.p.a;
+import d.q;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/DeferredCoroutine;", "T", "Lkotlinx/coroutines/AbstractCoroutine;", "Lkotlinx/coroutines/Deferred;", "Lkotlinx/coroutines/selects/SelectClause1;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "onAwait", "getOnAwait", "()Lkotlinx/coroutines/selects/SelectClause1;", "await", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getCompleted", "()Ljava/lang/Object;", "registerSelectClause1", "", "R", "select", "Lkotlinx/coroutines/selects/SelectInstance;", "block", "Lkotlin/Function2;", "Lkotlin/coroutines/Continuation;", "", "(Lkotlinx/coroutines/selects/SelectInstance;Lkotlin/jvm/functions/Function2;)V", "kotlinx-coroutines-core"})
-class am<T>
-  extends a<T>
-  implements al<T>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"classSimpleName", "", "", "getClassSimpleName", "(Ljava/lang/Object;)Ljava/lang/String;", "hexAddress", "getHexAddress", "toDebugString", "Lkotlin/coroutines/Continuation;", "kotlinx-coroutines-core"})
+public final class am
 {
-  public am(f paramf, boolean paramBoolean)
+  public static final String e(d<?> paramd)
   {
-    super(paramf, paramBoolean);
-    AppMethodBeat.i(118061);
-    AppMethodBeat.o(118061);
-  }
-  
-  public final Object f(d<? super T> paramd)
-  {
-    AppMethodBeat.i(118059);
-    paramd = a(this, paramd);
-    AppMethodBeat.o(118059);
-    return paramd;
-  }
-  
-  public final T gaF()
-  {
-    AppMethodBeat.i(202373);
-    Object localObject = fLv();
-    if (!(localObject instanceof be)) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(191151);
+    if ((paramd instanceof at))
     {
-      localObject = (Throwable)new IllegalStateException("This job has not completed yet".toString());
-      AppMethodBeat.o(202373);
-      throw ((Throwable)localObject);
+      paramd = paramd.toString();
+      AppMethodBeat.o(191151);
+      return paramd;
     }
-    if ((localObject instanceof q))
+    try
     {
-      localObject = ((q)localObject).cause;
-      AppMethodBeat.o(202373);
-      throw ((Throwable)localObject);
+      Object localObject1 = p.KTg;
+      localObject1 = p.eI(paramd + '@' + Integer.toHexString(System.identityHashCode(paramd)));
+      if (p.eH(localObject1) == null)
+      {
+        paramd = (String)localObject1;
+        AppMethodBeat.o(191151);
+        return paramd;
+      }
     }
-    localObject = bo.fK(localObject);
-    AppMethodBeat.o(202373);
-    return localObject;
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        p.a locala = p.KTg;
+        Object localObject2 = p.eI(q.n(localThrowable));
+        continue;
+        localObject2 = paramd.getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(paramd));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.am
  * JD-Core Version:    0.7.0.1
  */

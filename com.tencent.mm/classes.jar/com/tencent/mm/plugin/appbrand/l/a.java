@@ -5,19 +5,19 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.handoff.model.HandOffMG;
 import com.tencent.mm.plugin.handoff.model.HandOffMP;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/handoff/HandOffUtils;", "", "()V", "obtainHandOffModel", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "handOffType", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/handoff/HandOffUtils;", "", "()V", "obtainHandOffModel", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "handOffType", "", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a jtT;
+  public static final a jUo;
   
   static
   {
     AppMethodBeat.i(175133);
-    jtT = new a();
+    jUo = new a();
     AppMethodBeat.o(175133);
   }
   
@@ -25,14 +25,14 @@ public final class a
   {
     AppMethodBeat.i(175132);
     k.h(paramo, "$this$obtainHandOffModel");
-    paramo = paramo.aNc();
-    String str1 = bt.nullAsNil(paramo.iconUrl);
-    String str2 = bt.nullAsNil(paramo.dfM);
-    String str3 = bt.nullAsNil(paramo.appId);
-    String str4 = bt.nullAsNil(paramo.username);
-    String str5 = bt.nullAsNil(paramo.iJb);
+    paramo = paramo.aTS();
+    String str1 = bs.nullAsNil(paramo.iconUrl);
+    String str2 = bs.nullAsNil(paramo.ddh);
+    String str3 = bs.nullAsNil(paramo.appId);
+    String str4 = bs.nullAsNil(paramo.username);
+    String str5 = bs.nullAsNil(paramo.jjf);
     k.g(paramo, "config");
-    if (paramo.CZ())
+    if (paramo.CC())
     {
       k.g(str1, "icon");
       k.g(str2, "title");

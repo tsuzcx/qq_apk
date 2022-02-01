@@ -3,10 +3,10 @@ package d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, fOb=1)
 public class i
 {
-  public static final <T> f<T> E(a<? extends T> parama)
+  public static final <T> f<T> K(a<? extends T> parama)
   {
     AppMethodBeat.i(129243);
     d.g.b.k.h(parama, "initializer");
@@ -20,7 +20,7 @@ public class i
     AppMethodBeat.i(129244);
     d.g.b.k.h(paramk, "mode");
     d.g.b.k.h(parama, "initializer");
-    switch (h.ciE[paramk.ordinal()])
+    switch (h.cfA[paramk.ordinal()])
     {
     default: 
       paramk = new m();

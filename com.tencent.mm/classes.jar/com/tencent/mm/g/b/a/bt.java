@@ -6,52 +6,62 @@ import com.tencent.mm.plugin.report.a;
 public final class bt
   extends a
 {
-  public long dFf;
-  public long dPX;
-  public long dPY;
-  public long dPZ = 0L;
+  public long dNk;
+  public long dNl = 0L;
+  public long dNm = 0L;
+  public long dNn = 0L;
+  public String dNo = "";
+  public String dNp = "";
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(88783);
+    AppMethodBeat.i(209953);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFf);
+    ((StringBuffer)localObject).append(this.dNk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPX);
+    ((StringBuffer)localObject).append(this.dNl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPY);
+    ((StringBuffer)localObject).append(this.dNm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPZ);
+    ((StringBuffer)localObject).append(this.dNn);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dNo);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dNp);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(88783);
+    arz((String)localObject);
+    AppMethodBeat.o(209953);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(88784);
+    AppMethodBeat.i(209954);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("action:").append(this.dFf);
+    ((StringBuffer)localObject).append("RecomdSuccess:").append(this.dNk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgid:").append(this.dPX);
+    ((StringBuffer)localObject).append("RecomdFail:").append(this.dNl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgType:").append(this.dPY);
+    ((StringBuffer)localObject).append("otherSuccess:").append(this.dNm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appMsgType:").append(this.dPZ);
+    ((StringBuffer)localObject).append("otherFail:").append(this.dNn);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("sucRoomList:").append(this.dNo);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ticketId:").append(this.dNp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(88784);
+    AppMethodBeat.o(209954);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18754;
+    return 19451;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bt
  * JD-Core Version:    0.7.0.1
  */

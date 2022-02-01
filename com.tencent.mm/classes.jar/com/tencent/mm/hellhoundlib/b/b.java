@@ -6,42 +6,42 @@ import java.util.List;
 
 public final class b
 {
-  private List<Object> fYb;
+  private List<Object> gcI;
   
   public b()
   {
     AppMethodBeat.i(168726);
-    this.fYb = new ArrayList();
+    this.gcI = new ArrayList();
     AppMethodBeat.o(168726);
   }
   
-  public final Object[] ado()
+  public final Object[] aeE()
   {
     AppMethodBeat.i(168730);
-    Object[] arrayOfObject = this.fYb.toArray();
-    this.fYb.clear();
+    Object[] arrayOfObject = this.gcI.toArray();
+    this.gcI.clear();
     AppMethodBeat.o(168730);
     return arrayOfObject;
   }
   
-  public final void be(Object paramObject)
+  public final void bb(Object paramObject)
   {
     AppMethodBeat.i(168729);
-    this.fYb.add(paramObject);
+    this.gcI.add(paramObject);
     AppMethodBeat.o(168729);
   }
   
   public final void du(boolean paramBoolean)
   {
     AppMethodBeat.i(168728);
-    be(Boolean.valueOf(paramBoolean));
+    bb(Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(168728);
   }
   
-  public final void lT(int paramInt)
+  public final void lS(int paramInt)
   {
     AppMethodBeat.i(168727);
-    be(Integer.valueOf(paramInt));
+    bb(Integer.valueOf(paramInt));
     AppMethodBeat.o(168727);
   }
 }

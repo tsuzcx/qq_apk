@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static float csG = -1.0F;
+  private static float cpO = -1.0F;
   
-  public static Point aK(Context paramContext)
+  public static Point aL(Context paramContext)
   {
     AppMethodBeat.i(140069);
     WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
@@ -36,10 +36,10 @@ public final class b
   public static float getDensity(Context paramContext)
   {
     AppMethodBeat.i(140067);
-    if (csG < 0.0F) {
-      csG = paramContext.getResources().getDisplayMetrics().density;
+    if (cpO < 0.0F) {
+      cpO = paramContext.getResources().getDisplayMetrics().density;
     }
-    float f = csG;
+    float f = cpO;
     AppMethodBeat.o(140067);
     return f;
   }

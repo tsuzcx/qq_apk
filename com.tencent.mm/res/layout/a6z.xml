@@ -9,7 +9,7 @@
     <FrameLayout android:id="@id/fgl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <include android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a3z" />
     </FrameLayout>
-    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/hqt" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="144.0dip" android:indeterminateDrawable="@drawable/a7e" />
+    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/htq" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginTop="144.0dip" android:indeterminateDrawable="@drawable/a7e" />
     <TextView android:gravity="center_horizontal" android:id="@id/f1l" android:paddingTop="144.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ce4" style="@style/yn" />
-    <include android:layout_gravity="bottom" android:id="@id/hoh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bq7" />
+    <include android:layout_gravity="bottom" android:id="@id/hqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bq8" />
 </com.tencent.mm.view.TouchableLayout>

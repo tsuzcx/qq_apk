@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.widget.EditText;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.a.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class pv
   extends b
 {
-  public a dvv;
-  
   public pv()
   {
     this((byte)0);
@@ -17,17 +12,8 @@ public final class pv
   
   private pv(byte paramByte)
   {
-    AppMethodBeat.i(19827);
-    this.dvv = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19827);
-  }
-  
-  public static final class a
-  {
-    public a dvw;
-    public EditText dvx;
   }
 }
 

@@ -10,19 +10,19 @@ final class WalletLqtPlanAddUI$6
 {
   WalletLqtPlanAddUI$6(WalletLqtPlanAddUI paramWalletLqtPlanAddUI, Dialog paramDialog) {}
   
-  public final void ce(Object paramObject)
+  public final void cc(Object paramObject)
   {
     AppMethodBeat.i(68839);
-    this.zIi.dismiss();
+    this.Bau.dismiss();
     if ((paramObject instanceof m)) {
-      ((m)paramObject).A(this.zJT.getContext(), false);
+      ((m)paramObject).B(this.Bcf.getContext(), false);
     }
     AppMethodBeat.o(68839);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanAddUI.6
  * JD-Core Version:    0.7.0.1
  */

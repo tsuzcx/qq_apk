@@ -8,14 +8,14 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
   extends RecyclerView.h
 {
-  private final Drawable ajR;
+  private final Drawable akL;
   private final Resources mRes;
   private int mSize;
   
@@ -23,12 +23,12 @@ public final class c
   {
     AppMethodBeat.i(8958);
     this.mRes = paramResources;
-    this.ajR = new ColorDrawable(paramResources.getColor(2131100251));
+    this.akL = new ColorDrawable(paramResources.getColor(2131100251));
     this.mSize = paramResources.getDimensionPixelSize(2131166455);
     AppMethodBeat.o(8958);
   }
   
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(8959);
     int j = paramRecyclerView.getPaddingLeft();
@@ -42,7 +42,7 @@ public final class c
       View localView3 = localView1.findViewById(2131304421);
       View localView4 = localView1.findViewById(2131304444);
       if (localView1.getVisibility() == 8) {
-        super.a(paramCanvas, paramRecyclerView, params);
+        super.a(paramCanvas, paramRecyclerView, paramt);
       }
       for (;;)
       {
@@ -54,25 +54,25 @@ public final class c
         int i1 = this.mSize + n;
         if (localView2.getVisibility() == 0)
         {
-          this.ajR.setBounds(j, n, k, i1);
-          this.ajR.draw(paramCanvas);
+          this.akL.setBounds(j, n, k, i1);
+          this.akL.draw(paramCanvas);
         }
         else if (localView3.getVisibility() == 0)
         {
-          this.ajR.setBounds(this.mRes.getDimensionPixelSize(2131166778) + j, n, k, i1);
-          this.ajR.draw(paramCanvas);
+          this.akL.setBounds(this.mRes.getDimensionPixelSize(2131166778) + j, n, k, i1);
+          this.akL.draw(paramCanvas);
         }
         else if (localView4.getVisibility() == 0)
         {
-          this.ajR.setBounds(this.mRes.getDimensionPixelSize(2131166777) + j, n, k, i1);
-          this.ajR.draw(paramCanvas);
+          this.akL.setBounds(this.mRes.getDimensionPixelSize(2131166777) + j, n, k, i1);
+          this.akL.draw(paramCanvas);
         }
       }
     }
     AppMethodBeat.o(8959);
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(8960);
     paramRect.set(0, 0, 0, this.mSize);

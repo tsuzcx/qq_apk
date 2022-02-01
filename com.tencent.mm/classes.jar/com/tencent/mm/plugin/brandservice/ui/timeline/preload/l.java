@@ -1,37 +1,19 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.ew;
 
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"DELAY_TIME", "", "getBuffSize", "", "", "getContent", "hasContent", "", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "plugin-brandservice_release"})
 public final class l
 {
-  public static void er(String paramString1, String paramString2)
+  public static final boolean b(ew paramew)
   {
-    AppMethodBeat.i(6185);
-    if ((ad.getLogLevel() == 0) && (bu.eGT())) {
-      aq.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(6183);
-          Toast.makeText(aj.getContext(), this.hrB, 0).show();
-          AppMethodBeat.o(6183);
-        }
-      });
-    }
-    ad.i(paramString1, paramString2);
-    AppMethodBeat.o(6185);
-  }
-  
-  public static void showToast(String paramString)
-  {
-    AppMethodBeat.i(6184);
-    er("MicroMsg.PreloadUtil", paramString);
-    AppMethodBeat.o(6184);
+    AppMethodBeat.i(6725);
+    d.g.b.k.h(paramew, "$this$hasContent");
+    k localk = k.nGP;
+    boolean bool = b.c(k.bKX(), b.a(paramew));
+    AppMethodBeat.o(6725);
+    return bool;
   }
 }
 

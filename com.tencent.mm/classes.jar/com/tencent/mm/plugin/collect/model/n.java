@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.collect.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.b.a.a;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -17,24 +17,24 @@ import org.json.JSONObject;
 public final class n
   extends a
 {
-  public long dEb;
-  public int dcG;
+  public long dBN;
+  public int dae;
   public String desc;
-  public String iau;
-  public String iav;
-  public String nTK;
-  public String nTL;
-  public int nTM;
-  public String nTN;
-  public String nTO;
-  public String nTP;
-  public String nTQ;
-  public String nTR;
-  public String nTS;
-  public int nTT;
-  public String nTU;
-  public String nTV;
-  public int nTW;
+  public String iAx;
+  public String iAy;
+  public String oxf;
+  public String oxg;
+  public int oxh;
+  public String oxi;
+  public String oxj;
+  public String oxk;
+  public String oxl;
+  public String oxm;
+  public String oxn;
+  public int oxo;
+  public String oxp;
+  public String oxq;
+  public int oxr;
   
   public n(int paramInt)
   {
@@ -43,7 +43,7 @@ public final class n
     localHashMap.put("set_amount", "0");
     localHashMap.put("wallet_type", String.valueOf(paramInt));
     setRequestData(localHashMap);
-    ad.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "setAmount: %s, walletType: %s", new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "setAmount: %s, walletType: %s", new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt) });
     AppMethodBeat.o(63832);
   }
   
@@ -55,14 +55,14 @@ public final class n
     localHashMap.put("set_amount", "1");
     try
     {
-      if (!bt.isNullOrNil(paramString)) {
+      if (!bs.isNullOrNil(paramString)) {
         localHashMap.put("desc", URLEncoder.encode(paramString, "UTF-8"));
       }
       localHashMap.put("wallet_type", String.valueOf(paramInt));
       setRequestData(localHashMap);
-      this.dEb = paramLong;
+      this.dBN = paramLong;
       this.desc = paramString;
-      ad.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "amount: %d, setAmount: %s, desc: %s, walletType: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(1), paramString, Integer.valueOf(paramInt) });
+      ac.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "amount: %d, setAmount: %s, desc: %s, walletType: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(1), paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(63833);
       return;
     }
@@ -70,22 +70,22 @@ public final class n
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferGetQrCode", localUnsupportedEncodingException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferGetQrCode", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
   }
   
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/h5f2ftransfergetqrcode";
   }
   
-  public final int bOC()
+  public final int bVS()
   {
     return 1335;
   }
   
-  public final boolean bOD()
+  public final boolean bVT()
   {
     return true;
   }
@@ -98,35 +98,35 @@ public final class n
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63834);
-    this.dcG = paramJSONObject.optInt("retcode", 0);
-    this.nTK = paramJSONObject.optString("retmsg", "");
-    this.nTL = paramJSONObject.optString("qrcode_url", "");
-    this.nTM = paramJSONObject.optInt("alert_type", 0);
-    this.nTN = paramJSONObject.optString("alert_title", "");
-    this.nTO = paramJSONObject.optString("left_button_text", "");
-    this.nTP = paramJSONObject.optString("right_button_text", "");
-    this.nTQ = paramJSONObject.optString("right_button_url", "");
-    this.nTR = paramJSONObject.optString("bottom_text", "");
-    this.nTS = paramJSONObject.optString("bottom_url", "");
-    this.nTT = paramJSONObject.optInt("currency", 0);
-    this.nTU = paramJSONObject.optString("currencyunit", "");
-    this.iau = paramJSONObject.optString("notice", "");
-    this.iav = paramJSONObject.optString("notice_url", "");
-    this.nTV = paramJSONObject.optString("recv_realname", "");
-    this.nTW = paramJSONObject.optInt("set_amount", 0);
-    if (this.nTW == 0)
+    this.dae = paramJSONObject.optInt("retcode", 0);
+    this.oxf = paramJSONObject.optString("retmsg", "");
+    this.oxg = paramJSONObject.optString("qrcode_url", "");
+    this.oxh = paramJSONObject.optInt("alert_type", 0);
+    this.oxi = paramJSONObject.optString("alert_title", "");
+    this.oxj = paramJSONObject.optString("left_button_text", "");
+    this.oxk = paramJSONObject.optString("right_button_text", "");
+    this.oxl = paramJSONObject.optString("right_button_url", "");
+    this.oxm = paramJSONObject.optString("bottom_text", "");
+    this.oxn = paramJSONObject.optString("bottom_url", "");
+    this.oxo = paramJSONObject.optInt("currency", 0);
+    this.oxp = paramJSONObject.optString("currencyunit", "");
+    this.iAx = paramJSONObject.optString("notice", "");
+    this.iAy = paramJSONObject.optString("notice_url", "");
+    this.oxq = paramJSONObject.optString("recv_realname", "");
+    this.oxr = paramJSONObject.optInt("set_amount", 0);
+    if (this.oxr == 0)
     {
-      g.afC();
-      g.afB().afk().set(ae.a.Fpu, this.nTL);
-      ad.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "set payurl: %s", new Object[] { this.nTL });
+      g.agS();
+      g.agR().agA().set(ah.a.GNk, this.oxg);
+      ac.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "set payurl: %s", new Object[] { this.oxg });
     }
-    ad.d("MicroMsg.NetSceneH5F2fTransferGetQrCode", "url: %s, currency: %s", new Object[] { this.nTL, Integer.valueOf(this.nTT) });
+    ac.d("MicroMsg.NetSceneH5F2fTransferGetQrCode", "url: %s, currency: %s", new Object[] { this.oxg, Integer.valueOf(this.oxo) });
     AppMethodBeat.o(63834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.n
  * JD-Core Version:    0.7.0.1
  */

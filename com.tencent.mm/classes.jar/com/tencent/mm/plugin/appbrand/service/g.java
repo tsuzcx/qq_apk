@@ -1,29 +1,33 @@
 package com.tencent.mm.plugin.appbrand.service;
 
-import android.content.Context;
-import android.os.Parcelable;
-import android.util.Pair;
-import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.c;
 
-@e(c.class)
 public abstract interface g
   extends a
 {
-  public abstract String Du(String paramString);
+  public abstract void HF(String paramString);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4);
+  public abstract void a(a parama);
   
-  public abstract <T extends Parcelable> void a(String paramString, T paramT);
+  public abstract String aVg();
   
-  public abstract void aOn();
+  public abstract a aVh();
   
-  public abstract void aOo();
+  public abstract String ca(String paramString1, String paramString2);
   
-  public abstract void aOp();
+  public abstract void clear();
   
-  public abstract Pair<String, Integer> qB(int paramInt);
+  public static final class a
+  {
+    public int cYG;
+    public int lWC;
+    
+    public a(int paramInt1, int paramInt2)
+    {
+      this.cYG = paramInt1;
+      this.lWC = paramInt2;
+    }
+  }
 }
 
 

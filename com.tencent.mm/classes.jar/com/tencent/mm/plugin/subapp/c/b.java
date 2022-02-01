@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.b;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.b;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,58 +27,58 @@ import java.util.Set;
 public final class b
   implements f, g
 {
-  private Queue<a> yCL = null;
-  private boolean yCM = false;
+  private Queue<a> zPZ = null;
+  private boolean zQa = false;
   
-  private void dMg()
+  private void eaG()
   {
     AppMethodBeat.i(28921);
-    if (this.yCM)
+    if (this.zQa)
     {
       AppMethodBeat.o(28921);
       return;
     }
-    if (this.yCL.size() == 0)
+    if (this.zPZ.size() == 0)
     {
       AppMethodBeat.o(28921);
       return;
     }
-    Object localObject = (a)this.yCL.peek();
-    if (((a)localObject).yCN.size() == 0)
+    Object localObject = (a)this.zPZ.peek();
+    if (((a)localObject).zQb.size() == 0)
     {
-      this.yCL.poll();
-      az.arV();
-      c.afk().set(8193, ((a)localObject).iev);
-      az.arV();
-      c.afk().set(8449, Long.valueOf(bt.aGK()));
+      this.zPZ.poll();
+      az.ayM();
+      c.agA().set(8193, ((a)localObject).iEE);
+      az.ayM();
+      c.agA().set(8449, Long.valueOf(bs.aNx()));
       AppMethodBeat.o(28921);
       return;
     }
-    localObject = (String)((a)localObject).yCN.peek();
+    localObject = (String)((a)localObject).zQb.peek();
     if ((localObject == null) || (((String)localObject).length() <= 0))
     {
       AppMethodBeat.o(28921);
       return;
     }
-    this.yCM = true;
+    this.zQa = true;
     localObject = new a((String)localObject);
-    az.aeS().a(141, this);
-    az.aeS().a((n)localObject, 0);
+    az.agi().a(141, this);
+    az.agi().a((n)localObject, 0);
     AppMethodBeat.o(28921);
   }
   
   public final f.b b(f.a parama)
   {
     AppMethodBeat.i(28920);
-    parama = z.a(parama.fTo.Cxz);
-    if (this.yCL == null) {
-      this.yCL = new LinkedList();
+    parama = z.a(parama.fXi.DPV);
+    if (this.zPZ == null) {
+      this.zPZ = new LinkedList();
     }
     parama = new a(parama);
-    if (parama.iev != null)
+    if (parama.iEE != null)
     {
-      this.yCL.offer(parama);
-      dMg();
+      this.zPZ.offer(parama);
+      eaG();
     }
     AppMethodBeat.o(28920);
     return null;
@@ -91,78 +91,78 @@ public final class b
     AppMethodBeat.i(28922);
     if (paramn.getType() != 141)
     {
-      this.yCM = false;
+      this.zQa = false;
       AppMethodBeat.o(28922);
       return;
     }
-    az.aeS().b(141, this);
+    az.agi().b(141, this);
     paramString = ((a)paramn).url;
-    paramn = (a)this.yCL.peek();
-    if ((paramn == null) || (paramn.yCN.size() == 0))
+    paramn = (a)this.zPZ.peek();
+    if ((paramn == null) || (paramn.zQb.size() == 0))
     {
-      ad.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
-      this.yCL = new LinkedList();
-      this.yCM = false;
+      ac.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
+      this.zPZ = new LinkedList();
+      this.zQa = false;
       AppMethodBeat.o(28922);
       return;
     }
-    if (paramn.yCN.size() == 0)
+    if (paramn.zQb.size() == 0)
     {
-      ad.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
-      this.yCL.poll();
-      this.yCM = false;
+      ac.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
+      this.zPZ.poll();
+      this.zQa = false;
       AppMethodBeat.o(28922);
       return;
     }
-    if (!((String)paramn.yCN.peek()).equals(paramString))
+    if (!((String)paramn.zQb.peek()).equals(paramString))
     {
-      ad.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
-      this.yCL.poll();
-      this.yCM = false;
+      ac.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
+      this.zPZ.poll();
+      this.zQa = false;
       AppMethodBeat.o(28922);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
-      this.yCL.poll();
-      this.yCM = false;
+      ac.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
+      this.zPZ.poll();
+      this.zQa = false;
       AppMethodBeat.o(28922);
       return;
     }
-    paramn.yCN.poll();
-    this.yCM = false;
-    dMg();
+    paramn.zQb.poll();
+    this.zQa = false;
+    eaG();
     AppMethodBeat.o(28922);
   }
   
   static final class a
   {
-    public String iev;
-    public Queue<String> yCN;
+    public String iEE;
+    public Queue<String> zQb;
     
     a(String paramString)
     {
       AppMethodBeat.i(28919);
-      this.iev = paramString;
-      this.yCN = new LinkedList();
-      ad.d("MicroMsg.PushMessageExtension", "DoSceneStruct:".concat(String.valueOf(paramString)));
-      paramString = com.tencent.mm.pluginsdk.i.a.a.bM(aj.getContext(), paramString);
+      this.iEE = paramString;
+      this.zQb = new LinkedList();
+      ac.d("MicroMsg.PushMessageExtension", "DoSceneStruct:".concat(String.valueOf(paramString)));
+      paramString = com.tencent.mm.pluginsdk.i.a.a.bN(ai.getContext(), paramString);
       if ((paramString == null) || (paramString.size() <= 0))
       {
-        ad.e("MicroMsg.PushMessageExtension", "Parse Message Failed !");
+        ac.e("MicroMsg.PushMessageExtension", "Parse Message Failed !");
         AppMethodBeat.o(28919);
         return;
       }
       int i = 0;
       while (i < paramString.size())
       {
-        Object localObject = ((com.tencent.mm.pluginsdk.i.a.a)paramString.get(i)).BTU;
+        Object localObject = ((com.tencent.mm.pluginsdk.i.a.a)paramString.get(i)).Dmk;
         if (localObject != null)
         {
           localObject = ((Map)localObject).entrySet().iterator();
           while (((Iterator)localObject).hasNext()) {
-            this.yCN.offer(((Map.Entry)((Iterator)localObject).next()).getValue());
+            this.zQb.offer(((Map.Entry)((Iterator)localObject).next()).getValue());
           }
         }
         i += 1;
@@ -173,7 +173,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.b
  * JD-Core Version:    0.7.0.1
  */

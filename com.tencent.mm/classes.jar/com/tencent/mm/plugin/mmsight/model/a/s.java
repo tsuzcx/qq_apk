@@ -4,22 +4,22 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.lang.ref.WeakReference;
 
 public final class s
 {
-  public d.c tFa;
-  SparseArray<WeakReference<d.b>> tFb;
-  private ap tFc;
+  public d.c uNv;
+  SparseArray<WeakReference<d.b>> uNw;
+  private ao uNx;
   
   public s()
   {
     AppMethodBeat.i(89604);
-    this.tFa = d.c.tDR;
-    this.tFb = new SparseArray();
-    this.tFc = new ap(Looper.getMainLooper())
+    this.uNv = d.c.uMm;
+    this.uNw = new SparseArray();
+    this.uNx = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -28,11 +28,11 @@ public final class s
         {
           paramAnonymousMessage = (d.c)paramAnonymousMessage.obj;
           int i = 0;
-          while (i < s.this.tFb.size())
+          while (i < s.this.uNw.size())
           {
-            if ((d.b)((WeakReference)s.this.tFb.valueAt(i)).get() != null)
+            if ((d.b)((WeakReference)s.this.uNw.valueAt(i)).get() != null)
             {
-              int[] arrayOfInt = s.2.tFe;
+              int[] arrayOfInt = s.2.uNz;
               paramAnonymousMessage.ordinal();
             }
             i += 1;
@@ -48,7 +48,7 @@ public final class s
             AppMethodBeat.o(89602);
             return;
           }
-          s.this.tFb.put(paramAnonymousMessage.hashCode(), new WeakReference(paramAnonymousMessage));
+          s.this.uNw.put(paramAnonymousMessage.hashCode(), new WeakReference(paramAnonymousMessage));
           AppMethodBeat.o(89602);
           return;
         }
@@ -60,7 +60,7 @@ public final class s
             AppMethodBeat.o(89602);
             return;
           }
-          s.this.tFb.remove(paramAnonymousMessage.hashCode());
+          s.this.uNw.remove(paramAnonymousMessage.hashCode());
         }
         AppMethodBeat.o(89602);
       }
@@ -71,15 +71,15 @@ public final class s
   public final void a(d.c paramc)
   {
     AppMethodBeat.i(89605);
-    ad.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
-    this.tFa = paramc;
-    this.tFc.sendMessage(this.tFc.obtainMessage(257, paramc));
+    ac.i("MicroMsg.SightMediaStatusHandler", "status change to %s", new Object[] { paramc.toString() });
+    this.uNv = paramc;
+    this.uNx.sendMessage(this.uNx.obtainMessage(257, paramc));
     AppMethodBeat.o(89605);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.s
  * JD-Core Version:    0.7.0.1
  */

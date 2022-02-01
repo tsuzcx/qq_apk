@@ -11,7 +11,7 @@ public class FirebaseInstanceIdService
   protected final Intent e(Intent paramIntent)
   {
     AppMethodBeat.i(4146);
-    paramIntent = (Intent)o.wZ().bDC.poll();
+    paramIntent = (Intent)o.wM().bBk.poll();
     AppMethodBeat.o(4146);
     return paramIntent;
   }
@@ -35,14 +35,14 @@ public class FirebaseInstanceIdService
       }
       if (("RST".equals(str)) || ("RST_FULL".equals(str)))
       {
-        FirebaseInstanceId.wK().wP();
+        FirebaseInstanceId.wx().wC();
         AppMethodBeat.o(4147);
         return;
       }
       if ("SYNC".equals(str))
       {
-        paramIntent = FirebaseInstanceId.wK();
-        FirebaseInstanceId.bCU.bg("");
+        paramIntent = FirebaseInstanceId.wx();
+        FirebaseInstanceId.bAC.aX("");
         paramIntent.startSync();
       }
     }

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.card.d;
 public class d$a
   implements d.b
 {
-  public void bHz() {}
+  public void bOM() {}
   
-  public void bLf() {}
+  public void bSs() {}
 }
 
 

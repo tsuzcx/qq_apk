@@ -17,7 +17,7 @@ import com.tencent.matrix.report.c;
 import com.tencent.matrix.report.h;
 import com.tencent.matrix.report.h.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.matrix.recyclerview.JsonRecyclerView;
 import com.tencent.mm.ui.matrix.recyclerview.b;
@@ -28,12 +28,12 @@ import org.json.JSONArray;
 public class MatrixReportUI
   extends MMActivity
 {
-  private JSONArray HjZ;
+  private JSONArray IKs;
   
   public MatrixReportUI()
   {
     AppMethodBeat.i(38877);
-    this.HjZ = new JSONArray();
+    this.IKs = new JSONArray();
     AppMethodBeat.o(38877);
   }
   
@@ -57,24 +57,24 @@ public class MatrixReportUI
         return true;
       }
     });
-    paramBundle = d.ctd.cte.cxl.iterator();
+    paramBundle = d.cql.cqm.cuu.iterator();
     while (paramBundle.hasNext())
     {
       localObject = (h.d)paramBundle.next();
-      this.HjZ.put(((c)localObject).cwV);
+      this.IKs.put(((c)localObject).cue);
     }
     paramBundle = (JsonRecyclerView)findViewById(2131301234);
-    Object localObject = new b(this.HjZ);
+    Object localObject = new b(this.IKs);
     paramBundle.setAdapter((RecyclerView.a)localObject);
-    ((b)localObject).qhH = new View.OnLongClickListener()
+    ((b)localObject).qQj = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38876);
         if (paramAnonymousView.getTag() != null)
         {
-          ((ClipboardManager)aj.getContext().getSystemService("clipboard")).setText(paramAnonymousView.getTag().toString());
-          Toast.makeText(aj.getContext(), MatrixReportUI.this.getContext().getResources().getString(2131755702), 0).show();
+          ((ClipboardManager)ai.getContext().getSystemService("clipboard")).setText(paramAnonymousView.getTag().toString());
+          Toast.makeText(ai.getContext(), MatrixReportUI.this.getContext().getResources().getString(2131755702), 0).show();
         }
         AppMethodBeat.o(38876);
         return true;

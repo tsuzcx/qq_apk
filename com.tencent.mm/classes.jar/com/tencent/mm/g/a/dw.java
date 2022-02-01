@@ -2,12 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class dw
   extends b
 {
-  public a dgk;
-  public b dgl;
+  public b ddA;
+  public a ddz;
   
   public dw()
   {
@@ -16,26 +17,26 @@ public final class dw
   
   private dw(byte paramByte)
   {
-    AppMethodBeat.i(115988);
-    this.dgk = new a();
-    this.dgl = new b();
-    this.ESR = false;
+    AppMethodBeat.i(115987);
+    this.ddz = new a();
+    this.ddA = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(115988);
+    AppMethodBeat.o(115987);
   }
   
   public static final class a
   {
-    public String cLR;
-    public String dfM;
-    public String dgm;
-    public int type;
+    public String ddB;
+    public String ddC;
+    public String ddD;
+    public long msgId;
   }
   
   public static final class b
   {
-    public boolean dgn;
-    public String dgo;
+    public List ddE;
+    public boolean ddj;
   }
 }
 

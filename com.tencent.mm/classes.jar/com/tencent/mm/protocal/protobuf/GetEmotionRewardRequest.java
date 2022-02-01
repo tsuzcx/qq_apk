@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class GetEmotionRewardRequest
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int OpCode;
   public String ProductID;
@@ -36,15 +36,15 @@ public class GetEmotionRewardRequest
     label306:
     for (paramInt = f.a.a.b.b.a.e(1, this.ProductID) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.OpCode);
+      int i = f.a.a.b.b.a.bx(2, this.OpCode);
       AppMethodBeat.o(104802);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.ProductID == null)
@@ -66,11 +66,11 @@ public class GetEmotionRewardRequest
           AppMethodBeat.o(104802);
           return -1;
         case 1: 
-          localGetEmotionRewardRequest.ProductID = locala.KhF.readString();
+          localGetEmotionRewardRequest.ProductID = locala.LVo.readString();
           AppMethodBeat.o(104802);
           return 0;
         }
-        localGetEmotionRewardRequest.OpCode = locala.KhF.xS();
+        localGetEmotionRewardRequest.OpCode = locala.LVo.xF();
         AppMethodBeat.o(104802);
         return 0;
       }
@@ -81,7 +81,7 @@ public class GetEmotionRewardRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.GetEmotionRewardRequest
  * JD-Core Version:    0.7.0.1
  */

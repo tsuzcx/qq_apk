@@ -12,14 +12,14 @@ final class LuckyMoneyF2FQRCodeUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(65062);
-    this.tbO.finish();
+    this.ukd.finish();
     AppMethodBeat.o(65062);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FQRCodeUI.2
  * JD-Core Version:    0.7.0.1
  */

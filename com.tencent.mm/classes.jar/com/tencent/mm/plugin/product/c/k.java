@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.product.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String odo;
+  public String oGN;
   public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -14,8 +14,8 @@ public final class k
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.odo != null) {
-        paramVarArgs.d(1, this.odo);
+      if (this.oGN != null) {
+        paramVarArgs.d(1, this.oGN);
       }
       if (this.url != null) {
         paramVarArgs.d(2, this.url);
@@ -24,12 +24,12 @@ public final class k
       return 0;
     }
     if (paramInt == 1) {
-      if (this.odo == null) {
+      if (this.oGN == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.odo) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.oGN) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.url != null) {
@@ -40,9 +40,9 @@ public final class k
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(91277);
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91277);
           return -1;
         case 1: 
-          localk.odo = locala.KhF.readString();
+          localk.oGN = locala.LVo.readString();
           AppMethodBeat.o(91277);
           return 0;
         }
-        localk.url = locala.KhF.readString();
+        localk.url = locala.LVo.readString();
         AppMethodBeat.o(91277);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.k
  * JD-Core Version:    0.7.0.1
  */

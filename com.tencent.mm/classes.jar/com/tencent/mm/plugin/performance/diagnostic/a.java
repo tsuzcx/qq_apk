@@ -6,16 +6,16 @@ import java.util.Map;
 public abstract class a
   implements c
 {
-  public final void an(Map<String, String> paramMap)
+  public final void ap(Map<String, String> paramMap)
   {
-    if ((paramMap != null) && (paramMap.containsKey(dat()))) {
-      ao(paramMap);
+    if ((paramMap != null) && (paramMap.containsKey(dob()))) {
+      aq(paramMap);
     }
   }
   
-  protected abstract void ao(Map<String, String> paramMap);
+  protected abstract void aq(Map<String, String> paramMap);
   
-  public abstract String dat();
+  public abstract String dob();
 }
 
 

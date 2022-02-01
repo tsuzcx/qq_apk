@@ -1,135 +1,135 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public abstract class f
 {
-  public String iE;
-  public String iZm;
-  public String iZu = null;
-  public Integer mgA;
-  public Integer mgB;
-  public Integer mgC;
-  public Integer mgD;
-  public Integer mgE;
-  public Integer mgF = null;
-  public Integer mgG = null;
-  public Float mgH = null;
-  public Integer mgI;
-  public String mgJ;
-  public String mgK;
-  public Integer mgL;
-  public Integer mgM;
-  public Boolean mgN = Boolean.FALSE;
-  public Boolean mgO = Boolean.FALSE;
-  public Boolean mgP = Boolean.FALSE;
-  public Boolean mgQ = Boolean.FALSE;
-  public Boolean mgR = null;
-  public Boolean mgS = null;
-  public Integer mgT = null;
-  public b mgU = null;
-  public Boolean mgV = null;
-  public Boolean mgW = null;
-  public Integer mgX = null;
-  public Integer mgY = null;
-  public String mgy;
-  public Integer mgz;
+  public String jD;
+  public String jzB;
+  public String jzJ = null;
+  public Integer mIA;
+  public Integer mIB;
+  public Integer mIC;
+  public Integer mIE;
+  public Integer mIF;
+  public Integer mIG = null;
+  public Integer mIH = null;
+  public Float mII = null;
+  public Integer mIJ;
+  public String mIK;
+  public String mIL;
+  public Integer mIM;
+  public Integer mIN;
+  public Boolean mIO = Boolean.FALSE;
+  public Boolean mIP = Boolean.FALSE;
+  public Boolean mIQ = Boolean.FALSE;
+  public Boolean mIR = Boolean.FALSE;
+  public Boolean mIS = null;
+  public Boolean mIT = null;
+  public Integer mIU = null;
+  public b mIV = null;
+  public Boolean mIW = null;
+  public Boolean mIX = null;
+  public Integer mIY = null;
+  public Integer mIZ = null;
+  public String mIy;
+  public Integer mIz;
   
   public final void a(f paramf)
   {
-    this.mgy = paramf.mgy;
-    if (paramf.mgz != null) {
-      this.mgz = paramf.mgz;
+    this.mIy = paramf.mIy;
+    if (paramf.mIz != null) {
+      this.mIz = paramf.mIz;
     }
-    if (paramf.mgA != null) {
-      this.mgA = paramf.mgA;
+    if (paramf.mIA != null) {
+      this.mIA = paramf.mIA;
     }
-    if (paramf.mgB != null) {
-      this.mgB = paramf.mgB;
+    if (paramf.mIB != null) {
+      this.mIB = paramf.mIB;
     }
-    if (paramf.mgC != null) {
-      this.mgC = paramf.mgC;
+    if (paramf.mIC != null) {
+      this.mIC = paramf.mIC;
     }
-    if (paramf.mgD != null) {
-      this.mgD = paramf.mgD;
+    if (paramf.mIE != null) {
+      this.mIE = paramf.mIE;
     }
-    if (paramf.mgE != null) {
-      this.mgE = paramf.mgE;
+    if (paramf.mIF != null) {
+      this.mIF = paramf.mIF;
     }
-    if (paramf.mgF != null) {
-      this.mgF = paramf.mgF;
+    if (paramf.mIG != null) {
+      this.mIG = paramf.mIG;
     }
-    if (paramf.mgG != null) {
-      this.mgG = paramf.mgG;
+    if (paramf.mIH != null) {
+      this.mIH = paramf.mIH;
     }
-    if (paramf.mgH != null) {
-      this.mgH = paramf.mgH;
+    if (paramf.mII != null) {
+      this.mII = paramf.mII;
     }
-    if (!bt.isNullOrNil(paramf.iE)) {
-      this.iE = paramf.iE;
+    if (!bs.isNullOrNil(paramf.jD)) {
+      this.jD = paramf.jD;
     }
-    if (!bt.isNullOrNil(paramf.iZm)) {
-      this.iZm = paramf.iZm;
+    if (!bs.isNullOrNil(paramf.jzB)) {
+      this.jzB = paramf.jzB;
     }
-    if (paramf.mgI != null) {
-      this.mgI = paramf.mgI;
+    if (paramf.mIJ != null) {
+      this.mIJ = paramf.mIJ;
     }
-    if (paramf.mgJ != null) {
-      this.mgJ = paramf.mgJ;
+    if (paramf.mIK != null) {
+      this.mIK = paramf.mIK;
     }
-    if (!bt.isNullOrNil(paramf.mgK)) {
-      this.mgK = paramf.mgK;
+    if (!bs.isNullOrNil(paramf.mIL)) {
+      this.mIL = paramf.mIL;
     }
-    if (paramf.mgL != null) {
-      this.mgL = paramf.mgL;
+    if (paramf.mIM != null) {
+      this.mIM = paramf.mIM;
     }
-    if (paramf.mgM != null) {
-      this.mgM = paramf.mgM;
+    if (paramf.mIN != null) {
+      this.mIN = paramf.mIN;
     }
-    if (paramf.mgN != null) {
-      this.mgN = paramf.mgN;
+    if (paramf.mIO != null) {
+      this.mIO = paramf.mIO;
     }
-    if (paramf.mgO != null) {
-      this.mgO = paramf.mgO;
+    if (paramf.mIP != null) {
+      this.mIP = paramf.mIP;
     }
-    if (paramf.mgP != null) {
-      this.mgP = paramf.mgP;
+    if (paramf.mIQ != null) {
+      this.mIQ = paramf.mIQ;
     }
-    if (paramf.mgQ != null) {
-      this.mgQ = paramf.mgQ;
+    if (paramf.mIR != null) {
+      this.mIR = paramf.mIR;
     }
-    if (paramf.mgR != null) {
-      this.mgR = paramf.mgR;
+    if (paramf.mIS != null) {
+      this.mIS = paramf.mIS;
     }
-    if (!bt.isNullOrNil(paramf.iZu)) {
-      this.iZu = paramf.iZu;
+    if (!bs.isNullOrNil(paramf.jzJ)) {
+      this.jzJ = paramf.jzJ;
     }
-    if (paramf.mgS != null) {
-      this.mgS = paramf.mgS;
+    if (paramf.mIT != null) {
+      this.mIT = paramf.mIT;
     }
-    if (paramf.mgT != null) {
-      this.mgT = paramf.mgT;
+    if (paramf.mIU != null) {
+      this.mIU = paramf.mIU;
     }
-    if (paramf.mgU != null) {
-      this.mgU = paramf.mgU;
+    if (paramf.mIV != null) {
+      this.mIV = paramf.mIV;
     }
-    if (paramf.mgV != null) {
-      this.mgV = paramf.mgV;
+    if (paramf.mIW != null) {
+      this.mIW = paramf.mIW;
     }
-    if (paramf.mgW != null) {
-      this.mgW = paramf.mgW;
+    if (paramf.mIX != null) {
+      this.mIX = paramf.mIX;
     }
-    if (paramf.mgX != null) {
-      this.mgX = paramf.mgX;
+    if (paramf.mIY != null) {
+      this.mIY = paramf.mIY;
     }
-    if (paramf.mgY != null) {
-      this.mgY = paramf.mgY;
+    if (paramf.mIZ != null) {
+      this.mIZ = paramf.mIZ;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.f
  * JD-Core Version:    0.7.0.1
  */

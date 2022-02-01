@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.drm;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dxd;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,18 +12,18 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private ArrayList<Integer> AFa;
-  private boolean Fy;
+  private ArrayList<Integer> BXu;
+  private boolean Gw;
   
   public i()
   {
-    this.Fy = true;
+    this.Gw = true;
   }
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.AFa = paramArrayList;
-    this.Fy = false;
+    this.BXu = paramArrayList;
+    this.Gw = false;
   }
   
   public final String getName()
@@ -34,16 +34,16 @@ public final class i
   protected final void send()
   {
     AppMethodBeat.i(30129);
-    ad.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.AFa });
-    drm localdrm = new drm();
-    if (this.AFa != null) {
-      localdrm.EGA.addAll(this.AFa);
+    ac.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.BXu });
+    dxd localdxd = new dxd();
+    if (this.BXu != null) {
+      localdxd.GdM.addAll(this.BXu);
     }
-    localdrm.EGB = this.Fy;
+    localdxd.GdN = this.Gw;
     try
     {
-      a.egZ();
-      r.a(20004, localdrm.toByteArray(), false);
+      a.ewt();
+      r.a(20004, localdxd.toByteArray(), false);
       AppMethodBeat.o(30129);
       return;
     }
@@ -55,7 +55,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.i
  * JD-Core Version:    0.7.0.1
  */

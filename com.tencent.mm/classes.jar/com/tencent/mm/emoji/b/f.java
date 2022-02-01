@@ -5,23 +5,23 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class f
 {
-  private static f fRk;
+  private static f fVf;
   public String extraInfo = "";
-  public long fRc;
-  public int fRd;
-  public int fRe;
-  public int fRl;
-  public int fRm;
-  public int fRn;
+  public long fUX;
+  public int fUY;
+  public int fUZ;
+  public int fVg;
+  public int fVh;
+  public int fVi;
   public int scene;
   
-  public static f acp()
+  public static f adv()
   {
     AppMethodBeat.i(104484);
-    if (fRk == null) {
-      fRk = new f();
+    if (fVf == null) {
+      fVf = new f();
     }
-    f localf = fRk;
+    f localf = fVf;
     AppMethodBeat.o(104484);
     return localf;
   }
@@ -30,16 +30,16 @@ public final class f
   {
     AppMethodBeat.i(104485);
     long l1 = System.currentTimeMillis();
-    long l2 = this.fRc;
-    h.vKh.f(16029, new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(this.scene), Long.valueOf(l1 - l2), Integer.valueOf(this.fRd), Integer.valueOf(this.fRl), Integer.valueOf(this.fRm), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(this.fRn), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.fRe), this.extraInfo, Long.valueOf(l1), Long.valueOf(this.fRc) });
-    this.fRd += 1;
+    long l2 = this.fUX;
+    h.wUl.f(16029, new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(this.scene), Long.valueOf(l1 - l2), Integer.valueOf(this.fUY), Integer.valueOf(this.fVg), Integer.valueOf(this.fVh), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(this.fVi), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.fUZ), this.extraInfo, Long.valueOf(l1), Long.valueOf(this.fUX) });
+    this.fUY += 1;
     AppMethodBeat.o(104485);
   }
   
-  public final void lq(long paramLong)
+  public final void oT(long paramLong)
   {
-    this.fRc = paramLong;
-    this.fRd = 1;
+    this.fUX = paramLong;
+    this.fUY = 1;
   }
 }
 

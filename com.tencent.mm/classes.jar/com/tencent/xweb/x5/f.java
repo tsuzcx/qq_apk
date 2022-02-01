@@ -9,7 +9,7 @@ import org.xwalk.core.Log;
 public final class f
   implements IJsRuntime
 {
-  private X5JsCore IRU;
+  private X5JsCore KEq;
   private Context mContext;
   
   public f(Context paramContext)
@@ -23,7 +23,7 @@ public final class f
   public final void init(int paramInt)
   {
     AppMethodBeat.i(153844);
-    this.IRU = new X5JsCore(this.mContext);
+    this.KEq = new X5JsCore(this.mContext);
     AppMethodBeat.o(153844);
   }
 }

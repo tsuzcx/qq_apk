@@ -49,7 +49,7 @@ public abstract class o$a
       return true;
     }
     paramParcel1.enforceInterface("android.support.v4.app.INotificationSideChannel");
-    s(paramParcel1.readString());
+    t(paramParcel1.readString());
     return true;
   }
   
@@ -149,7 +149,7 @@ public abstract class o$a
       }
     }
     
-    public final void s(String paramString)
+    public final void t(String paramString)
     {
       Parcel localParcel = Parcel.obtain();
       try
@@ -168,7 +168,7 @@ public abstract class o$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.app.o.a
  * JD-Core Version:    0.7.0.1
  */

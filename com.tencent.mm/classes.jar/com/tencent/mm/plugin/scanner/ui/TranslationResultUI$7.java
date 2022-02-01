@@ -9,23 +9,23 @@ final class TranslationResultUI$7
 {
   TranslationResultUI$7(TranslationResultUI paramTranslationResultUI) {}
   
-  public final void bv(String paramString1, String paramString2)
+  public final void bD(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190950);
-    Toast.makeText(this.vWm, this.vWm.getString(2131760319, new Object[] { paramString2 }), 1).show();
-    AppMethodBeat.o(190950);
+    AppMethodBeat.i(208111);
+    Toast.makeText(this.xgZ, this.xgZ.getString(2131760319, new Object[] { paramString2 }), 1).show();
+    AppMethodBeat.o(208111);
   }
   
-  public final void bw(String paramString1, String paramString2)
+  public final void bE(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190951);
-    Toast.makeText(this.vWm, this.vWm.getString(2131762779), 1).show();
-    AppMethodBeat.o(190951);
+    AppMethodBeat.i(208112);
+    Toast.makeText(this.xgZ, this.xgZ.getString(2131762779), 1).show();
+    AppMethodBeat.o(208112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.TranslationResultUI.7
  * JD-Core Version:    0.7.0.1
  */

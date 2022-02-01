@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.address.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
+  public String iYQ;
+  public String iYR;
+  public String iYS;
+  public String iYT;
+  public String iYU;
+  public String iYV;
+  public String iYW;
+  public String iYX;
+  public String iYY;
   public int id;
-  public String iyN;
-  public String iyO;
-  public String iyP;
-  public String iyQ;
-  public String iyR;
-  public String iyS;
-  public String iyT;
-  public String iyU;
-  public String iyV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -23,74 +23,74 @@ public final class b
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       paramVarArgs.aR(1, this.id);
-      if (this.iyN != null) {
-        paramVarArgs.d(2, this.iyN);
+      if (this.iYQ != null) {
+        paramVarArgs.d(2, this.iYQ);
       }
-      if (this.iyO != null) {
-        paramVarArgs.d(3, this.iyO);
+      if (this.iYR != null) {
+        paramVarArgs.d(3, this.iYR);
       }
-      if (this.iyP != null) {
-        paramVarArgs.d(4, this.iyP);
+      if (this.iYS != null) {
+        paramVarArgs.d(4, this.iYS);
       }
-      if (this.iyQ != null) {
-        paramVarArgs.d(5, this.iyQ);
+      if (this.iYT != null) {
+        paramVarArgs.d(5, this.iYT);
       }
-      if (this.iyR != null) {
-        paramVarArgs.d(6, this.iyR);
+      if (this.iYU != null) {
+        paramVarArgs.d(6, this.iYU);
       }
-      if (this.iyS != null) {
-        paramVarArgs.d(7, this.iyS);
+      if (this.iYV != null) {
+        paramVarArgs.d(7, this.iYV);
       }
-      if (this.iyT != null) {
-        paramVarArgs.d(8, this.iyT);
+      if (this.iYW != null) {
+        paramVarArgs.d(8, this.iYW);
       }
-      if (this.iyU != null) {
-        paramVarArgs.d(9, this.iyU);
+      if (this.iYX != null) {
+        paramVarArgs.d(9, this.iYX);
       }
-      if (this.iyV != null) {
-        paramVarArgs.d(10, this.iyV);
+      if (this.iYY != null) {
+        paramVarArgs.d(10, this.iYY);
       }
       AppMethodBeat.o(20827);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.id) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.id) + 0;
       paramInt = i;
-      if (this.iyN != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.iyN);
+      if (this.iYQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.iYQ);
       }
       i = paramInt;
-      if (this.iyO != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.iyO);
+      if (this.iYR != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.iYR);
       }
       paramInt = i;
-      if (this.iyP != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.iyP);
+      if (this.iYS != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.iYS);
       }
       i = paramInt;
-      if (this.iyQ != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.iyQ);
+      if (this.iYT != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.iYT);
       }
       paramInt = i;
-      if (this.iyR != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.iyR);
+      if (this.iYU != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.iYU);
       }
       i = paramInt;
-      if (this.iyS != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.iyS);
+      if (this.iYV != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.iYV);
       }
       paramInt = i;
-      if (this.iyT != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.iyT);
+      if (this.iYW != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.iYW);
       }
       i = paramInt;
-      if (this.iyU != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.iyU);
+      if (this.iYX != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.iYX);
       }
       paramInt = i;
-      if (this.iyV != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.iyV);
+      if (this.iYY != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.iYY);
       }
       AppMethodBeat.o(20827);
       return paramInt;
@@ -98,9 +98,9 @@ public final class b
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(20827);
@@ -116,43 +116,43 @@ public final class b
         AppMethodBeat.o(20827);
         return -1;
       case 1: 
-        localb.id = locala.KhF.xS();
+        localb.id = locala.LVo.xF();
         AppMethodBeat.o(20827);
         return 0;
       case 2: 
-        localb.iyN = locala.KhF.readString();
+        localb.iYQ = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 3: 
-        localb.iyO = locala.KhF.readString();
+        localb.iYR = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 4: 
-        localb.iyP = locala.KhF.readString();
+        localb.iYS = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 5: 
-        localb.iyQ = locala.KhF.readString();
+        localb.iYT = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 6: 
-        localb.iyR = locala.KhF.readString();
+        localb.iYU = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 7: 
-        localb.iyS = locala.KhF.readString();
+        localb.iYV = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 8: 
-        localb.iyT = locala.KhF.readString();
+        localb.iYW = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 9: 
-        localb.iyU = locala.KhF.readString();
+        localb.iYX = locala.LVo.readString();
         AppMethodBeat.o(20827);
         return 0;
       }
-      localb.iyV = locala.KhF.readString();
+      localb.iYY = locala.LVo.readString();
       AppMethodBeat.o(20827);
       return 0;
     }

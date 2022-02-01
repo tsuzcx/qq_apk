@@ -6,70 +6,70 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends android.webkit.WebHistoryItem
 {
-  private com.tencent.smtt.sdk.WebHistoryItem ISq;
+  private com.tencent.smtt.sdk.WebHistoryItem KEN;
   
   public k(com.tencent.smtt.sdk.WebHistoryItem paramWebHistoryItem)
   {
-    this.ISq = paramWebHistoryItem;
+    this.KEN = paramWebHistoryItem;
   }
   
   protected final android.webkit.WebHistoryItem clone()
   {
-    AppMethodBeat.i(194684);
-    k localk = new k(this.ISq);
-    AppMethodBeat.o(194684);
+    AppMethodBeat.i(208896);
+    k localk = new k(this.KEN);
+    AppMethodBeat.o(208896);
     return localk;
   }
   
   public final Bitmap getFavicon()
   {
-    AppMethodBeat.i(194683);
-    if (this.ISq == null)
+    AppMethodBeat.i(208895);
+    if (this.KEN == null)
     {
-      AppMethodBeat.o(194683);
+      AppMethodBeat.o(208895);
       return null;
     }
-    Bitmap localBitmap = this.ISq.getFavicon();
-    AppMethodBeat.o(194683);
+    Bitmap localBitmap = this.KEN.getFavicon();
+    AppMethodBeat.o(208895);
     return localBitmap;
   }
   
   public final String getOriginalUrl()
   {
-    AppMethodBeat.i(194681);
-    if (this.ISq == null)
+    AppMethodBeat.i(208893);
+    if (this.KEN == null)
     {
-      AppMethodBeat.o(194681);
+      AppMethodBeat.o(208893);
       return null;
     }
-    String str = this.ISq.getOriginalUrl();
-    AppMethodBeat.o(194681);
+    String str = this.KEN.getOriginalUrl();
+    AppMethodBeat.o(208893);
     return str;
   }
   
   public final String getTitle()
   {
-    AppMethodBeat.i(194682);
-    if (this.ISq == null)
+    AppMethodBeat.i(208894);
+    if (this.KEN == null)
     {
-      AppMethodBeat.o(194682);
+      AppMethodBeat.o(208894);
       return null;
     }
-    String str = this.ISq.getTitle();
-    AppMethodBeat.o(194682);
+    String str = this.KEN.getTitle();
+    AppMethodBeat.o(208894);
     return str;
   }
   
   public final String getUrl()
   {
-    AppMethodBeat.i(194680);
-    if (this.ISq == null)
+    AppMethodBeat.i(208892);
+    if (this.KEN == null)
     {
-      AppMethodBeat.o(194680);
+      AppMethodBeat.o(208892);
       return null;
     }
-    String str = this.ISq.getUrl();
-    AppMethodBeat.o(194680);
+    String str = this.KEN.getUrl();
+    AppMethodBeat.o(208892);
     return str;
   }
 }

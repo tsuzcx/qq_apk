@@ -16,58 +16,58 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class g
 {
-  protected f ggY;
-  public a ggZ;
-  protected StaticLayout gha;
-  protected boolean ghb = false;
-  int ghc;
-  int ghd;
-  private boolean ghe = false;
-  boolean ghf = false;
-  boolean ghg = false;
-  private boolean ghh = false;
-  private View ghi;
-  private int ghj = 0;
-  private int ghk = 0;
+  protected f glE;
+  public a glF;
+  protected StaticLayout glG;
+  protected boolean glH = false;
+  int glI;
+  int glJ;
+  private boolean glK = false;
+  boolean glL = false;
+  boolean glM = false;
+  private boolean glN = false;
+  private View glO;
+  private int glP = 0;
+  private int glQ = 0;
   protected CharSequence text = null;
   
   public g(View paramView, a parama)
   {
-    this.ghi = paramView;
-    this.ggZ = parama;
+    this.glO = paramView;
+    this.glF = parama;
   }
   
-  private boolean mu(int paramInt)
+  private boolean mt(int paramInt)
   {
     AppMethodBeat.i(141094);
-    if ((this.ghb) || (this.ggY == null) || (this.gha == null))
+    if ((this.glH) || (this.glE == null) || (this.glG == null))
     {
-      if (this.ggZ == null)
+      if (this.glF == null)
       {
         AppMethodBeat.o(141094);
         return false;
       }
       if (paramInt > 0)
       {
-        agG();
+        ahX();
         long l1 = 0L;
         if (h.DEBUG) {
           l1 = System.nanoTime();
         }
-        this.ggY = d.a(this.text, paramInt, this.ggZ).agD();
-        this.gha = this.ggY.ggW;
-        this.ghb = false;
+        this.glE = d.a(this.text, paramInt, this.glF).ahU();
+        this.glG = this.glE.glC;
+        this.glH = false;
         if (h.DEBUG)
         {
           long l2 = System.nanoTime();
-          ad.d("MicroMsg.StaticTextViewHolder", "recreateLayoutIfNeed, width: %d, hasCode: %d, used: %fms, text: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Double.valueOf((l2 - l1) / 1000000.0D), this.text });
+          ac.d("MicroMsg.StaticTextViewHolder", "recreateLayoutIfNeed, width: %d, hasCode: %d, used: %fms, text: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Double.valueOf((l2 - l1) / 1000000.0D), this.text });
         }
         AppMethodBeat.o(141094);
         return true;
@@ -80,26 +80,26 @@ public final class g
   private void setRawTextSize(float paramFloat)
   {
     AppMethodBeat.i(141079);
-    if ((paramFloat != 0.0F) && (this.ggZ != null) && (paramFloat != this.ggZ.textSize))
+    if ((paramFloat != 0.0F) && (this.glF != null) && (paramFloat != this.glF.textSize))
     {
-      this.ggZ.textSize = paramFloat;
-      this.ghb = true;
+      this.glF.textSize = paramFloat;
+      this.glH = true;
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setRawTextSize isNeedRecreateLayout");
+        ac.i("MicroMsg.StaticTextViewHolder", "setRawTextSize isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141079);
   }
   
-  final void agG()
+  final void ahX()
   {
-    this.ghk = 0;
-    this.ghj = 0;
-    this.ghc = 0;
-    this.ghd = 0;
+    this.glQ = 0;
+    this.glP = 0;
+    this.glI = 0;
+    this.glJ = 0;
   }
   
-  public final Point cP(int paramInt1, int paramInt2)
+  public final Point cN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141095);
     long l = 0L;
@@ -110,8 +110,8 @@ public final class g
     int m = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt2);
-    mu(i);
-    if (this.gha != null) {
+    mt(i);
+    if (this.glG != null) {
       if (n == 1073741824) {
         paramInt1 = i;
       }
@@ -136,28 +136,28 @@ public final class g
           }
           localObject2 = "";
           label126:
-          ad.d("MicroMsg.StaticTextViewHolder", "onMeasure used: %fms, hashCode: %d, text: %s result: %s", new Object[] { Double.valueOf(d), Integer.valueOf(paramInt1), localCharSequence, localObject2 });
+          ac.d("MicroMsg.StaticTextViewHolder", "onMeasure used: %fms, hashCode: %d, text: %s result: %s", new Object[] { Double.valueOf(d), Integer.valueOf(paramInt1), localCharSequence, localObject2 });
         }
         AppMethodBeat.o(141095);
         return localObject1;
         paramInt1 = 0;
-        if (this.ggZ.ggM == null)
+        if (this.glF.gls == null)
         {
-          localObject1 = this.gha;
-          if (this.ghj == 0) {
+          localObject1 = this.glG;
+          if (this.glP == 0) {
             break label293;
           }
-          paramInt1 = this.ghj;
+          paramInt1 = this.glP;
         }
         for (;;)
         {
-          k = (int)Math.ceil(Layout.getDesiredWidth(this.gha.getText(), this.gha.getPaint()));
+          k = (int)Math.ceil(Layout.getDesiredWidth(this.glG.getText(), this.glG.getPaint()));
           paramInt2 = paramInt1;
           if (k > paramInt1) {
             paramInt2 = k;
           }
           if (h.DEBUG) {
-            ad.d("MicroMsg.StaticTextViewHolder", "onMeasure  hashCode: %d, des: %d newdes: %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(k) });
+            ac.d("MicroMsg.StaticTextViewHolder", "onMeasure  hashCode: %d, des: %d newdes: %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(k) });
           }
           if (n != -2147483648) {
             break label614;
@@ -188,15 +188,15 @@ public final class g
             f = Math.max(f, ((Layout)localObject1).getLineWidth(paramInt1));
             paramInt1 += 1;
           }
-          this.ghj = ((int)Math.ceil(f));
-          this.ghj += this.ghi.getPaddingLeft() + this.ghi.getPaddingRight();
-          paramInt1 = this.ghj;
+          this.glP = ((int)Math.ceil(f));
+          this.glP += this.glO.getPaddingLeft() + this.glO.getPaddingRight();
+          paramInt1 = this.glP;
         }
-        localObject1 = this.gha;
-        if (this.ghk == 0) {
+        localObject1 = this.glG;
+        if (this.glQ == 0) {
           break label460;
         }
-        i = this.ghk;
+        i = this.glQ;
         label439:
         paramInt2 = i;
         if (m == -2147483648) {
@@ -206,24 +206,24 @@ public final class g
       label460:
       i = ((Layout)localObject1).getLineCount();
       paramInt2 = i;
-      if (this.ggY.maxLines > 0)
+      if (this.glE.maxLines > 0)
       {
         paramInt2 = i;
-        if (this.ggY.maxLines < i) {
-          paramInt2 = this.ggY.maxLines;
+        if (this.glE.maxLines < i) {
+          paramInt2 = this.glE.maxLines;
         }
       }
-      int k = this.ghi.getPaddingTop();
-      n = this.ghi.getPaddingBottom();
+      int k = this.glO.getPaddingTop();
+      n = this.glO.getPaddingBottom();
       i = ((Layout)localObject1).getLineTop(paramInt2);
       int i1;
-      if ((this.ggZ.minLines > 0) && (paramInt2 < this.ggZ.minLines)) {
+      if ((this.glF.minLines > 0) && (paramInt2 < this.glF.minLines)) {
         i1 = getLineHeight();
       }
-      for (paramInt2 = (this.ggZ.minLines - paramInt2) * i1 + i;; paramInt2 = i)
+      for (paramInt2 = (this.glF.minLines - paramInt2) * i1 + i;; paramInt2 = i)
       {
-        this.ghk = (paramInt2 + (k + n));
-        i = this.ghk;
+        this.glQ = (paramInt2 + (k + n));
+        i = this.glQ;
         break label439;
         localObject1 = null;
         break;
@@ -238,18 +238,18 @@ public final class g
   
   public final f getLayoutWrapper()
   {
-    return this.ggY;
+    return this.glE;
   }
   
   public final int getLineCount()
   {
     AppMethodBeat.i(141089);
-    if (this.gha == null)
+    if (this.glG == null)
     {
       AppMethodBeat.o(141089);
       return 0;
     }
-    int i = this.gha.getLineCount();
+    int i = this.glG.getLineCount();
     AppMethodBeat.o(141089);
     return i;
   }
@@ -257,20 +257,20 @@ public final class g
   public final int getLineHeight()
   {
     AppMethodBeat.i(141085);
-    TextPaint localTextPaint2 = this.ggY.ggW.getPaint();
+    TextPaint localTextPaint2 = this.glE.glC.getPaint();
     TextPaint localTextPaint1 = localTextPaint2;
     if (localTextPaint2 == null) {
-      localTextPaint1 = this.ggZ.ga;
+      localTextPaint1 = this.glF.gZ;
     }
-    int i = Math.round(localTextPaint1.getFontMetricsInt(null) * this.ggZ.ggQ + this.ggZ.ggP);
+    int i = Math.round(localTextPaint1.getFontMetricsInt(null) * this.glF.glw + this.glF.glv);
     AppMethodBeat.o(141085);
     return i;
   }
   
   public final int getMaxLines()
   {
-    if (this.ggZ != null) {
-      return this.ggZ.maxLines;
+    if (this.glF != null) {
+      return this.glF.maxLines;
     }
     return -1;
   }
@@ -309,18 +309,18 @@ public final class g
   public final int getTextColor()
   {
     AppMethodBeat.i(141088);
-    if (this.ggY == null)
+    if (this.glE == null)
     {
-      if (this.ggZ != null)
+      if (this.glF != null)
       {
-        i = this.ggZ.textColor;
+        i = this.glF.textColor;
         AppMethodBeat.o(141088);
         return i;
       }
       AppMethodBeat.o(141088);
       return 0;
     }
-    int i = this.ggY.ga.getColor();
+    int i = this.glE.gZ.getColor();
     AppMethodBeat.o(141088);
     return i;
   }
@@ -328,48 +328,48 @@ public final class g
   public final float getTextSize()
   {
     AppMethodBeat.i(141087);
-    if (this.ggY == null)
+    if (this.glE == null)
     {
-      if (this.ggZ != null)
+      if (this.glF != null)
       {
-        f = this.ggZ.textSize;
+        f = this.glF.textSize;
         AppMethodBeat.o(141087);
         return f;
       }
       AppMethodBeat.o(141087);
       return 0.0F;
     }
-    float f = this.ggY.ga.getTextSize();
+    float f = this.glE.gZ.getTextSize();
     AppMethodBeat.o(141087);
     return f;
   }
   
   public final Layout getTvLayout()
   {
-    return this.gha;
+    return this.glG;
   }
   
   public final void init()
   {
     AppMethodBeat.i(141075);
     this.text = "";
-    this.ghi.setWillNotDraw(false);
+    this.glO.setWillNotDraw(false);
     AppMethodBeat.o(141075);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(141093);
-    if ((this.gha == null) || (this.ggY == null))
+    if ((this.glG == null) || (this.glE == null))
     {
-      boolean bool = mu(this.ghi.getMeasuredWidth());
+      boolean bool = mt(this.glO.getMeasuredWidth());
       if (h.DEBUG) {
-        ad.d("MicroMsg.StaticTextViewHolder", "onDraw, textLayout==null:%b, layoutWrapper==null:%b recreate:%b", new Object[] { this.gha, this.ggY, Boolean.valueOf(bool) });
+        ac.d("MicroMsg.StaticTextViewHolder", "onDraw, textLayout==null:%b, layoutWrapper==null:%b recreate:%b", new Object[] { this.glG, this.glE, Boolean.valueOf(bool) });
       }
       if (bool)
       {
-        this.ghi.requestLayout();
-        this.ghi.invalidate();
+        this.glO.requestLayout();
+        this.glO.invalidate();
       }
       AppMethodBeat.o(141093);
       return;
@@ -379,47 +379,47 @@ public final class g
       l = System.nanoTime();
     }
     paramCanvas.save();
-    int k = this.ghi.getPaddingLeft();
-    int m = this.ghi.getPaddingTop();
-    int n = this.ghi.getRight() - this.ghi.getLeft() - this.ghi.getPaddingRight();
-    int i1 = this.ghi.getBottom() - this.ghi.getTop() - this.ghi.getPaddingBottom();
+    int k = this.glO.getPaddingLeft();
+    int m = this.glO.getPaddingTop();
+    int n = this.glO.getRight() - this.glO.getLeft() - this.glO.getPaddingRight();
+    int i1 = this.glO.getBottom() - this.glO.getTop() - this.glO.getPaddingBottom();
     paramCanvas.clipRect(k, m, n, i1);
     int j;
     int i;
     int i2;
     int i3;
-    if ((this.ghc == 0) || (this.ghd == 0))
+    if ((this.glI == 0) || (this.glJ == 0))
     {
-      j = this.ghi.getPaddingLeft();
-      i = this.ghi.getRight() - this.ghi.getLeft() - this.ghi.getPaddingLeft() - this.ghi.getPaddingRight();
-      i2 = this.gha.getWidth();
+      j = this.glO.getPaddingLeft();
+      i = this.glO.getRight() - this.glO.getLeft() - this.glO.getPaddingLeft() - this.glO.getPaddingRight();
+      i2 = this.glG.getWidth();
       if (i2 > i)
       {
         i = j;
-        this.ghc = i;
-        j = this.ghi.getPaddingTop();
-        i2 = this.ghi.getBottom() - this.ghi.getTop() - this.ghi.getPaddingTop() - this.ghi.getPaddingBottom();
+        this.glI = i;
+        j = this.glO.getPaddingTop();
+        i2 = this.glO.getBottom() - this.glO.getTop() - this.glO.getPaddingTop() - this.glO.getPaddingBottom();
         i = 0;
-        i3 = this.gha.getHeight();
+        i3 = this.glG.getHeight();
         if (i3 <= i2) {
           break label566;
         }
         i = j;
-        this.ghd = i;
+        this.glJ = i;
       }
     }
     else
     {
-      paramCanvas.translate(this.ghc, this.ghd);
-      this.gha.draw(paramCanvas, null, null, 0);
+      paramCanvas.translate(this.glI, this.glJ);
+      this.glG.draw(paramCanvas, null, null, 0);
       paramCanvas.restore();
       if (h.DEBUG) {
-        ad.d("MicroMsg.StaticTextViewHolder", "onDraw used: %fms, hashCode: %d, text: %s clipLeft:%d clipTop:%d clipRight:%d clipBottom:%d", new Object[] { Double.valueOf((System.nanoTime() - l) / 1000000.0D), Integer.valueOf(hashCode()), this.text, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
+        ac.d("MicroMsg.StaticTextViewHolder", "onDraw used: %fms, hashCode: %d, text: %s clipLeft:%d clipTop:%d clipRight:%d clipBottom:%d", new Object[] { Double.valueOf((System.nanoTime() - l) / 1000000.0D), Integer.valueOf(hashCode()), this.text, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
       }
       AppMethodBeat.o(141093);
       return;
     }
-    switch (this.ggY.gravity & 0x800007)
+    switch (this.glE.gravity & 0x800007)
     {
     default: 
       i = 0;
@@ -435,7 +435,7 @@ public final class g
       i -= i2;
     }
     label566:
-    switch (this.ggY.gravity & 0x70)
+    switch (this.glE.gravity & 0x70)
     {
     }
     for (;;)
@@ -452,18 +452,78 @@ public final class g
   
   public final boolean performClick()
   {
-    return (!this.ghh) && (this.ghf);
+    return (!this.glN) && (this.glL);
+  }
+  
+  public final boolean s(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(141092);
+    int i;
+    boolean bool1;
+    float f2;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+    {
+      i = 1;
+      bool1 = bool2;
+      if (this.glO.isEnabled())
+      {
+        bool1 = bool2;
+        if (this.glK)
+        {
+          com.tencent.mm.kiss.widget.textview.b.b.aib();
+          bool1 = com.tencent.mm.kiss.widget.textview.b.b.a(this.glO, this.glG, (Spannable)this.text, paramMotionEvent);
+          this.glN = bool1;
+          if ((!this.glM) || (i == 0)) {
+            break label250;
+          }
+          float f1 = paramMotionEvent.getX();
+          f2 = paramMotionEvent.getY();
+          if ((f1 >= this.glI) && (f1 <= this.glG.getWidth() + this.glI)) {
+            break label210;
+          }
+          i = 0;
+          label137:
+          if (i == 0) {
+            break label250;
+          }
+          paramMotionEvent = (ClickableSpan[])((Spannable)this.text).getSpans(getSelectionStart(), getSelectionEnd(), ClickableSpan.class);
+          if (paramMotionEvent.length <= 0) {
+            break label250;
+          }
+          ac.d("MicroMsg.StaticTextViewHolder", "perform clickable span click");
+          paramMotionEvent[0].onClick(this.glO);
+          bool1 = true;
+        }
+      }
+    }
+    label210:
+    label250:
+    for (;;)
+    {
+      AppMethodBeat.o(141092);
+      return bool1;
+      i = 0;
+      break;
+      if ((f2 < this.glJ) || (f2 > this.glG.getHeight() + this.glJ))
+      {
+        i = 0;
+        break label137;
+      }
+      i = 1;
+      break label137;
+    }
   }
   
   public final void setGravity(int paramInt)
   {
     AppMethodBeat.i(141082);
-    if ((this.ggZ != null) && (paramInt != this.ggZ.gravity))
+    if ((this.glF != null) && (paramInt != this.glF.gravity))
     {
-      this.ggZ.gravity = paramInt;
-      this.ghb = true;
+      this.glF.gravity = paramInt;
+      this.glH = true;
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setGravity isNeedRecreateLayout");
+        ac.i("MicroMsg.StaticTextViewHolder", "setGravity isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141082);
@@ -472,16 +532,16 @@ public final class g
   public final void setLines(int paramInt)
   {
     AppMethodBeat.i(141077);
-    if ((this.ggZ.maxLines != paramInt) || (this.ggZ.minLines != paramInt))
+    if ((this.glF.maxLines != paramInt) || (this.glF.minLines != paramInt))
     {
-      this.ghb = true;
-      agG();
-      this.ggZ.maxLines = paramInt;
-      this.ggZ.minLines = paramInt;
-      this.ghi.requestLayout();
-      this.ghi.invalidate();
+      this.glH = true;
+      ahX();
+      this.glF.maxLines = paramInt;
+      this.glF.minLines = paramInt;
+      this.glO.requestLayout();
+      this.glO.invalidate();
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setLines isNeedRecreateLayout");
+        ac.i("MicroMsg.StaticTextViewHolder", "setLines isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141077);
@@ -490,16 +550,16 @@ public final class g
   public final void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(141083);
-    if ((this.ggZ != null) && (paramInt != this.ggZ.maxLines))
+    if ((this.glF != null) && (paramInt != this.glF.maxLines))
     {
-      this.ggZ.maxLines = paramInt;
-      this.ghb = true;
-      agG();
+      this.glF.maxLines = paramInt;
+      this.glH = true;
+      ahX();
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setMaxLines isNeedRecreateLayout");
+        ac.i("MicroMsg.StaticTextViewHolder", "setMaxLines isNeedRecreateLayout");
       }
-      this.ghi.requestLayout();
-      this.ghi.invalidate();
+      this.glO.requestLayout();
+      this.glO.invalidate();
     }
     AppMethodBeat.o(141083);
   }
@@ -507,12 +567,12 @@ public final class g
   public final void setMinLines(int paramInt)
   {
     AppMethodBeat.i(141084);
-    if (this.ggZ.minLines != paramInt)
+    if (this.glF.minLines != paramInt)
     {
-      this.ggZ.minLines = paramInt;
-      agG();
-      this.ghi.requestLayout();
-      this.ghi.invalidate();
+      this.glF.minLines = paramInt;
+      ahX();
+      this.glO.requestLayout();
+      this.glO.invalidate();
     }
     AppMethodBeat.o(141084);
   }
@@ -523,13 +583,13 @@ public final class g
     if (paramBoolean) {}
     for (int i = 1;; i = 2147483647)
     {
-      if (this.ggZ.maxLines != i)
+      if (this.glF.maxLines != i)
       {
-        this.ggZ.maxLines = i;
-        this.ghb = true;
-        agG();
-        this.ghi.requestLayout();
-        this.ghi.invalidate();
+        this.glF.maxLines = i;
+        this.glH = true;
+        ahX();
+        this.glO.requestLayout();
+        this.glO.invalidate();
       }
       AppMethodBeat.o(141076);
       return;
@@ -547,11 +607,11 @@ public final class g
     if ((this.text == null) || (!this.text.equals(paramCharSequence)) || (paramBoolean))
     {
       this.text = paramCharSequence;
-      this.ghb = true;
-      this.ghi.requestLayout();
-      this.ghi.invalidate();
+      this.glH = true;
+      this.glO.requestLayout();
+      this.glO.invalidate();
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setText isNeedRecreateLayout " + paramCharSequence + " hashcode " + hashCode() + " " + bt.eGN().toString());
+        ac.i("MicroMsg.StaticTextViewHolder", "setText isNeedRecreateLayout " + paramCharSequence + " hashcode " + hashCode() + " " + bs.eWi().toString());
       }
     }
     AppMethodBeat.o(141086);
@@ -560,12 +620,12 @@ public final class g
   public final void setTextColor(int paramInt)
   {
     AppMethodBeat.i(141081);
-    if ((this.ggZ != null) && (paramInt != this.ggZ.textColor))
+    if ((this.glF != null) && (paramInt != this.glF.textColor))
     {
-      this.ggZ.textColor = paramInt;
-      this.ghb = true;
+      this.glF.textColor = paramInt;
+      this.glH = true;
       if (h.DEBUG) {
-        ad.i("MicroMsg.StaticTextViewHolder", "setTextColor isNeedRecreateLayout");
+        ac.i("MicroMsg.StaticTextViewHolder", "setTextColor isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141081);
@@ -574,47 +634,47 @@ public final class g
   public final void setTextLayout(f paramf)
   {
     AppMethodBeat.i(141080);
-    if ((paramf == null) || (paramf.ggW == null))
+    if ((paramf == null) || (paramf.glC == null))
     {
-      this.ggY = null;
+      this.glE = null;
       AppMethodBeat.o(141080);
       return;
     }
-    if (this.ggZ == null)
+    if (this.glF == null)
     {
       com.tencent.mm.kiss.widget.textview.a.b localb = new com.tencent.mm.kiss.widget.textview.a.b();
-      localb.ggZ = new a();
-      localb.ggZ.maxLines = paramf.maxLines;
-      localb.ggZ.maxLength = paramf.maxLength;
-      localb.ggZ.ga = paramf.ga;
-      localb.ggZ.ggL = paramf.ggL;
-      localb.ggZ.ggM = paramf.ggM;
-      localb.ggZ.gravity = paramf.gravity;
-      localb.ggZ.textSize = paramf.ga.getTextSize();
-      localb.ggZ.textColor = paramf.ga.getColor();
-      this.ggZ = localb.ggZ;
+      localb.glF = new a();
+      localb.glF.maxLines = paramf.maxLines;
+      localb.glF.maxLength = paramf.maxLength;
+      localb.glF.gZ = paramf.gZ;
+      localb.glF.glr = paramf.glr;
+      localb.glF.gls = paramf.gls;
+      localb.glF.gravity = paramf.gravity;
+      localb.glF.textSize = paramf.gZ.getTextSize();
+      localb.glF.textColor = paramf.gZ.getColor();
+      this.glF = localb.glF;
     }
-    agG();
-    this.ghi.setWillNotDraw(false);
-    this.ggY = paramf;
-    this.gha = paramf.ggW;
+    ahX();
+    this.glO.setWillNotDraw(false);
+    this.glE = paramf;
+    this.glG = paramf.glC;
     this.text = paramf.text;
-    this.ghe = (this.text instanceof Spannable);
-    if (this.ghe)
+    this.glK = (this.text instanceof Spannable);
+    if (this.glK)
     {
-      this.text = this.ggY.text;
-      com.tencent.mm.kiss.widget.textview.b.b.agK();
+      this.text = this.glE.text;
+      com.tencent.mm.kiss.widget.textview.b.b.aib();
       com.tencent.mm.kiss.widget.textview.b.b.a((Spannable)this.text);
     }
-    this.ghi.requestLayout();
-    this.ghi.invalidate();
+    this.glO.requestLayout();
+    this.glO.invalidate();
     AppMethodBeat.o(141080);
   }
   
   public final void setTextSize(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(141078);
-    Object localObject = aj.getContext();
+    Object localObject = ai.getContext();
     if (localObject == null) {}
     for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
     {
@@ -623,70 +683,10 @@ public final class g
       return;
     }
   }
-  
-  public final boolean u(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    AppMethodBeat.i(141092);
-    int i;
-    boolean bool1;
-    float f2;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-    {
-      i = 1;
-      bool1 = bool2;
-      if (this.ghi.isEnabled())
-      {
-        bool1 = bool2;
-        if (this.ghe)
-        {
-          com.tencent.mm.kiss.widget.textview.b.b.agK();
-          bool1 = com.tencent.mm.kiss.widget.textview.b.b.a(this.ghi, this.gha, (Spannable)this.text, paramMotionEvent);
-          this.ghh = bool1;
-          if ((!this.ghg) || (i == 0)) {
-            break label250;
-          }
-          float f1 = paramMotionEvent.getX();
-          f2 = paramMotionEvent.getY();
-          if ((f1 >= this.ghc) && (f1 <= this.gha.getWidth() + this.ghc)) {
-            break label210;
-          }
-          i = 0;
-          label137:
-          if (i == 0) {
-            break label250;
-          }
-          paramMotionEvent = (ClickableSpan[])((Spannable)this.text).getSpans(getSelectionStart(), getSelectionEnd(), ClickableSpan.class);
-          if (paramMotionEvent.length <= 0) {
-            break label250;
-          }
-          ad.d("MicroMsg.StaticTextViewHolder", "perform clickable span click");
-          paramMotionEvent[0].onClick(this.ghi);
-          bool1 = true;
-        }
-      }
-    }
-    label210:
-    label250:
-    for (;;)
-    {
-      AppMethodBeat.o(141092);
-      return bool1;
-      i = 0;
-      break;
-      if ((f2 < this.ghd) || (f2 > this.gha.getHeight() + this.ghd))
-      {
-        i = 0;
-        break label137;
-      }
-      i = 1;
-      break label137;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoDownLoadMgr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -12,14 +12,14 @@ import java.util.concurrent.TimeUnit;
 
 public final class g
 {
-  public static final Runnable iSg;
-  private static final long iSh;
-  private static final long iSi;
+  public static final Runnable jsr;
+  private static final long jss;
+  private static final long jst;
   
   static
   {
     AppMethodBeat.i(44454);
-    iSg = new Runnable()
+    jsr = new Runnable()
     {
       private void q(e paramAnonymouse)
       {
@@ -30,17 +30,17 @@ public final class g
           AppMethodBeat.o(174713);
           return;
         }
-        if (i.eK(q.B(paramAnonymouse.fhU()) + "/dir.lock"))
+        if (i.eA(q.B(paramAnonymouse.fxV()) + "/dir.lock"))
         {
-          if (bt.eGO() - new e(q.B(paramAnonymouse.fhU()) + "/dir.lock").lastModified() < g.iSi)
+          if (bs.eWj() - new e(q.B(paramAnonymouse.fxV()) + "/dir.lock").lastModified() < g.jst)
           {
-            ad.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymouse.getName() });
+            ac.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymouse.getName() });
             AppMethodBeat.o(174713);
             return;
           }
-          ad.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymouse.getName() });
+          ac.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymouse.getName() });
         }
-        ad.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymouse.getName() });
+        ac.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymouse.getName() });
         paramAnonymouse = paramAnonymouse.a(new com.tencent.mm.vfs.g()
         {
           public final boolean accept(e paramAnonymous2e)
@@ -60,13 +60,13 @@ public final class g
           AppMethodBeat.o(174713);
           return;
         }
-        long l = bt.eGO();
+        long l = bs.eWj();
         int j = paramAnonymouse.length;
         while (i < j)
         {
           Object localObject = paramAnonymouse[i];
-          if (l - localObject.lastModified() >= g.iSh) {
-            i.deleteFile(q.B(localObject.fhU()));
+          if (l - localObject.lastModified() >= g.jss) {
+            i.deleteFile(q.B(localObject.fxV()));
           }
           i += 1;
         }
@@ -77,13 +77,13 @@ public final class g
       {
         int j = 0;
         AppMethodBeat.i(44452);
-        Object localObject = new e(ar.aZK());
+        Object localObject = new e(ar.bgC());
         if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
         {
           AppMethodBeat.o(44452);
           return;
         }
-        localObject = ((e)localObject).fhW();
+        localObject = ((e)localObject).fxX();
         if ((localObject == null) || (localObject.length <= 0))
         {
           AppMethodBeat.o(44452);
@@ -96,13 +96,13 @@ public final class g
           q(localObject[i]);
           i += 1;
         }
-        localObject = new e(AppBrandVideoDownLoadMgr.kmE);
+        localObject = new e(AppBrandVideoDownLoadMgr.kNW);
         if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
         {
           AppMethodBeat.o(44452);
           return;
         }
-        localObject = ((e)localObject).fhW();
+        localObject = ((e)localObject).fxX();
         if ((localObject == null) || (localObject.length <= 0))
         {
           AppMethodBeat.o(44452);
@@ -118,14 +118,14 @@ public final class g
         AppMethodBeat.o(44452);
       }
     };
-    iSh = TimeUnit.MINUTES.toMillis(30L);
-    iSi = TimeUnit.DAYS.toMillis(1L);
+    jss = TimeUnit.MINUTES.toMillis(30L);
+    jst = TimeUnit.DAYS.toMillis(1L);
     AppMethodBeat.o(44454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.g
  * JD-Core Version:    0.7.0.1
  */

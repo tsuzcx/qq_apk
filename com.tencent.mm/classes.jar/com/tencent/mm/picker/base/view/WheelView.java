@@ -30,38 +30,38 @@ import java.util.concurrent.TimeUnit;
 public class WheelView
   extends View
 {
-  private int Hu;
-  private int LZ;
-  private Paint bOr;
+  private int Is;
+  private int MW;
+  private Paint bLZ;
   String content;
-  public ScheduledFuture<?> hRA;
-  private Paint hRB;
-  private com.tencent.mm.picker.base.a.b<?> hRC;
-  private int hRD;
-  private float hRE;
-  private int hRF;
-  private float hRG;
-  private float hRH;
-  private float hRI;
-  private int hRJ;
-  private int hRK;
-  private int hRL;
-  private int hRM;
-  private int hRN;
-  private int hRO;
-  private float hRP;
-  private int hRQ;
-  private int hRR;
-  private int hRs;
-  private int hRt;
-  private final int hRu;
-  private GestureDetector hRv;
-  public com.tencent.mm.picker.base.b.b hRw;
-  private boolean hRx;
-  public boolean hRy;
-  public ScheduledExecutorService hRz;
+  public boolean hYH;
   private Handler handler;
-  public boolean hyg;
+  private GestureDetector irA;
+  public com.tencent.mm.picker.base.b.b irB;
+  private boolean irC;
+  public boolean irD;
+  public ScheduledExecutorService irE;
+  public ScheduledFuture<?> irF;
+  private Paint irG;
+  private com.tencent.mm.picker.base.a.b<?> irH;
+  private int irI;
+  private float irJ;
+  private int irK;
+  private float irL;
+  private float irM;
+  private float irN;
+  private int irO;
+  private int irP;
+  private int irQ;
+  private int irR;
+  private int irS;
+  private int irT;
+  private float irU;
+  private int irV;
+  private int irW;
+  private int irx;
+  private int iry;
+  private final int irz;
   private String label;
   private Rect rect;
   private long startTime;
@@ -77,80 +77,80 @@ public class WheelView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(175306);
-    this.hRs = 0;
+    this.irx = 0;
     this.textColor = Color.rgb(255, 255, 255);
-    this.hRu = 2;
+    this.irz = 2;
     this.content = "";
-    this.hRx = false;
-    this.hRy = true;
-    this.hRz = Executors.newSingleThreadScheduledExecutor();
-    this.hRM = 5;
-    this.LZ = 0;
-    this.hRP = 0.0F;
+    this.irC = false;
+    this.irD = true;
+    this.irE = Executors.newSingleThreadScheduledExecutor();
+    this.irR = 5;
+    this.MW = 0;
+    this.irU = 0.0F;
     this.startTime = 0L;
-    this.Hu = 17;
-    this.hRR = 0;
+    this.Is = 17;
+    this.irW = 0;
     this.rect = new Rect();
     this.textSize = getResources().getDimensionPixelSize(2131166686);
-    this.hRD = getResources().getDimensionPixelSize(2131166685);
+    this.irI = getResources().getDimensionPixelSize(2131166685);
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WheelView, 0, 0);
-      this.Hu = paramAttributeSet.getInt(1, 17);
-      this.hRF = paramAttributeSet.getColor(0, -2763307);
+      this.Is = paramAttributeSet.getInt(1, 17);
+      this.irK = paramAttributeSet.getColor(0, -2763307);
       paramAttributeSet.recycle();
     }
     this.handler = new com.tencent.mm.picker.base.c.b(this);
-    this.hRv = new GestureDetector(paramContext, new a(this));
-    this.hRv.setIsLongpressEnabled(false);
-    this.hyg = true;
-    this.hRI = 0.0F;
-    this.hRJ = -1;
-    this.bOr = new Paint();
-    this.bOr.setColor(this.textColor);
-    this.bOr.setAntiAlias(true);
-    this.bOr.setTextSize(this.textSize);
-    this.hRB = new Paint();
-    this.hRB.setColor(this.hRF);
-    this.hRB.setAntiAlias(true);
+    this.irA = new GestureDetector(paramContext, new a(this));
+    this.irA.setIsLongpressEnabled(false);
+    this.hYH = true;
+    this.irN = 0.0F;
+    this.irO = -1;
+    this.bLZ = new Paint();
+    this.bLZ.setColor(this.textColor);
+    this.bLZ.setAntiAlias(true);
+    this.bLZ.setTextSize(this.textSize);
+    this.irG = new Paint();
+    this.irG.setColor(this.irK);
+    this.irG.setAntiAlias(true);
     setLayerType(2, null);
     AppMethodBeat.o(175306);
   }
   
-  private void aFR()
+  private void aME()
   {
     AppMethodBeat.i(175307);
-    if (this.hRC == null)
+    if (this.irH == null)
     {
       AppMethodBeat.o(175307);
       return;
     }
-    this.hRE = (this.hRs + getPaddingBottom() + getPaddingTop());
-    this.hRN = ((int)(this.hRE * this.hRM));
-    this.hRO = View.MeasureSpec.getSize(this.hRQ);
-    this.hRG = ((this.hRN - this.hRE) / 2.0F);
-    this.hRH = ((this.hRN + this.hRE) / 2.0F);
-    if (this.hRJ == -1) {
-      if (!this.hyg) {
+    this.irJ = (this.irx + getPaddingBottom() + getPaddingTop());
+    this.irS = ((int)(this.irJ * this.irR));
+    this.irT = View.MeasureSpec.getSize(this.irV);
+    this.irL = ((this.irS - this.irJ) / 2.0F);
+    this.irM = ((this.irS + this.irJ) / 2.0F);
+    if (this.irO == -1) {
+      if (!this.hYH) {
         break label141;
       }
     }
     label141:
-    for (this.hRJ = ((this.hRC.getItemsCount() + 1) / 2);; this.hRJ = 0)
+    for (this.irO = ((this.irH.getItemsCount() + 1) / 2);; this.irO = 0)
     {
-      this.hRL = this.hRJ;
+      this.irQ = this.irO;
       AppMethodBeat.o(175307);
       return;
     }
   }
   
-  private void aFT()
+  private void aMG()
   {
     AppMethodBeat.i(175317);
     Rect localRect = new Rect();
-    this.bOr.getTextBounds(this.content, 0, this.content.length(), localRect);
+    this.bLZ.getTextBounds(this.content, 0, this.content.length(), localRect);
     localRect = new Rect();
-    this.bOr.getTextBounds(this.content, 0, 0, localRect);
+    this.bLZ.getTextBounds(this.content, 0, 0, localRect);
     int j = this.content.length();
     int i = 0;
     int k;
@@ -162,17 +162,17 @@ public class WheelView
       }
       localRect = new Rect();
       k = (j - i >> 1) + i;
-      this.bOr.getTextBounds(this.content, 0, k, localRect);
-      if (localRect.width() >= aFU()) {
+      this.bLZ.getTextBounds(this.content, 0, k, localRect);
+      if (localRect.width() >= aMH()) {
         j = k - 1;
-      } else if (localRect.width() < aFU()) {
+      } else if (localRect.width() < aMH()) {
         i = k + 1;
       }
     }
     do
     {
       this.content = this.content.substring(0, k);
-      if (this.bOr.measureText(this.content + "...") <= aFU()) {
+      if (this.bLZ.measureText(this.content + "...") <= aMH()) {
         break;
       }
       i = k - 1;
@@ -182,33 +182,33 @@ public class WheelView
     AppMethodBeat.o(175317);
   }
   
-  private int aFU()
+  private int aMH()
   {
     AppMethodBeat.i(175318);
-    int i = this.hRO;
+    int i = this.irT;
     int j = getPaddingLeft();
     int k = getPaddingRight();
     AppMethodBeat.o(175318);
     return i - j - k;
   }
   
-  private void aFV()
+  private void aMI()
   {
     AppMethodBeat.i(175319);
     int i = this.textSize;
-    this.bOr.setTextSize(i);
-    while ((i > this.hRD) && (!aFW()))
+    this.bLZ.setTextSize(i);
+    while ((i > this.irI) && (!aMJ()))
     {
       i -= 1;
-      this.bOr.setTextSize(i);
+      this.bLZ.setTextSize(i);
     }
     AppMethodBeat.o(175319);
   }
   
-  private boolean aFW()
+  private boolean aMJ()
   {
     AppMethodBeat.i(175320);
-    if (this.bOr.measureText(this.content) <= this.hRO - getPaddingLeft() - getPaddingRight())
+    if (this.bLZ.measureText(this.content) <= this.irT - getPaddingLeft() - getPaddingRight())
     {
       AppMethodBeat.o(175320);
       return true;
@@ -217,7 +217,7 @@ public class WheelView
     return false;
   }
   
-  private static String cc(Object paramObject)
+  private static String bZ(Object paramObject)
   {
     AppMethodBeat.i(175316);
     if (paramObject == null)
@@ -230,32 +230,32 @@ public class WheelView
     return paramObject;
   }
   
-  private String pA(int paramInt)
+  private String qn(int paramInt)
   {
     AppMethodBeat.i(175314);
     int i = paramInt;
-    if (this.hyg) {
-      i = pB(paramInt);
+    if (this.hYH) {
+      i = qo(paramInt);
     }
-    String str = this.hRC.pw(i);
+    String str = this.irH.qk(i);
     AppMethodBeat.o(175314);
     return str;
   }
   
-  private int pB(int paramInt)
+  private int qo(int paramInt)
   {
     AppMethodBeat.i(175315);
     int i;
     if (paramInt < 0) {
-      i = pB(this.hRC.getItemsCount() + paramInt);
+      i = qo(this.irH.getItemsCount() + paramInt);
     }
     for (;;)
     {
       AppMethodBeat.o(175315);
       return i;
       i = paramInt;
-      if (paramInt > this.hRC.getItemsCount() - 1) {
-        i = pB(paramInt - this.hRC.getItemsCount());
+      if (paramInt > this.irH.getItemsCount() - 1) {
+        i = qo(paramInt - this.irH.getItemsCount());
       }
     }
   }
@@ -263,54 +263,54 @@ public class WheelView
   public final void a(WheelView.a parama)
   {
     AppMethodBeat.i(175308);
-    aFS();
-    if ((parama == WheelView.a.hRU) || (parama == WheelView.a.hRV))
+    aMF();
+    if ((parama == WheelView.a.irZ) || (parama == WheelView.a.isa))
     {
-      this.LZ = ((int)((this.hRI % this.hRE + this.hRE) % this.hRE));
-      if (this.LZ <= this.hRE / 2.0F) {
+      this.MW = ((int)((this.irN % this.irJ + this.irJ) % this.irJ));
+      if (this.MW <= this.irJ / 2.0F) {
         break label117;
       }
     }
     label117:
-    for (this.LZ = ((int)(this.hRE - this.LZ));; this.LZ = (-this.LZ))
+    for (this.MW = ((int)(this.irJ - this.MW));; this.MW = (-this.MW))
     {
-      this.hRA = this.hRz.scheduleWithFixedDelay(new c(this, this.LZ), 0L, 10L, TimeUnit.MILLISECONDS);
+      this.irF = this.irE.scheduleWithFixedDelay(new c(this, this.MW), 0L, 10L, TimeUnit.MILLISECONDS);
       AppMethodBeat.o(175308);
       return;
     }
   }
   
-  public final void aFS()
+  public final void aMF()
   {
     AppMethodBeat.i(175309);
-    if ((this.hRA != null) && (!this.hRA.isCancelled()))
+    if ((this.irF != null) && (!this.irF.isCancelled()))
     {
-      this.hRA.cancel(true);
-      this.hRA = null;
+      this.irF.cancel(true);
+      this.irF = null;
     }
     AppMethodBeat.o(175309);
   }
   
   public final com.tencent.mm.picker.base.a.b getAdapter()
   {
-    return this.hRC;
+    return this.irH;
   }
   
   public final int getCurrentItem()
   {
     AppMethodBeat.i(175312);
-    if (this.hRC == null)
+    if (this.irH == null)
     {
       AppMethodBeat.o(175312);
       return 0;
     }
-    if ((this.hyg) && ((this.hRK < 0) || (this.hRK >= this.hRC.getItemsCount())))
+    if ((this.hYH) && ((this.irP < 0) || (this.irP >= this.irH.getItemsCount())))
     {
-      i = Math.max(0, Math.min(Math.abs(Math.abs(this.hRK) - this.hRC.getItemsCount()), this.hRC.getItemsCount() - 1));
+      i = Math.max(0, Math.min(Math.abs(Math.abs(this.irP) - this.irH.getItemsCount()), this.irH.getItemsCount() - 1));
       AppMethodBeat.o(175312);
       return i;
     }
-    int i = Math.max(0, Math.min(this.hRK, this.hRC.getItemsCount() - 1));
+    int i = Math.max(0, Math.min(this.irP, this.irH.getItemsCount() - 1));
     AppMethodBeat.o(175312);
     return i;
   }
@@ -322,20 +322,20 @@ public class WheelView
   
   public int getInitPosition()
   {
-    return this.hRJ;
+    return this.irO;
   }
   
   public float getItemHeight()
   {
-    return this.hRE;
+    return this.irJ;
   }
   
   public int getItemsCount()
   {
     AppMethodBeat.i(175323);
-    if (this.hRC != null)
+    if (this.irH != null)
     {
-      int i = this.hRC.getItemsCount();
+      int i = this.irH.getItemsCount();
       AppMethodBeat.o(175323);
       return i;
     }
@@ -345,7 +345,7 @@ public class WheelView
   
   public float getTotalScrollY()
   {
-    return this.hRI;
+    return this.irN;
   }
   
   @SuppressLint({"DrawAllocation"})
@@ -353,48 +353,48 @@ public class WheelView
   {
     AppMethodBeat.i(175313);
     super.onDraw(paramCanvas);
-    if (this.hRC == null)
+    if (this.irH == null)
     {
       AppMethodBeat.o(175313);
       return;
     }
-    this.hRJ = Math.min(Math.max(0, this.hRJ), this.hRC.getItemsCount() - 1);
-    Object[] arrayOfObject = new Object[this.hRM];
+    this.irO = Math.min(Math.max(0, this.irO), this.irH.getItemsCount() - 1);
+    Object[] arrayOfObject = new Object[this.irR];
     Object localObject2 = new Object();
     Object localObject1 = new Object();
-    int i = (int)(this.hRI / this.hRE);
+    int i = (int)(this.irN / this.irJ);
     label1042:
     label1045:
     for (;;)
     {
       try
       {
-        j = this.hRJ;
-        this.hRL = (i % this.hRC.getItemsCount() + j);
-        if (!this.hyg)
+        j = this.irO;
+        this.irQ = (i % this.irH.getItemsCount() + j);
+        if (!this.hYH)
         {
-          if (this.hRL < 0) {
-            this.hRL = 0;
+          if (this.irQ < 0) {
+            this.irQ = 0;
           }
-          if (this.hRL > this.hRC.getItemsCount() - 1) {
-            this.hRL = (this.hRC.getItemsCount() - 1);
+          if (this.irQ > this.irH.getItemsCount() - 1) {
+            this.irQ = (this.irH.getItemsCount() - 1);
           }
-          f1 = this.hRI;
-          f2 = this.hRE;
+          f1 = this.irN;
+          f2 = this.irJ;
           i = 0;
-          if (i >= this.hRM) {
+          if (i >= this.irR) {
             continue;
           }
-          j = this.hRL - (this.hRM / 2 - i);
+          j = this.irQ - (this.irR / 2 - i);
           if (i != 0) {
             break label1045;
           }
-          localObject2 = pA(j - 1);
-          if (i != this.hRM - 1) {
+          localObject2 = qn(j - 1);
+          if (i != this.irR - 1) {
             break label1042;
           }
-          localObject1 = pA(j + 1);
-          arrayOfObject[i] = pA(j);
+          localObject1 = qn(j + 1);
+          arrayOfObject[i] = qn(j);
           i += 1;
           continue;
         }
@@ -405,96 +405,96 @@ public class WheelView
         float f2;
         Log.e("WheelView", "出错了！adapter.getItemsCount() == 0，联动数据不匹配");
         continue;
-        if (this.hRL < 0) {
-          this.hRL = (this.hRC.getItemsCount() + this.hRL);
+        if (this.irQ < 0) {
+          this.irQ = (this.irH.getItemsCount() + this.irQ);
         }
-        if (this.hRL <= this.hRC.getItemsCount() - 1) {
+        if (this.irQ <= this.irH.getItemsCount() - 1) {
           continue;
         }
-        this.hRL -= this.hRC.getItemsCount();
+        this.irQ -= this.irH.getItemsCount();
         continue;
-        paramCanvas.drawLine(0.0F, this.hRG, this.hRO, this.hRG, this.hRB);
-        paramCanvas.drawLine(0.0F, this.hRH, this.hRO, this.hRH, this.hRB);
+        paramCanvas.drawLine(0.0F, this.irL, this.irT, this.irL, this.irG);
+        paramCanvas.drawLine(0.0F, this.irM, this.irT, this.irM, this.irG);
         int j = 0;
-        if (j < this.hRM + 2)
+        if (j < this.irR + 2)
         {
           Object localObject3;
           float f3;
           if (j == 0)
           {
             localObject3 = localObject2;
-            f3 = this.hRE * j - f1 % f2 + this.hRE / 2.0F - this.hRE;
-            if ((this.hRy) || (TextUtils.isEmpty(this.label)) || (TextUtils.isEmpty(cc(localObject3)))) {
+            f3 = this.irJ * j - f1 % f2 + this.irJ / 2.0F - this.irJ;
+            if ((this.irD) || (TextUtils.isEmpty(this.label)) || (TextUtils.isEmpty(bZ(localObject3)))) {
               continue;
             }
-            this.content = (cc(localObject3) + this.label);
-            this.bOr.getTextBounds(this.content, 0, this.content.length(), this.rect);
+            this.content = (bZ(localObject3) + this.label);
+            this.bLZ.getTextBounds(this.content, 0, this.content.length(), this.rect);
           }
           int k;
-          switch (this.Hu)
+          switch (this.Is)
           {
           default: 
-            float f4 = this.hRN / 2.0F;
+            float f4 = this.irS / 2.0F;
             f4 = Math.abs((f3 - f4) / f4);
-            k = (int)((1.0F - new AccelerateInterpolator(0.3F).getInterpolation(f4)) * this.hRt);
-            if (k < this.hRt * 0.14F)
+            k = (int)((1.0F - new AccelerateInterpolator(0.3F).getInterpolation(f4)) * this.iry);
+            if (k < this.iry * 0.14F)
             {
-              i = (int)(this.hRt * 0.14F);
-              this.bOr.setAlpha(i);
-              if ((f3 >= this.hRG) && (f3 <= this.hRH)) {
-                this.hRK = (this.hRL - (this.hRM / 2 - j) - 1);
+              i = (int)(this.iry * 0.14F);
+              this.bLZ.setAlpha(i);
+              if ((f3 >= this.irL) && (f3 <= this.irM)) {
+                this.irP = (this.irQ - (this.irR / 2 - j) - 1);
               }
-              if ((f3 >= 0.0F) && (f3 <= this.hRN))
+              if ((f3 >= 0.0F) && (f3 <= this.irS))
               {
                 localObject3 = this.content;
-                f4 = this.hRR;
-                Paint.FontMetricsInt localFontMetricsInt = this.bOr.getFontMetricsInt();
+                f4 = this.irW;
+                Paint.FontMetricsInt localFontMetricsInt = this.bLZ.getFontMetricsInt();
                 float f5 = Math.abs(localFontMetricsInt.top);
                 float f6 = localFontMetricsInt.bottom;
-                paramCanvas.drawText((String)localObject3, f4, f3 - f6 + (f6 + f5) / 2.0F, this.bOr);
+                paramCanvas.drawText((String)localObject3, f4, f3 - f6 + (f6 + f5) / 2.0F, this.bLZ);
               }
               j += 1;
-              this.bOr.setTextSize(this.textSize);
+              this.bLZ.setTextSize(this.textSize);
               continue;
-              if (j == this.hRM + 2 - 1)
+              if (j == this.irR + 2 - 1)
               {
                 localObject3 = localObject1;
                 continue;
               }
               localObject3 = arrayOfObject[(j - 1)];
               continue;
-              this.content = cc(localObject3);
+              this.content = bZ(localObject3);
             }
             break;
           case 17: 
-            if ((this.hRx) || (this.label == null) || (this.label.equals("")) || (!this.hRy))
+            if ((this.irC) || (this.label == null) || (this.label.equals("")) || (!this.irD))
             {
-              if (this.hRO < this.rect.width())
+              if (this.irT < this.rect.width())
               {
-                aFV();
-                if (!aFW()) {
-                  aFT();
+                aMI();
+                if (!aMJ()) {
+                  aMG();
                 }
-                this.bOr.getTextBounds(this.content, 0, this.content.length(), this.rect);
-                this.hRR = ((int)((this.hRO - this.rect.width()) * 0.5D));
+                this.bLZ.getTextBounds(this.content, 0, this.content.length(), this.rect);
+                this.irW = ((int)((this.irT - this.rect.width()) * 0.5D));
                 continue;
               }
-              this.hRR = ((int)((this.hRO - this.rect.width()) * 0.5D));
+              this.irW = ((int)((this.irT - this.rect.width()) * 0.5D));
               continue;
             }
-            this.hRR = ((int)((this.hRO - this.rect.width()) * 0.25D));
+            this.irW = ((int)((this.irT - this.rect.width()) * 0.25D));
             break;
           case 3: 
-            this.hRR = 0;
+            this.irW = 0;
             break;
           case 5: 
-            this.hRR = (this.hRO - this.rect.width());
+            this.irW = (this.irT - this.rect.width());
             continue;
             i = k;
-            if (k <= this.hRt) {
+            if (k <= this.iry) {
               continue;
             }
-            i = this.hRt;
+            i = this.iry;
             break;
           }
         }
@@ -507,20 +507,20 @@ public class WheelView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(175321);
-    this.hRQ = paramInt1;
-    aFR();
-    setMeasuredDimension(this.hRO, this.hRN);
+    this.irV = paramInt1;
+    aME();
+    setMeasuredDimension(this.irT, this.irS);
     AppMethodBeat.o(175321);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(175322);
-    boolean bool = this.hRv.onTouchEvent(paramMotionEvent);
-    float f1 = -this.hRJ;
-    float f2 = this.hRE;
-    float f3 = this.hRC.getItemsCount() - 1 - this.hRJ;
-    float f4 = this.hRE;
+    boolean bool = this.irA.onTouchEvent(paramMotionEvent);
+    float f1 = -this.irO;
+    float f2 = this.irJ;
+    float f3 = this.irH.getItemsCount() - 1 - this.irO;
+    float f4 = this.irJ;
     switch (paramMotionEvent.getAction())
     {
     case 1: 
@@ -530,7 +530,7 @@ public class WheelView
       }
       if (System.currentTimeMillis() - this.startTime > 120L)
       {
-        a(WheelView.a.hRV);
+        a(WheelView.a.isa);
         i = 0;
       }
       break;
@@ -544,19 +544,19 @@ public class WheelView
         AppMethodBeat.o(175322);
         return true;
         this.startTime = System.currentTimeMillis();
-        aFS();
-        this.hRP = paramMotionEvent.getRawY();
+        aMF();
+        this.irU = paramMotionEvent.getRawY();
         i = 0;
         continue;
-        float f5 = this.hRP - paramMotionEvent.getRawY();
-        this.hRP = paramMotionEvent.getRawY();
-        this.hRI += f5;
-        if (this.hyg) {
+        float f5 = this.irU - paramMotionEvent.getRawY();
+        this.irU = paramMotionEvent.getRawY();
+        this.irN += f5;
+        if (this.hYH) {
           break;
         }
-        if (((this.hRI - this.hRE * 0.25F < f1 * f2) && (f5 < 0.0F)) || ((this.hRI + this.hRE * 0.25F > f3 * f4) && (f5 > 0.0F)))
+        if (((this.irN - this.irJ * 0.25F < f1 * f2) && (f5 < 0.0F)) || ((this.irN + this.irJ * 0.25F > f3 * f4) && (f5 > 0.0F)))
         {
-          this.hRI -= f5;
+          this.irN -= f5;
           i = 1;
         }
         else
@@ -565,14 +565,14 @@ public class WheelView
         }
       }
     }
-    int i = (int)(paramMotionEvent.getY() - this.hRN / 2.0F);
+    int i = (int)(paramMotionEvent.getY() - this.irS / 2.0F);
     if (i > 0) {}
-    for (i = (int)(i + this.hRE / 2.0F);; i = (int)(i - this.hRE / 2.0F))
+    for (i = (int)(i + this.irJ / 2.0F);; i = (int)(i - this.irJ / 2.0F))
     {
-      if (this.hRE != 0.0F)
+      if (this.irJ != 0.0F)
       {
-        this.LZ = ((int)((int)(i / this.hRE) * this.hRE));
-        a(WheelView.a.hRT);
+        this.MW = ((int)((int)(i / this.irJ) * this.irJ));
+        a(WheelView.a.irY);
       }
       label348:
       i = 0;
@@ -580,21 +580,21 @@ public class WheelView
     }
   }
   
-  public final WheelView pC(int paramInt)
+  public final WheelView qp(int paramInt)
   {
     AppMethodBeat.i(175326);
-    this.hRs = paramInt;
+    this.irx = paramInt;
     invalidate();
     AppMethodBeat.o(175326);
     return this;
   }
   
-  public final WheelView pD(int paramInt)
+  public final WheelView qq(int paramInt)
   {
     AppMethodBeat.i(175327);
     this.textColor = paramInt;
-    this.bOr.setColor(this.textColor);
-    this.hRt = ((int)((paramInt >> 24 & 0xFF) / 255.0F * 255.0F));
+    this.bLZ.setColor(this.textColor);
+    this.iry = ((int)((paramInt >> 24 & 0xFF) / 255.0F * 255.0F));
     AppMethodBeat.o(175327);
     return this;
   }
@@ -602,8 +602,8 @@ public class WheelView
   public final void setAdapter(com.tencent.mm.picker.base.a.b<?> paramb)
   {
     AppMethodBeat.i(175311);
-    this.hRC = paramb;
-    aFR();
+    this.irH = paramb;
+    aME();
     invalidate();
     AppMethodBeat.o(175311);
   }
@@ -611,16 +611,16 @@ public class WheelView
   public final void setCurrentItem(int paramInt)
   {
     AppMethodBeat.i(175310);
-    this.hRK = paramInt;
-    this.hRJ = paramInt;
-    this.hRI = 0.0F;
+    this.irP = paramInt;
+    this.irO = paramInt;
+    this.irN = 0.0F;
     invalidate();
     AppMethodBeat.o(175310);
   }
   
   public final void setCyclic(boolean paramBoolean)
   {
-    this.hyg = paramBoolean;
+    this.hYH = paramBoolean;
   }
   
   public void setDividerColor(int paramInt)
@@ -628,8 +628,8 @@ public class WheelView
     AppMethodBeat.i(175324);
     if (paramInt != 0)
     {
-      this.hRF = paramInt;
-      this.hRB.setColor(this.hRF);
+      this.irK = paramInt;
+      this.irG.setColor(this.irK);
     }
     AppMethodBeat.o(175324);
   }
@@ -637,18 +637,18 @@ public class WheelView
   public void setDividerHeight(float paramFloat)
   {
     AppMethodBeat.i(175325);
-    this.hRB.setStrokeWidth(paramFloat);
+    this.irG.setStrokeWidth(paramFloat);
     AppMethodBeat.o(175325);
   }
   
   public void setGravity(int paramInt)
   {
-    this.Hu = paramInt;
+    this.Is = paramInt;
   }
   
   public void setIsOptions(boolean paramBoolean)
   {
-    this.hRx = paramBoolean;
+    this.irC = paramBoolean;
   }
   
   public void setLabel(String paramString)
@@ -658,17 +658,17 @@ public class WheelView
   
   public final void setOnItemSelectedListener(com.tencent.mm.picker.base.b.b paramb)
   {
-    this.hRw = paramb;
+    this.irB = paramb;
   }
   
   public void setTotalScrollY(float paramFloat)
   {
-    this.hRI = paramFloat;
+    this.irN = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.base.view.WheelView
  * JD-Core Version:    0.7.0.1
  */

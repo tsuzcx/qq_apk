@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;)V", "getDataList", "()Ljava/util/ArrayList;", "mListener", "cloneList", "getItemCount", "", "getItemId", "", "position", "getItemViewType", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "replaceList", "list", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;)V", "getDataList", "()Ljava/util/ArrayList;", "mListener", "cloneList", "getItemCount", "", "getItemId", "", "position", "getItemViewType", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "replaceList", "list", "", "plugin-appbrand-integration_release"})
 final class k
   extends RecyclerView.a<m>
 {
   final ArrayList<LocalUsageInfo> dataList;
-  private final m.a lGF;
+  private final m.a miA;
   
   public k(ArrayList<LocalUsageInfo> paramArrayList, m.a parama)
   {
     AppMethodBeat.i(51278);
     this.dataList = paramArrayList;
-    this.lGF = parama;
+    this.miA = parama;
     AppMethodBeat.o(51278);
   }
   
@@ -46,7 +46,7 @@ final class k
     }
   }
   
-  public final ArrayList<LocalUsageInfo> bpq()
+  public final ArrayList<LocalUsageInfo> bwl()
   {
     AppMethodBeat.i(51270);
     synchronized (this.dataList)
@@ -70,7 +70,7 @@ final class k
   {
     AppMethodBeat.i(51277);
     LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)this.dataList.get(paramInt);
-    long l = (localLocalUsageInfo.username + localLocalUsageInfo.gXn).hashCode();
+    long l = (localLocalUsageInfo.username + localLocalUsageInfo.hxM).hashCode();
     AppMethodBeat.o(51277);
     return l;
   }
@@ -82,7 +82,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.k
  * JD-Core Version:    0.7.0.1
  */

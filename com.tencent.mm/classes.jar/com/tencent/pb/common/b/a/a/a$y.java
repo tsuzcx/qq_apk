@@ -6,15 +6,15 @@ import com.google.b.a.e;
 public final class a$y
   extends e
 {
-  public a.aw IkD = null;
-  public a.ay[] IlV = a.ay.flz();
+  public int ADE = 0;
+  public long ADF = 0L;
+  public a.aw JMo = null;
+  public a.ay[] JNG = a.ay.fBQ();
   public String groupId = "";
-  public int zkT = 0;
-  public long zkU = 0L;
   
   public a$y()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -22,55 +22,55 @@ public final class a$y
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if ((this.IlV != null) && (this.IlV.length > 0))
+    if ((this.JNG != null) && (this.JNG.length > 0))
     {
       int i = 0;
-      while (i < this.IlV.length)
+      while (i < this.JNG.length)
       {
-        a.ay localay = this.IlV[i];
+        a.ay localay = this.JNG[i];
         if (localay != null) {
           paramb.a(4, localay);
         }
         i += 1;
       }
     }
-    if (this.IkD != null) {
-      paramb.a(5, this.IkD);
+    if (this.JMo != null) {
+      paramb.a(5, this.JMo);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.IlV != null)
+    if (this.JNG != null)
     {
       j = i;
-      if (this.IlV.length > 0)
+      if (this.JNG.length > 0)
       {
         j = 0;
-        while (j < this.IlV.length)
+        while (j < this.JNG.length)
         {
-          a.ay localay = this.IlV[j];
+          a.ay localay = this.JNG[j];
           int k = i;
           if (localay != null) {
             k = i + b.b(4, localay);
@@ -82,8 +82,8 @@ public final class a$y
       }
     }
     i = j;
-    if (this.IkD != null) {
-      i = j + b.b(5, this.IkD);
+    if (this.JMo != null) {
+      i = j + b.b(5, this.JMo);
     }
     return i;
   }

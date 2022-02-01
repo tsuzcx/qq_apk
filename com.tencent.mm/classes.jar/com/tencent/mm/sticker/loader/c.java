@@ -3,7 +3,7 @@ package com.tencent.mm.sticker.loader;
 import com.tencent.mm.loader.d.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sticker/loader/LensIconDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/sticker/loader/LensIconData;", "()V", "TAG", "", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/LensIconDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/sticker/loader/LensIconData;", "()V", "TAG", "", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-sticker_release"})
 public final class c
   extends b<a>
 {
@@ -31,27 +31,27 @@ public final class c
     //   29: aload_1
     //   30: invokevirtual 61	com/tencent/mm/loader/h/a/a:value	()Ljava/lang/Object;
     //   33: checkcast 63	com/tencent/mm/sticker/loader/a
-    //   36: getfield 67	com/tencent/mm/sticker/loader/a:oKq	Lcom/tencent/mm/protocal/protobuf/blp;
-    //   39: getfield 73	com/tencent/mm/protocal/protobuf/blp:DJq	Lcom/tencent/mm/protocal/protobuf/blo;
+    //   36: getfield 67	com/tencent/mm/sticker/loader/a:GzM	Lcom/tencent/mm/protocal/protobuf/bpl;
+    //   39: getfield 73	com/tencent/mm/protocal/protobuf/bpl:FeL	Lcom/tencent/mm/protocal/protobuf/bpk;
     //   42: astore_2
     //   43: aload_2
     //   44: ifnull +52 -> 96
     //   47: aload_2
-    //   48: getfield 78	com/tencent/mm/protocal/protobuf/blo:Url	Ljava/lang/String;
+    //   48: getfield 78	com/tencent/mm/protocal/protobuf/bpk:Url	Ljava/lang/String;
     //   51: astore 5
     //   53: aload_1
     //   54: invokevirtual 61	com/tencent/mm/loader/h/a/a:value	()Ljava/lang/Object;
     //   57: checkcast 63	com/tencent/mm/sticker/loader/a
-    //   60: getfield 67	com/tencent/mm/sticker/loader/a:oKq	Lcom/tencent/mm/protocal/protobuf/blp;
-    //   63: getfield 73	com/tencent/mm/protocal/protobuf/blp:DJq	Lcom/tencent/mm/protocal/protobuf/blo;
+    //   60: getfield 67	com/tencent/mm/sticker/loader/a:GzM	Lcom/tencent/mm/protocal/protobuf/bpl;
+    //   63: getfield 73	com/tencent/mm/protocal/protobuf/bpl:FeL	Lcom/tencent/mm/protocal/protobuf/bpk;
     //   66: astore_1
     //   67: aload_1
     //   68: ifnull +34 -> 102
     //   71: aload_1
-    //   72: getfield 81	com/tencent/mm/protocal/protobuf/blo:AesKey	Ljava/lang/String;
+    //   72: getfield 81	com/tencent/mm/protocal/protobuf/bpk:AesKey	Ljava/lang/String;
     //   75: astore_2
     //   76: aload 5
-    //   78: invokestatic 87	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   78: invokestatic 87	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   81: ifeq +26 -> 107
     //   84: aload_3
     //   85: invokeinterface 92 1 0
@@ -98,7 +98,7 @@ public final class c
     //   175: aload 7
     //   177: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   186: iload 4
     //   188: sipush 200
     //   191: if_icmpeq +34 -> 225
@@ -121,7 +121,7 @@ public final class c
     //   229: aload_1
     //   230: ifnull +9 -> 239
     //   233: aload_1
-    //   234: invokestatic 160	d/f/a:V	(Ljava/io/InputStream;)[B
+    //   234: invokestatic 160	d/f/a:U	(Ljava/io/InputStream;)[B
     //   237: astore 5
     //   239: aload 8
     //   241: invokevirtual 149	com/tencent/mm/network/v:disconnect	()V
@@ -141,7 +141,7 @@ public final class c
     //   274: return
     //   275: aload 5
     //   277: aload_2
-    //   278: invokestatic 164	com/tencent/mm/sdk/platformtools/bt:aGd	(Ljava/lang/String;)[B
+    //   278: invokestatic 164	com/tencent/mm/sdk/platformtools/bs:aLu	(Ljava/lang/String;)[B
     //   281: iconst_0
     //   282: invokestatic 170	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
     //   285: invokestatic 176	com/tencent/mm/b/a:c	([BLjava/lang/String;)[B
@@ -174,7 +174,7 @@ public final class c
     //   342: ldc 192
     //   344: iconst_0
     //   345: anewarray 194	java/lang/Object
-    //   348: invokestatic 198	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   348: invokestatic 198	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   351: aload_1
     //   352: ifnull -34 -> 318
     //   355: aload_1
@@ -229,7 +229,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.c
  * JD-Core Version:    0.7.0.1
  */

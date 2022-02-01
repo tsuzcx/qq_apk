@@ -5,11 +5,11 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface r
   extends a
 {
-  public abstract boolean UQ();
+  public abstract boolean VM();
   
-  public abstract void Z(String paramString1, String paramString2);
+  public abstract void aa(String paramString1, String paramString2);
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3);
+  public abstract void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3);
 }
 
 

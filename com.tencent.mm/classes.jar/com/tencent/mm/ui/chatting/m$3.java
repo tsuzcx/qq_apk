@@ -14,8 +14,8 @@ final class m$3
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(34463);
-    paraml.aI(1193046, 2131761219, 2131231571);
-    Iterator localIterator = this.GmX.iterator();
+    paraml.aJ(1193046, 2131761219, 2131231571);
+    Iterator localIterator = this.HMN.iterator();
     while (localIterator.hasNext()) {
       paraml.add((String)localIterator.next());
     }

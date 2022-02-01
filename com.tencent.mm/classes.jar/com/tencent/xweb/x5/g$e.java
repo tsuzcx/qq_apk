@@ -7,18 +7,18 @@ import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallbac
 public final class g$e
   implements GeolocationPermissions.Callback
 {
-  GeolocationPermissionsCallback IRZ;
+  GeolocationPermissionsCallback KEv;
   
   public g$e(GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    this.IRZ = paramGeolocationPermissionsCallback;
+    this.KEv = paramGeolocationPermissionsCallback;
   }
   
   public final void invoke(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(153853);
-    if (this.IRZ != null) {
-      this.IRZ.invoke(paramString, paramBoolean1, paramBoolean2);
+    if (this.KEv != null) {
+      this.KEv.invoke(paramString, paramBoolean1, paramBoolean2);
     }
     AppMethodBeat.o(153853);
   }

@@ -6,19 +6,19 @@ import d.g.b.k;
 import d.l;
 import java.io.File;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/model/ScanAssetsManager;", "", "()V", "CENTER_DET_BIN_FILE_NAME", "", "CENTER_DET_PARAM_FILE_NAME", "TAG", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getCenterBinFilePath", "getCenterParamFilePath", "getSavedFileDirectory", "init", "plugin-scan_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/model/ScanAssetsManager;", "", "()V", "CENTER_DET_BIN_FILE_NAME", "", "CENTER_DET_PARAM_FILE_NAME", "TAG", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getCenterBinFilePath", "getCenterParamFilePath", "getSavedFileDirectory", "init", "plugin-scan_release"})
 public final class q
 {
-  public static final q vOR;
+  public static final q wZn;
   
   static
   {
     AppMethodBeat.i(52184);
-    vOR = new q();
+    wZn = new q();
     AppMethodBeat.o(52184);
   }
   
-  public static String cg(Context paramContext)
+  public static String cm(Context paramContext)
   {
     AppMethodBeat.i(52183);
     k.h(paramContext, "context");
@@ -57,7 +57,7 @@ public final class q
     //   36: iconst_1
     //   37: aload_2
     //   38: aastore
-    //   39: invokestatic 103	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 103	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: new 105	com/tencent/mm/vfs/e
     //   45: dup
     //   46: aload_2
@@ -75,7 +75,7 @@ public final class q
     //   71: invokevirtual 125	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   74: astore_0
     //   75: aload 6
-    //   77: invokestatic 131	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   77: invokestatic 131	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   80: astore 5
     //   82: aload 5
     //   84: astore 4
@@ -90,7 +90,7 @@ public final class q
     //   101: astore 4
     //   103: aload_0
     //   104: astore_2
-    //   105: invokestatic 134	d/g/b/k:fvU	()V
+    //   105: invokestatic 134	d/g/b/k:fOy	()V
     //   108: aload 5
     //   110: astore 4
     //   112: aload_0
@@ -127,7 +127,7 @@ public final class q
     //   163: ldc 150
     //   165: iconst_0
     //   166: anewarray 4	java/lang/Object
-    //   169: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   169: invokestatic 154	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   172: aload_0
     //   173: ifnull +7 -> 180
     //   176: aload_0
@@ -163,7 +163,7 @@ public final class q
     //   227: invokevirtual 167	com/tencent/mm/vfs/e:length	()J
     //   230: invokestatic 173	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   233: aastore
-    //   234: invokestatic 175	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   234: invokestatic 175	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   237: aload_0
     //   238: invokevirtual 157	java/io/InputStream:close	()V
     //   241: aload 5

@@ -35,7 +35,7 @@ public final class m
     return bool;
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144899);
     DefaultDrawActionArg localDefaultDrawActionArg = new DefaultDrawActionArg();
@@ -50,7 +50,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.m
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 public abstract class x
   extends q
 {
-  private final w Gde;
+  private final w HCT;
   
   public x()
   {
@@ -18,7 +18,7 @@ public abstract class x
   
   private x(w paramw)
   {
-    this.Gde = paramw;
+    this.HCT = paramw;
     SparseArray[] arrayOfSparseArray = new SparseArray[1];
     int i = 0;
     while (i <= 0)
@@ -26,18 +26,18 @@ public abstract class x
       arrayOfSparseArray[0] = new SparseArray();
       i += 1;
     }
-    paramw.uWk = 1;
-    paramw.Gdd = arrayOfSparseArray[0];
-    paramw.Gdc = arrayOfSparseArray;
+    paramw.weZ = 1;
+    paramw.HCS = arrayOfSparseArray[0];
+    paramw.HCR = arrayOfSparseArray;
   }
   
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    paramViewGroup = this.Gde;
-    if (paramViewGroup.uWk == 1) {
-      paramViewGroup.Gdd.put(paramInt, paramObject);
+    paramViewGroup = this.HCT;
+    if (paramViewGroup.weZ == 1) {
+      paramViewGroup.HCS.put(paramInt, paramObject);
     }
     for (;;)
     {
@@ -45,7 +45,7 @@ public abstract class x
         paramObject.setAccessibilityDelegate(null);
       }
       return;
-      paramViewGroup.Gdc[0].put(paramInt, paramObject);
+      paramViewGroup.HCR[0].put(paramInt, paramObject);
     }
   }
   
@@ -53,17 +53,17 @@ public abstract class x
   
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = this.Gde;
-    if (((w)localObject).uWk == 1) {
-      localObject = w.c(((w)localObject).Gdd, paramInt);
+    Object localObject = this.HCT;
+    if (((w)localObject).weZ == 1) {
+      localObject = w.c(((w)localObject).HCS, paramInt);
     }
     for (;;)
     {
       localObject = e(paramInt, (View)localObject);
       paramViewGroup.addView((View)localObject);
       return localObject;
-      if (((w)localObject).Gdc.length > 0) {
-        localObject = w.c(localObject.Gdc[0], paramInt);
+      if (((w)localObject).HCR.length > 0) {
+        localObject = w.c(localObject.HCR[0], paramInt);
       } else {
         localObject = null;
       }
@@ -77,17 +77,17 @@ public abstract class x
   
   public void notifyDataSetChanged()
   {
-    w localw = this.Gde;
-    View[] arrayOfView = localw.Gda;
-    int[] arrayOfInt = localw.Gdb;
+    w localw = this.HCT;
+    View[] arrayOfView = localw.HCP;
+    int[] arrayOfInt = localw.HCQ;
     int j;
     label44:
     View localView;
     Object localObject2;
-    if (localw.uWk > 1)
+    if (localw.weZ > 1)
     {
       i = 1;
-      localObject1 = localw.Gdd;
+      localObject1 = localw.HCS;
       j = arrayOfView.length - 1;
       if (j < 0) {
         break label159;
@@ -111,7 +111,7 @@ public abstract class x
       if (k != 0)
       {
         if (i != 0) {
-          localObject1 = localw.Gdc[m];
+          localObject1 = localw.HCR[m];
         }
         ((SparseArray)localObject1).put(j, localView);
         localObject2 = localObject1;
@@ -128,9 +128,9 @@ public abstract class x
       break;
     }
     label159:
-    int m = localw.Gda.length;
-    int n = localw.uWk;
-    Object localObject1 = localw.Gdc;
+    int m = localw.HCP.length;
+    int n = localw.weZ;
+    Object localObject1 = localw.HCR;
     int i = 0;
     while (i < n)
     {
@@ -151,7 +151,7 @@ public abstract class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.x
  * JD-Core Version:    0.7.0.1
  */

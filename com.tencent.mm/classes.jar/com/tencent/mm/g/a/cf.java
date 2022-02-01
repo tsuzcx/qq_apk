@@ -12,7 +12,7 @@ public final class cf
   
   private cf(byte paramByte)
   {
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
   }
 }

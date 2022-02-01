@@ -11,7 +11,7 @@ import java.util.List;
 public abstract interface g
   extends a, Iterable<c>
 {
-  public static final a JrB = a.JrD;
+  public static final a LeU = a.LeW;
   
   public abstract c g(b paramb);
   
@@ -21,28 +21,28 @@ public abstract interface g
   
   public static final class a
   {
-    private static final g JrC;
+    private static final g LeV;
     
     static
     {
       AppMethodBeat.i(56946);
-      JrD = new a();
-      JrC = (g)new a();
+      LeW = new a();
+      LeV = (g)new a();
       AppMethodBeat.o(56946);
     }
     
-    public static g fzI()
+    public static g fSm()
     {
-      return JrC;
+      return LeV;
     }
     
-    public static g iH(List<? extends c> paramList)
+    public static g iX(List<? extends c> paramList)
     {
       AppMethodBeat.i(56945);
       k.h(paramList, "annotations");
       if (paramList.isEmpty())
       {
-        paramList = JrC;
+        paramList = LeV;
         AppMethodBeat.o(56945);
         return paramList;
       }
@@ -71,7 +71,7 @@ public abstract interface g
       public final Iterator<c> iterator()
       {
         AppMethodBeat.i(56943);
-        Iterator localIterator = ((List)v.Jgl).iterator();
+        Iterator localIterator = ((List)v.KTF).iterator();
         AppMethodBeat.o(56943);
         return localIterator;
       }
@@ -96,7 +96,7 @@ public abstract interface g
           break;
         }
         paramg = localIterator.next();
-      } while (!k.g(((c)paramg).fzd(), paramb));
+      } while (!k.g(((c)paramg).fRH(), paramb));
       for (;;)
       {
         paramg = (c)paramg;
@@ -122,7 +122,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.g
  * JD-Core Version:    0.7.0.1
  */

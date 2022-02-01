@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
@@ -11,48 +11,48 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItemsManager;", "", "()V", "PHONE_ITEMS", "", "TAG", "mmKv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "addPhone", "", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getPhoneNumbers", "", "process", "phoneItems", "oldPhoneItems", "removePhone", "delPhoneItems", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "savePhoneNumbers", "selectPhone", "updatePhoneItem", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItemsManager;", "", "()V", "PHONE_ITEMS", "", "TAG", "mmKv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "addPhone", "", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getPhoneNumbers", "", "process", "phoneItems", "oldPhoneItems", "removePhone", "delPhoneItems", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "savePhoneNumbers", "selectPhone", "updatePhoneItem", "luggage-wechat-full-sdk_release"})
 public final class r
 {
-  private static final ax lkk;
-  public static final r lkl;
+  private static final aw lKc;
+  public static final r lKd;
   
   static
   {
     AppMethodBeat.i(148084);
-    lkl = new r();
-    lkk = ax.eGf();
+    lKd = new r();
+    lKc = aw.eVA();
     AppMethodBeat.o(148084);
   }
   
   public static void b(PhoneItem paramPhoneItem)
   {
     AppMethodBeat.i(148081);
-    List localList = blD();
+    List localList = bss();
     if (paramPhoneItem != null)
     {
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext()) {
-        ((PhoneItem)localIterator.next()).lki = false;
+        ((PhoneItem)localIterator.next()).lKa = false;
       }
       localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         PhoneItem localPhoneItem = (PhoneItem)localIterator.next();
-        if (k.g(paramPhoneItem.dpO, localPhoneItem.dpO)) {
-          localPhoneItem.lki = true;
+        if (k.g(paramPhoneItem.dnz, localPhoneItem.dnz)) {
+          localPhoneItem.lKa = true;
         }
       }
     }
     bz(localList);
-    ad.v("MicroMsg.PhoneItemsManager", "uninit phoneItems:%s", new Object[] { localList });
+    ac.v("MicroMsg.PhoneItemsManager", "uninit phoneItems:%s", new Object[] { localList });
     AppMethodBeat.o(148081);
   }
   
-  public static List<PhoneItem> blD()
+  public static List<PhoneItem> bss()
   {
     AppMethodBeat.i(148079);
-    Object localObject1 = lkk.getString("PhoneItemsManager#PhoneItems", "{}");
+    Object localObject1 = lKc.getString("PhoneItemsManager#PhoneItems", "{}");
     try
     {
       localObject1 = new JSONArray((String)localObject1);
@@ -63,10 +63,10 @@ public final class r
         int i = 0;
         while (i < j)
         {
-          Object localObject3 = PhoneItem.lkj;
+          Object localObject3 = PhoneItem.lKb;
           localObject3 = ((JSONArray)localObject1).getString(i);
           k.g(localObject3, "jsonArray.getString(i)");
-          localObject3 = PhoneItem.a.Mk((String)localObject3);
+          localObject3 = PhoneItem.a.Qq((String)localObject3);
           if (localObject3 != null) {
             localArrayList.add(localObject3);
           }
@@ -79,10 +79,10 @@ public final class r
       ArrayList localArrayList;
       for (;;)
       {
-        ad.e("MicroMsg.PhoneItemsManager", "e:%s", new Object[] { localException });
+        ac.e("MicroMsg.PhoneItemsManager", "e:%s", new Object[] { localException });
         localObject2 = null;
       }
-      ad.d("MicroMsg.PhoneItemsManager", "get %s", new Object[] { String.valueOf(localObject2) });
+      ac.d("MicroMsg.PhoneItemsManager", "get %s", new Object[] { String.valueOf(localObject2) });
       Object localObject2 = (List)localArrayList;
       AppMethodBeat.o(148079);
       return localObject2;
@@ -103,24 +103,24 @@ public final class r
     {
       Object localObject = (PhoneItem)paramList.next();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mobile", ((PhoneItem)localObject).dpO);
-      localJSONObject.put("show_mobile", ((PhoneItem)localObject).lkc);
-      localJSONObject.put("need_auth", ((PhoneItem)localObject).lkf);
-      localJSONObject.put("allow_send_sms", ((PhoneItem)localObject).lkg);
-      localJSONObject.put("encryptedData", ((PhoneItem)localObject).lkd);
-      localJSONObject.put("iv", ((PhoneItem)localObject).boU);
-      localJSONObject.put("cloud_id", ((PhoneItem)localObject).lke);
-      localJSONObject.put("is_wechat", ((PhoneItem)localObject).lkh);
-      localJSONObject.put("is_check", ((PhoneItem)localObject).lki);
+      localJSONObject.put("mobile", ((PhoneItem)localObject).dnz);
+      localJSONObject.put("show_mobile", ((PhoneItem)localObject).lJU);
+      localJSONObject.put("need_auth", ((PhoneItem)localObject).lJX);
+      localJSONObject.put("allow_send_sms", ((PhoneItem)localObject).lJY);
+      localJSONObject.put("encryptedData", ((PhoneItem)localObject).lJV);
+      localJSONObject.put("iv", ((PhoneItem)localObject).bno);
+      localJSONObject.put("cloud_id", ((PhoneItem)localObject).lJW);
+      localJSONObject.put("is_wechat", ((PhoneItem)localObject).lJZ);
+      localJSONObject.put("is_check", ((PhoneItem)localObject).lKa);
       localObject = localJSONObject.toString();
       k.g(localObject, "jsonObject.toString()");
       localJSONArray.put(localObject);
     }
-    paramList = lkk;
+    paramList = lKc;
     if (paramList != null) {
       paramList.putString("PhoneItemsManager#PhoneItems", localJSONArray.toString());
     }
-    paramList = lkk;
+    paramList = lKc;
     if (paramList != null)
     {
       paramList.commit();
@@ -134,10 +134,10 @@ public final class r
   {
     AppMethodBeat.i(148082);
     k.h(paramPhoneItem, "phoneItem");
-    ArrayList localArrayList = (ArrayList)blD();
+    ArrayList localArrayList = (ArrayList)bss();
     Iterator localIterator = localArrayList.iterator();
     while (localIterator.hasNext()) {
-      ((PhoneItem)localIterator.next()).lki = false;
+      ((PhoneItem)localIterator.next()).lKa = false;
     }
     if (localArrayList.contains(paramPhoneItem)) {
       localArrayList.set(localArrayList.indexOf(paramPhoneItem), paramPhoneItem);
@@ -166,15 +166,15 @@ public final class r
       while (localIterator.hasNext())
       {
         PhoneItem localPhoneItem1 = (PhoneItem)localIterator.next();
-        if (localPhoneItem1.lki)
+        if (localPhoneItem1.lKa)
         {
           localIterator = paramList1.iterator();
           while (localIterator.hasNext())
           {
             PhoneItem localPhoneItem2 = (PhoneItem)localIterator.next();
-            if (k.g(localPhoneItem1.dpO, localPhoneItem2.dpO))
+            if (k.g(localPhoneItem1.dnz, localPhoneItem2.dnz))
             {
-              localPhoneItem2.lki = true;
+              localPhoneItem2.lKa = true;
               i = 1;
             }
           }
@@ -184,10 +184,10 @@ public final class r
     for (;;)
     {
       if ((i == 0) && (paramList1.size() > 0)) {
-        ((PhoneItem)paramList1.get(0)).lki = true;
+        ((PhoneItem)paramList1.get(0)).lKa = true;
       }
-      ad.v("MicroMsg.PhoneItemsManager", "init oldphoneItems:%s", new Object[] { paramList2 });
-      ad.v("MicroMsg.PhoneItemsManager", "init phoneItems:%s", new Object[] { paramList1 });
+      ac.v("MicroMsg.PhoneItemsManager", "init oldphoneItems:%s", new Object[] { paramList2 });
+      ac.v("MicroMsg.PhoneItemsManager", "init phoneItems:%s", new Object[] { paramList1 });
       AppMethodBeat.o(148078);
       return paramList1;
       i = 0;
@@ -196,7 +196,7 @@ public final class r
     }
   }
   
-  public final void z(ArrayList<PhoneItem> paramArrayList)
+  public final void E(ArrayList<PhoneItem> paramArrayList)
   {
     ArrayList localArrayList;
     try
@@ -204,11 +204,11 @@ public final class r
       AppMethodBeat.i(148083);
       if (paramArrayList == null)
       {
-        ad.w("MicroMsg.PhoneItemsManager", "delPhoneItems is null");
+        ac.w("MicroMsg.PhoneItemsManager", "delPhoneItems is null");
         AppMethodBeat.o(148083);
         return;
       }
-      localArrayList = (ArrayList)blD();
+      localArrayList = (ArrayList)bss();
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
         localArrayList.remove((PhoneItem)paramArrayList.next());
@@ -221,13 +221,13 @@ public final class r
       if (!paramArrayList.hasNext()) {
         break;
       }
-    } while (!((PhoneItem)paramArrayList.next()).lki);
+    } while (!((PhoneItem)paramArrayList.next()).lKa);
     for (int i = 1;; i = 0)
     {
       if ((i == 0) && (localArrayList.size() > 0)) {
-        ((PhoneItem)localArrayList.get(0)).lki = true;
+        ((PhoneItem)localArrayList.get(0)).lKa = true;
       }
-      ad.v("MicroMsg.PhoneItemsManager", "remove phoneItems:%s", new Object[] { localArrayList });
+      ac.v("MicroMsg.PhoneItemsManager", "remove phoneItems:%s", new Object[] { localArrayList });
       bz((List)localArrayList);
       AppMethodBeat.o(148083);
       break;
@@ -236,7 +236,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.r
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,32 @@ import com.tencent.mm.plugin.report.service.h;
 public final class f
   extends a
 {
-  public int sDr = 0;
-  public int sDs = 0;
-  public int sDt = 0;
-  public int sDu = 0;
-  public int sDv = -9999;
-  public String sDw = "";
-  public int sDx = 0;
-  public int sDy = 0;
+  public int tKZ = 0;
+  public int tLa = 0;
+  public int tLb = 0;
+  public int tLc = 0;
+  public int tLd = -9999;
+  public String tLe = "";
+  public int tLf = 0;
+  public int tLg = 0;
   
-  protected final void bmJ()
+  protected final void btF()
   {
     AppMethodBeat.i(25504);
-    h.vKh.f(14182, new Object[] { Integer.valueOf(this.sDr), Integer.valueOf(this.sDs), Integer.valueOf(this.sDt), Integer.valueOf(this.sDu), Integer.valueOf(this.sDv), this.sDw, Integer.valueOf(this.sDx), Integer.valueOf(this.sDy) });
+    h.wUl.f(14182, new Object[] { Integer.valueOf(this.tKZ), Integer.valueOf(this.tLa), Integer.valueOf(this.tLb), Integer.valueOf(this.tLc), Integer.valueOf(this.tLd), this.tLe, Integer.valueOf(this.tLf), Integer.valueOf(this.tLg) });
     AppMethodBeat.o(25504);
   }
   
   public final void reset()
   {
-    this.sDr = 0;
-    this.sDs = 0;
-    this.sDt = 0;
-    this.sDu = 0;
-    this.sDv = -9999;
-    this.sDw = "";
-    this.sDx = 0;
-    this.sDy = 0;
+    this.tKZ = 0;
+    this.tLa = 0;
+    this.tLb = 0;
+    this.tLc = 0;
+    this.tLd = -9999;
+    this.tLe = "";
+    this.tLf = 0;
+    this.tLg = 0;
   }
   
   public final void start()

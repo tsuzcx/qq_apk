@@ -3,52 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dt
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int fIi;
-  public String mac;
-  public String ssid;
+  public String oGB;
+  public String signature;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32114);
+    AppMethodBeat.i(152489);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.mac != null) {
-        paramVarArgs.d(1, this.mac);
+      if (this.signature != null) {
+        paramVarArgs.d(1, this.signature);
       }
-      paramVarArgs.aR(2, this.fIi);
-      if (this.ssid != null) {
-        paramVarArgs.d(3, this.ssid);
+      if (this.oGB != null) {
+        paramVarArgs.d(2, this.oGB);
       }
-      AppMethodBeat.o(32114);
+      AppMethodBeat.o(152489);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.mac == null) {
-        break label327;
+      if (this.signature == null) {
+        break label274;
       }
     }
-    label327:
-    for (paramInt = f.a.a.b.b.a.e(1, this.mac) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.signature) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bA(2, this.fIi);
-      paramInt = i;
-      if (this.ssid != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.ssid);
+      int i = paramInt;
+      if (this.oGB != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.oGB);
       }
-      AppMethodBeat.o(32114);
-      return paramInt;
+      AppMethodBeat.o(152489);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(32114);
+        AppMethodBeat.o(152489);
         return 0;
       }
       if (paramInt == 3)
@@ -58,22 +55,18 @@ public final class dt
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32114);
+          AppMethodBeat.o(152489);
           return -1;
         case 1: 
-          localdt.mac = locala.KhF.readString();
-          AppMethodBeat.o(32114);
-          return 0;
-        case 2: 
-          localdt.fIi = locala.KhF.xS();
-          AppMethodBeat.o(32114);
+          localdt.signature = locala.LVo.readString();
+          AppMethodBeat.o(152489);
           return 0;
         }
-        localdt.ssid = locala.KhF.readString();
-        AppMethodBeat.o(32114);
+        localdt.oGB = locala.LVo.readString();
+        AppMethodBeat.o(152489);
         return 0;
       }
-      AppMethodBeat.o(32114);
+      AppMethodBeat.o(152489);
       return -1;
     }
   }

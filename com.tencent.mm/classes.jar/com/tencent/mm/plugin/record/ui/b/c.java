@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gs;
-import com.tencent.mm.g.a.gs.b;
+import com.tencent.mm.g.a.gt;
+import com.tencent.mm.g.a.gt.b;
 import com.tencent.mm.plugin.record.a.e;
 import com.tencent.mm.plugin.record.a.i;
 import com.tencent.mm.plugin.record.b.n;
@@ -16,9 +16,9 @@ import com.tencent.mm.plugin.record.ui.RecordMsgFileUI;
 import com.tencent.mm.plugin.record.ui.h.a;
 import com.tencent.mm.plugin.record.ui.h.a.c;
 import com.tencent.mm.plugin.record.ui.h.b;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 import java.util.HashMap;
@@ -27,21 +27,21 @@ import java.util.Map;
 public final class c
   implements h.b
 {
-  public static Map<String, View> vcp;
-  private View.OnClickListener cEO;
-  private h.a vbp;
+  public static Map<String, View> wli;
+  private View.OnClickListener cBW;
+  private h.a wkd;
   
   static
   {
     AppMethodBeat.i(28032);
-    vcp = new HashMap();
+    wli = new HashMap();
     AppMethodBeat.o(28032);
   }
   
   public c(h.a parama)
   {
     AppMethodBeat.i(28029);
-    this.cEO = new View.OnClickListener()
+    this.cBW = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -50,34 +50,34 @@ public final class c
         Object localObject;
         if (localb.dataType == 0)
         {
-          if (n.d(localb.djJ, localb.msgId))
+          if (n.d(localb.dhe, localb.msgId))
           {
-            ad.i("MicroMsg.SightViewWrapper", "onclick: play sight");
+            ac.i("MicroMsg.SightViewWrapper", "onclick: play sight");
             localObject = new Intent(paramAnonymousView.getContext(), RecordMsgFileUI.class);
             ((Intent)localObject).putExtra("message_id", localb.msgId);
-            ((Intent)localObject).putExtra("record_xml", localb.dvd);
-            ((Intent)localObject).putExtra("record_data_id", localb.djJ.dkb);
+            ((Intent)localObject).putExtra("record_xml", localb.dsP);
+            ((Intent)localObject).putExtra("record_data_id", localb.dhe.dhw);
             paramAnonymousView = paramAnonymousView.getContext();
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/record/ui/viewWrappers/SightViewWrapper$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/record/ui/viewWrappers/SightViewWrapper$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/record/ui/viewWrappers/SightViewWrapper$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(28028);
             return;
           }
-          localObject = n.h(localb.djJ.dkb, localb.msgId, true);
-          i locali = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().als((String)localObject);
+          localObject = n.h(localb.dhe.dhw, localb.msgId, true);
+          i locali = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().aqr((String)localObject);
           if (locali == null) {}
           for (localObject = "null";; localObject = Integer.valueOf(locali.field_status))
           {
-            ad.i("MicroMsg.SightViewWrapper", "onclick: cdnInfo status %s", new Object[] { localObject });
+            ac.i("MicroMsg.SightViewWrapper", "onclick: cdnInfo status %s", new Object[] { localObject });
             if ((locali == null) || (2 == locali.field_status) || (3 == locali.field_status)) {
               break label316;
             }
             if (4 != locali.field_status) {
               break;
             }
-            h.cf(paramAnonymousView.getContext(), paramAnonymousView.getResources().getString(2131758978));
+            h.cg(paramAnonymousView.getContext(), paramAnonymousView.getResources().getString(2131758978));
             AppMethodBeat.o(28028);
             return;
           }
@@ -87,73 +87,73 @@ public final class c
             return;
           }
           label316:
-          n.b(localb.djJ, localb.msgId, true);
+          n.b(localb.dhe, localb.msgId, true);
           AppMethodBeat.o(28028);
           return;
         }
         if (localb.dataType == 1)
         {
-          ad.i("MicroMsg.SightViewWrapper", "click item favid %d, localid %d, itemstatus %d", new Object[] { Integer.valueOf(localb.okO.field_id), Long.valueOf(localb.okO.field_localId), Integer.valueOf(localb.okO.field_itemStatus) });
-          if (localb.okO.isDone())
+          ac.i("MicroMsg.SightViewWrapper", "click item favid %d, localid %d, itemstatus %d", new Object[] { Integer.valueOf(localb.oOo.field_id), Long.valueOf(localb.oOo.field_localId), Integer.valueOf(localb.oOo.field_itemStatus) });
+          if (localb.oOo.isDone())
           {
-            localObject = new gs();
-            ((gs)localObject).dkc.type = 14;
-            ((gs)localObject).dkc.dke = localb.djJ;
-            com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
-            ad.i("MicroMsg.SightViewWrapper", "favItemInfo is Done,file exist ret = %d", new Object[] { Integer.valueOf(((gs)localObject).dkd.ret) });
-            if (((gs)localObject).dkd.ret == 1)
+            localObject = new gt();
+            ((gt)localObject).dhx.type = 14;
+            ((gt)localObject).dhx.dhz = localb.dhe;
+            com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+            ac.i("MicroMsg.SightViewWrapper", "favItemInfo is Done,file exist ret = %d", new Object[] { Integer.valueOf(((gt)localObject).dhy.ret) });
+            if (((gt)localObject).dhy.ret == 1)
             {
               localObject = new Intent();
-              ((Intent)localObject).putExtra("key_detail_info_id", localb.okO.field_localId);
-              ((Intent)localObject).putExtra("key_detail_data_id", localb.djJ.dkb);
+              ((Intent)localObject).putExtra("key_detail_info_id", localb.oOo.field_localId);
+              ((Intent)localObject).putExtra("key_detail_data_id", localb.dhe.dhw);
               ((Intent)localObject).putExtra("key_detail_can_delete", false);
               com.tencent.mm.plugin.fav.a.b.a(paramAnonymousView.getContext(), ".ui.detail.FavoriteFileDetailUI", (Intent)localObject, 1);
               AppMethodBeat.o(28028);
               return;
             }
-            if (bt.isNullOrNil(localb.djJ.DfZ))
+            if (bs.isNullOrNil(localb.dhe.Ezf))
             {
-              ad.w("MicroMsg.SightViewWrapper", "favItemInfo getCdnDataUrl empty");
+              ac.w("MicroMsg.SightViewWrapper", "favItemInfo getCdnDataUrl empty");
               AppMethodBeat.o(28028);
               return;
             }
-            ad.w("MicroMsg.SightViewWrapper", "? info is done, source file not exist, cdn data url is not null");
+            ac.w("MicroMsg.SightViewWrapper", "? info is done, source file not exist, cdn data url is not null");
           }
           for (;;)
           {
-            paramAnonymousView = new gs();
-            paramAnonymousView.dkc.deL = localb.okO.field_localId;
-            if (!localb.okO.isUploadFailed()) {
+            paramAnonymousView = new gt();
+            paramAnonymousView.dhx.dcg = localb.oOo.field_localId;
+            if (!localb.oOo.isUploadFailed()) {
               break;
             }
-            ad.w("MicroMsg.SightViewWrapper", "upload failed, try to restart...");
-            paramAnonymousView.dkc.type = 15;
-            com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
+            ac.w("MicroMsg.SightViewWrapper", "upload failed, try to restart...");
+            paramAnonymousView.dhx.type = 15;
+            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
             AppMethodBeat.o(28028);
             return;
-            if ((localb.okO.chI()) || (localb.okO.isUploadFailed()))
+            if ((localb.oOo.cpp()) || (localb.oOo.isUploadFailed()))
             {
-              ad.i("MicroMsg.SightViewWrapper", "favItemInfo isDownLoadFaied or isUploadFailed, wait download");
+              ac.i("MicroMsg.SightViewWrapper", "favItemInfo isDownLoadFaied or isUploadFailed, wait download");
             }
             else
             {
-              if ((localb.okO.isDownloading()) || (localb.okO.chH()))
+              if ((localb.oOo.isDownloading()) || (localb.oOo.cpo()))
               {
-                ad.i("MicroMsg.SightViewWrapper", "favItemInfo isDownloading or isUploadding, wait download");
+                ac.i("MicroMsg.SightViewWrapper", "favItemInfo isDownloading or isUploadding, wait download");
                 AppMethodBeat.o(28028);
                 return;
               }
-              ad.w("MicroMsg.SightViewWrapper", "other status, not done, downloading, uploading, downloadfail, uploadfail");
+              ac.w("MicroMsg.SightViewWrapper", "other status, not done, downloading, uploading, downloadfail, uploadfail");
             }
           }
-          ad.w("MicroMsg.SightViewWrapper", "download failed, try to restart...");
-          paramAnonymousView.dkc.type = 16;
-          com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
+          ac.w("MicroMsg.SightViewWrapper", "download failed, try to restart...");
+          paramAnonymousView.dhx.type = 16;
+          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
         }
         AppMethodBeat.o(28028);
       }
     };
-    this.vbp = parama;
+    this.wkd = parama;
     AppMethodBeat.o(28029);
   }
   
@@ -161,24 +161,24 @@ public final class c
   {
     AppMethodBeat.i(28031);
     paramView.setTag(paramb);
-    paramView.setOnClickListener(this.cEO);
+    paramView.setOnClickListener(this.cBW);
     paramObject = (com.tencent.mm.plugin.sight.decode.a.a)paramView.findViewById(2131300914);
     ImageView localImageView = (ImageView)paramView.findViewById(2131305196);
     MMPinProgressBtn localMMPinProgressBtn = (MMPinProgressBtn)paramView.findViewById(2131303515);
     paramObject.setPosition(paramInt);
     com.tencent.mm.plugin.record.ui.a.c localc1 = (com.tencent.mm.plugin.record.ui.a.c)paramb;
-    paramb = this.vbp;
-    Map localMap = vcp;
+    paramb = this.wkd;
+    Map localMap = wli;
     h.a.c localc = new h.a.c();
-    localc.djJ = localc1.djJ;
+    localc.dhe = localc1.dhe;
     if (localc1.dataType == 0)
     {
-      localc.vbr = localc1.msgId;
-      if (n.d(localc1.djJ, localc1.msgId))
+      localc.wkf = localc1.msgId;
+      if (n.d(localc1.dhe, localc1.msgId))
       {
         localImageView.setVisibility(8);
         localMMPinProgressBtn.setVisibility(8);
-        paramView = n.c(localc1.djJ, localc1.msgId);
+        paramView = n.c(localc1.dhe, localc1.msgId);
         if (!paramView.equals(paramObject.getVideoPath())) {
           paramObject.setThumbBmp(paramb.a(localc));
         }
@@ -186,8 +186,8 @@ public final class c
         AppMethodBeat.o(28031);
         return;
       }
-      paramView = n.h(localc1.djJ.dkb, localc1.msgId, true);
-      paramView = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().als(paramView);
+      paramView = n.h(localc1.dhe.dhw, localc1.msgId, true);
+      paramView = ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().aqr(paramView);
       if ((paramView == null) || (2 == paramView.field_status)) {
         localImageView.setImageResource(2131691166);
       }
@@ -221,26 +221,26 @@ public final class c
     }
     if (localc1.dataType == 1)
     {
-      localMap.put(localc1.djJ.dkb, paramView);
-      ad.d("MicroMsg.SightRecordData", "dataId %s, status %s", new Object[] { Long.valueOf(localc1.okO.field_localId), Integer.valueOf(localc1.okO.field_itemStatus) });
-      localc.vbr = localc1.okO.field_localId;
-      paramView = new gs();
-      paramView.dkc.type = 14;
-      paramView.dkc.dke = localc1.djJ;
-      com.tencent.mm.sdk.b.a.ESL.l(paramView);
-      if ((!localc1.okO.isDone()) && (paramView.dkd.ret != 1)) {
+      localMap.put(localc1.dhe.dhw, paramView);
+      ac.d("MicroMsg.SightRecordData", "dataId %s, status %s", new Object[] { Long.valueOf(localc1.oOo.field_localId), Integer.valueOf(localc1.oOo.field_itemStatus) });
+      localc.wkf = localc1.oOo.field_localId;
+      paramView = new gt();
+      paramView.dhx.type = 14;
+      paramView.dhx.dhz = localc1.dhe;
+      com.tencent.mm.sdk.b.a.GpY.l(paramView);
+      if ((!localc1.oOo.isDone()) && (paramView.dhy.ret != 1)) {
         break label754;
       }
-      if (paramView.dkd.ret == 1)
+      if (paramView.dhy.ret == 1)
       {
         localImageView.setVisibility(8);
         localMMPinProgressBtn.setVisibility(8);
-        paramView.dkc.type = 2;
-        com.tencent.mm.sdk.b.a.ESL.l(paramView);
-        paramView = paramView.dkd.path;
-        if (bt.isNullOrNil(paramView))
+        paramView.dhx.type = 2;
+        com.tencent.mm.sdk.b.a.GpY.l(paramView);
+        paramView = paramView.dhy.path;
+        if (bs.isNullOrNil(paramView))
         {
-          ad.w("MicroMsg.SightRecordData", "videoPath is null!");
+          ac.w("MicroMsg.SightRecordData", "videoPath is null!");
           AppMethodBeat.o(28031);
           return;
         }
@@ -251,7 +251,7 @@ public final class c
         AppMethodBeat.o(28031);
         return;
       }
-      if (!bt.isNullOrNil(localc1.djJ.DfZ)) {
+      if (!bs.isNullOrNil(localc1.dhe.Ezf)) {
         break label736;
       }
       localImageView.setImageResource(2131234034);
@@ -265,27 +265,27 @@ public final class c
       AppMethodBeat.o(28031);
       return;
       label736:
-      ad.w("MicroMsg.SightRecordData", "? info is done, source file not exist, cdn data url is not null");
+      ac.w("MicroMsg.SightRecordData", "? info is done, source file not exist, cdn data url is not null");
       localImageView.setImageResource(2131691166);
       continue;
       label754:
-      if ((localc1.okO.chI()) || (localc1.okO.isUploadFailed()))
+      if ((localc1.oOo.cpp()) || (localc1.oOo.isUploadFailed()))
       {
         localImageView.setImageResource(2131691166);
       }
       else
       {
-        if (localc1.okO.isDownloading())
+        if (localc1.oOo.isDownloading())
         {
           localImageView.setVisibility(8);
           localMMPinProgressBtn.setVisibility(0);
-          localMMPinProgressBtn.feJ();
+          localMMPinProgressBtn.fuE();
           paramObject.clear();
           paramObject.setThumbBmp(paramb.a(localc));
           AppMethodBeat.o(28031);
           return;
         }
-        ad.w("MicroMsg.SightRecordData", "other status, not done, downloading, uploading, downloadfail, uploadfail");
+        ac.w("MicroMsg.SightRecordData", "other status, not done, downloading, uploading, downloadfail, uploadfail");
         localImageView.setImageResource(2131691166);
       }
     }
@@ -295,21 +295,21 @@ public final class c
   {
     AppMethodBeat.i(28030);
     View localView = View.inflate(paramContext, 2131495217, null);
-    ((com.tencent.mm.plugin.sight.decode.a.a)localView.findViewById(2131300914)).setDrawableWidth(com.tencent.mm.cd.a.fromDPToPix(paramContext, 260));
+    ((com.tencent.mm.plugin.sight.decode.a.a)localView.findViewById(2131300914)).setDrawableWidth(com.tencent.mm.cc.a.fromDPToPix(paramContext, 260));
     AppMethodBeat.o(28030);
     return localView;
   }
   
   public final void destroy()
   {
-    this.vbp = null;
+    this.wkd = null;
   }
   
   public final void pause() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

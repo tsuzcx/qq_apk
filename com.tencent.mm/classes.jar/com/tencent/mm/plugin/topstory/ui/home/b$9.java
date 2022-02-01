@@ -16,9 +16,9 @@ final class b$9
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(125939);
-    e.vIY.f(17080, new Object[] { Integer.valueOf(43), Integer.valueOf(1) });
-    paramDialogInterface = new WXOpenBusinessView.Resp(this.yNr);
-    l.a(this.yNr, paramDialogInterface, this.cug);
+    e.wTc.f(17080, new Object[] { Integer.valueOf(43), Integer.valueOf(1) });
+    paramDialogInterface = new WXOpenBusinessView.Resp(this.Abi);
+    l.a(this.Abi, paramDialogInterface, this.cro);
     AppMethodBeat.o(125939);
   }
 }

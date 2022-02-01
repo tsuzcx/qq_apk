@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.transvoice.ui;
 
 import d.l;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 16})
 public final class c {}
 
 

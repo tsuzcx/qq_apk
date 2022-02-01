@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.selectcontact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cx;
+import com.tencent.mm.g.a.cy;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
@@ -12,19 +12,19 @@ public class PluginSelectContact
   extends f
   implements com.tencent.mm.kernel.api.bucket.c, a
 {
-  private com.tencent.mm.sdk.b.c wcH;
+  private com.tencent.mm.sdk.b.c xnS;
   
   public PluginSelectContact()
   {
     AppMethodBeat.i(102768);
-    this.wcH = new com.tencent.mm.sdk.b.c() {};
+    this.xnS = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(102768);
   }
   
   public void configure(g paramg)
   {
     AppMethodBeat.i(102770);
-    paramg.agu();
+    paramg.ahL();
     AppMethodBeat.o(102770);
   }
   
@@ -33,7 +33,7 @@ public class PluginSelectContact
   public void execute(g paramg)
   {
     AppMethodBeat.i(102771);
-    paramg.agu();
+    paramg.ahL();
     AppMethodBeat.o(102771);
   }
   
@@ -53,20 +53,20 @@ public class PluginSelectContact
   {
     AppMethodBeat.i(102772);
     u.init();
-    this.wcH.alive();
+    this.xnS.alive();
     AppMethodBeat.o(102772);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(102773);
-    this.wcH.dead();
+    this.xnS.dead();
     AppMethodBeat.o(102773);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.selectcontact.PluginSelectContact
  * JD-Core Version:    0.7.0.1
  */

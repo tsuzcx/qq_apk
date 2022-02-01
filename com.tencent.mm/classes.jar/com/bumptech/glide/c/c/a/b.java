@@ -15,19 +15,19 @@ import java.util.Set;
 public final class b
   implements n<Uri, InputStream>
 {
-  private static final Set<String> aId;
-  private final n<g, InputStream> aIf;
+  private static final Set<String> aIT;
+  private final n<g, InputStream> aIV;
   
   static
   {
     AppMethodBeat.i(77334);
-    aId = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
+    aIT = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "http", "https" })));
     AppMethodBeat.o(77334);
   }
   
   public b(n<g, InputStream> paramn)
   {
-    this.aIf = paramn;
+    this.aIV = paramn;
   }
   
   public static final class a
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.a.b
  * JD-Core Version:    0.7.0.1
  */

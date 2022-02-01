@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.lang.reflect.Method;
 
 public final class a
@@ -18,8 +19,8 @@ public final class a
   {
     AppMethodBeat.i(117454);
     this.handler = new Handler(Looper.getMainLooper());
-    Boolean localBoolean = cy(paramContext);
-    com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "try post ScreenOffRetryPatch delay time: %d, screen: %b", new Object[] { Long.valueOf(6000L), localBoolean });
+    Boolean localBoolean = cH(paramContext);
+    ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "try post ScreenOffRetryPatch delay time: %d, screen: %b", new Object[] { Long.valueOf(6000L), localBoolean });
     IntentFilter localIntentFilter = new IntentFilter();
     parama = new Runnable()
     {
@@ -28,15 +29,15 @@ public final class a
         AppMethodBeat.i(117452);
         if (parama != null)
         {
-          com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch runnable try to start", new Object[0]);
-          parama.cGc();
+          ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch runnable try to start", new Object[0]);
+          parama.cTm();
         }
         AppMethodBeat.o(117452);
       }
     };
     if ((localBoolean != null) && (!localBoolean.booleanValue()))
     {
-      com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "screen is just off now, we can send message directly", new Object[0]);
+      ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "screen is just off now, we can send message directly", new Object[0]);
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       this.handler.postDelayed(parama, 6000L);
     }
@@ -50,12 +51,12 @@ public final class a
           if (paramAnonymousIntent == null) {}
           for (paramAnonymousIntent = ""; "android.intent.action.SCREEN_OFF".equals(paramAnonymousIntent); paramAnonymousIntent = paramAnonymousIntent.getAction())
           {
-            com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen off now, send message now", new Object[0]);
-            a.this.handler.postDelayed(parama, this.syr);
+            ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen off now, send message now", new Object[0]);
+            a.this.handler.postDelayed(parama, this.tGh);
             AppMethodBeat.o(117453);
             return;
           }
-          com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen on, remove pending runnable and receive", new Object[0]);
+          ShareTinkerLog.v("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch screen on, remove pending runnable and receive", new Object[0]);
           a.this.handler.removeCallbacks(parama);
           paramAnonymousContext.unregisterReceiver(this);
           AppMethodBeat.o(117453);
@@ -68,7 +69,7 @@ public final class a
     }
   }
   
-  private static Boolean cy(Context paramContext)
+  private static Boolean cH(Context paramContext)
   {
     AppMethodBeat.i(117455);
     try
@@ -86,12 +87,12 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void cGc();
+    public abstract void cTm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.a
  * JD-Core Version:    0.7.0.1
  */

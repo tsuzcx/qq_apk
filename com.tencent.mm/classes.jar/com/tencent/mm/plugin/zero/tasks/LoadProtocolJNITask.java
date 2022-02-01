@@ -31,13 +31,13 @@ public class LoadProtocolJNITask
   {
     AppMethodBeat.i(133034);
     getClass().getClassLoader();
-    j.pq("MMProtocalJni");
+    j.sC("MMProtocalJni");
     retryOnce(new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(133031);
-        MMProtocalJni.setClientPackVersion(d.CpK);
+        MMProtocalJni.setClientPackVersion(d.DIc);
         AppMethodBeat.o(133031);
       }
     });
@@ -69,7 +69,7 @@ public class LoadProtocolJNITask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.LoadProtocolJNITask
  * JD-Core Version:    0.7.0.1
  */

@@ -22,30 +22,30 @@ import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public class MPSmileyFooter
   extends InputPanelLinearLayout
 {
-  private WeImageView BuM;
-  private LinearLayout BuN;
-  private LinearLayout BuO;
-  private int BuP = 0;
-  private boolean BuQ = false;
+  private WeImageView CMV;
+  private LinearLayout CMW;
+  private LinearLayout CMX;
+  private int CMY = 0;
+  private boolean CMZ = false;
   private MMActivity activity;
   private Context context;
-  public ChatFooterPanel fSY;
-  private MMEditText xEy = null;
-  private boolean xKh = true;
-  private int xyi = -1;
-  private int xyj = -1;
-  private int xyk = 0;
+  public ChatFooterPanel fWT;
+  private int yKX = -1;
+  private int yKY = -1;
+  private int yKZ = 0;
+  private MMEditText yRm = null;
+  private boolean yWX = true;
   
   public MPSmileyFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,7 +53,7 @@ public class MPSmileyFooter
     this.context = paramContext;
   }
   
-  private int TP(int paramInt)
+  private int VX(int paramInt)
   {
     AppMethodBeat.i(82250);
     TypedValue localTypedValue = new TypedValue();
@@ -63,23 +63,23 @@ public class MPSmileyFooter
     return paramInt;
   }
   
-  private void btD()
+  private void bAD()
   {
     AppMethodBeat.i(82259);
-    this.fSY.onPause();
-    this.fSY.setVisibility(8);
+    this.fWT.onPause();
+    this.fWT.setVisibility(8);
     AppMethodBeat.o(82259);
   }
   
-  private void dBf()
+  private void dPC()
   {
     AppMethodBeat.i(82261);
-    ViewGroup.LayoutParams localLayoutParams = this.BuN.getLayoutParams();
-    localLayoutParams.height = (this.xyk + this.BuP);
-    this.BuN.setLayoutParams(localLayoutParams);
-    int i = z.in(getContext());
-    this.fSY.setPortHeightPx(i);
-    localLayoutParams = this.fSY.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.CMW.getLayoutParams();
+    localLayoutParams.height = (this.yKZ + this.CMY);
+    this.CMW.setLayoutParams(localLayoutParams);
+    int i = y.iy(getContext());
+    this.fWT.setPortHeightPx(i);
+    localLayoutParams = this.fWT.getLayoutParams();
     if (localLayoutParams != null) {
       localLayoutParams.height = i;
     }
@@ -105,20 +105,20 @@ public class MPSmileyFooter
     }
   }
   
-  public final void dCJ()
+  public final void dRg()
   {
     AppMethodBeat.i(82251);
     setVisibility(0);
-    if (this.BuM != null) {
-      this.BuM.setImageResource(TP(2130968849));
+    if (this.CMV != null) {
+      this.CMV.setImageResource(VX(2130968849));
     }
     AppMethodBeat.o(82251);
   }
   
-  public final boolean dCK()
+  public final boolean dRh()
   {
     AppMethodBeat.i(82255);
-    if (this.fSY.getVisibility() == 0)
+    if (this.fWT.getVisibility() == 0)
     {
       AppMethodBeat.o(82255);
       return true;
@@ -127,18 +127,18 @@ public class MPSmileyFooter
     return false;
   }
   
-  public final void dCL()
+  public final void dRi()
   {
     AppMethodBeat.i(82256);
-    btD();
+    bAD();
     setVisibility(8);
     AppMethodBeat.o(82256);
   }
   
-  public final void eri()
+  public final void eGC()
   {
     AppMethodBeat.i(82252);
-    if (dCK())
+    if (dRh())
     {
       AppMethodBeat.o(82252);
       return;
@@ -147,10 +147,10 @@ public class MPSmileyFooter
     AppMethodBeat.o(82252);
   }
   
-  public final boolean erj()
+  public final boolean eGD()
   {
     AppMethodBeat.i(82254);
-    if ((dCK()) || (getVisibility() == 0))
+    if ((dRh()) || (getVisibility() == 0))
     {
       AppMethodBeat.o(82254);
       return true;
@@ -163,11 +163,11 @@ public class MPSmileyFooter
   {
     AppMethodBeat.i(82260);
     super.g(paramBoolean, paramInt);
-    if ((this.xyk != paramInt) && (paramInt != 0))
+    if ((this.yKZ != paramInt) && (paramInt != 0))
     {
-      this.xyk = paramInt;
+      this.yKZ = paramInt;
       i.A(getContext(), paramInt);
-      dBf();
+      dPC();
     }
     AppMethodBeat.o(82260);
   }
@@ -175,8 +175,8 @@ public class MPSmileyFooter
   public final void init(boolean paramBoolean)
   {
     AppMethodBeat.i(82257);
-    this.BuM = ((WeImageView)((ViewGroup)y.js(this.context).inflate(2131494951, this)).findViewById(2131296558));
-    this.BuM.setOnClickListener(new View.OnClickListener()
+    this.CMV = ((WeImageView)((ViewGroup)z.jD(this.context).inflate(2131494951, this)).findViewById(2131296558));
+    this.CMV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -185,42 +185,26 @@ public class MPSmileyFooter
         AppMethodBeat.o(82246);
       }
     });
-    this.fSY = aa.k(this.context, paramBoolean);
-    if (this.fSY == null)
+    this.fWT = aa.k(this.context, paramBoolean);
+    if (this.fWT == null)
     {
-      this.fSY = new d(this.context);
+      this.fWT = new d(this.context);
       AppMethodBeat.o(82257);
       return;
     }
-    this.fSY.setEntranceScene(ChatFooterPanel.vei);
-    this.fSY.setVisibility(8);
-    this.BuN = ((LinearLayout)findViewById(2131304875));
-    this.BuO = ((LinearLayout)findViewById(2131302426));
-    this.BuN.setOnClickListener(null);
-    this.xyk = z.in(getContext());
-    this.BuN.addView(this.fSY, -1, this.xyk);
-    this.fSY.exn();
-    this.fSY.onResume();
-    dBf();
-    this.fSY.setOnTextOperationListener(new ChatFooterPanel.a()
+    this.fWT.setEntranceScene(ChatFooterPanel.wmX);
+    this.fWT.setVisibility(8);
+    this.CMW = ((LinearLayout)findViewById(2131304875));
+    this.CMX = ((LinearLayout)findViewById(2131302426));
+    this.CMW.setOnClickListener(null);
+    this.yKZ = y.iy(getContext());
+    this.CMW.addView(this.fWT, -1, this.yKZ);
+    this.fWT.eMH();
+    this.fWT.onResume();
+    dPC();
+    this.fWT.setOnTextOperationListener(new ChatFooterPanel.a()
     {
-      public final void append(String paramAnonymousString)
-      {
-        AppMethodBeat.i(82248);
-        try
-        {
-          MPSmileyFooter.c(MPSmileyFooter.this).aMd(paramAnonymousString);
-          AppMethodBeat.o(82248);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          ad.printErrStackTrace("MicroMsg.SnsUploadSayFooter", paramAnonymousString, "", new Object[0]);
-          AppMethodBeat.o(82248);
-        }
-      }
-      
-      public final void btF()
+      public final void amb()
       {
         AppMethodBeat.i(82247);
         MPSmileyFooter.c(MPSmileyFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
@@ -228,9 +212,25 @@ public class MPSmileyFooter
         AppMethodBeat.o(82247);
       }
       
-      public final void cqY() {}
+      public final void amc() {}
       
-      public final void lf(boolean paramAnonymousBoolean) {}
+      public final void append(String paramAnonymousString)
+      {
+        AppMethodBeat.i(82248);
+        try
+        {
+          MPSmileyFooter.c(MPSmileyFooter.this).aRF(paramAnonymousString);
+          AppMethodBeat.o(82248);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          ac.printErrStackTrace("MicroMsg.SnsUploadSayFooter", paramAnonymousString, "", new Object[0]);
+          AppMethodBeat.o(82248);
+        }
+      }
+      
+      public final void dS(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(82257);
   }
@@ -239,8 +239,8 @@ public class MPSmileyFooter
   {
     AppMethodBeat.i(82258);
     super.onConfigurationChanged(paramConfiguration);
-    if (this.fSY != null) {
-      dBf();
+    if (this.fWT != null) {
+      dPC();
     }
     AppMethodBeat.o(82258);
   }
@@ -249,11 +249,11 @@ public class MPSmileyFooter
   {
     AppMethodBeat.i(82263);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.xyi < paramInt4) {}
-    for (paramInt1 = paramInt4;; paramInt1 = this.xyi)
+    if (this.yKX < paramInt4) {}
+    for (paramInt1 = paramInt4;; paramInt1 = this.yKX)
     {
-      this.xyi = paramInt1;
-      this.xyj = paramInt4;
+      this.yKX = paramInt1;
+      this.yKY = paramInt4;
       AppMethodBeat.o(82263);
       return;
     }
@@ -261,18 +261,18 @@ public class MPSmileyFooter
   
   public void setExtraAddHeight(int paramInt)
   {
-    this.BuP = paramInt;
+    this.CMY = paramInt;
   }
   
   public void setFobbidenWhenLandscape(boolean paramBoolean)
   {
-    this.BuQ = paramBoolean;
+    this.CMZ = paramBoolean;
   }
   
   public void setMMEditText(MMEditText paramMMEditText)
   {
     AppMethodBeat.i(82253);
-    this.xEy = paramMMEditText;
+    this.yRm = paramMMEditText;
     paramMMEditText.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -281,7 +281,7 @@ public class MPSmileyFooter
         if (MPSmileyFooter.this.getVisibility() == 8) {
           MPSmileyFooter.this.setVisibility(0);
         }
-        if (MPSmileyFooter.this.dCK()) {
+        if (MPSmileyFooter.this.dRh()) {
           MPSmileyFooter.a(MPSmileyFooter.this);
         }
         AppMethodBeat.o(82245);
@@ -300,12 +300,12 @@ public class MPSmileyFooter
   public void setSmileHeight(int paramInt)
   {
     AppMethodBeat.i(82264);
-    ViewGroup.LayoutParams localLayoutParams = this.BuN.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.CMW.getLayoutParams();
     localLayoutParams.height = paramInt;
-    this.BuN.setLayoutParams(localLayoutParams);
-    paramInt = z.in(getContext());
-    this.fSY.setPortHeightPx(paramInt);
-    localLayoutParams = this.fSY.getLayoutParams();
+    this.CMW.setLayoutParams(localLayoutParams);
+    paramInt = y.iy(getContext());
+    this.fWT.setPortHeightPx(paramInt);
+    localLayoutParams = this.fWT.getLayoutParams();
     if (localLayoutParams != null) {
       localLayoutParams.height = paramInt;
     }

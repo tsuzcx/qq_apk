@@ -9,7 +9,7 @@ import com.tencent.mm.g.a.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,10 +23,10 @@ public final class JsApiAddNativeDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddNativeDownloadTaskTask> CREATOR;
-    public long daY = 0L;
-    public int dtM = 0;
-    private c jws;
-    Runnable jwt;
+    public long cYu = 0L;
+    public int drx = 0;
+    private c jWO;
+    Runnable jWP;
     
     static
     {
@@ -35,37 +35,37 @@ public final class JsApiAddNativeDownloadTask
       AppMethodBeat.o(45448);
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(45442);
-      if (this.jwt != null) {
-        this.jwt.run();
-      }
-      AppMethodBeat.o(45442);
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(45441);
-      ad.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.dtM) });
-      this.jws = new c() {};
-      com.tencent.mm.sdk.b.a.ESL.b(this.jws);
+      ac.i("MicroMsg.JsApiAddNativeDownloadTask", "runInMainProcess flag:%d", new Object[] { Integer.valueOf(this.drx) });
+      this.jWO = new c() {};
+      com.tencent.mm.sdk.b.a.GpY.b(this.jWO);
       AppMethodBeat.o(45441);
+    }
+    
+    public final void aLr()
+    {
+      AppMethodBeat.i(45442);
+      if (this.jWP != null) {
+        this.jWP.run();
+      }
+      AppMethodBeat.o(45442);
     }
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45443);
-      this.dtM = paramParcel.readInt();
-      this.daY = paramParcel.readLong();
+      this.drx = paramParcel.readInt();
+      this.cYu = paramParcel.readLong();
       AppMethodBeat.o(45443);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45444);
-      paramParcel.writeInt(this.dtM);
-      paramParcel.writeLong(this.daY);
+      paramParcel.writeInt(this.drx);
+      paramParcel.writeLong(this.cYu);
       AppMethodBeat.o(45444);
     }
   }

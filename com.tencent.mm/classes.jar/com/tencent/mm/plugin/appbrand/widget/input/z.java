@@ -10,35 +10,35 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class z
   implements View.OnFocusChangeListener
 {
-  final ap iDu;
-  boolean mdG;
-  public b mdH;
-  final Runnable mdI;
+  final ao jdu;
+  boolean mFF;
+  public b mFG;
+  final Runnable mFH;
   
   public z(EditText paramEditText)
   {
     AppMethodBeat.i(136572);
-    this.mdG = false;
-    this.mdI = new Runnable()
+    this.mFF = false;
+    this.mFH = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(136567);
         if (z.a(z.this) != null) {
-          z.a(z.this).Cj();
+          z.a(z.this).BN();
         }
         AppMethodBeat.o(136567);
       }
     };
-    this.mdG = paramEditText.isFocused();
+    this.mFF = paramEditText.isFocused();
     paramEditText.setOnFocusChangeListener(this);
-    this.iDu = new ap(Looper.getMainLooper());
+    this.jdu = new ao(Looper.getMainLooper());
     AppMethodBeat.o(136572);
   }
   
@@ -50,8 +50,8 @@ public final class z
       public final void onSpanAdded(Spannable paramAnonymousSpannable, Object paramAnonymousObject, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(136568);
-        if (aj.cM(paramAnonymousObject)) {
-          ad.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanAdded %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
+        if (aj.cL(paramAnonymousObject)) {
+          ac.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanAdded %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
         }
         AppMethodBeat.o(136568);
       }
@@ -59,8 +59,8 @@ public final class z
       public final void onSpanChanged(Spannable paramAnonymousSpannable, Object paramAnonymousObject, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
       {
         AppMethodBeat.i(136570);
-        if (aj.cM(paramAnonymousObject)) {
-          ad.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanChanged %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
+        if (aj.cL(paramAnonymousObject)) {
+          ac.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanChanged %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
         }
         AppMethodBeat.o(136570);
       }
@@ -68,9 +68,9 @@ public final class z
       public final void onSpanRemoved(Spannable paramAnonymousSpannable, Object paramAnonymousObject, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(136569);
-        if (aj.cM(paramAnonymousObject))
+        if (aj.cL(paramAnonymousObject))
         {
-          ad.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanRemoved %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
+          ac.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanRemoved %s, %s", new Object[] { paramAnonymousSpannable, paramAnonymousObject.getClass().getSimpleName() });
           z.c(z.this).removeCallbacks(z.b(z.this));
           z.c(z.this).postDelayed(z.b(z.this), 100L);
         }
@@ -97,16 +97,16 @@ public final class z
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(136574);
-    this.mdG = paramBoolean;
+    this.mFF = paramBoolean;
     if (!paramBoolean) {
-      this.iDu.removeCallbacks(this.mdI);
+      this.jdu.removeCallbacks(this.mFH);
     }
     AppMethodBeat.o(136574);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.z
  * JD-Core Version:    0.7.0.1
  */

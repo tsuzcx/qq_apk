@@ -6,24 +6,24 @@ import java.io.PrintStream;
 public final class a
 {
   public static boolean DEBUG = false;
-  public static boolean bNU = false;
-  public EVadNative bNS;
-  public MMVoipVadNative bNT;
+  public static boolean bLC = false;
+  public EVadNative bLA;
+  public MMVoipVadNative bLB;
   public long handle;
   
   public a()
   {
     AppMethodBeat.i(74968);
     this.handle = 0L;
-    this.bNS = new EVadNative();
-    this.bNT = new MMVoipVadNative();
+    this.bLA = new EVadNative();
+    this.bLB = new MMVoipVadNative();
     AppMethodBeat.o(74968);
   }
   
-  public static void bi(boolean paramBoolean)
+  public static void bh(boolean paramBoolean)
   {
     AppMethodBeat.i(74969);
-    bNU = paramBoolean;
+    bLC = paramBoolean;
     if (paramBoolean)
     {
       System.loadLibrary("MMVoipVadEmbed");
@@ -54,18 +54,18 @@ public final class a
     if (DEBUG) {
       System.out.println("EVad AddData handle = " + this.handle);
     }
-    if (bNU)
+    if (bLC)
     {
-      paramInt = this.bNT.AddData(this.handle, paramArrayOfShort, paramInt);
+      paramInt = this.bLB.AddData(this.handle, paramArrayOfShort, paramInt);
       AppMethodBeat.o(74970);
       return paramInt;
     }
-    paramInt = this.bNS.AddData(this.handle, paramArrayOfShort, paramInt);
+    paramInt = this.bLA.AddData(this.handle, paramArrayOfShort, paramInt);
     AppMethodBeat.o(74970);
     return paramInt;
   }
   
-  public final int yH()
+  public final int yu()
   {
     AppMethodBeat.i(74971);
     if (this.handle == 0L)
@@ -76,20 +76,20 @@ public final class a
     if (DEBUG) {
       System.out.println("EVad Release handle = " + this.handle);
     }
-    if (bNU)
+    if (bLC)
     {
-      i = this.bNT.Release(this.handle);
+      i = this.bLB.Release(this.handle);
       AppMethodBeat.o(74971);
       return i;
     }
-    int i = this.bNS.Release(this.handle);
+    int i = this.bLA.Release(this.handle);
     AppMethodBeat.o(74971);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.vad.a
  * JD-Core Version:    0.7.0.1
  */

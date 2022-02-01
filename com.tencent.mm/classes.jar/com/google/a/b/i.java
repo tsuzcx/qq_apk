@@ -7,15 +7,15 @@ import java.util.Locale;
 
 public final class i
 {
-  public static DateFormat bx(int paramInt1, int paramInt2)
+  public static DateFormat bu(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(107934);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(fL(paramInt1) + " " + fM(paramInt2), Locale.US);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(fx(paramInt1) + " " + fy(paramInt2), Locale.US);
     AppMethodBeat.o(107934);
     return localSimpleDateFormat;
   }
   
-  private static String fL(int paramInt)
+  private static String fx(int paramInt)
   {
     AppMethodBeat.i(107935);
     switch (paramInt)
@@ -38,7 +38,7 @@ public final class i
     return "EEEE, MMMM d, yyyy";
   }
   
-  private static String fM(int paramInt)
+  private static String fy(int paramInt)
   {
     AppMethodBeat.i(107936);
     switch (paramInt)

@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 public abstract interface p
 {
-  public abstract InputStream DM(String paramString);
+  public abstract InputStream HP(String paramString);
 }
 
 

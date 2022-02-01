@@ -17,11 +17,11 @@ import com.tencent.mm.plugin.emoji.b.b.a;
 import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.pluginsdk.ui.chat.k;
 import com.tencent.mm.pluginsdk.ui.span.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.av;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.SmileyInfo;
 import com.tencent.mm.vfs.NativeFileSystem;
 import com.tencent.mm.vfs.QuotaFileSystem;
@@ -38,23 +38,23 @@ public class PluginEmoji
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.plugin.emoji.b.d
 {
-  private com.tencent.mm.pluginsdk.a.d osZ;
-  private long ota = 838860800L;
-  com.tencent.mm.pluginsdk.a.e otb;
+  private com.tencent.mm.pluginsdk.a.d oWA;
+  private long oWB = 838860800L;
+  com.tencent.mm.pluginsdk.a.e oWC;
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(104556);
-    e.a.a(com.tencent.mm.cg.g.eIa());
-    com.tencent.mm.cg.b.eHL();
-    h.ewd();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.emoji.b.c.class, d.bTS());
-    if (paramg.agu())
+    e.a.a(com.tencent.mm.cf.g.eXw());
+    com.tencent.mm.cf.b.eXh();
+    h.eLx();
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.emoji.b.c.class, d.cbg());
+    if (paramg.ahL())
     {
-      o.a("emoji", "emoji", this.ota, 3, false);
-      paramg = com.tencent.mm.loader.j.b.ahZ() + "emoji/cover/";
+      o.a("emoji", "emoji", this.oWB, 3);
+      paramg = com.tencent.mm.loader.j.b.aoZ() + "emoji/cover/";
       QuotaFileSystem localQuotaFileSystem = new QuotaFileSystem(new NativeFileSystem(paramg), 52428800L, 83886080L);
-      com.tencent.mm.vfs.a.gap().gar().a("emoji-cover", localQuotaFileSystem).ly(paramg, "emoji-cover").commit();
+      com.tencent.mm.vfs.a.ghk().ghm().a("emoji-cover", localQuotaFileSystem).lV(paramg, "emoji-cover").commit();
     }
     AppMethodBeat.o(104556);
   }
@@ -69,31 +69,31 @@ public class PluginEmoji
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(104557);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      pin(e.bTX());
-      if (paramg.agu()) {
+      pin(e.cbl());
+      if (paramg.ahL()) {
         com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.emoji.b.a.class, new com.tencent.mm.kernel.c.e(new a()));
       }
-      paramg = com.tencent.mm.sticker.loader.e.Fds;
-      com.tencent.mm.sticker.loader.e.eJc();
+      paramg = com.tencent.mm.sticker.loader.e.GAP;
+      com.tencent.mm.sticker.loader.e.cDq();
     }
     for (;;)
     {
       com.tencent.mm.ui.f.b.c.a(new com.tencent.mm.ui.f.b.b()
       {
-        public final com.tencent.mm.ui.f.b.a eW(String paramAnonymousString1, String paramAnonymousString2)
+        public final com.tencent.mm.ui.f.b.a fj(String paramAnonymousString1, String paramAnonymousString2)
         {
           AppMethodBeat.i(104546);
           try
           {
-            paramAnonymousString1 = com.tencent.mm.plugin.gif.c.cEH().gC(paramAnonymousString1, paramAnonymousString2);
+            paramAnonymousString1 = com.tencent.mm.plugin.gif.c.cRR().gT(paramAnonymousString1, paramAnonymousString2);
             AppMethodBeat.o(104546);
             return paramAnonymousString1;
           }
           catch (IOException paramAnonymousString1)
           {
-            ad.printErrStackTrace("MicroMsg.PluginEmoji", paramAnonymousString1, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.PluginEmoji", paramAnonymousString1, "", new Object[0]);
             AppMethodBeat.o(104546);
           }
           return null;
@@ -104,17 +104,17 @@ public class PluginEmoji
         public final CharSequence c(Context paramAnonymousContext, CharSequence paramAnonymousCharSequence, float paramAnonymousFloat)
         {
           AppMethodBeat.i(104548);
-          paramAnonymousContext = com.tencent.mm.cg.g.eIa().b(paramAnonymousCharSequence, paramAnonymousFloat);
+          paramAnonymousContext = com.tencent.mm.cf.g.eXw().b(paramAnonymousCharSequence, paramAnonymousFloat);
           AppMethodBeat.o(104548);
           return paramAnonymousContext;
         }
         
-        public final int cJ(String paramAnonymousString, int paramAnonymousInt)
+        public final int cO(String paramAnonymousString, int paramAnonymousInt)
         {
           AppMethodBeat.i(104549);
-          com.tencent.mm.cg.g.eIa();
-          Object localObject = com.tencent.mm.cg.f.eHV();
-          if (bt.isNullOrNil(paramAnonymousString))
+          com.tencent.mm.cf.g.eXw();
+          Object localObject = com.tencent.mm.cf.f.eXr();
+          if (bs.isNullOrNil(paramAnonymousString))
           {
             AppMethodBeat.o(104549);
             return paramAnonymousInt;
@@ -125,94 +125,94 @@ public class PluginEmoji
             AppMethodBeat.o(104549);
             return paramAnonymousInt;
           }
-          if (com.tencent.mm.cg.f.FaW == null)
+          if (com.tencent.mm.cf.f.Gyn == null)
           {
             StringBuilder localStringBuilder = new StringBuilder();
-            int k = ((com.tencent.mm.cg.f)localObject).FaL.length;
+            int k = ((com.tencent.mm.cf.f)localObject).Gyc.length;
             i = 0;
             while (i < k)
             {
-              localStringBuilder.append(Pattern.quote(localObject.FaL[i]));
+              localStringBuilder.append(Pattern.quote(localObject.Gyc[i]));
               if (i != k - 1) {
                 localStringBuilder.append('|');
               }
               i += 1;
             }
-            k = ((com.tencent.mm.cg.f)localObject).FaM.length;
+            k = ((com.tencent.mm.cf.f)localObject).Gyd.length;
             i = 0;
             while (i < k)
             {
-              localStringBuilder.append(Pattern.quote(localObject.FaM[i]));
+              localStringBuilder.append(Pattern.quote(localObject.Gyd[i]));
               if (i != k - 1) {
                 localStringBuilder.append('|');
               }
               i += 1;
             }
-            k = ((com.tencent.mm.cg.f)localObject).FaN.length;
+            k = ((com.tencent.mm.cf.f)localObject).Gye.length;
             i = 0;
             while (i < k)
             {
-              localStringBuilder.append(Pattern.quote(localObject.FaN[i]));
+              localStringBuilder.append(Pattern.quote(localObject.Gye[i]));
               if (i != k - 1) {
                 localStringBuilder.append('|');
               }
               i += 1;
             }
-            k = ((com.tencent.mm.cg.f)localObject).FaO.length;
+            k = ((com.tencent.mm.cf.f)localObject).Gyf.length;
             i = 0;
             while (i < k)
             {
-              localStringBuilder.append(Pattern.quote(localObject.FaO[i]));
+              localStringBuilder.append(Pattern.quote(localObject.Gyf[i]));
               if (i != k - 1) {
                 localStringBuilder.append('|');
               }
               i += 1;
             }
-            k = ((com.tencent.mm.cg.f)localObject).FaP.length;
+            k = ((com.tencent.mm.cf.f)localObject).Gyg.length;
             i = 0;
             while (i < k)
             {
-              localStringBuilder.append(Pattern.quote(localObject.FaP[i]));
+              localStringBuilder.append(Pattern.quote(localObject.Gyg[i]));
               if (i != k - 1) {
                 localStringBuilder.append('|');
               }
               i += 1;
             }
-            k = ((com.tencent.mm.cg.f)localObject).FaQ.length;
+            k = ((com.tencent.mm.cf.f)localObject).Gyh.length;
             i = 0;
             while (i < k)
             {
-              localStringBuilder.append(Pattern.quote(localObject.FaQ[i]));
+              localStringBuilder.append(Pattern.quote(localObject.Gyh[i]));
               if (i != k - 1) {
                 localStringBuilder.append('|');
               }
               i += 1;
             }
-            if ((((com.tencent.mm.cg.f)localObject).FaR != null) && (!((com.tencent.mm.cg.f)localObject).FaR.isEmpty()))
+            if ((((com.tencent.mm.cf.f)localObject).Gyi != null) && (!((com.tencent.mm.cf.f)localObject).Gyi.isEmpty()))
             {
-              localObject = ((com.tencent.mm.cg.f)localObject).FaR.iterator();
+              localObject = ((com.tencent.mm.cf.f)localObject).Gyi.iterator();
               while (((Iterator)localObject).hasNext())
               {
                 SmileyInfo localSmileyInfo = (SmileyInfo)((Iterator)localObject).next();
                 localStringBuilder.append(Pattern.quote(localSmileyInfo.field_key)).append("|");
-                if (!bt.isNullOrNil(localSmileyInfo.field_cnValue)) {
+                if (!bs.isNullOrNil(localSmileyInfo.field_cnValue)) {
                   localStringBuilder.append(Pattern.quote(localSmileyInfo.field_cnValue)).append("|");
                 }
-                if (!bt.isNullOrNil(localSmileyInfo.field_enValue)) {
+                if (!bs.isNullOrNil(localSmileyInfo.field_enValue)) {
                   localStringBuilder.append(Pattern.quote(localSmileyInfo.field_enValue)).append("|");
                 }
-                if (!bt.isNullOrNil(localSmileyInfo.field_qqValue)) {
+                if (!bs.isNullOrNil(localSmileyInfo.field_qqValue)) {
                   localStringBuilder.append(Pattern.quote(localSmileyInfo.field_qqValue)).append("|");
                 }
-                if (!bt.isNullOrNil(localSmileyInfo.field_twValue)) {
+                if (!bs.isNullOrNil(localSmileyInfo.field_twValue)) {
                   localStringBuilder.append(Pattern.quote(localSmileyInfo.field_twValue)).append("|");
                 }
-                if (!bt.isNullOrNil(localSmileyInfo.field_thValue)) {
+                if (!bs.isNullOrNil(localSmileyInfo.field_thValue)) {
                   localStringBuilder.append(Pattern.quote(localSmileyInfo.field_thValue)).append("|");
                 }
               }
             }
-            com.tencent.mm.cg.f.FaW = Pattern.compile(localStringBuilder.toString());
+            com.tencent.mm.cf.f.Gyn = Pattern.compile(localStringBuilder.toString());
           }
           if (paramAnonymousInt < 6)
           {
@@ -223,7 +223,7 @@ public class PluginEmoji
             j -= 1;
             label653:
             paramAnonymousString = paramAnonymousString.substring(i, j);
-            paramAnonymousString = com.tencent.mm.cg.f.FaW.matcher(paramAnonymousString);
+            paramAnonymousString = com.tencent.mm.cf.f.Gyn.matcher(paramAnonymousString);
             do
             {
               if (!paramAnonymousString.find()) {
@@ -253,14 +253,14 @@ public class PluginEmoji
         public final CharSequence i(CharSequence paramAnonymousCharSequence, int paramAnonymousInt)
         {
           AppMethodBeat.i(104547);
-          paramAnonymousCharSequence = com.tencent.mm.cg.g.eIa().o(paramAnonymousCharSequence, paramAnonymousInt);
+          paramAnonymousCharSequence = com.tencent.mm.cf.g.eXw().n(paramAnonymousCharSequence, paramAnonymousInt);
           AppMethodBeat.o(104547);
           return paramAnonymousCharSequence;
         }
       });
-      com.tencent.mm.api.aa.cJM = new aa.a()
+      com.tencent.mm.api.aa.cGT = new aa.a()
       {
-        public final z Kg()
+        public final z JQ()
         {
           AppMethodBeat.i(104553);
           k localk = new k();
@@ -268,7 +268,7 @@ public class PluginEmoji
           return localk;
         }
         
-        public final int bh(Context paramAnonymousContext)
+        public final int bi(Context paramAnonymousContext)
         {
           boolean bool2 = false;
           AppMethodBeat.i(104552);
@@ -283,7 +283,7 @@ public class PluginEmoji
             {
               localObject = (Activity)paramAnonymousContext;
               bool1 = bool2;
-              if (com.tencent.mm.compatible.util.d.lf(24)) {
+              if (com.tencent.mm.compatible.util.d.kZ(24)) {
                 bool1 = ((Activity)localObject).isInMultiWindowMode();
               }
             }
@@ -313,7 +313,7 @@ public class PluginEmoji
           return i;
         }
         
-        public final SmileyPanel bi(Context paramAnonymousContext)
+        public final SmileyPanel bj(Context paramAnonymousContext)
         {
           AppMethodBeat.i(104550);
           paramAnonymousContext = l(paramAnonymousContext, false);
@@ -331,46 +331,46 @@ public class PluginEmoji
       };
       AppMethodBeat.o(104557);
       return;
-      if ((paramg.ra(":tools")) || (paramg.ra(":toolsmp")))
+      if ((paramg.up(":tools")) || (paramg.up(":toolsmp")))
       {
         paramg = new IntentFilter(EmojiUpdateReceiver.ACTION);
-        aj.getContext().registerReceiver(new EmojiUpdateReceiver(), paramg);
+        ai.getContext().registerReceiver(new EmojiUpdateReceiver(), paramg);
       }
     }
   }
   
-  public as getEmojiDescMgr()
+  public av getEmojiDescMgr()
   {
     AppMethodBeat.i(104562);
-    as localas = b.a.ouV.getEmojiDescMgr();
+    av localav = b.a.oYv.getEmojiDescMgr();
     AppMethodBeat.o(104562);
-    return localas;
+    return localav;
   }
   
   public com.tencent.mm.pluginsdk.a.d getEmojiMgr()
   {
     AppMethodBeat.i(104559);
     setEmojiMgr();
-    com.tencent.mm.pluginsdk.a.d locald = this.osZ;
+    com.tencent.mm.pluginsdk.a.d locald = this.oWA;
     AppMethodBeat.o(104559);
     return locald;
   }
   
-  public aw getEmojiStorageMgr()
+  public az getEmojiStorageMgr()
   {
     AppMethodBeat.i(104561);
-    aw localaw = b.a.ouV.getEmojiStorageMgr();
+    az localaz = b.a.oYv.getEmojiStorageMgr();
     AppMethodBeat.o(104561);
-    return localaw;
+    return localaz;
   }
   
   public com.tencent.mm.pluginsdk.a.e getProvider()
   {
     AppMethodBeat.i(104560);
-    if (this.otb == null) {
-      this.otb = new com.tencent.mm.cc.a();
+    if (this.oWC == null) {
+      this.oWC = new com.tencent.mm.cb.a();
     }
-    com.tencent.mm.pluginsdk.a.e locale = this.otb;
+    com.tencent.mm.pluginsdk.a.e locale = this.oWC;
     AppMethodBeat.o(104560);
     return locale;
   }
@@ -389,21 +389,21 @@ public class PluginEmoji
   
   public void removeEmojiMgr()
   {
-    this.osZ = null;
+    this.oWA = null;
   }
   
   public void setEmojiMgr()
   {
     AppMethodBeat.i(104558);
-    if (this.osZ == null) {
-      this.osZ = b.a.ouV.getEmojiMgr();
+    if (this.oWA == null) {
+      this.oWA = b.a.oYv.getEmojiMgr();
     }
     AppMethodBeat.o(104558);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.PluginEmoji
  * JD-Core Version:    0.7.0.1
  */

@@ -7,28 +7,26 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ab;
-import com.tencent.xweb.y;
+import com.tencent.xweb.z;
 
 public class HtmlTextView2
   extends MMWebView
 {
-  private ab uwY;
+  private com.tencent.xweb.ac vFR;
   
   public HtmlTextView2(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(aj.getContext(), paramAttributeSet);
+    super(ai.getContext(), paramAttributeSet);
     AppMethodBeat.i(66930);
-    this.uwY = new ab()
+    this.vFR = new com.tencent.xweb.ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(66928);
-        ad.d("test", paramAnonymousString);
+        com.tencent.mm.sdk.platformtools.ac.d("test", paramAnonymousString);
         AppMethodBeat.o(66928);
         return true;
       }
@@ -39,14 +37,14 @@ public class HtmlTextView2
   
   public HtmlTextView2(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aj.getContext(), paramAttributeSet, paramInt);
+    super(ai.getContext(), paramAttributeSet, paramInt);
     AppMethodBeat.i(66929);
-    this.uwY = new ab()
+    this.vFR = new com.tencent.xweb.ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(66928);
-        ad.d("test", paramAnonymousString);
+        com.tencent.mm.sdk.platformtools.ac.d("test", paramAnonymousString);
         AppMethodBeat.o(66928);
         return true;
       }
@@ -83,7 +81,7 @@ public class HtmlTextView2
     AppMethodBeat.i(66932);
     setWebViewClient(null);
     loadData(paramString, "text/html", "utf-8");
-    setWebViewClient(this.uwY);
+    setWebViewClient(this.vFR);
     AppMethodBeat.o(66932);
   }
 }

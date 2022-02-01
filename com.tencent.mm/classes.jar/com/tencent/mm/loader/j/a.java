@@ -14,34 +14,34 @@ public final class a
   public static String SVNPATH;
   public static String TIME;
   public static String TINKER_ID;
-  public static String glW;
-  public static String glX = "android-" + Build.VERSION.SDK_INT;
-  public static String glY;
-  public static boolean glZ;
-  public static String gma;
+  public static String gMJ;
+  public static String gMK = "android-" + Build.VERSION.SDK_INT;
+  public static String gML;
+  public static boolean gMM;
+  public static String gMN;
   
-  public static String ahT()
+  public static String aoT()
   {
-    if (glY == null) {
+    if (gML == null) {
       return REV;
     }
-    return REV + "." + glY;
+    return REV + "." + gML;
   }
   
-  public static String ahU()
+  public static String aoU()
   {
     return TINKER_ID;
   }
   
-  public static String ahV()
+  public static String aoV()
   {
-    if (gma == null) {
+    if (gMN == null) {
       return "";
     }
-    return gma;
+    return gMN;
   }
   
-  public static boolean ahW()
+  public static boolean aoW()
   {
     return !"false".equalsIgnoreCase(PATCH_ENABLED);
   }
@@ -56,14 +56,14 @@ public final class a
     {
       PATCH_ENABLED = str;
       REV = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_REV");
-      glW = "0x" + Integer.toHexString(paramBundle.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION"));
+      gMJ = "0x" + Integer.toHexString(paramBundle.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION"));
       TIME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TIME");
       HOSTNAME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_HOSTNAME");
       BUILD_TAG = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TAG");
       OWNER = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_OWNER");
       COMMAND = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_COMMAND");
       SVNPATH = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_SVNPATH");
-      glZ = paramBundle.getBoolean("com.tencent.mm.BuildInfo.BUILD_IS_ARM64", false);
+      gMM = paramBundle.getBoolean("com.tencent.mm.BuildInfo.BUILD_IS_ARM64", false);
       TINKER_ID = paramBundle.getString("TINKER_ID");
       return;
     }

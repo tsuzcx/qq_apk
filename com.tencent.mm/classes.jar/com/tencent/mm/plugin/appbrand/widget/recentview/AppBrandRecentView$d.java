@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 public abstract interface AppBrandRecentView$d
 {
-  public abstract void bst();
+  public abstract void bzt();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.d
  * JD-Core Version:    0.7.0.1
  */

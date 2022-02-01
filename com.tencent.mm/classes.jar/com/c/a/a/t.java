@@ -6,12 +6,12 @@ import java.lang.ref.WeakReference;
 
 public final class t
 {
-  private static final a bSA;
-  private static Context bSv;
-  private static WeakReference<t.b> bSw;
-  private static WeakReference<t.d> bSx;
-  private static WeakReference<c> bSy;
-  private static WeakReference<e> bSz;
+  private static Context bQd;
+  private static WeakReference<t.b> bQe;
+  private static WeakReference<t.d> bQf;
+  private static WeakReference<c> bQg;
+  private static WeakReference<e> bQh;
+  private static final a bQi;
   private static String imei;
   private static boolean isRunning;
   
@@ -19,19 +19,19 @@ public final class t
   {
     AppMethodBeat.i(87923);
     isRunning = false;
-    bSA = new a((byte)0);
+    bQi = new a((byte)0);
     AppMethodBeat.o(87923);
   }
   
   public static void a(Context paramContext, q paramq)
   {
     AppMethodBeat.i(87924);
-    bSv = paramContext.getApplicationContext();
+    bQd = paramContext.getApplicationContext();
     try
     {
-      w.zy().a(paramContext, new m[] { bSA });
-      r.zc().bRQ = paramq;
-      r.zc().bRR = imei;
+      w.zl().a(paramContext, new m[] { bQi });
+      r.yP().bPy = paramq;
+      r.yP().bPz = imei;
       AppMethodBeat.o(87924);
       return;
     }
@@ -47,7 +47,7 @@ public final class t
     // Byte code:
     //   0: ldc 97
     //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 67	com/c/a/a/t:bSv	Landroid/content/Context;
+    //   5: getstatic 67	com/c/a/a/t:bQd	Landroid/content/Context;
     //   8: ifnonnull +10 -> 18
     //   11: ldc 97
     //   13: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -63,18 +63,18 @@ public final class t
     //   34: dup
     //   35: aload_3
     //   36: invokespecial 102	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   39: putstatic 104	com/c/a/a/t:bSw	Ljava/lang/ref/WeakReference;
+    //   39: putstatic 104	com/c/a/a/t:bQe	Ljava/lang/ref/WeakReference;
     //   42: new 99	java/lang/ref/WeakReference
     //   45: dup
     //   46: aload 4
     //   48: invokespecial 102	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   51: putstatic 106	com/c/a/a/t:bSx	Ljava/lang/ref/WeakReference;
+    //   51: putstatic 106	com/c/a/a/t:bQf	Ljava/lang/ref/WeakReference;
     //   54: new 99	java/lang/ref/WeakReference
     //   57: dup
     //   58: aconst_null
     //   59: invokespecial 102	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   62: putstatic 108	com/c/a/a/t:bSy	Ljava/lang/ref/WeakReference;
-    //   65: invokestatic 73	com/c/a/a/w:zy	()Lcom/c/a/a/w;
+    //   62: putstatic 108	com/c/a/a/t:bQg	Ljava/lang/ref/WeakReference;
+    //   65: invokestatic 73	com/c/a/a/w:zl	()Lcom/c/a/a/w;
     //   68: astore_3
     //   69: aload_0
     //   70: ifnull +188 -> 258
@@ -86,57 +86,57 @@ public final class t
     //   80: ldc2_w 111
     //   83: invokespecial 115	com/c/a/a/n$c:<init>	(JJ)V
     //   86: invokevirtual 118	com/c/a/a/w:a	(Landroid/os/Handler;Lcom/c/a/a/d$a;)V
-    //   89: getstatic 123	com/c/a/a/y:bUM	Z
+    //   89: getstatic 123	com/c/a/a/y:bSu	Z
     //   92: ifeq +105 -> 197
-    //   95: invokestatic 129	com/c/a/a/o:zb	()Ljava/lang/String;
-    //   98: putstatic 132	com/c/a/a/y:bUT	Ljava/lang/String;
+    //   95: invokestatic 129	com/c/a/a/o:yO	()Ljava/lang/String;
+    //   98: putstatic 132	com/c/a/a/y:bSB	Ljava/lang/String;
     //   101: new 134	java/lang/StringBuilder
     //   104: dup
     //   105: ldc 136
     //   107: invokespecial 139	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   110: getstatic 132	com/c/a/a/y:bUT	Ljava/lang/String;
+    //   110: getstatic 132	com/c/a/a/y:bSB	Ljava/lang/String;
     //   113: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   119: ldc 148
-    //   121: invokestatic 152	com/c/a/a/o:s	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   121: invokestatic 152	com/c/a/a/o:t	(Ljava/lang/String;Ljava/lang/String;)Z
     //   124: pop
     //   125: new 134	java/lang/StringBuilder
     //   128: dup
     //   129: ldc 154
     //   131: invokespecial 139	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   134: getstatic 132	com/c/a/a/y:bUT	Ljava/lang/String;
+    //   134: getstatic 132	com/c/a/a/y:bSB	Ljava/lang/String;
     //   137: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   143: ldc 156
-    //   145: invokestatic 152	com/c/a/a/o:s	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   145: invokestatic 152	com/c/a/a/o:t	(Ljava/lang/String;Ljava/lang/String;)Z
     //   148: pop
     //   149: new 134	java/lang/StringBuilder
     //   152: dup
     //   153: ldc 158
     //   155: invokespecial 139	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   158: getstatic 132	com/c/a/a/y:bUT	Ljava/lang/String;
+    //   158: getstatic 132	com/c/a/a/y:bSB	Ljava/lang/String;
     //   161: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   164: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   167: ldc 160
-    //   169: invokestatic 152	com/c/a/a/o:s	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   169: invokestatic 152	com/c/a/a/o:t	(Ljava/lang/String;Ljava/lang/String;)Z
     //   172: pop
     //   173: new 134	java/lang/StringBuilder
     //   176: dup
     //   177: ldc 162
     //   179: invokespecial 139	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   182: getstatic 132	com/c/a/a/y:bUT	Ljava/lang/String;
+    //   182: getstatic 132	com/c/a/a/y:bSB	Ljava/lang/String;
     //   185: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   188: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   191: ldc 164
-    //   193: invokestatic 152	com/c/a/a/o:s	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   193: invokestatic 152	com/c/a/a/o:t	(Ljava/lang/String;Ljava/lang/String;)Z
     //   196: pop
-    //   197: getstatic 166	com/c/a/a/t:bSz	Ljava/lang/ref/WeakReference;
+    //   197: getstatic 166	com/c/a/a/t:bQh	Ljava/lang/ref/WeakReference;
     //   200: ifnull +47 -> 247
-    //   203: getstatic 166	com/c/a/a/t:bSz	Ljava/lang/ref/WeakReference;
+    //   203: getstatic 166	com/c/a/a/t:bQh	Ljava/lang/ref/WeakReference;
     //   206: invokevirtual 170	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
     //   209: checkcast 16	com/c/a/a/t$e
     //   212: ifnull +35 -> 247
-    //   215: getstatic 67	com/c/a/a/t:bSv	Landroid/content/Context;
+    //   215: getstatic 67	com/c/a/a/t:bQd	Landroid/content/Context;
     //   218: ldc 172
     //   220: invokevirtual 176	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   223: checkcast 178	android/location/LocationManager
@@ -159,7 +159,7 @@ public final class t
     //   257: ireturn
     //   258: new 188	android/os/Handler
     //   261: dup
-    //   262: getstatic 67	com/c/a/a/t:bSv	Landroid/content/Context;
+    //   262: getstatic 67	com/c/a/a/t:bQd	Landroid/content/Context;
     //   265: invokevirtual 192	android/content/Context:getMainLooper	()Landroid/os/Looper;
     //   268: invokespecial 195	android/os/Handler:<init>	(Landroid/os/Looper;)V
     //   271: astore_0
@@ -202,7 +202,7 @@ public final class t
     AppMethodBeat.i(87927);
     try
     {
-      w.zy().yU();
+      w.zl().yH();
       AppMethodBeat.o(87927);
       return;
     }
@@ -218,12 +218,12 @@ public final class t
   }
   
   /* Error */
-  public static void zp()
+  public static void zc()
   {
     // Byte code:
     //   0: ldc 203
     //   2: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 73	com/c/a/a/w:zy	()Lcom/c/a/a/w;
+    //   5: invokestatic 73	com/c/a/a/w:zl	()Lcom/c/a/a/w;
     //   8: invokevirtual 206	com/c/a/a/w:stop	()V
     //   11: iconst_0
     //   12: putstatic 45	com/c/a/a/t:isRunning	Z
@@ -266,37 +266,37 @@ public final class t
       {
         AppMethodBeat.o(87922);
         return;
-        if (t.zq() != null)
+        if (t.zd() != null)
         {
-          Object localObject = (t.b)t.zq().get();
+          Object localObject = (t.b)t.zd().get();
           if (localObject != null)
           {
             paramp = (n.a)paramp;
-            ((t.b)localObject).onLocationUpdate(paramp.lat, paramp.lng, paramp.bRo, paramp.bRp, paramp.bRq);
+            ((t.b)localObject).onLocationUpdate(paramp.lat, paramp.lng, paramp.bOW, paramp.bOX, paramp.bOY);
             AppMethodBeat.o(87922);
             return;
-            if (t.zr() != null)
+            if (t.ze() != null)
             {
-              localObject = (t.d)t.zr().get();
+              localObject = (t.d)t.ze().get();
               if (localObject != null)
               {
                 paramp = (n.b)paramp;
                 ((t.d)localObject).onMessage(paramp.code, paramp.message);
                 AppMethodBeat.o(87922);
                 return;
-                if (t.zs() != null)
+                if (t.zf() != null)
                 {
-                  localObject = (t.c)t.zs().get();
+                  localObject = (t.c)t.zf().get();
                   if (localObject != null)
                   {
-                    ((t.c)localObject).onRefAdded(((s.e)paramp).bSt);
+                    ((t.c)localObject).onRefAdded(((s.e)paramp).bQb);
                     AppMethodBeat.o(87922);
                     return;
-                    if (t.zs() != null)
+                    if (t.zf() != null)
                     {
-                      localObject = (t.c)t.zs().get();
+                      localObject = (t.c)t.zf().get();
                       if (localObject != null) {
-                        ((t.c)localObject).onTrackProcessed(((s.g)paramp).bSu);
+                        ((t.c)localObject).onTrackProcessed(((s.g)paramp).bQc);
                       }
                     }
                   }

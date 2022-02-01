@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jj;
+import com.tencent.mm.g.a.jq;
 import com.tencent.mm.sdk.b.c;
 
 final class SightCaptureUI$12
-  extends c<jj>
+  extends c<jq>
 {
   SightCaptureUI$12(SightCaptureUI paramSightCaptureUI)
   {
     AppMethodBeat.i(161731);
-    this.__eventId = jj.class.getName().hashCode();
+    this.__eventId = jq.class.getName().hashCode();
     AppMethodBeat.o(161731);
   }
 }

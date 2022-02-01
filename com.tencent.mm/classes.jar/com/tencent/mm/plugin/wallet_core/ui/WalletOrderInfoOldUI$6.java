@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.ar.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 
 final class WalletOrderInfoOldUI$6
   implements ar.b.a
@@ -16,9 +16,9 @@ final class WalletOrderInfoOldUI$6
   public final void p(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(71048);
-    af localaf = ((k)g.ab(k.class)).apM().aHY(paramString);
-    ad.d("MicroMsg.WalletOrderInfoOldUI", "call back from contactServer " + paramString + " succ: " + paramBoolean);
-    this.AoQ.Y(localaf);
+    ai localai = ((k)g.ab(k.class)).awB().aNt(paramString);
+    ac.d("MicroMsg.WalletOrderInfoOldUI", "call back from contactServer " + paramString + " succ: " + paramBoolean);
+    this.BHk.Z(localai);
     AppMethodBeat.o(71048);
   }
 }

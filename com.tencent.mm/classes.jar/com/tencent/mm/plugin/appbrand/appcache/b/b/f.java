@@ -10,13 +10,13 @@ import com.tencent.mm.plugin.appbrand.appcache.ay;
 import com.tencent.mm.plugin.appbrand.appcache.bf;
 import com.tencent.mm.pointers.PLong;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.protocal.protobuf.dwl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ecc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public class f
-  extends a<Boolean, dwl>
+  extends a<Boolean, ecc>
 {
   public static boolean a(ak paramak, a parama)
   {
@@ -29,10 +29,10 @@ public class f
   public static boolean a(ak paramak, a parama, PLong paramPLong)
   {
     AppMethodBeat.i(44399);
-    am localam = ((an)j.T(an.class)).aE(paramak.field_appId, paramak.field_version);
+    am localam = ((an)j.T(an.class)).aI(paramak.field_appId, paramak.field_version);
     if (localam == null)
     {
-      ad.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave get null key with %s", new Object[] { paramak.toShortString() });
+      ac.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave get null key with %s", new Object[] { paramak.toShortString() });
       AppMethodBeat.o(44399);
       return false;
     }
@@ -49,17 +49,17 @@ public class f
     boolean bool1 = false;
     AppMethodBeat.i(44397);
     Object localObject;
-    switch (1.iQg[parama.ordinal()])
+    switch (1.jqq[parama.ordinal()])
     {
     default: 
       i = 127;
-      localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
-      localObject = ay.aF(paramak.field_appId, paramak.field_version);
+      localObject = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
+      localObject = ay.aJ(paramak.field_appId, paramak.field_version);
       i = MMProtocalJni.aesDecryptFile(paramak.field_pkgPath, (String)localObject, paramString1.getBytes());
-      ad.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, appId(%s), version(%d), ret %d", new Object[] { paramak.field_appId, Integer.valueOf(paramak.field_version), Integer.valueOf(i) });
+      ac.i("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, appId(%s), version(%d), ret %d", new Object[] { paramak.field_appId, Integer.valueOf(paramak.field_version), Integer.valueOf(i) });
       if (i != 0) {
-        switch (1.iQg[parama.ordinal()])
+        switch (1.jqq[parama.ordinal()])
         {
         }
       }
@@ -67,53 +67,53 @@ public class f
     case 1: 
       for (i = 129;; i = 133)
       {
-        paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
+        paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         AppMethodBeat.o(44397);
         return false;
         i = 131;
         break;
       }
     }
-    paramString1 = i.aEN((String)localObject);
+    paramString1 = i.aKe((String)localObject);
     if (!paramString1.equals(paramString2))
     {
-      ad.e("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, file_md5(%s) expect_md5(%s) mismatch", new Object[] { paramString1, paramString2 });
-      switch (1.iQg[parama.ordinal()])
+      ac.e("MicroMsg.AppBrand.Predownload.CmdIssueDecryptKey", "decryptPkgAndSave, file_md5(%s) expect_md5(%s) mismatch", new Object[] { paramString1, paramString2 });
+      switch (1.jqq[parama.ordinal()])
       {
       }
       for (i = 130;; i = 134)
       {
-        paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
+        paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         AppMethodBeat.o(44397);
         return false;
       }
     }
-    j.aOK().l(paramak.field_appId, paramak.field_version, paramString2);
-    boolean bool2 = j.aOK().d(paramak.field_appId, 0, paramak.field_version, (String)localObject);
-    switch (1.iQg[parama.ordinal()])
+    j.aVC().l(paramak.field_appId, paramak.field_version, paramString2);
+    boolean bool2 = j.aVC().e(paramak.field_appId, 0, paramak.field_version, (String)localObject);
+    switch (1.jqq[parama.ordinal()])
     {
     default: 
       if (bool2)
       {
         i = 143;
-        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
+        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         i.deleteFile(paramak.field_pkgPath);
         if (!((al)j.T(al.class)).delete(paramak, new String[0])) {
           break label549;
         }
         i = 139;
         label398:
-        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
-        if (parama != a.iQi)
+        paramString1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
+        if (parama != a.jqs)
         {
           paramString1 = (an)j.T(an.class);
           paramString2 = paramak.field_appId;
           i = paramak.field_version;
-          if (!bt.isNullOrNil(paramString2)) {
+          if (!bs.isNullOrNil(paramString2)) {
             break label557;
           }
           label445:
@@ -122,10 +122,10 @@ public class f
           }
           i = 141;
           label455:
-          paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-          com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
+          paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
         }
-        switch (1.iQg[parama.ordinal()])
+        switch (1.jqq[parama.ordinal()])
         {
         }
       }
@@ -133,8 +133,8 @@ public class f
     }
     for (int i = 128;; i = 132)
     {
-      paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramInt, i);
+      paramak = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(paramInt, i);
       AppMethodBeat.o(44397);
       return true;
       if (bool2)
@@ -161,7 +161,7 @@ public class f
     }
   }
   
-  final String aQI()
+  final String aXD()
   {
     return "CmdIssueDecryptKey";
   }
@@ -171,10 +171,10 @@ public class f
     static
     {
       AppMethodBeat.i(44396);
-      iQh = new a("WXA_LAUNCH", 0);
-      iQi = new a("ISSUE_DECRYPT", 1);
-      iQj = new a("GET_CODE", 2);
-      iQk = new a[] { iQh, iQi, iQj };
+      jqr = new a("WXA_LAUNCH", 0);
+      jqs = new a("ISSUE_DECRYPT", 1);
+      jqt = new a("GET_CODE", 2);
+      jqu = new a[] { jqr, jqs, jqt };
       AppMethodBeat.o(44396);
     }
     
@@ -183,7 +183,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.b.f
  * JD-Core Version:    0.7.0.1
  */

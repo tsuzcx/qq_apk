@@ -6,11 +6,11 @@ import d.l;
 import java.util.Enumeration;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"iterator", "", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"iterator", "", "T", "Ljava/util/Enumeration;", "kotlin-stdlib"}, fOb=1)
 public class n
   extends m
 {
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"kotlin/collections/CollectionsKt__IteratorsJVMKt$iterator$1", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/collections/CollectionsKt__IteratorsJVMKt$iterator$1", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<T>
   {
@@ -19,7 +19,7 @@ public class n
     public final boolean hasNext()
     {
       AppMethodBeat.i(129229);
-      boolean bool = this.Jgh.hasMoreElements();
+      boolean bool = this.KTB.hasMoreElements();
       AppMethodBeat.o(129229);
       return bool;
     }
@@ -27,7 +27,7 @@ public class n
     public final T next()
     {
       AppMethodBeat.i(129230);
-      Object localObject = this.Jgh.nextElement();
+      Object localObject = this.KTB.nextElement();
       AppMethodBeat.o(129230);
       return localObject;
     }

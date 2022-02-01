@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.gallery.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
 {
-  public static String abQ(String paramString)
+  public static String agI(String paramString)
   {
     AppMethodBeat.i(111740);
     int i = -1;
@@ -17,7 +17,7 @@ public final class b
       switch (i)
       {
       default: 
-        ad.e("MicroMsg.AlbumAdapter.MIMEUtils", "unsupport type: %s", new Object[] { paramString });
+        ac.e("MicroMsg.AlbumAdapter.MIMEUtils", "unsupport type: %s", new Object[] { paramString });
         AppMethodBeat.o(111740);
         return "";
         if (paramString.equals("avc1"))

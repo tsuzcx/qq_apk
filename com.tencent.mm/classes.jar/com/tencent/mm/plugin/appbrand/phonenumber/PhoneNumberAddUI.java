@@ -9,30 +9,30 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.BaseLuggageActivity;
 import d.g.a.a;
 import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"})
 public final class PhoneNumberAddUI
   extends BaseLuggageActivity
 {
-  public static final PhoneNumberAddUI.a lkF;
-  private l lkE;
+  public static final a lKx;
+  private l lKw;
   
   static
   {
     AppMethodBeat.i(148111);
-    lkF = new PhoneNumberAddUI.a((byte)0);
+    lKx = new a((byte)0);
     AppMethodBeat.o(148111);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(148109);
-    if (i.cjn.Eq())
+    if (i.cgk.DT())
     {
       setTheme(2131821544);
       super.onCreate(paramBundle);
@@ -40,19 +40,19 @@ public final class PhoneNumberAddUI
       setActionBarColor(getResources().getColor(2131099650));
       hideActionbarLine();
       paramBundle = getIntent().getStringExtra("APPID");
-      ad.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
+      ac.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
       setTitle(2131756010);
       setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      Object localObject = u.lkN;
-      localObject = u.blE();
+      Object localObject = u.lKF;
+      localObject = u.bst();
       Context localContext = (Context)this;
       k.g(paramBundle, "appId");
-      this.lkE = ((n)localObject).a(localContext, paramBundle, (a)new c(this));
-      paramBundle = this.lkE;
+      this.lKw = ((n)localObject).a(localContext, paramBundle, (a)new c(this));
+      paramBundle = this.lKw;
       if (paramBundle != null) {
         paramBundle.init();
       }
-      paramBundle = this.lkE;
+      paramBundle = this.lKw;
       if (paramBundle == null) {
         break label193;
       }
@@ -72,7 +72,7 @@ public final class PhoneNumberAddUI
   {
     AppMethodBeat.i(148110);
     super.onDestroy();
-    l locall = this.lkE;
+    l locall = this.lKw;
     if (locall != null)
     {
       locall.uninit();
@@ -88,7 +88,10 @@ public final class PhoneNumberAddUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI$Companion;", "", "()V", "APPID", "", "TAG", "luggage-wechat-full-sdk_release"})
+  public static final class a {}
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -97,13 +100,13 @@ public final class PhoneNumberAddUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148107);
-      this.lkG.finish();
+      this.lKy.finish();
       AppMethodBeat.o(148107);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements a<y>
@@ -116,7 +119,7 @@ public final class PhoneNumberAddUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberAddUI
  * JD-Core Version:    0.7.0.1
  */

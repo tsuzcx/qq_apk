@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.luggage.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.i;
 import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.i;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.nio.ByteBuffer;
 import java.util.Map;
 import org.json.JSONObject;
@@ -19,8 +19,8 @@ final class ba
   {
     AppMethodBeat.i(128919);
     Object localObject = paramJSONObject.optString("encoding");
-    ad.i("MicroMsg.AppBrand.UnitReadFile", "call, path %s, encoding %s", new Object[] { paramString, localObject });
-    if (bt.isNullOrNil((String)localObject)) {
+    ac.i("MicroMsg.AppBrand.UnitReadFile", "call, path %s, encoding %s", new Object[] { paramString, localObject });
+    if (bs.isNullOrNil((String)localObject)) {
       localObject = null;
     }
     label261:
@@ -38,8 +38,8 @@ final class ba
       paramJSONObject = new i();
       if ((l1 != -9223372036854775808L) && (l2 != -9223372036854775808L))
       {
-        paramc = paramc.Ee().a(paramString, l1, l2, paramJSONObject);
-        if (paramc != l.iSq) {
+        paramc = paramc.DH().a(paramString, l1, l2, paramJSONObject);
+        if (paramc != l.jsB) {
           break label279;
         }
         if (localObject != null) {
@@ -51,20 +51,20 @@ final class ba
         if (!(paramc instanceof ByteBuffer)) {
           a.i((ByteBuffer)paramJSONObject.value);
         }
-        paramc = new i.a("ok", new Object[0]).s("data", paramc);
+        paramc = new i.a("ok", new Object[0]).r("data", paramc);
         AppMethodBeat.o(128919);
         return paramc;
-        localObject = (h)h.a.jQr.get(((String)localObject).toLowerCase());
+        localObject = (h)h.a.krd.get(((String)localObject).toLowerCase());
         if (localObject != null) {
           break label475;
         }
         paramc = new i.a("fail invalid encoding", new Object[0]);
         AppMethodBeat.o(128919);
         return paramc;
-        paramc = paramc.Ee().b(paramString, paramJSONObject);
+        paramc = paramc.DH().b(paramString, paramJSONObject);
         break;
       }
-      switch (1.jQL[paramc.ordinal()])
+      switch (1.krw[paramc.ordinal()])
       {
       default: 
         paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -95,7 +95,7 @@ final class ba
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ba
  * JD-Core Version:    0.7.0.1
  */

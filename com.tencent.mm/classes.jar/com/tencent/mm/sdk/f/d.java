@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  private static final Map<String, String> EYK;
-  private static final Map<String, String> EYL;
+  private static final Map<String, String> GvW;
+  private static final Map<String, String> GvX;
   
   static
   {
@@ -33,12 +33,12 @@ public final class d
       localHashMap1.put(localPair.first, localPair.second);
       localHashMap2.put(localPair.second, localPair.first);
     }
-    EYK = Collections.unmodifiableMap(localHashMap1);
-    EYL = Collections.unmodifiableMap(localHashMap2);
+    GvW = Collections.unmodifiableMap(localHashMap1);
+    GvX = Collections.unmodifiableMap(localHashMap2);
     AppMethodBeat.o(153471);
   }
   
-  public static String aBx(String paramString)
+  public static String aGP(String paramString)
   {
     AppMethodBeat.i(153470);
     if (TextUtils.isEmpty(paramString))
@@ -47,7 +47,7 @@ public final class d
       return null;
     }
     String str3 = paramString.toLowerCase();
-    String str2 = (String)EYL.get(str3);
+    String str2 = (String)GvX.get(str3);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = MimeTypeMap.getSingleton().getExtensionFromMimeType(paramString);
@@ -84,7 +84,7 @@ public final class d
     return str1;
   }
   
-  public static String aCP(String paramString)
+  public static String aIh(String paramString)
   {
     Object localObject2 = null;
     AppMethodBeat.i(153469);
@@ -94,7 +94,7 @@ public final class d
     }
     for (;;)
     {
-      paramString = aGE((String)localObject1);
+      paramString = aLW((String)localObject1);
       AppMethodBeat.o(153469);
       return paramString;
       int i = paramString.lastIndexOf('.');
@@ -109,7 +109,7 @@ public final class d
     }
   }
   
-  public static String aGE(String paramString)
+  public static String aLW(String paramString)
   {
     AppMethodBeat.i(153468);
     if (TextUtils.isEmpty(paramString))
@@ -117,7 +117,7 @@ public final class d
       AppMethodBeat.o(153468);
       return null;
     }
-    String str2 = (String)EYK.get(paramString.toLowerCase());
+    String str2 = (String)GvW.get(paramString.toLowerCase());
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
@@ -137,14 +137,14 @@ public final class d
   
   public static final class a
   {
-    private static final Pattern EYM;
+    private static final Pattern GvY;
     public final String charset;
     public final String mimeType;
     
     static
     {
       AppMethodBeat.i(153467);
-      EYM = Pattern.compile("([a-zA-Z*-.0-9]+/[a-zA-Z*-.0-9]+)");
+      GvY = Pattern.compile("([a-zA-Z*-.0-9]+/[a-zA-Z*-.0-9]+)");
       AppMethodBeat.o(153467);
     }
     
@@ -154,7 +154,7 @@ public final class d
       this.charset = paramString2;
     }
     
-    public static a aGF(String paramString)
+    public static a aLX(String paramString)
     {
       String str = null;
       AppMethodBeat.i(153466);
@@ -163,7 +163,7 @@ public final class d
         AppMethodBeat.o(153466);
         return null;
       }
-      Object localObject = EYM.matcher(paramString);
+      Object localObject = GvY.matcher(paramString);
       if (!((Matcher)localObject).find())
       {
         AppMethodBeat.o(153466);

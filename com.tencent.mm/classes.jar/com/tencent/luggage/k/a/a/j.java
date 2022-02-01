@@ -1,15 +1,15 @@
 package com.tencent.luggage.k.a.a;
 
-import android.graphics.Bitmap;
-
 public abstract interface j
-  extends i
+  extends q
 {
-  public abstract Bitmap EL();
+  public abstract void Er();
+  
+  public abstract void playAudio();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.j
  * JD-Core Version:    0.7.0.1
  */

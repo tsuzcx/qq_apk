@@ -7,54 +7,54 @@ import java.util.List;
 
 public final class b
 {
-  private List<a> qJx;
+  List<a> gpQ;
   
   private b()
   {
-    AppMethodBeat.i(205509);
-    this.qJx = new ArrayList();
-    AppMethodBeat.o(205509);
+    AppMethodBeat.i(209039);
+    this.gpQ = new ArrayList();
+    AppMethodBeat.o(209039);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(205510);
-    this.qJx.add(parama);
-    AppMethodBeat.o(205510);
+    AppMethodBeat.i(209040);
+    this.gpQ.add(parama);
+    AppMethodBeat.o(209040);
   }
   
-  public final a aTW(String paramString)
+  public final a ux(String paramString)
   {
-    AppMethodBeat.i(205511);
-    Iterator localIterator = this.qJx.iterator();
+    AppMethodBeat.i(209041);
+    Iterator localIterator = this.gpQ.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (paramString.equals(locala.flk))
+      if (paramString.equals(locala.foE))
       {
-        AppMethodBeat.o(205511);
+        AppMethodBeat.o(209041);
         return locala;
       }
     }
-    AppMethodBeat.o(205511);
+    AppMethodBeat.o(209041);
     return null;
   }
   
   static final class a
   {
-    private static b qJW;
+    private static b gpR;
     
     static
     {
-      AppMethodBeat.i(205508);
-      qJW = new b((byte)0);
-      AppMethodBeat.o(205508);
+      AppMethodBeat.i(209038);
+      gpR = new b((byte)0);
+      AppMethodBeat.o(209038);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.b.b
  * JD-Core Version:    0.7.0.1
  */

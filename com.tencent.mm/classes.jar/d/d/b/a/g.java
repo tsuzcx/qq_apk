@@ -3,99 +3,110 @@ package d.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"COROUTINES_DEBUG_METADATA_VERSION", "", "checkDebugMetadataVersion", "", "expected", "actual", "getDebugMetadataAnnotation", "Lkotlin/coroutines/jvm/internal/DebugMetadata;", "Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "getLabel", "getSpilledVariableFieldMapping", "", "", "(Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;)[Ljava/lang/String;", "getStackTraceElementImpl", "Ljava/lang/StackTraceElement;", "getStackTraceElement", "kotlin-stdlib"})
-public final class g
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/ModuleNameRetriever;", "", "()V", "cache", "Lkotlin/coroutines/jvm/internal/ModuleNameRetriever$Cache;", "notOnJava9", "buildCache", "continuation", "Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "getModuleName", "", "Cache", "kotlin-stdlib"})
+final class g
 {
-  public static final StackTraceElement a(a parama)
+  private static final a KUp;
+  public static a KUq;
+  public static final g KUr;
+  
+  static
   {
-    AppMethodBeat.i(186830);
-    k.h(parama, "$this$getStackTraceElementImpl");
-    f localf = b(parama);
-    if (localf == null)
+    AppMethodBeat.i(129610);
+    KUr = new g();
+    KUp = new a(null, null, null);
+    AppMethodBeat.o(129610);
+  }
+  
+  public static String d(a parama)
+  {
+    AppMethodBeat.i(186168);
+    k.h(parama, "continuation");
+    Object localObject2 = KUq;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = e(parama);
+    }
+    if (localObject1 == KUp)
     {
-      AppMethodBeat.o(186830);
+      AppMethodBeat.o(186168);
       return null;
     }
-    adM(localf.fvG());
-    int i = c(parama);
-    if (i < 0)
+    localObject2 = ((a)localObject1).KUs;
+    if (localObject2 != null)
     {
-      i = -1;
-      h localh = h.JgX;
-      parama = h.d(parama);
-      if (parama != null) {
-        break label108;
+      parama = ((Method)localObject2).invoke(parama.getClass(), new Object[0]);
+      if (parama != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(186168);
+      return null;
+    }
+    localObject2 = ((a)localObject1).KUt;
+    if (localObject2 != null)
+    {
+      parama = ((Method)localObject2).invoke(parama, new Object[0]);
+      if (parama != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(186168);
+      return null;
+    }
+    localObject1 = ((a)localObject1).KUu;
+    if (localObject1 != null) {}
+    for (parama = ((Method)localObject1).invoke(parama, new Object[0]);; parama = null)
+    {
+      localObject1 = parama;
+      if (!(parama instanceof String)) {
+        localObject1 = null;
       }
-    }
-    label108:
-    for (parama = localf.c();; parama = parama + '/' + localf.c())
-    {
-      parama = new StackTraceElement(parama, localf.m(), localf.f(), i);
-      AppMethodBeat.o(186830);
+      parama = (String)localObject1;
+      AppMethodBeat.o(186168);
       return parama;
-      i = localf.l()[i];
-      break;
     }
   }
   
-  private static final void adM(int paramInt)
+  private static a e(a parama)
   {
-    AppMethodBeat.i(186832);
-    if (paramInt > 1)
+    AppMethodBeat.i(129609);
+    try
     {
-      Throwable localThrowable = (Throwable)new IllegalStateException(("Debug metadata version mismatch. Expected: 1, got " + paramInt + ". Please update the Kotlin standard library.").toString());
-      AppMethodBeat.o(186832);
-      throw localThrowable;
+      parama = new a(Class.class.getDeclaredMethod("getModule", new Class[0]), parama.getClass().getClassLoader().loadClass("java.lang.Module").getDeclaredMethod("getDescriptor", new Class[0]), parama.getClass().getClassLoader().loadClass("java.lang.module.ModuleDescriptor").getDeclaredMethod("name", new Class[0]));
+      KUq = parama;
+      AppMethodBeat.o(129609);
+      return parama;
     }
-    AppMethodBeat.o(186832);
-  }
-  
-  private static final f b(a parama)
-  {
-    AppMethodBeat.i(186831);
-    parama = (f)parama.getClass().getAnnotation(f.class);
-    AppMethodBeat.o(186831);
+    catch (Exception parama)
+    {
+      parama = KUp;
+      KUq = parama;
+      AppMethodBeat.o(129609);
+    }
     return parama;
   }
   
-  private static final int c(a parama)
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/ModuleNameRetriever$Cache;", "", "getModuleMethod", "Ljava/lang/reflect/Method;", "getDescriptorMethod", "nameMethod", "(Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;)V", "kotlin-stdlib"})
+  static final class a
   {
-    AppMethodBeat.i(129608);
-    for (;;)
+    public final Method KUs;
+    public final Method KUt;
+    public final Method KUu;
+    
+    public a(Method paramMethod1, Method paramMethod2, Method paramMethod3)
     {
-      try
-      {
-        Object localObject = parama.getClass().getDeclaredField("label");
-        k.g(localObject, "field");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(parama);
-        parama = (a)localObject;
-        if (!(localObject instanceof Integer)) {
-          parama = null;
-        }
-        parama = (Integer)parama;
-        if (parama == null) {
-          continue;
-        }
-        i = parama.intValue();
-        i -= 1;
-      }
-      catch (Exception parama)
-      {
-        int i = -1;
-        continue;
-      }
-      AppMethodBeat.o(129608);
-      return i;
-      i = 0;
+      this.KUs = paramMethod1;
+      this.KUt = paramMethod2;
+      this.KUu = paramMethod3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.d.b.a.g
  * JD-Core Version:    0.7.0.1
  */

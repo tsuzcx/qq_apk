@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.api.c;
-import com.tencent.mm.plugin.websearch.api.n;
+import com.tencent.mm.plugin.websearch.api.m;
+import com.tencent.mm.plugin.websearch.api.w;
 import com.tencent.mm.plugin.websearch.api.x;
-import com.tencent.mm.plugin.websearch.api.y;
 import com.tencent.mm.plugin.websearch.widget.view.a.1;
 import com.tencent.mm.plugin.websearch.widget.view.a.2;
 import com.tencent.mm.plugin.websearch.widget.view.a.3;
@@ -20,16 +20,16 @@ import java.util.Map;
 public final class b
   implements com.tencent.mm.plugin.websearch.api.e
 {
-  public final int a(Activity paramActivity, String paramString1, String paramString2, List<y> paramList, x paramx)
+  public final int a(Activity paramActivity, String paramString1, String paramString2, List<x> paramList, w paramw)
   {
     AppMethodBeat.i(116629);
-    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.eiE();
+    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.exY();
     com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramActivity, 2, true);
     int i = locale.hashCode();
-    locale.Hsb = new a.1(locala, paramList);
-    locale.HrX = new a.2(locala, paramList, locale);
-    locale.HrY = new a.3(locala, paramx, i);
-    locale.GHn = new a.4(locala, paramx, i);
+    locale.ISy = new a.1(locala, paramList);
+    locale.ISu = new a.2(locala, paramList, locale);
+    locale.ISv = new a.3(locala, paramw, i);
+    locale.Ihj = new a.4(locala, paramw, i);
     paramActivity = View.inflate(paramActivity, 2131495319, null);
     if (!TextUtils.isEmpty(paramString1))
     {
@@ -41,10 +41,10 @@ public final class b
     }
     for (;;)
     {
-      locale.HFm = true;
+      locale.JfJ = true;
       locale.J(paramActivity, false);
-      locale.csG();
-      locala.AJp.put(Integer.valueOf(i), locale);
+      locale.cED();
+      locala.CbG.put(Integer.valueOf(i), locale);
       AppMethodBeat.o(116629);
       return i;
       paramActivity.findViewById(2131305902).setVisibility(8);
@@ -54,17 +54,17 @@ public final class b
     }
   }
   
-  public final c a(Context paramContext, n paramn)
+  public final c a(Context paramContext, m paramm)
   {
     AppMethodBeat.i(116628);
-    paramContext = new a(paramContext, paramn);
+    paramContext = new a(paramContext, paramm);
     AppMethodBeat.o(116628);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.b
  * JD-Core Version:    0.7.0.1
  */

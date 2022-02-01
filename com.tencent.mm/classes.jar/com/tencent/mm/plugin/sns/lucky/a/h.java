@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.sns.lucky.a;
 
 public final class h
 {
-  public long hnI = 0L;
-  public long mBT = 0L;
-  public String wCH = "";
-  public String wCI = "";
+  public long hOl = 0L;
+  public long ndU = 0L;
+  public String xPc = "";
+  public String xPd = "";
 }
 
 

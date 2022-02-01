@@ -6,17 +6,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.cy;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.b.a.em;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.protocal.protobuf.bmk;
-import com.tencent.mm.protocal.protobuf.bml;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.bra;
+import com.tencent.mm.protocal.protobuf.brb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.b.t;
 import com.tencent.mm.ui.chatting.d.a;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -25,27 +25,27 @@ import java.util.LinkedList;
 
 public final class q
 {
-  public static void a(Context paramContext, final a parama, String paramString, final CharSequence paramCharSequence, final MMNeat7extView paramMMNeat7extView, final bl parambl, int paramInt)
+  public static void a(Context paramContext, final a parama, String paramString, final CharSequence paramCharSequence, final MMNeat7extView paramMMNeat7extView, final bo parambo, int paramInt)
   {
-    AppMethodBeat.i(191637);
+    AppMethodBeat.i(196703);
     Object localObject1 = paramCharSequence;
-    if (((t)parama.be(t.class)).bG(parambl))
+    if (((t)parama.bf(t.class)).bI(parambo))
     {
-      localObject1 = parambl.field_solitaireFoldInfo;
+      localObject1 = parambo.field_solitaireFoldInfo;
       Object localObject2 = new StringBuilder();
-      if (((bmk)localObject1).DJP != null)
+      if (((bra)localObject1).Fge != null)
       {
-        localObject3 = ((bmk)localObject1).DJP.iterator();
+        localObject3 = ((bra)localObject1).Fge.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (bml)((Iterator)localObject3).next();
-          ((StringBuilder)localObject2).append(bt.by(bt.by(((bml)localObject4).DJT, ""), "")).append(paramString.substring(((bml)localObject4).start, ((bml)localObject4).end));
+          localObject4 = (brb)((Iterator)localObject3).next();
+          ((StringBuilder)localObject2).append(bs.bG(bs.bG(((brb)localObject4).Fgi, ""), "")).append(paramString.substring(((brb)localObject4).start, ((brb)localObject4).end));
         }
       }
-      if (!bt.isNullOrNil(((StringBuilder)localObject2).toString())) {
+      if (!bs.isNullOrNil(((StringBuilder)localObject2).toString())) {
         ((StringBuilder)localObject2).append("\n");
       }
-      if ((!bt.isNullOrNil(((StringBuilder)localObject2).toString())) && (((bmk)localObject1).sqY == 1)) {
+      if ((!bs.isNullOrNil(((StringBuilder)localObject2).toString())) && (((bra)localObject1).tyQ == 1)) {
         ((StringBuilder)localObject2).append("\n");
       }
       localObject2 = k.a(paramContext, (CharSequence)localObject2, (int)paramMMNeat7extView.getTextSize(), paramInt);
@@ -55,61 +55,61 @@ public final class q
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(191635);
-          ad.d("MicroMsg.ChattingItemAppMsgGroupSolitatire", "fold click");
-          if (!((t)parama.be(t.class)).bG(parambl))
+          AppMethodBeat.i(196701);
+          ac.d("MicroMsg.ChattingItemAppMsgGroupSolitatire", "fold click");
+          if (!((t)parama.bf(t.class)).bI(parambo))
           {
-            ad.i("MicroMsg.ChattingItemAppMsgGroupSolitatire", "not fold");
-            AppMethodBeat.o(191635);
+            ac.i("MicroMsg.ChattingItemAppMsgGroupSolitatire", "not fold");
+            AppMethodBeat.o(196701);
             return;
           }
           if (paramAnonymousView != null) {
             paramAnonymousView.setTag(2131307173, Long.valueOf(System.currentTimeMillis()));
           }
           paramMMNeat7extView.a(paramCharSequence, TextView.BufferType.SPANNABLE);
-          ((t)parama.be(t.class)).wD(((Long)paramMMNeat7extView.getTag(2131298134)).longValue());
+          ((t)parama.bf(t.class)).Bg(((Long)paramMMNeat7extView.getTag(2131298134)).longValue());
           ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
           paramAnonymousView = parama.getTalkerUserName();
-          bmk localbmk = this.GLA;
-          cy localcy = new cy();
-          localcy.dGR = localcy.t("ChatName", paramAnonymousView, true);
-          localcy.dSK = localbmk.drA;
-          localcy.dSO = localcy.t("Identifier", localbmk.key, true);
-          localcy.dTa = localbmk.DJQ.size();
-          localcy.dTb = localbmk.DJS;
-          localcy.aBj();
-          AppMethodBeat.o(191635);
+          bra localbra = this.Ilx;
+          em localem = new em();
+          localem.dEE = localem.t("ChatName", paramAnonymousView, true);
+          localem.dUy = localbra.dpl;
+          localem.dUC = localem.t("Identifier", localbra.key, true);
+          localem.dUN = localbra.Fgf.size();
+          localem.dUO = localbra.Fgh;
+          localem.aHZ();
+          AppMethodBeat.o(196701);
         }
       }, 0, ((String)localObject4).length(), 33);
       parama = new StringBuilder();
       parama.append("\n");
-      if (((bmk)localObject1).DJQ != null)
+      if (((bra)localObject1).Fgf != null)
       {
-        paramCharSequence = ((bmk)localObject1).DJQ.iterator();
+        paramCharSequence = ((bra)localObject1).Fgf.iterator();
         while (paramCharSequence.hasNext())
         {
-          parambl = (bml)paramCharSequence.next();
-          parama.append(bt.by(parambl.DJT, "")).append(paramString.substring(parambl.start, parambl.end)).append("\n");
+          parambo = (brb)paramCharSequence.next();
+          parama.append(bs.bG(parambo.Fgi, "")).append(paramString.substring(parambo.start, parambo.end)).append("\n");
         }
       }
-      if (((bmk)localObject1).DJR != null)
+      if (((bra)localObject1).Fgg != null)
       {
         parama.append("\n");
-        parama.append(bt.by(((bmk)localObject1).DJR.DJT, "")).append(paramString.substring(((bmk)localObject1).DJR.start, ((bmk)localObject1).DJR.end));
+        parama.append(bs.bG(((bra)localObject1).Fgg.Fgi, "")).append(paramString.substring(((bra)localObject1).Fgg.start, ((bra)localObject1).Fgg.end));
       }
       paramContext = k.a(paramContext, parama, (int)paramMMNeat7extView.getTextSize(), paramInt);
       localObject1 = TextUtils.concat(new CharSequence[] { TextUtils.concat(new CharSequence[] { localObject2, localObject3 }), paramContext });
     }
     paramMMNeat7extView.a((CharSequence)localObject1, TextView.BufferType.SPANNABLE);
-    AppMethodBeat.o(191637);
+    AppMethodBeat.o(196703);
   }
   
-  public static boolean fR(View paramView)
+  public static boolean ge(View paramView)
   {
-    AppMethodBeat.i(191638);
+    AppMethodBeat.i(196704);
     if (paramView == null)
     {
-      AppMethodBeat.o(191638);
+      AppMethodBeat.o(196704);
       return false;
     }
     try
@@ -119,21 +119,21 @@ public final class q
       l1 = l2 - l1;
       if ((l1 > 0L) && (l1 < 500L))
       {
-        AppMethodBeat.o(191638);
+        AppMethodBeat.o(196704);
         return true;
       }
     }
     catch (Exception paramView)
     {
-      ad.e("MicroMsg.ChattingItemAppMsgGroupSolitatire", "checkSolitaireFoldDoubleClick Exception:%s %s", new Object[] { paramView.getClass().getSimpleName(), paramView.getMessage() });
-      AppMethodBeat.o(191638);
+      ac.e("MicroMsg.ChattingItemAppMsgGroupSolitatire", "checkSolitaireFoldDoubleClick Exception:%s %s", new Object[] { paramView.getClass().getSimpleName(), paramView.getMessage() });
+      AppMethodBeat.o(196704);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.q
  * JD-Core Version:    0.7.0.1
  */

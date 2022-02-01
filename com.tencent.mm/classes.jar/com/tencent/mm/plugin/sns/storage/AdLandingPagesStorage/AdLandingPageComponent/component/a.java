@@ -6,7 +6,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class a
   extends k
@@ -18,13 +18,13 @@ public abstract class a
   
   protected final void a(LinearLayout paramLinearLayout)
   {
-    Object localObject = (c)this.xab;
+    Object localObject = (c)this.ymQ;
     if (paramLinearLayout == null) {
       return;
     }
-    int i = Double.compare(((c)localObject).wVz, ((c)localObject).wVA);
-    int m = (int)((c)localObject).wVz;
-    int n = (int)((c)localObject).wVA;
+    int i = Double.compare(((c)localObject).yin, ((c)localObject).yio);
+    int m = (int)((c)localObject).yin;
+    int n = (int)((c)localObject).yio;
     int k;
     if (i == 0)
     {
@@ -38,7 +38,7 @@ public abstract class a
     }
     for (;;)
     {
-      ad.i("AdLandingBorderedComp", "border width top %d,bottom %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+      ac.i("AdLandingBorderedComp", "border width top %d,bottom %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
       if (i > 0)
       {
         localLinearLayout = new LinearLayout(paramLinearLayout.getContext());
@@ -60,7 +60,7 @@ public abstract class a
       if (m == 0)
       {
         j = m;
-        if (((c)localObject).wVz != 0.0D) {
+        if (((c)localObject).yin != 0.0D) {
           j = 1;
         }
       }
@@ -70,7 +70,7 @@ public abstract class a
       {
         k = n;
         i = j;
-        if (((c)localObject).wVA != 0.0D)
+        if (((c)localObject).yio != 0.0D)
         {
           k = 1;
           i = j;
@@ -81,7 +81,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.a
  * JD-Core Version:    0.7.0.1
  */

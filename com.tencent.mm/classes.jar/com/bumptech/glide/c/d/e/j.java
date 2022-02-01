@@ -14,15 +14,15 @@ import java.util.List;
 public final class j
   implements k<InputStream, c>
 {
-  private final b aCQ;
-  private final List<f> aCZ;
-  private final k<ByteBuffer, c> aJF;
+  private final b aDH;
+  private final List<f> aDQ;
+  private final k<ByteBuffer, c> aKv;
   
   public j(List<f> paramList, k<ByteBuffer, c> paramk, b paramb)
   {
-    this.aCZ = paramList;
-    this.aJF = paramk;
-    this.aCQ = paramb;
+    this.aDQ = paramList;
+    this.aKv = paramk;
+    this.aDH = paramb;
   }
   
   private static byte[] d(InputStream paramInputStream)
@@ -55,7 +55,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.e.j
  * JD-Core Version:    0.7.0.1
  */

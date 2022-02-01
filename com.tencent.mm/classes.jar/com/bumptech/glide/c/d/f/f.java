@@ -7,12 +7,12 @@ import java.util.List;
 
 public final class f
 {
-  private final List<a<?, ?>> aJJ;
+  private final List<a<?, ?>> aKz;
   
   public f()
   {
     AppMethodBeat.i(77535);
-    this.aJJ = new ArrayList();
+    this.aKz = new ArrayList();
     AppMethodBeat.o(77535);
   }
   
@@ -21,7 +21,7 @@ public final class f
     try
     {
       AppMethodBeat.i(77536);
-      this.aJJ.add(new a(paramClass, paramClass1, parame));
+      this.aKz.add(new a(paramClass, paramClass1, parame));
       AppMethodBeat.o(77536);
       return;
     }
@@ -39,13 +39,13 @@ public final class f
       AppMethodBeat.i(77537);
       if (paramClass1.isAssignableFrom(paramClass))
       {
-        paramClass = g.pl();
+        paramClass = g.pv();
         AppMethodBeat.o(77537);
       }
       for (;;)
       {
         return paramClass;
-        Iterator localIterator = this.aJJ.iterator();
+        Iterator localIterator = this.aKz.iterator();
         a locala;
         do
         {
@@ -54,7 +54,7 @@ public final class f
           }
           locala = (a)localIterator.next();
         } while (!locala.e(paramClass, paramClass1));
-        paramClass = locala.aEx;
+        paramClass = locala.aFn;
         AppMethodBeat.o(77537);
       }
       paramClass = new IllegalArgumentException("No transcoder registered to transcode from " + paramClass + " to " + paramClass1);
@@ -78,7 +78,7 @@ public final class f
           AppMethodBeat.o(77538);
           return localArrayList;
         }
-        Iterator localIterator = this.aJJ.iterator();
+        Iterator localIterator = this.aKz.iterator();
         if (localIterator.hasNext())
         {
           if (((a)localIterator.next()).e(paramClass, paramClass1)) {
@@ -95,21 +95,21 @@ public final class f
   
   static final class a<Z, R>
   {
-    final e<Z, R> aEx;
-    private final Class<Z> aJK;
-    private final Class<R> aJL;
+    final e<Z, R> aFn;
+    private final Class<Z> aKA;
+    private final Class<R> aKB;
     
     a(Class<Z> paramClass, Class<R> paramClass1, e<Z, R> parame)
     {
-      this.aJK = paramClass;
-      this.aJL = paramClass1;
-      this.aEx = parame;
+      this.aKA = paramClass;
+      this.aKB = paramClass1;
+      this.aFn = parame;
     }
     
     public final boolean e(Class<?> paramClass1, Class<?> paramClass2)
     {
       AppMethodBeat.i(77534);
-      if ((this.aJK.isAssignableFrom(paramClass1)) && (paramClass2.isAssignableFrom(this.aJL)))
+      if ((this.aKA.isAssignableFrom(paramClass1)) && (paramClass2.isAssignableFrom(this.aKB)))
       {
         AppMethodBeat.o(77534);
         return true;
@@ -121,7 +121,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.f.f
  * JD-Core Version:    0.7.0.1
  */

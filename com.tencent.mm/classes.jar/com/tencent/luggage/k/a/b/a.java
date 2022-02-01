@@ -10,12 +10,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   implements b
 {
-  protected c cjC;
-  protected volatile boolean cnR;
+  protected c cgy;
+  protected volatile boolean ckT;
   protected int id;
   public String type;
   
-  public final String AL()
+  public final String Ap()
   {
     AppMethodBeat.i(139353);
     String str = d.l(this.type, this.id);
@@ -23,24 +23,29 @@ public class a
     return str;
   }
   
-  public void EY()
+  public void EC()
   {
-    this.cnR = false;
+    this.ckT = false;
   }
   
-  public final c FI()
+  public final c Fq()
   {
-    return this.cjC;
+    return this.cgy;
   }
   
   public final void a(c paramc)
   {
-    this.cjC = paramc;
+    this.cgy = paramc;
   }
   
   public void e(SurfaceTexture paramSurfaceTexture)
   {
-    this.cnR = true;
+    this.ckT = true;
+  }
+  
+  public boolean g(com.tencent.luggage.k.a.a parama)
+  {
+    return false;
   }
   
   public final int getId()
@@ -53,17 +58,12 @@ public class a
     return this.type;
   }
   
-  public boolean h(com.tencent.luggage.k.a.a parama)
-  {
-    return false;
-  }
-  
-  public String i(com.tencent.luggage.k.a.a parama)
+  public String h(com.tencent.luggage.k.a.a parama)
   {
     return null;
   }
   
-  public void n(MotionEvent paramMotionEvent) {}
+  public void l(MotionEvent paramMotionEvent) {}
   
   public void r(Bitmap paramBitmap) {}
   
@@ -79,7 +79,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.b.a
  * JD-Core Version:    0.7.0.1
  */

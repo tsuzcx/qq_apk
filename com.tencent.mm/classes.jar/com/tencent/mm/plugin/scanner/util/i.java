@@ -6,39 +6,39 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class i
   implements SensorEventListener
 {
-  public static final i waT;
+  public static final i xlZ;
   public SensorManager mSensorManager;
-  public Sensor waP;
-  public float[] waQ;
-  public int waR;
-  private long waS;
+  public Sensor xlV;
+  public float[] xlW;
+  public int xlX;
+  private long xlY;
   
   static
   {
     AppMethodBeat.i(52061);
-    waT = new i();
+    xlZ = new i();
     AppMethodBeat.o(52061);
   }
   
   private i()
   {
     AppMethodBeat.i(52059);
-    this.waQ = new float[3];
-    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
-    this.waP = this.mSensorManager.getDefaultSensor(1);
+    this.xlW = new float[3];
+    this.mSensorManager = ((SensorManager)ai.getContext().getSystemService("sensor"));
+    this.xlV = this.mSensorManager.getDefaultSensor(1);
     AppMethodBeat.o(52059);
   }
   
-  public final long dnj()
+  public final long dBr()
   {
-    if (this.waR >= 5) {
-      return this.waS;
+    if (this.xlX >= 5) {
+      return this.xlY;
     }
     return 0L;
   }
@@ -51,42 +51,42 @@ public final class i
     if (paramSensorEvent.sensor.getType() == 1)
     {
       paramSensorEvent = paramSensorEvent.values;
-      ad.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
-      if ((this.waQ[0] == 0.0F) && (this.waQ[1] == 0.0F) && (this.waQ[2] == 0.0F))
+      ac.d("MicroMsg.ScanStableDetector", "x:%f,y:%f,z:%f", new Object[] { Float.valueOf(paramSensorEvent[0]), Float.valueOf(paramSensorEvent[1]), Float.valueOf(paramSensorEvent[2]) });
+      if ((this.xlW[0] == 0.0F) && (this.xlW[1] == 0.0F) && (this.xlW[2] == 0.0F))
       {
-        this.waQ[0] = paramSensorEvent[0];
-        this.waQ[1] = paramSensorEvent[1];
-        this.waQ[2] = paramSensorEvent[2];
+        this.xlW[0] = paramSensorEvent[0];
+        this.xlW[1] = paramSensorEvent[1];
+        this.xlW[2] = paramSensorEvent[2];
         AppMethodBeat.o(52060);
         return;
       }
-      if ((Math.abs(paramSensorEvent[0] - this.waQ[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.waQ[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.waQ[2]) <= 0.7F)) {
+      if ((Math.abs(paramSensorEvent[0] - this.xlW[0]) <= 0.7F) && (Math.abs(paramSensorEvent[1] - this.xlW[1]) <= 0.7F) && (Math.abs(paramSensorEvent[2] - this.xlW[2]) <= 0.7F)) {
         break label227;
       }
-      ad.d("MicroMsg.ScanStableDetector", "scan unstable");
-      this.waR = 0;
+      ac.d("MicroMsg.ScanStableDetector", "scan unstable");
+      this.xlX = 0;
     }
     for (;;)
     {
-      this.waQ[0] = paramSensorEvent[0];
-      this.waQ[1] = paramSensorEvent[1];
-      this.waQ[2] = paramSensorEvent[2];
+      this.xlW[0] = paramSensorEvent[0];
+      this.xlW[1] = paramSensorEvent[1];
+      this.xlW[2] = paramSensorEvent[2];
       AppMethodBeat.o(52060);
       return;
       label227:
-      if (this.waR == 0) {
-        this.waS = System.currentTimeMillis();
+      if (this.xlX == 0) {
+        this.xlY = System.currentTimeMillis();
       }
-      this.waR += 1;
-      if (this.waR >= 5) {
-        ad.d("MicroMsg.ScanStableDetector", "scan stable");
+      this.xlX += 1;
+      if (this.xlX >= 5) {
+        ac.d("MicroMsg.ScanStableDetector", "scan stable");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.i
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -17,32 +17,32 @@ public final class b
   final float[] mMVPMatrix;
   private int mProgram;
   private int mSize;
-  private int xhb;
-  private int xhc;
-  private int xhd;
-  private final float[] xhe;
-  private FloatBuffer xhf;
-  private FloatBuffer xhg;
-  int xhh;
-  public float xhi;
-  public float xhj;
-  public float xhk;
-  final float[] xhl;
-  protected float xhm;
-  protected float xhn;
-  protected float xho;
+  private int ytP;
+  private int ytQ;
+  private int ytR;
+  private final float[] ytS;
+  private FloatBuffer ytT;
+  private FloatBuffer ytU;
+  int ytV;
+  public float ytW;
+  public float ytX;
+  public float ytY;
+  final float[] ytZ;
+  protected float yua;
+  protected float yub;
+  protected float yuc;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(97272);
-    this.xhe = new float[16];
-    this.xhi = 0.0F;
-    this.xhj = 90.0F;
-    this.xhl = new float[16];
+    this.ytS = new float[16];
+    this.ytW = 0.0F;
+    this.ytX = 90.0F;
+    this.ytZ = new float[16];
     this.mMVPMatrix = new float[16];
-    this.xhm = 1.0F;
-    this.xhn = 20.0F;
-    this.xho = 0.0F;
+    this.yua = 1.0F;
+    this.yub = 20.0F;
+    this.yuc = 0.0F;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(97272);
@@ -79,7 +79,7 @@ public final class b
         float f10;
         float f11;
         float f12;
-        ad.e("SphereImageView.SphereRender", "init, exp:" + localThrowable.toString());
+        ac.e("SphereImageView.SphereRender", "init, exp:" + localThrowable.toString());
         AppMethodBeat.o(97273);
         return;
       }
@@ -150,9 +150,9 @@ public final class b
         arrayOfFloat[i] = ((Float)((ArrayList)localObject).get(i)).floatValue();
         i += 1;
       }
-      this.xhg = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.xhg.put(arrayOfFloat);
-      this.xhg.position(0);
+      this.ytU = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.ytU.put(arrayOfFloat);
+      this.ytU.position(0);
       localObject = new float[this.mSize * 3];
       i = 0;
       while (i < localObject.length)
@@ -160,10 +160,10 @@ public final class b
         localObject[i] = ((Float)localArrayList.get(i)).floatValue();
         i += 1;
       }
-      this.xhf = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.xhf.put((float[])localObject);
-      this.xhf.position(0);
-      ad.i("SphereImageView.SphereRender", "init, timeCost=" + (System.currentTimeMillis() - l));
+      this.ytT = ByteBuffer.allocateDirect(localObject.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.ytT.put((float[])localObject);
+      this.ytT.position(0);
+      ac.i("SphereImageView.SphereRender", "init, timeCost=" + (System.currentTimeMillis() - l));
       AppMethodBeat.o(97273);
       return;
       for (;;)
@@ -178,43 +178,43 @@ public final class b
     }
   }
   
-  public final void X(float paramFloat1, float paramFloat2)
+  public final void ab(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(97274);
-    ad.i("SphereImageView.SphereRender", "setScaleParams, near=" + paramFloat1 + ", far=30.0, z=" + paramFloat2);
+    ac.i("SphereImageView.SphereRender", "setScaleParams, near=" + paramFloat1 + ", far=30.0, z=" + paramFloat2);
     if (paramFloat1 >= 30.0F)
     {
       AppMethodBeat.o(97274);
       return;
     }
-    this.xhm = paramFloat1;
-    this.xhn = 30.0F;
-    this.xho = paramFloat2;
+    this.yua = paramFloat1;
+    this.yub = 30.0F;
+    this.yuc = paramFloat2;
     AppMethodBeat.o(97274);
   }
   
-  public final void dxi()
+  public final void dLH()
   {
     AppMethodBeat.i(97277);
-    ad.i("SphereImageView.SphereRender", "onSurfaceCreated");
+    ac.i("SphereImageView.SphereRender", "onSurfaceCreated");
     AppMethodBeat.o(97277);
   }
   
-  public final void dxj()
+  public final void dLI()
   {
     AppMethodBeat.i(97275);
     try
     {
-      Matrix.rotateM(this.xhl, 0, -this.xhi, 1.0F, 0.0F, 0.0F);
-      Matrix.rotateM(this.xhl, 0, -this.xhj, 0.0F, 1.0F, 0.0F);
-      Matrix.rotateM(this.xhl, 0, -this.xhk, 0.0F, 0.0F, 1.0F);
+      Matrix.rotateM(this.ytZ, 0, -this.ytW, 1.0F, 0.0F, 0.0F);
+      Matrix.rotateM(this.ytZ, 0, -this.ytX, 0.0F, 1.0F, 0.0F);
+      Matrix.rotateM(this.ytZ, 0, -this.ytY, 0.0F, 0.0F, 1.0F);
       GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
       GLES20.glClear(16640);
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.xhh);
-      int i = this.xhc;
-      Matrix.multiplyMM(this.mMVPMatrix, 0, this.xhe, 0, this.xhl, 0);
-      Matrix.setIdentityM(this.xhl, 0);
+      GLES20.glBindTexture(3553, this.ytV);
+      int i = this.ytQ;
+      Matrix.multiplyMM(this.mMVPMatrix, 0, this.ytS, 0, this.ytZ, 0);
+      Matrix.setIdentityM(this.ytZ, 0);
       GLES20.glUniformMatrix4fv(i, 1, false, this.mMVPMatrix, 0);
       GLES20.glDrawArrays(4, 0, this.mSize);
       AppMethodBeat.o(97275);
@@ -222,17 +222,17 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      ad.d("SphereImageView.SphereRender", "onDrawFrame, exp=" + localThrowable.toString());
+      ac.d("SphereImageView.SphereRender", "onDrawFrame, exp=" + localThrowable.toString());
       AppMethodBeat.o(97275);
     }
   }
   
-  public final void hi(int paramInt1, int paramInt2)
+  public final void hr(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97276);
     try
     {
-      ad.i("SphereImageView.SphereRender", "onSurfaceChanged, w=" + paramInt1 + ", h=" + paramInt2 + "， textureID=" + this.xhh + ", near=" + this.xhm + ", far=" + this.xhn + ", z=" + this.xho);
+      ac.i("SphereImageView.SphereRender", "onSurfaceChanged, w=" + paramInt1 + ", h=" + paramInt2 + "， textureID=" + this.ytV + ", near=" + this.yua + ", far=" + this.yub + ", z=" + this.yuc);
       long l1 = System.currentTimeMillis();
       if (paramInt2 == 0)
       {
@@ -242,11 +242,11 @@ public final class b
       GLES20.glViewport(0, 0, paramInt1, paramInt2);
       GLES20.glEnable(2884);
       float f = paramInt1 / paramInt2;
-      Matrix.frustumM(this.xhe, 0, -f, f, -1.0F, 1.0F, this.xhm, this.xhn);
-      Matrix.setIdentityM(this.xhl, 0);
+      Matrix.frustumM(this.ytS, 0, -f, f, -1.0F, 1.0F, this.yua, this.yub);
+      Matrix.setIdentityM(this.ytZ, 0);
       Matrix.setIdentityM(this.mMVPMatrix, 0);
-      Matrix.translateM(this.xhe, 0, 0.0F, 0.0F, this.xho);
-      Matrix.scaleM(this.xhe, 0, 4.0F, 4.0F, 4.0F);
+      Matrix.translateM(this.ytS, 0, 0.0F, 0.0F, this.yuc);
+      Matrix.scaleM(this.ytS, 0, 4.0F, 4.0F, 4.0F);
       paramInt1 = GLES20.glCreateProgram();
       paramInt2 = GLES20.glCreateShader(35632);
       int i = GLES20.glCreateShader(35633);
@@ -259,24 +259,24 @@ public final class b
       GLES20.glLinkProgram(paramInt1);
       this.mProgram = paramInt1;
       GLES20.glUseProgram(this.mProgram);
-      this.xhb = GLES20.glGetAttribLocation(this.mProgram, "aPosition");
-      this.xhc = GLES20.glGetUniformLocation(this.mProgram, "uProjectMatrix");
-      this.xhd = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
-      ad.i("SphereImageView.SphereRender", "aPosition:" + this.xhb);
-      ad.i("SphereImageView.SphereRender", "uProjectMatrix:" + this.xhc);
-      ad.i("SphereImageView.SphereRender", "aTextureCoord:" + this.xhd);
-      GLES20.glVertexAttribPointer(this.xhb, 3, 5126, false, 0, this.xhf);
-      GLES20.glVertexAttribPointer(this.xhd, 2, 5126, false, 0, this.xhg);
-      GLES20.glEnableVertexAttribArray(this.xhb);
-      GLES20.glEnableVertexAttribArray(this.xhd);
+      this.ytP = GLES20.glGetAttribLocation(this.mProgram, "aPosition");
+      this.ytQ = GLES20.glGetUniformLocation(this.mProgram, "uProjectMatrix");
+      this.ytR = GLES20.glGetAttribLocation(this.mProgram, "aTextureCoord");
+      ac.i("SphereImageView.SphereRender", "aPosition:" + this.ytP);
+      ac.i("SphereImageView.SphereRender", "uProjectMatrix:" + this.ytQ);
+      ac.i("SphereImageView.SphereRender", "aTextureCoord:" + this.ytR);
+      GLES20.glVertexAttribPointer(this.ytP, 3, 5126, false, 0, this.ytT);
+      GLES20.glVertexAttribPointer(this.ytR, 2, 5126, false, 0, this.ytU);
+      GLES20.glEnableVertexAttribArray(this.ytP);
+      GLES20.glEnableVertexAttribArray(this.ytR);
       long l2 = System.currentTimeMillis();
-      ad.i("SphereImageView.SphereRender", "onSurfaceChanged, timeCost=" + (l2 - l1));
+      ac.i("SphereImageView.SphereRender", "onSurfaceChanged, timeCost=" + (l2 - l1));
       AppMethodBeat.o(97276);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("SphereImageView.SphereRender", "onSurfaceChanged, exp=" + localThrowable.toString());
+      ac.e("SphereImageView.SphereRender", "onSurfaceChanged, exp=" + localThrowable.toString());
       AppMethodBeat.o(97276);
     }
   }

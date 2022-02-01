@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static final d.l.b.a.b.b.a.a<Object> JSs;
+  private static final d.l.b.a.b.b.a.a<Object> LFL;
   
   static
   {
     AppMethodBeat.i(60129);
-    JSs = (d.l.b.a.b.b.a.a)new a();
+    LFL = (d.l.b.a.b.b.a.a)new a();
     AppMethodBeat.o(60129);
   }
   
-  public static final d.l.b.a.b.b.a.a<Object> fIZ()
+  public static final d.l.b.a.b.b.a.a<Object> gbC()
   {
-    return JSs;
+    return LFL;
   }
   
   public static final class a
@@ -24,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
@@ -17,17 +17,17 @@ public final class f
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  protected final void aL(Map<String, String> paramMap)
+  protected final void aP(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69270);
-    paramMap.put("busi_scene", this.zPG.dca);
+    paramMap.put("busi_scene", this.Bia.cZz);
     AppMethodBeat.o(69270);
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(69271);
-    h.vKh.idkeyStat(663L, 20L, 1L, false);
+    h.wUl.idkeyStat(663L, 20L, 1L, false);
     int i = super.doScene(parame, paramg);
     AppMethodBeat.o(69271);
     return i;
@@ -48,7 +48,7 @@ public final class f
     AppMethodBeat.i(69272);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0) {
-      h.vKh.idkeyStat(663L, 21L, 1L, false);
+      h.wUl.idkeyStat(663L, 21L, 1L, false);
     }
     AppMethodBeat.o(69272);
   }

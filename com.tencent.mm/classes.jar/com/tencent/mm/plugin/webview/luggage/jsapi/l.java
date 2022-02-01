@@ -6,8 +6,8 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.f.12;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class l
   extends bo<f>
@@ -17,14 +17,14 @@ public class l
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78544);
-    ad.i("MicroMsg.JsApiClearBounceBackground", "invokeInOwn");
-    f localf = (f)parama.bZU;
+    ac.i("MicroMsg.JsApiClearBounceBackground", "invokeInOwn");
+    f localf = (f)parama.bWR;
     localf.mHandler.post(new f.12(localf));
     parama.a("", null);
     AppMethodBeat.o(78544);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

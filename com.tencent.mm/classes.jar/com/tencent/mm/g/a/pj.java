@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.Set;
 
 public final class pj
   extends b
 {
-  public a duX;
+  public a dsk;
+  public b dsl;
   
   public pj()
   {
@@ -16,18 +16,26 @@ public final class pj
   
   private pj(byte paramByte)
   {
-    AppMethodBeat.i(116040);
-    this.duX = new a();
-    this.ESR = false;
+    AppMethodBeat.i(123933);
+    this.dsk = new a();
+    this.dsl = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116040);
+    AppMethodBeat.o(123933);
   }
   
   public static final class a
   {
-    public long dcQ;
-    public Set duY;
-    public String filePath;
+    public cs dsm;
+    public int dsn = -1;
+    public String dso;
+    public int dsp = 0;
+    public int opType = 1;
+  }
+  
+  public static final class b
+  {
+    public boolean dbS;
   }
 }
 

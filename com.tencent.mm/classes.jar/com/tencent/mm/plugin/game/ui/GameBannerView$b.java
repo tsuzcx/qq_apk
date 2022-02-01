@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 final class GameBannerView$b
@@ -17,22 +17,22 @@ final class GameBannerView$b
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(41879);
-    int i = GameBannerView.b(this.seR).size();
+    int i = GameBannerView.b(this.tmK).size();
     paramViewGroup.removeView((View)paramObject);
-    ad.i("MicroMsg.GameBannerView", "destroyItem : new positon = %d, now position = %d", new Object[] { Integer.valueOf(paramInt % i), Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.GameBannerView", "destroyItem : new positon = %d, now position = %d", new Object[] { Integer.valueOf(paramInt % i), Integer.valueOf(paramInt) });
     AppMethodBeat.o(41879);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(41881);
-    if (GameBannerView.b(this.seR).size() <= 1)
+    if (GameBannerView.b(this.tmK).size() <= 1)
     {
-      i = GameBannerView.b(this.seR).size();
+      i = GameBannerView.b(this.tmK).size();
       AppMethodBeat.o(41881);
       return i;
     }
-    int i = GameBannerView.b(this.seR).size();
+    int i = GameBannerView.b(this.tmK).size();
     AppMethodBeat.o(41881);
     return i * 1000 * 2;
   }
@@ -40,12 +40,12 @@ final class GameBannerView$b
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(41880);
-    int i = paramInt % GameBannerView.b(this.seR).size();
-    View localView = View.inflate(GameBannerView.d(this.seR), 2131494242, null);
-    localView.setTag(GameBannerView.b(this.seR).get(i));
-    localView.setOnClickListener(this.seR);
+    int i = paramInt % GameBannerView.b(this.tmK).size();
+    View localView = View.inflate(GameBannerView.d(this.tmK), 2131494242, null);
+    localView.setTag(GameBannerView.b(this.tmK).get(i));
+    localView.setOnClickListener(this.tmK);
     ImageView localImageView = (ImageView)localView.findViewById(2131300347);
-    String str = ((GameBannerView.a)GameBannerView.b(this.seR).get(i)).gSG;
+    String str = ((GameBannerView.a)GameBannerView.b(this.tmK).get(i)).htg;
     Drawable localDrawable = localImageView.getDrawable();
     if ((localDrawable != null) && ((localDrawable instanceof j))) {
       ((j)localDrawable).setUrl(str);
@@ -55,7 +55,7 @@ final class GameBannerView$b
       for (;;)
       {
         paramViewGroup.addView(localView, 0);
-        ad.i("MicroMsg.GameBannerView", "instantiateItem : new positon = %d, now position = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+        ac.i("MicroMsg.GameBannerView", "instantiateItem : new positon = %d, now position = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
         AppMethodBeat.o(41880);
         return localView;
         localImageView.setImageDrawable(new j(str, (byte)0));
@@ -65,7 +65,7 @@ final class GameBannerView$b
     {
       for (;;)
       {
-        ad.e("MicroMsg.GameBannerView", "add view failed, " + paramViewGroup.getMessage());
+        ac.e("MicroMsg.GameBannerView", "add view failed, " + paramViewGroup.getMessage());
       }
     }
   }
@@ -77,7 +77,7 @@ final class GameBannerView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBannerView.b
  * JD-Core Version:    0.7.0.1
  */

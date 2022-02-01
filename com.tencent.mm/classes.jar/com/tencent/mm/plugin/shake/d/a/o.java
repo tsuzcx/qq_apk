@@ -26,7 +26,7 @@ public final class o
     this.db = parame;
   }
   
-  public final Cursor dpG()
+  public final Cursor dDQ()
   {
     AppMethodBeat.i(28348);
     Object localObject = new StringBuilder();
@@ -39,7 +39,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -17,57 +17,57 @@ import java.util.concurrent.atomic.AtomicLong;
 public final class a
   implements c
 {
-  private com.tencent.e.a IxA;
-  AtomicLong Iyq;
-  private final d Iyr;
-  volatile long Iys;
+  AtomicLong JZZ;
+  private com.tencent.e.a JZj;
+  private final d Kaa;
+  volatile long Kab;
   private ConcurrentHashMap<String, a> cache;
   
   public a(Context paramContext, com.tencent.e.a parama)
   {
     AppMethodBeat.i(183202);
     this.cache = null;
-    this.Iyq = new AtomicLong(0L);
-    this.Iys = 0L;
-    if (parama.Ixx == null) {}
-    for (paramContext = new b(paramContext);; paramContext = parama.Ixx)
+    this.JZZ = new AtomicLong(0L);
+    this.Kab = 0L;
+    if (parama.JZg == null) {}
+    for (paramContext = new b(paramContext);; paramContext = parama.JZg)
     {
-      this.Iyr = paramContext;
-      this.IxA = parama;
-      fnR();
+      this.Kaa = paramContext;
+      this.JZj = parama;
+      fEh();
       AppMethodBeat.o(183202);
       return;
     }
   }
   
-  private void fnR()
+  private void fEh()
   {
     AppMethodBeat.i(183211);
     long l = SystemClock.uptimeMillis();
-    this.Iyr.delete(this.IxA.tzy);
+    this.Kaa.delete(this.JZj.uHV);
     StringBuilder localStringBuilder1 = new StringBuilder("[buildCache] successfully! \n");
     StringBuilder localStringBuilder2 = new StringBuilder();
-    Iterator localIterator = this.Iyr.fnT().entrySet().iterator();
+    Iterator localIterator = this.Kaa.fEj().entrySet().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject).getKey();
       localObject = (a)((Map.Entry)localObject).getValue();
-      localStringBuilder2.append("# ").append(str).append('-').append(((a)localObject).fnS()).append('\n');
-      fnQ().put(str, localObject);
+      localStringBuilder2.append("# ").append(str).append('-').append(((a)localObject).fEi()).append('\n');
+      fEg().put(str, localObject);
       i += 1;
     }
     localStringBuilder1.append("# size:").append(i).append(" cost:").append(SystemClock.uptimeMillis() - l).append("ms\n");
     localStringBuilder1.append(localStringBuilder2);
-    com.tencent.e.d.IxU.i("Experience", localStringBuilder1.toString(), new Object[0]);
+    com.tencent.e.d.JZD.i("Experience", localStringBuilder1.toString(), new Object[0]);
     AppMethodBeat.o(183211);
   }
   
   public final void a(k paramk)
   {
     AppMethodBeat.i(183203);
-    k.foi().b(paramk.foj());
+    k.fEy().b(paramk.fEz());
     AppMethodBeat.o(183203);
   }
   
@@ -90,14 +90,14 @@ public final class a
         try
         {
           long l;
-          this.Iyr.m(paramConcurrentHashMap.values());
-          com.tencent.e.d.IxU.i("Experience", "[persistCache] successfully! size=" + paramConcurrentHashMap.size() + " cost:" + (SystemClock.uptimeMillis() - l), new Object[0]);
+          this.Kaa.n(paramConcurrentHashMap.values());
+          com.tencent.e.d.JZD.i("Experience", "[persistCache] successfully! size=" + paramConcurrentHashMap.size() + " cost:" + (SystemClock.uptimeMillis() - l), new Object[0]);
           paramConcurrentHashMap.clear();
           AppMethodBeat.o(183212);
         }
         catch (Exception paramConcurrentHashMap)
         {
-          com.tencent.e.d.IxU.e("Experience", "%s", new Object[] { paramConcurrentHashMap.toString() });
+          com.tencent.e.d.JZD.e("Experience", "%s", new Object[] { paramConcurrentHashMap.toString() });
           AppMethodBeat.o(183212);
         }
         paramConcurrentHashMap = finally;
@@ -105,7 +105,7 @@ public final class a
     }
   }
   
-  public final boolean aNY(String paramString)
+  public final boolean aTB(String paramString)
   {
     AppMethodBeat.i(183209);
     if (paramString == null)
@@ -113,13 +113,13 @@ public final class a
       AppMethodBeat.o(183209);
       return true;
     }
-    paramString = (a)fnQ().get(paramString);
+    paramString = (a)fEg().get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(183209);
       return true;
     }
-    if (!paramString.fnS())
+    if (!paramString.fEi())
     {
       AppMethodBeat.o(183209);
       return true;
@@ -131,58 +131,58 @@ public final class a
   public final void b(k paramk)
   {
     AppMethodBeat.i(183204);
-    k.foi().a(paramk.foj());
+    k.fEy().a(paramk.fEz());
     AppMethodBeat.o(183204);
   }
   
   public final void c(k paramk)
   {
     AppMethodBeat.i(183205);
-    k.foi().a(paramk.foj());
-    Object localObject = paramk.fok();
-    b localb = new b(paramk.getKey(), localObject[0], localObject[1], paramk.IzP.getName());
-    localObject = (a)fnQ().get(localb.name);
+    k.fEy().a(paramk.fEz());
+    Object localObject = paramk.fEA();
+    b localb = new b(paramk.getKey(), localObject[0], localObject[1], paramk.Kby.getName());
+    localObject = (a)fEg().get(localb.name);
     paramk = (k)localObject;
     if (localObject == null)
     {
       paramk = new a(localb.name);
-      fnQ().put(localb.name, paramk);
+      fEg().put(localb.name, paramk);
     }
-    paramk.IyB.add(localb);
-    paramk.Iyx += (float)localb.utu;
-    paramk.Iyy += (float)localb.time;
-    int j = paramk.IyB.size();
+    paramk.Kak.add(localb);
+    paramk.Kag += (float)localb.vCR;
+    paramk.Kah += (float)localb.time;
+    int j = paramk.Kak.size();
     int i;
-    if (paramk.Iyz > localb.rate) {
+    if (paramk.Kai > localb.rate) {
       if (j <= 5000)
       {
         i = 1;
         if (i == 0) {
-          paramk.Iyu += paramk.Iyz;
+          paramk.Kad += paramk.Kai;
         }
-        paramk.Iyz = localb.rate;
+        paramk.Kai = localb.rate;
       }
     }
     for (;;)
     {
-      if (paramk.IyA < localb.rate)
+      if (paramk.Kaj < localb.rate)
       {
         if (j <= 5000)
         {
           i = 1;
           label226:
           if (i == 0) {
-            paramk.Iyu += paramk.IyA;
+            paramk.Kad += paramk.Kaj;
           }
-          paramk.IyA = localb.rate;
+          paramk.Kaj = localb.rate;
         }
       }
       else
       {
         if (i != 0)
         {
-          float f = paramk.Iyu;
-          paramk.Iyu = (localb.rate + f);
+          float f = paramk.Kad;
+          paramk.Kad = (localb.rate + f);
         }
         if (j > 5000) {
           break label388;
@@ -191,11 +191,11 @@ public final class a
       label388:
       for (i = 0;; i = 2)
       {
-        paramk.Iyv = (paramk.Iyu / (j - i));
-        paramk.Iyw = ((paramk.Iyx * 1.0F / j));
-        paramk.cVx = ((paramk.Iyy * 1.0F / j));
-        if ((this.Iyq.incrementAndGet() >= 5000L) && (System.currentTimeMillis() - this.Iys >= 600000L)) {
-          com.tencent.e.h.Iye.aQ(new com.tencent.e.i.h()
+        paramk.Kae = (paramk.Kad / (j - i));
+        paramk.Kaf = ((paramk.Kag * 1.0F / j));
+        paramk.cST = ((paramk.Kah * 1.0F / j));
+        if ((this.JZZ.incrementAndGet() >= 5000L) && (System.currentTimeMillis() - this.Kab >= 600000L)) {
+          com.tencent.e.h.JZN.aT(new com.tencent.e.i.h()
           {
             public final String getKey()
             {
@@ -205,9 +205,9 @@ public final class a
             public final void run()
             {
               AppMethodBeat.i(183194);
-              a.this.a(a.this.fnQ());
-              a.this.Iyq.set(0L);
-              a.this.Iys = System.currentTimeMillis();
+              a.this.a(a.this.fEg());
+              a.this.JZZ.set(0L);
+              a.this.Kab = System.currentTimeMillis();
               AppMethodBeat.o(183194);
             }
           });
@@ -226,26 +226,26 @@ public final class a
   public final void d(k paramk)
   {
     AppMethodBeat.i(183206);
-    paramk = paramk.foj();
-    k.foi().d(paramk);
+    paramk = paramk.fEz();
+    k.fEy().d(paramk);
     AppMethodBeat.o(183206);
   }
   
   public final void e(k paramk)
   {
     AppMethodBeat.i(183207);
-    k.foi().a(paramk.foj());
+    k.fEy().a(paramk.fEz());
     AppMethodBeat.o(183207);
   }
   
   public final void f(k paramk)
   {
     AppMethodBeat.i(183208);
-    k.foi().a(paramk.foj());
+    k.fEy().a(paramk.fEz());
     AppMethodBeat.o(183208);
   }
   
-  final ConcurrentHashMap<String, a> fnQ()
+  final ConcurrentHashMap<String, a> fEg()
   {
     AppMethodBeat.i(183210);
     if (this.cache == null) {}
@@ -267,35 +267,35 @@ public final class a
   public final void onShutdown()
   {
     AppMethodBeat.i(183213);
-    a(fnQ());
+    a(fEg());
     AppMethodBeat.o(183213);
   }
   
   public static final class a
   {
-    float IyA;
-    ConcurrentLinkedQueue<a.b> IyB;
-    float Iyu;
-    float Iyv;
-    long Iyw;
-    float Iyx;
-    float Iyy;
-    float Iyz;
-    long cVx;
+    float Kad;
+    float Kae;
+    long Kaf;
+    float Kag;
+    float Kah;
+    float Kai;
+    float Kaj;
+    ConcurrentLinkedQueue<a.b> Kak;
+    long cST;
     String name;
     
     public a(String paramString)
     {
       AppMethodBeat.i(183195);
-      this.Iyu = 0.0F;
-      this.Iyv = 0.0F;
-      this.Iyw = 0L;
-      this.cVx = 0L;
-      this.Iyx = 0.0F;
-      this.Iyy = 0.0F;
-      this.Iyz = 1.0F;
-      this.IyA = 0.0F;
-      this.IyB = new ConcurrentLinkedQueue();
+      this.Kad = 0.0F;
+      this.Kae = 0.0F;
+      this.Kaf = 0L;
+      this.cST = 0L;
+      this.Kag = 0.0F;
+      this.Kah = 0.0F;
+      this.Kai = 1.0F;
+      this.Kaj = 0.0F;
+      this.Kak = new ConcurrentLinkedQueue();
       this.name = paramString;
       AppMethodBeat.o(183195);
     }
@@ -303,24 +303,24 @@ public final class a
     public a(String paramString, float paramFloat, long paramLong)
     {
       AppMethodBeat.i(183196);
-      this.Iyu = 0.0F;
-      this.Iyv = 0.0F;
-      this.Iyw = 0L;
-      this.cVx = 0L;
-      this.Iyx = 0.0F;
-      this.Iyy = 0.0F;
-      this.Iyz = 1.0F;
-      this.IyA = 0.0F;
-      this.IyB = new ConcurrentLinkedQueue();
+      this.Kad = 0.0F;
+      this.Kae = 0.0F;
+      this.Kaf = 0L;
+      this.cST = 0L;
+      this.Kag = 0.0F;
+      this.Kah = 0.0F;
+      this.Kai = 1.0F;
+      this.Kaj = 0.0F;
+      this.Kak = new ConcurrentLinkedQueue();
       this.name = paramString;
-      this.Iyv = paramFloat;
-      this.Iyw = paramLong;
+      this.Kae = paramFloat;
+      this.Kaf = paramLong;
       AppMethodBeat.o(183196);
     }
     
-    final boolean fnS()
+    final boolean fEi()
     {
-      return (this.Iyw >= 5000L) || (this.Iyv >= 0.5F);
+      return (this.Kaf >= 5000L) || (this.Kae >= 0.5F);
     }
     
     public final String toString()
@@ -328,9 +328,9 @@ public final class a
       AppMethodBeat.i(183197);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(this.name).append(" ");
-      ((StringBuilder)localObject).append(this.Iyv).append(" ");
-      ((StringBuilder)localObject).append(fnS()).append(" ");
-      ((StringBuilder)localObject).append(this.IyB.size());
+      ((StringBuilder)localObject).append(this.Kae).append(" ");
+      ((StringBuilder)localObject).append(fEi()).append(" ");
+      ((StringBuilder)localObject).append(this.Kak.size());
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(183197);
       return localObject;
@@ -339,20 +339,20 @@ public final class a
   
   public static final class b
   {
-    String IyC;
+    String Kal;
     public String name;
     float rate;
     long time;
     long timestamp;
-    long utu;
+    long vCR;
     
     public b(String paramString1, long paramLong1, long paramLong2, String paramString2)
     {
       AppMethodBeat.i(183198);
       this.name = paramString1;
-      this.utu = paramLong1;
+      this.vCR = paramLong1;
       this.time = paramLong2;
-      this.IyC = paramString2;
+      this.Kal = paramString2;
       if (paramLong2 <= 1L) {}
       for (;;)
       {
@@ -383,7 +383,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(183201);
-      String str = this.name + " " + this.utu + " " + this.time;
+      String str = this.name + " " + this.vCR + " " + this.time;
       AppMethodBeat.o(183201);
       return str;
     }

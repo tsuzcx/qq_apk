@@ -100,7 +100,7 @@ public class PlayerThread
   
   static
   {
-    AppMethodBeat.i(202221);
+    AppMethodBeat.i(198282);
     LOG_VERBOSE = false;
     o localo = new o(10);
     map = localo;
@@ -112,12 +112,12 @@ public class PlayerThread
     map.put(12, "读取下一帧");
     map.put(6, "结束线程");
     map.put(25, "刷新渲染");
-    AppMethodBeat.o(202221);
+    AppMethodBeat.o(198282);
   }
   
   PlayerThread(IDecoderTrack paramIDecoderTrack, AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack, CGSize paramCGSize, Surface paramSurface, Handler paramHandler, Player paramPlayer)
   {
-    AppMethodBeat.i(202173);
+    AppMethodBeat.i(198234);
     this.lastSyncMessageId = 0L;
     this.decoderConsumerTimeUs = 0L;
     this.mPosition = CMTime.CMTimeZero;
@@ -136,42 +136,42 @@ public class PlayerThread
     this.mPlayer = paramPlayer;
     this.mPlayerItem = paramPlayer.getCurrentItem();
     initThread();
-    AppMethodBeat.o(202173);
+    AppMethodBeat.o(198234);
   }
   
   private void applyViewport()
   {
-    AppMethodBeat.i(202202);
+    AppMethodBeat.i(198263);
     if (this.renderContext == null)
     {
-      AppMethodBeat.o(202202);
+      AppMethodBeat.o(198263);
       return;
     }
     if ((this.glViewportRect == null) || (this.glViewportRect.origin == null) || (this.glViewportRect.size == null))
     {
-      AppMethodBeat.o(202202);
+      AppMethodBeat.o(198263);
       return;
     }
     this.renderContext.updateViewport(this.glViewportRect);
-    AppMethodBeat.o(202202);
+    AppMethodBeat.o(198263);
   }
   
   private String catLog(int paramInt)
   {
-    AppMethodBeat.i(202216);
+    AppMethodBeat.i(198277);
     String str = (String)map.get(paramInt, null);
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(202216);
+      AppMethodBeat.o(198277);
       return String.valueOf(paramInt);
     }
-    AppMethodBeat.o(202216);
+    AppMethodBeat.o(198277);
     return str;
   }
   
   private void checkCopyPixelBuffer(CMTime paramCMTime)
   {
-    AppMethodBeat.i(202203);
+    AppMethodBeat.i(198264);
     if (this.onReadSnapShootListener != null)
     {
       Object localObject = ByteBuffer.allocateDirect(this.renderContext.width() * this.renderContext.height() * 4);
@@ -185,27 +185,27 @@ public class PlayerThread
       this.onReadSnapShootListener.onSuccess((Bitmap)localObject, paramCMTime);
       this.onReadSnapShootListener = null;
     }
-    AppMethodBeat.o(202203);
+    AppMethodBeat.o(198264);
   }
   
   private void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202217);
+    AppMethodBeat.i(198278);
     Logger.d(paramString1, paramString2);
-    AppMethodBeat.o(202217);
+    AppMethodBeat.o(198278);
   }
   
   private long getCurrentUsTime()
   {
-    AppMethodBeat.i(202199);
+    AppMethodBeat.i(198260);
     long l = System.nanoTime() / 1000L;
-    AppMethodBeat.o(202199);
+    AppMethodBeat.o(198260);
     return l;
   }
   
   private CMTime getLastSeekPosAndRemoveOther()
   {
-    AppMethodBeat.i(202191);
+    AppMethodBeat.i(198252);
     Object localObject2 = CMTime.CMTimeInvalid;
     Object localObject1;
     Object localObject3;
@@ -251,19 +251,19 @@ public class PlayerThread
         this.mPlayHandler.removeMessages(((Message)localObject3).what, ((Message)localObject3).obj);
       }
     }
-    AppMethodBeat.o(202191);
+    AppMethodBeat.o(198252);
     return localObject2;
   }
   
   private long getWaitTime(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(202207);
+    AppMethodBeat.i(198268);
     long l1 = this.frameDuration.getTimeUs();
     long l2 = paramCMTime.getTimeUs();
     if ((paramBoolean1) || (paramBoolean2))
     {
       Logger.e("PlayerThreadMain", "getWaitTime - 0 " + paramBoolean1 + "  |  " + paramBoolean2);
-      AppMethodBeat.o(202207);
+      AppMethodBeat.o(198268);
       return 0L;
     }
     long l3 = ((float)l1 / Math.abs(this.rate));
@@ -271,13 +271,13 @@ public class PlayerThread
     if (LOG_VERBOSE) {
       d("WaitTime", "getWaitTime--position-->" + l2 + " rate = " + this.rate + "--decoderConsumerTimeUs-->" + this.decoderConsumerTimeUs + "--frameDurationMs-->" + l1 + "--realTime-->" + l3 + "--nextFrameTime-->" + (l2 + l3) + "--sleepTime-->" + l4 + "  mStartTime = " + this.mStartTime);
     }
-    AppMethodBeat.o(202207);
+    AppMethodBeat.o(198268);
     return l4;
   }
   
   private void initDecoderTrack(Object paramObject)
   {
-    AppMethodBeat.i(202178);
+    AppMethodBeat.i(198239);
     if ((this.renderContext == null) && (this.mDisplayTarget != null))
     {
       this.renderContext = new RenderContext((int)this.surfaceSize.width, (int)this.surfaceSize.height, this.mDisplayTarget);
@@ -321,7 +321,7 @@ public class PlayerThread
         updateStatus(2);
         synAudioComposition();
         notifyProgressChange();
-        AppMethodBeat.o(202178);
+        AppMethodBeat.o(198239);
         return;
       }
       catch (Exception localException)
@@ -336,23 +336,23 @@ public class PlayerThread
   
   private void initThread()
   {
-    AppMethodBeat.i(202176);
+    AppMethodBeat.i(198237);
     this.mThread = new HandlerThread("PlayerVideoThread");
     this.mThread.start();
     this.mPlayHandler = new Handler(this.mThread.getLooper(), this);
     this.mAudioThread = new PlayerThreadAudio(this.aDecoderTrack, this.mMainHandler, getPlayHandler());
-    AppMethodBeat.o(202176);
+    AppMethodBeat.o(198237);
   }
   
   private void initViewport()
   {
-    AppMethodBeat.i(202179);
+    AppMethodBeat.i(198240);
     if (this.renderSize != null) {}
     for (CGSize localCGSize = this.renderSize; this.layoutMode == null; localCGSize = this.surfaceSize)
     {
       this.glViewportRect = CGMathFunctions.initGLViewportDefault(this.surfaceSize, localCGSize);
       applyViewport();
-      AppMethodBeat.o(202179);
+      AppMethodBeat.o(198240);
       return;
     }
     switch (2.$SwitchMap$com$tencent$tav$core$composition$VideoComposition$RenderLayoutMode[this.layoutMode.ordinal()])
@@ -363,7 +363,7 @@ public class PlayerThread
     for (;;)
     {
       applyViewport();
-      AppMethodBeat.o(202179);
+      AppMethodBeat.o(198240);
       return;
       this.glViewportRect = CGMathFunctions.initGLViewportFit(this.surfaceSize, localCGSize);
       continue;
@@ -380,7 +380,7 @@ public class PlayerThread
   
   private boolean needNotifyProgressChange()
   {
-    AppMethodBeat.i(202190);
+    AppMethodBeat.i(198251);
     try
     {
       if (Build.VERSION.SDK_INT >= 23) {}
@@ -399,7 +399,7 @@ public class PlayerThread
             break;
           }
         }
-        AppMethodBeat.o(202190);
+        AppMethodBeat.o(198251);
         return true;
         localObject = Handler.class.getDeclaredField("mQueue");
         ((Field)localObject).setAccessible(true);
@@ -409,48 +409,48 @@ public class PlayerThread
     catch (Exception localException)
     {
       Logger.e("PlayerThreadMain", "needNotifyProgressChange", localException);
-      AppMethodBeat.o(202190);
+      AppMethodBeat.o(198251);
     }
   }
   
   private void notifyProgressChange()
   {
-    AppMethodBeat.i(202210);
+    AppMethodBeat.i(198271);
     if (needNotifyProgressChange()) {
       this.mMainHandler.obtainMessage(2, this.mPosition).sendToTarget();
     }
-    AppMethodBeat.o(202210);
+    AppMethodBeat.o(198271);
   }
   
   private void notifyStatus(IPlayer.PlayerStatus paramPlayerStatus, String paramString)
   {
-    AppMethodBeat.i(202209);
+    AppMethodBeat.i(198270);
     this.mMainHandler.obtainMessage(1, new PlayerStatusMsg(paramPlayerStatus, paramString)).sendToTarget();
-    AppMethodBeat.o(202209);
+    AppMethodBeat.o(198270);
   }
   
   private void onCompositionUpdate(Object paramObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(202180);
+    AppMethodBeat.i(198241);
     if ((paramObject instanceof OnCompositionUpdateListener)) {
       ((OnCompositionUpdateListener)paramObject).onUpdated(this.mPlayer, paramBoolean);
     }
-    AppMethodBeat.o(202180);
+    AppMethodBeat.o(198241);
   }
   
   private void pause()
   {
-    AppMethodBeat.i(202194);
+    AppMethodBeat.i(198255);
     this.mLooper = false;
     this.mPause = true;
     removePendingMessage(new int[] { 12 });
     notifyStatus(IPlayer.PlayerStatus.PAUSED, "");
-    AppMethodBeat.o(202194);
+    AppMethodBeat.o(198255);
   }
   
   private void play()
   {
-    AppMethodBeat.i(202195);
+    AppMethodBeat.i(198256);
     if (this.mStatus == 1)
     {
       if ((this.vDecoderTrack != null) || (this.aDecoderTrack != null))
@@ -458,7 +458,7 @@ public class PlayerThread
         sendMessage(1, "not can play");
         sendMessage(2, "not can play");
       }
-      AppMethodBeat.o(202195);
+      AppMethodBeat.o(198256);
       return;
     }
     if (this.mStatus == 3) {
@@ -478,7 +478,7 @@ public class PlayerThread
       sendMessage(12, Integer.valueOf(2), "play");
       notifyStatus(IPlayer.PlayerStatus.PLAYING, "");
       d("PlayerThreadMain", "playm() called start play-->" + this.mStatus);
-      AppMethodBeat.o(202195);
+      AppMethodBeat.o(198256);
       return;
       label179:
       this.vDecoderTrack.seekTo(CMTime.CMTimeZero, false, true);
@@ -487,7 +487,7 @@ public class PlayerThread
   
   private void playerFinish()
   {
-    AppMethodBeat.i(202206);
+    AppMethodBeat.i(198267);
     Logger.d("PlayerThreadMain", "playFinish");
     if (this.vDecoderTrack != null) {}
     for (CMTime localCMTime = this.vDecoderTrack.getDuration();; localCMTime = this.mPlayer.duration())
@@ -500,28 +500,28 @@ public class PlayerThread
       this.mStartTime = 0L;
       this.mLooper = false;
       notifyStatus(IPlayer.PlayerStatus.FINISHED, "");
-      AppMethodBeat.o(202206);
+      AppMethodBeat.o(198267);
       return;
     }
   }
   
   private void prepare(Object paramObject)
   {
-    AppMethodBeat.i(202211);
+    AppMethodBeat.i(198272);
     if (this.mStatus == 1)
     {
       initDecoderTrack(paramObject);
-      AppMethodBeat.o(202211);
+      AppMethodBeat.o(198272);
       return;
     }
     sendMessage(4, Boolean.FALSE, "prepare");
     sendMessage(1, paramObject, "prepare");
-    AppMethodBeat.o(202211);
+    AppMethodBeat.o(198272);
   }
   
   private void readSample(int paramInt)
   {
-    AppMethodBeat.i(202197);
+    AppMethodBeat.i(198258);
     int i;
     if (this.mAudioThread.lastSyncMessgeId == this.lastSyncMessageId)
     {
@@ -534,7 +534,7 @@ public class PlayerThread
     for (CMTime localCMTime = this.mAudioThread.getCurrentPlayingTime();; localCMTime = CMTime.CMTimeInvalid)
     {
       readSample(paramInt, localCMTime);
-      AppMethodBeat.o(202197);
+      AppMethodBeat.o(198258);
       return;
       i = 0;
       break;
@@ -543,11 +543,11 @@ public class PlayerThread
   
   private void readSample(int paramInt, CMTime paramCMTime)
   {
-    AppMethodBeat.i(202198);
+    AppMethodBeat.i(198259);
     if (this.vDecoderTrack == null)
     {
       syncAudioProgress();
-      AppMethodBeat.o(202198);
+      AppMethodBeat.o(198259);
       return;
     }
     if (this.reportSession == null) {
@@ -612,7 +612,7 @@ public class PlayerThread
         Logger.e("PlayerThreadMain", "readSample", paramCMTime);
       } while (!(paramCMTime instanceof IllegalStateException));
       notifyStatus(IPlayer.PlayerStatus.ERROR, "解码异常");
-      AppMethodBeat.o(202198);
+      AppMethodBeat.o(198259);
       return;
     }
     if (LOG_VERBOSE) {
@@ -624,7 +624,7 @@ public class PlayerThread
         d("PlayerThreadMain", "processFrame() called with: finish");
       }
       playerFinish();
-      AppMethodBeat.o(202198);
+      AppMethodBeat.o(198259);
       return;
     }
     boolean bool1;
@@ -656,7 +656,7 @@ public class PlayerThread
       if (LOG_VERBOSE) {
         d("PlayerThreadMain", "readSample end [" + paramInt + "]--looper-->" + this.mLooper + " consumer = " + (getCurrentUsTime() - this.startTimeUsMark));
       }
-      AppMethodBeat.o(202198);
+      AppMethodBeat.o(198259);
       return;
       bool1 = false;
       break;
@@ -669,38 +669,38 @@ public class PlayerThread
   
   private CMSampleBuffer readSampleBuffer(int paramInt, CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    AppMethodBeat.i(202200);
+    AppMethodBeat.i(198261);
     if (paramInt == 5)
     {
       paramCMTime1 = this.vDecoderTrack.seekTo(paramCMTime1, true, true);
-      AppMethodBeat.o(202200);
+      AppMethodBeat.o(198261);
       return paramCMTime1;
     }
     CMTime localCMTime = this.frameDuration.multi(this.rate);
     if (paramCMTime2.smallThan(paramCMTime1.sub(localCMTime.multi(3.0F))))
     {
       paramCMTime1 = this.vDecoderTrack.readSample(paramCMTime1.divide(localCMTime).multi(localCMTime));
-      AppMethodBeat.o(202200);
+      AppMethodBeat.o(198261);
       return paramCMTime1;
     }
     if ((paramCMTime2.bigThan(paramCMTime1.add(localCMTime))) && (paramCMTime1.bigThan(CMTime.CMTimeZero)) && (this.mAudioThread.isFinished()))
     {
       syncAudioOtherMsg(2, paramCMTime2);
       paramCMTime1 = this.vDecoderTrack.readSample(localCMTime);
-      AppMethodBeat.o(202200);
+      AppMethodBeat.o(198261);
       return paramCMTime1;
     }
     paramCMTime1 = this.vDecoderTrack.readSample(paramCMTime2.add(localCMTime));
-    AppMethodBeat.o(202200);
+    AppMethodBeat.o(198261);
     return paramCMTime1;
   }
   
   private void refreshSurface(Callback paramCallback)
   {
-    AppMethodBeat.i(202189);
+    AppMethodBeat.i(198250);
     if (this.mStatus == 1)
     {
-      AppMethodBeat.o(202189);
+      AppMethodBeat.o(198250);
       return;
     }
     if (this.vDecoderTrack != null)
@@ -711,12 +711,12 @@ public class PlayerThread
     if (paramCallback != null) {
       paramCallback.call();
     }
-    AppMethodBeat.o(202189);
+    AppMethodBeat.o(198250);
   }
   
   private void release(Message paramMessage)
   {
-    AppMethodBeat.i(202187);
+    AppMethodBeat.i(198248);
     Logger.e("PlayerThreadMain", "release player - ".concat(String.valueOf(this)));
     this.renderContext.makeCurrent();
     if ((paramMessage.obj instanceof PlayerMessage))
@@ -734,27 +734,27 @@ public class PlayerThread
       this.reportSession.flush();
       this.reportSession = null;
     }
-    AppMethodBeat.o(202187);
+    AppMethodBeat.o(198248);
   }
   
   private void releaseAudioThread(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(202213);
+    AppMethodBeat.i(198274);
     if (paramInt == 6)
     {
       this.lastSyncMessageId = System.currentTimeMillis();
       Logger.d("PlayerThreadMain", "releaseAudioThread SyncMessageId = " + this.lastSyncMessageId + "  action = " + paramInt + "  obj =  " + paramObject);
       this.mAudioThread.sendMessage(paramInt, paramObject, "syncAudioStatus", this.lastSyncMessageId);
     }
-    AppMethodBeat.o(202213);
+    AppMethodBeat.o(198274);
   }
   
   private void releaseComposition()
   {
-    AppMethodBeat.i(202215);
+    AppMethodBeat.i(198276);
     if (this.vDecoderTrack == null)
     {
-      AppMethodBeat.o(202215);
+      AppMethodBeat.o(198276);
       return;
     }
     if (this.mPlayerItem.getCustomVideoCompositor() != null) {
@@ -762,12 +762,12 @@ public class PlayerThread
     }
     this.vDecoderTrack.release();
     this.aDecoderTrack.release();
-    AppMethodBeat.o(202215);
+    AppMethodBeat.o(198276);
   }
   
   private void removePendingMessage(int... arg1)
   {
-    AppMethodBeat.i(202196);
+    AppMethodBeat.i(198257);
     StringBuilder localStringBuilder;
     Object localObject1;
     if (LOG_VERBOSE)
@@ -787,7 +787,7 @@ public class PlayerThread
           if (!this.mPlayHandler.hasMessages(850))
           {
             this.mPlayHandler.removeCallbacksAndMessages(null);
-            AppMethodBeat.o(202196);
+            AppMethodBeat.o(198257);
             return;
             label98:
             localObject1 = Integer.valueOf(???[0]);
@@ -808,12 +808,12 @@ public class PlayerThread
       this.mPlayHandler.removeMessages(k);
       i += 1;
     }
-    AppMethodBeat.o(202196);
+    AppMethodBeat.o(198257);
   }
   
   private void renderSampleBuffer(CMSampleBuffer paramCMSampleBuffer)
   {
-    AppMethodBeat.i(202201);
+    AppMethodBeat.i(198262);
     if (paramCMSampleBuffer.getTextureInfo() != null)
     {
       if (this.filter == null)
@@ -831,12 +831,12 @@ public class PlayerThread
       this.renderContext.setPresentationTime(paramCMSampleBuffer.getTime().getTimeUs());
       this.renderContext.swapBuffers();
     }
-    AppMethodBeat.o(202201);
+    AppMethodBeat.o(198262);
   }
   
   private void scheduleNextWork(long paramLong)
   {
-    AppMethodBeat.i(202208);
+    AppMethodBeat.i(198269);
     paramLong /= 1000L;
     if (paramLong > 0L)
     {
@@ -844,19 +844,19 @@ public class PlayerThread
         Logger.d("scheduleNextWork", "waitTime".concat(String.valueOf(paramLong)));
       }
       sendMessageDelay(12, paramLong, "schedule next");
-      AppMethodBeat.o(202208);
+      AppMethodBeat.o(198269);
       return;
     }
     sendMessage(12, "schedule next");
-    AppMethodBeat.o(202208);
+    AppMethodBeat.o(198269);
   }
   
   private void seek(CMTime paramCMTime)
   {
-    AppMethodBeat.i(202188);
+    AppMethodBeat.i(198249);
     if (this.mStatus == 1)
     {
-      AppMethodBeat.o(202188);
+      AppMethodBeat.o(198249);
       return;
     }
     Object localObject = CMTime.CMTimeInvalid;
@@ -872,7 +872,7 @@ public class PlayerThread
         Logger.e("PlayerThreadMain", "getLastSeekPosAndRemoveOther", localException);
       }
       syncAudioOtherMsg(5, localObject);
-      AppMethodBeat.o(202188);
+      AppMethodBeat.o(198249);
       return;
     }
     if (((CMTime)localObject).getValue() > -1L) {}
@@ -890,14 +890,14 @@ public class PlayerThread
         {
           public void run()
           {
-            AppMethodBeat.i(202171);
+            AppMethodBeat.i(198232);
             if (PlayerThread.this.mLooper) {
               PlayerThread.access$100(PlayerThread.this, 2, null);
             }
-            AppMethodBeat.o(202171);
+            AppMethodBeat.o(198232);
           }
         }, 10L);
-        AppMethodBeat.o(202188);
+        AppMethodBeat.o(198249);
         return;
       }
       localObject = paramCMTime;
@@ -906,17 +906,17 @@ public class PlayerThread
   
   private void seekPreSample()
   {
-    AppMethodBeat.i(202205);
+    AppMethodBeat.i(198266);
     CMTime localCMTime = this.vDecoderTrack.getCurrentSampleTime();
     if (localCMTime != CMTime.CMTimeInvalid) {
       seek(localCMTime);
     }
-    AppMethodBeat.o(202205);
+    AppMethodBeat.o(198266);
   }
   
   private void stop(boolean paramBoolean)
   {
-    AppMethodBeat.i(202192);
+    AppMethodBeat.i(198253);
     releaseComposition();
     if (this.filter != null)
     {
@@ -931,36 +931,36 @@ public class PlayerThread
       removePendingMessage(new int[0]);
       this.mLooper = false;
     }
-    AppMethodBeat.o(202192);
+    AppMethodBeat.o(198253);
   }
   
   private void synAudioComposition()
   {
-    AppMethodBeat.i(202214);
+    AppMethodBeat.i(198275);
     if (this.aDecoderTrack != null)
     {
       this.lastSyncMessageId = System.currentTimeMillis();
       Logger.d("PlayerThreadMain", "synAudioComposition SyncMessageId = " + this.lastSyncMessageId);
       this.mAudioThread.sendMessage(1, null, "syncAudioStatus composition", this.lastSyncMessageId);
     }
-    AppMethodBeat.o(202214);
+    AppMethodBeat.o(198275);
   }
   
   private void syncAudioOtherMsg(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(202212);
+    AppMethodBeat.i(198273);
     if ((paramInt == 3) || (paramInt == 2) || (paramInt == 4) || (paramInt == 6) || (paramInt == 7) || (paramInt == -1) || (paramInt == 5))
     {
       this.lastSyncMessageId = System.currentTimeMillis();
       Logger.d("PlayerThreadMain", "syncAudioOtherMsg SyncMessageId = " + this.lastSyncMessageId + "  action = " + paramInt + "  obj = " + paramObject);
       this.mAudioThread.sendMessage(paramInt, paramObject, "syncAudioStatus", this.lastSyncMessageId);
     }
-    AppMethodBeat.o(202212);
+    AppMethodBeat.o(198273);
   }
   
   private void syncAudioProgress()
   {
-    AppMethodBeat.i(202204);
+    AppMethodBeat.i(198265);
     if (this.aDecoderTrack != null)
     {
       if (!this.mPosition.equalsTo(this.aDecoderTrack.getCurrentSampleTime()))
@@ -972,7 +972,7 @@ public class PlayerThread
       {
         d("PlayerThreadMain", "processFrame() called with: finish");
         playerFinish();
-        AppMethodBeat.o(202204);
+        AppMethodBeat.o(198265);
         return;
       }
       if (this.mLooper)
@@ -981,7 +981,7 @@ public class PlayerThread
         this.mPause = false;
       }
     }
-    AppMethodBeat.o(202204);
+    AppMethodBeat.o(198265);
   }
   
   private void udpateAudioVolumeProperties() {}
@@ -990,7 +990,7 @@ public class PlayerThread
   
   private void updateAudioClipsProperties()
   {
-    AppMethodBeat.i(202186);
+    AppMethodBeat.i(198247);
     if (this.aDecoderTrack != null) {
       this.aDecoderTrack.release();
     }
@@ -1000,12 +1000,12 @@ public class PlayerThread
     if (this.mLooper) {
       syncAudioOtherMsg(2, this.mPosition);
     }
-    AppMethodBeat.o(202186);
+    AppMethodBeat.o(198247);
   }
   
   private void updateComposition(Object paramObject)
   {
-    AppMethodBeat.i(202193);
+    AppMethodBeat.i(198254);
     if ((paramObject instanceof PlayerItem))
     {
       paramObject = (PlayerItem)paramObject;
@@ -1017,7 +1017,7 @@ public class PlayerThread
       this.frameDuration = this.vDecoderTrack.getFrameDuration();
     }
     this.mAudioThread.update(this.aDecoderTrack);
-    AppMethodBeat.o(202193);
+    AppMethodBeat.o(198254);
   }
   
   private void updateProgressPreNextAction(CMTime paramCMTime)
@@ -1034,19 +1034,19 @@ public class PlayerThread
   
   void bindSurface(IDecoderTrack paramIDecoderTrack, PlayerLayer paramPlayerLayer)
   {
-    AppMethodBeat.i(202177);
+    AppMethodBeat.i(198238);
     this.mDisplayTarget = paramPlayerLayer.surface;
     this.vDecoderTrack = paramIDecoderTrack;
     this.surfaceSize = new CGSize(paramPlayerLayer.surfaceWidth, paramPlayerLayer.surfaceHeight);
     sendMessage(1, "bind surface");
-    AppMethodBeat.o(202177);
+    AppMethodBeat.o(198238);
   }
   
   public void cancelAllPendingSeeks()
   {
-    AppMethodBeat.i(202219);
+    AppMethodBeat.i(198280);
     removePendingMessage(new int[] { 5 });
-    AppMethodBeat.o(202219);
+    AppMethodBeat.o(198280);
   }
   
   public CGRect getGlViewportRect()
@@ -1072,7 +1072,7 @@ public class PlayerThread
   public boolean handleMessage(Message paramMessage)
   {
     Object localObject3 = null;
-    AppMethodBeat.i(202185);
+    AppMethodBeat.i(198246);
     Object localObject2;
     Callback localCallback;
     StringBuilder localStringBuilder;
@@ -1102,7 +1102,7 @@ public class PlayerThread
       if (this.mThread != null) {
         break label166;
       }
-      AppMethodBeat.o(202185);
+      AppMethodBeat.o(198246);
       return false;
       localObject1 = (PlayerMessage)paramMessage.obj;
       break;
@@ -1120,14 +1120,14 @@ public class PlayerThread
           if (localCallback != null) {
             localCallback.call();
           }
-          AppMethodBeat.o(202185);
+          AppMethodBeat.o(198246);
           return true;
         }
       }
       catch (Exception paramMessage)
       {
         Logger.e("PlayerThreadMain", "player error:" + Log.getStackTraceString(paramMessage));
-        AppMethodBeat.o(202185);
+        AppMethodBeat.o(198246);
         return false;
       }
       prepare(localObject2);
@@ -1215,56 +1215,56 @@ public class PlayerThread
   
   public boolean hasMessage(int paramInt)
   {
-    AppMethodBeat.i(202218);
+    AppMethodBeat.i(198279);
     if ((this.mPlayHandler != null) && (this.mThread != null))
     {
       boolean bool = this.mPlayHandler.hasMessages(paramInt);
-      AppMethodBeat.o(202218);
+      AppMethodBeat.o(198279);
       return bool;
     }
-    AppMethodBeat.o(202218);
+    AppMethodBeat.o(198279);
     return false;
   }
   
   public void sendMessage(int paramInt, Object paramObject, String paramString)
   {
-    AppMethodBeat.i(202182);
+    AppMethodBeat.i(198243);
     if (LOG_VERBOSE) {
       d("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], obj = [" + paramObject + "], from = [" + paramString + "]");
     }
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(paramObject, paramString, System.currentTimeMillis())).sendToTarget();
     }
-    AppMethodBeat.o(202182);
+    AppMethodBeat.o(198243);
   }
   
   public void sendMessage(int paramInt, Object paramObject, String paramString, Callback paramCallback)
   {
-    AppMethodBeat.i(202181);
+    AppMethodBeat.i(198242);
     if (LOG_VERBOSE) {
       d("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], obj = [" + paramObject + "], from = [" + paramString + "]");
     }
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(paramObject, paramString, System.currentTimeMillis(), paramCallback)).sendToTarget();
     }
-    AppMethodBeat.o(202181);
+    AppMethodBeat.o(198242);
   }
   
   public void sendMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(202183);
+    AppMethodBeat.i(198244);
     if (LOG_VERBOSE) {
       d("PlayerThreadMain", "sendMessage() called with: what = [" + catLog(paramInt) + "], from = [" + paramString + "]");
     }
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(null, paramString, System.currentTimeMillis())).sendToTarget();
     }
-    AppMethodBeat.o(202183);
+    AppMethodBeat.o(198244);
   }
   
   public void sendMessageDelay(int paramInt, long paramLong, String paramString)
   {
-    AppMethodBeat.i(202184);
+    AppMethodBeat.i(198245);
     if (LOG_VERBOSE) {
       d("PlayerThreadMain", "sendMessageDelay() called with: what = [" + catLog(paramInt) + "], delay = [" + paramLong + "], from = [" + paramString + "]");
     }
@@ -1275,7 +1275,7 @@ public class PlayerThread
       localMessage.obj = new PlayerMessage(null, paramString, System.currentTimeMillis());
       this.mPlayHandler.sendMessageDelayed(localMessage, paramLong);
     }
-    AppMethodBeat.o(202184);
+    AppMethodBeat.o(198245);
   }
   
   void setFrameDuration(CMTime paramCMTime)
@@ -1285,20 +1285,20 @@ public class PlayerThread
   
   public void setRate(float paramFloat)
   {
-    AppMethodBeat.i(202174);
+    AppMethodBeat.i(198235);
     this.rate = paramFloat;
     this.mAudioThread.setRate(paramFloat);
-    AppMethodBeat.o(202174);
+    AppMethodBeat.o(198235);
   }
   
   void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(202175);
+    AppMethodBeat.i(198236);
     this.renderContextParams = paramRenderContextParams;
     if (this.renderContext != null) {
       this.renderContext.setParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(202175);
+    AppMethodBeat.o(198236);
   }
   
   public void updatePositionRightAway(CMTime paramCMTime)
@@ -1308,7 +1308,7 @@ public class PlayerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.player.PlayerThread
  * JD-Core Version:    0.7.0.1
  */

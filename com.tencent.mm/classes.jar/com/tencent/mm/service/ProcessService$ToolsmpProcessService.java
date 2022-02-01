@@ -10,7 +10,7 @@ public class ProcessService$ToolsmpProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.service.ProcessService.ToolsmpProcessService
  * JD-Core Version:    0.7.0.1
  */

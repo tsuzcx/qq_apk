@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class f
 {
-  public static final int tRK;
-  public static final int tRL;
-  public static final int tRM;
-  public static final int tRN;
-  public static final int tRO;
-  public static final int tRP;
-  public static final int tRQ;
-  public static final int tRR;
-  public static final int tRS;
-  public static final int tRT;
-  public static final int tRU;
-  public static final int tRV;
-  public static final int tRW;
-  public static final int tRX;
-  public static final int tRY;
-  public static final int tRZ;
-  public static final int tSa;
-  public static final int tSb;
-  public static final int tSc;
-  public static final int tSd;
-  public static final int tSe;
-  public static final int tSf;
-  public static final int tSg;
-  public static final int tSh;
-  private static int tSi;
+  public static final int rTi;
+  public static final int vaA;
+  public static final int vaB;
+  public static final int vaC;
+  public static final int vaD;
+  public static final int vaE;
+  public static final int vaF;
+  public static final int vaG;
+  public static final int vaH;
+  public static final int vaI;
+  public static final int vaJ;
+  public static final int vaK;
+  public static final int vaL;
+  public static final int vaM;
+  public static final int vaN;
+  public static final int vaO;
+  private static int vaP;
+  public static final int vas;
+  public static final int vat;
+  public static final int vau;
+  public static final int vav;
+  public static final int vaw;
+  public static final int vax;
+  public static final int vay;
+  public static final int vaz;
   
   static
   {
     AppMethodBeat.i(114721);
-    tRK = a.fromDPToPix(aj.getContext(), 3);
-    tRL = a.fromDPToPix(aj.getContext(), 4);
-    tRM = a.fromDPToPix(aj.getContext(), 8);
-    tRN = a.fromDPToPix(aj.getContext(), 10);
-    tRO = a.fromDPToPix(aj.getContext(), 12);
-    tRP = a.fromDPToPix(aj.getContext(), 14);
-    tRQ = a.fromDPToPix(aj.getContext(), 20);
-    tRR = a.fromDPToPix(aj.getContext(), 16);
-    tRS = a.fromDPToPix(aj.getContext(), 30);
-    tRT = a.fromDPToPix(aj.getContext(), 24);
-    tRU = a.fromDPToPix(aj.getContext(), 32);
-    tRV = a.fromDPToPix(aj.getContext(), 40);
-    tRW = a.fromDPToPix(aj.getContext(), 42);
-    tRX = a.fromDPToPix(aj.getContext(), 44);
-    tRY = a.fromDPToPix(aj.getContext(), 56);
-    tRZ = a.fromDPToPix(aj.getContext(), 72);
-    tSa = a.fromDPToPix(aj.getContext(), 76);
-    tSb = a.fromDPToPix(aj.getContext(), 92);
-    tSc = a.fromDPToPix(aj.getContext(), 96);
-    tSd = a.fromDPToPix(aj.getContext(), 138);
-    tSe = a.fromDPToPix(aj.getContext(), 160);
-    tSf = a.fromDPToPix(aj.getContext(), 230);
-    tSg = a.fromDPToPix(aj.getContext(), 167);
-    tSh = a.fromDPToPix(aj.getContext(), 273);
-    tSi = 0;
+    vas = a.fromDPToPix(ai.getContext(), 3);
+    rTi = a.fromDPToPix(ai.getContext(), 4);
+    vat = a.fromDPToPix(ai.getContext(), 8);
+    vau = a.fromDPToPix(ai.getContext(), 10);
+    vav = a.fromDPToPix(ai.getContext(), 12);
+    vaw = a.fromDPToPix(ai.getContext(), 14);
+    vax = a.fromDPToPix(ai.getContext(), 20);
+    vay = a.fromDPToPix(ai.getContext(), 16);
+    vaz = a.fromDPToPix(ai.getContext(), 30);
+    vaA = a.fromDPToPix(ai.getContext(), 24);
+    vaB = a.fromDPToPix(ai.getContext(), 32);
+    vaC = a.fromDPToPix(ai.getContext(), 40);
+    vaD = a.fromDPToPix(ai.getContext(), 42);
+    vaE = a.fromDPToPix(ai.getContext(), 44);
+    vaF = a.fromDPToPix(ai.getContext(), 56);
+    vaG = a.fromDPToPix(ai.getContext(), 72);
+    vaH = a.fromDPToPix(ai.getContext(), 76);
+    vaI = a.fromDPToPix(ai.getContext(), 92);
+    vaJ = a.fromDPToPix(ai.getContext(), 96);
+    vaK = a.fromDPToPix(ai.getContext(), 138);
+    vaL = a.fromDPToPix(ai.getContext(), 160);
+    vaM = a.fromDPToPix(ai.getContext(), 230);
+    vaN = a.fromDPToPix(ai.getContext(), 167);
+    vaO = a.fromDPToPix(ai.getContext(), 273);
+    vaP = 0;
     AppMethodBeat.o(114721);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.f
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
 {
   public static boolean DEBUG = true;
-  private static a bic = null;
+  private static a biH = null;
   
   public static void a(a parama)
   {
-    bic = parama;
+    biH = parama;
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(92351);
-    if (bic != null) {
-      bic.e(paramString1, paramString2, paramVarArgs);
+    if (biH != null) {
+      biH.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(92351);
   }
@@ -24,8 +24,8 @@ public final class b
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(92349);
-    if (bic != null) {
-      bic.i(paramString1, paramString2, paramVarArgs);
+    if (biH != null) {
+      biH.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(92349);
   }
@@ -33,8 +33,8 @@ public final class b
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(92350);
-    if (bic != null) {
-      bic.w(paramString1, paramString2, paramVarArgs);
+    if (biH != null) {
+      biH.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(92350);
   }

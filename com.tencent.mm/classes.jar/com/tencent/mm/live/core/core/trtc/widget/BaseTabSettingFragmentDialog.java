@@ -16,60 +16,60 @@ import java.util.List;
 public abstract class BaseTabSettingFragmentDialog
   extends BaseSettingFragmentDialog
 {
-  private q pTo;
-  private TabLayout qLz;
-  private ViewPager qMJ;
-  private List<Fragment> qNM;
-  private List<String> qNR;
+  private TabLayout gqd;
+  private ViewPager gqe;
+  private List<Fragment> gqf;
+  private List<String> gqg;
+  private q gqh;
   
-  protected abstract List<String> crS();
+  protected abstract List<String> ajp();
   
   protected abstract List<Fragment> getFragments();
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.qNM = getFragments();
-    this.qNR = crS();
-    if (this.qNM == null) {
-      this.qNM = new ArrayList();
+    this.gqf = getFragments();
+    this.gqg = ajp();
+    if (this.gqf == null) {
+      this.gqf = new ArrayList();
     }
-    this.qLz.a(this.qMJ, false, false);
-    this.pTo = new i(getChildFragmentManager())
+    this.gqd.a(this.gqe, false, false);
+    this.gqh = new i(getChildFragmentManager())
     {
       public final int getCount()
       {
-        AppMethodBeat.i(205528);
+        AppMethodBeat.i(209061);
         if (BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this) == null)
         {
-          AppMethodBeat.o(205528);
+          AppMethodBeat.o(209061);
           return 0;
         }
         int i = BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this).size();
-        AppMethodBeat.o(205528);
+        AppMethodBeat.o(209061);
         return i;
       }
       
       public final Fragment getItem(int paramAnonymousInt)
       {
-        AppMethodBeat.i(205527);
+        AppMethodBeat.i(209060);
         if (BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this) == null)
         {
-          AppMethodBeat.o(205527);
+          AppMethodBeat.o(209060);
           return null;
         }
         Fragment localFragment = (Fragment)BaseTabSettingFragmentDialog.a(BaseTabSettingFragmentDialog.this).get(paramAnonymousInt);
-        AppMethodBeat.o(205527);
+        AppMethodBeat.o(209060);
         return localFragment;
       }
     };
-    this.qMJ.setAdapter(this.pTo);
+    this.gqe.setAdapter(this.gqh);
     int i = 0;
-    while (i < this.qNR.size())
+    while (i < this.gqg.size())
     {
-      paramView = this.qLz.ad(i);
+      paramView = this.gqd.ad(i);
       if (paramView != null) {
-        paramView.d((CharSequence)this.qNR.get(i));
+        paramView.d((CharSequence)this.gqg.get(i));
       }
       i += 1;
     }
@@ -77,7 +77,7 @@ public abstract class BaseTabSettingFragmentDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.widget.BaseTabSettingFragmentDialog
  * JD-Core Version:    0.7.0.1
  */

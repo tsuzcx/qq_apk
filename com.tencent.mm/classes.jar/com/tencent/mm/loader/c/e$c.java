@@ -2,16 +2,16 @@ package com.tencent.mm.loader.c;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "", "(Ljava/lang/String;I)V", "NETWORK", "FILE", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "", "(Ljava/lang/String;I)V", "NETWORK", "FILE", "libimageloader_release"})
 public enum e$c
 {
   static
   {
     c localc1 = new c("NETWORK", 0);
-    gjQ = localc1;
+    gKD = localc1;
     c localc2 = new c("FILE", 1);
-    gjR = localc2;
-    gjS = new c[] { localc1, localc2 };
+    gKE = localc2;
+    gKF = new c[] { localc1, localc2 };
   }
   
   private e$c() {}

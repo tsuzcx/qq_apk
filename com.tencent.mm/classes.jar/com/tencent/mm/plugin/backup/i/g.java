@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class g
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String mAI;
-  public int mAJ;
+  public String ncJ;
+  public int ncK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,39 +15,39 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.mAI == null)
+      if (this.ncJ == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22107);
         throw paramVarArgs;
       }
-      if (this.mAI != null) {
-        paramVarArgs.d(1, this.mAI);
+      if (this.ncJ != null) {
+        paramVarArgs.d(1, this.ncJ);
       }
-      paramVarArgs.aR(2, this.mAJ);
+      paramVarArgs.aR(2, this.ncK);
       AppMethodBeat.o(22107);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.mAI == null) {
+      if (this.ncJ == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.mAI) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.ncJ) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.mAJ);
+      int i = f.a.a.b.b.a.bx(2, this.ncK);
       AppMethodBeat.o(22107);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.mAI == null)
+        if (this.ncJ == null)
         {
           paramVarArgs = new b("Not all required fields were included: BakChatName");
           AppMethodBeat.o(22107);
@@ -66,11 +66,11 @@ public final class g
           AppMethodBeat.o(22107);
           return -1;
         case 1: 
-          localg.mAI = locala.KhF.readString();
+          localg.ncJ = locala.LVo.readString();
           AppMethodBeat.o(22107);
           return 0;
         }
-        localg.mAJ = locala.KhF.xS();
+        localg.ncK = locala.LVo.xF();
         AppMethodBeat.o(22107);
         return 0;
       }
@@ -81,7 +81,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.g
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import java.net.InetAddress;
 
 public final class f
 {
-  private static int jjx = 900;
-  InetAddress jjy;
-  int jjz;
+  private static int jJK = 900;
+  InetAddress jJL;
+  int jJM;
   int port;
   
   public f(String paramString)
   {
-    this(InetAddress.getByName(paramString), jjx);
+    this(InetAddress.getByName(paramString), jJK);
     AppMethodBeat.i(158987);
     AppMethodBeat.o(158987);
   }
   
   private f(InetAddress paramInetAddress, int paramInt)
   {
-    this.jjy = paramInetAddress;
+    this.jJL = paramInetAddress;
     this.port = 1900;
-    this.jjz = paramInt;
+    this.jJM = paramInt;
   }
 }
 

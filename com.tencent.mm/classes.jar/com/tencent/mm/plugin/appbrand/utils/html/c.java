@@ -43,12 +43,12 @@ public final class c
   
   public static abstract interface a
   {
-    public abstract void Ho(String paramString);
+    public abstract void Ls(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.html.c
  * JD-Core Version:    0.7.0.1
  */

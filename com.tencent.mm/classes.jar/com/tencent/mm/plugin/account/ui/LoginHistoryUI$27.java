@@ -14,7 +14,7 @@ final class LoginHistoryUI$27
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(128108);
-    LoginHistoryUI.a(this.isd, ((m)this.isg.get(0)).getItemId());
+    LoginHistoryUI.a(this.iSi, ((m)this.iSl.get(0)).getItemId());
     AppMethodBeat.o(128108);
   }
 }

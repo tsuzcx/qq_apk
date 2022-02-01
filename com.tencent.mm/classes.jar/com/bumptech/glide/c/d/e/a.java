@@ -16,45 +16,45 @@ import java.util.Queue;
 public final class a
   implements k<ByteBuffer, c>
 {
-  private static final a aJh;
-  private static final b aJi;
-  private final List<f> aCZ;
-  private final b aJj;
-  private final a aJk;
-  private final b aJl;
+  private static final a aJX;
+  private static final b aJY;
+  private final List<f> aDQ;
+  private final b aJZ;
+  private final a aKa;
+  private final b aKb;
   private final Context context;
   
   static
   {
     AppMethodBeat.i(77475);
-    aJh = new a();
-    aJi = new b();
+    aJX = new a();
+    aJY = new b();
     AppMethodBeat.o(77475);
   }
   
   public a(Context paramContext, List<f> paramList, com.bumptech.glide.c.b.a.e parame, com.bumptech.glide.c.b.a.b paramb)
   {
-    this(paramContext, paramList, parame, paramb, aJi, aJh);
+    this(paramContext, paramList, parame, paramb, aJY, aJX);
   }
   
   private a(Context paramContext, List<f> paramList, com.bumptech.glide.c.b.a.e parame, com.bumptech.glide.c.b.a.b paramb, b paramb1, a parama)
   {
     AppMethodBeat.i(77470);
     this.context = paramContext.getApplicationContext();
-    this.aCZ = paramList;
-    this.aJk = parama;
-    this.aJl = new b(parame, paramb);
-    this.aJj = paramb1;
+    this.aDQ = paramList;
+    this.aKa = parama;
+    this.aKb = new b(parame, paramb);
+    this.aJZ = paramb1;
     AppMethodBeat.o(77470);
   }
   
   private e a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, d paramd, com.bumptech.glide.c.j paramj)
   {
     AppMethodBeat.i(77472);
-    long l = com.bumptech.glide.h.e.pO();
+    long l = com.bumptech.glide.h.e.pY();
     try
     {
-      if (paramd.aBG == null)
+      if (paramd.aCy == null)
       {
         paramByteBuffer = new IllegalStateException("You must call setData() before parseHeader()");
         AppMethodBeat.o(77472);
@@ -64,22 +64,22 @@ public final class a
     finally
     {
       if (Log.isLoggable("BufferGifDecoder", 2)) {
-        new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.n(l));
+        new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.p(l));
       }
       AppMethodBeat.o(77472);
     }
-    if (!paramd.nH())
+    if (!paramd.nR())
     {
-      paramd.nE();
-      if (!paramd.nH())
+      paramd.nO();
+      if (!paramd.nR())
       {
-        paramd.nC();
-        if (paramd.aBH.frameCount < 0) {
-          paramd.aBH.status = 1;
+        paramd.nM();
+        if (paramd.aCz.frameCount < 0) {
+          paramd.aCz.status = 1;
         }
       }
     }
-    com.bumptech.glide.b.c localc = paramd.aBH;
+    com.bumptech.glide.b.c localc = paramd.aCz;
     if (localc.frameCount > 0)
     {
       i = localc.status;
@@ -88,12 +88,12 @@ public final class a
     else
     {
       if (Log.isLoggable("BufferGifDecoder", 2)) {
-        new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.n(l));
+        new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.p(l));
       }
       AppMethodBeat.o(77472);
       return null;
     }
-    if (paramj.a(i.aID) == com.bumptech.glide.c.b.aCf)
+    if (paramj.a(i.aJt) == com.bumptech.glide.c.b.aCX)
     {
       paramd = Bitmap.Config.RGB_565;
       i = Math.min(localc.height / paramInt2, localc.width / paramInt1);
@@ -108,15 +108,15 @@ public final class a
       if ((Log.isLoggable("BufferGifDecoder", 2)) && (i > 1)) {
         new StringBuilder("Downsampling GIF, sampleSize: ").append(i).append(", target dimens: [").append(paramInt1).append("x").append(paramInt2).append("], actual dimens: [").append(localc.width).append("x").append(localc.height).append("]");
       }
-      paramByteBuffer = new com.bumptech.glide.b.e(this.aJl, localc, paramByteBuffer, i);
+      paramByteBuffer = new com.bumptech.glide.b.e(this.aKb, localc, paramByteBuffer, i);
       paramByteBuffer.a(paramd);
       paramByteBuffer.advance();
-      paramd = paramByteBuffer.nB();
+      paramd = paramByteBuffer.nL();
       if (paramd != null) {
         break label406;
       }
       if (Log.isLoggable("BufferGifDecoder", 2)) {
-        new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.n(l));
+        new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.p(l));
       }
       AppMethodBeat.o(77472);
       return null;
@@ -124,10 +124,10 @@ public final class a
       break;
     }
     label406:
-    paramj = com.bumptech.glide.c.d.b.oQ();
+    paramj = com.bumptech.glide.c.d.b.pa();
     paramByteBuffer = new e(new c(this.context, paramByteBuffer, paramj, paramInt1, paramInt2, paramd));
     if (Log.isLoggable("BufferGifDecoder", 2)) {
-      new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.n(l));
+      new StringBuilder("Decoded GIF from stream in ").append(com.bumptech.glide.h.e.p(l));
     }
     AppMethodBeat.o(77472);
     return paramByteBuffer;
@@ -136,7 +136,7 @@ public final class a
   private e a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, com.bumptech.glide.c.j paramj)
   {
     AppMethodBeat.i(77471);
-    d locald = this.aJj.b(paramByteBuffer);
+    d locald = this.aJZ.b(paramByteBuffer);
     try
     {
       paramByteBuffer = a(paramByteBuffer, paramInt1, paramInt2, locald, paramj);
@@ -144,7 +144,7 @@ public final class a
     }
     finally
     {
-      this.aJj.a(locald);
+      this.aJZ.a(locald);
       AppMethodBeat.o(77471);
     }
   }
@@ -153,12 +153,12 @@ public final class a
   
   static final class b
   {
-    private final Queue<d> aGt;
+    private final Queue<d> aHj;
     
     b()
     {
       AppMethodBeat.i(77467);
-      this.aGt = com.bumptech.glide.h.j.dy(0);
+      this.aHj = com.bumptech.glide.h.j.dx(0);
       AppMethodBeat.o(77467);
     }
     
@@ -167,9 +167,9 @@ public final class a
       try
       {
         AppMethodBeat.i(77469);
-        paramd.aBG = null;
-        paramd.aBH = null;
-        this.aGt.offer(paramd);
+        paramd.aCy = null;
+        paramd.aCz = null;
+        this.aHj.offer(paramd);
         AppMethodBeat.o(77469);
         return;
       }
@@ -185,18 +185,18 @@ public final class a
       try
       {
         AppMethodBeat.i(77468);
-        d locald2 = (d)this.aGt.poll();
+        d locald2 = (d)this.aHj.poll();
         d locald1 = locald2;
         if (locald2 == null) {
           locald1 = new d();
         }
-        locald1.aBG = null;
-        Arrays.fill(locald1.aBF, (byte)0);
-        locald1.aBH = new com.bumptech.glide.b.c();
+        locald1.aCy = null;
+        Arrays.fill(locald1.aCx, (byte)0);
+        locald1.aCz = new com.bumptech.glide.b.c();
         locald1.blockSize = 0;
-        locald1.aBG = paramByteBuffer.asReadOnlyBuffer();
-        locald1.aBG.position(0);
-        locald1.aBG.order(ByteOrder.LITTLE_ENDIAN);
+        locald1.aCy = paramByteBuffer.asReadOnlyBuffer();
+        locald1.aCy.position(0);
+        locald1.aCy.order(ByteOrder.LITTLE_ENDIAN);
         AppMethodBeat.o(77468);
         return locald1;
       }
@@ -206,7 +206,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,16 +14,16 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 @i
 public class AAEntranceUI
   extends MMActivity
 {
-  private Button ibp;
-  private TextView ibq;
+  private Button iBs;
+  private TextView iBt;
   
   public int getLayoutId()
   {
@@ -41,8 +41,8 @@ public class AAEntranceUI
     if (paramInt1 == 1)
     {
       String str = paramIntent.getStringExtra("Select_Conv_User");
-      ad.i("MicroMsg.AAEntranceUI", "select chatroom：%s", new Object[] { str });
-      if (!bt.isNullOrNil(str))
+      ac.i("MicroMsg.AAEntranceUI", "select chatroom：%s", new Object[] { str });
+      if (!bs.isNullOrNil(str))
       {
         Intent localIntent = new Intent(getContext(), LaunchAAUI.class);
         localIntent.putExtra("enter_scene", 2);
@@ -72,9 +72,9 @@ public class AAEntranceUI
     setActionbarColor(getResources().getColor(2131101179));
     hideActionbarLine();
     setMMTitle("");
-    this.ibp = ((Button)findViewById(2131301332));
-    this.ibq = ((TextView)findViewById(2131298215));
-    this.ibp.setOnClickListener(new View.OnClickListener()
+    this.iBs = ((Button)findViewById(2131301332));
+    this.iBt = ((TextView)findViewById(2131298215));
+    this.iBs.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -83,24 +83,24 @@ public class AAEntranceUI
         AppMethodBeat.o(63471);
       }
     });
-    this.ibq.setClickable(true);
-    this.ibq.setOnTouchListener(new n(this));
+    this.iBt.setClickable(true);
+    this.iBt.setOnTouchListener(new n(this));
     paramBundle = new SpannableStringBuilder(getString(2131757336));
     paramBundle.setSpan(new a(new a.a()
     {
-      public final void aHn()
+      public final void aOb()
       {
         AppMethodBeat.i(63472);
         Object localObject = new Intent(AAEntranceUI.this.getContext(), AAQueryListUI.class);
         AAEntranceUI localAAEntranceUI = AAEntranceUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localAAEntranceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localAAEntranceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(localAAEntranceUI, "com/tencent/mm/plugin/aa/ui/AAEntranceUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(63472);
       }
     }), 0, paramBundle.length(), 18);
-    this.ibq.setText(paramBundle);
+    this.iBt.setText(paramBundle);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -122,7 +122,7 @@ public class AAEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAEntranceUI
  * JD-Core Version:    0.7.0.1
  */

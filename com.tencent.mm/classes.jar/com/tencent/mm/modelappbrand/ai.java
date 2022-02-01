@@ -8,11 +8,11 @@ public abstract class ai
     return "onSearchWAWidgetReloadData";
   }
   
-  public abstract void vl(String paramString);
+  public abstract void zr(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ai
  * JD-Core Version:    0.7.0.1
  */

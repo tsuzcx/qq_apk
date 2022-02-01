@@ -13,17 +13,17 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.plugin.account.bind.ui.BindQQUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.protocal.protobuf.amy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.aqc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
@@ -33,13 +33,13 @@ import com.tencent.mm.ui.widget.MMEditText.c;
 @Deprecated
 public class RegByMobileSetNickUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private String dpO;
-  private ProgressDialog fpP = null;
-  private EditText iwf;
-  private q iwg = null;
-  private boolean iwh;
+  private String dnz;
+  private ProgressDialog fts = null;
+  private EditText iWj;
+  private q iWk = null;
+  private boolean iWl;
   
   public int getLayoutId()
   {
@@ -50,8 +50,8 @@ public class RegByMobileSetNickUI
   {
     AppMethodBeat.i(128597);
     setMMTitle(2131762343);
-    this.iwf = ((EditText)findViewById(2131303954));
-    this.iwf.addTextChangedListener(new MMEditText.c(this.iwf, null, 16));
+    this.iWj = ((EditText)findViewById(2131303954));
+    this.iWj.addTextChangedListener(new MMEditText.c(this.iWj, null, 16));
     addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(final MenuItem paramAnonymousMenuItem)
@@ -60,7 +60,7 @@ public class RegByMobileSetNickUI
         paramAnonymousMenuItem = RegByMobileSetNickUI.a(RegByMobileSetNickUI.this).getText().toString().trim();
         if ((paramAnonymousMenuItem == null) || (paramAnonymousMenuItem.length() <= 0))
         {
-          h.j(RegByMobileSetNickUI.this, 2131764648, 2131762346);
+          h.l(RegByMobileSetNickUI.this, 2131764648, 2131762346);
           AppMethodBeat.o(128593);
           return true;
         }
@@ -68,7 +68,7 @@ public class RegByMobileSetNickUI
         Object localObject1 = RegByMobileSetNickUI.this.getIntent().getExtras().getString("regbymobile_pwd");
         Object localObject2 = RegByMobileSetNickUI.this.getIntent().getExtras().getString("regbymobile_ticket");
         paramAnonymousMenuItem = new com.tencent.mm.modelsimple.u("", (String)localObject1, paramAnonymousMenuItem, 0, "", RegByMobileSetNickUI.b(RegByMobileSetNickUI.this), (String)localObject2, 4);
-        com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem, 0);
+        com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem, 0);
         localObject1 = RegByMobileSetNickUI.this;
         localObject2 = RegByMobileSetNickUI.this;
         RegByMobileSetNickUI.this.getString(2131755906);
@@ -77,7 +77,7 @@ public class RegByMobileSetNickUI
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(128592);
-            com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem);
+            com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem);
             AppMethodBeat.o(128592);
           }
         }));
@@ -103,26 +103,26 @@ public class RegByMobileSetNickUI
   {
     AppMethodBeat.i(128595);
     super.onCreate(paramBundle);
-    this.iwh = getIntent().getBooleanExtra("is_sync_addr", false);
-    this.dpO = getIntent().getExtras().getString("bindmcontact_mobile");
+    this.iWl = getIntent().getBooleanExtra("is_sync_addr", false);
+    this.dnz = getIntent().getExtras().getString("bindmcontact_mobile");
     initView();
-    com.tencent.mm.kernel.g.aeS().a(126, this);
+    com.tencent.mm.kernel.g.agi().a(126, this);
     AppMethodBeat.o(128595);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(128596);
-    if (this.iwg != null)
+    if (this.iWk != null)
     {
-      q localq = this.iwg;
-      t localt = localq.iva;
+      q localq = this.iWk;
+      t localt = localq.iVf;
       localt.cancel();
-      localt.cOx.stopTimer();
+      localt.cLS.stopTimer();
       localt.reset();
       localq.text = null;
     }
-    com.tencent.mm.kernel.g.aeS().b(126, this);
+    com.tencent.mm.kernel.g.agi().b(126, this);
     super.onDestroy();
     AppMethodBeat.o(128596);
   }
@@ -144,46 +144,46 @@ public class RegByMobileSetNickUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(128599);
-    ad.i("MicroMsg.RegByMobileSetNickUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fpP != null)
+    ac.i("MicroMsg.RegByMobileSetNickUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
     }
-    if (!bt.iM(this))
+    if (!bs.iX(this))
     {
       AppMethodBeat.o(128599);
       return;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramInt1 = com.tencent.mm.model.u.aqK();
-      ad.d("MicroMsg.RegByMobileSetNickUI", "Reg By mobile status = " + paramInt1 + " isSync = " + this.iwh);
-      if (this.iwh)
+      paramInt1 = com.tencent.mm.model.u.axA();
+      ac.d("MicroMsg.RegByMobileSetNickUI", "Reg By mobile status = " + paramInt1 + " isSync = " + this.iWl);
+      if (this.iWl)
       {
         paramInt1 &= 0xFFFDFFFF;
-        com.tencent.mm.plugin.account.friend.a.l.eT(true);
+        com.tencent.mm.plugin.account.friend.a.l.fn(true);
         getApplicationContext();
-        com.tencent.mm.platformtools.a.aGl();
-        ad.d("MicroMsg.RegByMobileSetNickUI", "Reg By mobile update = ".concat(String.valueOf(paramInt1)));
-        com.tencent.mm.kernel.g.afB().afk().set(7, Integer.valueOf(paramInt1));
-        if (this.iwh) {
+        com.tencent.mm.platformtools.a.aMY();
+        ac.d("MicroMsg.RegByMobileSetNickUI", "Reg By mobile update = ".concat(String.valueOf(paramInt1)));
+        com.tencent.mm.kernel.g.agR().agA().set(7, Integer.valueOf(paramInt1));
+        if (this.iWl) {
           break label329;
         }
       }
       label329:
       for (paramInt1 = 1;; paramInt1 = 2)
       {
-        paramString = new amy();
-        paramString.DnY = 17;
-        paramString.uMR = paramInt1;
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new j.a(23, paramString));
-        com.tencent.mm.plugin.account.a.a.hYu.Ll();
-        ay.gNa.aD("login_user_name", this.dpO);
-        paramString = com.tencent.mm.plugin.account.a.a.hYt.bA(this);
+        paramString = new aqc();
+        paramString.EIY = 17;
+        paramString.vVH = paramInt1;
+        ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new j.a(23, paramString));
+        com.tencent.mm.plugin.account.a.a.iyy.Lj();
+        ay.hnA.aL("login_user_name", this.dnz);
+        paramString = com.tencent.mm.plugin.account.a.a.iyx.bD(this);
         paramString.putExtra("LauncherUI.enter_from_reg", true);
         paramString.addFlags(67108864);
-        if (!((com.tencent.mm.modelsimple.u)paramn).hsx) {
+        if (!((com.tencent.mm.modelsimple.u)paramn).hSZ) {
           break label334;
         }
         MMWizardActivity.b(this, new Intent(this, BindQQUI.class).putExtra("bindqq_regbymobile", 1), paramString);
@@ -199,7 +199,7 @@ public class RegByMobileSetNickUI
     }
     if (paramn.getType() == 126)
     {
-      paramn = com.tencent.mm.h.a.oG(paramString);
+      paramn = com.tencent.mm.h.a.rM(paramString);
       if (paramn != null)
       {
         paramn.a(this, null, null);
@@ -208,7 +208,7 @@ public class RegByMobileSetNickUI
       }
     }
     int i;
-    if (com.tencent.mm.plugin.account.a.a.hYu.a(getContext(), paramInt1, paramInt2, paramString)) {
+    if (com.tencent.mm.plugin.account.a.a.iyy.a(getContext(), paramInt1, paramInt2, paramString)) {
       i = 1;
     }
     while (i != 0)
@@ -224,12 +224,12 @@ public class RegByMobileSetNickUI
         break;
         if ((paramInt2 == -7) || (paramInt2 == -10))
         {
-          h.j(this, 2131762274, 2131762275);
+          h.l(this, 2131762274, 2131762275);
           i = 1;
           break;
         }
       } while (paramInt2 != -75);
-      h.j(this, 2131755266, 2131762275);
+      h.l(this, 2131755266, 2131762275);
       i = 1;
     }
     Toast.makeText(this, getString(2131759555, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
@@ -244,7 +244,7 @@ public class RegByMobileSetNickUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileSetNickUI
  * JD-Core Version:    0.7.0.1
  */

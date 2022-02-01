@@ -21,13 +21,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nk;
+import com.tencent.mm.g.a.nt;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.wallet_core.model.ECardInfo;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.mm.wallet_core.ui.e;
 import java.lang.ref.WeakReference;
@@ -42,7 +42,7 @@ public final class o
     Object localObject1 = LayoutInflater.from(paramContext).inflate(2131495967, null);
     ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131298370);
     int i = BackwardSupportUtil.b.g(paramContext, 50.0F);
-    bt.n(localImageView, i, i, i, i);
+    bs.n(localImageView, i, i, i, i);
     Object localObject3 = (TextView)((View)localObject1).findViewById(2131302000);
     TextView localTextView2 = (TextView)((View)localObject1).findViewById(2131301996);
     Button localButton = (Button)((View)localObject1).findViewById(2131306217);
@@ -50,15 +50,15 @@ public final class o
     CheckBox localCheckBox = (CheckBox)((View)localObject1).findViewById(2131298255);
     TextView localTextView1 = (TextView)((View)localObject1).findViewById(2131298261);
     ((TextView)localObject3).setText(paramECardInfo.title);
-    if (!bt.isNullOrNil(paramECardInfo.subtitle))
+    if (!bs.isNullOrNil(paramECardInfo.subtitle))
     {
       localTextView2.setText(paramECardInfo.subtitle);
       localTextView2.setVisibility(0);
-      i = paramECardInfo.Ads.length();
-      int j = (paramECardInfo.Ads + paramECardInfo.Adt).length();
-      localObject3 = new SpannableString(paramECardInfo.Ads + paramECardInfo.Adt);
+      i = paramECardInfo.BvM.length();
+      int j = (paramECardInfo.BvM + paramECardInfo.BvN).length();
+      localObject3 = new SpannableString(paramECardInfo.BvM + paramECardInfo.BvN);
       ((SpannableString)localObject3).setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(2131101130)), i, j, 33);
-      if (bt.ai((CharSequence)localObject3)) {
+      if (bs.aj((CharSequence)localObject3)) {
         break label526;
       }
       ((TextView)localObject2).setText((CharSequence)localObject3);
@@ -68,19 +68,19 @@ public final class o
         {
           AppMethodBeat.i(70960);
           paramAnonymousView = new Intent();
-          String str = this.Anz.Adr;
-          ad.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
+          String str = this.BFT.BvL;
+          ac.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
           paramAnonymousView.putExtra("rawUrl", str);
-          paramAnonymousView.putExtra("geta8key_username", u.aqG());
+          paramAnonymousView.putExtra("geta8key_username", u.axw());
           paramAnonymousView.putExtra("pay_channel", 1);
-          e.X(paramContext, paramAnonymousView);
+          e.al(paramContext, paramAnonymousView);
           if (paramInt == 0)
           {
-            com.tencent.mm.plugin.report.service.h.vKh.f(16500, new Object[] { Integer.valueOf(4) });
+            com.tencent.mm.plugin.report.service.h.wUl.f(16500, new Object[] { Integer.valueOf(4) });
             AppMethodBeat.o(70960);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.vKh.f(16500, new Object[] { Integer.valueOf(6) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(16500, new Object[] { Integer.valueOf(6) });
           AppMethodBeat.o(70960);
         }
       });
@@ -93,9 +93,9 @@ public final class o
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(70961);
-          ad.i("MicroMsg.WalletIdCardTip", "SnsLuckyMoneyNewYearTipsUI onCancel");
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          ac.i("MicroMsg.WalletIdCardTip", "SnsLuckyMoneyNewYearTipsUI onCancel");
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           AppMethodBeat.o(70961);
         }
@@ -105,8 +105,8 @@ public final class o
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(70962);
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           AppMethodBeat.o(70962);
         }
@@ -116,24 +116,24 @@ public final class o
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(70963);
-          ad.i("MicroMsg.WalletIdCardTip", "go to: %s", new Object[] { Integer.valueOf(this.Anz.Ado) });
-          if (this.Anz.Ado == 1) {
-            e.p(paramContext, this.Anz.dCX, false);
+          ac.i("MicroMsg.WalletIdCardTip", "go to: %s", new Object[] { Integer.valueOf(this.BFT.BvI) });
+          if (this.BFT.BvI == 1) {
+            e.o(paramContext, this.BFT.dAJ, false);
           }
           for (;;)
           {
-            if ((this.wCM != null) && (this.wCM.isShowing())) {
-              this.wCM.dismiss();
+            if ((this.xPh != null) && (this.xPh.isShowing())) {
+              this.xPh.dismiss();
             }
             AppMethodBeat.o(70963);
             return;
-            paramAnonymousView = new nk();
-            paramAnonymousView.dsx.aLG = new WeakReference(paramContext);
-            com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
+            paramAnonymousView = new nt();
+            paramAnonymousView.dqh.aMw = new WeakReference(paramContext);
+            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
           }
         }
       });
-      if (paramECardInfo.Adj != 1) {
+      if (paramECardInfo.BvD != 1) {
         break label557;
       }
       localCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
@@ -143,26 +143,26 @@ public final class o
           AppMethodBeat.i(70964);
           if (!paramAnonymousBoolean)
           {
-            this.AnB.setEnabled(false);
-            this.AnB.setClickable(false);
+            this.BFV.setEnabled(false);
+            this.BFV.setClickable(false);
             AppMethodBeat.o(70964);
             return;
           }
-          this.AnB.setEnabled(true);
-          this.AnB.setClickable(true);
+          this.BFV.setEnabled(true);
+          this.BFV.setClickable(true);
           AppMethodBeat.o(70964);
         }
       });
-      if (paramECardInfo.Adk != 1) {
+      if (paramECardInfo.BvE != 1) {
         break label536;
       }
       localCheckBox.setChecked(true);
     }
     for (;;)
     {
-      paramInt = paramECardInfo.Adl.length();
-      i = (paramECardInfo.Adl + paramECardInfo.Adm).length();
-      localObject1 = new SpannableString(paramECardInfo.Adl + paramECardInfo.Adm);
+      paramInt = paramECardInfo.BvF.length();
+      i = (paramECardInfo.BvF + paramECardInfo.BvG).length();
+      localObject1 = new SpannableString(paramECardInfo.BvF + paramECardInfo.BvG);
       ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(2131101130)), paramInt, i, 33);
       localTextView1.setText((CharSequence)localObject1);
       localTextView1.setOnClickListener(new View.OnClickListener()
@@ -171,12 +171,12 @@ public final class o
         {
           AppMethodBeat.i(70956);
           paramAnonymousView = new Intent();
-          String str = this.Anz.Adn;
-          ad.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
+          String str = this.BFT.BvH;
+          ac.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
           paramAnonymousView.putExtra("rawUrl", str);
-          paramAnonymousView.putExtra("geta8key_username", u.aqG());
+          paramAnonymousView.putExtra("geta8key_username", u.axw());
           paramAnonymousView.putExtra("pay_channel", 1);
-          e.X(paramContext, paramAnonymousView);
+          e.al(paramContext, paramAnonymousView);
           AppMethodBeat.o(70956);
         }
       });
@@ -205,14 +205,14 @@ public final class o
     View localView = LayoutInflater.from(paramContext).inflate(2131495965, null);
     ImageView localImageView = (ImageView)localView.findViewById(2131298370);
     int i = BackwardSupportUtil.b.g(paramContext, 15.0F);
-    bt.n(localImageView, i, i, i, i);
+    bs.n(localImageView, i, i, i, i);
     MMNeat7extView localMMNeat7extView = (MMNeat7extView)localView.findViewById(2131302000);
     TextView localTextView2 = (TextView)localView.findViewById(2131301998);
     LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131301999);
     Button localButton = (Button)localView.findViewById(2131306217);
     TextView localTextView1 = (TextView)localView.findViewById(2131301991);
     localMMNeat7extView.getPaint().setFakeBoldText(true);
-    localMMNeat7extView.aq(paramString1);
+    localMMNeat7extView.ar(paramString1);
     localTextView2.setText(paramString2);
     localLinearLayout.removeAllViews();
     paramString1 = paramList.iterator();
@@ -240,12 +240,12 @@ public final class o
         {
           AppMethodBeat.i(70955);
           paramAnonymousView = new Intent();
-          String str = this.Any;
-          ad.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
+          String str = this.BFS;
+          ac.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
           paramAnonymousView.putExtra("rawUrl", str);
-          paramAnonymousView.putExtra("geta8key_username", u.aqG());
+          paramAnonymousView.putExtra("geta8key_username", u.axw());
           paramAnonymousView.putExtra("pay_channel", 1);
-          e.X(paramContext, paramAnonymousView);
+          e.al(paramContext, paramAnonymousView);
           AppMethodBeat.o(70955);
         }
       });
@@ -257,9 +257,9 @@ public final class o
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(70957);
-          ad.i("MicroMsg.WalletIdCardTip", "SnsLuckyMoneyNewYearTipsUI onCancel");
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          ac.i("MicroMsg.WalletIdCardTip", "SnsLuckyMoneyNewYearTipsUI onCancel");
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           AppMethodBeat.o(70957);
         }
@@ -269,8 +269,8 @@ public final class o
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(70958);
-          if ((this.wCM != null) && (this.wCM.isShowing())) {
-            this.wCM.dismiss();
+          if ((this.xPh != null) && (this.xPh.isShowing())) {
+            this.xPh.dismiss();
           }
           AppMethodBeat.o(70958);
         }
@@ -281,12 +281,12 @@ public final class o
         {
           AppMethodBeat.i(70959);
           paramAnonymousView = new Intent();
-          String str = this.AnA;
-          ad.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
+          String str = this.BFU;
+          ac.i("MicroMsg.WalletIdCardTip", "go to url %s", new Object[] { str });
           paramAnonymousView.putExtra("rawUrl", str);
-          paramAnonymousView.putExtra("geta8key_username", u.aqG());
+          paramAnonymousView.putExtra("geta8key_username", u.axw());
           paramAnonymousView.putExtra("pay_channel", 1);
-          e.X(paramContext, paramAnonymousView);
+          e.al(paramContext, paramAnonymousView);
           if ((paramString1 != null) && (paramString1.isShowing())) {
             paramString1.dismiss();
           }
@@ -295,7 +295,7 @@ public final class o
       });
       paramString1.show();
       paramContext = paramString1.getWindow();
-      paramInt = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 16);
+      paramInt = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 16);
       paramContext.getDecorView().setPadding(paramInt, 0, paramInt, 0);
       paramString2 = paramContext.getAttributes();
       paramString2.width = -1;

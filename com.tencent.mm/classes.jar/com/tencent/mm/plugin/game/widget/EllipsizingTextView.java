@@ -16,23 +16,23 @@ import java.util.List;
 public class EllipsizingTextView
   extends TextView
 {
-  private float hSE;
+  private float isJ;
   private int maxLines;
-  private final List<Object> spa;
-  private boolean spb;
-  private boolean spc;
-  private boolean spd;
-  private String spe;
-  private float spf;
+  private final List<Object> twT;
+  private boolean twU;
+  private boolean twV;
+  private boolean twW;
+  private String twX;
+  private float twY;
   
   public EllipsizingTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42611);
-    this.spa = new ArrayList();
+    this.twT = new ArrayList();
     this.maxLines = -1;
-    this.hSE = 1.0F;
-    this.spf = 0.0F;
+    this.isJ = 1.0F;
+    this.twY = 0.0F;
     AppMethodBeat.o(42611);
   }
   
@@ -40,17 +40,17 @@ public class EllipsizingTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(42612);
-    this.spa = new ArrayList();
+    this.twT = new ArrayList();
     this.maxLines = -1;
-    this.hSE = 1.0F;
-    this.spf = 0.0F;
+    this.isJ = 1.0F;
+    this.twY = 0.0F;
     AppMethodBeat.o(42612);
   }
   
-  private Layout add(String paramString)
+  private Layout ahV(String paramString)
   {
     AppMethodBeat.i(42617);
-    paramString = new StaticLayout(paramString, getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, this.hSE, this.spf, false);
+    paramString = new StaticLayout(paramString, getPaint(), getWidth() - getPaddingLeft() - getPaddingRight(), Layout.Alignment.ALIGN_NORMAL, this.isJ, this.twY, false);
     AppMethodBeat.o(42617);
     return paramString;
   }
@@ -64,25 +64,25 @@ public class EllipsizingTextView
   {
     AppMethodBeat.i(42616);
     Object localObject1;
-    if (this.spc)
+    if (this.twV)
     {
       super.setEllipsize(null);
       int j = getMaxLines();
-      localObject1 = this.spe;
+      localObject1 = this.twX;
       if (j == -1) {
         break label319;
       }
-      Object localObject2 = add((String)localObject1);
+      Object localObject2 = ahV((String)localObject1);
       if (((Layout)localObject2).getLineCount() <= j) {
         break label319;
       }
-      localObject2 = this.spe.substring(0, ((Layout)localObject2).getLineEnd(j - 1)).trim();
+      localObject2 = this.twX.substring(0, ((Layout)localObject2).getLineEnd(j - 1)).trim();
       if (((String)localObject2).getBytes().length != ((String)localObject2).length()) {}
       for (int i = 1; i == 0; i = 0) {
         for (;;)
         {
           localObject1 = localObject2;
-          if (add((String)localObject2 + "...").getLineCount() <= j) {
+          if (ahV((String)localObject2 + "...").getLineCount() <= j) {
             break;
           }
           i = ((String)localObject2).lastIndexOf(' ');
@@ -103,24 +103,24 @@ public class EllipsizingTextView
     for (boolean bool = true;; bool = false)
     {
       if (!((String)localObject1).equals(getText())) {
-        this.spd = true;
+        this.twW = true;
       }
       try
       {
         setText((CharSequence)localObject1);
-        this.spd = false;
-        this.spc = false;
-        if (bool != this.spb)
+        this.twW = false;
+        this.twV = false;
+        if (bool != this.twU)
         {
-          this.spb = bool;
-          localObject1 = this.spa.iterator();
+          this.twU = bool;
+          localObject1 = this.twT.iterator();
           if (!((Iterator)localObject1).hasNext()) {}
         }
         return;
       }
       finally
       {
-        this.spd = false;
+        this.twW = false;
         AppMethodBeat.o(42616);
       }
     }
@@ -130,10 +130,10 @@ public class EllipsizingTextView
   {
     AppMethodBeat.i(42615);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if (!this.spd)
+    if (!this.twW)
     {
-      this.spe = paramCharSequence.toString();
-      this.spc = true;
+      this.twX = paramCharSequence.toString();
+      this.twV = true;
     }
     AppMethodBeat.o(42615);
   }
@@ -143,8 +143,8 @@ public class EllipsizingTextView
   public void setLineSpacing(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(42614);
-    this.spf = paramFloat1;
-    this.hSE = paramFloat2;
+    this.twY = paramFloat1;
+    this.isJ = paramFloat2;
     super.setLineSpacing(paramFloat1, paramFloat2);
     AppMethodBeat.o(42614);
   }
@@ -154,13 +154,13 @@ public class EllipsizingTextView
     AppMethodBeat.i(42613);
     super.setMaxLines(paramInt);
     this.maxLines = paramInt;
-    this.spc = true;
+    this.twV = true;
     AppMethodBeat.o(42613);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.EllipsizingTextView
  * JD-Core Version:    0.7.0.1
  */

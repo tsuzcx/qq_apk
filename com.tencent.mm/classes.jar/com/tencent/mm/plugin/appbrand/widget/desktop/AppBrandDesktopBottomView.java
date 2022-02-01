@@ -11,29 +11,29 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "drawColor", "leftArcRectF", "Landroid/graphics/RectF;", "mContext", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "radii", "", "radius", "", "rightArcRectF", "computeRadius", "", "dp", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setDrawColor", "color", "setTopRoundRadius", "topRadius", "Companion", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "drawColor", "leftArcRectF", "Landroid/graphics/RectF;", "mContext", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "radii", "", "radius", "", "rightArcRectF", "computeRadius", "", "dp", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setDrawColor", "color", "setTopRoundRadius", "topRadius", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandDesktopBottomView
   extends View
 {
-  public static final a lSX;
-  private int lST;
-  private float[] lSU;
-  private RectF lSV;
-  private RectF lSW;
+  public static final a muZ;
   private Context mContext;
   private Paint mPaint;
+  private int muV;
+  private float[] muW;
+  private RectF muX;
+  private RectF muY;
   private float radius;
-  private Path uW;
+  private Path vU;
   
   static
   {
     AppMethodBeat.i(51414);
-    lSX = new a((byte)0);
+    muZ = new a((byte)0);
     AppMethodBeat.o(51414);
   }
   
@@ -42,10 +42,10 @@ public final class AppBrandDesktopBottomView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51412);
     this.mPaint = new Paint();
-    this.uW = new Path();
-    this.lSU = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.lSV = new RectF();
-    this.lSW = new RectF();
+    this.vU = new Path();
+    this.muW = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+    this.muX = new RectF();
+    this.muY = new RectF();
     init(paramContext);
     AppMethodBeat.o(51412);
   }
@@ -55,10 +55,10 @@ public final class AppBrandDesktopBottomView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51413);
     this.mPaint = new Paint();
-    this.uW = new Path();
-    this.lSU = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    this.lSV = new RectF();
-    this.lSW = new RectF();
+    this.vU = new Path();
+    this.muW = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+    this.muX = new RectF();
+    this.muY = new RectF();
     init(paramContext);
     AppMethodBeat.o(51413);
   }
@@ -67,20 +67,20 @@ public final class AppBrandDesktopBottomView
   {
     AppMethodBeat.i(51407);
     this.mContext = paramContext;
-    this.lST = getResources().getColor(2131099930);
-    uC(8);
+    this.muV = getResources().getColor(2131099930);
+    vt(8);
     AppMethodBeat.o(51407);
   }
   
-  private final void uC(int paramInt)
+  private final void vt(int paramInt)
   {
     AppMethodBeat.i(51408);
     this.radius = a.fromDPToPix(getContext(), paramInt);
-    this.lSU[0] = this.radius;
-    this.lSU[1] = this.radius;
-    this.lSU[2] = this.radius;
-    this.lSU[3] = this.radius;
-    ad.i("Mp.AppBrandDesktopBottomView", "alvinluo computeRadius radius: %f", new Object[] { Float.valueOf(this.radius) });
+    this.muW[0] = this.radius;
+    this.muW[1] = this.radius;
+    this.muW[2] = this.radius;
+    this.muW[3] = this.radius;
+    ac.i("Mp.AppBrandDesktopBottomView", "alvinluo computeRadius radius: %f", new Object[] { Float.valueOf(this.radius) });
     AppMethodBeat.o(51408);
   }
   
@@ -88,25 +88,25 @@ public final class AppBrandDesktopBottomView
   {
     AppMethodBeat.i(51411);
     super.onDraw(paramCanvas);
-    this.mPaint.setColor(this.lST);
+    this.mPaint.setColor(this.muV);
     this.mPaint.setStyle(Paint.Style.FILL);
-    if (d.lh(20))
+    if (d.lb(20))
     {
-      this.uW.addRoundRect(getLeft(), getTop(), getRight(), getBottom(), this.lSU, Path.Direction.CCW);
+      this.vU.addRoundRect(getLeft(), getTop(), getRight(), getBottom(), this.muW, Path.Direction.CCW);
       if (paramCanvas != null) {
-        paramCanvas.drawPath(this.uW, this.mPaint);
+        paramCanvas.drawPath(this.vU, this.mPaint);
       }
-      this.uW.reset();
+      this.vU.reset();
       AppMethodBeat.o(51411);
       return;
     }
-    this.lSV.set(getLeft(), getTop(), getLeft() + this.radius * 2.0F, getTop() + this.radius * 2.0F);
-    this.lSW.set(getRight() - this.radius * 2.0F, getTop(), getRight(), getTop() + this.radius * 2.0F);
+    this.muX.set(getLeft(), getTop(), getLeft() + this.radius * 2.0F, getTop() + this.radius * 2.0F);
+    this.muY.set(getRight() - this.radius * 2.0F, getTop(), getRight(), getTop() + this.radius * 2.0F);
     if (paramCanvas != null) {
-      paramCanvas.drawArc(this.lSV, 180.0F, 90.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.muX, 180.0F, 90.0F, true, this.mPaint);
     }
     if (paramCanvas != null) {
-      paramCanvas.drawArc(this.lSW, 270.0F, 90.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.muY, 270.0F, 90.0F, true, this.mPaint);
     }
     float f1;
     if (paramCanvas != null)
@@ -128,7 +128,7 @@ public final class AppBrandDesktopBottomView
   public final void setDrawColor(int paramInt)
   {
     AppMethodBeat.i(51410);
-    this.lST = paramInt;
+    this.muV = paramInt;
     invalidate();
     AppMethodBeat.o(51410);
   }
@@ -136,16 +136,16 @@ public final class AppBrandDesktopBottomView
   public final void setTopRoundRadius(int paramInt)
   {
     AppMethodBeat.i(51409);
-    uC(paramInt);
+    vt(paramInt);
     AppMethodBeat.o(51409);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView$Companion;", "", "()V", "DEFAULT_RADIUS_IN_DP", "", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopBottomView$Companion;", "", "()V", "DEFAULT_RADIUS_IN_DP", "", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopBottomView
  * JD-Core Version:    0.7.0.1
  */

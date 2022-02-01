@@ -10,28 +10,28 @@ import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public final class an
 {
-  public String dgg;
+  public String ddB;
   public boolean isAd = false;
   public int position;
-  public ImageView xbT;
-  public TextView xbU;
-  public TimeLineObject xsl;
-  public View xsm;
-  public VideoSightView xsn;
-  public SnsAdTimelineVideoView xso;
-  public View xsp;
-  public MMPinProgressBtn xsq;
-  public TextView xsr;
-  public int xss = 2;
-  public boolean xst = false;
-  public int xsu = 0;
-  public boolean xsv = false;
+  public TimeLineObject yFb;
+  public View yFc;
+  public VideoSightView yFd;
+  public SnsAdTimelineVideoView yFe;
+  public View yFf;
+  public MMPinProgressBtn yFg;
+  public TextView yFh;
+  public int yFi = 2;
+  public boolean yFj = false;
+  public int yFk = 0;
+  public boolean yFl = false;
+  public ImageView yoI;
+  public TextView yoJ;
   
   public final void a(TimeLineObject paramTimeLineObject, int paramInt, String paramString, boolean paramBoolean)
   {
-    this.xsl = paramTimeLineObject;
+    this.yFb = paramTimeLineObject;
     this.position = paramInt;
-    this.dgg = paramString;
+    this.ddB = paramString;
     this.isAd = paramBoolean;
   }
 }

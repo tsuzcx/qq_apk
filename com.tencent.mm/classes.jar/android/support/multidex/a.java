@@ -22,13 +22,13 @@ import java.util.zip.ZipFile;
 
 public final class a
 {
-  private static final String wF = "code_cache" + File.separator + "secondary-dexes";
-  private static final Set<String> wG = new HashSet();
-  private static final boolean wH = o(System.getProperty("java.vm.version"));
+  private static final String xD = "code_cache" + File.separator + "secondary-dexes";
+  private static final Set<String> xE = new HashSet();
+  private static final boolean xF = p(System.getProperty("java.vm.version"));
   
   public static void J(Context paramContext)
   {
-    if (wH) {}
+    if (xF) {}
     ApplicationInfo localApplicationInfo;
     Object localObject;
     for (;;)
@@ -39,17 +39,17 @@ public final class a
       }
       try
       {
-        localApplicationInfo = getApplicationInfo(paramContext);
+        localApplicationInfo = K(paramContext);
         if (localApplicationInfo != null)
         {
-          synchronized (wG)
+          synchronized (xE)
           {
             localObject = localApplicationInfo.sourceDir;
-            if (wG.contains(localObject)) {
+            if (xE.contains(localObject)) {
               return;
             }
           }
-          wG.add(localObject);
+          xE.add(localObject);
         }
       }
       catch (Exception paramContext)
@@ -73,18 +73,18 @@ public final class a
     }
     try
     {
-      K(paramContext);
+      L(paramContext);
       label190:
-      File localFile = new File(localApplicationInfo.dataDir, wF);
+      File localFile = new File(localApplicationInfo.dataDir, xD);
       List localList = b.a(paramContext, localApplicationInfo, localFile, false);
-      if (g(localList)) {
+      if (f(localList)) {
         a((ClassLoader)localObject, localFile, localList);
       }
       for (;;)
       {
         return;
         paramContext = b.a(paramContext, localApplicationInfo, localFile, true);
-        if (!g(paramContext)) {
+        if (!f(paramContext)) {
           break;
         }
         a((ClassLoader)localObject, localFile, paramContext);
@@ -97,7 +97,22 @@ public final class a
     }
   }
   
-  private static void K(Context paramContext)
+  private static ApplicationInfo K(Context paramContext)
+  {
+    try
+    {
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      paramContext = paramContext.getPackageName();
+      if ((localPackageManager == null) || (paramContext == null)) {
+        return null;
+      }
+      return localPackageManager.getApplicationInfo(paramContext, 128);
+    }
+    catch (RuntimeException paramContext) {}
+    return null;
+  }
+  
+  private static void L(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir(), "secondary-dexes");
     File[] arrayOfFile;
@@ -156,6 +171,17 @@ public final class a
     c.install(paramClassLoader, paramList);
   }
   
+  private static boolean f(List<File> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (!b.l((File)paramList.next())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
   private static Field findField(Object paramObject, String paramString)
   {
     Class localClass = paramObject.getClass();
@@ -196,33 +222,7 @@ public final class a
     throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
   }
   
-  private static boolean g(List<File> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      if (!b.l((File)paramList.next())) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private static ApplicationInfo getApplicationInfo(Context paramContext)
-  {
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      paramContext = paramContext.getPackageName();
-      if ((localPackageManager == null) || (paramContext == null)) {
-        return null;
-      }
-      return localPackageManager.getApplicationInfo(paramContext, 128);
-    }
-    catch (RuntimeException paramContext) {}
-    return null;
-  }
-  
-  private static boolean o(String paramString)
+  private static boolean p(String paramString)
   {
     bool2 = false;
     bool1 = bool2;
@@ -342,7 +342,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.multidex.a
  * JD-Core Version:    0.7.0.1
  */

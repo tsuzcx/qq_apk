@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.sdk.a.c.a;
-import com.tencent.xweb.af;
+import com.tencent.xweb.ah;
 import d.g.b.k;
 import d.l;
 import d.n.n;
@@ -21,18 +21,18 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory;", "Lcom/tencent/mm/sdk/crash/ICrashReporter$ICrashReportExtraMessageGetter;", "()V", "mRunningAppInfos", "Ljava/util/LinkedHashMap;", "Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "", "getCrashReportExtraMessage", "", "onRuntimeDestroyed", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onRuntimeResumed", "ReportWeAppInfo", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory;", "Lcom/tencent/mm/sdk/crash/ICrashReporter$ICrashReportExtraMessageGetter;", "()V", "mRunningAppInfos", "Ljava/util/LinkedHashMap;", "Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "", "getCrashReportExtraMessage", "", "onRuntimeDestroyed", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onRuntimeResumed", "ReportWeAppInfo", "plugin-appbrand-integration_release"})
 public final class a
   implements c.a
 {
-  private static final LinkedHashMap<a, Boolean> jgb;
-  public static final a jgc;
+  private static final LinkedHashMap<a, Boolean> jGq;
+  public static final a jGr;
   
   static
   {
     AppMethodBeat.i(50345);
-    jgc = new a();
-    jgb = new LinkedHashMap(5, 0.7F, true);
+    jGr = new a();
+    jGq = new LinkedHashMap(5, 0.7F, true);
     AppMethodBeat.o(50345);
   }
   
@@ -40,12 +40,12 @@ public final class a
   {
     AppMethodBeat.i(50342);
     k.h(paramAppBrandRuntime, "runtime");
-    synchronized (jgb)
+    synchronized (jGq)
     {
-      LinkedHashMap localLinkedHashMap2 = jgb;
-      a.a.a locala = a.jgd;
+      LinkedHashMap localLinkedHashMap2 = jGq;
+      a.a.a locala = a.jGs;
       localLinkedHashMap2.put(a.a.a.Z(paramAppBrandRuntime), Boolean.TRUE);
-      af.l(90001, new String[] { paramAppBrandRuntime.getAppId() });
+      ah.l(90001, new String[] { paramAppBrandRuntime.getAppId() });
       AppMethodBeat.o(50342);
       return;
     }
@@ -55,30 +55,30 @@ public final class a
   {
     AppMethodBeat.i(50343);
     k.h(paramAppBrandRuntime, "runtime");
-    synchronized (jgb)
+    synchronized (jGq)
     {
-      LinkedHashMap localLinkedHashMap2 = jgb;
-      a.a.a locala = a.jgd;
+      LinkedHashMap localLinkedHashMap2 = jGq;
+      a.a.a locala = a.jGs;
       localLinkedHashMap2.remove(a.a.a.Z(paramAppBrandRuntime));
       AppMethodBeat.o(50343);
       return;
     }
   }
   
-  public final String aTX()
+  public final String baV()
   {
     AppMethodBeat.i(50344);
     Object localObject5 = new LinkedList();
-    ??? = WxaCommLibRuntimeReader.aPT();
+    ??? = WxaCommLibRuntimeReader.aWL();
     int i;
     Object localObject2;
     if (??? != null)
     {
-      i = ((ICommLibReader)???).aPc();
+      i = ((ICommLibReader)???).aVU();
       ((LinkedList)localObject5).add(new o("weapp_lib_version_int", Integer.valueOf(i)));
       if (??? != null)
       {
-        localObject2 = ((ICommLibReader)???).aPa();
+        localObject2 = ((ICommLibReader)???).aVS();
         ??? = localObject2;
         if (localObject2 != null) {}
       }
@@ -92,12 +92,12 @@ public final class a
     for (;;)
     {
       Object localObject7;
-      synchronized (jgb)
+      synchronized (jGq)
       {
-        if (jgb.size() <= 0) {
+        if (jGq.size() <= 0) {
           break label334;
         }
-        localObject2 = jgb.keySet().iterator();
+        localObject2 = jGq.keySet().iterator();
         localObject6 = new StringBuilder();
         localObject7 = ((Iterator)localObject2).next();
         k.g(localObject7, "it.next()");
@@ -107,7 +107,7 @@ public final class a
         }
         ((LinkedList)localObject5).add(new o("weapp_id", ((a)localObject7).appId));
         ((LinkedList)localObject5).add(new o("weapp_name", ((a)localObject7).appName));
-        ((LinkedList)localObject5).add(new o("weapp_version", Integer.valueOf(((a)localObject7).aAS)));
+        ((LinkedList)localObject5).add(new o("weapp_version", Integer.valueOf(((a)localObject7).aBM)));
         localObject2 = ((StringBuilder)localObject6).toString();
         k.g(localObject2, "this");
         i = Math.max(n.b((CharSequence)localObject2, ','), 0);
@@ -130,7 +130,7 @@ public final class a
       ((LinkedList)localObject5).add(new o("weapp_other_ids", localObject4));
     }
     label334:
-    localObject4 = y.JfV;
+    localObject4 = y.KTp;
     ??? = new StringBuilder();
     localObject4 = ((LinkedList)localObject5).iterator();
     while (((Iterator)localObject4).hasNext())
@@ -145,12 +145,12 @@ public final class a
     return ???;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "", "appId", "", "appName", "appType", "", "appVersion", "(Ljava/lang/String;Ljava/lang/String;II)V", "getAppId", "()Ljava/lang/String;", "getAppName", "getAppType", "()I", "getAppVersion", "compareTo", "other", "equals", "", "", "hashCode", "Companion", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "", "appId", "", "appName", "appType", "", "appVersion", "(Ljava/lang/String;Ljava/lang/String;II)V", "getAppId", "()Ljava/lang/String;", "getAppName", "getAppType", "()I", "getAppVersion", "compareTo", "other", "equals", "", "", "hashCode", "Companion", "plugin-appbrand-integration_release"})
   static final class a
     implements Comparable<a>
   {
-    public static final a jgd;
-    final int aAS;
+    public static final a jGs;
+    final int aBM;
     final String appId;
     final String appName;
     private final int appType;
@@ -158,7 +158,7 @@ public final class a
     static
     {
       AppMethodBeat.i(50341);
-      jgd = new a((byte)0);
+      jGs = new a((byte)0);
       AppMethodBeat.o(50341);
     }
     
@@ -168,7 +168,7 @@ public final class a
       this.appId = paramString1;
       this.appName = paramString2;
       this.appType = paramInt1;
-      this.aAS = paramInt2;
+      this.aBM = paramInt2;
       AppMethodBeat.o(50340);
     }
     
@@ -185,8 +185,8 @@ public final class a
       if (i == 0)
       {
         j = i;
-        if (j.a.qD(this.appType)) {
-          j = this.aAS - parama.aAS;
+        if (j.a.rq(this.appType)) {
+          j = this.aBM - parama.aBM;
         }
       }
       AppMethodBeat.o(50336);
@@ -208,12 +208,12 @@ public final class a
     public final int hashCode()
     {
       AppMethodBeat.i(50338);
-      int i = ("[" + this.appId + "::" + this.appType + "::" + this.aAS + ']').hashCode();
+      int i = ("[" + this.appId + "::" + this.appType + "::" + this.aBM + ']').hashCode();
       AppMethodBeat.o(50338);
       return i;
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo$Companion;", "", "()V", "from", "Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "plugin-appbrand-integration_release"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo$Companion;", "", "()V", "from", "Lcom/tencent/mm/plugin/appbrand/crash_report/AppBrandCrashReportExtraMessageFactory$ReportWeAppInfo;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "plugin-appbrand-integration_release"})
     public static final class a
     {
       public static a.a Z(AppBrandRuntime paramAppBrandRuntime)
@@ -223,10 +223,10 @@ public final class a
         k.h(paramAppBrandRuntime, "runtime");
         String str = paramAppBrandRuntime.getAppId();
         k.g(str, "runtime.appId");
-        Object localObject1 = paramAppBrandRuntime.Eg();
+        Object localObject1 = paramAppBrandRuntime.DJ();
         if (localObject1 != null)
         {
-          localObject1 = ((AppBrandInitConfig)localObject1).dfM;
+          localObject1 = ((AppBrandInitConfig)localObject1).ddh;
           if (localObject1 != null) {}
         }
         else
@@ -235,23 +235,23 @@ public final class a
         }
         for (;;)
         {
-          AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.Eg();
+          AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.DJ();
           Object localObject2 = localAppBrandInitConfig;
           if (!(localAppBrandInitConfig instanceof AppBrandInitConfigLU)) {
             localObject2 = null;
           }
           localObject2 = (AppBrandInitConfigLU)localObject2;
           if (localObject2 != null) {}
-          for (int i = ((AppBrandInitConfigLU)localObject2).iOP;; i = -1)
+          for (int i = ((AppBrandInitConfigLU)localObject2).joY;; i = -1)
           {
-            localObject2 = paramAppBrandRuntime.Eg();
+            localObject2 = paramAppBrandRuntime.DJ();
             paramAppBrandRuntime = (AppBrandRuntime)localObject2;
             if (!(localObject2 instanceof AppBrandInitConfigLU)) {
               paramAppBrandRuntime = null;
             }
             paramAppBrandRuntime = (AppBrandInitConfigLU)paramAppBrandRuntime;
             if (paramAppBrandRuntime != null) {
-              j = paramAppBrandRuntime.aAS;
+              j = paramAppBrandRuntime.aBM;
             }
             paramAppBrandRuntime = new a.a(str, (String)localObject1, i, j);
             AppMethodBeat.o(50335);
@@ -264,7 +264,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.f.a
  * JD-Core Version:    0.7.0.1
  */

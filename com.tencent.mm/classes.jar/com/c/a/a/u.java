@@ -19,46 +19,46 @@ final class u
   extends d
   implements SensorEventListener
 {
-  private static final int bSB;
-  private static final int bSC;
-  private static u bSV;
-  private Sensor bSD;
-  private Sensor bSE;
-  private Sensor bSF;
-  private Sensor bSG;
-  private Sensor bSH;
-  private long bSI;
-  private boolean bSJ;
-  private float[][] bSK;
-  private float[][] bSL;
-  private float[][] bSM;
-  private float[][] bSN;
-  private float[][] bSO;
-  private float[][] bSP;
-  private float[][] bSQ;
-  private float[] bSR;
-  private float[][] bSS;
-  private float[][] bST;
-  private float[][] bSU;
-  boolean bSW;
-  private c bSX;
-  private boolean[] bSY;
-  private int[] bSZ;
-  private float[] bTa;
-  private float[] bTb;
-  private float[] bTc;
-  private float[][] bTd;
-  private final d bTe;
-  private final f bTf;
-  private final a bTg;
+  private static u bQD;
+  private static final int bQj;
+  private static final int bQk;
+  private float[][] bQA;
+  private float[][] bQB;
+  private float[][] bQC;
+  boolean bQE;
+  private c bQF;
+  private boolean[] bQG;
+  private int[] bQH;
+  private float[] bQI;
+  private float[] bQJ;
+  private float[] bQK;
+  private float[][] bQL;
+  private final d bQM;
+  private final f bQN;
+  private final a bQO;
+  private Sensor bQl;
+  private Sensor bQm;
+  private Sensor bQn;
+  private Sensor bQo;
+  private Sensor bQp;
+  private long bQq;
+  private boolean bQr;
+  private float[][] bQs;
+  private float[][] bQt;
+  private float[][] bQu;
+  private float[][] bQv;
+  private float[][] bQw;
+  private float[][] bQx;
+  private float[][] bQy;
+  private float[] bQz;
   private SensorManager mSensorManager;
   
   static
   {
     AppMethodBeat.i(87986);
     int i = Math.round(50000.0F);
-    bSB = i;
-    bSC = i;
+    bQj = i;
+    bQk = i;
     AppMethodBeat.o(87986);
   }
   
@@ -66,29 +66,29 @@ final class u
   {
     AppMethodBeat.i(87988);
     this.mSensorManager = null;
-    this.bSH = null;
-    this.bSI = 0L;
-    this.bSJ = true;
-    this.bSK = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
-    this.bSL = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
-    this.bSM = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
-    this.bSN = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bSO = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bSP = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bSQ = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bSR = new float[4];
-    this.bSS = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bST = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bSU = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-    this.bSY = new boolean[6];
-    this.bSZ = new int[6];
-    this.bTa = new float[6];
-    this.bTb = new float[6];
-    this.bTc = new float[] { (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F) };
-    this.bTd = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 20 }));
-    this.bTg = new a((byte)0);
-    this.bTe = new d((byte)0);
-    this.bTf = new f((byte)0);
+    this.bQp = null;
+    this.bQq = 0L;
+    this.bQr = true;
+    this.bQs = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
+    this.bQt = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
+    this.bQu = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
+    this.bQv = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQw = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQx = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQy = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQz = new float[4];
+    this.bQA = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQB = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQC = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+    this.bQG = new boolean[6];
+    this.bQH = new int[6];
+    this.bQI = new float[6];
+    this.bQJ = new float[6];
+    this.bQK = new float[] { (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F) };
+    this.bQL = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 20 }));
+    this.bQO = new a((byte)0);
+    this.bQM = new d((byte)0);
+    this.bQN = new f((byte)0);
     AppMethodBeat.o(87988);
   }
   
@@ -182,13 +182,13 @@ final class u
     return new float[] { paramArrayOfFloat1[0] * paramArrayOfFloat2[0] + paramArrayOfFloat1[1] * paramArrayOfFloat2[3] + paramArrayOfFloat1[2] * paramArrayOfFloat2[6], paramArrayOfFloat1[0] * paramArrayOfFloat2[1] + paramArrayOfFloat1[1] * paramArrayOfFloat2[4] + paramArrayOfFloat1[2] * paramArrayOfFloat2[7], paramArrayOfFloat1[0] * paramArrayOfFloat2[2] + paramArrayOfFloat1[1] * paramArrayOfFloat2[5] + paramArrayOfFloat1[2] * paramArrayOfFloat2[8], paramArrayOfFloat1[3] * paramArrayOfFloat2[0] + paramArrayOfFloat1[4] * paramArrayOfFloat2[3] + paramArrayOfFloat1[5] * paramArrayOfFloat2[6], paramArrayOfFloat1[3] * paramArrayOfFloat2[1] + paramArrayOfFloat1[4] * paramArrayOfFloat2[4] + paramArrayOfFloat1[5] * paramArrayOfFloat2[7], paramArrayOfFloat1[3] * paramArrayOfFloat2[2] + paramArrayOfFloat1[4] * paramArrayOfFloat2[5] + paramArrayOfFloat1[5] * paramArrayOfFloat2[8], paramArrayOfFloat1[6] * paramArrayOfFloat2[0] + paramArrayOfFloat1[7] * paramArrayOfFloat2[3] + paramArrayOfFloat1[8] * paramArrayOfFloat2[6], paramArrayOfFloat1[6] * paramArrayOfFloat2[1] + paramArrayOfFloat1[7] * paramArrayOfFloat2[4] + paramArrayOfFloat1[8] * paramArrayOfFloat2[7], paramArrayOfFloat1[6] * paramArrayOfFloat2[2] + paramArrayOfFloat1[7] * paramArrayOfFloat2[5] + paramArrayOfFloat1[8] * paramArrayOfFloat2[8] };
   }
   
-  static u zt()
+  static u zg()
   {
     AppMethodBeat.i(87987);
-    if (bSV == null) {
-      bSV = new u();
+    if (bQD == null) {
+      bQD = new u();
     }
-    u localu = bSV;
+    u localu = bQD;
     AppMethodBeat.o(87987);
     return localu;
   }
@@ -205,7 +205,7 @@ final class u
       }
       catch (Exception paramContext)
       {
-        this.bSW = false;
+        this.bQE = false;
       }
     }
     label419:
@@ -219,45 +219,45 @@ final class u
       if (i > 5)
       {
         this.mSensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-        this.bSD = this.mSensorManager.getDefaultSensor(10);
-        this.bSG = this.mSensorManager.getDefaultSensor(9);
-        if ((this.bSD == null) || (this.bSG == null)) {
+        this.bQl = this.mSensorManager.getDefaultSensor(10);
+        this.bQo = this.mSensorManager.getDefaultSensor(9);
+        if ((this.bQl == null) || (this.bQo == null)) {
           break label419;
         }
-        this.bSH = this.mSensorManager.getDefaultSensor(11);
-        if (this.bSH == null) {
+        this.bQp = this.mSensorManager.getDefaultSensor(11);
+        if (this.bQp == null) {
           break label329;
         }
-        bool = a(this.mSensorManager, this, bSB, bSC, paramHandler, new Sensor[] { this.bSD, this.bSG, this.bSH });
+        bool = a(this.mSensorManager, this, bQj, bQk, paramHandler, new Sensor[] { this.bQl, this.bQo, this.bQp });
       }
       for (;;)
       {
         if (!bool) {
           break label423;
         }
-        this.bSW = true;
-        this.bSX = new c(paramHandler);
-        if (this.bSX != null) {
-          this.bSX.q(Math.round(50.0F), 1000L);
+        this.bQE = true;
+        this.bQF = new c(paramHandler);
+        if (this.bQF != null) {
+          this.bQF.n(Math.round(50.0F), 1000L);
         }
         AppMethodBeat.o(87990);
         return;
-        this.bSL[i][0] = 1065353216;
-        this.bSL[i][1] = 0;
-        this.bSL[i][2] = 0;
-        this.bSL[i][3] = 0;
-        this.bSL[i][4] = 1065353216;
-        this.bSL[i][5] = 0;
-        this.bSL[i][6] = 0;
-        this.bSL[i][7] = 0;
-        this.bSL[i][8] = 1065353216;
+        this.bQt[i][0] = 1065353216;
+        this.bQt[i][1] = 0;
+        this.bQt[i][2] = 0;
+        this.bQt[i][3] = 0;
+        this.bQt[i][4] = 1065353216;
+        this.bQt[i][5] = 0;
+        this.bQt[i][6] = 0;
+        this.bQt[i][7] = 0;
+        this.bQt[i][8] = 1065353216;
         i += 1;
         break;
         label329:
-        this.bSE = this.mSensorManager.getDefaultSensor(4);
-        this.bSF = this.mSensorManager.getDefaultSensor(2);
-        if ((this.bSE != null) && (this.bSF != null)) {
-          bool = a(this.mSensorManager, this, bSB, bSC, paramHandler, new Sensor[] { this.bSD, this.bSG, this.bSE, this.bSF });
+        this.bQm = this.mSensorManager.getDefaultSensor(4);
+        this.bQn = this.mSensorManager.getDefaultSensor(2);
+        if ((this.bQm != null) && (this.bQn != null)) {
+          bool = a(this.mSensorManager, this, bQj, bQk, paramHandler, new Sensor[] { this.bQl, this.bQo, this.bQm, this.bQn });
         } else {
           bool = false;
         }
@@ -281,13 +281,13 @@ final class u
     }
   }
   
-  final void ar(Context paramContext) {}
+  final void as(Context paramContext) {}
   
-  final void as(Context paramContext)
+  final void at(Context paramContext)
   {
     AppMethodBeat.i(87991);
-    if (this.bSX != null) {
-      this.bSX.stop();
+    if (this.bQF != null) {
+      this.bQF.stop();
     }
     if (this.mSensorManager != null) {}
     try
@@ -295,27 +295,27 @@ final class u
       this.mSensorManager.unregisterListener(this);
       label35:
       this.mSensorManager = null;
-      this.bSH = null;
-      this.bSG = null;
-      this.bSF = null;
-      this.bSE = null;
-      this.bSD = null;
-      this.bSI = 0L;
-      this.bSJ = true;
-      this.bSK = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
-      this.bSL = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
-      this.bSN = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-      this.bSO = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-      this.bSP = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
-      this.bSY = new boolean[6];
-      this.bSZ = new int[6];
-      this.bTa = new float[6];
-      this.bTb = new float[6];
-      this.bTc = new float[] { (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F) };
-      this.bTd = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 20 }));
-      this.bTg.reset();
-      this.bTe.reset();
-      this.bTf.reset();
+      this.bQp = null;
+      this.bQo = null;
+      this.bQn = null;
+      this.bQm = null;
+      this.bQl = null;
+      this.bQq = 0L;
+      this.bQr = true;
+      this.bQs = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
+      this.bQt = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 9 }));
+      this.bQv = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+      this.bQw = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+      this.bQx = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 3 }));
+      this.bQG = new boolean[6];
+      this.bQH = new int[6];
+      this.bQI = new float[6];
+      this.bQJ = new float[6];
+      this.bQK = new float[] { (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F), (0.0F / 0.0F) };
+      this.bQL = ((float[][])Array.newInstance(Float.TYPE, new int[] { 6, 20 }));
+      this.bQO.reset();
+      this.bQM.reset();
+      this.bQN.reset();
       AppMethodBeat.o(87991);
       return;
     }
@@ -344,9 +344,9 @@ final class u
       AppMethodBeat.o(87995);
       return;
       Object localObject3 = new float[16];
-      if (this.bSH != null) {}
+      if (this.bQp != null) {}
       float[] arrayOfFloat1;
-      for (Object localObject1 = this.bSM;; localObject1 = this.bSL)
+      for (Object localObject1 = this.bQu;; localObject1 = this.bQt)
       {
         localObject1 = localObject1[2];
         arrayOfFloat1 = new float[16];
@@ -370,28 +370,28 @@ final class u
           arrayOfFloat1[15] = 1.0F;
         }
         Matrix.invertM((float[])localObject3, 0, arrayOfFloat1, 0);
-        Matrix.multiplyMV(this.bSR, 0, (float[])localObject3, 0, new float[] { paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], 0.0F }, 0);
-        this.bTe.a(this.bSR, paramSensorEvent.values, this.bSU[2]);
+        Matrix.multiplyMV(this.bQz, 0, (float[])localObject3, 0, new float[] { paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2], 0.0F }, 0);
+        this.bQM.a(this.bQz, paramSensorEvent.values, this.bQC[2]);
         AppMethodBeat.o(87995);
         return;
       }
-      a(paramSensorEvent.values, this.bSU);
-      if ((this.bST[2][0] == 0.0F) && (this.bST[2][1] == 0.0F) && (this.bST[2][2] == 0.0F)) {
+      a(paramSensorEvent.values, this.bQC);
+      if ((this.bQB[2][0] == 0.0F) && (this.bQB[2][1] == 0.0F) && (this.bQB[2][2] == 0.0F)) {
         continue;
       }
-      paramSensorEvent = this.bSK;
-      localObject1 = this.bSU;
-      localObject3 = this.bST;
+      paramSensorEvent = this.bQs;
+      localObject1 = this.bQC;
+      localObject3 = this.bQB;
       if ((SensorManager.getRotationMatrix(paramSensorEvent[0], null, localObject1[0], localObject3[0])) && (SensorManager.getRotationMatrix(paramSensorEvent[1], null, localObject1[1], localObject3[1])) && (SensorManager.getRotationMatrix(paramSensorEvent[2], null, localObject1[2], localObject3[2])) && (SensorManager.getRotationMatrix(paramSensorEvent[3], null, localObject1[3], localObject3[3])) && (SensorManager.getRotationMatrix(paramSensorEvent[4], null, localObject1[4], localObject3[4])) && (SensorManager.getRotationMatrix(paramSensorEvent[5], null, localObject1[5], localObject3[5])))
       {
         i = 1;
         if (i != 0)
         {
-          a(this.bSK, this.bSN);
-          if ((this.bSO[2][0] == 0.0F) && (this.bSO[2][1] == 0.0F) && (this.bSO[2][2] == 0.0F))
+          a(this.bQs, this.bQv);
+          if ((this.bQw[2][0] == 0.0F) && (this.bQw[2][1] == 0.0F) && (this.bQw[2][2] == 0.0F))
           {
-            paramSensorEvent = this.bSN;
-            localObject1 = this.bSO;
+            paramSensorEvent = this.bQv;
+            localObject1 = this.bQw;
             i = 0;
           }
         }
@@ -410,12 +410,12 @@ final class u
       }
       try
       {
-        SensorManager.getRotationMatrixFromVector(this.bSM[2], paramSensorEvent.values);
-        SensorManager.remapCoordinateSystem(this.bSM[2], 2, 129, this.bSM[0]);
-        SensorManager.remapCoordinateSystem(this.bSM[2], 130, 1, this.bSM[1]);
-        SensorManager.remapCoordinateSystem(this.bSM[2], 129, 130, this.bSM[3]);
-        SensorManager.remapCoordinateSystem(this.bSM[2], 129, 3, this.bSM[4]);
-        SensorManager.remapCoordinateSystem(this.bSM[2], 1, 3, this.bSM[5]);
+        SensorManager.getRotationMatrixFromVector(this.bQu[2], paramSensorEvent.values);
+        SensorManager.remapCoordinateSystem(this.bQu[2], 2, 129, this.bQu[0]);
+        SensorManager.remapCoordinateSystem(this.bQu[2], 130, 1, this.bQu[1]);
+        SensorManager.remapCoordinateSystem(this.bQu[2], 129, 130, this.bQu[3]);
+        SensorManager.remapCoordinateSystem(this.bQu[2], 129, 3, this.bQu[4]);
+        SensorManager.remapCoordinateSystem(this.bQu[2], 1, 3, this.bQu[5]);
         if (i > 5)
         {
           AppMethodBeat.o(87995);
@@ -428,30 +428,30 @@ final class u
         {
           if (paramSensorEvent.values.length > 3)
           {
-            SensorManager.getRotationMatrixFromVector(this.bSM[2], new float[] { paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2] });
+            SensorManager.getRotationMatrixFromVector(this.bQu[2], new float[] { paramSensorEvent.values[0], paramSensorEvent.values[1], paramSensorEvent.values[2] });
             continue;
-            SensorManager.getOrientation(this.bSM[i], this.bSQ[i]);
+            SensorManager.getOrientation(this.bQu[i], this.bQy[i]);
             i += 1;
           }
         }
       }
       Object localObject2;
       float f1;
-      if ((this.bSN[2][0] != 0.0F) || (this.bSN[2][1] != 0.0F) || (this.bSN[2][2] != 0.0F))
+      if ((this.bQv[2][0] != 0.0F) || (this.bQv[2][1] != 0.0F) || (this.bQv[2][2] != 0.0F))
       {
-        if (this.bSJ)
+        if (this.bQr)
         {
           i = 0;
           if (i <= 5) {
             break label987;
           }
-          this.bSJ = false;
+          this.bQr = false;
         }
         localObject2 = (float[][])Array.newInstance(Float.TYPE, new int[] { 6, 4 });
-        if (this.bSI != 0L)
+        if (this.bQq != 0L)
         {
-          f1 = (float)(paramSensorEvent.timestamp - this.bSI);
-          a(paramSensorEvent.values, this.bSS);
+          f1 = (float)(paramSensorEvent.timestamp - this.bQq);
+          a(paramSensorEvent.values, this.bQA);
           i = 0;
         }
       }
@@ -463,21 +463,21 @@ final class u
       {
         if (i > 5)
         {
-          this.bSI = paramSensorEvent.timestamp;
+          this.bQq = paramSensorEvent.timestamp;
           i = j;
           if (i <= 5) {
             break label1208;
           }
-          a(this.bSL, this.bSO);
+          a(this.bQt, this.bQw);
           AppMethodBeat.o(87995);
           return;
-          localObject2 = this.bSK[i];
-          localObject3 = this.bSL;
+          localObject2 = this.bQs[i];
+          localObject3 = this.bQt;
           localObject3[i] = b(localObject3[i], (float[])localObject2);
           i += 1;
           break;
         }
-        localObject3 = this.bSS[i];
+        localObject3 = this.bQA[i];
         arrayOfFloat1 = localObject2[i];
         f2 = 1.0E-009F * f1 / 2.0F;
         float[] arrayOfFloat2 = new float[3];
@@ -503,24 +503,24 @@ final class u
       {
         SensorManager.getRotationMatrixFromVector(paramSensorEvent, localObject2[i]);
         label1222:
-        localObject3 = this.bSL;
+        localObject3 = this.bQt;
         localObject3[i] = b(localObject3[i], paramSensorEvent);
         i += 1;
         break label963;
-        a(paramSensorEvent.values, this.bST);
-        localObject2 = this.bTg;
+        a(paramSensorEvent.values, this.bQB);
+        localObject2 = this.bQO;
         paramSensorEvent = paramSensorEvent.values;
         if (paramSensorEvent.length < 3) {
           continue;
         }
-        ((a)localObject2).bTh += 1;
-        double d = ((a)localObject2).bTi;
+        ((a)localObject2).bQP += 1;
+        double d = ((a)localObject2).bQQ;
         f1 = paramSensorEvent[0];
         f2 = paramSensorEvent[0];
         f3 = paramSensorEvent[1];
         float f4 = paramSensorEvent[1];
         float f5 = paramSensorEvent[2];
-        ((a)localObject2).bTi = ((float)(Math.sqrt(f2 * f1 + f4 * f3 + paramSensorEvent[2] * f5) + d));
+        ((a)localObject2).bQQ = ((float)(Math.sqrt(f2 * f1 + f4 * f3 + paramSensorEvent[2] * f5) + d));
       }
       catch (Exception localException)
       {
@@ -529,100 +529,100 @@ final class u
     }
   }
   
-  final void yR() {}
+  final void yE() {}
   
   static final class a
   {
-    int bTh;
-    float bTi;
-    long bTj;
-    float bTk;
-    boolean bTl;
-    long bTm;
-    float[] bTn;
-    float[] bTo;
-    float[] bTp;
-    float[] bTq;
-    float[] bTr;
-    float[] bTs;
-    float[] bTt;
-    float[] bTu;
-    float[] bTv;
-    float bTw;
-    float bTx;
-    float bTy;
-    boolean bTz;
+    int bQP;
+    float bQQ;
+    long bQR;
+    float bQS;
+    boolean bQT;
+    long bQU;
+    float[] bQV;
+    float[] bQW;
+    float[] bQX;
+    float[] bQY;
+    float[] bQZ;
+    float[] bRa;
+    float[] bRb;
+    float[] bRc;
+    float[] bRd;
+    float bRe;
+    float bRf;
+    float bRg;
+    boolean bRh;
     
     private a()
     {
       AppMethodBeat.i(87973);
-      this.bTh = 0;
-      this.bTi = 0.0F;
-      this.bTj = 0L;
-      this.bTk = 0.0F;
-      this.bTl = false;
-      this.bTm = 0L;
-      this.bTn = new float[6];
-      this.bTo = new float[6];
-      this.bTp = new float[6];
-      this.bTq = new float[6];
-      this.bTr = new float[6];
-      this.bTs = new float[6];
-      this.bTt = new float[6];
-      this.bTu = new float[6];
-      this.bTv = new float[6];
-      this.bTw = 0.0F;
-      this.bTx = (1.0F / -1.0F);
-      this.bTy = (1.0F / 1.0F);
-      this.bTz = false;
+      this.bQP = 0;
+      this.bQQ = 0.0F;
+      this.bQR = 0L;
+      this.bQS = 0.0F;
+      this.bQT = false;
+      this.bQU = 0L;
+      this.bQV = new float[6];
+      this.bQW = new float[6];
+      this.bQX = new float[6];
+      this.bQY = new float[6];
+      this.bQZ = new float[6];
+      this.bRa = new float[6];
+      this.bRb = new float[6];
+      this.bRc = new float[6];
+      this.bRd = new float[6];
+      this.bRe = 0.0F;
+      this.bRf = (1.0F / -1.0F);
+      this.bRg = (1.0F / 1.0F);
+      this.bRh = false;
       AppMethodBeat.o(87973);
     }
     
     final void reset()
     {
-      this.bTh = 0;
-      this.bTi = 0.0F;
-      this.bTj = 0L;
-      this.bTk = 0.0F;
-      this.bTl = false;
-      this.bTm = 0L;
-      this.bTn = new float[6];
-      this.bTo = new float[6];
-      this.bTp = new float[6];
-      this.bTw = 0.0F;
-      this.bTx = (1.0F / -1.0F);
-      this.bTy = (1.0F / 1.0F);
+      this.bQP = 0;
+      this.bQQ = 0.0F;
+      this.bQR = 0L;
+      this.bQS = 0.0F;
+      this.bQT = false;
+      this.bQU = 0L;
+      this.bQV = new float[6];
+      this.bQW = new float[6];
+      this.bQX = new float[6];
+      this.bRe = 0.0F;
+      this.bRf = (1.0F / -1.0F);
+      this.bRg = (1.0F / 1.0F);
     }
   }
   
   static final class b
   {
-    float bTA;
-    float bTB;
-    float bTC;
-    float bTD;
-    float bTE;
-    float bTF;
-    float bTG;
-    float bTH;
-    float bTI;
-    float bTJ;
-    float bTK;
-    float[] bTL;
-    float[] bTM;
-    float[] bTN;
-    float[] bTO;
-    float[] bTP;
+    float bRi;
+    float bRj;
+    float bRk;
+    float bRl;
+    float bRm;
+    float bRn;
+    float bRo;
+    float bRp;
+    float bRq;
+    float bRr;
+    float bRs;
+    float[] bRt;
+    float[] bRu;
+    float[] bRv;
+    float[] bRw;
+    float[] bRx;
     long time;
     
     private b()
     {
       AppMethodBeat.i(87974);
-      this.bTL = new float[6];
-      this.bTM = new float[6];
-      this.bTN = new float[6];
-      this.bTO = new float[6];
-      this.bTP = new float[6];
+      this.bRt = new float[6];
+      this.bRu = new float[6];
+      this.bRv = new float[6];
+      this.bRw = new float[6];
+      this.bRx = new float[6];
       AppMethodBeat.o(87974);
     }
   }
@@ -635,7 +635,7 @@ final class u
       super();
     }
     
-    final void yV()
+    final void yI()
     {
       AppMethodBeat.i(87975);
       u.a(u.this);
@@ -645,15 +645,15 @@ final class u
   
   static final class d
   {
-    private float bTR = 0.0F;
-    private float bTS = 0.0F;
-    private float bTT = 0.0F;
-    private float bTU = 0.0F;
-    private float bTV = 0.0F;
-    private float bTW = 0.0F;
-    private float bTX = 0.0F;
-    private float bTY = 0.0F;
-    private float bTZ = 0.0F;
+    private float bRA = 0.0F;
+    private float bRB = 0.0F;
+    private float bRC = 0.0F;
+    private float bRD = 0.0F;
+    private float bRE = 0.0F;
+    private float bRF = 0.0F;
+    private float bRG = 0.0F;
+    private float bRH = 0.0F;
+    private float bRz = 0.0F;
     private int count = 0;
     
     final u.b a(float[][] paramArrayOfFloat)
@@ -675,28 +675,28 @@ final class u
           localb.time = SystemClock.elapsedRealtime();
           if (i > 5)
           {
-            localb.bTA = (this.bTR / this.count);
-            localb.bTB = (this.bTS / this.count);
-            localb.bTC = (this.bTT / this.count);
-            localb.bTD = (this.bTU / this.count);
-            localb.bTE = (this.bTV / this.count);
-            localb.bTF = (this.bTW / this.count);
-            localb.bTG = (this.bTX / this.count);
-            localb.bTH = (this.bTY / this.count);
-            localb.bTI = (this.bTZ / this.count);
-            localb.bTK = ((float)Math.sqrt(localb.bTA * localb.bTA + localb.bTB * localb.bTB));
+            localb.bRi = (this.bRz / this.count);
+            localb.bRj = (this.bRA / this.count);
+            localb.bRk = (this.bRB / this.count);
+            localb.bRl = (this.bRC / this.count);
+            localb.bRm = (this.bRD / this.count);
+            localb.bRn = (this.bRE / this.count);
+            localb.bRo = (this.bRF / this.count);
+            localb.bRp = (this.bRG / this.count);
+            localb.bRq = (this.bRH / this.count);
+            localb.bRs = ((float)Math.sqrt(localb.bRi * localb.bRi + localb.bRj * localb.bRj));
             reset();
             AppMethodBeat.o(87976);
             paramArrayOfFloat = localb;
             continue;
           }
-          localb.bTL[i] = paramArrayOfFloat[i][0];
+          localb.bRt[i] = paramArrayOfFloat[i][0];
         }
         finally {}
-        localb.bTM[i] = paramArrayOfFloat[i][1];
-        localb.bTN[i] = paramArrayOfFloat[i][2];
-        localb.bTO[i] = ((float)Math.sin(localb.bTL[i]));
-        localb.bTP[i] = ((float)Math.cos(localb.bTL[i]));
+        localb.bRu[i] = paramArrayOfFloat[i][1];
+        localb.bRv[i] = paramArrayOfFloat[i][2];
+        localb.bRw[i] = ((float)Math.sin(localb.bRt[i]));
+        localb.bRx[i] = ((float)Math.cos(localb.bRt[i]));
         i += 1;
       }
     }
@@ -708,15 +708,15 @@ final class u
         if (paramArrayOfFloat1.length >= 3)
         {
           this.count += 1;
-          this.bTR += paramArrayOfFloat1[0];
-          this.bTS += paramArrayOfFloat1[1];
-          this.bTT += paramArrayOfFloat1[2];
-          this.bTU += paramArrayOfFloat2[0];
-          this.bTV += paramArrayOfFloat2[1];
-          this.bTW += paramArrayOfFloat2[2];
-          this.bTX += paramArrayOfFloat3[0];
-          this.bTY += paramArrayOfFloat3[1];
-          this.bTZ += paramArrayOfFloat3[2];
+          this.bRz += paramArrayOfFloat1[0];
+          this.bRA += paramArrayOfFloat1[1];
+          this.bRB += paramArrayOfFloat1[2];
+          this.bRC += paramArrayOfFloat2[0];
+          this.bRD += paramArrayOfFloat2[1];
+          this.bRE += paramArrayOfFloat2[2];
+          this.bRF += paramArrayOfFloat3[0];
+          this.bRG += paramArrayOfFloat3[1];
+          this.bRH += paramArrayOfFloat3[2];
         }
         return;
       }
@@ -732,15 +732,15 @@ final class u
       try
       {
         this.count = 0;
-        this.bTR = 0.0F;
-        this.bTS = 0.0F;
-        this.bTT = 0.0F;
-        this.bTU = 0.0F;
-        this.bTV = 0.0F;
-        this.bTW = 0.0F;
-        this.bTX = 0.0F;
-        this.bTY = 0.0F;
-        this.bTZ = 0.0F;
+        this.bRz = 0.0F;
+        this.bRA = 0.0F;
+        this.bRB = 0.0F;
+        this.bRC = 0.0F;
+        this.bRD = 0.0F;
+        this.bRE = 0.0F;
+        this.bRF = 0.0F;
+        this.bRG = 0.0F;
+        this.bRH = 0.0F;
         return;
       }
       finally
@@ -754,10 +754,10 @@ final class u
   static final class e
     extends p
   {
-    final float aSD;
-    final float bUa;
-    final float bUb;
-    final int bUc;
+    final float aTw;
+    final float bRI;
+    final float bRJ;
+    final int bRK;
     final float x;
     final float y;
     
@@ -766,39 +766,39 @@ final class u
       super();
       this.x = paramFloat1;
       this.y = paramFloat2;
-      this.bUc = paramInt;
-      this.bUa = paramFloat3;
-      this.bUb = paramFloat4;
-      this.aSD = paramFloat5;
+      this.bRK = paramInt;
+      this.bRI = paramFloat3;
+      this.bRJ = paramFloat4;
+      this.aTw = paramFloat5;
     }
   }
   
   final class f
   {
-    private ArrayList<u.b> bUd;
-    private a[] bUe;
-    private int bUf;
-    private float[][] bUg;
-    private float[][] bUh;
-    private float[][] bUi;
-    private int[] bUj;
-    private int bUk;
-    private int bUl;
-    private int bUm;
+    private ArrayList<u.b> bRL;
+    private a[] bRM;
+    private int bRN;
+    private float[][] bRO;
+    private float[][] bRP;
+    private float[][] bRQ;
+    private int[] bRR;
+    private int bRS;
+    private int bRT;
+    private int bRU;
     
     private f()
     {
       AppMethodBeat.i(87979);
-      this.bUd = new ArrayList();
-      this.bUe = new a[5];
-      this.bUf = 0;
-      this.bUg = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
-      this.bUh = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
-      this.bUi = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 }));
-      this.bUj = new int[6];
-      this.bUk = 5;
-      this.bUl = -1;
-      this.bUm = 0;
+      this.bRL = new ArrayList();
+      this.bRM = new a[5];
+      this.bRN = 0;
+      this.bRO = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
+      this.bRP = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
+      this.bRQ = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 }));
+      this.bRR = new int[6];
+      this.bRS = 5;
+      this.bRT = -1;
+      this.bRU = 0;
       AppMethodBeat.o(87979);
     }
     
@@ -811,27 +811,27 @@ final class u
       //   2: ldc 91
       //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   8: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   11: iconst_1
       //   12: aload_0
-      //   13: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   13: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   16: iconst_0
       //   17: iconst_4
       //   18: invokestatic 97	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
       //   21: aload_0
-      //   22: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   22: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   25: iconst_4
       //   26: aaload
       //   27: ifnull +143 -> 170
       //   30: invokestatic 103	android/os/SystemClock:elapsedRealtime	()J
       //   33: aload_1
-      //   34: getfield 107	com/c/a/a/u$f$a:bUr	J
+      //   34: getfield 107	com/c/a/a/u$f$a:bRZ	J
       //   37: lsub
       //   38: ldc2_w 108
       //   41: lcmp
       //   42: ifle +128 -> 170
       //   45: aload_0
-      //   46: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   46: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   49: iconst_4
       //   50: aaload
       //   51: astore_2
@@ -864,48 +864,48 @@ final class u
       //   94: putfield 119	com/c/a/a/u$f$a:z	F
       //   97: aload_2
       //   98: aload_2
-      //   99: getfield 122	com/c/a/a/u$f$a:bUn	I
+      //   99: getfield 122	com/c/a/a/u$f$a:bRV	I
       //   102: aload_1
-      //   103: getfield 122	com/c/a/a/u$f$a:bUn	I
+      //   103: getfield 122	com/c/a/a/u$f$a:bRV	I
       //   106: iadd
       //   107: i2f
       //   108: fconst_2
       //   109: fdiv
       //   110: invokestatic 128	java/lang/Math:round	(F)I
-      //   113: putfield 122	com/c/a/a/u$f$a:bUn	I
+      //   113: putfield 122	com/c/a/a/u$f$a:bRV	I
       //   116: aload_2
       //   117: aload_2
-      //   118: getfield 131	com/c/a/a/u$f$a:bUo	F
+      //   118: getfield 131	com/c/a/a/u$f$a:bRW	F
       //   121: aload_1
-      //   122: getfield 131	com/c/a/a/u$f$a:bUo	F
+      //   122: getfield 131	com/c/a/a/u$f$a:bRW	F
       //   125: fadd
       //   126: fconst_2
       //   127: fdiv
-      //   128: putfield 131	com/c/a/a/u$f$a:bUo	F
+      //   128: putfield 131	com/c/a/a/u$f$a:bRW	F
       //   131: aload_2
       //   132: aload_2
-      //   133: getfield 134	com/c/a/a/u$f$a:bUp	F
+      //   133: getfield 134	com/c/a/a/u$f$a:bRX	F
       //   136: aload_1
-      //   137: getfield 134	com/c/a/a/u$f$a:bUp	F
+      //   137: getfield 134	com/c/a/a/u$f$a:bRX	F
       //   140: fadd
       //   141: fconst_2
       //   142: fdiv
-      //   143: putfield 134	com/c/a/a/u$f$a:bUp	F
+      //   143: putfield 134	com/c/a/a/u$f$a:bRX	F
       //   146: aload_2
       //   147: aload_1
-      //   148: getfield 107	com/c/a/a/u$f$a:bUr	J
-      //   151: putfield 107	com/c/a/a/u$f$a:bUr	J
+      //   148: getfield 107	com/c/a/a/u$f$a:bRZ	J
+      //   151: putfield 107	com/c/a/a/u$f$a:bRZ	J
       //   154: aload_2
       //   155: aload_1
-      //   156: getfield 137	com/c/a/a/u$f$a:bUq	F
-      //   159: putfield 137	com/c/a/a/u$f$a:bUq	F
+      //   156: getfield 137	com/c/a/a/u$f$a:bRY	F
+      //   159: putfield 137	com/c/a/a/u$f$a:bRY	F
       //   162: ldc 91
       //   164: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   167: aload_0
       //   168: monitorexit
       //   169: return
       //   170: aload_0
-      //   171: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   171: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   174: iconst_4
       //   175: aload_1
       //   176: aastore
@@ -929,7 +929,7 @@ final class u
     }
     
     /* Error */
-    private boolean zu()
+    private boolean zh()
     {
       // Byte code:
       //   0: aload_0
@@ -937,11 +937,11 @@ final class u
       //   2: ldc 140
       //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 51	com/c/a/a/u$f:bUf	I
+      //   8: getfield 51	com/c/a/a/u$f:bRN	I
       //   11: bipush 20
-      //   13: if_icmplt +700 -> 713
+      //   13: if_icmplt +704 -> 717
       //   16: aload_0
-      //   17: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   17: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   20: iconst_0
       //   21: aaload
       //   22: astore 17
@@ -954,7 +954,7 @@ final class u
       //   33: fdiv
       //   34: fastore
       //   35: aload_0
-      //   36: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   36: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   39: iconst_1
       //   40: aaload
       //   41: astore 17
@@ -967,7 +967,7 @@ final class u
       //   52: fdiv
       //   53: fastore
       //   54: aload_0
-      //   55: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   55: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   58: iconst_2
       //   59: aaload
       //   60: astore 17
@@ -980,7 +980,7 @@ final class u
       //   71: fdiv
       //   72: fastore
       //   73: aload_0
-      //   74: getfield 59	com/c/a/a/u$f:bUh	[[F
+      //   74: getfield 59	com/c/a/a/u$f:bRP	[[F
       //   77: iconst_0
       //   78: aaload
       //   79: astore 17
@@ -993,7 +993,7 @@ final class u
       //   90: fdiv
       //   91: fastore
       //   92: aload_0
-      //   93: getfield 59	com/c/a/a/u$f:bUh	[[F
+      //   93: getfield 59	com/c/a/a/u$f:bRP	[[F
       //   96: iconst_1
       //   97: aaload
       //   98: astore 17
@@ -1006,7 +1006,7 @@ final class u
       //   109: fdiv
       //   110: fastore
       //   111: aload_0
-      //   112: getfield 59	com/c/a/a/u$f:bUh	[[F
+      //   112: getfield 59	com/c/a/a/u$f:bRP	[[F
       //   115: iconst_2
       //   116: aaload
       //   117: astore 17
@@ -1019,112 +1019,112 @@ final class u
       //   128: fdiv
       //   129: fastore
       //   130: aload_0
-      //   131: getfield 59	com/c/a/a/u$f:bUh	[[F
+      //   131: getfield 59	com/c/a/a/u$f:bRP	[[F
       //   134: iconst_0
       //   135: aaload
       //   136: iconst_2
       //   137: faload
       //   138: fstore_1
       //   139: aload_0
-      //   140: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   140: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   143: iconst_0
       //   144: aaload
       //   145: iconst_0
       //   146: faload
       //   147: fstore_2
       //   148: aload_0
-      //   149: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   149: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   152: iconst_0
       //   153: aaload
       //   154: iconst_2
       //   155: faload
       //   156: fstore_3
       //   157: aload_0
-      //   158: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   158: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   161: iconst_0
       //   162: aaload
       //   163: iconst_2
       //   164: faload
       //   165: fstore 4
       //   167: aload_0
-      //   168: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   168: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   171: iconst_0
       //   172: aaload
       //   173: iconst_1
       //   174: faload
       //   175: fstore 5
       //   177: aload_0
-      //   178: getfield 59	com/c/a/a/u$f:bUh	[[F
+      //   178: getfield 59	com/c/a/a/u$f:bRP	[[F
       //   181: iconst_1
       //   182: aaload
       //   183: iconst_2
       //   184: faload
       //   185: fstore 6
       //   187: aload_0
-      //   188: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   188: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   191: iconst_1
       //   192: aaload
       //   193: iconst_0
       //   194: faload
       //   195: fstore 7
       //   197: aload_0
-      //   198: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   198: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   201: iconst_1
       //   202: aaload
       //   203: iconst_2
       //   204: faload
       //   205: fstore 8
       //   207: aload_0
-      //   208: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   208: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   211: iconst_1
       //   212: aaload
       //   213: iconst_2
       //   214: faload
       //   215: fstore 9
       //   217: aload_0
-      //   218: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   218: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   221: iconst_1
       //   222: aaload
       //   223: iconst_1
       //   224: faload
       //   225: fstore 10
       //   227: aload_0
-      //   228: getfield 59	com/c/a/a/u$f:bUh	[[F
+      //   228: getfield 59	com/c/a/a/u$f:bRP	[[F
       //   231: iconst_2
       //   232: aaload
       //   233: iconst_2
       //   234: faload
       //   235: fstore 11
       //   237: aload_0
-      //   238: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   238: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   241: iconst_2
       //   242: aaload
       //   243: iconst_0
       //   244: faload
       //   245: fstore 12
       //   247: aload_0
-      //   248: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   248: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   251: iconst_2
       //   252: aaload
       //   253: iconst_2
       //   254: faload
       //   255: fstore 13
       //   257: aload_0
-      //   258: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   258: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   261: iconst_2
       //   262: aaload
       //   263: iconst_2
       //   264: faload
       //   265: fstore 14
       //   267: aload_0
-      //   268: getfield 57	com/c/a/a/u$f:bUg	[[F
+      //   268: getfield 57	com/c/a/a/u$f:bRO	[[F
       //   271: iconst_2
       //   272: aaload
       //   273: iconst_1
       //   274: faload
       //   275: fstore 15
       //   277: aload_0
-      //   278: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   278: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   281: iconst_0
       //   282: aaload
       //   283: iconst_0
@@ -1133,7 +1133,7 @@ final class u
       //   287: fmul
       //   288: ldc 143
       //   290: aload_0
-      //   291: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   291: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   294: iconst_0
       //   295: aaload
       //   296: iconst_0
@@ -1142,7 +1142,7 @@ final class u
       //   299: fadd
       //   300: fastore
       //   301: aload_0
-      //   302: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   302: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   305: iconst_0
       //   306: aaload
       //   307: iconst_1
@@ -1153,7 +1153,7 @@ final class u
       //   313: fmul
       //   314: ldc 143
       //   316: aload_0
-      //   317: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   317: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   320: iconst_0
       //   321: aaload
       //   322: iconst_1
@@ -1162,7 +1162,7 @@ final class u
       //   325: fadd
       //   326: fastore
       //   327: aload_0
-      //   328: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   328: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   331: iconst_0
       //   332: aaload
       //   333: iconst_2
@@ -1173,7 +1173,7 @@ final class u
       //   341: fmul
       //   342: ldc 143
       //   344: aload_0
-      //   345: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   345: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   348: iconst_0
       //   349: aaload
       //   350: iconst_2
@@ -1182,13 +1182,13 @@ final class u
       //   353: fadd
       //   354: fastore
       //   355: aload_0
-      //   356: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   356: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   359: iconst_1
       //   360: aaload
       //   361: iconst_0
       //   362: ldc 143
       //   364: aload_0
-      //   365: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   365: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   368: iconst_1
       //   369: aaload
       //   370: iconst_0
@@ -1200,13 +1200,13 @@ final class u
       //   378: fadd
       //   379: fastore
       //   380: aload_0
-      //   381: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   381: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   384: iconst_1
       //   385: aaload
       //   386: iconst_1
       //   387: ldc 143
       //   389: aload_0
-      //   390: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   390: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   393: iconst_1
       //   394: aaload
       //   395: iconst_1
@@ -1220,13 +1220,13 @@ final class u
       //   406: fadd
       //   407: fastore
       //   408: aload_0
-      //   409: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   409: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   412: iconst_1
       //   413: aaload
       //   414: iconst_2
       //   415: ldc 143
       //   417: aload_0
-      //   418: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   418: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   421: iconst_1
       //   422: aaload
       //   423: iconst_2
@@ -1240,13 +1240,13 @@ final class u
       //   434: fadd
       //   435: fastore
       //   436: aload_0
-      //   437: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   437: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   440: iconst_2
       //   441: aaload
       //   442: iconst_0
       //   443: ldc 143
       //   445: aload_0
-      //   446: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   446: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   449: iconst_2
       //   450: aaload
       //   451: iconst_0
@@ -1258,13 +1258,13 @@ final class u
       //   459: fadd
       //   460: fastore
       //   461: aload_0
-      //   462: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   462: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   465: iconst_2
       //   466: aaload
       //   467: iconst_1
       //   468: ldc 143
       //   470: aload_0
-      //   471: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   471: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   474: iconst_2
       //   475: aaload
       //   476: iconst_1
@@ -1278,13 +1278,13 @@ final class u
       //   487: fadd
       //   488: fastore
       //   489: aload_0
-      //   490: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   490: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   493: iconst_2
       //   494: aaload
       //   495: iconst_2
       //   496: ldc 143
       //   498: aload_0
-      //   499: getfield 74	com/c/a/a/u$f:bUi	[[F
+      //   499: getfield 74	com/c/a/a/u$f:bRQ	[[F
       //   502: iconst_2
       //   503: aaload
       //   504: iconst_2
@@ -1299,156 +1299,158 @@ final class u
       //   516: fastore
       //   517: aload_0
       //   518: aload_0
-      //   519: invokespecial 147	com/c/a/a/u$f:zv	()Lcom/c/a/a/u$f$a;
+      //   519: invokespecial 147	com/c/a/a/u$f:zi	()Lcom/c/a/a/u$f$a;
       //   522: invokespecial 149	com/c/a/a/u$f:a	(Lcom/c/a/a/u$f$a;)V
       //   525: aload_0
       //   526: iconst_0
-      //   527: putfield 51	com/c/a/a/u$f:bUf	I
-      //   530: aload_0
-      //   531: iconst_3
-      //   532: anewarray 53	[F
-      //   535: dup
-      //   536: iconst_0
-      //   537: iconst_3
-      //   538: newarray float
-      //   540: dup
-      //   541: iconst_0
-      //   542: ldc 54
-      //   544: fastore
-      //   545: dup
-      //   546: iconst_1
-      //   547: ldc 55
-      //   549: fastore
-      //   550: dup
-      //   551: iconst_2
-      //   552: fconst_0
-      //   553: fastore
-      //   554: aastore
-      //   555: dup
-      //   556: iconst_1
-      //   557: iconst_3
-      //   558: newarray float
-      //   560: dup
-      //   561: iconst_0
-      //   562: ldc 54
-      //   564: fastore
-      //   565: dup
-      //   566: iconst_1
-      //   567: ldc 55
-      //   569: fastore
-      //   570: dup
-      //   571: iconst_2
-      //   572: fconst_0
-      //   573: fastore
-      //   574: aastore
-      //   575: dup
-      //   576: iconst_2
-      //   577: iconst_3
-      //   578: newarray float
-      //   580: dup
-      //   581: iconst_0
-      //   582: ldc 54
-      //   584: fastore
-      //   585: dup
-      //   586: iconst_1
-      //   587: ldc 55
-      //   589: fastore
-      //   590: dup
-      //   591: iconst_2
-      //   592: fconst_0
+      //   527: putfield 51	com/c/a/a/u$f:bRN	I
+      //   530: iconst_3
+      //   531: newarray float
+      //   533: dup
+      //   534: iconst_0
+      //   535: ldc 54
+      //   537: fastore
+      //   538: dup
+      //   539: iconst_1
+      //   540: ldc 55
+      //   542: fastore
+      //   543: dup
+      //   544: iconst_2
+      //   545: fconst_0
+      //   546: fastore
+      //   547: astore 17
+      //   549: aload_0
+      //   550: iconst_3
+      //   551: anewarray 53	[F
+      //   554: dup
+      //   555: iconst_0
+      //   556: iconst_3
+      //   557: newarray float
+      //   559: dup
+      //   560: iconst_0
+      //   561: ldc 54
+      //   563: fastore
+      //   564: dup
+      //   565: iconst_1
+      //   566: ldc 55
+      //   568: fastore
+      //   569: dup
+      //   570: iconst_2
+      //   571: fconst_0
+      //   572: fastore
+      //   573: aastore
+      //   574: dup
+      //   575: iconst_1
+      //   576: aload 17
+      //   578: aastore
+      //   579: dup
+      //   580: iconst_2
+      //   581: iconst_3
+      //   582: newarray float
+      //   584: dup
+      //   585: iconst_0
+      //   586: ldc 54
+      //   588: fastore
+      //   589: dup
+      //   590: iconst_1
+      //   591: ldc 55
       //   593: fastore
-      //   594: aastore
-      //   595: putfield 57	com/c/a/a/u$f:bUg	[[F
-      //   598: aload_0
-      //   599: iconst_3
-      //   600: anewarray 53	[F
-      //   603: dup
-      //   604: iconst_0
-      //   605: iconst_3
-      //   606: newarray float
-      //   608: dup
-      //   609: iconst_0
-      //   610: ldc 54
-      //   612: fastore
-      //   613: dup
-      //   614: iconst_1
-      //   615: ldc 55
-      //   617: fastore
-      //   618: dup
-      //   619: iconst_2
-      //   620: fconst_0
+      //   594: dup
+      //   595: iconst_2
+      //   596: fconst_0
+      //   597: fastore
+      //   598: aastore
+      //   599: putfield 57	com/c/a/a/u$f:bRO	[[F
+      //   602: aload_0
+      //   603: iconst_3
+      //   604: anewarray 53	[F
+      //   607: dup
+      //   608: iconst_0
+      //   609: iconst_3
+      //   610: newarray float
+      //   612: dup
+      //   613: iconst_0
+      //   614: ldc 54
+      //   616: fastore
+      //   617: dup
+      //   618: iconst_1
+      //   619: ldc 55
       //   621: fastore
-      //   622: aastore
-      //   623: dup
-      //   624: iconst_1
-      //   625: iconst_3
-      //   626: newarray float
-      //   628: dup
-      //   629: iconst_0
-      //   630: ldc 54
-      //   632: fastore
-      //   633: dup
-      //   634: iconst_1
-      //   635: ldc 55
-      //   637: fastore
-      //   638: dup
-      //   639: iconst_2
-      //   640: fconst_0
+      //   622: dup
+      //   623: iconst_2
+      //   624: fconst_0
+      //   625: fastore
+      //   626: aastore
+      //   627: dup
+      //   628: iconst_1
+      //   629: iconst_3
+      //   630: newarray float
+      //   632: dup
+      //   633: iconst_0
+      //   634: ldc 54
+      //   636: fastore
+      //   637: dup
+      //   638: iconst_1
+      //   639: ldc 55
       //   641: fastore
-      //   642: aastore
-      //   643: dup
-      //   644: iconst_2
-      //   645: iconst_3
-      //   646: newarray float
-      //   648: dup
-      //   649: iconst_0
-      //   650: ldc 54
-      //   652: fastore
-      //   653: dup
-      //   654: iconst_1
-      //   655: ldc 55
-      //   657: fastore
-      //   658: dup
-      //   659: iconst_2
-      //   660: fconst_0
+      //   642: dup
+      //   643: iconst_2
+      //   644: fconst_0
+      //   645: fastore
+      //   646: aastore
+      //   647: dup
+      //   648: iconst_2
+      //   649: iconst_3
+      //   650: newarray float
+      //   652: dup
+      //   653: iconst_0
+      //   654: ldc 54
+      //   656: fastore
+      //   657: dup
+      //   658: iconst_1
+      //   659: ldc 55
       //   661: fastore
-      //   662: aastore
-      //   663: putfield 59	com/c/a/a/u$f:bUh	[[F
-      //   666: aload_0
-      //   667: getfield 47	com/c/a/a/u$f:bUd	Ljava/util/ArrayList;
-      //   670: invokevirtual 153	java/util/ArrayList:size	()I
-      //   673: bipush 100
-      //   675: if_icmplt +25 -> 700
-      //   678: aload_0
-      //   679: getfield 47	com/c/a/a/u$f:bUd	Ljava/util/ArrayList;
-      //   682: iconst_0
-      //   683: bipush 20
-      //   685: invokevirtual 157	java/util/ArrayList:subList	(II)Ljava/util/List;
-      //   688: invokeinterface 162 1 0
-      //   693: aload_0
-      //   694: getfield 47	com/c/a/a/u$f:bUd	Ljava/util/ArrayList;
-      //   697: invokevirtual 165	java/util/ArrayList:trimToSize	()V
-      //   700: iconst_1
-      //   701: istore 16
-      //   703: ldc 140
-      //   705: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   708: aload_0
-      //   709: monitorexit
-      //   710: iload 16
-      //   712: ireturn
-      //   713: iconst_0
-      //   714: istore 16
-      //   716: ldc 140
-      //   718: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   721: goto -13 -> 708
-      //   724: astore 17
-      //   726: aload_0
-      //   727: monitorexit
-      //   728: aload 17
-      //   730: athrow
+      //   662: dup
+      //   663: iconst_2
+      //   664: fconst_0
+      //   665: fastore
+      //   666: aastore
+      //   667: putfield 59	com/c/a/a/u$f:bRP	[[F
+      //   670: aload_0
+      //   671: getfield 47	com/c/a/a/u$f:bRL	Ljava/util/ArrayList;
+      //   674: invokevirtual 153	java/util/ArrayList:size	()I
+      //   677: bipush 100
+      //   679: if_icmplt +25 -> 704
+      //   682: aload_0
+      //   683: getfield 47	com/c/a/a/u$f:bRL	Ljava/util/ArrayList;
+      //   686: iconst_0
+      //   687: bipush 20
+      //   689: invokevirtual 157	java/util/ArrayList:subList	(II)Ljava/util/List;
+      //   692: invokeinterface 162 1 0
+      //   697: aload_0
+      //   698: getfield 47	com/c/a/a/u$f:bRL	Ljava/util/ArrayList;
+      //   701: invokevirtual 165	java/util/ArrayList:trimToSize	()V
+      //   704: iconst_1
+      //   705: istore 16
+      //   707: ldc 140
+      //   709: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   712: aload_0
+      //   713: monitorexit
+      //   714: iload 16
+      //   716: ireturn
+      //   717: iconst_0
+      //   718: istore 16
+      //   720: ldc 140
+      //   722: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   725: goto -13 -> 712
+      //   728: astore 17
+      //   730: aload_0
+      //   731: monitorexit
+      //   732: aload 17
+      //   734: athrow
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	731	0	this	f
+      //   0	735	0	this	f
       //   138	147	1	f1	float
       //   147	162	2	f2	float
       //   156	154	3	f3	float
@@ -1464,17 +1466,17 @@ final class u
       //   255	229	13	f13	float
       //   265	245	14	f14	float
       //   275	237	15	f15	float
-      //   701	14	16	bool	boolean
-      //   22	101	17	arrayOfFloat	float[]
-      //   724	5	17	localObject	Object
+      //   705	14	16	bool	boolean
+      //   22	555	17	arrayOfFloat	float[]
+      //   728	5	17	localObject	Object
       // Exception table:
       //   from	to	target	type
-      //   2	700	724	finally
-      //   703	708	724	finally
-      //   716	721	724	finally
+      //   2	704	728	finally
+      //   707	712	728	finally
+      //   720	725	728	finally
     }
     
-    private a zv()
+    private a zi()
     {
       int i2;
       int j;
@@ -1506,39 +1508,39 @@ final class u
         try
         {
           AppMethodBeat.i(87982);
-          if (this.bUm == 0)
+          if (this.bRU == 0)
           {
             i2 = 1;
             if (i2 == 0) {
               continue;
             }
-            if (Math.abs(this.bUi[2][0]) < 9.300000000000001D)
+            if (Math.abs(this.bRQ[2][0]) < 9.300000000000001D)
             {
               i = 5;
-              this.bUk = i;
-              this.bUj = new int[6];
+              this.bRS = i;
+              this.bRR = new int[6];
               j = 0;
-              if ((this.bUl >= 0) && (this.bUl <= 5)) {
-                this.bUk = this.bUl;
+              if ((this.bRT >= 0) && (this.bRT <= 5)) {
+                this.bRS = this.bRT;
               }
               localObject3 = new a((byte)0);
               locala = new a((byte)0);
-              if (this.bUe[0] != null)
+              if (this.bRM[0] != null)
               {
-                ((a)localObject3).bUr = this.bUe[0].bUr;
-                ((a)localObject3).bUo = this.bUe[0].bUo;
+                ((a)localObject3).bRZ = this.bRM[0].bRZ;
+                ((a)localObject3).bRW = this.bRM[0].bRW;
               }
-              if (this.bUe[4] != null)
+              if (this.bRM[4] != null)
               {
-                locala.bUr = this.bUe[4].bUr;
-                locala.bUo = this.bUe[4].bUo;
+                locala.bRZ = this.bRM[4].bRZ;
+                locala.bRW = this.bRM[4].bRW;
               }
-              if (!this.bUd.isEmpty())
+              if (!this.bRL.isEmpty())
               {
-                k = this.bUd.size();
+                k = this.bRL.size();
                 localObject5 = new float[6];
                 localObject6 = new float[6];
-                localObject7 = this.bUd.iterator();
+                localObject7 = this.bRL.iterator();
                 f1 = 0.0F;
                 f2 = 0.0F;
                 if (((Iterator)localObject7).hasNext()) {
@@ -1562,7 +1564,7 @@ final class u
                 }
                 f10 = f6;
                 break label1735;
-                localObject5 = this.bUd.iterator();
+                localObject5 = this.bRL.iterator();
                 f2 = f4;
                 f8 = 0.0F;
                 f9 = 0.0F;
@@ -1570,38 +1572,38 @@ final class u
                 if (((Iterator)localObject5).hasNext()) {
                   break;
                 }
-                if (((a)localObject3).bUn > 0)
+                if (((a)localObject3).bRV > 0)
                 {
                   if (j != 0) {
                     break label1716;
                   }
                   f1 = 0.0F;
-                  f2 = localObject1 / ((a)localObject3).bUn;
-                  f3 = ((a)localObject3).bUo;
+                  f2 = localObject1 / ((a)localObject3).bRV;
+                  f3 = ((a)localObject3).bRW;
                   f2 = f1 + ((f2 - f11) / 15.0F + 0.537F);
                   f1 = f2;
                   if (f3 != 0.0F) {
                     f1 = f2 * 0.67F + 0.33F * f3;
                   }
-                  ((a)localObject3).bUo = f1;
-                  ((a)localObject3).x *= ((a)localObject3).bUo;
-                  ((a)localObject3).y *= ((a)localObject3).bUo;
-                  ((a)localObject3).bUp = (((a)localObject3).bUn * ((a)localObject3).bUo);
+                  ((a)localObject3).bRW = f1;
+                  ((a)localObject3).x *= ((a)localObject3).bRW;
+                  ((a)localObject3).y *= ((a)localObject3).bRW;
+                  ((a)localObject3).bRX = (((a)localObject3).bRV * ((a)localObject3).bRW);
                 }
               }
-              ((a)localObject3).bUq = (((a)localObject3).bUp / (this.bUd.size() / 20));
-              if (this.bUe[0] != null)
+              ((a)localObject3).bRY = (((a)localObject3).bRX / (this.bRL.size() / 20));
+              if (this.bRM[0] != null)
               {
-                ((a)localObject3).x += this.bUe[0].x;
-                ((a)localObject3).y += this.bUe[0].y;
-                ((a)localObject3).z += this.bUe[0].z;
-                ((a)localObject3).bUn += this.bUe[0].bUn;
-                ((a)localObject3).bUp += this.bUe[0].bUp;
+                ((a)localObject3).x += this.bRM[0].x;
+                ((a)localObject3).y += this.bRM[0].y;
+                ((a)localObject3).z += this.bRM[0].z;
+                ((a)localObject3).bRV += this.bRM[0].bRV;
+                ((a)localObject3).bRX += this.bRM[0].bRX;
               }
-              if ((this.bUe[4] != null) && (locala.bUn > 0))
+              if ((this.bRM[4] != null) && (locala.bRV > 0))
               {
-                this.bUe[4].x = ((this.bUe[4].x + ((a)localObject3).x + locala.x * ((a)localObject3).bUo) / 2.0F);
-                this.bUe[4].y = ((this.bUe[4].y + ((a)localObject3).y + locala.y * ((a)localObject3).bUo) / 2.0F);
+                this.bRM[4].x = ((this.bRM[4].x + ((a)localObject3).x + locala.x * ((a)localObject3).bRW) / 2.0F);
+                this.bRM[4].y = ((this.bRM[4].y + ((a)localObject3).y + locala.y * ((a)localObject3).bRW) / 2.0F);
               }
               AppMethodBeat.o(87982);
               return localObject3;
@@ -1614,26 +1616,26 @@ final class u
           }
           i = 2;
           continue;
-          if (Math.abs(this.bUi[0][0]) < 7.0F) {
+          if (Math.abs(this.bRQ[0][0]) < 7.0F) {
             break label1764;
           }
-          if (this.bUi[1][1] >= 2.3F) {
+          if (this.bRQ[1][1] >= 2.3F) {
             break label1758;
           }
-          if (this.bUi[1][2] < 2.3F) {
+          if (this.bRQ[1][2] < 2.3F) {
             break label1764;
           }
           break label1758;
           if (i != 0)
           {
-            this.bUk = 2;
-            this.bUj = new int[6];
+            this.bRS = 2;
+            this.bRR = new int[6];
             j = i;
             continue;
           }
-          f1 = Math.abs(this.bUi[0][0]);
-          f2 = Math.abs(this.bUi[1][0]);
-          f3 = Math.abs(this.bUi[2][0]);
+          f1 = Math.abs(this.bRQ[0][0]);
+          f2 = Math.abs(this.bRQ[1][0]);
+          f3 = Math.abs(this.bRQ[2][0]);
           if (f1 <= f2) {
             break label1803;
           }
@@ -1646,31 +1648,31 @@ final class u
             break label1823;
           }
           j = n * 2 + m - 1;
-          Object localObject3 = this.bUj;
+          Object localObject3 = this.bRR;
           localObject3[j] += 1;
           j = 0;
           break label1784;
           f2 = f1;
-          if (this.bUi[k][n] <= f1) {
+          if (this.bRQ[k][n] <= f1) {
             break label1885;
           }
-          f2 = this.bUi[k][n];
+          f2 = this.bRQ[k][n];
           m = n;
           i1 = k;
           break label1885;
-          if ((j == this.bUk) || (this.bUj[j] <= this.bUj[this.bUk])) {
+          if ((j == this.bRS) || (this.bRR[j] <= this.bRR[this.bRS])) {
             break label1897;
           }
-          this.bUk = j;
+          this.bRS = j;
           break label1897;
           u.b localb = (u.b)((Iterator)localObject7).next();
           if (j == 0)
           {
-            f3 = localb.bTC;
+            f3 = localb.bRk;
             f3 = f2 + f3;
             if (j == 0)
             {
-              f2 = localb.bTK;
+              f2 = localb.bRs;
               break label1906;
               label1084:
               f1 = f4;
@@ -1678,19 +1680,19 @@ final class u
               if (i > 5) {
                 continue;
               }
-              localObject5[i] += localb.bTO[i];
-              localObject6[i] += localb.bTP[i];
+              localObject5[i] += localb.bRw[i];
+              localObject6[i] += localb.bRx[i];
               i += 1;
               continue;
             }
           }
           else
           {
-            f3 = localb.bTF;
+            f3 = localb.bRn;
             continue;
           }
-          f2 = (float)Math.sqrt(localb.bTD * localb.bTD + localb.bTE * localb.bTE + localb.bTF * localb.bTF);
-          localb.bTJ = f2;
+          f2 = (float)Math.sqrt(localb.bRl * localb.bRl + localb.bRm * localb.bRm + localb.bRn * localb.bRn);
+          localb.bRr = f2;
         }
         finally {}
         label1213:
@@ -1709,12 +1711,12 @@ final class u
       if (j == 0) {}
       label1278:
       Object localObject2;
-      for (float f3 = ((u.b)localObject6).bTC;; f3 = ((u.b)localObject6).bTJ)
+      for (float f3 = ((u.b)localObject6).bRk;; f3 = ((u.b)localObject6).bRr)
       {
         if (j != 0) {
           break label1328;
         }
-        f5 = ((u.b)localObject6).bTK;
+        f5 = ((u.b)localObject6).bRs;
         break label1918;
         if (i > 0) {
           break label1338;
@@ -1722,12 +1724,12 @@ final class u
         if (f3 > localObject2) {
           break label1937;
         }
-        f9 = localObject6.bTO[this.bUk];
-        f8 = localObject6.bTP[this.bUk];
+        f9 = localObject6.bRw[this.bRS];
+        f8 = localObject6.bRx[this.bRS];
         break;
       }
       label1328:
-      float f5 = ((u.b)localObject6).bTJ;
+      float f5 = ((u.b)localObject6).bRr;
       break label1918;
       label1338:
       if (f10 < f3) {
@@ -1745,11 +1747,11 @@ final class u
             {
               k = 1;
               i = k;
-              if (localObject4.bUr == 0L) {
+              if (localObject4.bRZ == 0L) {
                 break label1990;
               }
               i = k;
-              if (((u.b)localObject6).time - localObject4.bUr >= 250L) {
+              if (((u.b)localObject6).time - localObject4.bRZ >= 250L) {
                 break label1990;
               }
               i = 0;
@@ -1764,12 +1766,12 @@ final class u
         float f7;
         if (k != 0)
         {
-          localObject4.bUn += 1;
+          localObject4.bRV += 1;
           localObject1 += f10;
-          f3 = localObject6.bTO[this.bUk];
-          f5 = localObject6.bTP[this.bUk];
+          f3 = localObject6.bRw[this.bRS];
+          f5 = localObject6.bRx[this.bRS];
           f5 = (float)Math.atan2(f3 + f9, f5 + f8);
-          f8 = Math.abs(f5 - localObject7[this.bUk]);
+          f8 = Math.abs(f5 - localObject7[this.bRS]);
           f3 = f8;
           if (f8 <= 3.141593F) {
             break label2020;
@@ -1785,21 +1787,21 @@ final class u
           localObject4.x += f8;
           localObject4.y += f5;
           f3 = f7;
-          if (((u.b)localObject6).time - locala.bUr > 250L)
+          if (((u.b)localObject6).time - locala.bRZ > 250L)
           {
             locala.x -= f8;
             locala.y -= f5;
-            locala.bUn += 1;
+            locala.bRV += 1;
             f3 = f7;
           }
-          localObject4.bUr = ((u.b)localObject6).time;
-          f9 = localObject6.bTO[this.bUk];
-          f8 = localObject6.bTP[this.bUk];
+          localObject4.bRZ = ((u.b)localObject6).time;
+          f9 = localObject6.bRw[this.bRS];
+          f8 = localObject6.bRx[this.bRS];
           i = 0;
           f7 = f3;
           break;
           label1704:
-          f5 = localObject7[this.bUk];
+          f5 = localObject7[this.bRS];
         }
         label1716:
         f1 = 0.08F;
@@ -1946,60 +1948,60 @@ final class u
       try
       {
         AppMethodBeat.i(87984);
-        if ((this.bUm > 0) && (this.bUm < 101)) {
-          this.bUm -= 1;
+        if ((this.bRU > 0) && (this.bRU < 101)) {
+          this.bRU -= 1;
         }
-        this.bUd.add(paramb);
-        this.bUf += 1;
-        if (paramb.bTD > this.bUg[0][0]) {
-          this.bUg[0][0] = paramb.bTD;
+        this.bRL.add(paramb);
+        this.bRN += 1;
+        if (paramb.bRl > this.bRO[0][0]) {
+          this.bRO[0][0] = paramb.bRl;
         }
-        if (paramb.bTD < this.bUg[0][1]) {
-          this.bUg[0][1] = paramb.bTD;
+        if (paramb.bRl < this.bRO[0][1]) {
+          this.bRO[0][1] = paramb.bRl;
         }
-        float[] arrayOfFloat = this.bUg[0];
-        arrayOfFloat[2] += paramb.bTD;
-        if (paramb.bTE > this.bUg[1][0]) {
-          this.bUg[1][0] = paramb.bTE;
+        float[] arrayOfFloat = this.bRO[0];
+        arrayOfFloat[2] += paramb.bRl;
+        if (paramb.bRm > this.bRO[1][0]) {
+          this.bRO[1][0] = paramb.bRm;
         }
-        if (paramb.bTE < this.bUg[1][1]) {
-          this.bUg[1][1] = paramb.bTE;
+        if (paramb.bRm < this.bRO[1][1]) {
+          this.bRO[1][1] = paramb.bRm;
         }
-        arrayOfFloat = this.bUg[1];
-        arrayOfFloat[2] += paramb.bTE;
-        if (paramb.bTF > this.bUg[2][0]) {
-          this.bUg[2][0] = paramb.bTF;
+        arrayOfFloat = this.bRO[1];
+        arrayOfFloat[2] += paramb.bRm;
+        if (paramb.bRn > this.bRO[2][0]) {
+          this.bRO[2][0] = paramb.bRn;
         }
-        if (paramb.bTF < this.bUg[2][1]) {
-          this.bUg[2][1] = paramb.bTF;
+        if (paramb.bRn < this.bRO[2][1]) {
+          this.bRO[2][1] = paramb.bRn;
         }
-        arrayOfFloat = this.bUg[2];
-        arrayOfFloat[2] += paramb.bTF;
-        if (paramb.bTG > this.bUh[0][0]) {
-          this.bUh[0][0] = paramb.bTG;
+        arrayOfFloat = this.bRO[2];
+        arrayOfFloat[2] += paramb.bRn;
+        if (paramb.bRo > this.bRP[0][0]) {
+          this.bRP[0][0] = paramb.bRo;
         }
-        if (paramb.bTG < this.bUh[0][1]) {
-          this.bUh[0][1] = paramb.bTG;
+        if (paramb.bRo < this.bRP[0][1]) {
+          this.bRP[0][1] = paramb.bRo;
         }
-        arrayOfFloat = this.bUh[0];
-        arrayOfFloat[2] += paramb.bTG;
-        if (paramb.bTH > this.bUh[1][0]) {
-          this.bUh[1][0] = paramb.bTH;
+        arrayOfFloat = this.bRP[0];
+        arrayOfFloat[2] += paramb.bRo;
+        if (paramb.bRp > this.bRP[1][0]) {
+          this.bRP[1][0] = paramb.bRp;
         }
-        if (paramb.bTH < this.bUh[1][1]) {
-          this.bUh[1][1] = paramb.bTH;
+        if (paramb.bRp < this.bRP[1][1]) {
+          this.bRP[1][1] = paramb.bRp;
         }
-        arrayOfFloat = this.bUh[1];
-        arrayOfFloat[2] += paramb.bTH;
-        if (paramb.bTI > this.bUh[2][0]) {
-          this.bUh[2][0] = paramb.bTI;
+        arrayOfFloat = this.bRP[1];
+        arrayOfFloat[2] += paramb.bRp;
+        if (paramb.bRq > this.bRP[2][0]) {
+          this.bRP[2][0] = paramb.bRq;
         }
-        if (paramb.bTI < this.bUh[2][1]) {
-          this.bUh[2][1] = paramb.bTI;
+        if (paramb.bRq < this.bRP[2][1]) {
+          this.bRP[2][1] = paramb.bRq;
         }
-        arrayOfFloat = this.bUh[2];
-        arrayOfFloat[2] += paramb.bTI;
-        if (zu()) {
+        arrayOfFloat = this.bRP[2];
+        arrayOfFloat[2] += paramb.bRq;
+        if (zh()) {
           u.b(u.this);
         }
         AppMethodBeat.o(87984);
@@ -2013,16 +2015,17 @@ final class u
       try
       {
         AppMethodBeat.i(87980);
-        this.bUd.clear();
-        this.bUe = new a[5];
-        this.bUf = 0;
+        this.bRL.clear();
+        this.bRM = new a[5];
+        this.bRN = 0;
         float[] arrayOfFloat1 = { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
+        this.bRO = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, arrayOfFloat1 };
+        arrayOfFloat1 = new float[] { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
         float[] arrayOfFloat2 = { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F };
-        this.bUg = new float[][] { arrayOfFloat1, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, arrayOfFloat2 };
-        this.bUh = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F } };
-        this.bUi = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 }));
-        this.bUj = new int[6];
-        this.bUk = 5;
+        this.bRP = new float[][] { { (1.0F / -1.0F), (1.0F / 1.0F), 0.0F }, arrayOfFloat1, arrayOfFloat2 };
+        this.bRQ = ((float[][])Array.newInstance(Float.TYPE, new int[] { 3, 3 }));
+        this.bRR = new int[6];
+        this.bRS = 5;
         AppMethodBeat.o(87980);
         return;
       }
@@ -2034,7 +2037,7 @@ final class u
     }
     
     /* Error */
-    final a zw()
+    final a zj()
     {
       // Byte code:
       //   0: aload_0
@@ -2042,15 +2045,15 @@ final class u
       //   2: ldc_w 274
       //   5: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   8: aload_0
-      //   9: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   9: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   12: iconst_4
       //   13: aaload
       //   14: ifnull +23 -> 37
       //   17: aload_0
-      //   18: getfield 49	com/c/a/a/u$f:bUe	[Lcom/c/a/a/u$f$a;
+      //   18: getfield 49	com/c/a/a/u$f:bRM	[Lcom/c/a/a/u$f$a;
       //   21: iconst_4
       //   22: aaload
-      //   23: invokevirtual 277	com/c/a/a/u$f$a:zx	()Lcom/c/a/a/u$f$a;
+      //   23: invokevirtual 277	com/c/a/a/u$f$a:zk	()Lcom/c/a/a/u$f$a;
       //   26: astore_1
       //   27: ldc_w 274
       //   30: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -2081,29 +2084,29 @@ final class u
     
     final class a
     {
-      int bUn = 0;
-      float bUo = 0.0F;
-      float bUp = 0.0F;
-      float bUq = 0.0F;
-      long bUr = 0L;
+      int bRV = 0;
+      float bRW = 0.0F;
+      float bRX = 0.0F;
+      float bRY = 0.0F;
+      long bRZ = 0L;
       float x = 0.0F;
       float y = 0.0F;
       float z = 0.0F;
       
       private a() {}
       
-      protected final a zx()
+      protected final a zk()
       {
         AppMethodBeat.i(87977);
         a locala = new a(u.f.this);
         locala.x = this.x;
         locala.y = this.y;
         locala.z = this.z;
-        locala.bUn = this.bUn;
-        locala.bUo = this.bUo;
-        locala.bUp = this.bUp;
-        locala.bUr = this.bUr;
-        locala.bUq = this.bUq;
+        locala.bRV = this.bRV;
+        locala.bRW = this.bRW;
+        locala.bRX = this.bRX;
+        locala.bRZ = this.bRZ;
+        locala.bRY = this.bRY;
         AppMethodBeat.o(87977);
         return locala;
       }

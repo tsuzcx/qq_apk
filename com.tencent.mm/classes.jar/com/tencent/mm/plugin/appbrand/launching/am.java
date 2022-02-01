@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.launching;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jy;
+import com.tencent.mm.g.a.kg;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.ab;
@@ -13,76 +13,76 @@ import com.tencent.mm.sdk.b.c;
 public abstract class am
   implements aa
 {
-  QualitySession kKR;
-  private final c<jy> kKS = new c() {};
-  public volatile aa.e kKT;
-  private volatile aa.b kKU;
-  final ab kKV;
+  QualitySession lmn;
+  private final c<kg> lmo = new c() {};
+  public volatile aa.e lmp;
+  private volatile aa.b lmq;
+  final ab lmr;
   
   am(ab paramab)
   {
-    this.kKV = paramab;
+    this.lmr = paramab;
   }
   
   public final void a(aa.b paramb)
   {
-    this.kKU = paramb;
+    this.lmq = paramb;
   }
   
   public final void a(aa.e parame)
   {
-    this.kKT = parame;
+    this.lmp = parame;
   }
   
   public void a(QualitySession paramQualitySession)
   {
-    this.kKR = paramQualitySession;
+    this.lmn = paramQualitySession;
   }
   
-  public abstract String aMu();
+  public abstract String aTk();
   
-  final void bgK()
+  final void bnE()
   {
-    if (this.kKT != null) {
-      this.kKT.bgC();
+    if (this.lmp != null) {
+      this.lmp.bnw();
     }
-    this.kKS.dead();
+    this.lmo.dead();
   }
   
-  final void bgL()
+  final void bnF()
   {
-    if (this.kKT != null) {
-      this.kKT.bgD();
-    }
-  }
-  
-  final void bgM()
-  {
-    if (this.kKT != null) {
-      this.kKT.bgE();
+    if (this.lmp != null) {
+      this.lmp.bnx();
     }
   }
   
-  final void d(WxaPkgLoadProgress paramWxaPkgLoadProgress)
+  final void bnG()
   {
-    aa.b localb = this.kKU;
+    if (this.lmp != null) {
+      this.lmp.bny();
+    }
+  }
+  
+  final void c(WxaPkgLoadProgress paramWxaPkgLoadProgress)
+  {
+    aa.b localb = this.lmq;
     if (localb != null) {
-      localb.b(paramWxaPkgLoadProgress);
+      localb.a(paramWxaPkgLoadProgress);
     }
   }
   
   final void f(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    if (this.kKT != null) {
-      this.kKT.c(paramWxaPkgWrappingInfo);
+    if (this.lmp != null) {
+      this.lmp.c(paramWxaPkgWrappingInfo);
     }
-    this.kKS.dead();
+    this.lmo.dead();
   }
   
   final void g(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    if (this.kKT != null) {
-      this.kKT.d(paramWxaPkgWrappingInfo);
+    if (this.lmp != null) {
+      this.lmp.d(paramWxaPkgWrappingInfo);
     }
   }
   
@@ -90,10 +90,10 @@ public abstract class am
   
   public final void prepareAsync()
   {
-    if (this.kKR != null) {
-      this.kKS.alive();
+    if (this.lmn != null) {
+      this.lmo.alive();
     }
-    h.Iye.f(new Runnable()
+    h.JZN.f(new Runnable()
     {
       public final void run()
       {
@@ -101,12 +101,12 @@ public abstract class am
         am.this.prepare();
         AppMethodBeat.o(47241);
       }
-    }, "AppBrandLaunchPrepareJob#" + aMu());
+    }, "AppBrandLaunchPrepareJob#" + aTk());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.am
  * JD-Core Version:    0.7.0.1
  */

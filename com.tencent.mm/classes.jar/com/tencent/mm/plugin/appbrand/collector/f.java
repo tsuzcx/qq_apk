@@ -6,34 +6,34 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class f
 {
-  private static final AtomicInteger jaN;
-  private static final AtomicLong jaO;
-  private static boolean jaP;
+  private static final AtomicInteger jBa;
+  private static final AtomicLong jBb;
+  private static boolean jBc;
   
   static
   {
     AppMethodBeat.i(146109);
-    jaN = new AtomicInteger();
-    jaO = new AtomicLong();
+    jBa = new AtomicInteger();
+    jBb = new AtomicLong();
     AppMethodBeat.o(146109);
   }
   
-  public static boolean aTf()
+  public static boolean bae()
   {
-    return jaP;
+    return jBc;
   }
   
-  public static String aTg()
+  public static String baf()
   {
     float f2 = 0.0F;
     AppMethodBeat.i(146108);
-    int i = jaN.get();
-    long l1 = jaO.get();
+    int i = jBa.get();
+    long l1 = jBb.get();
     Object localObject = new StringBuilder();
     StringBuilder localStringBuilder = ((StringBuilder)localObject).append("fps : ");
-    int j = jaN.get();
-    long l2 = jaO.get();
-    if ((!jaP) || (l2 <= 0L))
+    int j = jBa.get();
+    long l2 = jBb.get();
+    if ((!jBc) || (l2 <= 0L))
     {
       f1 = 0.0F;
       localStringBuilder.append(f1);
@@ -55,22 +55,22 @@ public final class f
     }
   }
   
-  public static void fy(boolean paramBoolean)
+  public static void fU(boolean paramBoolean)
   {
-    jaP = paramBoolean;
+    jBc = paramBoolean;
   }
   
   public static void reset()
   {
     AppMethodBeat.i(146107);
-    jaN.set(0);
-    jaO.set(0L);
+    jBa.set(0);
+    jBb.set(0L);
     AppMethodBeat.o(146107);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.f
  * JD-Core Version:    0.7.0.1
  */

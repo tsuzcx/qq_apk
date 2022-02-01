@@ -14,11 +14,11 @@ import java.util.Set;
 
 public final class e
 {
-  private static final Set<String> bWl = new HashSet(Arrays.asList(new String[] { Boolean.class.getName(), Character.class.getName(), Float.class.getName(), Double.class.getName(), Byte.class.getName(), Short.class.getName(), Integer.class.getName(), Long.class.getName() }));
+  private static final Set<String> bTT = new HashSet(Arrays.asList(new String[] { Boolean.class.getName(), Character.class.getName(), Float.class.getName(), Double.class.getName(), Byte.class.getName(), Short.class.getName(), Integer.class.getName(), Long.class.getName() }));
   
   public static String a(b.a parama)
   {
-    return a(parama.bVZ, parama.mValue);
+    return a(parama.bTH, parama.mValue);
   }
   
   private static String a(d paramd, Object paramObject)
@@ -28,7 +28,7 @@ public final class e
   
   public static String a(i parami)
   {
-    parami = b(((b)parami).zX(), "name");
+    parami = b(((b)parami).zK(), "name");
     if (parami == null) {
       return "Thread name not available";
     }
@@ -39,7 +39,7 @@ public final class e
   {
     int j = 1;
     Object localObject2 = (i)paramObject;
-    paramObject = ((b)localObject2).zX();
+    paramObject = ((b)localObject2).zK();
     Object localObject1 = (Integer)b(paramObject, "count");
     com.tencent.matrix.resource.analyzer.a.b.checkNotNull(localObject1, "count");
     if (((Integer)localObject1).intValue() == 0) {
@@ -48,7 +48,7 @@ public final class e
     Object localObject3 = b(paramObject, "value");
     com.tencent.matrix.resource.analyzer.a.b.checkNotNull(localObject3, "value");
     int i;
-    if (((localObject3 instanceof a)) && (((a)localObject3).bVX == p.bXt))
+    if (((localObject3 instanceof a)) && (((a)localObject3).bTF == p.bVb))
     {
       i = 1;
       if (i == 0) {
@@ -57,7 +57,7 @@ public final class e
       localObject2 = (a)localObject3;
       localObject3 = paramObject.iterator();
       while (((Iterator)localObject3).hasNext()) {
-        if (((b.a)((Iterator)localObject3).next()).bVZ.mName.equals("offset"))
+        if (((b.a)((Iterator)localObject3).next()).bTH.mName.equals("offset"))
         {
           i = j;
           label139:
@@ -73,7 +73,7 @@ public final class e
     {
       i = paramObject.intValue();
       j = ((Integer)localObject1).intValue();
-      if ((!a.$assertionsDisabled) && (((a)localObject2).bVX != p.bXt))
+      if ((!a.$assertionsDisabled) && (((a)localObject2).bTF != p.bVb))
       {
         throw new AssertionError();
         i = 0;
@@ -81,18 +81,18 @@ public final class e
         i = 0;
         break label139;
       }
-      paramObject = ByteBuffer.wrap(((a)localObject2).bS(i, j)).order(com.d.a.b.a.a.bXC).asCharBuffer();
+      paramObject = ByteBuffer.wrap(((a)localObject2).bP(i, j)).order(com.d.a.b.a.a.bVk).asCharBuffer();
       localObject1 = new char[j];
       paramObject.get((char[])localObject1);
       return new String((char[])localObject1);
       label244:
-      if (((localObject3 instanceof a)) && (((a)localObject3).bVX == p.bXw)) {}
+      if (((localObject3 instanceof a)) && (((a)localObject3).bTF == p.bVe)) {}
       for (i = 1; i != 0; i = 0)
       {
         paramObject = (a)localObject3;
         try
         {
-          localObject2 = a.class.getDeclaredMethod("bS", new Class[] { Integer.TYPE, Integer.TYPE });
+          localObject2 = a.class.getDeclaredMethod("bP", new Class[] { Integer.TYPE, Integer.TYPE });
           ((Method)localObject2).setAccessible(true);
           paramObject = new String((byte[])((Method)localObject2).invoke(paramObject, new Object[] { Integer.valueOf(0), localObject1 }), Charset.forName("UTF-8"));
           return paramObject;
@@ -121,7 +121,7 @@ public final class e
     if (!(paramObject instanceof b)) {
       return false;
     }
-    return bWl.contains(((b)paramObject).zW().mClassName);
+    return bTT.contains(((b)paramObject).zJ().mClassName);
   }
   
   public static boolean ar(Object paramObject)
@@ -130,10 +130,10 @@ public final class e
       return false;
     }
     paramObject = (a)paramObject;
-    if (paramObject.bVX != p.bXr) {
+    if (paramObject.bTF != p.bUZ) {
       return true;
     }
-    return bWl.contains(paramObject.zW().mClassName);
+    return bTT.contains(paramObject.zJ().mClassName);
   }
   
   public static <T> T b(List<b.a> paramList, String paramString)
@@ -142,7 +142,7 @@ public final class e
     while (paramList.hasNext())
     {
       b.a locala = (b.a)paramList.next();
-      if (locala.bVZ.mName.equals(paramString)) {
+      if (locala.bTH.mName.equals(paramString)) {
         return locala.mValue;
       }
     }
@@ -156,12 +156,12 @@ public final class e
   
   public static List<b.a> b(i parami)
   {
-    return ((b)parami).zX();
+    return ((b)parami).zK();
   }
   
   public static boolean b(c paramc)
   {
-    for (c localc = paramc; localc.zZ() != null; localc = localc.zZ()) {
+    for (c localc = paramc; localc.zM() != null; localc = localc.zM()) {
       if (paramc.mClassName.equals(Thread.class.getName())) {
         return true;
       }

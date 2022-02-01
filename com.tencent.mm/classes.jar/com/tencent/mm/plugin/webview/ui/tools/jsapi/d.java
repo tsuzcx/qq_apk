@@ -8,28 +8,28 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.webview.c.c.a;
 import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import d.v;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetRedPacketDone;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "GetRedPacketDoneTask", "plugin-webview_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetRedPacketDone;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "GetRedPacketDoneTask", "plugin-webview_release"})
 public final class d
   extends a
 {
-  private static final int Bpa = 365;
-  public static final d Bpe;
+  private static final int CHh = 365;
+  public static final d CHl;
   private static final String TAG = "MicroMsg.JsApiGetRedPacketDone";
-  private static final String dAn = "getRedPacketDone";
+  private static final String dxZ = "getRedPacketDone";
   
   static
   {
     AppMethodBeat.i(164017);
-    Bpe = new d();
+    CHl = new d();
     TAG = "MicroMsg.JsApiGetRedPacketDone";
-    Bpa = 365;
-    dAn = "getRedPacketDone";
+    CHh = 365;
+    dxZ = "getRedPacketDone";
     AppMethodBeat.o(164017);
   }
   
@@ -40,20 +40,20 @@ public final class d
   
   public final boolean a(com.tencent.mm.plugin.webview.c.d paramd, final com.tencent.mm.plugin.webview.c.l paraml)
   {
-    AppMethodBeat.i(188900);
+    AppMethodBeat.i(189469);
     d.g.b.k.h(paramd, "env");
     d.g.b.k.h(paraml, "msg");
-    ad.i(TAG, "do get red packet done: " + paraml.uLu);
-    if (d.g.b.k.g(paraml.uLu.get("shouldShowRedDot"), "1")) {}
+    ac.i(TAG, "do get red packet done: " + paraml.vUl);
+    if (d.g.b.k.g(paraml.vUl.get("shouldShowRedDot"), "1")) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (d.g.b.k.g(paraml.uLu.get("isNeedRefresh"), "1")) {}
+      if (d.g.b.k.g(paraml.vUl.get("isNeedRefresh"), "1")) {}
       for (boolean bool2 = true;; bool2 = false)
       {
-        if (d.g.b.k.g(paraml.uLu.get("shouldOpenSelectSkinPage"), "1")) {}
+        if (d.g.b.k.g(paraml.vUl.get("shouldOpenSelectSkinPage"), "1")) {}
         for (boolean bool3 = true;; bool3 = false)
         {
-          ad.i(TAG, "isNeedRefresh: " + paraml.uLu.get("isNeedRefresh") + ", shouldShowRedDot: " + paraml.uLu.get("shouldShowRedDot") + ", shouldOpenSelectSkinPage: " + bool3 + ", packageId: " + paraml.uLu.get("packetId"));
+          ac.i(TAG, "isNeedRefresh: " + paraml.vUl.get("isNeedRefresh") + ", shouldShowRedDot: " + paraml.vUl.get("shouldShowRedDot") + ", shouldOpenSelectSkinPage: " + bool3 + ", packageId: " + paraml.vUl.get("packetId"));
           Object localObject1 = new Bundle();
           ((Bundle)localObject1).putBoolean("shouldShowRedDot", bool1);
           ((Bundle)localObject1).putBoolean("isNeedRefresh", bool2);
@@ -61,11 +61,11 @@ public final class d
           if (bool3)
           {
             localObject1 = new Intent();
-            Object localObject2 = paraml.uLu.get("packetId");
+            Object localObject2 = paraml.vUl.get("packetId");
             if (localObject2 == null)
             {
               paramd = new v("null cannot be cast to non-null type kotlin.String");
-              AppMethodBeat.o(188900);
+              AppMethodBeat.o(189469);
               throw paramd;
             }
             ((Intent)localObject1).putExtra("packetId", (String)localObject2);
@@ -75,40 +75,40 @@ public final class d
               if (localObject2 == null)
               {
                 paramd = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-                AppMethodBeat.o(188900);
+                AppMethodBeat.o(189469);
                 throw paramd;
               }
               ((MMActivity)localObject2).mmSetOnActivityResultCallback((MMActivity.a)new b(paramd, paraml));
             }
-            com.tencent.mm.bs.d.b(paramd.context, "luckymoney", ".ui.LuckyMoneyPickEnvelopeUI", (Intent)localObject1, 789);
+            com.tencent.mm.br.d.b(paramd.context, "luckymoney", ".ui.LuckyMoneyPickEnvelopeUI", (Intent)localObject1, 789);
           }
           for (;;)
           {
-            AppMethodBeat.o(188900);
+            AppMethodBeat.o(189469);
             return true;
-            paramd.ARd.h(paraml.ASg, paraml.kbU + ":ok", null);
+            paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":ok", null);
           }
         }
       }
     }
   }
   
-  public final int ekB()
+  public final int ezX()
   {
-    return Bpa;
+    return CHh;
   }
   
-  public final String ekC()
+  public final String ezY()
   {
-    return dAn;
+    return dxZ;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetRedPacketDone$GetRedPacketDoneTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "data", "plugin-webview_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetRedPacketDone$GetRedPacketDoneTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "data", "plugin-webview_release"})
   public static final class a
     implements com.tencent.mm.ipcinvoker.k<Bundle, IPCVoid>
   {}
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "mmOnActivityResult"})
   static final class b
     implements MMActivity.a
   {
@@ -116,20 +116,20 @@ public final class d
     
     public final void c(int paramInt1, int paramInt2, Intent paramIntent)
     {
-      AppMethodBeat.i(188899);
-      paramIntent = d.Bpe;
-      ad.i(d.getTAG(), "on select envelope result: ".concat(String.valueOf(paramInt2)));
+      AppMethodBeat.i(189468);
+      paramIntent = d.CHl;
+      ac.i(d.getTAG(), "on select envelope result: ".concat(String.valueOf(paramInt2)));
       if (paramInt1 == 789)
       {
         if (paramInt2 == -1)
         {
-          this.Bpd.ARd.h(paraml.ASg, paraml.kbU + ":ok confirm", null);
-          AppMethodBeat.o(188899);
+          this.CHk.Cjq.j(paraml.Ckt, paraml.kCH + ":ok confirm", null);
+          AppMethodBeat.o(189468);
           return;
         }
-        this.Bpd.ARd.h(paraml.ASg, paraml.kbU + ":ok cancel", null);
+        this.CHk.Cjq.j(paraml.Ckt, paraml.kCH + ":ok cancel", null);
       }
-      AppMethodBeat.o(188899);
+      AppMethodBeat.o(189468);
     }
   }
 }

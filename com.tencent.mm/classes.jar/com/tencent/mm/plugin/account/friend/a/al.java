@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.cpr;
-import com.tencent.mm.protocal.protobuf.cps;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.cuy;
+import com.tencent.mm.protocal.protobuf.cuz;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,23 +29,23 @@ public final class al
     AppMethodBeat.i(131139);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cpr();
-    ((b.a)localObject).gUV = new cps();
+    ((b.a)localObject).hvt = new cuy();
+    ((b.a)localObject).hvu = new cuz();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendsmstomfriend";
     ((b.a)localObject).funcId = 432;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (cpr)this.rr.gUS.gUX;
-    ((cpr)localObject).Ddo = paramString;
-    ((cpr)localObject).DJv = new LinkedList();
-    ((cpr)localObject).DJu = paramList.size();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cuy)this.rr.hvr.hvw;
+    ((cuy)localObject).Ewu = paramString;
+    ((cuy)localObject).FeQ = new LinkedList();
+    ((cuy)localObject).FeP = paramList.size();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       paramList = (String)paramString.next();
-      if (!bt.isNullOrNil(paramList)) {
-        ((cpr)localObject).DJv.add(new cmf().aEE(paramList));
+      if (!bs.isNullOrNil(paramList)) {
+        ((cuy)localObject).FeQ.add(new crm().aJV(paramList));
       }
     }
     AppMethodBeat.o(131139);

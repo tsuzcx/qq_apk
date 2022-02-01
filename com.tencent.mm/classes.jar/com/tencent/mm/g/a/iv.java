@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class iv
   extends b
 {
-  public a dmO;
-  public b dmP;
+  public a dkf;
+  public b dkg;
   
   public iv()
   {
@@ -17,27 +16,27 @@ public final class iv
   
   private iv(byte paramByte)
   {
-    AppMethodBeat.i(155370);
-    this.dmO = new a();
-    this.dmP = new b();
-    this.ESR = false;
+    AppMethodBeat.i(130778);
+    this.dkf = new a();
+    this.dkg = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(155370);
+    AppMethodBeat.o(130778);
   }
   
   public static final class a
   {
-    public Context context;
+    public int dkh = -1;
   }
   
   public static final class b
   {
-    public String dmQ;
+    public int dki = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.iv
  * JD-Core Version:    0.7.0.1
  */

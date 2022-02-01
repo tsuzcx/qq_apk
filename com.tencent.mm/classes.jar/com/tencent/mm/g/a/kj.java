@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class kj
   extends b
 {
-  public a doN;
+  public a dlR;
   
   public kj()
   {
@@ -16,21 +15,30 @@ public final class kj
   
   private kj(byte paramByte)
   {
-    AppMethodBeat.i(121050);
-    this.doN = new a();
-    this.ESR = false;
+    AppMethodBeat.i(128844);
+    this.dlR = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(121050);
+    AppMethodBeat.o(128844);
   }
   
   public static final class a
   {
-    public Intent doO;
+    public boolean dlS = false;
+    public boolean dlT = false;
+    public String dlU;
+    public String dlV;
+    public String dlW;
+    public String dlX;
+    public String dlY;
+    public String dlZ;
+    public String dma;
+    public String dmb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.kj
  * JD-Core Version:    0.7.0.1
  */

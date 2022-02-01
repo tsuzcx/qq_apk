@@ -1,108 +1,108 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.audio.e.d;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.j;
-import com.tencent.mm.protocal.protobuf.dse;
-import com.tencent.mm.protocal.protobuf.dsf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.protocal.protobuf.dxv;
+import com.tencent.mm.protocal.protobuf.dxw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ah;
 import com.tencent.qqpinyin.voicerecoapi.c.a;
 import java.util.LinkedList;
 
 public final class p
   implements g
 {
-  public static final String AEP;
-  public com.tencent.mm.plugin.wear.model.d.c AEQ;
-  public com.tencent.qqpinyin.voicerecoapi.c AER;
-  public d AES;
-  private int AET;
-  public int AEU;
-  public int AEV;
-  public boolean dDS;
-  public LinkedList<Integer> jhB;
+  public static final String BXj;
+  public com.tencent.mm.plugin.wear.model.d.c BXk;
+  public com.tencent.qqpinyin.voicerecoapi.c BXl;
+  public d BXm;
+  private int BXn;
+  public int BXo;
+  public int BXp;
+  public boolean dBE;
+  public LinkedList<Integer> jHQ;
   
   static
   {
     AppMethodBeat.i(30107);
-    AEP = ae.FfH + "tmp_wearvoicetotext.spx";
+    BXj = ah.GDu + "tmp_wearvoicetotext.spx";
     AppMethodBeat.o(30107);
   }
   
   public p()
   {
     AppMethodBeat.i(30103);
-    this.dDS = false;
-    this.AET = 0;
-    this.jhB = new LinkedList();
+    this.dBE = false;
+    this.BXn = 0;
+    this.jHQ = new LinkedList();
     AppMethodBeat.o(30103);
   }
   
-  public final void a(int paramInt, dse paramdse)
+  public final void a(int paramInt, dxv paramdxv)
   {
     AppMethodBeat.i(30106);
-    if (paramdse.CAF == null)
+    if (paramdxv.DTb == null)
     {
-      ad.i("MicroMsg.Wear.VoiceToTextServer", "voice data is null");
+      ac.i("MicroMsg.Wear.VoiceToTextServer", "voice data is null");
       AppMethodBeat.o(30106);
       return;
     }
-    Object localObject = paramdse.CAF.toByteArray();
-    this.AET += this.AES.a(new g.a((byte[])localObject, paramdse.CJI), 0, false);
-    ad.i("MicroMsg.Wear.VoiceToTextServer", "write bytes: %d", new Object[] { Integer.valueOf(this.AET) });
-    short[] arrayOfShort = new short[paramdse.CJI / 2];
+    Object localObject = paramdxv.DTb.toByteArray();
+    this.BXn += this.BXm.a(new g.a((byte[])localObject, paramdxv.Eck), 0, false);
+    ac.i("MicroMsg.Wear.VoiceToTextServer", "write bytes: %d", new Object[] { Integer.valueOf(this.BXn) });
+    short[] arrayOfShort = new short[paramdxv.Eck / 2];
     int i = 0;
-    while (i < paramdse.CJI / 2)
+    while (i < paramdxv.Eck / 2)
     {
       arrayOfShort[i] = ((short)(localObject[(i * 2)] & 0xFF | localObject[(i * 2 + 1)] << 8));
       i += 1;
     }
     localObject = new c.a();
-    this.AER.a(arrayOfShort, paramdse.CJI / 2, (c.a)localObject);
-    ad.i("MicroMsg.Wear.VoiceToTextServer", "state.vad_flag: " + ((c.a)localObject).IpI);
-    if (((c.a)localObject).IpI == 2) {
-      this.AEV = 1;
+    this.BXl.a(arrayOfShort, paramdxv.Eck / 2, (c.a)localObject);
+    ac.i("MicroMsg.Wear.VoiceToTextServer", "state.vad_flag: " + ((c.a)localObject).JRs);
+    if (((c.a)localObject).JRs == 2) {
+      this.BXp = 1;
     }
     for (;;)
     {
-      if (this.AEV != 0)
+      if (this.BXp != 0)
       {
-        if (this.AEV < 0)
+        if (this.BXp < 0)
         {
-          if (this.jhB.size() > 10) {
-            this.jhB.removeLast();
+          if (this.jHQ.size() > 10) {
+            this.jHQ.removeLast();
           }
-          this.jhB.addFirst(Integer.valueOf(paramInt));
+          this.jHQ.addFirst(Integer.valueOf(paramInt));
         }
-        if (this.AEV == 1)
+        if (this.BXp == 1)
         {
-          paramdse = new dsf();
-          paramdse.Egc = this.AEQ.talker;
-          paramdse.CIE = "";
-          paramdse.Ctr = this.AEV;
-          paramdse.EGS = true;
-          a.egW().a(new a(this.AEQ.dcS, paramdse));
-          this.AEV = 0;
+          paramdxv = new dxw();
+          paramdxv.FDc = this.BXk.talker;
+          paramdxv.Ebg = "";
+          paramdxv.DLI = this.BXp;
+          paramdxv.Gee = true;
+          a.ewq().a(new a(this.BXk.daq, paramdxv));
+          this.BXp = 0;
         }
       }
-      if ((!this.dDS) && (this.AET > 3300))
+      if ((!this.dBE) && (this.BXn > 3300))
       {
-        this.dDS = true;
-        az.aeS().a(this.AEQ, 0);
+        this.dBE = true;
+        az.agi().a(this.BXk, 0);
       }
       AppMethodBeat.o(30106);
       return;
-      if (((c.a)localObject).IpI == 3) {
-        this.AEV = 2;
+      if (((c.a)localObject).JRs == 3) {
+        this.BXp = 2;
       }
     }
   }
@@ -115,84 +115,84 @@ public final class p
       paramString = (com.tencent.mm.plugin.wear.model.d.c)paramn;
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        az.aeS().b(349, this);
-        paramn = new dsf();
-        paramn.Egc = paramString.talker;
-        paramn.CIE = "";
-        paramn.Ctr = -1;
-        paramn.EGS = false;
-        a.egW().a(new a(paramString.dcS, paramn));
+        az.agi().b(349, this);
+        paramn = new dxw();
+        paramn.FDc = paramString.talker;
+        paramn.Ebg = "";
+        paramn.DLI = -1;
+        paramn.Gee = false;
+        a.ewq().a(new a(paramString.daq, paramn));
         AppMethodBeat.o(30105);
         return;
       }
-      if (paramString.AEG)
+      if (paramString.BXa)
       {
-        az.aeS().b(349, this);
-        paramn = new dsf();
-        paramn.Egc = paramString.talker;
-        if (bt.isNullOrNil(paramString.AEF)) {
+        az.agi().b(349, this);
+        paramn = new dxw();
+        paramn.FDc = paramString.talker;
+        if (bs.isNullOrNil(paramString.BWZ)) {
           break label213;
         }
-        ad.i("MicroMsg.Wear.VoiceToTextServer", "receive text: %s", new Object[] { paramString.AEF });
-        paramn.CIE = paramString.AEF;
-        paramn.Ctr = 0;
+        ac.i("MicroMsg.Wear.VoiceToTextServer", "receive text: %s", new Object[] { paramString.BWZ });
+        paramn.Ebg = paramString.BWZ;
+        paramn.DLI = 0;
       }
     }
-    for (paramn.EGS = true;; paramn.EGS = false)
+    for (paramn.Gee = true;; paramn.Gee = false)
     {
-      a.egW().a(new a(paramString.dcS, paramn));
+      a.ewq().a(new a(paramString.daq, paramn));
       AppMethodBeat.o(30105);
       return;
       label213:
-      paramn.CIE = "";
-      paramn.Ctr = -1;
+      paramn.Ebg = "";
+      paramn.DLI = -1;
     }
   }
   
   public final void reset()
   {
     AppMethodBeat.i(30104);
-    ad.i("MicroMsg.Wear.VoiceToTextServer", "reset: sessionId=%s", new Object[] { Integer.valueOf(this.AEU) });
-    if (this.AES != null)
+    ac.i("MicroMsg.Wear.VoiceToTextServer", "reset: sessionId=%s", new Object[] { Integer.valueOf(this.BXo) });
+    if (this.BXm != null)
     {
-      this.AES.PQ();
-      this.AES = null;
-      ad.i("MicroMsg.Wear.VoiceToTextServer", "reset speexWriter");
+      this.BXm.PM();
+      this.BXm = null;
+      ac.i("MicroMsg.Wear.VoiceToTextServer", "reset speexWriter");
     }
-    if (this.AER != null)
+    if (this.BXl != null)
     {
-      this.AER.stop();
-      this.AER = null;
-      ad.i("MicroMsg.Wear.VoiceToTextServer", "reset voiceDetectAPI");
+      this.BXl.stop();
+      this.BXl = null;
+      ac.i("MicroMsg.Wear.VoiceToTextServer", "reset voiceDetectAPI");
     }
-    if (this.AEQ != null)
+    if (this.BXk != null)
     {
-      this.AEQ.hCh = true;
-      az.aeS().b(349, this);
-      az.aeS().a(this.AEQ);
-      this.AEQ = null;
+      this.BXk.icI = true;
+      az.agi().b(349, this);
+      az.agi().a(this.BXk);
+      this.BXk = null;
     }
-    this.AEV = 0;
-    this.dDS = false;
-    this.AET = 0;
-    this.AEU = -1;
-    this.jhB.clear();
+    this.BXp = 0;
+    this.dBE = false;
+    this.BXn = 0;
+    this.BXo = -1;
+    this.jHQ.clear();
     AppMethodBeat.o(30104);
   }
   
   final class a
     extends com.tencent.mm.plugin.wear.model.f.c
   {
-    public dsf AEX;
-    public int AEm = 2;
-    public int dcS;
-    public int hrg;
+    public int BWG = 2;
+    public dxw BXr;
+    public int daq;
+    public int hRI;
     
-    public a(int paramInt, dsf paramdsf)
+    public a(int paramInt, dxw paramdxw)
     {
-      this.dcS = paramInt;
-      this.hrg = 30001;
-      this.AEX = paramdsf;
+      this.daq = paramInt;
+      this.hRI = 30001;
+      this.BXr = paramdxw;
     }
     
     public final String getName()
@@ -207,12 +207,12 @@ public final class p
       //   0: sipush 30102
       //   3: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   6: aload_0
-      //   7: getfield 30	com/tencent/mm/plugin/wear/model/e/p$a:AEX	Lcom/tencent/mm/protocal/protobuf/dsf;
-      //   10: invokevirtual 50	com/tencent/mm/protocal/protobuf/dsf:toByteArray	()[B
+      //   7: getfield 30	com/tencent/mm/plugin/wear/model/e/p$a:BXr	Lcom/tencent/mm/protocal/protobuf/dxw;
+      //   10: invokevirtual 50	com/tencent/mm/protocal/protobuf/dxw:toByteArray	()[B
       //   13: astore_1
-      //   14: invokestatic 56	com/tencent/mm/plugin/wear/model/a:egV	()Lcom/tencent/mm/plugin/wear/model/d;
+      //   14: invokestatic 56	com/tencent/mm/plugin/wear/model/a:ewp	()Lcom/tencent/mm/plugin/wear/model/d;
       //   17: aload_1
-      //   18: invokevirtual 62	com/tencent/mm/plugin/wear/model/d:bX	([B)[B
+      //   18: invokevirtual 62	com/tencent/mm/plugin/wear/model/d:bW	([B)[B
       //   21: astore_2
       //   22: new 64	java/io/ByteArrayOutputStream
       //   25: dup
@@ -225,15 +225,15 @@ public final class p
       //   38: astore_3
       //   39: aload_3
       //   40: aload_0
-      //   41: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:AEm	I
+      //   41: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:BWG	I
       //   44: invokevirtual 73	java/io/DataOutputStream:writeInt	(I)V
       //   47: aload_3
       //   48: aload_0
-      //   49: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:dcS	I
+      //   49: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:daq	I
       //   52: invokevirtual 73	java/io/DataOutputStream:writeInt	(I)V
       //   55: aload_3
       //   56: aload_0
-      //   57: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:hrg	I
+      //   57: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:hRI	I
       //   60: invokevirtual 73	java/io/DataOutputStream:writeInt	(I)V
       //   63: aload_2
       //   64: ifnull +91 -> 155
@@ -257,7 +257,7 @@ public final class p
       //   96: dup
       //   97: iconst_0
       //   98: aload_0
-      //   99: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:hrg	I
+      //   99: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:hRI	I
       //   102: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   105: aastore
       //   106: dup
@@ -266,11 +266,11 @@ public final class p
       //   109: arraylength
       //   110: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   113: aastore
-      //   114: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   117: invokestatic 56	com/tencent/mm/plugin/wear/model/a:egV	()Lcom/tencent/mm/plugin/wear/model/d;
+      //   114: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   117: invokestatic 56	com/tencent/mm/plugin/wear/model/a:ewp	()Lcom/tencent/mm/plugin/wear/model/d;
       //   120: aload_1
       //   121: invokevirtual 78	java/io/ByteArrayOutputStream:toByteArray	()[B
-      //   124: invokevirtual 99	com/tencent/mm/plugin/wear/model/d:bV	([B)Z
+      //   124: invokevirtual 99	com/tencent/mm/plugin/wear/model/d:bU	([B)Z
       //   127: pop
       //   128: sipush 30102
       //   131: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -281,7 +281,7 @@ public final class p
       //   139: ldc 104
       //   141: iconst_0
       //   142: anewarray 84	java/lang/Object
-      //   145: invokestatic 108	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   145: invokestatic 108	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   148: sipush 30102
       //   151: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   154: return
@@ -298,22 +298,22 @@ public final class p
       //   173: dup
       //   174: iconst_0
       //   175: aload_0
-      //   176: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:AEm	I
+      //   176: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:BWG	I
       //   179: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   182: aastore
       //   183: dup
       //   184: iconst_1
       //   185: aload_0
-      //   186: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:dcS	I
+      //   186: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:daq	I
       //   189: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   192: aastore
       //   193: dup
       //   194: iconst_2
       //   195: aload_0
-      //   196: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:hrg	I
+      //   196: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:hRI	I
       //   199: invokestatic 90	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   202: aastore
-      //   203: invokestatic 108	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   203: invokestatic 108	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   206: sipush 30102
       //   209: invokestatic 102	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   212: return
@@ -337,7 +337,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.dbq;
-import com.tencent.mm.protocal.protobuf.dbr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dhc;
+import com.tencent.mm.protocal.protobuf.dhd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class i
   extends n
@@ -27,19 +27,19 @@ public final class i
   {
     AppMethodBeat.i(127838);
     b.a locala = new b.a();
-    locala.gUU = new dbq();
-    locala.gUV = new dbr();
+    locala.hvt = new dhc();
+    locala.hvu = new dhd();
     locala.uri = "/cgi-bin/micromsg-bin/thirdappverify";
     locala.funcId = 755;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((dbq)this.rr.gUS.gUX).Dfj = paramString;
-    ((dbq)this.rr.gUS.gUX).Eti = 1;
-    ((dbq)this.rr.gUS.gUX).oXs = com.tencent.mm.sdk.platformtools.ac.eFu();
-    paramString = bt.eGG();
-    ((dbq)this.rr.gUS.gUX).CFU = z.am(paramString);
-    this.rr.setRsaInfo(com.tencent.mm.protocal.ac.eCa());
+    this.rr = locala.aAz();
+    ((dhc)this.rr.hvr.hvw).Eyp = paramString;
+    ((dhc)this.rr.hvr.hvw).FQk = 1;
+    ((dhc)this.rr.hvr.hvw).pAD = ab.eUO();
+    paramString = bs.eWb();
+    ((dhc)this.rr.hvr.hvw).DYu = z.al(paramString);
+    this.rr.setRsaInfo(com.tencent.mm.protocal.ac.eRv());
     this.rr.option = 1;
     this.rr.getReqObj().setPassKey(paramString);
     this.rr.getReqObj().setSceneStatus(1);
@@ -63,14 +63,14 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(127840);
-    ad.i("MicroMsg.NetSceneVerifyThirdApp", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneVerifyThirdApp", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(127840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.i
  * JD-Core Version:    0.7.0.1
  */

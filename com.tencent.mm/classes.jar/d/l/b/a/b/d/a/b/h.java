@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends a
 {
-  public static final h JzH;
+  public static final h Lna;
   
   static
   {
     AppMethodBeat.i(57730);
-    JzH = new h();
+    Lna = new h();
     AppMethodBeat.o(57730);
   }
   
@@ -21,7 +21,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.b.h
  * JD-Core Version:    0.7.0.1
  */

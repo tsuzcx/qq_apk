@@ -71,16 +71,16 @@ public abstract class LruDiskUsage
     
     public Void call()
     {
-      AppMethodBeat.i(190354);
+      AppMethodBeat.i(192554);
       LruDiskUsage.this.touchInBackground(this.file);
-      AppMethodBeat.o(190354);
+      AppMethodBeat.o(192554);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.danikula.videocache.file.LruDiskUsage
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class VideoTextureView$1
   extends Thread
@@ -14,11 +14,11 @@ final class VideoTextureView$1
     AppMethodBeat.i(134064);
     try
     {
-      if (this.nTu != null)
+      if (this.owP != null)
       {
-        ad.i("MicroMsg.VideoTextureView", "%d another thread to release player[%s]", new Object[] { Integer.valueOf(this.CnQ.hashCode()), this.nTu });
-        this.nTu.stop();
-        this.nTu.release();
+        ac.i("MicroMsg.VideoTextureView", "%d another thread to release player[%s]", new Object[] { Integer.valueOf(this.DGj.hashCode()), this.owP });
+        this.owP.stop();
+        this.owP.release();
       }
       AppMethodBeat.o(134064);
       return;
@@ -31,7 +31,7 @@ final class VideoTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoTextureView.1
  * JD-Core Version:    0.7.0.1
  */

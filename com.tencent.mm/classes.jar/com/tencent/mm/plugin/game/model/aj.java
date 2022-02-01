@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.a.a.c;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.a.c.d;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.a.c.d;
+import com.tencent.mm.av.o;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.game.d.an;
 import com.tencent.mm.plugin.game.d.bf;
 import com.tencent.mm.plugin.game.d.bg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,37 +24,37 @@ public final class aj
   extends n
   implements k
 {
-  public static com.tencent.mm.al.g gWw;
-  public static final String rYC;
-  private com.tencent.mm.al.g callback;
-  private final com.tencent.mm.al.b fUF;
+  public static com.tencent.mm.ak.g hwV;
+  public static final String tgu;
+  private com.tencent.mm.ak.g callback;
+  private final com.tencent.mm.ak.b fYA;
   
   static
   {
     AppMethodBeat.i(41591);
-    rYC = com.tencent.mm.plugin.game.commlib.e.b.b(com.tencent.mm.plugin.game.commlib.e.b.a.rOH) + "tabnav/";
-    gWw = new com.tencent.mm.al.g()
+    tgu = com.tencent.mm.plugin.game.commlib.e.b.b(com.tencent.mm.plugin.game.commlib.e.b.a.sWx) + "tabnav/";
+    hwV = new com.tencent.mm.ak.g()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(41581);
-        com.tencent.mm.kernel.g.aeS().b(2641, this);
+        com.tencent.mm.kernel.g.agi().b(2641, this);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          ad.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data success");
-          aq.f(new Runnable()
+          ac.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data success");
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(41580);
-              aj.a(this.rYD);
+              aj.a(this.tgv);
               AppMethodBeat.o(41580);
             }
           });
           AppMethodBeat.o(41581);
           return;
         }
-        ad.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data fail");
+        ac.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data fail");
         AppMethodBeat.o(41581);
       }
     };
@@ -64,14 +64,14 @@ public final class aj
   public aj()
   {
     AppMethodBeat.i(41584);
-    com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
-    locala.gUU = new bf();
-    locala.gUV = new bg();
+    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
+    locala.hvt = new bf();
+    locala.hvu = new bg();
     locala.uri = "/cgi-bin/mmgame-bin/getgameindex4tabnav";
     locala.funcId = getType();
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.fUF = locala.atI();
+    this.fYA = locala.aAz();
     AppMethodBeat.o(41584);
   }
   
@@ -83,21 +83,21 @@ public final class aj
       AppMethodBeat.o(41588);
       return;
     }
-    if (bt.gL(parambg.saZ))
+    if (bs.gY(parambg.tiT))
     {
-      ad.i("MicroMsg.NetSceneGameIndex4TabNav", "nav list is null");
+      ac.i("MicroMsg.NetSceneGameIndex4TabNav", "nav list is null");
       AppMethodBeat.o(41588);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = parambg.saZ.iterator();
+    Iterator localIterator = parambg.tiT.iterator();
     while (localIterator.hasNext())
     {
       an localan = (an)localIterator.next();
       if (localan != null)
       {
-        localArrayList.add(localan.sbl);
-        localArrayList.add(localan.sbm);
+        localArrayList.add(localan.tjf);
+        localArrayList.add(localan.tjg);
       }
     }
     a(localArrayList, new a()
@@ -105,8 +105,8 @@ public final class aj
       public final void onComplete()
       {
         AppMethodBeat.i(41582);
-        ad.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download complete! save nav data");
-        ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBe().b("game_index4_tab_nav", this.rYD);
+        ac.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download complete! save nav data");
+        ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOn().b("game_index4_tab_nav", this.tgv);
         AppMethodBeat.o(41582);
       }
     });
@@ -119,7 +119,7 @@ public final class aj
     String str;
     for (;;)
     {
-      if (bt.gL(paramList))
+      if (bs.gY(paramList))
       {
         if (parama != null) {
           parama.onComplete();
@@ -128,22 +128,22 @@ public final class aj
         return;
       }
       str = (String)paramList.remove(0);
-      if (!bt.isNullOrNil(str)) {
+      if (!bs.isNullOrNil(str)) {
         break;
       }
-      ad.e("MicroMsg.NetSceneGameIndex4TabNav", "iconUrl is null");
+      ac.e("MicroMsg.NetSceneGameIndex4TabNav", "iconUrl is null");
     }
-    Object localObject = rYC + com.tencent.mm.b.g.getMessageDigest(str.getBytes());
+    Object localObject = tgu + com.tencent.mm.b.g.getMessageDigest(str.getBytes());
     c.a locala = new c.a();
-    locala.hjU = true;
-    locala.gjt = ((String)localObject);
-    localObject = locala.azc();
-    o.ayJ().a(str, (c)localObject, new d()
+    locala.hKx = true;
+    locala.gKe = ((String)localObject);
+    localObject = locala.aFT();
+    o.aFB().a(str, (c)localObject, new d()
     {
-      public final void en(boolean paramAnonymousVarArgs)
+      public final void eI(boolean paramAnonymousVarArgs)
       {
         AppMethodBeat.i(41583);
-        ad.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download %b! thumburl:%s", new Object[] { Boolean.valueOf(paramAnonymousVarArgs), this.owA });
+        ac.i("MicroMsg.NetSceneGameIndex4TabNav", "nav icon download %b! thumburl:%s", new Object[] { Boolean.valueOf(paramAnonymousVarArgs), this.paa });
         aj.b(paramList, parama);
         AppMethodBeat.o(41583);
       }
@@ -154,23 +154,23 @@ public final class aj
   public static void updateData()
   {
     AppMethodBeat.i(41587);
-    ad.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data");
-    com.tencent.mm.kernel.g.aeS().a(2641, gWw);
+    ac.i("MicroMsg.NetSceneGameIndex4TabNav", "update gameIndexTabNav data");
+    com.tencent.mm.kernel.g.agi().a(2641, hwV);
     aj localaj = new aj();
-    com.tencent.mm.kernel.g.aeS().a(localaj, 0);
+    com.tencent.mm.kernel.g.agi().a(localaj, 0);
     AppMethodBeat.o(41587);
   }
   
-  public final bg cDP()
+  public final bg cQZ()
   {
-    return (bg)this.fUF.gUT.gUX;
+    return (bg)this.fYA.hvs.hvw;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(41586);
     this.callback = paramg;
-    int i = dispatch(parame, this.fUF, this);
+    int i = dispatch(parame, this.fYA, this);
     AppMethodBeat.o(41586);
     return i;
   }
@@ -183,7 +183,7 @@ public final class aj
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41585);
-    ad.i("MicroMsg.NetSceneGameIndex4TabNav", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+    ac.i("MicroMsg.NetSceneGameIndex4TabNav", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(41585);
   }

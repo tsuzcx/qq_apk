@@ -3,7 +3,7 @@ package android.support.v4.content.a;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build.VERSION;
-import android.support.a.a.a;
+import android.support.b.a.a;
 import android.support.v4.c.a;
 import android.util.Base64;
 import android.util.TypedValue;
@@ -225,46 +225,46 @@ public final class c
   public static final class b
     implements c.a
   {
-    public final c.c[] GD;
+    public final c.c[] HB;
     
     public b(c.c[] paramArrayOfc)
     {
-      this.GD = paramArrayOfc;
+      this.HB = paramArrayOfc;
     }
   }
   
   public static final class c
   {
-    public int GE;
-    public boolean GF;
-    public String GG;
-    public int GH;
-    public int GI;
+    public int HC;
+    public boolean HD;
+    public String HE;
+    public int HF;
+    public int HG;
     public final String mFileName;
     
     public c(String paramString1, int paramInt1, boolean paramBoolean, String paramString2, int paramInt2, int paramInt3)
     {
       this.mFileName = paramString1;
-      this.GE = paramInt1;
-      this.GF = paramBoolean;
-      this.GG = paramString2;
-      this.GH = paramInt2;
-      this.GI = paramInt3;
+      this.HC = paramInt1;
+      this.HD = paramBoolean;
+      this.HE = paramString2;
+      this.HF = paramInt2;
+      this.HG = paramInt3;
     }
   }
   
   public static final class d
     implements c.a
   {
-    public final a GJ;
-    public final int GK;
-    public final int GL;
+    public final a HH;
+    public final int HI;
+    public final int mTimeoutMs;
     
     public d(a parama, int paramInt1, int paramInt2)
     {
-      this.GJ = parama;
-      this.GL = paramInt1;
-      this.GK = paramInt2;
+      this.HH = parama;
+      this.HI = paramInt1;
+      this.mTimeoutMs = paramInt2;
     }
   }
 }

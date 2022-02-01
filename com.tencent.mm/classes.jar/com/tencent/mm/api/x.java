@@ -1,6 +1,7 @@
 package com.tencent.mm.api;
 
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
 import com.tencent.mm.ui.widget.MMWebView;
 
@@ -8,6 +9,8 @@ public abstract interface x
   extends a
 {
   public abstract BaseWebViewController a(MMWebView paramMMWebView);
+  
+  public abstract f j(MMWebView paramMMWebView);
 }
 
 

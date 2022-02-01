@@ -9,7 +9,7 @@ final class c
   public final void onBackgroundStateChanged(boolean paramBoolean)
   {
     AppMethodBeat.i(4106);
-    a.wB();
+    a.wo();
     AppMethodBeat.o(4106);
   }
 }

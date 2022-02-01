@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class n
 {
-  public static String N(Context paramContext, int paramInt)
+  public static String R(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106957);
     if (paramInt <= 0)
@@ -30,7 +30,7 @@ public final class n
     return paramContext;
   }
   
-  public static String O(Context paramContext, int paramInt)
+  public static String S(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106959);
     paramContext = "[" + paramContext.getResources().getString(paramInt) + "]";
@@ -38,15 +38,15 @@ public final class n
     return paramContext;
   }
   
-  public static boolean YB(String paramString)
+  public static boolean acX(String paramString)
   {
     AppMethodBeat.i(106958);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(106958);
       return false;
     }
-    if (!paramString.equals(aj.getContext().getResources().getString(2131760739)))
+    if (!paramString.equals(ai.getContext().getResources().getString(2131760739)))
     {
       AppMethodBeat.o(106958);
       return true;

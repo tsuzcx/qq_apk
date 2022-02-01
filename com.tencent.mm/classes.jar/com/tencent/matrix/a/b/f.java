@@ -17,54 +17,54 @@ import org.json.JSONObject;
 public final class f
   extends com.tencent.matrix.report.d
 {
-  final a cuA;
-  final Runnable cuB;
-  final e cuC;
-  final Map<String, d> cuv = new HashMap();
-  final Map<String, c> cuw = new HashMap();
-  final int cux;
-  private final int cuy;
-  private final int cuz;
+  final Map<String, d> crD = new HashMap();
+  final Map<String, c> crE = new HashMap();
+  final int crF;
+  private final int crG;
+  private final int crH;
+  final a crI;
+  final Runnable crJ;
+  final e crK;
   
   public f(d.a parama, com.tencent.matrix.a.a.a parama1, a parama2)
   {
     super(parama);
-    this.cux = parama1.cty.get(a.a.Ihu.name(), 120000);
-    this.cuy = parama1.cty.get(a.a.Ihw.name(), 600000);
-    this.cuz = parama1.cty.get(a.a.Ihv.name(), 20);
-    this.cuA = parama2;
-    this.cuB = new Runnable()
+    this.crF = parama1.cqF.get(a.a.JJc.name(), 120000);
+    this.crG = parama1.cqF.get(a.a.JJe.name(), 600000);
+    this.crH = parama1.cqF.get(a.a.JJd.name(), 20);
+    this.crI = parama2;
+    this.crJ = new Runnable()
     {
       public final void run()
       {
-        Iterator localIterator = f.this.cuw.entrySet().iterator();
+        Iterator localIterator = f.this.crE.entrySet().iterator();
         while (localIterator.hasNext()) {
-          ((f.c)((Map.Entry)localIterator.next()).getValue()).GW();
+          ((f.c)((Map.Entry)localIterator.next()).getValue()).GH();
         }
         f.a(f.this);
       }
     };
-    if (parama1.GO())
+    if (parama1.Gz())
     {
-      this.cuC = new e();
+      this.crK = new e();
       return;
     }
-    this.cuC = null;
+    this.crK = null;
   }
   
-  private void GU()
+  private void GF()
   {
-    Iterator localIterator = this.cuv.entrySet().iterator();
+    Iterator localIterator = this.crD.entrySet().iterator();
     long l = SystemClock.uptimeMillis();
     for (;;)
     {
       if (localIterator.hasNext())
       {
         d locald = (d)((Map.Entry)localIterator.next()).getValue();
-        if (l - locald.cuQ >= this.cux)
+        if (l - locald.crY >= this.crF)
         {
           String str = String.format("%s:%d", new Object[] { locald.tag, Integer.valueOf(1) });
-          if (cX(str))
+          if (cM(str))
           {
             com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockOnceHoldTime issue already published: %s", new Object[] { str });
           }
@@ -78,12 +78,12 @@ public final class f
               localJSONObject.put("subTag", "wakeLock");
               localJSONObject.put("wakeLockTag", locald.tag);
               localJSONObject.put("flags", locald.flags);
-              localJSONObject.put("holdTime", l - locald.cuQ);
-              localJSONObject.put("stackHistory", locald.cuK);
-              com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "detected lock once too long, token:%s, tag:%s", new Object[] { locald.cuO, locald.tag });
-              localc.cwV = localJSONObject;
+              localJSONObject.put("holdTime", l - locald.crY);
+              localJSONObject.put("stackHistory", locald.crS);
+              com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "detected lock once too long, token:%s, tag:%s", new Object[] { locald.crW, locald.tag });
+              localc.cue = localJSONObject;
               b(localc);
-              cW(str);
+              cL(str);
             }
             catch (JSONException localJSONException)
             {
@@ -98,38 +98,38 @@ public final class f
     }
   }
   
-  private void GV()
+  private void GG()
   {
-    Iterator localIterator = this.cuw.entrySet().iterator();
+    Iterator localIterator = this.crE.entrySet().iterator();
     long l1 = System.currentTimeMillis();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject1).getKey();
       localObject1 = (c)((Map.Entry)localObject1).getValue();
-      long l2 = l1 - ((c)localObject1).cuF;
+      long l2 = l1 - ((c)localObject1).crN;
       int j = (int)(l2 / 3600000L) + 1;
       int i = j;
       if (j <= 0) {
         i = 1;
       }
-      j = ((c)localObject1).cuJ / i;
-      long l3 = ((c)localObject1).cuH / i;
-      if (j > this.cuz / 2)
+      j = ((c)localObject1).crR / i;
+      long l3 = ((c)localObject1).crP / i;
+      if (j > this.crH / 2)
       {
         localObject2 = String.format("%s:%d", new Object[] { str, Integer.valueOf(2) });
-        if (!cX((String)localObject2)) {
+        if (!cM((String)localObject2)) {
           break label233;
         }
         com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { localObject2 });
       }
       for (;;)
       {
-        if (l3 < this.cuy) {
+        if (l3 < this.crG) {
           break label275;
         }
         str = String.format("%s:%d", new Object[] { str, Integer.valueOf(3) });
-        if (!cX(str)) {
+        if (!cM(str)) {
           break label277;
         }
         com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { str });
@@ -137,18 +137,18 @@ public final class f
         label233:
         com.tencent.matrix.report.c localc = new com.tencent.matrix.report.c(2);
         localc.key = ((String)localObject2);
-        localc.cwV = a((c)localObject1, l2);
+        localc.cue = a((c)localObject1, l2);
         b(localc);
-        cW((String)localObject2);
+        cL((String)localObject2);
       }
       label275:
       continue;
       label277:
       Object localObject2 = new com.tencent.matrix.report.c(3);
       ((com.tencent.matrix.report.c)localObject2).key = str;
-      ((com.tencent.matrix.report.c)localObject2).cwV = a((c)localObject1, l2);
+      ((com.tencent.matrix.report.c)localObject2).cue = a((c)localObject1, l2);
       b((com.tencent.matrix.report.c)localObject2);
-      cW(str);
+      cL(str);
     }
   }
   
@@ -160,10 +160,10 @@ public final class f
       localJSONObject.put("wakeLockTag", paramc.tag);
       localJSONObject.put("subTag", "wakeLock");
       localJSONObject.put("timeFrame", paramLong);
-      localJSONObject.put("acquireCnt", paramc.cuI);
-      localJSONObject.put("acquireCntWhenScreenOff", paramc.cuJ);
-      localJSONObject.put("statisticalHoldTime", paramc.cuG);
-      localJSONObject.put("stackHistory", paramc.cuK);
+      localJSONObject.put("acquireCnt", paramc.crQ);
+      localJSONObject.put("acquireCntWhenScreenOff", paramc.crR);
+      localJSONObject.put("statisticalHoldTime", paramc.crO);
+      localJSONObject.put("stackHistory", paramc.crS);
       return localJSONObject;
     }
     catch (JSONException paramc)
@@ -173,10 +173,10 @@ public final class f
     return localJSONObject;
   }
   
-  final void GT()
+  final void GE()
   {
-    GU();
-    GV();
+    GF();
+    GG();
   }
   
   public static abstract interface a
@@ -188,20 +188,20 @@ public final class f
   
   static final class b
   {
-    final Vector<String> cuE = new Vector();
+    final Vector<String> crM = new Vector();
     
-    final void cU(String paramString)
+    final void cJ(String paramString)
     {
-      this.cuE.add(paramString);
+      this.crM.add(paramString);
     }
     
     public final String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
-      while (i < this.cuE.size())
+      while (i < this.crM.size())
       {
-        localStringBuilder.append((String)this.cuE.get(i)).append("\t\t");
+        localStringBuilder.append((String)this.crM.get(i)).append("\t\t");
         i += 1;
       }
       return localStringBuilder.toString();
@@ -210,80 +210,80 @@ public final class f
   
   static final class c
   {
-    final long cuF;
-    long cuG;
-    long cuH;
-    int cuI;
-    int cuJ;
-    f.b cuK;
-    final Map<String, Boolean> cuL;
-    long cuM;
-    boolean cuN;
+    final long crN;
+    long crO;
+    long crP;
+    int crQ;
+    int crR;
+    f.b crS;
+    final Map<String, Boolean> crT;
+    long crU;
+    boolean crV;
     final String tag;
     
     c(String paramString)
     {
       this.tag = paramString;
-      this.cuG = 0L;
-      this.cuH = 0L;
-      this.cuI = 0;
-      this.cuJ = 0;
-      this.cuM = -1L;
-      this.cuK = new f.b();
-      this.cuF = System.currentTimeMillis();
-      this.cuL = new HashMap();
+      this.crO = 0L;
+      this.crP = 0L;
+      this.crQ = 0;
+      this.crR = 0;
+      this.crU = -1L;
+      this.crS = new f.b();
+      this.crN = System.currentTimeMillis();
+      this.crT = new HashMap();
     }
     
-    final void GW()
+    final void GH()
     {
-      if (this.cuM < 0L) {
+      if (this.crU < 0L) {
         return;
       }
       long l = SystemClock.uptimeMillis();
-      this.cuG += l - this.cuM;
-      if (!this.cuN) {
-        this.cuH += l - this.cuM;
+      this.crO += l - this.crU;
+      if (!this.crV) {
+        this.crP += l - this.crU;
       }
-      this.cuM = l;
+      this.crU = l;
     }
   }
   
   static final class d
   {
-    f.b cuK;
-    final String cuO;
-    final long cuP;
-    final long cuQ;
+    f.b crS;
+    final String crW;
+    final long crX;
+    final long crY;
     final int flags;
     final String tag;
     
     d(String paramString1, String paramString2, int paramInt, long paramLong)
     {
-      this.cuO = paramString1;
+      this.crW = paramString1;
       this.tag = paramString2;
       this.flags = paramInt;
-      this.cuP = paramLong;
-      this.cuQ = SystemClock.uptimeMillis();
-      this.cuK = new f.b();
+      this.crX = paramLong;
+      this.crY = SystemClock.uptimeMillis();
+      this.crS = new f.b();
     }
   }
   
   static final class e
   {
-    private final String ctL;
-    int cuR;
-    final StringBuilder cuS;
+    private final String cqS;
+    int crZ;
+    final StringBuilder csa;
     
     e()
     {
       String str = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd", System.currentTimeMillis());
-      this.ctL = String.format("%s/com.tencent.matrix/wakelock-detector-record/%s/wakelocks-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.d.a.getPackageName(), str });
-      this.cuS = new StringBuilder();
-      com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "WakeLockInfoRecorder path:%s", new Object[] { this.ctL });
+      this.cqS = String.format("%s/com.tencent.matrix/wakelock-detector-record/%s/wakelocks-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.d.a.getPackageName(), str });
+      this.csa = new StringBuilder();
+      com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "WakeLockInfoRecorder path:%s", new Object[] { this.cqS });
     }
     
     /* Error */
-    private void GY()
+    private void GJ()
     {
       // Byte code:
       //   0: aconst_null
@@ -297,7 +297,7 @@ public final class f
       //   9: new 41	java/io/File
       //   12: dup
       //   13: aload_0
-      //   14: getfield 58	com/tencent/matrix/a/b/f$e:ctL	Ljava/lang/String;
+      //   14: getfield 58	com/tencent/matrix/a/b/f$e:cqS	Ljava/lang/String;
       //   17: invokespecial 82	java/io/File:<init>	(Ljava/lang/String;)V
       //   20: astore 5
       //   22: aload_2
@@ -335,7 +335,7 @@ public final class f
       //   85: invokespecial 111	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
       //   88: astore_2
       //   89: aload_0
-      //   90: getfield 63	com/tencent/matrix/a/b/f$e:cuS	Ljava/lang/StringBuilder;
+      //   90: getfield 63	com/tencent/matrix/a/b/f$e:csa	Ljava/lang/StringBuilder;
       //   93: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   96: astore_1
       //   97: aload_2
@@ -466,13 +466,13 @@ public final class f
       //   89	111	216	java/io/FileNotFoundException
     }
     
-    final void GX()
+    final void GI()
     {
-      if (this.cuR >= 10)
+      if (this.crZ >= 10)
       {
-        GY();
-        this.cuR = 0;
-        this.cuS.delete(0, this.cuS.length());
+        GJ();
+        this.crZ = 0;
+        this.csa.delete(0, this.csa.length());
       }
     }
   }

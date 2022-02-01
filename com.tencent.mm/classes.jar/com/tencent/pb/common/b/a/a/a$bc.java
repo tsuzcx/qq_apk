@@ -7,72 +7,72 @@ import com.google.b.a.e;
 public final class a$bc
   extends e
 {
-  private static volatile bc[] InN;
-  public int InO = 0;
-  public int InP = 0;
-  public int InQ = 0;
-  public int nUh = 0;
+  private static volatile bc[] JPx;
+  public int JPA = 0;
+  public int JPy = 0;
+  public int JPz = 0;
+  public int oxC = 0;
   public int rtt = 0;
   
   public a$bc()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static bc[] flB()
+  public static bc[] fBS()
   {
-    if (InN == null) {}
-    synchronized (c.bIR)
+    if (JPx == null) {}
+    synchronized (c.bGz)
     {
-      if (InN == null) {
-        InN = new bc[0];
+      if (JPx == null) {
+        JPx = new bc[0];
       }
-      return InN;
+      return JPx;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.nUh != 0) {
-      paramb.by(1, this.nUh);
+    if (this.oxC != 0) {
+      paramb.bv(1, this.oxC);
     }
     if (this.rtt != 0) {
-      paramb.by(2, this.rtt);
+      paramb.bv(2, this.rtt);
     }
-    if (this.InO != 0) {
-      paramb.by(3, this.InO);
+    if (this.JPy != 0) {
+      paramb.bv(3, this.JPy);
     }
-    if (this.InP != 0) {
-      paramb.by(4, this.InP);
+    if (this.JPz != 0) {
+      paramb.bv(4, this.JPz);
     }
-    if (this.InQ != 0) {
-      paramb.by(5, this.InQ);
+    if (this.JPA != 0) {
+      paramb.bv(5, this.JPA);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.nUh != 0) {
-      i = j + b.bA(1, this.nUh);
+    if (this.oxC != 0) {
+      i = j + b.bx(1, this.oxC);
     }
     j = i;
     if (this.rtt != 0) {
-      j = i + b.bA(2, this.rtt);
+      j = i + b.bx(2, this.rtt);
     }
     i = j;
-    if (this.InO != 0) {
-      i = j + b.bA(3, this.InO);
+    if (this.JPy != 0) {
+      i = j + b.bx(3, this.JPy);
     }
     j = i;
-    if (this.InP != 0) {
-      j = i + b.bA(4, this.InP);
+    if (this.JPz != 0) {
+      j = i + b.bx(4, this.JPz);
     }
     i = j;
-    if (this.InQ != 0) {
-      i = j + b.bA(5, this.InQ);
+    if (this.JPA != 0) {
+      i = j + b.bx(5, this.JPA);
     }
     return i;
   }

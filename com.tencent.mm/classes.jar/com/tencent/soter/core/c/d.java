@@ -5,12 +5,12 @@ import junit.framework.Assert;
 
 public final class d
 {
-  private static c IuK;
+  private static c JWt;
   
   static
   {
     AppMethodBeat.i(88658);
-    IuK = new d.a((byte)0);
+    JWt = new d.a((byte)0);
     AppMethodBeat.o(88658);
   }
   
@@ -21,7 +21,7 @@ public final class d
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      IuK = paramc;
+      JWt = paramc;
       AppMethodBeat.o(88651);
       return;
     }
@@ -30,42 +30,42 @@ public final class d
   public static void b(String paramString1, Throwable paramThrowable, String paramString2)
   {
     AppMethodBeat.i(88657);
-    IuK.b(paramString1, paramThrowable, paramString2);
+    JWt.b(paramString1, paramThrowable, paramString2);
     AppMethodBeat.o(88657);
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88653);
-    IuK.d(paramString1, paramString2, paramVarArgs);
+    JWt.d(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88653);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88656);
-    IuK.e(paramString1, paramString2, paramVarArgs);
+    JWt.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88656);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88654);
-    IuK.i(paramString1, paramString2, paramVarArgs);
+    JWt.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88654);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88652);
-    IuK.v(paramString1, paramString2, paramVarArgs);
+    JWt.v(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88652);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(88655);
-    IuK.w(paramString1, paramString2, paramVarArgs);
+    JWt.w(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(88655);
   }
 }

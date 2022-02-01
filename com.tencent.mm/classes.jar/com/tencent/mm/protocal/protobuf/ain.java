@@ -1,103 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class ain
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Dlf;
-  public LinkedList<FinderObject> Dlg;
-  public int fwP;
-  public String username;
-  
-  public ain()
-  {
-    AppMethodBeat.i(190567);
-    this.Dlg = new LinkedList();
-    AppMethodBeat.o(190567);
-  }
+  public int EoE;
+  public String Eoy;
+  public int ndj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(190568);
+    AppMethodBeat.i(127494);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.Dlf);
-      paramVarArgs.e(2, 8, this.Dlg);
-      if (this.username != null) {
-        paramVarArgs.d(3, this.username);
+      if (this.Eoy != null) {
+        paramVarArgs.d(1, this.Eoy);
       }
-      paramVarArgs.aR(4, this.fwP);
-      AppMethodBeat.o(190568);
+      paramVarArgs.aR(2, this.EoE);
+      paramVarArgs.aR(3, this.ndj);
+      AppMethodBeat.o(127494);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      i = f.a.a.b.b.a.bA(1, this.Dlf) + 0 + f.a.a.a.c(2, 8, this.Dlg);
-      paramInt = i;
-      if (this.username != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.username);
+    if (paramInt == 1) {
+      if (this.Eoy == null) {
+        break label306;
       }
-      i = f.a.a.b.b.a.bA(4, this.fwP);
-      AppMethodBeat.o(190568);
-      return paramInt + i;
     }
-    if (paramInt == 2)
+    label306:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Eoy) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.Dlg.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
-      }
-      AppMethodBeat.o(190568);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      ain localain = (ain)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      int i = f.a.a.b.b.a.bx(2, this.EoE);
+      int j = f.a.a.b.b.a.bx(3, this.ndj);
+      AppMethodBeat.o(127494);
+      return paramInt + i + j;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(190568);
-        return -1;
-      case 1: 
-        localain.Dlf = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(190568);
-        return 0;
-      case 2: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new FinderObject();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localain.Dlg.add(localObject1);
-          paramInt += 1;
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
         }
-        AppMethodBeat.o(190568);
-        return 0;
-      case 3: 
-        localain.username = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(190568);
+        AppMethodBeat.o(127494);
         return 0;
       }
-      localain.fwP = ((f.a.a.a.a)localObject1).KhF.xS();
-      AppMethodBeat.o(190568);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        ain localain = (ain)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(127494);
+          return -1;
+        case 1: 
+          localain.Eoy = locala.LVo.readString();
+          AppMethodBeat.o(127494);
+          return 0;
+        case 2: 
+          localain.EoE = locala.LVo.xF();
+          AppMethodBeat.o(127494);
+          return 0;
+        }
+        localain.ndj = locala.LVo.xF();
+        AppMethodBeat.o(127494);
+        return 0;
+      }
+      AppMethodBeat.o(127494);
+      return -1;
     }
-    AppMethodBeat.o(190568);
-    return -1;
   }
 }
 

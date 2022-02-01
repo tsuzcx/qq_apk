@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.ui.span;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,9 +23,9 @@ public final class a
     AppMethodBeat.i(152261);
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = aj.getContext();
+      localContext = ai.getContext();
     }
-    paramContext = c.a.CjF.x(localContext, paramString);
+    paramContext = c.a.DBW.x(localContext, paramString);
     if (paramContext != null)
     {
       paramContext.start = paramInt1;
@@ -37,11 +37,11 @@ public final class a
     return paramContext;
   }
   
-  public static ArrayList<u> bN(Context paramContext, String paramString)
+  public static ArrayList<u> bO(Context paramContext, String paramString)
   {
     AppMethodBeat.i(152259);
     ArrayList localArrayList = new ArrayList();
-    paramString = j.a.CjQ.matcher(paramString);
+    paramString = j.a.DCh.matcher(paramString);
     while (paramString.find())
     {
       int i = paramString.start();
@@ -57,7 +57,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.a
  * JD-Core Version:    0.7.0.1
  */

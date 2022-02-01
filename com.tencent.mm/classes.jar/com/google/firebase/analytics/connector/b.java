@@ -13,33 +13,33 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class b
   implements a
 {
-  private static volatile a bCp;
-  private final AppMeasurement bCo;
+  private static volatile a bzX;
+  private final AppMeasurement bzW;
   @VisibleForTesting
-  final Map<String, Object> bCq;
+  final Map<String, Object> bzY;
   
   private b(AppMeasurement paramAppMeasurement)
   {
     AppMethodBeat.i(116766);
     Preconditions.checkNotNull(paramAppMeasurement);
-    this.bCo = paramAppMeasurement;
-    this.bCq = new ConcurrentHashMap();
+    this.bzW = paramAppMeasurement;
+    this.bzY = new ConcurrentHashMap();
     AppMethodBeat.o(116766);
   }
   
   @KeepForSdk
-  public static a al(Context paramContext)
+  public static a am(Context paramContext)
   {
     AppMethodBeat.i(116767);
     Preconditions.checkNotNull(paramContext);
     Preconditions.checkNotNull(paramContext.getApplicationContext());
-    if (bCp == null) {}
+    if (bzX == null) {}
     try
     {
-      if (bCp == null) {
-        bCp = new b(AppMeasurement.getInstance(paramContext));
+      if (bzX == null) {
+        bzX = new b(AppMeasurement.getInstance(paramContext));
       }
-      paramContext = bCp;
+      paramContext = bzX;
       AppMethodBeat.o(116767);
       return paramContext;
     }
@@ -53,7 +53,7 @@ public final class b
   public final void logEvent(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(116768);
-    if (!com.google.firebase.analytics.connector.internal.b.bc(paramString1))
+    if (!com.google.firebase.analytics.connector.internal.b.aT(paramString1))
     {
       paramString1 = String.valueOf(paramString1);
       if (paramString1.length() != 0)
@@ -76,7 +76,7 @@ public final class b
       AppMethodBeat.o(116768);
       return;
     }
-    this.bCo.logEventInternal(paramString1, paramString2, paramBundle);
+    this.bzW.logEventInternal(paramString1, paramString2, paramBundle);
     AppMethodBeat.o(116768);
   }
   
@@ -84,7 +84,7 @@ public final class b
   public final void setUserProperty(String paramString1, String paramString2, Object paramObject)
   {
     AppMethodBeat.i(116769);
-    if (!com.google.firebase.analytics.connector.internal.b.bc(paramString1))
+    if (!com.google.firebase.analytics.connector.internal.b.aT(paramString1))
     {
       paramString1 = String.valueOf(paramString1);
       if (paramString1.length() != 0)
@@ -97,7 +97,7 @@ public final class b
       AppMethodBeat.o(116769);
       return;
     }
-    if (!com.google.firebase.analytics.connector.internal.b.bd(paramString2))
+    if (!com.google.firebase.analytics.connector.internal.b.aU(paramString2))
     {
       paramString1 = String.valueOf(paramString2);
       if (paramString1.length() != 0)
@@ -123,13 +123,13 @@ public final class b
       AppMethodBeat.o(116769);
       return;
     }
-    this.bCo.setUserPropertyInternal(paramString1, paramString2, paramObject);
+    this.bzW.setUserPropertyInternal(paramString1, paramString2, paramObject);
     AppMethodBeat.o(116769);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.analytics.connector.b
  * JD-Core Version:    0.7.0.1
  */

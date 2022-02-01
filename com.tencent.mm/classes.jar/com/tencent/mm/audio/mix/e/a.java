@@ -16,21 +16,21 @@ public final class a
       float f3;
       for (float f1 = 0.0F; k < paramInt1; f1 = f3 + f1)
       {
-        f2 = (float)(f2 + Math.pow(this.cVN[k][j], 2.0D) * Math.signum(this.cVN[k][j]));
-        f3 = Math.abs(this.cVN[k][j]);
+        f2 = (float)(f2 + Math.pow(this.cTj[k][j], 2.0D) * Math.signum(this.cTj[k][j]));
+        f3 = Math.abs(this.cTj[k][j]);
         k += 1;
       }
       if (f1 == 0.0F)
       {
         k = 0;
         label111:
-        localObject = this.cVQ;
+        localObject = this.cTm;
         if (f1 != 0.0F) {
           break label154;
         }
       }
       label154:
-      for (int i = 0;; i = hS(k))
+      for (int i = 0;; i = hC(k))
       {
         localObject[j] = i;
         j += 1;
@@ -39,7 +39,7 @@ public final class a
         break label111;
       }
     }
-    Object localObject = cg(paramInt3, paramInt2);
+    Object localObject = ce(paramInt3, paramInt2);
     AppMethodBeat.o(136834);
     return localObject;
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.app;
 
 public abstract interface o
 {
-  public abstract void ca(boolean paramBoolean);
+  public abstract void cb(boolean paramBoolean);
 }
 
 

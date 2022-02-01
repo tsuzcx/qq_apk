@@ -4,15 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.bind.a;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.c;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.d.g;
@@ -50,13 +50,13 @@ public class d
             {
               paramAnonymousString = (c)paramAnonymousn;
               d.a(d.this).putString("payu_reference", paramAnonymousString.token);
-              if (bt.isNullOrNil(paramAnonymousString.token)) {
+              if (bs.isNullOrNil(paramAnonymousString.token)) {
                 break label118;
               }
-              ad.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
+              ac.d("MicroMsg.PayUUnbindProcess", "hy: check pwd pass");
               paramAnonymousString = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
               if (paramAnonymousString != null) {
-                this.Ieo.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
+                this.JFQ.b(new b(paramAnonymousString.field_bindSerial, d.c(d.this).getString("payu_reference")), true);
               }
             }
           }
@@ -66,7 +66,7 @@ public class d
             {
               AppMethodBeat.o(71987);
               return false;
-              ad.w("MicroMsg.PayUUnbindProcess", "hy: check pwd failed");
+              ac.w("MicroMsg.PayUUnbindProcess", "hy: check pwd failed");
             }
           }
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -78,11 +78,11 @@ public class d
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(71988);
           d.f(d.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.Ieo.b(new c(d.g(d.this).getString("key_pwd1")), true);
+          this.JFQ.b(new c(d.g(d.this).getString("key_pwd1")), true);
           AppMethodBeat.o(71988);
           return true;
         }
@@ -113,7 +113,7 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71990);
-    if (this.dow.getInt("key_errcode_payu", -1) == 0) {
+    if (this.dmf.getInt("key_errcode_payu", -1) == 0) {
       t.makeText(paramActivity, 2131765569, 0).show();
     }
     for (;;)

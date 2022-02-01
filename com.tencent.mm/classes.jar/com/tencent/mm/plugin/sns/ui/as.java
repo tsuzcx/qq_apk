@@ -6,9 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.device.appstore.a;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ak;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ae;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.af;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.aj;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.f;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.h;
@@ -31,7 +34,7 @@ public final class as
       switch (paramx.type)
       {
       default: 
-        com.tencent.mm.sdk.platformtools.ad.i("SnsAdNativeLandingPagesLayoutHelper", "unknown comp type " + paramx.type);
+        com.tencent.mm.sdk.platformtools.ac.i("SnsAdNativeLandingPagesLayoutHelper", "unknown comp type " + paramx.type);
         localObject1 = localObject2;
       }
     }
@@ -44,7 +47,7 @@ public final class as
       if (paramx.subType == 2)
       {
         paramx = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b)paramx;
-        if ((paramx != null) && (paramx.wVx > 0) && (a.aD(paramx.wVy))) {}
+        if ((paramx != null) && (paramx.yil > 0) && (a.aF(paramx.yim))) {}
         for (paramContext = new j(paramContext, paramx, paramViewGroup);; paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.q(paramContext, paramx, paramViewGroup))
         {
           AppMethodBeat.o(98308);
@@ -87,9 +90,9 @@ public final class as
         continue;
         localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.i(paramContext, paramx, paramViewGroup);
         continue;
-        localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.aj(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj)paramx, paramViewGroup);
+        localObject1 = new aj(paramContext, (ak)paramx, paramViewGroup);
         continue;
-        localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.t(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af)paramx, paramViewGroup);
+        localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.t(paramContext, (ag)paramx, paramViewGroup);
         continue;
         localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.v(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y)paramx, paramViewGroup);
         continue;
@@ -99,16 +102,16 @@ public final class as
           localObject1 = localObject2;
           break;
         case 0: 
-          localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)paramx, paramViewGroup);
+          localObject1 = new ab(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)paramx, paramViewGroup);
           break;
         case 1: 
           localObject1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.p(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)paramx, paramViewGroup);
         }
       }
     }
-    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac))
+    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad))
     {
-      paramContext = new ai(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)paramx, paramViewGroup);
+      paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ai(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad)paramx, paramViewGroup);
       paramContext.setBackgroundColor(paramInt);
       AppMethodBeat.o(98308);
       return paramContext;
@@ -122,7 +125,7 @@ public final class as
     }
     if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s))
     {
-      paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ab(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)paramx, paramViewGroup);
+      paramContext = new ab(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s)paramx, paramViewGroup);
       AppMethodBeat.o(98308);
       return paramContext;
     }
@@ -138,11 +141,11 @@ public final class as
       AppMethodBeat.o(98308);
       return paramContext;
     }
-    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah))
+    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai))
     {
-      paramx = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)paramx;
+      paramx = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)paramx;
       if (AdLandingPagesProxy.getInstance().getStreamVideoPlayerConfig() > 0) {
-        com.tencent.mm.sdk.platformtools.ad.i("SnsAdNativeLandingPagesLayoutHelper", "use new stream video player component");
+        com.tencent.mm.sdk.platformtools.ac.i("SnsAdNativeLandingPagesLayoutHelper", "use new stream video player component");
       }
       for (paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ah(paramContext, paramx, paramViewGroup);; paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.w(paramContext, paramx, paramViewGroup))
       {
@@ -150,9 +153,9 @@ public final class as
         return paramContext;
       }
     }
-    if ((paramx instanceof ag))
+    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah))
     {
-      paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.u(paramContext, (ag)paramx, paramViewGroup);
+      paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.u(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)paramx, paramViewGroup);
       AppMethodBeat.o(98308);
       return paramContext;
     }
@@ -168,15 +171,15 @@ public final class as
       AppMethodBeat.o(98308);
       return paramContext;
     }
-    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab))
+    if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac))
     {
-      paramContext = new aa(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab)paramx, paramViewGroup);
+      paramContext = new aa(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac)paramx, paramViewGroup);
       AppMethodBeat.o(98308);
       return paramContext;
     }
     if ((paramx instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t))
     {
-      paramContext = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.af(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t)paramx, paramViewGroup);
+      paramContext = new af(paramContext, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t)paramx, paramViewGroup);
       AppMethodBeat.o(98308);
       return paramContext;
     }
@@ -199,7 +202,7 @@ public final class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.as
  * JD-Core Version:    0.7.0.1
  */

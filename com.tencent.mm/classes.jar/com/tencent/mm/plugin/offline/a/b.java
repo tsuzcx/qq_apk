@@ -6,10 +6,10 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.k;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,16 +25,16 @@ public final class b
     AppMethodBeat.i(66282);
     this.TAG = "MicroMsg.NetSceneOfflineAckMsg";
     HashMap localHashMap = new HashMap();
-    localHashMap.put("ack_key", a.cZF());
-    localHashMap.put("req_key", a.cZG());
-    localHashMap.put("paymsg_type", a.cZH());
-    localHashMap.put("transactionid", a.cZI());
-    localHashMap.put("network", a.getNetworkType(aj.getContext()));
-    if (k.ujs)
+    localHashMap.put("ack_key", a.dnn());
+    localHashMap.put("req_key", a.dno());
+    localHashMap.put("paymsg_type", a.dnp());
+    localHashMap.put("transactionid", a.dnq());
+    localHashMap.put("network", a.getNetworkType(ai.getContext()));
+    if (k.vso)
     {
       str = "1";
       localHashMap.put("processed", str);
-      if (!a.cZJ()) {
+      if (!a.dnr()) {
         break label213;
       }
       str = "1";
@@ -75,19 +75,19 @@ public final class b
     AppMethodBeat.i(66283);
     if (paramInt == 0)
     {
-      ad.v(this.TAG, "response ok");
-      h.vKh.idkeyStat(135L, 68L, 1L, true);
+      ac.v(this.TAG, "response ok");
+      h.wUl.idkeyStat(135L, 68L, 1L, true);
       paramInt = paramJSONObject.optInt("poll_time") * 1000;
       if (paramInt > 0)
       {
-        g.afC();
-        g.afB().afk().set(ae.a.Fpq, Integer.valueOf(paramInt));
+        g.agS();
+        g.agR().agA().set(ah.a.GNg, Integer.valueOf(paramInt));
       }
       AppMethodBeat.o(66283);
       return;
     }
-    ad.v(this.TAG, "response fail");
-    h.vKh.idkeyStat(135L, 69L, 1L, true);
+    ac.v(this.TAG, "response fail");
+    h.wUl.idkeyStat(135L, 69L, 1L, true);
     AppMethodBeat.o(66283);
   }
 }

@@ -7,11 +7,9 @@ import android.database.DataSetObserver;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
@@ -23,13 +21,13 @@ import java.util.Iterator;
 public class HeaderGridView
   extends GridView
 {
-  public ArrayList<a> FVc;
+  public ArrayList<a> HuQ;
   
   public HeaderGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141668);
-    this.FVc = new ArrayList();
+    this.HuQ = new ArrayList();
     super.setClipChildren(false);
     AppMethodBeat.o(141668);
   }
@@ -38,7 +36,7 @@ public class HeaderGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141669);
-    this.FVc = new ArrayList();
+    this.HuQ = new ArrayList();
     super.setClipChildren(false);
     AppMethodBeat.o(141669);
   }
@@ -46,7 +44,7 @@ public class HeaderGridView
   public int getHeaderViewCount()
   {
     AppMethodBeat.i(141671);
-    int i = this.FVc.size();
+    int i = this.HuQ.size();
     AppMethodBeat.o(141671);
     return i;
   }
@@ -80,9 +78,9 @@ public class HeaderGridView
   public final void setAdapter$159aa965(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(141672);
-    if (this.FVc.size() > 0)
+    if (this.HuQ.size() > 0)
     {
-      paramListAdapter = new c(this.FVc, paramListAdapter);
+      paramListAdapter = new c(this.HuQ, paramListAdapter);
       if (paramListAdapter.mNumColumns != 5)
       {
         paramListAdapter.mNumColumns = 5;
@@ -100,35 +98,19 @@ public class HeaderGridView
   
   public static final class a
   {
-    public ViewGroup FVd;
+    public ViewGroup HuR;
     public Object data;
     public boolean isSelectable;
     public View view;
   }
   
-  public final class b
-    extends FrameLayout
-  {
-    public b(Context paramContext)
-    {
-      super();
-    }
-    
-    protected final void onMeasure(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(141651);
-      super.onMeasure(View.MeasureSpec.makeMeasureSpec(HeaderGridView.this.getMeasuredWidth() - HeaderGridView.this.getPaddingLeft() - HeaderGridView.this.getPaddingRight(), 1073741824), paramInt2);
-      AppMethodBeat.o(141651);
-    }
-  }
-  
   public static final class c
     implements Filterable, WrapperListAdapter
   {
-    private final ListAdapter DP;
-    ArrayList<HeaderGridView.a> FVc;
-    boolean FVf;
-    private final boolean FVg;
+    private final ListAdapter EN;
+    ArrayList<HeaderGridView.a> HuQ;
+    boolean HuT;
+    private final boolean HuU;
     public final DataSetObservable mDataSetObservable;
     int mNumColumns;
     
@@ -137,20 +119,20 @@ public class HeaderGridView
       AppMethodBeat.i(141653);
       this.mDataSetObservable = new DataSetObservable();
       this.mNumColumns = 1;
-      this.DP = paramListAdapter;
-      this.FVg = (paramListAdapter instanceof Filterable);
+      this.EN = paramListAdapter;
+      this.HuU = (paramListAdapter instanceof Filterable);
       if (paramArrayList == null)
       {
         paramArrayList = new IllegalArgumentException("headerViewInfos cannot be null");
         AppMethodBeat.o(141653);
         throw paramArrayList;
       }
-      this.FVc = paramArrayList;
-      this.FVf = aN(this.FVc);
+      this.HuQ = paramArrayList;
+      this.HuT = aZ(this.HuQ);
       AppMethodBeat.o(141653);
     }
     
-    private static boolean aN(ArrayList<HeaderGridView.a> paramArrayList)
+    private static boolean aZ(ArrayList<HeaderGridView.a> paramArrayList)
     {
       AppMethodBeat.i(141655);
       if (paramArrayList != null)
@@ -171,9 +153,9 @@ public class HeaderGridView
     public final boolean areAllItemsEnabled()
     {
       AppMethodBeat.i(141657);
-      if (this.DP != null)
+      if (this.EN != null)
       {
-        if ((this.FVf) && (this.DP.areAllItemsEnabled()))
+        if ((this.HuT) && (this.EN.areAllItemsEnabled()))
         {
           AppMethodBeat.o(141657);
           return true;
@@ -188,15 +170,15 @@ public class HeaderGridView
     public final int getCount()
     {
       AppMethodBeat.i(141656);
-      if (this.DP != null)
+      if (this.EN != null)
       {
-        i = this.FVc.size();
+        i = this.HuQ.size();
         j = this.mNumColumns;
-        int k = this.DP.getCount();
+        int k = this.EN.getCount();
         AppMethodBeat.o(141656);
         return i * j + k;
       }
-      int i = this.FVc.size();
+      int i = this.HuQ.size();
       int j = this.mNumColumns;
       AppMethodBeat.o(141656);
       return i * j;
@@ -205,9 +187,9 @@ public class HeaderGridView
     public final Filter getFilter()
     {
       AppMethodBeat.i(141667);
-      if (this.FVg)
+      if (this.HuU)
       {
-        Filter localFilter = ((Filterable)this.DP).getFilter();
+        Filter localFilter = ((Filterable)this.EN).getFilter();
         AppMethodBeat.o(141667);
         return localFilter;
       }
@@ -218,13 +200,13 @@ public class HeaderGridView
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(141659);
-      int i = this.FVc.size() * this.mNumColumns;
+      int i = this.HuQ.size() * this.mNumColumns;
       Object localObject;
       if (paramInt < i)
       {
         if (paramInt % this.mNumColumns == 0)
         {
-          localObject = ((HeaderGridView.a)this.FVc.get(paramInt / this.mNumColumns)).data;
+          localObject = ((HeaderGridView.a)this.HuQ.get(paramInt / this.mNumColumns)).data;
           AppMethodBeat.o(141659);
           return localObject;
         }
@@ -232,9 +214,9 @@ public class HeaderGridView
         return null;
       }
       paramInt -= i;
-      if ((this.DP != null) && (paramInt < this.DP.getCount()))
+      if ((this.EN != null) && (paramInt < this.EN.getCount()))
       {
-        localObject = this.DP.getItem(paramInt);
+        localObject = this.EN.getItem(paramInt);
         AppMethodBeat.o(141659);
         return localObject;
       }
@@ -245,13 +227,13 @@ public class HeaderGridView
     public final long getItemId(int paramInt)
     {
       AppMethodBeat.i(141660);
-      int i = this.FVc.size() * this.mNumColumns;
-      if ((this.DP != null) && (paramInt >= i))
+      int i = this.HuQ.size() * this.mNumColumns;
+      if ((this.EN != null) && (paramInt >= i))
       {
         paramInt -= i;
-        if (paramInt < this.DP.getCount())
+        if (paramInt < this.EN.getCount())
         {
-          long l = this.DP.getItemId(paramInt);
+          long l = this.EN.getItemId(paramInt);
           AppMethodBeat.o(141660);
           return l;
         }
@@ -263,24 +245,24 @@ public class HeaderGridView
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(141663);
-      int i = this.FVc.size() * this.mNumColumns;
+      int i = this.HuQ.size() * this.mNumColumns;
       if ((paramInt < i) && (paramInt % this.mNumColumns != 0))
       {
-        if (this.DP != null)
+        if (this.EN != null)
         {
-          paramInt = this.DP.getViewTypeCount();
+          paramInt = this.EN.getViewTypeCount();
           AppMethodBeat.o(141663);
           return paramInt;
         }
         AppMethodBeat.o(141663);
         return 1;
       }
-      if ((this.DP != null) && (paramInt >= i))
+      if ((this.EN != null) && (paramInt >= i))
       {
         paramInt -= i;
-        if (paramInt < this.DP.getCount())
+        if (paramInt < this.EN.getCount())
         {
-          paramInt = this.DP.getItemViewType(paramInt);
+          paramInt = this.EN.getItemViewType(paramInt);
           AppMethodBeat.o(141663);
           return paramInt;
         }
@@ -292,10 +274,10 @@ public class HeaderGridView
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(141662);
-      int i = this.FVc.size() * this.mNumColumns;
+      int i = this.HuQ.size() * this.mNumColumns;
       if (paramInt < i)
       {
-        ViewGroup localViewGroup = ((HeaderGridView.a)this.FVc.get(paramInt / this.mNumColumns)).FVd;
+        ViewGroup localViewGroup = ((HeaderGridView.a)this.HuQ.get(paramInt / this.mNumColumns)).HuR;
         if (paramInt % this.mNumColumns == 0)
         {
           AppMethodBeat.o(141662);
@@ -311,9 +293,9 @@ public class HeaderGridView
         return localView;
       }
       paramInt -= i;
-      if ((this.DP != null) && (paramInt < this.DP.getCount()))
+      if ((this.EN != null) && (paramInt < this.EN.getCount()))
       {
-        paramView = this.DP.getView(paramInt, paramView, paramViewGroup);
+        paramView = this.EN.getView(paramInt, paramView, paramViewGroup);
         AppMethodBeat.o(141662);
         return paramView;
       }
@@ -329,9 +311,9 @@ public class HeaderGridView
     public final int getViewTypeCount()
     {
       AppMethodBeat.i(141664);
-      if (this.DP != null)
+      if (this.EN != null)
       {
-        int i = this.DP.getViewTypeCount();
+        int i = this.EN.getViewTypeCount();
         AppMethodBeat.o(141664);
         return i + 1;
       }
@@ -341,15 +323,15 @@ public class HeaderGridView
     
     public final ListAdapter getWrappedAdapter()
     {
-      return this.DP;
+      return this.EN;
     }
     
     public final boolean hasStableIds()
     {
       AppMethodBeat.i(141661);
-      if (this.DP != null)
+      if (this.EN != null)
       {
-        boolean bool = this.DP.hasStableIds();
+        boolean bool = this.EN.hasStableIds();
         AppMethodBeat.o(141661);
         return bool;
       }
@@ -360,7 +342,7 @@ public class HeaderGridView
     public final boolean isEmpty()
     {
       AppMethodBeat.i(141654);
-      if (((this.DP == null) || (this.DP.isEmpty())) && (this.FVc.size() == 0))
+      if (((this.EN == null) || (this.EN.isEmpty())) && (this.HuQ.size() == 0))
       {
         AppMethodBeat.o(141654);
         return true;
@@ -372,10 +354,10 @@ public class HeaderGridView
     public final boolean isEnabled(int paramInt)
     {
       AppMethodBeat.i(141658);
-      int i = this.FVc.size() * this.mNumColumns;
+      int i = this.HuQ.size() * this.mNumColumns;
       if (paramInt < i)
       {
-        if ((paramInt % this.mNumColumns == 0) && (((HeaderGridView.a)this.FVc.get(paramInt / this.mNumColumns)).isSelectable))
+        if ((paramInt % this.mNumColumns == 0) && (((HeaderGridView.a)this.HuQ.get(paramInt / this.mNumColumns)).isSelectable))
         {
           AppMethodBeat.o(141658);
           return true;
@@ -384,9 +366,9 @@ public class HeaderGridView
         return false;
       }
       paramInt -= i;
-      if ((this.DP != null) && (paramInt < this.DP.getCount()))
+      if ((this.EN != null) && (paramInt < this.EN.getCount()))
       {
-        boolean bool = this.DP.isEnabled(paramInt);
+        boolean bool = this.EN.isEnabled(paramInt);
         AppMethodBeat.o(141658);
         return bool;
       }
@@ -398,8 +380,8 @@ public class HeaderGridView
     {
       AppMethodBeat.i(141665);
       this.mDataSetObservable.registerObserver(paramDataSetObserver);
-      if (this.DP != null) {
-        this.DP.registerDataSetObserver(paramDataSetObserver);
+      if (this.EN != null) {
+        this.EN.registerDataSetObserver(paramDataSetObserver);
       }
       AppMethodBeat.o(141665);
     }
@@ -408,8 +390,8 @@ public class HeaderGridView
     {
       AppMethodBeat.i(141666);
       this.mDataSetObservable.unregisterObserver(paramDataSetObserver);
-      if (this.DP != null) {
-        this.DP.unregisterDataSetObserver(paramDataSetObserver);
+      if (this.EN != null) {
+        this.EN.unregisterDataSetObserver(paramDataSetObserver);
       }
       AppMethodBeat.o(141666);
     }
@@ -417,7 +399,7 @@ public class HeaderGridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.HeaderGridView
  * JD-Core Version:    0.7.0.1
  */

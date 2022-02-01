@@ -2,36 +2,36 @@ package com.tencent.luggage.h;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.ui.q;
 import d.g.a.a;
 import d.g.b.k;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/util/UIUtilsCompat;", "Lcom/tencent/luggage/util/UIUtilsInterface;", "()V", "interfaceImpl", "getInterfaceImpl", "()Lcom/tencent/luggage/util/UIUtilsInterface;", "setInterfaceImpl", "(Lcom/tencent/luggage/util/UIUtilsInterface;)V", "getCutOutHeight", "", "context", "Landroid/content/Context;", "getDarkModeColor", "originalColor", "getStableStatusBarHeight", "hasCutOut", "", "hasHuaweiMagicWindowFeature", "huaweiSpecial", "isDarkMode", "isHuaweiFold", "luggage-commons_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/util/UIUtilsCompat;", "Lcom/tencent/luggage/util/UIUtilsInterface;", "()V", "interfaceImpl", "getInterfaceImpl", "()Lcom/tencent/luggage/util/UIUtilsInterface;", "setInterfaceImpl", "(Lcom/tencent/luggage/util/UIUtilsInterface;)V", "getCutOutHeight", "", "context", "Landroid/content/Context;", "getDarkModeColor", "originalColor", "getStableStatusBarHeight", "hasCutOut", "", "hasHuaweiMagicWindowFeature", "huaweiSpecial", "isDarkMode", "isHuaweiFold", "luggage-commons_release"})
 public final class i
   implements j
 {
-  private static j cjm;
-  public static final i cjn;
+  private static j cgj;
+  public static final i cgk;
   
   static
   {
     AppMethodBeat.i(174639);
-    cjn = new i();
+    cgk = new i();
     AppMethodBeat.o(174639);
   }
   
   public static void a(j paramj)
   {
-    cjm = paramj;
+    cgj = paramj;
   }
   
-  public final boolean Eq()
+  public final boolean DT()
   {
     AppMethodBeat.i(174636);
-    j localj = cjm;
+    j localj = cgj;
     if (localj != null)
     {
-      boolean bool = localj.Eq();
+      boolean bool = localj.DT();
       AppMethodBeat.o(174636);
       return bool;
     }
@@ -39,49 +39,49 @@ public final class i
     return false;
   }
   
-  public final boolean Er()
+  public final boolean DU()
   {
-    AppMethodBeat.i(194913);
-    j localj = cjm;
+    AppMethodBeat.i(201068);
+    j localj = cgj;
     if (localj != null)
     {
-      boolean bool = localj.Er();
-      AppMethodBeat.o(194913);
+      boolean bool = localj.DU();
+      AppMethodBeat.o(201068);
       return bool;
     }
-    AppMethodBeat.o(194913);
+    AppMethodBeat.o(201068);
     return false;
   }
   
-  public final boolean Es()
+  public final boolean DV()
   {
-    AppMethodBeat.i(194914);
-    j localj = cjm;
+    AppMethodBeat.i(201069);
+    j localj = cgj;
     if (localj != null)
     {
-      boolean bool = localj.Es();
-      AppMethodBeat.o(194914);
+      boolean bool = localj.DV();
+      AppMethodBeat.o(201069);
       return bool;
     }
-    AppMethodBeat.o(194914);
+    AppMethodBeat.o(201069);
     return false;
   }
   
-  public final boolean Et()
+  public final boolean DW()
   {
-    AppMethodBeat.i(194915);
-    j localj = cjm;
+    AppMethodBeat.i(201070);
+    j localj = cgj;
     if (localj != null)
     {
-      boolean bool = localj.Et();
-      AppMethodBeat.o(194915);
+      boolean bool = localj.DW();
+      AppMethodBeat.o(201070);
       return bool;
     }
-    AppMethodBeat.o(194915);
+    AppMethodBeat.o(201070);
     return false;
   }
   
-  public final int aE(Context paramContext)
+  public final int aF(Context paramContext)
   {
     AppMethodBeat.i(174637);
     if (paramContext == null)
@@ -89,10 +89,10 @@ public final class i
       AppMethodBeat.o(174637);
       return 0;
     }
-    j localj = cjm;
+    j localj = cgj;
     if (localj != null)
     {
-      i = localj.aE(paramContext);
+      i = localj.aF(paramContext);
       AppMethodBeat.o(174637);
       return i;
     }
@@ -101,7 +101,7 @@ public final class i
     return i;
   }
   
-  public final boolean aF(Context paramContext)
+  public final boolean aG(Context paramContext)
   {
     AppMethodBeat.i(174638);
     if (paramContext == null)
@@ -109,10 +109,10 @@ public final class i
       AppMethodBeat.o(174638);
       return false;
     }
-    j localj = cjm;
+    j localj = cgj;
     if (localj != null)
     {
-      bool = localj.aF(paramContext);
+      bool = localj.aG(paramContext);
       AppMethodBeat.o(174638);
       return bool;
     }
@@ -121,29 +121,29 @@ public final class i
     return bool;
   }
   
-  public final int aG(Context paramContext)
+  public final int aH(Context paramContext)
   {
     AppMethodBeat.i(182836);
     k.h(paramContext, "context");
-    j localj = cjm;
+    j localj = cgj;
     if (localj != null)
     {
-      i = localj.aG(paramContext);
+      i = localj.aH(paramContext);
       AppMethodBeat.o(182836);
       return i;
     }
-    int i = p.jm(paramContext);
+    int i = q.jx(paramContext);
     AppMethodBeat.o(182836);
     return i;
   }
   
-  public final int gO(int paramInt)
+  public final int gy(int paramInt)
   {
     AppMethodBeat.i(174635);
-    j localj = cjm;
+    j localj = cgj;
     if (localj != null)
     {
-      paramInt = localj.gO(paramInt);
+      paramInt = localj.gy(paramInt);
       AppMethodBeat.o(174635);
       return paramInt;
     }
@@ -151,7 +151,7 @@ public final class i
     return paramInt;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements a<Integer>
@@ -162,7 +162,7 @@ public final class i
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements a<Boolean>
@@ -175,7 +175,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.h.i
  * JD-Core Version:    0.7.0.1
  */

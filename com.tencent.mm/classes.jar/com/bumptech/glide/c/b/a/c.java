@@ -8,14 +8,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   implements l
 {
-  private final b aFI;
-  private final h<a, Bitmap> aFJ;
+  private final b aGy;
+  private final h<a, Bitmap> aGz;
   
   c()
   {
     AppMethodBeat.i(77071);
-    this.aFI = new b();
-    this.aFJ = new h();
+    this.aGy = new b();
+    this.aGz = new h();
     AppMethodBeat.o(77071);
   }
   
@@ -30,8 +30,8 @@ final class c
   public final Bitmap b(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
     AppMethodBeat.i(77073);
-    paramConfig = this.aFI.f(paramInt1, paramInt2, paramConfig);
-    paramConfig = (Bitmap)this.aFJ.b(paramConfig);
+    paramConfig = this.aGy.f(paramInt1, paramInt2, paramConfig);
+    paramConfig = (Bitmap)this.aGz.b(paramConfig);
     AppMethodBeat.o(77073);
     return paramConfig;
   }
@@ -47,8 +47,8 @@ final class c
   public final void g(Bitmap paramBitmap)
   {
     AppMethodBeat.i(77072);
-    a locala = this.aFI.f(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    this.aFJ.a(locala, paramBitmap);
+    a locala = this.aGy.f(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
+    this.aGz.a(locala, paramBitmap);
     AppMethodBeat.o(77072);
   }
   
@@ -68,10 +68,10 @@ final class c
     return i;
   }
   
-  public final Bitmap ot()
+  public final Bitmap oD()
   {
     AppMethodBeat.i(77074);
-    Bitmap localBitmap = (Bitmap)this.aFJ.removeLast();
+    Bitmap localBitmap = (Bitmap)this.aGz.removeLast();
     AppMethodBeat.o(77074);
     return localBitmap;
   }
@@ -79,7 +79,7 @@ final class c
   public final String toString()
   {
     AppMethodBeat.i(77078);
-    String str = "AttributeStrategy:\n  " + this.aFJ;
+    String str = "AttributeStrategy:\n  " + this.aGz;
     AppMethodBeat.o(77078);
     return str;
   }
@@ -87,21 +87,21 @@ final class c
   static final class a
     implements m
   {
-    private final c.b aFK;
-    private Bitmap.Config aFL;
+    private final c.b aGA;
+    private Bitmap.Config aGB;
     private int height;
     private int width;
     
     public a(c.b paramb)
     {
-      this.aFK = paramb;
+      this.aGA = paramb;
     }
     
     public final void e(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
     {
       this.width = paramInt1;
       this.height = paramInt2;
-      this.aFL = paramConfig;
+      this.aGB = paramConfig;
     }
     
     public final boolean equals(Object paramObject)
@@ -118,7 +118,7 @@ final class c
           if (this.height == paramObject.height)
           {
             bool1 = bool2;
-            if (this.aFL == paramObject.aFL) {
+            if (this.aGB == paramObject.aGB) {
               bool1 = true;
             }
           }
@@ -132,25 +132,25 @@ final class c
       AppMethodBeat.i(77066);
       int j = this.width;
       int k = this.height;
-      if (this.aFL != null) {}
-      for (int i = this.aFL.hashCode();; i = 0)
+      if (this.aGB != null) {}
+      for (int i = this.aGB.hashCode();; i = 0)
       {
         AppMethodBeat.o(77066);
         return i + (j * 31 + k) * 31;
       }
     }
     
-    public final void ou()
+    public final void oE()
     {
       AppMethodBeat.i(77068);
-      this.aFK.a(this);
+      this.aGA.a(this);
       AppMethodBeat.o(77068);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(77067);
-      String str = c.d(this.width, this.height, this.aFL);
+      String str = c.d(this.width, this.height, this.aGB);
       AppMethodBeat.o(77067);
       return str;
     }
@@ -162,7 +162,7 @@ final class c
     final c.a f(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
     {
       AppMethodBeat.i(77069);
-      c.a locala = (c.a)ow();
+      c.a locala = (c.a)oG();
       locala.e(paramInt1, paramInt2, paramConfig);
       AppMethodBeat.o(77069);
       return locala;
@@ -171,7 +171,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.a.c
  * JD-Core Version:    0.7.0.1
  */

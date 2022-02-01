@@ -17,12 +17,12 @@ public class f
   public void a(final h paramh, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(147181);
-    paramh.L(new Runnable()
+    paramh.N(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(147180);
-        paramh.getRuntime().O(MiniProgramNavigationBackResult.a(this.jZa, this.jZb));
+        paramh.getRuntime().Q(MiniProgramNavigationBackResult.a(this.kzN, this.kzO));
         paramh.h(paramInt, f.this.e("ok", null));
         AppMethodBeat.o(147180);
       }
@@ -32,7 +32,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.f
  * JD-Core Version:    0.7.0.1
  */

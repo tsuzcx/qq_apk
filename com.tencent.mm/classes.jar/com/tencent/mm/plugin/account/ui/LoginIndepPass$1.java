@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kq;
+import com.tencent.mm.g.a.kz;
 import com.tencent.mm.sdk.b.c;
 
 final class LoginIndepPass$1
-  extends c<kq>
+  extends c<kz>
 {
   LoginIndepPass$1(LoginIndepPass paramLoginIndepPass)
   {
     AppMethodBeat.i(161702);
-    this.__eventId = kq.class.getName().hashCode();
+    this.__eventId = kz.class.getName().hashCode();
     AppMethodBeat.o(161702);
   }
 }

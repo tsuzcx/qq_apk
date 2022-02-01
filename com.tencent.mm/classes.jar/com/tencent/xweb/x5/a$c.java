@@ -5,24 +5,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$c
   implements com.tencent.smtt.export.external.interfaces.JsResult
 {
-  public com.tencent.xweb.JsResult IRO;
+  public com.tencent.xweb.JsResult KEk;
   
   public a$c(com.tencent.xweb.JsResult paramJsResult)
   {
-    this.IRO = paramJsResult;
+    this.KEk = paramJsResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153815);
-    this.IRO.cancel();
+    this.KEk.cancel();
     AppMethodBeat.o(153815);
   }
   
   public final void confirm()
   {
     AppMethodBeat.i(153814);
-    this.IRO.confirm();
+    this.KEk.confirm();
     AppMethodBeat.o(153814);
   }
 }

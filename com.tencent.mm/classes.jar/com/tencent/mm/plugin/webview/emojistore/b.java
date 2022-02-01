@@ -1,92 +1,92 @@
 package com.tencent.mm.plugin.webview.emojistore;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cno;
-import com.tencent.mm.protocal.protobuf.cnp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.csv;
+import com.tencent.mm.protocal.protobuf.csw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
   extends n
   implements k
 {
-  int ANR;
-  boolean ANS;
-  private g gbr;
-  private long oxB;
-  private byte[] oyG;
-  private String oyI;
-  private int oyr;
-  private final com.tencent.mm.al.b rr;
+  int Cgj;
+  boolean Cgk;
+  private g gfX;
+  private int pbR;
+  private long pbb;
+  private byte[] pcg;
+  private String pci;
+  private final com.tencent.mm.ak.b rr;
   
   public b(int paramInt1, String paramString, byte[] paramArrayOfByte, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(77868);
-    this.oyG = null;
-    this.ANR = -1;
-    this.ANS = true;
-    this.oxB = 0L;
+    this.pcg = null;
+    this.Cgj = -1;
+    this.Cgk = true;
+    this.pbb = 0L;
     b.a locala = new b.a();
-    locala.gUU = new cno();
-    locala.gUV = new cnp();
+    locala.hvt = new csv();
+    locala.hvu = new csw();
     locala.uri = "/cgi-bin/micromsg-bin/mmsearchemotion";
     locala.funcId = 234;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    this.oyr = paramInt1;
-    this.oyI = paramString;
-    this.oyG = paramArrayOfByte;
-    this.ANR = paramInt2;
-    this.oxB = paramLong;
+    this.rr = locala.aAz();
+    this.pbR = paramInt1;
+    this.pci = paramString;
+    this.pcg = paramArrayOfByte;
+    this.Cgj = paramInt2;
+    this.pbb = paramLong;
     AppMethodBeat.o(77868);
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(77869);
-    this.gbr = paramg;
-    cno localcno = (cno)this.rr.gUS.gUX;
-    if (!bt.cw(this.oyG))
+    this.gfX = paramg;
+    csv localcsv = (csv)this.rr.hvr.hvw;
+    if (!bs.cv(this.pcg))
     {
-      localcno.Dta = z.am(this.oyG);
-      this.ANS = false;
-      localcno.Dtd = this.oxB;
-      if (localcno.Dta != null) {
+      localcsv.EOe = z.al(this.pcg);
+      this.Cgk = false;
+      localcsv.EOh = this.pbb;
+      if (localcsv.EOe != null) {
         break label134;
       }
     }
     label134:
-    for (paramg = "Buf is NULL";; paramg = localcno.Dta.toString())
+    for (paramg = "Buf is NULL";; paramg = localcsv.EOe.toString())
     {
-      ad.d("MicroMsg.emoji.NetSceneSearchEmotion", paramg);
-      localcno.ReqType = this.oyr;
-      localcno.Dtb = this.oyI;
+      ac.d("MicroMsg.emoji.NetSceneSearchEmotion", paramg);
+      localcsv.ReqType = this.pbR;
+      localcsv.EOf = this.pci;
       int i = dispatch(parame, this.rr, this);
       AppMethodBeat.o(77869);
       return i;
-      localcno.Dta = new SKBuiltinBuffer_t();
-      this.ANS = true;
+      localcsv.EOe = new SKBuiltinBuffer_t();
+      this.Cgk = true;
       break;
     }
   }
   
-  public final cnp ejM()
+  public final csw ezh()
   {
     if (this.rr == null) {
       return null;
     }
-    return (cnp)this.rr.gUT.gUX;
+    return (csw)this.rr.hvs.hvw;
   }
   
   public final int getType()
@@ -97,8 +97,8 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77870);
-    ad.i("MicroMsg.emoji.NetSceneSearchEmotion", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ac.i("MicroMsg.emoji.NetSceneSearchEmotion", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.gfX.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(77870);
   }
 }

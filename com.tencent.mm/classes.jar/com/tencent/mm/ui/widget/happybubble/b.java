@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
@@ -22,18 +21,17 @@ import com.tencent.mm.ui.ap;
 public class b
   extends Dialog
 {
-  private BubbleLayout HFY;
-  private View HFZ;
-  private View HGa;
-  private int HGb;
-  private boolean HGc;
-  private a HGd;
-  private a[] HGe;
-  private a HGf;
-  private boolean HGg;
-  private int[] HGh;
-  private ViewTreeObserver.OnGlobalLayoutListener agI;
-  private int lDk;
+  private a JgA;
+  private a[] JgB;
+  private a JgC;
+  private boolean JgD;
+  private int[] JgE;
+  private BubbleLayout Jgv;
+  private View Jgw;
+  private View Jgx;
+  private int Jgy;
+  private boolean Jgz;
+  private ViewTreeObserver.OnGlobalLayoutListener ahC;
   private Activity mActivity;
   private boolean mCancelable;
   private int mHeight;
@@ -41,15 +39,16 @@ public class b
   private int mOffsetX;
   private int mOffsetY;
   private int mWidth;
+  private int mfe;
   
-  public b(final Context paramContext)
+  public b(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(143532);
-    this.HGd = a.HGo;
-    this.HGe = new a[4];
-    this.HGg = false;
-    this.HGh = new int[2];
+    this.JgA = a.JgL;
+    this.JgB = new a[4];
+    this.JgD = false;
+    this.JgE = new int[2];
     setCancelable(true);
     this.mActivity = ((Activity)paramContext);
     paramContext = getWindow();
@@ -59,71 +58,31 @@ public class b
       return;
     }
     paramContext = paramContext.getAttributes();
-    final int i = c.et(getContext())[0];
-    this.lDk = ap.iX(getContext());
-    getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(143525);
-        if (b.a(b.this))
-        {
-          if (paramContext.x < 0) {}
-          for (float f1 = 0.0F;; f1 = paramContext.x)
-          {
-            float f2 = f1;
-            if (paramAnonymousView.getWidth() + f1 > i) {
-              f2 = i - paramAnonymousView.getWidth();
-            }
-            paramAnonymousMotionEvent.setLocation(f2 + paramAnonymousMotionEvent.getX(), paramContext.y + paramAnonymousMotionEvent.getY());
-            b.b(b.this).getWindow().getDecorView().dispatchTouchEvent(paramAnonymousMotionEvent);
-            AppMethodBeat.o(143525);
-            return true;
-          }
-        }
-        AppMethodBeat.o(143525);
-        return false;
-      }
-    });
+    int i = c.eB(getContext())[0];
+    this.mfe = ap.ji(getContext());
+    getWindow().getDecorView().setOnTouchListener(new b.1(this, paramContext, i));
     AppMethodBeat.o(143532);
   }
   
-  private boolean ffA()
-  {
-    a[] arrayOfa = this.HGe;
-    int m = arrayOfa.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      k = j;
-      if (arrayOfa[i] != null) {
-        k = j + 1;
-      }
-      i += 1;
-    }
-    return j > 0;
-  }
-  
-  private void ffB()
+  private void fvA()
   {
     AppMethodBeat.i(143535);
-    if ((this.HGa == null) || ((this.HGf == null) && (!ffA())))
+    if ((this.Jgx == null) || ((this.JgC == null) && (!fvz())))
     {
       AppMethodBeat.o(143535);
       return;
     }
     Object localObject = new int[4];
-    localObject[0] = this.HGh[0];
-    localObject[1] = this.HGh[1];
-    localObject[2] = (c.et(getContext())[0] - this.HGh[0] - this.HGa.getWidth());
-    localObject[3] = (c.et(getContext())[1] - this.HGh[1] - this.HGa.getHeight() - this.HFY.getLookLength() - com.tencent.mm.cd.a.fromDPToPix(this.HGa.getContext(), 30));
+    localObject[0] = this.JgE[0];
+    localObject[1] = this.JgE[1];
+    localObject[2] = (c.eB(getContext())[0] - this.JgE[0] - this.Jgx.getWidth());
+    localObject[3] = (c.eB(getContext())[1] - this.JgE[1] - this.Jgx.getHeight() - this.Jgv.getLookLength() - com.tencent.mm.cc.a.fromDPToPix(this.Jgx.getContext(), 30));
     int j;
     int i;
-    if (ffA())
+    if (fvz())
     {
-      this.HFZ.measure(0, 0);
-      a[] arrayOfa = this.HGe;
+      this.Jgw.measure(0, 0);
+      a[] arrayOfa = this.JgB;
       j = arrayOfa.length;
       i = 0;
       if (i < j)
@@ -134,7 +93,7 @@ public class b
           AppMethodBeat.o(143535);
           return;
         }
-        switch (4.HGl[locala.ordinal()])
+        switch (4.JgI[locala.ordinal()])
         {
         }
         do
@@ -147,29 +106,29 @@ public class b
               {
                 i += 1;
                 break;
-              } while (localObject[0] <= this.HFZ.getMeasuredWidth());
-              this.HGd = a.HGn;
+              } while (localObject[0] <= this.Jgw.getMeasuredWidth());
+              this.JgA = a.JgK;
               AppMethodBeat.o(143535);
               return;
-            } while (localObject[1] <= this.HFZ.getMeasuredHeight());
-            this.HGd = a.HGo;
+            } while (localObject[1] <= this.Jgw.getMeasuredHeight());
+            this.JgA = a.JgL;
             AppMethodBeat.o(143535);
             return;
-          } while (localObject[2] <= this.HFZ.getMeasuredWidth());
-          this.HGd = a.HGp;
+          } while (localObject[2] <= this.Jgw.getMeasuredWidth());
+          this.JgA = a.JgM;
           AppMethodBeat.o(143535);
           return;
-        } while (localObject[3] <= this.HFZ.getMeasuredHeight());
-        this.HGd = a.HGq;
+        } while (localObject[3] <= this.Jgw.getMeasuredHeight());
+        this.JgA = a.JgN;
         AppMethodBeat.o(143535);
         return;
       }
-      this.HGd = this.HGe[0];
+      this.JgA = this.JgB[0];
       AppMethodBeat.o(143535);
       return;
     }
-    if (this.HGf != null) {}
-    switch (4.HGm[this.HGf.ordinal()])
+    if (this.JgC != null) {}
+    switch (4.JgJ[this.JgC.ordinal()])
     {
     case 1: 
     default: 
@@ -191,70 +150,70 @@ public class b
       j += 1;
       break;
       if (localObject[1] > localObject[3]) {}
-      for (localObject = a.HGo;; localObject = a.HGq)
+      for (localObject = a.JgL;; localObject = a.JgN)
       {
-        this.HGd = ((a)localObject);
+        this.JgA = ((a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (localObject[0] > localObject[2]) {}
-      for (localObject = a.HGn;; localObject = a.HGp)
+      for (localObject = a.JgK;; localObject = a.JgM)
       {
-        this.HGd = ((a)localObject);
+        this.JgA = ((a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[0])
       {
-        this.HGd = a.HGn;
+        this.JgA = a.JgK;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[1])
       {
-        this.HGd = a.HGo;
+        this.JgA = a.JgL;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[2])
       {
-        this.HGd = a.HGp;
+        this.JgA = a.JgM;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[3]) {
-        this.HGd = a.HGq;
+        this.JgA = a.JgN;
       }
       AppMethodBeat.o(143535);
       return;
     }
   }
   
-  private void ffC()
+  private void fvB()
   {
     AppMethodBeat.i(143536);
-    switch (4.HGl[this.HGd.ordinal()])
+    switch (4.JgI[this.JgA.ordinal()])
     {
     }
     for (;;)
     {
-      this.HFY.ffF();
+      this.Jgv.fvE();
       AppMethodBeat.o(143536);
       return;
-      this.HFY.setLook(BubbleLayout.a.HGI);
+      this.Jgv.setLook(BubbleLayout.a.Jhf);
       continue;
-      this.HFY.setLook(BubbleLayout.a.HGJ);
+      this.Jgv.setLook(BubbleLayout.a.Jhg);
       continue;
-      this.HFY.setLook(BubbleLayout.a.HGG);
+      this.Jgv.setLook(BubbleLayout.a.Jhd);
       continue;
-      this.HFY.setLook(BubbleLayout.a.HGH);
+      this.Jgv.setLook(BubbleLayout.a.Jhe);
     }
   }
   
-  private void ffD()
+  private void fvC()
   {
     AppMethodBeat.i(143538);
-    if (this.HGa == null)
+    if (this.Jgx == null)
     {
       AppMethodBeat.o(143538);
       return;
@@ -276,134 +235,151 @@ public class b
     FrameLayout.LayoutParams localLayoutParams1;
     if (this.mMargin != 0)
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.HFY.getLayoutParams();
-      if ((this.HGd == a.HGo) || (this.HGd == a.HGq))
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.Jgv.getLayoutParams();
+      if ((this.JgA == a.JgL) || (this.JgA == a.JgN))
       {
         localLayoutParams1.leftMargin = this.mMargin;
         localLayoutParams1.rightMargin = this.mMargin;
-        this.HFY.setLayoutParams(localLayoutParams1);
+        this.Jgv.setLayoutParams(localLayoutParams1);
       }
     }
     else
     {
-      switch (4.HGl[this.HGd.ordinal()])
+      switch (4.JgI[this.JgA.ordinal()])
       {
       }
     }
     for (;;)
     {
-      this.HFY.invalidate();
+      this.Jgv.invalidate();
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(143538);
       return;
       localLayoutParams1.topMargin = this.mMargin;
       localLayoutParams1.bottomMargin = this.mMargin;
       break;
-      localLayoutParams.x = (this.HGh[0] + this.HGa.getWidth() / 2 - this.HFY.getWidth() / 2 + this.mOffsetX);
+      localLayoutParams.x = (this.JgE[0] + this.Jgx.getWidth() / 2 - this.Jgv.getWidth() / 2 + this.mOffsetX);
       if ((this.mMargin != 0) && (this.mWidth == -1)) {
-        this.HFY.setLookPosition(this.HGh[0] - this.mMargin + this.HGa.getWidth() / 2 - this.HFY.getLookWidth() / 2);
+        this.Jgv.setLookPosition(this.JgE[0] - this.mMargin + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
       }
       for (;;)
       {
-        if (this.HGd != a.HGq) {
+        if (this.JgA != a.JgN) {
           break label519;
         }
-        if (this.HGb != 0) {
-          this.mOffsetY = this.HGb;
+        if (this.Jgy != 0) {
+          this.mOffsetY = this.Jgy;
         }
-        localLayoutParams.y = (this.HGh[1] + this.HGa.getHeight() + this.mOffsetY - this.lDk);
+        localLayoutParams.y = (this.JgE[1] + this.Jgx.getHeight() + this.mOffsetY - this.mfe);
         break;
         if (localLayoutParams.x <= 0) {
-          this.HFY.setLookPosition(this.HGh[0] + this.HGa.getWidth() / 2 - this.HFY.getLookWidth() / 2);
-        } else if (localLayoutParams.x + this.HFY.getWidth() > c.et(getContext())[0]) {
-          this.HFY.setLookPosition(this.HGh[0] - (c.et(getContext())[0] - this.HFY.getWidth()) + this.HGa.getWidth() / 2 - this.HFY.getLookWidth() / 2);
+          this.Jgv.setLookPosition(this.JgE[0] + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
+        } else if (localLayoutParams.x + this.Jgv.getWidth() > c.eB(getContext())[0]) {
+          this.Jgv.setLookPosition(this.JgE[0] - (c.eB(getContext())[0] - this.Jgv.getWidth()) + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
         } else {
-          this.HFY.setLookPosition(this.HGh[0] - localLayoutParams.x + this.HGa.getWidth() / 2 - this.HFY.getLookWidth() / 2);
+          this.Jgv.setLookPosition(this.JgE[0] - localLayoutParams.x + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
         }
       }
       label519:
-      if (this.HGb != 0) {
-        this.mOffsetY = (-this.HGb);
+      if (this.Jgy != 0) {
+        this.mOffsetY = (-this.Jgy);
       }
-      localLayoutParams.y = (this.HGh[1] - this.HFY.getHeight() + this.mOffsetY - this.lDk);
+      localLayoutParams.y = (this.JgE[1] - this.Jgv.getHeight() + this.mOffsetY - this.mfe);
       continue;
-      localLayoutParams.y = (this.HGh[1] + this.mOffsetY + this.HGa.getHeight() / 2 - this.HFY.getHeight() / 2 - this.lDk);
+      localLayoutParams.y = (this.JgE[1] + this.mOffsetY + this.Jgx.getHeight() / 2 - this.Jgv.getHeight() / 2 - this.mfe);
       if ((this.mMargin != 0) && (this.mHeight == -1)) {
-        this.HFY.setLookPosition(this.HGh[1] - this.mMargin + this.HGa.getHeight() / 2 - this.HFY.getLookWidth() / 2 - this.lDk);
+        this.Jgv.setLookPosition(this.JgE[1] - this.mMargin + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2 - this.mfe);
       }
       for (;;)
       {
-        if (this.HGd != a.HGp) {
+        if (this.JgA != a.JgM) {
           break label887;
         }
-        if (this.HGb != 0) {
-          this.mOffsetX = this.HGb;
+        if (this.Jgy != 0) {
+          this.mOffsetX = this.Jgy;
         }
-        localLayoutParams.x = (this.HGh[0] + this.HGa.getWidth() + this.mOffsetX);
+        localLayoutParams.x = (this.JgE[0] + this.Jgx.getWidth() + this.mOffsetX);
         break;
         if (localLayoutParams.y <= 0) {
-          this.HFY.setLookPosition(this.HGh[1] + this.HGa.getHeight() / 2 - this.HFY.getLookWidth() / 2 - this.lDk);
-        } else if (localLayoutParams.y + this.HFY.getHeight() > c.et(getContext())[1]) {
-          this.HFY.setLookPosition(this.HGh[1] - (c.et(getContext())[1] - this.HFY.getHeight()) + this.HGa.getHeight() / 2 - this.HFY.getLookWidth() / 2);
+          this.Jgv.setLookPosition(this.JgE[1] + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2 - this.mfe);
+        } else if (localLayoutParams.y + this.Jgv.getHeight() > c.eB(getContext())[1]) {
+          this.Jgv.setLookPosition(this.JgE[1] - (c.eB(getContext())[1] - this.Jgv.getHeight()) + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2);
         } else {
-          this.HFY.setLookPosition(this.HGh[1] - localLayoutParams.y + this.HGa.getHeight() / 2 - this.HFY.getLookWidth() / 2 - this.lDk);
+          this.Jgv.setLookPosition(this.JgE[1] - localLayoutParams.y + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2 - this.mfe);
         }
       }
       label887:
-      if (this.HGb != 0) {
-        this.mOffsetX = (-this.HGb);
+      if (this.Jgy != 0) {
+        this.mOffsetX = (-this.Jgy);
       }
-      localLayoutParams.x = (this.HGh[0] - this.HFY.getWidth() + this.mOffsetX);
+      localLayoutParams.x = (this.JgE[0] - this.Jgv.getWidth() + this.mOffsetX);
     }
+  }
+  
+  private boolean fvz()
+  {
+    a[] arrayOfa = this.JgB;
+    int m = arrayOfa.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      k = j;
+      if (arrayOfa[i] != null) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    return j > 0;
   }
   
   public final <T extends b> T a(BubbleLayout paramBubbleLayout)
   {
-    this.HFY = paramBubbleLayout;
+    this.Jgv = paramBubbleLayout;
     return this;
   }
   
   public final <T extends b> T a(a... paramVarArgs)
   {
-    this.HGe = paramVarArgs;
+    this.JgB = paramVarArgs;
     return this;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(143537);
-    if (this.HGc)
+    if (this.Jgz)
     {
       View localView = getCurrentFocus();
       if ((localView instanceof TextView)) {
         ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(localView.getWindowToken(), 0);
       }
     }
-    if ((this.HFY != null) && (Build.VERSION.SDK_INT >= 16)) {
-      this.HFY.getViewTreeObserver().removeOnGlobalLayoutListener(this.agI);
+    if ((this.Jgv != null) && (Build.VERSION.SDK_INT >= 16)) {
+      this.Jgv.getViewTreeObserver().removeOnGlobalLayoutListener(this.ahC);
     }
     super.dismiss();
     AppMethodBeat.o(143537);
   }
   
-  public final <T extends b> T gv(View paramView)
+  public final <T extends b> T gL(View paramView)
   {
-    AppMethodBeat.i(191022);
-    this.HGa = paramView;
-    this.HGa.getLocationOnScreen(this.HGh);
-    if (this.agI != null)
+    AppMethodBeat.i(197235);
+    this.Jgx = paramView;
+    this.Jgx.getLocationOnScreen(this.JgE);
+    if (this.ahC != null)
     {
-      ffB();
-      ffC();
-      ffD();
+      fvA();
+      fvB();
+      fvC();
     }
-    AppMethodBeat.o(191022);
+    AppMethodBeat.o(197235);
     return this;
   }
   
-  public final <T extends b> T gw(View paramView)
+  public final <T extends b> T gM(View paramView)
   {
-    this.HFZ = paramView;
+    this.Jgw = paramView;
     return this;
   }
   
@@ -411,48 +387,48 @@ public class b
   {
     AppMethodBeat.i(143534);
     super.onCreate(paramBundle);
-    if (this.HFY == null) {
-      this.HFY = new BubbleLayout(getContext());
+    if (this.Jgv == null) {
+      this.Jgv = new BubbleLayout(getContext());
     }
-    if (this.HFZ != null) {
-      this.HFY.addView(this.HFZ);
+    if (this.Jgw != null) {
+      this.Jgv.addView(this.Jgw);
     }
-    setContentView(this.HFY);
+    setContentView(this.Jgv);
     paramBundle = getWindow();
     if (paramBundle == null)
     {
       AppMethodBeat.o(143534);
       return;
     }
-    if (this.HGc) {
+    if (this.Jgz) {
       paramBundle.setSoftInputMode(18);
     }
     paramBundle.setLayout(-2, -2);
-    ffB();
-    ffC();
-    this.agI = new ViewTreeObserver.OnGlobalLayoutListener()
+    fvA();
+    fvB();
+    this.ahC = new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      int mew;
-      int mex;
+      int mGv;
+      int mGw;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(143526);
-        if ((this.mew == b.c(b.this).getWidth()) && (this.mex == b.c(b.this).getHeight()))
+        if ((this.mGv == b.c(b.this).getWidth()) && (this.mGw == b.c(b.this).getHeight()))
         {
           AppMethodBeat.o(143526);
           return;
         }
         b.d(b.this);
-        this.mew = b.c(b.this).getWidth();
-        this.mex = b.c(b.this).getHeight();
+        this.mGv = b.c(b.this).getWidth();
+        this.mGw = b.c(b.this).getHeight();
         AppMethodBeat.o(143526);
       }
     };
-    this.HFY.getViewTreeObserver().addOnGlobalLayoutListener(this.agI);
-    this.HFY.setOnClickEdgeListener(new BubbleLayout.b()
+    this.Jgv.getViewTreeObserver().addOnGlobalLayoutListener(this.ahC);
+    this.Jgv.setOnClickEdgeListener(new BubbleLayout.b()
     {
-      public final void ffE()
+      public final void fvD()
       {
         AppMethodBeat.i(143527);
         if (b.e(b.this)) {
@@ -467,7 +443,7 @@ public class b
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143533);
-    if ((this.HGg) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    if ((this.JgD) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       dismiss();
       this.mActivity.onBackPressed();
@@ -519,11 +495,11 @@ public class b
     static
     {
       AppMethodBeat.i(143531);
-      HGn = new a("LEFT", 0);
-      HGo = new a("TOP", 1);
-      HGp = new a("RIGHT", 2);
-      HGq = new a("BOTTOM", 3);
-      HGr = new a[] { HGn, HGo, HGp, HGq };
+      JgK = new a("LEFT", 0);
+      JgL = new a("TOP", 1);
+      JgM = new a("RIGHT", 2);
+      JgN = new a("BOTTOM", 3);
+      JgO = new a[] { JgK, JgL, JgM, JgN };
       AppMethodBeat.o(143531);
     }
     

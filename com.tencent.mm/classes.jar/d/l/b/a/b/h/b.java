@@ -6,14 +6,14 @@ import java.io.InputStream;
 public abstract class b<MessageType extends q>
   implements s<MessageType>
 {
-  private static final g JMo = ;
+  private static final g LzH = ;
   
   /* Error */
   private MessageType a(d paramd, g paramg)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 33	d/l/b/a/b/h/d:fHo	()Ld/l/b/a/b/h/e;
+    //   1: invokevirtual 33	d/l/b/a/b/h/d:fZR	()Ld/l/b/a/b/h/e;
     //   4: astore_1
     //   5: aload_0
     //   6: aload_1
@@ -23,13 +23,13 @@ public abstract class b<MessageType extends q>
     //   14: astore_2
     //   15: aload_1
     //   16: iconst_0
-    //   17: invokevirtual 44	d/l/b/a/b/h/e:fP	(I)V
+    //   17: invokevirtual 44	d/l/b/a/b/h/e:fB	(I)V
     //   20: aload_2
     //   21: areturn
     //   22: astore_1
     //   23: aload_1
     //   24: aload_2
-    //   25: putfield 48	d/l/b/a/b/h/k:JNa	Ld/l/b/a/b/h/q;
+    //   25: putfield 48	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
     //   28: aload_1
     //   29: athrow
     //   30: astore_1
@@ -55,7 +55,7 @@ public abstract class b<MessageType extends q>
       for (Object localObject = new w();; localObject = new w())
       {
         localObject = new k(((w)localObject).getMessage());
-        ((k)localObject).JNa = paramMessageType;
+        ((k)localObject).LAt = paramMessageType;
         throw ((Throwable)localObject);
       }
     }
@@ -64,16 +64,16 @@ public abstract class b<MessageType extends q>
   
   private MessageType g(InputStream paramInputStream, g paramg)
   {
-    paramInputStream = e.W(paramInputStream);
+    paramInputStream = e.V(paramInputStream);
     paramg = (q)a(paramInputStream, paramg);
     try
     {
-      paramInputStream.fP(0);
+      paramInputStream.fB(0);
       return paramg;
     }
     catch (k paramInputStream)
     {
-      paramInputStream.JNa = paramg;
+      paramInputStream.LAt = paramg;
       throw paramInputStream;
     }
   }
@@ -101,7 +101,7 @@ public abstract class b<MessageType extends q>
         }
         m = paramInputStream.read();
         if (m == -1) {
-          throw k.fHN();
+          throw k.gaq();
         }
       }
       catch (IOException paramInputStream)
@@ -123,12 +123,12 @@ public abstract class b<MessageType extends q>
           {
             j = paramInputStream.read();
             if (j == -1) {
-              throw k.fHN();
+              throw k.gaq();
             }
           }
           else
           {
-            throw k.fHP();
+            throw k.gas();
           }
         } while ((j & 0x80) != 0);
       }

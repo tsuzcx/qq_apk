@@ -8,23 +8,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.protocal.h;
 import com.tencent.mm.protocal.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public final class ac
 {
-  final a[] hMp;
+  final a[] imM;
   
   public ac()
   {
     AppMethodBeat.i(132894);
-    this.hMp = new a[100];
+    this.imM = new a[100];
     AppMethodBeat.o(132894);
   }
   
-  static boolean pn(int paramInt)
+  static boolean qb(int paramInt)
   {
     return (paramInt == 10) || (paramInt == 268369922);
   }
@@ -36,13 +35,13 @@ public final class ac
     //   0: ldc 37
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   6: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   9: astore 12
     //   11: aload 12
     //   13: monitorenter
     //   14: aload_0
     //   15: iload_1
-    //   16: invokevirtual 41	com/tencent/mm/network/ac:pp	(I)I
+    //   16: invokevirtual 41	com/tencent/mm/network/ac:qd	(I)I
     //   19: istore 8
     //   21: iconst_m1
     //   22: iload 8
@@ -60,10 +59,10 @@ public final class ac
     //   45: iload 6
     //   47: istore 5
     //   49: aload_0
-    //   50: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   50: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   53: iload 8
     //   55: aaload
-    //   56: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   56: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   59: invokeinterface 57 1 0
     //   64: invokeinterface 63 1 0
     //   69: astore 13
@@ -72,10 +71,10 @@ public final class ac
     //   74: iload 6
     //   76: istore 5
     //   78: aload_0
-    //   79: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   79: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   82: iload 8
     //   84: aaload
-    //   85: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   85: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   88: invokeinterface 57 1 0
     //   93: invokeinterface 67 1 0
     //   98: lstore 9
@@ -84,10 +83,10 @@ public final class ac
     //   103: iload 6
     //   105: istore 5
     //   107: aload_0
-    //   108: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   108: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   111: iload 8
     //   113: aaload
-    //   114: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   114: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   117: invokeinterface 71 1 0
     //   122: astore 14
     //   124: iload 6
@@ -96,10 +95,10 @@ public final class ac
     //   129: istore 5
     //   131: aload 14
     //   133: aload_0
-    //   134: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   134: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   137: iload 8
     //   139: aaload
-    //   140: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   140: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   143: invokeinterface 75 1 0
     //   148: aload_2
     //   149: aload 13
@@ -111,10 +110,10 @@ public final class ac
     //   163: iload 6
     //   165: istore 5
     //   167: aload_0
-    //   168: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   168: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   171: iload 8
     //   173: aaload
-    //   174: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   174: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   177: invokeinterface 57 1 0
     //   182: invokeinterface 84 1 0
     //   187: ifeq +458 -> 645
@@ -124,7 +123,7 @@ public final class ac
     //   195: istore 5
     //   197: ldc 86
     //   199: ldc 88
-    //   201: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   201: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   204: iload 11
     //   206: ifeq +663 -> 869
     //   209: iload 6
@@ -161,7 +160,7 @@ public final class ac
     //   265: istore_1
     //   266: iload 6
     //   268: istore 5
-    //   270: getstatic 106	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   270: getstatic 106	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   273: ldc2_w 107
     //   276: lconst_0
     //   277: lconst_1
@@ -183,7 +182,7 @@ public final class ac
     //   301: istore_1
     //   302: iload 6
     //   304: istore 5
-    //   306: getstatic 106	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   306: getstatic 106	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   309: ldc2_w 107
     //   312: lconst_1
     //   313: lconst_1
@@ -209,10 +208,10 @@ public final class ac
     //   357: iload 6
     //   359: istore 5
     //   361: aload_0
-    //   362: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   362: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   365: iload 8
     //   367: aaload
-    //   368: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   368: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   371: invokeinterface 57 1 0
     //   376: invokeinterface 84 1 0
     //   381: ifeq +38 -> 419
@@ -222,12 +221,12 @@ public final class ac
     //   389: istore 5
     //   391: ldc 86
     //   393: ldc 117
-    //   395: invokestatic 120	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   395: invokestatic 120	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   398: iload 6
     //   400: istore_1
     //   401: iload 6
     //   403: istore 5
-    //   405: getstatic 106	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   405: getstatic 106	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   408: ldc2_w 121
     //   411: ldc2_w 123
     //   414: lconst_1
@@ -237,14 +236,14 @@ public final class ac
     //   421: istore_1
     //   422: iload 6
     //   424: istore 5
-    //   426: invokestatic 130	com/tencent/mm/network/ad:aFo	()Lcom/tencent/mm/network/t;
+    //   426: invokestatic 130	com/tencent/mm/network/ad:aMf	()Lcom/tencent/mm/network/t;
     //   429: ifnull +17 -> 446
     //   432: iload 6
     //   434: istore_1
     //   435: iload 6
     //   437: istore 5
-    //   439: invokestatic 130	com/tencent/mm/network/ad:aFo	()Lcom/tencent/mm/network/t;
-    //   442: invokevirtual 135	com/tencent/mm/network/t:aEM	()Z
+    //   439: invokestatic 130	com/tencent/mm/network/ad:aMf	()Lcom/tencent/mm/network/t;
+    //   442: invokevirtual 135	com/tencent/mm/network/t:aLD	()Z
     //   445: pop
     //   446: iload 6
     //   448: istore_1
@@ -276,10 +275,10 @@ public final class ac
     //   500: iload_1
     //   501: istore 7
     //   503: aload_0
-    //   504: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   504: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   507: iload 8
     //   509: aaload
-    //   510: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   510: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   513: invokeinterface 142 1 0
     //   518: astore_2
     //   519: iload_1
@@ -288,7 +287,7 @@ public final class ac
     //   523: istore 6
     //   525: iload_1
     //   526: istore 7
-    //   528: getstatic 146	com/tencent/mm/network/t:hKT	Ljava/lang/String;
+    //   528: getstatic 146	com/tencent/mm/network/t:ilp	Ljava/lang/String;
     //   531: invokevirtual 151	java/lang/String:isEmpty	()Z
     //   534: ifne +100 -> 634
     //   537: iload_1
@@ -298,7 +297,7 @@ public final class ac
     //   543: iload_1
     //   544: istore 7
     //   546: aload_2
-    //   547: getstatic 146	com/tencent/mm/network/t:hKT	Ljava/lang/String;
+    //   547: getstatic 146	com/tencent/mm/network/t:ilp	Ljava/lang/String;
     //   550: invokevirtual 155	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   553: ifeq +81 -> 634
     //   556: iload_1
@@ -313,13 +312,13 @@ public final class ac
     //   571: iconst_0
     //   572: aload_2
     //   573: aastore
-    //   574: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   574: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   577: iload_1
     //   578: istore 6
     //   580: iload_1
     //   581: istore 7
     //   583: ldc 162
-    //   585: putstatic 146	com/tencent/mm/network/t:hKT	Ljava/lang/String;
+    //   585: putstatic 146	com/tencent/mm/network/t:ilp	Ljava/lang/String;
     //   588: iload_1
     //   589: istore 6
     //   591: iload_1
@@ -336,14 +335,14 @@ public final class ac
     //   607: istore 6
     //   609: iload_1
     //   610: istore 7
-    //   612: invokestatic 130	com/tencent/mm/network/ad:aFo	()Lcom/tencent/mm/network/t;
+    //   612: invokestatic 130	com/tencent/mm/network/ad:aMf	()Lcom/tencent/mm/network/t;
     //   615: ifnull +19 -> 634
     //   618: iload_1
     //   619: istore 6
     //   621: iload_1
     //   622: istore 7
-    //   624: invokestatic 130	com/tencent/mm/network/ad:aFo	()Lcom/tencent/mm/network/t;
-    //   627: invokevirtual 135	com/tencent/mm/network/t:aEM	()Z
+    //   624: invokestatic 130	com/tencent/mm/network/ad:aMf	()Lcom/tencent/mm/network/t;
+    //   627: invokevirtual 135	com/tencent/mm/network/t:aLD	()Z
     //   630: pop
     //   631: iload_1
     //   632: istore 5
@@ -359,10 +358,10 @@ public final class ac
     //   650: istore 5
     //   652: ldc 86
     //   654: ldc 164
-    //   656: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   656: invokestatic 94	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   659: goto -455 -> 204
     //   662: astore_2
-    //   663: getstatic 106	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   663: getstatic 106	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   666: ldc2_w 121
     //   669: ldc2_w 165
     //   672: lconst_1
@@ -375,9 +374,9 @@ public final class ac
     //   685: dup
     //   686: iconst_0
     //   687: aload_2
-    //   688: invokestatic 174	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   688: invokestatic 174	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   691: aastore
-    //   692: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   692: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   695: iload_1
     //   696: istore 5
     //   698: goto -64 -> 634
@@ -462,7 +461,7 @@ public final class ac
     //   871: istore_1
     //   872: iload 6
     //   874: istore 5
-    //   876: getstatic 106	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   876: getstatic 106	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   879: ldc2_w 121
     //   882: ldc2_w 184
     //   885: lconst_1
@@ -474,14 +473,14 @@ public final class ac
     //   895: istore 5
     //   897: ldc 86
     //   899: ldc 187
-    //   901: invokestatic 189	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   901: invokestatic 189	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   904: iload 6
     //   906: istore 5
     //   908: goto -274 -> 634
     //   911: astore_2
     //   912: iload 5
     //   914: istore_1
-    //   915: getstatic 106	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
+    //   915: getstatic 106	com/tencent/mm/plugin/report/e:wTc	Lcom/tencent/mm/plugin/report/e;
     //   918: ldc2_w 121
     //   921: ldc2_w 190
     //   924: lconst_1
@@ -494,9 +493,9 @@ public final class ac
     //   937: dup
     //   938: iconst_0
     //   939: aload_2
-    //   940: invokestatic 174	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   940: invokestatic 174	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   943: aastore
-    //   944: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   944: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   947: iload_1
     //   948: istore 5
     //   950: goto -316 -> 634
@@ -673,13 +672,13 @@ public final class ac
     AppMethodBeat.i(132901);
     if (paramr == null)
     {
-      ad.e("MicroMsg.MMNativeNetTaskAdapter", "startTask  rr is null");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "startTask  rr is null");
       AppMethodBeat.o(132901);
       return -1;
     }
     paramr.hashCode();
     StnLogic.Task localTask = new StnLogic.Task();
-    a[] arrayOfa = this.hMp;
+    a[] arrayOfa = this.imM;
     int i = 0;
     for (;;)
     {
@@ -689,16 +688,16 @@ public final class ac
         int j;
         try
         {
-          if (this.hMp[i] != null) {
+          if (this.imM[i] != null) {
             break;
           }
-          this.hMp[i] = new a(0);
-          this.hMp[i].hMt = paramr;
-          this.hMp[i].hMu = paraml;
-          this.hMp[i].hMv = paramc;
-          this.hMp[i].startTime = bt.eGO();
-          this.hMp[i].taskId = localTask.taskID;
-          localTask.cmdID = paramr.avm().getCmdId();
+          this.imM[i] = new a(0);
+          this.imM[i].imQ = paramr;
+          this.imM[i].imR = paraml;
+          this.imM[i].imS = paramc;
+          this.imM[i].startTime = bs.eWj();
+          this.imM[i].taskId = localTask.taskID;
+          localTask.cmdID = paramr.aCf().getCmdId();
           localTask.cgi = paramr.getUri();
           j = paramr.getType();
           boolean bool;
@@ -728,10 +727,10 @@ public final class ac
               localTask.channelStrategy = 1;
             }
             localTask.sendOnly = false;
-            if (pn(j)) {
+            if (qb(j)) {
               localTask.sendOnly = true;
             }
-            if ((paramr.avm().getShortSupport()) && (paramr.getUri() != null) && (paramr.getUri().length() > 0)) {
+            if ((paramr.aCf().getShortSupport()) && (paramr.getUri() != null) && (paramr.getUri().length() > 0)) {
               localTask.channelSelect |= 0x1;
             }
             if (localTask.cmdID != 0) {
@@ -757,7 +756,7 @@ public final class ac
             }
             if (paramr.getIsLongPolling())
             {
-              ad.i("MicroMsg.MMNativeNetTaskAdapter", "this is long-polling cgi");
+              com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "this is long-polling cgi");
               localTask.longPolling = true;
               localTask.longPollingTimeout = paramr.getLongPollingTimeout();
               j = paramr.getTimeOut();
@@ -766,14 +765,14 @@ public final class ac
               }
               localTask.retryCount = 0;
             }
-            ad.i("MicroMsg.MMNativeNetTaskAdapter", "mmcgi startTask inQueue netid:%d hash[%d,%d] net:%d cgi:%s needAuthed:%b", new Object[] { Integer.valueOf(i), Integer.valueOf(localTask.taskID), Integer.valueOf(paramr.getMMReqRespHash()), Integer.valueOf(localTask.channelSelect), localTask.cgi, Boolean.valueOf(localTask.needAuthed) });
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "mmcgi startTask inQueue netid:%d hash[%d,%d] net:%d cgi:%s needAuthed:%b", new Object[] { Integer.valueOf(i), Integer.valueOf(localTask.taskID), Integer.valueOf(paramr.getMMReqRespHash()), Integer.valueOf(localTask.channelSelect), localTask.cgi, Boolean.valueOf(localTask.needAuthed) });
             if (-1 != i)
             {
               if (paramInt == 1) {
                 localTask.retryCount = 0;
               }
               StnLogic.startTask(localTask);
-              ad.d("MicroMsg.MMNativeNetTaskAdapter", "startTask retsult=".concat(String.valueOf(i)));
+              com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.MMNativeNetTaskAdapter", "startTask retsult=".concat(String.valueOf(i)));
               AppMethodBeat.o(132901);
               return i;
             }
@@ -783,11 +782,11 @@ public final class ac
             bool = false;
             continue;
           }
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "startTask err");
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "startTask err");
         }
         catch (RemoteException localRemoteException)
         {
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bt.m(localRemoteException) });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bs.m(localRemoteException) });
         }
         finally
         {
@@ -811,9 +810,9 @@ public final class ac
     for (;;)
     {
       int i;
-      synchronized (this.hMp)
+      synchronized (this.imM)
       {
-        i = pp(paramInt1);
+        i = qd(paramInt1);
         if (-1 == i)
         {
           AppMethodBeat.o(132905);
@@ -821,74 +820,74 @@ public final class ac
         }
         try
         {
-          bool = this.hMp[i].hMv.wl(paramString);
-          ad.i("MicroMsg.MMNativeNetTaskAdapter", "link: %d req2Buf somr isfg:%b  cookie: %s, type: %d host[%s]", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(this.hMp[i].hMv.isForeground()), bt.cy(this.hMp[i].hMv.auZ()), Integer.valueOf(this.hMp[i].hMt.getType()), paramString });
+          bool = this.imM[i].imS.Ar(paramString);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "link: %d req2Buf somr isfg:%b  cookie: %s, type: %d host[%s]", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(this.imM[i].imS.isForeground()), bs.cx(this.imM[i].imS.aBS()), Integer.valueOf(this.imM[i].imQ.getType()), paramString });
           paramInt1 = 1;
-          if (!this.hMp[i].hMt.isSingleSession())
+          if (!this.imM[i].imQ.isSingleSession())
           {
             paramInt1 = 2;
-            this.hMp[i].hMt.avm().setPassKey(this.hMp[i].hMv.mq(3));
-            ad.i("MicroMsg.MMNativeNetTaskAdapter", "summerauths isSingleSession false type:[%s]", new Object[] { Integer.valueOf(this.hMp[i].hMt.getType()) });
+            this.imM[i].imQ.aCf().setPassKey(this.imM[i].imS.mp(3));
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "summerauths isSingleSession false type:[%s]", new Object[] { Integer.valueOf(this.imM[i].imQ.getType()) });
           }
           if (!bool) {
             continue;
           }
-          ad.i("MicroMsg.MMNativeNetTaskAdapter", "set axauth sessionkey ".concat(String.valueOf(paramString)));
-          this.hMp[i].hMt.avm().setPassKey(this.hMp[i].hMv.wk(paramString));
-          localObject1 = this.hMp[i].hMv.wj(paramString);
-          localObject2 = this.hMp[i].hMv.wi(paramString);
-          this.hMp[i].hMt.avm().setUseAxsession(true);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "set axauth sessionkey ".concat(String.valueOf(paramString)));
+          this.imM[i].imQ.aCf().setPassKey(this.imM[i].imS.Aq(paramString));
+          localObject1 = this.imM[i].imS.Ap(paramString);
+          localObject2 = this.imM[i].imS.Ao(paramString);
+          this.imM[i].imQ.aCf().setUseAxsession(true);
           if (localObject1 == null) {
             continue;
           }
-          ad.i("MicroMsg.MMNativeNetTaskAdapter", "axauth sessionkey length[%d]", new Object[] { Integer.valueOf(localObject1.length) });
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "axauth sessionkey length[%d]", new Object[] { Integer.valueOf(localObject1.length) });
           if (localObject2 == null) {
             continue;
           }
-          ad.i("MicroMsg.MMNativeNetTaskAdapter", "axauth cookie length[%d]", new Object[] { Integer.valueOf(localObject2.length) });
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "axauth cookie length[%d]", new Object[] { Integer.valueOf(localObject2.length) });
         }
         catch (RemoteException paramByteArrayOutputStream)
         {
           Object localObject2;
           paramArrayOfInt[0] = 1;
-          e.vIY.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "RemoteException:%s", new Object[] { bt.m(paramByteArrayOutputStream) });
+          e.wTc.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "RemoteException:%s", new Object[] { bs.m(paramByteArrayOutputStream) });
           bool = false;
           continue;
-          ad.w("MicroMsg.MMNativeNetTaskAdapter", "axauth cookie is null");
+          com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.MMNativeNetTaskAdapter", "axauth cookie is null");
           continue;
         }
         catch (IOException paramByteArrayOutputStream)
         {
           paramArrayOfInt[0] = 2;
-          e.vIY.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "IOException:%s", new Object[] { bt.m(paramByteArrayOutputStream) });
+          e.wTc.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "IOException:%s", new Object[] { bs.m(paramByteArrayOutputStream) });
           bool = false;
           continue;
-          paramString = this.hMp[i].hMv.mq(paramInt1);
-          Object localObject1 = this.hMp[i].hMv.auZ();
+          paramString = this.imM[i].imS.mp(paramInt1);
+          Object localObject1 = this.imM[i].imS.aBS();
           continue;
           paramArrayOfInt[0] = 0;
-          e.vIY.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "request to buffer using jni failed");
+          e.wTc.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "request to buffer using jni failed");
           continue;
         }
         catch (Exception paramByteArrayOutputStream)
         {
           paramArrayOfInt[0] = 3;
-          e.vIY.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "Exception:%s", new Object[] { bt.m(paramByteArrayOutputStream) });
+          e.wTc.idkeyStat(162L, paramArrayOfInt[0], 1L, false);
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "Exception:%s", new Object[] { bs.m(paramByteArrayOutputStream) });
           boolean bool = false;
           continue;
         }
-        e.vIY.idkeyStat(148L, 123L, 1L, false);
+        e.wTc.idkeyStat(148L, 123L, 1L, false);
         paramString = (String)localObject1;
         localObject1 = localObject2;
         paramInt1 = 2;
-        this.hMp[i].hMt.avm().setSessionKey(paramString);
+        this.imM[i].imQ.aCf().setSessionKey(paramString);
         if (paramInt1 == 1)
         {
-          paramInt2 = this.hMp[i].hMt.getType();
+          paramInt2 = this.imM[i].imQ.getType();
           if ((paramInt2 == 1000) || (paramInt2 == 502) || (paramInt2 == 930) || (paramInt2 == 503) || (paramInt2 == 654) || (paramInt2 == 755) || (paramInt2 == 931) || (paramInt2 == 733) || (paramInt2 == 784) || (paramInt2 == 722)) {
             break label1013;
           }
@@ -897,24 +896,24 @@ public final class ac
           }
           break label1013;
           if (paramInt2 == 0) {
-            this.hMp[i].hMt.avm().setPassKey(null);
+            this.imM[i].imQ.aCf().setPassKey(null);
           }
         }
-        this.hMp[i].hMt.avm().setUin(this.hMp[i].hMv.getUin());
-        localObject2 = this.hMp[i].hMt.avm();
-        paramInt2 = this.hMp[i].hMt.getType();
+        this.imM[i].imQ.aCf().setUin(this.imM[i].imS.getUin());
+        localObject2 = this.imM[i].imQ.aCf();
+        paramInt2 = this.imM[i].imQ.getType();
         if (paramInt1 != 2) {
           break label1025;
         }
         paramInt1 = 13;
-        bool = ((h)localObject2).a(paramInt2, paramString, paramInt1, (byte[])localObject1, this.hMp[i].hMv.avb(), 0, this.hMp[i].hMv.isForeground());
+        bool = ((h)localObject2).a(paramInt2, paramString, paramInt1, (byte[])localObject1, this.imM[i].imS.aBU(), 0, this.imM[i].imS.isForeground());
         if (bool)
         {
-          paramByteArrayOutputStream.write(this.hMp[i].hMt.avm().avk());
-          ad.d("MicroMsg.MMNativeNetTaskAdapter", "req2Buf bOk: %b", new Object[] { Boolean.valueOf(bool) });
+          paramByteArrayOutputStream.write(this.imM[i].imQ.aCf().aCd());
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.MMNativeNetTaskAdapter", "req2Buf bOk: %b", new Object[] { Boolean.valueOf(bool) });
           AppMethodBeat.o(132905);
           return bool;
-          ad.w("MicroMsg.MMNativeNetTaskAdapter", "axauth axsessionkey is null");
+          com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.MMNativeNetTaskAdapter", "axauth axsessionkey is null");
         }
       }
       label1013:
@@ -928,19 +927,19 @@ public final class ac
     }
   }
   
-  final boolean aFb()
+  final boolean aLS()
   {
     AppMethodBeat.i(132896);
-    a[] arrayOfa = this.hMp;
+    a[] arrayOfa = this.imM;
     int i = 0;
     for (;;)
     {
       if (i < 100) {}
       try
       {
-        if (this.hMp[i] != null)
+        if (this.imM[i] != null)
         {
-          boolean bool = this.hMp[i].hMt.avm().isAxAuth();
+          boolean bool = this.imM[i].imQ.aCf().isAxAuth();
           if (bool) {
             return true;
           }
@@ -948,8 +947,8 @@ public final class ac
       }
       catch (RemoteException localRemoteException)
       {
-        this.hMp[i] = null;
-        ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bt.m(localRemoteException), Integer.valueOf(i) });
+        this.imM[i] = null;
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bs.m(localRemoteException), Integer.valueOf(i) });
         break label126;
         return false;
       }
@@ -962,26 +961,26 @@ public final class ac
     }
   }
   
-  final boolean aFc()
+  final boolean aLT()
   {
     AppMethodBeat.i(132897);
-    a[] arrayOfa = this.hMp;
+    a[] arrayOfa = this.imM;
     int i = 0;
     for (;;)
     {
       if (i < 100) {}
       try
       {
-        if ((this.hMp[i] != null) && ((252 == this.hMp[i].hMt.getType()) || (701 == this.hMp[i].hMt.getType()) || (702 == this.hMp[i].hMt.getType()) || (763 == this.hMp[i].hMt.getType()) || (3941 == this.hMp[i].hMt.getType())))
+        if ((this.imM[i] != null) && ((252 == this.imM[i].imQ.getType()) || (701 == this.imM[i].imQ.getType()) || (702 == this.imM[i].imQ.getType()) || (763 == this.imM[i].imQ.getType()) || (3941 == this.imM[i].imQ.getType())))
         {
-          ad.w("MicroMsg.MMNativeNetTaskAdapter", "hasAuthCmd Auth inQueue: netid=" + i + " type=" + this.hMp[i].hMt.getType());
+          com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.MMNativeNetTaskAdapter", "hasAuthCmd Auth inQueue: netid=" + i + " type=" + this.imM[i].imQ.getType());
           return true;
         }
       }
       catch (RemoteException localRemoteException)
       {
-        this.hMp[i] = null;
-        ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bt.m(localRemoteException), Integer.valueOf(i) });
+        this.imM[i] = null;
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bs.m(localRemoteException), Integer.valueOf(i) });
         break label243;
         return false;
       }
@@ -994,26 +993,26 @@ public final class ac
     }
   }
   
-  final boolean aFd()
+  final boolean aLU()
   {
     AppMethodBeat.i(132898);
-    a[] arrayOfa = this.hMp;
+    a[] arrayOfa = this.imM;
     int i = 0;
     for (;;)
     {
       if (i < 100) {}
       try
       {
-        if ((this.hMp[i] != null) && (1000 == this.hMp[i].hMt.getType()))
+        if ((this.imM[i] != null) && (1000 == this.imM[i].imQ.getType()))
         {
-          ad.w("MicroMsg.MMNativeNetTaskAdapter", "hasWithoutLoginCmd inQueue: netid=" + i + " type=" + this.hMp[i].hMt.getType());
+          com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.MMNativeNetTaskAdapter", "hasWithoutLoginCmd inQueue: netid=" + i + " type=" + this.imM[i].imQ.getType());
           return true;
         }
       }
       catch (RemoteException localRemoteException)
       {
-        this.hMp[i] = null;
-        ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bt.m(localRemoteException), Integer.valueOf(i) });
+        this.imM[i] = null;
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bs.m(localRemoteException), Integer.valueOf(i) });
         break label163;
         return false;
       }
@@ -1026,7 +1025,7 @@ public final class ac
     }
   }
   
-  public final int aFe()
+  public final int aLV()
   {
     AppMethodBeat.i(132900);
     int i = 0;
@@ -1039,9 +1038,9 @@ public final class ac
       k = j;
       try
       {
-        if (this.hMp[i] != null)
+        if (this.imM[i] != null)
         {
-          this.hMp[i].hMt.getType();
+          this.imM[i].imQ.getType();
           k = j;
         }
       }
@@ -1049,9 +1048,9 @@ public final class ac
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bt.m(localRemoteException), Integer.valueOf(i) });
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s, remove index:%d", new Object[] { bs.m(localRemoteException), Integer.valueOf(i) });
           k = j + 1;
-          this.hMp[i] = null;
+          this.imM[i] = null;
         }
       }
       i += 1;
@@ -1061,10 +1060,10 @@ public final class ac
     return j;
   }
   
-  final r eL(boolean paramBoolean)
+  final r ff(boolean paramBoolean)
   {
     AppMethodBeat.i(132899);
-    a[] arrayOfa = this.hMp;
+    a[] arrayOfa = this.imM;
     int i = 0;
     Object localObject4;
     label315:
@@ -1075,7 +1074,7 @@ public final class ac
       {
         try
         {
-          a locala = this.hMp[i];
+          a locala = this.imM[i];
           Object localObject3 = localObject1;
           if (locala == null) {
             break label315;
@@ -1085,23 +1084,23 @@ public final class ac
           }
           try
           {
-            if ((this.hMp[i].hMt instanceof r.a)) {
+            if ((this.imM[i].imQ instanceof r.a)) {
               break label315;
             }
-            if ((!paramBoolean) && (!(this.hMp[i].hMt instanceof r.a)))
+            if ((!paramBoolean) && (!(this.imM[i].imQ instanceof r.a)))
             {
               localObject3 = localObject1;
               break label315;
             }
-            if ((252 == this.hMp[i].hMt.getType()) || (701 == this.hMp[i].hMt.getType()) || (763 == this.hMp[i].hMt.getType()) || (702 == this.hMp[i].hMt.getType()) || (3941 == this.hMp[i].hMt.getType()))
+            if ((252 == this.imM[i].imQ.getType()) || (701 == this.imM[i].imQ.getType()) || (763 == this.imM[i].imQ.getType()) || (702 == this.imM[i].imQ.getType()) || (3941 == this.imM[i].imQ.getType()))
             {
-              ad.e("MicroMsg.MMNativeNetTaskAdapter", "getAutoAuthRR Auth inQueue: netid=" + i + " type=" + this.hMp[i].hMt.getType());
+              com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "getAutoAuthRR Auth inQueue: netid=" + i + " type=" + this.imM[i].imQ.getType());
               return null;
             }
           }
           catch (RemoteException localRemoteException)
           {
-            ad.w("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bt.m(localRemoteException) });
+            com.tencent.mm.sdk.platformtools.ac.w("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bs.m(localRemoteException) });
             localObject4 = localObject1;
           }
           localObject4 = localr;
@@ -1111,7 +1110,7 @@ public final class ac
           AppMethodBeat.o(132899);
         }
         if (localr == null) {
-          localObject4 = this.hMp[i].hMt;
+          localObject4 = this.imM[i].imQ;
         }
       }
       else
@@ -1153,14 +1152,14 @@ public final class ac
     //   38: aload_3
     //   39: invokevirtual 454	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: invokevirtual 457	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 294	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: invokestatic 294	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   48: invokestatic 490	com/tencent/mars/stn/StnLogic:clearTask	()V
     //   51: invokestatic 491	com/tencent/mars/stn/StnLogic:reset	()V
     //   54: bipush 100
     //   56: anewarray 8	com/tencent/mm/network/ac$a
     //   59: astore 5
     //   61: aload_0
-    //   62: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   62: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   65: astore 6
     //   67: aload 6
     //   69: monitorenter
@@ -1172,12 +1171,12 @@ public final class ac
     //   80: aload 5
     //   82: iload 4
     //   84: aload_0
-    //   85: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   85: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   88: iload 4
     //   90: aaload
     //   91: aastore
     //   92: aload_0
-    //   93: getfield 24	com/tencent/mm/network/ac:hMp	[Lcom/tencent/mm/network/ac$a;
+    //   93: getfield 24	com/tencent/mm/network/ac:imM	[Lcom/tencent/mm/network/ac$a;
     //   96: iload 4
     //   98: aconst_null
     //   99: aastore
@@ -1211,7 +1210,7 @@ public final class ac
     //   149: aload 5
     //   151: iload 4
     //   153: aaload
-    //   154: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   154: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   157: invokeinterface 75 1 0
     //   162: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   165: aastore
@@ -1220,15 +1219,15 @@ public final class ac
     //   168: aload 5
     //   170: iload 4
     //   172: aaload
-    //   173: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   173: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   176: invokeinterface 313 1 0
     //   181: invokestatic 310	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   184: aastore
-    //   185: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   185: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   188: aload 5
     //   190: iload 4
     //   192: aaload
-    //   193: getfield 208	com/tencent/mm/network/ac$a:hMu	Lcom/tencent/mm/network/l;
+    //   193: getfield 208	com/tencent/mm/network/ac$a:imR	Lcom/tencent/mm/network/l;
     //   196: iload 4
     //   198: iload_1
     //   199: iload_2
@@ -1236,7 +1235,7 @@ public final class ac
     //   201: aload 5
     //   203: iload 4
     //   205: aaload
-    //   206: getfield 51	com/tencent/mm/network/ac$a:hMt	Lcom/tencent/mm/network/r;
+    //   206: getfield 51	com/tencent/mm/network/ac$a:imQ	Lcom/tencent/mm/network/r;
     //   209: aconst_null
     //   210: invokeinterface 498 7 0
     //   215: iload 4
@@ -1259,9 +1258,9 @@ public final class ac
     //   246: dup
     //   247: iconst_0
     //   248: aload 6
-    //   250: invokestatic 174	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   250: invokestatic 174	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   253: aastore
-    //   254: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   254: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   257: goto -42 -> 215
     //   260: ldc_w 481
     //   263: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1284,37 +1283,37 @@ public final class ac
     //   130	215	236	java/lang/Exception
   }
   
-  final int po(int paramInt)
+  final int qc(int paramInt)
   {
     AppMethodBeat.i(132904);
-    synchronized (this.hMp)
+    synchronized (this.imM)
     {
-      paramInt = pp(paramInt);
+      paramInt = qd(paramInt);
       if (-1 == paramInt)
       {
-        ad.e("MicroMsg.MMNativeNetTaskAdapter", "-1 == index");
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "-1 == index");
         AppMethodBeat.o(132904);
         return 0;
       }
       try
       {
-        paramInt = this.hMp[paramInt].hMt.avn().getRetCode();
+        paramInt = this.imM[paramInt].imQ.aCg().getRetCode();
         AppMethodBeat.o(132904);
         return paramInt;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bt.m(localException) });
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bs.m(localException) });
         AppMethodBeat.o(132904);
         return 0;
       }
     }
   }
   
-  final int pp(int paramInt)
+  final int qd(int paramInt)
   {
     int i = 0;
-    while ((i < 100) && ((this.hMp[i] == null) || (paramInt != this.hMp[i].taskId))) {
+    while ((i < 100) && ((this.imM[i] == null) || (paramInt != this.imM[i].taskId))) {
       i += 1;
     }
     paramInt = i;
@@ -1327,26 +1326,26 @@ public final class ac
   public final void reset()
   {
     AppMethodBeat.i(132902);
-    ad.i("MicroMsg.MMNativeNetTaskAdapter", "reset");
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "reset");
     StnLogic.reset();
-    a[] arrayOfa = this.hMp;
+    a[] arrayOfa = this.imM;
     int i = 0;
     while (i < 100) {
       try
       {
-        a locala = this.hMp[i];
+        a locala = this.imM[i];
         if (locala != null) {}
         try
         {
-          ad.i("MicroMsg.MMNativeNetTaskAdapter", "mmcgi reset outQueue: netId:%d hash:%d type:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.hMp[i].hMt.getType()), Integer.valueOf(this.hMp[i].hMt.getMMReqRespHash()) });
-          this.hMp[i] = null;
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.MMNativeNetTaskAdapter", "mmcgi reset outQueue: netId:%d hash:%d type:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.imM[i].imQ.getType()), Integer.valueOf(this.imM[i].imQ.getMMReqRespHash()) });
+          this.imM[i] = null;
           i += 1;
         }
         catch (RemoteException localRemoteException)
         {
           for (;;)
           {
-            ad.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bt.m(localRemoteException) });
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.MMNativeNetTaskAdapter", "exception:%s", new Object[] { bs.m(localRemoteException) });
           }
         }
       }
@@ -1360,16 +1359,16 @@ public final class ac
   
   static final class a
   {
-    r hMt;
-    l hMu;
-    c hMv;
+    r imQ;
+    l imR;
+    c imS;
     long startTime;
     int taskId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.ac
  * JD-Core Version:    0.7.0.1
  */

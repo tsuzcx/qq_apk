@@ -28,7 +28,7 @@ public class SightRangeWidget
         break label46;
       }
       paramAtContactWidget.setVisibility(4);
-      paramAtContactWidget.dyI();
+      paramAtContactWidget.dNf();
     }
     for (;;)
     {

@@ -7,9 +7,9 @@ public enum p$a
   static
   {
     AppMethodBeat.i(41172);
-    rTE = new a("FROM_PUBLISH_GALLERY", 0);
-    rTF = new a("FROM_TAB_GALLERY", 1);
-    rTG = new a[] { rTE, rTF };
+    tbw = new a("FROM_PUBLISH_GALLERY", 0);
+    tbx = new a("FROM_TAB_GALLERY", 1);
+    tby = new a[] { tbw, tbx };
     AppMethodBeat.o(41172);
   }
   

@@ -5,21 +5,21 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
 
 public final class ax
 {
-  public static void l(boolean paramBoolean1, boolean paramBoolean2)
+  public static void m(boolean paramBoolean1, boolean paramBoolean2)
   {
     int j = 2;
     AppMethodBeat.i(150169);
-    boolean bool2 = a.Yi();
-    boolean bool3 = a.Yk();
-    g.afC();
-    boolean bool4 = ((Boolean)g.afB().afk().get(73217, Boolean.TRUE)).booleanValue();
-    g.afC();
-    boolean bool5 = ((Boolean)g.afB().afk().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool2 = a.Zf();
+    boolean bool3 = a.Zh();
+    g.agS();
+    boolean bool4 = ((Boolean)g.agR().agA().get(73217, Boolean.TRUE)).booleanValue();
+    g.agS();
+    boolean bool5 = ((Boolean)g.agR().agA().get(73218, Boolean.TRUE)).booleanValue();
     boolean bool1;
     h localh;
     int k;
@@ -32,8 +32,8 @@ public final class ax
     if ((bool4) || (bool5))
     {
       bool1 = true;
-      ad.i("MicroMsg.KvNotificationStat", "doStatSysNotificationAfterModify, switchNewMsg: %s, switchVoipInvite: %s, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
-      localh = h.vKh;
+      ac.i("MicroMsg.KvNotificationStat", "doStatSysNotificationAfterModify, switchNewMsg: %s, switchVoipInvite: %s, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
+      localh = h.wUl;
       if (!bool2) {
         break label284;
       }
@@ -91,23 +91,23 @@ public final class ax
     }
   }
   
-  public static void ng(int paramInt)
+  public static void nU(int paramInt)
   {
     AppMethodBeat.i(150167);
-    boolean bool2 = a.Yi();
-    boolean bool3 = a.Yk();
-    boolean bool4 = a.Yl();
-    boolean bool5 = a.Ym();
-    boolean bool6 = a.Yq();
-    boolean bool7 = a.Yz();
-    int i2 = a.YA();
-    int i3 = a.YC();
-    int i4 = a.YB();
-    int i5 = a.YD();
-    g.afC();
-    boolean bool8 = ((Boolean)g.afB().afk().get(73217, Boolean.TRUE)).booleanValue();
-    g.afC();
-    boolean bool9 = ((Boolean)g.afB().afk().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool2 = a.Zf();
+    boolean bool3 = a.Zh();
+    boolean bool4 = a.Zi();
+    boolean bool5 = a.Zj();
+    boolean bool6 = a.Zn();
+    boolean bool7 = a.Zw();
+    int i2 = a.Zx();
+    int i3 = a.Zz();
+    int i4 = a.Zy();
+    int i5 = a.ZA();
+    g.agS();
+    boolean bool8 = ((Boolean)g.agR().agA().get(73217, Boolean.TRUE)).booleanValue();
+    g.agS();
+    boolean bool9 = ((Boolean)g.agR().agA().get(73218, Boolean.TRUE)).booleanValue();
     boolean bool1;
     h localh;
     int i;
@@ -127,8 +127,8 @@ public final class ax
     if ((bool8) || (bool9))
     {
       bool1 = true;
-      ad.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), nh(i2) + nh(i3), nh(i4) + nh(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
-      localh = h.vKh;
+      ac.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), nV(i2) + nV(i3), nV(i4) + nV(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
+      localh = h.wUl;
       if (!bool2) {
         break label488;
       }
@@ -153,8 +153,8 @@ public final class ax
         break label515;
       }
       i1 = 2;
-      str1 = nh(i4) + nh(i5);
-      str2 = nh(i2) + nh(i3);
+      str1 = nV(i4) + nV(i5);
+      str2 = nV(i2) + nV(i3);
       if (!bool1) {
         break label521;
       }
@@ -188,7 +188,7 @@ public final class ax
     }
   }
   
-  private static String nh(int paramInt)
+  private static String nV(int paramInt)
   {
     AppMethodBeat.i(150168);
     if (paramInt > 10)
@@ -203,7 +203,7 @@ public final class ax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ax
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.cgj;
-import com.tencent.mm.protocal.protobuf.cgk;
-import com.tencent.mm.protocal.protobuf.cgn;
-import com.tencent.mm.protocal.protobuf.cgo;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.clm;
+import com.tencent.mm.protocal.protobuf.cln;
+import com.tencent.mm.protocal.protobuf.clq;
+import com.tencent.mm.protocal.protobuf.clr;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public final class c
@@ -24,30 +24,30 @@ public final class c
   implements k
 {
   private g callback;
-  private com.tencent.mm.al.b rr;
+  private com.tencent.mm.ak.b rr;
   
   public c(com.tencent.mm.plugin.address.d.b paramb)
   {
     AppMethodBeat.i(20771);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cgj();
-    ((b.a)localObject).gUV = new cgk();
+    ((b.a)localObject).hvt = new clm();
+    ((b.a)localObject).hvu = new cln();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoadd";
     ((b.a)localObject).funcId = 415;
     ((b.a)localObject).reqCmdId = 200;
     ((b.a)localObject).respCmdId = 1000000200;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (cgj)this.rr.gUS.gUX;
-    ((cgj)localObject).Ecd = new cgo();
-    ((cgj)localObject).Ecd.Eck = new cmf().aEE(bt.by(paramb.iyP, ""));
-    ((cgj)localObject).Ecd.Eci = new cmf().aEE(bt.by(paramb.iyN, ""));
-    ((cgj)localObject).Ecd.Ecn = new cmf().aEE(bt.by(paramb.iyS, ""));
-    ((cgj)localObject).Ecd.Ecl = new cmf().aEE(bt.by(paramb.iyQ, ""));
-    ((cgj)localObject).Ecd.Eco = new cmf().aEE(bt.by(paramb.iyT, ""));
-    ((cgj)localObject).Ecd.Ecp = new cmf().aEE(bt.by(paramb.iyU, ""));
-    ((cgj)localObject).Ecd.Ecj = new cmf().aEE(bt.by(paramb.iyO, ""));
-    ((cgj)localObject).Ecd.Ecm = new cmf().aEE(bt.by(paramb.iyR, ""));
-    ((cgj)localObject).Ecd.Ecq = new cmf().aEE(bt.by(paramb.iyV, ""));
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (clm)this.rr.hvr.hvw;
+    ((clm)localObject).FyY = new clr();
+    ((clm)localObject).FyY.Fzf = new crm().aJV(bs.bG(paramb.iYS, ""));
+    ((clm)localObject).FyY.Fzd = new crm().aJV(bs.bG(paramb.iYQ, ""));
+    ((clm)localObject).FyY.Fzi = new crm().aJV(bs.bG(paramb.iYV, ""));
+    ((clm)localObject).FyY.Fzg = new crm().aJV(bs.bG(paramb.iYT, ""));
+    ((clm)localObject).FyY.Fzj = new crm().aJV(bs.bG(paramb.iYW, ""));
+    ((clm)localObject).FyY.Fzk = new crm().aJV(bs.bG(paramb.iYX, ""));
+    ((clm)localObject).FyY.Fze = new crm().aJV(bs.bG(paramb.iYR, ""));
+    ((clm)localObject).FyY.Fzh = new crm().aJV(bs.bG(paramb.iYU, ""));
+    ((clm)localObject).FyY.Fzl = new crm().aJV(bs.bG(paramb.iYY, ""));
     AppMethodBeat.o(20771);
   }
   
@@ -68,17 +68,17 @@ public final class c
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20772);
-    ad.d("MicroMsg.NetSceneRcptInfoAdd", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ac.d("MicroMsg.NetSceneRcptInfoAdd", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (cgk)((com.tencent.mm.al.b)paramq).gUT.gUX;
-      if (paramq.Ece.Ech != null)
+      paramq = (cln)((com.tencent.mm.ak.b)paramq).hvs.hvw;
+      if (paramq.FyZ.Fzc != null)
       {
-        ad.d("MicroMsg.NetSceneRcptInfoAdd", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.Ece.Ech.size());
-        a.aKO();
-        a.aKQ().t(paramq.Ece.Ech);
-        a.aKO();
-        a.aKQ().aKS();
+        ac.d("MicroMsg.NetSceneRcptInfoAdd", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.FyZ.Fzc.size());
+        a.aRF();
+        a.aRH().t(paramq.FyZ.Fzc);
+        a.aRF();
+        a.aRH().aRJ();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

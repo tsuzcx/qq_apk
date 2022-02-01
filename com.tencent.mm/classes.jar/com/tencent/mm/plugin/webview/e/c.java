@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.e;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.b;
@@ -10,10 +10,10 @@ import com.tencent.mm.modelsimple.k.a;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.c.g;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.protocal.protobuf.bgq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.bki;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -25,178 +25,192 @@ import java.util.regex.Pattern;
 
 public final class c
 {
-  private static final Pattern BaV;
-  private static final IPCRunCgi.b BaW;
-  public boolean AKM;
-  private final HashSet<String> BaO;
-  private byte[] BaP;
-  private boolean BaQ;
-  private boolean BaR;
-  private int BaS;
-  private d BaT;
-  private final HashMap<String, String> BaU;
-  private String kGt;
+  private static final Pattern Cth;
+  private static final IPCRunCgi.b Cti;
+  public boolean Cdd;
+  private final HashSet<String> Ctb;
+  private boolean Ctc;
+  private boolean Ctd;
+  private int Cte;
+  private d Ctf;
+  private final HashMap<String, String> Ctg;
+  private String lhM;
   private String mAppId;
   private int mScene;
-  private int mWf;
-  private String tsj;
-  private int uoX;
+  private int nyE;
+  private byte[] tWa;
+  private String uAC;
+  private int vxT;
   
   static
   {
-    AppMethodBeat.i(189739);
-    BaV = Pattern.compile(".*#.*wechat_redirect");
-    BaW = new IPCRunCgi.b()
+    AppMethodBeat.i(205368);
+    Cth = Pattern.compile(".*#.*wechat_redirect");
+    Cti = new IPCRunCgi.b()
     {
-      public final com.tencent.mm.al.b a(com.tencent.mm.al.b paramAnonymousb)
+      public final com.tencent.mm.ak.b a(com.tencent.mm.ak.b paramAnonymousb)
       {
-        AppMethodBeat.i(189716);
+        AppMethodBeat.i(205345);
         paramAnonymousb = k.a.f(paramAnonymousb);
-        AppMethodBeat.o(189716);
+        AppMethodBeat.o(205345);
         return paramAnonymousb;
       }
     };
-    AppMethodBeat.o(189739);
+    AppMethodBeat.o(205368);
   }
   
   public c()
   {
-    AppMethodBeat.i(189721);
-    this.BaO = new HashSet();
+    AppMethodBeat.i(205350);
+    this.Ctb = new HashSet();
     this.mScene = 0;
-    this.uoX = 0;
-    this.kGt = "";
+    this.vxT = 0;
+    this.lhM = "";
     this.mAppId = "";
-    this.tsj = "";
-    this.BaP = new byte[0];
-    this.BaQ = true;
-    this.BaR = false;
-    this.BaS = 0;
-    this.AKM = false;
-    this.BaU = new HashMap();
-    this.mWf = ((int)System.currentTimeMillis());
-    this.BaT = new d();
-    AppMethodBeat.o(189721);
+    this.uAC = "";
+    this.tWa = new byte[0];
+    this.Ctc = true;
+    this.Ctd = false;
+    this.Cte = 0;
+    this.Cdd = false;
+    this.Ctg = new HashMap();
+    this.nyE = ((int)System.currentTimeMillis());
+    this.Ctf = new d();
+    AppMethodBeat.o(205350);
   }
   
-  private static void a(String paramString, int paramInt, aoj paramaoj, a<aoj> parama)
+  private static void a(String paramString, int paramInt, arn paramarn, a<arn> parama)
   {
-    AppMethodBeat.i(189736);
-    int i = paramaoj.Ctr;
-    String str = paramaoj.gKr;
+    AppMethodBeat.i(205365);
+    int i = paramarn.DLI;
+    String str = paramarn.hkR;
     switch (i)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(189736);
+      AppMethodBeat.o(205365);
       return;
       if ((str == null) || (str.length() == 0))
       {
-        ad.e("MicroMsg.LuggageGetA8Key", "getA8key-text fail, invalid content");
-        AppMethodBeat.o(189736);
+        ac.e("MicroMsg.LuggageGetA8Key", "getA8key-text fail, invalid content");
+        AppMethodBeat.o(205365);
         return;
       }
       parama.A(paramInt, paramString, str);
-      AppMethodBeat.o(189736);
+      AppMethodBeat.o(205365);
       return;
-      parama.b(paramInt, paramString, paramaoj.DpW, paramaoj);
+      parama.b(paramInt, paramString, paramarn.EKZ, paramarn);
     }
   }
   
+  public static int aCE(String paramString)
+  {
+    AppMethodBeat.i(205355);
+    paramString = com.tencent.mm.protocal.c.aIy(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(205355);
+      return -1;
+    }
+    int i = paramString.eQY();
+    AppMethodBeat.o(205355);
+    return i;
+  }
+  
   /* Error */
-  private com.tencent.mm.al.b ai(String paramString, int paramInt)
+  private com.tencent.mm.ak.b am(String paramString, int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 260
+    //   2: ldc_w 274
     //   5: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
     //   9: iload_2
-    //   10: invokestatic 264	com/tencent/mm/modelsimple/k$a:ai	(Ljava/lang/String;I)Lcom/tencent/mm/al/b;
+    //   10: invokestatic 278	com/tencent/mm/modelsimple/k$a:am	(Ljava/lang/String;I)Lcom/tencent/mm/ak/b;
     //   13: astore 4
     //   15: aload 4
-    //   17: getfield 270	com/tencent/mm/al/b:gUS	Lcom/tencent/mm/al/b$b;
-    //   20: getfield 276	com/tencent/mm/al/b$b:gUX	Lcom/tencent/mm/bx/a;
-    //   23: checkcast 278	com/tencent/mm/protocal/protobuf/aoi
+    //   17: getfield 284	com/tencent/mm/ak/b:hvr	Lcom/tencent/mm/ak/b$b;
+    //   20: getfield 290	com/tencent/mm/ak/b$b:hvw	Lcom/tencent/mm/bw/a;
+    //   23: checkcast 292	com/tencent/mm/protocal/protobuf/arm
     //   26: astore 5
     //   28: aload 5
     //   30: iconst_2
-    //   31: putfield 281	com/tencent/mm/protocal/protobuf/aoi:OpCode	I
+    //   31: putfield 295	com/tencent/mm/protocal/protobuf/arm:OpCode	I
     //   34: aload 5
-    //   36: new 283	com/tencent/mm/protocal/protobuf/cmf
+    //   36: new 297	com/tencent/mm/protocal/protobuf/crm
     //   39: dup
-    //   40: invokespecial 284	com/tencent/mm/protocal/protobuf/cmf:<init>	()V
+    //   40: invokespecial 298	com/tencent/mm/protocal/protobuf/crm:<init>	()V
     //   43: aload_1
-    //   44: invokevirtual 288	com/tencent/mm/protocal/protobuf/cmf:aEE	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cmf;
-    //   47: putfield 292	com/tencent/mm/protocal/protobuf/aoi:DpN	Lcom/tencent/mm/protocal/protobuf/cmf;
+    //   44: invokevirtual 302	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
+    //   47: putfield 306	com/tencent/mm/protocal/protobuf/arm:EKQ	Lcom/tencent/mm/protocal/protobuf/crm;
     //   50: aload 5
     //   52: aload_0
     //   53: getfield 75	com/tencent/mm/plugin/webview/e/c:mScene	I
-    //   56: putfield 295	com/tencent/mm/protocal/protobuf/aoi:Scene	I
+    //   56: putfield 309	com/tencent/mm/protocal/protobuf/arm:Scene	I
     //   59: aload 5
     //   61: aload_0
-    //   62: getfield 81	com/tencent/mm/plugin/webview/e/c:kGt	Ljava/lang/String;
-    //   65: putfield 298	com/tencent/mm/protocal/protobuf/aoi:mAQ	Ljava/lang/String;
+    //   62: getfield 81	com/tencent/mm/plugin/webview/e/c:lhM	Ljava/lang/String;
+    //   65: putfield 312	com/tencent/mm/protocal/protobuf/arm:ncR	Ljava/lang/String;
     //   68: aload 5
     //   70: iload_2
-    //   71: putfield 301	com/tencent/mm/protocal/protobuf/aoi:CCe	I
+    //   71: putfield 315	com/tencent/mm/protocal/protobuf/arm:DUB	I
     //   74: aload 5
     //   76: aload_0
-    //   77: getfield 77	com/tencent/mm/plugin/webview/e/c:uoX	I
-    //   80: putfield 304	com/tencent/mm/protocal/protobuf/aoi:Cxm	I
-    //   83: invokestatic 310	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   86: ldc_w 312
-    //   89: invokevirtual 318	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   92: checkcast 320	android/net/ConnectivityManager
+    //   77: getfield 77	com/tencent/mm/plugin/webview/e/c:vxT	I
+    //   80: putfield 318	com/tencent/mm/protocal/protobuf/arm:DPI	I
+    //   83: invokestatic 324	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   86: ldc_w 326
+    //   89: invokevirtual 332	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   92: checkcast 334	android/net/ConnectivityManager
     //   95: astore_3
     //   96: aload_3
     //   97: ifnull +232 -> 329
     //   100: aload_3
-    //   101: invokevirtual 324	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   101: invokevirtual 338	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   104: astore_3
     //   105: aload_3
     //   106: ifnull +223 -> 329
     //   109: aload_3
-    //   110: invokevirtual 329	android/net/NetworkInfo:getType	()I
+    //   110: invokevirtual 343	android/net/NetworkInfo:getType	()I
     //   113: iconst_1
     //   114: if_icmpne +197 -> 311
-    //   117: ldc_w 331
+    //   117: ldc_w 345
     //   120: astore_3
     //   121: aload 5
     //   123: aload_3
-    //   124: putfield 334	com/tencent/mm/protocal/protobuf/aoi:nlG	Ljava/lang/String;
+    //   124: putfield 348	com/tencent/mm/protocal/protobuf/arm:nOG	Ljava/lang/String;
     //   127: aload 5
     //   129: aload_0
-    //   130: getfield 108	com/tencent/mm/plugin/webview/e/c:mWf	I
-    //   133: putfield 337	com/tencent/mm/protocal/protobuf/aoi:DpS	I
+    //   130: getfield 108	com/tencent/mm/plugin/webview/e/c:nyE	I
+    //   133: putfield 351	com/tencent/mm/protocal/protobuf/arm:EKV	I
     //   136: aload 5
     //   138: aload_0
-    //   139: getfield 85	com/tencent/mm/plugin/webview/e/c:tsj	Ljava/lang/String;
-    //   142: putfield 340	com/tencent/mm/protocal/protobuf/aoi:DpT	Ljava/lang/String;
+    //   139: getfield 85	com/tencent/mm/plugin/webview/e/c:uAC	Ljava/lang/String;
+    //   142: putfield 354	com/tencent/mm/protocal/protobuf/arm:EKW	Ljava/lang/String;
     //   145: aload 5
     //   147: aload_0
-    //   148: getfield 93	com/tencent/mm/plugin/webview/e/c:BaS	I
-    //   151: putfield 343	com/tencent/mm/protocal/protobuf/aoi:DpU	I
+    //   148: getfield 93	com/tencent/mm/plugin/webview/e/c:Cte	I
+    //   151: putfield 357	com/tencent/mm/protocal/protobuf/arm:EKX	I
     //   154: aload 5
-    //   156: new 283	com/tencent/mm/protocal/protobuf/cmf
+    //   156: new 297	com/tencent/mm/protocal/protobuf/crm
     //   159: dup
-    //   160: invokespecial 284	com/tencent/mm/protocal/protobuf/cmf:<init>	()V
+    //   160: invokespecial 298	com/tencent/mm/protocal/protobuf/crm:<init>	()V
     //   163: aload_0
     //   164: getfield 83	com/tencent/mm/plugin/webview/e/c:mAppId	Ljava/lang/String;
-    //   167: invokevirtual 288	com/tencent/mm/protocal/protobuf/cmf:aEE	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cmf;
-    //   170: putfield 346	com/tencent/mm/protocal/protobuf/aoi:DpK	Lcom/tencent/mm/protocal/protobuf/cmf;
+    //   167: invokevirtual 302	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
+    //   170: putfield 360	com/tencent/mm/protocal/protobuf/arm:EKN	Lcom/tencent/mm/protocal/protobuf/crm;
     //   173: aload 5
-    //   175: new 348	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t
+    //   175: new 362	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t
     //   178: dup
-    //   179: invokespecial 349	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:<init>	()V
+    //   179: invokespecial 363	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:<init>	()V
     //   182: aload_0
-    //   183: getfield 87	com/tencent/mm/plugin/webview/e/c:BaP	[B
-    //   186: invokevirtual 353	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:setBuffer	([B)Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
-    //   189: putfield 354	com/tencent/mm/protocal/protobuf/aoi:DpV	Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
+    //   183: getfield 87	com/tencent/mm/plugin/webview/e/c:tWa	[B
+    //   186: invokevirtual 367	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:setBuffer	([B)Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
+    //   189: putfield 368	com/tencent/mm/protocal/protobuf/arm:EKY	Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
     //   192: ldc 117
-    //   194: ldc_w 356
+    //   194: ldc_w 370
     //   197: bipush 11
     //   199: anewarray 4	java/lang/Object
     //   202: dup
@@ -206,7 +220,7 @@ public final class c
     //   206: dup
     //   207: iconst_1
     //   208: aload_0
-    //   209: getfield 81	com/tencent/mm/plugin/webview/e/c:kGt	Ljava/lang/String;
+    //   209: getfield 81	com/tencent/mm/plugin/webview/e/c:lhM	Ljava/lang/String;
     //   212: aastore
     //   213: dup
     //   214: iconst_2
@@ -222,18 +236,18 @@ public final class c
     //   230: dup
     //   231: iconst_4
     //   232: aload_0
-    //   233: getfield 77	com/tencent/mm/plugin/webview/e/c:uoX	I
+    //   233: getfield 77	com/tencent/mm/plugin/webview/e/c:vxT	I
     //   236: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   239: aastore
     //   240: dup
     //   241: iconst_5
     //   242: aload 5
-    //   244: getfield 334	com/tencent/mm/protocal/protobuf/aoi:nlG	Ljava/lang/String;
+    //   244: getfield 348	com/tencent/mm/protocal/protobuf/arm:nOG	Ljava/lang/String;
     //   247: aastore
     //   248: dup
     //   249: bipush 6
     //   251: aload_0
-    //   252: getfield 108	com/tencent/mm/plugin/webview/e/c:mWf	I
+    //   252: getfield 108	com/tencent/mm/plugin/webview/e/c:nyE	I
     //   255: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   258: aastore
     //   259: dup
@@ -244,36 +258,36 @@ public final class c
     //   267: dup
     //   268: bipush 8
     //   270: aload_0
-    //   271: getfield 85	com/tencent/mm/plugin/webview/e/c:tsj	Ljava/lang/String;
+    //   271: getfield 85	com/tencent/mm/plugin/webview/e/c:uAC	Ljava/lang/String;
     //   274: aastore
     //   275: dup
     //   276: bipush 9
     //   278: aload_0
-    //   279: getfield 93	com/tencent/mm/plugin/webview/e/c:BaS	I
+    //   279: getfield 93	com/tencent/mm/plugin/webview/e/c:Cte	I
     //   282: invokestatic 130	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   285: aastore
     //   286: dup
     //   287: bipush 10
     //   289: aload_0
-    //   290: getfield 87	com/tencent/mm/plugin/webview/e/c:BaP	[B
-    //   293: invokestatic 360	com/tencent/mm/sdk/platformtools/bt:cy	([B)Ljava/lang/String;
+    //   290: getfield 87	com/tencent/mm/plugin/webview/e/c:tWa	[B
+    //   293: invokestatic 374	com/tencent/mm/sdk/platformtools/bs:cx	([B)Ljava/lang/String;
     //   296: aastore
-    //   297: invokestatic 155	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   300: ldc_w 260
+    //   297: invokestatic 155	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   300: ldc_w 274
     //   303: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   306: aload_0
     //   307: monitorexit
     //   308: aload 4
     //   310: areturn
     //   311: aload_3
-    //   312: invokevirtual 363	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   312: invokevirtual 377	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
     //   315: ifnull +14 -> 329
     //   318: aload_3
-    //   319: invokevirtual 363	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   322: invokevirtual 366	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   319: invokevirtual 377	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   322: invokevirtual 380	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   325: astore_3
     //   326: goto -205 -> 121
-    //   329: ldc_w 368
+    //   329: ldc_w 382
     //   332: astore_3
     //   333: goto -212 -> 121
     //   336: astore_1
@@ -287,8 +301,8 @@ public final class c
     //   0	341	1	paramString	String
     //   0	341	2	paramInt	int
     //   95	238	3	localObject	Object
-    //   13	296	4	localb	com.tencent.mm.al.b
-    //   26	217	5	localaoi	com.tencent.mm.protocal.protobuf.aoi
+    //   13	296	4	localb	com.tencent.mm.ak.b
+    //   26	217	5	localarm	com.tencent.mm.protocal.protobuf.arm
     // Exception table:
     //   from	to	target	type
     //   2	96	336	finally
@@ -298,45 +312,31 @@ public final class c
     //   311	326	336	finally
   }
   
-  public static int axm(String paramString)
-  {
-    AppMethodBeat.i(189726);
-    paramString = com.tencent.mm.protocal.c.aDh(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(189726);
-      return -1;
-    }
-    int i = paramString.eBD();
-    AppMethodBeat.o(189726);
-    return i;
-  }
-  
-  private void b(final String paramString, final int paramInt, final a<aoj> parama)
+  private void b(final String paramString, final int paramInt, final a<arn> parama)
   {
     try
     {
-      AppMethodBeat.i(189734);
+      AppMethodBeat.i(205363);
       a(paramString, paramInt, new IPCRunCgi.a()
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb)
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
         {
-          AppMethodBeat.i(189717);
-          ad.i("MicroMsg.LuggageGetA8Key", "ipcGetA8Key errType:%d, errCode:%d, errMsg:%s, destroyCalled:%b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(c.a(c.this)) });
+          AppMethodBeat.i(205346);
+          ac.i("MicroMsg.LuggageGetA8Key", "ipcGetA8Key errType:%d, errCode:%d, errMsg:%s, destroyCalled:%b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(c.a(c.this)) });
           c.b(c.this).remove(paramString);
-          if ((paramAnonymousb.gUT.gUX instanceof aoj))
+          if ((paramAnonymousb.hvs.hvw instanceof arn))
           {
-            paramAnonymousb = (aoj)paramAnonymousb.gUT.gUX;
+            paramAnonymousb = (arn)paramAnonymousb.hvs.hvw;
             c.a(c.this, paramString, paramInt, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousb, parama);
-            AppMethodBeat.o(189717);
+            AppMethodBeat.o(205346);
             return;
           }
           c.a(c.this, paramString, paramInt, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null, parama);
-          ad.e("MicroMsg.LuggageGetA8Key", "ipcGetA8Key call back resp is null");
-          AppMethodBeat.o(189717);
+          ac.e("MicroMsg.LuggageGetA8Key", "ipcGetA8Key call back resp is null");
+          AppMethodBeat.o(205346);
         }
       });
-      AppMethodBeat.o(189734);
+      AppMethodBeat.o(205363);
       return;
     }
     finally
@@ -346,47 +346,47 @@ public final class c
     }
   }
   
-  public static Map<String, String> gx(List<bgq> paramList)
+  public static Map<String, String> gI(List<bki> paramList)
   {
-    AppMethodBeat.i(189737);
+    AppMethodBeat.i(205366);
     HashMap localHashMap = new HashMap();
     if (paramList == null)
     {
-      AppMethodBeat.o(189737);
+      AppMethodBeat.o(205366);
       return localHashMap;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bgq localbgq = (bgq)paramList.next();
-      localHashMap.put(localbgq.sdv, localbgq.vJI);
+      bki localbki = (bki)paramList.next();
+      localHashMap.put(localbki.tlp, localbki.wTM);
     }
-    AppMethodBeat.o(189737);
+    AppMethodBeat.o(205366);
     return localHashMap;
   }
   
-  private static boolean iu(int paramInt1, int paramInt2)
+  private static boolean iI(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 4) && (paramInt2 == -2005);
   }
   
-  public final void SR(int paramInt)
+  public final void UZ(int paramInt)
   {
-    this.mWf = paramInt;
+    this.nyE = paramInt;
   }
   
-  public final void SS(int paramInt)
+  public final void Va(int paramInt)
   {
-    this.BaS = paramInt;
+    this.Cte = paramInt;
   }
   
-  public final a a(String paramString, int paramInt, a<aoj> parama)
+  public final a a(String paramString, int paramInt, a<arn> parama)
   {
     try
     {
-      AppMethodBeat.i(189731);
+      AppMethodBeat.i(205360);
       paramString = a(paramString, false, paramInt, parama);
-      AppMethodBeat.o(189731);
+      AppMethodBeat.o(205360);
       return paramString;
     }
     finally
@@ -396,13 +396,13 @@ public final class c
     }
   }
   
-  public final a a(String paramString, a<aoj> parama)
+  public final a a(String paramString, a<arn> parama)
   {
     try
     {
-      AppMethodBeat.i(189730);
+      AppMethodBeat.i(205359);
       paramString = a(paramString, -1, parama);
-      AppMethodBeat.o(189730);
+      AppMethodBeat.o(205359);
       return paramString;
     }
     finally
@@ -412,39 +412,39 @@ public final class c
     }
   }
   
-  public final a a(String paramString, boolean paramBoolean, int paramInt, a<aoj> parama)
+  public final a a(String paramString, boolean paramBoolean, int paramInt, a<arn> parama)
   {
     for (;;)
     {
       d locald;
       try
       {
-        AppMethodBeat.i(189732);
-        if ((!paramBoolean) && (axo(paramString)))
+        AppMethodBeat.i(205361);
+        if ((!paramBoolean) && (aCG(paramString)))
         {
-          paramString = a.Bbb;
-          AppMethodBeat.o(189732);
+          paramString = a.Ctn;
+          AppMethodBeat.o(205361);
           return paramString;
         }
         if (paramBoolean) {
           break label146;
         }
-        locald = this.BaT;
-        if (!bt.isNullOrNil(paramString)) {
+        locald = this.Ctf;
+        if (!bs.isNullOrNil(paramString)) {
           break label86;
         }
-        ad.e("MicroMsg.LuggageGetA8KeyPermission", "has fail, url is null");
+        ac.e("MicroMsg.LuggageGetA8KeyPermission", "has fail, url is null");
       }
       finally {}
       if (i != 0)
       {
-        paramString = a.Bba;
-        AppMethodBeat.o(189732);
+        paramString = a.Ctm;
+        AppMethodBeat.o(205361);
         continue;
         label86:
-        Object localObject = d.awm(paramString);
-        localObject = (d.a)locald.Bbe.get(localObject);
-        if ((localObject != null) && (((d.a)localObject).ARc != locald.Bbh) && (((d.a)localObject).Bbj != locald.Bbi))
+        Object localObject = d.aBE(paramString);
+        localObject = (d.a)locald.Ctq.get(localObject);
+        if ((localObject != null) && (((d.a)localObject).Cjp != locald.Ctt) && (((d.a)localObject).Ctv != locald.Ctu))
         {
           i = 1;
           continue;
@@ -453,32 +453,32 @@ public final class c
       else
       {
         label146:
-        if ((paramInt == 5) && (this.BaR))
+        if ((paramInt == 5) && (this.Ctd))
         {
-          ad.w("MicroMsg.LuggageGetA8Key", "disable iframe request");
-          paramString = a.Bba;
-          AppMethodBeat.o(189732);
+          ac.w("MicroMsg.LuggageGetA8Key", "disable iframe request");
+          paramString = a.Ctm;
+          AppMethodBeat.o(205361);
           continue;
         }
-        if ((paramBoolean) && (this.BaO.contains(paramString)))
+        if ((paramBoolean) && (this.Ctb.contains(paramString)))
         {
-          paramString = a.Bbb;
-          AppMethodBeat.o(189732);
+          paramString = a.Ctn;
+          AppMethodBeat.o(205361);
           continue;
         }
-        this.BaO.add(paramString);
+        this.Ctb.add(paramString);
         if (parama != null) {
-          parama.bf(paramInt, paramString);
+          parama.bk(paramInt, paramString);
         }
         i = paramInt;
         if (paramInt == -1) {
-          i = axn(paramString);
+          i = aCF(paramString);
         }
-        this.BaQ = false;
-        ad.i("MicroMsg.LuggageGetA8Key", "WebView-Trace startGetA8Key, url: %s", new Object[] { paramString });
+        this.Ctc = false;
+        ac.i("MicroMsg.LuggageGetA8Key", "WebView-Trace startGetA8Key, url: %s", new Object[] { paramString });
         b(paramString, i, parama);
-        paramString = a.Bbb;
-        AppMethodBeat.o(189732);
+        paramString = a.Ctn;
+        AppMethodBeat.o(205361);
         continue;
       }
       int i = 0;
@@ -489,9 +489,9 @@ public final class c
   {
     try
     {
-      AppMethodBeat.i(189735);
-      IPCRunCgi.a(ai(paramString, paramInt), BaW, parama);
-      AppMethodBeat.o(189735);
+      AppMethodBeat.i(205364);
+      IPCRunCgi.a(am(paramString, paramInt), Cti, parama);
+      AppMethodBeat.o(205364);
       return;
     }
     finally
@@ -501,30 +501,86 @@ public final class c
     }
   }
   
-  public final void ah(byte[] paramArrayOfByte)
+  public final void aCB(String paramString)
   {
-    this.BaP = paramArrayOfByte;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.uAC = str;
   }
   
-  public final String awT(String paramString)
+  public final JsapiPermissionWrapper aCC(String paramString)
   {
-    AppMethodBeat.i(189725);
-    synchronized (this.BaU)
+    AppMethodBeat.i(205351);
+    paramString = this.Ctf.aCC(paramString);
+    AppMethodBeat.o(205351);
+    return paramString;
+  }
+  
+  public final GeneralControlWrapper aCD(String paramString)
+  {
+    AppMethodBeat.i(205352);
+    paramString = this.Ctf.aCD(paramString);
+    AppMethodBeat.o(205352);
+    return paramString;
+  }
+  
+  public final int aCF(String paramString)
+  {
+    AppMethodBeat.i(205356);
+    if (TextUtils.isEmpty(paramString))
     {
-      ad.i("MicroMsg.LuggageGetA8Key", "getShareUrl, fullUrl = %s", new Object[] { paramString });
-      localObject1 = this.BaU.keySet().iterator();
+      ac.e("MicroMsg.LuggageGetA8Key", "getReason fail, url is null");
+      AppMethodBeat.o(205356);
+      return 0;
+    }
+    if (this.Ctc)
+    {
+      AppMethodBeat.o(205356);
+      return 0;
+    }
+    if (Cth.matcher(paramString).find())
+    {
+      AppMethodBeat.o(205356);
+      return 2;
+    }
+    if (b.aCA(paramString))
+    {
+      AppMethodBeat.o(205356);
+      return 8;
+    }
+    AppMethodBeat.o(205356);
+    return 1;
+  }
+  
+  public final boolean aCG(String paramString)
+  {
+    AppMethodBeat.i(205357);
+    boolean bool = this.Ctb.contains(paramString);
+    AppMethodBeat.o(205357);
+    return bool;
+  }
+  
+  public final String aCl(String paramString)
+  {
+    AppMethodBeat.i(205354);
+    synchronized (this.Ctg)
+    {
+      ac.i("MicroMsg.LuggageGetA8Key", "getShareUrl, fullUrl = %s", new Object[] { paramString });
+      localObject1 = this.Ctg.keySet().iterator();
       if (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        ad.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { localObject2, this.BaU.get(localObject2) });
+        ac.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { localObject2, this.Ctg.get(localObject2) });
       }
     }
-    Object localObject2 = (String)this.BaU.get(paramString);
+    Object localObject2 = (String)this.Ctg.get(paramString);
     Object localObject1 = localObject2;
-    if (bt.isNullOrNil((String)localObject2))
+    if (bs.isNullOrNil((String)localObject2))
     {
-      localObject2 = this.BaU;
-      if (!bt.isNullOrNil(paramString)) {
+      localObject2 = this.Ctg;
+      if (!bs.isNullOrNil(paramString)) {
         break label175;
       }
       localObject1 = "";
@@ -532,8 +588,8 @@ public final class c
     for (;;)
     {
       localObject1 = (String)((HashMap)localObject2).get(localObject1);
-      paramString = bt.by((String)localObject1, paramString);
-      AppMethodBeat.o(189725);
+      paramString = bs.bG((String)localObject1, paramString);
+      AppMethodBeat.o(205354);
       return paramString;
       label175:
       int i = paramString.indexOf("#");
@@ -545,93 +601,37 @@ public final class c
     }
   }
   
-  public final void axj(String paramString)
+  public final void ag(byte[] paramArrayOfByte)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.tsj = str;
-  }
-  
-  public final JsapiPermissionWrapper axk(String paramString)
-  {
-    AppMethodBeat.i(189722);
-    paramString = this.BaT.axk(paramString);
-    AppMethodBeat.o(189722);
-    return paramString;
-  }
-  
-  public final GeneralControlWrapper axl(String paramString)
-  {
-    AppMethodBeat.i(189723);
-    paramString = this.BaT.axl(paramString);
-    AppMethodBeat.o(189723);
-    return paramString;
-  }
-  
-  public final int axn(String paramString)
-  {
-    AppMethodBeat.i(189727);
-    if (TextUtils.isEmpty(paramString))
-    {
-      ad.e("MicroMsg.LuggageGetA8Key", "getReason fail, url is null");
-      AppMethodBeat.o(189727);
-      return 0;
-    }
-    if (this.BaQ)
-    {
-      AppMethodBeat.o(189727);
-      return 0;
-    }
-    if (BaV.matcher(paramString).find())
-    {
-      AppMethodBeat.o(189727);
-      return 2;
-    }
-    if (b.axi(paramString))
-    {
-      AppMethodBeat.o(189727);
-      return 8;
-    }
-    AppMethodBeat.o(189727);
-    return 1;
-  }
-  
-  public final boolean axo(String paramString)
-  {
-    AppMethodBeat.i(189728);
-    boolean bool = this.BaO.contains(paramString);
-    AppMethodBeat.o(189728);
-    return bool;
+    this.tWa = paramArrayOfByte;
   }
   
   public final void destroy()
   {
-    this.AKM = true;
+    this.Cdd = true;
   }
   
-  public final boolean ekU()
+  public final boolean eAq()
   {
-    AppMethodBeat.i(189729);
-    if (this.BaO.size() > 0)
+    AppMethodBeat.i(205358);
+    if (this.Ctb.size() > 0)
     {
-      AppMethodBeat.o(189729);
+      AppMethodBeat.o(205358);
       return true;
     }
-    AppMethodBeat.o(189729);
+    AppMethodBeat.o(205358);
     return false;
   }
   
-  public final boolean ff(String paramString, int paramInt)
+  public final boolean fn(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189724);
-    if (axk(paramString).Vw(paramInt) == 1)
+    AppMethodBeat.i(205353);
+    if (aCC(paramString).XF(paramInt) == 1)
     {
-      AppMethodBeat.o(189724);
+      AppMethodBeat.o(205353);
       return true;
     }
-    AppMethodBeat.o(189724);
+    AppMethodBeat.o(205353);
     return false;
   }
   
@@ -642,7 +642,7 @@ public final class c
   
   public final void setFlag(int paramInt)
   {
-    this.uoX = paramInt;
+    this.vxT = paramInt;
   }
   
   public final void setScene(int paramInt)
@@ -656,20 +656,20 @@ public final class c
     if (paramString == null) {
       str = "";
     }
-    this.kGt = str;
+    this.lhM = str;
   }
   
   public static enum a
   {
     static
     {
-      AppMethodBeat.i(189720);
-      BaZ = new a("INTERCEPTED", 0);
-      Bba = new a("NO_NEED", 1);
-      Bbb = new a("WILL_GET", 2);
-      Bbc = new a("FAILED", 3);
-      Bbd = new a[] { BaZ, Bba, Bbb, Bbc };
-      AppMethodBeat.o(189720);
+      AppMethodBeat.i(205349);
+      Ctl = new a("INTERCEPTED", 0);
+      Ctm = new a("NO_NEED", 1);
+      Ctn = new a("WILL_GET", 2);
+      Cto = new a("FAILED", 3);
+      Ctp = new a[] { Ctl, Ctm, Ctn, Cto };
+      AppMethodBeat.o(205349);
     }
     
     private a() {}

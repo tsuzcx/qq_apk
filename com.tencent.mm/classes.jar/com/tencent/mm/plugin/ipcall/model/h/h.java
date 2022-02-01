@@ -9,16 +9,16 @@ public final class h
   extends j<g>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] sEc;
-  public static int sEd;
+  private static final String[] tLJ;
+  public static int tLK;
   public e db;
   
   static
   {
     AppMethodBeat.i(25550);
     SQL_CREATE = new String[] { j.getCreateSQLs(g.info, "IPCallMsg") };
-    sEc = new String[] { "*", "rowid" };
-    sEd = 0;
+    tLJ = new String[] { "*", "rowid" };
+    tLK = 0;
     AppMethodBeat.o(25550);
   }
   
@@ -28,17 +28,17 @@ public final class h
     this.db = parame;
   }
   
-  public final Cursor Fn(int paramInt)
+  public final Cursor Hi(int paramInt)
   {
     AppMethodBeat.i(25549);
-    Cursor localCursor = this.db.query("IPCallMsg", sEc, null, null, null, null, "pushTime desc limit ".concat(String.valueOf(paramInt)));
+    Cursor localCursor = this.db.query("IPCallMsg", tLJ, null, null, null, null, "pushTime desc limit ".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(25549);
     return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.h
  * JD-Core Version:    0.7.0.1
  */

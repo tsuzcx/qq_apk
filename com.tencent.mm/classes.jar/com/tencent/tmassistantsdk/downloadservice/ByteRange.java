@@ -2,7 +2,7 @@ package com.tencent.tmassistantsdk.downloadservice;
 
 import android.content.res.Resources.NotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,7 +67,7 @@ public class ByteRange
       AppMethodBeat.o(101942);
       throw paramString;
     }
-    long l = bt.aGi(paramString.substring(i + 1));
+    long l = bs.aLz(paramString.substring(i + 1));
     AppMethodBeat.o(101942);
     return l;
   }
@@ -82,7 +82,7 @@ public class ByteRange
       AppMethodBeat.o(101941);
       throw paramString;
     }
-    paramString = new ByteRange(bt.aGi(localMatcher.group(1)), bt.aGi(localMatcher.group(2)));
+    paramString = new ByteRange(bs.aLz(localMatcher.group(1)), bs.aLz(localMatcher.group(2)));
     AppMethodBeat.o(101941);
     return paramString;
   }
@@ -174,7 +174,7 @@ public class ByteRange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.ByteRange
  * JD-Core Version:    0.7.0.1
  */

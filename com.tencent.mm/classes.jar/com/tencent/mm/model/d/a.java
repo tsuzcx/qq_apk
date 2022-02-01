@@ -15,17 +15,17 @@ import android.os.Process;
 import android.os.StatFs;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.o;
-import com.tencent.mm.bc.t;
+import com.tencent.mm.bb.o;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.az;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.vfs.e;
@@ -42,90 +42,90 @@ import java.util.Locale;
 public class a
   implements c.a
 {
-  private static final String cLR;
-  private static final String cLS;
-  private static String cLT;
-  private static a gQH;
-  private static final String gQI;
-  private static final String gQJ;
-  private static final long gQM;
+  private static final String cIZ;
+  private static final String cJa;
+  private static String cJb;
+  private static a hrh;
+  private static final String hri;
+  private static final String hrj;
+  private static final long hrm;
   private static SimpleDateFormat sDateFormat;
-  long[] cLU;
-  private long gQK;
-  private volatile boolean gQL;
-  private long gQN;
-  private long gQO;
-  private long gQP;
-  private long gQQ;
-  private long gQR;
-  private long gQS;
-  private long gQT;
-  private int gQU;
-  private int gQV;
-  private int gQW;
-  private Long[] gQX;
-  private long gQY;
-  private long gQZ;
-  private String gRa;
-  private LinkedList<Object> gRb;
+  long[] cJc;
+  private String hrA;
+  private LinkedList<Object> hrB;
+  private long hrk;
+  private volatile boolean hrl;
+  private long hrn;
+  private long hro;
+  private long hrp;
+  private long hrq;
+  private long hrr;
+  private long hrs;
+  private long hrt;
+  private int hru;
+  private int hrv;
+  private int hrw;
+  private Long[] hrx;
+  private long hry;
+  private long hrz;
   private SharedPreferences sp;
   
   static
   {
     AppMethodBeat.i(20436);
-    String str = q.Xa();
-    cLR = str;
-    cLS = com.tencent.mm.b.p.getString(str.hashCode());
-    gQI = b.aib() + "/tencent/MicroMsg/Handler/";
-    gQJ = gQI + "Handler.trace";
-    gQM = Looper.getMainLooper().getThread().getId();
+    String str = q.XX();
+    cIZ = str;
+    cJa = com.tencent.mm.b.p.getString(str.hashCode());
+    hri = b.apb() + "/tencent/MicroMsg/Handler/";
+    hrj = hri + "Handler.trace";
+    hrm = Looper.getMainLooper().getThread().getId();
     sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ");
-    cLT = "";
+    cJb = "";
     AppMethodBeat.o(20436);
   }
   
   private a()
   {
     AppMethodBeat.i(20425);
-    this.cLU = new long[] { 0L, 0L, 0L };
-    this.gQK = 0L;
-    this.gQL = false;
-    this.gQN = 8000L;
-    this.gQO = 800L;
-    this.gQP = 25600L;
-    this.gQQ = 35840L;
-    this.gQR = 86400000L;
-    this.gQS = 180000L;
-    this.gQT = 5000L;
-    this.gQU = 120;
-    this.gQV = 50;
-    this.gQW = 1800000;
-    this.sp = aj.eFE();
-    this.gQX = new Long[18];
-    this.gQY = 0L;
-    this.gQZ = 0L;
-    this.gRa = "";
-    this.gRb = new LinkedList();
-    this.gQN = this.sp.getLong("handler_debug_log_time", 8000L);
-    this.gQO = this.sp.getLong("handler_debug_log_time_main", 800L);
-    this.gQP = this.sp.getLong("handler_trace_file_full_size", 25600L);
-    this.gQQ = this.sp.getLong("handler_log_file_max_size", 35840L);
-    this.gQR = this.sp.getLong("handler_upload_time_interval", 86400000L);
-    this.gQZ = az.afE().EUN.getLooper().getThread().getId();
-    Arrays.fill(this.gQX, Long.valueOf(0L));
+    this.cJc = new long[] { 0L, 0L, 0L };
+    this.hrk = 0L;
+    this.hrl = false;
+    this.hrn = 8000L;
+    this.hro = 800L;
+    this.hrp = 25600L;
+    this.hrq = 35840L;
+    this.hrr = 86400000L;
+    this.hrs = 180000L;
+    this.hrt = 5000L;
+    this.hru = 120;
+    this.hrv = 50;
+    this.hrw = 1800000;
+    this.sp = ai.eUY();
+    this.hrx = new Long[18];
+    this.hry = 0L;
+    this.hrz = 0L;
+    this.hrA = "";
+    this.hrB = new LinkedList();
+    this.hrn = this.sp.getLong("handler_debug_log_time", 8000L);
+    this.hro = this.sp.getLong("handler_debug_log_time_main", 800L);
+    this.hrp = this.sp.getLong("handler_trace_file_full_size", 25600L);
+    this.hrq = this.sp.getLong("handler_log_file_max_size", 35840L);
+    this.hrr = this.sp.getLong("handler_upload_time_interval", 86400000L);
+    this.hrz = az.agU().GrZ.getLooper().getThread().getId();
+    Arrays.fill(this.hrx, Long.valueOf(0L));
     AppMethodBeat.o(20425);
   }
   
-  public static a atB()
+  public static a aAs()
   {
     AppMethodBeat.i(20426);
-    if (gQH == null) {}
+    if (hrh == null) {}
     try
     {
-      if (gQH == null) {
-        gQH = new a();
+      if (hrh == null) {
+        hrh = new a();
       }
-      a locala = gQH;
+      a locala = hrh;
       AppMethodBeat.o(20426);
       return locala;
     }
@@ -142,11 +142,11 @@ public class a
     if (parame.exists())
     {
       long l;
-      if (parame.length() > this.gQP)
+      if (parame.length() > this.hrp)
       {
         bool1 = true;
-        this.gQL = bool1;
-        if (!this.gQL) {
+        this.hrl = bool1;
+        if (!this.hrl) {
           break label139;
         }
         l = this.sp.getLong("handler_trace_log_file_full_time", 0L);
@@ -157,7 +157,7 @@ public class a
       label129:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        ad.i("MicroMsg.HandlerTraceManager", "has mark lastFullTime %b", new Object[] { Boolean.valueOf(bool1) });
+        ac.i("MicroMsg.HandlerTraceManager", "has mark lastFullTime %b", new Object[] { Boolean.valueOf(bool1) });
         if (l == 0L) {
           this.sp.edit().putLong("handler_trace_log_file_full_time", System.currentTimeMillis()).commit();
         }
@@ -169,14 +169,14 @@ public class a
     }
     else
     {
-      this.gQL = false;
+      this.hrl = false;
     }
     label139:
     AppMethodBeat.o(169693);
   }
   
   /* Error */
-  private static String uP(String paramString)
+  private static String yV(String paramString)
   {
     // Byte code:
     //   0: sipush 20429
@@ -187,7 +187,7 @@ public class a
     //   11: invokespecial 339	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   14: astore_0
     //   15: aload_0
-    //   16: invokestatic 345	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   16: invokestatic 345	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   19: astore_0
     //   20: aload_0
     //   21: invokevirtual 350	java/io/InputStream:available	()I
@@ -200,7 +200,7 @@ public class a
     //   33: new 66	java/lang/String
     //   36: dup
     //   37: aload_1
-    //   38: invokestatic 360	com/tencent/mm/ck/e:cz	([B)[B
+    //   38: invokestatic 360	com/tencent/mm/cj/e:cy	([B)[B
     //   41: invokespecial 363	java/lang/String:<init>	([B)V
     //   44: astore_1
     //   45: aload_0
@@ -261,30 +261,30 @@ public class a
     //   20	45	115	java/io/IOException
   }
   
-  final String atC()
+  final String aAt()
   {
     AppMethodBeat.i(20428);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
-    localPrintStream.println("#client.version=" + d.CpK);
+    localPrintStream.println("#client.version=" + d.DIc);
     localPrintStream.println("#accinfo.revision=" + h.REV);
-    localPrintStream.println("#accinfo.uin=" + ay.gNa.ao("last_login_uin", cLS));
-    localPrintStream.println("#accinfo.dev=" + cLR);
-    localPrintStream.println("#accinfo.build=" + h.TIME + ":" + h.HOSTNAME + ":" + i.cJR);
+    localPrintStream.println("#accinfo.uin=" + ay.hnA.aw("last_login_uin", cJa));
+    localPrintStream.println("#accinfo.dev=" + cIZ);
+    localPrintStream.println("#accinfo.build=" + h.TIME + ":" + h.HOSTNAME + ":" + i.cGY);
     try
     {
       localObject1 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
-      Object localObject2 = new StatFs(b.aib());
-      localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)aj.getContext().getSystemService("activity")).getMemoryClass()), com.tencent.mm.compatible.util.g.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), b.aib(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
+      Object localObject2 = new StatFs(b.apb());
+      localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)ai.getContext().getSystemService("activity")).getMemoryClass()), com.tencent.mm.compatible.util.g.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), b.apb(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
       localPrintStream.println("#accinfo.data=".concat(String.valueOf(localObject1)));
       localObject1 = new Date();
       localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
       localPrintStream.println("#accinfo.uploadTime=" + ((SimpleDateFormat)localObject2).format((Date)localObject1));
       localPrintStream.println("#logfile.fulllast :".concat(String.valueOf(this.sp.getLong("handler_trace_log_file_full_time", 0L) - this.sp.getLong("handler_trace_log_file_create_time", 0L))));
-      if (this.cLU[1] != -1L) {
-        localPrintStream.println("#wxpackage :cache size=" + this.cLU[0] + " data size=" + this.cLU[1] + " code size=" + this.cLU[2]);
+      if (this.cJc[1] != -1L) {
+        localPrintStream.println("#wxpackage :cache size=" + this.cJc[0] + " data size=" + this.cJc[1] + " code size=" + this.cJc[2]);
       }
-      localObject1 = t.azY().oA(21);
+      localObject1 = t.aGO().po(21);
       if ((localObject1 == null) || (localObject1.length == 0) || (localObject1[0] == null))
       {
         localPrintStream.println("#traceconfig hardcode");
@@ -305,7 +305,7 @@ public class a
           AppMethodBeat.o(20428);
           return localObject1;
           localException1 = localException1;
-          ad.e("MicroMsg.HandlerTraceManager", "summer check data size failed :%s", new Object[] { localException1.getMessage() });
+          ac.e("MicroMsg.HandlerTraceManager", "summer check data size failed :%s", new Object[] { localException1.getMessage() });
           str = "";
         }
         localPrintStream.println("#traceconfig id=" + str[0].id + " version=" + str[0].version);
@@ -317,27 +317,27 @@ public class a
     }
   }
   
-  public final void atD()
+  public final void aAu()
   {
     AppMethodBeat.i(20431);
-    ad.i("MicroMsg.HandlerTraceManager", "summerc onUpdateComplete");
-    this.gQN = this.sp.getLong("handler_debug_log_time", 8000L);
-    this.gQO = this.sp.getLong("handler_debug_log_time_main", 800L);
-    this.gQP = this.sp.getLong("handler_trace_file_full_size", 25600L);
-    this.gQQ = this.sp.getLong("handler_log_file_max_size", 35840L);
-    this.gQR = this.sp.getLong("handler_upload_time_interval", 86400000L);
-    this.gQS = this.sp.getLong("handler_worker_assert_time", 180000L);
-    this.gQT = this.sp.getLong("handler_worker_warn_time", 5000L);
-    this.gQU = ((int)this.sp.getLong("handler_worker_warn_task_max_size", 120L));
-    this.gQV = ((int)this.sp.getLong("handler_worker_warn_task_keep_size", 50L));
-    this.gQW = ((int)this.sp.getLong("handler_worker_warn_task_keep_size", 1800000L));
-    i(new e(gQJ));
+    ac.i("MicroMsg.HandlerTraceManager", "summerc onUpdateComplete");
+    this.hrn = this.sp.getLong("handler_debug_log_time", 8000L);
+    this.hro = this.sp.getLong("handler_debug_log_time_main", 800L);
+    this.hrp = this.sp.getLong("handler_trace_file_full_size", 25600L);
+    this.hrq = this.sp.getLong("handler_log_file_max_size", 35840L);
+    this.hrr = this.sp.getLong("handler_upload_time_interval", 86400000L);
+    this.hrs = this.sp.getLong("handler_worker_assert_time", 180000L);
+    this.hrt = this.sp.getLong("handler_worker_warn_time", 5000L);
+    this.hru = ((int)this.sp.getLong("handler_worker_warn_task_max_size", 120L));
+    this.hrv = ((int)this.sp.getLong("handler_worker_warn_task_keep_size", 50L));
+    this.hrw = ((int)this.sp.getLong("handler_worker_warn_task_keep_size", 1800000L));
+    i(new e(hrj));
     AppMethodBeat.o(20431);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String ePa;
-  public int mBD;
-  public int mBE;
-  public long mBF;
+  public String eSi;
   public String mediaId;
+  public int ndE;
+  public int ndF;
+  public long ndG;
   public String path;
   public int type;
   
@@ -19,9 +19,9 @@ public final class u
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.mBD);
-      if (this.ePa != null) {
-        paramVarArgs.d(2, this.ePa);
+      paramVarArgs.aR(1, this.ndE);
+      if (this.eSi != null) {
+        paramVarArgs.d(2, this.eSi);
       }
       if (this.mediaId != null) {
         paramVarArgs.d(3, this.mediaId);
@@ -30,17 +30,17 @@ public final class u
         paramVarArgs.d(4, this.path);
       }
       paramVarArgs.aR(5, this.type);
-      paramVarArgs.aR(6, this.mBE);
-      paramVarArgs.aG(7, this.mBF);
+      paramVarArgs.aR(6, this.ndF);
+      paramVarArgs.aO(7, this.ndG);
       AppMethodBeat.o(22126);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.mBD) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.ndE) + 0;
       paramInt = i;
-      if (this.ePa != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.ePa);
+      if (this.eSi != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.eSi);
       }
       i = paramInt;
       if (this.mediaId != null) {
@@ -50,18 +50,18 @@ public final class u
       if (this.path != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.path);
       }
-      i = f.a.a.b.b.a.bA(5, this.type);
-      int j = f.a.a.b.b.a.bA(6, this.mBE);
-      int k = f.a.a.b.b.a.q(7, this.mBF);
+      i = f.a.a.b.b.a.bx(5, this.type);
+      int j = f.a.a.b.b.a.bx(6, this.ndF);
+      int k = f.a.a.b.b.a.p(7, this.ndG);
       AppMethodBeat.o(22126);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(22126);
@@ -77,31 +77,31 @@ public final class u
         AppMethodBeat.o(22126);
         return -1;
       case 1: 
-        localu.mBD = locala.KhF.xS();
+        localu.ndE = locala.LVo.xF();
         AppMethodBeat.o(22126);
         return 0;
       case 2: 
-        localu.ePa = locala.KhF.readString();
+        localu.eSi = locala.LVo.readString();
         AppMethodBeat.o(22126);
         return 0;
       case 3: 
-        localu.mediaId = locala.KhF.readString();
+        localu.mediaId = locala.LVo.readString();
         AppMethodBeat.o(22126);
         return 0;
       case 4: 
-        localu.path = locala.KhF.readString();
+        localu.path = locala.LVo.readString();
         AppMethodBeat.o(22126);
         return 0;
       case 5: 
-        localu.type = locala.KhF.xS();
+        localu.type = locala.LVo.xF();
         AppMethodBeat.o(22126);
         return 0;
       case 6: 
-        localu.mBE = locala.KhF.xS();
+        localu.ndF = locala.LVo.xF();
         AppMethodBeat.o(22126);
         return 0;
       }
-      localu.mBF = locala.KhF.xT();
+      localu.ndG = locala.LVo.xG();
       AppMethodBeat.o(22126);
       return 0;
     }
@@ -111,7 +111,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.u
  * JD-Core Version:    0.7.0.1
  */

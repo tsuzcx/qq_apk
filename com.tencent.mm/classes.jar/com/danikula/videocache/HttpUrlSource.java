@@ -37,15 +37,15 @@ public class HttpUrlSource
   public HttpUrlSource(String paramString)
   {
     this(paramString, SourceInfoStorageFactory.newEmptySourceInfoStorage());
-    AppMethodBeat.i(190313);
-    AppMethodBeat.o(190313);
+    AppMethodBeat.i(192513);
+    AppMethodBeat.o(192513);
   }
   
   public HttpUrlSource(String paramString, SourceInfoStorage paramSourceInfoStorage)
   {
     this(paramString, paramSourceInfoStorage, new EmptyHeadersInjector());
-    AppMethodBeat.i(190314);
-    AppMethodBeat.o(190314);
+    AppMethodBeat.i(192514);
+    AppMethodBeat.o(192514);
   }
   
   public HttpUrlSource(String paramString, SourceInfoStorage paramSourceInfoStorage, HeaderInjector paramHeaderInjector)
@@ -252,14 +252,14 @@ public class HttpUrlSource
   
   private void injectCustomHeaders(HttpURLConnection paramHttpURLConnection, String paramString)
   {
-    AppMethodBeat.i(190315);
+    AppMethodBeat.i(192515);
     paramString = this.headerInjector.addHeaders(paramString).entrySet().iterator();
     while (paramString.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramString.next();
       paramHttpURLConnection.setRequestProperty((String)localEntry.getKey(), (String)localEntry.getValue());
     }
-    AppMethodBeat.o(190315);
+    AppMethodBeat.o(192515);
   }
   
   private HttpURLConnection openConnection(long paramLong, int paramInt)
@@ -462,7 +462,7 @@ public class HttpUrlSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.HttpUrlSource
  * JD-Core Version:    0.7.0.1
  */

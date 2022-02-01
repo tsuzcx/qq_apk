@@ -3,6 +3,7 @@ package com.google.android.exoplayer2.h;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.google.android.exoplayer2.d.b;
+import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.EOFException;
 import java.io.IOException;
@@ -25,34 +26,34 @@ import java.util.regex.Pattern;
 public final class o
   implements s
 {
-  private static final Pattern bxa;
-  private static final AtomicReference<byte[]> bxb;
-  private j bml;
-  private final x<? super o> bws;
-  private final boolean bxc;
-  private final int bxd;
-  private final int bxe;
-  private final com.google.android.exoplayer2.i.o<String> bxf;
-  private final s.f bxg;
-  private final s.f bxh;
-  private long bxi;
-  private long bxj;
-  private long bxk;
-  private long bxl;
+  private static final Pattern CONTENT_RANGE_HEADER;
+  private static final AtomicReference<byte[]> skipBufferReference;
+  private final boolean allowCrossProtocolRedirects;
+  private j bmN;
+  private final com.google.android.exoplayer2.i.o<String> buW;
+  private final s.f buX;
+  private final s.f buY;
+  private final w<? super o> bur;
+  private long bytesRead;
+  private long bytesSkipped;
+  private long bytesToRead;
+  private long bytesToSkip;
+  private final int connectTimeoutMillis;
   private HttpURLConnection connection;
   private InputStream inputStream;
   private boolean opened;
+  private final int readTimeoutMillis;
   private final String userAgent;
   
   static
   {
     AppMethodBeat.i(93077);
-    bxa = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
-    bxb = new AtomicReference();
+    CONTENT_RANGE_HEADER = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
+    skipBufferReference = new AtomicReference();
     AppMethodBeat.o(93077);
   }
   
-  public o(String paramString, x<? super o> paramx, int paramInt1, int paramInt2, boolean paramBoolean, s.f paramf)
+  public o(String paramString, w<? super o> paramw, int paramInt1, int paramInt2, boolean paramBoolean, s.f paramf)
   {
     AppMethodBeat.i(93069);
     if (TextUtils.isEmpty(paramString))
@@ -62,13 +63,13 @@ public final class o
       throw paramString;
     }
     this.userAgent = paramString;
-    this.bxf = null;
-    this.bws = paramx;
-    this.bxh = new s.f();
-    this.bxd = paramInt1;
-    this.bxe = paramInt2;
-    this.bxc = paramBoolean;
-    this.bxg = paramf;
+    this.buW = null;
+    this.bur = paramw;
+    this.buY = new s.f();
+    this.connectTimeoutMillis = paramInt1;
+    this.readTimeoutMillis = paramInt2;
+    this.allowCrossProtocolRedirects = paramBoolean;
+    this.buX = paramf;
     AppMethodBeat.o(93069);
   }
   
@@ -76,19 +77,19 @@ public final class o
   {
     AppMethodBeat.i(93074);
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection();
-    localHttpURLConnection.setConnectTimeout(this.bxd);
-    localHttpURLConnection.setReadTimeout(this.bxe);
+    localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
+    localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
     Object localObject;
-    if (this.bxg != null)
+    if (this.buX != null)
     {
-      paramURL = this.bxg.vq().entrySet().iterator();
+      paramURL = this.buX.getSnapshot().entrySet().iterator();
       while (paramURL.hasNext())
       {
         localObject = (Map.Entry)paramURL.next();
         localHttpURLConnection.setRequestProperty((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
       }
     }
-    paramURL = this.bxh.vq().entrySet().iterator();
+    paramURL = this.buY.getSnapshot().entrySet().iterator();
     while (paramURL.hasNext())
     {
       localObject = (Map.Entry)paramURL.next();
@@ -136,6 +137,26 @@ public final class o
     }
   }
   
+  private void closeConnectionQuietly()
+  {
+    AppMethodBeat.i(93076);
+    if (this.connection != null) {}
+    try
+    {
+      this.connection.disconnect();
+      this.connection = null;
+      AppMethodBeat.o(93076);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        b.e("DefaultHttpDataSource", "Unexpected error while disconnecting", new Object[] { localException });
+      }
+    }
+  }
+  
   private static long getContentLength(HttpURLConnection paramHttpURLConnection)
   {
     AppMethodBeat.i(93075);
@@ -151,7 +172,7 @@ public final class o
       Matcher localMatcher;
       if (!TextUtils.isEmpty(paramHttpURLConnection))
       {
-        localMatcher = bxa.matcher(paramHttpURLConnection);
+        localMatcher = CONTENT_RANGE_HEADER.matcher(paramHttpURLConnection);
         l2 = l1;
         if (!localMatcher.find()) {}
       }
@@ -161,7 +182,7 @@ public final class o
         l3 = Long.parseLong(localMatcher.group(1));
         l3 = l2 - l3 + 1L;
         if (l1 >= 0L) {
-          break label153;
+          break label154;
         }
         l2 = l3;
       }
@@ -184,7 +205,7 @@ public final class o
         b.e("DefaultHttpDataSource", "Unexpected Content-Length [" + str + "]", new Object[0]);
         l1 = l2;
         continue;
-        label153:
+        label154:
         l2 = l1;
         if (l1 != l3)
         {
@@ -195,43 +216,23 @@ public final class o
     }
   }
   
-  private void vp()
-  {
-    AppMethodBeat.i(93076);
-    if (this.connection != null) {}
-    try
-    {
-      this.connection.disconnect();
-      this.connection = null;
-      AppMethodBeat.o(93076);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        b.e("DefaultHttpDataSource", "Unexpected error while disconnecting", new Object[] { localException });
-      }
-    }
-  }
-  
   public final long a(j paramj)
   {
     AppMethodBeat.i(93071);
-    this.bml = paramj;
-    this.bxl = 0L;
-    this.bxk = 0L;
+    this.bmN = paramj;
+    this.bytesRead = 0L;
+    this.bytesSkipped = 0L;
     long l1;
     Object localObject3;
     int j;
     try
     {
       localObject1 = new URL(paramj.uri.toString());
-      arrayOfByte = paramj.bwy;
+      arrayOfByte = paramj.buv;
       l1 = paramj.position;
       l2 = paramj.length;
-      bool = paramj.fh(1);
-      if (!this.bxc)
+      bool = paramj.isFlagSet(1);
+      if (!this.allowCrossProtocolRedirects)
       {
         localObject3 = a((URL)localObject1, arrayOfByte, l1, l2, bool, true);
         this.connection = ((HttpURLConnection)localObject3);
@@ -254,7 +255,7 @@ public final class o
       if ((i < 200) || (i > 299))
       {
         localObject1 = this.connection.getHeaderFields();
-        vp();
+        closeConnectionQuietly();
         paramj = new s.e(i, (Map)localObject1, paramj);
         if (i == 416) {
           paramj.initCause(new h());
@@ -265,7 +266,7 @@ public final class o
     }
     catch (IOException localIOException2)
     {
-      vp();
+      closeConnectionQuietly();
       paramj = new s.c("Unable to connect to " + paramj.uri.toString(), localIOException2, paramj);
       AppMethodBeat.o(93071);
       throw paramj;
@@ -313,9 +314,9 @@ public final class o
       AppMethodBeat.o(93071);
       throw ((Throwable)localObject2);
       String str = this.connection.getContentType();
-      if ((this.bxf != null) && (!this.bxf.ae(str)))
+      if ((this.buW != null) && (!this.buW.evaluate(str)))
       {
-        vp();
+        closeConnectionQuietly();
         paramj = new s.d(str, paramj);
         AppMethodBeat.o(93071);
         throw paramj;
@@ -323,14 +324,14 @@ public final class o
       if ((i == 200) && (paramj.position != 0L))
       {
         l1 = paramj.position;
-        this.bxi = l1;
-        if (paramj.fh(1)) {
+        this.bytesToSkip = l1;
+        if (paramj.isFlagSet(1)) {
           break label715;
         }
         if (paramj.length == -1L) {
           break label671;
         }
-        this.bxj = paramj.length;
+        this.bytesToRead = paramj.length;
       }
       for (;;)
       {
@@ -338,10 +339,10 @@ public final class o
         {
           this.inputStream = this.connection.getInputStream();
           this.opened = true;
-          if (this.bws != null) {
-            this.bws.vl();
+          if (this.bur != null) {
+            this.bur.ve();
           }
-          l1 = this.bxj;
+          l1 = this.bytesToRead;
           AppMethodBeat.o(93071);
           return l1;
         }
@@ -349,7 +350,7 @@ public final class o
         {
           label671:
           label715:
-          vp();
+          closeConnectionQuietly();
           paramj = new s.c(localIOException3, paramj, 1);
           AppMethodBeat.o(93071);
           throw paramj;
@@ -359,14 +360,14 @@ public final class o
         l1 = getContentLength(this.connection);
         if (l1 != -1L)
         {
-          l1 -= this.bxi;
-          this.bxj = l1;
+          l1 -= this.bytesToSkip;
+          this.bytesToRead = l1;
         }
         else
         {
           l1 = -1L;
           continue;
-          this.bxj = paramj.length;
+          this.bytesToRead = paramj.length;
         }
       }
     }
@@ -383,13 +384,13 @@ public final class o
       if (this.inputStream != null)
       {
         localObject1 = this.connection;
-        if (this.bxj != -1L) {
+        if (this.bytesToRead != -1L) {
           break label130;
         }
-        l1 = this.bxj;
-        if (com.google.android.exoplayer2.i.x.SDK_INT != 19)
+        l1 = this.bytesToRead;
+        if (x.SDK_INT != 19)
         {
-          i = com.google.android.exoplayer2.i.x.SDK_INT;
+          i = x.SDK_INT;
           if (i != 20) {
             break label79;
           }
@@ -423,12 +424,12 @@ public final class o
         }
         catch (IOException localIOException)
         {
-          s.c localc = new s.c(localIOException, this.bml, 3);
+          s.c localc = new s.c(localIOException, this.bmN, 3);
           AppMethodBeat.o(93073);
           throw localc;
         }
-        l1 = this.bxj;
-        l2 = this.bxl;
+        l1 = this.bytesToRead;
+        l2 = this.bytesRead;
         l1 -= l2;
         break;
         if (l1 > 2048L)
@@ -447,12 +448,12 @@ public final class o
     finally
     {
       this.inputStream = null;
-      vp();
+      closeConnectionQuietly();
       if (this.opened)
       {
         this.opened = false;
-        if (this.bws != null) {
-          this.bws.vm();
+        if (this.bur != null) {
+          this.bur.vf();
         }
       }
       AppMethodBeat.o(93073);
@@ -480,18 +481,18 @@ public final class o
     {
       try
       {
-        if (this.bxk == this.bxi) {
+        if (this.bytesSkipped == this.bytesToSkip) {
           break label199;
         }
-        byte[] arrayOfByte2 = (byte[])bxb.getAndSet(null);
+        byte[] arrayOfByte2 = (byte[])skipBufferReference.getAndSet(null);
         arrayOfByte1 = arrayOfByte2;
         if (arrayOfByte2 == null) {
           arrayOfByte1 = new byte[4096];
         }
-        if (this.bxk == this.bxi) {
+        if (this.bytesSkipped == this.bytesToSkip) {
           break;
         }
-        i = (int)Math.min(this.bxi - this.bxk, arrayOfByte1.length);
+        i = (int)Math.min(this.bytesToSkip - this.bytesSkipped, arrayOfByte1.length);
         i = this.inputStream.read(arrayOfByte1, 0, i);
         if (Thread.interrupted())
         {
@@ -502,7 +503,7 @@ public final class o
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new s.c(paramArrayOfByte, this.bml, 2);
+        paramArrayOfByte = new s.c(paramArrayOfByte, this.bmN, 2);
         AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
@@ -512,12 +513,12 @@ public final class o
         AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
-      this.bxk += i;
-      if (this.bws != null) {
-        this.bws.fj(i);
+      this.bytesSkipped += i;
+      if (this.bur != null) {
+        this.bur.eV(i);
       }
     }
-    bxb.set(arrayOfByte1);
+    skipBufferReference.set(arrayOfByte1);
     label199:
     if (paramInt2 == 0)
     {
@@ -525,9 +526,9 @@ public final class o
       return 0;
     }
     int i = paramInt2;
-    if (this.bxj != -1L)
+    if (this.bytesToRead != -1L)
     {
-      long l = this.bxj - this.bxl;
+      long l = this.bytesToRead - this.bytesRead;
       if (l == 0L)
       {
         AppMethodBeat.o(93072);
@@ -538,7 +539,7 @@ public final class o
     paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
     if (paramInt1 == -1)
     {
-      if (this.bxj != -1L)
+      if (this.bytesToRead != -1L)
       {
         paramArrayOfByte = new EOFException();
         AppMethodBeat.o(93072);
@@ -547,9 +548,9 @@ public final class o
       AppMethodBeat.o(93072);
       return -1;
     }
-    this.bxl += paramInt1;
-    if (this.bws != null) {
-      this.bws.fj(paramInt1);
+    this.bytesRead += paramInt1;
+    if (this.bur != null) {
+      this.bur.eV(paramInt1);
     }
     AppMethodBeat.o(93072);
     return paramInt1;

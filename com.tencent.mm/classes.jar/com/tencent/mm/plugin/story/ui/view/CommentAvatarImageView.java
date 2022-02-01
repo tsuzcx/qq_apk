@@ -13,14 +13,14 @@ import com.tencent.mm.plugin.story.f.r;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hintBg", "getHintBg", "()I", "setHintBg", "(I)V", "hintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "tagName", "", "bindUsername", "", "userName", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onNotifyStoryStatusChanged", "username", "isRead", "", "setShowStoryHint", "show", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hintBg", "getHintBg", "()I", "setHintBg", "(I)V", "hintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "tagName", "", "bindUsername", "", "userName", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onNotifyStoryStatusChanged", "username", "isRead", "", "setShowStoryHint", "show", "plugin-story_release"})
 public final class CommentAvatarImageView
   extends ImageView
   implements m
 {
-  private int izx;
-  private final i xLj;
-  private String xXR;
+  private int iZA;
+  private final i yXY;
+  private String zkN;
   
   public CommentAvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,25 +33,25 @@ public final class CommentAvatarImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120011);
-    this.xXR = "";
+    this.zkN = "";
     setLayerType(1, null);
-    this.xLj = r.ygg.ge(paramContext);
-    this.xLj.aZ((View)this);
+    this.yXY = r.ztg.gq(paramContext);
+    this.yXY.aZ((View)this);
     AppMethodBeat.o(120011);
   }
   
-  public final void asc(String paramString)
+  public final void axl(String paramString)
   {
     AppMethodBeat.i(120009);
     k.h(paramString, "userName");
-    this.xLj.eE(paramString, 6);
-    if (!TextUtils.equals((CharSequence)this.xXR, (CharSequence)paramString)) {
-      this.xXR = paramString;
+    this.yXY.eM(paramString, 6);
+    if (!TextUtils.equals((CharSequence)this.zkN, (CharSequence)paramString)) {
+      this.zkN = paramString;
     }
     AppMethodBeat.o(120009);
   }
   
-  public final void bH(String paramString, boolean paramBoolean)
+  public final void bO(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(120010);
     k.h(paramString, "username");
@@ -60,7 +60,7 @@ public final class CommentAvatarImageView
       AppMethodBeat.o(120010);
       return;
     }
-    if (k.g(paramString, this.xXR)) {
+    if (k.g(paramString, this.zkN)) {
       if (paramBoolean) {
         break label62;
       }
@@ -76,7 +76,7 @@ public final class CommentAvatarImageView
   
   public final int getHintBg()
   {
-    return this.izx;
+    return this.iZA;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -84,19 +84,19 @@ public final class CommentAvatarImageView
     AppMethodBeat.i(120007);
     k.h(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    this.xLj.a(paramCanvas, false, this.izx);
+    this.yXY.a(paramCanvas, false, this.iZA);
     AppMethodBeat.o(120007);
   }
   
   public final void setHintBg(int paramInt)
   {
-    this.izx = paramInt;
+    this.iZA = paramInt;
   }
   
   public final void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(120008);
-    this.xLj.setShowStoryHint(paramBoolean);
+    this.yXY.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(120008);
   }
 }

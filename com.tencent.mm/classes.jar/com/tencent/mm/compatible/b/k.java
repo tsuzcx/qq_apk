@@ -5,7 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 
 public final class k
@@ -14,7 +14,7 @@ public final class k
   public k()
   {
     AppMethodBeat.i(155617);
-    g.kV(hashCode());
+    g.kP(hashCode());
     AppMethodBeat.o(155617);
   }
   
@@ -31,7 +31,7 @@ public final class k
     }
     catch (IOException paramContext)
     {
-      ad.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+      ac.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
       AppMethodBeat.o(155618);
       return null;
     }
@@ -39,14 +39,14 @@ public final class k
     {
       for (;;)
       {
-        ad.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+        ac.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
       }
     }
     catch (SecurityException paramContext)
     {
       for (;;)
       {
-        ad.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+        ac.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
       }
     }
   }
@@ -55,14 +55,14 @@ public final class k
   {
     AppMethodBeat.i(155623);
     super.release();
-    g.kW(hashCode());
+    g.kQ(hashCode());
     AppMethodBeat.o(155623);
   }
   
   public final void setDataSource(Context paramContext, Uri paramUri)
   {
     AppMethodBeat.i(155620);
-    if (d.lf(26))
+    if (d.kZ(26))
     {
       setDataSource(paramContext, paramUri, null, null);
       AppMethodBeat.o(155620);
@@ -81,7 +81,7 @@ public final class k
     //   3: ldc 79
     //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: bipush 26
-    //   10: invokestatic 70	com/tencent/mm/compatible/util/d:lf	(I)Z
+    //   10: invokestatic 70	com/tencent/mm/compatible/util/d:kZ	(I)Z
     //   13: ifeq +17 -> 30
     //   16: aload_0
     //   17: aload_1
@@ -286,7 +286,7 @@ public final class k
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: ldc 99
-    //   8: invokestatic 135	com/tencent/mm/vfs/i:lB	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   8: invokestatic 135	com/tencent/mm/vfs/i:lY	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   11: astore 4
     //   13: aconst_null
     //   14: astore_3
@@ -331,7 +331,7 @@ public final class k
     //   92: invokevirtual 150	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   95: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokestatic 157	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 157	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: aload_0
     //   105: aload_1
     //   106: invokespecial 159	android/media/MediaPlayer:setDataSource	(Ljava/lang/String;)V
@@ -375,7 +375,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.b.k
  * JD-Core Version:    0.7.0.1
  */

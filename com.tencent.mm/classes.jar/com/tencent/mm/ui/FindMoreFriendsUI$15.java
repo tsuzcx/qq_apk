@@ -1,7 +1,7 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.d;
+import com.tencent.mm.cq.d;
 
 final class FindMoreFriendsUI$15
   implements Runnable
@@ -11,7 +11,7 @@ final class FindMoreFriendsUI$15
   public final void run()
   {
     AppMethodBeat.i(33048);
-    d.fkP();
+    d.fBf();
     AppMethodBeat.o(33048);
   }
 }

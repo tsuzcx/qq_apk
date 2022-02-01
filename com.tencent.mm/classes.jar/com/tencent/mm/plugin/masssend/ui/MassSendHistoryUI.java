@@ -24,19 +24,17 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.i.a;
-import com.tencent.mm.al.i.b;
+import com.tencent.mm.ak.i.a;
+import com.tencent.mm.ak.i.b;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.masssend.a.b;
 import com.tencent.mm.sdk.platformtools.SensorController;
 import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.c;
@@ -44,33 +42,33 @@ import com.tencent.mm.ui.base.MMPullDownView.d;
 import com.tencent.mm.ui.base.MMPullDownView.g;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.q.a;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.s;
 import junit.framework.Assert;
 
 public class MassSendHistoryUI
   extends MMActivity
   implements i.a, i.b, SensorController.a
 {
-  private static SensorController orl;
-  private com.tencent.mm.audio.a.a cOu;
-  private View mUv;
-  private n.d mXD;
-  private boolean orh;
-  private boolean sVA;
-  private ListView twA;
-  private c twB;
-  private Button twC;
-  private Button twD;
-  private MMPullDownView twE;
-  private LinearLayout twF;
+  private static SensorController oUL;
+  private com.tencent.mm.audio.a.a cLP;
+  private n.d nAc;
+  private View nwN;
+  private boolean oUH;
+  private ListView uES;
+  private c uET;
+  private Button uEU;
+  private Button uEV;
+  private MMPullDownView uEW;
+  private LinearLayout uEX;
+  private boolean udM;
   
   public MassSendHistoryUI()
   {
     AppMethodBeat.i(26428);
-    this.orh = true;
-    this.sVA = false;
-    this.mXD = new n.d()
+    this.oUH = true;
+    this.udM = false;
+    this.nAc = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -85,12 +83,12 @@ public class MassSendHistoryUI
             AppMethodBeat.o(26419);
             return;
           }
-          if (((com.tencent.mm.plugin.masssend.a.a)localObject1).cNJ().equals(MassSendHistoryUI.b(MassSendHistoryUI.this).twp)) {
+          if (((com.tencent.mm.plugin.masssend.a.a)localObject1).dbq().equals(MassSendHistoryUI.b(MassSendHistoryUI.this).uEH)) {
             MassSendHistoryUI.h(MassSendHistoryUI.this);
           }
-          paramAnonymousMenuItem = com.tencent.mm.plugin.masssend.a.h.cNS();
-          localObject1 = ((com.tencent.mm.plugin.masssend.a.a)localObject1).cNJ();
-          localObject2 = paramAnonymousMenuItem.gPa.a("select * from massendinfo ORDER BY createtime DESC  limit 2", null, 0);
+          paramAnonymousMenuItem = com.tencent.mm.plugin.masssend.a.h.dbz();
+          localObject1 = ((com.tencent.mm.plugin.masssend.a.a)localObject1).dbq();
+          localObject2 = paramAnonymousMenuItem.hpA.a("select * from massendinfo ORDER BY createtime DESC  limit 2", null, 0);
           if (localObject2 != null)
           {
             if (((Cursor)localObject2).getCount() != 0) {
@@ -101,7 +99,7 @@ public class MassSendHistoryUI
         }
         for (;;)
         {
-          if (paramAnonymousMenuItem.gPa.delete("massendinfo", "clientid= ?", new String[] { String.valueOf(localObject1) }) > 0) {
+          if (paramAnonymousMenuItem.hpA.delete("massendinfo", "clientid= ?", new String[] { String.valueOf(localObject1) }) > 0) {
             paramAnonymousMenuItem.doNotify();
           }
           AppMethodBeat.o(26419);
@@ -114,14 +112,14 @@ public class MassSendHistoryUI
             locala = new com.tencent.mm.plugin.masssend.a.a();
             locala.convertFrom((Cursor)localObject2);
             ((Cursor)localObject2).close();
-            localObject2 = new am();
-            ((am)localObject2).setUsername("masssendapp");
-            ((am)localObject2).setContent(aj.getContext().getResources().getString(2131757722));
-            ((am)localObject2).kS(locala.createTime);
-            ((am)localObject2).jV(0);
-            ((am)localObject2).jT(0);
-            az.arV();
-            com.tencent.mm.model.c.apR().a((am)localObject2, "masssendapp");
+            localObject2 = new ap();
+            ((ap)localObject2).setUsername("masssendapp");
+            ((ap)localObject2).setContent(com.tencent.mm.sdk.platformtools.ai.getContext().getResources().getString(2131757722));
+            ((ap)localObject2).ou(locala.createTime);
+            ((ap)localObject2).jT(0);
+            ((ap)localObject2).jR(0);
+            az.ayM();
+            com.tencent.mm.model.c.awG().a((ap)localObject2, "masssendapp");
           }
           else
           {
@@ -129,14 +127,14 @@ public class MassSendHistoryUI
             locala = new com.tencent.mm.plugin.masssend.a.a();
             locala.convertFrom((Cursor)localObject2);
             ((Cursor)localObject2).close();
-            localObject2 = new am();
-            ((am)localObject2).setUsername("masssendapp");
-            ((am)localObject2).setContent(b.a(locala));
-            ((am)localObject2).kS(locala.createTime);
-            ((am)localObject2).jV(0);
-            ((am)localObject2).jT(0);
-            az.arV();
-            com.tencent.mm.model.c.apR().a((am)localObject2, "masssendapp");
+            localObject2 = new ap();
+            ((ap)localObject2).setUsername("masssendapp");
+            ((ap)localObject2).setContent(b.a(locala));
+            ((ap)localObject2).ou(locala.createTime);
+            ((ap)localObject2).jT(0);
+            ((ap)localObject2).jR(0);
+            az.ayM();
+            com.tencent.mm.model.c.awG().a((ap)localObject2, "masssendapp");
           }
         }
       }
@@ -151,25 +149,25 @@ public class MassSendHistoryUI
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      orl.a(this);
-      paramString = com.tencent.mm.plugin.masssend.a.h.cNS().afE(paramString);
-      az.arV();
-      if ((com.tencent.mm.model.c.isSDCardAvailable()) || (bt.isNullOrNil(paramString.cNK()))) {
+      oUL.a(this);
+      paramString = com.tencent.mm.plugin.masssend.a.h.dbz().aky(paramString);
+      az.ayM();
+      if ((com.tencent.mm.model.c.isSDCardAvailable()) || (bs.isNullOrNil(paramString.dbr()))) {
         break;
       }
       t.g(this, null);
       AppMethodBeat.o(26438);
       return false;
     }
-    if (this.cOu == null) {
-      this.cOu = new com.tencent.mm.audio.a.a(this);
+    if (this.cLP == null) {
+      this.cLP = new com.tencent.mm.audio.a.a(this);
     }
-    this.cOu.stop(false);
-    if (this.cOu.n(paramString.cNK(), this.orh))
+    this.cLP.stop(false);
+    if (this.cLP.n(paramString.dbr(), this.oUH))
     {
-      com.tencent.mm.plugin.audio.c.a.Od("music").hJ(this.orh);
-      this.cOu.cXn = this;
-      this.cOu.cXm = this;
+      com.tencent.mm.plugin.audio.c.a.Sm("music").ih(this.oUH);
+      this.cLP.cUJ = this;
+      this.cLP.cUI = this;
       AppMethodBeat.o(26438);
       return true;
     }
@@ -181,9 +179,9 @@ public class MassSendHistoryUI
   private void stopPlay()
   {
     AppMethodBeat.i(26439);
-    orl.eGx();
-    this.cOu.stop(false);
-    this.twB.afI("");
+    oUL.eVS();
+    this.cLP.stop(false);
+    this.uET.akC("");
     releaseWakeLock();
     AppMethodBeat.o(26439);
   }
@@ -196,50 +194,50 @@ public class MassSendHistoryUI
   public void initView()
   {
     AppMethodBeat.i(26433);
-    this.sVA = getIntent().getBooleanExtra("finish_direct", false);
-    ad.d("MicroMsg.MassSendHistoryUI", "isFromSearch  " + this.sVA);
-    this.twF = ((LinearLayout)findViewById(2131302189));
-    this.twA = ((ListView)findViewById(2131302172));
-    this.twA.setTranscriptMode(0);
-    this.twE = ((MMPullDownView)findViewById(2131302173));
-    this.twE.setOnTopLoadDataListener(new MMPullDownView.g()
+    this.udM = getIntent().getBooleanExtra("finish_direct", false);
+    ac.d("MicroMsg.MassSendHistoryUI", "isFromSearch  " + this.udM);
+    this.uEX = ((LinearLayout)findViewById(2131302189));
+    this.uES = ((ListView)findViewById(2131302172));
+    this.uES.setTranscriptMode(0);
+    this.uEW = ((MMPullDownView)findViewById(2131302173));
+    this.uEW.setOnTopLoadDataListener(new MMPullDownView.g()
     {
-      public final boolean bPk()
+      public final boolean bWA()
       {
         int i = 0;
         AppMethodBeat.i(26420);
-        if (MassSendHistoryUI.b(MassSendHistoryUI.this).bLj())
+        if (MassSendHistoryUI.b(MassSendHistoryUI.this).bSw())
         {
           MassSendHistoryUI.d(MassSendHistoryUI.this).setSelectionFromTop(0, MassSendHistoryUI.c(MassSendHistoryUI.this).getTopHeight());
           AppMethodBeat.o(26420);
           return true;
         }
         c localc = MassSendHistoryUI.b(MassSendHistoryUI.this);
-        if (localc.bLj()) {}
+        if (localc.bSw()) {}
         for (;;)
         {
-          ad.v("MicroMsg.MassSendHistoryUI", "onLoadData add count:".concat(String.valueOf(i)));
+          ac.v("MicroMsg.MassSendHistoryUI", "onLoadData add count:".concat(String.valueOf(i)));
           MassSendHistoryUI.b(MassSendHistoryUI.this).a(null, null);
           MassSendHistoryUI.d(MassSendHistoryUI.this).setSelectionFromTop(i, MassSendHistoryUI.c(MassSendHistoryUI.this).getTopHeight());
           AppMethodBeat.o(26420);
           return true;
-          localc.nCF += 10;
-          if (localc.nCF <= localc.fwP)
+          localc.ofG += 10;
+          if (localc.ofG <= localc.fAw)
           {
             i = 10;
           }
           else
           {
-            localc.nCF = localc.fwP;
-            i = localc.fwP % 10;
+            localc.ofG = localc.fAw;
+            i = localc.fAw % 10;
           }
         }
       }
     });
-    this.twE.setTopViewVisible(true);
-    this.twE.setAtBottomCallBack(new MMPullDownView.c()
+    this.uEW.setTopViewVisible(true);
+    this.uEW.setAtBottomCallBack(new MMPullDownView.c()
     {
-      public final boolean bPj()
+      public final boolean bWz()
       {
         AppMethodBeat.i(26421);
         if ((MassSendHistoryUI.d(MassSendHistoryUI.this).getChildAt(MassSendHistoryUI.d(MassSendHistoryUI.this).getChildCount() - 1).getBottom() <= MassSendHistoryUI.d(MassSendHistoryUI.this).getHeight()) && (MassSendHistoryUI.d(MassSendHistoryUI.this).getLastVisiblePosition() == MassSendHistoryUI.d(MassSendHistoryUI.this).getAdapter().getCount() - 1))
@@ -251,9 +249,9 @@ public class MassSendHistoryUI
         return false;
       }
     });
-    this.twE.setAtTopCallBack(new MMPullDownView.d()
+    this.uEW.setAtTopCallBack(new MMPullDownView.d()
     {
-      public final boolean bPi()
+      public final boolean bWy()
       {
         AppMethodBeat.i(26422);
         View localView = MassSendHistoryUI.d(MassSendHistoryUI.this).getChildAt(MassSendHistoryUI.d(MassSendHistoryUI.this).getFirstVisiblePosition());
@@ -266,14 +264,14 @@ public class MassSendHistoryUI
         return false;
       }
     });
-    this.twE.setIsBottomShowAll(true);
-    this.twB = new c(this);
-    this.twB.a(new q.a()
+    this.uEW.setIsBottomShowAll(true);
+    this.uET = new c(this);
+    this.uET.a(new r.a()
     {
-      public final void aIp()
+      public final void aPg()
       {
         AppMethodBeat.i(26423);
-        MassSendHistoryUI.c(MassSendHistoryUI.this).setIsTopShowAll(MassSendHistoryUI.b(MassSendHistoryUI.this).bLj());
+        MassSendHistoryUI.c(MassSendHistoryUI.this).setIsTopShowAll(MassSendHistoryUI.b(MassSendHistoryUI.this).bSw());
         if (MassSendHistoryUI.b(MassSendHistoryUI.this).getCount() == 0)
         {
           MassSendHistoryUI.c(MassSendHistoryUI.this).setVisibility(8);
@@ -288,53 +286,53 @@ public class MassSendHistoryUI
         AppMethodBeat.o(26423);
       }
     });
-    this.mUv = findViewById(2131302171);
-    this.twA.setAdapter(this.twB);
-    this.twA.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.nwN = findViewById(2131302171);
+    this.uES.setAdapter(this.uET);
+    this.uES.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(26424);
-        ad.v("MicroMsg.MassSendHistoryUI", "onItemClick");
+        ac.v("MicroMsg.MassSendHistoryUI", "onItemClick");
         AppMethodBeat.o(26424);
       }
     });
-    this.twA.setOnTouchListener(new View.OnTouchListener()
+    this.uES.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(26425);
-        ad.v("MicroMsg.MassSendHistoryUI", "onTouch");
+        ac.v("MicroMsg.MassSendHistoryUI", "onTouch");
         AppMethodBeat.o(26425);
         return false;
       }
     });
-    this.twC = ((Button)findViewById(2131302188));
-    this.twC.setOnClickListener(new View.OnClickListener()
+    this.uEU = ((Button)findViewById(2131302188));
+    this.uEU.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(26426);
         Object localObject = new Intent(MassSendHistoryUI.this, MassSendSelectContactUI.class);
         paramAnonymousView = MassSendHistoryUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(26426);
       }
     });
-    this.twD = ((Button)findViewById(2131302190));
-    this.twD.setOnClickListener(new View.OnClickListener()
+    this.uEV = ((Button)findViewById(2131302190));
+    this.uEV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(26427);
         Object localObject = new Intent(MassSendHistoryUI.this, MassSendSelectContactUI.class);
         paramAnonymousView = MassSendHistoryUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$9", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(26427);
       }
@@ -353,7 +351,7 @@ public class MassSendHistoryUI
           return true;
           paramAnonymousMenuItem = new Intent();
           paramAnonymousMenuItem.addFlags(67108864);
-          com.tencent.mm.plugin.masssend.a.hYt.p(paramAnonymousMenuItem, MassSendHistoryUI.this);
+          com.tencent.mm.plugin.masssend.a.iyx.p(paramAnonymousMenuItem, MassSendHistoryUI.this);
           MassSendHistoryUI.this.finish();
         }
       }
@@ -365,43 +363,43 @@ public class MassSendHistoryUI
         AppMethodBeat.i(26418);
         paramAnonymousMenuItem = new Intent();
         paramAnonymousMenuItem.putExtra("Contact_User", "masssendapp");
-        com.tencent.mm.plugin.masssend.a.hYt.c(paramAnonymousMenuItem, MassSendHistoryUI.this);
+        com.tencent.mm.plugin.masssend.a.iyx.c(paramAnonymousMenuItem, MassSendHistoryUI.this);
         AppMethodBeat.o(26418);
         return true;
       }
     });
-    new com.tencent.mm.ui.tools.l(this).a(this.twA, this, this.mXD);
+    new com.tencent.mm.ui.tools.l(this).a(this.uES, this, this.nAc);
     AppMethodBeat.o(26433);
   }
   
-  public final void jz(boolean paramBoolean)
+  public final void kc(boolean paramBoolean)
   {
     AppMethodBeat.i(26437);
-    if (this.cOu == null)
+    if (this.cLP == null)
     {
       AppMethodBeat.o(26437);
       return;
     }
-    if (!this.cOu.isPlaying())
+    if (!this.cLP.isPlaying())
     {
-      this.cOu.cj(true);
-      com.tencent.mm.plugin.audio.c.a.Od("music").hJ(true);
-      this.orh = true;
+      this.cLP.cl(true);
+      com.tencent.mm.plugin.audio.c.a.Sm("music").ih(true);
+      this.oUH = true;
       AppMethodBeat.o(26437);
       return;
     }
-    this.cOu.cj(paramBoolean);
-    com.tencent.mm.plugin.audio.c.a.Od("music").hJ(paramBoolean);
-    this.orh = paramBoolean;
+    this.cLP.cl(paramBoolean);
+    com.tencent.mm.plugin.audio.c.a.Sm("music").ih(paramBoolean);
+    this.oUH = paramBoolean;
     if (!paramBoolean)
     {
-      if (startPlay(this.twB.twp))
+      if (startPlay(this.uET.uEH))
       {
-        this.twB.afI(this.twB.twp);
+        this.uET.akC(this.uET.uEH);
         AppMethodBeat.o(26437);
         return;
       }
-      this.twB.afI("");
+      this.uET.akC("");
     }
     AppMethodBeat.o(26437);
   }
@@ -418,29 +416,29 @@ public class MassSendHistoryUI
     AppMethodBeat.i(26429);
     super.onCreate(paramBundle);
     setMMTitle(2131761177);
-    if (orl == null) {
-      orl = new SensorController(getApplicationContext());
+    if (oUL == null) {
+      oUL = new SensorController(getApplicationContext());
     }
     initView();
-    this.cOu = new com.tencent.mm.audio.a.a(this);
-    this.cOu.cXn = this;
-    this.cOu.cXm = this;
-    this.twB.twq = new c.e()
+    this.cLP = new com.tencent.mm.audio.a.a(this);
+    this.cLP.cUJ = this;
+    this.cLP.cUI = this;
+    this.uET.uEI = new c.e()
     {
-      public final String afJ(String paramAnonymousString)
+      public final String akD(String paramAnonymousString)
       {
         AppMethodBeat.i(26416);
-        az.arV();
+        az.ayM();
         if (!com.tencent.mm.model.c.isSDCardAvailable())
         {
           t.g(MassSendHistoryUI.this, null);
           AppMethodBeat.o(26416);
           return "";
         }
-        paramAnonymousString = bt.nullAsNil(paramAnonymousString);
-        if ((MassSendHistoryUI.a(MassSendHistoryUI.this).isPlaying()) && (paramAnonymousString.equals(MassSendHistoryUI.b(MassSendHistoryUI.this).twp)))
+        paramAnonymousString = bs.nullAsNil(paramAnonymousString);
+        if ((MassSendHistoryUI.a(MassSendHistoryUI.this).isPlaying()) && (paramAnonymousString.equals(MassSendHistoryUI.b(MassSendHistoryUI.this).uEH)))
         {
-          MassSendHistoryUI.cOd();
+          MassSendHistoryUI.dbL();
           MassSendHistoryUI.this.releaseWakeLock();
           MassSendHistoryUI.a(MassSendHistoryUI.this).stop(false);
           AppMethodBeat.o(26416);
@@ -456,7 +454,7 @@ public class MassSendHistoryUI
       }
     };
     if (this.mController != null) {
-      this.mController.aT(3, false);
+      this.mController.aX(3, false);
     }
     AppMethodBeat.o(26429);
   }
@@ -464,20 +462,20 @@ public class MassSendHistoryUI
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
     AppMethodBeat.i(26435);
-    ad.v("MicroMsg.MassSendHistoryUI", "onCreateContextMenu");
+    ac.v("MicroMsg.MassSendHistoryUI", "onCreateContextMenu");
     super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    paramContextMenuInfo = ((com.tencent.mm.plugin.masssend.a.a)this.twB.getItem(paramView.position)).cNM().split(";");
+    paramContextMenuInfo = ((com.tencent.mm.plugin.masssend.a.a)this.uET.getItem(paramView.position)).dbt().split(";");
     StringBuilder localStringBuilder = new StringBuilder();
     int j = paramContextMenuInfo.length;
     int i = 0;
     while (i < j)
     {
       Object localObject = paramContextMenuInfo[i];
-      az.arV();
-      localObject = com.tencent.mm.model.c.apM().aHY((String)localObject);
+      az.ayM();
+      localObject = com.tencent.mm.model.c.awB().aNt((String)localObject);
       if (localObject != null) {
-        localStringBuilder.append(((af)localObject).ZX() + ";");
+        localStringBuilder.append(((com.tencent.mm.storage.ai)localObject).aaS() + ";");
       }
       i += 1;
     }
@@ -490,7 +488,7 @@ public class MassSendHistoryUI
   {
     AppMethodBeat.i(26432);
     stopPlay();
-    this.twB.cHX();
+    this.uET.cVi();
     super.onDestroy();
     AppMethodBeat.o(26432);
   }
@@ -507,7 +505,7 @@ public class MassSendHistoryUI
     AppMethodBeat.i(26434);
     if (paramInt == 4)
     {
-      if (this.sVA) {
+      if (this.udM) {
         finish();
       }
       for (;;)
@@ -516,7 +514,7 @@ public class MassSendHistoryUI
         return true;
         paramKeyEvent = new Intent();
         paramKeyEvent.addFlags(67108864);
-        com.tencent.mm.plugin.masssend.a.hYt.p(paramKeyEvent, this);
+        com.tencent.mm.plugin.masssend.a.iyx.p(paramKeyEvent, this);
         finish();
       }
     }
@@ -529,8 +527,8 @@ public class MassSendHistoryUI
   {
     AppMethodBeat.i(26431);
     super.onPause();
-    com.tencent.mm.plugin.masssend.a.h.cNS().remove(this.twB);
-    orl.eGx();
+    com.tencent.mm.plugin.masssend.a.h.dbz().remove(this.uET);
+    oUL.eVS();
     AppMethodBeat.o(26431);
   }
   
@@ -538,9 +536,9 @@ public class MassSendHistoryUI
   {
     AppMethodBeat.i(26430);
     super.onResume();
-    com.tencent.mm.plugin.masssend.a.h.cNS().add(this.twB);
-    this.twB.a(null, null);
-    this.twA.setSelection(this.twB.getCount() - 1);
+    com.tencent.mm.plugin.masssend.a.h.dbz().add(this.uET);
+    this.uET.a(null, null);
+    this.uES.setSelection(this.uET.getCount() - 1);
     AppMethodBeat.o(26430);
   }
   
@@ -553,13 +551,13 @@ public class MassSendHistoryUI
   protected final void releaseWakeLock()
   {
     AppMethodBeat.i(26436);
-    this.twA.setKeepScreenOn(false);
+    this.uES.setKeepScreenOn(false);
     AppMethodBeat.o(26436);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendHistoryUI
  * JD-Core Version:    0.7.0.1
  */

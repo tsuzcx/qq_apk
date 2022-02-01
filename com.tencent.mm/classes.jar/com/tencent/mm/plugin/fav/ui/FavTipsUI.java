@@ -18,9 +18,9 @@ public class FavTipsUI
     AppMethodBeat.i(106939);
     super.onCreate(paramBundle);
     paramBundle = new d.a(this);
-    paramBundle.aMf(getString(2131758916));
-    paramBundle.aMg(getString(2131758914) + "\n\n" + getString(2131758915));
-    paramBundle.aaB(2131758913).b(new DialogInterface.OnClickListener()
+    paramBundle.aRH(getString(2131758916));
+    paramBundle.aRI(getString(2131758914) + "\n\n" + getString(2131758915));
+    paramBundle.acM(2131758913).b(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -38,7 +38,7 @@ public class FavTipsUI
         AppMethodBeat.o(106938);
       }
     });
-    paramBundle.fft().show();
+    paramBundle.fvp().show();
     AppMethodBeat.o(106939);
   }
   

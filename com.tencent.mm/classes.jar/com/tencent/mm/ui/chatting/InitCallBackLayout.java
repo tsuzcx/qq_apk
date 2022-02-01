@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class InitCallBackLayout
   extends FrameLayout
 {
-  private ap FSu;
+  private ap Hsj;
   private boolean hasDrawed;
   
   public InitCallBackLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,8 +24,8 @@ public class InitCallBackLayout
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.FSu != null) {
-        this.FSu.cAy();
+      if (this.Hsj != null) {
+        this.Hsj.cNI();
       }
     }
     AppMethodBeat.o(34834);
@@ -33,12 +33,12 @@ public class InitCallBackLayout
   
   public void setListener(ap paramap)
   {
-    this.FSu = paramap;
+    this.Hsj = paramap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.InitCallBackLayout
  * JD-Core Version:    0.7.0.1
  */

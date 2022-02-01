@@ -4,25 +4,25 @@ import java.util.Collection;
 
 public abstract interface e
 {
-  public abstract boolean aQl();
+  public abstract boolean aXd();
   
-  public abstract boolean aQm();
+  public abstract boolean aXe();
   
-  public abstract boolean aQn();
+  public abstract boolean aXf();
   
-  public abstract boolean aQp();
+  public abstract boolean aXh();
   
-  public abstract String asy();
+  public abstract String azp();
   
-  public abstract String ewF();
+  public abstract String eLF();
   
-  public abstract Collection<b> ewG();
+  public abstract String eLZ();
   
-  public abstract int ewH();
+  public abstract Collection<b> eMa();
   
-  public abstract String ewI();
+  public abstract int eMb();
   
-  public abstract String ewl();
+  public abstract String eMc();
   
   public abstract int getConnectTimeout();
   
@@ -32,11 +32,11 @@ public abstract interface e
   
   public abstract String getURL();
   
-  public abstract boolean mR(long paramLong);
+  public abstract boolean qG(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.m;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.plugin.backup.backupmoveui.BackupUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -45,7 +45,7 @@ public class BackupChooseBackupModeUI
         return true;
       }
     });
-    ((m)g.ab(m.class)).KJ();
+    ((m)g.ab(m.class)).Ku();
     AppMethodBeat.o(21780);
   }
   
@@ -53,7 +53,7 @@ public class BackupChooseBackupModeUI
   {
     AppMethodBeat.i(21782);
     super.onDestroy();
-    ((m)g.ab(m.class)).KI();
+    ((m)g.ab(m.class)).Kt();
     AppMethodBeat.o(21782);
   }
   
@@ -62,10 +62,10 @@ public class BackupChooseBackupModeUI
     AppMethodBeat.i(21781);
     if (paramPreference.mKey.equals("backup_move_to_device"))
     {
-      if (((k)g.ab(k.class)).aqo().cON()) {
-        bi.ash();
+      if (((k)g.ab(k.class)).axd().dcw()) {
+        bi.ayY();
       }
-      MMWizardActivity.V(this, new Intent(getContext(), BackupUI.class));
+      MMWizardActivity.aj(this, new Intent(getContext(), BackupUI.class));
       AppMethodBeat.o(21781);
       return true;
     }
@@ -73,7 +73,7 @@ public class BackupChooseBackupModeUI
     {
       paramf = new Intent();
       paramf.putExtra("title", getString(2131756190));
-      paramf.putExtra("rawUrl", getString(2131756248, new Object[] { ac.eFu() }));
+      paramf.putExtra("rawUrl", getString(2131756248, new Object[] { ab.eUO() }));
       paramf.putExtra("showShare", false);
       paramf.putExtra("neverGetA8Key", true);
       d.b(this, "webview", ".ui.tools.WebViewUI", paramf);
@@ -92,7 +92,7 @@ public class BackupChooseBackupModeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupui.BackupChooseBackupModeUI
  * JD-Core Version:    0.7.0.1
  */

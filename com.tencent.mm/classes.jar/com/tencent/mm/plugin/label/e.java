@@ -6,7 +6,7 @@ import com.tencent.mm.model.aw;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bz;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ak;
+import com.tencent.mm.storage.an;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -14,8 +14,8 @@ public class e
   implements aw
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private ak sLS;
-  private d sLT;
+  private an tTx;
+  private d tTy;
   
   static
   {
@@ -26,7 +26,7 @@ public class e
     {
       public final String[] getSQLs()
       {
-        return ak.SQL_CREATE;
+        return an.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("CONTACT_LABEL_CACHE_TABLE".hashCode()), new e.2());
@@ -36,15 +36,15 @@ public class e
   public e()
   {
     AppMethodBeat.i(26136);
-    this.sLT = new d();
+    this.tTy = new d();
     AppMethodBeat.o(26136);
   }
   
-  private static e cIQ()
+  private static e cWb()
   {
     AppMethodBeat.i(26137);
-    az.arP();
-    e locale2 = (e)bz.ut("plugin.label");
+    az.ayG();
+    e locale2 = (e)bz.yz("plugin.label");
     e locale1 = locale2;
     if (locale2 == null)
     {
@@ -54,7 +54,7 @@ public class e
     try
     {
       locale1 = new e();
-      az.arP().a("plugin.label", locale1);
+      az.ayG().a("plugin.label", locale1);
       return locale1;
     }
     finally
@@ -63,17 +63,17 @@ public class e
     }
   }
   
-  public static ak cIR()
+  public static an cWc()
   {
     AppMethodBeat.i(26140);
-    g.afz().aeD();
-    if (cIQ().sLS == null)
+    g.agP().afT();
+    if (cWb().tTx == null)
     {
-      localObject = cIQ();
-      az.arV();
-      ((e)localObject).sLS = new ak(c.afg());
+      localObject = cWb();
+      az.ayM();
+      ((e)localObject).tTx = new an(c.agw());
     }
-    Object localObject = cIQ().sLS;
+    Object localObject = cWb().tTx;
     AppMethodBeat.o(26140);
     return localObject;
   }
@@ -89,17 +89,17 @@ public class e
   {
     AppMethodBeat.i(26138);
     b localb = new b();
-    com.tencent.mm.plugin.label.a.a.sLU = localb;
-    com.tencent.mm.ay.b.hkR = localb;
-    com.tencent.mm.sdk.b.a.ESL.c(this.sLT);
+    com.tencent.mm.plugin.label.a.a.tTz = localb;
+    com.tencent.mm.ax.b.hLu = localb;
+    com.tencent.mm.sdk.b.a.GpY.c(this.tTy);
     AppMethodBeat.o(26138);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(26139);
-    com.tencent.mm.plugin.label.a.a.sLU = null;
-    com.tencent.mm.sdk.b.a.ESL.d(this.sLT);
+    com.tencent.mm.plugin.label.a.a.tTz = null;
+    com.tencent.mm.sdk.b.a.GpY.d(this.tTy);
     AppMethodBeat.o(26139);
   }
   
@@ -107,7 +107,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.e
  * JD-Core Version:    0.7.0.1
  */

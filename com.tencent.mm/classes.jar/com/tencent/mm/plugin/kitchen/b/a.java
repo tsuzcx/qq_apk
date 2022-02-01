@@ -8,13 +8,13 @@ import com.tencent.mm.plugin.kitchen.ui.KvInfoUI;
 public final class a
   implements com.tencent.mm.plugin.kitchen.a.a
 {
-  public final void H(Context paramContext, Intent paramIntent)
+  public final void V(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(153024);
     paramIntent.setClass(paramContext, KvInfoUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.adn(), "com/tencent/mm/plugin/kitchen/impl/KitchenService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.lS(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.aeD(), "com/tencent/mm/plugin/kitchen/impl/KitchenService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/kitchen/impl/KitchenService", "showKvDebugUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(153024);
   }

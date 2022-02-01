@@ -19,14 +19,14 @@ final class af
   private static ag a(SharedPreferences paramSharedPreferences, String paramString)
   {
     AppMethodBeat.i(4244);
-    String str1 = paramSharedPreferences.getString(p.n(paramString, "|P|"), null);
-    String str2 = paramSharedPreferences.getString(p.n(paramString, "|K|"), null);
+    String str1 = paramSharedPreferences.getString(p.o(paramString, "|P|"), null);
+    String str2 = paramSharedPreferences.getString(p.o(paramString, "|K|"), null);
     if ((str1 == null) || (str2 == null))
     {
       AppMethodBeat.o(4244);
       return null;
     }
-    paramSharedPreferences = new ag(q(str1, str2), b(paramSharedPreferences, paramString));
+    paramSharedPreferences = new ag(r(str1, str2), b(paramSharedPreferences, paramString));
     AppMethodBeat.o(4244);
     return paramSharedPreferences;
   }
@@ -42,8 +42,8 @@ final class af
       paramContext.createNewFile();
       paramString = new Properties();
       paramString.setProperty("pub", paramag.zzq());
-      paramString.setProperty("pri", paramag.xd());
-      paramString.setProperty("cre", String.valueOf(paramag.bEr));
+      paramString.setProperty("pri", paramag.wQ());
+      paramString.setProperty("cre", String.valueOf(paramag.bBZ));
       paramag = new FileOutputStream(paramContext);
       paramContext = localObject;
       try
@@ -75,10 +75,10 @@ final class af
     }
   }
   
-  static File ao(Context paramContext)
+  static File ap(Context paramContext)
   {
     AppMethodBeat.i(4241);
-    File localFile = b.R(paramContext);
+    File localFile = b.S(paramContext);
     if ((localFile != null) && (localFile.isDirectory()))
     {
       AppMethodBeat.o(4241);
@@ -92,7 +92,7 @@ final class af
   private static long b(SharedPreferences paramSharedPreferences, String paramString)
   {
     AppMethodBeat.i(4246);
-    paramSharedPreferences = paramSharedPreferences.getString(p.n(paramString, "cre"), null);
+    paramSharedPreferences = paramSharedPreferences.getString(p.o(paramString, "cre"), null);
     if (paramSharedPreferences != null) {
       try
       {
@@ -123,9 +123,9 @@ final class af
     {
       Log.isLoggable("FirebaseInstanceId", 3);
       paramContext = paramContext.edit();
-      paramContext.putString(p.n(paramString, "|P|"), paramag.zzq());
-      paramContext.putString(p.n(paramString, "|K|"), paramag.xd());
-      paramContext.putString(p.n(paramString, "cre"), String.valueOf(paramag.bEr));
+      paramContext.putString(p.o(paramString, "|P|"), paramag.zzq());
+      paramContext.putString(p.o(paramString, "|K|"), paramag.wQ());
+      paramContext.putString(p.o(paramString, "cre"), String.valueOf(paramag.bBZ));
       paramContext.commit();
       AppMethodBeat.o(4245);
     }
@@ -134,7 +134,7 @@ final class af
   static ag k(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4236);
-    ag localag1 = new ag(a.wU(), System.currentTimeMillis());
+    ag localag1 = new ag(a.wH(), System.currentTimeMillis());
     try
     {
       ag localag2 = l(paramContext, paramString);
@@ -172,7 +172,7 @@ final class af
     //   18: aload_2
     //   19: invokestatic 214	com/google/firebase/iid/af:b	(Landroid/content/Context;Ljava/lang/String;Lcom/google/firebase/iid/ag;)V
     //   22: sipush 4237
-    //   25: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aload_2
     //   29: areturn
     //   30: aconst_null
@@ -191,7 +191,7 @@ final class af
     //   50: aload_3
     //   51: invokestatic 212	com/google/firebase/iid/af:a	(Landroid/content/Context;Ljava/lang/String;Lcom/google/firebase/iid/ag;)V
     //   54: sipush 4237
-    //   57: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: aload_3
     //   61: areturn
     //   62: astore_2
@@ -199,11 +199,11 @@ final class af
     //   66: aload_2
     //   67: ifnull +11 -> 78
     //   70: sipush 4237
-    //   73: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_2
     //   77: athrow
     //   78: sipush 4237
-    //   81: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   84: aconst_null
     //   85: areturn
     //   86: astore_2
@@ -271,7 +271,7 @@ final class af
     }
     for (;;)
     {
-      paramContext = new File(ao(paramContext), paramString);
+      paramContext = new File(ap(paramContext), paramString);
       AppMethodBeat.o(4242);
       return paramContext;
       try
@@ -289,7 +289,7 @@ final class af
   }
   
   /* Error */
-  private static java.security.KeyPair q(String paramString1, String paramString2)
+  private static java.security.KeyPair r(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 4238
@@ -322,7 +322,7 @@ final class af
     //   55: invokespecial 309	java/security/KeyPair:<init>	(Ljava/security/PublicKey;Ljava/security/PrivateKey;)V
     //   58: astore_0
     //   59: sipush 4238
-    //   62: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   62: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: aload_0
     //   66: areturn
     //   67: astore_0
@@ -332,7 +332,7 @@ final class af
     //   73: invokespecial 231	com/google/firebase/iid/ah:<init>	(Ljava/lang/Exception;)V
     //   76: astore_0
     //   77: sipush 4238
-    //   80: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: aload_0
     //   84: athrow
     //   85: astore_0
@@ -358,7 +358,7 @@ final class af
     //   124: invokespecial 231	com/google/firebase/iid/ah:<init>	(Ljava/lang/Exception;)V
     //   127: astore_0
     //   128: sipush 4238
-    //   131: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   134: aload_0
     //   135: athrow
     //   136: astore_0
@@ -409,29 +409,29 @@ final class af
     //   55: aload 4
     //   57: invokestatic 322	com/google/firebase/iid/af:a	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
     //   60: sipush 4243
-    //   63: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   66: aconst_null
     //   67: areturn
     //   68: aload_3
     //   69: aload 5
-    //   71: invokestatic 41	com/google/firebase/iid/af:q	(Ljava/lang/String;Ljava/lang/String;)Ljava/security/KeyPair;
+    //   71: invokestatic 40	com/google/firebase/iid/af:r	(Ljava/lang/String;Ljava/lang/String;)Ljava/security/KeyPair;
     //   74: astore_3
     //   75: aload_0
     //   76: ldc 90
     //   78: invokevirtual 320	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   81: invokestatic 166	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   84: lstore_1
-    //   85: new 37	com/google/firebase/iid/ag
+    //   85: new 36	com/google/firebase/iid/ag
     //   88: dup
     //   89: aload_3
     //   90: lload_1
-    //   91: invokespecial 48	com/google/firebase/iid/ag:<init>	(Ljava/security/KeyPair;J)V
+    //   91: invokespecial 47	com/google/firebase/iid/ag:<init>	(Ljava/security/KeyPair;J)V
     //   94: astore_0
     //   95: aconst_null
     //   96: aload 4
     //   98: invokestatic 322	com/google/firebase/iid/af:a	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
     //   101: sipush 4243
-    //   104: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: aload_0
     //   108: areturn
     //   109: astore_0
@@ -441,12 +441,12 @@ final class af
     //   115: invokespecial 231	com/google/firebase/iid/ah:<init>	(Ljava/lang/Exception;)V
     //   118: astore_0
     //   119: sipush 4243
-    //   122: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   125: aload_0
     //   126: athrow
     //   127: astore_3
     //   128: sipush 4243
-    //   131: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   134: aload_3
     //   135: athrow
     //   136: astore_0
@@ -454,7 +454,7 @@ final class af
     //   138: aload 4
     //   140: invokestatic 322	com/google/firebase/iid/af:a	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
     //   143: sipush 4243
-    //   146: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   149: aload_0
     //   150: athrow
     //   151: astore_0

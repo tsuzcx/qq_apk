@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.expt.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bo;
+import com.tencent.mm.g.c.bq;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends bo
+  extends bq
 {
   protected static c.a info;
   
@@ -15,16 +15,16 @@ public final class a
   {
     AppMethodBeat.i(122445);
     c.a locala = new c.a();
-    locala.EYt = new Field[2];
+    locala.GvF = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "exptKey";
-    locala.EYv.put("exptKey", "TEXT PRIMARY KEY ");
+    locala.GvH.put("exptKey", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" exptKey TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "exptKey";
+    locala.GvG = "exptKey";
     locala.columns[1] = "exptId";
-    locala.EYv.put("exptId", "INTEGER");
+    locala.GvH.put("exptId", "INTEGER");
     localStringBuilder.append(" exptId INTEGER");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

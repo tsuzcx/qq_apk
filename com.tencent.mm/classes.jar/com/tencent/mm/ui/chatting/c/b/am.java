@@ -1,18 +1,20 @@
 package com.tencent.mm.ui.chatting.c.b;
 
 import android.view.MenuItem;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.ab;
 import com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.b;
 
 public abstract interface am
   extends ab
 {
-  public abstract boolean b(MenuItem paramMenuItem, bl parambl);
+  public abstract boolean b(MenuItem paramMenuItem, bo parambo);
   
-  public abstract ChattingItemTranslate.b bK(bl parambl);
+  public abstract ChattingItemTranslate.b bN(bo parambo);
   
-  public abstract String e(bl parambl, boolean paramBoolean);
+  public abstract String e(bo parambo, boolean paramBoolean);
+  
+  public abstract void foF();
 }
 
 

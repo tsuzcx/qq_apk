@@ -147,7 +147,7 @@ public class LikeActionController
     if (paramString != null) {
       localIntent.putExtras(paramString);
     }
-    d.T(FacebookSdk.getApplicationContext()).b(localIntent);
+    d.U(FacebookSdk.getApplicationContext()).b(localIntent);
     AppMethodBeat.o(8061);
   }
   

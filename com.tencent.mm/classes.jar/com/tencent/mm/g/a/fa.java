@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fa
   extends b
 {
-  public a dhy;
-  public b dhz;
+  public a deR;
+  public b deS;
   
   public fa()
   {
@@ -16,28 +16,27 @@ public final class fa
   
   private fa(byte paramByte)
   {
-    AppMethodBeat.i(19801);
-    this.dhy = new a();
-    this.dhz = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19800);
+    this.deR = new a();
+    this.deS = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19801);
+    AppMethodBeat.o(19800);
   }
   
   public static final class a
   {
-    public byte[] data;
-    public String mac;
+    public boolean ddi = false;
   }
   
   public static final class b
   {
-    public boolean dfO;
+    public boolean ddj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.fa
  * JD-Core Version:    0.7.0.1
  */

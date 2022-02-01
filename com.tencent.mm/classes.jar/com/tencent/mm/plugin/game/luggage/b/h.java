@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,8 +22,8 @@ public class h
   public final void a(Context paramContext, String paramString, bn.a parama)
   {
     AppMethodBeat.i(83064);
-    Object localObject = ((c)g.ab(c.class)).bQM();
-    if (bt.gL((List)localObject))
+    Object localObject = ((c)g.ab(c.class)).bYc();
+    if (bs.gY((List)localObject))
     {
       parama.f(null, null);
       AppMethodBeat.o(83064);
@@ -44,11 +44,11 @@ public class h
       try
       {
         localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.ogT);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.daY);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.oKt);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.cYu);
         localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.jAt);
-        if (localDownloadWidgetTaskInfo.ofO) {
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.kaP);
+        if (localDownloadWidgetTaskInfo.oJp) {
           localJSONObject.put("reserve_for_wifi", 1);
         }
         label177:
@@ -76,7 +76,7 @@ public class h
   
   public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

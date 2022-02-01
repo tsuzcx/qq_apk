@@ -4,20 +4,20 @@ import com.tencent.mm.plugin.sns.ui.bk;
 
 public final class b
 {
-  public String dAM;
-  public String dgg;
-  public long dze;
+  public String ddB;
+  public long dwQ;
+  public String dyy;
   public int position;
-  public bk wAe;
-  public long wAf = 0L;
+  public bk xMy;
+  public long xMz = 0L;
   
   public b(bk parambk, int paramInt, String paramString1, long paramLong, String paramString2)
   {
-    this.wAe = parambk;
+    this.xMy = parambk;
     this.position = paramInt;
-    this.dgg = paramString1;
-    this.dze = paramLong;
-    this.dAM = paramString2;
+    this.ddB = paramString1;
+    this.dwQ = paramLong;
+    this.dyy = paramString2;
   }
 }
 

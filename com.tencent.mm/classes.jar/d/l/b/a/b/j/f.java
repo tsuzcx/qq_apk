@@ -16,8 +16,8 @@ import java.util.Comparator;
 public class f
   implements Comparator<l>
 {
-  public static final f JRr;
-  private static final d.l.b.a.b.i.c JRs;
+  public static final f LEK;
+  private static final d.l.b.a.b.i.c LEL;
   
   static
   {
@@ -26,9 +26,9 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      JRr = new f();
-      c.a locala = d.l.b.a.b.i.c.JOQ;
-      JRs = c.a.z(new b() {});
+      LEK = new f();
+      c.a locala = d.l.b.a.b.i.c.LCk;
+      LEL = c.a.H(new b() {});
       AppMethodBeat.o(59953);
       return;
     }
@@ -37,12 +37,12 @@ public class f
   public static final class a
     implements Comparator<l>
   {
-    public static final a JRt;
+    public static final a LEM;
     
     static
     {
       AppMethodBeat.i(59951);
-      JRt = new a();
+      LEM = new a();
       AppMethodBeat.o(59951);
     }
     
@@ -61,7 +61,7 @@ public class f
       }
       if ((paraml instanceof ah))
       {
-        if (((ah)paraml).fyl() == null)
+        if (((ah)paraml).fQP() == null)
         {
           AppMethodBeat.o(59947);
           return 6;
@@ -71,7 +71,7 @@ public class f
       }
       if ((paraml instanceof t))
       {
-        if (((t)paraml).fyl() == null)
+        if (((t)paraml).fQP() == null)
         {
           AppMethodBeat.o(59947);
           return 4;
@@ -107,7 +107,7 @@ public class f
         AppMethodBeat.o(59948);
         return Integer.valueOf(0);
       }
-      i = paraml1.fyB().u(paraml2.fyB());
+      i = paraml1.fRf().u(paraml2.fRf());
       if (i != 0)
       {
         AppMethodBeat.o(59948);
@@ -120,7 +120,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f
  * JD-Core Version:    0.7.0.1
  */

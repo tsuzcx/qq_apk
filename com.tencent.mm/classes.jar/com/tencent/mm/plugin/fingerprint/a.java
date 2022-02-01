@@ -15,12 +15,12 @@ import java.util.HashMap;
 public class a
   implements aw
 {
-  private n raR;
-  private com.tencent.mm.plugin.fingerprint.b.i raS;
-  private j raT;
-  private b raU;
-  private com.tencent.mm.plugin.fingerprint.b.e raV;
-  private f raW;
+  private n sjl;
+  private com.tencent.mm.plugin.fingerprint.b.i sjm;
+  private j sjn;
+  private b sjo;
+  private com.tencent.mm.plugin.fingerprint.b.e sjp;
+  private f sjq;
   
   static
   {
@@ -32,12 +32,12 @@ public class a
   public a()
   {
     AppMethodBeat.i(64213);
-    this.raR = new n();
-    this.raS = new com.tencent.mm.plugin.fingerprint.b.i();
-    this.raT = new j();
-    this.raU = new b();
-    this.raV = new com.tencent.mm.plugin.fingerprint.b.e();
-    this.raW = new f();
+    this.sjl = new n();
+    this.sjm = new com.tencent.mm.plugin.fingerprint.b.i();
+    this.sjn = new j();
+    this.sjo = new b();
+    this.sjp = new com.tencent.mm.plugin.fingerprint.b.e();
+    this.sjq = new f();
     AppMethodBeat.o(64213);
   }
   
@@ -51,12 +51,12 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(64214);
-    com.tencent.mm.sdk.b.a.ESL.c(this.raR);
-    com.tencent.mm.sdk.b.a.ESL.c(this.raS);
-    com.tencent.mm.sdk.b.a.ESL.c(this.raT);
-    com.tencent.mm.sdk.b.a.ESL.c(this.raU);
-    com.tencent.mm.sdk.b.a.ESL.c(this.raV);
-    com.tencent.mm.sdk.b.a.ESL.c(this.raW);
+    com.tencent.mm.sdk.b.a.GpY.c(this.sjl);
+    com.tencent.mm.sdk.b.a.GpY.c(this.sjm);
+    com.tencent.mm.sdk.b.a.GpY.c(this.sjn);
+    com.tencent.mm.sdk.b.a.GpY.c(this.sjo);
+    com.tencent.mm.sdk.b.a.GpY.c(this.sjp);
+    com.tencent.mm.sdk.b.a.GpY.c(this.sjq);
     g.a(h.class, new com.tencent.mm.kernel.c.e(new q()));
     AppMethodBeat.o(64214);
   }
@@ -64,14 +64,14 @@ public class a
   public void onAccountRelease()
   {
     AppMethodBeat.i(64215);
-    com.tencent.mm.sdk.b.a.ESL.d(this.raR);
-    this.raS.release();
-    com.tencent.mm.sdk.b.a.ESL.d(this.raS);
-    com.tencent.mm.sdk.b.a.ESL.d(this.raT);
-    com.tencent.mm.sdk.b.a.ESL.d(this.raU);
-    com.tencent.mm.sdk.b.a.ESL.d(this.raV);
+    com.tencent.mm.sdk.b.a.GpY.d(this.sjl);
+    this.sjm.release();
+    com.tencent.mm.sdk.b.a.GpY.d(this.sjm);
+    com.tencent.mm.sdk.b.a.GpY.d(this.sjn);
+    com.tencent.mm.sdk.b.a.GpY.d(this.sjo);
+    com.tencent.mm.sdk.b.a.GpY.d(this.sjp);
     ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cancel();
-    com.tencent.mm.sdk.b.a.ESL.d(this.raW);
+    com.tencent.mm.sdk.b.a.GpY.d(this.sjq);
     g.ac(h.class);
     AppMethodBeat.o(64215);
   }

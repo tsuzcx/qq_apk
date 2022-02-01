@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.xd;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.xo;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.Date;
 
 public final class z
-  extends c<xd>
-  implements com.tencent.mm.al.g
+  extends c<xo>
+  implements com.tencent.mm.ak.g
 {
-  private xd AhD;
-  private String AhE;
+  private xo BzX;
+  private String BzY;
   
   public z()
   {
     AppMethodBeat.i(160876);
-    this.AhE = null;
-    this.__eventId = xd.class.getName().hashCode();
+    this.BzY = null;
+    this.__eventId = xo.class.getName().hashCode();
     AppMethodBeat.o(160876);
   }
   
-  private void ecm()
+  private void erI()
   {
     AppMethodBeat.i(70419);
-    com.tencent.mm.plugin.wallet_core.d.e locale = s.ecg();
+    com.tencent.mm.plugin.wallet_core.d.e locale = s.erC();
     x localx = new x();
-    localx.field_bulletin_scene = this.AhE;
+    localx.field_bulletin_scene = this.BzY;
     if (!locale.get(localx, new String[0])) {
-      ad.i("MicroMsg.WalletGetBulletinEventListener", "not bulletin data ");
+      ac.i("MicroMsg.WalletGetBulletinEventListener", "not bulletin data ");
     }
     for (;;)
     {
-      this.AhD.callback.run();
-      this.AhD = null;
+      this.BzX.callback.run();
+      this.BzX = null;
       AppMethodBeat.o(70419);
       return;
-      this.AhD.dCD.dCE = localx.field_bulletin_scene;
-      this.AhD.dCD.content = localx.field_bulletin_content;
-      this.AhD.dCD.url = localx.field_bulletin_url;
+      this.BzX.dAp.dAq = localx.field_bulletin_scene;
+      this.BzX.dAp.content = localx.field_bulletin_content;
+      this.BzX.dAp.url = localx.field_bulletin_url;
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(70420);
-    ad.i("MicroMsg.WalletGetBulletinEventListener", "NetSceneGetBannerInfo resp,errType = " + paramInt1 + ";errCode=" + paramInt2);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(385, this);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afB().afk().set(ae.a.FjX, Long.valueOf(new Date().getTime()));
-    ecm();
+    ac.i("MicroMsg.WalletGetBulletinEventListener", "NetSceneGetBannerInfo resp,errType = " + paramInt1 + ";errCode=" + paramInt2);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(385, this);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GHM, Long.valueOf(new Date().getTime()));
+    erI();
     AppMethodBeat.o(70420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.z
  * JD-Core Version:    0.7.0.1
  */

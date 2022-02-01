@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wenote.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mt;
-import com.tencent.mm.g.a.mt.a;
+import com.tencent.mm.g.a.nc;
+import com.tencent.mm.g.a.nc.a;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.p;
 import com.tencent.mm.plugin.wenote.model.a.m;
@@ -11,10 +11,10 @@ import com.tencent.mm.plugin.wenote.model.a.v;
 import com.tencent.mm.plugin.wenote.model.a.w;
 import com.tencent.mm.plugin.wenote.model.e;
 import com.tencent.mm.plugin.wenote.model.f;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ public final class c
   {
     int i = 0;
     AppMethodBeat.i(30263);
-    com.tencent.mm.plugin.wenote.model.d locald = com.tencent.mm.plugin.wenote.model.c.esw().BCA;
+    com.tencent.mm.plugin.wenote.model.d locald = com.tencent.mm.plugin.wenote.model.c.eHP().CUG;
     if (locald == null)
     {
       AppMethodBeat.o(30263);
@@ -37,70 +37,70 @@ public final class c
     Object localObject2;
     if (parame.isFinished())
     {
-      if (!com.tencent.mm.vfs.i.eK(parame.field_path))
+      if (!com.tencent.mm.vfs.i.eA(parame.field_path))
       {
         AppMethodBeat.o(30263);
         return;
       }
-      str = (String)locald.BCG.get(parame.field_dataId);
-      if (!bt.isNullOrNil(str))
+      str = (String)locald.CUM.get(parame.field_dataId);
+      if (!bs.isNullOrNil(str))
       {
-        ad.d("MicroMsg.Note.WNNoteFavCdnChangedListener", "on cdn status change,editorId[%s]", new Object[] { str });
-        if ((parame.field_dataId.endsWith("_t")) && (locald.BCH.get(str) != null))
+        ac.d("MicroMsg.Note.WNNoteFavCdnChangedListener", "on cdn status change,editorId[%s]", new Object[] { str });
+        if ((parame.field_dataId.endsWith("_t")) && (locald.CUN.get(str) != null))
         {
-          if (((o)locald.BCH.get(str)).getType() == 2) {
-            ((o)locald.BCH.get(str)).drZ = parame.field_path;
+          if (((o)locald.CUN.get(str)).getType() == 2) {
+            ((o)locald.CUN.get(str)).dpK = parame.field_path;
           }
-          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().a(str, (com.tencent.mm.plugin.wenote.model.a.c)locald.BCH.get(str));
-          locald.BCG.remove(parame.field_dataId);
+          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().a(str, (com.tencent.mm.plugin.wenote.model.a.c)locald.CUN.get(str));
+          locald.CUM.remove(parame.field_dataId);
           AppMethodBeat.o(30263);
           return;
         }
         if (str.equals("WeNoteHtmlFile")) {
           break label790;
         }
-        if (locald.BCG.containsValue("WeNoteHtmlFile")) {
+        if (locald.CUM.containsValue("WeNoteHtmlFile")) {
           break label523;
         }
-        localObject1 = new mt();
-        ((mt)localObject1).drX.drN = str;
-        ((mt)localObject1).drX.drZ = parame.field_path;
-        ((mt)localObject1).drX.type = 1;
-        ((mt)localObject1).drX.drT = ((o)locald.BCH.get(str)).type;
-        if (((mt)localObject1).drX.drT != 4)
+        localObject1 = new nc();
+        ((nc)localObject1).dpI.dpy = str;
+        ((nc)localObject1).dpI.dpK = parame.field_path;
+        ((nc)localObject1).dpI.type = 1;
+        ((nc)localObject1).dpI.dpE = ((o)locald.CUN.get(str)).type;
+        if (((nc)localObject1).dpI.dpE != 4)
         {
-          localObject2 = (o)locald.BCH.get(str);
-          if (((mt)localObject1).drX.drT == 2) {
+          localObject2 = (o)locald.CUN.get(str);
+          if (((nc)localObject1).dpI.dpE == 2) {
             break label350;
           }
-          ((o)localObject2).drZ = parame.field_path;
+          ((o)localObject2).dpK = parame.field_path;
         }
         for (;;)
         {
-          ((o)localObject2).omJ = true;
-          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().a(str, (com.tencent.mm.plugin.wenote.model.a.c)localObject2);
-          if (5 != ((mt)localObject1).drX.drT) {
+          ((o)localObject2).oQj = true;
+          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().a(str, (com.tencent.mm.plugin.wenote.model.a.c)localObject2);
+          if (5 != ((nc)localObject1).dpI.dpE) {
             break;
           }
           AppMethodBeat.o(30263);
           return;
           label350:
-          com.tencent.mm.plugin.wenote.c.c.eS(parame.field_path, ((o)localObject2).drZ);
+          com.tencent.mm.plugin.wenote.c.c.ff(parame.field_path, ((o)localObject2).dpK);
         }
-        if (((mt)localObject1).drX.drT == 4)
+        if (((nc)localObject1).dpI.dpE == 4)
         {
-          localObject2 = locald.azm(parame.field_dataId);
+          localObject2 = locald.aED(parame.field_dataId);
           if (localObject2 != null) {
             break label514;
           }
-          ad.e("MicroMsg.Note.WNNoteFavCdnChangedListener", "favData is null");
+          ac.e("MicroMsg.Note.WNNoteFavCdnChangedListener", "favData is null");
           i = 0;
-          ((mt)localObject1).drX.dkk = i;
-          ((o)locald.BCH.get(str)).drZ = parame.field_path;
-          ((o)locald.BCH.get(str)).omJ = true;
-          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().a(str, (com.tencent.mm.plugin.wenote.model.a.c)locald.BCH.get(str));
+          ((nc)localObject1).dpI.dhF = i;
+          ((o)locald.CUN.get(str)).dpK = parame.field_path;
+          ((o)locald.CUN.get(str)).oQj = true;
+          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().a(str, (com.tencent.mm.plugin.wenote.model.a.c)locald.CUN.get(str));
         }
-        ad.i("MicroMsg.Note.WNNoteFavCdnChangedListener", "WNNote: publish insertevnet:%s,%s", new Object[] { ((mt)localObject1).drX.drN, ((mt)localObject1).drX.drZ });
+        ac.i("MicroMsg.Note.WNNoteFavCdnChangedListener", "WNNote: publish insertevnet:%s,%s", new Object[] { ((nc)localObject1).dpI.dpy, ((nc)localObject1).dpI.dpK });
         label494:
         break label609;
       }
@@ -110,67 +110,67 @@ public final class c
     label691:
     for (;;)
     {
-      locald.BCG.remove(parame.field_dataId);
+      locald.CUM.remove(parame.field_dataId);
       AppMethodBeat.o(30263);
       return;
-      i = ((afy)localObject2).duration;
+      i = ((agx)localObject2).duration;
       break;
-      if (locald.BCD.dsa == -1L) {}
-      for (localObject1 = (w)locald.BCF.get(Long.toString(locald.BCD.msgId)); (localObject1 == null) || (((w)localObject1).omP == null); localObject1 = (w)locald.BCF.get(Long.toString(locald.BCD.dsa)))
+      if (locald.CUJ.dpL == -1L) {}
+      for (localObject1 = (w)locald.CUL.get(Long.toString(locald.CUJ.msgId)); (localObject1 == null) || (((w)localObject1).oQp == null); localObject1 = (w)locald.CUL.get(Long.toString(locald.CUJ.dpL)))
       {
         AppMethodBeat.o(30263);
         return;
       }
-      localObject2 = ((w)localObject1).omP.iterator();
+      localObject2 = ((w)localObject1).oQp.iterator();
       label609:
       if (((Iterator)localObject2).hasNext())
       {
         localObject1 = (o)((Iterator)localObject2).next();
-        if (!((o)localObject1).omI.equals(str)) {
+        if (!((o)localObject1).oQi.equals(str)) {
           break label494;
         }
-        ((o)localObject1).omJ = true;
-        afy localafy;
+        ((o)localObject1).oQj = true;
+        agx localagx;
         if (((o)localObject1).type == 4)
         {
           localObject2 = (v)localObject1;
-          ((v)localObject2).jUR = com.tencent.mm.plugin.wenote.model.d.oma;
-          localafy = locald.azm(parame.field_dataId);
-          if (localafy == null)
+          ((v)localObject2).kvC = com.tencent.mm.plugin.wenote.model.d.oPA;
+          localagx = locald.aED(parame.field_dataId);
+          if (localagx == null)
           {
-            ad.e("MicroMsg.Note.WNNoteFavCdnChangedListener", "favData is null");
-            ((v)localObject2).length = ((int)f.mI(i));
-            ((v)localObject2).omM = f.N(aj.getContext(), ((v)localObject2).length);
-            ((v)localObject2).dkk = i;
+            ac.e("MicroMsg.Note.WNNoteFavCdnChangedListener", "favData is null");
+            ((v)localObject2).length = ((int)f.qw(i));
+            ((v)localObject2).oQm = f.R(ai.getContext(), ((v)localObject2).length);
+            ((v)localObject2).dhF = i;
           }
         }
         for (;;)
         {
-          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().a(str, (com.tencent.mm.plugin.wenote.model.a.c)localObject1);
+          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().a(str, (com.tencent.mm.plugin.wenote.model.a.c)localObject1);
           break;
-          i = localafy.duration;
+          i = localagx.duration;
           break label691;
           if (((o)localObject1).getType() == 2) {
-            com.tencent.mm.plugin.wenote.c.c.eS(parame.field_path, ((o)locald.BCH.get(str)).drZ);
+            com.tencent.mm.plugin.wenote.c.c.ff(parame.field_path, ((o)locald.CUN.get(str)).dpK);
           } else {
-            ((o)localObject1).drZ = parame.field_path;
+            ((o)localObject1).dpK = parame.field_path;
           }
         }
-        ad.d("MicroMsg.Note.WNNoteFavCdnChangedListener", "WNNote:webview reload");
-        if (locald.BCD.dsa == -1L) {}
-        for (localObject1 = (w)locald.BCF.get(Long.toString(locald.BCD.msgId)); localObject1 == null; localObject1 = (w)locald.BCF.get(Long.toString(locald.BCD.dsa)))
+        ac.d("MicroMsg.Note.WNNoteFavCdnChangedListener", "WNNote:webview reload");
+        if (locald.CUJ.dpL == -1L) {}
+        for (localObject1 = (w)locald.CUL.get(Long.toString(locald.CUJ.msgId)); localObject1 == null; localObject1 = (w)locald.CUL.get(Long.toString(locald.CUJ.dpL)))
         {
           AppMethodBeat.o(30263);
           return;
         }
         try
         {
-          ((w)localObject1).omO = com.tencent.mm.vfs.i.aMP(parame.field_path);
-          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().azr(((w)localObject1).omO);
+          ((w)localObject1).oQo = com.tencent.mm.vfs.i.aSr(parame.field_path);
+          com.tencent.mm.plugin.wenote.model.nativenote.manager.c.eIb().aEI(((w)localObject1).oQo);
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.Note.WNNoteFavCdnChangedListener", localException, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.Note.WNNoteFavCdnChangedListener", localException, "", new Object[0]);
         }
       }
     }
@@ -193,29 +193,29 @@ public final class c
   public final void e(com.tencent.mm.plugin.fav.a.c paramc)
   {
     AppMethodBeat.i(30261);
-    Object localObject = f.rP(paramc.field_favLocalId);
+    Object localObject = f.ws(paramc.field_favLocalId);
     if (localObject == null)
     {
-      localObject = com.tencent.mm.plugin.wenote.model.c.esw().BCA;
-      if ((localObject == null) || (((com.tencent.mm.plugin.wenote.model.d)localObject).BCD == null))
+      localObject = com.tencent.mm.plugin.wenote.model.c.eHP().CUG;
+      if ((localObject == null) || (((com.tencent.mm.plugin.wenote.model.d)localObject).CUJ == null))
       {
         AppMethodBeat.o(30261);
         return;
       }
-      if (paramc.field_favLocalId != ((com.tencent.mm.plugin.wenote.model.d)localObject).BCD.dsa)
+      if (paramc.field_favLocalId != ((com.tencent.mm.plugin.wenote.model.d)localObject).CUJ.dpL)
       {
-        ad.i("MicroMsg.Note.WNNoteFavCdnChangedListener", "info null and not match localId:%s, %s", new Object[] { Long.valueOf(paramc.field_favLocalId), Long.valueOf(((com.tencent.mm.plugin.wenote.model.d)localObject).BCD.dsa) });
+        ac.i("MicroMsg.Note.WNNoteFavCdnChangedListener", "info null and not match localId:%s, %s", new Object[] { Long.valueOf(paramc.field_favLocalId), Long.valueOf(((com.tencent.mm.plugin.wenote.model.d)localObject).CUJ.dpL) });
         AppMethodBeat.o(30261);
       }
     }
     else if (((g)localObject).field_type != 18)
     {
-      ad.i("MicroMsg.Note.WNNoteFavCdnChangedListener", "Not Note CDN onCdnStatusChanged %d", new Object[] { Long.valueOf(paramc.field_favLocalId) });
+      ac.i("MicroMsg.Note.WNNoteFavCdnChangedListener", "Not Note CDN onCdnStatusChanged %d", new Object[] { Long.valueOf(paramc.field_favLocalId) });
       AppMethodBeat.o(30261);
       return;
     }
-    if ((paramc.field_status == 3) && (com.tencent.mm.vfs.i.eK(paramc.field_path)) && (paramc.field_path.endsWith("..htm"))) {
-      f.F(paramc.field_favLocalId, paramc.field_path);
+    if ((paramc.field_status == 3) && (com.tencent.mm.vfs.i.eA(paramc.field_path)) && (paramc.field_path.endsWith("..htm"))) {
+      f.D(paramc.field_favLocalId, paramc.field_path);
     }
     localObject = new e();
     ((e)localObject).field_favLocalId = paramc.field_favLocalId;
@@ -230,7 +230,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.a.c
  * JD-Core Version:    0.7.0.1
  */

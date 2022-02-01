@@ -20,7 +20,7 @@ public class Plugin
   public aw createSubCore()
   {
     AppMethodBeat.i(22760);
-    com.tencent.mm.plugin.clean.c.d locald = com.tencent.mm.plugin.clean.c.d.bNS();
+    com.tencent.mm.plugin.clean.c.d locald = com.tencent.mm.plugin.clean.c.d.bVd();
     AppMethodBeat.o(22760);
     return locald;
   }
@@ -32,7 +32,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.Plugin
  * JD-Core Version:    0.7.0.1
  */

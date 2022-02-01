@@ -16,7 +16,7 @@ import org.b.b.b;
 public final class c
 {
   private static String CHARSET;
-  private static final Map<String, String> KnZ;
+  private static final Map<String, String> MbI;
   
   static
   {
@@ -26,7 +26,7 @@ public final class c
     localHashMap.put("*", "%2A");
     localHashMap.put("+", "%20");
     localHashMap.put("%7E", "~");
-    KnZ = Collections.unmodifiableMap(localHashMap);
+    MbI = Collections.unmodifiableMap(localHashMap);
     AppMethodBeat.o(40580);
   }
   
@@ -58,7 +58,7 @@ public final class c
       try
       {
         paramString = URLEncoder.encode(paramString, CHARSET);
-        localIterator = KnZ.entrySet().iterator();
+        localIterator = MbI.entrySet().iterator();
         if (!localIterator.hasNext())
         {
           AppMethodBeat.o(40581);
@@ -80,7 +80,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.g.c
  * JD-Core Version:    0.7.0.1
  */

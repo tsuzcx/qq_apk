@@ -7,18 +7,18 @@ import d.l.b.a.b.h.j.b;
 public enum a$j
   implements j.a
 {
-  private static j.b<j> JGr;
+  private static j.b<j> LtK;
   private final int value;
   
   static
   {
     AppMethodBeat.i(58626);
-    JHK = new j("FINAL", 0, 0);
-    JHL = new j("OPEN", 1, 1);
-    JHM = new j("ABSTRACT", 2, 2);
-    JHN = new j("SEALED", 3, 3);
-    JHO = new j[] { JHK, JHL, JHM, JHN };
-    JGr = new j.b() {};
+    Lvd = new j("FINAL", 0, 0);
+    Lve = new j("OPEN", 1, 1);
+    Lvf = new j("ABSTRACT", 2, 2);
+    Lvg = new j("SEALED", 3, 3);
+    Lvh = new j[] { Lvd, Lve, Lvf, Lvg };
+    LtK = new j.b() {};
     AppMethodBeat.o(58626);
   }
   
@@ -27,20 +27,20 @@ public enum a$j
     this.value = paramInt1;
   }
   
-  public static j aex(int paramInt)
+  public static j aht(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return JHK;
+      return Lvd;
     case 1: 
-      return JHL;
+      return Lve;
     case 2: 
-      return JHM;
+      return Lvf;
     }
-    return JHN;
+    return Lvg;
   }
   
   public final int getNumber()
@@ -50,7 +50,7 @@ public enum a$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.a.j
  * JD-Core Version:    0.7.0.1
  */

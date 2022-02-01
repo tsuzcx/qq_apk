@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.performance;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a;
+import com.tencent.mm.cj.a;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.aa;
 
 final class b$1
   implements a
 {
-  public final boolean aac(String paramString)
+  public final boolean api(String paramString)
   {
     AppMethodBeat.i(124908);
-    boolean bool = aa.a(paramString, u.aqG(), true, false);
+    boolean bool = aa.a(paramString, u.axw(), true, false);
     AppMethodBeat.o(124908);
     return bool;
   }

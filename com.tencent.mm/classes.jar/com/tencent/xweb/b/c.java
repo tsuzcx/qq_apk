@@ -6,7 +6,7 @@ import java.io.File;
 public final class c
   implements f
 {
-  public final d aPk(String paramString)
+  public final d aVd(String paramString)
   {
     AppMethodBeat.i(183509);
     paramString = new a(new File(paramString));
@@ -14,7 +14,7 @@ public final class c
     return paramString;
   }
   
-  public final d ab(File paramFile)
+  public final d af(File paramFile)
   {
     AppMethodBeat.i(183510);
     paramFile = new a(paramFile);
@@ -22,7 +22,7 @@ public final class c
     return paramFile;
   }
   
-  public final e frC()
+  public final e fKe()
   {
     AppMethodBeat.i(183511);
     b localb = new b();

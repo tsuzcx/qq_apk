@@ -13,24 +13,24 @@ import java.security.MessageDigest;
 public final class j
   implements m<Drawable>
 {
-  private final m<Bitmap> aIN;
-  private final boolean aIO;
+  private final m<Bitmap> aJD;
+  private final boolean aJE;
   
   public j(m<Bitmap> paramm)
   {
-    this.aIN = paramm;
-    this.aIO = true;
+    this.aJD = paramm;
+    this.aJE = true;
   }
   
   public final u<Drawable> a(Context paramContext, u<Drawable> paramu, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(77404);
-    Object localObject2 = c.ac(paramContext).azz;
+    Object localObject2 = c.ad(paramContext).aAt;
     Object localObject1 = (Drawable)paramu.get();
     localObject2 = i.a((e)localObject2, (Drawable)localObject1, paramInt1, paramInt2);
     if (localObject2 == null)
     {
-      if (this.aIO)
+      if (this.aJE)
       {
         paramContext = new IllegalArgumentException("Unable to convert " + localObject1 + " to a Bitmap");
         AppMethodBeat.o(77404);
@@ -39,7 +39,7 @@ public final class j
       AppMethodBeat.o(77404);
       return paramu;
     }
-    localObject1 = this.aIN.a(paramContext, (u)localObject2, paramInt1, paramInt2);
+    localObject1 = this.aJD.a(paramContext, (u)localObject2, paramInt1, paramInt2);
     if (localObject1.equals(localObject2))
     {
       ((u)localObject1).recycle();
@@ -54,7 +54,7 @@ public final class j
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77407);
-    this.aIN.a(paramMessageDigest);
+    this.aJD.a(paramMessageDigest);
     AppMethodBeat.o(77407);
   }
   
@@ -64,7 +64,7 @@ public final class j
     if ((paramObject instanceof j))
     {
       paramObject = (j)paramObject;
-      boolean bool = this.aIN.equals(paramObject.aIN);
+      boolean bool = this.aJD.equals(paramObject.aJD);
       AppMethodBeat.o(77405);
       return bool;
     }
@@ -75,14 +75,14 @@ public final class j
   public final int hashCode()
   {
     AppMethodBeat.i(77406);
-    int i = this.aIN.hashCode();
+    int i = this.aJD.hashCode();
     AppMethodBeat.o(77406);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.j
  * JD-Core Version:    0.7.0.1
  */

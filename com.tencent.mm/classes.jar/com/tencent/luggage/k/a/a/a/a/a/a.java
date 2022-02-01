@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 public abstract interface a
 {
-  public abstract b Fi();
+  public abstract b EQ();
   
-  public abstract c Fj();
+  public abstract c ER();
   
   public abstract void a(com.tencent.luggage.k.a.a parama, Bitmap paramBitmap);
   
@@ -17,19 +17,19 @@ public abstract interface a
   
   public abstract void b(com.tencent.luggage.k.a.a.a.a.a parama);
   
-  public abstract void gT(int paramInt);
+  public abstract void gD(int paramInt);
+  
+  public abstract boolean j(com.tencent.luggage.k.a.a parama);
   
   public abstract boolean k(com.tencent.luggage.k.a.a parama);
   
-  public abstract boolean l(com.tencent.luggage.k.a.a parama);
+  public abstract void l(com.tencent.luggage.k.a.a parama);
   
   public abstract void m(com.tencent.luggage.k.a.a parama);
-  
-  public abstract void n(com.tencent.luggage.k.a.a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

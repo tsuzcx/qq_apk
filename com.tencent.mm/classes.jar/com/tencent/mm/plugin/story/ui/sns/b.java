@@ -17,20 +17,20 @@ import d.l;
 import d.v;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/sns/StoryBigMouthGuideDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "onOkBtnClick", "Lkotlin/Function0;", "", "getOnOkBtnClick", "()Lkotlin/jvm/functions/Function0;", "setOnOkBtnClick", "(Lkotlin/jvm/functions/Function0;)V", "targetView", "Landroid/view/View;", "cancel", "isLandscape", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "setContentView", "view", "setTranslucentStatus", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/sns/StoryBigMouthGuideDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "onOkBtnClick", "Lkotlin/Function0;", "", "getOnOkBtnClick", "()Lkotlin/jvm/functions/Function0;", "setOnOkBtnClick", "(Lkotlin/jvm/functions/Function0;)V", "targetView", "Landroid/view/View;", "cancel", "isLandscape", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "setContentView", "view", "setTranslucentStatus", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-story_release"})
 public final class b
   extends e
 {
   private static final String TAG = "MicroMsg.StoryBigMouthGuideDialog";
-  public static final a ysI;
+  public static final a zGf;
   private Context mContext;
   private View targetView;
-  public d.g.a.a<y> ysH;
+  public d.g.a.a<y> zGe;
   
   static
   {
     AppMethodBeat.i(119949);
-    ysI = new a((byte)0);
+    zGf = new a((byte)0);
     TAG = "MicroMsg.StoryBigMouthGuideDialog";
     AppMethodBeat.o(119949);
   }
@@ -40,7 +40,7 @@ public final class b
     super(paramContext, 2131820861);
     AppMethodBeat.i(119948);
     this.mContext = paramContext;
-    gl();
+    gt();
     AppMethodBeat.o(119948);
   }
   
@@ -89,17 +89,17 @@ public final class b
     AppMethodBeat.i(119946);
     k.h(paramView, "view");
     getWindow();
-    paramView.findViewById(2131305271).setOnClickListener((View.OnClickListener)new b.c(this));
-    paramView.findViewById(2131305273).setOnClickListener((View.OnClickListener)new b.d(this));
+    paramView.findViewById(2131305271).setOnClickListener((View.OnClickListener)new c(this));
+    paramView.findViewById(2131305273).setOnClickListener((View.OnClickListener)new d(this));
     RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131305270);
     if (localRelativeLayout != null) {
-      localRelativeLayout.setTranslationY(ap.cf(getContext()).y);
+      localRelativeLayout.setTranslationY(ap.cl(getContext()).y);
     }
     super.setContentView(paramView);
     this.targetView = paramView;
     paramView = getWindow();
     if (paramView == null) {
-      k.fvU();
+      k.fOy();
     }
     paramView.setLayout(-1, -1);
     if (getWindow() != null)
@@ -127,10 +127,10 @@ public final class b
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/sns/StoryBigMouthGuideDialog$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/sns/StoryBigMouthGuideDialog$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
   public static final class a {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -139,7 +139,7 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(119941);
-      ViewPropertyAnimator localViewPropertyAnimator = this.ysJ.animate();
+      ViewPropertyAnimator localViewPropertyAnimator = this.zGg.animate();
       if (localViewPropertyAnimator != null)
       {
         localViewPropertyAnimator = localViewPropertyAnimator.translationY(0.0F);
@@ -153,10 +153,46 @@ public final class b
       AppMethodBeat.o(119941);
     }
   }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class c
+    implements View.OnClickListener
+  {
+    c(b paramb) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119942);
+      if (this.zGh.isShowing()) {
+        this.zGh.cancel();
+      }
+      AppMethodBeat.o(119942);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class d
+    implements View.OnClickListener
+  {
+    d(b paramb) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119943);
+      paramView = this.zGh.zGe;
+      if (paramView != null)
+      {
+        paramView.invoke();
+        AppMethodBeat.o(119943);
+        return;
+      }
+      AppMethodBeat.o(119943);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.sns.b
  * JD-Core Version:    0.7.0.1
  */

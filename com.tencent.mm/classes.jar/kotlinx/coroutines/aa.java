@@ -1,55 +1,108 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a;
+import d.d.e;
 import d.d.f;
 import d.d.f.c;
 import d.l;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlinx.coroutines.b.c;
+import kotlinx.coroutines.internal.u;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"COROUTINES_SCHEDULER_PROPERTY_NAME", "", "DEBUG_THREAD_NAME_SEPARATOR", "useCoroutinesScheduler", "", "getUseCoroutinesScheduler", "()Z", "coroutineName", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineName", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/String;", "createDefaultDispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "withCoroutineContext", "T", "context", "countOrElement", "", "block", "Lkotlin/Function0;", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "newCoroutineContext", "Lkotlinx/coroutines/CoroutineScope;", "kotlinx-coroutines-core"})
 public final class aa
 {
-  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
+  private static final boolean LQU;
+  
+  static
   {
-    AppMethodBeat.i(118053);
-    if (paramThrowable1 == paramThrowable2)
+    AppMethodBeat.i(118187);
+    Object localObject = u.aXg("kotlinx.coroutines.scheduler");
+    if (localObject == null) {}
+    for (;;)
     {
-      AppMethodBeat.o(118053);
-      return paramThrowable1;
+      boolean bool = true;
+      label17:
+      LQU = bool;
+      AppMethodBeat.o(118187);
+      return;
+      switch (((String)localObject).hashCode())
+      {
+      }
+      do
+      {
+        do
+        {
+          do
+          {
+            localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.scheduler' has unrecognized value '" + (String)localObject + '\'').toString());
+            AppMethodBeat.o(118187);
+            throw ((Throwable)localObject);
+          } while (!((String)localObject).equals(""));
+          break;
+        } while (!((String)localObject).equals("off"));
+        bool = false;
+        break label17;
+      } while (!((String)localObject).equals("on"));
     }
-    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
-    a.a((Throwable)paramThrowable2, paramThrowable1);
-    paramThrowable1 = (Throwable)paramThrowable2;
-    AppMethodBeat.o(118053);
-    return paramThrowable1;
   }
   
-  public static final void b(f paramf, Throwable paramThrowable)
+  public static final f a(ag paramag, f paramf)
   {
-    AppMethodBeat.i(189994);
-    try
+    AppMethodBeat.i(118185);
+    paramf = paramag.gde().plus(paramf);
+    if (al.getDEBUG()) {}
+    for (paramag = paramf.plus((f)new ae(al.gdF().incrementAndGet())); (paramf != ay.gdN()) && (paramf.get((f.c)e.KTW) == null); paramag = paramf)
     {
-      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.Kdv);
-      if (localCoroutineExceptionHandler != null)
-      {
-        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
-        AppMethodBeat.o(189994);
-        return;
-      }
+      paramag = paramag.plus((f)ay.gdN());
+      AppMethodBeat.o(118185);
+      return paramag;
     }
-    catch (Throwable localThrowable)
+    AppMethodBeat.o(118185);
+    return paramag;
+  }
+  
+  public static final String a(f paramf)
+  {
+    AppMethodBeat.i(118186);
+    if (!al.getDEBUG())
     {
-      z.a(paramf, b(paramThrowable, localThrowable));
-      AppMethodBeat.o(189994);
-      return;
+      AppMethodBeat.o(118186);
+      return null;
     }
-    z.a(paramf, paramThrowable);
-    AppMethodBeat.o(189994);
+    ae localae = (ae)paramf.get((f.c)ae.LRa);
+    if (localae == null)
+    {
+      AppMethodBeat.o(118186);
+      return null;
+    }
+    paramf = (af)paramf.get((f.c)af.LRb);
+    if (paramf != null)
+    {
+      String str = paramf.name;
+      paramf = str;
+      if (str != null) {}
+    }
+    else
+    {
+      paramf = "coroutine";
+    }
+    paramf = paramf + '#' + localae.id;
+    AppMethodBeat.o(118186);
+    return paramf;
+  }
+  
+  public static final ab gdA()
+  {
+    if (LQU) {
+      return (ab)c.LTU;
+    }
+    return (ab)s.LQP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.aa
  * JD-Core Version:    0.7.0.1
  */

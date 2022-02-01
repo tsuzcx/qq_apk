@@ -2,35 +2,36 @@ package io.flutter.embedding.engine.dart;
 
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.a.a.c;
-import io.flutter.a.a.c.a;
-import io.flutter.a.a.c.b;
-import io.flutter.a.a.p;
 import io.flutter.embedding.engine.FlutterJNI;
+import io.flutter.plugin.a.c;
+import io.flutter.plugin.a.c.a;
+import io.flutter.plugin.a.c.b;
+import io.flutter.plugin.a.p;
 import java.nio.ByteBuffer;
 
 public class DartExecutor
   implements c
 {
-  private final a IYP;
-  public boolean IYQ;
-  public String IYR;
-  private b IYS;
-  private final c.a IYT;
-  private final FlutterJNI IYd;
-  private final AssetManager aCD;
+  private final a KLT;
+  public final c KLU;
+  public boolean KLV;
+  public String KLW;
+  private c KLX;
+  private final c.a KLY;
+  private final FlutterJNI KLj;
+  private final AssetManager aDu;
   
   public DartExecutor(FlutterJNI paramFlutterJNI, AssetManager paramAssetManager)
   {
     AppMethodBeat.i(10198);
-    this.IYQ = false;
-    this.IYT = new c.a()
+    this.KLV = false;
+    this.KLY = new c.a()
     {
       public final void a(ByteBuffer paramAnonymousByteBuffer, c.b paramAnonymousb)
       {
         AppMethodBeat.i(10205);
         paramAnonymousb = DartExecutor.this;
-        p localp = p.JbB;
+        p localp = p.KPf;
         DartExecutor.a(paramAnonymousb, p.O(paramAnonymousByteBuffer));
         if (DartExecutor.a(DartExecutor.this) != null)
         {
@@ -40,134 +41,112 @@ public class DartExecutor
         AppMethodBeat.o(10205);
       }
     };
-    this.IYd = paramFlutterJNI;
-    this.aCD = paramAssetManager;
-    this.IYP = new a(paramFlutterJNI);
-    this.IYP.a("flutter/isolate", this.IYT);
+    this.KLj = paramFlutterJNI;
+    this.aDu = paramAssetManager;
+    this.KLT = new a(paramFlutterJNI);
+    this.KLT.a("flutter/isolate", this.KLY);
+    this.KLU = new b(this.KLT, (byte)0);
     AppMethodBeat.o(10198);
   }
   
-  public final void a(a parama)
+  public final void a(DartExecutor.a parama)
   {
     AppMethodBeat.i(10201);
-    if (this.IYQ)
+    if (this.KLV)
     {
-      io.flutter.a.ftU();
+      io.flutter.a.fMG();
       AppMethodBeat.o(10201);
       return;
     }
     new StringBuilder("Executing Dart entrypoint: ").append(parama);
-    io.flutter.a.ftS();
-    this.IYd.runBundleAndSnapshotFromLibrary(parama.IYV, parama.IYW, null, this.aCD);
-    this.IYQ = true;
+    io.flutter.a.fMD();
+    this.KLj.runBundleAndSnapshotFromLibrary(parama.KMa, parama.KMb, null, this.aDu);
+    this.KLV = true;
     AppMethodBeat.o(10201);
   }
   
+  @Deprecated
   public final void a(String paramString, c.a parama)
   {
     AppMethodBeat.i(10204);
-    this.IYP.a(paramString, parama);
+    this.KLU.a(paramString, parama);
     AppMethodBeat.o(10204);
   }
   
+  @Deprecated
   public final void a(String paramString, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(10202);
-    this.IYP.a(paramString, paramByteBuffer, null);
+    this.KLU.a(paramString, paramByteBuffer);
     AppMethodBeat.o(10202);
   }
   
+  @Deprecated
   public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
   {
     AppMethodBeat.i(10203);
-    this.IYP.a(paramString, paramByteBuffer, paramb);
+    this.KLU.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(10203);
   }
   
-  public final boolean fuQ()
+  public final boolean fNq()
   {
-    return this.IYQ;
+    return this.KLV;
   }
   
   public void onAttachedToJNI()
   {
     AppMethodBeat.i(10199);
-    io.flutter.a.ftS();
-    this.IYd.setPlatformMessageHandler(this.IYP);
+    io.flutter.a.fMD();
+    this.KLj.setPlatformMessageHandler(this.KLT);
     AppMethodBeat.o(10199);
   }
   
   public void onDetachedFromJNI()
   {
     AppMethodBeat.i(10200);
-    io.flutter.a.ftS();
-    this.IYd.setPlatformMessageHandler(null);
+    io.flutter.a.fMD();
+    this.KLj.setPlatformMessageHandler(null);
     AppMethodBeat.o(10200);
   }
   
-  public static final class a
+  static final class b
+    implements c
   {
-    public final String IYV;
-    public final String IYW;
+    private final a KMc;
     
-    public a(String paramString1, String paramString2)
+    private b(a parama)
     {
-      this.IYV = paramString1;
-      this.IYW = paramString2;
+      this.KMc = parama;
     }
     
-    public a(String paramString1, String paramString2, byte paramByte)
+    public final void a(String paramString, c.a parama)
     {
-      this(paramString1, paramString2);
+      AppMethodBeat.i(192810);
+      this.KMc.a(paramString, parama);
+      AppMethodBeat.o(192810);
     }
     
-    public final boolean equals(Object paramObject)
+    public final void a(String paramString, ByteBuffer paramByteBuffer)
     {
-      AppMethodBeat.i(10213);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(10213);
-        return true;
-      }
-      if ((paramObject == null) || (getClass() != paramObject.getClass()))
-      {
-        AppMethodBeat.o(10213);
-        return false;
-      }
-      paramObject = (a)paramObject;
-      if (!this.IYV.equals(paramObject.IYV))
-      {
-        AppMethodBeat.o(10213);
-        return false;
-      }
-      boolean bool = this.IYW.equals(paramObject.IYW);
-      AppMethodBeat.o(10213);
-      return bool;
+      AppMethodBeat.i(192808);
+      this.KMc.a(paramString, paramByteBuffer, null);
+      AppMethodBeat.o(192808);
     }
     
-    public final int hashCode()
+    public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
     {
-      AppMethodBeat.i(10214);
-      int i = this.IYV.hashCode();
-      int j = this.IYW.hashCode();
-      AppMethodBeat.o(10214);
-      return i * 31 + j;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(10212);
-      String str = "DartEntrypoint( bundle path: " + this.IYV + ", function: " + this.IYW + " )";
-      AppMethodBeat.o(10212);
-      return str;
+      AppMethodBeat.i(192809);
+      this.KMc.a(paramString, paramByteBuffer, paramb);
+      AppMethodBeat.o(192809);
     }
   }
   
-  static abstract interface b {}
+  static abstract interface c {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor
  * JD-Core Version:    0.7.0.1
  */

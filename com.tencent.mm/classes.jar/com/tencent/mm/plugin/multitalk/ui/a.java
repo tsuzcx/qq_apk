@@ -6,9 +6,9 @@ import com.tencent.mm.model.aj;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.multitalk.ui.widget.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.q;
 import java.util.ArrayList;
@@ -18,24 +18,24 @@ public final class a
   extends q
 {
   private String chatroomName;
-  private List<String> ico;
+  private List<String> iCx;
   
   public a(n paramn, String paramString)
   {
     super(paramn, null, true, true);
     AppMethodBeat.i(114707);
     this.chatroomName = paramString;
-    VP();
+    WN();
     AppMethodBeat.o(114707);
   }
   
-  public final void VP()
+  public final void WN()
   {
     AppMethodBeat.i(114708);
-    ad.i("MicroMsg.multitalk.MultiTalkSelectInitAdapter", "resetData");
-    this.ico = ((c)g.ab(c.class)).apV().tL(this.chatroomName);
-    if (this.ico == null) {
-      this.ico = new ArrayList();
+    ac.i("MicroMsg.multitalk.MultiTalkSelectInitAdapter", "resetData");
+    this.iCx = ((c)g.ab(c.class)).awK().xR(this.chatroomName);
+    if (this.iCx == null) {
+      this.iCx = new ArrayList();
     }
     AppMethodBeat.o(114708);
   }
@@ -43,26 +43,26 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(114710);
-    int i = this.ico.size();
+    int i = this.iCx.size();
     AppMethodBeat.o(114710);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a pU(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a qH(int paramInt)
   {
     AppMethodBeat.i(114709);
-    Object localObject = (String)this.ico.get(paramInt);
-    localObject = ((k)g.ab(k.class)).apM().aHY((String)localObject);
+    Object localObject = (String)this.iCx.get(paramInt);
+    localObject = ((k)g.ab(k.class)).awB().aNt((String)localObject);
     e locale = new e(paramInt);
-    locale.contact = ((af)localObject);
-    locale.GVT = dqZ();
+    locale.contact = ((ai)localObject);
+    locale.Iwh = dFi();
     AppMethodBeat.o(114709);
     return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.a
  * JD-Core Version:    0.7.0.1
  */

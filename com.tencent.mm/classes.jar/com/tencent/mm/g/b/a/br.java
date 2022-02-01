@@ -6,32 +6,55 @@ import com.tencent.mm.plugin.report.a;
 public final class br
   extends a
 {
-  public long dMW = 0L;
+  public long dHY;
+  private String dNh = "";
+  public long dNi = 0L;
+  public long dNj = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(149926);
+    AppMethodBeat.i(184627);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dMW);
+    ((StringBuffer)localObject).append(this.dNh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHY);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dNi);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dNj);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(149926);
+    arz((String)localObject);
+    AppMethodBeat.o(184627);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(149927);
+    AppMethodBeat.i(184628);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickScene:").append(this.dMW);
+    ((StringBuffer)localObject).append("Roomid:").append(this.dNh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Result:").append(this.dNi);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ErrCode:").append(this.dNj);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149927);
+    AppMethodBeat.o(184628);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16867;
+    return 19353;
+  }
+  
+  public final br jN(String paramString)
+  {
+    AppMethodBeat.i(184626);
+    this.dNh = t("Roomid", paramString, true);
+    AppMethodBeat.o(184626);
+    return this;
   }
 }
 

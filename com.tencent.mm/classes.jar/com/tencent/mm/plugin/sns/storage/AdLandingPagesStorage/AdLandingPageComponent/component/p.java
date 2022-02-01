@@ -12,37 +12,42 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 
 public final class p
   extends k
 {
-  CircularImageView xaB;
+  CircularImageView ynq;
   
   public p(Context paramContext, s params, ViewGroup paramViewGroup)
   {
     super(paramContext, params, paramViewGroup);
   }
   
-  protected final void dvN()
+  public final void dJW()
+  {
+    this.ynq = ((CircularImageView)this.contentView);
+  }
+  
+  protected final void dKm()
   {
     AppMethodBeat.i(96504);
-    if ((this.contentView == null) || (this.xaB == null))
+    if ((this.contentView == null) || (this.ynq == null))
     {
       AppMethodBeat.o(96504);
       return;
     }
-    s locals = (s)this.xab;
+    s locals = (s)this.ymQ;
     if (locals == null)
     {
       AppMethodBeat.o(96504);
       return;
     }
-    h.a(locals.wWp, locals.wWF, new f.a()
+    h.a(locals.yjd, locals.yjt, new f.a()
     {
-      public final void apm(String paramAnonymousString)
+      public final void asD(String paramAnonymousString)
       {
         AppMethodBeat.i(96501);
         p localp;
@@ -52,41 +57,41 @@ public final class p
           localp = p.this;
           if (paramAnonymousString == null)
           {
-            ad.e("AdLandingPageCircleImgComp", "when set image the bmp is null!");
+            ac.e("AdLandingPageCircleImgComp", "when set image the bmp is null!");
             AppMethodBeat.o(96501);
             return;
           }
-          if (localp.xaB == null)
+          if (localp.ynq == null)
           {
-            ad.e("AdLandingPageCircleImgComp", "when set image the img is null!");
+            ac.e("AdLandingPageCircleImgComp", "when set image the img is null!");
             AppMethodBeat.o(96501);
             return;
           }
         }
         catch (Exception paramAnonymousString)
         {
-          ad.e("AdLandingPageCircleImgComp", "%s" + bt.m(paramAnonymousString));
+          ac.e("AdLandingPageCircleImgComp", "%s" + bs.m(paramAnonymousString));
           AppMethodBeat.o(96501);
           return;
         }
         if (paramAnonymousString.getWidth() == 0)
         {
-          ad.e("AdLandingPageCircleImgComp", "when set image the bmp.getWidth is 0!");
+          ac.e("AdLandingPageCircleImgComp", "when set image the bmp.getWidth is 0!");
           AppMethodBeat.o(96501);
           return;
         }
-        localp.xaB.setImageBitmap(paramAnonymousString);
+        localp.ynq.setImageBitmap(paramAnonymousString);
         AppMethodBeat.o(96501);
       }
       
-      public final void dsA() {}
+      public final void dFC() {}
       
-      public final void duP() {}
+      public final void dFD() {}
     });
     AppMethodBeat.o(96504);
   }
   
-  protected final View dvQ()
+  protected final View dKp()
   {
     AppMethodBeat.i(96503);
     CircularImageView localCircularImageView = new CircularImageView(this.context);
@@ -94,25 +99,20 @@ public final class p
     return localCircularImageView;
   }
   
-  protected final void dvT()
+  protected final void dKs()
   {
     AppMethodBeat.i(96502);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.ymQ.paddingLeft, (int)this.ymQ.paddingTop, (int)this.ymQ.paddingRight, (int)this.ymQ.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96502);
   }
-  
-  public final void dvx()
-  {
-    this.xaB = ((CircularImageView)this.contentView);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.p
  * JD-Core Version:    0.7.0.1
  */

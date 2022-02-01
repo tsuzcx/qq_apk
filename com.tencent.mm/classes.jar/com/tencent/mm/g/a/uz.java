@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class uz
   extends b
 {
-  public a dAx;
+  public a dxT;
+  public b dxU;
   
   public uz()
   {
@@ -15,16 +18,24 @@ public final class uz
   
   private uz(byte paramByte)
   {
-    AppMethodBeat.i(91220);
-    this.dAx = new a();
-    this.ESR = false;
+    AppMethodBeat.i(153018);
+    this.dxT = new a();
+    this.dxU = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91220);
+    AppMethodBeat.o(153018);
   }
   
   public static final class a
   {
-    public boolean dAy = false;
+    public Activity dgE;
+    public Intent dxV;
+    public int requestCode;
+  }
+  
+  public static final class b
+  {
+    public boolean deB;
   }
 }
 

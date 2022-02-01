@@ -10,7 +10,7 @@ public final class c
   {
     AppMethodBeat.i(57781);
     k.h(paramah, "$this$isJavaField");
-    if (paramah.fzg() == null)
+    if (paramah.fRK() == null)
     {
       AppMethodBeat.o(57781);
       return true;
@@ -21,7 +21,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.c
  * JD-Core Version:    0.7.0.1
  */

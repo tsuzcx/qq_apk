@@ -9,17 +9,17 @@ import java.io.IOException;
 public abstract class b<T>
   implements d<T>
 {
-  private final AssetManager aCD;
+  private final AssetManager aDu;
   private final String assetPath;
   private T data;
   
   public b(AssetManager paramAssetManager, String paramString)
   {
-    this.aCD = paramAssetManager;
+    this.aDu = paramAssetManager;
     this.assetPath = paramString;
   }
   
-  protected abstract void O(T paramT);
+  protected abstract void Q(T paramT);
   
   protected abstract T a(AssetManager paramAssetManager, String paramString);
   
@@ -27,8 +27,8 @@ public abstract class b<T>
   {
     try
     {
-      this.data = a(this.aCD, this.assetPath);
-      parama.P(this.data);
+      this.data = a(this.aDu, this.assetPath);
+      parama.R(this.data);
       return;
     }
     catch (IOException paramg)
@@ -47,20 +47,20 @@ public abstract class b<T>
     }
     try
     {
-      O(this.data);
+      Q(this.data);
       return;
     }
     catch (IOException localIOException) {}
   }
   
-  public final a nL()
+  public final a nV()
   {
-    return a.aBX;
+    return a.aCP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a.b
  * JD-Core Version:    0.7.0.1
  */

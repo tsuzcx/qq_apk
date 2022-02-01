@@ -12,42 +12,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   implements b
 {
-  private final RenderScript Gjd;
-  private final ScriptIntrinsicBlur Gje;
-  private Allocation Gjf;
-  private int Gjg;
-  private int Gjh;
+  private final RenderScript HIS;
+  private final ScriptIntrinsicBlur HIT;
+  private Allocation HIU;
+  private int HIV;
+  private int HIW;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(142746);
-    this.Gjg = -1;
-    this.Gjh = -1;
-    this.Gjd = RenderScript.create(paramContext);
-    this.Gje = ScriptIntrinsicBlur.create(this.Gjd, Element.U8_4(this.Gjd));
+    this.HIV = -1;
+    this.HIW = -1;
+    this.HIS = RenderScript.create(paramContext);
+    this.HIT = ScriptIntrinsicBlur.create(this.HIS, Element.U8_4(this.HIS));
     AppMethodBeat.o(142746);
   }
   
   public final Bitmap d(Bitmap paramBitmap, float paramFloat)
   {
     AppMethodBeat.i(142747);
-    Allocation localAllocation = Allocation.createFromBitmap(this.Gjd, paramBitmap);
-    if ((paramBitmap.getHeight() == this.Gjh) && (paramBitmap.getWidth() == this.Gjg)) {}
+    Allocation localAllocation = Allocation.createFromBitmap(this.HIS, paramBitmap);
+    if ((paramBitmap.getHeight() == this.HIW) && (paramBitmap.getWidth() == this.HIV)) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        if (this.Gjf != null) {
-          this.Gjf.destroy();
+        if (this.HIU != null) {
+          this.HIU.destroy();
         }
-        this.Gjf = Allocation.createTyped(this.Gjd, localAllocation.getType());
-        this.Gjg = paramBitmap.getWidth();
-        this.Gjh = paramBitmap.getHeight();
+        this.HIU = Allocation.createTyped(this.HIS, localAllocation.getType());
+        this.HIV = paramBitmap.getWidth();
+        this.HIW = paramBitmap.getHeight();
       }
-      this.Gje.setRadius(paramFloat);
-      this.Gje.setInput(localAllocation);
-      this.Gje.forEach(this.Gjf);
-      this.Gjf.copyTo(paramBitmap);
+      this.HIT.setRadius(paramFloat);
+      this.HIT.setInput(localAllocation);
+      this.HIT.forEach(this.HIU);
+      this.HIU.copyTo(paramBitmap);
       localAllocation.destroy();
       AppMethodBeat.o(142747);
       return paramBitmap;
@@ -57,15 +57,15 @@ public final class f
   public final void destroy()
   {
     AppMethodBeat.i(142748);
-    this.Gje.destroy();
-    this.Gjd.destroy();
-    if (this.Gjf != null) {
-      this.Gjf.destroy();
+    this.HIT.destroy();
+    this.HIS.destroy();
+    if (this.HIU != null) {
+      this.HIU.destroy();
     }
     AppMethodBeat.o(142748);
   }
   
-  public final Bitmap.Config eUf()
+  public final Bitmap.Config fjS()
   {
     return Bitmap.Config.ARGB_8888;
   }

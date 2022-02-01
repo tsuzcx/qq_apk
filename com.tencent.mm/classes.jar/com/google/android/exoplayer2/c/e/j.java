@@ -10,11 +10,11 @@ import java.util.Arrays;
 final class j
   extends h
 {
-  private a beI;
-  private int beJ;
-  private boolean beK;
-  private k.d beL;
-  private k.b beM;
+  private a bfv;
+  private int bfw;
+  private boolean bfx;
+  private k.d bfy;
+  private k.b bfz;
   
   public static boolean r(m paramm)
   {
@@ -32,19 +32,19 @@ final class j
     return false;
   }
   
-  protected final void T(long paramLong)
+  protected final void U(long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(92174);
-    super.T(paramLong);
+    super.U(paramLong);
     if (paramLong != 0L) {}
     for (boolean bool = true;; bool = false)
     {
-      this.beK = bool;
-      if (this.beL != null) {
-        i = this.beL.bff;
+      this.bfx = bool;
+      if (this.bfy != null) {
+        i = this.bfy.bfR;
       }
-      this.beJ = i;
+      this.bfw = i;
       AppMethodBeat.o(92174);
       return;
     }
@@ -53,7 +53,7 @@ final class j
   protected final boolean a(m paramm, long paramLong, h.a parama)
   {
     AppMethodBeat.i(92176);
-    if (this.beI != null)
+    if (this.bfv != null)
     {
       AppMethodBeat.o(92176);
       return false;
@@ -66,29 +66,29 @@ final class j
     int i1;
     int n;
     boolean bool1;
-    if (this.beL == null)
+    if (this.bfy == null)
     {
       k.a(1, paramm, false);
-      paramLong = paramm.vM();
+      paramLong = paramm.vB();
       i = paramm.readUnsignedByte();
-      l = paramm.vM();
-      j = paramm.vN();
-      k = paramm.vN();
-      m = paramm.vN();
+      l = paramm.vB();
+      j = paramm.vC();
+      k = paramm.vC();
+      m = paramm.vC();
       i1 = paramm.readUnsignedByte();
       n = (int)Math.pow(2.0D, i1 & 0xF);
       i1 = (int)Math.pow(2.0D, (i1 & 0xF0) >> 4);
       if ((paramm.readUnsignedByte() & 0x1) > 0)
       {
         bool1 = true;
-        this.beL = new k.d(paramLong, i, l, j, k, m, n, i1, bool1, Arrays.copyOf(paramm.data, paramm.limit));
+        this.bfy = new k.d(paramLong, i, l, j, k, m, n, i1, bool1, Arrays.copyOf(paramm.data, paramm.limit));
         paramm = null;
       }
     }
     for (;;)
     {
-      this.beI = paramm;
-      if (this.beI != null) {
+      this.bfv = paramm;
+      if (this.bfv != null) {
         break label959;
       }
       AppMethodBeat.o(92176);
@@ -97,18 +97,18 @@ final class j
       break;
       Object localObject1;
       Object localObject2;
-      if (this.beM == null)
+      if (this.bfz == null)
       {
         k.a(3, paramm, false);
-        localObject1 = paramm.readString((int)paramm.vM());
+        localObject1 = paramm.readString((int)paramm.vB());
         i = ((String)localObject1).length();
-        paramLong = paramm.vM();
+        paramLong = paramm.vB();
         localObject2 = new String[(int)paramLong];
         j = i + 11 + 4;
         i = 0;
         while (i < paramLong)
         {
-          localObject2[i] = paramm.readString((int)paramm.vM());
+          localObject2[i] = paramm.readString((int)paramm.vB());
           j = j + 4 + localObject2[i].length();
           i += 1;
         }
@@ -118,14 +118,14 @@ final class j
           AppMethodBeat.o(92176);
           throw paramm;
         }
-        this.beM = new k.b((String)localObject1, (String[])localObject2, j + 1);
+        this.bfz = new k.b((String)localObject1, (String[])localObject2, j + 1);
         paramm = null;
       }
       else
       {
         localObject1 = new byte[paramm.limit];
         System.arraycopy(paramm.data, 0, localObject1, 0, paramm.limit);
-        n = this.beL.channels;
+        n = this.bfy.channels;
         k.a(5, paramm, false);
         i1 = paramm.readUnsignedByte();
         localObject2 = new i(paramm.data);
@@ -135,21 +135,21 @@ final class j
         {
           if (((i)localObject2).eo(24) != 5653314)
           {
-            paramm = new o("expected code book to start with [0x56, 0x43, 0x42] at " + (((i)localObject2).beG * 8 + ((i)localObject2).beH));
+            paramm = new o("expected code book to start with [0x56, 0x43, 0x42] at " + (((i)localObject2).bft * 8 + ((i)localObject2).bfu));
             AppMethodBeat.o(92176);
             throw paramm;
           }
           int i2 = ((i)localObject2).eo(16);
           int i3 = ((i)localObject2).eo(24);
           paramm = new long[i3];
-          bool1 = ((i)localObject2).sV();
+          bool1 = ((i)localObject2).te();
           if (!bool1)
           {
-            boolean bool2 = ((i)localObject2).sV();
+            boolean bool2 = ((i)localObject2).te();
             j = 0;
             if (j < paramm.length)
             {
-              if ((bool2) && (!((i)localObject2).sV())) {
+              if ((bool2) && (!((i)localObject2).te())) {
                 paramm[j] = 0L;
               }
               for (;;)
@@ -229,21 +229,21 @@ final class j
         k.b((i)localObject2);
         k.a(n, (i)localObject2);
         paramm = k.a((i)localObject2);
-        if (!((i)localObject2).sV())
+        if (!((i)localObject2).te())
         {
           paramm = new o("framing bit after modes not set as expected");
           AppMethodBeat.o(92176);
           throw paramm;
         }
         i = k.eq(paramm.length - 1);
-        paramm = new a(this.beL, this.beM, (byte[])localObject1, paramm, i);
+        paramm = new a(this.bfy, this.bfz, (byte[])localObject1, paramm, i);
       }
     }
     label959:
     paramm = new ArrayList();
-    paramm.add(this.beI.beN.data);
-    paramm.add(this.beI.beO);
-    parama.aSv = Format.a(null, "audio/vorbis", this.beI.beN.bfd, -1, this.beI.beN.channels, (int)this.beI.beN.sampleRate, paramm, null, null);
+    paramm.add(this.bfv.bfA.data);
+    paramm.add(this.bfv.bfB);
+    parama.aTo = Format.a(null, "audio/vorbis", this.bfv.bfA.bfP, -1, this.bfv.bfA.channels, (int)this.bfv.bfA.sampleRate, paramm, null, null);
     AppMethodBeat.o(92176);
     return true;
   }
@@ -254,12 +254,12 @@ final class j
     super.reset(paramBoolean);
     if (paramBoolean)
     {
-      this.beI = null;
-      this.beL = null;
-      this.beM = null;
+      this.bfv = null;
+      this.bfy = null;
+      this.bfz = null;
     }
-    this.beJ = 0;
-    this.beK = false;
+    this.bfw = 0;
+    this.bfx = false;
     AppMethodBeat.o(92173);
   }
   
@@ -273,22 +273,22 @@ final class j
       return -1L;
     }
     int i = paramm.data[0];
-    a locala = this.beI;
-    int k = locala.beQ;
-    if (!locala.beP[(i >> 1 & 255 >>> 8 - k)].beX) {}
-    for (i = locala.beN.bff;; i = locala.beN.bfg)
+    a locala = this.bfv;
+    int k = locala.bfD;
+    if (!locala.bfC[(i >> 1 & 255 >>> 8 - k)].bfJ) {}
+    for (i = locala.bfA.bfR;; i = locala.bfA.bfS)
     {
-      if (this.beK) {
-        j = (this.beJ + i) / 4;
+      if (this.bfx) {
+        j = (this.bfw + i) / 4;
       }
       long l = j;
-      paramm.fk(paramm.limit + 4);
+      paramm.eW(paramm.limit + 4);
       paramm.data[(paramm.limit - 4)] = ((byte)(int)(l & 0xFF));
       paramm.data[(paramm.limit - 3)] = ((byte)(int)(l >>> 8 & 0xFF));
       paramm.data[(paramm.limit - 2)] = ((byte)(int)(l >>> 16 & 0xFF));
       paramm.data[(paramm.limit - 1)] = ((byte)(int)(l >>> 24 & 0xFF));
-      this.beK = true;
-      this.beJ = i;
+      this.bfx = true;
+      this.bfw = i;
       l = j;
       AppMethodBeat.o(92175);
       return l;
@@ -297,19 +297,19 @@ final class j
   
   static final class a
   {
-    public final k.b beM;
-    public final k.d beN;
-    public final byte[] beO;
-    public final k.c[] beP;
-    public final int beQ;
+    public final k.d bfA;
+    public final byte[] bfB;
+    public final k.c[] bfC;
+    public final int bfD;
+    public final k.b bfz;
     
     public a(k.d paramd, k.b paramb, byte[] paramArrayOfByte, k.c[] paramArrayOfc, int paramInt)
     {
-      this.beN = paramd;
-      this.beM = paramb;
-      this.beO = paramArrayOfByte;
-      this.beP = paramArrayOfc;
-      this.beQ = paramInt;
+      this.bfA = paramd;
+      this.bfz = paramb;
+      this.bfB = paramArrayOfByte;
+      this.bfC = paramArrayOfc;
+      this.bfD = paramInt;
     }
   }
 }

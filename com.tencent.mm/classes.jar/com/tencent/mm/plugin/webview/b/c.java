@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.e.b;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -29,7 +29,7 @@ public final class c
     super(parame, a.info, "WebViewData", null);
   }
   
-  private static String aG(String paramString1, String paramString2, String paramString3)
+  private static String aJ(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(77851);
     paramString1 = paramString1 + paramString3 + paramString2;
@@ -37,25 +37,25 @@ public final class c
     return paramString1;
   }
   
-  public static String ejL()
+  public static String ezg()
   {
-    AppMethodBeat.i(187849);
-    String str = b.cBu() + "datastore/";
-    AppMethodBeat.o(187849);
+    AppMethodBeat.i(188273);
+    String str = b.cOD() + "datastore/";
+    AppMethodBeat.o(188273);
     return str;
   }
   
-  private Cursor jR(String paramString1, String paramString2)
+  private Cursor kn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77847);
-    paramString1 = String.format("select * from %s where %s=\"%s\"", new Object[] { "WebViewData", "appIdKey", jS(paramString1, paramString2) });
-    ad.d("MicroMsg.WebViewDataStorage", "getData: ".concat(String.valueOf(paramString1)));
+    paramString1 = String.format("select * from %s where %s=\"%s\"", new Object[] { "WebViewData", "appIdKey", ko(paramString1, paramString2) });
+    ac.d("MicroMsg.WebViewDataStorage", "getData: ".concat(String.valueOf(paramString1)));
     paramString1 = rawQuery(paramString1, new String[0]);
     AppMethodBeat.o(77847);
     return paramString1;
   }
   
-  private static String jS(String paramString1, String paramString2)
+  private static String ko(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77854);
     paramString1 = paramString1 + "_" + paramString2;
@@ -68,18 +68,18 @@ public final class c
     AppMethodBeat.i(77844);
     a locala = new a();
     locala.field_appId = paramString1;
-    locala.field_appIdKey = jS(paramString1, paramString2);
+    locala.field_appIdKey = ko(paramString1, paramString2);
     locala.field_value = paramString3;
     locala.field_weight = paramString4;
     locala.field_expireTime = (System.currentTimeMillis() / 1000L + paramLong);
     locala.field_size = (paramString2.getBytes().length + paramString3.getBytes().length);
     locala.field_timeStamp = (System.currentTimeMillis() / 1000L);
     locala.field_localFile = paramString5;
-    ad.d("MicroMsg.WebViewDataStorage", "setData: ".concat(String.valueOf(replace(locala))));
+    ac.d("MicroMsg.WebViewDataStorage", "setData: ".concat(String.valueOf(replace(locala))));
     AppMethodBeat.o(77844);
   }
   
-  public final void avM(String paramString)
+  public final void aBe(String paramString)
   {
     AppMethodBeat.i(77849);
     paramString = rawQuery(String.format("select * from %s where %s=\"%s\"", new Object[] { "WebViewData", "appId", paramString }), new String[0]);
@@ -90,13 +90,13 @@ public final class c
         {
           a locala = new a();
           locala.convertFrom(paramString);
-          if (!bt.isNullOrNil(locala.field_localFile))
+          if (!bs.isNullOrNil(locala.field_localFile))
           {
-            bool = new com.tencent.mm.vfs.e(ejL() + locala.field_localFile).delete();
-            ad.i("MicroMsg.WebViewDataStorage", "clearAllData(), delete data file:%s, ret:%b", new Object[] { locala.field_localFile, Boolean.valueOf(bool) });
+            bool = new com.tencent.mm.vfs.e(ezg() + locala.field_localFile).delete();
+            ac.i("MicroMsg.WebViewDataStorage", "clearAllData(), delete data file:%s, ret:%b", new Object[] { locala.field_localFile, Boolean.valueOf(bool) });
           }
           boolean bool = super.delete(locala, new String[0]);
-          ad.i("MicroMsg.WebViewDataStorage", "clearAllData(), delete data appIdKey:%s, ret:%b", new Object[] { locala.field_appIdKey, Boolean.valueOf(bool) });
+          ac.i("MicroMsg.WebViewDataStorage", "clearAllData(), delete data appIdKey:%s, ret:%b", new Object[] { locala.field_appIdKey, Boolean.valueOf(bool) });
         } while (paramString.moveToNext());
       }
       paramString.close();
@@ -104,11 +104,11 @@ public final class c
     AppMethodBeat.o(77849);
   }
   
-  public final long avN(String paramString)
+  public final long aBf(String paramString)
   {
     AppMethodBeat.i(77852);
-    paramString = String.format("select %s from %s where %s=\"%s\"", new Object[] { "size", "WebViewData", "appIdKey", aG(paramString, "###@@@@TOTAL@@@###SIZE####", "_") });
-    ad.d("MicroMsg.WebViewDataStorage", "getAppIdSize: ".concat(String.valueOf(paramString)));
+    paramString = String.format("select %s from %s where %s=\"%s\"", new Object[] { "size", "WebViewData", "appIdKey", aJ(paramString, "###@@@@TOTAL@@@###SIZE####", "_") });
+    ac.d("MicroMsg.WebViewDataStorage", "getAppIdSize: ".concat(String.valueOf(paramString)));
     long l1 = 0L;
     paramString = rawQuery(paramString, new String[0]);
     long l2 = l1;
@@ -120,7 +120,7 @@ public final class c
       paramString.close();
       l2 = l1;
     }
-    ad.d("MicroMsg.WebViewDataStorage", "getAppIdSize: ".concat(String.valueOf(l2)));
+    ac.d("MicroMsg.WebViewDataStorage", "getAppIdSize: ".concat(String.valueOf(l2)));
     AppMethodBeat.o(77852);
     return l2;
   }
@@ -128,7 +128,7 @@ public final class c
   public final void b(String paramString, JSONArray paramJSONArray)
   {
     AppMethodBeat.i(77848);
-    if ((bt.isNullOrNil(paramString)) || (paramJSONArray == null) || (paramJSONArray.length() == 0))
+    if ((bs.isNullOrNil(paramString)) || (paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
       AppMethodBeat.o(77848);
       return;
@@ -137,7 +137,7 @@ public final class c
     int i = 0;
     while (i < paramJSONArray.length())
     {
-      ((List)localObject).add(jS(paramString, paramJSONArray.optString(i)));
+      ((List)localObject).add(ko(paramString, paramJSONArray.optString(i)));
       i += 1;
     }
     paramJSONArray = ((List)localObject).iterator();
@@ -148,41 +148,41 @@ public final class c
       locala = new a();
       locala.field_appIdKey = ((String)localObject);
       super.get(locala, new String[0]);
-      if (!bt.isNullOrNil(locala.field_localFile))
+      if (!bs.isNullOrNil(locala.field_localFile))
       {
-        bool = new com.tencent.mm.vfs.e(ejL() + locala.field_localFile).delete();
-        ad.i("MicroMsg.WebViewDataStorage", "clearData(), delete data file:%s, ret:%b", new Object[] { locala.field_localFile, Boolean.valueOf(bool) });
+        bool = new com.tencent.mm.vfs.e(ezg() + locala.field_localFile).delete();
+        ac.i("MicroMsg.WebViewDataStorage", "clearData(), delete data file:%s, ret:%b", new Object[] { locala.field_localFile, Boolean.valueOf(bool) });
       }
       boolean bool = super.delete(locala, new String[0]);
-      ad.i("MicroMsg.WebViewDataStorage", "clearData(), delete data appIdKey:%s, ret:%b", new Object[] { locala.field_appIdKey, Boolean.valueOf(bool) });
+      ac.i("MicroMsg.WebViewDataStorage", "clearData(), delete data appIdKey:%s, ret:%b", new Object[] { locala.field_appIdKey, Boolean.valueOf(bool) });
     }
-    long l2 = avN(paramString) - l1;
-    ad.i("MicroMsg.WebViewDataStorage", "clearData(), currSize:%d", new Object[] { Long.valueOf(l2) });
+    long l2 = aBf(paramString) - l1;
+    ac.i("MicroMsg.WebViewDataStorage", "clearData(), currSize:%d", new Object[] { Long.valueOf(l2) });
     l1 = l2;
     if (l2 < 0L) {
       l1 = 0L;
     }
-    br(paramString, l1);
+    bt(paramString, l1);
     AppMethodBeat.o(77848);
   }
   
-  public final void br(String paramString, long paramLong)
+  public final void bt(String paramString, long paramLong)
   {
     AppMethodBeat.i(77850);
     a locala = new a();
     locala.field_appId = paramString;
-    locala.field_appIdKey = aG(paramString, "###@@@@TOTAL@@@###SIZE####", "_");
+    locala.field_appIdKey = aJ(paramString, "###@@@@TOTAL@@@###SIZE####", "_");
     locala.field_expireTime = 9223372036854775807L;
     locala.field_size = paramLong;
-    ad.d("MicroMsg.WebViewDataStorage", "setAppIdSize: %b, size: %d", new Object[] { Boolean.valueOf(replace(locala)), Long.valueOf(paramLong) });
+    ac.d("MicroMsg.WebViewDataStorage", "setAppIdSize: %b, size: %d", new Object[] { Boolean.valueOf(replace(locala)), Long.valueOf(paramLong) });
     AppMethodBeat.o(77850);
   }
   
-  public final long bs(String paramString, long paramLong)
+  public final long bu(String paramString, long paramLong)
   {
     AppMethodBeat.i(77853);
     paramString = String.format("select * from %s where appId='%s' order by weight,timeStamp", new Object[] { "WebViewData", paramString });
-    ad.d("MicroMsg.WebViewDataStorage", "deleteSize querySql: ".concat(String.valueOf(paramString)));
+    ac.d("MicroMsg.WebViewDataStorage", "deleteSize querySql: ".concat(String.valueOf(paramString)));
     paramString = rawQuery(paramString, new String[0]);
     if (paramString == null)
     {
@@ -217,13 +217,13 @@ public final class c
         localObject2 = new a();
         ((a)localObject2).field_appIdKey = ((String)localObject1);
         super.get((com.tencent.mm.sdk.e.c)localObject2, new String[0]);
-        if (!bt.isNullOrNil(((a)localObject2).field_localFile))
+        if (!bs.isNullOrNil(((a)localObject2).field_localFile))
         {
-          bool = new com.tencent.mm.vfs.e(ejL() + ((a)localObject2).field_localFile).delete();
-          ad.i("MicroMsg.WebViewDataStorage", "deleteSize(), delete data file:%s, size:%d, ret:%b", new Object[] { ((a)localObject2).field_localFile, Long.valueOf(((a)localObject2).field_size), Boolean.valueOf(bool) });
+          bool = new com.tencent.mm.vfs.e(ezg() + ((a)localObject2).field_localFile).delete();
+          ac.i("MicroMsg.WebViewDataStorage", "deleteSize(), delete data file:%s, size:%d, ret:%b", new Object[] { ((a)localObject2).field_localFile, Long.valueOf(((a)localObject2).field_size), Boolean.valueOf(bool) });
         }
         boolean bool = super.delete((com.tencent.mm.sdk.e.c)localObject2, new String[0]);
-        ad.i("MicroMsg.WebViewDataStorage", "deleteSize(), delete data appIdKey:%s, size:%d, ret:%b", new Object[] { ((a)localObject2).field_appIdKey, Long.valueOf(((a)localObject2).field_size), Boolean.valueOf(bool) });
+        ac.i("MicroMsg.WebViewDataStorage", "deleteSize(), delete data appIdKey:%s, size:%d, ret:%b", new Object[] { ((a)localObject2).field_appIdKey, Long.valueOf(((a)localObject2).field_size), Boolean.valueOf(bool) });
       }
       AppMethodBeat.o(77853);
       return paramLong - l2;
@@ -231,10 +231,10 @@ public final class c
     }
   }
   
-  public final a jP(String paramString1, String paramString2)
+  public final a kl(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77846);
-    paramString1 = jR(paramString1, paramString2);
+    paramString1 = kn(paramString1, paramString2);
     paramString2 = new a();
     if (paramString1 != null)
     {
@@ -247,11 +247,11 @@ public final class c
     return paramString2;
   }
   
-  public final long jQ(String paramString1, String paramString2)
+  public final long km(String paramString1, String paramString2)
   {
     long l = 0L;
     AppMethodBeat.i(77845);
-    paramString1 = rawQuery(String.format("select %s from %s where %s=\"%s\"", new Object[] { "size", "WebViewData", "appIdKey", jS(paramString1, paramString2) }), new String[0]);
+    paramString1 = rawQuery(String.format("select %s from %s where %s=\"%s\"", new Object[] { "size", "WebViewData", "appIdKey", ko(paramString1, paramString2) }), new String[0]);
     if (paramString1 == null)
     {
       AppMethodBeat.o(77845);

@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wepkg.b;
 import com.tencent.mm.plugin.wepkg.utils.a;
 import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.WebResourceResponse;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,63 +14,63 @@ import java.util.Map;
 
 public final class e
 {
-  private Map<String, g> BIB;
-  private int nGv;
+  private Map<String, g> DaK;
+  private int ojw;
   
   public e()
   {
     AppMethodBeat.i(110678);
-    this.BIB = new HashMap();
-    this.nGv = 1;
+    this.DaK = new HashMap();
+    this.ojw = 1;
     AppMethodBeat.o(110678);
   }
   
-  public final void azU(String paramString)
+  public final void aFm(String paramString)
   {
     AppMethodBeat.i(110679);
-    if (this.nGv > 3)
+    if (this.ojw > 3)
     {
-      ad.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
+      ac.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
       AppMethodBeat.o(110679);
       return;
     }
-    String str = d.aAg(paramString);
-    if ((!bt.isNullOrNil(str)) && (this.BIB.get(str) == null))
+    String str = d.aFy(paramString);
+    if ((!bs.isNullOrNil(str)) && (this.DaK.get(str) == null))
     {
-      this.nGv += 1;
-      g localg = b.azy(str);
+      this.ojw += 1;
+      g localg = b.aEP(str);
       if (localg != null)
       {
-        this.BIB.put(str, localg);
+        this.DaK.put(str, localg);
         AppMethodBeat.o(110679);
         return;
       }
-      localg = b.cj(paramString, true);
-      if ((localg != null) && (localg.BIL != null))
+      localg = b.cp(paramString, true);
+      if ((localg != null) && (localg.DaU != null))
       {
-        this.BIB.put(str, localg);
-        a.b("EnterWeb", paramString, localg.BIL.fUW, localg.BIL.version, 1L, 0L, null);
-        ad.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
+        this.DaK.put(str, localg);
+        a.b("EnterWeb", paramString, localg.DaU.fYR, localg.DaU.version, 1L, 0L, null);
+        ac.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
       }
     }
     AppMethodBeat.o(110679);
   }
   
-  public final WebResourceResponse azV(String paramString)
+  public final WebResourceResponse aFn(String paramString)
   {
     AppMethodBeat.i(110680);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110680);
       return null;
     }
-    Iterator localIterator = this.BIB.values().iterator();
+    Iterator localIterator = this.DaK.values().iterator();
     while (localIterator.hasNext())
     {
-      WebResourceResponse localWebResourceResponse = ((g)localIterator.next()).azV(paramString);
+      WebResourceResponse localWebResourceResponse = ((g)localIterator.next()).aFn(paramString);
       if (localWebResourceResponse != null)
       {
-        ad.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
+        ac.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });
         AppMethodBeat.o(110680);
         return localWebResourceResponse;
       }

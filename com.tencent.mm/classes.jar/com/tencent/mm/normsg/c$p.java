@@ -18,17 +18,8 @@ public final class c$p
       AppMethodBeat.o(62426);
       return;
     }
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(62425);
-        System.loadLibrary(this.hNs);
-        localCountDownLatch.countDown();
-        AppMethodBeat.o(62425);
-      }
-    });
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    new Handler(Looper.getMainLooper()).postAtFrontOfQueue(new c.p.1(str, localCountDownLatch));
     try
     {
       localCountDownLatch.await();
@@ -108,10 +99,12 @@ public final class c$p
   static native byte[] ed();
   
   public static native byte[] ee();
+  
+  static native String ef();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.normsg.c.p
  * JD-Core Version:    0.7.0.1
  */

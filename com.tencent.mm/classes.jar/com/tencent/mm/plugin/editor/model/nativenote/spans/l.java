@@ -6,14 +6,14 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.g;
 public final class l
   extends g
 {
-  final boolean oqe;
-  public final boolean oqf;
+  final boolean oTE;
+  public final boolean oTF;
   
   public l(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super(paramInt1, paramInt2);
-    this.oqe = paramBoolean1;
-    this.oqf = paramBoolean2;
+    this.oTE = paramBoolean1;
+    this.oTF = paramBoolean2;
   }
   
   public final boolean a(g paramg)
@@ -27,17 +27,17 @@ public final class l
     if (paramg.isEmpty())
     {
       int i;
-      if ((paramg.asw >= this.asw) && (paramg.Mc < this.Mc))
+      if ((paramg.atr >= this.atr) && (paramg.MZ < this.MZ))
       {
         i = 1;
-        if ((paramg.asw < this.asw) || (paramg.Mc > this.Mc)) {
+        if ((paramg.atr < this.atr) || (paramg.MZ > this.MZ)) {
           break label98;
         }
       }
       label98:
       for (int j = 1;; j = 0)
       {
-        if ((i == 0) && ((j == 0) || (!this.oqf))) {
+        if ((i == 0) && ((j == 0) || (!this.oTF))) {
           break label103;
         }
         AppMethodBeat.o(181946);
@@ -49,7 +49,7 @@ public final class l
       AppMethodBeat.o(181946);
       return false;
     }
-    if (Math.max(this.asw, paramg.asw) < Math.min(this.Mc, paramg.Mc))
+    if (Math.max(this.atr, paramg.atr) < Math.min(this.MZ, paramg.MZ))
     {
       AppMethodBeat.o(181946);
       return true;
@@ -58,17 +58,17 @@ public final class l
     return false;
   }
   
-  public final int bTA()
+  public final int caO()
   {
     AppMethodBeat.i(181947);
-    int i = Math.abs(this.Mc - this.asw);
+    int i = Math.abs(this.MZ - this.atr);
     AppMethodBeat.o(181947);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.l
  * JD-Core Version:    0.7.0.1
  */

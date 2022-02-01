@@ -6,74 +6,47 @@ import com.tencent.mm.plugin.report.a;
 public final class db
   extends a
 {
-  private long dOz = 0L;
-  private long dTf = 0L;
-  private long dTg = 0L;
-  private long dTh = 0L;
-  private String dTi;
-  private String dTj;
+  public int dHw;
+  public String dJb;
+  public String dRE;
+  public int dRF;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(118483);
+    AppMethodBeat.i(195933);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTf);
+    ((StringBuffer)localObject).append(this.dHw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTg);
+    ((StringBuffer)localObject).append(this.dJb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOz);
+    ((StringBuffer)localObject).append(this.dRE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTh);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTi);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTj);
+    ((StringBuffer)localObject).append(this.dRF);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(118483);
+    arz((String)localObject);
+    AppMethodBeat.o(195933);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(118484);
+    AppMethodBeat.i(195934);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ComposeTime:").append(this.dTf);
+    ((StringBuffer)localObject).append("Scene:").append(this.dHw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorType:").append(this.dTg);
+    ((StringBuffer)localObject).append("Username:").append(this.dJb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadTime:").append(this.dOz);
+    ((StringBuffer)localObject).append("ChatUsername:").append(this.dRE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorType:").append(this.dTh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorTypeStr:").append(this.dTi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorTypeStr:").append(this.dTj);
+    ((StringBuffer)localObject).append("MessageCount:").append(this.dRF);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118484);
+    AppMethodBeat.o(195934);
     return localObject;
-  }
-  
-  public final long Qq()
-  {
-    return this.dOz;
-  }
-  
-  public final db fg(long paramLong)
-  {
-    this.dOz = paramLong;
-    return this;
-  }
-  
-  public final db fh(long paramLong)
-  {
-    this.dTh = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16688;
+    return 19963;
   }
 }
 

@@ -4,14 +4,14 @@ import android.nfc.Tag;
 
 public abstract class b
 {
-  protected Tag ueS;
-  public byte[] ueT = null;
+  protected Tag vnR;
+  public byte[] vnS = null;
   
   public boolean a(Tag paramTag)
   {
-    this.ueS = paramTag;
+    this.vnR = paramTag;
     if (paramTag != null) {
-      this.ueT = paramTag.getId();
+      this.vnS = paramTag.getId();
     }
     return true;
   }

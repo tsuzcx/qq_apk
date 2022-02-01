@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.multitalk.model;
 
 import android.content.Context;
-import com.tencent.mm.bi.f;
+import com.tencent.mm.bh.f;
 import java.util.List;
 
 public abstract interface a
@@ -9,58 +9,58 @@ public abstract interface a
 {
   public abstract void a(a parama);
   
-  public abstract void aho(String paramString);
+  public abstract void amj(String paramString);
   
-  public abstract boolean ahp(String paramString);
+  public abstract boolean amk(String paramString);
   
-  public abstract f ahq(String paramString);
+  public abstract f aml(String paramString);
   
-  public abstract boolean ahr(String paramString);
+  public abstract boolean amm(String paramString);
   
-  public abstract List<String> ahs(String paramString);
+  public abstract List<String> amn(String paramString);
   
-  public abstract boolean aht(String paramString);
+  public abstract boolean amo(String paramString);
   
-  public abstract boolean ahu(String paramString);
+  public abstract boolean amp(String paramString);
   
-  public abstract boolean ahv(String paramString);
+  public abstract boolean amq(String paramString);
   
-  public abstract void ahw(String paramString);
+  public abstract void amr(String paramString);
   
-  public abstract boolean ahx(String paramString);
+  public abstract boolean ams(String paramString);
   
-  public abstract void ahy(String paramString);
+  public abstract void amt(String paramString);
   
   public abstract void b(a parama);
   
-  public abstract boolean cRB();
+  public abstract boolean ci(Context paramContext);
   
-  public abstract boolean cRC();
+  public abstract boolean dfl();
   
-  public abstract boolean cRD();
+  public abstract boolean dfm();
   
-  public abstract boolean cRE();
+  public abstract boolean dfn();
   
-  public abstract boolean ce(Context paramContext);
+  public abstract boolean dfo();
   
-  public abstract boolean hs(String paramString1, String paramString2);
+  public abstract boolean hL(String paramString1, String paramString2);
   
-  public abstract int ht(String paramString1, String paramString2);
+  public abstract int hM(String paramString1, String paramString2);
   
-  public abstract String hu(String paramString1, String paramString2);
+  public abstract String hN(String paramString1, String paramString2);
   
-  public abstract String sh(String paramString);
+  public abstract String wk(String paramString);
   
-  public abstract boolean vv(String paramString);
+  public abstract boolean zB(String paramString);
   
   public static abstract interface a
   {
-    public abstract void ahz(String paramString);
+    public abstract void amu(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.a
  * JD-Core Version:    0.7.0.1
  */

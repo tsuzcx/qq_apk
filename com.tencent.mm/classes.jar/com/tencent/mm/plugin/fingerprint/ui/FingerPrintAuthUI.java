@@ -14,14 +14,16 @@ import android.view.animation.Animation;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
 import com.tencent.mm.plugin.fingerprint.d.b;
 import com.tencent.mm.plugin.fingerprint.d.c;
 import com.tencent.mm.plugin.fingerprint.d.d;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.wallet_core.c.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.soter.a.g.f;
@@ -33,21 +35,21 @@ public class FingerPrintAuthUI
 {
   private boolean isPaused = false;
   private Dialog mProgressDialog = null;
-  private int rcE = 0;
-  private d rcS = null;
-  private Animation rcU;
-  private TextView rcZ;
-  private a rda;
-  private boolean rdb = false;
-  private final int rdc = 1;
+  private int skY = 0;
+  private d slm = null;
+  private Animation slo;
+  private TextView slt;
+  private a slu;
+  private boolean slv = false;
+  private final int slw = 1;
   
-  private void cuC()
+  private void cHO()
   {
     AppMethodBeat.i(64535);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "request Identify2");
-    this.rcS.a(getContext(), new b()
+    ac.i("MicroMsg.FingerPrintAuthUI", "request Identify2");
+    this.slm.a(getContext(), new b()
     {
-      public final void aU(int paramAnonymousInt, String paramAnonymousString)
+      public final void aZ(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(64524);
         if (paramAnonymousInt == 0)
@@ -69,33 +71,33 @@ public class FingerPrintAuthUI
     AppMethodBeat.o(64535);
   }
   
-  private static void cuD()
+  private static void cHP()
   {
     AppMethodBeat.i(64536);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "hy: user cancelled");
+    ac.i("MicroMsg.FingerPrintAuthUI", "hy: user cancelled");
     ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).userCancel();
     AppMethodBeat.o(64536);
   }
   
-  private void cuH()
+  private void cHT()
   {
     AppMethodBeat.i(64537);
-    this.rcS.a(this, 1);
+    this.slm.a(this, 1);
     AppMethodBeat.o(64537);
   }
   
-  private void dd(final String paramString, final int paramInt)
+  private void dj(final String paramString, final int paramInt)
   {
     AppMethodBeat.i(64541);
-    this.rdb = false;
-    aq.f(new Runnable()
+    this.slv = false;
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(64527);
         String str2 = paramString;
         String str1 = str2;
-        if (bt.isNullOrNil(str2)) {
+        if (bs.isNullOrNil(str2)) {
           str1 = FingerPrintAuthUI.this.getString(2131759409);
         }
         h.a(FingerPrintAuthUI.this, str1, "", FingerPrintAuthUI.this.getString(2131765291), false, new DialogInterface.OnClickListener()
@@ -113,18 +115,18 @@ public class FingerPrintAuthUI
     AppMethodBeat.o(64541);
   }
   
-  public final void aU(int paramInt, String paramString)
+  public final void aZ(int paramInt, String paramString)
   {
     AppMethodBeat.i(64542);
     if (paramInt == 0)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "open fingerprintpay success");
-      doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.ad(null, 19), false);
+      ac.i("MicroMsg.FingerPrintAuthUI", "open fingerprintpay success");
+      doSceneProgress(new ad(null, 19), false);
       AppMethodBeat.o(64542);
       return;
     }
-    iF(false);
-    com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.FingerPrintAuthUI", "open fingerprintpay failed");
+    ji(false);
+    ac.e("MicroMsg.FingerPrintAuthUI", "open fingerprintpay failed");
     h.d(this, getString(2131759409), "", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -147,10 +149,10 @@ public class FingerPrintAuthUI
     return 2131494135;
   }
   
-  protected final void iF(final boolean paramBoolean)
+  protected final void ji(final boolean paramBoolean)
   {
     AppMethodBeat.i(64533);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -177,51 +179,51 @@ public class FingerPrintAuthUI
     AppMethodBeat.i(64532);
     super.onCreate(paramBundle);
     setMMTitle(getString(2131761801));
-    this.rcZ = ((TextView)findViewById(2131301035));
+    this.slt = ((TextView)findViewById(2131301035));
     paramBundle = (i)com.tencent.mm.kernel.g.ab(i.class);
-    this.rcS = paramBundle.cuu();
-    if (this.rcS == null)
+    this.slm = paramBundle.cHG();
+    if (this.slm == null)
     {
-      dd(getString(2131759409), -1);
+      dj(getString(2131759409), -1);
       AppMethodBeat.o(64532);
       return;
     }
-    Object localObject = com.tencent.mm.wallet_core.a.bn(this);
+    Object localObject = com.tencent.mm.wallet_core.a.bq(this);
     if (localObject != null)
     {
       localObject = ((Bundle)localObject).getString("pwd");
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.FingerPrintAuthUI", "get user pwd error");
-        dd(getString(2131759409), -1);
+        ac.e("MicroMsg.FingerPrintAuthUI", "get user pwd error");
+        dj(getString(2131759409), -1);
         com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, -1, "get user pwd error");
         AppMethodBeat.o(64532);
       }
     }
     else
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.FingerPrintAuthUI", "contextdata is null,for that reason program can't get user pwd");
-      dd(getString(2131759409), -1);
+      ac.e("MicroMsg.FingerPrintAuthUI", "contextdata is null,for that reason program can't get user pwd");
+      dj(getString(2131759409), -1);
       com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, -1, "contextdata is null,for that reason program can't get user pwd");
       AppMethodBeat.o(64532);
       return;
     }
-    if (!paramBundle.cuq())
+    if (!paramBundle.cHC())
     {
-      dd(getString(2131765652), -1);
+      dj(getString(2131765652), -1);
       AppMethodBeat.o(64532);
       return;
     }
-    if (paramBundle.cup())
+    if (paramBundle.cHB())
     {
-      iF(true);
-      f.fnw().fnx();
-      this.rcS.a(this, new b()
+      ji(true);
+      f.fDM().fDN();
+      this.slm.a(this, new b()
       {
-        public final void aU(int paramAnonymousInt, String paramAnonymousString)
+        public final void aZ(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(64522);
-          FingerPrintAuthUI.this.iF(false);
+          FingerPrintAuthUI.this.ji(false);
           if (paramAnonymousInt == 0)
           {
             FingerPrintAuthUI.b(FingerPrintAuthUI.this);
@@ -241,18 +243,18 @@ public class FingerPrintAuthUI
       AppMethodBeat.o(64532);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.FingerPrintAuthUI", "device is not support FingerPrintAuth");
+    ac.e("MicroMsg.FingerPrintAuthUI", "device is not support FingerPrintAuth");
     AppMethodBeat.o(64532);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(64539);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "hy: fingerprint auth ui on destroy");
-    if (this.rcU != null) {
-      this.rcU.cancel();
+    ac.i("MicroMsg.FingerPrintAuthUI", "hy: fingerprint auth ui on destroy");
+    if (this.slo != null) {
+      this.slo.cancel();
     }
-    this.rda = null;
+    this.slu = null;
     super.onDestroy();
     AppMethodBeat.o(64539);
   }
@@ -266,7 +268,7 @@ public class FingerPrintAuthUI
     if (localWakeLock != null) {
       localWakeLock.acquire();
     }
-    cuD();
+    cHP();
     if (localWakeLock != null) {
       localWakeLock.release();
     }
@@ -278,8 +280,8 @@ public class FingerPrintAuthUI
     AppMethodBeat.i(64534);
     super.onResume();
     this.isPaused = false;
-    if (this.rdb) {
-      cuC();
+    if (this.slv) {
+      cHO();
     }
     AppMethodBeat.o(64534);
   }
@@ -287,14 +289,14 @@ public class FingerPrintAuthUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(64540);
-    if (this.rcS.onSceneEnd(paramInt1, paramInt2, paramString, paramn))
+    if (this.slm.onSceneEnd(paramInt1, paramInt2, paramString, paramn))
     {
       AppMethodBeat.o(64540);
       return true;
     }
-    if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad))
+    if ((paramn instanceof ad))
     {
-      iF(false);
+      ji(false);
       com.tencent.mm.wallet_core.a.b(this, new Bundle(), 0);
       Toast.makeText(this, 2131759410, 0).show();
       AppMethodBeat.o(64540);
@@ -313,22 +315,22 @@ public class FingerPrintAuthUI
   public final class a
     implements c
   {
-    private WeakReference<FingerPrintAuthUI> rdg;
+    private WeakReference<FingerPrintAuthUI> slA;
     
     public a(FingerPrintAuthUI paramFingerPrintAuthUI)
     {
       AppMethodBeat.i(64529);
-      this.rdg = null;
-      this.rdg = new WeakReference(paramFingerPrintAuthUI);
+      this.slA = null;
+      this.slA = new WeakReference(paramFingerPrintAuthUI);
       AppMethodBeat.o(64529);
     }
     
-    private FingerPrintAuthUI cuI()
+    private FingerPrintAuthUI cHU()
     {
       AppMethodBeat.i(64530);
-      if (this.rdg != null)
+      if (this.slA != null)
       {
-        FingerPrintAuthUI localFingerPrintAuthUI = (FingerPrintAuthUI)this.rdg.get();
+        FingerPrintAuthUI localFingerPrintAuthUI = (FingerPrintAuthUI)this.slA.get();
         AppMethodBeat.o(64530);
         return localFingerPrintAuthUI;
       }
@@ -336,7 +338,7 @@ public class FingerPrintAuthUI
       return null;
     }
     
-    public final void fE(int paramInt1, int paramInt2)
+    public final void fL(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(64531);
       switch (paramInt1)
@@ -346,52 +348,52 @@ public class FingerPrintAuthUI
       {
         AppMethodBeat.o(64531);
         return;
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "identify success");
-        if (cuI() != null)
+        ac.i("MicroMsg.FingerPrintAuthUI", "identify success");
+        if (cHU() != null)
         {
-          FingerPrintAuthUI.a(cuI(), paramInt2);
+          FingerPrintAuthUI.a(cHU(), paramInt2);
           AppMethodBeat.o(64531);
           return;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "identify FingerPrintConst.RESULT_NO_MATCH");
-          if (cuI() != null)
+          ac.i("MicroMsg.FingerPrintAuthUI", "identify FingerPrintConst.RESULT_NO_MATCH");
+          if (cHU() != null)
           {
-            FingerPrintAuthUI.a(cuI());
+            FingerPrintAuthUI.a(cHU());
             FingerPrintAuthUI.a(FingerPrintAuthUI.this, true);
             AppMethodBeat.o(64531);
             return;
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "identify timeout");
-            if (cuI() != null)
+            ac.i("MicroMsg.FingerPrintAuthUI", "identify timeout");
+            if (cHU() != null)
             {
               FingerPrintAuthUI.a(FingerPrintAuthUI.this, false);
               AppMethodBeat.o(64531);
               return;
-              String str = aj.getContext().getString(2131764097);
+              String str = ai.getContext().getString(2131764097);
               com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramInt1, "fingerprint error");
-              if (cuI() != null)
+              if (cHU() != null)
               {
-                FingerPrintAuthUI.a(cuI(), str, -1);
+                FingerPrintAuthUI.a(cHU(), str, -1);
                 AppMethodBeat.o(64531);
                 return;
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
-                str = aj.getContext().getString(2131764095);
+                ac.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
+                str = ai.getContext().getString(2131764095);
                 if (paramInt1 == 10308)
                 {
-                  str = aj.getContext().getString(2131764096);
+                  str = ai.getContext().getString(2131764096);
                   com.tencent.mm.plugin.soter.d.a.d(6, -1000223, -1, "too many trial");
                 }
-                while (cuI() != null)
+                while (cHU() != null)
                 {
-                  FingerPrintAuthUI.a(cuI(), str, -1);
+                  FingerPrintAuthUI.a(cHU(), str, -1);
                   AppMethodBeat.o(64531);
                   return;
                   com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramInt1, "fingerprint error");
                 }
-                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
-                str = aj.getContext().getString(2131764095);
+                ac.i("MicroMsg.FingerPrintAuthUI", "hy: on error: %d", new Object[] { Integer.valueOf(paramInt1) });
+                str = ai.getContext().getString(2131764095);
                 com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramInt1, "fingerprint error");
-                com.tencent.mm.plugin.soter.d.a.Og(2);
-                if (cuI() != null) {
-                  FingerPrintAuthUI.a(cuI(), str, -1);
+                com.tencent.mm.plugin.soter.d.a.Ql(2);
+                if (cHU() != null) {
+                  FingerPrintAuthUI.a(cHU(), str, -1);
                 }
               }
             }

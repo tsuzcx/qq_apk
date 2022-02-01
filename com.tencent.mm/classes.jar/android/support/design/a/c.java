@@ -5,16 +5,16 @@ import android.animation.TypeEvaluator;
 public final class c
   implements TypeEvaluator<Integer>
 {
-  private static final c dU = new c();
+  private static final c eU = new c();
   
-  public static c au()
+  public static c aB()
   {
-    return dU;
+    return eU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.design.a.c
  * JD-Core Version:    0.7.0.1
  */

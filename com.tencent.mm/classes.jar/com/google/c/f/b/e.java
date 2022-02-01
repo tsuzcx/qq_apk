@@ -6,50 +6,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
 {
-  private static final int[][] bNl;
-  private static final int[][] bNm;
-  private static final int[][] bNn;
-  private static final int[][] bNo;
+  private static final int[][] bKT = { { 1, 1, 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 0, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 0, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1, 1, 1 } };
+  private static final int[][] bKU = { { 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
+  private static final int[][] bKV;
+  private static final int[][] bKW;
   
   static
   {
-    int[] arrayOfInt1 = { 1, 0, 0, 0, 0, 0, 1 };
-    int[] arrayOfInt2 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt3 = { 1, 0, 1, 1, 1, 0, 1 };
-    int[] arrayOfInt4 = { 1, 0, 0, 0, 0, 0, 1 };
-    bNl = new int[][] { { 1, 1, 1, 1, 1, 1, 1 }, arrayOfInt1, arrayOfInt2, { 1, 0, 1, 1, 1, 0, 1 }, arrayOfInt3, arrayOfInt4, { 1, 1, 1, 1, 1, 1, 1 } };
-    arrayOfInt1 = new int[] { 1, 1, 1, 1, 1 };
-    arrayOfInt2 = new int[] { 1, 0, 0, 0, 1 };
-    arrayOfInt3 = new int[] { 1, 0, 1, 0, 1 };
-    arrayOfInt4 = new int[] { 1, 1, 1, 1, 1 };
-    bNm = new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, { 1, 0, 0, 0, 1 }, arrayOfInt4 };
-    arrayOfInt1 = new int[] { 6, 22, -1, -1, -1, -1, -1 };
-    arrayOfInt2 = new int[] { 6, 26, -1, -1, -1, -1, -1 };
-    arrayOfInt3 = new int[] { 6, 34, -1, -1, -1, -1, -1 };
-    arrayOfInt4 = new int[] { 6, 30, 54, -1, -1, -1, -1 };
-    int[] arrayOfInt5 = { 6, 28, 50, 72, 94, -1, -1 };
-    int[] arrayOfInt6 = { 6, 26, 50, 74, 98, -1, -1 };
-    int[] arrayOfInt7 = { 6, 30, 54, 78, 102, -1, -1 };
-    int[] arrayOfInt8 = { 6, 32, 58, 84, 110, -1, -1 };
-    int[] arrayOfInt9 = { 6, 30, 58, 86, 114, -1, -1 };
-    int[] arrayOfInt10 = { 6, 34, 62, 90, 118, -1, -1 };
-    int[] arrayOfInt11 = { 6, 26, 50, 74, 98, 122, -1 };
-    int[] arrayOfInt12 = { 6, 30, 56, 82, 108, 134, -1 };
-    int[] arrayOfInt13 = { 6, 34, 62, 90, 118, 146, -1 };
-    int[] arrayOfInt14 = { 6, 30, 54, 78, 102, 126, 150 };
-    int[] arrayOfInt15 = { 6, 28, 54, 80, 106, 132, 158 };
-    bNn = new int[][] { { -1, -1, -1, -1, -1, -1, -1 }, { 6, 18, -1, -1, -1, -1, -1 }, arrayOfInt1, arrayOfInt2, { 6, 30, -1, -1, -1, -1, -1 }, arrayOfInt3, { 6, 22, 38, -1, -1, -1, -1 }, { 6, 24, 42, -1, -1, -1, -1 }, { 6, 26, 46, -1, -1, -1, -1 }, { 6, 28, 50, -1, -1, -1, -1 }, arrayOfInt4, { 6, 32, 58, -1, -1, -1, -1 }, { 6, 34, 62, -1, -1, -1, -1 }, { 6, 26, 46, 66, -1, -1, -1 }, { 6, 26, 48, 70, -1, -1, -1 }, { 6, 26, 50, 74, -1, -1, -1 }, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, { 6, 30, 58, 86, -1, -1, -1 }, { 6, 34, 62, 90, -1, -1, -1 }, arrayOfInt5, arrayOfInt6, arrayOfInt7, { 6, 28, 54, 80, 106, -1, -1 }, arrayOfInt8, arrayOfInt9, arrayOfInt10, arrayOfInt11, { 6, 30, 54, 78, 102, 126, -1 }, { 6, 26, 52, 78, 104, 130, -1 }, arrayOfInt12, { 6, 34, 60, 86, 112, 138, -1 }, { 6, 30, 58, 86, 114, 142, -1 }, arrayOfInt13, arrayOfInt14, { 6, 24, 50, 76, 102, 128, 154 }, arrayOfInt15, { 6, 32, 58, 84, 110, 136, 162 }, { 6, 26, 54, 82, 110, 138, 166 }, { 6, 30, 58, 86, 114, 142, 170 } };
-    arrayOfInt1 = new int[] { 8, 1 };
-    arrayOfInt2 = new int[] { 8, 2 };
-    arrayOfInt3 = new int[] { 8, 3 };
-    arrayOfInt4 = new int[] { 8, 4 };
-    arrayOfInt5 = new int[] { 8, 7 };
-    arrayOfInt6 = new int[] { 7, 8 };
-    arrayOfInt7 = new int[] { 5, 8 };
-    arrayOfInt8 = new int[] { 4, 8 };
-    arrayOfInt9 = new int[] { 3, 8 };
-    arrayOfInt10 = new int[] { 0, 8 };
-    bNo = new int[][] { { 8, 0 }, arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, { 8, 5 }, arrayOfInt5, { 8, 8 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, { 2, 8 }, { 1, 8 }, arrayOfInt10 };
+    int[] arrayOfInt1 = { 6, 30, -1, -1, -1, -1, -1 };
+    int[] arrayOfInt2 = { 6, 26, 46, 66, -1, -1, -1 };
+    int[] arrayOfInt3 = { 6, 32, 58, 84, 110, -1, -1 };
+    int[] arrayOfInt4 = { 6, 30, 54, 78, 102, 126, -1 };
+    int[] arrayOfInt5 = { 6, 26, 52, 78, 104, 130, -1 };
+    int[] arrayOfInt6 = { 6, 30, 54, 78, 102, 126, 150 };
+    int[] arrayOfInt7 = { 6, 24, 50, 76, 102, 128, 154 };
+    int[] arrayOfInt8 = { 6, 28, 54, 80, 106, 132, 158 };
+    bKV = new int[][] { { -1, -1, -1, -1, -1, -1, -1 }, { 6, 18, -1, -1, -1, -1, -1 }, { 6, 22, -1, -1, -1, -1, -1 }, { 6, 26, -1, -1, -1, -1, -1 }, arrayOfInt1, { 6, 34, -1, -1, -1, -1, -1 }, { 6, 22, 38, -1, -1, -1, -1 }, { 6, 24, 42, -1, -1, -1, -1 }, { 6, 26, 46, -1, -1, -1, -1 }, { 6, 28, 50, -1, -1, -1, -1 }, { 6, 30, 54, -1, -1, -1, -1 }, { 6, 32, 58, -1, -1, -1, -1 }, { 6, 34, 62, -1, -1, -1, -1 }, arrayOfInt2, { 6, 26, 48, 70, -1, -1, -1 }, { 6, 26, 50, 74, -1, -1, -1 }, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, { 6, 30, 58, 86, -1, -1, -1 }, { 6, 34, 62, 90, -1, -1, -1 }, { 6, 28, 50, 72, 94, -1, -1 }, { 6, 26, 50, 74, 98, -1, -1 }, { 6, 30, 54, 78, 102, -1, -1 }, { 6, 28, 54, 80, 106, -1, -1 }, arrayOfInt3, { 6, 30, 58, 86, 114, -1, -1 }, { 6, 34, 62, 90, 118, -1, -1 }, { 6, 26, 50, 74, 98, 122, -1 }, arrayOfInt4, arrayOfInt5, { 6, 30, 56, 82, 108, 134, -1 }, { 6, 34, 60, 86, 112, 138, -1 }, { 6, 30, 58, 86, 114, 142, -1 }, { 6, 34, 62, 90, 118, 146, -1 }, arrayOfInt6, arrayOfInt7, arrayOfInt8, { 6, 32, 58, 84, 110, 136, 162 }, { 6, 26, 54, 82, 110, 138, 166 }, { 6, 30, 58, 86, 114, 142, 170 } };
+    arrayOfInt1 = new int[] { 8, 5 };
+    arrayOfInt2 = new int[] { 5, 8 };
+    arrayOfInt3 = new int[] { 1, 8 };
+    bKW = new int[][] { { 8, 0 }, { 8, 1 }, { 8, 2 }, { 8, 3 }, { 8, 4 }, arrayOfInt1, { 8, 7 }, { 8, 8 }, { 7, 8 }, arrayOfInt2, { 4, 8 }, { 3, 8 }, { 2, 8 }, arrayOfInt3, { 0, 8 } };
   }
   
   private static void a(int paramInt1, int paramInt2, b paramb)
@@ -58,7 +34,7 @@ final class e
     int i = 0;
     while (i < 8)
     {
-      if (!gm(paramb.bP(paramInt1 + i, paramInt2)))
+      if (!fY(paramb.bM(paramInt1 + i, paramInt2)))
       {
         paramb = new h();
         AppMethodBeat.o(12251);
@@ -96,7 +72,7 @@ final class e
         {
           int i2 = n - i1;
           k = i;
-          if (gm(paramb.bP(i2, j)))
+          if (fY(paramb.bM(i2, j)))
           {
             boolean bool1;
             if (i < parama.size) {
@@ -193,12 +169,12 @@ final class e
       j = 0;
       while (j < paramb.width)
       {
-        paramb.bNi[i][j] = -1;
+        paramb.bKQ[i][j] = -1;
         j += 1;
       }
       i += 1;
     }
-    i = bNl[0].length;
+    i = bKT[0].length;
     c(0, 0, paramb);
     c(paramb.width - i, 0, paramb);
     c(0, paramb.width - i, paramb);
@@ -208,18 +184,18 @@ final class e
     b(7, 0, paramb);
     b(paramb.height - 7 - 1, 0, paramb);
     b(7, paramb.height - 7, paramb);
-    if (paramb.bP(8, paramb.height - 8) == 0)
+    if (paramb.bM(8, paramb.height - 8) == 0)
     {
       parama = new h();
       AppMethodBeat.o(12247);
       throw parama;
     }
     paramb.set(8, paramb.height - 8, 1);
-    if (paramc.bMZ >= 2)
+    if (paramc.bKH >= 2)
     {
-      i = paramc.bMZ - 1;
-      localObject = bNn[i];
-      int n = bNn[i].length;
+      i = paramc.bKH - 1;
+      localObject = bKV[i];
+      int n = bKV[i].length;
       i = 0;
       while (i < n)
       {
@@ -228,7 +204,7 @@ final class e
         {
           int i1 = localObject[i];
           int i2 = localObject[j];
-          if ((i2 != -1) && (i1 != -1) && (gm(paramb.bP(i2, i1))))
+          if ((i2 != -1) && (i1 != -1) && (fY(paramb.bM(i2, i1))))
           {
             int k = 0;
             while (k < 5)
@@ -236,7 +212,7 @@ final class e
               int m = 0;
               while (m < 5)
               {
-                paramb.set(i2 - 2 + m, i1 - 2 + k, bNm[k][m]);
+                paramb.set(i2 - 2 + m, i1 - 2 + k, bKU[k][m]);
                 m += 1;
               }
               k += 1;
@@ -251,10 +227,10 @@ final class e
     while (i < paramb.width - 8)
     {
       j = (i + 1) % 2;
-      if (gm(paramb.bP(i, 6))) {
+      if (fY(paramb.bM(i, 6))) {
         paramb.set(i, 6, j);
       }
-      if (gm(paramb.bP(6, i))) {
+      if (fY(paramb.bM(6, i))) {
         paramb.set(6, i, j);
       }
       i += 1;
@@ -267,11 +243,11 @@ final class e
       AppMethodBeat.o(12247);
       throw parama;
     }
-    i = parama1.bMJ << 3 | paramInt;
-    ((com.google.c.b.a)localObject).bI(i, 5);
-    ((com.google.c.b.a)localObject).bI(bQ(i, 1335), 10);
+    i = parama1.bKr << 3 | paramInt;
+    ((com.google.c.b.a)localObject).bF(i, 5);
+    ((com.google.c.b.a)localObject).bF(bN(i, 1335), 10);
     parama1 = new com.google.c.b.a();
-    parama1.bI(21522, 15);
+    parama1.bF(21522, 15);
     if (((com.google.c.b.a)localObject).size != parama1.size)
     {
       parama = new IllegalArgumentException("Sizes don't match");
@@ -279,10 +255,10 @@ final class e
       throw parama;
     }
     i = 0;
-    while (i < ((com.google.c.b.a)localObject).bKd.length)
+    while (i < ((com.google.c.b.a)localObject).bHL.length)
     {
-      int[] arrayOfInt = ((com.google.c.b.a)localObject).bKd;
-      arrayOfInt[i] ^= parama1.bKd[i];
+      int[] arrayOfInt = ((com.google.c.b.a)localObject).bHL;
+      arrayOfInt[i] ^= parama1.bHL[i];
       i += 1;
     }
     if (((com.google.c.b.a)localObject).size != 15)
@@ -295,7 +271,7 @@ final class e
     if (i < ((com.google.c.b.a)localObject).size)
     {
       boolean bool = ((com.google.c.b.a)localObject).get(((com.google.c.b.a)localObject).size - 1 - i);
-      paramb.set(bNo[i][0], bNo[i][1], bool);
+      paramb.set(bKW[i][0], bKW[i][1], bool);
       if (i < 8) {
         paramb.set(paramb.width - i - 1, 8, bool);
       }
@@ -314,14 +290,14 @@ final class e
   private static void a(c paramc, b paramb)
   {
     AppMethodBeat.i(12248);
-    if (paramc.bMZ < 7)
+    if (paramc.bKH < 7)
     {
       AppMethodBeat.o(12248);
       return;
     }
     com.google.c.b.a locala = new com.google.c.b.a();
-    locala.bI(paramc.bMZ, 6);
-    locala.bI(bQ(paramc.bMZ, 7973), 12);
+    locala.bF(paramc.bKH, 6);
+    locala.bF(bN(paramc.bKH, 7973), 12);
     if (locala.size != 18)
     {
       paramc = new h("should not happen but we got: " + locala.size);
@@ -352,7 +328,7 @@ final class e
     int i = 0;
     while (i < 7)
     {
-      if (!gm(paramb.bP(paramInt1, paramInt2 + i)))
+      if (!fY(paramb.bM(paramInt1, paramInt2 + i)))
       {
         paramb = new h();
         AppMethodBeat.o(12252);
@@ -364,7 +340,7 @@ final class e
     AppMethodBeat.o(12252);
   }
   
-  private static int bQ(int paramInt1, int paramInt2)
+  private static int bN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12250);
     if (paramInt2 == 0)
@@ -391,7 +367,7 @@ final class e
       int j = 0;
       while (j < 7)
       {
-        paramb.set(paramInt1 + j, paramInt2 + i, bNl[i][j]);
+        paramb.set(paramInt1 + j, paramInt2 + i, bKT[i][j]);
         j += 1;
       }
       i += 1;
@@ -399,14 +375,14 @@ final class e
     AppMethodBeat.o(12253);
   }
   
-  private static boolean gm(int paramInt)
+  private static boolean fY(int paramInt)
   {
     return paramInt == -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.f.b.e
  * JD-Core Version:    0.7.0.1
  */

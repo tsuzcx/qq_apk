@@ -22,7 +22,7 @@ public final class i
   public final boolean c(g paramg)
   {
     AppMethodBeat.i(183340);
-    if (this.limit >= paramg.foc())
+    if (this.limit >= paramg.fEs())
     {
       AppMethodBeat.o(183340);
       return true;

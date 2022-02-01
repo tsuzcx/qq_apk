@@ -9,38 +9,38 @@ import java.util.Arrays;
 
 final class g
 {
-  private static final byte[] bMA;
-  private static final byte[] bMB;
-  private static final byte[] bMC;
-  private static final Charset bMD;
-  private static final byte[] bMz;
+  private static final byte[] bKh;
+  private static final byte[] bKi;
+  private static final byte[] bKj;
+  private static final byte[] bKk;
+  private static final Charset bKl;
   
   static
   {
     int j = 0;
     AppMethodBeat.i(12403);
-    bMz = new byte[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 38, 13, 9, 44, 58, 35, 45, 46, 36, 47, 43, 37, 42, 61, 94, 0, 32, 0, 0, 0 };
-    bMA = new byte[] { 59, 60, 62, 64, 91, 92, 93, 95, 96, 126, 33, 13, 9, 44, 58, 10, 45, 46, 36, 47, 34, 124, 42, 40, 41, 63, 123, 125, 39, 0 };
-    bMB = new byte[''];
-    bMC = new byte[''];
-    bMD = Charset.forName("ISO-8859-1");
-    Arrays.fill(bMB, (byte)-1);
+    bKh = new byte[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 38, 13, 9, 44, 58, 35, 45, 46, 36, 47, 43, 37, 42, 61, 94, 0, 32, 0, 0, 0 };
+    bKi = new byte[] { 59, 60, 62, 64, 91, 92, 93, 95, 96, 126, 33, 13, 9, 44, 58, 10, 45, 46, 36, 47, 34, 124, 42, 40, 41, 63, 123, 125, 39, 0 };
+    bKj = new byte[''];
+    bKk = new byte[''];
+    bKl = Charset.forName("ISO-8859-1");
+    Arrays.fill(bKj, (byte)-1);
     int i = 0;
-    while (i < bMz.length)
+    while (i < bKh.length)
     {
-      int k = bMz[i];
+      int k = bKh[i];
       if (k > 0) {
-        bMB[k] = ((byte)i);
+        bKj[k] = ((byte)i);
       }
       i += 1;
     }
-    Arrays.fill(bMC, (byte)-1);
+    Arrays.fill(bKk, (byte)-1);
     i = j;
-    while (i < bMA.length)
+    while (i < bKi.length)
     {
-      j = bMA[i];
+      j = bKi[i];
       if (j > 0) {
-        bMC[j] = ((byte)i);
+        bKk[j] = ((byte)i);
       }
       i += 1;
     }
@@ -63,7 +63,7 @@ final class g
         if (!m(i)) {
           break label520;
         }
-        localStringBuilder.append((char)bMC[i]);
+        localStringBuilder.append((char)bKk[i]);
         k = j + 1;
         j = k;
       }
@@ -111,7 +111,7 @@ final class g
           break;
         }
         localStringBuilder.append('\035');
-        localStringBuilder.append((char)bMC[i]);
+        localStringBuilder.append((char)bKk[i]);
         break label81;
         if (k(i))
         {
@@ -136,11 +136,11 @@ final class g
           break;
         }
         localStringBuilder.append('\035');
-        localStringBuilder.append((char)bMC[i]);
+        localStringBuilder.append((char)bKk[i]);
         break label81;
         if (l(i))
         {
-          localStringBuilder.append((char)bMB[i]);
+          localStringBuilder.append((char)bKj[i]);
           break label81;
         }
         if (j(i))
@@ -162,7 +162,7 @@ final class g
           break;
         }
         localStringBuilder.append('\035');
-        localStringBuilder.append((char)bMC[i]);
+        localStringBuilder.append((char)bKk[i]);
         break label81;
         localStringBuilder.append('\035');
         paramInt3 = 0;
@@ -235,9 +235,9 @@ final class g
     int i1;
     if (paramCharset == null)
     {
-      localCharset = bMD;
+      localCharset = bKl;
       i1 = paramString.length();
-      if (paramc != c.bMn) {
+      if (paramc != c.bJV) {
         break label242;
       }
       a(paramString, 0, i1, localStringBuilder, 0);
@@ -248,15 +248,15 @@ final class g
       AppMethodBeat.o(12396);
       return paramString;
       localCharset = paramCharset;
-      if (bMD.equals(paramCharset)) {
+      if (bKl.equals(paramCharset)) {
         break;
       }
-      com.google.c.b.c localc = com.google.c.b.c.bu(paramCharset.name());
+      com.google.c.b.c localc = com.google.c.b.c.bl(paramCharset.name());
       localCharset = paramCharset;
       if (localc == null) {
         break;
       }
-      i = localc.bKI[0];
+      i = localc.bIq[0];
       if ((i >= 0) && (i < 900))
       {
         localStringBuilder.append('Ο');
@@ -283,14 +283,14 @@ final class g
       AppMethodBeat.o(12396);
       throw paramString;
       label242:
-      if (paramc == c.bMo)
+      if (paramc == c.bJW)
       {
         paramString = paramString.getBytes(localCharset);
         a(paramString, paramString.length, 1, localStringBuilder);
       }
       else
       {
-        if (paramc != c.bMp) {
+        if (paramc != c.bJX) {
           break label296;
         }
         localStringBuilder.append('Ά');
@@ -558,17 +558,17 @@ final class g
   
   private static boolean l(char paramChar)
   {
-    return bMB[paramChar] != -1;
+    return bKj[paramChar] != -1;
   }
   
   private static boolean m(char paramChar)
   {
-    return bMC[paramChar] != -1;
+    return bKk[paramChar] != -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.e.a.g
  * JD-Core Version:    0.7.0.1
  */

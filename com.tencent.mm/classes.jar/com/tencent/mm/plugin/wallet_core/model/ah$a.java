@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum ah$a
 {
-  public final String ueB;
   public final int value;
+  public final String vnz;
   
   static
   {
     AppMethodBeat.i(70449);
-    AhR = new a("GuideType_FQF_SWITCH", "切换分付");
-    AhS = new a[] { AhR };
+    BAl = new a("GuideType_FQF_SWITCH", "切换分付");
+    BAm = new a[] { BAl };
     AppMethodBeat.o(70449);
   }
   
   private ah$a(String paramString)
   {
     Object localObject;
-    this.ueB = localObject;
+    this.vnz = localObject;
     this.value = 1;
   }
 }

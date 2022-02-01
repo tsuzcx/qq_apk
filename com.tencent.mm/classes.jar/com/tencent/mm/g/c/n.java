@@ -8,11 +8,11 @@ public abstract class n
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ = "appId".hashCode();
-  private static final int eme = "username".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eok = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean els = true;
-  private boolean emb = true;
+  private boolean enx = true;
+  private boolean eoh = true;
   public String field_appId;
   public String field_username;
   
@@ -29,7 +29,7 @@ public abstract class n
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eme != k) {
+      if (eok != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -40,7 +40,7 @@ public abstract class n
       break label20;
       break;
       label60:
-      if (elJ == k) {
+      if (enO == k) {
         this.field_appId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class n
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emb) {
+    if (this.eoh) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
     if (this.systemRowid > 0L) {

@@ -1,0 +1,8 @@
+{
+  "updateTime": "2020.5.11 14:41:30",
+  "version": "2.11.0",
+  "features": {
+    "pruneWxConfigByPage": true,
+    "injectGameContextPlugin": true
+  }
+}

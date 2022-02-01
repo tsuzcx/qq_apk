@@ -10,20 +10,20 @@ class e
   protected e(b paramb)
   {
     AppMethodBeat.i(140317);
-    this.bZa = paramb;
-    this.bZb = new JSONObject();
+    this.bVX = paramb;
+    this.bVY = new JSONObject();
     AppMethodBeat.o(140317);
   }
   
   final void b(JSONObject paramJSONObject)
   {
-    this.bZb = paramJSONObject;
+    this.bVY = paramJSONObject;
   }
   
-  final void d(Map<String, Object> paramMap)
+  final void c(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(140318);
-    this.bZb = new JSONObject(paramMap);
+    this.bVY = new JSONObject(paramMap);
     AppMethodBeat.o(140318);
   }
 }

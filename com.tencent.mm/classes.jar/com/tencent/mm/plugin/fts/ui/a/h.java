@@ -11,27 +11,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.b.b;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class h
   extends a
 {
-  CharSequence rvA;
-  private b rvB;
-  a rvC;
+  CharSequence sEs;
+  private b sEt;
+  a sEu;
   
   public h(int paramInt)
   {
     super(10, paramInt);
     AppMethodBeat.i(112077);
-    this.rvB = new b((byte)0);
-    this.rvC = new a((byte)0);
+    this.sEt = new b((byte)0);
+    this.sEu = new a((byte)0);
     AppMethodBeat.o(112077);
   }
   
@@ -39,31 +39,31 @@ public final class h
   {
     AppMethodBeat.i(112078);
     parama = new SpannableStringBuilder();
-    paramVarArgs = this.roS.rps;
+    paramVarArgs = this.sxM.sym;
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
       Object localObject = paramVarArgs[i];
       SpannableString localSpannableString = new SpannableString(localObject);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.rsF), 0, localObject.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(b.b.sBz), 0, localObject.length(), 33);
       parama.append(localSpannableString);
       parama.append("、");
       i += 1;
     }
-    this.rvA = TextUtils.concat(new CharSequence[] { paramContext.getString(2131763011), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131763010) });
+    this.sEs = TextUtils.concat(new CharSequence[] { paramContext.getString(2131763011), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131763010) });
     AppMethodBeat.o(112078);
   }
   
-  public final a.b acQ()
+  public final a.b adW()
   {
-    return this.rvB;
+    return this.sEt;
   }
   
   final class a
     extends a.a
   {
-    TextView hJe;
+    TextView ijE;
     
     private a()
     {
@@ -83,8 +83,8 @@ public final class h
     {
       AppMethodBeat.i(112074);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494195, paramViewGroup, false);
-      paramViewGroup = (h.a)h.this.rvC;
-      paramViewGroup.hJe = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup = (h.a)h.this.sEu;
+      paramViewGroup.ijE = ((TextView)paramContext.findViewById(2131299008));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112074);
       return paramContext;
@@ -94,7 +94,7 @@ public final class h
     {
       AppMethodBeat.i(112075);
       paramContext = (h.a)parama;
-      m.a(h.this.rvA, paramContext.hJe);
+      m.a(h.this.sEs, paramContext.ijE);
       AppMethodBeat.o(112075);
     }
     
@@ -102,7 +102,7 @@ public final class h
     {
       AppMethodBeat.i(112076);
       paramVarArgs = new Intent();
-      paramVarArgs.putExtra("query_phrase_list", bt.S(h.this.roS.rps));
+      paramVarArgs.putExtra("query_phrase_list", bs.S(h.this.sxM.sym));
       paramVarArgs.putExtra("go_to_chatroom_direct", true);
       paramVarArgs.putExtra("scene_from", 3);
       d.e(paramContext, ".ui.transmit.MMCreateChatroomUI", paramVarArgs);
@@ -113,7 +113,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.h
  * JD-Core Version:    0.7.0.1
  */

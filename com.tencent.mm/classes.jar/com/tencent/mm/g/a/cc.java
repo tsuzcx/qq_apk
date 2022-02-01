@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cc
   extends b
 {
-  public a dei;
-  public b dej;
+  public a dbE;
+  public b dbF;
   
   public cc()
   {
@@ -17,9 +17,9 @@ public final class cc
   private cc(byte paramByte)
   {
     AppMethodBeat.i(43440);
-    this.dei = new a();
-    this.dej = new b();
-    this.ESR = false;
+    this.dbE = new a();
+    this.dbF = new b();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(43440);
   }
@@ -32,7 +32,7 @@ public final class cc
   public static final class b
   {
     public String appId;
-    public String[] cfS;
+    public String[] ccP;
     public String nickname;
   }
 }

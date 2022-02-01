@@ -8,39 +8,39 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.a.a;
 import com.tencent.mm.plugin.emoji.model.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class g
   extends f
 {
-  private int otY = 0;
-  private int otZ = 0;
-  private int oua = 0;
+  private int oXA = 0;
+  private int oXB = 0;
+  private int oXz = 0;
   
   public g(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void Ap(int paramInt)
+  public final void Bh(int paramInt)
   {
-    this.otY = paramInt;
+    this.oXz = paramInt;
   }
   
-  public final void Aq(int paramInt)
+  public final void Bi(int paramInt)
   {
-    this.otZ = paramInt;
+    this.oXA = paramInt;
   }
   
-  public final void Ar(int paramInt)
+  public final void Bj(int paramInt)
   {
-    this.oua = paramInt;
+    this.oXB = paramInt;
   }
   
-  public final com.tencent.mm.plugin.emoji.a.a.f As(int paramInt)
+  public final com.tencent.mm.plugin.emoji.a.a.f Bk(int paramInt)
   {
     AppMethodBeat.i(108329);
-    com.tencent.mm.plugin.emoji.a.a.f localf = super.As(paramInt);
+    com.tencent.mm.plugin.emoji.a.a.f localf = super.Bk(paramInt);
     AppMethodBeat.o(108329);
     return localf;
   }
@@ -49,22 +49,22 @@ public final class g
   {
     AppMethodBeat.i(108328);
     final f.a locala = (f.a)paramView.getTag();
-    if (this.otY > 0) {
+    if (this.oXz > 0) {
       if (paramInt == 0)
       {
-        locala.otx.setVisibility(0);
-        locala.otx.setText(this.mContext.getString(2131758329));
+        locala.oWY.setVisibility(0);
+        locala.oWY.setText(this.mContext.getString(2131758329));
       }
     }
     for (;;)
     {
-      if (locala.otz != null) {
-        locala.otz.postDelayed(new Runnable()
+      if (locala.oXa != null) {
+        locala.oXa.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(108326);
-            locala.otz.setPressed(false);
+            locala.oXa.setPressed(false);
             AppMethodBeat.o(108326);
           }
         }, 100L);
@@ -72,81 +72,81 @@ public final class g
       paramView = super.b(paramInt, paramView, paramViewGroup);
       AppMethodBeat.o(108328);
       return paramView;
-      if ((this.otZ > 0) && (paramInt == this.otY))
+      if ((this.oXA > 0) && (paramInt == this.oXz))
       {
-        locala.otx.setVisibility(0);
-        locala.otx.setText(this.mContext.getString(2131758350));
+        locala.oWY.setVisibility(0);
+        locala.oWY.setText(this.mContext.getString(2131758350));
       }
-      else if (paramInt == this.otY + this.otZ)
+      else if (paramInt == this.oXz + this.oXA)
       {
-        locala.otx.setVisibility(0);
-        if (!bt.isNullOrNil(d.bUR().owV)) {
-          locala.otx.setText(d.bUR().owV);
-        } else if (d.bUR().owT) {
-          locala.otx.setText(2131758349);
+        locala.oWY.setVisibility(0);
+        if (!bs.isNullOrNil(d.cce().pav)) {
+          locala.oWY.setText(d.cce().pav);
+        } else if (d.cce().pat) {
+          locala.oWY.setText(2131758349);
         } else {
-          locala.otx.setText(this.mContext.getString(2131758309));
+          locala.oWY.setText(this.mContext.getString(2131758309));
         }
       }
       else
       {
-        locala.otx.setVisibility(8);
+        locala.oWY.setVisibility(8);
         continue;
-        if (this.otZ > 0)
+        if (this.oXA > 0)
         {
           if (paramInt == 0)
           {
-            locala.otx.setVisibility(0);
-            locala.otx.setText(this.mContext.getString(2131758350));
+            locala.oWY.setVisibility(0);
+            locala.oWY.setText(this.mContext.getString(2131758350));
           }
-          else if (paramInt == this.otY + this.otZ)
+          else if (paramInt == this.oXz + this.oXA)
           {
-            locala.otx.setVisibility(0);
-            if (!bt.isNullOrNil(d.bUR().owV)) {
-              locala.otx.setText(d.bUR().owV);
-            } else if (d.bUR().owT) {
-              locala.otx.setText(2131758349);
+            locala.oWY.setVisibility(0);
+            if (!bs.isNullOrNil(d.cce().pav)) {
+              locala.oWY.setText(d.cce().pav);
+            } else if (d.cce().pat) {
+              locala.oWY.setText(2131758349);
             } else {
-              locala.otx.setText(this.mContext.getString(2131758309));
+              locala.oWY.setText(this.mContext.getString(2131758309));
             }
           }
           else
           {
-            locala.otx.setVisibility(8);
+            locala.oWY.setVisibility(8);
           }
         }
         else if (paramInt == 0)
         {
-          locala.otx.setVisibility(0);
-          if (!bt.isNullOrNil(d.bUR().owV)) {
-            locala.otx.setText(d.bUR().owV);
-          } else if (d.bUR().owT) {
-            locala.otx.setText(2131758349);
+          locala.oWY.setVisibility(0);
+          if (!bs.isNullOrNil(d.cce().pav)) {
+            locala.oWY.setText(d.cce().pav);
+          } else if (d.cce().pat) {
+            locala.oWY.setText(2131758349);
           } else {
-            locala.otx.setText(this.mContext.getString(2131758309));
+            locala.oWY.setText(this.mContext.getString(2131758309));
           }
         }
         else
         {
-          locala.otx.setVisibility(8);
+          locala.oWY.setVisibility(8);
         }
       }
     }
   }
   
-  public final int bUr()
+  public final int cbE()
   {
-    return this.otY;
+    return this.oXz;
   }
   
-  public final int bUs()
+  public final int cbF()
   {
-    return this.otZ;
+    return this.oXA;
   }
   
-  public final int bUt()
+  public final int cbG()
   {
-    return this.oua;
+    return this.oXB;
   }
   
   public final int getCount()
@@ -159,7 +159,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.g
  * JD-Core Version:    0.7.0.1
  */

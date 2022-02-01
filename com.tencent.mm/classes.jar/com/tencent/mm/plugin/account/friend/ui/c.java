@@ -10,47 +10,47 @@ public final class c
   implements View.OnClickListener
 {
   private Context context;
-  private a imx;
+  private a iMD;
   
   public c(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.imx = parama;
+    this.iMD = parama;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(131231);
     paramView = (b)paramView.getTag();
-    String str = paramView.imz;
+    String str = paramView.iMF;
     final int i = paramView.position;
-    int j = p.dG(str);
+    int j = p.dv(str);
     new g(this.context, new g.a()
     {
-      public final void f(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
         AppMethodBeat.i(131230);
-        c.a(c.this).eU(paramAnonymousBoolean);
+        c.a(c.this).fo(paramAnonymousBoolean);
         AppMethodBeat.o(131230);
       }
-    }).q(new int[] { j });
+    }).r(new int[] { j });
     AppMethodBeat.o(131231);
   }
   
   public static abstract interface a
   {
-    public abstract void eU(boolean paramBoolean);
+    public abstract void fo(boolean paramBoolean);
   }
   
   public static final class b
   {
-    public String imz;
+    public String iMF;
     public int position;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.c
  * JD-Core Version:    0.7.0.1
  */

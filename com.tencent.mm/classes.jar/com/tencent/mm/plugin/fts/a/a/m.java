@@ -5,23 +5,23 @@ import java.util.List;
 public class m
 {
   public String content;
-  public int roM;
-  public String roN;
-  public h roS;
-  public long rpR;
-  public long rpT;
-  public String rpV;
-  public int rpW;
-  public String rpX;
-  public String[] rpY = null;
-  public int[] rpZ = null;
-  public int rpo;
-  public List<g> rqa;
-  public long rqb;
-  public int rqc;
-  public boolean rqd;
-  public String rqe;
-  public int rqf;
+  public int sxF;
+  public String sxG;
+  public h sxM;
+  public long syL;
+  public long syN;
+  public String syP;
+  public int syQ;
+  public String syR;
+  public String[] syS = null;
+  public int[] syT = null;
+  public List<g> syU;
+  public long syV;
+  public int syW;
+  public boolean syX;
+  public String syY;
+  public int syZ;
+  public int syi;
   public String talker;
   public long timestamp;
   public int type;
@@ -29,7 +29,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.m
  * JD-Core Version:    0.7.0.1
  */

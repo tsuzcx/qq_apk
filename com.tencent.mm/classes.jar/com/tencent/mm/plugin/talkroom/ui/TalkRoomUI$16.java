@@ -12,7 +12,7 @@ final class TalkRoomUI$16
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(29606);
-    this.yKo.onBackPressed();
+    this.zXB.onBackPressed();
     AppMethodBeat.o(29606);
   }
 }

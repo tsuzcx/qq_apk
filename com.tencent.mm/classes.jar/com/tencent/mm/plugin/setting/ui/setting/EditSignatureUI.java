@@ -13,11 +13,11 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -25,8 +25,8 @@ import com.tencent.mm.ui.widget.MMEditText;
 public class EditSignatureUI
   extends MMActivity
 {
-  private TextView wdU;
-  private MMEditText wee;
+  private TextView xpi;
+  private MMEditText xps;
   
   public EditSignatureUI()
   {
@@ -43,14 +43,14 @@ public class EditSignatureUI
   {
     AppMethodBeat.i(73880);
     setMMTitle(2131763408);
-    this.wee = ((MMEditText)findViewById(2131298739));
-    this.wdU = ((TextView)findViewById(2131307005));
-    String str = bt.nullAsNil((String)g.afB().afk().get(12291, null));
-    this.wee.setText(k.b(this, str, this.wee.getTextSize()));
-    this.wee.setSelection(this.wee.getText().length());
-    this.wdU.setText(f.cJ(60, this.wee.getEditableText().toString()));
-    c.d(this.wee).jE(0, 60).a(null);
-    this.wee.addTextChangedListener(new a((byte)0));
+    this.xps = ((MMEditText)findViewById(2131298739));
+    this.xpi = ((TextView)findViewById(2131307005));
+    String str = bs.nullAsNil((String)g.agR().agA().get(12291, null));
+    this.xps.setText(k.b(this, str, this.xps.getTextSize()));
+    this.xps.setSelection(this.xps.getText().length());
+    this.xpi.setText(f.cM(60, this.xps.getEditableText().toString()));
+    c.d(this.xps).jQ(0, 60).a(null);
+    this.xps.addTextChangedListener(new a((byte)0));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -68,20 +68,20 @@ public class EditSignatureUI
       {
         AppMethodBeat.i(73873);
         paramAnonymousMenuItem = EditSignatureUI.b(EditSignatureUI.this).getText().toString().trim();
-        String str = b.YL();
-        if ((!bt.isNullOrNil(str)) && (paramAnonymousMenuItem.matches(".*[" + str + "].*")))
+        String str = b.ZI();
+        if ((!bs.isNullOrNil(str)) && (paramAnonymousMenuItem.matches(".*[" + str + "].*")))
         {
           h.c(EditSignatureUI.this.getContext(), EditSignatureUI.this.getString(2131760350, new Object[] { str }), EditSignatureUI.this.getString(2131755906), true);
           AppMethodBeat.o(73873);
           return false;
         }
-        g.afB().afk().set(12291, paramAnonymousMenuItem);
+        g.agR().agA().set(12291, paramAnonymousMenuItem);
         EditSignatureUI.this.hideVKB();
         EditSignatureUI.this.finish();
         AppMethodBeat.o(73873);
         return true;
       }
-    }, null, r.b.FOB);
+    }, null, s.b.Hom);
     enableOptionMenu(false);
     AppMethodBeat.o(73880);
   }
@@ -121,19 +121,19 @@ public class EditSignatureUI
   final class a
     implements TextWatcher
   {
-    private int weg = 60;
+    private int xpu = 60;
     
     private a() {}
     
     public final void afterTextChanged(Editable paramEditable)
     {
       AppMethodBeat.i(73876);
-      this.weg = f.cJ(60, paramEditable.toString());
-      if (this.weg < 0) {
-        this.weg = 0;
+      this.xpu = f.cM(60, paramEditable.toString());
+      if (this.xpu < 0) {
+        this.xpu = 0;
       }
       if (EditSignatureUI.a(EditSignatureUI.this) != null) {
-        EditSignatureUI.a(EditSignatureUI.this).setText(this.weg);
+        EditSignatureUI.a(EditSignatureUI.this).setText(this.xpu);
       }
       AppMethodBeat.o(73876);
     }
@@ -150,7 +150,7 @@ public class EditSignatureUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.EditSignatureUI
  * JD-Core Version:    0.7.0.1
  */

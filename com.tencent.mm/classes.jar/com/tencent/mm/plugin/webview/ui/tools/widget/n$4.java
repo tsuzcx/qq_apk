@@ -5,16 +5,16 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class n$4
   implements View.OnClickListener
 {
-  public static final 4 Bvp;
+  public static final 4 CNy;
   
   static
   {
     AppMethodBeat.i(82695);
-    Bvp = new 4();
+    CNy = new 4();
     AppMethodBeat.o(82695);
   }
   

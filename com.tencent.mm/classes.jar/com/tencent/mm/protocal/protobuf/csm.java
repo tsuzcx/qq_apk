@@ -1,127 +1,135 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class csm
-  extends com.tencent.mm.bx.a
+  extends cpx
 {
-  public String CtT;
-  public String CtU;
-  public int CtV;
-  public String CzS;
-  public String dyc;
-  public String dyd;
-  public String nrr;
+  public String category;
+  public String mac;
+  public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114073);
+    AppMethodBeat.i(32419);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dyc != null) {
-        paramVarArgs.d(1, this.dyc);
+      if (this.mac == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: mac");
+        AppMethodBeat.o(32419);
+        throw paramVarArgs;
       }
-      if (this.nrr != null) {
-        paramVarArgs.d(2, this.nrr);
+      if (this.userName == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: userName");
+        AppMethodBeat.o(32419);
+        throw paramVarArgs;
       }
-      if (this.dyd != null) {
-        paramVarArgs.d(3, this.dyd);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.CtT != null) {
-        paramVarArgs.d(4, this.CtT);
+      if (this.mac != null) {
+        paramVarArgs.d(2, this.mac);
       }
-      if (this.CtU != null) {
-        paramVarArgs.d(5, this.CtU);
+      if (this.userName != null) {
+        paramVarArgs.d(3, this.userName);
       }
-      paramVarArgs.aR(6, this.CtV);
-      if (this.CzS != null) {
-        paramVarArgs.d(7, this.CzS);
+      if (this.category != null) {
+        paramVarArgs.d(4, this.category);
       }
-      AppMethodBeat.o(114073);
+      AppMethodBeat.o(32419);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dyc == null) {
-        break label562;
+      if (this.BaseRequest == null) {
+        break label600;
       }
     }
-    label562:
-    for (int i = f.a.a.b.b.a.e(1, this.dyc) + 0;; i = 0)
+    label600:
+    for (int i = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.nrr != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nrr);
+      if (this.mac != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.mac);
       }
       i = paramInt;
-      if (this.dyd != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dyd);
+      if (this.userName != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.userName);
       }
       paramInt = i;
-      if (this.CtT != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.CtT);
+      if (this.category != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.category);
       }
-      i = paramInt;
-      if (this.CtU != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.CtU);
-      }
-      i += f.a.a.b.b.a.bA(6, this.CtV);
-      paramInt = i;
-      if (this.CzS != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.CzS);
-      }
-      AppMethodBeat.o(114073);
+      AppMethodBeat.o(32419);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(114073);
+        if (this.mac == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: mac");
+          AppMethodBeat.o(32419);
+          throw paramVarArgs;
+        }
+        if (this.userName == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: userName");
+          AppMethodBeat.o(32419);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32419);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         csm localcsm = (csm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(114073);
+          AppMethodBeat.o(32419);
           return -1;
         case 1: 
-          localcsm.dyc = locala.KhF.readString();
-          AppMethodBeat.o(114073);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iv();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcsm.BaseRequest = ((iv)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32419);
           return 0;
         case 2: 
-          localcsm.nrr = locala.KhF.readString();
-          AppMethodBeat.o(114073);
+          localcsm.mac = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(32419);
           return 0;
         case 3: 
-          localcsm.dyd = locala.KhF.readString();
-          AppMethodBeat.o(114073);
-          return 0;
-        case 4: 
-          localcsm.CtT = locala.KhF.readString();
-          AppMethodBeat.o(114073);
-          return 0;
-        case 5: 
-          localcsm.CtU = locala.KhF.readString();
-          AppMethodBeat.o(114073);
-          return 0;
-        case 6: 
-          localcsm.CtV = locala.KhF.xS();
-          AppMethodBeat.o(114073);
+          localcsm.userName = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(32419);
           return 0;
         }
-        localcsm.CzS = locala.KhF.readString();
-        AppMethodBeat.o(114073);
+        localcsm.category = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(32419);
         return 0;
       }
-      AppMethodBeat.o(114073);
+      AppMethodBeat.o(32419);
       return -1;
     }
   }

@@ -9,53 +9,53 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.v;
-import com.tencent.mm.am.af;
+import com.tencent.mm.ah.v;
+import com.tencent.mm.al.af;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.brandservice.ui.timeline.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.s;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storage.t;
+import com.tencent.mm.storage.u;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public class k
   extends n
 {
-  public View hIU;
+  public View ijv;
   private Context mContext;
-  public View mYI;
-  public View mZJ;
-  public MMNeat7extView mZK;
-  public TextView mZL;
-  public View mZM;
-  public ImageView mZN;
-  public View mZO;
-  public ImageView mZP;
-  public ImageView mZQ;
-  public View mZR;
-  public TextView mZS;
-  public View mZT;
-  public View mZU;
-  public TextView mZV;
-  private View.OnClickListener mZW;
+  public View nBh;
+  public View nCh;
+  public MMNeat7extView nCi;
+  public TextView nCj;
+  public View nCk;
+  public ImageView nCl;
+  public View nCm;
+  public ImageView nCn;
+  public ImageView nCo;
+  public View nCp;
+  public TextView nCq;
+  public View nCr;
+  public View nCs;
+  public TextView nCt;
+  private View.OnClickListener nCu;
   
   public k(com.tencent.mm.plugin.brandservice.ui.timeline.c paramc, Context paramContext)
   {
     AppMethodBeat.i(6003);
-    this.mZW = new View.OnClickListener()
+    this.nCu = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(6002);
-        long l = ((com.tencent.mm.plugin.brandservice.a.a)g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).dv(paramAnonymousView);
-        paramAnonymousView = af.awk().vU(l);
+        long l = ((com.tencent.mm.plugin.brandservice.a.a)g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).dx(paramAnonymousView);
+        paramAnonymousView = af.aDc().Ax(l);
         if (paramAnonymousView != null)
         {
-          k.this.nao.mWX.c(paramAnonymousView, 4);
+          k.this.nCM.nzw.d(paramAnonymousView, 4);
           AppMethodBeat.o(6002);
           return;
         }
-        ad.w("MicroMsg.BizTimeLineItem", "mediaIconClickListener info is null");
+        ac.w("MicroMsg.BizTimeLineItem", "mediaIconClickListener info is null");
         AppMethodBeat.o(6002);
       }
     };
@@ -64,7 +64,7 @@ public class k
     AppMethodBeat.o(6003);
   }
   
-  private static void U(View paramView, int paramInt)
+  private static void V(View paramView, int paramInt)
   {
     AppMethodBeat.i(6005);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
@@ -74,85 +74,85 @@ public class k
     AppMethodBeat.o(6005);
   }
   
-  public final void a(ImageView paramImageView, s params, int paramInt, String paramString)
+  public final void a(ImageView paramImageView, t paramt, int paramInt, String paramString)
   {
     AppMethodBeat.i(6006);
-    ((com.tencent.mm.plugin.brandservice.a.a)g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramImageView, params.field_msgId, paramString, params.field_content, paramInt);
-    paramImageView.setOnClickListener(this.mZW);
+    ((com.tencent.mm.plugin.brandservice.a.a)g.ab(com.tencent.mm.plugin.brandservice.a.a.class)).a(paramImageView, paramt.field_msgId, paramString, paramt.field_content, paramInt);
+    paramImageView.setOnClickListener(this.nCu);
     AppMethodBeat.o(6006);
   }
   
-  public final void a(v paramv, s params, int paramInt, boolean paramBoolean)
+  public final void a(v paramv, t paramt, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(6004);
-    this.mZO.setVisibility(8);
+    this.nCm.setVisibility(8);
     if (paramv.type == 5)
     {
-      this.mZQ.setVisibility(0);
-      this.mZQ.setImageResource(2131231270);
-      this.mZQ.setOnClickListener(new View.OnClickListener()
+      this.nCo.setVisibility(0);
+      this.nCo.setImageResource(2131231270);
+      this.nCo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(6001);
-          k.this.mYI.performClick();
+          k.this.nBh.performClick();
           AppMethodBeat.o(6001);
         }
       });
     }
     for (;;)
     {
-      paramInt = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 28);
+      paramInt = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 28);
       if (paramv.type == 7) {
-        paramInt = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 48);
+        paramInt = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 48);
       }
-      U(this.mZQ, paramInt);
+      V(this.nCo, paramInt);
       AppMethodBeat.o(6004);
       return;
       if (paramv.type == 6)
       {
-        this.mZQ.setVisibility(0);
+        this.nCo.setVisibility(0);
         if (paramBoolean) {
-          if ((params.field_msgId + "_" + paramInt).equals(com.tencent.mm.plugin.brandservice.ui.b.c.bGw())) {
-            this.mZQ.setImageResource(2131231672);
+          if ((paramt.field_msgId + "_" + paramInt).equals(com.tencent.mm.plugin.brandservice.ui.b.c.bNJ())) {
+            this.nCo.setImageResource(2131231672);
           }
         }
         for (;;)
         {
-          a(this.mZQ, params, paramInt, paramv.gKD);
+          a(this.nCo, paramt, paramInt, paramv.hld);
           break;
-          this.mZQ.setImageResource(2131231673);
+          this.nCo.setImageResource(2131231673);
           continue;
-          if ((params.field_msgId + "_" + paramInt).equals(com.tencent.mm.plugin.brandservice.ui.b.c.bGw())) {
-            this.mZQ.setImageResource(2131689906);
+          if ((paramt.field_msgId + "_" + paramInt).equals(com.tencent.mm.plugin.brandservice.ui.b.c.bNJ())) {
+            this.nCo.setImageResource(2131689906);
           } else {
-            this.mZQ.setImageResource(2131689909);
+            this.nCo.setImageResource(2131689909);
           }
         }
       }
       if (paramv.type == 7)
       {
-        this.mZQ.setVisibility(8);
-        this.mZO.setVisibility(0);
-        Drawable localDrawable = this.mZP.getDrawable();
+        this.nCo.setVisibility(8);
+        this.nCm.setVisibility(0);
+        Drawable localDrawable = this.nCn.getDrawable();
         if (((localDrawable instanceof AnimationDrawable)) && (((AnimationDrawable)localDrawable).isRunning())) {
           ((AnimationDrawable)localDrawable).stop();
         }
-        if ((params.field_msgId + "_" + paramInt).equals(com.tencent.mm.plugin.brandservice.ui.b.c.bGw()))
+        if ((paramt.field_msgId + "_" + paramInt).equals(com.tencent.mm.plugin.brandservice.ui.b.c.bNJ()))
         {
-          this.mZP.setImageResource(2131231272);
-          if ((this.mZQ.getDrawable() instanceof AnimationDrawable)) {
-            ((AnimationDrawable)this.mZQ.getDrawable()).start();
+          this.nCn.setImageResource(2131231272);
+          if ((this.nCo.getDrawable() instanceof AnimationDrawable)) {
+            ((AnimationDrawable)this.nCo.getDrawable()).start();
           }
         }
         for (;;)
         {
-          a(this.mZP, params, paramInt, paramv.gKD);
+          a(this.nCn, paramt, paramInt, paramv.hld);
           break;
-          this.mZP.setImageResource(2131231271);
+          this.nCn.setImageResource(2131231271);
         }
       }
-      this.mZQ.setVisibility(8);
+      this.nCo.setVisibility(8);
     }
   }
   
@@ -161,30 +161,30 @@ public class k
     AppMethodBeat.i(6007);
     if (paramv.type == 8)
     {
-      this.mZT.setVisibility(0);
-      if (paramv.gKT > 1)
+      this.nCr.setVisibility(0);
+      if (paramv.hlt > 1)
       {
-        this.mZV.setVisibility(0);
-        this.mZV.setText(String.valueOf(paramv.gKT));
+        this.nCt.setVisibility(0);
+        this.nCt.setText(String.valueOf(paramv.hlt));
       }
       while (paramBoolean)
       {
-        this.mZU.setBackgroundResource(2131231282);
+        this.nCs.setBackgroundResource(2131231282);
         AppMethodBeat.o(6007);
         return;
-        this.mZV.setVisibility(8);
+        this.nCt.setVisibility(8);
       }
-      this.mZU.setBackgroundResource(2131233299);
+      this.nCs.setBackgroundResource(2131233299);
       AppMethodBeat.o(6007);
       return;
     }
-    this.mZT.setVisibility(8);
+    this.nCr.setVisibility(8);
     AppMethodBeat.o(6007);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.k
  * JD-Core Version:    0.7.0.1
  */

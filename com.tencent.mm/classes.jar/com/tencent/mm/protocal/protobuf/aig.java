@@ -1,51 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class aig
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String link;
+  public String EDd;
   public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(168952);
+    AppMethodBeat.i(153271);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.link != null) {
-        paramVarArgs.d(1, this.link);
+      if (this.title == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: title");
+        AppMethodBeat.o(153271);
+        throw paramVarArgs;
+      }
+      if (this.EDd == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: jumpurl_prefix");
+        AppMethodBeat.o(153271);
+        throw paramVarArgs;
       }
       if (this.title != null) {
-        paramVarArgs.d(2, this.title);
+        paramVarArgs.d(1, this.title);
       }
-      AppMethodBeat.o(168952);
+      if (this.EDd != null) {
+        paramVarArgs.d(2, this.EDd);
+      }
+      AppMethodBeat.o(153271);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.link == null) {
-        break label274;
+      if (this.title == null) {
+        break label370;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.link) + 0;; paramInt = 0)
+    label370:
+    for (paramInt = f.a.a.b.b.a.e(1, this.title) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.title != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.title);
+      if (this.EDd != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.EDd);
       }
-      AppMethodBeat.o(168952);
+      AppMethodBeat.o(153271);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(168952);
+        if (this.title == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: title");
+          AppMethodBeat.o(153271);
+          throw paramVarArgs;
+        }
+        if (this.EDd == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: jumpurl_prefix");
+          AppMethodBeat.o(153271);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(153271);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +80,18 @@ public final class aig
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(168952);
+          AppMethodBeat.o(153271);
           return -1;
         case 1: 
-          localaig.link = locala.KhF.readString();
-          AppMethodBeat.o(168952);
+          localaig.title = locala.LVo.readString();
+          AppMethodBeat.o(153271);
           return 0;
         }
-        localaig.title = locala.KhF.readString();
-        AppMethodBeat.o(168952);
+        localaig.EDd = locala.LVo.readString();
+        AppMethodBeat.o(153271);
         return 0;
       }
-      AppMethodBeat.o(168952);
+      AppMethodBeat.o(153271);
       return -1;
     }
   }

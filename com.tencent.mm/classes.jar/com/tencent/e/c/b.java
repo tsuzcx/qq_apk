@@ -4,7 +4,7 @@ import com.tencent.e.b.c;
 
 public final class b
 {
-  public static c IyG;
+  public static c Kap;
 }
 
 

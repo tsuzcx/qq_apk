@@ -17,10 +17,10 @@ final class r
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
     AppMethodBeat.i(27261);
-    if ((u.aqS() & 0x1000000) == 0) {}
+    if ((u.axI() & 0x1000000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.oa(bool);
+      paramHelperHeaderPreference.oU(bool);
       AppMethodBeat.o(27261);
       return;
     }
@@ -36,7 +36,7 @@ final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.r
  * JD-Core Version:    0.7.0.1
  */

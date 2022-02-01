@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class li
   extends b
 {
-  public a dpR;
+  public a dnc;
   
   public li()
   {
@@ -15,23 +15,21 @@ public final class li
   
   private li(byte paramByte)
   {
-    AppMethodBeat.i(19820);
-    this.dpR = new a();
-    this.ESR = false;
+    AppMethodBeat.i(131791);
+    this.dnc = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19820);
+    AppMethodBeat.o(131791);
   }
   
   public static final class a
   {
-    public int dpS;
-    public int dpT;
-    public int dpU;
+    public boolean result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.li
  * JD-Core Version:    0.7.0.1
  */

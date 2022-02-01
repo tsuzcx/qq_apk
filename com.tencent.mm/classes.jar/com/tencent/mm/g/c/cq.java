@@ -8,50 +8,82 @@ public abstract class cq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eIA = "msgSeq".hashCode();
-  private static final int eIv = "originSvrId".hashCode();
-  private static final int eIw = "newMsgId".hashCode();
-  private static final int eIx = "fromUserName".hashCode();
-  private static final int eIy = "toUserName".hashCode();
-  private static final int eIz;
-  private static final int ekU = "createTime".hashCode();
-  private static final int elb = "content".hashCode();
-  private static final int eoK = "flag".hashCode();
-  private static final int ezd = "reserved1".hashCode();
-  private static final int eze = "reserved2".hashCode();
-  private static final int ezf = "reserved3".hashCode();
-  private static final int ezg = "reserved4".hashCode();
+  private static final int eBr;
+  private static final int eGb = "sectionMd5Byte".hashCode();
+  private static final int eKR;
+  private static final int eKS;
+  private static final int eKT;
+  private static final int eKU;
+  private static final int eKV;
+  private static final int eKW;
+  private static final int eKX;
+  private static final int eKY;
+  private static final int eKZ;
+  private static final int eKw;
+  private static final int eLa;
+  private static final int eLb;
+  private static final int eLc = "forceUpdateFlag".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eoH;
+  private static final int epR;
+  private static final int evD = "downloadUrl".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eIp = true;
-  private boolean eIq = true;
-  private boolean eIr = true;
-  private boolean eIs = true;
-  private boolean eIt = true;
-  private boolean eIu = true;
-  private boolean ekE = true;
-  private boolean ekx = true;
-  private boolean eoI = true;
-  private boolean eyr = true;
-  private boolean eys = true;
-  private boolean eyt = true;
-  private boolean eyu = true;
-  public String field_content;
-  public long field_createTime;
-  public int field_flag;
-  public String field_fromUserName;
-  public int field_msgSeq;
-  public String field_msgSource;
-  public long field_newMsgId;
-  public long field_originSvrId;
-  public int field_reserved1;
-  public long field_reserved2;
-  public String field_reserved3;
-  public String field_reserved4;
-  public String field_toUserName;
+  private boolean eAF = true;
+  private boolean eFy = true;
+  private boolean eKF = true;
+  private boolean eKG = true;
+  private boolean eKH = true;
+  private boolean eKI = true;
+  private boolean eKJ = true;
+  private boolean eKK = true;
+  private boolean eKL = true;
+  private boolean eKM = true;
+  private boolean eKN = true;
+  private boolean eKO = true;
+  private boolean eKP = true;
+  private boolean eKQ = true;
+  private boolean eKl = true;
+  private boolean enx = true;
+  private boolean eoF = true;
+  private boolean epv = true;
+  private boolean evv = true;
+  public String field_SecondaryUrl;
+  public String field_appId;
+  public boolean field_continueDelay;
+  public boolean field_downloadInWidget;
+  public String field_downloadUrl;
+  public long field_expireTime;
+  public int field_forceUpdateFlag;
+  public boolean field_isFirst;
+  public boolean field_isRunning;
+  public boolean field_lowBattery;
+  public String field_md5;
+  public long field_nextCheckTime;
+  public boolean field_noEnoughSpace;
+  public boolean field_noSdcard;
+  public boolean field_noWifi;
+  public String field_packageName;
+  public long field_randomTime;
+  public byte[] field_sectionMd5Byte;
+  public long field_size;
   
   static
   {
-    eIz = "msgSource".hashCode();
+    eoH = "size".hashCode();
+    eBr = "md5".hashCode();
+    epR = "packageName".hashCode();
+    eKw = "expireTime".hashCode();
+    eKR = "randomTime".hashCode();
+    eKS = "isFirst".hashCode();
+    eKT = "nextCheckTime".hashCode();
+    eKU = "isRunning".hashCode();
+    eKV = "noWifi".hashCode();
+    eKW = "noSdcard".hashCode();
+    eKX = "noEnoughSpace".hashCode();
+    eKY = "lowBattery".hashCode();
+    eKZ = "continueDelay".hashCode();
+    eLa = "SecondaryUrl".hashCode();
+    eLb = "downloadInWidget".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -60,18 +92,18 @@ public abstract class cq
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eIv != k) {
+      if (enO != k) {
         break label65;
       }
-      this.field_originSvrId = paramCursor.getLong(i);
-      this.eIp = true;
+      this.field_appId = paramCursor.getString(i);
+      this.enx = true;
     }
     for (;;)
     {
@@ -79,32 +111,126 @@ public abstract class cq
       break label20;
       break;
       label65:
-      if (eIw == k) {
-        this.field_newMsgId = paramCursor.getLong(i);
-      } else if (eIx == k) {
-        this.field_fromUserName = paramCursor.getString(i);
-      } else if (eIy == k) {
-        this.field_toUserName = paramCursor.getString(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (elb == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eIz == k) {
-        this.field_msgSource = paramCursor.getString(i);
-      } else if (eIA == k) {
-        this.field_msgSeq = paramCursor.getInt(i);
-      } else if (eoK == k) {
-        this.field_flag = paramCursor.getInt(i);
-      } else if (ezd == k) {
-        this.field_reserved1 = paramCursor.getInt(i);
-      } else if (eze == k) {
-        this.field_reserved2 = paramCursor.getLong(i);
-      } else if (ezf == k) {
-        this.field_reserved3 = paramCursor.getString(i);
-      } else if (ezg == k) {
-        this.field_reserved4 = paramCursor.getString(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (evD == k)
+      {
+        this.field_downloadUrl = paramCursor.getString(i);
+      }
+      else if (eoH == k)
+      {
+        this.field_size = paramCursor.getLong(i);
+      }
+      else if (eBr == k)
+      {
+        this.field_md5 = paramCursor.getString(i);
+      }
+      else if (epR == k)
+      {
+        this.field_packageName = paramCursor.getString(i);
+      }
+      else if (eKw == k)
+      {
+        this.field_expireTime = paramCursor.getLong(i);
+      }
+      else if (eKR == k)
+      {
+        this.field_randomTime = paramCursor.getLong(i);
+      }
+      else
+      {
+        boolean bool;
+        if (eKS == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (bool = true;; bool = false)
+          {
+            this.field_isFirst = bool;
+            break;
+          }
+        }
+        if (eKT == k)
+        {
+          this.field_nextCheckTime = paramCursor.getLong(i);
+        }
+        else
+        {
+          if (eKU == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_isRunning = bool;
+              break;
+            }
+          }
+          if (eKV == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_noWifi = bool;
+              break;
+            }
+          }
+          if (eKW == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_noSdcard = bool;
+              break;
+            }
+          }
+          if (eKX == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_noEnoughSpace = bool;
+              break;
+            }
+          }
+          if (eKY == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_lowBattery = bool;
+              break;
+            }
+          }
+          if (eKZ == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_continueDelay = bool;
+              break;
+            }
+          }
+          if (eLa == k)
+          {
+            this.field_SecondaryUrl = paramCursor.getString(i);
+          }
+          else
+          {
+            if (eLb == k)
+            {
+              if (paramCursor.getInt(i) != 0) {}
+              for (bool = true;; bool = false)
+              {
+                this.field_downloadInWidget = bool;
+                break;
+              }
+            }
+            if (eGb == k) {
+              this.field_sectionMd5Byte = paramCursor.getBlob(i);
+            } else if (eLc == k) {
+              this.field_forceUpdateFlag = paramCursor.getInt(i);
+            } else if (rowid_HASHCODE == k) {
+              this.systemRowid = paramCursor.getLong(i);
+            }
+          }
+        }
       }
     }
   }
@@ -112,62 +238,62 @@ public abstract class cq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eIp) {
-      localContentValues.put("originSvrId", Long.valueOf(this.field_originSvrId));
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eIq) {
-      localContentValues.put("newMsgId", Long.valueOf(this.field_newMsgId));
+    if (this.evv) {
+      localContentValues.put("downloadUrl", this.field_downloadUrl);
     }
-    if (this.field_fromUserName == null) {
-      this.field_fromUserName = "";
+    if (this.eoF) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eIr) {
-      localContentValues.put("fromUserName", this.field_fromUserName);
+    if (this.eAF) {
+      localContentValues.put("md5", this.field_md5);
     }
-    if (this.field_toUserName == null) {
-      this.field_toUserName = "";
+    if (this.epv) {
+      localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.eIs) {
-      localContentValues.put("toUserName", this.field_toUserName);
+    if (this.eKl) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
-    if (this.ekx) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.eKF) {
+      localContentValues.put("randomTime", Long.valueOf(this.field_randomTime));
     }
-    if (this.field_content == null) {
-      this.field_content = "";
+    if (this.eKG) {
+      localContentValues.put("isFirst", Boolean.valueOf(this.field_isFirst));
     }
-    if (this.ekE) {
-      localContentValues.put("content", this.field_content);
+    if (this.eKH) {
+      localContentValues.put("nextCheckTime", Long.valueOf(this.field_nextCheckTime));
     }
-    if (this.field_msgSource == null) {
-      this.field_msgSource = "";
+    if (this.eKI) {
+      localContentValues.put("isRunning", Boolean.valueOf(this.field_isRunning));
     }
-    if (this.eIt) {
-      localContentValues.put("msgSource", this.field_msgSource);
+    if (this.eKJ) {
+      localContentValues.put("noWifi", Boolean.valueOf(this.field_noWifi));
     }
-    if (this.eIu) {
-      localContentValues.put("msgSeq", Integer.valueOf(this.field_msgSeq));
+    if (this.eKK) {
+      localContentValues.put("noSdcard", Boolean.valueOf(this.field_noSdcard));
     }
-    if (this.eoI) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.eKL) {
+      localContentValues.put("noEnoughSpace", Boolean.valueOf(this.field_noEnoughSpace));
     }
-    if (this.eyr) {
-      localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
+    if (this.eKM) {
+      localContentValues.put("lowBattery", Boolean.valueOf(this.field_lowBattery));
     }
-    if (this.eys) {
-      localContentValues.put("reserved2", Long.valueOf(this.field_reserved2));
+    if (this.eKN) {
+      localContentValues.put("continueDelay", Boolean.valueOf(this.field_continueDelay));
     }
-    if (this.field_reserved3 == null) {
-      this.field_reserved3 = "";
+    if (this.eKO) {
+      localContentValues.put("SecondaryUrl", this.field_SecondaryUrl);
     }
-    if (this.eyt) {
-      localContentValues.put("reserved3", this.field_reserved3);
+    if (this.eKP) {
+      localContentValues.put("downloadInWidget", Boolean.valueOf(this.field_downloadInWidget));
     }
-    if (this.field_reserved4 == null) {
-      this.field_reserved4 = "";
+    if (this.eFy) {
+      localContentValues.put("sectionMd5Byte", this.field_sectionMd5Byte);
     }
-    if (this.eyu) {
-      localContentValues.put("reserved4", this.field_reserved4);
+    if (this.eKQ) {
+      localContentValues.put("forceUpdateFlag", Integer.valueOf(this.field_forceUpdateFlag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

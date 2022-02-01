@@ -54,6 +54,8 @@ public abstract interface KView
   
   public abstract float getHeightPercent();
   
+  public abstract boolean getIsRefreshing();
+  
   public abstract float getLeft();
   
   public abstract float getLeftPercent();
@@ -140,6 +142,8 @@ public abstract interface KView
   
   public abstract void removeBlurEffect();
   
+  public abstract void requestLayout();
+  
   public abstract void setAccessibilityString(String paramString);
   
   public abstract void setAccessible(boolean paramBoolean);
@@ -181,6 +185,8 @@ public abstract interface KView
   public abstract void setHeight(float paramFloat);
   
   public abstract void setHeightPercent(float paramFloat);
+  
+  public abstract void setIsRefreshing(boolean paramBoolean);
   
   public abstract void setLeft(float paramFloat);
   
@@ -272,7 +278,7 @@ public abstract interface KView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.gen.KView
  * JD-Core Version:    0.7.0.1
  */

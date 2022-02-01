@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.newtips.a;
 
 public final class d
 {
-  public static int udP = 0;
-  public static int udQ = 1;
-  public static int udR = 1;
-  public static int udS = 2;
-  public static int udT = 3;
-  public static String udU = "me";
-  public static String udV = "me_setting";
-  public static String udW = "me_setting_general";
-  public static String udX = "me_setting_privacy";
-  public static String udY = "me_setting_general_plugin";
-  public static int udZ = 0;
-  public static int uea = 1;
-  public static int ueb = 2;
-  public static int uec = 3;
-  public static int ued = 4;
-  public static int uee = 0;
-  public static int uef = 1;
-  public static int ueg = 2;
-  public static String uei = "3_1";
-  public static String uej = "30001001_1";
+  public static int vmO = 0;
+  public static int vmP = 1;
+  public static int vmQ = 1;
+  public static int vmR = 2;
+  public static int vmS = 3;
+  public static String vmT = "me";
+  public static String vmU = "me_setting";
+  public static String vmV = "me_setting_general";
+  public static String vmW = "me_setting_privacy";
+  public static String vmX = "me_setting_general_plugin";
+  public static int vmY = 0;
+  public static int vmZ = 1;
+  public static int vna = 2;
+  public static int vnb = 3;
+  public static int vnc = 4;
+  public static int vnd = 0;
+  public static int vne = 1;
+  public static int vnf = 2;
+  public static String vng = "3_1";
+  public static String vnh = "30001001_1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.d
  * JD-Core Version:    0.7.0.1
  */

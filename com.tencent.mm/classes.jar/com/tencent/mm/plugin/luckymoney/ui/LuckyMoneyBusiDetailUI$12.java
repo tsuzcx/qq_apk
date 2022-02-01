@@ -8,11 +8,11 @@ final class LuckyMoneyBusiDetailUI$12
 {
   LuckyMoneyBusiDetailUI$12(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI) {}
   
-  public final void DK(int paramInt)
+  public final void FG(int paramInt)
   {
     AppMethodBeat.i(65461);
-    if ((paramInt == -2) && (LuckyMoneyBusiDetailUI.f(this.tkt).tqw)) {
-      LuckyMoneyBusiDetailUI.f(this.tkt).setModeClick(false);
+    if ((paramInt == -2) && (LuckyMoneyBusiDetailUI.f(this.usM).uyN)) {
+      LuckyMoneyBusiDetailUI.f(this.usM).setModeClick(false);
     }
     AppMethodBeat.o(65461);
   }

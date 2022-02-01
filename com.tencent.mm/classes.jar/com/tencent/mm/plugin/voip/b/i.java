@@ -1,213 +1,305 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ac;
+import d.l;
 
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/util/VoipReportHelper;", "", "()V", "ID", "", "TAG", "", "markAddViewFullScreenToRendererCost", "", "data", "markAddViewFullScreenToRendererCostFirst", "markAddViewFullScreenToRendererCostInvite", "markAddViewMiniWindowToRendererCost", "markAddViewMiniWindowToRendererCostFirst", "markAddViewMiniWindowToRendererCostInvite", "markBatteryPropertyCurrentInHW", "markBatteryPropertyCurrentInSW", "markCameraOnError", "markCameraPboSizeHeight", "height", "markCameraPboSizeWidth", "width", "markCameraRendererPerFrameNewFullScreenCost", "cost", "markCameraRendererPerFrameNewFullScreenCostWithFaceBeauty", "markCameraRendererPerFrameNewMiniWindowCost", "markCameraRendererPerFrameNewMiniWindowCostWithFaceBeauty", "markDecodeModeChangeToHW", "count", "markDecodeModeChangeToSW", "markFaceBeautySendDataIlleagel", "markFaceBeautySendDataNull", "markFullScreenPercent", "percent", "markHWRendererPerFrameFullScreenCost", "markHWRendererPerFrameMiniWindowCost", "markInitCameraRendererSucc", "markInitServiceRendererSucc", "markMMFaceBeautyAlgoUse", "markMiniWindowsPercent", "markNoFaceBeautyAlgoUse", "markRenderModeChangeAuto", "markRenderModeChangeManual", "markRendererUseSurfaceView", "markRendererUseTextureView", "markVoipRendererUseNew", "markYTFaceBeautyAlgoUse", "markYuvRendererPerFrameFullScreenCost", "markYuvRendererPerFrameMiniWindowCost", "plugin-voip_release"})
 public final class i
 {
-  private static Map<Integer, String> ztE;
+  public static final i AMu;
   
   static
   {
-    AppMethodBeat.i(115526);
-    HashMap localHashMap = new HashMap();
-    ztE = localHashMap;
-    localHashMap.put(Integer.valueOf(0), "CALLING_STATE_VIDEO_INVITING");
-    ztE.put(Integer.valueOf(1), "CALLING_STATE_VOICE_INVITING");
-    ztE.put(Integer.valueOf(2), "CALLING_STATE_VIDEO_WAITTING_ACCEPT");
-    ztE.put(Integer.valueOf(3), "CALLING_STATE_VOICE_WAITTING_ACCEPT");
-    ztE.put(Integer.valueOf(4), "CALLING_STATE_VIDEO_CONNECTING");
-    ztE.put(Integer.valueOf(5), "CALLING_STATE_VOICE_CONNECTING");
-    ztE.put(Integer.valueOf(6), "CALLING_STATE_VIDEO_TALKING");
-    ztE.put(Integer.valueOf(7), "CALLING_STATE_VOICE_TALKING");
-    ztE.put(Integer.valueOf(8), "CALLING_STATE_FINISH");
-    ztE.put(Integer.valueOf(256), "CALLED_STATE_VIDEO_INVITING");
-    ztE.put(Integer.valueOf(257), "CALLED_STATE_VOICE_INVITING");
-    ztE.put(Integer.valueOf(258), "CALLED_STATE_VIDEO_CONNECTING");
-    ztE.put(Integer.valueOf(259), "CALLED_STATE_VOICE_CONNECTING");
-    ztE.put(Integer.valueOf(260), "CALLED_STATE_VIDEO_TALKING");
-    ztE.put(Integer.valueOf(261), "CALLED_STATE_VOICE_TALKING");
-    ztE.put(Integer.valueOf(262), "CALLED_STATE_FINISH");
-    ztE.put(Integer.valueOf(4096), "ACTION_NOP");
-    ztE.put(Integer.valueOf(4097), "ACTION_INVITE_RESPOND");
-    ztE.put(Integer.valueOf(4098), "ACTION_CANCEL_INVITE");
-    ztE.put(Integer.valueOf(4099), "ACTION_REJECT_INVITE");
-    ztE.put(Integer.valueOf(4100), "ACTION_ACCEPT_INVITE");
-    ztE.put(Integer.valueOf(4101), "ACTION_CLOSE_CAMERA");
-    ztE.put(Integer.valueOf(4102), "ACTION_CONNECT_SUCC");
-    ztE.put(Integer.valueOf(4103), "ACTION_SELF_HANGUP");
-    ztE.put(Integer.valueOf(4104), "ACTION_ANOTHER_HANGUP");
-    ztE.put(Integer.valueOf(4105), "ACTION_INVITE_TIMEOUT");
-    ztE.put(Integer.valueOf(4106), "ACTION_SO_SHUTDOWN");
-    ztE.put(Integer.valueOf(4107), "ACTION_PHONE_COMING");
-    ztE.put(Integer.valueOf(4108), "ACTION_IGNORE_INVITE");
-    ztE.put(Integer.valueOf(4109), "ACTION_ON_ERROR");
-    ztE.put(Integer.valueOf(4110), "ACTION_SESSION_CALLED");
-    AppMethodBeat.o(115526);
+    AppMethodBeat.i(208722);
+    AMu = new i();
+    AppMethodBeat.o(208722);
   }
   
-  public static String QI(int paramInt)
+  public static void elU()
   {
-    AppMethodBeat.i(115523);
-    if (ztE.containsKey(Integer.valueOf(paramInt)))
-    {
-      String str = (String)ztE.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(115523);
-      return str;
-    }
-    AppMethodBeat.o(115523);
-    return "no found value";
+    AppMethodBeat.i(208687);
+    ac.i("MicroMsg.VoipReportHelper", "markVoipRendererUseNew");
+    h.wUl.n(1304L, 1L, 1L);
+    AppMethodBeat.o(208687);
   }
   
-  public static j QJ(int paramInt)
+  public static void elV()
   {
-    AppMethodBeat.i(115524);
-    j localj = new j(paramInt);
-    localj.au(256, 4098, 262);
-    localj.au(256, 4099, 262);
-    localj.au(256, 4105, 262);
-    localj.au(256, 4106, 262);
-    localj.au(256, 4107, 262);
-    localj.au(256, 4108, 262);
-    localj.au(256, 4109, 262);
-    localj.au(256, 4100, 258);
-    localj.au(256, 4101, 257);
-    localj.au(257, 4100, 259);
-    localj.au(257, 4098, 262);
-    localj.au(257, 4099, 262);
-    localj.au(257, 4105, 262);
-    localj.au(257, 4106, 262);
-    localj.au(257, 4107, 262);
-    localj.au(257, 4108, 262);
-    localj.au(257, 4109, 262);
-    localj.au(258, 4098, 262);
-    localj.au(258, 4106, 262);
-    localj.au(258, 4107, 262);
-    localj.au(258, 4103, 262);
-    localj.au(258, 4109, 262);
-    localj.au(258, 4102, 260);
-    localj.au(259, 4102, 261);
-    localj.au(259, 4098, 262);
-    localj.au(259, 4106, 262);
-    localj.au(259, 4107, 262);
-    localj.au(259, 4103, 262);
-    localj.au(259, 4109, 262);
-    localj.au(260, 4101, 261);
-    localj.au(260, 4103, 262);
-    localj.au(260, 4104, 262);
-    localj.au(260, 4106, 262);
-    localj.au(260, 4107, 262);
-    localj.au(260, 4109, 262);
-    localj.au(261, 4103, 262);
-    localj.au(261, 4104, 262);
-    localj.au(261, 4106, 262);
-    localj.au(261, 4107, 262);
-    localj.au(261, 4109, 262);
-    AppMethodBeat.o(115524);
-    return localj;
+    AppMethodBeat.i(208688);
+    ac.i("MicroMsg.VoipReportHelper", "markCameraOnError");
+    h.wUl.n(1304L, 2L, 1L);
+    AppMethodBeat.o(208688);
   }
   
-  public static j QK(int paramInt)
+  public static void elW()
   {
-    AppMethodBeat.i(115525);
-    j localj = new j(paramInt);
-    localj.au(0, 4098, 8);
-    localj.au(0, 4106, 8);
-    localj.au(0, 4107, 8);
-    localj.au(0, 4109, 8);
-    localj.au(0, 4097, 2);
-    localj.au(0, 4101, 1);
-    localj.au(1, 4097, 3);
-    localj.au(1, 4098, 8);
-    localj.au(1, 4106, 8);
-    localj.au(1, 4107, 8);
-    localj.au(1, 4109, 8);
-    localj.au(2, 4098, 8);
-    localj.au(2, 4099, 8);
-    localj.au(2, 4105, 8);
-    localj.au(2, 4106, 8);
-    localj.au(2, 4107, 8);
-    localj.au(2, 4109, 8);
-    localj.au(2, 4100, 4);
-    localj.au(2, 4101, 3);
-    localj.au(3, 4100, 5);
-    localj.au(3, 4098, 8);
-    localj.au(3, 4099, 8);
-    localj.au(3, 4105, 8);
-    localj.au(3, 4106, 8);
-    localj.au(3, 4107, 8);
-    localj.au(3, 4109, 8);
-    localj.au(4, 4102, 6);
-    localj.au(4, 4101, 5);
-    localj.au(5, 4102, 7);
-    localj.au(6, 4103, 8);
-    localj.au(6, 4104, 8);
-    localj.au(6, 4106, 8);
-    localj.au(6, 4107, 8);
-    localj.au(6, 4109, 8);
-    localj.au(6, 4101, 7);
-    localj.au(7, 4103, 8);
-    localj.au(7, 4104, 8);
-    localj.au(7, 4106, 8);
-    localj.au(7, 4107, 8);
-    localj.au(7, 4109, 8);
-    localj.au(4, 4098, 8);
-    localj.au(4, 4099, 8);
-    localj.au(4, 4106, 8);
-    localj.au(4, 4107, 8);
-    localj.au(4, 4103, 8);
-    localj.au(4, 4109, 8);
-    localj.au(5, 4098, 8);
-    localj.au(5, 4099, 8);
-    localj.au(5, 4106, 8);
-    localj.au(5, 4107, 8);
-    localj.au(5, 4103, 8);
-    localj.au(5, 4109, 8);
-    localj.au(0, 4110, 4);
-    localj.au(1, 4110, 5);
-    AppMethodBeat.o(115525);
-    return localj;
+    AppMethodBeat.i(208689);
+    ac.i("MicroMsg.VoipReportHelper", "markInitCameraRendererSucc");
+    h.wUl.n(1304L, 3L, 1L);
+    AppMethodBeat.o(208689);
   }
   
-  public static boolean QL(int paramInt)
+  public static void elX()
   {
-    return (260 == paramInt) || (261 == paramInt) || (6 == paramInt) || (7 == paramInt);
+    AppMethodBeat.i(208690);
+    ac.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc");
+    h.wUl.n(1304L, 4L, 1L);
+    AppMethodBeat.o(208690);
   }
   
-  public static boolean QM(int paramInt)
+  public static void elY()
   {
-    return (paramInt == 0) || (2 == paramInt) || (4 == paramInt) || (6 == paramInt) || (256 == paramInt) || (258 == paramInt) || (260 == paramInt);
+    AppMethodBeat.i(208693);
+    ac.i("MicroMsg.VoipReportHelper", "markRendererUseSurfaceView");
+    h.wUl.n(1304L, 7L, 1L);
+    AppMethodBeat.o(208693);
   }
   
-  public static boolean QN(int paramInt)
+  public static void elZ()
   {
-    return (1 == paramInt) || (paramInt == 0) || (2 == paramInt) || (3 == paramInt);
+    AppMethodBeat.i(208694);
+    ac.i("MicroMsg.VoipReportHelper", "markRendererUseTextureView");
+    h.wUl.n(1304L, 8L, 1L);
+    AppMethodBeat.o(208694);
   }
   
-  public static boolean QO(int paramInt)
+  public static void ema()
   {
-    return (paramInt == 256) || (paramInt == 257);
+    AppMethodBeat.i(208695);
+    ac.i("MicroMsg.VoipReportHelper", "markRenderModeChangeAuto");
+    h.wUl.n(1304L, 9L, 1L);
+    AppMethodBeat.o(208695);
   }
   
-  public static int au(boolean paramBoolean1, boolean paramBoolean2)
+  public static void emb()
   {
-    int i = 1;
-    if ((true == paramBoolean1) && (true == paramBoolean2)) {
-      i = 0;
-    }
-    while ((true == paramBoolean1) && (!paramBoolean2)) {
-      return i;
-    }
-    if ((!paramBoolean1) && (true == paramBoolean2)) {
-      return 256;
-    }
-    return 257;
+    AppMethodBeat.i(208696);
+    ac.i("MicroMsg.VoipReportHelper", "markRenderModeChangeManual");
+    h.wUl.n(1304L, 10L, 1L);
+    AppMethodBeat.o(208696);
+  }
+  
+  public static void emc()
+  {
+    AppMethodBeat.i(208701);
+    ac.i("MicroMsg.VoipReportHelper", "markNoFaceBeautyAlgoUse");
+    h.wUl.n(1304L, 15L, 1L);
+    AppMethodBeat.o(208701);
+  }
+  
+  public static void emd()
+  {
+    AppMethodBeat.i(208702);
+    ac.i("MicroMsg.VoipReportHelper", "markYTFaceBeautyAlgoUse");
+    h.wUl.n(1304L, 16L, 1L);
+    AppMethodBeat.o(208702);
+  }
+  
+  public static void eme()
+  {
+    AppMethodBeat.i(208703);
+    ac.i("MicroMsg.VoipReportHelper", "markMMFaceBeautyAlgoUse");
+    h.wUl.n(1304L, 17L, 1L);
+    AppMethodBeat.o(208703);
+  }
+  
+  public static void emf()
+  {
+    AppMethodBeat.i(208704);
+    ac.i("MicroMsg.VoipReportHelper", "markFaceBeautySendDataNull");
+    h.wUl.n(1304L, 18L, 1L);
+    AppMethodBeat.o(208704);
+  }
+  
+  public static void emg()
+  {
+    AppMethodBeat.i(208705);
+    ac.i("MicroMsg.VoipReportHelper", "markFaceBeautySendDataIlleagel");
+    h.wUl.n(1304L, 19L, 1L);
+    AppMethodBeat.o(208705);
+  }
+  
+  public static void yU(long paramLong)
+  {
+    AppMethodBeat.i(208697);
+    ac.i("MicroMsg.VoipReportHelper", "markDecodeModeChangeToHW,count=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 11, 50, (int)paramLong, false);
+    AppMethodBeat.o(208697);
+  }
+  
+  public static void yV(long paramLong)
+  {
+    AppMethodBeat.i(208698);
+    ac.i("MicroMsg.VoipReportHelper", "markDecodeModeChangeToSW,count=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 12, 51, (int)paramLong, false);
+    AppMethodBeat.o(208698);
+  }
+  
+  public static void yW(long paramLong)
+  {
+    AppMethodBeat.i(208706);
+    ac.i("MicroMsg.VoipReportHelper", "markBatteryPropertyCurrentInHW,data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 20, 38, (int)paramLong, false);
+    AppMethodBeat.o(208706);
+  }
+  
+  public static void yX(long paramLong)
+  {
+    AppMethodBeat.i(208707);
+    ac.i("MicroMsg.VoipReportHelper", "markBatteryPropertyCurrentInSW, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 21, 39, (int)paramLong, false);
+    AppMethodBeat.o(208707);
+  }
+  
+  public static void yY(long paramLong)
+  {
+    AppMethodBeat.i(208708);
+    ac.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCost, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 24, 22, (int)paramLong, false);
+    AppMethodBeat.o(208708);
+  }
+  
+  public static void yZ(long paramLong)
+  {
+    AppMethodBeat.i(208709);
+    ac.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCost, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 25, 23, (int)paramLong, false);
+    AppMethodBeat.o(208709);
+  }
+  
+  public static void za(long paramLong)
+  {
+    AppMethodBeat.i(208710);
+    ac.i("MicroMsg.VoipReportHelper", "markYuvRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 28, 26, (int)paramLong, false);
+    AppMethodBeat.o(208710);
+  }
+  
+  public static void zb(long paramLong)
+  {
+    AppMethodBeat.i(208711);
+    ac.i("MicroMsg.VoipReportHelper", "markYuvRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 29, 27, (int)paramLong, false);
+    AppMethodBeat.o(208711);
+  }
+  
+  public static void zc(long paramLong)
+  {
+    AppMethodBeat.i(208712);
+    ac.i("MicroMsg.VoipReportHelper", "markHWRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 32, 30, (int)paramLong, false);
+    AppMethodBeat.o(208712);
+  }
+  
+  public static void zd(long paramLong)
+  {
+    AppMethodBeat.i(208713);
+    ac.i("MicroMsg.VoipReportHelper", "markHWRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 33, 31, (int)paramLong, false);
+    AppMethodBeat.o(208713);
+  }
+  
+  public static void zi(long paramLong)
+  {
+    AppMethodBeat.i(208718);
+    ac.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 42, 40, (int)paramLong, false);
+    AppMethodBeat.o(208718);
+  }
+  
+  public static void zj(long paramLong)
+  {
+    AppMethodBeat.i(208719);
+    ac.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 43, 41, (int)paramLong, false);
+    AppMethodBeat.o(208719);
+  }
+  
+  public static void zk(long paramLong)
+  {
+    AppMethodBeat.i(208720);
+    ac.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 48, 52, (int)paramLong, false);
+    AppMethodBeat.o(208720);
+  }
+  
+  public static void zl(long paramLong)
+  {
+    AppMethodBeat.i(208721);
+    ac.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 49, 53, (int)paramLong, false);
+    AppMethodBeat.o(208721);
+  }
+  
+  public static void zm(long paramLong)
+  {
+    AppMethodBeat.i(208691);
+    ac.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc,width=".concat(String.valueOf(paramLong)));
+    h.wUl.n(1304L, 5L, paramLong);
+    AppMethodBeat.o(208691);
+  }
+  
+  public static void zn(long paramLong)
+  {
+    AppMethodBeat.i(208692);
+    ac.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc,height=".concat(String.valueOf(paramLong)));
+    h.wUl.n(1304L, 6L, paramLong);
+    AppMethodBeat.o(208692);
+  }
+  
+  public static void zo(long paramLong)
+  {
+    AppMethodBeat.i(208699);
+    ac.i("MicroMsg.VoipReportHelper", "markFullScreenPercent,percent=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 13, 70, (int)paramLong, false);
+    AppMethodBeat.o(208699);
+  }
+  
+  public static void zp(long paramLong)
+  {
+    AppMethodBeat.i(208700);
+    ac.i("MicroMsg.VoipReportHelper", "markMiniWindowsPercent,percent=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 14, 71, (int)paramLong, false);
+    AppMethodBeat.o(208700);
+  }
+  
+  public static void zq(long paramLong)
+  {
+    AppMethodBeat.i(208714);
+    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewFullScreenCost,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 36, 34, (int)paramLong, false);
+    AppMethodBeat.o(208714);
+  }
+  
+  public static void zr(long paramLong)
+  {
+    AppMethodBeat.i(208715);
+    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 37, 35, (int)paramLong, false);
+    AppMethodBeat.o(208715);
+  }
+  
+  public static void zs(long paramLong)
+  {
+    AppMethodBeat.i(208716);
+    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewFullScreenCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 72, 74, (int)paramLong, false);
+    AppMethodBeat.o(208716);
+  }
+  
+  public static void zt(long paramLong)
+  {
+    AppMethodBeat.i(208717);
+    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewMiniWindowCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
+    h.wUl.c(1304, 73, 75, (int)paramLong, false);
+    AppMethodBeat.o(208717);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.i
  * JD-Core Version:    0.7.0.1
  */

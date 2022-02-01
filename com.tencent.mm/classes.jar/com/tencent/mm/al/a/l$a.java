@@ -1,0 +1,9 @@
+package com.tencent.mm.al.a;
+
+public abstract interface l$a {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.al.a.l.a
+ * JD-Core Version:    0.7.0.1
+ */

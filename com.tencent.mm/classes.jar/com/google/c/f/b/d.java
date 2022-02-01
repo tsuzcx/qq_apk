@@ -17,7 +17,7 @@ final class d
         break label97;
       }
       n = paramb.width;
-      paramb = paramb.bNi;
+      paramb = paramb.bKQ;
       i1 = 0;
     }
     label46:
@@ -89,7 +89,7 @@ final class d
     return true;
   }
   
-  static boolean p(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  static boolean o(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12245);
     paramInt1 = Math.max(paramInt1, 0);
@@ -109,7 +109,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.f.b.d
  * JD-Core Version:    0.7.0.1
  */

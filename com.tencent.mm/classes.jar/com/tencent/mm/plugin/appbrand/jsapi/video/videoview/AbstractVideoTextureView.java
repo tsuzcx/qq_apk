@@ -19,8 +19,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.d;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.e;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.f;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -31,89 +31,221 @@ public abstract class AbstractVideoTextureView
   extends TextureView
   implements a
 {
-  private float aSD = -1.0F;
-  private int ark;
-  protected com.tencent.mm.plugin.appbrand.jsapi.video.e.b cmS = null;
-  private boolean cnf;
-  private boolean fqj = false;
-  private boolean hyg = false;
-  private b.b kuA = new b.b()
+  private float aTw = -1.0F;
+  private int asf;
+  protected com.tencent.mm.plugin.appbrand.jsapi.video.e.b cjU = null;
+  private boolean ckh;
+  private boolean ftN = false;
+  private boolean hYH = false;
+  private String kVA;
+  private boolean kVB;
+  private a.a kVC;
+  private a.e kVD;
+  private a.c kVE;
+  private a.b kVF;
+  private a.d kVG;
+  private long kVH = 0L;
+  private int kVI = 0;
+  private boolean kVJ = false;
+  private b.g kVK = new b.g()
   {
-    public final void Fz()
+    public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb, int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      AppMethodBeat.i(194304);
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "video on completion");
-      AbstractVideoTextureView.b(AbstractVideoTextureView.this, bt.aGK());
+      AppMethodBeat.i(194644);
+      try
+      {
+        if (paramAnonymousb != AbstractVideoTextureView.this.cjU)
+        {
+          ac.w("MicroMsg.Video.AbstractVideoTextureView", "another player on video size changed, return now.[%s, %s]", new Object[] { paramAnonymousb, AbstractVideoTextureView.this.cjU });
+          AppMethodBeat.o(194644);
+          return;
+        }
+        AbstractVideoTextureView.a(AbstractVideoTextureView.this, paramAnonymousb.getVideoWidth());
+        AbstractVideoTextureView.b(AbstractVideoTextureView.this, paramAnonymousb.getVideoHeight());
+        ac.i("MicroMsg.Video.AbstractVideoTextureView", "on size change size:( " + AbstractVideoTextureView.a(AbstractVideoTextureView.this) + " , " + AbstractVideoTextureView.b(AbstractVideoTextureView.this) + " )");
+        if (AbstractVideoTextureView.c(AbstractVideoTextureView.this) != null) {
+          AbstractVideoTextureView.c(AbstractVideoTextureView.this).dZ(AbstractVideoTextureView.a(AbstractVideoTextureView.this), AbstractVideoTextureView.b(AbstractVideoTextureView.this));
+        }
+      }
+      catch (Exception paramAnonymousb)
+      {
+        for (;;)
+        {
+          ac.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", paramAnonymousb, "on video size changed error[%d, %d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        }
+      }
+      AbstractVideoTextureView.d(AbstractVideoTextureView.this);
+      AppMethodBeat.o(194644);
+    }
+  };
+  private b.e kVL = new b.e()
+  {
+    public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb)
+    {
+      AppMethodBeat.i(194645);
+      if (paramAnonymousb != AbstractVideoTextureView.this.cjU)
+      {
+        ac.w("MicroMsg.Video.AbstractVideoTextureView", "another player callback, release now.[%s, %s]", new Object[] { paramAnonymousb, AbstractVideoTextureView.this.cjU });
+        AbstractVideoTextureView.a(AbstractVideoTextureView.this, paramAnonymousb);
+        AppMethodBeat.o(194645);
+        return;
+      }
+      AbstractVideoTextureView.e(AbstractVideoTextureView.this);
+      AbstractVideoTextureView.a(AbstractVideoTextureView.this, paramAnonymousb.getVideoWidth());
+      AbstractVideoTextureView.b(AbstractVideoTextureView.this, paramAnonymousb.getVideoHeight());
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "on prepared. size [%d, %d] mStartWhenPrepared %b ", new Object[] { Integer.valueOf(AbstractVideoTextureView.a(AbstractVideoTextureView.this)), Integer.valueOf(AbstractVideoTextureView.b(AbstractVideoTextureView.this)), Boolean.valueOf(AbstractVideoTextureView.f(AbstractVideoTextureView.this)) });
+      AbstractVideoTextureView.d(AbstractVideoTextureView.this);
+      if ((AbstractVideoTextureView.a(AbstractVideoTextureView.this) != 0) && (AbstractVideoTextureView.b(AbstractVideoTextureView.this) != 0)) {
+        if (AbstractVideoTextureView.f(AbstractVideoTextureView.this))
+        {
+          AbstractVideoTextureView.this.cjU.start();
+          AbstractVideoTextureView.this.cjU.setLooping(AbstractVideoTextureView.g(AbstractVideoTextureView.this));
+          AbstractVideoTextureView.h(AbstractVideoTextureView.this);
+        }
+      }
+      for (;;)
+      {
+        if (AbstractVideoTextureView.c(AbstractVideoTextureView.this) != null) {
+          AbstractVideoTextureView.c(AbstractVideoTextureView.this).rB();
+        }
+        AppMethodBeat.o(194645);
+        return;
+        if (AbstractVideoTextureView.f(AbstractVideoTextureView.this))
+        {
+          AbstractVideoTextureView.this.cjU.start();
+          AbstractVideoTextureView.h(AbstractVideoTextureView.this);
+          AbstractVideoTextureView.this.cjU.setLooping(AbstractVideoTextureView.g(AbstractVideoTextureView.this));
+        }
+      }
+    }
+  };
+  private b.f kVM = new b.f()
+  {
+    public final void b(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb)
+    {
+      AppMethodBeat.i(194646);
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "video seek complete curPos[%d] mStartWhenPrepared[%b] pauseWhenUpdated[%b]", new Object[] { Integer.valueOf(paramAnonymousb.getCurrentPosition()), Boolean.valueOf(AbstractVideoTextureView.f(AbstractVideoTextureView.this)), Boolean.valueOf(AbstractVideoTextureView.i(AbstractVideoTextureView.this)) });
+      if (AbstractVideoTextureView.f(AbstractVideoTextureView.this))
+      {
+        if (AbstractVideoTextureView.i(AbstractVideoTextureView.this))
+        {
+          AppMethodBeat.o(194646);
+          return;
+        }
+        AbstractVideoTextureView.this.start();
+      }
+      for (;;)
+      {
+        if (AbstractVideoTextureView.j(AbstractVideoTextureView.this) != null) {
+          AbstractVideoTextureView.j(AbstractVideoTextureView.this).eS(AbstractVideoTextureView.f(AbstractVideoTextureView.this));
+        }
+        AbstractVideoTextureView.a(AbstractVideoTextureView.this, 0L);
+        AppMethodBeat.o(194646);
+        return;
+        AbstractVideoTextureView.this.pause();
+      }
+    }
+  };
+  private b.a kVN = new b.a()
+  {
+    public final void gH(int paramAnonymousInt)
+    {
+      AppMethodBeat.i(194647);
+      ac.d("MicroMsg.Video.AbstractVideoTextureView", "onBufferingUpdate percent[%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
+      AbstractVideoTextureView.c(AbstractVideoTextureView.this, paramAnonymousInt);
+      AppMethodBeat.o(194647);
+    }
+  };
+  private b.d kVO = new b.d()
+  {
+    public final boolean bY(int paramAnonymousInt1, int paramAnonymousInt2)
+    {
+      AppMethodBeat.i(194648);
+      ac.d("MicroMsg.Video.AbstractVideoTextureView", "onInfo [%d %d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+      if (AbstractVideoTextureView.k(AbstractVideoTextureView.this) != null) {
+        AbstractVideoTextureView.k(AbstractVideoTextureView.this).ea(paramAnonymousInt1, paramAnonymousInt2);
+      }
+      AppMethodBeat.o(194648);
+      return false;
+    }
+  };
+  private b.b kVP = new b.b()
+  {
+    public final void Fh()
+    {
+      AppMethodBeat.i(194649);
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "video on completion");
+      AbstractVideoTextureView.b(AbstractVideoTextureView.this, bs.aNx());
       if (AbstractVideoTextureView.c(AbstractVideoTextureView.this) != null) {
         AbstractVideoTextureView.c(AbstractVideoTextureView.this).onCompletion();
       }
-      AppMethodBeat.o(194304);
+      AppMethodBeat.o(194649);
     }
   };
-  private b.c kuB = new b.c()
+  private b.c kVQ = new b.c()
   {
-    public final boolean cc(int paramAnonymousInt1, int paramAnonymousInt2)
+    public final boolean bZ(int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      AppMethodBeat.i(194305);
-      ad.w("MicroMsg.Video.AbstractVideoTextureView", "Error: " + paramAnonymousInt1 + "," + paramAnonymousInt2);
+      AppMethodBeat.i(194650);
+      ac.w("MicroMsg.Video.AbstractVideoTextureView", "Error: " + paramAnonymousInt1 + "," + paramAnonymousInt2);
       if (AbstractVideoTextureView.c(AbstractVideoTextureView.this) != null) {
         AbstractVideoTextureView.c(AbstractVideoTextureView.this).onError(paramAnonymousInt1, paramAnonymousInt2);
       }
-      AppMethodBeat.o(194305);
+      AppMethodBeat.o(194650);
       return true;
     }
   };
-  private long kuC = 0L;
-  private boolean kuD = false;
-  private boolean kuE = false;
-  private boolean kuF = false;
-  private TextureView.SurfaceTextureListener kuG = new TextureView.SurfaceTextureListener()
+  private long kVR = 0L;
+  private boolean kVS = false;
+  private boolean kVT = false;
+  private boolean kVU = false;
+  private TextureView.SurfaceTextureListener kVV = new TextureView.SurfaceTextureListener()
   {
     public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      AppMethodBeat.i(194309);
-      AbstractVideoTextureView.this.i(AbstractVideoTextureView.s(AbstractVideoTextureView.this));
+      AppMethodBeat.i(194654);
+      AbstractVideoTextureView.this.h(AbstractVideoTextureView.s(AbstractVideoTextureView.this));
       AbstractVideoTextureView.a(AbstractVideoTextureView.this, new Surface(paramAnonymousSurfaceTexture));
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d on texture available %d*%d mIsPrepared[%b] mSurface[%d] ", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(AbstractVideoTextureView.r(AbstractVideoTextureView.this)), Integer.valueOf(AbstractVideoTextureView.s(AbstractVideoTextureView.this).hashCode()) });
-      if ((AbstractVideoTextureView.this.cmS == null) || (!AbstractVideoTextureView.r(AbstractVideoTextureView.this)))
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d on texture available %d*%d mIsPrepared[%b] mSurface[%d] ", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(AbstractVideoTextureView.r(AbstractVideoTextureView.this)), Integer.valueOf(AbstractVideoTextureView.s(AbstractVideoTextureView.this).hashCode()) });
+      if ((AbstractVideoTextureView.this.cjU == null) || (!AbstractVideoTextureView.r(AbstractVideoTextureView.this)))
       {
         AbstractVideoTextureView.u(AbstractVideoTextureView.this);
         if (AbstractVideoTextureView.w(AbstractVideoTextureView.this) != null) {
-          AbstractVideoTextureView.w(AbstractVideoTextureView.this).aCw();
+          AbstractVideoTextureView.w(AbstractVideoTextureView.this).aJn();
         }
-        AppMethodBeat.o(194309);
+        AppMethodBeat.o(194654);
         return;
       }
-      AbstractVideoTextureView.this.cmS.setSurface(AbstractVideoTextureView.s(AbstractVideoTextureView.this));
+      AbstractVideoTextureView.this.cjU.setSurface(AbstractVideoTextureView.s(AbstractVideoTextureView.this));
       if (AbstractVideoTextureView.v(AbstractVideoTextureView.this)) {
-        AbstractVideoTextureView.this.cmS.start();
+        AbstractVideoTextureView.this.cjU.start();
       }
       for (;;)
       {
         AbstractVideoTextureView.b(AbstractVideoTextureView.this, false);
         break;
         AbstractVideoTextureView.a(AbstractVideoTextureView.this, true);
-        AbstractVideoTextureView.this.cmS.setVolume(0.0F, 0.0F);
-        AbstractVideoTextureView.this.cmS.start();
+        AbstractVideoTextureView.this.cjU.setVolume(0.0F, 0.0F);
+        AbstractVideoTextureView.this.cjU.start();
       }
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
     {
-      AppMethodBeat.i(194308);
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d on texture destroyed mIsPrepared[%b]", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Boolean.valueOf(AbstractVideoTextureView.r(AbstractVideoTextureView.this)) });
-      AbstractVideoTextureView.this.i(AbstractVideoTextureView.s(AbstractVideoTextureView.this));
+      AppMethodBeat.i(194653);
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d on texture destroyed mIsPrepared[%b]", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Boolean.valueOf(AbstractVideoTextureView.r(AbstractVideoTextureView.this)) });
+      AbstractVideoTextureView.this.h(AbstractVideoTextureView.s(AbstractVideoTextureView.this));
       AbstractVideoTextureView.a(AbstractVideoTextureView.this, null);
-      if ((AbstractVideoTextureView.this.cmS != null) && (AbstractVideoTextureView.r(AbstractVideoTextureView.this))) {
+      if ((AbstractVideoTextureView.this.cjU != null) && (AbstractVideoTextureView.r(AbstractVideoTextureView.this))) {
         if (AbstractVideoTextureView.this.isPlaying())
         {
           AbstractVideoTextureView.b(AbstractVideoTextureView.this, true);
-          AbstractVideoTextureView.this.cmS.pause();
+          AbstractVideoTextureView.this.cjU.pause();
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(194308);
+        AppMethodBeat.o(194653);
         return false;
         AbstractVideoTextureView.t(AbstractVideoTextureView.this);
         AbstractVideoTextureView.b(AbstractVideoTextureView.this, false);
@@ -122,26 +254,26 @@ public abstract class AbstractVideoTextureView
     
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      AppMethodBeat.i(194307);
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "on texture size changed width : " + paramAnonymousInt1 + " height : " + paramAnonymousInt2);
-      if ((AbstractVideoTextureView.this.cmS != null) && (AbstractVideoTextureView.r(AbstractVideoTextureView.this)) && (AbstractVideoTextureView.a(AbstractVideoTextureView.this) == paramAnonymousInt1) && (AbstractVideoTextureView.b(AbstractVideoTextureView.this) == paramAnonymousInt2)) {
-        AbstractVideoTextureView.this.cmS.start();
+      AppMethodBeat.i(194652);
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "on texture size changed width : " + paramAnonymousInt1 + " height : " + paramAnonymousInt2);
+      if ((AbstractVideoTextureView.this.cjU != null) && (AbstractVideoTextureView.r(AbstractVideoTextureView.this)) && (AbstractVideoTextureView.a(AbstractVideoTextureView.this) == paramAnonymousInt1) && (AbstractVideoTextureView.b(AbstractVideoTextureView.this) == paramAnonymousInt2)) {
+        AbstractVideoTextureView.this.cjU.start();
       }
-      AppMethodBeat.o(194307);
+      AppMethodBeat.o(194652);
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture)
     {
-      AppMethodBeat.i(194306);
-      ad.d("MicroMsg.Video.AbstractVideoTextureView", "on surface texture updated");
+      AppMethodBeat.i(194651);
+      ac.d("MicroMsg.Video.AbstractVideoTextureView", "on surface texture updated");
       if (AbstractVideoTextureView.i(AbstractVideoTextureView.this)) {
-        if (AbstractVideoTextureView.this.cmS != null)
+        if (AbstractVideoTextureView.this.cjU != null)
         {
-          AbstractVideoTextureView.this.cmS.pause();
+          AbstractVideoTextureView.this.cjU.pause();
           if (!AbstractVideoTextureView.l(AbstractVideoTextureView.this)) {
             break label227;
           }
-          AbstractVideoTextureView.this.cmS.setVolume(0.0F, 0.0F);
+          AbstractVideoTextureView.this.cjU.setVolume(0.0F, 0.0F);
         }
       }
       for (;;)
@@ -149,160 +281,28 @@ public abstract class AbstractVideoTextureView
         AbstractVideoTextureView.a(AbstractVideoTextureView.this, false);
         if ((AbstractVideoTextureView.m(AbstractVideoTextureView.this) > 0L) && (AbstractVideoTextureView.n(AbstractVideoTextureView.this) != null))
         {
-          AbstractVideoTextureView.n(AbstractVideoTextureView.this).beo();
+          AbstractVideoTextureView.n(AbstractVideoTextureView.this).bli();
           AbstractVideoTextureView.o(AbstractVideoTextureView.this);
         }
         AbstractVideoTextureView.a(AbstractVideoTextureView.this, System.currentTimeMillis());
         if (AbstractVideoTextureView.p(AbstractVideoTextureView.this))
         {
-          ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d flush surface pause now time[%d]", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Integer.valueOf(AbstractVideoTextureView.this.getCurrentPosition()) });
-          if (AbstractVideoTextureView.this.cmS != null)
+          ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d flush surface pause now time[%d]", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Integer.valueOf(AbstractVideoTextureView.this.getCurrentPosition()) });
+          if (AbstractVideoTextureView.this.cjU != null)
           {
-            AbstractVideoTextureView.this.cmS.pause();
+            AbstractVideoTextureView.this.cjU.pause();
             AbstractVideoTextureView.this.setMute(AbstractVideoTextureView.l(AbstractVideoTextureView.this));
           }
           AbstractVideoTextureView.q(AbstractVideoTextureView.this);
         }
-        AppMethodBeat.o(194306);
+        AppMethodBeat.o(194651);
         return;
         label227:
-        AbstractVideoTextureView.this.cmS.setVolume(1.0F, 1.0F);
+        AbstractVideoTextureView.this.cjU.setVolume(1.0F, 1.0F);
       }
     }
   };
-  private b kuH = new b();
-  private String kul;
-  private boolean kum;
-  private a.a kun;
-  private a.e kuo;
-  private a.c kup;
-  private a.b kuq;
-  private a.d kur;
-  private long kus = 0L;
-  private int kut = 0;
-  private boolean kuu = false;
-  private b.g kuv = new b.g()
-  {
-    public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      AppMethodBeat.i(194299);
-      try
-      {
-        if (paramAnonymousb != AbstractVideoTextureView.this.cmS)
-        {
-          ad.w("MicroMsg.Video.AbstractVideoTextureView", "another player on video size changed, return now.[%s, %s]", new Object[] { paramAnonymousb, AbstractVideoTextureView.this.cmS });
-          AppMethodBeat.o(194299);
-          return;
-        }
-        AbstractVideoTextureView.a(AbstractVideoTextureView.this, paramAnonymousb.getVideoWidth());
-        AbstractVideoTextureView.b(AbstractVideoTextureView.this, paramAnonymousb.getVideoHeight());
-        ad.i("MicroMsg.Video.AbstractVideoTextureView", "on size change size:( " + AbstractVideoTextureView.a(AbstractVideoTextureView.this) + " , " + AbstractVideoTextureView.b(AbstractVideoTextureView.this) + " )");
-        if (AbstractVideoTextureView.c(AbstractVideoTextureView.this) != null) {
-          AbstractVideoTextureView.c(AbstractVideoTextureView.this).dY(AbstractVideoTextureView.a(AbstractVideoTextureView.this), AbstractVideoTextureView.b(AbstractVideoTextureView.this));
-        }
-      }
-      catch (Exception paramAnonymousb)
-      {
-        for (;;)
-        {
-          ad.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", paramAnonymousb, "on video size changed error[%d, %d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        }
-      }
-      AbstractVideoTextureView.d(AbstractVideoTextureView.this);
-      AppMethodBeat.o(194299);
-    }
-  };
-  private b.e kuw = new b.e()
-  {
-    public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb)
-    {
-      AppMethodBeat.i(194300);
-      if (paramAnonymousb != AbstractVideoTextureView.this.cmS)
-      {
-        ad.w("MicroMsg.Video.AbstractVideoTextureView", "another player callback, release now.[%s, %s]", new Object[] { paramAnonymousb, AbstractVideoTextureView.this.cmS });
-        AbstractVideoTextureView.a(AbstractVideoTextureView.this, paramAnonymousb);
-        AppMethodBeat.o(194300);
-        return;
-      }
-      AbstractVideoTextureView.e(AbstractVideoTextureView.this);
-      AbstractVideoTextureView.a(AbstractVideoTextureView.this, paramAnonymousb.getVideoWidth());
-      AbstractVideoTextureView.b(AbstractVideoTextureView.this, paramAnonymousb.getVideoHeight());
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "on prepared. size [%d, %d] mStartWhenPrepared %b ", new Object[] { Integer.valueOf(AbstractVideoTextureView.a(AbstractVideoTextureView.this)), Integer.valueOf(AbstractVideoTextureView.b(AbstractVideoTextureView.this)), Boolean.valueOf(AbstractVideoTextureView.f(AbstractVideoTextureView.this)) });
-      AbstractVideoTextureView.d(AbstractVideoTextureView.this);
-      if ((AbstractVideoTextureView.a(AbstractVideoTextureView.this) != 0) && (AbstractVideoTextureView.b(AbstractVideoTextureView.this) != 0)) {
-        if (AbstractVideoTextureView.f(AbstractVideoTextureView.this))
-        {
-          AbstractVideoTextureView.this.cmS.start();
-          AbstractVideoTextureView.this.cmS.setLooping(AbstractVideoTextureView.g(AbstractVideoTextureView.this));
-          AbstractVideoTextureView.h(AbstractVideoTextureView.this);
-        }
-      }
-      for (;;)
-      {
-        if (AbstractVideoTextureView.c(AbstractVideoTextureView.this) != null) {
-          AbstractVideoTextureView.c(AbstractVideoTextureView.this).rq();
-        }
-        AppMethodBeat.o(194300);
-        return;
-        if (AbstractVideoTextureView.f(AbstractVideoTextureView.this))
-        {
-          AbstractVideoTextureView.this.cmS.start();
-          AbstractVideoTextureView.h(AbstractVideoTextureView.this);
-          AbstractVideoTextureView.this.cmS.setLooping(AbstractVideoTextureView.g(AbstractVideoTextureView.this));
-        }
-      }
-    }
-  };
-  private b.f kux = new b.f()
-  {
-    public final void b(com.tencent.mm.plugin.appbrand.jsapi.video.e.b paramAnonymousb)
-    {
-      AppMethodBeat.i(194301);
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "video seek complete curPos[%d] mStartWhenPrepared[%b] pauseWhenUpdated[%b]", new Object[] { Integer.valueOf(paramAnonymousb.getCurrentPosition()), Boolean.valueOf(AbstractVideoTextureView.f(AbstractVideoTextureView.this)), Boolean.valueOf(AbstractVideoTextureView.i(AbstractVideoTextureView.this)) });
-      if (AbstractVideoTextureView.f(AbstractVideoTextureView.this))
-      {
-        if (AbstractVideoTextureView.i(AbstractVideoTextureView.this))
-        {
-          AppMethodBeat.o(194301);
-          return;
-        }
-        AbstractVideoTextureView.this.start();
-      }
-      for (;;)
-      {
-        if (AbstractVideoTextureView.j(AbstractVideoTextureView.this) != null) {
-          AbstractVideoTextureView.j(AbstractVideoTextureView.this).ey(AbstractVideoTextureView.f(AbstractVideoTextureView.this));
-        }
-        AbstractVideoTextureView.a(AbstractVideoTextureView.this, 0L);
-        AppMethodBeat.o(194301);
-        return;
-        AbstractVideoTextureView.this.pause();
-      }
-    }
-  };
-  private b.a kuy = new b.a()
-  {
-    public final void gX(int paramAnonymousInt)
-    {
-      AppMethodBeat.i(194302);
-      ad.d("MicroMsg.Video.AbstractVideoTextureView", "onBufferingUpdate percent[%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
-      AbstractVideoTextureView.c(AbstractVideoTextureView.this, paramAnonymousInt);
-      AppMethodBeat.o(194302);
-    }
-  };
-  private b.d kuz = new b.d()
-  {
-    public final boolean cb(int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      AppMethodBeat.i(194303);
-      ad.d("MicroMsg.Video.AbstractVideoTextureView", "onInfo [%d %d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-      if (AbstractVideoTextureView.k(AbstractVideoTextureView.this) != null) {
-        AbstractVideoTextureView.k(AbstractVideoTextureView.this).dZ(paramAnonymousInt1, paramAnonymousInt2);
-      }
-      AppMethodBeat.o(194303);
-      return false;
-    }
-  };
+  private b kVW = new b();
   private Surface mSurface = null;
   private int mVideoHeight = 0;
   private int mVideoWidth = 0;
@@ -321,28 +321,28 @@ public abstract class AbstractVideoTextureView
   public AbstractVideoTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setSurfaceTextureListener(this.kuG);
+    setSurfaceTextureListener(this.kVV);
     setFocusable(true);
     setFocusableInTouchMode(true);
   }
   
-  private void beh()
+  private void blb()
   {
     boolean bool1 = true;
     int i = hashCode();
-    boolean bool2 = this.kum;
-    if (this.cmS == null) {}
+    boolean bool2 = this.kVB;
+    if (this.cjU == null) {}
     for (;;)
     {
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d release media player isPrepared[%b] player is null[%b] ", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if (this.cmS != null)
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d release media player isPrepared[%b] player is null[%b] ", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      if (this.cjU != null)
       {
-        this.cmS.a(null);
-        this.cmS.a(null);
+        this.cjU.a(null);
+        this.cjU.a(null);
       }
       try
       {
-        this.cmS.stop();
+        this.cjU.stop();
       }
       catch (Exception localException1)
       {
@@ -350,105 +350,105 @@ public abstract class AbstractVideoTextureView
         {
           for (;;)
           {
-            this.cmS.reset();
-            this.cmS.release();
-            this.cmS = null;
+            this.cjU.reset();
+            this.cjU.release();
+            this.cjU = null;
             return;
             bool1 = false;
             break;
             localException1 = localException1;
-            ad.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException1, "stop media player error", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException1, "stop media player error", new Object[0]);
           }
         }
         catch (Exception localException2)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException2, "reset media player error", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException2, "reset media player error", new Object[0]);
           }
         }
       }
     }
   }
   
-  private void bei()
+  private void blc()
   {
-    if ((bt.isNullOrNil(this.kul)) || (this.mSurface == null)) {
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "openVideo, try later, url:%s, surface:%s", new Object[] { this.kul, this.mSurface });
+    if ((bs.isNullOrNil(this.kVA)) || (this.mSurface == null)) {
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "openVideo, try later, url:%s, surface:%s", new Object[] { this.kVA, this.mSurface });
     }
     do
     {
       return;
-      beh();
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d open video %s", new Object[] { Integer.valueOf(hashCode()), this.kul });
+      blb();
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d open video %s", new Object[] { Integer.valueOf(hashCode()), this.kVA });
       try
       {
-        this.cmS = beg();
-        this.cmS.a(this.kuw);
-        this.cmS.a(this.kuv);
-        this.kum = false;
-        this.ark = -1;
-        this.kut = 0;
-        this.cmS.a(this.kuA);
-        this.cmS.a(this.kuB);
-        this.cmS.a(this.kux);
-        this.cmS.a(this.kuy);
-        this.cmS.a(this.kuz);
-        if (!bt.isNullOrNil(this.kul)) {
-          this.cmS.setDataSource(this.kul);
+        this.cjU = bla();
+        this.cjU.a(this.kVL);
+        this.cjU.a(this.kVK);
+        this.kVB = false;
+        this.asf = -1;
+        this.kVI = 0;
+        this.cjU.a(this.kVP);
+        this.cjU.a(this.kVQ);
+        this.cjU.a(this.kVM);
+        this.cjU.a(this.kVN);
+        this.cjU.a(this.kVO);
+        if (!bs.isNullOrNil(this.kVA)) {
+          this.cjU.setDataSource(this.kVA);
         }
-        this.cmS.setSurface(this.mSurface);
-        this.cmS.prepareAsync();
-        this.mVideoHeight = this.cmS.getVideoHeight();
-        this.mVideoWidth = this.cmS.getVideoWidth();
-        setMute(this.fqj);
-        ax(this.aSD);
-        ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d open video success player[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.cmS.hashCode()) });
+        this.cjU.setSurface(this.mSurface);
+        this.cjU.prepareAsync();
+        this.mVideoHeight = this.cjU.getVideoHeight();
+        this.mVideoWidth = this.cjU.getVideoWidth();
+        setMute(this.ftN);
+        aB(this.aTw);
+        ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d open video success player[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.cjU.hashCode()) });
         return;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException, "prepare async error path", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException, "prepare async error path", new Object[0]);
       }
-    } while (this.kun == null);
-    this.kun.onError(-1, -1);
+    } while (this.kVC == null);
+    this.kVC.onError(-1, -1);
   }
   
-  public final boolean ax(float paramFloat)
+  public final boolean aB(float paramFloat)
   {
     if (paramFloat <= 0.0F) {
       return false;
     }
-    this.aSD = paramFloat;
-    this.cmS.ay(this.aSD);
+    this.aTw = paramFloat;
+    this.cjU.aC(this.aTw);
     return false;
   }
   
-  protected abstract com.tencent.mm.plugin.appbrand.jsapi.video.e.b beg();
+  protected abstract com.tencent.mm.plugin.appbrand.jsapi.video.e.b bla();
   
-  public final void bej()
+  public final void bld()
   {
-    if ((this.cmS != null) && (this.kum) && (this.mSurface != null) && (this.mSurface.isValid()))
+    if ((this.cjU != null) && (this.kVB) && (this.mSurface != null) && (this.mSurface.isValid()))
     {
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d flush surface start time[%d] ", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(getCurrentPosition()) });
-      this.kuF = true;
-      this.cmS.setVolume(0.0F, 0.0F);
-      this.cmS.start();
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d flush surface start time[%d] ", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(getCurrentPosition()) });
+      this.kVU = true;
+      this.cjU.setVolume(0.0F, 0.0F);
+      this.cjU.start();
     }
   }
   
   public final void d(double paramDouble, boolean paramBoolean)
   {
-    q(paramDouble);
-    this.cnf = paramBoolean;
+    p(paramDouble);
+    this.ckh = paramBoolean;
   }
   
   public int getCurrentPosition()
   {
-    if ((this.cmS != null) && (this.kum)) {
-      return this.cmS.getCurrentPosition();
+    if ((this.cjU != null) && (this.kVB)) {
+      return this.cjU.getCurrentPosition();
     }
-    if (this.cmS == null) {
+    if (this.cjU == null) {
       return -1;
     }
     return 0;
@@ -456,21 +456,21 @@ public abstract class AbstractVideoTextureView
   
   public int getDownloadPercent()
   {
-    return this.kut;
+    return this.kVI;
   }
   
   public int getDuration()
   {
-    if ((this.cmS != null) && (this.kum))
+    if ((this.cjU != null) && (this.kVB))
     {
-      if (this.ark > 0) {
-        return this.ark;
+      if (this.asf > 0) {
+        return this.asf;
       }
-      this.ark = this.cmS.getDuration();
-      return this.ark;
+      this.asf = this.cjU.getDuration();
+      return this.asf;
     }
-    this.ark = -1;
-    return this.ark;
+    this.asf = -1;
+    return this.asf;
   }
   
   public double getLastProgresstime()
@@ -480,46 +480,25 @@ public abstract class AbstractVideoTextureView
   
   public long getLastSurfaceUpdateTime()
   {
-    return this.kuC;
+    return this.kVR;
   }
   
   public String getVideoPath()
   {
-    return this.kul;
+    return this.kVA;
   }
   
-  protected final void i(final Surface paramSurface)
+  protected final void h(Surface paramSurface)
   {
-    h.Iye.aP(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(194298);
-        try
-        {
-          if ((paramSurface != null) && (paramSurface.isValid()))
-          {
-            ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(AbstractVideoTextureView.this.hashCode()), Integer.valueOf(paramSurface.hashCode()) });
-            paramSurface.release();
-          }
-          AppMethodBeat.o(194298);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException, "release Surface error", new Object[0]);
-          AppMethodBeat.o(194298);
-        }
-      }
-    });
+    h.JZN.aS(new AbstractVideoTextureView.2(this, paramSurface));
   }
   
   public final boolean isPlaying()
   {
-    if ((this.cmS != null) && (this.kum) && (!this.kuE) && (!this.kuF)) {}
-    for (boolean bool = this.cmS.isPlaying();; bool = false)
+    if ((this.cjU != null) && (this.kVB) && (!this.kVT) && (!this.kVU)) {}
+    for (boolean bool = this.cjU.isPlaying();; bool = false)
     {
-      ad.d("MicroMsg.Video.AbstractVideoTextureView", "%d is playing result [%b] pauseWhenUpdated[%b] mIsPrepared[%b]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Boolean.valueOf(this.kuE), Boolean.valueOf(this.kum) });
+      ac.d("MicroMsg.Video.AbstractVideoTextureView", "%d is playing result [%b] pauseWhenUpdated[%b] mIsPrepared[%b]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Boolean.valueOf(this.kVT), Boolean.valueOf(this.kVB) });
       return bool;
     }
   }
@@ -535,87 +514,87 @@ public abstract class AbstractVideoTextureView
     paramInt2 = getDefaultSize(1, paramInt2);
     int i = this.mVideoWidth;
     int j = this.mVideoHeight;
-    this.kuH.x(paramInt1, paramInt2, i, j);
-    setMeasuredDimension(this.kuH.kvp, this.kuH.kvq);
+    this.kVW.x(paramInt1, paramInt2, i, j);
+    setMeasuredDimension(this.kVW.kWD, this.kVW.kWE);
+  }
+  
+  public final void p(double paramDouble)
+  {
+    if (this.cjU != null)
+    {
+      this.cjU.seekTo((int)paramDouble);
+      this.ckh = true;
+      ac.d("MicroMsg.Video.AbstractVideoTextureView", "seek to time: " + paramDouble + " curr pos : " + this.cjU.getCurrentPosition());
+    }
   }
   
   public final void pause()
   {
-    if ((this.cmS != null) && (this.kum) && (this.cmS.isPlaying()))
+    if ((this.cjU != null) && (this.kVB) && (this.cjU.isPlaying()))
     {
-      ad.d("MicroMsg.Video.AbstractVideoTextureView", "pause video.");
-      this.cmS.pause();
+      ac.d("MicroMsg.Video.AbstractVideoTextureView", "pause video.");
+      this.cjU.pause();
     }
-    this.cnf = false;
-  }
-  
-  public final void q(double paramDouble)
-  {
-    if (this.cmS != null)
-    {
-      this.cmS.seekTo((int)paramDouble);
-      this.cnf = true;
-      ad.d("MicroMsg.Video.AbstractVideoTextureView", "seek to time: " + paramDouble + " curr pos : " + this.cmS.getCurrentPosition());
-    }
+    this.ckh = false;
   }
   
   public void setForceScaleFullScreen(boolean paramBoolean)
   {
-    this.kuu = paramBoolean;
-    this.kuH.kuu = this.kuu;
+    this.kVJ = paramBoolean;
+    this.kVW.kVJ = this.kVJ;
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    if (this.cmS != null) {
-      this.cmS.setLooping(paramBoolean);
+    if (this.cjU != null) {
+      this.cjU.setLooping(paramBoolean);
     }
-    this.hyg = true;
+    this.hYH = true;
   }
   
   public void setMute(boolean paramBoolean)
   {
-    ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d set mute %b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean) });
-    this.fqj = paramBoolean;
-    if (this.cmS != null)
+    ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d set mute %b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean) });
+    this.ftN = paramBoolean;
+    if (this.cjU != null)
     {
-      if (this.fqj) {
-        this.cmS.setVolume(0.0F, 0.0F);
+      if (this.ftN) {
+        this.cjU.setVolume(0.0F, 0.0F);
       }
     }
     else {
       return;
     }
-    this.cmS.setVolume(1.0F, 1.0F);
+    this.cjU.setVolume(1.0F, 1.0F);
   }
   
   public void setOnInfoCallback(a.b paramb)
   {
-    this.kuq = paramb;
+    this.kVF = paramb;
   }
   
   public void setOnSeekCompleteCallback(a.c paramc)
   {
-    this.kup = paramc;
+    this.kVE = paramc;
   }
   
   public void setOnSurfaceCallback(a.d paramd)
   {
-    this.kur = paramd;
+    this.kVG = paramd;
   }
   
   public void setOneTimeVideoTextureUpdateCallback(a.e parame)
   {
-    this.kuo = parame;
+    this.kVD = parame;
   }
   
   public void setPlayProgressCallback(boolean paramBoolean) {}
   
   public void setScaleType(e.h paramh)
   {
-    b localb = this.kuH;
-    ad.i("MicroMsg.ViewSizeCache", "set scale type old[%s] new[%s]", new Object[] { localb.knE, paramh });
-    localb.knE = paramh;
+    b localb = this.kVW;
+    ac.i("MicroMsg.ViewSizeCache", "set scale type old[%s] new[%s]", new Object[] { localb.kOY, paramh });
+    localb.kOY = paramh;
     localb.reset();
     requestLayout();
   }
@@ -624,14 +603,14 @@ public abstract class AbstractVideoTextureView
   
   public void setVideoCallback(a.a parama)
   {
-    this.kun = parama;
+    this.kVC = parama;
   }
   
   public void setVideoPath(String paramString)
   {
-    this.kul = paramString;
-    this.cnf = false;
-    bei();
+    this.kVA = paramString;
+    this.ckh = false;
+    blc();
     requestLayout();
   }
   
@@ -639,36 +618,36 @@ public abstract class AbstractVideoTextureView
   {
     if (this.mSurface == null)
     {
-      ad.w("MicroMsg.Video.AbstractVideoTextureView", "%d it surface not ready, do not start", new Object[] { Integer.valueOf(hashCode()) });
-      this.kuD = true;
-      this.cnf = true;
+      ac.w("MicroMsg.Video.AbstractVideoTextureView", "%d it surface not ready, do not start", new Object[] { Integer.valueOf(hashCode()) });
+      this.kVS = true;
+      this.ckh = true;
       return false;
     }
     if (this.startTime == 0L) {}
-    for (long l = bt.aGK();; l = this.startTime)
+    for (long l = bs.aNx();; l = this.startTime)
     {
       this.startTime = l;
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "start %d mIsPrepared %b pauseWhenUpdated %b mediaPlayer %s", new Object[] { Long.valueOf(this.startTime), Boolean.valueOf(this.kum), Boolean.valueOf(this.kuE), this.cmS });
-      if ((this.cmS == null) || (!this.kum)) {
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "start %d mIsPrepared %b pauseWhenUpdated %b mediaPlayer %s", new Object[] { Long.valueOf(this.startTime), Boolean.valueOf(this.kVB), Boolean.valueOf(this.kVT), this.cjU });
+      if ((this.cjU == null) || (!this.kVB)) {
         break;
       }
-      if (this.kuE)
+      if (this.kVT)
       {
-        this.kuE = false;
-        setMute(this.fqj);
+        this.kVT = false;
+        setMute(this.ftN);
       }
-      this.cmS.start();
-      this.cnf = true;
+      this.cjU.start();
+      this.ckh = true;
       return true;
     }
-    if ((this.cmS == null) && (this.kum))
+    if ((this.cjU == null) && (this.kVB))
     {
-      this.cnf = true;
-      bei();
+      this.ckh = true;
+      blc();
       requestLayout();
       return true;
     }
-    this.cnf = true;
+    this.ckh = true;
     return false;
   }
   
@@ -676,10 +655,10 @@ public abstract class AbstractVideoTextureView
   {
     long l1;
     long l3;
-    if (this.kus > 0L)
+    if (this.kVH > 0L)
     {
-      l1 = this.kus - this.startTime;
-      l3 = bt.aGK() - this.startTime;
+      l1 = this.kVH - this.startTime;
+      l3 = bs.aNx() - this.startTime;
       if (l1 <= l3) {
         break label499;
       }
@@ -690,20 +669,20 @@ public abstract class AbstractVideoTextureView
       if ((int)l2 * 1000 > getDuration()) {
         getDuration();
       }
-      ad.i("MicroMsg.Video.AbstractVideoTextureView", "stop : dur:%d stop:%d comp:%d", new Object[] { Integer.valueOf(getDuration()), Long.valueOf(l3), Long.valueOf(l1) });
-      if (this.kun != null) {
+      ac.i("MicroMsg.Video.AbstractVideoTextureView", "stop : dur:%d stop:%d comp:%d", new Object[] { Integer.valueOf(getDuration()), Long.valueOf(l3), Long.valueOf(l1) });
+      if (this.kVC != null) {
         getDuration();
       }
-      beh();
-      this.kuH.reset();
+      blb();
+      this.kVW.reset();
       try
       {
-        if ((this.mSurface != null) && (this.kum))
+        if ((this.mSurface != null) && (this.kVB))
         {
           Object localObject1 = getSurfaceTexture();
           if (localObject1 != null)
           {
-            ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
+            ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
             EGL10 localEGL10 = (EGL10)EGLContext.getEGL();
             EGLDisplay localEGLDisplay = localEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
             localEGL10.eglInitialize(localEGLDisplay, null);
@@ -729,14 +708,14 @@ public abstract class AbstractVideoTextureView
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException, "release surface", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.Video.AbstractVideoTextureView", localException, "release surface", new Object[0]);
         }
       }
-      this.kul = "";
-      this.kut = 0;
-      this.kum = false;
-      this.cnf = false;
-      this.kuC = 0L;
+      this.kVA = "";
+      this.kVI = 0;
+      this.kVB = false;
+      this.ckh = false;
+      this.kVR = 0L;
       return;
       l1 = 2147483647L;
       break;
@@ -745,7 +724,7 @@ public abstract class AbstractVideoTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.AbstractVideoTextureView
  * JD-Core Version:    0.7.0.1
  */

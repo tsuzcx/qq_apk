@@ -14,7 +14,7 @@ public final class d
     AppMethodBeat.o(40576);
   }
   
-  private static void J(boolean paramBoolean, String paramString)
+  private static void K(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(40579);
     String str;
@@ -42,19 +42,19 @@ public final class d
     if (paramObject != null) {}
     for (boolean bool = true;; bool = false)
     {
-      J(bool, paramString);
+      K(bool, paramString);
       AppMethodBeat.o(40577);
       return;
     }
   }
   
-  public static void mP(String paramString1, String paramString2)
+  public static void np(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40578);
     if ((paramString1 != null) && (!paramString1.trim().equals(""))) {}
     for (boolean bool = true;; bool = false)
     {
-      J(bool, paramString2);
+      K(bool, paramString2);
       AppMethodBeat.o(40578);
       return;
     }
@@ -62,7 +62,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.g.d
  * JD-Core Version:    0.7.0.1
  */

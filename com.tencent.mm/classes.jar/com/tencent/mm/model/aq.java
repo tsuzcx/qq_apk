@@ -7,13 +7,13 @@ import android.graphics.Bitmap;
 public abstract interface aq
   extends as
 {
-  public abstract void Lo();
+  public abstract void Lm();
   
-  public abstract String TT();
+  public abstract String UO();
   
-  public abstract void TU();
+  public abstract void UP();
   
-  public abstract void TV();
+  public abstract void UQ();
   
   public abstract int a(Notification paramNotification, boolean paramBoolean);
   
@@ -31,25 +31,25 @@ public abstract interface aq
   
   public abstract void cancelNotification(String paramString);
   
-  public abstract void cw(boolean paramBoolean);
-  
   public abstract void cx(boolean paramBoolean);
   
-  public abstract void kt(int paramInt);
+  public abstract void cy(boolean paramBoolean);
   
-  public abstract void ku(int paramInt);
+  public abstract void kq(int paramInt);
+  
+  public abstract void kr(int paramInt);
   
   public abstract void notify(int paramInt, Notification paramNotification);
   
-  public abstract void ou(String paramString);
-  
   public abstract void p(int paramInt, String paramString);
+  
+  public abstract void rA(String paramString);
   
   public abstract void y(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.aq
  * JD-Core Version:    0.7.0.1
  */

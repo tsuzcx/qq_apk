@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.story.ui.view.gallery;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
 final class e$1
   implements Runnable
 {
-  public static final 1 yyq;
+  public static final 1 zLF;
   
   static
   {
     AppMethodBeat.i(120367);
-    yyq = new 1();
+    zLF = new 1();
     AppMethodBeat.o(120367);
   }
   

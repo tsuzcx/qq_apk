@@ -10,10 +10,10 @@ public class DownloadWidgetTaskInfo
 {
   public static final Parcelable.Creator<DownloadWidgetTaskInfo> CREATOR;
   public String appId;
-  public long daY;
-  public float jAt;
-  public boolean ofO;
-  public String ogT;
+  public long cYu;
+  public float kaP;
+  public boolean oJp;
+  public String oKt;
   public int progress;
   public int state;
   
@@ -30,14 +30,14 @@ public class DownloadWidgetTaskInfo
   {
     AppMethodBeat.i(175249);
     this.appId = paramParcel.readString();
-    this.daY = paramParcel.readLong();
-    this.ogT = paramParcel.readString();
+    this.cYu = paramParcel.readLong();
+    this.oKt = paramParcel.readString();
     this.progress = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.ofO = bool;
-      this.jAt = paramParcel.readFloat();
+      this.oJp = bool;
+      this.kaP = paramParcel.readFloat();
       this.state = paramParcel.readInt();
       AppMethodBeat.o(175249);
       return;
@@ -54,14 +54,14 @@ public class DownloadWidgetTaskInfo
   {
     AppMethodBeat.i(175250);
     paramParcel.writeString(this.appId);
-    paramParcel.writeLong(this.daY);
-    paramParcel.writeString(this.ogT);
+    paramParcel.writeLong(this.cYu);
+    paramParcel.writeString(this.oKt);
     paramParcel.writeInt(this.progress);
-    if (this.ofO) {}
+    if (this.oJp) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeFloat(this.jAt);
+      paramParcel.writeFloat(this.kaP);
       paramParcel.writeInt(this.state);
       AppMethodBeat.o(175250);
       return;

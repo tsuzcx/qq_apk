@@ -9,17 +9,17 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.a;
 import com.tencent.mm.pluginsdk.ui.ProfileItemView;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class ProfileNormalItemView
   extends ProfileItemView
 {
-  private TextView kEu;
+  private TextView lfN;
   String mTitle;
-  CharSequence uEo;
-  View.OnClickListener uEp;
-  View uEq;
-  TextView uxf;
+  TextView vFY;
+  CharSequence vNf;
+  View.OnClickListener vNg;
+  View vNh;
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class ProfileNormalItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final ProfileNormalItemView Ju(int paramInt)
+  public final ProfileNormalItemView Lt(int paramInt)
   {
     AppMethodBeat.i(27383);
     this.mTitle = getContext().getString(paramInt);
@@ -44,35 +44,35 @@ public class ProfileNormalItemView
     return this;
   }
   
-  public final ProfileNormalItemView Jv(int paramInt)
+  public final ProfileNormalItemView Lu(int paramInt)
   {
     AppMethodBeat.i(27384);
-    this.uEo = getContext().getString(paramInt);
+    this.vNf = getContext().getString(paramInt);
     AppMethodBeat.o(27384);
     return this;
   }
   
-  public final ProfileNormalItemView Jw(int paramInt)
+  public final ProfileNormalItemView Lv(int paramInt)
   {
     AppMethodBeat.i(27385);
-    this.uxf.setTextColor(paramInt);
+    this.vFY.setTextColor(paramInt);
     AppMethodBeat.o(27385);
     return this;
   }
   
-  public final boolean dcY()
+  public final boolean dqG()
   {
     AppMethodBeat.i(27386);
-    this.kEu.setText(this.mTitle);
-    if (bt.ai(this.uEo))
+    this.lfN.setText(this.mTitle);
+    if (bs.aj(this.vNf))
     {
       setVisibility(8);
       AppMethodBeat.o(27386);
       return false;
     }
     setVisibility(0);
-    this.uxf.setText(this.uEo);
-    setOnClickListener(this.uEp);
+    this.vFY.setText(this.vNf);
+    setOnClickListener(this.vNg);
     AppMethodBeat.o(27386);
     return true;
   }
@@ -85,15 +85,15 @@ public class ProfileNormalItemView
   public final void init()
   {
     AppMethodBeat.i(27382);
-    this.kEu = ((TextView)findViewById(2131298680));
-    this.uxf = ((TextView)findViewById(2131298679));
-    this.uEq = findViewById(2131304172);
+    this.lfN = ((TextView)findViewById(2131298680));
+    this.vFY = ((TextView)findViewById(2131298679));
+    this.vNh = findViewById(2131304172);
     AppMethodBeat.o(27382);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ProfileNormalItemView
  * JD-Core Version:    0.7.0.1
  */

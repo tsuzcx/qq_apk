@@ -15,19 +15,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.a.a;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.d;
-import com.tencent.mm.protocal.protobuf.chi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cml;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.t;
 import java.util.List;
 
 public class MallProductReceiptUI
   extends MallBaseUI
 {
-  private d uxP = null;
-  private AutoCompleteTextView uxQ = null;
-  private h uxR = null;
-  private c uxz;
+  private d vGI = null;
+  private AutoCompleteTextView vGJ = null;
+  private h vGK = null;
+  private c vGs;
   
   public int getLayoutId()
   {
@@ -45,15 +45,15 @@ public class MallProductReceiptUI
         int i = 0;
         AppMethodBeat.i(66996);
         paramAnonymousMenuItem = MallProductReceiptUI.a(MallProductReceiptUI.this).getText().toString();
-        if (!bt.isNullOrNil(paramAnonymousMenuItem))
+        if (!bs.isNullOrNil(paramAnonymousMenuItem))
         {
           c localc = MallProductReceiptUI.b(MallProductReceiptUI.this);
-          localc.uvP = new chi();
-          chi localchi = localc.uvP;
-          if (bt.isNullOrNil(paramAnonymousMenuItem))
+          localc.vEI = new cml();
+          cml localcml = localc.vEI;
+          if (bs.isNullOrNil(paramAnonymousMenuItem))
           {
-            localchi.EcR = i;
-            localc.uvP.saB = paramAnonymousMenuItem;
+            localcml.FzM = i;
+            localc.vEI.tiv = paramAnonymousMenuItem;
             MallProductReceiptUI.this.finish();
           }
         }
@@ -67,25 +67,25 @@ public class MallProductReceiptUI
         }
       }
     });
-    this.uxQ = ((AutoCompleteTextView)findViewById(2131302096));
-    chi localchi = this.uxz.dbq();
-    if ((localchi != null) && (!bt.isNullOrNil(localchi.saB))) {
-      this.uxQ.setText(localchi.saB);
+    this.vGJ = ((AutoCompleteTextView)findViewById(2131302096));
+    cml localcml = this.vGs.doY();
+    if ((localcml != null) && (!bs.isNullOrNil(localcml.tiv))) {
+      this.vGJ.setText(localcml.tiv);
     }
-    this.uxQ.setSelection(this.uxQ.getText().length());
-    this.uxR = new h(this);
-    this.uxQ.setAdapter(this.uxR);
-    this.uxQ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.vGJ.setSelection(this.vGJ.getText().length());
+    this.vGK = new h(this);
+    this.vGJ.setAdapter(this.vGK);
+    this.vGJ.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(66997);
         paramAnonymousAdapterView = MallProductReceiptUI.c(MallProductReceiptUI.this);
-        if ((paramAnonymousAdapterView.uwa != null) && (paramAnonymousInt < paramAnonymousAdapterView.uwa.size())) {}
-        for (paramAnonymousAdapterView = (String)paramAnonymousAdapterView.uwa.get(paramAnonymousInt);; paramAnonymousAdapterView = null)
+        if ((paramAnonymousAdapterView.vET != null) && (paramAnonymousInt < paramAnonymousAdapterView.vET.size())) {}
+        for (paramAnonymousAdapterView = (String)paramAnonymousAdapterView.vET.get(paramAnonymousInt);; paramAnonymousAdapterView = null)
         {
-          ad.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = ".concat(String.valueOf(paramAnonymousAdapterView)));
-          if (!bt.isNullOrNil(paramAnonymousAdapterView)) {
+          ac.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = ".concat(String.valueOf(paramAnonymousAdapterView)));
+          if (!bs.isNullOrNil(paramAnonymousAdapterView)) {
             MallProductReceiptUI.a(MallProductReceiptUI.this).setText(paramAnonymousAdapterView);
           }
           AppMethodBeat.o(66997);
@@ -99,8 +99,8 @@ public class MallProductReceiptUI
       {
         AppMethodBeat.i(66998);
         paramAnonymousView = MallProductReceiptUI.c(MallProductReceiptUI.this);
-        paramAnonymousView.uwa.clear();
-        paramAnonymousView.dbD();
+        paramAnonymousView.vET.clear();
+        paramAnonymousView.dpl();
         MallProductReceiptUI.d(MallProductReceiptUI.this).notifyDataSetChanged();
         AppMethodBeat.o(66998);
       }
@@ -112,9 +112,9 @@ public class MallProductReceiptUI
   {
     AppMethodBeat.i(66999);
     super.onCreate(paramBundle);
-    this.uxP = a.dbi().dbk();
-    a.dbi();
-    this.uxz = a.dbj();
+    this.vGI = a.doQ().doS();
+    a.doQ();
+    this.vGs = a.doR();
     initView();
     AppMethodBeat.o(66999);
   }

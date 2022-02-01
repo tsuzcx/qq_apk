@@ -58,73 +58,107 @@ public class b
     return null;
   }
   
+  private EGLContext a(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, EGLContext paramEGLContext)
+  {
+    AppMethodBeat.i(193132);
+    EGLContext localEGLContext = paramEGLContext;
+    if (paramEGLContext == null) {
+      localEGLContext = EGL10.EGL_NO_CONTEXT;
+    }
+    paramEGLDisplay = this.b.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, new int[] { 12440, paramInt, 12344 });
+    f();
+    AppMethodBeat.o(193132);
+    return paramEGLDisplay;
+  }
+  
   private boolean a(EGLConfig paramEGLConfig, EGLContext paramEGLContext, Surface paramSurface)
   {
     AppMethodBeat.i(14558);
     this.b = ((EGL10)EGLContext.getEGL());
     this.c = this.b.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
     this.b.eglInitialize(this.c, this.k);
+    int[] arrayOfInt;
+    EGLConfig[] arrayOfEGLConfig;
+    EGL10 localEGL10;
+    EGLDisplay localEGLDisplay;
     if (paramEGLConfig == null)
     {
-      int[] arrayOfInt = new int[1];
-      EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-      EGL10 localEGL10 = this.b;
-      EGLDisplay localEGLDisplay = this.c;
-      if (paramSurface == null)
-      {
+      arrayOfInt = new int[1];
+      arrayOfEGLConfig = new EGLConfig[1];
+      localEGL10 = this.b;
+      localEGLDisplay = this.c;
+      if (paramSurface == null) {
         paramEGLConfig = l;
-        localEGL10.eglChooseConfig(localEGLDisplay, paramEGLConfig, arrayOfEGLConfig, 1, arrayOfInt);
-        this.d = arrayOfEGLConfig[0];
-        this.e = true;
-        label114:
-        paramEGLConfig = new int[3];
-        EGLConfig tmp119_118 = paramEGLConfig;
-        tmp119_118[0] = 12440;
-        EGLConfig tmp125_119 = tmp119_118;
-        tmp125_119[1] = 2;
-        EGLConfig tmp129_125 = tmp125_119;
-        tmp129_125[2] = 12344;
-        tmp129_125;
-        if (paramEGLContext != null) {
-          break label202;
-        }
-        this.f = this.b.eglCreateContext(this.c, this.d, EGL10.EGL_NO_CONTEXT, paramEGLConfig);
       }
     }
     for (;;)
     {
-      if (this.f != EGL10.EGL_NO_CONTEXT) {
-        break label233;
+      localEGL10.eglChooseConfig(localEGLDisplay, paramEGLConfig, arrayOfEGLConfig, 1, arrayOfInt);
+      this.d = arrayOfEGLConfig[0];
+      this.e = true;
+      if (paramEGLContext != null) {
+        this.g = true;
       }
-      e();
-      AppMethodBeat.o(14558);
-      return false;
-      paramEGLConfig = m;
-      break;
-      this.d = paramEGLConfig;
-      break label114;
-      label202:
-      this.f = this.b.eglCreateContext(this.c, this.d, paramEGLContext, paramEGLConfig);
-      this.g = true;
+      try
+      {
+        this.f = a(this.c, this.d, 2, paramEGLContext);
+        int n = this.i;
+        int i1 = this.j;
+        if (paramSurface == null)
+        {
+          this.h = this.b.eglCreatePbufferSurface(this.c, this.d, new int[] { 12375, n, 12374, i1, 12344 });
+          if (this.h != EGL10.EGL_NO_SURFACE) {
+            break label326;
+          }
+          e();
+          AppMethodBeat.o(14558);
+          return false;
+          paramEGLConfig = m;
+          continue;
+          this.d = paramEGLConfig;
+        }
+      }
+      catch (d paramEGLConfig)
+      {
+        for (;;)
+        {
+          TXCLog.i(a, "failed to create EGLContext of OpenGL ES 2.0, try 3.0");
+          try
+          {
+            this.f = a(this.c, this.d, 3, paramEGLContext);
+          }
+          catch (d paramEGLConfig)
+          {
+            TXCLog.e(a, "failed to create EGLContext of 3.0. ".concat(String.valueOf(paramEGLConfig)));
+            AppMethodBeat.o(14558);
+            return false;
+          }
+          this.h = this.b.eglCreateWindowSurface(this.c, this.d, paramSurface, null);
+        }
+        label326:
+        if (!this.b.eglMakeCurrent(this.c, this.h, this.h, this.f))
+        {
+          e();
+          AppMethodBeat.o(14558);
+          return false;
+        }
+        AppMethodBeat.o(14558);
+      }
     }
-    label233:
-    int n = this.i;
-    int i1 = this.j;
-    if (paramSurface == null) {}
-    for (this.h = this.b.eglCreatePbufferSurface(this.c, this.d, new int[] { 12375, n, 12374, i1, 12344 }); this.h == EGL10.EGL_NO_SURFACE; this.h = this.b.eglCreateWindowSurface(this.c, this.d, paramSurface, null))
-    {
-      e();
-      AppMethodBeat.o(14558);
-      return false;
-    }
-    if (!this.b.eglMakeCurrent(this.c, this.h, this.h, this.f))
-    {
-      e();
-      AppMethodBeat.o(14558);
-      return false;
-    }
-    AppMethodBeat.o(14558);
     return true;
+  }
+  
+  private void f()
+  {
+    AppMethodBeat.i(193133);
+    int n = this.b.eglGetError();
+    if (n != 12288)
+    {
+      d locald = new d(n);
+      AppMethodBeat.o(193133);
+      throw locald;
+    }
+    AppMethodBeat.o(193133);
   }
   
   public boolean a()

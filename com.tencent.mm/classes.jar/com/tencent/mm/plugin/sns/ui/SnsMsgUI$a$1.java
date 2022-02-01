@@ -16,18 +16,18 @@ final class SnsMsgUI$a$1
     AppMethodBeat.i(98874);
     if (paramBoolean)
     {
-      sHR.add(paramMMSlideDelView);
+      tPy.add(paramMMSlideDelView);
       AppMethodBeat.o(98874);
       return;
     }
-    sHR.remove(paramMMSlideDelView);
+    tPy.remove(paramMMSlideDelView);
     AppMethodBeat.o(98874);
   }
   
-  public final boolean cIf()
+  public final boolean cVq()
   {
     AppMethodBeat.i(98875);
-    if (sHR.size() > 0)
+    if (tPy.size() > 0)
     {
       AppMethodBeat.o(98875);
       return true;
@@ -36,39 +36,39 @@ final class SnsMsgUI$a$1
     return false;
   }
   
-  public final void cIg()
+  public final void cVr()
   {
     AppMethodBeat.i(98876);
-    Iterator localIterator = sHR.iterator();
+    Iterator localIterator = tPy.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.eSY();
+        localMMSlideDelView.fiI();
       }
     }
-    sHR.clear();
+    tPy.clear();
     AppMethodBeat.o(98876);
   }
   
-  public final void cIh()
+  public final void cVs()
   {
     AppMethodBeat.i(98877);
-    Iterator localIterator = sHR.iterator();
+    Iterator localIterator = tPy.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.eSX();
+        localMMSlideDelView.fiH();
       }
     }
-    sHR.clear();
+    tPy.clear();
     AppMethodBeat.o(98877);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.a.1
  * JD-Core Version:    0.7.0.1
  */

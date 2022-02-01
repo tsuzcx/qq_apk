@@ -7,19 +7,19 @@ import android.widget.TextView;
 import com.tencent.mm.plugin.newtips.a.a;
 import com.tencent.mm.plugin.newtips.a.g;
 import com.tencent.mm.plugin.newtips.a.k;
-import com.tencent.mm.protocal.protobuf.dcb;
+import com.tencent.mm.protocal.protobuf.dhn;
 
 abstract class MallIndexUI$a
   implements a
 {
   private Context context;
-  protected ImageView tuY;
-  protected TextView tuZ;
+  protected ImageView uDr;
+  protected TextView uDs;
   
   public MallIndexUI$a(MallIndexUI paramMallIndexUI, Context paramContext, View paramView)
   {
     this.context = paramContext;
-    eb(paramView);
+    ek(paramView);
   }
   
   public final void a(k paramk, boolean paramBoolean)
@@ -27,80 +27,80 @@ abstract class MallIndexUI$a
     g.a(this, paramk, paramBoolean);
   }
   
-  public final boolean a(boolean paramBoolean, dcb paramdcb)
+  public final boolean a(boolean paramBoolean, dhn paramdhn)
   {
     return false;
   }
   
-  public final boolean b(boolean paramBoolean, dcb paramdcb)
+  public final boolean b(boolean paramBoolean, dhn paramdhn)
   {
     return false;
   }
   
-  public final boolean c(boolean paramBoolean, dcb paramdcb)
+  public final boolean c(boolean paramBoolean, dhn paramdhn)
   {
     return false;
   }
   
-  public final boolean cND()
-  {
-    return false;
-  }
-  
-  public final boolean d(boolean paramBoolean, dcb paramdcb)
+  public final boolean d(boolean paramBoolean, dhn paramdhn)
   {
     if (paramBoolean)
     {
-      this.tuZ.setVisibility(0);
-      String str = paramdcb.glx;
-      if (paramdcb.glx > 99) {
+      this.uDs.setVisibility(0);
+      String str = paramdhn.gMk;
+      if (paramdhn.gMk > 99) {
         str = this.context.getString(2131764343);
       }
-      this.tuZ.setText(str);
+      this.uDs.setText(str);
     }
     for (;;)
     {
       return true;
-      this.tuZ.setVisibility(8);
+      this.uDs.setVisibility(8);
     }
   }
   
-  public abstract void eb(View paramView);
+  public final boolean dbk()
+  {
+    return false;
+  }
   
-  public final boolean mY(boolean paramBoolean)
+  public abstract void ek(View paramView);
+  
+  public final boolean nR(boolean paramBoolean)
   {
     return g.a(paramBoolean, this);
   }
   
-  public final boolean mZ(boolean paramBoolean)
+  public final boolean nS(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.tuY.setVisibility(0);
+      this.uDr.setVisibility(0);
     }
     for (;;)
     {
       return true;
-      this.tuY.setVisibility(8);
+      this.uDr.setVisibility(8);
     }
   }
   
-  public final boolean na(boolean paramBoolean)
+  public final boolean nT(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.tuZ.setVisibility(0);
-      this.tuZ.setText(this.context.getString(2131755829));
+      this.uDs.setVisibility(0);
+      this.uDs.setText(this.context.getString(2131755829));
     }
     for (;;)
     {
       return true;
-      this.tuZ.setVisibility(8);
+      this.uDs.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexUI.a
  * JD-Core Version:    0.7.0.1
  */

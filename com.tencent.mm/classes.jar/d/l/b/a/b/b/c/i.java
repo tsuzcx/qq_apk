@@ -15,12 +15,12 @@ import java.util.List;
 public final class i
   implements ac
 {
-  private final List<ac> Jtt;
+  private final List<ac> LgM;
   
   public i(List<? extends ac> paramList)
   {
     AppMethodBeat.i(57060);
-    this.Jtt = paramList;
+    this.LgM = paramList;
     AppMethodBeat.o(57060);
   }
   
@@ -30,7 +30,7 @@ public final class i
     k.h(paramb, "fqName");
     k.h(paramb1, "nameFilter");
     HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.Jtt.iterator();
+    Iterator localIterator = this.LgM.iterator();
     while (localIterator.hasNext()) {
       localHashSet.addAll(((ac)localIterator.next()).a(paramb, paramb1));
     }
@@ -44,18 +44,18 @@ public final class i
     AppMethodBeat.i(57058);
     k.h(paramb, "fqName");
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.Jtt.iterator();
+    Iterator localIterator = this.LgM.iterator();
     while (localIterator.hasNext()) {
       localArrayList.addAll((Collection)((ac)localIterator.next()).f(paramb));
     }
-    paramb = j.m((Iterable)localArrayList);
+    paramb = j.l((Iterable)localArrayList);
     AppMethodBeat.o(57058);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.i
  * JD-Core Version:    0.7.0.1
  */

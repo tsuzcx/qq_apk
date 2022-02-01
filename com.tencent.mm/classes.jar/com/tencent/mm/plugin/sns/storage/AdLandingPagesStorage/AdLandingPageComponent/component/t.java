@@ -22,10 +22,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ag;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingControlView;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
@@ -33,8 +33,8 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.ui.as;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,51 +51,34 @@ import org.json.JSONObject;
 public final class t
   extends com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a
 {
-  private static final Map<String, Bitmap> xbu;
-  ViewPager rN;
-  private int tiE;
-  a xbv;
-  AdLandingControlView xbw;
-  private int xbx;
+  private static final Map<String, Bitmap> yoj;
+  ViewPager sO;
+  private int uqT;
+  a yok;
+  AdLandingControlView yol;
+  private int yom;
   
   static
   {
     AppMethodBeat.i(96612);
-    xbu = new WeakHashMap();
+    yoj = new WeakHashMap();
     AppMethodBeat.o(96612);
   }
   
-  public t(Context paramContext, af paramaf, ViewGroup paramViewGroup)
+  public t(Context paramContext, ag paramag, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramaf, paramViewGroup);
+    super(paramContext, paramag, paramViewGroup);
     AppMethodBeat.i(96602);
-    this.xbx = 0;
-    this.tiE = 0;
-    this.xbw = new AdLandingControlView(paramContext);
+    this.yom = 0;
+    this.uqT = 0;
+    this.yol = new AdLandingControlView(paramContext);
     AppMethodBeat.o(96602);
   }
   
-  public final void aF(Map<String, Object> paramMap)
-  {
-    AppMethodBeat.i(96606);
-    super.aF(paramMap);
-    if (paramMap.containsKey("startIndex")) {
-      try
-      {
-        this.xbx = ((Integer)paramMap.get("startIndex")).intValue();
-        this.rN.setCurrentItem(this.xbx, false);
-        AppMethodBeat.o(96606);
-        return;
-      }
-      catch (Exception paramMap) {}
-    }
-    AppMethodBeat.o(96606);
-  }
-  
-  public final boolean aG(JSONObject paramJSONObject)
+  public final boolean aH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96610);
-    if (!super.aG(paramJSONObject))
+    if (!super.aH(paramJSONObject))
     {
       AppMethodBeat.o(96610);
       return false;
@@ -104,25 +87,68 @@ public final class t
     return true;
   }
   
-  public final void dvA()
+  public final void aJ(Map<String, Object> paramMap)
+  {
+    AppMethodBeat.i(96606);
+    super.aJ(paramMap);
+    if (paramMap.containsKey("startIndex")) {
+      try
+      {
+        this.yom = ((Integer)paramMap.get("startIndex")).intValue();
+        this.sO.setCurrentItem(this.yom, false);
+        AppMethodBeat.o(96606);
+        return;
+      }
+      catch (Exception paramMap) {}
+    }
+    AppMethodBeat.o(96606);
+  }
+  
+  public final void dJW()
+  {
+    AppMethodBeat.i(96609);
+    View localView = this.contentView;
+    this.sO = ((ViewPager)localView.findViewById(2131304917));
+    this.yol = ((AdLandingControlView)localView.findViewById(2131304899));
+    AppMethodBeat.o(96609);
+  }
+  
+  public final void dJY()
+  {
+    AppMethodBeat.i(96603);
+    this.yok.OI(this.uqT);
+    this.yok.OJ(this.uqT);
+    super.dJY();
+    AppMethodBeat.o(96603);
+  }
+  
+  public final void dJZ()
   {
     AppMethodBeat.i(96604);
-    this.xbv.MH(-1);
-    super.dvA();
+    this.yok.OJ(-1);
+    super.dJZ();
     AppMethodBeat.o(96604);
   }
   
-  protected final void dvN()
+  public final void dKF()
+  {
+    AppMethodBeat.i(96607);
+    super.dKF();
+    this.sO.setCurrentItem(this.yom, false);
+    AppMethodBeat.o(96607);
+  }
+  
+  protected final void dKm()
   {
     AppMethodBeat.i(96608);
-    int k = this.kvn - (int)((af)this.xab).paddingLeft - (int)((af)this.xab).paddingRight;
-    int m = this.kvo;
+    int k = this.kWB - (int)((ag)this.ymQ).paddingLeft - (int)((ag)this.ymQ).paddingRight;
+    int m = this.kWC;
     Object localObject1 = (LayoutInflater)this.context.getSystemService("layout_inflater");
     final a locala;
-    if (this.rN.getAdapter() == null)
+    if (this.sO.getAdapter() == null)
     {
-      locala = new a(this.context, (LayoutInflater)localObject1, (af)this.xab, this.backgroundColor);
-      this.rN.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+      locala = new a(this.context, (LayoutInflater)localObject1, (ag)this.ymQ, this.backgroundColor);
+      this.sO.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
       {
         public final void onPageScrollStateChanged(int paramAnonymousInt) {}
         
@@ -131,51 +157,51 @@ public final class t
         public final void onPageSelected(int paramAnonymousInt)
         {
           AppMethodBeat.i(96584);
-          ad.i("MicroMsg.Sns.AdLandingPageGroupListComponent", "onPageSelected %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          t.this.xbw.setPage(paramAnonymousInt);
+          ac.i("MicroMsg.Sns.AdLandingPageGroupListComponent", "onPageSelected %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          t.this.yol.setPage(paramAnonymousInt);
           t.a(t.this, paramAnonymousInt);
-          if (t.this.xae)
+          if (t.this.ymT)
           {
-            locala.MG(paramAnonymousInt);
-            locala.MH(paramAnonymousInt);
+            locala.OI(paramAnonymousInt);
+            locala.OJ(paramAnonymousInt);
           }
           AppMethodBeat.o(96584);
         }
       });
-      this.rN.setAdapter(locala);
-      this.xbw.jl(((af)this.xab).wWn.size(), 0);
-      if (!((af)this.xab).lUw) {
+      this.sO.setAdapter(locala);
+      this.yol.jy(((ag)this.ymQ).yjb.size(), 0);
+      if (!((ag)this.ymQ).mwy) {
         break label213;
       }
-      this.rN.setLayoutParams(new RelativeLayout.LayoutParams(k, m));
+      this.sO.setLayoutParams(new RelativeLayout.LayoutParams(k, m));
     }
     label213:
-    while (((af)this.xab).wWn.size() <= 0)
+    while (((ag)this.ymQ).yjb.size() <= 0)
     {
-      this.xbv = locala;
+      this.yok = locala;
       locala.notifyDataSetChanged();
       AppMethodBeat.o(96608);
       return;
-      locala = (a)this.rN.getAdapter();
-      locala.xbA = ((af)this.xab);
+      locala = (a)this.sO.getAdapter();
+      locala.yop = ((ag)this.ymQ);
       break;
     }
-    Object localObject2 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)((af)this.xab).wWn.get(0);
+    Object localObject2 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)((ag)this.ymQ).yjb.get(0);
     new LinearLayout(this.context).setOrientation(1);
     int i = 0;
-    localObject2 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)localObject2).wWn.iterator();
+    localObject2 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)localObject2).yjb.iterator();
     label276:
     x localx;
     int j;
-    ac localac;
+    ad localad;
     Object localObject4;
     if (((Iterator)localObject2).hasNext())
     {
       localx = (x)((Iterator)localObject2).next();
       j = (int)(i + localx.paddingTop);
-      if ((localx instanceof ac))
+      if ((localx instanceof ad))
       {
-        localac = (ac)localx;
+        localad = (ad)localx;
         localObject4 = ((LayoutInflater)localObject1).inflate(2131495510, null);
         ((View)localObject4).setBackgroundColor(this.backgroundColor);
         i = j;
@@ -187,27 +213,27 @@ public final class t
       {
         localObject4 = (TextView)((View)localObject4).findViewById(2131304898);
         i = j;
-        ((TextView)localObject4).setText(localac.wXe);
+        ((TextView)localObject4).setText(localad.yjT);
         i = j;
-        if (localac.textSize > 0.0F)
+        if (localad.textSize > 0.0F)
         {
           i = j;
-          ((TextView)localObject4).setTextSize(0, localac.textSize);
+          ((TextView)localObject4).setTextSize(0, localad.textSize);
         }
         i = j;
-        if (localac.wXi > 0.0F)
+        if (localad.yjX > 0.0F)
         {
           i = j;
-          ((TextView)localObject4).setLineSpacing(0.0F, localac.wXi + 1.0F);
+          ((TextView)localObject4).setLineSpacing(0.0F, localad.yjX + 1.0F);
         }
         i = j;
-        if (localac.wXf)
+        if (localad.yjU)
         {
           i = j;
           ((TextView)localObject4).getPaint().setFakeBoldText(true);
         }
         i = j;
-        ((TextView)localObject4).measure(View.MeasureSpec.makeMeasureSpec((int)(k - localac.paddingLeft - localac.paddingRight), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
+        ((TextView)localObject4).measure(View.MeasureSpec.makeMeasureSpec((int)(k - localad.paddingLeft - localad.paddingRight), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
         i = j;
         j += ((TextView)localObject4).getPaddingTop();
         i = j;
@@ -218,7 +244,7 @@ public final class t
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.Sns.AdLandingPageGroupListComponent", "txtComp measure exp=" + localException.toString());
+        ac.e("MicroMsg.Sns.AdLandingPageGroupListComponent", "txtComp measure exp=" + localException.toString());
         continue;
       }
       float f1 = i;
@@ -231,8 +257,8 @@ public final class t
         ((Button)localObject3).setText(((p)localx).title);
         ((Button)localObject3).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
         i = ((Button)localObject3).getPaddingTop() + j;
-        if ((localx.wWH > 0.0F) && ((int)localx.wWH != 2147483647)) {
-          i = (int)(i + localx.wWH);
+        if ((localx.yjv > 0.0F) && ((int)localx.yjv != 2147483647)) {
+          i = (int)(i + localx.yjv);
         }
         for (;;)
         {
@@ -274,7 +300,7 @@ public final class t
       else if ((localx instanceof u))
       {
         localObject3 = (u)localx;
-        if (((u)localObject3).wWA == 1)
+        if (((u)localObject3).yjo == 1)
         {
           i = j + m;
         }
@@ -288,19 +314,19 @@ public final class t
           i = (int)(((u)localObject3).height + f1);
         }
       }
-      else if ((localx instanceof ah))
+      else if ((localx instanceof ai))
       {
-        localObject3 = (ah)localx;
-        if (((ah)localObject3).wXt == 1)
+        localObject3 = (ai)localx;
+        if (((ai)localObject3).ykh == 1)
         {
-          if ((int)((ah)localObject3).width > 0)
+          if ((int)((ai)localObject3).width > 0)
           {
-            i = (int)((ah)localObject3).height * k / (int)((ah)localObject3).width + j;
+            i = (int)((ai)localObject3).height * k / (int)((ai)localObject3).width + j;
           }
           else
           {
             f1 = j;
-            i = (int)(((ah)localObject3).height + f1);
+            i = (int)(((ai)localObject3).height + f1);
           }
         }
         else {
@@ -309,14 +335,14 @@ public final class t
       }
       else
       {
-        if ((localx instanceof ag))
+        if ((localx instanceof ah))
         {
           i = j + m;
           continue;
           localObject1 = new RelativeLayout.LayoutParams(k, i);
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)((af)this.xab).paddingLeft);
-          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)((af)this.xab).paddingRight);
-          this.rN.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((int)((ag)this.ymQ).paddingLeft);
+          ((RelativeLayout.LayoutParams)localObject1).rightMargin = ((int)((ag)this.ymQ).paddingRight);
+          this.sO.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           break;
         }
         i = j;
@@ -324,46 +350,20 @@ public final class t
     }
   }
   
-  public final void dvU()
+  public final void dKt()
   {
     AppMethodBeat.i(96605);
-    this.xbv.MH(this.tiE);
+    this.yok.OJ(this.uqT);
     AppMethodBeat.o(96605);
   }
   
-  public final List<k> dvV()
+  public final List<k> dKu()
   {
     AppMethodBeat.i(96611);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(((a)this.rN.getAdapter()).dws());
+    localArrayList.addAll(((a)this.sO.getAdapter()).dKR());
     AppMethodBeat.o(96611);
     return localArrayList;
-  }
-  
-  public final void dvx()
-  {
-    AppMethodBeat.i(96609);
-    View localView = this.contentView;
-    this.rN = ((ViewPager)localView.findViewById(2131304917));
-    this.xbw = ((AdLandingControlView)localView.findViewById(2131304899));
-    AppMethodBeat.o(96609);
-  }
-  
-  public final void dvz()
-  {
-    AppMethodBeat.i(96603);
-    this.xbv.MG(this.tiE);
-    this.xbv.MH(this.tiE);
-    super.dvz();
-    AppMethodBeat.o(96603);
-  }
-  
-  public final void dwg()
-  {
-    AppMethodBeat.i(96607);
-    super.dwg();
-    this.rN.setCurrentItem(this.xbx, false);
-    AppMethodBeat.o(96607);
   }
   
   protected final int getLayout()
@@ -375,38 +375,38 @@ public final class t
     extends android.support.v4.view.q
   {
     int backgroundColor;
-    int kvn;
-    int kvo;
+    int kWB;
+    int kWC;
     Context mContext;
     LayoutInflater mLayoutInflater;
-    af xbA;
-    private int xbB;
-    int xbC;
-    int xbD;
-    HashMap<Integer, View> xbE;
-    HashMap<Integer, a> xbF;
-    Set<String> xbG;
+    ag yop;
+    private int yoq;
+    int yor;
+    int yos;
+    HashMap<Integer, View> yot;
+    HashMap<Integer, a> you;
+    Set<String> yov;
     
-    public a(Context paramContext, LayoutInflater paramLayoutInflater, af paramaf, int paramInt)
+    public a(Context paramContext, LayoutInflater paramLayoutInflater, ag paramag, int paramInt)
     {
       AppMethodBeat.i(96591);
-      this.xbB = 600;
-      this.xbC = 700;
-      this.xbD = 250;
-      this.xbE = new HashMap();
-      this.xbF = new HashMap();
-      this.xbG = new HashSet();
+      this.yoq = 600;
+      this.yor = 700;
+      this.yos = 250;
+      this.yot = new HashMap();
+      this.you = new HashMap();
+      this.yov = new HashSet();
       this.mContext = paramContext;
       this.mLayoutInflater = paramLayoutInflater;
-      this.xbA = paramaf;
+      this.yop = paramag;
       this.backgroundColor = paramInt;
-      paramContext = al.fU(paramContext);
-      this.kvn = paramContext[0];
-      this.kvo = paramContext[1];
+      paramContext = al.gg(paramContext);
+      this.kWB = paramContext[0];
+      this.kWC = paramContext[1];
       AppMethodBeat.o(96591);
     }
     
-    private void h(final ImageView paramImageView)
+    private void i(final ImageView paramImageView)
     {
       AppMethodBeat.i(96597);
       if ((paramImageView.getTag() != null) && ((paramImageView.getTag() instanceof String)) && (new BigInteger((String)paramImageView.getTag()).longValue() >= 1L))
@@ -416,19 +416,19 @@ public final class t
       }
       paramImageView.setTag("1");
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.8F);
-      localAlphaAnimation.setDuration(this.xbB);
+      localAlphaAnimation.setDuration(this.yoq);
       localAlphaAnimation.setInterpolator(new DecelerateInterpolator(1.2F));
       localAlphaAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(96589);
-          new ap().postDelayed(new Runnable()
+          new ao().postDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(96588);
-              t.a.a(t.a.this, t.a.2.this.xbH);
+              t.a.a(t.a.this, t.a.2.this.yow);
               AppMethodBeat.o(96588);
             }
           }, 200L);
@@ -443,10 +443,10 @@ public final class t
       AppMethodBeat.o(96597);
     }
     
-    public final void MG(int paramInt)
+    public final void OI(int paramInt)
     {
       AppMethodBeat.i(96598);
-      Object localObject = (View)this.xbE.get(String.valueOf(paramInt));
+      Object localObject = (View)this.yot.get(String.valueOf(paramInt));
       if (localObject == null)
       {
         AppMethodBeat.o(96598);
@@ -454,34 +454,34 @@ public final class t
       }
       localObject = (ImageView)((View)localObject).findViewById(2131304913);
       if ((localObject != null) && (((ImageView)localObject).getVisibility() == 0)) {
-        h((ImageView)localObject);
+        i((ImageView)localObject);
       }
       AppMethodBeat.o(96598);
     }
     
-    public final void MH(int paramInt)
+    public final void OJ(int paramInt)
     {
       AppMethodBeat.i(96599);
-      Iterator localIterator = this.xbF.keySet().iterator();
+      Iterator localIterator = this.you.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (Integer)localIterator.next();
-        a locala = (a)this.xbF.get(localObject);
-        if ((locala != null) && (locala.xbM.size() != 0))
+        a locala = (a)this.you.get(localObject);
+        if ((locala != null) && (locala.yoB.size() != 0))
         {
           if (((Integer)localObject).intValue() == paramInt)
           {
             i = 0;
             label79:
-            if (i < locala.xbM.size())
+            if (i < locala.yoB.size())
             {
-              localObject = (k)locala.xbM.get(i);
-              if (!((k)localObject).dwd()) {
+              localObject = (k)locala.yoB.get(i);
+              if (!((k)localObject).dKC()) {
                 break label145;
               }
-              ((k)localObject).dvz();
-              ((k)localObject).dvB();
-              this.xbG.add(((k)localObject).dwe());
+              ((k)localObject).dJY();
+              ((k)localObject).dKa();
+              this.yov.add(((k)localObject).dKD());
             }
             for (;;)
             {
@@ -489,21 +489,21 @@ public final class t
               break label79;
               break;
               label145:
-              if (this.xbG.contains(((k)localObject).dwe()))
+              if (this.yov.contains(((k)localObject).dKD()))
               {
-                ((k)localObject).dvA();
-                this.xbG.remove(((k)localObject).dwe());
+                ((k)localObject).dJZ();
+                this.yov.remove(((k)localObject).dKD());
               }
             }
           }
           int i = 0;
-          while (i < locala.xbM.size())
+          while (i < locala.yoB.size())
           {
-            localObject = (k)locala.xbM.get(i);
-            if (this.xbG.contains(((k)localObject).dwe()))
+            localObject = (k)locala.yoB.get(i);
+            if (this.yov.contains(((k)localObject).dKD()))
             {
-              ((k)localObject).dvA();
-              this.xbG.remove(((k)localObject).dwe());
+              ((k)localObject).dJZ();
+              this.yov.remove(((k)localObject).dKD());
             }
             i += 1;
           }
@@ -512,30 +512,30 @@ public final class t
       AppMethodBeat.o(96599);
     }
     
-    public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-    {
-      AppMethodBeat.i(96595);
-      paramViewGroup.removeView((View)paramObject);
-      this.xbE.remove(Integer.valueOf(paramInt));
-      AppMethodBeat.o(96595);
-    }
-    
-    public final List<k> dws()
+    public final List<k> dKR()
     {
       AppMethodBeat.i(96600);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.xbF.values().iterator();
+      Iterator localIterator = this.you.values().iterator();
       while (localIterator.hasNext()) {
-        localArrayList.addAll(((a)localIterator.next()).xbM);
+        localArrayList.addAll(((a)localIterator.next()).yoB);
       }
       AppMethodBeat.o(96600);
       return localArrayList;
     }
     
+    public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+    {
+      AppMethodBeat.i(96595);
+      paramViewGroup.removeView((View)paramObject);
+      this.yot.remove(Integer.valueOf(paramInt));
+      AppMethodBeat.o(96595);
+    }
+    
     public final int getCount()
     {
       AppMethodBeat.i(96592);
-      int i = this.xbA.wWn.size();
+      int i = this.yop.yjb.size();
       AppMethodBeat.o(96592);
       return i;
     }
@@ -543,11 +543,11 @@ public final class t
     public final int getItemPosition(Object paramObject)
     {
       AppMethodBeat.i(96596);
-      Iterator localIterator = this.xbE.keySet().iterator();
+      Iterator localIterator = this.yot.keySet().iterator();
       while (localIterator.hasNext())
       {
         int i = ((Integer)localIterator.next()).intValue();
-        if (this.xbE.get(Integer.valueOf(i)) == paramObject)
+        if (this.yot.get(Integer.valueOf(i)) == paramObject)
         {
           AppMethodBeat.o(96596);
           return i;
@@ -560,23 +560,23 @@ public final class t
     public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
     {
       AppMethodBeat.i(96594);
-      ad.d("MicroMsg.Sns.AdLandingPageGroupListComponent", "instantiateItem %d", new Object[] { Integer.valueOf(paramInt) });
-      if (this.xbE.containsKey(Integer.valueOf(paramInt)))
+      ac.d("MicroMsg.Sns.AdLandingPageGroupListComponent", "instantiateItem %d", new Object[] { Integer.valueOf(paramInt) });
+      if (this.yot.containsKey(Integer.valueOf(paramInt)))
       {
-        paramViewGroup = this.xbE.get(Integer.valueOf(paramInt));
+        paramViewGroup = this.yot.get(Integer.valueOf(paramInt));
         AppMethodBeat.o(96594);
         return paramViewGroup;
       }
-      ad.d("MicroMsg.Sns.AdLandingPageGroupListComponent", "inflate Item %d", new Object[] { Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.Sns.AdLandingPageGroupListComponent", "inflate Item %d", new Object[] { Integer.valueOf(paramInt) });
       View localView = this.mLayoutInflater.inflate(2131495511, paramViewGroup, false);
       LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131304911);
       localLinearLayout.setBackgroundColor(this.backgroundColor);
-      Object localObject2 = (a)this.xbF.get(Integer.valueOf(paramInt));
-      LinkedList localLinkedList = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)this.xbA.wWn.get(paramInt)).wWn;
+      Object localObject2 = (a)this.you.get(Integer.valueOf(paramInt));
+      LinkedList localLinkedList = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)this.yop.yjb.get(paramInt)).yjb;
       if (localObject2 != null)
       {
         localObject1 = localObject2;
-        if (((a)localObject2).xbM.size() != 0) {}
+        if (((a)localObject2).yoB.size() != 0) {}
       }
       else
       {
@@ -587,15 +587,15 @@ public final class t
           while (i < localLinkedList.size())
           {
             localObject2 = (x)localLinkedList.get(i);
-            ad.i("MicroMsg.Sns.AdLandingPageGroupListComponent", "gen component %s", new Object[] { ((x)localObject2).wWE });
+            ac.i("MicroMsg.Sns.AdLandingPageGroupListComponent", "gen component %s", new Object[] { ((x)localObject2).yjs });
             localObject2 = as.a(this.mContext, (x)localObject2, localLinearLayout, this.backgroundColor);
-            ((a)localObject1).xbM.add(localObject2);
+            ((a)localObject1).yoB.add(localObject2);
             i += 1;
           }
         }
-        this.xbF.put(Integer.valueOf(paramInt), localObject1);
+        this.you.put(Integer.valueOf(paramInt), localObject1);
       }
-      Object localObject1 = ((a)localObject1).xbM.iterator();
+      Object localObject1 = ((a)localObject1).yoB.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = ((k)((Iterator)localObject1).next()).getView();
@@ -607,27 +607,27 @@ public final class t
       localObject1 = (ImageView)localView.findViewById(2131304913);
       localObject2 = (TextView)localView.findViewById(2131304912);
       if (this.backgroundColor + 16777216 <= -1 - this.backgroundColor) {
-        ((ImageView)localObject1).setImageDrawable(com.tencent.mm.cd.a.l(this.mContext, 2131233545));
+        ((ImageView)localObject1).setImageDrawable(com.tencent.mm.cc.a.l(this.mContext, 2131233545));
       }
-      while (this.xbA.wXr == 1)
+      while (this.yop.ykf == 1)
       {
         ((ImageView)localObject1).setVisibility(8);
         ((TextView)localObject2).setVisibility(8);
-        localView.setLayoutParams(new RelativeLayout.LayoutParams(this.kvn, localLinearLayout.getMeasuredHeight()));
+        localView.setLayoutParams(new RelativeLayout.LayoutParams(this.kWB, localLinearLayout.getMeasuredHeight()));
         localView.setBackgroundColor(this.backgroundColor);
         paramViewGroup.addView(localView);
         paramViewGroup.setBackgroundColor(this.backgroundColor);
-        this.xbE.put(Integer.valueOf(paramInt), localView);
+        this.yot.put(Integer.valueOf(paramInt), localView);
         AppMethodBeat.o(96594);
         return localView;
-        ((ImageView)localObject1).setImageDrawable(com.tencent.mm.cd.a.l(this.mContext, 2131233548));
+        ((ImageView)localObject1).setImageDrawable(com.tencent.mm.cc.a.l(this.mContext, 2131233548));
       }
-      if (paramInt == this.xbA.wWn.size() - 1) {
+      if (paramInt == this.yop.yjb.size() - 1) {
         ((ImageView)localObject1).setVisibility(8);
       }
       for (;;)
       {
-        ((TextView)localObject2).setText(paramInt + 1 + "/" + this.xbA.wWn.size());
+        ((TextView)localObject2).setText(paramInt + 1 + "/" + this.yop.yjb.size());
         break;
         ((ImageView)localObject1).setVisibility(0);
       }
@@ -647,12 +647,12 @@ public final class t
     
     public final class a
     {
-      public LinkedList<k> xbM;
+      public LinkedList<k> yoB;
       
       public a()
       {
         AppMethodBeat.i(96590);
-        this.xbM = new LinkedList();
+        this.yoB = new LinkedList();
         AppMethodBeat.o(96590);
       }
     }
@@ -660,7 +660,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.t
  * JD-Core Version:    0.7.0.1
  */

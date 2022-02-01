@@ -1,297 +1,335 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.plugin.newtips.a.l.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.akv;
-import com.tencent.mm.protocal.protobuf.aln;
-import com.tencent.mm.protocal.protobuf.dzs;
-import com.tencent.mm.protocal.protobuf.dzt;
-import com.tencent.mm.protocal.protobuf.dzv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.g.c.cg;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.protocal.protobuf.ani;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.aom;
+import com.tencent.mm.protocal.protobuf.aon;
+import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.j;
+import d.g.b.k;
 import d.l;
-import d.n.n;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "Lcom/tencent/mm/plugin/newtips/model/NewTipsXMLConsumer$NewTipsHandleCallback;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "changeNewTipsPathToCtrInfoPath", "", "pathId", "", "checkValidClientVersion", "", "tipsId", "", "values", "", "findCtrInfoType", "tipsList", "", "Lcom/tencent/mm/plugin/newtips/storage/NewTipsInfo;", "getFinderNewTips", "handleAdd", "uniqueId", "handleCancel", "parseFinderExtInfo", "prepare", "", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "Lcom/tencent/mm/autogen/table/BaseFinderRedDotInfo;", "()V", "showInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "Lkotlin/collections/HashMap;", "getShowInfoMap", "()Ljava/util/HashMap;", "showRelationMap", "Ljava/util/LinkedList;", "build", "proto", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "delete", "", "storage", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "findShowInfoByPath", "path", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getExtInfo", "Lcom/tencent/mm/protobuf/ByteString;", "getTipsShowEntranceExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "getType", "", "isShowInfoEmpty", "isValid", "removeDependentRelation", "", "parent", "childPath", "removeShowInfoWithPath", "store", "toString", "Companion", "plugin-finder_release"})
 public final class h
-  implements l.a
+  extends cg
 {
-  public static final a KMr;
-  private final c qnj;
+  private static final c.a info;
+  public static final h.a rfv;
+  final HashMap<String, aon> rft;
+  private final HashMap<String, LinkedList<String>> rfu;
   
   static
   {
-    AppMethodBeat.i(197558);
-    KMr = new a((byte)0);
-    AppMethodBeat.o(197558);
+    AppMethodBeat.i(178205);
+    rfv = new h.a((byte)0);
+    info = cg.Th();
+    AppMethodBeat.o(178205);
   }
   
-  public h(c paramc)
+  public h()
   {
-    AppMethodBeat.i(197557);
-    this.qnj = paramc;
-    AppMethodBeat.o(197557);
+    AppMethodBeat.i(178204);
+    this.rft = new HashMap();
+    this.rfu = new HashMap();
+    AppMethodBeat.o(178204);
   }
   
-  private static boolean a(long paramLong, Map<String, String> paramMap)
+  private final void gc(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197556);
-    if (paramMap.containsKey(".sysmsg.newtips.control.android_min_clientversion")) {}
-    for (int i = bt.getInt((String)paramMap.get(".sysmsg.newtips.control.android_min_clientversion"), 0);; i = 0)
+    AppMethodBeat.i(178203);
+    aon localaon = (aon)this.rft.get(paramString1);
+    if ((localaon == null) || (localaon.EHC != 2))
     {
-      if (paramMap.containsKey(".sysmsg.newtips.control.android_max_clientversion")) {}
-      for (int j = bt.getInt((String)paramMap.get(".sysmsg.newtips.control.android_max_clientversion"), 2147483647);; j = 0)
-      {
-        if ((d.CpK < i) || (d.CpK > j))
-        {
-          ad.w("Finder.NewTipsTransform", "tipsId=%s, checkValidClientVersion client not match(%s, %s) %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(d.CpK) });
-          AppMethodBeat.o(197556);
-          return false;
-        }
-        AppMethodBeat.o(197556);
-        return true;
-      }
+      AppMethodBeat.o(178203);
+      return;
     }
+    paramString1 = (LinkedList)this.rfu.get(paramString1);
+    if (paramString1 != null)
+    {
+      k.g(paramString1, "list");
+      j.a((List)paramString1, (d.g.a.b)new h.b(paramString2));
+      AppMethodBeat.o(178203);
+      return;
+    }
+    AppMethodBeat.o(178203);
   }
   
-  private static Map<String, String> b(Map<String, String> paramMap, long paramLong)
+  private boolean isValid()
   {
-    AppMethodBeat.i(197553);
-    paramMap = (String)paramMap.get(".sysmsg.newtips.ext_info");
-    int i;
-    label39:
-    label67:
-    label71:
-    Object localObject;
-    if (paramMap != null) {
-      if (((CharSequence)paramMap).length() > 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label117;
-        }
-        if (paramMap == null) {
-          break label127;
-        }
-        paramMap = bw.K(paramMap, "finder");
-        d.g.b.k.g(paramMap, "extValues");
-        if (paramMap.isEmpty()) {
-          break label122;
-        }
-        i = 1;
-        if (i == 0) {
-          break label127;
-        }
-        if (paramMap != null)
-        {
-          localObject = (String)paramMap.get(".finder.reddot_type");
-          if (localObject == null) {
-            break label132;
-          }
-          localObject = n.aRf((String)localObject);
-          label100:
-          if (localObject != null) {
-            break label138;
-          }
-        }
-      }
-    }
-    label117:
-    label122:
-    label127:
-    while ((((Integer)localObject).intValue() != 1) || ((paramLong != 40001001L) && (paramLong != 40001002L)))
+    AppMethodBeat.i(178199);
+    CharSequence localCharSequence = (CharSequence)this.field_ctrInfo.EGt;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(197553);
-      return null;
-      i = 0;
-      break;
-      paramMap = null;
-      break label39;
-      i = 0;
-      break label67;
-      paramMap = null;
-      break label71;
-      localObject = null;
-      break label100;
-    }
-    label132:
-    label138:
-    AppMethodBeat.o(197553);
-    return paramMap;
-  }
-  
-  public final boolean a(long paramLong, String paramString, List<com.tencent.mm.plugin.newtips.b.c> paramList, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(197555);
-    d.g.b.k.h(paramList, "tipsList");
-    d.g.b.k.h(paramMap, "values");
-    if (b(paramMap, paramLong) != null)
-    {
-      if (!a(paramLong, paramMap))
-      {
-        AppMethodBeat.o(197555);
-        return true;
-      }
-      paramMap = (com.tencent.mm.plugin.newtips.b.c)j.iz(paramList);
-      int i;
-      Iterator localIterator;
-      if (paramMap != null)
-      {
-        i = paramMap.field_priority;
-        paramMap = new akv();
-        localIterator = ((Iterable)paramList).iterator();
-      }
-      for (;;)
-      {
-        label87:
-        if (!localIterator.hasNext()) {
-          break label490;
-        }
-        paramList = (com.tencent.mm.plugin.newtips.b.c)localIterator.next();
-        aln localaln = new aln();
-        if (paramList.field_showType != com.tencent.mm.plugin.newtips.a.k.ueu.value)
-        {
-          paramMap.Dmt.add(localaln);
-          int j = paramList.field_showType;
-          if (j == com.tencent.mm.plugin.newtips.a.k.uex.value)
-          {
-            localaln.title = paramList.field_title;
-            localaln.rXs = 3;
-            label177:
-            switch (paramList.field_path)
-            {
-            default: 
-              paramList = "";
-            }
-          }
-          for (;;)
-          {
-            localaln.path = paramList;
-            localaln.DmL = 1;
-            if (paramLong != 40001002L) {
-              break label433;
-            }
-            paramList = new dzv();
-            paramList.Lyv = 2;
-            localaln.LyB = 1;
-            localaln.LyC = new b(paramList.toByteArray());
-            paramMap.type = 1003;
-            break label87;
-            i = 0;
-            break;
-            if (j == com.tencent.mm.plugin.newtips.a.k.ueA.value)
-            {
-              localaln.count = 1;
-              localaln.rXs = 2;
-              break label177;
-            }
-            if (j == com.tencent.mm.plugin.newtips.a.k.uey.value)
-            {
-              localaln.odo = paramList.field_icon_url;
-              localaln.rXs = 4;
-              break label177;
-            }
-            if (j == com.tencent.mm.plugin.newtips.a.k.uev.value)
-            {
-              localaln.rXs = 1;
-              break label177;
-            }
-            if (j != com.tencent.mm.plugin.newtips.a.k.uew.value) {
-              break label177;
-            }
-            localaln.rXs = 100;
-            break label177;
-            paramList = "Discovery";
-            continue;
-            paramList = "FinderEntrance";
-            continue;
-            paramList = "TLMachineTab";
-            continue;
-            paramList = "TLLbsTab";
-          }
-          label433:
-          if (paramLong == 40001001L)
-          {
-            paramList = new dzv();
-            paramList.Lyv = 4;
-            localaln.LyB = 1;
-            localaln.LyC = new b(paramList.toByteArray());
-            paramMap.type = 1004;
-          }
-        }
-      }
-      label490:
-      paramMap.Dmu = paramString;
-      paramMap.priority = i;
-      paramString = new dzs();
-      paramList = new dzt();
-      paramString.Lyx.add(paramList);
-      paramList.DmY = paramMap;
-      this.qnj.a(paramString, "FinderNewTipsTransform");
-      AppMethodBeat.o(197555);
+      AppMethodBeat.o(178199);
       return true;
     }
-    AppMethodBeat.o(197555);
+    AppMethodBeat.o(178199);
     return false;
   }
   
-  public final boolean a(long paramLong, List<com.tencent.mm.plugin.newtips.b.c> paramList, Map<String, String> paramMap)
+  public final boolean a(b paramb)
   {
-    AppMethodBeat.i(197554);
-    d.g.b.k.h(paramList, "tipsList");
-    d.g.b.k.h(paramMap, "values");
-    int i;
-    if (b(paramMap, paramLong) != null)
+    AppMethodBeat.i(178198);
+    k.h(paramb, "storage");
+    if (!isValid())
     {
-      if (!a(paramLong, paramMap))
-      {
-        AppMethodBeat.o(197554);
-        return true;
-      }
-      paramList = ((Iterable)paramList).iterator();
-      i = 0;
-      while (paramList.hasNext())
-      {
-        paramMap = (com.tencent.mm.plugin.newtips.b.c)paramList.next();
-        if (paramMap.field_tipId == 40001002L)
-        {
-          i = 1003;
-        }
-        else
-        {
-          if (paramMap.field_tipId != 40001001L) {
-            break label145;
-          }
-          i = 1004;
-        }
-      }
-    }
-    label145:
-    for (;;)
-    {
-      break;
-      this.qnj.ahg(i);
-      AppMethodBeat.o(197554);
-      return true;
-      AppMethodBeat.o(197554);
+      ac.e("Finder.RedDotCtrInfo", this.field_tipsId + " is inValid");
+      AppMethodBeat.o(178198);
       return false;
+    }
+    if (ctZ()) {}
+    for (boolean bool = paramb.delete((c)this, new String[0]);; bool = paramb.replace((c)this))
+    {
+      ac.i("Finder.RedDotCtrInfo", "[store] ret=".concat(String.valueOf(bool)));
+      AppMethodBeat.o(178198);
+      return bool;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$Companion;", "", "()V", "NEW_TIPS_TIPS_ID_FINDER_TL_HOT_TAB", "", "NEW_TIPS_TIPS_ID_FINDER_TL_NEARBY_TAB", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER", "", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER_RED_DOT_TYPE", "TAG", "plugin-finder_release"})
-  public static final class a {}
+  public final LinkedList<String> adA(String paramString)
+  {
+    int k = 0;
+    int i = 0;
+    AppMethodBeat.i(178202);
+    k.h(paramString, "path");
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject1 = (aon)this.rft.get(paramString);
+    Object localObject2;
+    String str;
+    if ((localObject1 != null) && (((aon)localObject1).EHC == 1))
+    {
+      localObject1 = (aon)this.rft.remove(paramString);
+      if (localObject1 != null)
+      {
+        localLinkedList.add(paramString);
+        localObject2 = (CharSequence)((aon)localObject1).vXx;
+        if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {
+          i = 1;
+        }
+        if (i == 0)
+        {
+          localObject2 = ((aon)localObject1).vXx;
+          k.g(localObject2, "info.parent");
+          str = ((aon)localObject1).path;
+          k.g(str, "info.path");
+          gc((String)localObject2, str);
+          localObject1 = ((aon)localObject1).vXx;
+          k.g(localObject1, "info.parent");
+          localLinkedList.addAll((Collection)adA((String)localObject1));
+        }
+        localObject1 = this.field_ctrInfo.EGs;
+        k.g(localObject1, "field_ctrInfo.show_infos");
+        j.a((List)localObject1, (d.g.a.b)new h.c(this, localLinkedList, paramString));
+      }
+      AppMethodBeat.o(178202);
+      return localLinkedList;
+    }
+    int j;
+    if ((localObject1 != null) && (((aon)localObject1).EHC == 2))
+    {
+      localObject1 = (LinkedList)this.rfu.get(paramString);
+      if (localObject1 != null)
+      {
+        localObject1 = ((Iterable)localObject1).iterator();
+        i = 0;
+        j = i;
+        if (!((Iterator)localObject1).hasNext()) {
+          break label309;
+        }
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (!this.rft.containsKey(localObject2)) {
+          break label487;
+        }
+        i = 1;
+      }
+    }
+    label309:
+    label487:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j == 0)
+      {
+        localObject1 = (aon)this.rft.remove(paramString);
+        if (localObject1 != null)
+        {
+          localLinkedList.add(paramString);
+          localObject2 = (CharSequence)((aon)localObject1).vXx;
+          if (localObject2 != null)
+          {
+            i = k;
+            if (((CharSequence)localObject2).length() != 0) {}
+          }
+          else
+          {
+            i = 1;
+          }
+          if (i == 0)
+          {
+            localObject2 = ((aon)localObject1).vXx;
+            k.g(localObject2, "it.parent");
+            str = ((aon)localObject1).path;
+            k.g(str, "it.path");
+            gc((String)localObject2, str);
+            localObject1 = ((aon)localObject1).vXx;
+            k.g(localObject1, "it.parent");
+            localLinkedList.addAll((Collection)adA((String)localObject1));
+          }
+          localObject1 = this.field_ctrInfo.EGs;
+          k.g(localObject1, "field_ctrInfo.show_infos");
+          j.a((List)localObject1, (d.g.a.b)new h.d(this, localLinkedList, paramString));
+        }
+      }
+      AppMethodBeat.o(178202);
+      return localLinkedList;
+    }
+  }
+  
+  public final aon adz(String paramString)
+  {
+    AppMethodBeat.i(178201);
+    k.h(paramString, "path");
+    paramString = (aon)this.rft.get(paramString);
+    AppMethodBeat.o(178201);
+    return paramString;
+  }
+  
+  public final h b(ani paramani)
+  {
+    AppMethodBeat.i(178197);
+    k.h(paramani, "proto");
+    this.field_ctrInfo = paramani;
+    this.field_tipsId = paramani.EGt;
+    this.field_time = ce.azJ();
+    paramani = paramani.EGr;
+    if (paramani != null) {}
+    try
+    {
+      localObject1 = new anj();
+      ((anj)localObject1).parseFrom(paramani.toByteArray());
+      this.field_revokeId = ((anj)localObject1).EGv;
+      paramani = new LinkedList();
+      localObject1 = this.field_ctrInfo.EGs;
+      k.g(localObject1, "field_ctrInfo.show_infos");
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (aon)((Iterator)localObject1).next();
+        localObject3 = (Map)this.rft;
+        localObject4 = ((aon)localObject2).path;
+        k.g(localObject4, "it.path");
+        k.g(localObject2, "it");
+        ((Map)localObject3).put(localObject4, localObject2);
+        if (((aon)localObject2).EHC == 2)
+        {
+          localObject3 = (Map)this.rfu;
+          localObject4 = ((aon)localObject2).path;
+          k.g(localObject4, "it.path");
+          ((Map)localObject3).put(localObject4, new LinkedList());
+          paramani.add(localObject2);
+        }
+      }
+    }
+    catch (Exception paramani)
+    {
+      Object localObject1;
+      Object localObject2;
+      Object localObject3;
+      Object localObject4;
+      for (;;)
+      {
+        ac.l("Finder.RedDotCtrInfo", "", new Object[] { paramani });
+      }
+      paramani = ((Iterable)paramani).iterator();
+      while (paramani.hasNext())
+      {
+        localObject1 = (aon)paramani.next();
+        localObject2 = this.field_ctrInfo.EGs;
+        k.g(localObject2, "field_ctrInfo.show_infos");
+        localObject2 = ((Iterable)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (aon)((Iterator)localObject2).next();
+          if (k.g(((aon)localObject3).vXx, ((aon)localObject1).path))
+          {
+            localObject4 = (LinkedList)this.rfu.get(((aon)localObject1).path);
+            if (localObject4 != null) {
+              ((LinkedList)localObject4).add(((aon)localObject3).path);
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(178197);
+    }
+    return this;
+  }
+  
+  public final boolean b(b paramb)
+  {
+    AppMethodBeat.i(201487);
+    k.h(paramb, "storage");
+    this.field_ctrInfo.EGs.clear();
+    this.rft.clear();
+    this.rfu.clear();
+    boolean bool = a(paramb);
+    AppMethodBeat.o(201487);
+    return bool;
+  }
+  
+  public final aom ctY()
+  {
+    AppMethodBeat.i(201485);
+    aom localaom2 = this.field_tipsShowEntranceExtInfo;
+    aom localaom1 = localaom2;
+    if (localaom2 == null) {
+      localaom1 = new aom();
+    }
+    AppMethodBeat.o(201485);
+    return localaom1;
+  }
+  
+  public final boolean ctZ()
+  {
+    AppMethodBeat.i(178200);
+    Collection localCollection = (Collection)this.field_ctrInfo.EGs;
+    if ((localCollection == null) || (localCollection.isEmpty()))
+    {
+      AppMethodBeat.o(178200);
+      return true;
+    }
+    AppMethodBeat.o(178200);
+    return false;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(201486);
+    String str = this.field_tipsId + ' ' + this.field_ctrInfo.type + ' ' + this.field_time + ' ' + this.field_ctrInfo.priority + ' ' + this.field_revokeId;
+    AppMethodBeat.o(201486);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.h
  * JD-Core Version:    0.7.0.1
  */

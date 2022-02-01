@@ -14,10 +14,21 @@ import java.util.Set;
 
 public final class t
 {
+  static final r A(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(57634);
+    f localf = f.aWB(paramString2);
+    k.g(localf, "Name.identifier(name)");
+    d.l.b.a.b.d.b.v localv = d.l.b.a.b.d.b.v.Lsj;
+    paramString1 = new r(localf, d.l.b.a.b.d.b.v.mX(paramString1, paramString2 + '(' + paramString3 + ')' + paramString4));
+    AppMethodBeat.o(57634);
+    return paramString1;
+  }
+  
   static final d.l.b.a.b.f.b a(d.l.b.a.b.f.b paramb, String paramString)
   {
     AppMethodBeat.i(57632);
-    paramb = paramb.p(f.aQC(paramString));
+    paramb = paramb.p(f.aWB(paramString));
     k.g(paramb, "child(Name.identifier(name))");
     AppMethodBeat.o(57632);
     return paramb;
@@ -28,20 +39,20 @@ public final class t
     AppMethodBeat.i(57640);
     k.h(parame, "$this$hasRealKotlinSuperClassWithOverrideOf");
     k.h(parama, "specialCallableDescriptor");
-    parama = parama.fxq();
+    parama = parama.fPU();
     if (parama == null)
     {
       parame = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
       AppMethodBeat.o(57640);
       throw parame;
     }
-    parama = ((d.l.b.a.b.b.e)parama).fyA();
+    parama = ((d.l.b.a.b.b.e)parama).fRe();
     k.g(parama, "(specialCallableDescript…ssDescriptor).defaultType");
     for (parame = d.l.b.a.b.j.c.y(parame); parame != null; parame = d.l.b.a.b.j.c.y(parame)) {
       if (!(parame instanceof d.l.b.a.b.d.a.b.d))
       {
         int i;
-        if (w.f((ab)parame.fyA(), (ab)parama) != null) {
+        if (w.f((ab)parame.fRe(), (ab)parama) != null) {
           i = 1;
         }
         while (i != 0) {
@@ -66,7 +77,7 @@ public final class t
   static final d.l.b.a.b.f.b b(d.l.b.a.b.f.c paramc, String paramString)
   {
     AppMethodBeat.i(57633);
-    paramc = paramc.s(f.aQC(paramString)).fHh();
+    paramc = paramc.s(f.aWB(paramString)).fZL();
     k.g(paramc, "child(Name.identifier(name)).toSafe()");
     AppMethodBeat.o(57633);
     return paramc;
@@ -76,11 +87,11 @@ public final class t
   {
     AppMethodBeat.i(57635);
     k.h(paramT, "$this$getOverriddenBuiltinWithDifferentJvmName");
-    Object localObject = c.Jxr;
-    if (!c.fBk().contains(paramT.fyB()))
+    Object localObject = c.LkK;
+    if (!c.fTO().contains(paramT.fRf()))
     {
-      localObject = e.JxS;
-      if (!e.fBm().contains(d.l.b.a.b.j.d.a.v(paramT).fyB()))
+      localObject = e.Lll;
+      if (!e.fTQ().contains(d.l.b.a.b.j.d.a.v(paramT).fRf()))
       {
         AppMethodBeat.o(57635);
         return null;
@@ -88,13 +99,13 @@ public final class t
     }
     if (((paramT instanceof ah)) || ((paramT instanceof ag)))
     {
-      paramT = d.l.b.a.b.j.d.a.b(paramT, (d.g.a.b)a.JyG);
+      paramT = d.l.b.a.b.j.d.a.b(paramT, (d.g.a.b)a.LlZ);
       AppMethodBeat.o(57635);
       return paramT;
     }
     if ((paramT instanceof am))
     {
-      paramT = d.l.b.a.b.j.d.a.b(paramT, (d.g.a.b)b.JyH);
+      paramT = d.l.b.a.b.j.d.a.b(paramT, (d.g.a.b)b.Lma);
       AppMethodBeat.o(57635);
       return paramT;
     }
@@ -125,15 +136,15 @@ public final class t
       AppMethodBeat.o(57637);
       return localObject;
     }
-    localObject = d.JxA;
-    localObject = paramT.fyB();
+    localObject = d.LkT;
+    localObject = paramT.fRf();
     k.g(localObject, "name");
     if (!d.g((f)localObject))
     {
       AppMethodBeat.o(57637);
       return null;
     }
-    paramT = d.l.b.a.b.j.d.a.b(paramT, (d.g.a.b)c.JyI);
+    paramT = d.l.b.a.b.j.d.a.b(paramT, (d.g.a.b)c.Lmb);
     AppMethodBeat.o(57637);
     return paramT;
   }
@@ -156,18 +167,18 @@ public final class t
     Object localObject;
     if ((paramb instanceof ah))
     {
-      localObject = e.JxS;
+      localObject = e.Lll;
       paramb = e.l(paramb);
       AppMethodBeat.o(57638);
       return paramb;
     }
     if ((paramb instanceof am))
     {
-      localObject = c.Jxr;
+      localObject = c.LkK;
       paramb = c.a((am)paramb);
       if (paramb != null)
       {
-        paramb = paramb.qV();
+        paramb = paramb.rf();
         AppMethodBeat.o(57638);
         return paramb;
       }
@@ -194,7 +205,7 @@ public final class t
     AppMethodBeat.i(57641);
     k.h(paramb, "$this$isFromJavaOrBuiltins");
     k.h(paramb, "$this$isFromJava");
-    if (((d.l.b.a.b.j.d.a.v(paramb).fxq() instanceof d.l.b.a.b.d.a.b.d)) || (g.c((d.l.b.a.b.b.l)paramb)))
+    if (((d.l.b.a.b.j.d.a.v(paramb).fPU() instanceof d.l.b.a.b.d.a.b.d)) || (g.c((d.l.b.a.b.b.l)paramb)))
     {
       AppMethodBeat.o(57641);
       return true;
@@ -203,27 +214,16 @@ public final class t
     return false;
   }
   
-  static final r y(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(57634);
-    f localf = f.aQC(paramString2);
-    k.g(localf, "Name.identifier(name)");
-    d.l.b.a.b.d.b.v localv = d.l.b.a.b.d.b.v.JEQ;
-    paramString1 = new r(localf, d.l.b.a.b.d.b.v.mw(paramString1, paramString2 + '(' + paramString3 + ')' + paramString4));
-    AppMethodBeat.o(57634);
-    return paramString1;
-  }
-  
   static final class a
     extends d.g.b.l
     implements d.g.a.b<d.l.b.a.b.b.b, Boolean>
   {
-    public static final a JyG;
+    public static final a LlZ;
     
     static
     {
       AppMethodBeat.i(57627);
-      JyG = new a();
+      LlZ = new a();
       AppMethodBeat.o(57627);
     }
     
@@ -237,12 +237,12 @@ public final class t
     extends d.g.b.l
     implements d.g.a.b<d.l.b.a.b.b.b, Boolean>
   {
-    public static final b JyH;
+    public static final b Lma;
     
     static
     {
       AppMethodBeat.i(57629);
-      JyH = new b();
+      Lma = new b();
       AppMethodBeat.o(57629);
     }
     
@@ -256,12 +256,12 @@ public final class t
     extends d.g.b.l
     implements d.g.a.b<d.l.b.a.b.b.b, Boolean>
   {
-    public static final c JyI;
+    public static final c Lmb;
     
     static
     {
       AppMethodBeat.i(57631);
-      JyI = new c();
+      Lmb = new c();
       AppMethodBeat.o(57631);
     }
     
@@ -273,7 +273,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.t
  * JD-Core Version:    0.7.0.1
  */

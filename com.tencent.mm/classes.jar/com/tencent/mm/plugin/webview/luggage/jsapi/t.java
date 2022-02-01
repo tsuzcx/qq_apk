@@ -7,9 +7,9 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.luggage.d.e;
 import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -23,15 +23,15 @@ public class t
   public final void b(final com.tencent.luggage.d.a<n>.a parama)
   {
     AppMethodBeat.i(78555);
-    ad.i("MicroMsg.JsApiGetInstallState", "invokeInOwn");
-    com.tencent.mm.cj.a.post(new Runnable()
+    ac.i("MicroMsg.JsApiGetInstallState", "invokeInOwn");
+    com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
       {
         int i = 0;
         AppMethodBeat.i(78554);
-        Object localObject1 = parama.bZV.bZb;
-        Object localObject3 = ((n)parama.bZU).mContext;
+        Object localObject1 = parama.bWS.bVY;
+        Object localObject3 = ((n)parama.bWR).mContext;
         JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray("packageName");
         Object localObject4;
         JSONObject localJSONObject;
@@ -63,7 +63,7 @@ public class t
               n = 0;
               break label501;
               j = i;
-              ad.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
+              ac.i("MicroMsg.JsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
               k = i;
               if (i == 0)
               {
@@ -103,9 +103,9 @@ public class t
           localObject1 = ((PackageInfo)localObject1).versionName;
           continue;
           localObject4 = ((JSONObject)localObject2).optString("packageName");
-          if (bt.isNullOrNil((String)localObject4))
+          if (bs.isNullOrNil((String)localObject4))
           {
-            ad.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
+            ac.i("MicroMsg.JsApiGetInstallState", "packageName is null or nil");
             parama.a("get_install_state:no_null_packageName", null);
             AppMethodBeat.o(78554);
             return;
@@ -119,7 +119,7 @@ public class t
           label446:
           for (Object localObject2 = "null";; localObject2 = ((PackageInfo)localObject3).versionName)
           {
-            ad.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
+            ac.i("MicroMsg.JsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject4 + ", version = " + i + ", versionName = " + (String)localObject2);
             if (localObject3 != null) {
               break label456;
             }
@@ -145,7 +145,7 @@ public class t
     AppMethodBeat.o(78555);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

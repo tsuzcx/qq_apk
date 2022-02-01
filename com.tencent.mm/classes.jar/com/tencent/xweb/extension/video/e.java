@@ -5,8 +5,9 @@ import android.content.Context;
 import android.view.View;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.t;
+import com.tencent.xweb.u;
 import com.tencent.xweb.util.h;
+import com.tencent.xweb.xwalk.a.f;
 import com.tencent.xweb.xwalk.a.g;
 import java.io.File;
 import org.xwalk.core.Log;
@@ -71,7 +72,7 @@ public final class e
     //   109: aload 4
     //   111: invokevirtual 91	org/xwalk/core/resource/XWalkContextWrapper:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   114: aload 5
-    //   116: getfield 95	com/tencent/xweb/extension/video/e$a:IPw	Lorg/xwalk/core/ReflectMethod;
+    //   116: getfield 95	com/tencent/xweb/extension/video/e$a:KBR	Lorg/xwalk/core/ReflectMethod;
     //   119: iconst_5
     //   120: anewarray 4	java/lang/Object
     //   123: dup
@@ -117,7 +118,7 @@ public final class e
     //   189: checkcast 114	java/lang/Boolean
     //   192: invokevirtual 121	java/lang/Boolean:booleanValue	()Z
     //   195: ifne +48 -> 243
-    //   198: invokestatic 125	com/tencent/xweb/extension/video/e:frA	()Ljava/lang/ClassLoader;
+    //   198: invokestatic 125	com/tencent/xweb/extension/video/e:fKc	()Ljava/lang/ClassLoader;
     //   201: astore 5
     //   203: aload 5
     //   205: ifnull +636 -> 841
@@ -193,15 +194,15 @@ public final class e
     //   354: aload_0
     //   355: aload_1
     //   356: checkcast 76	com/tencent/xweb/WebView
-    //   359: putfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   359: putfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   362: aload_0
     //   363: aload_3
-    //   364: putfield 179	com/tencent/xweb/extension/video/d:IOY	Ljava/lang/String;
+    //   364: putfield 179	com/tencent/xweb/extension/video/d:KBt	Ljava/lang/String;
     //   367: aload_0
     //   368: new 181	android/widget/FrameLayout
     //   371: dup
     //   372: aload_0
-    //   373: getfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   373: getfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   376: invokevirtual 80	com/tencent/xweb/WebView:getContext	()Landroid/content/Context;
     //   379: invokespecial 184	android/widget/FrameLayout:<init>	(Landroid/content/Context;)V
     //   382: putfield 188	com/tencent/xweb/extension/video/d:mRootView	Landroid/widget/FrameLayout;
@@ -210,24 +211,24 @@ public final class e
     //   389: ldc 189
     //   391: invokevirtual 192	android/widget/FrameLayout:setBackgroundColor	(I)V
     //   394: aload_0
-    //   395: getfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   395: getfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   398: invokevirtual 195	com/tencent/xweb/WebView:isXWalkKernel	()Z
     //   401: ifeq +82 -> 483
     //   404: aload_0
     //   405: new 197	android/view/SurfaceView
     //   408: dup
     //   409: aload_0
-    //   410: getfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   410: getfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   413: invokevirtual 80	com/tencent/xweb/WebView:getContext	()Landroid/content/Context;
     //   416: invokespecial 198	android/view/SurfaceView:<init>	(Landroid/content/Context;)V
-    //   419: putfield 202	com/tencent/xweb/extension/video/d:IOu	Landroid/view/SurfaceView;
+    //   419: putfield 202	com/tencent/xweb/extension/video/d:KAQ	Landroid/view/SurfaceView;
     //   422: aload_0
-    //   423: getfield 202	com/tencent/xweb/extension/video/d:IOu	Landroid/view/SurfaceView;
+    //   423: getfield 202	com/tencent/xweb/extension/video/d:KAQ	Landroid/view/SurfaceView;
     //   426: invokevirtual 206	android/view/SurfaceView:getHolder	()Landroid/view/SurfaceHolder;
     //   429: bipush 253
     //   431: invokeinterface 211 2 0
     //   436: aload_0
-    //   437: getfield 202	com/tencent/xweb/extension/video/d:IOu	Landroid/view/SurfaceView;
+    //   437: getfield 202	com/tencent/xweb/extension/video/d:KAQ	Landroid/view/SurfaceView;
     //   440: invokevirtual 206	android/view/SurfaceView:getHolder	()Landroid/view/SurfaceHolder;
     //   443: new 213	com/tencent/xweb/extension/video/d$1
     //   446: dup
@@ -235,59 +236,59 @@ public final class e
     //   448: invokespecial 216	com/tencent/xweb/extension/video/d$1:<init>	(Lcom/tencent/xweb/extension/video/d;)V
     //   451: invokeinterface 220 2 0
     //   456: aload_0
-    //   457: getfield 202	com/tencent/xweb/extension/video/d:IOu	Landroid/view/SurfaceView;
+    //   457: getfield 202	com/tencent/xweb/extension/video/d:KAQ	Landroid/view/SurfaceView;
     //   460: iconst_0
     //   461: invokevirtual 224	android/view/SurfaceView:setZOrderOnTop	(Z)V
     //   464: aload_0
-    //   465: getfield 202	com/tencent/xweb/extension/video/d:IOu	Landroid/view/SurfaceView;
+    //   465: getfield 202	com/tencent/xweb/extension/video/d:KAQ	Landroid/view/SurfaceView;
     //   468: iconst_0
     //   469: invokevirtual 227	android/view/SurfaceView:setZOrderMediaOverlay	(Z)V
     //   472: aload_0
     //   473: getfield 188	com/tencent/xweb/extension/video/d:mRootView	Landroid/widget/FrameLayout;
     //   476: aload_0
-    //   477: getfield 202	com/tencent/xweb/extension/video/d:IOu	Landroid/view/SurfaceView;
+    //   477: getfield 202	com/tencent/xweb/extension/video/d:KAQ	Landroid/view/SurfaceView;
     //   480: invokevirtual 231	android/widget/FrameLayout:addView	(Landroid/view/View;)V
     //   483: aload_0
     //   484: new 233	android/view/GestureDetector
     //   487: dup
     //   488: aload_0
-    //   489: getfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   489: getfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   492: invokevirtual 80	com/tencent/xweb/WebView:getContext	()Landroid/content/Context;
     //   495: aload_0
     //   496: invokespecial 236	android/view/GestureDetector:<init>	(Landroid/content/Context;Landroid/view/GestureDetector$OnGestureListener;)V
-    //   499: putfield 240	com/tencent/xweb/extension/video/d:MQ	Landroid/view/GestureDetector;
+    //   499: putfield 240	com/tencent/xweb/extension/video/d:NL	Landroid/view/GestureDetector;
     //   502: aload_0
     //   503: new 242	android/view/ScaleGestureDetector
     //   506: dup
     //   507: aload_0
-    //   508: getfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   508: getfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   511: invokevirtual 80	com/tencent/xweb/WebView:getContext	()Landroid/content/Context;
     //   514: aload_0
     //   515: invokespecial 245	android/view/ScaleGestureDetector:<init>	(Landroid/content/Context;Landroid/view/ScaleGestureDetector$OnScaleGestureListener;)V
-    //   518: putfield 249	com/tencent/xweb/extension/video/d:HVz	Landroid/view/ScaleGestureDetector;
+    //   518: putfield 249	com/tencent/xweb/extension/video/d:Jwk	Landroid/view/ScaleGestureDetector;
     //   521: aload_0
-    //   522: getfield 240	com/tencent/xweb/extension/video/d:MQ	Landroid/view/GestureDetector;
+    //   522: getfield 240	com/tencent/xweb/extension/video/d:NL	Landroid/view/GestureDetector;
     //   525: iconst_0
     //   526: invokevirtual 252	android/view/GestureDetector:setIsLongpressEnabled	(Z)V
     //   529: aload_0
     //   530: aload_0
-    //   531: getfield 175	com/tencent/xweb/extension/video/d:AKr	Lcom/tencent/xweb/WebView;
+    //   531: getfield 175	com/tencent/xweb/extension/video/d:CcI	Lcom/tencent/xweb/WebView;
     //   534: invokevirtual 80	com/tencent/xweb/WebView:getContext	()Landroid/content/Context;
     //   537: invokestatic 258	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
     //   540: ldc_w 259
     //   543: aconst_null
     //   544: invokevirtual 263	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;)Landroid/view/View;
     //   547: checkcast 265	android/view/ViewGroup
-    //   550: putfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   550: putfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   553: aload_0
-    //   554: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   554: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   557: bipush 8
     //   559: invokevirtual 272	android/view/ViewGroup:setVisibility	(I)V
     //   562: aload_0
     //   563: new 274	com/tencent/xweb/extension/video/c
     //   566: dup
     //   567: aload_0
-    //   568: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   568: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   571: ldc_w 275
     //   574: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   577: checkcast 181	android/widget/FrameLayout
@@ -296,56 +297,56 @@ public final class e
     //   584: aload_0
     //   585: invokespecial 282	com/tencent/xweb/extension/video/d$10:<init>	(Lcom/tencent/xweb/extension/video/d;)V
     //   588: invokespecial 285	com/tencent/xweb/extension/video/c:<init>	(Landroid/widget/FrameLayout;Lcom/tencent/xweb/extension/video/c$a;)V
-    //   591: putfield 289	com/tencent/xweb/extension/video/d:IOG	Lcom/tencent/xweb/extension/video/c;
+    //   591: putfield 289	com/tencent/xweb/extension/video/d:KBc	Lcom/tencent/xweb/extension/video/c;
     //   594: aload_0
     //   595: aload_0
-    //   596: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   596: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   599: ldc_w 290
     //   602: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   605: checkcast 292	android/widget/ProgressBar
-    //   608: putfield 296	com/tencent/xweb/extension/video/d:IOy	Landroid/widget/ProgressBar;
+    //   608: putfield 296	com/tencent/xweb/extension/video/d:KAU	Landroid/widget/ProgressBar;
     //   611: aload_0
     //   612: aload_0
-    //   613: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   613: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   616: ldc_w 297
     //   619: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   622: checkcast 299	android/widget/TextView
-    //   625: putfield 303	com/tencent/xweb/extension/video/d:IOz	Landroid/widget/TextView;
+    //   625: putfield 303	com/tencent/xweb/extension/video/d:KAV	Landroid/widget/TextView;
     //   628: aload_0
     //   629: aload_0
-    //   630: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   630: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   633: ldc_w 304
     //   636: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   639: checkcast 299	android/widget/TextView
-    //   642: putfield 307	com/tencent/xweb/extension/video/d:IOA	Landroid/widget/TextView;
+    //   642: putfield 307	com/tencent/xweb/extension/video/d:KAW	Landroid/widget/TextView;
     //   645: aload_0
     //   646: aload_0
-    //   647: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   647: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   650: ldc_w 308
     //   653: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   656: checkcast 310	android/widget/ImageView
-    //   659: putfield 314	com/tencent/xweb/extension/video/d:IOD	Landroid/widget/ImageView;
+    //   659: putfield 314	com/tencent/xweb/extension/video/d:KAZ	Landroid/widget/ImageView;
     //   662: aload_0
     //   663: aload_0
-    //   664: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   664: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   667: ldc_w 315
     //   670: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   673: checkcast 317	com/tencent/xweb/extension/video/VideoStatusLayout
-    //   676: putfield 321	com/tencent/xweb/extension/video/d:IOx	Lcom/tencent/xweb/extension/video/VideoStatusLayout;
+    //   676: putfield 321	com/tencent/xweb/extension/video/d:KAT	Lcom/tencent/xweb/extension/video/VideoStatusLayout;
     //   679: aload_0
     //   680: aload_0
-    //   681: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   681: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   684: ldc_w 322
     //   687: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   690: checkcast 324	com/tencent/xweb/extension/video/ClickableFrameLayout
-    //   693: putfield 328	com/tencent/xweb/extension/video/d:IOB	Lcom/tencent/xweb/extension/video/ClickableFrameLayout;
+    //   693: putfield 328	com/tencent/xweb/extension/video/d:KAX	Lcom/tencent/xweb/extension/video/ClickableFrameLayout;
     //   696: aload_0
-    //   697: getfield 328	com/tencent/xweb/extension/video/d:IOB	Lcom/tencent/xweb/extension/video/ClickableFrameLayout;
+    //   697: getfield 328	com/tencent/xweb/extension/video/d:KAX	Lcom/tencent/xweb/extension/video/ClickableFrameLayout;
     //   700: aload_0
-    //   701: getfield 240	com/tencent/xweb/extension/video/d:MQ	Landroid/view/GestureDetector;
+    //   701: getfield 240	com/tencent/xweb/extension/video/d:NL	Landroid/view/GestureDetector;
     //   704: invokevirtual 332	com/tencent/xweb/extension/video/ClickableFrameLayout:setGestureDetector	(Landroid/view/GestureDetector;)V
     //   707: aload_0
-    //   708: getfield 328	com/tencent/xweb/extension/video/d:IOB	Lcom/tencent/xweb/extension/video/ClickableFrameLayout;
+    //   708: getfield 328	com/tencent/xweb/extension/video/d:KAX	Lcom/tencent/xweb/extension/video/ClickableFrameLayout;
     //   711: new 334	com/tencent/xweb/extension/video/d$17
     //   714: dup
     //   715: aload_0
@@ -353,13 +354,13 @@ public final class e
     //   719: invokevirtual 339	com/tencent/xweb/extension/video/ClickableFrameLayout:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
     //   722: aload_0
     //   723: aload_0
-    //   724: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   724: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   727: ldc_w 340
     //   730: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   733: checkcast 310	android/widget/ImageView
-    //   736: putfield 343	com/tencent/xweb/extension/video/d:IOE	Landroid/widget/ImageView;
+    //   736: putfield 343	com/tencent/xweb/extension/video/d:KBa	Landroid/widget/ImageView;
     //   739: aload_0
-    //   740: getfield 343	com/tencent/xweb/extension/video/d:IOE	Landroid/widget/ImageView;
+    //   740: getfield 343	com/tencent/xweb/extension/video/d:KBa	Landroid/widget/ImageView;
     //   743: new 345	com/tencent/xweb/extension/video/d$18
     //   746: dup
     //   747: aload_0
@@ -367,24 +368,24 @@ public final class e
     //   751: invokevirtual 350	android/widget/ImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
     //   754: aload_0
     //   755: aload_0
-    //   756: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   756: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   759: ldc_w 351
     //   762: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   765: checkcast 353	android/widget/LinearLayout
-    //   768: putfield 357	com/tencent/xweb/extension/video/d:IOC	Landroid/widget/LinearLayout;
+    //   768: putfield 357	com/tencent/xweb/extension/video/d:KAY	Landroid/widget/LinearLayout;
     //   771: aload_0
-    //   772: getfield 357	com/tencent/xweb/extension/video/d:IOC	Landroid/widget/LinearLayout;
+    //   772: getfield 357	com/tencent/xweb/extension/video/d:KAY	Landroid/widget/LinearLayout;
     //   775: iconst_4
     //   776: invokevirtual 358	android/widget/LinearLayout:setVisibility	(I)V
     //   779: aload_0
     //   780: aload_0
-    //   781: getfield 269	com/tencent/xweb/extension/video/d:IOw	Landroid/view/ViewGroup;
+    //   781: getfield 269	com/tencent/xweb/extension/video/d:KAS	Landroid/view/ViewGroup;
     //   784: ldc_w 359
     //   787: invokevirtual 279	android/view/ViewGroup:findViewById	(I)Landroid/view/View;
     //   790: checkcast 310	android/widget/ImageView
-    //   793: putfield 362	com/tencent/xweb/extension/video/d:IOF	Landroid/widget/ImageView;
+    //   793: putfield 362	com/tencent/xweb/extension/video/d:KBb	Landroid/widget/ImageView;
     //   796: aload_0
-    //   797: getfield 362	com/tencent/xweb/extension/video/d:IOF	Landroid/widget/ImageView;
+    //   797: getfield 362	com/tencent/xweb/extension/video/d:KBb	Landroid/widget/ImageView;
     //   800: new 364	com/tencent/xweb/extension/video/d$19
     //   803: dup
     //   804: aload_0
@@ -431,7 +432,7 @@ public final class e
     //   208	217	829	java/lang/ClassNotFoundException
   }
   
-  private static ClassLoader frA()
+  private static ClassLoader fKc()
   {
     AppMethodBeat.i(153646);
     Object localObject;
@@ -458,7 +459,7 @@ public final class e
         AppMethodBeat.o(153646);
         return null;
       }
-      mClassLoader = h.ba(str, XWalkEnvironment.getOptimizedDexDir(i), (String)localObject);
+      mClassLoader = h.bf(str, XWalkEnvironment.getOptimizedDexDir(i), (String)localObject);
       localObject = mClassLoader;
       AppMethodBeat.o(153646);
       return localObject;
@@ -472,51 +473,51 @@ public final class e
   }
   
   public static final class a
-    implements b, t
+    implements b, u
   {
-    private ReflectMethod IPA;
-    private ReflectMethod IPB;
-    private ReflectMethod IPC;
-    private ReflectMethod IPD;
-    private ReflectMethod IPE;
-    private ReflectMethod IPF;
-    private ReflectMethod IPG;
-    private ReflectMethod IPH;
-    private Object IPI;
-    ReflectMethod IPw;
-    private ReflectMethod IPx;
-    private ReflectMethod IPy;
-    private ReflectMethod IPz;
+    ReflectMethod KBR;
+    private ReflectMethod KBS;
+    private ReflectMethod KBT;
+    private ReflectMethod KBU;
+    private ReflectMethod KBV;
+    private ReflectMethod KBW;
+    private ReflectMethod KBX;
+    private ReflectMethod KBY;
+    private ReflectMethod KBZ;
+    private ReflectMethod KCa;
+    private ReflectMethod KCb;
+    private ReflectMethod KCc;
+    private Object KCd;
     private ReflectMethod hasEnteredFullscreenMethod;
     private ReflectMethod onHideCustomViewMethod;
     
     public a(Object paramObject)
     {
       AppMethodBeat.i(153636);
-      this.IPI = paramObject;
-      this.IPw = new ReflectMethod(paramObject, "init", new Class[] { Activity.class, View.class, View.class, Context.class, String.class });
-      this.IPx = new ReflectMethod(paramObject, "evaluteJavascript", new Class[] { Boolean.TYPE, Boolean.TYPE });
-      this.IPy = new ReflectMethod(paramObject, "onShowCustomView", new Class[] { View.class, WebChromeClient.CustomViewCallback.class });
+      this.KCd = paramObject;
+      this.KBR = new ReflectMethod(paramObject, "init", new Class[] { Activity.class, View.class, View.class, Context.class, String.class });
+      this.KBS = new ReflectMethod(paramObject, "evaluteJavascript", new Class[] { Boolean.TYPE, Boolean.TYPE });
+      this.KBT = new ReflectMethod(paramObject, "onShowCustomView", new Class[] { View.class, WebChromeClient.CustomViewCallback.class });
       this.onHideCustomViewMethod = new ReflectMethod(paramObject, "onHideCustomView", new Class[0]);
       this.hasEnteredFullscreenMethod = new ReflectMethod(paramObject, "hasEnteredFullscreen", new Class[0]);
-      this.IPz = new ReflectMethod(paramObject, "registerJavascriptInterface", new Class[] { Object.class });
-      this.IPA = new ReflectMethod(paramObject, "disableJsCallback", new Class[] { Boolean.TYPE });
-      this.IPB = new ReflectMethod(paramObject, "setVideoJsCallback", new Class[] { Object.class });
-      this.IPE = new ReflectMethod(paramObject, "videoChangeStatus", new Class[0]);
-      this.IPC = new ReflectMethod(paramObject, "videoPlay", new Class[0]);
-      this.IPD = new ReflectMethod(paramObject, "videoPause", new Class[0]);
-      this.IPF = new ReflectMethod(paramObject, "videoSeek", new Class[] { Double.TYPE });
-      this.IPG = new ReflectMethod(paramObject, "videoExitFullscreen", new Class[0]);
-      this.IPH = new ReflectMethod(paramObject, "supportSetRequestedOrientationCallback", new Class[0]);
+      this.KBU = new ReflectMethod(paramObject, "registerJavascriptInterface", new Class[] { Object.class });
+      this.KBV = new ReflectMethod(paramObject, "disableJsCallback", new Class[] { Boolean.TYPE });
+      this.KBW = new ReflectMethod(paramObject, "setVideoJsCallback", new Class[] { Object.class });
+      this.KBZ = new ReflectMethod(paramObject, "videoChangeStatus", new Class[0]);
+      this.KBX = new ReflectMethod(paramObject, "videoPlay", new Class[0]);
+      this.KBY = new ReflectMethod(paramObject, "videoPause", new Class[0]);
+      this.KCa = new ReflectMethod(paramObject, "videoSeek", new Class[] { Double.TYPE });
+      this.KCb = new ReflectMethod(paramObject, "videoExitFullscreen", new Class[0]);
+      this.KCc = new ReflectMethod(paramObject, "supportSetRequestedOrientationCallback", new Class[0]);
       AppMethodBeat.o(153636);
     }
     
-    public final void G(double paramDouble)
+    public final void F(double paramDouble)
     {
       AppMethodBeat.i(153645);
       try
       {
-        this.IPF.invoke(new Object[] { Double.valueOf(paramDouble) });
+        this.KCa.invoke(new Object[] { Double.valueOf(paramDouble) });
         AppMethodBeat.o(153645);
         return;
       }
@@ -527,12 +528,12 @@ public final class e
       }
     }
     
-    public final void aP(boolean paramBoolean1, boolean paramBoolean2)
+    public final void aT(boolean paramBoolean1, boolean paramBoolean2)
     {
       AppMethodBeat.i(153637);
       try
       {
-        this.IPx.invoke(new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+        this.KBS.invoke(new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
         AppMethodBeat.o(153637);
         return;
       }
@@ -543,12 +544,12 @@ public final class e
       }
     }
     
-    public final void ev(Object paramObject)
+    public final void ex(Object paramObject)
     {
       AppMethodBeat.i(153638);
       try
       {
-        this.IPz.invoke(new Object[] { paramObject });
+        this.KBU.invoke(new Object[] { paramObject });
         AppMethodBeat.o(153638);
         return;
       }
@@ -559,14 +560,14 @@ public final class e
       }
     }
     
-    public final boolean ew(Object paramObject)
+    public final boolean ey(Object paramObject)
     {
       AppMethodBeat.i(153642);
-      com.tencent.xweb.xwalk.a.e locale = g.aOW("FullScreenVideo");
-      if ((locale != null) && (locale.IUH >= 10)) {
+      f localf = g.aUJ("FullScreenVideo");
+      if ((localf != null) && (localf.KHj >= 10)) {
         try
         {
-          boolean bool = ((Boolean)this.IPB.invoke(new Object[] { paramObject })).booleanValue();
+          boolean bool = ((Boolean)this.KBW.invoke(new Object[] { paramObject })).booleanValue();
           AppMethodBeat.o(153642);
           return bool;
         }
@@ -577,8 +578,8 @@ public final class e
           return false;
         }
       }
-      if (locale != null) {
-        Log.i("VideoNativeInterface", "setVideoJsCallback return false fullScreenVideoPlugin is not available version:" + locale.IUH);
+      if (localf != null) {
+        Log.i("VideoNativeInterface", "setVideoJsCallback return false fullScreenVideoPlugin is not available version:" + localf.KHj);
       }
       for (;;)
       {
@@ -588,12 +589,12 @@ public final class e
       }
     }
     
-    public final void fqL()
+    public final void fJl()
     {
       AppMethodBeat.i(153643);
       try
       {
-        this.IPC.invoke(new Object[0]);
+        this.KBX.invoke(new Object[0]);
         AppMethodBeat.o(153643);
         return;
       }
@@ -604,12 +605,12 @@ public final class e
       }
     }
     
-    public final void fqM()
+    public final void fJm()
     {
       AppMethodBeat.i(153644);
       try
       {
-        this.IPD.invoke(new Object[0]);
+        this.KBY.invoke(new Object[0]);
         AppMethodBeat.o(153644);
         return;
       }
@@ -620,19 +621,19 @@ public final class e
       }
     }
     
-    public final boolean fqN()
+    public final boolean fJn()
     {
-      AppMethodBeat.i(194671);
+      AppMethodBeat.i(208874);
       try
       {
-        boolean bool = ((Boolean)this.IPH.invoke(new Object[0])).booleanValue();
-        AppMethodBeat.o(194671);
+        boolean bool = ((Boolean)this.KCc.invoke(new Object[0])).booleanValue();
+        AppMethodBeat.o(208874);
         return bool;
       }
       catch (Exception localException)
       {
         Log.i("VideoNativeInterface", "supportSetRequestedOrientationCallback invoke error:" + localException.getMessage());
-        AppMethodBeat.o(194671);
+        AppMethodBeat.o(208874);
       }
       return false;
     }
@@ -658,7 +659,7 @@ public final class e
       AppMethodBeat.i(153639);
       try
       {
-        this.IPy.invoke(new Object[] { paramView, paramCustomViewCallback });
+        this.KBT.invoke(new Object[] { paramView, paramCustomViewCallback });
         AppMethodBeat.o(153639);
         return;
       }
@@ -669,12 +670,12 @@ public final class e
       }
     }
     
-    public final void xF(boolean paramBoolean)
+    public final void yW(boolean paramBoolean)
     {
       AppMethodBeat.i(153640);
       try
       {
-        this.IPA.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
+        this.KBV.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
         AppMethodBeat.o(153640);
         return;
       }

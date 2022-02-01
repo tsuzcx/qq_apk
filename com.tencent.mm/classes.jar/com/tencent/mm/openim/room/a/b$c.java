@@ -1,26 +1,26 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.protocal.protobuf.bvl;
-import com.tencent.mm.protocal.protobuf.tr;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.protocal.protobuf.cac;
+import com.tencent.mm.protocal.protobuf.cad;
+import com.tencent.mm.protocal.protobuf.ub;
+import com.tencent.mm.storage.ai;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b$c
 {
-  public static af a(af paramaf, bvk parambvk)
+  public static ai a(ai paramai, cac paramcac)
   {
     AppMethodBeat.i(151322);
-    paramaf.setUsername(parambvk.userName);
-    paramaf.nd(parambvk.bNK);
+    paramai.setUsername(paramcac.userName);
+    paramai.qj(paramcac.bLs);
     AppMethodBeat.o(151322);
-    return paramaf;
+    return paramai;
   }
   
-  public static LinkedList<tr> aH(List<bvl> paramList)
+  public static LinkedList<ub> aE(List<cad> paramList)
   {
     AppMethodBeat.i(151323);
     LinkedList localLinkedList = new LinkedList();
@@ -32,16 +32,16 @@ public final class b$c
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bvl localbvl = (bvl)paramList.next();
-      tr localtr = new tr();
-      localtr.mAQ = localbvl.userName;
-      localtr.mBV = localbvl.bNK;
-      localtr.CVu = localbvl.fyo;
-      localtr.CVv = localbvl.Dbg;
-      localtr.CVw = localbvl.Dbh;
-      localtr.CVx = localbvl.DSJ;
-      localtr.CVy = localbvl.DSL;
-      localLinkedList.add(localtr);
+      cad localcad = (cad)paramList.next();
+      ub localub = new ub();
+      localub.ncR = localcad.userName;
+      localub.ndW = localcad.bLs;
+      localub.Eoe = localcad.fBV;
+      localub.Eof = localcad.Euf;
+      localub.Eog = localcad.Eug;
+      localub.Eoh = localcad.Fpf;
+      localub.Eoi = localcad.Fph;
+      localLinkedList.add(localub);
     }
     AppMethodBeat.o(151323);
     return localLinkedList;
@@ -49,7 +49,7 @@ public final class b$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.room.a.b.c
  * JD-Core Version:    0.7.0.1
  */

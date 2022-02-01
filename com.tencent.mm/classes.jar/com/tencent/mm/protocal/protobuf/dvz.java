@@ -1,103 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dvz
-  extends com.tencent.mm.bx.a
+  extends cqk
 {
-  public String desc;
-  public String odo;
-  public String title;
-  public String username;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153331);
+    AppMethodBeat.i(121120);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.odo != null) {
-        paramVarArgs.d(1, this.odo);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.title != null) {
-        paramVarArgs.d(2, this.title);
-      }
-      if (this.desc != null) {
-        paramVarArgs.d(3, this.desc);
-      }
-      if (this.username != null) {
-        paramVarArgs.d(4, this.username);
-      }
-      AppMethodBeat.o(153331);
+      AppMethodBeat.o(121120);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.odo == null) {
-        break label394;
+      if (this.BaseResponse == null) {
+        break label310;
       }
     }
-    label394:
-    for (int i = f.a.a.b.b.a.e(1, this.odo) + 0;; i = 0)
+    label310:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.title != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.title);
-      }
-      i = paramInt;
-      if (this.desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.desc);
-      }
-      paramInt = i;
-      if (this.username != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.username);
-      }
-      AppMethodBeat.o(153331);
+      AppMethodBeat.o(121120);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(153331);
+        AppMethodBeat.o(121120);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         dvz localdvz = (dvz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(153331);
+          AppMethodBeat.o(121120);
           return -1;
-        case 1: 
-          localdvz.odo = locala.KhF.readString();
-          AppMethodBeat.o(153331);
-          return 0;
-        case 2: 
-          localdvz.title = locala.KhF.readString();
-          AppMethodBeat.o(153331);
-          return 0;
-        case 3: 
-          localdvz.desc = locala.KhF.readString();
-          AppMethodBeat.o(153331);
-          return 0;
         }
-        localdvz.username = locala.KhF.readString();
-        AppMethodBeat.o(153331);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new BaseResponse();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localdvz.BaseResponse = ((BaseResponse)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(121120);
         return 0;
       }
-      AppMethodBeat.o(153331);
+      AppMethodBeat.o(121120);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvz
  * JD-Core Version:    0.7.0.1
  */

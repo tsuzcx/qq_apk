@@ -6,8 +6,8 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.api.a.b;
-import com.tencent.mm.protocal.protobuf.blp;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bpl;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sticker.c.d;
 import com.tencent.mm.sticker.c.d.a;
 import com.tencent.mm.ui.MMActivity;
@@ -19,30 +19,30 @@ import d.n.n;
 import d.v;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/model/CheckLensInfo;", "", "context", "Landroid/content/Context;", "lensIdWithUrl", "", "onResult", "Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;)V", "TAG", "getContext", "()Landroid/content/Context;", "getLensIdWithUrl", "()Ljava/lang/String;", "loadHint", "kotlin.jvm.PlatformType", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getOnResult", "()Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "exit", "", "startEmojiCapture", "lensId", "plugin-emojicapture_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/CheckLensInfo;", "", "context", "Landroid/content/Context;", "lensIdWithUrl", "", "onResult", "Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;)V", "TAG", "getContext", "()Landroid/content/Context;", "getLensIdWithUrl", "()Ljava/lang/String;", "loadHint", "kotlin.jvm.PlatformType", "loading", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getOnResult", "()Lcom/tencent/mm/plugin/emojicapture/api/IPluginEmojiCapture$PrepareStickerCallback;", "exit", "", "startEmojiCapture", "lensId", "plugin-emojicapture_release"})
 public final class a
 {
   final String TAG;
   final Context context;
-  private final String oJF;
-  final p oJG;
-  private final String oJH;
-  final a.b oJI;
+  private final String pnd;
+  final p pne;
+  private final String pnf;
+  final a.b png;
   
   public a(final Context paramContext, String paramString, a.b paramb)
   {
     AppMethodBeat.i(143);
     this.context = paramContext;
-    this.oJH = paramString;
-    this.oJI = paramb;
+    this.pnf = paramString;
+    this.png = paramb;
     this.TAG = "MicroMsg.CheckLensInfo";
-    this.oJF = this.context.getResources().getString(2131760706);
-    this.oJG = p.a(this.context, (CharSequence)this.oJF, true, 0, (DialogInterface.OnCancelListener)new a(this));
-    paramContext = this.oJH;
+    this.pnd = this.context.getResources().getString(2131760706);
+    this.pne = p.a(this.context, (CharSequence)this.pnd, true, 0, (DialogInterface.OnCancelListener)new a(this));
+    paramContext = this.pnf;
     if (paramContext != null) {}
     for (int i = n.a((CharSequence)paramContext, "lensid=", 0, false, 6);; i = 0)
     {
-      paramContext = this.oJH;
+      paramContext = this.pnf;
       if (paramContext == null) {
         break label210;
       }
@@ -62,7 +62,7 @@ public final class a
       if (i == 0) {
         break label221;
       }
-      this.oJI.df(false);
+      this.png.de(false);
       AppMethodBeat.o(143);
       return;
       label210:
@@ -70,7 +70,7 @@ public final class a
       break;
     }
     label221:
-    paramString = d.FdM;
+    paramString = d.GBn;
     paramb = this.context;
     paramString = paramb;
     if (!(paramb instanceof MMActivity)) {
@@ -78,19 +78,19 @@ public final class a
     }
     d.a.a((b)paramString, paramContext, (com.tencent.mm.sticker.c.c)new com.tencent.mm.sticker.c.c()
     {
-      public final void a(int paramAnonymousInt, final blp paramAnonymousblp)
+      public final void a(int paramAnonymousInt, final bpl paramAnonymousbpl)
       {
         AppMethodBeat.i(141);
-        com.tencent.mm.ad.c.g((d.g.a.a)new a(this, paramAnonymousblp));
+        com.tencent.mm.ac.c.g((d.g.a.a)new a(this, paramAnonymousbpl));
         AppMethodBeat.o(141);
       }
       
-      @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
       static final class a
         extends d.g.b.l
         implements d.g.a.a<y>
       {
-        a(a.1 param1, blp paramblp)
+        a(a.1 param1, bpl parambpl)
         {
           super();
         }
@@ -99,7 +99,7 @@ public final class a
     AppMethodBeat.o(143);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class a
     implements DialogInterface.OnCancelListener
   {
@@ -108,15 +108,15 @@ public final class a
     public final void onCancel(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(142);
-      ad.i(this.oJJ.TAG, "CheckLensInfo: cancel loading");
-      a.a(this.oJJ);
+      ac.i(this.pnh.TAG, "CheckLensInfo: cancel loading");
+      a.a(this.pnh);
       AppMethodBeat.o(142);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a
  * JD-Core Version:    0.7.0.1
  */

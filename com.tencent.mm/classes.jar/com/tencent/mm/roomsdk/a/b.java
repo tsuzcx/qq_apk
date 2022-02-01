@@ -2,25 +2,25 @@ package com.tencent.mm.roomsdk.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.roomsdk.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 
 public final class b
 {
-  private static b ENg;
-  private HashMap<String, a> ENf;
+  private static b Gks;
+  private HashMap<String, a> Gkr;
   
   static
   {
     AppMethodBeat.i(152758);
-    ENg = new b();
+    Gks = new b();
     AppMethodBeat.o(152758);
   }
   
   public b()
   {
     AppMethodBeat.i(152755);
-    this.ENf = new HashMap();
+    this.Gkr = new HashMap();
     AppMethodBeat.o(152755);
   }
   
@@ -31,9 +31,9 @@ public final class b
     if (i < 0) {}
     for (;;)
     {
-      b localb = ENg;
-      if (!localb.ENf.containsKey(paramString)) {
-        localb.ENf.put(paramString, parama);
+      b localb = Gks;
+      if (!localb.Gkr.containsKey(paramString)) {
+        localb.Gkr.put(paramString, parama);
       }
       AppMethodBeat.o(152757);
       return;
@@ -41,21 +41,21 @@ public final class b
     }
   }
   
-  public static a aEI(String paramString)
+  public static a aJZ(String paramString)
   {
     AppMethodBeat.i(152756);
     int i = paramString.indexOf("@");
     if (i < 0)
     {
-      ad.e("MicroMsg.RoomServiceFactory", "get NotNullChatRoom %s", new Object[] { paramString });
+      ac.e("MicroMsg.RoomServiceFactory", "get NotNullChatRoom %s", new Object[] { paramString });
       paramString = new com.tencent.mm.roomsdk.a.a.b();
       AppMethodBeat.o(152756);
       return paramString;
     }
     paramString = paramString.substring(i);
-    b localb = ENg;
-    if (localb.ENf.containsKey(paramString)) {}
-    for (paramString = (a)localb.ENf.get(paramString); paramString == null; paramString = null)
+    b localb = Gks;
+    if (localb.Gkr.containsKey(paramString)) {}
+    for (paramString = (a)localb.Gkr.get(paramString); paramString == null; paramString = null)
     {
       paramString = new com.tencent.mm.roomsdk.a.a.b();
       AppMethodBeat.o(152756);
@@ -67,7 +67,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.b
  * JD-Core Version:    0.7.0.1
  */

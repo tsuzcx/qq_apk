@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.f;
 
 public final class VoipBaseFragment$b
@@ -23,21 +23,21 @@ public final class VoipBaseFragment$b
   public final void run()
   {
     AppMethodBeat.i(115369);
-    ad.i("MicroMsg.VoipBaseFragment", "try create blur bitmap,timestamp: " + System.currentTimeMillis());
-    final Bitmap localBitmap = f.Wf(2131234595);
-    ad.i("MicroMsg.VoipBaseFragment", "blur transparent ok, timestamp: " + System.currentTimeMillis());
-    this.zrA.iDu.post(new Runnable()
+    ac.i("MicroMsg.VoipBaseFragment", "try create blur bitmap,timestamp: " + System.currentTimeMillis());
+    final Bitmap localBitmap = f.Yo(2131234595);
+    ac.i("MicroMsg.VoipBaseFragment", "blur transparent ok, timestamp: " + System.currentTimeMillis());
+    this.AKl.jdu.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(115368);
-        if (VoipBaseFragment.b.this.zrA.zrt != null)
+        if (VoipBaseFragment.b.this.AKl.AKe != null)
         {
-          VoipBaseFragment.b.this.zrA.zrt.setBackgroundDrawable(new BitmapDrawable(localBitmap));
-          VoipBaseFragment.b.this.zrA.zrt.getBackground().setAlpha(230);
-          VoipBaseFragment.b.this.zrA.zrt.getBackground().setFilterBitmap(true);
+          VoipBaseFragment.b.this.AKl.AKe.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+          VoipBaseFragment.b.this.AKl.AKe.getBackground().setAlpha(230);
+          VoipBaseFragment.b.this.AKl.AKe.getBackground().setFilterBitmap(true);
         }
-        VoipBaseFragment.b(VoipBaseFragment.b.this.zrA);
+        VoipBaseFragment.b(VoipBaseFragment.b.this.AKl);
         AppMethodBeat.o(115368);
       }
     });
@@ -46,7 +46,7 @@ public final class VoipBaseFragment$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipBaseFragment.b
  * JD-Core Version:    0.7.0.1
  */

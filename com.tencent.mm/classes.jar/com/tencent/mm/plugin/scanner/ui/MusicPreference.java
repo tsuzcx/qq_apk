@@ -12,14 +12,14 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MusicPreference
   extends Preference
 {
-  private View.OnClickListener hs;
-  private boolean kQm;
+  private View.OnClickListener iu;
+  private boolean lrL;
   private View mView;
-  public String vNW;
-  public String vNX;
-  public String vNY;
-  private ImageButton vSg;
-  a vSh;
+  public String wYs;
+  public String wYt;
+  public String wYu;
+  private ImageButton xcR;
+  a xcS;
   
   public MusicPreference(Context paramContext)
   {
@@ -36,10 +36,10 @@ public class MusicPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51808);
     this.mView = null;
-    this.vSg = null;
-    this.vNW = "";
-    this.vNX = "";
-    this.vNY = "";
+    this.xcR = null;
+    this.wYs = "";
+    this.wYt = "";
+    this.wYu = "";
     setLayoutResource(2131494875);
     AppMethodBeat.o(51808);
   }
@@ -60,8 +60,8 @@ public class MusicPreference
   {
     AppMethodBeat.i(51811);
     super.onBindView(paramView);
-    if (this.hs == null) {
-      this.hs = new View.OnClickListener()
+    if (this.iu == null) {
+      this.iu = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -91,31 +91,31 @@ public class MusicPreference
         }
       };
     }
-    this.vSg = ((ImageButton)paramView.findViewById(2131303376));
-    this.vSg.setOnClickListener(this.hs);
-    if (this.kQm)
+    this.xcR = ((ImageButton)paramView.findViewById(2131303376));
+    this.xcR.setOnClickListener(this.iu);
+    if (this.lrL)
     {
-      this.vSg.setImageResource(2131233642);
+      this.xcR.setImageResource(2131233642);
       AppMethodBeat.o(51811);
       return;
     }
-    this.vSg.setImageResource(2131233641);
+    this.xcR.setImageResource(2131233641);
     AppMethodBeat.o(51811);
   }
   
-  public final void pa(boolean paramBoolean)
+  public final void pY(boolean paramBoolean)
   {
     AppMethodBeat.i(51810);
-    this.kQm = paramBoolean;
-    if (this.vSg != null)
+    this.lrL = paramBoolean;
+    if (this.xcR != null)
     {
       if (paramBoolean)
       {
-        this.vSg.setImageResource(2131233642);
+        this.xcR.setImageResource(2131233642);
         AppMethodBeat.o(51810);
         return;
       }
-      this.vSg.setImageResource(2131233641);
+      this.xcR.setImageResource(2131233641);
     }
     AppMethodBeat.o(51810);
   }
@@ -127,7 +127,7 @@ public class MusicPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.MusicPreference
  * JD-Core Version:    0.7.0.1
  */

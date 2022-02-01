@@ -8,11 +8,11 @@ public abstract class ah
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eps = "brandUserName".hashCode();
-  private static final int eqh = "userId".hashCode();
+  private static final int erw = "brandUserName".hashCode();
+  private static final int esl = "userId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean epd = true;
-  private boolean eqg = true;
+  private boolean erh = true;
+  private boolean esk = true;
   public String field_brandUserName;
   public String field_userId;
   
@@ -29,11 +29,11 @@ public abstract class ah
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eps != k) {
+      if (erw != k) {
         break label65;
       }
       this.field_brandUserName = paramCursor.getString(i);
-      this.epd = true;
+      this.erh = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ah
       break label20;
       break;
       label65:
-      if (eqh == k) {
+      if (esl == k) {
         this.field_userId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +52,10 @@ public abstract class ah
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.epd) {
+    if (this.erh) {
       localContentValues.put("brandUserName", this.field_brandUserName);
     }
-    if (this.eqg) {
+    if (this.esk) {
       localContentValues.put("userId", this.field_userId);
     }
     if (this.systemRowid > 0L) {
@@ -66,7 +66,7 @@ public abstract class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ah
  * JD-Core Version:    0.7.0.1
  */

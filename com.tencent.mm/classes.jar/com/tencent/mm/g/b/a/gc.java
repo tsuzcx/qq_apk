@@ -6,118 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class gc
   extends a
 {
-  public long dYT = 0L;
-  public String dYa = "";
-  public String eag = "";
-  public long eai = 0L;
-  private long ebp = 0L;
-  public a efN;
-  private long efO = 0L;
+  public long ebn = 0L;
+  public long ebo = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(43707);
+    AppMethodBeat.i(91245);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dYa);
+    ((StringBuffer)localObject).append(this.ebn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eag);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYT);
-    ((StringBuffer)localObject).append(",");
-    if (this.efN != null) {}
-    for (int i = this.efN.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eai);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.ebp);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.efO);
-      localObject = ((StringBuffer)localObject).toString();
-      ams((String)localObject);
-      AppMethodBeat.o(43707);
-      return localObject;
-    }
+    ((StringBuffer)localObject).append(this.ebo);
+    localObject = ((StringBuffer)localObject).toString();
+    arz((String)localObject);
+    AppMethodBeat.o(91245);
+    return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(43708);
+    AppMethodBeat.i(91246);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("InstanceId:").append(this.dYa);
+    ((StringBuffer)localObject).append("ReportScene:").append(this.ebn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.eag);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.dYT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.efN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eai);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTimeMs:").append(this.ebp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitingTimeMs:").append(this.efO);
+    ((StringBuffer)localObject).append("ResetScece:").append(this.ebo);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43708);
+    AppMethodBeat.o(91246);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15853;
-  }
-  
-  public final gc jL(long paramLong)
-  {
-    AppMethodBeat.i(43705);
-    this.ebp = paramLong;
-    super.ba("CostTimeMs", this.ebp);
-    AppMethodBeat.o(43705);
-    return this;
-  }
-  
-  public final gc jM(long paramLong)
-  {
-    AppMethodBeat.i(43706);
-    this.efO = paramLong;
-    super.ba("WaitingTimeMs", this.efO);
-    AppMethodBeat.o(43706);
-    return this;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43704);
-      efP = new a("release", 0, 1);
-      efQ = new a("debug", 1, 2);
-      efR = new a("demo", 2, 3);
-      efS = new a[] { efP, efQ, efR };
-      AppMethodBeat.o(43704);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a jj(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return efP;
-      case 2: 
-        return efQ;
-      }
-      return efR;
-    }
+    return 15522;
   }
 }
 

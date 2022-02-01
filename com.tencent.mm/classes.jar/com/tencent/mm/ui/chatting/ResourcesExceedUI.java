@@ -17,7 +17,7 @@ import com.tencent.mm.ui.MMActivity;
 public class ResourcesExceedUI
   extends MMActivity
 {
-  private TextView Gqu;
+  private TextView HQm;
   private int type = 0;
   
   public void finish()
@@ -38,7 +38,7 @@ public class ResourcesExceedUI
     AppMethodBeat.i(34870);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.lf(19))
+    if (d.kZ(19))
     {
       getWindow().setFlags(201327616, 201327616);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -51,7 +51,7 @@ public class ResourcesExceedUI
           return true;
         }
       });
-      this.Gqu = ((TextView)findViewById(2131299205));
+      this.HQm = ((TextView)findViewById(2131299205));
       switch (this.type)
       {
       }
@@ -72,11 +72,11 @@ public class ResourcesExceedUI
       return;
       getWindow().setFlags(1024, 1024);
       break;
-      this.Gqu.setText(2131764677);
+      this.HQm.setText(2131764677);
       continue;
-      this.Gqu.setText(2131759063);
+      this.HQm.setText(2131759063);
       continue;
-      this.Gqu.setText(2131760324);
+      this.HQm.setText(2131760324);
     }
   }
   

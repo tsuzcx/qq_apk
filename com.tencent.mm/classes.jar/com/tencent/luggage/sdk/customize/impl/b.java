@@ -1,12 +1,12 @@
 package com.tencent.luggage.sdk.customize.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.o.a;
+import com.tencent.mm.plugin.appbrand.z.o.a;
 
 public class b
   implements o.a
 {
-  public String CU()
+  public String Cx()
   {
     return " Luggage/";
   }
@@ -20,7 +20,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.customize.impl.b
  * JD-Core Version:    0.7.0.1
  */

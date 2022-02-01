@@ -14,8 +14,8 @@ import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.label.a.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.ui.editor.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.am;
 import d.a.j;
 import d.y;
@@ -27,71 +27,71 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "isNotifyMoment", "", "()Z", "setNotifyMoment", "(Z)V", "menuDialog", "Landroid/support/design/widget/BottomSheetDialog;", "mergedUserList", "Ljava/util/ArrayList;", "getMergedUserList", "()Ljava/util/ArrayList;", "setMergedUserList", "(Ljava/util/ArrayList;)V", "moreBtn", "Landroid/widget/ImageView;", "moreMenuStatusGroup", "Landroid/widget/LinearLayout;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "scene", "", "selectedChatroomList", "getSelectedChatroomList", "()Ljava/lang/String;", "setSelectedChatroomList", "(Ljava/lang/String;)V", "selectedIndex", "getSelectedIndex", "()I", "setSelectedIndex", "(I)V", "selectedLabelList", "getSelectedLabelList", "setSelectedLabelList", "selectedUserList", "getSelectedUserList", "setSelectedUserList", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cleanSelectedCache", "", "createMenuDialog", "getContactNamesFromChatroom", "chatrooms", "", "getContactNamesFromLabelsAndOtherUserName", "labels", "userNames", "getSelectIndex", "goLabelUI", "hasSelectedRange", "mergeSelectedRangeUser", "name", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onClick", "v", "Landroid/view/View;", "release", "reset", "setScene", "setVisibility", "visibility", "updateMenuStatus", "plugin-recordvideo_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "isNotifyMoment", "", "()Z", "setNotifyMoment", "(Z)V", "menuDialog", "Landroid/support/design/widget/BottomSheetDialog;", "mergedUserList", "Ljava/util/ArrayList;", "getMergedUserList", "()Ljava/util/ArrayList;", "setMergedUserList", "(Ljava/util/ArrayList;)V", "moreBtn", "Landroid/widget/ImageView;", "moreMenuStatusGroup", "Landroid/widget/LinearLayout;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "scene", "", "selectedChatroomList", "getSelectedChatroomList", "()Ljava/lang/String;", "setSelectedChatroomList", "(Ljava/lang/String;)V", "selectedIndex", "getSelectedIndex", "()I", "setSelectedIndex", "(I)V", "selectedLabelList", "getSelectedLabelList", "setSelectedLabelList", "selectedUserList", "getSelectedUserList", "setSelectedUserList", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cleanSelectedCache", "", "createMenuDialog", "getContactNamesFromChatroom", "chatrooms", "", "getContactNamesFromLabelsAndOtherUserName", "labels", "userNames", "getSelectIndex", "goLabelUI", "hasSelectedRange", "mergeSelectedRangeUser", "name", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onClick", "v", "Landroid/view/View;", "release", "reset", "setScene", "setVisibility", "visibility", "updateMenuStatus", "plugin-recordvideo_release"})
 public final class i
   implements View.OnClickListener, t
 {
   private final String TAG;
-  public int boX;
-  private ViewGroup fSZ;
+  public int bns;
+  private ViewGroup fWU;
+  private d rTT;
   private int scene;
-  private final ImageView vjH;
-  private final LinearLayout vjI;
-  private android.support.design.widget.a vjJ;
-  public boolean vjK;
-  private String vjL;
-  private String vjM;
-  private String vjN;
-  private ArrayList<String> vjO;
-  private d vjo;
+  private final ImageView wss;
+  private final LinearLayout wst;
+  private android.support.design.widget.a wsu;
+  public boolean wsv;
+  private String wsw;
+  private String wsx;
+  private String wsy;
+  private ArrayList<String> wsz;
   
   public i(ViewGroup paramViewGroup, d paramd)
   {
     AppMethodBeat.i(75524);
-    this.fSZ = paramViewGroup;
-    this.vjo = paramd;
+    this.fWU = paramViewGroup;
+    this.rTT = paramd;
     this.TAG = "MicroMsg.EditMenuPlugin";
-    paramViewGroup = this.fSZ.findViewById(2131303885);
+    paramViewGroup = this.fWU.findViewById(2131303885);
     d.g.b.k.g(paramViewGroup, "parent.findViewById(R.id.record_editor_more_menu)");
-    this.vjH = ((ImageView)paramViewGroup);
-    paramViewGroup = this.fSZ.findViewById(2131303886);
+    this.wss = ((ImageView)paramViewGroup);
+    paramViewGroup = this.fWU.findViewById(2131303886);
     d.g.b.k.g(paramViewGroup, "parent.findViewById(R.id…r_more_menu_status_group)");
-    this.vjI = ((LinearLayout)paramViewGroup);
-    this.vjK = true;
-    this.vjO = new ArrayList();
-    this.vjH.setVisibility(8);
-    this.vjH.setOnClickListener((View.OnClickListener)this);
+    this.wst = ((LinearLayout)paramViewGroup);
+    this.wsv = true;
+    this.wsz = new ArrayList();
+    this.wss.setVisibility(8);
+    this.wss.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(75524);
   }
   
-  private final void dii()
+  private final void dvS()
   {
-    this.boX = 0;
-    this.vjL = null;
-    this.vjM = null;
-    this.vjN = null;
+    this.bns = 0;
+    this.wsw = null;
+    this.wsx = null;
+    this.wsy = null;
   }
   
-  private final void dij()
+  private final void dvT()
   {
     AppMethodBeat.i(75515);
-    this.vjI.removeAllViews();
+    this.wst.removeAllViews();
     LinearLayout.LayoutParams localLayoutParams;
-    if (!this.vjK)
+    if (!this.wsv)
     {
-      localObject = new ImageView(this.fSZ.getContext());
-      ((ImageView)localObject).setImageDrawable(am.i(this.fSZ.getContext(), 2131690435, -1));
-      localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cd.a.ap(this.fSZ.getContext(), 2131166749), com.tencent.mm.cd.a.ap(this.fSZ.getContext(), 2131166749));
-      localLayoutParams.topMargin = com.tencent.mm.cd.a.ap(this.fSZ.getContext(), 2131165480);
-      this.vjI.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
+      localObject = new ImageView(this.fWU.getContext());
+      ((ImageView)localObject).setImageDrawable(am.k(this.fWU.getContext(), 2131690435, -1));
+      localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cc.a.av(this.fWU.getContext(), 2131166749), com.tencent.mm.cc.a.av(this.fWU.getContext(), 2131166749));
+      localLayoutParams.topMargin = com.tencent.mm.cc.a.av(this.fWU.getContext(), 2131165480);
+      this.wst.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
     }
-    Object localObject = (CharSequence)this.vjL;
+    Object localObject = (CharSequence)this.wsw;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
       i = 1;
       if (i != 0)
       {
-        localObject = (CharSequence)this.vjM;
+        localObject = (CharSequence)this.wsx;
         if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
           break label307;
         }
@@ -99,7 +99,7 @@ public final class i
         label164:
         if (i != 0)
         {
-          localObject = (CharSequence)this.vjN;
+          localObject = (CharSequence)this.wsy;
           if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
             break label312;
           }
@@ -118,11 +118,11 @@ public final class i
     {
       if (i != 0)
       {
-        localObject = new ImageView(this.fSZ.getContext());
-        ((ImageView)localObject).setImageDrawable(am.i(this.fSZ.getContext(), 2131690427, -1));
-        localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cd.a.ap(this.fSZ.getContext(), 2131166749), com.tencent.mm.cd.a.ap(this.fSZ.getContext(), 2131166749));
-        localLayoutParams.topMargin = com.tencent.mm.cd.a.ap(this.fSZ.getContext(), 2131165480);
-        this.vjI.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
+        localObject = new ImageView(this.fWU.getContext());
+        ((ImageView)localObject).setImageDrawable(am.k(this.fWU.getContext(), 2131690427, -1));
+        localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cc.a.av(this.fWU.getContext(), 2131166749), com.tencent.mm.cc.a.av(this.fWU.getContext(), 2131166749));
+        localLayoutParams.topMargin = com.tencent.mm.cc.a.av(this.fWU.getContext(), 2131165480);
+        this.wst.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
       }
       AppMethodBeat.o(75515);
       return;
@@ -135,7 +135,7 @@ public final class i
     }
   }
   
-  private final void eI(List<String> paramList)
+  private final void eN(List<String> paramList)
   {
     AppMethodBeat.i(75516);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -148,30 +148,30 @@ public final class i
     {
       String str1 = (String)paramList.next();
       ArrayList localArrayList = new ArrayList();
-      Object localObject = q.rX(str1);
+      Object localObject = q.wa(str1);
       if (localObject != null)
       {
-        ad.d(this.TAG, "getContactNamesFromChatroom chatromm:%s membersCount:%s", new Object[] { str1, Integer.valueOf(((List)localObject).size()) });
+        ac.d(this.TAG, "getContactNamesFromChatroom chatromm:%s membersCount:%s", new Object[] { str1, Integer.valueOf(((List)localObject).size()) });
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str2 = (String)((Iterator)localObject).next();
-          if ((!this.vjO.contains(str2)) && (w.sD(str2)))
+          if ((!this.wsz.contains(str2)) && (w.wG(str2)))
           {
-            ad.i(this.TAG, "getContactNamesFromChatroom memberName:%s", new Object[] { str2 });
-            this.vjO.add(str2);
+            ac.i(this.TAG, "getContactNamesFromChatroom memberName:%s", new Object[] { str2 });
+            this.wsz.add(str2);
           }
-          if (w.sD(str2)) {
+          if (w.wG(str2)) {
             localArrayList.add(str2);
           }
         }
-        ad.d(this.TAG, "%s , %s", new Object[] { str1, Integer.valueOf(localArrayList.size()) });
+        ac.d(this.TAG, "%s , %s", new Object[] { str1, Integer.valueOf(localArrayList.size()) });
       }
     }
     AppMethodBeat.o(75516);
   }
   
-  private final void p(List<String> paramList1, List<String> paramList2)
+  private final void o(List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(163428);
     Iterator localIterator;
@@ -186,20 +186,20 @@ public final class i
       if (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        localObject = com.tencent.mm.plugin.label.a.a.cIS().aeL(com.tencent.mm.plugin.label.a.a.cIS().aeI((String)localObject));
+        localObject = com.tencent.mm.plugin.label.a.a.cWd().ajD(com.tencent.mm.plugin.label.a.a.cWd().ajA((String)localObject));
         if ((localObject == null) || (((List)localObject).size() == 0)) {
-          ad.e(this.TAG, "dz: getContactNamesFromLabelsAndOtherUserName,namelist get bu label is null");
+          ac.e(this.TAG, "dz: getContactNamesFromLabelsAndOtherUserName,namelist get bu label is null");
         }
       }
       else
       {
-        this.vjO = new ArrayList((Collection)localHashSet);
+        this.wsz = new ArrayList((Collection)localHashSet);
         if (paramList1 == null) {
           break;
         }
         paramList1 = paramList1.iterator();
         while (paramList1.hasNext()) {
-          bt.isNullOrNil((String)paramList1.next());
+          bs.isNullOrNil((String)paramList1.next());
         }
       }
       Object localObject = ((List)localObject).iterator();
@@ -207,7 +207,7 @@ public final class i
       {
         String str = (String)((Iterator)localObject).next();
         localHashSet.add(str);
-        ad.d(this.TAG, "dz:name : %s", new Object[] { str });
+        ac.d(this.TAG, "dz:name : %s", new Object[] { str });
       }
     }
     if ((paramList2 != null) && (paramList2.size() > 0))
@@ -216,36 +216,36 @@ public final class i
       while (paramList1.hasNext())
       {
         paramList2 = (String)paramList1.next();
-        if (!this.vjO.contains(paramList2)) {
-          this.vjO.add(paramList2);
+        if (!this.wsz.contains(paramList2)) {
+          this.wsz.add(paramList2);
         }
       }
     }
     AppMethodBeat.o(163428);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     return false;
   }
   
-  public final String dik()
+  public final void awk() {}
+  
+  public final String dvU()
   {
     Object localObject3 = null;
     AppMethodBeat.i(75520);
-    this.vjO.clear();
+    this.wsz.clear();
     Object localObject2;
     int i;
-    if (!bt.isNullOrNil(this.vjM))
+    if (!bs.isNullOrNil(this.wsx))
     {
-      localObject1 = this.vjM;
+      localObject1 = this.wsx;
       if (localObject1 == null) {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
       }
       localObject1 = (CharSequence)localObject1;
-      localObject1 = new d.n.k(",").r((CharSequence)localObject1, 0);
+      localObject1 = new d.n.k(",").q((CharSequence)localObject1, 0);
       if (!((List)localObject1).isEmpty())
       {
         localObject2 = ((List)localObject1).listIterator(((List)localObject1).size());
@@ -260,7 +260,7 @@ public final class i
           }
         }
       }
-      for (localObject1 = j.b((Iterable)localObject1, ((ListIterator)localObject2).nextIndex() + 1);; localObject1 = (List)d.a.v.Jgl)
+      for (localObject1 = j.b((Iterable)localObject1, ((ListIterator)localObject2).nextIndex() + 1);; localObject1 = (List)d.a.v.KTF)
       {
         localObject1 = ((Collection)localObject1).toArray(new String[0]);
         if (localObject1 != null) {
@@ -280,14 +280,14 @@ public final class i
     for (Object localObject1 = Arrays.asList((String[])Arrays.copyOf((Object[])localObject1, localObject1.length));; localObject1 = null)
     {
       ListIterator localListIterator;
-      if (!bt.isNullOrNil(this.vjL))
+      if (!bs.isNullOrNil(this.wsw))
       {
-        localObject2 = this.vjL;
+        localObject2 = this.wsw;
         if (localObject2 == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
         localObject2 = (CharSequence)localObject2;
-        localObject2 = new d.n.k(",").r((CharSequence)localObject2, 0);
+        localObject2 = new d.n.k(",").q((CharSequence)localObject2, 0);
         if (!((List)localObject2).isEmpty())
         {
           localListIterator = ((List)localObject2).listIterator(((List)localObject2).size());
@@ -302,7 +302,7 @@ public final class i
             }
           }
         }
-        for (localObject2 = j.b((Iterable)localObject2, localListIterator.nextIndex() + 1);; localObject2 = (List)d.a.v.Jgl)
+        for (localObject2 = j.b((Iterable)localObject2, localListIterator.nextIndex() + 1);; localObject2 = (List)d.a.v.KTF)
         {
           localObject2 = ((Collection)localObject2).toArray(new String[0]);
           if (localObject2 != null) {
@@ -321,14 +321,14 @@ public final class i
       }
       for (localObject2 = Arrays.asList((String[])Arrays.copyOf((Object[])localObject2, localObject2.length));; localObject2 = null)
       {
-        if (!bt.isNullOrNil(this.vjN))
+        if (!bs.isNullOrNil(this.wsy))
         {
-          localObject3 = this.vjN;
+          localObject3 = this.wsy;
           if (localObject3 == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
           localObject3 = (CharSequence)localObject3;
-          localObject3 = new d.n.k(",").r((CharSequence)localObject3, 0);
+          localObject3 = new d.n.k(",").q((CharSequence)localObject3, 0);
           if (!((List)localObject3).isEmpty())
           {
             localListIterator = ((List)localObject3).listIterator(((List)localObject3).size());
@@ -343,7 +343,7 @@ public final class i
               }
             }
           }
-          for (localObject3 = j.b((Iterable)localObject3, localListIterator.nextIndex() + 1);; localObject3 = (List)d.a.v.Jgl)
+          for (localObject3 = j.b((Iterable)localObject3, localListIterator.nextIndex() + 1);; localObject3 = (List)d.a.v.KTF)
           {
             localObject3 = ((Collection)localObject3).toArray(new String[0]);
             if (localObject3 != null) {
@@ -361,10 +361,10 @@ public final class i
           localObject3 = (String[])localObject3;
           localObject3 = Arrays.asList((String[])Arrays.copyOf((Object[])localObject3, localObject3.length));
         }
-        p((List)localObject1, (List)localObject2);
-        eI((List)localObject3);
-        ad.i(this.TAG, "mergeSelectedRangeUser count:" + this.vjO.size());
-        localObject1 = bt.n((List)this.vjO, ",");
+        o((List)localObject1, (List)localObject2);
+        eN((List)localObject3);
+        ac.i(this.TAG, "mergeSelectedRangeUser count:" + this.wsz.size());
+        localObject1 = bs.n((List)this.wsz, ",");
         d.g.b.k.g(localObject1, "Util.listToString(mergedUserList, \",\")");
         AppMethodBeat.o(75520);
         return localObject1;
@@ -380,7 +380,7 @@ public final class i
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(75523);
-    ad.i(this.TAG, "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2);
+    ac.i(this.TAG, "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2);
     switch (paramInt1)
     {
     }
@@ -390,11 +390,11 @@ public final class i
       return;
       if ((paramInt2 == -1) && (paramIntent != null))
       {
-        this.boX = paramIntent.getIntExtra("Ktag_range_index", 0);
-        this.vjM = paramIntent.getStringExtra("Klabel_name_list");
-        this.vjL = paramIntent.getStringExtra("Kother_user_name_list");
-        this.vjN = paramIntent.getStringExtra("Kchat_room_name_list");
-        dij();
+        this.bns = paramIntent.getIntExtra("Ktag_range_index", 0);
+        this.wsx = paramIntent.getStringExtra("Klabel_name_list");
+        this.wsw = paramIntent.getStringExtra("Kother_user_name_list");
+        this.wsy = paramIntent.getStringExtra("Kchat_room_name_list");
+        dvT();
       }
     }
   }
@@ -402,7 +402,7 @@ public final class i
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(75517);
-    paramView = this.vjJ;
+    paramView = this.wsu;
     if (paramView != null) {
       paramView.dismiss();
     }
@@ -411,19 +411,19 @@ public final class i
     }
     for (paramView = null;; paramView = (android.support.design.widget.a)paramView)
     {
-      this.vjJ = paramView;
-      paramView = this.vjJ;
+      this.wsu = paramView;
+      paramView = this.wsu;
       if (paramView == null) {
         break;
       }
       paramView.show();
       AppMethodBeat.o(75517);
       return;
-      paramView = this.fSZ.getContext();
+      paramView = this.fWU.getContext();
       d.g.b.k.g(paramView, "parent.context");
       paramView = new c(paramView);
-      paramView.vrZ = this.vjK;
-      paramView.vrY = ((d.g.a.a)new a(this));
+      paramView.wBY = this.wsv;
+      paramView.wBX = ((d.g.a.a)new a(this));
     }
     AppMethodBeat.o(75517);
   }
@@ -437,25 +437,25 @@ public final class i
   public final void release()
   {
     AppMethodBeat.i(75521);
-    this.vjI.removeAllViews();
-    this.vjK = true;
-    dii();
+    this.wst.removeAllViews();
+    this.wsv = true;
+    dvS();
     AppMethodBeat.o(75521);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(75522);
-    this.vjI.removeAllViews();
-    this.vjK = true;
-    dii();
+    this.wst.removeAllViews();
+    this.wsv = true;
+    dvS();
     AppMethodBeat.o(75522);
   }
   
   public final void setScene(int paramInt)
   {
     AppMethodBeat.i(75519);
-    ad.i(this.TAG, "setScene ".concat(String.valueOf(paramInt)));
+    ac.i(this.TAG, "setScene ".concat(String.valueOf(paramInt)));
     this.scene = paramInt;
     switch (paramInt)
     {
@@ -464,25 +464,25 @@ public final class i
     {
       AppMethodBeat.o(75519);
       return;
-      this.vjH.setImageDrawable(am.i(this.fSZ.getContext(), 2131690436, -1));
-      if (!com.tencent.mm.plugin.recordvideo.b.a.a.vhg.dhx())
+      this.wss.setImageDrawable(am.k(this.fWU.getContext(), 2131690436, -1));
+      if (!com.tencent.mm.plugin.recordvideo.b.a.a.wpS.dve())
       {
-        this.vjH.setVisibility(8);
+        this.wss.setVisibility(8);
         AppMethodBeat.o(75519);
         return;
       }
-      this.vjH.setVisibility(0);
+      this.wss.setVisibility(0);
     }
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75518);
-    this.vjH.setVisibility(paramInt);
+    this.wss.setVisibility(paramInt);
     AppMethodBeat.o(75518);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -495,7 +495,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.i
  * JD-Core Version:    0.7.0.1
  */

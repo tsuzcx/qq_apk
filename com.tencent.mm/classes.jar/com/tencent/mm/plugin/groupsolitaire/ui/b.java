@@ -16,24 +16,24 @@ import com.tencent.mm.ui.widget.picker.CustomDatePicker;
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private Button hJg;
-  private Button hJh;
-  private View jGG;
-  private int kBk;
-  private BottomSheetBehavior kBl;
+  private Button gAJ;
+  private Button gCY;
+  private View khe;
+  private int lcC;
+  private BottomSheetBehavior lcD;
   private Context mContext;
-  android.support.design.widget.a sri;
-  CustomDatePicker srm;
-  b.a srn;
+  android.support.design.widget.a tyZ;
+  CustomDatePicker tzd;
+  a tze;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(110423);
     this.mContext = paramContext;
-    this.jGG = View.inflate(this.mContext, 2131494427, null);
-    this.srm = ((CustomDatePicker)this.jGG.findViewById(2131298931));
-    this.hJh = ((Button)this.jGG.findViewById(2131302999));
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.khe = View.inflate(this.mContext, 2131494427, null);
+    this.tzd = ((CustomDatePicker)this.khe.findViewById(2131298931));
+    this.gAJ = ((Button)this.khe.findViewById(2131302999));
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -43,8 +43,8 @@ public final class b
         AppMethodBeat.o(110419);
       }
     });
-    this.hJg = ((Button)this.jGG.findViewById(2131297690));
-    this.hJg.setOnClickListener(new View.OnClickListener()
+    this.gCY = ((Button)this.khe.findViewById(2131297690));
+    this.gCY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -54,9 +54,9 @@ public final class b
         AppMethodBeat.o(110420);
       }
     });
-    this.sri = new android.support.design.widget.a(this.mContext);
-    this.sri.setContentView(this.jGG);
-    this.sri.setOnCancelListener(new DialogInterface.OnCancelListener()
+    this.tyZ = new android.support.design.widget.a(this.mContext);
+    this.tyZ.setContentView(this.khe);
+    this.tyZ.setOnCancelListener(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -66,7 +66,7 @@ public final class b
         AppMethodBeat.o(110421);
       }
     });
-    this.sri.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -75,15 +75,15 @@ public final class b
         AppMethodBeat.o(110422);
       }
     });
-    paramContext = (FrameLayout.LayoutParams)this.jGG.getLayoutParams();
-    paramContext.height = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 318);
-    this.jGG.setLayoutParams(paramContext);
-    this.kBk = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 350);
-    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-    if (this.kBl != null)
+    paramContext = (FrameLayout.LayoutParams)this.khe.getLayoutParams();
+    paramContext.height = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 318);
+    this.khe.setLayoutParams(paramContext);
+    this.lcC = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 350);
+    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+    if (this.lcD != null)
     {
-      this.kBl.J(this.kBk);
-      this.kBl.lh = false;
+      this.lcD.J(this.lcC);
+      this.lcD.mg = false;
     }
     AppMethodBeat.o(110423);
   }
@@ -91,13 +91,18 @@ public final class b
   public final void hide()
   {
     AppMethodBeat.i(110424);
-    if (this.sri != null) {
-      this.sri.dismiss();
+    if (this.tyZ != null) {
+      this.tyZ.dismiss();
     }
     AppMethodBeat.o(110424);
   }
   
   public final void onGlobalLayout() {}
+  
+  public static abstract interface a<T>
+  {
+    public abstract void onResult(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3);
+  }
 }
 
 

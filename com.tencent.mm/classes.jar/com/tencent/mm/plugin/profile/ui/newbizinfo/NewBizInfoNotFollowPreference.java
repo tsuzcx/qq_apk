@@ -10,11 +10,11 @@ import d.g.b.k;
 import d.l;
 import d.n.n;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoNotFollowPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleTv", "Landroid/widget/TextView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoNotFollowPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleTv", "Landroid/widget/TextView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
 public final class NewBizInfoNotFollowPreference
   extends Preference
 {
-  private boolean paC;
+  private boolean pDN;
   private String title = "";
   private TextView titleTv;
   
@@ -28,17 +28,17 @@ public final class NewBizInfoNotFollowPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final void ddi()
+  private final void dqQ()
   {
     AppMethodBeat.i(39614);
-    if (!n.aC((CharSequence)this.title)) {}
+    if (!n.aD((CharSequence)this.title)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
         TextView localTextView = this.titleTv;
         if (localTextView == null) {
-          k.aPZ("titleTv");
+          k.aVY("titleTv");
         }
         localTextView.setText((CharSequence)this.title);
       }
@@ -55,8 +55,8 @@ public final class NewBizInfoNotFollowPreference
     paramView = paramView.findViewById(2131297287);
     k.g(paramView, "view.findViewById(R.id.biz_follow_tv)");
     this.titleTv = ((TextView)paramView);
-    this.paC = true;
-    ddi();
+    this.pDN = true;
+    dqQ();
     AppMethodBeat.o(39613);
   }
   
@@ -65,8 +65,8 @@ public final class NewBizInfoNotFollowPreference
     AppMethodBeat.i(39615);
     k.h(paramString, "value");
     this.title = paramString;
-    if (this.paC) {
-      ddi();
+    if (this.pDN) {
+      dqQ();
     }
     AppMethodBeat.o(39615);
   }

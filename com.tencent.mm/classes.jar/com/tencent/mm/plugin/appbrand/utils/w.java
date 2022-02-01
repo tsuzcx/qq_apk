@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class w
 {
-  public static boolean A(String paramString1, String paramString2)
+  public static boolean B(String paramString1, String paramString2)
   {
     AppMethodBeat.i(140860);
     if ((paramString1 == null) || (paramString1.length() < 0) || (paramString2.length() < 0))
@@ -26,7 +26,7 @@ public final class w
     return false;
   }
   
-  public static String Nm(String paramString)
+  public static String Rv(String paramString)
   {
     AppMethodBeat.i(140859);
     if (paramString == null)
@@ -41,7 +41,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.w
  * JD-Core Version:    0.7.0.1
  */

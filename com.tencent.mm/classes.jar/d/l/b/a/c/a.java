@@ -7,15 +7,15 @@ import java.util.NoSuchElementException;
 public final class a<E>
   implements Iterable<E>
 {
-  private static final a<Object> KbS;
-  public final a<E> KbT;
+  private static final a<Object> LPn;
+  public final a<E> LPo;
   public final E first;
   public final int size;
   
   static
   {
     AppMethodBeat.i(61423);
-    KbS = new a();
+    LPn = new a();
     AppMethodBeat.o(61423);
   }
   
@@ -23,27 +23,27 @@ public final class a<E>
   {
     this.size = 0;
     this.first = null;
-    this.KbT = null;
+    this.LPo = null;
   }
   
   private a(E paramE, a<E> parama)
   {
     AppMethodBeat.i(61415);
     this.first = paramE;
-    this.KbT = parama;
+    this.LPo = parama;
     parama.size += 1;
     AppMethodBeat.o(61415);
   }
   
-  private Iterator<E> afX(int paramInt)
+  private Iterator<E> aiT(int paramInt)
   {
     AppMethodBeat.i(61418);
-    a locala = new a(afZ(paramInt));
+    a locala = new a(aiV(paramInt));
     AppMethodBeat.o(61418);
     return locala;
   }
   
-  private a<E> afZ(int paramInt)
+  private a<E> aiV(int paramInt)
   {
     AppMethodBeat.i(61422);
     Object localObject = this;
@@ -60,17 +60,12 @@ public final class a<E>
         AppMethodBeat.o(61422);
         return localObject;
       }
-      localObject = ((a)localObject).KbT;
+      localObject = ((a)localObject).LPo;
       paramInt -= 1;
     }
   }
   
-  public static <E> a<E> fKs()
-  {
-    return KbS;
-  }
-  
-  private a<E> fy(Object paramObject)
+  private a<E> fB(Object paramObject)
   {
     AppMethodBeat.i(61420);
     if (this.size == 0)
@@ -80,12 +75,12 @@ public final class a<E>
     }
     if (this.first.equals(paramObject))
     {
-      paramObject = this.KbT;
+      paramObject = this.LPo;
       AppMethodBeat.o(61420);
       return paramObject;
     }
-    paramObject = this.KbT.fy(paramObject);
-    if (paramObject == this.KbT)
+    paramObject = this.LPo.fB(paramObject);
+    if (paramObject == this.LPo)
     {
       AppMethodBeat.o(61420);
       return this;
@@ -93,6 +88,11 @@ public final class a<E>
     paramObject = new a(this.first, paramObject);
     AppMethodBeat.o(61420);
     return paramObject;
+  }
+  
+  public static <E> a<E> gcV()
+  {
+    return LPn;
   }
   
   private E get(int paramInt)
@@ -107,7 +107,7 @@ public final class a<E>
     }
     try
     {
-      localObject = afX(paramInt).next();
+      localObject = aiT(paramInt).next();
       AppMethodBeat.o(61416);
       return localObject;
     }
@@ -119,15 +119,15 @@ public final class a<E>
     }
   }
   
-  public final a<E> afY(int paramInt)
+  public final a<E> aiU(int paramInt)
   {
     AppMethodBeat.i(61421);
-    a locala = fy(get(paramInt));
+    a locala = fB(get(paramInt));
     AppMethodBeat.o(61421);
     return locala;
   }
   
-  public final a<E> fx(E paramE)
+  public final a<E> fA(E paramE)
   {
     AppMethodBeat.i(61419);
     paramE = new a(paramE, this);
@@ -138,7 +138,7 @@ public final class a<E>
   public final Iterator<E> iterator()
   {
     AppMethodBeat.i(61417);
-    Iterator localIterator = afX(0);
+    Iterator localIterator = aiT(0);
     AppMethodBeat.o(61417);
     return localIterator;
   }
@@ -146,17 +146,17 @@ public final class a<E>
   static final class a<E>
     implements Iterator<E>
   {
-    private a<E> KbU;
+    private a<E> LPp;
     
     public a(a<E> parama)
     {
-      this.KbU = parama;
+      this.LPp = parama;
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(61413);
-      if (a.a(this.KbU) > 0)
+      if (a.a(this.LPp) > 0)
       {
         AppMethodBeat.o(61413);
         return true;
@@ -167,8 +167,8 @@ public final class a<E>
     
     public final E next()
     {
-      Object localObject = this.KbU.first;
-      this.KbU = this.KbU.KbT;
+      Object localObject = this.LPp.first;
+      this.LPp = this.LPp.LPo;
       return localObject;
     }
     
@@ -183,7 +183,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

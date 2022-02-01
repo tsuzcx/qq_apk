@@ -8,21 +8,21 @@ import java.lang.ref.WeakReference;
 final class ay
   extends am
 {
-  private final WeakReference<Context> avO;
+  private final WeakReference<Context> mContextRef;
   
   public ay(Context paramContext, Resources paramResources)
   {
     super(paramResources);
-    this.avO = new WeakReference(paramContext);
+    this.mContextRef = new WeakReference(paramContext);
   }
   
   public final Drawable getDrawable(int paramInt)
   {
     Drawable localDrawable = super.getDrawable(paramInt);
-    Context localContext = (Context)this.avO.get();
+    Context localContext = (Context)this.mContextRef.get();
     if ((localDrawable != null) && (localContext != null))
     {
-      g.iD();
+      g.iL();
       g.a(localContext, paramInt, localDrawable);
     }
     return localDrawable;

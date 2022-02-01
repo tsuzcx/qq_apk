@@ -10,13 +10,13 @@ public final class r
   extends v
   implements e
 {
-  private final d.l.b.a.b.b.a.g Jrg;
+  private final d.l.b.a.b.b.a.g Lez;
   
   private r(d.l.b.a.b.a.g paramg, d.l.b.a.b.b.a.g paramg1)
   {
     super(localaj, paramg);
     AppMethodBeat.i(60653);
-    this.Jrg = paramg1;
+    this.Lez = paramg1;
     AppMethodBeat.o(60653);
   }
   
@@ -29,24 +29,24 @@ public final class r
     return "dynamic";
   }
   
-  public final aj fBP()
+  public final d.l.b.a.b.b.a.g fQj()
   {
-    return this.JXI;
+    return this.Lez;
   }
   
-  public final boolean fBT()
+  public final aj fUt()
+  {
+    return this.LLb;
+  }
+  
+  public final boolean fUx()
   {
     return false;
-  }
-  
-  public final d.l.b.a.b.b.a.g fxF()
-  {
-    return this.Jrg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.r
  * JD-Core Version:    0.7.0.1
  */

@@ -4,34 +4,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  public int Idj;
+  public int JEL;
   public int errCode;
   public String errMsg;
   public int errType;
   
   public e()
   {
-    this.Idj = 0;
+    this.JEL = 0;
     this.errType = 0;
     this.errCode = 0;
     this.errMsg = "";
-    this.Idj = 0;
+    this.JEL = 0;
   }
   
   public e(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(72742);
-    this.Idj = 0;
-    f(paramInt1, paramInt2, paramString, 0);
+    this.JEL = 0;
+    e(paramInt1, paramInt2, paramString, 0);
     AppMethodBeat.o(72742);
   }
   
-  public final void f(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  public final void e(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
     this.errType = paramInt1;
     this.errCode = paramInt2;
     this.errMsg = paramString;
-    this.Idj = paramInt3;
+    this.JEL = paramInt3;
   }
 }
 

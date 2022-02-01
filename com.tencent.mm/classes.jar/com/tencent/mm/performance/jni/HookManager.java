@@ -1,5 +1,6 @@
 package com.tencent.mm.performance.jni;
 
+import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -7,39 +8,50 @@ import java.util.Set;
 
 public class HookManager
 {
-  public static final HookManager hQf;
-  private volatile boolean hQg;
-  public Set<a> hQh;
+  public static final HookManager INSTANCE;
+  private volatile boolean hasHooked;
+  private Set<AbsHook> mHooks;
   
   static
   {
-    AppMethodBeat.i(192600);
-    b.hQi.init();
-    hQf = new HookManager();
-    AppMethodBeat.o(192600);
+    AppMethodBeat.i(195645);
+    LibWxPerfManager.INSTANCE.init();
+    INSTANCE = new HookManager();
+    AppMethodBeat.o(195645);
   }
   
   private HookManager()
   {
-    AppMethodBeat.i(192598);
-    this.hQh = new HashSet();
-    AppMethodBeat.o(192598);
+    AppMethodBeat.i(195638);
+    this.mHooks = new HashSet();
+    AppMethodBeat.o(195638);
   }
   
+  private void exclusiveHook()
+  {
+    AppMethodBeat.i(195639);
+    xhookEnableDebugNative(false);
+    xhookEnableSigSegvProtectionNative(true);
+    xhookRefreshNative(false);
+    this.hasHooked = true;
+    AppMethodBeat.o(195639);
+  }
+  
+  @Keep
   public static String getStack()
   {
-    AppMethodBeat.i(205467);
+    AppMethodBeat.i(195643);
     String str = stackTraceToString(new Throwable().getStackTrace());
-    AppMethodBeat.o(205467);
+    AppMethodBeat.o(195643);
     return str;
   }
   
   private static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
   {
-    AppMethodBeat.i(205468);
+    AppMethodBeat.i(195644);
     if (paramArrayOfStackTraceElement == null)
     {
-      AppMethodBeat.o(205468);
+      AppMethodBeat.o(195644);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -54,7 +66,7 @@ public class HookManager
       i += 1;
     }
     paramArrayOfStackTraceElement = localStringBuilder.toString();
-    AppMethodBeat.o(205468);
+    AppMethodBeat.o(195644);
     return paramArrayOfStackTraceElement;
   }
   
@@ -66,39 +78,54 @@ public class HookManager
   
   private native int xhookRefreshNative(boolean paramBoolean);
   
-  public final void aFL()
+  public HookManager addHook(AbsHook paramAbsHook)
   {
-    AppMethodBeat.i(192599);
-    if (this.hQg)
-    {
-      localObject = new a("this process has already been hooked!");
-      AppMethodBeat.o(192599);
-      throw ((Throwable)localObject);
+    AppMethodBeat.i(195641);
+    if (paramAbsHook != null) {
+      this.mHooks.add(paramAbsHook);
     }
-    if (this.hQh.isEmpty())
-    {
-      AppMethodBeat.o(192599);
-      return;
-    }
-    Object localObject = this.hQh.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).aFJ();
-    }
-    localObject = this.hQh.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).aFK();
-    }
-    xhookEnableDebugNative(false);
-    xhookEnableSigSegvProtectionNative(true);
-    xhookRefreshNative(false);
-    this.hQg = true;
-    AppMethodBeat.o(192599);
+    AppMethodBeat.o(195641);
+    return this;
   }
   
-  public static final class a
+  public HookManager clearHooks()
+  {
+    AppMethodBeat.i(195642);
+    this.mHooks.clear();
+    AppMethodBeat.o(195642);
+    return this;
+  }
+  
+  public void commitHooks()
+  {
+    AppMethodBeat.i(195640);
+    if (this.hasHooked)
+    {
+      localObject = new HookFailedException("this process has already been hooked!");
+      AppMethodBeat.o(195640);
+      throw ((Throwable)localObject);
+    }
+    if (this.mHooks.isEmpty())
+    {
+      AppMethodBeat.o(195640);
+      return;
+    }
+    Object localObject = this.mHooks.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AbsHook)((Iterator)localObject).next()).onConfigure();
+    }
+    localObject = this.mHooks.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((AbsHook)((Iterator)localObject).next()).onHook();
+    }
+    exclusiveHook();
+    AppMethodBeat.o(195640);
+  }
+  
+  public static class HookFailedException
     extends Exception
   {
-    public a(String paramString)
+    public HookFailedException(String paramString)
     {
       super();
     }

@@ -27,9 +27,9 @@ import com.tencent.kinda.gen.UseCaseCallback;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.k.a;
-import com.tencent.mm.g.a.kb;
-import com.tencent.mm.g.a.xk;
-import com.tencent.mm.g.a.xk.a;
+import com.tencent.mm.g.a.kj;
+import com.tencent.mm.g.a.xv;
+import com.tencent.mm.g.a.xv.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.n;
 import com.tencent.mm.network.n.a;
@@ -40,7 +40,6 @@ import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchUI;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.RealNameBundle;
-import com.tencent.mm.plugin.wallet_core.model.ak;
 import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
@@ -48,14 +47,14 @@ import com.tencent.mm.plugin.wallet_index.ui.OrderHandlerUI;
 import com.tencent.mm.plugin.wallet_index.ui.WalletBrandUI;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
-import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.protocal.protobuf.bb;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.ay.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ax.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.wallet_core.c.z;
@@ -96,9 +95,9 @@ public class WxCrossServices
       public boolean callback(com.tencent.mm.g.a.k paramAnonymousk)
       {
         AppMethodBeat.i(178755);
-        if ((paramAnonymousk != null) && (paramAnonymousk.dbg != null))
+        if ((paramAnonymousk != null) && (paramAnonymousk.cYC != null))
         {
-          if (!paramAnonymousk.dbg.isActive) {
+          if (!paramAnonymousk.cYC.isActive) {
             break label39;
           }
           KindaApp.appKinda().applicationEnterForeground();
@@ -117,15 +116,15 @@ public class WxCrossServices
       public void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(178757);
-        com.tencent.mm.wallet_core.b.fjk();
-        if ((!com.tencent.mm.wallet_core.b.b(b.a.pom, true)) || (!WxCrossServices.this.mInitFlag) || (!KindaApp.appKinda().isInAnyUseCase()))
+        com.tencent.mm.wallet_core.b.fzz();
+        if ((!com.tencent.mm.wallet_core.b.b(b.a.pRO, true)) || (!WxCrossServices.this.mInitFlag) || (!KindaApp.appKinda().isInAnyUseCase()))
         {
           AppMethodBeat.o(178757);
           return;
         }
         ITransmitKvData localITransmitKvData = ITransmitKvData.create();
-        Object localObject1 = aj.getContext();
-        if (!ay.isConnected((Context)localObject1)) {
+        Object localObject1 = ai.getContext();
+        if (!ax.isConnected((Context)localObject1)) {
           localITransmitKvData.putString("type", "NON_NETWORK");
         }
         Object localObject2;
@@ -135,11 +134,11 @@ public class WxCrossServices
           KindaApp.appKinda().networkChange(localITransmitKvData);
           AppMethodBeat.o(178757);
           return;
-          if (!ay.isWifi((Context)localObject1)) {
+          if (!ax.isWifi((Context)localObject1)) {
             break;
           }
           localITransmitKvData.putString("type", "WIFI");
-          localObject2 = ay.getWifiInfo((Context)localObject1);
+          localObject2 = ax.getWifiInfo((Context)localObject1);
           localObject1 = ((WifiInfo)localObject2).getSSID();
           localObject2 = ((WifiInfo)localObject2).getBSSID();
           if ((localObject1 != null) && (localObject2 != null))
@@ -147,24 +146,24 @@ public class WxCrossServices
             localObject3 = new HashMap();
             ((Map)localObject3).put("ssid", localObject1);
             ((Map)localObject3).put("bssid", localObject2);
-            localObject1 = com.tencent.mm.plugin.wallet_core.model.k.aN((Map)localObject3);
-            localITransmitKvData.putString("info", ((az)localObject1).Cvh);
-            localITransmitKvData.putString("info_key", ((az)localObject1).Cvi);
+            localObject1 = com.tencent.mm.plugin.wallet_core.model.k.aR((Map)localObject3);
+            localITransmitKvData.putString("info", ((bb)localObject1).DNC);
+            localITransmitKvData.putString("info_key", ((bb)localObject1).DND);
           }
         }
-        if (ay.is4G((Context)localObject1)) {
+        if (ax.is4G((Context)localObject1)) {
           localITransmitKvData.putString("type", "4G");
         }
         for (;;)
         {
-          localObject1 = ay.iF((Context)localObject1);
+          localObject1 = ax.iQ((Context)localObject1);
           if (((List)localObject1).size() <= 0) {
             break;
           }
-          localObject3 = (ay.a)((List)localObject1).get(0);
-          localObject1 = ((ay.a)localObject3).tzt;
-          localObject2 = ((ay.a)localObject3).tzr;
-          localObject3 = ((ay.a)localObject3).tzs;
+          localObject3 = (ax.a)((List)localObject1).get(0);
+          localObject1 = ((ax.a)localObject3).uHQ;
+          localObject2 = ((ax.a)localObject3).uHO;
+          localObject3 = ((ax.a)localObject3).uHP;
           if ((localObject1 == null) || (localObject2 == null) || (localObject3 == null)) {
             break;
           }
@@ -172,13 +171,13 @@ public class WxCrossServices
           localHashMap.put("cellid", localObject1);
           localHashMap.put("mcc", localObject2);
           localHashMap.put("mnc", localObject3);
-          localObject1 = com.tencent.mm.plugin.wallet_core.model.k.aN(localHashMap);
-          localITransmitKvData.putString("info", ((az)localObject1).Cvh);
-          localITransmitKvData.putString("info_key", ((az)localObject1).Cvi);
+          localObject1 = com.tencent.mm.plugin.wallet_core.model.k.aR(localHashMap);
+          localITransmitKvData.putString("info", ((bb)localObject1).DNC);
+          localITransmitKvData.putString("info_key", ((bb)localObject1).DND);
           break;
-          if (ay.is3G((Context)localObject1)) {
+          if (ax.is3G((Context)localObject1)) {
             localITransmitKvData.putString("type", "3G");
-          } else if (ay.is2G((Context)localObject1)) {
+          } else if (ax.is2G((Context)localObject1)) {
             localITransmitKvData.putString("type", "2G");
           } else {
             localITransmitKvData.putString("type", "UNKNOW");
@@ -196,13 +195,13 @@ public class WxCrossServices
     com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
     if (locala != null)
     {
-      ad.i("MicroMsg.WxCrossServices", "IFingerPrintMgr is not null");
-      locala.ctU();
+      ac.i("MicroMsg.WxCrossServices", "IFingerPrintMgr is not null");
+      locala.cHg();
     }
     if (!this.mInitFlag)
     {
-      com.tencent.mm.sdk.b.a.ESL.b(this.appListener);
-      g.afA().a(this.netListener);
+      com.tencent.mm.sdk.b.a.GpY.b(this.appListener);
+      g.agQ().a(this.netListener);
       KindaApp.instance().onCreate();
       this.mInitFlag = true;
     }
@@ -213,7 +212,7 @@ public class WxCrossServices
   private void preparePayDesk()
   {
     AppMethodBeat.i(18279);
-    com.tencent.mm.plugin.wallet_core.model.k.Rx(5);
+    com.tencent.mm.plugin.wallet_core.model.k.TG(5);
     AppMethodBeat.o(18279);
   }
   
@@ -221,7 +220,7 @@ public class WxCrossServices
   {
     AppMethodBeat.i(18277);
     if (KindaApp.isEnabled()) {
-      com.tencent.mm.plugin.expansions.a.Vi("kinda_android");
+      com.tencent.mm.plugin.expansions.a.Zu("kinda_android");
     }
     AppMethodBeat.o(18277);
   }
@@ -229,8 +228,8 @@ public class WxCrossServices
   public boolean TenPaySDKABTestKindaEnable()
   {
     AppMethodBeat.i(18293);
-    com.tencent.mm.wallet_core.b.fjk();
-    boolean bool = com.tencent.mm.wallet_core.b.b(b.a.pom, true);
+    com.tencent.mm.wallet_core.b.fzz();
+    boolean bool = com.tencent.mm.wallet_core.b.b(b.a.pRO, true);
     AppMethodBeat.o(18293);
     return bool;
   }
@@ -239,19 +238,19 @@ public class WxCrossServices
   {
     AppMethodBeat.i(18290);
     initIfNeed();
-    com.tencent.mm.wallet_core.b.fjk();
-    if (!com.tencent.mm.wallet_core.b.b(b.a.pom, true))
+    com.tencent.mm.wallet_core.b.fzz();
+    if (!com.tencent.mm.wallet_core.b.b(b.a.pRO, true))
     {
       AppMethodBeat.o(18290);
       return true;
     }
     if (KindaApp.appKinda().getIsPaying())
     {
-      ad.i("canOpenKindaCashier", "is paying");
+      ac.i("canOpenKindaCashier", "is paying");
       AppMethodBeat.o(18290);
       return false;
     }
-    ad.i("canOpenKindaCashier", "not paying");
+    ac.i("canOpenKindaCashier", "not paying");
     KindaApp.appKinda().stopUseCase("rootUseCase");
     AppMethodBeat.o(18290);
     return true;
@@ -297,7 +296,7 @@ public class WxCrossServices
     if (this.kindaCacheService != null)
     {
       boolean bool = this.kindaCacheService.getBool(paramString);
-      ad.i("MicroMsg.WxCrossServices", "kindaCacheServiceGetBool key: %s ret: %s", new Object[] { paramString, Boolean.valueOf(bool) });
+      ac.i("MicroMsg.WxCrossServices", "kindaCacheServiceGetBool key: %s ret: %s", new Object[] { paramString, Boolean.valueOf(bool) });
       AppMethodBeat.o(18292);
       return bool;
     }
@@ -326,24 +325,28 @@ public class WxCrossServices
   public void startBindCardUseCase(Context paramContext, final Bundle paramBundle)
   {
     AppMethodBeat.i(18294);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 16L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startBindCardUseCase %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 16L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startBindCardUseCase %s", new Object[] { bs.eWi() });
     initIfNeed();
     if (paramBundle.getInt("key_bind_scene", -1) == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      int j = s.ebX().edF().field_is_reg;
+      int j = paramBundle.getInt("reg_flag", -1);
+      int i = j;
+      if (j == -1) {
+        i = s.ert().eta().field_is_reg;
+      }
       if (paramBundle.getInt("key_bind_scene") == 8) {}
       for (boolean bool2 = true;; bool2 = false)
       {
-        if (s.ecc().ecO()) {}
-        for (int i = 2;; i = 1)
+        if (s.ery().esj()) {}
+        for (j = 2;; j = 1)
         {
-          paramContext = s.ecc().getTrueName();
+          paramContext = s.ery().getTrueName();
           ITransmitKvData localITransmitKvData = ITransmitKvData.create();
           localITransmitKvData.putBool("bPresent", bool1);
-          localITransmitKvData.putInt("regFlag", j);
-          localITransmitKvData.putInt("cardUserFlag", i);
+          localITransmitKvData.putInt("regFlag", i);
+          localITransmitKvData.putInt("cardUserFlag", j);
           localITransmitKvData.putString("trueName", paramContext);
           localITransmitKvData.putInt("addPayCardScene", paramBundle.getInt("key_bind_scene", -1));
           localITransmitKvData.putInt("bindScene", paramBundle.getInt("key_bind_scene", -1));
@@ -364,30 +367,30 @@ public class WxCrossServices
           {
             localITransmitKvData.putBool("isNewRealname", true);
             localITransmitKvData.putString("rn_realname_scene", paramBundle.getString("key_realname_scene", ""));
-            localITransmitKvData.putString("rn_true_name", paramContext.Aar);
-            localITransmitKvData.putString("rn_cre_type", paramContext.Aau);
-            localITransmitKvData.putString("rn_cre_name", paramContext.Aav);
-            localITransmitKvData.putString("rn_identify_card_origin", paramContext.Aas);
-            localITransmitKvData.putString("rn_encry_identity_card", paramContext.Aat);
-            localITransmitKvData.putInt("rn_creid_renewal_origin", paramContext.AaB);
-            localITransmitKvData.putInt("rn_cre_expire_date_origin_year", paramContext.AaD);
-            localITransmitKvData.putInt("rn_cre_expire_date_origin_month", paramContext.AaE);
-            localITransmitKvData.putInt("rn_cre_expire_date_origin_day", paramContext.AaF);
-            localITransmitKvData.putInt("rn_cre_effect_date_origin_year", paramContext.AaP);
-            localITransmitKvData.putInt("rn_cre_effect_date_origin_month", paramContext.AaQ);
-            localITransmitKvData.putInt("rn_cre_effect_date_origin_day", paramContext.AaR);
-            localITransmitKvData.putInt("rn_birth_date_origin_year", paramContext.AaH);
-            localITransmitKvData.putInt("rn_birth_date_origin_month", paramContext.AaI);
-            localITransmitKvData.putInt("rn_birth_date_origin_day", paramContext.AaJ);
-            localITransmitKvData.putString("rn_country", paramContext.Aax);
-            localITransmitKvData.putString("rn_province", paramContext.Aay);
-            localITransmitKvData.putString("rn_city", paramContext.Aaz);
-            localITransmitKvData.putString("rn_areaStr", paramContext.AaA);
-            localITransmitKvData.putString("rn_profession_type", paramContext.Aaw.Aaq);
-            localITransmitKvData.putString("rn_profession_name", paramContext.Aaw.Aap);
-            localITransmitKvData.putString("rn_iso_country_code", paramContext.AaK);
-            localITransmitKvData.putInt("rn_sex", paramContext.evp);
-            localITransmitKvData.putString("rn_detail_address", paramContext.AaN);
+            localITransmitKvData.putString("rn_true_name", paramContext.BsL);
+            localITransmitKvData.putString("rn_cre_type", paramContext.BsO);
+            localITransmitKvData.putString("rn_cre_name", paramContext.BsP);
+            localITransmitKvData.putString("rn_identify_card_origin", paramContext.BsM);
+            localITransmitKvData.putString("rn_encry_identity_card", paramContext.BsN);
+            localITransmitKvData.putInt("rn_creid_renewal_origin", paramContext.BsV);
+            localITransmitKvData.putInt("rn_cre_expire_date_origin_year", paramContext.BsX);
+            localITransmitKvData.putInt("rn_cre_expire_date_origin_month", paramContext.BsY);
+            localITransmitKvData.putInt("rn_cre_expire_date_origin_day", paramContext.BsZ);
+            localITransmitKvData.putInt("rn_cre_effect_date_origin_year", paramContext.Btj);
+            localITransmitKvData.putInt("rn_cre_effect_date_origin_month", paramContext.Btk);
+            localITransmitKvData.putInt("rn_cre_effect_date_origin_day", paramContext.Btl);
+            localITransmitKvData.putInt("rn_birth_date_origin_year", paramContext.Btb);
+            localITransmitKvData.putInt("rn_birth_date_origin_month", paramContext.Btc);
+            localITransmitKvData.putInt("rn_birth_date_origin_day", paramContext.Btd);
+            localITransmitKvData.putString("rn_country", paramContext.BsR);
+            localITransmitKvData.putString("rn_province", paramContext.BsS);
+            localITransmitKvData.putString("rn_city", paramContext.BsT);
+            localITransmitKvData.putString("rn_areaStr", paramContext.BsU);
+            localITransmitKvData.putString("rn_profession_type", paramContext.BsQ.BsK);
+            localITransmitKvData.putString("rn_profession_name", paramContext.BsQ.BsJ);
+            localITransmitKvData.putString("rn_iso_country_code", paramContext.Bte);
+            localITransmitKvData.putInt("rn_sex", paramContext.exL);
+            localITransmitKvData.putString("rn_detail_address", paramContext.Bth);
             bool1 = paramBundle.getBoolean("realname_verify_process_need_face", false);
             localITransmitKvData.putBool("rn_is_need_face", bool1);
             if (bool1)
@@ -402,34 +405,34 @@ public class WxCrossServices
           localITransmitKvData.putString("bindCardUuid", z.getBindCardUuid());
           localITransmitKvData.putString("deviceName", Build.MODEL);
           localITransmitKvData.putString("deviceType", "");
-          localITransmitKvData.putBool("BindCardV2", s.ecc().ecN().ecx());
+          localITransmitKvData.putBool("BindCardV2", true);
           KindaApp.appKinda().startUseCase("addPayCard", localITransmitKvData, new UseCaseCallback()
           {
             public void call(ITransmitKvData paramAnonymousITransmitKvData)
             {
               AppMethodBeat.i(178758);
-              ad.i("MicroMsg.WxCrossServices", "startBindCardUseCase callback");
-              kb localkb = new kb();
+              ac.i("MicroMsg.WxCrossServices", "startBindCardUseCase callback");
+              kj localkj = new kj();
               if (paramAnonymousITransmitKvData.getInt("retcode") == 1)
               {
-                localkb.doi.doj = true;
-                localkb.doi.dol = paramAnonymousITransmitKvData.getString("bind_serial");
-                localkb.doi.dom = paramAnonymousITransmitKvData.getString("password");
-                localkb.doi.don = paramAnonymousITransmitKvData.getString("bank_type");
-                localkb.doi.doo = paramAnonymousITransmitKvData.getString("mobile_no");
-                localkb.doi.dop = paramAnonymousITransmitKvData.getString("realname_title");
-                localkb.doi.doq = paramAnonymousITransmitKvData.getString("realname_desc");
-                localkb.doi.dor = paramAnonymousITransmitKvData.getString("realname_btn_title");
-                localkb.doi.dos = paramAnonymousITransmitKvData.getString("realname_err_jump_page");
+                localkj.dlR.dlS = true;
+                localkj.dlR.dlU = paramAnonymousITransmitKvData.getString("bind_serial");
+                localkj.dlR.dlV = paramAnonymousITransmitKvData.getString("password");
+                localkj.dlR.dlW = paramAnonymousITransmitKvData.getString("bank_type");
+                localkj.dlR.dlX = paramAnonymousITransmitKvData.getString("mobile_no");
+                localkj.dlR.dlY = paramAnonymousITransmitKvData.getString("realname_title");
+                localkj.dlR.dlZ = paramAnonymousITransmitKvData.getString("realname_desc");
+                localkj.dlR.dma = paramAnonymousITransmitKvData.getString("realname_btn_title");
+                localkj.dlR.dmb = paramAnonymousITransmitKvData.getString("realname_err_jump_page");
               }
               for (;;)
               {
-                localkb.doi.dok = paramBundle.getBoolean("key_need_bind_response", false);
-                com.tencent.mm.sdk.b.a.ESL.l(localkb);
+                localkj.dlR.dlT = paramBundle.getBoolean("key_need_bind_response", false);
+                com.tencent.mm.sdk.b.a.GpY.l(localkj);
                 AppMethodBeat.o(178758);
                 return;
                 if (paramAnonymousITransmitKvData.getInt("retcode") == -1) {
-                  localkb.doi.doj = false;
+                  localkj.dlR.dlS = false;
                 }
               }
             }
@@ -466,9 +469,9 @@ public class WxCrossServices
     AppMethodBeat.i(18296);
     initIfNeed();
     paramContext = ITransmitKvData.create();
-    if (paramWalletJsapiData.CoN != null)
+    if (paramWalletJsapiData.DHf != null)
     {
-      Iterator localIterator = paramWalletJsapiData.CoN.entrySet().iterator();
+      Iterator localIterator = paramWalletJsapiData.DHf.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -519,17 +522,18 @@ public class WxCrossServices
         return KindaJSEventType.WEB;
       }
     });
-    KindaApp.appKinda().startUseCase(paramWalletJsapiData.wUF, paramContext, null);
+    KindaApp.appKinda().startUseCase(paramWalletJsapiData.yht, paramContext, null);
     AppMethodBeat.o(18296);
   }
   
   public void startOfflinePay(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(18288);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 18L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startOfflinePay %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 18L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startOfflinePay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
+    com.tencent.mm.plugin.soter.d.a.dTp();
     paramContext = ITransmitKvData.create();
     paramContext.putString("req_key", paramString1);
     paramContext.putString("prefer_bind_serial", paramString2);
@@ -541,18 +545,18 @@ public class WxCrossServices
       {
         AppMethodBeat.i(170111);
         boolean bool = paramAnonymousITransmitKvData.getBool("pay_result");
-        ad.i("MicroMsg.WxCrossServices", "startOfflinePay UseCaseCallback pay_result: ".concat(String.valueOf(bool)));
-        paramAnonymousITransmitKvData = new xk();
-        paramAnonymousITransmitKvData.dDy.result = 0;
+        ac.i("MicroMsg.WxCrossServices", "startOfflinePay UseCaseCallback pay_result: ".concat(String.valueOf(bool)));
+        paramAnonymousITransmitKvData = new xv();
+        paramAnonymousITransmitKvData.dBk.result = 0;
         if (bool)
         {
-          paramAnonymousITransmitKvData.dDy.result = -1;
-          paramAnonymousITransmitKvData.dDy.intent = new Intent();
+          paramAnonymousITransmitKvData.dBk.result = -1;
+          paramAnonymousITransmitKvData.dBk.intent = new Intent();
           Bundle localBundle = new Bundle();
           localBundle.putInt("payScene", 8);
-          paramAnonymousITransmitKvData.dDy.intent.putExtras(localBundle);
+          paramAnonymousITransmitKvData.dBk.intent.putExtras(localBundle);
         }
-        com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousITransmitKvData);
+        com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousITransmitKvData);
         AppMethodBeat.o(170111);
       }
     });
@@ -562,7 +566,7 @@ public class WxCrossServices
   public void startOfflinePrePay(final Context paramContext, int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap)
   {
     AppMethodBeat.i(18289);
-    ad.i("MicroMsg.WxCrossServices", "startOfflinePrePay %s", new Object[] { bt.eGN() });
+    ac.i("MicroMsg.WxCrossServices", "startOfflinePrePay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
     ITransmitKvData localITransmitKvData1 = ITransmitKvData.create();
@@ -595,8 +599,8 @@ public class WxCrossServices
   public void startResetPwdUseCase(Context paramContext, Bundle paramBundle)
   {
     AppMethodBeat.i(170112);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 17L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startResetPwdUseCase %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 17L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startResetPwdUseCase %s", new Object[] { bs.eWi() });
     initIfNeed();
     paramContext = ITransmitKvData.create();
     if (paramBundle == null)
@@ -619,10 +623,11 @@ public class WxCrossServices
   public void startSNSPay(final Context paramContext, PayInfo paramPayInfo)
   {
     AppMethodBeat.i(18287);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 10L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startSNSPay %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 10L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startSNSPay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
+    com.tencent.mm.plugin.soter.d.a.dTp();
     if (!((com.tencent.mm.pluginsdk.wallet.a)g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).canOpenKindaCashier(paramContext))
     {
       com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131765336), "", paramContext.getString(2131756757), new DialogInterface.OnClickListener()
@@ -639,8 +644,8 @@ public class WxCrossServices
       AppMethodBeat.o(18287);
       return;
     }
-    ISnsSceneService localISnsSceneService = SnsSceneServiceFactory.createService(paramPayInfo.dtb);
-    ISnsUseCaseCallback localISnsUseCaseCallback = SnsSceneServiceFactory.createCallback(paramPayInfo.dtb);
+    ISnsSceneService localISnsSceneService = SnsSceneServiceFactory.createService(paramPayInfo.dqL);
+    ISnsUseCaseCallback localISnsUseCaseCallback = SnsSceneServiceFactory.createCallback(paramPayInfo.dqL);
     localISnsSceneService.setData(paramContext, paramPayInfo);
     localISnsUseCaseCallback.setData(paramContext, paramPayInfo);
     KindaApp.appKinda().startUseCase("snsPay", localISnsSceneService.generateSnsUseCaseData(), localISnsUseCaseCallback);
@@ -650,10 +655,11 @@ public class WxCrossServices
   public void startScanQRCodePay(Context paramContext, int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(18286);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 13L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startScanQRCodePay %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 13L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startScanQRCodePay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
+    com.tencent.mm.plugin.soter.d.a.dTp();
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
     localITransmitKvData.putInt("m_A8keyScene", paramInt1);
     localITransmitKvData.putString("qrCodeUrl", paramString);
@@ -667,23 +673,23 @@ public class WxCrossServices
     {
       public void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    ad.d("tag_scan_qrcode_pay", "扫码支付打开正在加载进度框。");
+    ac.d("tag_scan_qrcode_pay", "扫码支付打开正在加载进度框。");
     KindaApp.appKinda().startUseCase("scanQRCodePay", localITransmitKvData, new UseCaseCallback()
     {
       public void call(ITransmitKvData paramAnonymousITransmitKvData)
       {
         AppMethodBeat.i(18272);
-        ad.i("MicroMsg.WxCrossServices", "startScanQRCodePay call()");
+        ac.i("MicroMsg.WxCrossServices", "startScanQRCodePay call()");
         if (WxCrossServices.this.mDialogForScanPay != null)
         {
-          ad.d("tag_scan_qrcode_pay", "扫码支付关闭正在加载进度框。");
+          ac.d("tag_scan_qrcode_pay", "扫码支付关闭正在加载进度框。");
           WxCrossServices.this.mDialogForScanPay.dismiss();
           WxCrossServices.access$002(WxCrossServices.this, null);
         }
-        xk localxk = new xk();
-        localxk.dDy.result = paramAnonymousITransmitKvData.getInt("scanQRCodeState");
-        localxk.dDy.dDA = true;
-        com.tencent.mm.sdk.b.a.ESL.l(localxk);
+        xv localxv = new xv();
+        localxv.dBk.result = paramAnonymousITransmitKvData.getInt("scanQRCodeState");
+        localxv.dBk.dBm = true;
+        com.tencent.mm.sdk.b.a.GpY.l(localxv);
         AppMethodBeat.o(18272);
       }
     });
@@ -693,7 +699,7 @@ public class WxCrossServices
   public void startWalletBalanceFetchUseCase(final Context paramContext, final Bundle paramBundle)
   {
     AppMethodBeat.i(170113);
-    ad.i("MicroMsg.WxCrossServices", "startWalletBalanceFetchUseCase %s", new Object[] { bt.eGN() });
+    ac.i("MicroMsg.WxCrossServices", "startWalletBalanceFetchUseCase %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
@@ -716,20 +722,20 @@ public class WxCrossServices
           return;
         }
         int i = paramAnonymousITransmitKvData.getInt("result");
-        ad.i("MicroMsg.WxCrossServices", "startWalletBalanceFetchUseCase result：%s", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.WxCrossServices", "startWalletBalanceFetchUseCase result：%s", new Object[] { Integer.valueOf(i) });
         switch (i)
         {
         default: 
-          ad.i("MicroMsg.WxCrossServices", "startWalletBalanceFetch unknown result：%s", new Object[] { Integer.valueOf(i) });
+          ac.i("MicroMsg.WxCrossServices", "startWalletBalanceFetch unknown result：%s", new Object[] { Integer.valueOf(i) });
           AppMethodBeat.o(178760);
           return;
         case 1: 
           Object localObject = new Intent(paramContext, WalletBalanceManagerUI.class);
           ((Intent)localObject).addFlags(67108864);
           paramAnonymousITransmitKvData = paramContext;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousITransmitKvData, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/kinda/framework/WxCrossServices$15", "call", "(Lcom/tencent/kinda/gen/ITransmitKvData;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousITransmitKvData.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousITransmitKvData, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/kinda/framework/WxCrossServices$15", "call", "(Lcom/tencent/kinda/gen/ITransmitKvData;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousITransmitKvData.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousITransmitKvData, "com/tencent/kinda/framework/WxCrossServices$15", "call", "(Lcom/tencent/kinda/gen/ITransmitKvData;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(178760);
           return;
@@ -737,7 +743,7 @@ public class WxCrossServices
           AppMethodBeat.o(178760);
           return;
         }
-        com.tencent.mm.plugin.report.service.h.vKh.f(16398, new Object[] { paramBundle.getString("reportSessionId"), Integer.valueOf(8), "", "" });
+        com.tencent.mm.plugin.report.service.h.wUl.f(16398, new Object[] { paramBundle.getString("reportSessionId"), Integer.valueOf(8), "", "" });
         AppMethodBeat.o(178760);
       }
     });
@@ -747,10 +753,11 @@ public class WxCrossServices
   public void startWxpayAppPay(final Context paramContext, final Bundle paramBundle, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(18282);
-    ad.i("MicroMsg.WxCrossServices", "startWxpayAppPay %s", new Object[] { bt.eGN() });
+    ac.i("MicroMsg.WxCrossServices", "startWxpayAppPay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 11L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 11L, 1L, false);
+    com.tencent.mm.plugin.soter.d.a.dTp();
     PayReq localPayReq = new PayReq();
     localPayReq.fromBundle(paramBundle);
     final ITransmitKvData localITransmitKvData = ITransmitKvData.create();
@@ -772,18 +779,18 @@ public class WxCrossServices
     if (paramBundle.getInt("_wxapi_command_type", 0) == 27) {}
     for (paramBundle = "jointPay";; paramBundle = "appPay")
     {
-      ad.i("MicroMsg.WxCrossServices", "app url: %s", new Object[] { paramBundle });
+      ac.i("MicroMsg.WxCrossServices", "app url: %s", new Object[] { paramBundle });
       if (((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).hasInitBiometricManager()) {
         break;
       }
-      ad.w("MicroMsg.WxCrossServices", "soter has not initialized, wait 1s");
-      com.tencent.mm.plugin.report.service.h.vKh.dB(1104, 48);
-      aq.n(new Runnable()
+      ac.w("MicroMsg.WxCrossServices", "soter has not initialized, wait 1s");
+      com.tencent.mm.plugin.report.service.h.wUl.dB(1104, 48);
+      ap.n(new Runnable()
       {
         public void run()
         {
           AppMethodBeat.i(170102);
-          ad.d("MicroMsg.WxCrossServices", "soter initialized: %s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).hasInitBiometricManager()) });
+          ac.d("MicroMsg.WxCrossServices", "soter initialized: %s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).hasInitBiometricManager()) });
           KindaApp.appKinda().startUseCase(paramBundle, localITransmitKvData, new UseCaseCallback()
           {
             public void call(ITransmitKvData paramAnonymous2ITransmitKvData)
@@ -818,10 +825,11 @@ public class WxCrossServices
   public void startWxpayH5Pay(final Context paramContext, Bundle paramBundle, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(18284);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 14L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startWxpayH5Pay %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 14L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startWxpayH5Pay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
+    com.tencent.mm.plugin.soter.d.a.dTp();
     PayReq localPayReq = new PayReq();
     localPayReq.fromBundle(paramBundle);
     paramBundle = ITransmitKvData.create();
@@ -857,33 +865,34 @@ public class WxCrossServices
   public void startWxpayJsApiPay(final Context paramContext, WalletJsapiData paramWalletJsapiData, MMActivity.a parama, int paramInt)
   {
     AppMethodBeat.i(18283);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 12L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startWxpayJsApiPay %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 12L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startWxpayJsApiPay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
+    com.tencent.mm.plugin.soter.d.a.dTp();
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
     localITransmitKvData.putString("appid", paramWalletJsapiData.appId);
     localITransmitKvData.putString("package", paramWalletJsapiData.packageExt);
     localITransmitKvData.putString("signType", paramWalletJsapiData.signType);
     localITransmitKvData.putString("timeStamp", paramWalletJsapiData.timeStamp);
-    localITransmitKvData.putString("paySign", paramWalletJsapiData.dsZ);
+    localITransmitKvData.putString("paySign", paramWalletJsapiData.dqJ);
     localITransmitKvData.putString("nonce_str", paramWalletJsapiData.nonceStr);
-    localITransmitKvData.putString("stepInAppUserName", paramWalletJsapiData.dta);
+    localITransmitKvData.putString("stepInAppUserName", paramWalletJsapiData.dqK);
     localITransmitKvData.putString("stepInURL", paramWalletJsapiData.url);
-    localITransmitKvData.putInt("payChannel", paramWalletJsapiData.dfg);
-    localITransmitKvData.putInt("payScene", paramWalletJsapiData.dtb);
-    localITransmitKvData.putInt("weappEnterScene", paramWalletJsapiData.CoE);
-    localITransmitKvData.putString("weappPayCookies", paramWalletJsapiData.gMQ);
-    localITransmitKvData.putString("adUxInfo", paramWalletJsapiData.CoM);
+    localITransmitKvData.putInt("payChannel", paramWalletJsapiData.dcB);
+    localITransmitKvData.putInt("payScene", paramWalletJsapiData.dqL);
+    localITransmitKvData.putInt("weappEnterScene", paramWalletJsapiData.DGW);
+    localITransmitKvData.putString("weappPayCookies", paramWalletJsapiData.hnq);
+    localITransmitKvData.putString("adUxInfo", paramWalletJsapiData.DHe);
     KindaJSEvent localKindaJSEvent = new KindaJSEvent();
     localKindaJSEvent.setIMMOnActivityResult(parama);
     localKindaJSEvent.setRequestCode(paramInt);
     localKindaJSEvent.setType(KindaJSEventType.WEB);
     localITransmitKvData.putJSEvent("JSEvent", localKindaJSEvent);
-    if (paramWalletJsapiData.CoL) {}
+    if (paramWalletJsapiData.DHd) {}
     for (paramWalletJsapiData = "jointPay";; paramWalletJsapiData = "jsapiPay")
     {
-      ad.i("MicroMsg.WxCrossServices", "jsapi url: %s", new Object[] { paramWalletJsapiData });
+      ac.i("MicroMsg.WxCrossServices", "jsapi url: %s", new Object[] { paramWalletJsapiData });
       KindaApp.appKinda().startUseCase(paramWalletJsapiData, localITransmitKvData, new UseCaseCallback()
       {
         public void call(ITransmitKvData paramAnonymousITransmitKvData)
@@ -896,7 +905,7 @@ public class WxCrossServices
             if (localObject != null) {
               break label259;
             }
-            ad.e("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback get result null! ");
+            ac.e("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback get result null! ");
             localObject = "";
           }
           label259:
@@ -910,23 +919,23 @@ public class WxCrossServices
             {
               String str = paramAnonymousITransmitKvData.getString("total_fee_str");
               paramAnonymousITransmitKvData = (WalletBrandUI)paramContext;
-              ad.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback receive data, result: %s, resultCode:%d, total_fee_str: ", new Object[] { localObject, Integer.valueOf(i), str });
-              if (!com.tencent.matrix.trace.g.b.dq(str))
+              ac.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback receive data, result: %s, resultCode:%d, total_fee_str: ", new Object[] { localObject, Integer.valueOf(i), str });
+              if (!com.tencent.matrix.trace.g.b.cX(str))
               {
                 str = str.replaceAll("[^0-9\\.]", "");
-                ad.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback totalFee after format is: ".concat(String.valueOf(str)));
+                ac.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback totalFee after format is: ".concat(String.valueOf(str)));
                 Intent localIntent = new Intent();
                 localIntent.putExtra("key_total_fee", str);
-                if ((!bt.isNullOrNil(paramAnonymousITransmitKvData.Ayc)) && (paramAnonymousITransmitKvData.Ayc.equalsIgnoreCase("key_from_scene_appbrandgame"))) {
-                  paramAnonymousITransmitKvData.m(i, localIntent);
+                if ((!bs.isNullOrNil(paramAnonymousITransmitKvData.BQy)) && (paramAnonymousITransmitKvData.BQy.equalsIgnoreCase("key_from_scene_appbrandgame"))) {
+                  paramAnonymousITransmitKvData.n(i, localIntent);
                 }
               }
               if (((String)localObject).equals("pre_ok"))
               {
-                ad.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback preSuccess!");
+                ac.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback preSuccess!");
                 localObject = new Intent();
                 ((Intent)localObject).putExtra("key_is_clear_failure", -1);
-                paramAnonymousITransmitKvData.n(i, (Intent)localObject);
+                paramAnonymousITransmitKvData.o(i, (Intent)localObject);
                 AppMethodBeat.o(18269);
                 return;
                 if (((String)localObject).endsWith("fail")) {
@@ -935,7 +944,7 @@ public class WxCrossServices
               }
               else
               {
-                ad.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback finish WalletBrandUI.");
+                ac.i("MicroMsg.WxCrossServices", "JsApiPay UseCaseCallback finish WalletBrandUI.");
                 paramAnonymousITransmitKvData.finish();
                 AppMethodBeat.o(18269);
                 return;
@@ -953,8 +962,8 @@ public class WxCrossServices
   public void startWxpayQueryCashierPay(String paramString, int paramInt)
   {
     AppMethodBeat.i(18285);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(1004L, 15L, 1L, false);
-    ad.i("MicroMsg.WxCrossServices", "startWxpayQueryCashierPay %s", new Object[] { bt.eGN() });
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(1004L, 15L, 1L, false);
+    ac.i("MicroMsg.WxCrossServices", "startWxpayQueryCashierPay %s", new Object[] { bs.eWi() });
     initIfNeed();
     preparePayDesk();
     ITransmitKvData localITransmitKvData = ITransmitKvData.create();
@@ -965,13 +974,13 @@ public class WxCrossServices
       public void call(ITransmitKvData paramAnonymousITransmitKvData)
       {
         AppMethodBeat.i(170110);
-        xk localxk = new xk();
-        xk.a locala = localxk.dDy;
+        xv localxv = new xv();
+        xv.a locala = localxv.dBk;
         if (paramAnonymousITransmitKvData.getString("result").equals("ok")) {}
         for (int i = -1;; i = 0)
         {
           locala.result = i;
-          com.tencent.mm.sdk.b.a.ESL.l(localxk);
+          com.tencent.mm.sdk.b.a.GpY.l(localxv);
           AppMethodBeat.o(170110);
           return;
         }

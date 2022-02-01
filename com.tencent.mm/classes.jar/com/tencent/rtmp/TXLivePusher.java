@@ -163,14 +163,14 @@ public class TXLivePusher
     AppMethodBeat.o(13611);
   }
   
-  public void setAudioVolumeEvaluationListener(ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
+  public void setAudioVolumeEvaluationListener(TXLivePusher.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
     AppMethodBeat.i(182243);
     this.mTXTxLivePusherImpl.a(paramITXAudioVolumeEvaluationListener);
     AppMethodBeat.o(182243);
   }
   
-  public void setBGMNofify(OnBGMNotify paramOnBGMNotify)
+  public void setBGMNofify(TXLivePusher.OnBGMNotify paramOnBGMNotify)
   {
     AppMethodBeat.i(13591);
     this.mTXTxLivePusherImpl.a(paramOnBGMNotify);
@@ -410,7 +410,7 @@ public class TXLivePusher
     return bool;
   }
   
-  public void snapshot(ITXSnapshotListener paramITXSnapshotListener)
+  public void snapshot(TXLivePusher.ITXSnapshotListener paramITXSnapshotListener)
   {
     AppMethodBeat.i(13606);
     this.mTXTxLivePusherImpl.a(paramITXSnapshotListener);
@@ -503,25 +503,6 @@ public class TXLivePusher
     public abstract void onRecordPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3);
     
     public abstract void onRecordRawPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
-  }
-  
-  public static abstract interface ITXAudioVolumeEvaluationListener
-  {
-    public abstract void onAudioVolumeEvaluationNotify(int paramInt);
-  }
-  
-  public static abstract interface ITXSnapshotListener
-  {
-    public abstract void onSnapshot(Bitmap paramBitmap);
-  }
-  
-  public static abstract interface OnBGMNotify
-  {
-    public abstract void onBGMComplete(int paramInt);
-    
-    public abstract void onBGMProgress(long paramLong1, long paramLong2);
-    
-    public abstract void onBGMStart();
   }
   
   public static abstract interface VideoCustomProcessListener

@@ -9,13 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 import com.tencent.mm.plugin.order.model.a.a;
 import com.tencent.mm.plugin.order.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.wallet_core.d.i;
@@ -26,15 +26,15 @@ import java.util.List;
 public class MallOrderTransactionInfoUI
   extends WalletPreferenceUI
 {
-  protected f lxI;
-  private int uqr;
-  private MallTransactionObject uqs = null;
-  private c uqt;
+  protected f lZC;
+  private int vzn;
+  private MallTransactionObject vzo = null;
+  private c vzp;
   
   private Bundle getInput()
   {
     AppMethodBeat.i(66790);
-    Bundle localBundle2 = com.tencent.mm.wallet_core.a.bn(this);
+    Bundle localBundle2 = com.tencent.mm.wallet_core.a.bq(this);
     Bundle localBundle1 = localBundle2;
     if (localBundle2 == null) {
       localBundle1 = new Bundle();
@@ -50,16 +50,16 @@ public class MallOrderTransactionInfoUI
     {
       if ((paramn instanceof com.tencent.mm.plugin.order.model.h))
       {
-        paramString = ((com.tencent.mm.plugin.order.model.h)paramn).uoW;
+        paramString = ((com.tencent.mm.plugin.order.model.h)paramn).vxS;
         if (paramString != null)
         {
-          this.uqs = paramString.unM;
-          this.lxI.removeAll();
+          this.vzo = paramString.vwI;
+          this.lZC.removeAll();
           AppCompatActivity localAppCompatActivity = getContext();
-          f localf = this.lxI;
-          MallTransactionObject localMallTransactionObject = this.uqs;
+          f localf = this.lZC;
+          MallTransactionObject localMallTransactionObject = this.vzo;
           Object[] arrayOfObject = new Object[1];
-          arrayOfObject[0] = this.uqt;
+          arrayOfObject[0] = this.vzp;
           if (localMallTransactionObject == null)
           {
             paramString = null;
@@ -69,20 +69,20 @@ public class MallOrderTransactionInfoUI
               while (paramInt1 < paramString.size())
               {
                 paramn = (Preference)paramString.get(paramInt1);
-                this.lxI.b(paramn);
+                this.lZC.b(paramn);
                 paramInt1 += 1;
               }
             }
           }
           else
           {
-            switch (localMallTransactionObject.dCG)
+            switch (localMallTransactionObject.dAs)
             {
             default: 
               paramn = new com.tencent.mm.plugin.order.ui.a.a();
               paramString = paramn;
               if ((arrayOfObject[0] instanceof c)) {
-                ((com.tencent.mm.plugin.order.ui.a.a)paramn).uqt = ((c)arrayOfObject[0]);
+                ((com.tencent.mm.plugin.order.ui.a.a)paramn).vzp = ((c)arrayOfObject[0]);
               }
               break;
             }
@@ -92,7 +92,7 @@ public class MallOrderTransactionInfoUI
               break;
             }
           }
-          this.lxI.notifyDataSetChanged();
+          this.lZC.notifyDataSetChanged();
         }
       }
       AppMethodBeat.o(66789);
@@ -126,9 +126,9 @@ public class MallOrderTransactionInfoUI
         return false;
       }
     });
-    this.lxI = getPreferenceScreen();
-    this.uqt = new c(this);
-    this.uqt.fkv();
+    this.lZC = getPreferenceScreen();
+    this.vzp = new c(this);
+    this.vzp.fAL();
     AppMethodBeat.o(66787);
   }
   
@@ -136,7 +136,7 @@ public class MallOrderTransactionInfoUI
   {
     AppMethodBeat.i(66786);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.wallet_core.a.bo(this);
+    paramBundle = com.tencent.mm.wallet_core.a.br(this);
     String str;
     if ((paramBundle != null) && ((paramBundle instanceof com.tencent.mm.plugin.order.a.a)))
     {
@@ -145,9 +145,9 @@ public class MallOrderTransactionInfoUI
     }
     for (;;)
     {
-      if (bt.isNullOrNil(str))
+      if (bs.isNullOrNil(str))
       {
-        ad.w("MicroMsg.mmui.MMPreference", "mOrders info is Illegal!");
+        ac.w("MicroMsg.mmui.MMPreference", "mOrders info is Illegal!");
         com.tencent.mm.ui.base.h.a(getContext(), 2131765550, 0, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -158,9 +158,9 @@ public class MallOrderTransactionInfoUI
           }
         });
       }
-      this.uqr = getInput().getInt("key_pay_type");
+      this.vzn = getInput().getInt("key_pay_type");
       initView();
-      fkC().a(new com.tencent.mm.plugin.order.model.h(str, paramBundle), true, 1);
+      fAS().a(new com.tencent.mm.plugin.order.model.h(str, paramBundle), true, 1);
       AppMethodBeat.o(66786);
       return;
       if ((getIntent().getIntExtra("scene", 0) == 1) || (getIntent().getIntExtra("scene", 0) == 2))
@@ -180,8 +180,8 @@ public class MallOrderTransactionInfoUI
   {
     AppMethodBeat.i(66788);
     super.onDestroy();
-    if (this.uqt != null) {
-      this.uqt.release();
+    if (this.vzp != null) {
+      this.vzp.release();
     }
     AppMethodBeat.o(66788);
   }

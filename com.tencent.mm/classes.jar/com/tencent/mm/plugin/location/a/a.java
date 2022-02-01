@@ -5,19 +5,19 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> dqL;
+  public LinkedList<String> dow;
   public double latitude;
   public double longitude;
-  public String sOr;
+  public String tWE;
   public long timestamp;
   public String username;
   
   public a()
   {
     AppMethodBeat.i(55668);
-    this.dqL = new LinkedList();
+    this.dow = new LinkedList();
     AppMethodBeat.o(55668);
   }
   
@@ -36,13 +36,13 @@ public final class a
       if (this.username != null) {
         paramVarArgs.d(1, this.username);
       }
-      paramVarArgs.e(2, 1, this.dqL);
+      paramVarArgs.e(2, 1, this.dow);
       paramVarArgs.e(3, this.longitude);
       paramVarArgs.e(4, this.latitude);
-      if (this.sOr != null) {
-        paramVarArgs.d(5, this.sOr);
+      if (this.tWE != null) {
+        paramVarArgs.d(5, this.tWE);
       }
-      paramVarArgs.aG(6, this.timestamp);
+      paramVarArgs.aO(6, this.timestamp);
       AppMethodBeat.o(55669);
       return 0;
     }
@@ -54,22 +54,22 @@ public final class a
     label516:
     for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 1, this.dqL) + (f.a.a.b.b.a.fY(3) + 8) + (f.a.a.b.b.a.fY(4) + 8);
+      int i = paramInt + f.a.a.a.c(2, 1, this.dow) + (f.a.a.b.b.a.fK(3) + 8) + (f.a.a.b.b.a.fK(4) + 8);
       paramInt = i;
-      if (this.sOr != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.sOr);
+      if (this.tWE != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.tWE);
       }
-      i = f.a.a.b.b.a.q(6, this.timestamp);
+      i = f.a.a.b.b.a.p(6, this.timestamp);
       AppMethodBeat.o(55669);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.dqL.clear();
+        this.dow.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.username == null)
@@ -91,27 +91,27 @@ public final class a
           AppMethodBeat.o(55669);
           return -1;
         case 1: 
-          locala1.username = locala.KhF.readString();
+          locala1.username = locala.LVo.readString();
           AppMethodBeat.o(55669);
           return 0;
         case 2: 
-          locala1.dqL.add(locala.KhF.readString());
+          locala1.dow.add(locala.LVo.readString());
           AppMethodBeat.o(55669);
           return 0;
         case 3: 
-          locala1.longitude = Double.longBitsToDouble(locala.KhF.fHy());
+          locala1.longitude = Double.longBitsToDouble(locala.LVo.gab());
           AppMethodBeat.o(55669);
           return 0;
         case 4: 
-          locala1.latitude = Double.longBitsToDouble(locala.KhF.fHy());
+          locala1.latitude = Double.longBitsToDouble(locala.LVo.gab());
           AppMethodBeat.o(55669);
           return 0;
         case 5: 
-          locala1.sOr = locala.KhF.readString();
+          locala1.tWE = locala.LVo.readString();
           AppMethodBeat.o(55669);
           return 0;
         }
-        locala1.timestamp = locala.KhF.xT();
+        locala1.timestamp = locala.LVo.xG();
         AppMethodBeat.o(55669);
         return 0;
       }
@@ -122,7 +122,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.a.a
  * JD-Core Version:    0.7.0.1
  */

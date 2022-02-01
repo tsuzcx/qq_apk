@@ -1,25 +1,34 @@
 package com.tencent.mm.ui;
 
+import android.text.Layout;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public final class a
 {
-  private View BlI;
-  private TextView FFJ;
-  public ImageView FFK;
-  public ImageView FFL;
-  private ImageView FFM;
-  public ImageView FFN;
-  private View FFO;
-  public TextView ica;
-  private ImageView oPR;
-  private ImageView yOS;
+  private ImageView AcJ;
+  private View CDT;
+  public ViewGroup HeM;
+  public WeImageView HeN;
+  public TextView HeO;
+  public ViewGroup HeP;
+  public WeImageView HeQ;
+  public ImageView HeR;
+  public ImageView HeS;
+  private ImageView HeT;
+  public ImageView HeU;
+  private View HeV;
+  private ImageView gyM;
+  public TextView iCg;
   
   public a(View paramView)
   {
@@ -31,16 +40,20 @@ public final class a
     for (;;)
     {
       paramView.setLayoutParams(localLayoutParams);
-      this.ica = ((TextView)paramView.findViewById(2131305908));
-      this.FFJ = ((TextView)paramView.findViewById(2131305509));
-      this.yOS = ((ImageView)paramView.findViewById(2131302623));
-      this.FFK = ((ImageView)paramView.findViewById(2131300216));
-      this.FFL = ((ImageView)paramView.findViewById(2131303211));
-      this.FFM = ((ImageView)paramView.findViewById(2131303553));
-      this.BlI = paramView.findViewById(2131296939);
-      this.oPR = ((ImageView)paramView.findViewById(2131296940));
-      this.FFN = ((ImageView)paramView.findViewById(2131303966));
-      this.FFO = paramView;
+      this.iCg = ((TextView)paramView.findViewById(2131305908));
+      this.HeM = ((ViewGroup)paramView.findViewById(2131308035));
+      this.HeN = ((WeImageView)paramView.findViewById(2131308034));
+      this.HeO = ((TextView)paramView.findViewById(2131305509));
+      this.HeP = ((ViewGroup)paramView.findViewById(2131308013));
+      this.HeQ = ((WeImageView)paramView.findViewById(2131308012));
+      this.AcJ = ((ImageView)paramView.findViewById(2131302623));
+      this.HeR = ((ImageView)paramView.findViewById(2131300216));
+      this.HeS = ((ImageView)paramView.findViewById(2131303211));
+      this.HeT = ((ImageView)paramView.findViewById(2131303553));
+      this.CDT = paramView.findViewById(2131296939);
+      this.gyM = ((ImageView)paramView.findViewById(2131296940));
+      this.HeU = ((ImageView)paramView.findViewById(2131303966));
+      this.HeV = paramView;
       AppMethodBeat.o(141266);
       return;
       localLayoutParams.width = -2;
@@ -48,46 +61,46 @@ public final class a
     }
   }
   
-  public final void ak(CharSequence paramCharSequence)
+  public final void al(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(190968);
-    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
+    AppMethodBeat.i(197177);
+    if ((paramCharSequence == null) || (bs.isNullOrNil(paramCharSequence.toString())))
     {
-      this.FFJ.setVisibility(8);
-      AppMethodBeat.o(190968);
+      this.HeO.setVisibility(8);
+      AppMethodBeat.o(197177);
       return;
     }
-    this.FFJ.setVisibility(0);
-    this.FFJ.setText(paramCharSequence);
-    if (com.tencent.mm.cd.a.hS(this.FFJ.getContext()))
+    this.HeO.setVisibility(0);
+    this.HeO.setText(paramCharSequence);
+    if (com.tencent.mm.cc.a.id(this.HeO.getContext()))
     {
-      this.FFJ.setTextSize(1, 14.0F);
-      this.ica.setTextSize(1, 18.0F);
+      this.HeO.setTextSize(1, 14.0F);
+      this.iCg.setTextSize(1, 18.0F);
     }
-    AppMethodBeat.o(190968);
+    AppMethodBeat.o(197177);
   }
   
   public final void e(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(141270);
-    this.BlI.setOnClickListener(paramOnClickListener);
+    this.CDT.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(141270);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141267);
-    this.ica.setText(paramCharSequence);
-    if (com.tencent.mm.cd.a.hS(this.ica.getContext())) {
-      this.ica.setTextSize(0, com.tencent.mm.cd.a.ap(this.ica.getContext(), 2131165184) * com.tencent.mm.cd.a.hQ(this.ica.getContext()));
+    this.iCg.setText(paramCharSequence);
+    if (com.tencent.mm.cc.a.id(this.iCg.getContext())) {
+      this.iCg.setTextSize(0, com.tencent.mm.cc.a.av(this.iCg.getContext(), 2131165184) * com.tencent.mm.cc.a.ib(this.iCg.getContext()));
     }
     AppMethodBeat.o(141267);
   }
   
-  public final void vh(boolean paramBoolean)
+  public final void wj(boolean paramBoolean)
   {
     AppMethodBeat.i(141268);
-    ImageView localImageView = this.yOS;
+    ImageView localImageView = this.AcJ;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -97,10 +110,10 @@ public final class a
     }
   }
   
-  public final void vi(boolean paramBoolean)
+  public final void wk(boolean paramBoolean)
   {
     AppMethodBeat.i(141269);
-    ImageView localImageView = this.FFM;
+    ImageView localImageView = this.HeT;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -112,7 +125,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.a
  * JD-Core Version:    0.7.0.1
  */

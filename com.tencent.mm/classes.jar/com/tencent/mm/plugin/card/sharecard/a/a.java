@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.card.sharecard.a;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.card.base.d;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.k;
 import com.tencent.mm.plugin.card.sharecard.model.o;
-import com.tencent.mm.protocal.protobuf.csn;
+import com.tencent.mm.protocal.protobuf.cxw;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,41 +21,41 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   public byte[] lock;
-  public ap mHandler;
+  public ao mHandler;
   private Runnable mRunnable;
-  public List<com.tencent.mm.plugin.card.sharecard.model.n> npY;
-  private List<WeakReference<d>> nqa;
-  public com.tencent.mm.plugin.card.sharecard.model.e nuX;
-  private int nuY;
-  public int nuZ;
+  public List<com.tencent.mm.plugin.card.sharecard.model.n> nSY;
+  private List<WeakReference<d>> nTa;
+  public com.tencent.mm.plugin.card.sharecard.model.e nXX;
+  private int nXY;
+  public int nXZ;
   public List<com.tencent.mm.plugin.card.sharecard.model.n> pendingList;
   
   public a()
   {
     AppMethodBeat.i(112911);
     this.lock = new byte[0];
-    this.nqa = new ArrayList();
-    this.nuY = 0;
-    this.nuZ = 5;
-    this.mHandler = new ap(Looper.getMainLooper());
+    this.nTa = new ArrayList();
+    this.nXY = 0;
+    this.nXZ = 5;
+    this.mHandler = new ao(Looper.getMainLooper());
     this.mRunnable = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(112909);
-        ad.i("MicroMsg.ShareCardBatchGetCardMgr", "doShareCardSyncNetScene after 5s");
+        ac.i("MicroMsg.ShareCardBatchGetCardMgr", "doShareCardSyncNetScene after 5s");
         com.tencent.mm.plugin.card.sharecard.model.h localh = new com.tencent.mm.plugin.card.sharecard.model.h();
-        com.tencent.mm.kernel.g.afA().gcy.a(localh, 0);
+        com.tencent.mm.kernel.g.agQ().ghe.a(localh, 0);
         AppMethodBeat.o(112909);
       }
     };
-    this.pendingList = am.bJe().bIT();
-    this.npY = new ArrayList();
-    ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr <init>, init pending list size = %d", new Object[] { Integer.valueOf(this.pendingList.size()) });
-    com.tencent.mm.kernel.g.afA().gcy.a(1132, this);
+    this.pendingList = am.bQr().bQg();
+    this.nSY = new ArrayList();
+    ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr <init>, init pending list size = %d", new Object[] { Integer.valueOf(this.pendingList.size()) });
+    com.tencent.mm.kernel.g.agQ().ghe.a(1132, this);
     AppMethodBeat.o(112911);
   }
   
@@ -71,7 +71,7 @@ public final class a
       {
         if (this.pendingList.size() == 0)
         {
-          ad.e("MicroMsg.ShareCardBatchGetCardMgr", "getSuccessShareCardSyncItem pendingList size is 0");
+          ac.e("MicroMsg.ShareCardBatchGetCardMgr", "getSuccessShareCardSyncItem pendingList size is 0");
           AppMethodBeat.o(112915);
           return localArrayList;
         }
@@ -99,32 +99,32 @@ public final class a
   public final void a(d paramd)
   {
     AppMethodBeat.i(112918);
-    if (this.nqa == null) {
-      this.nqa = new ArrayList();
+    if (this.nTa == null) {
+      this.nTa = new ArrayList();
     }
-    this.nqa.add(new WeakReference(paramd));
+    this.nTa.add(new WeakReference(paramd));
     AppMethodBeat.o(112918);
   }
   
-  public final void a(csn arg1)
+  public final void a(cxw arg1)
   {
     AppMethodBeat.i(112912);
     if (??? == null)
     {
-      ad.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr push fail, ShareCardSyncItem is null");
+      ac.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr push fail, ShareCardSyncItem is null");
       AppMethodBeat.o(112912);
       return;
     }
-    Object localObject1 = am.bJd().QJ(???.dyc);
-    String str = ???.dyc;
+    Object localObject1 = am.bQq().UV(???.dvO);
+    String str = ???.dvO;
     if (localObject1 == null) {}
     for (long l = 0L;; l = ((ShareCardInfo)localObject1).field_updateSeq)
     {
-      ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr pushShareCardSyncItem, card_id = %s, localSeq = %d, svrSeq = %d", new Object[] { str, Long.valueOf(l), Long.valueOf(???.seq) });
+      ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr pushShareCardSyncItem, card_id = %s, localSeq = %d, svrSeq = %d", new Object[] { str, Long.valueOf(l), Long.valueOf(???.seq) });
       if ((localObject1 == null) || (((ShareCardInfo)localObject1).field_updateSeq != ???.seq)) {
         break;
       }
-      ad.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr push ShareCardSyncItem fail, card.field_updateSeq == item.seq");
+      ac.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr push ShareCardSyncItem fail, card.field_updateSeq == item.seq");
       AppMethodBeat.o(112912);
       return;
     }
@@ -136,13 +136,13 @@ public final class a
         AppMethodBeat.o(112912);
         return;
       }
-      if (this.npY.contains(localObject1))
+      if (this.nSY.contains(localObject1))
       {
         AppMethodBeat.o(112912);
         return;
       }
       this.pendingList.add(localObject1);
-      ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr pushShareCardSyncItem, insertRet = %b", new Object[] { Boolean.valueOf(am.bJe().insert((c)localObject1)) });
+      ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr pushShareCardSyncItem, insertRet = %b", new Object[] { Boolean.valueOf(am.bQr().insert((c)localObject1)) });
       AppMethodBeat.o(112912);
       return;
     }
@@ -151,21 +151,21 @@ public final class a
   public final void b(d paramd)
   {
     AppMethodBeat.i(112919);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112919);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.nqa.get(i);
+      WeakReference localWeakReference = (WeakReference)this.nTa.get(i);
       if (localWeakReference != null)
       {
         d locald = (d)localWeakReference.get();
         if ((locald != null) && (locald.equals(paramd)))
         {
-          this.nqa.remove(localWeakReference);
+          this.nTa.remove(localWeakReference);
           AppMethodBeat.o(112919);
           return;
         }
@@ -175,7 +175,7 @@ public final class a
     AppMethodBeat.o(112919);
   }
   
-  public final void bIi()
+  public final void bPv()
   {
     AppMethodBeat.i(112913);
     LinkedList localLinkedList1 = new LinkedList();
@@ -183,14 +183,14 @@ public final class a
     {
       if (this.pendingList.size() == 0)
       {
-        ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr getNow, no pending cardinfo ,no need to get");
+        ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr getNow, no pending cardinfo ,no need to get");
         AppMethodBeat.o(112913);
         return;
       }
       localLinkedList1.addAll(this.pendingList);
-      if (this.nuX != null)
+      if (this.nXX != null)
       {
-        ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr getNow, already doing scene, not trigger now");
+        ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr getNow, already doing scene, not trigger now");
         AppMethodBeat.o(112913);
         return;
       }
@@ -211,36 +211,36 @@ public final class a
       }
       ((LinkedList)???).addAll(localLinkedList2.subList(0, 10));
     }
-    this.nuX = new com.tencent.mm.plugin.card.sharecard.model.e(localLinkedList2);
-    com.tencent.mm.kernel.g.afA().gcy.a(this.nuX, 0);
+    this.nXX = new com.tencent.mm.plugin.card.sharecard.model.e(localLinkedList2);
+    com.tencent.mm.kernel.g.agQ().ghe.a(this.nXX, 0);
     AppMethodBeat.o(112913);
   }
   
-  public final void bJw()
+  public final void bQJ()
   {
     AppMethodBeat.i(112916);
-    ad.i("MicroMsg.ShareCardBatchGetCardMgr", "doShareCardSyncNetScene");
+    ac.i("MicroMsg.ShareCardBatchGetCardMgr", "doShareCardSyncNetScene");
     int j = (int)(System.currentTimeMillis() / 1000L);
-    int k = j - this.nuY;
+    int k = j - this.nXY;
     int i;
-    if (this.nuZ <= 0)
+    if (this.nXZ <= 0)
     {
       i = 5;
       if (k < i) {
         break label86;
       }
       com.tencent.mm.plugin.card.sharecard.model.h localh = new com.tencent.mm.plugin.card.sharecard.model.h();
-      com.tencent.mm.kernel.g.afA().gcy.a(localh, 0);
+      com.tencent.mm.kernel.g.agQ().ghe.a(localh, 0);
     }
     for (;;)
     {
-      this.nuY = j;
+      this.nXY = j;
       AppMethodBeat.o(112916);
       return;
-      i = this.nuZ;
+      i = this.nXZ;
       break;
       label86:
-      ad.i("MicroMsg.ShareCardBatchGetCardMgr", "sync interval is ".concat(String.valueOf(k)));
+      ac.i("MicroMsg.ShareCardBatchGetCardMgr", "sync interval is ".concat(String.valueOf(k)));
       this.mHandler.removeCallbacks(this.mRunnable);
       this.mHandler.postDelayed(this.mRunnable, i * 1000);
     }
@@ -249,20 +249,20 @@ public final class a
   public final void onChange()
   {
     AppMethodBeat.i(112917);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112917);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (d)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((d)localObject).bIg();
+          ((d)localObject).bPt();
         }
       }
       i += 1;
@@ -270,27 +270,27 @@ public final class a
     AppMethodBeat.o(112917);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String arg3, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String arg3, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(112914);
-    ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.nuX = null;
+    ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.nXX = null;
     com.tencent.mm.plugin.card.sharecard.model.n localn;
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr onSceneEnd fail, stop batch get, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramn = P(((com.tencent.mm.plugin.card.sharecard.model.e)paramn).ntA);
+      ac.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr onSceneEnd fail, stop batch get, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramn = P(((com.tencent.mm.plugin.card.sharecard.model.e)paramn).nWA);
       synchronized (this.lock)
       {
         if (paramn.size() > 0)
         {
           this.pendingList.removeAll(paramn);
-          this.npY.addAll(paramn);
+          this.nSY.addAll(paramn);
         }
-        ??? = am.bJe();
+        ??? = am.bQr();
         if (paramn.size() == 0)
         {
-          ad.e("MicroMsg.ShareCardSyncItemInfoStorage", "increaseRetryCount fail, share card list is empty");
+          ac.e("MicroMsg.ShareCardSyncItemInfoStorage", "increaseRetryCount fail, share card list is empty");
           AppMethodBeat.o(112914);
           return;
         }
@@ -308,22 +308,22 @@ public final class a
       AppMethodBeat.o(112914);
       return;
     }
-    paramn = P(((com.tencent.mm.plugin.card.sharecard.model.e)paramn).ntB);
-    ad.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr onSceneEnd, batch get succ, remove succ id list, size = %d", new Object[] { Integer.valueOf(paramn.size()) });
+    paramn = P(((com.tencent.mm.plugin.card.sharecard.model.e)paramn).nWB);
+    ac.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr onSceneEnd, batch get succ, remove succ id list, size = %d", new Object[] { Integer.valueOf(paramn.size()) });
     for (;;)
     {
       synchronized (this.lock)
       {
         this.pendingList.removeAll(paramn);
         long l1 = System.currentTimeMillis();
-        long l2 = com.tencent.mm.kernel.g.afB().gda.rb(Thread.currentThread().getId());
-        ??? = am.bJe();
+        long l2 = com.tencent.mm.kernel.g.agR().ghG.vE(Thread.currentThread().getId());
+        ??? = am.bQr();
         if (paramn.size() == 0)
         {
-          ad.e("MicroMsg.ShareCardSyncItemInfoStorage", "deleteList fail, share card list is empty");
-          com.tencent.mm.kernel.g.afB().gda.mX(l2);
-          ad.i("MicroMsg.ShareCardBatchGetCardMgr", "onSceneEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-          bIi();
+          ac.e("MicroMsg.ShareCardSyncItemInfoStorage", "deleteList fail, share card list is empty");
+          com.tencent.mm.kernel.g.agR().ghG.qL(l2);
+          ac.i("MicroMsg.ShareCardBatchGetCardMgr", "onSceneEnd do transaction use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+          bPv();
           onChange();
           AppMethodBeat.o(112914);
           return;
@@ -342,7 +342,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.a.a
  * JD-Core Version:    0.7.0.1
  */

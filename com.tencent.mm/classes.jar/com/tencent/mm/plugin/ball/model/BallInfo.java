@@ -6,8 +6,8 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.Set;
 import org.json.JSONObject;
@@ -16,31 +16,32 @@ public class BallInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BallInfo> CREATOR;
-  public int aTB;
+  public int aUt;
   public long createTime;
   public String desc;
-  public String dub;
-  public boolean fnG;
-  public long fpL;
-  public Bundle hsl;
-  public int kYl;
+  public String drM;
+  public boolean fra;
+  public long fto;
+  public Bundle hSN;
   public String key;
-  public long mDs;
-  public boolean mDt;
-  public boolean mDu;
-  public boolean mDv;
-  public BallReportInfo mDw;
+  public int lzV;
   public String name;
+  public boolean nfA;
+  public boolean nfB;
+  public boolean nfC;
+  public BallReportInfo nfD;
+  public View nfy;
+  public long nfz;
   public long progress;
-  public View sk;
   public int state;
   public String tag;
+  public View tk;
   public int type;
   
   static
   {
     AppMethodBeat.i(127548);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new BallInfo.1();
     AppMethodBeat.o(127548);
   }
   
@@ -52,24 +53,24 @@ public class BallInfo
   private BallInfo(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(127528);
-    this.kYl = -1;
+    this.lzV = -1;
     this.progress = -2147483648L;
-    this.mDs = 0L;
+    this.nfz = 0L;
     this.createTime = 0L;
-    this.fpL = 0L;
-    this.mDt = false;
-    this.hsl = new Bundle();
+    this.fto = 0L;
+    this.nfA = false;
+    this.hSN = new Bundle();
     this.state = 0;
-    this.mDu = false;
-    this.mDv = false;
-    this.fnG = false;
+    this.nfB = false;
+    this.nfC = false;
+    this.fra = false;
     this.type = paramInt;
     this.key = paramString;
     if (paramJSONObject == null) {}
     for (paramString = new BallReportInfo();; paramString = new BallReportInfo(paramJSONObject))
     {
-      this.mDw = paramString;
-      this.aTB = paramInt;
+      this.nfD = paramString;
+      this.aUt = paramInt;
       AppMethodBeat.o(127528);
       return;
     }
@@ -78,28 +79,28 @@ public class BallInfo
   protected BallInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(127542);
-    this.kYl = -1;
+    this.lzV = -1;
     this.progress = -2147483648L;
-    this.mDs = 0L;
+    this.nfz = 0L;
     this.createTime = 0L;
-    this.fpL = 0L;
-    this.mDt = false;
-    this.hsl = new Bundle();
+    this.fto = 0L;
+    this.nfA = false;
+    this.hSN = new Bundle();
     this.state = 0;
-    this.mDu = false;
-    this.mDv = false;
-    this.fnG = false;
+    this.nfB = false;
+    this.nfC = false;
+    this.fra = false;
     try
     {
       this.type = paramParcel.readInt();
       this.key = paramParcel.readString();
-      this.dub = paramParcel.readString();
-      this.kYl = paramParcel.readInt();
+      this.drM = paramParcel.readString();
+      this.lzV = paramParcel.readInt();
       this.name = paramParcel.readString();
       this.desc = paramParcel.readString();
       this.tag = paramParcel.readString();
       this.progress = paramParcel.readLong();
-      this.hsl = paramParcel.readBundle(getClass().getClassLoader());
+      this.hSN = paramParcel.readBundle(getClass().getClassLoader());
       this.state = paramParcel.readInt();
       boolean bool;
       label184:
@@ -107,12 +108,12 @@ public class BallInfo
       if (paramParcel.readInt() == 1)
       {
         bool = true;
-        this.mDu = bool;
+        this.nfB = bool;
         if (paramParcel.readInt() != 1) {
           break label232;
         }
         bool = true;
-        this.mDv = bool;
+        this.nfC = bool;
         localBallReportInfo = (BallReportInfo)paramParcel.readParcelable(getClass().getClassLoader());
         if (localBallReportInfo == null) {
           break label237;
@@ -120,8 +121,8 @@ public class BallInfo
       }
       for (;;)
       {
-        this.mDw = localBallReportInfo;
-        this.aTB = paramParcel.readInt();
+        this.nfD = localBallReportInfo;
+        this.aUt = paramParcel.readInt();
         AppMethodBeat.o(127542);
         return;
         bool = false;
@@ -136,7 +137,7 @@ public class BallInfo
     }
     catch (Exception paramParcel)
     {
-      ad.printErrStackTrace("MicroMsg.BallInfo", paramParcel, "readFromParcel fail, exception:%s", new Object[] { paramParcel });
+      ac.printErrStackTrace("MicroMsg.BallInfo", paramParcel, "readFromParcel fail, exception:%s", new Object[] { paramParcel });
       AppMethodBeat.o(127542);
     }
   }
@@ -161,7 +162,7 @@ public class BallInfo
       }
       catch (Exception paramBundle)
       {
-        ad.printErrStackTrace("MicroMsg.BallInfo", paramBundle, "convertBallInfoToJSONObject fail, exception:%s", new Object[] { paramBundle });
+        ac.printErrStackTrace("MicroMsg.BallInfo", paramBundle, "convertBallInfoToJSONObject fail, exception:%s", new Object[] { paramBundle });
       }
     }
     return localJSONObject;
@@ -169,13 +170,13 @@ public class BallInfo
   
   private void a(BallReportInfo paramBallReportInfo)
   {
-    this.mDw.dnC = paramBallReportInfo.dnC;
-    this.mDw.gWU = paramBallReportInfo.gWU;
-    this.mDw.mDA = paramBallReportInfo.mDA;
-    this.mDw.mDz = paramBallReportInfo.mDz;
-    this.mDw.mDy = paramBallReportInfo.mDy;
-    this.mDw.mDx = paramBallReportInfo.mDx;
-    this.mDw.opType = paramBallReportInfo.opType;
+    this.nfD.dlk = paramBallReportInfo.dlk;
+    this.nfD.hxt = paramBallReportInfo.hxt;
+    this.nfD.nfH = paramBallReportInfo.nfH;
+    this.nfD.nfG = paramBallReportInfo.nfG;
+    this.nfD.nfF = paramBallReportInfo.nfF;
+    this.nfD.nfE = paramBallReportInfo.nfE;
+    this.nfD.opType = paramBallReportInfo.opType;
   }
   
   public static BallInfo aa(JSONObject paramJSONObject)
@@ -184,25 +185,25 @@ public class BallInfo
     try
     {
       BallInfo localBallInfo = new BallInfo(paramJSONObject.getInt("type"), paramJSONObject.getString("key"), paramJSONObject.optJSONObject("reportInfo"));
-      localBallInfo.aTB = paramJSONObject.optInt("contentType", 0);
-      localBallInfo.mDv = paramJSONObject.optBoolean("hidden", false);
-      localBallInfo.mDu = paramJSONObject.optBoolean("passive", false);
+      localBallInfo.aUt = paramJSONObject.optInt("contentType", 0);
+      localBallInfo.nfC = paramJSONObject.optBoolean("hidden", false);
+      localBallInfo.nfB = paramJSONObject.optBoolean("passive", false);
       localBallInfo.state = paramJSONObject.optInt("state", 0);
-      localBallInfo.dub = paramJSONObject.optString("icon");
-      localBallInfo.kYl = paramJSONObject.optInt("iconResId", -1);
+      localBallInfo.drM = paramJSONObject.optString("icon");
+      localBallInfo.lzV = paramJSONObject.optInt("iconResId", -1);
       localBallInfo.name = paramJSONObject.optString("name");
       localBallInfo.desc = paramJSONObject.optString("desc");
       localBallInfo.tag = paramJSONObject.optString("tag");
       localBallInfo.progress = paramJSONObject.optLong("progress");
-      localBallInfo.mDs = paramJSONObject.optLong("activeTime", 0L);
+      localBallInfo.nfz = paramJSONObject.optLong("activeTime", 0L);
       localBallInfo.createTime = paramJSONObject.optLong("createTime", 0L);
-      localBallInfo.hsl = ab(paramJSONObject.optJSONObject("extra"));
+      localBallInfo.hSN = ab(paramJSONObject.optJSONObject("extra"));
       AppMethodBeat.o(127544);
       return localBallInfo;
     }
     catch (Exception paramJSONObject)
     {
-      ad.printErrStackTrace("MicroMsg.BallInfo", paramJSONObject, "convertJSONObjectToBallInfo fail, exception:%s", new Object[] { paramJSONObject });
+      ac.printErrStackTrace("MicroMsg.BallInfo", paramJSONObject, "convertJSONObjectToBallInfo fail, exception:%s", new Object[] { paramJSONObject });
       AppMethodBeat.o(127544);
     }
     return null;
@@ -228,19 +229,19 @@ public class BallInfo
       }
       catch (Exception paramJSONObject)
       {
-        ad.printErrStackTrace("MicroMsg.BallInfo", paramJSONObject, "convertJSONObjectToBundle fail, exception:%s", new Object[] { paramJSONObject });
+        ac.printErrStackTrace("MicroMsg.BallInfo", paramJSONObject, "convertJSONObjectToBundle fail, exception:%s", new Object[] { paramJSONObject });
       }
     }
     return localBundle;
   }
   
-  private void bzj()
+  private void bGf()
   {
     try
     {
       AppMethodBeat.i(127530);
-      if (this.hsl == null) {
-        this.hsl = new Bundle();
+      if (this.hSN == null) {
+        this.hSN = new Bundle();
       }
       AppMethodBeat.o(127530);
       return;
@@ -255,60 +256,76 @@ public class BallInfo
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("type", paramBallInfo.type);
-      localJSONObject.put("contentType", paramBallInfo.aTB);
+      localJSONObject.put("contentType", paramBallInfo.aUt);
       localJSONObject.put("key", paramBallInfo.key);
       localJSONObject.put("name", paramBallInfo.name);
       localJSONObject.put("desc", paramBallInfo.desc);
       localJSONObject.put("tag", paramBallInfo.tag);
       localJSONObject.put("progress", paramBallInfo.progress);
-      localJSONObject.put("icon", paramBallInfo.dub);
-      localJSONObject.put("iconResId", paramBallInfo.kYl);
+      localJSONObject.put("icon", paramBallInfo.drM);
+      localJSONObject.put("iconResId", paramBallInfo.lzV);
       localJSONObject.put("state", paramBallInfo.state);
-      localJSONObject.put("activeTime", paramBallInfo.mDs);
+      localJSONObject.put("activeTime", paramBallInfo.nfz);
       localJSONObject.put("createTime", paramBallInfo.createTime);
-      localJSONObject.put("passive", paramBallInfo.mDu);
-      localJSONObject.put("hidden", paramBallInfo.mDv);
-      localJSONObject.put("extra", L(paramBallInfo.hsl));
-      localJSONObject.put("reportInfo", paramBallInfo.mDw.bzk());
+      localJSONObject.put("passive", paramBallInfo.nfB);
+      localJSONObject.put("hidden", paramBallInfo.nfC);
+      localJSONObject.put("extra", L(paramBallInfo.hSN));
+      localJSONObject.put("reportInfo", paramBallInfo.nfD.bGg());
       AppMethodBeat.o(127545);
       return localJSONObject;
     }
     catch (Exception paramBallInfo)
     {
-      ad.printErrStackTrace("MicroMsg.BallInfo", paramBallInfo, "convertBallInfoToJSONObject fail, exception:%s", new Object[] { paramBallInfo });
+      ac.printErrStackTrace("MicroMsg.BallInfo", paramBallInfo, "convertBallInfoToJSONObject fail, exception:%s", new Object[] { paramBallInfo });
       AppMethodBeat.o(127545);
     }
     return null;
   }
   
+  public final void R(String paramString, long paramLong)
+  {
+    try
+    {
+      AppMethodBeat.i(127537);
+      if (!bs.isNullOrNil(paramString))
+      {
+        bGf();
+        this.hSN.putLong(paramString, paramLong);
+      }
+      AppMethodBeat.o(127537);
+      return;
+    }
+    finally {}
+  }
+  
   /* Error */
-  public final long OB(String paramString)
+  public final long SL(String paramString)
   {
     // Byte code:
     //   0: lconst_0
     //   1: lstore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc_w 326
-    //   7: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: ldc_w 341
+    //   7: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
     //   11: aload_1
-    //   12: invokevirtual 330	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
+    //   12: invokevirtual 344	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
     //   15: ifeq +23 -> 38
     //   18: aload_0
-    //   19: getfield 83	com/tencent/mm/plugin/ball/model/BallInfo:hsl	Landroid/os/Bundle;
+    //   19: getfield 84	com/tencent/mm/plugin/ball/model/BallInfo:hSN	Landroid/os/Bundle;
     //   22: aload_1
     //   23: lconst_0
-    //   24: invokevirtual 333	android/os/Bundle:getLong	(Ljava/lang/String;J)J
+    //   24: invokevirtual 347	android/os/Bundle:getLong	(Ljava/lang/String;J)J
     //   27: lstore_2
-    //   28: ldc_w 326
-    //   31: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: ldc_w 341
+    //   31: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
     //   35: monitorexit
     //   36: lload_2
     //   37: lreturn
-    //   38: ldc_w 326
-    //   41: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: ldc_w 341
+    //   41: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: goto -10 -> 34
     //   47: astore_1
     //   48: aload_0
@@ -326,29 +343,13 @@ public class BallInfo
     //   38	44	47	finally
   }
   
-  public final void Q(String paramString, long paramLong)
-  {
-    try
-    {
-      AppMethodBeat.i(127537);
-      if (!bt.isNullOrNil(paramString))
-      {
-        bzj();
-        this.hsl.putLong(paramString, paramLong);
-      }
-      AppMethodBeat.o(127537);
-      return;
-    }
-    finally {}
-  }
-  
   public final void b(BallReportInfo paramBallReportInfo)
   {
     try
     {
-      AppMethodBeat.i(187814);
+      AppMethodBeat.i(197151);
       a(paramBallReportInfo);
-      AppMethodBeat.o(187814);
+      AppMethodBeat.o(197151);
       return;
     }
     finally
@@ -358,7 +359,7 @@ public class BallInfo
     }
   }
   
-  public final String bzh()
+  public final String bGd()
   {
     AppMethodBeat.i(127529);
     String str = String.format("%s#%s", new Object[] { Integer.valueOf(this.type), this.key });
@@ -366,7 +367,7 @@ public class BallInfo
     return str;
   }
   
-  public final int bzi()
+  public final int bGe()
   {
     if ((this.state == 8) || (this.state == 4)) {
       return 4;
@@ -374,15 +375,15 @@ public class BallInfo
     return this.state;
   }
   
-  public final void cf(String paramString, int paramInt)
+  public final void ck(String paramString, int paramInt)
   {
     try
     {
       AppMethodBeat.i(127535);
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
-        bzj();
-        this.hsl.putInt(paramString, paramInt);
+        bGf();
+        this.hSN.putInt(paramString, paramInt);
       }
       AppMethodBeat.o(127535);
       return;
@@ -395,15 +396,15 @@ public class BallInfo
     return 0;
   }
   
-  public final void ed(String paramString1, String paramString2)
+  public final void ep(String paramString1, String paramString2)
   {
     try
     {
       AppMethodBeat.i(127532);
-      if (!bt.isNullOrNil(paramString1))
+      if (!bs.isNullOrNil(paramString1))
       {
-        bzj();
-        this.hsl.putString(paramString1, paramString2);
+        bGf();
+        this.hSN.putString(paramString1, paramString2);
       }
       AppMethodBeat.o(127532);
       return;
@@ -412,31 +413,31 @@ public class BallInfo
   }
   
   /* Error */
-  public final String ee(String paramString1, String paramString2)
+  public final String eq(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 381
-    //   5: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 382
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 330	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
+    //   10: invokevirtual 344	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
     //   13: ifeq +23 -> 36
     //   16: aload_0
-    //   17: getfield 83	com/tencent/mm/plugin/ball/model/BallInfo:hsl	Landroid/os/Bundle;
+    //   17: getfield 84	com/tencent/mm/plugin/ball/model/BallInfo:hSN	Landroid/os/Bundle;
     //   20: aload_1
     //   21: aload_2
-    //   22: invokevirtual 383	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   22: invokevirtual 384	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   25: astore_2
-    //   26: ldc_w 381
-    //   29: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: ldc_w 382
+    //   29: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aload_0
     //   33: monitorexit
     //   34: aload_2
     //   35: areturn
-    //   36: ldc_w 381
-    //   39: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   36: ldc_w 382
+    //   39: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: goto -10 -> 32
     //   45: astore_1
     //   46: aload_0
@@ -460,7 +461,7 @@ public class BallInfo
     if ((paramObject instanceof BallInfo))
     {
       paramObject = (BallInfo)paramObject;
-      if ((this.type == paramObject.type) && (!bt.isNullOrNil(this.key)) && (!bt.isNullOrNil(paramObject.key)) && (this.key.equals(paramObject.key)))
+      if ((this.type == paramObject.type) && (!bs.isNullOrNil(this.key)) && (!bs.isNullOrNil(paramObject.key)) && (this.key.equals(paramObject.key)))
       {
         AppMethodBeat.o(127540);
         return true;
@@ -476,27 +477,27 @@ public class BallInfo
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 391
-    //   5: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 392
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 330	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
+    //   10: invokevirtual 344	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
     //   13: ifeq +22 -> 35
     //   16: aload_0
-    //   17: getfield 83	com/tencent/mm/plugin/ball/model/BallInfo:hsl	Landroid/os/Bundle;
+    //   17: getfield 84	com/tencent/mm/plugin/ball/model/BallInfo:hSN	Landroid/os/Bundle;
     //   20: aload_1
-    //   21: invokevirtual 394	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
+    //   21: invokevirtual 395	android/os/Bundle:getByteArray	(Ljava/lang/String;)[B
     //   24: astore_1
-    //   25: ldc_w 391
-    //   28: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc_w 392
+    //   28: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
     //   33: aload_1
     //   34: areturn
     //   35: aconst_null
     //   36: astore_1
-    //   37: ldc_w 391
-    //   40: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: ldc_w 392
+    //   40: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: goto -12 -> 31
     //   46: astore_1
     //   47: aload_0
@@ -519,26 +520,26 @@ public class BallInfo
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 396
-    //   5: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 397
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 330	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
+    //   10: invokevirtual 344	com/tencent/mm/plugin/ball/model/BallInfo:hasExtra	(Ljava/lang/String;)Z
     //   13: ifeq +23 -> 36
     //   16: aload_0
-    //   17: getfield 83	com/tencent/mm/plugin/ball/model/BallInfo:hsl	Landroid/os/Bundle;
+    //   17: getfield 84	com/tencent/mm/plugin/ball/model/BallInfo:hSN	Landroid/os/Bundle;
     //   20: aload_1
     //   21: iload_2
-    //   22: invokevirtual 398	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+    //   22: invokevirtual 399	android/os/Bundle:getInt	(Ljava/lang/String;I)I
     //   25: istore_2
-    //   26: ldc_w 396
-    //   29: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: ldc_w 397
+    //   29: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aload_0
     //   33: monitorexit
     //   34: iload_2
     //   35: ireturn
-    //   36: ldc_w 396
-    //   39: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   36: ldc_w 397
+    //   39: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: goto -10 -> 32
     //   45: astore_1
     //   46: aload_0
@@ -562,29 +563,29 @@ public class BallInfo
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 399
-    //   5: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 400
+    //   5: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 83	com/tencent/mm/plugin/ball/model/BallInfo:hsl	Landroid/os/Bundle;
+    //   9: getfield 84	com/tencent/mm/plugin/ball/model/BallInfo:hSN	Landroid/os/Bundle;
     //   12: ifnull +29 -> 41
     //   15: aload_1
-    //   16: invokestatic 341	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   16: invokestatic 334	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   19: ifne +22 -> 41
     //   22: aload_0
-    //   23: getfield 83	com/tencent/mm/plugin/ball/model/BallInfo:hsl	Landroid/os/Bundle;
+    //   23: getfield 84	com/tencent/mm/plugin/ball/model/BallInfo:hSN	Landroid/os/Bundle;
     //   26: aload_1
-    //   27: invokevirtual 402	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
+    //   27: invokevirtual 403	android/os/Bundle:containsKey	(Ljava/lang/String;)Z
     //   30: istore_2
-    //   31: ldc_w 399
-    //   34: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   31: ldc_w 400
+    //   34: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aload_0
     //   38: monitorexit
     //   39: iload_2
     //   40: ireturn
     //   41: iconst_0
     //   42: istore_2
-    //   43: ldc_w 399
-    //   46: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: ldc_w 400
+    //   46: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -12 -> 37
     //   52: astore_1
     //   53: aload_0
@@ -607,10 +608,10 @@ public class BallInfo
     try
     {
       AppMethodBeat.i(127539);
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
-        bzj();
-        this.hsl.putByteArray(paramString, paramArrayOfByte);
+        bGf();
+        this.hSN.putByteArray(paramString, paramArrayOfByte);
       }
       AppMethodBeat.o(127539);
       return;
@@ -621,7 +622,7 @@ public class BallInfo
   public String toString()
   {
     AppMethodBeat.i(127541);
-    String str = "BallInfo{type=" + this.type + ", key='" + this.key + '\'' + ", contentType='" + this.aTB + '\'' + ", passive=" + this.mDu + ", hidden=" + this.mDv + ", icon='" + this.dub + '\'' + ", iconResId=" + this.kYl + ", name='" + this.name + '\'' + ", desc='" + this.desc + '\'' + ", tag='" + this.tag + '\'' + ", progress='" + this.progress + '\'' + ", state=" + this.state + ", activeTime=" + this.mDs + ", createTime=" + this.createTime + ", reportInfo=" + this.mDw.toString() + '}';
+    String str = "BallInfo{type=" + this.type + ", key='" + this.key + '\'' + ", contentType='" + this.aUt + '\'' + ", passive=" + this.nfB + ", hidden=" + this.nfC + ", icon='" + this.drM + '\'' + ", iconResId=" + this.lzV + ", name='" + this.name + '\'' + ", desc='" + this.desc + '\'' + ", tag='" + this.tag + '\'' + ", progress='" + this.progress + '\'' + ", state=" + this.state + ", activeTime=" + this.nfz + ", createTime=" + this.createTime + ", reportInfo=" + this.nfD.toString() + '}';
     AppMethodBeat.o(127541);
     return str;
   }
@@ -630,23 +631,23 @@ public class BallInfo
   {
     try
     {
-      AppMethodBeat.i(187813);
+      AppMethodBeat.i(197150);
       if (paramBallInfo != null)
       {
-        this.dub = paramBallInfo.dub;
-        this.kYl = paramBallInfo.kYl;
+        this.drM = paramBallInfo.drM;
+        this.lzV = paramBallInfo.lzV;
         this.name = paramBallInfo.name;
         this.desc = paramBallInfo.desc;
         this.tag = paramBallInfo.tag;
         this.progress = paramBallInfo.progress;
-        this.hsl = paramBallInfo.hsl;
+        this.hSN = paramBallInfo.hSN;
         this.state = paramBallInfo.state;
-        this.mDu = paramBallInfo.mDu;
-        this.sk = paramBallInfo.sk;
-        this.aTB = paramBallInfo.aTB;
-        a(paramBallInfo.mDw);
+        this.nfB = paramBallInfo.nfB;
+        this.tk = paramBallInfo.tk;
+        this.aUt = paramBallInfo.aUt;
+        a(paramBallInfo.nfD);
       }
-      AppMethodBeat.o(187813);
+      AppMethodBeat.o(197150);
       return;
     }
     finally {}
@@ -661,29 +662,29 @@ public class BallInfo
       {
         paramParcel.writeInt(this.type);
         paramParcel.writeString(this.key);
-        paramParcel.writeString(this.dub);
-        paramParcel.writeInt(this.kYl);
+        paramParcel.writeString(this.drM);
+        paramParcel.writeInt(this.lzV);
         paramParcel.writeString(this.name);
         paramParcel.writeString(this.desc);
         paramParcel.writeString(this.tag);
         paramParcel.writeLong(this.progress);
         Bundle localBundle;
-        if (this.hsl != null)
+        if (this.hSN != null)
         {
-          localBundle = this.hsl;
+          localBundle = this.hSN;
           paramParcel.writeBundle(localBundle);
           paramParcel.writeInt(this.state);
-          if (this.mDu)
+          if (this.nfB)
           {
             i = 1;
             paramParcel.writeInt(i);
-            if (!this.mDv) {
+            if (!this.nfC) {
               break label191;
             }
             i = 1;
             paramParcel.writeInt(i);
-            paramParcel.writeParcelable(this.mDw, paramInt);
-            paramParcel.writeInt(this.aTB);
+            paramParcel.writeParcelable(this.nfD, paramInt);
+            paramParcel.writeInt(this.aUt);
             AppMethodBeat.o(127543);
           }
         }
@@ -696,7 +697,7 @@ public class BallInfo
       }
       catch (Exception paramParcel)
       {
-        ad.printErrStackTrace("MicroMsg.BallInfo", paramParcel, "writeToParcel fail, exception:%s", new Object[] { paramParcel });
+        ac.printErrStackTrace("MicroMsg.BallInfo", paramParcel, "writeToParcel fail, exception:%s", new Object[] { paramParcel });
         AppMethodBeat.o(127543);
         return;
       }
@@ -708,7 +709,7 @@ public class BallInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.model.BallInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public enum c
       if (localc.m(paramInt, paramString))
       {
         localc.a(localb);
-        ((d.b)localb).jdMethod_do(localc.name());
+        ((d.b)localb).cV(localc.name());
       }
     }
     return localb;
@@ -28,7 +28,7 @@ public enum c
   
   public static d.a k(int paramInt, String paramString)
   {
-    return a(EnumSet.of(cyx, cyy, cyz, cyA), paramInt, paramString);
+    return a(EnumSet.of(cvG, cvH, cvI, cvJ), paramInt, paramString);
   }
   
   public static d.a l(int paramInt, String paramString)

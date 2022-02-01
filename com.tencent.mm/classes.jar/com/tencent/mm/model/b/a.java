@@ -8,28 +8,28 @@ import com.tencent.mm.model.c;
 public abstract class a
   implements e
 {
-  protected e.a gPS;
-  protected String gPT = asZ();
-  protected String[] gPU = asY();
+  protected e.a hqs;
+  protected String hqt = azQ();
+  protected String[] hqu = azP();
   
   public final void a(e.a parama)
   {
-    this.gPS = parama;
+    this.hqs = parama;
   }
   
   public final void a(String paramString, boolean paramBoolean, String[] paramArrayOfString)
   {
-    az.arV();
-    SharedPreferences localSharedPreferences = c.qR("banner");
+    az.ayM();
+    SharedPreferences localSharedPreferences = c.ug("banner");
     if (localSharedPreferences == null) {}
     label188:
     do
     {
       return;
-      localSharedPreferences.edit().putBoolean(this.gPT + paramString, paramBoolean).commit();
-      if ((this.gPU != null) && (paramArrayOfString != null) && (this.gPU.length == paramArrayOfString.length))
+      localSharedPreferences.edit().putBoolean(this.hqt + paramString, paramBoolean).commit();
+      if ((this.hqu != null) && (paramArrayOfString != null) && (this.hqu.length == paramArrayOfString.length))
       {
-        String[] arrayOfString = this.gPU;
+        String[] arrayOfString = this.hqu;
         int k = arrayOfString.length;
         int i = 0;
         int j = 0;
@@ -43,80 +43,80 @@ public abstract class a
           }
           for (String str1 = paramArrayOfString[j];; str1 = "")
           {
-            localSharedPreferences.edit().putString(this.gPT + str2 + paramString, str1).commit();
+            localSharedPreferences.edit().putString(this.hqt + str2 + paramString, str1).commit();
             j += 1;
             i += 1;
             break;
           }
         }
       }
-    } while (this.gPS == null);
-    this.gPS.atl();
+    } while (this.hqs == null);
+    this.hqs.aAc();
   }
   
-  public final String aH(String paramString1, String paramString2)
+  public final String aP(String paramString1, String paramString2)
   {
-    az.arV();
-    SharedPreferences localSharedPreferences = c.qR("banner");
+    az.ayM();
+    SharedPreferences localSharedPreferences = c.ug("banner");
     if (localSharedPreferences == null) {
       return null;
     }
-    return localSharedPreferences.getString(this.gPT + paramString2 + paramString1, null);
+    return localSharedPreferences.getString(this.hqt + paramString2 + paramString1, null);
   }
   
-  protected String[] asY()
+  protected String[] azP()
   {
     return null;
   }
   
-  public abstract String asZ();
+  public abstract String azQ();
   
-  public final boolean uF(String paramString)
+  public final boolean yL(String paramString)
   {
     boolean bool2 = false;
-    az.arV();
-    SharedPreferences localSharedPreferences = c.qR("banner");
+    az.ayM();
+    SharedPreferences localSharedPreferences = c.ug("banner");
     boolean bool1 = bool2;
     if (localSharedPreferences != null)
     {
       bool1 = bool2;
-      if (localSharedPreferences.getBoolean(this.gPT + paramString, false)) {
+      if (localSharedPreferences.getBoolean(this.hqt + paramString, false)) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  public final void uG(String paramString)
+  public final void yM(String paramString)
   {
-    az.arV();
-    SharedPreferences localSharedPreferences = c.qR("banner");
+    az.ayM();
+    SharedPreferences localSharedPreferences = c.ug("banner");
     if (localSharedPreferences == null) {}
     do
     {
       return;
-      localSharedPreferences.edit().remove(this.gPT + paramString).commit();
-      if (this.gPU != null)
+      localSharedPreferences.edit().remove(this.hqt + paramString).commit();
+      if (this.hqu != null)
       {
-        String[] arrayOfString = this.gPU;
+        String[] arrayOfString = this.hqu;
         int j = arrayOfString.length;
         int i = 0;
         while (i < j)
         {
           String str = arrayOfString[i];
           if (str != null) {
-            localSharedPreferences.edit().remove(this.gPT + str + paramString).commit();
+            localSharedPreferences.edit().remove(this.hqt + str + paramString).commit();
           }
           i += 1;
         }
       }
-    } while (this.gPS == null);
-    this.gPS.atm();
+    } while (this.hqs == null);
+    this.hqs.aAd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.b.a
  * JD-Core Version:    0.7.0.1
  */

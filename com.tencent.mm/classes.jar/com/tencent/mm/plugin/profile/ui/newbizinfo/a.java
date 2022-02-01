@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.p;
+import com.tencent.mm.al.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.lj;
-import com.tencent.mm.protocal.protobuf.lq;
-import com.tencent.mm.protocal.protobuf.lr;
-import com.tencent.mm.protocal.protobuf.ls;
-import com.tencent.mm.protocal.protobuf.mv;
-import com.tencent.mm.protocal.protobuf.mw;
-import com.tencent.mm.protocal.protobuf.ne;
-import com.tencent.mm.protocal.protobuf.no;
-import com.tencent.mm.protocal.protobuf.np;
-import com.tencent.mm.protocal.protobuf.xq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.profile.ui.newbizinfo.b.b;
+import com.tencent.mm.protocal.protobuf.lp;
+import com.tencent.mm.protocal.protobuf.lx;
+import com.tencent.mm.protocal.protobuf.ly;
+import com.tencent.mm.protocal.protobuf.lz;
+import com.tencent.mm.protocal.protobuf.nc;
+import com.tencent.mm.protocal.protobuf.nd;
+import com.tencent.mm.protocal.protobuf.nl;
+import com.tencent.mm.protocal.protobuf.nv;
+import com.tencent.mm.protocal.protobuf.nw;
+import com.tencent.mm.protocal.protobuf.yi;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
@@ -26,49 +27,49 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ProfileV2;", "", "()V", "TAG", "", "profileCachePath", "kotlin.jvm.PlatformType", "getProfileCachePath", "()Ljava/lang/String;", "clear", "", "userName", "get", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "indexOf", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/MessageInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "index", "", "processServiceInfoList", "", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenuButton;", "menuInfo", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenu;", "save", "resp", "sizeOf", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "updatePayStatus", "msgList", "pickAppMsg", "toFileName", "app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ProfileV2;", "", "()V", "TAG", "", "profileCachePath", "kotlin.jvm.PlatformType", "getProfileCachePath", "()Ljava/lang/String;", "clear", "", "userName", "get", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "indexOf", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/MessageInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "index", "", "processServiceInfoList", "", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenuButton;", "menuInfo", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenu;", "save", "resp", "sizeOf", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "updatePayStatus", "msgList", "pickAppMsg", "toFileName", "app_release"})
 public final class a
 {
-  public static final a uGe;
+  public static final a vOV;
   
   static
   {
     AppMethodBeat.i(39622);
-    uGe = new a();
+    vOV = new a();
     AppMethodBeat.o(39622);
   }
   
-  public static final com.tencent.mm.plugin.profile.ui.newbizinfo.b.b a(mw parammw, int paramInt)
+  public static final b a(nd paramnd, int paramInt)
   {
     AppMethodBeat.i(39621);
-    k.h(parammw, "list");
-    parammw = parammw.CKt;
-    k.g(parammw, "list.Msg");
-    Object localObject = ((Iterable)parammw).iterator();
+    k.h(paramnd, "list");
+    paramnd = paramnd.EcV;
+    k.g(paramnd, "list.Msg");
+    Object localObject = ((Iterable)paramnd).iterator();
     int i = 0;
     if (((Iterator)localObject).hasNext())
     {
-      parammw = (mv)((Iterator)localObject).next();
-      if (parammw.CKs == null) {
+      paramnd = (nc)((Iterator)localObject).next();
+      if (paramnd.EcU == null) {
         break label228;
       }
-      if (paramInt < parammw.CKs.CIj.size() + i)
+      if (paramInt < paramnd.EcU.EaL.size() + i)
       {
-        localObject = (lr)parammw.CKs.CIj.get(paramInt - i);
-        com.tencent.mm.plugin.profile.ui.newbizinfo.b.b localb = new com.tencent.mm.plugin.profile.ui.newbizinfo.b.b();
-        localb.uGw = String.valueOf(parammw.CKs.CIi.CHH);
-        localb.coverImgUrl = ((lr)localObject).CHN;
-        localb.uGt = ((lr)localObject).CHL;
-        localb.uGu = ((lr)localObject).CHS;
-        localb.type = ((lr)localObject).gKq;
-        localb.tGD = parammw.CKn.CZk;
-        localb.title = ((lr)localObject).Title;
-        localb.uGv = ((lr)localObject).CHJ;
-        localb.uGx = String.valueOf(paramInt - i);
+        localObject = (ly)paramnd.EcU.EaL.get(paramInt - i);
+        b localb = new b();
+        localb.vPn = String.valueOf(paramnd.EcU.EaK.Eaj);
+        localb.coverImgUrl = ((ly)localObject).Eap;
+        localb.vPk = ((ly)localObject).Ean;
+        localb.vPl = ((ly)localObject).Eau;
+        localb.type = ((ly)localObject).hkQ;
+        localb.gIh = paramnd.EcP.ErX;
+        localb.title = ((ly)localObject).Title;
+        localb.vPm = ((ly)localObject).Eal;
+        localb.vPo = String.valueOf(paramInt - i);
         AppMethodBeat.o(39621);
         return localb;
       }
-      i = parammw.CKs.CIj.size() + i;
+      i = paramnd.EcU.EaL.size() + i;
     }
     label228:
     for (;;)
@@ -79,18 +80,18 @@ public final class a
     }
   }
   
-  public static final List<np> a(no paramno)
+  public static final List<nw> a(nv paramnv)
   {
     AppMethodBeat.i(39617);
-    k.h(paramno, "menuInfo");
+    k.h(paramnv, "menuInfo");
     ArrayList localArrayList = new ArrayList();
-    paramno = paramno.CLm;
-    k.g(paramno, "menuInfo.button_list");
-    paramno = ((Iterable)paramno).iterator();
-    while (paramno.hasNext())
+    paramnv = paramnv.EdO;
+    k.g(paramnv, "menuInfo.button_list");
+    paramnv = ((Iterable)paramnv).iterator();
+    while (paramnv.hasNext())
     {
-      np localnp = (np)paramno.next();
-      switch (localnp.type)
+      nw localnw = (nw)paramnv.next();
+      switch (localnw.type)
       {
       case 1: 
       case 3: 
@@ -98,7 +99,7 @@ public final class a
       default: 
         break;
       case 0: 
-        Object localObject1 = localnp.CLn;
+        Object localObject1 = localnw.EdP;
         k.g(localObject1, "button.sub_button_list");
         Object localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList();
@@ -106,7 +107,7 @@ public final class a
         if (((Iterator)localObject2).hasNext())
         {
           Object localObject3 = ((Iterator)localObject2).next();
-          switch (((np)localObject3).type)
+          switch (((nw)localObject3).type)
           {
           }
           for (i = 0; i != 0; i = 1)
@@ -119,41 +120,41 @@ public final class a
         if (!((Collection)localObject1).isEmpty()) {}
         for (int i = 1; i != 0; i = 0)
         {
-          localObject2 = new np();
-          ((np)localObject2).parseFrom(localnp.toByteArray());
-          ((np)localObject2).CLn.clear();
-          ((np)localObject2).CLn.addAll((Collection)localObject1);
+          localObject2 = new nw();
+          ((nw)localObject2).parseFrom(localnw.toByteArray());
+          ((nw)localObject2).EdP.clear();
+          ((nw)localObject2).EdP.addAll((Collection)localObject1);
           localArrayList.add(localObject2);
           break;
         }
       case 2: 
       case 5: 
-        localArrayList.add(localnp);
+        localArrayList.add(localnw);
       }
     }
-    paramno = (List)localArrayList;
+    paramnv = (List)localArrayList;
     AppMethodBeat.o(39617);
-    return paramno;
+    return paramnv;
   }
   
-  public static void a(mw parammw)
+  public static void a(nd paramnd)
   {
     AppMethodBeat.i(169906);
-    if (parammw != null)
+    if (paramnd != null)
     {
-      parammw = parammw.CKt;
-      if (parammw != null)
+      paramnd = paramnd.EcV;
+      if (paramnd != null)
       {
-        parammw = ((Iterable)parammw).iterator();
-        while (parammw.hasNext())
+        paramnd = ((Iterable)paramnd).iterator();
+        while (paramnd.hasNext())
         {
-          Object localObject1 = (mv)parammw.next();
+          Object localObject1 = (nc)paramnd.next();
           if (localObject1 != null)
           {
-            localObject1 = ((mv)localObject1).CKs;
+            localObject1 = ((nc)localObject1).EcU;
             if (localObject1 != null)
             {
-              localObject1 = ((ls)localObject1).CIj;
+              localObject1 = ((lz)localObject1).EaL;
               if (localObject1 != null)
               {
                 localObject1 = ((Iterable)localObject1).iterator();
@@ -161,13 +162,13 @@ public final class a
                 Object localObject2;
                 while (((Iterator)localObject1).hasNext())
                 {
-                  lr locallr = (lr)((Iterator)localObject1).next();
-                  if ((locallr != null) && (locallr.CIh == 1) && (!bt.isNullOrNil(locallr.CHL)))
+                  ly locally = (ly)((Iterator)localObject1).next();
+                  if ((locally != null) && (locally.EaJ == 1) && (!bs.isNullOrNil(locally.Ean)))
                   {
-                    localObject2 = com.tencent.mm.plugin.brandservice.b.b.mSC;
-                    localObject2 = locallr.CHL;
+                    localObject2 = com.tencent.mm.plugin.brandservice.b.a.nuP;
+                    localObject2 = locally.Ean;
                     k.g(localObject2, "detail.ContentUrl");
-                    if (locallr.gKl != 1) {
+                    if (locally.hkL != 1) {
                       break label158;
                     }
                   }
@@ -175,7 +176,7 @@ public final class a
                 label158:
                 for (boolean bool = true;; bool = false)
                 {
-                  com.tencent.mm.plugin.brandservice.b.b.aA((String)localObject2, bool);
+                  com.tencent.mm.plugin.brandservice.b.a.aB((String)localObject2, bool);
                   break label79;
                   break;
                 }
@@ -190,78 +191,78 @@ public final class a
     AppMethodBeat.o(169906);
   }
   
-  private static String akL(String paramString)
+  private static String apK(String paramString)
   {
-    AppMethodBeat.i(191871);
+    AppMethodBeat.i(196992);
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject = g.ab(p.class);
     k.g(localObject, "MMKernel.service(IBizService::class.java)");
-    localObject = ((p)localObject).avS();
-    if (!i.eK((String)localObject)) {
-      i.aMF((String)localObject);
+    localObject = ((p)localObject).aCK();
+    if (!i.eA((String)localObject)) {
+      i.aSh((String)localObject);
     }
-    paramString = (String)localObject + "profile_resp_" + ai.du(paramString);
-    AppMethodBeat.o(191871);
+    paramString = (String)localObject + "profile_resp_" + ah.dg(paramString);
+    AppMethodBeat.o(196992);
     return paramString;
   }
   
-  public static final ne akM(String paramString)
+  public static final nl apL(String paramString)
   {
     AppMethodBeat.i(39619);
     k.h(paramString, "userName");
-    ne localne = new ne();
+    nl localnl = new nl();
     try
     {
-      localne.parseFrom(i.aR(akL(paramString), 0, -1));
+      localnl.parseFrom(i.aU(apK(paramString), 0, -1));
       AppMethodBeat.o(39619);
-      return localne;
+      return localnl;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ad.e("MicroMsg.ProfileV2", "readFromFile ex=" + paramString.getMessage());
+        ac.e("MicroMsg.ProfileV2", "readFromFile ex=" + paramString.getMessage());
       }
     }
   }
   
-  public static final void b(ne paramne)
+  public static final void b(nl paramnl)
   {
     AppMethodBeat.i(39618);
-    k.h(paramne, "resp");
+    k.h(paramnl, "resp");
     try
     {
-      Object localObject1 = paramne.CKR.mAQ;
+      Object localObject1 = paramnl.Edt.ncR;
       k.g(localObject1, "resp.AccountInfo.UserName");
-      localObject1 = new e(akL((String)localObject1));
+      localObject1 = new e(apK((String)localObject1));
       if (((e)localObject1).exists()) {
         ((e)localObject1).delete();
       }
       localObject1 = ((e)localObject1).getAbsolutePath();
-      Object localObject2 = paramne.CKT;
+      Object localObject2 = paramnl.Edv;
       if (localObject2 != null)
       {
-        localObject2 = ((mw)localObject2).CKt;
+        localObject2 = ((nd)localObject2).EcV;
         if (localObject2 != null)
         {
           localObject2 = ((Iterable)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            Object localObject3 = (mv)((Iterator)localObject2).next();
+            Object localObject3 = (nc)((Iterator)localObject2).next();
             if (localObject3 != null)
             {
-              localObject3 = ((mv)localObject3).CKs;
+              localObject3 = ((nc)localObject3).EcU;
               if (localObject3 != null)
               {
-                localObject3 = ((ls)localObject3).CIj;
+                localObject3 = ((lz)localObject3).EaL;
                 if (localObject3 != null)
                 {
                   localObject3 = ((Iterable)localObject3).iterator();
                   while (((Iterator)localObject3).hasNext())
                   {
-                    lr locallr = (lr)((Iterator)localObject3).next();
-                    if (locallr.CIg != null) {
-                      locallr.CIg = null;
+                    ly locally = (ly)((Iterator)localObject3).next();
+                    if (locally.EaI != null) {
+                      locally.EaI = null;
                     }
                   }
                 }
@@ -270,9 +271,9 @@ public final class a
           }
         }
       }
-      i.B((String)localObject1, paramne.toByteArray());
+      i.B((String)localObject1, paramnl.toByteArray());
     }
-    catch (Exception paramne)
+    catch (Exception paramnl)
     {
       AppMethodBeat.o(39618);
       return;
@@ -282,24 +283,24 @@ public final class a
   
   public static final void clear(String paramString)
   {
-    AppMethodBeat.i(191872);
+    AppMethodBeat.i(196993);
     k.h(paramString, "userName");
     try
     {
-      paramString = new e(akL(paramString));
+      paramString = new e(apK(paramString));
       if (paramString.exists()) {
         paramString.delete();
       }
-      AppMethodBeat.o(191872);
+      AppMethodBeat.o(196993);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(191872);
+      AppMethodBeat.o(196993);
     }
   }
   
-  public static final int ey(List<? extends mv> paramList)
+  public static final int eC(List<? extends nc> paramList)
   {
     AppMethodBeat.i(39620);
     k.h(paramList, "list");
@@ -307,10 +308,10 @@ public final class a
     int i = 0;
     if (paramList.hasNext())
     {
-      Object localObject = ((mv)paramList.next()).CKs;
+      Object localObject = ((nc)paramList.next()).EcU;
       if (localObject != null)
       {
-        localObject = ((ls)localObject).CIj;
+        localObject = ((lz)localObject).EaL;
         if (localObject == null) {}
       }
       for (int j = ((LinkedList)localObject).size();; j = 0)
@@ -325,7 +326,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.a
  * JD-Core Version:    0.7.0.1
  */

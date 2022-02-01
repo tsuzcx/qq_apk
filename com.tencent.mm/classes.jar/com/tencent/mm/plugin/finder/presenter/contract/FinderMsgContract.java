@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.finder.presenter.contract;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract;", "", "()V", "MsgPresenter", "MsgViewCallback", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderMsgContract;", "", "()V", "MsgPresenter", "MsgViewCallback", "plugin-finder_release"})
 public final class FinderMsgContract
 {
-  public static final FinderMsgContract qEX;
+  public static final FinderMsgContract rwG;
   
   static
   {
     AppMethodBeat.i(166566);
-    qEX = new FinderMsgContract();
+    rwG = new FinderMsgContract();
     AppMethodBeat.o(166566);
   }
 }

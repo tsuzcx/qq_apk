@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.a.a;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/panel/PanelDataListener;", "Lcom/tencent/mm/emoji/model/panel/GroupDataListener;", "Lcom/tencent/mm/emoji/model/panel/DataUpdateListener;", "Lcom/tencent/mm/emoji/model/panel/TabDataListener;", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/PanelDataListener;", "Lcom/tencent/mm/emoji/model/panel/GroupDataListener;", "Lcom/tencent/mm/emoji/model/panel/DataUpdateListener;", "Lcom/tencent/mm/emoji/model/panel/TabDataListener;", "plugin-emojisdk_release"})
 public abstract interface v
   extends aj, g, n
 {}

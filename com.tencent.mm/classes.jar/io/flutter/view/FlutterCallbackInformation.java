@@ -1,8 +1,10 @@
 package io.flutter.view;
 
+import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.embedding.engine.FlutterJNI;
 
+@Keep
 public final class FlutterCallbackInformation
 {
   public final String callbackClassName;

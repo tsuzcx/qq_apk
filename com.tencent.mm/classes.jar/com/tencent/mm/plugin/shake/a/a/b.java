@@ -8,16 +8,16 @@ public abstract class b
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eme = "username".hashCode();
+  private static final int eok = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int wlv = "lastshaketime".hashCode();
-  private static final int wlw = "isshowed".hashCode();
-  private boolean emb;
+  private static final int xwL = "lastshaketime".hashCode();
+  private static final int xwM = "isshowed".hashCode();
+  private boolean eoh;
   public boolean field_isshowed;
   public int field_lastshaketime;
   public String field_username;
-  private boolean wlt;
-  private boolean wlu;
+  private boolean xwJ;
+  private boolean xwK;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class b
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eme != k) {
+      if (eok != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.emb = true;
+      this.eoh = true;
     }
     for (;;)
     {
@@ -44,13 +44,13 @@ public abstract class b
       break label20;
       break;
       label65:
-      if (wlv == k)
+      if (xwL == k)
       {
         this.field_lastshaketime = paramCursor.getInt(i);
       }
       else
       {
-        if (wlw == k)
+        if (xwM == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -72,13 +72,13 @@ public abstract class b
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.emb) {
+    if (this.eoh) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.wlt) {
+    if (this.xwJ) {
       localContentValues.put("lastshaketime", Integer.valueOf(this.field_lastshaketime));
     }
-    if (this.wlu) {
+    if (this.xwK) {
       localContentValues.put("isshowed", Boolean.valueOf(this.field_isshowed));
     }
     if (this.systemRowid > 0L) {

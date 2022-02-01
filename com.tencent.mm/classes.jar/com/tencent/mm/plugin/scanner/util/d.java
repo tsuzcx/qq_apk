@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.scanner.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
 import com.tencent.mm.sdk.platformtools.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/util/ScanDebugUtil;", "", "()V", "TAG", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "showDebugView", "", "init", "", "scan-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/util/ScanDebugUtil;", "", "()V", "TAG", "", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "showDebugView", "", "init", "", "scan-sdk_release"})
 public final class d
 {
-  private static ax ctt;
-  private static boolean waw;
-  public static final d wax;
+  private static aw cqB;
+  private static boolean xlC;
+  public static final d xlD;
   
   static
   {
-    AppMethodBeat.i(190154);
-    wax = new d();
-    AppMethodBeat.o(190154);
+    AppMethodBeat.i(204958);
+    xlD = new d();
+    AppMethodBeat.o(204958);
   }
   
-  public static final boolean dnh()
+  public static final boolean dBp()
   {
-    return waw;
+    return xlC;
   }
   
   public static final void init()
   {
-    AppMethodBeat.i(190153);
+    AppMethodBeat.i(204957);
     if ((h.DEBUG) || (h.IS_FLAVOR_RED)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(190153);
+      AppMethodBeat.o(204957);
       return;
     }
-    ax localax = ax.aFC("ScanDebug");
-    ctt = localax;
-    if (localax != null)
+    aw localaw = aw.aKT("ScanDebug");
+    cqB = localaw;
+    if (localaw != null)
     {
-      bool = localax.getBoolean("scan_debug_show_debug_view", false);
+      bool = localaw.getBoolean("scan_debug_show_debug_view", false);
       if (!bool) {
         break label97;
       }
@@ -46,9 +46,9 @@ public final class d
     label97:
     for (boolean bool = true;; bool = false)
     {
-      waw = bool;
-      ad.i("MicroMsg.ScanDebugUtil", "alvinluo ScanDebugUtil init showDebugView %b", new Object[] { Boolean.valueOf(waw) });
-      AppMethodBeat.o(190153);
+      xlC = bool;
+      ac.i("MicroMsg.ScanDebugUtil", "alvinluo ScanDebugUtil init showDebugView %b", new Object[] { Boolean.valueOf(xlC) });
+      AppMethodBeat.o(204957);
       return;
       bool = false;
       break;
@@ -57,7 +57,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tk
   extends b
 {
-  public a dyM;
+  public a dwq;
   
   public tk()
   {
@@ -15,22 +16,24 @@ public final class tk
   
   private tk(byte paramByte)
   {
-    AppMethodBeat.i(125638);
-    this.dyM = new a();
-    this.ESR = false;
+    AppMethodBeat.i(199932);
+    this.dwq = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125638);
+    AppMethodBeat.o(199932);
   }
   
   public static final class a
   {
-    public String dgg;
-    public String dpC;
+    public int CW;
+    public int bPH;
+    public Intent dlL;
+    public int requestCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.tk
  * JD-Core Version:    0.7.0.1
  */

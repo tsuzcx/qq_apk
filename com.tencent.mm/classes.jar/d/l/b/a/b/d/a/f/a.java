@@ -13,16 +13,16 @@ import java.util.Map;
 final class a
   implements c
 {
-  public static final a JCE;
+  public static final a LpX;
   
   static
   {
     AppMethodBeat.i(58015);
-    JCE = new a();
+    LpX = new a();
     AppMethodBeat.o(58015);
   }
   
-  private static Void fBQ()
+  private static Void fUu()
   {
     AppMethodBeat.i(58011);
     Throwable localThrowable = (Throwable)new IllegalStateException("No methods should be called on this descriptor. Only its presence matters".toString());
@@ -30,23 +30,15 @@ final class a
     throw localThrowable;
   }
   
-  public final an fxG()
+  public final an fQk()
   {
     AppMethodBeat.i(58014);
-    fBQ();
+    fUu();
     AppMethodBeat.o(58014);
     throw null;
   }
   
-  public final Map<f, g<?>> fzH()
-  {
-    AppMethodBeat.i(58013);
-    fBQ();
-    AppMethodBeat.o(58013);
-    throw null;
-  }
-  
-  public final b fzd()
+  public final b fRH()
   {
     AppMethodBeat.i(58016);
     b localb = c.a.b(this);
@@ -54,11 +46,19 @@ final class a
     return localb;
   }
   
-  public final ab fzr()
+  public final ab fRV()
   {
     AppMethodBeat.i(58012);
-    fBQ();
+    fUu();
     AppMethodBeat.o(58012);
+    throw null;
+  }
+  
+  public final Map<f, g<?>> fSl()
+  {
+    AppMethodBeat.i(58013);
+    fUu();
+    AppMethodBeat.o(58013);
     throw null;
   }
   
@@ -69,7 +69,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.a
  * JD-Core Version:    0.7.0.1
  */

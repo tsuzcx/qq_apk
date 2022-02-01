@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -28,12 +28,12 @@ public class a
           return false;
         }
         
-        public final boolean q(Object... paramAnonymousVarArgs)
+        public final boolean s(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(64476);
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[0];
           a.a(a.this).putString("pwd", paramAnonymousVarArgs);
-          ad.i("MicroMsg.FingerPrintAuthProcess", "this is onNext");
+          ac.i("MicroMsg.FingerPrintAuthProcess", "this is onNext");
           AppMethodBeat.o(64476);
           return false;
         }
@@ -49,7 +49,7 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(64477);
-    ad.i("MicroMsg.FingerPrintAuthProcess", "FingerPrintAuthProcess start,forward to WalletCheckPwdUI");
+    ac.i("MicroMsg.FingerPrintAuthProcess", "FingerPrintAuthProcess start,forward to WalletCheckPwdUI");
     b(paramActivity, WalletCheckPwdUI.class, paramBundle);
     AppMethodBeat.o(64477);
     return this;
@@ -60,8 +60,8 @@ public class a
     AppMethodBeat.i(64478);
     if ((paramActivity instanceof WalletCheckPwdUI))
     {
-      ad.i("MicroMsg.FingerPrintAuthProcess", "forward to FingerPrintAuthUI");
-      if (this.dow.getInt("key_open_biometric_type") == 1)
+      ac.i("MicroMsg.FingerPrintAuthProcess", "forward to FingerPrintAuthUI");
+      if (this.dmf.getInt("key_open_biometric_type") == 1)
       {
         b(paramActivity, FingerPrintAuthUI.class, paramBundle);
         AppMethodBeat.o(64478);
@@ -89,7 +89,7 @@ public class a
   {
     AppMethodBeat.i(64480);
     paramBundle = new Intent();
-    ad.i("MicroMsg.FingerPrintAuthProcess", "FingerPrintAuthProcess end");
+    ac.i("MicroMsg.FingerPrintAuthProcess", "FingerPrintAuthProcess end");
     a(paramActivity, "wallet", ".pwd.ui.WalletBiometricPaySettingsUI", 0, paramBundle, true);
     AppMethodBeat.o(64480);
   }
@@ -99,7 +99,7 @@ public class a
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "FingerprintAuth";
   }

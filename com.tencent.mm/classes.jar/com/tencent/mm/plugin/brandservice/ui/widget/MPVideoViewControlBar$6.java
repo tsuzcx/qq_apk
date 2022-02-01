@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.m;
 
 final class MPVideoViewControlBar$6
@@ -14,20 +14,20 @@ final class MPVideoViewControlBar$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(193007);
+    AppMethodBeat.i(198783);
     paramView = new Intent();
-    paramView.putExtra("Contact_User", this.fHA);
+    paramView.putExtra("Contact_User", this.fLg);
     paramView.putExtra("Contact_Scene", 179);
     paramView.putExtra("force_get_contact", true);
     paramView.putExtra("key_use_new_contact_profile", true);
-    d.b(this.noW.getContext(), "profile", ".ui.ContactInfoUI", paramView);
-    m.yC(45);
-    AppMethodBeat.o(193007);
+    d.b(this.nRW.getContext(), "profile", ".ui.ContactInfoUI", paramView);
+    m.zt(45);
+    AppMethodBeat.o(198783);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPVideoViewControlBar.6
  * JD-Core Version:    0.7.0.1
  */

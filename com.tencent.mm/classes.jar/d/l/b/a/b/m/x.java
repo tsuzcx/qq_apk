@@ -9,15 +9,15 @@ public final class x
   extends v
   implements bd
 {
-  private final v JXL;
-  private final ab JXM;
+  private final v LLe;
+  private final ab LLf;
   
   public x(v paramv, ab paramab)
   {
-    super(paramv.JXH, paramv.JXI);
+    super(paramv.LLa, paramv.LLb);
     AppMethodBeat.i(60746);
-    this.JXL = paramv;
-    this.JXM = paramab;
+    this.LLe = paramv;
+    this.LLf = paramab;
     AppMethodBeat.o(60746);
   }
   
@@ -25,14 +25,14 @@ public final class x
   {
     AppMethodBeat.i(60743);
     k.h(parami, "kotlinTypeRefiner");
-    ab localab = parami.aL((ab)this.JXL);
+    ab localab = parami.aL((ab)this.LLe);
     if (localab == null)
     {
       parami = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.types.FlexibleType");
       AppMethodBeat.o(60743);
       throw parami;
     }
-    parami = new x((v)localab, parami.aL(this.JXM));
+    parami = new x((v)localab, parami.aL(this.LLf));
     AppMethodBeat.o(60743);
     return parami;
   }
@@ -42,13 +42,13 @@ public final class x
     AppMethodBeat.i(60741);
     k.h(paramc, "renderer");
     k.h(parami, "options");
-    if (parami.fIq())
+    if (parami.gaT())
     {
-      paramc = paramc.b(this.JXM);
+      paramc = paramc.b(this.LLf);
       AppMethodBeat.o(60741);
       return paramc;
     }
-    paramc = this.JXL.a(paramc, parami);
+    paramc = this.LLe.a(paramc, parami);
     AppMethodBeat.o(60741);
     return paramc;
   }
@@ -57,35 +57,35 @@ public final class x
   {
     AppMethodBeat.i(60739);
     k.h(paramg, "newAnnotations");
-    paramg = be.b(this.JXL.b(paramg), this.JXM);
+    paramg = be.b(this.LLe.b(paramg), this.LLf);
     AppMethodBeat.o(60739);
     return paramg;
   }
   
-  public final aj fBP()
+  public final aj fUt()
   {
     AppMethodBeat.i(60742);
-    aj localaj = this.JXL.fBP();
+    aj localaj = this.LLe.fUt();
     AppMethodBeat.o(60742);
     return localaj;
   }
   
-  public final ab fJU()
+  public final ab gcx()
   {
-    return this.JXM;
+    return this.LLf;
   }
   
-  public final bg xV(boolean paramBoolean)
+  public final bg zn(boolean paramBoolean)
   {
     AppMethodBeat.i(60740);
-    bg localbg = be.b(this.JXL.xV(paramBoolean), (ab)this.JXM.fJW().xV(paramBoolean));
+    bg localbg = be.b(this.LLe.zn(paramBoolean), (ab)this.LLf.gcz().zn(paramBoolean));
     AppMethodBeat.o(60740);
     return localbg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.x
  * JD-Core Version:    0.7.0.1
  */

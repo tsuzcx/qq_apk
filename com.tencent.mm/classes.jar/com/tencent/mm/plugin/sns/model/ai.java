@@ -16,30 +16,30 @@ public final class ai
   extends a
 {
   int alpha;
-  private Map<String, Boolean> wIA;
-  long wIy;
-  boolean wIz;
+  long xUT;
+  boolean xUU;
+  private Map<String, Boolean> xUV;
   
   public ai(String paramString, n paramn, long paramLong)
   {
     super(paramString, paramn);
     AppMethodBeat.i(95854);
-    this.wIz = false;
+    this.xUU = false;
     this.alpha = 255;
-    this.wIA = new HashMap();
+    this.xUV = new HashMap();
     if (paramLong != 0L)
     {
-      this.wIy = paramLong;
-      this.wIA.put(paramString, Boolean.TRUE);
-      this.wIz = true;
+      this.xUT = paramLong;
+      this.xUV.put(paramString, Boolean.TRUE);
+      this.xUU = true;
       AppMethodBeat.o(95854);
       return;
     }
-    if (!this.wIA.containsKey(paramString))
+    if (!this.xUV.containsKey(paramString))
     {
-      this.wIy = SystemClock.uptimeMillis();
-      this.wIA.put(paramString, Boolean.TRUE);
-      this.wIz = true;
+      this.xUT = SystemClock.uptimeMillis();
+      this.xUV.put(paramString, Boolean.TRUE);
+      this.xUU = true;
     }
     AppMethodBeat.o(95854);
   }
@@ -48,42 +48,42 @@ public final class ai
   {
     AppMethodBeat.i(95855);
     Rect localRect = getBounds();
-    Bitmap localBitmap = this.gFe.apc();
+    Bitmap localBitmap = this.hfF.avT();
     if (!q.I(localBitmap))
     {
       paramCanvas.drawColor(-1118482);
-      this.wIy = 0L;
+      this.xUT = 0L;
       AppMethodBeat.o(95855);
       return;
     }
     float f;
-    if (this.wIz)
+    if (this.xUU)
     {
-      f = (float)(SystemClock.uptimeMillis() - this.wIy) / 150.0F;
-      if (this.wIy == 0L) {
+      f = (float)(SystemClock.uptimeMillis() - this.xUT) / 150.0F;
+      if (this.xUT == 0L) {
         f = 0.0F;
       }
       if (f >= 1.0F) {
-        this.wIz = false;
+        this.xUU = false;
       }
     }
     else
     {
-      this.gFc.setAlpha(this.alpha);
-      paramCanvas.drawBitmap(localBitmap, null, localRect, this.gFc);
+      this.hfD.setAlpha(this.alpha);
+      paramCanvas.drawBitmap(localBitmap, null, localRect, this.hfD);
       AppMethodBeat.o(95855);
       return;
     }
     int i = (int)(f * this.alpha);
-    this.gFc.setAlpha(i);
-    paramCanvas.drawBitmap(localBitmap, null, localRect, this.gFc);
+    this.hfD.setAlpha(i);
+    paramCanvas.drawBitmap(localBitmap, null, localRect, this.hfD);
     invalidateSelf();
     AppMethodBeat.o(95855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ai
  * JD-Core Version:    0.7.0.1
  */

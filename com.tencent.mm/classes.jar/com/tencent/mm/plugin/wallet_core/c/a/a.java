@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.wallet_core.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bza;
-import com.tencent.mm.protocal.protobuf.bzb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cdw;
+import com.tencent.mm.protocal.protobuf.cdx;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n
@@ -25,21 +25,21 @@ public final class a
   {
     AppMethodBeat.i(69967);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bza();
-    ((b.a)localObject).gUV = new bzb();
+    ((b.a)localObject).hvt = new cdw();
+    ((b.a)localObject).hvu = new cdx();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payibgcheckjsapisign";
     ((b.a)localObject).funcId = 1767;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (bza)this.rr.gUS.gUX;
-    ((bza)localObject).hnC = paramString1;
-    ((bza)localObject).CXl = paramString4;
-    ((bza)localObject).CXk = paramString2;
-    ((bza)localObject).CXm = paramString5;
-    ((bza)localObject).CXn = paramString6;
-    ((bza)localObject).CFH = paramString3;
-    ((bza)localObject).CWf = paramString7;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cdw)this.rr.hvr.hvw;
+    ((cdw)localObject).hOf = paramString1;
+    ((cdw)localObject).EpU = paramString4;
+    ((cdw)localObject).EpT = paramString2;
+    ((cdw)localObject).EpV = paramString5;
+    ((cdw)localObject).EpW = paramString6;
+    ((cdw)localObject).DYh = paramString3;
+    ((cdw)localObject).EoO = paramString7;
     AppMethodBeat.o(69967);
   }
   
@@ -60,8 +60,8 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69968);
-    ad.i("MicroMsg.NetSceneIbgCheckJsapi", "check jsapi: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramArrayOfByte = (bzb)((b)paramq).gUT.gUX;
+    ac.i("MicroMsg.NetSceneIbgCheckJsapi", "check jsapi: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramArrayOfByte = (cdx)((b)paramq).hvs.hvw;
     paramInt1 = paramInt3;
     paramq = paramString;
     if (paramInt3 == 0)
@@ -70,8 +70,8 @@ public final class a
       paramq = paramString;
       if (paramInt2 == 0)
       {
-        paramInt1 = paramArrayOfByte.oXv;
-        paramq = paramArrayOfByte.oXw;
+        paramInt1 = paramArrayOfByte.pAG;
+        paramq = paramArrayOfByte.pAH;
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);

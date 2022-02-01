@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/game/boot/MagicBrushForMiniProgram;", "Lcom/tencent/luggage/game/boot/MagicBrushSimple;", "context", "Landroid/content/Context;", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;)V", "onAppBrandRuntimeReady", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onConfig", "builder", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "luggage-wxa-game-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/game/boot/MagicBrushForMiniProgram;", "Lcom/tencent/luggage/game/boot/MagicBrushSimple;", "context", "Landroid/content/Context;", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;)V", "onAppBrandRuntimeReady", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onConfig", "builder", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "luggage-wxa-game-ext_release"})
 public class c
   extends d
 {
@@ -29,12 +29,12 @@ public class c
     AppMethodBeat.i(130734);
     k.h(parame, "builder");
     super.a(parame);
-    parame.bP(true);
-    parame.cpF.a(f.$$delegatedProperties[13], Boolean.FALSE);
-    parame.b(a.b.crP);
-    parame.cpH.a(f.$$delegatedProperties[15], Boolean.FALSE);
-    parame.bN(false);
+    parame.bQ(true);
+    parame.cmK.a(f.$$delegatedProperties[13], Boolean.FALSE);
+    parame.b(a.b.coV);
+    parame.cmM.a(f.$$delegatedProperties[15], Boolean.FALSE);
     parame.bO(false);
+    parame.bP(false);
     AppMethodBeat.o(130734);
   }
   
@@ -42,13 +42,13 @@ public class c
   {
     AppMethodBeat.i(130735);
     k.h(paramAppBrandRuntime, "runtime");
-    b.cbm.a((MBRuntime)getMagicBrush(), paramAppBrandRuntime, false);
+    b.bYj.a((MBRuntime)getMagicBrush(), paramAppBrandRuntime, false);
     AppMethodBeat.o(130735);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,36 +5,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static final int[] lhN;
-  public static final SparseArray<Integer> lhO;
+  public static final int[] lHG;
+  public static final SparseArray<Integer> lHH;
   
   static
   {
     AppMethodBeat.i(139904);
-    lhN = new int[4];
-    lhO = new SparseArray();
-    lhN[0] = 2131755538;
-    lhN[1] = 2131755551;
-    lhN[2] = 2131755559;
-    lhN[3] = 2131755557;
-    lhO.put(101, Integer.valueOf(2131755539));
-    lhO.put(102, Integer.valueOf(2131755553));
-    lhO.put(103, Integer.valueOf(2131755554));
-    lhO.put(104, Integer.valueOf(2131755556));
-    lhO.put(105, Integer.valueOf(2131755555));
-    lhO.put(201, Integer.valueOf(2131755542));
-    lhO.put(202, Integer.valueOf(2131755552));
-    lhO.put(203, Integer.valueOf(2131755561));
-    lhO.put(301, Integer.valueOf(2131755549));
-    lhO.put(302, Integer.valueOf(2131755558));
-    lhO.put(303, Integer.valueOf(2131755550));
-    lhO.put(401, Integer.valueOf(2131755560));
-    lhO.put(402, Integer.valueOf(2131755563));
-    lhO.put(403, Integer.valueOf(2131755564));
-    lhO.put(404, Integer.valueOf(2131755565));
-    lhO.put(405, Integer.valueOf(2131755566));
-    lhO.put(406, Integer.valueOf(2131755567));
-    lhO.put(407, Integer.valueOf(2131755568));
+    lHG = new int[4];
+    lHH = new SparseArray();
+    lHG[0] = 2131755538;
+    lHG[1] = 2131755551;
+    lHG[2] = 2131755559;
+    lHG[3] = 2131755557;
+    lHH.put(101, Integer.valueOf(2131755539));
+    lHH.put(102, Integer.valueOf(2131755553));
+    lHH.put(103, Integer.valueOf(2131755554));
+    lHH.put(104, Integer.valueOf(2131755556));
+    lHH.put(105, Integer.valueOf(2131755555));
+    lHH.put(201, Integer.valueOf(2131755542));
+    lHH.put(202, Integer.valueOf(2131755552));
+    lHH.put(203, Integer.valueOf(2131755561));
+    lHH.put(301, Integer.valueOf(2131755549));
+    lHH.put(302, Integer.valueOf(2131755558));
+    lHH.put(303, Integer.valueOf(2131755550));
+    lHH.put(401, Integer.valueOf(2131755560));
+    lHH.put(402, Integer.valueOf(2131755563));
+    lHH.put(403, Integer.valueOf(2131755564));
+    lHH.put(404, Integer.valueOf(2131755565));
+    lHH.put(405, Integer.valueOf(2131755566));
+    lHH.put(406, Integer.valueOf(2131755567));
+    lHH.put(407, Integer.valueOf(2131755568));
     AppMethodBeat.o(139904);
   }
 }

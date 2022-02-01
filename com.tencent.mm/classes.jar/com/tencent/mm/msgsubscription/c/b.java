@@ -6,24 +6,24 @@ import com.tencent.mm.msgsubscription.a.b.a.a;
 import com.tencent.mm.msgsubscription.a.b.c;
 import com.tencent.mm.msgsubscription.storage.d;
 import com.tencent.mm.msgsubscription.storage.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import d.g.b.k;
 import d.l;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/task/GetAllSubscribeMsgListTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "(Ljava/lang/String;Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;)V", "(Ljava/lang/String;)V", "mCallback", "getType", "", "run", "", "updateTimestamp", "subscribeMsgList", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Companion", "plugin-comm_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/task/GetAllSubscribeMsgListTask;", "Lcom/tencent/mm/msgsubscription/task/BaseSubscribeMsgTask;", "username", "", "storageManager", "Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;", "callback", "Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;", "(Ljava/lang/String;Lcom/tencent/mm/msgsubscription/storage/ISubscribeStorageManager;Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgDataLoader$SubscribeMsgOpCallback;)V", "(Ljava/lang/String;)V", "mCallback", "getType", "", "run", "", "updateTimestamp", "subscribeMsgList", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Companion", "plugin-comm_release"})
 public final class b
   extends a
 {
-  public static final b.a hIh;
-  private e.b hIf;
-  private d hIg;
+  public static final a iiJ;
+  private e.b iiH;
+  private d iiI;
   
   static
   {
     AppMethodBeat.i(149669);
-    hIh = new b.a((byte)0);
+    iiJ = new a((byte)0);
     AppMethodBeat.o(149669);
   }
   
@@ -38,21 +38,24 @@ public final class b
   {
     this(paramString);
     AppMethodBeat.i(149668);
-    this.hIg = paramd;
-    this.hIf = paramb;
+    this.iiI = paramd;
+    this.iiH = paramb;
     AppMethodBeat.o(149668);
   }
   
   public final void run()
   {
     AppMethodBeat.i(149666);
-    ad.i("MicroMsg.GetAllSubscribeMsgListTask", "alvinluo getAllSubscribeStatus run");
-    b.a.a locala = com.tencent.mm.msgsubscription.a.b.a.hHa;
-    b(b.a.a.a(this.dta, (b.c)new b(this)));
+    ac.i("MicroMsg.GetAllSubscribeMsgListTask", "alvinluo getAllSubscribeStatus run");
+    b.a.a locala = com.tencent.mm.msgsubscription.a.b.a.ihC;
+    b(b.a.a.a(this.dqK, (b.c)new b(this)));
     AppMethodBeat.o(149666);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/msgsubscription/task/GetAllSubscribeMsgListTask$run$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/task/GetAllSubscribeMsgListTask$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
+  public static final class a {}
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/msgsubscription/task/GetAllSubscribeMsgListTask$run$netScene$1", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
   public static final class b
     implements b.c
   {
@@ -60,30 +63,30 @@ public final class b
     {
       AppMethodBeat.i(149665);
       k.h(paramString, "errMsg");
-      ad.i("MicroMsg.GetAllSubscribeMsgListTask", "alvinluo getSubscribeMsgListByUsername end errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ac.i("MicroMsg.GetAllSubscribeMsgListTask", "alvinluo getSubscribeMsgListByUsername end errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         if (paramSubscribeMsgRequestResult == null) {
           break label142;
         }
       }
       label142:
-      for (Object localObject = paramSubscribeMsgRequestResult.hGg;; localObject = null)
+      for (Object localObject = paramSubscribeMsgRequestResult.igI;; localObject = null)
       {
         if (localObject != null)
         {
-          b.aD((List)paramSubscribeMsgRequestResult.hGg);
-          localObject = b.a(this.hIi);
+          b.aA((List)paramSubscribeMsgRequestResult.igI);
+          localObject = b.a(this.iiK);
           if (localObject != null) {
-            ((d)localObject).a(this.hIi.dta, (List)paramSubscribeMsgRequestResult.hGg, paramSubscribeMsgRequestResult.hGj);
+            ((d)localObject).a(this.iiK.dqK, (List)paramSubscribeMsgRequestResult.igI, paramSubscribeMsgRequestResult.igL);
           }
         }
-        aq.f((Runnable)new a(this, paramInt1, paramInt2, paramSubscribeMsgRequestResult, paramString));
+        ap.f((Runnable)new a(this, paramInt1, paramInt2, paramSubscribeMsgRequestResult, paramString));
         AppMethodBeat.o(149665);
         return;
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -94,13 +97,13 @@ public final class b
         AppMethodBeat.i(149664);
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          localb = b.b(this.hIj.hIi);
+          localb = b.b(this.iiL.iiK);
           if (localb != null)
           {
-            String str = this.hIj.hIi.dta;
+            String str = this.iiL.iiK.dqK;
             SubscribeMsgRequestResult localSubscribeMsgRequestResult = paramSubscribeMsgRequestResult;
             if (localSubscribeMsgRequestResult == null) {
-              k.fvU();
+              k.fOy();
             }
             localb.a(str, localSubscribeMsgRequestResult);
             AppMethodBeat.o(149664);
@@ -109,7 +112,7 @@ public final class b
           AppMethodBeat.o(149664);
           return;
         }
-        e.b localb = b.b(this.hIj.hIi);
+        e.b localb = b.b(this.iiL.iiK);
         if (localb != null)
         {
           localb.i(paramInt1, paramInt2, paramString);
@@ -123,7 +126,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.c.b
  * JD-Core Version:    0.7.0.1
  */

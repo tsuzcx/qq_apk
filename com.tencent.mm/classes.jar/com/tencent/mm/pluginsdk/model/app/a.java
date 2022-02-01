@@ -2,12 +2,12 @@ package com.tencent.mm.pluginsdk.model.app;
 
 public final class a
 {
-  public int BPv = 1;
-  public String dvP = "";
+  public int DhJ = 1;
+  public String dtC = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.a
  * JD-Core Version:    0.7.0.1
  */

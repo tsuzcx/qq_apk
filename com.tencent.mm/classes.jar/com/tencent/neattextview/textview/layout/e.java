@@ -6,32 +6,32 @@ import java.lang.reflect.Array;
 
 public final class e<E>
 {
-  private final Class<? extends E> IiS;
-  public int IiT;
-  public E[] IiU;
-  public int[] IiV;
-  public int[] IiW;
-  public int[] IiX;
+  private final Class<? extends E> JKD;
+  public int JKE;
+  public E[] JKF;
+  public int[] JKG;
+  public int[] JKH;
+  public int[] JKI;
   
   e(Class<? extends E> paramClass)
   {
-    this.IiS = paramClass;
-    this.IiT = 0;
+    this.JKD = paramClass;
+    this.JKE = 0;
   }
   
   public final void a(Spanned paramSpanned, int paramInt)
   {
     AppMethodBeat.i(39760);
-    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.IiS);
+    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.JKD);
     int i = arrayOfObject.length;
-    if ((i > 0) && ((this.IiU == null) || (this.IiU.length < i)))
+    if ((i > 0) && ((this.JKF == null) || (this.JKF.length < i)))
     {
-      this.IiU = ((Object[])Array.newInstance(this.IiS, i));
-      this.IiV = new int[i];
-      this.IiW = new int[i];
-      this.IiX = new int[i];
+      this.JKF = ((Object[])Array.newInstance(this.JKD, i));
+      this.JKG = new int[i];
+      this.JKH = new int[i];
+      this.JKI = new int[i];
     }
-    this.IiT = 0;
+    this.JKE = 0;
     paramInt = 0;
     while (paramInt < i)
     {
@@ -41,24 +41,24 @@ public final class e<E>
       if (j != k)
       {
         int m = paramSpanned.getSpanFlags(localObject);
-        this.IiU[this.IiT] = localObject;
-        this.IiV[this.IiT] = j;
-        this.IiW[this.IiT] = k;
-        this.IiX[this.IiT] = m;
-        this.IiT += 1;
+        this.JKF[this.JKE] = localObject;
+        this.JKG[this.JKE] = j;
+        this.JKH[this.JKE] = k;
+        this.JKI[this.JKE] = m;
+        this.JKE += 1;
       }
       paramInt += 1;
     }
     AppMethodBeat.o(39760);
   }
   
-  public final E kh(int paramInt1, int paramInt2)
+  public final E ku(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.IiT)
+    while (i < this.JKE)
     {
-      if ((this.IiV[i] < paramInt2) && (this.IiW[i] > paramInt1)) {
-        return this.IiU[i];
+      if ((this.JKG[i] < paramInt2) && (this.JKH[i] > paramInt1)) {
+        return this.JKF[i];
       }
       i += 1;
     }

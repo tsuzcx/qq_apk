@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.game.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +17,10 @@ public final class a
   {
     AppMethodBeat.i(45136);
     g(paramq);
-    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch pause");
+    ac.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch pause");
     paramq = new HashMap(1);
     paramq.put("state", "pause");
-    B(paramq).aXQ();
+    A(paramq).beN();
     AppMethodBeat.o(45136);
   }
   
@@ -28,16 +28,16 @@ public final class a
   {
     AppMethodBeat.i(45137);
     g(paramq);
-    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch resume");
+    ac.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch resume");
     paramq = new HashMap(1);
     paramq.put("state", "resume");
-    B(paramq).aXQ();
+    A(paramq).beN();
     AppMethodBeat.o(45137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.a.a
  * JD-Core Version:    0.7.0.1
  */

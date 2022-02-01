@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.fav.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au.a;
 
 final class a$5
-  implements av.a
+  implements au.a
 {
   a$5(a parama) {}
   
@@ -14,7 +14,7 @@ final class a$5
     AppMethodBeat.i(101589);
     try
     {
-      this.qbK.ayc();
+      this.qKq.aEU();
       AppMethodBeat.o(101589);
       return false;
     }
@@ -22,7 +22,7 @@ final class a$5
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Fav.FavCdnService", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Fav.FavCdnService", localException, "", new Object[0]);
       }
     }
   }
@@ -37,7 +37,7 @@ final class a$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.e.a.5
  * JD-Core Version:    0.7.0.1
  */

@@ -3,11 +3,11 @@ package d.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/random/XorWowRandom;", "Lkotlin/random/Random;", "seed1", "", "seed2", "(II)V", "x", "y", "z", "w", "v", "addend", "(IIIIII)V", "nextBits", "bitCount", "nextInt", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/random/XorWowRandom;", "Lkotlin/random/Random;", "seed1", "", "seed2", "(II)V", "x", "y", "z", "w", "v", "addend", "(IIIIII)V", "nextBits", "bitCount", "nextInt", "kotlin-stdlib"})
 public final class e
   extends c
 {
-  private int JhG;
+  private int KVa;
   private int v;
   private int w;
   private int x;
@@ -29,7 +29,7 @@ public final class e
     this.z = 0;
     this.w = 0;
     this.v = paramInt3;
-    this.JhG = paramInt4;
+    this.KVa = paramInt4;
     if ((this.x | this.y | this.z | this.w | this.v) != 0) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
@@ -49,10 +49,10 @@ public final class e
     AppMethodBeat.o(129556);
   }
   
-  public final int adN(int paramInt)
+  public final int agJ(int paramInt)
   {
     AppMethodBeat.i(129555);
-    paramInt = d.kI(nextInt(), paramInt);
+    paramInt = d.kY(nextInt(), paramInt);
     AppMethodBeat.o(129555);
     return paramInt;
   }
@@ -68,8 +68,8 @@ public final class e
     this.w = j;
     i = i ^ i << 1 ^ j ^ j << 4;
     this.v = i;
-    this.JhG += 362437;
-    return i + this.JhG;
+    this.KVa += 362437;
+    return i + this.KVa;
   }
 }
 

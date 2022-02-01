@@ -23,36 +23,36 @@ import java.util.Queue;
 public class HorizontalListView
   extends AdapterView<ListAdapter>
 {
-  protected ListAdapter DP;
-  public boolean FVh;
-  private int FVi;
-  private int FVj;
-  protected int FVk;
-  protected int FVl;
-  private int FVm;
-  private int FVn;
-  private GestureDetector FVo;
-  private Queue<View> FVp;
-  private AdapterView.OnItemSelectedListener FVq;
-  private AdapterView.OnItemClickListener FVr;
-  private boolean FVs;
-  private a FVt;
-  private DataSetObserver FVu;
-  private GestureDetector.OnGestureListener FVv;
+  protected ListAdapter EN;
+  public boolean HuV;
+  private int HuW;
+  private int HuX;
+  protected int HuY;
+  protected int HuZ;
+  private int Hva;
+  private int Hvb;
+  private GestureDetector Hvc;
+  private Queue<View> Hvd;
+  private AdapterView.OnItemSelectedListener Hve;
+  private AdapterView.OnItemClickListener Hvf;
+  private boolean Hvg;
+  private a Hvh;
+  private DataSetObserver Hvi;
+  private GestureDetector.OnGestureListener Hvj;
   protected Scroller mScroller;
   
   public HorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141681);
-    this.FVh = true;
-    this.FVi = -1;
-    this.FVj = 0;
-    this.FVm = 2147483647;
-    this.FVn = 0;
-    this.FVp = new LinkedList();
-    this.FVs = false;
-    this.FVu = new DataSetObserver()
+    this.HuV = true;
+    this.HuW = -1;
+    this.HuX = 0;
+    this.Hva = 2147483647;
+    this.Hvb = 0;
+    this.Hvd = new LinkedList();
+    this.Hvg = false;
+    this.Hvi = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -76,12 +76,12 @@ public class HorizontalListView
         AppMethodBeat.o(141675);
       }
     };
-    this.FVv = new GestureDetector.SimpleOnGestureListener()
+    this.Hvj = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(141677);
-        boolean bool = HorizontalListView.this.eSs();
+        boolean bool = HorizontalListView.this.fic();
         AppMethodBeat.o(141677);
         return bool;
       }
@@ -89,7 +89,7 @@ public class HorizontalListView
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(141678);
-        boolean bool = HorizontalListView.this.bE(paramAnonymousFloat1);
+        boolean bool = HorizontalListView.this.bM(paramAnonymousFloat1);
         AppMethodBeat.o(141678);
         return bool;
       }
@@ -100,7 +100,7 @@ public class HorizontalListView
         synchronized (HorizontalListView.this)
         {
           paramAnonymousMotionEvent2 = HorizontalListView.this;
-          paramAnonymousMotionEvent2.FVl += (int)paramAnonymousFloat1;
+          paramAnonymousMotionEvent2.HuZ += (int)paramAnonymousFloat1;
           HorizontalListView.this.requestLayout();
           AppMethodBeat.o(141679);
           return true;
@@ -124,10 +124,10 @@ public class HorizontalListView
               break label217;
             }
             if (HorizontalListView.c(HorizontalListView.this) != null) {
-              HorizontalListView.c(HorizontalListView.this).onItemClick(HorizontalListView.this, localView, HorizontalListView.d(HorizontalListView.this) + 1 + i, HorizontalListView.this.DP.getItemId(HorizontalListView.d(HorizontalListView.this) + 1 + i));
+              HorizontalListView.c(HorizontalListView.this).onItemClick(HorizontalListView.this, localView, HorizontalListView.d(HorizontalListView.this) + 1 + i, HorizontalListView.this.EN.getItemId(HorizontalListView.d(HorizontalListView.this) + 1 + i));
             }
             if (HorizontalListView.e(HorizontalListView.this) != null) {
-              HorizontalListView.e(HorizontalListView.this).onItemSelected(HorizontalListView.this, localView, HorizontalListView.d(HorizontalListView.this) + 1 + i, HorizontalListView.this.DP.getItemId(HorizontalListView.d(HorizontalListView.this) + 1 + i));
+              HorizontalListView.e(HorizontalListView.this).onItemSelected(HorizontalListView.this, localView, HorizontalListView.d(HorizontalListView.this) + 1 + i, HorizontalListView.this.EN.getItemId(HorizontalListView.d(HorizontalListView.this) + 1 + i));
             }
           }
           AppMethodBeat.o(141680);
@@ -141,7 +141,7 @@ public class HorizontalListView
     AppMethodBeat.o(141681);
   }
   
-  private void ax(View paramView, int paramInt)
+  private void az(View paramView, int paramInt)
   {
     AppMethodBeat.i(141685);
     ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
@@ -159,14 +159,14 @@ public class HorizontalListView
     try
     {
       AppMethodBeat.i(141682);
-      this.FVi = -1;
-      this.FVj = 0;
-      this.FVn = 0;
-      this.FVk = 0;
-      this.FVl = 0;
-      this.FVm = 2147483647;
+      this.HuW = -1;
+      this.HuX = 0;
+      this.Hvb = 0;
+      this.HuY = 0;
+      this.HuZ = 0;
+      this.Hva = 2147483647;
       this.mScroller = new Scroller(getContext());
-      this.FVo = new GestureDetector(getContext(), this.FVv);
+      this.Hvc = new GestureDetector(getContext(), this.Hvj);
       AppMethodBeat.o(141682);
       return;
     }
@@ -195,12 +195,12 @@ public class HorizontalListView
     }
   }
   
-  protected final boolean bE(float paramFloat)
+  protected final boolean bM(float paramFloat)
   {
     AppMethodBeat.i(141688);
     try
     {
-      this.mScroller.fling(this.FVl, 0, (int)-paramFloat, 0, 0, this.FVm, 0, 0);
+      this.mScroller.fling(this.HuZ, 0, (int)-paramFloat, 0, 0, this.Hva, 0, 0);
       requestLayout();
       AppMethodBeat.o(141688);
       return true;
@@ -215,12 +215,12 @@ public class HorizontalListView
   {
     AppMethodBeat.i(141687);
     boolean bool1 = super.dispatchTouchEvent(paramMotionEvent);
-    boolean bool2 = this.FVo.onTouchEvent(paramMotionEvent);
+    boolean bool2 = this.Hvc.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(141687);
     return bool1 | bool2;
   }
   
-  protected final boolean eSs()
+  protected final boolean fic()
   {
     AppMethodBeat.i(141689);
     this.mScroller.forceFinished(true);
@@ -230,7 +230,7 @@ public class HorizontalListView
   
   public ListAdapter getAdapter()
   {
-    return this.DP;
+    return this.EN;
   }
   
   public View getSelectedView()
@@ -245,39 +245,39 @@ public class HorizontalListView
     {
       AppMethodBeat.i(141686);
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (this.DP == null)
+      if (this.EN == null)
       {
         AppMethodBeat.o(141686);
         return;
       }
-      if (this.FVs)
+      if (this.Hvg)
       {
-        paramInt1 = this.FVk;
+        paramInt1 = this.HuY;
         initView();
         removeAllViewsInLayout();
-        this.FVl = paramInt1;
-        this.FVs = false;
+        this.HuZ = paramInt1;
+        this.Hvg = false;
       }
       if (this.mScroller.computeScrollOffset()) {
-        this.FVl = this.mScroller.getCurrX();
+        this.HuZ = this.mScroller.getCurrX();
       }
-      if (this.FVl <= 0)
+      if (this.HuZ <= 0)
       {
-        this.FVl = 0;
+        this.HuZ = 0;
         this.mScroller.forceFinished(true);
       }
-      if (this.FVl >= this.FVm)
+      if (this.HuZ >= this.Hva)
       {
-        this.FVl = this.FVm;
+        this.HuZ = this.Hva;
         this.mScroller.forceFinished(true);
       }
-      paramInt2 = this.FVk - this.FVl;
+      paramInt2 = this.HuY - this.HuZ;
       for (View localView1 = getChildAt(0); (localView1 != null) && (localView1.getRight() + paramInt2 <= 0); localView1 = getChildAt(0))
       {
-        this.FVn += localView1.getMeasuredWidth();
-        this.FVp.offer(localView1);
+        this.Hvb += localView1.getMeasuredWidth();
+        this.Hvd.offer(localView1);
         removeViewInLayout(localView1);
-        this.FVi += 1;
+        this.HuW += 1;
       }
       for (;;)
       {
@@ -285,9 +285,9 @@ public class HorizontalListView
         if ((localView1 == null) || (localView1.getLeft() + paramInt2 < getWidth())) {
           break;
         }
-        this.FVp.offer(localView1);
+        this.Hvd.offer(localView1);
         removeViewInLayout(localView1);
-        this.FVj -= 1;
+        this.HuX -= 1;
       }
       localView2 = getChildAt(getChildCount() - 1);
     }
@@ -298,18 +298,18 @@ public class HorizontalListView
       paramInt1 = localView2.getRight();
       break label669;
       label313:
-      while ((paramInt1 + paramInt2 < getWidth()) && (this.FVj < this.DP.getCount()))
+      while ((paramInt1 + paramInt2 < getWidth()) && (this.HuX < this.EN.getCount()))
       {
-        localView2 = this.DP.getView(this.FVj, (View)this.FVp.poll(), this);
-        ax(localView2, -1);
+        localView2 = this.EN.getView(this.HuX, (View)this.Hvd.poll(), this);
+        az(localView2, -1);
         paramInt1 = localView2.getMeasuredWidth() + paramInt1;
-        if (this.FVj == this.DP.getCount() - 1) {
-          this.FVm = (this.FVk + paramInt1 - getWidth());
+        if (this.HuX == this.EN.getCount() - 1) {
+          this.Hva = (this.HuY + paramInt1 - getWidth());
         }
-        if (this.FVm < 0) {
-          this.FVm = 0;
+        if (this.Hva < 0) {
+          this.Hva = 0;
         }
-        this.FVj += 1;
+        this.HuX += 1;
       }
       localView2 = getChildAt(0);
       if (localView2 != null)
@@ -322,21 +322,21 @@ public class HorizontalListView
     label672:
     for (;;)
     {
-      if ((paramInt1 + paramInt2 > 0) && (this.FVi >= 0))
+      if ((paramInt1 + paramInt2 > 0) && (this.HuW >= 0))
       {
-        localView2 = this.DP.getView(this.FVi, (View)this.FVp.poll(), this);
-        ax(localView2, 0);
+        localView2 = this.EN.getView(this.HuW, (View)this.Hvd.poll(), this);
+        az(localView2, 0);
         paramInt3 = localView2.getMeasuredWidth();
-        this.FVi -= 1;
-        this.FVn -= localView2.getMeasuredWidth();
+        this.HuW -= 1;
+        this.Hvb -= localView2.getMeasuredWidth();
         paramInt1 -= paramInt3;
       }
       else
       {
         if (getChildCount() > 0)
         {
-          this.FVn += paramInt2;
-          paramInt2 = this.FVn;
+          this.Hvb += paramInt2;
+          paramInt2 = this.Hvb;
           paramInt1 = i;
           while (paramInt1 < getChildCount())
           {
@@ -347,7 +347,7 @@ public class HorizontalListView
             paramInt1 += 1;
           }
         }
-        this.FVk = this.FVl;
+        this.HuY = this.HuZ;
         if (!this.mScroller.isFinished()) {
           post(new Runnable()
           {
@@ -372,28 +372,28 @@ public class HorizontalListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(141683);
-    if (this.DP != null) {
-      this.DP.unregisterDataSetObserver(this.FVu);
+    if (this.EN != null) {
+      this.EN.unregisterDataSetObserver(this.Hvi);
     }
-    this.DP = paramListAdapter;
-    this.DP.registerDataSetObserver(this.FVu);
+    this.EN = paramListAdapter;
+    this.EN.registerDataSetObserver(this.Hvi);
     reset();
     AppMethodBeat.o(141683);
   }
   
   public void setDispatchTouchListener(a parama)
   {
-    this.FVt = parama;
+    this.Hvh = parama;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.FVr = paramOnItemClickListener;
+    this.Hvf = paramOnItemClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.FVq = paramOnItemSelectedListener;
+    this.Hve = paramOnItemSelectedListener;
   }
   
   public void setSelection(int paramInt) {}
@@ -402,7 +402,7 @@ public class HorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

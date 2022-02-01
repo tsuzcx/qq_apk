@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public final class ab
   extends m
 {
-  public String zWG;
+  public String Bpa;
   
   public ab(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
@@ -68,7 +68,7 @@ public final class ab
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69949);
-    this.zWG = paramJSONObject.optString("usertoken", "");
+    this.Bpa = paramJSONObject.optString("usertoken", "");
     AppMethodBeat.o(69949);
   }
 }

@@ -1,17 +1,17 @@
 package com.tencent.mm.loader.b.a;
 
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
 import java.io.OutputStream;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.Loader.DiskFunction";
-  public static final c giE = new c();
+  public static final c gJp = new c();
   
   /* Error */
   public static boolean a(String paramString, OutputStream paramOutputStream)
@@ -26,7 +26,7 @@ public final class c
     //   9: ldc 59
     //   11: invokestatic 57	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: invokestatic 103	com/tencent/mm/vfs/i:eK	(Ljava/lang/String;)Z
+    //   15: invokestatic 103	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
     //   18: ifeq +74 -> 92
     //   21: aload_0
     //   22: invokestatic 107	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
@@ -102,7 +102,7 @@ public final class c
     return true;
   }
   
-  public static OutputStream re(String paramString)
+  public static OutputStream vg(String paramString)
   {
     k.h(paramString, "filePath");
     if (((CharSequence)paramString).length() == 0) {}
@@ -111,17 +111,17 @@ public final class c
     }
     try
     {
-      e locale = new e(paramString).fhT();
+      e locale = new e(paramString).fxU();
       if (locale != null) {
         locale.mkdirs();
       }
-      paramString = i.vu(paramString);
+      paramString = i.zA(paramString);
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ad.e(TAG, "obtainOutputStream:%s", new Object[] { paramString });
+        ac.e(TAG, "obtainOutputStream:%s", new Object[] { paramString });
         paramString = null;
       }
     }
@@ -130,7 +130,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.c
  * JD-Core Version:    0.7.0.1
  */

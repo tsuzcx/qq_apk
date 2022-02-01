@@ -1,54 +1,54 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.bw;
-import com.tencent.mm.g.b.a.bx;
-import com.tencent.mm.g.b.a.by;
+import com.tencent.mm.g.b.a.dk;
+import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.g.b.a.dm;
 import com.tencent.mm.model.w;
 
 public final class z
 {
   public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(196572);
+    AppMethodBeat.i(197038);
     int i = 1;
-    if (w.ty(paramString1)) {
+    if (w.xB(paramString1)) {
       i = 2;
     }
-    by localby = new by();
-    localby.iE(paramString1);
-    localby.dHG = i;
-    localby.dQo = paramInt1;
-    localby.dPY = paramInt2;
-    localby.dFf = paramInt3;
-    localby.dQs = paramInt4;
-    localby.iF(paramString2);
-    localby.iG(paramString3);
-    localby.aBj();
-    AppMethodBeat.o(196572);
+    dm localdm = new dm();
+    localdm.lu(paramString1);
+    localdm.dFt = i;
+    localdm.dSe = paramInt1;
+    localdm.dRP = paramInt2;
+    localdm.dCS = paramInt3;
+    localdm.dSh = paramInt4;
+    localdm.lv(paramString2);
+    localdm.lw(paramString3);
+    localdm.aHZ();
+    AppMethodBeat.o(197038);
   }
   
   public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(196574);
+    AppMethodBeat.i(197040);
     int i = 0;
-    if (w.ty(paramString1)) {
+    if (w.xB(paramString1)) {
       i = 2;
     }
     for (;;)
     {
-      bx localbx = new bx();
-      localbx.iB(paramString1);
-      localbx.dHG = i;
-      localbx.dPY = paramInt1;
-      localbx.dFf = paramInt2;
-      localbx.dQo = paramInt3;
-      localbx.iC(paramString2);
-      localbx.iD(paramString3);
-      localbx.aBj();
-      AppMethodBeat.o(196574);
+      dl localdl = new dl();
+      localdl.lr(paramString1);
+      localdl.dFt = i;
+      localdl.dRP = paramInt1;
+      localdl.dCS = paramInt2;
+      localdl.dSe = paramInt3;
+      localdl.ls(paramString2);
+      localdl.lt(paramString3);
+      localdl.aHZ();
+      AppMethodBeat.o(197040);
       return;
-      if (w.tx(paramString1)) {
+      if (w.xA(paramString1)) {
         i = 1;
       }
     }
@@ -56,25 +56,25 @@ public final class z
   
   public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(196573);
+    AppMethodBeat.i(197039);
     int i = 0;
-    if (w.ty(paramString1)) {
+    if (w.xB(paramString1)) {
       i = 2;
     }
     for (;;)
     {
-      bw localbw = new bw();
-      localbw.iy(paramString1);
-      localbw.dHG = i;
-      localbw.dPY = paramInt1;
-      localbw.dKc = paramInt2;
-      localbw.QA();
-      localbw.iz(paramString2);
-      localbw.iA(paramString3);
-      localbw.aBj();
-      AppMethodBeat.o(196573);
+      dk localdk = new dk();
+      localdk.lo(paramString1);
+      localdk.dFt = i;
+      localdk.dRP = paramInt1;
+      localdk.dHR = paramInt2;
+      localdk.Rc();
+      localdk.lp(paramString2);
+      localdk.lq(paramString3);
+      localdk.aHZ();
+      AppMethodBeat.o(197039);
       return;
-      if (w.tx(paramString1)) {
+      if (w.xA(paramString1)) {
         i = 1;
       }
     }

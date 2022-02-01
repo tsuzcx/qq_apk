@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ui
   extends b
 {
-  public a dzG;
+  public a dwZ;
   
   public ui()
   {
@@ -15,21 +15,21 @@ public final class ui
   
   private ui(byte paramByte)
   {
-    AppMethodBeat.i(116809);
-    this.dzG = new a();
-    this.ESR = false;
+    AppMethodBeat.i(94816);
+    this.dwZ = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116809);
+    AppMethodBeat.o(94816);
   }
   
   public static final class a
   {
-    public int action = 0;
+    public boolean dxa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ui
  * JD-Core Version:    0.7.0.1
  */

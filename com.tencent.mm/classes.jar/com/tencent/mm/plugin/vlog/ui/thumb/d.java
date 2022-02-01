@@ -1,84 +1,84 @@
 package com.tencent.mm.plugin.vlog.ui.thumb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.vlog.model.y;
+import com.tencent.mm.plugin.vlog.model.u;
 import d.l;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "(Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;)V", "dragging", "", "getDragging", "()Z", "setDragging", "(Z)V", "drawWidth", "", "getDrawWidth", "()I", "setDrawWidth", "(I)V", "frameCount", "", "getFrameCount", "()F", "setFrameCount", "(F)V", "frameDuration", "", "getFrameDuration", "()J", "frameEndMs", "getFrameEndMs", "setFrameEndMs", "(J)V", "frameStartMs", "getFrameStartMs", "setFrameStartMs", "frames", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameInfo;", "getFrames", "()Ljava/util/LinkedList;", "height", "getHeight", "setHeight", "getTrack", "()Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "trackIndex", "getTrackIndex", "setTrackIndex", "width", "getWidth", "setWidth", "cropToPlayRange", "", "start", "end", "isEmpty", "updateFrameInfo", "Companion", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "(Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;)V", "dragging", "", "getDragging", "()Z", "setDragging", "(Z)V", "drawWidth", "", "getDrawWidth", "()I", "setDrawWidth", "(I)V", "frameCount", "", "getFrameCount", "()F", "setFrameCount", "(F)V", "frameDuration", "", "getFrameDuration", "()J", "frameEndMs", "getFrameEndMs", "setFrameEndMs", "(J)V", "frameStartMs", "getFrameStartMs", "setFrameStartMs", "frames", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/FrameInfo;", "getFrames", "()Ljava/util/LinkedList;", "height", "getHeight", "setHeight", "getTrack", "()Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "trackIndex", "getTrackIndex", "setTrackIndex", "width", "getWidth", "setWidth", "cropToPlayRange", "", "start", "end", "isEmpty", "updateFrameInfo", "Companion", "plugin-vlog_release"})
 public final class d
 {
-  public static final y LvQ;
-  public static final a LvR;
-  public final y LqI;
-  public long LvL;
-  public long LvM;
-  public float LvN;
-  final LinkedList<a> LvO;
-  public boolean LvP;
-  public int guK;
+  public static final u AvD;
+  public static final a AvE;
+  public final u AnN;
+  public float AvA;
+  final LinkedList<a> AvB;
+  public boolean AvC;
+  public long Avy;
+  public long Avz;
+  public int grV;
   public int height;
   public int trackIndex;
   public int width;
   
   static
   {
-    AppMethodBeat.i(201260);
-    LvR = new a((byte)0);
-    LvQ = new y("", 0);
-    AppMethodBeat.o(201260);
+    AppMethodBeat.i(207948);
+    AvE = new a((byte)0);
+    AvD = new u("", 0);
+    AppMethodBeat.o(207948);
   }
   
-  public d(y paramy)
+  public d(u paramu)
   {
-    AppMethodBeat.i(201259);
-    this.LqI = paramy;
+    AppMethodBeat.i(207947);
+    this.AnN = paramu;
     this.trackIndex = -1;
-    this.LvL = this.LqI.Lro;
-    this.LvM = this.LqI.Lrp;
-    this.LvN = 1.0F;
-    this.LvO = new LinkedList();
-    AppMethodBeat.o(201259);
+    this.Avy = this.AnN.Aox;
+    this.Avz = this.AnN.Aoy;
+    this.AvA = 1.0F;
+    this.AvB = new LinkedList();
+    AppMethodBeat.o(207947);
   }
   
-  public final long fZr()
+  public final long egs()
   {
-    return this.LvM - this.LvL;
+    return this.Avz - this.Avy;
   }
   
-  public final void fZs()
+  public final void egt()
   {
-    AppMethodBeat.i(201258);
-    long l = ((float)fZr() / this.LvN);
-    int j = (int)Math.ceil(this.LvN);
-    this.LvO.clear();
+    AppMethodBeat.i(207946);
+    long l = ((float)egs() / this.AvA);
+    int j = (int)Math.ceil(this.AvA);
+    this.AvB.clear();
     int i = 0;
     while (i < j)
     {
       a locala = new a();
-      locala.Lri = ((i * l + this.LvL) / 500L * 500L);
-      this.LvO.add(locala);
+      locala.Aoq = ((i * l + this.Avy) / 500L * 500L + 250L);
+      this.AvB.add(locala);
       i += 1;
     }
-    AppMethodBeat.o(201258);
+    AppMethodBeat.o(207946);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo$Companion;", "", "()V", "MaxFrameThumbInterval", "", "emptyTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "emptyTrackThumb", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "drawWidth", "plugin-vlog_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo$Companion;", "", "()V", "MaxFrameThumbInterval", "", "emptyTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "emptyTrackThumb", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackThumbInfo;", "drawWidth", "plugin-vlog_release"})
   public static final class a
   {
-    public static d fZu()
+    public static d egv()
     {
-      AppMethodBeat.i(201257);
-      d locald = new d(d.fZt());
-      locald.guK = 0;
-      AppMethodBeat.o(201257);
+      AppMethodBeat.i(207945);
+      d locald = new d(d.egu());
+      locald.grV = 0;
+      AppMethodBeat.o(207945);
       return locald;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.thumb.d
  * JD-Core Version:    0.7.0.1
  */

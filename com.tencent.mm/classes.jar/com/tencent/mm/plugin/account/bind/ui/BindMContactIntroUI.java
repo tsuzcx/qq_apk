@@ -18,12 +18,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.ax.b.a;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.wf;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.aw.b.a;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.wq;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelsimple.t;
 import com.tencent.mm.plugin.account.friend.a.aa;
@@ -32,10 +32,10 @@ import com.tencent.mm.plugin.account.friend.a.z;
 import com.tencent.mm.plugin.account.friend.ui.i;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
 import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.protocal.protobuf.vv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.wf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
@@ -43,39 +43,39 @@ import com.tencent.mm.ui.base.p;
 
 public class BindMContactIntroUI
   extends MMWizardActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private String dpO;
-  private boolean ifG = false;
-  private ImageView ign;
-  private TextView igo;
-  private TextView igp;
-  private Button igq;
-  private Button igr;
-  private l.a igs;
-  private i igt;
-  private String igu = null;
-  private String igv = null;
-  private int igw;
-  private int igx = 0;
+  private String dnz;
+  private boolean iFP = false;
+  private Button iGA;
+  private l.a iGB;
+  private i iGC;
+  private String iGD = null;
+  private String iGE = null;
+  private int iGF;
+  private int iGG = 0;
+  private ImageView iGw;
+  private TextView iGx;
+  private TextView iGy;
+  private Button iGz;
   private p tipDialog = null;
   
-  private void aHX()
+  private void aOO()
   {
     AppMethodBeat.i(109871);
     hideVKB();
-    if (this.igw == 2)
+    if (this.iGF == 2)
     {
       cancel();
       finish();
       AppMethodBeat.o(109871);
       return;
     }
-    Xo(1);
+    ZA(1);
     AppMethodBeat.o(109871);
   }
   
-  private void eQ(boolean paramBoolean)
+  private void fk(boolean paramBoolean)
   {
     AppMethodBeat.i(109872);
     Intent localIntent = new Intent(this, BindMContactUI.class);
@@ -85,16 +85,16 @@ public class BindMContactIntroUI
     for (;;)
     {
       Object localObject = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
-      if (!bt.isNullOrNil((String)localObject))
+      if (!bs.isNullOrNil((String)localObject))
       {
-        localObject = b.bh((String)localObject, getString(2131757950));
+        localObject = b.bp((String)localObject, getString(2131757950));
         if (localObject != null)
         {
-          localIntent.putExtra("country_name", ((b.a)localObject).hkO);
-          localIntent.putExtra("couttry_code", ((b.a)localObject).hkN);
+          localIntent.putExtra("country_name", ((b.a)localObject).hLr);
+          localIntent.putExtra("couttry_code", ((b.a)localObject).hLq);
         }
       }
-      V(this, localIntent);
+      aj(this, localIntent);
       AppMethodBeat.o(109872);
       return;
       localIntent.putExtra("bind_scene", 0);
@@ -109,21 +109,21 @@ public class BindMContactIntroUI
   public void initView()
   {
     AppMethodBeat.i(109869);
-    this.igw = getIntent().getIntExtra("bind_scene", 0);
-    this.ifG = getIntent().getBooleanExtra("KEnterFromBanner", false);
-    this.igx = getIntent().getIntExtra("key_upload_scene", 0);
-    this.igs = com.tencent.mm.plugin.account.friend.a.l.aIL();
-    ad.d("MicroMsg.BindMContactIntroUI", "state " + this.igs);
-    this.dpO = ((String)com.tencent.mm.kernel.g.afB().afk().get(6, null));
-    if ((this.dpO == null) || (this.dpO.equals(""))) {
-      this.dpO = ((String)com.tencent.mm.kernel.g.afB().afk().get(4097, null));
+    this.iGF = getIntent().getIntExtra("bind_scene", 0);
+    this.iFP = getIntent().getBooleanExtra("KEnterFromBanner", false);
+    this.iGG = getIntent().getIntExtra("key_upload_scene", 0);
+    this.iGB = com.tencent.mm.plugin.account.friend.a.l.aPC();
+    ac.d("MicroMsg.BindMContactIntroUI", "state " + this.iGB);
+    this.dnz = ((String)com.tencent.mm.kernel.g.agR().agA().get(6, null));
+    if ((this.dnz == null) || (this.dnz.equals(""))) {
+      this.dnz = ((String)com.tencent.mm.kernel.g.agR().agA().get(4097, null));
     }
-    this.ign = ((ImageView)findViewById(2131304628));
-    this.igo = ((TextView)findViewById(2131304626));
-    this.igp = ((TextView)findViewById(2131304625));
-    this.igq = ((Button)findViewById(2131304624));
-    this.igr = ((Button)findViewById(2131304627));
-    this.igq.setOnClickListener(new View.OnClickListener()
+    this.iGw = ((ImageView)findViewById(2131304628));
+    this.iGx = ((TextView)findViewById(2131304626));
+    this.iGy = ((TextView)findViewById(2131304625));
+    this.iGz = ((Button)findViewById(2131304624));
+    this.iGA = ((Button)findViewById(2131304627));
+    this.iGz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -132,7 +132,7 @@ public class BindMContactIntroUI
         AppMethodBeat.o(109850);
       }
     });
-    this.igr.setOnClickListener(new View.OnClickListener()
+    this.iGA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -153,12 +153,12 @@ public class BindMContactIntroUI
           return true;
         }
       });
-      if ((this.igs == l.a.ikz) || (this.igs == l.a.iky))
+      if ((this.iGB == l.a.iKG) || (this.iGB == l.a.iKF))
       {
-        String str = com.tencent.mm.m.g.Zd().getValue("ShowUnbindPhone");
+        String str = com.tencent.mm.m.g.ZY().getValue("ShowUnbindPhone");
         final int i = 2;
-        if (!bt.isNullOrNil(str)) {
-          i = bt.aGh(str);
+        if (!bs.isNullOrNil(str)) {
+          i = bs.aLy(str);
         }
         if (i != 0) {
           addIconOptionMenu(1, 2131690603, new MenuItem.OnMenuItemClickListener()
@@ -167,22 +167,22 @@ public class BindMContactIntroUI
             {
               AppMethodBeat.i(109861);
               paramAnonymousMenuItem = new com.tencent.mm.ui.tools.l(BindMContactIntroUI.this.getContext());
-              paramAnonymousMenuItem.HrX = new n.c()
+              paramAnonymousMenuItem.ISu = new n.c()
               {
                 public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
                 {
                   AppMethodBeat.i(109859);
                   paramAnonymous2l.setHeaderTitle(2131756477);
-                  if ((BindMContactIntroUI.23.this.igB & 0x2) != 0) {
-                    paramAnonymous2l.jj(0, 2131756496);
+                  if ((BindMContactIntroUI.23.this.iGK & 0x2) != 0) {
+                    paramAnonymous2l.jw(0, 2131756496);
                   }
-                  if ((BindMContactIntroUI.23.this.igB & 0x1) != 0) {
-                    paramAnonymous2l.jj(1, 2131756456);
+                  if ((BindMContactIntroUI.23.this.iGK & 0x1) != 0) {
+                    paramAnonymous2l.jw(1, 2131756456);
                   }
                   AppMethodBeat.o(109859);
                 }
               };
-              paramAnonymousMenuItem.HrY = new n.d()
+              paramAnonymousMenuItem.ISv = new n.d()
               {
                 public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                 {
@@ -203,14 +203,14 @@ public class BindMContactIntroUI
                   }
                 }
               };
-              paramAnonymousMenuItem.fdQ();
+              paramAnonymousMenuItem.ftL();
               AppMethodBeat.o(109861);
               return false;
             }
           });
         }
       }
-      switch (20.igA[this.igs.ordinal()])
+      switch (20.iGJ[this.iGB.ordinal()])
       {
       }
     }
@@ -230,42 +230,42 @@ public class BindMContactIntroUI
       });
       break;
       showOptionMenu(1, false);
-      this.ign.setImageResource(2131690820);
-      this.igp.setVisibility(0);
-      this.igr.setVisibility(8);
-      this.igo.setText(2131756472);
-      this.igp.setText(2131756471);
-      this.igq.setText(2131756446);
+      this.iGw.setImageResource(2131690820);
+      this.iGy.setVisibility(0);
+      this.iGA.setVisibility(8);
+      this.iGx.setText(2131756472);
+      this.iGy.setText(2131756471);
+      this.iGz.setText(2131756446);
       AppMethodBeat.o(109869);
       return;
       showOptionMenu(1, false);
-      this.ign.setImageResource(2131690820);
-      this.igp.setVisibility(0);
-      this.igr.setVisibility(0);
-      this.igo.setText(String.format(getString(2131756511), new Object[] { this.dpO }));
-      this.igp.setText(2131756500);
-      this.igq.setText(2131756505);
-      this.igr.setText(2131756457);
+      this.iGw.setImageResource(2131690820);
+      this.iGy.setVisibility(0);
+      this.iGA.setVisibility(0);
+      this.iGx.setText(String.format(getString(2131756511), new Object[] { this.dnz }));
+      this.iGy.setText(2131756500);
+      this.iGz.setText(2131756505);
+      this.iGA.setText(2131756457);
       AppMethodBeat.o(109869);
       return;
       showOptionMenu(1, true);
-      this.ign.setImageResource(2131690819);
-      this.igp.setVisibility(0);
-      this.igr.setVisibility(0);
-      this.igo.setText(String.format(getString(2131756511), new Object[] { this.dpO }));
-      this.igp.setText(2131756501);
-      this.igq.setText(2131756502);
-      this.igr.setText(2131756455);
+      this.iGw.setImageResource(2131690819);
+      this.iGy.setVisibility(0);
+      this.iGA.setVisibility(0);
+      this.iGx.setText(String.format(getString(2131756511), new Object[] { this.dnz }));
+      this.iGy.setText(2131756501);
+      this.iGz.setText(2131756502);
+      this.iGA.setText(2131756455);
       AppMethodBeat.o(109869);
       return;
       showOptionMenu(1, true);
-      this.ign.setImageResource(2131690819);
-      this.igp.setVisibility(0);
-      this.igr.setVisibility(0);
-      this.igo.setText(String.format(getString(2131756511), new Object[] { this.dpO }));
-      this.igp.setText(2131756453);
-      this.igq.setText(2131756470);
-      this.igr.setText(2131756455);
+      this.iGw.setImageResource(2131690819);
+      this.iGy.setVisibility(0);
+      this.iGA.setVisibility(0);
+      this.iGx.setText(String.format(getString(2131756511), new Object[] { this.dnz }));
+      this.iGy.setText(2131756453);
+      this.iGz.setText(2131756470);
+      this.iGA.setText(2131756455);
     }
   }
   
@@ -273,7 +273,7 @@ public class BindMContactIntroUI
   {
     AppMethodBeat.i(109874);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.d("MicroMsg.BindMContactIntroUI", "summerunbind onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.d("MicroMsg.BindMContactIntroUI", "summerunbind onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     }
@@ -283,9 +283,9 @@ public class BindMContactIntroUI
       return;
       if (paramInt2 == -1)
       {
-        ad.i("MicroMsg.BindMContactIntroUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again mobile: " + this.dpO);
-        paramIntent = new aa(aa.ikV);
-        com.tencent.mm.kernel.g.aeS().a(paramIntent, 0);
+        ac.i("MicroMsg.BindMContactIntroUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again mobile: " + this.dnz);
+        paramIntent = new aa(aa.iLc);
+        com.tencent.mm.kernel.g.agi().a(paramIntent, 0);
         getString(2131755906);
         this.tipDialog = com.tencent.mm.ui.base.h.b(this, getString(2131755804), true, new DialogInterface.OnCancelListener()
         {
@@ -299,9 +299,9 @@ public class BindMContactIntroUI
   {
     AppMethodBeat.i(109866);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(132, this);
-    com.tencent.mm.kernel.g.aeS().a(255, this);
-    com.tencent.mm.kernel.g.aeS().a(254, this);
+    com.tencent.mm.kernel.g.agi().a(132, this);
+    com.tencent.mm.kernel.g.agi().a(255, this);
+    com.tencent.mm.kernel.g.agi().a(254, this);
     setMMTitle(2131756489);
     AppMethodBeat.o(109866);
   }
@@ -309,11 +309,11 @@ public class BindMContactIntroUI
   public void onDestroy()
   {
     AppMethodBeat.i(109867);
-    com.tencent.mm.kernel.g.aeS().b(132, this);
-    com.tencent.mm.kernel.g.aeS().b(255, this);
-    com.tencent.mm.kernel.g.aeS().b(254, this);
-    if (this.igt != null) {
-      this.igt.recycle();
+    com.tencent.mm.kernel.g.agi().b(132, this);
+    com.tencent.mm.kernel.g.agi().b(255, this);
+    com.tencent.mm.kernel.g.agi().b(254, this);
+    if (this.iGC != null) {
+      this.iGC.recycle();
     }
     super.onDestroy();
     AppMethodBeat.o(109867);
@@ -324,7 +324,7 @@ public class BindMContactIntroUI
     AppMethodBeat.i(109870);
     if (paramInt == 4)
     {
-      aHX();
+      aOO();
       AppMethodBeat.o(109870);
       return true;
     }
@@ -344,7 +344,7 @@ public class BindMContactIntroUI
   public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
     AppMethodBeat.i(109873);
-    ad.i("MicroMsg.BindMContactIntroUI", "summerunbind onSceneEnd type: " + paramn.getType() + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.BindMContactIntroUI", "summerunbind onSceneEnd type: " + paramn.getType() + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if ((paramn.getType() == 132) && (paramInt1 == 0) && (paramInt2 == 0))
     {
       if (this.tipDialog != null)
@@ -352,30 +352,30 @@ public class BindMContactIntroUI
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
-      if (((z)paramn).JJ() == 3)
+      if (((z)paramn).Js() == 3)
       {
         ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).removeSelfAccount(this);
-        if (!bt.isNullOrNil(this.igv))
+        if (!bs.isNullOrNil(this.iGE))
         {
-          com.tencent.mm.ui.base.h.a(this, this.igv, "", getString(2131755793), new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(this, this.iGE, "", getString(2131755793), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(109864);
-              MMWizardActivity.V(BindMContactIntroUI.this, new Intent(BindMContactIntroUI.this, BindMContactStatusUI.class));
+              MMWizardActivity.aj(BindMContactIntroUI.this, new Intent(BindMContactIntroUI.this, BindMContactStatusUI.class));
               AppMethodBeat.o(109864);
             }
           });
           AppMethodBeat.o(109873);
           return;
         }
-        V(this, new Intent(this, BindMContactStatusUI.class));
+        aj(this, new Intent(this, BindMContactStatusUI.class));
       }
       AppMethodBeat.o(109873);
       return;
     }
     int i;
-    if (com.tencent.mm.plugin.account.a.a.hYu.a(this, paramInt1, paramInt2, paramString)) {
+    if (com.tencent.mm.plugin.account.a.a.iyy.a(this, paramInt1, paramInt2, paramString)) {
       i = 1;
     }
     while (i != 0)
@@ -393,7 +393,7 @@ public class BindMContactIntroUI
       default: 
         break;
       case -214: 
-        paramString = com.tencent.mm.h.a.oG(paramString);
+        paramString = com.tencent.mm.h.a.rM(paramString);
         if (paramString != null) {
           paramString.a(this, null, null);
         }
@@ -429,12 +429,12 @@ public class BindMContactIntroUI
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.igv = ((aa)paramn).aIX().CXU;
-        this.igu = ((aa)paramn).aIW();
-        if (!bt.isNullOrNil(this.igv))
+        this.iGE = ((aa)paramn).aPO().EqD;
+        this.iGD = ((aa)paramn).aPN();
+        if (!bs.isNullOrNil(this.iGE))
         {
-          paramString = new z(this.dpO, 3, "", 0, "");
-          com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+          paramString = new z(this.dnz, 3, "", 0, "");
+          com.tencent.mm.kernel.g.agi().a(paramString, 0);
           paramn = getContext();
           getString(2131755906);
           this.tipDialog = com.tencent.mm.ui.base.h.b(paramn, getString(2131756499), true, new DialogInterface.OnCancelListener()
@@ -442,7 +442,7 @@ public class BindMContactIntroUI
             public final void onCancel(DialogInterface paramAnonymousDialogInterface)
             {
               AppMethodBeat.i(109865);
-              com.tencent.mm.kernel.g.aeS().a(paramString);
+              com.tencent.mm.kernel.g.agi().a(paramString);
               AppMethodBeat.o(109865);
             }
           });
@@ -450,13 +450,13 @@ public class BindMContactIntroUI
           return;
         }
         paramString = new t(2);
-        com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+        com.tencent.mm.kernel.g.agi().a(paramString, 0);
         AppMethodBeat.o(109873);
         return;
       }
       if (paramInt2 == -3)
       {
-        ad.d("MicroMsg.BindMContactIntroUI", "summerunbind MMFunc_QueryHasPasswd err and set psw");
+        ac.d("MicroMsg.BindMContactIntroUI", "summerunbind MMFunc_QueryHasPasswd err and set psw");
         com.tencent.mm.ui.base.h.a(getContext(), getString(2131763480), null, getString(2131763481), getString(2131763479), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -484,8 +484,8 @@ public class BindMContactIntroUI
       if (paramInt2 != 0) {
         break label998;
       }
-      paramString = new z(this.dpO, 3, "", 0, "");
-      com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+      paramString = new z(this.dnz, 3, "", 0, "");
+      com.tencent.mm.kernel.g.agi().a(paramString, 0);
       AppCompatActivity localAppCompatActivity = getContext();
       getString(2131755906);
       this.tipDialog = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131756499), true, new DialogInterface.OnCancelListener()
@@ -493,7 +493,7 @@ public class BindMContactIntroUI
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(109852);
-          com.tencent.mm.kernel.g.aeS().a(paramString);
+          com.tencent.mm.kernel.g.agi().a(paramString);
           AppMethodBeat.o(109852);
         }
       });
@@ -507,7 +507,7 @@ public class BindMContactIntroUI
           this.tipDialog.dismiss();
           this.tipDialog = null;
         }
-        if (((z)paramn).JJ() == 3)
+        if (((z)paramn).Js() == 3)
         {
           if (paramInt2 == -82)
           {
@@ -566,7 +566,7 @@ public class BindMContactIntroUI
             });
             break;
             label998:
-            ad.i("MicroMsg.BindMContactIntroUI", "summerunbind old err_password");
+            ac.i("MicroMsg.BindMContactIntroUI", "summerunbind old err_password");
             com.tencent.mm.ui.base.h.a(getContext(), getString(2131763480), null, getString(2131763481), getString(2131763479), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -626,7 +626,7 @@ public class BindMContactIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI
  * JD-Core Version:    0.7.0.1
  */

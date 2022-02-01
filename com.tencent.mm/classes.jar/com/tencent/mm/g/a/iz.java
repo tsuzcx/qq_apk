@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iz
   extends b
 {
-  public a dmX;
+  public a dkr;
   
   public iz()
   {
@@ -15,21 +15,21 @@ public final class iz
   
   private iz(byte paramByte)
   {
-    AppMethodBeat.i(125620);
-    this.dmX = new a();
-    this.ESR = false;
+    AppMethodBeat.i(155369);
+    this.dkr = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125620);
+    AppMethodBeat.o(155369);
   }
   
   public static final class a
   {
-    public int djq = 0;
+    public int scene = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.iz
  * JD-Core Version:    0.7.0.1
  */

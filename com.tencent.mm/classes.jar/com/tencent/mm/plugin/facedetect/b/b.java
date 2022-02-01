@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.facedetect.b;
 
 public abstract interface b
 {
-  public abstract long cfq();
+  public abstract long cmX();
   
-  public abstract byte[] cfr();
+  public abstract byte[] cmY();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.b
  * JD-Core Version:    0.7.0.1
  */

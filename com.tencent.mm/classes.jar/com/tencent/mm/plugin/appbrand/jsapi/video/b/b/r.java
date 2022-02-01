@@ -11,52 +11,52 @@ import java.util.Map;
 public final class r
   implements e
 {
-  private String kox;
-  private final e kpr;
-  private final d kps;
-  private boolean kpt;
-  private boolean kpu;
+  private String kPQ;
+  private final e kQK;
+  private final d kQL;
+  private boolean kQM;
+  private boolean kQN;
   
   public r(e parame, d paramd)
   {
-    AppMethodBeat.i(193918);
-    this.kox = "";
-    this.kpr = ((e)a.checkNotNull(parame));
-    this.kps = ((d)a.checkNotNull(paramd));
-    AppMethodBeat.o(193918);
+    AppMethodBeat.i(194265);
+    this.kPQ = "";
+    this.kQK = ((e)a.checkNotNull(parame));
+    this.kQL = ((d)a.checkNotNull(paramd));
+    AppMethodBeat.o(194265);
   }
   
-  private String EE()
+  private String getLogTag()
   {
-    AppMethodBeat.i(193925);
-    String str = this.kox + "TeeDataSource";
-    AppMethodBeat.o(193925);
+    AppMethodBeat.i(194272);
+    String str = this.kPQ + "TeeDataSource";
+    AppMethodBeat.o(194272);
     return str;
   }
   
-  public final void Jk(String paramString)
+  public final void No(String paramString)
   {
-    this.kox = paramString;
+    this.kPQ = paramString;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(193919);
-    long l3 = this.kpr.a(paramg);
+    AppMethodBeat.i(194266);
+    long l3 = this.kQK.a(paramg);
     long l1 = -1L;
-    c localc = c.kpv;
+    c localc = c.kQO;
     long l2;
     Object localObject;
-    if ((this.kpr instanceof l))
+    if ((this.kQK instanceof l))
     {
-      l2 = this.kpr.aQu();
-      localObject = (List)((l)this.kpr).getResponseHeaders().get("Content-Type");
+      l2 = this.kQK.aXm();
+      localObject = (List)((l)this.kQK).getResponseHeaders().get("Content-Type");
       l1 = l2;
       if (localObject != null)
       {
         l1 = l2;
         if (!((List)localObject).isEmpty()) {
-          localc = c.Jn((String)((List)localObject).get(0));
+          localc = c.Nr((String)((List)localObject).get(0));
         }
       }
     }
@@ -67,89 +67,89 @@ public final class r
       {
         localObject = paramg;
         if (l3 != -1L) {
-          localObject = new g(paramg.uri, paramg.bwz, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
+          localObject = new g(paramg.uri, paramg.absoluteStreamPosition, paramg.position, l3, paramg.key, paramg.flags, paramg.uuid, paramg.priority);
         }
       }
-      this.kpt = false;
+      this.kQM = false;
       if (l2 != -1L) {}
       for (;;)
       {
         try
         {
-          this.kps.a((g)localObject, l2, localc);
-          this.kpu = true;
-          AppMethodBeat.o(193919);
+          this.kQL.a((g)localObject, l2, localc);
+          this.kQN = true;
+          AppMethodBeat.o(194266);
           return l3;
         }
         catch (b.a paramg)
         {
-          this.kpt = true;
-          h.a(5, EE(), "error open dataSink " + paramg.toString(), paramg);
+          this.kQM = true;
+          h.a(5, getLogTag(), "error open dataSink " + paramg.toString(), paramg);
           continue;
         }
-        this.kpt = true;
+        this.kQM = true;
       }
       l2 = l1;
     }
   }
   
-  public final long aQu()
+  public final long aXm()
   {
-    AppMethodBeat.i(193924);
-    long l = this.kpr.aQu();
-    AppMethodBeat.o(193924);
+    AppMethodBeat.i(194271);
+    long l = this.kQK.aXm();
+    AppMethodBeat.o(194271);
     return l;
   }
   
   public final long available()
   {
-    AppMethodBeat.i(193921);
-    long l = this.kpr.available();
-    AppMethodBeat.o(193921);
+    AppMethodBeat.i(194268);
+    long l = this.kQK.available();
+    AppMethodBeat.o(194268);
     return l;
   }
   
-  public final c bcW()
+  public final c bjR()
   {
-    AppMethodBeat.i(193923);
-    c localc = this.kpr.bcW();
-    AppMethodBeat.o(193923);
+    AppMethodBeat.i(194270);
+    c localc = this.kQK.bjR();
+    AppMethodBeat.o(194270);
     return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(193922);
+    AppMethodBeat.i(194269);
     try
     {
-      this.kpr.close();
+      this.kQK.close();
       try
       {
-        if (this.kpu) {
-          this.kps.close();
+        if (this.kQN) {
+          this.kQL.close();
         }
-        AppMethodBeat.o(193922);
+        AppMethodBeat.o(194269);
         return;
       }
       catch (b.a locala1)
       {
-        h.a(5, EE(), "error close dataSink " + locala1.toString(), locala1);
-        AppMethodBeat.o(193922);
+        h.a(5, getLogTag(), "error close dataSink " + locala1.toString(), locala1);
+        AppMethodBeat.o(194269);
         return;
       }
       try
       {
-        if (this.kpu) {
-          this.kps.close();
+        if (this.kQN) {
+          this.kQL.close();
         }
-        AppMethodBeat.o(193922);
+        AppMethodBeat.o(194269);
         throw localObject;
       }
       catch (b.a locala2)
       {
         for (;;)
         {
-          h.a(5, EE(), "error close dataSink " + locala2.toString(), locala2);
+          h.a(5, getLogTag(), "error close dataSink " + locala2.toString(), locala2);
         }
       }
     }
@@ -158,29 +158,29 @@ public final class r
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193920);
-    paramInt2 = this.kpr.read(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(194267);
+    paramInt2 = this.kQK.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      if (this.kpt)
+      if (this.kQM)
       {
-        AppMethodBeat.o(193920);
+        AppMethodBeat.o(194267);
         return paramInt2;
       }
     }
     try
     {
-      if (this.kpu) {
-        this.kps.write(paramArrayOfByte, paramInt1, paramInt2);
+      if (this.kQN) {
+        this.kQL.write(paramArrayOfByte, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(193920);
+      AppMethodBeat.o(194267);
       return paramInt2;
     }
     catch (b.a paramArrayOfByte)
     {
       for (;;)
       {
-        this.kpt = true;
-        h.a(5, EE(), "error write dataSink " + paramArrayOfByte.toString(), paramArrayOfByte);
+        this.kQM = true;
+        h.a(5, getLogTag(), "error write dataSink " + paramArrayOfByte.toString(), paramArrayOfByte);
       }
     }
   }

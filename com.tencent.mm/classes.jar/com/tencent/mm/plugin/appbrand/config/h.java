@@ -6,15 +6,15 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigUtils;", "", "()V", "versionType", "", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getVersionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "toLaunchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigUtils;", "", "()V", "versionType", "", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getVersionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "toLaunchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
 public final class h
 {
-  public static final h jdk;
+  public static final h jDx;
   
   static
   {
     AppMethodBeat.i(50334);
-    jdk = new h();
+    jDx = new h();
     AppMethodBeat.o(50334);
   }
   
@@ -25,27 +25,27 @@ public final class h
     LaunchParcel localLaunchParcel = new LaunchParcel();
     localLaunchParcel.username = paramAppBrandInitConfigWC.username;
     localLaunchParcel.appId = paramAppBrandInitConfigWC.appId;
-    localLaunchParcel.version = paramAppBrandInitConfigWC.aAS;
+    localLaunchParcel.version = paramAppBrandInitConfigWC.aBM;
     k.h(paramAppBrandInitConfigWC, "$this$versionType");
-    localLaunchParcel.gXn = paramAppBrandInitConfigWC.iOP;
-    localLaunchParcel.iJb = paramAppBrandInitConfigWC.iJb;
-    localLaunchParcel.kOh = paramAppBrandInitConfigWC.CY();
-    localLaunchParcel.cfi = paramAppBrandInitConfigWC.cfi;
+    localLaunchParcel.hxM = paramAppBrandInitConfigWC.joY;
+    localLaunchParcel.jjf = paramAppBrandInitConfigWC.jjf;
+    localLaunchParcel.lpG = paramAppBrandInitConfigWC.CB();
+    localLaunchParcel.cce = paramAppBrandInitConfigWC.cce;
     LaunchParamsOptional localLaunchParamsOptional = new LaunchParamsOptional();
-    localLaunchParamsOptional.cfh = paramAppBrandInitConfigWC.cfh;
-    localLaunchParamsOptional.cff = paramAppBrandInitConfigWC.cff;
-    localLaunchParamsOptional.cfj = paramAppBrandInitConfigWC.cfj;
-    localLaunchParcel.kOi = localLaunchParamsOptional;
-    localLaunchParcel.jdp = paramAppBrandInitConfigWC.jdp;
-    localLaunchParcel.jdo = paramAppBrandInitConfigWC.jdo;
-    localLaunchParcel.iJn = paramAppBrandInitConfigWC.iJn;
+    localLaunchParamsOptional.ccd = paramAppBrandInitConfigWC.ccd;
+    localLaunchParamsOptional.ccc = paramAppBrandInitConfigWC.ccc;
+    localLaunchParamsOptional.ccf = paramAppBrandInitConfigWC.ccf;
+    localLaunchParcel.lpH = localLaunchParamsOptional;
+    localLaunchParcel.jDC = paramAppBrandInitConfigWC.jDC;
+    localLaunchParcel.jDB = paramAppBrandInitConfigWC.jDB;
+    localLaunchParcel.jjr = paramAppBrandInitConfigWC.jjr;
     AppMethodBeat.o(50333);
     return localLaunchParcel;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.h
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import java.util.List;
 
 public final class aw
 {
-  public String diQ;
+  public String dgl;
   public int index;
   public int position;
-  public boolean xst;
-  public boolean xvU;
-  public List<View> xzo;
+  public boolean yFj;
+  public boolean yIK;
+  public List<View> yMc;
 }
 
 

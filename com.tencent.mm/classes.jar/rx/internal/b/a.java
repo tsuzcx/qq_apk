@@ -9,26 +9,26 @@ public final class a<T>
   extends AtomicInteger
   implements f
 {
-  final rx.i<? super T> Kpt;
+  final rx.i<? super T> Mdc;
   T value;
   
   public a(rx.i<? super T> parami)
   {
-    this.Kpt = parami;
+    this.Mdc = parami;
   }
   
   private static <T> void a(rx.i<? super T> parami, T paramT)
   {
     AppMethodBeat.i(90309);
-    if (parami.KoC.KrX)
+    if (parami.Mcl.MfG)
     {
       AppMethodBeat.o(90309);
       return;
     }
     try
     {
-      parami.fV(paramT);
-      if (parami.KoC.KrX)
+      parami.gd(paramT);
+      if (parami.Mcl.MfG)
       {
         AppMethodBeat.o(90309);
         return;
@@ -40,33 +40,11 @@ public final class a<T>
       AppMethodBeat.o(90309);
       return;
     }
-    parami.fNs();
+    parami.ggi();
     AppMethodBeat.o(90309);
   }
   
-  public final void setValue(T paramT)
-  {
-    AppMethodBeat.i(90308);
-    int i;
-    do
-    {
-      i = get();
-      if (i != 0) {
-        break;
-      }
-      this.value = paramT;
-    } while (!compareAndSet(0, 1));
-    for (;;)
-    {
-      AppMethodBeat.o(90308);
-      return;
-      if ((i == 2) && (compareAndSet(2, 3))) {
-        a(this.Kpt, paramT);
-      }
-    }
-  }
-  
-  public final void xU(long paramLong)
+  public final void CI(long paramLong)
   {
     AppMethodBeat.i(90307);
     if (paramLong < 0L)
@@ -93,14 +71,36 @@ public final class a<T>
       AppMethodBeat.o(90307);
       return;
       if ((i == 1) && (compareAndSet(1, 3))) {
-        a(this.Kpt, this.value);
+        a(this.Mdc, this.value);
+      }
+    }
+  }
+  
+  public final void setValue(T paramT)
+  {
+    AppMethodBeat.i(90308);
+    int i;
+    do
+    {
+      i = get();
+      if (i != 0) {
+        break;
+      }
+      this.value = paramT;
+    } while (!compareAndSet(0, 1));
+    for (;;)
+    {
+      AppMethodBeat.o(90308);
+      return;
+      if ((i == 2) && (compareAndSet(2, 3))) {
+        a(this.Mdc, paramT);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.b.a
  * JD-Core Version:    0.7.0.1
  */

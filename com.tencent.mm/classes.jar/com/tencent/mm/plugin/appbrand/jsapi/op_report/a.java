@@ -9,12 +9,12 @@ final class a
 {
   private static final int CTRL_INDEX = 246;
   private static final String NAME = "onStartReportPageData";
-  private static final a kdJ;
+  private static final a kEw;
   
   static
   {
     AppMethodBeat.i(147208);
-    kdJ = new a();
+    kEw = new a();
     AppMethodBeat.o(147208);
   }
   
@@ -23,7 +23,7 @@ final class a
     try
     {
       AppMethodBeat.i(147207);
-      kdJ.g(paramc).aXQ();
+      kEw.g(paramc).beN();
       AppMethodBeat.o(147207);
       return;
     }
@@ -36,7 +36,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.op_report.a
  * JD-Core Version:    0.7.0.1
  */

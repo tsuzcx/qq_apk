@@ -8,13 +8,13 @@ import d.l;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/DefaultImageDiskCache;", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "exists", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/disk/DefaultImageDiskCache;", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "exists", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
 public final class b
   extends d<String, Bitmap>
 {
   private static final String TAG = "MicroMsg.Loader.imageloader.DefaultImageDiskCache";
-  public static final a giD = new a((byte)0);
-  private com.tencent.mm.loader.f.f giB = (com.tencent.mm.loader.f.f)new com.tencent.mm.loader.e.a();
+  public static final b.a gJo = new b.a((byte)0);
+  private com.tencent.mm.loader.f.f gJm = (com.tencent.mm.loader.f.f)new com.tencent.mm.loader.e.a();
   
   public final boolean a(com.tencent.mm.loader.h.a.a<String> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
@@ -67,7 +67,7 @@ public final class b
     //   52: aload 6
     //   54: invokevirtual 96	com/tencent/mm/loader/b/a/b:c	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Ljava/lang/String;
     //   57: astore_3
-    //   58: getstatic 61	com/tencent/mm/loader/b/a/b:TAG	Ljava/lang/String;
+    //   58: getstatic 60	com/tencent/mm/loader/b/a/b:TAG	Ljava/lang/String;
     //   61: new 98	java/lang/StringBuilder
     //   64: dup
     //   65: ldc 100
@@ -79,11 +79,11 @@ public final class b
     //   79: aload_3
     //   80: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokestatic 122	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: getstatic 128	com/tencent/mm/loader/b/a/c:giE	Lcom/tencent/mm/loader/b/a/c;
+    //   86: invokestatic 122	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: getstatic 128	com/tencent/mm/loader/b/a/c:gJp	Lcom/tencent/mm/loader/b/a/c;
     //   92: astore 9
     //   94: aload_3
-    //   95: invokestatic 132	com/tencent/mm/loader/b/a/c:re	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   95: invokestatic 132	com/tencent/mm/loader/b/a/c:vg	(Ljava/lang/String;)Ljava/io/OutputStream;
     //   98: astore 9
     //   100: aload 9
     //   102: ifnull +80 -> 182
@@ -94,7 +94,7 @@ public final class b
     //   112: istore 7
     //   114: aload 4
     //   116: ifnull +36 -> 152
-    //   119: getstatic 128	com/tencent/mm/loader/b/a/c:giE	Lcom/tencent/mm/loader/b/a/c;
+    //   119: getstatic 128	com/tencent/mm/loader/b/a/c:gJp	Lcom/tencent/mm/loader/b/a/c;
     //   122: astore 10
     //   124: aload 4
     //   126: invokevirtual 140	com/tencent/mm/loader/h/e:value	()Ljava/lang/Object;
@@ -120,7 +120,7 @@ public final class b
     //   167: aload 6
     //   169: invokevirtual 158	com/tencent/mm/loader/b/a/b:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
     //   172: pop
-    //   173: getstatic 164	d/y:JfV	Ld/y;
+    //   173: getstatic 164	d/y:KTp	Ld/y;
     //   176: astore_1
     //   177: aload_3
     //   178: aconst_null
@@ -150,8 +150,8 @@ public final class b
     //   0	202	5	parame	e
     //   0	202	6	paramf1	com.tencent.mm.loader.f<?, Bitmap>
     //   112	41	7	i	int
-    //   1	196	8	localObject1	Object
-    //   92	67	9	localObject2	Object
+    //   1	196	8	localObject1	java.lang.Object
+    //   92	67	9	localObject2	java.lang.Object
     //   122	1	10	localc	c
     // Exception table:
     //   from	to	target	type
@@ -171,12 +171,12 @@ public final class b
     k.h(paramf, "reaper");
     try
     {
-      if (parama.ahO() == com.tencent.mm.loader.h.a.b.glM) {
-        return com.tencent.mm.loader.h.b.a.rj(parama.ahQ());
+      if (parama.aoQ() == com.tencent.mm.loader.h.a.b.gMz) {
+        return com.tencent.mm.loader.h.b.a.vl(parama.aoR());
       }
-      if (parama.ahO() == com.tencent.mm.loader.h.a.b.glN)
+      if (parama.aoQ() == com.tencent.mm.loader.h.a.b.gMA)
       {
-        com.tencent.mm.loader.h.b.a locala = com.tencent.mm.loader.h.b.a.l(parama.ahQ(), com.tencent.mm.vending.j.b.eg(parama.ahQ()));
+        com.tencent.mm.loader.h.b.a locala = com.tencent.mm.loader.h.b.a.k(parama.aoR(), com.tencent.mm.vending.j.b.eh(parama.aoR()));
         return locala;
       }
     }
@@ -207,13 +207,10 @@ public final class b
       }
     }
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/DefaultImageDiskCache$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.b
  * JD-Core Version:    0.7.0.1
  */

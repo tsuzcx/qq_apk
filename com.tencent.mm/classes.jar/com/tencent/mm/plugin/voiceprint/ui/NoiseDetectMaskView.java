@@ -13,32 +13,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class NoiseDetectMaskView
   extends RelativeLayout
 {
-  ProgressBar ixl;
+  TextView AwR;
+  private b AwS;
+  private a AwT;
+  ProgressBar iXo;
   private Context mContext;
-  TextView rya;
-  TextView zel;
-  private b zem;
-  private a zen;
+  TextView sGS;
   
   public NoiseDetectMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29824);
-    this.ixl = null;
+    this.iXo = null;
     this.mContext = null;
     this.mContext = paramContext;
     this.mContext.getSystemService("layout_inflater");
     LayoutInflater.from(this.mContext).inflate(2131495025, this);
-    this.ixl = ((ProgressBar)findViewById(2131302892));
-    this.rya = ((TextView)findViewById(2131302891));
-    this.zel = ((TextView)findViewById(2131302893));
-    this.zel.setOnClickListener(new View.OnClickListener()
+    this.iXo = ((ProgressBar)findViewById(2131302892));
+    this.sGS = ((TextView)findViewById(2131302891));
+    this.AwR = ((TextView)findViewById(2131302893));
+    this.AwR.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29822);
         if (NoiseDetectMaskView.a(NoiseDetectMaskView.this) != null) {
-          NoiseDetectMaskView.a(NoiseDetectMaskView.this).dRz();
+          NoiseDetectMaskView.a(NoiseDetectMaskView.this).egJ();
         }
         AppMethodBeat.o(29822);
       }
@@ -49,7 +49,7 @@ public class NoiseDetectMaskView
       {
         AppMethodBeat.i(29823);
         if (NoiseDetectMaskView.b(NoiseDetectMaskView.this) != null) {
-          NoiseDetectMaskView.b(NoiseDetectMaskView.this).dRy();
+          NoiseDetectMaskView.b(NoiseDetectMaskView.this).egI();
         }
         AppMethodBeat.o(29823);
       }
@@ -60,32 +60,32 @@ public class NoiseDetectMaskView
   public final void reset()
   {
     AppMethodBeat.i(29825);
-    if (this.ixl != null) {
-      this.ixl.setVisibility(0);
+    if (this.iXo != null) {
+      this.iXo.setVisibility(0);
     }
-    this.rya.setText(2131764743);
-    this.zel.setVisibility(8);
+    this.sGS.setText(2131764743);
+    this.AwR.setVisibility(8);
     AppMethodBeat.o(29825);
   }
   
   public void setOnCancelDetectCallback(a parama)
   {
-    this.zen = parama;
+    this.AwT = parama;
   }
   
   public void setOnClickRetryCallback(b paramb)
   {
-    this.zem = paramb;
+    this.AwS = paramb;
   }
   
   public static abstract interface a
   {
-    public abstract void dRy();
+    public abstract void egI();
   }
   
   public static abstract interface b
   {
-    public abstract void dRz();
+    public abstract void egJ();
   }
 }
 

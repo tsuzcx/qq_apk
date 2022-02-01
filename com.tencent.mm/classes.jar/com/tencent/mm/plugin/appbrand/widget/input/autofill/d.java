@@ -14,7 +14,7 @@ public final class d
   public static <Input extends EditText,  extends ab> void a(final aa paramaa, Input paramInput, a.a parama)
   {
     AppMethodBeat.i(136644);
-    if (!((ab)paramInput).btp())
+    if (!((ab)paramInput).bAp())
     {
       AppMethodBeat.o(136644);
       return;
@@ -25,7 +25,7 @@ public final class d
       public final void a(String paramAnonymousString, h.a paramAnonymousa)
       {
         AppMethodBeat.i(136643);
-        Object localObject = (EditText)this.mff.get();
+        Object localObject = (EditText)this.mHe.get();
         aa localaa = (aa)paramaa.get();
         if ((localObject == null) || (localaa == null))
         {
@@ -38,15 +38,15 @@ public final class d
         localHashMap.put("id", paramAnonymousString);
         localHashMap.put("type", paramAnonymousa.name().toLowerCase());
         localHashMap.put("inputId", Integer.valueOf(i));
-        ((d.a)localObject).g(localaa).B(localHashMap).aXQ();
+        ((d.a)localObject).g(localaa).A(localHashMap).beN();
         AppMethodBeat.o(136643);
       }
     };
     paramInput = ((ab)paramInput).getAutoFillController();
-    paramInput.C(parama.mgi);
+    paramInput.H(parama.mIi);
     paramInput.a(paramaa);
-    if ("screen".equalsIgnoreCase(parama.mgh)) {}
-    for (paramaa = f.mfn;; paramaa = f.mfo)
+    if ("screen".equalsIgnoreCase(parama.mIh)) {}
+    for (paramaa = f.mHm;; paramaa = f.mHn)
     {
       paramInput.a(paramaa);
       AppMethodBeat.o(136644);
@@ -63,7 +63,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.d
  * JD-Core Version:    0.7.0.1
  */

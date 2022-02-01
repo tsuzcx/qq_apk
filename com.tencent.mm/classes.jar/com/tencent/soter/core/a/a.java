@@ -13,19 +13,19 @@ import javax.crypto.Mac;
 @Deprecated
 public final class a
 {
-  public static final e Iul;
+  public static final e JVU;
   public Context mContext;
   
   static
   {
     AppMethodBeat.i(88614);
-    if (com.tencent.soter.core.a.fmR())
+    if (com.tencent.soter.core.a.fDh())
     {
-      Iul = new a();
+      JVU = new a();
       AppMethodBeat.o(88614);
       return;
     }
-    Iul = new f();
+    JVU = new f();
     AppMethodBeat.o(88614);
   }
   
@@ -34,7 +34,7 @@ public final class a
     this.mContext = paramContext;
   }
   
-  public static a kF(Context paramContext)
+  public static a kR(Context paramContext)
   {
     AppMethodBeat.i(88611);
     paramContext = new a(paramContext);
@@ -45,14 +45,14 @@ public final class a
   public final void a(d paramd, CancellationSignal paramCancellationSignal, b paramb)
   {
     AppMethodBeat.i(88613);
-    Iul.a(this.mContext, paramd, paramCancellationSignal, paramb);
+    JVU.a(this.mContext, paramd, paramCancellationSignal, paramb);
     AppMethodBeat.o(88613);
   }
   
   public final boolean hasEnrolledFingerprints()
   {
     AppMethodBeat.i(88612);
-    boolean bool = Iul.hasEnrolledFingerprints(this.mContext);
+    boolean bool = JVU.hasEnrolledFingerprints(this.mContext);
     AppMethodBeat.o(88612);
     return bool;
   }
@@ -98,8 +98,8 @@ public final class a
                 c.unFreeze(paramContext);
               }
               this.mMarkPermanentlyCallbacked = true;
-              localb = this.Ium;
-              paramAnonymousb = paramAnonymousb.Iup;
+              localb = this.JVV;
+              paramAnonymousb = paramAnonymousb.JVY;
               if (paramAnonymousb == null) {
                 break label154;
               }
@@ -112,7 +112,7 @@ public final class a
             for (;;)
             {
               new a.c(paramAnonymousb);
-              localb.dFh();
+              localb.dTI();
               AppMethodBeat.o(88604);
               return;
               label110:
@@ -141,7 +141,7 @@ public final class a
               if (paramAnonymousInt == 5)
               {
                 d.i("Soter.FingerprintManagerCompat", "soter: user cancelled fingerprint authen", new Object[0]);
-                this.Ium.onAuthenticationCancelled();
+                this.JVV.onAuthenticationCancelled();
                 AppMethodBeat.o(88602);
                 return;
               }
@@ -156,7 +156,7 @@ public final class a
               paramAnonymousInt = 10308;
               paramAnonymousCharSequence = "Too many failed times";
             }
-            this.Ium.onAuthenticationError(paramAnonymousInt, paramAnonymousCharSequence);
+            this.JVV.onAuthenticationError(paramAnonymousInt, paramAnonymousCharSequence);
             AppMethodBeat.o(88602);
           }
           
@@ -184,7 +184,7 @@ public final class a
                   return;
                 }
               }
-              this.Ium.onAuthenticationFailed();
+              this.JVV.onAuthenticationFailed();
             }
             AppMethodBeat.o(88605);
           }
@@ -199,7 +199,7 @@ public final class a
               return;
             }
             if (!a.a.a(this, paramContext)) {
-              this.Ium.onAuthenticationHelp(paramAnonymousInt, paramAnonymousCharSequence);
+              this.JVV.onAuthenticationHelp(paramAnonymousInt, paramAnonymousCharSequence);
             }
             AppMethodBeat.o(88603);
           }
@@ -282,7 +282,7 @@ public final class a
   
   public static abstract class b
   {
-    public void dFh() {}
+    public void dTI() {}
     
     public void onAuthenticationCancelled() {}
     
@@ -295,11 +295,11 @@ public final class a
   
   public static final class c
   {
-    private a.d Iun;
+    private a.d JVW;
     
     public c(a.d paramd)
     {
-      this.Iun = paramd;
+      this.JVW = paramd;
     }
   }
   

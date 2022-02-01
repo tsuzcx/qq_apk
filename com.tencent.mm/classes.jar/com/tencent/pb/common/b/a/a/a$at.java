@@ -10,23 +10,23 @@ public final class a$at
   
   public a$at()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.sceneType != 0) {
-      paramb.by(1, this.sceneType);
+      paramb.bv(1, this.sceneType);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (this.sceneType != 0) {
-      i = j + b.bA(1, this.sceneType);
+      i = j + b.bx(1, this.sceneType);
     }
     return i;
   }

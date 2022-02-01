@@ -20,7 +20,7 @@ public final class b
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77710);
-    paramMessageDigest.update(this.object.toString().getBytes(aCw));
+    paramMessageDigest.update(this.object.toString().getBytes(aDo));
     AppMethodBeat.o(77710);
   }
   
@@ -56,7 +56,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.g.b
  * JD-Core Version:    0.7.0.1
  */

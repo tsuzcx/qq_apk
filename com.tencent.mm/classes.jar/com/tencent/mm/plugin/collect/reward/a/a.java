@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.collect.reward.a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.ui.base.h;
@@ -16,42 +16,42 @@ public abstract class a
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected WeakReference<Activity> jyt;
-  protected boolean nUQ = false;
-  protected boolean nUR = false;
+  protected WeakReference<Activity> jYQ;
+  protected boolean oyl = false;
+  protected boolean oym = false;
   
   public final void N(Activity paramActivity)
   {
-    this.jyt = new WeakReference(paramActivity);
+    this.jYQ = new WeakReference(paramActivity);
   }
   
   public final a a(a parama)
   {
-    if ((!this.nUQ) && (!this.nUR)) {
-      parama.h(this);
+    if ((!this.oyl) && (!this.oym)) {
+      parama.g(this);
     }
     return this;
   }
   
   public final a b(a parama)
   {
-    if (this.nUR) {
-      parama.h(this);
+    if (this.oym) {
+      parama.g(this);
     }
     return this;
   }
   
   protected abstract void b(int paramInt1, int paramInt2, String paramString, q paramq);
   
-  protected boolean bON()
+  protected boolean bWd()
   {
     return true;
   }
   
   public final a c(a parama)
   {
-    if (this.nUQ) {
-      parama.h(this);
+    if (this.oyl) {
+      parama.g(this);
     }
     return this;
   }
@@ -60,10 +60,10 @@ public abstract class a
   {
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      this.nUQ = true;
-      if ((bON()) && (this.jyt != null))
+      this.oyl = true;
+      if ((bWd()) && (this.jYQ != null))
       {
-        paramArrayOfByte = (Activity)this.jyt.get();
+        paramArrayOfByte = (Activity)this.jYQ.get();
         if (paramArrayOfByte != null) {
           h.a(paramArrayOfByte, paramArrayOfByte.getString(2131765901), null, false, new DialogInterface.OnClickListener()
           {
@@ -80,7 +80,7 @@ public abstract class a
   
   public static abstract interface a
   {
-    public abstract void h(n paramn);
+    public abstract void g(n paramn);
   }
 }
 

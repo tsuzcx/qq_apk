@@ -6,22 +6,22 @@ import com.google.b.a.e;
 public final class a$r
   extends e
 {
-  public int Ilr = 0;
+  public int JNc = 0;
   
   public a$r()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bz(1, this.Ilr);
+    paramb.bw(1, this.JNc);
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    return super.yg() + b.bB(1, this.Ilr);
+    return super.xT() + b.by(1, this.JNc);
   }
 }
 

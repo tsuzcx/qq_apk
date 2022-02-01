@@ -10,78 +10,78 @@ import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class HCEEventLogic
 {
-  private static String kaY;
-  private static boolean kaZ;
-  private static g.c kba;
+  private static String kBL;
+  private static boolean kBM;
+  private static g.c kBN;
   
   static
   {
     AppMethodBeat.i(136093);
-    kaY = null;
-    kaZ = true;
-    kba = new g.c()
+    kBL = null;
+    kBM = true;
+    kBN = new g.c()
     {
       public final void a(g.d paramAnonymousd)
       {
         AppMethodBeat.i(136081);
-        ad.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onPause");
+        ac.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onPause");
         super.a(paramAnonymousd);
-        HCEEventLogic.a(HCEEventLogic.kaY, 23, null);
+        HCEEventLogic.a(HCEEventLogic.kBL, 23, null);
         AppMethodBeat.o(136081);
       }
       
       public final void onCreate()
       {
         AppMethodBeat.i(136079);
-        ad.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onCreate");
+        ac.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onCreate");
         super.onCreate();
-        HCEEventLogic.a(HCEEventLogic.kaY, 21, null);
+        HCEEventLogic.a(HCEEventLogic.kBL, 21, null);
         AppMethodBeat.o(136079);
       }
       
       public final void onDestroy()
       {
         AppMethodBeat.i(136082);
-        ad.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onDestroy");
+        ac.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onDestroy");
         super.onDestroy();
-        HCEEventLogic.a(HCEEventLogic.kaY, 24, null);
+        HCEEventLogic.a(HCEEventLogic.kBL, 24, null);
         AppMethodBeat.o(136082);
       }
       
       public final void onResume()
       {
         AppMethodBeat.i(136080);
-        ad.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onResume");
+        ac.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onResume");
         super.onResume();
-        HCEEventLogic.a(HCEEventLogic.kaY, 22, null);
+        HCEEventLogic.a(HCEEventLogic.kBL, 22, null);
         AppMethodBeat.o(136080);
       }
     };
     AppMethodBeat.o(136093);
   }
   
-  public static void IM(String paramString)
+  public static void MN(String paramString)
   {
     AppMethodBeat.i(136090);
-    if ((kaY != null) && (kba != null))
+    if ((kBL != null) && (kBN != null))
     {
-      ad.i("MicroMsg.HCEEventLogic", "alvinluo remove HCELifeCycleListener before add, appId: %s", new Object[] { kaY });
-      g.b(kaY, kba);
+      ac.i("MicroMsg.HCEEventLogic", "alvinluo remove HCELifeCycleListener before add, appId: %s", new Object[] { kBL });
+      g.b(kBL, kBN);
     }
-    kaY = paramString;
-    g.a(paramString, kba);
+    kBL = paramString;
+    g.a(paramString, kBN);
     AppMethodBeat.o(136090);
   }
   
-  public static void IN(String paramString)
+  public static void MO(String paramString)
   {
     AppMethodBeat.i(136091);
     if (paramString != null) {
-      g.b(paramString, kba);
+      g.b(paramString, kBN);
     }
     AppMethodBeat.o(136091);
   }
@@ -93,28 +93,28 @@ public class HCEEventLogic
     if (paramBundle == null) {
       localBundle = new Bundle();
     }
-    ad.i("MicroMsg.HCEEventLogic", "alvinluo HCEEventLogic sendHCEEventToMM appId: %s, eventType: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.HCEEventLogic", "alvinluo HCEEventLogic sendHCEEventToMM appId: %s, eventType: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     paramString = new SendHCEEventToMMTask(paramString, paramInt, localBundle, (byte)0);
-    paramString.aXm();
+    paramString.bej();
     AppBrandMainProcessService.a(paramString);
     AppMethodBeat.o(136092);
   }
   
-  public static boolean bbb()
+  public static boolean bhT()
   {
     try
     {
-      boolean bool = kaZ;
+      boolean bool = kBM;
       return bool;
     }
     finally {}
   }
   
-  public static void gk(boolean paramBoolean)
+  public static void gG(boolean paramBoolean)
   {
     try
     {
-      kaZ = paramBoolean;
+      kBM = paramBoolean;
       return;
     }
     finally {}
@@ -125,8 +125,8 @@ public class HCEEventLogic
   {
     public static final Parcelable.Creator<SendHCEEventToMMTask> CREATOR;
     private String appId;
-    private int kbb;
-    private Bundle kbc;
+    private int kBO;
+    private Bundle kBP;
     
     static
     {
@@ -144,26 +144,26 @@ public class HCEEventLogic
     
     private SendHCEEventToMMTask(String paramString, int paramInt, Bundle paramBundle)
     {
-      this.kbb = paramInt;
+      this.kBO = paramInt;
       this.appId = paramString;
-      this.kbc = paramBundle;
+      this.kBP = paramBundle;
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(136086);
-      super.aEA();
-      aXn();
-      AppMethodBeat.o(136086);
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(136085);
-      ad.i("MicroMsg.HCEEventLogic", "alvinluo HCEEventLogic SendHCEEventToMMTask runInMainProcess");
-      b.kbN.a(this.kbb, this.appId, this.kbc);
-      aXw();
+      ac.i("MicroMsg.HCEEventLogic", "alvinluo HCEEventLogic SendHCEEventToMMTask runInMainProcess");
+      b.kCA.a(this.kBO, this.appId, this.kBP);
+      bet();
       AppMethodBeat.o(136085);
+    }
+    
+    public final void aLr()
+    {
+      AppMethodBeat.i(136086);
+      super.aLr();
+      bek();
+      AppMethodBeat.o(136086);
     }
     
     public int describeContents()
@@ -175,9 +175,9 @@ public class HCEEventLogic
     {
       AppMethodBeat.i(136087);
       super.e(paramParcel);
-      this.kbb = paramParcel.readInt();
+      this.kBO = paramParcel.readInt();
       this.appId = paramParcel.readString();
-      this.kbc = paramParcel.readBundle();
+      this.kBP = paramParcel.readBundle();
       AppMethodBeat.o(136087);
     }
     
@@ -185,16 +185,16 @@ public class HCEEventLogic
     {
       AppMethodBeat.i(136088);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.kbb);
+      paramParcel.writeInt(this.kBO);
       paramParcel.writeString(this.appId);
-      paramParcel.writeBundle(this.kbc);
+      paramParcel.writeBundle(this.kBP);
       AppMethodBeat.o(136088);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.HCEEventLogic
  * JD-Core Version:    0.7.0.1
  */

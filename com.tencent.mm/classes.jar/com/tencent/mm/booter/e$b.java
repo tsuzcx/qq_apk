@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.xweb.x5.sdk.d;
 
 public final class e$b
@@ -19,9 +19,9 @@ public final class e$b
       AppMethodBeat.o(19877);
       return;
     }
-    ad.i("MicroMsg.SandBoxProcessReceiver", "onReceive");
+    ac.i("MicroMsg.SandBoxProcessReceiver", "onReceive");
     d.reset(paramContext);
-    aq.n(new Runnable()
+    ap.n(new Runnable()
     {
       public final void run()
       {
@@ -35,7 +35,7 @@ public final class e$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.booter.e.b
  * JD-Core Version:    0.7.0.1
  */

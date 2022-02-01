@@ -14,7 +14,7 @@ public abstract class j<T>
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = ok();
+          localObject1 = ou();
           this.mInstance = localObject1;
         }
         return localObject1;
@@ -24,11 +24,11 @@ public abstract class j<T>
     return ?;
   }
   
-  protected abstract T ok();
+  protected abstract T ou();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.f.j
  * JD-Core Version:    0.7.0.1
  */

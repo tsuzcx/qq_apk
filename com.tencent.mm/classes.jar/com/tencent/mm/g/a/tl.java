@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tl
   extends b
 {
-  public a dyN;
-  
   public tl()
   {
     this((byte)0);
@@ -15,17 +12,8 @@ public final class tl
   
   private tl(byte paramByte)
   {
-    AppMethodBeat.i(125639);
-    this.dyN = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125639);
-  }
-  
-  public static final class a
-  {
-    public String dgg;
-    public String dpC;
   }
 }
 

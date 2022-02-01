@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vr
   extends b
 {
-  public a dBi;
+  public a dyx;
   
   public vr()
   {
@@ -15,21 +15,16 @@ public final class vr
   
   private vr(byte paramByte)
   {
-    AppMethodBeat.i(116052);
-    this.dBi = new a();
-    this.ESR = false;
+    AppMethodBeat.i(162263);
+    this.dyx = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116052);
+    AppMethodBeat.o(162263);
   }
   
   public static final class a
   {
-    public String dBj;
-    public boolean dBk;
-    public byte[] dBl;
-    public String id;
-    public String source;
-    public int type;
+    public String dyy;
   }
 }
 

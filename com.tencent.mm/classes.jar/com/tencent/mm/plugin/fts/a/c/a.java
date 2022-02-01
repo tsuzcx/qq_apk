@@ -7,18 +7,18 @@ import java.util.Comparator;
 public final class a
   implements Comparator<m>
 {
-  public static final a rqm;
+  public static final a szg;
   
   static
   {
     AppMethodBeat.i(131725);
-    rqm = new a();
+    szg = new a();
     AppMethodBeat.o(131725);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.c.a
  * JD-Core Version:    0.7.0.1
  */

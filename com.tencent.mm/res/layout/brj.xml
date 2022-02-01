@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/hg9" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:gravity="center" android:id="@id/hg8" android:background="@drawable/c6v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hpg" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" />
+    <SurfaceView android:id="@id/hjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.rtmp.ui.TXCloudVideoView android:id="@id/hp9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/hvo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <Button android:layout_gravity="center_horizontal" android:id="@id/hvl" android:layout_width="@dimen/amd" android:layout_height="@dimen/amd" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <Button android:layout_gravity="center_horizontal" android:id="@id/hvk" android:layout_width="@dimen/amd" android:layout_height="@dimen/amd" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <Button android:layout_gravity="center_horizontal" android:id="@id/hvj" android:layout_width="@dimen/amd" android:layout_height="@dimen/amd" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ToggleButton android:textSize="8.0dip" android:layout_gravity="center_horizontal" android:id="@id/hr5" android:layout_width="@dimen/amd" android:layout_height="@dimen/amd" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/hvm" android:background="#ff444444" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_horizontal" android:layout_width="60.0dip" android:layout_height="60.0dip" />
+            <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:layout_gravity="center_horizontal" android:id="@id/hvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+            <TextView android:textSize="16.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+        </LinearLayout>
+    </FrameLayout>
+    <ImageView android:id="@id/hvn" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
 </RelativeLayout>

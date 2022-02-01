@@ -16,10 +16,10 @@ final class d
     super(paramContext);
   }
   
-  protected final boolean Is()
+  protected final boolean Ib()
   {
     AppMethodBeat.i(87600);
-    if ((s.p(this.context, "android.permission.WRITE_EXTERNAL_STORAGE")) && (Environment.getExternalStorageState().equals("mounted")))
+    if ((s.checkPermission(this.context, "android.permission.WRITE_EXTERNAL_STORAGE")) && (Environment.getExternalStorageState().equals("mounted")))
     {
       AppMethodBeat.o(87600);
       return true;
@@ -28,7 +28,7 @@ final class d
     return false;
   }
   
-  protected final a It()
+  protected final a Ic()
   {
     return null;
   }
@@ -42,7 +42,7 @@ final class d
     {
       try
       {
-        s.IB();
+        s.Ik();
         localObject1 = new File(Environment.getExternalStorageDirectory(), s.decode("6X8Y4XdM2Vhvn0KfzcEatGnWaNU="));
         try
         {
@@ -56,7 +56,7 @@ final class d
         catch (IOException localIOException)
         {
           String[] arrayOfString;
-          s.IC();
+          s.Il();
           Object localObject2 = null;
           continue;
         }
@@ -71,7 +71,7 @@ final class d
       if ((arrayOfString.length == 2) && (arrayOfString[0].equals(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="))))
       {
         new StringBuilder("read mid from InternalStorage:").append(arrayOfString[1]);
-        s.IB();
+        s.Ik();
         localObject1 = arrayOfString[1];
       }
     }
@@ -85,7 +85,7 @@ final class d
     //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: monitorenter
-    //   7: invokestatic 59	com/tencent/b/a/a/s:IB	()V
+    //   7: invokestatic 59	com/tencent/b/a/a/s:Ik	()V
     //   10: new 105	java/lang/StringBuilder
     //   13: dup
     //   14: invokespecial 123	java/lang/StringBuilder:<init>	()V
@@ -97,7 +97,7 @@ final class d
     //   30: invokestatic 71	com/tencent/b/a/a/s:decode	(Ljava/lang/String;)Ljava/lang/String;
     //   33: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 137	com/tencent/b/a/a/c:dw	(Ljava/lang/String;)Ljava/io/File;
+    //   39: invokestatic 137	com/tencent/b/a/a/c:dl	(Ljava/lang/String;)Ljava/io/File;
     //   42: pop
     //   43: new 61	java/io/File
     //   46: dup
@@ -138,7 +138,7 @@ final class d
     //   120: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: return
     //   124: astore_1
-    //   125: invokestatic 117	com/tencent/b/a/a/s:IC	()V
+    //   125: invokestatic 117	com/tencent/b/a/a/s:Il	()V
     //   128: goto -12 -> 116
     //   131: astore_1
     //   132: aload_0
@@ -164,7 +164,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.d
  * JD-Core Version:    0.7.0.1
  */

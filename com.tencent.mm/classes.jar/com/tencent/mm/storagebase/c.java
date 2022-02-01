@@ -3,14 +3,14 @@ package com.tencent.mm.storagebase;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class c
 {
-  private static f.a FCh = null;
-  private static long FCi = 0L;
-  private static int FCj = 0;
+  private static f.a Hbk = null;
+  private static long Hbl = 0L;
+  private static int Hbm = 0;
   private static int index;
   private static boolean on = false;
   
@@ -27,7 +27,7 @@ final class c
       AppMethodBeat.o(133329);
       return;
     }
-    long l = FCh.XK();
+    long l = Hbk.YH();
     Object localObject1 = "Thread:[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]";
     Object localObject2 = (String)localObject1 + "[" + index + "][" + l + "]";
     localObject1 = localObject2;
@@ -37,11 +37,11 @@ final class c
     localObject2 = localObject1;
     if (paramCursor != null)
     {
-      s(paramCursor);
-      localObject2 = (String)localObject1 + "[cuCnt:" + FCj + ",cuTime:" + FCi + "]";
+      r(paramCursor);
+      localObject2 = (String)localObject1 + "[cuCnt:" + Hbm + ",cuTime:" + Hbl + "]";
     }
     paramString = (String)localObject2 + "[" + paramString + "]--";
-    ad.v("MicroMsg.dbtest", paramString + bt.eGN());
+    ac.v("MicroMsg.dbtest", paramString + bs.eWi());
     AppMethodBeat.o(133329);
   }
   
@@ -53,7 +53,7 @@ final class c
       AppMethodBeat.o(133327);
       return;
     }
-    FCh = new f.a();
+    Hbk = new f.a();
     index += 1;
     AppMethodBeat.o(133327);
   }
@@ -62,12 +62,12 @@ final class c
   {
     AppMethodBeat.i(133326);
     if (on) {
-      ad.e("MicroMsg.DKTest", "exception:%s", new Object[] { bt.m(paramException) });
+      ac.e("MicroMsg.DKTest", "exception:%s", new Object[] { bs.m(paramException) });
     }
     AppMethodBeat.o(133326);
   }
   
-  private static void s(Cursor paramCursor)
+  private static void r(Cursor paramCursor)
   {
     AppMethodBeat.i(133328);
     if (!on)
@@ -80,16 +80,16 @@ final class c
       AppMethodBeat.o(133328);
       return;
     }
-    FCj = paramCursor.getCount();
+    Hbm = paramCursor.getCount();
     f.a locala = new f.a();
     int i = 0;
-    while (i < FCj)
+    while (i < Hbm)
     {
       paramCursor.moveToPosition(i);
       i += 1;
     }
     paramCursor.moveToPosition(-1);
-    FCi = locala.XK();
+    Hbl = locala.YH();
     AppMethodBeat.o(133328);
   }
 }

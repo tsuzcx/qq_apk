@@ -1,76 +1,45 @@
 package com.tencent.mm.plugin.appbrand.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.protocal.protobuf.cqk;
+import java.util.Locale;
 
-public abstract interface a
+public final class a
 {
-  public abstract String KR(String paramString);
-  
-  public abstract void a(String paramString, b paramb);
-  
-  public abstract void a(String paramString, b paramb, a parama);
-  
-  public abstract boolean bii();
-  
-  public static abstract interface a
+  public static boolean a(int paramInt1, int paramInt2, cqk paramcqk)
   {
-    public abstract void b(c paramc);
+    return (paramInt1 == 0) && (paramInt2 == 0) && (paramcqk != null);
   }
   
-  public static abstract interface b
+  public static boolean d(c.a<?> parama)
   {
-    public abstract void a(a.d paramd);
+    AppMethodBeat.i(180325);
+    if ((parama != null) && (a(parama.errType, parama.errCode, parama.hvj)))
+    {
+      AppMethodBeat.o(180325);
+      return true;
+    }
+    AppMethodBeat.o(180325);
+    return false;
   }
   
-  public static class c
-    implements a
+  public static String e(c.a parama)
   {
-    public final String KR(String paramString)
+    AppMethodBeat.i(180326);
+    if (parama == null)
     {
-      return "__APP__";
+      AppMethodBeat.o(180326);
+      return "null";
     }
-    
-    public void a(String paramString, a.b paramb)
-    {
-      AppMethodBeat.i(176556);
-      if (paramb != null) {
-        paramb.a(a.d.kTI);
-      }
-      AppMethodBeat.o(176556);
-    }
-    
-    public final void a(String paramString, a.b paramb, a.a parama)
-    {
-      AppMethodBeat.i(176555);
-      a(paramString, paramb);
-      AppMethodBeat.o(176555);
-    }
-    
-    public final boolean bii()
-    {
-      return false;
-    }
-  }
-  
-  public static enum d
-  {
-    static
-    {
-      AppMethodBeat.i(134931);
-      kTI = new d("OK", 0);
-      kTJ = new d("FAIL", 1);
-      kTK = new d("CANCEL", 2);
-      kTL = new d("MODULE_NOT_FOUND", 3);
-      kTM = new d[] { kTI, kTJ, kTK, kTL };
-      AppMethodBeat.o(134931);
-    }
-    
-    private d() {}
+    parama = String.format(Locale.US, "%d %d %s", new Object[] { Integer.valueOf(parama.errType), Integer.valueOf(parama.errCode), parama.errMsg });
+    AppMethodBeat.o(180326);
+    return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.o.a
  * JD-Core Version:    0.7.0.1
  */

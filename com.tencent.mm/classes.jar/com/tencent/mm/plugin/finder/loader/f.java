@@ -3,110 +3,85 @@ package com.tencent.mm.plugin.finder.loader;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.h.b;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.storage.h;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.finder.storage.m;
+import com.tencent.mm.plugin.finder.utils.p;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bs;
+import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder_release"})
 public final class f
   implements j
 {
-  public static final a qCl;
-  public bmd qCj;
-  private h qCk;
+  public static final a rtn;
+  public bqs rtl;
+  private m rtm;
   private String username;
   
   static
   {
     AppMethodBeat.i(178310);
-    qCl = new a((byte)0);
+    rtn = new a((byte)0);
     AppMethodBeat.o(178310);
   }
   
-  private f(bmd parambmd, h paramh, String paramString)
+  private f(bqs parambqs, m paramm, String paramString)
   {
     AppMethodBeat.i(166318);
-    String str = u.aqG();
-    d.g.b.k.g(str, "ConfigStorageLogic.getUsernameFromUserInfo()");
+    String str = u.axw();
+    k.g(str, "ConfigStorageLogic.getUsernameFromUserInfo()");
     this.username = str;
-    this.qCj = parambmd;
-    this.qCk = paramh;
+    this.rtl = parambqs;
+    this.rtm = paramm;
     this.username = paramString;
-    if (parambmd.url == null) {
-      b.e("FinderImage", "mediaObj.url == null " + bt.eGN());
+    if (parambqs.url == null) {
+      b.e("FinderImage", "mediaObj.url == null " + bs.eWi());
     }
     AppMethodBeat.o(166318);
   }
   
-  public final String aaX()
+  public final String abW()
   {
     AppMethodBeat.i(166316);
     Object localObject1 = new StringBuilder("finder_image_");
-    Object localObject2 = this.qCk;
+    Object localObject2 = this.rtm;
     if (localObject2 == null) {
-      d.g.b.k.aPZ("type");
+      k.aVY("type");
     }
-    localObject2 = ((StringBuilder)localObject1).append(((h)localObject2).detail).append('_');
-    localObject1 = this.qCj;
+    localObject2 = ((StringBuilder)localObject1).append(((m)localObject2).detail).append('_');
+    localObject1 = this.rtl;
     if (localObject1 == null) {
-      d.g.b.k.aPZ("mediaObj");
+      k.aVY("mediaObj");
     }
-    if (bt.isNullOrNil(((bmd)localObject1).mediaId))
+    if (bs.isNullOrNil(((bqs)localObject1).mediaId))
     {
-      localObject1 = this.qCj;
+      localObject1 = this.rtl;
       if (localObject1 == null) {
-        d.g.b.k.aPZ("mediaObj");
+        k.aVY("mediaObj");
       }
     }
-    for (localObject1 = ai.du(bt.by(((bmd)localObject1).url, ""));; localObject1 = ((bmd)localObject1).mediaId)
+    for (localObject1 = ah.dg(bs.bG(((bqs)localObject1).url, ""));; localObject1 = ((bqs)localObject1).mediaId)
     {
       localObject1 = (String)localObject1;
       AppMethodBeat.o(166316);
       return localObject1;
-      localObject1 = this.qCj;
+      localObject1 = this.rtl;
       if (localObject1 == null) {
-        d.g.b.k.aPZ("mediaObj");
+        k.aVY("mediaObj");
       }
     }
   }
   
-  public final h cmR()
-  {
-    AppMethodBeat.i(178308);
-    h localh = this.qCk;
-    if (localh == null) {
-      d.g.b.k.aPZ("type");
-    }
-    AppMethodBeat.o(178308);
-    return localh;
-  }
-  
-  public final String cmS()
-  {
-    AppMethodBeat.i(190864);
-    Object localObject = this.qCj;
-    if (localObject == null) {
-      d.g.b.k.aPZ("mediaObj");
-    }
-    String str = ((bmd)localObject).decodeKey;
-    localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    AppMethodBeat.o(190864);
-    return localObject;
-  }
-  
-  public final String cmT()
+  public final String aik()
   {
     AppMethodBeat.i(178309);
-    Object localObject = this.qCj;
+    Object localObject = this.rtl;
     if (localObject == null) {
-      d.g.b.k.aPZ("mediaObj");
+      k.aVY("mediaObj");
     }
-    String str = ((bmd)localObject).thumbUrl;
+    String str = ((bqs)localObject).thumbUrl;
     localObject = str;
     if (str == null) {
       localObject = "";
@@ -115,43 +90,70 @@ public final class f
     return localObject;
   }
   
-  public final String fTN()
+  public final m cwj()
   {
-    AppMethodBeat.i(198605);
-    Object localObject = this.qCj;
-    if (localObject == null) {
-      d.g.b.k.aPZ("mediaObj");
+    AppMethodBeat.i(178308);
+    m localm = this.rtm;
+    if (localm == null) {
+      k.aVY("type");
     }
-    String str = ((bmd)localObject).url_token;
+    AppMethodBeat.o(178308);
+    return localm;
+  }
+  
+  public final String cwk()
+  {
+    AppMethodBeat.i(202529);
+    Object localObject = this.rtl;
+    if (localObject == null) {
+      k.aVY("mediaObj");
+    }
+    String str = ((bqs)localObject).decodeKey;
     localObject = str;
     if (str == null) {
       localObject = "";
     }
-    AppMethodBeat.o(198605);
+    AppMethodBeat.o(202529);
     return localObject;
   }
   
-  public final String fTO()
+  public final String cwl()
   {
-    AppMethodBeat.i(198606);
-    Object localObject = this.qCj;
+    AppMethodBeat.i(202530);
+    Object localObject = this.rtl;
     if (localObject == null) {
-      d.g.b.k.aPZ("mediaObj");
+      k.aVY("mediaObj");
     }
-    String str = ((bmd)localObject).thumb_url_token;
+    String str = ((bqs)localObject).url_token;
     localObject = str;
     if (str == null) {
       localObject = "";
     }
-    AppMethodBeat.o(198606);
+    AppMethodBeat.o(202530);
+    return localObject;
+  }
+  
+  public final String cwm()
+  {
+    AppMethodBeat.i(202531);
+    Object localObject = this.rtl;
+    if (localObject == null) {
+      k.aVY("mediaObj");
+    }
+    String str = ((bqs)localObject).thumb_url_token;
+    localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    AppMethodBeat.o(202531);
     return localObject;
   }
   
   public final String getPath()
   {
     AppMethodBeat.i(166315);
-    Object localObject = com.tencent.mm.plugin.finder.utils.k.qTp;
-    localObject = com.tencent.mm.plugin.finder.utils.k.a(this);
+    Object localObject = p.rQw;
+    localObject = p.a(this);
     AppMethodBeat.o(166315);
     return localObject;
   }
@@ -159,11 +161,11 @@ public final class f
   public final String getUrl()
   {
     AppMethodBeat.i(166317);
-    Object localObject = this.qCj;
+    Object localObject = this.rtl;
     if (localObject == null) {
-      d.g.b.k.aPZ("mediaObj");
+      k.aVY("mediaObj");
     }
-    String str = ((bmd)localObject).url;
+    String str = ((bqs)localObject).url;
     localObject = str;
     if (str == null) {
       localObject = "";
@@ -172,12 +174,12 @@ public final class f
     return localObject;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderImage$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderImage$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.f
  * JD-Core Version:    0.7.0.1
  */

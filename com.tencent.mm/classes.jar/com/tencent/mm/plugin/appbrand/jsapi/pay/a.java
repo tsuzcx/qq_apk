@@ -17,7 +17,7 @@ public abstract interface a
   
   public static abstract interface c
   {
-    public abstract void l(boolean paramBoolean, String paramString);
+    public abstract void m(boolean paramBoolean, String paramString);
   }
 }
 

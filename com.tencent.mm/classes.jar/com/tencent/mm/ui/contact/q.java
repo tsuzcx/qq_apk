@@ -5,8 +5,8 @@ import java.util.List;
 public abstract class q
   extends p
 {
-  protected boolean GWl;
-  protected List<String> fvP;
+  protected boolean Iwz;
+  protected List<String> fzw;
   
   public q(n paramn, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -21,8 +21,8 @@ public abstract class q
   private q(n paramn, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
   {
     super(paramn, paramBoolean2, paramInt, paramBoolean3);
-    this.fvP = paramList;
-    this.GWl = paramBoolean1;
+    this.fzw = paramList;
+    this.Iwz = paramBoolean1;
   }
   
   public q(n paramn, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -30,16 +30,16 @@ public abstract class q
     this(paramn, paramList, paramBoolean1, paramBoolean2, 0, paramBoolean3);
   }
   
-  public void VP() {}
+  public void WN() {}
   
-  public int aLn(String paramString)
+  public int aQR(String paramString)
   {
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.q
  * JD-Core Version:    0.7.0.1
  */

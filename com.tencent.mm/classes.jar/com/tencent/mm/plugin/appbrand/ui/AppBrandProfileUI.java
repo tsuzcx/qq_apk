@@ -12,7 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -29,14 +31,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.ai.w.a;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ah.w.a;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.kernel.g;
@@ -46,20 +47,28 @@ import com.tencent.mm.modelappbrand.a.b.h;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
 import com.tencent.mm.plugin.appbrand.config.aa;
+import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.protocal.protobuf.ayq;
-import com.tencent.mm.protocal.protobuf.ayr;
-import com.tencent.mm.protocal.protobuf.dgo;
-import com.tencent.mm.protocal.protobuf.dvq;
+import com.tencent.mm.plugin.profile.ui.WxaBindBizInfoUI;
+import com.tencent.mm.plugin.profile.ui.WxaBindWxaInfoUI;
+import com.tencent.mm.protocal.protobuf.bci;
+import com.tencent.mm.protocal.protobuf.bcj;
+import com.tencent.mm.protocal.protobuf.dmd;
+import com.tencent.mm.protocal.protobuf.ebh;
+import com.tencent.mm.protocal.protobuf.ebq;
+import com.tencent.mm.protocal.protobuf.ebr;
+import com.tencent.mm.protocal.protobuf.ebs;
+import com.tencent.mm.protocal.protobuf.ebt;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.l;
@@ -69,6 +78,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.ui.widget.a.e;
 import java.lang.ref.WeakReference;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -77,81 +87,81 @@ public final class AppBrandProfileUI
   extends MMActivity
   implements k.a
 {
-  private static final int lAP;
-  private static final int lAQ;
-  private static final int lAR;
-  private static int lAS;
-  private static final int lAT;
-  private static final int lAU;
-  private static final int lAV;
-  private static final int lAW;
-  private LinearLayout kFc;
-  private String kGt;
-  private boolean lAX;
-  private boolean lAY;
-  private int lAZ;
-  private TextView lBA;
-  private View lBB;
-  private TextView lBC;
-  private View lBD;
-  private int lBE;
-  private e lBF;
-  private WxaExposedParams lBG;
-  private boolean lBH;
-  private b.h lBI;
-  private b.h lBJ;
-  private b.h lBK;
-  private LinkedList<dvq> lBa;
-  private ImageView lBb;
-  private TextView lBc;
-  private TextView lBd;
-  private TextView lBe;
-  private RatingBar lBf;
-  private TextView lBg;
-  private LinearLayout lBh;
-  private RecyclerView lBi;
-  private LinearLayout lBj;
-  private LinearLayout lBk;
-  private LinearLayout lBl;
-  private TextView lBm;
-  private AppBrandNearbyShowcaseView lBn;
-  private LinearLayout lBo;
-  private LinearLayout lBp;
-  private TextView lBq;
-  private AppBrandNearbyShowcaseView lBr;
-  private LinearLayout lBs;
-  private FrameLayout lBt;
-  private TextView lBu;
-  private TextView lBv;
-  private LinearLayout lBw;
-  private ImageView lBx;
-  private LinearLayout lBy;
-  private AppBrandNearbyShowcaseView lBz;
-  private aa lxP;
-  private ImageView lyM;
+  private static final int mcL;
+  private static final int mcM;
+  private static final int mcN;
+  private static int mcO;
+  private static final int mcP;
+  private static final int mcQ;
+  private static final int mcR;
+  private static final int mcS;
+  private aa lZJ;
+  private LinearLayout lgv;
+  private String lhM;
+  private ImageView maJ;
+  private boolean mcT;
+  private boolean mcU;
+  private int mcV;
+  private LinkedList<ebh> mcW;
+  private ImageView mcX;
+  private TextView mcY;
+  private TextView mcZ;
+  private int mdA;
+  private e mdB;
+  private WxaExposedParams mdC;
+  private boolean mdD;
+  private b.h mdE;
+  private b.h mdF;
+  private b.h mdG;
+  private TextView mda;
+  private RatingBar mdb;
+  private TextView mdc;
+  private LinearLayout mdd;
+  private RecyclerView mde;
+  private LinearLayout mdf;
+  private LinearLayout mdg;
+  private LinearLayout mdh;
+  private TextView mdi;
+  private AppBrandNearbyShowcaseView mdj;
+  private LinearLayout mdk;
+  private LinearLayout mdl;
+  private TextView mdm;
+  private AppBrandNearbyShowcaseView mdn;
+  private LinearLayout mdo;
+  private FrameLayout mdp;
+  private TextView mdq;
+  private TextView mdr;
+  private LinearLayout mds;
+  private ImageView mdt;
+  private LinearLayout mdu;
+  private AppBrandNearbyShowcaseView mdv;
+  private TextView mdw;
+  private View mdx;
+  private TextView mdy;
+  private View mdz;
   
   static
   {
     AppMethodBeat.i(48769);
-    lAP = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 24);
-    lAQ = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 20);
-    lAR = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 2);
-    lAS = -1;
-    lAT = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 40);
-    lAU = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 44);
-    lAV = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 32);
-    lAW = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 4);
+    mcL = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 24);
+    mcM = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 20);
+    mcN = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 2);
+    mcO = -1;
+    mcP = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 40);
+    mcQ = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 44);
+    mcR = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 32);
+    mcS = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 4);
     AppMethodBeat.o(48769);
   }
   
   public AppBrandProfileUI()
   {
     AppMethodBeat.i(48738);
-    this.lAX = false;
-    this.lAY = false;
-    this.lAZ = 0;
-    this.lBa = new LinkedList();
-    this.lBH = false;
+    this.mcT = false;
+    this.mcU = false;
+    this.mcV = 0;
+    this.mcW = new LinkedList();
+    this.mdD = false;
     AppMethodBeat.o(48738);
   }
   
@@ -165,13 +175,13 @@ public final class AppBrandProfileUI
   public static void a(Context paramContext, String paramString1, int paramInt, String paramString2, WxaExposedParams paramWxaExposedParams, Bundle paramBundle, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
     AppMethodBeat.i(48740);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(48740);
       return;
     }
     if (paramContext == null) {
-      paramContext = aj.getContext();
+      paramContext = ai.getContext();
     }
     for (;;)
     {
@@ -188,68 +198,68 @@ public final class AppBrandProfileUI
       if (!(paramContext instanceof Activity)) {
         paramString1.addFlags(268435456);
       }
-      paramString1 = new com.tencent.mm.hellhoundlib.b.a().bd(paramString1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.adn(), "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI", "show", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;ZLcom/tencent/mm/plugin/appbrand/config/WxaExposedParams;Landroid/os/Bundle;Lcom/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString1.lS(0));
+      paramString1 = new com.tencent.mm.hellhoundlib.b.a().ba(paramString1);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.aeD(), "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI", "show", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;ZLcom/tencent/mm/plugin/appbrand/config/WxaExposedParams;Landroid/os/Bundle;Lcom/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString1.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI", "show", "(Landroid/content/Context;Ljava/lang/String;ILjava/lang/String;ZLcom/tencent/mm/plugin/appbrand/config/WxaExposedParams;Landroid/os/Bundle;Lcom/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(48740);
       return;
     }
   }
   
-  private void bot()
+  private void bvp()
   {
     AppMethodBeat.i(48753);
-    if (!bt.isNullOrNil(this.kGt))
+    if (!bs.isNullOrNil(this.lhM))
     {
-      ad.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "queryProfile start");
-      ayq localayq = new ayq();
-      localayq.username = this.kGt;
+      ac.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "queryProfile start");
+      bci localbci = new bci();
+      localbci.username = this.lhM;
       b.a locala = new b.a();
       locala.funcId = 2921;
       locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getprofileinfo";
-      locala.gUU = localayq;
-      locala.gUV = new ayr();
-      IPCRunCgi.a(locala.atI(), new a(this));
+      locala.hvt = localbci;
+      locala.hvu = new bcj();
+      IPCRunCgi.a(locala.aAz(), new a(this));
     }
     AppMethodBeat.o(48753);
   }
   
-  private void bou()
+  private void bvq()
   {
     AppMethodBeat.i(48754);
-    if ((this.lBa != null) && (this.lBa.size() > 0))
+    if ((this.mcW != null) && (this.mcW.size() > 0))
     {
-      this.lBt.setVisibility(0);
-      this.lBw.setVisibility(0);
-      this.lBu.setVisibility(8);
-      this.lBz.setIconGap(lAU);
-      this.lBz.setIconSize(lAT);
-      this.lBz.setIconLayerCount(Math.min(this.lBa.size(), 3));
-      if (this.lBJ == null) {
-        this.lBJ = new com.tencent.mm.plugin.appbrand.ui.b.a(lAV);
+      this.mdp.setVisibility(0);
+      this.mds.setVisibility(0);
+      this.mdq.setVisibility(8);
+      this.mdv.setIconGap(mcQ);
+      this.mdv.setIconSize(mcP);
+      this.mdv.setIconLayerCount(Math.min(this.mcW.size(), 3));
+      if (this.mdF == null) {
+        this.mdF = new com.tencent.mm.plugin.appbrand.ui.b.a(mcR);
       }
-      if (this.lBK == null) {
-        this.lBK = new com.tencent.mm.plugin.appbrand.ui.b.a(lAW);
+      if (this.mdG == null) {
+        this.mdG = new com.tencent.mm.plugin.appbrand.ui.b.a(mcS);
       }
       int i = 0;
-      if (i < this.lBz.getChildCount())
+      if (i < this.mdv.getChildCount())
       {
         String str;
         label167:
         com.tencent.mm.modelappbrand.a.b localb;
         ImageView localImageView;
-        if (this.lBa.size() > i)
+        if (this.mcW.size() > i)
         {
-          str = ((dvq)this.lBa.get(i)).sYq;
-          localb = com.tencent.mm.modelappbrand.a.b.aub();
-          localImageView = this.lBz.us(i);
+          str = ((ebh)this.mcW.get(i)).ugE;
+          localb = com.tencent.mm.modelappbrand.a.b.aAS();
+          localImageView = this.mdv.vk(i);
           if ((str != null) && (!str.startsWith("http"))) {
             break label226;
           }
         }
         label226:
-        for (b.h localh = this.lBJ;; localh = this.lBK)
+        for (b.h localh = this.mdF;; localh = this.mdG)
         {
           localb.a(localImageView, str, 2131231875, localh);
           i += 1;
@@ -258,20 +268,20 @@ public final class AppBrandProfileUI
           break label167;
         }
       }
-      if (this.lAZ == 1) {
-        if (this.lAX)
+      if (this.mcV == 1) {
+        if (this.mcT)
         {
-          this.lBv.setText(getString(2131755595));
-          if (!this.lAX) {
+          this.mdr.setText(getString(2131755595));
+          if (!this.mcT) {
             break label419;
           }
-          this.lBv.setCompoundDrawablesWithIntrinsicBounds(2131231003, 0, 0, 0);
+          this.mdr.setCompoundDrawablesWithIntrinsicBounds(2131231003, 0, 0, 0);
           label283:
-          if (this.lAZ <= 3) {
+          if (this.mcV <= 3) {
             break label435;
           }
-          this.lBx.setVisibility(0);
-          this.lBy.setOnClickListener(new View.OnClickListener()
+          this.mdt.setVisibility(0);
+          this.mdu.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
@@ -285,7 +295,7 @@ public final class AppBrandProfileUI
     }
     for (;;)
     {
-      this.lBu.setOnClickListener(new View.OnClickListener()
+      this.mdq.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -294,7 +304,7 @@ public final class AppBrandProfileUI
           AppMethodBeat.o(48721);
         }
       });
-      this.lBv.setOnClickListener(new View.OnClickListener()
+      this.mdr.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -305,36 +315,24 @@ public final class AppBrandProfileUI
       });
       AppMethodBeat.o(48754);
       return;
-      this.lBv.setText(String.format(getString(2131755597), new Object[] { Integer.valueOf(this.lAZ) }));
+      this.mdr.setText(String.format(getString(2131755597), new Object[] { Integer.valueOf(this.mcV) }));
       break;
-      this.lBv.setText(String.format(getString(2131755597), new Object[] { Integer.valueOf(this.lAZ) }));
+      this.mdr.setText(String.format(getString(2131755597), new Object[] { Integer.valueOf(this.mcV) }));
       break;
       label419:
-      this.lBv.setCompoundDrawablesWithIntrinsicBounds(2131231002, 0, 0, 0);
+      this.mdr.setCompoundDrawablesWithIntrinsicBounds(2131231002, 0, 0, 0);
       break label283;
       label435:
-      this.lBx.setVisibility(8);
-      this.lBy.setOnClickListener(null);
+      this.mdt.setVisibility(8);
+      this.mdu.setOnClickListener(null);
       continue;
-      this.lBt.setVisibility(0);
-      this.lBu.setVisibility(0);
-      this.lBw.setVisibility(8);
+      this.mdp.setVisibility(0);
+      this.mdq.setVisibility(0);
+      this.mds.setVisibility(8);
     }
   }
   
-  private static void c(View paramView, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(48755);
-    if (paramView.getVisibility() != 0)
-    {
-      paramView.setAlpha(0.0F);
-      paramView.setVisibility(0);
-    }
-    paramView.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).start();
-    AppMethodBeat.o(48755);
-  }
-  
-  private void cJ(final View paramView)
+  private void cL(final View paramView)
   {
     AppMethodBeat.i(48756);
     if (paramView.getVisibility() == 0) {
@@ -354,35 +352,47 @@ public final class AppBrandProfileUI
   private void e(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(48751);
-    if (this.lxP == null) {}
-    for (String str1 = null; bt.isNullOrNil(str1); str1 = this.lxP.appId)
+    if (this.lZJ == null) {}
+    for (String str1 = null; bs.isNullOrNil(str1); str1 = this.lZJ.appId)
     {
-      ad.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "profileOperateReport appId null");
+      ac.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "profileOperateReport appId null");
       AppMethodBeat.o(48751);
       return;
     }
     int j = getIntent().getIntExtra("key_from_scene", 3);
-    String str2 = bt.nullAsNil(getIntent().getStringExtra("key_scene_note"));
+    String str2 = bs.nullAsNil(getIntent().getStringExtra("key_scene_note"));
     int i = 0;
-    WxaAttributes localWxaAttributes = j.aOC().e(str1, new String[] { "appInfo", "brandIconURL", "nickname" });
+    WxaAttributes localWxaAttributes = j.aVu().e(str1, new String[] { "appInfo", "brandIconURL", "nickname" });
     if (localWxaAttributes != null) {
-      i = localWxaAttributes.aTN().cIB;
+      i = localWxaAttributes.baL().cFI;
     }
     i += 1000;
-    ad.d("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "stev report(%s), appId %s, scene %s, sceneNote %s, eventId %s, result %s, appType %s", new Object[] { Integer.valueOf(13919), str1, Integer.valueOf(j), str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
-    com.tencent.mm.plugin.report.service.h.vKh.f(13919, new Object[] { str1, Integer.valueOf(j), str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(i) });
-    this.lBE = j;
+    ac.d("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "stev report(%s), appId %s, scene %s, sceneNote %s, eventId %s, result %s, appType %s", new Object[] { Integer.valueOf(13919), str1, Integer.valueOf(j), str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    com.tencent.mm.plugin.report.service.h.wUl.f(13919, new Object[] { str1, Integer.valueOf(j), str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(i) });
+    this.mdA = j;
     AppMethodBeat.o(48751);
   }
   
-  private void ef(int paramInt1, int paramInt2)
+  private static void e(View paramView, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(48755);
+    if (paramView.getVisibility() != 0)
+    {
+      paramView.setAlpha(0.0F);
+      paramView.setVisibility(0);
+    }
+    paramView.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).start();
+    AppMethodBeat.o(48755);
+  }
+  
+  private void eh(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(48750);
-    e(paramInt1, paramInt2, bt.aGK());
+    e(paramInt1, paramInt2, bs.aNx());
     AppMethodBeat.o(48750);
   }
   
-  private void hb(final boolean paramBoolean)
+  private void hy(final boolean paramBoolean)
   {
     AppMethodBeat.i(48752);
     com.tencent.mm.sdk.g.b.c(new Runnable()
@@ -390,20 +400,22 @@ public final class AppBrandProfileUI
       public final void run()
       {
         AppMethodBeat.i(48708);
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(48707);
-            AppBrandProfileUI.a(AppBrandProfileUI.this, this.lBN);
-            if ((AppBrandProfileUI.4.this.lBM) && (!AppBrandProfileUI.this.isFinishing()) && (!AppBrandProfileUI.this.activityHasDestroyed())) {
-              com.tencent.mm.plugin.appbrand.config.u.aTL().add(AppBrandProfileUI.this);
+            AppBrandProfileUI.a(AppBrandProfileUI.this, this.mdJ);
+            if ((AppBrandProfileUI.4.this.mdI) && (!AppBrandProfileUI.this.isFinishing()) && (!AppBrandProfileUI.this.activityHasDestroyed()))
+            {
+              com.tencent.mm.plugin.appbrand.config.u.baJ().add(AppBrandProfileUI.this);
+              AppBrandProfileUI.a(AppBrandProfileUI.this, 1, 1);
             }
             AppMethodBeat.o(48707);
           }
         });
         if (paramBoolean) {
-          com.tencent.mm.plugin.appbrand.config.w.Gp(AppBrandProfileUI.d(AppBrandProfileUI.this));
+          com.tencent.mm.plugin.appbrand.config.w.Kt(AppBrandProfileUI.d(AppBrandProfileUI.this));
         }
         AppMethodBeat.o(48708);
       }
@@ -414,8 +426,8 @@ public final class AppBrandProfileUI
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(48748);
-    if ((paramm.jqR == 3) && ((paramm.obj instanceof String)) && (!bt.isNullOrNil(this.kGt)) && (this.kGt.equals((String)paramm.obj))) {
-      hb(false);
+    if ((paramm.jRj == 3) && ((paramm.obj instanceof String)) && (!bs.isNullOrNil(this.lhM)) && (this.lhM.equals((String)paramm.obj))) {
+      hy(false);
     }
     AppMethodBeat.o(48748);
   }
@@ -429,11 +441,11 @@ public final class AppBrandProfileUI
     localScrollView.setOverScrollMode(2);
     localScrollView.setBackgroundResource(2131100207);
     localScrollView.setFillViewport(true);
-    this.kFc = new LinearLayout(this);
-    this.kFc.setOrientation(1);
-    this.kFc.setFocusable(true);
-    this.kFc.setFocusableInTouchMode(true);
-    localScrollView.addView(this.kFc, new FrameLayout.LayoutParams(-1, -1));
+    this.lgv = new LinearLayout(this);
+    this.lgv.setOrientation(1);
+    this.lgv.setFocusable(true);
+    this.lgv.setFocusableInTouchMode(true);
+    localScrollView.addView(this.lgv, new FrameLayout.LayoutParams(-1, -1));
     ((FrameLayout)paramView).addView(localScrollView);
     AppMethodBeat.o(48742);
   }
@@ -446,7 +458,7 @@ public final class AppBrandProfileUI
   public final void initActivityCloseAnimation()
   {
     AppMethodBeat.i(48749);
-    if (this.lBH)
+    if (this.mdD)
     {
       AppMethodBeat.o(48749);
       return;
@@ -463,7 +475,7 @@ public final class AppBrandProfileUI
     }
     for (;;)
     {
-      ef(6, 1);
+      eh(6, 1);
       AppMethodBeat.o(48744);
       return;
       super.finish();
@@ -475,8 +487,8 @@ public final class AppBrandProfileUI
     AppMethodBeat.i(48741);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_username");
-    this.kGt = paramBundle;
-    if (bt.isNullOrNil(paramBundle))
+    this.lhM = paramBundle;
+    if (bs.isNullOrNil(paramBundle))
     {
       finish();
       AppMethodBeat.o(48741);
@@ -486,7 +498,7 @@ public final class AppBrandProfileUI
       getIntent().getExtras().putBundle("key_extra_bundle", Bundle.EMPTY);
     }
     getIntent().setExtrasClassLoader(getClassLoader());
-    this.lBG = ((WxaExposedParams)getIntent().getParcelableExtra("key_scene_exposed_params"));
+    this.mdC = ((WxaExposedParams)getIntent().getParcelableExtra("key_scene_exposed_params"));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -510,30 +522,30 @@ public final class AppBrandProfileUI
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getContext().getResources().getColor(2131099650));
-    paramBundle = LayoutInflater.from(this).inflate(2131493031, this.kFc, true);
+    paramBundle = LayoutInflater.from(this).inflate(2131493031, this.lgv, true);
     paramBundle.setClickable(false);
     paramBundle.setLongClickable(false);
-    this.lBb = ((ImageView)paramBundle.findViewById(2131303463));
-    this.lBc = ((TextView)paramBundle.findViewById(2131303478));
-    this.lBd = ((TextView)paramBundle.findViewById(2131303457));
-    this.lBe = ((TextView)paramBundle.findViewById(2131303499));
-    this.lBf = ((RatingBar)paramBundle.findViewById(2131303496));
-    this.lBg = ((TextView)paramBundle.findViewById(2131303498));
-    this.lBh = ((LinearLayout)paramBundle.findViewById(2131303497));
-    this.lyM = ((ImageView)paramBundle.findViewById(2131303483));
-    this.lBj = ((LinearLayout)paramBundle.findViewById(2131303493));
-    this.lBi = ((RecyclerView)paramBundle.findViewById(2131303494));
-    this.lBi.setItemAnimator(new android.support.v7.widget.v());
+    this.mcX = ((ImageView)paramBundle.findViewById(2131303463));
+    this.mcY = ((TextView)paramBundle.findViewById(2131303478));
+    this.mcZ = ((TextView)paramBundle.findViewById(2131303457));
+    this.mda = ((TextView)paramBundle.findViewById(2131303499));
+    this.mdb = ((RatingBar)paramBundle.findViewById(2131303496));
+    this.mdc = ((TextView)paramBundle.findViewById(2131303498));
+    this.mdd = ((LinearLayout)paramBundle.findViewById(2131303497));
+    this.maJ = ((ImageView)paramBundle.findViewById(2131303483));
+    this.mdf = ((LinearLayout)paramBundle.findViewById(2131303493));
+    this.mde = ((RecyclerView)paramBundle.findViewById(2131303494));
+    this.mde.setItemAnimator(new android.support.v7.widget.v());
     Object localObject = new LinearLayoutManager();
     ((LinearLayoutManager)localObject).setOrientation(0);
-    this.lBi.setLayoutManager((RecyclerView.i)localObject);
-    this.lBi.a(new RecyclerView.h()
+    this.mde.setLayoutManager((RecyclerView.i)localObject);
+    this.mde.a(new RecyclerView.h()
     {
-      public final void a(Rect paramAnonymousRect, View paramAnonymousView, RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss)
+      public final void a(Rect paramAnonymousRect, View paramAnonymousView, RecyclerView paramAnonymousRecyclerView, RecyclerView.t paramAnonymoust)
       {
         AppMethodBeat.i(48726);
-        int i = com.tencent.mm.cd.a.ao(AppBrandProfileUI.this, 2131165829);
-        int j = com.tencent.mm.cd.a.ao(AppBrandProfileUI.this, 2131165823);
+        int i = com.tencent.mm.cc.a.au(AppBrandProfileUI.this, 2131165829);
+        int j = com.tencent.mm.cc.a.au(AppBrandProfileUI.this, 2131165823);
         if (RecyclerView.bw(paramAnonymousView) == 0) {}
         for (paramAnonymousRect.left = i;; paramAnonymousRect.left = 0)
         {
@@ -543,43 +555,43 @@ public final class AppBrandProfileUI
         }
       }
     });
-    this.lBk = ((LinearLayout)paramBundle.findViewById(2131303452));
-    this.lBl = ((LinearLayout)paramBundle.findViewById(2131303450));
-    this.lBm = ((TextView)paramBundle.findViewById(2131303454));
-    this.lBn = ((AppBrandNearbyShowcaseView)paramBundle.findViewById(2131303455));
-    this.lBn.setIconGap(lAQ);
-    this.lBn.setIconSize(lAP + lAR * 2);
-    cJ(this.lBl);
-    this.lBo = ((LinearLayout)paramBundle.findViewById(2131303512));
-    this.lBp = ((LinearLayout)paramBundle.findViewById(2131303511));
-    this.lBq = ((TextView)paramBundle.findViewById(2131303513));
-    this.lBr = ((AppBrandNearbyShowcaseView)paramBundle.findViewById(2131303514));
-    this.lBr.setIconGap(lAQ);
-    this.lBr.setIconSize(lAP + lAR * 2);
-    cJ(this.lBp);
-    this.lBt = ((FrameLayout)paramBundle.findViewById(2131303472));
-    this.lBu = ((TextView)paramBundle.findViewById(2131303479));
-    this.lBv = ((TextView)paramBundle.findViewById(2131303476));
-    this.lBx = ((ImageView)paramBundle.findViewById(2131303469));
-    this.lBz = ((AppBrandNearbyShowcaseView)paramBundle.findViewById(2131303473));
-    this.lBy = ((LinearLayout)paramBundle.findViewById(2131303470));
-    this.lBw = ((LinearLayout)paramBundle.findViewById(2131303477));
-    this.lBs = ((LinearLayout)paramBundle.findViewById(2131303460));
-    this.lBs.setVisibility(0);
-    this.lBs.setOnClickListener(new View.OnClickListener()
+    this.mdg = ((LinearLayout)paramBundle.findViewById(2131303452));
+    this.mdh = ((LinearLayout)paramBundle.findViewById(2131303450));
+    this.mdi = ((TextView)paramBundle.findViewById(2131303454));
+    this.mdj = ((AppBrandNearbyShowcaseView)paramBundle.findViewById(2131303455));
+    this.mdj.setIconGap(mcM);
+    this.mdj.setIconSize(mcL + mcN * 2);
+    cL(this.mdh);
+    this.mdk = ((LinearLayout)paramBundle.findViewById(2131303512));
+    this.mdl = ((LinearLayout)paramBundle.findViewById(2131303511));
+    this.mdm = ((TextView)paramBundle.findViewById(2131303513));
+    this.mdn = ((AppBrandNearbyShowcaseView)paramBundle.findViewById(2131303514));
+    this.mdn.setIconGap(mcM);
+    this.mdn.setIconSize(mcL + mcN * 2);
+    cL(this.mdl);
+    this.mdp = ((FrameLayout)paramBundle.findViewById(2131303472));
+    this.mdq = ((TextView)paramBundle.findViewById(2131303479));
+    this.mdr = ((TextView)paramBundle.findViewById(2131303476));
+    this.mdt = ((ImageView)paramBundle.findViewById(2131303469));
+    this.mdv = ((AppBrandNearbyShowcaseView)paramBundle.findViewById(2131303473));
+    this.mdu = ((LinearLayout)paramBundle.findViewById(2131303470));
+    this.mds = ((LinearLayout)paramBundle.findViewById(2131303477));
+    this.mdo = ((LinearLayout)paramBundle.findViewById(2131303460));
+    this.mdo.setVisibility(0);
+    this.mdo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(48727);
         if (AppBrandProfileUI.c(AppBrandProfileUI.this) == null)
         {
-          ad.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "wxaExposedParams is null");
+          ac.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "wxaExposedParams is null");
           AppMethodBeat.o(48727);
           return;
         }
         Intent localIntent = new Intent();
         String str = com.tencent.mm.plugin.appbrand.u.a(AppBrandProfileUI.c(AppBrandProfileUI.this));
-        ad.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "feedbackUrl:%s, wxaExposedParams:%s", new Object[] { str, AppBrandProfileUI.c(AppBrandProfileUI.this).toString() });
+        ac.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "feedbackUrl:%s, wxaExposedParams:%s", new Object[] { str, AppBrandProfileUI.c(AppBrandProfileUI.this).toString() });
         localIntent.putExtra("title", paramAnonymousView.getContext().getString(2131755593));
         localIntent.putExtra("rawUrl", str);
         localIntent.putExtra("forceHideShare", true);
@@ -588,10 +600,10 @@ public final class AppBrandProfileUI
         AppMethodBeat.o(48727);
       }
     });
-    this.lBD = paramBundle.findViewById(2131306058);
-    this.lBA = ((TextView)paramBundle.findViewById(2131303441));
-    this.lBB = paramBundle.findViewById(2131303442);
-    this.lBC = ((TextView)paramBundle.findViewById(2131303485));
+    this.mdz = paramBundle.findViewById(2131306058);
+    this.mdw = ((TextView)paramBundle.findViewById(2131303441));
+    this.mdx = paramBundle.findViewById(2131303442);
+    this.mdy = ((TextView)paramBundle.findViewById(2131303485));
     localObject = paramBundle.findViewById(2131303458);
     paramBundle = paramBundle.findViewById(2131303495);
     ((View)localObject).setOnClickListener(new View.OnClickListener()
@@ -612,13 +624,12 @@ public final class AppBrandProfileUI
         AppMethodBeat.o(48725);
       }
     });
-    lAS = getContext().getResources().getColor(2131100498);
-    if (this.lBI == null) {
-      this.lBI = new com.tencent.mm.plugin.appbrand.ui.widget.a(lAP, lAR, lAS);
+    mcO = getContext().getResources().getColor(2131100498);
+    if (this.mdE == null) {
+      this.mdE = new com.tencent.mm.plugin.appbrand.ui.widget.a(mcL, mcN, mcO);
     }
-    hb(true);
-    bot();
-    ef(1, 1);
+    hy(true);
+    bvp();
     AppMethodBeat.o(48741);
   }
   
@@ -626,7 +637,7 @@ public final class AppBrandProfileUI
   {
     AppMethodBeat.i(48747);
     super.onDestroy();
-    com.tencent.mm.plugin.appbrand.config.u.aTL().remove(this);
+    com.tencent.mm.plugin.appbrand.config.u.baJ().remove(this);
     AppMethodBeat.o(48747);
   }
   
@@ -635,20 +646,19 @@ public final class AppBrandProfileUI
     AppMethodBeat.i(48743);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    if (!bt.isNullOrNil(this.kGt)) {
-      com.tencent.mm.plugin.appbrand.config.u.aTL().remove(this);
+    if (!bs.isNullOrNil(this.lhM)) {
+      com.tencent.mm.plugin.appbrand.config.u.baJ().remove(this);
     }
     paramIntent = getIntent().getStringExtra("key_username");
-    this.kGt = paramIntent;
-    if (bt.isNullOrNil(paramIntent))
+    this.lhM = paramIntent;
+    if (bs.isNullOrNil(paramIntent))
     {
       finish();
       AppMethodBeat.o(48743);
       return;
     }
-    hb(true);
-    bot();
-    ef(1, 1);
+    hy(true);
+    bvp();
     AppMethodBeat.o(48743);
   }
   
@@ -685,30 +695,30 @@ public final class AppBrandProfileUI
   static final class a
     implements IPCRunCgi.a
   {
-    WeakReference<AppBrandProfileUI> lBU;
+    WeakReference<AppBrandProfileUI> mdQ;
     
     public a(AppBrandProfileUI paramAppBrandProfileUI)
     {
       AppMethodBeat.i(48732);
-      this.lBU = new WeakReference(paramAppBrandProfileUI);
+      this.mdQ = new WeakReference(paramAppBrandProfileUI);
       AppMethodBeat.o(48732);
     }
     
-    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(48733);
-      if ((this.lBU != null) && (this.lBU.get() != null))
+      if ((this.mdQ != null) && (this.mdQ.get() != null))
       {
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && (paramb.gUT.gUX != null) && ((paramb.gUT.gUX instanceof ayr)))
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && (paramb.hvs.hvw != null) && ((paramb.hvs.hvw instanceof bcj)))
         {
-          ad.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "queryProfile, request success");
-          aq.f(new Runnable()
+          ac.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "queryProfile, request success");
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(48731);
-              if ((AppBrandProfileUI.a.this.lBU != null) && (AppBrandProfileUI.a.this.lBU.get() != null)) {
-                AppBrandProfileUI.a((AppBrandProfileUI)AppBrandProfileUI.a.this.lBU.get(), this.lBV);
+              if ((AppBrandProfileUI.a.this.mdQ != null) && (AppBrandProfileUI.a.this.mdQ.get() != null)) {
+                AppBrandProfileUI.a((AppBrandProfileUI)AppBrandProfileUI.a.this.mdQ.get(), this.mdR);
               }
               AppMethodBeat.o(48731);
             }
@@ -716,7 +726,7 @@ public final class AppBrandProfileUI
           AppMethodBeat.o(48733);
           return;
         }
-        ad.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "queryProfile, request fail");
+        ac.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "queryProfile, request fail");
       }
       AppMethodBeat.o(48733);
     }
@@ -725,31 +735,31 @@ public final class AppBrandProfileUI
   static final class b
     implements IPCRunCgi.a
   {
-    WeakReference<AppBrandProfileUI> lBU;
+    WeakReference<AppBrandProfileUI> mdQ;
     
     public b(AppBrandProfileUI paramAppBrandProfileUI)
     {
       AppMethodBeat.i(48736);
-      this.lBU = new WeakReference(paramAppBrandProfileUI);
+      this.mdQ = new WeakReference(paramAppBrandProfileUI);
       AppMethodBeat.o(48736);
     }
     
-    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.b paramb)
+    public final void a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb)
     {
       AppMethodBeat.i(48737);
-      if ((this.lBU != null) && (this.lBU.get() != null))
+      if ((this.mdQ != null) && (this.mdQ.get() != null))
       {
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && (paramb.gUT.gUX != null) && ((paramb.gUT.gUX instanceof dgo)))
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (paramb != null) && (paramb.hvs.hvw != null) && ((paramb.hvs.hvw instanceof dmd)))
         {
-          ad.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "cgiUpdateUserLike, request success");
-          aq.f(new Runnable()
+          ac.i("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "cgiUpdateUserLike, request success");
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(48734);
-              if ((AppBrandProfileUI.b.this.lBU != null) && (AppBrandProfileUI.b.this.lBU.get() != null))
+              if ((AppBrandProfileUI.b.this.mdQ != null) && (AppBrandProfileUI.b.this.mdQ.get() != null))
               {
-                AppBrandProfileUI localAppBrandProfileUI = (AppBrandProfileUI)AppBrandProfileUI.b.this.lBU.get();
+                AppBrandProfileUI localAppBrandProfileUI = (AppBrandProfileUI)AppBrandProfileUI.b.this.mdQ.get();
                 if (AppBrandProfileUI.j(localAppBrandProfileUI))
                 {
                   AppBrandProfileUI.k(localAppBrandProfileUI).removeFirst();
@@ -769,11 +779,11 @@ public final class AppBrandProfileUI
                   AppBrandProfileUI.a(localAppBrandProfileUI, 17, 1);
                   AppMethodBeat.o(48734);
                   return;
-                  dvq localdvq = new dvq();
-                  localdvq.EJG = true;
-                  localdvq.sYq = c.vN(com.tencent.mm.model.u.aqG());
-                  localdvq.nickname = com.tencent.mm.model.u.aqI();
-                  AppBrandProfileUI.k(localAppBrandProfileUI).addFirst(localdvq);
+                  ebh localebh = new ebh();
+                  localebh.GgS = true;
+                  localebh.ugE = c.zT(com.tencent.mm.model.u.axw());
+                  localebh.nickname = com.tencent.mm.model.u.axy();
+                  AppBrandProfileUI.k(localAppBrandProfileUI).addFirst(localebh);
                   AppBrandProfileUI.m(localAppBrandProfileUI);
                   break;
                 }
@@ -786,15 +796,15 @@ public final class AppBrandProfileUI
           AppMethodBeat.o(48737);
           return;
         }
-        ad.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "cgiUpdateUserLike, request fail");
-        aq.f(new Runnable()
+        ac.e("MicroMsg.AppBrand.Profile.AppBrandProfileUI", "cgiUpdateUserLike, request fail");
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(48735);
-            if ((AppBrandProfileUI.b.this.lBU != null) && (AppBrandProfileUI.b.this.lBU.get() != null))
+            if ((AppBrandProfileUI.b.this.mdQ != null) && (AppBrandProfileUI.b.this.mdQ.get() != null))
             {
-              AppBrandProfileUI localAppBrandProfileUI = (AppBrandProfileUI)AppBrandProfileUI.b.this.lBU.get();
+              AppBrandProfileUI localAppBrandProfileUI = (AppBrandProfileUI)AppBrandProfileUI.b.this.mdQ.get();
               if (AppBrandProfileUI.o(localAppBrandProfileUI))
               {
                 Toast.makeText(localAppBrandProfileUI, 2131755594, 0).show();
@@ -815,7 +825,7 @@ public final class AppBrandProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI
  * JD-Core Version:    0.7.0.1
  */

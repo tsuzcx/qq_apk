@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
 {
-  public long bfn;
-  private long bzs;
-  public volatile long bzt;
+  public long bfV;
+  private long bxa;
+  public volatile long bxb;
   
   public u(long paramLong)
   {
     AppMethodBeat.i(93205);
-    this.bzt = -9223372036854775807L;
-    ar(paramLong);
+    this.bxb = -9223372036854775807L;
+    an(paramLong);
     AppMethodBeat.o(93205);
   }
   
-  public static long au(long paramLong)
+  public static long aq(long paramLong)
   {
     return 1000000L * paramLong / 90000L;
   }
   
-  public static long av(long paramLong)
+  public static long ar(long paramLong)
   {
     return 90000L * paramLong / 1000000L;
   }
   
   /* Error */
-  public final void ar(long paramLong)
+  public final void an(long paramLong)
   {
     // Byte code:
     //   0: aload_0
@@ -35,7 +35,7 @@ public final class u
     //   2: ldc 39
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 24	com/google/android/exoplayer2/i/u:bzt	J
+    //   8: getfield 24	com/google/android/exoplayer2/i/u:bxb	J
     //   11: ldc2_w 21
     //   14: lcmp
     //   15: ifne +22 -> 37
@@ -45,7 +45,7 @@ public final class u
     //   21: invokestatic 45	com/google/android/exoplayer2/i/a:checkState	(Z)V
     //   24: aload_0
     //   25: lload_1
-    //   26: putfield 47	com/google/android/exoplayer2/i/u:bfn	J
+    //   26: putfield 47	com/google/android/exoplayer2/i/u:bfV	J
     //   29: ldc 39
     //   31: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
@@ -71,7 +71,7 @@ public final class u
     //   20	34	42	finally
   }
   
-  public final long as(long paramLong)
+  public final long ao(long paramLong)
   {
     AppMethodBeat.i(93207);
     if (paramLong == -9223372036854775807L)
@@ -79,9 +79,9 @@ public final class u
       AppMethodBeat.o(93207);
       return -9223372036854775807L;
     }
-    if (this.bzt != -9223372036854775807L)
+    if (this.bxb != -9223372036854775807L)
     {
-      long l2 = av(this.bzt);
+      long l2 = ar(this.bxb);
       long l3 = (4294967296L + l2) / 8589934592L;
       long l1 = (l3 - 1L) * 8589934592L + paramLong;
       paramLong = l3 * 8589934592L + paramLong;
@@ -91,13 +91,13 @@ public final class u
     }
     for (;;)
     {
-      paramLong = at(au(paramLong));
+      paramLong = ap(aq(paramLong));
       AppMethodBeat.o(93207);
       return paramLong;
     }
   }
   
-  public final long at(long paramLong)
+  public final long ap(long paramLong)
   {
     AppMethodBeat.i(93208);
     if (paramLong == -9223372036854775807L)
@@ -105,20 +105,20 @@ public final class u
       AppMethodBeat.o(93208);
       return -9223372036854775807L;
     }
-    if (this.bzt != -9223372036854775807L) {
-      this.bzt = paramLong;
+    if (this.bxb != -9223372036854775807L) {
+      this.bxb = paramLong;
     }
     for (;;)
     {
-      long l = this.bzs;
+      long l = this.bxa;
       AppMethodBeat.o(93208);
       return l + paramLong;
-      if (this.bfn != 9223372036854775807L) {
-        this.bzs = (this.bfn - paramLong);
+      if (this.bfV != 9223372036854775807L) {
+        this.bxa = (this.bfV - paramLong);
       }
       try
       {
-        this.bzt = paramLong;
+        this.bxb = paramLong;
         notifyAll();
       }
       finally
@@ -128,24 +128,24 @@ public final class u
     }
   }
   
-  public final long vY()
+  public final long vN()
   {
     long l = -9223372036854775807L;
-    if (this.bfn == 9223372036854775807L) {
+    if (this.bfV == 9223372036854775807L) {
       l = 0L;
     }
-    while (this.bzt == -9223372036854775807L) {
+    while (this.bxb == -9223372036854775807L) {
       return l;
     }
-    return this.bzs;
+    return this.bxa;
   }
   
-  public final void vZ()
+  public final void vO()
   {
     try
     {
       AppMethodBeat.i(93209);
-      while (this.bzt == -9223372036854775807L) {
+      while (this.bxb == -9223372036854775807L) {
         wait();
       }
       AppMethodBeat.o(93209);

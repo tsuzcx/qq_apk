@@ -16,33 +16,33 @@ import com.tencent.mm.plugin.facedetect.model.f;
 import com.tencent.mm.plugin.facedetect.model.g;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetect.model.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.service.MMService;
 import com.tencent.mm.vfs.i;
 
 public class FaceDetectProcessService
   extends MMService
 {
-  private a pQP;
-  public g pQQ;
-  private Messenger pQR;
-  private a pQS;
+  private a qzA;
+  private a qzx;
+  public g qzy;
+  private Messenger qzz;
   
   public FaceDetectProcessService()
   {
     AppMethodBeat.i(103859);
-    this.pQP = new a();
-    this.pQQ = null;
-    this.pQR = null;
-    this.pQS = null;
+    this.qzx = new a();
+    this.qzy = null;
+    this.qzz = null;
+    this.qzA = null;
     AppMethodBeat.o(103859);
   }
   
-  private void fs(int paramInt1, int paramInt2)
+  private void fv(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103866);
-    ad.i("MicroMsg.FaceDetectProcessService", "alvinluo replyToClient requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.FaceDetectProcessService", "alvinluo replyToClient requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     Message localMessage = new Message();
     localMessage.what = paramInt1;
     localMessage.arg1 = paramInt2;
@@ -50,7 +50,7 @@ public class FaceDetectProcessService
     AppMethodBeat.o(103866);
   }
   
-  private void o(int paramInt, Bundle paramBundle)
+  private void p(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(103867);
     Message localMessage = Message.obtain();
@@ -67,27 +67,27 @@ public class FaceDetectProcessService
     AppMethodBeat.i(103865);
     try
     {
-      if (this.pQR != null)
+      if (this.qzz != null)
       {
-        ad.i("MicroMsg.FaceDetectProcessService", "alvinluo serivce send msg to client: %d, msg: %s, client hashCode: %d", new Object[] { Integer.valueOf(paramMessage.what), paramMessage.toString(), Integer.valueOf(this.pQR.hashCode()) });
-        this.pQR.send(paramMessage);
+        ac.i("MicroMsg.FaceDetectProcessService", "alvinluo serivce send msg to client: %d, msg: %s, client hashCode: %d", new Object[] { Integer.valueOf(paramMessage.what), paramMessage.toString(), Integer.valueOf(this.qzz.hashCode()) });
+        this.qzz.send(paramMessage);
       }
       AppMethodBeat.o(103865);
       return;
     }
     catch (RemoteException paramMessage)
     {
-      ad.printErrStackTrace("MicroMsg.FaceDetectProcessService", paramMessage, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.FaceDetectProcessService", paramMessage, "", new Object[0]);
       AppMethodBeat.o(103865);
     }
   }
   
-  public final IBinder TF()
+  public final IBinder Uz()
   {
     AppMethodBeat.i(103862);
-    ad.i("MicroMsg.FaceDetectProcessService", "alvinluo service onBind hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.pQP = new a();
-    a locala = this.pQP;
+    ac.i("MicroMsg.FaceDetectProcessService", "alvinluo service onBind hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    this.qzx = new a();
+    a locala = this.qzx;
     AppMethodBeat.o(103862);
     return locala;
   }
@@ -100,16 +100,16 @@ public class FaceDetectProcessService
   public final void onCreate()
   {
     AppMethodBeat.i(103860);
-    ad.i("MicroMsg.FaceDetectProcessService", "alvinluo service onCreate hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
+    ac.i("MicroMsg.FaceDetectProcessService", "alvinluo service onCreate hashCode: %d", new Object[] { Integer.valueOf(hashCode()) });
     super.onCreate();
-    this.pQQ = new g();
+    this.qzy = new g();
     AppMethodBeat.o(103860);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(103864);
-    ad.i("MicroMsg.FaceDetectProcessService", "alvinluo service onDestroy");
+    ac.i("MicroMsg.FaceDetectProcessService", "alvinluo service onDestroy");
     super.onDestroy();
     AppMethodBeat.o(103864);
   }
@@ -117,10 +117,10 @@ public class FaceDetectProcessService
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103861);
-    ad.i("MicroMsg.FaceDetectProcessService", "alvinluo onStartCommand");
+    ac.i("MicroMsg.FaceDetectProcessService", "alvinluo onStartCommand");
     if (paramIntent == null)
     {
-      ad.e("MicroMsg.FaceDetectProcessService", "intent is null!!");
+      ac.e("MicroMsg.FaceDetectProcessService", "intent is null!!");
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
       AppMethodBeat.o(103861);
       return paramInt1;
@@ -128,19 +128,19 @@ public class FaceDetectProcessService
     Object localObject1 = (Messenger)paramIntent.getParcelableExtra("k_messenger");
     if (localObject1 != null)
     {
-      this.pQR = ((Messenger)localObject1);
+      this.qzz = ((Messenger)localObject1);
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
       AppMethodBeat.o(103861);
       return paramInt1;
     }
     int i = paramIntent.getIntExtra("k_cmd", -1);
-    ad.i("MicroMsg.FaceDetectProcessService", "hy: get command: %d", new Object[] { Integer.valueOf(i) });
+    ac.i("MicroMsg.FaceDetectProcessService", "hy: get command: %d", new Object[] { Integer.valueOf(i) });
     switch (i)
     {
     case 2: 
     case 3: 
     default: 
-      ad.e("MicroMsg.FaceDetectProcessService", "hy: unsupported cmd");
+      ac.e("MicroMsg.FaceDetectProcessService", "hy: unsupported cmd");
     }
     for (;;)
     {
@@ -157,23 +157,23 @@ public class FaceDetectProcessService
       default: 
         localObject1 = null;
         label247:
-        this.pQS = ((a)localObject1);
-        localObject1 = this.pQQ;
-        if (((g)localObject1).pOQ != null)
+        this.qzA = ((a)localObject1);
+        localObject1 = this.qzy;
+        if (((g)localObject1).qxy != null)
         {
-          ad.w("MicroMsg.FaceDetectNativeManager", "hy: last detection not destroyed");
-          ((g)localObject1).cfT();
+          ac.w("MicroMsg.FaceDetectNativeManager", "hy: last detection not destroyed");
+          ((g)localObject1).cnA();
         }
-        if (!p.cfY())
+        if (!p.cnF())
         {
-          ad.w("MicroMsg.FaceDetectNativeManager", "hy: model file not valid");
+          ac.w("MicroMsg.FaceDetectNativeManager", "hy: model file not valid");
           i = -4;
         }
         break;
       }
       for (;;)
       {
-        fs(0, i);
+        fv(0, i);
         break;
         localObject1 = null;
         break label247;
@@ -181,17 +181,17 @@ public class FaceDetectProcessService
         break label247;
         if (!PluginFace.isEnabled())
         {
-          ad.w("MicroMsg.FaceDetectNativeManager", "expansions file is not yet installed");
+          ac.w("MicroMsg.FaceDetectNativeManager", "expansions file is not yet installed");
           i = -5;
         }
         else
         {
-          ((g)localObject1).pOQ = new FaceProNative();
-          i = ((g)localObject1).pOQ.engineInit((String)localObject2, arrayOfByte, i.k(p.cgd(), true), p.cge());
-          ad.i("MicroMsg.FaceDetectNativeManager", "hy: init result : %d", new Object[] { Integer.valueOf(i) });
+          ((g)localObject1).qxy = new FaceProNative();
+          i = ((g)localObject1).qxy.engineInit((String)localObject2, arrayOfByte, i.k(p.cnK(), true), p.cnL());
+          ac.i("MicroMsg.FaceDetectNativeManager", "hy: init result : %d", new Object[] { Integer.valueOf(i) });
         }
       }
-      f.aj(new Runnable()
+      f.al(new Runnable()
       {
         public final void b(final FaceProNative.FaceResult paramAnonymousFaceResult)
         {
@@ -208,11 +208,11 @@ public class FaceDetectProcessService
           label98:
           for (int i = paramAnonymousFaceResult.result;; i = -1)
           {
-            ad.i("MicroMsg.FaceDetectProcessService", "alvinluo release out result == null:%b, result: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+            ac.i("MicroMsg.FaceDetectProcessService", "alvinluo release out result == null:%b, result: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
             if ((paramAnonymousFaceResult != null) && (paramAnonymousFaceResult.result == 0)) {
               break label103;
             }
-            ad.i("MicroMsg.FaceDetectProcessService", "alvinluo release out data not valid");
+            ac.i("MicroMsg.FaceDetectProcessService", "alvinluo release out data not valid");
             i = j;
             if (paramAnonymousFaceResult != null) {
               i = paramAnonymousFaceResult.result;
@@ -224,7 +224,7 @@ public class FaceDetectProcessService
             break;
           }
           label103:
-          f.aj(new Runnable()
+          f.al(new Runnable()
           {
             public final void run()
             {
@@ -244,13 +244,13 @@ public class FaceDetectProcessService
         public final void run()
         {
           AppMethodBeat.i(103858);
-          ad.i("MicroMsg.FaceDetectProcessService", "alvinluo service do release out");
-          aq.f(new Runnable()
+          ac.i("MicroMsg.FaceDetectProcessService", "alvinluo service do release out");
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(103857);
-              FaceDetectProcessService.2.this.pQW.b(this.pQX);
+              FaceDetectProcessService.2.this.qzE.b(this.qzF);
               AppMethodBeat.o(103857);
             }
           });
@@ -259,16 +259,16 @@ public class FaceDetectProcessService
       });
       continue;
       boolean bool = paramIntent.getBooleanExtra("key_is_need_video", false);
-      com.tencent.mm.plugin.facedetect.e.a.cgJ().pUa = bool;
+      com.tencent.mm.plugin.facedetect.e.a.coq().qCF = bool;
       continue;
-      if (this.pQS != null)
+      if (this.qzA != null)
       {
-        this.pQS.ag(paramIntent);
+        this.qzA.ag(paramIntent);
         continue;
         localObject1 = paramIntent.getStringExtra("key_bio_buffer_path");
         localObject2 = new Bundle();
         ((Bundle)localObject2).putString("key_bio_buffer_path", (String)localObject1);
-        o(6, (Bundle)localObject2);
+        p(6, (Bundle)localObject2);
       }
     }
   }
@@ -276,7 +276,7 @@ public class FaceDetectProcessService
   public final boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(103863);
-    ad.i("MicroMsg.FaceDetectProcessService", "alvinluo service onUnbind");
+    ac.i("MicroMsg.FaceDetectProcessService", "alvinluo service onUnbind");
     boolean bool = super.onUnbind(paramIntent);
     AppMethodBeat.o(103863);
     return bool;
@@ -290,7 +290,7 @@ public class FaceDetectProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService
  * JD-Core Version:    0.7.0.1
  */

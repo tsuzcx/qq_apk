@@ -18,12 +18,12 @@ public final class a
     AppMethodBeat.i(65985);
     paramChatFooterPanel.setEntranceScene(paramInt);
     paramChatFooterPanel.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, aa.bh(paramViewGroup.getContext()));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, aa.bi(paramViewGroup.getContext()));
     localLayoutParams.gravity = 80;
     paramViewGroup.removeAllViews();
     paramViewGroup.addView(paramChatFooterPanel, localLayoutParams);
-    paramViewGroup = aa.Kf();
-    paramViewGroup.cJL = parama;
+    paramViewGroup = aa.JP();
+    paramViewGroup.cGS = parama;
     paramChatFooterPanel.setCallback(paramViewGroup);
     AppMethodBeat.o(65985);
   }
@@ -46,10 +46,10 @@ public final class a
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(65983);
-          if (this.tqL != null)
+          if (this.uzc != null)
           {
-            this.tqL.onPause();
-            this.tqL.setVisibility(8);
+            this.uzc.onPause();
+            this.uzc.setVisibility(8);
           }
           AppMethodBeat.o(65983);
         }
@@ -59,8 +59,8 @@ public final class a
         public final void onAnimationStart(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(65982);
-          if (this.tqL != null) {
-            this.tqL.setVisibility(0);
+          if (this.uzc != null) {
+            this.uzc.setVisibility(0);
           }
           AppMethodBeat.o(65982);
         }
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

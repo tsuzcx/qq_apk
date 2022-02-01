@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.report.service.h;
 
 final class IPCallRechargeUI$2
@@ -15,11 +15,11 @@ final class IPCallRechargeUI$2
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25872);
-    h.vKh.idkeyStat(257L, 3L, 1L, true);
+    h.wUl.idkeyStat(257L, 3L, 1L, true);
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("rawUrl", this.sIR);
+    paramDialogInterface.putExtra("rawUrl", this.tQx);
     paramDialogInterface.putExtra("showShare", false);
-    d.b(this.sIQ, "webview", ".ui.tools.WebViewUI", paramDialogInterface);
+    d.b(this.tQw, "webview", ".ui.tools.WebViewUI", paramDialogInterface);
     AppMethodBeat.o(25872);
   }
 }

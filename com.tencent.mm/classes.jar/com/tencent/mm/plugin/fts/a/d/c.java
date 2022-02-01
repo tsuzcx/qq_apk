@@ -16,17 +16,17 @@ public abstract interface c
   
   public abstract Bitmap b(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2);
   
-  public abstract void cwV();
+  public abstract void cKh();
   
-  public abstract void cwW();
+  public abstract void cKi();
   
-  public abstract boolean cwX();
+  public abstract boolean cKj();
   
-  public abstract void cwY();
+  public abstract void cKk();
   
-  public abstract void cwZ();
+  public abstract void cKl();
   
-  public abstract void cxa();
+  public abstract void cKm();
   
   public static final class a
     extends BitmapDrawable
@@ -56,7 +56,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.c
  * JD-Core Version:    0.7.0.1
  */

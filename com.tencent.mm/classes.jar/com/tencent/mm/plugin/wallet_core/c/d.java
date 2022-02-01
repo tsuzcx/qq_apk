@@ -2,93 +2,93 @@ package com.tencent.mm.plugin.wallet_core.c;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.bzm;
-import com.tencent.mm.protocal.protobuf.vg;
-import com.tencent.mm.protocal.protobuf.vh;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cek;
+import com.tencent.mm.protocal.protobuf.vq;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.w;
 import com.tencent.mm.wallet_core.c.z;
 
 public final class d
   extends w
 {
+  public int Bop;
   private g callback;
   public b rr;
-  public int zVV;
   
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, String paramString7, String paramString8, String paramString9, int paramInt2)
   {
     AppMethodBeat.i(69891);
-    this.zVV = 0;
-    this.zVV = paramInt1;
+    this.Bop = 0;
+    this.Bop = paramInt1;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new vg();
-    ((b.a)localObject).gUV = new vh();
+    ((b.a)localObject).hvt = new vq();
+    ((b.a)localObject).hvu = new vr();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/checkpayjsapi";
     ((b.a)localObject).funcId = 580;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (vg)this.rr.gUS.gUX;
-    ((vg)localObject).hnC = paramString1;
-    ((vg)localObject).CFH = paramString2;
-    ((vg)localObject).CXk = paramString3;
-    ((vg)localObject).CXl = paramString4;
-    ((vg)localObject).CXn = paramString5;
-    ((vg)localObject).CXm = paramString6;
-    ((vg)localObject).CXo = paramInt1;
-    ((vg)localObject).mAQ = paramString7;
-    ((vg)localObject).sdZ = paramString8;
-    ((vg)localObject).Cxp = 2;
-    ((vg)localObject).CXr = paramString9;
-    ((vg)localObject).CXq = paramInt2;
-    ((vg)localObject).CPi = k.ebS();
-    if (z.fjX()) {
-      ((vg)localObject).CXp = z.getBindCardUuid();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (vq)this.rr.hvr.hvw;
+    ((vq)localObject).hOf = paramString1;
+    ((vq)localObject).DYh = paramString2;
+    ((vq)localObject).EpT = paramString3;
+    ((vq)localObject).EpU = paramString4;
+    ((vq)localObject).EpW = paramString5;
+    ((vq)localObject).EpV = paramString6;
+    ((vq)localObject).EpX = paramInt1;
+    ((vq)localObject).ncR = paramString7;
+    ((vq)localObject).tlT = paramString8;
+    ((vq)localObject).DPL = 2;
+    ((vq)localObject).Eqa = paramString9;
+    ((vq)localObject).EpZ = paramInt2;
+    ((vq)localObject).EhT = k.ero();
+    if (z.fAn()) {
+      ((vq)localObject).EpY = z.getBindCardUuid();
     }
-    ad.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, UserName: %s, path: %s", new Object[] { paramString1, paramString7, paramString8 });
+    ac.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, UserName: %s, path: %s", new Object[] { paramString1, paramString7, paramString8 });
     AppMethodBeat.o(69891);
   }
   
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, String paramString8, int paramInt2)
   {
     AppMethodBeat.i(69890);
-    this.zVV = 0;
-    this.zVV = paramInt1;
+    this.Bop = 0;
+    this.Bop = paramInt1;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new vg();
-    ((b.a)localObject).gUV = new vh();
+    ((b.a)localObject).hvt = new vq();
+    ((b.a)localObject).hvu = new vr();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/checkpayjsapi";
     ((b.a)localObject).funcId = 580;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (vg)this.rr.gUS.gUX;
-    ((vg)localObject).hnC = paramString1;
-    ((vg)localObject).CFH = paramString2;
-    ((vg)localObject).CXk = paramString3;
-    ((vg)localObject).CXl = paramString4;
-    ((vg)localObject).CXn = paramString5;
-    ((vg)localObject).CXm = paramString6;
-    ((vg)localObject).CWf = paramString7;
-    ((vg)localObject).CXo = paramInt1;
-    ((vg)localObject).CPi = k.ebS();
-    if (z.fjX()) {
-      ((vg)localObject).CXp = z.getBindCardUuid();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (vq)this.rr.hvr.hvw;
+    ((vq)localObject).hOf = paramString1;
+    ((vq)localObject).DYh = paramString2;
+    ((vq)localObject).EpT = paramString3;
+    ((vq)localObject).EpU = paramString4;
+    ((vq)localObject).EpW = paramString5;
+    ((vq)localObject).EpV = paramString6;
+    ((vq)localObject).EoO = paramString7;
+    ((vq)localObject).EpX = paramInt1;
+    ((vq)localObject).EhT = k.ero();
+    if (z.fAn()) {
+      ((vq)localObject).EpY = z.getBindCardUuid();
     }
-    ((vg)localObject).Cxp = 1;
-    ((vg)localObject).CXr = paramString8;
-    ((vg)localObject).CXq = paramInt2;
-    ad.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, url: %s, jsapiScene: %s", new Object[] { paramString1, paramString7, Integer.valueOf(paramInt1) });
+    ((vq)localObject).DPL = 1;
+    ((vq)localObject).Eqa = paramString8;
+    ((vq)localObject).EpZ = paramInt2;
+    ac.i("MicroMsg.NetSceneCheckPayJsapi", "appId: %s, url: %s, jsapiScene: %s", new Object[] { paramString1, paramString7, Integer.valueOf(paramInt1) });
     AppMethodBeat.o(69890);
   }
   
@@ -101,19 +101,19 @@ public final class d
     return i;
   }
   
-  public final String ebj()
+  public final String eqF()
   {
-    return ((vh)this.rr.gUT.gUX).CoC;
+    return ((vr)this.rr.hvs.hvw).DGU;
   }
   
-  public final bzm ebk()
+  public final cek eqG()
   {
-    return ((vh)this.rr.gUT.gUX).CXs;
+    return ((vr)this.rr.hvs.hvw).Eqb;
   }
   
   public final String getToken()
   {
-    return ((vh)this.rr.gUT.gUX).token;
+    return ((vr)this.rr.hvs.hvw).token;
   }
   
   public final int getType()
@@ -124,39 +124,39 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(69893);
-    ad.d("MicroMsg.NetSceneCheckPayJsapi", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ac.d("MicroMsg.NetSceneCheckPayJsapi", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     paramArrayOfByte = paramString;
     if (paramInt2 == 0)
     {
       paramArrayOfByte = paramString;
       if (paramInt3 == 0)
       {
-        paramString = (vh)((b)paramq).gUT.gUX;
-        ad.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.oXv + " resp.ErrMsg is " + paramString.oXw);
-        paramq = (vg)((b)paramq).gUS.gUX;
-        if (paramq.CWf == null) {
+        paramString = (vr)((b)paramq).hvs.hvw;
+        ac.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.pAG + " resp.ErrMsg is " + paramString.pAH);
+        paramq = (vq)((b)paramq).hvr.hvw;
+        if (paramq.EoO == null) {
           break label410;
         }
-        paramArrayOfByte = Uri.parse(paramq.CWf).getQueryParameter("appid");
-        if (paramArrayOfByte == paramq.hnC) {
+        paramArrayOfByte = Uri.parse(paramq.EoO).getQueryParameter("appid");
+        if (paramArrayOfByte == paramq.hOf) {
           break label321;
         }
-        h.vKh.f(14954, new Object[] { paramString.CoC, "", Integer.valueOf(paramq.CXo), paramq.CXr, paramq.hnC, Integer.valueOf(paramq.Cxp), Integer.valueOf(paramq.CXq), paramq.CWf, paramArrayOfByte });
+        h.wUl.f(14954, new Object[] { paramString.DGU, "", Integer.valueOf(paramq.EpX), paramq.Eqa, paramq.hOf, Integer.valueOf(paramq.DPL), Integer.valueOf(paramq.EpZ), paramq.EoO, paramArrayOfByte });
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.oXv + " resp.ErrMsg is " + paramString.oXw);
-      paramArrayOfByte = paramString.oXw;
+      ac.i("MicroMsg.NetSceneCheckPayJsapi", "NetSceneCheckPayJsapi resp.ErrCode is " + paramString.pAG + " resp.ErrMsg is " + paramString.pAH);
+      paramArrayOfByte = paramString.pAH;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramArrayOfByte, this);
       AppMethodBeat.o(69893);
       return;
       label321:
-      h.vKh.f(14954, new Object[] { paramString.CoC, "", Integer.valueOf(paramq.CXo), paramq.CXr, paramq.hnC, Integer.valueOf(paramq.Cxp), Integer.valueOf(paramq.CXq), paramq.CWf });
+      h.wUl.f(14954, new Object[] { paramString.DGU, "", Integer.valueOf(paramq.EpX), paramq.Eqa, paramq.hOf, Integer.valueOf(paramq.DPL), Integer.valueOf(paramq.EpZ), paramq.EoO });
       continue;
       label410:
-      if ((paramq.mAQ != null) && (paramq.sdZ != null)) {
-        h.vKh.f(14954, new Object[] { paramString.CoC, "", Integer.valueOf(paramq.CXo), paramq.CXr, paramq.hnC, Integer.valueOf(paramq.Cxp), Integer.valueOf(paramq.CXq), paramq.sdZ, paramq.mAQ });
+      if ((paramq.ncR != null) && (paramq.tlT != null)) {
+        h.wUl.f(14954, new Object[] { paramString.DGU, "", Integer.valueOf(paramq.EpX), paramq.Eqa, paramq.hOf, Integer.valueOf(paramq.DPL), Integer.valueOf(paramq.EpZ), paramq.tlT, paramq.ncR });
       }
     }
   }

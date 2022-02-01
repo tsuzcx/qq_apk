@@ -1,226 +1,236 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
+import com.tencent.mm.storagebase.h;
+import java.util.LinkedList;
+import java.util.List;
+import junit.framework.Assert;
 
 public final class bv
-  extends j<bu>
-  implements l
+  extends com.tencent.mm.sdk.e.k
+  implements com.tencent.mm.plugin.messenger.foundation.a.a.k, g.a
 {
-  public static final String[] INDEX_CREATE;
-  public static final String[] SQL_CREATE;
-  public e db;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS role_info ( id TEXT PRIMARY KEY, name TEXT, status INT, text_reserved1 TEXT, text_reserved2 TEXT, text_reserved3 TEXT, text_reserved4 TEXT, int_reserved1 INT, int_reserved2 INT, int_reserved3 INT, int_reserved4 INT )" };
+  private e db = null;
   
-  static
+  public bv(h paramh)
   {
-    AppMethodBeat.i(117342);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bu.info, "shakeverifymessage") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS  shakeverifymessage_unread_index ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_statusIndex ON shakeverifymessage ( status )", "CREATE INDEX IF NOT EXISTS shakeverifymessage_createtimeIndex ON shakeverifymessage ( createtime )" };
-    AppMethodBeat.o(117342);
+    this.db = paramh;
   }
   
-  public bv(e parame)
+  private void a(bu parambu)
   {
-    super(parame, bu.info, "shakeverifymessage", INDEX_CREATE);
-    this.db = parame;
-  }
-  
-  public final Cursor Fn(int paramInt)
-  {
-    AppMethodBeat.i(117334);
-    Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
-    localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(117334);
-    return localObject;
-  }
-  
-  public final boolean a(bu parambu)
-  {
-    AppMethodBeat.i(117337);
-    if (parambu == null)
-    {
-      ad.e("MicroMsg.ShakeVerifyMessageStorage", "insert fail, shakeMsg is null");
-      AppMethodBeat.o(117337);
-      return false;
-    }
-    if (super.insert(parambu))
-    {
-      doNotify(parambu.systemRowid);
-      AppMethodBeat.o(117337);
-      return true;
-    }
-    AppMethodBeat.o(117337);
-    return false;
-  }
-  
-  public final bu[] aJk(String paramString)
-  {
-    AppMethodBeat.i(117339);
-    ad.d("MicroMsg.ShakeVerifyMessageStorage", "getLastShakeVerifyMessage");
-    paramString = "select *, rowid from ShakeVerifyMessage  where sayhiuser = '" + bt.aFQ(paramString) + "' order by createtime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bu localbu = new bu();
-      localbu.convertFrom(paramString);
-      localArrayList.add(localbu);
-    }
-    paramString.close();
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(117339);
-      return null;
-    }
-    paramString = (bu[])localArrayList.toArray(new bu[localArrayList.size()]);
-    AppMethodBeat.o(117339);
-    return paramString;
-  }
-  
-  public final void aSi()
-  {
-    AppMethodBeat.i(117336);
-    this.db.delete(getTableName(), null, null);
-    AppMethodBeat.o(117336);
-  }
-  
-  public final void agi(String paramString)
-  {
-    AppMethodBeat.i(117335);
-    paramString = "svrid = '" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
+    AppMethodBeat.i(117324);
+    parambu.drx = 135;
+    parambu = parambu.convertTo();
+    if ((parambu.size() > 0) && (this.db.insert("role_info", "id", parambu) != 0L)) {
       doNotify();
     }
-    ad.i("MicroMsg.ShakeVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(117335);
+    AppMethodBeat.o(117324);
   }
   
-  public final long agk(String paramString)
+  private bu aOC(String paramString)
   {
-    AppMethodBeat.i(117340);
-    if (paramString != null)
+    Object localObject = null;
+    AppMethodBeat.i(117322);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramString = ((bv)((k)g.ab(k.class)).cOE()).eMZ();
-      if (paramString == null) {}
-    }
-    for (long l1 = paramString.field_createtime + 1L;; l1 = 0L)
-    {
-      long l2 = bt.aGK();
-      if (l1 > l2)
+      Assert.assertTrue(bool);
+      bu localbu = new bu();
+      Cursor localCursor = this.db.a("role_info", null, "name= ?", new String[] { paramString }, null, null, null, 2);
+      paramString = localObject;
+      if (localCursor.moveToFirst())
       {
-        AppMethodBeat.o(117340);
-        return l1;
+        localbu.convertFrom(localCursor);
+        paramString = localbu;
       }
-      AppMethodBeat.o(117340);
-      return l2;
+      localCursor.close();
+      AppMethodBeat.o(117322);
+      return paramString;
     }
   }
   
-  public final int bIR()
+  private void b(bu parambu)
   {
-    AppMethodBeat.i(117331);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 4", null, 2);
-    if (!localCursor.moveToFirst())
+    AppMethodBeat.i(117329);
+    ContentValues localContentValues = parambu.convertTo();
+    if (localContentValues.size() > 0)
     {
-      localCursor.close();
-      AppMethodBeat.o(117331);
-      return 0;
+      int i = this.db.update("role_info", localContentValues, "name like ?", new String[] { parambu.name });
+      ac.d("MicroMsg.RoleStorage", "update role info, name=" + parambu.name + ", res:" + i);
+      if (i > 0) {
+        doNotify();
+      }
     }
-    int i = localCursor.getInt(0);
-    localCursor.close();
-    if (i > 0)
-    {
-      AppMethodBeat.o(117331);
-      return i;
-    }
-    AppMethodBeat.o(117331);
+    AppMethodBeat.o(117329);
+  }
+  
+  public final int a(g paramg)
+  {
+    this.db = paramg;
     return 0;
   }
   
-  public final bu eMZ()
+  public final bu alJ(String paramString)
   {
-    AppMethodBeat.i(117333);
-    Cursor localCursor = this.db.a("SELECT * FROM " + getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
-    if (localCursor == null)
+    Object localObject = null;
+    AppMethodBeat.i(117321);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(117333);
-      return null;
-    }
-    if (!localCursor.moveToFirst())
-    {
-      localCursor.close();
-      AppMethodBeat.o(117333);
+      AppMethodBeat.o(117321);
       return null;
     }
     bu localbu = new bu();
-    localbu.convertFrom(localCursor);
+    Cursor localCursor = this.db.a("role_info", null, "name LIKE ?", new String[] { "%".concat(String.valueOf(paramString)) }, null, null, null, 2);
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      localbu.convertFrom(localCursor);
+      paramString = localbu;
+    }
     localCursor.close();
-    AppMethodBeat.o(117333);
-    return localbu;
-  }
-  
-  public final bu[] fQ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(117338);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("MicroMsg.ShakeVerifyMessageStorage", "getLastRecvShakeMsg fail, talker is null");
-      AppMethodBeat.o(117338);
-      return null;
-    }
-    paramString = "select * from ShakeVerifyMessage where isSend = 0 and sayhiuser = '" + bt.aFQ(paramString) + "' order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      bu localbu = new bu();
-      localbu.convertFrom(paramString);
-      localArrayList.add(localbu);
-    }
-    paramString.close();
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(117338);
-      return null;
-    }
-    paramString = (bu[])localArrayList.toArray(new bu[localArrayList.size()]);
-    AppMethodBeat.o(117338);
+    AppMethodBeat.o(117321);
     return paramString;
   }
   
-  public final int getCount()
+  public final void bp(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(117332);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName(), null, 2);
-    if (!localCursor.moveToFirst())
+    AppMethodBeat.i(117327);
+    if (bs.isNullOrNil(paramString))
     {
-      localCursor.close();
-      AppMethodBeat.o(117332);
-      return 0;
+      ac.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
+      AppMethodBeat.o(117327);
+      return;
     }
-    int i = localCursor.getInt(0);
+    bu localbu = aOC(paramString);
+    if (localbu == null)
+    {
+      a(new bu(paramString, paramBoolean, 2));
+      ac.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(117327);
+      return;
+    }
+    localbu.setEnable(paramBoolean);
+    localbu.drx = 4;
+    b(localbu);
+    AppMethodBeat.o(117327);
+  }
+  
+  public final void dX(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(117326);
+    if (bs.isNullOrNil(paramString))
+    {
+      ac.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
+      AppMethodBeat.o(117326);
+      return;
+    }
+    if (aOC(paramString) == null)
+    {
+      a(new bu(paramString, true, paramInt));
+      ac.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
+    }
+    AppMethodBeat.o(117326);
+  }
+  
+  public final List<bu> dcK()
+  {
+    AppMethodBeat.i(117323);
+    LinkedList localLinkedList = new LinkedList();
+    Cursor localCursor = this.db.a("role_info", null, "int_reserved1=1", null, null, null, null, 2);
+    while (localCursor.moveToNext())
+    {
+      bu localbu = new bu();
+      localbu.convertFrom(localCursor);
+      localLinkedList.add(localbu);
+    }
     localCursor.close();
-    if (i > 0)
+    AppMethodBeat.o(117323);
+    return localLinkedList;
+  }
+  
+  public final void delete(String paramString)
+  {
+    AppMethodBeat.i(117330);
+    if (paramString.length() > 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(117332);
-      return i;
+      Assert.assertTrue(bool);
+      int i = this.db.delete("role_info", "name=?", new String[] { String.valueOf(paramString) });
+      ac.d("MicroMsg.RoleStorage", "delete name name :" + paramString + ", res:" + i);
+      if (i > 0) {
+        doNotify();
+      }
+      AppMethodBeat.o(117330);
+      return;
     }
-    AppMethodBeat.o(117332);
-    return 0;
+  }
+  
+  public final void f(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 2;
+    AppMethodBeat.i(117328);
+    if (bs.isNullOrNil(paramString))
+    {
+      ac.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
+      AppMethodBeat.o(117328);
+      return;
+    }
+    bu localbu = aOC(paramString);
+    if (localbu == null)
+    {
+      a(new bu(paramString, paramBoolean1, 2));
+      ac.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(117328);
+      return;
+    }
+    localbu.setEnable(paramBoolean1);
+    int j;
+    if (paramBoolean2)
+    {
+      j = localbu.status;
+      if (!paramBoolean2) {}
+    }
+    for (localbu.status = (i | j);; localbu.status &= 0xFFFFFFFD)
+    {
+      localbu.drx = 4;
+      b(localbu);
+      AppMethodBeat.o(117328);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final String getTableName()
+  {
+    return "role_info";
+  }
+  
+  public final boolean has(String paramString)
+  {
+    AppMethodBeat.i(117325);
+    bu localbu = alJ(new bu.a(paramString).aOB(""));
+    if ((localbu != null) && (paramString.equals(localbu.name)))
+    {
+      AppMethodBeat.o(117325);
+      return true;
+    }
+    AppMethodBeat.o(117325);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.bv
  * JD-Core Version:    0.7.0.1
  */

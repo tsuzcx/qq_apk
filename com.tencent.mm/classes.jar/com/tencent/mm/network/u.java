@@ -3,8 +3,9 @@ package com.tencent.mm.network;
 import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -12,37 +13,37 @@ import java.util.List;
 
 public final class u
 {
-  public static void aF(List<String> paramList)
+  public static void aC(List<String> paramList)
   {
     int k = 1;
     AppMethodBeat.i(132848);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMDisasterInfoHandle", "compareDisasterHost");
+    ac.i("MicroMsg.MMDisasterInfoHandle", "compareDisasterHost");
     if (paramList.size() == 0)
     {
       AppMethodBeat.o(132848);
       return;
     }
-    Object localObject1 = ad.aFo();
+    Object localObject1 = ad.aMf();
     if (localObject1 == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "autoAuth is null");
+      ac.w("MicroMsg.MMDisasterInfoHandle", "autoAuth is null");
       AppMethodBeat.o(132848);
       return;
     }
-    localObject1 = ((t)localObject1).hKZ;
+    localObject1 = ((t)localObject1).ilv;
     if (localObject1 == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "accinfo is null");
+      ac.w("MicroMsg.MMDisasterInfoHandle", "accinfo is null");
       AppMethodBeat.o(132848);
       return;
     }
     Object localObject2;
     int i;
-    if (!((a)localObject1).AV("main"))
+    if (!((a)localObject1).Fa("main"))
     {
       localObject2 = paramList.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        if (((a)localObject1).ak(((String)((Iterator)localObject2).next()).getBytes())) {
+        if (((a)localObject1).aj(((String)((Iterator)localObject2).next()).getBytes())) {
           i = 1;
         }
       }
@@ -53,12 +54,12 @@ public final class u
       int j;
       if (i != 0)
       {
-        ((a)localObject1).aEF();
+        ((a)localObject1).aLw();
         try
         {
-          ad.aFm().post(new u.1());
-          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "main disaster disasterOccur ");
-          e.vIY.idkeyStat(148L, 124L, 1L, false);
+          ad.aMd().post(new u.1());
+          ac.w("MicroMsg.MMDisasterInfoHandle", "main disaster disasterOccur ");
+          e.wTc.idkeyStat(148L, 124L, 1L, false);
           AppMethodBeat.o(132848);
           return;
           i = 0;
@@ -95,17 +96,17 @@ public final class u
         {
           for (;;)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bt.m(paramList) });
+            ac.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bs.m(paramList) });
           }
         }
       }
       else
       {
-        if (!((a)localObject1).AV("axhost"))
+        if (!((a)localObject1).Fa("axhost"))
         {
           paramList = paramList.iterator();
           while (paramList.hasNext()) {
-            if (((a)localObject1).wl((String)paramList.next())) {
+            if (((a)localObject1).Ar((String)paramList.next())) {
               i = k;
             }
           }
@@ -114,10 +115,10 @@ public final class u
         {
           if (i != 0)
           {
-            ((a)localObject1).aEF();
-            ad.aFo().Bb("");
-            e.vIY.idkeyStat(148L, 125L, 1L, false);
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMDisasterInfoHandle", "ax disaster disasterOccur ");
+            ((a)localObject1).aLw();
+            ad.aMf().Fg("");
+            e.wTc.idkeyStat(148L, 125L, 1L, false);
+            ac.w("MicroMsg.MMDisasterInfoHandle", "ax disaster disasterOccur ");
             AppMethodBeat.o(132848);
             return;
             continue;
@@ -160,7 +161,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.network.u
  * JD-Core Version:    0.7.0.1
  */

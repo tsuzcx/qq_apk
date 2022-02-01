@@ -1,87 +1,75 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dy
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Crn;
-  public boolean vJT;
-  public boolean vJU;
-  public boolean vJx;
-  public String value;
+  public LinkedList<dco> fBS;
+  
+  public dy()
+  {
+    AppMethodBeat.i(50074);
+    this.fBS = new LinkedList();
+    AppMethodBeat.o(50074);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50078);
+    AppMethodBeat.i(50075);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.Crn);
-      if (this.value != null) {
-        paramVarArgs.d(2, this.value);
-      }
-      paramVarArgs.bg(3, this.vJT);
-      paramVarArgs.bg(4, this.vJx);
-      paramVarArgs.bg(5, this.vJU);
-      AppMethodBeat.o(50078);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.fBS);
+      AppMethodBeat.o(50075);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.Crn) + 0;
-      paramInt = i;
-      if (this.value != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.value);
-      }
-      i = f.a.a.b.b.a.fY(3);
-      int j = f.a.a.b.b.a.fY(4);
-      int k = f.a.a.b.b.a.fY(5);
-      AppMethodBeat.o(50078);
-      return paramInt + (i + 1) + (j + 1) + (k + 1);
+      paramInt = f.a.a.a.c(1, 8, this.fBS);
+      AppMethodBeat.o(50075);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.fBS.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(50078);
+      AppMethodBeat.o(50075);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       dy localdy = (dy)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(50078);
+        AppMethodBeat.o(50075);
         return -1;
-      case 1: 
-        localdy.Crn = locala.KhF.xS();
-        AppMethodBeat.o(50078);
-        return 0;
-      case 2: 
-        localdy.value = locala.KhF.readString();
-        AppMethodBeat.o(50078);
-        return 0;
-      case 3: 
-        localdy.vJT = locala.KhF.fHu();
-        AppMethodBeat.o(50078);
-        return 0;
-      case 4: 
-        localdy.vJx = locala.KhF.fHu();
-        AppMethodBeat.o(50078);
-        return 0;
       }
-      localdy.vJU = locala.KhF.fHu();
-      AppMethodBeat.o(50078);
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new dco();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((dco)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localdy.fBS.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(50075);
       return 0;
     }
-    AppMethodBeat.o(50078);
+    AppMethodBeat.o(50075);
     return -1;
   }
 }

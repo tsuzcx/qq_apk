@@ -5,22 +5,22 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class g
   implements View.OnTouchListener
 {
-  private long iCi = -1L;
-  private float iCj = -1.0F;
-  private int iCk = 0;
-  a iCl;
+  private long jcj = -1L;
+  private float jck = -1.0F;
+  private int jcl = 0;
+  a jcm;
   
-  private float y(MotionEvent paramMotionEvent)
+  private float w(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(89269);
     try
     {
-      if (this.iCk >= 2)
+      if (this.jcl >= 2)
       {
         float f3 = paramMotionEvent.getX(0);
         float f1 = paramMotionEvent.getY(0);
@@ -34,7 +34,7 @@ public final class g
     }
     catch (Exception paramMotionEvent)
     {
-      ad.e("MicroMsg.MMSightRecordViewTouchListener", "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
+      ac.e("MicroMsg.MMSightRecordViewTouchListener", "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
       AppMethodBeat.o(89269);
     }
     return 0.0F;
@@ -42,7 +42,7 @@ public final class g
   
   public final void a(a parama)
   {
-    this.iCl = parama;
+    this.jcm = parama;
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -62,68 +62,68 @@ public final class g
           {
             AppMethodBeat.o(89268);
             return true;
-            ad.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_DOWN");
-            if ((this.iCi > 0L) && (SystemClock.elapsedRealtime() - this.iCi < 400L)) {
-              if (this.iCl == null) {}
+            ac.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_DOWN");
+            if ((this.jcj > 0L) && (SystemClock.elapsedRealtime() - this.jcj < 400L)) {
+              if (this.jcm == null) {}
             }
             for (;;)
             {
-              this.iCi = SystemClock.elapsedRealtime();
-              this.iCj = -1.0F;
-              this.iCk += 1;
+              this.jcj = SystemClock.elapsedRealtime();
+              this.jck = -1.0F;
+              this.jcl += 1;
               break;
-              if (this.iCl != null) {
-                this.iCl.A(paramMotionEvent.getX(), paramMotionEvent.getY());
+              if (this.jcm != null) {
+                this.jcm.D(paramMotionEvent.getX(), paramMotionEvent.getY());
               }
             }
-            ad.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_DOWN");
-            this.iCk += 1;
+            ac.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_DOWN");
+            this.jcl += 1;
             continue;
-            ad.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_UP");
-            this.iCk -= 1;
+            ac.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_POINTER_UP");
+            this.jcl -= 1;
             continue;
-            ad.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_UP");
-            this.iCj = -1.0F;
-            this.iCk = 0;
+            ac.d("MicroMsg.MMSightRecordViewTouchListener", "ACTION_UP");
+            this.jck = -1.0F;
+            this.jcl = 0;
           }
-        } while (this.iCk < 2);
-        f = y(paramMotionEvent);
-        ad.v("MicroMsg.MMSightRecordViewTouchListener", "distance: %s", new Object[] { Float.valueOf(f) });
+        } while (this.jcl < 2);
+        f = w(paramMotionEvent);
+        ac.v("MicroMsg.MMSightRecordViewTouchListener", "distance: %s", new Object[] { Float.valueOf(f) });
       } while (f <= 0.0F);
-      if (this.iCj <= 0.0F) {
+      if (this.jck <= 0.0F) {
         break;
       }
-    } while (Math.abs(f - this.iCj) <= 15.0F);
-    if (f > this.iCj)
+    } while (Math.abs(f - this.jck) <= 15.0F);
+    if (f > this.jck)
     {
-      ad.d("MicroMsg.MMSightRecordViewTouchListener", "zoom out");
-      if (this.iCl != null) {
-        this.iCl.aLr();
+      ac.d("MicroMsg.MMSightRecordViewTouchListener", "zoom out");
+      if (this.jcm != null) {
+        this.jcm.aSi();
       }
     }
     for (;;)
     {
-      this.iCj = f;
+      this.jck = f;
       break;
-      ad.d("MicroMsg.MMSightRecordViewTouchListener", "zoom in");
-      if (this.iCl != null) {
-        this.iCl.aLs();
+      ac.d("MicroMsg.MMSightRecordViewTouchListener", "zoom in");
+      if (this.jcm != null) {
+        this.jcm.aSj();
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void A(float paramFloat1, float paramFloat2);
+    public abstract void D(float paramFloat1, float paramFloat2);
     
-    public abstract void aLr();
+    public abstract void aSi();
     
-    public abstract void aLs();
+    public abstract void aSj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.api.recordView.g
  * JD-Core Version:    0.7.0.1
  */

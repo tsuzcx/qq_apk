@@ -1,35 +1,39 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
+import android.content.Context;
 import android.graphics.PointF;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.r.b;
+import android.support.v7.widget.RecyclerView.s.a;
+import android.support.v7.widget.RecyclerView.s.b;
+import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.ae;
 import android.support.v7.widget.aj;
+import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.a;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.widget.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class c
   extends f
 {
-  private aj anY;
-  private aj anZ;
-  b yOm;
+  b Acd;
+  private aj aoT;
+  private aj aoU;
   
   public c(b paramb)
   {
-    this.yOm = paramb;
+    this.Acd = paramb;
   }
   
   private int a(View paramView, aj paramaj)
   {
     AppMethodBeat.i(126413);
     int i = paramaj.bn(paramView);
-    int j = this.yOm.dOS();
+    int j = this.Acd.eds();
     AppMethodBeat.o(126413);
     return i - j;
   }
@@ -48,7 +52,7 @@ public final class c
     int k;
     if (parami.getClipToPadding())
     {
-      j = paramaj.kd() + (paramaj.kf() - a.yMb) / 2;
+      j = paramaj.kl() + (paramaj.kn() - a.zZT) / 2;
       int i = 2147483647;
       k = 0;
       label55:
@@ -79,10 +83,10 @@ public final class c
   private aj b(RecyclerView.i parami)
   {
     AppMethodBeat.i(126415);
-    if ((this.anY == null) || (this.anY.getLayoutManager() != parami)) {
-      this.anY = aj.e(parami);
+    if ((this.aoT == null) || (this.aoT.getLayoutManager() != parami)) {
+      this.aoT = aj.e(parami);
     }
-    parami = this.anY;
+    parami = this.aoT;
     AppMethodBeat.o(126415);
     return parami;
   }
@@ -90,10 +94,10 @@ public final class c
   private aj c(RecyclerView.i parami)
   {
     AppMethodBeat.i(126416);
-    if ((this.anZ == null) || (this.anZ.getLayoutManager() != parami)) {
-      this.anZ = aj.d(parami);
+    if ((this.aoU == null) || (this.aoU.getLayoutManager() != parami)) {
+      this.aoU = aj.d(parami);
     }
-    parami = this.anZ;
+    parami = this.aoU;
     AppMethodBeat.o(126416);
     return parami;
   }
@@ -112,21 +116,21 @@ public final class c
       AppMethodBeat.o(126411);
       return -1;
     }
-    int i = this.yOm.dOM() + 1;
+    int i = this.Acd.edm() + 1;
     if (i == -1)
     {
       AppMethodBeat.o(126411);
       return -1;
     }
     boolean bool;
-    if (parami.jE()) {
+    if (parami.jM()) {
       if (paramInt1 > 0)
       {
         bool = true;
-        if (!(parami instanceof RecyclerView.r.b)) {
+        if (!(parami instanceof RecyclerView.s.b)) {
           break label263;
         }
-        parami = ((RecyclerView.r.b)parami).bZ(j - 1);
+        parami = ((RecyclerView.s.b)parami).bZ(j - 1);
         if (parami == null) {
           break label263;
         }
@@ -148,7 +152,7 @@ public final class c
       }
       for (;;)
       {
-        ad.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.yOm.dOM() + 1) });
+        ac.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.Acd.edm() + 1) });
         AppMethodBeat.o(126411);
         return paramInt1;
         bool = false;
@@ -178,13 +182,13 @@ public final class c
   public final View a(RecyclerView.i parami)
   {
     AppMethodBeat.i(126410);
-    if (parami.jF())
+    if (parami.jN())
     {
       parami = a(parami, b(parami));
       AppMethodBeat.o(126410);
       return parami;
     }
-    if (parami.jE())
+    if (parami.jM())
     {
       parami = a(parami, c(parami));
       AppMethodBeat.o(126410);
@@ -198,10 +202,10 @@ public final class c
   {
     AppMethodBeat.i(126409);
     int[] arrayOfInt = new int[2];
-    if (parami.jE())
+    if (parami.jM())
     {
       arrayOfInt[0] = a(paramView, c(parami));
-      if (!parami.jF()) {
+      if (!parami.jN()) {
         break label63;
       }
       arrayOfInt[1] = a(paramView, b(parami));
@@ -220,12 +224,39 @@ public final class c
   public final ae f(RecyclerView.i parami)
   {
     AppMethodBeat.i(126412);
-    if (!(parami instanceof RecyclerView.r.b))
+    if (!(parami instanceof RecyclerView.s.b))
     {
       AppMethodBeat.o(126412);
       return null;
     }
-    parami = new c.1(this, this.akA.getContext());
+    parami = new ae(this.alu.getContext())
+    {
+      public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      public final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      {
+        AppMethodBeat.i(126407);
+        paramAnonymousView = c.this.a(c.this.alu.getLayoutManager(), paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.TN);
+        }
+        AppMethodBeat.o(126407);
+      }
+      
+      public final int ce(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(126408);
+        paramAnonymousInt = Math.min(100, super.ce(paramAnonymousInt));
+        AppMethodBeat.o(126408);
+        return paramAnonymousInt;
+      }
+    };
     AppMethodBeat.o(126412);
     return parami;
   }

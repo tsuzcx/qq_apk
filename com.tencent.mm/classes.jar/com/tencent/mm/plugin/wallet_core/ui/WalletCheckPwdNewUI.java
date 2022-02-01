@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
@@ -23,18 +23,18 @@ import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 public class WalletCheckPwdNewUI
   extends WalletBaseUI
 {
-  private a AmB;
-  TextView AmC;
-  private TextView AmD;
-  private LinearLayout AmE;
-  private ImageView AmF;
-  private TextView AmG;
-  private LinearLayout AmH;
-  private LinearLayout AmI;
-  private TextView AmJ;
-  private ScrollView AmK;
-  private ImageView asS;
-  private EditHintPasswdView zTU;
+  private a BEW;
+  TextView BEX;
+  private TextView BEY;
+  private LinearLayout BEZ;
+  private ImageView BFa;
+  private TextView BFb;
+  private LinearLayout BFc;
+  private LinearLayout BFd;
+  private TextView BFe;
+  private ScrollView BFf;
+  private EditHintPasswdView Bmo;
+  private ImageView atN;
   
   public int getLayoutId()
   {
@@ -44,18 +44,18 @@ public class WalletCheckPwdNewUI
   public void initView()
   {
     AppMethodBeat.i(70889);
-    this.asS = ((ImageView)findViewById(2131298365));
-    this.AmC = ((TextView)findViewById(2131306825));
-    this.AmD = ((TextView)findViewById(2131306820));
-    this.AmE = ((LinearLayout)findViewById(2131306823));
-    this.zTU = ((EditHintPasswdView)findViewById(2131301026));
-    this.AmF = ((ImageView)findViewById(2131300087));
-    this.AmG = ((TextView)findViewById(2131300091));
-    this.AmH = ((LinearLayout)findViewById(2131300088));
-    this.AmI = ((LinearLayout)findViewById(2131306880));
-    this.AmJ = ((TextView)findViewById(2131306879));
-    this.AmK = ((ScrollView)findViewById(2131306881));
-    this.asS.setOnClickListener(new View.OnClickListener()
+    this.atN = ((ImageView)findViewById(2131298365));
+    this.BEX = ((TextView)findViewById(2131306825));
+    this.BEY = ((TextView)findViewById(2131306820));
+    this.BEZ = ((LinearLayout)findViewById(2131306823));
+    this.Bmo = ((EditHintPasswdView)findViewById(2131301026));
+    this.BFa = ((ImageView)findViewById(2131300087));
+    this.BFb = ((TextView)findViewById(2131300091));
+    this.BFc = ((LinearLayout)findViewById(2131300088));
+    this.BFd = ((LinearLayout)findViewById(2131306880));
+    this.BFe = ((TextView)findViewById(2131306879));
+    this.BFf = ((ScrollView)findViewById(2131306881));
+    this.atN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -64,20 +64,20 @@ public class WalletCheckPwdNewUI
         AppMethodBeat.o(70885);
       }
     });
-    com.tencent.mm.wallet_core.ui.formview.a.a(this.zTU);
-    this.zTU.setOnInputValidListener(new EditHintPasswdView.a()
+    com.tencent.mm.wallet_core.ui.formview.a.a(this.Bmo);
+    this.Bmo.setOnInputValidListener(new EditHintPasswdView.a()
     {
       public final void onInputValidChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(70886);
-        ad.i("MicroMsg.WalletCheckPwdNewUI", "input isValid: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        ac.i("MicroMsg.WalletCheckPwdNewUI", "input isValid: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (paramAnonymousBoolean) {
-          WalletCheckPwdNewUI.c(WalletCheckPwdNewUI.this).aui(WalletCheckPwdNewUI.b(WalletCheckPwdNewUI.this).getText());
+          WalletCheckPwdNewUI.c(WalletCheckPwdNewUI.this).azA(WalletCheckPwdNewUI.b(WalletCheckPwdNewUI.this).getText());
         }
         AppMethodBeat.o(70886);
       }
     });
-    setEditFocusListener(this.zTU, 0, false);
+    setEditFocusListener(this.Bmo, 0, false);
     showTenpayKB();
     AppMethodBeat.o(70889);
   }
@@ -87,15 +87,15 @@ public class WalletCheckPwdNewUI
     AppMethodBeat.i(70887);
     super.onCreate(paramBundle);
     int i = getIntent().getIntExtra("scene", -1);
-    ad.i("MicroMsg.WalletCheckPwdNewUI", "scene: %s", new Object[] { Integer.valueOf(i) });
+    ac.i("MicroMsg.WalletCheckPwdNewUI", "scene: %s", new Object[] { Integer.valueOf(i) });
     if (i == 3) {}
-    for (this.AmB = new h(this);; this.AmB = new c(this))
+    for (this.BEW = new h(this);; this.BEW = new c(this))
     {
       setActionbarColor(getResources().getColor(2131101179));
       hideTitleView();
       hideActionbarLine();
       initView();
-      this.AmB.onCreate();
+      this.BEW.onCreate();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -135,7 +135,7 @@ public class WalletCheckPwdNewUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(70893);
-    ad.i("MicroMsg.WalletCheckPwdNewUI", "controller ret: %s", new Object[] { Boolean.FALSE });
+    ac.i("MicroMsg.WalletCheckPwdNewUI", "controller ret: %s", new Object[] { Boolean.FALSE });
     AppMethodBeat.o(70893);
     return false;
   }
@@ -155,7 +155,7 @@ public class WalletCheckPwdNewUI
   
   public static abstract interface a
   {
-    public abstract void aui(String paramString);
+    public abstract void azA(String paramString);
     
     public abstract void onCreate();
   }

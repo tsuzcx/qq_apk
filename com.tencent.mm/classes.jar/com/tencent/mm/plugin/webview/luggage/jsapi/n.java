@@ -8,8 +8,8 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.handoff.model.HandOffURL;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class n
@@ -20,30 +20,30 @@ public class n
   public final void b(com.tencent.luggage.d.a<f>.a parama)
   {
     AppMethodBeat.i(78546);
-    Object localObject = parama.bZV.bZb;
+    Object localObject = parama.bWS.bVY;
     String str = ((JSONObject)localObject).optString("brandIcon");
     localObject = ((JSONObject)localObject).optString("brandName");
-    ad.i("MicroMsg.JsApiCurrentMpInfo", "doCurrentMpInfo brandIcon:%s", new Object[] { str });
-    if (((f)parama.bZU).ekZ() != null)
+    ac.i("MicroMsg.JsApiCurrentMpInfo", "doCurrentMpInfo brandIcon:%s", new Object[] { str });
+    if (((f)parama.bWR).eAv() != null)
     {
-      ((f)parama.bZU).ekZ().OD(str);
-      if (!bt.isNullOrNil((String)localObject)) {
-        ((f)parama.bZU).ekZ().OE((String)localObject);
+      ((f)parama.bWR).eAv().SN(str);
+      if (!bs.isNullOrNil((String)localObject)) {
+        ((f)parama.bWR).eAv().SO((String)localObject);
       }
     }
-    if (((f)parama.bZU).ela() != null)
+    if (((f)parama.bWR).eAw() != null)
     {
-      ((f)parama.bZU).ela().setIcon(bt.nullAsNil(str));
-      if (!bt.isNullOrNil((String)localObject)) {
-        ((f)parama.bZU).ela().setTitle((String)localObject);
+      ((f)parama.bWR).eAw().setIcon(bs.nullAsNil(str));
+      if (!bs.isNullOrNil((String)localObject)) {
+        ((f)parama.bWR).eAw().setTitle((String)localObject);
       }
-      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(((f)parama.bZU).ela());
+      ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(((f)parama.bWR).eAw());
     }
     parama.a("", null);
     AppMethodBeat.o(78546);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

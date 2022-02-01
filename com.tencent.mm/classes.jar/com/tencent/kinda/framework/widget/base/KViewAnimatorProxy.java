@@ -2,7 +2,6 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.animate.KindaGlobalAnimator;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.Align;
@@ -16,7 +15,7 @@ import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
 import com.tencent.kinda.gen.Visible;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class KViewAnimatorProxy
   implements KView
@@ -153,6 +152,11 @@ public class KViewAnimatorProxy
   public float getHeightPercent()
   {
     return 0.0F;
+  }
+  
+  public boolean getIsRefreshing()
+  {
+    return false;
   }
   
   public float getLeft()
@@ -367,6 +371,8 @@ public class KViewAnimatorProxy
   
   public void removeBlurEffect() {}
   
+  public void requestLayout() {}
+  
   public void setAccessibilityString(String paramString) {}
   
   public void setAccessible(boolean paramBoolean) {}
@@ -388,18 +394,7 @@ public class KViewAnimatorProxy
   {
     AppMethodBeat.i(18815);
     paramDynamicColor = ValueAnimator.ofFloat(new float[] { (float)ColorUtil.getColorByMode(this.mKView.getBackgroundColor()), (float)ColorUtil.getColorByMode(paramDynamicColor) });
-    paramDynamicColor.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-    {
-      public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-      {
-        AppMethodBeat.i(18808);
-        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        paramAnonymousValueAnimator = new DynamicColor(f, 0L);
-        KViewAnimatorProxy.this.mKView.setBackgroundColor(paramAnonymousValueAnimator);
-        ad.d("base_MMKView", "已经给背景颜色设置动画KView：" + KViewAnimatorProxy.this.mKView + "，value：" + Long.toHexString(ColorUtil.absColor(f)));
-        AppMethodBeat.o(18808);
-      }
-    });
+    paramDynamicColor.addUpdateListener(new KViewAnimatorProxy.1(this));
     KindaGlobalAnimator.addAnimator(paramDynamicColor);
     AppMethodBeat.o(18815);
   }
@@ -447,6 +442,8 @@ public class KViewAnimatorProxy
   }
   
   public void setHeightPercent(float paramFloat) {}
+  
+  public void setIsRefreshing(boolean paramBoolean) {}
   
   public void setLeft(float paramFloat)
   {
@@ -537,7 +534,7 @@ public class KViewAnimatorProxy
   public void setScaleX(float paramFloat)
   {
     AppMethodBeat.i(18820);
-    ad.d("base_MMKView", "setScaleX此时进入动画setter状态。");
+    ac.d("base_MMKView", "setScaleX此时进入动画setter状态。");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "scaleX", new float[] { this.mKView.getScaleX(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
@@ -547,7 +544,7 @@ public class KViewAnimatorProxy
   public void setScaleY(float paramFloat)
   {
     AppMethodBeat.i(18821);
-    ad.d("base_MMKView", "setScaleY此时进入动画setter状态。");
+    ac.d("base_MMKView", "setScaleY此时进入动画setter状态。");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "scaleY", new float[] { this.mKView.getScaleY(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
@@ -610,7 +607,7 @@ public class KViewAnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KViewAnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

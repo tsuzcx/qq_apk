@@ -3,20 +3,20 @@ package com.tencent.mm.app.plugin.a;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.f;
+import com.tencent.mm.al.f;
 import com.tencent.mm.api.c.b;
 import com.tencent.mm.api.c.b.b;
-import com.tencent.mm.g.a.dl;
-import com.tencent.mm.g.a.ek;
-import com.tencent.mm.g.a.ku;
-import com.tencent.mm.g.a.nh;
-import com.tencent.mm.g.a.ui;
+import com.tencent.mm.g.a.dm;
+import com.tencent.mm.g.a.el;
+import com.tencent.mm.g.a.ld;
+import com.tencent.mm.g.a.nq;
+import com.tencent.mm.g.a.us;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.w;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import java.util.HashMap;
@@ -25,27 +25,27 @@ import java.util.concurrent.Executor;
 
 public final class a
 {
-  public com.tencent.mm.ui.chatting.d.a cOd;
-  public b cOe;
-  public a cOf;
-  private String cOg;
-  public Map<String, Boolean> cOh;
-  public boolean cOi;
+  public a cLA;
+  private String cLB;
+  public Map<String, Boolean> cLC;
+  public boolean cLD;
+  public com.tencent.mm.ui.chatting.d.a cLy;
+  public b cLz;
   
   public a(com.tencent.mm.ui.chatting.d.a parama)
   {
     AppMethodBeat.i(19771);
-    ad.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now init the event listener");
-    this.cOd = parama;
-    this.cOi = true;
-    if (this.cOe == null) {
-      this.cOe = new b();
+    ac.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now init the event listener");
+    this.cLy = parama;
+    this.cLD = true;
+    if (this.cLz == null) {
+      this.cLz = new b();
     }
-    com.tencent.mm.sdk.b.a.ESL.c(this.cOe);
-    if (this.cOf == null) {
-      this.cOf = new a();
+    com.tencent.mm.sdk.b.a.GpY.c(this.cLz);
+    if (this.cLA == null) {
+      this.cLA = new a();
     }
-    com.tencent.mm.sdk.b.a.ESL.c(this.cOf);
+    com.tencent.mm.sdk.b.a.GpY.c(this.cLA);
     AppMethodBeat.o(19771);
   }
   
@@ -59,8 +59,8 @@ public final class a
     }
     if (paramc != null)
     {
-      paramc = paramc.bU(false);
-      if ((paramc != null) && (paramc.Jy() != null) && (paramc.Jy().JI()))
+      paramc = paramc.bV(false);
+      if ((paramc != null) && (paramc.Jh() != null) && (paramc.Jh().Jr()))
       {
         AppMethodBeat.o(19774);
         return true;
@@ -73,45 +73,45 @@ public final class a
   public final void a(final int paramInt, com.tencent.mm.api.c paramc)
   {
     AppMethodBeat.i(19773);
-    if (this.cOd == null)
+    if (this.cLy == null)
     {
-      ad.e("MicroMsg.exdevice.ChattingUIExDeviceLogic", "notifySwitchView, context is null, maybe has been released");
+      ac.e("MicroMsg.exdevice.ChattingUIExDeviceLogic", "notifySwitchView, context is null, maybe has been released");
       AppMethodBeat.o(19773);
       return;
     }
-    if ((w.sE(this.cOd.getTalkerUserName())) && (c(paramc))) {
-      az.afE().ax(new Runnable()
+    if ((w.wH(this.cLy.getTalkerUserName())) && (c(paramc))) {
+      az.agU().az(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(19769);
           if (1 == paramInt)
           {
-            localObject = new ek();
-            ((ek)localObject).dgR.op = 0;
-            ((ek)localObject).dgR.userName = a.this.cOd.getTalkerUserName();
-            ((ek)localObject).dgR.context = a.this.cOd.GzJ.getContext();
-            com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
-            if (a.this.cOd.getTalkerUserName().equals("gh_43f2581f6fd6"))
+            localObject = new el();
+            ((el)localObject).dem.op = 0;
+            ((el)localObject).dem.userName = a.this.cLy.getTalkerUserName();
+            ((el)localObject).dem.context = a.this.cLy.HZF.getContext();
+            com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
+            if (a.this.cLy.getTalkerUserName().equals("gh_43f2581f6fd6"))
             {
-              localObject = new ui();
-              ((ui)localObject).dzG.action = 1;
-              com.tencent.mm.sdk.b.a.ESL.a((b)localObject, new Executor()
+              localObject = new us();
+              ((us)localObject).dxs.action = 1;
+              com.tencent.mm.sdk.b.a.GpY.a((b)localObject, new Executor()
               {
                 public final void execute(Runnable paramAnonymous2Runnable)
                 {
                   AppMethodBeat.i(179570);
-                  h.Iye.aP(paramAnonymous2Runnable);
+                  h.JZN.aS(paramAnonymous2Runnable);
                   AppMethodBeat.o(179570);
                 }
               });
             }
           }
-          Object localObject = new ku();
-          ((ku)localObject).dpm.opType = paramInt;
-          ((ku)localObject).dpm.dpo = 1;
-          ((ku)localObject).dpm.dpn = a.this.cOd.getTalkerUserName();
-          com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
+          Object localObject = new ld();
+          ((ld)localObject).dmW.opType = paramInt;
+          ((ld)localObject).dmW.viewId = 1;
+          ((ld)localObject).dmW.dmX = a.this.cLy.getTalkerUserName();
+          com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
           AppMethodBeat.o(19769);
         }
       });
@@ -129,39 +129,39 @@ public final class a
       try
       {
         AppMethodBeat.i(19772);
-        ad.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connect state : %d", new Object[] { Integer.valueOf(paramInt) });
-        if ((this.cOd == null) || (bt.isNullOrNil(paramString1)))
+        ac.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connect state : %d", new Object[] { Integer.valueOf(paramInt) });
+        if ((this.cLy == null) || (bs.isNullOrNil(paramString1)))
         {
-          ad.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "context is null or brandName is null or nil.");
+          ac.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "context is null or brandName is null or nil.");
           AppMethodBeat.o(19772);
           return;
         }
-        localc = f.ei(paramString1);
+        localc = f.dX(paramString1);
         if (!c(localc))
         {
-          ad.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "It's not a biz, brandName(%s).", new Object[] { paramString1 });
+          ac.w("MicroMsg.exdevice.ChattingUIExDeviceLogic", "It's not a biz, brandName(%s).", new Object[] { paramString1 });
           AppMethodBeat.o(19772);
           continue;
         }
-        if (this.cOh != null) {
+        if (this.cLC != null) {
           break label117;
         }
       }
       finally {}
-      this.cOh = new HashMap();
-      localMap = this.cOh;
-      if (!paramString1.equals(this.cOg))
+      this.cLC = new HashMap();
+      localMap = this.cLC;
+      if (!paramString1.equals(this.cLB))
       {
-        this.cOg = paramString1;
+        this.cLB = paramString1;
         localMap.clear();
       }
-      if (localc.bU(false).Jy().cIR != 1) {
+      if (localc.bV(false).Jh().cFY != 1) {
         break;
       }
-      this.cOd.GzJ.setMMSubTitle(null);
+      this.cLy.HZF.setMMSubTitle(null);
       AppMethodBeat.o(19772);
     }
-    ad.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "connDeviceIds : (%s) , deviceId : (%s)", new Object[] { localMap, paramString2 });
+    ac.d("MicroMsg.exdevice.ChattingUIExDeviceLogic", "connDeviceIds : (%s) , deviceId : (%s)", new Object[] { localMap, paramString2 });
     switch (paramInt)
     {
     }
@@ -169,57 +169,57 @@ public final class a
     {
       AppMethodBeat.o(19772);
       break;
-      this.cOd.GzJ.setMMSubTitle(null);
+      this.cLy.HZF.setMMSubTitle(null);
       AppMethodBeat.o(19772);
       break;
       if (localMap.size() == 0)
       {
-        this.cOd.GzJ.setMMSubTitle(2131758534);
+        this.cLy.HZF.setMMSubTitle(2131758534);
         AppMethodBeat.o(19772);
         break;
         localMap.put(paramString2, Boolean.TRUE);
-        this.cOd.GzJ.setMMSubTitle(this.cOd.GzJ.getString(2131758532, new Object[] { Integer.valueOf(localMap.size()) }));
-        ad.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connected(deviceId : %s), set the tips gone", new Object[] { paramString2 });
+        this.cLy.HZF.setMMSubTitle(this.cLy.HZF.getString(2131758532, new Object[] { Integer.valueOf(localMap.size()) }));
+        ac.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "now connected(deviceId : %s), set the tips gone", new Object[] { paramString2 });
         AppMethodBeat.o(19772);
         break;
         if (localMap.remove(paramString2) != null) {
-          ad.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "disconnected(deviceId : %s) successfully.", new Object[] { paramString2 });
+          ac.i("MicroMsg.exdevice.ChattingUIExDeviceLogic", "disconnected(deviceId : %s) successfully.", new Object[] { paramString2 });
         }
-        this.cOd.GzJ.setMMSubTitle(this.cOd.GzJ.getString(2131758532, new Object[] { Integer.valueOf(localMap.size()) }));
+        this.cLy.HZF.setMMSubTitle(this.cLy.HZF.getString(2131758532, new Object[] { Integer.valueOf(localMap.size()) }));
         AppMethodBeat.o(19772);
         break;
         if (localMap.size() == 0) {
-          this.cOd.GzJ.setMMSubTitle(2131758533);
+          this.cLy.HZF.setMMSubTitle(2131758533);
         }
       }
     }
   }
   
   final class a
-    extends com.tencent.mm.sdk.b.c<dl>
+    extends com.tencent.mm.sdk.b.c<dm>
   {
     a()
     {
       AppMethodBeat.i(161258);
-      this.__eventId = dl.class.getName().hashCode();
+      this.__eventId = dm.class.getName().hashCode();
       AppMethodBeat.o(161258);
     }
   }
   
   final class b
-    extends com.tencent.mm.sdk.b.c<nh>
+    extends com.tencent.mm.sdk.b.c<nq>
   {
     b()
     {
       AppMethodBeat.i(161259);
-      this.__eventId = nh.class.getName().hashCode();
+      this.__eventId = nq.class.getName().hashCode();
       AppMethodBeat.o(161259);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.plugin.a.a
  * JD-Core Version:    0.7.0.1
  */

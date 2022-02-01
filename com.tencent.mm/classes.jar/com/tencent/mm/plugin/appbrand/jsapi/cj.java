@@ -7,21 +7,21 @@ import com.tencent.mm.plugin.appbrand.appcache.b.c;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskCallPredownload;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskCallPredownload;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
 final class cj
   implements b<TaskParamsCallPredownload, IPCVoid>
 {
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements a<y>
   {
-    public static final a jAl;
+    public static final a kaH;
     
     static
     {
       AppMethodBeat.i(50420);
-      jAl = new a();
+      kaH = new a();
       AppMethodBeat.o(50420);
     }
     
@@ -31,7 +31,7 @@ final class cj
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -40,7 +40,7 @@ final class cj
     public final void run()
     {
       AppMethodBeat.i(50421);
-      c.a(new c(this.iPR, this.jAm, this.gZZ), true, 2);
+      c.a(new c(this.gxu, this.kaI, this.hAy), true, 2);
       AppMethodBeat.o(50421);
     }
   }

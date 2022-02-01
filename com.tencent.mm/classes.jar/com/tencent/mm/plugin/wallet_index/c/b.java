@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.wallet_index.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
 {
-  public int Axe = 0;
-  public int std;
-  public String ste;
+  public int BPy = 0;
+  public int tAT;
+  public String tAU;
   
   private b(int paramInt, String paramString)
   {
-    this.std = paramInt;
-    this.ste = paramString;
+    this.tAT = paramInt;
+    this.tAU = paramString;
   }
   
-  public static b cg(int paramInt, String paramString)
+  public static b cj(int paramInt, String paramString)
   {
     int m = 6;
     int k = 2131766347;
@@ -34,11 +34,11 @@ public final class b
     }
     for (;;)
     {
-      ad.i("MicroMsg.IapResult", "code : " + paramInt + ", errMsg : " + str + ", convert to errCode : " + i);
-      if (!bt.isNullOrNil(str)) {
+      ac.i("MicroMsg.IapResult", "code : " + paramInt + ", errMsg : " + str + ", convert to errCode : " + i);
+      if (!bs.isNullOrNil(str)) {
         break;
       }
-      paramString = new b(i, aj.getContext().getString(j));
+      paramString = new b(i, ai.getContext().getString(j));
       AppMethodBeat.o(71810);
       return paramString;
       j = k;
@@ -105,6 +105,11 @@ public final class b
         i = 3;
         str = "Google Play not install";
         j = k;
+        break;
+      case 8: 
+        j = 2131766886;
+        i = paramInt;
+        str = paramString;
       }
     }
     paramString = new b(i, str);
@@ -112,16 +117,16 @@ public final class b
     return paramString;
   }
   
-  public final boolean efy()
+  public final boolean euS()
   {
-    return (this.std == 104) || (this.std == 100000002);
+    return (this.tAT == 104) || (this.tAT == 100000002);
   }
   
-  public final boolean efz()
+  public final boolean euT()
   {
     AppMethodBeat.i(71811);
-    if (this.std == 0) {}
-    for (int i = 1; (i == 0) && (!efy()); i = 0)
+    if (this.tAT == 0) {}
+    for (int i = 1; (i == 0) && (!euS()); i = 0)
     {
       AppMethodBeat.o(71811);
       return true;
@@ -133,14 +138,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(71812);
-    String str = "IapResult: " + this.ste;
+    String str = "IapResult: " + this.tAU;
     AppMethodBeat.o(71812);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.b
  * JD-Core Version:    0.7.0.1
  */

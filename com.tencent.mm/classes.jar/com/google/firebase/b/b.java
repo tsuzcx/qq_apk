@@ -5,25 +5,25 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class b
 {
-  private static final AtomicReference<b> bCl;
+  private static final AtomicReference<b> bzT;
   
   static
   {
     AppMethodBeat.i(4103);
-    bCl = new AtomicReference();
+    bzT = new AtomicReference();
     AppMethodBeat.o(4103);
   }
   
-  public static b xf()
+  public static b wS()
   {
     AppMethodBeat.i(4102);
-    bCl.compareAndSet(null, new b());
-    b localb = (b)bCl.get();
+    bzT.compareAndSet(null, new b());
+    b localb = (b)bzT.get();
     AppMethodBeat.o(4102);
     return localb;
   }
   
-  public static void xg() {}
+  public static void wT() {}
 }
 
 

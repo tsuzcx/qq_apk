@@ -6,28 +6,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.order.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public final class c
 {
-  public List<j> nrj;
-  private List<a> uoa;
+  public List<j> nUj;
+  private List<a> vwW;
   
   public c()
   {
     AppMethodBeat.i(66661);
-    this.nrj = new ArrayList();
-    this.uoa = new ArrayList();
+    this.nUj = new ArrayList();
+    this.vwW = new ArrayList();
     loadFromDB();
-    dae();
-    dad();
-    daf();
+    dnM();
+    dnL();
+    dnN();
     AppMethodBeat.o(66661);
   }
   
@@ -40,14 +40,14 @@ public final class c
       return false;
     }
     int i = 0;
-    while (i < this.uoa.size())
+    while (i < this.vwW.size())
     {
-      a locala = (a)this.uoa.get(i);
-      if (paramj.dvT.equals(locala.field_msgId))
+      a locala = (a)this.vwW.get(i);
+      if (paramj.dtG.equals(locala.field_msgId))
       {
-        this.uoa.remove(locala);
-        com.tencent.mm.plugin.order.a.b.cZY();
-        boolean bool = com.tencent.mm.plugin.order.a.b.daa().delete(locala, new String[0]);
+        this.vwW.remove(locala);
+        com.tencent.mm.plugin.order.a.b.dnG();
+        boolean bool = com.tencent.mm.plugin.order.a.b.dnI().delete(locala, new String[0]);
         AppMethodBeat.o(66667);
         return bool;
       }
@@ -57,26 +57,26 @@ public final class c
     return false;
   }
   
-  public static j aka(String paramString)
+  public static j aoY(String paramString)
   {
     AppMethodBeat.i(66665);
-    Map localMap = bw.K(paramString, "sysmsg");
+    Map localMap = bv.L(paramString, "sysmsg");
     if (localMap == null)
     {
       AppMethodBeat.o(66665);
       return null;
     }
     j localj = new j();
-    localj.upr = ((String)localMap.get(".sysmsg.paymsg.PayMsgType"));
-    localj.ups = ((String)localMap.get(".sysmsg.paymsg.Brief.IconUrl"));
-    localj.upt = ((String)localMap.get(".sysmsg.paymsg.Brief.CreateTime"));
-    localj.upu = ((String)localMap.get(".sysmsg.paymsg.StatusSection.IconUrl"));
-    localj.upv = ((String)localMap.get(".sysmsg.paymsg.StatusSection.StatusDesc"));
-    localj.duk = ((String)localMap.get(".sysmsg.paymsg.StatusSection.Content"));
-    localj.upw = ((String)localMap.get(".sysmsg.paymsg.StatusSection.JumpUrl"));
-    localj.upx = ((String)localMap.get(".sysmsg.paymsg.ContactSection.AppUserName"));
-    localj.uph = ((String)localMap.get(".sysmsg.paymsg.ContactSection.AppNickName"));
-    localj.upy = ((String)localMap.get(".sysmsg.paymsg.ContactSection.AppTelephone"));
+    localj.vyn = ((String)localMap.get(".sysmsg.paymsg.PayMsgType"));
+    localj.vyo = ((String)localMap.get(".sysmsg.paymsg.Brief.IconUrl"));
+    localj.vyp = ((String)localMap.get(".sysmsg.paymsg.Brief.CreateTime"));
+    localj.vyq = ((String)localMap.get(".sysmsg.paymsg.StatusSection.IconUrl"));
+    localj.vyr = ((String)localMap.get(".sysmsg.paymsg.StatusSection.StatusDesc"));
+    localj.drV = ((String)localMap.get(".sysmsg.paymsg.StatusSection.Content"));
+    localj.vys = ((String)localMap.get(".sysmsg.paymsg.StatusSection.JumpUrl"));
+    localj.vyt = ((String)localMap.get(".sysmsg.paymsg.ContactSection.AppUserName"));
+    localj.vyd = ((String)localMap.get(".sysmsg.paymsg.ContactSection.AppNickName"));
+    localj.vyu = ((String)localMap.get(".sysmsg.paymsg.ContactSection.AppTelephone"));
     int i = 0;
     if (i == 0) {
       paramString = (String)localMap.get(".sysmsg.paymsg.StatusSection.Button.Name");
@@ -89,10 +89,10 @@ public final class c
       localObject = new j.a();
       ((j.a)localObject).name = paramString;
       ((j.a)localObject).jumpUrl = str;
-      if (localj.upz == null) {
-        localj.upz = new ArrayList();
+      if (localj.vyv == null) {
+        localj.vyv = new ArrayList();
       }
-      localj.upz.add(localObject);
+      localj.vyv.add(localObject);
       i += 1;
       break;
       paramString = (String)localMap.get(".sysmsg.paymsg.StatusSection.Button" + i + ".Name");
@@ -113,10 +113,10 @@ public final class c
       localb.name = paramString;
       localb.value = str;
       localb.jumpUrl = ((String)localObject);
-      if (localj.upA == null) {
-        localj.upA = new ArrayList();
+      if (localj.vyw == null) {
+        localj.vyw = new ArrayList();
       }
-      localj.upA.add(localb);
+      localj.vyw.add(localb);
       i += 1;
       break;
       paramString = (String)localMap.get(".sysmsg.paymsg.NormalSection" + i + ".Name");
@@ -127,25 +127,25 @@ public final class c
     return localj;
   }
   
-  private void dad()
+  private void dnL()
   {
     AppMethodBeat.i(66664);
-    if ((this.nrj == null) || (this.nrj.size() == 0))
+    if ((this.nUj == null) || (this.nUj.size() == 0))
     {
       AppMethodBeat.o(66664);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.nrj);
+    localArrayList.addAll(this.nUj);
     int i = 0;
     while (i < localArrayList.size())
     {
       j localj = (j)localArrayList.get(i);
-      if ((localj.upr != null) && (com.tencent.mm.plugin.order.c.c.isNumeric(localj.upr)))
+      if ((localj.vyn != null) && (com.tencent.mm.plugin.order.c.c.isNumeric(localj.vyn)))
       {
-        int j = bt.getInt(localj.upr, 0);
+        int j = bs.getInt(localj.vyn, 0);
         if ((j != 2) && (j != 1)) {
-          akb(localj.dvT);
+          aoZ(localj.dtG);
         }
       }
       i += 1;
@@ -153,18 +153,18 @@ public final class c
     AppMethodBeat.o(66664);
   }
   
-  private void dae()
+  private void dnM()
   {
     AppMethodBeat.i(66668);
     int i = 0;
-    while (i < this.uoa.size())
+    while (i < this.vwW.size())
     {
-      a locala = (a)this.uoa.get(i);
+      a locala = (a)this.vwW.get(i);
       String str = locala.field_msgContentXml;
-      j localj = aka(str);
-      localj.dvT = locala.field_msgId;
-      this.nrj.add(localj);
-      ad.v("MicroMsg.MallPayMsgManager", "parsePayMsgFromMsgXmlList xml:".concat(String.valueOf(str)));
+      j localj = aoY(str);
+      localj.dtG = locala.field_msgId;
+      this.nUj.add(localj);
+      ac.v("MicroMsg.MallPayMsgManager", "parsePayMsgFromMsgXmlList xml:".concat(String.valueOf(str)));
       i += 1;
     }
     AppMethodBeat.o(66668);
@@ -173,8 +173,8 @@ public final class c
   private void loadFromDB()
   {
     AppMethodBeat.i(66663);
-    com.tencent.mm.plugin.order.a.b.cZY();
-    Cursor localCursor = com.tencent.mm.plugin.order.a.b.daa().getAll();
+    com.tencent.mm.plugin.order.a.b.dnG();
+    Cursor localCursor = com.tencent.mm.plugin.order.a.b.dnI().getAll();
     if ((localCursor != null) && (localCursor.getCount() > 0))
     {
       localCursor.moveToFirst();
@@ -188,7 +188,7 @@ public final class c
         locala.field_msgContentXml = localCursor.getString(j);
         locala.field_isRead = localCursor.getString(k);
         localCursor.moveToNext();
-        this.uoa.add(locala);
+        this.vwW.add(locala);
       }
     }
     if (localCursor != null) {
@@ -206,18 +206,18 @@ public final class c
       return;
     }
     a locala = new a();
-    locala.field_msgId = paramj.dvT;
+    locala.field_msgId = paramj.dtG;
     locala.field_msgContentXml = paramString1;
     locala.field_isRead = paramString2;
-    com.tencent.mm.plugin.order.a.b.cZY();
-    if (!com.tencent.mm.plugin.order.a.b.daa().a(locala)) {
-      ad.e("MicroMsg.MallPayMsgManager", "insert CommonMsgXml failed! id:" + paramj.dvT);
+    com.tencent.mm.plugin.order.a.b.dnG();
+    if (!com.tencent.mm.plugin.order.a.b.dnI().a(locala)) {
+      ac.e("MicroMsg.MallPayMsgManager", "insert CommonMsgXml failed! id:" + paramj.dtG);
     }
-    this.uoa.add(locala);
+    this.vwW.add(locala);
     AppMethodBeat.o(66662);
   }
   
-  public final boolean akb(String paramString)
+  public final boolean aoZ(String paramString)
   {
     AppMethodBeat.i(66666);
     if (TextUtils.isEmpty(paramString))
@@ -225,10 +225,10 @@ public final class c
       AppMethodBeat.o(66666);
       return false;
     }
-    paramString = akd(paramString);
+    paramString = apb(paramString);
     if (paramString != null)
     {
-      this.nrj.remove(paramString);
+      this.nUj.remove(paramString);
       a(paramString);
       AppMethodBeat.o(66666);
       return true;
@@ -237,19 +237,19 @@ public final class c
     return false;
   }
   
-  public final boolean akc(String paramString)
+  public final boolean apa(String paramString)
   {
     AppMethodBeat.i(66669);
-    if ((this.nrj == null) || (TextUtils.isEmpty(paramString)))
+    if ((this.nUj == null) || (TextUtils.isEmpty(paramString)))
     {
       AppMethodBeat.o(66669);
       return false;
     }
     int i = 0;
-    while (i < this.nrj.size())
+    while (i < this.nUj.size())
     {
-      j localj = (j)this.nrj.get(i);
-      if ((localj != null) && (localj.dvT.equals(paramString)))
+      j localj = (j)this.nUj.get(i);
+      if ((localj != null) && (localj.dtG.equals(paramString)))
       {
         AppMethodBeat.o(66669);
         return true;
@@ -260,19 +260,19 @@ public final class c
     return false;
   }
   
-  public final j akd(String paramString)
+  public final j apb(String paramString)
   {
     AppMethodBeat.i(66670);
-    if ((this.nrj == null) || (TextUtils.isEmpty(paramString)))
+    if ((this.nUj == null) || (TextUtils.isEmpty(paramString)))
     {
       AppMethodBeat.o(66670);
       return null;
     }
     int i = 0;
-    while (i < this.nrj.size())
+    while (i < this.nUj.size())
     {
-      j localj = (j)this.nrj.get(i);
-      if (paramString.equals(localj.dvT))
+      j localj = (j)this.nUj.get(i);
+      if (paramString.equals(localj.dtG))
       {
         AppMethodBeat.o(66670);
         return localj;
@@ -283,18 +283,18 @@ public final class c
     return null;
   }
   
-  public final a ake(String paramString)
+  public final a apc(String paramString)
   {
     AppMethodBeat.i(66671);
-    if ((this.uoa == null) || (TextUtils.isEmpty(paramString)))
+    if ((this.vwW == null) || (TextUtils.isEmpty(paramString)))
     {
       AppMethodBeat.o(66671);
       return null;
     }
     int i = 0;
-    while (i < this.uoa.size())
+    while (i < this.vwW.size())
     {
-      a locala = (a)this.uoa.get(i);
+      a locala = (a)this.vwW.get(i);
       if (paramString.equals(locala.field_msgId))
       {
         AppMethodBeat.o(66671);
@@ -306,29 +306,29 @@ public final class c
     return null;
   }
   
-  public final void daf()
+  public final void dnN()
   {
     AppMethodBeat.i(66672);
-    int i = dag();
-    g.afC();
-    g.afB().afk().set(204820, Integer.valueOf(i));
-    ad.v("MicroMsg.MallPayMsgManager", "save unread msg is :".concat(String.valueOf(i)));
+    int i = dnO();
+    g.agS();
+    g.agR().agA().set(204820, Integer.valueOf(i));
+    ac.v("MicroMsg.MallPayMsgManager", "save unread msg is :".concat(String.valueOf(i)));
     AppMethodBeat.o(66672);
   }
   
-  public final int dag()
+  public final int dnO()
   {
     AppMethodBeat.i(66673);
-    if ((this.uoa == null) || (this.uoa.size() == 0))
+    if ((this.vwW == null) || (this.vwW.size() == 0))
     {
       AppMethodBeat.o(66673);
       return 0;
     }
     int i = 0;
     int k;
-    for (int j = 0; i < this.uoa.size(); j = k)
+    for (int j = 0; i < this.vwW.size(); j = k)
     {
-      a locala = (a)this.uoa.get(i);
+      a locala = (a)this.vwW.get(i);
       k = j;
       if (locala != null)
       {
@@ -339,7 +339,7 @@ public final class c
       }
       i += 1;
     }
-    ad.v("MicroMsg.MallPayMsgManager", "msg xml unread msg is %s:".concat(String.valueOf(j)));
+    ac.v("MicroMsg.MallPayMsgManager", "msg xml unread msg is %s:".concat(String.valueOf(j)));
     AppMethodBeat.o(66673);
     return j;
   }

@@ -8,14 +8,14 @@ public abstract class r
   extends q
   implements l
 {
-  protected final a fvK()
+  public final l.a fOC()
   {
-    return w.a(this);
+    return ((l)fOB()).fOC();
   }
   
-  public final l.a fvY()
+  protected final a fOo()
   {
-    return ((l)fvX()).fvY();
+    return w.a(this);
   }
   
   public Object invoke()

@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import d.g.b.k;
 import d.l;
@@ -18,25 +18,25 @@ import d.v;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/bizui/util/BizViewUtils;", "", "()V", "TAG", "", "TITLE_SCENE_MP_CHAT", "", "TITLE_SCENE_MP_CHAT_COVER_TITLE", "TITLE_SCENE_MP_CHAT_ITEM", "TITLE_SCENE_PROFILE", "TITLE_SCENE_PROFILE_COVER_TITLE", "TITLE_SCENE_PROFILE_ITEM", "TITLE_SCENE_TIME_LINE", "TITLE_SCENE_TIME_LINE_COVER_TITLE", "TITLE_SCENE_TIME_LINE_ITEM", "widthMap", "Ljava/util/HashMap;", "getWidthMap", "()Ljava/util/HashMap;", "setWidthMap", "(Ljava/util/HashMap;)V", "appendIcon", "", "tv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "text", "", "drawable", "Landroid/graphics/drawable/Drawable;", "padding", "getDefaultTitleWidth", "scene", "context", "Landroid/content/Context;", "getPaddingSpan", "Landroid/text/SpannableString;", "size", "getTitleWidth", "getViewTop", "root", "Landroid/view/View;", "target", "isCoverTitle", "", "setTitleEndWithPayIcon", "icon", "setTitleWidth", "width", "ui-biz_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/bizui/util/BizViewUtils;", "", "()V", "TAG", "", "TITLE_SCENE_MP_CHAT", "", "TITLE_SCENE_MP_CHAT_COVER_TITLE", "TITLE_SCENE_MP_CHAT_ITEM", "TITLE_SCENE_PROFILE", "TITLE_SCENE_PROFILE_COVER_TITLE", "TITLE_SCENE_PROFILE_ITEM", "TITLE_SCENE_TIME_LINE", "TITLE_SCENE_TIME_LINE_COVER_TITLE", "TITLE_SCENE_TIME_LINE_ITEM", "widthMap", "Ljava/util/HashMap;", "getWidthMap", "()Ljava/util/HashMap;", "setWidthMap", "(Ljava/util/HashMap;)V", "appendIcon", "", "tv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "text", "", "drawable", "Landroid/graphics/drawable/Drawable;", "padding", "getDefaultTitleWidth", "scene", "context", "Landroid/content/Context;", "getPaddingSpan", "Landroid/text/SpannableString;", "size", "getTitleWidth", "getViewTop", "root", "Landroid/view/View;", "target", "isCoverTitle", "", "setTitleEndWithPayIcon", "icon", "setTitleWidth", "width", "ui-biz_release"})
 public final class a
 {
-  private static HashMap<Integer, Integer> mLR;
-  public static final a mLS;
+  private static HashMap<Integer, Integer> nod;
+  public static final a noe;
   
   static
   {
     AppMethodBeat.i(123735);
-    mLS = new a();
-    mLR = new HashMap();
+    noe = new a();
+    nod = new HashMap();
     AppMethodBeat.o(123735);
   }
   
-  private static SpannableString I(Context paramContext, int paramInt)
+  private static SpannableString L(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(123734);
     Object localObject = paramContext.getResources().getDrawable(2131233299);
-    ((Drawable)localObject).setBounds(0, 0, com.tencent.mm.cd.a.fromDPToPix(paramContext, 8), paramInt);
+    ((Drawable)localObject).setBounds(0, 0, com.tencent.mm.cc.a.fromDPToPix(paramContext, 8), paramInt);
     paramContext = new com.tencent.mm.ui.widget.a((Drawable)localObject);
     localObject = new SpannableString((CharSequence)"@");
     ((SpannableString)localObject).setSpan(paramContext, 0, 1, 33);
@@ -50,7 +50,7 @@ public final class a
     k.h(paramContext, "context");
     k.h(paramMMNeat7extView, "tv");
     k.h(paramCharSequence, "text");
-    paramMMNeat7extView.aq(paramCharSequence);
+    paramMMNeat7extView.ar(paramCharSequence);
     int j;
     int i;
     Object localObject;
@@ -67,7 +67,7 @@ public final class a
         if ((paramInt2 != 0) && (paramInt2 != 11)) {
           break label301;
         }
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 48);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 48);
       }
     }
     for (;;)
@@ -78,9 +78,9 @@ public final class a
       paramInt2 = ((Drawable)localObject).getIntrinsicWidth() * paramInt1 / ((Drawable)localObject).getIntrinsicHeight();
       ((Drawable)localObject).setBounds(0, 0, paramInt2, paramInt1);
       float f1 = paramInt2;
-      float f2 = com.tencent.mm.cd.a.fromDPToPix(paramContext, 9);
+      float f2 = com.tencent.mm.cc.a.fromDPToPix(paramContext, 9);
       paramMMNeat7extView.a(TextUtils.TruncateAt.END, f1 + f2);
-      paramContext = paramMMNeat7extView.ki(i, 2147483647);
+      paramContext = paramMMNeat7extView.kv(i, 2147483647);
       if (paramContext == null) {
         break label498;
       }
@@ -91,31 +91,31 @@ public final class a
       a(paramMMNeat7extView, paramCharSequence, (Drawable)localObject);
       AppMethodBeat.o(123732);
       return;
-      if (((Map)mLR).containsKey(Integer.valueOf(paramInt2)))
+      if (((Map)nod).containsKey(Integer.valueOf(paramInt2)))
       {
-        localObject = mLR.get(Integer.valueOf(paramInt2));
+        localObject = nod.get(Integer.valueOf(paramInt2));
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         j = ((Number)localObject).intValue();
         break;
       }
-      ((Map)mLR).put(Integer.valueOf(paramInt2), Integer.valueOf(0));
+      ((Map)nod).put(Integer.valueOf(paramInt2), Integer.valueOf(0));
       j = 0;
       break;
       label301:
       if (paramInt2 == 1) {
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 136);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 136);
       } else if ((paramInt2 == 2) || (paramInt2 == 21)) {
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 64);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 64);
       } else if (paramInt2 == 3) {
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 136);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 136);
       } else if ((paramInt2 == 4) || (paramInt2 == 41)) {
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 64);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 64);
       } else if (paramInt2 == 5) {
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 144);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 144);
       } else {
-        i = com.tencent.mm.cd.a.hV(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 64);
+        i = com.tencent.mm.cc.a.ig(paramContext) - com.tencent.mm.cc.a.fromDPToPix(paramContext, 64);
       }
     }
     label444:
@@ -140,7 +140,7 @@ public final class a
     paramDrawable.setSpan(localObject, 0, 1, 33);
     localObject = paramMMNeat7extView.getContext();
     k.g(localObject, "tv.context");
-    paramMMNeat7extView.aq(TextUtils.concat(new CharSequence[] { paramCharSequence, (CharSequence)I((Context)localObject, (int)paramMMNeat7extView.getTextSize()), (CharSequence)paramDrawable }));
+    paramMMNeat7extView.ar(TextUtils.concat(new CharSequence[] { paramCharSequence, (CharSequence)L((Context)localObject, (int)paramMMNeat7extView.getTextSize()), (CharSequence)paramDrawable }));
     AppMethodBeat.o(123733);
   }
   
@@ -161,7 +161,7 @@ public final class a
         break;
       }
       i += paramView2.getTop();
-      ad.v("MicroMsg.BizViewUtils", "alvinluo getViewTop top: %d", new Object[] { Integer.valueOf(i) });
+      ac.v("MicroMsg.BizViewUtils", "alvinluo getViewTop top: %d", new Object[] { Integer.valueOf(i) });
       j = i;
       if (!(paramView2.getParent() instanceof View)) {
         break;
@@ -179,12 +179,12 @@ public final class a
     return j;
   }
   
-  public static boolean xs(int paramInt)
+  public static boolean yk(int paramInt)
   {
     return (paramInt == 11) || (paramInt == 21) || (paramInt == 41);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/bizui/util/BizViewUtils$setTitleEndWithPayIcon$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "ui-biz_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/bizui/util/BizViewUtils$setTitleEndWithPayIcon$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "ui-biz_release"})
   public static final class a
     implements ViewTreeObserver.OnPreDrawListener
   {
@@ -193,16 +193,16 @@ public final class a
     public final boolean onPreDraw()
     {
       AppMethodBeat.i(123730);
-      ViewTreeObserver localViewTreeObserver = this.mLT.getViewTreeObserver();
+      ViewTreeObserver localViewTreeObserver = this.nof.getViewTreeObserver();
       if (localViewTreeObserver != null) {
         localViewTreeObserver.removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
       }
-      this.mLT.post((Runnable)new a(this));
+      this.nof.post((Runnable)new a(this));
       AppMethodBeat.o(123730);
       return true;
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -211,8 +211,8 @@ public final class a
       public final void run()
       {
         AppMethodBeat.i(123729);
-        a locala = a.mLS;
-        a.eF(this.mLU.gZZ, this.mLU.mLT.getWidth());
+        a locala = a.noe;
+        a.eI(this.nog.hAy, this.nog.nof.getWidth());
         AppMethodBeat.o(123729);
       }
     }
@@ -220,7 +220,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bizui.a.a
  * JD-Core Version:    0.7.0.1
  */

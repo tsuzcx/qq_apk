@@ -19,48 +19,48 @@ import java.util.concurrent.Executor;
 public final class c
   implements Spannable
 {
-  private static Executor Li = null;
+  private static Executor Md = null;
   private static final Object sLock = new Object();
-  public final Spannable Lj;
-  public final a Lk;
-  private final PrecomputedText Ll;
+  public final Spannable Me;
+  public final a Mf;
+  private final PrecomputedText Mg;
   
   public final char charAt(int paramInt)
   {
-    return this.Lj.charAt(paramInt);
+    return this.Me.charAt(paramInt);
   }
   
   public final int getSpanEnd(Object paramObject)
   {
-    return this.Lj.getSpanEnd(paramObject);
+    return this.Me.getSpanEnd(paramObject);
   }
   
   public final int getSpanFlags(Object paramObject)
   {
-    return this.Lj.getSpanFlags(paramObject);
+    return this.Me.getSpanFlags(paramObject);
   }
   
   public final int getSpanStart(Object paramObject)
   {
-    return this.Lj.getSpanStart(paramObject);
+    return this.Me.getSpanStart(paramObject);
   }
   
   public final <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      return this.Ll.getSpans(paramInt1, paramInt2, paramClass);
+      return this.Mg.getSpans(paramInt1, paramInt2, paramClass);
     }
-    return this.Lj.getSpans(paramInt1, paramInt2, paramClass);
+    return this.Me.getSpans(paramInt1, paramInt2, paramClass);
   }
   
   public final int length()
   {
-    return this.Lj.length();
+    return this.Me.length();
   }
   
   public final int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
   {
-    return this.Lj.nextSpanTransition(paramInt1, paramInt2, paramClass);
+    return this.Me.nextSpanTransition(paramInt1, paramInt2, paramClass);
   }
   
   public final void removeSpan(Object paramObject)
@@ -70,10 +70,10 @@ public final class c
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      this.Ll.removeSpan(paramObject);
+      this.Mg.removeSpan(paramObject);
       return;
     }
-    this.Lj.removeSpan(paramObject);
+    this.Me.removeSpan(paramObject);
   }
   
   public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
@@ -83,48 +83,48 @@ public final class c
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      this.Ll.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+      this.Mg.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
       return;
     }
-    this.Lj.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+    this.Me.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
   }
   
   public final CharSequence subSequence(int paramInt1, int paramInt2)
   {
-    return this.Lj.subSequence(paramInt1, paramInt2);
+    return this.Me.subSequence(paramInt1, paramInt2);
   }
   
   public final String toString()
   {
-    return this.Lj.toString();
+    return this.Me.toString();
   }
   
   public static final class a
   {
-    public final TextPaint Lm;
-    public final TextDirectionHeuristic Ln;
-    public final int Lo;
-    public final int Lp;
-    final PrecomputedText.Params Lq;
+    public final TextPaint Mh;
+    public final TextDirectionHeuristic Mi;
+    public final int Mj;
+    public final int Mk;
+    final PrecomputedText.Params Ml;
     
     public a(PrecomputedText.Params paramParams)
     {
-      this.Lm = paramParams.getTextPaint();
-      this.Ln = paramParams.getTextDirection();
-      this.Lo = paramParams.getBreakStrategy();
-      this.Lp = paramParams.getHyphenationFrequency();
-      this.Lq = paramParams;
+      this.Mh = paramParams.getTextPaint();
+      this.Mi = paramParams.getTextDirection();
+      this.Mj = paramParams.getBreakStrategy();
+      this.Mk = paramParams.getHyphenationFrequency();
+      this.Ml = paramParams;
     }
     
     public a(TextPaint paramTextPaint, TextDirectionHeuristic paramTextDirectionHeuristic, int paramInt1, int paramInt2)
     {
       if (Build.VERSION.SDK_INT >= 28) {}
-      for (this.Lq = new PrecomputedText.Params.Builder(paramTextPaint).setBreakStrategy(paramInt1).setHyphenationFrequency(paramInt2).setTextDirection(paramTextDirectionHeuristic).build();; this.Lq = null)
+      for (this.Ml = new PrecomputedText.Params.Builder(paramTextPaint).setBreakStrategy(paramInt1).setHyphenationFrequency(paramInt2).setTextDirection(paramTextDirectionHeuristic).build();; this.Ml = null)
       {
-        this.Lm = paramTextPaint;
-        this.Ln = paramTextDirectionHeuristic;
-        this.Lo = paramInt1;
-        this.Lp = paramInt2;
+        this.Mh = paramTextPaint;
+        this.Mi = paramTextDirectionHeuristic;
+        this.Mj = paramInt1;
+        this.Mk = paramInt2;
         return;
       }
     }
@@ -141,131 +141,131 @@ public final class c
             return false;
           }
           paramObject = (a)paramObject;
-          if (this.Lq != null) {
-            return this.Lq.equals(paramObject.Lq);
+          if (this.Ml != null) {
+            return this.Ml.equals(paramObject.Ml);
           }
           if (Build.VERSION.SDK_INT >= 23)
           {
-            if (this.Lo != paramObject.Lo) {
+            if (this.Mj != paramObject.Mj) {
               return false;
             }
-            if (this.Lp != paramObject.Lp) {
+            if (this.Mk != paramObject.Mk) {
               return false;
             }
           }
-          if ((Build.VERSION.SDK_INT >= 18) && (this.Ln != paramObject.Ln)) {
+          if ((Build.VERSION.SDK_INT >= 18) && (this.Mi != paramObject.Mi)) {
             return false;
           }
-          if (this.Lm.getTextSize() != paramObject.Lm.getTextSize()) {
+          if (this.Mh.getTextSize() != paramObject.Mh.getTextSize()) {
             return false;
           }
-          if (this.Lm.getTextScaleX() != paramObject.Lm.getTextScaleX()) {
+          if (this.Mh.getTextScaleX() != paramObject.Mh.getTextScaleX()) {
             return false;
           }
-          if (this.Lm.getTextSkewX() != paramObject.Lm.getTextSkewX()) {
+          if (this.Mh.getTextSkewX() != paramObject.Mh.getTextSkewX()) {
             return false;
           }
           if (Build.VERSION.SDK_INT >= 21)
           {
-            if (this.Lm.getLetterSpacing() != paramObject.Lm.getLetterSpacing()) {
+            if (this.Mh.getLetterSpacing() != paramObject.Mh.getLetterSpacing()) {
               return false;
             }
-            if (!TextUtils.equals(this.Lm.getFontFeatureSettings(), paramObject.Lm.getFontFeatureSettings())) {
+            if (!TextUtils.equals(this.Mh.getFontFeatureSettings(), paramObject.Mh.getFontFeatureSettings())) {
               return false;
             }
           }
-          if (this.Lm.getFlags() != paramObject.Lm.getFlags()) {
+          if (this.Mh.getFlags() != paramObject.Mh.getFlags()) {
             return false;
           }
           if (Build.VERSION.SDK_INT >= 24)
           {
-            if (!this.Lm.getTextLocales().equals(paramObject.Lm.getTextLocales())) {
+            if (!this.Mh.getTextLocales().equals(paramObject.Mh.getTextLocales())) {
               return false;
             }
           }
-          else if ((Build.VERSION.SDK_INT >= 17) && (!this.Lm.getTextLocale().equals(paramObject.Lm.getTextLocale()))) {
+          else if ((Build.VERSION.SDK_INT >= 17) && (!this.Mh.getTextLocale().equals(paramObject.Mh.getTextLocale()))) {
             return false;
           }
-          if (this.Lm.getTypeface() != null) {
+          if (this.Mh.getTypeface() != null) {
             break;
           }
-        } while (paramObject.Lm.getTypeface() == null);
+        } while (paramObject.Mh.getTypeface() == null);
         return false;
-      } while (this.Lm.getTypeface().equals(paramObject.Lm.getTypeface()));
+      } while (this.Mh.getTypeface().equals(paramObject.Mh.getTypeface()));
       return false;
     }
     
     public final int hashCode()
     {
       if (Build.VERSION.SDK_INT >= 24) {
-        return j.hash(new Object[] { Float.valueOf(this.Lm.getTextSize()), Float.valueOf(this.Lm.getTextScaleX()), Float.valueOf(this.Lm.getTextSkewX()), Float.valueOf(this.Lm.getLetterSpacing()), Integer.valueOf(this.Lm.getFlags()), this.Lm.getTextLocales(), this.Lm.getTypeface(), Boolean.valueOf(this.Lm.isElegantTextHeight()), this.Ln, Integer.valueOf(this.Lo), Integer.valueOf(this.Lp) });
+        return j.hash(new Object[] { Float.valueOf(this.Mh.getTextSize()), Float.valueOf(this.Mh.getTextScaleX()), Float.valueOf(this.Mh.getTextSkewX()), Float.valueOf(this.Mh.getLetterSpacing()), Integer.valueOf(this.Mh.getFlags()), this.Mh.getTextLocales(), this.Mh.getTypeface(), Boolean.valueOf(this.Mh.isElegantTextHeight()), this.Mi, Integer.valueOf(this.Mj), Integer.valueOf(this.Mk) });
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        return j.hash(new Object[] { Float.valueOf(this.Lm.getTextSize()), Float.valueOf(this.Lm.getTextScaleX()), Float.valueOf(this.Lm.getTextSkewX()), Float.valueOf(this.Lm.getLetterSpacing()), Integer.valueOf(this.Lm.getFlags()), this.Lm.getTextLocale(), this.Lm.getTypeface(), Boolean.valueOf(this.Lm.isElegantTextHeight()), this.Ln, Integer.valueOf(this.Lo), Integer.valueOf(this.Lp) });
+        return j.hash(new Object[] { Float.valueOf(this.Mh.getTextSize()), Float.valueOf(this.Mh.getTextScaleX()), Float.valueOf(this.Mh.getTextSkewX()), Float.valueOf(this.Mh.getLetterSpacing()), Integer.valueOf(this.Mh.getFlags()), this.Mh.getTextLocale(), this.Mh.getTypeface(), Boolean.valueOf(this.Mh.isElegantTextHeight()), this.Mi, Integer.valueOf(this.Mj), Integer.valueOf(this.Mk) });
       }
       if (Build.VERSION.SDK_INT >= 18) {
-        return j.hash(new Object[] { Float.valueOf(this.Lm.getTextSize()), Float.valueOf(this.Lm.getTextScaleX()), Float.valueOf(this.Lm.getTextSkewX()), Integer.valueOf(this.Lm.getFlags()), this.Lm.getTextLocale(), this.Lm.getTypeface(), this.Ln, Integer.valueOf(this.Lo), Integer.valueOf(this.Lp) });
+        return j.hash(new Object[] { Float.valueOf(this.Mh.getTextSize()), Float.valueOf(this.Mh.getTextScaleX()), Float.valueOf(this.Mh.getTextSkewX()), Integer.valueOf(this.Mh.getFlags()), this.Mh.getTextLocale(), this.Mh.getTypeface(), this.Mi, Integer.valueOf(this.Mj), Integer.valueOf(this.Mk) });
       }
       if (Build.VERSION.SDK_INT >= 17) {
-        return j.hash(new Object[] { Float.valueOf(this.Lm.getTextSize()), Float.valueOf(this.Lm.getTextScaleX()), Float.valueOf(this.Lm.getTextSkewX()), Integer.valueOf(this.Lm.getFlags()), this.Lm.getTextLocale(), this.Lm.getTypeface(), this.Ln, Integer.valueOf(this.Lo), Integer.valueOf(this.Lp) });
+        return j.hash(new Object[] { Float.valueOf(this.Mh.getTextSize()), Float.valueOf(this.Mh.getTextScaleX()), Float.valueOf(this.Mh.getTextSkewX()), Integer.valueOf(this.Mh.getFlags()), this.Mh.getTextLocale(), this.Mh.getTypeface(), this.Mi, Integer.valueOf(this.Mj), Integer.valueOf(this.Mk) });
       }
-      return j.hash(new Object[] { Float.valueOf(this.Lm.getTextSize()), Float.valueOf(this.Lm.getTextScaleX()), Float.valueOf(this.Lm.getTextSkewX()), Integer.valueOf(this.Lm.getFlags()), this.Lm.getTypeface(), this.Ln, Integer.valueOf(this.Lo), Integer.valueOf(this.Lp) });
+      return j.hash(new Object[] { Float.valueOf(this.Mh.getTextSize()), Float.valueOf(this.Mh.getTextScaleX()), Float.valueOf(this.Mh.getTextSkewX()), Integer.valueOf(this.Mh.getFlags()), this.Mh.getTypeface(), this.Mi, Integer.valueOf(this.Mj), Integer.valueOf(this.Mk) });
     }
     
     public final String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder("{");
-      localStringBuilder.append("textSize=" + this.Lm.getTextSize());
-      localStringBuilder.append(", textScaleX=" + this.Lm.getTextScaleX());
-      localStringBuilder.append(", textSkewX=" + this.Lm.getTextSkewX());
+      localStringBuilder.append("textSize=" + this.Mh.getTextSize());
+      localStringBuilder.append(", textScaleX=" + this.Mh.getTextScaleX());
+      localStringBuilder.append(", textSkewX=" + this.Mh.getTextSkewX());
       if (Build.VERSION.SDK_INT >= 21)
       {
-        localStringBuilder.append(", letterSpacing=" + this.Lm.getLetterSpacing());
-        localStringBuilder.append(", elegantTextHeight=" + this.Lm.isElegantTextHeight());
+        localStringBuilder.append(", letterSpacing=" + this.Mh.getLetterSpacing());
+        localStringBuilder.append(", elegantTextHeight=" + this.Mh.isElegantTextHeight());
       }
       if (Build.VERSION.SDK_INT >= 24) {
-        localStringBuilder.append(", textLocale=" + this.Lm.getTextLocales());
+        localStringBuilder.append(", textLocale=" + this.Mh.getTextLocales());
       }
       for (;;)
       {
-        localStringBuilder.append(", typeface=" + this.Lm.getTypeface());
+        localStringBuilder.append(", typeface=" + this.Mh.getTypeface());
         if (Build.VERSION.SDK_INT >= 26) {
-          localStringBuilder.append(", variationSettings=" + this.Lm.getFontVariationSettings());
+          localStringBuilder.append(", variationSettings=" + this.Mh.getFontVariationSettings());
         }
-        localStringBuilder.append(", textDir=" + this.Ln);
-        localStringBuilder.append(", breakStrategy=" + this.Lo);
-        localStringBuilder.append(", hyphenationFrequency=" + this.Lp);
+        localStringBuilder.append(", textDir=" + this.Mi);
+        localStringBuilder.append(", breakStrategy=" + this.Mj);
+        localStringBuilder.append(", hyphenationFrequency=" + this.Mk);
         localStringBuilder.append("}");
         return localStringBuilder.toString();
         if (Build.VERSION.SDK_INT >= 17) {
-          localStringBuilder.append(", textLocale=" + this.Lm.getTextLocale());
+          localStringBuilder.append(", textLocale=" + this.Mh.getTextLocale());
         }
       }
     }
     
     public static final class a
     {
-      public final TextPaint Lm;
-      public TextDirectionHeuristic Ln;
-      public int Lo;
-      public int Lp;
+      public final TextPaint Mh;
+      public TextDirectionHeuristic Mi;
+      public int Mj;
+      public int Mk;
       
       public a(TextPaint paramTextPaint)
       {
-        this.Lm = paramTextPaint;
+        this.Mh = paramTextPaint;
         if (Build.VERSION.SDK_INT >= 23)
         {
-          this.Lo = 1;
-          this.Lp = 1;
+          this.Mj = 1;
+          this.Mk = 1;
         }
         while (Build.VERSION.SDK_INT >= 18)
         {
-          this.Ln = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+          this.Mi = TextDirectionHeuristics.FIRSTSTRONG_LTR;
           return;
-          this.Lp = 0;
-          this.Lo = 0;
+          this.Mk = 0;
+          this.Mj = 0;
         }
-        this.Ln = null;
+        this.Mi = null;
       }
     }
   }

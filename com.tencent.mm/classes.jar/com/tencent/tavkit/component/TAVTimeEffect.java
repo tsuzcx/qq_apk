@@ -14,9 +14,9 @@ public class TAVTimeEffect
   
   public int getLoopCount()
   {
-    AppMethodBeat.i(204556);
+    AppMethodBeat.i(191928);
     int i = Math.abs(this.loopCount);
-    AppMethodBeat.o(204556);
+    AppMethodBeat.o(191928);
     return i;
   }
   
@@ -67,7 +67,7 @@ public class TAVTimeEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVTimeEffect
  * JD-Core Version:    0.7.0.1
  */

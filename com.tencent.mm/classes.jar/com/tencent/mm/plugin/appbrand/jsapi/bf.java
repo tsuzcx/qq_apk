@@ -4,19 +4,19 @@ import android.content.Intent;
 import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class bf
   extends a<q>
 {
   public static final int CTRL_INDEX = 59;
   public static final String NAME = "openCard";
-  final int jyB;
+  final int jYY;
   
   public bf()
   {
     AppMethodBeat.i(174756);
-    this.jyB = com.tencent.luggage.sdk.g.a.aD(this);
+    this.jYY = com.tencent.luggage.sdk.g.a.aA(this);
     AppMethodBeat.o(174756);
   }
 }

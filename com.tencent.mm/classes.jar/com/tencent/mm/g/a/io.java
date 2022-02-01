@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class io
   extends b
 {
-  public a dmx;
-  public b dmy;
+  public a djO;
   
   public io()
   {
@@ -16,22 +15,17 @@ public final class io
   
   private io(byte paramByte)
   {
-    AppMethodBeat.i(130778);
-    this.dmx = new a();
-    this.dmy = new b();
-    this.ESR = false;
+    AppMethodBeat.i(131790);
+    this.djO = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(130778);
+    AppMethodBeat.o(131790);
   }
   
   public static final class a
   {
-    public int dmz = -1;
-  }
-  
-  public static final class b
-  {
-    public int dmA = 0;
+    public int djP = 0;
+    public boolean djQ = false;
   }
 }
 

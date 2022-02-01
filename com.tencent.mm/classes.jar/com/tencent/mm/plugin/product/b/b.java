@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.product.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aec;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
 {
-  public static String D(int paramInt1, int paramInt2, String paramString)
+  public static String C(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(66854);
     if (paramInt1 == paramInt2)
@@ -21,12 +21,12 @@ public final class b
     return paramString;
   }
   
-  public static String a(Context paramContext, aec paramaec)
+  public static String a(Context paramContext, afb paramafb)
   {
     AppMethodBeat.i(66856);
-    if (paramaec.CNG > 0)
+    if (paramafb.Egi > 0)
     {
-      paramContext = paramaec.Name + " " + c(paramaec.CNG, paramaec.PriceType);
+      paramContext = paramafb.Name + " " + c(paramafb.Egi, paramafb.PriceType);
       AppMethodBeat.o(66856);
       return paramContext;
     }
@@ -38,7 +38,7 @@ public final class b
   public static String c(double paramDouble, String paramString)
   {
     AppMethodBeat.i(66855);
-    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bt.isNullOrNil(paramString)))
+    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bs.isNullOrNil(paramString)))
     {
       paramString = String.format("¥%.2f", new Object[] { Double.valueOf(paramDouble / 100.0D) });
       AppMethodBeat.o(66855);
@@ -51,7 +51,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.b
  * JD-Core Version:    0.7.0.1
  */

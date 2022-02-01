@@ -9,12 +9,12 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 public final class h
   extends l
 {
-  public static final h jQg;
+  public static final h kqS;
   
   static
   {
     AppMethodBeat.i(46298);
-    jQg = new h();
+    kqS = new h();
     AppMethodBeat.o(46298);
   }
   
@@ -25,7 +25,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.h
  * JD-Core Version:    0.7.0.1
  */

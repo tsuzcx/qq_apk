@@ -6,21 +6,21 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$4", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "scan-translation_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$4", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "scan-translation_release"})
 public final class ScanTranslationResultUI$h
   extends AnimatorListenerAdapter
 {
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(162356);
-    ScanTranslationResultUI.k(this.vUE).setAlpha(0.0F);
+    ScanTranslationResultUI.k(this.xfp).setAlpha(0.0F);
     AppMethodBeat.o(162356);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
     AppMethodBeat.i(162355);
-    ScanTranslationResultUI.k(this.vUE).setAlpha(0.0F);
+    ScanTranslationResultUI.k(this.xfp).setAlpha(0.0F);
     AppMethodBeat.o(162355);
   }
 }

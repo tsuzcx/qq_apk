@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.xweb.WebView;
+import com.tencent.xweb.aa;
 import com.tencent.xweb.d;
 import com.tencent.xweb.internal.IWebStorage;
-import com.tencent.xweb.z;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,37 +18,37 @@ import org.xwalk.core.Log;
 
 public final class c
 {
-  public static final String AZx;
-  private static ArrayList<String> AZy;
+  public static final String CrK;
+  private static ArrayList<String> CrL;
   
   static
   {
     AppMethodBeat.i(79119);
-    AZx = Integer.toString(100028);
+    CrK = Integer.toString(100028);
     AppMethodBeat.o(79119);
   }
   
   private static void a(String paramString, List<String> paramList, com.tencent.xweb.c paramc)
   {
     AppMethodBeat.i(79115);
-    if (!bt.gL(paramList))
+    if (!bs.gY(paramList))
     {
       String str = Uri.parse(paramString).getHost();
       Object localObject = str.split("\\.");
       if (localObject.length <= 1) {}
       for (localObject = "";; localObject = localObject[(localObject.length - 2)] + "." + localObject[(localObject.length - 1)])
       {
-        ad.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
-        ad.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
+        ac.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
+        ac.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           str = (String)paramList.next();
-          if (!bt.isNullOrNil(str))
+          if (!bs.isNullOrNil(str))
           {
             paramc.setCookie(paramString, str + "=");
             paramc.setCookie(paramString, str + "=;path=/");
-            if (!bt.isNullOrNil((String)localObject)) {
+            if (!bs.isNullOrNil((String)localObject)) {
               paramc.setCookie((String)localObject, str + "=;domain=." + (String)localObject + ";path=/");
             }
           }
@@ -58,7 +58,7 @@ public final class c
     AppMethodBeat.o(79115);
   }
   
-  private static String awY(String paramString)
+  private static String aCq(String paramString)
   {
     AppMethodBeat.i(79118);
     String str;
@@ -66,7 +66,7 @@ public final class c
     {
       paramString = new URI(paramString);
       str = paramString.getScheme();
-      if (bt.isNullOrNil(str))
+      if (bs.isNullOrNil(str))
       {
         AppMethodBeat.o(79118);
         return null;
@@ -74,7 +74,7 @@ public final class c
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.WebView.CookiesCleanup", "getOrigin fail %s", new Object[] { paramString.getMessage() });
+      ac.e("MicroMsg.WebView.CookiesCleanup", "getOrigin fail %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(79118);
       return null;
     }
@@ -96,7 +96,7 @@ public final class c
     }
   }
   
-  public static void cc(String paramString, boolean paramBoolean)
+  public static void ci(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(79117);
     if (!paramBoolean)
@@ -104,26 +104,26 @@ public final class c
       AppMethodBeat.o(79117);
       return;
     }
-    if (AZy == null) {
-      AZy = new ArrayList();
+    if (CrL == null) {
+      CrL = new ArrayList();
     }
-    if (AZy.contains(paramString))
+    if (CrL.contains(paramString))
     {
       AppMethodBeat.o(79117);
       return;
     }
-    AZy.add(paramString);
+    CrL.add(paramString);
     AppMethodBeat.o(79117);
   }
   
-  public static void emw()
+  public static void eBR()
   {
     AppMethodBeat.i(79116);
-    if (AZy != null) {}
-    for (int i = AZy.size();; i = 0)
+    if (CrL != null) {}
+    for (int i = CrL.size();; i = 0)
     {
-      ad.i("MicroMsg.WebView.CookiesCleanup", "clearWebViewData url list size %d", new Object[] { Integer.valueOf(i) });
-      if (!bt.gL(AZy)) {
+      ac.i("MicroMsg.WebView.CookiesCleanup", "clearWebViewData url list size %d", new Object[] { Integer.valueOf(i) });
+      if (!bs.gY(CrL)) {
         break;
       }
       AppMethodBeat.o(79116);
@@ -131,17 +131,17 @@ public final class c
     }
     Object localObject3;
     Object localObject2;
-    if (!bt.gL(AZy))
+    if (!bs.gY(CrL))
     {
-      localObject1 = AZy;
-      localObject3 = com.tencent.xweb.c.fqC();
+      localObject1 = CrL;
+      localObject3 = com.tencent.xweb.c.fJa();
       Iterator localIterator = ((List)localObject1).iterator();
       if (localIterator.hasNext())
       {
         String str1 = (String)localIterator.next();
-        ad.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
+        ac.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
         localObject1 = ((com.tencent.xweb.c)localObject3).getCookie(str1);
-        if (bt.isNullOrNil((String)localObject1)) {
+        if (bs.isNullOrNil((String)localObject1)) {
           localObject1 = null;
         }
         for (;;)
@@ -162,7 +162,7 @@ public final class c
           while (i < j)
           {
             String str2 = localObject1[i];
-            if ((!bt.isNullOrNil(str2)) && (str2.contains("="))) {
+            if ((!bs.isNullOrNil(str2)) && (str2.contains("="))) {
               ((List)localObject2).add(str2.split("=")[0]);
             }
             i += 1;
@@ -173,22 +173,22 @@ public final class c
           }
         }
       }
-      d.kU(aj.getContext());
+      d.li(ai.getContext());
       d.sync();
-      ad.i("MicroMsg.WebView.CookiesCleanup", "clearHostCookies end");
+      ac.i("MicroMsg.WebView.CookiesCleanup", "clearHostCookies end");
     }
-    Object localObject1 = AZy.iterator();
+    Object localObject1 = CrL.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = awY((String)((Iterator)localObject1).next());
-      localObject3 = z.frj();
-      if (((z)localObject3).INm == null) {
+      localObject2 = aCq((String)((Iterator)localObject1).next());
+      localObject3 = aa.fJK();
+      if (((aa)localObject3).KzJ == null) {
         Log.e("WebStorage", "deleteOrigin failed webStg is null, cur core kind is " + WebView.getCurWebType());
       } else {
-        ((z)localObject3).INm.deleteOrigin((String)localObject2);
+        ((aa)localObject3).KzJ.deleteOrigin((String)localObject2);
       }
     }
-    AZy.clear();
+    CrL.clear();
     AppMethodBeat.o(79116);
   }
 }

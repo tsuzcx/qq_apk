@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.k.c;
+import com.tencent.mm.plugin.sns.j.c;
 
 public abstract interface ae
 {
-  public abstract c dsZ();
+  public abstract c dHw();
   
   public abstract int getScene();
 }

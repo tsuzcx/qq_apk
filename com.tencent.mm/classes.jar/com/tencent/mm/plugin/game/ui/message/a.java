@@ -12,19 +12,19 @@ import java.util.HashMap;
 public final class a
   extends FrameLayout
 {
-  private int fsv;
-  c snj;
-  private int snk;
+  private int fwc;
+  c tvc;
+  private int tvd;
   
   public a(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(183869);
-    this.fsv = paramInt;
-    if (((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().EA(1) != 0)
+    this.fwc = paramInt;
+    if (((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().Gw(1) != 0)
     {
-      this.snj = new c(getContext(), this.fsv);
-      addView(this.snj, new FrameLayout.LayoutParams(-1, -1));
+      this.tvc = new c(getContext(), this.fwc);
+      addView(this.tvc, new FrameLayout.LayoutParams(-1, -1));
       AppMethodBeat.o(183869);
       return;
     }
@@ -37,15 +37,15 @@ public final class a
     AppMethodBeat.i(184806);
     HashMap localHashMap = new HashMap();
     localHashMap.put("tab", "1");
-    localHashMap.put("newmsg", String.valueOf(this.snk));
-    com.tencent.mm.game.report.e.a(getContext(), 13, 1300, 0, 1, this.fsv, com.tencent.mm.game.report.e.l(localHashMap));
-    this.snk = 0;
+    localHashMap.put("newmsg", String.valueOf(this.tvd));
+    com.tencent.mm.game.report.e.a(getContext(), 13, 1300, 0, 1, this.fwc, com.tencent.mm.game.report.e.k(localHashMap));
+    this.tvd = 0;
     AppMethodBeat.o(184806);
   }
   
   public final void setNewMessageCount(int paramInt)
   {
-    this.snk = paramInt;
+    this.tvd = paramInt;
   }
 }
 

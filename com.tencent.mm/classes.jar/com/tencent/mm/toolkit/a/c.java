@@ -14,22 +14,22 @@ import java.util.HashMap;
 public final class c
   implements Comparable<c>
 {
-  boolean FEA;
-  int FEB;
-  long FEC;
-  long FED;
-  private c.a FEE;
-  HashMap<String, String> FEF;
-  public f FEG;
-  private e FEH;
-  public b FEI;
-  private d FEJ;
-  private Uri FEu;
-  Uri FEv;
-  public File FEw;
-  public File FEx;
-  boolean FEy;
-  boolean FEz;
+  public File HdA;
+  boolean HdB;
+  boolean HdC;
+  boolean HdD;
+  int HdE;
+  long HdF;
+  long HdG;
+  private c.a HdH;
+  HashMap<String, String> HdI;
+  public f HdJ;
+  private e HdK;
+  public b HdL;
+  private d HdM;
+  private Uri Hdx;
+  Uri Hdy;
+  public File Hdz;
   boolean mCancelled;
   public long mContentLength;
   int mId;
@@ -37,53 +37,53 @@ public final class c
   
   public c(String paramString)
   {
-    AppMethodBeat.i(189805);
+    AppMethodBeat.i(193026);
     this.mCancelled = false;
-    this.FEy = true;
-    this.FEz = true;
-    this.FEA = false;
-    this.FEB = 0;
-    this.FEC = 0L;
+    this.HdB = true;
+    this.HdC = true;
+    this.HdD = false;
+    this.HdE = 0;
+    this.HdF = 0L;
     this.mContentLength = -1L;
-    this.FED = 1000L;
-    this.FEE = c.a.FEL;
+    this.HdG = 1000L;
+    this.HdH = c.a.HdO;
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new NullPointerException("uri is invalid!");
-      AppMethodBeat.o(189805);
+      AppMethodBeat.o(193026);
       throw paramString;
     }
     paramString = Uri.parse(paramString);
-    this.FEF = new HashMap();
+    this.HdI = new HashMap();
     this.mState = 2000;
-    this.FEu = paramString;
-    this.FEv = paramString;
-    AppMethodBeat.o(189805);
+    this.Hdx = paramString;
+    this.Hdy = paramString;
+    AppMethodBeat.o(193026);
   }
   
-  final e eOB()
+  final e fef()
   {
-    AppMethodBeat.i(189806);
-    while (this.FEH == null) {
-      this.FEH = new e.a();
+    AppMethodBeat.i(193027);
+    while (this.HdK == null) {
+      this.HdK = new e.a();
     }
-    e locale = this.FEH;
-    AppMethodBeat.o(189806);
+    e locale = this.HdK;
+    AppMethodBeat.o(193027);
     return locale;
   }
   
   final void finish()
   {
-    AppMethodBeat.i(189807);
-    if (this.FEJ != null) {
-      this.FEJ.f(this);
+    AppMethodBeat.i(193028);
+    if (this.HdM != null) {
+      this.HdM.f(this);
     }
-    AppMethodBeat.o(189807);
+    AppMethodBeat.o(193028);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.c
  * JD-Core Version:    0.7.0.1
  */

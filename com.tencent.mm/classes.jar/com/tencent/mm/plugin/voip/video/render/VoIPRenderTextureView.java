@@ -8,142 +8,142 @@ import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView;", "Landroid/view/TextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "eventListner", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "getEventListner", "()Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "setEventListner", "(Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;)V", "isFullScreen", "", "()Z", "setFullScreen", "(Z)V", "remoteMode", "getRemoteMode", "()I", "setRemoteMode", "(I)V", "addRenderEventListner", "", "listener", "mode", "drawTransparent", "isTransparent", "initView", "w", "h", "onDetachedFromWindow", "release", "removeRenderEventListner", "resetRender", "resetViewSize", "setOpenGlViewSize", "Companion", "plugin-voip_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView;", "Landroid/view/TextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "eventListner", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "getEventListner", "()Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "setEventListner", "(Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;)V", "isFullScreen", "", "()Z", "setFullScreen", "(Z)V", "remoteMode", "getRemoteMode", "()I", "setRemoteMode", "(I)V", "addRenderEventListner", "", "listener", "mode", "drawTransparent", "isTransparent", "initView", "w", "h", "onDetachedFromWindow", "release", "removeRenderEventListner", "resetRender", "resetViewSize", "setOpenGlViewSize", "Companion", "plugin-voip_release"})
 public class VoIPRenderTextureView
   extends TextureView
 {
-  public static final VoIPRenderTextureView.a zAt;
-  private boolean lUw;
-  public h.b zAp;
-  public int zAq;
+  public static final VoIPRenderTextureView.a ASL;
+  public h.b ASH;
+  public int ASI;
+  private boolean mwy;
   
   static
   {
-    AppMethodBeat.i(192494);
-    zAt = new VoIPRenderTextureView.a((byte)0);
-    AppMethodBeat.o(192494);
+    AppMethodBeat.i(208845);
+    ASL = new VoIPRenderTextureView.a((byte)0);
+    AppMethodBeat.o(208845);
   }
   
   public VoIPRenderTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(192492);
-    AppMethodBeat.o(192492);
+    AppMethodBeat.i(208843);
+    AppMethodBeat.o(208843);
   }
   
   public VoIPRenderTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(192493);
-    AppMethodBeat.o(192493);
+    AppMethodBeat.i(208844);
+    AppMethodBeat.o(208844);
   }
   
-  public final void dXT()
+  public final void enp()
   {
-    AppMethodBeat.i(192490);
-    h.b localb = this.zAp;
+    AppMethodBeat.i(208841);
+    h.b localb = this.ASH;
     if (localb != null)
     {
-      localb.dXR();
-      AppMethodBeat.o(192490);
+      localb.enn();
+      AppMethodBeat.o(208841);
       return;
     }
-    AppMethodBeat.o(192490);
+    AppMethodBeat.o(208841);
   }
   
   public final h.b getEventListner()
   {
-    return this.zAp;
+    return this.ASH;
   }
   
   public final int getRemoteMode()
   {
-    return this.zAq;
+    return this.ASI;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(192491);
+    AppMethodBeat.i(208842);
     super.onDetachedFromWindow();
     setSurfaceTextureListener(null);
-    this.zAp = null;
-    AppMethodBeat.o(192491);
+    this.ASH = null;
+    AppMethodBeat.o(208842);
   }
   
-  public final void rV(boolean paramBoolean)
+  public final void sW(boolean paramBoolean)
   {
-    AppMethodBeat.i(192489);
+    AppMethodBeat.i(208840);
     if (paramBoolean)
     {
       setAlpha(0.0F);
-      AppMethodBeat.o(192489);
+      AppMethodBeat.o(208840);
       return;
     }
     setAlpha(1.0F);
-    AppMethodBeat.o(192489);
+    AppMethodBeat.o(208840);
   }
   
   public final void setEventListner(h.b paramb)
   {
-    this.zAp = paramb;
+    this.ASH = paramb;
   }
   
   public final void setFullScreen(boolean paramBoolean)
   {
-    this.lUw = paramBoolean;
+    this.mwy = paramBoolean;
   }
   
   public final void setRemoteMode(int paramInt)
   {
-    this.zAq = paramInt;
+    this.ASI = paramInt;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView$addRenderEventListner$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-voip_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/voip/video/render/VoIPRenderTextureView$addRenderEventListner$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-voip_release"})
   public static final class b
     implements TextureView.SurfaceTextureListener
   {
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192488);
+      AppMethodBeat.i(208839);
       if (paramSurfaceTexture != null)
       {
-        h.b localb = this.zAu.getEventListner();
+        h.b localb = this.ASM.getEventListner();
         if (localb != null) {
-          localb.a(this.zAu.getRemoteMode(), null, paramSurfaceTexture);
+          localb.a(this.ASM.getRemoteMode(), null, paramSurfaceTexture);
         }
-        paramSurfaceTexture = this.zAu.getEventListner();
+        paramSurfaceTexture = this.ASM.getEventListner();
         if (paramSurfaceTexture != null)
         {
-          paramSurfaceTexture.av(paramInt1, paramInt2, this.zAu.getRemoteMode());
-          AppMethodBeat.o(192488);
+          paramSurfaceTexture.aw(paramInt1, paramInt2, this.ASM.getRemoteMode());
+          AppMethodBeat.o(208839);
           return;
         }
       }
-      AppMethodBeat.o(192488);
+      AppMethodBeat.o(208839);
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(192487);
-      paramSurfaceTexture = this.zAu.getEventListner();
+      AppMethodBeat.i(208838);
+      paramSurfaceTexture = this.ASM.getEventListner();
       if (paramSurfaceTexture != null) {
-        paramSurfaceTexture.QW(this.zAu.getRemoteMode());
+        paramSurfaceTexture.Tf(this.ASM.getRemoteMode());
       }
-      AppMethodBeat.o(192487);
+      AppMethodBeat.o(208838);
       return true;
     }
     
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192486);
-      paramSurfaceTexture = this.zAu.getEventListner();
+      AppMethodBeat.i(208837);
+      paramSurfaceTexture = this.ASM.getEventListner();
       if (paramSurfaceTexture != null)
       {
-        paramSurfaceTexture.av(paramInt1, paramInt2, this.zAu.getRemoteMode());
-        AppMethodBeat.o(192486);
+        paramSurfaceTexture.aw(paramInt1, paramInt2, this.ASM.getRemoteMode());
+        AppMethodBeat.o(208837);
         return;
       }
-      AppMethodBeat.o(192486);
+      AppMethodBeat.o(208837);
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
@@ -151,7 +151,7 @@ public class VoIPRenderTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView
  * JD-Core Version:    0.7.0.1
  */

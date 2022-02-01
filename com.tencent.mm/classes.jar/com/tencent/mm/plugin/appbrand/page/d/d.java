@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.page.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
   extends p
@@ -14,14 +14,14 @@ public final class d
   public static void h(aa paramaa)
   {
     AppMethodBeat.i(135321);
-    ad.i("OnCustomRightButtonClickEvent", "OnCustomRightButtonClickEvent dispatch");
-    new d().g(paramaa.Du()).aXQ();
+    ac.i("OnCustomRightButtonClickEvent", "OnCustomRightButtonClickEvent dispatch");
+    new d().g(paramaa.CX()).beN();
     AppMethodBeat.o(135321);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.d.d
  * JD-Core Version:    0.7.0.1
  */

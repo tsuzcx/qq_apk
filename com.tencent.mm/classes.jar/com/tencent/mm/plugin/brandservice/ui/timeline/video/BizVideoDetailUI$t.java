@@ -5,16 +5,16 @@ import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class BizVideoDetailUI$t
   implements View.OnLongClickListener
 {
-  public static final t njS;
+  public static final t nML;
   
   static
   {
     AppMethodBeat.i(7125);
-    njS = new t();
+    nML = new t();
     AppMethodBeat.o(7125);
   }
   

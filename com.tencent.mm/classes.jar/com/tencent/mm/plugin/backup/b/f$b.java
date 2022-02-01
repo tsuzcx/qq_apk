@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f$b
   implements Cloneable, Comparable<b>
 {
-  public long mqA = -1L;
-  public long mqB = -1L;
-  public String mqx;
-  public long mqy = 0L;
-  public long mqz = 0L;
+  public long mSA = 0L;
+  public long mSB = 0L;
+  public long mSC = -1L;
+  public long mSD = -1L;
+  public String mSz;
   
-  public final b bwd()
+  public final b bCZ()
   {
     AppMethodBeat.i(21166);
     b localb = new b();
-    localb.mqx = this.mqx;
-    localb.mqy = this.mqy;
-    localb.mqz = this.mqz;
-    localb.mqA = this.mqA;
-    localb.mqB = this.mqB;
+    localb.mSz = this.mSz;
+    localb.mSA = this.mSA;
+    localb.mSB = this.mSB;
+    localb.mSC = this.mSC;
+    localb.mSD = this.mSD;
     AppMethodBeat.o(21166);
     return localb;
   }

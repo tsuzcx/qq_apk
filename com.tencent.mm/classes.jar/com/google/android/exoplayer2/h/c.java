@@ -11,18 +11,18 @@ import java.io.InputStream;
 public final class c
   implements g
 {
-  private final AssetManager aCD;
-  private final x<? super c> bws;
-  private long bwt;
+  private final AssetManager aDu;
+  private final w<? super c> bur;
+  private long bus;
   private InputStream inputStream;
   private boolean opened;
   private Uri uri;
   
-  public c(Context paramContext, x<? super c> paramx)
+  public c(Context paramContext, w<? super c> paramw)
   {
     AppMethodBeat.i(92955);
-    this.aCD = paramContext.getAssets();
-    this.bws = paramx;
+    this.aDu = paramContext.getAssets();
+    this.bur = paramw;
     AppMethodBeat.o(92955);
   }
   
@@ -39,7 +39,7 @@ public final class c
         if (str2.startsWith("/android_asset/"))
         {
           str1 = str2.substring(15);
-          this.inputStream = this.aCD.open(str1, 1);
+          this.inputStream = this.aDu.open(str1, 1);
           if (this.inputStream.skip(paramj.position) >= paramj.position) {
             break;
           }
@@ -60,20 +60,20 @@ public final class c
       }
     }
     if (paramj.length != -1L) {
-      this.bwt = paramj.length;
+      this.bus = paramj.length;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.bws != null) {
-        this.bws.vl();
+      if (this.bur != null) {
+        this.bur.ve();
       }
-      long l = this.bwt;
+      long l = this.bus;
       AppMethodBeat.o(92956);
       return l;
-      this.bwt = this.inputStream.available();
-      if (this.bwt == 2147483647L) {
-        this.bwt = -1L;
+      this.bus = this.inputStream.available();
+      if (this.bus == 2147483647L) {
+        this.bus = -1L;
       }
     }
   }
@@ -101,8 +101,8 @@ public final class c
       if (this.opened)
       {
         this.opened = false;
-        if (this.bws != null) {
-          this.bws.vm();
+        if (this.bur != null) {
+          this.bur.vf();
         }
       }
       AppMethodBeat.o(92958);
@@ -123,27 +123,27 @@ public final class c
       AppMethodBeat.o(92957);
       return 0;
     }
-    if (this.bwt == 0L)
+    if (this.bus == 0L)
     {
       AppMethodBeat.o(92957);
       return -1;
     }
     try
     {
-      if (this.bwt == -1L) {}
+      if (this.bus == -1L) {}
       for (;;)
       {
         paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.bwt == -1L) {
+        if (this.bus == -1L) {
           break;
         }
         paramArrayOfByte = new a(new EOFException());
         AppMethodBeat.o(92957);
         throw paramArrayOfByte;
-        long l = Math.min(this.bwt, paramInt2);
+        long l = Math.min(this.bus, paramInt2);
         paramInt2 = (int)l;
       }
       AppMethodBeat.o(92957);
@@ -156,11 +156,11 @@ public final class c
     }
     return -1;
     label134:
-    if (this.bwt != -1L) {
-      this.bwt -= paramInt1;
+    if (this.bus != -1L) {
+      this.bus -= paramInt1;
     }
-    if (this.bws != null) {
-      this.bws.fj(paramInt1);
+    if (this.bur != null) {
+      this.bur.eV(paramInt1);
     }
     AppMethodBeat.o(92957);
     return paramInt1;

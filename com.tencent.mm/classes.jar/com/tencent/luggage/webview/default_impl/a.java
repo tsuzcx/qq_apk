@@ -20,17 +20,17 @@ import java.util.Map;
 public class a
   implements com.tencent.luggage.webview.a
 {
-  private k caI;
-  private DefaultWebView cjp;
-  private Handler cjq;
+  private k bXF;
+  private DefaultWebView cgm;
   private Context mContext;
+  private Handler mainThreadHandler;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(140543);
-    this.cjq = new Handler(Looper.getMainLooper());
+    this.mainThreadHandler = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
-    this.cjp = new DefaultWebView(paramContext);
+    this.cgm = new DefaultWebView(paramContext);
     AppMethodBeat.o(140543);
   }
   
@@ -52,7 +52,7 @@ public class a
       AppMethodBeat.o(140544);
       return;
     }
-    this.cjq.post(parama);
+    this.mainThreadHandler.post(parama);
     AppMethodBeat.o(140544);
   }
   
@@ -74,11 +74,11 @@ public class a
       AppMethodBeat.o(140553);
       return;
     }
-    this.cjq.post(paramObject);
+    this.mainThreadHandler.post(paramObject);
     AppMethodBeat.o(140553);
   }
   
-  public final void bO(final String paramString)
+  public final void bE(final String paramString)
   {
     AppMethodBeat.i(140554);
     paramString = new Runnable()
@@ -86,7 +86,7 @@ public class a
       public final void run()
       {
         AppMethodBeat.i(140535);
-        a.a(a.this).bO(paramString);
+        a.a(a.this).bE(paramString);
         AppMethodBeat.o(140535);
       }
     };
@@ -96,14 +96,14 @@ public class a
       AppMethodBeat.o(140554);
       return;
     }
-    this.cjq.post(paramString);
+    this.mainThreadHandler.post(paramString);
     AppMethodBeat.o(140554);
   }
   
   public boolean canGoBack()
   {
     AppMethodBeat.i(140551);
-    boolean bool = this.cjp.canGoBack();
+    boolean bool = this.cgm.canGoBack();
     AppMethodBeat.o(140551);
     return bool;
   }
@@ -111,7 +111,7 @@ public class a
   public void destroy()
   {
     AppMethodBeat.i(140552);
-    this.cjp.destroy();
+    this.cgm.destroy();
     AppMethodBeat.o(140552);
   }
   
@@ -122,20 +122,20 @@ public class a
   
   public View getView()
   {
-    return this.cjp;
+    return this.cgm;
   }
   
   public void goBack()
   {
     AppMethodBeat.i(140550);
-    this.cjp.goBack();
+    this.cgm.goBack();
     AppMethodBeat.o(140550);
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(140548);
-    this.cjp.loadData(paramString1, paramString2, paramString3);
+    this.cgm.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(140548);
   }
   
@@ -157,14 +157,14 @@ public class a
       AppMethodBeat.o(140546);
       return;
     }
-    this.cjq.post(paramString);
+    this.mainThreadHandler.post(paramString);
     AppMethodBeat.o(140546);
   }
   
   public void loadUrl(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(140547);
-    this.cjp.loadUrl(paramString, paramMap);
+    this.cgm.loadUrl(paramString, paramMap);
     AppMethodBeat.o(140547);
   }
   
@@ -179,13 +179,13 @@ public class a
   
   public void setWebCore(k paramk)
   {
-    this.caI = paramk;
+    this.bXF = paramk;
   }
   
   public void stopLoading()
   {
     AppMethodBeat.i(140549);
-    this.cjp.stopLoading();
+    this.cgm.stopLoading();
     AppMethodBeat.o(140549);
   }
 }

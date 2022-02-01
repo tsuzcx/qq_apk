@@ -14,20 +14,20 @@ import com.tencent.mm.sdk.e.e;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandCriticalDataProvider;", "Lcom/tencent/luggage/wxa/storage/WxaCriticalDataProvider;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "insert", "Landroid/net/Uri;", "uri", "contentValues", "Landroid/content/ContentValues;", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "provideDatabase", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandCriticalDataProvider;", "Lcom/tencent/luggage/wxa/storage/WxaCriticalDataProvider;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "()V", "insert", "Landroid/net/Uri;", "uri", "contentValues", "Landroid/content/ContentValues;", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "provideDatabase", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
 public final class AppBrandCriticalDataProvider
   extends WxaCriticalDataProvider
   implements c
 {
-  public final e Ey()
+  public final e Eb()
   {
     AppMethodBeat.i(50159);
-    Object localObject = j.aOy();
+    Object localObject = j.aVq();
     if (localObject != null)
     {
-      c(t.class, j.aOC());
-      c(bf.class, j.aOK());
-      g.afC().bq(localObject);
+      c(t.class, j.aVu());
+      c(bf.class, j.aVC());
+      g.agS().bn(localObject);
     }
     for (;;)
     {
@@ -69,7 +69,7 @@ public final class AppBrandCriticalDataProvider
     for (int j = 1;; j = 0)
     {
       if ((j == 0) && (i != -1)) {
-        f.bQ(paramUri, i);
+        f.bV(paramUri, i);
       }
       AppMethodBeat.o(50160);
       return localUri;
@@ -87,13 +87,13 @@ public final class AppBrandCriticalDataProvider
   public final void onAccountRelease()
   {
     AppMethodBeat.i(50158);
-    super.Ez();
+    super.Ec();
     AppMethodBeat.o(50158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.AppBrandCriticalDataProvider
  * JD-Core Version:    0.7.0.1
  */

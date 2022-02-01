@@ -14,27 +14,27 @@ import d.g.b.k;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "favorite", "Landroid/view/View;", "favoriteIcon", "Landroid/widget/ImageView;", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isNotifySns", "setNotifySns", "notifySns", "notifySnsIcon", "notifySnsTv", "onNotifySns", "Lkotlin/Function0;", "", "getOnNotifySns", "()Lkotlin/jvm/functions/Function0;", "setOnNotifySns", "(Lkotlin/jvm/functions/Function0;)V", "onSelectRange", "getOnSelectRange", "setOnSelectRange", "onSetFav", "getOnSetFav", "setOnSetFav", "rangeIcon", "rangeTv", "rangeView", "initFavoriteBtn", "initNotifySnsBtn", "initRangeBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "favorite", "Landroid/view/View;", "favoriteIcon", "Landroid/widget/ImageView;", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isNotifySns", "setNotifySns", "notifySns", "notifySnsIcon", "notifySnsTv", "onNotifySns", "Lkotlin/Function0;", "", "getOnNotifySns", "()Lkotlin/jvm/functions/Function0;", "setOnNotifySns", "(Lkotlin/jvm/functions/Function0;)V", "onSelectRange", "getOnSelectRange", "setOnSelectRange", "onSetFav", "getOnSetFav", "setOnSetFav", "rangeIcon", "rangeTv", "rangeView", "initFavoriteBtn", "initNotifySnsBtn", "initRangeBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-recordvideo_release"})
 public final class c
   extends android.support.design.widget.a
 {
-  private View vrP;
-  private TextView vrQ;
-  private ImageView vrR;
-  private View vrS;
-  private TextView vrT;
-  private ImageView vrU;
-  private View vrV;
-  private TextView vrW;
-  private ImageView vrX;
-  public d.g.a.a<y> vrY;
-  public boolean vrZ;
+  private View wBO;
+  private TextView wBP;
+  private ImageView wBQ;
+  private View wBR;
+  private TextView wBS;
+  private ImageView wBT;
+  private View wBU;
+  private TextView wBV;
+  private ImageView wBW;
+  public d.g.a.a<y> wBX;
+  public boolean wBY;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(76012);
-    this.vrZ = true;
+    this.wBY = true;
     setContentView(2131495684);
     AppMethodBeat.o(76012);
   }
@@ -49,29 +49,29 @@ public final class c
       paramBundle.addFlags(134218752);
       paramBundle.clearFlags(2);
     }
-    this.vrS = findViewById(2131305390);
-    this.vrT = ((TextView)findViewById(2131305392));
-    this.vrU = ((ImageView)findViewById(2131305391));
-    this.vrP = findViewById(2131305393);
-    this.vrQ = ((TextView)findViewById(2131305395));
-    this.vrR = ((ImageView)findViewById(2131305394));
-    this.vrV = findViewById(2131305396);
-    this.vrW = ((TextView)findViewById(2131305398));
-    this.vrX = ((ImageView)findViewById(2131305397));
-    if (!com.tencent.mm.plugin.recordvideo.b.a.a.vhg.dhx())
+    this.wBR = findViewById(2131305390);
+    this.wBS = ((TextView)findViewById(2131305392));
+    this.wBT = ((ImageView)findViewById(2131305391));
+    this.wBO = findViewById(2131305393);
+    this.wBP = ((TextView)findViewById(2131305395));
+    this.wBQ = ((ImageView)findViewById(2131305394));
+    this.wBU = findViewById(2131305396);
+    this.wBV = ((TextView)findViewById(2131305398));
+    this.wBW = ((ImageView)findViewById(2131305397));
+    if (!com.tencent.mm.plugin.recordvideo.b.a.a.wpS.dve())
     {
-      paramBundle = this.vrP;
+      paramBundle = this.wBO;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
     for (;;)
     {
-      paramBundle = this.vrS;
+      paramBundle = this.wBR;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.vrV;
+      paramBundle = this.wBU;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -82,57 +82,57 @@ public final class c
       paramBundle.setBackgroundResource(2131101053);
       AppMethodBeat.o(76011);
       return;
-      paramBundle = this.vrP;
+      paramBundle = this.wBO;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.vrP;
+      paramBundle = this.wBO;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new a(this));
       }
       Context localContext1;
       Context localContext2;
-      if (this.vrZ)
+      if (this.wBY)
       {
-        paramBundle = this.vrQ;
+        paramBundle = this.wBP;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           k.g(localContext1, "context");
           paramBundle.setText((CharSequence)localContext1.getResources().getString(2131764251));
         }
-        paramBundle = this.vrR;
+        paramBundle = this.wBQ;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           localContext2 = getContext();
           k.g(localContext2, "context");
-          paramBundle.setImageDrawable(am.i(localContext1, 2131690602, localContext2.getResources().getColor(2131099664)));
+          paramBundle.setImageDrawable(am.k(localContext1, 2131690602, localContext2.getResources().getColor(2131099664)));
         }
       }
       else
       {
-        paramBundle = this.vrQ;
+        paramBundle = this.wBP;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           k.g(localContext1, "context");
           paramBundle.setText((CharSequence)localContext1.getResources().getString(2131764252));
         }
-        paramBundle = this.vrR;
+        paramBundle = this.wBQ;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           localContext2 = getContext();
           k.g(localContext2, "context");
-          paramBundle.setImageDrawable(am.i(localContext1, 2131690601, localContext2.getResources().getColor(2131099664)));
+          paramBundle.setImageDrawable(am.k(localContext1, 2131690601, localContext2.getResources().getColor(2131099664)));
         }
       }
     }
     AppMethodBeat.o(76011);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -141,11 +141,11 @@ public final class c
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(76010);
-      paramView = this.vsa.vrY;
+      paramView = this.wBZ.wBX;
       if (paramView != null) {
         paramView.invoke();
       }
-      this.vsa.dismiss();
+      this.wBZ.dismiss();
       AppMethodBeat.o(76010);
     }
   }

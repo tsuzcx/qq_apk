@@ -22,13 +22,13 @@ public class SnsServiceBean
     this.mTrueName = "";
     this.mPayInfo = paramPayInfo;
     this.mContext = paramContext;
-    this.mReqKey = paramPayInfo.dcE;
+    this.mReqKey = paramPayInfo.dac;
     this.mChannel = paramPayInfo.channel;
-    this.mPayScene = paramPayInfo.dtb;
-    if (paramPayInfo.Cos != null)
+    this.mPayScene = paramPayInfo.dqL;
+    if (paramPayInfo.hbR != null)
     {
-      this.mReceiverName = paramPayInfo.Cos.getString("extinfo_key_1");
-      this.mTrueName = paramPayInfo.Cos.getString("extinfo_key_2");
+      this.mReceiverName = paramPayInfo.hbR.getString("extinfo_key_1");
+      this.mTrueName = paramPayInfo.hbR.getString("extinfo_key_2");
     }
     AppMethodBeat.o(18717);
   }

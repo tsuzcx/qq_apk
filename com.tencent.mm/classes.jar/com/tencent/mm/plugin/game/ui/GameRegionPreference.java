@@ -14,7 +14,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class GameRegionPreference
   extends Preference
 {
-  a slU;
+  a ttN;
   
   public GameRegionPreference(Context paramContext)
   {
@@ -40,10 +40,10 @@ public class GameRegionPreference
     super.onBindView(paramView);
     TextView localTextView = (TextView)paramView.findViewById(2131303961);
     paramView = (CheckBox)paramView.findViewById(2131305186);
-    if ((localTextView != null) && (paramView != null) && (this.slU != null))
+    if ((localTextView != null) && (paramView != null) && (this.ttN != null))
     {
-      localTextView.setText(e.a(this.slU));
-      paramView.setChecked(this.slU.ira);
+      localTextView.setText(e.a(this.ttN));
+      paramView.setChecked(this.ttN.isSelected);
     }
     AppMethodBeat.o(42355);
   }
@@ -62,12 +62,12 @@ public class GameRegionPreference
   
   public static final class a
   {
-    public String evF;
-    public boolean ira;
+    public String eyb;
     public boolean isDefault;
-    public String slV;
-    public String slW;
-    public String slX;
+    public boolean isSelected;
+    public String ttO;
+    public String ttP;
+    public String ttQ;
   }
 }
 

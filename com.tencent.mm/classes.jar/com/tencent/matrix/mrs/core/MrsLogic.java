@@ -9,7 +9,7 @@ import java.util.TimeZone;
 public final class MrsLogic
 {
   private static final String TAG = "MrsLogic";
-  private static MrsLogic.PhoneInfo phoneInfo;
+  private static PhoneInfo phoneInfo;
   private static MrsCallback strategyCaller = null;
   
   public static native void collectData(String paramString, byte[] paramArrayOfByte);
@@ -32,7 +32,7 @@ public final class MrsLogic
     return strategyCaller.getHost(paramMatrixUploadDataSlice);
   }
   
-  public static MrsLogic.PhoneInfo getPhoneInfo()
+  public static PhoneInfo getPhoneInfo()
   {
     if (phoneInfo == null) {
       phoneInfo = getPhoneInfoInternal();
@@ -40,9 +40,9 @@ public final class MrsLogic
     return phoneInfo;
   }
   
-  private static MrsLogic.PhoneInfo getPhoneInfoInternal()
+  private static PhoneInfo getPhoneInfoInternal()
   {
-    MrsLogic.PhoneInfo localPhoneInfo = new MrsLogic.PhoneInfo();
+    PhoneInfo localPhoneInfo = new PhoneInfo();
     localPhoneInfo.deviceModel = replayUnderlineWithDoc(Build.MODEL);
     localPhoneInfo.deviceBrand = replayUnderlineWithDoc(Build.BRAND);
     String str2 = Build.MANUFACTURER;
@@ -147,7 +147,7 @@ public final class MrsLogic
   
   private static native void setDebugFlag(boolean paramBoolean);
   
-  static native void setPhoneInfo(MrsLogic.PhoneInfo paramPhoneInfo);
+  static native void setPhoneInfo(PhoneInfo paramPhoneInfo);
   
   private static native void setPublishType(long paramLong);
   
@@ -163,6 +163,15 @@ public final class MrsLogic
   public static native void setUin(long paramLong);
   
   public static native void uploadMatrixIssue(MatrixUploadIssue paramMatrixUploadIssue);
+  
+  public static class PhoneInfo
+  {
+    public String deviceBrand;
+    public String deviceModel;
+    public String languageVer;
+    public String osName;
+    public String osVersion;
+  }
 }
 
 

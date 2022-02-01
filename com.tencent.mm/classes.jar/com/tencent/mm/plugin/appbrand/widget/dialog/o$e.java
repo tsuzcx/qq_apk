@@ -4,7 +4,7 @@ import d.g.a.b;
 import d.y;
 import java.util.ArrayList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "changed", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "invoke", "com/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$onBindViewHolder$1$1"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "changed", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "invoke", "com/tencent/mm/plugin/appbrand/widget/dialog/WxaUserInfoListAdapter$onBindViewHolder$1$1"})
 final class o$e
   extends d.g.b.l
   implements b<ArrayList<Integer>, y>

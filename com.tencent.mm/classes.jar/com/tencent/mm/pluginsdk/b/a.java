@@ -1,16 +1,16 @@
 package com.tencent.mm.pluginsdk.b;
 
 import android.content.Intent;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.preference.f;
 
 public abstract interface a
 {
-  public abstract boolean SN(String paramString);
+  public abstract boolean WZ(String paramString);
   
-  public abstract boolean a(f paramf, af paramaf, boolean paramBoolean, int paramInt);
+  public abstract boolean a(f paramf, ai paramai, boolean paramBoolean, int paramInt);
   
-  public abstract boolean bRu();
+  public abstract boolean bYJ();
   
   public abstract void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
 }

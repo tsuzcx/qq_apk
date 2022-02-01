@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.TabLayout android:id="@id/hb_" android:background="@color/a7c" android:layout_width="0.0dip" android:layout_height="@dimen/ce" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" app:tabGravity="ahg" app:tabIndicator="@drawable/c4z" app:tabIndicatorColor="@color/aj" app:tabIndicatorFullWidth="@dimen/c8" app:tabIndicatorHeight="2.0dip" app:tabPadding="@dimen/c5" app:tabSelectedTextColor="@color/aj" app:tabTextColor="@color/BW_100_Alpha_0_3" />
-    <android.support.v4.view.ViewPager android:id="@id/hba" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/hb_" />
-</merge>
+    <View android:id="@id/hdz" android:background="@drawable/c51" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hdw" android:padding="@dimen/c0" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_no_effect" app:iconColor="@color/aj" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+</android.support.constraint.ConstraintLayout>

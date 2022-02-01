@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements u<byte[]>
 {
-  private final byte[] wA;
+  private final byte[] xy;
   
   public b(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77452);
-    this.wA = ((byte[])i.checkNotNull(paramArrayOfByte, "Argument must not be null"));
+    this.xy = ((byte[])i.checkNotNull(paramArrayOfByte, "Argument must not be null"));
     AppMethodBeat.o(77452);
   }
   
   public final int getSize()
   {
-    return this.wA.length;
+    return this.xy.length;
   }
   
-  public final Class<byte[]> oo()
+  public final Class<byte[]> oy()
   {
     return [B.class;
   }
@@ -30,7 +30,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.b.b
  * JD-Core Version:    0.7.0.1
  */

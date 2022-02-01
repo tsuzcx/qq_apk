@@ -6,13 +6,13 @@ public class e
   extends g
 {
   public int appType = -1;
-  public int evH = -1;
+  public int eyd = -1;
   public int fileType = 0;
-  public String[] fnA;
-  public int fnB;
-  public int fnC;
-  public String fny;
-  public String[] fnz;
+  public String fqS;
+  public String[] fqT;
+  public String[] fqU;
+  public int fqV;
+  public int fqW;
   public String host;
   public boolean isColdSnsData;
   public String referer;
@@ -23,7 +23,7 @@ public class e
   
   public e()
   {
-    this.fnT = true;
+    this.frn = true;
   }
   
   private static String h(String[] paramArrayOfString)
@@ -50,14 +50,14 @@ public class e
   public String toString()
   {
     AppMethodBeat.i(120675);
-    String str = String.format("mediaId:%s, url:%s, host:%s, referer:%s, savepath:%s, iplist:%s, slaveIplist:%siplistSource:%d, dcSource:%d, isColdSnsData:%b, signalQuality:%s, snsScene:%s", new Object[] { this.field_mediaId, this.url, this.host, this.referer, this.fny, h(this.fnz), h(this.fnA), Integer.valueOf(this.fnB), Integer.valueOf(this.fnC), Boolean.valueOf(this.isColdSnsData), this.signalQuality, this.snsScene });
+    String str = String.format("mediaId:%s, url:%s, host:%s, referer:%s, savepath:%s, iplist:%s, slaveIplist:%siplistSource:%d, dcSource:%d, isColdSnsData:%b, signalQuality:%s, snsScene:%s", new Object[] { this.field_mediaId, this.url, this.host, this.referer, this.fqS, h(this.fqT), h(this.fqU), Integer.valueOf(this.fqV), Integer.valueOf(this.fqW), Boolean.valueOf(this.isColdSnsData), this.signalQuality, this.snsScene });
     AppMethodBeat.o(120675);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.i.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,30 +8,30 @@ public final class h
   public static boolean a(String paramString, p paramp)
   {
     AppMethodBeat.i(97445);
-    if (x.anq(paramString))
+    if (x.asz(paramString))
     {
-      bool = af.dtu().b(x.anz(paramString), paramp);
+      bool = af.dHR().b(x.asL(paramString), paramp);
       AppMethodBeat.o(97445);
       return bool;
     }
-    boolean bool = af.dtx().b(x.anz(paramString), paramp.dyh());
+    boolean bool = af.dHU().b(x.asL(paramString), paramp.dME());
     AppMethodBeat.o(97445);
     return bool;
   }
   
-  public static p apJ(String paramString)
+  public static p auS(String paramString)
   {
     AppMethodBeat.i(97444);
-    if (x.anq(paramString))
+    if (x.asz(paramString))
     {
-      paramString = af.dtu().th(x.anz(paramString));
+      paramString = af.dHR().xK(x.asL(paramString));
       AppMethodBeat.o(97444);
       return paramString;
     }
-    paramString = af.dtx().sY(x.anz(paramString));
+    paramString = af.dHU().xB(x.asL(paramString));
     if (paramString != null)
     {
-      paramString = paramString.dxE();
+      paramString = paramString.dMb();
       AppMethodBeat.o(97444);
       return paramString;
     }
@@ -39,19 +39,19 @@ public final class h
     return null;
   }
   
-  public static p apK(String paramString)
+  public static p auT(String paramString)
   {
     AppMethodBeat.i(97446);
-    if (x.anq(paramString))
+    if (x.asz(paramString))
     {
-      paramString = af.dtu().Ne(x.aqg(paramString));
+      paramString = af.dHR().Ph(x.avp(paramString));
       AppMethodBeat.o(97446);
       return paramString;
     }
-    paramString = af.dtx().MZ(x.aqg(paramString));
+    paramString = af.dHU().Pc(x.avp(paramString));
     if (paramString != null)
     {
-      paramString = paramString.dxE();
+      paramString = paramString.dMb();
       AppMethodBeat.o(97446);
       return paramString;
     }

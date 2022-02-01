@@ -6,52 +6,63 @@ import com.tencent.mm.plugin.report.a;
 public final class da
   extends a
 {
-  public String dTc = "";
-  public long dTd = 0L;
-  public long dTe = 0L;
+  public long dRB = 0L;
+  private String dRC;
+  private String dRD = "";
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(118481);
+    AppMethodBeat.i(195931);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTc);
+    ((StringBuffer)localObject).append(this.dRD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTd);
+    ((StringBuffer)localObject).append(this.dRB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTe);
+    ((StringBuffer)localObject).append(this.dRC);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(118481);
+    arz((String)localObject);
+    AppMethodBeat.o(195931);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(118482);
+    AppMethodBeat.i(195932);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("UserName:").append(this.dTc);
+    ((StringBuffer)localObject).append("RoomName:").append(this.dRD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dTd);
+    ((StringBuffer)localObject).append("IsRedDot:").append(this.dRB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.dTe);
+    ((StringBuffer)localObject).append("AppList:").append(this.dRC);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118482);
+    AppMethodBeat.o(195932);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16656;
+    return 19959;
   }
   
-  public final String getUserName()
+  public final da lc(String paramString)
   {
-    return this.dTc;
+    AppMethodBeat.i(195929);
+    this.dRD = t("RoomName", paramString, true);
+    AppMethodBeat.o(195929);
+    return this;
+  }
+  
+  public final da ld(String paramString)
+  {
+    AppMethodBeat.i(195930);
+    this.dRC = t("AppList", paramString, true);
+    AppMethodBeat.o(195930);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.da
  * JD-Core Version:    0.7.0.1
  */

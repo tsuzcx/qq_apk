@@ -29,35 +29,35 @@ import com.tencent.mm.plugin.appbrand.m;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 
 public final class AppBrandPrepareTask
 {
-  private boolean cbn;
-  public volatile transient boolean iGP;
-  public PrepareParams kGd;
-  public volatile transient ar<AppBrandSysConfigWC> kGe;
-  volatile transient WeakReference<Activity> kGf;
+  private boolean bYk;
+  public volatile transient boolean jgS;
+  public PrepareParams lhw;
+  public volatile transient ar<AppBrandSysConfigWC> lhx;
+  volatile transient WeakReference<Activity> lhy;
   
   public AppBrandPrepareTask(Activity paramActivity, o paramo)
   {
     AppMethodBeat.i(47107);
-    this.iGP = false;
-    AppBrandStatObject localAppBrandStatObject = paramo.DZ().cfo;
-    this.kGd = new PrepareParams();
-    this.kGf = new WeakReference(paramActivity);
-    this.kGd.mAppId = paramo.mAppId;
-    this.kGd.kGt = paramo.aNc().username;
-    PrepareParams.a(this.kGd, paramo.iDx.iOP);
-    paramActivity = this.kGd;
+    this.jgS = false;
+    AppBrandStatObject localAppBrandStatObject = paramo.DC().ccl;
+    this.lhw = new PrepareParams();
+    this.lhy = new WeakReference(paramActivity);
+    this.lhw.mAppId = paramo.mAppId;
+    this.lhw.lhM = paramo.aTS().username;
+    PrepareParams.a(this.lhw, paramo.jdx.joY);
+    paramActivity = this.lhw;
     if (localAppBrandStatObject == null)
     {
       i = 0;
       PrepareParams.b(paramActivity, i);
-      paramActivity = this.kGd;
+      paramActivity = this.lhw;
       if (localAppBrandStatObject != null) {
         break label272;
       }
@@ -65,20 +65,20 @@ public final class AppBrandPrepareTask
     label272:
     for (int i = j;; i = localAppBrandStatObject.scene)
     {
-      paramActivity.ifv = i;
-      this.kGd.kGs = paramo.aNc().iJb;
-      PrepareParams.a(this.kGd, paramo.aNc().cfi);
-      PrepareParams.a(this.kGd, paramo.aNc().Da());
-      this.kGd.kGA = paramo.aLC();
-      this.kGd.kGw = paramo.aNc().cfl;
-      this.kGd.cbn = paramo.CZ();
-      PrepareParams.a(this.kGd, paramo.aNc().cfn);
-      this.kGd.kGz = paramo.aNc().jdu;
-      PrepareParams.a(this.kGd, paramo.aNc().iJn);
-      this.cbn = paramo.CZ();
+      paramActivity.iFE = i;
+      this.lhw.lhL = paramo.aTS().jjf;
+      PrepareParams.a(this.lhw, paramo.aTS().cce);
+      PrepareParams.a(this.lhw, paramo.aTS().CD());
+      this.lhw.lhT = paramo.aSt();
+      this.lhw.lhP = paramo.aTS().cch;
+      this.lhw.bYk = paramo.CC();
+      PrepareParams.a(this.lhw, paramo.aTS().cck);
+      this.lhw.lhS = paramo.aTS().jDH;
+      PrepareParams.a(this.lhw, paramo.aTS().jjr);
+      this.bYk = paramo.CC();
       AppMethodBeat.o(47107);
       return;
-      i = localAppBrandStatObject.dzS;
+      i = localAppBrandStatObject.dxE;
       break;
     }
   }
@@ -87,19 +87,19 @@ public final class AppBrandPrepareTask
     implements Parcelable
   {
     public static final Parcelable.Creator<PrepareParams> CREATOR;
-    boolean cbn;
-    private AppBrandLaunchFromNotifyReferrer iJn;
-    int ifv;
-    public ICommLibReader kGA;
-    private int kGr;
-    String kGs;
-    String kGt;
-    private AppBrandLaunchReferrer kGu;
-    private String kGv;
-    WxaAttributes.WxaVersionInfo kGw;
-    boolean kGx;
-    private boolean kGy;
-    QualitySession kGz;
+    boolean bYk;
+    int iFE;
+    private AppBrandLaunchFromNotifyReferrer jjr;
+    private int lhK;
+    String lhL;
+    String lhM;
+    private AppBrandLaunchReferrer lhN;
+    private String lhO;
+    WxaAttributes.WxaVersionInfo lhP;
+    boolean lhQ;
+    private boolean lhR;
+    QualitySession lhS;
+    public ICommLibReader lhT;
     public String mAppId;
     private int mDebugType;
     
@@ -115,25 +115,25 @@ public final class AppBrandPrepareTask
     PrepareParams(Parcel paramParcel)
     {
       AppMethodBeat.i(47101);
-      this.kGr = paramParcel.readInt();
-      this.ifv = paramParcel.readInt();
-      this.kGs = paramParcel.readString();
+      this.lhK = paramParcel.readInt();
+      this.iFE = paramParcel.readInt();
+      this.lhL = paramParcel.readString();
       this.mAppId = paramParcel.readString();
-      this.kGt = paramParcel.readString();
+      this.lhM = paramParcel.readString();
       this.mDebugType = paramParcel.readInt();
-      this.kGu = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
-      this.kGv = paramParcel.readString();
-      this.kGw = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
+      this.lhN = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
+      this.lhO = paramParcel.readString();
+      this.lhP = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.cbn = bool1;
+        this.bYk = bool1;
         if (paramParcel.readInt() <= 0) {
           break label193;
         }
         bool1 = true;
         label123:
-        this.kGx = bool1;
+        this.lhQ = bool1;
         if (paramParcel.readInt() <= 0) {
           break label198;
         }
@@ -142,10 +142,10 @@ public final class AppBrandPrepareTask
       label198:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.kGy = bool1;
-        this.kGz = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
-        this.kGA = ICommLibReader.b.g(paramParcel);
-        this.iJn = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
+        this.lhR = bool1;
+        this.lhS = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
+        this.lhT = ICommLibReader.b.g(paramParcel);
+        this.jjr = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
         AppMethodBeat.o(47101);
         return;
         bool1 = false;
@@ -164,26 +164,26 @@ public final class AppBrandPrepareTask
     {
       int j = 1;
       AppMethodBeat.i(47100);
-      paramParcel.writeInt(this.kGr);
-      paramParcel.writeInt(this.ifv);
-      paramParcel.writeString(this.kGs);
+      paramParcel.writeInt(this.lhK);
+      paramParcel.writeInt(this.iFE);
+      paramParcel.writeString(this.lhL);
       paramParcel.writeString(this.mAppId);
-      paramParcel.writeString(this.kGt);
+      paramParcel.writeString(this.lhM);
       paramParcel.writeInt(this.mDebugType);
-      paramParcel.writeParcelable(this.kGu, paramInt);
-      paramParcel.writeString(this.kGv);
-      paramParcel.writeParcelable(this.kGw, paramInt);
-      if (this.cbn)
+      paramParcel.writeParcelable(this.lhN, paramInt);
+      paramParcel.writeString(this.lhO);
+      paramParcel.writeParcelable(this.lhP, paramInt);
+      if (this.bYk)
       {
         i = 1;
         paramParcel.writeInt(i);
-        if (!this.kGx) {
+        if (!this.lhQ) {
           break label163;
         }
         i = 1;
         label105:
         paramParcel.writeInt(i);
-        if (!this.kGy) {
+        if (!this.lhR) {
           break label168;
         }
       }
@@ -192,9 +192,9 @@ public final class AppBrandPrepareTask
       for (int i = j;; i = 0)
       {
         paramParcel.writeInt(i);
-        paramParcel.writeParcelable(this.kGz, paramInt);
-        ICommLibReader.b.a(this.kGA, paramParcel, paramInt);
-        paramParcel.writeParcelable(this.iJn, paramInt);
+        paramParcel.writeParcelable(this.lhS, paramInt);
+        ICommLibReader.b.a(this.lhT, paramParcel, paramInt);
+        paramParcel.writeParcelable(this.jjr, paramInt);
         AppMethodBeat.o(47100);
         return;
         i = 0;
@@ -209,14 +209,15 @@ public final class AppBrandPrepareTask
     implements Parcelable
   {
     public static final Parcelable.Creator<PrepareResult> CREATOR;
-    private int hHC;
-    private AppBrandLaunchErrorAction kGB;
-    private AppBrandSysConfigWC kGC;
-    private AppStartupPerformanceReportBundle kGD;
-    private int kGE;
-    private long kGF;
-    private com.tencent.mm.plugin.appbrand.jsapi.w.b kGG;
-    private int kGH;
+    private int iie;
+    private AppBrandLaunchErrorAction lhU;
+    private AppBrandSysConfigWC lhV;
+    private AppStartupPerformanceReportBundle lhW;
+    private int lhX;
+    private long lhY;
+    private com.tencent.mm.plugin.appbrand.jsapi.v.b lhZ;
+    private String lia;
+    private int lib;
     
     static
     {
@@ -227,22 +228,24 @@ public final class AppBrandPrepareTask
     
     PrepareResult()
     {
-      this.kGH = 0;
+      this.lib = 0;
     }
     
     PrepareResult(Parcel paramParcel)
     {
       AppMethodBeat.i(47105);
-      this.kGH = 0;
-      this.hHC = paramParcel.readInt();
-      this.kGB = ((AppBrandLaunchErrorAction)paramParcel.readParcelable(AppBrandLaunchErrorAction.class.getClassLoader()));
-      this.kGC = ((AppBrandSysConfigWC)paramParcel.readParcelable(AppBrandSysConfigWC.class.getClassLoader()));
-      this.kGE = paramParcel.readInt();
-      this.kGF = paramParcel.readLong();
-      this.kGD = ((AppStartupPerformanceReportBundle)paramParcel.readParcelable(AppStartupPerformanceReportBundle.class.getClassLoader()));
-      this.kGH = paramParcel.readInt();
-      if (this.hHC == 5) {
-        this.kGG = com.tencent.mm.plugin.appbrand.jsapi.w.b.Jb(paramParcel.readString());
+      this.lib = 0;
+      this.iie = paramParcel.readInt();
+      this.lhU = ((AppBrandLaunchErrorAction)paramParcel.readParcelable(AppBrandLaunchErrorAction.class.getClassLoader()));
+      this.lhV = ((AppBrandSysConfigWC)paramParcel.readParcelable(AppBrandSysConfigWC.class.getClassLoader()));
+      this.lhX = paramParcel.readInt();
+      this.lhY = paramParcel.readLong();
+      this.lhW = ((AppStartupPerformanceReportBundle)paramParcel.readParcelable(AppStartupPerformanceReportBundle.class.getClassLoader()));
+      this.lib = paramParcel.readInt();
+      if (this.iie == 5)
+      {
+        this.lhZ = com.tencent.mm.plugin.appbrand.jsapi.v.b.Nf(paramParcel.readString());
+        this.lia = paramParcel.readString();
       }
       AppMethodBeat.o(47105);
     }
@@ -255,16 +258,18 @@ public final class AppBrandPrepareTask
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(47104);
-      ad.i("MicroMsg.AppBrandPrepareTask", "writeToParcel event[%d]", new Object[] { Integer.valueOf(this.hHC) });
-      paramParcel.writeInt(this.hHC);
-      paramParcel.writeParcelable(this.kGB, paramInt);
-      paramParcel.writeParcelable(this.kGC, paramInt);
-      paramParcel.writeInt(this.kGE);
-      paramParcel.writeLong(this.kGF);
-      paramParcel.writeParcelable(this.kGD, paramInt);
-      paramParcel.writeInt(this.kGH);
-      if (this.hHC == 5) {
-        paramParcel.writeString(this.kGG.toString());
+      ac.i("MicroMsg.AppBrandPrepareTask", "writeToParcel event[%d]", new Object[] { Integer.valueOf(this.iie) });
+      paramParcel.writeInt(this.iie);
+      paramParcel.writeParcelable(this.lhU, paramInt);
+      paramParcel.writeParcelable(this.lhV, paramInt);
+      paramParcel.writeInt(this.lhX);
+      paramParcel.writeLong(this.lhY);
+      paramParcel.writeParcelable(this.lhW, paramInt);
+      paramParcel.writeInt(this.lib);
+      if (this.iie == 5)
+      {
+        paramParcel.writeString(this.lhZ.toString());
+        paramParcel.writeString(this.lia);
       }
       AppMethodBeat.o(47104);
     }
@@ -279,20 +284,20 @@ public final class AppBrandPrepareTask
   {
     public abstract void a(C paramC, AppBrandLaunchErrorAction paramAppBrandLaunchErrorAction, AppStartupPerformanceReportBundle paramAppStartupPerformanceReportBundle);
     
-    public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.w.b paramb);
+    public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.v.b paramb, String paramString);
     
-    public abstract void aNq();
+    public abstract void aUg();
     
-    public abstract void aNr();
+    public abstract void aUh();
     
-    public abstract void mP(long paramLong);
+    public abstract void qE(long paramLong);
     
-    public abstract void qq(int paramInt);
+    public abstract void rd(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandPrepareTask
  * JD-Core Version:    0.7.0.1
  */

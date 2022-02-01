@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.music.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,23 +9,23 @@ import java.util.List;
 public final class f
   implements b
 {
-  private static long cUl = 0L;
-  private List<String> cUk;
+  private static long cRI = 0L;
+  private List<String> cRH;
   
   public f(List<String> paramList)
   {
     AppMethodBeat.i(137172);
-    this.cUk = new ArrayList(10);
+    this.cRH = new ArrayList(10);
     if (!paramList.isEmpty()) {
-      this.cUk.addAll(paramList);
+      this.cRH.addAll(paramList);
     }
     AppMethodBeat.o(137172);
   }
   
-  private boolean ais(String paramString)
+  private boolean ann(String paramString)
   {
     AppMethodBeat.i(137174);
-    Iterator localIterator = this.cUk.iterator();
+    Iterator localIterator = this.cRH.iterator();
     while (localIterator.hasNext()) {
       if (paramString.contains((String)localIterator.next()))
       {
@@ -37,40 +37,40 @@ public final class f
     return false;
   }
   
-  public final void cUB()
+  public final void dih()
   {
     final long l = 0L;
     AppMethodBeat.i(137173);
-    if (cUl == 0L)
+    if (cRI == 0L)
     {
-      if (!e.cUJ()) {
+      if (!e.dip()) {
         break label71;
       }
-      l = ((c)com.tencent.mm.plugin.music.f.c.b.aP(c.class)).cUE();
+      l = ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).dik();
     }
     for (;;)
     {
-      cUl = l;
+      cRI = l;
       l = System.currentTimeMillis();
-      if (l - cUl > tVp.longValue()) {
+      if (l - cRI > vdX.longValue()) {
         break;
       }
-      ad.e("MicroMsg.Music.PieceCacheCleanController", "startClean the last clean time is in MUSIC_NO_SCAN_TIME time");
+      ac.e("MicroMsg.Music.PieceCacheCleanController", "startClean the last clean time is in MUSIC_NO_SCAN_TIME time");
       AppMethodBeat.o(137173);
       return;
       label71:
-      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ac.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
-    cUl = l;
-    ad.i("MicroMsg.Music.PieceCacheCleanController", "start clean music file");
+    cRI = l;
+    ac.i("MicroMsg.Music.PieceCacheCleanController", "start clean music file");
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(137171);
         long l = l;
-        if (e.cUJ()) {
-          ((c)com.tencent.mm.plugin.music.f.c.b.aP(c.class)).rx(l);
+        if (e.dip()) {
+          ((c)com.tencent.mm.plugin.music.f.c.b.aQ(c.class)).wa(l);
         }
         f.a(f.this);
         AppMethodBeat.o(137171);
@@ -81,7 +81,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.f
  * JD-Core Version:    0.7.0.1
  */

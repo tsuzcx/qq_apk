@@ -15,11 +15,11 @@ public class ForegroundLinearLayout
   extends LinearLayoutCompat
 {
   private int foregroundGravity = 119;
-  private Drawable hP;
-  private final Rect hQ = new Rect();
-  private final Rect hR = new Rect();
-  protected boolean hS = true;
-  boolean hT = false;
+  private Drawable iS;
+  private final Rect iT = new Rect();
+  private final Rect iU = new Rect();
+  protected boolean iV = true;
+  boolean iW = false;
   
   public ForegroundLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,7 +35,7 @@ public class ForegroundLinearLayout
     if (paramAttributeSet != null) {
       setForeground(paramAttributeSet);
     }
-    this.hS = paramContext.getBoolean(2, true);
+    this.iV = paramContext.getBoolean(2, true);
     paramContext.recycle();
   }
   
@@ -47,17 +47,17 @@ public class ForegroundLinearLayout
     Rect localRect2;
     int i;
     int j;
-    if (this.hP != null)
+    if (this.iS != null)
     {
-      localDrawable = this.hP;
-      if (this.hT)
+      localDrawable = this.iS;
+      if (this.iW)
       {
-        this.hT = false;
-        localRect1 = this.hQ;
-        localRect2 = this.hR;
+        this.iW = false;
+        localRect1 = this.iT;
+        localRect2 = this.iU;
         i = getRight() - getLeft();
         j = getBottom() - getTop();
-        if (!this.hS) {
+        if (!this.iV) {
           break label113;
         }
         localRect1.set(0, 0, i, j);
@@ -78,22 +78,22 @@ public class ForegroundLinearLayout
   public void drawableHotspotChanged(float paramFloat1, float paramFloat2)
   {
     super.drawableHotspotChanged(paramFloat1, paramFloat2);
-    if (this.hP != null) {
-      this.hP.setHotspot(paramFloat1, paramFloat2);
+    if (this.iS != null) {
+      this.iS.setHotspot(paramFloat1, paramFloat2);
     }
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.hP != null) && (this.hP.isStateful())) {
-      this.hP.setState(getDrawableState());
+    if ((this.iS != null) && (this.iS.isStateful())) {
+      this.iS.setState(getDrawableState());
     }
   }
   
   public Drawable getForeground()
   {
-    return this.hP;
+    return this.iS;
   }
   
   public int getForegroundGravity()
@@ -104,33 +104,33 @@ public class ForegroundLinearLayout
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.hP != null) {
-      this.hP.jumpToCurrentState();
+    if (this.iS != null) {
+      this.iS.jumpToCurrentState();
     }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.hT |= paramBoolean;
+    this.iW |= paramBoolean;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.hT = true;
+    this.iW = true;
   }
   
   public void setForeground(Drawable paramDrawable)
   {
-    if (this.hP != paramDrawable)
+    if (this.iS != paramDrawable)
     {
-      if (this.hP != null)
+      if (this.iS != null)
       {
-        this.hP.setCallback(null);
-        unscheduleDrawable(this.hP);
+        this.iS.setCallback(null);
+        unscheduleDrawable(this.iS);
       }
-      this.hP = paramDrawable;
+      this.iS = paramDrawable;
       if (paramDrawable == null) {
         break label96;
       }
@@ -170,10 +170,10 @@ public class ForegroundLinearLayout
         i = paramInt | 0x30;
       }
       this.foregroundGravity = i;
-      if ((this.foregroundGravity == 119) && (this.hP != null))
+      if ((this.foregroundGravity == 119) && (this.iS != null))
       {
         Rect localRect = new Rect();
-        this.hP.getPadding(localRect);
+        this.iS.getPadding(localRect);
       }
       requestLayout();
       return;
@@ -182,7 +182,7 @@ public class ForegroundLinearLayout
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.hP);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.iS);
   }
 }
 

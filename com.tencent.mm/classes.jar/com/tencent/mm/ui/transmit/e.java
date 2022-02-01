@@ -13,41 +13,41 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends Dialog
   implements DialogInterface
 {
-  private LinearLayout ERU;
-  private e.a Hxs;
-  private Button Hxt;
+  private LinearLayout Gph;
+  private a IXP;
+  private Button IXQ;
   private Context mContext;
   
   private e(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(180117);
-    this.Hxs = null;
+    this.IXP = null;
     this.mContext = paramContext;
-    this.ERU = ((LinearLayout)View.inflate(this.mContext, 2131495767, null));
-    this.Hxt = ((Button)this.ERU.findViewById(2131305966));
-    paramContext = (ImageView)this.ERU.findViewById(2131305961);
-    if (ac.eFq()) {
+    this.Gph = ((LinearLayout)View.inflate(this.mContext, 2131495767, null));
+    this.IXQ = ((Button)this.Gph.findViewById(2131305966));
+    paramContext = (ImageView)this.Gph.findViewById(2131305961);
+    if (ab.eUK()) {
       paramContext.setImageResource(2131234395);
     }
     for (;;)
     {
-      this.Hxt.setOnClickListener(new View.OnClickListener()
+      this.IXQ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(180115);
-          ad.i("MicroMsg.grouptodo.TodoIntroduceView", "click i know");
+          ac.i("MicroMsg.grouptodo.TodoIntroduceView", "click i know");
           e.this.dismiss();
           if (e.a(e.this) != null) {
-            e.a(e.this).faL();
+            e.a(e.this).fqB();
           }
           AppMethodBeat.o(180115);
         }
@@ -58,11 +58,11 @@ public final class e
     }
   }
   
-  public static void a(Context paramContext, e.a parama)
+  public static void a(Context paramContext, a parama)
   {
     AppMethodBeat.i(180121);
     paramContext = new e(paramContext);
-    paramContext.Hxs = parama;
+    paramContext.IXP = parama;
     paramContext.setCancelable(false);
     paramContext.show();
     AppMethodBeat.o(180121);
@@ -82,7 +82,7 @@ public final class e
           AppMethodBeat.o(180116);
         }
       });
-      ad.e("MicroMsg.grouptodo.TodoIntroduceView", "dialog dismiss error!");
+      ac.e("MicroMsg.grouptodo.TodoIntroduceView", "dialog dismiss error!");
       AppMethodBeat.o(180120);
       return;
     }
@@ -100,7 +100,7 @@ public final class e
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.grouptodo.TodoIntroduceView", "dismiss exception, e = " + localException.getMessage());
+      ac.e("MicroMsg.grouptodo.TodoIntroduceView", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(180120);
       return;
     }
@@ -113,7 +113,7 @@ public final class e
   {
     AppMethodBeat.i(180118);
     super.onCreate(paramBundle);
-    setContentView(this.ERU);
+    setContentView(this.Gph);
     AppMethodBeat.o(180118);
   }
   
@@ -128,14 +128,19 @@ public final class e
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.grouptodo.TodoIntroduceView", "%s:%s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+      ac.e("MicroMsg.grouptodo.TodoIntroduceView", "%s:%s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
       AppMethodBeat.o(180119);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void fqB();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.e
  * JD-Core Version:    0.7.0.1
  */

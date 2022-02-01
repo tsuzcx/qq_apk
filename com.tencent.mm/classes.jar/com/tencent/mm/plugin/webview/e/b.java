@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.e;
 
 import com.tencent.luggage.h.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.f;
 import d.g;
 import d.g.a.a;
@@ -12,62 +12,62 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/permission/GetA8KeyReasonManager;", "", "()V", "TAG", "", "forceGetA8keyPaths", "", "getForceGetA8keyPaths", "()Ljava/util/List;", "forceGetA8keyPaths$delegate", "Lkotlin/Lazy;", "hasForceGetA8keyList", "Ljava/util/LinkedList;", "shouldForceGetA8key", "", "url", "webview-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/permission/GetA8KeyReasonManager;", "", "()V", "TAG", "", "forceGetA8keyPaths", "", "getForceGetA8keyPaths", "()Ljava/util/List;", "forceGetA8keyPaths$delegate", "Lkotlin/Lazy;", "hasForceGetA8keyList", "Ljava/util/LinkedList;", "shouldForceGetA8key", "", "url", "webview-sdk_release"})
 public final class b
 {
-  private static final LinkedList<String> BaK;
-  private static final f BaL;
-  public static final b BaM;
+  private static final LinkedList<String> CsX;
+  private static final f CsY;
+  public static final b CsZ;
   private static final String TAG = "MicroMsg.GetA8KeyReasonManager";
   
   static
   {
-    AppMethodBeat.i(189410);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(b.class), "forceGetA8keyPaths", "getForceGetA8keyPaths()Ljava/util/List;")) };
-    BaM = new b();
+    AppMethodBeat.i(205542);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(b.class), "forceGetA8keyPaths", "getForceGetA8keyPaths()Ljava/util/List;")) };
+    CsZ = new b();
     TAG = "MicroMsg.GetA8KeyReasonManager";
-    BaK = new LinkedList();
-    BaL = g.E((a)a.BaN);
-    AppMethodBeat.o(189410);
+    CsX = new LinkedList();
+    CsY = g.K((a)a.Cta);
+    AppMethodBeat.o(205542);
   }
   
-  public static final boolean axi(String paramString)
+  public static final boolean aCA(String paramString)
   {
-    AppMethodBeat.i(189411);
+    AppMethodBeat.i(205543);
     d.g.b.k.h(paramString, "url");
-    if (BaK.contains(paramString))
+    if (CsX.contains(paramString))
     {
-      AppMethodBeat.o(189411);
+      AppMethodBeat.o(205543);
       return true;
     }
-    Iterator localIterator = ((Iterable)BaL.getValue()).iterator();
+    Iterator localIterator = ((Iterable)CsY.getValue()).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ad.i(TAG, "force geta8key path = %s", new Object[] { str });
+      ac.i(TAG, "force geta8key path = %s", new Object[] { str });
       if (c.a(paramString, str, false))
       {
-        BaK.add(paramString);
-        AppMethodBeat.o(189411);
+        CsX.add(paramString);
+        AppMethodBeat.o(205543);
         return true;
       }
     }
-    AppMethodBeat.o(189411);
+    AppMethodBeat.o(205543);
     return false;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "", "invoke"})
   static final class a
     extends d.g.b.l
     implements a<List<? extends String>>
   {
-    public static final a BaN;
+    public static final a Cta;
     
     static
     {
-      AppMethodBeat.i(189409);
-      BaN = new a();
-      AppMethodBeat.o(189409);
+      AppMethodBeat.i(205541);
+      Cta = new a();
+      AppMethodBeat.o(205541);
     }
     
     a()

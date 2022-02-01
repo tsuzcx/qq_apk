@@ -7,14 +7,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
 {
-  public static void go(View paramView)
+  public static void gC(View paramView)
   {
-    AppMethodBeat.i(204021);
-    gp(paramView);
-    AppMethodBeat.o(204021);
+    AppMethodBeat.i(210328);
+    gD(paramView);
+    AppMethodBeat.o(210328);
   }
   
-  public static void gp(View paramView)
+  public static void gD(View paramView)
   {
     AppMethodBeat.i(143210);
     if (paramView == null)
@@ -34,7 +34,7 @@ public final class o
         {
           AppMethodBeat.o(143208);
           return true;
-          paramAnonymousView.setAlpha(this.HsU);
+          paramAnonymousView.setAlpha(this.ITr);
           continue;
           paramAnonymousView.setAlpha(1.0F);
         }
@@ -43,6 +43,15 @@ public final class o
       }
     });
     AppMethodBeat.o(143210);
+  }
+  
+  public static void gE(View paramView)
+  {
+    AppMethodBeat.i(197202);
+    if (paramView != null) {
+      paramView.setOnTouchListener(null);
+    }
+    AppMethodBeat.o(197202);
   }
 }
 

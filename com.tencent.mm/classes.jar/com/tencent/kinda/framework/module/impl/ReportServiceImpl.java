@@ -11,21 +11,21 @@ public class ReportServiceImpl
   public void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     AppMethodBeat.i(18677);
-    h.vKh.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
+    h.wUl.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
     AppMethodBeat.o(18677);
   }
   
   public void kvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(18678);
-    h.vKh.kvStat(paramInt, paramString);
+    h.wUl.kvStat(paramInt, paramString);
     AppMethodBeat.o(18678);
   }
   
   public long svrTimeMs()
   {
     AppMethodBeat.i(18679);
-    long l = ce.asQ();
+    long l = ce.azH();
     AppMethodBeat.o(18679);
     return l;
   }

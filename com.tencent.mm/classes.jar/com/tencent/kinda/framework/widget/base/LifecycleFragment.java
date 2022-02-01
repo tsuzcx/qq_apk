@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.g;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMFragment;
 import java.util.List;
 
@@ -19,7 +19,7 @@ abstract class LifecycleFragment
   
   private void _callFragmentOnCreate()
   {
-    ad.d("MicroMsg.LifecycleFragment", "_callFragmentOnCreate: %s", new Object[] { this.mState });
+    ac.d("MicroMsg.LifecycleFragment", "_callFragmentOnCreate: %s", new Object[] { this.mState });
     if (this.mState == State.INITIAL)
     {
       this.mState = State.CREATED;
@@ -29,7 +29,7 @@ abstract class LifecycleFragment
   
   private void _callFragmentOnDestroy()
   {
-    ad.d("MicroMsg.LifecycleFragment", "_callFragmentOnDestroy: %s", new Object[] { this.mState });
+    ac.d("MicroMsg.LifecycleFragment", "_callFragmentOnDestroy: %s", new Object[] { this.mState });
     if (this.mState == State.STOPPED)
     {
       this.mState = State.DESTROYED;
@@ -39,7 +39,7 @@ abstract class LifecycleFragment
   
   private void _callFragmentOnPause()
   {
-    ad.d("MicroMsg.LifecycleFragment", "_callFragmentOnPause: %s", new Object[] { this.mState });
+    ac.d("MicroMsg.LifecycleFragment", "_callFragmentOnPause: %s", new Object[] { this.mState });
     if ((this.mState == State.RESUMED) || (this.mState == State.STARTED))
     {
       this.mState = State.PAUSED;
@@ -49,7 +49,7 @@ abstract class LifecycleFragment
   
   private void _callFragmentOnResume()
   {
-    ad.d("MicroMsg.LifecycleFragment", "_callFragmentOnResume: %s", new Object[] { this.mState });
+    ac.d("MicroMsg.LifecycleFragment", "_callFragmentOnResume: %s", new Object[] { this.mState });
     if ((this.mState == State.STARTED) || (this.mState == State.PAUSED))
     {
       this.mState = State.RESUMED;
@@ -59,7 +59,7 @@ abstract class LifecycleFragment
   
   private void _callFragmentOnStart()
   {
-    ad.d("MicroMsg.LifecycleFragment", "_callFragmentOnStart: %s", new Object[] { this.mState });
+    ac.d("MicroMsg.LifecycleFragment", "_callFragmentOnStart: %s", new Object[] { this.mState });
     if ((this.mState == State.CREATED) || (this.mState == State.STOPPED))
     {
       this.mState = State.STARTED;
@@ -69,7 +69,7 @@ abstract class LifecycleFragment
   
   private void _callFragmentOnStop()
   {
-    ad.d("MicroMsg.LifecycleFragment", "_callFragmentOnStop: %s", new Object[] { this.mState });
+    ac.d("MicroMsg.LifecycleFragment", "_callFragmentOnStop: %s", new Object[] { this.mState });
     if (this.mState == State.PAUSED)
     {
       this.mState = State.STOPPED;
@@ -81,11 +81,11 @@ abstract class LifecycleFragment
   {
     if (getActivity() == null)
     {
-      ad.w("MicroMsg.LifecycleFragment", "null activity when call");
+      ac.w("MicroMsg.LifecycleFragment", "null activity when call");
       return;
     }
     List localList = getActivity().getSupportFragmentManager().getFragments();
-    ad.d("MicroMsg.LifecycleFragment", "call on resume or puase: %s", new Object[] { localList });
+    ac.d("MicroMsg.LifecycleFragment", "call on resume or puase: %s", new Object[] { localList });
     if ((localList.size() > 0) && (localList.get(localList.size() - 1) == this))
     {
       _callFragmentOnResume();
@@ -97,7 +97,7 @@ abstract class LifecycleFragment
   private void _fixOnPauseNotCallingProblem()
   {
     if (getActivity() == null) {
-      ad.w("MicroMsg.LifecycleFragment", "null activity when call");
+      ac.w("MicroMsg.LifecycleFragment", "null activity when call");
     }
     Object localObject;
     do
@@ -106,7 +106,7 @@ abstract class LifecycleFragment
       {
         return;
         localObject = getActivity().getSupportFragmentManager().getFragments();
-        ad.d("MicroMsg.LifecycleFragment", "current fragments: %s", new Object[] { localObject });
+        ac.d("MicroMsg.LifecycleFragment", "current fragments: %s", new Object[] { localObject });
       } while (((List)localObject).size() < 2);
       localObject = (Fragment)((List)localObject).get(((List)localObject).size() - 2);
     } while (!(localObject instanceof LifecycleFragment));
@@ -116,7 +116,7 @@ abstract class LifecycleFragment
   private void _fixOnResumeNotCallingProblem()
   {
     if (getActivity() == null) {
-      ad.w("MicroMsg.LifecycleFragment", "null activity when call");
+      ac.w("MicroMsg.LifecycleFragment", "null activity when call");
     }
     Object localObject;
     do
@@ -125,7 +125,7 @@ abstract class LifecycleFragment
       {
         return;
         localObject = getActivity().getSupportFragmentManager().getFragments();
-        ad.d("MicroMsg.LifecycleFragment", "current fragments: %s", new Object[] { localObject });
+        ac.d("MicroMsg.LifecycleFragment", "current fragments: %s", new Object[] { localObject });
       } while (((List)localObject).size() <= 0);
       localObject = (Fragment)((List)localObject).get(((List)localObject).size() - 1);
     } while (!(localObject instanceof LifecycleFragment));
@@ -155,32 +155,32 @@ abstract class LifecycleFragment
   
   public void onFragmentOnCreate()
   {
-    ad.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnCreate, class: %s", new Object[] { toString() });
+    ac.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnCreate, class: %s", new Object[] { toString() });
   }
   
   public void onFragmentOnDestroy()
   {
-    ad.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnDestroy, class: %s", new Object[] { toString() });
+    ac.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnDestroy, class: %s", new Object[] { toString() });
   }
   
   public void onFragmentOnPause()
   {
-    ad.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnPause, class: %s", new Object[] { toString() });
+    ac.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnPause, class: %s", new Object[] { toString() });
   }
   
   public void onFragmentOnResume()
   {
-    ad.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnResume, class: %s", new Object[] { toString() });
+    ac.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnResume, class: %s", new Object[] { toString() });
   }
   
   public void onFragmentOnStart()
   {
-    ad.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnStart, class: %s", new Object[] { toString() });
+    ac.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnStart, class: %s", new Object[] { toString() });
   }
   
   public void onFragmentOnStop()
   {
-    ad.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnStop, class: %s", new Object[] { toString() });
+    ac.d("MicroMsg.LifecycleFragment", "lifecycle: onFragmentOnStop, class: %s", new Object[] { toString() });
   }
   
   public void onPause()

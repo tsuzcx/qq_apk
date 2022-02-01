@@ -12,14 +12,14 @@ final class GroupSolitatireEditUI$15
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(192541);
-    paramDialogInterface = this.srR;
+    AppMethodBeat.i(193002);
+    paramDialogInterface = this.tzI;
     Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireEditUI$22", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireEditUI$22", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireEditUI$22", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(192541);
+    AppMethodBeat.o(193002);
   }
 }
 

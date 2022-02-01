@@ -25,8 +25,8 @@ public final class j
       return paramCollection;
     }
     paramCollection = new LinkedList(paramCollection);
-    Object localObject1 = d.l.b.a.b.o.i.KbP;
-    localObject1 = i.b.fKq();
+    Object localObject1 = d.l.b.a.b.o.i.LPk;
+    localObject1 = i.b.gcT();
     int i;
     if (!((Collection)paramCollection).isEmpty()) {
       i = 1;
@@ -35,9 +35,9 @@ public final class j
     {
       if (i != 0)
       {
-        Object localObject3 = d.a.j.iy((List)paramCollection);
-        Object localObject2 = d.l.b.a.b.o.i.KbP;
-        localObject2 = i.b.fKq();
+        Object localObject3 = d.a.j.iO((List)paramCollection);
+        Object localObject2 = d.l.b.a.b.o.i.LPk;
+        localObject2 = i.b.gcT();
         Object localObject4 = i.a(localObject3, (Collection)paramCollection, paramb, (b)new b((d.l.b.a.b.o.i)localObject2));
         k.g(localObject4, "OverridingUtil.extractMe…nflictedHandles.add(it) }");
         if ((((Collection)localObject4).size() == 1) && (((d.l.b.a.b.o.i)localObject2).isEmpty()))
@@ -51,13 +51,13 @@ public final class j
         }
         localObject3 = i.a((Collection)localObject4, paramb);
         k.g(localObject3, "OverridingUtil.selectMos…roup, descriptorByHandle)");
-        a locala = (a)paramb.aA(localObject3);
+        a locala = (a)paramb.ay(localObject3);
         localObject4 = ((Iterable)localObject4).iterator();
         while (((Iterator)localObject4).hasNext())
         {
           Object localObject5 = ((Iterator)localObject4).next();
           k.g(localObject5, "it");
-          if (!i.e(locala, (a)paramb.aA(localObject5))) {
+          if (!i.e(locala, (a)paramb.ay(localObject5))) {
             ((Collection)localObject2).add(localObject5);
           }
         }
@@ -81,12 +81,12 @@ public final class j
     extends l
     implements b<D, D>
   {
-    public static final a JRP;
+    public static final a LFi;
     
     static
     {
       AppMethodBeat.i(60007);
-      JRP = new a();
+      LFi = new a();
       AppMethodBeat.o(60007);
     }
     
@@ -108,7 +108,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.j
  * JD-Core Version:    0.7.0.1
  */

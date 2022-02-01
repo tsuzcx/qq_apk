@@ -1,52 +1,69 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView.v;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.view.FinderPostProgressView;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.loader.d;
+import com.tencent.mm.plugin.finder.loader.f;
+import com.tencent.mm.plugin.finder.loader.h;
+import com.tencent.mm.plugin.finder.loader.h.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.m;
+import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.ui.am;
+import com.tencent.mm.view.recyclerview.e;
+import d.a.j;
 import d.g.b.k;
 import d.l;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/convert/FinderProfileUIPlainTextViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "descTv", "Landroid/widget/TextView;", "getDescTv", "()Landroid/widget/TextView;", "setDescTv", "(Landroid/widget/TextView;)V", "failedArea", "getFailedArea", "()Landroid/view/View;", "setFailedArea", "likeArea", "getLikeArea", "setLikeArea", "likeCountTv", "getLikeCountTv", "setLikeCountTv", "progress", "Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "getProgress", "()Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "setProgress", "(Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;)V", "progressAnimator", "Landroid/animation/ValueAnimator;", "getProgressAnimator", "()Landroid/animation/ValueAnimator;", "setProgressAnimator", "(Landroid/animation/ValueAnimator;)V", "progressArea", "getProgressArea", "setProgressArea", "bindPlainText", "", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataPos", "", "fromSearch", "", "itemClickListener", "Lkotlin/Function0;", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/convert/FinderImageFoldedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
 public final class z
-  extends RecyclerView.v
+  extends x
 {
-  private TextView lEA;
-  private View qhs;
-  private FinderPostProgressView qrJ;
-  private View qrK;
-  private TextView qrL;
-  private View qrS;
-  
-  public z(View paramView)
+  public z(FinderFoldedScrollLayout.b paramb)
   {
-    super(paramView);
-    AppMethodBeat.i(165501);
-    View localView = paramView.findViewById(2131303465);
-    k.g(localView, "itemView.findViewById(R.id.profile_item_desc_tv)");
-    this.lEA = ((TextView)localView);
-    localView = paramView.findViewById(2131303505);
-    k.g(localView, "itemView.findViewById(R.….profile_upload_progress)");
-    this.qrJ = ((FinderPostProgressView)localView);
-    localView = paramView.findViewById(2131303504);
-    k.g(localView, "itemView.findViewById(R.id.profile_upload_area)");
-    this.qhs = localView;
-    localView = paramView.findViewById(2131303466);
-    k.g(localView, "itemView.findViewById(R.…profile_item_failed_area)");
-    this.qrK = localView;
-    localView = paramView.findViewById(2131301411);
-    k.g(localView, "itemView.findViewById(R.id.like_area)");
-    this.qrS = localView;
-    paramView = paramView.findViewById(2131303471);
-    k.g(paramView, "itemView.findViewById(R.id.profile_like_count_tv)");
-    this.qrL = ((TextView)paramView);
-    AppMethodBeat.o(165501);
+    super(paramb);
+    AppMethodBeat.i(201333);
+    AppMethodBeat.o(201333);
+  }
+  
+  public final void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  {
+    AppMethodBeat.i(201331);
+    k.h(parame, "holder");
+    k.h(paramBaseFinderFeed, "item");
+    super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+    paramList = (ImageView)parame.adJ(2131302222);
+    if (paramBaseFinderFeed.feedObject.getMediaList().size() > 1)
+    {
+      k.g(paramList, "mediaIcon");
+      paramList.setImageDrawable(am.k(paramList.getContext(), 2131690348, a.n(paramList.getContext(), 2131099828)));
+      paramList.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramBaseFinderFeed = (bqs)j.iO((List)paramBaseFinderFeed.feedObject.getMediaList());
+      parame = (ImageView)parame.adJ(2131305798);
+      paramList = h.rtK;
+      paramList = h.cwn();
+      paramBaseFinderFeed = new f(paramBaseFinderFeed, m.rDR);
+      k.g(parame, "thumbIv");
+      h localh = h.rtK;
+      paramList.a(paramBaseFinderFeed, parame, h.a(h.a.rtL));
+      AppMethodBeat.o(201331);
+      return;
+      k.g(paramList, "mediaIcon");
+      paramList.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.z
  * JD-Core Version:    0.7.0.1
  */

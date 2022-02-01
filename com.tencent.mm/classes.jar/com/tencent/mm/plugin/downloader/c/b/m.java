@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public long duration;
   public long interval;
-  public long odW;
+  public long oHv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class m
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.duration);
-      paramVarArgs.aG(2, this.interval);
-      paramVarArgs.aG(3, this.odW);
+      paramVarArgs.aO(1, this.duration);
+      paramVarArgs.aO(2, this.interval);
+      paramVarArgs.aO(3, this.oHv);
       AppMethodBeat.o(153073);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.q(1, this.duration);
-      int i = f.a.a.b.b.a.q(2, this.interval);
-      int j = f.a.a.b.b.a.q(3, this.odW);
+      paramInt = f.a.a.b.b.a.p(1, this.duration);
+      int i = f.a.a.b.b.a.p(2, this.interval);
+      int j = f.a.a.b.b.a.p(3, this.oHv);
       AppMethodBeat.o(153073);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(153073);
@@ -50,15 +50,15 @@ public final class m
         AppMethodBeat.o(153073);
         return -1;
       case 1: 
-        localm.duration = locala.KhF.xT();
+        localm.duration = locala.LVo.xG();
         AppMethodBeat.o(153073);
         return 0;
       case 2: 
-        localm.interval = locala.KhF.xT();
+        localm.interval = locala.LVo.xG();
         AppMethodBeat.o(153073);
         return 0;
       }
-      localm.odW = locala.KhF.xT();
+      localm.oHv = locala.LVo.xG();
       AppMethodBeat.o(153073);
       return 0;
     }
@@ -68,7 +68,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.m
  * JD-Core Version:    0.7.0.1
  */

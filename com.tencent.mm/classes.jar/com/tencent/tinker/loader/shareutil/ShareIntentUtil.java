@@ -48,7 +48,7 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getBooleanExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getBooleanExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return paramBoolean;
   }
@@ -65,7 +65,7 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getIntExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getIntExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return paramInt;
   }
@@ -137,7 +137,7 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getIntExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getIntExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return paramLong;
   }
@@ -154,7 +154,7 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getSerializableExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getSerializableExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return null;
   }
@@ -171,7 +171,7 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getStringExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getStringExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return null;
   }
@@ -188,7 +188,7 @@ public class ShareIntentUtil
     }
     catch (Exception paramIntent)
     {
-      new StringBuilder("getStringExtra exception:").append(paramIntent.getMessage());
+      ShareTinkerLog.e("ShareIntentUtil", "getStringExtra exception:" + paramIntent.getMessage(), new Object[0]);
     }
     return null;
   }

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,51 +14,27 @@ import org.json.JSONObject;
 
 public final class MallOrderDetailObject
 {
-  public String dkB;
-  public String peD;
-  public MallTransactionObject unM;
-  public b unN;
-  public ArrayList<ProductSectionItem> unO;
-  public List<a> unP;
-  public List<HelpCenter> unQ;
-  int unR;
-  public String unS;
-  public String unT;
-  public int unU;
+  public String dia;
+  public String pHO;
+  public MallTransactionObject vwI;
+  public b vwJ;
+  public ArrayList<ProductSectionItem> vwK;
+  public List<a> vwL;
+  public List<HelpCenter> vwM;
+  int vwN;
+  public String vwO;
+  public String vwP;
+  public int vwQ;
   
   public MallOrderDetailObject()
   {
     AppMethodBeat.i(66651);
-    this.unQ = new LinkedList();
-    this.unR = -1;
+    this.vwM = new LinkedList();
+    this.vwN = -1;
     AppMethodBeat.o(66651);
   }
   
-  private static List<ProductSectionItem.Skus> aA(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(66653);
-    paramJSONObject = paramJSONObject.getJSONArray("skus");
-    if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
-    {
-      AppMethodBeat.o(66653);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-      ProductSectionItem.Skus localSkus = new ProductSectionItem.Skus();
-      localSkus.key = localJSONObject.optString("key");
-      localSkus.value = localJSONObject.optString("value");
-      localArrayList.add(localSkus);
-      i += 1;
-    }
-    AppMethodBeat.o(66653);
-    return localArrayList;
-  }
-  
-  static ArrayList<ProductSectionItem> az(JSONObject paramJSONObject)
+  static ArrayList<ProductSectionItem> aA(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66652);
     paramJSONObject = paramJSONObject.getJSONObject("product_section");
@@ -85,11 +61,11 @@ public final class MallOrderDetailObject
         localProductSectionItem.name = localJSONObject.optString("name");
         try
         {
-          localProductSectionItem.upB = aA(localJSONObject);
+          localProductSectionItem.vyx = aB(localJSONObject);
           localProductSectionItem.count = localJSONObject.optInt("count");
-          localProductSectionItem.upC = localJSONObject.optString("price");
+          localProductSectionItem.vyy = localJSONObject.optString("price");
           localProductSectionItem.jumpUrl = localJSONObject.optString("jump_url");
-          localProductSectionItem.upD = localJSONObject.optString("pid");
+          localProductSectionItem.vyz = localJSONObject.optString("pid");
           localProductSectionItem.scene = localJSONObject.optInt("scene");
           localArrayList.add(localProductSectionItem);
           i += 1;
@@ -98,14 +74,14 @@ public final class MallOrderDetailObject
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.MallOrderDetailObject", localJSONException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.MallOrderDetailObject", localJSONException, "", new Object[0]);
           }
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.MallOrderDetailObject", localException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.MallOrderDetailObject", localException, "", new Object[0]);
           }
         }
       }
@@ -114,11 +90,35 @@ public final class MallOrderDetailObject
     return localArrayList;
   }
   
+  private static List<ProductSectionItem.Skus> aB(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(66653);
+    paramJSONObject = paramJSONObject.getJSONArray("skus");
+    if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
+    {
+      AppMethodBeat.o(66653);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+      ProductSectionItem.Skus localSkus = new ProductSectionItem.Skus();
+      localSkus.key = localJSONObject.optString("key");
+      localSkus.value = localJSONObject.optString("value");
+      localArrayList.add(localSkus);
+      i += 1;
+    }
+    AppMethodBeat.o(66653);
+    return localArrayList;
+  }
+  
   public static class HelpCenter
     implements Parcelable
   {
     public static final Parcelable.Creator<HelpCenter> CREATOR;
-    public boolean ddw;
+    public boolean daU;
     public String name;
     public String url;
     
@@ -139,7 +139,7 @@ public final class MallOrderDetailObject
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.ddw = bool;
+        this.daU = bool;
         AppMethodBeat.o(66648);
         return;
       }
@@ -155,7 +155,7 @@ public final class MallOrderDetailObject
       AppMethodBeat.i(66649);
       paramParcel.writeString(this.name);
       paramParcel.writeString(this.url);
-      if (this.ddw) {}
+      if (this.daU) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -169,19 +169,19 @@ public final class MallOrderDetailObject
   {
     public int jumpType;
     public String jumpUrl;
+    public boolean nUD;
     public String name;
-    public boolean nrD;
     public int type = 0;
     public String value;
   }
   
   public static final class b
   {
-    public String rZo;
-    public int tGD;
+    public int gIh;
+    public String thh;
     public String thumbUrl;
-    public String unV;
-    public String unW;
+    public String vwR;
+    public String vwS;
   }
 }
 

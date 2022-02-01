@@ -1,68 +1,20 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aod;
+import com.tencent.mm.sdk.platformtools.aw;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/PrefetchManifest;", "", "domain", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;", "manifest", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;", "(Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;)V", "getDomain", "()Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchDomainInfo;", "getManifest", "()Lcom/tencent/mm/protocal/protobuf/GetA8KeyLitePrefetchResInfo;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"})
 public final class i
 {
-  final aoc ndT;
-  final aod ndU;
-  
-  public i(aoc paramaoc, aod paramaod)
+  public static final aw bBL()
   {
-    AppMethodBeat.i(193084);
-    this.ndT = paramaoc;
-    this.ndU = paramaod;
-    AppMethodBeat.o(193084);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(193087);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof i))
-      {
-        paramObject = (i)paramObject;
-        if ((!k.g(this.ndT, paramObject.ndT)) || (!k.g(this.ndU, paramObject.ndU))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(193087);
-      return true;
-    }
-    AppMethodBeat.o(193087);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int j = 0;
-    AppMethodBeat.i(193086);
-    Object localObject = this.ndT;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.ndU;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(193086);
-      return i * 31 + j;
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(193085);
-    String str = "PrefetchManifest(domain=" + this.ndT + ", manifest=" + this.ndU + ")";
-    AppMethodBeat.o(193085);
-    return str;
+    AppMethodBeat.i(6634);
+    aw localaw = aw.aKT("_webview_tmpl_command");
+    k.g(localaw, "MultiProcessMMKV.getMMKV…MKV_WEBVIEW_TMPL_COMMAND)");
+    AppMethodBeat.o(6634);
+    return localaw;
   }
 }
 

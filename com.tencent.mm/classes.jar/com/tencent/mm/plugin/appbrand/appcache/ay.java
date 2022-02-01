@@ -10,7 +10,7 @@ public class ay
 {
   ay(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this(String.format("WxaPkg_%s_%d", new Object[] { paramString1, Integer.valueOf(paramInt2) }), aF(paramString1, paramInt2), paramString2, paramString1, paramInt2, paramInt1);
+    this(String.format("WxaPkg_%s_%d", new Object[] { paramString1, Integer.valueOf(paramInt2) }), aJ(paramString1, paramInt2), paramString2, paramString1, paramInt2, paramInt1);
     AppMethodBeat.i(90623);
     AppMethodBeat.o(90623);
   }
@@ -20,19 +20,19 @@ public class ay
     super(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2);
   }
   
-  static String Ea(String paramString)
+  static String Id(String paramString)
   {
     AppMethodBeat.i(90622);
-    String str = ax.aQj();
+    String str = ax.aXb();
     paramString = str + String.format("_%s.wxapkg", new Object[] { paramString });
     AppMethodBeat.o(90622);
     return paramString;
   }
   
-  public static String aF(String paramString, int paramInt)
+  public static String aJ(String paramString, int paramInt)
   {
     AppMethodBeat.i(90621);
-    String str = ax.aQj();
+    String str = ax.aXb();
     paramString = str + String.format("_%d_%d.wxapkg", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt) });
     AppMethodBeat.o(90621);
     return paramString;
@@ -40,7 +40,7 @@ public class ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ay
  * JD-Core Version:    0.7.0.1
  */

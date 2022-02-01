@@ -3,8 +3,8 @@ package com.tencent.mm.booter;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ag;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class e
 {
@@ -21,8 +21,8 @@ public final class e
       }
       super.onReceive(paramContext, paramIntent);
       paramContext = paramIntent.getStringExtra("toolsmp_process_action_code_key");
-      if ((!bt.isNullOrNil(paramContext)) && (paramContext.equals("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH"))) {
-        ag.eic().t(paramIntent.getStringExtra("toolsmp_param_preload_url"), paramIntent.getIntExtra("toolsmp_param_preload_search_biz", -1), paramIntent.getBooleanExtra("toolsmp_param_preload_search_biz_need_reset", false));
+      if ((!bs.isNullOrNil(paramContext)) && (paramContext.equals("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH"))) {
+        ae.exw().t(paramIntent.getStringExtra("toolsmp_param_preload_url"), paramIntent.getIntExtra("toolsmp_param_preload_search_biz", -1), paramIntent.getBooleanExtra("toolsmp_param_preload_search_biz_need_reset", false));
       }
       AppMethodBeat.o(19875);
     }

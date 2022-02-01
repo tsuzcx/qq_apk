@@ -3,77 +3,77 @@ package com.tencent.mm.plugin.ball.f;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.ap;
 
 public final class e
 {
-  public static final int mFJ;
-  public static final int mFK;
-  public static final int mFL;
-  public static final int mFM;
-  public static final int mFN;
-  public static final int mFO;
-  public static final int mFP;
-  public static final int mFQ;
-  public static final float mFR;
-  public static final int mFS;
-  public static final int mFT;
-  public static final int mFU;
-  public static int mFV;
-  public static final int mFW;
-  public static final int mFX;
-  public static final int mFY;
+  public static final int nhO;
+  public static final int nhP;
+  public static final int nhQ;
+  public static final int nhR;
+  public static final int nhS;
+  public static final int nhT;
+  public static final int nhU;
+  public static final int nhV;
+  public static final float nhW;
+  public static final int nhX;
+  public static final int nhY;
+  public static final int nhZ;
+  public static int nia;
+  public static final int nib;
+  public static final int nic;
+  public static final int nid;
   
   static
   {
     AppMethodBeat.i(106369);
-    mFJ = ap.iX(aj.getContext());
-    mFK = aj.getContext().getResources().getDimensionPixelSize(2131166326);
-    mFL = aj.getContext().getResources().getDimensionPixelSize(2131166330);
-    mFM = a.ap(aj.getContext(), 2131166329);
-    mFN = a.ap(aj.getContext(), 2131166327);
-    mFO = a.ap(aj.getContext(), 2131166328);
-    mFP = aj.getContext().getResources().getDimensionPixelSize(2131166361);
-    int i = aj.getContext().getResources().getDimensionPixelSize(2131166360);
-    mFQ = i;
-    mFR = i / mFP;
-    mFS = a.hV(aj.getContext()) - (mFL + mFO);
-    mFT = mFK + mFJ;
-    mFU = a.hW(aj.getContext()) - mFK - (mFL + mFM + mFN);
-    mFV = eb(aj.getContext());
-    mFW = mFT;
-    mFX = mFS;
-    mFY = (int)(a.hW(aj.getContext()) * 0.3F);
+    nhO = ap.ji(ai.getContext());
+    nhP = ai.getContext().getResources().getDimensionPixelSize(2131166326);
+    nhQ = ai.getContext().getResources().getDimensionPixelSize(2131166330);
+    nhR = a.av(ai.getContext(), 2131166329);
+    nhS = a.av(ai.getContext(), 2131166327);
+    nhT = a.av(ai.getContext(), 2131166328);
+    nhU = ai.getContext().getResources().getDimensionPixelSize(2131166361);
+    int i = ai.getContext().getResources().getDimensionPixelSize(2131166360);
+    nhV = i;
+    nhW = i / nhU;
+    nhX = a.ig(ai.getContext()) - (nhQ + nhT);
+    nhY = nhP + nhO;
+    nhZ = a.ih(ai.getContext()) - nhP - (nhQ + nhR + nhS);
+    nia = ej(ai.getContext());
+    nib = nhY;
+    nic = nhX;
+    nid = (int)(a.ih(ai.getContext()) * 0.3F);
     AppMethodBeat.o(106369);
   }
   
-  private static int eb(Context paramContext)
+  private static int ej(Context paramContext)
   {
     int i = 0;
     AppMethodBeat.i(106367);
     try
     {
-      int j = ap.eb(paramContext);
+      int j = ap.ej(paramContext);
       i = j;
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        ad.e("MicroMsg.FloatBallViewConstants", "getNavigationBarHeight exception:%s", new Object[] { paramContext });
+        ac.e("MicroMsg.FloatBallViewConstants", "getNavigationBarHeight exception:%s", new Object[] { paramContext });
       }
     }
     AppMethodBeat.o(106367);
     return i;
   }
   
-  public static void ec(Context paramContext)
+  public static void ek(Context paramContext)
   {
     AppMethodBeat.i(106368);
-    mFV = eb(paramContext);
+    nia = ej(paramContext);
     AppMethodBeat.o(106368);
   }
   
@@ -82,11 +82,11 @@ public final class e
     static
     {
       AppMethodBeat.i(106366);
-      mFZ = new a("TOP_LEFT", 0);
-      mGa = new a("TOP_RIGHT", 1);
-      mGb = new a("BOTTOM_LEFT", 2);
-      mGc = new a("BOTTOM_RIGHT", 3);
-      mGd = new a[] { mFZ, mGa, mGb, mGc };
+      nie = new a("TOP_LEFT", 0);
+      nif = new a("TOP_RIGHT", 1);
+      nig = new a("BOTTOM_LEFT", 2);
+      nih = new a("BOTTOM_RIGHT", 3);
+      nii = new a[] { nie, nif, nig, nih };
       AppMethodBeat.o(106366);
     }
     
@@ -95,7 +95,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.e
  * JD-Core Version:    0.7.0.1
  */

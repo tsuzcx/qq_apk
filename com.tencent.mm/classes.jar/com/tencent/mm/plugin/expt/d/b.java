@@ -2,42 +2,42 @@ package com.tencent.mm.plugin.expt.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
 {
-  private static b pIz;
+  private static b qrg;
   private String name = null;
   
-  public static b ceg()
+  public static b clN()
   {
     AppMethodBeat.i(122358);
-    if (pIz == null) {
-      pIz = new b();
+    if (qrg == null) {
+      qrg = new b();
     }
-    b localb = pIz;
+    b localb = qrg;
     AppMethodBeat.o(122358);
     return localb;
   }
   
-  final ax Km()
+  final aw JW()
   {
     AppMethodBeat.i(122359);
-    int i = a.aeL();
+    int i = a.agb();
     if (i == 0)
     {
       AppMethodBeat.o(122359);
       return null;
     }
     Object localObject = i + "_WxPageFlow";
-    if (!bt.kU(this.name, (String)localObject))
+    if (!bs.lr(this.name, (String)localObject))
     {
-      ad.i("MicroMsg.MMPageFlowMMKV", "get mmkv change uin old[%s] new[%s]", new Object[] { this.name, localObject });
+      ac.i("MicroMsg.MMPageFlowMMKV", "get mmkv change uin old[%s] new[%s]", new Object[] { this.name, localObject });
       this.name = ((String)localObject);
     }
-    localObject = ax.aFC(this.name);
+    localObject = aw.aKT(this.name);
     AppMethodBeat.o(122359);
     return localObject;
   }
@@ -45,13 +45,13 @@ public final class b
   public final String[] allKeys()
   {
     AppMethodBeat.i(122362);
-    Object localObject = Km();
+    Object localObject = JW();
     if (localObject == null)
     {
       AppMethodBeat.o(122362);
       return null;
     }
-    localObject = ((ax)localObject).allKeys();
+    localObject = ((aw)localObject).allKeys();
     AppMethodBeat.o(122362);
     return localObject;
   }
@@ -59,13 +59,13 @@ public final class b
   public final String get(String paramString1, String paramString2)
   {
     AppMethodBeat.i(122361);
-    ax localax = Km();
-    if (localax == null)
+    aw localaw = JW();
+    if (localaw == null)
     {
       AppMethodBeat.o(122361);
       return paramString2;
     }
-    paramString1 = localax.getString(paramString1, paramString2);
+    paramString1 = localaw.getString(paramString1, paramString2);
     AppMethodBeat.o(122361);
     return paramString1;
   }
@@ -73,19 +73,19 @@ public final class b
   public final void remove(String paramString)
   {
     AppMethodBeat.i(122360);
-    ax localax = Km();
-    if (localax == null)
+    aw localaw = JW();
+    if (localaw == null)
     {
       AppMethodBeat.o(122360);
       return;
     }
-    localax.remove(paramString);
+    localaw.remove(paramString);
     AppMethodBeat.o(122360);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.b
  * JD-Core Version:    0.7.0.1
  */

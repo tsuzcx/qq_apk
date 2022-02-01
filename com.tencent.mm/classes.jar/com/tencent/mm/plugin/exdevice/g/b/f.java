@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.g.b;
 
 public abstract interface f
 {
-  public abstract void UK(String paramString);
+  public abstract void YW(String paramString);
 }
 
 

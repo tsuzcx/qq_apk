@@ -7,14 +7,14 @@ import com.tencent.mm.plugin.appbrand.h.d.b;
 public final class b$c
   extends b<Void>
 {
-  d jjb;
-  a jjc;
+  d jJo;
+  a jJp;
   
   public b$c(d paramd)
   {
     AppMethodBeat.i(158954);
-    this.jjb = paramd;
-    this.jjc = a.aUR();
+    this.jJo = paramd;
+    this.jJp = a.bbP();
     AppMethodBeat.o(158954);
   }
 }

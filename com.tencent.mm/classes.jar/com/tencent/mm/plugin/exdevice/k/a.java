@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.exdevice.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import junit.framework.Assert;
 
 public final class a
 {
-  private final int pie;
-  private ByteBuffer pif;
-  private ByteBuffer pig;
+  private final int pLn;
+  private ByteBuffer pLo;
+  private ByteBuffer pLp;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(24311);
-    this.pie = 1024;
-    ad.d("MicroMsg.exdevice.AutoBuffer", "******AutoBuffer****** capacity = ".concat(String.valueOf(paramInt)));
+    this.pLn = 1024;
+    ac.d("MicroMsg.exdevice.AutoBuffer", "******AutoBuffer****** capacity = ".concat(String.valueOf(paramInt)));
     if (paramInt >= 0)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      this.pig = ByteBuffer.allocate(paramInt);
-      this.pif = this.pig.asReadOnlyBuffer();
-      if (this.pig == null) {
+      this.pLp = ByteBuffer.allocate(paramInt);
+      this.pLo = this.pLp.asReadOnlyBuffer();
+      if (this.pLp == null) {
         break label100;
       }
       bool1 = true;
       label71:
       Assert.assertTrue(bool1);
-      if (this.pif == null) {
+      if (this.pLo == null) {
         break label105;
       }
     }
@@ -50,13 +50,13 @@ public final class a
   private int getCapacity()
   {
     AppMethodBeat.i(24312);
-    ad.d("MicroMsg.exdevice.AutoBuffer", "getCapacity = " + this.pig.capacity());
-    int i = this.pig.capacity();
+    ac.d("MicroMsg.exdevice.AutoBuffer", "getCapacity = " + this.pLp.capacity());
+    int i = this.pLp.capacity();
     AppMethodBeat.o(24312);
     return i;
   }
   
-  public final void T(byte[] paramArrayOfByte, int paramInt)
+  public final void R(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(24315);
@@ -77,7 +77,7 @@ public final class a
       bool1 = true;
       label44:
       Assert.assertTrue(bool1);
-      if (this.pif.remaining() < paramInt) {
+      if (this.pLo.remaining() < paramInt) {
         break label113;
       }
     }
@@ -87,8 +87,8 @@ public final class a
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      ad.d("MicroMsg.exdevice.AutoBuffer", "readByte dstOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
-      this.pif.get(paramArrayOfByte, 0, paramInt);
+      ac.d("MicroMsg.exdevice.AutoBuffer", "readByte dstOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
+      this.pLo.get(paramArrayOfByte, 0, paramInt);
       AppMethodBeat.o(24315);
       return;
       bool1 = false;
@@ -100,7 +100,7 @@ public final class a
     }
   }
   
-  public final void U(byte[] paramArrayOfByte, int paramInt)
+  public final void S(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(24316);
@@ -117,33 +117,33 @@ public final class a
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      ad.d("MicroMsg.exdevice.AutoBuffer", "writeByte srcOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
-      if (paramInt <= this.pig.remaining()) {
+      ac.d("MicroMsg.exdevice.AutoBuffer", "writeByte srcOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
+      if (paramInt <= this.pLp.remaining()) {
         break label158;
       }
-      ad.d("MicroMsg.exdevice.AutoBuffer", "byteCount > mWriteStream.remaining() Recalloc");
+      ac.d("MicroMsg.exdevice.AutoBuffer", "byteCount > mWriteStream.remaining() Recalloc");
       ByteBuffer localByteBuffer = ByteBuffer.allocate(getCapacity() + paramInt + 1024);
-      int i = this.pif.position();
-      localByteBuffer.put(this.pig.array());
+      int i = this.pLo.position();
+      localByteBuffer.put(this.pLp.array());
       localByteBuffer.put(paramArrayOfByte, 0, paramInt);
-      this.pig = localByteBuffer;
-      this.pif = localByteBuffer.asReadOnlyBuffer();
-      this.pif.position(i);
+      this.pLp = localByteBuffer;
+      this.pLo = localByteBuffer.asReadOnlyBuffer();
+      this.pLo.position(i);
       AppMethodBeat.o(24316);
       return;
       bool1 = false;
       break;
     }
     label158:
-    this.pig.put(paramArrayOfByte, 0, paramInt);
+    this.pLp.put(paramArrayOfByte, 0, paramInt);
     AppMethodBeat.o(24316);
   }
   
   public final int getSize()
   {
     AppMethodBeat.i(24313);
-    ad.d("MicroMsg.exdevice.AutoBuffer", "size = " + this.pig.position());
-    int i = this.pig.position();
+    ac.d("MicroMsg.exdevice.AutoBuffer", "size = " + this.pLp.position());
+    int i = this.pLp.position();
     AppMethodBeat.o(24313);
     return i;
   }
@@ -157,15 +157,15 @@ public final class a
       AppMethodBeat.o(24314);
       throw localIOException;
     }
-    short s = this.pif.getShort();
-    ad.d("MicroMsg.exdevice.AutoBuffer", "getShort = ".concat(String.valueOf(s)));
+    short s = this.pLo.getShort();
+    ac.d("MicroMsg.exdevice.AutoBuffer", "getShort = ".concat(String.valueOf(s)));
     AppMethodBeat.o(24314);
     return s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.k.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,129 +1,105 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.game.g.b.5;
+import com.tencent.mm.plugin.appbrand.game.g.b.6;
+import com.tencent.mm.plugin.appbrand.game.g.b.7;
+import com.tencent.mm.plugin.appbrand.game.g.b.8;
+import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.q;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class d
-  extends a
+public final class d
+  extends b
 {
-  private static final int CTRL_INDEX = 45;
-  private static final String NAME = "reportAction";
+  public static final int CTRL_INDEX = 687;
+  public static final String NAME = "operateMediaTrack";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(107801);
-    String str5 = paramJSONObject.optString("key");
-    String str7 = paramJSONObject.optString("value");
-    ad.i("MicroMsg.JsApiReportAction", "doReportActionInfo, actionKey =  %s, actionValue =  %s", new Object[] { str5, str7 });
-    if ((bt.isNullOrNil(str5)) || (bt.isNullOrNil(str7)))
+    AppMethodBeat.i(46760);
+    ac.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: %s %s", new Object[] { "operateMediaTrack", paramJSONObject.toString() });
+    Object localObject1 = paramJSONObject.optString("operationType");
+    Object localObject2;
+    if (((String)localObject1).equalsIgnoreCase("get"))
     {
-      ad.e("MicroMsg.JsApiReportAction", "doReportActionInfo, actionKey or actionValue is null");
-      paramc.h(paramInt, e("fail", null));
-      AppMethodBeat.o(107801);
-      return;
-    }
-    if ((str5.length() <= 0) || (str5.length() > 32) || (str7.length() <= 0) || (str7.length() > 1024))
-    {
-      ad.e("MicroMsg.JsApiReportAction", "doReportActionInfo, actionKey or actionValue size is bad");
-      paramc.h(paramInt, e("fail", null));
-      AppMethodBeat.o(107801);
-      return;
-    }
-    String str6 = paramc.getAppId();
-    if (TextUtils.isEmpty(str6))
-    {
-      ad.e("MicroMsg.JsApiReportAction", "doReportActionInfo, appId is empty");
-      paramc.h(paramInt, e("fail", null));
-      AppMethodBeat.o(107801);
-      return;
-    }
-    ad.i("MicroMsg.JsApiReportAction", "doReportActionInfo, appId %s", new Object[] { str6 });
-    int i = 0;
-    int j = 0;
-    if (ay.isConnected(paramc.getContext()))
-    {
-      if (!ay.isWifi(paramc.getContext())) {
-        break label535;
+      localObject1 = paramJSONObject.optString("source");
+      if (bs.isNullOrNil((String)localObject1))
+      {
+        paramc.h(paramInt, e(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
+        AppMethodBeat.o(46760);
+        return;
       }
-      i = 1;
-    }
-    for (;;)
-    {
-      ad.i("MicroMsg.JsApiReportAction", "doReportActionInfo, get networkType %d", new Object[] { Integer.valueOf(i) });
-      long l = bt.aGK();
-      ad.d("MicroMsg.JsApiReportAction", "report(%s), clickTimestamp : %d, appID %s, networkType %d, userAgent %s, url : %s, sessionID : %s, actionKey : %s, actionValue : %s", new Object[] { Long.valueOf(l), Integer.valueOf(13579), str6, Integer.valueOf(i), "", "", "", str5, str7 });
-      Object localObject1 = "";
-      localObject3 = "";
-      String str3 = "";
-      str4 = "";
-      String str1 = str3;
-      paramJSONObject = (JSONObject)localObject3;
       try
       {
-        localObject2 = URLEncoder.encode(bt.nullAsNil(""), "UTF-8");
-        str1 = str3;
-        paramJSONObject = (JSONObject)localObject3;
-        localObject1 = localObject2;
-        localObject3 = URLEncoder.encode("", "UTF-8");
-        str1 = str3;
-        paramJSONObject = (JSONObject)localObject3;
-        localObject1 = localObject2;
-        str3 = URLEncoder.encode(str5, "UTF-8");
-        str1 = str3;
-        paramJSONObject = (JSONObject)localObject3;
-        localObject1 = localObject2;
-        str5 = URLEncoder.encode(str7, "UTF-8");
-        paramJSONObject = str5;
-        localObject1 = localObject2;
-        str1 = str3;
-        localObject2 = paramJSONObject;
+        paramJSONObject.put("filePath", q.B(paramc.getRuntime().Dz().IS((String)localObject1).fxV()));
+        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
+        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.5((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
+        AppMethodBeat.o(46760);
+        return;
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      catch (JSONException paramJSONObject)
       {
-        for (;;)
-        {
-          Object localObject2;
-          ad.printErrStackTrace("MicroMsg.JsApiReportAction", localUnsupportedEncodingException, "", new Object[0]);
-          String str2 = str4;
-          localObject3 = paramJSONObject;
-        }
+        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
+        AppMethodBeat.o(46760);
+        return;
       }
-      h.vKh.f(13579, new Object[] { str6, Integer.valueOf(i), localObject1, localObject3, "", str1, localObject2, Long.valueOf(l), Long.valueOf(l) });
-      paramc.h(paramInt, e("ok", null));
-      AppMethodBeat.o(107801);
-      return;
-      label535:
-      if (ay.is4G(paramc.getContext()))
+      catch (Exception paramJSONObject)
       {
-        i = 4;
-      }
-      else if (ay.is3G(paramc.getContext()))
-      {
-        i = 3;
-      }
-      else
-      {
-        i = j;
-        if (ay.is2G(paramc.getContext())) {
-          i = 2;
-        }
+        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
+        AppMethodBeat.o(46760);
+        return;
       }
     }
+    if (((String)localObject1).equalsIgnoreCase("create"))
+    {
+      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
+      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.6((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
+      AppMethodBeat.o(46760);
+      return;
+    }
+    if (((String)localObject1).equalsIgnoreCase("update")) {
+      try
+      {
+        localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
+        localObject2 = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.7((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (com.tencent.mm.plugin.appbrand.game.g.d)localObject2));
+        AppMethodBeat.o(46760);
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramc.h(paramInt, e(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
+        AppMethodBeat.o(46760);
+        return;
+      }
+    }
+    if (((String)localObject1).equalsIgnoreCase("remove"))
+    {
+      localObject1 = com.tencent.mm.plugin.appbrand.game.g.b.a("1234", null);
+      paramc = new com.tencent.mm.plugin.appbrand.game.g.d() {};
+      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).jTB.postToWorker(new b.8((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
+      AppMethodBeat.o(46760);
+      return;
+    }
+    ac.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaTrack", "hy: invalid operate type: %s", new Object[] { localObject1 });
+    paramc.h(paramInt, e(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
+    AppMethodBeat.o(46760);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.d
  * JD-Core Version:    0.7.0.1
  */

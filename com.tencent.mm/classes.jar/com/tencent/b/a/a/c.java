@@ -9,7 +9,7 @@ import java.util.List;
 
 final class c
 {
-  static File dw(String paramString)
+  static File dl(String paramString)
   {
     AppMethodBeat.i(87625);
     paramString = new File(paramString);
@@ -19,7 +19,7 @@ final class c
       return paramString;
     }
     if (!paramString.getParentFile().exists()) {
-      dw(paramString.getParentFile().getAbsolutePath());
+      dl(paramString.getParentFile().getAbsolutePath());
     }
     paramString.mkdir();
     AppMethodBeat.o(87625);
@@ -48,7 +48,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

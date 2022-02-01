@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public final int hDq;
-  public final String nLl;
-  public final int nLm;
-  public final int nLn;
-  public final int nLo;
+  public final int idS;
+  public final String ool;
+  public final int oom;
+  public final int oon;
+  public final int ooo;
   
   public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.nLl = paramString;
-    this.nLm = paramInt1;
-    this.hDq = paramInt2;
-    this.nLn = paramInt3;
-    this.nLo = paramInt4;
+    this.ool = paramString;
+    this.oom = paramInt1;
+    this.idS = paramInt2;
+    this.oon = paramInt3;
+    this.ooo = paramInt4;
   }
   
   public final boolean equals(Object paramObject)
@@ -30,7 +30,7 @@ public final class a
     if ((paramObject instanceof a))
     {
       paramObject = (a)paramObject;
-      if ((this.nLm == paramObject.nLm) && (this.hDq == paramObject.hDq) && (this.nLn == paramObject.nLn) && (this.nLo == paramObject.nLo) && (this.nLl.equals(paramObject.nLl)))
+      if ((this.oom == paramObject.oom) && (this.idS == paramObject.idS) && (this.oon == paramObject.oon) && (this.ooo == paramObject.ooo) && (this.ool.equals(paramObject.ool)))
       {
         AppMethodBeat.o(116463);
         return true;
@@ -45,7 +45,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(116464);
-    String str = "GetChatRoomMsgInfo chatroomId[" + this.nLl + "], filterSeq[" + this.nLm + "], msgSeq[" + this.hDq + "], needCount[" + this.nLn + "], upDownFlag[" + this.nLo + "], hash[" + hashCode() + "]";
+    String str = "GetChatRoomMsgInfo chatroomId[" + this.ool + "], filterSeq[" + this.oom + "], msgSeq[" + this.idS + "], needCount[" + this.oon + "], upDownFlag[" + this.ooo + "], hash[" + hashCode() + "]";
     AppMethodBeat.o(116464);
     return str;
   }

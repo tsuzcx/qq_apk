@@ -4,8 +4,8 @@ import android.util.Log;
 
 public final class c
 {
-  private static a cFL;
-  private static a cFM;
+  private static a cCT;
+  private static a cCU;
   
   static
   {
@@ -65,54 +65,54 @@ public final class c
         String.format(paramAnonymousString2, paramAnonymousVarArgs);
       }
     };
-    cFL = local1;
-    cFM = local1;
+    cCT = local1;
+    cCU = local1;
   }
   
   public static void b(a parama)
   {
-    cFM = parama;
+    cCU = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cFM != null) {
-      cFM.d(paramString1, paramString2, paramVarArgs);
+    if (cCU != null) {
+      cCU.d(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cFM != null) {
-      cFM.e(paramString1, paramString2, paramVarArgs);
+    if (cCU != null) {
+      cCU.e(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cFM != null) {
-      cFM.i(paramString1, paramString2, paramVarArgs);
+    if (cCU != null) {
+      cCU.i(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (cFM != null) {
-      cFM.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (cCU != null) {
+      cCU.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cFM != null) {
-      cFM.v(paramString1, paramString2, paramVarArgs);
+    if (cCU != null) {
+      cCU.v(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (cFM != null) {
-      cFM.w(paramString1, paramString2, paramVarArgs);
+    if (cCU != null) {
+      cCU.w(paramString1, paramString2, paramVarArgs);
     }
   }
   

@@ -6,8 +6,8 @@ import com.tencent.mm.vending.c.b;
 public final class f
   implements b<e>
 {
-  protected e hZx;
-  public final a hZy;
+  protected e izB;
+  public final a izC;
   
   public f()
   {
@@ -19,14 +19,14 @@ public final class f
   private f(e parame)
   {
     AppMethodBeat.i(63333);
-    this.hZy = new a();
-    this.hZx = parame;
+    this.izC = new a();
+    this.izB = parame;
     AppMethodBeat.o(63333);
   }
   
-  public final e aHf()
+  public final e aNT()
   {
-    return this.hZx;
+    return this.izB;
   }
   
   public final class a
@@ -34,7 +34,7 @@ public final class f
   {
     public a() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
@@ -42,7 +42,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.f
  * JD-Core Version:    0.7.0.1
  */

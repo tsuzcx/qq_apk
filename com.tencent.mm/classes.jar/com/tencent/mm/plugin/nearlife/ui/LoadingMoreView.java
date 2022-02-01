@@ -15,8 +15,8 @@ public class LoadingMoreView
   extends LinearLayout
 {
   private Context context;
-  private ImageView dnd;
-  protected LinearLayout nwJ;
+  private ImageView dkL;
+  protected LinearLayout nZJ;
   
   public LoadingMoreView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,20 +24,20 @@ public class LoadingMoreView
     AppMethodBeat.i(26591);
     this.context = paramContext;
     paramContext = LayoutInflater.from(this.context).inflate(2131494582, this, true);
-    this.dnd = ((ImageView)findViewById(2131301409));
-    this.nwJ = ((LinearLayout)paramContext.findViewById(2131301504));
-    this.nwJ.setVisibility(0);
+    this.dkL = ((ImageView)findViewById(2131301409));
+    this.nZJ = ((LinearLayout)paramContext.findViewById(2131301504));
+    this.nZJ.setVisibility(0);
     paramContext = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     paramContext.setDuration(1000L);
     paramContext.setRepeatCount(-1);
     paramContext.setInterpolator(new LinearInterpolator());
-    this.dnd.startAnimation(paramContext);
+    this.dkL.startAnimation(paramContext);
     AppMethodBeat.o(26591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.LoadingMoreView
  * JD-Core Version:    0.7.0.1
  */

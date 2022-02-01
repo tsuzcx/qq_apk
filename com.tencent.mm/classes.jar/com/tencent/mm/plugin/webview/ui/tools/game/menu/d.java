@@ -19,24 +19,24 @@ import com.tencent.mm.ui.base.l;
 public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private l BoA;
-  private GameMenuView BoB;
-  private f BoC;
-  private e Boy;
-  public b.b Boz;
-  private ViewTreeObserver acK;
-  private boolean kBm;
-  public boolean kBo;
-  public boolean kBp;
+  private e CGF;
+  public b.b CGG;
+  private l CGH;
+  private GameMenuView CGI;
+  private f CGJ;
+  private ViewTreeObserver adE;
+  private boolean lcE;
+  public boolean lcG;
+  public boolean lcH;
   private Context mContext;
-  private View nO;
-  private boolean qVs;
+  private View oP;
+  private boolean rVy;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(80973);
-    this.kBm = false;
-    this.kBp = false;
+    this.lcE = false;
+    this.lcH = false;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity))
     {
@@ -46,22 +46,22 @@ public final class d
       }
     }
     label156:
-    for (this.nO = paramContext.getChildAt(0);; this.nO = paramContext)
+    for (this.oP = paramContext.getChildAt(0);; this.oP = paramContext)
     {
       paramContext = this.mContext;
-      this.BoA = new l(paramContext);
-      this.Boy = new e(paramContext);
-      this.BoB = new GameMenuView(paramContext);
-      this.BoC = new f(paramContext);
-      this.BoB.setAdapter(this.BoC);
-      this.kBm = aov();
-      this.Boy.setContentView(this.BoB);
+      this.CGH = new l(paramContext);
+      this.CGF = new e(paramContext);
+      this.CGI = new GameMenuView(paramContext);
+      this.CGJ = new f(paramContext);
+      this.CGI.setAdapter(this.CGJ);
+      this.lcE = aly();
+      this.CGF.setContentView(this.CGI);
       AppMethodBeat.o(80973);
       return;
     }
   }
   
-  private boolean aov()
+  private boolean aly()
   {
     AppMethodBeat.i(80979);
     DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
@@ -75,13 +75,13 @@ public final class d
   }
   
   @TargetApi(23)
-  private void eqc()
+  private void eFw()
   {
     AppMethodBeat.i(80974);
-    if ((Build.VERSION.SDK_INT >= 23) && (this.Boy != null))
+    if ((Build.VERSION.SDK_INT >= 23) && (this.CGF != null))
     {
-      this.Boy.getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.Boy.getWindow().setStatusBarColor(0);
+      this.CGF.getWindow().getDecorView().setSystemUiVisibility(9216);
+      this.CGF.getWindow().setStatusBarColor(0);
     }
     AppMethodBeat.o(80974);
   }
@@ -89,9 +89,9 @@ public final class d
   private boolean isShowing()
   {
     AppMethodBeat.i(80977);
-    if (this.Boy != null)
+    if (this.CGF != null)
     {
-      if (this.Boy.isShowing())
+      if (this.CGF.isShowing())
       {
         AppMethodBeat.o(80977);
         return true;
@@ -106,98 +106,98 @@ public final class d
   public final void a(b.c paramc)
   {
     AppMethodBeat.i(80978);
-    if (this.BoB != null) {
-      this.BoB.setGameMenuItemSelectedListener(paramc);
+    if (this.CGI != null) {
+      this.CGI.setGameMenuItemSelectedListener(paramc);
     }
     AppMethodBeat.o(80978);
   }
   
-  public final void bfo()
+  public final void bmi()
   {
     AppMethodBeat.i(80976);
-    if (this.acK != null)
+    if (this.adE != null)
     {
-      if (!this.acK.isAlive()) {
-        this.acK = this.nO.getViewTreeObserver();
+      if (!this.adE.isAlive()) {
+        this.adE = this.oP.getViewTreeObserver();
       }
-      this.acK.removeGlobalOnLayoutListener(this);
-      this.acK = null;
+      this.adE.removeGlobalOnLayoutListener(this);
+      this.adE = null;
     }
-    if (this.Boy != null) {
-      this.Boy.dismiss();
+    if (this.CGF != null) {
+      this.CGF.dismiss();
     }
     AppMethodBeat.o(80976);
   }
   
-  public final void csG()
+  public final void cED()
   {
     int i = 0;
     AppMethodBeat.i(80975);
-    this.kBm = aov();
-    if (this.Boz != null) {
-      this.Boz.onCreateMMMenu(this.BoA);
+    this.lcE = aly();
+    if (this.CGG != null) {
+      this.CGG.onCreateMMMenu(this.CGH);
     }
-    if (this.Boy != null)
+    if (this.CGF != null)
     {
-      if (this.BoC != null) {
-        this.BoC.a(this.BoA);
+      if (this.CGJ != null) {
+        this.CGJ.a(this.CGH);
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        this.Boy.getWindow().addFlags(-2147483648);
+        this.CGF.getWindow().addFlags(-2147483648);
       }
-      if (this.qVs) {
-        eqc();
+      if (this.rVy) {
+        eFw();
       }
-      if (this.kBo) {
-        this.Boy.getWindow().addFlags(1024);
+      if (this.lcG) {
+        this.CGF.getWindow().addFlags(1024);
       }
-      if (!this.kBp) {
+      if (!this.lcH) {
         break label248;
       }
-      this.Boy.getWindow().setFlags(8, 8);
-      this.Boy.getWindow().addFlags(131200);
-      this.Boy.getWindow().getDecorView().setSystemUiVisibility(6);
+      this.CGF.getWindow().setFlags(8, 8);
+      this.CGF.getWindow().addFlags(131200);
+      this.CGF.getWindow().getDecorView().setSystemUiVisibility(6);
     }
     for (;;)
     {
-      if (this.nO != null)
+      if (this.oP != null)
       {
-        if (this.acK == null) {
+        if (this.adE == null) {
           i = 1;
         }
-        this.acK = this.nO.getViewTreeObserver();
+        this.adE = this.oP.getViewTreeObserver();
         if (i != 0) {
-          this.acK.addOnGlobalLayoutListener(this);
+          this.adE.addOnGlobalLayoutListener(this);
         }
       }
-      this.Boy.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.CGF.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(80970);
-          d.this.bfo();
+          d.this.bmi();
           AppMethodBeat.o(80970);
         }
       });
-      if (this.BoB != null) {
-        this.BoB.setDismissListener(new b.a()
+      if (this.CGI != null) {
+        this.CGI.setDismissListener(new b.a()
         {
           public final void onDismiss()
           {
             AppMethodBeat.i(80971);
-            d.this.bfo();
+            d.this.bmi();
             AppMethodBeat.o(80971);
           }
         });
       }
-      this.Boy.show();
+      this.CGF.show();
       AppMethodBeat.o(80975);
       return;
       label248:
-      this.Boy.getWindow().clearFlags(8);
-      this.Boy.getWindow().clearFlags(131072);
-      this.Boy.getWindow().clearFlags(128);
-      this.Boy.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.CGF.getWindow().clearFlags(8);
+      this.CGF.getWindow().clearFlags(131072);
+      this.CGF.getWindow().clearFlags(128);
+      this.CGF.getWindow().getDecorView().setSystemUiVisibility(0);
     }
   }
   
@@ -206,15 +206,15 @@ public final class d
     AppMethodBeat.i(80972);
     if (isShowing())
     {
-      View localView = this.nO;
+      View localView = this.oP;
       if ((localView == null) || (!localView.isShown()))
       {
-        bfo();
+        bmi();
         AppMethodBeat.o(80972);
         return;
       }
-      if ((isShowing()) && (this.kBm != aov())) {
-        bfo();
+      if ((isShowing()) && (this.lcE != aly())) {
+        bmi();
       }
     }
     AppMethodBeat.o(80972);

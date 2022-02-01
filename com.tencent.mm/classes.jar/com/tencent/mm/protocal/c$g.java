@@ -2,9 +2,9 @@ package com.tencent.mm.protocal;
 
 public abstract class c$g
 {
-  protected String CpA = "";
-  protected int CpB = -1;
-  protected boolean CpC = false;
+  protected String DHS = "";
+  protected int DHT = -1;
+  protected boolean DHU = false;
   protected String NAME = "noName";
   
   public c$g() {}
@@ -12,24 +12,24 @@ public abstract class c$g
   public c$g(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     this.NAME = paramString1;
-    this.CpA = paramString2;
-    this.CpB = paramInt;
-    this.CpC = paramBoolean;
+    this.DHS = paramString2;
+    this.DHT = paramInt;
+    this.DHU = paramBoolean;
   }
   
-  public final String eBC()
+  public final String eQX()
   {
-    return this.CpA;
+    return this.DHS;
   }
   
-  public final int eBD()
+  public final int eQY()
   {
-    return this.CpB;
+    return this.DHT;
   }
   
-  public final boolean eBE()
+  public final boolean eQZ()
   {
-    return this.CpC;
+    return this.DHU;
   }
   
   public final String getName()

@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.report.model.kv_14609;
+import com.tencent.mm.plugin.appbrand.report.model.kv_14609.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class kg
   extends b
 {
-  public a doD;
+  public a dlM;
   
   public kg()
   {
@@ -15,16 +17,17 @@ public final class kg
   
   private kg(byte paramByte)
   {
-    AppMethodBeat.i(89746);
-    this.doD = new a();
-    this.ESR = false;
+    AppMethodBeat.i(43441);
+    this.dlM = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89746);
+    AppMethodBeat.o(43441);
   }
   
   public static final class a
   {
-    public String dcx;
+    public kv_14609 dlN;
+    public kv_14609.a dlO;
   }
 }
 

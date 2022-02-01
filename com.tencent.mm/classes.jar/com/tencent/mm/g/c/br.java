@@ -3,128 +3,68 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class br
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavCdnTransferInfo_LocalId ON FavCdnInfo(favLocalId)", "CREATE INDEX IF NOT EXISTS FavCDNInfo_modifyTime_Index ON FavCdnInfo(modifyTime)" };
-  private static final int eBi = "dataId".hashCode();
-  private static final int eBj = "favLocalId".hashCode();
-  private static final int eBk;
-  private static final int eBl = "extFlag".hashCode();
-  private static final int eBm = "attrFlag".hashCode();
-  private static final int ejR;
-  private static final int elO;
-  private static final int elP;
-  private static final int emA;
-  private static final int eml;
-  private static final int enN;
-  private static final int ezo;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS fmconversation_isnew_Index ON fmessage_conversation(isNew)" };
+  private static final int eBv = "state".hashCode();
+  private static final int eDc;
+  private static final int eDd;
+  private static final int eDe = "lastModifiedTime".hashCode();
+  private static final int eDf = "isNew".hashCode();
+  private static final int eDg = "addScene".hashCode();
+  private static final int eDh = "fmsgSysRowId".hashCode();
+  private static final int eDi = "fmsgIsSend".hashCode();
+  private static final int eDj = "fmsgType".hashCode();
+  private static final int eDk = "fmsgContent".hashCode();
+  private static final int eDl = "recvFmsgType".hashCode();
+  private static final int eDm = "contentFromUsername".hashCode();
+  private static final int eDn = "contentNickname".hashCode();
+  private static final int eDo = "contentPhoneNumMD5".hashCode();
+  private static final int eDp = "contentFullPhoneNumMD5".hashCode();
+  private static final int eDq = "contentVerifyContent".hashCode();
+  private static final int etX = "talker".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
-  private boolean __hadSettype = true;
-  private boolean eBd = true;
-  private boolean eBe = true;
-  private boolean eBf = true;
-  private boolean eBg = true;
-  private boolean eBh = true;
-  private boolean ejO = true;
-  private boolean elx = true;
-  private boolean ely = true;
-  private boolean emh = true;
-  private boolean emy = true;
-  private boolean enr = true;
-  private boolean eyC = true;
-  public long field_attrFlag;
-  public String field_cdnKey;
-  public String field_cdnUrl;
-  public String field_dataId;
-  public int field_dataType;
-  public int field_extFlag;
-  public long field_favLocalId;
-  public long field_modifyTime;
-  public int field_offset;
-  public String field_path;
-  public int field_status;
-  public int field_totalLen;
-  public int field_type;
+  private boolean eAJ = true;
+  private boolean eCN = true;
+  private boolean eCO = true;
+  private boolean eCP = true;
+  private boolean eCQ = true;
+  private boolean eCR = true;
+  private boolean eCS = true;
+  private boolean eCT = true;
+  private boolean eCU = true;
+  private boolean eCV = true;
+  private boolean eCW = true;
+  private boolean eCX = true;
+  private boolean eCY = true;
+  private boolean eCZ = true;
+  private boolean eDa = true;
+  private boolean eDb = true;
+  private boolean etJ = true;
+  public int field_addScene;
+  public String field_contentFromUsername;
+  public String field_contentFullPhoneNumMD5;
+  public String field_contentNickname;
+  public String field_contentPhoneNumMD5;
+  public String field_contentVerifyContent;
+  public String field_displayName;
+  public String field_encryptTalker;
+  public String field_fmsgContent;
+  public int field_fmsgIsSend;
+  public long field_fmsgSysRowId;
+  public int field_fmsgType;
+  public int field_isNew;
+  public long field_lastModifiedTime;
+  public int field_recvFmsgType;
+  public int field_state;
+  public String field_talker;
   
   static
   {
-    ezo = "cdnUrl".hashCode();
-    eBk = "cdnKey".hashCode();
-    elO = "totalLen".hashCode();
-    elP = "offset".hashCode();
-    ejR = "status".hashCode();
-    eml = "path".hashCode();
-    emA = "dataType".hashCode();
-    enN = "modifyTime".hashCode();
-  }
-  
-  public static c.a So()
-  {
-    c.a locala = new c.a();
-    locala.EYt = new Field[13];
-    locala.columns = new String[14];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "dataId";
-    locala.EYv.put("dataId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" dataId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "dataId";
-    locala.columns[1] = "favLocalId";
-    locala.EYv.put("favLocalId", "LONG");
-    localStringBuilder.append(" favLocalId LONG");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.EYv.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "cdnUrl";
-    locala.EYv.put("cdnUrl", "TEXT");
-    localStringBuilder.append(" cdnUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "cdnKey";
-    locala.EYv.put("cdnKey", "TEXT");
-    localStringBuilder.append(" cdnKey TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "totalLen";
-    locala.EYv.put("totalLen", "INTEGER");
-    localStringBuilder.append(" totalLen INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "offset";
-    locala.EYv.put("offset", "INTEGER");
-    localStringBuilder.append(" offset INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "status";
-    locala.EYv.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "path";
-    locala.EYv.put("path", "TEXT");
-    localStringBuilder.append(" path TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "dataType";
-    locala.EYv.put("dataType", "INTEGER");
-    localStringBuilder.append(" dataType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "modifyTime";
-    locala.EYv.put("modifyTime", "LONG default '0' ");
-    localStringBuilder.append(" modifyTime LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "extFlag";
-    locala.EYv.put("extFlag", "INTEGER default '0' ");
-    localStringBuilder.append(" extFlag INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "attrFlag";
-    locala.EYv.put("attrFlag", "LONG default '0' ");
-    localStringBuilder.append(" attrFlag LONG default '0' ");
-    locala.columns[13] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eDc = "encryptTalker".hashCode();
+    eDd = "displayName".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -140,11 +80,11 @@ public abstract class br
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eBi != k) {
+      if (etX != k) {
         break label65;
       }
-      this.field_dataId = paramCursor.getString(i);
-      this.eBd = true;
+      this.field_talker = paramCursor.getString(i);
+      this.etJ = true;
     }
     for (;;)
     {
@@ -152,30 +92,38 @@ public abstract class br
       break label20;
       break;
       label65:
-      if (eBj == k) {
-        this.field_favLocalId = paramCursor.getLong(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (ezo == k) {
-        this.field_cdnUrl = paramCursor.getString(i);
-      } else if (eBk == k) {
-        this.field_cdnKey = paramCursor.getString(i);
-      } else if (elO == k) {
-        this.field_totalLen = paramCursor.getInt(i);
-      } else if (elP == k) {
-        this.field_offset = paramCursor.getInt(i);
-      } else if (ejR == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eml == k) {
-        this.field_path = paramCursor.getString(i);
-      } else if (emA == k) {
-        this.field_dataType = paramCursor.getInt(i);
-      } else if (enN == k) {
-        this.field_modifyTime = paramCursor.getLong(i);
-      } else if (eBl == k) {
-        this.field_extFlag = paramCursor.getInt(i);
-      } else if (eBm == k) {
-        this.field_attrFlag = paramCursor.getLong(i);
+      if (eDc == k) {
+        this.field_encryptTalker = paramCursor.getString(i);
+      } else if (eDd == k) {
+        this.field_displayName = paramCursor.getString(i);
+      } else if (eBv == k) {
+        this.field_state = paramCursor.getInt(i);
+      } else if (eDe == k) {
+        this.field_lastModifiedTime = paramCursor.getLong(i);
+      } else if (eDf == k) {
+        this.field_isNew = paramCursor.getInt(i);
+      } else if (eDg == k) {
+        this.field_addScene = paramCursor.getInt(i);
+      } else if (eDh == k) {
+        this.field_fmsgSysRowId = paramCursor.getLong(i);
+      } else if (eDi == k) {
+        this.field_fmsgIsSend = paramCursor.getInt(i);
+      } else if (eDj == k) {
+        this.field_fmsgType = paramCursor.getInt(i);
+      } else if (eDk == k) {
+        this.field_fmsgContent = paramCursor.getString(i);
+      } else if (eDl == k) {
+        this.field_recvFmsgType = paramCursor.getInt(i);
+      } else if (eDm == k) {
+        this.field_contentFromUsername = paramCursor.getString(i);
+      } else if (eDn == k) {
+        this.field_contentNickname = paramCursor.getString(i);
+      } else if (eDo == k) {
+        this.field_contentPhoneNumMD5 = paramCursor.getString(i);
+      } else if (eDp == k) {
+        this.field_contentFullPhoneNumMD5 = paramCursor.getString(i);
+      } else if (eDq == k) {
+        this.field_contentVerifyContent = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -185,44 +133,83 @@ public abstract class br
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eBd) {
-      localContentValues.put("dataId", this.field_dataId);
+    if (this.field_talker == null) {
+      this.field_talker = "0";
     }
-    if (this.eBe) {
-      localContentValues.put("favLocalId", Long.valueOf(this.field_favLocalId));
+    if (this.etJ) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.field_encryptTalker == null) {
+      this.field_encryptTalker = "";
     }
-    if (this.eyC) {
-      localContentValues.put("cdnUrl", this.field_cdnUrl);
+    if (this.eCN) {
+      localContentValues.put("encryptTalker", this.field_encryptTalker);
     }
-    if (this.eBf) {
-      localContentValues.put("cdnKey", this.field_cdnKey);
+    if (this.field_displayName == null) {
+      this.field_displayName = "";
     }
-    if (this.elx) {
-      localContentValues.put("totalLen", Integer.valueOf(this.field_totalLen));
+    if (this.eCO) {
+      localContentValues.put("displayName", this.field_displayName);
     }
-    if (this.ely) {
-      localContentValues.put("offset", Integer.valueOf(this.field_offset));
+    if (this.eAJ) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
-    if (this.ejO) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.eCP) {
+      localContentValues.put("lastModifiedTime", Long.valueOf(this.field_lastModifiedTime));
     }
-    if (this.emh) {
-      localContentValues.put("path", this.field_path);
+    if (this.eCQ) {
+      localContentValues.put("isNew", Integer.valueOf(this.field_isNew));
     }
-    if (this.emy) {
-      localContentValues.put("dataType", Integer.valueOf(this.field_dataType));
+    if (this.eCR) {
+      localContentValues.put("addScene", Integer.valueOf(this.field_addScene));
     }
-    if (this.enr) {
-      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
+    if (this.eCS) {
+      localContentValues.put("fmsgSysRowId", Long.valueOf(this.field_fmsgSysRowId));
     }
-    if (this.eBg) {
-      localContentValues.put("extFlag", Integer.valueOf(this.field_extFlag));
+    if (this.eCT) {
+      localContentValues.put("fmsgIsSend", Integer.valueOf(this.field_fmsgIsSend));
     }
-    if (this.eBh) {
-      localContentValues.put("attrFlag", Long.valueOf(this.field_attrFlag));
+    if (this.eCU) {
+      localContentValues.put("fmsgType", Integer.valueOf(this.field_fmsgType));
+    }
+    if (this.field_fmsgContent == null) {
+      this.field_fmsgContent = "";
+    }
+    if (this.eCV) {
+      localContentValues.put("fmsgContent", this.field_fmsgContent);
+    }
+    if (this.eCW) {
+      localContentValues.put("recvFmsgType", Integer.valueOf(this.field_recvFmsgType));
+    }
+    if (this.field_contentFromUsername == null) {
+      this.field_contentFromUsername = "";
+    }
+    if (this.eCX) {
+      localContentValues.put("contentFromUsername", this.field_contentFromUsername);
+    }
+    if (this.field_contentNickname == null) {
+      this.field_contentNickname = "";
+    }
+    if (this.eCY) {
+      localContentValues.put("contentNickname", this.field_contentNickname);
+    }
+    if (this.field_contentPhoneNumMD5 == null) {
+      this.field_contentPhoneNumMD5 = "";
+    }
+    if (this.eCZ) {
+      localContentValues.put("contentPhoneNumMD5", this.field_contentPhoneNumMD5);
+    }
+    if (this.field_contentFullPhoneNumMD5 == null) {
+      this.field_contentFullPhoneNumMD5 = "";
+    }
+    if (this.eDa) {
+      localContentValues.put("contentFullPhoneNumMD5", this.field_contentFullPhoneNumMD5);
+    }
+    if (this.field_contentVerifyContent == null) {
+      this.field_contentVerifyContent = "";
+    }
+    if (this.eDb) {
+      localContentValues.put("contentVerifyContent", this.field_contentVerifyContent);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

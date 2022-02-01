@@ -6,29 +6,29 @@ import com.tencent.tinker.a.a.b.e;
 public final class h
   extends s.a.a<h>
 {
-  public int IBa;
-  public int[] IBb;
-  public byte[] IBc;
+  public int Knj;
+  public int[] Knk;
+  public byte[] Knl;
   
   public h(int paramInt1, int paramInt2, int[] paramArrayOfInt, byte[] paramArrayOfByte)
   {
     super(paramInt1);
-    this.IBa = paramInt2;
-    this.IBb = paramArrayOfInt;
-    this.IBc = paramArrayOfByte;
+    this.Knj = paramInt2;
+    this.Knk = paramArrayOfInt;
+    this.Knl = paramArrayOfByte;
   }
   
   private int a(h paramh)
   {
-    int i = this.IBa;
-    int j = paramh.IBa;
+    int i = this.Knj;
+    int j = paramh.Knj;
     if (i != j)
     {
       j = i - j;
       return j;
     }
-    int[] arrayOfInt1 = this.IBb;
-    int[] arrayOfInt2 = paramh.IBb;
+    int[] arrayOfInt1 = this.Knk;
+    int[] arrayOfInt2 = paramh.Knk;
     int m = arrayOfInt1.length;
     i = arrayOfInt2.length;
     if (m < i) {
@@ -40,7 +40,7 @@ public final class h
       if (i != 0) {
         break;
       }
-      return c.p(this.IBc, paramh.IBc);
+      return c.p(this.Knl, paramh.Knl);
       if (m > i)
       {
         i = 1;
@@ -53,7 +53,7 @@ public final class h
           if (j >= m) {
             break label115;
           }
-          int k = c.ks(arrayOfInt1[j], arrayOfInt2[j]);
+          int k = c.kJ(arrayOfInt1[j], arrayOfInt2[j]);
           i = k;
           if (k != 0) {
             break;
@@ -77,7 +77,7 @@ public final class h
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.IBa), this.IBb, this.IBc });
+    return e.hash(new Object[] { Integer.valueOf(this.Knj), this.Knk, this.Knl });
   }
 }
 

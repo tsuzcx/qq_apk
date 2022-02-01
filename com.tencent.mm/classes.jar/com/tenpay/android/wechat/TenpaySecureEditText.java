@@ -25,11 +25,11 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.ao;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
@@ -325,9 +325,9 @@ public final class TenpaySecureEditText
   public static void setSalt(String paramString)
   {
     AppMethodBeat.i(73231);
-    ad.i("TenpaySecureEditText", "check salt: %s", new Object[] { paramString });
-    if ((Integer.decode(h.glW).intValue() & 0xFF) < 48) {
-      ad.i("TenpaySecureEditText", "check salt stack: %s", new Object[] { bt.eGN() });
+    ac.i("TenpaySecureEditText", "check salt: %s", new Object[] { paramString });
+    if ((Integer.decode(h.gMJ).intValue() & 0xFF) < 48) {
+      ac.i("TenpaySecureEditText", "check salt stack: %s", new Object[] { bs.eWi() });
     }
     mTimeStamp = paramString;
     AppMethodBeat.o(73231);
@@ -426,7 +426,7 @@ public final class TenpaySecureEditText
       AppMethodBeat.o(73234);
       return null;
     }
-    ad.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
+    ac.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
     if (this.mIEncrypt != null)
     {
       if (paramBoolean2)
@@ -1078,21 +1078,21 @@ public final class TenpaySecureEditText
   
   public final void setIsPasswordFormat(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(187201);
+    AppMethodBeat.i(207330);
     if (paramBoolean1)
     {
       this.mNewPwdStyle = paramBoolean2;
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      if (ai.Eq())
+      if (aj.DT())
       {
         this.mPaintBackground.setColor(getResources().getColor(2131099673));
         this.mEditState = EditState.PASSWORD;
         this.mPasswdSeparedPaint = new Paint(1);
         this.mPasswdSeparedPaint.setStyle(Paint.Style.STROKE);
         this.mPasswdSeparedPaint.setStrokeWidth(1.5F);
-        if (!ai.Eq()) {
+        if (!aj.DT()) {
           break label213;
         }
         this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099737));
@@ -1101,11 +1101,11 @@ public final class TenpaySecureEditText
       {
         this.mPasswdBgPaint = new Paint(1);
         this.mPasswdBgPaint.setStyle(Paint.Style.FILL);
-        if (!ai.Eq()) {
+        if (!aj.DT()) {
           break label233;
         }
         this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-        AppMethodBeat.o(187201);
+        AppMethodBeat.o(207330);
         return;
         this.mPaintBackground.setColor(getResources().getColor(2131099654));
         break;
@@ -1114,14 +1114,14 @@ public final class TenpaySecureEditText
       }
       label233:
       this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-      AppMethodBeat.o(187201);
+      AppMethodBeat.o(207330);
       return;
     }
     this.mPaintBackground = null;
     if (EditState.PASSWORD == this.mEditState) {
       this.mEditState = EditState.DEFAULT;
     }
-    AppMethodBeat.o(187201);
+    AppMethodBeat.o(207330);
   }
   
   public final void setIsSecurityAnswerFormat(boolean paramBoolean)

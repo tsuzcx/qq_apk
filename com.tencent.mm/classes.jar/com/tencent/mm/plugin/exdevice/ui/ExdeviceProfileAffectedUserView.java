@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.model.u;
 import com.tencent.mm.ui.base.MMHorList;
 import java.util.ArrayList;
@@ -17,33 +17,33 @@ import java.util.ArrayList;
 public class ExdeviceProfileAffectedUserView
   extends LinearLayout
 {
-  private String kGt;
-  private TextView pej;
-  private MMHorList pek;
-  private ExdeviceProfileAffectedUserView.a pel;
-  private ArrayList<String> pem;
+  private String lhM;
+  private TextView pHu;
+  private MMHorList pHv;
+  private ExdeviceProfileAffectedUserView.a pHw;
+  private ArrayList<String> pHx;
   
   public ExdeviceProfileAffectedUserView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24088);
     paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131493873, this, true);
-    this.pej = ((TextView)paramAttributeSet.findViewById(2131303446));
-    this.pek = ((MMHorList)paramAttributeSet.findViewById(2131303445));
-    this.pek.setCenterInParent(true);
+    this.pHu = ((TextView)paramAttributeSet.findViewById(2131303446));
+    this.pHv = ((MMHorList)paramAttributeSet.findViewById(2131303445));
+    this.pHv.setCenterInParent(true);
     int i = a.fromDPToPix(paramContext, 44);
-    this.pek.setOverScrollEnabled(true);
-    this.pek.setItemWidth(i);
-    this.pek.setCenterInParent(true);
-    this.pel = new ExdeviceProfileAffectedUserView.a(this, (byte)0);
-    this.pek.setAdapter(this.pel);
-    this.pek.setOnItemClickListener(new ExdeviceProfileAffectedUserView.1(this, paramContext));
-    this.pej.setOnClickListener(new View.OnClickListener()
+    this.pHv.setOverScrollEnabled(true);
+    this.pHv.setItemWidth(i);
+    this.pHv.setCenterInParent(true);
+    this.pHw = new ExdeviceProfileAffectedUserView.a(this, (byte)0);
+    this.pHv.setAdapter(this.pHw);
+    this.pHv.setOnItemClickListener(new ExdeviceProfileAffectedUserView.1(this, paramContext));
+    this.pHu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24080);
-        paramAnonymousView = u.aqG();
+        paramAnonymousView = u.axw();
         if ((paramAnonymousView != null) && (paramAnonymousView.equals(ExdeviceProfileAffectedUserView.a(ExdeviceProfileAffectedUserView.this))))
         {
           paramAnonymousView = ExdeviceProfileAffectedUserView.b(ExdeviceProfileAffectedUserView.this);
@@ -76,23 +76,23 @@ public class ExdeviceProfileAffectedUserView
   public void setAffectedUserInfo(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(24089);
-    this.pem = paramArrayList;
-    if ((this.pem == null) || (this.pem.size() == 0))
+    this.pHx = paramArrayList;
+    if ((this.pHx == null) || (this.pHx.size() == 0))
     {
-      this.pej.setText("");
+      this.pHu.setText("");
       setVisibility(8);
       AppMethodBeat.o(24089);
       return;
     }
     setVisibility(0);
-    this.pej.setText(getResources().getString(2131758572, new Object[] { Integer.valueOf(this.pem.size()) }));
-    this.pel.notifyDataSetChanged();
+    this.pHu.setText(getResources().getString(2131758572, new Object[] { Integer.valueOf(this.pHx.size()) }));
+    this.pHw.notifyDataSetChanged();
     AppMethodBeat.o(24089);
   }
   
   public void setUsername(String paramString)
   {
-    this.kGt = paramString;
+    this.lhM = paramString;
   }
 }
 

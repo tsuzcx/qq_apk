@@ -79,14 +79,14 @@ public class KindaCountPickerViewImpl
     if (paramBoolean)
     {
       final c localc = new c(this.mContext, this.mTimesArray);
-      localc.HIW = new c.a()
+      localc.Jjt = new c.a()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
           AppMethodBeat.i(18896);
           if (paramAnonymousBoolean)
           {
-            KindaCountPickerViewImpl.access$002(KindaCountPickerViewImpl.this, localc.ffZ());
+            KindaCountPickerViewImpl.access$002(KindaCountPickerViewImpl.this, localc.fvY());
             KindaCountPickerViewImpl.this.mEditText.setText(paramAnonymousObject1.toString());
             KindaCountPickerViewImpl.this.mCountPickerCallback.onSelect(String.valueOf(KindaCountPickerViewImpl.this.mSelectCreCountIndex));
           }
@@ -94,7 +94,7 @@ public class KindaCountPickerViewImpl
           AppMethodBeat.o(18896);
         }
       };
-      localc.aaR(this.mSelectCreCountIndex);
+      localc.adc(this.mSelectCreCountIndex);
       localc.show();
     }
     AppMethodBeat.o(18899);

@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class wl
   extends b
 {
-  public a dBU;
-  public b dBV;
+  public a dzn;
   
   public wl()
   {
@@ -17,28 +15,22 @@ public final class wl
   
   private wl(byte paramByte)
   {
-    AppMethodBeat.i(116056);
-    this.dBU = new a();
-    this.dBV = new b();
-    this.ESR = false;
+    AppMethodBeat.i(209768);
+    this.dzn = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116056);
+    AppMethodBeat.o(209768);
   }
   
   public static final class a
   {
-    public Context context;
-    public int type;
-  }
-  
-  public static final class b
-  {
-    public boolean dBW;
+    public String appId;
+    public boolean cYM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.wl
  * JD-Core Version:    0.7.0.1
  */

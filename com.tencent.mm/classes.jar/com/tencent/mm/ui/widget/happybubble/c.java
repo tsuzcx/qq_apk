@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static int[] et(Context paramContext)
+  public static int[] eB(Context paramContext)
   {
     AppMethodBeat.i(143558);
     paramContext = (WindowManager)paramContext.getApplicationContext().getSystemService("window");

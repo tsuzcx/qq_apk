@@ -4,7 +4,7 @@ import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.ui.chatting.c.ab;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "attachFooter", "", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "detachFooter", "app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "attachFooter", "", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "detachFooter", "app_release"})
 public abstract interface p
   extends ab
 {

@@ -8,14 +8,14 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KScanWidget;
 import com.tencent.kinda.gen.VoidStringStringBinaryCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.a.rm;
-import com.tencent.mm.g.a.rm.a;
-import com.tencent.mm.g.a.rn;
-import com.tencent.mm.g.a.rn.a;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.a.rv;
+import com.tencent.mm.g.a.rv.a;
+import com.tencent.mm.g.a.rw;
+import com.tencent.mm.g.a.rw.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.b;
 import com.tencent.mm.wallet_core.c.y;
 import com.tenpay.ndk.Encrypt;
@@ -37,15 +37,15 @@ public class KindaScanWidgetImpl
     this.isDismissOnScanFinish = true;
     this.scanBankCardConfirmResultListener = new c()
     {
-      public boolean callback(rm paramAnonymousrm)
+      public boolean callback(rv paramAnonymousrv)
       {
         AppMethodBeat.i(18647);
-        if ((paramAnonymousrm.dwZ.action == 1) && (!bt.isNullOrNil(paramAnonymousrm.dwZ.cardNum)) && (KindaScanWidgetImpl.this.mCallback != null))
+        if ((paramAnonymousrv.duM.action == 1) && (!bs.isNullOrNil(paramAnonymousrv.duM.cardNum)) && (KindaScanWidgetImpl.this.mCallback != null))
         {
-          String str = paramAnonymousrm.dwZ.cardNum;
-          paramAnonymousrm = paramAnonymousrm.dwZ.dxa;
+          String str = paramAnonymousrv.duM.cardNum;
+          paramAnonymousrv = paramAnonymousrv.duM.duN;
           str = str.replaceAll("-", "").replaceAll(" ", "");
-          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymousrm));
+          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymousrv));
         }
         KindaScanWidgetImpl.this.scanBankCardConfirmResultListener.dead();
         AppMethodBeat.o(18647);
@@ -54,15 +54,15 @@ public class KindaScanWidgetImpl
     };
     this.mScanBankCardResultListener = new c()
     {
-      public boolean callback(rn paramAnonymousrn)
+      public boolean callback(rw paramAnonymousrw)
       {
         AppMethodBeat.i(18649);
-        if ((!bt.isNullOrNil(paramAnonymousrn.dxb.cardId)) && (KindaScanWidgetImpl.this.mCallback != null))
+        if ((!bs.isNullOrNil(paramAnonymousrw.duO.cardId)) && (KindaScanWidgetImpl.this.mCallback != null))
         {
-          String str = paramAnonymousrn.dxb.cardId;
-          paramAnonymousrn = paramAnonymousrn.dxb.dxc;
+          String str = paramAnonymousrw.duO.cardId;
+          paramAnonymousrw = paramAnonymousrw.duO.duP;
           str = str.replaceAll("-", "").replaceAll(" ", "");
-          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymousrn));
+          KindaScanWidgetImpl.this.mCallback.call(KindaScanWidgetImpl.access$100(KindaScanWidgetImpl.this, str), str, KindaScanWidgetImpl.this.getBitmapByte(paramAnonymousrw));
         }
         KindaScanWidgetImpl.this.mScanBankCardResultListener.dead();
         AppMethodBeat.o(18649);
@@ -81,9 +81,9 @@ public class KindaScanWidgetImpl
       return null;
     }
     Encrypt localEncrypt = new Encrypt();
-    localEncrypt.setTimeStamp(y.fjW());
-    b.fjk();
-    if (b.fjl())
+    localEncrypt.setTimeStamp(y.fAm());
+    b.fzz();
+    if (b.fzA())
     {
       paramString = localEncrypt.encryptPasswdWithRSA2048(paramString);
       AppMethodBeat.o(18653);
@@ -130,7 +130,7 @@ public class KindaScanWidgetImpl
     Context localContext = KindaContext.get();
     if (localContext == null)
     {
-      ad.e("KindaScanWidgetImpl", "KindaScanWidgetImpl scan() KindaContext.get() return null!");
+      ac.e("KindaScanWidgetImpl", "KindaScanWidgetImpl scan() KindaContext.get() return null!");
       AppMethodBeat.o(18652);
       return;
     }

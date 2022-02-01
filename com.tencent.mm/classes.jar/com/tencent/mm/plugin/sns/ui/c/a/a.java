@@ -9,14 +9,14 @@ import com.tencent.mm.protocal.protobuf.TimeLineObject;
 public abstract class a
 {
   public View contentView;
-  public View jGG;
+  public View khe;
   protected TimeLineObject timeLineObject;
-  public p wwP;
-  public an xOO;
-  protected b xta;
-  public View xwu;
+  public p xIq;
+  protected b xLF;
+  public View yJk;
+  public an zbE;
   
-  public abstract void k(View paramView1, View paramView2);
+  public abstract void l(View paramView1, View paramView2);
   
   public void onPause() {}
   

@@ -15,18 +15,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class GameCenterListView
   extends ListView
 {
-  static boolean sfM;
-  static int sfO;
-  private View adC;
+  static boolean tnF;
+  static int tnH;
+  private View aew;
   private Context mContext;
   private Scroller mScroller;
-  private int pd;
-  private boolean sfJ;
-  private float sfK;
-  private boolean sfL;
-  private boolean sfN;
-  private ImageView sfP;
-  private ImageView sfQ;
+  private int qc;
+  private boolean tnC;
+  private float tnD;
+  private boolean tnE;
+  private boolean tnG;
+  private ImageView tnI;
+  private ImageView tnJ;
   
   public GameCenterListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,18 +36,18 @@ public class GameCenterListView
   
   public static void setCanPulldown(boolean paramBoolean)
   {
-    sfM = paramBoolean;
+    tnF = paramBoolean;
   }
   
   public static void setDefaultPadding(int paramInt)
   {
-    sfO = paramInt;
+    tnH = paramInt;
   }
   
   public void computeScroll()
   {
     AppMethodBeat.i(41947);
-    if (this.adC == null)
+    if (this.aew == null)
     {
       AppMethodBeat.o(41947);
       return;
@@ -55,12 +55,12 @@ public class GameCenterListView
     if (this.mScroller.computeScrollOffset())
     {
       int i = this.mScroller.getCurrY();
-      this.adC.setPadding(0, i, 0, 0);
-      float f = (sfO - i) / sfO * 255.0F;
+      this.aew.setPadding(0, i, 0, 0);
+      float f = (tnH - i) / tnH * 255.0F;
       i = (int)f;
       int j = (int)f;
-      this.sfQ.setAlpha(255 - i);
-      this.sfP.setAlpha(j);
+      this.tnJ.setAlpha(255 - i);
+      this.tnI.setAlpha(j);
       invalidate();
     }
     AppMethodBeat.o(41947);
@@ -70,7 +70,7 @@ public class GameCenterListView
   {
     AppMethodBeat.i(41946);
     boolean bool;
-    if ((!sfM) || (this.adC == null))
+    if ((!tnF) || (this.aew == null))
     {
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(41946);
@@ -91,31 +91,31 @@ public class GameCenterListView
             bool = super.dispatchTouchEvent(paramMotionEvent);
             AppMethodBeat.o(41946);
             return bool;
-            this.sfN = false;
-            this.sfK = paramMotionEvent.getRawY();
+            this.tnG = false;
+            this.tnD = paramMotionEvent.getRawY();
           }
-        } while (!this.sfL);
-        if (this.sfN)
+        } while (!this.tnE);
+        if (this.tnG)
         {
           AppMethodBeat.o(41946);
           return true;
         }
-        i = (int)(paramMotionEvent.getRawY() - this.sfK);
-        if (this.adC.getPaddingTop() > sfO + this.pd) {
+        i = (int)(paramMotionEvent.getRawY() - this.tnD);
+        if (this.aew.getPaddingTop() > tnH + this.qc) {
           break;
         }
-      } while ((i <= 0) || (Math.abs(i) < this.pd));
-      this.sfN = true;
-      this.mScroller.startScroll(0, this.adC.getPaddingTop(), 0, -this.adC.getPaddingTop(), 500);
-      this.sfP.setClickable(true);
+      } while ((i <= 0) || (Math.abs(i) < this.qc));
+      this.tnG = true;
+      this.mScroller.startScroll(0, this.aew.getPaddingTop(), 0, -this.aew.getPaddingTop(), 500);
+      this.tnI.setClickable(true);
       invalidate();
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(41946);
       return true;
-    } while ((this.adC.getPaddingTop() < -this.pd) || (i >= 0) || (Math.abs(i) < this.pd));
-    this.sfN = true;
-    this.mScroller.startScroll(0, 0, 0, sfO, 500);
+    } while ((this.aew.getPaddingTop() < -this.qc) || (i >= 0) || (Math.abs(i) < this.qc));
+    this.tnG = true;
+    this.mScroller.startScroll(0, 0, 0, tnH, 500);
     invalidate();
     paramMotionEvent.setAction(3);
     super.dispatchTouchEvent(paramMotionEvent);
@@ -127,7 +127,7 @@ public class GameCenterListView
   {
     AppMethodBeat.i(41944);
     super.onFinishInflate();
-    this.pd = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    this.qc = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
     this.mScroller = new Scroller(this.mContext);
     super.setOnScrollListener(new AbsListView.OnScrollListener()
     {
@@ -153,12 +153,12 @@ public class GameCenterListView
   {
     AppMethodBeat.i(41945);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (!this.sfJ))
+    if ((paramBoolean) && (!this.tnC))
     {
-      this.adC = getChildAt(0);
-      this.sfQ = ((ImageView)this.adC.findViewById(2131304853));
-      this.sfP = ((ImageView)this.adC.findViewById(2131297217));
-      this.sfJ = true;
+      this.aew = getChildAt(0);
+      this.tnJ = ((ImageView)this.aew.findViewById(2131304853));
+      this.tnI = ((ImageView)this.aew.findViewById(2131297217));
+      this.tnC = true;
     }
     AppMethodBeat.o(41945);
   }

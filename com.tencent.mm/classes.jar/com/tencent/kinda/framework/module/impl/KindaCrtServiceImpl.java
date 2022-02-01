@@ -7,11 +7,13 @@ import com.tencent.kinda.gen.KGenDigitalCrtReq;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.kinda.gen.VoidStringCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.wallet_core.c.ad;
 
 public class KindaCrtServiceImpl
-  implements KCrtService, com.tencent.mm.al.g
+  implements KCrtService, com.tencent.mm.ak.g
 {
   private final String TAG = "KindaCrtServiceImpl";
   private VoidStringCallback m_failCallback;
@@ -21,22 +23,22 @@ public class KindaCrtServiceImpl
   public String getCrtNo()
   {
     AppMethodBeat.i(18631);
-    com.tencent.mm.wallet_core.c.ad.fkc();
-    String str = com.tencent.mm.wallet_core.c.ad.getCrtNo();
+    ad.fAs();
+    String str = ad.getCrtNo();
     if (str.isEmpty())
     {
-      com.tencent.mm.sdk.platformtools.ad.e("KindaCrtServiceImpl", "crt_no is empty.");
+      ac.e("KindaCrtServiceImpl", "crt_no is empty.");
       AppMethodBeat.o(18631);
       return null;
     }
     Context localContext = KindaContext.get();
     if (localContext != null) {
-      com.tencent.mm.wallet_core.c.b.fjR().init(localContext);
+      com.tencent.mm.wallet_core.c.b.fAg().init(localContext);
     }
-    com.tencent.mm.wallet_core.c.b.fjR();
+    com.tencent.mm.wallet_core.c.b.fAg();
     if (!com.tencent.mm.wallet_core.c.b.isCertExist(str))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("KindaCrtServiceImpl", "crt_no is not exist.");
+      ac.e("KindaCrtServiceImpl", "crt_no is not exist.");
       AppMethodBeat.o(18631);
       return null;
     }
@@ -60,10 +62,10 @@ public class KindaCrtServiceImpl
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(18634);
-    com.tencent.mm.sdk.platformtools.ad.e("KindaCrtServiceImpl", "onSceneEnd. errCode: " + paramInt2 + " errMsg: " + paramString);
+    ac.e("KindaCrtServiceImpl", "onSceneEnd. errCode: " + paramInt2 + " errMsg: " + paramString);
     if ((paramn instanceof NetSceneKindaGenDigitalCert))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("KindaCrtServiceImpl", "NetSceneKindaGenDigitalCert");
+      ac.e("KindaCrtServiceImpl", "NetSceneKindaGenDigitalCert");
       if (paramInt2 != 0) {
         break label99;
       }
@@ -74,17 +76,17 @@ public class KindaCrtServiceImpl
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.afA().gcy.b(1580, this);
+      com.tencent.mm.kernel.g.agQ().ghe.b(1580, this);
       AppMethodBeat.o(18634);
       return;
       label89:
-      com.tencent.mm.sdk.platformtools.ad.e("KindaCrtServiceImpl", "m_successCallback is null!!");
+      ac.e("KindaCrtServiceImpl", "m_successCallback is null!!");
       continue;
       label99:
       if (this.m_failCallback != null) {
         this.m_failCallback.call(paramString);
       } else {
-        com.tencent.mm.sdk.platformtools.ad.e("KindaCrtServiceImpl", "m_failCallback is null!!");
+        ac.e("KindaCrtServiceImpl", "m_failCallback is null!!");
       }
     }
   }
@@ -99,9 +101,9 @@ public class KindaCrtServiceImpl
     }
     Context localContext = KindaContext.get();
     if (localContext != null) {
-      com.tencent.mm.wallet_core.c.b.fjR().init(localContext);
+      com.tencent.mm.wallet_core.c.b.fAg().init(localContext);
     }
-    com.tencent.mm.wallet_core.c.b.fjR();
+    com.tencent.mm.wallet_core.c.b.fAg();
     paramString = com.tencent.mm.wallet_core.c.b.genUserSig(paramString, paramArrayOfByte);
     AppMethodBeat.o(18632);
     return paramString;
@@ -113,10 +115,10 @@ public class KindaCrtServiceImpl
     this.m_req = paramKGenDigitalCrtReq;
     this.m_successCallback = paramVoidCallback;
     this.m_failCallback = paramVoidStringCallback;
-    com.tencent.mm.kernel.g.afA().gcy.a(1580, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(1580, this);
     paramVoidCallback = new NetSceneKindaGenDigitalCert(paramKGenDigitalCrtReq);
-    com.tencent.mm.sdk.platformtools.ad.i("KindaCrtServiceImpl", "The Param of startGenDigitalCrtImpl is: " + paramKGenDigitalCrtReq.toString());
-    com.tencent.mm.kernel.g.aeS().a(paramVoidCallback, 0);
+    ac.i("KindaCrtServiceImpl", "The Param of startGenDigitalCrtImpl is: " + paramKGenDigitalCrtReq.toString());
+    com.tencent.mm.kernel.g.agi().a(paramVoidCallback, 0);
     AppMethodBeat.o(18633);
   }
 }

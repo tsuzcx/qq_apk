@@ -6,8 +6,8 @@ import junit.framework.Assert;
 
 public class d
 {
-  public String dcx;
-  public f fZI;
+  public String cZV;
+  public f geo;
   private String process;
   
   public <T extends b> d(String paramString, Class<T> paramClass)
@@ -16,14 +16,14 @@ public class d
     Assert.assertNotNull(paramString);
     Assert.assertNotNull(paramClass);
     this.process = paramString;
-    this.dcx = paramClass.getName();
-    this.fZI = new f(paramString);
+    this.cZV = paramClass.getName();
+    this.geo = new f(paramString);
     AppMethodBeat.o(158789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.d
  * JD-Core Version:    0.7.0.1
  */

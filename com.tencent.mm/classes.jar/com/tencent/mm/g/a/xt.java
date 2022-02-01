@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xt
   extends b
 {
-  public a dDV;
+  public a dBf;
   
   public xt()
   {
@@ -15,21 +15,21 @@ public final class xt
   
   private xt(byte paramByte)
   {
-    AppMethodBeat.i(117552);
-    this.dDV = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91225);
+    this.dBf = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(117552);
+    AppMethodBeat.o(91225);
   }
   
   public static final class a
   {
-    public String duk;
+    public String dBg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.xt
  * JD-Core Version:    0.7.0.1
  */

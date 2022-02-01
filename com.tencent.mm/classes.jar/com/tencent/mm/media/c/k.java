@@ -1,14 +1,14 @@
 package com.tencent.mm.media.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.j;
 import d.l;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/PassthroughDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/PassthroughDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
 public final class k
   implements c
 {
@@ -20,7 +20,7 @@ public final class k
     d.g.b.k.h(paramList, "frames");
     d.g.b.k.h(paramMap, "parents");
     d.g.b.k.h(paramMap1, "outPts");
-    ad.i(this.TAG, "use passthrough decode strategy");
+    ac.i(this.TAG, "use passthrough decode strategy");
     paramList = ((Iterable)paramList).iterator();
     long l1 = -1L;
     if (paramList.hasNext())

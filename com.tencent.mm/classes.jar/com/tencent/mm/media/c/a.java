@@ -1,7 +1,7 @@
 package com.tencent.mm.media.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/CfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/CfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
 public final class a
   implements c
 {
@@ -21,7 +21,7 @@ public final class a
     k.h(paramList, "frames");
     k.h(paramMap, "parents");
     k.h(paramMap1, "outPts");
-    ad.i(this.TAG, "use cfr decode strategy");
+    ac.i(this.TAG, "use cfr decode strategy");
     long l3 = 0L;
     long l2 = -1L;
     long l5 = -1L;

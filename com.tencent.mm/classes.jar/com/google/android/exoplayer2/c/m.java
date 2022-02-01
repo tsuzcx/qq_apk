@@ -16,17 +16,17 @@ public abstract interface m
   
   public static final class a
   {
-    public final int aVY;
-    public final int aVZ;
-    public final int aXc;
-    public final byte[] aXd;
+    public final int aWL;
+    public final int aWM;
+    public final int aXO;
+    public final byte[] aXP;
     
     public a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
     {
-      this.aXc = paramInt1;
-      this.aXd = paramArrayOfByte;
-      this.aVY = paramInt2;
-      this.aVZ = paramInt3;
+      this.aXO = paramInt1;
+      this.aXP = paramArrayOfByte;
+      this.aWL = paramInt2;
+      this.aWM = paramInt3;
     }
     
     public final boolean equals(Object paramObject)
@@ -43,7 +43,7 @@ public abstract interface m
         return false;
       }
       paramObject = (a)paramObject;
-      if ((this.aXc == paramObject.aXc) && (this.aVY == paramObject.aVY) && (this.aVZ == paramObject.aVZ) && (Arrays.equals(this.aXd, paramObject.aXd)))
+      if ((this.aXO == paramObject.aXO) && (this.aWL == paramObject.aWL) && (this.aWM == paramObject.aWM) && (Arrays.equals(this.aXP, paramObject.aXP)))
       {
         AppMethodBeat.o(92188);
         return true;
@@ -55,10 +55,10 @@ public abstract interface m
     public final int hashCode()
     {
       AppMethodBeat.i(92189);
-      int i = this.aXc;
-      int j = Arrays.hashCode(this.aXd);
-      int k = this.aVY;
-      int m = this.aVZ;
+      int i = this.aXO;
+      int j = Arrays.hashCode(this.aXP);
+      int k = this.aWL;
+      int m = this.aWM;
       AppMethodBeat.o(92189);
       return ((i * 31 + j) * 31 + k) * 31 + m;
     }

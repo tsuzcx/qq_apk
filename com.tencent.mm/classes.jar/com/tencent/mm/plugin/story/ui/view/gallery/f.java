@@ -6,32 +6,32 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.h.h;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GallerySwipeBackConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "galleryView", "Landroid/view/View;", "galleryScaleListener", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "(Landroid/view/View;Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;)V", "consumed", "", "currScrollType", "", "downX", "", "downY", "getGalleryScaleListener", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "getGalleryView", "()Landroid/view/View;", "maxDownX", "moveExitY", "totalMovedX", "totalMovedY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "touchRelease", "touchTranslate", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GallerySwipeBackConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "galleryView", "Landroid/view/View;", "galleryScaleListener", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "(Landroid/view/View;Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;)V", "consumed", "", "currScrollType", "", "downX", "", "downY", "getGalleryScaleListener", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "getGalleryView", "()Landroid/view/View;", "maxDownX", "moveExitY", "totalMovedX", "totalMovedY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "touchRelease", "touchTranslate", "Companion", "plugin-story_release"})
 public final class f
   extends com.tencent.mm.ui.j.a
 {
   private static final String TAG = "MicroMsg.GallerySwipeBackConsumer";
-  public static final a yyz;
-  private float cEZ;
-  private float cFa;
-  private VelocityTracker lr;
-  private int yxX;
-  private int yys;
-  private final int yyt;
-  private float yyu;
-  private float yyv;
-  private boolean yyw;
-  private final View yyx;
-  private final StoryGalleryView.b yyy;
+  public static final f.a zLO;
+  private float cCh;
+  private float cCi;
+  private VelocityTracker mq;
+  private int zLH;
+  private final int zLI;
+  private float zLJ;
+  private float zLK;
+  private boolean zLL;
+  private final View zLM;
+  private final StoryGalleryView.b zLN;
+  private int zLm;
   
   static
   {
     AppMethodBeat.i(120378);
-    yyz = new a((byte)0);
+    zLO = new f.a((byte)0);
     TAG = "MicroMsg.GallerySwipeBackConsumer";
     AppMethodBeat.o(120378);
   }
@@ -39,25 +39,25 @@ public final class f
   public f(View paramView, StoryGalleryView.b paramb)
   {
     AppMethodBeat.i(120377);
-    this.yyx = paramView;
-    this.yyy = paramb;
-    this.yys = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 32);
-    this.yyt = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 96);
+    this.zLM = paramView;
+    this.zLN = paramb;
+    this.zLH = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 32);
+    this.zLI = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 96);
     AppMethodBeat.o(120377);
   }
   
-  private final void mL()
+  private final void mV()
   {
     AppMethodBeat.i(120376);
-    VelocityTracker localVelocityTracker = this.lr;
+    VelocityTracker localVelocityTracker = this.mq;
     if (localVelocityTracker != null) {
       localVelocityTracker.clear();
     }
-    localVelocityTracker = this.lr;
+    localVelocityTracker = this.mq;
     if (localVelocityTracker != null) {
       localVelocityTracker.recycle();
     }
-    this.lr = null;
+    this.mq = null;
     AppMethodBeat.o(120376);
   }
   
@@ -67,10 +67,10 @@ public final class f
     boolean bool = true;
     AppMethodBeat.i(120375);
     k.h(paramMotionEvent, "event");
-    if (this.lr == null) {
-      this.lr = VelocityTracker.obtain();
+    if (this.mq == null) {
+      this.mq = VelocityTracker.obtain();
     }
-    VelocityTracker localVelocityTracker = this.lr;
+    VelocityTracker localVelocityTracker = this.mq;
     if (localVelocityTracker != null) {
       localVelocityTracker.addMovement(paramMotionEvent);
     }
@@ -79,19 +79,19 @@ public final class f
     }
     for (;;)
     {
-      paramBoolean = this.yyw;
+      paramBoolean = this.zLL;
       AppMethodBeat.o(120375);
       return paramBoolean;
-      this.cEZ = paramMotionEvent.getRawX();
-      this.cFa = paramMotionEvent.getRawY();
+      this.cCh = paramMotionEvent.getRawX();
+      this.cCi = paramMotionEvent.getRawY();
       continue;
       if (paramBoolean)
       {
-        this.yxX = paramInt;
+        this.zLm = paramInt;
         if (paramInt == 8)
         {
           paramBoolean = bool;
-          if (this.cEZ < this.yys) {}
+          if (this.cCh < this.zLH) {}
         }
         else
         {
@@ -101,52 +101,52 @@ public final class f
           paramBoolean = bool;
         }
         label154:
-        this.yyw = paramBoolean;
+        this.zLL = paramBoolean;
         float f1 = paramMotionEvent.getRawX();
         float f2 = paramMotionEvent.getRawY();
-        this.yyu = (f1 - this.cEZ);
-        this.yyv = (f2 - this.cFa);
-        if (this.yyw)
+        this.zLJ = (f1 - this.cCh);
+        this.zLK = (f2 - this.cCi);
+        if (this.zLL)
         {
-          this.yyx.animate().cancel();
-          if (this.yxX == 2) {}
-          for (f1 = this.yyv;; f1 = this.yyu * this.yyx.getHeight() / this.yyx.getWidth())
+          this.zLM.animate().cancel();
+          if (this.zLm == 2) {}
+          for (f1 = this.zLK;; f1 = this.zLJ * this.zLM.getHeight() / this.zLM.getWidth())
           {
             f2 = f1;
             if (f1 < 0.0F) {
               f2 = 0.0F;
             }
-            this.yyx.setTranslationY(f2);
-            f1 = f2 / this.yyx.getHeight();
-            this.yyy.bx(0.8F - f1);
+            this.zLM.setTranslationY(f2);
+            f1 = f2 / this.zLM.getHeight();
+            this.zLN.bF(0.8F - f1);
             break;
             label277:
             paramBoolean = false;
             break label154;
           }
-          if (this.yyw)
+          if (this.zLL)
           {
-            paramMotionEvent = this.lr;
+            paramMotionEvent = this.mq;
             if (paramMotionEvent != null) {
               paramMotionEvent.computeCurrentVelocity(1000);
             }
-            paramMotionEvent = this.lr;
+            paramMotionEvent = this.mq;
             if (paramMotionEvent == null) {
               break label445;
             }
             f1 = paramMotionEvent.getXVelocity();
             label347:
-            paramMotionEvent = this.lr;
+            paramMotionEvent = this.mq;
             if (paramMotionEvent == null) {
               break label451;
             }
             f2 = paramMotionEvent.getYVelocity();
             label362:
-            if (this.yxX != 2) {
+            if (this.zLm != 2) {
               break label462;
             }
             paramInt = i;
-            if (this.yyv <= this.yyt)
+            if (this.zLK <= this.zLI)
             {
               if (f2 <= 0.0F) {
                 break label457;
@@ -157,17 +157,17 @@ public final class f
             if (paramInt == 0) {
               break label499;
             }
-            paramMotionEvent = h.ynv;
-            h.OB(13);
-            this.yyy.dKU();
+            paramMotionEvent = h.zAU;
+            h.QH(13);
+            this.zLN.anM();
           }
           for (;;)
           {
-            this.yxX = 0;
-            this.yyu = 0.0F;
-            this.yyv = 0.0F;
-            this.yyw = false;
-            mL();
+            this.zLm = 0;
+            this.zLJ = 0.0F;
+            this.zLK = 0.0F;
+            this.zLL = false;
+            mV();
             break;
             label445:
             f1 = 0.0F;
@@ -180,7 +180,7 @@ public final class f
             break label396;
             label462:
             paramInt = i;
-            if (this.yyu > this.yyx.getWidth() / 2) {
+            if (this.zLJ > this.zLM.getWidth() / 2) {
               break label396;
             }
             paramInt = i;
@@ -190,30 +190,27 @@ public final class f
             paramInt = 0;
             break label396;
             label499:
-            this.yyx.animate().translationY(0.0F).start();
+            this.zLM.animate().translationY(0.0F).start();
           }
-          this.yxX = 0;
-          this.yyx.setTranslationY(0.0F);
-          this.yyu = 0.0F;
-          this.yyv = 0.0F;
-          this.yyw = false;
-          mL();
+          this.zLm = 0;
+          this.zLM.setTranslationY(0.0F);
+          this.zLJ = 0.0F;
+          this.zLK = 0.0F;
+          this.zLL = false;
+          mV();
         }
       }
     }
   }
   
-  public final int dLn()
+  public final int dZN()
   {
     return 10;
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GallerySwipeBackConsumer$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.f
  * JD-Core Version:    0.7.0.1
  */

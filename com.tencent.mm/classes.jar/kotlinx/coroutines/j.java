@@ -1,22 +1,27 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.d;
 import d.g.a.b;
 import d.l;
+import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"getOrCreateCancellableContinuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "T", "delegate", "Lkotlin/coroutines/Continuation;", "suspendAtomicCancellableCoroutine", "block", "Lkotlin/Function1;", "Lkotlinx/coroutines/CancellableContinuation;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "holdCancellability", "", "(ZLkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "suspendAtomicCancellableCoroutineReusable", "suspendCancellableCoroutine", "disposeOnCancellation", "handle", "Lkotlinx/coroutines/DisposableHandle;", "removeOnCancellation", "node", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "kotlinx-coroutines-core"})
-public final class j
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CancellableContinuation;", "T", "Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "cancel", "cause", "", "completeResume", "", "token", "", "initCancellability", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "resume", "value", "onCancellation", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "tryResume", "idempotent", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "tryResumeWithException", "exception", "resumeUndispatched", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Ljava/lang/Object;)V", "resumeUndispatchedWithException", "kotlinx-coroutines-core"})
+public abstract interface j<T>
+  extends d<T>
 {
-  public static final void a(h<?> paramh, au paramau)
-  {
-    AppMethodBeat.i(190031);
-    paramh.C((b)new av(paramau));
-    AppMethodBeat.o(190031);
-  }
+  public abstract void K(b<? super Throwable, y> paramb);
+  
+  public abstract void a(ab paramab, T paramT);
+  
+  public abstract void fD(Object paramObject);
+  
+  public abstract boolean isCompleted();
+  
+  public abstract Object v(Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.j
  * JD-Core Version:    0.7.0.1
  */

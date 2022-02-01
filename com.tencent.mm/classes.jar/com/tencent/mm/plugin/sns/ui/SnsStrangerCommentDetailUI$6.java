@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h.c;
 
 final class SnsStrangerCommentDetailUI$6
@@ -12,7 +12,7 @@ final class SnsStrangerCommentDetailUI$6
 {
   SnsStrangerCommentDetailUI$6(SnsStrangerCommentDetailUI paramSnsStrangerCommentDetailUI) {}
   
-  public final void kM(int paramInt)
+  public final void kG(int paramInt)
   {
     AppMethodBeat.i(99144);
     switch (paramInt)
@@ -22,23 +22,23 @@ final class SnsStrangerCommentDetailUI$6
     {
       AppMethodBeat.o(99144);
       return;
-      if (SnsStrangerCommentDetailUI.c(this.xEX).ZM())
+      if (SnsStrangerCommentDetailUI.c(this.yRL).aaH())
       {
-        w.n(SnsStrangerCommentDetailUI.c(this.xEX));
-        SnsStrangerCommentDetailUI.c(this.xEX).Zn();
-        a.hYu.Ll();
+        w.n(SnsStrangerCommentDetailUI.c(this.yRL));
+        SnsStrangerCommentDetailUI.c(this.yRL).aai();
+        a.iyy.Lj();
         AppMethodBeat.o(99144);
         return;
       }
-      w.m(SnsStrangerCommentDetailUI.c(this.xEX));
-      SnsStrangerCommentDetailUI.c(this.xEX).Zm();
-      a.hYu.Ll();
+      w.m(SnsStrangerCommentDetailUI.c(this.yRL));
+      SnsStrangerCommentDetailUI.c(this.yRL).aah();
+      a.iyy.Lj();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsStrangerCommentDetailUI.6
  * JD-Core Version:    0.7.0.1
  */

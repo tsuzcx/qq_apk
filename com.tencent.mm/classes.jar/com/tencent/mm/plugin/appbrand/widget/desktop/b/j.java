@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 
-public abstract interface j<VH extends RecyclerView.v>
+public abstract interface j<VH extends RecyclerView.w>
 {
   public abstract boolean O(VH paramVH);
   
@@ -14,7 +14,7 @@ public abstract interface j<VH extends RecyclerView.v>
   
   public abstract void a(RecyclerView paramRecyclerView, VH paramVH, int paramInt, Runnable paramRunnable);
   
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2, RecyclerView.v paramv, int paramInt);
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2, RecyclerView.w paramw, int paramInt);
   
   public abstract boolean a(RecyclerView paramRecyclerView, VH paramVH1, VH paramVH2, int paramInt1, int paramInt2);
   

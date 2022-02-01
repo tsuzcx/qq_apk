@@ -18,17 +18,17 @@ public final class c<T, V>
     super(paramb);
   }
   
-  public final T aph()
+  public final T avY()
   {
     return null;
   }
   
-  public final V bP(V paramV)
+  public final V bN(V paramV)
   {
     return paramV;
   }
   
-  public final V bR(V paramV)
+  public final V bP(V paramV)
   {
     return paramV;
   }
@@ -41,14 +41,14 @@ public final class c<T, V>
   public final Map<T, V> snapshot()
   {
     AppMethodBeat.i(156489);
-    Map localMap = this.gER.snapshot();
+    Map localMap = this.hfs.snapshot();
     AppMethodBeat.o(156489);
     return localMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ import java.io.Serializable;
 public final class v$b
   implements Serializable
 {
-  public float Jht;
+  public double KUM;
   
   public final String toString()
   {
-    AppMethodBeat.i(128954);
-    float f = this.Jht;
-    AppMethodBeat.o(128954);
-    return String.valueOf(f);
+    AppMethodBeat.i(186147);
+    double d = this.KUM;
+    AppMethodBeat.o(186147);
+    return String.valueOf(d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     d.g.b.v.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,35 +5,35 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.HashMap;
 import java.util.Map;
 
 final class b
   extends a.a
 {
-  private final Map<String, a.b> wqU;
+  private final Map<String, a.b> xCl;
   
   b()
   {
     AppMethodBeat.i(151590);
-    this.wqU = new HashMap();
-    this.wqU.put("xiaomi", new a.b()
+    this.xCl = new HashMap();
+    this.xCl.put("xiaomi", new a.b()
     {
-      protected final Intent dqg()
+      protected final Intent dEq()
       {
         AppMethodBeat.i(151587);
         Intent localIntent = new Intent();
         localIntent.setComponent(new ComponentName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity"));
-        localIntent.putExtra("extra_pkgname", aj.getPackageName());
+        localIntent.putExtra("extra_pkgname", ai.getPackageName());
         AppMethodBeat.o(151587);
         return localIntent;
       }
     });
-    this.wqU.put("oppo", new a.b()
+    this.xCl.put("oppo", new a.b()
     {
-      protected final Intent dqg()
+      protected final Intent dEq()
       {
         AppMethodBeat.i(151588);
         Intent localIntent = new Intent();
@@ -43,9 +43,9 @@ final class b
         return localIntent;
       }
     });
-    this.wqU.put("vivo", new a.b()
+    this.xCl.put("vivo", new a.b()
     {
-      protected final Intent dqg()
+      protected final Intent dEq()
       {
         AppMethodBeat.i(151589);
         Intent localIntent = new Intent();
@@ -60,13 +60,13 @@ final class b
   private static String getManufacturer()
   {
     AppMethodBeat.i(151594);
-    String str = ae.bW(aj.getContext()).toLowerCase();
+    String str = ae.bZ(ai.getContext()).toLowerCase();
     AppMethodBeat.o(151594);
     return str;
   }
   
   /* Error */
-  public final int dqd()
+  public final int dEn()
   {
     // Byte code:
     //   0: aconst_null
@@ -75,7 +75,7 @@ final class b
     //   4: astore 5
     //   6: ldc 75
     //   8: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   11: invokestatic 59	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   11: invokestatic 59	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   14: astore 6
     //   16: invokestatic 77	com/tencent/mm/plugin/x/a/b:getManufacturer	()Ljava/lang/String;
     //   19: astore_3
@@ -87,7 +87,7 @@ final class b
     //   29: iconst_0
     //   30: aload_3
     //   31: aastore
-    //   32: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   32: invokestatic 88	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   35: aload_3
     //   36: invokevirtual 91	java/lang/String:hashCode	()I
     //   39: lookupswitch	default:+49->88, -1206476313:+106->145, -759499589:+120->159, 3418016:+134->173, 3620012:+148->187, 99462250:+92->131
@@ -229,7 +229,7 @@ final class b
     //   370: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   373: new 171	android/content/ComponentName
     //   376: dup
-    //   377: invokestatic 59	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   377: invokestatic 59	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   380: ldc 173
     //   382: invokespecial 176	android/content/ComponentName:<init>	(Landroid/content/Context;Ljava/lang/String;)V
     //   385: invokevirtual 179	android/content/ComponentName:flattenToString	()Ljava/lang/String;
@@ -291,7 +291,7 @@ final class b
     //   496: iload_1
     //   497: invokestatic 214	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   500: invokevirtual 218	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   503: invokestatic 221	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   503: invokestatic 221	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   506: iload_1
     //   507: bipush 16
     //   509: if_icmpne +22 -> 531
@@ -325,7 +325,7 @@ final class b
     //   571: invokevirtual 229	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   574: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   577: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   580: invokestatic 232	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   580: invokestatic 232	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   583: aload 4
     //   585: ifnull +10 -> 595
     //   588: aload 4
@@ -385,13 +385,13 @@ final class b
     //   492	506	633	java/lang/Exception
   }
   
-  public final boolean dqe()
+  public final boolean dEo()
   {
     AppMethodBeat.i(151593);
     String str = getManufacturer();
-    ad.i("MicroMsg.AppPermissionSettingAdapterFactory", "[canJumpSettingPage] manufacturer = %s", new Object[] { str });
-    a.b localb = (a.b)this.wqU.get(str);
-    if ((this.wqU.containsKey(str)) && (localb.dqf()))
+    ac.i("MicroMsg.AppPermissionSettingAdapterFactory", "[canJumpSettingPage] manufacturer = %s", new Object[] { str });
+    a.b localb = (a.b)this.xCl.get(str);
+    if ((this.xCl.containsKey(str)) && (localb.dEp()))
     {
       AppMethodBeat.o(151593);
       return true;
@@ -400,21 +400,21 @@ final class b
     return false;
   }
   
-  public final void fQ(Context paramContext)
+  public final void gc(Context paramContext)
   {
     AppMethodBeat.i(151592);
-    Object localObject = ae.bW(paramContext).toLowerCase();
-    ad.i("MicroMsg.AppPermissionSettingAdapterFactory", "[jumpPermissionSettingPage] manufacturer = %s", new Object[] { localObject });
-    localObject = (a.b)this.wqU.get(localObject);
+    Object localObject = ae.bZ(paramContext).toLowerCase();
+    ac.i("MicroMsg.AppPermissionSettingAdapterFactory", "[jumpPermissionSettingPage] manufacturer = %s", new Object[] { localObject });
+    localObject = (a.b)this.xCl.get(localObject);
     if (localObject != null) {
-      ((a.b)localObject).fR(paramContext);
+      ((a.b)localObject).gd(paramContext);
     }
     AppMethodBeat.o(151592);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.x.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,19 @@ package com.d.a.b;
 
 public final class n
 {
-  int LZ = 0;
-  int bXl;
-  int bXn;
-  m[] bXo;
-  n bXp = null;
+  int MW = 0;
+  int bUT;
+  int bUV;
+  m[] bUW;
+  n bUX = null;
   
   n() {}
   
   public n(int paramInt1, int paramInt2, m[] paramArrayOfm)
   {
-    this.bXl = paramInt1;
-    this.bXn = paramInt2;
-    this.bXo = paramArrayOfm;
+    this.bUT = paramInt1;
+    this.bUV = paramInt2;
+    this.bUW = paramArrayOfm;
   }
 }
 

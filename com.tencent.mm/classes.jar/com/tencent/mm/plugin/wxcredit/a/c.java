@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,12 +12,12 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public double BKl;
+  public double Dct;
   
   public c(List<l> paramList, String paramString)
   {
     AppMethodBeat.i(72301);
-    this.BKl = 0.0D;
+    this.Dct = 0.0D;
     HashMap localHashMap = new HashMap();
     localHashMap.put("session_key", paramString);
     paramList = paramList.iterator();
@@ -26,17 +26,17 @@ public final class c
     {
       paramString = (l)paramList.next();
       localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.id);
-      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.teH);
+      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.umW);
       localHashMap.put("level_".concat(String.valueOf(i)), paramString.level);
-      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.BKG);
+      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.DcO);
       i += 1;
-      if ((paramString.BKI == null) || (!"Y".equals(paramString.teH))) {
+      if ((paramString.DcQ == null) || (!"Y".equals(paramString.umW))) {
         break label324;
       }
-      localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.BKI.id);
-      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.BKI.teH);
-      localHashMap.put("level_".concat(String.valueOf(i)), paramString.BKI.level);
-      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.BKI.BKG);
+      localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.DcQ.id);
+      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.DcQ.umW);
+      localHashMap.put("level_".concat(String.valueOf(i)), paramString.DcQ.level);
+      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.DcQ.DcO);
       i += 1;
     }
     label324:
@@ -58,7 +58,7 @@ public final class c
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72302);
-    ad.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72302);
@@ -66,13 +66,13 @@ public final class c
     }
     try
     {
-      this.BKl = (paramJSONObject.getInt("credit_amount") / 100.0D);
+      this.Dct = (paramJSONObject.getInt("credit_amount") / 100.0D);
       AppMethodBeat.o(72302);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+      ac.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
       AppMethodBeat.o(72302);
     }
   }

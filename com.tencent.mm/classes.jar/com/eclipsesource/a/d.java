@@ -23,7 +23,7 @@ final class d
   final void a(i parami)
   {
     AppMethodBeat.i(74711);
-    parami.ae(this.string);
+    parami.af(this.string);
     AppMethodBeat.o(74711);
   }
   
@@ -64,7 +64,7 @@ final class d
     return true;
   }
   
-  public final int qu()
+  public final int qE()
   {
     AppMethodBeat.i(74712);
     int i = Integer.parseInt(this.string, 10);
@@ -72,7 +72,7 @@ final class d
     return i;
   }
   
-  public final long qv()
+  public final long qF()
   {
     AppMethodBeat.i(74713);
     long l = Long.parseLong(this.string, 10);
@@ -80,7 +80,7 @@ final class d
     return l;
   }
   
-  public final double qw()
+  public final double qG()
   {
     AppMethodBeat.i(74714);
     double d = Double.parseDouble(this.string);

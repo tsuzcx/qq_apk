@@ -12,31 +12,25 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.sns.device.appstore.e;
+import com.tencent.mm.plugin.sns.ad.d.i;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.model.an;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.al;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.protocal.protobuf.bpk;
-import com.tencent.mm.protocal.protobuf.cud;
-import com.tencent.mm.protocal.protobuf.cuo;
-import com.tencent.mm.protocal.protobuf.dg;
-import com.tencent.mm.protocal.protobuf.yk;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bc;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.protocal.protobuf.bub;
+import com.tencent.mm.protocal.protobuf.daa;
+import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.storage.bj;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,13 +40,13 @@ import org.json.JSONObject;
 
 public final class j
 {
-  private static void a(Context paramContext, Intent paramIntent, final String paramString1, String paramString2, final String paramString3, final String paramString4)
+  private static void a(Context paramContext, Intent paramIntent, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(187274);
+    AppMethodBeat.i(200054);
     if ((paramContext == null) || (paramIntent == null))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "startMarketActivity input param is error");
-      AppMethodBeat.o(187274);
+      ac.e("SnsAdUtil", "startMarketActivity input param is error");
+      AppMethodBeat.o(200054);
       return;
     }
     try
@@ -60,66 +54,48 @@ public final class j
       if (!(paramContext instanceof Activity)) {
         paramIntent.addFlags(268435456);
       }
-      String str = bt.by(y.getStringExtra(paramIntent, "market_app_name"), "");
-      al.a(paramContext, paramIntent.getPackage(), "", paramIntent, str, new am()
-      {
-        public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
-        {
-          AppMethodBeat.i(187260);
-          if (paramAnonymousBoolean1)
-          {
-            j.a(this.hzE, paramString3, paramString4, 2, "0");
-            e locale = e.v(paramString1, this.hzE, paramString3, paramString4);
-            if (locale != null) {
-              com.tencent.mm.plugin.sns.device.appstore.d.a(locale);
-            }
-            AppMethodBeat.o(187260);
-            return;
-          }
-          j.a(this.hzE, paramString3, paramString4, 2, "2");
-          AppMethodBeat.o(187260);
-        }
-      });
-      AppMethodBeat.o(187274);
+      String str = bs.bG(x.getStringExtra(paramIntent, "market_app_name"), "");
+      al.a(paramContext, paramIntent.getPackage(), "", paramIntent, str, new j.1(paramString2, paramString3, paramString4, paramString1));
+      AppMethodBeat.o(200054);
       return;
     }
     catch (Throwable paramContext)
     {
-      a(paramString2, paramString3, paramString4, 2, "1");
-      AppMethodBeat.o(187274);
+      b(paramString2, paramString3, paramString4, 2, "1");
+      AppMethodBeat.o(200054);
     }
   }
   
-  public static void a(Context paramContext, String paramString1, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad paramad, int paramInt, long paramLong, String paramString2)
+  public static void a(Context paramContext, String paramString1, ae paramae, int paramInt, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(187264);
-    label434:
+    AppMethodBeat.i(200044);
+    label433:
     for (;;)
     {
       try
       {
         Intent localIntent = new Intent();
         Object localObject = paramString1;
-        if (!TextUtils.isEmpty(paramad.iYE))
+        if (!TextUtils.isEmpty(paramae.jyU))
         {
           localObject = paramString1;
-          if (!TextUtils.isEmpty(paramad.wSi)) {
-            localObject = al.n(paramString1, new String[] { "traceid=" + paramad.iYE + "&aid=" + paramad.wSi });
+          if (!TextUtils.isEmpty(paramae.yeO)) {
+            localObject = al.n(paramString1, new String[] { "traceid=" + paramae.jyU + "&aid=" + paramae.yeO });
           }
         }
-        paramString1 = paramad.wXl;
+        paramString1 = paramae.yka;
         if (TextUtils.isEmpty(paramString1))
         {
-          paramString1 = paramad.dvK;
-          com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "use orig_UxInfo:".concat(String.valueOf(paramString1)));
-          localObject = q.iy((String)localObject, paramString1);
+          paramString1 = paramae.dtx;
+          ac.i("SnsAdUtil", "adLandingJumpWebPageUI, use orig_UxInfo:".concat(String.valueOf(paramString1)));
+          localObject = q.iV((String)localObject, paramString1);
           q.g(localIntent, paramString1);
-          com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "open url %s", new Object[] { localObject });
+          ac.i("SnsAdUtil", "open url %s", new Object[] { localObject });
           localIntent.putExtra("rawUrl", (String)localObject);
           localIntent.putExtra("useJs", true);
           localIntent.putExtra("type", -255);
           localIntent.putExtra("geta8key_scene", 2);
-          if (paramad.bizId == 0)
+          if (paramae.bizId == 0)
           {
             localObject = new SnsAdClick(paramInt, paramLong);
             Bundle localBundle = new Bundle();
@@ -129,45 +105,45 @@ public final class j
             }
             localIntent.putExtra("jsapiargs", localBundle);
           }
-          if (((paramContext instanceof Activity)) && (paramad.bizId == 2))
+          if (((paramContext instanceof Activity)) && (paramae.bizId == 2))
           {
-            paramad = ((Activity)paramContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
+            paramae = ((Activity)paramContext).getIntent().getStringExtra("sns_landing_pages_sessionId");
             paramString1 = ((Activity)paramContext).getIntent().getStringExtra("sns_landing_pages_ad_buffer");
-            if (!bt.isNullOrNil(paramad))
+            if (!bs.isNullOrNil(paramae))
             {
               paramLong = System.currentTimeMillis() / 1000L;
-              if (bt.isNullOrNil(paramString1)) {
-                break label434;
+              if (bs.isNullOrNil(paramString1)) {
+                break label433;
               }
-              paramString1 = String.format("official_mall_%s_%s_%s_%s", new Object[] { paramString1, paramad, paramString2, String.valueOf(paramLong) });
+              paramString1 = String.format("official_mall_%s_%s_%s_%s", new Object[] { paramString1, paramae, paramString2, String.valueOf(paramLong) });
               localIntent.putExtra("prePublishId", paramString1);
               localIntent.putExtra("KPublisherId", paramString1);
               localIntent.putExtra("pay_channel", 47);
             }
           }
-          com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-          AppMethodBeat.o(187264);
+          com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+          AppMethodBeat.o(200044);
         }
         else
         {
-          com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "use updated_UxInfo:".concat(String.valueOf(paramString1)));
+          ac.i("SnsAdUtil", "adLandingJumpWebPageUI, use updated_UxInfo:".concat(String.valueOf(paramString1)));
           continue;
         }
         paramString1 = "";
       }
       catch (Throwable paramContext)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "adLandingJumpWebPageUI exp=" + paramContext.toString());
-        AppMethodBeat.o(187264);
+        ac.e("SnsAdUtil", "adLandingJumpWebPageUI exp=" + paramContext.toString());
+        AppMethodBeat.o(200044);
         return;
       }
     }
   }
   
-  public static void a(SnsAdClick paramSnsAdClick, com.tencent.mm.plugin.sns.a.b.i parami, p paramp, int paramInt)
+  public static void a(SnsAdClick paramSnsAdClick, i parami, p paramp, int paramInt)
   {
     long l2 = 0L;
-    AppMethodBeat.i(187269);
+    AppMethodBeat.i(200049);
     try
     {
       StringBuilder localStringBuilder = new StringBuilder("appendSnsAdClickParams, snsAdStatistic==null?");
@@ -175,195 +151,256 @@ public final class j
       if (parami == null)
       {
         bool = true;
-        com.tencent.mm.sdk.platformtools.ad.d("SnsAdUtil", bool + ", clickPos=" + paramInt);
+        ac.d("SnsAdUtil", bool + ", clickPos=" + paramInt);
         if (parami != null) {
-          break label93;
+          break label90;
         }
         l1 = 0L;
-        label60:
-        paramSnsAdClick.hte = l1;
+        label58:
+        paramSnsAdClick.hTG = l1;
         if (parami != null) {
-          break label107;
+          break label104;
         }
       }
-      label93:
-      label107:
-      for (long l1 = l2;; l1 = parami.so(paramp.field_snsId))
+      label90:
+      label104:
+      for (long l1 = l2;; l1 = parami.wR(paramp.field_snsId))
       {
-        paramSnsAdClick.htf = l1;
-        AppMethodBeat.o(187269);
+        paramSnsAdClick.hTH = l1;
+        AppMethodBeat.o(200049);
         return;
         bool = false;
         break;
-        l1 = parami.ep(paramp.dxX(), paramInt);
-        break label60;
+        l1 = parami.ex(paramp.dMu(), paramInt);
+        break label58;
       }
       return;
     }
     catch (Exception paramSnsAdClick)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "appendSnsAdClickParams exp=" + paramSnsAdClick.toString() + ", clockPos=" + paramInt);
-      AppMethodBeat.o(187269);
+      ac.e("SnsAdUtil", "appendSnsAdClickParams exp=" + paramSnsAdClick.toString() + ", clockPos=" + paramInt);
+      AppMethodBeat.o(200049);
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  private static boolean a(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama)
   {
-    AppMethodBeat.i(187275);
-    ArrayMap localArrayMap = new ArrayMap();
-    localArrayMap.put("outSns", Integer.valueOf(1));
-    com.tencent.mm.plugin.sns.device.appstore.a.a(paramString1, paramString2, paramString3, paramInt, paramString4, localArrayMap);
-    AppMethodBeat.o(187275);
-  }
-  
-  public static boolean a(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama)
-  {
-    AppMethodBeat.i(187272);
-    try
-    {
-      boolean bool = b(paramContext, paramp, parama);
-      AppMethodBeat.o(187272);
-      return bool;
-    }
-    catch (Throwable paramContext)
-    {
-      com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "processAdAppMarket has something wrong");
-      AppMethodBeat.o(187272);
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama, int paramInt, com.tencent.mm.plugin.sns.a.b.i parami)
-  {
-    AppMethodBeat.i(187271);
+    AppMethodBeat.i(210260);
     if ((paramp != null) && (parama != null)) {}
-    label220:
-    while ((paramp == null) || (parama == null))
+    for (;;)
     {
       try
       {
-        if (parama.wSv == null) {
-          continue;
-        }
-        if (!com.tencent.mm.pluginsdk.model.app.q.t(paramContext, parama.wSv.IK)) {
-          break label220;
-        }
-        com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "checkOpenApp isInstalled=true, " + parama.wSv.toString());
-        String str = "";
-        if (paramp.dxs() != null) {
-          str = paramp.dxs().wBR;
-        }
-        if (a(paramContext, parama.wSv.appId, parama.wSv.IK, parama.wSv.appName, parama.wSv.wSw, parama.dvK, str, String.valueOf(paramp.field_snsId)))
+        if (parama.yfb != null)
         {
-          if (paramInt == 0) {}
-          for (int i = 1;; i = 2)
+          if (!com.tencent.mm.pluginsdk.model.app.q.t(paramContext, parama.yfb.JG)) {
+            continue;
+          }
+          ac.i("SnsAdUtil", "checkOpenApp isInstalled=true, " + parama.yfb.toString());
+          String str = "";
+          if (paramp.dFR() != null) {
+            str = paramp.dFR().xOm;
+          }
+          boolean bool = a(paramContext, parama.yfb.appId, parama.yfb.JG, parama.yfb.appName, parama.yfb.yfc, parama.dtx, str, String.valueOf(paramp.field_snsId), 2);
+          if (bool)
           {
-            paramContext = new SnsAdClick(paramInt, i, paramp.field_snsId, 22, 34);
-            a(paramContext, parami, paramp, 22);
-            q.a(paramContext);
-            AppMethodBeat.o(187271);
+            AppMethodBeat.o(210260);
             return true;
           }
+          ac.e("SnsAdUtil", "checkOpenApp failed, " + parama.yfb.toString());
         }
-        com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkOpenApp failed, " + parama.wSv.toString());
       }
       catch (Throwable paramContext)
       {
-        for (;;)
-        {
-          boolean bool;
-          com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkOpenApp exp=" + paramContext.toString());
-        }
+        ac.e("SnsAdUtil", "checkOpenApp exp=" + paramContext.toString());
+        continue;
       }
-      AppMethodBeat.o(187271);
+      AppMethodBeat.o(210260);
       return false;
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkOpenApp isInstalled=false, " + parama.wSv.toString());
-      bool = b(paramContext, paramp, parama);
-      AppMethodBeat.o(187271);
-      return bool;
+      ac.e("SnsAdUtil", "checkOpenApp isInstalled=false, " + parama.yfb.toString());
     }
-    bool = b(paramContext, paramp, parama);
-    AppMethodBeat.o(187271);
-    return bool;
   }
   
-  public static boolean a(Context paramContext, final String paramString1, final String paramString2, final String paramString3, final String paramString4, final String paramString5, final String paramString6, final String paramString7)
+  private static boolean a(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama, int paramInt)
   {
-    AppMethodBeat.i(187270);
-    com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "openApp, appId = " + paramString1 + ", uxInfo = " + paramString5 + ", adExtInfo = " + paramString6);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)))
+    AppMethodBeat.i(210262);
+    if ((paramContext == null) || (paramp == null) || (parama == null))
     {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "openApp, failed");
-      AppMethodBeat.o(187270);
+      ac.e("SnsAdUtil", "tryProcessAdAppMarket input param is wrong");
+      AppMethodBeat.o(210262);
       return false;
     }
-    h.a(paramString7, paramString1, 0, 2, paramString5, paramString6);
+    String str3 = "";
+    String str4 = "";
+    String str2 = "";
+    String str1;
+    if (parama.yfb != null)
+    {
+      str1 = parama.yfb.appName;
+      str3 = parama.yfb.appId;
+      str4 = parama.yfb.yfc;
+      str2 = parama.yfb.JG;
+    }
+    for (;;)
+    {
+      com.tencent.mm.plugin.sns.storage.b localb = paramp.dFR();
+      String str5;
+      Object localObject;
+      if ((localb != null) && (localb.ygz == 1))
+      {
+        str5 = localb.xOm;
+        localObject = localb.ygy;
+        if ((!TextUtils.isEmpty(str2)) || (localObject == null)) {
+          break label371;
+        }
+        str2 = x.getStringExtra(localb.ygy, "target_app_id");
+      }
+      label336:
+      label371:
+      for (;;)
+      {
+        if (str2 == null)
+        {
+          ac.e("SnsAdUtil", "the target package is empty!");
+          AppMethodBeat.o(210262);
+          return false;
+        }
+        if (com.tencent.mm.pluginsdk.model.app.q.t(paramContext, str2))
+        {
+          localObject = str1;
+          if (TextUtils.isEmpty(str1)) {
+            localObject = com.tencent.mm.plugin.sns.a.a.a.ba(paramContext, str2);
+          }
+          a(paramContext, str3, str2, (String)localObject, str4, parama.dtx, str5, String.valueOf(paramp.field_snsId), paramInt);
+          AppMethodBeat.o(210262);
+          return true;
+        }
+        if (com.tencent.mm.plugin.sns.device.appstore.a.aE((Intent)localObject)) {
+          b(String.valueOf(paramp.field_snsId), parama.dtx, str5, 4, "0");
+        }
+        for (;;)
+        {
+          if (!com.tencent.mm.plugin.sns.device.appstore.a.aF((Intent)localObject)) {
+            break label336;
+          }
+          b(String.valueOf(paramp.field_snsId), parama.dtx, str5, 1, "0");
+          a(paramContext, (Intent)localObject, str2, String.valueOf(paramp.field_snsId), parama.dtx, str5);
+          break;
+          b(String.valueOf(paramp.field_snsId), parama.dtx, str5, 4, "1");
+        }
+        b(String.valueOf(paramp.field_snsId), parama.dtx, str5, 1, "1");
+        AppMethodBeat.o(210262);
+        return false;
+        AppMethodBeat.o(210262);
+        return false;
+      }
+      str1 = "";
+    }
+  }
+  
+  public static boolean a(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama, int paramInt, i parami)
+  {
+    int i = 2;
+    AppMethodBeat.i(210259);
+    if ((paramp == null) || (parama == null))
+    {
+      AppMethodBeat.o(210259);
+      return false;
+    }
+    try
+    {
+      if (a(paramContext, paramp, parama))
+      {
+        ac.i("SnsAdUtil", "handleAdClickAction, checkOpenApp succ");
+        if (paramInt == 0) {
+          i = 1;
+        }
+        paramContext = new SnsAdClick(paramInt, i, paramp.field_snsId, 22, 34);
+        a(paramContext, parami, paramp, 22);
+        q.a(paramContext);
+        AppMethodBeat.o(210259);
+        return true;
+      }
+      if (a(paramContext, paramp, parama, 2))
+      {
+        ac.i("SnsAdUtil", "handleAdClickAction, tryProcessAdAppMarket succ");
+        if (paramInt == 0) {
+          i = 1;
+        }
+        paramContext = new SnsAdClick(paramInt, i, paramp.field_snsId, 22, 36);
+        a(paramContext, parami, paramp, 22);
+        q.a(paramContext);
+        AppMethodBeat.o(210259);
+        return true;
+      }
+      com.tencent.mm.plugin.sns.storage.b localb = paramp.dFR();
+      if ((localb != null) && (localb.ygA != null) && (parama != null) && (parama.yez == 8)) {
+        com.tencent.mm.plugin.sns.ad.a.a.a(paramContext, localb.ygA, parama.dtx);
+      }
+      for (int j = 1; j != 0; j = 0)
+      {
+        ac.i("SnsAdUtil", "handleAdClickAction, checkJumpScan succ");
+        if (paramInt == 0) {
+          i = 1;
+        }
+        paramContext = new SnsAdClick(paramInt, i, paramp.field_snsId, 22, 35);
+        a(paramContext, parami, paramp, 22);
+        q.a(paramContext);
+        AppMethodBeat.o(210259);
+        return true;
+      }
+      return false;
+    }
+    catch (Throwable paramContext)
+    {
+      ac.e("SnsAdUtil", "handleAdClickAction, exp=" + paramContext.toString());
+      AppMethodBeat.o(210259);
+    }
+  }
+  
+  public static boolean a(Context paramContext, final String paramString1, final String paramString2, final String paramString3, String paramString4, final String paramString5, final String paramString6, final String paramString7, final int paramInt)
+  {
+    AppMethodBeat.i(210258);
+    ac.i("SnsAdUtil", "openApp, appId = " + paramString1 + ", uxInfo = " + paramString5 + ", adExtInfo = " + paramString6);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString2)))
+    {
+      ac.e("SnsAdUtil", "openApp, failed");
+      AppMethodBeat.o(210258);
+      return false;
+    }
+    h.a(paramString7, paramString1, 0, 2, paramString5, paramString6, paramInt);
     if (!TextUtils.isEmpty(paramString4))
     {
       paramString4 = new Intent("android.intent.action.VIEW", Uri.parse(paramString4));
       paramString4.addFlags(268435456);
-      paramString2 = bt.M(paramContext, paramString4);
+      paramString2 = bs.aa(paramContext, paramString4);
       if ((paramString2 != null) && (!paramString2.isEmpty()))
       {
         if ((!TextUtils.isEmpty(paramString4.getPackage())) || (paramString2.size() != 1)) {
-          break label229;
+          break label233;
         }
         paramString2 = com.tencent.mm.pluginsdk.model.app.h.b((ResolveInfo)paramString2.get(0));
-        if (!bt.nullAsNil(aj.getPackageName()).equals(paramString2)) {
-          com.tencent.mm.cj.a.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(187257);
-              com.tencent.mm.pluginsdk.model.app.h.a(this.val$context, paramString4, paramString3, new am()
-              {
-                public final void u(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
-                {
-                  AppMethodBeat.i(187256);
-                  if (paramAnonymous2Boolean1) {
-                    h.a(j.3.this.hzE, j.3.this.val$appId, 1, 2, j.3.this.wAQ, j.3.this.wAR);
-                  }
-                  if (!paramAnonymous2Boolean1) {
-                    al.fV(j.3.this.val$context);
-                  }
-                  AppMethodBeat.o(187256);
-                }
-              });
-              AppMethodBeat.o(187257);
-            }
-          });
+        if (!bs.nullAsNil(com.tencent.mm.sdk.platformtools.ai.getPackageName()).equals(paramString2)) {
+          com.tencent.mm.ci.a.post(new j.2(paramContext, paramString4, paramString3, paramString7, paramString1, paramString5, paramString6, paramInt));
         }
       }
     }
     for (;;)
     {
       AdLandingPagesProxy.getInstance().reportDownloadInfo(9, paramString1);
-      AppMethodBeat.o(187270);
+      AppMethodBeat.o(210258);
       return true;
-      label229:
+      label233:
       paramString2 = paramString4.getPackage();
       break;
-      com.tencent.mm.cj.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(187259);
+          AppMethodBeat.i(210256);
           Intent localIntent = this.val$context.getPackageManager().getLaunchIntentForPackage(paramString2);
-          com.tencent.mm.pluginsdk.model.app.h.a(this.val$context, localIntent, paramString3, new am()
-          {
-            public final void u(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
-            {
-              AppMethodBeat.i(187258);
-              if (paramAnonymous2Boolean1) {
-                h.a(j.4.this.hzE, j.4.this.val$appId, 1, 2, j.4.this.wAQ, j.4.this.wAR);
-              }
-              if (!paramAnonymous2Boolean1) {
-                al.fV(j.4.this.val$context);
-              }
-              AppMethodBeat.o(187258);
-            }
-          });
-          AppMethodBeat.o(187259);
+          com.tencent.mm.pluginsdk.model.app.h.a(this.val$context, localIntent, paramString3, new j.3.1(this));
+          AppMethodBeat.o(210256);
         }
       });
     }
@@ -371,7 +408,7 @@ public final class j
   
   public static boolean a(SnsObject paramSnsObject, String paramString)
   {
-    AppMethodBeat.i(187265);
+    AppMethodBeat.i(200045);
     for (;;)
     {
       try
@@ -380,33 +417,33 @@ public final class j
         if (!localIterator.hasNext()) {
           break label239;
         }
-        cuo localcuo = (cuo)localIterator.next();
-        if ((localcuo == null) || (bt.isNullOrNil(localcuo.Username)) || (!localcuo.Username.equals(paramString))) {
+        daa localdaa = (daa)localIterator.next();
+        if ((localdaa == null) || (bs.isNullOrNil(localdaa.Username)) || (!localdaa.Username.equals(paramString))) {
           continue;
         }
         bool1 = true;
         localIterator = paramSnsObject.LikeUserList.iterator();
         if (localIterator.hasNext())
         {
-          localcuo = (cuo)localIterator.next();
-          if ((localcuo == null) || (bt.isNullOrNil(localcuo.Username)) || (!localcuo.Username.equals(paramString))) {
+          localdaa = (daa)localIterator.next();
+          if ((localdaa == null) || (bs.isNullOrNil(localdaa.Username)) || (!localdaa.Username.equals(paramString))) {
             continue;
           }
           bool2 = true;
-          com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "isAdCommentOrLikedBySelf, snsId=" + q.st(paramSnsObject.Id) + ", hasComment=" + bool1 + ", hasLiked=" + bool2);
+          ac.i("SnsAdUtil", "isAdCommentOrLikedBySelf, snsId=" + q.wW(paramSnsObject.Id) + ", hasComment=" + bool1 + ", hasLiked=" + bool2);
           if ((bool1) || (bool2))
           {
-            AppMethodBeat.o(187265);
+            AppMethodBeat.o(200045);
             return true;
           }
-          AppMethodBeat.o(187265);
+          AppMethodBeat.o(200045);
           return false;
         }
       }
       catch (Exception paramSnsObject)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "isAdCommentOrLikedBySelf, exp=" + paramSnsObject.toString());
-        AppMethodBeat.o(187265);
+        ac.e("SnsAdUtil", "isAdCommentOrLikedBySelf, exp=" + paramSnsObject.toString());
+        AppMethodBeat.o(200045);
         return false;
       }
       boolean bool2 = false;
@@ -416,65 +453,7 @@ public final class j
     }
   }
   
-  public static boolean a(dg paramdg)
-  {
-    AppMethodBeat.i(187262);
-    try
-    {
-      if ((!ay.isWifi(aj.getContext())) && (!ay.is4G(aj.getContext())) && (!ay.is5G(aj.getContext())))
-      {
-        com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "checkVideoAd, network is not wifi or 4G,5G");
-        AppMethodBeat.o(187262);
-        return false;
-      }
-      boolean bool = e(com.tencent.mm.modelsns.g.zn(z.b(paramdg.CxS.ElO.ObjectDesc)));
-      AppMethodBeat.o(187262);
-      return bool;
-    }
-    catch (Throwable paramdg)
-    {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkVideoAd, exp2=" + paramdg.toString());
-      AppMethodBeat.o(187262);
-    }
-    return false;
-  }
-  
-  public static long anz(String paramString)
-  {
-    AppMethodBeat.i(187266);
-    try
-    {
-      boolean bool = bt.isNullOrNil(paramString);
-      if (bool)
-      {
-        AppMethodBeat.o(187266);
-        return 0L;
-      }
-      if (paramString.startsWith("ad_table_"))
-      {
-        l = bt.aGi(paramString.substring(9));
-        AppMethodBeat.o(187266);
-        return l;
-      }
-      if (paramString.startsWith("sns_table_"))
-      {
-        l = bt.aGi(paramString.substring(10));
-        AppMethodBeat.o(187266);
-        return l;
-      }
-      long l = q.anR(paramString);
-      AppMethodBeat.o(187266);
-      return l;
-    }
-    catch (Throwable paramString)
-    {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", paramString.toString());
-      AppMethodBeat.o(187266);
-    }
-    return 0L;
-  }
-  
-  public static JSONObject ax(Map<String, Object> paramMap)
+  public static JSONObject aB(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(176240);
     localJSONObject = new JSONObject();
@@ -494,93 +473,77 @@ public final class j
     }
   }
   
-  private static boolean b(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama)
+  public static long asL(String paramString)
   {
-    AppMethodBeat.i(187273);
-    if ((paramContext == null) || (paramp == null) || (parama == null))
+    AppMethodBeat.i(200046);
+    try
     {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "tryProcessAdAppMarket input param is wrong");
-      AppMethodBeat.o(187273);
-      return false;
-    }
-    String str3 = "";
-    String str4 = "";
-    String str2 = "";
-    String str1;
-    if (parama.wSv != null)
-    {
-      str1 = parama.wSv.appName;
-      str3 = parama.wSv.appId;
-      str4 = parama.wSv.wSw;
-      str2 = parama.wSv.IK;
-    }
-    for (;;)
-    {
-      com.tencent.mm.plugin.sns.storage.b localb = paramp.dxs();
-      String str5;
-      Object localObject;
-      if ((localb != null) && (localb.wTP == 1))
+      boolean bool = bs.isNullOrNil(paramString);
+      if (bool)
       {
-        str5 = localb.wBR;
-        localObject = localb.wTO;
-        if ((!TextUtils.isEmpty(str2)) || (localObject == null)) {
-          break label367;
-        }
-        str2 = y.getStringExtra(localb.wTO, "target_app_id");
+        AppMethodBeat.o(200046);
+        return 0L;
       }
-      label332:
-      label367:
-      for (;;)
+      if (paramString.startsWith("ad_table_"))
       {
-        if (str2 == null)
-        {
-          com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "the target package is empty!");
-          AppMethodBeat.o(187273);
-          return false;
-        }
-        if (com.tencent.mm.pluginsdk.model.app.q.t(paramContext, str2))
-        {
-          localObject = str1;
-          if (TextUtils.isEmpty(str1)) {
-            localObject = com.tencent.mm.plugin.sns.b.a.a.aZ(paramContext, str2);
-          }
-          a(paramContext, str3, str2, (String)localObject, str4, parama.dvK, str5, String.valueOf(paramp.field_snsId));
-          AppMethodBeat.o(187273);
-          return true;
-        }
-        if (com.tencent.mm.plugin.sns.device.appstore.a.aC((Intent)localObject)) {
-          a(String.valueOf(paramp.field_snsId), parama.dvK, str5, 4, "0");
-        }
-        for (;;)
-        {
-          if (!com.tencent.mm.plugin.sns.device.appstore.a.aD((Intent)localObject)) {
-            break label332;
-          }
-          a(String.valueOf(paramp.field_snsId), parama.dvK, str5, 1, "0");
-          a(paramContext, (Intent)localObject, str2, String.valueOf(paramp.field_snsId), parama.dvK, str5);
-          break;
-          a(String.valueOf(paramp.field_snsId), parama.dvK, str5, 4, "1");
-        }
-        a(String.valueOf(paramp.field_snsId), parama.dvK, str5, 1, "1");
-        AppMethodBeat.o(187273);
-        return false;
-        AppMethodBeat.o(187273);
-        return false;
+        l = bs.aLz(paramString.substring(9));
+        AppMethodBeat.o(200046);
+        return l;
       }
-      str1 = "";
+      if (paramString.startsWith("sns_table_"))
+      {
+        l = bs.aLz(paramString.substring(10));
+        AppMethodBeat.o(200046);
+        return l;
+      }
+      long l = q.atd(paramString);
+      AppMethodBeat.o(200046);
+      return l;
     }
+    catch (Throwable paramString)
+    {
+      ac.e("SnsAdUtil", paramString.toString());
+      AppMethodBeat.o(200046);
+    }
+    return 0L;
   }
   
-  public static boolean c(TimeLineObject paramTimeLineObject)
+  public static void b(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
+  {
+    AppMethodBeat.i(200055);
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.put("outSns", Integer.valueOf(1));
+    com.tencent.mm.plugin.sns.device.appstore.a.a(paramString1, paramString2, paramString3, paramInt, paramString4, localArrayMap);
+    AppMethodBeat.o(200055);
+  }
+  
+  public static boolean b(Context paramContext, p paramp, com.tencent.mm.plugin.sns.storage.a parama)
+  {
+    AppMethodBeat.i(210261);
+    try
+    {
+      boolean bool = a(paramContext, paramp, parama, 0);
+      AppMethodBeat.o(210261);
+      return bool;
+    }
+    catch (Throwable paramContext)
+    {
+      ac.w("SnsAdUtil", "processAdAppMarket has something wrong");
+      AppMethodBeat.o(210261);
+    }
+    return false;
+  }
+  
+  public static boolean d(TimeLineObject paramTimeLineObject)
   {
     AppMethodBeat.i(176239);
-    if ((paramTimeLineObject != null) && (paramTimeLineObject.Etm != null) && (paramTimeLineObject.Etm.DaC != null) && (paramTimeLineObject.Etm.DaC.size() > 0))
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.FQo != null) && (paramTimeLineObject.FQo.Etz != null) && (paramTimeLineObject.FQo.Etz.size() > 0))
     {
-      paramTimeLineObject = (bpi)paramTimeLineObject.Etm.DaC.get(0);
-      if ((paramTimeLineObject != null) && (paramTimeLineObject.DMT != null) && (paramTimeLineObject.DMT.DNH > 0.0F) && (paramTimeLineObject.DMT.DNI > 0.0F))
+      paramTimeLineObject = (btz)paramTimeLineObject.FQo.Etz.get(0);
+      if ((paramTimeLineObject != null) && (paramTimeLineObject.Fjk != null) && (paramTimeLineObject.Fjk.FjY > 0.0F) && (paramTimeLineObject.Fjk.FjZ > 0.0F))
       {
-        int i = (int)paramTimeLineObject.DMT.DNH;
-        if ((int)paramTimeLineObject.DMT.DNI > i)
+        int i = (int)paramTimeLineObject.Fjk.FjY;
+        if ((int)paramTimeLineObject.Fjk.FjZ > i)
         {
           AppMethodBeat.o(176239);
           return true;
@@ -593,128 +556,7 @@ public final class j
     return false;
   }
   
-  public static boolean d(TimeLineObject paramTimeLineObject)
-  {
-    AppMethodBeat.i(187261);
-    try
-    {
-      if ((!ay.isWifi(aj.getContext())) && (!ay.is4G(aj.getContext())) && (!ay.is5G(aj.getContext())))
-      {
-        com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "checkVideoAd, network is not wifi or 4G,5G");
-        AppMethodBeat.o(187261);
-        return false;
-      }
-      boolean bool = e(paramTimeLineObject);
-      AppMethodBeat.o(187261);
-      return bool;
-    }
-    catch (Throwable paramTimeLineObject)
-    {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkVideoAd, exp=" + paramTimeLineObject.toString());
-      AppMethodBeat.o(187261);
-    }
-    return false;
-  }
-  
-  private static boolean e(TimeLineObject paramTimeLineObject)
-  {
-    AppMethodBeat.i(187263);
-    for (;;)
-    {
-      try
-      {
-        if (paramTimeLineObject.Etm.DaB != 15)
-        {
-          com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "checkVideoAd, ContentStyle is not video, snsId=" + paramTimeLineObject.Id);
-          AppMethodBeat.o(187263);
-          return false;
-        }
-        if ((paramTimeLineObject.Etm.DaC == null) || (paramTimeLineObject.Etm.DaC.isEmpty()))
-        {
-          com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "checkVideoAd, MediaObjList is empty, snsId=" + paramTimeLineObject.Id);
-          AppMethodBeat.o(187263);
-          return false;
-        }
-        final bpi localbpi = (bpi)paramTimeLineObject.Etm.DaC.get(0);
-        String str1 = paramTimeLineObject.Id;
-        String str2 = an.iF(com.tencent.mm.plugin.sns.model.af.getAccSnsPath(), localbpi.Id);
-        String str3 = q.i(localbpi);
-        str2 = str2 + str3;
-        if (com.tencent.mm.vfs.i.eK(str2))
-        {
-          com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "checkVideoAd, preloadVideo, fileExists, snsId=" + str1 + ", mediaId=" + localbpi.Id + ", filePath=" + str2);
-          paramTimeLineObject = paramTimeLineObject.Id;
-          str1 = an.iF(com.tencent.mm.plugin.sns.model.af.getAccSnsPath(), localbpi.Id);
-          str2 = q.d(localbpi);
-          if (com.tencent.mm.vfs.i.eK(str1 + str2))
-          {
-            com.tencent.mm.sdk.platformtools.ad.w("SnsAdUtil", "checkVideoAd, preloadThumb, fileExists, snsId=" + paramTimeLineObject + ", mediaId=" + localbpi.Id);
-            AppMethodBeat.o(187263);
-            return true;
-          }
-        }
-        else
-        {
-          aq.f(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(187254);
-              try
-              {
-                com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "checkVideoAd, preloadVideo, snsId=" + this.hzE + ", mediaId=" + localbpi.Id);
-                com.tencent.mm.plugin.sns.model.af.dtp().a(localbpi, 4, null, bc.FzF);
-                AppMethodBeat.o(187254);
-                return;
-              }
-              catch (Throwable localThrowable)
-              {
-                com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkVideoAd, preloadVideo exp=" + localThrowable.toString());
-                AppMethodBeat.o(187254);
-              }
-            }
-          });
-          continue;
-        }
-        aq.f(new Runnable()
-        {
-          public final void run()
-          {
-            int i = 1;
-            AppMethodBeat.i(187255);
-            try
-            {
-              com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "checkVideoAd, preloadThumb, snsId=" + this.hzE + ", mediaId=" + localbpi.Id);
-              m localm = new m(localbpi);
-              localm.wBd = 1;
-              localm.dnB = localbpi.Id;
-              com.tencent.mm.plugin.sns.model.b localb = com.tencent.mm.plugin.sns.model.af.dtp();
-              bpi localbpi = localbpi;
-              if (localbpi.mBH == 6) {
-                i = 5;
-              }
-              localb.a(localbpi, i, localm, bc.FzF);
-              AppMethodBeat.o(187255);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkVideoAd, preloadThumb exp=" + localThrowable.toString());
-              AppMethodBeat.o(187255);
-            }
-          }
-        });
-      }
-      catch (Throwable paramTimeLineObject)
-      {
-        com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "checkVideoAd, doCheckVideoAd exp=" + paramTimeLineObject.toString());
-        AppMethodBeat.o(187263);
-        return false;
-      }
-    }
-  }
-  
-  public static String ep(View paramView)
+  public static String eC(View paramView)
   {
     AppMethodBeat.i(176242);
     paramView = "[" + paramView.getPaddingLeft() + "," + paramView.getPaddingTop() + "," + paramView.getPaddingRight() + "," + paramView.getPaddingBottom() + "]";
@@ -724,7 +566,7 @@ public final class j
   
   public static int i(p paramp)
   {
-    AppMethodBeat.i(187267);
+    AppMethodBeat.i(200047);
     int m = 0;
     int k = 0;
     i = k;
@@ -737,94 +579,94 @@ public final class j
     {
       try
       {
-        if (paramp.Nb(32))
+        if (paramp.Pe(32))
         {
           j = m;
-          paramp = paramp.dxs();
+          paramp = paramp.dFR();
           i = k;
           if (paramp != null)
           {
             i = k;
             j = m;
-            if (!TextUtils.isEmpty(paramp.wTN))
+            if (!TextUtils.isEmpty(paramp.ygx))
             {
               j = m;
               long l = System.currentTimeMillis();
               j = m;
-              if (!com.tencent.mm.pluginsdk.model.app.q.t(aj.getContext(), paramp.wTN)) {
+              if (!com.tencent.mm.pluginsdk.model.app.q.t(com.tencent.mm.sdk.platformtools.ai.getContext(), paramp.ygx)) {
                 continue;
               }
               i = 2;
               j = i;
-              com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "getAdAppInstallStatus, pkg=" + paramp.wTN + ", installState=" + i + ", timeCost=" + (System.currentTimeMillis() - l));
+              ac.i("SnsAdUtil", "getAdAppInstallStatus, pkg=" + paramp.ygx + ", installState=" + i + ", timeCost=" + (System.currentTimeMillis() - l));
             }
           }
         }
       }
       catch (Throwable paramp)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "appInstalled exp=" + paramp.toString());
+        ac.e("SnsAdUtil", "appInstalled exp=" + paramp.toString());
         i = j;
         continue;
       }
-      AppMethodBeat.o(187267);
+      AppMethodBeat.o(200047);
       return i;
       i = 1;
     }
   }
   
-  public static void ix(String paramString1, String paramString2)
+  public static void iU(String paramString1, String paramString2)
   {
     AppMethodBeat.i(176241);
     try
     {
-      if (aj.cbe())
+      if (com.tencent.mm.sdk.platformtools.ai.cin())
       {
         com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d locald = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d(paramString1, paramString2);
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afA().gcy.a(locald, 0);
-        com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "adChannelCgiReport, main, channel=" + paramString1 + ", content=" + paramString2);
+        g.agS();
+        g.agQ().ghe.a(locald, 0);
+        ac.i("SnsAdUtil", "adChannelCgiReport, main, channel=" + paramString1 + ", content=" + paramString2);
         AppMethodBeat.o(176241);
         return;
       }
-      if (aj.eFJ())
+      if (com.tencent.mm.sdk.platformtools.ai.eVd())
       {
         AdLandingPagesProxy.getInstance().onAdLandingPageClick(paramString1, paramString2);
-        com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "adChannelCgiReport, tools, channel=" + paramString1 + ", content=" + paramString2);
+        ac.i("SnsAdUtil", "adChannelCgiReport, tools, channel=" + paramString1 + ", content=" + paramString2);
         AppMethodBeat.o(176241);
         return;
       }
     }
     catch (Exception paramString1)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "adChannelCgiReport, exp=" + paramString1.toString());
+      ac.e("SnsAdUtil", "adChannelCgiReport, exp=" + paramString1.toString());
       AppMethodBeat.o(176241);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "adChannelCgiReport, process err");
+    ac.e("SnsAdUtil", "adChannelCgiReport, process err");
     AppMethodBeat.o(176241);
   }
   
   public static int j(p paramp)
   {
-    AppMethodBeat.i(187268);
+    AppMethodBeat.i(200048);
     str1 = "";
     try
     {
       str2 = paramp.field_userName;
       l = System.currentTimeMillis();
-      if ((paramp == null) || (!paramp.Nb(32)) || (TextUtils.isEmpty(str2))) {
+      if ((paramp == null) || (!paramp.Pe(32)) || (TextUtils.isEmpty(str2))) {
         break label211;
       }
-      com.tencent.mm.kernel.g.afC();
-      paramp = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(str2);
+      g.agS();
+      paramp = ((k)g.ab(k.class)).awB().aNt(str2);
       if (paramp == null) {
         break label211;
       }
-      if ((int)paramp.fId <= 0) {
+      if ((int)paramp.fLJ <= 0) {
         break label206;
       }
-      boolean bool = com.tencent.mm.n.b.ls(paramp.field_type);
+      boolean bool = com.tencent.mm.n.b.ln(paramp.field_type);
       if (!bool) {
         break label206;
       }
@@ -838,10 +680,10 @@ public final class j
         {
           String str2;
           long l;
-          paramp = paramp.ZW();
+          paramp = paramp.aaR();
           j = i;
-          com.tencent.mm.sdk.platformtools.ad.i("SnsAdUtil", "getAdUserFollowStatus, userName=" + str2 + ", followStatus=" + i + ", displayName=" + paramp + ", timeCost=" + (System.currentTimeMillis() - l));
-          AppMethodBeat.o(187268);
+          ac.i("SnsAdUtil", "getAdUserFollowStatus, userName=" + str2 + ", followStatus=" + i + ", displayName=" + paramp + ", timeCost=" + (System.currentTimeMillis() - l));
+          AppMethodBeat.o(200048);
           return i;
         }
         catch (Throwable paramp)
@@ -851,7 +693,7 @@ public final class j
         }
         paramp = paramp;
         j = 1;
-        com.tencent.mm.sdk.platformtools.ad.e("SnsAdUtil", "isContact exp=" + paramp.toString());
+        ac.e("SnsAdUtil", "isContact exp=" + paramp.toString());
         int i = j;
         continue;
         i = 1;

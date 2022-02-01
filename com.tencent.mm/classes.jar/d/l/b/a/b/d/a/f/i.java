@@ -9,66 +9,66 @@ import java.util.Map;
 
 public final class i
 {
-  private static final d JCX;
-  private static final d JCY;
-  private static final d JCZ;
-  private static final Map<String, j> JDa;
+  private static final d Lqq;
+  private static final d Lqr;
+  private static final d Lqs;
+  private static final Map<String, j> Lqt;
   
   static
   {
     AppMethodBeat.i(58074);
-    JCX = new d(g.JCR, null, false);
-    JCY = new d(g.JCS, null, false);
-    JCZ = new d(g.JCS, null, true);
-    v localv = v.JEQ;
-    final String str1 = v.aQv("Object");
-    final String str2 = v.aQx("Predicate");
-    final String str3 = v.aQx("Function");
-    final String str4 = v.aQx("Consumer");
-    final String str5 = v.aQx("BiFunction");
-    final String str6 = v.aQx("BiConsumer");
-    final String str7 = v.aQx("UnaryOperator");
-    final String str8 = v.aQw("stream/Stream");
-    final String str9 = v.aQw("Optional");
+    Lqq = new d(g.Lqk, null, false);
+    Lqr = new d(g.Lql, null, false);
+    Lqs = new d(g.Lql, null, true);
+    v localv = v.Lsj;
+    final String str1 = v.aWu("Object");
+    final String str2 = v.aWw("Predicate");
+    final String str3 = v.aWw("Function");
+    final String str4 = v.aWw("Consumer");
+    final String str5 = v.aWw("BiFunction");
+    final String str6 = v.aWw("BiConsumer");
+    final String str7 = v.aWw("UnaryOperator");
+    final String str8 = v.aWv("stream/Stream");
+    final String str9 = v.aWv("Optional");
     m localm = new m();
-    new m.a(localm, v.aQw("Iterator")).h("forEachRemaining", (b)new a(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.aQv("Iterable")).h("spliterator", (b)new l(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    m.a locala = new m.a(localm, v.aQw("Collection"));
-    locala.h("removeIf", (b)new v(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("stream", (b)new w(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("parallelStream", (b)new x(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.aQw("List")).h("replaceAll", (b)new y(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala = new m.a(localm, v.aQw("Map"));
-    locala.h("forEach", (b)new z(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("putIfAbsent", (b)new aa(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("replace", (b)new ab(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("replace", (b)new b(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("replaceAll", (b)new c(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("compute", (b)new d(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("computeIfAbsent", (b)new e(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("computeIfPresent", (b)new f(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("merge", (b)new g(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.aWv("Iterator")).i("forEachRemaining", (b)new a(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.aWu("Iterable")).i("spliterator", (b)new l(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    m.a locala = new m.a(localm, v.aWv("Collection"));
+    locala.i("removeIf", (b)new v(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("stream", (b)new w(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("parallelStream", (b)new x(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.aWv("List")).i("replaceAll", (b)new y(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala = new m.a(localm, v.aWv("Map"));
+    locala.i("forEach", (b)new z(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("putIfAbsent", (b)new aa(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("replace", (b)new ab(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("replace", (b)new b(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("replaceAll", (b)new c(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("compute", (b)new d(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("computeIfAbsent", (b)new e(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("computeIfPresent", (b)new f(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("merge", (b)new g(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
     locala = new m.a(localm, str9);
-    locala.h("empty", (b)new h(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("of", (b)new i(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("ofNullable", (b)new j(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("get", (b)new k(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    locala.h("ifPresent", (b)new m(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.aQv("ref/Reference")).h("get", (b)new n(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str2).h("test", (b)new o(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.aQx("BiPredicate")).h("test", (b)new p(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str4).h("accept", (b)new q(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str6).h("accept", (b)new r(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str3).h("apply", (b)new s(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, str5).h("apply", (b)new t(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    new m.a(localm, v.aQx("Supplier")).h("get", (b)new u(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
-    JDa = localm.JDH;
+    locala.i("empty", (b)new h(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("of", (b)new i(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("ofNullable", (b)new j(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("get", (b)new k(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    locala.i("ifPresent", (b)new m(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.aWu("ref/Reference")).i("get", (b)new n(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str2).i("test", (b)new o(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.aWw("BiPredicate")).i("test", (b)new p(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str4).i("accept", (b)new q(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str6).i("accept", (b)new r(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str3).i("apply", (b)new s(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, str5).i("apply", (b)new t(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    new m.a(localm, v.aWw("Supplier")).i("get", (b)new u(localv, str4, str2, str8, str7, str6, str1, str5, str3, str9));
+    Lqt = localm.Lra;
     AppMethodBeat.o(58074);
   }
   
-  public static final Map<String, j> fBU()
+  public static final Map<String, j> fUy()
   {
-    return JDa;
+    return Lqt;
   }
   
   static final class a

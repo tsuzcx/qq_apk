@@ -19,34 +19,34 @@ public final class e
   extends k
 {
   public int count;
-  private a rvg;
-  b rvh;
+  private a sDY;
+  b sDZ;
   public String talker;
   
   public e(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112064);
-    this.rvg = new a();
-    this.rvh = new b();
+    this.sDY = new a();
+    this.sDZ = new b();
     AppMethodBeat.o(112064);
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112065);
-    this.header = paramContext.getString(2131762965, new Object[] { TextUtils.ellipsize(d.XV(this.talker), b.c.rsN, 500.0F, TextUtils.TruncateAt.MIDDLE) });
+    this.header = paramContext.getString(2131762965, new Object[] { TextUtils.ellipsize(d.acr(this.talker), b.c.sBH, 500.0F, TextUtils.TruncateAt.MIDDLE) });
     AppMethodBeat.o(112065);
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b acQ()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b adW()
   {
-    return this.rvg;
+    return this.sDY;
   }
   
-  public final a.a cye()
+  public final a.a cLq()
   {
-    return this.rvh;
+    return this.sDZ;
   }
   
   public final class a
@@ -61,11 +61,11 @@ public final class e
     {
       AppMethodBeat.i(112062);
       paramContext = LayoutInflater.from(paramContext).inflate(2131494193, paramViewGroup, false);
-      paramViewGroup = (e.b)e.this.rvh;
-      paramViewGroup.nOq = ((TextView)paramContext.findViewById(2131300734));
+      paramViewGroup = (e.b)e.this.sDZ;
+      paramViewGroup.ors = ((TextView)paramContext.findViewById(2131300734));
       paramViewGroup.contentView = paramContext.findViewById(2131304428);
-      paramViewGroup.rvj = paramContext.findViewById(2131303131);
-      paramViewGroup.frr = ((ImageView)paramContext.findViewById(2131297008));
+      paramViewGroup.sEb = paramContext.findViewById(2131303131);
+      paramViewGroup.fuY = ((ImageView)paramContext.findViewById(2131297008));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112062);
       return paramContext;
@@ -75,16 +75,16 @@ public final class e
     {
       AppMethodBeat.i(112063);
       paramContext = (e.b)parama;
-      m.a(e.this.header, paramContext.nOq);
+      m.a(e.this.header, paramContext.ors);
       paramContext.contentView.setBackgroundResource(2131232878);
-      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.frr, e.this.talker);
+      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.fuY, e.this.talker);
       if (e.this.position == 0)
       {
-        paramContext.rvj.setVisibility(8);
+        paramContext.sEb.setVisibility(8);
         AppMethodBeat.o(112063);
         return;
       }
-      paramContext.rvj.setVisibility(0);
+      paramContext.sEb.setVisibility(0);
       AppMethodBeat.o(112063);
     }
     
@@ -98,9 +98,9 @@ public final class e
     extends a.a
   {
     public View contentView;
-    public ImageView frr;
-    public TextView nOq;
-    public View rvj;
+    public ImageView fuY;
+    public TextView ors;
+    public View sEb;
     
     public b()
     {
@@ -110,7 +110,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

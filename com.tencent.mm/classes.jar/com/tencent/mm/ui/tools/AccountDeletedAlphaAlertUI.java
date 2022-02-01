@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.y;
+import com.tencent.mm.g.a.z;
 import com.tencent.mm.model.az;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -15,11 +15,11 @@ import com.tencent.mm.ui.base.h;
 public class AccountDeletedAlphaAlertUI
   extends MMActivity
 {
-  private static AccountDeletedAlphaAlertUI HlH = null;
+  private static AccountDeletedAlphaAlertUI IMc = null;
   
-  public static AccountDeletedAlphaAlertUI fdt()
+  public static AccountDeletedAlphaAlertUI fto()
   {
-    return HlH;
+    return IMc;
   }
   
   public int getLayoutId()
@@ -31,11 +31,11 @@ public class AccountDeletedAlphaAlertUI
   {
     AppMethodBeat.i(38935);
     super.onCreate(paramBundle);
-    HlH = this;
-    paramBundle = new y();
-    com.tencent.mm.sdk.b.a.ESL.l(paramBundle);
+    IMc = this;
+    paramBundle = new z();
+    com.tencent.mm.sdk.b.a.GpY.l(paramBundle);
     az.hold();
-    paramBundle = com.tencent.mm.h.a.oG(getIntent().getStringExtra("errmsg"));
+    paramBundle = com.tencent.mm.h.a.rM(getIntent().getStringExtra("errmsg"));
     if (paramBundle != null)
     {
       paramBundle.a(this, new DialogInterface.OnClickListener()
@@ -65,8 +65,8 @@ public class AccountDeletedAlphaAlertUI
   public void onDestroy()
   {
     AppMethodBeat.i(38936);
-    if (equals(HlH)) {
-      HlH = null;
+    if (equals(IMc)) {
+      IMc = null;
     }
     super.onDestroy();
     AppMethodBeat.o(38936);
@@ -80,7 +80,7 @@ public class AccountDeletedAlphaAlertUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AccountDeletedAlphaAlertUI
  * JD-Core Version:    0.7.0.1
  */

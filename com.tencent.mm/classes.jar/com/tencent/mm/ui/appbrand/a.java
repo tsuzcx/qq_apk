@@ -2,40 +2,40 @@ package com.tencent.mm.ui.appbrand;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.az;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.appbrand.service.f;
+import com.tencent.mm.plugin.appbrand.service.e;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bh.b;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bk.b;
+import com.tencent.mm.storage.bo;
 import java.util.Map;
 
 public final class a
-  implements f
+  implements e
 {
   private static String TAG = "MicroMsg.AppBrandConversationService";
   
-  private static void a(am paramam1, am paramam2)
+  private static void a(ap paramap1, ap paramap2)
   {
     Object localObject3 = null;
-    AppMethodBeat.i(191411);
-    Object localObject2 = ((k)g.ab(k.class)).apR().c(w.gMt, null, "appbrandcustomerservicemsg");
+    AppMethodBeat.i(196343);
+    Object localObject2 = ((k)g.ab(k.class)).awG().c(w.hmT, null, "appbrandcustomerservicemsg");
     Object localObject1;
     if (localObject2 != null) {
       if ((((Cursor)localObject2).getCount() > 0) && (((Cursor)localObject2).moveToFirst()))
       {
-        localObject1 = new am();
-        ((am)localObject1).convertFrom((Cursor)localObject2);
+        localObject1 = new ap();
+        ((ap)localObject1).convertFrom((Cursor)localObject2);
         ((Cursor)localObject2).close();
       }
     }
@@ -43,17 +43,17 @@ public final class a
     {
       if (localObject2 != null)
       {
-        ad.e(TAG, "The lastest app brand conversation username is %s", new Object[] { ((ay)localObject2).field_username });
-        localObject1 = ((k)g.ab(k.class)).cOI().agq(((ay)localObject2).field_username);
+        ac.e(TAG, "The lastest app brand conversation username is %s", new Object[] { ((az)localObject2).field_username });
+        localObject1 = ((k)g.ab(k.class)).dcr().alk(((az)localObject2).field_username);
       }
       for (;;)
       {
-        if ((localObject1 != null) && (((du)localObject1).field_msgId > 0L))
+        if ((localObject1 != null) && (((dy)localObject1).field_msgId > 0L))
         {
-          paramam2.aG((bl)localObject1);
-          paramam2.setContent(((du)localObject1).field_talker + ":" + ((du)localObject1).field_content);
-          paramam2.nK(Integer.toString(((bl)localObject1).getType()));
-          bh.b localb = ((k)g.ab(k.class)).apR().Lu();
+          paramap2.aI((bo)localObject1);
+          paramap2.setContent(((dy)localObject1).field_talker + ":" + ((dy)localObject1).field_content);
+          paramap2.qQ(Integer.toString(((bo)localObject1).getType()));
+          bk.b localb = ((k)g.ab(k.class)).awG().Ls();
           PString localPString1;
           PInt localPInt;
           if (localb != null)
@@ -64,57 +64,57 @@ public final class a
             if (localObject2 == null) {
               break label417;
             }
-            ((bl)localObject1).nY(((ay)localObject2).field_parentRef);
+            ((bo)localObject1).re(((az)localObject2).field_parentRef);
             label260:
-            ((bl)localObject1).setContent(paramam2.field_content);
-            localb.a((bl)localObject1, localPString2, localPString1, localPInt, true);
-            int i = ((bl)localObject1).getType();
-            localObject1 = ((du)localObject1).field_content;
-            paramam1 = localObject3;
-            if (!bt.isNullOrNil((String)localObject1)) {}
+            ((bo)localObject1).setContent(paramap2.field_content);
+            localb.a((bo)localObject1, localPString2, localPString1, localPInt, true);
+            int i = ((bo)localObject1).getType();
+            localObject1 = ((dy)localObject1).field_content;
+            paramap1 = localObject3;
+            if (!bs.isNullOrNil((String)localObject1)) {}
             switch (i)
             {
             default: 
-              paramam1 = localObject3;
+              paramap1 = localObject3;
               label327:
-              localObject1 = bt.nullAsNil(localPString2.value);
-              if (!bt.isNullOrNil(paramam1)) {
+              localObject1 = bs.nullAsNil(localPString2.value);
+              if (!bs.isNullOrNil(paramap1)) {
                 break;
               }
             }
           }
-          for (paramam1 = "";; paramam1 = " " + bt.nullAsNil(paramam1))
+          for (paramap1 = "";; paramap1 = " " + bs.nullAsNil(paramap1))
           {
-            paramam2.nL(((String)localObject1).concat(paramam1));
-            paramam2.nM(localPString1.value);
-            paramam2.jW(localPInt.value);
-            AppMethodBeat.o(191411);
+            paramap2.qR(((String)localObject1).concat(paramap1));
+            paramap2.qS(localPString1.value);
+            paramap2.jU(localPInt.value);
+            AppMethodBeat.o(196343);
             return;
-            if (paramam1 == null) {
+            if (paramap1 == null) {
               break label518;
             }
-            ad.e(TAG, "The lastest app brand conversation is null");
-            localObject1 = ((k)g.ab(k.class)).cOI().agq(paramam1.field_username);
+            ac.e(TAG, "The lastest app brand conversation is null");
+            localObject1 = ((k)g.ab(k.class)).dcr().alk(paramap1.field_username);
             break;
             label417:
-            if (paramam1 == null) {
+            if (paramap1 == null) {
               break label260;
             }
-            ((bl)localObject1).nY(paramam1.field_parentRef);
+            ((bo)localObject1).re(paramap1.field_parentRef);
             break label260;
-            localObject1 = bw.K((String)localObject1, "msg");
-            paramam1 = localObject3;
+            localObject1 = bv.L((String)localObject1, "msg");
+            paramap1 = localObject3;
             if (localObject1 == null) {
               break label327;
             }
-            paramam1 = (String)((Map)localObject1).get(".msg.appmsg.title");
-            ad.d(TAG, "[oneliang][parseConversationMsgContentTitle] title:%s", new Object[] { paramam1 });
+            paramap1 = (String)((Map)localObject1).get(".msg.appmsg.title");
+            ac.d(TAG, "[oneliang][parseConversationMsgContentTitle] title:%s", new Object[] { paramap1 });
             break label327;
           }
         }
-        ad.e(TAG, "the last of msg is null'");
-        paramam2.eLf();
-        AppMethodBeat.o(191411);
+        ac.e(TAG, "the last of msg is null'");
+        paramap2.faH();
+        AppMethodBeat.o(196343);
         return;
         label518:
         localObject1 = null;
@@ -124,42 +124,42 @@ public final class a
     }
   }
   
-  public final boolean bnd()
+  public final boolean btZ()
   {
-    AppMethodBeat.i(191410);
-    if (((k)g.ab(k.class)).apR().aIn("appbrandcustomerservicemsg") == null)
+    AppMethodBeat.i(196342);
+    if (((k)g.ab(k.class)).awG().aNI("appbrandcustomerservicemsg") == null)
     {
-      AppMethodBeat.o(191410);
+      AppMethodBeat.o(196342);
       return false;
     }
-    AppMethodBeat.o(191410);
+    AppMethodBeat.o(196342);
     return true;
   }
   
-  public final void c(am paramam)
+  public final void c(ap paramap)
   {
-    AppMethodBeat.i(191412);
-    am localam = ((k)g.ab(k.class)).apR().aIn("appbrandcustomerservicemsg");
-    if (localam == null)
+    AppMethodBeat.i(196344);
+    ap localap = ((k)g.ab(k.class)).awG().aNI("appbrandcustomerservicemsg");
+    if (localap == null)
     {
-      ad.i(TAG, "create parentConv");
-      localam = new am("appbrandcustomerservicemsg");
-      localam.eLf();
-      a(paramam, localam);
-      ((k)g.ab(k.class)).apR().e(localam);
-      AppMethodBeat.o(191412);
+      ac.i(TAG, "create parentConv");
+      localap = new ap("appbrandcustomerservicemsg");
+      localap.faH();
+      a(paramap, localap);
+      ((k)g.ab(k.class)).awG().e(localap);
+      AppMethodBeat.o(196344);
       return;
     }
-    ad.i(TAG, "appBrandSuperConv is created");
-    localam.nN(null);
-    a(paramam, localam);
-    ((k)g.ab(k.class)).apR().a(localam, "appbrandcustomerservicemsg");
-    AppMethodBeat.o(191412);
+    ac.i(TAG, "appBrandSuperConv is created");
+    localap.qT(null);
+    a(paramap, localap);
+    ((k)g.ab(k.class)).awG().a(localap, "appbrandcustomerservicemsg");
+    AppMethodBeat.o(196344);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.a
  * JD-Core Version:    0.7.0.1
  */

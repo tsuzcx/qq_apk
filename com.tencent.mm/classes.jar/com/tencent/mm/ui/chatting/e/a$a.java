@@ -9,35 +9,35 @@ import com.tencent.mm.ui.chatting.j.c;
 public abstract interface a$a
   extends c<a.b>
 {
-  public abstract void Cu(int paramInt);
+  public abstract void Dp(int paramInt);
   
-  public abstract void D(boolean paramBoolean, int paramInt);
+  public abstract void E(boolean paramBoolean, int paramInt);
   
-  public abstract String aHv();
+  public abstract String aOk();
   
-  public abstract <T extends RecyclerView.i> T bNL();
+  public abstract <T extends RecyclerView.i> T bUW();
   
-  public abstract RecyclerView.a cd(String paramString, long paramLong);
+  public abstract RecyclerView.a cf(String paramString, long paramLong);
   
-  public abstract boolean cjJ();
+  public abstract boolean crq();
   
-  public abstract void cjK();
+  public abstract void crr();
   
-  public abstract void cjL();
+  public abstract void crs();
   
-  public abstract <T extends RecyclerView.a> T cjS();
+  public abstract <T extends RecyclerView.a> T crz();
   
-  public abstract RecyclerView.h eC(Context paramContext);
+  public abstract RecyclerView.h eK(Context paramContext);
   
-  public abstract int eZe();
+  public abstract int foT();
   
-  public abstract void eZf();
+  public abstract void foU();
   
   public abstract void onResume();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e.a.a
  * JD-Core Version:    0.7.0.1
  */

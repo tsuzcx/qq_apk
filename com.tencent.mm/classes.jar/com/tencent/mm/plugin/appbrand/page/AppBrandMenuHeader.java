@@ -15,18 +15,18 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class AppBrandMenuHeader
   extends LinearLayout
 {
-  private View iIW;
+  private View jja;
   
   public AppBrandMenuHeader(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(47775);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(47775);
   }
   
@@ -34,14 +34,14 @@ public class AppBrandMenuHeader
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(47776);
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(47776);
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
     AppMethodBeat.i(47777);
-    this.iIW = LayoutInflater.from(paramContext).inflate(2131493012, this);
+    this.jja = LayoutInflater.from(paramContext).inflate(2131493012, this);
     AppMethodBeat.o(47777);
   }
   
@@ -49,25 +49,25 @@ public class AppBrandMenuHeader
   {
     AppMethodBeat.i(47778);
     Object localObject4 = paramae.getRuntime();
-    Object localObject3 = (ImageView)this.iIW.findViewById(2131300874);
-    TextView localTextView2 = (TextView)this.iIW.findViewById(2131302654);
-    Object localObject1 = (TextView)this.iIW.findViewById(2131298942);
-    ImageView localImageView1 = (ImageView)this.iIW.findViewById(2131303092);
-    Object localObject2 = (ImageView)this.iIW.findViewById(2131306057);
+    Object localObject3 = (ImageView)this.jja.findViewById(2131300874);
+    TextView localTextView2 = (TextView)this.jja.findViewById(2131302654);
+    Object localObject1 = (TextView)this.jja.findViewById(2131298942);
+    ImageView localImageView1 = (ImageView)this.jja.findViewById(2131303092);
+    Object localObject2 = (ImageView)this.jja.findViewById(2131306057);
     final TextView localTextView3;
     ImageView localImageView2;
     TextView localTextView1;
-    if ((paramae.getRuntime().aNb().cfU == 1) && (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pvT, 0) == 1))
+    if ((paramae.getRuntime().aTR().ccR == 1) && (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qah, 0) == 1))
     {
       ((ImageView)localObject2).setVisibility(0);
-      localTextView3 = (TextView)this.iIW.findViewById(2131304348);
-      localObject2 = this.iIW.findViewById(2131305204);
-      localImageView2 = (ImageView)this.iIW.findViewById(2131305201);
-      localTextView1 = (TextView)this.iIW.findViewById(2131305199);
-      View localView = this.iIW.findViewById(2131302659);
-      localObject4 = h.aj((AppBrandRuntime)localObject4);
-      final Runnable localRunnable = ((h)localObject4).c(paramae);
-      com.tencent.mm.modelappbrand.a.b.aub().a((ImageView)localObject3, ((h)localObject4).biX(), a.aua(), new com.tencent.mm.modelappbrand.a.g());
+      localTextView3 = (TextView)this.jja.findViewById(2131304348);
+      localObject2 = this.jja.findViewById(2131305204);
+      localImageView2 = (ImageView)this.jja.findViewById(2131305201);
+      localTextView1 = (TextView)this.jja.findViewById(2131305199);
+      View localView = this.jja.findViewById(2131302659);
+      localObject4 = i.aj((AppBrandRuntime)localObject4);
+      final Runnable localRunnable = ((i)localObject4).c(paramae);
+      com.tencent.mm.modelappbrand.a.b.aAS().a((ImageView)localObject3, ((i)localObject4).bpP(), a.aAR(), new com.tencent.mm.modelappbrand.a.g());
       ((ImageView)localObject3).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
@@ -87,26 +87,26 @@ public class AppBrandMenuHeader
         }
       });
       localTextView2.getPaint().setFakeBoldText(true);
-      localTextView2.setText(((h)localObject4).biY());
-      localObject3 = ((h)localObject4).biZ();
-      if (!bt.isNullOrNil((String)localObject3)) {
+      localTextView2.setText(((i)localObject4).bpQ());
+      localObject3 = ((i)localObject4).bpR();
+      if (!bs.isNullOrNil((String)localObject3)) {
         break label358;
       }
       ((TextView)localObject1).setVisibility(8);
       label293:
-      if (!((h)localObject4).bja()) {
+      if (!((i)localObject4).bpS()) {
         break label372;
       }
       localImageView1.setVisibility(0);
     }
     for (;;)
     {
-      ((h)localObject4).a(new h.a()
+      ((i)localObject4).a(new i.a()
       {
-        public final void Lr(String paramAnonymousString)
+        public final void Pz(String paramAnonymousString)
         {
           AppMethodBeat.i(47773);
-          if (bt.isNullOrNil(paramAnonymousString))
+          if (bs.isNullOrNil(paramAnonymousString))
           {
             localTextView3.setVisibility(8);
             AppMethodBeat.o(47773);
@@ -117,7 +117,7 @@ public class AppBrandMenuHeader
           AppMethodBeat.o(47773);
         }
       });
-      localObject1 = ((h)localObject4).tq(paramae.lba);
+      localObject1 = ((i)localObject4).uh(paramae.lCz);
       if (localObject1 != null) {
         break label381;
       }
@@ -134,15 +134,15 @@ public class AppBrandMenuHeader
       localImageView1.setVisibility(8);
     }
     label381:
-    ((View)localObject2).setBackgroundResource(((h.b)localObject1).kYk);
-    localImageView2.setImageResource(((h.b)localObject1).kYl);
-    localTextView1.setText(((h.b)localObject1).desc);
+    ((View)localObject2).setBackgroundResource(((i.b)localObject1).lzU);
+    localImageView2.setImageResource(((i.b)localObject1).lzV);
+    localTextView1.setText(((i.b)localObject1).desc);
     ((View)localObject2).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(47774);
-        new h.6(this.kXY, paramae).run();
+        new i.6(this.lzI, paramae).run();
         AppMethodBeat.o(47774);
       }
     });

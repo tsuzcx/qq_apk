@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.monitor.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class PluginMonitor
   extends f
@@ -16,9 +16,9 @@ public class PluginMonitor
   public void execute(g paramg)
   {
     AppMethodBeat.i(51498);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      ad.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
+      ac.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
       pin(new t(b.class));
     }
     AppMethodBeat.o(51498);

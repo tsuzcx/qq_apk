@@ -1,10 +1,10 @@
 package com.tencent.mm.audio.mix.d;
 
-import com.tencent.mm.g.a.v;
+import com.tencent.mm.g.a.w;
 
 public abstract interface m
 {
-  public abstract void a(v paramv);
+  public abstract void a(w paramw);
 }
 
 

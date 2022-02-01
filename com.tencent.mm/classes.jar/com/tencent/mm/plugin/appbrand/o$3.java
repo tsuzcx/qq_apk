@@ -13,10 +13,10 @@ final class o$3
   public final void run()
   {
     AppMethodBeat.i(43865);
-    AppBrandSysConfigWC localAppBrandSysConfigWC = this.iGA.aNb();
-    WxaMenuHelper.GetCopyPathMenuExpireTimeTask localGetCopyPathMenuExpireTimeTask = new WxaMenuHelper.GetCopyPathMenuExpireTimeTask(this.iGA.mAppId);
+    AppBrandSysConfigWC localAppBrandSysConfigWC = this.jgC.aTR();
+    WxaMenuHelper.GetCopyPathMenuExpireTimeTask localGetCopyPathMenuExpireTimeTask = new WxaMenuHelper.GetCopyPathMenuExpireTimeTask(this.jgC.mAppId);
     AppBrandMainProcessService.b(localGetCopyPathMenuExpireTimeTask);
-    localAppBrandSysConfigWC.cfQ = WxaMenuHelper.GetCopyPathMenuExpireTimeTask.a(localGetCopyPathMenuExpireTimeTask);
+    localAppBrandSysConfigWC.ccN = WxaMenuHelper.GetCopyPathMenuExpireTimeTask.a(localGetCopyPathMenuExpireTimeTask);
     AppMethodBeat.o(43865);
   }
 }

@@ -1,69 +1,99 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 
 public final class dvf
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public boolean EJl;
-  public boolean EJm;
-  public int EJn;
+  public b GcJ;
+  public String description;
+  public String pBl;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50120);
+    AppMethodBeat.i(209579);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bg(1, this.EJl);
-      paramVarArgs.bg(2, this.EJm);
-      paramVarArgs.aR(3, this.EJn);
-      AppMethodBeat.o(50120);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.fY(1);
-      int i = f.a.a.b.b.a.fY(2);
-      int j = f.a.a.b.b.a.bA(3, this.EJn);
-      AppMethodBeat.o(50120);
-      return paramInt + 1 + 0 + (i + 1) + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
+      if (this.pBl != null) {
+        paramVarArgs.d(1, this.pBl);
       }
-      AppMethodBeat.o(50120);
+      if (this.GcJ != null) {
+        paramVarArgs.c(2, this.GcJ);
+      }
+      if (this.title != null) {
+        paramVarArgs.d(3, this.title);
+      }
+      if (this.description != null) {
+        paramVarArgs.d(4, this.description);
+      }
+      AppMethodBeat.o(209579);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.pBl == null) {
+        break label394;
+      }
+    }
+    label394:
+    for (int i = f.a.a.b.b.a.e(1, this.pBl) + 0;; i = 0)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dvf localdvf = (dvf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.GcJ != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.GcJ);
+      }
+      i = paramInt;
+      if (this.title != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.title);
+      }
+      paramInt = i;
+      if (this.description != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.description);
+      }
+      AppMethodBeat.o(209579);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(50120);
-        return -1;
-      case 1: 
-        localdvf.EJl = locala.KhF.fHu();
-        AppMethodBeat.o(50120);
-        return 0;
-      case 2: 
-        localdvf.EJm = locala.KhF.fHu();
-        AppMethodBeat.o(50120);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        AppMethodBeat.o(209579);
         return 0;
       }
-      localdvf.EJn = locala.KhF.xS();
-      AppMethodBeat.o(50120);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dvf localdvf = (dvf)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(209579);
+          return -1;
+        case 1: 
+          localdvf.pBl = locala.LVo.readString();
+          AppMethodBeat.o(209579);
+          return 0;
+        case 2: 
+          localdvf.GcJ = locala.LVo.gfk();
+          AppMethodBeat.o(209579);
+          return 0;
+        case 3: 
+          localdvf.title = locala.LVo.readString();
+          AppMethodBeat.o(209579);
+          return 0;
+        }
+        localdvf.description = locala.LVo.readString();
+        AppMethodBeat.o(209579);
+        return 0;
+      }
+      AppMethodBeat.o(209579);
+      return -1;
     }
-    AppMethodBeat.o(50120);
-    return -1;
   }
 }
 

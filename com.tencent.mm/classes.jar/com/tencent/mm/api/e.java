@@ -3,28 +3,28 @@ package com.tencent.mm.api;
 import android.content.Context;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class e
   extends FrameLayout
 {
-  w cJp = new w()
+  w cGw = new w()
   {
     public final void a(g paramAnonymousg)
     {
       AppMethodBeat.i(149423);
-      ad.i("MicroMsg.DrawingView", "Default [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+      ac.i("MicroMsg.DrawingView", "Default [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
       AppMethodBeat.o(149423);
     }
     
     public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
     {
       AppMethodBeat.i(169116);
-      ad.i("MicroMsg.DrawingView", "Default [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+      ac.i("MicroMsg.DrawingView", "Default [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
       AppMethodBeat.o(169116);
     }
     
-    public final void bV(boolean paramAnonymousBoolean) {}
+    public final void bW(boolean paramAnonymousBoolean) {}
   };
   
   public e(Context paramContext)
@@ -34,7 +34,7 @@ public abstract class e
   
   public w getSelectedFeatureListener()
   {
-    return this.cJp;
+    return this.cGw;
   }
   
   public abstract void setActionBarCallback(i parami);
@@ -47,12 +47,12 @@ public abstract class e
   
   public void setSelectedFeatureListener(w paramw)
   {
-    this.cJp = paramw;
+    this.cGw = paramw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.e
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import d.l.b.a.b.b.a.g;
 public class m
   extends ay
 {
-  private final ay Jud;
+  private final ay Lhw;
   
   public m(ay paramay)
   {
     AppMethodBeat.i(60638);
-    this.Jud = paramay;
+    this.Lhw = paramay;
     AppMethodBeat.o(60638);
   }
   
@@ -20,7 +20,7 @@ public class m
   {
     AppMethodBeat.i(60632);
     k.h(paramab, "key");
-    paramab = this.Jud.O(paramab);
+    paramab = this.Lhw.O(paramab);
     AppMethodBeat.o(60632);
     return paramab;
   }
@@ -30,23 +30,23 @@ public class m
     AppMethodBeat.i(60633);
     k.h(paramab, "topLevelType");
     k.h(parambh, "position");
-    paramab = this.Jud.a(paramab, parambh);
+    paramab = this.Lhw.a(paramab, parambh);
     AppMethodBeat.o(60633);
     return paramab;
   }
   
-  public boolean fIY()
+  public boolean gbB()
   {
     AppMethodBeat.i(60636);
-    boolean bool = this.Jud.fIY();
+    boolean bool = this.Lhw.gbB();
     AppMethodBeat.o(60636);
     return bool;
   }
   
-  public final boolean fJQ()
+  public final boolean gct()
   {
     AppMethodBeat.i(60635);
-    boolean bool = this.Jud.fJQ();
+    boolean bool = this.Lhw.gct();
     AppMethodBeat.o(60635);
     return bool;
   }
@@ -55,7 +55,7 @@ public class m
   {
     AppMethodBeat.i(60637);
     k.h(paramg, "annotations");
-    paramg = this.Jud.h(paramg);
+    paramg = this.Lhw.h(paramg);
     AppMethodBeat.o(60637);
     return paramg;
   }
@@ -63,14 +63,14 @@ public class m
   public final boolean isEmpty()
   {
     AppMethodBeat.i(60634);
-    boolean bool = this.Jud.isEmpty();
+    boolean bool = this.Lhw.isEmpty();
     AppMethodBeat.o(60634);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.m
  * JD-Core Version:    0.7.0.1
  */

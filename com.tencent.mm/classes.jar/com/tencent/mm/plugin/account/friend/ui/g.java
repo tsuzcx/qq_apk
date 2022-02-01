@@ -6,33 +6,33 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.account.friend.a.ak;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.h;
 
 public final class g
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   private Context context;
-  private ProgressDialog gUr;
-  a inw;
-  private boolean inx = true;
-  String iny = "";
+  private ProgressDialog huQ;
+  a iNC;
+  private boolean iND = true;
+  String iNE = "";
   
   public g(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.inw = parama;
-    this.inx = true;
+    this.iNC = parama;
+    this.iND = true;
   }
   
   public g(Context paramContext, a parama, byte paramByte)
   {
     this.context = paramContext;
-    this.inw = parama;
-    this.inx = false;
+    this.iNC = parama;
+    this.iND = false;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -43,55 +43,55 @@ public final class g
       AppMethodBeat.o(131311);
       return;
     }
-    if (this.gUr != null)
+    if (this.huQ != null)
     {
-      this.gUr.dismiss();
-      this.gUr = null;
+      this.huQ.dismiss();
+      this.huQ = null;
     }
-    com.tencent.mm.kernel.g.aeS().b(116, this);
+    com.tencent.mm.kernel.g.agi().b(116, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ad.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailSuccess");
-      if (this.inx)
+      ac.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailSuccess");
+      if (this.iND)
       {
         h.a(this.context, 2131760375, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(131309);
-            g.this.inw.f(true, g.this.iny);
+            g.this.iNC.g(true, g.this.iNE);
             AppMethodBeat.o(131309);
           }
         });
         AppMethodBeat.o(131311);
         return;
       }
-      this.inw.f(true, this.iny);
+      this.iNC.g(true, this.iNE);
       AppMethodBeat.o(131311);
       return;
     }
-    ad.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailFail");
-    this.inw.f(false, this.iny);
+    ac.i("MicroMsg.SendInviteEmail", "dealSendInviteEmailFail");
+    this.iNC.g(false, this.iNE);
     AppMethodBeat.o(131311);
   }
   
-  public final void q(final int[] paramArrayOfInt)
+  public final void r(final int[] paramArrayOfInt)
   {
     AppMethodBeat.i(131310);
-    com.tencent.mm.kernel.g.aeS().a(116, this);
+    com.tencent.mm.kernel.g.agi().a(116, this);
     paramArrayOfInt = new ak(paramArrayOfInt);
-    com.tencent.mm.kernel.g.aeS().a(paramArrayOfInt, 0);
-    if (this.inx)
+    com.tencent.mm.kernel.g.agi().a(paramArrayOfInt, 0);
+    if (this.iND)
     {
       Context localContext = this.context;
       this.context.getString(2131760378);
-      this.gUr = h.b(localContext, this.context.getString(2131760376), true, new DialogInterface.OnCancelListener()
+      this.huQ = h.b(localContext, this.context.getString(2131760376), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(131308);
-          com.tencent.mm.kernel.g.aeS().a(paramArrayOfInt);
-          g.this.inw.f(false, g.this.iny);
+          com.tencent.mm.kernel.g.agi().a(paramArrayOfInt);
+          g.this.iNC.g(false, g.this.iNE);
           AppMethodBeat.o(131308);
         }
       });
@@ -101,12 +101,12 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void f(boolean paramBoolean, String paramString);
+    public abstract void g(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.g
  * JD-Core Version:    0.7.0.1
  */

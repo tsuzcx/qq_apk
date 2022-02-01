@@ -6,11 +6,11 @@ import android.support.v4.e.j;
 final class f$a
   implements d.b
 {
-  final MediaSessionManager.RemoteUserInfo Ju;
+  final MediaSessionManager.RemoteUserInfo Kp;
   
   f$a(String paramString, int paramInt1, int paramInt2)
   {
-    this.Ju = new MediaSessionManager.RemoteUserInfo(paramString, paramInt1, paramInt2);
+    this.Kp = new MediaSessionManager.RemoteUserInfo(paramString, paramInt1, paramInt2);
   }
   
   public final boolean equals(Object paramObject)
@@ -22,17 +22,17 @@ final class f$a
       return false;
     }
     paramObject = (a)paramObject;
-    return this.Ju.equals(paramObject.Ju);
+    return this.Kp.equals(paramObject.Kp);
   }
   
   public final int hashCode()
   {
-    return j.hash(new Object[] { this.Ju });
+    return j.hash(new Object[] { this.Kp });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.f.a
  * JD-Core Version:    0.7.0.1
  */

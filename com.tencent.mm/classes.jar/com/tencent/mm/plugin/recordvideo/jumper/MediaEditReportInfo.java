@@ -13,31 +13,31 @@ public class MediaEditReportInfo
 {
   public static final Parcelable.Creator<MediaEditReportInfo> CREATOR;
   public int cropSizeCnt;
-  public ArrayList<EditItem> editList;
+  public ArrayList<MediaEditReportInfo.EditItem> editList;
   public int seekBarDragCnt;
   
   static
   {
-    AppMethodBeat.i(204051);
+    AppMethodBeat.i(199494);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(204051);
+    AppMethodBeat.o(199494);
   }
   
   public MediaEditReportInfo()
   {
-    AppMethodBeat.i(204048);
+    AppMethodBeat.i(199491);
     this.editList = new ArrayList();
-    AppMethodBeat.o(204048);
+    AppMethodBeat.o(199491);
   }
   
   protected MediaEditReportInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(204049);
+    AppMethodBeat.i(199492);
     this.editList = new ArrayList();
     this.seekBarDragCnt = paramParcel.readInt();
     this.cropSizeCnt = paramParcel.readInt();
-    paramParcel.readList(this.editList, EditItem.class.getClassLoader());
-    AppMethodBeat.o(204049);
+    paramParcel.readList(this.editList, MediaEditReportInfo.EditItem.class.getClassLoader());
+    AppMethodBeat.o(199492);
   }
   
   public int describeContents()
@@ -47,86 +47,16 @@ public class MediaEditReportInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(204050);
+    AppMethodBeat.i(199493);
     paramParcel.writeInt(this.seekBarDragCnt);
     paramParcel.writeInt(this.cropSizeCnt);
     paramParcel.writeList(this.editList);
-    AppMethodBeat.o(204050);
-  }
-  
-  @Keep
-  public static class EditItem
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<EditItem> CREATOR;
-    public int clickEditCount;
-    public int dragCount;
-    public int durationCutCount;
-    public int durationScrollCount;
-    public boolean isBeauty;
-    public long originDuration;
-    public int scaleCount;
-    public long targetDuration;
-    public int type;
-    
-    static
-    {
-      AppMethodBeat.i(204047);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(204047);
-    }
-    
-    public EditItem() {}
-    
-    protected EditItem(Parcel paramParcel)
-    {
-      AppMethodBeat.i(204045);
-      this.type = paramParcel.readInt();
-      if (paramParcel.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.isBeauty = bool;
-        this.originDuration = paramParcel.readLong();
-        this.targetDuration = paramParcel.readLong();
-        this.clickEditCount = paramParcel.readInt();
-        this.durationCutCount = paramParcel.readInt();
-        this.durationScrollCount = paramParcel.readInt();
-        this.dragCount = paramParcel.readInt();
-        this.scaleCount = paramParcel.readInt();
-        AppMethodBeat.o(204045);
-        return;
-      }
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(204046);
-      paramParcel.writeInt(this.type);
-      if (this.isBeauty) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeInt(paramInt);
-        paramParcel.writeLong(this.originDuration);
-        paramParcel.writeLong(this.targetDuration);
-        paramParcel.writeInt(this.clickEditCount);
-        paramParcel.writeInt(this.durationCutCount);
-        paramParcel.writeInt(this.durationScrollCount);
-        paramParcel.writeInt(this.dragCount);
-        paramParcel.writeInt(this.scaleCount);
-        AppMethodBeat.o(204046);
-        return;
-      }
-    }
+    AppMethodBeat.o(199493);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo
  * JD-Core Version:    0.7.0.1
  */

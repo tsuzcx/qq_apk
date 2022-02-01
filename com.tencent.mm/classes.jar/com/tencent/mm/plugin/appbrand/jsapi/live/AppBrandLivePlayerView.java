@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioVolumeEvaluationListener;
 import com.tencent.rtmp.TXLivePlayer.ITXSnapshotListener;
@@ -15,12 +15,12 @@ import org.json.JSONObject;
 public class AppBrandLivePlayerView
   extends TXCloudVideoView
 {
-  boolean clr;
-  l jSG;
-  AppBrandLivePlayerView.a jSH;
-  private AppBrandLivePlayerView.c jSI;
-  int jSJ;
-  private b jSK;
+  boolean cit;
+  l kts;
+  a ktt;
+  private c ktu;
+  int ktv;
+  private b ktw;
   
   public AppBrandLivePlayerView(Context paramContext)
   {
@@ -41,24 +41,15 @@ public class AppBrandLivePlayerView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(145828);
-    this.jSG = new l(paramContext);
+    this.kts = new l(paramContext);
     AppMethodBeat.o(145828);
-  }
-  
-  final void fV(boolean paramBoolean)
-  {
-    AppMethodBeat.i(145827);
-    if ((this.clr) && (this.jSI != null)) {
-      this.jSI.o(paramBoolean, this.jSJ);
-    }
-    AppMethodBeat.o(145827);
   }
   
   public final boolean g(String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145824);
-    paramString = this.jSG.h(paramString, paramJSONObject);
-    ad.i("MicroMsg.AppBrandLivePlayerView", "onOperate code:%d info:%s", new Object[] { Integer.valueOf(paramString.errorCode), paramString.cko });
+    paramString = this.kts.h(paramString, paramJSONObject);
+    ac.i("MicroMsg.AppBrandLivePlayerView", "onOperate code:%d info:%s", new Object[] { Integer.valueOf(paramString.errorCode), paramString.chn });
     if (paramString.errorCode == 0)
     {
       AppMethodBeat.o(145824);
@@ -68,26 +59,35 @@ public class AppBrandLivePlayerView
     return false;
   }
   
-  public final void gP(int paramInt)
+  final void gr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(145827);
+    if ((this.cit) && (this.ktu != null)) {
+      this.ktu.p(paramBoolean, this.ktv);
+    }
+    AppMethodBeat.o(145827);
+  }
+  
+  public final void gz(int paramInt)
   {
     AppMethodBeat.i(145826);
-    Object localObject = this.jSG;
-    ad.i("TXLivePlayerJSAdapter", "enterBackground");
-    if (((paramInt == 2) && (!((l)localObject).ckC)) || ((paramInt == 1) && (!((l)localObject).ckB)))
+    Object localObject = this.kts;
+    ac.i("TXLivePlayerJSAdapter", "enterBackground");
+    if (((paramInt == 2) && (!((l)localObject).chB)) || ((paramInt == 1) && (!((l)localObject).chA)))
     {
-      ((l)localObject).jTg = false;
+      ((l)localObject).ktS = false;
       localObject = new i();
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandLivePlayerView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).cko });
+      ac.i("MicroMsg.AppBrandLivePlayerView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).chn });
       AppMethodBeat.o(145826);
       return;
-      ((l)localObject).jTg = ((l)localObject).clh.isPlaying();
-      if (((l)localObject).jTg)
+      ((l)localObject).ktS = ((l)localObject).cij.isPlaying();
+      if (((l)localObject).ktS)
       {
-        if ((((l)localObject).clr) && (((l)localObject).cli != null)) {
-          ((l)localObject).cli.onPlayEvent(6000, new Bundle());
+        if ((((l)localObject).cit) && (((l)localObject).cik != null)) {
+          ((l)localObject).cik.onPlayEvent(6000, new Bundle());
         }
         localObject = ((l)localObject).h("pause", null);
       }
@@ -101,65 +101,79 @@ public class AppBrandLivePlayerView
   public final void onExit()
   {
     AppMethodBeat.i(145825);
-    Object localObject = this.jSG;
+    Object localObject = this.kts;
     if (!((l)localObject).mInited) {}
     for (localObject = new i(-3, "uninited livePlayer");; localObject = new i())
     {
-      ad.i("MicroMsg.AppBrandLivePlayerView", "onDestroy code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).cko });
-      if (this.jSK != null) {
-        this.jSK.bai();
+      ac.i("MicroMsg.AppBrandLivePlayerView", "onDestroy code:%d info:%s", new Object[] { Integer.valueOf(((i)localObject).errorCode), ((i)localObject).chn });
+      if (this.ktw != null) {
+        this.ktw.bhb();
       }
       AppMethodBeat.o(145825);
       return;
-      ((l)localObject).clh.stopPlay(true);
-      ((l)localObject).clh.setPlayListener(null);
+      ((l)localObject).cij.stopPlay(true);
+      ((l)localObject).cij.setPlayListener(null);
       ((l)localObject).mInited = false;
     }
   }
   
   public void setAudioVolumeEventListener(TXLivePlayer.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
-    this.jSG.mAudioVolumeListener = paramITXAudioVolumeEvaluationListener;
+    this.kts.mAudioVolumeListener = paramITXAudioVolumeEvaluationListener;
   }
   
   public void setExitListener(b paramb)
   {
-    this.jSK = paramb;
+    this.ktw = paramb;
   }
   
-  public void setFullScreenDelegate(AppBrandLivePlayerView.a parama)
+  public void setFullScreenDelegate(a parama)
   {
-    this.jSH = parama;
+    this.ktt = parama;
   }
   
   public void setNeedEvent(boolean paramBoolean)
   {
-    this.clr = paramBoolean;
+    this.cit = paramBoolean;
   }
   
-  public void setOnFullScreenChangeListener(AppBrandLivePlayerView.c paramc)
+  public void setOnFullScreenChangeListener(c paramc)
   {
-    this.jSI = paramc;
+    this.ktu = paramc;
   }
   
   public void setPlayEventListener(ITXLivePlayListener paramITXLivePlayListener)
   {
-    this.jSG.cli = paramITXLivePlayListener;
+    this.kts.cik = paramITXLivePlayListener;
   }
   
   public void setSnapshotListener(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
   {
-    this.jSG.clj = paramITXSnapshotListener;
+    this.kts.cil = paramITXSnapshotListener;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bha();
+    
+    public abstract boolean isFullScreen();
+    
+    public abstract void sC(int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract void bai();
+    public abstract void bhb();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void p(boolean paramBoolean, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.AppBrandLivePlayerView
  * JD-Core Version:    0.7.0.1
  */

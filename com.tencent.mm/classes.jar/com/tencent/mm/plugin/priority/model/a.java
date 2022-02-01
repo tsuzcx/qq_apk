@@ -12,10 +12,10 @@ import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.a.b;
 import com.tencent.mm.plugin.priority.PluginPriority;
 import com.tencent.mm.plugin.priority.model.a.c.d;
-import com.tencent.mm.protocal.protobuf.ckv;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.cqc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -25,7 +25,7 @@ import java.util.List;
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  public static boolean uuU = false;
+  public static boolean vDN = false;
   
   private static void E(Context paramContext, String paramString)
   {
@@ -35,7 +35,7 @@ public final class a
     localTextView.setGravity(19);
     localTextView.setTextSize(1, 10.0F);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localTextView.setTextColor(ao.aD(paramContext, 2130968584));
+    localTextView.setTextColor(ao.aJ(paramContext, 2130968584));
     localTextView.setTypeface(Typeface.MONOSPACE);
     int i = paramContext.getResources().getDimensionPixelSize(2131165480);
     localTextView.setPadding(i, i, i, i);
@@ -46,7 +46,7 @@ public final class a
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(87797);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(87797);
       return false;
@@ -95,18 +95,18 @@ public final class a
       }
       i = 4;
       break;
-      ad.i("MicroMsg.Priority.PriorityCommand", "copydb");
-      g.afC();
-      paramContext = q.B(new com.tencent.mm.vfs.e(g.afB().cachePath, "MicroMsgPriority.db").fhU());
+      ac.i("MicroMsg.Priority.PriorityCommand", "copydb");
+      g.agS();
+      paramContext = q.B(new com.tencent.mm.vfs.e(g.agR().cachePath, "MicroMsgPriority.db").fxV());
       i.deleteFile("/sdcard/tencent/MicroMsg/Download/priority.db");
-      i.lC(paramContext, "/sdcard/tencent/MicroMsg/Download/priority.db");
+      i.lZ(paramContext, "/sdcard/tencent/MicroMsg/Download/priority.db");
       continue;
-      ad.i("MicroMsg.Priority.PriorityCommand", "deletedb");
-      g.afC();
-      i.deleteFile(q.B(new com.tencent.mm.vfs.e(g.afB().cachePath, "MicroMsgPriority.db").fhU()));
+      ac.i("MicroMsg.Priority.PriorityCommand", "deletedb");
+      g.agS();
+      i.deleteFile(q.B(new com.tencent.mm.vfs.e(g.agR().cachePath, "MicroMsgPriority.db").fxV()));
       Process.killProcess(Process.myPid());
       continue;
-      ad.i("MicroMsg.Priority.PriorityCommand", "enabledebug %s", new Object[] { paramArrayOfString[2] });
+      ac.i("MicroMsg.Priority.PriorityCommand", "enabledebug %s", new Object[] { paramArrayOfString[2] });
       for (;;)
       {
         try
@@ -115,56 +115,56 @@ public final class a
             break label360;
           }
           bool = true;
-          uuU = bool;
+          vDN = bool;
         }
         catch (Exception paramContext)
         {
-          uuU = false;
+          vDN = false;
         }
         break;
         label360:
         boolean bool = false;
       }
-      if ((paramArrayOfString.length > 2) && (w.pF(paramString)))
+      if ((paramArrayOfString.length > 2) && (w.sQ(paramString)))
       {
-        paramString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().hS(paramString, paramArrayOfString[2]);
-        paramArrayOfString = String.format("%s\n%s\n DayClickRate: %.2f\nWeekClickRate: %.2f\nMonthClickRate: %.2f", new Object[] { paramArrayOfString[2], ((b)g.ab(b.class)).sh(paramArrayOfString[2]), Double.valueOf(paramString[0]), Double.valueOf(paramString[1]), Double.valueOf(paramString[2]) });
-        ad.i("MicroMsg.Priority.PriorityCommand", "printrate %s", new Object[] { paramArrayOfString });
+        paramString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().il(paramString, paramArrayOfString[2]);
+        paramArrayOfString = String.format("%s\n%s\n DayClickRate: %.2f\nWeekClickRate: %.2f\nMonthClickRate: %.2f", new Object[] { paramArrayOfString[2], ((b)g.ab(b.class)).wk(paramArrayOfString[2]), Double.valueOf(paramString[0]), Double.valueOf(paramString[1]), Double.valueOf(paramString[2]) });
+        ac.i("MicroMsg.Priority.PriorityCommand", "printrate %s", new Object[] { paramArrayOfString });
         E(paramContext, paramArrayOfString);
       }
       else
       {
         localObject = new StringBuffer();
-        if (w.pF(paramString))
+        if (w.sQ(paramString))
         {
-          paramArrayOfString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().hS(paramString, "@all");
-          paramString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().aks(paramString).iterator();
+          paramArrayOfString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().il(paramString, "@all");
+          paramString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().apr(paramString).iterator();
           while (paramString.hasNext())
           {
-            ckv localckv = (ckv)paramString.next();
+            cqc localcqc = (cqc)paramString.next();
             ((StringBuffer)localObject).append("\n");
-            ((StringBuffer)localObject).append(((b)g.ab(b.class)).sh(localckv.Egc));
+            ((StringBuffer)localObject).append(((b)g.ab(b.class)).wk(localcqc.FDc));
             ((StringBuffer)localObject).append("[");
-            ((StringBuffer)localObject).append(localckv.Egc);
+            ((StringBuffer)localObject).append(localcqc.FDc);
             ((StringBuffer)localObject).append("][");
-            ((StringBuffer)localObject).append(com.tencent.mm.pluginsdk.g.h.formatTime("yyyy-MM-dd", localckv.Egd / 1000L));
+            ((StringBuffer)localObject).append(com.tencent.mm.pluginsdk.g.h.formatTime("yyyy-MM-dd", localcqc.FDd / 1000L));
             ((StringBuffer)localObject).append("]");
-            ((StringBuffer)localObject).append(String.format("%.2f %.2f %.2f %d", new Object[] { Float.valueOf(localckv.Egk), Float.valueOf(localckv.Egl), Float.valueOf(localckv.Egm), Integer.valueOf(localckv.Egi) }));
+            ((StringBuffer)localObject).append(String.format("%.2f %.2f %.2f %d", new Object[] { Float.valueOf(localcqc.FDk), Float.valueOf(localcqc.FDl), Float.valueOf(localcqc.FDm), Integer.valueOf(localcqc.FDi) }));
           }
         }
         for (;;)
         {
           paramArrayOfString = String.format("DayClickRate: %.2f\nWeekClickRate: %.2f\nMonthClickRate: %.2f%s", new Object[] { Double.valueOf(paramArrayOfString[0]), Double.valueOf(paramArrayOfString[1]), Double.valueOf(paramArrayOfString[2]), ((StringBuffer)localObject).toString() });
-          ad.i("MicroMsg.Priority.PriorityCommand", "printrate %s", new Object[] { paramArrayOfString });
+          ac.i("MicroMsg.Priority.PriorityCommand", "printrate %s", new Object[] { paramArrayOfString });
           E(paramContext, paramArrayOfString);
           break;
-          paramArrayOfString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().hS(paramString, paramString);
+          paramArrayOfString = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().il(paramString, paramString);
         }
         try
         {
           long l = Long.valueOf(paramArrayOfString[2]).longValue();
-          ad.i("MicroMsg.Priority.PriorityCommand", "currentCount %d", new Object[] { Long.valueOf(l) });
-          g.afB().afk().set(ae.a.Fhd, Long.valueOf(l));
+          ac.i("MicroMsg.Priority.PriorityCommand", "currentCount %d", new Object[] { Long.valueOf(l) });
+          g.agR().agA().set(ah.a.GER, Long.valueOf(l));
         }
         catch (Exception paramContext) {}
       }
@@ -173,7 +173,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.freewifi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cg;
+import com.tencent.mm.g.c.ci;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends cg
+  extends ci
 {
   protected static c.a info;
   
@@ -15,20 +15,20 @@ public final class a
   {
     AppMethodBeat.i(24943);
     c.a locala = new c.a();
-    locala.EYt = new Field[3];
+    locala.GvF = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.EYv.put("key", "TEXT PRIMARY KEY ");
+    locala.GvH.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "key";
+    locala.GvG = "key";
     locala.columns[1] = "value";
-    locala.EYv.put("value", "TEXT");
+    locala.GvH.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "modifyTime";
-    locala.EYv.put("modifyTime", "LONG default '0' ");
+    locala.GvH.put("modifyTime", "LONG default '0' ");
     localStringBuilder.append(" modifyTime LONG default '0' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

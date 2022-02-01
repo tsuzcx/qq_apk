@@ -2,7 +2,7 @@ package com.tencent.mm.b;
 
 public final class l
 {
-  private static byte[] F(byte[] paramArrayOfByte)
+  private static byte[] D(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte2 = new byte[256];
     int j = 0;
@@ -53,7 +53,7 @@ public final class l
   
   private static byte[] f(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    paramArrayOfByte2 = F(paramArrayOfByte2);
+    paramArrayOfByte2 = D(paramArrayOfByte2);
     byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
     int j = 0;
     int k = 0;

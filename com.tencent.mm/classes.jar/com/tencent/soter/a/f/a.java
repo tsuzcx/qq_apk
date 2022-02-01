@@ -4,7 +4,7 @@ public abstract interface a<W, T>
 {
   public abstract void a(b<T> paramb);
   
-  public abstract void cY(W paramW);
+  public abstract void cZ(W paramW);
   
   public abstract void execute();
 }

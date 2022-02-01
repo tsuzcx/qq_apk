@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cn;
+import com.tencent.mm.g.c.cp;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -11,144 +11,144 @@ import java.util.List;
 import java.util.Map;
 
 public final class o
-  extends cn
+  extends cp
 {
   protected static c.a info;
   public String mAppName;
-  public String oAY;
-  public long rVS;
-  private boolean rVT;
-  public String rVU;
-  public String rVV;
-  public String rVW;
-  public String rVX;
-  public String rVY;
-  public int rVZ;
-  public boolean rVq;
-  public String rWA;
-  public String rWB;
-  public String rWC;
-  public String rWD;
-  public String rWE;
-  public String rWF;
-  public String rWG;
-  public g rWH;
-  public f rWI;
-  public h rWJ;
-  public j rWK;
-  public b rWL;
-  public m rWM;
-  public l rWN;
-  public k rWO;
-  public int rWP;
-  public int rWQ;
-  public String rWR;
-  public String rWS;
-  public String rWT;
-  public int rWU;
-  public String rWV;
-  public boolean rWW;
-  public String rWa;
-  public String rWb;
-  public LinkedList<i> rWc;
-  public boolean rWd;
-  public d rWe;
-  public boolean rWf;
-  public c rWg;
-  public HashMap<String, e> rWh;
-  public String rWi;
-  public int rWj;
-  public int rWk;
-  public int rWl;
-  public String rWm;
-  public String rWn;
-  public String rWo;
-  public int rWp;
-  public int rWq;
-  public long rWr;
-  public long rWs;
-  public int rWt;
-  public a rWu;
-  public String rWv;
-  public String rWw;
-  public String rWx;
-  public String rWy;
-  public String rWz;
+  public String pey;
+  public long tdK;
+  private boolean tdL;
+  public String tdM;
+  public String tdN;
+  public String tdO;
+  public String tdP;
+  public String tdQ;
+  public int tdR;
+  public String tdS;
+  public String tdT;
+  public LinkedList<i> tdU;
+  public boolean tdV;
+  public d tdW;
+  public boolean tdX;
+  public c tdY;
+  public HashMap<String, e> tdZ;
+  public boolean tdi;
+  public f teA;
+  public h teB;
+  public j teC;
+  public b teD;
+  public m teE;
+  public l teF;
+  public k teG;
+  public int teH;
+  public int teI;
+  public String teJ;
+  public String teK;
+  public String teL;
+  public int teM;
+  public String teN;
+  public boolean teO;
+  public String tea;
+  public int teb;
+  public int tec;
+  public int ted;
+  public String tee;
+  public String tef;
+  public String teg;
+  public int teh;
+  public int tei;
+  public long tej;
+  public long tek;
+  public int tel;
+  public a tem;
+  public String ten;
+  public String teo;
+  public String tep;
+  public String teq;
+  public String ter;
+  public String tes;
+  public String tet;
+  public String teu;
+  public String tev;
+  public String tew;
+  public String tex;
+  public String tey;
+  public g tez;
   
   static
   {
     AppMethodBeat.i(41454);
     c.a locala = new c.a();
-    locala.EYt = new Field[17];
+    locala.GvF = new Field[17];
     locala.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.EYv.put("msgId", "LONG PRIMARY KEY ");
+    locala.GvH.put("msgId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" msgId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "msgId";
+    locala.GvG = "msgId";
     locala.columns[1] = "mergerId";
-    locala.EYv.put("mergerId", "TEXT");
+    locala.GvH.put("mergerId", "TEXT");
     localStringBuilder.append(" mergerId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "gameMsgId";
-    locala.EYv.put("gameMsgId", "TEXT");
+    locala.GvH.put("gameMsgId", "TEXT");
     localStringBuilder.append(" gameMsgId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "msgType";
-    locala.EYv.put("msgType", "INTEGER");
+    locala.GvH.put("msgType", "INTEGER");
     localStringBuilder.append(" msgType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "createTime";
-    locala.EYv.put("createTime", "LONG default '0' ");
+    locala.GvH.put("createTime", "LONG default '0' ");
     localStringBuilder.append(" createTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "expireTime";
-    locala.EYv.put("expireTime", "LONG default '0' ");
+    locala.GvH.put("expireTime", "LONG default '0' ");
     localStringBuilder.append(" expireTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "appId";
-    locala.EYv.put("appId", "TEXT");
+    locala.GvH.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "showInMsgList";
-    locala.EYv.put("showInMsgList", "INTEGER default 'true' ");
+    locala.GvH.put("showInMsgList", "INTEGER default 'true' ");
     localStringBuilder.append(" showInMsgList INTEGER default 'true' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "isRead";
-    locala.EYv.put("isRead", "INTEGER default 'false' ");
+    locala.GvH.put("isRead", "INTEGER default 'false' ");
     localStringBuilder.append(" isRead INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "label";
-    locala.EYv.put("label", "TEXT default '' ");
+    locala.GvH.put("label", "TEXT default '' ");
     localStringBuilder.append(" label TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "isHidden";
-    locala.EYv.put("isHidden", "INTEGER default 'false' ");
+    locala.GvH.put("isHidden", "INTEGER default 'false' ");
     localStringBuilder.append(" isHidden INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "weight";
-    locala.EYv.put("weight", "TEXT default '' ");
+    locala.GvH.put("weight", "TEXT default '' ");
     localStringBuilder.append(" weight TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "rawXML";
-    locala.EYv.put("rawXML", "TEXT default '' ");
+    locala.GvH.put("rawXML", "TEXT default '' ");
     localStringBuilder.append(" rawXML TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "receiveTime";
-    locala.EYv.put("receiveTime", "LONG default '0' ");
+    locala.GvH.put("receiveTime", "LONG default '0' ");
     localStringBuilder.append(" receiveTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "showType";
-    locala.EYv.put("showType", "INTEGER default '0' ");
+    locala.GvH.put("showType", "INTEGER default '0' ");
     localStringBuilder.append(" showType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "interactiveMergeId";
-    locala.EYv.put("interactiveMergeId", "TEXT default '' ");
+    locala.GvH.put("interactiveMergeId", "TEXT default '' ");
     localStringBuilder.append(" interactiveMergeId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "hasMergedCount";
-    locala.EYv.put("hasMergedCount", "INTEGER default '1' ");
+    locala.GvH.put("hasMergedCount", "INTEGER default '1' ");
     localStringBuilder.append(" hasMergedCount INTEGER default '1' ");
     locala.columns[17] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -159,82 +159,82 @@ public final class o
   public o()
   {
     AppMethodBeat.i(41452);
-    this.rVS = 0L;
-    this.rVT = false;
-    this.oAY = "";
-    this.rVU = "";
-    this.rVV = "";
+    this.tdK = 0L;
+    this.tdL = false;
+    this.pey = "";
+    this.tdM = "";
+    this.tdN = "";
     this.mAppName = "";
-    this.rVW = "";
-    this.rVX = "";
-    this.rVY = "";
-    this.rVZ = 0;
-    this.rWa = "";
-    this.rWb = "";
-    this.rWc = new LinkedList();
-    this.rWe = new d();
-    this.rWg = new c();
-    this.rWh = new HashMap();
-    this.rWi = "";
-    this.rWj = 0;
-    this.rWk = 0;
-    this.rWl = 0;
-    this.rWm = "";
-    this.rWn = "";
-    this.rWo = "";
-    this.rWp = 0;
-    this.rWq = 0;
-    this.rWr = 0L;
-    this.rWs = 0L;
-    this.rWt = 0;
-    this.rWu = new a();
-    this.rWv = "";
-    this.rWw = "";
-    this.rWx = "";
-    this.rWy = "";
-    this.rWz = "";
-    this.rWA = "";
-    this.rWB = "";
-    this.rWI = new f();
-    this.rWJ = new h();
-    this.rWK = new j();
-    this.rWL = new b();
-    this.rWM = new m();
-    this.rWN = new l();
-    this.rWO = new k();
-    this.rVq = false;
-    this.rWU = 0;
-    this.rWV = "";
-    this.rWW = false;
+    this.tdO = "";
+    this.tdP = "";
+    this.tdQ = "";
+    this.tdR = 0;
+    this.tdS = "";
+    this.tdT = "";
+    this.tdU = new LinkedList();
+    this.tdW = new d();
+    this.tdY = new c();
+    this.tdZ = new HashMap();
+    this.tea = "";
+    this.teb = 0;
+    this.tec = 0;
+    this.ted = 0;
+    this.tee = "";
+    this.tef = "";
+    this.teg = "";
+    this.teh = 0;
+    this.tei = 0;
+    this.tej = 0L;
+    this.tek = 0L;
+    this.tel = 0;
+    this.tem = new a();
+    this.ten = "";
+    this.teo = "";
+    this.tep = "";
+    this.teq = "";
+    this.ter = "";
+    this.tes = "";
+    this.tet = "";
+    this.teA = new f();
+    this.teB = new h();
+    this.teC = new j();
+    this.teD = new b();
+    this.teE = new m();
+    this.teF = new l();
+    this.teG = new k();
+    this.tdi = false;
+    this.teM = 0;
+    this.teN = "";
+    this.teO = false;
     AppMethodBeat.o(41452);
   }
   
-  public final void cDf()
+  public final void cQp()
   {
     AppMethodBeat.i(41453);
-    if (this.rVT)
+    if (this.tdL)
     {
       AppMethodBeat.o(41453);
       return;
     }
     if (this.field_msgType == 100)
     {
-      u.cDu();
+      u.cQE();
       u.a(this);
     }
     for (;;)
     {
       q.b(this);
-      this.rVT = true;
+      this.tdL = true;
       AppMethodBeat.o(41453);
       return;
       q.a(this);
     }
   }
   
-  public final boolean cey()
+  public final boolean cmf()
   {
-    return this.rWN.rXG == 0;
+    return this.teF.tfy == 0;
   }
   
   public final c.a getDBInfo()
@@ -245,28 +245,28 @@ public final class o
   public static final class a
   {
     public int orientation;
-    public boolean rOL;
-    public boolean rWX;
-    public List<String> rWY;
+    public boolean sWB;
+    public boolean teP;
+    public List<String> teQ;
     public String url;
     
     public a()
     {
       AppMethodBeat.i(41450);
-      this.rWY = new ArrayList();
+      this.teQ = new ArrayList();
       AppMethodBeat.o(41450);
     }
   }
   
   public static final class b
   {
-    public List<String> rWY;
-    public String rWZ;
+    public List<String> teQ;
+    public String teR;
     
     public b()
     {
       AppMethodBeat.i(41451);
-      this.rWY = new ArrayList();
+      this.teQ = new ArrayList();
       AppMethodBeat.o(41451);
     }
   }
@@ -274,95 +274,95 @@ public final class o
   public static final class c
   {
     public String mDesc;
-    public String rXa;
-    public String rXb;
+    public String teS;
+    public String teT;
   }
   
   public static final class d
   {
     public String mText;
-    public String rXa;
-    public int rXc;
-    public int rXd;
-    public int rXe;
-    public boolean rXf;
-    public int rXg;
-    public boolean rXh;
+    public String teS;
+    public int teU;
+    public int teV;
+    public int teW;
+    public boolean teX;
+    public int teY;
+    public boolean teZ;
   }
   
   public static final class e
   {
     public int mJumpType;
-    public String pdh;
+    public String pGs;
   }
   
   public static final class f
   {
     public String mContent;
-    public String rXa;
-    public String rXb;
+    public String teS;
+    public String teT;
   }
   
   public static final class g
   {
-    public String rXb;
-    public String rXi;
-    public String rXj;
-    public String rXk;
+    public String teT;
+    public String tfa;
+    public String tfb;
+    public String tfc;
   }
   
   public static final class h
   {
     public boolean mClickable;
     public String mName;
-    public String rXb;
+    public String teT;
   }
   
   public static final class i
   {
-    public String bNK;
-    public String rXl;
-    public String rXm;
-    public String rXn;
-    public String rXo;
+    public String bLs;
+    public String tfd;
+    public String tfe;
+    public String tff;
+    public String tfg;
     public String userName;
   }
   
   public static final class j
   {
-    public int nwF = 0;
-    public String rXp;
-    public long rXq = 0L;
+    public int nZF = 0;
+    public String tfh;
+    public long tfi = 0L;
   }
   
   public static final class k
   {
-    public String rXA;
-    public int rXB;
-    public String rXC;
-    public String rXD;
-    public String rXE;
-    public String rXF;
-    public String rXr;
-    public int rXs;
-    public int rXt;
-    public String rXu;
-    public String rXv;
-    public String rXw;
-    public String rXx;
-    public String rXy;
-    public String rXz;
+    public String tfj;
+    public int tfk;
+    public int tfl;
+    public String tfm;
+    public String tfn;
+    public String tfo;
+    public String tfp;
+    public String tfq;
+    public String tfr;
+    public String tfs;
+    public int tft;
+    public String tfu;
+    public String tfv;
+    public String tfw;
+    public String tfx;
   }
   
   public static final class l
   {
-    public String gPO;
-    public int rXG = 0;
+    public String hqo;
+    public int tfy = 0;
   }
   
   public static final class m
   {
-    public int rXH;
+    public int tfz;
   }
 }
 

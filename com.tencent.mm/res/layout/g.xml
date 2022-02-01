@@ -5,12 +5,12 @@
     <include layout="@layout/a5_" />
     <include layout="@layout/a56" />
     <include layout="@layout/a53" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bp2" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bp3" />
     <FrameLayout android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bp6" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bp7" />
     </FrameLayout>
     <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ViewStub android:id="@id/hdl" android:layout="@layout/bok" android:inflatedId="@id/hdk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/hfg" android:layout="@layout/bol" android:inflatedId="@id/hff" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>
     <include android:id="@id/c66" android:visibility="gone" layout="@layout/a4z" />
 </LinearLayout>

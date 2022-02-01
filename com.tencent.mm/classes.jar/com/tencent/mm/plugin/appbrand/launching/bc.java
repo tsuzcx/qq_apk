@@ -4,22 +4,22 @@ import android.content.res.Resources;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.utils.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public enum bc
 {
-  public static void Kj(String paramString)
+  public static void Oq(String paramString)
   {
     AppMethodBeat.i(47317);
-    ad.e("MicroMsg.AppBrand.PrepareQuickAccess", "toast: ".concat(String.valueOf(paramString)));
-    aq.f(new Runnable()
+    ac.e("MicroMsg.AppBrand.PrepareQuickAccess", "toast: ".concat(String.valueOf(paramString)));
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47313);
-        Toast.makeText(aj.getContext(), this.fHG, 0).show();
+        Toast.makeText(ai.getContext(), this.fLm, 0).show();
         AppMethodBeat.o(47313);
       }
     });
@@ -34,16 +34,16 @@ public enum bc
     return paramVarArgs;
   }
   
-  public static void sP(int paramInt)
+  public static void tG(int paramInt)
   {
     AppMethodBeat.i(47316);
-    Kj(aj.getResources().getString(paramInt));
+    Oq(ai.getResources().getString(paramInt));
     AppMethodBeat.o(47316);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.bc
  * JD-Core Version:    0.7.0.1
  */

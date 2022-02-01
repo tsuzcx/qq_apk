@@ -12,10 +12,10 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.protocal.protobuf.ahk;
-import com.tencent.mm.protocal.protobuf.dcz;
-import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.br.d;
+import com.tencent.mm.protocal.protobuf.aij;
+import com.tencent.mm.protocal.protobuf.dim;
+import com.tencent.mm.protocal.protobuf.dio;
 import com.tencent.mm.ui.base.FlowLayout;
 import com.tencent.mm.ui.base.i;
 import java.util.HashSet;
@@ -26,44 +26,44 @@ import java.util.Set;
 public final class b
   extends i
 {
+  private Set<aij> AgQ;
+  private View AgR;
+  private View AgS;
+  private TextView AgT;
+  private FlowLayout AgU;
+  private final aij AgV;
   private View contentView;
-  private TextView wgK;
-  private Set<ahk> yTb;
-  private View yTc;
-  private View yTd;
-  private TextView yTe;
-  private FlowLayout yTf;
-  private final ahk yTg;
+  private TextView xsa;
   
-  public b(final Context paramContext, final ddb paramddb, final a parama)
+  public b(final Context paramContext, final dio paramdio, final a parama)
   {
     super(paramContext, 2131821484);
     AppMethodBeat.i(126636);
-    this.yTb = new HashSet();
-    this.yTg = new ahk();
-    this.yTg.id = "101";
-    this.yTg.doh = paramContext.getString(2131764467);
-    final ahk localahk;
-    if (paramddb.Evd != null)
+    this.AgQ = new HashSet();
+    this.AgV = new aij();
+    this.AgV.id = "101";
+    this.AgV.dlQ = paramContext.getString(2131764467);
+    final aij localaij;
+    if (paramdio.FSe != null)
     {
-      localIterator = paramddb.Evd.EuK.iterator();
+      localIterator = paramdio.FSe.FRL.iterator();
       while (localIterator.hasNext())
       {
-        localahk = (ahk)localIterator.next();
-        if (localahk.Dkb)
+        localaij = (aij)localIterator.next();
+        if (localaij.EDh)
         {
-          this.yTg.id = localahk.id;
-          this.yTg.doh = localahk.doh;
-          paramddb.Evd.EuK.remove(localahk);
+          this.AgV.id = localaij.id;
+          this.AgV.dlQ = localaij.dlQ;
+          paramdio.FSe.FRL.remove(localaij);
         }
       }
     }
     this.contentView = LayoutInflater.from(paramContext).inflate(2131495772, null, false);
-    this.yTc = this.contentView.findViewById(2131299892);
-    this.yTd = this.contentView.findViewById(2131299899);
-    this.wgK = ((TextView)this.contentView.findViewById(2131299889));
-    this.yTe = ((TextView)this.contentView.findViewById(2131306191));
-    this.yTe.setOnClickListener(new View.OnClickListener()
+    this.AgR = this.contentView.findViewById(2131299892);
+    this.AgS = this.contentView.findViewById(2131299899);
+    this.xsa = ((TextView)this.contentView.findViewById(2131299889));
+    this.AgT = ((TextView)this.contentView.findViewById(2131306191));
+    this.AgT.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -71,36 +71,36 @@ public final class b
         if (b.a(b.this).isEmpty()) {
           b.a(b.this).add(b.b(b.this));
         }
-        parama.h(b.a(b.this));
+        parama.i(b.a(b.this));
         b.this.dismiss();
         AppMethodBeat.o(126632);
       }
     });
-    this.yTf = ((FlowLayout)this.contentView.findViewById(2131299894));
-    Iterator localIterator = paramddb.Evd.EuK.iterator();
+    this.AgU = ((FlowLayout)this.contentView.findViewById(2131299894));
+    Iterator localIterator = paramdio.FSe.FRL.iterator();
     while (localIterator.hasNext())
     {
-      localahk = (ahk)localIterator.next();
-      View localView = LayoutInflater.from(paramContext).inflate(2131495773, this.yTf, false);
+      localaij = (aij)localIterator.next();
+      View localView = LayoutInflater.from(paramContext).inflate(2131495773, this.AgU, false);
       final TextView localTextView = (TextView)localView.findViewById(2131299896);
-      localTextView.setText(localahk.doh);
+      localTextView.setText(localaij.dlQ);
       localTextView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(126633);
-          if (b.a(b.this).contains(localahk))
+          if (b.a(b.this).contains(localaij))
           {
-            b.a(b.this).remove(localahk);
+            b.a(b.this).remove(localaij);
             localTextView.setTextColor(paramContext.getResources().getColor(2131101045));
             localTextView.setBackgroundResource(2131234409);
           }
           while (b.a(b.this).isEmpty())
           {
-            b.c(b.this).setText(b.b(b.this).doh);
+            b.c(b.this).setText(b.b(b.this).dlQ);
             AppMethodBeat.o(126633);
             return;
-            b.a(b.this).add(localahk);
+            b.a(b.this).add(localaij);
             localTextView.setTextColor(paramContext.getResources().getColor(2131101044));
             localTextView.setBackgroundResource(2131234408);
           }
@@ -108,16 +108,16 @@ public final class b
           AppMethodBeat.o(126633);
         }
       });
-      this.yTf.addView(localView);
+      this.AgU.addView(localView);
     }
-    this.wgK.setText(paramddb.Evd.EuI);
-    this.wgK.setOnClickListener(new View.OnClickListener()
+    this.xsa.setText(paramdio.FSe.FRJ);
+    this.xsa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126634);
         paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("rawUrl", paramddb.Evd.EuJ);
+        paramAnonymousView.putExtra("rawUrl", paramdio.FSe.FRK);
         d.b(b.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
         AppMethodBeat.o(126634);
       }
@@ -143,8 +143,8 @@ public final class b
     paramView = e.a(paramView.getContext(), paramView, this.contentView, paramBoolean);
     if (paramBoolean)
     {
-      this.yTd.setVisibility(0);
-      this.yTc.setVisibility(8);
+      this.AgS.setVisibility(0);
+      this.AgR.setVisibility(8);
     }
     for (;;)
     {
@@ -161,14 +161,14 @@ public final class b
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(126637);
       return;
-      this.yTd.setVisibility(8);
-      this.yTc.setVisibility(0);
+      this.AgS.setVisibility(8);
+      this.AgR.setVisibility(0);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void h(Set<ahk> paramSet);
+    public abstract void i(Set<aij> paramSet);
     
     public abstract void onDismiss();
   }

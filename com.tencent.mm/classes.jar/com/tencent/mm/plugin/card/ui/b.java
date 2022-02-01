@@ -10,19 +10,19 @@ import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.r;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.ui.view.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class b
   implements Application.ActivityLifecycleCallbacks
 {
-  private int nyf = 0;
+  private int obf = 0;
   
-  public static Application bod()
+  public static Application buZ()
   {
     AppMethodBeat.i(113172);
-    Application localApplication = (Application)aj.getContext().getApplicationContext();
+    Application localApplication = (Application)ai.getContext().getApplicationContext();
     AppMethodBeat.o(113172);
     return localApplication;
   }
@@ -40,37 +40,37 @@ public final class b
   public final void onActivityStarted(Activity paramActivity)
   {
     AppMethodBeat.i(113173);
-    if (this.nyf < 0)
+    if (this.obf < 0)
     {
       if ((paramActivity == null) || (!(paramActivity instanceof CardDetailUI))) {
         break label90;
       }
       paramActivity = (CardDetailUI)paramActivity;
-      if (paramActivity.nyr != null)
+      if (paramActivity.obs != null)
       {
-        com.tencent.mm.plugin.card.ui.view.g localg = paramActivity.nyr.nyP;
+        com.tencent.mm.plugin.card.ui.view.g localg = paramActivity.obs.obQ;
         if ((localg != null) && ((localg instanceof m)))
         {
-          ad.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！is showing CardDetailUI,updateCodeView!");
-          paramActivity.nyr.nyP.d(c.nJb);
+          ac.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！is showing CardDetailUI,updateCodeView!");
+          paramActivity.obs.obQ.d(c.omb);
         }
       }
     }
     for (;;)
     {
-      this.nyf += 1;
+      this.obf += 1;
       AppMethodBeat.o(113173);
       return;
       label90:
-      com.tencent.mm.kernel.g.afE().ax(new Runnable()
+      com.tencent.mm.kernel.g.agU().az(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(113171);
-          ad.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！doUpdateOfflineDynamicCard!");
-          com.tencent.mm.plugin.card.b.g localg = am.bJl();
+          ac.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！doUpdateOfflineDynamicCard!");
+          com.tencent.mm.plugin.card.b.g localg = am.bQy();
           if (localg != null) {
-            localg.a(r.nJq);
+            localg.a(r.omq);
           }
           AppMethodBeat.o(113171);
         }
@@ -80,7 +80,7 @@ public final class b
   
   public final void onActivityStopped(Activity paramActivity)
   {
-    this.nyf -= 1;
+    this.obf -= 1;
   }
 }
 

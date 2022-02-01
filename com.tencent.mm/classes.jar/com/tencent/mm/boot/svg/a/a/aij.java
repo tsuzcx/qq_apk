@@ -13,8 +13,8 @@ import com.tencent.mm.svg.c;
 public final class aij
   extends c
 {
-  private final int height = 72;
-  private final int width = 72;
+  private final int height = 24;
+  private final int width = 24;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,8 +24,8 @@ public final class aij
     for (;;)
     {
       return 0;
-      return 72;
-      return 72;
+      return 24;
+      return 24;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       c.j(paramVarArgs);
@@ -43,29 +43,26 @@ public final class aij
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
+      localCanvas.saveLayerAlpha(null, 76, 31);
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localPaint.setColor(-1);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(36.0F, 66.0F);
-      ((Path)localObject).cubicTo(19.431458F, 66.0F, 6.0F, 52.568542F, 6.0F, 36.0F);
-      ((Path)localObject).cubicTo(6.0F, 19.431458F, 19.431458F, 6.0F, 36.0F, 6.0F);
-      ((Path)localObject).cubicTo(52.568542F, 6.0F, 66.0F, 19.431458F, 66.0F, 36.0F);
-      ((Path)localObject).cubicTo(66.0F, 52.568542F, 52.568542F, 66.0F, 36.0F, 66.0F);
+      ((Path)localObject).moveTo(12.0F, 20.0F);
+      ((Path)localObject).cubicTo(17.522848F, 20.0F, 22.0F, 16.19442F, 22.0F, 11.5F);
+      ((Path)localObject).cubicTo(22.0F, 6.80558F, 17.522848F, 3.0F, 12.0F, 3.0F);
+      ((Path)localObject).cubicTo(6.477152F, 3.0F, 2.0F, 6.80558F, 2.0F, 11.5F);
+      ((Path)localObject).cubicTo(2.0F, 14.036405F, 3.306998F, 16.313334F, 5.379757F, 17.870733F);
+      ((Path)localObject).lineTo(5.077659F, 20.469614F);
+      ((Path)localObject).cubicTo(5.045775F, 20.74391F, 5.242288F, 20.992117F, 5.516583F, 21.024002F);
+      ((Path)localObject).cubicTo(5.610383F, 21.034904F, 5.705353F, 21.019022F, 5.790501F, 20.978193F);
+      ((Path)localObject).lineTo(8.773454F, 19.547836F);
+      ((Path)localObject).cubicTo(9.78573F, 19.840973F, 10.871017F, 20.0F, 12.0F, 20.0F);
       ((Path)localObject).close();
-      ((Path)localObject).moveTo(32.47031F, 42.41795F);
-      ((Path)localObject).lineTo(24.172613F, 34.120251F);
-      ((Path)localObject).lineTo(21.0F, 37.292862F);
-      ((Path)localObject).lineTo(30.356102F, 46.656384F);
-      ((Path)localObject).cubicTo(30.356211F, 46.656494F, 30.356319F, 46.656601F, 30.356426F, 46.656712F);
-      ((Path)localObject).cubicTo(31.527756F, 47.828526F, 33.42725F, 47.828922F, 34.599068F, 46.657593F);
-      ((Path)localObject).lineTo(52.455845F, 28.807583F);
-      ((Path)localObject).lineTo(49.268261F, 25.620001F);
-      ((Path)localObject).lineTo(32.47031F, 42.41795F);
-      ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
+      localCanvas.restore();
       localCanvas.restore();
       c.l(paramVarArgs);
     }

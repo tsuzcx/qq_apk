@@ -1,38 +1,30 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ah;
 import com.tencent.mm.vfs.e;
 import java.io.RandomAccessFile;
 
 public final class f
 {
-  private static final String cLc;
+  private static final String cIk;
   
   static
   {
     AppMethodBeat.i(19439);
-    cLc = ae.FfH + "channel_history.cfg";
+    cIk = ah.GDu + "channel_history.cfg";
     AppMethodBeat.o(19439);
   }
   
-  private static boolean KA()
-  {
-    AppMethodBeat.i(19438);
-    boolean bool = new e(cLc).exists();
-    AppMethodBeat.o(19438);
-    return bool;
-  }
-  
-  public static void Kz()
+  public static void Kk()
   {
     AppMethodBeat.i(19437);
-    if (!KA())
+    if (!Kl())
     {
-      ad.w("MicroMsg.ChannelHistory", "channel history file does not exit!");
+      ac.w("MicroMsg.ChannelHistory", "channel history file does not exit!");
       AppMethodBeat.o(19437);
       return;
     }
@@ -40,18 +32,18 @@ public final class f
     Object localObject1 = null;
     try
     {
-      RandomAccessFile localRandomAccessFile = com.tencent.mm.vfs.i.cS(cLc, true);
+      RandomAccessFile localRandomAccessFile = com.tencent.mm.vfs.i.cY(cIk, true);
       localObject1 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
       long l = localRandomAccessFile.length();
       localObject1 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
-      ad.i("MicroMsg.ChannelHistory", "correctChannleIdBySource fileLen:%d  curChannelId:%d", new Object[] { Long.valueOf(l), Integer.valueOf(com.tencent.mm.sdk.platformtools.i.cJR) });
+      ac.i("MicroMsg.ChannelHistory", "correctChannleIdBySource fileLen:%d  curChannelId:%d", new Object[] { Long.valueOf(l), Integer.valueOf(com.tencent.mm.sdk.platformtools.i.cGY) });
       if (l <= 0L)
       {
         localObject1 = localRandomAccessFile;
         localObject4 = localRandomAccessFile;
-        ad.w("MicroMsg.ChannelHistory", "channel history file fileLen <= 0");
+        ac.w("MicroMsg.ChannelHistory", "channel history file fileLen <= 0");
         if (localRandomAccessFile != null) {}
         try
         {
@@ -61,7 +53,7 @@ public final class f
         }
         catch (Exception localException1)
         {
-          ad.printErrStackTrace("MicroMsg.ChannelHistory", localException1, "Close ChannelHistory History file failed.", new Object[] { "" });
+          ac.printErrStackTrace("MicroMsg.ChannelHistory", localException1, "Close ChannelHistory History file failed.", new Object[] { "" });
           AppMethodBeat.o(19437);
           return;
         }
@@ -71,44 +63,44 @@ public final class f
       String str2 = localRandomAccessFile.readLine();
       localObject2 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
-      int k = com.tencent.mm.sdk.platformtools.i.cJR;
+      int k = com.tencent.mm.sdk.platformtools.i.cGY;
       localObject2 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
-      int i = com.tencent.mm.sdk.platformtools.i.cJR;
+      int i = com.tencent.mm.sdk.platformtools.i.cGY;
       localObject2 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
-      com.tencent.mm.sdk.platformtools.i.ETt = com.tencent.mm.sdk.platformtools.i.cJR;
+      com.tencent.mm.sdk.platformtools.i.GqG = com.tencent.mm.sdk.platformtools.i.cGY;
       Object localObject5 = "";
       localObject2 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
       String str1;
-      if (!bt.isNullOrNil(str2))
+      if (!bs.isNullOrNil(str2))
       {
         localObject2 = localRandomAccessFile;
         localObject4 = localRandomAccessFile;
         str1 = "" + str2 + ",";
         localObject2 = localRandomAccessFile;
         localObject4 = localRandomAccessFile;
-        int j = bt.getInt(str2, 0);
+        int j = bs.getInt(str2, 0);
         localObject5 = str1;
         i = j;
         localObject2 = localRandomAccessFile;
         localObject4 = localRandomAccessFile;
-        if (j != com.tencent.mm.sdk.platformtools.i.cJR)
+        if (j != com.tencent.mm.sdk.platformtools.i.cGY)
         {
           localObject2 = localRandomAccessFile;
           localObject4 = localRandomAccessFile;
-          com.tencent.mm.sdk.platformtools.i.ETt = j;
+          com.tencent.mm.sdk.platformtools.i.GqG = j;
           localObject2 = localRandomAccessFile;
           localObject4 = localRandomAccessFile;
-          ad.i("MicroMsg.ChannelHistory", "real correct final channelid: " + com.tencent.mm.sdk.platformtools.i.cJR);
+          ac.i("MicroMsg.ChannelHistory", "real correct final channelid: " + com.tencent.mm.sdk.platformtools.i.cGY);
           i = j;
           localObject5 = str1;
         }
       }
       localObject2 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
-      if (aj.EUA)
+      if (ai.GrM)
       {
         for (;;)
         {
@@ -117,7 +109,7 @@ public final class f
           str1 = localRandomAccessFile.readLine();
           localObject2 = localRandomAccessFile;
           localObject4 = localRandomAccessFile;
-          if (bt.isNullOrNil(str1)) {
+          if (bs.isNullOrNil(str1)) {
             break;
           }
           localObject2 = localRandomAccessFile;
@@ -125,11 +117,11 @@ public final class f
           localObject5 = (String)localObject5 + str1 + ",";
           localObject2 = localRandomAccessFile;
           localObject4 = localRandomAccessFile;
-          i = bt.getInt(str1, 0);
+          i = bs.getInt(str1, 0);
         }
         localObject2 = localRandomAccessFile;
         localObject4 = localRandomAccessFile;
-        ad.i("MicroMsg.ChannelHistory", "channel list: %s", new Object[] { localObject5 });
+        ac.i("MicroMsg.ChannelHistory", "channel list: %s", new Object[] { localObject5 });
         if (i != k)
         {
           localObject2 = localRandomAccessFile;
@@ -140,7 +132,7 @@ public final class f
           localRandomAccessFile.write(String.format("%d\n", new Object[] { Integer.valueOf(k) }).getBytes());
           localObject2 = localRandomAccessFile;
           localObject4 = localRandomAccessFile;
-          ad.i("MicroMsg.ChannelHistory", "channelid change from %d to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+          ac.i("MicroMsg.ChannelHistory", "channelid change from %d to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
         }
       }
       if (localRandomAccessFile != null) {}
@@ -152,7 +144,7 @@ public final class f
       }
       catch (Exception localException2)
       {
-        ad.printErrStackTrace("MicroMsg.ChannelHistory", localException2, "Close ChannelHistory History file failed.", new Object[] { "" });
+        ac.printErrStackTrace("MicroMsg.ChannelHistory", localException2, "Close ChannelHistory History file failed.", new Object[] { "" });
         AppMethodBeat.o(19437);
         return;
       }
@@ -166,14 +158,14 @@ public final class f
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.ChannelHistory", localException4, "Close ChannelHistory History file failed.", new Object[] { "" });
+          ac.printErrStackTrace("MicroMsg.ChannelHistory", localException4, "Close ChannelHistory History file failed.", new Object[] { "" });
         }
       }
     }
     catch (Exception localException5)
     {
       localObject4 = localException2;
-      ad.printErrStackTrace("MicroMsg.ChannelHistory", localException5, "Open ChannelHistory History file failed.", new Object[] { "" });
+      ac.printErrStackTrace("MicroMsg.ChannelHistory", localException5, "Open ChannelHistory History file failed.", new Object[] { "" });
       if (localException2 != null) {}
       try
       {
@@ -183,7 +175,7 @@ public final class f
       }
       catch (Exception localException3)
       {
-        ad.printErrStackTrace("MicroMsg.ChannelHistory", localException3, "Close ChannelHistory History file failed.", new Object[] { "" });
+        ac.printErrStackTrace("MicroMsg.ChannelHistory", localException3, "Close ChannelHistory History file failed.", new Object[] { "" });
         AppMethodBeat.o(19437);
         return;
       }
@@ -194,14 +186,22 @@ public final class f
     }
   }
   
+  private static boolean Kl()
+  {
+    AppMethodBeat.i(19438);
+    boolean bool = new e(cIk).exists();
+    AppMethodBeat.o(19438);
+    return bool;
+  }
+  
   /* Error */
-  public static void bj(android.content.Context paramContext)
+  public static void bk(android.content.Context paramContext)
   {
     // Byte code:
     //   0: sipush 19436
     //   3: invokestatic 14	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 177	com/tencent/mm/sdk/platformtools/i:ie	(Landroid/content/Context;)V
+    //   7: invokestatic 177	com/tencent/mm/sdk/platformtools/i:ip	(Landroid/content/Context;)V
     //   10: aload_0
     //   11: invokevirtual 183	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   14: astore_1
@@ -212,93 +212,93 @@ public final class f
     //   21: invokevirtual 192	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   24: getfield 198	android/content/pm/PackageInfo:applicationInfo	Landroid/content/pm/ApplicationInfo;
     //   27: getfield 203	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   30: invokestatic 209	com/tencent/mm/d/a:el	(Ljava/lang/String;)Lcom/tencent/mm/d/a;
+    //   30: invokestatic 209	com/tencent/mm/d/a:ea	(Ljava/lang/String;)Lcom/tencent/mm/d/a;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnull +44 -> 79
     //   38: aload_1
-    //   39: getfield 213	com/tencent/mm/d/a:cJO	Lcom/tencent/mm/d/b;
+    //   39: getfield 213	com/tencent/mm/d/a:cGV	Lcom/tencent/mm/d/b;
     //   42: ifnull +37 -> 79
-    //   45: ldc 57
+    //   45: ldc 49
     //   47: ldc 215
-    //   49: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   52: aload_1
-    //   53: getfield 213	com/tencent/mm/d/a:cJO	Lcom/tencent/mm/d/b;
-    //   56: getfield 218	com/tencent/mm/d/b:cJR	I
+    //   53: getfield 213	com/tencent/mm/d/a:cGV	Lcom/tencent/mm/d/b;
+    //   56: getfield 218	com/tencent/mm/d/b:cGY	I
     //   59: ifeq +20 -> 79
     //   62: aload_1
-    //   63: getfield 213	com/tencent/mm/d/a:cJO	Lcom/tencent/mm/d/b;
-    //   66: getfield 218	com/tencent/mm/d/b:cJR	I
-    //   69: putstatic 91	com/tencent/mm/sdk/platformtools/i:cJR	I
-    //   72: ldc 57
+    //   63: getfield 213	com/tencent/mm/d/a:cGV	Lcom/tencent/mm/d/b;
+    //   66: getfield 218	com/tencent/mm/d/b:cGY	I
+    //   69: putstatic 83	com/tencent/mm/sdk/platformtools/i:cGY	I
+    //   72: ldc 49
     //   74: ldc 220
-    //   76: invokestatic 138	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: ldc 57
+    //   76: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: ldc 49
     //   81: ldc 222
     //   83: iconst_2
     //   84: anewarray 4	java/lang/Object
     //   87: dup
     //   88: iconst_0
-    //   89: getstatic 91	com/tencent/mm/sdk/platformtools/i:cJR	I
-    //   92: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   89: getstatic 83	com/tencent/mm/sdk/platformtools/i:cGY	I
+    //   92: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   95: aastore
     //   96: dup
     //   97: iconst_1
-    //   98: invokestatic 225	com/tencent/mm/sdk/platformtools/aj:getProcessName	()Ljava/lang/String;
+    //   98: invokestatic 225	com/tencent/mm/sdk/platformtools/ai:getProcessName	()Ljava/lang/String;
     //   101: aastore
-    //   102: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   105: invokestatic 55	com/tencent/mm/app/f:KA	()Z
+    //   102: invokestatic 91	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   105: invokestatic 47	com/tencent/mm/app/f:Kl	()Z
     //   108: ifne +52 -> 160
     //   111: aconst_null
     //   112: astore_2
     //   113: aconst_null
     //   114: astore_1
-    //   115: getstatic 36	com/tencent/mm/app/f:cLc	Ljava/lang/String;
+    //   115: getstatic 36	com/tencent/mm/app/f:cIk	Ljava/lang/String;
     //   118: iconst_1
-    //   119: invokestatic 71	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   119: invokestatic 63	com/tencent/mm/vfs/i:cY	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   122: astore_3
     //   123: aload_3
     //   124: astore_1
     //   125: aload_3
     //   126: astore_2
     //   127: aload_3
-    //   128: ldc 152
+    //   128: ldc 146
     //   130: iconst_1
     //   131: anewarray 4	java/lang/Object
     //   134: dup
     //   135: iconst_0
-    //   136: getstatic 91	com/tencent/mm/sdk/platformtools/i:cJR	I
-    //   139: invokestatic 96	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   136: getstatic 83	com/tencent/mm/sdk/platformtools/i:cGY	I
+    //   139: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   142: aastore
-    //   143: invokestatic 158	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   146: invokevirtual 162	java/lang/String:getBytes	()[B
-    //   149: invokevirtual 166	java/io/RandomAccessFile:write	([B)V
+    //   143: invokestatic 152	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   146: invokevirtual 156	java/lang/String:getBytes	()[B
+    //   149: invokevirtual 160	java/io/RandomAccessFile:write	([B)V
     //   152: aload_3
     //   153: ifnull +7 -> 160
     //   156: aload_3
-    //   157: invokevirtual 104	java/io/RandomAccessFile:close	()V
+    //   157: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   160: aload_0
-    //   161: invokestatic 231	com/tencent/mm/booter/d:bH	(Landroid/content/Context;)Lcom/tencent/mm/booter/d;
+    //   161: invokestatic 231	com/tencent/mm/booter/d:bK	(Landroid/content/Context;)Lcom/tencent/mm/booter/d;
     //   164: astore_0
     //   165: aload_0
     //   166: ifnull +18 -> 184
     //   169: aload_0
-    //   170: getfield 234	com/tencent/mm/booter/d:fiC	I
+    //   170: getfield 234	com/tencent/mm/booter/d:flW	I
     //   173: iconst_m1
     //   174: if_icmpeq +10 -> 184
     //   177: aload_0
-    //   178: getfield 234	com/tencent/mm/booter/d:fiC	I
-    //   181: putstatic 91	com/tencent/mm/sdk/platformtools/i:cJR	I
+    //   178: getfield 234	com/tencent/mm/booter/d:flW	I
+    //   181: putstatic 83	com/tencent/mm/sdk/platformtools/i:cGY	I
     //   184: sipush 19436
     //   187: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: return
     //   191: astore_1
-    //   192: ldc 57
+    //   192: ldc 49
     //   194: ldc 236
-    //   196: invokestatic 239	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   196: invokestatic 239	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   199: goto -120 -> 79
     //   202: astore_1
-    //   203: ldc 57
+    //   203: ldc 49
     //   205: ldc 241
     //   207: iconst_1
     //   208: anewarray 4	java/lang/Object
@@ -307,70 +307,70 @@ public final class f
     //   213: aload_1
     //   214: invokevirtual 244	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   217: aastore
-    //   218: invokestatic 246	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   218: invokestatic 246	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   221: goto -142 -> 79
     //   224: astore_1
-    //   225: ldc 57
+    //   225: ldc 49
     //   227: aload_1
-    //   228: ldc 106
+    //   228: ldc 98
     //   230: iconst_1
     //   231: anewarray 4	java/lang/Object
     //   234: dup
     //   235: iconst_0
-    //   236: ldc 108
+    //   236: ldc 100
     //   238: aastore
-    //   239: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   239: invokestatic 104	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   242: goto -82 -> 160
     //   245: astore_3
     //   246: aload_1
     //   247: astore_2
-    //   248: ldc 57
+    //   248: ldc 49
     //   250: aload_3
-    //   251: ldc 170
+    //   251: ldc 164
     //   253: iconst_1
     //   254: anewarray 4	java/lang/Object
     //   257: dup
     //   258: iconst_0
-    //   259: ldc 108
+    //   259: ldc 100
     //   261: aastore
-    //   262: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   262: invokestatic 104	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   265: aload_1
     //   266: ifnull -106 -> 160
     //   269: aload_1
-    //   270: invokevirtual 104	java/io/RandomAccessFile:close	()V
+    //   270: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   273: goto -113 -> 160
     //   276: astore_1
-    //   277: ldc 57
+    //   277: ldc 49
     //   279: aload_1
-    //   280: ldc 106
+    //   280: ldc 98
     //   282: iconst_1
     //   283: anewarray 4	java/lang/Object
     //   286: dup
     //   287: iconst_0
-    //   288: ldc 108
+    //   288: ldc 100
     //   290: aastore
-    //   291: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   291: invokestatic 104	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   294: goto -134 -> 160
     //   297: astore_0
     //   298: aload_2
     //   299: ifnull +7 -> 306
     //   302: aload_2
-    //   303: invokevirtual 104	java/io/RandomAccessFile:close	()V
+    //   303: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   306: sipush 19436
     //   309: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   312: aload_0
     //   313: athrow
     //   314: astore_1
-    //   315: ldc 57
+    //   315: ldc 49
     //   317: aload_1
-    //   318: ldc 106
+    //   318: ldc 98
     //   320: iconst_1
     //   321: anewarray 4	java/lang/Object
     //   324: dup
     //   325: iconst_0
-    //   326: ldc 108
+    //   326: ldc 100
     //   328: aastore
-    //   329: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   329: invokestatic 104	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   332: goto -26 -> 306
     // Local variable table:
     //   start	length	slot	name	signature
@@ -402,7 +402,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.f
  * JD-Core Version:    0.7.0.1
  */

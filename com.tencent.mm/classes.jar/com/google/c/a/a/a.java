@@ -4,15 +4,15 @@ import com.google.c.b.b;
 
 public final class a
 {
-  boolean bJJ;
-  int bJK;
-  int bJL;
-  public b bJM;
+  boolean bHr;
+  int bHs;
+  int bHt;
+  public b bHu;
   int size;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.a.a.a
  * JD-Core Version:    0.7.0.1
  */

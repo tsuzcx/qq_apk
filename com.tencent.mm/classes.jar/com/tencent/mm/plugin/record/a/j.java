@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ev;
+import com.tencent.mm.g.c.ez;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends ev
+  extends ez
   implements c
 {
   public static c.a info;
@@ -16,48 +16,48 @@ public final class j
   {
     AppMethodBeat.i(140938);
     c.a locala = new c.a();
-    locala.EYt = new Field[10];
+    locala.GvF = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.EYv.put("localId", "INTEGER PRIMARY KEY ");
+    locala.GvH.put("localId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" localId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "localId";
+    locala.GvG = "localId";
     locala.columns[1] = "msgId";
-    locala.EYv.put("msgId", "LONG default '-1' ");
+    locala.GvH.put("msgId", "LONG default '-1' ");
     localStringBuilder.append(" msgId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "oriMsgId";
-    locala.EYv.put("oriMsgId", "LONG default '-1' ");
+    locala.GvH.put("oriMsgId", "LONG default '-1' ");
     localStringBuilder.append(" oriMsgId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "toUser";
-    locala.EYv.put("toUser", "TEXT default '' ");
+    locala.GvH.put("toUser", "TEXT default '' ");
     localStringBuilder.append(" toUser TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "title";
-    locala.EYv.put("title", "TEXT");
+    locala.GvH.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "desc";
-    locala.EYv.put("desc", "TEXT");
+    locala.GvH.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "dataProto";
-    locala.EYv.put("dataProto", "BLOB");
+    locala.GvH.put("dataProto", "BLOB");
     localStringBuilder.append(" dataProto BLOB");
     localStringBuilder.append(", ");
     locala.columns[7] = "type";
-    locala.EYv.put("type", "INTEGER default '0' ");
+    locala.GvH.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "status";
-    locala.EYv.put("status", "INTEGER default '0' ");
+    locala.GvH.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "favFrom";
-    locala.EYv.put("favFrom", "TEXT");
+    locala.GvH.put("favFrom", "TEXT");
     localStringBuilder.append(" favFrom TEXT");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -65,7 +65,7 @@ public final class j
     AppMethodBeat.o(140938);
   }
   
-  public final int dgb()
+  public final int dtI()
   {
     return this.field_localId;
   }

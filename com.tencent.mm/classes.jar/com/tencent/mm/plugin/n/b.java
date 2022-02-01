@@ -6,17 +6,17 @@ import com.tencent.mm.kernel.b.c;
 public final class b
   implements c
 {
-  private static b txa;
+  private static b uFs;
   
-  public static b cOx()
+  public static b dcg()
   {
     try
     {
       AppMethodBeat.i(151500);
-      if (txa == null) {
-        txa = new b();
+      if (uFs == null) {
+        uFs = new b();
       }
-      b localb = txa;
+      b localb = uFs;
       AppMethodBeat.o(151500);
       return localb;
     }
@@ -25,7 +25,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.n.b
  * JD-Core Version:    0.7.0.1
  */

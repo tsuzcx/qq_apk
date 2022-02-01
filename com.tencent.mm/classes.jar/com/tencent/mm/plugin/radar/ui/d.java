@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.radar.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
 public final class d
 {
-  private static final int uTu = 1000;
-  private static final int uTv = 500;
-  public static final d uTw;
+  private static final int wcj = 1000;
+  private static final int wck = 500;
+  public static final d wcl;
   
   static
   {
     AppMethodBeat.i(138634);
-    uTw = new d();
-    uTu = 1000;
-    uTv = 500;
+    wcl = new d();
+    wcj = 1000;
+    wck = 500;
     AppMethodBeat.o(138634);
   }
   
-  public static int dfh()
+  public static int dsO()
   {
-    return uTu;
+    return wcj;
   }
   
-  public static boolean rL(long paramLong)
+  public static boolean wo(long paramLong)
   {
-    return paramLong <= uTv;
+    return paramLong <= wck;
   }
 }
 

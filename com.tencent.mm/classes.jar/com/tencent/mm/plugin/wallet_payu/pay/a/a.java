@@ -8,35 +8,35 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public double AAf;
-  public String AAg;
-  public double AAh;
-  public String AAi;
-  public boolean AAj;
-  public boolean AAk;
-  public String AAl;
-  public String AAm;
-  public String AAn;
-  public String AyH;
-  public String AyN;
-  public String AyO;
-  public String AyQ;
-  public String dcE;
-  public String dol;
-  public String don;
-  public String nSY;
-  public int nUh;
+  public String BRd;
+  public String BRj;
+  public String BRk;
+  public String BRm;
+  public double BSB;
+  public String BSC;
+  public double BSD;
+  public String BSE;
+  public boolean BSF;
+  public boolean BSG;
+  public String BSH;
+  public String BSI;
+  public String BSJ;
+  public String dac;
+  public String dlU;
+  public String dlW;
+  public String owt;
+  public int oxC;
   public String pin;
   
   public a(String paramString1, double paramDouble, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72081);
-    this.dcE = paramString1;
-    this.AAf = paramDouble;
-    this.AAg = paramString2;
-    this.don = paramString3;
-    this.dol = paramString4;
-    this.AyH = paramString5;
+    this.dac = paramString1;
+    this.BSB = paramDouble;
+    this.BSC = paramString2;
+    this.dlW = paramString3;
+    this.dlU = paramString4;
+    this.BRd = paramString5;
     this.pin = paramString6;
     HashMap localHashMap = new HashMap();
     localHashMap.put("req_key", paramString1);
@@ -52,7 +52,7 @@ public final class a
     AppMethodBeat.o(72081);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 9;
   }
@@ -60,7 +60,7 @@ public final class a
   public final boolean isSuccess()
   {
     AppMethodBeat.i(72082);
-    boolean bool = this.AAl.equals("1");
+    boolean bool = this.BSH.equals("1");
     AppMethodBeat.o(72082);
     return bool;
   }
@@ -70,18 +70,18 @@ public final class a
     AppMethodBeat.i(72083);
     if (paramJSONObject != null)
     {
-      this.nSY = paramJSONObject.optString("trans_id");
-      this.AAh = (paramJSONObject.optDouble("total_fee") / 100.0D);
-      this.AAi = paramJSONObject.optString("fee_type");
-      this.AAj = paramJSONObject.optBoolean("redirect");
-      this.AyN = paramJSONObject.optString("gateway_reference");
-      this.AyO = paramJSONObject.optString("gateway_code");
-      this.AAl = paramJSONObject.optString("pay_status");
-      this.nUh = paramJSONObject.optInt("timestamp");
-      this.AAm = paramJSONObject.optString("pay_status_name");
-      this.AAn = paramJSONObject.optString("bank_type");
-      this.AAk = paramJSONObject.optBoolean("is_force_adjust");
-      this.AyQ = paramJSONObject.optString("force_adjust_code");
+      this.owt = paramJSONObject.optString("trans_id");
+      this.BSD = (paramJSONObject.optDouble("total_fee") / 100.0D);
+      this.BSE = paramJSONObject.optString("fee_type");
+      this.BSF = paramJSONObject.optBoolean("redirect");
+      this.BRj = paramJSONObject.optString("gateway_reference");
+      this.BRk = paramJSONObject.optString("gateway_code");
+      this.BSH = paramJSONObject.optString("pay_status");
+      this.oxC = paramJSONObject.optInt("timestamp");
+      this.BSI = paramJSONObject.optString("pay_status_name");
+      this.BSJ = paramJSONObject.optString("bank_type");
+      this.BSG = paramJSONObject.optBoolean("is_force_adjust");
+      this.BRm = paramJSONObject.optString("force_adjust_code");
     }
     AppMethodBeat.o(72083);
   }

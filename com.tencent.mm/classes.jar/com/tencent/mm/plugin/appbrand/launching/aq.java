@@ -3,10 +3,9 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.c.a;
-import com.tencent.mm.al.y;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.ak.y;
 import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.b;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker;
@@ -20,22 +19,21 @@ import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.bh.a;
 import com.tencent.mm.plugin.appbrand.appcache.i;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.report.h;
 import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
 import com.tencent.mm.plugin.appbrand.utils.e;
-import com.tencent.mm.protocal.protobuf.bbf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bex;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Locale;
 
 final class aq
   extends am
 {
   final String appId;
-  final String chK;
-  final int deB;
-  int dkC;
-  private final int[] kLi;
+  final String ceF;
+  final int dbX;
+  int dib;
+  private final int[] lmE;
   
   aq(String paramString1, String paramString2, int paramInt)
   {
@@ -46,21 +44,21 @@ final class aq
   {
     super(new ab(paramString1, paramString2, paramInt2));
     AppMethodBeat.i(47261);
-    this.dkC = 4;
-    this.kLi = new int[] { 6, 12, 13 };
+    this.dib = 4;
+    this.lmE = new int[] { 6, 12, 13 };
     this.appId = paramString1;
-    this.chK = paramString2;
-    this.deB = paramInt1;
-    if (a.contains(this.kLi, paramInt2)) {
-      this.dkC = paramInt2;
+    this.ceF = paramString2;
+    this.dbX = paramInt1;
+    if (a.contains(this.lmE, paramInt2)) {
+      this.dib = paramInt2;
     }
     AppMethodBeat.o(47261);
   }
   
-  public final String aMu()
+  public final String aTk()
   {
     AppMethodBeat.i(47262);
-    String str = String.format(Locale.US, "appId %s, module %s, codeType %d, pkgType %d,queryKey:%s", new Object[] { this.appId, this.chK, Integer.valueOf(this.deB), Integer.valueOf(this.dkC), this.kKV });
+    String str = String.format(Locale.US, "appId %s, module %s, codeType %d, pkgType %d,queryKey:%s", new Object[] { this.appId, this.ceF, Integer.valueOf(this.dbX), Integer.valueOf(this.dib), this.lmr });
     AppMethodBeat.o(47262);
     return str;
   }
@@ -70,20 +68,20 @@ final class aq
     AppMethodBeat.i(47263);
     try
     {
-      Pair localPair = WxaPkgIntegrityChecker.C(this.kKV.toString(), this.deB, 1);
+      Pair localPair = WxaPkgIntegrityChecker.B(this.lmr.toString(), this.dbX, 1);
       if (localPair.second != null)
       {
-        ((WxaPkgWrappingInfo)localPair.second).name = this.chK;
+        ((WxaPkgWrappingInfo)localPair.second).name = this.ceF;
         f((WxaPkgWrappingInfo)localPair.second);
-        ad.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s prepare ok", new Object[] { aMu() });
-        bgK();
+        ac.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s prepare ok", new Object[] { aTk() });
+        bnE();
         AppMethodBeat.o(47263);
         return;
       }
     }
     catch (NullPointerException localNullPointerException)
     {
-      if (!g.afw())
+      if (!com.tencent.mm.kernel.g.agM())
       {
         f(null);
         AppMethodBeat.o(47263);
@@ -91,28 +89,28 @@ final class aq
       }
       AppMethodBeat.o(47263);
       throw localNullPointerException;
-      if (bt.isNullOrNil(this.chK)) {
-        localObject1 = j.aOK().aJ(this.appId, this.deB);
+      if (bs.isNullOrNil(this.ceF)) {
+        localObject1 = j.aVC().aN(this.appId, this.dbX);
       }
       Object localObject2;
       for (;;)
       {
-        localObject2 = new al(this.deB)
+        localObject2 = new al(this.dbX)
         {
-          final String bgJ()
-          {
-            AppMethodBeat.i(47257);
-            String str = aq.this.aMu();
-            AppMethodBeat.o(47257);
-            return str;
-          }
-          
-          protected final void c(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
+          protected final void b(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
           {
             AppMethodBeat.i(47259);
-            super.c(paramAnonymousWxaPkgLoadProgress);
-            aq.this.d(paramAnonymousWxaPkgLoadProgress);
+            super.b(paramAnonymousWxaPkgLoadProgress);
+            aq.this.c(paramAnonymousWxaPkgLoadProgress);
             AppMethodBeat.o(47259);
+          }
+          
+          final String bnD()
+          {
+            AppMethodBeat.i(47257);
+            String str = aq.this.aTk();
+            AppMethodBeat.o(47257);
+            return str;
           }
           
           final void e(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
@@ -123,33 +121,33 @@ final class aq
             AppMethodBeat.o(47258);
           }
         };
-        ad.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s before download, url(%s)", new Object[] { aMu(), localObject1 });
-        if (!bt.isNullOrNil((String)localObject1)) {
+        ac.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s before download, url(%s)", new Object[] { aTk(), localObject1 });
+        if (!bs.isNullOrNil((String)localObject1)) {
           break label653;
         }
         f(null);
         AppMethodBeat.o(47263);
         return;
-        localObject1 = j.aOK().a(this.kKV.toString(), this.deB, new String[] { "versionMd5", "downloadURL" });
+        localObject1 = j.aVC().a(this.lmr.toString(), this.dbX, new String[] { "versionMd5", "downloadURL" });
         if (localObject1 == null)
         {
-          ad.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, NULL record", new Object[] { aMu() });
+          ac.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, NULL record", new Object[] { aTk() });
           localObject1 = null;
         }
         else
         {
-          if ((!DebuggerShell.aTY()) || (TextUtils.isEmpty(((bb)localObject1).field_downloadURL))) {
+          if ((!DebuggerShell.baW()) || (TextUtils.isEmpty(((bb)localObject1).field_downloadURL))) {
             break;
           }
-          ad.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "getDownloadURL, with appId[%s], module[%s] hit monkey pushed url[%s]", new Object[] { this.appId, this.chK, ((bb)localObject1).field_downloadURL });
+          ac.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "getDownloadURL, with appId[%s], module[%s] hit monkey pushed url[%s]", new Object[] { this.appId, this.ceF, ((bb)localObject1).field_downloadURL });
           localObject1 = ((bb)localObject1).field_downloadURL;
         }
       }
-      ad.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, record md5:%s", new Object[] { aMu(), ((bb)localObject1).field_versionMd5 });
-      Object localObject1 = y.a(new i(this.appId, this.chK, ((bb)localObject1).field_versionMd5, this.deB, this.dkC));
+      ac.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, record md5:%s", new Object[] { aTk(), ((bb)localObject1).field_versionMd5 });
+      Object localObject1 = y.a(new i(this.appId, this.ceF, ((bb)localObject1).field_versionMd5, this.dbX, this.dib));
       if ((localObject1 == null) || (((c.a)localObject1).errType != 0) || (((c.a)localObject1).errCode != 0))
       {
-        localObject2 = aMu();
+        localObject2 = aTk();
         int i;
         if (localObject1 == null)
         {
@@ -160,7 +158,7 @@ final class aq
           }
           j = -1;
           label392:
-          ad.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, cgi failed, %d %d", new Object[] { localObject2, Integer.valueOf(i), Integer.valueOf(j) });
+          ac.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, cgi failed, %d %d", new Object[] { localObject2, Integer.valueOf(i), Integer.valueOf(j) });
           if (localObject1 != null) {
             break label481;
           }
@@ -172,7 +170,7 @@ final class aq
         }
         for (int j = -1;; j = ((c.a)localObject1).errCode)
         {
-          bc.Kj(bc.getMMString(2131755577, new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
+          bc.Oq(bc.getMMString(2131755577, new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
           localObject1 = null;
           break;
           i = ((c.a)localObject1).errType;
@@ -183,41 +181,41 @@ final class aq
           break label428;
         }
       }
-      ad.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "resp.errcode %d, resp.errmsg %s, resp.url %s", new Object[] { Integer.valueOf(((bbf)((c.a)localObject1).gUK).error_code), ((bbf)((c.a)localObject1).gUK).error_msg, ((bbf)((c.a)localObject1).gUK).fnK });
-      if (bt.isNullOrNil(((bbf)((c.a)localObject1).gUK).fnK))
+      ac.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "resp.errcode %d, resp.errmsg %s, resp.url %s", new Object[] { Integer.valueOf(((bex)((c.a)localObject1).hvj).error_code), ((bex)((c.a)localObject1).hvj).error_msg, ((bex)((c.a)localObject1).hvj).fre });
+      if (bs.isNullOrNil(((bex)((c.a)localObject1).hvj).fre))
       {
-        if (((bbf)((c.a)localObject1).gUK).error_code != -1001) {
+        if (((bex)((c.a)localObject1).hvj).error_code != -1001) {
           break label615;
         }
         AppBrand404PageUI.show(2131755606);
-        h.R(this.appId, 4, this.deB + 1);
+        com.tencent.mm.plugin.appbrand.report.g.Q(this.appId, 4, this.dbX + 1);
       }
       for (;;)
       {
-        localObject1 = ((bbf)((c.a)localObject1).gUK).fnK;
+        localObject1 = ((bex)((c.a)localObject1).hvj).fre;
         break;
         label615:
-        bc.Kj(e.getMMString(2131755580, new Object[] { Integer.valueOf(5), Integer.valueOf(((bbf)((c.a)localObject1).gUK).error_code) }));
+        bc.Oq(e.getMMString(2131755580, new Object[] { Integer.valueOf(5), Integer.valueOf(((bex)((c.a)localObject1).hvj).error_code) }));
       }
       label653:
-      if (!bh.a(this.kKV.toString(), this.deB, (String)localObject1, (bh.a)localObject2, new a.a()
+      if (!bh.a(this.lmr.toString(), this.dbX, (String)localObject1, (bh.a)localObject2, new a.a()
       {
-        public final String aPJ()
+        public final String aWB()
         {
           AppMethodBeat.i(47260);
-          Object localObject = j.aOK().a(aq.this.kKV.toString(), aq.this.deB, new String[] { "versionMd5" });
+          Object localObject = j.aVC().a(aq.this.lmr.toString(), aq.this.dbX, new String[] { "versionMd5" });
           localObject = "_" + ((bb)localObject).field_versionMd5;
           AppMethodBeat.o(47260);
           return localObject;
         }
       }))
       {
-        ad.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s start downloadPkg failed", new Object[] { aMu() });
+        ac.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s start downloadPkg failed", new Object[] { aTk() });
         f(null);
         AppMethodBeat.o(47263);
         return;
       }
-      bgM();
+      bnG();
       AppMethodBeat.o(47263);
       return;
     }
@@ -233,7 +231,7 @@ final class aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.aq
  * JD-Core Version:    0.7.0.1
  */

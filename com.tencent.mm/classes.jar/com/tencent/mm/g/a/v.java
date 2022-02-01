@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.d;
 
 public final class v
-  extends b
 {
-  public a dbN;
+  public a cZg;
+  public b cZh;
+  public Runnable callback;
   
   public v()
   {
@@ -15,69 +18,35 @@ public final class v
   
   private v(byte paramByte)
   {
-    AppMethodBeat.i(136973);
-    this.dbN = new a();
-    this.ESR = false;
+    AppMethodBeat.i(136972);
     this.callback = null;
-    AppMethodBeat.o(136973);
-  }
-  
-  public static String in(int paramInt)
-  {
-    if (paramInt == 0) {
-      return "play";
-    }
-    if (paramInt == 1) {
-      return "play";
-    }
-    if (paramInt == 2) {
-      return "pause";
-    }
-    if (paramInt == 3) {
-      return "stop";
-    }
-    if (paramInt == 4) {
-      return "error";
-    }
-    if (paramInt == 5) {
-      return "ended";
-    }
-    if (paramInt == 6) {
-      return "seeked";
-    }
-    if (paramInt == 7) {
-      return "canplay";
-    }
-    if (paramInt == 9) {
-      return "waiting";
-    }
-    if (paramInt == 10) {
-      return "seeking";
-    }
-    if (paramInt == 11) {
-      return "real_play";
-    }
-    if (paramInt == 12) {
-      return "mix_play_ready";
-    }
-    return "";
+    this.cZg = new a();
+    this.cZh = new b();
+    this.callback = null;
+    AppMethodBeat.o(136972);
   }
   
   public static final class a
   {
     public int action;
     public String appId;
-    public String cTr;
-    public String cUD;
-    public long duration;
-    public int errCode;
-    public String errMsg;
-    public String state;
+    public String cQO;
+    public int cZi;
+    public b cZj;
+    public a cZk;
+    public String processName;
+  }
+  
+  public static final class b
+  {
+    public d cZl;
+    public int count;
+    public boolean result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.v
  * JD-Core Version:    0.7.0.1
  */

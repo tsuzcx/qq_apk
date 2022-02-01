@@ -7,8 +7,8 @@ import android.graphics.Bitmap.Config;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.sdk.platformtools.l;
 import com.tencent.mm.vfs.e;
@@ -20,12 +20,12 @@ import java.nio.channels.ReadableByteChannel;
 
 public final class a
 {
-  public Bitmap fly;
+  public Bitmap foS;
   
-  public static Bitmap R(String paramString1, String paramString2)
+  public static Bitmap S(String paramString1, String paramString2)
   {
     AppMethodBeat.i(20037);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(20037);
       return null;
@@ -36,14 +36,14 @@ public final class a
       paramString1 = new e(str);
       if (!paramString1.exists())
       {
-        ad.w("MicroMsg.NotificationAvatar", "SmallBM get bm file not exsit:%s", new Object[] { str });
+        ac.w("MicroMsg.NotificationAvatar", "SmallBM get bm file not exsit:%s", new Object[] { str });
         AppMethodBeat.o(20037);
         return null;
       }
       i = (int)paramString1.length();
       if ((i <= 0) || ((i != 36864) && (i != 36880)))
       {
-        ad.e("MicroMsg.NotificationAvatar", "SmallBM get bm invalid size:%d file:%s", new Object[] { Integer.valueOf(i), str });
+        ac.e("MicroMsg.NotificationAvatar", "SmallBM get bm invalid size:%d file:%s", new Object[] { Integer.valueOf(i), str });
         AppMethodBeat.o(20037);
         return null;
       }
@@ -57,7 +57,7 @@ public final class a
     catch (Exception paramString2)
     {
       paramString1 = null;
-      ad.e("MicroMsg.NotificationAvatar", "SmallBM get exception e:%s file:%s", new Object[] { paramString2.getMessage(), str });
+      ac.e("MicroMsg.NotificationAvatar", "SmallBM get exception e:%s file:%s", new Object[] { paramString2.getMessage(), str });
       if (paramString1 == null) {}
     }
     catch (OutOfMemoryError paramString2)
@@ -84,20 +84,20 @@ public final class a
             long l = localByteBuffer.getLong(0);
             if (l != 1L)
             {
-              ad.e("MicroMsg.NotificationAvatar", "SmallBM get bm header invalid flag:%d size:%d file:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), str });
+              ac.e("MicroMsg.NotificationAvatar", "SmallBM get bm header invalid flag:%d size:%d file:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), str });
               paramString1.close();
               AppMethodBeat.o(20037);
               return null;
             }
             bool = false;
-            ad.d("MicroMsg.NotificationAvatar", "SmallBM get bm size:%d shouldRemoveCorner:%b file:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str });
+            ac.d("MicroMsg.NotificationAvatar", "SmallBM get bm size:%d shouldRemoveCorner:%b file:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str });
             paramString1.close();
             paramString1 = Bitmap.createBitmap(96, 96, Bitmap.Config.ARGB_8888);
             paramString1.copyPixelsFromBuffer(paramString2);
             if (bool)
             {
               paramString2 = Bitmap.createBitmap(paramString1, 9, 9, 78, 78);
-              ad.i("MicroMsg.NotificationAvatar", "recycle bitmap:%s", new Object[] { paramString1.toString() });
+              ac.i("MicroMsg.NotificationAvatar", "recycle bitmap:%s", new Object[] { paramString1.toString() });
               paramString1.recycle();
               AppMethodBeat.o(20037);
               return paramString2;
@@ -112,7 +112,7 @@ public final class a
           catch (Exception paramString2) {}
           paramString2 = paramString2;
           paramString1 = null;
-          ad.e("MicroMsg.NotificationAvatar", "SmallBM get OutOfMemoryError e:%s file:%s", new Object[] { paramString2.getMessage(), str });
+          ac.e("MicroMsg.NotificationAvatar", "SmallBM get OutOfMemoryError e:%s file:%s", new Object[] { paramString2.getMessage(), str });
         }
         catch (Exception paramString1)
         {
@@ -146,7 +146,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.a
  * JD-Core Version:    0.7.0.1
  */

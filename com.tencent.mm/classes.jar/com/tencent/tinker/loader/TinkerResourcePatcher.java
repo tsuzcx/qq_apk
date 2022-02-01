@@ -8,6 +8,7 @@ import android.os.Build.VERSION;
 import android.util.ArrayMap;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -55,11 +56,12 @@ class TinkerResourcePatcher
     {
       paramContext = paramContext.getAssets().open("only_use_to_test_tinker_resource.txt");
       SharePatchFileUtil.closeQuietly(paramContext);
+      ShareTinkerLog.i("Tinker.ResourcePatcher", "checkResUpdate success, found test resource assets file only_use_to_test_tinker_resource.txt", new Object[0]);
       return true;
     }
     catch (Throwable paramContext)
     {
-      new StringBuilder("checkResUpdate failed, can't find test resource assets file only_use_to_test_tinker_resource.txt e:").append(paramContext.getMessage());
+      ShareTinkerLog.e("Tinker.ResourcePatcher", "checkResUpdate failed, can't find test resource assets file only_use_to_test_tinker_resource.txt e:" + paramContext.getMessage(), new Object[0]);
       return false;
     }
     finally
@@ -70,6 +72,7 @@ class TinkerResourcePatcher
   
   private static void clearPreloadTypedArrayIssue(Resources paramResources)
   {
+    ShareTinkerLog.w("Tinker.ResourcePatcher", "try to clear typedArray cache!", new Object[0]);
     try
     {
       paramResources = ShareReflectUtil.findField(Resources.class, "mTypedArrayPool").get(paramResources);
@@ -83,7 +86,7 @@ class TinkerResourcePatcher
     }
     catch (Throwable paramResources)
     {
-      new StringBuilder("clearPreloadTypedArrayIssue failed, ignore error: ").append(paramResources);
+      ShareTinkerLog.e("Tinker.ResourcePatcher", "clearPreloadTypedArrayIssue failed, ignore error: ".concat(String.valueOf(paramResources)), new Object[0]);
     }
   }
   

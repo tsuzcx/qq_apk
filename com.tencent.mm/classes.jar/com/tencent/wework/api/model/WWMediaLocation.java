@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaLocation
   extends WWMediaMessage.WWMediaObject
 {
-  public double ILZ;
-  public String hdQ;
+  public double Kyr;
+  public String hEt;
   public double latitude;
   public double longitude;
   
@@ -19,7 +19,7 @@ public class WWMediaLocation
       AppMethodBeat.o(106544);
       return false;
     }
-    if ((this.hdQ != null) && (this.hdQ.length() != 0) && (this.hdQ.length() <= 10240))
+    if ((this.hEt != null) && (this.hEt.length() != 0) && (this.hEt.length() <= 10240))
     {
       AppMethodBeat.o(106544);
       return true;
@@ -31,10 +31,10 @@ public class WWMediaLocation
   public final void toBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(106545);
-    paramBundle.putString("_wwlocobject_address", this.hdQ);
+    paramBundle.putString("_wwlocobject_address", this.hEt);
     paramBundle.putDouble("_wwlocobject_longitude", this.longitude);
     paramBundle.putDouble("_wwlocobject_latitude", this.latitude);
-    paramBundle.putDouble("_wwlocobject_zoom", this.ILZ);
+    paramBundle.putDouble("_wwlocobject_zoom", this.Kyr);
     super.toBundle(paramBundle);
     AppMethodBeat.o(106545);
   }

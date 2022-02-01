@@ -21,18 +21,18 @@ public final class e
   {
     AppMethodBeat.i(59940);
     k.h(parame, "$this$underlyingRepresentation");
-    if (!parame.fxB())
+    if (!parame.fQf())
     {
       AppMethodBeat.o(59940);
       return null;
     }
-    parame = parame.fxw();
+    parame = parame.fQa();
     if (parame != null)
     {
-      parame = parame.fyq();
+      parame = parame.fQU();
       if (parame != null)
       {
-        parame = (av)j.iD(parame);
+        parame = (av)j.iT(parame);
         AppMethodBeat.o(59940);
         return parame;
       }
@@ -45,7 +45,7 @@ public final class e
   {
     AppMethodBeat.i(59941);
     k.h(paraml, "$this$isInlineClass");
-    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).fxB()))
+    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).fQf()))
     {
       AppMethodBeat.o(59941);
       return true;
@@ -58,7 +58,7 @@ public final class e
   {
     AppMethodBeat.i(59945);
     k.h(paramax, "$this$isUnderlyingPropertyOfInlineClass");
-    Object localObject = paramax.fxq();
+    Object localObject = paramax.fPU();
     k.g(localObject, "this.containingDeclaration");
     if (!D((l)localObject))
     {
@@ -73,9 +73,9 @@ public final class e
     }
     localObject = A((d.l.b.a.b.b.e)localObject);
     if (localObject != null) {}
-    for (localObject = ((av)localObject).fyB();; localObject = null)
+    for (localObject = ((av)localObject).fRf();; localObject = null)
     {
-      boolean bool = k.g(localObject, paramax.fyB());
+      boolean bool = k.g(localObject, paramax.fRf());
       AppMethodBeat.o(59945);
       return bool;
     }
@@ -85,7 +85,7 @@ public final class e
   {
     AppMethodBeat.i(59942);
     k.h(paramab, "$this$isInlineClassType");
-    paramab = paramab.fIW().fxM();
+    paramab = paramab.gbz().fQq();
     if (paramab != null)
     {
       boolean bool = D((l)paramab);
@@ -101,7 +101,7 @@ public final class e
     AppMethodBeat.i(59943);
     k.h(paramab, "$this$substitutedUnderlyingType");
     k.h(paramab, "$this$unsubstitutedUnderlyingParameter");
-    d.l.b.a.b.b.h localh = paramab.fIW().fxM();
+    d.l.b.a.b.b.h localh = paramab.gbz().fQq();
     Object localObject = localh;
     if (!(localh instanceof d.l.b.a.b.b.e)) {
       localObject = null;
@@ -113,13 +113,13 @@ public final class e
       AppMethodBeat.o(59943);
       return null;
     }
-    paramab = paramab.fyj();
-    localObject = ((av)localObject).fyB();
+    paramab = paramab.fQN();
+    localObject = ((av)localObject).fRf();
     k.g(localObject, "parameter.name");
-    paramab = (ah)j.g((Iterable)paramab.a((f)localObject, (d.l.b.a.b.c.a.a)c.JwK));
+    paramab = (ah)j.g((Iterable)paramab.a((f)localObject, (d.l.b.a.b.c.a.a)c.Lkd));
     if (paramab != null)
     {
-      paramab = paramab.fzr();
+      paramab = paramab.fRV();
       AppMethodBeat.o(59943);
       return paramab;
     }
@@ -133,7 +133,7 @@ public final class e
     k.h(parama, "$this$isGetterOfUnderlyingPropertyOfInlineClass");
     if ((parama instanceof ai))
     {
-      parama = ((ai)parama).fzf();
+      parama = ((ai)parama).fRJ();
       k.g(parama, "correspondingProperty");
       if (a((ax)parama))
       {
@@ -147,7 +147,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.e
  * JD-Core Version:    0.7.0.1
  */

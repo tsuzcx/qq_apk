@@ -9,15 +9,15 @@ public abstract interface d
 {
   public abstract void a(String paramString1, String paramString2, long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
   
-  public abstract void aS(String paramString, boolean paramBoolean);
+  public abstract void aT(String paramString, boolean paramBoolean);
   
-  public abstract void km(boolean paramBoolean);
+  public abstract void kQ(boolean paramBoolean);
   
   public abstract void s(Context paramContext, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.d
  * JD-Core Version:    0.7.0.1
  */

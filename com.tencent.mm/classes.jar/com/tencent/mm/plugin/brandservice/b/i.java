@@ -1,68 +1,93 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.e;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bnm;
-import com.tencent.mm.protocal.protobuf.bnn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aj;
+import com.tencent.mm.protocal.protobuf.art;
+import com.tencent.mm.protocal.protobuf.aru;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class i
   extends n
   implements k
 {
-  private g callback;
-  public b rr;
+  private com.tencent.mm.ak.g callback;
+  LinkedList<String> nvz;
+  private final com.tencent.mm.ak.b rr;
   
-  public i(String paramString)
+  public i()
   {
-    AppMethodBeat.i(5574);
-    b.a locala = new b.a();
-    locala.gUU = new bnm();
-    locala.gUV = new bnn();
-    locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/getallrecvtmpmsgoption";
-    locala.funcId = 1031;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((bnm)this.rr.gUS.gUX).DEU = paramString;
-    AppMethodBeat.o(5574);
+    AppMethodBeat.i(5577);
+    Object localObject1 = new b.a();
+    ((b.a)localObject1).hvt = new art();
+    ((b.a)localObject1).hvu = new aru();
+    ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/getapplist";
+    ((b.a)localObject1).funcId = 387;
+    ((b.a)localObject1).reqCmdId = 0;
+    ((b.a)localObject1).respCmdId = 0;
+    this.rr = ((b.a)localObject1).aAz();
+    this.nvz = new LinkedList();
+    art localart = (art)this.rr.hvr.hvw;
+    com.tencent.mm.kernel.g.agS();
+    Object localObject2 = com.tencent.mm.kernel.g.agR().agA().get(196610, null);
+    if (localObject2 == null) {}
+    for (localObject1 = "null";; localObject1 = localObject2.toString())
+    {
+      ac.i("MicroMsg.BrandService.BrandServiceApplication", "get config, key[%d], value[%s]", new Object[] { Integer.valueOf(196610), localObject1 });
+      localart.ELw = bs.a((Integer)localObject2, 0);
+      ac.i("MicroMsg.BrandService.NetSceneGetAppList", "info: request hash code %d", new Object[] { Integer.valueOf(localart.ELw) });
+      AppMethodBeat.o(5577);
+      return;
+    }
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
-    AppMethodBeat.i(5576);
+    AppMethodBeat.i(5579);
     this.callback = paramg;
-    ad.i("MicroMsg.brandservice.NetSceneGetAllRecvTmpMsgOption", "do scene");
+    ac.i("MicroMsg.BrandService.NetSceneGetAppList", "do scene");
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(5576);
+    AppMethodBeat.o(5579);
     return i;
   }
   
   public final int getType()
   {
-    return 1031;
+    return 387;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5575);
-    ad.d("MicroMsg.brandservice.NetSceneGetAllRecvTmpMsgOption", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(5578);
+    ac.w("MicroMsg.BrandService.NetSceneGetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramq = (aru)this.rr.hvs.hvw;
+      ac.i("MicroMsg.BrandService.NetSceneGetAppList", "ok, hash code is %d, count is %d", new Object[] { Integer.valueOf(paramq.ELw), Integer.valueOf(paramq.ncL) });
+      com.tencent.mm.plugin.brandservice.b.j(196610, Integer.valueOf(paramq.ELw));
+      paramq = paramq.ncM.iterator();
+      while (paramq.hasNext())
+      {
+        paramArrayOfByte = (aj)paramq.next();
+        this.nvz.add(paramArrayOfByte.ncR);
+      }
     }
-    AppMethodBeat.o(5575);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(5578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.i
  * JD-Core Version:    0.7.0.1
  */

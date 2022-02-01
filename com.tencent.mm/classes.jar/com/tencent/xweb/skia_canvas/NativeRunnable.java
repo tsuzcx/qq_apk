@@ -15,9 +15,9 @@ class NativeRunnable
   
   static NativeRunnable Create(long paramLong)
   {
-    AppMethodBeat.i(189186);
+    AppMethodBeat.i(189660);
     NativeRunnable localNativeRunnable = new NativeRunnable(paramLong);
-    AppMethodBeat.o(189186);
+    AppMethodBeat.o(189660);
     return localNativeRunnable;
   }
   
@@ -27,24 +27,24 @@ class NativeRunnable
   
   protected void finalize()
   {
-    AppMethodBeat.i(189188);
+    AppMethodBeat.i(189662);
     super.finalize();
     if (!this.mHasRun) {
       releaseNative(this.mNativePeer);
     }
-    AppMethodBeat.o(189188);
+    AppMethodBeat.o(189662);
   }
   
   public void run()
   {
-    AppMethodBeat.i(189187);
+    AppMethodBeat.i(189661);
     if (!this.mHasRun)
     {
       runNative(this.mNativePeer);
       releaseNative(this.mNativePeer);
       this.mHasRun = true;
     }
-    AppMethodBeat.o(189187);
+    AppMethodBeat.o(189661);
   }
 }
 

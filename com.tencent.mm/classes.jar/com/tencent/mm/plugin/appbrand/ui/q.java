@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUITheme;", "", "()V", "THEME", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUITheme;", "", "()V", "THEME", "", "plugin-appbrand-integration_release"})
 public final class q
 {
-  public static final q lDm;
+  public static final q mfg;
   
   static
   {
     AppMethodBeat.i(177768);
-    lDm = new q();
+    mfg = new q();
     AppMethodBeat.o(177768);
   }
   
-  public static final int boF()
+  public static final int bvA()
   {
     AppMethodBeat.i(177767);
-    if (ai.Eq())
+    if (aj.DT())
     {
       AppMethodBeat.o(177767);
       return 2131820566;
@@ -30,7 +30,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.q
  * JD-Core Version:    0.7.0.1
  */

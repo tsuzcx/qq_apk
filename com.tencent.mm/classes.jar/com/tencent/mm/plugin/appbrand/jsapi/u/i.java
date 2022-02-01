@@ -1,87 +1,50 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import com.tencent.luggage.a.e;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.z.g;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-public final class i
-  implements a
+public class i<C extends c>
+  extends y<C>
 {
-  public static i kjA;
-  private a kjB;
+  public static final int CTRL_INDEX = 40;
+  public static final String NAME = "getSystemInfo";
   
-  static
+  public final String a(C paramC, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(137650);
-    kjA = new i();
-    AppMethodBeat.o(137650);
+    AppMethodBeat.i(137670);
+    paramC = k("ok", a(paramC));
+    AppMethodBeat.o(137670);
+    return paramC;
   }
   
-  public i()
+  protected Map<String, Object> a(C paramC)
   {
-    AppMethodBeat.i(137645);
-    this.kjB = new a()
-    {
-      public final boolean a(c paramAnonymousc, ar paramAnonymousar)
-      {
-        return true;
-      }
-      
-      public final int bbO()
-      {
-        return 20;
-      }
-      
-      public final int bbP()
-      {
-        return 200;
-      }
-    };
-    AppMethodBeat.o(137645);
-  }
-  
-  private a bbR()
-  {
-    AppMethodBeat.i(137646);
-    if (e.K(a.class) != null)
-    {
-      locala = (a)e.K(a.class);
-      AppMethodBeat.o(137646);
-      return locala;
-    }
-    a locala = this.kjB;
-    AppMethodBeat.o(137646);
-    return locala;
-  }
-  
-  public final boolean a(c paramc, ar paramar)
-  {
-    AppMethodBeat.i(137649);
-    boolean bool = bbR().a(paramc, paramar);
-    AppMethodBeat.o(137649);
-    return bool;
-  }
-  
-  public final int bbO()
-  {
-    AppMethodBeat.i(137647);
-    int i = bbR().bbO();
-    AppMethodBeat.o(137647);
-    return i;
-  }
-  
-  public final int bbP()
-  {
-    AppMethodBeat.i(137648);
-    int i = bbR().bbP();
-    AppMethodBeat.o(137648);
-    return i;
+    AppMethodBeat.i(137671);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("brand", Build.BRAND);
+    localHashMap.put("model", Build.MODEL);
+    localHashMap.put("system", "Android " + Build.VERSION.RELEASE);
+    paramC = paramC.getContext().getResources().getDisplayMetrics();
+    localHashMap.put("pixelRatio", Float.valueOf(paramC.density));
+    localHashMap.put("screenWidth", Integer.valueOf(g.vc(paramC.widthPixels)));
+    localHashMap.put("screenHeight", Integer.valueOf(g.vc(paramC.heightPixels)));
+    AppMethodBeat.o(137671);
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.i
  * JD-Core Version:    0.7.0.1
  */

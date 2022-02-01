@@ -7,39 +7,39 @@ import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class g
   extends ae
 {
-  private c pae;
-  private a paf;
+  private c pDp;
+  private a pDq;
   
   public g(byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
     AppMethodBeat.i(23804);
-    this.pae = new i(paramArrayOfByte, paramInt, paramLong);
+    this.pDp = new i(paramArrayOfByte, paramInt, paramLong);
     AppMethodBeat.o(23804);
   }
   
   public final boolean a(m paramm, d paramd)
   {
     AppMethodBeat.i(23805);
-    if (!u.cah().oX(this.pae.mQq))
+    if (!u.chq().sJ(this.pDp.nsB))
     {
-      ad.w("MicroMsg.exdevice.MMPushManufacturerSvrSendDataLogic", "Service push data to device before it do auth, device id = %d", new Object[] { Long.valueOf(this.pae.mQq) });
+      ac.w("MicroMsg.exdevice.MMPushManufacturerSvrSendDataLogic", "Service push data to device before it do auth, device id = %d", new Object[] { Long.valueOf(this.pDp.nsB) });
       AppMethodBeat.o(23805);
       return true;
     }
-    this.paf = new a(this.pae, paramd);
-    boolean bool = this.paf.b(paramm);
+    this.pDq = new a(this.pDp, paramd);
+    boolean bool = this.pDq.b(paramm);
     AppMethodBeat.o(23805);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.j.g
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import org.json.JSONObject;
 
 abstract class a
 {
-  protected b bZa;
-  protected JSONObject bZb;
+  protected b bVX;
+  protected JSONObject bVY;
   
-  final b AF()
+  final b Aj()
   {
-    return this.bZa;
+    return this.bVX;
   }
   
-  final JSONObject AG()
+  final JSONObject Ak()
   {
-    return this.bZb;
+    return this.bVY;
   }
   
   public String toString()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("type", this.bZa.name());
-    localHashMap.put("data", this.bZb);
+    localHashMap.put("type", this.bVX.name());
+    localHashMap.put("data", this.bVY);
     return new JSONObject(localHashMap).toString();
   }
 }

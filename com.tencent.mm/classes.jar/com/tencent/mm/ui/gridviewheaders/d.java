@@ -11,13 +11,13 @@ public final class d
   extends BaseAdapter
   implements b
 {
-  private ListAdapter HjF;
-  private DataSetObserver Qv;
+  private ListAdapter IJY;
+  private DataSetObserver Rq;
   
   public d(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(142841);
-    this.Qv = new DataSetObserver()
+    this.Rq = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -33,14 +33,9 @@ public final class d
         AppMethodBeat.o(142840);
       }
     };
-    this.HjF = paramListAdapter;
-    paramListAdapter.registerDataSetObserver(this.Qv);
+    this.IJY = paramListAdapter;
+    paramListAdapter.registerDataSetObserver(this.Rq);
     AppMethodBeat.o(142841);
-  }
-  
-  public final int ZX(int paramInt)
-  {
-    return 0;
   }
   
   public final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -48,7 +43,12 @@ public final class d
     return null;
   }
   
-  public final int fcY()
+  public final int ack(int paramInt)
+  {
+    return 0;
+  }
+  
+  public final int fsT()
   {
     return 0;
   }
@@ -56,7 +56,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(142842);
-    int i = this.HjF.getCount();
+    int i = this.IJY.getCount();
     AppMethodBeat.o(142842);
     return i;
   }
@@ -64,7 +64,7 @@ public final class d
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142843);
-    Object localObject = this.HjF.getItem(paramInt);
+    Object localObject = this.IJY.getItem(paramInt);
     AppMethodBeat.o(142843);
     return localObject;
   }
@@ -72,7 +72,7 @@ public final class d
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142844);
-    long l = this.HjF.getItemId(paramInt);
+    long l = this.IJY.getItemId(paramInt);
     AppMethodBeat.o(142844);
     return l;
   }
@@ -80,14 +80,14 @@ public final class d
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142845);
-    paramView = this.HjF.getView(paramInt, paramView, paramViewGroup);
+    paramView = this.IJY.getView(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(142845);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.d
  * JD-Core Version:    0.7.0.1
  */

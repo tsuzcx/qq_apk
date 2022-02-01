@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class AppBrandTimePickerV2
-  implements com.tencent.mm.plugin.appbrand.jsapi.n.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<String>
 {
   private Context context;
   private int currentHour;
@@ -76,7 +76,7 @@ public class AppBrandTimePickerV2
   public String currentValue()
   {
     AppMethodBeat.i(138080);
-    this.pvTime.aGe();
+    this.pvTime.aMR();
     String str = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(this.currentHour), Integer.valueOf(this.currentMinute) });
     AppMethodBeat.o(138080);
     return str;
@@ -86,7 +86,7 @@ public class AppBrandTimePickerV2
   {
     AppMethodBeat.i(138081);
     if (this.mView == null) {
-      this.mView = this.pvTime.aGg();
+      this.mView = this.pvTime.aMT();
     }
     View localView = this.mView;
     AppMethodBeat.o(138081);
@@ -113,18 +113,18 @@ public class AppBrandTimePickerV2
         AppBrandTimePickerV2.access$000(AppBrandTimePickerV2.this, paramAnonymousDate);
         AppMethodBeat.o(138075);
       }
-    }).b(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).aFX();
+    }).b(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).aMK();
     paramInt1 = android.support.v4.content.b.n(this.context, 2131099656);
-    ((com.tencent.mm.picker.b.b)localObject).hSa.hRF = paramInt1;
+    ((com.tencent.mm.picker.b.b)localObject).isf.irK = paramInt1;
     ((com.tencent.mm.picker.b.b)localObject).a(this.pvTime);
     this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
     this.context.getResources().getDimensionPixelSize(2131166681);
     this.pvTime.ds(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    localObject = this.pvTime.hST.aGj().iterator();
+    localObject = this.pvTime.isY.aMW().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((WheelView)((Iterator)localObject).next()).pD(android.support.v4.content.b.n(this.context, 2131099664)).pC(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      ((WheelView)((Iterator)localObject).next()).qq(android.support.v4.content.b.n(this.context, 2131099664)).qp(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
     }
-    configPadding(this.pvTime.hST.aGj());
+    configPadding(this.pvTime.isY.aMW());
     AppMethodBeat.o(138077);
   }
   
@@ -155,7 +155,7 @@ public class AppBrandTimePickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandTimePickerV2
  * JD-Core Version:    0.7.0.1
  */

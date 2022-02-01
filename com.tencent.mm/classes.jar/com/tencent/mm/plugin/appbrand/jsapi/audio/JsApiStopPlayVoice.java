@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class JsApiStopPlayVoice
   extends a<q>
@@ -16,16 +16,16 @@ public final class JsApiStopPlayVoice
   public static final int CTRL_INDEX = 35;
   public static final String NAME = "stopVoice";
   
-  public static void aYg()
+  public static void bfd()
   {
     AppMethodBeat.i(45997);
-    if (bt.isNullOrNil(JsApiStartPlayVoice.jCl))
+    if (bs.isNullOrNil(JsApiStartPlayVoice.kcH))
     {
       AppMethodBeat.o(45997);
       return;
     }
     AppBrandMainProcessService.a(new StopPlayVoice((byte)0));
-    JsApiStartPlayVoice.jCl = null;
+    JsApiStartPlayVoice.kcH = null;
     AppMethodBeat.o(45997);
   }
   
@@ -41,15 +41,15 @@ public final class JsApiStopPlayVoice
       AppMethodBeat.o(45996);
     }
     
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(45995);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(45993);
-          b localb = b.jaW;
+          b localb = b.jBj;
           b.stop();
           AppMethodBeat.o(45993);
         }

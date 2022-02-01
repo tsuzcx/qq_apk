@@ -14,7 +14,7 @@ final class d
     int m;
     for (int i = 0; j < k; i = m + i)
     {
-      m = x.bp(paramArrayOfInt[j], i1);
+      m = x.bm(paramArrayOfInt[j], i1);
       j += 1;
     }
     long[] arrayOfLong1 = new long[i];
@@ -51,19 +51,19 @@ final class d
   
   public static final class a
   {
-    public final int[] aWC;
-    public final int bbU;
-    public final long[] bbV;
-    public final int[] bbW;
+    public final int[] aXo;
+    public final int bcG;
+    public final long[] bcH;
+    public final int[] bcI;
     public final long[] offsets;
     
     private a(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
     {
       this.offsets = paramArrayOfLong1;
-      this.aWC = paramArrayOfInt1;
-      this.bbU = paramInt;
-      this.bbV = paramArrayOfLong2;
-      this.bbW = paramArrayOfInt2;
+      this.aXo = paramArrayOfInt1;
+      this.bcG = paramInt;
+      this.bcH = paramArrayOfLong2;
+      this.bcI = paramArrayOfInt2;
     }
   }
 }

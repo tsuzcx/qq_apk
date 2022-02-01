@@ -2,46 +2,46 @@ package com.tencent.mm.plugin.freewifi.d;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.protocal.protobuf.bor;
-import com.tencent.mm.protocal.protobuf.bos;
-import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.protocal.protobuf.bth;
+import com.tencent.mm.protocal.protobuf.bti;
+import com.tencent.mm.protocal.protobuf.btj;
 import java.util.LinkedList;
 
 public final class j
   extends c
 {
-  public j(LinkedList<bot> paramLinkedList, int paramInt)
+  public j(LinkedList<btj> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(24864);
-    cwf();
-    bor localbor = (bor)this.rr.gUS.gUX;
-    localbor.DMb = Build.BRAND;
-    localbor.DMa = paramInt;
-    localbor.DLZ = paramLinkedList;
+    cJr();
+    bth localbth = (bth)this.rr.hvr.hvw;
+    localbth.Fiq = Build.BRAND;
+    localbth.Fip = paramInt;
+    localbth.Fio = paramLinkedList;
     AppMethodBeat.o(24864);
   }
   
-  protected final void cwf()
+  public final bti cJC()
+  {
+    return (bti)this.rr.hvs.hvw;
+  }
+  
+  protected final void cJr()
   {
     AppMethodBeat.i(24863);
     b.a locala = new b.a();
-    locala.gUU = new bor();
-    locala.gUV = new bos();
+    locala.hvt = new bth();
+    locala.hvu = new bti();
     locala.uri = "/cgi-bin/mmo2o-bin/manufacturerapinfo";
     locala.funcId = 1707;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     AppMethodBeat.o(24863);
-  }
-  
-  public final bos cwq()
-  {
-    return (bos)this.rr.gUT.gUX;
   }
   
   public final int getType()
@@ -51,7 +51,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.j
  * JD-Core Version:    0.7.0.1
  */

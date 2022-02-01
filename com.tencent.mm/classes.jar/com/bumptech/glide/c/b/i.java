@@ -5,73 +5,29 @@ import com.bumptech.glide.c.c;
 
 public abstract class i
 {
-  public static final i aEA = new i()
+  public static final i aFq = new i()
   {
     public final boolean a(a paramAnonymousa)
     {
-      return paramAnonymousa == a.aBY;
+      return paramAnonymousa == a.aCQ;
     }
     
     public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
     {
-      return (paramAnonymousa != a.aCa) && (paramAnonymousa != a.aCb);
+      return (paramAnonymousa != a.aCS) && (paramAnonymousa != a.aCT);
     }
     
-    public final boolean oi()
+    public final boolean os()
     {
       return true;
     }
     
-    public final boolean oj()
-    {
-      return true;
-    }
-  };
-  public static final i aEB = new i()
-  {
-    public final boolean a(a paramAnonymousa)
-    {
-      return false;
-    }
-    
-    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
-    {
-      return false;
-    }
-    
-    public final boolean oi()
-    {
-      return false;
-    }
-    
-    public final boolean oj()
-    {
-      return false;
-    }
-  };
-  public static final i aEC = new i()
-  {
-    public final boolean a(a paramAnonymousa)
-    {
-      return (paramAnonymousa != a.aBZ) && (paramAnonymousa != a.aCb);
-    }
-    
-    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
-    {
-      return false;
-    }
-    
-    public final boolean oi()
-    {
-      return false;
-    }
-    
-    public final boolean oj()
+    public final boolean ot()
     {
       return true;
     }
   };
-  public static final i aED = new i()
+  public static final i aFr = new i()
   {
     public final boolean a(a paramAnonymousa)
     {
@@ -80,37 +36,81 @@ public abstract class i
     
     public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
     {
-      return (paramAnonymousa != a.aCa) && (paramAnonymousa != a.aCb);
+      return false;
     }
     
-    public final boolean oi()
+    public final boolean os()
     {
-      return true;
+      return false;
     }
     
-    public final boolean oj()
+    public final boolean ot()
     {
       return false;
     }
   };
-  public static final i aEE = new i()
+  public static final i aFs = new i()
   {
     public final boolean a(a paramAnonymousa)
     {
-      return paramAnonymousa == a.aBY;
+      return (paramAnonymousa != a.aCR) && (paramAnonymousa != a.aCT);
     }
     
     public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
     {
-      return ((paramAnonymousBoolean) && (paramAnonymousa == a.aBZ)) || ((paramAnonymousa == a.aBX) && (paramAnonymousc == c.aCj));
+      return false;
     }
     
-    public final boolean oi()
+    public final boolean os()
+    {
+      return false;
+    }
+    
+    public final boolean ot()
+    {
+      return true;
+    }
+  };
+  public static final i aFt = new i()
+  {
+    public final boolean a(a paramAnonymousa)
+    {
+      return false;
+    }
+    
+    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
+    {
+      return (paramAnonymousa != a.aCS) && (paramAnonymousa != a.aCT);
+    }
+    
+    public final boolean os()
     {
       return true;
     }
     
-    public final boolean oj()
+    public final boolean ot()
+    {
+      return false;
+    }
+  };
+  public static final i aFu = new i()
+  {
+    public final boolean a(a paramAnonymousa)
+    {
+      return paramAnonymousa == a.aCQ;
+    }
+    
+    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
+    {
+      return ((paramAnonymousBoolean) && (paramAnonymousa == a.aCR)) || ((paramAnonymousa == a.aCP) && (paramAnonymousc == c.aDb));
+    }
+    
+    public final boolean os()
+    {
+      return true;
+    }
+    
+    public final boolean ot()
     {
       return true;
     }
@@ -120,13 +120,13 @@ public abstract class i
   
   public abstract boolean a(boolean paramBoolean, a parama, c paramc);
   
-  public abstract boolean oi();
+  public abstract boolean os();
   
-  public abstract boolean oj();
+  public abstract boolean ot();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.i
  * JD-Core Version:    0.7.0.1
  */

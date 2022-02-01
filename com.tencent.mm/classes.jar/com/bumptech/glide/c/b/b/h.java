@@ -10,7 +10,7 @@ public abstract interface h
   
   public abstract u<?> b(com.bumptech.glide.c.h paramh);
   
-  public abstract void os();
+  public abstract void oC();
   
   public abstract void trimMemory(int paramInt);
   
@@ -21,7 +21,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,63 @@
 package com.tencent.xweb.xwalk;
 
-import android.os.Bundle;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.a;
-import com.tencent.xweb.internal.f;
-import com.tencent.xweb.l;
-import org.xwalk.core.Log;
-import org.xwalk.core.ReflectMethod;
-import org.xwalk.core.XWalkCoreWrapper;
+import org.xwalk.core.CustomViewCallback;
+import org.xwalk.core.XWalkJavascriptResult;
+import org.xwalk.core.XWalkUIClient;
+import org.xwalk.core.XWalkView;
 
-public final class m
-  implements f
+public class m
+  extends XWalkUIClient
 {
-  private boolean IUt;
-  
-  public final l frL()
+  public m(XWalkView paramXWalkView)
   {
-    AppMethodBeat.i(183742);
-    r localr = r.a.ftc();
-    AppMethodBeat.o(183742);
-    return localr;
+    super(paramXWalkView);
   }
   
-  public final void frM()
+  public final void a(View paramView, CustomViewCallback paramCustomViewCallback)
   {
-    AppMethodBeat.i(183743);
-    Object localObject1;
-    int j;
-    Object localObject2;
-    if (!this.IUt)
-    {
-      localObject1 = a.aOL(WebView.getCurStrModule());
-      j = a.aOK(WebView.getCurStrModule());
-      localObject2 = a.lW("enableWindowPerformanceSampleRatio", WebView.getCurStrModule());
-    }
-    try
-    {
-      i = Integer.parseInt((String)localObject2);
-      r.a.ftc();
-      Log.d("XWalkExtensionInternal", "setProfileConfig with enabledTraceCategory: " + (String)localObject1 + " traceSampleRatio: " + j + " enableWindowPerformanceSampleRatio: " + i);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("enabledTraceCategory", (String)localObject1);
-      ((Bundle)localObject2).putInt("traceSampleRatio", j);
-      ((Bundle)localObject2).putInt("enableWindowPerformanceSampleRatio", i);
-      if (XWalkCoreWrapper.getInstance().hasFeature(4))
-      {
-        Log.d("XWebProfilerController", "setProfileConfig via INTERNAL_XPROFILE_NG");
-        XWalkCoreWrapper.invokeRuntimeChannel(80012, new Object[] { localObject2 });
-        this.IUt = true;
-        AppMethodBeat.o(183743);
-        return;
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        if (XWalkCoreWrapper.getInstance().hasFeature(0)) {
-          try
-          {
-            localObject1 = XWalkCoreWrapper.getInstance().getClass("com.tencent.xweb.xprofile.XProfileManager");
-            if (localObject1 != null) {
-              new ReflectMethod((Class)localObject1, "setProfileConfig", new Class[] { Bundle.class }).invoke(new Object[] { localNumberFormatException });
-            }
-          }
-          catch (Exception localException)
-          {
-            Log.e("XWebProfilerController", "setProfileConfig reflect failed");
-          }
-        }
-      }
-    }
+    AppMethodBeat.i(154453);
+    super.onShowCustomView(paramView, paramCustomViewCallback);
+    AppMethodBeat.o(154453);
+  }
+  
+  public final void a(XWalkView paramXWalkView, String paramString)
+  {
+    AppMethodBeat.i(154451);
+    super.onPageLoadStarted(paramXWalkView, paramString);
+    AppMethodBeat.o(154451);
+  }
+  
+  public final boolean a(XWalkView paramXWalkView, String paramString1, String paramString2, String paramString3, XWalkJavascriptResult paramXWalkJavascriptResult)
+  {
+    AppMethodBeat.i(154454);
+    boolean bool = super.onJsPrompt(paramXWalkView, paramString1, paramString2, paramString3, paramXWalkJavascriptResult);
+    AppMethodBeat.o(154454);
+    return bool;
+  }
+  
+  public final boolean a(XWalkView paramXWalkView, String paramString1, String paramString2, XWalkJavascriptResult paramXWalkJavascriptResult)
+  {
+    AppMethodBeat.i(154455);
+    boolean bool = super.onJsConfirm(paramXWalkView, paramString1, paramString2, paramXWalkJavascriptResult);
+    AppMethodBeat.o(154455);
+    return bool;
+  }
+  
+  public final boolean b(XWalkView paramXWalkView, String paramString1, String paramString2, XWalkJavascriptResult paramXWalkJavascriptResult)
+  {
+    AppMethodBeat.i(154456);
+    boolean bool = super.onJsAlert(paramXWalkView, paramString1, paramString2, paramXWalkJavascriptResult);
+    AppMethodBeat.o(154456);
+    return bool;
+  }
+  
+  public final void fLr()
+  {
+    AppMethodBeat.i(154452);
+    super.onHideCustomView();
+    AppMethodBeat.o(154452);
   }
 }
 

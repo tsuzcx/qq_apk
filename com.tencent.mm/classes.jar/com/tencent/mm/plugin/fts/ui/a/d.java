@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.x;
 
 public final class d
   extends m
 {
-  public w rtK;
-  public CharSequence rvd;
-  private a rve;
+  public x sCD;
+  public CharSequence sDV;
+  private a sDW;
   
   public d(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112060);
-    this.rve = new a();
+    this.sDW = new a();
     AppMethodBeat.o(112060);
   }
   
@@ -31,41 +31,41 @@ public final class d
   {
     AppMethodBeat.i(112061);
     super.a(paramContext, parama, paramVarArgs);
-    af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(this.jpy.talker);
-    if (localaf == null) {
-      parama = com.tencent.mm.plugin.fts.a.d.XV(this.jpy.roN);
+    ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.jPN.talker);
+    if (localai == null) {
+      parama = com.tencent.mm.plugin.fts.a.d.acr(this.jPN.sxG);
     }
     for (;;)
     {
-      if (!bt.isNullOrNil(parama)) {
-        this.rvd = com.tencent.mm.pluginsdk.ui.span.k.d(paramContext, parama, b.c.rsM);
+      if (!bs.isNullOrNil(parama)) {
+        this.sDV = com.tencent.mm.pluginsdk.ui.span.k.d(paramContext, parama, b.c.sBG);
       }
       AppMethodBeat.o(112061);
       return;
-      if (bt.isNullOrNil(localaf.field_conRemark))
+      if (bs.isNullOrNil(localai.field_conRemark))
       {
-        if (this.rtK != null)
+        if (this.sCD != null)
         {
-          paramVarArgs = this.rtK.sh(this.jpy.talker);
+          paramVarArgs = this.sCD.wk(this.jPN.talker);
           parama = paramVarArgs;
-          if (bt.isNullOrNil(paramVarArgs)) {
-            parama = localaf.field_nickname;
+          if (bs.isNullOrNil(paramVarArgs)) {
+            parama = localai.field_nickname;
           }
         }
         else
         {
-          parama = localaf.field_nickname;
+          parama = localai.field_nickname;
         }
       }
       else {
-        parama = localaf.field_conRemark;
+        parama = localai.field_conRemark;
       }
     }
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b acQ()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b adW()
   {
-    return this.rve;
+    return this.sDW;
   }
   
   public final class a
@@ -81,25 +81,25 @@ public final class d
       AppMethodBeat.i(112059);
       paramContext = (d)parama1;
       parama = (m.a)parama;
-      com.tencent.mm.plugin.fts.ui.m.p(parama.jpE, d.this.rqz);
-      if (bt.isNullOrNil(paramContext.jpy.talker)) {
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.frr, paramContext.jpy.roN);
+      com.tencent.mm.plugin.fts.ui.m.p(parama.jPT, d.this.szt);
+      if (bs.isNullOrNil(paramContext.jPN.talker)) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, paramContext.jPN.sxG);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.rvd, parama.frs);
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.ibX, parama.fwR);
-        com.tencent.mm.plugin.fts.ui.m.a(paramContext.rvW, parama.fwS);
+        com.tencent.mm.plugin.fts.ui.m.a(paramContext.sDV, parama.fuZ);
+        com.tencent.mm.plugin.fts.ui.m.a(paramContext.gIg, parama.fAy);
+        com.tencent.mm.plugin.fts.ui.m.a(paramContext.sEO, parama.fAz);
         AppMethodBeat.o(112059);
         return;
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.frr, paramContext.jpy.talker);
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, paramContext.jPN.talker);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

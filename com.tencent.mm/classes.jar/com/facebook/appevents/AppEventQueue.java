@@ -150,7 +150,7 @@ class AppEventQueue
         localObject = new Intent("com.facebook.sdk.APP_EVENTS_FLUSHED");
         ((Intent)localObject).putExtra("com.facebook.sdk.APP_EVENTS_NUM_EVENTS_FLUSHED", paramFlushReason.numEvents);
         ((Intent)localObject).putExtra("com.facebook.sdk.APP_EVENTS_FLUSH_RESULT", paramFlushReason.result);
-        d.T(FacebookSdk.getApplicationContext()).b((Intent)localObject);
+        d.U(FacebookSdk.getApplicationContext()).b((Intent)localObject);
       }
       AppMethodBeat.o(17330);
       return;

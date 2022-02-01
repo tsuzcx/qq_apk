@@ -16,20 +16,20 @@ public final class l
   extends w
   implements d.l.b.a.b.d.a.e.j
 {
-  final Type Jwc;
-  private final i Jwl;
+  private final i LjE;
+  final Type Ljv;
   
   public l(Type paramType)
   {
     AppMethodBeat.i(57475);
-    this.Jwc = paramType;
-    paramType = ((l)this).Jwc;
+    this.Ljv = paramType;
+    paramType = ((l)this).Ljv;
     if ((paramType instanceof Class)) {
       paramType = (i)new j((Class)paramType);
     }
     for (;;)
     {
-      this.Jwl = paramType;
+      this.LjE = paramType;
       AppMethodBeat.o(57475);
       return;
       if ((paramType instanceof TypeVariable))
@@ -56,41 +56,41 @@ public final class l
     throw paramType;
   }
   
-  public final Type fAC()
+  public final Type fTg()
   {
-    return this.Jwc;
+    return this.Ljv;
   }
   
-  public final Collection<a> fAI()
+  public final Collection<a> fTm()
   {
-    return (Collection)d.a.v.Jgl;
+    return (Collection)d.a.v.KTF;
   }
   
-  public final i fAM()
+  public final i fTq()
   {
-    return this.Jwl;
+    return this.LjE;
   }
   
-  public final String fAN()
+  public final String fTr()
   {
     AppMethodBeat.i(57470);
-    Throwable localThrowable = (Throwable)new UnsupportedOperationException("Type not found: " + this.Jwc);
+    Throwable localThrowable = (Throwable)new UnsupportedOperationException("Type not found: " + this.Ljv);
     AppMethodBeat.o(57470);
     throw localThrowable;
   }
   
-  public final String fAO()
+  public final String fTs()
   {
     AppMethodBeat.i(57471);
-    String str = this.Jwc.toString();
+    String str = this.Ljv.toString();
     AppMethodBeat.o(57471);
     return str;
   }
   
-  public final boolean fAP()
+  public final boolean fTt()
   {
     AppMethodBeat.i(57472);
-    Object localObject = this.Jwc;
+    Object localObject = this.Ljv;
     if ((localObject instanceof Class))
     {
       localObject = ((Class)localObject).getTypeParameters();
@@ -119,10 +119,10 @@ public final class l
     return false;
   }
   
-  public final List<d.l.b.a.b.d.a.e.v> fAQ()
+  public final List<d.l.b.a.b.d.a.e.v> fTu()
   {
     AppMethodBeat.i(57473);
-    Object localObject2 = (Iterable)b.i(this.Jwc);
+    Object localObject2 = (Iterable)b.i(this.Ljv);
     Object localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -143,7 +143,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.l
  * JD-Core Version:    0.7.0.1
  */

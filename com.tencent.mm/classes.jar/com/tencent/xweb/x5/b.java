@@ -7,7 +7,7 @@ import com.tencent.smtt.sdk.WebChromeClient;
 public class b
   extends WebChromeClient
 {
-  public final void fsO()
+  public final void fLr()
   {
     AppMethodBeat.i(153831);
     super.onHideCustomView();

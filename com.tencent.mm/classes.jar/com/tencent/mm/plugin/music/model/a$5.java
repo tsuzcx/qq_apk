@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.model;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class a$5
   implements Runnable
@@ -11,9 +11,9 @@ final class a$5
   
   public final void run()
   {
-    AppMethodBeat.i(190246);
-    Toast.makeText(aj.getContext(), this.kyG, 0).show();
-    AppMethodBeat.o(190246);
+    AppMethodBeat.i(195606);
+    Toast.makeText(ai.getContext(), this.kZU, 0).show();
+    AppMethodBeat.o(195606);
   }
 }
 

@@ -20,30 +20,30 @@ import java.util.List;
 public final class c
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public LinearLayout GSX;
-  private Button HIN;
-  private String[] HIS;
-  private ArrayList<List<String>> HIT;
-  private CustomOptionPickNew HIU;
-  public CustomOptionPickNew HIV;
-  public c.a HIW;
-  private LinearLayout HIX;
-  private LinearLayout HIY;
-  private Button hJg;
-  private Button hJh;
-  private View jGG;
-  private int kBk;
-  private BottomSheetBehavior kBl;
+  public LinearLayout Itj;
+  private Button Jjk;
+  private String[] Jjp;
+  private ArrayList<List<String>> Jjq;
+  private CustomOptionPickNew Jjr;
+  public CustomOptionPickNew Jjs;
+  public c.a Jjt;
+  private LinearLayout Jju;
+  private LinearLayout Jjv;
+  private Button gAJ;
+  private Button gCY;
+  private View khe;
+  private int lcC;
+  private BottomSheetBehavior lcD;
   private Context mContext;
-  private a sri;
+  private a tyZ;
   
   public c(Context paramContext, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(159540);
-    this.HIT = null;
+    this.Jjq = null;
     this.mContext = paramContext;
     if (paramArrayList != null) {
-      this.HIS = ((String[])paramArrayList.toArray(new String[paramArrayList.size()]));
+      this.Jjp = ((String[])paramArrayList.toArray(new String[paramArrayList.size()]));
     }
     initView();
     AppMethodBeat.o(159540);
@@ -52,12 +52,12 @@ public final class c
   public c(Context paramContext, ArrayList<String> paramArrayList, ArrayList<List<String>> paramArrayList1)
   {
     AppMethodBeat.i(159541);
-    this.HIT = null;
+    this.Jjq = null;
     this.mContext = paramContext;
     if (paramArrayList != null) {
-      this.HIS = ((String[])paramArrayList.toArray(new String[paramArrayList.size()]));
+      this.Jjp = ((String[])paramArrayList.toArray(new String[paramArrayList.size()]));
     }
-    this.HIT = paramArrayList1;
+    this.Jjq = paramArrayList1;
     initView();
     AppMethodBeat.o(159541);
   }
@@ -65,19 +65,19 @@ public final class c
   public c(Context paramContext, String[] paramArrayOfString)
   {
     AppMethodBeat.i(159539);
-    this.HIT = null;
+    this.Jjq = null;
     this.mContext = paramContext;
-    this.HIS = paramArrayOfString;
+    this.Jjp = paramArrayOfString;
     initView();
     AppMethodBeat.o(159539);
   }
   
-  private String[] aaS(int paramInt)
+  private String[] ade(int paramInt)
   {
     AppMethodBeat.i(159549);
-    if (this.HIT != null)
+    if (this.Jjq != null)
     {
-      Object localObject = (ArrayList)this.HIT.get(paramInt);
+      Object localObject = (ArrayList)this.Jjq.get(paramInt);
       if (localObject != null)
       {
         localObject = (String[])((ArrayList)localObject).toArray(new String[((ArrayList)localObject).size()]);
@@ -92,38 +92,38 @@ public final class c
   private void initView()
   {
     AppMethodBeat.i(159542);
-    this.sri = new a(this.mContext);
-    this.jGG = View.inflate(this.mContext, 2131495059, null);
-    this.GSX = ((LinearLayout)this.jGG.findViewById(2131307217));
-    this.HIX = ((LinearLayout)this.jGG.findViewById(2131303044));
-    this.HIU = new CustomOptionPickNew(this.mContext);
-    this.HIU.setOptionsArray(this.HIS);
-    this.HIX.removeAllViews();
-    this.HIX.setGravity(17);
-    this.HIX.addView(this.HIU.getView(), new LinearLayout.LayoutParams(-2, -1));
-    this.HIY = ((LinearLayout)this.jGG.findViewById(2131303045));
-    if (this.HIT != null)
+    this.tyZ = new a(this.mContext);
+    this.khe = View.inflate(this.mContext, 2131495059, null);
+    this.Itj = ((LinearLayout)this.khe.findViewById(2131307217));
+    this.Jju = ((LinearLayout)this.khe.findViewById(2131303044));
+    this.Jjr = new CustomOptionPickNew(this.mContext);
+    this.Jjr.setOptionsArray(this.Jjp);
+    this.Jju.removeAllViews();
+    this.Jju.setGravity(17);
+    this.Jju.addView(this.Jjr.getView(), new LinearLayout.LayoutParams(-2, -1));
+    this.Jjv = ((LinearLayout)this.khe.findViewById(2131303045));
+    if (this.Jjq != null)
     {
-      this.HIY.setVisibility(0);
-      this.HIV = new CustomOptionPickNew(this.mContext);
-      this.HIY.removeAllViews();
-      this.HIY.setGravity(17);
-      this.HIY.addView(this.HIV.getView(), new LinearLayout.LayoutParams(-2, -1));
-      this.HIV.setOptionsArray(aaS(this.HIU.getValue()));
-      this.HIU.setOnValueChangedListener(new d()
+      this.Jjv.setVisibility(0);
+      this.Jjs = new CustomOptionPickNew(this.mContext);
+      this.Jjv.removeAllViews();
+      this.Jjv.setGravity(17);
+      this.Jjv.addView(this.Jjs.getView(), new LinearLayout.LayoutParams(-2, -1));
+      this.Jjs.setOptionsArray(ade(this.Jjr.getValue()));
+      this.Jjr.setOnValueChangedListener(new d()
       {
-        public final void pG(int paramAnonymousInt)
+        public final void qt(int paramAnonymousInt)
         {
-          AppMethodBeat.i(195292);
+          AppMethodBeat.i(199762);
           c.a(c.this).setOptionsArray(c.a(c.this, paramAnonymousInt));
-          AppMethodBeat.o(195292);
+          AppMethodBeat.o(199762);
         }
       });
     }
     for (;;)
     {
-      this.hJh = ((Button)this.jGG.findViewById(2131302999));
-      this.hJh.setOnClickListener(new View.OnClickListener()
+      this.gAJ = ((Button)this.khe.findViewById(2131302999));
+      this.gAJ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -149,8 +149,8 @@ public final class c
           }
         }
       });
-      this.hJg = ((Button)this.jGG.findViewById(2131297690));
-      this.hJg.setOnClickListener(new View.OnClickListener()
+      this.gCY = ((Button)this.khe.findViewById(2131297690));
+      this.gCY.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -159,13 +159,13 @@ public final class c
           AppMethodBeat.o(159537);
         }
       });
-      this.HIN = ((Button)this.jGG.findViewById(2131297600));
-      this.HIN.setOnClickListener(new View.OnClickListener()
+      this.Jjk = ((Button)this.khe.findViewById(2131297600));
+      this.Jjk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           Object localObject = null;
-          AppMethodBeat.i(195293);
+          AppMethodBeat.i(199763);
           c localc = c.this;
           if (c.b(c.this) == null)
           {
@@ -177,7 +177,7 @@ public final class c
           for (;;)
           {
             c.a(localc, true, paramAnonymousView, localObject);
-            AppMethodBeat.o(195293);
+            AppMethodBeat.o(199763);
             return;
             paramAnonymousView = c.b(c.this).currentValue();
             break;
@@ -186,49 +186,49 @@ public final class c
           }
         }
       });
-      this.sri.setContentView(this.jGG);
-      this.kBk = ao.fromDPToPix(this.mContext, 420);
-      this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-      if (this.kBl != null)
+      this.tyZ.setContentView(this.khe);
+      this.lcC = ao.fromDPToPix(this.mContext, 420);
+      this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+      if (this.lcD != null)
       {
-        this.kBl.J(this.kBk);
-        this.kBl.lh = false;
+        this.lcD.J(this.lcC);
+        this.lcD.mg = false;
       }
-      this.sri.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(195294);
+          AppMethodBeat.i(199764);
           c.c(c.this);
-          AppMethodBeat.o(195294);
+          AppMethodBeat.o(199764);
         }
       });
       AppMethodBeat.o(159542);
       return;
-      this.HIY.setVisibility(8);
+      this.Jjv.setVisibility(8);
     }
   }
   
-  public final void aaR(int paramInt)
+  public final void adc(int paramInt)
   {
     AppMethodBeat.i(159547);
-    if (this.HIU != null)
+    if (this.Jjr != null)
     {
-      this.HIU.setValue(paramInt);
-      this.HIU.aaQ(paramInt);
-      if ((this.HIV != null) && (this.HIT != null)) {
-        this.HIV.setOptionsArray(aaS(paramInt));
+      this.Jjr.setValue(paramInt);
+      this.Jjr.adb(paramInt);
+      if ((this.Jjs != null) && (this.Jjq != null)) {
+        this.Jjs.setOptionsArray(ade(paramInt));
       }
     }
     AppMethodBeat.o(159547);
   }
   
-  public final int ffZ()
+  public final int fvY()
   {
     AppMethodBeat.i(159546);
     int i = 0;
-    if (this.HIU != null) {
-      i = this.HIU.getValue();
+    if (this.Jjr != null) {
+      i = this.Jjr.getValue();
     }
     AppMethodBeat.o(159546);
     return i;
@@ -237,23 +237,23 @@ public final class c
   public final void hide()
   {
     AppMethodBeat.i(159545);
-    if (this.sri != null) {
-      this.sri.dismiss();
+    if (this.tyZ != null) {
+      this.tyZ.dismiss();
     }
     AppMethodBeat.o(159545);
   }
   
-  public final void jL(int paramInt1, int paramInt2)
+  public final void jX(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159548);
-    if ((this.HIU != null) && (this.HIV != null))
+    if ((this.Jjr != null) && (this.Jjs != null))
     {
-      this.HIU.setValue(paramInt1);
-      this.HIU.aaQ(paramInt1);
-      this.HIV.setOptionsArray(aaS(paramInt1));
-      this.HIV.setValue(paramInt2);
-      this.HIV.aaQ(paramInt2);
-      this.HIV.invalidate();
+      this.Jjr.setValue(paramInt1);
+      this.Jjr.adb(paramInt1);
+      this.Jjs.setOptionsArray(ade(paramInt1));
+      this.Jjs.setValue(paramInt2);
+      this.Jjs.adb(paramInt2);
+      this.Jjs.invalidate();
     }
     AppMethodBeat.o(159548);
   }
@@ -263,8 +263,8 @@ public final class c
   public final void show()
   {
     AppMethodBeat.i(159544);
-    if (this.sri != null) {
-      this.sri.show();
+    if (this.tyZ != null) {
+      this.tyZ.show();
     }
     AppMethodBeat.o(159544);
   }

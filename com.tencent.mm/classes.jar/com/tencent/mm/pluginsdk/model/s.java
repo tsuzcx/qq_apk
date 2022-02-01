@@ -7,25 +7,25 @@ import android.content.pm.ResolveInfo;
 
 public abstract class s
 {
-  public boolean R(Context paramContext, Intent paramIntent)
-  {
-    return false;
-  }
-  
   public String a(Context paramContext, ResolveInfo paramResolveInfo)
   {
     return paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager()).toString();
   }
   
-  public abstract boolean aAD(String paramString);
+  public abstract boolean aFV(String paramString);
   
-  public abstract String aGz();
+  public abstract String aNm();
   
-  public abstract String eve();
+  public boolean af(Context paramContext, Intent paramIntent)
+  {
+    return false;
+  }
   
-  public abstract t.a evf();
+  public abstract String eKy();
   
-  public abstract boolean gX(Context paramContext);
+  public abstract t.a eKz();
+  
+  public abstract boolean hi(Context paramContext);
 }
 
 

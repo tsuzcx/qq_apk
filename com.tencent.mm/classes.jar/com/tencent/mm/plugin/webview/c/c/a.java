@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.c.c;
 import com.tencent.mm.plugin.webview.c.h;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiInterface;", "()V", "webview-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiInterface;", "()V", "webview-sdk_release"})
 public abstract class a
   implements h
 {}

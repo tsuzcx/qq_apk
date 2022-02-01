@@ -17,19 +17,19 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private final WifiManager bOZ;
-  private final LocationManager bPa;
-  final PackageManager bPb;
-  PackageInfo bPc;
-  String bPd;
-  String bPe;
-  String bPf;
-  private int bPg;
-  private int bPh;
-  int bPi;
-  int bPj;
-  int bPk;
-  int bPl;
+  private final WifiManager bMH;
+  private final LocationManager bMI;
+  final PackageManager bMJ;
+  PackageInfo bMK;
+  String bML;
+  String bMM;
+  String bMN;
+  private int bMO;
+  private int bMP;
+  int bMQ;
+  int bMR;
+  int bMS;
+  int bMT;
   String imei;
   final Context mContext;
   final SensorManager mSensorManager;
@@ -40,23 +40,23 @@ public final class f
   public f(Context paramContext)
   {
     AppMethodBeat.i(87881);
-    this.bPg = 0;
-    this.bPh = 0;
-    this.bPi = 0;
-    this.bPj = 0;
-    this.bPk = 0;
-    this.bPl = 0;
+    this.bMO = 0;
+    this.bMP = 0;
+    this.bMQ = 0;
+    this.bMR = 0;
+    this.bMS = 0;
+    this.bMT = 0;
     this.source = "203";
     this.version = "2.0.1";
     this.mContext = paramContext;
-    this.bOZ = ((WifiManager)this.mContext.getSystemService("wifi"));
-    this.bPa = ((LocationManager)this.mContext.getSystemService("location"));
+    this.bMH = ((WifiManager)this.mContext.getSystemService("wifi"));
+    this.bMI = ((LocationManager)this.mContext.getSystemService("location"));
     this.mSensorManager = ((SensorManager)this.mContext.getSystemService("sensor"));
-    this.bPb = this.mContext.getPackageManager();
-    this.bPc = new PackageInfo();
+    this.bMJ = this.mContext.getPackageManager();
+    this.bMK = new PackageInfo();
     try
     {
-      this.bPc = this.bPb.getPackageInfo(this.mContext.getPackageName(), 0);
+      this.bMK = this.bMJ.getPackageInfo(this.mContext.getPackageName(), 0);
       AppMethodBeat.o(87881);
       return;
     }
@@ -66,7 +66,7 @@ public final class f
     }
   }
   
-  private static String bA(String paramString)
+  private static String br(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -75,13 +75,13 @@ public final class f
     return str;
   }
   
-  private boolean yW()
+  private boolean yJ()
   {
     AppMethodBeat.i(87883);
     boolean bool1 = false;
     try
     {
-      boolean bool2 = this.bPa.isProviderEnabled("gps");
+      boolean bool2 = this.bMI.isProviderEnabled("gps");
       bool1 = bool2;
     }
     catch (Exception localException)
@@ -94,14 +94,14 @@ public final class f
   }
   
   @SuppressLint({"NewApi"})
-  private boolean yX()
+  private boolean yK()
   {
     AppMethodBeat.i(87884);
     boolean bool1 = false;
     boolean bool2;
-    if (this.bOZ != null)
+    if (this.bMH != null)
     {
-      bool2 = this.bOZ.isWifiEnabled();
+      bool2 = this.bMH.isWifiEnabled();
       bool1 = bool2;
       if (!bool2) {
         bool1 = bool2;
@@ -110,7 +110,7 @@ public final class f
     try
     {
       if (Build.VERSION.SDK_INT >= 18) {
-        bool1 = this.bOZ.isScanAlwaysAvailable();
+        bool1 = this.bMH.isScanAlwaysAvailable();
       }
       AppMethodBeat.o(87884);
       return bool1;
@@ -131,28 +131,28 @@ public final class f
     }
   }
   
-  public final String z(byte[] paramArrayOfByte)
+  public final String x(byte[] paramArrayOfByte)
   {
     int j = 1;
     AppMethodBeat.i(87882);
     HashMap localHashMap = new HashMap();
     localHashMap.put("version", this.version);
-    localHashMap.put("app_name", bA(this.versionName));
-    if (this.bPd != null)
+    localHashMap.put("app_name", br(this.versionName));
+    if (this.bML != null)
     {
-      localHashMap.put("app_label", bA(Base64.encodeToString(this.bPd.getBytes(), 0)));
-      if (!yW()) {
+      localHashMap.put("app_label", br(Base64.encodeToString(this.bML.getBytes(), 0)));
+      if (!yJ()) {
         break label311;
       }
       i = 1;
       label81:
-      this.bPh = i;
-      if ((this.bOZ == null) || (!this.bOZ.isWifiEnabled())) {
+      this.bMP = i;
+      if ((this.bMH == null) || (!this.bMH.isWifiEnabled())) {
         break label316;
       }
       i = 1;
       label105:
-      if ((i | yX()) == 0) {
+      if ((i | yK()) == 0) {
         break label321;
       }
     }
@@ -161,17 +161,17 @@ public final class f
     label321:
     for (int i = j;; i = 0)
     {
-      this.bPg = i;
-      localHashMap.put("chips", Integer.toBinaryString(this.bPl | 0x0 | this.bPk << 1 | this.bPj << 2 | this.bPi << 3 | this.bPh << 4 | this.bPg << 5));
+      this.bMO = i;
+      localHashMap.put("chips", Integer.toBinaryString(this.bMT | 0x0 | this.bMS << 1 | this.bMR << 2 | this.bMQ << 3 | this.bMP << 4 | this.bMO << 5));
       localHashMap.put("source", this.source);
       localHashMap.put("query", new String(paramArrayOfByte));
       try
       {
         paramArrayOfByte = new JSONObject(localHashMap);
         localHashMap = new HashMap();
-        localHashMap.put("model", bA(Base64.encodeToString(this.bPe.getBytes(), 0)));
-        localHashMap.put("version", bA(this.bPf));
-        localHashMap.put("imei", bA(this.imei));
+        localHashMap.put("model", br(Base64.encodeToString(this.bMM.getBytes(), 0)));
+        localHashMap.put("version", br(this.bMN));
+        localHashMap.put("imei", br(this.imei));
         paramArrayOfByte = paramArrayOfByte.put("attribute", new JSONObject(localHashMap)).toString();
         AppMethodBeat.o(87882);
         return paramArrayOfByte;

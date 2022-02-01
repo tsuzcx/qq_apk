@@ -7,23 +7,15 @@ import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.net.URLEncoder;
 import java.util.List;
 import org.apache.http.NameValuePair;
 
 public final class m
 {
-  public static String aIV()
-  {
-    AppMethodBeat.i(131043);
-    ad.i("MicroMsg.GoogleContactLogic", "getRequestCodeUrl:%s", new Object[] { "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com" });
-    AppMethodBeat.o(131043);
-    return "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com";
-  }
-  
-  public static String aQ(List<NameValuePair> paramList)
+  public static String aO(List<NameValuePair> paramList)
   {
     AppMethodBeat.i(131044);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -50,7 +42,15 @@ public final class m
     return paramList;
   }
   
-  public static boolean cX(Context paramContext)
+  public static String aPM()
+  {
+    AppMethodBeat.i(131043);
+    ac.i("MicroMsg.GoogleContactLogic", "getRequestCodeUrl:%s", new Object[] { "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com" });
+    AppMethodBeat.o(131043);
+    return "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&client_id=369820936870.apps.googleusercontent.com";
+  }
+  
+  public static boolean dg(Context paramContext)
   {
     AppMethodBeat.i(131045);
     Intent localIntent1 = new Intent("com.google.android.gms.common.account.CHOOSE_ACCOUNT");
@@ -59,7 +59,7 @@ public final class m
     {
       if (Build.VERSION.SDK_INT >= 8)
       {
-        if (paramContext.getSharedPreferences(aj.eFD(), 0).getBoolean("googleauth", false))
+        if (paramContext.getSharedPreferences(ai.eUX(), 0).getBoolean("googleauth", false))
         {
           AppMethodBeat.o(131045);
           return false;
@@ -76,7 +76,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.m
  * JD-Core Version:    0.7.0.1
  */

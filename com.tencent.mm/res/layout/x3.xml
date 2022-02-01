@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/fyg" android:paddingTop="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:textSize="17.0sp" android:textColor="@color/a_u" android:gravity="center" android:id="@id/ahy" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/r5" android:layout_marginStart="@dimen/ahh" />
-        <TextView android:id="@id/hre" android:background="@color/a_r" android:padding="@dimen/ci" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqu" android:layout_centerHorizontal="true" />
+        <TextView android:id="@id/hv4" android:background="@color/a_r" android:padding="@dimen/ci" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hsd" android:layout_centerHorizontal="true" />
         <Button android:textSize="17.0sp" android:id="@id/ahz" android:background="@drawable/ach" android:text="@string/ti" android:layout_marginEnd="@dimen/ahh" android:layout_alignParentEnd="true" style="@style/o8" />
     </RelativeLayout>
     <LinearLayout android:orientation="horizontal" android:id="@id/fye" android:paddingBottom="12.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">

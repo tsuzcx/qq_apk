@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -26,10 +26,10 @@ public class SettingsSpecialSceneNotificationUI
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.screen.cE("settings_specail_scene_sound", false);
-    ((CheckBoxPreference)this.screen.aKk("settings_specail_scene_sound")).lG = com.tencent.mm.m.f.Yt();
-    this.screen.cE("settings_specail_scene_shake", false);
-    ((CheckBoxPreference)this.screen.aKk("settings_specail_scene_shake")).lG = com.tencent.mm.m.f.Yu();
+    this.screen.cK("settings_specail_scene_sound", false);
+    ((CheckBoxPreference)this.screen.aPN("settings_specail_scene_sound")).mF = com.tencent.mm.m.f.Zq();
+    this.screen.cK("settings_specail_scene_shake", false);
+    ((CheckBoxPreference)this.screen.aPN("settings_specail_scene_shake")).mF = com.tencent.mm.m.f.Zr();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -72,16 +72,16 @@ public class SettingsSpecialSceneNotificationUI
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_specail_scene_sound"))
     {
-      com.tencent.mm.m.f.cU(((CheckBoxPreference)paramPreference).isChecked());
+      com.tencent.mm.m.f.cT(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       AppMethodBeat.o(74431);
       return true;
     }
     if (paramf.equals("settings_specail_scene_shake"))
     {
-      com.tencent.mm.m.f.cV(((CheckBoxPreference)paramPreference).isChecked());
+      com.tencent.mm.m.f.cU(((CheckBoxPreference)paramPreference).isChecked());
       initView();
-      bt.C(this, ((CheckBoxPreference)paramPreference).isChecked());
+      bs.D(this, ((CheckBoxPreference)paramPreference).isChecked());
       AppMethodBeat.o(74431);
       return true;
     }
@@ -105,7 +105,7 @@ public class SettingsSpecialSceneNotificationUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSpecialSceneNotificationUI
  * JD-Core Version:    0.7.0.1
  */

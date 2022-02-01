@@ -1,195 +1,322 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.view.Display;
+import android.util.Pair;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.live.a;
+import com.tencent.mm.live.b.c.b;
+import com.tencent.mm.live.b.c.c.a;
+import com.tencent.mm.model.aj;
+import com.tencent.mm.model.v;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.x;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import java.util.HashSet;
+import java.util.LinkedList;
 
-public class p
+public final class p
 {
-  public static int Ts(int paramInt)
+  private static HashSet<a> HmK;
+  private LiveTalkRoomTipsBar HmH;
+  private LinkedList<b> HmI;
+  public b HmJ;
+  String gmQ;
+  private c.a gxs;
+  
+  static
   {
-    return ((int)((paramInt >> 24 & 0xFF) * 0.78F + 56.100006F) & 0xFF) << 24 | ((int)((paramInt >> 16 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 16 | ((int)((paramInt >> 8 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 8 | ((int)((paramInt & 0xFF) * 0.78F + 0.0F) & 0xFF) << 0;
+    AppMethodBeat.i(196315);
+    HmK = new HashSet();
+    AppMethodBeat.o(196315);
   }
   
-  private static int aB(Context paramContext, int paramInt)
+  public p(LiveTalkRoomTipsBar paramLiveTalkRoomTipsBar)
   {
-    AppMethodBeat.i(175975);
-    Rect localRect = new Rect();
-    ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    if (localRect.top > paramInt)
+    AppMethodBeat.i(196308);
+    this.HmJ = new b();
+    this.gxs = new c.a()
     {
-      ad.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(175975);
-      return 0;
-    }
-    AppMethodBeat.o(175975);
-    return paramInt;
-  }
-  
-  public static void b(Window paramWindow)
-  {
-    AppMethodBeat.i(175977);
-    if (paramWindow == null)
-    {
-      AppMethodBeat.o(175977);
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramWindow.addFlags(-2147483648);
-      paramWindow.setStatusBarColor(0);
-    }
-    AppMethodBeat.o(175977);
-  }
-  
-  public static boolean c(Window paramWindow, boolean paramBoolean)
-  {
-    AppMethodBeat.i(175978);
-    if ((paramWindow == null) || (paramWindow.getDecorView() == null))
-    {
-      AppMethodBeat.o(175978);
-      return false;
-    }
-    if (eQT())
-    {
-      paramWindow = paramWindow.getDecorView();
-      int i = paramWindow.getSystemUiVisibility();
-      if (paramBoolean) {
-        i |= 0x2000;
-      }
-      for (;;)
+      public final void vc(String paramAnonymousString)
       {
-        paramWindow.setSystemUiVisibility(i);
-        AppMethodBeat.o(175978);
-        return true;
-        i &= 0xFFFFDFFF;
+        AppMethodBeat.i(196297);
+        if ((p.a(p.this) != null) && (p.a(p.this).equals(paramAnonymousString)))
+        {
+          p.this.fgB();
+          p.CU(paramAnonymousString);
+        }
+        AppMethodBeat.o(196297);
       }
-    }
-    AppMethodBeat.o(175978);
-    return false;
+    };
+    this.HmH = paramLiveTalkRoomTipsBar;
+    fgB();
+    ((a)g.ad(a.class)).getLiveTipsBarStorage().gxs = this.gxs;
+    AppMethodBeat.o(196308);
   }
   
-  public static Point cf(Context paramContext)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(175980);
-    Point localPoint = new Point();
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(175980);
-      return localPoint;
+    AppMethodBeat.i(196311);
+    if (HmK != null) {
+      HmK.add(parama);
     }
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getRealSize(localPoint);
+    AppMethodBeat.o(196311);
+  }
+  
+  public static void aPy(String paramString)
+  {
+    AppMethodBeat.i(196310);
+    com.tencent.mm.live.b.c.c localc = ((a)g.ad(a.class)).getLiveTipsBarStorage();
+    long l;
+    boolean bool;
+    if ((com.tencent.mm.live.b.c.c.gxq != null) && (((String)com.tencent.mm.live.b.c.c.gxq.first).equals(paramString)))
+    {
+      l = ((Long)com.tencent.mm.live.b.c.c.gxq.second).longValue();
+      String str = String.format("DELETE FROM %s WHERE %s = '%s' AND %s != '%s'", new Object[] { "LiveTipsBar", "hostRoomId", paramString, "liveId", com.tencent.mm.live.b.c.c.gxq.second });
+      bool = localc.db.execSQL("LiveTipsBar", str);
+      if (!bool) {
+        ac.e("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId failed, hostRoomId:%s, result%b, visitingLive:%d", new Object[] { paramString, Boolean.valueOf(bool), Long.valueOf(l) });
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(175980);
-      return localPoint;
-      if (Build.VERSION.SDK_INT >= 14) {
-        try
-        {
-          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
-          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (Exception localException) {}
+      if (localc.gxs != null) {
+        localc.gxs.vc(paramString);
+      }
+      AppMethodBeat.o(196310);
+      return;
+      ac.i("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId, hostRoomId:%s, result%b, visitingLive:%d", new Object[] { paramString, Boolean.valueOf(bool), Long.valueOf(l) });
+      continue;
+      int i = localc.db.delete("LiveTipsBar", "hostRoomId= ? ", new String[] { paramString });
+      if (i < 0) {
+        ac.e("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId failed, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
       } else {
-        paramContext.getSize(localPoint);
+        ac.i("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
       }
     }
   }
   
-  public static boolean eQT()
+  public static LinkedList<b> aPz(String paramString)
   {
-    AppMethodBeat.i(175979);
-    if ((Build.VERSION.SDK_INT >= 23) && (!b.XM()))
+    AppMethodBeat.i(196313);
+    paramString = ((a)g.ad(a.class)).getLiveTipsBarStorage().uZ(paramString);
+    AppMethodBeat.o(196313);
+    return paramString;
+  }
+  
+  public static void b(a parama)
+  {
+    AppMethodBeat.i(196312);
+    if (HmK != null) {
+      HmK.remove(parama);
+    }
+    AppMethodBeat.o(196312);
+  }
+  
+  public final boolean aPx(String paramString)
+  {
+    AppMethodBeat.i(196307);
+    if ((this.gmQ != null) && (this.gmQ.equals(paramString)))
     {
-      AppMethodBeat.o(175979);
+      AppMethodBeat.o(196307);
       return true;
     }
-    AppMethodBeat.o(175979);
+    AppMethodBeat.o(196307);
     return false;
   }
   
-  public static int iX(Context paramContext)
+  public final LinkedList<b> fgB()
   {
-    AppMethodBeat.i(175973);
-    int i = jm(paramContext);
-    AppMethodBeat.o(175973);
-    return i;
+    AppMethodBeat.i(196309);
+    this.HmI = ((a)g.ad(a.class)).getLiveTipsBarStorage().uZ(this.gmQ);
+    LinkedList localLinkedList = this.HmI;
+    AppMethodBeat.o(196309);
+    return localLinkedList;
   }
   
-  public static int jl(Context paramContext)
+  public static abstract interface a
   {
-    AppMethodBeat.i(175974);
-    int i = jm(paramContext);
-    if (i > 0)
+    public abstract void aPA(String paramString);
+  }
+  
+  final class b
+    extends BaseAdapter
+  {
+    b() {}
+    
+    public final b Zv(int paramInt)
     {
-      i = aB(paramContext, i);
-      AppMethodBeat.o(175974);
-      return i;
-    }
-    if ((paramContext instanceof Activity))
-    {
-      Rect localRect = new Rect();
-      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-      i = ((Activity)paramContext).getWindow().getDecorView().getHeight();
-      int[] arrayOfInt = new int[2];
-      ((Activity)paramContext).getWindow().getDecorView().getLocationOnScreen(arrayOfInt);
-      if ((i - localRect.height() >= 0) && (arrayOfInt[1] > 200))
+      AppMethodBeat.i(196304);
+      if (p.b(p.this) == null)
       {
-        int j = localRect.height();
-        AppMethodBeat.o(175974);
-        return i - j;
+        AppMethodBeat.o(196304);
+        return null;
       }
-      i = localRect.top;
-      AppMethodBeat.o(175974);
-      return i;
+      b localb = (b)p.b(p.this).get(paramInt);
+      AppMethodBeat.o(196304);
+      return localb;
     }
-    i = a.fromDPToPix(paramContext, 20);
-    AppMethodBeat.o(175974);
-    return i;
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(196303);
+      if (p.b(p.this) != null)
+      {
+        int i = p.b(p.this).size();
+        AppMethodBeat.o(196303);
+        return i;
+      }
+      AppMethodBeat.o(196303);
+      return 0;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return -1L;
+    }
+    
+    public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(196305);
+      View localView;
+      final b localb;
+      TextView localTextView;
+      StringBuilder localStringBuilder;
+      Context localContext;
+      String str2;
+      String str3;
+      if (paramView == null)
+      {
+        localView = LayoutInflater.from(p.c(p.this).context).inflate(2131496343, paramViewGroup, false);
+        paramViewGroup = new p.c(p.this);
+        paramViewGroup.HmR = ((LinearLayout)localView.findViewById(2131307790));
+        paramViewGroup.HmS = ((WeImageView)localView.findViewById(2131307789));
+        paramViewGroup.Hmv = ((RelativeLayout)localView.findViewById(2131307791));
+        paramViewGroup.HmT = ((TextView)localView.findViewById(2131307797));
+        paramViewGroup.HmU = ((TextView)localView.findViewById(2131307788));
+        localView.setTag(paramViewGroup);
+        localb = Zv(paramInt);
+        if (localb != null)
+        {
+          a.b.c(paramViewGroup.HmS, localb.field_anchorUsername);
+          paramViewGroup.HmT.setText(k.c(p.c(p.this).context, localb.field_liveName));
+          localTextView = paramViewGroup.HmU;
+          localStringBuilder = new StringBuilder("主播：");
+          localContext = p.c(p.this).context;
+          str2 = localb.field_anchorUsername;
+          str3 = p.a(p.this);
+          if (str2 != null) {
+            break label302;
+          }
+          paramView = "";
+        }
+      }
+      for (;;)
+      {
+        localTextView.setText(k.b(localContext, paramView, paramViewGroup.HmU.getTextSize()));
+        paramViewGroup.HmR.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(196300);
+            if (localb != null) {
+              p.c(p.this).b(localb);
+            }
+            if (p.c(p.this) != null) {
+              ap.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(196299);
+                  if (p.c(p.this) != null) {
+                    p.c(p.this).setTipsBarLayout(true);
+                  }
+                  AppMethodBeat.o(196299);
+                }
+              });
+            }
+            AppMethodBeat.o(196300);
+          }
+        });
+        paramViewGroup.Hmv.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(196302);
+            paramAnonymousView = (b)p.b(p.this).get(paramInt);
+            ((a)g.ad(a.class)).getLiveTipsBarStorage().pm(paramAnonymousView.field_liveId);
+            p.this.fgB();
+            if (p.c(p.this) != null) {
+              ap.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(196301);
+                  if (p.c(p.this) != null) {
+                    p.c(p.this).fgz();
+                  }
+                  AppMethodBeat.o(196301);
+                }
+              });
+            }
+            AppMethodBeat.o(196302);
+          }
+        });
+        AppMethodBeat.o(196305);
+        return localView;
+        paramViewGroup = (p.c)paramView.getTag();
+        localView = paramView;
+        break;
+        label302:
+        String str1 = v.wl(str2);
+        paramView = str1;
+        if (bs.isNullOrNil(str1))
+        {
+          paramView = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(str3);
+          if (paramView == null)
+          {
+            paramView = v.wk(str2);
+          }
+          else
+          {
+            str1 = paramView.wk(str2);
+            paramView = str1;
+            if (bs.isNullOrNil(str1)) {
+              paramView = v.wk(str2);
+            }
+          }
+        }
+      }
+    }
   }
   
-  public static int jm(Context paramContext)
+  final class c
   {
-    int i = 0;
-    AppMethodBeat.i(175976);
-    try
-    {
-      Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject = localClass.newInstance();
-      int j = bt.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
-      j = paramContext.getResources().getDimensionPixelSize(j);
-      i = j;
-    }
-    catch (Exception paramContext)
-    {
-      label49:
-      break label49;
-    }
-    AppMethodBeat.o(175976);
-    return i;
+    LinearLayout HmR;
+    WeImageView HmS;
+    TextView HmT;
+    TextView HmU;
+    RelativeLayout Hmv;
+    
+    c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.p
  * JD-Core Version:    0.7.0.1
  */

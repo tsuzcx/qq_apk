@@ -1,203 +1,201 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.ay;
-import com.tencent.mm.model.bs;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
 import com.tencent.mm.plugin.messenger.foundation.a.x;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.abx;
-import com.tencent.mm.protocal.protobuf.aby;
-import com.tencent.mm.protocal.protobuf.brj;
-import com.tencent.mm.protocal.protobuf.xd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.protocal.protobuf.acx;
+import com.tencent.mm.protocal.protobuf.bwa;
+import com.tencent.mm.protocal.protobuf.xv;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 
 public final class g
   implements u
 {
-  public final void a(xd paramxd, byte[] paramArrayOfByte, boolean paramBoolean, x paramx)
+  public final void a(xv paramxv, byte[] paramArrayOfByte, boolean paramBoolean, x paramx)
   {
     AppMethodBeat.i(116929);
-    switch (paramxd.CYY)
+    switch (paramxv.ErL)
     {
     default: 
       AppMethodBeat.o(116929);
       return;
     }
-    paramx = (brj)new brj().parseFrom(paramArrayOfByte);
-    com.tencent.mm.kernel.g.afB().afk().get(2, null);
-    ab localab = com.tencent.mm.kernel.g.afB().afk();
-    ad.i("MicroMsg.UserInfoSyncExtension", "processModUserInfo bitFlag:%d status:%d PluginFlag:%d PluginSwitch:%d", new Object[] { Integer.valueOf(paramx.DPj), Integer.valueOf(paramx.mBi), Integer.valueOf(paramx.CuI), Integer.valueOf(paramx.DPq) });
-    paramArrayOfByte = z.a(paramx.Dby);
-    Object localObject = z.a(paramx.DFJ);
-    String str1 = z.a(paramx.DPk);
-    String str2 = z.a(paramx.DPl);
-    int i = paramx.CuF;
-    paramxd = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(paramArrayOfByte);
-    if ((paramxd == null) || (paramxd.field_username == null) || (!paramxd.field_username.equals(paramArrayOfByte))) {
-      paramxd = new af(paramArrayOfByte);
+    paramx = (bwa)new bwa().parseFrom(paramArrayOfByte);
+    com.tencent.mm.kernel.g.agR().agA().get(2, null);
+    ae localae = com.tencent.mm.kernel.g.agR().agA();
+    ac.i("MicroMsg.UserInfoSyncExtension", "processModUserInfo bitFlag:%d status:%d PluginFlag:%d PluginSwitch:%d", new Object[] { Integer.valueOf(paramx.FlA), Integer.valueOf(paramx.ndj), Integer.valueOf(paramx.DNd), Integer.valueOf(paramx.FlH) });
+    paramArrayOfByte = z.a(paramx.EuE);
+    Object localObject = z.a(paramx.Fbd);
+    String str1 = z.a(paramx.FlB);
+    String str2 = z.a(paramx.FlC);
+    int i = paramx.DNa;
+    paramxv = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramArrayOfByte);
+    if ((paramxv == null) || (paramxv.field_username == null) || (!paramxv.field_username.equals(paramArrayOfByte))) {
+      paramxv = new ai(paramArrayOfByte);
     }
     label1038:
     label1182:
     label2083:
     for (;;)
     {
-      paramxd.na(paramx.ijR);
-      paramxd.nd((String)localObject);
-      paramxd.nA(RegionCodeDecoder.aT(paramx.ijV, paramx.ijN, paramx.ijO));
-      paramxd.jJ(paramx.ijM);
-      paramxd.nu(paramx.ijP);
-      paramxd.jE(paramx.DIZ);
-      paramxd.ny(paramx.DIX);
-      paramxd.ng(paramx.DIY);
-      paramxd.setUin(i);
-      ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().ae(paramxd);
-      localab.set(2, paramArrayOfByte);
-      localab.set(4, localObject);
-      localab.set(5, str1);
-      localab.set(6, str2);
-      localab.set(9, Integer.valueOf(i));
+      paramxv.qg(paramx.iJY);
+      paramxv.qj((String)localObject);
+      paramxv.qG(RegionCodeDecoder.aW(paramx.iKc, paramx.iJU, paramx.iJV));
+      paramxv.jH(paramx.iJT);
+      paramxv.qA(paramx.iJW);
+      paramxv.jC(paramx.Feu);
+      paramxv.qE(paramx.Fes);
+      paramxv.qm(paramx.Fet);
+      paramxv.setUin(i);
+      ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().af(paramxv);
+      localae.set(2, paramArrayOfByte);
+      localae.set(4, localObject);
+      localae.set(5, str1);
+      localae.set(6, str2);
+      localae.set(9, Integer.valueOf(i));
       localObject = new StringBuilder("doCmd : status ");
-      i = paramx.mBi;
+      i = paramx.ndj;
       paramArrayOfByte = "code=" + Integer.toHexString(i) + ", status = " + i;
-      paramxd = paramArrayOfByte;
+      paramxv = paramArrayOfByte;
       if ((i & 0x1) != 0) {
-        paramxd = paramArrayOfByte + ", open";
+        paramxv = paramArrayOfByte + ", open";
       }
-      paramArrayOfByte = paramxd;
+      paramArrayOfByte = paramxv;
       if ((i & 0x2) != 0) {
-        paramArrayOfByte = paramxd + ", email-verified";
+        paramArrayOfByte = paramxv + ", email-verified";
       }
-      paramxd = paramArrayOfByte;
+      paramxv = paramArrayOfByte;
       if ((i & 0x4) != 0) {
-        paramxd = paramArrayOfByte + ", mobile-verified";
+        paramxv = paramArrayOfByte + ", mobile-verified";
       }
-      paramArrayOfByte = paramxd;
+      paramArrayOfByte = paramxv;
       if ((i & 0x8) != 0) {
-        paramArrayOfByte = paramxd + ", hide-qq-search";
+        paramArrayOfByte = paramxv + ", hide-qq-search";
       }
-      paramxd = paramArrayOfByte;
+      paramxv = paramArrayOfByte;
       if ((i & 0x10) != 0) {
-        paramxd = paramArrayOfByte + ", hide-qq-promote";
+        paramxv = paramArrayOfByte + ", hide-qq-promote";
       }
-      paramArrayOfByte = paramxd;
+      paramArrayOfByte = paramxv;
       if ((i & 0x20) != 0) {
-        paramArrayOfByte = paramxd + ", need-verify";
+        paramArrayOfByte = paramxv + ", need-verify";
       }
-      paramxd = paramArrayOfByte;
+      paramxv = paramArrayOfByte;
       if ((i & 0x40) != 0) {
-        paramxd = paramArrayOfByte + ", has-qq-msg";
+        paramxv = paramArrayOfByte + ", has-qq-msg";
       }
-      paramArrayOfByte = paramxd;
+      paramArrayOfByte = paramxv;
       if ((i & 0x80) != 0) {
-        paramArrayOfByte = paramxd + ", no-qq-promote";
+        paramArrayOfByte = paramxv + ", no-qq-promote";
       }
-      paramxd = paramArrayOfByte;
+      paramxv = paramArrayOfByte;
       if ((i & 0x100) != 0) {
-        paramxd = paramArrayOfByte + ", no-mobile-promote";
+        paramxv = paramArrayOfByte + ", no-mobile-promote";
       }
-      paramArrayOfByte = paramxd;
+      paramArrayOfByte = paramxv;
       if ((i & 0x200) != 0) {
-        paramArrayOfByte = paramxd + ", hide-mobile_search";
+        paramArrayOfByte = paramxv + ", hide-mobile_search";
       }
-      paramxd = paramArrayOfByte;
+      paramxv = paramArrayOfByte;
       if ((i & 0x1000) != 0) {
-        paramxd = paramArrayOfByte + ", open-float-bottle";
+        paramxv = paramArrayOfByte + ", open-float-bottle";
       }
-      paramArrayOfByte = paramxd;
+      paramArrayOfByte = paramxv;
       if ((i & 0x20000) != 0) {
-        paramArrayOfByte = paramxd + ", bind but not upload";
+        paramArrayOfByte = paramxv + ", bind but not upload";
       }
-      ad.d("MicroMsg.UserInfoSyncExtension", paramArrayOfByte);
-      localab.set(7, Integer.valueOf(paramx.mBi));
-      if (paramx.ijQ != 0)
+      ac.d("MicroMsg.UserInfoSyncExtension", paramArrayOfByte);
+      localae.set(7, Integer.valueOf(paramx.ndj));
+      if (paramx.iJX != 0)
       {
-        paramxd = new bs();
-        paramxd.evy = 1;
-        paramxd.evp = paramx.ijM;
-        paramxd.signature = paramx.ijP;
-        paramxd.countryCode = paramx.ijV;
-        paramxd.provinceCode = paramx.ijN;
-        paramxd.cityCode = paramx.ijO;
-        paramxd.evD = paramx.DIX;
-        ad.d("MicroMsg.UserInfoSyncExtension", " getPersonalCard weibo url : " + paramxd.evD + " nickName :" + paramx.DIY);
-        bs.a(paramxd);
+        paramxv = new com.tencent.mm.model.bs();
+        paramxv.exU = 1;
+        paramxv.exL = paramx.iJT;
+        paramxv.signature = paramx.iJW;
+        paramxv.countryCode = paramx.iKc;
+        paramxv.provinceCode = paramx.iJU;
+        paramxv.cityCode = paramx.iJV;
+        paramxv.exZ = paramx.Fes;
+        ac.d("MicroMsg.UserInfoSyncExtension", " getPersonalCard weibo url : " + paramxv.exZ + " nickName :" + paramx.Fet);
+        com.tencent.mm.model.bs.a(paramxv);
       }
       paramArrayOfByte = new StringBuilder("userinfo Plugstate: ");
-      i = paramx.CuI;
-      paramxd = "code=" + Integer.toHexString(i) + ", pluginFlag = " + i;
+      i = paramx.DNd;
+      paramxv = "code=" + Integer.toHexString(i) + ", pluginFlag = " + i;
       if ((i & 0x1) != 0)
       {
-        paramxd = paramxd + ", QQMAIL_UNINSTALL";
+        paramxv = paramxv + ", QQMAIL_UNINSTALL";
         label1010:
         if ((i & 0x2) == 0) {
           break label1939;
         }
-        paramxd = paramxd + ", PM_UNINSTALL";
+        paramxv = paramxv + ", PM_UNINSTALL";
         if ((i & 0x4) == 0) {
           break label1963;
         }
-        paramxd = paramxd + ", FM_UNINSTALL";
+        paramxv = paramxv + ", FM_UNINSTALL";
         label1066:
         if ((i & 0x8) == 0) {
           break label1987;
         }
-        paramxd = paramxd + ", WEIBO_UNINSTALL";
+        paramxv = paramxv + ", WEIBO_UNINSTALL";
         label1095:
         if ((i & 0x10) == 0) {
           break label2011;
         }
-        paramxd = paramxd + ", MEDIANOTE_UNINSTALL";
+        paramxv = paramxv + ", MEDIANOTE_UNINSTALL";
         label1124:
         if ((i & 0x20) == 0) {
           break label2035;
         }
-        paramxd = paramxd + ", QMSG_UNINSTALL";
+        paramxv = paramxv + ", QMSG_UNINSTALL";
         if ((i & 0x40) == 0) {
           break label2059;
         }
-        paramxd = paramxd + ", BOTTLE_UNINSTALL";
+        paramxv = paramxv + ", BOTTLE_UNINSTALL";
         if ((i & 0x80) == 0) {
           break label2083;
         }
-        paramxd = paramxd + ", QSYNC_UNISTALL";
+        paramxv = paramxv + ", QSYNC_UNISTALL";
         label1212:
         if ((i & 0x100) == 0) {
           break label2107;
         }
-        paramxd = paramxd + ", SHAKE_UNISTALL";
+        paramxv = paramxv + ", SHAKE_UNISTALL";
         label1242:
         if ((i & 0x200) == 0) {
           break label2131;
         }
-        paramxd = paramxd + ", LBS_UNISTALL";
+        paramxv = paramxv + ", LBS_UNISTALL";
         label1272:
         if ((i & 0x400) == 0) {
           break label2155;
         }
-        paramxd = paramxd + ", BOTTLE_CHART_INSTALL";
+        paramxv = paramxv + ", BOTTLE_CHART_INSTALL";
         if ((i & 0x1000) == 0) {
           break label2179;
         }
-        paramxd = paramxd + ",CHECKQQF_UNINSTALL";
+        paramxv = paramxv + ",CHECKQQF_UNINSTALL";
         label1332:
         if ((i & 0x8000) == 0) {
           break label2203;
         }
-        paramxd = paramxd + ",MM_FEEDSAPP_UNINSTALL";
+        paramxv = paramxv + ",MM_FEEDSAPP_UNINSTALL";
         label1362:
-        ad.i("MicroMsg.UserInfoSyncExtension", paramxd);
-        localab.set(34, Integer.valueOf(paramx.CuI));
-        if (1 != paramx.DOM.Dcu) {
+        ac.i("MicroMsg.UserInfoSyncExtension", paramxv);
+        localae.set(34, Integer.valueOf(paramx.DNd));
+        if (1 != paramx.Fld.EvB) {
           break label2227;
         }
       }
@@ -205,66 +203,66 @@ public final class g
       label2227:
       for (paramBoolean = true;; paramBoolean = false)
       {
-        localab.set(8200, Boolean.valueOf(bt.a(Boolean.valueOf(paramBoolean), false)));
-        localab.set(8201, Integer.valueOf(bt.a(Integer.valueOf(paramx.DOM.Dcv.Dcy), 22)));
-        localab.set(8208, Integer.valueOf(bt.a(Integer.valueOf(paramx.DOM.Dcv.Dcz), 8)));
-        localab.set(66049, Integer.valueOf(paramx.DIV));
-        localab.set(66050, paramx.DIW);
-        localab.set(40, Integer.valueOf(paramx.DPq));
-        ay.gNa.aD("last_login_use_voice", paramx.DPq);
-        localab.set(41, Integer.valueOf(paramx.DIZ));
-        localab.set(43, paramx.DIY);
-        ad.d("MicroMsg.UserInfoSyncExtension", "doCmd PluginSwitch:" + paramx.DPq + " WeiboFlag:" + paramx.DIZ);
-        localab.set(868518889, Integer.valueOf(paramx.DPa));
-        ad.d("MicroMsg.UserInfoSyncExtension", "doCmd USERINFO_TXNEWSCATEGORY:" + paramx.DPa);
-        localab.set(42, paramx.ijR);
-        ad.d("MicroMsg.UserInfoSyncExtension", "userid:" + paramx.Dfl + " username:" + paramx.Dfm);
-        localab.set(65825, paramx.Dfl);
-        localab.set(65826, paramx.Dfm);
-        ad.d("MicroMsg.UserInfoSyncExtension", "getiAlbumFlag " + paramx.ijS);
-        ad.d("MicroMsg.UserInfoSyncExtension", "getiAlbumStyle " + paramx.ijT);
-        ad.d("MicroMsg.UserInfoSyncExtension", "getPcAlbumBGImgID " + paramx.ijU);
-        paramxd = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(65830, null));
-        if ((paramxd == null) || (paramxd.length() == 0))
+        localae.set(8200, Boolean.valueOf(com.tencent.mm.sdk.platformtools.bs.a(Boolean.valueOf(paramBoolean), false)));
+        localae.set(8201, Integer.valueOf(com.tencent.mm.sdk.platformtools.bs.a(Integer.valueOf(paramx.Fld.EvC.EvF), 22)));
+        localae.set(8208, Integer.valueOf(com.tencent.mm.sdk.platformtools.bs.a(Integer.valueOf(paramx.Fld.EvC.EvG), 8)));
+        localae.set(66049, Integer.valueOf(paramx.Feq));
+        localae.set(66050, paramx.Fer);
+        localae.set(40, Integer.valueOf(paramx.FlH));
+        ay.hnA.aL("last_login_use_voice", paramx.FlH);
+        localae.set(41, Integer.valueOf(paramx.Feu));
+        localae.set(43, paramx.Fet);
+        ac.d("MicroMsg.UserInfoSyncExtension", "doCmd PluginSwitch:" + paramx.FlH + " WeiboFlag:" + paramx.Feu);
+        localae.set(868518889, Integer.valueOf(paramx.Flr));
+        ac.d("MicroMsg.UserInfoSyncExtension", "doCmd USERINFO_TXNEWSCATEGORY:" + paramx.Flr);
+        localae.set(42, paramx.iJY);
+        ac.d("MicroMsg.UserInfoSyncExtension", "userid:" + paramx.Eyr + " username:" + paramx.Eys);
+        localae.set(65825, paramx.Eyr);
+        localae.set(65826, paramx.Eys);
+        ac.d("MicroMsg.UserInfoSyncExtension", "getiAlbumFlag " + paramx.iJZ);
+        ac.d("MicroMsg.UserInfoSyncExtension", "getiAlbumStyle " + paramx.iKa);
+        ac.d("MicroMsg.UserInfoSyncExtension", "getPcAlbumBGImgID " + paramx.iKb);
+        paramxv = com.tencent.mm.sdk.platformtools.bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(65830, null));
+        if ((paramxv == null) || (paramxv.length() == 0))
         {
-          paramxd = paramx.DPt;
-          if ((paramxd != null) && (paramxd.length() > 0)) {
-            com.tencent.mm.kernel.g.afB().afk().set(65830, paramxd);
+          paramxv = paramx.FlK;
+          if ((paramxv != null) && (paramxv.length() > 0)) {
+            com.tencent.mm.kernel.g.agR().agA().set(65830, paramxv);
           }
         }
         y.b(1, paramx);
         break;
-        paramxd = paramxd + ", QQMAIL_INSTALL";
+        paramxv = paramxv + ", QQMAIL_INSTALL";
         break label1010;
-        paramxd = paramxd + ", PM_INSTALL";
+        paramxv = paramxv + ", PM_INSTALL";
         break label1038;
-        paramxd = paramxd + ", FM_INSTALL";
+        paramxv = paramxv + ", FM_INSTALL";
         break label1066;
         label1987:
-        paramxd = paramxd + ", WEIBO_INSTALL";
+        paramxv = paramxv + ", WEIBO_INSTALL";
         break label1095;
         label2011:
-        paramxd = paramxd + ", MEDIANOTE_INSTALL";
+        paramxv = paramxv + ", MEDIANOTE_INSTALL";
         break label1124;
         label2035:
-        paramxd = paramxd + ", QMSG_INSTALL";
+        paramxv = paramxv + ", QMSG_INSTALL";
         break label1153;
-        paramxd = paramxd + ", BOTTLE_INSTALL";
+        paramxv = paramxv + ", BOTTLE_INSTALL";
         break label1182;
-        paramxd = paramxd + ", QSYNC_INSTALL";
+        paramxv = paramxv + ", QSYNC_INSTALL";
         break label1212;
         label2107:
-        paramxd = paramxd + ", SHAKE_INSTALL";
+        paramxv = paramxv + ", SHAKE_INSTALL";
         break label1242;
         label2131:
-        paramxd = paramxd + ", LBS_INSTALL";
+        paramxv = paramxv + ", LBS_INSTALL";
         break label1272;
         label2155:
-        paramxd = paramxd + ", BOTTLE_CHART_INSTALL";
+        paramxv = paramxv + ", BOTTLE_CHART_INSTALL";
         break label1302;
-        paramxd = paramxd + ",CHECKQQF_INSTALL";
+        paramxv = paramxv + ",CHECKQQF_INSTALL";
         break label1332;
-        paramxd = paramxd + ",MM_FEEDSAPP_INSTALL";
+        paramxv = paramxv + ",MM_FEEDSAPP_INSTALL";
         break label1362;
       }
     }
@@ -272,7 +270,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.g
  * JD-Core Version:    0.7.0.1
  */

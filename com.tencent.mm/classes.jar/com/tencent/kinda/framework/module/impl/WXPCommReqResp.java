@@ -2,13 +2,13 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ak.l;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.c;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class WXPCommReqResp
   extends l
@@ -190,7 +190,7 @@ public class WXPCommReqResp
       this.funcId = paramInt1;
       this.cmdId = paramInt2;
       this.needHeader = paramBoolean;
-      setRouteInfo(bt.getInt(paramString, 0));
+      setRouteInfo(bs.getInt(paramString, 0));
       AppMethodBeat.o(18682);
     }
     
@@ -304,7 +304,7 @@ public class WXPCommReqResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.WXPCommReqResp
  * JD-Core Version:    0.7.0.1
  */

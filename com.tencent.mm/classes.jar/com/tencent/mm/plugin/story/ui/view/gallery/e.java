@@ -10,34 +10,34 @@ import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ac.c;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.am;
 import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck;", "", "gallery", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "recyclerView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryRecyclerView;", "pageScrollHelper", "Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryRecyclerView;Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;)V", "hintLayout", "Landroid/view/View;", "hintShowing", "", "scrollListener", "com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1;", "showHintRunnable", "Ljava/lang/Runnable;", "cancelHint", "", "checkCancel", "destroy", "Companion", "plugin-story_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck;", "", "gallery", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "recyclerView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryRecyclerView;", "pageScrollHelper", "Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryRecyclerView;Lcom/tencent/mm/plugin/story/ui/view/gallery/PageScrollHelper;)V", "hintLayout", "Landroid/view/View;", "hintShowing", "", "scrollListener", "com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1;", "showHintRunnable", "Ljava/lang/Runnable;", "cancelHint", "", "checkCancel", "destroy", "Companion", "plugin-story_release"})
 public final class e
 {
   private static final String TAG = "MicroMsg.GalleryScrollUpCheck";
-  public static final a yyp;
-  boolean yyi;
-  private final c yyj;
-  private final Runnable yyk;
-  private View yyl;
-  private final StoryGalleryView yym;
-  private final GalleryRecyclerView yyn;
-  private final i yyo;
+  public static final e.a zLE;
+  private View zLA;
+  private final StoryGalleryView zLB;
+  private final GalleryRecyclerView zLC;
+  private final i zLD;
+  boolean zLx;
+  private final c zLy;
+  private final Runnable zLz;
   
   static
   {
     AppMethodBeat.i(120374);
-    yyp = new a((byte)0);
+    zLE = new e.a((byte)0);
     TAG = "MicroMsg.GalleryScrollUpCheck";
     AppMethodBeat.o(120374);
   }
@@ -45,47 +45,47 @@ public final class e
   public e(StoryGalleryView paramStoryGalleryView, GalleryRecyclerView paramGalleryRecyclerView, i parami)
   {
     AppMethodBeat.i(120373);
-    this.yym = paramStoryGalleryView;
-    this.yyn = paramGalleryRecyclerView;
-    this.yyo = parami;
-    this.yyj = new c(this);
-    paramStoryGalleryView = g.afB();
+    this.zLB = paramStoryGalleryView;
+    this.zLC = paramGalleryRecyclerView;
+    this.zLD = parami;
+    this.zLy = new c(this);
+    paramStoryGalleryView = g.agR();
     k.g(paramStoryGalleryView, "storage()");
-    if (paramStoryGalleryView.afk().getBoolean(ae.a.FuQ, false))
+    if (paramStoryGalleryView.agA().getBoolean(ah.a.GSK, false))
     {
-      this.yyk = ((Runnable)e.1.yyq);
-      this.yyo.j((RecyclerView)this.yyn);
+      this.zLz = ((Runnable)e.1.zLF);
+      this.zLD.j((RecyclerView)this.zLC);
       AppMethodBeat.o(120373);
       return;
     }
-    this.yyk = ((Runnable)new Runnable()
+    this.zLz = ((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(120368);
-        int i = com.tencent.mm.cd.a.fromDPToPix(e.d(this.yyr).getContext(), 112);
-        View localView = LayoutInflater.from(e.d(this.yyr).getContext()).inflate(2131495718, (ViewGroup)e.d(this.yyr), false);
-        e.a(this.yyr, localView);
+        int i = com.tencent.mm.cc.a.fromDPToPix(e.d(this.zLG).getContext(), 112);
+        View localView = LayoutInflater.from(e.d(this.zLG).getContext()).inflate(2131495718, (ViewGroup)e.d(this.zLG), false);
+        e.a(this.zLG, localView);
         Object localObject = localView.findViewById(2131305493);
         k.g(localObject, "layout.findViewById(R.id…tory_scroll_up_hint_icon)");
-        ((ImageView)localObject).setImageDrawable(am.i(e.d(this.yyr).getContext(), 2131689951, -1));
+        ((ImageView)localObject).setImageDrawable(am.k(e.d(this.zLG).getContext(), 2131689951, -1));
         localObject = new RelativeLayout.LayoutParams(-1, i);
         ((RelativeLayout.LayoutParams)localObject).addRule(12, 1);
-        e.d(this.yyr).addView(localView, (ViewGroup.LayoutParams)localObject);
+        e.d(this.zLG).addView(localView, (ViewGroup.LayoutParams)localObject);
         k.g(localView, "layout");
         localView.setAlpha(0.0F);
         localView.animate().alpha(1.0F).start();
-        e.b(this.yyr).smoothScrollBy(0, i);
-        e.h(this.yyr);
+        e.b(this.zLG).smoothScrollBy(0, i);
+        e.h(this.zLG);
         AppMethodBeat.o(120368);
       }
     });
-    aq.n(this.yyk, 5000L);
-    this.yyn.a((RecyclerView.m)this.yyj);
+    ap.n(this.zLz, 5000L);
+    this.zLC.a((RecyclerView.m)this.zLy);
     AppMethodBeat.o(120373);
   }
   
-  public final void dLq()
+  public final void dZQ()
   {
     AppMethodBeat.i(120371);
     c.g((d.g.a.a)new b(this));
@@ -95,16 +95,13 @@ public final class e
   public final void destroy()
   {
     AppMethodBeat.i(120372);
-    aq.az(this.yyk);
-    this.yym.removeView(this.yyl);
-    this.yyn.b((RecyclerView.m)this.yyj);
+    ap.aB(this.zLz);
+    this.zLB.removeView(this.zLA);
+    this.zLC.b((RecyclerView.m)this.zLy);
     AppMethodBeat.o(120372);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -115,7 +112,7 @@ public final class e
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "dx", "", "dy", "plugin-story_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "dx", "", "dy", "plugin-story_release"})
   public static final class c
     extends RecyclerView.m
   {
@@ -123,18 +120,18 @@ public final class e
     {
       AppMethodBeat.i(120370);
       b localb = new b();
-      localb.be(paramRecyclerView);
-      localb.lT(paramInt1);
-      localb.lT(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ado());
+      localb.bb(paramRecyclerView);
+      localb.lS(paramInt1);
+      localb.lS(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
       k.h(paramRecyclerView, "recyclerView");
-      if ((!e.g(this.yyr)) && (paramInt2 > 0))
+      if ((!e.g(this.zLG)) && (paramInt2 > 0))
       {
-        ad.i(e.access$getTAG$cp(), "onScrolled ".concat(String.valueOf(paramInt2)));
-        paramRecyclerView = g.afB();
+        ac.i(e.access$getTAG$cp(), "onScrolled ".concat(String.valueOf(paramInt2)));
+        paramRecyclerView = g.agR();
         k.g(paramRecyclerView, "storage()");
-        paramRecyclerView.afk().set(ae.a.FuQ, Boolean.TRUE);
-        this.yyr.dLq();
+        paramRecyclerView.agA().set(ah.a.GSK, Boolean.TRUE);
+        this.zLG.dZQ();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
       AppMethodBeat.o(120370);
@@ -142,20 +139,20 @@ public final class e
     
     public final void b(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(204835);
+      AppMethodBeat.i(192930);
       b localb = new b();
-      localb.be(paramRecyclerView);
-      localb.lT(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+      localb.bb(paramRecyclerView);
+      localb.lS(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
       super.b(paramRecyclerView, paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollUpCheck$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(204835);
+      AppMethodBeat.o(192930);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,19 @@ package d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/ranges/LongRange;", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(JJ)V", "getEndInclusive", "()Ljava/lang/Long;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongRange;", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(JJ)V", "getEndInclusive", "()Ljava/lang/Long;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
 public final class g
   extends e
   implements a<Long>
 {
-  private static final g JhT;
-  public static final a JhU;
+  private static final g KVn;
+  public static final a KVo;
   
   static
   {
     AppMethodBeat.i(129302);
-    JhU = new a((byte)0);
-    JhT = new g(1L, 0L);
+    KVo = new a((byte)0);
+    KVn = new g(1L, 0L);
     AppMethodBeat.o(129302);
   }
   
@@ -27,7 +27,7 @@ public final class g
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(129299);
-    if (((paramObject instanceof g)) && (((isEmpty()) && (((g)paramObject).isEmpty())) || ((this.first == ((g)paramObject).first) && (this.JhP == ((g)paramObject).JhP))))
+    if (((paramObject instanceof g)) && (((isEmpty()) && (((g)paramObject).isEmpty())) || ((this.first == ((g)paramObject).first) && (this.KVj == ((g)paramObject).KVj))))
     {
       AppMethodBeat.o(129299);
       return true;
@@ -44,30 +44,30 @@ public final class g
       AppMethodBeat.o(129300);
       return -1;
     }
-    int i = (int)(31L * (this.first ^ this.first >>> 32) + (this.JhP ^ this.JhP >>> 32));
+    int i = (int)(31L * (this.first ^ this.first >>> 32) + (this.KVj ^ this.KVj >>> 32));
     AppMethodBeat.o(129300);
     return i;
   }
   
   public final boolean isEmpty()
   {
-    return this.first > this.JhP;
+    return this.first > this.KVj;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(129301);
-    String str = this.first + ".." + this.JhP;
+    String str = this.first + ".." + this.KVj;
     AppMethodBeat.o(129301);
     return str;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/ranges/LongRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/LongRange;", "getEMPTY", "()Lkotlin/ranges/LongRange;", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/LongRange;", "getEMPTY", "()Lkotlin/ranges/LongRange;", "kotlin-stdlib"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.k.g
  * JD-Core Version:    0.7.0.1
  */

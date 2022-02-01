@@ -2,51 +2,51 @@ package android.support.v7.widget;
 
 final class ap
 {
-  int Mc = -2147483648;
-  int asw = -2147483648;
-  int asx = 0;
-  int asy = 0;
-  boolean asz = false;
+  int MZ = -2147483648;
+  int atr = -2147483648;
+  int ats = 0;
+  int att = 0;
+  boolean atu = false;
   boolean mIsRtl = false;
-  int xo = 0;
-  int xq = 0;
+  int ym = 0;
+  int yo = 0;
   
   public final void aF(int paramInt1, int paramInt2)
   {
-    this.asw = paramInt1;
-    this.Mc = paramInt2;
-    this.asz = true;
+    this.atr = paramInt1;
+    this.MZ = paramInt2;
+    this.atu = true;
     if (this.mIsRtl)
     {
       if (paramInt2 != -2147483648) {
-        this.xo = paramInt2;
+        this.ym = paramInt2;
       }
       if (paramInt1 != -2147483648) {
-        this.xq = paramInt1;
+        this.yo = paramInt1;
       }
     }
     do
     {
       return;
       if (paramInt1 != -2147483648) {
-        this.xo = paramInt1;
+        this.ym = paramInt1;
       }
     } while (paramInt2 == -2147483648);
-    this.xq = paramInt2;
+    this.yo = paramInt2;
   }
   
   public final void aG(int paramInt1, int paramInt2)
   {
-    this.asz = false;
+    this.atu = false;
     if (paramInt1 != -2147483648)
     {
-      this.asx = paramInt1;
-      this.xo = paramInt1;
+      this.ats = paramInt1;
+      this.ym = paramInt1;
     }
     if (paramInt2 != -2147483648)
     {
-      this.asy = paramInt2;
-      this.xq = paramInt2;
+      this.att = paramInt2;
+      this.yo = paramInt2;
     }
   }
 }

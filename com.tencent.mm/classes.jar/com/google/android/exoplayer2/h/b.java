@@ -8,9 +8,9 @@ public abstract interface b
   
   public abstract void trim();
   
-  public abstract a ve();
+  public abstract a uY();
   
-  public abstract int vf();
+  public abstract int uZ();
 }
 
 

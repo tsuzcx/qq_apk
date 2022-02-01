@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public String gLm;
-  public String jiP;
-  public String jiQ;
-  public String jiR;
-  public String jiS;
+  public String hlM;
+  public String jJc;
+  public String jJd;
+  public String jJe;
+  public String jJf;
   
   public final String toString()
   {
     AppMethodBeat.i(158945);
-    String str = "serviceType=" + this.gLm + "\nserviceId=" + this.jiP + "\nSCPDUrl=" + this.jiQ + "\ncontrolURl=" + this.jiR + "\neventSubURl=" + this.jiS;
+    String str = "serviceType=" + this.hlM + "\nserviceId=" + this.jJc + "\nSCPDUrl=" + this.jJd + "\ncontrolURl=" + this.jJe + "\neventSubURl=" + this.jJf;
     AppMethodBeat.o(158945);
     return str;
   }

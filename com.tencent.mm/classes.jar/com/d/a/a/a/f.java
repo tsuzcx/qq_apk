@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public final class f
 {
-  private static final a bVo = new a(",");
+  private static final a bSW = new a(",");
   
   public static <T> e<T> d(Collection<? extends T> paramCollection)
   {
@@ -16,18 +16,18 @@ public final class f
   static final class a<T>
     implements e<T>, Serializable
   {
-    private final Collection<?> bVp;
+    private final Collection<?> bSX;
     
     private a(Collection<?> paramCollection)
     {
-      this.bVp = ((Collection)a.checkNotNull(paramCollection));
+      this.bSX = ((Collection)a.checkNotNull(paramCollection));
     }
     
     public final boolean apply(@Nullable T paramT)
     {
       try
       {
-        boolean bool = this.bVp.contains(paramT);
+        boolean bool = this.bSX.contains(paramT);
         return bool;
       }
       catch (ClassCastException paramT)
@@ -43,19 +43,19 @@ public final class f
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        return this.bVp.equals(paramObject.bVp);
+        return this.bSX.equals(paramObject.bSX);
       }
       return false;
     }
     
     public final int hashCode()
     {
-      return this.bVp.hashCode();
+      return this.bSX.hashCode();
     }
     
     public final String toString()
     {
-      return "Predicates.in(" + this.bVp + ")";
+      return "Predicates.in(" + this.bSX + ")";
     }
   }
 }

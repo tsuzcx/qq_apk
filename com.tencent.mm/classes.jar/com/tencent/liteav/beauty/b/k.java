@@ -1,15 +1,15 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.i;
+import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.d.j;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.FloatBuffer;
 
 public class k
-  extends g
+  extends h
 {
   private static String y = "YUV420pToRGBFilter";
   private byte[] r;
@@ -78,7 +78,7 @@ public class k
     if (this.t == null)
     {
       this.t = new int[1];
-      this.t[0] = i.a(paramInt1, paramInt2, 6409, 6409, this.t);
+      this.t[0] = j.a(paramInt1, paramInt2, 6409, 6409, this.t);
     }
     this.v = GLES20.glGetUniformLocation(p(), "yTexture");
     this.w = GLES20.glGetUniformLocation(p(), "uvTexture");
@@ -87,7 +87,7 @@ public class k
       GLES20.glActiveTexture(33984);
       GLES20.glActiveTexture(33985);
       this.u = new int[1];
-      this.u[0] = i.a(paramInt1, paramInt2 / 2, 6409, 6409, this.u);
+      this.u[0] = j.a(paramInt1, paramInt2 / 2, 6409, 6409, this.u);
       GLES20.glUniform1i(this.v, 0);
       GLES20.glUniform1i(this.w, 1);
     }
@@ -103,14 +103,14 @@ public class k
         this.v = GLES20.glGetUniformLocation(p(), "yTexture");
         this.w = GLES20.glGetUniformLocation(p(), "uvTexture");
         this.u = new int[1];
-        this.u[0] = i.a(paramInt1 / 2, paramInt2 / 2, 6410, 6410, this.u);
+        this.u[0] = j.a(paramInt1 / 2, paramInt2 / 2, 6410, 6410, this.u);
         GLES20.glUniform1i(this.v, 0);
         GLES20.glUniform1i(this.w, 1);
       }
       else if ((2 == this.s) && (this.x == null))
       {
         this.x = new int[1];
-        this.x[0] = i.a(paramInt1, paramInt2, 6408, 6408, this.x);
+        this.x[0] = j.a(paramInt1, paramInt2, 6408, 6408, this.x);
       }
     }
   }

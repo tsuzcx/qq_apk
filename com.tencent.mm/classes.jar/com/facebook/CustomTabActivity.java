@@ -34,7 +34,7 @@ public class CustomTabActivity
     {
       paramIntent = new Intent(CUSTOM_TAB_REDIRECT_ACTION);
       paramIntent.putExtra(CustomTabMainActivity.EXTRA_URL, getIntent().getDataString());
-      d.T(this).b(paramIntent);
+      d.U(this).b(paramIntent);
       this.closeReceiver = new BroadcastReceiver()
       {
         public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -44,7 +44,7 @@ public class CustomTabActivity
           AppMethodBeat.o(7600);
         }
       };
-      d.T(this).a(this.closeReceiver, new IntentFilter(DESTROY_ACTION));
+      d.U(this).a(this.closeReceiver, new IntentFilter(DESTROY_ACTION));
     }
     AppMethodBeat.o(7602);
   }
@@ -64,7 +64,7 @@ public class CustomTabActivity
   public void onDestroy()
   {
     AppMethodBeat.i(7603);
-    d.T(this).unregisterReceiver(this.closeReceiver);
+    d.U(this).unregisterReceiver(this.closeReceiver);
     super.onDestroy();
     AppMethodBeat.o(7603);
   }
@@ -77,7 +77,7 @@ public class CustomTabActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.CustomTabActivity
  * JD-Core Version:    0.7.0.1
  */

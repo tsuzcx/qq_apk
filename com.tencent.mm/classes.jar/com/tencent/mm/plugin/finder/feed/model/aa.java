@@ -1,16 +1,25 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
-import com.tencent.mm.protocal.protobuf.dzx;
+import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import d.l;
+import java.util.ArrayList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/model/FinderTimeLineMoreTopicCache;", "", "()V", "topicCache", "Lcom/tencent/mm/protocal/protobuf/FinderTopicRecommend;", "getTopicCache", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicRecommend;", "setTopicCache", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicRecommend;)V", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/TimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "errType", "", "errCode", "errMsg", "", "extraData", "", "(IILjava/lang/String;Ljava/lang/Object;)V", "dataBufferList", "Ljava/util/ArrayList;", "getDataBufferList", "()Ljava/util/ArrayList;", "setDataBufferList", "(Ljava/util/ArrayList;)V", "getExtraData", "()Ljava/lang/Object;", "setExtraData", "(Ljava/lang/Object;)V", "plugin-finder_release"})
 public final class aa
+  extends IResponse<BaseFinderFeed>
 {
-  public dzx KQm;
+  ArrayList<BaseFinderFeed> rmw;
+  public Object rnF = null;
+  
+  private aa(int paramInt1, int paramInt2, String paramString)
+  {
+    super(paramInt1, paramInt2, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.aa
  * JD-Core Version:    0.7.0.1
  */

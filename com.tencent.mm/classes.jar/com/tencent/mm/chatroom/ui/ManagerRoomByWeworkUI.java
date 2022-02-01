@@ -7,6 +7,9 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +17,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.h;
+import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.w;
 import android.text.SpannableString;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -30,22 +35,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.b.a.ar;
-import com.tencent.mm.g.b.a.at;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.b.a.br;
+import com.tencent.mm.g.b.a.bt;
+import com.tencent.mm.g.b.a.bu;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.api;
-import com.tencent.mm.protocal.protobuf.dgu;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.protocal.protobuf.asm;
+import com.tencent.mm.protocal.protobuf.dmj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
@@ -59,93 +67,124 @@ import java.util.Set;
 
 public class ManagerRoomByWeworkUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private HashMap<String, Boolean> fsA;
-  private HashMap<String, Boolean> fsB;
-  private int fsC;
-  private int fsD;
-  private int fsE;
-  public Button fsF;
-  public Button fsG;
-  private CdnImageView fsH;
-  public TextView fsI;
-  public TextView fsJ;
-  public LinearLayout fsK;
-  private LinearLayout fsL;
-  private LinearLayout fsM;
-  private RecyclerView fsN;
-  private LinearLayout fsO;
-  private TextView fsP;
-  private ImageView fsQ;
-  private LinearLayoutManager fsR;
-  private a fsS;
-  private ManagerRoomByWeworkUI.b fsT;
-  private int fsU;
-  private int fsV;
-  private String fss;
-  private int fsv;
-  private String fsw;
-  private List<String> fsx;
-  private List<af> fsy;
-  private List<String> fsz;
+  private String fvZ;
+  private b fwA;
+  private int fwB;
+  private int fwC;
+  private int fwc;
+  private String fwd;
+  private List<String> fwe;
+  private List<ai> fwf;
+  private List<String> fwg;
+  private HashMap<String, Boolean> fwh;
+  private HashMap<String, Boolean> fwi;
+  private int fwj;
+  private int fwk;
+  private int fwl;
+  public Button fwm;
+  public Button fwn;
+  private CdnImageView fwo;
+  public TextView fwp;
+  public TextView fwq;
+  public LinearLayout fwr;
+  private LinearLayout fws;
+  private LinearLayout fwt;
+  private RecyclerView fwu;
+  private LinearLayout fwv;
+  private TextView fww;
+  private ImageView fwx;
+  private LinearLayoutManager fwy;
+  private a fwz;
   private com.tencent.mm.ui.base.p tipDialog;
   public TextView titleTv;
   
   public ManagerRoomByWeworkUI()
   {
-    AppMethodBeat.i(196629);
-    this.fsx = new ArrayList();
-    this.fsy = new ArrayList();
-    this.fsz = new ArrayList();
-    this.fsA = new HashMap();
-    this.fsB = new HashMap();
-    this.fsC = 0;
-    this.fsD = 0;
-    this.fsE = 0;
+    AppMethodBeat.i(197113);
+    this.fwe = new ArrayList();
+    this.fwf = new ArrayList();
+    this.fwg = new ArrayList();
+    this.fwh = new HashMap();
+    this.fwi = new HashMap();
+    this.fwj = 0;
+    this.fwk = 0;
+    this.fwl = 0;
     this.tipDialog = null;
-    this.fsU = 0;
-    this.fsV = 0;
-    AppMethodBeat.o(196629);
+    this.fwB = 0;
+    this.fwC = 0;
+    AppMethodBeat.o(197113);
   }
   
-  private boolean VA()
+  private boolean Wx()
   {
-    AppMethodBeat.i(196632);
-    HashMap localHashMap = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().eLh();
+    AppMethodBeat.i(197115);
+    int i;
+    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pTv, 1) == 1)
+    {
+      i = 1;
+      if ((i == 0) || (!Wy())) {
+        break label95;
+      }
+      if ((this.fwe.size() != 0) || (this.fwg.size() != 0)) {
+        break label84;
+      }
+      this.fwv.setVisibility(8);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(197115);
+      return true;
+      i = 0;
+      break;
+      label84:
+      this.fwv.setVisibility(0);
+    }
+    label95:
+    this.fwv.setVisibility(8);
+    this.fwx.setVisibility(8);
+    AppMethodBeat.o(197115);
+    return false;
+  }
+  
+  private boolean Wy()
+  {
+    AppMethodBeat.i(197116);
+    HashMap localHashMap = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().faJ();
     LinkedList localLinkedList = new LinkedList();
-    List localList = com.tencent.mm.model.w.ars();
+    List localList = com.tencent.mm.model.w.ayi();
     if (localList.size() == 0)
     {
-      AppMethodBeat.o(196632);
+      AppMethodBeat.o(197116);
       return false;
     }
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
-      af localaf = (af)localIterator.next();
-      if ((!com.tencent.mm.model.w.so(localaf.field_username)) && (!this.fsz.contains(localaf.field_username)))
+      ai localai = (ai)localIterator.next();
+      if ((!com.tencent.mm.model.w.wr(localai.field_username)) && (!this.fwg.contains(localai.field_username)))
       {
-        com.tencent.mm.storage.w localw;
-        if (!localHashMap.containsKey(localaf.field_username))
+        x localx;
+        if (!localHashMap.containsKey(localai.field_username))
         {
-          if (com.tencent.mm.n.b.ls(localaf.field_type))
+          if (com.tencent.mm.n.b.ln(localai.field_type))
           {
-            localw = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(localaf.field_username);
-            if (localw == null) {
-              ad.e("MicroMsg.ManagerRoomByWeworkUI", "%s member is null", new Object[] { bt.by(localaf.field_username, "") });
-            } else if ((localw.ty(u.aqG())) && (c(localaf))) {
-              localLinkedList.add(localaf);
+            localx = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(localai.field_username);
+            if (localx == null) {
+              ac.e("MicroMsg.ManagerRoomByWeworkUI", "%s member is null", new Object[] { bs.bG(localai.field_username, "") });
+            } else if ((localx.xB(u.axw())) && (c(localai))) {
+              localLinkedList.add(localai);
             }
           }
         }
         else
         {
-          localw = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(localaf.field_username);
-          if (localw == null) {
-            ad.e("MicroMsg.ManagerRoomByWeworkUI", "%s member is null", new Object[] { bt.by(localaf.field_username, "") });
-          } else if ((localw.ty(u.aqG())) && (c(localaf))) {
-            localLinkedList.add(localaf);
+          localx = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(localai.field_username);
+          if (localx == null) {
+            ac.e("MicroMsg.ManagerRoomByWeworkUI", "%s member is null", new Object[] { bs.bG(localai.field_username, "") });
+          } else if ((localx.xB(u.axw())) && (c(localai))) {
+            localLinkedList.add(localai);
           }
         }
       }
@@ -153,98 +192,67 @@ public class ManagerRoomByWeworkUI
     localList.clear();
     if (localLinkedList.size() > 0)
     {
-      AppMethodBeat.o(196632);
+      AppMethodBeat.o(197116);
       return true;
     }
-    AppMethodBeat.o(196632);
+    AppMethodBeat.o(197116);
     return false;
   }
   
-  private void VB()
+  private void Wz()
   {
-    AppMethodBeat.i(196637);
-    if (this.fsv == 3)
+    AppMethodBeat.i(197121);
+    if (this.fwc == 3)
     {
-      if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.ppK, 1) == 1) {}
-      for (int i = 1; (i != 0) && (VA()) && (this.fsx.size() == 0) && (this.fsz.size() == 0); i = 0)
+      if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pTv, 1) == 1) {}
+      for (int i = 1; (i != 0) && (Wy()) && (this.fwe.size() == 0) && (this.fwg.size() == 0); i = 0)
       {
-        this.fsF.setVisibility(8);
-        this.fsG.setVisibility(0);
-        AppMethodBeat.o(196637);
+        this.fwm.setVisibility(8);
+        this.fwn.setVisibility(0);
+        AppMethodBeat.o(197121);
         return;
       }
-      this.fsF.setVisibility(0);
-      this.fsG.setVisibility(8);
-      if ((this.fsS != null) && (this.fsS.ftb > 0))
+      this.fwm.setVisibility(0);
+      this.fwn.setVisibility(8);
+      if ((this.fwz != null) && (this.fwz.fwI > 0))
       {
-        this.fsF.setEnabled(true);
-        AppMethodBeat.o(196637);
+        this.fwm.setEnabled(true);
+        AppMethodBeat.o(197121);
         return;
       }
-      this.fsF.setEnabled(false);
-      AppMethodBeat.o(196637);
+      this.fwm.setEnabled(false);
+      AppMethodBeat.o(197121);
       return;
     }
-    this.fsF.setVisibility(0);
-    this.fsG.setVisibility(8);
-    AppMethodBeat.o(196637);
-  }
-  
-  private boolean Vz()
-  {
-    AppMethodBeat.i(196631);
-    int i;
-    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.ppK, 1) == 1)
-    {
-      i = 1;
-      if ((i == 0) || (!VA())) {
-        break label98;
-      }
-      if ((this.fsx.size() != 0) || (this.fsz.size() != 0)) {
-        break label87;
-      }
-      this.fsO.setVisibility(8);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(196631);
-      return true;
-      i = 0;
-      break;
-      label87:
-      this.fsO.setVisibility(0);
-    }
-    label98:
-    this.fsO.setVisibility(8);
-    this.fsQ.setVisibility(8);
-    AppMethodBeat.o(196631);
-    return false;
+    this.fwm.setVisibility(0);
+    this.fwn.setVisibility(8);
+    AppMethodBeat.o(197121);
   }
   
   public static void a(Context paramContext, String paramString, TextView paramTextView1, TextView paramTextView2, boolean paramBoolean)
   {
-    AppMethodBeat.i(196639);
-    SpannableString localSpannableString = com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, v.sh(paramString), com.tencent.mm.cd.a.ao(paramContext, 2131165517));
+    AppMethodBeat.i(197123);
+    SpannableString localSpannableString = com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, v.wk(paramString), com.tencent.mm.cc.a.au(paramContext, 2131165517));
     Object localObject = localSpannableString;
     if (paramBoolean) {
       localObject = com.tencent.mm.pluginsdk.ui.span.k.d(paramContext, localSpannableString);
     }
     paramTextView1.setText((CharSequence)localObject);
-    int i = com.tencent.mm.model.q.rY(((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(paramString).field_username);
+    int i = com.tencent.mm.model.q.wb(((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString).field_username);
     if (i == 0)
     {
       paramTextView2.setVisibility(8);
-      AppMethodBeat.o(196639);
+      AppMethodBeat.o(197123);
       return;
     }
     paramTextView2.setVisibility(0);
     paramTextView2.setText(paramContext.getString(2131766410, new Object[] { String.valueOf(i) }));
-    AppMethodBeat.o(196639);
+    AppMethodBeat.o(197123);
   }
   
   private void a(final n paramn, boolean paramBoolean)
   {
-    AppMethodBeat.i(196634);
+    AppMethodBeat.i(197118);
     if (this.tipDialog == null)
     {
       getString(2131755906);
@@ -255,110 +263,102 @@ public class ManagerRoomByWeworkUI
           AppMethodBeat.i(182211);
           if (paramn == null)
           {
-            ad.i("MicroMsg.ManagerRoomByWeworkUI", "dialog onCancel scene is null");
+            ac.i("MicroMsg.ManagerRoomByWeworkUI", "dialog onCancel scene is null");
             AppMethodBeat.o(182211);
             return;
           }
-          ad.i("MicroMsg.ManagerRoomByWeworkUI", "dialog onCancel scene:%s", new Object[] { Integer.valueOf(paramn.getType()) });
-          com.tencent.mm.kernel.g.aeS().a(paramn);
+          ac.i("MicroMsg.ManagerRoomByWeworkUI", "dialog onCancel scene:%s", new Object[] { Integer.valueOf(paramn.getType()) });
+          com.tencent.mm.kernel.g.agi().a(paramn);
           if ((paramn instanceof com.tencent.mm.chatroom.d.k)) {
             ManagerRoomByWeworkUI.this.finish();
           }
           AppMethodBeat.o(182211);
         }
       });
-      AppMethodBeat.o(196634);
+      AppMethodBeat.o(197118);
       return;
     }
     if (!this.tipDialog.isShowing()) {
       this.tipDialog.show();
     }
-    AppMethodBeat.o(196634);
+    AppMethodBeat.o(197118);
   }
   
   public static void a(String paramString, final CdnImageView paramCdnImageView)
   {
-    AppMethodBeat.i(196638);
-    if ((bt.isNullOrNil(paramString)) || (paramCdnImageView == null))
+    AppMethodBeat.i(197122);
+    if ((bs.isNullOrNil(paramString)) || (paramCdnImageView == null))
     {
-      ad.e("MicroMsg.ManagerRoomByWeworkUI", "username or avatarIv null");
-      AppMethodBeat.o(196638);
+      ac.e("MicroMsg.ManagerRoomByWeworkUI", "username or avatarIv null");
+      AppMethodBeat.o(197122);
       return;
     }
     paramString = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(196618);
-        Bitmap localBitmap = com.tencent.mm.ak.c.a(this.fqK, false, -1, null);
+        AppMethodBeat.i(197102);
+        Bitmap localBitmap = com.tencent.mm.aj.c.a(this.fur, false, -1, null);
         if (localBitmap == null)
         {
           paramCdnImageView.setImageResource(2131231875);
-          AppMethodBeat.o(196618);
+          AppMethodBeat.o(197102);
           return;
         }
         paramCdnImageView.setImageBitmap(localBitmap);
-        AppMethodBeat.o(196618);
+        AppMethodBeat.o(197102);
       }
     };
-    if (aq.isMainThread())
+    if (ap.isMainThread())
     {
       paramString.run();
-      AppMethodBeat.o(196638);
+      AppMethodBeat.o(197122);
       return;
     }
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(196619);
-        this.val$run.run();
-        AppMethodBeat.o(196619);
-      }
-    });
-    AppMethodBeat.o(196638);
+    ap.f(new ManagerRoomByWeworkUI.7(paramString));
+    AppMethodBeat.o(197122);
   }
   
   public static void c(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(182217);
-    ar localar = new ar();
-    localar.hJ(paramString);
-    localar.dKe = paramInt1;
-    localar.dMH = paramInt2;
-    localar.dMI = paramInt3;
-    localar.aBj();
+    br localbr = new br();
+    localbr.jN(paramString);
+    localbr.dHY = paramInt1;
+    localbr.dNi = paramInt2;
+    localbr.dNj = paramInt3;
+    localbr.aHZ();
     AppMethodBeat.o(182217);
   }
   
-  private static boolean c(af paramaf)
+  private static boolean c(ai paramai)
   {
-    AppMethodBeat.i(196633);
-    if (paramaf == null)
+    AppMethodBeat.i(197117);
+    if (paramai == null)
     {
-      AppMethodBeat.o(196633);
+      AppMethodBeat.o(197117);
       return false;
     }
-    com.tencent.mm.storage.w localw = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(paramaf.field_username);
-    if (localw == null)
+    x localx = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(paramai.field_username);
+    if (localx == null)
     {
-      ad.e("MicroMsg.ManagerRoomByWeworkUI", "isValidByMaxNum %s member is null", new Object[] { paramaf.field_username });
-      AppMethodBeat.o(196633);
+      ac.e("MicroMsg.ManagerRoomByWeworkUI", "isValidByMaxNum %s member is null", new Object[] { paramai.field_username });
+      AppMethodBeat.o(197117);
       return false;
     }
-    if (localw.field_memberCount < com.tencent.mm.model.q.aqC())
+    if (localx.field_memberCount < com.tencent.mm.model.q.axs())
     {
-      AppMethodBeat.o(196633);
+      AppMethodBeat.o(197117);
       return true;
     }
-    AppMethodBeat.o(196633);
+    AppMethodBeat.o(197117);
     return false;
   }
   
-  private void f(ArrayList<String> paramArrayList)
+  private void g(ArrayList<String> paramArrayList)
   {
     long l2 = 0L;
-    AppMethodBeat.i(196636);
+    AppMethodBeat.i(197120);
     StringBuilder localStringBuilder = new StringBuilder();
     paramArrayList = paramArrayList.iterator();
     int j = 0;
@@ -366,7 +366,7 @@ public class ManagerRoomByWeworkUI
     if (paramArrayList.hasNext())
     {
       String str = (String)paramArrayList.next();
-      if (this.fsx.contains(str)) {
+      if (this.fwe.contains(str)) {
         i += 1;
       }
       for (;;)
@@ -379,27 +379,27 @@ public class ManagerRoomByWeworkUI
     if (localStringBuilder.length() - 1 >= 0) {
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
-    paramArrayList = new at();
-    paramArrayList.dMJ = i;
-    if (this.fsS == null)
+    paramArrayList = new bt();
+    paramArrayList.dNk = i;
+    if (this.fwz == null)
     {
       l1 = 0L;
-      paramArrayList.dMK = l1;
-      paramArrayList.dML = j;
-      if (this.fsS != null) {
+      paramArrayList.dNl = l1;
+      paramArrayList.dNm = j;
+      if (this.fwz != null) {
         break label230;
       }
     }
     label230:
-    for (long l1 = l2;; l1 = this.fsS.fte - j)
+    for (long l1 = l2;; l1 = this.fwz.fwL - j)
     {
-      paramArrayList.dMM = l1;
-      paramArrayList.dMN = paramArrayList.t("sucRoomList", localStringBuilder.toString(), true);
-      paramArrayList.dMO = paramArrayList.t("ticketId", bt.by(this.fsw, ""), true);
-      paramArrayList.aBj();
-      AppMethodBeat.o(196636);
+      paramArrayList.dNn = l1;
+      paramArrayList.dNo = paramArrayList.t("sucRoomList", localStringBuilder.toString(), true);
+      paramArrayList.dNp = paramArrayList.t("ticketId", bs.bG(this.fwd, ""), true);
+      paramArrayList.aHZ();
+      AppMethodBeat.o(197120);
       return;
-      l1 = this.fsS.ftd - i;
+      l1 = this.fwz.fwK - i;
       break;
     }
   }
@@ -409,70 +409,70 @@ public class ManagerRoomByWeworkUI
     return 2131493376;
   }
   
-  public final void kN(int paramInt)
+  public final void kH(int paramInt)
   {
     long l2 = 0L;
-    AppMethodBeat.i(196635);
-    com.tencent.mm.g.b.a.au localau = new com.tencent.mm.g.b.a.au();
-    localau.dMP = this.fsU;
-    localau.dMQ = this.fsV;
-    if (this.fsS == null)
+    AppMethodBeat.i(197119);
+    bu localbu = new bu();
+    localbu.dNq = this.fwB;
+    localbu.dNr = this.fwC;
+    if (this.fwz == null)
     {
       l1 = 0L;
-      localau.dMR = l1;
-      if (this.fsS != null) {
+      localbu.dNs = l1;
+      if (this.fwz != null) {
         break label126;
       }
     }
     label126:
-    for (long l1 = l2;; l1 = this.fsS.fte)
+    for (long l1 = l2;; l1 = this.fwz.fwL)
     {
-      localau.dMS = l1;
-      localau.dMT = paramInt;
-      localau.hL(bt.by(this.fsw, ""));
-      localau.dMV = this.fsE;
-      localau.aBj();
-      AppMethodBeat.o(196635);
+      localbu.dNt = l1;
+      localbu.dNu = paramInt;
+      localbu.jP(bs.bG(this.fwd, ""));
+      localbu.dNw = this.fwl;
+      localbu.aHZ();
+      AppMethodBeat.o(197119);
       return;
-      l1 = this.fsS.ftd;
+      l1 = this.fwz.fwK;
       break;
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(196630);
+    AppMethodBeat.i(197114);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.ManagerRoomByWeworkUI", "requestCode=%d | resultCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.ManagerRoomByWeworkUI", "requestCode=%d | resultCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 != -1)
     {
-      AppMethodBeat.o(196630);
+      AppMethodBeat.o(197114);
       return;
     }
     if (paramInt1 == 0)
     {
       paramIntent = paramIntent.getStringExtra("Select_Conv_User");
-      Object localObject = this.fsy.iterator();
+      Object localObject = this.fwf.iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (bt.kU(((af)((Iterator)localObject).next()).field_username, paramIntent))
+        if (bs.lr(((ai)((Iterator)localObject).next()).field_username, paramIntent))
         {
-          ad.i("MicroMsg.ManagerRoomByWeworkUI", "onActivityResult contain");
-          AppMethodBeat.o(196630);
+          ac.i("MicroMsg.ManagerRoomByWeworkUI", "onActivityResult contain");
+          AppMethodBeat.o(197114);
           return;
         }
       }
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(paramIntent);
-      this.fsy.add(localObject);
-      this.fsz.add(paramIntent);
-      this.fsA.put(((com.tencent.mm.g.c.au)localObject).field_username, Boolean.TRUE);
-      this.fsS.aql.notifyChanged();
-      Vz();
-      this.fsS.fte += 1;
-      this.fsS.ftb += 1;
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramIntent);
+      this.fwf.add(localObject);
+      this.fwg.add(paramIntent);
+      this.fwh.put(((av)localObject).field_username, Boolean.TRUE);
+      this.fwz.arg.notifyChanged();
+      Wx();
+      this.fwz.fwL += 1;
+      this.fwz.fwI += 1;
       com.tencent.mm.ui.tools.p.a(this, (NestedScrollView)findViewById(2131304251), findViewById(2131298738), findViewById(2131306201), findViewById(2131297454));
-      VB();
+      Wz();
     }
-    AppMethodBeat.o(196630);
+    AppMethodBeat.o(197114);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -481,17 +481,17 @@ public class ManagerRoomByWeworkUI
     AppMethodBeat.i(182212);
     super.onCreate(paramBundle);
     setMMTitle("");
-    this.fss = getIntent().getStringExtra("RoomInfo_Id");
-    this.fsv = getIntent().getIntExtra("upgrade_openim_room_from_scene", 0);
-    this.fsw = getIntent().getStringExtra("ticket");
-    ad.i("MicroMsg.ManagerRoomByWeworkUI", "mFromScene:%s", new Object[] { Integer.valueOf(this.fsv) });
+    this.fvZ = getIntent().getStringExtra("RoomInfo_Id");
+    this.fwc = getIntent().getIntExtra("upgrade_openim_room_from_scene", 0);
+    this.fwd = getIntent().getStringExtra("ticket");
+    ac.i("MicroMsg.ManagerRoomByWeworkUI", "mFromScene:%s", new Object[] { Integer.valueOf(this.fwc) });
     int i;
-    if (this.fsv == 3)
+    if (this.fwc == 3)
     {
-      if (!bt.isNullOrNil(this.fsw)) {
+      if (!bs.isNullOrNil(this.fwd)) {
         break label154;
       }
-      ad.e("MicroMsg.ManagerRoomByWeworkUI", "mTicket is null");
+      ac.e("MicroMsg.ManagerRoomByWeworkUI", "mTicket is null");
       finish();
       i = 0;
     }
@@ -499,9 +499,9 @@ public class ManagerRoomByWeworkUI
     {
       AppMethodBeat.o(182212);
       return;
-      if (bt.isNullOrNil(this.fss))
+      if (bs.isNullOrNil(this.fvZ))
       {
-        ad.e("MicroMsg.ManagerRoomByWeworkUI", "mRoomId is null");
+        ac.e("MicroMsg.ManagerRoomByWeworkUI", "mRoomId is null");
         finish();
         i = 0;
       }
@@ -511,14 +511,14 @@ public class ManagerRoomByWeworkUI
         i = 1;
       }
     }
-    com.tencent.mm.kernel.g.aeS().a(3553, this);
-    com.tencent.mm.kernel.g.aeS().a(3927, this);
-    ad.i("MicroMsg.ManagerRoomByWeworkUI", "doFetchCollectPubFill() roomId:%s", new Object[] { this.fss });
-    if (this.fsv == 3)
+    com.tencent.mm.kernel.g.agi().a(3553, this);
+    com.tencent.mm.kernel.g.agi().a(3927, this);
+    ac.i("MicroMsg.ManagerRoomByWeworkUI", "doFetchCollectPubFill() roomId:%s", new Object[] { this.fvZ });
+    if (this.fwc == 3)
     {
-      paramBundle = new com.tencent.mm.chatroom.d.k(this.fsw, (byte)0);
-      com.tencent.mm.kernel.g.aeS().a(paramBundle, 0);
-      if (this.fsv == 3) {
+      paramBundle = new com.tencent.mm.chatroom.d.k(this.fwd, (byte)0);
+      com.tencent.mm.kernel.g.agi().a(paramBundle, 0);
+      if (this.fwc == 3) {
         break label307;
       }
     }
@@ -534,8 +534,8 @@ public class ManagerRoomByWeworkUI
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(182207);
-          ad.i("MicroMsg.ManagerRoomByWeworkUI", "onMenuItemClick click");
-          WeworkRoomUpgradeResultUI.bT(ManagerRoomByWeworkUI.this);
+          ac.i("MicroMsg.ManagerRoomByWeworkUI", "onMenuItemClick click");
+          WeworkRoomUpgradeResultUI.bW(ManagerRoomByWeworkUI.this);
           ManagerRoomByWeworkUI.this.finish();
           if (ManagerRoomByWeworkUI.a(ManagerRoomByWeworkUI.this) != 3) {
             ManagerRoomByWeworkUI.c(ManagerRoomByWeworkUI.b(ManagerRoomByWeworkUI.this), ManagerRoomByWeworkUI.a(ManagerRoomByWeworkUI.this), 0, 0);
@@ -544,13 +544,13 @@ public class ManagerRoomByWeworkUI
           {
             AppMethodBeat.o(182207);
             return true;
-            ManagerRoomByWeworkUI.this.kN(0);
+            ManagerRoomByWeworkUI.this.kH(0);
           }
         }
       });
       AppMethodBeat.o(182212);
       return;
-      paramBundle = new com.tencent.mm.chatroom.d.k(this.fss);
+      paramBundle = new com.tencent.mm.chatroom.d.k(this.fvZ);
       break;
       label307:
       bool = false;
@@ -560,8 +560,8 @@ public class ManagerRoomByWeworkUI
   public void onDestroy()
   {
     AppMethodBeat.i(182214);
-    com.tencent.mm.kernel.g.aeS().b(3553, this);
-    com.tencent.mm.kernel.g.aeS().b(3927, this);
+    com.tencent.mm.kernel.g.agi().b(3553, this);
+    com.tencent.mm.kernel.g.agi().b(3927, this);
     super.onDestroy();
     AppMethodBeat.o(182214);
   }
@@ -569,25 +569,25 @@ public class ManagerRoomByWeworkUI
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(182215);
-    if (this.fsv != 3) {
-      c(this.fss, this.fsv, 0, 0);
+    if (this.fwc != 3) {
+      c(this.fvZ, this.fwc, 0, 0);
     }
     for (;;)
     {
       boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
       AppMethodBeat.o(182215);
       return bool;
-      kN(0);
+      kH(0);
     }
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(182213);
-    ad.i("MicroMsg.ManagerRoomByWeworkUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
+    ac.i("MicroMsg.ManagerRoomByWeworkUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
     label121:
     Object localObject1;
-    if ((this.fsv != 3) || ((paramn instanceof com.tencent.mm.chatroom.d.k)))
+    if ((this.fwc != 3) || ((paramn instanceof com.tencent.mm.chatroom.d.k)))
     {
       if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
         this.tipDialog.dismiss();
@@ -599,7 +599,7 @@ public class ManagerRoomByWeworkUI
         break label1690;
       }
       paramn = (com.tencent.mm.chatroom.d.k)paramn;
-      if (paramn.foL != null) {
+      if (paramn.fsl != null) {
         break label769;
       }
       paramn = null;
@@ -607,54 +607,54 @@ public class ManagerRoomByWeworkUI
         break label1643;
       }
       super.initView();
-      this.fsF = ((Button)findViewById(2131306228));
-      this.fsG = ((Button)findViewById(2131307239));
+      this.fwm = ((Button)findViewById(2131306228));
+      this.fwn = ((Button)findViewById(2131307239));
       this.titleTv = ((TextView)findViewById(2131297973));
-      this.fsH = ((CdnImageView)findViewById(2131297960));
-      this.fsI = ((TextView)findViewById(2131297972));
-      this.fsJ = ((TextView)findViewById(2131298777));
-      this.fsK = ((LinearLayout)findViewById(2131298764));
-      this.fsL = ((LinearLayout)findViewById(2131307196));
-      this.fsM = ((LinearLayout)findViewById(2131307167));
-      this.fsN = ((RecyclerView)findViewById(2131307150));
-      this.fsO = ((LinearLayout)findViewById(2131307241));
-      this.fsP = ((TextView)findViewById(2131307242));
-      this.fsQ = ((ImageView)findViewById(2131307240));
+      this.fwo = ((CdnImageView)findViewById(2131297960));
+      this.fwp = ((TextView)findViewById(2131297972));
+      this.fwq = ((TextView)findViewById(2131298777));
+      this.fwr = ((LinearLayout)findViewById(2131298764));
+      this.fws = ((LinearLayout)findViewById(2131307196));
+      this.fwt = ((LinearLayout)findViewById(2131307167));
+      this.fwu = ((RecyclerView)findViewById(2131307150));
+      this.fwv = ((LinearLayout)findViewById(2131307241));
+      this.fww = ((TextView)findViewById(2131307242));
+      this.fwx = ((ImageView)findViewById(2131307240));
       findViewById(2131298738).setVisibility(0);
-      this.fsF.setOnClickListener(new View.OnClickListener()
+      this.fwm.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(196615);
-          ad.i("MicroMsg.ManagerRoomByWeworkUI", "click use");
+          AppMethodBeat.i(197099);
+          ac.i("MicroMsg.ManagerRoomByWeworkUI", "click use");
           if (ManagerRoomByWeworkUI.a(ManagerRoomByWeworkUI.this) == 3)
           {
             ManagerRoomByWeworkUI.c(ManagerRoomByWeworkUI.this);
-            AppMethodBeat.o(196615);
+            AppMethodBeat.o(197099);
             return;
           }
           ManagerRoomByWeworkUI.d(ManagerRoomByWeworkUI.this);
-          AppMethodBeat.o(196615);
+          AppMethodBeat.o(197099);
         }
       });
-      if ((this.fsv != 1) && (this.fsv != 2)) {
+      if ((this.fwc != 1) && (this.fwc != 2)) {
         break label852;
       }
-      this.fsM.setVisibility(0);
-      this.fsL.setVisibility(8);
-      a(this.fss, this.fsH);
-      paramString = this.fss;
-      localObject1 = this.fsI;
-      paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(paramString);
-      if (!bt.isNullOrNil(paramString.field_nickname)) {
+      this.fwt.setVisibility(0);
+      this.fws.setVisibility(8);
+      a(this.fvZ, this.fwo);
+      paramString = this.fvZ;
+      localObject1 = this.fwp;
+      paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
+      if (!bs.isNullOrNil(paramString.field_nickname)) {
         break label817;
       }
-      if (com.tencent.mm.model.q.rY(paramString.field_username) != 0) {
+      if (com.tencent.mm.model.q.wb(paramString.field_username) != 0) {
         break label779;
       }
       paramString = getString(2131761169);
       label441:
-      ((TextView)localObject1).setText(com.tencent.mm.pluginsdk.ui.span.k.d(this, com.tencent.mm.pluginsdk.ui.span.k.b(this, paramString, com.tencent.mm.cd.a.ao(this, 2131165192))));
+      ((TextView)localObject1).setText(com.tencent.mm.pluginsdk.ui.span.k.d(this, com.tencent.mm.pluginsdk.ui.span.k.b(this, paramString, com.tencent.mm.cc.a.au(this, 2131165192))));
     }
     Object localObject3;
     label769:
@@ -666,30 +666,30 @@ public class ManagerRoomByWeworkUI
     {
       for (;;)
       {
-        VB();
+        Wz();
         this.titleTv.setText(paramn.title);
-        this.fsJ.setText(com.tencent.mm.pluginsdk.ui.span.k.d(getContext(), bt.nullAsNil(paramn.odt), (int)this.fsJ.getTextSize()));
-        if ((paramn.DqR == null) || (paramn.DqR.size() <= 0)) {
+        this.fwq.setText(com.tencent.mm.pluginsdk.ui.span.k.d(getContext(), bs.nullAsNil(paramn.oGS), (int)this.fwq.getTextSize()));
+        if ((paramn.ELT == null) || (paramn.ELT.size() <= 0)) {
           break label1601;
         }
-        this.fsK.removeAllViews();
+        this.fwr.removeAllViews();
         paramString = (LayoutInflater)getContext().getSystemService("layout_inflater");
-        paramn = paramn.DqR.iterator();
+        paramn = paramn.ELT.iterator();
         paramInt1 = 0;
         while (paramn.hasNext())
         {
           localObject1 = (String)paramn.next();
-          localObject3 = paramString.inflate(2131493377, this.fsK, false);
+          localObject3 = paramString.inflate(2131493377, this.fwr, false);
           paramInt1 += 1;
           ((TextView)((View)localObject3).findViewById(2131303086)).setText(paramInt1 + ".");
           ((TextView)((View)localObject3).findViewById(2131299008)).setText((CharSequence)localObject1);
-          this.fsK.addView((View)localObject3);
+          this.fwr.addView((View)localObject3);
         }
         try
         {
-          ad.i("MicroMsg.ManagerRoomByWeworkUI", "NetSceneUpgradeAssociateChatRoom %s", new Object[] { ((com.tencent.mm.chatroom.d.w)paramn).dlX });
-          this.fsC += 1;
-          if ((this.fsC != this.fsD) || (this.tipDialog == null) || (!this.tipDialog.isShowing())) {
+          ac.i("MicroMsg.ManagerRoomByWeworkUI", "NetSceneUpgradeAssociateChatRoom %s", new Object[] { ((com.tencent.mm.chatroom.d.w)paramn).djF });
+          this.fwj += 1;
+          if ((this.fwj != this.fwk) || (this.tipDialog == null) || (!this.tipDialog.isShowing())) {
             break;
           }
           this.tipDialog.dismiss();
@@ -698,32 +698,32 @@ public class ManagerRoomByWeworkUI
         {
           for (;;)
           {
-            ad.e("MicroMsg.ManagerRoomByWeworkUI", "NetSceneUpgradeAssociateChatRoom Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+            ac.e("MicroMsg.ManagerRoomByWeworkUI", "NetSceneUpgradeAssociateChatRoom Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
           }
         }
       }
-      paramn = paramn.foL;
+      paramn = paramn.fsl;
       break label121;
-      paramString = getString(2131759496, new Object[] { getString(2131761169), Integer.valueOf(com.tencent.mm.model.q.rY(paramString.field_username)) });
+      paramString = getString(2131759496, new Object[] { getString(2131761169), Integer.valueOf(com.tencent.mm.model.q.wb(paramString.field_username)) });
       break label441;
-      paramString = getString(2131759496, new Object[] { paramString.ZW(), Integer.valueOf(com.tencent.mm.model.q.rY(paramString.field_username)) });
+      paramString = getString(2131759496, new Object[] { paramString.aaR(), Integer.valueOf(com.tencent.mm.model.q.wb(paramString.field_username)) });
       break label441;
       label852:
-      if (this.fsv == 3)
+      if (this.fwc == 3)
       {
-        this.fsM.setVisibility(8);
-        this.fsL.setVisibility(0);
+        this.fwt.setVisibility(8);
+        this.fws.setVisibility(0);
         paramString = new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(196616);
-            ad.i("MicroMsg.ManagerRoomByWeworkUI", "select_group_ll click");
+            AppMethodBeat.i(197100);
+            ac.i("MicroMsg.ManagerRoomByWeworkUI", "select_group_ll click");
             ManagerRoomByWeworkUI.e(ManagerRoomByWeworkUI.this);
-            if (ManagerRoomByWeworkUI.f(ManagerRoomByWeworkUI.this).ftb == 5)
+            if (ManagerRoomByWeworkUI.f(ManagerRoomByWeworkUI.this).fwI == 5)
             {
               t.makeText(ManagerRoomByWeworkUI.this, 2131766408, 0).show();
-              AppMethodBeat.o(196616);
+              AppMethodBeat.o(197100);
               return;
             }
             paramAnonymousView = new Intent();
@@ -734,73 +734,73 @@ public class ManagerRoomByWeworkUI
             ArrayList localArrayList = new ArrayList();
             Iterator localIterator = ManagerRoomByWeworkUI.g(ManagerRoomByWeworkUI.this).iterator();
             while (localIterator.hasNext()) {
-              localArrayList.add(((af)localIterator.next()).field_username);
+              localArrayList.add(((ai)localIterator.next()).field_username);
             }
             paramAnonymousView.putStringArrayListExtra("group_select_block_chatroom", localArrayList);
-            paramAnonymousView.putExtra("group_select_chatroom_max_num", com.tencent.mm.model.q.aqC());
+            paramAnonymousView.putExtra("group_select_chatroom_max_num", com.tencent.mm.model.q.axs());
             ManagerRoomByWeworkUI.this.startActivityForResult(paramAnonymousView, 0);
-            AppMethodBeat.o(196616);
+            AppMethodBeat.o(197100);
           }
         };
-        this.fsO.setOnClickListener(paramString);
-        this.fsG.setOnClickListener(paramString);
-        paramString = com.tencent.mm.model.w.ars();
+        this.fwv.setOnClickListener(paramString);
+        this.fwn.setOnClickListener(paramString);
+        paramString = com.tencent.mm.model.w.ayi();
         if (paramString.size() == 0) {
           paramInt1 = 0;
         }
         for (;;)
         {
-          if ((paramInt1 != 0) || (Vz())) {
+          if ((paramInt1 != 0) || (Wx())) {
             break label1599;
           }
           findViewById(2131299477).setVisibility(0);
           findViewById(2131306228).setVisibility(8);
-          this.fsL.setVisibility(8);
+          this.fws.setVisibility(8);
           break;
           paramString = paramString.iterator();
           while (paramString.hasNext())
           {
-            localObject2 = (af)paramString.next();
-            if (com.tencent.mm.model.w.sq(((com.tencent.mm.g.c.au)localObject2).field_username))
+            localObject2 = (ai)paramString.next();
+            if (com.tencent.mm.model.w.wt(((av)localObject2).field_username))
             {
-              localObject3 = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(((com.tencent.mm.g.c.au)localObject2).field_username);
+              localObject3 = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(((av)localObject2).field_username);
               if (localObject3 == null)
               {
-                ad.e("MicroMsg.ManagerRoomByWeworkUI", "initContactList %s member is null", new Object[] { ((com.tencent.mm.g.c.au)localObject2).field_username });
+                ac.e("MicroMsg.ManagerRoomByWeworkUI", "initContactList %s member is null", new Object[] { ((av)localObject2).field_username });
               }
-              else if ((((com.tencent.mm.storage.w)localObject3).field_memberCount < com.tencent.mm.model.q.aqC()) && (bt.kU(((com.tencent.mm.storage.w)localObject3).field_roomowner, u.aqG())))
+              else if ((((x)localObject3).field_memberCount < com.tencent.mm.model.q.axs()) && (bs.lr(((x)localObject3).field_roomowner, u.axw())))
               {
-                this.fsy.add(localObject2);
-                this.fsz.add(((com.tencent.mm.g.c.au)localObject2).field_username);
-                this.fsx.add(((com.tencent.mm.g.c.au)localObject2).field_username);
+                this.fwf.add(localObject2);
+                this.fwg.add(((av)localObject2).field_username);
+                this.fwe.add(((av)localObject2).field_username);
               }
             }
           }
-          this.fsU = this.fsy.size();
-          paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().eLh();
+          this.fwB = this.fwf.size();
+          paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().faJ();
           localObject2 = new LinkedList();
-          localObject3 = com.tencent.mm.model.w.ars();
+          localObject3 = com.tencent.mm.model.w.ayi();
           if (((List)localObject3).size() == 0) {}
-          for (this.fsE = 0;; this.fsE = (((List)localObject2).size() - this.fsU))
+          for (this.fwl = 0;; this.fwl = (((List)localObject2).size() - this.fwB))
           {
-            this.fsR = new LinearLayoutManager();
-            this.fsR.setOrientation(1);
-            this.fsN.setLayoutManager(this.fsR);
-            this.fsT = new ManagerRoomByWeworkUI.b(getContext(), 96.0F);
-            this.fsN.a(this.fsT);
-            this.fsS = new a(getContext(), this.fsy, this.fsA, this.fsx, new c()
+            this.fwy = new LinearLayoutManager();
+            this.fwy.setOrientation(1);
+            this.fwu.setLayoutManager(this.fwy);
+            this.fwA = new b(getContext(), 96.0F);
+            this.fwu.a(this.fwA);
+            this.fwz = new a(getContext(), this.fwf, this.fwh, this.fwe, new c()
             {
-              public final void VC()
+              public final void WA()
               {
-                AppMethodBeat.i(196617);
+                AppMethodBeat.i(197101);
                 ManagerRoomByWeworkUI.h(ManagerRoomByWeworkUI.this);
-                AppMethodBeat.o(196617);
+                AppMethodBeat.o(197101);
               }
             });
-            this.fsN.setAdapter(this.fsS);
-            this.fsN.setNestedScrollingEnabled(false);
-            this.fsS.aql.notifyChanged();
-            if (this.fsy.size() != 0) {
+            this.fwu.setAdapter(this.fwz);
+            this.fwu.setNestedScrollingEnabled(false);
+            this.fwz.arg.notifyChanged();
+            if (this.fwf.size() != 0) {
               break label1596;
             }
             paramInt1 = 0;
@@ -808,29 +808,29 @@ public class ManagerRoomByWeworkUI
             Iterator localIterator = ((List)localObject3).iterator();
             while (localIterator.hasNext())
             {
-              af localaf = (af)localIterator.next();
-              if (!com.tencent.mm.model.w.so(localaf.field_username))
+              ai localai = (ai)localIterator.next();
+              if (!com.tencent.mm.model.w.wr(localai.field_username))
               {
-                com.tencent.mm.storage.w localw;
-                if (!paramString.containsKey(localaf.field_username))
+                x localx;
+                if (!paramString.containsKey(localai.field_username))
                 {
-                  if (com.tencent.mm.n.b.ls(localaf.field_type))
+                  if (com.tencent.mm.n.b.ln(localai.field_type))
                   {
-                    localw = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(localaf.field_username);
-                    if (localw == null) {
-                      ad.e("MicroMsg.ManagerRoomByWeworkUI", "iniOtherChatroomNum %s member is null", new Object[] { bt.by(localaf.field_username, "") });
-                    } else if ((localw.ty(u.aqG())) && (c(localaf))) {
-                      ((List)localObject2).add(localaf);
+                    localx = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(localai.field_username);
+                    if (localx == null) {
+                      ac.e("MicroMsg.ManagerRoomByWeworkUI", "iniOtherChatroomNum %s member is null", new Object[] { bs.bG(localai.field_username, "") });
+                    } else if ((localx.xB(u.axw())) && (c(localai))) {
+                      ((List)localObject2).add(localai);
                     }
                   }
                 }
                 else
                 {
-                  localw = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(localaf.field_username);
-                  if (localw == null) {
-                    ad.e("MicroMsg.ManagerRoomByWeworkUI", "iniOtherChatroomNum %s member is null", new Object[] { bt.by(localaf.field_username, "") });
-                  } else if ((localw.ty(u.aqG())) && (c(localaf))) {
-                    ((List)localObject2).add(localaf);
+                  localx = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(localai.field_username);
+                  if (localx == null) {
+                    ac.e("MicroMsg.ManagerRoomByWeworkUI", "iniOtherChatroomNum %s member is null", new Object[] { bs.bG(localai.field_username, "") });
+                  } else if ((localx.xB(u.axw())) && (c(localai))) {
+                    ((List)localObject2).add(localai);
                   }
                 }
               }
@@ -848,7 +848,7 @@ public class ManagerRoomByWeworkUI
     label1643:
     Object localObject2 = getContext();
     paramn = paramString;
-    if (bt.isNullOrNil(paramString)) {
+    if (bs.isNullOrNil(paramString)) {
       paramn = getString(2131764612);
     }
     t.makeText((Context)localObject2, paramn, 0).show();
@@ -859,28 +859,28 @@ public class ManagerRoomByWeworkUI
     if ((paramn instanceof com.tencent.mm.chatroom.d.w))
     {
       localObject2 = (com.tencent.mm.chatroom.d.w)paramn;
-      if (((com.tencent.mm.chatroom.d.w)localObject2).fpf == null)
+      if (((com.tencent.mm.chatroom.d.w)localObject2).fsF == null)
       {
         localObject2 = null;
-        if (this.fsv != 3) {
+        if (this.fwc != 3) {
           break label1899;
         }
         if (localObject2 == null) {
           break label1877;
         }
-        this.fsB.put(((com.tencent.mm.chatroom.d.w)paramn).dlX, Boolean.TRUE);
+        this.fwi.put(((com.tencent.mm.chatroom.d.w)paramn).djF, Boolean.TRUE);
       }
     }
     else
     {
       label1748:
-      if ((this.fsv != 3) || (!(paramn instanceof com.tencent.mm.chatroom.d.w)) || (this.fsC != this.fsD)) {
+      if ((this.fwc != 3) || (!(paramn instanceof com.tencent.mm.chatroom.d.w)) || (this.fwj != this.fwk)) {
         break label2442;
       }
-      ad.i("MicroMsg.ManagerRoomByWeworkUI", "NetSceneUpgradeAssociateChatRoom finish");
+      ac.i("MicroMsg.ManagerRoomByWeworkUI", "NetSceneUpgradeAssociateChatRoom finish");
       paramString = new ArrayList();
       paramn = new ArrayList();
-      localObject2 = this.fsB.entrySet().iterator();
+      localObject2 = this.fwi.entrySet().iterator();
     }
     for (;;)
     {
@@ -892,23 +892,23 @@ public class ManagerRoomByWeworkUI
       {
         paramString.add(((Map.Entry)localObject3).getKey());
         continue;
-        localObject2 = ((com.tencent.mm.chatroom.d.w)localObject2).fpf;
+        localObject2 = ((com.tencent.mm.chatroom.d.w)localObject2).fsF;
         break;
         label1877:
-        this.fsB.put(((com.tencent.mm.chatroom.d.w)paramn).dlX, Boolean.FALSE);
+        this.fwi.put(((com.tencent.mm.chatroom.d.w)paramn).djF, Boolean.FALSE);
         break label1748;
         label1899:
         if (localObject2 != null)
         {
-          c(this.fss, this.fsv, 1, 0);
+          c(this.fvZ, this.fwc, 1, 0);
           paramString = new Intent();
           paramString.setClass(this, WeworkRoomUpgradeResultUI.class);
-          paramString.putExtra("RoomInfo_Id", this.fss);
-          paramString.putExtra("popup_wording", bt.by(((dgu)localObject2).Exh, ""));
-          paramString.putExtra("upgrade_openim_room_from_scene", this.fsv);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/chatroom/ui/ManagerRoomByWeworkUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramString.lS(0));
+          paramString.putExtra("RoomInfo_Id", this.fvZ);
+          paramString.putExtra("popup_wording", bs.bG(((dmj)localObject2).FUj, ""));
+          paramString.putExtra("upgrade_openim_room_from_scene", this.fwc);
+          paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/chatroom/ui/ManagerRoomByWeworkUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramString.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ManagerRoomByWeworkUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           finish();
           super.overridePendingTransition(2130772144, 2130772141);
@@ -917,11 +917,11 @@ public class ManagerRoomByWeworkUI
         }
         localObject2 = getContext();
         paramn = paramString;
-        if (bt.isNullOrNil(paramString)) {
+        if (bs.isNullOrNil(paramString)) {
           paramn = getString(2131764612);
         }
         t.makeText((Context)localObject2, paramn, 0).show();
-        c(this.fss, this.fsv, 2, 4);
+        c(this.fvZ, this.fwc, 2, 4);
         finish();
         AppMethodBeat.o(182213);
         return;
@@ -930,7 +930,7 @@ public class ManagerRoomByWeworkUI
         {
           localObject2 = getContext();
           paramn = paramString;
-          if (bt.isNullOrNil(paramString)) {
+          if (bs.isNullOrNil(paramString)) {
             paramn = getString(2131764612);
           }
           t.makeText((Context)localObject2, paramn, 0).show();
@@ -941,15 +941,15 @@ public class ManagerRoomByWeworkUI
         if (!(paramn instanceof com.tencent.mm.chatroom.d.w)) {
           break label1748;
         }
-        if (this.fsv == 3)
+        if (this.fwc == 3)
         {
-          this.fsB.put(((com.tencent.mm.chatroom.d.w)paramn).dlX, Boolean.FALSE);
+          this.fwi.put(((com.tencent.mm.chatroom.d.w)paramn).djF, Boolean.FALSE);
           break label1748;
         }
-        c(this.fss, this.fsv, 2, 4);
+        c(this.fvZ, this.fwc, 2, 4);
         localObject2 = getContext();
         paramn = paramString;
-        if (bt.isNullOrNil(paramString)) {
+        if (bs.isNullOrNil(paramString)) {
           paramn = getString(2131764612);
         }
         t.makeText((Context)localObject2, paramn, 0).show();
@@ -961,16 +961,16 @@ public class ManagerRoomByWeworkUI
     label2294:
     localObject2 = new Intent();
     ((Intent)localObject2).setClass(this, WeworkRoomUpgradeResultUI.class);
-    ((Intent)localObject2).putExtra("upgrade_openim_room_from_scene", this.fsv);
+    ((Intent)localObject2).putExtra("upgrade_openim_room_from_scene", this.fwc);
     ((Intent)localObject2).putExtra("wework_upgrade_success_list", paramString);
     ((Intent)localObject2).putExtra("wework_upgrade_fail_list", paramn);
-    paramn = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramn.adn(), "com/tencent/mm/chatroom/ui/ManagerRoomByWeworkUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramn.lS(0));
+    paramn = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramn.aeD(), "com/tencent/mm/chatroom/ui/ManagerRoomByWeworkUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramn.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ManagerRoomByWeworkUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     super.overridePendingTransition(2130772144, 2130772141);
-    f(paramString);
+    g(paramString);
     label2442:
     AppMethodBeat.o(182213);
   }
@@ -985,58 +985,58 @@ public class ManagerRoomByWeworkUI
     extends RecyclerView.a
   {
     private Context context;
-    private List<af> fsY;
-    private List<String> fsZ;
-    private HashMap<String, Boolean> fta;
-    int ftb;
-    private ManagerRoomByWeworkUI.c ftc;
-    int ftd;
-    int fte;
+    private List<ai> fwF;
+    private List<String> fwG;
+    private HashMap<String, Boolean> fwH;
+    int fwI;
+    private ManagerRoomByWeworkUI.c fwJ;
+    int fwK;
+    int fwL;
     
-    public a(Context paramContext, List<af> paramList, HashMap<String, Boolean> paramHashMap, List<String> paramList1, ManagerRoomByWeworkUI.c paramc)
+    public a(Context paramContext, List<ai> paramList, HashMap<String, Boolean> paramHashMap, List<String> paramList1, ManagerRoomByWeworkUI.c paramc)
     {
-      AppMethodBeat.i(196621);
-      this.ftb = 0;
-      this.ftd = 0;
-      this.fte = 0;
+      AppMethodBeat.i(197105);
+      this.fwI = 0;
+      this.fwK = 0;
+      this.fwL = 0;
       this.context = paramContext;
-      this.fsY = paramList;
-      this.fta = paramHashMap;
-      this.fsZ = paramList1;
-      this.ftc = paramc;
+      this.fwF = paramList;
+      this.fwH = paramHashMap;
+      this.fwG = paramList1;
+      this.fwJ = paramc;
       paramContext = paramList.iterator();
       while (paramContext.hasNext()) {
-        paramHashMap.put(((af)paramContext.next()).field_username, Boolean.FALSE);
+        paramHashMap.put(((ai)paramContext.next()).field_username, Boolean.FALSE);
       }
-      AppMethodBeat.o(196621);
+      AppMethodBeat.o(197105);
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(196622);
+      AppMethodBeat.i(197106);
       paramViewGroup = new ManagerRoomByWeworkUI.d(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496145, paramViewGroup, false));
-      AppMethodBeat.o(196622);
+      AppMethodBeat.o(197106);
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.v paramv, int paramInt)
+    public final void a(RecyclerView.w paramw, int paramInt)
     {
-      AppMethodBeat.i(196623);
-      ad.d("MicroMsg.ManagerRoomByWeworkUI", "onBindViewHolder() count:%s i:%s ", new Object[] { Integer.valueOf(this.fsY.size()), Integer.valueOf(paramInt) });
-      af localaf;
+      AppMethodBeat.i(197107);
+      ac.d("MicroMsg.ManagerRoomByWeworkUI", "onBindViewHolder() count:%s i:%s ", new Object[] { Integer.valueOf(this.fwF.size()), Integer.valueOf(paramInt) });
+      ai localai;
       Boolean localBoolean;
       CheckBox localCheckBox;
-      if ((this.fsY != null) && (paramInt >= 0) && (paramInt < this.fsY.size()))
+      if ((this.fwF != null) && (paramInt >= 0) && (paramInt < this.fwF.size()))
       {
-        paramv = (ManagerRoomByWeworkUI.d)paramv;
-        localaf = (af)this.fsY.get(paramInt);
-        ad.d("MicroMsg.ManagerRoomByWeworkUI", "onBindViewHolder() count:%s i:%s username:%s", new Object[] { Integer.valueOf(this.fsY.size()), Integer.valueOf(paramInt), localaf.field_username });
-        paramv.frN.setVisibility(0);
-        ManagerRoomByWeworkUI.a(localaf.field_username, paramv.fsH);
-        ManagerRoomByWeworkUI.a(this.context, localaf.field_username, paramv.ftj, paramv.ftk, false);
-        localBoolean = (Boolean)this.fta.get(localaf.field_username);
-        paramv.fti.setEnabled(true);
-        localCheckBox = paramv.fti;
+        paramw = (ManagerRoomByWeworkUI.d)paramw;
+        localai = (ai)this.fwF.get(paramInt);
+        ac.d("MicroMsg.ManagerRoomByWeworkUI", "onBindViewHolder() count:%s i:%s username:%s", new Object[] { Integer.valueOf(this.fwF.size()), Integer.valueOf(paramInt), localai.field_username });
+        paramw.fvu.setVisibility(0);
+        ManagerRoomByWeworkUI.a(localai.field_username, paramw.fwo);
+        ManagerRoomByWeworkUI.a(this.context, localai.field_username, paramw.fwQ, paramw.fwR, false);
+        localBoolean = (Boolean)this.fwH.get(localai.field_username);
+        paramw.fwP.setEnabled(true);
+        localCheckBox = paramw.fwP;
         if (localBoolean != null) {
           break label238;
         }
@@ -1045,25 +1045,25 @@ public class ManagerRoomByWeworkUI
       for (boolean bool = false;; bool = localBoolean.booleanValue())
       {
         localCheckBox.setChecked(bool);
-        paramv.frN.setTag(localaf);
-        paramv.frN.setOnClickListener(new View.OnClickListener()
+        paramw.fvu.setTag(localai);
+        paramw.fvu.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             boolean bool = false;
-            AppMethodBeat.i(196620);
-            paramAnonymousView = (af)paramAnonymousView.getTag();
+            AppMethodBeat.i(197104);
+            paramAnonymousView = (ai)paramAnonymousView.getTag();
             if (paramAnonymousView == null)
             {
-              ad.e("MicroMsg.ManagerRoomByWeworkUI", "click:contact is nul");
-              AppMethodBeat.o(196620);
+              ac.e("MicroMsg.ManagerRoomByWeworkUI", "click:contact is nul");
+              AppMethodBeat.o(197104);
               return;
             }
             Boolean localBoolean = (Boolean)ManagerRoomByWeworkUI.a.a(ManagerRoomByWeworkUI.a.this).get(paramAnonymousView.field_username);
             if ((!localBoolean.booleanValue()) && (ManagerRoomByWeworkUI.a.b(ManagerRoomByWeworkUI.a.this) == 5))
             {
               t.makeText(ManagerRoomByWeworkUI.a.c(ManagerRoomByWeworkUI.a.this), 2131766408, 0).show();
-              AppMethodBeat.o(196620);
+              AppMethodBeat.o(197104);
               return;
             }
             HashMap localHashMap = ManagerRoomByWeworkUI.a.a(ManagerRoomByWeworkUI.a.this);
@@ -1081,11 +1081,11 @@ public class ManagerRoomByWeworkUI
             }
             for (;;)
             {
-              ManagerRoomByWeworkUI.a.this.aql.notifyChanged();
+              ManagerRoomByWeworkUI.a.this.arg.notifyChanged();
               if (ManagerRoomByWeworkUI.a.k(ManagerRoomByWeworkUI.a.this) != null) {
-                ManagerRoomByWeworkUI.a.k(ManagerRoomByWeworkUI.a.this).VC();
+                ManagerRoomByWeworkUI.a.k(ManagerRoomByWeworkUI.a.this).WA();
               }
-              AppMethodBeat.o(196620);
+              AppMethodBeat.o(197104);
               return;
               ManagerRoomByWeworkUI.a.g(ManagerRoomByWeworkUI.a.this);
               continue;
@@ -1098,16 +1098,16 @@ public class ManagerRoomByWeworkUI
             }
           }
         });
-        AppMethodBeat.o(196623);
+        AppMethodBeat.o(197107);
         return;
       }
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(196624);
-      int i = this.fsY.size();
-      AppMethodBeat.o(196624);
+      AppMethodBeat.i(197108);
+      int i = this.fwF.size();
+      AppMethodBeat.o(197108);
       return i;
     }
     
@@ -1117,36 +1117,92 @@ public class ManagerRoomByWeworkUI
     }
   }
   
+  public static final class b
+    extends RecyclerView.h
+  {
+    private int dividerHeight;
+    private Paint fvL;
+    private Paint fwN;
+    private int fwO;
+    
+    public b(Context paramContext, float paramFloat)
+    {
+      AppMethodBeat.i(197109);
+      this.dividerHeight = com.tencent.mm.cc.a.g(paramContext, 0.5F);
+      this.fwO = com.tencent.mm.cc.a.g(paramContext, paramFloat);
+      this.fvL = new Paint();
+      this.fvL.setColor(paramContext.getResources().getColor(2131099656));
+      this.fwN = new Paint();
+      this.fwN.setColor(paramContext.getResources().getColor(2131099679));
+      AppMethodBeat.o(197109);
+    }
+    
+    public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+    {
+      AppMethodBeat.i(197110);
+      super.a(paramCanvas, paramRecyclerView, paramt);
+      int j = paramRecyclerView.getChildCount();
+      int k = paramRecyclerView.getPaddingLeft();
+      int m = this.fwO;
+      int n = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
+      int i = 0;
+      if (i < j)
+      {
+        paramt = paramRecyclerView.getChildAt(i);
+        float f1 = paramt.getBottom();
+        float f2 = paramt.getBottom() + this.dividerHeight;
+        if (i == j - 1) {
+          paramCanvas.drawRect(k, f1, n, f2, this.fwN);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          paramCanvas.drawRect(k + m, f1, n, f2, this.fvL);
+        }
+      }
+      AppMethodBeat.o(197110);
+    }
+    
+    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+    {
+      AppMethodBeat.i(197111);
+      super.a(paramRect, paramView, paramRecyclerView, paramt);
+      paramRect.bottom = this.dividerHeight;
+      AppMethodBeat.o(197111);
+    }
+  }
+  
   public static abstract interface c
   {
-    public abstract void VC();
+    public abstract void WA();
   }
   
   public static final class d
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    View frN;
-    CdnImageView fsH;
-    CheckBox fti;
-    TextView ftj;
-    TextView ftk;
+    View fvu;
+    CheckBox fwP;
+    TextView fwQ;
+    TextView fwR;
+    CdnImageView fwo;
     
     public d(View paramView)
     {
       super();
-      AppMethodBeat.i(196628);
-      this.frN = paramView;
-      this.fti = ((CheckBox)paramView.findViewById(2131304502));
-      this.fsH = ((CdnImageView)paramView.findViewById(2131307168));
-      this.ftj = ((TextView)paramView.findViewById(2131307169));
-      this.ftk = ((TextView)paramView.findViewById(2131307170));
-      AppMethodBeat.o(196628);
+      AppMethodBeat.i(197112);
+      this.fvu = paramView;
+      this.fwP = ((CheckBox)paramView.findViewById(2131304502));
+      this.fwo = ((CdnImageView)paramView.findViewById(2131307168));
+      this.fwQ = ((TextView)paramView.findViewById(2131307169));
+      this.fwR = ((TextView)paramView.findViewById(2131307170));
+      AppMethodBeat.o(197112);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ManagerRoomByWeworkUI
  * JD-Core Version:    0.7.0.1
  */

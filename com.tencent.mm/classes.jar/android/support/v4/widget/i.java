@@ -7,12 +7,12 @@ import android.widget.EdgeEffect;
 
 public final class i
 {
-  public EdgeEffect Rz;
+  public EdgeEffect Su;
   
   @Deprecated
   public i(Context paramContext)
   {
-    this.Rz = new EdgeEffect(paramContext);
+    this.Su = new EdgeEffect(paramContext);
   }
   
   public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
@@ -26,36 +26,36 @@ public final class i
   }
   
   @Deprecated
-  public final boolean E(float paramFloat)
+  public final boolean I(float paramFloat)
   {
-    this.Rz.onPull(paramFloat);
+    this.Su.onPull(paramFloat);
     return true;
   }
   
   @Deprecated
   public final boolean aW(int paramInt)
   {
-    this.Rz.onAbsorb(paramInt);
+    this.Su.onAbsorb(paramInt);
     return true;
   }
   
   @Deprecated
   public final boolean draw(Canvas paramCanvas)
   {
-    return this.Rz.draw(paramCanvas);
+    return this.Su.draw(paramCanvas);
   }
   
   @Deprecated
-  public final boolean fu()
+  public final boolean fC()
   {
-    this.Rz.onRelease();
-    return this.Rz.isFinished();
+    this.Su.onRelease();
+    return this.Su.isFinished();
   }
   
   @Deprecated
   public final void setSize(int paramInt1, int paramInt2)
   {
-    this.Rz.setSize(paramInt1, paramInt2);
+    this.Su.setSize(paramInt1, paramInt2);
   }
 }
 

@@ -14,11 +14,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.chatroom.d.m;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
@@ -26,146 +26,146 @@ import com.tencent.mm.model.ar.b.a;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
 public class RoomUpgradeUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   private String chatroomName;
-  private int foS;
-  private int foT;
-  private ProgressDialog fpP = null;
-  private w fql;
-  private View fuD;
-  private ImageView fuE;
-  private TextView fuF;
-  private TextView fuG;
-  private TextView fuH;
-  private TextView fuL;
-  private View fuM;
-  private TextView fuN;
-  private m fuO;
-  private String fuP;
-  private boolean fuQ;
-  private boolean fuR;
+  private int fsr;
+  private int fss;
+  private x ftP;
+  private ProgressDialog fts = null;
+  private View fyk;
+  private ImageView fyl;
+  private TextView fym;
+  private TextView fyn;
+  private TextView fyo;
+  private TextView fys;
+  private View fyt;
+  private TextView fyu;
+  private m fyv;
+  private String fyw;
+  private boolean fyx;
+  private boolean fyy;
   private int status;
   
-  private void VK()
+  private void WI()
   {
     AppMethodBeat.i(12789);
     Object localObject = new Intent(this, RoomAlphaProcessUI.class);
     ((Intent)localObject).addFlags(67108864);
     ((Intent)localObject).addFlags(65536);
     ((Intent)localObject).putExtra("RoomInfo_Id", this.chatroomName);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/chatroom/ui/RoomUpgradeUI", "doUpgrade", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/chatroom/ui/RoomUpgradeUI", "doUpgrade", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/RoomUpgradeUI", "doUpgrade", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(12789);
   }
   
-  private void VL()
+  private void WJ()
   {
     AppMethodBeat.i(12790);
     this.chatroomName = getIntent().getStringExtra("room_name");
-    ad.i("MicroMsg.RoomUpgradeProductsUI", "the roomName is %s", new Object[] { this.chatroomName });
-    com.tencent.mm.kernel.g.afA().gcy.a(519, this);
-    this.fql = ((c)com.tencent.mm.kernel.g.ab(c.class)).apV().tH(this.chatroomName);
-    if (this.fql == null)
+    ac.i("MicroMsg.RoomUpgradeProductsUI", "the roomName is %s", new Object[] { this.chatroomName });
+    com.tencent.mm.kernel.g.agQ().ghe.a(519, this);
+    this.ftP = ((c)com.tencent.mm.kernel.g.ab(c.class)).awK().xN(this.chatroomName);
+    if (this.ftP == null)
     {
       finish();
       AppMethodBeat.o(12790);
       return;
     }
-    this.fuQ = u.aqG().equals(this.fql.field_roomowner);
-    if (!ac.eFr()) {}
+    this.fyx = u.axw().equals(this.ftP.field_roomowner);
+    if (!ab.eUL()) {}
     for (boolean bool = true;; bool = false)
     {
-      this.fuR = bool;
+      this.fyy = bool;
       AppMethodBeat.o(12790);
       return;
     }
   }
   
-  private void VM()
+  private void WK()
   {
     AppMethodBeat.i(12795);
-    oX(this.fql.field_roomowner);
-    int i = this.fql.eKr();
-    this.fuG.setVisibility(0);
+    sj(this.ftP.field_roomowner);
+    int i = this.ftP.eZO();
+    this.fyn.setVisibility(0);
     if (i <= 40)
     {
-      this.fuG.setText(getString(2131762722, new Object[] { getString(2131762716) }));
+      this.fyn.setText(getString(2131762722, new Object[] { getString(2131762716) }));
       AppMethodBeat.o(12795);
       return;
     }
-    this.fuG.setText(getString(2131762722, new Object[] { getString(2131762715) }));
+    this.fyn.setText(getString(2131762722, new Object[] { getString(2131762715) }));
     AppMethodBeat.o(12795);
   }
   
-  private String oS(String paramString)
+  private String se(String paramString)
   {
     AppMethodBeat.i(12798);
-    if (this.fql == null)
+    if (this.ftP == null)
     {
       AppMethodBeat.o(12798);
       return null;
     }
-    paramString = this.fql.sh(paramString);
+    paramString = this.ftP.wk(paramString);
     AppMethodBeat.o(12798);
     return paramString;
   }
   
-  private void oW(String paramString)
+  private void si(String paramString)
   {
     AppMethodBeat.i(12797);
-    af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(paramString);
-    if ((localaf != null) && ((int)localaf.fId > 0)) {}
-    for (Object localObject2 = localaf.field_conRemark;; localObject2 = null)
+    ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
+    if ((localai != null) && ((int)localai.fLJ > 0)) {}
+    for (Object localObject2 = localai.field_conRemark;; localObject2 = null)
     {
       Object localObject1 = localObject2;
-      if (bt.isNullOrNil((String)localObject2)) {
-        localObject1 = oS(paramString);
+      if (bs.isNullOrNil((String)localObject2)) {
+        localObject1 = se(paramString);
       }
       localObject2 = localObject1;
-      if (bt.isNullOrNil((String)localObject1))
+      if (bs.isNullOrNil((String)localObject1))
       {
         localObject2 = localObject1;
-        if (localaf != null)
+        if (localai != null)
         {
           localObject2 = localObject1;
-          if ((int)localaf.fId > 0) {
-            localObject2 = localaf.ZW();
+          if ((int)localai.fLJ > 0) {
+            localObject2 = localai.aaR();
           }
         }
       }
       localObject1 = localObject2;
-      if (bt.isNullOrNil((String)localObject2)) {
+      if (bs.isNullOrNil((String)localObject2)) {
         localObject1 = paramString;
       }
-      a.b.c(this.fuE, paramString);
-      this.fuF.setVisibility(0);
-      this.fuF.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this, (CharSequence)localObject1, (int)this.fuF.getTextSize()));
+      a.b.c(this.fyl, paramString);
+      this.fym.setVisibility(0);
+      this.fym.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this, (CharSequence)localObject1, (int)this.fym.getTextSize()));
       AppMethodBeat.o(12797);
       return;
     }
   }
   
-  private void oX(final String paramString)
+  private void sj(final String paramString)
   {
     AppMethodBeat.i(12796);
-    af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(paramString);
-    if ((localaf != null) && ((int)localaf.fId <= 0))
+    ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramString);
+    if ((localai != null) && ((int)localai.fLJ <= 0))
     {
-      ar.a.gMW.a(paramString, this.chatroomName, new ar.b.a()
+      ar.a.hnw.a(paramString, this.chatroomName, new ar.b.a()
       {
         public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
         {
@@ -176,7 +176,7 @@ public class RoomUpgradeUI
               public final void run()
               {
                 AppMethodBeat.i(12783);
-                RoomUpgradeUI.b(RoomUpgradeUI.this, RoomUpgradeUI.4.this.fuJ);
+                RoomUpgradeUI.b(RoomUpgradeUI.this, RoomUpgradeUI.4.this.fyq);
                 AppMethodBeat.o(12783);
               }
             });
@@ -187,7 +187,7 @@ public class RoomUpgradeUI
       AppMethodBeat.o(12796);
       return;
     }
-    oW(paramString);
+    si(paramString);
     AppMethodBeat.o(12796);
   }
   
@@ -210,14 +210,14 @@ public class RoomUpgradeUI
         return true;
       }
     });
-    this.fuD = findViewById(2131306214);
-    this.fuM = findViewById(2131306216);
-    this.fuE = ((ImageView)findViewById(2131306213));
-    this.fuF = ((TextView)findViewById(2131306215));
-    this.fuG = ((TextView)findViewById(2131306210));
-    this.fuH = ((TextView)findViewById(2131306211));
-    this.fuN = ((TextView)findViewById(2131306209));
-    this.fuN.setOnClickListener(new View.OnClickListener()
+    this.fyk = findViewById(2131306214);
+    this.fyt = findViewById(2131306216);
+    this.fyl = ((ImageView)findViewById(2131306213));
+    this.fym = ((TextView)findViewById(2131306215));
+    this.fyn = ((TextView)findViewById(2131306210));
+    this.fyo = ((TextView)findViewById(2131306211));
+    this.fyu = ((TextView)findViewById(2131306209));
+    this.fyu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -248,8 +248,8 @@ public class RoomUpgradeUI
         }
       }
     });
-    this.fuL = ((TextView)findViewById(2131300766));
-    this.fuL.setOnClickListener(new View.OnClickListener()
+    this.fys = ((TextView)findViewById(2131300766));
+    this.fys.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -257,59 +257,59 @@ public class RoomUpgradeUI
         if (RoomUpgradeUI.e(RoomUpgradeUI.this).getVisibility() == 0)
         {
           paramAnonymousView = new Intent();
-          RoomUpgradeUI.a(RoomUpgradeUI.this, RoomUpgradeUI.this.getString(2131757097, new Object[] { ac.eFu() }));
+          RoomUpgradeUI.a(RoomUpgradeUI.this, RoomUpgradeUI.this.getString(2131757097, new Object[] { ab.eUO() }));
           paramAnonymousView.putExtra("rawUrl", RoomUpgradeUI.f(RoomUpgradeUI.this));
-          paramAnonymousView.putExtra("geta8key_username", u.aqG());
+          paramAnonymousView.putExtra("geta8key_username", u.axw());
           paramAnonymousView.putExtra("showShare", false);
           d.b(RoomUpgradeUI.this, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramAnonymousView, 500);
         }
         AppMethodBeat.o(12782);
       }
     });
-    if (this.fuQ)
+    if (this.fyx)
     {
-      this.fpP = h.b(this, getString(2131760709), true, new DialogInterface.OnCancelListener()
+      this.fts = h.b(this, getString(2131760709), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(12785);
           if (RoomUpgradeUI.h(RoomUpgradeUI.this) != null)
           {
-            com.tencent.mm.kernel.g.afA().gcy.a(RoomUpgradeUI.h(RoomUpgradeUI.this));
+            com.tencent.mm.kernel.g.agQ().ghe.a(RoomUpgradeUI.h(RoomUpgradeUI.this));
             RoomUpgradeUI.i(RoomUpgradeUI.this);
           }
           RoomUpgradeUI.this.finish();
           AppMethodBeat.o(12785);
         }
       });
-      this.fuO = new m(this.chatroomName);
-      com.tencent.mm.kernel.g.afA().gcy.a(this.fuO, 0);
+      this.fyv = new m(this.chatroomName);
+      com.tencent.mm.kernel.g.agQ().ghe.a(this.fyv, 0);
     }
     for (;;)
     {
-      if (this.fuR) {
-        this.fuL.setVisibility(8);
+      if (this.fyy) {
+        this.fys.setVisibility(8);
       }
       AppMethodBeat.o(12791);
       return;
-      VM();
-      if (!this.fuR) {
-        this.fuL.setVisibility(0);
+      WK();
+      if (!this.fyy) {
+        this.fys.setVisibility(0);
       }
-      this.fuL.setText(2131762717);
-      this.fuN.setVisibility(8);
-      this.fuH.setVisibility(8);
+      this.fys.setText(2131762717);
+      this.fyu.setVisibility(8);
+      this.fyo.setVisibility(8);
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(12799);
-    ad.d("MicroMsg.RoomUpgradeProductsUI", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
+    ac.d("MicroMsg.RoomUpgradeProductsUI", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
     switch (paramInt1)
     {
     default: 
-      ad.e("MicroMsg.RoomUpgradeProductsUI", "onActivityResult unknow request");
+      ac.e("MicroMsg.RoomUpgradeProductsUI", "onActivityResult unknow request");
       AppMethodBeat.o(12799);
       return;
     }
@@ -321,7 +321,7 @@ public class RoomUpgradeUI
   {
     AppMethodBeat.i(12787);
     super.onCreate(paramBundle);
-    VL();
+    WJ();
     initView();
     AppMethodBeat.o(12787);
   }
@@ -329,10 +329,10 @@ public class RoomUpgradeUI
   public void onDestroy()
   {
     AppMethodBeat.i(12794);
-    com.tencent.mm.kernel.g.afA().gcy.a(this.fuO);
-    com.tencent.mm.kernel.g.afA().gcy.b(519, this);
-    if (this.fpP != null) {
-      this.fpP.dismiss();
+    com.tencent.mm.kernel.g.agQ().ghe.a(this.fyv);
+    com.tencent.mm.kernel.g.agQ().ghe.b(519, this);
+    if (this.fts != null) {
+      this.fts.dismiss();
     }
     super.onDestroy();
     AppMethodBeat.o(12794);
@@ -348,34 +348,34 @@ public class RoomUpgradeUI
       if (!bool) {
         break label189;
       }
-      VL();
+      WJ();
       int i = paramIntent.getIntExtra("left_quota", 0);
-      VM();
-      this.fuN.setVisibility(8);
-      this.foT = i;
-      if (this.foT <= 0) {
+      WK();
+      this.fyu.setVisibility(8);
+      this.fss = i;
+      if (this.fss <= 0) {
         break label172;
       }
-      this.fuH.setText(getString(2131762720, new Object[] { Integer.valueOf(this.foT) }));
+      this.fyo.setText(getString(2131762720, new Object[] { Integer.valueOf(this.fss) }));
     }
     for (;;)
     {
-      if (!this.fuR) {
-        this.fuL.setVisibility(0);
+      if (!this.fyy) {
+        this.fys.setVisibility(0);
       }
-      this.fuL.setText(2131762717);
+      this.fys.setText(2131762717);
       AppMethodBeat.o(12788);
       return;
       if ((paramIntent.hasExtra("wizard_activity_result_code")) && (paramIntent.getIntExtra("wizard_activity_result_code", -1) == -1)) {
-        VK();
+        WI();
       }
       if (paramIntent.hasExtra("announce_ok")) {
-        VK();
+        WI();
       }
       bool = false;
       break;
       label172:
-      this.fuH.setText(getString(2131762721));
+      this.fyo.setText(getString(2131762721));
     }
     label189:
     AppMethodBeat.o(12788);
@@ -398,9 +398,9 @@ public class RoomUpgradeUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(12800);
-    ad.d("MicroMsg.RoomUpgradeProductsUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fpP != null) {
-      this.fpP.dismiss();
+    ac.d("MicroMsg.RoomUpgradeProductsUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fts != null) {
+      this.fts.dismiss();
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
@@ -420,17 +420,17 @@ public class RoomUpgradeUI
     {
       paramString = (m)paramn;
       this.status = paramString.status;
-      this.foS = paramString.foS;
-      this.foT = paramString.foT;
-      VM();
-      this.fuH.setVisibility(0);
-      this.fuN.setText(getString(2131762713));
-      if (this.foT <= 0) {
+      this.fsr = paramString.fsr;
+      this.fss = paramString.fss;
+      WK();
+      this.fyo.setVisibility(0);
+      this.fyu.setText(getString(2131762713));
+      if (this.fss <= 0) {
         break label283;
       }
-      this.fuH.setText(getString(2131762720, new Object[] { Integer.valueOf(this.foT) }));
-      if (!this.fuR) {
-        this.fuL.setVisibility(0);
+      this.fyo.setText(getString(2131762720, new Object[] { Integer.valueOf(this.fss) }));
+      if (!this.fyy) {
+        this.fys.setVisibility(0);
       }
       switch (this.status)
       {
@@ -441,20 +441,20 @@ public class RoomUpgradeUI
       AppMethodBeat.o(12800);
       return;
       label283:
-      this.fuH.setText(getString(2131762721));
+      this.fyo.setText(getString(2131762721));
       break;
-      this.fuN.setVisibility(0);
-      this.fuL.setText(2131762718);
+      this.fyu.setVisibility(0);
+      this.fys.setText(2131762718);
       AppMethodBeat.o(12800);
       return;
-      this.fuN.setVisibility(0);
-      this.fuN.setEnabled(false);
-      this.fuL.setText(2131762718);
+      this.fyu.setVisibility(0);
+      this.fyu.setEnabled(false);
+      this.fys.setText(2131762718);
       AppMethodBeat.o(12800);
       return;
-      this.fuN.setVisibility(8);
-      this.fuL.setText(2131762717);
-      this.fuN.setEnabled(false);
+      this.fyu.setVisibility(8);
+      this.fys.setText(2131762717);
+      this.fyu.setEnabled(false);
     }
   }
   

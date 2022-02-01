@@ -1,60 +1,36 @@
 package com.tencent.xweb.sys;
 
-import android.net.Uri;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.a.a;
-import java.util.Map;
 
 public final class c$e
-  implements com.tencent.xweb.WebResourceRequest
+  extends com.tencent.xweb.JsResult
 {
-  private Map<String, String> BTs;
-  private boolean IQX;
-  private boolean IQY;
-  a IQZ;
-  private String method;
-  private Uri url;
+  public android.webkit.JsResult KDs;
   
-  public c$e(android.webkit.WebResourceRequest paramWebResourceRequest)
+  public c$e(android.webkit.JsResult paramJsResult)
   {
-    AppMethodBeat.i(153666);
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      this.url = paramWebResourceRequest.getUrl();
-      this.IQX = paramWebResourceRequest.isForMainFrame();
-      this.IQY = paramWebResourceRequest.hasGesture();
-      this.method = paramWebResourceRequest.getMethod();
-      this.BTs = paramWebResourceRequest.getRequestHeaders();
-      this.IQZ = new a(this);
+    this.KDs = paramJsResult;
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(153665);
+    if (this.KDs != null) {
+      this.KDs.cancel();
     }
-    AppMethodBeat.o(153666);
+    AppMethodBeat.o(153665);
   }
   
-  public final String getMethod()
+  public final void confirm()
   {
-    return this.method;
+    AppMethodBeat.i(153664);
+    if (this.KDs != null) {
+      this.KDs.confirm();
+    }
+    AppMethodBeat.o(153664);
   }
   
-  public final Map<String, String> getRequestHeaders()
-  {
-    return this.BTs;
-  }
-  
-  public final Uri getUrl()
-  {
-    return this.url;
-  }
-  
-  public final boolean hasGesture()
-  {
-    return this.IQY;
-  }
-  
-  public final boolean isForMainFrame()
-  {
-    return this.IQX;
-  }
+  public final void confirmWithResult(String paramString) {}
 }
 
 

@@ -7,14 +7,14 @@ import java.util.Set;
 
 public final class i
 {
-  private static Set<n> ATO;
+  private static Set<n> Cmb;
   private static Object lock;
   
   static
   {
     AppMethodBeat.i(78357);
     lock = new Object();
-    ATO = new HashSet();
+    Cmb = new HashSet();
     AppMethodBeat.o(78357);
   }
   
@@ -23,7 +23,7 @@ public final class i
     AppMethodBeat.i(78355);
     synchronized (lock)
     {
-      ATO.add(paramn);
+      Cmb.add(paramn);
       AppMethodBeat.o(78355);
       return;
     }
@@ -34,18 +34,18 @@ public final class i
     AppMethodBeat.i(78356);
     synchronized (lock)
     {
-      ATO.remove(paramn);
+      Cmb.remove(paramn);
       AppMethodBeat.o(78356);
       return;
     }
   }
   
-  public static Set<n> elk()
+  public static Set<n> eAG()
   {
     AppMethodBeat.i(175738);
     synchronized (lock)
     {
-      HashSet localHashSet = new HashSet(ATO);
+      HashSet localHashSet = new HashSet(Cmb);
       AppMethodBeat.o(175738);
       return localHashSet;
     }

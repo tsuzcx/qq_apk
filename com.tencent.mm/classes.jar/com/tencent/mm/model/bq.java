@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -15,20 +15,20 @@ import org.json.JSONObject;
 
 public final class bq
 {
-  public static bq gPb;
-  private SharedPreferences gPc;
+  public static bq hpB;
+  private SharedPreferences hpC;
   
   static
   {
     AppMethodBeat.i(132261);
-    gPb = new bq();
+    hpB = new bq();
     AppMethodBeat.o(132261);
   }
   
   private bq()
   {
     AppMethodBeat.i(132258);
-    this.gPc = aj.getContext().getSharedPreferences(aj.eFD() + "_register_history", 0);
+    this.hpC = ai.getContext().getSharedPreferences(ai.eUX() + "_register_history", 0);
     AppMethodBeat.o(132258);
   }
   
@@ -42,15 +42,15 @@ public final class bq
       {
         if (paramMap.isEmpty())
         {
-          ad.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
+          ac.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
           AppMethodBeat.o(132259);
           return;
         }
-        if (!this.gPc.contains(paramString)) {
+        if (!this.hpC.contains(paramString)) {
           break label173;
         }
-        localObject = this.gPc.getString(paramString, "");
-        if (!bt.isNullOrNil((String)localObject))
+        localObject = this.hpC.getString(paramString, "");
+        if (!bs.isNullOrNil((String)localObject))
         {
           localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
           Iterator localIterator = paramMap.keySet().iterator();
@@ -65,7 +65,7 @@ public final class bq
       }
       catch (Exception paramMap)
       {
-        ad.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        ac.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
         AppMethodBeat.o(132259);
         return;
       }
@@ -73,8 +73,8 @@ public final class bq
       label173:
       localObject = new JSONObject();
     }
-    ad.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
-    this.gPc.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    ac.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.hpC.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
     AppMethodBeat.o(132259);
   }
   
@@ -83,13 +83,13 @@ public final class bq
     AppMethodBeat.i(132260);
     try
     {
-      ad.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
-      if (this.gPc.contains(paramString1))
+      ac.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.hpC.contains(paramString1))
       {
-        Object localObject = new String(Base64.decode(this.gPc.getString(paramString1, ""), 0));
-        if (!bt.isNullOrNil((String)localObject))
+        Object localObject = new String(Base64.decode(this.hpC.getString(paramString1, ""), 0));
+        if (!bs.isNullOrNil((String)localObject))
         {
-          ad.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
+          ac.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
           localObject = new JSONObject((String)localObject);
           if (((JSONObject)localObject).has(paramString2))
           {
@@ -101,14 +101,14 @@ public final class bq
       }
       else
       {
-        ad.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
+        ac.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+        ac.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
       }
     }
     AppMethodBeat.o(132260);

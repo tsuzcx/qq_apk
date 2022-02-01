@@ -32,22 +32,22 @@ public class CircularImageView
 {
   private static final String TAG;
   private int borderWidth;
-  private float iH;
-  private float iI;
-  private boolean ira;
-  private boolean jh;
+  private boolean isSelected;
+  private float jG;
+  private float jH;
+  private boolean kg;
   private Paint paint;
   private int shadowColor;
   private float shadowRadius;
-  private boolean xfA;
-  private int xfB;
-  private int xfC;
-  private BitmapShader xfD;
-  private Bitmap xfE;
-  private Paint xfF;
-  private Paint xfG;
-  private ColorFilter xfH;
-  private boolean xfz;
+  private boolean ysn;
+  private boolean yso;
+  private int ysp;
+  private int ysq;
+  private BitmapShader ysr;
+  private Bitmap yss;
+  private Paint yst;
+  private Paint ysu;
+  private ColorFilter ysv;
   
   static
   {
@@ -72,40 +72,61 @@ public class CircularImageView
     AppMethodBeat.i(97162);
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
-    this.xfF = new Paint();
-    this.xfF.setAntiAlias(true);
-    this.xfF.setStyle(Paint.Style.STROKE);
-    this.xfG = new Paint();
-    this.xfG.setAntiAlias(true);
+    this.yst = new Paint();
+    this.yst.setAntiAlias(true);
+    this.yst.setStyle(Paint.Style.STROKE);
+    this.ysu = new Paint();
+    this.ysu.setAntiAlias(true);
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, i.a.CircularImageView, paramInt, 0);
-    this.xfz = paramAttributeSet.getBoolean(0, false);
-    this.xfA = paramAttributeSet.getBoolean(3, false);
-    this.jh = paramAttributeSet.getBoolean(7, false);
-    if (this.xfz)
+    this.ysn = paramAttributeSet.getBoolean(0, false);
+    this.yso = paramAttributeSet.getBoolean(3, false);
+    this.kg = paramAttributeSet.getBoolean(7, false);
+    if (this.ysn)
     {
       setBorderWidth(paramAttributeSet.getDimensionPixelOffset(2, (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F)));
       setBorderColor(paramAttributeSet.getColor(1, -1));
     }
-    if (this.xfA)
+    if (this.yso)
     {
       paramInt = (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F);
       setSelectorColor(paramAttributeSet.getColor(4, 0));
       setSelectorStrokeWidth(paramAttributeSet.getDimensionPixelOffset(6, paramInt));
       setSelectorStrokeColor(paramAttributeSet.getColor(5, -16776961));
     }
-    if (this.jh)
+    if (this.kg)
     {
       this.shadowRadius = paramAttributeSet.getFloat(11, 4.0F);
-      this.iH = paramAttributeSet.getFloat(9, 0.0F);
-      this.iI = paramAttributeSet.getFloat(10, 2.0F);
+      this.jG = paramAttributeSet.getFloat(9, 0.0F);
+      this.jH = paramAttributeSet.getFloat(10, 2.0F);
       this.shadowColor = paramAttributeSet.getColor(8, -16777216);
       setShadowEnabled(true);
     }
     paramAttributeSet.recycle();
     AppMethodBeat.o(97162);
+  }
+  
+  private void dLB()
+  {
+    AppMethodBeat.i(97177);
+    if (this.yss == null)
+    {
+      AppMethodBeat.o(97177);
+      return;
+    }
+    Object localObject = this.yss;
+    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+    this.ysr = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
+    if ((this.ysp != this.yss.getWidth()) || (this.ysp != this.yss.getHeight()))
+    {
+      localObject = new Matrix();
+      float f = this.ysp / this.yss.getWidth();
+      ((Matrix)localObject).setScale(f, f);
+      this.ysr.setLocalMatrix((Matrix)localObject);
+    }
+    AppMethodBeat.o(97177);
   }
   
   private static Bitmap drawableToBitmap(Drawable paramDrawable)
@@ -145,34 +166,13 @@ public class CircularImageView
     return null;
   }
   
-  private void dxc()
-  {
-    AppMethodBeat.i(97177);
-    if (this.xfE == null)
-    {
-      AppMethodBeat.o(97177);
-      return;
-    }
-    Object localObject = this.xfE;
-    Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.xfD = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
-    if ((this.xfB != this.xfE.getWidth()) || (this.xfB != this.xfE.getHeight()))
-    {
-      localObject = new Matrix();
-      float f = this.xfB / this.xfE.getWidth();
-      ((Matrix)localObject).setScale(f, f);
-      this.xfD.setLocalMatrix((Matrix)localObject);
-    }
-    AppMethodBeat.o(97177);
-  }
-  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(97170);
     boolean bool;
     if (!isClickable())
     {
-      this.ira = false;
+      this.isSelected = false;
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(97170);
       return bool;
@@ -186,64 +186,64 @@ public class CircularImageView
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(97170);
       return bool;
-      this.ira = true;
+      this.isSelected = true;
       continue;
-      this.ira = false;
+      this.isSelected = false;
     }
   }
   
   public boolean isSelected()
   {
-    return this.ira;
+    return this.isSelected;
   }
   
   public void onDraw(Canvas paramCanvas)
   {
     int j = 0;
     AppMethodBeat.i(97169);
-    if (this.xfE == null)
+    if (this.yss == null)
     {
       AppMethodBeat.o(97169);
       return;
     }
-    if ((this.xfE.getHeight() == 0) || (this.xfE.getWidth() == 0))
+    if ((this.yss.getHeight() == 0) || (this.yss.getWidth() == 0))
     {
       AppMethodBeat.o(97169);
       return;
     }
-    int k = this.xfB;
+    int k = this.ysp;
     int i;
     if (getWidth() < getHeight())
     {
       i = getWidth();
-      this.xfB = i;
-      if (k != this.xfB) {
-        dxc();
+      this.ysp = i;
+      if (k != this.ysp) {
+        dLB();
       }
-      this.paint.setShader(this.xfD);
-      i = this.xfB / 2;
-      if ((!this.xfA) || (!this.ira)) {
+      this.paint.setShader(this.ysr);
+      i = this.ysp / 2;
+      if ((!this.yso) || (!this.isSelected)) {
         break label224;
       }
-      j = this.xfC;
-      i = (this.xfB - j * 2) / 2;
-      this.paint.setColorFilter(this.xfH);
-      paramCanvas.drawCircle(i + j, i + j, (this.xfB - j * 2) / 2 + j - 4.0F, this.xfG);
+      j = this.ysq;
+      i = (this.ysp - j * 2) / 2;
+      this.paint.setColorFilter(this.ysv);
+      paramCanvas.drawCircle(i + j, i + j, (this.ysp - j * 2) / 2 + j - 4.0F, this.ysu);
     }
     for (;;)
     {
-      paramCanvas.drawCircle(i + j, i + j, (this.xfB - j * 2) / 2, this.paint);
+      paramCanvas.drawCircle(i + j, i + j, (this.ysp - j * 2) / 2, this.paint);
       AppMethodBeat.o(97169);
       return;
       i = getHeight();
       break;
       label224:
-      if (this.xfz)
+      if (this.ysn)
       {
         j = this.borderWidth;
-        i = (this.xfB - j * 2) / 2;
+        i = (this.ysp - j * 2) / 2;
         this.paint.setColorFilter(null);
-        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.xfB - j / 2, this.xfB - j / 2), 360.0F, 360.0F, false, this.xfF);
+        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.ysp - j / 2, this.ysp - j / 2), 360.0F, 360.0F, false, this.yst);
       }
       else
       {
@@ -273,11 +273,11 @@ public class CircularImageView
       if (i == -2147483648) {
         break;
       }
-      paramInt1 = this.xfB;
+      paramInt1 = this.ysp;
       break;
       label70:
       if (i != -2147483648) {
-        paramInt2 = this.xfB;
+        paramInt2 = this.ysp;
       }
     }
   }
@@ -285,8 +285,8 @@ public class CircularImageView
   public void setBorderColor(int paramInt)
   {
     AppMethodBeat.i(97164);
-    if (this.xfF != null) {
-      this.xfF.setColor(paramInt);
+    if (this.yst != null) {
+      this.yst.setColor(paramInt);
     }
     invalidate();
     AppMethodBeat.o(97164);
@@ -296,8 +296,8 @@ public class CircularImageView
   {
     AppMethodBeat.i(97163);
     this.borderWidth = paramInt;
-    if (this.xfF != null) {
-      this.xfF.setStrokeWidth(paramInt);
+    if (this.yst != null) {
+      this.yst.setStrokeWidth(paramInt);
     }
     requestLayout();
     invalidate();
@@ -310,9 +310,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97174);
     super.setImageBitmap(paramBitmap);
-    this.xfE = paramBitmap;
-    if (this.xfB > 0) {
-      dxc();
+    this.yss = paramBitmap;
+    if (this.ysp > 0) {
+      dLB();
     }
     AppMethodBeat.o(97174);
   }
@@ -321,9 +321,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97173);
     super.setImageDrawable(paramDrawable);
-    this.xfE = drawableToBitmap(getDrawable());
-    if (this.xfB > 0) {
-      dxc();
+    this.yss = drawableToBitmap(getDrawable());
+    if (this.ysp > 0) {
+      dLB();
     }
     AppMethodBeat.o(97173);
   }
@@ -332,9 +332,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97172);
     super.setImageResource(paramInt);
-    this.xfE = drawableToBitmap(getDrawable());
-    if (this.xfB > 0) {
-      dxc();
+    this.yss = drawableToBitmap(getDrawable());
+    if (this.ysp > 0) {
+      dLB();
     }
     AppMethodBeat.o(97172);
   }
@@ -343,9 +343,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97171);
     super.setImageURI(paramUri);
-    this.xfE = drawableToBitmap(getDrawable());
-    if (this.xfB > 0) {
-      dxc();
+    this.yss = drawableToBitmap(getDrawable());
+    if (this.ysp > 0) {
+      dLB();
     }
     AppMethodBeat.o(97171);
   }
@@ -353,7 +353,7 @@ public class CircularImageView
   public void setSelectorColor(int paramInt)
   {
     AppMethodBeat.i(97165);
-    this.xfH = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.ysv = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     invalidate();
     AppMethodBeat.o(97165);
   }
@@ -361,8 +361,8 @@ public class CircularImageView
   public void setSelectorStrokeColor(int paramInt)
   {
     AppMethodBeat.i(97167);
-    if (this.xfG != null) {
-      this.xfG.setColor(paramInt);
+    if (this.ysu != null) {
+      this.ysu.setColor(paramInt);
     }
     invalidate();
     AppMethodBeat.o(97167);
@@ -371,7 +371,7 @@ public class CircularImageView
   public void setSelectorStrokeWidth(int paramInt)
   {
     AppMethodBeat.i(97166);
-    this.xfC = paramInt;
+    this.ysq = paramInt;
     requestLayout();
     invalidate();
     AppMethodBeat.o(97166);
@@ -380,12 +380,12 @@ public class CircularImageView
   public void setShadowEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(97168);
-    this.jh = paramBoolean;
-    if (this.jh) {}
+    this.kg = paramBoolean;
+    if (this.kg) {}
     for (float f = this.shadowRadius;; f = 0.0F)
     {
-      this.xfF.setShadowLayer(f, this.iH, this.iI, this.shadowColor);
-      this.xfG.setShadowLayer(f, this.iH, this.iI, this.shadowColor);
+      this.yst.setShadowLayer(f, this.jG, this.jH, this.shadowColor);
+      this.ysu.setShadowLayer(f, this.jG, this.jH, this.shadowColor);
       AppMethodBeat.o(97168);
       return;
     }
@@ -393,7 +393,7 @@ public class CircularImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.CircularImageView
  * JD-Core Version:    0.7.0.1
  */

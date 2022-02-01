@@ -5,59 +5,59 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void N(int paramInt, long paramLong);
+  public abstract void AN(int paramInt);
+  
+  public abstract void AO(int paramInt);
+  
+  public abstract void AP(int paramInt);
+  
+  public abstract void AQ(int paramInt);
+  
+  public abstract void M(int paramInt, long paramLong);
   
   public abstract void a(WXRTEditText paramWXRTEditText);
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract void bRA();
+  public abstract void bYM();
   
-  public abstract void bRB();
+  public abstract void bYN();
   
-  public abstract void bRC();
+  public abstract void bYO();
   
-  public abstract void bRD();
+  public abstract void bYP();
   
-  public abstract void bRE();
+  public abstract void bYQ();
   
-  public abstract void bRF();
+  public abstract void bYR();
   
-  public abstract int bRG();
+  public abstract void bYS();
   
-  public abstract int bRH();
+  public abstract void bYT();
   
-  public abstract boolean bRI();
+  public abstract void bYU();
   
-  public abstract RecyclerView bRJ();
+  public abstract int bYV();
   
-  public abstract void bRW();
+  public abstract int bYW();
   
-  public abstract void bRx();
+  public abstract boolean bYX();
   
-  public abstract void bRy();
+  public abstract RecyclerView bYY();
   
-  public abstract void bRz();
+  public abstract void bZl();
   
   public abstract void e(boolean paramBoolean, long paramLong);
   
-  public abstract void eV(int paramInt1, int paramInt2);
+  public abstract void eY(int paramInt1, int paramInt2);
   
-  public abstract void eW(int paramInt1, int paramInt2);
+  public abstract void eZ(int paramInt1, int paramInt2);
   
-  public abstract void eX(int paramInt1, int paramInt2);
-  
-  public abstract void zV(int paramInt);
-  
-  public abstract void zW(int paramInt);
-  
-  public abstract void zX(int paramInt);
-  
-  public abstract void zY(int paramInt);
+  public abstract void fa(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.b.a
  * JD-Core Version:    0.7.0.1
  */

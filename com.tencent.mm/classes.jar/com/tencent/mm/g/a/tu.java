@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.HashMap;
 
 public final class tu
   extends b
 {
-  public a dzd;
+  public a dwz;
   
   public tu()
   {
@@ -16,23 +15,22 @@ public final class tu
   
   private tu(byte paramByte)
   {
-    AppMethodBeat.i(94815);
-    this.dzd = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125639);
+    this.dwz = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(94815);
+    AppMethodBeat.o(125639);
   }
   
   public static final class a
   {
-    public long dze;
-    public int dzf;
-    public HashMap dzg;
+    public String ddB;
+    public String dnn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.tu
  * JD-Core Version:    0.7.0.1
  */

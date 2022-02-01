@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public final class a
 {
-  private static final int[] bXH;
+  private static final int[] bVp;
   
   static
   {
@@ -255,18 +255,18 @@ public final class a
     arrayOfInt['ó'] = 800076929;
     arrayOfInt['ô'] = 1600153859;
     arrayOfInt;
-    bXH = arrayOfInt;
+    bVp = arrayOfInt;
     Arrays.sort(arrayOfInt);
   }
   
-  public static int gw(int paramInt)
+  public static int gh(int paramInt)
   {
-    int i = Arrays.binarySearch(bXH, paramInt);
+    int i = Arrays.binarySearch(bVp, paramInt);
     paramInt = i;
     if (i < 0) {
       paramInt = -i - 1;
     }
-    return bXH[paramInt];
+    return bVp[paramInt];
   }
 }
 

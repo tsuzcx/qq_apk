@@ -1,16 +1,17 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.d;
+import com.tencent.mm.ak.f.d;
 import com.tencent.mm.app.n.a;
 import com.tencent.mm.blink.b;
-import com.tencent.mm.g.a.ii;
-import com.tencent.mm.g.a.yn;
+import com.tencent.mm.g.a.cy;
+import com.tencent.mm.g.a.hh;
+import com.tencent.mm.g.a.ip;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bz;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -18,13 +19,13 @@ public class ap
   implements aw
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private p BQI;
-  private ao.a BQJ;
-  private k BQK;
-  private com.tencent.mm.pluginsdk.model.d BQL;
-  private com.tencent.mm.sdk.b.c BQM;
-  private com.tencent.mm.sdk.b.c BQN;
-  private com.tencent.mm.sdk.b.c<yn> Lwv;
+  private p DiX;
+  private ao.a DiY;
+  private k DiZ;
+  private com.tencent.mm.pluginsdk.model.d Dja;
+  private com.tencent.mm.sdk.b.c<hh> Djb;
+  private com.tencent.mm.sdk.b.c Djc;
+  private com.tencent.mm.sdk.b.c Djd;
   private n.a appForegroundListener;
   
   static
@@ -32,60 +33,68 @@ public class ap
     AppMethodBeat.i(31134);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("APPMESSAGE_TABLE".hashCode()), new ap.2());
-    baseDBFactories.put(Integer.valueOf("APPSORT_TABLE".hashCode()), new h.b()
+    localHashMap.put(Integer.valueOf("APPMESSAGE_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return p.SQL_CREATE;
+        return l.SQL_CREATE;
       }
     });
+    baseDBFactories.put(Integer.valueOf("APPSORT_TABLE".hashCode()), new ap.3());
     AppMethodBeat.o(31134);
   }
   
   public ap()
   {
     AppMethodBeat.i(31121);
-    this.BQJ = null;
-    this.BQK = new k();
-    this.BQL = new com.tencent.mm.pluginsdk.model.d();
-    this.Lwv = new com.tencent.mm.sdk.b.c() {};
+    this.DiY = null;
+    this.DiZ = new k();
+    this.Dja = new com.tencent.mm.pluginsdk.model.d();
+    this.Djb = new com.tencent.mm.sdk.b.c() {};
     this.appForegroundListener = new n.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
-        AppMethodBeat.i(204862);
-        if ((com.tencent.mm.kernel.g.afw()) && (com.tencent.mm.kernel.g.afz().gcn))
+        AppMethodBeat.i(196112);
+        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
         {
-          com.tencent.mm.kernel.g.afz();
-          com.tencent.mm.kernel.a.aeC();
+          com.tencent.mm.kernel.g.agP();
+          com.tencent.mm.kernel.a.afS();
         }
-        AppMethodBeat.o(204862);
+        AppMethodBeat.o(196112);
       }
       
       public final void onAppForeground(String paramAnonymousString)
       {
-        AppMethodBeat.i(204861);
-        if ((com.tencent.mm.kernel.g.afw()) && (com.tencent.mm.kernel.g.afz().gcn))
+        AppMethodBeat.i(196111);
+        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
         {
-          com.tencent.mm.kernel.g.afz();
-          if (!com.tencent.mm.kernel.a.aeC()) {
-            b.SX().v(new ap.5.1(this));
+          com.tencent.mm.kernel.g.agP();
+          if (!com.tencent.mm.kernel.a.afS()) {
+            b.TR().w(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(196110);
+                ap.eLn().run();
+                AppMethodBeat.o(196110);
+              }
+            });
           }
         }
-        AppMethodBeat.o(204861);
+        AppMethodBeat.o(196111);
       }
     };
-    this.BQM = new com.tencent.mm.sdk.b.c()
+    this.Djc = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(ii paramAnonymousii)
+      private static boolean a(ip paramAnonymousip)
       {
-        AppMethodBeat.i(204863);
+        AppMethodBeat.i(196113);
         for (;;)
         {
           try
           {
-            com.tencent.mm.m.e locale = com.tencent.mm.m.g.Zd();
+            com.tencent.mm.m.e locale = com.tencent.mm.m.g.ZY();
             if (locale != null) {
               continue;
             }
@@ -96,62 +105,62 @@ public class ap
             int i = 0;
             continue;
           }
-          paramAnonymousii.dmj.dfo = i;
-          AppMethodBeat.o(204863);
+          paramAnonymousip.djR.dcJ = i;
+          AppMethodBeat.o(196113);
           return false;
-          i = bt.getInt(com.tencent.mm.m.g.Zd().getValue("AndroidUseUnicodeEmoji"), 0);
+          i = bs.getInt(com.tencent.mm.m.g.ZY().getValue("AndroidUseUnicodeEmoji"), 0);
         }
       }
     };
-    this.BQN = new ap.7(this);
+    this.Djd = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(31121);
   }
   
-  public static d bxS()
+  public static d bEO()
   {
     AppMethodBeat.i(31124);
-    d locald = com.tencent.mm.plugin.s.a.bxS();
+    d locald = com.tencent.mm.plugin.s.a.bEO();
     AppMethodBeat.o(31124);
     return locald;
   }
   
-  public static i cZP()
-  {
-    AppMethodBeat.i(31125);
-    i locali = com.tencent.mm.plugin.s.a.cZP();
-    AppMethodBeat.o(31125);
-    return locali;
-  }
-  
-  public static j cZQ()
-  {
-    AppMethodBeat.i(31126);
-    j localj = com.tencent.mm.plugin.s.a.cZQ();
-    AppMethodBeat.o(31126);
-    return localj;
-  }
-  
-  public static n cZS()
+  public static n dnA()
   {
     AppMethodBeat.i(31130);
-    n localn = com.tencent.mm.plugin.s.a.cZS();
+    n localn = com.tencent.mm.plugin.s.a.dnA();
     AppMethodBeat.o(31130);
     return localn;
   }
   
-  public static e cZT()
+  public static e dnB()
   {
     AppMethodBeat.i(31131);
-    e locale = com.tencent.mm.plugin.s.a.cZT();
+    e locale = com.tencent.mm.plugin.s.a.dnB();
     AppMethodBeat.o(31131);
     return locale;
   }
   
-  private static ap evP()
+  public static i dnx()
+  {
+    AppMethodBeat.i(31125);
+    i locali = com.tencent.mm.plugin.s.a.dnx();
+    AppMethodBeat.o(31125);
+    return locali;
+  }
+  
+  public static j dny()
+  {
+    AppMethodBeat.i(31126);
+    j localj = com.tencent.mm.plugin.s.a.dny();
+    AppMethodBeat.o(31126);
+    return localj;
+  }
+  
+  private static ap eLj()
   {
     AppMethodBeat.i(31122);
-    az.arP();
-    ap localap2 = (ap)bz.ut(ap.class.getName());
+    az.ayG();
+    ap localap2 = (ap)bz.yz(ap.class.getName());
     ap localap1 = localap2;
     if (localap2 == null) {
       localap1 = new ap();
@@ -160,45 +169,45 @@ public class ap
     return localap1;
   }
   
-  public static k evQ()
+  public static k eLk()
   {
     AppMethodBeat.i(31123);
-    k localk = evP().BQK;
+    k localk = eLj().DiZ;
     AppMethodBeat.o(31123);
     return localk;
   }
   
-  public static l evR()
+  public static l eLl()
   {
     AppMethodBeat.i(31127);
-    l locall = com.tencent.mm.plugin.s.a.cZR();
+    l locall = com.tencent.mm.plugin.s.a.dnz();
     AppMethodBeat.o(31127);
     return locall;
   }
   
-  public static p evS()
+  public static p eLm()
   {
     AppMethodBeat.i(31128);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (evP().BQI == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (eLj().DiX == null)
     {
-      localObject = evP();
-      az.arV();
-      ((ap)localObject).BQI = new p(com.tencent.mm.model.c.afg());
+      localObject = eLj();
+      az.ayM();
+      ((ap)localObject).DiX = new p(com.tencent.mm.model.c.agw());
     }
-    Object localObject = evP().BQI;
+    Object localObject = eLj().DiX;
     AppMethodBeat.o(31128);
     return localObject;
   }
   
-  public static ao.a evT()
+  public static ao.a eLn()
   {
     AppMethodBeat.i(31129);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (evP().BQJ == null) {
-      evP().BQJ = new ao.a();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (eLj().DiY == null) {
+      eLj().DiY = new ao.a();
     }
-    ao.a locala = evP().BQJ;
+    ao.a locala = eLj().DiY;
     AppMethodBeat.o(31129);
     return locala;
   }
@@ -213,20 +222,20 @@ public class ap
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(31133);
-    com.tencent.mm.model.ag.a.gMU = com.tencent.mm.plugin.s.a.cZP();
-    f.d.a(Integer.valueOf(47), this.BQL);
-    f.d.a(Integer.valueOf(49), this.BQK);
-    com.tencent.mm.sdk.b.a.ESL.c(this.BQM);
-    com.tencent.mm.sdk.b.a.ESL.c(this.BQN);
+    com.tencent.mm.model.ag.a.hnu = com.tencent.mm.plugin.s.a.dnx();
+    f.d.a(Integer.valueOf(47), this.Dja);
+    f.d.a(Integer.valueOf(49), this.DiZ);
+    com.tencent.mm.sdk.b.a.GpY.c(this.Djc);
+    com.tencent.mm.sdk.b.a.GpY.c(this.Djd);
     this.appForegroundListener.alive();
-    this.Lwv.alive();
+    this.Djb.alive();
     Runnable local4 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(204859);
+        AppMethodBeat.i(196109);
         SightVideoJNI.registerALL();
-        AppMethodBeat.o(204859);
+        AppMethodBeat.o(196109);
       }
     };
     try
@@ -237,7 +246,7 @@ public class ap
     }
     catch (Throwable localThrowable)
     {
-      if (com.tencent.mm.compatible.util.d.lg(20))
+      if (com.tencent.mm.compatible.util.d.la(20))
       {
         local4.run();
         AppMethodBeat.o(31133);
@@ -251,17 +260,17 @@ public class ap
   public void onAccountRelease()
   {
     AppMethodBeat.i(31132);
-    ao.a locala = evP().BQJ;
+    ao.a locala = eLj().DiY;
     if (locala != null) {
-      locala.cZF = 0;
+      locala.cXb = 0;
     }
-    f.d.b(Integer.valueOf(47), this.BQL);
-    f.d.b(Integer.valueOf(49), this.BQK);
+    f.d.b(Integer.valueOf(47), this.Dja);
+    f.d.b(Integer.valueOf(49), this.DiZ);
     this.appForegroundListener.dead();
-    com.tencent.mm.sdk.b.a.ESL.d(this.BQM);
-    com.tencent.mm.sdk.b.a.ESL.d(this.BQN);
-    this.Lwv.dead();
-    com.tencent.mm.pluginsdk.model.l.evj();
+    com.tencent.mm.sdk.b.a.GpY.d(this.Djc);
+    com.tencent.mm.sdk.b.a.GpY.d(this.Djd);
+    this.Djb.dead();
+    com.tencent.mm.pluginsdk.model.l.eKD();
     AppMethodBeat.o(31132);
   }
   
@@ -269,7 +278,7 @@ public class ap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ap
  * JD-Core Version:    0.7.0.1
  */

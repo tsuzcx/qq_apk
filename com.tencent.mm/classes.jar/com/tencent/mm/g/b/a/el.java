@@ -6,49 +6,72 @@ import com.tencent.mm.plugin.report.a;
 public final class el
   extends a
 {
-  public long dFd = 0L;
-  public long dKe = 0L;
-  private String dZu = "";
+  private String dEE;
+  public long dII = 0L;
+  public long dNu = 0L;
+  private String dUC;
+  public long dUM = 0L;
+  public long dUy = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(149938);
+    AppMethodBeat.i(110293);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dKe);
+    ((StringBuffer)localObject).append(this.dEE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFd);
+    ((StringBuffer)localObject).append(this.dUy);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZu);
+    ((StringBuffer)localObject).append(this.dII);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dNu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUC);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(149938);
+    arz((String)localObject);
+    AppMethodBeat.o(110293);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(149939);
+    AppMethodBeat.i(110294);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dKe);
+    ((StringBuffer)localObject).append("ChatName:").append(this.dEE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dFd);
+    ((StringBuffer)localObject).append("SessionID:").append(this.dUy);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OrderId:").append(this.dZu);
+    ((StringBuffer)localObject).append("EnterScene:").append(this.dII);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExitType:").append(this.dNu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("OperateType:").append(this.dUM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Identifier:").append(this.dUC);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149939);
+    AppMethodBeat.o(110294);
     return localObject;
   }
   
   public final int getId()
   {
-    return 17072;
+    return 18256;
   }
   
-  public final el kJ(String paramString)
+  public final el mj(String paramString)
   {
-    AppMethodBeat.i(149937);
-    this.dZu = t("OrderId", paramString, true);
-    AppMethodBeat.o(149937);
+    AppMethodBeat.i(110291);
+    this.dEE = t("ChatName", paramString, true);
+    AppMethodBeat.o(110291);
+    return this;
+  }
+  
+  public final el mk(String paramString)
+  {
+    AppMethodBeat.i(110292);
+    this.dUC = t("Identifier", paramString, true);
+    AppMethodBeat.o(110292);
     return this;
   }
 }

@@ -17,12 +17,12 @@ import java.util.Set;
 
 final class c
 {
-  public static final c JvE;
+  public static final c LiX;
   
   static
   {
     AppMethodBeat.i(57358);
-    JvE = new c();
+    LiX = new c();
     AppMethodBeat.o(57358);
   }
   
@@ -39,23 +39,23 @@ final class c
         AppMethodBeat.o(57357);
         throw parama;
       }
-      parama.a(paramf, bq((Class)paramObject));
+      parama.a(paramf, bt((Class)paramObject));
       AppMethodBeat.o(57357);
       return;
     }
-    if (h.fAu().contains(localObject))
+    if (h.fSY().contains(localObject))
     {
       parama.a(paramf, paramObject);
       AppMethodBeat.o(57357);
       return;
     }
-    if (d.l.b.a.b.b.d.b.b.bt((Class)localObject))
+    if (d.l.b.a.b.b.d.b.b.bw((Class)localObject))
     {
       if (((Class)localObject).isEnum()) {}
       for (;;)
       {
         k.g(localObject, "(if (clazz.isEnum) clazz…lse clazz.enclosingClass)");
-        localObject = d.l.b.a.b.b.d.b.b.bw((Class)localObject);
+        localObject = d.l.b.a.b.b.d.b.b.bz((Class)localObject);
         if (paramObject != null) {
           break;
         }
@@ -64,7 +64,7 @@ final class c
         throw parama;
         localObject = ((Class)localObject).getEnclosingClass();
       }
-      paramObject = d.l.b.a.b.f.f.aQC(((Enum)paramObject).name());
+      paramObject = d.l.b.a.b.f.f.aWB(((Enum)paramObject).name());
       k.g(paramObject, "Name.identifier((value as Enum<*>).name)");
       parama.a(paramf, (d.l.b.a.b.f.a)localObject, paramObject);
       AppMethodBeat.o(57357);
@@ -74,9 +74,9 @@ final class c
     {
       localObject = ((Class)localObject).getInterfaces();
       k.g(localObject, "clazz.interfaces");
-      localObject = (Class)e.Q((Object[])localObject);
+      localObject = (Class)e.S((Object[])localObject);
       k.g(localObject, "annotationClass");
-      parama = parama.a(paramf, d.l.b.a.b.b.d.b.b.bw((Class)localObject));
+      parama = parama.a(paramf, d.l.b.a.b.b.d.b.b.bz((Class)localObject));
       if (parama == null)
       {
         AppMethodBeat.o(57357);
@@ -104,7 +104,7 @@ final class c
       k.g(paramf, "componentType");
       if (paramf.isEnum())
       {
-        paramf = d.l.b.a.b.b.d.b.b.bw(paramf);
+        paramf = d.l.b.a.b.b.d.b.b.bz(paramf);
         if (paramObject == null)
         {
           parama = new v("null cannot be cast to non-null type kotlin.Array<*>");
@@ -123,7 +123,7 @@ final class c
             AppMethodBeat.o(57357);
             throw parama;
           }
-          localObject = d.l.b.a.b.f.f.aQC(((Enum)localObject).name());
+          localObject = d.l.b.a.b.f.f.aWB(((Enum)localObject).name());
           k.g(localObject, "Name.identifier((element as Enum<*>).name)");
           parama.a(paramf, (d.l.b.a.b.f.f)localObject);
           i += 1;
@@ -149,7 +149,7 @@ final class c
             AppMethodBeat.o(57357);
             throw parama;
           }
-          parama.a(bq((Class)paramObject));
+          parama.a(bt((Class)paramObject));
           i += 1;
         }
       }
@@ -163,10 +163,10 @@ final class c
       int j = paramf.length;
       while (i < j)
       {
-        parama.fe(paramf[i]);
+        parama.fh(paramf[i]);
         i += 1;
       }
-      parama.HB();
+      parama.Hm();
       AppMethodBeat.o(57357);
       return;
     }
@@ -179,10 +179,10 @@ final class c
   {
     AppMethodBeat.i(57354);
     Class localClass = d.g.a.a(d.g.a.a(paramAnnotation));
-    paramc = paramc.a(d.l.b.a.b.b.d.b.b.bw(localClass), (an)new b(paramAnnotation));
+    paramc = paramc.a(d.l.b.a.b.b.d.b.b.bz(localClass), (an)new b(paramAnnotation));
     if (paramc != null)
     {
-      JvE.a(paramc, paramAnnotation, localClass);
+      LiX.a(paramc, paramAnnotation, localClass);
       AppMethodBeat.o(57354);
       return;
     }
@@ -204,11 +204,11 @@ final class c
       a(paramc, localObject);
       i += 1;
     }
-    paramc.HB();
+    paramc.Hm();
     AppMethodBeat.o(57353);
   }
   
-  private static d.l.b.a.b.j.b.f bq(Class<?> paramClass)
+  private static d.l.b.a.b.j.b.f bt(Class<?> paramClass)
   {
     AppMethodBeat.i(57356);
     int i = 0;
@@ -222,25 +222,25 @@ final class c
     {
       if (k.g(paramClass, Void.TYPE))
       {
-        paramClass = d.l.b.a.b.f.a.p(g.JlM.JlU.fHh());
+        paramClass = d.l.b.a.b.f.a.p(g.KZg.KZo.fZL());
         k.g(paramClass, "ClassId.topLevel(KotlinB…s.FQ_NAMES.unit.toSafe())");
         paramClass = new d.l.b.a.b.j.b.f(paramClass, i);
         AppMethodBeat.o(57356);
         return paramClass;
       }
-      paramClass = d.aQP(paramClass.getName());
+      paramClass = d.aWO(paramClass.getName());
       k.g(paramClass, "JvmPrimitiveType.get(currentClass.name)");
-      paramClass = paramClass.fJc();
+      paramClass = paramClass.gbF();
       k.g(paramClass, "JvmPrimitiveType.get(cur…Class.name).primitiveType");
       if (i > 0)
       {
-        if (paramClass.JnE != null)
+        if (paramClass.LaY != null)
         {
-          localObject = paramClass.JnE;
+          localObject = paramClass.LaY;
           paramClass = (Class<?>)localObject;
           if (localObject == null)
           {
-            d.l.b.a.b.a.h.adP(4);
+            d.l.b.a.b.a.h.agL(4);
             paramClass = (Class<?>)localObject;
           }
         }
@@ -251,23 +251,23 @@ final class c
           paramClass = new d.l.b.a.b.j.b.f(paramClass, i - 1);
           AppMethodBeat.o(57356);
           return paramClass;
-          paramClass.JnE = g.JlB.p(paramClass.JnC);
-          localObject = paramClass.JnE;
+          paramClass.LaY = g.KYV.p(paramClass.LaW);
+          localObject = paramClass.LaY;
           paramClass = (Class<?>)localObject;
           if (localObject == null)
           {
-            d.l.b.a.b.a.h.adP(5);
+            d.l.b.a.b.a.h.agL(5);
             paramClass = (Class<?>)localObject;
           }
         }
       }
-      if (paramClass.JnD != null)
+      if (paramClass.LaX != null)
       {
-        localObject = paramClass.JnD;
+        localObject = paramClass.LaX;
         paramClass = (Class<?>)localObject;
         if (localObject == null)
         {
-          d.l.b.a.b.a.h.adP(1);
+          d.l.b.a.b.a.h.agL(1);
           paramClass = (Class<?>)localObject;
         }
       }
@@ -278,19 +278,19 @@ final class c
         paramClass = new d.l.b.a.b.j.b.f(paramClass, i);
         AppMethodBeat.o(57356);
         return paramClass;
-        paramClass.JnD = g.JlB.p(paramClass.JnB);
-        localObject = paramClass.JnD;
+        paramClass.LaX = g.KYV.p(paramClass.LaV);
+        localObject = paramClass.LaX;
         paramClass = (Class<?>)localObject;
         if (localObject == null)
         {
-          d.l.b.a.b.a.h.adP(2);
+          d.l.b.a.b.a.h.agL(2);
           paramClass = (Class<?>)localObject;
         }
       }
     }
-    paramClass = d.l.b.a.b.b.d.b.b.bw(paramClass);
-    Object localObject = d.l.b.a.b.a.b.c.JoY;
-    localObject = paramClass.fHb();
+    paramClass = d.l.b.a.b.b.d.b.b.bz(paramClass);
+    Object localObject = d.l.b.a.b.a.b.c.Lcr;
+    localObject = paramClass.fZF();
     k.g(localObject, "javaClassId.asSingleFqName()");
     localObject = d.l.b.a.b.a.b.c.c((d.l.b.a.b.f.b)localObject);
     if (localObject == null) {}
@@ -316,10 +316,10 @@ final class c
       {
         Object localObject1 = ((Method)localObject2).invoke(paramAnnotation, new Object[0]);
         if (localObject1 == null) {
-          k.fvU();
+          k.fOy();
         }
         k.g(localObject2, "method");
-        localObject2 = d.l.b.a.b.f.f.aQC(((Method)localObject2).getName());
+        localObject2 = d.l.b.a.b.f.f.aWB(((Method)localObject2).getName());
         k.g(localObject2, "Name.identifier(method.name)");
         a(parama, (d.l.b.a.b.f.f)localObject2, localObject1);
       }
@@ -330,13 +330,13 @@ final class c
       }
       i += 1;
     }
-    parama.HB();
+    parama.Hm();
     AppMethodBeat.o(57355);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public final class a
     this.filePath = paramString2;
   }
   
-  public final void MQ()
+  public final void MO()
   {
     AppMethodBeat.i(136749);
     b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "runTask, appId:%s", new Object[] { this.appId });
@@ -30,7 +30,7 @@ public final class a
     if (TextUtils.isEmpty(this.filePath))
     {
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file task");
-      localObject2 = e.MN().MP();
+      localObject2 = e.ML().MN();
       if (((ArrayList)localObject2).size() > 0)
       {
         localObject1 = "";
@@ -39,10 +39,10 @@ public final class a
         while (localIterator.hasNext())
         {
           localObject2 = (String)localIterator.next();
-          d locald = e.MN().eY((String)localObject2);
-          if ((locald == null) || (!locald.azh) || (!locald.cTp))
+          d locald = e.ML().eO((String)localObject2);
+          if ((locald == null) || (!locald.aAb) || (!locald.cQM))
           {
-            int j = e.MN().eZ((String)localObject2);
+            int j = e.ML().eP((String)localObject2);
             if (j < i) {
               break label291;
             }
@@ -56,18 +56,18 @@ public final class a
     for (;;)
     {
       break;
-      localObject2 = e.MN().eY((String)localObject1);
-      if ((localObject2 != null) && (((d)localObject2).azh) && (!((d)localObject2).cTp)) {
-        ((d)localObject2).eX(this.appId);
+      localObject2 = e.ML().eO((String)localObject1);
+      if ((localObject2 != null) && (((d)localObject2).aAb) && (!((d)localObject2).cQM)) {
+        ((d)localObject2).eN(this.appId);
       }
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file path :%s, size:%d", new Object[] { localObject1, Integer.valueOf(i) });
       AppMethodBeat.o(136749);
       return;
-      i = e.MN().eZ(this.filePath);
+      i = e.ML().eP(this.filePath);
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file path :%s, size:%d", new Object[] { this.filePath, Integer.valueOf(i) });
-      localObject1 = e.MN().eY(this.filePath);
-      if ((localObject1 != null) && (((d)localObject1).azh) && (!((d)localObject1).cTp)) {
-        ((d)localObject1).eX(this.appId);
+      localObject1 = e.ML().eO(this.filePath);
+      if ((localObject1 != null) && (((d)localObject1).aAb) && (!((d)localObject1).cQM)) {
+        ((d)localObject1).eN(this.appId);
       }
       AppMethodBeat.o(136749);
       return;

@@ -9,22 +9,22 @@ import d.n.n;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/tabbar/IconLoaderManager;", "", "()V", "iconLoaderMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/widget/tabbar/IconLoader;", "Lkotlin/collections/HashMap;", "getIconLoaderInner", "iconPath", "", "errorHandler", "Lcom/tencent/mm/plugin/appbrand/widget/tabbar/IconLoadErrorHandler;", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "getSpecificLoader", "index", "isPackageIcon", "", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/tabbar/IconLoaderManager;", "", "()V", "iconLoaderMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/widget/tabbar/IconLoader;", "Lkotlin/collections/HashMap;", "getIconLoaderInner", "iconPath", "", "errorHandler", "Lcom/tencent/mm/plugin/appbrand/widget/tabbar/IconLoadErrorHandler;", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "getSpecificLoader", "index", "isPackageIcon", "", "luggage-wxa-app_release"})
 public final class f
 {
-  final HashMap<Integer, d> mnw;
+  final HashMap<Integer, d> mPx;
   
   public f()
   {
     AppMethodBeat.i(135628);
-    this.mnw = new HashMap();
+    this.mPx = new HashMap();
     AppMethodBeat.o(135628);
   }
   
-  private static boolean Oa(String paramString)
+  private static boolean Sj(String paramString)
   {
     AppMethodBeat.i(135627);
-    if ((n.mB(paramString, ".png")) || (n.mB(paramString, ".jpg")) || (n.mB(paramString, ".bmp")) || (n.mB(paramString, ".gif")))
+    if ((n.nc(paramString, ".png")) || (n.nc(paramString, ".jpg")) || (n.nc(paramString, ".bmp")) || (n.nc(paramString, ".gif")))
     {
       AppMethodBeat.o(135627);
       return true;
@@ -43,13 +43,13 @@ public final class f
       AppMethodBeat.o(135626);
       return paramString;
     }
-    if (true == n.mA(paramString, "wxfile://"))
+    if (true == n.nb(paramString, "wxfile://"))
     {
       paramString = (d)new i(paramString, paramc, paramq);
       AppMethodBeat.o(135626);
       return paramString;
     }
-    if (true == Oa(paramString))
+    if (true == Sj(paramString))
     {
       paramString = (d)new h(paramString, paramc, paramq);
       AppMethodBeat.o(135626);
@@ -69,16 +69,16 @@ public final class f
     paramString = a(paramString, paramc, paramq);
     paramString.setIndex(paramInt);
     paramString.a((d.a)new a(this));
-    paramc = (d)this.mnw.get(Integer.valueOf(paramInt));
+    paramc = (d)this.mPx.get(Integer.valueOf(paramInt));
     if (paramc != null) {
       paramc.cancel();
     }
-    ((Map)this.mnw).put(Integer.valueOf(paramInt), paramString);
+    ((Map)this.mPx).put(Integer.valueOf(paramInt), paramString);
     AppMethodBeat.o(135625);
     return paramString;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "destroy"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "destroy"})
   static final class a
     implements d.a
   {
@@ -88,7 +88,7 @@ public final class f
     {
       AppMethodBeat.i(135624);
       if (paramInt >= 0) {
-        ((Map)this.mnx.mnw).put(Integer.valueOf(paramInt), null);
+        ((Map)this.mPy.mPx).put(Integer.valueOf(paramInt), null);
       }
       AppMethodBeat.o(135624);
     }
@@ -96,7 +96,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.f
  * JD-Core Version:    0.7.0.1
  */

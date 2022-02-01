@@ -11,24 +11,24 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.k.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class NewMyLocationButton
   extends FrameLayout
 {
   private Context context;
-  private b.a fjJ;
-  private ImageButton sQG;
-  private LinearLayout sQH;
-  private com.tencent.mm.plugin.k.d sQI;
-  private boolean sQJ;
+  private b.a fnd;
+  private ImageButton tYT;
+  private LinearLayout tYU;
+  private com.tencent.mm.plugin.k.d tYV;
+  private boolean tYW;
   
   public NewMyLocationButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55847);
-    this.sQJ = true;
-    this.fjJ = new b.a()
+    this.tYW = true;
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -47,12 +47,12 @@ public class NewMyLocationButton
             NewMyLocationButton.c(NewMyLocationButton.this).getIController().setZoom(15);
           }
         }
-        new ap(Looper.getMainLooper()).post(new Runnable()
+        new ao(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(55844);
-            com.tencent.mm.modelgeo.d.axT().c(NewMyLocationButton.e(NewMyLocationButton.this));
+            com.tencent.mm.modelgeo.d.aEL().c(NewMyLocationButton.e(NewMyLocationButton.this));
             AppMethodBeat.o(55844);
           }
         });
@@ -69,8 +69,8 @@ public class NewMyLocationButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55846);
-    this.sQJ = true;
-    this.fjJ = new b.a()
+    this.tYW = true;
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -89,12 +89,12 @@ public class NewMyLocationButton
             NewMyLocationButton.c(NewMyLocationButton.this).getIController().setZoom(15);
           }
         }
-        new ap(Looper.getMainLooper()).post(new Runnable()
+        new ao(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(55844);
-            com.tencent.mm.modelgeo.d.axT().c(NewMyLocationButton.e(NewMyLocationButton.this));
+            com.tencent.mm.modelgeo.d.aEL().c(NewMyLocationButton.e(NewMyLocationButton.this));
             AppMethodBeat.o(55844);
           }
         });
@@ -111,38 +111,38 @@ public class NewMyLocationButton
   {
     AppMethodBeat.i(55848);
     View localView = View.inflate(this.context, 2131495016, this);
-    this.sQG = ((ImageButton)localView.findViewById(2131302788));
-    this.sQH = ((LinearLayout)localView.findViewById(2131302796));
+    this.tYT = ((ImageButton)localView.findViewById(2131302788));
+    this.tYU = ((LinearLayout)localView.findViewById(2131302796));
     AppMethodBeat.o(55848);
   }
   
   public void setAnimToSelf(boolean paramBoolean)
   {
-    this.sQJ = paramBoolean;
+    this.tYW = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55849);
-    this.sQG.setOnClickListener(paramOnClickListener);
+    this.tYT.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55849);
   }
   
   public void setProgressBar(com.tencent.mm.plugin.k.d paramd)
   {
     AppMethodBeat.i(55850);
-    this.sQI = paramd;
-    this.sQH.setVisibility(0);
-    this.sQG.setVisibility(8);
-    com.tencent.mm.modelgeo.d.axT().b(this.fjJ, true);
+    this.tYV = paramd;
+    this.tYU.setVisibility(0);
+    this.tYT.setVisibility(8);
+    com.tencent.mm.modelgeo.d.aEL().b(this.fnd, true);
     AppMethodBeat.o(55850);
   }
   
   public void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(55851);
-    if (paramBoolean != this.sQG.isSelected()) {
-      this.sQG.setSelected(paramBoolean);
+    if (paramBoolean != this.tYT.isSelected()) {
+      this.tYT.setSelected(paramBoolean);
     }
     AppMethodBeat.o(55851);
   }

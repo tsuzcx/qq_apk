@@ -1,52 +1,58 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import d.g.b.k;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.report.h.a;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.aoa;
+import com.tencent.mm.protocal.protobuf.aob;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.dcw;
 import d.l;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/FinderCgiConstants;", "", "()V", "CGI_1", "", "getCGI_1", "()Ljava/lang/String;", "CGI_2", "getCGI_2", "CGI_PRE", "getCGI_PRE", "setCGI_PRE", "(Ljava/lang/String;)V", "TAG", "getTAG", "config", "", "finder-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStatsReport;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderStatsReportResponse;", "stats", "", "Lcom/tencent/mm/protocal/protobuf/Stats;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/util/List;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "plugin-finder_release"})
 public final class j
+  extends r<aob>
 {
-  private static final String TAG = "Finder.FinderCgiConstants";
-  private static final String qoL = "/cgi-bin/mmfinder-bin";
-  private static final String qoM = "/cgi-bin/micromsg-bin";
-  private static String qoN;
-  public static final j qoO;
-  
-  static
+  public j(List<? extends dcw> paramList, anm paramanm)
   {
-    AppMethodBeat.i(168863);
-    qoO = new j();
-    TAG = "Finder.FinderCgiConstants";
-    qoL = "/cgi-bin/mmfinder-bin";
-    qoM = "/cgi-bin/micromsg-bin";
-    qoN = "/cgi-bin/micromsg-bin";
-    AppMethodBeat.o(168863);
-  }
-  
-  public static void cky()
-  {
-    AppMethodBeat.i(168862);
-    e locale = g.afB();
-    k.g(locale, "MMKernel.storage()");
-    int i = locale.afk().getInt(ae.a.Fxb, 0);
-    if (i == 1) {}
-    for (qoN = qoL;; qoN = qoM)
+    super(paramanm);
+    AppMethodBeat.i(201113);
+    b.a locala = new b.a();
+    Object localObject = new aoa();
+    locala.c((a)localObject);
+    ((aoa)localObject).EGL.addAll((Collection)paramList);
+    ((aoa)localObject).rfC = u.axE();
+    q localq = q.qXH;
+    ((aoa)localObject).EDL = q.a(paramanm);
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
     {
-      ad.i(TAG, "config " + i + ' ' + qoN);
-      AppMethodBeat.o(168862);
-      return;
+      paramanm = (dcw)paramList.next();
+      localObject = h.ryk;
+      h.a.a(paramanm, "Finder.CgiFinderStatsReport");
     }
+    paramList = new aob();
+    paramList.setBaseResponse(new BaseResponse());
+    paramList.getBaseResponse().ErrMsg = new crm();
+    locala.d((a)paramList);
+    locala.Am("/cgi-bin/micromsg-bin/finderstatsreport");
+    locala.op(3776);
+    c(locala.aAz());
+    AppMethodBeat.o(201113);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.j
  * JD-Core Version:    0.7.0.1
  */

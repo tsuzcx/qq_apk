@@ -1,145 +1,122 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import java.util.LinkedList;
 
 public final class ar
+  extends com.tencent.mm.bw.a
 {
-  public boolean Fyr;
-  public String Fys;
-  private String hAb;
-  public boolean hAc;
-  public String md5;
-  public long time;
+  public int GXi;
+  public LinkedList<Integer> GXj;
+  public LinkedList<Integer> GXk;
+  public LinkedList<Integer> GXl;
+  public LinkedList<Long> GXm;
+  public LinkedList<Long> GXn;
+  public LinkedList<Long> GXo;
   
-  public ar(String paramString)
+  public ar()
   {
-    AppMethodBeat.i(104954);
-    this.md5 = "-1";
-    this.Fys = "";
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(43195);
+    this.GXj = new LinkedList();
+    this.GXk = new LinkedList();
+    this.GXl = new LinkedList();
+    this.GXm = new LinkedList();
+    this.GXn = new LinkedList();
+    this.GXo = new LinkedList();
+    AppMethodBeat.o(43195);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(43196);
+    if (paramInt == 0)
     {
-      ad.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
-      AppMethodBeat.o(104954);
-      return;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.GXi);
+      paramVarArgs.e(2, 2, this.GXj);
+      paramVarArgs.e(3, 2, this.GXk);
+      paramVarArgs.e(4, 2, this.GXl);
+      paramVarArgs.e(5, 3, this.GXm);
+      paramVarArgs.e(6, 3, this.GXn);
+      paramVarArgs.e(7, 3, this.GXo);
+      AppMethodBeat.o(43196);
+      return 0;
     }
-    for (;;)
+    if (paramInt == 1)
     {
-      try
-      {
-        Object localObject;
-        if (paramString.endsWith("\n"))
-        {
-          localObject = paramString.substring(0, paramString.length() - 1);
-          localObject = ((String)localObject).split(":", 6);
-          if ((localObject.length == 4) && (af.st(localObject[0])))
-          {
-            i = 1;
-            if (localObject.length > i) {
-              this.hAb = localObject[i];
-            }
-            if (localObject.length > i + 1) {
-              this.time = bt.getLong(localObject[(i + 1)], 0L);
-            }
-            if (localObject.length > i + 2) {
-              this.hAc = localObject[(i + 2)].equals("1");
-            }
-            if (localObject.length > i + 3) {
-              this.md5 = localObject[(i + 3)];
-            }
-            if (localObject.length > i + 4) {
-              this.Fys = localObject[(i + 4)].replace("*#*", ":");
-            }
-            if (localObject.length > i + 5) {
-              this.Fyr = localObject[(i + 5)].equals("1");
-            }
-            AppMethodBeat.o(104954);
-          }
+      paramInt = f.a.a.b.b.a.bx(1, this.GXi);
+      int i = f.a.a.a.c(2, 2, this.GXj);
+      int j = f.a.a.a.c(3, 2, this.GXk);
+      int k = f.a.a.a.c(4, 2, this.GXl);
+      int m = f.a.a.a.c(5, 3, this.GXm);
+      int n = f.a.a.a.c(6, 3, this.GXn);
+      int i1 = f.a.a.a.c(7, 3, this.GXo);
+      AppMethodBeat.o(43196);
+      return paramInt + 0 + i + j + k + m + n + i1;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.GXj.clear();
+      this.GXk.clear();
+      this.GXl.clear();
+      this.GXm.clear();
+      this.GXn.clear();
+      this.GXo.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
         }
-        else
-        {
-          this.Fys = paramString.replace(":", "*#*");
-          localObject = paramString;
-          continue;
-        }
-        int i = 0;
       }
-      catch (Exception localException)
+      AppMethodBeat.o(43196);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ar localar = (ar)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
-        this.time = 0L;
-        ad.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, bt.m(localException) });
-        AppMethodBeat.o(104954);
-        return;
+      default: 
+        AppMethodBeat.o(43196);
+        return -1;
+      case 1: 
+        localar.GXi = locala.LVo.xF();
+        AppMethodBeat.o(43196);
+        return 0;
+      case 2: 
+        localar.GXj.add(Integer.valueOf(locala.LVo.xF()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 3: 
+        localar.GXk.add(Integer.valueOf(locala.LVo.xF()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 4: 
+        localar.GXl.add(Integer.valueOf(locala.LVo.xF()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 5: 
+        localar.GXm.add(Long.valueOf(locala.LVo.xG()));
+        AppMethodBeat.o(43196);
+        return 0;
+      case 6: 
+        localar.GXn.add(Long.valueOf(locala.LVo.xG()));
+        AppMethodBeat.o(43196);
+        return 0;
       }
+      localar.GXo.add(Long.valueOf(locala.LVo.xG()));
+      AppMethodBeat.o(43196);
+      return 0;
     }
-  }
-  
-  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
-  {
-    int j = 1;
-    AppMethodBeat.i(104952);
-    paramString3 = paramString3.replace(":", "*#*");
-    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
-    if (paramBoolean1)
-    {
-      i = 1;
-      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
-      if (!paramBoolean2) {
-        break label121;
-      }
-    }
-    label121:
-    for (int i = j;; i = 0)
-    {
-      paramString1 = i + "\n";
-      AppMethodBeat.o(104952);
-      return paramString1;
-      i = 0;
-      break;
-    }
-  }
-  
-  public static ar aIF(String paramString)
-  {
-    AppMethodBeat.i(104955);
-    paramString = new ar(paramString);
-    AppMethodBeat.o(104955);
-    return paramString;
-  }
-  
-  public final String aCQ()
-  {
-    return this.hAb;
-  }
-  
-  public final String eLt()
-  {
-    int j = 1;
-    AppMethodBeat.i(104953);
-    Object localObject = new StringBuilder().append(this.hAb).append(":").append(this.time).append(":");
-    if (this.hAc)
-    {
-      i = 1;
-      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.Fys).append(":");
-      if (!this.Fyr) {
-        break label118;
-      }
-    }
-    label118:
-    for (int i = j;; i = 0)
-    {
-      localObject = i + "\n";
-      AppMethodBeat.o(104953);
-      return localObject;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.o(43196);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.ar
  * JD-Core Version:    0.7.0.1
  */

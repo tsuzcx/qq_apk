@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.story.ui.view.gallery;
 import d.g.a.q;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
 final class StoryGalleryItemView$a
   extends d.g.b.l
   implements q<Integer, Integer, Boolean, y>

@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.box.webview.e;
 
 public abstract interface c
 {
-  public abstract e bBM();
+  public abstract e bIK();
   
-  public abstract d bBN();
+  public abstract d bIL();
   
   public abstract void dismiss();
   
@@ -19,7 +19,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.box.c.c
  * JD-Core Version:    0.7.0.1
  */

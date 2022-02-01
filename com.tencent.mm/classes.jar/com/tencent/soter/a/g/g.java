@@ -8,27 +8,27 @@ import com.tencent.soter.core.c.d;
 
 public class g
 {
-  private static volatile g Iwm = null;
-  private Handler Ivh;
-  HandlerThread Iwn;
-  Handler Iwo;
+  private static volatile g JXV = null;
+  private Handler JWQ;
+  HandlerThread JXW;
+  Handler JXX;
   
   private g()
   {
     AppMethodBeat.i(40);
-    this.Iwo = null;
-    this.Ivh = null;
-    if (this.Iwn == null)
+    this.JXX = null;
+    this.JWQ = null;
+    if (this.JXW == null)
     {
-      this.Iwn = new HandlerThread("SoterGenKeyHandlerThreadName");
-      this.Iwn.start();
-      if (this.Iwn.getLooper() == null) {
+      this.JXW = new HandlerThread("SoterGenKeyHandlerThreadName");
+      this.JXW.start();
+      if (this.JXW.getLooper() == null) {
         break label94;
       }
     }
-    for (this.Iwo = new Handler(this.Iwn.getLooper());; this.Iwo = new Handler(Looper.getMainLooper()))
+    for (this.JXX = new Handler(this.JXW.getLooper());; this.JXX = new Handler(Looper.getMainLooper()))
     {
-      this.Ivh = new Handler(Looper.getMainLooper());
+      this.JWQ = new Handler(Looper.getMainLooper());
       AppMethodBeat.o(40);
       return;
       label94:
@@ -36,16 +36,16 @@ public class g
     }
   }
   
-  public static g fnz()
+  public static g fDP()
   {
     AppMethodBeat.i(41);
-    if (Iwm == null) {
+    if (JXV == null) {
       try
       {
-        if (Iwm == null) {
-          Iwm = new g();
+        if (JXV == null) {
+          JXV = new g();
         }
-        g localg1 = Iwm;
+        g localg1 = JXV;
         return localg1;
       }
       finally
@@ -53,29 +53,29 @@ public class g
         AppMethodBeat.o(41);
       }
     }
-    g localg2 = Iwm;
+    g localg2 = JXV;
     AppMethodBeat.o(41);
     return localg2;
   }
   
-  public final void ae(Runnable paramRunnable)
+  public final void ag(Runnable paramRunnable)
   {
     AppMethodBeat.i(42);
-    this.Iwo.post(paramRunnable);
+    this.JXX.post(paramRunnable);
     AppMethodBeat.o(42);
   }
   
   public final void f(Runnable paramRunnable)
   {
     AppMethodBeat.i(44);
-    this.Ivh.post(paramRunnable);
+    this.JWQ.post(paramRunnable);
     AppMethodBeat.o(44);
   }
   
   public final void o(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(43);
-    this.Iwo.postDelayed(paramRunnable, paramLong);
+    this.JXX.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(43);
   }
 }

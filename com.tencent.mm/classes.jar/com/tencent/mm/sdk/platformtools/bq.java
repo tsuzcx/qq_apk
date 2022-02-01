@@ -1,78 +1,83 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.d;
+import java.util.ArrayList;
 
 public final class bq
 {
-  private final d EXg;
-  private ag<String, String> EXh;
+  private String Guu;
+  ArrayList<Long> Guv;
+  ArrayList<String> Guw;
+  private boolean lDp;
+  private String mTag;
   
-  public bq(String paramString)
+  public bq(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(157841);
-    this.EXh = new ag(256);
-    this.EXg = new d(paramString);
-    AppMethodBeat.o(157841);
+    AppMethodBeat.i(157843);
+    this.mTag = paramString1;
+    this.Guu = paramString2;
+    this.lDp = false;
+    if (!this.lDp)
+    {
+      if (this.Guv != null) {
+        break label71;
+      }
+      this.Guv = new ArrayList();
+      this.Guw = new ArrayList();
+    }
+    for (;;)
+    {
+      addSplit(null);
+      AppMethodBeat.o(157843);
+      return;
+      label71:
+      this.Guv.clear();
+      this.Guw.clear();
+    }
   }
   
-  public final String decryptTag(String paramString)
+  public final void addSplit(String paramString)
   {
-    AppMethodBeat.i(157842);
-    String str1 = paramString;
-    try
+    AppMethodBeat.i(157844);
+    if (this.lDp)
     {
-      if (!paramString.startsWith("!")) {
-        break label192;
-      }
-      if (this.EXh.aN(paramString))
-      {
-        str1 = (String)this.EXh.get(paramString);
-        AppMethodBeat.o(157842);
-        return str1;
-      }
-      str1 = paramString.substring(1);
-      Object localObject2;
-      String str2;
-      int i;
-      ad.printErrStackTrace("MicroMsg.TagDecrypter", localException1, "", new Object[0]);
+      AppMethodBeat.o(157844);
+      return;
     }
-    catch (Exception localException1)
+    long l = SystemClock.elapsedRealtime();
+    this.Guv.add(Long.valueOf(l));
+    this.Guw.add(paramString);
+    AppMethodBeat.o(157844);
+  }
+  
+  public final void dumpToLog()
+  {
+    AppMethodBeat.i(157845);
+    if (this.lDp)
     {
-      try
-      {
-        localObject2 = str1.split("@");
-        if (localObject2.length <= 1) {
-          break label209;
-        }
-        str2 = localObject2[0];
-        i = Integer.valueOf(localObject2[0]).intValue();
-        localObject2 = str1.substring(str2.length() + 1, str2.length() + 1 + i);
-        str2 = str1.substring(i + (str2.length() + 1));
-        str2 = this.EXg.dD((String)localObject2) + str2;
-        this.EXh.put(paramString, str2);
-        AppMethodBeat.o(157842);
-        return str2;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          paramString = (String)localObject1;
-          Object localObject1 = localException2;
-        }
-      }
-      localException1 = localException1;
+      AppMethodBeat.o(157845);
+      return;
     }
-    localObject1 = "[td]".concat(String.valueOf(paramString));
-    label192:
-    AppMethodBeat.o(157842);
-    return localObject1;
+    ac.d(this.mTag, this.Guu + ": begin");
+    long l2 = ((Long)this.Guv.get(0)).longValue();
+    int i = 1;
+    long l1 = l2;
+    while (i < this.Guv.size())
+    {
+      l1 = ((Long)this.Guv.get(i)).longValue();
+      String str = (String)this.Guw.get(i);
+      long l3 = ((Long)this.Guv.get(i - 1)).longValue();
+      ac.d(this.mTag, this.Guu + ":      " + (l1 - l3) + " ms, " + str);
+      i += 1;
+    }
+    ac.d(this.mTag, this.Guu + ": end, " + (l1 - l2) + " ms");
+    AppMethodBeat.o(157845);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bq
  * JD-Core Version:    0.7.0.1
  */

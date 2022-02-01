@@ -3,60 +3,33 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.WebView;
 
 public class EmbedWebView
   extends MMWebView
 {
-  private GestureDetector uOR;
-  private boolean uOS;
-  private float[] uOT;
-  private float[] uOU;
-  private float[] uOV;
-  private float[] uOW;
+  private GestureDetector vXH;
+  private boolean vXI;
+  private float[] vXJ;
+  private float[] vXK;
+  private float[] vXL;
+  private float[] vXM;
   
   public EmbedWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(123006);
-    this.uOS = false;
-    this.uOT = new float[2];
-    this.uOU = new float[2];
-    this.uOV = new float[2];
-    this.uOW = new float[2];
-    this.uOR = new GestureDetector(new GestureDetector.SimpleOnGestureListener()
-    {
-      public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(123003);
-        paramAnonymousMotionEvent = EmbedWebView.this;
-        ad.d("MicroMsg.EmbedWebView", "onDoubleTapm, before scale:" + paramAnonymousMotionEvent.getScale());
-        int i = 10;
-        while (paramAnonymousMotionEvent.getScale() != 1.0F)
-        {
-          i -= 1;
-          if (i <= 0) {
-            break;
-          }
-          if (paramAnonymousMotionEvent.getScale() > 1.0F) {
-            paramAnonymousMotionEvent.zoomOut();
-          } else {
-            paramAnonymousMotionEvent.zoomIn();
-          }
-        }
-        ad.d("MicroMsg.EmbedWebView", "onDoubleTapm, after scale:" + EmbedWebView.this.getScale());
-        AppMethodBeat.o(123003);
-        return true;
-      }
-    });
+    this.vXI = false;
+    this.vXJ = new float[2];
+    this.vXK = new float[2];
+    this.vXL = new float[2];
+    this.vXM = new float[2];
+    this.vXH = new GestureDetector(new EmbedWebView.1(this));
     postDelayed(new Runnable()
     {
       public final void run()
@@ -96,10 +69,10 @@ public class EmbedWebView
     int j = 0;
     int i = 0;
     AppMethodBeat.i(123007);
-    this.uOR.onTouchEvent(paramMotionEvent);
+    this.vXH.onTouchEvent(paramMotionEvent);
     int m;
     int k;
-    if (this.uOS)
+    if (this.vXI)
     {
       m = paramMotionEvent.getAction();
       k = paramMotionEvent.getPointerCount();
@@ -124,29 +97,29 @@ public class EmbedWebView
       case 5: 
         while (i < k)
         {
-          this.uOT[i] = paramMotionEvent.getX(i);
-          this.uOU[i] = paramMotionEvent.getY(i);
+          this.vXJ[i] = paramMotionEvent.getX(i);
+          this.vXK[i] = paramMotionEvent.getY(i);
           i += 1;
         }
       case 2: 
         i = 0;
         while (i < k)
         {
-          this.uOV[i] = paramMotionEvent.getX(i);
-          this.uOW[i] = paramMotionEvent.getY(i);
+          this.vXL[i] = paramMotionEvent.getX(i);
+          this.vXM[i] = paramMotionEvent.getY(i);
           i += 1;
         }
-        float f1 = (float)(Math.pow(this.uOT[1] - this.uOT[0], 2.0D) + Math.pow(this.uOU[1] - this.uOU[0], 2.0D));
-        float f2 = (float)(Math.pow(this.uOV[1] - this.uOV[0], 2.0D) + Math.pow(this.uOW[1] - this.uOW[0], 2.0D));
+        float f1 = (float)(Math.pow(this.vXJ[1] - this.vXJ[0], 2.0D) + Math.pow(this.vXK[1] - this.vXK[0], 2.0D));
+        float f2 = (float)(Math.pow(this.vXL[1] - this.vXL[0], 2.0D) + Math.pow(this.vXM[1] - this.vXM[0], 2.0D));
         if (f1 - f2 > 20000.0F) {
           zoomOut();
         }
         for (;;)
         {
-          this.uOT[0] = this.uOV[0];
-          this.uOT[1] = this.uOV[1];
-          this.uOU[0] = this.uOW[0];
-          this.uOU[1] = this.uOW[1];
+          this.vXJ[0] = this.vXL[0];
+          this.vXJ[1] = this.vXL[1];
+          this.vXK[0] = this.vXM[0];
+          this.vXK[1] = this.vXM[1];
           break;
           if (f2 - f1 > 20000.0F) {
             zoomIn();
@@ -160,7 +133,7 @@ public class EmbedWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.EmbedWebView
  * JD-Core Version:    0.7.0.1
  */

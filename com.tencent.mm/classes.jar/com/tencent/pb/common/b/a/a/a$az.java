@@ -7,35 +7,35 @@ import com.google.b.a.e;
 public final class a$az
   extends e
 {
-  private static volatile az[] InH;
-  public int CrQ = 0;
-  public long InI = 0L;
-  public String InJ = "";
-  public String InK = "";
+  private static volatile az[] JPr;
+  public int DKi = 0;
+  public long JPs = 0L;
+  public String JPt = "";
+  public String JPu = "";
   public String headUrl = "";
   public String username = "";
   
   public a$az()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static az[] flA()
+  public static az[] fBR()
   {
-    if (InH == null) {}
-    synchronized (c.bIR)
+    if (JPr == null) {}
+    synchronized (c.bGz)
     {
-      if (InH == null) {
-        InH = new az[0];
+      if (JPr == null) {
+        JPr = new az[0];
       }
-      return InH;
+      return JPr;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.CrQ != 0) {
-      paramb.bz(1, this.CrQ);
+    if (this.DKi != 0) {
+      paramb.bw(1, this.DKi);
     }
     if (!this.username.equals("")) {
       paramb.d(2, this.username);
@@ -43,24 +43,24 @@ public final class a$az
     if (!this.headUrl.equals("")) {
       paramb.d(3, this.headUrl);
     }
-    if (this.InI != 0L) {
-      paramb.n(4, this.InI);
+    if (this.JPs != 0L) {
+      paramb.m(4, this.JPs);
     }
-    if (!this.InJ.equals("")) {
-      paramb.d(5, this.InJ);
+    if (!this.JPt.equals("")) {
+      paramb.d(5, this.JPt);
     }
-    if (!this.InK.equals("")) {
-      paramb.d(6, this.InK);
+    if (!this.JPu.equals("")) {
+      paramb.d(6, this.JPu);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.CrQ != 0) {
-      i = j + b.bB(1, this.CrQ);
+    if (this.DKi != 0) {
+      i = j + b.by(1, this.DKi);
     }
     j = i;
     if (!this.username.equals("")) {
@@ -71,16 +71,16 @@ public final class a$az
       i = j + b.e(3, this.headUrl);
     }
     j = i;
-    if (this.InI != 0L) {
-      j = i + b.p(4, this.InI);
+    if (this.JPs != 0L) {
+      j = i + b.o(4, this.JPs);
     }
     i = j;
-    if (!this.InJ.equals("")) {
-      i = j + b.e(5, this.InJ);
+    if (!this.JPt.equals("")) {
+      i = j + b.e(5, this.JPt);
     }
     j = i;
-    if (!this.InK.equals("")) {
-      j = i + b.e(6, this.InK);
+    if (!this.JPu.equals("")) {
+      j = i + b.e(6, this.JPu);
     }
     return j;
   }

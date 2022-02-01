@@ -1,95 +1,77 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import android.app.Activity;
-import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.e;
-import com.tencent.luggage.h.h;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.n;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import java.util.HashMap;
 import org.json.JSONObject;
 
-abstract class a<CONTEXT extends c>
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<CONTEXT>
+public final class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
 {
-  boolean jSg;
+  private static final int CTRL_INDEX = 424;
+  private static final String NAME = "openRedPacket";
   
-  static boolean q(CONTEXT paramCONTEXT)
+  public final boolean bex()
   {
-    return h.o(paramCONTEXT.getContext(), "android.permission.ACCESS_FINE_LOCATION");
+    return true;
   }
   
-  public void a(final CONTEXT paramCONTEXT, final JSONObject paramJSONObject, final int paramInt)
+  public static final class a
+    extends n
   {
-    Activity localActivity;
-    boolean bool;
-    if ((paramCONTEXT.getContext() instanceof Activity))
+    public a(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
     {
-      localActivity = (Activity)paramCONTEXT.getContext();
-      if (localActivity != null) {
-        break label82;
-      }
-      ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "operateRecorder, pageContext is null");
-      paramCONTEXT.h(paramInt, e("fail:internal error invalid android context", null));
-      bool = false;
+      super(paramq, paramaa, paramJSONObject, paramInt);
     }
-    for (;;)
+    
+    public final void C(Intent paramIntent)
     {
-      if (bool) {
-        break label148;
-      }
-      ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s requestPermission fail", new Object[] { getName() });
-      return;
-      localActivity = null;
-      break;
-      label82:
-      if (q(paramCONTEXT))
-      {
-        bool = true;
-      }
-      else if (this.jSg)
-      {
-        paramCONTEXT.h(paramInt, e("fail:system permission denied", null));
-        bool = false;
-      }
-      else
-      {
-        bool = e.az(localActivity).a("android.permission.ACCESS_FINE_LOCATION", new e.e()
-        {
-          public final void o(int[] paramAnonymousArrayOfInt)
-          {
-            AppMethodBeat.i(143625);
-            if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
-            {
-              ad.i("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "PERMISSION_GRANTED, do invoke again");
-              a.this.a(paramCONTEXT, paramJSONObject, paramInt);
-              AppMethodBeat.o(143625);
-              return;
-            }
-            ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "SYS_PERM_DENIED");
-            a.this.jSg = true;
-            paramCONTEXT.h(paramInt, a.this.e("fail:system permission denied", null));
-            AppMethodBeat.o(143625);
-          }
-        });
-      }
+      AppMethodBeat.i(46389);
+      ac.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.onResult");
+      paramIntent = new HashMap();
+      paramIntent.put("errCode", Integer.valueOf(0));
+      z(paramIntent);
+      AppMethodBeat.o(46389);
     }
-    label148:
-    if (paramJSONObject == null)
+    
+    public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
     {
-      ad.e("MicroMsg.AppBrand.BaseLbsAsyncJsApi", "%s invalid data", new Object[] { getName() });
-      paramCONTEXT.h(paramInt, e("fail:invalid data", null));
-      return;
+      AppMethodBeat.i(174839);
+      String str = CX().getAppId();
+      paramJSONObject = paramJSONObject.optString("redPacketId", null);
+      if ((bs.isNullOrNil(str)) || (bs.isNullOrNil(paramJSONObject)))
+      {
+        ac.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.launch appId = [%s] sendId = [%s]", new Object[] { str, paramJSONObject });
+        AppMethodBeat.o(174839);
+        return false;
+      }
+      ((com.tencent.mm.plugin.luckymoney.appbrand.a)g.ab(com.tencent.mm.plugin.luckymoney.appbrand.a.class)).a(paramActivity, paramJSONObject, str, paramInt);
+      AppMethodBeat.o(174839);
+      return true;
     }
-    d(paramCONTEXT, paramJSONObject, paramInt);
+    
+    public final void onError(int paramInt, String paramString)
+    {
+      AppMethodBeat.i(46390);
+      ac.i("MicroMsg.JsApiOpenRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("errCode", Integer.valueOf(paramInt));
+      l(paramString, localHashMap);
+      AppMethodBeat.o(46390);
+    }
   }
-  
-  protected abstract void d(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.e.a
  * JD-Core Version:    0.7.0.1
  */

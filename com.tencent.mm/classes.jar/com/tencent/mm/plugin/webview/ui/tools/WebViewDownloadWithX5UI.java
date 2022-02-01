@@ -16,14 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 
@@ -31,14 +31,14 @@ import com.tencent.mm.ui.MMFragmentActivity.a;
 public class WebViewDownloadWithX5UI
   extends MMActivity
 {
-  private Button BeG;
-  private final com.tencent.mm.plugin.webview.modeltools.a BeV;
+  private Button CwS;
+  private final com.tencent.mm.plugin.webview.modeltools.a Cxh;
   private Context mContext;
   
   public WebViewDownloadWithX5UI()
   {
     AppMethodBeat.i(79828);
-    this.BeV = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.Cxh = new com.tencent.mm.plugin.webview.modeltools.a();
     AppMethodBeat.o(79828);
   }
   
@@ -78,8 +78,8 @@ public class WebViewDownloadWithX5UI
         return true;
       }
     });
-    overridePendingTransition(MMFragmentActivity.a.lLF, MMFragmentActivity.a.lLG);
-    this.BeG = ((Button)findViewById(2131299211));
+    overridePendingTransition(MMFragmentActivity.a.mnC, MMFragmentActivity.a.mnD);
+    this.CwS = ((Button)findViewById(2131299211));
     paramBundle = (ImageView)findViewById(2131299223);
     TextView localTextView = (TextView)findViewById(2131299225);
     String str1 = getIntent().getStringExtra("task_url");
@@ -87,69 +87,69 @@ public class WebViewDownloadWithX5UI
     final long l = getIntent().getLongExtra("task_size", 0L);
     final String str3 = getIntent().getStringExtra("page_url");
     String str4 = getIntent().getStringExtra("thumb_url");
-    ad.i("MicroMsg.WebViewDownloadWithX5UI", "onCreate: url=%s,taskSize=%d, thumbUrl=%s", new Object[] { str1, Long.valueOf(l), str4 });
+    ac.i("MicroMsg.WebViewDownloadWithX5UI", "onCreate: url=%s,taskSize=%d, thumbUrl=%s", new Object[] { str1, Long.valueOf(l), str4 });
     Object localObject;
     if (l > 0L)
     {
-      localObject = bt.vK(l);
-      this.BeG.setText(getString(2131766082, new Object[] { localObject }));
+      localObject = bs.An(l);
+      this.CwS.setText(getString(2131766082, new Object[] { localObject }));
     }
-    if (g.afw())
+    if (g.agM())
     {
-      localObject = o.ayJ();
+      localObject = o.aFB();
       c.a locala = new c.a();
-      locala.hkf = 2131691436;
-      locala.hjU = true;
-      ((com.tencent.mm.aw.a.a)localObject).a(str4, paramBundle, locala.azc());
+      locala.hKI = 2131691436;
+      locala.hKx = true;
+      ((com.tencent.mm.av.a.a)localObject).a(str4, paramBundle, locala.aFT());
       localTextView.setVisibility(0);
-      if (bt.isNullOrNil(str2)) {
+      if (bs.isNullOrNil(str2)) {
         break label353;
       }
       localTextView.setText(str2);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.vKh.f(14217, new Object[] { "", Integer.valueOf(1), str3, str1, Integer.valueOf(1) });
-      this.BeG.setOnClickListener(new View.OnClickListener()
+      com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { "", Integer.valueOf(1), str3, str1, Integer.valueOf(1) });
+      this.CwS.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(79826);
-          if (!ay.isNetworkConnected(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this)))
+          if (!ax.isNetworkConnected(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this)))
           {
             Toast.makeText(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this), WebViewDownloadWithX5UI.this.getString(2131759864), 0).show();
-            ad.i("MicroMsg.WebViewDownloadWithX5UI", "startDownload fail, network not ready");
+            ac.i("MicroMsg.WebViewDownloadWithX5UI", "startDownload fail, network not ready");
             AppMethodBeat.o(79826);
             return;
           }
-          if (!g.afB().isSDCardAvailable())
+          if (!g.agR().isSDCardAvailable())
           {
             Toast.makeText(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this), WebViewDownloadWithX5UI.this.getString(2131759868), 0).show();
-            ad.i("MicroMsg.WebViewDownloadWithX5UI", "startDownload fail, sdcard not ready");
+            ac.i("MicroMsg.WebViewDownloadWithX5UI", "startDownload fail, sdcard not ready");
             AppMethodBeat.o(79826);
             return;
           }
-          if ((l > 0L) && (!com.tencent.mm.compatible.util.e.lo(l)))
+          if ((l > 0L) && (!com.tencent.mm.compatible.util.e.oR(l)))
           {
             Toast.makeText(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this), WebViewDownloadWithX5UI.this.getString(2131759865), 0).show();
-            ad.i("MicroMsg.WebViewDownloadWithX5UI", "startDownload fail, not enough space, require size = " + l);
+            ac.i("MicroMsg.WebViewDownloadWithX5UI", "startDownload fail, not enough space, require size = " + l);
             AppMethodBeat.o(79826);
             return;
           }
-          if (ay.isWifi(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this)))
+          if (ax.isWifi(WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this)))
           {
-            WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this, str3, this.AUY);
+            WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this, str3, this.Cnl);
             AppMethodBeat.o(79826);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.vKh.f(14217, new Object[] { "", Integer.valueOf(4), this.AUY, str3, Integer.valueOf(1) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { "", Integer.valueOf(4), this.Cnl, str3, Integer.valueOf(1) });
           com.tencent.mm.ui.base.h.a(WebViewDownloadWithX5UI.this, WebViewDownloadWithX5UI.this.getString(2131766086), WebViewDownloadWithX5UI.this.getString(2131766087), WebViewDownloadWithX5UI.this.getString(2131766081), WebViewDownloadWithX5UI.this.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(79824);
-              com.tencent.mm.plugin.report.service.h.vKh.f(14217, new Object[] { "", Integer.valueOf(5), WebViewDownloadWithX5UI.2.this.AUY, WebViewDownloadWithX5UI.2.this.val$url, Integer.valueOf(1) });
-              WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this, WebViewDownloadWithX5UI.2.this.val$url, WebViewDownloadWithX5UI.2.this.AUY);
+              com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { "", Integer.valueOf(5), WebViewDownloadWithX5UI.2.this.Cnl, WebViewDownloadWithX5UI.2.this.val$url, Integer.valueOf(1) });
+              WebViewDownloadWithX5UI.a(WebViewDownloadWithX5UI.this, WebViewDownloadWithX5UI.2.this.val$url, WebViewDownloadWithX5UI.2.this.Cnl);
               paramAnonymous2DialogInterface.dismiss();
               AppMethodBeat.o(79824);
             }
@@ -158,7 +158,7 @@ public class WebViewDownloadWithX5UI
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(79825);
-              com.tencent.mm.plugin.report.service.h.vKh.f(14217, new Object[] { "", Integer.valueOf(6), WebViewDownloadWithX5UI.2.this.AUY, WebViewDownloadWithX5UI.2.this.val$url, Integer.valueOf(1) });
+              com.tencent.mm.plugin.report.service.h.wUl.f(14217, new Object[] { "", Integer.valueOf(6), WebViewDownloadWithX5UI.2.this.Cnl, WebViewDownloadWithX5UI.2.this.val$url, Integer.valueOf(1) });
               paramAnonymous2DialogInterface.dismiss();
               AppMethodBeat.o(79825);
             }
@@ -191,9 +191,9 @@ public class WebViewDownloadWithX5UI
   public void startActivity(Intent paramIntent)
   {
     AppMethodBeat.i(79832);
-    if (bt.kU(paramIntent.getType(), "application/vnd.android.package-archive"))
+    if (bs.lr(paramIntent.getType(), "application/vnd.android.package-archive"))
     {
-      r.i(aj.getContext(), paramIntent.getData());
+      r.i(ai.getContext(), paramIntent.getData());
       AppMethodBeat.o(79832);
       return;
     }

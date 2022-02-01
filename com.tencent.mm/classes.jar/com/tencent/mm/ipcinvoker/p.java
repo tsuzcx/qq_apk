@@ -7,19 +7,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
 {
-  private static volatile p fZE;
-  private Handler fZF;
+  private static volatile p gek;
+  private Handler gel;
   private Handler mHandler;
   
   private p()
   {
     AppMethodBeat.i(158760);
-    this.mHandler = l.ady();
-    this.fZF = new Handler(Looper.getMainLooper());
+    this.mHandler = l.aeO();
+    this.gel = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(158760);
   }
   
   public static boolean A(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(158765);
+    boolean bool = aeR().gel.postDelayed(paramRunnable, 100L);
+    AppMethodBeat.o(158765);
+    return bool;
+  }
+  
+  public static boolean B(Runnable paramRunnable)
   {
     AppMethodBeat.i(158766);
     l.post(paramRunnable);
@@ -27,16 +35,16 @@ public class p
     return true;
   }
   
-  private static p adB()
+  private static p aeR()
   {
     AppMethodBeat.i(158759);
-    if (fZE == null) {}
+    if (gek == null) {}
     try
     {
-      if (fZE == null) {
-        fZE = new p();
+      if (gek == null) {
+        gek = new p();
       }
-      p localp = fZE;
+      p localp = gek;
       AppMethodBeat.o(158759);
       return localp;
     }
@@ -46,10 +54,10 @@ public class p
     }
   }
   
-  public static HandlerThread adC()
+  public static HandlerThread aeS()
   {
     AppMethodBeat.i(158761);
-    HandlerThread localHandlerThread = (HandlerThread)adB().mHandler.getLooper().getThread();
+    HandlerThread localHandlerThread = (HandlerThread)aeR().mHandler.getLooper().getThread();
     AppMethodBeat.o(158761);
     return localHandlerThread;
   }
@@ -57,7 +65,7 @@ public class p
   public static boolean post(Runnable paramRunnable)
   {
     AppMethodBeat.i(158762);
-    boolean bool = adB().mHandler.post(paramRunnable);
+    boolean bool = aeR().mHandler.post(paramRunnable);
     AppMethodBeat.o(158762);
     return bool;
   }
@@ -65,24 +73,16 @@ public class p
   public static boolean postDelayed(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(158763);
-    boolean bool = adB().mHandler.postDelayed(paramRunnable, paramLong);
+    boolean bool = aeR().mHandler.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(158763);
-    return bool;
-  }
-  
-  public static boolean y(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(158764);
-    boolean bool = adB().fZF.post(paramRunnable);
-    AppMethodBeat.o(158764);
     return bool;
   }
   
   public static boolean z(Runnable paramRunnable)
   {
-    AppMethodBeat.i(158765);
-    boolean bool = adB().fZF.postDelayed(paramRunnable, 100L);
-    AppMethodBeat.o(158765);
+    AppMethodBeat.i(158764);
+    boolean bool = aeR().gel.post(paramRunnable);
+    AppMethodBeat.o(158764);
     return bool;
   }
 }

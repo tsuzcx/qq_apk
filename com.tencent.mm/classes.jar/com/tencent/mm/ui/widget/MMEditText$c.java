@@ -5,22 +5,22 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class MMEditText$c
   implements TextWatcher
 {
-  private boolean HzA = false;
-  private TextView Hzy;
-  public MMEditText.b Hzz = null;
+  private TextView IZV;
+  public MMEditText.b IZW = null;
+  private boolean IZX = false;
+  private EditText lMg;
   private final int limit;
-  private EditText lmq;
   
   public MMEditText$c(EditText paramEditText, TextView paramTextView, int paramInt)
   {
-    this.lmq = paramEditText;
-    this.Hzy = paramTextView;
+    this.lMg = paramEditText;
+    this.IZV = paramTextView;
     this.limit = paramInt;
   }
   
@@ -35,7 +35,7 @@ public final class MMEditText$c
     int k = i;
     if (j < str.length())
     {
-      if (bt.E(str.charAt(j))) {
+      if (bs.C(str.charAt(j))) {
         i += 2;
       }
       for (;;)
@@ -56,20 +56,20 @@ public final class MMEditText$c
     {
       try
       {
-        this.lmq.setText(paramEditable);
-        if (this.HzA) {
+        this.lMg.setText(paramEditable);
+        if (this.IZX) {
           continue;
         }
-        i = this.lmq.getText().toString().length();
-        this.lmq.setSelection(i);
-        this.HzA = false;
+        i = this.lMg.getText().toString().length();
+        this.lMg.setSelection(i);
+        this.IZX = false;
       }
       catch (Exception localException)
       {
-        this.HzA = true;
-        ad.e("MicroMsg.MMEditText", "error ".concat(String.valueOf(localException.getMessage())));
-        this.lmq.setText(paramEditable);
-        this.lmq.setSelection(0);
+        this.IZX = true;
+        ac.e("MicroMsg.MMEditText", "error ".concat(String.valueOf(localException.getMessage())));
+        this.lMg.setText(paramEditable);
+        this.lMg.setSelection(0);
         continue;
         continue;
       }
@@ -78,12 +78,12 @@ public final class MMEditText$c
         continue;
       }
       i = m;
-      if (this.Hzy != null) {
-        this.Hzy.setText(i / 2);
+      if (this.IZV != null) {
+        this.IZV.setText(i / 2);
       }
       AppMethodBeat.o(143352);
       return;
-      this.lmq.setSelection(0);
+      this.lMg.setSelection(0);
     }
   }
   
@@ -92,15 +92,15 @@ public final class MMEditText$c
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(143353);
-    if (this.Hzz != null) {
-      this.Hzz.aJE();
+    if (this.IZW != null) {
+      this.IZW.aQv();
     }
     AppMethodBeat.o(143353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMEditText.c
  * JD-Core Version:    0.7.0.1
  */

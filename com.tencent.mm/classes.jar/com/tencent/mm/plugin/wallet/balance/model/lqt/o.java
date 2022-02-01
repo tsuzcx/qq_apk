@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.ceq;
-import com.tencent.mm.protocal.protobuf.cer;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.cjt;
+import com.tencent.mm.protocal.protobuf.cju;
 
 public final class o
-  extends c<cer>
+  extends c<cju>
 {
-  private b iaa;
-  private ceq zEE;
+  private cjt AWR;
+  private b gvE;
   
   public o()
   {
     AppMethodBeat.i(68451);
-    this.zEE = null;
+    this.AWR = null;
     b.a locala = new b.a();
-    locala.gUU = new ceq();
-    locala.gUV = new cer();
+    locala.hvt = new cjt();
+    locala.hvu = new cju();
     locala.funcId = 1211;
     locala.uri = "/cgi-bin/mmpay-bin/qryusrfunddetail";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.iaa = locala.atI();
-    this.zEE = ((ceq)this.iaa.gUS.gUX);
-    this.zEE.time_stamp = ((int)System.currentTimeMillis());
-    this.zEE.zFY = ae.dYR();
-    this.rr = locala.atI();
+    this.gvE = locala.aAz();
+    this.AWR = ((cjt)this.gvE.hvr.hvw);
+    this.AWR.time_stamp = ((int)System.currentTimeMillis());
+    this.AWR.AYl = ae.eon();
+    this.rr = locala.aAz();
     AppMethodBeat.o(68451);
   }
 }

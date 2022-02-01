@@ -8,7 +8,7 @@ import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
 final class StoryActionView$f
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -17,7 +17,7 @@ final class StoryActionView$f
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(120071);
-    TextView localTextView = this.qPV;
+    TextView localTextView = this.gFv;
     k.g(paramValueAnimator, "it");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
@@ -32,7 +32,7 @@ final class StoryActionView$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryActionView.f
  * JD-Core Version:    0.7.0.1
  */

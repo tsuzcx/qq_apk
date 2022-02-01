@@ -4,26 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public final int mgo;
+  public final int mIp;
   
   static
   {
     AppMethodBeat.i(131524);
-    mgj = new b("DONE", 0, 6);
-    mgk = new b("SEARCH", 1, 3);
-    mgl = new b("NEXT", 2, 5);
-    mgm = new b("GO", 3, 2);
-    mgn = new b("SEND", 4, 4);
-    mgp = new b[] { mgj, mgk, mgl, mgm, mgn };
+    mIj = new b("DONE", 0, 6);
+    mIk = new b("SEARCH", 1, 3);
+    mIl = new b("NEXT", 2, 5);
+    mIm = new b("GO", 3, 2);
+    mIn = new b("SEND", 4, 4);
+    mIo = new b("RETURN", 5, 0);
+    mIq = new b[] { mIj, mIk, mIl, mIm, mIn, mIo };
     AppMethodBeat.o(131524);
   }
   
   private b(int paramInt)
   {
-    this.mgo = paramInt;
+    this.mIp = paramInt;
   }
   
-  public static b NM(String paramString)
+  public static b RV(String paramString)
   {
     AppMethodBeat.i(131523);
     paramString = (b)d.h(paramString, b.class);
@@ -31,14 +32,17 @@ public enum b
     return paramString;
   }
   
-  public static b buh()
+  public static b ic(boolean paramBoolean)
   {
-    return mgj;
+    if (paramBoolean) {
+      return mIo;
+    }
+    return mIj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.b
  * JD-Core Version:    0.7.0.1
  */

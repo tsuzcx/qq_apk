@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpc;
-import com.tencent.mm.protocal.protobuf.cpd;
+import com.tencent.mm.protocal.protobuf.cuj;
+import com.tencent.mm.protocal.protobuf.cuk;
 import java.util.LinkedList;
 
 public final class ak
@@ -24,13 +24,13 @@ public final class ak
   {
     AppMethodBeat.i(131136);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cpc();
-    ((b.a)localObject).gUV = new cpd();
+    ((b.a)localObject).hvt = new cuj();
+    ((b.a)localObject).hvu = new cuk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendinviteemail";
     ((b.a)localObject).funcId = 116;
     ((b.a)localObject).reqCmdId = 41;
     ((b.a)localObject).respCmdId = 1000000041;
-    this.rr = ((b.a)localObject).atI();
+    this.rr = ((b.a)localObject).aAz();
     localObject = new LinkedList();
     int i = 0;
     while (i < paramArrayOfInt.length)
@@ -38,8 +38,8 @@ public final class ak
       ((LinkedList)localObject).add(Integer.valueOf(paramArrayOfInt[i]));
       i += 1;
     }
-    ((cpc)this.rr.gUS.gUX).EiU = ((LinkedList)localObject);
-    ((cpc)this.rr.gUS.gUX).EiT = ((LinkedList)localObject).size();
+    ((cuj)this.rr.hvr.hvw).FFS = ((LinkedList)localObject);
+    ((cuj)this.rr.hvr.hvw).FFR = ((LinkedList)localObject).size();
     AppMethodBeat.o(131136);
   }
   

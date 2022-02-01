@@ -4,15 +4,16 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
 import android.os.Message;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.al.q;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
 import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.g.a.dr;
+import com.tencent.mm.g.a.ds;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bz;
@@ -23,16 +24,17 @@ import com.tencent.mm.plugin.exdevice.c.k;
 import com.tencent.mm.plugin.exdevice.c.k.c;
 import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.cu;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,24 +47,24 @@ public final class ad
   implements aw
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private ab oWK;
-  private b oWL;
-  private com.tencent.mm.plugin.exdevice.i.c oWM;
-  private com.tencent.mm.plugin.exdevice.g.b.b.d oWN;
-  private com.tencent.mm.plugin.exdevice.g.b.b.a oWO;
-  private com.tencent.mm.plugin.exdevice.g.b.b.b oWP;
-  private com.tencent.mm.plugin.exdevice.g.b.b.e oWQ;
-  private e oWR;
-  private d oWS;
-  private com.tencent.mm.plugin.exdevice.g.b.c oWT;
-  private com.tencent.mm.plugin.exdevice.g.b.a oWU;
-  private com.tencent.mm.plugin.exdevice.g.a.c oWV;
-  private com.tencent.mm.aw.a.a oWW;
-  private com.tencent.mm.aw.a.a.c oWX;
-  private af oWY;
-  private h oWZ;
-  private cc.a oXa;
-  n.b oXb;
+  private com.tencent.mm.plugin.exdevice.g.b.b.b pAa;
+  private com.tencent.mm.plugin.exdevice.g.b.b.e pAb;
+  private e pAc;
+  private d pAd;
+  private com.tencent.mm.plugin.exdevice.g.b.c pAe;
+  private com.tencent.mm.plugin.exdevice.g.b.a pAf;
+  private com.tencent.mm.plugin.exdevice.g.a.c pAg;
+  private com.tencent.mm.av.a.a pAh;
+  private com.tencent.mm.av.a.a.c pAi;
+  private af pAj;
+  private h pAk;
+  private cc.a pAl;
+  n.b pAm;
+  private ab pzV;
+  private b pzW;
+  private com.tencent.mm.plugin.exdevice.i.c pzX;
+  private com.tencent.mm.plugin.exdevice.g.b.b.d pzY;
+  private com.tencent.mm.plugin.exdevice.g.b.b.a pzZ;
   
   static
   {
@@ -104,32 +106,38 @@ public final class ad
         return com.tencent.mm.plugin.exdevice.g.b.b.b.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("HARDDEVICERANKDETAILINFO_TABLE".hashCode()), new ad.7());
+    baseDBFactories.put(Integer.valueOf("HARDDEVICERANKDETAILINFO_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.exdevice.g.b.b.c.SQL_CREATE;
+      }
+    });
     AppMethodBeat.o(23473);
   }
   
   public ad()
   {
     AppMethodBeat.i(23454);
-    this.oWK = new ab();
-    this.oWW = null;
-    this.oWX = null;
-    this.oXa = new cc.a()
+    this.pzV = new ab();
+    this.pAh = null;
+    this.pAi = null;
+    this.pAl = new cc.a()
     {
-      public final void a(com.tencent.mm.al.f.a paramAnonymousa)
+      public final void a(com.tencent.mm.ak.f.a paramAnonymousa)
       {
         AppMethodBeat.i(23450);
         Object localObject1;
         Object localObject2;
         long l;
-        if (ad.bZM() != null)
+        if (ad.cgV() != null)
         {
-          ad.bZM();
-          paramAnonymousa = paramAnonymousa.fTo;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExDeviceWifiStatusMessageHandler", "parseMessageFromServer");
-          localObject1 = z.a(paramAnonymousa.Cxz);
-          if (bt.isNullOrNil((String)localObject1)) {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceWifiStatusMessageHandler", "msg content is null");
+          ad.cgV();
+          paramAnonymousa = paramAnonymousa.fXi;
+          ac.i("MicroMsg.exdevice.ExDeviceWifiStatusMessageHandler", "parseMessageFromServer");
+          localObject1 = z.a(paramAnonymousa.DPV);
+          if (bs.isNullOrNil((String)localObject1)) {
+            ac.e("MicroMsg.exdevice.ExDeviceWifiStatusMessageHandler", "msg content is null");
           }
           int i;
           do
@@ -142,107 +150,107 @@ public final class ad
                 if (i != 0) {
                   break label915;
                 }
-                paramAnonymousa = z.a(paramAnonymousa.Cxz);
-                if (!bt.isNullOrNil(paramAnonymousa)) {
+                paramAnonymousa = z.a(paramAnonymousa.DPV);
+                if (!bs.isNullOrNil(paramAnonymousa)) {
                   break;
                 }
-                com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "msg content is null");
+                ac.e("MicroMsg.exdevice.ExDeviceMessageService", "msg content is null");
                 AppMethodBeat.o(23450);
                 return;
-                localObject1 = bw.K((String)localObject1, "sysmsg");
+                localObject1 = bv.L((String)localObject1, "sysmsg");
               } while ((localObject1 == null) || (((Map)localObject1).size() <= 0));
               localObject2 = (String)((Map)localObject1).get(".sysmsg.$type");
-            } while ((bt.isNullOrNil((String)localObject2)) || (!((String)localObject2).equalsIgnoreCase("wcdevicemsg")));
+            } while ((bs.isNullOrNil((String)localObject2)) || (!((String)localObject2).equalsIgnoreCase("wcdevicemsg")));
             String str1 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.ToUserName");
             String str2 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.FromUserName");
-            l = bt.getLong((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.CreateTime"), -1L);
+            l = bs.getLong((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.CreateTime"), -1L);
             localObject2 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.MsgType");
             String str3 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.DeviceType");
             String str4 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.DeviceID");
-            i = bt.getInt((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.DeviceStatus"), -1);
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExDeviceWifiStatusMessageHandler", "parseMessageFromServer:tousr=" + str1 + ",fromuser=" + str2 + ",createtime=" + l + ",msgtype=" + (String)localObject2 + ",devicetype=" + str3 + ",deviceid=" + str4 + ",devicestatus=" + i);
-            localObject1 = ad.bZG().UR(str4);
-          } while ((localObject1 == null) || (!bt.nullAsNil(((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_connProto).contains("4")) || (!bt.nullAsNil((String)localObject2).contains("device_status")));
+            i = bs.getInt((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.DeviceStatus"), -1);
+            ac.i("MicroMsg.exdevice.ExDeviceWifiStatusMessageHandler", "parseMessageFromServer:tousr=" + str1 + ",fromuser=" + str2 + ",createtime=" + l + ",msgtype=" + (String)localObject2 + ",devicetype=" + str3 + ",deviceid=" + str4 + ",devicestatus=" + i);
+            localObject1 = ad.cgP().Zd(str4);
+          } while ((localObject1 == null) || (!bs.nullAsNil(((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_connProto).contains("4")) || (!bs.nullAsNil((String)localObject2).contains("device_status")));
           if (i != 0)
           {
-            ad.bZR();
-            e.d(((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_url, 2, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_deviceID);
+            ad.cha();
+            e.e(((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_url, 2, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_deviceID);
           }
           for (;;)
           {
             i = 1;
             break;
-            ad.bZR();
-            e.d(((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_url, 4, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_deviceID);
+            ad.cha();
+            e.e(((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_url, 4, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_deviceID);
           }
-          localObject1 = bw.K(paramAnonymousa, "sysmsg");
+          localObject1 = bv.L(paramAnonymousa, "sysmsg");
           if ((localObject1 == null) || (((Map)localObject1).size() <= 0))
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "receiveMessage, no sysmsg");
+            ac.e("MicroMsg.exdevice.ExDeviceMessageService", "receiveMessage, no sysmsg");
             AppMethodBeat.o(23450);
             return;
           }
           paramAnonymousa = (String)((Map)localObject1).get(".sysmsg.$type");
-          if ((bt.isNullOrNil(paramAnonymousa)) || (!paramAnonymousa.equalsIgnoreCase("wcdevicemsg")))
+          if ((bs.isNullOrNil(paramAnonymousa)) || (!paramAnonymousa.equalsIgnoreCase("wcdevicemsg")))
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "receiveMessage, type not wcdevicemsg");
+            ac.e("MicroMsg.exdevice.ExDeviceMessageService", "receiveMessage, type not wcdevicemsg");
             AppMethodBeat.o(23450);
             return;
           }
-          paramAnonymousa = bt.nullAsNil((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.MsgType"));
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExDeviceMessageService", "newXml wcdevicemsg msgType = %s", new Object[] { paramAnonymousa });
+          paramAnonymousa = bs.nullAsNil((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.MsgType"));
+          ac.i("MicroMsg.exdevice.ExDeviceMessageService", "newXml wcdevicemsg msgType = %s", new Object[] { paramAnonymousa });
           if (paramAnonymousa.equals("device_relation"))
           {
-            paramAnonymousa = new dr();
-            paramAnonymousa.dfU.dfV = true;
-            com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousa);
+            paramAnonymousa = new ds();
+            paramAnonymousa.ddp.ddq = true;
+            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousa);
             AppMethodBeat.o(23450);
             return;
           }
           localObject2 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.Content");
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExDeviceMessageService", "contentBase64 = %s", new Object[] { localObject2 });
-          if (bt.isNullOrNil((String)localObject2))
+          ac.i("MicroMsg.exdevice.ExDeviceMessageService", "contentBase64 = %s", new Object[] { localObject2 });
+          if (bs.isNullOrNil((String)localObject2))
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "Fuck off: contentBase64 is null");
+            ac.e("MicroMsg.exdevice.ExDeviceMessageService", "Fuck off: contentBase64 is null");
             AppMethodBeat.o(23450);
             return;
           }
           try
           {
             paramAnonymousa = Base64.decode((String)localObject2, 0);
-            if (bt.cw(paramAnonymousa))
+            if (bs.cv(paramAnonymousa))
             {
-              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "null == decodedContent");
+              ac.e("MicroMsg.exdevice.ExDeviceMessageService", "null == decodedContent");
               AppMethodBeat.o(23450);
               return;
             }
           }
           catch (Exception paramAnonymousa)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "decode failed!!! %s", new Object[] { paramAnonymousa.getMessage() });
-            com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.exdevice.ExDeviceMessageService", paramAnonymousa, "", new Object[0]);
+            ac.e("MicroMsg.exdevice.ExDeviceMessageService", "decode failed!!! %s", new Object[] { paramAnonymousa.getMessage() });
+            ac.printErrStackTrace("MicroMsg.exdevice.ExDeviceMessageService", paramAnonymousa, "", new Object[0]);
             AppMethodBeat.o(23450);
             return;
           }
-          l = bt.getLong((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.SessionID"), -1L);
+          l = bs.getLong((String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.SessionID"), -1L);
           localObject1 = (String)((Map)localObject1).get(".sysmsg.wcdevicemsg.xml.DeviceID");
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExDeviceMessageService", "------NewXml Receive------sessionId = %d, deviceId = %s, message content = %s, length = %d", new Object[] { Long.valueOf(l), localObject1, localObject2, Integer.valueOf(paramAnonymousa.length) });
-          localObject1 = ad.bZG().UR((String)localObject1);
+          ac.i("MicroMsg.exdevice.ExDeviceMessageService", "------NewXml Receive------sessionId = %d, deviceId = %s, message content = %s, length = %d", new Object[] { Long.valueOf(l), localObject1, localObject2, Integer.valueOf(paramAnonymousa.length) });
+          localObject1 = ad.cgP().Zd((String)localObject1);
           if (localObject1 == null)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExDeviceMessageService", "SubCoreExDevice.getHardDeviceInfoStorage().getByDeviceId Failed!!!");
+            ac.e("MicroMsg.exdevice.ExDeviceMessageService", "SubCoreExDevice.getHardDeviceInfoStorage().getByDeviceId Failed!!!");
             AppMethodBeat.o(23450);
             return;
           }
           if (0L == l)
           {
             paramAnonymousa = new com.tencent.mm.plugin.exdevice.j.g(paramAnonymousa, 0, ((com.tencent.mm.plugin.exdevice.i.b)localObject1).field_mac);
-            u.cai().a(paramAnonymousa);
+            u.chr().a(paramAnonymousa);
             AppMethodBeat.o(23450);
             return;
           }
-          localObject1 = k.bZg();
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.MMSendDataToManufacturerLogic", "Recivce sendDataToManufacturerResponse, sessionId = %d", new Object[] { Long.valueOf(l) });
+          localObject1 = k.cgp();
+          ac.i("MicroMsg.exdevice.MMSendDataToManufacturerLogic", "Recivce sendDataToManufacturerResponse, sessionId = %d", new Object[] { Long.valueOf(l) });
           if (l < 0L) {
             break label922;
           }
@@ -263,31 +271,31 @@ public final class ad
       
       public final void a(f.c paramAnonymousc) {}
     };
-    this.oXb = new n.b()
+    this.pAm = new n.b()
     {
       public final void a(int paramAnonymousInt, n paramAnonymousn, final Object paramAnonymousObject)
       {
         AppMethodBeat.i(23452);
         try
         {
-          if (!az.afw())
+          if (!az.agM())
           {
-            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.SubCoreExDevice", "onNotifyChange,acc has not ready");
+            ac.w("MicroMsg.exdevice.SubCoreExDevice", "onNotifyChange,acc has not ready");
             AppMethodBeat.o(23452);
             return;
           }
           if ((paramAnonymousObject instanceof String)) {
-            az.afE().m(new Runnable()
+            az.agU().m(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(23451);
                 String str = (String)paramAnonymousObject;
-                if (ad.bZI().UL(str))
+                if (ad.cgR().YX(str))
                 {
-                  az.arV();
-                  if (!com.tencent.mm.model.c.apM().aHT(str)) {
-                    az.aeS().a(new com.tencent.mm.plugin.exdevice.g.a.h(str, null), 0);
+                  az.ayM();
+                  if (!com.tencent.mm.model.c.awB().aNo(str)) {
+                    az.agi().a(new com.tencent.mm.plugin.exdevice.g.a.h(str, null), 0);
                   }
                 }
                 AppMethodBeat.o(23451);
@@ -299,232 +307,232 @@ public final class ad
         }
         catch (Exception paramAnonymousn)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.SubCoreExDevice", "ap : onNotifyChange exception %s", new Object[] { paramAnonymousn.getMessage() });
+          ac.e("MicroMsg.exdevice.SubCoreExDevice", "ap : onNotifyChange exception %s", new Object[] { paramAnonymousn.getMessage() });
           AppMethodBeat.o(23452);
         }
       }
     };
-    if (this.oWS == null) {
-      this.oWS = new d();
+    if (this.pAd == null) {
+      this.pAd = new d();
     }
-    if (this.oWR == null) {
-      this.oWR = new e();
+    if (this.pAc == null) {
+      this.pAc = new e();
     }
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.SubCoreExDevice", "create SubCoreExDevice.");
-    com.tencent.mm.sdk.b.a.ESL.c(this.oWR.oUD);
+    ac.i("MicroMsg.exdevice.SubCoreExDevice", "create SubCoreExDevice.");
+    com.tencent.mm.sdk.b.a.GpY.c(this.pAc.pxO);
     AppMethodBeat.o(23454);
   }
   
-  public static com.tencent.mm.aw.a.a.c UG(String paramString)
+  public static com.tencent.mm.av.a.a.c YS(String paramString)
   {
     AppMethodBeat.i(23460);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.SubCoreExDevice", "newImageOptions failed, url is null or nil, return default.");
-      paramString = bZF();
-      if (paramString.oWX == null)
+      ac.w("MicroMsg.exdevice.SubCoreExDevice", "newImageOptions failed, url is null or nil, return default.");
+      paramString = cgO();
+      if (paramString.pAi == null)
       {
         c.a locala = new c.a();
-        o.ayK();
-        locala.hkl = null;
-        locala.gjw = 640;
-        locala.gjv = 640;
-        locala.hjS = false;
-        locala.hjU = true;
-        paramString.oWX = locala.azc();
+        o.aFC();
+        locala.hKO = null;
+        locala.gKh = 640;
+        locala.gKg = 640;
+        locala.hKv = false;
+        locala.hKx = true;
+        paramString.pAi = locala.aFT();
       }
-      paramString = bZF().oWX;
+      paramString = cgO().pAi;
       AppMethodBeat.o(23460);
       return paramString;
     }
     paramString = new c.a();
-    paramString.gjw = 640;
-    paramString.gjv = 640;
-    paramString.hjS = false;
-    paramString.hjT = true;
-    az.arV();
-    paramString.prefixPath = com.tencent.mm.model.c.apW();
-    paramString = paramString.azc();
+    paramString.gKh = 640;
+    paramString.gKg = 640;
+    paramString.hKv = false;
+    paramString.hKw = true;
+    az.ayM();
+    paramString.prefixPath = com.tencent.mm.model.c.awL();
+    paramString = paramString.aFT();
     AppMethodBeat.o(23460);
     return paramString;
   }
   
-  private static ad bZF()
+  private static ad cgO()
   {
     AppMethodBeat.i(23455);
-    az.arP();
-    ad localad2 = (ad)bz.ut("plugin.exdevice");
+    az.ayG();
+    ad localad2 = (ad)bz.yz("plugin.exdevice");
     ad localad1 = localad2;
     if (localad2 == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.SubCoreExDevice", "not found in MMCore, new one");
+      ac.w("MicroMsg.exdevice.SubCoreExDevice", "not found in MMCore, new one");
       localad1 = new ad();
-      az.arP().a("plugin.exdevice", localad1);
+      az.ayG().a("plugin.exdevice", localad1);
     }
     AppMethodBeat.o(23455);
     return localad1;
   }
   
-  public static com.tencent.mm.plugin.exdevice.i.c bZG()
+  public static com.tencent.mm.plugin.exdevice.i.c cgP()
   {
     AppMethodBeat.i(23456);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (bZF().oWM == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (cgO().pzX == null)
     {
-      localObject = bZF();
-      az.arV();
-      ((ad)localObject).oWM = new com.tencent.mm.plugin.exdevice.i.c(com.tencent.mm.model.c.afg());
+      localObject = cgO();
+      az.ayM();
+      ((ad)localObject).pzX = new com.tencent.mm.plugin.exdevice.i.c(com.tencent.mm.model.c.agw());
     }
-    Object localObject = bZF().oWM;
+    Object localObject = cgO().pzX;
     AppMethodBeat.o(23456);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.b.b.d bZH()
+  public static com.tencent.mm.plugin.exdevice.g.b.b.d cgQ()
   {
     AppMethodBeat.i(23457);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (bZF().oWN == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (cgO().pzY == null)
     {
-      localObject = bZF();
-      az.arV();
-      ((ad)localObject).oWN = new com.tencent.mm.plugin.exdevice.g.b.b.d(com.tencent.mm.model.c.afg());
+      localObject = cgO();
+      az.ayM();
+      ((ad)localObject).pzY = new com.tencent.mm.plugin.exdevice.g.b.b.d(com.tencent.mm.model.c.agw());
     }
-    Object localObject = bZF().oWN;
+    Object localObject = cgO().pzY;
     AppMethodBeat.o(23457);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.b.b.a bZI()
+  public static com.tencent.mm.plugin.exdevice.g.b.b.a cgR()
   {
     AppMethodBeat.i(23458);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (bZF().oWO == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (cgO().pzZ == null)
     {
-      localObject = bZF();
-      az.arV();
-      ((ad)localObject).oWO = new com.tencent.mm.plugin.exdevice.g.b.b.a(com.tencent.mm.model.c.afg());
+      localObject = cgO();
+      az.ayM();
+      ((ad)localObject).pzZ = new com.tencent.mm.plugin.exdevice.g.b.b.a(com.tencent.mm.model.c.agw());
     }
-    Object localObject = bZF().oWO;
+    Object localObject = cgO().pzZ;
     AppMethodBeat.o(23458);
     return localObject;
   }
   
-  public static com.tencent.mm.aw.a.a bZJ()
+  public static com.tencent.mm.av.a.a cgS()
   {
     AppMethodBeat.i(23459);
-    if (bZF().oWW == null) {
-      bZF().oWW = o.ayJ();
+    if (cgO().pAh == null) {
+      cgO().pAh = o.aFB();
     }
-    com.tencent.mm.aw.a.a locala = bZF().oWW;
+    com.tencent.mm.av.a.a locala = cgO().pAh;
     AppMethodBeat.o(23459);
     return locala;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.b.b.b bZK()
+  public static com.tencent.mm.plugin.exdevice.g.b.b.b cgT()
   {
     AppMethodBeat.i(23461);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (bZF().oWP == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (cgO().pAa == null)
     {
-      localObject = bZF();
-      az.arV();
-      ((ad)localObject).oWP = new com.tencent.mm.plugin.exdevice.g.b.b.b(com.tencent.mm.model.c.afg());
+      localObject = cgO();
+      az.ayM();
+      ((ad)localObject).pAa = new com.tencent.mm.plugin.exdevice.g.b.b.b(com.tencent.mm.model.c.agw());
     }
-    Object localObject = bZF().oWP;
+    Object localObject = cgO().pAa;
     AppMethodBeat.o(23461);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.b.b.e bZL()
+  public static com.tencent.mm.plugin.exdevice.g.b.b.e cgU()
   {
     AppMethodBeat.i(23462);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (bZF().oWQ == null)
+    com.tencent.mm.kernel.g.agP().afT();
+    if (cgO().pAb == null)
     {
-      localObject = bZF();
-      az.arV();
-      ((ad)localObject).oWQ = new com.tencent.mm.plugin.exdevice.g.b.b.e(com.tencent.mm.model.c.afg());
+      localObject = cgO();
+      az.ayM();
+      ((ad)localObject).pAb = new com.tencent.mm.plugin.exdevice.g.b.b.e(com.tencent.mm.model.c.agw());
     }
-    Object localObject = bZF().oWQ;
+    Object localObject = cgO().pAb;
     AppMethodBeat.o(23462);
     return localObject;
   }
   
-  public static b bZM()
+  public static b cgV()
   {
     AppMethodBeat.i(23463);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (bZF().oWL == null) {
-      bZF().oWL = new b();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (cgO().pzW == null) {
+      cgO().pzW = new b();
     }
-    b localb = bZF().oWL;
+    b localb = cgO().pzW;
     AppMethodBeat.o(23463);
     return localb;
   }
   
-  public static d bZN()
+  public static d cgW()
   {
     AppMethodBeat.i(23464);
-    if (bZF().oWS == null) {
-      bZF().oWS = new d();
+    if (cgO().pAd == null) {
+      cgO().pAd = new d();
     }
-    d locald = bZF().oWS;
+    d locald = cgO().pAd;
     AppMethodBeat.o(23464);
     return locald;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.b.c bZO()
+  public static com.tencent.mm.plugin.exdevice.g.b.c cgX()
   {
     AppMethodBeat.i(23465);
-    if (bZF().oWT == null) {
-      bZF().oWT = new com.tencent.mm.plugin.exdevice.g.b.c();
+    if (cgO().pAe == null) {
+      cgO().pAe = new com.tencent.mm.plugin.exdevice.g.b.c();
     }
-    com.tencent.mm.plugin.exdevice.g.b.c localc = bZF().oWT;
+    com.tencent.mm.plugin.exdevice.g.b.c localc = cgO().pAe;
     AppMethodBeat.o(23465);
     return localc;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.b.a bZP()
+  public static com.tencent.mm.plugin.exdevice.g.b.a cgY()
   {
     AppMethodBeat.i(23466);
-    if (bZF().oWU == null) {
-      bZF().oWU = new com.tencent.mm.plugin.exdevice.g.b.a();
+    if (cgO().pAf == null) {
+      cgO().pAf = new com.tencent.mm.plugin.exdevice.g.b.a();
     }
-    com.tencent.mm.plugin.exdevice.g.b.a locala = bZF().oWU;
+    com.tencent.mm.plugin.exdevice.g.b.a locala = cgO().pAf;
     AppMethodBeat.o(23466);
     return locala;
   }
   
-  public static com.tencent.mm.plugin.exdevice.g.a.c bZQ()
+  public static com.tencent.mm.plugin.exdevice.g.a.c cgZ()
   {
     AppMethodBeat.i(23467);
-    if (bZF().oWV == null) {
-      bZF().oWV = new com.tencent.mm.plugin.exdevice.g.a.c();
+    if (cgO().pAg == null) {
+      cgO().pAg = new com.tencent.mm.plugin.exdevice.g.a.c();
     }
-    com.tencent.mm.plugin.exdevice.g.a.c localc = bZF().oWV;
+    com.tencent.mm.plugin.exdevice.g.a.c localc = cgO().pAg;
     AppMethodBeat.o(23467);
     return localc;
   }
   
-  public static e bZR()
+  public static e cha()
   {
     AppMethodBeat.i(23468);
-    if (bZF().oWR == null) {
-      bZF().oWR = new e();
+    if (cgO().pAc == null) {
+      cgO().pAc = new e();
     }
-    e locale = bZF().oWR;
+    e locale = cgO().pAc;
     AppMethodBeat.o(23468);
     return locale;
   }
   
-  public static h bZS()
+  public static h chb()
   {
     AppMethodBeat.i(23471);
-    if (bZF().oWZ == null) {
-      bZF().oWZ = new h();
+    if (cgO().pAk == null) {
+      cgO().pAk = new h();
     }
-    h localh = bZF().oWZ;
+    h localh = cgO().pAk;
     AppMethodBeat.o(23471);
     return localh;
   }
@@ -539,55 +547,55 @@ public final class ad
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(23469);
-    az.arV();
-    com.tencent.mm.model.c.apM().a(this.oXb);
-    Object localObject = k.bZg();
-    az.aeS().a(538, (com.tencent.mm.al.g)localObject);
-    this.oWY = new af();
-    com.tencent.mm.sdk.b.a.ESL.c(this.oWK);
-    az.getSysCmdMsgExtension().a("wcdevicemsg", this.oXa, true);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUe);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUf);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUg);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUz);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUd);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUc);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUh);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUi);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUj);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUA);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUk);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUl);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUm);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUo);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUn);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUs);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUq);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUr);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUt);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUB);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().mCv);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUp);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUu);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUv);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUw);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUx);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUK);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUL);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUM);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUO);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUN);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUE);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUF);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUG);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUH);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUI);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUJ);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUC);
-    com.tencent.mm.sdk.b.a.ESL.c(bZR().oUD);
-    localObject = i.oVR;
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.GetBoundDeviceLogic", "addSceneEndListener");
-    az.aeS().a(539, (com.tencent.mm.al.g)localObject);
+    az.ayM();
+    com.tencent.mm.model.c.awB().a(this.pAm);
+    Object localObject = k.cgp();
+    az.agi().a(538, (com.tencent.mm.ak.g)localObject);
+    this.pAj = new af();
+    com.tencent.mm.sdk.b.a.GpY.c(this.pzV);
+    az.getSysCmdMsgExtension().a("wcdevicemsg", this.pAl, true);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxp);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxq);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxr);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxK);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxo);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxn);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxs);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxt);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxu);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxL);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxv);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxw);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxx);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxz);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxy);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxD);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxB);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxC);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxE);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxM);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().nex);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxA);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxF);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxG);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxH);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxI);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxV);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxW);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxX);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxZ);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxY);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxP);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxQ);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxR);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxS);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxT);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxU);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxN);
+    com.tencent.mm.sdk.b.a.GpY.c(cha().pxO);
+    localObject = i.pzc;
+    ac.i("MicroMsg.exdevice.GetBoundDeviceLogic", "addSceneEndListener");
+    az.agi().a(539, (com.tencent.mm.ak.g)localObject);
     com.tencent.mm.compatible.a.a.a(19, new a.a()
     {
       public final void run()
@@ -604,102 +612,102 @@ public final class ad
   public final void onAccountRelease()
   {
     AppMethodBeat.i(23470);
-    az.arV();
-    com.tencent.mm.model.c.apM().b(this.oXb);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUe);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUf);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUg);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUz);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUB);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUd);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUc);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUh);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUi);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUj);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUA);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUK);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUL);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUM);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUO);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUN);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUE);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUF);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUG);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUH);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUI);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUJ);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUl);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUC);
-    com.tencent.mm.sdk.b.a.ESL.d(bZR().oUD);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "releaseAllSharePreferences");
-    Object localObject1 = aj.getContext().getSharedPreferences("exdevice_pref", 0);
+    az.ayM();
+    com.tencent.mm.model.c.awB().b(this.pAm);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxp);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxq);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxr);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxK);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxM);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxo);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxn);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxs);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxt);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxu);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxL);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxV);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxW);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxX);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxZ);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxY);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxP);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxQ);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxR);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxS);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxT);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxU);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxw);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxN);
+    com.tencent.mm.sdk.b.a.GpY.d(cha().pxO);
+    ac.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "releaseAllSharePreferences");
+    Object localObject1 = ai.getContext().getSharedPreferences("exdevice_pref", 0);
     if (localObject1 == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == sp");
-      localObject1 = u.cah();
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceInfoManager", "delAllDeviceAuthFlag");
-      if (((f)localObject1).oZl != null) {
+      ac.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == sp");
+      localObject1 = u.chq();
+      ac.i("MicroMsg.exdevice.ExdeviceInfoManager", "delAllDeviceAuthFlag");
+      if (((f)localObject1).pCw != null) {
         break label630;
       }
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceInfoManager", "null == exdeviceInfoList");
+      ac.e("MicroMsg.exdevice.ExdeviceInfoManager", "null == exdeviceInfoList");
     }
     for (;;)
     {
-      localObject1 = k.bZg();
-      az.aeS().b(538, (com.tencent.mm.al.g)localObject1);
-      k.oTn = null;
-      com.tencent.mm.sdk.b.a.ESL.d(this.oWK);
-      az.getSysCmdMsgExtension().b("wcdevicemsg", this.oXa, true);
-      com.tencent.mm.sdk.b.a.ESL.d(bZR().oUk);
-      if (bZF().oWL != null) {
-        bZF();
+      localObject1 = k.cgp();
+      az.agi().b(538, (com.tencent.mm.ak.g)localObject1);
+      k.pwy = null;
+      com.tencent.mm.sdk.b.a.GpY.d(this.pzV);
+      az.getSysCmdMsgExtension().b("wcdevicemsg", this.pAl, true);
+      com.tencent.mm.sdk.b.a.GpY.d(cha().pxv);
+      if (cgO().pzW != null) {
+        cgO();
       }
-      localObject1 = i.oVR;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.GetBoundDeviceLogic", "removeSceneEndListener");
-      az.aeS().b(539, (com.tencent.mm.al.g)localObject1);
-      if ((((i)localObject1).fpP != null) && (((i)localObject1).fpP.isShowing()))
+      localObject1 = i.pzc;
+      ac.i("MicroMsg.exdevice.GetBoundDeviceLogic", "removeSceneEndListener");
+      az.agi().b(539, (com.tencent.mm.ak.g)localObject1);
+      if ((((i)localObject1).fts != null) && (((i)localObject1).fts.isShowing()))
       {
-        ((i)localObject1).fpP.dismiss();
-        ((i)localObject1).fpP = null;
+        ((i)localObject1).fts.dismiss();
+        ((i)localObject1).fts = null;
       }
-      localObject1 = bZF().oWS;
-      if ((((d)localObject1).oTJ == null) || (((d)localObject1).oTJ.isEmpty())) {
+      localObject1 = cgO().pAd;
+      if ((((d)localObject1).pwU == null) || (((d)localObject1).pwU.isEmpty())) {
         break label695;
       }
-      Object localObject2 = ((d)localObject1).oTJ.entrySet().iterator();
+      Object localObject2 = ((d)localObject1).pwU.entrySet().iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((av)((Map.Entry)((Iterator)localObject2).next()).getValue()).stopTimer();
+        ((au)((Map.Entry)((Iterator)localObject2).next()).getValue()).stopTimer();
       }
       if (((SharedPreferences)localObject1).edit().clear().commit()) {
         break;
       }
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "sp.edit().clear().commit() Failed!!!");
+      ac.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "sp.edit().clear().commit() Failed!!!");
       break;
       label630:
-      localObject1 = ((f)localObject1).oZl.entrySet().iterator();
+      localObject1 = ((f)localObject1).pCw.entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
         com.tencent.mm.plugin.exdevice.service.f.a locala = (com.tencent.mm.plugin.exdevice.service.f.a)((Map.Entry)localObject2).getValue();
-        locala.oZp = false;
+        locala.pCA = false;
         ((Map.Entry)localObject2).setValue(locala);
       }
     }
-    ((d)localObject1).oTJ.clear();
+    ((d)localObject1).pwU.clear();
     label695:
-    if (bZF().oWT != null)
+    if (cgO().pAe != null)
     {
-      localObject1 = bZF().oWT;
-      az.aeS().b(1042, (com.tencent.mm.al.g)localObject1);
-      az.aeS().b(1041, (com.tencent.mm.al.g)localObject1);
-      az.aeS().b(1043, (com.tencent.mm.al.g)localObject1);
-      az.aeS().b(1040, (com.tencent.mm.al.g)localObject1);
+      localObject1 = cgO().pAe;
+      az.agi().b(1042, (com.tencent.mm.ak.g)localObject1);
+      az.agi().b(1041, (com.tencent.mm.ak.g)localObject1);
+      az.agi().b(1043, (com.tencent.mm.ak.g)localObject1);
+      az.agi().b(1040, (com.tencent.mm.ak.g)localObject1);
     }
-    if (bZF().oWW != null) {
-      bZF().oWW.detach();
+    if (cgO().pAh != null) {
+      cgO().pAh.detach();
     }
-    localObject1 = this.oWY;
-    com.tencent.mm.sdk.b.a.ESL.d(((af)localObject1).fjL);
+    localObject1 = this.pAj;
+    com.tencent.mm.sdk.b.a.GpY.d(((af)localObject1).fnf);
     com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.exdevice.a.b.class);
     AppMethodBeat.o(23470);
   }
@@ -708,7 +716,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ad
  * JD-Core Version:    0.7.0.1
  */

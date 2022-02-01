@@ -1,143 +1,155 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.d;
-import com.tencent.mm.bc.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.bb.d;
+import com.tencent.mm.bb.e;
+import com.tencent.mm.bb.j;
+import com.tencent.mm.bb.m;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.l;
-import java.util.Iterator;
 import java.util.LinkedList;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/EggListParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "TAG", "", "eggList", "Lcom/tencent/mm/modelpackage/EggList;", "getEggList", "()Lcom/tencent/mm/modelpackage/EggList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "validEggInfo", "", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "Companion", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/EggItemParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "isNewItem", "", "(Z)V", "defaultAnim", "Lcom/tencent/mm/modelpackage/NewAnim;", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "getInfo", "()Lcom/tencent/mm/modelpackage/EggInfo;", "luckyBagValid", "luckyBag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "plugin-emojisdk_release"})
 public final class g
   extends a
 {
-  public static final a fMH;
-  private final String TAG;
-  public final com.tencent.mm.bc.f fMG;
+  final d fQp;
+  private final m fQq;
+  private final boolean fQr;
   
-  static
+  public g(boolean paramBoolean)
   {
-    AppMethodBeat.i(160330);
-    fMH = new a((byte)0);
-    AppMethodBeat.o(160330);
-  }
-  
-  public g()
-  {
-    AppMethodBeat.i(105507);
-    this.TAG = "MicroMsg.EggListParser";
-    this.fMG = new com.tencent.mm.bc.f();
-    AppMethodBeat.o(105507);
+    AppMethodBeat.i(105504);
+    this.fQr = paramBoolean;
+    this.fQp = new d();
+    this.fQq = new m();
+    AppMethodBeat.o(105504);
   }
   
   protected final void a(String paramString, XmlPullParser paramXmlPullParser)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(105506);
+    int i = 1;
+    AppMethodBeat.i(105503);
     k.h(paramString, "tag");
     k.h(paramXmlPullParser, "parser");
     switch (paramString.hashCode())
     {
     default: 
-    case 2289459: 
-      label56:
-      do
-      {
-        a(paramXmlPullParser);
-        AppMethodBeat.o(105506);
-        return;
-      } while (!paramString.equals("Item"));
-      label71:
-      paramString = new f(k.g(paramString, "ItemNew"));
-      paramString.q(paramXmlPullParser);
-      paramXmlPullParser = paramString.fMD;
-      switch (paramXmlPullParser.hpe)
-      {
-      default: 
-        bool1 = false;
-      }
-      break;
+      a(paramXmlPullParser);
     }
-    do
+    label586:
+    label591:
+    label594:
+    for (;;)
     {
-      m localm;
-      for (;;)
+      AppMethodBeat.o(105503);
+      return;
+      if (!paramString.equals("Type")) {
+        break;
+      }
+      this.fQp.type = e(paramXmlPullParser);
+      AppMethodBeat.o(105503);
+      return;
+      if (!paramString.equals("AnimType")) {
+        break;
+      }
+      this.fQq.hQb = e(paramXmlPullParser, "viewcount");
+      this.fQq.hQc = e(paramXmlPullParser, "minSize");
+      this.fQq.maxSize = e(paramXmlPullParser, "maxSize");
+      this.fQq.hQa = e(paramXmlPullParser);
+      AppMethodBeat.o(105503);
+      return;
+      if (!paramString.equals("ClientEggVersion")) {
+        break;
+      }
+      if (this.fQr)
       {
-        ad.i(this.TAG, "validEggInfo: " + paramXmlPullParser.name + ", " + paramXmlPullParser.hpe + ", " + paramXmlPullParser.type + ", " + bool1);
-        if (!bool1) {
-          break label56;
-        }
-        this.fMG.hph.add(paramString.fMD);
-        AppMethodBeat.o(105506);
+        this.fQp.hPG = e(paramXmlPullParser);
+        AppMethodBeat.o(105503);
         return;
-        if (!paramString.equals("ItemNew")) {
+        if (!paramString.equals("KeyWord")) {
           break;
         }
-        break label71;
-        localIterator = paramXmlPullParser.hpf.iterator();
-        while (localIterator.hasNext())
-        {
-          localm = (m)localIterator.next();
-          if (localm.hpy > 3) {
-            localm.hpy = 0;
-          }
+        paramString = new e();
+        paramString.lang = d(paramXmlPullParser, "lang");
+        paramString.hPI = d(paramXmlPullParser);
+        paramXmlPullParser = paramString.hPI;
+        k.g(paramXmlPullParser, "eggKeyWord.keyWord");
+        if (((CharSequence)paramXmlPullParser).length() <= 0) {
+          break label586;
         }
-        bool1 = bool2;
-        if (paramXmlPullParser.type != 0)
-        {
-          paramXmlPullParser.type = 0;
-          bool1 = bool2;
+        if (i == 0) {
           continue;
-          localIterator = paramXmlPullParser.hpf.iterator();
-          while (localIterator.hasNext())
-          {
-            localm = (m)localIterator.next();
-            if (localm.hpy > 4) {
-              localm.hpy = 0;
-            }
-          }
-          bool1 = bool2;
-          if (paramXmlPullParser.type != 0)
-          {
-            paramXmlPullParser.type = 0;
-            bool1 = bool2;
-          }
         }
+        this.fQp.hPB.add(paramString);
+        AppMethodBeat.o(105503);
+        return;
+        if (!paramString.equals("FileName")) {
+          break;
+        }
+        this.fQp.hPH.add(this.fQq);
+        this.fQq.fileName = d(paramXmlPullParser);
+        AppMethodBeat.o(105503);
+        return;
+        if (!paramString.equals("NewAnimType")) {
+          break;
+        }
+        paramString = new m();
+        paramString.hQb = e(paramXmlPullParser, "viewcount");
+        paramString.hQc = e(paramXmlPullParser, "minSize");
+        paramString.maxSize = e(paramXmlPullParser, "maxSize");
+        paramString.fileName = d(paramXmlPullParser, "fileName");
+        paramString.hQa = e(paramXmlPullParser);
+        this.fQp.hPH.add(paramString);
+        AppMethodBeat.o(105503);
+        return;
+        if (!paramString.equals("LuckyBag")) {
+          break;
+        }
+        paramString = new n();
+        paramString.f(paramXmlPullParser);
+        paramXmlPullParser = paramString.fRh;
+        if ((!bs.isNullOrNil(paramXmlPullParser.appId)) && (!bs.isNullOrNil(paramXmlPullParser.hPR)) && (!bs.isNullOrNil(paramXmlPullParser.ddh)) && (!bs.isNullOrNil(paramXmlPullParser.hPN)) && (!bs.isNullOrNil(paramXmlPullParser.hPP)) && (!bs.isNullOrNil(paramXmlPullParser.hPU)) && (!bs.isNullOrNil(paramXmlPullParser.hPV)) && (!bs.isNullOrNil(paramXmlPullParser.hPW)) && (!bs.isNullOrNil(paramXmlPullParser.hPX))) {
+          break label591;
+        }
+        h.wUl.dB(1263, 0);
       }
-      Iterator localIterator = paramXmlPullParser.hpf.iterator();
-      while (localIterator.hasNext())
+      for (i = 0;; i = 1)
       {
-        localm = (m)localIterator.next();
-        if (localm.hpy > 4) {
-          localm.hpy = 0;
+        if (i == 0) {
+          break label594;
         }
+        this.fQp.fRh = paramString.fRh;
+        AppMethodBeat.o(105503);
+        return;
+        a(paramXmlPullParser);
+        AppMethodBeat.o(105503);
+        return;
+        i = 0;
+        break;
       }
-      bool1 = bool2;
-    } while (1 != paramXmlPullParser.type);
-    if (paramXmlPullParser.fNw != null) {}
-    for (boolean bool1 = true;; bool1 = false) {
-      break;
     }
   }
   
-  public final void q(XmlPullParser paramXmlPullParser)
+  public final void f(XmlPullParser paramXmlPullParser)
   {
-    AppMethodBeat.i(105505);
+    AppMethodBeat.i(105502);
     k.h(paramXmlPullParser, "parser");
-    this.fMG.bFX = l(paramXmlPullParser, "version");
-    super.q(paramXmlPullParser);
-    AppMethodBeat.o(105505);
+    this.fQp.name = d(paramXmlPullParser, "name");
+    this.fQp.dtw = e(paramXmlPullParser, "reportType");
+    this.fQp.hPF = d(paramXmlPullParser, "langs");
+    this.fQp.hPD = bs.aLr(d(paramXmlPullParser, "BeginDate"));
+    this.fQp.hPE = bs.aLr(d(paramXmlPullParser, "EndDate"));
+    super.f(paramXmlPullParser);
+    AppMethodBeat.o(105502);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/EggListParser$Companion;", "", "()V", "TYPE_AD_EGG", "", "TYPE_NORMAL_EGG", "plugin-emojisdk_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.g
  * JD-Core Version:    0.7.0.1
  */

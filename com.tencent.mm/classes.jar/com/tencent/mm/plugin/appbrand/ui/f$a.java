@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.base.i;
 
 public final class f$a
@@ -16,13 +16,13 @@ public final class f$a
   public final void dismiss()
   {
     AppMethodBeat.i(48657);
-    if (aq.isMainThread())
+    if (ap.isMainThread())
     {
       super.dismiss();
       AppMethodBeat.o(48657);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -36,7 +36,7 @@ public final class f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.f.a
  * JD-Core Version:    0.7.0.1
  */

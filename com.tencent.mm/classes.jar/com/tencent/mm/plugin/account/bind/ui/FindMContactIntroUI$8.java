@@ -13,7 +13,7 @@ final class FindMContactIntroUI$8
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(110028);
-    l.eT(false);
+    l.fn(false);
     AppMethodBeat.o(110028);
   }
 }

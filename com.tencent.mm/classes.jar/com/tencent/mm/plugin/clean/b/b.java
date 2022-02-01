@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.clean.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.az;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.vfs.i;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -17,19 +17,19 @@ import java.util.List;
 public final class b
   implements Runnable
 {
-  private List<String> nND;
-  private List<com.tencent.mm.plugin.clean.c.c> nNE;
-  private com.tencent.mm.plugin.clean.c.b nNF;
-  private long nNG = 0L;
+  private List<String> oqF;
+  private List<com.tencent.mm.plugin.clean.c.c> oqG;
+  private com.tencent.mm.plugin.clean.c.b oqH;
+  private long oqI = 0L;
   
   public b(List<String> paramList, List<com.tencent.mm.plugin.clean.c.c> paramList1, com.tencent.mm.plugin.clean.c.b paramb)
   {
-    this.nND = paramList;
-    this.nNE = paramList1;
-    this.nNF = paramb;
+    this.oqF = paramList;
+    this.oqG = paramList1;
+    this.oqH = paramb;
   }
   
-  private String bel()
+  private String blf()
   {
     AppMethodBeat.i(22771);
     String str = hashCode();
@@ -37,49 +37,49 @@ public final class b
     return str;
   }
   
-  private void cF(List<com.tencent.mm.plugin.f.b.a> paramList)
+  private void cH(List<com.tencent.mm.plugin.f.b.a> paramList)
   {
     AppMethodBeat.i(22769);
     int j = paramList.size();
     HashSet localHashSet = new HashSet();
-    az.arV();
-    long l1 = com.tencent.mm.model.c.afg().rb(Thread.currentThread().getId());
+    az.ayM();
+    long l1 = com.tencent.mm.model.c.agw().vE(Thread.currentThread().getId());
     int i = 0;
     while (i < j)
     {
       com.tencent.mm.plugin.f.b.a locala = (com.tencent.mm.plugin.f.b.a)paramList.get(i);
-      long l2 = bt.GC();
+      long l2 = bs.Gn();
       if (!localHashSet.contains(Long.valueOf(locala.field_msgId)))
       {
-        az.arV();
-        bl localbl = com.tencent.mm.model.c.apO().rm(locala.field_msgId);
-        if ((localbl.field_msgId != 0L) && (!localbl.eMl()))
+        az.ayM();
+        bo localbo = com.tencent.mm.model.c.awD().vP(locala.field_msgId);
+        if ((localbo.field_msgId != 0L) && (!localbo.fbQ()))
         {
-          com.tencent.mm.plugin.f.b localb = com.tencent.mm.plugin.f.b.bHc();
+          com.tencent.mm.plugin.f.b localb = com.tencent.mm.plugin.f.b.bOp();
           long l3 = locala.field_msgId;
-          localb.nph = true;
-          localb.npg.add(Long.valueOf(l3));
-          ad.d("MicroMsg.CalcWxService", "%d lock msg change [%d] [%s]", new Object[] { Integer.valueOf(localb.hashCode()), Long.valueOf(l3), bt.eGN() });
-          localbl.eMm();
-          az.arV();
-          com.tencent.mm.model.c.apO().a(locala.field_msgId, localbl);
+          localb.nSh = true;
+          localb.nSg.add(Long.valueOf(l3));
+          ac.d("MicroMsg.CalcWxService", "%d lock msg change [%d] [%s]", new Object[] { Integer.valueOf(localb.hashCode()), Long.valueOf(l3), bs.eWi() });
+          localbo.fbR();
+          az.ayM();
+          com.tencent.mm.model.c.awD().a(locala.field_msgId, localbo);
         }
         localHashSet.add(Long.valueOf(locala.field_msgId));
-        ad.d("MicroMsg.DeleteFileByWxIndex", "%s deleteByIndex handle msg[%d]", new Object[] { bel(), Long.valueOf(bt.aS(l2)) });
+        ac.d("MicroMsg.DeleteFileByWxIndex", "%s deleteByIndex handle msg[%d]", new Object[] { blf(), Long.valueOf(bs.aO(l2)) });
       }
-      if ((locala != null) && (!com.tencent.mm.plugin.f.a.yK(locala.field_msgSubType)) && (locala.field_size > 0L))
+      if ((locala != null) && (!com.tencent.mm.plugin.f.a.zA(locala.field_msgSubType)) && (locala.field_size > 0L))
       {
-        this.nNG += locala.field_size;
-        i.deleteFile(g.afB().gcV + locala.field_path);
+        this.oqI += locala.field_size;
+        i.deleteFile(g.agR().ghB + locala.field_path);
         locala.field_path = "";
         locala.field_size = 0L;
-        com.tencent.mm.plugin.f.b.bHc().bHd().update(locala.systemRowid, locala, false);
+        com.tencent.mm.plugin.f.b.bOp().bOq().update(locala.systemRowid, locala, false);
       }
-      ad.d("MicroMsg.DeleteFileByWxIndex", "%s deleteByIndex[%d]", new Object[] { bel(), Long.valueOf(bt.aS(l2)) });
+      ac.d("MicroMsg.DeleteFileByWxIndex", "%s deleteByIndex[%d]", new Object[] { blf(), Long.valueOf(bs.aO(l2)) });
       i += 1;
     }
-    az.arV();
-    com.tencent.mm.model.c.afg().mX(l1);
+    az.ayM();
+    com.tencent.mm.model.c.agw().qL(l1);
     AppMethodBeat.o(22769);
   }
   
@@ -89,22 +89,22 @@ public final class b
     int j;
     int i;
     long l1;
-    if (this.nND != null)
+    if (this.oqF != null)
     {
-      long l5 = bt.GC();
-      j = this.nND.size();
-      Iterator localIterator2 = this.nND.iterator();
+      long l5 = bs.Gn();
+      j = this.oqF.size();
+      Iterator localIterator2 = this.oqF.iterator();
       i = 0;
       while (localIterator2.hasNext())
       {
         String str1 = (String)localIterator2.next();
-        if (!bt.isNullOrNil(str1))
+        if (!bs.isNullOrNil(str1))
         {
-          long l6 = bt.GC();
+          long l6 = bs.Gn();
           PLong localPLong1 = new PLong();
           PLong localPLong2 = new PLong();
-          Object localObject4 = com.tencent.mm.plugin.f.b.bHc().bHd();
-          l1 = bt.GC();
+          Object localObject4 = com.tencent.mm.plugin.f.b.bOp().bOq();
+          l1 = bs.Gn();
           String str2 = "select max(msgtime), min(msgtime) from WxFileIndex2 where username='" + str1 + "' and msgSubType in (1,20,23,30,32,34 ) and size > 0 ";
           Object localObject3 = null;
           Object localObject1 = null;
@@ -135,7 +135,7 @@ public final class b
             {
               long l2;
               localObject3 = localObject1;
-              ad.printErrStackTrace("MicroMsg.WxFileIndexStorage", localException, " sql [%s]", new Object[] { str2 });
+              ac.printErrStackTrace("MicroMsg.WxFileIndexStorage", localException, " sql [%s]", new Object[] { str2 });
               if (localObject1 != null) {
                 ((Cursor)localObject1).close();
               }
@@ -149,7 +149,7 @@ public final class b
             localObject3.close();
             AppMethodBeat.o(22770);
           }
-          ad.i("MicroMsg.WxFileIndexStorage", "getNoThumbMediaMsgTimeByUsername [%s] cost[%d]", new Object[] { str1, Long.valueOf(bt.aS(l1)) });
+          ac.i("MicroMsg.WxFileIndexStorage", "getNoThumbMediaMsgTimeByUsername [%s] cost[%d]", new Object[] { str1, Long.valueOf(bs.aO(l1)) });
           localPLong2.value -= 1L;
           long l3 = localPLong1.value;
           l2 = Math.max(l3 - 2592000000L, localPLong2.value);
@@ -157,9 +157,9 @@ public final class b
           if (l2 == l3) {
             l1 = l2 - 1L;
           }
-          localObject1 = com.tencent.mm.plugin.f.b.bHc().bHd().v(str1, l3, l1);
+          localObject1 = com.tencent.mm.plugin.f.b.bOp().bOq().s(str1, l3, l1);
           l3 = ((List)localObject1).size() + 0L;
-          cF((List)localObject1);
+          cH((List)localObject1);
           for (l2 = l1; l2 > localPLong2.value; l2 = l1)
           {
             long l4 = Math.max(l2 - 2592000000L, localPLong2.value);
@@ -167,45 +167,45 @@ public final class b
             if (l4 == l2) {
               l1 = l4 - 1L;
             }
-            localObject1 = com.tencent.mm.plugin.f.b.bHc().bHd().v(str1, l2, l1);
+            localObject1 = com.tencent.mm.plugin.f.b.bOp().bOq().s(str1, l2, l1);
             l3 += ((List)localObject1).size();
-            cF((List)localObject1);
+            cH((List)localObject1);
           }
           label485:
-          ad.i("MicroMsg.DeleteFileByWxIndex", "%s deleteByName [%s] [%d] [%d %d] cost[%d]", new Object[] { bel(), str1, Long.valueOf(l3), Long.valueOf(localPLong2.value), Long.valueOf(localPLong1.value), Long.valueOf(bt.aS(l6)) });
+          ac.i("MicroMsg.DeleteFileByWxIndex", "%s deleteByName [%s] [%d] [%d %d] cost[%d]", new Object[] { blf(), str1, Long.valueOf(l3), Long.valueOf(localPLong2.value), Long.valueOf(localPLong1.value), Long.valueOf(bs.aO(l6)) });
         }
         i += 1;
-        if (this.nNF != null) {
-          this.nNF.eT(i, j);
+        if (this.oqH != null) {
+          this.oqH.eW(i, j);
         }
       }
-      if (this.nNF != null) {
-        this.nNF.nX(this.nNG);
+      if (this.oqH != null) {
+        this.oqH.rJ(this.oqI);
       }
-      com.tencent.mm.plugin.f.b.bHc().bHh();
-      ad.i("MicroMsg.DeleteFileByWxIndex", "%s deleteByUsername cost[%d]", new Object[] { bel(), Long.valueOf(bt.aS(l5)) });
+      com.tencent.mm.plugin.f.b.bOp().bOu();
+      ac.i("MicroMsg.DeleteFileByWxIndex", "%s deleteByUsername cost[%d]", new Object[] { blf(), Long.valueOf(bs.aO(l5)) });
       AppMethodBeat.o(22770);
       return;
     }
-    if (this.nNE != null)
+    if (this.oqG != null)
     {
-      l1 = bt.GC();
-      j = this.nNE.size();
-      Iterator localIterator1 = this.nNE.iterator();
+      l1 = bs.Gn();
+      j = this.oqG.size();
+      Iterator localIterator1 = this.oqG.iterator();
       i = 0;
       while (localIterator1.hasNext())
       {
-        cF(((com.tencent.mm.plugin.clean.c.c)localIterator1.next()).nNL);
+        cH(((com.tencent.mm.plugin.clean.c.c)localIterator1.next()).oqN);
         i += 1;
-        if (this.nNF != null) {
-          this.nNF.eT(i, j);
+        if (this.oqH != null) {
+          this.oqH.eW(i, j);
         }
       }
-      if (this.nNF != null) {
-        this.nNF.nX(this.nNG);
+      if (this.oqH != null) {
+        this.oqH.rJ(this.oqI);
       }
-      com.tencent.mm.plugin.f.b.bHc().bHh();
-      ad.i("MicroMsg.DeleteFileByWxIndex", "%s deleteByNewAnalyseItem cost[%d]", new Object[] { bel(), Long.valueOf(bt.aS(l1)) });
+      com.tencent.mm.plugin.f.b.bOp().bOu();
+      ac.i("MicroMsg.DeleteFileByWxIndex", "%s deleteByNewAnalyseItem cost[%d]", new Object[] { blf(), Long.valueOf(bs.aO(l1)) });
       AppMethodBeat.o(22770);
       return;
     }
@@ -214,7 +214,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ah;
+import com.tencent.mm.ui.ai;
 import com.tencent.mm.ui.an;
 
 public final class f
@@ -18,7 +18,7 @@ public final class f
     if (paramNumberPicker != null) {}
     try
     {
-      new ah(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
+      new ai(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
       AppMethodBeat.o(159575);
       return;
     }
@@ -38,7 +38,7 @@ public final class f
     }
     try
     {
-      paramNumberPicker = (EditText)new ah(paramNumberPicker, "mInputText").get();
+      paramNumberPicker = (EditText)new ai(paramNumberPicker, "mInputText").get();
       AppMethodBeat.o(159576);
       return paramNumberPicker;
     }
@@ -86,7 +86,7 @@ public final class f
     }
     try
     {
-      paramNumberPicker = (Paint)new ah(paramNumberPicker, "mSelectorWheelPaint").get();
+      paramNumberPicker = (Paint)new ai(paramNumberPicker, "mSelectorWheelPaint").get();
       AppMethodBeat.o(159577);
       return paramNumberPicker;
     }
@@ -127,7 +127,7 @@ public final class f
     }
     try
     {
-      paramNumberPicker = (EditText)new ah(paramNumberPicker, "mInputText").get();
+      paramNumberPicker = (EditText)new ai(paramNumberPicker, "mInputText").get();
       if (paramNumberPicker != null) {
         paramNumberPicker.setFilters(new InputFilter[0]);
       }
@@ -157,7 +157,7 @@ public final class f
     }
     try
     {
-      Runnable localRunnable = (Runnable)new ah(paramNumberPicker, "mSetSelectionCommand").get();
+      Runnable localRunnable = (Runnable)new ai(paramNumberPicker, "mSetSelectionCommand").get();
       if (localRunnable != null) {
         paramNumberPicker.removeCallbacks(localRunnable);
       }
@@ -179,7 +179,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.f
  * JD-Core Version:    0.7.0.1
  */

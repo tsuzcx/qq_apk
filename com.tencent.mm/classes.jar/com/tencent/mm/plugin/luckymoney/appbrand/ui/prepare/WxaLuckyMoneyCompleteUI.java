@@ -13,14 +13,14 @@ public class WxaLuckyMoneyCompleteUI
   extends WxaLuckyMoneyBaseUI
   implements b
 {
-  private Button lkJ;
+  private Button lKB;
   
-  public final MMActivity cKW()
+  public final MMActivity cYC()
   {
     return this;
   }
   
-  public final void cKX() {}
+  public final void cYD() {}
   
   public final void error(String paramString) {}
   
@@ -32,8 +32,8 @@ public class WxaLuckyMoneyCompleteUI
   public void initView()
   {
     AppMethodBeat.i(64942);
-    this.lkJ = ((Button)findViewById(2131307107));
-    this.lkJ.setOnClickListener(new View.OnClickListener()
+    this.lKB = ((Button)findViewById(2131307107));
+    this.lKB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {

@@ -10,19 +10,19 @@ public class MallRechargeProduct
 {
   public static final Parcelable.Creator<MallRechargeProduct> CREATOR;
   public String appId;
-  public String dft;
-  public int gOH;
+  public String dcO;
+  public int hph;
   public boolean isDefault;
-  public String oEN;
-  public String uWF;
-  public String uWG;
-  public float uWH;
-  public float uWI;
-  public boolean uWJ;
-  public int uWK;
-  public int uWL;
-  public final boolean uWM;
-  public boolean uWN;
+  public String pio;
+  public int wfA;
+  public final boolean wfB;
+  public boolean wfC;
+  public String wfu;
+  public String wfv;
+  public float wfw;
+  public float wfx;
+  public boolean wfy;
+  public int wfz;
   
   static
   {
@@ -34,22 +34,22 @@ public class MallRechargeProduct
   public MallRechargeProduct(Parcel paramParcel)
   {
     AppMethodBeat.i(67098);
-    this.uWH = 0.0F;
-    this.uWI = 0.0F;
-    this.uWN = true;
-    this.uWF = paramParcel.readString();
+    this.wfw = 0.0F;
+    this.wfx = 0.0F;
+    this.wfC = true;
+    this.wfu = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.dft = paramParcel.readString();
-    this.oEN = paramParcel.readString();
-    this.uWG = paramParcel.readString();
-    this.uWH = paramParcel.readFloat();
-    this.uWI = paramParcel.readFloat();
+    this.dcO = paramParcel.readString();
+    this.pio = paramParcel.readString();
+    this.wfv = paramParcel.readString();
+    this.wfw = paramParcel.readFloat();
+    this.wfx = paramParcel.readFloat();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.uWJ = bool1;
-      this.uWK = paramParcel.readInt();
-      this.uWL = paramParcel.readInt();
+      this.wfy = bool1;
+      this.wfz = paramParcel.readInt();
+      this.wfA = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label162;
       }
@@ -64,8 +64,8 @@ public class MallRechargeProduct
     label167:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.uWM = bool1;
-      this.gOH = paramParcel.readInt();
+      this.wfB = bool1;
+      this.hph = paramParcel.readInt();
       AppMethodBeat.o(67098);
       return;
       bool1 = false;
@@ -77,27 +77,27 @@ public class MallRechargeProduct
   
   public MallRechargeProduct(boolean paramBoolean)
   {
-    this.uWH = 0.0F;
-    this.uWI = 0.0F;
-    this.uWN = true;
-    this.uWM = paramBoolean;
+    this.wfw = 0.0F;
+    this.wfx = 0.0F;
+    this.wfC = true;
+    this.wfB = paramBoolean;
   }
   
   public static void a(MallRechargeProduct paramMallRechargeProduct1, MallRechargeProduct paramMallRechargeProduct2)
   {
     paramMallRechargeProduct2.appId = paramMallRechargeProduct1.appId;
-    paramMallRechargeProduct2.uWF = paramMallRechargeProduct1.uWF;
-    paramMallRechargeProduct2.dft = paramMallRechargeProduct1.dft;
-    paramMallRechargeProduct2.oEN = paramMallRechargeProduct1.oEN;
-    paramMallRechargeProduct2.uWG = paramMallRechargeProduct1.uWG;
-    paramMallRechargeProduct2.uWH = paramMallRechargeProduct1.uWH;
-    paramMallRechargeProduct2.uWI = paramMallRechargeProduct1.uWI;
-    paramMallRechargeProduct2.uWJ = paramMallRechargeProduct1.uWJ;
-    paramMallRechargeProduct2.uWK = paramMallRechargeProduct1.uWK;
-    paramMallRechargeProduct2.uWL = paramMallRechargeProduct1.uWL;
+    paramMallRechargeProduct2.wfu = paramMallRechargeProduct1.wfu;
+    paramMallRechargeProduct2.dcO = paramMallRechargeProduct1.dcO;
+    paramMallRechargeProduct2.pio = paramMallRechargeProduct1.pio;
+    paramMallRechargeProduct2.wfv = paramMallRechargeProduct1.wfv;
+    paramMallRechargeProduct2.wfw = paramMallRechargeProduct1.wfw;
+    paramMallRechargeProduct2.wfx = paramMallRechargeProduct1.wfx;
+    paramMallRechargeProduct2.wfy = paramMallRechargeProduct1.wfy;
+    paramMallRechargeProduct2.wfz = paramMallRechargeProduct1.wfz;
+    paramMallRechargeProduct2.wfA = paramMallRechargeProduct1.wfA;
     paramMallRechargeProduct2.isDefault = paramMallRechargeProduct1.isDefault;
-    paramMallRechargeProduct2.uWN = paramMallRechargeProduct1.uWN;
-    paramMallRechargeProduct2.gOH = paramMallRechargeProduct1.gOH;
+    paramMallRechargeProduct2.wfC = paramMallRechargeProduct1.wfC;
+    paramMallRechargeProduct2.hph = paramMallRechargeProduct1.hph;
   }
   
   public int describeContents()
@@ -107,33 +107,33 @@ public class MallRechargeProduct
   
   public final boolean isValid()
   {
-    return (!this.uWJ) || (this.uWK > 0);
+    return (!this.wfy) || (this.wfz > 0);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
     AppMethodBeat.i(67099);
-    paramParcel.writeString(this.uWF);
+    paramParcel.writeString(this.wfu);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.dft);
-    paramParcel.writeString(this.oEN);
-    paramParcel.writeString(this.uWG);
-    paramParcel.writeFloat(this.uWH);
-    paramParcel.writeFloat(this.uWI);
-    if (this.uWJ)
+    paramParcel.writeString(this.dcO);
+    paramParcel.writeString(this.pio);
+    paramParcel.writeString(this.wfv);
+    paramParcel.writeFloat(this.wfw);
+    paramParcel.writeFloat(this.wfx);
+    if (this.wfy)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.uWK);
-      paramParcel.writeInt(this.uWL);
+      paramParcel.writeInt(this.wfz);
+      paramParcel.writeInt(this.wfA);
       if (!this.isDefault) {
         break label140;
       }
       paramInt = 1;
       label102:
       paramParcel.writeInt(paramInt);
-      if (!this.uWM) {
+      if (!this.wfB) {
         break label145;
       }
     }
@@ -142,7 +142,7 @@ public class MallRechargeProduct
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.gOH);
+      paramParcel.writeInt(this.hph);
       AppMethodBeat.o(67099);
       return;
       paramInt = 0;
@@ -154,7 +154,7 @@ public class MallRechargeProduct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.MallRechargeProduct
  * JD-Core Version:    0.7.0.1
  */

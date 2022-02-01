@@ -7,27 +7,27 @@ import com.tencent.mm.loader.h.e;
 public final class c
   extends b<Bitmap>
 {
-  private boolean gkG = true;
-  private float gkH;
+  private boolean gLt = true;
+  private float gLu;
   
   public c()
   {
-    this.gkH = 0.1F;
+    this.gLu = 0.1F;
   }
   
   public c(float paramFloat)
   {
-    this.gkH = paramFloat;
+    this.gLu = paramFloat;
   }
   
   public final e<? extends Bitmap> a(g<?> paramg, com.tencent.mm.loader.f<?, Bitmap> paramf, e<Bitmap> parame)
   {
     paramg = (Bitmap)parame.value;
     paramf = paramg;
-    if (this.gkG)
+    if (this.gLt)
     {
       paramf = paramg;
-      if (this.gkH == 0.0F)
+      if (this.gLu == 0.0F)
       {
         paramf = paramg;
         if (paramg.getWidth() != paramg.getHeight())
@@ -40,19 +40,19 @@ public final class c
           paramf = com.tencent.mm.sdk.platformtools.f.b(paramg, i, i, true);
         }
       }
-      paramf = com.tencent.mm.sdk.platformtools.f.a(paramf, false, paramf.getWidth() * this.gkH);
+      paramf = com.tencent.mm.sdk.platformtools.f.a(paramf, false, paramf.getWidth() * this.gLu);
     }
     return new e(paramf);
   }
   
-  public final String rg(String paramString)
+  public final String vi(String paramString)
   {
-    return String.format("_round_%s_", new Object[] { Integer.valueOf((int)this.gkH) });
+    return String.format("_round_%s_", new Object[] { Integer.valueOf((int)this.gLu) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.e.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,127 +1,149 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cik
-  extends com.tencent.mm.bx.a
+  extends cpx
 {
-  public String DOs;
-  public String EdN;
-  public String EdO;
-  public String EdP;
-  public String mBV;
-  public String oXr;
+  public int AYa;
+  public String AYl;
+  public int ErG;
+  public String FuW;
+  public String Fwv;
+  public int Fww;
+  public String Fwx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(134253);
+    AppMethodBeat.i(91636);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.mBV != null) {
-        paramVarArgs.d(1, this.mBV);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.EdN != null) {
-        paramVarArgs.d(2, this.EdN);
+      if (this.Fwv != null) {
+        paramVarArgs.d(2, this.Fwv);
       }
-      if (this.DOs != null) {
-        paramVarArgs.d(3, this.DOs);
+      paramVarArgs.aR(3, this.Fww);
+      paramVarArgs.aR(4, this.ErG);
+      if (this.Fwx != null) {
+        paramVarArgs.d(5, this.Fwx);
       }
-      if (this.EdO != null) {
-        paramVarArgs.d(4, this.EdO);
+      if (this.FuW != null) {
+        paramVarArgs.d(7, this.FuW);
       }
-      if (this.oXr != null) {
-        paramVarArgs.d(5, this.oXr);
+      paramVarArgs.aR(8, this.AYa);
+      if (this.AYl != null) {
+        paramVarArgs.d(100, this.AYl);
       }
-      if (this.EdP != null) {
-        paramVarArgs.d(6, this.EdP);
-      }
-      AppMethodBeat.o(134253);
+      AppMethodBeat.o(91636);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.mBV == null) {
-        break label518;
+      if (this.BaseRequest == null) {
+        break label714;
       }
     }
-    label518:
-    for (int i = f.a.a.b.b.a.e(1, this.mBV) + 0;; i = 0)
+    label714:
+    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.Fwv != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Fwv);
+      }
+      i = i + f.a.a.b.b.a.bx(3, this.Fww) + f.a.a.b.b.a.bx(4, this.ErG);
       paramInt = i;
-      if (this.EdN != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.EdN);
+      if (this.Fwx != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.Fwx);
       }
       i = paramInt;
-      if (this.DOs != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.DOs);
+      if (this.FuW != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.FuW);
       }
+      i += f.a.a.b.b.a.bx(8, this.AYa);
       paramInt = i;
-      if (this.EdO != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.EdO);
+      if (this.AYl != null) {
+        paramInt = i + f.a.a.b.b.a.e(100, this.AYl);
       }
-      i = paramInt;
-      if (this.oXr != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.oXr);
-      }
-      paramInt = i;
-      if (this.EdP != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.EdP);
-      }
-      AppMethodBeat.o(134253);
+      AppMethodBeat.o(91636);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(134253);
+        AppMethodBeat.o(91636);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         cik localcik = (cik)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(134253);
+          AppMethodBeat.o(91636);
           return -1;
         case 1: 
-          localcik.mBV = locala.KhF.readString();
-          AppMethodBeat.o(134253);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iv();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcik.BaseRequest = ((iv)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91636);
           return 0;
         case 2: 
-          localcik.EdN = locala.KhF.readString();
-          AppMethodBeat.o(134253);
+          localcik.Fwv = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(91636);
           return 0;
         case 3: 
-          localcik.DOs = locala.KhF.readString();
-          AppMethodBeat.o(134253);
+          localcik.Fww = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(91636);
           return 0;
         case 4: 
-          localcik.EdO = locala.KhF.readString();
-          AppMethodBeat.o(134253);
+          localcik.ErG = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(91636);
           return 0;
         case 5: 
-          localcik.oXr = locala.KhF.readString();
-          AppMethodBeat.o(134253);
+          localcik.Fwx = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(91636);
+          return 0;
+        case 7: 
+          localcik.FuW = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(91636);
+          return 0;
+        case 8: 
+          localcik.AYa = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(91636);
           return 0;
         }
-        localcik.EdP = locala.KhF.readString();
-        AppMethodBeat.o(134253);
+        localcik.AYl = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(91636);
         return 0;
       }
-      AppMethodBeat.o(134253);
+      AppMethodBeat.o(91636);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cik
  * JD-Core Version:    0.7.0.1
  */

@@ -5,29 +5,29 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
 {
-  private static String jsi;
+  private static String jSC;
   
-  public static String aWU()
+  public static String bdS()
   {
     AppMethodBeat.i(45277);
     Object localObject;
-    if (!bt.isNullOrNil(jsi))
+    if (!bs.isNullOrNil(jSC))
     {
-      localObject = jsi;
+      localObject = jSC;
       AppMethodBeat.o(45277);
       return localObject;
     }
     try
     {
-      localObject = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, a.class);
+      localObject = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, a.class);
       if (localObject == null)
       {
-        String str2 = com.tencent.mm.loader.j.b.aih();
+        String str2 = com.tencent.mm.loader.j.b.aph();
         localObject = str2;
         if (!str2.endsWith("/")) {
           localObject = str2 + "/";
@@ -41,11 +41,11 @@ public final class b
     {
       for (;;)
       {
-        ad.e("MicroMsg.WAGameLoadingImgPathRetriever", "retrieve ipc ex = %s", new Object[] { localException });
+        ac.e("MicroMsg.WAGameLoadingImgPathRetriever", "retrieve ipc ex = %s", new Object[] { localException });
         str1 = null;
       }
       String str1 = str1.value;
-      jsi = str1;
+      jSC = str1;
       AppMethodBeat.o(45277);
       return str1;
     }

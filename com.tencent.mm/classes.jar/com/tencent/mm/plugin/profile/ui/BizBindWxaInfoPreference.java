@@ -18,9 +18,9 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.appbrand.service.p;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,29 +28,29 @@ import java.util.List;
 public class BizBindWxaInfoPreference
   extends Preference
 {
-  private static DisplayMetrics lLQ;
-  private static int lQN;
-  private static int lQO;
-  private c iyA;
-  private ImageView jFL;
-  private TextView kEu;
-  private List<WxaAttributes.WxaEntryInfo> lQH;
-  private View lQI;
-  private TextView lQJ;
-  private LinearLayout lQK;
-  private ViewGroup lQL;
-  private View lQM;
-  private View.OnClickListener pdN;
-  private volatile boolean uzA;
-  private volatile boolean uzB;
-  private View.OnClickListener uzC;
+  private static DisplayMetrics mnN;
+  private static int msQ;
+  private static int msR;
+  private c iYD;
+  private ImageView kgj;
+  private TextView lfN;
+  private List<WxaAttributes.WxaEntryInfo> msK;
+  private View msL;
+  private TextView msM;
+  private LinearLayout msN;
+  private ViewGroup msO;
+  private View msP;
+  private View.OnClickListener pGY;
+  private volatile boolean vIt;
+  private volatile boolean vIu;
+  private View.OnClickListener vIv;
   
   static
   {
     AppMethodBeat.i(26925);
-    lLQ = aj.getContext().getResources().getDisplayMetrics();
-    lQN = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 15);
-    lQO = aj.getResources().getDimensionPixelSize(2131165514);
+    mnN = ai.getContext().getResources().getDisplayMetrics();
+    msQ = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 15);
+    msR = ai.getResources().getDimensionPixelSize(2131165514);
     AppMethodBeat.o(26925);
   }
   
@@ -74,9 +74,9 @@ public class BizBindWxaInfoPreference
   {
     AppMethodBeat.i(26923);
     ImageView localImageView = new ImageView(this.mContext);
-    localImageView.setLayoutParams(new ViewGroup.LayoutParams(lQO + lQN, lQO));
-    localImageView.setPadding(0, 0, lQN, 0);
-    this.lQK.addView(localImageView);
+    localImageView.setLayoutParams(new ViewGroup.LayoutParams(msR + msQ, msR));
+    localImageView.setPadding(0, 0, msQ, 0);
+    this.msN.addView(localImageView);
     a(paramWxaEntryInfo, localImageView, null);
     AppMethodBeat.o(26923);
   }
@@ -93,71 +93,71 @@ public class BizBindWxaInfoPreference
     if (paramImageView != null)
     {
       paramImageView.setTag(str);
-      b.aub().a(paramImageView, paramWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.aua(), com.tencent.mm.modelappbrand.a.g.gSK);
+      b.aAS().a(paramImageView, paramWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.aAR(), com.tencent.mm.modelappbrand.a.g.htk);
     }
     if (paramTextView != null) {
-      paramTextView.setText(bt.nullAsNil(paramWxaEntryInfo.title));
+      paramTextView.setText(bs.nullAsNil(paramWxaEntryInfo.title));
     }
     AppMethodBeat.o(26924);
   }
   
-  private void aVd()
+  private void bcb()
   {
     AppMethodBeat.i(26921);
-    if ((!this.uzA) || (this.lQH == null))
+    if ((!this.vIt) || (this.msK == null))
     {
       AppMethodBeat.o(26921);
       return;
     }
-    if (!this.uzB)
+    if (!this.vIu)
     {
       AppMethodBeat.o(26921);
       return;
     }
-    this.uzB = false;
-    if (!this.lQH.isEmpty()) {}
-    for (WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.lQH.get(0);; localWxaEntryInfo = null)
+    this.vIu = false;
+    if (!this.msK.isEmpty()) {}
+    for (WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.msK.get(0);; localWxaEntryInfo = null)
     {
       if (localWxaEntryInfo != null) {
-        a(localWxaEntryInfo, this.jFL, this.kEu);
+        a(localWxaEntryInfo, this.kgj, this.lfN);
       }
-      this.lQJ.setText(this.mContext.getString(2131757588, new Object[] { Integer.valueOf(this.lQH.size()) }));
-      ew(this.lQH);
-      if (this.lQH.size() == 1)
+      this.msM.setText(this.mContext.getString(2131757588, new Object[] { Integer.valueOf(this.msK.size()) }));
+      eA(this.msK);
+      if (this.msK.size() == 1)
       {
-        this.lQI.setVisibility(0);
-        this.lQL.setTag(((WxaAttributes.WxaEntryInfo)this.lQH.get(0)).username);
-        this.lQL.setOnClickListener(this.pdN);
+        this.msL.setVisibility(0);
+        this.msO.setTag(((WxaAttributes.WxaEntryInfo)this.msK.get(0)).username);
+        this.msO.setOnClickListener(this.pGY);
         AppMethodBeat.o(26921);
         return;
       }
-      this.lQI.setVisibility(8);
-      this.lQL.setTag(null);
-      this.lQL.setOnClickListener(this.uzC);
+      this.msL.setVisibility(8);
+      this.msO.setTag(null);
+      this.msO.setOnClickListener(this.vIv);
       AppMethodBeat.o(26921);
       return;
     }
   }
   
-  private void ew(List<WxaAttributes.WxaEntryInfo> paramList)
+  private void eA(List<WxaAttributes.WxaEntryInfo> paramList)
   {
     AppMethodBeat.i(26922);
-    this.lQK.removeAllViews();
+    this.msN.removeAllViews();
     if (paramList.isEmpty())
     {
       AppMethodBeat.o(26922);
       return;
     }
     int k = paramList.size();
-    int j = this.lQL.getMeasuredWidth();
+    int j = this.msO.getMeasuredWidth();
     int i = j;
     if (j == 0) {
-      i = lLQ.widthPixels;
+      i = mnN.widthPixels;
     }
-    j = i - this.lQL.getPaddingLeft() - this.lQL.getPaddingRight();
-    i = j / (lQO + lQN);
+    j = i - this.msO.getPaddingLeft() - this.msO.getPaddingRight();
+    i = j / (msR + msQ);
     if (i > k) {
-      this.lQM.setVisibility(8);
+      this.msP.setVisibility(8);
     }
     for (;;)
     {
@@ -171,17 +171,17 @@ public class BizBindWxaInfoPreference
         a((WxaAttributes.WxaEntryInfo)paramList.get(i));
         i += 1;
       }
-      this.lQM.setVisibility(0);
-      i = (j - this.lQM.getMeasuredWidth()) / (lQO + lQN);
+      this.msP.setVisibility(0);
+      i = (j - this.msP.getMeasuredWidth()) / (msR + msQ);
     }
-    ad.i("MicroMsg.BizBindWxaInfoPreference", "attachItemToContainer(size : %s)", new Object[] { Integer.valueOf(paramList.size()) });
+    ac.i("MicroMsg.BizBindWxaInfoPreference", "attachItemToContainer(size : %s)", new Object[] { Integer.valueOf(paramList.size()) });
     AppMethodBeat.o(26922);
   }
   
   private void init()
   {
     AppMethodBeat.i(26920);
-    this.pdN = new View.OnClickListener()
+    this.pGY = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -194,12 +194,12 @@ public class BizBindWxaInfoPreference
         }
         AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
         localAppBrandStatObject.scene = 1020;
-        localAppBrandStatObject.dbt = BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_username;
+        localAppBrandStatObject.cYP = BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_username;
         ((n)com.tencent.mm.kernel.g.ab(n.class)).a(BizBindWxaInfoPreference.this.mContext, (String)paramAnonymousView, null, 0, 0, null, localAppBrandStatObject, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_appId);
         AppMethodBeat.o(26914);
       }
     };
-    this.uzC = new View.OnClickListener()
+    this.vIv = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -214,39 +214,39 @@ public class BizBindWxaInfoPreference
   public final void a(c paramc, List<WxaAttributes.WxaEntryInfo> paramList)
   {
     AppMethodBeat.i(26919);
-    this.uzB = true;
-    this.iyA = paramc;
-    if (this.lQH == null) {
-      this.lQH = new LinkedList();
+    this.vIu = true;
+    this.iYD = paramc;
+    if (this.msK == null) {
+      this.msK = new LinkedList();
     }
     for (;;)
     {
       if ((paramList != null) && (!paramList.isEmpty())) {
-        this.lQH.addAll(paramList);
+        this.msK.addAll(paramList);
       }
-      aVd();
+      bcb();
       AppMethodBeat.o(26919);
       return;
-      this.lQH.clear();
+      this.msK.clear();
     }
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(26918);
-    this.lQI = paramView.findViewById(2131300108);
-    this.jFL = ((ImageView)paramView.findViewById(2131300882));
-    this.kEu = ((TextView)paramView.findViewById(2131305906));
-    this.lQJ = ((TextView)paramView.findViewById(2131298797));
-    this.lQM = paramView.findViewById(2131302454);
-    this.lQK = ((LinearLayout)paramView.findViewById(2131298737));
-    this.lQL = ((ViewGroup)paramView.findViewById(2131301138));
-    this.uzA = true;
-    if (this.lQH != null) {}
+    this.msL = paramView.findViewById(2131300108);
+    this.kgj = ((ImageView)paramView.findViewById(2131300882));
+    this.lfN = ((TextView)paramView.findViewById(2131305906));
+    this.msM = ((TextView)paramView.findViewById(2131298797));
+    this.msP = paramView.findViewById(2131302454);
+    this.msN = ((LinearLayout)paramView.findViewById(2131298737));
+    this.msO = ((ViewGroup)paramView.findViewById(2131301138));
+    this.vIt = true;
+    if (this.msK != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.uzB = bool;
-      aVd();
+      this.vIu = bool;
+      bcb();
       super.onBindView(paramView);
       AppMethodBeat.o(26918);
       return;
@@ -255,7 +255,7 @@ public class BizBindWxaInfoPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.BizBindWxaInfoPreference
  * JD-Core Version:    0.7.0.1
  */

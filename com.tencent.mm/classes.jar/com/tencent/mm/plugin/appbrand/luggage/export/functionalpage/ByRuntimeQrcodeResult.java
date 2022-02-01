@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.g;
-import com.tencent.mm.ac.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ab.g;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class ByRuntimeQrcodeResult
   implements Parcelable
 {
   public static final Parcelable.Creator<ByRuntimeQrcodeResult> CREATOR;
   public String data;
-  public String jdG;
+  public String jDU;
   
   static
   {
@@ -26,28 +26,28 @@ public class ByRuntimeQrcodeResult
   {
     AppMethodBeat.i(47499);
     this.data = paramParcel.readString();
-    this.jdG = paramParcel.readString();
+    this.jDU = paramParcel.readString();
     AppMethodBeat.o(47499);
   }
   
   public ByRuntimeQrcodeResult(String paramString1, String paramString2)
   {
     this.data = paramString1;
-    this.jdG = paramString2;
+    this.jDU = paramString2;
   }
   
-  public final String aOj()
+  public final String aUZ()
   {
     AppMethodBeat.i(47497);
     try
     {
-      String str = new i().j("transitiveData", this.jdG).j("data", this.data).toString();
+      String str = new i().i("transitiveData", this.jDU).i("data", this.data).toString();
       AppMethodBeat.o(47497);
       return str;
     }
     catch (g localg)
     {
-      ad.e("MicroMsg.AppBrand.Functional.ByRuntimeQrcodeResult", "toJsonString e = %s", new Object[] { localg });
+      ac.e("MicroMsg.AppBrand.Functional.ByRuntimeQrcodeResult", "toJsonString e = %s", new Object[] { localg });
       AppMethodBeat.o(47497);
     }
     return "{}";
@@ -62,13 +62,13 @@ public class ByRuntimeQrcodeResult
   {
     AppMethodBeat.i(47498);
     paramParcel.writeString(this.data);
-    paramParcel.writeString(this.jdG);
+    paramParcel.writeString(this.jDU);
     AppMethodBeat.o(47498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.ByRuntimeQrcodeResult
  * JD-Core Version:    0.7.0.1
  */

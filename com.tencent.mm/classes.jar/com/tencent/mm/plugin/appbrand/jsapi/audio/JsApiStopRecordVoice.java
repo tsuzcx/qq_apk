@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.l;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.n;
 import com.tencent.mm.plugin.appbrand.page.a.c.a;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.l;
+import com.tencent.mm.plugin.appbrand.z.l.a;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class JsApiStopRecordVoice
   extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
@@ -20,17 +20,17 @@ public final class JsApiStopRecordVoice
   static void m(q paramq)
   {
     AppMethodBeat.i(46003);
-    if (bt.isNullOrNil(JsApiStartRecordVoice.jCq))
+    if (bs.isNullOrNil(JsApiStartRecordVoice.kcM))
     {
       AppMethodBeat.o(46003);
       return;
     }
-    paramq = n.Do(paramq.getAppId()).iFO;
+    paramq = n.Hr(paramq.getAppId()).jfQ;
     if (paramq != null) {
       paramq.dismiss();
     }
     AppBrandMainProcessService.a(new StopRecordVoice((byte)0));
-    JsApiStartRecordVoice.jCq = null;
+    JsApiStartRecordVoice.kcM = null;
     AppMethodBeat.o(46003);
   }
   
@@ -46,15 +46,15 @@ public final class JsApiStopRecordVoice
       AppMethodBeat.o(46002);
     }
     
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(46001);
-      l.bqm().postToWorker(new Runnable()
+      l.bxj().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(45999);
-          com.tencent.mm.plugin.appbrand.media.record.a.td(1);
+          com.tencent.mm.plugin.appbrand.media.record.a.tU(1);
           AppMethodBeat.o(45999);
         }
       });
@@ -64,7 +64,7 @@ public final class JsApiStopRecordVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiStopRecordVoice
  * JD-Core Version:    0.7.0.1
  */

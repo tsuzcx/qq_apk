@@ -8,38 +8,38 @@ public abstract interface b
 {
   public abstract b a(l paraml, w paramw, ba paramba, a parama);
   
-  public abstract Collection<? extends b> fys();
+  public abstract Collection<? extends b> fQW();
   
-  public abstract b fyt();
+  public abstract b fQX();
   
-  public abstract a fyu();
+  public abstract a fQY();
   
-  public abstract void s(Collection<? extends b> paramCollection);
+  public abstract void t(Collection<? extends b> paramCollection);
   
   public static enum a
   {
     static
     {
       AppMethodBeat.i(56829);
-      JpV = new a("DECLARATION", 0);
-      JpW = new a("FAKE_OVERRIDE", 1);
-      JpX = new a("DELEGATION", 2);
-      JpY = new a("SYNTHESIZED", 3);
-      JpZ = new a[] { JpV, JpW, JpX, JpY };
+      Ldo = new a("DECLARATION", 0);
+      Ldp = new a("FAKE_OVERRIDE", 1);
+      Ldq = new a("DELEGATION", 2);
+      Ldr = new a("SYNTHESIZED", 3);
+      Lds = new a[] { Ldo, Ldp, Ldq, Ldr };
       AppMethodBeat.o(56829);
     }
     
     private a() {}
     
-    public final boolean fyv()
+    public final boolean fQZ()
     {
-      return this != JpW;
+      return this != Ldp;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.b
  * JD-Core Version:    0.7.0.1
  */

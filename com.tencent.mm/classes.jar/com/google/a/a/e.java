@@ -11,11 +11,11 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.TYPE})
 public @interface e
 {
-  double xw();
+  double xj();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.a.e
  * JD-Core Version:    0.7.0.1
  */

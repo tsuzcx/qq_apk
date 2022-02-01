@@ -5,70 +5,64 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ayy
-  extends ckq
+  extends cqk
 {
-  public cmf Dby;
-  public int Dxp;
-  public int OpCode;
+  public bpl EQx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152592);
+    AppMethodBeat.i(104806);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Dby == null)
+      if (this.BaseResponse == null)
       {
-        paramVarArgs = new b("Not all required fields were included: UserName");
-        AppMethodBeat.o(152592);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(104806);
         throw paramVarArgs;
       }
-      if (this.BaseRequest != null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.Dby != null)
+      if (this.EQx != null)
       {
-        paramVarArgs.kX(2, this.Dby.computeSize());
-        this.Dby.writeFields(paramVarArgs);
+        paramVarArgs.ln(2, this.EQx.computeSize());
+        this.EQx.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(3, this.Dxp);
-      paramVarArgs.aR(4, this.OpCode);
-      AppMethodBeat.o(152592);
+      AppMethodBeat.o(104806);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label602;
+      if (this.BaseResponse == null) {
+        break label514;
       }
     }
-    label602:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label514:
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Dby != null) {
-        i = paramInt + f.a.a.a.kW(2, this.Dby.computeSize());
+      if (this.EQx != null) {
+        i = paramInt + f.a.a.a.lm(2, this.EQx.computeSize());
       }
-      paramInt = f.a.a.b.b.a.bA(3, this.Dxp);
-      int j = f.a.a.b.b.a.bA(4, this.OpCode);
-      AppMethodBeat.o(152592);
-      return i + paramInt + j;
+      AppMethodBeat.o(104806);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.Dby == null)
+        if (this.BaseResponse == null)
         {
-          paramVarArgs = new b("Not all required fields were included: UserName");
-          AppMethodBeat.o(152592);
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(104806);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(152592);
+        AppMethodBeat.o(104806);
         return 0;
       }
       if (paramInt == 3)
@@ -81,55 +75,47 @@ public final class ayy
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152592);
+          AppMethodBeat.o(104806);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
+            localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localayy.BaseRequest = ((ip)localObject1);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localayy.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(152592);
-          return 0;
-        case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new cmf();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((cmf)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localayy.Dby = ((cmf)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(152592);
-          return 0;
-        case 3: 
-          localayy.Dxp = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(152592);
+          AppMethodBeat.o(104806);
           return 0;
         }
-        localayy.OpCode = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(152592);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new bpl();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((bpl)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localayy.EQx = ((bpl)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(104806);
         return 0;
       }
-      AppMethodBeat.o(152592);
+      AppMethodBeat.o(104806);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ayy
  * JD-Core Version:    0.7.0.1
  */

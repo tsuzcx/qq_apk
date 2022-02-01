@@ -13,9 +13,9 @@ final class o$10
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(31353);
-    this.mLV.dismiss();
-    if (this.mLW != null) {
-      this.mLW.a(true, this.mLV.ffq(), this.mLV.ffr());
+    this.noh.dismiss();
+    if (this.noi != null) {
+      this.noi.a(true, this.noh.fvm(), this.noh.fvn());
     }
     AppMethodBeat.o(31353);
   }

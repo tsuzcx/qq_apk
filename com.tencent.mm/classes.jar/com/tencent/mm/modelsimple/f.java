@@ -8,20 +8,20 @@ import android.graphics.BitmapFactory.Options;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Images.Thumbnails;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.csq;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.protocal.protobuf.cst;
-import com.tencent.mm.protocal.protobuf.vl;
-import com.tencent.mm.protocal.protobuf.vm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cxz;
+import com.tencent.mm.protocal.protobuf.cyb;
+import com.tencent.mm.protocal.protobuf.cyc;
+import com.tencent.mm.protocal.protobuf.vv;
+import com.tencent.mm.protocal.protobuf.vw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import com.tencent.qbar.a.a;
 import com.tencent.qbar.a.a;
@@ -34,34 +34,34 @@ public final class f
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  private b hdD;
-  private List<String> hrl;
-  private String hrm;
+  private com.tencent.mm.ak.g callback;
+  private b hEg;
+  private List<String> hRN;
+  private String hRO;
   private int type;
   
   public f(int paramInt, List<String> paramList, String paramString)
   {
     this.type = paramInt;
-    this.hrl = paramList;
-    this.hrm = paramString;
+    this.hRN = paramList;
+    this.hRO = paramString;
   }
   
   /* Error */
-  private void aw(List<String> paramList)
+  private void at(List<String> paramList)
   {
     // Byte code:
     //   0: sipush 20604
     //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 43	com/tencent/mm/modelsimple/f:hdD	Lcom/tencent/mm/al/b;
-    //   10: getfield 49	com/tencent/mm/al/b:gUS	Lcom/tencent/mm/al/b$b;
-    //   13: getfield 55	com/tencent/mm/al/b$b:gUX	Lcom/tencent/mm/bx/a;
-    //   16: checkcast 57	com/tencent/mm/protocal/protobuf/vl
+    //   7: getfield 43	com/tencent/mm/modelsimple/f:hEg	Lcom/tencent/mm/ak/b;
+    //   10: getfield 49	com/tencent/mm/ak/b:hvr	Lcom/tencent/mm/ak/b$b;
+    //   13: getfield 55	com/tencent/mm/ak/b$b:hvw	Lcom/tencent/mm/bw/a;
+    //   16: checkcast 57	com/tencent/mm/protocal/protobuf/vv
     //   19: astore 7
     //   21: aload 7
     //   23: iconst_3
-    //   24: putfield 60	com/tencent/mm/protocal/protobuf/vl:mBH	I
+    //   24: putfield 60	com/tencent/mm/protocal/protobuf/vv:ndI	I
     //   27: invokestatic 66	java/lang/System:currentTimeMillis	()J
     //   30: lstore_3
     //   31: aload_1
@@ -82,10 +82,10 @@ public final class f
     //   70: iconst_0
     //   71: aload 9
     //   73: aastore
-    //   74: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   77: new 97	com/tencent/mm/protocal/protobuf/csu
+    //   74: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: new 97	com/tencent/mm/protocal/protobuf/cyd
     //   80: dup
-    //   81: invokespecial 98	com/tencent/mm/protocal/protobuf/csu:<init>	()V
+    //   81: invokespecial 98	com/tencent/mm/protocal/protobuf/cyd:<init>	()V
     //   84: astore 10
     //   86: new 100	com/tencent/mm/compatible/h/d
     //   89: dup
@@ -102,7 +102,7 @@ public final class f
     //   110: bipush 9
     //   112: invokevirtual 111	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   115: iconst_m1
-    //   116: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   116: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
     //   119: istore_2
     //   120: aload 5
     //   122: astore_1
@@ -115,20 +115,20 @@ public final class f
     //   133: iload_2
     //   134: invokestatic 125	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   137: aastore
-    //   138: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   138: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   141: aload 5
     //   143: astore_1
     //   144: aload 10
     //   146: iload_2
-    //   147: putfield 128	com/tencent/mm/protocal/protobuf/csu:Ekx	I
+    //   147: putfield 128	com/tencent/mm/protocal/protobuf/cyd:FHv	I
     //   150: aload 5
     //   152: invokevirtual 131	android/media/MediaMetadataRetriever:release	()V
     //   155: aload 10
     //   157: aload 9
-    //   159: invokestatic 137	com/tencent/mm/vfs/i:aEN	(Ljava/lang/String;)Ljava/lang/String;
-    //   162: putfield 140	com/tencent/mm/protocal/protobuf/csu:MD5	Ljava/lang/String;
+    //   159: invokestatic 137	com/tencent/mm/vfs/i:aKe	(Ljava/lang/String;)Ljava/lang/String;
+    //   162: putfield 140	com/tencent/mm/protocal/protobuf/cyd:MD5	Ljava/lang/String;
     //   165: aload 7
-    //   167: getfield 144	com/tencent/mm/protocal/protobuf/vl:CXA	Ljava/util/LinkedList;
+    //   167: getfield 144	com/tencent/mm/protocal/protobuf/vv:Eqj	Ljava/util/LinkedList;
     //   170: aload 10
     //   172: invokevirtual 150	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   175: pop
@@ -144,7 +144,7 @@ public final class f
     //   191: aload_1
     //   192: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   195: aastore
-    //   196: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   196: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   199: goto -44 -> 155
     //   202: astore 6
     //   204: aconst_null
@@ -165,7 +165,7 @@ public final class f
     //   227: aload 6
     //   229: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   232: aastore
-    //   233: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   233: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   236: aload 5
     //   238: ifnull -83 -> 155
     //   241: aload 5
@@ -182,7 +182,7 @@ public final class f
     //   261: aload_1
     //   262: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   265: aastore
-    //   266: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   266: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   269: goto -114 -> 155
     //   272: astore 5
     //   274: aconst_null
@@ -206,7 +206,7 @@ public final class f
     //   305: aload_1
     //   306: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   309: aastore
-    //   310: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   310: invokestatic 160	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   313: goto -29 -> 284
     //   316: ldc 86
     //   318: ldc 167
@@ -219,7 +219,7 @@ public final class f
     //   330: lsub
     //   331: invokestatic 172	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   334: aastore
-    //   335: invokestatic 95	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   335: invokestatic 95	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   338: sipush 20604
     //   341: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   344: return
@@ -238,10 +238,10 @@ public final class f
     //   345	1	5	localObject2	Object
     //   202	26	6	localException1	java.lang.Exception
     //   350	1	6	localException2	java.lang.Exception
-    //   19	147	7	localvl	vl
+    //   19	147	7	localvv	vv
     //   37	13	8	localIterator	Iterator
     //   59	164	9	str	String
-    //   84	87	10	localcsu	com.tencent.mm.protocal.protobuf.csu
+    //   84	87	10	localcyd	com.tencent.mm.protocal.protobuf.cyd
     // Exception table:
     //   from	to	target	type
     //   150	155	179	java/lang/Exception
@@ -260,70 +260,70 @@ public final class f
     //   144	150	350	java/lang/Exception
   }
   
-  private void ax(List<String> paramList)
+  private void au(List<String> paramList)
   {
     AppMethodBeat.i(20605);
-    vl localvl = (vl)this.hdD.gUS.gUX;
-    localvl.mBH = 5;
+    vv localvv = (vv)this.hEg.hvr.hvw;
+    localvv.ndI = 5;
     long l = System.currentTimeMillis();
     paramList = paramList.iterator();
     if (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      ad.i("MicroMsg.NetSceneCheckSysShare", "share text %s", new Object[] { str });
+      ac.i("MicroMsg.NetSceneCheckSysShare", "share text %s", new Object[] { str });
       int i = str.indexOf("|");
-      cst localcst = new cst();
+      cyc localcyc = new cyc();
       if ((i >= 0) && (i + 1 < str.length())) {
-        localcst.Title = str.substring(0, i);
+        localcyc.Title = str.substring(0, i);
       }
-      for (localcst.URL = str.substring(i + 1);; localcst.URL = str)
+      for (localcyc.URL = str.substring(i + 1);; localcyc.URL = str)
       {
-        localcst.MD5 = d.getMessageDigest(localcst.URL.getBytes());
-        localvl.CXD.add(localcst);
+        localcyc.MD5 = d.getMessageDigest(localcyc.URL.getBytes());
+        localvv.Eqm.add(localcyc);
         break;
-        localcst.Title = "";
+        localcyc.Title = "";
       }
     }
-    ad.i("MicroMsg.NetSceneCheckSysShare", "cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ac.i("MicroMsg.NetSceneCheckSysShare", "cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(20605);
   }
   
-  private void ay(List<String> paramList)
+  private void av(List<String> paramList)
   {
     AppMethodBeat.i(20606);
-    vl localvl = (vl)this.hdD.gUS.gUX;
-    localvl.mBH = 4;
+    vv localvv = (vv)this.hEg.hvr.hvw;
+    localvv.ndI = 4;
     long l = System.currentTimeMillis();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Object localObject = (String)paramList.next();
-      csq localcsq = new csq();
+      cxz localcxz = new cxz();
       localObject = new com.tencent.mm.vfs.e((String)localObject);
-      localcsq.FileSize = ((int)((com.tencent.mm.vfs.e)localObject).length());
-      localcsq.MD5 = i.aEN(com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject).mUri));
-      localvl.CXC.add(localcsq);
+      localcxz.FileSize = ((int)((com.tencent.mm.vfs.e)localObject).length());
+      localcxz.MD5 = i.aKe(com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject).mUri));
+      localvv.Eql.add(localcxz);
     }
-    ad.i("MicroMsg.NetSceneCheckSysShare", "cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ac.i("MicroMsg.NetSceneCheckSysShare", "cost %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(20606);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(20607);
     this.callback = paramg;
     paramg = new b.a();
-    vl localvl = new vl();
-    if (!bt.isNullOrNil(this.hrm)) {
-      localvl.CXy = this.hrm;
+    vv localvv = new vv();
+    if (!bs.isNullOrNil(this.hRO)) {
+      localvv.Eqh = this.hRO;
     }
-    paramg.gUU = localvl;
-    paramg.gUV = new vm();
+    paramg.hvt = localvv;
+    paramg.hvu = new vw();
     paramg.uri = "/cgi-bin/micromsg-bin/checksystemshare";
     paramg.funcId = getType();
     paramg.reqCmdId = 0;
     paramg.respCmdId = 0;
-    this.hdD = paramg.atI();
+    this.hEg = paramg.aAz();
     int i;
     long l4;
     long l2;
@@ -336,8 +336,8 @@ public final class f
     case 2: 
     default: 
       i = 1;
-      if (com.tencent.mm.kernel.g.afw()) {
-        i = bt.getInt(com.tencent.mm.m.g.Zd().getValue("ShareExtCheckSwitch"), 1);
+      if (com.tencent.mm.kernel.g.agM()) {
+        i = bs.getInt(com.tencent.mm.m.g.ZY().getValue("ShareExtCheckSwitch"), 1);
       }
       if (i != 1)
       {
@@ -347,9 +347,9 @@ public final class f
       }
       break;
     case 1: 
-      paramg = this.hrl;
-      localvl = (vl)this.hdD.gUS.gUX;
-      localvl.mBH = 1;
+      paramg = this.hRN;
+      localvv = (vv)this.hEg.hvr.hvw;
+      localvv.ndI = 1;
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       l4 = System.currentTimeMillis();
@@ -360,44 +360,44 @@ public final class f
       if (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        ad.i("MicroMsg.NetSceneCheckSysShare", "img file %s", new Object[] { str });
-        paramg = i.aR(str, 0, -1);
+        ac.i("MicroMsg.NetSceneCheckSysShare", "img file %s", new Object[] { str });
+        paramg = i.aU(str, 0, -1);
         if ((paramg == null) || (paramg.length <= 0)) {
           break label749;
         }
-        css localcss = new css();
-        localcss.MD5 = d.getMessageDigest(paramg);
+        cyb localcyb = new cyb();
+        localcyb.MD5 = d.getMessageDigest(paramg);
         l2 = System.currentTimeMillis();
         MMBitmapFactory.decodeByteArray(paramg, 0, paramg.length, localOptions);
-        ad.i("MicroMsg.NetSceneCheckSysShare", "decode img, width %d, height: %d", new Object[] { Integer.valueOf(localOptions.outWidth), Integer.valueOf(localOptions.outHeight) });
-        localcss.Width = localOptions.outWidth;
-        localcss.Height = localOptions.outHeight;
+        ac.i("MicroMsg.NetSceneCheckSysShare", "decode img, width %d, height: %d", new Object[] { Integer.valueOf(localOptions.outWidth), Integer.valueOf(localOptions.outHeight) });
+        localcyb.Width = localOptions.outWidth;
+        localcyb.Height = localOptions.outHeight;
         l3 = System.currentTimeMillis();
-        paramg = aj.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, "_data=?", new String[] { str }, null);
+        paramg = ai.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id" }, "_data=?", new String[] { str }, null);
         if (paramg != null) {
           if (paramg.moveToFirst())
           {
             i = paramg.getInt(paramg.getColumnIndex("_id"));
             paramg.close();
-            paramg = MediaStore.Images.Thumbnails.getThumbnail(aj.getContext().getContentResolver(), i, 1, null);
+            paramg = MediaStore.Images.Thumbnails.getThumbnail(ai.getContext().getContentResolver(), i, 1, null);
             label482:
             if (paramg == null) {
               break label618;
             }
-            ad.i("MicroMsg.NetSceneCheckSysShare", "have thumbnail(w:%d, h:%d)", new Object[] { Integer.valueOf(paramg.getWidth()), Integer.valueOf(paramg.getHeight()) });
+            ac.i("MicroMsg.NetSceneCheckSysShare", "have thumbnail(w:%d, h:%d)", new Object[] { Integer.valueOf(paramg.getWidth()), Integer.valueOf(paramg.getHeight()) });
             paramg = a.b(paramg, new int[] { 0 });
             label530:
             l1 = System.currentTimeMillis();
             if (paramg != null)
             {
-              ad.i("MicroMsg.NetSceneCheckSysShare", "scan qrcode, type %s, result %s, ", new Object[] { paramg.typeName, paramg.data });
-              if (!bt.isNullOrNil(paramg.typeName))
+              ac.i("MicroMsg.NetSceneCheckSysShare", "scan qrcode, type %s, result %s, ", new Object[] { paramg.typeName, paramg.data });
+              if (!bs.isNullOrNil(paramg.typeName))
               {
-                localcss.Ekw = paramg.typeName;
-                localcss.EgH = paramg.data;
+                localcyb.FHu = paramg.typeName;
+                localcyb.FDG = paramg.data;
               }
             }
-            localvl.CXz.add(localcss);
+            localvv.Eqi.add(localcyb);
           }
         }
       }
@@ -411,17 +411,17 @@ public final class f
       paramg.close();
       paramg = null;
       break label482;
-      paramg = a.b(com.tencent.mm.sdk.platformtools.f.aFj(str), new int[] { 0 });
+      paramg = a.b(com.tencent.mm.sdk.platformtools.f.aKA(str), new int[] { 0 });
       break label530;
-      ad.i("MicroMsg.NetSceneCheckSysShare", "cost %d(%d, %d, %d)ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l4), Long.valueOf(l2 - l4), Long.valueOf(l3 - l2), Long.valueOf(l1 - l3) });
+      ac.i("MicroMsg.NetSceneCheckSysShare", "cost %d(%d, %d, %d)ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l4), Long.valueOf(l2 - l4), Long.valueOf(l3 - l2), Long.valueOf(l1 - l3) });
       break;
-      aw(this.hrl);
+      at(this.hRN);
       break;
-      ax(this.hrl);
+      au(this.hRN);
       break;
-      ay(this.hrl);
+      av(this.hRN);
       break;
-      i = dispatch(parame, this.hdD, this);
+      i = dispatch(parame, this.hEg, this);
       AppMethodBeat.o(20607);
       return i;
     }
@@ -435,14 +435,14 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20608);
-    ad.i("MicroMsg.NetSceneCheckSysShare", "errType %d, errCode %d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.NetSceneCheckSysShare", "errType %d, errCode %d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(20608);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.f
  * JD-Core Version:    0.7.0.1
  */

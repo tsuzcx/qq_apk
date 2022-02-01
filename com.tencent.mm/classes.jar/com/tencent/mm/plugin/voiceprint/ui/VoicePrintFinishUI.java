@@ -11,17 +11,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public class VoicePrintFinishUI
   extends MMActivity
 {
-  private TextView kEu;
-  private TextView uDc;
-  private int xXv;
-  private Button zeB;
-  private ImageView zeC;
+  private Button Axh;
+  private ImageView Axi;
+  private TextView lfN;
+  private TextView vLT;
+  private int zkr;
   
   public int getLayoutId()
   {
@@ -31,21 +31,21 @@ public class VoicePrintFinishUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(29889);
-    ad.i("MicroMsg.VoicePrintFinishUI", "VoicePrintFinishUI");
+    ac.i("MicroMsg.VoicePrintFinishUI", "VoicePrintFinishUI");
     super.onCreate(paramBundle);
     hideTitleView();
-    this.xXv = getIntent().getIntExtra("kscene_type", 73);
-    ad.d("MicroMsg.VoicePrintFinishUI", "onCreate, sceneType:%d", new Object[] { Integer.valueOf(this.xXv) });
-    this.kEu = ((TextView)findViewById(2131306514));
-    this.uDc = ((TextView)findViewById(2131306516));
-    this.zeB = ((Button)findViewById(2131304179));
-    this.zeC = ((ImageView)findViewById(2131306513));
-    switch (this.xXv)
+    this.zkr = getIntent().getIntExtra("kscene_type", 73);
+    ac.d("MicroMsg.VoicePrintFinishUI", "onCreate, sceneType:%d", new Object[] { Integer.valueOf(this.zkr) });
+    this.lfN = ((TextView)findViewById(2131306514));
+    this.vLT = ((TextView)findViewById(2131306516));
+    this.Axh = ((Button)findViewById(2131304179));
+    this.Axi = ((ImageView)findViewById(2131306513));
+    switch (this.zkr)
     {
     }
     for (;;)
     {
-      this.zeB.setOnClickListener(new View.OnClickListener()
+      this.Axh.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -56,9 +56,9 @@ public class VoicePrintFinishUI
             ((Intent)localObject).setClass(VoicePrintFinishUI.this, VoiceUnLockUI.class);
             ((Intent)localObject).putExtra("kscene_type", 73);
             paramAnonymousView = VoicePrintFinishUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/voiceprint/ui/VoicePrintFinishUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           VoicePrintFinishUI.this.finish();
@@ -77,15 +77,15 @@ public class VoicePrintFinishUI
       });
       AppMethodBeat.o(29889);
       return;
-      this.kEu.setText(2131764753);
-      this.uDc.setText(2131764754);
-      this.zeC.setVisibility(0);
-      this.zeB.setText(2131763501);
+      this.lfN.setText(2131764753);
+      this.vLT.setText(2131764754);
+      this.Axi.setVisibility(0);
+      this.Axh.setText(2131763501);
       continue;
-      this.kEu.setVisibility(8);
-      this.uDc.setText(2131764779);
-      this.zeC.setVisibility(0);
-      this.zeB.setText(2131763502);
+      this.lfN.setVisibility(8);
+      this.vLT.setText(2131764779);
+      this.Axi.setVisibility(0);
+      this.Axh.setText(2131763502);
     }
   }
   

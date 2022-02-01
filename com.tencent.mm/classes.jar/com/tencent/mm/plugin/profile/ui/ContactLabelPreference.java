@@ -16,8 +16,8 @@ public class ContactLabelPreference
 {
   private String title;
   private TextView titleTv;
-  private MMSingelLinePanel uAt;
-  private ArrayList<String> uAu;
+  private MMSingelLinePanel vJm;
+  private ArrayList<String> vJn;
   
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +28,7 @@ public class ContactLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27012);
-    this.uAu = new ArrayList();
+    this.vJn = new ArrayList();
     setLayoutResource(2131494804);
     AppMethodBeat.o(27012);
   }
@@ -37,15 +37,15 @@ public class ContactLabelPreference
   {
     AppMethodBeat.i(27014);
     this.titleTv = ((TextView)paramView.findViewById(2131305902));
-    this.uAt = ((MMSingelLinePanel)paramView.findViewById(2131298672));
-    this.uAt.setSingleLine(true);
-    this.uAt.FZQ = false;
-    this.uAt.vN(false);
+    this.vJm = ((MMSingelLinePanel)paramView.findViewById(2131298672));
+    this.vJm.setSingleLine(true);
+    this.vJm.HzE = false;
+    this.vJm.wR(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.uAt != null) && (this.uAu != null) && (this.uAu.size() > 0)) {
-      this.uAt.a(this.uAu, this.uAu);
+    if ((this.vJm != null) && (this.vJn != null) && (this.vJn.size() > 0)) {
+      this.vJm.a(this.vJn, this.vJn);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27014);
@@ -65,7 +65,7 @@ public class ContactLabelPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactLabelPreference
  * JD-Core Version:    0.7.0.1
  */

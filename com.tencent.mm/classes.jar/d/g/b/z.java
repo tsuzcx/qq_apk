@@ -3,15 +3,15 @@ package d.g.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/jvm/internal/StringCompanionObject;", "", "()V", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/StringCompanionObject;", "", "()V", "kotlin-stdlib"})
 public final class z
 {
-  public static final z Jhz;
+  public static final z KUT;
   
   static
   {
     AppMethodBeat.i(129335);
-    Jhz = new z();
+    KUT = new z();
     AppMethodBeat.o(129335);
   }
 }

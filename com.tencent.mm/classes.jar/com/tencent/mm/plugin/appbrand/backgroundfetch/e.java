@@ -3,88 +3,88 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.b;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
   implements b, k
 {
-  private d iXs;
+  private d jxI;
   
   public final boolean a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(44732);
-    if (this.iXs == null)
+    if (this.jxI == null)
     {
       AppMethodBeat.o(44732);
       return false;
     }
-    boolean bool = this.iXs.a(paramString1, paramInt1, paramString2, paramString3, paramString4, paramInt2, paramLong);
+    boolean bool = this.jxI.a(paramString1, paramInt1, paramString2, paramString3, paramString4, paramInt2, paramLong);
     if (bool) {
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy set success(time:%s), app(%s_%d)", new Object[] { Long.valueOf(paramLong), paramString1, Integer.valueOf(paramInt1) });
+      ac.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy set success(time:%s), app(%s_%d)", new Object[] { Long.valueOf(paramLong), paramString1, Integer.valueOf(paramInt1) });
     }
     for (;;)
     {
       AppMethodBeat.o(44732);
       return bool;
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy set fail, app(%s_%d)", new Object[] { paramString1, Integer.valueOf(paramInt1) });
+      ac.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy set fail, app(%s_%d)", new Object[] { paramString1, Integer.valueOf(paramInt1) });
     }
   }
   
-  public final void agv()
+  public final void ahM()
   {
     AppMethodBeat.i(44731);
-    this.iXs = j.aOS();
+    this.jxI = j.aVK();
     AppMethodBeat.o(44731);
   }
   
-  public final void agw()
+  public final void ahN()
   {
-    this.iXs = null;
+    this.jxI = null;
   }
   
-  public final long bg(String paramString, int paramInt)
+  public final long bk(String paramString, int paramInt)
   {
     AppMethodBeat.i(44733);
-    if (this.iXs == null)
+    if (this.jxI == null)
     {
       AppMethodBeat.o(44733);
       return 0L;
     }
-    long l = this.iXs.bg(paramString, paramInt);
+    long l = this.jxI.bk(paramString, paramInt);
     if (l > 0L) {
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getUpdateTime success(time:%s), app(%s_%d)", new Object[] { Long.valueOf(l), paramString, Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getUpdateTime success(time:%s), app(%s_%d)", new Object[] { Long.valueOf(l), paramString, Integer.valueOf(paramInt) });
     }
     for (;;)
     {
       AppMethodBeat.o(44733);
       return l;
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getUpdateTime fail, app(%s_%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getUpdateTime fail, app(%s_%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
     }
   }
   
-  public final AppBrandBackgroundFetchDataParcel bh(String paramString, int paramInt)
+  public final AppBrandBackgroundFetchDataParcel bl(String paramString, int paramInt)
   {
     AppMethodBeat.i(44734);
-    if (this.iXs == null)
+    if (this.jxI == null)
     {
       AppMethodBeat.o(44734);
       return null;
     }
-    AppBrandBackgroundFetchDataParcel localAppBrandBackgroundFetchDataParcel = this.iXs.bh(paramString, paramInt);
+    AppBrandBackgroundFetchDataParcel localAppBrandBackgroundFetchDataParcel = this.jxI.bl(paramString, paramInt);
     if (localAppBrandBackgroundFetchDataParcel == null) {
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getByAppId fail, app(%s_%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getByAppId fail, app(%s_%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
     }
     for (;;)
     {
       AppMethodBeat.o(44734);
       return localAppBrandBackgroundFetchDataParcel;
-      ad.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getByAppId success, app(%s_%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.AppBrand.AppBrandBackgroundFetchDataStorageProxy", "AppBrandBackgroundFetchDataStorageProxy getByAppId success, app(%s_%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.e
  * JD-Core Version:    0.7.0.1
  */

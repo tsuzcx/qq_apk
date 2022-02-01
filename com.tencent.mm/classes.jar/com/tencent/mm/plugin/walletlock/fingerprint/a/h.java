@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class h
 {
-  public com.tencent.soter.a.a.a ABx = null;
+  public com.tencent.soter.a.a.a BTS = null;
   
   public final void release()
   {
     AppMethodBeat.i(129702);
-    ad.i("MicroMsg.SoterFingerprintAuthManager", "alvinluo release fingerprint auth");
-    if (this.ABx != null) {
-      this.ABx.xu(true);
+    ac.i("MicroMsg.SoterFingerprintAuthManager", "alvinluo release fingerprint auth");
+    if (this.BTS != null) {
+      this.BTS.yE(true);
     }
     AppMethodBeat.o(129702);
   }

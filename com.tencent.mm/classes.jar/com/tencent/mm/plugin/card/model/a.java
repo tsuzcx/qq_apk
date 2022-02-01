@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,25 +11,25 @@ import org.json.JSONObject;
 public final class a
 {
   public String app_id;
-  public String gGR;
-  public String gHT;
-  public int lpz;
-  public String mTA;
-  public String nrA;
-  public boolean nrB;
-  public String nrr;
-  public String nrs;
-  public String nrt;
-  public String nru;
-  public int nrv;
-  public String nrw;
-  public int nrx;
-  public String nry;
-  public String nrz;
+  public String hhs;
+  public String hiu;
+  public int lRv;
+  public String nUA;
+  public boolean nUB;
+  public String nUr;
+  public String nUs;
+  public String nUt;
+  public String nUu;
+  public int nUv;
+  public String nUw;
+  public int nUx;
+  public String nUy;
+  public String nUz;
+  public String nvS;
   public String title;
   public String userName;
   
-  public static LinkedList<a> Qr(String paramString)
+  public static LinkedList<a> UD(String paramString)
   {
     AppMethodBeat.i(112714);
     if (TextUtils.isEmpty(paramString))
@@ -45,13 +45,13 @@ public final class a
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
       AppMethodBeat.o(112714);
     }
     return null;
   }
   
-  public static LinkedList<a> Qs(String paramString)
+  public static LinkedList<a> UE(String paramString)
   {
     AppMethodBeat.i(112715);
     if (TextUtils.isEmpty(paramString))
@@ -67,7 +67,7 @@ public final class a
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
       AppMethodBeat.o(112715);
     }
     return null;
@@ -87,23 +87,23 @@ public final class a
     {
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
       a locala = new a();
-      locala.nrr = localJSONObject.optString("card_tp_id");
-      locala.lpz = localJSONObject.optInt("card_type");
-      locala.gHT = localJSONObject.optString("color");
-      locala.gGR = localJSONObject.optString("logo_url");
+      locala.nUr = localJSONObject.optString("card_tp_id");
+      locala.lRv = localJSONObject.optInt("card_type");
+      locala.hiu = localJSONObject.optString("color");
+      locala.hhs = localJSONObject.optString("logo_url");
       locala.title = localJSONObject.optString("title");
-      locala.nrs = localJSONObject.optString("sub_title");
-      locala.nrt = localJSONObject.optString("aux_title");
-      locala.nru = localJSONObject.optString("encrypt_code");
+      locala.nUs = localJSONObject.optString("sub_title");
+      locala.nUt = localJSONObject.optString("aux_title");
+      locala.nUu = localJSONObject.optString("encrypt_code");
       locala.userName = localJSONObject.optString("from_user_name");
       locala.app_id = localJSONObject.optString("app_id");
-      locala.nrv = localJSONObject.optInt("end_time");
-      locala.nrw = localJSONObject.optString("card_user_id");
-      locala.nrx = localJSONObject.optInt("choose_optional");
-      locala.nrz = localJSONObject.optString("invoice_item");
-      locala.nrA = localJSONObject.optString("invoice_status");
-      locala.nry = localJSONObject.optString("invoice_title");
-      locala.nrB = paramBoolean;
+      locala.nUv = localJSONObject.optInt("end_time");
+      locala.nUw = localJSONObject.optString("card_user_id");
+      locala.nUx = localJSONObject.optInt("choose_optional");
+      locala.nUz = localJSONObject.optString("invoice_item");
+      locala.nUA = localJSONObject.optString("invoice_status");
+      locala.nUy = localJSONObject.optString("invoice_title");
+      locala.nUB = paramBoolean;
       localLinkedList.add(locala);
       i += 1;
     }

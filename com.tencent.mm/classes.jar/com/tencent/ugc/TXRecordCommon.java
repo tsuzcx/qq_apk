@@ -1,5 +1,7 @@
 package com.tencent.ugc;
 
+import android.graphics.Bitmap;
+
 public class TXRecordCommon
 {
   public static final int AUDIO_SAMPLERATE_16000 = 16000;
@@ -72,6 +74,46 @@ public class TXRecordCommon
   public static final int VIDOE_VOICECHANGER_TYPE_7 = 7;
   public static final int VIDOE_VOICECHANGER_TYPE_8 = 8;
   public static final int VIDOE_VOICECHANGER_TYPE_9 = 9;
+  
+  public static abstract interface ITXBGMNotify
+  {
+    public abstract void onBGMComplete(int paramInt);
+    
+    public abstract void onBGMProgress(long paramLong1, long paramLong2);
+    
+    public abstract void onBGMStart();
+  }
+  
+  public static final class TXUGCCustomConfig
+  {
+    public int audioSampleRate = 48000;
+    boolean enableHighResolutionCapture = false;
+    public boolean isFront = true;
+    public int maxDuration = 60000;
+    public int minDuration = 5000;
+    public boolean needEdit = true;
+    public boolean touchFocus = false;
+    public int videoBitrate = 1800;
+    public int videoFps = 20;
+    public int videoGop = 3;
+    public int videoResolution = 1;
+    public Bitmap watermark = null;
+    public int watermarkX = 0;
+    public int watermarkY = 0;
+  }
+  
+  public static final class TXUGCSimpleConfig
+  {
+    public boolean isFront = true;
+    public int maxDuration = 60000;
+    public int minDuration = 5000;
+    public boolean needEdit = true;
+    public boolean touchFocus = false;
+    public int videoQuality = 1;
+    public Bitmap watermark = null;
+    public int watermarkX = 0;
+    public int watermarkY = 0;
+  }
 }
 
 

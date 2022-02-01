@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.shake.c.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.report.service.h;
@@ -11,43 +11,43 @@ import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.c.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.Map;
 
 public final class g
   extends l.b
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static int wmo = 0;
-  private float fjD;
-  private float fjE;
-  private b.a fjJ;
-  private int fsv;
-  private com.tencent.mm.modelgeo.d gXu;
-  private String jyd;
-  private ap mHandler;
-  public int ntg;
-  private c wmJ;
-  private e wmK;
-  private boolean wmL;
-  private boolean wmM;
-  private long wmp;
+  private static int xxE = 0;
+  private float fmX;
+  private float fmY;
+  private b.a fnd;
+  private int fwc;
+  private com.tencent.mm.modelgeo.d hxT;
+  private String jYy;
+  private ao mHandler;
+  public int nWg;
+  private long xxF;
+  private c xxZ;
+  private e xya;
+  private boolean xyb;
+  private boolean xyc;
   
   public g(l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28202);
-    this.wmK = new e();
-    this.wmp = 0L;
-    this.mHandler = new ap();
-    this.fsv = 0;
-    this.jyd = "";
-    this.wmL = false;
-    this.wmM = false;
-    this.fjD = -85.0F;
-    this.fjE = -1000.0F;
-    this.fjJ = new b.a()
+    this.xya = new e();
+    this.xxF = 0L;
+    this.mHandler = new ao();
+    this.fwc = 0;
+    this.jYy = "";
+    this.xyb = false;
+    this.xyc = false;
+    this.fmX = -85.0F;
+    this.fmY = -1000.0F;
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -61,11 +61,11 @@ public final class g
         {
           g.a(g.this, paramAnonymousFloat2);
           g.b(g.this, paramAnonymousFloat1);
-          m.dph().fjD = g.a(g.this);
-          m.dph().fjE = g.b(g.this);
+          m.dDr().fmX = g.a(g.this);
+          m.dDr().fmY = g.b(g.this);
           if (g.c(g.this))
           {
-            ad.i("MicroMsg.ShakeCardService", "ShakeCardService do netscen from onGetLocation()");
+            ac.i("MicroMsg.ShakeCardService", "ShakeCardService do netscen from onGetLocation()");
             g.d(g.this);
           }
         }
@@ -76,89 +76,89 @@ public final class g
     AppMethodBeat.o(28202);
   }
   
-  private void bHu()
+  private void bOH()
   {
     AppMethodBeat.i(28213);
-    if (this.gXu != null) {
-      this.gXu.c(this.fjJ);
+    if (this.hxT != null) {
+      this.hxT.c(this.fnd);
     }
     AppMethodBeat.o(28213);
   }
   
-  private void doE()
+  private void dCO()
   {
     AppMethodBeat.i(28212);
-    this.gXu = com.tencent.mm.modelgeo.d.axT();
-    this.gXu.a(this.fjJ, true);
+    this.hxT = com.tencent.mm.modelgeo.d.aEL();
+    this.hxT.a(this.fnd, true);
     AppMethodBeat.o(28212);
   }
   
-  private void dpl()
+  private void dDv()
   {
     AppMethodBeat.i(28208);
-    if (this.wmL)
+    if (this.xyb)
     {
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService is doing doNetSceneShakeCard, return");
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService is doing doNetSceneShakeCard, return");
       AppMethodBeat.o(28208);
       return;
     }
-    this.wmL = true;
-    this.wmM = false;
-    ad.i("MicroMsg.ShakeCardService", "ShakeCardService do doNetSceneShakeCard");
-    this.wmJ = new c(this.fjE, this.fjD, this.fsv, this.jyd);
-    az.aeS().a(this.wmJ, 0);
+    this.xyb = true;
+    this.xyc = false;
+    ac.i("MicroMsg.ShakeCardService", "ShakeCardService do doNetSceneShakeCard");
+    this.xxZ = new c(this.fmY, this.fmX, this.fwc, this.jYy);
+    az.agi().a(this.xxZ, 0);
     AppMethodBeat.o(28208);
   }
   
-  private void dpm()
+  private void dDw()
   {
     AppMethodBeat.i(28215);
     long l2 = System.currentTimeMillis() / 1000L;
-    if (a.LK(wmo)) {
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService frequency_level is valid");
+    if (a.NK(xxE)) {
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService frequency_level is valid");
     }
-    for (long l1 = a.LL(wmo);; l1 = a.LM(a.dpz()))
+    for (long l1 = a.NL(xxE);; l1 = a.NM(a.dDJ()))
     {
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService updateWaitingTime wait nextInterval is ".concat(String.valueOf(l1)));
-      this.wmp = (l1 + l2);
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService updateWaitingTime wait nextInterval is ".concat(String.valueOf(l1)));
+      this.xxF = (l1 + l2);
       AppMethodBeat.o(28215);
       return;
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService frequency_level is not valid");
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService frequency_level is not valid");
     }
   }
   
-  public final void Sv(String paramString)
+  public final void WH(String paramString)
   {
     AppMethodBeat.i(28204);
     if ((paramString != null) && (paramString.length() <= 256))
     {
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService mExtInfo:" + this.jyd);
-      this.jyd = paramString;
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService mExtInfo:" + this.jYy);
+      this.jYy = paramString;
       AppMethodBeat.o(28204);
       return;
     }
-    ad.i("MicroMsg.ShakeCardService", "ShakeCardService ext_info size > 256 byte, extinfo:".concat(String.valueOf(paramString)));
+    ac.i("MicroMsg.ShakeCardService", "ShakeCardService ext_info size > 256 byte, extinfo:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(28204);
   }
   
-  public final void doF()
+  public final void dCP()
   {
     AppMethodBeat.i(28211);
-    az.aeS().b(1250, this);
-    bHu();
-    super.doF();
+    az.agi().b(1250, this);
+    bOH();
+    super.dCP();
     AppMethodBeat.o(28211);
   }
   
   public final void init()
   {
     AppMethodBeat.i(28205);
-    wmo = m.dph().wmo;
-    this.wmp = m.dph().wmp;
-    this.fjD = m.dph().fjD;
-    this.fjE = m.dph().fjE;
-    az.aeS().a(1250, this);
-    doE();
+    xxE = m.dDr().xxE;
+    this.xxF = m.dDr().xxF;
+    this.fmX = m.dDr().fmX;
+    this.fmY = m.dDr().fmY;
+    az.agi().a(1250, this);
+    dCO();
     AppMethodBeat.o(28205);
   }
   
@@ -168,64 +168,64 @@ public final class g
     if ((paramn instanceof c))
     {
       paramn = (c)paramn;
-      paramString = this.wmK;
-      paramn = paramn.wmn;
-      paramString.ntg = paramn.ntg;
-      paramString.nrr = paramn.nrr;
-      paramString.dyd = paramn.dyd;
+      paramString = this.xya;
+      paramn = paramn.xxD;
+      paramString.nWg = paramn.nWg;
+      paramString.nUr = paramn.nUr;
+      paramString.dvP = paramn.dvP;
       paramString.title = paramn.title;
-      paramString.nrs = paramn.nrs;
-      paramString.nrt = paramn.nrt;
-      paramString.nsK = paramn.nsK;
-      paramString.gGR = paramn.gGR;
-      paramString.gHT = paramn.gHT;
-      paramString.wmo = paramn.wmo;
-      paramString.wmr = paramn.wmr;
-      paramString.wms = paramn.wms;
-      paramString.wmt = paramn.wmt;
-      paramString.wmu = paramn.wmu;
-      paramString.wmv = paramn.wmv;
-      paramString.nrv = paramn.nrv;
-      paramString.wmw = paramn.wmw;
-      paramString.wmx = paramn.wmx;
-      this.ntg = this.wmK.ntg;
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd()  action_type:" + this.ntg + "  frequency_level:" + wmo + " control_flag:" + this.wmK.wmr);
+      paramString.nUs = paramn.nUs;
+      paramString.nUt = paramn.nUt;
+      paramString.nVK = paramn.nVK;
+      paramString.hhs = paramn.hhs;
+      paramString.hiu = paramn.hiu;
+      paramString.xxE = paramn.xxE;
+      paramString.xxH = paramn.xxH;
+      paramString.xxI = paramn.xxI;
+      paramString.xxJ = paramn.xxJ;
+      paramString.xxK = paramn.xxK;
+      paramString.xxL = paramn.xxL;
+      paramString.nUv = paramn.nUv;
+      paramString.xxM = paramn.xxM;
+      paramString.xxN = paramn.xxN;
+      this.nWg = this.xya.nWg;
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd()  action_type:" + this.nWg + "  frequency_level:" + xxE + " control_flag:" + this.xya.xxH);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label344;
       }
-      wmo = this.wmK.wmo;
-      ad.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd is OK ");
-      if (this.wlU != null) {
-        this.wlU.a(1250, this.wmK, 1L);
+      xxE = this.xya.xxE;
+      ac.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd is OK ");
+      if (this.xxk != null) {
+        this.xxk.a(1250, this.xya, 1L);
       }
-      dpm();
+      dDw();
     }
     for (;;)
     {
-      m.dph().wmo = wmo;
-      m.dph().wmp = this.wmp;
-      this.wmL = false;
+      m.dDr().xxE = xxE;
+      m.dDr().xxF = this.xxF;
+      this.xyb = false;
       AppMethodBeat.o(28214);
       return;
       label344:
       if (((paramInt1 == 5) && (paramInt2 == -1)) || ((paramInt1 == 4) && (paramInt2 != 0)))
       {
-        ad.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd errType is " + paramInt1 + " errCode is " + paramInt2);
-        if (this.wlU != null) {
-          this.wlU.a(1250, this.wmK, 2L);
+        ac.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd errType is " + paramInt1 + " errCode is " + paramInt2);
+        if (this.xxk != null) {
+          this.xxk.a(1250, this.xya, 2L);
         }
         long l1 = System.currentTimeMillis() / 1000L;
-        long l2 = a.LM(a.dpz());
-        ad.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd wait nextInterval is ".concat(String.valueOf(l2)));
-        this.wmp = (l1 + l2);
+        long l2 = a.NM(a.dDJ());
+        ac.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd wait nextInterval is ".concat(String.valueOf(l2)));
+        this.xxF = (l1 + l2);
       }
       else
       {
-        ad.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd errType is " + paramInt1 + " errCode is " + paramInt2);
-        if (this.wlU != null) {
-          this.wlU.a(1250, this.wmK, 2L);
+        ac.i("MicroMsg.ShakeCardService", "ShakeCardService onSceneEnd errType is " + paramInt1 + " errCode is " + paramInt2);
+        if (this.xxk != null) {
+          this.xxk.a(1250, this.xya, 2L);
         }
-        dpm();
+        dDw();
       }
     }
   }
@@ -233,15 +233,15 @@ public final class g
   public final void pause()
   {
     AppMethodBeat.i(28209);
-    bHu();
+    bOH();
     AppMethodBeat.o(28209);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(28206);
-    if (this.wmJ != null) {
-      az.aeS().a(this.wmJ);
+    if (this.xxZ != null) {
+      az.agi().a(this.xxZ);
     }
     AppMethodBeat.o(28206);
   }
@@ -249,8 +249,8 @@ public final class g
   public final void resume()
   {
     AppMethodBeat.i(28210);
-    if (this.gXu != null) {
-      this.gXu.a(this.fjJ, true);
+    if (this.hxT != null) {
+      this.hxT.a(this.fnd, true);
     }
     AppMethodBeat.o(28210);
   }
@@ -258,8 +258,8 @@ public final class g
   public final void setFromScene(int paramInt)
   {
     AppMethodBeat.i(28203);
-    this.fsv = paramInt;
-    ad.i("MicroMsg.ShakeCardService", "ShakeCardService from_scene:".concat(String.valueOf(paramInt)));
+    this.fwc = paramInt;
+    ac.i("MicroMsg.ShakeCardService", "ShakeCardService from_scene:".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(28203);
   }
   
@@ -268,36 +268,36 @@ public final class g
     AppMethodBeat.i(28207);
     init();
     reset();
-    if (this.gXu == null) {
-      doE();
+    if (this.hxT == null) {
+      dCO();
     }
-    this.gXu.b(this.fjJ, true);
-    Object localObject = m.dph();
-    if ((!TextUtils.isEmpty("key_shake_card_item")) && (((d)localObject).nqs.containsKey("key_shake_card_item"))) {}
+    this.hxT.b(this.fnd, true);
+    Object localObject = m.dDr();
+    if ((!TextUtils.isEmpty("key_shake_card_item")) && (((d)localObject).nTs.containsKey("key_shake_card_item"))) {}
     long l1;
     long l2;
-    for (localObject = ((d)localObject).nqs.get("key_shake_card_item");; localObject = null)
+    for (localObject = ((d)localObject).nTs.get("key_shake_card_item");; localObject = null)
     {
       l1 = System.currentTimeMillis() / 1000L;
-      l2 = this.wmp;
+      l2 = this.xxF;
       if ((localObject == null) || (!(localObject instanceof e))) {
         break;
       }
       localObject = (e)localObject;
-      this.wlU.a(1250, (e)localObject, 1L);
-      m.dph().putValue("key_shake_card_item", null);
-      ad.i("MicroMsg.ShakeCardService", "getlbscard return data is no empty, don't do doNetSceneShakeCard, return ok");
+      this.xxk.a(1250, (e)localObject, 1L);
+      m.dDr().putValue("key_shake_card_item", null);
+      ac.i("MicroMsg.ShakeCardService", "getlbscard return data is no empty, don't do doNetSceneShakeCard, return ok");
       AppMethodBeat.o(28207);
       return;
     }
     int i;
-    if (this.wmp == 0L) {
+    if (this.xxF == 0L) {
       i = 1;
     }
     while (i != 0) {
-      if (this.wmL)
+      if (this.xyb)
       {
-        ad.i("MicroMsg.ShakeCardService", "ShakeCardService is doing netscene, return");
+        ac.i("MicroMsg.ShakeCardService", "ShakeCardService is doing netscene, return");
         AppMethodBeat.o(28207);
         return;
         if (l1 - l2 >= 0L)
@@ -306,31 +306,31 @@ public final class g
         }
         else
         {
-          h.vKh.f(11666, new Object[] { Integer.valueOf(this.fsv) });
+          h.wUl.f(11666, new Object[] { Integer.valueOf(this.fwc) });
           this.mHandler.postDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(28200);
-              g.e(g.this).ntg = 3;
-              g.a(g.this, g.e(g.this).ntg);
-              g.e(g.this).wmv = m.dph().wmq;
+              g.e(g.this).nWg = 3;
+              g.a(g.this, g.e(g.this).nWg);
+              g.e(g.this).xxL = m.dDr().xxG;
               if (g.f(g.this) != null) {
                 g.g(g.this).a(1250, g.e(g.this), 2L);
               }
               AppMethodBeat.o(28200);
             }
           }, 3000L);
-          ad.i("MicroMsg.ShakeCardService", "ShakeCardService do not doNetSceneShakeCard, because time is not expire");
+          ac.i("MicroMsg.ShakeCardService", "ShakeCardService do not doNetSceneShakeCard, because time is not expire");
           i = 0;
         }
       }
       else
       {
-        if ((this.fjD == -85.0F) || (this.fjE == -1000.0F))
+        if ((this.fmX == -85.0F) || (this.fmY == -1000.0F))
         {
-          this.wmM = true;
-          ad.i("MicroMsg.ShakeCardService", "ShakeCardService location is not geted, wait 4 second");
+          this.xyc = true;
+          ac.i("MicroMsg.ShakeCardService", "ShakeCardService location is not geted, wait 4 second");
           this.mHandler.postDelayed(new Runnable()
           {
             public final void run()
@@ -345,7 +345,7 @@ public final class g
           AppMethodBeat.o(28207);
           return;
         }
-        dpl();
+        dDv();
       }
     }
     AppMethodBeat.o(28207);
@@ -353,7 +353,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.g
  * JD-Core Version:    0.7.0.1
  */

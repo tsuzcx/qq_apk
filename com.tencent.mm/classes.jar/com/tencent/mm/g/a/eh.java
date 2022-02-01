@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class eh
   extends b
 {
-  public a dgO;
+  public a deh;
   
   public eh()
   {
@@ -15,22 +15,21 @@ public final class eh
   
   private eh(byte paramByte)
   {
-    AppMethodBeat.i(115999);
-    this.dgO = new a();
-    this.ESR = false;
+    AppMethodBeat.i(115998);
+    this.deh = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(115999);
+    AppMethodBeat.o(115998);
   }
   
   public static final class a
   {
-    public String cLR;
-    public boolean dfJ;
+    public int dei = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.eh
  * JD-Core Version:    0.7.0.1
  */

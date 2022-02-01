@@ -15,14 +15,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView.PreInitCallback;
 import com.tencent.xweb.WebView.c;
-import com.tencent.xweb.af;
+import com.tencent.xweb.ah;
 import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 import com.tencent.xweb.internal.IJsRuntime;
 import com.tencent.xweb.internal.IWebStorage;
 import com.tencent.xweb.internal.IWebView;
+import com.tencent.xweb.internal.IWebViewDatabase;
 import com.tencent.xweb.internal.j.a;
-import com.tencent.xweb.util.f;
 import com.tencent.xweb.util.g;
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
@@ -42,7 +42,7 @@ public class SysWebFactory
     AppMethodBeat.i(153677);
     if (sInstance == null)
     {
-      af.frp();
+      ah.fJR();
       sInstance = new SysWebFactory();
     }
     SysWebFactory localSysWebFactory = sInstance;
@@ -114,7 +114,7 @@ public class SysWebFactory
       if ((str != null) && (str.contains("Calling View methods on another thread than the UI thread.")))
       {
         Log.e("XWEB.SysWebFactory", "setNeedEnforceMainLooper=true", paramWebView);
-        a.frW();
+        a.fKz();
       }
       AppMethodBeat.o(153679);
       throw paramWebView;
@@ -147,7 +147,7 @@ public class SysWebFactory
   {
     AppMethodBeat.i(153685);
     Object localObject;
-    if (a.frX())
+    if (a.fKA())
     {
       localObject = new a();
       AppMethodBeat.o(153685);
@@ -172,7 +172,7 @@ public class SysWebFactory
   {
     AppMethodBeat.i(153686);
     Object localObject;
-    if (a.frX())
+    if (a.fKA())
     {
       localObject = new b();
       AppMethodBeat.o(153686);
@@ -198,6 +198,14 @@ public class SysWebFactory
     return null;
   }
   
+  public IWebViewDatabase getWebViewDatabase()
+  {
+    AppMethodBeat.i(208876);
+    f localf = new f();
+    AppMethodBeat.o(208876);
+    return localf;
+  }
+  
   public boolean hasInited()
   {
     AppMethodBeat.i(153682);
@@ -217,7 +225,7 @@ public class SysWebFactory
   public void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
   {
     AppMethodBeat.i(153681);
-    a.frY();
+    a.fKB();
     AppMethodBeat.o(153681);
   }
   
@@ -228,7 +236,7 @@ public class SysWebFactory
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(153680);
-    af.frp();
+    ah.fJR();
     a.b(paramPreInitCallback);
     AppMethodBeat.o(153680);
     return true;
@@ -241,18 +249,18 @@ public class SysWebFactory
   
   static final class a
   {
-    private static boolean IRe;
-    private static Boolean IRf;
-    private static final AtomicBoolean IRg;
-    private static boolean peC;
+    private static boolean KDA;
+    private static Boolean KDB;
+    private static final AtomicBoolean KDC;
+    private static boolean pHN;
     
     static
     {
       AppMethodBeat.i(153676);
-      peC = false;
-      IRe = false;
-      IRf = null;
-      IRg = new AtomicBoolean(false);
+      pHN = false;
+      KDA = false;
+      KDB = null;
+      KDC = new AtomicBoolean(false);
       AppMethodBeat.o(153676);
     }
     
@@ -263,21 +271,21 @@ public class SysWebFactory
         try
         {
           AppMethodBeat.i(153674);
-          if (peC)
+          if (pHN)
           {
             AppMethodBeat.o(153674);
             return;
           }
-          if (!frV())
+          if (!fKy())
           {
-            peC = true;
+            pHN = true;
             if (paramPreInitCallback != null) {
               paramPreInitCallback.onCoreInitFinished();
             }
             AppMethodBeat.o(153674);
             continue;
           }
-          if (!IRg.get()) {
+          if (!KDC.get()) {
             break label84;
           }
         }
@@ -296,9 +304,9 @@ public class SysWebFactory
               try
               {
                 SysWebFactory.a.access$000();
-                SysWebFactory.a.aPL();
-                if (this.AKm != null) {
-                  this.AKm.onCoreInitFinished();
+                SysWebFactory.a.aWD();
+                if (this.CcD != null) {
+                  this.CcD.onCoreInitFinished();
                 }
                 AppMethodBeat.o(153672);
                 return;
@@ -306,14 +314,14 @@ public class SysWebFactory
               catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
               {
                 Log.e("SysWebFactory.preIniter", "link error, may be abi not match, try xweb core");
-                com.tencent.xweb.WebView._initWebviewCore(XWalkEnvironment.getApplicationContext(), WebView.c.INC, this.AKm, true);
+                com.tencent.xweb.WebView._initWebviewCore(XWalkEnvironment.getApplicationContext(), WebView.c.KzZ, this.CcD, true);
                 AppMethodBeat.o(153672);
                 return;
               }
               catch (Exception localException1) {}
               try
               {
-                Log.e("SysWebFactory.preIniter", "PathUtils.getDataDirectory = ".concat(String.valueOf(f.mj("org.chromium.base.PathUtils", "getDataDirectory").toString())));
+                Log.e("SysWebFactory.preIniter", "PathUtils.getDataDirectory = ".concat(String.valueOf(com.tencent.xweb.util.f.mK("org.chromium.base.PathUtils", "getDataDirectory").toString())));
                 Log.e("SysWebFactory.preIniter", "ensureSystemWebViewGlobalLooper failed " + localException1.getMessage());
                 g.r(577L, 233L, 1L);
                 AppMethodBeat.o(153672);
@@ -345,50 +353,50 @@ public class SysWebFactory
       }
     }
     
-    private static boolean frV()
+    public static boolean fKA()
+    {
+      AppMethodBeat.i(153673);
+      if (!fKy())
+      {
+        AppMethodBeat.o(153673);
+        return true;
+      }
+      boolean bool = KDC.get();
+      AppMethodBeat.o(153673);
+      return bool;
+    }
+    
+    public static void fKB()
+    {
+      KDA = true;
+    }
+    
+    private static boolean fKy()
     {
       AppMethodBeat.i(183736);
-      if (IRf == null) {
-        IRf = Boolean.valueOf(XWalkEnvironment.getMMKVSharedPreferences("SysWebFactory.preIniter").getBoolean("isEnforceMainLooper", false));
+      if (KDB == null) {
+        KDB = Boolean.valueOf(XWalkEnvironment.getMMKVSharedPreferences("SysWebFactory.preIniter").getBoolean("isEnforceMainLooper", false));
       }
-      boolean bool = IRf.booleanValue();
+      boolean bool = KDB.booleanValue();
       AppMethodBeat.o(183736);
       return bool;
     }
     
-    public static void frW()
+    public static void fKz()
     {
       AppMethodBeat.i(183737);
       XWalkEnvironment.getMMKVSharedPreferences("SysWebFactory.preIniter").edit().putBoolean("isEnforceMainLooper", true).apply();
       AppMethodBeat.o(183737);
     }
     
-    public static boolean frX()
-    {
-      AppMethodBeat.i(153673);
-      if (!frV())
-      {
-        AppMethodBeat.o(153673);
-        return true;
-      }
-      boolean bool = IRg.get();
-      AppMethodBeat.o(153673);
-      return bool;
-    }
-    
-    public static void frY()
-    {
-      IRe = true;
-    }
-    
     public static boolean hasInited()
     {
-      return peC;
+      return pHN;
     }
     
     public static boolean hasInitedCallback()
     {
-      return IRe;
+      return KDA;
     }
   }
 }

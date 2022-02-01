@@ -1,11 +1,11 @@
 package com.tencent.liteav.beauty.b.a;
 
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class c
-  extends g
+  extends h
 {
   public boolean a()
   {

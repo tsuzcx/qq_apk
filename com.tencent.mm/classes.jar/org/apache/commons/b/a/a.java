@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static volatile b KmC = b.KmF;
-  private final StringBuffer KmD;
-  private final b KmE;
+  private static volatile b Mal = b.Mao;
+  private final StringBuffer Mam;
+  private final b Man;
   private final Object object;
   
   public a(Object paramObject, b paramb)
@@ -19,32 +19,32 @@ public final class a
     AppMethodBeat.i(40695);
     b localb = paramb;
     if (paramb == null) {
-      localb = KmC;
+      localb = Mal;
     }
     paramb = new StringBuffer(512);
-    this.KmD = paramb;
-    this.KmE = localb;
+    this.Mam = paramb;
+    this.Man = localb;
     this.object = paramObject;
     if (paramObject != null) {
-      if ((localb.KmM) && (paramObject != null))
+      if ((localb.Mav) && (paramObject != null))
       {
-        b.fR(paramObject);
-        if (!localb.KmN) {
+        b.fZ(paramObject);
+        if (!localb.Maw) {
           break label153;
         }
-        paramb.append(org.apache.commons.b.b.bz(paramObject.getClass()));
+        paramb.append(org.apache.commons.b.b.bC(paramObject.getClass()));
       }
     }
     for (;;)
     {
-      if ((localb.KmO) && (paramObject != null))
+      if ((localb.Max) && (paramObject != null))
       {
-        b.fR(paramObject);
+        b.fZ(paramObject);
         paramb.append('@');
         paramb.append(Integer.toHexString(System.identityHashCode(paramObject)));
       }
-      paramb.append(localb.uNS);
-      if (localb.KmQ) {
+      paramb.append(localb.vWI);
+      if (localb.Maz) {
         localb.c(paramb);
       }
       AppMethodBeat.o(40695);
@@ -54,10 +54,10 @@ public final class a
     }
   }
   
-  public final a fP(Object paramObject)
+  public final a fX(Object paramObject)
   {
     AppMethodBeat.i(40696);
-    this.KmE.b(this.KmD, paramObject);
+    this.Man.b(this.Mam, paramObject);
     AppMethodBeat.o(40696);
     return this;
   }
@@ -68,20 +68,20 @@ public final class a
     AppMethodBeat.i(40697);
     if (this.object == null)
     {
-      this.KmD.append(this.KmE.KmY);
-      localObject1 = this.KmD.toString();
+      this.Mam.append(this.Man.MaH);
+      localObject1 = this.Mam.toString();
       AppMethodBeat.o(40697);
       return localObject1;
     }
-    Object localObject1 = this.KmE;
-    StringBuffer localStringBuffer = this.KmD;
+    Object localObject1 = this.Man;
+    StringBuffer localStringBuffer = this.Mam;
     Object localObject2 = this.object;
     int k;
     int m;
-    if (!((b)localObject1).KmR)
+    if (!((b)localObject1).MaA)
     {
       k = localStringBuffer.length();
-      m = ((b)localObject1).KmS.length();
+      m = ((b)localObject1).MaB.length();
       if ((k > 0) && (m > 0) && (k >= m))
       {
         i = 0;
@@ -89,7 +89,7 @@ public final class a
         if (i >= m) {
           break label179;
         }
-        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).KmS.charAt(m - 1 - i)) {
+        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).MaB.charAt(m - 1 - i)) {
           break label172;
         }
       }
@@ -101,8 +101,8 @@ public final class a
       if (i != 0) {
         localStringBuffer.setLength(k - m);
       }
-      localStringBuffer.append(((b)localObject1).uNT);
-      b.fS(localObject2);
+      localStringBuffer.append(((b)localObject1).vWJ);
+      b.ga(localObject2);
       break;
       i += 1;
       break label105;
@@ -111,7 +111,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.a.a
  * JD-Core Version:    0.7.0.1
  */

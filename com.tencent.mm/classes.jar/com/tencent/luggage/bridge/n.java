@@ -1,24 +1,24 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import org.json.JSONObject;
 
 final class n
 {
-  private o bZw;
-  private ap bZx;
+  private o bWt;
+  private ao bWu;
   
   n(o paramo)
   {
     AppMethodBeat.i(140332);
-    this.bZw = paramo;
-    this.bZx = new ap("Js2JavaAsyncHandler");
+    this.bWt = paramo;
+    this.bWu = new ao("Js2JavaAsyncHandler");
     AppMethodBeat.o(140332);
   }
   
-  private static m bL(String paramString)
+  private static m bB(String paramString)
   {
     AppMethodBeat.i(140335);
     try
@@ -29,7 +29,7 @@ final class n
     }
     catch (Exception paramString)
     {
-      ad.e("Js2JavaMessageQueue", "Message parse failed, ex = %s", new Object[] { paramString.getMessage() });
+      ac.e("Js2JavaMessageQueue", "Message parse failed, ex = %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(140335);
     }
     return null;
@@ -44,7 +44,7 @@ final class n
       AppMethodBeat.o(140333);
       return paramString;
     }
-    this.bZx.post(new Runnable()
+    this.bWu.post(new Runnable()
     {
       public final void run()
       {
@@ -60,36 +60,36 @@ final class n
   final String j(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(140334);
-    Object localObject = bL(paramString);
+    Object localObject = bB(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(140334);
       return "";
     }
-    ad.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).AF().name() });
+    ac.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).Aj().name() });
     paramString = null;
-    switch (2.bZz[localObject.AF().ordinal()])
+    switch (2.bWw[localObject.Aj().ordinal()])
     {
     default: 
       if (paramString != null) {
         break;
       }
     }
-    for (localObject = "null";; localObject = paramString.AF().name())
+    for (localObject = "null";; localObject = paramString.Aj().name())
     {
-      ad.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
+      ac.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
       if (paramString != null) {
         break label181;
       }
       AppMethodBeat.o(140334);
       return "";
-      this.bZw.bZC.AH();
+      this.bWt.bWz.Al();
       break;
-      paramString = this.bZw.a((m)localObject, paramBoolean);
+      paramString = this.bWt.a((m)localObject, paramBoolean);
       break;
-      this.bZw.a((m)localObject);
+      this.bWt.a((m)localObject);
       break;
-      this.bZw.b((m)localObject);
+      this.bWt.b((m)localObject);
       break;
     }
     label181:

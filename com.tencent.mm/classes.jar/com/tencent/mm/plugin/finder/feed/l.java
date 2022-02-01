@@ -1,19 +1,7 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/FinderTopicFeedUIContract;", "", "()V", "TopicFeedPresenter", "TopicFeedViewCallback", "plugin-finder_release"})
-public final class l
-{
-  public static final l qxy;
-  
-  static
-  {
-    AppMethodBeat.i(165979);
-    qxy = new l();
-    AppMethodBeat.o(165979);
-  }
-}
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendLikeFeedUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+public final class l {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

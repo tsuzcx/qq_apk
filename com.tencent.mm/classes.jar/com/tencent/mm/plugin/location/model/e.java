@@ -11,8 +11,8 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,10 +23,10 @@ public final class e
   public static String a(LocationInfo paramLocationInfo)
   {
     AppMethodBeat.i(55684);
-    if (paramLocationInfo.dtN == null) {
-      paramLocationInfo.dtN = "";
+    if (paramLocationInfo.dry == null) {
+      paramLocationInfo.dry = "";
     }
-    paramLocationInfo = "<msg><location x=\"" + paramLocationInfo.sOv + "\" y=\"" + paramLocationInfo.sOw + "\" scale=\"" + paramLocationInfo.sOx + "\" label=\"" + bt.aGf(paramLocationInfo.sOy) + "\" poiname=\"" + bt.aGf(paramLocationInfo.dtN) + "\" maptype=\"0\" /></msg>";
+    paramLocationInfo = "<msg><location x=\"" + paramLocationInfo.tWI + "\" y=\"" + paramLocationInfo.tWJ + "\" scale=\"" + paramLocationInfo.tWK + "\" label=\"" + bs.aLw(paramLocationInfo.tWL) + "\" poiname=\"" + bs.aLw(paramLocationInfo.dry) + "\" maptype=\"0\" /></msg>";
     AppMethodBeat.o(55684);
     return paramLocationInfo;
   }
@@ -34,19 +34,19 @@ public final class e
   public static String a(String paramString1, String paramString2, View paramView)
   {
     AppMethodBeat.i(55685);
-    ad.d("MicroMsg.MapUtil", "w h " + paramView.getWidth() + " " + (paramView.getHeight() / 2 + 20));
+    ac.d("MicroMsg.MapUtil", "w h " + paramView.getWidth() + " " + (paramView.getHeight() / 2 + 20));
     String str = paramString1 + paramString2 + ".png";
     Bitmap localBitmap = Bitmap.createBitmap(paramView.getWidth(), (int)(paramView.getHeight() * 0.7D), Bitmap.Config.ARGB_8888);
     paramView.draw(new Canvas(localBitmap));
     try
     {
-      ad.d("MicroMsg.MapUtil", "saveMyBitmap ".concat(String.valueOf(paramString2)));
+      ac.d("MicroMsg.MapUtil", "saveMyBitmap ".concat(String.valueOf(paramString2)));
       paramString1 = new com.tencent.mm.vfs.e(paramString1 + paramString2 + ".png");
       paramString1.createNewFile();
       try
       {
-        paramString1 = i.ai(paramString1);
-        ad.d("MicroMsg.MapUtil", "h " + localBitmap.getHeight() + " w:" + localBitmap.getWidth() + " ");
+        paramString1 = i.ah(paramString1);
+        ac.d("MicroMsg.MapUtil", "h " + localBitmap.getHeight() + " w:" + localBitmap.getWidth() + " ");
         localBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString1);
         if (paramString1 == null) {}
       }
@@ -56,19 +56,19 @@ public final class e
         {
           paramString1.flush();
           paramString1.close();
-          ad.i("MicroMsg.MapUtil", "bitmap recycle %s", new Object[] { localBitmap.toString() });
+          ac.i("MicroMsg.MapUtil", "bitmap recycle %s", new Object[] { localBitmap.toString() });
           localBitmap.recycle();
           AppMethodBeat.o(55685);
           return str;
           paramString1 = paramString1;
-          ad.printErrStackTrace("MicroMsg.MapUtil", paramString1, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.MapUtil", paramString1, "", new Object[0]);
           paramString1 = null;
         }
         catch (IOException paramString1)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.MapUtil", paramString1, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.MapUtil", paramString1, "", new Object[0]);
           }
         }
       }
@@ -76,12 +76,12 @@ public final class e
     }
     catch (IOException paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.MapUtil", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MapUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(55685);
     }
   }
   
-  public static PackageInfo aN(Context paramContext, String paramString)
+  public static PackageInfo aO(Context paramContext, String paramString)
   {
     AppMethodBeat.i(55683);
     try
@@ -92,13 +92,13 @@ public final class e
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.MapUtil", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MapUtil", paramContext, "", new Object[0]);
       AppMethodBeat.o(55683);
       return null;
     }
     catch (ActivityNotFoundException paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.MapUtil", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MapUtil", paramContext, "", new Object[0]);
       AppMethodBeat.o(55683);
     }
     return null;
@@ -151,7 +151,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.e
  * JD-Core Version:    0.7.0.1
  */

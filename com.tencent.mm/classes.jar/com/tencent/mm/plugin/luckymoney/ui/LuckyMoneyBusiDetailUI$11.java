@@ -11,7 +11,7 @@ final class LuckyMoneyBusiDetailUI$11
   public final void run()
   {
     AppMethodBeat.i(65460);
-    i.v(this.tkt);
+    i.v(this.usM);
     AppMethodBeat.o(65460);
   }
 }

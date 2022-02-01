@@ -1,19 +1,19 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.b;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bc.l;
+import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.b;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bb.l;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayInputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,15 +30,15 @@ public final class cg
   public final f.b b(f.a parama)
   {
     AppMethodBeat.i(150190);
-    parama = parama.fTo;
-    if ((parama == null) || (parama.Cxz == null))
+    parama = parama.fXi;
+    if ((parama == null) || (parama.DPV == null))
     {
-      ad.f("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension failed, invalid cmdAM");
+      ac.f("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension failed, invalid cmdAM");
       AppMethodBeat.o(150190);
       return null;
     }
-    ad.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension start");
-    parama = z.a(parama.Cxz);
+    ac.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension start");
+    parama = z.a(parama.DPV);
     Object localObject = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -67,18 +67,18 @@ public final class cg
             if (localObject == null) {
               break label290;
             }
-            localObject = new l(bt.getInt(((Node)localObject).getNodeValue(), 0));
-            g.afA().gcy.a((n)localObject, 0);
+            localObject = new l(bs.getInt(((Node)localObject).getNodeValue(), 0));
+            g.agQ().ghe.a((n)localObject, 0);
             break label290;
           }
         }
-        ad.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension end");
+        ac.i("MicroMsg.UpdatePackageMsgExtension", "[oneliang]UpdatePackageMsgExtension end");
         AppMethodBeat.o(150190);
         return null;
       }
       catch (Exception parama)
       {
-        ad.e("MicroMsg.UpdatePackageMsgExtension", "exception:%s", new Object[] { bt.m(parama) });
+        ac.e("MicroMsg.UpdatePackageMsgExtension", "exception:%s", new Object[] { bs.m(parama) });
         AppMethodBeat.o(150190);
         return null;
       }

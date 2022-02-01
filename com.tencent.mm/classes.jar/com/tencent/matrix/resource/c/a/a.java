@@ -2,15 +2,15 @@ package com.tencent.matrix.resource.c.a;
 
 public final class a
 {
-  public final int cAc;
-  public final b cAd;
-  public final Object cAe;
+  public final int cxl;
+  public final b cxm;
+  public final Object cxn;
   
   public a(int paramInt, b paramb, Object paramObject)
   {
-    this.cAc = paramInt;
-    this.cAd = paramb;
-    this.cAe = paramObject;
+    this.cxl = paramInt;
+    this.cxm = paramb;
+    this.cxn = paramObject;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,24 +23,24 @@ public final class a
         return false;
       }
       paramObject = (a)paramObject;
-      if (this.cAc != paramObject.cAc) {
+      if (this.cxl != paramObject.cxl) {
         return false;
       }
-      if (!this.cAd.equals(paramObject.cAd)) {
+      if (!this.cxm.equals(paramObject.cxm)) {
         return false;
       }
-    } while (((this.cAe == null) || (this.cAe.equals(paramObject.cAe))) && ((paramObject.cAe == null) || (paramObject.cAe.equals(this.cAe))));
+    } while (((this.cxn == null) || (this.cxn.equals(paramObject.cxn))) && ((paramObject.cxn == null) || (paramObject.cxn.equals(this.cxn))));
     return false;
   }
   
   public final int hashCode()
   {
-    return (this.cAd.hashCode() << 31) + this.cAc;
+    return (this.cxm.hashCode() << 31) + this.cxl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.c.a.a
  * JD-Core Version:    0.7.0.1
  */

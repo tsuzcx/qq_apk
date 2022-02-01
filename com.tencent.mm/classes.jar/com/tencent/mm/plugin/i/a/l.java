@@ -1,29 +1,39 @@
 package com.tencent.mm.plugin.i.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.ImageView;
+import com.tencent.mm.kernel.b.a;
+import java.util.List;
 
-public final class l
+public abstract interface l
+  extends a
 {
-  public static int Lmh;
-  public static final Pattern iyI;
+  public abstract void dumpAndMarkFinderFolder();
   
-  static
-  {
-    AppMethodBeat.i(203819);
-    iyI = Pattern.compile("<a>(.+?)</a>");
-    Lmh = 33554432;
-    AppMethodBeat.o(203819);
-  }
+  public abstract void enterFinderProfileUI(Context paramContext, Intent paramIntent);
   
-  public static abstract interface a
-  {
-    public static final int tDs = Runtime.getRuntime().availableProcessors();
-  }
+  public abstract void enterFinderShareFeedUI(Context paramContext, Intent paramIntent);
+  
+  public abstract void enterFinderShareFeedUI(Context paramContext, String paramString);
+  
+  public abstract void enterFinderTimelineUI(Context paramContext, Intent paramIntent);
+  
+  public abstract void enterFinderTopicUI(Context paramContext, Intent paramIntent);
+  
+  public abstract j getRedDotManager();
+  
+  public abstract void loadImage(String paramString, ImageView paramImageView);
+  
+  public abstract void reportPostRedDot(int paramInt);
+  
+  public abstract void shareStatsReport(List<String> paramList);
+  
+  public abstract boolean showFinderEntry();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.l
  * JD-Core Version:    0.7.0.1
  */

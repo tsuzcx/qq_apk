@@ -7,14 +7,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.util.Iterator;
@@ -23,16 +23,16 @@ import java.util.Map;
 
 public final class c
 {
-  private LinkedList<d> tvP;
+  private LinkedList<d> uEi;
   
-  private static String cNP()
+  private static String dbw()
   {
     AppMethodBeat.i(26354);
-    if (az.afw())
+    if (az.agM())
     {
-      az.arV();
-      String str = String.format("%s/masssend_%s.ini", new Object[] { com.tencent.mm.model.c.aff(), ac.eFu() });
-      ad.d("MicroMsg.MassSendService", "config file path is %s", new Object[] { str });
+      az.ayM();
+      String str = String.format("%s/masssend_%s.ini", new Object[] { com.tencent.mm.model.c.agv(), ab.eUO() });
+      ac.d("MicroMsg.MassSendService", "config file path is %s", new Object[] { str });
       AppMethodBeat.o(26354);
       return str;
     }
@@ -40,14 +40,14 @@ public final class c
     return "";
   }
   
-  private boolean cNQ()
+  private boolean dbx()
   {
     AppMethodBeat.i(26355);
     byte[] arrayOfByte;
-    if (this.tvP == null)
+    if (this.uEi == null)
     {
-      localObject = cNP();
-      arrayOfByte = i.aR((String)localObject, 0, -1);
+      localObject = dbw();
+      arrayOfByte = i.aU((String)localObject, 0, -1);
       if (arrayOfByte == null)
       {
         AppMethodBeat.o(26355);
@@ -56,10 +56,10 @@ public final class c
     }
     try
     {
-      this.tvP = ((e)new e().parseFrom(arrayOfByte)).tvQ;
-      if (this.tvP == null)
+      this.uEi = ((e)new e().parseFrom(arrayOfByte)).uEj;
+      if (this.uEi == null)
       {
-        ad.w("MicroMsg.MassSendService", "info list is empty");
+        ac.w("MicroMsg.MassSendService", "info list is empty");
         AppMethodBeat.o(26355);
         return false;
       }
@@ -70,9 +70,9 @@ public final class c
       AppMethodBeat.o(26355);
       return false;
     }
-    ad.i("MicroMsg.MassSendService", "info list[%s]", new Object[] { this.tvP.toString() });
-    long l = bt.aGK();
-    Object localObject = this.tvP.iterator();
+    ac.i("MicroMsg.MassSendService", "info list[%s]", new Object[] { this.uEi.toString() });
+    long l = bs.aNx();
+    Object localObject = this.uEi.iterator();
     while (((Iterator)localObject).hasNext())
     {
       d locald = (d)((Iterator)localObject).next();
@@ -86,23 +86,23 @@ public final class c
     return false;
   }
   
-  public static void rk(long paramLong)
+  public static void vN(long paramLong)
   {
     AppMethodBeat.i(26353);
-    az.arV();
-    com.tencent.mm.model.c.afk().set(102409, Long.valueOf(paramLong));
+    az.ayM();
+    com.tencent.mm.model.c.agA().set(102409, Long.valueOf(paramLong));
     AppMethodBeat.o(26353);
   }
   
-  public final void afF(String paramString)
+  public final void akz(String paramString)
   {
     AppMethodBeat.i(26356);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(26356);
       return;
     }
-    Object localObject1 = bw.K(paramString, "Festivals");
+    Object localObject1 = bv.L(paramString, "Festivals");
     if (localObject1 == null)
     {
       AppMethodBeat.o(26356);
@@ -119,44 +119,44 @@ public final class c
         break label200;
       }
       localObject2 = new d();
-      ((d)localObject2).begin = bt.aGa((String)((Map)localObject1).get(paramString + ".StartTime"));
-      ((d)localObject2).end = (bt.aGa((String)((Map)localObject1).get(paramString + ".EndTime")) + 86400000);
-      locale.tvQ.add(localObject2);
+      ((d)localObject2).begin = bs.aLr((String)((Map)localObject1).get(paramString + ".StartTime"));
+      ((d)localObject2).end = (bs.aLr((String)((Map)localObject1).get(paramString + ".EndTime")) + 86400000);
+      locale.uEj.add(localObject2);
       i += 1;
       break;
     }
     label200:
-    locale.count = locale.tvQ.size();
-    this.tvP = locale.tvQ;
+    locale.count = locale.uEj.size();
+    this.uEi = locale.uEj;
     for (;;)
     {
       try
       {
         paramString = locale.toByteArray();
-        localObject1 = cNP();
-        if (bt.isNullOrNil((String)localObject1))
+        localObject1 = dbw();
+        if (bs.isNullOrNil((String)localObject1))
         {
-          ad.w("MicroMsg.MassSendService", "mass send config file path is null, return");
+          ac.w("MicroMsg.MassSendService", "mass send config file path is null, return");
           AppMethodBeat.o(26356);
           return;
         }
         localObject2 = new com.tencent.mm.vfs.e((String)localObject1);
         if (!((com.tencent.mm.vfs.e)localObject2).exists())
         {
-          az.arV();
-          com.tencent.mm.model.c.afk().set(102408, Boolean.FALSE);
-          ad.d("MicroMsg.MassSendService", "save to config file : %s", new Object[] { locale.toString() });
+          az.ayM();
+          com.tencent.mm.model.c.agA().set(102408, Boolean.FALSE);
+          ac.d("MicroMsg.MassSendService", "save to config file : %s", new Object[] { locale.toString() });
           i.f((String)localObject1, paramString, paramString.length);
           AppMethodBeat.o(26356);
           return;
         }
-        if (!i.aEN(q.B(((com.tencent.mm.vfs.e)localObject2).mUri)).equals(g.getMessageDigest(paramString)))
+        if (!i.aKe(q.B(((com.tencent.mm.vfs.e)localObject2).mUri)).equals(g.getMessageDigest(paramString)))
         {
           i = 1;
           if (i != 0)
           {
-            az.arV();
-            com.tencent.mm.model.c.afk().set(102408, Boolean.FALSE);
+            az.ayM();
+            com.tencent.mm.model.c.agA().set(102408, Boolean.FALSE);
           }
         }
         else
@@ -166,76 +166,76 @@ public final class c
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("MicroMsg.MassSendService", paramString, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.MassSendService", paramString, "", new Object[0]);
         AppMethodBeat.o(26356);
         return;
       }
     }
   }
   
-  public final void cNO()
+  public final void dbv()
   {
     Object localObject1 = null;
     AppMethodBeat.i(26352);
-    boolean bool1 = cNQ();
-    az.arV();
-    boolean bool2 = ((Boolean)com.tencent.mm.model.c.afk().get(102408, Boolean.FALSE)).booleanValue();
+    boolean bool1 = dbx();
+    az.ayM();
+    boolean bool2 = ((Boolean)com.tencent.mm.model.c.agA().get(102408, Boolean.FALSE)).booleanValue();
     int i;
-    if ((u.aqS() & 0x10000) == 0)
+    if ((u.axI() & 0x10000) == 0)
     {
       i = 1;
-      ad.d("MicroMsg.MassSendService", "hadSetTop is %B", new Object[] { Boolean.valueOf(bool2) });
+      ac.d("MicroMsg.MassSendService", "hadSetTop is %B", new Object[] { Boolean.valueOf(bool2) });
       if ((i == 0) || (bool2) || (!bool1)) {
         break label411;
       }
-      ad.d("MicroMsg.MassSendService", "set top conversation");
-      az.arV();
-      if (com.tencent.mm.model.c.apR().aIn("masssendapp") != null) {
+      ac.d("MicroMsg.MassSendService", "set top conversation");
+      az.ayM();
+      if (com.tencent.mm.model.c.awG().aNI("masssendapp") != null) {
         break label252;
       }
-      az.arV();
-      if (com.tencent.mm.model.c.apR().aIn("masssendapp") == null)
+      az.ayM();
+      if (com.tencent.mm.model.c.awG().aNI("masssendapp") == null)
       {
-        localObject1 = new am();
-        ((am)localObject1).setUsername("masssendapp");
-        ((am)localObject1).setContent(aj.getContext().getResources().getString(2131757722));
-        ((am)localObject1).kS(bt.eGO() + 2000L);
-        ((am)localObject1).jV(0);
-        ((am)localObject1).jT(0);
-        az.arV();
-        com.tencent.mm.model.c.apR().e((am)localObject1);
+        localObject1 = new ap();
+        ((ap)localObject1).setUsername("masssendapp");
+        ((ap)localObject1).setContent(ai.getContext().getResources().getString(2131757722));
+        ((ap)localObject1).ou(bs.eWj() + 2000L);
+        ((ap)localObject1).jT(0);
+        ((ap)localObject1).jR(0);
+        az.ayM();
+        com.tencent.mm.model.c.awG().e((ap)localObject1);
       }
     }
     label252:
     Object localObject2;
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(10425, "");
-      az.arV();
-      com.tencent.mm.model.c.afk().set(102409, Long.valueOf(bt.eGO()));
-      az.arV();
-      com.tencent.mm.model.c.afk().set(102408, Boolean.TRUE);
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10425, "");
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(102409, Long.valueOf(bs.eWj()));
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(102408, Boolean.TRUE);
       AppMethodBeat.o(26352);
       return;
       i = 0;
       break;
-      localObject2 = h.cNS().gPa.a("select * from massendinfo ORDER BY createtime DESC  limit 1", null, 2);
+      localObject2 = h.dbz().hpA.a("select * from massendinfo ORDER BY createtime DESC  limit 1", null, 2);
       if (localObject2 != null) {
         break label361;
       }
       if (localObject1 != null) {
         break label397;
       }
-      localObject1 = aj.getContext().getResources().getString(2131757722);
+      localObject1 = ai.getContext().getResources().getString(2131757722);
       label292:
-      localObject2 = new am();
-      ((am)localObject2).setUsername("masssendapp");
-      ((am)localObject2).setContent((String)localObject1);
-      ((am)localObject2).kS(bt.eGO() + 2000L);
-      ((am)localObject2).jV(0);
-      ((am)localObject2).jT(0);
-      az.arV();
-      com.tencent.mm.model.c.apR().a((am)localObject2, "masssendapp");
+      localObject2 = new ap();
+      ((ap)localObject2).setUsername("masssendapp");
+      ((ap)localObject2).setContent((String)localObject1);
+      ((ap)localObject2).ou(bs.eWj() + 2000L);
+      ((ap)localObject2).jT(0);
+      ((ap)localObject2).jR(0);
+      az.ayM();
+      com.tencent.mm.model.c.awG().a((ap)localObject2, "masssendapp");
     }
     label361:
     if (((Cursor)localObject2).moveToFirst())
@@ -248,14 +248,14 @@ public final class c
       ((Cursor)localObject2).close();
       break;
       label397:
-      h.cNS();
+      h.dbz();
       localObject1 = b.a((a)localObject1);
       break label292;
       label411:
       if (!bool1)
       {
-        az.arV();
-        com.tencent.mm.model.c.afk().set(102408, Boolean.FALSE);
+        az.ayM();
+        com.tencent.mm.model.c.agA().set(102408, Boolean.FALSE);
       }
       AppMethodBeat.o(26352);
       return;
@@ -265,7 +265,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,17 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.ak;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class a
 {
-  public static boolean Rv(int paramInt)
+  public static boolean TE(int paramInt)
   {
     AppMethodBeat.i(69858);
-    g.afC();
-    if ((((Integer)g.afB().afk().get(ae.a.Fjq, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
+    g.agS();
+    if ((((Integer)g.agR().agA().get(ah.a.GHf, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
     {
       AppMethodBeat.o(69858);
       return true;
@@ -26,7 +26,7 @@ public final class a
     return false;
   }
   
-  public static boolean ebg()
+  public static boolean eqC()
   {
     AppMethodBeat.i(69859);
     com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
@@ -36,13 +36,13 @@ public final class a
     if (locala == null)
     {
       bool = true;
-      ad.i("MicroMsg.WalletUtil", bool);
+      ac.i("MicroMsg.WalletUtil", bool);
       if (locala != null) {
-        ad.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locala.ctS());
+        ac.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locala.cHe());
       }
-      s.dZT();
-      localObject = s.dZU();
-      localak = ((am)localObject).ecN();
+      s.epp();
+      localObject = s.epq();
+      localak = ((am)localObject).esi();
       localStringBuilder = new StringBuilder("config==null?");
       if (localak != null) {
         break label212;
@@ -51,12 +51,12 @@ public final class a
     label212:
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.WalletUtil", bool);
+      ac.i("MicroMsg.WalletUtil", bool);
       if (localak != null) {
-        ad.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localak.ecu());
+        ac.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localak.erQ());
       }
-      ad.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((am)localObject).ecF());
-      if ((locala == null) || (!locala.ctS()) || (localak == null) || (!localak.ecu()) || (!((am)localObject).ecF())) {
+      ac.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((am)localObject).esa());
+      if ((locala == null) || (!locala.cHe()) || (localak == null) || (!localak.erQ()) || (!((am)localObject).esa())) {
         break label217;
       }
       AppMethodBeat.o(69859);
@@ -69,22 +69,22 @@ public final class a
     return false;
   }
   
-  public static boolean ebh()
+  public static boolean eqD()
   {
     AppMethodBeat.i(69860);
     com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
     if (locala == null)
     {
-      ad.w("MicroMsg.WalletUtil", "no finger mgr!");
+      ac.w("MicroMsg.WalletUtil", "no finger mgr!");
       AppMethodBeat.o(69860);
       return false;
     }
-    s.dZT();
-    am localam = s.dZU();
-    ak localak = localam.ecN();
-    h.vKh.dB(916, 0);
-    ad.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locala.cua()), Boolean.valueOf(localak.ecu()), Boolean.valueOf(localam.ecF()) });
-    if ((locala.cua()) && (localak.ecu()) && (localam.ecF()))
+    s.epp();
+    am localam = s.epq();
+    ak localak = localam.esi();
+    h.wUl.dB(916, 0);
+    ac.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locala.cHm()), Boolean.valueOf(localak.erQ()), Boolean.valueOf(localam.esa()) });
+    if ((locala.cHm()) && (localak.erQ()) && (localam.esa()))
     {
       AppMethodBeat.o(69860);
       return true;
@@ -95,7 +95,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.b.a
  * JD-Core Version:    0.7.0.1
  */

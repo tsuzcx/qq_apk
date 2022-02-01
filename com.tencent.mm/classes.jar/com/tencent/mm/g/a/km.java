@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.HashMap;
 
 public final class km
   extends b
 {
-  public a doT;
-  public b doU;
+  public a dmi;
   
   public km()
   {
@@ -16,29 +16,22 @@ public final class km
   
   private km(byte paramByte)
   {
-    AppMethodBeat.i(89748);
-    this.doT = new a();
-    this.doU = new b();
-    this.ESR = false;
+    AppMethodBeat.i(128846);
+    this.dmi = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89748);
+    AppMethodBeat.o(128846);
   }
   
   public static final class a
   {
-    public int diR = 0;
-    public String doV;
-    public int doW = 0;
-  }
-  
-  public static final class b
-  {
-    public boolean dew = false;
+    public HashMap dmj;
+    public String key;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.km
  * JD-Core Version:    0.7.0.1
  */

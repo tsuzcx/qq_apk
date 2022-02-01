@@ -1,37 +1,24 @@
 package rx.internal.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
 import rx.e;
 
 public final class c<T>
 {
-  private static final c KoV;
-  private static final Object KoW;
-  private static final Object KoX;
+  private static final c McE;
+  private static final Object McF;
+  private static final Object McG;
   
   static
   {
     AppMethodBeat.i(90234);
-    KoV = new c();
-    KoW = new Serializable()
-    {
-      public final String toString()
-      {
-        return "Notification=>Completed";
-      }
-    };
-    KoX = new Serializable()
-    {
-      public final String toString()
-      {
-        return "Notification=>NULL";
-      }
-    };
+    McE = new c();
+    McF = new c.1();
+    McG = new c.2();
     AppMethodBeat.o(90234);
   }
   
-  public static Object K(Throwable paramThrowable)
+  public static Object L(Throwable paramThrowable)
   {
     AppMethodBeat.i(90232);
     paramThrowable = new c.a(paramThrowable);
@@ -42,15 +29,15 @@ public final class c<T>
   public static boolean a(e<? super T> parame, Object paramObject)
   {
     AppMethodBeat.i(90233);
-    if (paramObject == KoW)
+    if (paramObject == McF)
     {
-      parame.fNs();
+      parame.ggi();
       AppMethodBeat.o(90233);
       return true;
     }
-    if (paramObject == KoX)
+    if (paramObject == McG)
     {
-      parame.fV(null);
+      parame.gd(null);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -62,7 +49,7 @@ public final class c<T>
         AppMethodBeat.o(90233);
         return true;
       }
-      parame.fV(paramObject);
+      parame.gd(paramObject);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -71,37 +58,37 @@ public final class c<T>
     throw parame;
   }
   
-  public static <T> c<T> fNC()
-  {
-    return KoV;
-  }
-  
-  public static Object fND()
-  {
-    return KoW;
-  }
-  
-  public static Object fX(T paramT)
-  {
-    Object localObject = paramT;
-    if (paramT == null) {
-      localObject = KoX;
-    }
-    return localObject;
-  }
-  
   public static T getValue(Object paramObject)
   {
     Object localObject = paramObject;
-    if (paramObject == KoX) {
+    if (paramObject == McG) {
       localObject = null;
     }
     return localObject;
   }
+  
+  public static Object gf(T paramT)
+  {
+    Object localObject = paramT;
+    if (paramT == null) {
+      localObject = McG;
+    }
+    return localObject;
+  }
+  
+  public static <T> c<T> ggs()
+  {
+    return McE;
+  }
+  
+  public static Object ggt()
+  {
+    return McF;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.a.c
  * JD-Core Version:    0.7.0.1
  */

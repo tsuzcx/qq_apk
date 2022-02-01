@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.game.d.bo;
 import com.tencent.mm.plugin.game.d.f;
 import com.tencent.mm.plugin.game.f.d;
@@ -12,29 +12,29 @@ public final class y
   extends x
 {
   private int mType;
-  public bo rXL;
-  public LinkedList<c> rXM;
-  private int rXN;
+  public bo tfD;
+  public LinkedList<c> tfE;
+  private int tfF;
   
   public y(a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41524);
     this.mType = 0;
-    this.rXN = 0;
+    this.tfF = 0;
     if (parama == null)
     {
-      this.rXL = new bo();
+      this.tfD = new bo();
       AppMethodBeat.o(41524);
       return;
     }
-    this.rXL = ((bo)parama);
+    this.tfD = ((bo)parama);
     this.mType = paramInt1;
-    this.rXN = paramInt2;
+    this.tfF = paramInt2;
     parama = new LinkedList();
-    if (this.rXL.scH != null)
+    if (this.tfD.tkB != null)
     {
-      paramInt1 = this.rXN;
-      Iterator localIterator = this.rXL.scH.iterator();
+      paramInt1 = this.tfF;
+      Iterator localIterator = this.tfD.tkB.iterator();
       paramInt1 += 1;
       while (localIterator.hasNext())
       {
@@ -49,13 +49,13 @@ public final class y
             parama.add(localc);
             break;
             localc.scene = 16;
-            localc.dvS = 1601;
+            localc.dtF = 1601;
             paramInt2 = paramInt1 + 1;
             localc.position = paramInt1;
             paramInt1 = paramInt2;
             continue;
             localc.scene = 15;
-            localc.dvS = 1501;
+            localc.dtF = 1501;
             paramInt2 = paramInt1 + 1;
             localc.position = paramInt1;
             paramInt1 = paramInt2;
@@ -63,14 +63,14 @@ public final class y
         }
       }
     }
-    this.rXM = parama;
-    d.av(this.rXM);
+    this.tfE = parama;
+    d.aC(this.tfE);
     AppMethodBeat.o(41524);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.y
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ import java.lang.ref.WeakReference;
 public final class ViewStubCompat
   extends View
 {
-  private int axq = 0;
-  private int axr;
-  private WeakReference<View> axs;
-  private a axt;
+  private int ayk = 0;
+  private int ayl;
+  private WeakReference<View> aym;
+  private a ayn;
   private LayoutInflater mInflater;
   
   public ViewStubCompat(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,8 +30,8 @@ public final class ViewStubCompat
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ViewStubCompat, paramInt, 0);
-    this.axr = paramContext.getResourceId(2, -1);
-    this.axq = paramContext.getResourceId(1, 0);
+    this.ayl = paramContext.getResourceId(2, -1);
+    this.ayk = paramContext.getResourceId(1, 0);
     setId(paramContext.getResourceId(0, -1));
     paramContext.recycle();
     setVisibility(8);
@@ -45,7 +45,7 @@ public final class ViewStubCompat
   
   public final int getInflatedId()
   {
-    return this.axr;
+    return this.ayl;
   }
   
   public final LayoutInflater getLayoutInflater()
@@ -55,7 +55,7 @@ public final class ViewStubCompat
   
   public final int getLayoutResource()
   {
-    return this.axq;
+    return this.ayk;
   }
   
   public final View inflate()
@@ -63,16 +63,16 @@ public final class ViewStubCompat
     Object localObject = getParent();
     if ((localObject != null) && ((localObject instanceof ViewGroup)))
     {
-      if (this.axq != 0)
+      if (this.ayk != 0)
       {
         ViewGroup localViewGroup = (ViewGroup)localObject;
         int i;
         if (this.mInflater != null)
         {
           localObject = this.mInflater;
-          localObject = ((LayoutInflater)localObject).inflate(this.axq, localViewGroup, false);
-          if (this.axr != -1) {
-            ((View)localObject).setId(this.axr);
+          localObject = ((LayoutInflater)localObject).inflate(this.ayk, localViewGroup, false);
+          if (this.ayl != -1) {
+            ((View)localObject).setId(this.ayl);
           }
           i = localViewGroup.indexOfChild(this);
           localViewGroup.removeViewInLayout(this);
@@ -84,7 +84,7 @@ public final class ViewStubCompat
         }
         for (;;)
         {
-          this.axs = new WeakReference(localObject);
+          this.aym = new WeakReference(localObject);
           return localObject;
           localObject = LayoutInflater.from(getContext());
           break;
@@ -104,7 +104,7 @@ public final class ViewStubCompat
   
   public final void setInflatedId(int paramInt)
   {
-    this.axr = paramInt;
+    this.ayl = paramInt;
   }
   
   public final void setLayoutInflater(LayoutInflater paramLayoutInflater)
@@ -114,19 +114,19 @@ public final class ViewStubCompat
   
   public final void setLayoutResource(int paramInt)
   {
-    this.axq = paramInt;
+    this.ayk = paramInt;
   }
   
   public final void setOnInflateListener(a parama)
   {
-    this.axt = parama;
+    this.ayn = parama;
   }
   
   public final void setVisibility(int paramInt)
   {
-    if (this.axs != null)
+    if (this.aym != null)
     {
-      View localView = (View)this.axs.get();
+      View localView = (View)this.aym.get();
       if (localView != null) {
         localView.setVisibility(paramInt);
       }

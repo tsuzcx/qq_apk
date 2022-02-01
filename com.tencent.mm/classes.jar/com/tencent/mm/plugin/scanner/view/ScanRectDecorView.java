@@ -21,12 +21,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScanRectDecorView
   extends FrameLayout
 {
-  private ImageView qgw;
-  private ValueAnimator qgz;
-  private RectView wbU;
-  private Rect wbV;
-  private int wbW;
-  private int wbX;
+  private ImageView qOY;
+  private ValueAnimator qPb;
+  private RectView xnb;
+  private Rect xnc;
+  private int xnd;
+  private int xne;
   
   public ScanRectDecorView(Context paramContext)
   {
@@ -52,37 +52,37 @@ public class ScanRectDecorView
     AppMethodBeat.o(91116);
   }
   
-  private void dnt()
+  private void dBB()
   {
     AppMethodBeat.i(91119);
     Point localPoint = new Point();
     ((Activity)getContext()).getWindowManager().getDefaultDisplay().getSize(localPoint);
-    int i = localPoint.x / 2 - this.wbW / 2;
-    int j = localPoint.y / 2 - this.wbX / 2;
-    this.wbV = new Rect(i, j, this.wbW + i, this.wbX + j);
-    this.wbU.setRect(this.wbV);
+    int i = localPoint.x / 2 - this.xnd / 2;
+    int j = localPoint.y / 2 - this.xne / 2;
+    this.xnc = new Rect(i, j, this.xnd + i, this.xne + j);
+    this.xnb.setRect(this.xnc);
     AppMethodBeat.o(91119);
   }
   
   private void init()
   {
     AppMethodBeat.i(91117);
-    this.wbW = getContext().getResources().getDimensionPixelSize(2131166761);
-    this.wbX = getContext().getResources().getDimensionPixelSize(2131166760);
-    this.wbU = new RectView(getContext());
-    addView(this.wbU, new FrameLayout.LayoutParams(-1, -1));
-    dnt();
+    this.xnd = getContext().getResources().getDimensionPixelSize(2131166761);
+    this.xne = getContext().getResources().getDimensionPixelSize(2131166760);
+    this.xnb = new RectView(getContext());
+    addView(this.xnb, new FrameLayout.LayoutParams(-1, -1));
+    dBB();
     setWillNotDraw(false);
-    this.qgw = new ImageView(getContext());
-    addView(this.qgw, new FrameLayout.LayoutParams(this.wbW, -2));
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qgw.getLayoutParams();
+    this.qOY = new ImageView(getContext());
+    addView(this.qOY, new FrameLayout.LayoutParams(this.xnd, -2));
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qOY.getLayoutParams();
     localLayoutParams.gravity = 1;
-    this.qgw.setLayoutParams(localLayoutParams);
-    this.qgw.setBackgroundResource(2131233727);
-    this.qgw.setVisibility(8);
-    this.qgz = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(2600L);
-    this.qgz.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.qgz.addListener(new AnimatorListenerAdapter()
+    this.qOY.setLayoutParams(localLayoutParams);
+    this.qOY.setBackgroundResource(2131233727);
+    this.qOY.setVisibility(8);
+    this.qPb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(2600L);
+    this.qPb.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.qPb.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -101,7 +101,7 @@ public class ScanRectDecorView
         AppMethodBeat.o(91112);
       }
     });
-    this.qgz.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.qPb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -114,53 +114,53 @@ public class ScanRectDecorView
         AppMethodBeat.o(91113);
       }
     });
-    this.qgz.setRepeatMode(1);
-    this.qgz.setRepeatCount(-1);
+    this.qPb.setRepeatMode(1);
+    this.qPb.setRepeatCount(-1);
     AppMethodBeat.o(91117);
   }
   
-  public final void cjm()
+  public final void cqT()
   {
     AppMethodBeat.i(91122);
-    if (!this.qgz.isStarted())
+    if (!this.qPb.isStarted())
     {
-      this.qgw.setVisibility(0);
-      this.qgz.start();
+      this.qOY.setVisibility(0);
+      this.qPb.start();
     }
     AppMethodBeat.o(91122);
   }
   
-  public final void cjn()
+  public final void cqU()
   {
     AppMethodBeat.i(91123);
-    this.qgz.cancel();
-    this.qgw.setVisibility(8);
+    this.qPb.cancel();
+    this.qOY.setVisibility(8);
     AppMethodBeat.o(91123);
-  }
-  
-  public final void gT(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(91118);
-    this.wbW = paramInt1;
-    this.wbX = paramInt2;
-    dnt();
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qgw.getLayoutParams();
-    localLayoutParams.width = paramInt1;
-    this.qgw.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(91118);
   }
   
   public Rect getDecorRect()
   {
-    return this.wbV;
+    return this.xnc;
+  }
+  
+  public final void hc(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(91118);
+    this.xnd = paramInt1;
+    this.xne = paramInt2;
+    dBB();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qOY.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    this.qOY.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(91118);
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(91120);
     super.onDetachedFromWindow();
-    if (this.qgz != null) {
-      this.qgz.cancel();
+    if (this.qPb != null) {
+      this.qPb.cancel();
     }
     AppMethodBeat.o(91120);
   }
@@ -170,18 +170,18 @@ public class ScanRectDecorView
     AppMethodBeat.i(91121);
     if (paramRect != null)
     {
-      this.wbW = paramRect.width();
-      this.wbX = paramRect.height();
-      this.wbV = new Rect(paramRect);
+      this.xnd = paramRect.width();
+      this.xne = paramRect.height();
+      this.xnc = new Rect(paramRect);
     }
-    this.wbU.setRect(this.wbV);
-    this.wbU.postInvalidate();
+    this.xnb.setRect(this.xnc);
+    this.xnb.postInvalidate();
     AppMethodBeat.o(91121);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.ScanRectDecorView
  * JD-Core Version:    0.7.0.1
  */

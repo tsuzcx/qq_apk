@@ -6,16 +6,16 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 
 abstract class c<T>
 {
-  final int bDg;
-  final TaskCompletionSource<T> bDh = new TaskCompletionSource();
-  final Bundle bDi;
+  final int bAO;
+  final TaskCompletionSource<T> bAP = new TaskCompletionSource();
+  final Bundle bAQ;
   final int what;
   
   c(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.bDg = paramInt1;
+    this.bAO = paramInt1;
     this.what = paramInt2;
-    this.bDi = paramBundle;
+    this.bAQ = paramBundle;
   }
   
   final void a(d paramd)
@@ -26,10 +26,10 @@ abstract class c<T>
       String str2 = String.valueOf(paramd);
       new StringBuilder(String.valueOf(str1).length() + 14 + String.valueOf(str2).length()).append("Failing ").append(str1).append(" with ").append(str2);
     }
-    this.bDh.setException(paramd);
+    this.bAP.setException(paramd);
   }
   
-  final void m(T paramT)
+  final void o(T paramT)
   {
     if (Log.isLoggable("MessengerIpcClient", 3))
     {
@@ -37,13 +37,13 @@ abstract class c<T>
       String str2 = String.valueOf(paramT);
       new StringBuilder(String.valueOf(str1).length() + 16 + String.valueOf(str2).length()).append("Finishing ").append(str1).append(" with ").append(str2);
     }
-    this.bDh.setResult(paramT);
+    this.bAP.setResult(paramT);
   }
   
   public String toString()
   {
     int i = this.what;
-    int j = this.bDg;
+    int j = this.bAO;
     boolean bool = zzw();
     return 55 + "Request { what=" + i + " id=" + j + " oneWay=" + bool + "}";
   }

@@ -10,81 +10,73 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.k;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.l;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.b.r;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.sdk.platformtools.m;
 import java.io.IOException;
 
 public final class c
   implements e
 {
-  private long bwt;
-  private final boolean bxP;
-  private final boolean bxQ;
-  private long bxU;
-  private long bxY;
+  private long bus;
+  private long bvD;
+  private long bvH;
+  private final boolean bvy;
+  private final boolean bvz;
   private int flags;
-  private long iOo;
+  private long jox;
+  private final a kPL;
+  private String kPQ;
+  private long kPR;
+  private int kPS;
+  private long kPT;
+  private final e kPU;
+  private final e kPV;
+  public final e kPW;
+  private final a kPX;
+  private e kPY;
+  private f kPZ;
+  private boolean kQa;
+  private boolean kQb;
   private String key;
-  private long koA;
-  private final e koB;
-  private final e koC;
-  public final e koD;
-  private final a koE;
-  private e koF;
-  private f koG;
-  private boolean koH;
-  private boolean koI;
-  private final a kos;
-  private String kox;
-  private long koy;
-  private int koz;
   private int priority;
   private Uri uri;
   private String uuid;
   
   public c(a parama, e parame1, e parame2, d paramd, a parama1)
   {
-    AppMethodBeat.i(193814);
-    this.koy = 0L;
-    this.kox = "";
-    this.kos = parama;
-    this.koB = parame2;
-    this.bxP = false;
-    this.bxQ = true;
-    this.koD = parame1;
+    AppMethodBeat.i(194161);
+    this.kPR = 0L;
+    this.kPQ = "";
+    this.kPL = parama;
+    this.kPU = parame2;
+    this.bvy = false;
+    this.bvz = true;
+    this.kPW = parame1;
     if (paramd != null) {}
-    for (this.koC = new r(parame1, paramd);; this.koC = null)
+    for (this.kPV = new r(parame1, paramd);; this.kPV = null)
     {
-      this.koE = parama1;
-      AppMethodBeat.o(193814);
+      this.kPX = parama1;
+      AppMethodBeat.o(194161);
       return;
     }
   }
   
-  private String EE()
-  {
-    AppMethodBeat.i(193824);
-    String str = this.kox + "CacheDataSource";
-    AppMethodBeat.o(193824);
-    return str;
-  }
-  
   private void b(IOException paramIOException)
   {
-    AppMethodBeat.i(193819);
-    h.log(3, EE(), "handleBeforeThrow " + paramIOException + ", ignoreCacheOnError=" + this.bxQ + ", currentDataSource=" + this.koF);
-    if ((this.bxQ) && (this.koF == this.koB))
+    AppMethodBeat.i(194166);
+    h.log(3, getLogTag(), "handleBeforeThrow " + paramIOException + ", ignoreCacheOnError=" + this.bvz + ", currentDataSource=" + this.kPY);
+    if ((this.bvz) && (this.kPY == this.kPU))
     {
-      h.log(4, EE(), "handleBeforeThrow currentDataSource=" + this.koF + ", exception=" + paramIOException);
-      this.koH = true;
+      h.log(4, getLogTag(), "handleBeforeThrow currentDataSource=" + this.kPY + ", exception=" + paramIOException);
+      this.kQa = true;
     }
-    AppMethodBeat.o(193819);
+    AppMethodBeat.o(194166);
   }
   
-  private long bcV()
+  private long bjQ()
   {
     int i = 0;
-    AppMethodBeat.i(193817);
+    AppMethodBeat.i(194164);
     for (;;)
     {
       long l1;
@@ -92,126 +84,134 @@ public final class c
       try
       {
         Object localObject1;
-        if (this.koH)
+        if (this.kQa)
         {
           localObject1 = null;
           if (localObject1 == null)
           {
-            this.koF = this.koD;
-            localObject1 = new g(this.uri, this.bxU, this.bxU, this.bwt, this.key, this.flags, this.uuid, this.priority);
-            l1 = this.koF.a((g)localObject1);
-            if (((this.koF instanceof l)) && (this.koF.aQu() != -1L) && (((g)localObject1).position >= this.koF.aQu() - 1L)) {
-              h.log(6, EE(), "read position out of bound");
+            this.kPY = this.kPW;
+            localObject1 = new g(this.uri, this.bvD, this.bvD, this.bus, this.key, this.flags, this.uuid, this.priority);
+            l1 = this.kPY.a((g)localObject1);
+            if (((this.kPY instanceof l)) && (this.kPY.aXm() != -1L) && (((g)localObject1).position >= this.kPY.aXm() - 1L)) {
+              h.log(6, getLogTag(), "read position out of bound");
             }
-            if ((this.bwt == -1L) && (this.koF.aQu() != -1L))
+            if ((this.bus == -1L) && (this.kPY.aXm() != -1L))
             {
-              this.bwt = (this.koF.aQu() - this.bxU);
-              h.log(4, EE(), "init bytesRemaining " + this.bwt + ", readPosition=" + this.bxU + ", totalLength=" + this.koF.aQu());
+              this.bus = (this.kPY.aXm() - this.bvD);
+              h.log(4, getLogTag(), "init bytesRemaining " + this.bus + ", readPosition=" + this.bvD + ", totalLength=" + this.kPY.aXm());
             }
-            this.bwt = Math.max(0L, Math.min(this.bwt, aQu()));
-            this.koI = false;
-            AppMethodBeat.o(193817);
+            this.bus = Math.max(0L, Math.min(this.bus, aXm()));
+            this.kQb = false;
+            AppMethodBeat.o(194164);
             return l1;
           }
         }
         else
         {
-          if (this.bxP)
+          if (this.bvy)
           {
-            localObject1 = this.kos.I(this.key, this.bxU);
+            localObject1 = this.kPL.J(this.key, this.bvD);
             continue;
           }
-          localObject1 = this.kos.J(this.key, this.bxU);
+          localObject1 = this.kPL.K(this.key, this.bvD);
           continue;
         }
-        if (!((f)localObject1).byc) {
+        if (!((f)localObject1).bvL) {
           break label546;
         }
-        localObject3 = m.a(aj.getContext(), ((f)localObject1).kot);
-        l1 = this.bxU - ((f)localObject1).position;
-        if (this.bwt == -1L)
+        localObject3 = m.a(ai.getContext(), ((f)localObject1).kPM);
+        l1 = this.bvD - ((f)localObject1).position;
+        if (this.bus == -1L)
         {
-          this.bwt = (((f)localObject1).iOo - this.bxU);
-          long l2 = Math.min(((f)localObject1).length - l1, this.bwt);
-          localObject1 = new g((Uri)localObject3, this.bxU, l1, l2, this.key, this.flags, this.uuid, this.priority);
-          localObject3 = this.koB;
-          this.koF = ((e)localObject3);
+          this.bus = (((f)localObject1).jox - this.bvD);
+          long l2 = Math.min(((f)localObject1).length - l1, this.bus);
+          localObject1 = new g((Uri)localObject3, this.bvD, l1, l2, this.key, this.flags, this.uuid, this.priority);
+          localObject3 = this.kPU;
+          this.kPY = ((e)localObject3);
           continue;
         }
-        if (this.bwt <= ((f)localObject2).iOo - this.bxU) {
+        if (this.bus <= ((f)localObject2).jox - this.bvD) {
           continue;
         }
       }
       catch (InterruptedException localInterruptedException)
       {
         localObject2 = new RuntimeException(localInterruptedException);
-        AppMethodBeat.o(193817);
+        AppMethodBeat.o(194164);
         throw ((Throwable)localObject2);
       }
-      h.log(5, EE(), "fix bytesRemaining, max=" + (((f)localObject2).iOo - this.bxU) + " current=" + this.bwt);
-      this.bwt = (((f)localObject2).iOo - this.bxU);
+      h.log(5, getLogTag(), "fix bytesRemaining, max=" + (((f)localObject2).jox - this.bvD) + " current=" + this.bus);
+      this.bus = (((f)localObject2).jox - this.bvD);
       continue;
       label546:
-      this.koG = ((f)localObject2);
+      this.kPZ = ((f)localObject2);
       if (((f)localObject2).length == -1L) {
         i = 1;
       }
       if (i != 0) {
-        l1 = this.bwt;
+        l1 = this.bus;
       }
       for (;;)
       {
-        localObject2 = new g(this.uri, this.bxU, this.bxU, l1, this.key, this.flags, this.uuid, this.priority);
-        if (this.koC == null) {
+        localObject2 = new g(this.uri, this.bvD, this.bvD, l1, this.key, this.flags, this.uuid, this.priority);
+        if (this.kPV == null) {
           break label665;
         }
-        localObject3 = this.koC;
+        localObject3 = this.kPV;
         break;
-        if (this.bwt != -1L) {
-          l1 = Math.min(((f)localObject2).length, this.bwt);
+        if (this.bus != -1L) {
+          l1 = Math.min(((f)localObject2).length, this.bus);
         } else {
           l1 = ((f)localObject2).length;
         }
       }
       label665:
-      Object localObject3 = this.koD;
+      Object localObject3 = this.kPW;
     }
   }
   
-  private void vu()
+  private String getLogTag()
   {
-    AppMethodBeat.i(193818);
-    if (this.koF == null)
+    AppMethodBeat.i(194171);
+    String str = this.kPQ + "CacheDataSource";
+    AppMethodBeat.o(194171);
+    return str;
+  }
+  
+  private void vl()
+  {
+    AppMethodBeat.i(194165);
+    if (this.kPY == null)
     {
-      AppMethodBeat.o(193818);
+      AppMethodBeat.o(194165);
       return;
     }
     try
     {
-      this.koF.close();
-      this.koF = null;
+      this.kPY.close();
+      this.kPY = null;
       return;
     }
     finally
     {
-      if (this.koG != null)
+      if (this.kPZ != null)
       {
-        this.kos.a(this.koG);
-        this.koG = null;
+        this.kPL.a(this.kPZ);
+        this.kPZ = null;
       }
-      AppMethodBeat.o(193818);
+      AppMethodBeat.o(194165);
     }
-    AppMethodBeat.o(193818);
+    AppMethodBeat.o(194165);
   }
   
-  public final void Jk(String paramString)
+  public final void No(String paramString)
   {
-    this.kox = paramString;
+    this.kPQ = paramString;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(193815);
+    AppMethodBeat.i(194162);
     long l1;
     long l2;
     try
@@ -220,198 +220,198 @@ public final class c
       this.flags = paramg.flags;
       this.uuid = paramg.uuid;
       this.key = paramg.key;
-      this.bxU = paramg.position;
-      this.bwt = paramg.length;
+      this.bvD = paramg.position;
+      this.bus = paramg.length;
       this.priority = paramg.priority;
       l1 = System.currentTimeMillis();
-      l2 = bcV();
-      this.iOo = aQu();
-      this.koy = (System.currentTimeMillis() - l1);
-      AppMethodBeat.o(193815);
+      l2 = bjQ();
+      this.jox = aXm();
+      this.kPR = (System.currentTimeMillis() - l1);
+      AppMethodBeat.o(194162);
       return l2;
     }
     catch (IOException paramg)
     {
-      if ((this.koF instanceof k)) {
-        h.log(6, EE(), "open cache error " + paramg.toString());
+      if ((this.kPY instanceof k)) {
+        h.log(6, getLogTag(), "open cache error " + paramg.toString());
       }
       for (;;)
       {
         b(paramg);
-        if (this.koH) {
+        if (this.kQa) {
           break;
         }
-        AppMethodBeat.o(193815);
+        AppMethodBeat.o(194162);
         throw paramg;
-        h.log(6, EE(), "open error " + paramg.toString());
+        h.log(6, getLogTag(), "open error " + paramg.toString());
       }
     }
     try
     {
-      vu();
-      h.log(6, EE(), "open cache error, try reopen without cache");
+      vl();
+      h.log(6, getLogTag(), "open cache error, try reopen without cache");
       l1 = System.currentTimeMillis();
-      l2 = bcV();
-      this.iOo = aQu();
-      this.koy = (System.currentTimeMillis() - l1);
-      AppMethodBeat.o(193815);
+      l2 = bjQ();
+      this.jox = aXm();
+      this.kPR = (System.currentTimeMillis() - l1);
+      AppMethodBeat.o(194162);
       return l2;
     }
     catch (Exception paramg)
     {
       for (;;)
       {
-        h.a(5, EE(), "open, failed on closeCurrentSource, shouldn't be a problem", paramg);
+        h.a(5, getLogTag(), "open, failed on closeCurrentSource, shouldn't be a problem", paramg);
       }
     }
   }
   
-  public final long aQu()
+  public final long aXm()
   {
-    AppMethodBeat.i(193823);
-    if (this.koF == null)
+    AppMethodBeat.i(194170);
+    if (this.kPY == null)
     {
-      AppMethodBeat.o(193823);
+      AppMethodBeat.o(194170);
       return -1L;
     }
-    if ((this.koF == this.koB) && (this.kos != null))
+    if ((this.kPY == this.kPU) && (this.kPL != null))
     {
-      l = this.kos.Jh(this.key);
-      AppMethodBeat.o(193823);
+      l = this.kPL.Nl(this.key);
+      AppMethodBeat.o(194170);
       return l;
     }
-    long l = this.koF.aQu();
-    AppMethodBeat.o(193823);
+    long l = this.kPY.aXm();
+    AppMethodBeat.o(194170);
     return l;
   }
   
   public final long available()
   {
-    AppMethodBeat.i(193820);
-    if (this.koF == null)
+    AppMethodBeat.i(194167);
+    if (this.kPY == null)
     {
-      AppMethodBeat.o(193820);
+      AppMethodBeat.o(194167);
       return 0L;
     }
-    long l = this.koF.available();
-    AppMethodBeat.o(193820);
+    long l = this.kPY.available();
+    AppMethodBeat.o(194167);
     return l;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c bcW()
+  public final com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c bjR()
   {
-    AppMethodBeat.i(193822);
-    if (this.koF == null)
+    AppMethodBeat.i(194169);
+    if (this.kPY == null)
     {
-      localc = com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c.kpv;
-      AppMethodBeat.o(193822);
+      localc = com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c.kQO;
+      AppMethodBeat.o(194169);
       return localc;
     }
-    if ((this.koF == this.koB) && (this.kos != null))
+    if ((this.kPY == this.kPU) && (this.kPL != null))
     {
-      localc = this.kos.Ji(this.key);
-      AppMethodBeat.o(193822);
+      localc = this.kPL.Nm(this.key);
+      AppMethodBeat.o(194169);
       return localc;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c localc = this.koF.bcW();
-    AppMethodBeat.o(193822);
+    com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c localc = this.kPY.bjR();
+    AppMethodBeat.o(194169);
     return localc;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(193821);
+    AppMethodBeat.i(194168);
     try
     {
-      vu();
-      AppMethodBeat.o(193821);
+      vl();
+      AppMethodBeat.o(194168);
       return;
     }
     catch (IOException localIOException)
     {
-      if (!(this.koF instanceof k)) {
+      if (!(this.kPY instanceof k)) {
         break label70;
       }
     }
-    h.log(6, EE(), "close cache error " + localIOException.toString());
+    h.log(6, getLogTag(), "close cache error " + localIOException.toString());
     for (;;)
     {
       b(localIOException);
-      AppMethodBeat.o(193821);
+      AppMethodBeat.o(194168);
       throw localIOException;
       label70:
-      h.log(6, EE(), "close error " + localIOException.toString());
+      h.log(6, getLogTag(), "close error " + localIOException.toString());
     }
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193816);
+    AppMethodBeat.i(194163);
     try
     {
-      if ((!this.koI) && ((this.koF instanceof k)) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().cxf)) {
-        h.log(4, EE(), "read from cache " + ((k)this.koF).getUri() + ", fileSize=" + this.koF.available());
+      if ((!this.kQb) && ((this.kPY instanceof k)) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bjM().cuo)) {
+        h.log(4, getLogTag(), "read from cache " + ((k)this.kPY).getUri() + ", fileSize=" + this.kPY.available());
       }
       long l = System.currentTimeMillis();
-      int i = this.koF.read(paramArrayOfByte, paramInt1, paramInt2);
+      int i = this.kPY.read(paramArrayOfByte, paramInt1, paramInt2);
       l = System.currentTimeMillis() - l;
-      if (!this.koI)
+      if (!this.kQb)
       {
-        if ((this.koF != this.koB) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kop != null) && (this.priority == 90) && (URLUtil.isNetworkUrl(this.uri.toString())) && (this.koE != null)) {
-          this.koE.b(this.uuid, this.koy, this.koy, l);
+        if ((this.kPY != this.kPU) && (com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bjM().kPI != null) && (this.priority == 90) && (URLUtil.isNetworkUrl(this.uri.toString())) && (this.kPX != null)) {
+          this.kPX.b(this.uuid, this.kPR, this.kPR, l);
         }
-        this.koI = true;
+        this.kQb = true;
       }
       if (i >= 0)
       {
-        if (this.koF == this.koB) {
-          this.bxY += i;
+        if (this.kPY == this.kPU) {
+          this.bvH += i;
         }
         for (;;)
         {
-          this.bxU += i;
-          if (this.bwt != -1L) {
-            this.bwt -= i;
+          this.bvD += i;
+          if (this.bus != -1L) {
+            this.bus -= i;
           }
-          AppMethodBeat.o(193816);
+          AppMethodBeat.o(194163);
           return i;
-          this.koz += i;
-          this.koA += l;
+          this.kPS += i;
+          this.kPT += l;
         }
-        h.log(6, EE(), "read cache error " + paramArrayOfByte.toString());
+        h.log(6, getLogTag(), "read cache error " + paramArrayOfByte.toString());
       }
     }
     catch (IOException paramArrayOfByte)
     {
-      if (!(this.koF instanceof k)) {}
+      if (!(this.kPY instanceof k)) {}
     }
     for (;;)
     {
       b(paramArrayOfByte);
-      AppMethodBeat.o(193816);
+      AppMethodBeat.o(194163);
       throw paramArrayOfByte;
-      if (this.koE != null)
+      if (this.kPX != null)
       {
         if (this.priority == 90) {
-          this.koE.a(this.uuid, this.koz, this.koA, this.iOo, this.bxY);
+          this.kPX.a(this.uuid, this.kPS, this.kPT, this.jox, this.bvH);
         }
-        this.koz = 0;
-        this.koA = 0L;
-        if ((this.koF == this.koB) && (this.bxY > 0L))
+        this.kPS = 0;
+        this.kPT = 0L;
+        if ((this.kPY == this.kPU) && (this.bvH > 0L))
         {
-          this.koE.m(this.kos.vr(), this.bxY);
-          this.bxY = 0L;
+          this.kPX.k(this.kPL.vi(), this.bvH);
+          this.bvH = 0L;
         }
       }
-      vu();
-      if (this.bwt <= 0L) {
+      vl();
+      if (this.bus <= 0L) {
         break;
       }
-      bcV();
+      bjQ();
       paramInt1 = read(paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(193816);
+      AppMethodBeat.o(194163);
       return paramInt1;
-      h.log(6, EE(), "read error " + paramArrayOfByte.toString());
+      h.log(6, getLogTag(), "read error " + paramArrayOfByte.toString());
     }
   }
   
@@ -421,7 +421,7 @@ public final class c
     
     public abstract void b(String paramString, long paramLong1, long paramLong2, long paramLong3);
     
-    public abstract void m(long paramLong1, long paramLong2);
+    public abstract void k(long paramLong1, long paramLong2);
   }
 }
 

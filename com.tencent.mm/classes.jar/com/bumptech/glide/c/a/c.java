@@ -7,7 +7,7 @@ import java.io.OutputStream;
 public final class c
   extends OutputStream
 {
-  private b azE;
+  private b aAy;
   private byte[] buffer;
   private int index;
   private final OutputStream out;
@@ -21,7 +21,7 @@ public final class c
   {
     AppMethodBeat.i(76865);
     this.out = paramOutputStream;
-    this.azE = paramb;
+    this.aAy = paramb;
     this.buffer = ((byte[])paramb.a(65536, [B.class));
     AppMethodBeat.o(76865);
   }
@@ -37,7 +37,7 @@ public final class c
     AppMethodBeat.o(76870);
   }
   
-  private void nM()
+  private void nW()
   {
     AppMethodBeat.i(76871);
     if (this.index == this.buffer.length) {
@@ -55,7 +55,7 @@ public final class c
       this.out.close();
       if (this.buffer != null)
       {
-        this.azE.put(this.buffer);
+        this.aAy.put(this.buffer);
         this.buffer = null;
       }
       AppMethodBeat.o(76872);
@@ -83,7 +83,7 @@ public final class c
     int i = this.index;
     this.index = (i + 1);
     arrayOfByte[i] = ((byte)paramInt);
-    nM();
+    nW();
     AppMethodBeat.o(76866);
   }
   
@@ -113,7 +113,7 @@ public final class c
       System.arraycopy(paramArrayOfByte, j, this.buffer, this.index, k);
       this.index += k;
       j = i + k;
-      nM();
+      nW();
       i = j;
     } while (j < paramInt2);
     AppMethodBeat.o(76868);
@@ -121,7 +121,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a.c
  * JD-Core Version:    0.7.0.1
  */

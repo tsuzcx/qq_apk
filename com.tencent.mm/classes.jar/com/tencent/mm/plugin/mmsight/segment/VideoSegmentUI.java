@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.Surface;
 import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
@@ -21,9 +23,9 @@ import com.tencent.mm.plugin.mmsight.segment.a.a.b;
 import com.tencent.mm.plugin.mmsight.segment.a.a.c;
 import com.tencent.mm.plugin.mmsight.segment.a.a.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import java.io.IOException;
@@ -35,44 +37,44 @@ import java.util.concurrent.TimeUnit;
 public class VideoSegmentUI
   extends MMActivity
 {
-  private CountDownLatch cAs;
-  private com.tencent.mm.remoteservice.d fLo;
-  private ProgressDialog fpP;
-  private int hsU;
+  private CountDownLatch cxB;
+  private com.tencent.mm.remoteservice.d fPa;
+  private ProgressDialog fts;
+  private int hTw;
   private Surface mSurface;
-  private String oLh;
-  private RelativeLayout qiM;
-  private VideoTransPara tCr;
-  private String tHD;
-  private f tHE;
-  private com.tencent.mm.plugin.mmsight.segment.a.c tHF;
-  private boolean tHG;
-  private c tHH;
-  private int tHI;
-  private boolean tHJ;
-  private boolean tHK;
-  private boolean tHL;
-  private c.b tHM;
-  private com.tencent.mm.plugin.mmsight.segment.a.c.a tHN;
-  private a.d tHO;
+  private String poB;
+  private RelativeLayout qRo;
   private String thumbPath;
+  private VideoTransPara uKO;
+  private String uPZ;
+  private f uQa;
+  private com.tencent.mm.plugin.mmsight.segment.a.c uQb;
+  private boolean uQc;
+  private c uQd;
+  private int uQe;
+  private boolean uQf;
+  private boolean uQg;
+  private boolean uQh;
+  private c.b uQi;
+  private com.tencent.mm.plugin.mmsight.segment.a.c.a uQj;
+  private a.d uQk;
   
   public VideoSegmentUI()
   {
     AppMethodBeat.i(94488);
-    this.tHD = null;
-    this.tHG = false;
-    this.cAs = new CountDownLatch(2);
-    this.tHI = 10000;
-    this.fpP = null;
-    this.fLo = new com.tencent.mm.remoteservice.d(this);
-    this.oLh = "";
-    this.tHJ = false;
-    this.tHK = false;
-    this.tHL = false;
-    this.tHM = new c.b()
+    this.uPZ = null;
+    this.uQc = false;
+    this.cxB = new CountDownLatch(2);
+    this.uQe = 10000;
+    this.fts = null;
+    this.fPa = new com.tencent.mm.remoteservice.d(this);
+    this.poB = "";
+    this.uQf = false;
+    this.uQg = false;
+    this.uQh = false;
+    this.uQi = new c.b()
     {
-      public final void M(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void Q(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94463);
         if (VideoSegmentUI.d(VideoSegmentUI.this) == null)
@@ -86,7 +88,7 @@ public class VideoSegmentUI
         AppMethodBeat.o(94463);
       }
       
-      public final void N(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void R(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94464);
         if (VideoSegmentUI.d(VideoSegmentUI.this) == null)
@@ -98,7 +100,7 @@ public class VideoSegmentUI
         AppMethodBeat.o(94464);
       }
       
-      public final void O(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void S(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94465);
         if (VideoSegmentUI.d(VideoSegmentUI.this) == null)
@@ -113,7 +115,7 @@ public class VideoSegmentUI
         AppMethodBeat.o(94465);
       }
       
-      public final void P(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void T(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(94466);
         if ((paramAnonymousFloat2 - paramAnonymousFloat1) * VideoSegmentUI.e(VideoSegmentUI.this) <= VideoSegmentUI.p(VideoSegmentUI.this))
@@ -126,11 +128,11 @@ public class VideoSegmentUI
         AppMethodBeat.o(94466);
       }
     };
-    this.tHN = new com.tencent.mm.plugin.mmsight.segment.a.c.a()
+    this.uQj = new com.tencent.mm.plugin.mmsight.segment.a.c.a()
     {
-      private Runnable tHQ;
+      private Runnable uQm;
       
-      public final void GY(int paramAnonymousInt)
+      public final void IU(int paramAnonymousInt)
       {
         AppMethodBeat.i(94467);
         if (VideoSegmentUI.j(VideoSegmentUI.this) == null)
@@ -138,46 +140,46 @@ public class VideoSegmentUI
           AppMethodBeat.o(94467);
           return;
         }
-        if (this.tHQ != null) {
-          ((View)VideoSegmentUI.j(VideoSegmentUI.this)).removeCallbacks(this.tHQ);
+        if (this.uQm != null) {
+          ((View)VideoSegmentUI.j(VideoSegmentUI.this)).removeCallbacks(this.uQm);
         }
-        this.tHQ = new VideoSegmentUI.c(VideoSegmentUI.j(VideoSegmentUI.this), paramAnonymousInt, VideoSegmentUI.e(VideoSegmentUI.this));
-        ((View)VideoSegmentUI.j(VideoSegmentUI.this)).post(this.tHQ);
+        this.uQm = new VideoSegmentUI.c(VideoSegmentUI.j(VideoSegmentUI.this), paramAnonymousInt, VideoSegmentUI.e(VideoSegmentUI.this));
+        ((View)VideoSegmentUI.j(VideoSegmentUI.this)).post(this.uQm);
         AppMethodBeat.o(94467);
       }
     };
-    this.tHO = new VideoSegmentUI.4(this);
+    this.uQk = new VideoSegmentUI.4(this);
     AppMethodBeat.o(94488);
   }
   
   private void a(boolean paramBoolean, Surface paramSurface)
   {
     AppMethodBeat.i(94491);
-    if (this.tHF != null)
+    if (this.uQb != null)
     {
-      ad.e("MicroMsg.VideoSegmentUI", "initSegmentPlayer not null, you can not init segmentPlayer");
+      ac.e("MicroMsg.VideoSegmentUI", "initSegmentPlayer not null, you can not init segmentPlayer");
       AppMethodBeat.o(94491);
       return;
     }
-    this.tHF = new com.tencent.mm.plugin.mmsight.segment.a.c();
-    this.tHG = false;
-    this.tHF.setDataSource(this.tHD);
-    this.tHF.a(new VideoSegmentUI.9(this));
+    this.uQb = new com.tencent.mm.plugin.mmsight.segment.a.c();
+    this.uQc = false;
+    this.uQb.setDataSource(this.uPZ);
+    this.uQb.a(new VideoSegmentUI.9(this));
     if (paramBoolean) {
-      this.tHF.a(this.tHO);
+      this.uQb.a(this.uQk);
     }
-    this.tHF.setAudioStreamType(3);
-    this.tHF.setLooping(true);
+    this.uQb.setAudioStreamType(3);
+    this.uQb.setLooping(true);
     if (paramSurface != null) {
-      this.tHF.setSurface(paramSurface);
+      this.uQb.setSurface(paramSurface);
     }
-    this.tHF.tHN = this.tHN;
-    this.tHF.a(new a.b()
+    this.uQb.uQj = this.uQj;
+    this.uQb.a(new a.b()
     {
-      public final void dr(Object paramAnonymousObject)
+      public final void ds(Object paramAnonymousObject)
       {
         AppMethodBeat.i(94476);
-        ad.i("MicroMsg.VideoSegmentUI", "MediaPlayer.onPrepared start %s", new Object[] { paramAnonymousObject });
+        ac.i("MicroMsg.VideoSegmentUI", "MediaPlayer.onPrepared start %s", new Object[] { paramAnonymousObject });
         try
         {
           if (VideoSegmentUI.d(VideoSegmentUI.this) != null)
@@ -190,15 +192,15 @@ public class VideoSegmentUI
         }
         catch (Exception paramAnonymousObject)
         {
-          ad.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onPrepared waiting for starting", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onPrepared waiting for starting", new Object[0]);
           AppMethodBeat.o(94476);
         }
       }
     });
-    this.tHF.prepareAsync();
-    this.tHF.a(new a.c()
+    this.uQb.prepareAsync();
+    this.uQb.a(new a.c()
     {
-      public final void ds(Object paramAnonymousObject)
+      public final void dt(Object paramAnonymousObject)
       {
         AppMethodBeat.i(94477);
         try
@@ -211,7 +213,7 @@ public class VideoSegmentUI
         }
         catch (Exception paramAnonymousObject)
         {
-          ad.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onSeekComplete waiting for starting", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VideoSegmentUI", paramAnonymousObject, "hy: exception when onSeekComplete waiting for starting", new Object[0]);
           AppMethodBeat.o(94477);
         }
       }
@@ -227,8 +229,8 @@ public class VideoSegmentUI
   public void initView()
   {
     AppMethodBeat.i(94490);
-    this.tHH = ((c)findViewById(2131304490));
-    this.qiM = ((RelativeLayout)findViewById(2131304239));
+    this.uQd = ((c)findViewById(2131304490));
+    this.qRo = ((RelativeLayout)findViewById(2131304239));
     AppMethodBeat.o(94490);
   }
   
@@ -237,41 +239,41 @@ public class VideoSegmentUI
     AppMethodBeat.i(94489);
     super.onCreate(paramBundle);
     getWindow().addFlags(128);
-    CaptureMMProxy.createProxy(new CaptureMMProxy(this.fLo));
-    this.fLo.connect(new VideoSegmentUI.1(this));
+    CaptureMMProxy.createProxy(new CaptureMMProxy(this.fPa));
+    this.fPa.connect(new VideoSegmentUI.1(this));
     AppMethodBeat.o(94489);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(94494);
-    ad.i("MicroMsg.VideoSegmentUI", "onDestroy");
+    ac.i("MicroMsg.VideoSegmentUI", "onDestroy");
     super.onDestroy();
     getWindow().clearFlags(128);
-    this.fLo.release();
-    if (this.tHH != null) {
-      this.tHH.release();
+    this.fPa.release();
+    if (this.uQd != null) {
+      this.uQd.release();
     }
-    if (this.tHF != null) {
-      this.tHF.release();
+    if (this.uQb != null) {
+      this.uQb.release();
     }
     if (this.mSurface != null) {
       this.mSurface.release();
     }
-    if (this.tHE != null) {
-      this.tHE.release();
+    if (this.uQa != null) {
+      this.uQa.release();
     }
-    j.tEA.aoS();
+    j.uMV.avJ();
     AppMethodBeat.o(94494);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(94493);
-    if (this.tHF != null)
+    if (this.uQb != null)
     {
-      ad.i("MicroMsg.VideoSegmentUI", "onPause pause player");
-      this.tHF.pause();
+      ac.i("MicroMsg.VideoSegmentUI", "onPause pause player");
+      this.uQb.pause();
     }
     super.onPause();
     AppMethodBeat.o(94493);
@@ -280,10 +282,10 @@ public class VideoSegmentUI
   public void onResume()
   {
     AppMethodBeat.i(94492);
-    if ((this.tHF != null) && (this.tHG))
+    if ((this.uQb != null) && (this.uQc))
     {
-      ad.i("MicroMsg.VideoSegmentUI", "onResume start player");
-      this.tHF.start();
+      ac.i("MicroMsg.VideoSegmentUI", "onResume start player");
+      this.uQb.start();
     }
     super.onResume();
     AppMethodBeat.o(94492);
@@ -310,16 +312,16 @@ public class VideoSegmentUI
       }
       for (;;)
       {
-        ad.i("MicroMsg.VideoSegmentUI", "TextureViewCallback create needResume[%b] segmentPlayer is null[%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        ac.i("MicroMsg.VideoSegmentUI", "TextureViewCallback create needResume[%b] segmentPlayer is null[%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
         VideoSegmentUI.b(VideoSegmentUI.this, new Surface(paramSurfaceTexture));
         if ((VideoSegmentUI.d(VideoSegmentUI.this) == null) && (VideoSegmentUI.w(VideoSegmentUI.this))) {
-          ad.i("MicroMsg.VideoSegmentUI", "MediaPlayer resume");
+          ac.i("MicroMsg.VideoSegmentUI", "MediaPlayer resume");
         }
         try
         {
           VideoSegmentUI.a(VideoSegmentUI.this, VideoSegmentUI.u(VideoSegmentUI.this));
           if ((VideoSegmentUI.j(VideoSegmentUI.this) != null) && (VideoSegmentUI.d(VideoSegmentUI.this) != null)) {
-            VideoSegmentUI.d(VideoSegmentUI.this).setLoop((int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).cQt()), (int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).cQu()));
+            VideoSegmentUI.d(VideoSegmentUI.this).setLoop((int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).deb()), (int)(VideoSegmentUI.e(VideoSegmentUI.this) * VideoSegmentUI.j(VideoSegmentUI.this).dec()));
           }
           VideoSegmentUI.a(VideoSegmentUI.this, false);
           VideoSegmentUI.o(VideoSegmentUI.this).countDown();
@@ -331,7 +333,7 @@ public class VideoSegmentUI
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.VideoSegmentUI", paramSurfaceTexture, "ResumeMediaPlayer error %s", new Object[] { paramSurfaceTexture.getMessage() });
+            ac.printErrStackTrace("MicroMsg.VideoSegmentUI", paramSurfaceTexture, "ResumeMediaPlayer error %s", new Object[] { paramSurfaceTexture.getMessage() });
           }
         }
       }
@@ -340,12 +342,12 @@ public class VideoSegmentUI
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
       AppMethodBeat.i(94483);
-      ad.i("MicroMsg.VideoSegmentUI", "TextureViewCallback.surfaceDestroyed %s", new Object[] { bt.eGN() });
+      ac.i("MicroMsg.VideoSegmentUI", "TextureViewCallback.surfaceDestroyed %s", new Object[] { bs.eWi() });
       try
       {
         if (VideoSegmentUI.d(VideoSegmentUI.this) != null)
         {
-          ad.i("MicroMsg.VideoSegmentUI", "TextureViewCallback MediaPlayer pause");
+          ac.i("MicroMsg.VideoSegmentUI", "TextureViewCallback MediaPlayer pause");
           VideoSegmentUI.d(VideoSegmentUI.this).release();
           VideoSegmentUI.v(VideoSegmentUI.this);
           VideoSegmentUI.a(VideoSegmentUI.this, true);
@@ -369,29 +371,29 @@ public class VideoSegmentUI
   static final class c
     implements Runnable
   {
-    private int hsU;
-    private WeakReference<c> lo;
-    private int tIa;
+    private int hTw;
+    private WeakReference<c> mn;
+    private int uQw;
     
     public c(c paramc, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(94484);
-      this.lo = new WeakReference(paramc);
-      this.tIa = paramInt1;
-      this.hsU = paramInt2;
+      this.mn = new WeakReference(paramc);
+      this.uQw = paramInt1;
+      this.hTw = paramInt2;
       AppMethodBeat.o(94484);
     }
     
     public final void run()
     {
       AppMethodBeat.i(94485);
-      c localc = (c)this.lo.get();
+      c localc = (c)this.mn.get();
       if (localc == null)
       {
         AppMethodBeat.o(94485);
         return;
       }
-      localc.setCurrentCursorPosition(this.tIa / this.hsU);
+      localc.setCurrentCursorPosition(this.uQw / this.hTw);
       AppMethodBeat.o(94485);
     }
   }
@@ -417,14 +419,14 @@ public class VideoSegmentUI
               break label336;
             }
             bool2 = true;
-            ad.w("MicroMsg.VideoSegmentUI", "Waiting Prepared error result[%b] needFinish[%b] isFinishing[%b] mSurface is null[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) });
+            ac.w("MicroMsg.VideoSegmentUI", "Waiting Prepared error result[%b] needFinish[%b] isFinishing[%b] mSurface is null[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) });
             VideoSegmentUI.this.finish();
             AppMethodBeat.o(94487);
           }
         }
         catch (InterruptedException localInterruptedException)
         {
-          ad.e("MicroMsg.VideoSegmentUI", "count down latch error %s", new Object[] { localInterruptedException });
+          ac.e("MicroMsg.VideoSegmentUI", "count down latch error %s", new Object[] { localInterruptedException });
           boolean bool1 = false;
           continue;
           if (VideoSegmentUI.d(VideoSegmentUI.this) != null)
@@ -438,22 +440,22 @@ public class VideoSegmentUI
           {
             VideoSegmentUI.a(VideoSegmentUI.this, VideoSegmentUI.u(VideoSegmentUI.this));
             VideoSegmentUI.d(VideoSegmentUI.this).setSurface(VideoSegmentUI.u(VideoSegmentUI.this));
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(94486);
                 if ((VideoSegmentUI.t(VideoSegmentUI.this)) || (VideoSegmentUI.this.isFinishing()) || (VideoSegmentUI.j(VideoSegmentUI.this) == null) || (VideoSegmentUI.d(VideoSegmentUI.this) == null))
                 {
-                  ad.i("MicroMsg.VideoSegmentUI", "waiting end, main thread, activity not valid.");
+                  ac.i("MicroMsg.VideoSegmentUI", "waiting end, main thread, activity not valid.");
                   AppMethodBeat.o(94486);
                   return;
                 }
                 ((View)VideoSegmentUI.j(VideoSegmentUI.this)).setAlpha(0.0F);
                 ((View)VideoSegmentUI.j(VideoSegmentUI.this)).setVisibility(0);
                 ((View)VideoSegmentUI.j(VideoSegmentUI.this)).animate().setDuration(300L).setStartDelay(200L).alpha(1.0F);
-                float f1 = VideoSegmentUI.j(VideoSegmentUI.this).cQt();
-                float f2 = VideoSegmentUI.j(VideoSegmentUI.this).cQu();
+                float f1 = VideoSegmentUI.j(VideoSegmentUI.this).deb();
+                float f2 = VideoSegmentUI.j(VideoSegmentUI.this).dec();
                 if ((f2 - f1) * VideoSegmentUI.e(VideoSegmentUI.this) <= VideoSegmentUI.p(VideoSegmentUI.this)) {
                   VideoSegmentUI.this.enableOptionMenu(true);
                 }
@@ -466,7 +468,7 @@ public class VideoSegmentUI
           }
           catch (IOException localIOException)
           {
-            ad.printErrStackTrace("MicroMsg.VideoSegmentUI", localIOException, "init segmentPlayer second time %s", new Object[] { localIOException.getMessage() });
+            ac.printErrStackTrace("MicroMsg.VideoSegmentUI", localIOException, "init segmentPlayer second time %s", new Object[] { localIOException.getMessage() });
             VideoSegmentUI.this.finish();
             AppMethodBeat.o(94487);
             return;
@@ -474,7 +476,7 @@ public class VideoSegmentUI
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.VideoSegmentUI", localException, "Finished when init", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VideoSegmentUI", localException, "Finished when init", new Object[0]);
           VideoSegmentUI.this.finish();
           AppMethodBeat.o(94487);
           return;

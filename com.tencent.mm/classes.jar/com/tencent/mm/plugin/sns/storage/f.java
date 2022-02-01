@@ -4,14 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
   extends j<e>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  private static final String xiE;
+  private static final String yvs;
   private com.tencent.mm.sdk.e.e db;
   
   static
@@ -19,7 +19,7 @@ public final class f
     AppMethodBeat.i(97443);
     SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "adsnsinfo") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS serverAdSnsNameIndex ON AdSnsInfo ( snsId )", "CREATE INDEX IF NOT EXISTS serverAdSnsTimeHeadIndex ON AdSnsInfo ( head )", "DROP INDEX IF EXISTS serverAdSnsTimeIndex", "DROP INDEX IF EXISTS serverAdSnsTimeSourceTypeIndex", "CREATE INDEX IF NOT EXISTS adsnsMultiIndex1 ON AdSnsInfo ( createTime,snsId,sourceType,type)", "CREATE INDEX IF NOT EXISTS adsnsMultiIndex2 ON AdSnsInfo ( sourceType,type,userName)" };
-    xiE = String.format("select  %s %s,rowid from AdSnsInfo ", new Object[] { "snsId", "createTime" });
+    yvs = String.format("select  %s %s,rowid from AdSnsInfo ", new Object[] { "snsId", "createTime" });
     AppMethodBeat.o(97443);
   }
   
@@ -32,7 +32,7 @@ public final class f
   private int a(e parame)
   {
     AppMethodBeat.i(97439);
-    ad.d("MicroMsg.AdSnsInfoStorage", "SnsInfo Insert");
+    ac.d("MicroMsg.AdSnsInfoStorage", "SnsInfo Insert");
     if (parame == null)
     {
       AppMethodBeat.o(97439);
@@ -40,12 +40,12 @@ public final class f
     }
     parame = parame.convertTo();
     int i = (int)this.db.insert("AdSnsInfo", "", parame);
-    ad.d("MicroMsg.AdSnsInfoStorage", "SnsInfo Insert result".concat(String.valueOf(i)));
+    ac.d("MicroMsg.AdSnsInfoStorage", "SnsInfo Insert result".concat(String.valueOf(i)));
     AppMethodBeat.o(97439);
     return i;
   }
   
-  public final e MZ(int paramInt)
+  public final e Pc(int paramInt)
   {
     AppMethodBeat.i(97435);
     e locale = new e();
@@ -66,13 +66,13 @@ public final class f
   public final boolean a(long paramLong, e parame)
   {
     AppMethodBeat.i(97436);
-    if (sZ(paramLong))
+    if (xC(paramLong))
     {
       boolean bool = b(paramLong, parame);
       AppMethodBeat.o(97436);
       return bool;
     }
-    ad.d("MicroMsg.AdSnsInfoStorage", "added PcId ".concat(String.valueOf(paramLong)));
+    ac.d("MicroMsg.AdSnsInfoStorage", "added PcId ".concat(String.valueOf(paramLong)));
     if (a(parame) != -1)
     {
       AppMethodBeat.o(97436);
@@ -100,7 +100,7 @@ public final class f
   {
     AppMethodBeat.i(97440);
     int i = this.db.delete("AdSnsInfo", "snsId=?", new String[] { String.valueOf(paramLong) });
-    ad.i("MicroMsg.AdSnsInfoStorage", "del msg " + paramLong + " res " + i);
+    ac.i("MicroMsg.AdSnsInfoStorage", "del msg " + paramLong + " res " + i);
     if (i > 0)
     {
       AppMethodBeat.o(97440);
@@ -110,18 +110,18 @@ public final class f
     return false;
   }
   
-  public final Cursor hj(int paramInt1, int paramInt2)
+  public final Cursor hs(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97441);
-    Object localObject = "select *,rowid from AdSnsInfo  where createTime > " + paramInt2 + " and createTime <= " + paramInt1 + " and " + q.xje;
+    Object localObject = "select *,rowid from AdSnsInfo  where createTime > " + paramInt2 + " and createTime <= " + paramInt1 + " and " + q.yvV;
     localObject = (String)localObject + " order by  createTime desc";
-    ad.d("MicroMsg.AdSnsInfoStorage", "getAdInTime ".concat(String.valueOf(localObject)));
+    ac.d("MicroMsg.AdSnsInfoStorage", "getAdInTime ".concat(String.valueOf(localObject)));
     localObject = this.db.a((String)localObject, null, 2);
     AppMethodBeat.o(97441);
     return localObject;
   }
   
-  public final e sY(long paramLong)
+  public final e xB(long paramLong)
   {
     AppMethodBeat.i(97434);
     e locale = new e();
@@ -139,7 +139,7 @@ public final class f
     return null;
   }
   
-  public final boolean sZ(long paramLong)
+  public final boolean xC(long paramLong)
   {
     AppMethodBeat.i(97438);
     Object localObject = "select *,rowid from AdSnsInfo  where AdSnsInfo.snsId=".concat(String.valueOf(paramLong));

@@ -6,7 +6,7 @@ import android.content.Intent;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void H(Context paramContext, Intent paramIntent);
+  public abstract void V(Context paramContext, Intent paramIntent);
 }
 
 

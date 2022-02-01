@@ -5,8 +5,8 @@ import org.json.JSONObject;
 
 public class c
 {
-  public JSONObject cwV;
-  public b cwW;
+  public JSONObject cue;
+  public b cuf;
   public String key;
   public String tag;
   public int type;
@@ -20,14 +20,14 @@ public class c
   
   public c(JSONObject paramJSONObject)
   {
-    this.cwV = paramJSONObject;
+    this.cue = paramJSONObject;
   }
   
   public String toString()
   {
     String str = "";
-    if (this.cwV != null) {
-      str = this.cwV.toString();
+    if (this.cue != null) {
+      str = this.cue.toString();
     }
     return String.format("tag[%s]type[%d];key[%s];content[%s]", new Object[] { this.tag, Integer.valueOf(this.type), this.key, str });
   }

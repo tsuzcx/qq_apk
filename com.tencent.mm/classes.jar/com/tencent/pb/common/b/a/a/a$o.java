@@ -9,56 +9,56 @@ import java.util.Arrays;
 public final class a$o
   extends e
 {
-  private static volatile o[] Ilb;
-  public int Ilc = 0;
-  public int Ild = 0;
-  public byte[] dnS = g.bIZ;
+  private static volatile o[] JMM;
+  public int JMN = 0;
+  public int JMO = 0;
+  public byte[] dlB = g.bGH;
   
   public a$o()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static o[] flr()
+  public static o[] fBI()
   {
-    if (Ilb == null) {}
-    synchronized (c.bIR)
+    if (JMM == null) {}
+    synchronized (c.bGz)
     {
-      if (Ilb == null) {
-        Ilb = new o[0];
+      if (JMM == null) {
+        JMM = new o[0];
       }
-      return Ilb;
+      return JMM;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.Ilc != 0) {
-      paramb.by(1, this.Ilc);
+    if (this.JMN != 0) {
+      paramb.bv(1, this.JMN);
     }
-    if (!Arrays.equals(this.dnS, g.bIZ)) {
-      paramb.b(2, this.dnS);
+    if (!Arrays.equals(this.dlB, g.bGH)) {
+      paramb.b(2, this.dlB);
     }
-    if (this.Ild != 0) {
-      paramb.bz(3, this.Ild);
+    if (this.JMO != 0) {
+      paramb.bw(3, this.JMO);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.Ilc != 0) {
-      i = j + b.bA(1, this.Ilc);
+    if (this.JMN != 0) {
+      i = j + b.bx(1, this.JMN);
     }
     j = i;
-    if (!Arrays.equals(this.dnS, g.bIZ)) {
-      j = i + b.c(2, this.dnS);
+    if (!Arrays.equals(this.dlB, g.bGH)) {
+      j = i + b.c(2, this.dlB);
     }
     i = j;
-    if (this.Ild != 0) {
-      i = j + b.bB(3, this.Ild);
+    if (this.JMO != 0) {
+      i = j + b.by(3, this.JMO);
     }
     return i;
   }

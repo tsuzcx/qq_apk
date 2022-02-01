@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface ae
   extends a
 {
-  public abstract void xe(String paramString);
+  public abstract void Bk(String paramString);
 }
 
 

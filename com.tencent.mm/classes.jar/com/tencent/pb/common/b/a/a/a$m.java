@@ -8,21 +8,21 @@ import java.util.Arrays;
 public final class a$m
   extends e
 {
-  public int IkT = 0;
-  public byte[] IkU = g.bIZ;
-  public a.bc[] IkV = a.bc.flB();
-  public a.ar[] IkW = a.ar.flw();
-  public int IkX = 0;
-  public int IkY = 0;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JME = 0;
+  public byte[] JMF = g.bGH;
+  public a.bc[] JMG = a.bc.fBS();
+  public a.ar[] JMH = a.ar.fBN();
+  public int JMI = 0;
+  public int JMJ = 0;
   public String groupId = "";
-  public int hyp = 0;
-  public int nPB = -1;
-  public int zkT = 0;
-  public long zkU = 0L;
+  public int hYQ = 0;
+  public int osF = -1;
   
   public a$m()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -31,98 +31,98 @@ public final class a$m
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if (this.nPB != -1) {
-      paramb.by(4, this.nPB);
+    if (this.osF != -1) {
+      paramb.bv(4, this.osF);
     }
-    if (this.IkT != 0) {
-      paramb.by(5, this.IkT);
+    if (this.JME != 0) {
+      paramb.bv(5, this.JME);
     }
-    if (!Arrays.equals(this.IkU, g.bIZ)) {
-      paramb.b(6, this.IkU);
+    if (!Arrays.equals(this.JMF, g.bGH)) {
+      paramb.b(6, this.JMF);
     }
     int i;
     Object localObject;
-    if ((this.IkV != null) && (this.IkV.length > 0))
+    if ((this.JMG != null) && (this.JMG.length > 0))
     {
       i = 0;
-      while (i < this.IkV.length)
+      while (i < this.JMG.length)
       {
-        localObject = this.IkV[i];
+        localObject = this.JMG[i];
         if (localObject != null) {
           paramb.a(7, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.IkW != null) && (this.IkW.length > 0))
+    if ((this.JMH != null) && (this.JMH.length > 0))
     {
       i = j;
-      while (i < this.IkW.length)
+      while (i < this.JMH.length)
       {
-        localObject = this.IkW[i];
+        localObject = this.JMH[i];
         if (localObject != null) {
           paramb.a(8, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.IkX != 0) {
-      paramb.by(9, this.IkX);
+    if (this.JMI != 0) {
+      paramb.bv(9, this.JMI);
     }
-    if (this.IkY != 0) {
-      paramb.by(10, this.IkY);
+    if (this.JMJ != 0) {
+      paramb.bv(10, this.JMJ);
     }
-    if (this.hyp != 0) {
-      paramb.by(11, this.hyp);
+    if (this.hYQ != 0) {
+      paramb.bv(11, this.hYQ);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
     int m = 0;
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.nPB != -1) {
-      j = i + b.bA(4, this.nPB);
+    if (this.osF != -1) {
+      j = i + b.bx(4, this.osF);
     }
     int k = j;
-    if (this.IkT != 0) {
-      k = j + b.bA(5, this.IkT);
+    if (this.JME != 0) {
+      k = j + b.bx(5, this.JME);
     }
     i = k;
-    if (!Arrays.equals(this.IkU, g.bIZ)) {
-      i = k + b.c(6, this.IkU);
+    if (!Arrays.equals(this.JMF, g.bGH)) {
+      i = k + b.c(6, this.JMF);
     }
     j = i;
     Object localObject;
-    if (this.IkV != null)
+    if (this.JMG != null)
     {
       j = i;
-      if (this.IkV.length > 0)
+      if (this.JMG.length > 0)
       {
         j = 0;
-        while (j < this.IkV.length)
+        while (j < this.JMG.length)
         {
-          localObject = this.IkV[j];
+          localObject = this.JMG[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(7, (e)localObject);
@@ -134,19 +134,19 @@ public final class a$m
       }
     }
     i = j;
-    if (this.IkW != null)
+    if (this.JMH != null)
     {
       i = j;
-      if (this.IkW.length > 0)
+      if (this.JMH.length > 0)
       {
         k = m;
         for (;;)
         {
           i = j;
-          if (k >= this.IkW.length) {
+          if (k >= this.JMH.length) {
             break;
           }
-          localObject = this.IkW[k];
+          localObject = this.JMH[k];
           i = j;
           if (localObject != null) {
             i = j + b.b(8, (e)localObject);
@@ -157,16 +157,16 @@ public final class a$m
       }
     }
     j = i;
-    if (this.IkX != 0) {
-      j = i + b.bA(9, this.IkX);
+    if (this.JMI != 0) {
+      j = i + b.bx(9, this.JMI);
     }
     i = j;
-    if (this.IkY != 0) {
-      i = j + b.bA(10, this.IkY);
+    if (this.JMJ != 0) {
+      i = j + b.bx(10, this.JMJ);
     }
     j = i;
-    if (this.hyp != 0) {
-      j = i + b.bA(11, this.hyp);
+    if (this.hYQ != 0) {
+      j = i + b.bx(11, this.hYQ);
     }
     return j;
   }

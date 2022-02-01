@@ -3,83 +3,83 @@ package com.tencent.mm.plugin.backup.b;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean gbV = false;
-  private static int mqf = 0;
-  private static byte[] mqg = "key".getBytes();
-  private static SharedPreferences mqi;
-  public String mqb = "id";
-  public String mqc = "hello";
-  public String mqd = "ok";
-  public e mqe;
-  public byte[] mqh;
+  private static boolean ggB = false;
+  private static int mSg = 0;
+  private static byte[] mSh = "key".getBytes();
+  private static SharedPreferences mSj;
+  public String mSc = "id";
+  public String mSd = "hello";
+  public String mSe = "ok";
+  public e mSf;
+  public byte[] mSi;
   
-  public static void aC(byte[] paramArrayOfByte)
+  public static void aB(byte[] paramArrayOfByte)
   {
-    mqg = paramArrayOfByte;
+    mSh = paramArrayOfByte;
   }
   
-  public static int bvW()
+  public static int bCS()
   {
-    return mqf;
+    return mSg;
   }
   
-  public static byte[] bvX()
+  public static byte[] bCT()
   {
-    return mqg;
+    return mSh;
   }
   
-  public static SharedPreferences bvY()
+  public static SharedPreferences bCU()
   {
-    if (mqi == null) {
-      mqi = aj.getContext().getSharedPreferences("BACKUP_CONFIG", g.XN());
+    if (mSj == null) {
+      mSj = ai.getContext().getSharedPreferences("BACKUP_CONFIG", g.YK());
     }
-    return mqi;
+    return mSj;
   }
   
-  public static void bvZ()
+  public static void bCV()
   {
-    ad.i(TAG, "holdReset");
-    gbV = true;
+    ac.i(TAG, "holdReset");
+    ggB = true;
   }
   
-  public static boolean bwa()
+  public static boolean bCW()
   {
-    return gbV;
+    return ggB;
   }
   
-  public static void bwb()
+  public static void bCX()
   {
-    mqg = "key".getBytes();
-    mqf = 0;
-    mqi = null;
-    gbV = false;
+    mSh = "key".getBytes();
+    mSg = 0;
+    mSj = null;
+    ggB = false;
   }
   
-  public static void vT(int paramInt)
+  public static void wK(int paramInt)
   {
-    mqf = paramInt;
+    mSg = paramInt;
   }
   
-  public final e bvT()
+  public final e bCP()
   {
-    if (this.mqe == null) {
-      this.mqe = new e();
+    if (this.mSf == null) {
+      this.mSf = new e();
     }
-    return this.mqe;
+    return this.mSf;
   }
   
-  public abstract void bvU();
+  public abstract void bCQ();
   
-  public abstract void bvV();
+  public abstract void bCR();
   
-  public abstract void o(Object... paramVarArgs);
+  public abstract void p(Object... paramVarArgs);
 }
 
 

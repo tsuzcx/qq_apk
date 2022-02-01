@@ -1,86 +1,88 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.cq;
+import com.tencent.mm.g.b.a.ee;
 import com.tencent.mm.m.g;
 import com.tencent.mm.modelvideo.o;
+import com.tencent.mm.plugin.a.j;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.at;
 import com.tencent.mm.plugin.sns.model.au;
+import com.tencent.mm.plugin.sns.model.av;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.vfs.i;
 import java.util.HashMap;
 
 public final class ah
 {
   private boolean clear;
-  private String dgg;
-  private bpi dyS;
-  long fnZ;
-  private int hgr;
-  int hlk;
-  String hxP;
-  String hxQ;
-  int hxS;
-  int hxT;
-  int hxV;
-  int hxW;
-  boolean hxY;
-  int hxZ;
-  private int hya;
-  boolean hyb;
-  boolean hyc;
+  private String ddB;
+  private btz dwE;
+  long frt;
+  private int hGU;
+  int hLN;
+  int hYA;
+  private int hYB;
+  boolean hYC;
+  boolean hYD;
+  String hYq;
+  String hYr;
+  int hYt;
+  int hYu;
+  int hYw;
+  int hYx;
+  boolean hYz;
   int progress;
-  HashMap<String, Integer> xqj;
-  com.tencent.mm.plugin.a.i xqk;
-  a xql;
-  int xqm;
-  private int xqn;
-  long xqo;
-  private long xqp;
-  private long xqq;
-  private int xqr;
-  private b xqs;
-  private final Object xqt;
+  HashMap<String, Integer> yCZ;
+  j yDa;
+  a yDb;
+  int yDc;
+  private int yDd;
+  long yDe;
+  private long yDf;
+  private long yDg;
+  private int yDh;
+  private b yDi;
+  private final Object yDj;
   
   public ah(a parama)
   {
     AppMethodBeat.i(98119);
-    this.hxS = 0;
-    this.hxT = 0;
-    this.xqj = null;
-    this.hxZ = 0;
-    this.hyb = false;
-    this.hyc = false;
-    this.xqn = 0;
+    this.hYt = 0;
+    this.hYu = 0;
+    this.yCZ = null;
+    this.hYA = 0;
+    this.hYC = false;
+    this.hYD = false;
+    this.yDd = 0;
     this.clear = false;
-    this.xqt = new Object();
-    this.xql = parama;
-    this.xqk = new com.tencent.mm.plugin.a.i();
-    this.xqj = new HashMap();
-    this.xqs = new b((byte)0);
-    this.xqs.hyj = g.Zd().getInt("SnsVideoPreloadSec", 5);
-    this.xqs.hyk = g.Zd().getInt("SnsVideoDownloadSec", 1);
-    this.xqs.xqv = g.Zd().getInt("SnsVideoFullDownloadPercent", 101);
-    ad.i("MicroMsg.OnlineVideoViewHelper", "parseConfig preload[%d] downloadSec[%d], needFinish[%d]", new Object[] { Integer.valueOf(this.xqs.hyj), Integer.valueOf(this.xqs.hyk), Integer.valueOf(this.xqs.xqv) });
+    this.yDj = new Object();
+    this.yDb = parama;
+    this.yDa = new j();
+    this.yCZ = new HashMap();
+    this.yDi = new b((byte)0);
+    this.yDi.hYK = g.ZY().getInt("SnsVideoPreloadSec", 5);
+    this.yDi.hYL = g.ZY().getInt("SnsVideoDownloadSec", 1);
+    this.yDi.yDl = g.ZY().getInt("SnsVideoFullDownloadPercent", 101);
+    ac.i("MicroMsg.OnlineVideoViewHelper", "parseConfig preload[%d] downloadSec[%d], needFinish[%d]", new Object[] { Integer.valueOf(this.yDi.hYK), Integer.valueOf(this.yDi.hYL), Integer.valueOf(this.yDi.yDl) });
     reset();
     this.clear = false;
     AppMethodBeat.o(98119);
   }
   
-  private void Nn(int paramInt)
+  private void Pq(int paramInt)
   {
     AppMethodBeat.i(98127);
-    synchronized (this.xqt)
+    synchronized (this.yDj)
     {
-      if (this.xql != null) {
-        this.xql.GI(paramInt);
+      if (this.yDb != null) {
+        this.yDb.IE(paramInt);
       }
       AppMethodBeat.o(98127);
       return;
@@ -90,47 +92,47 @@ public final class ah
   private boolean a(int paramInt, PInt paramPInt1, PInt paramPInt2)
   {
     AppMethodBeat.i(98129);
-    paramPInt1.value = Math.max(paramInt, this.hxZ);
-    if (this.hxT == 1)
+    paramPInt1.value = Math.max(paramInt, this.hYA);
+    if (this.hYu == 1)
     {
       paramPInt1.value = paramInt;
-      paramPInt1.value += this.hya;
+      paramPInt1.value += this.hYB;
     }
-    if (this.hxT == 2)
+    if (this.hYu == 2)
     {
       paramPInt1.value = (paramInt - 8);
       if (paramPInt1.value < 0) {
         paramPInt1.value = 0;
       }
-      paramPInt2.value = (paramPInt1.value + this.hya + 8);
+      paramPInt2.value = (paramPInt1.value + this.hYB + 8);
     }
-    if ((this.hxT == 3) || (this.hxT == 4))
+    if ((this.hYu == 3) || (this.hYu == 4))
     {
-      paramPInt1.value = this.hxZ;
-      paramPInt2.value = (this.hya + paramInt + 1 + this.xqs.hyk);
+      paramPInt1.value = this.hYA;
+      paramPInt2.value = (this.hYB + paramInt + 1 + this.yDi.hYL);
     }
-    if (paramPInt2.value >= this.hxV + 1) {
-      paramPInt2.value = (this.hxV + 1);
+    if (paramPInt2.value >= this.hYw + 1) {
+      paramPInt2.value = (this.hYw + 1);
     }
     if (paramPInt2.value < paramPInt1.value)
     {
-      paramPInt1.value += this.xqs.hyk;
+      paramPInt1.value += this.yDi.hYL;
       AppMethodBeat.o(98129);
       return false;
     }
-    ad.i("MicroMsg.OnlineVideoViewHelper", "calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d]", new Object[] { Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.hxT), Integer.valueOf(this.hxZ), Integer.valueOf(this.hya) });
+    ac.i("MicroMsg.OnlineVideoViewHelper", "calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d]", new Object[] { Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.hYu), Integer.valueOf(this.hYA), Integer.valueOf(this.hYB) });
     AppMethodBeat.o(98129);
     return true;
   }
   
-  private boolean dzP()
+  private boolean dOm()
   {
     AppMethodBeat.i(98126);
-    synchronized (this.xqt)
+    synchronized (this.yDj)
     {
-      if (this.xql != null)
+      if (this.yDb != null)
       {
-        boolean bool = this.xql.dzE();
+        boolean bool = this.yDb.dOb();
         AppMethodBeat.o(98126);
         return bool;
       }
@@ -139,86 +141,86 @@ public final class ah
     }
   }
   
-  private void dzR()
+  private void dOo()
   {
     AppMethodBeat.i(98133);
-    this.hxY = true;
-    if (this.hxZ <= 0)
+    this.hYz = true;
+    if (this.hYA <= 0)
     {
-      if (this.hxW == -1)
+      if (this.hYx == -1)
       {
-        this.hxT = 1;
+        this.hYu = 1;
         AppMethodBeat.o(98133);
         return;
       }
-      this.hxT = 2;
+      this.hYu = 2;
       AppMethodBeat.o(98133);
       return;
     }
-    ad.i("MicroMsg.OnlineVideoViewHelper", "pause by load data cdnMediaId %s, pauseByLoadDataCount %d, playStatus %d", new Object[] { this.hxP, Integer.valueOf(this.xqn), Integer.valueOf(this.hxT) });
-    this.xqq = bt.eGO();
-    if ((this.hxT != 2) && (this.hxT != 4))
+    ac.i("MicroMsg.OnlineVideoViewHelper", "pause by load data cdnMediaId %s, pauseByLoadDataCount %d, playStatus %d", new Object[] { this.hYq, Integer.valueOf(this.yDd), Integer.valueOf(this.hYu) });
+    this.yDg = bs.eWj();
+    if ((this.hYu != 2) && (this.hYu != 4))
     {
-      this.hya += this.xqs.hyj;
-      this.hya = Math.min(this.hya, 60);
-      this.xqn += 1;
-      this.hxT = 4;
+      this.hYB += this.yDi.hYK;
+      this.hYB = Math.min(this.hYB, 60);
+      this.yDd += 1;
+      this.hYu = 4;
     }
-    this.xql.aCv();
+    this.yDb.aJm();
     AppMethodBeat.o(98133);
   }
   
-  private void dzS()
+  private void dOp()
   {
     boolean bool = false;
     AppMethodBeat.i(98134);
-    if (this.hxY)
+    if (this.hYz)
     {
-      if ((this.xqn == 0) && (this.xqp == 0L)) {
-        dzT();
+      if ((this.yDd == 0) && (this.yDf == 0L)) {
+        dOq();
       }
       for (;;)
       {
-        ad.i("MicroMsg.OnlineVideoViewHelper", "resume by data gain.pauseByLoadDataCount %d pauseAllTime %d cdnMediaId %s", new Object[] { Integer.valueOf(this.xqn), Integer.valueOf(this.xqr), this.hxP });
-        this.hxT = 3;
-        if (this.hxW == -1) {
+        ac.i("MicroMsg.OnlineVideoViewHelper", "resume by data gain.pauseByLoadDataCount %d pauseAllTime %d cdnMediaId %s", new Object[] { Integer.valueOf(this.yDd), Integer.valueOf(this.yDh), this.hYq });
+        this.hYu = 3;
+        if (this.hYx == -1) {
           break;
         }
-        Nn(this.hxW);
-        this.hxW = -1;
-        this.hxY = false;
+        Pq(this.hYx);
+        this.hYx = -1;
+        this.hYz = false;
         AppMethodBeat.o(98134);
         return;
-        if (this.xqq > 0L) {
-          this.xqr = ((int)(this.xqr + bt.vM(this.xqq)));
+        if (this.yDg > 0L) {
+          this.yDh = ((int)(this.yDh + bs.Ap(this.yDg)));
         }
       }
-      if (dzP()) {}
+      if (dOm()) {}
       for (;;)
       {
-        this.hxY = bool;
+        this.hYz = bool;
         AppMethodBeat.o(98134);
         return;
         bool = true;
       }
     }
-    if (this.hxT != 3)
+    if (this.hYu != 3)
     {
-      ad.i("MicroMsg.OnlineVideoViewHelper", "start to play video playStatus[%d]", new Object[] { Integer.valueOf(this.hxT) });
-      if (!dzP()) {
+      ac.i("MicroMsg.OnlineVideoViewHelper", "start to play video playStatus[%d]", new Object[] { Integer.valueOf(this.hYu) });
+      if (!dOm()) {
         break label211;
       }
     }
     label211:
-    for (int i = 3;; i = this.hxT)
+    for (int i = 3;; i = this.hYu)
     {
-      this.hxT = i;
+      this.hYu = i;
       AppMethodBeat.o(98134);
       return;
     }
   }
   
-  private Object[] dzU()
+  private Object[] dOr()
   {
     AppMethodBeat.i(98136);
     Object[] arrayOfObject = new Object[14];
@@ -232,45 +234,45 @@ public final class ah
     String str2 = "";
     String str1 = "";
     int i = 0;
-    if (this.xql != null)
+    if (this.yDb != null)
     {
-      n = this.xql.getPlayVideoDuration();
-      m = this.xql.getUiStayTime();
-      k = this.xql.getPlayErrorCode();
-      j = this.xql.getRptStruct().scene;
-      str4 = this.xql.getRptStruct().sessionId;
-      l = this.xql.getRptStruct().xpP;
-      str3 = this.xql.getRptStruct().dpC;
-      str2 = this.xql.getRptStruct().dpz;
-      str1 = this.xql.getRptStruct().filePath;
-      i = this.xql.getPlayVideoDurationByResume();
+      n = this.yDb.getPlayVideoDuration();
+      m = this.yDb.getUiStayTime();
+      k = this.yDb.getPlayErrorCode();
+      j = this.yDb.getRptStruct().scene;
+      str4 = this.yDb.getRptStruct().sessionId;
+      l = this.yDb.getRptStruct().yCF;
+      str3 = this.yDb.getRptStruct().dnn;
+      str2 = this.yDb.getRptStruct().dnk;
+      str1 = this.yDb.getRptStruct().filePath;
+      i = this.yDb.getPlayVideoDurationByResume();
     }
     arrayOfObject[0] = Integer.valueOf(n);
-    if (this.xqp <= 0L) {
-      this.xqp = bt.eGO();
+    if (this.yDf <= 0L) {
+      this.yDf = bs.eWj();
     }
-    int i1 = (int)(this.xqp - this.fnZ);
+    int i1 = (int)(this.yDf - this.frt);
     n = i1;
     if (i1 <= 0) {
       n = 0;
     }
     arrayOfObject[1] = Integer.valueOf(n);
-    if (this.xqo <= 0L) {
-      this.xqo = bt.eGO();
+    if (this.yDe <= 0L) {
+      this.yDe = bs.eWj();
     }
-    i1 = (int)(this.xqo - this.fnZ);
+    i1 = (int)(this.yDe - this.frt);
     n = i1;
     if (i1 <= 0) {
       n = 0;
     }
     arrayOfObject[2] = Integer.valueOf(n);
-    arrayOfObject[3] = Integer.valueOf(this.xqn);
-    if (this.xqn > 0)
+    arrayOfObject[3] = Integer.valueOf(this.yDd);
+    if (this.yDd > 0)
     {
-      if (this.xqr == 0) {
-        this.xqr = ((int)(this.xqr + bt.vM(this.xqq)));
+      if (this.yDh == 0) {
+        this.yDh = ((int)(this.yDh + bs.Ap(this.yDg)));
       }
-      arrayOfObject[4] = Integer.valueOf(this.xqr / this.xqn);
+      arrayOfObject[4] = Integer.valueOf(this.yDh / this.yDd);
     }
     for (;;)
     {
@@ -289,38 +291,38 @@ public final class ah
     }
   }
   
-  private static void dzV()
+  private static void dOs()
   {
     AppMethodBeat.i(98138);
-    h.vKh.idkeyStat(354L, 203L, 1L, false);
+    h.wUl.idkeyStat(354L, 203L, 1L, false);
     AppMethodBeat.o(98138);
   }
   
-  private boolean hm(int paramInt1, int paramInt2)
+  private boolean hv(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(98131);
     PInt localPInt1 = new PInt();
     PInt localPInt2 = new PInt();
     try
     {
-      if (this.xqk.a(paramInt1, paramInt2, localPInt1, localPInt2))
+      if (this.yDa.a(paramInt1, paramInt2, localPInt1, localPInt2))
       {
         localPInt2.value += 81920;
-        bool = o.aCJ().isVideoDataAvailable(this.hxP, localPInt1.value, localPInt2.value);
+        bool = o.aJz().isVideoDataAvailable(this.hYq, localPInt1.value, localPInt2.value);
         if (bool) {
           break label327;
         }
-        if (!this.xqj.containsKey(this.hxP + 0 + "_-1"))
+        if (!this.yCZ.containsKey(this.hYq + 0 + "_-1"))
         {
-          String str = this.hxP + localPInt1.value + "_" + localPInt2.value;
-          ad.i("MicroMsg.OnlineVideoViewHelper", "request video data [%d, %d] isRequestNow[%b] isSeek[%b]", new Object[] { Integer.valueOf(localPInt1.value), Integer.valueOf(localPInt2.value), Boolean.valueOf(this.hyc), Boolean.FALSE });
-          if ((this.xqj.containsKey(str)) || (this.hyc)) {
+          String str = this.hYq + localPInt1.value + "_" + localPInt2.value;
+          ac.i("MicroMsg.OnlineVideoViewHelper", "request video data [%d, %d] isRequestNow[%b] isSeek[%b]", new Object[] { Integer.valueOf(localPInt1.value), Integer.valueOf(localPInt2.value), Boolean.valueOf(this.hYD), Boolean.FALSE });
+          if ((this.yCZ.containsKey(str)) || (this.hYD)) {
             break label308;
           }
-          this.hyc = true;
-          o.aCJ();
-          com.tencent.mm.ao.e.q(this.hxP, localPInt1.value, localPInt2.value);
-          this.xqj.put(str, Integer.valueOf(paramInt2));
+          this.hYD = true;
+          o.aJz();
+          com.tencent.mm.an.e.p(this.hYq, localPInt1.value, localPInt2.value);
+          this.yCZ.put(str, Integer.valueOf(paramInt2));
         }
         AppMethodBeat.o(98131);
         return bool;
@@ -330,29 +332,29 @@ public final class ah
     {
       for (;;)
       {
-        ad.e("MicroMsg.OnlineVideoViewHelper", "check video data error: " + localException.toString());
+        ac.e("MicroMsg.OnlineVideoViewHelper", "check video data error: " + localException.toString());
         boolean bool = false;
         continue;
         label308:
-        ad.i("MicroMsg.OnlineVideoViewHelper", "already request video : ".concat(String.valueOf(localException)));
+        ac.i("MicroMsg.OnlineVideoViewHelper", "already request video : ".concat(String.valueOf(localException)));
         continue;
         label327:
-        ad.i("MicroMsg.OnlineVideoViewHelper", "already had video data.");
+        ac.i("MicroMsg.OnlineVideoViewHelper", "already had video data.");
       }
     }
   }
   
-  private boolean oS(int paramInt)
+  private boolean pH(int paramInt)
   {
     boolean bool3 = false;
     bool1 = false;
     AppMethodBeat.i(98130);
-    if (this.hxS == 3)
+    if (this.hYt == 3)
     {
       AppMethodBeat.o(98130);
       return true;
     }
-    if ((this.hxZ - paramInt <= 1) && (this.hxZ < this.hxV))
+    if ((this.hYA - paramInt <= 1) && (this.hYA < this.hYw))
     {
       AppMethodBeat.o(98130);
       return false;
@@ -362,15 +364,15 @@ public final class ah
     bool2 = bool3;
     try
     {
-      if (this.xqk.a(paramInt, paramInt + 1, localPInt1, localPInt2))
+      if (this.yDa.a(paramInt, paramInt + 1, localPInt1, localPInt2))
       {
         bool2 = bool3;
-        bool3 = o.aCJ().isVideoDataAvailable(this.hxP, localPInt1.value, localPInt2.value);
+        bool3 = o.aJz().isVideoDataAvailable(this.hYq, localPInt1.value, localPInt2.value);
         bool1 = bool3;
         if (!bool3)
         {
           bool2 = bool3;
-          this.hxZ = paramInt;
+          this.hYA = paramInt;
           bool1 = bool3;
         }
       }
@@ -379,7 +381,7 @@ public final class ah
     {
       for (;;)
       {
-        ad.e("MicroMsg.OnlineVideoViewHelper", "check video data error: " + localException.toString());
+        ac.e("MicroMsg.OnlineVideoViewHelper", "check video data error: " + localException.toString());
         bool1 = bool2;
       }
     }
@@ -387,48 +389,48 @@ public final class ah
     return bool1;
   }
   
-  private static void qh(boolean paramBoolean)
+  private void reset()
+  {
+    AppMethodBeat.i(98121);
+    this.hYq = "";
+    this.hYx = -1;
+    this.hYA = 0;
+    this.hYw = 0;
+    this.yDd = 0;
+    this.hYu = 0;
+    this.hYt = 0;
+    this.hYz = false;
+    this.hYC = false;
+    this.hYD = false;
+    this.yCZ.clear();
+    this.dwE = null;
+    this.hGU = 0;
+    this.ddB = null;
+    if (this.yDi != null) {
+      this.hYB = this.yDi.hYK;
+    }
+    this.yDe = 0L;
+    this.frt = 0L;
+    this.yDh = 0;
+    this.yDg = 0L;
+    this.yDf = 0L;
+    AppMethodBeat.o(98121);
+  }
+  
+  private static void rg(boolean paramBoolean)
   {
     AppMethodBeat.i(98137);
     if (paramBoolean)
     {
-      h.vKh.idkeyStat(354L, 201L, 1L, false);
+      h.wUl.idkeyStat(354L, 201L, 1L, false);
       AppMethodBeat.o(98137);
       return;
     }
-    h.vKh.idkeyStat(354L, 202L, 1L, false);
+    h.wUl.idkeyStat(354L, 202L, 1L, false);
     AppMethodBeat.o(98137);
   }
   
-  private void reset()
-  {
-    AppMethodBeat.i(98121);
-    this.hxP = "";
-    this.hxW = -1;
-    this.hxZ = 0;
-    this.hxV = 0;
-    this.xqn = 0;
-    this.hxT = 0;
-    this.hxS = 0;
-    this.hxY = false;
-    this.hyb = false;
-    this.hyc = false;
-    this.xqj.clear();
-    this.dyS = null;
-    this.hgr = 0;
-    this.dgg = null;
-    if (this.xqs != null) {
-      this.hya = this.xqs.hyj;
-    }
-    this.xqo = 0L;
-    this.fnZ = 0L;
-    this.xqr = 0;
-    this.xqq = 0L;
-    this.xqp = 0L;
-    AppMethodBeat.o(98121);
-  }
-  
-  public final boolean a(bpi parambpi, int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
+  public final boolean a(btz parambtz, int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
   {
     AppMethodBeat.i(98122);
     if (this.clear)
@@ -436,29 +438,29 @@ public final class ah
       AppMethodBeat.o(98122);
       return false;
     }
-    this.dyS = parambpi;
-    this.hgr = paramInt1;
-    this.dgg = paramString;
-    this.hxQ = at.D(parambpi);
-    this.hxP = at.bQ(paramInt1, parambpi.Url);
-    if ((bt.isNullOrNil(this.hxQ)) || (bt.isNullOrNil(this.hxP)))
+    this.dwE = parambtz;
+    this.hGU = paramInt1;
+    this.ddB = paramString;
+    this.hYr = au.D(parambtz);
+    this.hYq = au.bU(paramInt1, parambtz.Url);
+    if ((bs.isNullOrNil(this.hYr)) || (bs.isNullOrNil(this.hYq)))
     {
       AppMethodBeat.o(98122);
       return false;
     }
-    ad.i("MicroMsg.OnlineVideoViewHelper", "start online download video %s isPlayMode %b", new Object[] { this.hxP, Boolean.valueOf(paramBoolean) });
-    af.dts().a(parambpi, paramInt1, paramString, paramBoolean, true, paramInt2);
-    this.hxS = 1;
-    this.fnZ = bt.eGO();
-    qh(paramBoolean);
+    ac.i("MicroMsg.OnlineVideoViewHelper", "start online download video %s isPlayMode %b", new Object[] { this.hYq, Boolean.valueOf(paramBoolean) });
+    af.dHP().a(parambtz, paramInt1, paramString, paramBoolean, true, paramInt2);
+    this.hYt = 1;
+    this.frt = bs.eWj();
+    rg(paramBoolean);
     AppMethodBeat.o(98122);
     return true;
   }
   
-  public final boolean aqu(String paramString)
+  public final boolean avD(String paramString)
   {
     AppMethodBeat.i(98124);
-    boolean bool = bt.kU(this.hxP, paramString);
+    boolean bool = bs.lr(this.hYq, paramString);
     AppMethodBeat.o(98124);
     return bool;
   }
@@ -466,32 +468,32 @@ public final class ah
   public final void clear()
   {
     AppMethodBeat.i(98120);
-    ad.i("MicroMsg.OnlineVideoViewHelper", "clear");
+    ac.i("MicroMsg.OnlineVideoViewHelper", "clear");
     this.clear = true;
     reset();
-    synchronized (this.xqt)
+    synchronized (this.yDj)
     {
-      this.xql = null;
-      this.xqk = null;
+      this.yDb = null;
+      this.yDa = null;
       AppMethodBeat.o(98120);
       return;
     }
   }
   
-  public final boolean dzO()
+  public final boolean dOl()
   {
     AppMethodBeat.i(98123);
     boolean bool;
-    if (!bt.isNullOrNil(this.hxP)) {
-      if (this.hxS == 3)
+    if (!bs.isNullOrNil(this.hYq)) {
+      if (this.hYt == 3)
       {
         bool = true;
-        ad.i("MicroMsg.OnlineVideoViewHelper", "stop online download video %s isFinish %b percent %d", new Object[] { this.hxP, Boolean.valueOf(bool), Integer.valueOf(this.xqm) });
-        af.dts().r(this.hxP, dzU());
-        if ((this.xqm >= this.xqs.xqv) && (!bool)) {
-          af.dts().a(this.dyS, this.hgr, this.dgg, false, false, 36);
+        ac.i("MicroMsg.OnlineVideoViewHelper", "stop online download video %s isFinish %b percent %d", new Object[] { this.hYq, Boolean.valueOf(bool), Integer.valueOf(this.yDc) });
+        af.dHP().r(this.hYq, dOr());
+        if ((this.yDc >= this.yDi.yDl) && (!bool)) {
+          af.dHP().a(this.dwE, this.hGU, this.ddB, false, false, 36);
         }
-        dzV();
+        dOs();
       }
     }
     for (;;)
@@ -500,22 +502,22 @@ public final class ah
       return true;
       bool = false;
       break;
-      dzW();
+      dOt();
     }
   }
   
-  final void dzQ()
+  final void dOn()
   {
     AppMethodBeat.i(98132);
-    ad.i("MicroMsg.OnlineVideoViewHelper", "play offline video %s ", new Object[] { this.hxP });
-    dzT();
-    aq.f(new Runnable()
+    ac.i("MicroMsg.OnlineVideoViewHelper", "play offline video %s ", new Object[] { this.hYq });
+    dOq();
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(98118);
-        if (ah.this.xql != null) {
-          ah.this.qg(false);
+        if (ah.this.yDb != null) {
+          ah.this.rf(false);
         }
         AppMethodBeat.o(98118);
       }
@@ -523,23 +525,23 @@ public final class ah
     AppMethodBeat.o(98132);
   }
   
-  final void dzT()
+  final void dOq()
   {
     AppMethodBeat.i(98135);
-    if (this.xqp == 0L) {
-      this.xqp = bt.eGO();
+    if (this.yDf == 0L) {
+      this.yDf = bs.eWj();
     }
     AppMethodBeat.o(98135);
   }
   
-  public final void dzW()
+  public final void dOt()
   {
     AppMethodBeat.i(98139);
-    Object localObject1 = dzU();
+    Object localObject1 = dOr();
     Object localObject2 = new PInt();
     new PInt().value = 0;
     ((PInt)localObject2).value = 0;
-    int i = ay.ix(aj.getContext());
+    int i = ax.iI(ai.getContext());
     int j = ((Integer)localObject1[1]).intValue();
     int k = ((Integer)localObject1[2]).intValue();
     int m = ((Integer)localObject1[3]).intValue();
@@ -553,29 +555,29 @@ public final class ah
     String str2 = (String)localObject1[11];
     String str3 = (String)localObject1[12];
     long l1 = ((Integer)localObject1[13]).intValue() * 1000;
-    long l2 = com.tencent.mm.vfs.i.aMN(str3);
-    localObject1 = new cq();
-    ((cq)localObject1).dON = i;
-    ((cq)localObject1).dIm = 0L;
-    ((cq)localObject1).dIn = 0L;
-    ((cq)localObject1).dOG = l2;
-    ((cq)localObject1).ji(str1);
-    ((cq)localObject1).jh(str2);
-    ((cq)localObject1).dOI = l1;
-    ((cq)localObject1).dOJ = j;
-    ((cq)localObject1).dOK = k;
-    ((cq)localObject1).dOL = m;
-    ((cq)localObject1).dOM = n;
-    ((cq)localObject1).dPg = i1;
-    ((cq)localObject1).dPh = i2;
-    ((cq)localObject1).dSk = i3;
-    ((cq)localObject1).jj((String)localObject2);
-    ((cq)localObject1).dSm = i4;
-    ((cq)localObject1).aBj();
+    long l2 = i.aSp(str3);
+    localObject1 = new ee();
+    ((ee)localObject1).dQE = i;
+    ((ee)localObject1).dGo = 0L;
+    ((ee)localObject1).dGp = 0L;
+    ((ee)localObject1).dQx = l2;
+    ((ee)localObject1).lY(str1);
+    ((ee)localObject1).lX(str2);
+    ((ee)localObject1).dQz = l1;
+    ((ee)localObject1).dQA = j;
+    ((ee)localObject1).dQB = k;
+    ((ee)localObject1).dQC = m;
+    ((ee)localObject1).dQD = n;
+    ((ee)localObject1).dQX = i1;
+    ((ee)localObject1).dQY = i2;
+    ((ee)localObject1).dTY = i3;
+    ((ee)localObject1).lZ((String)localObject2);
+    ((ee)localObject1).dUa = i4;
+    ((ee)localObject1).aHZ();
     AppMethodBeat.o(98139);
   }
   
-  public final boolean oR(int paramInt)
+  public final boolean pG(int paramInt)
   {
     AppMethodBeat.i(98125);
     if (this.clear)
@@ -583,31 +585,31 @@ public final class ah
       AppMethodBeat.o(98125);
       return false;
     }
-    if (this.hxW != -1) {}
-    for (int i = this.hxW;; i = paramInt)
+    if (this.hYx != -1) {}
+    for (int i = this.hYx;; i = paramInt)
     {
       boolean bool1 = true;
       boolean bool2 = true;
-      ad.i("MicroMsg.OnlineVideoViewHelper", "check timer playCurrPos %d playTime %d cachePlayTime %d timeDuration %d playStatus %d downloadStatus %d cdnMediaId %s firPlayWait{%d} isPrepareVideo[%b]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.hxZ), Integer.valueOf(this.hxV), Integer.valueOf(this.hxT), Integer.valueOf(this.hxS), this.hxP, Long.valueOf(this.xqp - this.fnZ), Boolean.valueOf(this.hyb) });
-      if (this.xql == null)
+      ac.i("MicroMsg.OnlineVideoViewHelper", "check timer playCurrPos %d playTime %d cachePlayTime %d timeDuration %d playStatus %d downloadStatus %d cdnMediaId %s firPlayWait{%d} isPrepareVideo[%b]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.hYA), Integer.valueOf(this.hYw), Integer.valueOf(this.hYu), Integer.valueOf(this.hYt), this.hYq, Long.valueOf(this.yDf - this.frt), Boolean.valueOf(this.hYC) });
+      if (this.yDb == null)
       {
-        ad.i("MicroMsg.OnlineVideoViewHelper", "ui is null, checkTimer false");
+        ac.i("MicroMsg.OnlineVideoViewHelper", "ui is null, checkTimer false");
         AppMethodBeat.o(98125);
         return false;
       }
-      switch (this.hxS)
+      switch (this.hYt)
       {
       default: 
-        ad.w("MicroMsg.OnlineVideoViewHelper", "check time default.");
+        ac.w("MicroMsg.OnlineVideoViewHelper", "check time default.");
         bool1 = bool2;
       }
       for (;;)
       {
         AppMethodBeat.o(98125);
         return bool1;
-        if (!oS(i))
+        if (!pH(i))
         {
-          dzR();
+          dOo();
           bool1 = false;
         }
         for (;;)
@@ -617,78 +619,78 @@ public final class ah
           if (!a(i, localPInt1, localPInt2)) {
             break label360;
           }
-          if (!hm(localPInt1.value, localPInt2.value)) {
+          if (!hv(localPInt1.value, localPInt2.value)) {
             break;
           }
-          this.hxZ = Math.max(this.hxZ, localPInt2.value);
+          this.hYA = Math.max(this.hYA, localPInt2.value);
           bool1 = true;
           break;
-          dzT();
-          if (this.hyb)
+          dOq();
+          if (this.hYC)
           {
-            dzS();
+            dOp();
           }
           else
           {
-            ad.i("MicroMsg.OnlineVideoViewHelper", "prepare cdnMediaId [%s]", new Object[] { this.hxP });
-            if (this.hxT == 5) {
-              this.hxT = 1;
+            ac.i("MicroMsg.OnlineVideoViewHelper", "prepare cdnMediaId [%s]", new Object[] { this.hYq });
+            if (this.hYu == 5) {
+              this.hYu = 1;
             }
-            qg(true);
-            this.hyb = true;
+            rf(true);
+            this.hYC = true;
           }
         }
         label360:
-        ad.d("MicroMsg.OnlineVideoViewHelper", "can not calc download.");
-        o.aCJ();
-        com.tencent.mm.ao.e.q(this.hxP, 0, -1);
+        ac.d("MicroMsg.OnlineVideoViewHelper", "can not calc download.");
+        o.aJz();
+        com.tencent.mm.an.e.p(this.hYq, 0, -1);
         continue;
-        dzT();
-        if (this.hyb)
+        dOq();
+        if (this.hYC)
         {
-          if (this.hxY)
+          if (this.hYz)
           {
-            if (this.hxW == -1) {
+            if (this.hYx == -1) {
               break label442;
             }
-            Nn(this.hxW);
-            this.hxW = -1;
+            Pq(this.hYx);
+            this.hYx = -1;
             bool1 = false;
           }
           for (;;)
           {
-            this.hxY = bool1;
-            this.hxT = 3;
+            this.hYz = bool1;
+            this.hYu = 3;
             bool1 = bool2;
             break;
             label442:
-            if (dzP()) {
+            if (dOm()) {
               bool1 = false;
             } else {
               bool1 = true;
             }
           }
         }
-        if (this.hxT == 5) {
-          this.hxT = 1;
+        if (this.hYu == 5) {
+          this.hYu = 1;
         }
-        qg(false);
-        this.hyb = true;
+        rf(false);
+        this.hYC = true;
         bool1 = bool2;
         continue;
-        ad.w("MicroMsg.OnlineVideoViewHelper", "download error.");
+        ac.w("MicroMsg.OnlineVideoViewHelper", "download error.");
         bool1 = bool2;
       }
     }
   }
   
-  final void qg(boolean paramBoolean)
+  final void rf(boolean paramBoolean)
   {
     AppMethodBeat.i(98128);
-    synchronized (this.xqt)
+    synchronized (this.yDj)
     {
-      if (this.xql != null) {
-        this.xql.bG(this.hxQ, paramBoolean);
+      if (this.yDb != null) {
+        this.yDb.bN(this.hYr, paramBoolean);
       }
       AppMethodBeat.o(98128);
       return;
@@ -697,13 +699,13 @@ public final class ah
   
   public static abstract interface a
   {
-    public abstract void GI(int paramInt);
+    public abstract void IE(int paramInt);
     
-    public abstract void aCv();
+    public abstract void aJm();
     
-    public abstract void bG(String paramString, boolean paramBoolean);
+    public abstract void bN(String paramString, boolean paramBoolean);
     
-    public abstract boolean dzE();
+    public abstract boolean dOb();
     
     public abstract int getPlayErrorCode();
     
@@ -718,19 +720,19 @@ public final class ah
   
   static final class b
   {
-    int hyj;
-    int hyk;
-    int xqv;
+    int hYK;
+    int hYL;
+    int yDl;
   }
   
   public static final class c
   {
-    public String dpC = "";
-    public String dpz = "";
+    public String dnk = "";
+    public String dnn = "";
     public String filePath = "";
     public int scene = 0;
     public String sessionId = "";
-    public long xpP = 0L;
+    public long yCF = 0L;
   }
 }
 

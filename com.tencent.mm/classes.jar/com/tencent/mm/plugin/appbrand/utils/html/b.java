@@ -8,13 +8,13 @@ import org.xml.sax.XMLReader;
 public final class b
   implements Html.TagHandler
 {
-  c.a lNi;
-  private boolean lNj;
+  c.a mpi;
+  private boolean mpj;
   
   public b(c.a parama, boolean paramBoolean)
   {
-    this.lNi = parama;
-    this.lNj = paramBoolean;
+    this.mpi = parama;
+    this.mpj = paramBoolean;
   }
   
   public final void handleTag(boolean paramBoolean, String paramString, Editable paramEditable, XMLReader paramXMLReader)
@@ -27,7 +27,7 @@ public final class b
       if (paramBoolean)
       {
         i = paramEditable.length();
-        paramEditable.setSpan(new CustomURLSpan("", this.lNi, this.lNj), i, i, 17);
+        paramEditable.setSpan(new CustomURLSpan("", this.mpi, this.mpj), i, i, 17);
         AppMethodBeat.o(147729);
         return;
       }
@@ -53,7 +53,7 @@ public final class b
       paramXMLReader = paramEditable.subSequence(i, j).toString();
       paramEditable.removeSpan(paramString);
       if (i != j) {
-        paramEditable.setSpan(new CustomURLSpan(paramXMLReader, this.lNi, this.lNj), i, j, 33);
+        paramEditable.setSpan(new CustomURLSpan(paramXMLReader, this.mpi, this.mpj), i, j, 33);
       }
       AppMethodBeat.o(147729);
       return;
@@ -64,7 +64,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.html.b
  * JD-Core Version:    0.7.0.1
  */

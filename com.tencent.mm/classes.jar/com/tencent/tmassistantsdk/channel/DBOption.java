@@ -24,7 +24,7 @@ public class DBOption
   {
     AppMethodBeat.i(101853);
     this.DB_PATH = "";
-    this.DB_PATH = (b.aih() + "/assistant/");
+    this.DB_PATH = (b.aph() + "/assistant/");
     new e(this.DB_PATH).mkdirs();
     this.DB_PATH += ".SystemConfig.db";
     AppMethodBeat.o(101853);

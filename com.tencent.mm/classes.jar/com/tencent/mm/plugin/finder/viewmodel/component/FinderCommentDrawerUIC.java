@@ -4,109 +4,115 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.view.f;
-import com.tencent.mm.plugin.finder.view.f.a;
+import com.tencent.mm.plugin.finder.view.d;
+import com.tencent.mm.plugin.finder.view.d.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderCommentDrawerUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;)V", "onBackPressed", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderCommentDrawerUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent;)V", "onBackPressed", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
 public final class FinderCommentDrawerUIC
   extends UIComponent
 {
-  public static final a LhE;
-  public f KMN;
+  public static final FinderCommentDrawerUIC.a sdh;
+  public d rfU;
   
   static
   {
-    AppMethodBeat.i(200353);
-    LhE = new a((byte)0);
-    AppMethodBeat.o(200353);
+    AppMethodBeat.i(204478);
+    sdh = new FinderCommentDrawerUIC.a((byte)0);
+    AppMethodBeat.o(204478);
   }
   
   public FinderCommentDrawerUIC(MMActivity paramMMActivity)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(200352);
-    AppMethodBeat.o(200352);
+    AppMethodBeat.i(204477);
+    AppMethodBeat.o(204477);
   }
   
-  public final f fSY()
+  public final d cuz()
   {
-    AppMethodBeat.i(200347);
-    f localf = this.KMN;
-    if (localf == null) {
-      k.aPZ("drawer");
+    AppMethodBeat.i(204472);
+    d locald = this.rfU;
+    if (locald == null) {
+      k.aVY("drawer");
     }
-    AppMethodBeat.o(200347);
-    return localf;
+    AppMethodBeat.o(204472);
+    return locald;
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(200349);
-    f localf = this.KMN;
-    if (localf == null) {
-      k.aPZ("drawer");
+    AppMethodBeat.i(204474);
+    d locald = this.rfU;
+    if (locald == null) {
+      k.aVY("drawer");
     }
-    if (localf.fiQ())
+    if (locald.cEG())
     {
-      localf = this.KMN;
-      if (localf == null) {
-        k.aPZ("drawer");
+      locald = this.rfU;
+      if (locald == null) {
+        k.aVY("drawer");
       }
-      localf.csJ();
-      AppMethodBeat.o(200349);
+      locald.cEF();
+      AppMethodBeat.o(204474);
       return true;
     }
-    AppMethodBeat.o(200349);
+    AppMethodBeat.o(204474);
     return false;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(200348);
-    paramBundle = f.LeE;
+    AppMethodBeat.i(204473);
+    paramBundle = d.rVR;
     paramBundle = getActivity();
     Object localObject = getActivity().getWindow();
     k.g(localObject, "activity.window");
     localObject = ((Window)localObject).getDecorView();
     k.g(localObject, "activity.window.decorView");
-    this.KMN = f.a.a(paramBundle, (View)localObject, 2, false);
-    AppMethodBeat.o(200348);
+    this.rfU = d.a.a(paramBundle, (View)localObject, 2, false);
+    AppMethodBeat.o(204473);
   }
   
-  public final void onDestroy() {}
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(210214);
+    d locald = this.rfU;
+    if (locald == null) {
+      k.aVY("drawer");
+    }
+    locald.onDetach();
+    AppMethodBeat.o(210214);
+  }
   
   public final void onPause()
   {
-    AppMethodBeat.i(200351);
+    AppMethodBeat.i(204476);
     super.onPause();
-    if (this.KMN == null) {
-      k.aPZ("drawer");
+    if (this.rfU == null) {
+      k.aVY("drawer");
     }
-    AppMethodBeat.o(200351);
+    AppMethodBeat.o(204476);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(200350);
+    AppMethodBeat.i(204475);
     super.onResume();
-    f localf = this.KMN;
-    if (localf == null) {
-      k.aPZ("drawer");
+    d locald = this.rfU;
+    if (locald == null) {
+      k.aVY("drawer");
     }
-    localf.onUIResume();
-    AppMethodBeat.o(200350);
+    locald.onUIResume();
+    AppMethodBeat.o(204475);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderCommentDrawerUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderCommentDrawerUIC
  * JD-Core Version:    0.7.0.1
  */

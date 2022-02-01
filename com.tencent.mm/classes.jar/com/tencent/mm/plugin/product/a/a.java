@@ -12,20 +12,20 @@ import java.util.HashMap;
 public class a
   implements aw
 {
-  private c uvE;
-  private d uvF;
-  private com.tencent.mm.plugin.product.b.a uvG;
+  private c vEx;
+  private d vEy;
+  private com.tencent.mm.plugin.product.b.a vEz;
   
   public a()
   {
     AppMethodBeat.i(66847);
-    this.uvE = null;
-    this.uvF = null;
-    this.uvG = new com.tencent.mm.plugin.product.b.a();
+    this.vEx = null;
+    this.vEy = null;
+    this.vEz = new com.tencent.mm.plugin.product.b.a();
     AppMethodBeat.o(66847);
   }
   
-  public static a dbi()
+  public static a doQ()
   {
     AppMethodBeat.i(66848);
     a locala = (a)t.ap(a.class);
@@ -33,28 +33,28 @@ public class a
     return locala;
   }
   
-  public static c dbj()
+  public static c doR()
   {
     AppMethodBeat.i(66851);
-    g.afz().aeD();
-    if (dbi().uvE == null) {
-      dbi().uvE = new c();
+    g.agP().afT();
+    if (doQ().vEx == null) {
+      doQ().vEx = new c();
     }
-    c localc = dbi().uvE;
+    c localc = doQ().vEx;
     AppMethodBeat.o(66851);
     return localc;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public final d dbk()
+  public final d doS()
   {
     AppMethodBeat.i(66852);
-    g.afz().aeD();
-    if (this.uvF == null) {
-      this.uvF = new d();
+    g.agP().afT();
+    if (this.vEy == null) {
+      this.vEy = new d();
     }
-    d locald = this.uvF;
+    d locald = this.vEy;
     AppMethodBeat.o(66852);
     return locald;
   }
@@ -67,15 +67,15 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(66849);
-    this.uvE = null;
-    com.tencent.mm.sdk.b.a.ESL.c(this.uvG);
+    this.vEx = null;
+    com.tencent.mm.sdk.b.a.GpY.c(this.vEz);
     AppMethodBeat.o(66849);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(66850);
-    com.tencent.mm.sdk.b.a.ESL.d(this.uvG);
+    com.tencent.mm.sdk.b.a.GpY.d(this.vEz);
     AppMethodBeat.o(66850);
   }
   
@@ -83,7 +83,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.a.a
  * JD-Core Version:    0.7.0.1
  */

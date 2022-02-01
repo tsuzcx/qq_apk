@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.ui.RemittanceAdapterUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.d;
 
 public class a
@@ -13,7 +13,7 @@ public class a
   public d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(67333);
-    ad.d("MicroMsg.RemittanceProcess", "start Process : RemittanceProcess");
+    ac.d("MicroMsg.RemittanceProcess", "start Process : RemittanceProcess");
     b(paramActivity, RemittanceAdapterUI.class, paramBundle);
     AppMethodBeat.o(67333);
     return this;
@@ -24,7 +24,7 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(67334);
-    super.bq(paramActivity);
+    super.bt(paramActivity);
     AppMethodBeat.o(67334);
   }
   
@@ -33,7 +33,7 @@ public class a
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "RemittanceProcess";
   }
@@ -41,7 +41,7 @@ public class a
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(67335);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(67335);
   }
 }

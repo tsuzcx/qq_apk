@@ -12,8 +12,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.f;
 import com.tencent.mm.model.ci;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,7 +42,7 @@ public final class b
         NotificationChannel localNotificationChannel = (NotificationChannel)paramNotificationManager.next();
         if ((localNotificationChannel != null) && (localNotificationChannel.getId() != null))
         {
-          boolean bool = bt.kU(localNotificationChannel.getId(), paramString);
+          boolean bool = bs.lr(localNotificationChannel.getId(), paramString);
           if (bool)
           {
             AppMethodBeat.o(149371);
@@ -53,7 +53,7 @@ public final class b
     }
     catch (Exception paramNotificationManager)
     {
-      ad.e("MicroMsg.NotificationManufacturerCompatibility", "deleteNoNumberNotification exception:%s", new Object[] { paramNotificationManager.getMessage() });
+      ac.e("MicroMsg.NotificationManufacturerCompatibility", "deleteNoNumberNotification exception:%s", new Object[] { paramNotificationManager.getMessage() });
       AppMethodBeat.o(149371);
     }
     return null;
@@ -62,8 +62,8 @@ public final class b
   private static void a(NotificationChannel paramNotificationChannel, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149369);
-    paramSharedPreferences = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.m.a.fHc);
-    if (ajz(paramSharedPreferences)) {
+    paramSharedPreferences = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.m.a.fKJ);
+    if (aox(paramSharedPreferences)) {
       paramNotificationChannel.setSound(Uri.parse(paramSharedPreferences), Notification.AUDIO_ATTRIBUTES_DEFAULT);
     }
     AppMethodBeat.o(149369);
@@ -76,14 +76,14 @@ public final class b
     localNotificationChannel.setDescription(paramContext.getString(2131761697));
     localNotificationChannel.enableLights(true);
     localNotificationChannel.setLightColor(-16711936);
-    localNotificationChannel.setVibrationPattern(bt.hWP);
+    localNotificationChannel.setVibrationPattern(bs.iwT);
     localNotificationChannel.enableVibration(paramBoolean1);
     if (paramBoolean2)
     {
-      paramContext = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.m.a.fHc);
-      if (ajz(paramContext))
+      paramContext = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.m.a.fKJ);
+      if (aox(paramContext))
       {
-        ad.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s", new Object[] { Uri.parse(paramContext) });
+        ac.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s", new Object[] { Uri.parse(paramContext) });
         localNotificationChannel.setSound(Uri.parse(paramContext), Notification.AUDIO_ATTRIBUTES_DEFAULT);
       }
     }
@@ -99,7 +99,7 @@ public final class b
     localNotificationChannel.setDescription(paramContext.getString(2131761697));
     localNotificationChannel.enableLights(true);
     localNotificationChannel.setLightColor(-16711936);
-    localNotificationChannel.setVibrationPattern(bt.hWP);
+    localNotificationChannel.setVibrationPattern(bs.iwT);
     if (paramBoolean1)
     {
       localNotificationChannel.enableVibration(true);
@@ -132,12 +132,12 @@ public final class b
   public static boolean a(Context paramContext, NotificationManager paramNotificationManager, boolean paramBoolean1, boolean paramBoolean2, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149365);
-    if (!com.tencent.mm.sdk.h.b.eHp())
+    if (!com.tencent.mm.sdk.h.b.eWK())
     {
       AppMethodBeat.o(149365);
       return false;
     }
-    String str1 = com.tencent.mm.br.a.Ye();
+    String str1 = com.tencent.mm.bq.a.Zb();
     NotificationChannel localNotificationChannel = a(paramNotificationManager, str1);
     if (localNotificationChannel == null) {
       a(paramContext, paramNotificationManager, str1, paramBoolean1, paramBoolean2, paramSharedPreferences);
@@ -146,25 +146,25 @@ public final class b
     {
       AppMethodBeat.o(149365);
       return true;
-      ci.uy(com.tencent.mm.loader.j.b.ahZ());
-      String str2 = ci.nr(2);
+      ci.yE(com.tencent.mm.loader.j.b.aoZ());
+      String str2 = ci.of(2);
       String[] arrayOfString = str2.split(";");
-      ad.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s curVersion:%s", new Object[] { str2, Integer.valueOf(d.CpK) });
+      ac.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s curVersion:%s", new Object[] { str2, Integer.valueOf(d.DIc) });
       if ((arrayOfString != null) && (arrayOfString.length == 2))
       {
         int i = Integer.parseInt(arrayOfString[0], 16);
-        ad.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s", new Object[] { Integer.valueOf(i) });
-        if ((654311424 <= i) && (i <= 654312247) && (!bt.kU(localNotificationChannel.getId(), "message_channel_compatibility_id"))) {
+        ac.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s", new Object[] { Integer.valueOf(i) });
+        if ((654311424 <= i) && (i <= 654312247) && (!bs.lr(localNotificationChannel.getId(), "message_channel_compatibility_id"))) {
           if (localNotificationChannel.getSound() == null) {
             try
             {
               paramNotificationManager.deleteNotificationChannel(localNotificationChannel.getId());
               a(paramContext, paramNotificationManager, "message_channel_compatibility_id", paramBoolean1, paramBoolean2, paramSharedPreferences);
-              com.tencent.mm.br.a.aAl("message_channel_compatibility_id");
+              com.tencent.mm.bq.a.aFD("message_channel_compatibility_id");
             }
             catch (Exception paramContext)
             {
-              ad.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
+              ac.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
             }
           } else {
             a(paramContext, paramNotificationManager, str1, paramBoolean1, paramBoolean2, paramSharedPreferences);
@@ -174,13 +174,13 @@ public final class b
     }
   }
   
-  public static boolean ajz(String paramString)
+  public static boolean aox(String paramString)
   {
     AppMethodBeat.i(149372);
-    if (!bt.isNullOrNil(paramString)) {}
+    if (!bs.isNullOrNil(paramString)) {}
     for (boolean bool = s(Uri.parse(paramString));; bool = false)
     {
-      ad.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s result = %s", new Object[] { bt.by(paramString, "null"), Boolean.valueOf(bool) });
+      ac.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s result = %s", new Object[] { bs.bG(paramString, "null"), Boolean.valueOf(bool) });
       AppMethodBeat.o(149372);
       return bool;
     }
@@ -189,14 +189,14 @@ public final class b
   public static boolean b(Context paramContext, NotificationManager paramNotificationManager, boolean paramBoolean1, boolean paramBoolean2, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149366);
-    boolean bool1 = com.tencent.mm.sdk.h.a.eHk();
-    boolean bool2 = com.tencent.mm.sdk.h.a.eHl();
+    boolean bool1 = com.tencent.mm.sdk.h.a.eWF();
+    boolean bool2 = com.tencent.mm.sdk.h.a.eWG();
     if ((!bool1) && (!bool2))
     {
       AppMethodBeat.o(149366);
       return false;
     }
-    String str = com.tencent.mm.br.a.Ye();
+    String str = com.tencent.mm.bq.a.Zb();
     NotificationChannel localNotificationChannel = a(paramNotificationManager, str);
     if (localNotificationChannel == null)
     {
@@ -215,15 +215,15 @@ public final class b
         try
         {
           if (localNotificationChannel.getSound() != null) {
-            f.py(localNotificationChannel.getSound().toString());
+            f.sJ(localNotificationChannel.getSound().toString());
           }
           paramNotificationManager.deleteNotificationChannel(localNotificationChannel.getId());
           a(paramContext, paramNotificationManager, "message_channel_compatibility_id", bool1, bool2, paramBoolean1, paramBoolean2, paramSharedPreferences);
-          com.tencent.mm.br.a.aAl("message_channel_compatibility_id");
+          com.tencent.mm.bq.a.aFD("message_channel_compatibility_id");
         }
         catch (Exception paramContext)
         {
-          ad.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
+          ac.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
         }
       }
       break;
@@ -239,7 +239,7 @@ public final class b
     // Byte code:
     //   0: ldc_w 300
     //   3: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 306	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   6: invokestatic 306	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   9: invokevirtual 310	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   12: aload_0
     //   13: ldc_w 312
@@ -289,7 +289,7 @@ public final class b
     //   102: aload_1
     //   103: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   106: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: invokestatic 354	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: invokestatic 354	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   112: ldc_w 300
     //   115: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: iconst_0
@@ -360,7 +360,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.b
  * JD-Core Version:    0.7.0.1
  */

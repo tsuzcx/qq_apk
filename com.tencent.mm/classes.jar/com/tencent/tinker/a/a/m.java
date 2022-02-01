@@ -4,14 +4,14 @@ import com.tencent.tinker.a.a.b.a;
 
 public final class m
 {
-  protected final a IBp;
-  public int IBq;
-  private int IBr;
+  private int KnA;
+  protected final a Kny;
+  public int Knz;
   private int type = -1;
   
   public m(a parama, int paramInt)
   {
-    this.IBp = parama;
+    this.Kny = parama;
     this.type = paramInt;
   }
   
@@ -20,101 +20,101 @@ public final class m
     this(new k.1(paramk), paramInt);
   }
   
-  private void ace(int paramInt)
+  private void afa(int paramInt)
   {
-    if (xM() != paramInt) {
-      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(xM()) }));
+    if (xz() != paramInt) {
+      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(xz()) }));
     }
   }
   
-  public final int foH()
+  public final int fGP()
   {
-    ace(28);
+    afa(28);
     this.type = -1;
-    return o.b(this.IBp);
+    return o.b(this.Kny);
   }
   
-  public final int foI()
+  public final int fGQ()
   {
-    ace(29);
+    afa(29);
     this.type = -1;
-    this.IBq = o.b(this.IBp);
-    return o.b(this.IBp);
+    this.Knz = o.b(this.Kny);
+    return o.b(this.Kny);
   }
   
-  public final int foJ()
+  public final int fGR()
   {
-    return o.b(this.IBp);
+    return o.b(this.Kny);
   }
   
-  public final int foK()
+  public final int fGS()
   {
-    ace(23);
+    afa(23);
     this.type = -1;
-    return l.a(this.IBp, this.IBr, false);
+    return l.a(this.Kny, this.KnA, false);
   }
   
-  public final int foL()
+  public final int fGT()
   {
-    ace(24);
+    afa(24);
     this.type = -1;
-    return l.a(this.IBp, this.IBr, false);
+    return l.a(this.Kny, this.KnA, false);
   }
   
-  public final int foM()
+  public final int fGU()
   {
-    ace(25);
+    afa(25);
     this.type = -1;
-    return l.a(this.IBp, this.IBr, false);
+    return l.a(this.Kny, this.KnA, false);
   }
   
-  public final int foN()
+  public final int fGV()
   {
-    ace(27);
+    afa(27);
     this.type = -1;
-    return l.a(this.IBp, this.IBr, false);
+    return l.a(this.Kny, this.KnA, false);
   }
   
-  public final int foO()
+  public final int fGW()
   {
-    ace(26);
+    afa(26);
     this.type = -1;
-    return l.a(this.IBp, this.IBr, false);
+    return l.a(this.Kny, this.KnA, false);
   }
   
-  public final void foP()
+  public final void fGX()
   {
-    ace(30);
+    afa(30);
     this.type = -1;
   }
   
   public final boolean readBoolean()
   {
-    ace(31);
+    afa(31);
     this.type = -1;
-    return this.IBr != 0;
+    return this.KnA != 0;
   }
   
   public final byte readByte()
   {
-    ace(0);
+    afa(0);
     this.type = -1;
-    return (byte)l.a(this.IBp, this.IBr);
+    return (byte)l.a(this.Kny, this.KnA);
   }
   
   public final char readChar()
   {
-    ace(3);
+    afa(3);
     this.type = -1;
-    return (char)l.a(this.IBp, this.IBr, false);
+    return (char)l.a(this.Kny, this.KnA, false);
   }
   
   public final double readDouble()
   {
-    ace(17);
+    afa(17);
     this.type = -1;
-    a locala = this.IBp;
-    int i = this.IBr;
+    a locala = this.Kny;
+    int i = this.KnA;
     long l = 0L;
     while (i >= 0)
     {
@@ -126,24 +126,24 @@ public final class m
   
   public final float readFloat()
   {
-    ace(16);
+    afa(16);
     this.type = -1;
-    return Float.intBitsToFloat(l.a(this.IBp, this.IBr, true));
+    return Float.intBitsToFloat(l.a(this.Kny, this.KnA, true));
   }
   
   public final int readInt()
   {
-    ace(4);
+    afa(4);
     this.type = -1;
-    return l.a(this.IBp, this.IBr);
+    return l.a(this.Kny, this.KnA);
   }
   
   public final long readLong()
   {
-    ace(6);
+    afa(6);
     this.type = -1;
-    a locala = this.IBp;
-    int j = this.IBr;
+    a locala = this.Kny;
+    int j = this.KnA;
     long l = 0L;
     int i = j;
     while (i >= 0)
@@ -156,16 +156,16 @@ public final class m
   
   public final short readShort()
   {
-    ace(2);
+    afa(2);
     this.type = -1;
-    return (short)l.a(this.IBp, this.IBr);
+    return (short)l.a(this.Kny, this.KnA);
   }
   
   public final void skipValue()
   {
     int j = 0;
     int i = 0;
-    switch (xM())
+    switch (xz())
     {
     case 1: 
     case 5: 
@@ -207,50 +207,50 @@ public final class m
       readDouble();
       return;
     case 23: 
-      foK();
+      fGS();
       return;
     case 24: 
-      foL();
+      fGT();
       return;
     case 25: 
-      foM();
+      fGU();
       return;
     case 27: 
-      foN();
+      fGV();
       return;
     case 26: 
-      foO();
+      fGW();
       return;
     case 28: 
-      j = foH();
+      j = fGP();
       while (i < j)
       {
         skipValue();
         i += 1;
       }
     case 29: 
-      int k = foI();
+      int k = fGQ();
       i = j;
       while (i < k)
       {
-        o.b(this.IBp);
+        o.b(this.Kny);
         skipValue();
         i += 1;
       }
     case 30: 
-      foP();
+      fGX();
       return;
     }
     readBoolean();
   }
   
-  public final int xM()
+  public final int xz()
   {
     if (this.type == -1)
     {
-      int i = this.IBp.readByte() & 0xFF;
+      int i = this.Kny.readByte() & 0xFF;
       this.type = (i & 0x1F);
-      this.IBr = ((i & 0xE0) >> 5);
+      this.KnA = ((i & 0xE0) >> 5);
     }
     return this.type;
   }

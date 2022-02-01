@@ -17,11 +17,11 @@ import java.util.List;
 public abstract class h
   implements at
 {
-  private final f<a> JXl;
+  private final f<a> LKE;
   
   public h(i parami)
   {
-    this.JXl = parami.a((a)new b(this), (b)c.JXp, (b)new d(this));
+    this.LKE = parami.a((a)new b(this), (b)c.LKI, (b)new d(this));
   }
   
   protected void I(ab paramab)
@@ -29,35 +29,35 @@ public abstract class h
     k.h(paramab, "type");
   }
   
-  public final List<ab> fJP()
-  {
-    return ((a)this.JXl.invoke()).JXm;
-  }
+  protected abstract Collection<ab> fQp();
   
-  protected abstract Collection<ab> fxL();
+  protected abstract aq fQt();
   
-  protected abstract aq fxP();
-  
-  protected ab fzR()
+  protected ab fSv()
   {
     return null;
   }
   
-  protected Collection<ab> yl(boolean paramBoolean)
+  public final List<ab> gcs()
   {
-    return (Collection)v.Jgl;
+    return ((a)this.LKE.invoke()).LKF;
+  }
+  
+  protected Collection<ab> zD(boolean paramBoolean)
+  {
+    return (Collection)v.KTF;
   }
   
   static final class a
   {
-    List<? extends ab> JXm;
-    final Collection<ab> JXn;
+    List<? extends ab> LKF;
+    final Collection<ab> LKG;
     
     public a(Collection<? extends ab> paramCollection)
     {
       AppMethodBeat.i(60602);
-      this.JXn = paramCollection;
-      this.JXm = j.listOf(u.JXz);
+      this.LKG = paramCollection;
+      this.LKF = j.listOf(u.LKS);
       AppMethodBeat.o(60602);
     }
   }
@@ -76,12 +76,12 @@ public abstract class h
     extends l
     implements b<Boolean, h.a>
   {
-    public static final c JXp;
+    public static final c LKI;
     
     static
     {
       AppMethodBeat.i(60605);
-      JXp = new c();
+      LKI = new c();
       AppMethodBeat.o(60605);
     }
     
@@ -123,7 +123,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.h
  * JD-Core Version:    0.7.0.1
  */

@@ -15,66 +15,66 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Random;
 
 public final class k
   extends Drawable
 {
-  private int BWA;
-  private float BWB;
-  private float BWC;
-  private int BWD;
-  private int BWE;
-  private RectF BWF;
-  private Drawable BWs;
-  private Interpolator BWt;
-  private Interpolator BWu;
-  private int BWv;
-  private int BWw;
-  private int BWx;
-  private int BWy;
-  private int BWz;
+  private Drawable DoJ;
+  private Interpolator DoK;
+  private Interpolator DoL;
+  private int DoM;
+  private int DoN;
+  private int DoO;
+  private int DoP;
+  private int DoQ;
+  private int DoR;
+  private float DoS;
+  private float DoT;
+  private int DoU;
+  private int DoV;
+  private RectF DoW;
   private Context context;
   private int currentState;
-  private float js;
-  private float jt;
+  private float kr;
+  private float ks;
   private Paint paint;
-  private ValueAnimator qT;
-  private float rZb;
+  private ValueAnimator rT;
   private Random random;
-  private int rxB;
-  private int rxC;
-  private int rxD;
-  private int rxE;
-  private int rxF;
-  private int rxG;
-  private int rxH;
-  private boolean rxI;
-  private int rxJ;
+  private boolean sGA;
+  private int sGB;
+  private int sGt;
+  private int sGu;
+  private int sGv;
+  private int sGw;
+  private int sGx;
+  private int sGy;
+  private int sGz;
+  private float tgT;
   
   public k(Context paramContext)
   {
     AppMethodBeat.i(31245);
-    this.BWs = null;
-    this.rxB = 0;
-    this.rxC = 0;
+    this.DoJ = null;
+    this.sGt = 0;
+    this.sGu = 0;
     this.paint = new Paint(1);
-    this.BWt = new LinearInterpolator();
-    this.BWu = new AccelerateDecelerateInterpolator();
+    this.DoK = new LinearInterpolator();
+    this.DoL = new AccelerateDecelerateInterpolator();
     this.random = new Random(System.currentTimeMillis());
-    this.rxH = 0;
-    this.rZb = 0.0F;
-    this.js = -90.0F;
-    this.BWB = 0.0F;
-    this.jt = 0.0F;
-    this.BWC = 5.0F;
-    this.rxI = false;
+    this.sGz = 0;
+    this.tgT = 0.0F;
+    this.kr = -90.0F;
+    this.DoS = 0.0F;
+    this.ks = 0.0F;
+    this.DoT = 5.0F;
+    this.sGA = false;
     this.currentState = 2;
-    this.qT = ValueAnimator.ofFloat(new float[] { 0.0F, 100.0F });
-    this.qT.setInterpolator(this.BWt);
-    this.qT.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rT = ValueAnimator.ofFloat(new float[] { 0.0F, 100.0F });
+    this.rT.setInterpolator(this.DoK);
+    this.rT.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -84,25 +84,25 @@ public final class k
         AppMethodBeat.o(31244);
       }
     });
-    this.BWF = new RectF();
+    this.DoW = new RectF();
     this.context = paramContext;
-    this.rxB = a.n(paramContext, 2131101171);
-    this.rxC = a.n(paramContext, 2131100707);
-    this.BWs = paramContext.getResources().getDrawable(2131691384);
-    this.BWx = a.ap(paramContext, 2131166989);
-    this.BWy = a.ap(paramContext, 2131166988);
-    this.BWz = a.ap(paramContext, 2131166978);
-    this.rxH = a.ap(paramContext, 2131166983);
-    this.rxD = a.n(paramContext, 2131101078);
-    this.BWw = a.ap(paramContext, 2131166980);
-    this.BWA = a.ap(paramContext, 2131166979);
-    this.rxG = a.n(paramContext, 2131101079);
-    this.BWD = this.BWA;
-    this.BWE = this.BWD;
-    this.rxJ = a.ap(paramContext, 2131166982);
-    this.rxE = a.ap(paramContext, 2131166982);
-    this.rxF = a.ap(paramContext, 2131166981);
-    this.BWv = a.ap(paramContext, 2131166990);
+    this.sGt = a.n(paramContext, 2131101171);
+    this.sGu = a.n(paramContext, 2131100707);
+    this.DoJ = paramContext.getResources().getDrawable(2131691384);
+    this.DoO = a.av(paramContext, 2131166989);
+    this.DoP = a.av(paramContext, 2131166988);
+    this.DoQ = a.av(paramContext, 2131166978);
+    this.sGz = a.av(paramContext, 2131166983);
+    this.sGv = a.n(paramContext, 2131101078);
+    this.DoN = a.av(paramContext, 2131166980);
+    this.DoR = a.av(paramContext, 2131166979);
+    this.sGy = a.n(paramContext, 2131101079);
+    this.DoU = this.DoR;
+    this.DoV = this.DoU;
+    this.sGB = a.av(paramContext, 2131166982);
+    this.sGw = a.av(paramContext, 2131166982);
+    this.sGx = a.av(paramContext, 2131166981);
+    this.DoM = a.av(paramContext, 2131166990);
     AppMethodBeat.o(31245);
   }
   
@@ -118,15 +118,15 @@ public final class k
     return false;
   }
   
-  public final void UF(int paramInt)
+  public final void WP(int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(31250);
-    ad.d("MicroMsg.VoiceInputDrawable", "recordingState() called with: maxAmplitudeRate = [%s]", new Object[] { Integer.valueOf(paramInt) });
+    ac.d("MicroMsg.VoiceInputDrawable", "recordingState() called with: maxAmplitudeRate = [%s]", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt < 28) {}
     for (;;)
     {
-      this.rxI = bool;
+      this.sGA = bool;
       invalidateSelf();
       AppMethodBeat.o(31250);
       return;
@@ -134,17 +134,17 @@ public final class k
     }
   }
   
-  public final void cyr()
+  public final void cLD()
   {
     AppMethodBeat.i(31247);
-    ad.d("MicroMsg.VoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputDrawable", "readyState %s", new Object[] { Integer.valueOf(this.currentState) });
     this.currentState = 2;
-    this.qT.cancel();
-    this.rZb = 0.0F;
-    this.js = -90.0F;
-    this.BWB = 0.0F;
-    this.jt = 0.0F;
-    this.BWC = 5.0F;
+    this.rT.cancel();
+    this.tgT = 0.0F;
+    this.kr = -90.0F;
+    this.DoS = 0.0F;
+    this.ks = 0.0F;
+    this.DoT = 5.0F;
     invalidateSelf();
     AppMethodBeat.o(31247);
   }
@@ -160,42 +160,42 @@ public final class k
       j = paramCanvas.getHeight() >> 1;
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
-      this.paint.setColor(this.rxD);
+      this.paint.setColor(this.sGv);
       if (this.currentState != 7) {
         break label457;
       }
-      if (this.rxI)
+      if (this.sGA)
       {
-        this.rxJ -= 4;
-        this.rxJ = Math.min(Math.max(this.rxE, this.rxJ), this.rxF);
-        paramCanvas.drawCircle(i, j, this.rxJ, this.paint);
+        this.sGB -= 4;
+        this.sGB = Math.min(Math.max(this.sGw, this.sGB), this.sGx);
+        paramCanvas.drawCircle(i, j, this.sGB, this.paint);
       }
     }
     else
     {
       label140:
-      if ((this.BWs != null) && (!l(paramCanvas))) {
+      if ((this.DoJ != null) && (!l(paramCanvas))) {
         break label477;
       }
       if ((this.currentState == 4) && (paramCanvas != null))
       {
-        this.paint.setColor(this.rxB);
-        this.paint.setStrokeWidth(this.BWv);
+        this.paint.setColor(this.sGt);
+        this.paint.setStrokeWidth(this.DoM);
         this.paint.setStyle(Paint.Style.STROKE);
         this.paint.clearShadowLayer();
         this.paint.setShader(null);
-        this.BWF.left = (paramCanvas.getWidth() / 2 - this.BWA);
-        this.BWF.top = (paramCanvas.getHeight() / 2 - this.BWA);
-        this.BWF.right = (paramCanvas.getWidth() / 2 + this.BWA);
-        this.BWF.bottom = (paramCanvas.getHeight() / 2 + this.BWA);
-        paramCanvas.drawArc(this.BWF, this.js, this.jt, false, this.paint);
-        this.js += this.BWB;
-        this.jt += this.BWC;
-        if (this.jt < 360.0F) {
+        this.DoW.left = (paramCanvas.getWidth() / 2 - this.DoR);
+        this.DoW.top = (paramCanvas.getHeight() / 2 - this.DoR);
+        this.DoW.right = (paramCanvas.getWidth() / 2 + this.DoR);
+        this.DoW.bottom = (paramCanvas.getHeight() / 2 + this.DoR);
+        paramCanvas.drawArc(this.DoW, this.kr, this.ks, false, this.paint);
+        this.kr += this.DoS;
+        this.ks += this.DoT;
+        if (this.ks < 360.0F) {
           break label572;
         }
-        this.BWC = (-this.BWC);
-        this.BWB = 5.0F;
+        this.DoT = (-this.DoT);
+        this.DoS = 5.0F;
       }
     }
     for (;;)
@@ -203,90 +203,90 @@ public final class k
       if (((this.currentState == 6) || (this.currentState == 7)) && (!l(paramCanvas)))
       {
         this.paint.setStyle(Paint.Style.FILL);
-        this.paint.setColor(this.rxG);
-        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.rxH, this.paint);
+        this.paint.setColor(this.sGy);
+        paramCanvas.drawCircle(paramCanvas.getWidth() >> 1, paramCanvas.getHeight() >> 1, this.sGz, this.paint);
       }
       AppMethodBeat.o(31253);
       return;
-      this.rxJ += 4;
+      this.sGB += 4;
       break;
       label457:
-      paramCanvas.drawCircle(i, j, this.rxE, this.paint);
+      paramCanvas.drawCircle(i, j, this.sGw, this.paint);
       break label140;
       label477:
       if (this.currentState == 5) {
-        this.BWs.setColorFilter(this.rxC, PorterDuff.Mode.SRC_ATOP);
+        this.DoJ.setColorFilter(this.sGu, PorterDuff.Mode.SRC_ATOP);
       }
       for (;;)
       {
         i = paramCanvas.getWidth() / 2;
         j = paramCanvas.getHeight() / 2;
-        this.BWs.setBounds(i - this.rxH, j - this.rxH, i + this.rxH, j + this.rxH);
-        this.BWs.draw(paramCanvas);
+        this.DoJ.setBounds(i - this.sGz, j - this.sGz, i + this.sGz, j + this.sGz);
+        this.DoJ.draw(paramCanvas);
         break;
-        this.BWs.setColorFilter(this.rxB, PorterDuff.Mode.SRC_ATOP);
+        this.DoJ.setColorFilter(this.sGt, PorterDuff.Mode.SRC_ATOP);
       }
       label572:
-      if (this.jt <= 0.0F)
+      if (this.ks <= 0.0F)
       {
-        this.BWC = (-this.BWC);
-        this.BWB = 0.0F;
-        this.js = -90.0F;
-        this.jt = 0.0F;
+        this.DoT = (-this.DoT);
+        this.DoS = 0.0F;
+        this.kr = -90.0F;
+        this.ks = 0.0F;
       }
     }
   }
   
-  public final void exG()
+  public final void eNa()
   {
     AppMethodBeat.i(31246);
-    ad.d("MicroMsg.VoiceInputDrawable", "longClickState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputDrawable", "longClickState %s", new Object[] { Integer.valueOf(this.currentState) });
     this.currentState = 7;
-    this.qT.cancel();
-    this.rZb = 0.0F;
+    this.rT.cancel();
+    this.tgT = 0.0F;
     invalidateSelf();
     AppMethodBeat.o(31246);
   }
   
-  public final void exH()
+  public final void eNb()
   {
     AppMethodBeat.i(31248);
-    ad.d("MicroMsg.VoiceInputDrawable", "readyPressState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputDrawable", "readyPressState %s", new Object[] { Integer.valueOf(this.currentState) });
     this.currentState = 6;
-    this.qT.cancel();
-    this.rZb = 0.0F;
+    this.rT.cancel();
+    this.tgT = 0.0F;
     invalidateSelf();
     AppMethodBeat.o(31248);
   }
   
-  public final void exI()
+  public final void eNc()
   {
     AppMethodBeat.i(31251);
-    ad.d("MicroMsg.VoiceInputDrawable", "recognizingState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputDrawable", "recognizingState %s", new Object[] { Integer.valueOf(this.currentState) });
     this.currentState = 4;
-    this.qT.cancel();
-    this.rZb = 0.0F;
-    this.qT.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.qT.setDuration(1000L);
-    this.qT.setRepeatCount(-1);
-    this.qT.start();
+    this.rT.cancel();
+    this.tgT = 0.0F;
+    this.rT.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.rT.setDuration(1000L);
+    this.rT.setRepeatCount(-1);
+    this.rT.start();
     AppMethodBeat.o(31251);
   }
   
-  public final void exJ()
+  public final void eNd()
   {
     AppMethodBeat.i(31252);
-    ad.d("MicroMsg.VoiceInputDrawable", "disableState %s", new Object[] { Integer.valueOf(this.currentState) });
+    ac.d("MicroMsg.VoiceInputDrawable", "disableState %s", new Object[] { Integer.valueOf(this.currentState) });
     this.currentState = 5;
-    this.qT.cancel();
-    this.rZb = 0.0F;
+    this.rT.cancel();
+    this.tgT = 0.0F;
     invalidateSelf();
     AppMethodBeat.o(31252);
   }
   
   public final int getIntrinsicHeight()
   {
-    return this.rxH * 2;
+    return this.sGz * 2;
   }
   
   public final int getIntrinsicWidth()
@@ -297,7 +297,7 @@ public final class k
       AppMethodBeat.o(31254);
       return 0;
     }
-    int i = a.hV(this.context);
+    int i = a.ig(this.context);
     AppMethodBeat.o(31254);
     return i;
   }
@@ -311,21 +311,21 @@ public final class k
   
   public final void setColorFilter(ColorFilter paramColorFilter) {}
   
-  public final void tX(boolean paramBoolean)
+  public final void uY(boolean paramBoolean)
   {
     AppMethodBeat.i(31249);
-    ad.d("MicroMsg.VoiceInputDrawable", "recordingStartState() called with: maxAmplitudeRate = [%s] fromLongCkick = %s", new Object[] { Integer.valueOf(0), Boolean.valueOf(paramBoolean) });
+    ac.d("MicroMsg.VoiceInputDrawable", "recordingStartState() called with: maxAmplitudeRate = [%s] fromLongCkick = %s", new Object[] { Integer.valueOf(0), Boolean.valueOf(paramBoolean) });
     if (!paramBoolean) {
       this.currentState = 3;
     }
-    this.rxI = true;
+    this.sGA = true;
     invalidateSelf();
     AppMethodBeat.o(31249);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.k
  * JD-Core Version:    0.7.0.1
  */

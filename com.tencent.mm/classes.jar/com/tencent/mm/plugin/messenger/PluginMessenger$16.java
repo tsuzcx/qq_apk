@@ -1,54 +1,59 @@
 package com.tencent.mm.plugin.messenger;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.bi;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.plugin.messenger.a.f.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import java.util.Map;
 
 final class PluginMessenger$16
-  implements f.c
+  implements f.a
 {
-  PluginMessenger$16(PluginMessenger paramPluginMessenger, String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext) {}
+  PluginMessenger$16(PluginMessenger paramPluginMessenger) {}
   
-  public final void d(boolean paramBoolean, String paramString)
+  public final String e(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(203905);
-    if ((paramBoolean) && (af.aHH(this.gXD)))
+    AppMethodBeat.i(90720);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    String str = bs.bG((String)paramMap.get(paramString + ".separator"), "、");
+    int i = 0;
+    StringBuilder localStringBuilder2 = new StringBuilder().append(paramString).append(".memberlist.member");
+    Object localObject;
+    if (i != 0)
     {
-      paramString = new bi();
-      paramString.ib(this.hzx);
-      paramString.dPx = 1L;
-      paramString.ic(this.kTn);
-      paramString.dPy = 1L;
-      paramString.dPA = 2L;
-      paramString.aBj();
-      PluginMessenger.access$202(this.txs, new com.tencent.mm.openim.b.q(this.gXD, this.rlf));
-      PluginMessenger.access$200(this.txs).hNR = this.kTn;
-      g.aeS().a(PluginMessenger.access$200(this.txs), 0);
-      paramString = this.txs;
-      Context localContext = this.val$context;
-      this.val$context.getString(2131755906);
-      PluginMessenger.access$302(paramString, h.b(localContext, this.val$context.getString(2131761820), true, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(203904);
-          g.aeS().a(PluginMessenger.access$200(PluginMessenger.16.this.txs));
-          AppMethodBeat.o(203904);
-        }
-      }));
+      localObject = Integer.valueOf(i);
+      label79:
+      localObject = localObject;
+      if (paramMap.get(localObject) == null) {
+        break label185;
+      }
+      if (i != 0) {
+        localStringBuilder1.append(str);
+      }
+      localObject = (String)paramMap.get((String)localObject + ".nickname");
+      if (!bs.isNullOrNil((String)localObject)) {
+        break label174;
+      }
+      ac.w("MicroMsg.PluginMessenger", "hy: can not resolve username or nickname");
     }
-    AppMethodBeat.o(203905);
+    for (;;)
+    {
+      i += 1;
+      break;
+      localObject = "";
+      break label79;
+      label174:
+      localStringBuilder1.append((String)localObject);
+    }
+    label185:
+    paramMap = localStringBuilder1.toString();
+    AppMethodBeat.o(90720);
+    return paramMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.PluginMessenger.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,140 +1,86 @@
 package com.tencent.mm.al;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.a.b.a;
+import com.tencent.mm.kernel.a.b.a.a;
+import com.tencent.mm.kernel.api.c;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.f;
-import com.tencent.mm.protocal.j.e;
-import com.tencent.mm.protocal.j.e.a;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract class l
-  implements com.tencent.mm.network.q
+public final class l
+  implements p, com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.b, c
 {
-  private static final String TAG = "MicroMsg.MMReqRespBase";
-  private boolean isSingleSession = true;
-  private boolean isUserCmd = false;
-  private l.d req;
+  private com.tencent.mm.storage.p hye;
+  private com.tencent.mm.storage.q hyf;
   
-  public static void fillBaseReq(l.d paramd, l paraml)
+  public final String aCK()
   {
-    paramd.setDeviceID(com.tencent.mm.compatible.deviceinfo.q.Xa());
-    paramd.setDeviceType(d.glX);
-    paramd.setClientVersion(d.CpK);
-    paramd.setUin(j.e.a.Cqp.arZ());
-    if (g.afw())
-    {
-      int j = paraml.getType();
-      boolean bool;
-      int k;
-      int i;
-      if (((a)g.ab(a.class)).Zd().getInt("UseAesGcmSessionKeySwitch", 1) == 0)
-      {
-        bool = true;
-        ad.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] accHasReady openSwitch[%s] ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
-        if (bool)
-        {
-          paramd = ((a)g.ab(a.class)).Zd().getValue("UseAesGcmSessionKeyCgiList");
-          if (!bt.isNullOrNil(paramd))
-          {
-            ad.i("MicroMsg.MMReqRespBase", "summerauths check cgi list[%s]", new Object[] { paramd });
-            paramd = paramd.trim().split(",");
-            if (paramd.length > 0)
-            {
-              k = paramd.length;
-              i = 0;
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i < k)
-        {
-          String str = paramd[i];
-          if (j == bt.getInt(str, 0))
-          {
-            paraml.setSingleSession(false);
-            ad.i("MicroMsg.MMReqRespBase", "summerauths check cgi list found cgi[%s] singleSession[%s]", new Object[] { str, Boolean.valueOf(paraml.isSingleSession()) });
-          }
-        }
-        else
-        {
-          return;
-          bool = false;
-          break;
-        }
-        i += 1;
-      }
-    }
-    ad.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] USE_ECDH[%s] accHasReady[%s] ", new Object[] { Integer.valueOf(paramd.getCmdId()), Boolean.valueOf(f.CpT), Boolean.valueOf(g.afw()) });
+    AppMethodBeat.i(209532);
+    Object localObject = new StringBuilder();
+    g.agS();
+    localObject = g.agR().ghC + "bizcache/";
+    AppMethodBeat.o(209532);
+    return localObject;
   }
   
-  public boolean getIsLongPolling()
+  public final List<String> agY()
   {
-    return false;
+    AppMethodBeat.i(124102);
+    LinkedList localLinkedList = new LinkedList();
+    Collections.addAll(localLinkedList, new String[] { "brandicon/", "bizcache/" });
+    AppMethodBeat.o(124102);
+    return localLinkedList;
   }
   
-  public boolean getIsUserCmd()
+  public final com.tencent.mm.storage.p awE()
   {
-    return this.isUserCmd;
+    return this.hye;
   }
   
-  public int getLongPollingTimeout()
+  public final com.tencent.mm.storage.q awF()
   {
-    return 0;
+    return this.hyf;
   }
   
-  public int getOptions()
+  public final String awU()
   {
-    return 0;
+    AppMethodBeat.i(124101);
+    Object localObject = new StringBuilder();
+    g.agS();
+    localObject = g.agR().ghC + "brandicon/";
+    AppMethodBeat.o(124101);
+    return localObject;
   }
   
-  public boolean getPush()
+  public final void onAccountInitialized(e.c paramc)
   {
-    return false;
+    AppMethodBeat.i(124103);
+    paramc = ((k)g.ab(k.class)).dcr();
+    com.tencent.mm.storage.p localp = new com.tencent.mm.storage.p(paramc);
+    this.hye = localp;
+    paramc.a(localp);
+    this.hyf = new com.tencent.mm.storage.q(((k)g.ab(k.class)).awG());
+    AppMethodBeat.o(124103);
   }
   
-  public final l.d getReqObj()
+  public final void onAccountRelease() {}
+  
+  public final void parallelsDependency()
   {
-    if (this.req == null)
-    {
-      this.req = getReqObjImp();
-      fillBaseReq(this.req, this);
-    }
-    return this.req;
-  }
-  
-  protected abstract l.d getReqObjImp();
-  
-  public int getTimeOut()
-  {
-    return 0;
-  }
-  
-  public boolean isSingleSession()
-  {
-    return this.isSingleSession;
-  }
-  
-  public void setConnectionInfo(String paramString) {}
-  
-  public void setIsUserCmd(boolean paramBoolean)
-  {
-    this.isUserCmd = paramBoolean;
-  }
-  
-  void setSingleSession(boolean paramBoolean)
-  {
-    this.isSingleSession = paramBoolean;
+    AppMethodBeat.i(124104);
+    a.a(this, c.class).by(g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class));
+    AppMethodBeat.o(124104);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.l
  * JD-Core Version:    0.7.0.1
  */

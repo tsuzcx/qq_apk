@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.protocal.protobuf.cfn;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ckp;
+import com.tencent.mm.protocal.protobuf.ckq;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class i
   extends n
   implements k
 {
+  private ckq BkE;
   private g callback;
   private final b rr;
-  private cfn zSk;
   
   public i()
   {
     AppMethodBeat.i(69547);
     b.a locala = new b.a();
-    cfm localcfm = new cfm();
-    localcfm.Csp = System.currentTimeMillis();
-    locala.gUU = localcfm;
-    locala.gUV = new cfn();
+    ckp localckp = new ckp();
+    localckp.DKH = System.currentTimeMillis();
+    locala.hvt = localckp;
+    locala.hvu = new ckq();
     locala.uri = "/cgi-bin/mmpay-bin/querywalletentrancebalanceswitchstate";
     locala.funcId = 2635;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     AppMethodBeat.o(69547);
   }
   
@@ -44,18 +44,18 @@ public final class i
     return i;
   }
   
-  public final cfn eaB()
+  public final ckq epX()
   {
     AppMethodBeat.i(69550);
-    if (this.zSk == null)
+    if (this.BkE == null)
     {
-      localcfn = new cfn();
+      localckq = new ckq();
       AppMethodBeat.o(69550);
-      return localcfn;
+      return localckq;
     }
-    cfn localcfn = this.zSk;
+    ckq localckq = this.BkE;
     AppMethodBeat.o(69550);
-    return localcfn;
+    return localckq;
   }
   
   public final int getType()
@@ -66,9 +66,9 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69549);
-    ad.w("MicroMsg.NetSceneQueryWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.w("MicroMsg.NetSceneQueryWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.zSk = ((cfn)((b)paramq).gUT.gUX);
+      this.BkE = ((ckq)((b)paramq).hvs.hvw);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69549);

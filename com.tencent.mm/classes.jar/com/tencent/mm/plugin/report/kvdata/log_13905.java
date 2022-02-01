@@ -5,7 +5,7 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class log_13905
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int clientVersion_;
   public int device_;
@@ -29,13 +29,13 @@ public class log_13905
       }
       paramVarArgs.aR(1, this.import_ds_);
       paramVarArgs.aR(2, this.ds_);
-      paramVarArgs.aG(3, this.uin_);
+      paramVarArgs.aO(3, this.uin_);
       paramVarArgs.aR(4, this.device_);
       paramVarArgs.aR(5, this.clientVersion_);
-      paramVarArgs.aG(6, this.time_stamp_);
+      paramVarArgs.aO(6, this.time_stamp_);
       if (this.viOp_ != null)
       {
-        paramVarArgs.kX(7, this.viOp_.computeSize());
+        paramVarArgs.ln(7, this.viOp_.computeSize());
         this.viOp_.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(151547);
@@ -44,10 +44,10 @@ public class log_13905
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bA(1, this.import_ds_) + 0 + f.a.a.b.b.a.bA(2, this.ds_) + f.a.a.b.b.a.q(3, this.uin_) + f.a.a.b.b.a.bA(4, this.device_) + f.a.a.b.b.a.bA(5, this.clientVersion_) + f.a.a.b.b.a.q(6, this.time_stamp_);
+      i = f.a.a.b.b.a.bx(1, this.import_ds_) + 0 + f.a.a.b.b.a.bx(2, this.ds_) + f.a.a.b.b.a.p(3, this.uin_) + f.a.a.b.b.a.bx(4, this.device_) + f.a.a.b.b.a.bx(5, this.clientVersion_) + f.a.a.b.b.a.p(6, this.time_stamp_);
       paramInt = i;
       if (this.viOp_ != null) {
-        paramInt = i + f.a.a.a.kW(7, this.viOp_.computeSize());
+        paramInt = i + f.a.a.a.lm(7, this.viOp_.computeSize());
       }
       AppMethodBeat.o(151547);
       return paramInt;
@@ -55,9 +55,9 @@ public class log_13905
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       if (this.viOp_ == null)
@@ -80,31 +80,31 @@ public class log_13905
         AppMethodBeat.o(151547);
         return -1;
       case 1: 
-        locallog_13905.import_ds_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13905.import_ds_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151547);
         return 0;
       case 2: 
-        locallog_13905.ds_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13905.ds_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151547);
         return 0;
       case 3: 
-        locallog_13905.uin_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        locallog_13905.uin_ = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(151547);
         return 0;
       case 4: 
-        locallog_13905.device_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13905.device_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151547);
         return 0;
       case 5: 
-        locallog_13905.clientVersion_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        locallog_13905.clientVersion_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151547);
         return 0;
       case 6: 
-        locallog_13905.time_stamp_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        locallog_13905.time_stamp_ = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(151547);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -112,7 +112,7 @@ public class log_13905
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new VoiceInputBehavior();
         localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((VoiceInputBehavior)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        for (boolean bool = true; bool; bool = ((VoiceInputBehavior)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
         locallog_13905.viOp_ = ((VoiceInputBehavior)localObject1);
         paramInt += 1;
       }

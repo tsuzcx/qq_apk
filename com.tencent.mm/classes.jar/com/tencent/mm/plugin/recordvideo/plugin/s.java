@@ -11,71 +11,67 @@ import android.view.ViewPropertyAnimator;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.recordvideo.background.f;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pluginsdk.ui.tools.h.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.b.k;
-import d.g.b.v.e;
+import d.g.b.v.f;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "debugInfoView", "Landroid/widget/TextView;", "(Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Landroid/widget/TextView;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "broadcastDistance", "", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "endTime", "getEndTime", "()I", "setEndTime", "(I)V", "forceFullScreen", "", "isClipMode", "lastBroadcastTime", "", "lastPlayTimeLogTick", "maxRecordTime", "startTime", "getStartTime", "setStartTime", "videoCallback", "com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1;", "getVideoPlayView", "()Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "setVideoPlayView", "(Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;)V", "fullScreenPreview", "", "info", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "gotoClipMode", "isShowWeseeBtn", "gotoPreviewMode", "enableCrop", "onDetach", "onPause", "onResume", "playVideo", "filePath", "", "release", "reset", "seek", "start", "setMute", "mute", "setPlayRange", "end", "setVisibility", "visibility", "showVideoDebugInfoIfNeed", "Companion", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "debugInfoView", "Landroid/widget/TextView;", "(Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Landroid/widget/TextView;)V", "audioFocusHelper", "Lcom/tencent/mm/compatible/util/AudioFocusHelper;", "broadcastDistance", "", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "endTime", "getEndTime", "()I", "setEndTime", "(I)V", "forceFullScreen", "", "isClipMode", "lastBroadcastTime", "", "lastPlayTimeLogTick", "maxRecordTime", "startTime", "getStartTime", "setStartTime", "videoCallback", "com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1;", "getVideoPlayView", "()Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "setVideoPlayView", "(Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;)V", "fullScreenPreview", "", "info", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "gotoClipMode", "isShowWeseeBtn", "gotoPreviewMode", "enableCrop", "onDetach", "onPause", "onResume", "playVideo", "filePath", "", "release", "reset", "seek", "start", "setMute", "mute", "setPlayRange", "end", "setVisibility", "visibility", "showVideoDebugInfoIfNeed", "Companion", "plugin-recordvideo_release"})
 public final class s
   implements t
 {
-  public static final a vkM;
-  private int Lnf;
-  private long Lng;
-  public int cUL;
+  public static final s.a wtq;
+  public int cSh;
   public Context context;
-  public int gBm;
-  public com.tencent.mm.compatible.util.b hDB;
-  public VideoPlayerTextureView tFN;
-  public com.tencent.mm.media.widget.camerarecordview.b.b vjS;
-  private long vkG;
-  public int vkH;
-  public boolean vkI;
-  public boolean vkJ;
-  public final d vkK;
-  public final TextView vkL;
+  public int hbI;
+  public com.tencent.mm.compatible.util.b ied;
+  public com.tencent.mm.media.widget.camerarecordview.b.b sgm;
+  public VideoPlayerTextureView uOi;
+  private long wti;
+  public int wtj;
+  public boolean wtk;
+  public boolean wtl;
+  private int wtm;
+  private long wtn;
+  public final d wto;
+  public final TextView wtp;
   
   static
   {
     AppMethodBeat.i(75607);
-    vkM = new a((byte)0);
+    wtq = new s.a((byte)0);
     AppMethodBeat.o(75607);
   }
   
   public s(VideoPlayerTextureView paramVideoPlayerTextureView, final com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd, TextView paramTextView)
   {
     AppMethodBeat.i(75606);
-    this.tFN = paramVideoPlayerTextureView;
-    this.vkL = paramTextView;
-    this.context = this.tFN.getContext();
-    this.vkG = -1L;
-    this.vkH = 10000;
-    this.Lnf = 333;
-    this.vkK = new d(this, paramd);
+    this.uOi = paramVideoPlayerTextureView;
+    this.wtp = paramTextView;
+    this.context = this.uOi.getContext();
+    this.wti = -1L;
+    this.wtj = 10000;
+    this.wtm = 333;
+    this.wto = new d(this, paramd);
     AppMethodBeat.o(75606);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {
@@ -94,32 +90,32 @@ public final class s
   public final void onPause()
   {
     AppMethodBeat.i(75601);
-    ad.i("MicroMsg.EditVideoPlayPlugin", "onPause");
-    com.tencent.mm.compatible.util.b localb = this.hDB;
+    ac.i("MicroMsg.EditVideoPlayPlugin", "onPause");
+    com.tencent.mm.compatible.util.b localb = this.ied;
     if (localb != null) {
-      localb.XF();
+      localb.YC();
     }
-    this.tFN.pause();
+    this.uOi.pause();
     AppMethodBeat.o(75601);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(75600);
-    ad.i("MicroMsg.EditVideoPlayPlugin", "onResume");
-    com.tencent.mm.compatible.util.b localb = this.hDB;
+    ac.i("MicroMsg.EditVideoPlayPlugin", "onResume");
+    com.tencent.mm.compatible.util.b localb = this.ied;
     if (localb != null) {
       localb.requestFocus();
     }
-    this.tFN.start();
+    this.uOi.start();
     AppMethodBeat.o(75600);
   }
   
-  public final void os(boolean paramBoolean)
+  public final void pm(boolean paramBoolean)
   {
     AppMethodBeat.i(75605);
-    this.vkI = false;
-    Object localObject = this.tFN.getParent();
+    this.wtk = false;
+    Object localObject = this.uOi.getParent();
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.ViewGroup");
@@ -131,16 +127,16 @@ public final class s
     ((ViewPropertyAnimator)localObject).setDuration(300L);
     if (!paramBoolean)
     {
-      this.cUL = 0;
-      localObject = this.vjS;
+      this.cSh = 0;
+      localObject = this.sgm;
       if (localObject == null) {
         break label108;
       }
     }
     label108:
-    for (int i = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).gBm;; i = 10000)
+    for (int i = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hbI;; i = 10000)
     {
-      this.gBm = i;
+      this.hbI = i;
       AppMethodBeat.o(75605);
       return;
     }
@@ -149,34 +145,34 @@ public final class s
   public final void release()
   {
     AppMethodBeat.i(75602);
-    ad.i("MicroMsg.EditVideoPlayPlugin", "release");
-    com.tencent.mm.compatible.util.b localb = this.hDB;
+    ac.i("MicroMsg.EditVideoPlayPlugin", "release");
+    com.tencent.mm.compatible.util.b localb = this.ied;
     if (localb != null) {
-      localb.XF();
+      localb.YC();
     }
-    this.tFN.stop();
-    this.tFN.setVideoCallback(null);
+    this.uOi.stop();
+    this.uOi.setVideoCallback(null);
     AppMethodBeat.o(75602);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(75603);
-    ad.i("MicroMsg.EditVideoPlayPlugin", "release");
-    com.tencent.mm.compatible.util.b localb = this.hDB;
+    ac.i("MicroMsg.EditVideoPlayPlugin", "release");
+    com.tencent.mm.compatible.util.b localb = this.ied;
     if (localb != null) {
-      localb.XF();
+      localb.YC();
     }
-    this.tFN.stop();
-    this.tFN.setVideoCallback(null);
+    this.uOi.stop();
+    this.uOi.setVideoCallback(null);
     AppMethodBeat.o(75603);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75599);
-    this.tFN.setVisibility(paramInt);
-    TextView localTextView = this.vkL;
+    this.uOi.setVisibility(paramInt);
+    TextView localTextView = this.wtp;
     if (localTextView != null)
     {
       localTextView.setVisibility(paramInt);
@@ -186,10 +182,7 @@ public final class s
     AppMethodBeat.o(75599);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$Companion;", "", "()V", "TAG", "", "VIDEO_DURATION_TOLERANT_MS", "", "plugin-recordvideo_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$gotoClipMode$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$gotoClipMode$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-recordvideo_release"})
   public static final class b
     implements Animator.AnimatorListener
   {
@@ -204,7 +197,7 @@ public final class s
     {
       AppMethodBeat.i(75587);
       k.h(paramAnimator, "animation");
-      paramAnimator = this.vkN.tFN.getParent();
+      paramAnimator = this.wtr.uOi.getParent();
       if (paramAnimator == null)
       {
         paramAnimator = new v("null cannot be cast to non-null type android.view.ViewGroup");
@@ -230,7 +223,7 @@ public final class s
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$showVideoDebugInfoIfNeed$1$1"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$showVideoDebugInfoIfNeed$1$1"})
   public static final class c
     implements Runnable
   {
@@ -239,50 +232,50 @@ public final class s
     public final void run()
     {
       AppMethodBeat.i(75591);
-      final v.e locale = new v.e();
-      Object localObject = s.a(this.vkN);
+      final v.f localf = new v.f();
+      Object localObject = s.a(this.wtr);
       if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).gBj;; localObject = null)
+      for (localObject = ((com.tencent.mm.media.widget.camerarecordview.b.b)localObject).hbF;; localObject = null)
       {
-        locale.Jhw = com.tencent.mm.plugin.mmsight.d.ahc((String)localObject);
-        localObject = (String)locale.Jhw;
-        locale.Jhw = ((String)localObject + "\n针对拍摄视频：\n");
-        localObject = (String)locale.Jhw;
+        localf.KUQ = com.tencent.mm.plugin.mmsight.d.alX((String)localObject);
+        localObject = (String)localf.KUQ;
+        localf.KUQ = ((String)localObject + "\n针对拍摄视频：\n");
+        localObject = (String)localf.KUQ;
         localObject = new StringBuilder().append((String)localObject).append("是否使用CPU预览裁剪方式：");
-        com.tencent.mm.plugin.recordvideo.e.a locala = com.tencent.mm.plugin.recordvideo.e.a.vtA;
-        locale.Jhw = (com.tencent.mm.plugin.recordvideo.e.a.dja() + "\n");
-        localObject = (String)locale.Jhw;
+        com.tencent.mm.plugin.recordvideo.e.a locala = com.tencent.mm.plugin.recordvideo.e.a.wDA;
+        localf.KUQ = (com.tencent.mm.plugin.recordvideo.e.a.dwX() + "\n");
+        localObject = (String)localf.KUQ;
         localObject = new StringBuilder().append((String)localObject).append("是否使用两路流录制：");
-        locala = com.tencent.mm.plugin.recordvideo.e.a.vtA;
-        locale.Jhw = (com.tencent.mm.plugin.recordvideo.e.a.djb() + "\n");
-        localObject = (String)locale.Jhw;
+        locala = com.tencent.mm.plugin.recordvideo.e.a.wDA;
+        localf.KUQ = (com.tencent.mm.plugin.recordvideo.e.a.dwY() + "\n");
+        localObject = (String)localf.KUQ;
         localObject = new StringBuilder().append((String)localObject).append("预览页视频个数：");
-        locala = com.tencent.mm.plugin.recordvideo.e.a.vtA;
-        locale.Jhw = (com.tencent.mm.plugin.recordvideo.e.a.djc() + "\n");
-        if (!bt.isNullOrNil((String)locale.Jhw)) {
+        locala = com.tencent.mm.plugin.recordvideo.e.a.wDA;
+        localf.KUQ = (com.tencent.mm.plugin.recordvideo.e.a.dwZ() + "\n");
+        if (!bs.isNullOrNil((String)localf.KUQ)) {
           break;
         }
         AppMethodBeat.o(75591);
         return;
       }
-      if (aj.cbe())
+      if (ai.cin())
       {
-        localObject = g.afB();
+        localObject = com.tencent.mm.kernel.g.agR();
         k.g(localObject, "storage()");
-        if (((e)localObject).afk().getInt(ae.a.Fmr, 0) != 1)
+        if (((e)localObject).agA().getInt(ah.a.GKg, 0) != 1)
         {
           AppMethodBeat.o(75591);
           return;
         }
       }
-      aq.f((Runnable)new Runnable()
+      com.tencent.mm.sdk.platformtools.ap.f((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(75590);
-          ad.i("MicroMsg.EditVideoPlayPlugin", "DEBUG showVideoDebugInfoIfNeed %s", new Object[] { (String)locale.Jhw });
-          this.vkP.vkO.setVisibility(0);
-          this.vkP.vkO.setText((CharSequence)locale.Jhw);
+          ac.i("MicroMsg.EditVideoPlayPlugin", "DEBUG showVideoDebugInfoIfNeed %s", new Object[] { (String)localf.KUQ });
+          this.wtt.wts.setVisibility(0);
+          this.wtt.wts.setText((CharSequence)localf.KUQ);
           AppMethodBeat.o(75590);
         }
       });
@@ -290,47 +283,47 @@ public final class s
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin$videoCallback$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-recordvideo_release"})
   public static final class d
     implements h.a
   {
     d(com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd) {}
     
-    public final void dY(int paramInt1, int paramInt2) {}
+    public final void dZ(int paramInt1, int paramInt2) {}
     
-    public final int eM(int paramInt1, int paramInt2)
+    public final int eP(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(75598);
-      if ((s.d(this.vkN) <= 0L) || (bt.aS(s.d(this.vkN)) >= 1000L))
+      if ((s.d(this.wtr) <= 0L) || (bs.aO(s.d(this.wtr)) >= 1000L))
       {
-        ad.d("MicroMsg.EditVideoPlayPlugin", " " + this.vkN.tFN.isPlaying() + " videoPlayView.currentPosition: " + this.vkN.tFN.getCurrentPosition() + " + " + this.vkN.gBm);
-        s.a(this.vkN, bt.GC());
+        ac.d("MicroMsg.EditVideoPlayPlugin", " " + this.wtr.uOi.isPlaying() + " videoPlayView.currentPosition: " + this.wtr.uOi.getCurrentPosition() + " + " + this.wtr.hbI);
+        s.a(this.wtr, bs.Gn());
       }
       Bundle localBundle;
-      if (this.vkN.tFN.isPlaying())
+      if (this.wtr.uOi.isPlaying())
       {
-        if ((this.vkN.tFN.getCurrentPosition() >= this.vkN.gBm) && (this.vkN.gBm < this.vkN.tFN.getDuration()))
+        if ((this.wtr.uOi.getCurrentPosition() >= this.wtr.hbI) && (this.wtr.hbI < this.wtr.uOi.getDuration()))
         {
-          ad.i("MicroMsg.EditVideoPlayPlugin", "currentPosition:" + this.vkN.tFN.getCurrentPosition() + " reach endTime:" + this.vkN.gBm + ", seekTo startTime:" + this.vkN.cUL + ", isClipMode:" + s.f(this.vkN));
-          this.vkN.tFN.d(this.vkN.cUL, true);
+          ac.i("MicroMsg.EditVideoPlayPlugin", "currentPosition:" + this.wtr.uOi.getCurrentPosition() + " reach endTime:" + this.wtr.hbI + ", seekTo startTime:" + this.wtr.cSh + ", isClipMode:" + s.f(this.wtr));
+          this.wtr.uOi.d(this.wtr.cSh, true);
         }
-        if (!s.f(this.vkN)) {
+        if (!s.f(this.wtr)) {
           break label308;
         }
         localBundle = new Bundle();
-        localBundle.putInt("EDIT_CROP_VIDEO_CURRENT_TIME_INT", this.vkN.tFN.getCurrentPosition());
-        paramd.a(d.c.vob, localBundle);
+        localBundle.putInt("EDIT_CROP_VIDEO_CURRENT_TIME_INT", this.wtr.uOi.getCurrentPosition());
+        paramd.a(d.c.wwI, localBundle);
       }
       for (;;)
       {
         AppMethodBeat.o(75598);
         return 0;
         label308:
-        if (System.currentTimeMillis() - s.h(this.vkN) >= s.g(this.vkN))
+        if (System.currentTimeMillis() - s.h(this.wtr) >= s.g(this.wtr))
         {
           localBundle = new Bundle();
-          localBundle.putInt("EDIT_CROP_VIDEO_CURRENT_TIME_INT", this.vkN.tFN.getCurrentPosition());
-          paramd.a(d.c.vob, localBundle);
+          localBundle.putInt("EDIT_CROP_VIDEO_CURRENT_TIME_INT", this.wtr.uOi.getCurrentPosition());
+          paramd.a(d.c.wwI, localBundle);
         }
       }
     }
@@ -338,57 +331,57 @@ public final class s
     public final void onCompletion()
     {
       AppMethodBeat.i(75597);
-      ad.i("MicroMsg.EditVideoPlayPlugin", "onCompletion, startTime:" + this.vkN.cUL);
-      this.vkN.tFN.d(this.vkN.cUL, true);
+      ac.i("MicroMsg.EditVideoPlayPlugin", "onCompletion, startTime:" + this.wtr.cSh);
+      this.wtr.uOi.d(this.wtr.cSh, true);
       AppMethodBeat.o(75597);
     }
     
     public final void onError(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(75595);
-      ad.e("MicroMsg.MMRecordUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ac.e("MicroMsg.MMRecordUI", "%d on error what %d extra %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(75595);
     }
     
-    public final void rq()
+    public final void rB()
     {
       AppMethodBeat.i(75596);
-      ad.i("MicroMsg.EditVideoPlayPlugin", "video onPrepared");
+      ac.i("MicroMsg.EditVideoPlayPlugin", "video onPrepared");
       Object localObject;
-      if (s.b(this.vkN))
+      if (s.b(this.wtr))
       {
-        ap.cf(s.c(this.vkN));
-        localObject = f.vdH;
-        localObject = f.dgK();
-        com.tencent.mm.plugin.recordvideo.model.a locala = com.tencent.mm.plugin.recordvideo.model.a.viq;
-        int i = com.tencent.mm.plugin.recordvideo.model.a.dhH();
-        locala = com.tencent.mm.plugin.recordvideo.model.a.viq;
+        com.tencent.mm.ui.ap.cl(s.c(this.wtr));
+        localObject = com.tencent.mm.plugin.recordvideo.background.g.wmx;
+        localObject = com.tencent.mm.plugin.recordvideo.background.g.dus();
+        com.tencent.mm.plugin.recordvideo.model.a locala = com.tencent.mm.plugin.recordvideo.model.a.wra;
+        int i = com.tencent.mm.plugin.recordvideo.model.a.dvp();
+        locala = com.tencent.mm.plugin.recordvideo.model.a.wra;
         ((Rect)localObject).set(new Rect(0, 0, i, com.tencent.mm.plugin.recordvideo.model.a.getDisplayHeight()));
       }
       for (;;)
       {
-        s.a(this.vkN, -1L);
-        this.vkN.tFN.start();
-        this.vkN.tFN.setLoop(true);
-        this.vkN.tFN.setOneTimeVideoTextureUpdateCallback((h.e)new b(this));
+        s.a(this.wtr, -1L);
+        this.wtr.uOi.start();
+        this.wtr.uOi.setLoop(true);
+        this.wtr.uOi.setOneTimeVideoTextureUpdateCallback((h.e)new b(this));
         localObject = new Bundle();
-        if (this.vkN.gBm - this.vkN.cUL > s.e(this.vkN) + 750) {
+        if (this.wtr.hbI - this.wtr.cSh > s.e(this.wtr) + 750) {
           ((Bundle)localObject).putBoolean("PARAM_VIDEO_NEED_CROP", true);
         }
-        paramd.a(d.c.voh, (Bundle)localObject);
-        if (this.vkN.gBm - this.vkN.cUL > s.e(this.vkN) + 750)
+        paramd.a(d.c.wwO, (Bundle)localObject);
+        if (this.wtr.hbI - this.wtr.cSh > s.e(this.wtr) + 750)
         {
-          this.vkN.gBm = (s.e(this.vkN) + 250);
-          d.b.a(paramd, d.c.vnZ);
+          this.wtr.hbI = (s.e(this.wtr) + 250);
+          d.b.a(paramd, d.c.wwG);
         }
         AppMethodBeat.o(75596);
         return;
-        this.vkN.tFN.invalidate();
-        this.vkN.tFN.post((Runnable)new a(this));
+        this.wtr.uOi.invalidate();
+        this.wtr.uOi.post((Runnable)new a(this));
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -397,30 +390,30 @@ public final class s
       public final void run()
       {
         AppMethodBeat.i(75592);
-        ad.i("MicroMsg.EditVideoPlayPlugin", "video onPrepared l:" + this.vkR.vkN.tFN.getLeft() + " t:" + this.vkR.vkN.tFN.getTop() + " r:" + this.vkR.vkN.tFN.getRight() + " b:" + this.vkR.vkN.tFN.getBottom());
-        f localf = f.vdH;
-        f.dgK().set(new Rect(this.vkR.vkN.tFN.getLeft(), this.vkR.vkN.tFN.getTop(), this.vkR.vkN.tFN.getRight(), this.vkR.vkN.tFN.getBottom()));
+        ac.i("MicroMsg.EditVideoPlayPlugin", "video onPrepared l:" + this.wtv.wtr.uOi.getLeft() + " t:" + this.wtv.wtr.uOi.getTop() + " r:" + this.wtv.wtr.uOi.getRight() + " b:" + this.wtv.wtr.uOi.getBottom());
+        com.tencent.mm.plugin.recordvideo.background.g localg = com.tencent.mm.plugin.recordvideo.background.g.wmx;
+        com.tencent.mm.plugin.recordvideo.background.g.dus().set(new Rect(this.wtv.wtr.uOi.getLeft(), this.wtv.wtr.uOi.getTop(), this.wtv.wtr.uOi.getRight(), this.wtv.wtr.uOi.getBottom()));
         AppMethodBeat.o(75592);
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onTextureUpdate"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onTextureUpdate"})
     static final class b
       implements h.e
     {
       b(s.d paramd) {}
       
-      public final void beo()
+      public final void bli()
       {
         AppMethodBeat.i(75594);
-        aq.n((Runnable)new Runnable()
+        com.tencent.mm.sdk.platformtools.ap.n((Runnable)new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(75593);
-            ad.i("MicroMsg.MMRecordUI", "onTextureUpdate");
-            this.vkS.vkR.vkN.tFN.setAlpha(1.0F);
-            d.b.a(this.vkS.vkR.vkw, d.c.vnG);
+            ac.i("MicroMsg.MMRecordUI", "onTextureUpdate");
+            this.wtw.wtv.wtr.uOi.setAlpha(1.0F);
+            d.b.a(this.wtw.wtv.wsY, d.c.wwm);
             AppMethodBeat.o(75593);
           }
         }, 10L);
@@ -431,7 +424,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.s
  * JD-Core Version:    0.7.0.1
  */

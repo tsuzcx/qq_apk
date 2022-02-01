@@ -18,14 +18,14 @@ public final class h
     AppMethodBeat.o(32815);
   }
   
-  public final String aHk(String paramString)
+  public final String aME(String paramString)
   {
     AppMethodBeat.i(32816);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!af.rz(paramString)) {
+      if (!ai.vC(paramString)) {
         break;
       }
       AppMethodBeat.o(32816);
@@ -37,7 +37,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.h
  * JD-Core Version:    0.7.0.1
  */

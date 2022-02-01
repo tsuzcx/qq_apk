@@ -13,35 +13,35 @@ public abstract interface b
   
   public abstract void a(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract int ahA(String paramString);
+  public abstract int amv(String paramString);
   
-  public abstract void cGR();
+  public abstract void cUc();
   
-  public abstract void cGS();
+  public abstract void cUd();
   
-  public abstract void cOp();
+  public abstract void dbX();
   
-  public abstract void cRF();
+  public abstract void dfp();
   
-  public abstract void cRG();
+  public abstract void dfq();
   
-  public abstract void cRH();
+  public abstract void dfr();
   
-  public abstract boolean cRI();
+  public abstract boolean dfs();
   
-  public abstract void gg(int paramInt1, int paramInt2);
+  public abstract void gn(int paramInt1, int paramInt2);
   
-  public abstract void ns(boolean paramBoolean);
+  public abstract void om(boolean paramBoolean);
   
-  public abstract void nt(boolean paramBoolean);
-  
-  public abstract void nu(boolean paramBoolean);
+  public abstract void on(boolean paramBoolean);
   
   public abstract void onError(int paramInt);
+  
+  public abstract void oo(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.b
  * JD-Core Version:    0.7.0.1
  */

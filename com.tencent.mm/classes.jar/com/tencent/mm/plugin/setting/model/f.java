@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbi;
-import com.tencent.mm.protocal.protobuf.bbj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bfa;
+import com.tencent.mm.protocal.protobuf.bfb;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
   extends n
@@ -22,13 +22,13 @@ public final class f
     AppMethodBeat.i(73770);
     this.callback = paramg;
     paramg = new b.a();
-    paramg.gUU = new bbi();
-    paramg.gUV = new bbj();
+    paramg.hvt = new bfa();
+    paramg.hvu = new bfb();
     paramg.uri = "/cgi-bin/micromsg-bin/gettrustedfriends";
     paramg.funcId = 869;
     paramg.reqCmdId = 0;
     paramg.respCmdId = 0;
-    int i = dispatch(parame, paramg.atI(), this);
+    int i = dispatch(parame, paramg.aAz(), this);
     AppMethodBeat.o(73770);
     return i;
   }
@@ -43,7 +43,7 @@ public final class f
     AppMethodBeat.i(73769);
     updateDispatchIdNew(paramInt1);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ad.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      ac.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(73769);

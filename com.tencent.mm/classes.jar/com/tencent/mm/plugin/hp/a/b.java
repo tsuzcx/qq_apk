@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.a;
 import com.tencent.mm.d.a.a;
 import com.tencent.mm.d.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -20,33 +20,33 @@ public final class b
         File localFile2 = new File(paramString1);
         RandomAccessFile localRandomAccessFile = new RandomAccessFile(localFile2, "r");
         File localFile1 = new File(paramString3);
-        i.aMF(i.aMQ(paramString3));
+        i.aSh(i.aSs(paramString3));
         paramString2 = new File(paramString2);
         if ((localFile2.exists()) && (paramString2.exists()))
         {
           int j = 0;
-          paramString1 = a.el(paramString1);
+          paramString1 = a.ea(paramString1);
           int i = j;
           if (paramString1 != null)
           {
             i = j;
-            if (paramString1.cJN != null)
+            if (paramString1.cGU != null)
             {
-              i = paramString1.cJN.cJQ + 8;
-              ad.i("MicroMsg.Tinker.MergeBsDiffApk", "MicroMsg.MergePatchApk:extLen = %d", new Object[] { Integer.valueOf(i) });
+              i = paramString1.cGU.cGX + 8;
+              ac.i("MicroMsg.Tinker.MergeBsDiffApk", "MicroMsg.MergePatchApk:extLen = %d", new Object[] { Integer.valueOf(i) });
             }
           }
           if (d.a(localRandomAccessFile, localFile1, paramString2, i) != 1)
           {
-            ad.i("MicroMsg.Tinker.MergeBsDiffApk", "MicroMsg.MergePatchApk:merge failed in patchLessMemory()");
+            ac.i("MicroMsg.Tinker.MergeBsDiffApk", "MicroMsg.MergePatchApk:merge failed in patchLessMemory()");
             localRandomAccessFile.close();
             AppMethodBeat.o(117378);
             return -1;
           }
           localRandomAccessFile.close();
-          if (!paramString4.equalsIgnoreCase(i.aEN(paramString3)))
+          if (!paramString4.equalsIgnoreCase(i.aKe(paramString3)))
           {
-            ad.i("MicroMsg.Tinker.MergeBsDiffApk", "newApkMd5:%s file md5:%s", new Object[] { paramString4, i.aEN(paramString3) });
+            ac.i("MicroMsg.Tinker.MergeBsDiffApk", "newApkMd5:%s file md5:%s", new Object[] { paramString4, i.aKe(paramString3) });
             AppMethodBeat.o(117378);
             return -2;
           }
@@ -56,14 +56,14 @@ public final class b
           AppMethodBeat.o(117378);
           return 0;
         }
-        ad.e("MicroMsg.Tinker.MergeBsDiffApk", "MicroMsg.MergePatchApk: file not found in merge(): oldFile.exists()=%s , newFile.exists()=%s , patch.exists()=%s ", new Object[] { Boolean.valueOf(localFile2.exists()), Boolean.valueOf(localFile1.exists()), Boolean.valueOf(paramString2.exists()) });
+        ac.e("MicroMsg.Tinker.MergeBsDiffApk", "MicroMsg.MergePatchApk: file not found in merge(): oldFile.exists()=%s , newFile.exists()=%s , patch.exists()=%s ", new Object[] { Boolean.valueOf(localFile2.exists()), Boolean.valueOf(localFile1.exists()), Boolean.valueOf(paramString2.exists()) });
         localRandomAccessFile.close();
         AppMethodBeat.o(117378);
         return -1;
       }
       catch (Exception paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.Tinker.MergeBsDiffApk", paramString1, "merge apk failed.", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.Tinker.MergeBsDiffApk", paramString1, "merge apk failed.", new Object[0]);
         AppMethodBeat.o(117378);
         return -1;
       }
@@ -74,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.a.b
  * JD-Core Version:    0.7.0.1
  */

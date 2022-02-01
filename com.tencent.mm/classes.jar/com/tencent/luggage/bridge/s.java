@@ -6,7 +6,7 @@ public abstract interface s
 {
   public abstract void addJavascriptInterface(Object paramObject, String paramString);
   
-  public abstract void bO(String paramString);
+  public abstract void bE(String paramString);
   
   public abstract Context getContext();
 }

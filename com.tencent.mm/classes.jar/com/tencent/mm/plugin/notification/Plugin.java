@@ -10,24 +10,24 @@ import com.tencent.mm.pluginsdk.m;
 public class Plugin
   implements d
 {
-  a uhc;
+  a vqa;
   
   public Plugin()
   {
     AppMethodBeat.i(26723);
-    this.uhc = new a();
+    this.vqa = new a();
     AppMethodBeat.o(26723);
   }
   
   public m createApplication()
   {
-    return this.uhc;
+    return this.vqa;
   }
   
   public aw createSubCore()
   {
     AppMethodBeat.i(26724);
-    f localf = f.cXZ();
+    f localf = f.dlH();
     AppMethodBeat.o(26724);
     return localf;
   }
@@ -39,7 +39,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.Plugin
  * JD-Core Version:    0.7.0.1
  */

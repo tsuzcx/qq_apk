@@ -1,16 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class fq
   extends b
 {
-  public a diq;
-  public b dir;
+  public a dfH;
+  public b dfI;
   
   public fq()
   {
@@ -19,32 +17,31 @@ public final class fq
   
   private fq(byte paramByte)
   {
-    AppMethodBeat.i(19807);
-    this.diq = new a();
-    this.dir = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116018);
+    this.dfH = new a();
+    this.dfI = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19807);
+    AppMethodBeat.o(116018);
   }
   
   public static final class a
   {
-    public String appId;
-    public Context context;
-    public String[] daV;
-    public int dhL = 0;
-    public String[] selectionArgs;
-    public Uri uri;
+    public String content;
+    public String dfJ;
+    public int flags;
+    public int type;
   }
   
   public static final class b
   {
-    public Cursor dhM;
+    public n dfK;
+    public long msgId = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fq
  * JD-Core Version:    0.7.0.1
  */

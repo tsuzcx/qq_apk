@@ -26,7 +26,7 @@ public final class d
       try
       {
         paramg = com.bumptech.glide.h.a.v(this.file);
-        parama.P(paramg);
+        parama.R(paramg);
         AppMethodBeat.o(77214);
         return;
       }
@@ -42,14 +42,14 @@ public final class d
     
     public final void cleanup() {}
     
-    public final Class<ByteBuffer> nK()
+    public final Class<ByteBuffer> nU()
     {
       return ByteBuffer.class;
     }
     
-    public final com.bumptech.glide.c.a nL()
+    public final com.bumptech.glide.c.a nV()
     {
-      return com.bumptech.glide.c.a.aBX;
+      return com.bumptech.glide.c.a.aCP;
     }
   }
   
@@ -67,7 +67,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.d
  * JD-Core Version:    0.7.0.1
  */

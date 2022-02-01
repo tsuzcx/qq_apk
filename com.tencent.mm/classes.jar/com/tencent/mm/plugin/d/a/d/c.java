@@ -6,15 +6,15 @@ public abstract interface c
   
   public abstract void b(long paramLong, byte[] paramArrayOfByte);
   
-  public abstract void h(long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void k(long paramLong, boolean paramBoolean);
+  public abstract void i(long paramLong1, long paramLong2, long paramLong3);
   
   public abstract void l(long paramLong, boolean paramBoolean);
   
-  public abstract void nx(long paramLong);
+  public abstract void m(long paramLong, boolean paramBoolean);
   
-  public abstract void xt(int paramInt);
+  public abstract void rj(long paramLong);
+  
+  public abstract void yl(int paramInt);
 }
 
 

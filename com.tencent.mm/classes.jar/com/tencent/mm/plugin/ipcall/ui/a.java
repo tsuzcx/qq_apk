@@ -5,34 +5,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
 {
   String countryCode;
-  String hkO;
-  String hkP;
-  private int sEg;
+  String hLr;
+  String hLs;
+  private int tLN;
   
   public a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.hkO = paramString1;
+    this.hLr = paramString1;
     this.countryCode = paramString2;
-    this.sEg = paramInt;
-    this.hkP = paramString3;
+    this.tLN = paramInt;
+    this.hLs = paramString3;
   }
   
-  public final int cHU()
+  public final int cVf()
   {
     AppMethodBeat.i(25567);
-    if (this.sEg == 0)
+    if (this.tLN == 0)
     {
       AppMethodBeat.o(25567);
       return 0;
     }
-    String[] arrayOfString = IPCallCountryCodeScrollbar.sGo;
+    String[] arrayOfString = IPCallCountryCodeScrollbar.tNV;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
-      if (arrayOfString[i].equals(String.valueOf((char)this.sEg)))
+      if (arrayOfString[i].equals(String.valueOf((char)this.tLN)))
       {
-        i = this.sEg;
+        i = this.tLN;
         AppMethodBeat.o(25567);
         return i;
       }

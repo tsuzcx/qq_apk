@@ -9,7 +9,7 @@ import com.tencent.mm.ui.widget.MMEditText;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
 public final class n$8
   implements View.OnTouchListener
 {
@@ -18,7 +18,7 @@ public final class n$8
     AppMethodBeat.i(175690);
     k.h(paramView, "view");
     k.h(paramMotionEvent, "event");
-    if ((paramView.getId() == 2131302503) && (n.b(this.Bvo).getLineCount() >= 5))
+    if ((paramView.getId() == 2131302503) && (n.b(this.CNx).getLineCount() >= 5))
     {
       paramView.getParent().requestDisallowInterceptTouchEvent(true);
       if (paramMotionEvent.getAction() == 1) {

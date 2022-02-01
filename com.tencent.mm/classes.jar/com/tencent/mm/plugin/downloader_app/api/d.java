@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.downloader_app.c.c;
 public abstract interface d
   extends a
 {
-  public abstract c bQP();
+  public abstract c bYf();
 }
 
 

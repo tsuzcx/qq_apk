@@ -13,22 +13,22 @@ import java.util.List;
 public final class g
   implements ac
 {
-  final h JAk;
-  private final d.l.b.a.b.l.a<d.l.b.a.b.f.b, d.l.b.a.b.d.a.c.a.h> JAn;
+  final h LnD;
+  private final d.l.b.a.b.l.a<d.l.b.a.b.f.b, d.l.b.a.b.d.a.c.a.h> LnG;
   
   public g(b paramb)
   {
     AppMethodBeat.i(57758);
-    this.JAk = new h(paramb, (m)m.a.JAC, (f)new d(null));
-    this.JAn = this.JAk.JAs.JlL.fJL();
+    this.LnD = new h(paramb, (m)m.a.LnV, (f)new d(null));
+    this.LnG = this.LnD.LnL.KZf.gco();
     AppMethodBeat.o(57758);
   }
   
   private final d.l.b.a.b.d.a.c.a.h o(d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57755);
-    final t localt = this.JAk.JAs.JzN.i(paramb);
-    paramb = (d.l.b.a.b.d.a.c.a.h)this.JAn.b(paramb, (d.g.a.a)new a(this, localt));
+    final t localt = this.LnD.LnL.Lng.i(paramb);
+    paramb = (d.l.b.a.b.d.a.c.a.h)this.LnG.b(paramb, (d.g.a.a)new a(this, localt));
     AppMethodBeat.o(57755);
     return paramb;
   }
@@ -37,7 +37,7 @@ public final class g
   {
     AppMethodBeat.i(57756);
     k.h(paramb, "fqName");
-    paramb = d.a.j.eG(o(paramb));
+    paramb = d.a.j.eJ(o(paramb));
     AppMethodBeat.o(57756);
     return paramb;
   }
@@ -54,7 +54,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.g
  * JD-Core Version:    0.7.0.1
  */

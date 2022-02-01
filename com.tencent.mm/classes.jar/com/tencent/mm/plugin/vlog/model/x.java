@@ -1,267 +1,294 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Matrix;
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.vlog.model.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.tav.core.AssetImageGenerator;
-import com.tencent.tav.core.AssetImageGenerator.ApertureMode;
-import com.tencent.tav.core.AssetImageGenerator.AssetImageGeneratorResult;
-import com.tencent.tav.core.AssetImageGenerator.ImageGeneratorListener;
-import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavkit.component.TAVSourceImageGenerator;
-import com.tencent.tavkit.composition.TAVSource;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.plugin.mmsight.segment.n;
+import com.tencent.mm.protocal.protobuf.blc;
+import com.tencent.mm.protocal.protobuf.btr;
+import com.tencent.mm.protocal.protobuf.dqf;
+import com.tencent.mm.protocal.protobuf.xa;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.f;
 import d.a.j;
-import d.g.a.m;
 import d.g.b.k;
-import d.g.b.v.d;
-import d.y;
-import java.util.ArrayList;
+import d.k.e;
+import d.k.g;
+import d.k.h;
+import d.l;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator;", "Lcom/tencent/mm/plugin/vlog/ui/thumb/ITrackThumbFetcher;", "source", "Lcom/tencent/tavkit/composition/TAVSource;", "cacheKey", "", "(Lcom/tencent/tavkit/composition/TAVSource;Ljava/lang/String;)V", "generateCallback", "Lcom/tencent/tav/core/AssetImageGenerator$ImageGeneratorListener;", "generator", "Lcom/tencent/tavkit/component/TAVSourceImageGenerator;", "requests", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator$Request;", "size", "Lcom/tencent/tav/coremedia/CGSize;", "getSource", "()Lcom/tencent/tavkit/composition/TAVSource;", "destroy", "", "init", "requestFrames", "times", "", "", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "setSize", "width", "", "height", "Companion", "Request", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerator;", "", "()V", "TAG", "", "vLogConfig", "Lcom/tencent/mm/protocal/protobuf/ClientConfFromServer;", "cropBitmap", "Landroid/graphics/Bitmap;", "origin", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "maxWidth", "", "maxHeight", "imageTrackToMaterialReq", "Lcom/tencent/mm/protocal/protobuf/MaterialReq;", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setConfig", "", "config", "trackToMaterialReq", "trackToMaterials", "Ljava/util/LinkedList;", "trackList", "", "videoTrackToMaterialReq", "Companion", "plugin-vlog_release"})
 public final class x
-  implements com.tencent.mm.plugin.vlog.ui.thumb.c
 {
-  private static final com.tencent.mm.memory.a.b<Bitmap> Lrg;
-  public static final a Lrh;
-  private TAVSourceImageGenerator Lrc;
-  private final LinkedList<b> Lrd;
-  private final AssetImageGenerator.ImageGeneratorListener Lre;
-  private final TAVSource Lrf;
-  private final String cacheKey;
-  private final CGSize size;
+  public static final x.a AoT;
+  xa AoS;
+  private final String TAG = "MicroMsg.VLogGenerator";
   
   static
   {
-    AppMethodBeat.i(200928);
-    Lrh = new a((byte)0);
-    Lrg = new com.tencent.mm.memory.a.b(200, x.class);
-    AppMethodBeat.o(200928);
+    AppMethodBeat.i(207638);
+    AoT = new x.a((byte)0);
+    AppMethodBeat.o(207638);
   }
   
-  private x(TAVSource paramTAVSource, String paramString)
+  private final Bitmap a(Bitmap paramBitmap, d paramd, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200927);
-    this.Lrf = paramTAVSource;
-    this.cacheKey = paramString;
-    this.size = new CGSize(300.0F, 300.0F);
-    this.Lrd = new LinkedList();
-    this.Lre = ((AssetImageGenerator.ImageGeneratorListener)new c(this));
-    AppMethodBeat.o(200927);
-  }
-  
-  public final void b(List<Long> arg1, m<? super Long, ? super Bitmap, y> paramm)
-  {
-    AppMethodBeat.i(200925);
-    k.h(???, "times");
-    k.h(paramm, "callback");
-    Object localObject1 = (Iterable)???;
-    ??? = (Collection)new ArrayList();
-    localObject1 = ((Iterable)localObject1).iterator();
-    Object localObject2;
-    label165:
-    while (((Iterator)localObject1).hasNext())
+    float f1 = 1.0F;
+    AppMethodBeat.i(207637);
+    if (!paramd.pvE.contains(paramd.gUl)) {
+      ac.i(this.TAG, "cropBitmap: cropInfo is Error?");
+    }
+    float f2 = paramBitmap.getWidth() * 1.0F / paramd.pvE.width();
+    float f3 = paramInt1 * 1.0F / paramd.gUl.width();
+    float f4 = paramInt2 * 1.0F / paramd.gUl.height();
+    if ((f3 >= 1.0F) && (f4 >= 1.0F)) {}
+    for (;;)
     {
-      localObject2 = ((Iterator)localObject1).next();
-      long l = ((Number)localObject2).longValue();
-      ad.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: ".concat(String.valueOf(l)));
-      Bitmap localBitmap = (Bitmap)Lrg.get(this.cacheKey + '-' + l);
-      if (localBitmap != null) {
-        paramm.n(Long.valueOf(l), localBitmap);
-      }
-      for (int i = 0;; i = 1)
+      paramInt1 = (int)((paramd.gUl.left - paramd.pvE.left) * f2);
+      paramInt2 = (int)((paramd.gUl.top - paramd.pvE.top) * f2);
+      int i = (int)(paramd.gUl.width() * f2);
+      int j = (int)(paramd.gUl.height() * f2);
+      Matrix localMatrix = new Matrix();
+      f3 = f1 / f2;
+      f1 /= f2;
+      localMatrix.setScale(f3, f1);
+      ac.i(this.TAG, "cropBitmap, left:" + paramInt1 + ", top:" + paramInt2 + ", width:" + i + ", height:" + j + ", scaleX:" + f3 + ", scaleY:" + f1 + ", bitmap size:[" + paramBitmap.getWidth() + ", " + paramBitmap.getHeight() + ']');
+      paramd = paramBitmap;
+      if (paramInt1 >= 0)
       {
-        if (i == 0) {
-          break label165;
-        }
-        ???.add(localObject2);
-        break;
-      }
-    }
-    localObject1 = (Iterable)j.q((Iterable)???);
-    ??? = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
-    localObject1 = ((Iterable)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ???.add(new b(((Number)((Iterator)localObject1).next()).longValue(), paramm));
-    }
-    paramm = (List)???;
-    if (paramm.isEmpty())
-    {
-      ad.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: no new request");
-      AppMethodBeat.o(200925);
-      return;
-    }
-    synchronized (this.Lrd)
-    {
-      localObject1 = ((Iterable)paramm).iterator();
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (b)((Iterator)localObject1).next();
-        com.tencent.mm.ad.c.a(this.Lrd, (d.g.a.b)new d((b)localObject2));
-      }
-    }
-    this.Lrd.addAll((Collection)paramm);
-    paramm = (Iterable)paramm;
-    ??? = (Collection)new ArrayList(j.a(paramm, 10));
-    paramm = paramm.iterator();
-    while (paramm.hasNext()) {
-      ???.add(((b)paramm.next()).cmTime);
-    }
-    ??? = (List)???;
-    if (this.Lrc == null)
-    {
-      this.Lrc = new TAVSourceImageGenerator(this.Lrf, this.size);
-      ad.i("MicroMsg.VLogCompositionCoverGenerator", "requestFrames: create generator " + this.Lrc);
-      paramm = this.Lrc;
-      if (paramm != null)
-      {
-        paramm = paramm.getAssetImageGenerator();
-        if (paramm != null) {
-          paramm.setApertureMode(AssetImageGenerator.ApertureMode.aspectFill);
-        }
-      }
-    }
-    paramm = this.Lrc;
-    if (paramm != null)
-    {
-      paramm.generateThumbnailAtTimes(???, this.Lre);
-      AppMethodBeat.o(200925);
-      return;
-    }
-    AppMethodBeat.o(200925);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(200926);
-    ad.i("MicroMsg.VLogCompositionCoverGenerator", "destroy: " + hashCode() + ", " + this.Lrc);
-    synchronized (this.Lrd)
-    {
-      this.Lrd.clear();
-      y localy = y.JfV;
-      ??? = this.Lrc;
-      if (??? != null)
-      {
-        ??? = ((TAVSourceImageGenerator)???).getAssetImageGenerator();
-        if (??? != null)
+        paramd = paramBitmap;
+        if (paramInt2 >= 0)
         {
-          ((AssetImageGenerator)???).release();
-          AppMethodBeat.o(200926);
-          return;
+          paramd = paramBitmap;
+          if (paramInt1 + i <= paramBitmap.getWidth())
+          {
+            paramd = paramBitmap;
+            if (paramInt2 + j <= paramBitmap.getHeight())
+            {
+              paramd = Bitmap.createBitmap(paramBitmap, paramInt1, paramInt2, i, j, localMatrix, true);
+              k.g(paramd, "Bitmap.createBitmap(orig…eight, scaleMatrix, true)");
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(207637);
+      return paramd;
+      f1 = Math.min(f3, f4);
+    }
+  }
+  
+  private final btr d(u paramu)
+  {
+    AppMethodBeat.i(207636);
+    long l4 = paramu.Aoz;
+    Object localObject = this.AoS;
+    long l2;
+    long l1;
+    label72:
+    int i;
+    int j;
+    com.tencent.mm.plugin.mmsight.segment.d locald;
+    LinkedList localLinkedList;
+    label160:
+    label190:
+    long l3;
+    label217:
+    long l5;
+    long l6;
+    if (localObject != null)
+    {
+      localObject = ((xa)localObject).Eru;
+      if (localObject != null)
+      {
+        l2 = ((dqf)localObject).FXr;
+        localObject = this.AoS;
+        if (localObject == null) {
+          break label374;
+        }
+        localObject = ((xa)localObject).Eru;
+        if (localObject == null) {
+          break label374;
+        }
+        l1 = ((dqf)localObject).FXq;
+        i = Math.min(paramu.AoA, paramu.AoD.pvE.width());
+        j = Math.min(paramu.AoB, paramu.AoD.pvE.height());
+        locald = n.m(paramu.path, 100, i, j);
+        localLinkedList = new LinkedList();
+        localObject = this.AoS;
+        if (localObject == null) {
+          break label380;
+        }
+        localObject = ((xa)localObject).Ert;
+        if (localObject == null) {
+          break label380;
+        }
+        i = (int)((blc)localObject).aQX;
+        localObject = this.AoS;
+        if (localObject == null) {
+          break label386;
+        }
+        localObject = ((xa)localObject).Ert;
+        if (localObject == null) {
+          break label386;
+        }
+        j = (int)((blc)localObject).aQY;
+        l3 = l4 - 100L;
+        if (l3 > -9223372036854775808L) {
+          break label392;
+        }
+        localObject = g.KVo;
+        localObject = g.fOF();
+        localObject = h.a((e)localObject, l2);
+        l3 = ((e)localObject).first;
+        l5 = ((e)localObject).KVj;
+        l6 = ((e)localObject).woo;
+        if (l6 < 0L) {
+          break label411;
+        }
+        if (l3 > l5) {
+          break label423;
+        }
+        l2 = l3;
+      }
+    }
+    int m;
+    int k;
+    label374:
+    label380:
+    do
+    {
+      for (;;)
+      {
+        localObject = locald.getFrameAtTime(l2);
+        k.g(localObject, "bitmap");
+        localObject = a((Bitmap)localObject, paramu.AoD, i, j);
+        m = ((Bitmap)localObject).getWidth();
+        k = ((Bitmap)localObject).getHeight();
+        localLinkedList.add(new b(f.j((Bitmap)localObject, 20)));
+        if ((localLinkedList.size() >= l1) || (l2 == l5)) {
+          break;
+        }
+        l2 += l6;
+      }
+      l2 = 100L;
+      break;
+      l1 = 1L;
+      break label72;
+      i = 120;
+      break label160;
+      j = 120;
+      break label190;
+      localObject = new g(100L, l3 - 1L);
+      break label217;
+      l2 = l3;
+    } while (l3 >= l5);
+    for (;;)
+    {
+      label386:
+      label392:
+      label411:
+      label423:
+      locald.release();
+      localObject = new btr();
+      ((btr)localObject).id = paramu.id;
+      ((btr)localObject).FiP = localLinkedList;
+      paramu = new blc();
+      paramu.aQX = i;
+      paramu.aQY = j;
+      ((btr)localObject).FiQ = paramu;
+      ((btr)localObject).cZM = 2L;
+      ((btr)localObject).Fhw = l4;
+      AppMethodBeat.o(207636);
+      return localObject;
+      i = m;
+      j = k;
+    }
+  }
+  
+  public final LinkedList<btr> gs(List<u> paramList)
+  {
+    AppMethodBeat.i(207635);
+    k.h(paramList, "trackList");
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = ((Iterable)paramList).iterator();
+    label154:
+    label184:
+    label318:
+    label351:
+    while (localIterator.hasNext())
+    {
+      Object localObject1 = (u)localIterator.next();
+      k.h(localObject1, "track");
+      int i;
+      int j;
+      if (((u)localObject1).type == 1)
+      {
+        paramList = new BitmapFactory.Options();
+        paramList.inSampleSize = ((int)(((u)localObject1).AoA * ((u)localObject1).AoC / ((u)localObject1).AoD.pvE.width()));
+        paramList = MMBitmapFactory.decodeFile(((u)localObject1).path, paramList);
+        if (paramList != null)
+        {
+          Object localObject2 = this.AoS;
+          if (localObject2 != null)
+          {
+            localObject2 = ((xa)localObject2).Ert;
+            if (localObject2 != null)
+            {
+              i = (int)((blc)localObject2).aQX;
+              localObject2 = this.AoS;
+              if (localObject2 == null) {
+                break label318;
+              }
+              localObject2 = ((xa)localObject2).Ert;
+              if (localObject2 == null) {
+                break label318;
+              }
+              j = (int)((blc)localObject2).aQY;
+              localObject2 = a(paramList, ((u)localObject1).AoD, i, j);
+              byte[] arrayOfByte = f.j((Bitmap)localObject2, 20);
+              paramList = new btr();
+              paramList.id = ((u)localObject1).id;
+              paramList.FiP = new LinkedList((Collection)j.listOf(new b(arrayOfByte)));
+              localObject1 = new blc();
+              ((blc)localObject1).aQX = ((Bitmap)localObject2).getWidth();
+              ((blc)localObject1).aQY = ((Bitmap)localObject2).getHeight();
+              paramList.FiQ = ((blc)localObject1);
+              paramList.cZM = 1L;
+              paramList.Fhw = 0L;
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        if (paramList == null) {
+          break label351;
+        }
+        localLinkedList.add(paramList);
+        break;
+        i = 120;
+        break label154;
+        j = 120;
+        break label184;
+        paramList = null;
+        continue;
+        if (((u)localObject1).type == 2) {
+          paramList = d((u)localObject1);
+        } else {
+          paramList = null;
         }
       }
     }
-    AppMethodBeat.o(200926);
-  }
-  
-  public final void init()
-  {
-    AppMethodBeat.i(200924);
-    ad.i("MicroMsg.VLogCompositionCoverGenerator", "init: " + hashCode());
-    AppMethodBeat.o(200924);
-  }
-  
-  public final void setSize(int paramInt1, int paramInt2)
-  {
-    this.size.width = paramInt1;
-    this.size.height = paramInt2;
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator$Companion;", "", "()V", "DefaultMaxImageSize", "", "TAG", "", "thumbCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "clearCache", "", "fromVLogComposition", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator;", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "fromVLogCompositionTrack", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "plugin-vlog_release"})
-  public static final class a
-  {
-    public static x f(v paramv)
-    {
-      AppMethodBeat.i(200918);
-      k.h(paramv, "composition");
-      paramv = new x(paramv.buildSource(), String.valueOf(paramv.hashCode()), (byte)0);
-      AppMethodBeat.o(200918);
-      return paramv;
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator$Request;", "", "timeMs", "", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "", "cmTime", "Lcom/tencent/tav/coremedia/CMTime;", "(JLkotlin/jvm/functions/Function2;Lcom/tencent/tav/coremedia/CMTime;)V", "getCallback", "()Lkotlin/jvm/functions/Function2;", "getCmTime", "()Lcom/tencent/tav/coremedia/CMTime;", "getTimeMs", "()J", "plugin-vlog_release"})
-  public static final class b
-  {
-    final long Lri;
-    final CMTime cmTime;
-    final m<Long, Bitmap, y> fLT;
-    
-    private b(long paramLong, m<? super Long, ? super Bitmap, y> paramm, CMTime paramCMTime)
-    {
-      AppMethodBeat.i(200919);
-      this.Lri = paramLong;
-      this.fLT = paramm;
-      this.cmTime = paramCMTime;
-      AppMethodBeat.o(200919);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "requestedTime", "Lcom/tencent/tav/coremedia/CMTime;", "bitmap", "Landroid/graphics/Bitmap;", "actualTime", "result", "Lcom/tencent/tav/core/AssetImageGenerator$AssetImageGeneratorResult;", "onCompletion"})
-  static final class c
-    implements AssetImageGenerator.ImageGeneratorListener
-  {
-    c(x paramx) {}
-    
-    public final void onCompletion(final CMTime paramCMTime1, final Bitmap paramBitmap, CMTime arg3, final AssetImageGenerator.AssetImageGeneratorResult paramAssetImageGeneratorResult)
-    {
-      AppMethodBeat.i(200922);
-      k.h(paramCMTime1, "requestedTime");
-      k.h(paramAssetImageGeneratorResult, "result");
-      if (paramAssetImageGeneratorResult != AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorSucceeded)
-      {
-        paramCMTime1 = a.LrI;
-        a.fYT();
-        AppMethodBeat.o(200922);
-        return;
-      }
-      if (paramBitmap == null)
-      {
-        paramCMTime1 = a.LrI;
-        a.fYS();
-        AppMethodBeat.o(200922);
-        return;
-      }
-      paramAssetImageGeneratorResult = new v.d();
-      paramAssetImageGeneratorResult.Jhv = -1L;
-      synchronized (x.a(this.Lrj))
-      {
-        j.a((List)x.a(this.Lrj), (d.g.a.b)new a(this, paramCMTime1, paramAssetImageGeneratorResult, paramBitmap));
-        ad.i("MicroMsg.VLogCompositionCoverGenerator", "get " + this.Lrj.hashCode() + ": " + paramAssetImageGeneratorResult.Jhv + 65292 + paramCMTime1.getTimeUs() / 1000L);
-        if (paramAssetImageGeneratorResult.Jhv >= 0L) {
-          x.fYL().put(x.b(this.Lrj) + '-' + paramAssetImageGeneratorResult.Jhv, paramBitmap);
-        }
-        AppMethodBeat.o(200922);
-        return;
-      }
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator$Request;", "invoke", "com/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator$generateCallback$1$1$1"})
-    static final class a
-      extends d.g.b.l
-      implements d.g.a.b<x.b, Boolean>
-    {
-      a(x.c paramc, CMTime paramCMTime, v.d paramd, Bitmap paramBitmap)
-      {
-        super();
-      }
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionThumbGenerator$Request;", "invoke"})
-  static final class d
-    extends d.g.b.l
-    implements d.g.a.b<x.b, Boolean>
-  {
-    d(x.b paramb)
-    {
-      super();
-    }
+    AppMethodBeat.o(207635);
+    return localLinkedList;
   }
 }
 

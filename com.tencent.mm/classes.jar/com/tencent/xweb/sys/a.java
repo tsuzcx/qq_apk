@@ -9,12 +9,12 @@ import org.xwalk.core.Log;
 public final class a
   implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager IQR;
+  CookieManager KDm;
   
   public a()
   {
     AppMethodBeat.i(153648);
-    this.IQR = CookieManager.getInstance();
+    this.KDm = CookieManager.getInstance();
     AppMethodBeat.o(153648);
   }
   
@@ -25,7 +25,7 @@ public final class a
     {
       if ((paramWebView != null) && (paramWebView.getWebViewUI() != null) && ((paramWebView.getWebViewUI() instanceof android.webkit.WebView)))
       {
-        this.IQR.setAcceptThirdPartyCookies((android.webkit.WebView)paramWebView.getWebViewUI(), true);
+        this.KDm.setAcceptThirdPartyCookies((android.webkit.WebView)paramWebView.getWebViewUI(), true);
         AppMethodBeat.o(153650);
         return;
       }
@@ -34,17 +34,17 @@ public final class a
     AppMethodBeat.o(153650);
   }
   
-  public final void fqD()
+  public final void fJb()
   {
     AppMethodBeat.i(153649);
-    this.IQR.setAcceptCookie(true);
+    this.KDm.setAcceptCookie(true);
     AppMethodBeat.o(153649);
   }
   
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(153652);
-    paramString = this.IQR.getCookie(paramString);
+    paramString = this.KDm.getCookie(paramString);
     AppMethodBeat.o(153652);
     return paramString;
   }
@@ -52,21 +52,21 @@ public final class a
   public final void removeAllCookie()
   {
     AppMethodBeat.i(153651);
-    this.IQR.removeAllCookie();
+    this.KDm.removeAllCookie();
     AppMethodBeat.o(153651);
   }
   
   public final void removeSessionCookie()
   {
     AppMethodBeat.i(153654);
-    this.IQR.removeSessionCookie();
+    this.KDm.removeSessionCookie();
     AppMethodBeat.o(153654);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
     AppMethodBeat.i(153653);
-    this.IQR.setCookie(paramString1, paramString2);
+    this.KDm.setCookie(paramString1, paramString2);
     AppMethodBeat.o(153653);
   }
 }

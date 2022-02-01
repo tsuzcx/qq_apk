@@ -18,7 +18,7 @@ import java.util.Properties;
 
 public final class b
 {
-  static final Type[] bFH = new Type[0];
+  static final Type[] bDp = new Type[0];
   
   private static GenericArrayType a(Type paramType)
   {
@@ -281,7 +281,7 @@ public final class b
             }
             for (;;)
             {
-              paramType1 = new c(paramType1, bFH);
+              paramType1 = new c(paramType1, bDp);
               AppMethodBeat.o(107904);
               return paramType1;
               paramType1 = new Type[1];
@@ -557,12 +557,12 @@ public final class b
   static final class a
     implements Serializable, GenericArrayType
   {
-    private final Type bFI;
+    private final Type bDq;
     
     public a(Type paramType)
     {
       AppMethodBeat.i(107976);
-      this.bFI = b.b(paramType);
+      this.bDq = b.b(paramType);
       AppMethodBeat.o(107976);
     }
     
@@ -580,13 +580,13 @@ public final class b
     
     public final Type getGenericComponentType()
     {
-      return this.bFI;
+      return this.bDq;
     }
     
     public final int hashCode()
     {
       AppMethodBeat.i(107978);
-      int i = this.bFI.hashCode();
+      int i = this.bDq.hashCode();
       AppMethodBeat.o(107978);
       return i;
     }
@@ -594,7 +594,7 @@ public final class b
     public final String toString()
     {
       AppMethodBeat.i(107979);
-      String str = b.d(this.bFI) + "[]";
+      String str = b.d(this.bDq) + "[]";
       AppMethodBeat.o(107979);
       return str;
     }
@@ -603,9 +603,9 @@ public final class b
   static final class b
     implements Serializable, ParameterizedType
   {
-    private final Type bFJ;
-    private final Type bFK;
-    private final Type[] bFL;
+    private final Type bDr;
+    private final Type bDs;
+    private final Type[] bDt;
     
     public b(Type paramType1, Type paramType2, Type... paramVarArgs)
     {
@@ -636,16 +636,16 @@ public final class b
       label170:
       for (paramType1 = null;; paramType1 = b.b(paramType1))
       {
-        this.bFJ = paramType1;
-        this.bFK = b.b(paramType2);
-        this.bFL = ((Type[])paramVarArgs.clone());
-        int k = this.bFL.length;
+        this.bDr = paramType1;
+        this.bDs = b.b(paramType2);
+        this.bDt = ((Type[])paramVarArgs.clone());
+        int k = this.bDt.length;
         i = j;
         while (i < k)
         {
-          a.checkNotNull(this.bFL[i]);
-          b.f(this.bFL[i]);
-          paramType1 = this.bFL;
+          a.checkNotNull(this.bDt[i]);
+          b.f(this.bDt[i]);
+          paramType1 = this.bDt;
           paramType1[i] = b.b(paramType1[i]);
           i += 1;
         }
@@ -672,27 +672,27 @@ public final class b
     public final Type[] getActualTypeArguments()
     {
       AppMethodBeat.i(107945);
-      Type[] arrayOfType = (Type[])this.bFL.clone();
+      Type[] arrayOfType = (Type[])this.bDt.clone();
       AppMethodBeat.o(107945);
       return arrayOfType;
     }
     
     public final Type getOwnerType()
     {
-      return this.bFJ;
+      return this.bDr;
     }
     
     public final Type getRawType()
     {
-      return this.bFK;
+      return this.bDs;
     }
     
     public final int hashCode()
     {
       AppMethodBeat.i(107947);
-      int i = Arrays.hashCode(this.bFL);
-      int j = this.bFK.hashCode();
-      int k = b.ah(this.bFJ);
+      int i = Arrays.hashCode(this.bDt);
+      int j = this.bDs.hashCode();
+      int k = b.ah(this.bDr);
       AppMethodBeat.o(107947);
       return i ^ j ^ k;
     }
@@ -700,19 +700,19 @@ public final class b
     public final String toString()
     {
       AppMethodBeat.i(107948);
-      int j = this.bFL.length;
+      int j = this.bDt.length;
       if (j == 0)
       {
-        localObject = b.d(this.bFK);
+        localObject = b.d(this.bDs);
         AppMethodBeat.o(107948);
         return localObject;
       }
       Object localObject = new StringBuilder((j + 1) * 30);
-      ((StringBuilder)localObject).append(b.d(this.bFK)).append("<").append(b.d(this.bFL[0]));
+      ((StringBuilder)localObject).append(b.d(this.bDs)).append("<").append(b.d(this.bDt[0]));
       int i = 1;
       while (i < j)
       {
-        ((StringBuilder)localObject).append(", ").append(b.d(this.bFL[i]));
+        ((StringBuilder)localObject).append(", ").append(b.d(this.bDt[i]));
         i += 1;
       }
       localObject = ">";
@@ -724,8 +724,8 @@ public final class b
   static final class c
     implements Serializable, WildcardType
   {
-    private final Type bFM;
-    private final Type bFN;
+    private final Type bDu;
+    private final Type bDv;
     
     public c(Type[] paramArrayOfType1, Type[] paramArrayOfType2)
     {
@@ -754,8 +754,8 @@ public final class b
       for (boolean bool1 = bool2;; bool1 = false)
       {
         a.checkArgument(bool1);
-        this.bFN = b.b(paramArrayOfType2[0]);
-        this.bFM = Object.class;
+        this.bDv = b.b(paramArrayOfType2[0]);
+        this.bDu = Object.class;
         AppMethodBeat.o(107981);
         return;
         bool1 = false;
@@ -766,8 +766,8 @@ public final class b
       label107:
       a.checkNotNull(paramArrayOfType1[0]);
       b.f(paramArrayOfType1[0]);
-      this.bFN = null;
-      this.bFM = b.b(paramArrayOfType1[0]);
+      this.bDv = null;
+      this.bDu = b.b(paramArrayOfType1[0]);
       AppMethodBeat.o(107981);
     }
     
@@ -785,24 +785,24 @@ public final class b
     
     public final Type[] getLowerBounds()
     {
-      if (this.bFN != null) {
-        return new Type[] { this.bFN };
+      if (this.bDv != null) {
+        return new Type[] { this.bDv };
       }
-      return b.bFH;
+      return b.bDp;
     }
     
     public final Type[] getUpperBounds()
     {
-      return new Type[] { this.bFM };
+      return new Type[] { this.bDu };
     }
     
     public final int hashCode()
     {
       AppMethodBeat.i(107983);
-      if (this.bFN != null) {}
-      for (int i = this.bFN.hashCode() + 31;; i = 1)
+      if (this.bDv != null) {}
+      for (int i = this.bDv.hashCode() + 31;; i = 1)
       {
-        int j = this.bFM.hashCode();
+        int j = this.bDu.hashCode();
         AppMethodBeat.o(107983);
         return i ^ j + 31;
       }
@@ -811,18 +811,18 @@ public final class b
     public final String toString()
     {
       AppMethodBeat.i(107984);
-      if (this.bFN != null)
+      if (this.bDv != null)
       {
-        str = "? super " + b.d(this.bFN);
+        str = "? super " + b.d(this.bDv);
         AppMethodBeat.o(107984);
         return str;
       }
-      if (this.bFM == Object.class)
+      if (this.bDu == Object.class)
       {
         AppMethodBeat.o(107984);
         return "?";
       }
-      String str = "? extends " + b.d(this.bFM);
+      String str = "? extends " + b.d(this.bDu);
       AppMethodBeat.o(107984);
       return str;
     }
@@ -830,7 +830,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.b
  * JD-Core Version:    0.7.0.1
  */

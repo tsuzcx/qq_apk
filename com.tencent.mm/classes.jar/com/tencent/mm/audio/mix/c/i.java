@@ -7,11 +7,11 @@ import com.tencent.mm.audio.mix.jni.SilkResampleJni;
 public final class i
   implements h
 {
-  private int cUn = 0;
-  private int cUo = 0;
+  private int cRK = 0;
+  private int cRL = 0;
   private String fileName;
   
-  public final byte[] L(byte[] paramArrayOfByte)
+  public final byte[] J(byte[] paramArrayOfByte)
   {
     int j = 0;
     AppMethodBeat.i(136782);
@@ -22,13 +22,13 @@ public final class i
       localObject[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | (paramArrayOfByte[(i * 2 + 1)] & 0xFF) << 8));
       i += 1;
     }
-    int k = localObject.length * this.cUo / this.cUn;
+    int k = localObject.length * this.cRL / this.cRK;
     i = k;
-    if (this.cUo % this.cUn != 0) {
+    if (this.cRL % this.cRK != 0) {
       i = k + 1;
     }
     paramArrayOfByte = new short[i];
-    if (SilkResampleJni.resamplePcm(this.fileName, this.cUn, this.cUo, (short[])localObject, localObject.length, paramArrayOfByte) == -1)
+    if (SilkResampleJni.resamplePcm(this.fileName, this.cRK, this.cRL, (short[])localObject, localObject.length, paramArrayOfByte) == -1)
     {
       b.e("MicroMsg.Mix.SilkResampleAlgorithm", "resamplePcm result is -1, fileName:%s", new Object[] { this.fileName });
       AppMethodBeat.o(136782);
@@ -49,8 +49,8 @@ public final class i
   public final boolean j(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136781);
-    this.cUn = paramInt1;
-    this.cUo = paramInt2;
+    this.cRK = paramInt1;
+    this.cRL = paramInt2;
     this.fileName = paramString;
     b.i("MicroMsg.Mix.SilkResampleAlgorithm", "initResample, fileName:%s, sSample:%d, dSample:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (SilkResampleJni.initResample(paramString, paramInt1, paramInt2) == -1)

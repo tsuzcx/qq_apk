@@ -5,22 +5,22 @@ import java.lang.reflect.Array;
 
 final class j
 {
-  private double[] bPE;
-  final b bPF;
-  private final b bPG;
+  private double[] bNm;
+  final b bNn;
+  private final b bNo;
   
   j()
   {
     AppMethodBeat.i(87966);
-    this.bPE = new double[4];
-    this.bPF = new b((byte)0);
-    this.bPG = new b((byte)0);
+    this.bNm = new double[4];
+    this.bNn = new b((byte)0);
+    this.bNo = new b((byte)0);
     AppMethodBeat.o(87966);
   }
   
   private void a(double paramDouble, boolean paramBoolean)
   {
-    double d3 = paramDouble - this.bPF.bPH;
+    double d3 = paramDouble - this.bNn.bNp;
     double d4 = d3 * d3;
     double d2;
     double d1;
@@ -28,10 +28,10 @@ final class j
     Object localObject;
     if (paramBoolean)
     {
-      this.bPF.bQr[2][2] = this.bPF.bQl;
-      this.bPF.bQr[2][3] = 0L;
-      this.bPF.bQr[3][2] = 0L;
-      this.bPF.bQr[3][3] = this.bPF.bQl;
+      this.bNn.bNZ[2][2] = this.bNn.bNT;
+      this.bNn.bNZ[2][3] = 0L;
+      this.bNn.bNZ[3][2] = 0L;
+      this.bNn.bNZ[3][3] = this.bNn.bNT;
       if (d3 > 0.5D)
       {
         d2 = 1.0D;
@@ -39,22 +39,22 @@ final class j
         if (d1 < d3) {
           break label496;
         }
-        localObject = this.bPF;
-        ((b)localObject).bQt = (d2 * ((b)localObject).bQt);
+        localObject = this.bNn;
+        ((b)localObject).bOb = (d2 * ((b)localObject).bOb);
       }
-      this.bPF.bQq[0] += this.bPF.bQq[2] * d3;
-      this.bPF.bQq[1] += this.bPF.bQq[3] * d3;
-      if (!this.bPF.bQv) {
+      this.bNn.bNY[0] += this.bNn.bNY[2] * d3;
+      this.bNn.bNY[1] += this.bNn.bNY[3] * d3;
+      if (!this.bNn.bOd) {
         break label517;
       }
-      this.bPF.bQr[0][0] += this.bPF.bQr[2][2] * d4;
-      this.bPF.bQr[0][1] += this.bPF.bQr[2][3] * d4;
-      this.bPF.bQr[1][0] += this.bPF.bQr[3][2] * d4;
-      this.bPF.bQr[1][1] += this.bPF.bQr[3][3] * d4;
+      this.bNn.bNZ[0][0] += this.bNn.bNZ[2][2] * d4;
+      this.bNn.bNZ[0][1] += this.bNn.bNZ[2][3] * d4;
+      this.bNn.bNZ[1][0] += this.bNn.bNZ[3][2] * d4;
+      this.bNn.bNZ[1][1] += this.bNn.bNZ[3][3] * d4;
     }
     for (;;)
     {
-      this.bPF.bPH = paramDouble;
+      this.bNn.bNp = paramDouble;
       return;
       d1 = 1.0D;
       d2 = d1;
@@ -64,29 +64,29 @@ final class j
         if (d2 >= d3)
         {
           d2 = d1;
-          localObject = this.bPF.bQr[2];
+          localObject = this.bNn.bNZ[2];
           localObject[2] *= d2;
-          localObject = this.bPF.bQr[2];
+          localObject = this.bNn.bNZ[2];
           localObject[3] *= d2;
-          localObject = this.bPF.bQr[3];
+          localObject = this.bNn.bNZ[3];
           localObject[2] *= d2;
-          localObject = this.bPF.bQr[3];
+          localObject = this.bNn.bNZ[3];
           localObject[3] = (d2 * localObject[3]);
           break;
         }
-        d1 *= this.bPF.bPU;
+        d1 *= this.bNn.bNC;
       }
       label496:
-      d2 *= this.bPF.bQu;
+      d2 *= this.bNn.bOc;
       d1 += 1.0D;
       break label97;
       label517:
-      this.bPF.bQr[0][0] = (this.bPF.bQr[0][0] + (this.bPF.bQr[0][2] + this.bPF.bQr[2][0]) * d3 + this.bPF.bQr[2][2] * d4);
-      this.bPF.bQr[1][1] = (this.bPF.bQr[1][1] + (this.bPF.bQr[1][3] + this.bPF.bQr[3][1]) * d3 + d4 * this.bPF.bQr[3][3]);
-      this.bPF.bQr[0][2] += this.bPF.bQr[2][2] * d3;
-      this.bPF.bQr[2][0] += this.bPF.bQr[2][2] * d3;
-      this.bPF.bQr[1][3] += this.bPF.bQr[3][3] * d3;
-      this.bPF.bQr[3][1] += d3 * this.bPF.bQr[3][3];
+      this.bNn.bNZ[0][0] = (this.bNn.bNZ[0][0] + (this.bNn.bNZ[0][2] + this.bNn.bNZ[2][0]) * d3 + this.bNn.bNZ[2][2] * d4);
+      this.bNn.bNZ[1][1] = (this.bNn.bNZ[1][1] + (this.bNn.bNZ[1][3] + this.bNn.bNZ[3][1]) * d3 + d4 * this.bNn.bNZ[3][3]);
+      this.bNn.bNZ[0][2] += this.bNn.bNZ[2][2] * d3;
+      this.bNn.bNZ[2][0] += this.bNn.bNZ[2][2] * d3;
+      this.bNn.bNZ[1][3] += this.bNn.bNZ[3][3] * d3;
+      this.bNn.bNZ[3][1] += d3 * this.bNn.bNZ[3][3];
     }
   }
   
@@ -97,18 +97,18 @@ final class j
     double d1;
     double d4;
     int i;
-    if ((this.bPF.bQo) && (this.bPF.bPY))
+    if ((this.bNn.bNW) && (this.bNn.bNG))
     {
       Object localObject = new double[2];
       double[] arrayOfDouble = new double[2];
-      double d5 = this.bPF.bQA;
-      localObject[0] = (this.bPF.bQq[0] - this.bPF.bPZ[0]);
-      localObject[1] = (this.bPF.bQq[1] - this.bPF.bPZ[1]);
-      paramArrayOfDouble[0] -= this.bPF.bPZ[0];
-      paramArrayOfDouble[1] -= this.bPF.bPZ[1];
+      double d5 = this.bNn.bOi;
+      localObject[0] = (this.bNn.bNY[0] - this.bNn.bNH[0]);
+      localObject[1] = (this.bNn.bNY[1] - this.bNn.bNH[1]);
+      paramArrayOfDouble[0] -= this.bNn.bNH[0];
+      paramArrayOfDouble[1] -= this.bNn.bNH[1];
       double d2 = Math.sqrt(localObject[0] * localObject[0] + localObject[1] * localObject[1]);
       d3 = Math.sqrt(arrayOfDouble[0] * arrayOfDouble[0] + arrayOfDouble[1] * arrayOfDouble[1]);
-      if ((d2 > this.bPF.bQg) && (d3 > this.bPF.bQg))
+      if ((d2 > this.bNn.bNO) && (d3 > this.bNn.bNO))
       {
         d1 = Math.atan2(localObject[1], localObject[0]);
         d4 = Math.atan2(arrayOfDouble[1], arrayOfDouble[0]) - d1;
@@ -116,14 +116,14 @@ final class j
           break label380;
         }
         d1 = d4 - 6.283185307179586D;
-        localObject = this.bPF;
-        ((b)localObject).bQs = (d5 * d1 + ((b)localObject).bQs);
-        if (d1 * d1 <= 4.0D * this.bPF.bQt) {
+        localObject = this.bNn;
+        ((b)localObject).bOa = (d5 * d1 + ((b)localObject).bOa);
+        if (d1 * d1 <= 4.0D * this.bNn.bOb) {
           break label402;
         }
         i = 1;
         label283:
-        d4 = Math.sqrt(this.bPF.bQr[0][0] + this.bPF.bQr[1][1]);
+        d4 = Math.sqrt(this.bNn.bNZ[0][0] + this.bNn.bNZ[1][1]);
         if (d2 >= d3) {
           break label408;
         }
@@ -138,11 +138,11 @@ final class j
     label402:
     label408:
     label414:
-    for (this.bPF.bQt = (d1 * d1);; this.bPF.bQt = (1.0D / (1.0D / (d1 * d1) + 1.0D / this.bPF.bQt)))
+    for (this.bNn.bOb = (d1 * d1);; this.bNn.bOb = (1.0D / (1.0D / (d1 * d1) + 1.0D / this.bNn.bOb)))
     {
-      this.bPF.bPZ[0] = paramArrayOfDouble[0];
-      this.bPF.bPZ[1] = paramArrayOfDouble[1];
-      this.bPF.bPY = true;
+      this.bNn.bNH[0] = paramArrayOfDouble[0];
+      this.bNn.bNH[1] = paramArrayOfDouble[1];
+      this.bNn.bNG = true;
       AppMethodBeat.o(87971);
       return;
       label380:
@@ -211,7 +211,7 @@ final class j
   
   private void b(double paramDouble, boolean paramBoolean)
   {
-    double d3 = paramDouble - this.bPG.bPH;
+    double d3 = paramDouble - this.bNo.bNp;
     double d4 = d3 * d3;
     double d2;
     double d1;
@@ -219,10 +219,10 @@ final class j
     Object localObject;
     if (paramBoolean)
     {
-      this.bPG.bQr[2][2] = this.bPG.bQl;
-      this.bPG.bQr[2][3] = 0L;
-      this.bPG.bQr[3][2] = 0L;
-      this.bPG.bQr[3][3] = this.bPG.bQl;
+      this.bNo.bNZ[2][2] = this.bNo.bNT;
+      this.bNo.bNZ[2][3] = 0L;
+      this.bNo.bNZ[3][2] = 0L;
+      this.bNo.bNZ[3][3] = this.bNo.bNT;
       if (d3 > 0.5D)
       {
         d2 = 1.0D;
@@ -230,22 +230,22 @@ final class j
         if (d1 < d3) {
           break label496;
         }
-        localObject = this.bPG;
-        ((b)localObject).bQt = (d2 * ((b)localObject).bQt);
+        localObject = this.bNo;
+        ((b)localObject).bOb = (d2 * ((b)localObject).bOb);
       }
-      this.bPG.bQq[0] += this.bPG.bQq[2] * d3;
-      this.bPG.bQq[1] += this.bPG.bQq[3] * d3;
-      if (!this.bPG.bQv) {
+      this.bNo.bNY[0] += this.bNo.bNY[2] * d3;
+      this.bNo.bNY[1] += this.bNo.bNY[3] * d3;
+      if (!this.bNo.bOd) {
         break label517;
       }
-      this.bPG.bQr[0][0] += this.bPG.bQr[2][2] * d4;
-      this.bPG.bQr[0][1] += this.bPG.bQr[2][3] * d4;
-      this.bPG.bQr[1][0] += this.bPG.bQr[3][2] * d4;
-      this.bPG.bQr[1][1] += this.bPG.bQr[3][3] * d4;
+      this.bNo.bNZ[0][0] += this.bNo.bNZ[2][2] * d4;
+      this.bNo.bNZ[0][1] += this.bNo.bNZ[2][3] * d4;
+      this.bNo.bNZ[1][0] += this.bNo.bNZ[3][2] * d4;
+      this.bNo.bNZ[1][1] += this.bNo.bNZ[3][3] * d4;
     }
     for (;;)
     {
-      this.bPG.bPH = paramDouble;
+      this.bNo.bNp = paramDouble;
       return;
       d1 = 1.0D;
       d2 = d1;
@@ -255,49 +255,49 @@ final class j
         if (d2 >= d3)
         {
           d2 = d1;
-          localObject = this.bPG.bQr[2];
+          localObject = this.bNo.bNZ[2];
           localObject[2] *= d2;
-          localObject = this.bPG.bQr[2];
+          localObject = this.bNo.bNZ[2];
           localObject[3] *= d2;
-          localObject = this.bPG.bQr[3];
+          localObject = this.bNo.bNZ[3];
           localObject[2] *= d2;
-          localObject = this.bPG.bQr[3];
+          localObject = this.bNo.bNZ[3];
           localObject[3] = (d2 * localObject[3]);
           break;
         }
-        d1 *= this.bPG.bPU;
+        d1 *= this.bNo.bNC;
       }
       label496:
-      d2 *= this.bPG.bQu;
+      d2 *= this.bNo.bOc;
       d1 += 1.0D;
       break label97;
       label517:
-      this.bPG.bQr[0][0] = (this.bPG.bQr[0][0] + (this.bPG.bQr[0][2] + this.bPG.bQr[2][0]) * d3 + this.bPG.bQr[2][2] * d4);
-      this.bPG.bQr[1][1] = (this.bPG.bQr[1][1] + (this.bPG.bQr[1][3] + this.bPG.bQr[3][1]) * d3 + d4 * this.bPG.bQr[3][3]);
-      this.bPG.bQr[0][2] += this.bPG.bQr[2][2] * d3;
-      this.bPG.bQr[2][0] += this.bPG.bQr[2][2] * d3;
-      this.bPG.bQr[1][3] += this.bPG.bQr[3][3] * d3;
-      this.bPG.bQr[3][1] += d3 * this.bPG.bQr[3][3];
+      this.bNo.bNZ[0][0] = (this.bNo.bNZ[0][0] + (this.bNo.bNZ[0][2] + this.bNo.bNZ[2][0]) * d3 + this.bNo.bNZ[2][2] * d4);
+      this.bNo.bNZ[1][1] = (this.bNo.bNZ[1][1] + (this.bNo.bNZ[1][3] + this.bNo.bNZ[3][1]) * d3 + d4 * this.bNo.bNZ[3][3]);
+      this.bNo.bNZ[0][2] += this.bNo.bNZ[2][2] * d3;
+      this.bNo.bNZ[2][0] += this.bNo.bNZ[2][2] * d3;
+      this.bNo.bNZ[1][3] += this.bNo.bNZ[3][3] * d3;
+      this.bNo.bNZ[3][1] += d3 * this.bNo.bNZ[3][3];
     }
   }
   
-  private void bl(boolean paramBoolean)
+  private void bk(boolean paramBoolean)
   {
     AppMethodBeat.i(87969);
-    if (this.bPF.bQv != paramBoolean)
+    if (this.bNn.bOd != paramBoolean)
     {
-      this.bPF.bQv = paramBoolean;
+      this.bNn.bOd = paramBoolean;
       if (paramBoolean)
       {
-        this.bPF.bPU = this.bPF.bQC[1];
-        this.bPF.bQl = this.bPF.bQB[1];
-        a(this.bPF.bPH, true);
+        this.bNn.bNC = this.bNn.bOk[1];
+        this.bNn.bNT = this.bNn.bOj[1];
+        a(this.bNn.bNp, true);
         AppMethodBeat.o(87969);
         return;
       }
-      this.bPF.bPU = this.bPF.bQC[0];
-      this.bPF.bQl = this.bPF.bQB[0];
-      a(this.bPF.bPH, true);
+      this.bNn.bNC = this.bNn.bOk[0];
+      this.bNn.bNT = this.bNn.bOj[0];
+      a(this.bNn.bNp, true);
     }
     AppMethodBeat.o(87969);
   }
@@ -312,12 +312,12 @@ final class j
     {
       AppMethodBeat.o(87972);
       return;
-      paramArrayOfDouble2[0] = ((paramArrayOfDouble1[1] - this.bPF.bQm[1]) * 6378137.0D * Math.cos(this.bPF.bQm[0]));
-      paramArrayOfDouble2[1] = ((paramArrayOfDouble1[0] - this.bPF.bQm[0]) * 6378137.0D);
+      paramArrayOfDouble2[0] = ((paramArrayOfDouble1[1] - this.bNn.bNU[1]) * 6378137.0D * Math.cos(this.bNn.bNU[0]));
+      paramArrayOfDouble2[1] = ((paramArrayOfDouble1[0] - this.bNn.bNU[0]) * 6378137.0D);
       AppMethodBeat.o(87972);
       return;
-      paramArrayOfDouble2[0] = (paramArrayOfDouble1[1] / 6378137.0D + this.bPF.bQm[0]);
-      paramArrayOfDouble2[1] = (paramArrayOfDouble1[0] / (Math.cos(this.bPF.bQm[0]) * 6378137.0D) + this.bPF.bQm[1]);
+      paramArrayOfDouble2[0] = (paramArrayOfDouble1[1] / 6378137.0D + this.bNn.bNU[0]);
+      paramArrayOfDouble2[1] = (paramArrayOfDouble1[0] / (Math.cos(this.bNn.bNU[0]) * 6378137.0D) + this.bNn.bNU[1]);
     }
   }
   
@@ -338,63 +338,63 @@ final class j
       double[] arrayOfDouble2 = new double[2];
       arrayOfDouble2[0] = paramDouble1;
       arrayOfDouble2[1] = paramDouble2;
-      this.bPF.bQv = true;
-      this.bPF.bQC[0] = 3.0D;
-      this.bPF.bQC[1] = 1.2D;
-      this.bPF.bQA = 0.5D;
-      this.bPF.bPU = 1.2D;
-      this.bPF.bQa = 4.0D;
-      this.bPF.bQb = 0;
-      this.bPF.bQd = true;
-      this.bPF.bQc = i;
-      this.bPF.bPV = false;
-      this.bPF.bPY = false;
-      this.bPF.bQj = 40.0D;
-      this.bPF.bQk = 0.1570796326794897D;
-      this.bPF.bQl = 1.0D;
-      this.bPF.bQB[0] = 400.0D;
-      this.bPF.bQB[1] = 1.0D;
-      this.bPF.bQo = paramBoolean2;
-      this.bPF.bQp = false;
-      this.bPF.bQe = true;
-      this.bPF.bQf = 0.3333333333333333D;
-      this.bPF.bQg = 5.0D;
-      this.bPF.bQh = 0.5D;
-      this.bPF.bQi = 1.0D;
-      this.bPF.bQw = 0.5D;
-      this.bPF.bQx = 1.0D;
-      this.bPF.bQy = 0;
-      this.bPF.bQz = 2;
-      this.bPF.bQD = false;
-      this.bPF.bQm[0] = arrayOfDouble2[0];
-      this.bPF.bQm[1] = arrayOfDouble2[1];
+      this.bNn.bOd = true;
+      this.bNn.bOk[0] = 3.0D;
+      this.bNn.bOk[1] = 1.2D;
+      this.bNn.bOi = 0.5D;
+      this.bNn.bNC = 1.2D;
+      this.bNn.bNI = 4.0D;
+      this.bNn.bNJ = 0;
+      this.bNn.bNL = true;
+      this.bNn.bNK = i;
+      this.bNn.bND = false;
+      this.bNn.bNG = false;
+      this.bNn.bNR = 40.0D;
+      this.bNn.bNS = 0.1570796326794897D;
+      this.bNn.bNT = 1.0D;
+      this.bNn.bOj[0] = 400.0D;
+      this.bNn.bOj[1] = 1.0D;
+      this.bNn.bNW = paramBoolean2;
+      this.bNn.bNX = false;
+      this.bNn.bNM = true;
+      this.bNn.bNN = 0.3333333333333333D;
+      this.bNn.bNO = 5.0D;
+      this.bNn.bNP = 0.5D;
+      this.bNn.bNQ = 1.0D;
+      this.bNn.bOe = 0.5D;
+      this.bNn.bOf = 1.0D;
+      this.bNn.bOg = 0;
+      this.bNn.bOh = 2;
+      this.bNn.bOl = false;
+      this.bNn.bNU[0] = arrayOfDouble2[0];
+      this.bNn.bNU[1] = arrayOfDouble2[1];
       arrayOfDouble2 = new double[2];
       a(0, new double[] { paramDouble1, paramDouble2 }, arrayOfDouble2);
-      this.bPF.bPH = d1;
-      this.bPF.bQq[0] = arrayOfDouble2[0];
-      this.bPF.bQq[1] = arrayOfDouble2[1];
-      this.bPF.bQq[2] = arrayOfDouble1[0];
-      this.bPF.bQq[3] = arrayOfDouble1[1];
-      this.bPF.bQs = 0.0D;
-      this.bPF.bQt = 1.0D;
-      this.bPF.bQu = 1.005D;
-      this.bPF.bQr[0][0] = tmp24_22;
-      this.bPF.bQr[0][1] = 0L;
-      this.bPF.bQr[0][2] = 0L;
-      this.bPF.bQr[0][3] = 0L;
-      this.bPF.bQr[1][0] = 0L;
-      this.bPF.bQr[1][1] = tmp24_22;
-      this.bPF.bQr[1][2] = 0L;
-      this.bPF.bQr[1][3] = 0L;
-      this.bPF.bQr[2][0] = 0L;
-      this.bPF.bQr[2][1] = 0L;
-      this.bPF.bQr[2][2] = 4607182418800017408L;
-      this.bPF.bQr[2][3] = 0L;
-      this.bPF.bQr[3][0] = 0L;
-      this.bPF.bQr[3][1] = 0L;
-      this.bPF.bQr[3][2] = 0L;
-      this.bPF.bQr[3][3] = 4607182418800017408L;
-      bk(paramBoolean1);
+      this.bNn.bNp = d1;
+      this.bNn.bNY[0] = arrayOfDouble2[0];
+      this.bNn.bNY[1] = arrayOfDouble2[1];
+      this.bNn.bNY[2] = arrayOfDouble1[0];
+      this.bNn.bNY[3] = arrayOfDouble1[1];
+      this.bNn.bOa = 0.0D;
+      this.bNn.bOb = 1.0D;
+      this.bNn.bOc = 1.005D;
+      this.bNn.bNZ[0][0] = tmp24_22;
+      this.bNn.bNZ[0][1] = 0L;
+      this.bNn.bNZ[0][2] = 0L;
+      this.bNn.bNZ[0][3] = 0L;
+      this.bNn.bNZ[1][0] = 0L;
+      this.bNn.bNZ[1][1] = tmp24_22;
+      this.bNn.bNZ[1][2] = 0L;
+      this.bNn.bNZ[1][3] = 0L;
+      this.bNn.bNZ[2][0] = 0L;
+      this.bNn.bNZ[2][1] = 0L;
+      this.bNn.bNZ[2][2] = 4607182418800017408L;
+      this.bNn.bNZ[2][3] = 0L;
+      this.bNn.bNZ[3][0] = 0L;
+      this.bNn.bNZ[3][1] = 0L;
+      this.bNn.bNZ[3][2] = 0L;
+      this.bNn.bNZ[3][3] = 4607182418800017408L;
+      bj(paramBoolean1);
       AppMethodBeat.o(87967);
       return;
     }
@@ -403,28 +403,28 @@ final class j
   protected final void a(a parama)
   {
     AppMethodBeat.i(87970);
-    if (parama.bPM <= 0.0D)
+    if (parama.bNu <= 0.0D)
     {
       AppMethodBeat.o(87970);
       return;
     }
     double d1;
-    if (this.bPF.bPV)
+    if (this.bNn.bND)
     {
-      d1 = parama.bPH - this.bPF.bPX;
+      d1 = parama.bNp - this.bNn.bNF;
       if (d1 < -10.0D)
       {
         AppMethodBeat.o(87970);
         return;
       }
       if (d1 <= 0.0D) {
-        parama.bPH = (this.bPF.bPX + 0.5D);
+        parama.bNp = (this.bNn.bNF + 0.5D);
       }
     }
     double[] arrayOfDouble1 = new double[2];
-    a(0, new double[] { parama.bPI, parama.bPJ }, arrayOfDouble1);
-    parama.bPK[0] = arrayOfDouble1[0];
-    parama.bPK[1] = arrayOfDouble1[1];
+    a(0, new double[] { parama.bNq, parama.bNr }, arrayOfDouble1);
+    parama.bNs[0] = arrayOfDouble1[0];
+    parama.bNs[1] = arrayOfDouble1[1];
     Object localObject2;
     Object localObject1;
     double d4;
@@ -435,36 +435,36 @@ final class j
     label1184:
     label1192:
     int i;
-    if (this.bPF.bQv)
+    if (this.bNn.bOd)
     {
       double d5;
-      if ((parama.mType != 3) || (this.bPF.bPV))
+      if ((parama.mType != 3) || (this.bNn.bND))
       {
         if (parama.mType != 3) {
           break label1192;
         }
-        d5 = parama.bPH - this.bPF.bPX;
+        d5 = parama.bNp - this.bNn.bNF;
         if (d5 > 0.0D)
         {
           localObject2 = (double[][])Array.newInstance(Double.TYPE, new int[] { 2, 2 });
           localObject1 = new double[2];
-          d4 = arrayOfDouble1[0] - this.bPF.bPW[0];
-          d3 = arrayOfDouble1[1] - this.bPF.bPW[1];
+          d4 = arrayOfDouble1[0] - this.bNn.bNE[0];
+          d3 = arrayOfDouble1[1] - this.bNn.bNE[1];
           d1 = d3;
           d2 = d4;
-          if (this.bPF.bQo)
+          if (this.bNn.bNW)
           {
-            d2 = d4 * Math.cos(this.bPF.bQs) - Math.sin(this.bPF.bQs) * d3;
-            d1 = Math.sin(this.bPF.bQs);
-            d1 = d3 * Math.cos(this.bPF.bQs) + d1 * d2;
+            d2 = d4 * Math.cos(this.bNn.bOa) - Math.sin(this.bNn.bOa) * d3;
+            d1 = Math.sin(this.bNn.bOa);
+            d1 = d3 * Math.cos(this.bNn.bOa) + d1 * d2;
           }
           d4 = Math.sqrt(d2 * d2 + d1 * d1);
-          d3 = d4 / this.bPF.bQj;
+          d3 = d4 / this.bNn.bNR;
           d3 *= d3;
           if (d3 <= 0.0625D) {
             break label1176;
           }
-          d4 *= this.bPF.bQk;
+          d4 *= this.bNn.bNS;
           d4 *= d4;
           if (d4 <= 0.0625D) {
             break label1184;
@@ -474,33 +474,33 @@ final class j
       for (;;)
       {
         d3 = (d3 + d4) / d5;
-        d4 = this.bPF.bQr[2][2];
-        double d6 = this.bPF.bQr[2][3];
-        double d7 = this.bPF.bQr[3][2];
-        double d8 = this.bPF.bQr[3][3];
-        localObject3 = this.bPE;
+        d4 = this.bNn.bNZ[2][2];
+        double d6 = this.bNn.bNZ[2][3];
+        double d7 = this.bNn.bNZ[3][2];
+        double d8 = this.bNn.bNZ[3][3];
+        localObject3 = this.bNm;
         a(new double[] { d4, d6, d7, d8 }, (double[])localObject3);
-        localObject2[0][0] = this.bPE[0];
-        localObject2[0][1] = this.bPE[1];
-        localObject2[1][0] = this.bPE[2];
-        localObject2[1][1] = this.bPE[3];
-        d4 = d2 / d5 - this.bPF.bQq[2];
-        d6 = d1 / d5 - this.bPF.bQq[3];
+        localObject2[0][0] = this.bNm[0];
+        localObject2[0][1] = this.bNm[1];
+        localObject2[1][0] = this.bNm[2];
+        localObject2[1][1] = this.bNm[3];
+        d4 = d2 / d5 - this.bNn.bNY[2];
+        d6 = d1 / d5 - this.bNn.bNY[3];
         d7 = localObject2[0][0];
         d8 = localObject2[0][1];
         if (Math.sqrt(d4 * d6 * localObject2[1][0] + (d4 * d4 * d7 + d4 * d6 * d8) + d6 * d6 * localObject2[1][1]) > 2.0D)
         {
-          this.bPF.bQr[2][2] = this.bPF.bQl;
-          this.bPF.bQr[2][3] = 0L;
-          this.bPF.bQr[3][2] = 0L;
-          this.bPF.bQr[3][3] = this.bPF.bQl;
-          localObject2[0][0] = (1.0D / this.bPF.bQl);
+          this.bNn.bNZ[2][2] = this.bNn.bNT;
+          this.bNn.bNZ[2][3] = 0L;
+          this.bNn.bNZ[3][2] = 0L;
+          this.bNn.bNZ[3][3] = this.bNn.bNT;
+          localObject2[0][0] = (1.0D / this.bNn.bNT);
           localObject2[0][1] = 0L;
           localObject2[1][0] = 0L;
-          localObject2[1][1] = (1.0D / this.bPF.bQl);
+          localObject2[1][1] = (1.0D / this.bNn.bNT);
         }
-        localObject1[0] = (localObject2[0][0] * this.bPF.bQq[2] + localObject2[0][1] * this.bPF.bQq[3]);
-        localObject1[1] = (localObject2[1][0] * this.bPF.bQq[2] + localObject2[1][1] * this.bPF.bQq[3]);
+        localObject1[0] = (localObject2[0][0] * this.bNn.bNY[2] + localObject2[0][1] * this.bNn.bNY[3]);
+        localObject1[1] = (localObject2[1][0] * this.bNn.bNY[2] + localObject2[1][1] * this.bNn.bNY[3]);
         localObject3 = localObject2[0];
         localObject3[0] += 1.0D / d3;
         localObject3 = localObject2[1];
@@ -513,22 +513,22 @@ final class j
         d2 = localObject2[0][1];
         d3 = localObject2[1][0];
         d4 = localObject2[1][1];
-        localObject2 = this.bPE;
+        localObject2 = this.bNm;
         a(new double[] { d1, d2, d3, d4 }, (double[])localObject2);
-        this.bPF.bQr[2][2] = this.bPE[0];
-        this.bPF.bQr[2][3] = this.bPE[1];
-        this.bPF.bQr[3][2] = this.bPE[2];
-        this.bPF.bQr[3][3] = this.bPE[3];
-        this.bPF.bQq[2] = (this.bPF.bQr[2][2] * localObject1[0] + this.bPF.bQr[2][3] * localObject1[1]);
-        this.bPF.bQq[3] = (this.bPF.bQr[3][2] * localObject1[0] + this.bPF.bQr[3][3] * localObject1[1]);
-        a(parama.bPH, false);
+        this.bNn.bNZ[2][2] = this.bNm[0];
+        this.bNn.bNZ[2][3] = this.bNm[1];
+        this.bNn.bNZ[3][2] = this.bNm[2];
+        this.bNn.bNZ[3][3] = this.bNm[3];
+        this.bNn.bNY[2] = (this.bNn.bNZ[2][2] * localObject1[0] + this.bNn.bNZ[2][3] * localObject1[1]);
+        this.bNn.bNY[3] = (this.bNn.bNZ[3][2] * localObject1[0] + this.bNn.bNZ[3][3] * localObject1[1]);
+        a(parama.bNp, false);
         if (parama.mType != 3) {
           break label4325;
         }
-        this.bPF.bPW[0] = arrayOfDouble1[0];
-        this.bPF.bPW[1] = arrayOfDouble1[1];
-        this.bPF.bPX = parama.bPH;
-        this.bPF.bPV = true;
+        this.bNn.bNE[0] = arrayOfDouble1[0];
+        this.bNn.bNE[1] = arrayOfDouble1[1];
+        this.bNn.bNF = parama.bNp;
+        this.bNn.bND = true;
         AppMethodBeat.o(87970);
         return;
         d3 = 0.0625D;
@@ -539,10 +539,10 @@ final class j
       d1 = 0.0D;
       localObject2 = new double[2];
       localObject1 = new double[2];
-      a(parama.bPH, false);
-      if (this.bPF.bQe)
+      a(parama.bNp, false);
+      if (this.bNn.bNM)
       {
-        if (!this.bPF.bPY)
+        if (!this.bNn.bNG)
         {
           i = 1;
           j = 1;
@@ -550,16 +550,16 @@ final class j
           if (i == 0) {
             break label2043;
           }
-          if (this.bPF.bPY)
+          if (this.bNn.bNG)
           {
             if (d2 >= d1) {
               break label2045;
             }
-            d3 = this.bPF.bQh;
+            d3 = this.bNn.bNP;
             label1273:
             d1 = d3 + d1 / d2 * (1.0D - d3);
-            arrayOfDouble1[0] = (this.bPF.bPZ[0] + localObject1[0] * d1);
-            d2 = this.bPF.bPZ[1];
+            arrayOfDouble1[0] = (this.bNn.bNH[0] + localObject1[0] * d1);
+            d2 = this.bNn.bNH[1];
             arrayOfDouble1[1] = (d1 * localObject1[1] + d2);
           }
           if (j == 0) {
@@ -569,25 +569,25 @@ final class j
         }
         for (;;)
         {
-          this.bPF.bQq[0] = arrayOfDouble1[0];
-          this.bPF.bQq[1] = arrayOfDouble1[1];
-          this.bPF.bQr[0][0] = (parama.bPM * parama.bPM);
-          this.bPF.bQr[0][1] = 0L;
-          this.bPF.bQr[1][0] = 0L;
-          this.bPF.bQr[1][1] = (parama.bPM * parama.bPM);
+          this.bNn.bNY[0] = arrayOfDouble1[0];
+          this.bNn.bNY[1] = arrayOfDouble1[1];
+          this.bNn.bNZ[0][0] = (parama.bNu * parama.bNu);
+          this.bNn.bNZ[0][1] = 0L;
+          this.bNn.bNZ[1][0] = 0L;
+          this.bNn.bNZ[1][1] = (parama.bNu * parama.bNu);
           break;
-          localObject2[0] = (this.bPF.bQq[0] - this.bPF.bPZ[0]);
-          localObject2[1] = (this.bPF.bQq[1] - this.bPF.bPZ[1]);
-          arrayOfDouble1[0] -= this.bPF.bPZ[0];
-          arrayOfDouble1[1] -= this.bPF.bPZ[1];
+          localObject2[0] = (this.bNn.bNY[0] - this.bNn.bNH[0]);
+          localObject2[1] = (this.bNn.bNY[1] - this.bNn.bNH[1]);
+          arrayOfDouble1[0] -= this.bNn.bNH[0];
+          arrayOfDouble1[1] -= this.bNn.bNH[1];
           d4 = Math.sqrt(localObject2[0] * localObject2[0] + localObject2[1] * localObject2[1]);
           d3 = Math.sqrt(localObject1[0] * localObject1[0] + localObject1[1] * localObject1[1]);
-          if ((d3 > this.bPF.bQg) && (d4 > this.bPF.bQg))
+          if ((d3 > this.bNn.bNO) && (d4 > this.bNn.bNO))
           {
             d1 = d3 / d4;
             d2 = d3 - d4;
-            d5 = Math.sqrt(this.bPF.bQr[0][0] + this.bPF.bQr[1][1]);
-            if (d4 > 3.0D * this.bPF.bQg)
+            d5 = Math.sqrt(this.bNn.bNZ[0][0] + this.bNn.bNZ[1][1]);
+            if (d4 > 3.0D * this.bNn.bNO)
             {
               d1 = d2;
               if (d2 < 0.0D) {
@@ -604,17 +604,17 @@ final class j
                 if (d1 < 0.0D) {
                   d2 = -d1;
                 }
-                d1 = d2 / Math.sqrt(this.bPF.bQt);
+                d1 = d2 / Math.sqrt(this.bNn.bOb);
                 d2 = Math.sqrt(d1 * d1 + d5 * d5);
-                if (d2 >= this.bPF.bQa) {
+                if (d2 >= this.bNn.bNI) {
                   break label1826;
                 }
-                this.bPF.bQy = 0;
+                this.bNn.bOg = 0;
                 d1 = d2;
               }
               for (;;)
               {
-                if (d1 <= this.bPF.bQa) {
+                if (d1 <= this.bNn.bNI) {
                   break label1893;
                 }
                 i = 0;
@@ -630,15 +630,15 @@ final class j
                 break label1711;
                 label1826:
                 d1 = d2;
-                if (d5 < this.bPF.bQa)
+                if (d5 < this.bNn.bNI)
                 {
-                  localObject2 = this.bPF;
-                  i = ((b)localObject2).bQy + 1;
-                  ((b)localObject2).bQy = i;
+                  localObject2 = this.bNn;
+                  i = ((b)localObject2).bOg + 1;
+                  ((b)localObject2).bOg = i;
                   d1 = d2;
-                  if (i >= this.bPF.bQz)
+                  if (i >= this.bNn.bOh)
                   {
-                    this.bPF.bQy = 0;
+                    this.bNn.bOg = 0;
                     d1 = d5;
                   }
                 }
@@ -650,7 +650,7 @@ final class j
               d2 = d3;
               break label1242;
             }
-            if ((d1 < this.bPF.bQf) || (1.0D / d1 < this.bPF.bQf))
+            if ((d1 < this.bNn.bNN) || (1.0D / d1 < this.bNn.bNN))
             {
               i = 0;
               j = 0;
@@ -664,7 +664,7 @@ final class j
             d2 = d3;
             break label1242;
           }
-          if (((d3 < this.bPF.bQg) && (parama.mType == 2)) || ((d3 < this.bPF.bQg * 0.5D) && (parama.mType == 1)))
+          if (((d3 < this.bNn.bNO) && (parama.mType == 2)) || ((d3 < this.bNn.bNO * 0.5D) && (parama.mType == 1)))
           {
             i = 0;
             j = 0;
@@ -680,101 +680,101 @@ final class j
           label2043:
           break;
           label2045:
-          d3 = this.bPF.bQi;
+          d3 = this.bNn.bNQ;
           break label1273;
           label2057:
-          this.bPF.bPZ[0] = arrayOfDouble1[0];
-          this.bPF.bPZ[1] = arrayOfDouble1[1];
+          this.bNn.bNH[0] = arrayOfDouble1[0];
+          this.bNn.bNH[1] = arrayOfDouble1[1];
         }
       }
-      b.a(this.bPG, this.bPF);
-      b(parama.bPH, false);
-      if (this.bPG.bQd) {
-        if (!this.bPF.bPY)
+      b.a(this.bNo, this.bNn);
+      b(parama.bNp, false);
+      if (this.bNo.bNL) {
+        if (!this.bNn.bNG)
         {
           d1 = 0.0D;
           label2128:
-          if (d1 <= this.bPF.bQa) {
+          if (d1 <= this.bNn.bNI) {
             break label3171;
           }
-          b.a(this.bPG, this.bPF);
-          b(parama.bPH, true);
-          if (!this.bPF.bQd) {
+          b.a(this.bNo, this.bNn);
+          b(parama.bNp, true);
+          if (!this.bNn.bNL) {
             break label2881;
           }
-          d3 = this.bPF.bPZ[0] - this.bPG.bQq[0];
-          d4 = this.bPF.bPZ[1] - this.bPG.bQq[1];
-          d1 = this.bPF.bPZ[0] - arrayOfDouble1[0];
-          d2 = this.bPF.bPZ[1] - arrayOfDouble1[1];
+          d3 = this.bNn.bNH[0] - this.bNo.bNY[0];
+          d4 = this.bNn.bNH[1] - this.bNo.bNY[1];
+          d1 = this.bNn.bNH[0] - arrayOfDouble1[0];
+          d2 = this.bNn.bNH[1] - arrayOfDouble1[1];
           d3 = Math.sqrt(d3 * d3 + d4 * d4);
           d1 = Math.sqrt(d1 * d1 + d2 * d2);
-          d2 = Math.sqrt(this.bPG.bQr[0][0] * this.bPG.bQr[0][0] + this.bPG.bQr[1][1] * this.bPG.bQr[1][1]);
+          d2 = Math.sqrt(this.bNo.bNZ[0][0] * this.bNo.bNZ[0][0] + this.bNo.bNZ[1][1] * this.bNo.bNZ[1][1]);
           d1 = Math.abs(d3 - d1) / d2;
           label2335:
-          if (d1 <= this.bPG.bQa) {
+          if (d1 <= this.bNo.bNI) {
             break label3143;
           }
-          if (this.bPF.bQb >= this.bPF.bQc) {
+          if (this.bNn.bNJ >= this.bNn.bNK) {
             break label3121;
           }
-          this.bPF.bQb += 1;
+          this.bNn.bNJ += 1;
         }
       }
       for (;;)
       {
-        this.bPF.bQq[0] = arrayOfDouble1[0];
-        this.bPF.bQq[1] = arrayOfDouble1[1];
-        this.bPF.bQr[0][0] = (parama.bPM * parama.bPM);
-        this.bPF.bQr[0][1] = 0L;
-        this.bPF.bQr[1][0] = 0L;
-        this.bPF.bQr[1][1] = (parama.bPM * parama.bPM);
+        this.bNn.bNY[0] = arrayOfDouble1[0];
+        this.bNn.bNY[1] = arrayOfDouble1[1];
+        this.bNn.bNZ[0][0] = (parama.bNu * parama.bNu);
+        this.bNn.bNZ[0][1] = 0L;
+        this.bNn.bNZ[1][0] = 0L;
+        this.bNn.bNZ[1][1] = (parama.bNu * parama.bNu);
         break;
-        d3 = this.bPF.bPZ[0] - this.bPG.bQq[0];
-        d4 = this.bPF.bPZ[1] - this.bPG.bQq[1];
-        d1 = this.bPF.bPZ[0] - arrayOfDouble1[0];
-        d2 = this.bPF.bPZ[1] - arrayOfDouble1[1];
+        d3 = this.bNn.bNH[0] - this.bNo.bNY[0];
+        d4 = this.bNn.bNH[1] - this.bNo.bNY[1];
+        d1 = this.bNn.bNH[0] - arrayOfDouble1[0];
+        d2 = this.bNn.bNH[1] - arrayOfDouble1[1];
         d3 = Math.sqrt(d3 * d3 + d4 * d4);
         d1 = Math.sqrt(d1 * d1 + d2 * d2);
-        d2 = Math.sqrt(this.bPF.bQr[0][0] * this.bPF.bQr[0][0] + this.bPF.bQr[1][1] * this.bPF.bQr[1][1]);
+        d2 = Math.sqrt(this.bNn.bNZ[0][0] * this.bNn.bNZ[0][0] + this.bNn.bNZ[1][1] * this.bNn.bNZ[1][1]);
         d1 = Math.abs(d3 - d1) / d2;
         break label2128;
-        d1 = arrayOfDouble1[0] - this.bPG.bQq[0];
-        d2 = arrayOfDouble1[1] - this.bPG.bQq[1];
+        d1 = arrayOfDouble1[0] - this.bNo.bNY[0];
+        d2 = arrayOfDouble1[1] - this.bNo.bNY[1];
         localObject1 = (double[][])Array.newInstance(Double.TYPE, new int[] { 2, 2 });
-        d3 = 1.0D / (this.bPG.bQr[0][0] * this.bPG.bQr[1][1] - this.bPG.bQr[0][1] * this.bPG.bQr[1][0]);
-        localObject1[0][0] = (this.bPG.bQr[1][1] * d3);
-        localObject1[1][1] = (this.bPG.bQr[0][0] * d3);
-        localObject1[0][1] = (-this.bPG.bQr[0][1] * d3);
-        localObject1[1][0] = (d3 * -this.bPG.bQr[1][0]);
+        d3 = 1.0D / (this.bNo.bNZ[0][0] * this.bNo.bNZ[1][1] - this.bNo.bNZ[0][1] * this.bNo.bNZ[1][0]);
+        localObject1[0][0] = (this.bNo.bNZ[1][1] * d3);
+        localObject1[1][1] = (this.bNo.bNZ[0][0] * d3);
+        localObject1[0][1] = (-this.bNo.bNZ[0][1] * d3);
+        localObject1[1][0] = (d3 * -this.bNo.bNZ[1][0]);
         d3 = localObject1[0][0];
         d4 = localObject1[1][0];
         d1 = Math.sqrt(localObject1[1][1] * (d2 * d2) + (d1 * 2.0D * d2 * d4 + d1 * d1 * d3));
         break label2128;
         label2881:
-        d1 = arrayOfDouble1[0] - this.bPG.bQq[0];
-        d2 = arrayOfDouble1[1] - this.bPG.bQq[1];
+        d1 = arrayOfDouble1[0] - this.bNo.bNY[0];
+        d2 = arrayOfDouble1[1] - this.bNo.bNY[1];
         localObject1 = (double[][])Array.newInstance(Double.TYPE, new int[] { 2, 2 });
-        d3 = 1.0D / (this.bPG.bQr[0][0] * this.bPG.bQr[1][1] - this.bPG.bQr[0][1] * this.bPG.bQr[1][0]);
-        localObject1[0][0] = (this.bPG.bQr[1][1] * d3);
-        localObject1[1][1] = (this.bPG.bQr[0][0] * d3);
-        localObject1[0][1] = (-this.bPG.bQr[0][1] * d3);
-        localObject1[1][0] = (d3 * -this.bPG.bQr[1][0]);
+        d3 = 1.0D / (this.bNo.bNZ[0][0] * this.bNo.bNZ[1][1] - this.bNo.bNZ[0][1] * this.bNo.bNZ[1][0]);
+        localObject1[0][0] = (this.bNo.bNZ[1][1] * d3);
+        localObject1[1][1] = (this.bNo.bNZ[0][0] * d3);
+        localObject1[0][1] = (-this.bNo.bNZ[0][1] * d3);
+        localObject1[1][0] = (d3 * -this.bNo.bNZ[1][0]);
         d3 = localObject1[0][0];
         d4 = localObject1[1][0];
         d1 = Math.sqrt(localObject1[1][1] * (d2 * d2) + (d1 * 2.0D * d2 * d4 + d1 * d1 * d3));
         break label2335;
         label3121:
-        b.a(this.bPF, this.bPG);
-        this.bPF.bQb = 0;
+        b.a(this.bNn, this.bNo);
+        this.bNn.bNJ = 0;
         continue;
         label3143:
-        b.a(this.bPF, this.bPG);
-        this.bPF.bQb = 0;
+        b.a(this.bNn, this.bNo);
+        this.bNn.bNJ = 0;
         a(arrayOfDouble1);
         continue;
         label3171:
-        b.a(this.bPF, this.bPG);
-        this.bPF.bQb = 0;
+        b.a(this.bNn, this.bNo);
+        this.bNn.bNJ = 0;
         a(arrayOfDouble1);
       }
     }
@@ -784,64 +784,64 @@ final class j
       localObject2 = new double[2];
       localObject1 = new double[2];
       arrayOfDouble1 = new double[2];
-      a(parama.bPH, false);
-      if (!this.bPF.bPY)
+      a(parama.bNp, false);
+      if (!this.bNn.bNG)
       {
         i = 1;
         j = 0;
-        this.bPF.bQb = 0;
+        this.bNn.bNJ = 0;
       }
       while (i != 0) {
         if (j == 0)
         {
-          this.bPF.bQq[0] = parama.bPK[0];
-          this.bPF.bQq[1] = parama.bPK[1];
-          this.bPF.bQq[2] = 0.0D;
-          this.bPF.bQq[3] = 0.0D;
-          this.bPF.bQr[0][0] = (parama.bPM * parama.bPM);
-          this.bPF.bQr[0][1] = 0L;
-          this.bPF.bQr[0][2] = 0L;
-          this.bPF.bQr[0][3] = 0L;
-          this.bPF.bQr[1][0] = 0L;
-          this.bPF.bQr[1][1] = this.bPF.bQr[0][0];
-          this.bPF.bQr[1][2] = 0L;
-          this.bPF.bQr[1][2] = 0L;
-          this.bPF.bQr[2][0] = 0L;
-          this.bPF.bQr[2][1] = 0L;
-          this.bPF.bQr[2][2] = this.bPF.bQl;
-          this.bPF.bQr[2][3] = 0L;
-          this.bPF.bQr[3][0] = 0L;
-          this.bPF.bQr[3][1] = 0L;
-          this.bPF.bQr[3][2] = 0L;
-          this.bPF.bQr[3][3] = this.bPF.bQl;
-          this.bPF.bPZ[0] = parama.bPK[0];
-          this.bPF.bPZ[1] = parama.bPK[1];
-          this.bPF.bPY = true;
+          this.bNn.bNY[0] = parama.bNs[0];
+          this.bNn.bNY[1] = parama.bNs[1];
+          this.bNn.bNY[2] = 0.0D;
+          this.bNn.bNY[3] = 0.0D;
+          this.bNn.bNZ[0][0] = (parama.bNu * parama.bNu);
+          this.bNn.bNZ[0][1] = 0L;
+          this.bNn.bNZ[0][2] = 0L;
+          this.bNn.bNZ[0][3] = 0L;
+          this.bNn.bNZ[1][0] = 0L;
+          this.bNn.bNZ[1][1] = this.bNn.bNZ[0][0];
+          this.bNn.bNZ[1][2] = 0L;
+          this.bNn.bNZ[1][2] = 0L;
+          this.bNn.bNZ[2][0] = 0L;
+          this.bNn.bNZ[2][1] = 0L;
+          this.bNn.bNZ[2][2] = this.bNn.bNT;
+          this.bNn.bNZ[2][3] = 0L;
+          this.bNn.bNZ[3][0] = 0L;
+          this.bNn.bNZ[3][1] = 0L;
+          this.bNn.bNZ[3][2] = 0L;
+          this.bNn.bNZ[3][3] = this.bNn.bNT;
+          this.bNn.bNH[0] = parama.bNs[0];
+          this.bNn.bNH[1] = parama.bNs[1];
+          this.bNn.bNG = true;
           AppMethodBeat.o(87970);
           return;
           localObject3 = (double[][])Array.newInstance(Double.TYPE, new int[] { 2, 2 });
-          localObject2[0] = (parama.bPK[0] - this.bPF.bQq[0]);
-          localObject2[1] = (parama.bPK[1] - this.bPF.bQq[1]);
-          d1 = this.bPF.bQr[0][0];
-          d2 = this.bPF.bQr[0][1];
-          d3 = this.bPF.bQr[1][0];
-          d4 = this.bPF.bQr[1][1];
-          double[] arrayOfDouble2 = this.bPE;
+          localObject2[0] = (parama.bNs[0] - this.bNn.bNY[0]);
+          localObject2[1] = (parama.bNs[1] - this.bNn.bNY[1]);
+          d1 = this.bNn.bNZ[0][0];
+          d2 = this.bNn.bNZ[0][1];
+          d3 = this.bNn.bNZ[1][0];
+          d4 = this.bNn.bNZ[1][1];
+          double[] arrayOfDouble2 = this.bNm;
           a(new double[] { d1, d2, d3, d4 }, arrayOfDouble2);
-          localObject3[0][0] = this.bPE[0];
-          localObject3[0][1] = this.bPE[1];
-          localObject3[1][0] = this.bPE[2];
-          localObject3[1][1] = this.bPE[3];
-          if (Math.sqrt(localObject2[0] * localObject2[0] * localObject3[0][0] + 2.0D * localObject2[0] * localObject2[1] * localObject3[1][0] + localObject2[1] * localObject2[1] * localObject3[1][1]) > this.bPF.bQa)
+          localObject3[0][0] = this.bNm[0];
+          localObject3[0][1] = this.bNm[1];
+          localObject3[1][0] = this.bNm[2];
+          localObject3[1][1] = this.bNm[3];
+          if (Math.sqrt(localObject2[0] * localObject2[0] * localObject3[0][0] + 2.0D * localObject2[0] * localObject2[1] * localObject3[1][0] + localObject2[1] * localObject2[1] * localObject3[1][1]) > this.bNn.bNI)
           {
-            localObject2 = this.bPF;
-            i = ((b)localObject2).bQb + 1;
-            ((b)localObject2).bQb = i;
-            if (i >= this.bPF.bQc)
+            localObject2 = this.bNn;
+            i = ((b)localObject2).bNJ + 1;
+            ((b)localObject2).bNJ = i;
+            if (i >= this.bNn.bNK)
             {
               i = 1;
               j = 0;
-              this.bPF.bQb = 0;
+              this.bNn.bNJ = 0;
             }
             else
             {
@@ -850,7 +850,7 @@ final class j
           }
           else
           {
-            this.bPF.bQb = 0;
+            this.bNn.bNJ = 0;
             i = 1;
             j = 1;
           }
@@ -859,10 +859,10 @@ final class j
         {
           localObject3 = (double[][])Array.newInstance(Double.TYPE, new int[] { 4, 4 });
           localObject2 = new double[2];
-          localObject1[0] = (this.bPF.bQq[0] - this.bPF.bPZ[0]);
-          localObject1[1] = (this.bPF.bQq[1] - this.bPF.bPZ[1]);
-          arrayOfDouble1[0] = (parama.bPK[0] - this.bPF.bPZ[0]);
-          arrayOfDouble1[1] = (parama.bPK[1] - this.bPF.bPZ[1]);
+          localObject1[0] = (this.bNn.bNY[0] - this.bNn.bNH[0]);
+          localObject1[1] = (this.bNn.bNY[1] - this.bNn.bNH[1]);
+          arrayOfDouble1[0] = (parama.bNs[0] - this.bNn.bNH[0]);
+          arrayOfDouble1[1] = (parama.bNs[1] - this.bNn.bNH[1]);
           d2 = Math.sqrt(arrayOfDouble1[0] * arrayOfDouble1[0] + arrayOfDouble1[1] * arrayOfDouble1[1]);
           d1 = localObject1[0];
           d3 = localObject1[0];
@@ -871,17 +871,17 @@ final class j
           if (d2 >= d4) {
             break label4331;
           }
-          d1 = this.bPF.bQw;
-          if (a(this.bPF.bQr, (double[][])localObject3))
+          d1 = this.bNn.bOe;
+          if (a(this.bNn.bNZ, (double[][])localObject3))
           {
-            d3 = 1.0D / (parama.bPM * parama.bPM);
+            d3 = 1.0D / (parama.bNu * parama.bNu);
             localObject1 = new double[4];
-            if (!this.bPF.bQD) {
+            if (!this.bNn.bOl) {
               break label4342;
             }
             d1 += d4 / d2 * (1.0D - d1);
-            localObject2[0] = (this.bPF.bPZ[0] + arrayOfDouble1[0] * d1);
-            d2 = this.bPF.bPZ[1];
+            localObject2[0] = (this.bNn.bNH[0] + arrayOfDouble1[0] * d1);
+            d2 = this.bNn.bNH[1];
             localObject2[1] = (d1 * arrayOfDouble1[1] + d2);
           }
         }
@@ -897,7 +897,7 @@ final class j
       parama[0] += d3;
       parama = localObject3[1];
       parama[1] += d3;
-      if (a((double[][])localObject3, this.bPF.bQr))
+      if (a((double[][])localObject3, this.bNn.bNZ))
       {
         localObject1[0] += localObject2[0] * d3;
         localObject1[1] += localObject2[1] * d3;
@@ -905,19 +905,19 @@ final class j
         if (i < 4) {
           break label4464;
         }
-        this.bPF.bPZ[0] = localObject2[0];
-        this.bPF.bPZ[1] = localObject2[1];
+        this.bNn.bNH[0] = localObject2[0];
+        this.bNn.bNH[1] = localObject2[1];
       }
       label4325:
       AppMethodBeat.o(87970);
       return;
       label4331:
-      d1 = this.bPF.bQx;
+      d1 = this.bNn.bOf;
       break;
       label4342:
-      localObject2[0] = (this.bPF.bQq[0] * (1.0D - d1) + parama.bPK[0] * d1);
-      d2 = this.bPF.bQq[1];
-      localObject2[1] = (d1 * parama.bPK[1] + d2 * (1.0D - d1));
+      localObject2[0] = (this.bNn.bNY[0] * (1.0D - d1) + parama.bNs[0] * d1);
+      d2 = this.bNn.bNY[1];
+      localObject2[1] = (d1 * parama.bNs[1] + d2 * (1.0D - d1));
     }
     label4401:
     localObject1[i] = 0.0D;
@@ -929,11 +929,11 @@ final class j
         i += 1;
         break;
       }
-      localObject1[i] += localObject3[i][j] * this.bPF.bQq[j];
+      localObject1[i] += localObject3[i][j] * this.bNn.bNY[j];
       j += 1;
     }
     label4464:
-    this.bPF.bQq[i] = 0.0D;
+    this.bNn.bNY[i] = 0.0D;
     j = 0;
     for (;;)
     {
@@ -942,19 +942,19 @@ final class j
         i += 1;
         break;
       }
-      parama = this.bPF.bQq;
-      parama[i] += this.bPF.bQr[i][j] * localObject1[j];
+      parama = this.bNn.bNY;
+      parama[i] += this.bNn.bNZ[i][j] * localObject1[j];
       j += 1;
     }
   }
   
-  protected final void bk(boolean paramBoolean)
+  protected final void bj(boolean paramBoolean)
   {
     AppMethodBeat.i(87968);
     if (paramBoolean) {}
     for (paramBoolean = false;; paramBoolean = true)
     {
-      bl(paramBoolean);
+      bk(paramBoolean);
       AppMethodBeat.o(87968);
       return;
     }
@@ -962,45 +962,45 @@ final class j
   
   protected static final class a
   {
-    double bPH;
-    double bPI;
-    double bPJ;
-    double[] bPK;
-    double bPL;
-    double bPM;
-    int bPN;
-    double bPO;
-    double bPP;
-    int bPQ;
-    double bPR;
-    double bPS;
-    double bPT;
+    double bNA;
+    double bNB;
+    double bNp;
+    double bNq;
+    double bNr;
+    double[] bNs;
+    double bNt;
+    double bNu;
+    int bNv;
+    double bNw;
+    double bNx;
+    int bNy;
+    double bNz;
     int mType;
     
     protected a(int paramInt1, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, int paramInt2, double paramDouble6, int paramInt3, double paramDouble7, double paramDouble8)
     {
       AppMethodBeat.i(87961);
-      this.bPK = new double[2];
+      this.bNs = new double[2];
       this.mType = paramInt1;
-      this.bPH = paramDouble1;
-      this.bPI = paramDouble2;
-      this.bPJ = paramDouble3;
-      this.bPL = paramDouble4;
-      this.bPM = paramDouble5;
-      this.bPN = paramInt2;
-      this.bPO = paramDouble6;
-      this.bPP = 0.0D;
-      this.bPQ = paramInt3;
-      this.bPR = 0.0D;
-      this.bPS = paramDouble7;
-      this.bPT = paramDouble8;
+      this.bNp = paramDouble1;
+      this.bNq = paramDouble2;
+      this.bNr = paramDouble3;
+      this.bNt = paramDouble4;
+      this.bNu = paramDouble5;
+      this.bNv = paramInt2;
+      this.bNw = paramDouble6;
+      this.bNx = 0.0D;
+      this.bNy = paramInt3;
+      this.bNz = 0.0D;
+      this.bNA = paramDouble7;
+      this.bNB = paramDouble8;
       AppMethodBeat.o(87961);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(87962);
-      String str = String.valueOf(this.mType) + ',' + this.bPH + ',' + this.bPI + ',' + this.bPJ + ',' + this.bPL + ',' + this.bPM + ',' + this.bPN + ',' + this.bPO + ',' + this.bPP + ',' + this.bPQ + ',' + this.bPS + ',' + this.bPT;
+      String str = String.valueOf(this.mType) + ',' + this.bNp + ',' + this.bNq + ',' + this.bNr + ',' + this.bNt + ',' + this.bNu + ',' + this.bNv + ',' + this.bNw + ',' + this.bNx + ',' + this.bNy + ',' + this.bNA + ',' + this.bNB;
       AppMethodBeat.o(87962);
       return str;
     }
@@ -1008,100 +1008,100 @@ final class j
   
   static final class b
   {
-    double bPH;
-    double bPU;
-    boolean bPV;
-    double[] bPW;
-    double bPX;
-    boolean bPY;
-    double[] bPZ;
-    double bQA;
-    double[] bQB;
-    double[] bQC;
-    boolean bQD;
-    double bQa;
-    int bQb;
-    int bQc;
-    boolean bQd;
-    boolean bQe;
-    double bQf;
-    double bQg;
-    double bQh;
-    double bQi;
-    double bQj;
-    double bQk;
-    double bQl;
-    double[] bQm;
-    private boolean bQn;
-    boolean bQo;
-    boolean bQp;
-    double[] bQq;
-    double[][] bQr;
-    double bQs;
-    double bQt;
-    double bQu;
-    boolean bQv;
-    double bQw;
-    double bQx;
-    int bQy;
-    int bQz;
+    double bNC;
+    boolean bND;
+    double[] bNE;
+    double bNF;
+    boolean bNG;
+    double[] bNH;
+    double bNI;
+    int bNJ;
+    int bNK;
+    boolean bNL;
+    boolean bNM;
+    double bNN;
+    double bNO;
+    double bNP;
+    double bNQ;
+    double bNR;
+    double bNS;
+    double bNT;
+    double[] bNU;
+    private boolean bNV;
+    boolean bNW;
+    boolean bNX;
+    double[] bNY;
+    double[][] bNZ;
+    double bNp;
+    double bOa;
+    double bOb;
+    double bOc;
+    boolean bOd;
+    double bOe;
+    double bOf;
+    int bOg;
+    int bOh;
+    double bOi;
+    double[] bOj;
+    double[] bOk;
+    boolean bOl;
     
     private b()
     {
       AppMethodBeat.i(87963);
-      this.bPW = new double[2];
-      this.bPZ = new double[2];
-      this.bQm = new double[2];
-      this.bQq = new double[4];
-      this.bQr = ((double[][])Array.newInstance(Double.TYPE, new int[] { 4, 4 }));
-      this.bQB = new double[2];
-      this.bQC = new double[2];
+      this.bNE = new double[2];
+      this.bNH = new double[2];
+      this.bNU = new double[2];
+      this.bNY = new double[4];
+      this.bNZ = ((double[][])Array.newInstance(Double.TYPE, new int[] { 4, 4 }));
+      this.bOj = new double[2];
+      this.bOk = new double[2];
       AppMethodBeat.o(87963);
     }
     
     private void a(b paramb)
     {
       AppMethodBeat.i(87964);
-      this.bPU = paramb.bPU;
-      this.bPV = paramb.bPV;
-      this.bPW = ((double[])paramb.bPW.clone());
-      this.bPX = paramb.bPX;
-      this.bPY = paramb.bPY;
-      this.bPZ = ((double[])paramb.bPZ.clone());
-      this.bQa = paramb.bQa;
-      this.bQb = paramb.bQb;
-      this.bQc = paramb.bQc;
-      this.bQd = paramb.bQd;
-      this.bQe = paramb.bQe;
-      this.bQf = paramb.bQf;
-      this.bQg = paramb.bQg;
-      this.bQh = paramb.bQh;
-      this.bQi = paramb.bQi;
-      this.bQj = paramb.bQj;
-      this.bQk = paramb.bQk;
-      this.bQl = paramb.bQl;
-      this.bQm = ((double[])paramb.bQm.clone());
-      this.bQn = paramb.bQn;
-      this.bQo = paramb.bQo;
-      this.bQp = paramb.bQp;
-      this.bPH = paramb.bPH;
-      this.bQq = ((double[])paramb.bQq.clone());
-      this.bQr[0] = ((double[])paramb.bQr[0].clone());
-      this.bQr[1] = ((double[])paramb.bQr[1].clone());
-      this.bQr[2] = ((double[])paramb.bQr[2].clone());
-      this.bQr[3] = ((double[])paramb.bQr[3].clone());
-      this.bQs = paramb.bQs;
-      this.bQt = paramb.bQt;
-      this.bQu = paramb.bQu;
-      this.bQv = paramb.bQv;
-      this.bQw = paramb.bQw;
-      this.bQx = paramb.bQx;
-      this.bQy = paramb.bQy;
-      this.bQz = paramb.bQz;
-      this.bQA = paramb.bQA;
-      this.bQB = ((double[])paramb.bQB.clone());
-      this.bQC = ((double[])paramb.bQC.clone());
-      this.bQD = paramb.bQD;
+      this.bNC = paramb.bNC;
+      this.bND = paramb.bND;
+      this.bNE = ((double[])paramb.bNE.clone());
+      this.bNF = paramb.bNF;
+      this.bNG = paramb.bNG;
+      this.bNH = ((double[])paramb.bNH.clone());
+      this.bNI = paramb.bNI;
+      this.bNJ = paramb.bNJ;
+      this.bNK = paramb.bNK;
+      this.bNL = paramb.bNL;
+      this.bNM = paramb.bNM;
+      this.bNN = paramb.bNN;
+      this.bNO = paramb.bNO;
+      this.bNP = paramb.bNP;
+      this.bNQ = paramb.bNQ;
+      this.bNR = paramb.bNR;
+      this.bNS = paramb.bNS;
+      this.bNT = paramb.bNT;
+      this.bNU = ((double[])paramb.bNU.clone());
+      this.bNV = paramb.bNV;
+      this.bNW = paramb.bNW;
+      this.bNX = paramb.bNX;
+      this.bNp = paramb.bNp;
+      this.bNY = ((double[])paramb.bNY.clone());
+      this.bNZ[0] = ((double[])paramb.bNZ[0].clone());
+      this.bNZ[1] = ((double[])paramb.bNZ[1].clone());
+      this.bNZ[2] = ((double[])paramb.bNZ[2].clone());
+      this.bNZ[3] = ((double[])paramb.bNZ[3].clone());
+      this.bOa = paramb.bOa;
+      this.bOb = paramb.bOb;
+      this.bOc = paramb.bOc;
+      this.bOd = paramb.bOd;
+      this.bOe = paramb.bOe;
+      this.bOf = paramb.bOf;
+      this.bOg = paramb.bOg;
+      this.bOh = paramb.bOh;
+      this.bOi = paramb.bOi;
+      this.bOj = ((double[])paramb.bOj.clone());
+      this.bOk = ((double[])paramb.bOk.clone());
+      this.bOl = paramb.bOl;
       AppMethodBeat.o(87964);
     }
   }

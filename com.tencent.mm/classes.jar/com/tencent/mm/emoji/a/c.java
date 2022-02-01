@@ -1,34 +1,29 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.protocal.protobuf.GetEmotionDetailRequest;
-import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.protocal.protobuf.aws;
+import com.tencent.mm.protocal.protobuf.awt;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/CgiGetEmotionDetail;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionDetailResponse;", "productId", "", "(Ljava/lang/String;)V", "getProductId", "()Ljava/lang/String;", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/CgiGetEmojiWordList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "()V", "plugin-emojisdk_release"})
 public final class c
-  extends com.tencent.mm.al.c<GetEmotionDetailResponse>
+  extends com.tencent.mm.ak.a<awt>
 {
-  private final String dft;
-  
-  public c(String paramString)
+  public c()
   {
-    AppMethodBeat.i(183954);
-    this.dft = paramString;
-    paramString = new GetEmotionDetailRequest();
-    GetEmotionDetailResponse localGetEmotionDetailResponse = new GetEmotionDetailResponse();
-    paramString.ProductID = this.dft;
-    paramString.Version = -1;
-    paramString.Scene = 3;
+    AppMethodBeat.i(209825);
+    aws localaws = new aws();
+    awt localawt = new awt();
     b.a locala = new b.a();
-    locala.c((a)paramString);
-    locala.d((a)localGetEmotionDetailResponse);
-    locala.wg("/cgi-bin/micromsg-bin/getemotiondetail");
-    locala.nB(412);
-    c(locala.atI());
-    AppMethodBeat.o(183954);
+    locala.c((com.tencent.mm.bw.a)localaws);
+    locala.d((com.tencent.mm.bw.a)localawt);
+    locala.Am("/cgi-bin/micromsg-bin/getemotionwordlist");
+    locala.op(3628);
+    locala.or(0);
+    locala.os(0);
+    c(locala.aAz());
+    AppMethodBeat.o(209825);
   }
 }
 

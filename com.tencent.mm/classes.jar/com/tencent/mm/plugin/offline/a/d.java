@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.offline.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,16 +13,16 @@ import org.json.JSONObject;
 public final class d
   extends m
 {
-  public String ujF;
-  public int ujG;
-  public String ujH;
+  public String vsB;
+  public int vsC;
+  public String vsD;
   
   public d()
   {
     AppMethodBeat.i(66286);
     HashMap localHashMap = new HashMap();
-    com.tencent.mm.kernel.g.afC();
-    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fpr, null);
+    com.tencent.mm.kernel.g.agS();
+    Object localObject = com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNh, null);
     if (localObject != null) {
       localHashMap.put("ack_key", (String)localObject);
     }
@@ -34,7 +34,7 @@ public final class d
   public final long getReturnTimeout()
   {
     AppMethodBeat.i(66288);
-    long l = com.tencent.mm.plugin.offline.g.cYn();
+    long l = com.tencent.mm.plugin.offline.g.dlV();
     AppMethodBeat.o(66288);
     return l;
   }
@@ -54,21 +54,21 @@ public final class d
     AppMethodBeat.i(66287);
     if (paramInt == 0)
     {
-      h.vKh.idkeyStat(135L, 56L, 1L, true);
-      this.ujF = paramJSONObject.optString("appmsg");
-      this.ujG = (paramJSONObject.optInt("poll_time") * 1000);
-      this.ujH = paramJSONObject.optString("ack_key");
-      if (this.ujG > 0)
+      h.wUl.idkeyStat(135L, 56L, 1L, true);
+      this.vsB = paramJSONObject.optString("appmsg");
+      this.vsC = (paramJSONObject.optInt("poll_time") * 1000);
+      this.vsD = paramJSONObject.optString("ack_key");
+      if (this.vsC > 0)
       {
-        com.tencent.mm.kernel.g.afC();
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fpq, Integer.valueOf(this.ujG));
+        com.tencent.mm.kernel.g.agS();
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNg, Integer.valueOf(this.vsC));
       }
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fpr, this.ujH);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNh, this.vsD);
       AppMethodBeat.o(66287);
       return;
     }
-    h.vKh.idkeyStat(135L, 57L, 1L, true);
+    h.wUl.idkeyStat(135L, 57L, 1L, true);
     AppMethodBeat.o(66287);
   }
   

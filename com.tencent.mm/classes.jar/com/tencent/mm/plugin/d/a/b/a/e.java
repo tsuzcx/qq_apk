@@ -7,79 +7,79 @@ public class e
   extends a
 {
   static final String TAG;
-  public static final String mPi;
-  public static final String mPj;
-  public static final String mPk;
-  public static final String mPl;
-  public byte mPm;
-  public byte mPn;
-  public byte mPo;
-  public byte mPp;
-  public byte[] mPq;
-  public int mPr;
-  public byte mPs;
-  public byte mPt;
-  public byte[] mPu;
+  public static final String nru;
+  public static final String nrv;
+  public static final String nrw;
+  public static final String nrx;
+  public byte nrA;
+  public byte nrB;
+  public byte[] nrC;
+  public int nrD;
+  public byte nrE;
+  public byte nrF;
+  public byte[] nrG;
+  public byte nry;
+  public byte nrz;
   
   static
   {
     AppMethodBeat.i(22582);
     TAG = e.class.getName();
-    mPi = h.mOd;
-    mPj = h.mOe;
-    mPk = h.mOf;
-    mPl = h.mOg;
+    nru = h.nqp;
+    nrv = h.nqq;
+    nrw = h.nqr;
+    nrx = h.nqs;
     AppMethodBeat.o(22582);
   }
   
   public e()
   {
     AppMethodBeat.i(22580);
-    this.mOt = null;
-    this.mOu = 8;
-    this.mNN = 16L;
-    this.mPm = 0;
-    this.mPn = 0;
-    this.mPo = 0;
-    this.mPp = 0;
-    this.mPq = new byte[] { 0, 0 };
-    this.mPr = -1;
-    this.mPs = 0;
-    this.mPt = 0;
-    this.mPu = null;
+    this.nqF = null;
+    this.nqG = 8;
+    this.npZ = 16L;
+    this.nry = 0;
+    this.nrz = 0;
+    this.nrA = 0;
+    this.nrB = 0;
+    this.nrC = new byte[] { 0, 0 };
+    this.nrD = -1;
+    this.nrE = 0;
+    this.nrF = 0;
+    this.nrG = null;
     AppMethodBeat.o(22580);
   }
   
-  public final byte[] bBD()
+  public final byte[] bIB()
   {
     AppMethodBeat.i(22581);
     byte[] arrayOfByte;
-    if (this.mOt.equalsIgnoreCase(mPi))
+    if (this.nqF.equalsIgnoreCase(nru))
     {
       arrayOfByte = new byte[3];
-      System.arraycopy(Byte.valueOf(this.mPm), 0, arrayOfByte, 0, 1);
-      System.arraycopy(Byte.valueOf(this.mPn), 0, arrayOfByte, 1, 1);
-      System.arraycopy(Byte.valueOf(this.mPo), 0, arrayOfByte, 2, 1);
+      System.arraycopy(Byte.valueOf(this.nry), 0, arrayOfByte, 0, 1);
+      System.arraycopy(Byte.valueOf(this.nrz), 0, arrayOfByte, 1, 1);
+      System.arraycopy(Byte.valueOf(this.nrA), 0, arrayOfByte, 2, 1);
       AppMethodBeat.o(22581);
       return arrayOfByte;
     }
-    if (this.mOt.equalsIgnoreCase(mPj))
+    if (this.nqF.equalsIgnoreCase(nrv))
     {
       arrayOfByte = new byte[1];
-      System.arraycopy(Byte.valueOf(this.mPp), 0, arrayOfByte, 0, 1);
+      System.arraycopy(Byte.valueOf(this.nrB), 0, arrayOfByte, 0, 1);
       AppMethodBeat.o(22581);
       return arrayOfByte;
     }
-    if (this.mOt.equalsIgnoreCase(mPl))
+    if (this.nqF.equalsIgnoreCase(nrx))
     {
-      arrayOfByte = new byte[this.mPr];
-      byte b1 = (byte)(this.mPr & 0xFF);
-      byte b2 = (byte)(this.mPr >> 8 & 0xFF);
+      arrayOfByte = new byte[this.nrD];
+      byte b1 = (byte)(this.nrD & 0xFF);
+      byte b2 = (byte)(this.nrD >> 8 & 0xFF);
       System.arraycopy(Byte.valueOf(b1), 0, arrayOfByte, 0, 1);
       System.arraycopy(Byte.valueOf(b2), 0, arrayOfByte, 1, 1);
-      System.arraycopy(Byte.valueOf(this.mPs), 0, arrayOfByte, 2, 1);
-      if (this.mPr > 3) {
-        System.arraycopy(this.mPu, 0, arrayOfByte, 3, this.mPr - 3);
+      System.arraycopy(Byte.valueOf(this.nrE), 0, arrayOfByte, 2, 1);
+      if (this.nrD > 3) {
+        System.arraycopy(this.nrG, 0, arrayOfByte, 3, this.nrD - 3);
       }
       AppMethodBeat.o(22581);
       return arrayOfByte;

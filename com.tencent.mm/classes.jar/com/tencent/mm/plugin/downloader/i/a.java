@@ -13,9 +13,9 @@ import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.n;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public final class a
@@ -23,41 +23,41 @@ public final class a
   public static void a(long paramLong, final boolean paramBoolean, final com.tencent.mm.pluginsdk.permission.a parama)
   {
     AppMethodBeat.i(89133);
-    com.tencent.mm.plugin.downloader.g.a locala = d.oq(paramLong);
-    if ((locala == null) || (locala.field_status != 3) || (!i.eK(locala.field_filePath)))
+    com.tencent.mm.plugin.downloader.g.a locala = d.sc(paramLong);
+    if ((locala == null) || (locala.field_status != 3) || (!i.eA(locala.field_filePath)))
     {
       if (parama != null) {
-        parama.fO(false);
+        parama.gk(false);
       }
       AppMethodBeat.o(89133);
       return;
     }
     if (!e.g(locala))
     {
-      ad.i("MicroMsg.DownloadAppUtil", "install, md5 check fail");
+      ac.i("MicroMsg.DownloadAppUtil", "install, md5 check fail");
       i.deleteFile(locala.field_filePath);
-      d.or(paramLong);
-      com.tencent.mm.plugin.report.service.h.vKh.dB(860, 35);
+      d.sd(paramLong);
+      com.tencent.mm.plugin.report.service.h.wUl.dB(860, 35);
       AppMethodBeat.o(89133);
       return;
     }
     a(locala.field_filePath, new com.tencent.mm.pluginsdk.permission.a()
     {
-      public final void fO(boolean paramAnonymousBoolean)
+      public final void gk(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(89130);
         b localb;
         if (paramAnonymousBoolean)
         {
           localb = new b();
-          localb.k(this.oeS);
-          String str = this.oeS.field_packageName;
-          SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("install_begin_time", 0);
+          localb.k(this.oIu);
+          String str = this.oIu.field_packageName;
+          SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("install_begin_time", 0);
           if (localSharedPreferences != null) {
             localSharedPreferences.edit().putLong(str, System.currentTimeMillis()).apply();
           }
-          com.tencent.mm.plugin.downloader.f.a.a(this.oeS.field_appId, this.oeS.field_scene, 4, this.oeS.field_md5, this.oeS.field_downloadUrl, null, this.oeS.field_extInfo);
-          localb.lrf = ((System.currentTimeMillis() - this.oeS.field_startTime) / 1000L);
+          com.tencent.mm.plugin.downloader.f.a.a(this.oIu.field_appId, this.oIu.field_scene, 4, this.oIu.field_md5, this.oIu.field_downloadUrl, null, this.oIu.field_extInfo);
+          localb.lTa = ((System.currentTimeMillis() - this.oIu.field_startTime) / 1000L);
           com.tencent.mm.plugin.downloader.f.a.a(4, localb);
           if (!paramBoolean) {
             break label170;
@@ -67,7 +67,7 @@ public final class a
         for (;;)
         {
           if (parama != null) {
-            parama.fO(paramAnonymousBoolean);
+            parama.gk(paramAnonymousBoolean);
           }
           AppMethodBeat.o(89130);
           return;
@@ -84,25 +84,25 @@ public final class a
     AppMethodBeat.i(89135);
     paramam = new am()
     {
-      public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+      public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        AppMethodBeat.i(189081);
-        if (this.ogC != null) {
-          this.ogC.u(paramAnonymousBoolean1, paramAnonymousBoolean2);
+        AppMethodBeat.i(209635);
+        if (this.oKc != null) {
+          this.oKc.v(paramAnonymousBoolean1, paramAnonymousBoolean2);
         }
-        AppMethodBeat.o(189081);
+        AppMethodBeat.o(209635);
       }
     };
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.DownloadAppUtil", "null or nil appid");
-      paramam.u(false, false);
+      ac.e("MicroMsg.DownloadAppUtil", "null or nil appid");
+      paramam.v(false, false);
     }
-    paramString = com.tencent.mm.pluginsdk.model.app.h.j(paramString, true, false);
-    if ((paramString == null) || (bt.isNullOrNil(paramString.field_appId)))
+    paramString = com.tencent.mm.pluginsdk.model.app.h.k(paramString, true, false);
+    if ((paramString == null) || (bs.isNullOrNil(paramString.field_appId)))
     {
-      ad.e("MicroMsg.DownloadAppUtil", "appinfo is null or appid is null");
-      paramam.u(false, false);
+      ac.e("MicroMsg.DownloadAppUtil", "appinfo is null or appid is null");
+      paramam.v(false, false);
       AppMethodBeat.o(89135);
       return;
     }
@@ -110,13 +110,13 @@ public final class a
     localWXMediaMessage.sdkVer = 637927424;
     localWXMediaMessage.messageAction = null;
     localWXMediaMessage.messageExt = "WX_GameCenter";
-    ad.d("MicroMsg.DownloadAppUtil", "launch game app from wx: appid: [%s], appname:[%s], openid:[%s]", new Object[] { paramString.field_appId, paramString.field_appName, paramString.field_openId });
-    if (bt.isNullOrNil(paramString.field_openId))
+    ac.d("MicroMsg.DownloadAppUtil", "launch game app from wx: appid: [%s], appname:[%s], openid:[%s]", new Object[] { paramString.field_appId, paramString.field_appName, paramString.field_openId });
+    if (bs.isNullOrNil(paramString.field_openId))
     {
-      ad.i("MicroMsg.DownloadAppUtil", "open id is null or nil, try to get from server:[%s]", new Object[] { paramString.field_appName });
-      com.tencent.mm.plugin.s.a.cZS().xe(paramString.field_appId);
+      ac.i("MicroMsg.DownloadAppUtil", "open id is null or nil, try to get from server:[%s]", new Object[] { paramString.field_appName });
+      com.tencent.mm.plugin.s.a.dnA().Bk(paramString.field_appId);
     }
-    com.tencent.mm.cj.a.post(new Runnable()
+    com.tencent.mm.ci.a.post(new Runnable()
     {
       public final void run()
       {
@@ -131,26 +131,26 @@ public final class a
   public static void a(String paramString, com.tencent.mm.pluginsdk.permission.a parama)
   {
     AppMethodBeat.i(89134);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.DownloadAppUtil", "installApk, path is null");
+      ac.e("MicroMsg.DownloadAppUtil", "installApk, path is null");
       if (parama != null) {
-        parama.fO(false);
+        parama.gk(false);
       }
       AppMethodBeat.o(89134);
       return;
     }
-    ad.i("MicroMsg.DownloadAppUtil", "installApk, path = ".concat(String.valueOf(paramString)));
-    if (!i.eK(paramString))
+    ac.i("MicroMsg.DownloadAppUtil", "installApk, path = ".concat(String.valueOf(paramString)));
+    if (!i.eA(paramString))
     {
-      ad.e("MicroMsg.DownloadAppUtil", "installApk, path not exists");
+      ac.e("MicroMsg.DownloadAppUtil", "installApk, path not exists");
       if (parama != null) {
-        parama.fO(false);
+        parama.gk(false);
       }
       AppMethodBeat.o(89134);
       return;
     }
-    r.b(aj.getContext(), paramString, parama, true);
+    r.b(ai.getContext(), paramString, parama, true);
     AppMethodBeat.o(89134);
   }
 }

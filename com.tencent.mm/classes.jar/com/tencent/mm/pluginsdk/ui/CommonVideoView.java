@@ -5,16 +5,16 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class CommonVideoView
   extends AbstractVideoView
 {
-  protected boolean bqS;
-  private boolean hyg = false;
-  protected int knG;
-  protected int knr = 0;
+  protected boolean bps;
+  private boolean hYH = false;
+  protected int kOJ = 0;
+  protected int kPa;
   protected String url;
   
   public CommonVideoView(Context paramContext)
@@ -32,22 +32,37 @@ public class CommonVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public boolean aXf()
+  public final boolean aB(float paramFloat)
+  {
+    AppMethodBeat.i(133996);
+    ac.i(this.TAG, "%s set play rate [%f]", new Object[] { blf(), Float.valueOf(paramFloat) });
+    if ((this.odZ instanceof VideoTextureView))
+    {
+      oQ(getReportIdkey() + 13);
+      boolean bool = ((VideoTextureView)this.odZ).aB(paramFloat);
+      AppMethodBeat.o(133996);
+      return bool;
+    }
+    AppMethodBeat.o(133996);
+    return false;
+  }
+  
+  public boolean bed()
   {
     AppMethodBeat.i(134005);
-    boolean bool = ben();
+    boolean bool = blh();
     int i;
-    if (this.nAZ != null)
+    if (this.odZ != null)
     {
-      i = this.nAZ.getDuration();
-      if (!this.bqS) {
+      i = this.odZ.getDuration();
+      if (!this.bps) {
         break label102;
       }
       bool = true;
     }
     for (;;)
     {
-      ad.d(this.TAG, "%s is live video result [%b] isPrepared[%b] durationMs[%d] isLive[%b]", new Object[] { bel(), Boolean.valueOf(bool), Boolean.valueOf(ben()), Integer.valueOf(i), Boolean.valueOf(this.bqS) });
+      ac.d(this.TAG, "%s is live video result [%b] isPrepared[%b] durationMs[%d] isLive[%b]", new Object[] { blf(), Boolean.valueOf(bool), Boolean.valueOf(blh()), Integer.valueOf(i), Boolean.valueOf(this.bps) });
       AppMethodBeat.o(134005);
       return bool;
       i = 0;
@@ -61,38 +76,23 @@ public class CommonVideoView
     }
   }
   
-  public final boolean ax(float paramFloat)
-  {
-    AppMethodBeat.i(133996);
-    ad.i(this.TAG, "%s set play rate [%f]", new Object[] { bel(), Float.valueOf(paramFloat) });
-    if ((this.nAZ instanceof VideoTextureView))
-    {
-      ln(getReportIdkey() + 13);
-      boolean bool = ((VideoTextureView)this.nAZ).ax(paramFloat);
-      AppMethodBeat.o(133996);
-      return bool;
-    }
-    AppMethodBeat.o(133996);
-    return false;
-  }
-  
   public void c(boolean paramBoolean, String paramString, int paramInt)
   {
     AppMethodBeat.i(133992);
-    ad.i(this.TAG, "%s set video path isLive [%b] url [%s] durationSec [%d]", new Object[] { bel(), Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) });
-    this.bqS = paramBoolean;
+    ac.i(this.TAG, "%s set video path isLive [%b] url [%s] durationSec [%d]", new Object[] { blf(), Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt) });
+    this.bps = paramBoolean;
     this.url = paramString;
-    this.knG = paramInt;
-    aBy(paramString);
+    this.kPa = paramInt;
+    aGQ(paramString);
     AppMethodBeat.o(133992);
   }
   
   public boolean c(double paramDouble, boolean paramBoolean)
   {
     AppMethodBeat.i(134000);
-    if (aXf())
+    if (bed())
     {
-      ad.w(this.TAG, "%s it is live, don't seek ", new Object[] { bel() });
+      ac.w(this.TAG, "%s it is live, don't seek ", new Object[] { blf() });
       AppMethodBeat.o(134000);
       return false;
     }
@@ -101,48 +101,48 @@ public class CommonVideoView
     return paramBoolean;
   }
   
-  protected h cF(Context paramContext)
+  protected h cO(Context paramContext)
   {
     AppMethodBeat.i(133993);
-    this.kuZ = 0;
+    this.kWn = 0;
     paramContext = new VideoTextureView(paramContext);
     AppMethodBeat.o(133993);
     return paramContext;
   }
   
-  public final void dZ(int paramInt1, int paramInt2)
+  public final void dLd()
+  {
+    AppMethodBeat.i(191674);
+    super.dLd();
+    AppMethodBeat.o(191674);
+  }
+  
+  public final int eML()
+  {
+    this.kOJ = 0;
+    return 0;
+  }
+  
+  public final void ea(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(134003);
-    ad.d(this.TAG, "%s onInfo [%d %d]", new Object[] { bel(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.d(this.TAG, "%s onInfo [%d %d]", new Object[] { blf(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 701)
     {
       showLoading();
-      exe();
-      exc();
-      ln(getReportIdkey() + 40);
+      eMy();
+      eMw();
+      oQ(getReportIdkey() + 40);
       AppMethodBeat.o(134003);
       return;
     }
     if (paramInt1 == 702)
     {
       super.hideLoading();
-      exd();
-      exf();
+      eMx();
+      eMz();
     }
     AppMethodBeat.o(134003);
-  }
-  
-  public final void dwE()
-  {
-    AppMethodBeat.i(190264);
-    super.dwE();
-    AppMethodBeat.o(190264);
-  }
-  
-  public final int exr()
-  {
-    this.knr = 0;
-    return 0;
   }
   
   public int getCacheTimeSec()
@@ -150,9 +150,9 @@ public class CommonVideoView
     AppMethodBeat.i(133998);
     try
     {
-      if ((this.nAZ instanceof VideoTextureView))
+      if ((this.odZ instanceof VideoTextureView))
       {
-        int i = ((VideoTextureView)this.nAZ).getDownloadPercent();
+        int i = ((VideoTextureView)this.odZ).getDownloadPercent();
         int j = super.getVideoDurationSec();
         float f = j;
         i = (int)(i * 1.0F / 100.0F * f);
@@ -162,7 +162,7 @@ public class CommonVideoView
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, localException, "%s get cache time sec error", new Object[] { bel() });
+      ac.printErrStackTrace(this.TAG, localException, "%s get cache time sec error", new Object[] { blf() });
       AppMethodBeat.o(133998);
     }
     return 0;
@@ -176,20 +176,20 @@ public class CommonVideoView
   public int getVideoDurationSec()
   {
     AppMethodBeat.i(133997);
-    if (this.knG <= 0)
+    if (this.kPa <= 0)
     {
       i = super.getVideoDurationSec();
       AppMethodBeat.o(133997);
       return i;
     }
-    int i = this.knG;
+    int i = this.kPa;
     AppMethodBeat.o(133997);
     return i;
   }
   
   public int getVideoSource()
   {
-    return this.knr;
+    return this.kOJ;
   }
   
   public final void hideLoading()
@@ -210,16 +210,16 @@ public class CommonVideoView
   public void onCompletion()
   {
     AppMethodBeat.i(134004);
-    if (aXf())
+    if (bed())
     {
-      ad.i(this.TAG, "%s it is live video, do not completion", new Object[] { bel() });
+      ac.i(this.TAG, "%s it is live video, do not completion", new Object[] { blf() });
       stop();
       start();
       AppMethodBeat.o(134004);
       return;
     }
     super.onCompletion();
-    if (this.hyg) {
+    if (this.hYH) {
       c(0.0D, true);
     }
     AppMethodBeat.o(134004);
@@ -236,31 +236,31 @@ public class CommonVideoView
   {
     AppMethodBeat.i(134001);
     super.onUIResume();
-    if ((this.nAZ != null) && ((this.nAZ instanceof VideoTextureView)))
+    if ((this.odZ != null) && ((this.odZ instanceof VideoTextureView)))
     {
-      if (this.kuY)
+      if (this.kWm)
       {
         play();
         AppMethodBeat.o(134001);
         return;
       }
-      ((VideoTextureView)this.nAZ).bej();
+      ((VideoTextureView)this.odZ).bld();
     }
     AppMethodBeat.o(134001);
   }
   
   public void setLoop(boolean paramBoolean)
   {
-    this.hyg = paramBoolean;
+    this.hYH = paramBoolean;
   }
   
   public void setScaleType(h.e parame)
   {
     AppMethodBeat.i(133995);
-    if ((this.nAZ instanceof VideoTextureView))
+    if ((this.odZ instanceof VideoTextureView))
     {
-      ((VideoTextureView)this.nAZ).setScaleType(parame);
-      ln(getReportIdkey() + 14);
+      ((VideoTextureView)this.odZ).setScaleType(parame);
+      oQ(getReportIdkey() + 14);
     }
     AppMethodBeat.o(133995);
   }
@@ -268,19 +268,19 @@ public class CommonVideoView
   public void start()
   {
     AppMethodBeat.i(133994);
-    if (this.nAZ != null)
+    if (this.odZ != null)
     {
-      ad.i(this.TAG, "%s start path [%s] [%s]", new Object[] { bel(), this.nAZ.getVideoPath(), bt.eGN() });
-      if (!bt.isNullOrNil(this.nAZ.getVideoPath())) {
+      ac.i(this.TAG, "%s start path [%s] [%s]", new Object[] { blf(), this.odZ.getVideoPath(), bs.eWi() });
+      if (!bs.isNullOrNil(this.odZ.getVideoPath())) {
         break label103;
       }
-      this.nAZ.setVideoPath(this.url);
+      this.odZ.setVideoPath(this.url);
       showLoading();
-      dzT();
+      dOq();
     }
     for (;;)
     {
-      ln(getReportIdkey() + 1);
+      oQ(getReportIdkey() + 1);
       AppMethodBeat.o(133994);
       return;
       label103:
@@ -290,7 +290,7 @@ public class CommonVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.CommonVideoView
  * JD-Core Version:    0.7.0.1
  */

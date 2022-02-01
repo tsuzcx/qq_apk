@@ -9,7 +9,7 @@ public final class bn
 {
   bn(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    super(b(paramString1, paramString2, paramInt1, paramInt2), ay.Ea(b(paramString1, paramString2, paramInt1, paramInt2)), paramString1, paramString2, paramInt1, paramInt2);
+    super(b(paramString1, paramString2, paramInt1, paramInt2), ay.Id(b(paramString1, paramString2, paramInt1, paramInt2)), paramString1, paramString2, paramInt1, paramInt2);
     AppMethodBeat.i(90664);
     AppMethodBeat.o(90664);
   }
@@ -24,7 +24,7 @@ public final class bn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bn
  * JD-Core Version:    0.7.0.1
  */

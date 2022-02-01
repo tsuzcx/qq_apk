@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.utils.e;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d;
@@ -22,59 +22,59 @@ import org.json.JSONObject;
 public class g
   extends n
 {
+  public Orders BhZ;
+  protected u Bio;
   private int mPayScene;
-  public Orders zPF;
-  protected u zPU;
   
   public g(u paramu, Orders paramOrders)
   {
     AppMethodBeat.i(69294);
-    this.zPF = null;
+    this.BhZ = null;
     this.mPayScene = -1;
-    this.zPF = paramOrders;
-    this.zPU = paramu;
-    List localList = paramOrders.Afx;
+    this.BhZ = paramOrders;
+    this.Bio = paramu;
+    List localList = paramOrders.BxR;
     if (localList.size() > 0) {
-      localObject = ((Orders.Commodity)localList.get(0)).dcF;
+      localObject = ((Orders.Commodity)localList.get(0)).dad;
     }
-    if (paramu.uXi == null)
+    if (paramu.wfX == null)
     {
-      ad.e("MicroMsg.NetSceneTenpayPayVertify", "empty payInfo");
+      ac.e("MicroMsg.NetSceneTenpayPayVertify", "empty payInfo");
       AppMethodBeat.o(69294);
       return;
     }
-    this.mPayScene = paramu.uXi.dtb;
-    int i = paramu.uXi.channel;
-    c(paramOrders.dcE, (String)localObject, paramu.uXi.dtb, i, paramu.dca, paramu.uns);
+    this.mPayScene = paramu.wfX.dqL;
+    int i = paramu.wfX.channel;
+    c(paramOrders.dac, (String)localObject, paramu.wfX.dqL, i, paramu.cZz, paramu.vwo);
     paramOrders = new HashMap();
     localObject = new HashMap();
     paramOrders.put("flag", paramu.flag);
-    paramOrders.put("passwd", paramu.ijt);
+    paramOrders.put("passwd", paramu.iJA);
     boolean bool;
-    if (!bt.isNullOrNil(paramu.ijt))
+    if (!bs.isNullOrNil(paramu.iJA))
     {
       bool = true;
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
-      setPayInfo(paramu.uXi, paramOrders, (Map)localObject, bool);
-      paramOrders.put("verify_type", paramu.dsC);
-      if (paramu.dsC != 0) {
+      ac.i("MicroMsg.NetSceneTenpayPayVertify", "hy: has pwd: %b", new Object[] { Boolean.valueOf(bool) });
+      setPayInfo(paramu.wfX, paramOrders, (Map)localObject, bool);
+      paramOrders.put("verify_type", paramu.dqm);
+      if (paramu.dqm != 0) {
         break label414;
       }
-      paramOrders.put("verify_code", paramu.Ahs);
+      paramOrders.put("verify_code", paramu.BzM);
     }
     for (;;)
     {
       paramOrders.put("token", paramu.token);
-      paramOrders.put("bank_type", paramu.dca);
-      paramOrders.put("bind_serial", paramu.uns);
-      paramOrders.put("arrive_type", paramu.Abm);
-      paramOrders.put("default_favorcomposedid", paramu.Abp);
-      paramOrders.put("favorcomposedid", paramu.Abq);
-      aL(paramOrders);
-      if (z.fjX())
+      paramOrders.put("bank_type", paramu.cZz);
+      paramOrders.put("bind_serial", paramu.vwo);
+      paramOrders.put("arrive_type", paramu.BtG);
+      paramOrders.put("default_favorcomposedid", paramu.BtJ);
+      paramOrders.put("favorcomposedid", paramu.BtK);
+      aP(paramOrders);
+      if (z.fAn())
       {
         ((Map)localObject).put("uuid_for_bindcard", z.getBindCardUuid());
-        ((Map)localObject).put("bindcard_scene", z.fjY());
+        ((Map)localObject).put("bindcard_scene", z.fAo());
       }
       setRequestData(paramOrders);
       setWXRequestData((Map)localObject);
@@ -83,14 +83,14 @@ public class g
       bool = false;
       break;
       label414:
-      paramOrders.put("cre_tail", paramu.Ahu);
-      paramOrders.put("cre_type", paramu.Ahv);
+      paramOrders.put("cre_tail", paramu.BzO);
+      paramOrders.put("cre_type", paramu.BzP);
     }
   }
   
-  protected void aL(Map<String, String> paramMap) {}
+  protected void aP(Map<String, String> paramMap) {}
   
-  public final boolean eaa()
+  public final boolean epw()
   {
     return (this.mPayScene == 11) || (this.mPayScene == 21);
   }
@@ -131,28 +131,28 @@ public class g
       AppMethodBeat.o(69295);
       return;
     }
-    ad.d("MicroMsg.NetSceneTenpayPayVertify", "Pay Success! saving bind_serial:".concat(String.valueOf(paramJSONObject.optString("bind_serial"))));
+    ac.d("MicroMsg.NetSceneTenpayPayVertify", "Pay Success! saving bind_serial:".concat(String.valueOf(paramJSONObject.optString("bind_serial"))));
     if ("1".equals(paramJSONObject.optString("pay_flag")))
     {
       setPaySuccess(true);
-      this.zPF = Orders.a(paramJSONObject, this.zPF);
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "mPayScene:" + this.mPayScene);
+      this.BhZ = Orders.a(paramJSONObject, this.BhZ);
+      ac.i("MicroMsg.NetSceneTenpayPayVertify", "mPayScene:" + this.mPayScene);
       if (this.mPayScene != 39) {
         break label172;
       }
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "it's the sns scene, parse the sns pay data");
-      e.bn(paramJSONObject);
+      ac.i("MicroMsg.NetSceneTenpayPayVertify", "it's the sns scene, parse the sns pay data");
+      e.bo(paramJSONObject);
     }
     for (;;)
     {
-      paramString = a.aMX("PayProcess").iterator();
+      paramString = a.aSA("PayProcess").iterator();
       while (paramString.hasNext()) {
-        ((d)paramString.next()).dow.putInt("key_is_clear_failure", this.IeL);
+        ((d)paramString.next()).dmf.putInt("key_is_clear_failure", this.JGn);
       }
       setPaySuccess(false);
       break;
       label172:
-      ad.i("MicroMsg.NetSceneTenpayPayVertify", "it's not the sns scene");
+      ac.i("MicroMsg.NetSceneTenpayPayVertify", "it's not the sns scene");
     }
     AppMethodBeat.o(69295);
   }

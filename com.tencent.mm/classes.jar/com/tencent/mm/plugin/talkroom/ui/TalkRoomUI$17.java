@@ -5,8 +5,8 @@ import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 final class TalkRoomUI$17
   implements DialogInterface.OnDismissListener
@@ -16,11 +16,11 @@ final class TalkRoomUI$17
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(29607);
-    az.arV();
-    int i = bt.a((Integer)c.afk().get(144641, null), 0);
-    az.arV();
-    c.afk().set(144641, Integer.valueOf(i + 1));
-    this.yKo.onBackPressed();
+    az.ayM();
+    int i = bs.a((Integer)c.agA().get(144641, null), 0);
+    az.ayM();
+    c.agA().set(144641, Integer.valueOf(i + 1));
+    this.zXB.onBackPressed();
     AppMethodBeat.o(29607);
   }
 }

@@ -4,46 +4,29 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI;
-import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
-import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
 
 public final class a
 {
-  public int jLH;
+  public int kmi;
   public Camera mCamera;
   public Context mContext;
   public int mDesiredPreviewHeight;
   public int mDesiredPreviewWidth;
-  public int pWM;
-  public String pWN;
-  public FaceActionUI pWO;
-  public TextView pWP;
-  public a pWQ;
-  public Rect pWR;
-  public Rect pWS;
-  public YTPoseDetectInterface.PoseDetectOnFrame pWT;
-  public boolean pWU = false;
-  
-  public static abstract interface a {}
-  
-  public static final class b
-  {
-    private static a pWW;
-    
-    static
-    {
-      AppMethodBeat.i(104203);
-      pWW = new a((byte)0);
-      AppMethodBeat.o(104203);
-    }
-  }
+  public int qFr;
+  public String qFs;
+  public FaceActionUI qFt;
+  public TextView qFu;
+  public a.a qFv;
+  public Rect qFw;
+  public Rect qFx;
+  public YTPoseDetectInterface.PoseDetectOnFrame qFy;
+  public boolean qFz = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.a
  * JD-Core Version:    0.7.0.1
  */

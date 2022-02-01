@@ -9,7 +9,7 @@ import android.bluetooth.BluetoothGattService;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.j;
 import d.g.b.k;
 import d.l;
@@ -26,27 +26,27 @@ import java.util.Timer;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/GattServerCallbackImpl;", "Landroid/bluetooth/BluetoothGattServerCallback;", "()V", "bluetoothDevices", "Ljava/util/HashSet;", "Landroid/bluetooth/BluetoothDevice;", "getBluetoothDevices", "()Ljava/util/HashSet;", "pendingWriteReqList", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PendingRespStructure;", "getPendingWriteReqList", "()Ljava/util/Map;", "server", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "getServer", "()Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "setServer", "(Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;)V", "deviceNotExist", "", "device", "onCharacteristicReadRequest", "", "requestId", "offset", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "onCharacteristicWriteRequest", "preparedWrite", "responseNeeded", "value", "", "onConnectionStateChange", "status", "newState", "onDescriptorReadRequest", "descriptor", "Landroid/bluetooth/BluetoothGattDescriptor;", "onDescriptorWriteRequest", "onNotificationSent", "onServiceAdded", "service", "Landroid/bluetooth/BluetoothGattService;", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/GattServerCallbackImpl;", "Landroid/bluetooth/BluetoothGattServerCallback;", "()V", "bluetoothDevices", "Ljava/util/HashSet;", "Landroid/bluetooth/BluetoothDevice;", "getBluetoothDevices", "()Ljava/util/HashSet;", "pendingWriteReqList", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PendingRespStructure;", "getPendingWriteReqList", "()Ljava/util/Map;", "server", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "getServer", "()Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;", "setServer", "(Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PeripheralBleServer;)V", "deviceNotExist", "", "device", "onCharacteristicReadRequest", "", "requestId", "offset", "characteristic", "Landroid/bluetooth/BluetoothGattCharacteristic;", "onCharacteristicWriteRequest", "preparedWrite", "responseNeeded", "value", "", "onConnectionStateChange", "status", "newState", "onDescriptorReadRequest", "descriptor", "Landroid/bluetooth/BluetoothGattDescriptor;", "onDescriptorWriteRequest", "onNotificationSent", "onServiceAdded", "service", "Landroid/bluetooth/BluetoothGattService;", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class b
   extends BluetoothGattServerCallback
 {
-  public static final a jIf;
-  final HashSet<BluetoothDevice> jIc;
-  final Map<Integer, m> jId;
-  public n jIe;
+  public static final a kiE;
+  final HashSet<BluetoothDevice> kiB;
+  final Map<Integer, m> kiC;
+  public n kiD;
   
   static
   {
     AppMethodBeat.i(144747);
-    jIf = new a((byte)0);
+    kiE = new a((byte)0);
     AppMethodBeat.o(144747);
   }
   
   public b()
   {
     AppMethodBeat.i(144746);
-    this.jIc = new HashSet();
-    this.jId = ((Map)new ConcurrentHashMap());
+    this.kiB = new HashSet();
+    this.kiC = ((Map)new ConcurrentHashMap());
     AppMethodBeat.o(144746);
   }
   
@@ -55,11 +55,11 @@ public final class b
     AppMethodBeat.i(144743);
     if (paramBluetoothDevice == null)
     {
-      ad.i("MicroMsg.BLE.GattServerCallbackImpl", "deviceNotExist: device == null");
+      ac.i("MicroMsg.BLE.GattServerCallbackImpl", "deviceNotExist: device == null");
       AppMethodBeat.o(144743);
       return true;
     }
-    Object localObject = (Iterable)this.jIc;
+    Object localObject = (Iterable)this.kiB;
     Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -67,7 +67,7 @@ public final class b
     }
     if (!((List)localCollection).contains(paramBluetoothDevice.getAddress()))
     {
-      ad.i("MicroMsg.BLE.GattServerCallbackImpl", "deviceNotExist: is not contain device");
+      ac.i("MicroMsg.BLE.GattServerCallbackImpl", "deviceNotExist: is not contain device");
       AppMethodBeat.o(144743);
       return true;
     }
@@ -80,8 +80,8 @@ public final class b
     AppMethodBeat.i(144742);
     k.h(paramBluetoothGattCharacteristic, "characteristic");
     super.onCharacteristicReadRequest(paramBluetoothDevice, paramInt1, paramInt2, paramBluetoothGattCharacteristic);
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "Device tried to read characteristic: " + paramBluetoothGattCharacteristic.getUuid());
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "Value: " + Arrays.toString(paramBluetoothGattCharacteristic.getValue()));
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "Device tried to read characteristic: " + paramBluetoothGattCharacteristic.getUuid());
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "Value: " + Arrays.toString(paramBluetoothGattCharacteristic.getValue()));
     if (a(paramBluetoothDevice))
     {
       AppMethodBeat.o(144742);
@@ -89,30 +89,30 @@ public final class b
     }
     if (paramInt2 != 0)
     {
-      localObject1 = this.jIe;
+      localObject1 = this.kiD;
       if (localObject1 == null) {
-        k.aPZ("server");
+        k.aVY("server");
       }
-      ((n)localObject1).aYK().sendResponse(paramBluetoothDevice, paramInt1, 7, paramInt2, paramBluetoothGattCharacteristic.getValue());
+      ((n)localObject1).bfG().sendResponse(paramBluetoothDevice, paramInt1, 7, paramInt2, paramBluetoothGattCharacteristic.getValue());
       AppMethodBeat.o(144742);
       return;
     }
     int i;
     do
     {
-      i = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aYZ();
-    } while (this.jId.containsKey(Integer.valueOf(i)));
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicReadRequest: callbackId = %d", new Object[] { Integer.valueOf(i) });
-    Object localObject1 = this.jIe;
+      i = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.bfR();
+    } while (this.kiC.containsKey(Integer.valueOf(i)));
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicReadRequest: callbackId = %d", new Object[] { Integer.valueOf(i) });
+    Object localObject1 = this.kiD;
     if (localObject1 == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    localObject1 = ((n)localObject1).Dj();
-    Object localObject2 = this.jIe;
+    localObject1 = ((n)localObject1).CM();
+    Object localObject2 = this.kiD;
     if (localObject2 == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    int j = ((n)localObject2).iyW;
+    int j = ((n)localObject2).iYZ;
     localObject2 = paramBluetoothGattCharacteristic.getService();
     k.g(localObject2, "characteristic.service");
     localObject2 = ((BluetoothGattService)localObject2).getUuid().toString();
@@ -122,11 +122,11 @@ public final class b
     if (a.a((c)localObject1, j, (String)localObject2, paramBluetoothGattCharacteristic, i))
     {
       if (paramBluetoothDevice == null) {
-        k.fvU();
+        k.fOy();
       }
       paramBluetoothDevice = new m(paramBluetoothDevice, paramInt1, paramInt2);
-      paramBluetoothDevice = (m)this.jId.put(Integer.valueOf(i), paramBluetoothDevice);
-      ad.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicReadRequest: pendingWriteReqList ret = " + paramBluetoothDevice + " id = " + i);
+      paramBluetoothDevice = (m)this.kiC.put(Integer.valueOf(i), paramBluetoothDevice);
+      ac.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicReadRequest: pendingWriteReqList ret = " + paramBluetoothDevice + " id = " + i);
     }
     AppMethodBeat.o(144742);
   }
@@ -141,7 +141,7 @@ public final class b
     Object localObject1 = new StringBuilder("Characteristic Write request: ");
     Object localObject2 = Arrays.toString(paramArrayOfByte);
     k.g(localObject2, "java.util.Arrays.toString(this)");
-    ad.v("MicroMsg.BLE.GattServerCallbackImpl", (String)localObject2);
+    ac.v("MicroMsg.BLE.GattServerCallbackImpl", (String)localObject2);
     if (a(paramBluetoothDevice))
     {
       AppMethodBeat.o(144741);
@@ -149,31 +149,31 @@ public final class b
     }
     if (paramInt2 != 0)
     {
-      paramArrayOfByte = this.jIe;
+      paramArrayOfByte = this.kiD;
       if (paramArrayOfByte == null) {
-        k.aPZ("server");
+        k.aVY("server");
       }
-      paramArrayOfByte.aYK().sendResponse(paramBluetoothDevice, paramInt1, 7, paramInt2, paramBluetoothGattCharacteristic.getValue());
+      paramArrayOfByte.bfG().sendResponse(paramBluetoothDevice, paramInt1, 7, paramInt2, paramBluetoothGattCharacteristic.getValue());
       AppMethodBeat.o(144741);
       return;
     }
     int i;
     do
     {
-      i = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.aYZ();
-    } while (this.jId.containsKey(Integer.valueOf(i)));
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicWriteRequest: callbackId = %d", new Object[] { Integer.valueOf(i) });
+      i = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.bfR();
+    } while (this.kiC.containsKey(Integer.valueOf(i)));
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicWriteRequest: callbackId = %d", new Object[] { Integer.valueOf(i) });
     paramArrayOfByte = Base64.encode(paramArrayOfByte, 2);
-    localObject1 = this.jIe;
+    localObject1 = this.kiD;
     if (localObject1 == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    localObject1 = ((n)localObject1).Dj();
-    localObject2 = this.jIe;
+    localObject1 = ((n)localObject1).CM();
+    localObject2 = this.kiD;
     if (localObject2 == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    int j = ((n)localObject2).iyW;
+    int j = ((n)localObject2).iYZ;
     localObject2 = paramBluetoothGattCharacteristic.getService();
     k.g(localObject2, "characteristic.service");
     localObject2 = ((BluetoothGattService)localObject2).getUuid().toString();
@@ -184,8 +184,8 @@ public final class b
     if (a.a((c)localObject1, j, (String)localObject2, paramBluetoothGattCharacteristic, i, new String(paramArrayOfByte, d.UTF_8)))
     {
       paramBluetoothDevice = new m(paramBluetoothDevice, paramInt1, paramInt2);
-      paramBluetoothDevice = (m)this.jId.put(Integer.valueOf(i), paramBluetoothDevice);
-      ad.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicWriteRequest: pendingWriteReqList res = " + paramBluetoothDevice + ", id = " + i);
+      paramBluetoothDevice = (m)this.kiC.put(Integer.valueOf(i), paramBluetoothDevice);
+      ac.i("MicroMsg.BLE.GattServerCallbackImpl", "onCharacteristicWriteRequest: pendingWriteReqList res = " + paramBluetoothDevice + ", id = " + i);
     }
     AppMethodBeat.o(144741);
   }
@@ -201,55 +201,55 @@ public final class b
       Object localObject2;
       if (paramInt2 == 2)
       {
-        this.jIc.add(paramBluetoothDevice);
-        localObject1 = this.jIe;
+        this.kiB.add(paramBluetoothDevice);
+        localObject1 = this.kiD;
         if (localObject1 == null) {
-          k.aPZ("server");
+          k.aVY("server");
         }
-        localObject1 = ((n)localObject1).Dj();
+        localObject1 = ((n)localObject1).CM();
         localObject2 = paramBluetoothDevice.getAddress();
         k.g(localObject2, "device.address");
-        n localn = this.jIe;
+        n localn = this.kiD;
         if (localn == null) {
-          k.aPZ("server");
+          k.aVY("server");
         }
-        a.a((c)localObject1, (String)localObject2, String.valueOf(localn.iyW), true);
-        localObject1 = this.jIe;
+        a.a((c)localObject1, (String)localObject2, String.valueOf(localn.iYZ), true);
+        localObject1 = this.kiD;
         if (localObject1 == null) {
-          k.aPZ("server");
+          k.aVY("server");
         }
-        ((n)localObject1).a(p.jIJ);
-        ad.v("MicroMsg.BLE.GattServerCallbackImpl", "Connected to device: " + paramBluetoothDevice.getAddress());
+        ((n)localObject1).a(p.kjk);
+        ac.v("MicroMsg.BLE.GattServerCallbackImpl", "Connected to device: " + paramBluetoothDevice.getAddress());
         AppMethodBeat.o(144744);
         return;
       }
       if (paramInt2 == 0)
       {
-        this.jIc.remove(paramBluetoothDevice);
-        localObject1 = this.jIe;
+        this.kiB.remove(paramBluetoothDevice);
+        localObject1 = this.kiD;
         if (localObject1 == null) {
-          k.aPZ("server");
+          k.aVY("server");
         }
-        localObject1 = ((n)localObject1).Dj();
+        localObject1 = ((n)localObject1).CM();
         paramBluetoothDevice = paramBluetoothDevice.getAddress();
         k.g(paramBluetoothDevice, "device.address");
-        localObject2 = this.jIe;
+        localObject2 = this.kiD;
         if (localObject2 == null) {
-          k.aPZ("server");
+          k.aVY("server");
         }
-        a.a((c)localObject1, paramBluetoothDevice, String.valueOf(((n)localObject2).iyW), false);
-        paramBluetoothDevice = this.jIe;
+        a.a((c)localObject1, paramBluetoothDevice, String.valueOf(((n)localObject2).iYZ), false);
+        paramBluetoothDevice = this.kiD;
         if (paramBluetoothDevice == null) {
-          k.aPZ("server");
+          k.aVY("server");
         }
-        paramBluetoothDevice.a(p.jII);
-        ad.v("MicroMsg.BLE.GattServerCallbackImpl", "Disconnected from device");
+        paramBluetoothDevice.a(p.kjj);
+        ac.v("MicroMsg.BLE.GattServerCallbackImpl", "Disconnected from device");
       }
       AppMethodBeat.o(144744);
       return;
     }
-    this.jIc.remove(paramBluetoothDevice);
-    ad.e("MicroMsg.BLE.GattServerCallbackImpl", "Error when connecting: ".concat(String.valueOf(paramInt1)));
+    this.kiB.remove(paramBluetoothDevice);
+    ac.e("MicroMsg.BLE.GattServerCallbackImpl", "Error when connecting: ".concat(String.valueOf(paramInt1)));
     AppMethodBeat.o(144744);
   }
   
@@ -258,23 +258,23 @@ public final class b
     AppMethodBeat.i(144738);
     k.h(paramBluetoothGattDescriptor, "descriptor");
     super.onDescriptorReadRequest(paramBluetoothDevice, paramInt1, paramInt2, paramBluetoothGattDescriptor);
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "Device tried to read descriptor: " + paramBluetoothGattDescriptor.getUuid());
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "Value: " + Arrays.toString(paramBluetoothGattDescriptor.getValue()));
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "Device tried to read descriptor: " + paramBluetoothGattDescriptor.getUuid());
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "Value: " + Arrays.toString(paramBluetoothGattDescriptor.getValue()));
     if (paramInt2 != 0)
     {
-      paramBluetoothGattDescriptor = this.jIe;
+      paramBluetoothGattDescriptor = this.kiD;
       if (paramBluetoothGattDescriptor == null) {
-        k.aPZ("server");
+        k.aVY("server");
       }
-      paramBluetoothGattDescriptor.aYK().sendResponse(paramBluetoothDevice, paramInt1, 7, paramInt2, null);
+      paramBluetoothGattDescriptor.bfG().sendResponse(paramBluetoothDevice, paramInt1, 7, paramInt2, null);
       AppMethodBeat.o(144738);
       return;
     }
-    n localn = this.jIe;
+    n localn = this.kiD;
     if (localn == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    localn.aYK().sendResponse(paramBluetoothDevice, paramInt1, 0, paramInt2, paramBluetoothGattDescriptor.getValue());
+    localn.bfG().sendResponse(paramBluetoothDevice, paramInt1, 0, paramInt2, paramBluetoothGattDescriptor.getValue());
     AppMethodBeat.o(144738);
   }
   
@@ -284,14 +284,14 @@ public final class b
     k.h(paramBluetoothGattDescriptor, "descriptor");
     k.h(paramArrayOfByte, "value");
     super.onDescriptorWriteRequest(paramBluetoothDevice, paramInt1, paramBluetoothGattDescriptor, paramBoolean1, paramBoolean2, paramInt2, paramArrayOfByte);
-    ad.v("MicroMsg.BLE.GattServerCallbackImpl", "Descriptor Write Request " + paramBluetoothGattDescriptor.getUuid() + " " + Arrays.toString(paramArrayOfByte));
+    ac.v("MicroMsg.BLE.GattServerCallbackImpl", "Descriptor Write Request " + paramBluetoothGattDescriptor.getUuid() + " " + Arrays.toString(paramArrayOfByte));
     if (paramBoolean2)
     {
-      paramBluetoothGattDescriptor = this.jIe;
+      paramBluetoothGattDescriptor = this.kiD;
       if (paramBluetoothGattDescriptor == null) {
-        k.aPZ("server");
+        k.aVY("server");
       }
-      paramBluetoothGattDescriptor.aYK().sendResponse(paramBluetoothDevice, paramInt1, 0, 0, null);
+      paramBluetoothGattDescriptor.bfG().sendResponse(paramBluetoothDevice, paramInt1, 0, 0, null);
     }
     AppMethodBeat.o(144745);
   }
@@ -300,7 +300,7 @@ public final class b
   {
     AppMethodBeat.i(144739);
     super.onNotificationSent(paramBluetoothDevice, paramInt);
-    ad.v("MicroMsg.BLE.GattServerCallbackImpl", "Notification sent. Status: ".concat(String.valueOf(paramInt)));
+    ac.v("MicroMsg.BLE.GattServerCallbackImpl", "Notification sent. Status: ".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(144739);
   }
   
@@ -313,12 +313,12 @@ public final class b
       AppMethodBeat.o(144740);
       return;
     }
-    ad.i("MicroMsg.BLE.GattServerCallbackImpl", "onServiceAdded: " + paramBluetoothGattService.getUuid());
-    Object localObject = this.jIe;
+    ac.i("MicroMsg.BLE.GattServerCallbackImpl", "onServiceAdded: " + paramBluetoothGattService.getUuid());
+    Object localObject = this.kiD;
     if (localObject == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    localObject = (o)((n)localObject).jIz.get(paramBluetoothGattService.getUuid());
+    localObject = (o)((n)localObject).kiY.get(paramBluetoothGattService.getUuid());
     if (localObject != null)
     {
       localObject = (Timer)((o)localObject).second;
@@ -326,27 +326,27 @@ public final class b
         ((Timer)localObject).cancel();
       }
     }
-    localObject = this.jIe;
+    localObject = this.kiD;
     if (localObject == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    localObject = (o)((n)localObject).jIz.get(paramBluetoothGattService.getUuid());
+    localObject = (o)((n)localObject).kiY.get(paramBluetoothGattService.getUuid());
     if (localObject != null)
     {
       localObject = (d.g.a.b)((o)localObject).first;
       if (localObject != null) {
-        ((d.g.a.b)localObject).aA(Boolean.TRUE);
+        ((d.g.a.b)localObject).ay(Boolean.TRUE);
       }
     }
-    localObject = this.jIe;
+    localObject = this.kiD;
     if (localObject == null) {
-      k.aPZ("server");
+      k.aVY("server");
     }
-    ((n)localObject).jIz.remove(paramBluetoothGattService.getUuid());
+    ((n)localObject).kiY.remove(paramBluetoothGattService.getUuid());
     AppMethodBeat.o(144740);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/GattServerCallbackImpl$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/GattServerCallbackImpl$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
 }
 

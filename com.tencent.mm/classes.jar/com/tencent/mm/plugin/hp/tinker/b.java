@@ -7,14 +7,14 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
 
 public final class b
 {
-  private final String sys;
-  private final String syt;
+  private final String tGi;
+  private final String tGj;
   
   private b(String paramString1, String paramString2)
   {
@@ -31,12 +31,25 @@ public final class b
       AppMethodBeat.o(117456);
       throw paramString1;
     }
-    this.sys = paramString1;
-    this.syt = paramString2;
+    this.tGi = paramString1;
+    this.tGj = paramString2;
     AppMethodBeat.o(117456);
   }
   
-  private static int adH(String paramString)
+  @SuppressLint({"ApplySharedPref"})
+  public static void aiA(String paramString)
+  {
+    AppMethodBeat.i(117462);
+    SharedPreferences localSharedPreferences = cTn();
+    if (!localSharedPreferences.contains(paramString))
+    {
+      long l = System.currentTimeMillis();
+      localSharedPreferences.edit().putLong(paramString, l).commit();
+    }
+    AppMethodBeat.o(117462);
+  }
+  
+  private static int aiz(String paramString)
   {
     AppMethodBeat.i(117459);
     Object localObject = paramString;
@@ -71,43 +84,30 @@ public final class b
     }
     catch (Throwable paramString)
     {
-      ad.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
+      ac.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
       AppMethodBeat.o(117459);
     }
   }
   
-  @SuppressLint({"ApplySharedPref"})
-  public static void adI(String paramString)
-  {
-    AppMethodBeat.i(117462);
-    SharedPreferences localSharedPreferences = cGd();
-    if (!localSharedPreferences.contains(paramString))
-    {
-      long l = System.currentTimeMillis();
-      localSharedPreferences.edit().putLong(paramString, l).commit();
-    }
-    AppMethodBeat.o(117462);
-  }
-  
-  public static SharedPreferences cGd()
+  public static SharedPreferences cTn()
   {
     AppMethodBeat.i(117458);
     try
     {
-      ax localax = ax.aFE("tinker_deploy_stats_ts");
+      aw localaw = aw.aKV("tinker_deploy_stats_ts");
       AppMethodBeat.o(117458);
-      return localax;
+      return localaw;
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
-      SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
+      ac.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
+      SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
       AppMethodBeat.o(117458);
       return localSharedPreferences;
     }
   }
   
-  public static b gQ(String paramString1, String paramString2)
+  public static b hh(String paramString1, String paramString2)
   {
     AppMethodBeat.i(117457);
     paramString1 = new b(paramString1, paramString2);
@@ -115,26 +115,26 @@ public final class b
     return paramString1;
   }
   
-  public final String Fe(int paramInt)
+  public final String GZ(int paramInt)
   {
     AppMethodBeat.i(117460);
-    String str = "mmkv_key_" + adH(this.sys) + "_" + adH(this.syt) + "_" + paramInt;
+    String str = "mmkv_key_" + aiz(this.tGi) + "_" + aiz(this.tGj) + "_" + paramInt;
     AppMethodBeat.o(117460);
     return str;
   }
   
-  public final void ai(int paramInt, long paramLong)
+  public final void ag(int paramInt, long paramLong)
   {
     AppMethodBeat.i(184835);
-    String str = String.valueOf(paramInt) + ',' + adH(this.sys) + ',' + adH(this.syt) + ',' + paramLong;
-    h.vKh.a(17676, str, true, true);
+    String str = String.valueOf(paramInt) + ',' + aiz(this.tGi) + ',' + aiz(this.tGj) + ',' + paramLong;
+    h.wUl.a(17676, str, true, true);
     AppMethodBeat.o(184835);
   }
   
-  public final void cGe()
+  public final void cTo()
   {
     AppMethodBeat.i(117463);
-    adI(Fe(1));
+    aiA(GZ(1));
     AppMethodBeat.o(117463);
   }
 }

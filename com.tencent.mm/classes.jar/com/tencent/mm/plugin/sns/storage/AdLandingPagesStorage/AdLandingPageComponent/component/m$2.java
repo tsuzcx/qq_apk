@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class m$2
   implements Animator.AnimatorListener
@@ -13,31 +13,31 @@ final class m$2
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(187398);
-    ad.d("AdLandingPageBottomSwipeComponet", "onAnimationCancel");
-    AppMethodBeat.o(187398);
+    AppMethodBeat.i(200198);
+    ac.d("AdLandingPageBottomSwipeComponet", "onAnimationCancel");
+    AppMethodBeat.o(200198);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(187397);
-    this.xar.uc.start();
-    ad.d("AdLandingPageBottomSwipeComponet", "onAnimationEnd");
-    AppMethodBeat.o(187397);
+    AppMethodBeat.i(200197);
+    this.yng.vc.start();
+    ac.d("AdLandingPageBottomSwipeComponet", "onAnimationEnd");
+    AppMethodBeat.o(200197);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator)
   {
-    AppMethodBeat.i(187399);
-    ad.d("AdLandingPageBottomSwipeComponet", "onAnimationRepeat");
-    AppMethodBeat.o(187399);
+    AppMethodBeat.i(200199);
+    ac.d("AdLandingPageBottomSwipeComponet", "onAnimationRepeat");
+    AppMethodBeat.o(200199);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    AppMethodBeat.i(187396);
-    ad.d("AdLandingPageBottomSwipeComponet", "onAnimationStart");
-    AppMethodBeat.o(187396);
+    AppMethodBeat.i(200196);
+    ac.d("AdLandingPageBottomSwipeComponet", "onAnimationStart");
+    AppMethodBeat.o(200196);
   }
 }
 

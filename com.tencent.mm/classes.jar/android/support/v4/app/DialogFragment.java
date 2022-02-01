@@ -63,7 +63,7 @@ public class DialogFragment
       return;
     }
     k localk = getFragmentManager().beginTransaction();
-    localk.b(this);
+    localk.a(this);
     if (paramBoolean)
     {
       localk.commitAllowingStateLoss();

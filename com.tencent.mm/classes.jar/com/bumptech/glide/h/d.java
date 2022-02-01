@@ -8,28 +8,28 @@ import java.util.Queue;
 public final class d
   extends InputStream
 {
-  private static final Queue<d> aLp;
-  private InputStream aLq;
-  public IOException aLr;
+  private static final Queue<d> aMf;
+  private InputStream aMg;
+  public IOException aMh;
   
   static
   {
     AppMethodBeat.i(77745);
-    aLp = j.dy(0);
+    aMf = j.dx(0);
     AppMethodBeat.o(77745);
   }
   
   public static d e(InputStream paramInputStream)
   {
     AppMethodBeat.i(77734);
-    synchronized (aLp)
+    synchronized (aMf)
     {
-      d locald = (d)aLp.poll();
+      d locald = (d)aMf.poll();
       ??? = locald;
       if (locald == null) {
         ??? = new d();
       }
-      ((d)???).aLq = paramInputStream;
+      ((d)???).aMg = paramInputStream;
       AppMethodBeat.o(77734);
       return ???;
     }
@@ -38,7 +38,7 @@ public final class d
   public final int available()
   {
     AppMethodBeat.i(77735);
-    int i = this.aLq.available();
+    int i = this.aMg.available();
     AppMethodBeat.o(77735);
     return i;
   }
@@ -46,21 +46,21 @@ public final class d
   public final void close()
   {
     AppMethodBeat.i(77736);
-    this.aLq.close();
+    this.aMg.close();
     AppMethodBeat.o(77736);
   }
   
   public final void mark(int paramInt)
   {
     AppMethodBeat.i(77737);
-    this.aLq.mark(paramInt);
+    this.aMg.mark(paramInt);
     AppMethodBeat.o(77737);
   }
   
   public final boolean markSupported()
   {
     AppMethodBeat.i(77738);
-    boolean bool = this.aLq.markSupported();
+    boolean bool = this.aMg.markSupported();
     AppMethodBeat.o(77738);
     return bool;
   }
@@ -70,7 +70,7 @@ public final class d
     AppMethodBeat.i(77743);
     try
     {
-      i = this.aLq.read();
+      i = this.aMg.read();
       AppMethodBeat.o(77743);
       return i;
     }
@@ -78,7 +78,7 @@ public final class d
     {
       for (;;)
       {
-        this.aLr = localIOException;
+        this.aMh = localIOException;
         int i = -1;
       }
     }
@@ -89,7 +89,7 @@ public final class d
     AppMethodBeat.i(77739);
     try
     {
-      i = this.aLq.read(paramArrayOfByte);
+      i = this.aMg.read(paramArrayOfByte);
       AppMethodBeat.o(77739);
       return i;
     }
@@ -97,7 +97,7 @@ public final class d
     {
       for (;;)
       {
-        this.aLr = paramArrayOfByte;
+        this.aMh = paramArrayOfByte;
         int i = -1;
       }
     }
@@ -108,7 +108,7 @@ public final class d
     AppMethodBeat.i(77740);
     try
     {
-      paramInt1 = this.aLq.read(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = this.aMg.read(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(77740);
       return paramInt1;
     }
@@ -116,7 +116,7 @@ public final class d
     {
       for (;;)
       {
-        this.aLr = paramArrayOfByte;
+        this.aMh = paramArrayOfByte;
         paramInt1 = -1;
       }
     }
@@ -125,11 +125,11 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(77744);
-    this.aLr = null;
-    this.aLq = null;
-    synchronized (aLp)
+    this.aMh = null;
+    this.aMg = null;
+    synchronized (aMf)
     {
-      aLp.offer(this);
+      aMf.offer(this);
       AppMethodBeat.o(77744);
       return;
     }
@@ -140,7 +140,7 @@ public final class d
     try
     {
       AppMethodBeat.i(77741);
-      this.aLq.reset();
+      this.aMg.reset();
       AppMethodBeat.o(77741);
       return;
     }
@@ -156,7 +156,7 @@ public final class d
     AppMethodBeat.i(77742);
     try
     {
-      paramLong = this.aLq.skip(paramLong);
+      paramLong = this.aMg.skip(paramLong);
       AppMethodBeat.o(77742);
       return paramLong;
     }
@@ -164,7 +164,7 @@ public final class d
     {
       for (;;)
       {
-        this.aLr = localIOException;
+        this.aMh = localIOException;
         paramLong = 0L;
       }
     }
@@ -172,7 +172,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.d
  * JD-Core Version:    0.7.0.1
  */

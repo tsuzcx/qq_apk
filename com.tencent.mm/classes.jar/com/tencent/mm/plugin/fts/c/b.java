@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.fts.a.a;
 import com.tencent.mm.plugin.fts.a.a.d;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,13 +16,13 @@ import java.util.List;
 public final class b
   extends a
 {
-  private SQLiteStatement rsw;
+  private SQLiteStatement sBq;
   
-  public final d DH(int paramInt)
+  public final d FD(int paramInt)
   {
     AppMethodBeat.i(52798);
     Object localObject1 = "Select * from Feature where featureId = ".concat(String.valueOf(paramInt));
-    localObject1 = this.rni.rawQuery((String)localObject1, null);
+    localObject1 = this.swc.rawQuery((String)localObject1, null);
     try
     {
       boolean bool = ((Cursor)localObject1).moveToFirst();
@@ -40,33 +40,33 @@ public final class b
     }
   }
   
-  public final void acM()
+  public final void adS()
   {
     AppMethodBeat.i(52794);
-    if (acN())
+    if (adT())
     {
       localObject = String.format("DROP TABLE IF EXISTS %s", new Object[] { "Feature" });
-      this.rni.execSQL((String)localObject);
-      U(-101L, 3L);
+      this.swc.execSQL((String)localObject);
+      R(-101L, 3L);
     }
-    if (!this.rni.aaQ("Feature"))
+    if (!this.swc.afI("Feature"))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("CREATE TABLE IF NOT EXISTS Feature ( ");
       ((StringBuilder)localObject).append(d.info.sql);
       ((StringBuilder)localObject).append(");");
       localObject = ((StringBuilder)localObject).toString();
-      this.rni.execSQL((String)localObject);
+      this.swc.execSQL((String)localObject);
     }
     Object localObject = String.format("INSERT INTO %s (featureId, title, titlePY, titleShortPY, tag, actionType, url, helpUrl, updateUrl, androidUrl, iconPath, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { "Feature" });
-    this.rsw = this.rni.compileStatement((String)localObject);
+    this.sBq = this.swc.compileStatement((String)localObject);
     AppMethodBeat.o(52794);
   }
   
-  public final boolean acN()
+  public final boolean adT()
   {
     AppMethodBeat.i(52795);
-    if (!fH(-101, 3))
+    if (!fO(-101, 3))
     {
       AppMethodBeat.o(52795);
       return true;
@@ -75,29 +75,29 @@ public final class b
     return false;
   }
   
-  public final boolean acO()
+  public final boolean adU()
   {
     AppMethodBeat.i(52799);
-    super.acO();
-    this.rsw.close();
+    super.adU();
+    this.sBq.close();
     AppMethodBeat.o(52799);
     return true;
   }
   
-  public final List<a> cxJ()
+  public final List<a> cKV()
   {
     AppMethodBeat.i(52796);
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { cxe() });
-    localObject = this.rni.rawQuery((String)localObject, null);
+    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { cKq() });
+    localObject = this.swc.rawQuery((String)localObject, null);
     while (((Cursor)localObject).moveToNext())
     {
       int i = ((Cursor)localObject).getInt(0);
       if (localHashSet.add(Integer.valueOf(i)))
       {
         a locala = new a();
-        locala.rsx = i;
+        locala.sBr = i;
         locala.timestamp = ((Cursor)localObject).getLong(1);
         localArrayList.add(locala);
       }
@@ -107,43 +107,43 @@ public final class b
     return localArrayList;
   }
   
-  public final boolean cxg()
+  public final boolean cKs()
   {
     return true;
   }
   
-  public final boolean dH(List<d> paramList)
+  public final boolean dL(List<d> paramList)
   {
     AppMethodBeat.i(52797);
-    boolean bool = this.rni.inTransaction();
+    boolean bool = this.swc.inTransaction();
     if (!bool) {
-      this.rni.beginTransaction();
+      this.swc.beginTransaction();
     }
-    this.rni.execSQL("Delete from Feature");
+    this.swc.execSQL("Delete from Feature");
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       d locald = (d)paramList.next();
       try
       {
-        this.rsw.bindLong(1, locald.field_featureId);
-        this.rsw.bindString(2, locald.field_title);
-        this.rsw.bindString(3, locald.field_titlePY);
-        this.rsw.bindString(4, locald.field_titleShortPY);
-        this.rsw.bindString(5, locald.field_tag);
-        this.rsw.bindLong(6, locald.field_actionType);
-        this.rsw.bindString(7, locald.field_url);
-        this.rsw.bindString(8, locald.field_helpUrl);
-        this.rsw.bindString(9, locald.field_updateUrl);
-        this.rsw.bindString(10, locald.field_androidUrl);
-        this.rsw.bindString(11, locald.field_iconPath);
-        this.rsw.bindLong(12, locald.field_timestamp);
-        ad.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.rsw.executeInsert()), Long.valueOf(locald.field_timestamp) });
+        this.sBq.bindLong(1, locald.field_featureId);
+        this.sBq.bindString(2, locald.field_title);
+        this.sBq.bindString(3, locald.field_titlePY);
+        this.sBq.bindString(4, locald.field_titleShortPY);
+        this.sBq.bindString(5, locald.field_tag);
+        this.sBq.bindLong(6, locald.field_actionType);
+        this.sBq.bindString(7, locald.field_url);
+        this.sBq.bindString(8, locald.field_helpUrl);
+        this.sBq.bindString(9, locald.field_updateUrl);
+        this.sBq.bindString(10, locald.field_androidUrl);
+        this.sBq.bindString(11, locald.field_iconPath);
+        this.sBq.bindLong(12, locald.field_timestamp);
+        ac.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.sBq.executeInsert()), Long.valueOf(locald.field_timestamp) });
       }
       catch (Exception localException) {}
     }
     if (!bool) {
-      this.rni.commit();
+      this.swc.commit();
     }
     AppMethodBeat.o(52797);
     return true;
@@ -171,13 +171,13 @@ public final class b
   
   public static final class a
   {
-    public int rsx;
+    public int sBr;
     public long timestamp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c.b
  * JD-Core Version:    0.7.0.1
  */

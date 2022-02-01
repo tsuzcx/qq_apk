@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,51 +9,51 @@ import java.util.Map;
 
 public final class f
 {
-  private static Map<Integer, List<Integer>> szW;
-  public int ksb = -1;
+  private static Map<Integer, List<Integer>> tHG;
+  public int kTr = -1;
   
   static
   {
     AppMethodBeat.i(25362);
-    szW = new HashMap();
+    tHG = new HashMap();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    szW.put(Integer.valueOf(1), localArrayList);
+    tHG.put(Integer.valueOf(1), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(12));
     localArrayList.add(Integer.valueOf(8));
-    szW.put(Integer.valueOf(2), localArrayList);
+    tHG.put(Integer.valueOf(2), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(4));
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    szW.put(Integer.valueOf(3), localArrayList);
+    tHG.put(Integer.valueOf(3), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    szW.put(Integer.valueOf(4), localArrayList);
+    tHG.put(Integer.valueOf(4), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(9));
     localArrayList.add(Integer.valueOf(10));
     localArrayList.add(Integer.valueOf(11));
-    szW.put(Integer.valueOf(5), localArrayList);
+    tHG.put(Integer.valueOf(5), localArrayList);
     AppMethodBeat.o(25362);
   }
   
-  private boolean Fi(int paramInt)
+  private boolean Hd(int paramInt)
   {
     AppMethodBeat.i(25360);
-    if (this.ksb == -1)
+    if (this.kTr == -1)
     {
       AppMethodBeat.o(25360);
       return true;
     }
-    if ((szW.containsKey(Integer.valueOf(this.ksb))) && (((List)szW.get(Integer.valueOf(this.ksb))).contains(Integer.valueOf(paramInt))))
+    if ((tHG.containsKey(Integer.valueOf(this.kTr))) && (((List)tHG.get(Integer.valueOf(this.kTr))).contains(Integer.valueOf(paramInt))))
     {
       AppMethodBeat.o(25360);
       return true;
@@ -108,44 +108,44 @@ public final class f
     return "CANCEL_BY_ERR";
   }
   
-  public final boolean Fh(int paramInt)
+  public final boolean Hc(int paramInt)
   {
     AppMethodBeat.i(25359);
-    if (Fi(paramInt))
+    if (Hd(paramInt))
     {
-      ad.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { stateToString(this.ksb), stateToString(paramInt) });
-      this.ksb = paramInt;
+      ac.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { stateToString(this.kTr), stateToString(paramInt) });
+      this.kTr = paramInt;
       AppMethodBeat.o(25359);
       return true;
     }
-    ad.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { stateToString(i.cHo().ksb), stateToString(paramInt) });
+    ac.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { stateToString(i.cUz().kTr), stateToString(paramInt) });
     AppMethodBeat.o(25359);
     return false;
   }
   
-  public final boolean cHd()
+  public final boolean cUo()
   {
-    return (this.ksb == 1) || (this.ksb == 3) || (this.ksb == 4) || (this.ksb == 5);
+    return (this.kTr == 1) || (this.kTr == 3) || (this.kTr == 4) || (this.kTr == 5);
   }
   
-  public final boolean cHe()
+  public final boolean cUp()
   {
-    return (this.ksb == 4) || (this.ksb == 5);
+    return (this.kTr == 4) || (this.kTr == 5);
   }
   
-  public final boolean cHf()
+  public final boolean cUq()
   {
-    return this.ksb == 5;
+    return this.kTr == 5;
   }
   
-  public final boolean cHg()
+  public final boolean cUr()
   {
-    return this.ksb == 5;
+    return this.kTr == 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f
  * JD-Core Version:    0.7.0.1
  */

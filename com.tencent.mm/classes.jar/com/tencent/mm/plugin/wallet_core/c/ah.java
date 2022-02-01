@@ -10,16 +10,16 @@ import org.json.JSONObject;
 public final class ah
   extends m
 {
-  public String zWG;
-  public String zWt;
+  public String BoN;
+  public String Bpa;
   
   public ah(u paramu, String paramString)
   {
     AppMethodBeat.i(69960);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("verify_code", paramu.Ahs);
+    localHashMap.put("verify_code", paramu.BzM);
     localHashMap.put("token", paramu.token);
-    localHashMap.put("passwd", paramu.ijt);
+    localHashMap.put("passwd", paramu.iJA);
     localHashMap.put("relation_key", paramString);
     setRequestData(localHashMap);
     AppMethodBeat.o(69960);
@@ -45,8 +45,8 @@ public final class ah
     AppMethodBeat.i(69961);
     if ((paramJSONObject != null) && (paramInt == 0))
     {
-      this.zWt = paramJSONObject.optString("token_type");
-      this.zWG = paramJSONObject.optString("usertoken");
+      this.BoN = paramJSONObject.optString("token_type");
+      this.Bpa = paramJSONObject.optString("usertoken");
     }
     AppMethodBeat.o(69961);
   }

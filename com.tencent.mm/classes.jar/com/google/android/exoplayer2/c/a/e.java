@@ -8,18 +8,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends d
 {
-  private boolean aXg;
-  private final com.google.android.exoplayer2.i.m aXx;
-  private final com.google.android.exoplayer2.i.m aXy;
-  private int aXz;
+  private boolean aXS;
+  private final com.google.android.exoplayer2.i.m aYj;
+  private final com.google.android.exoplayer2.i.m aYk;
+  private int aYl;
   private int frameType;
   
   public e(com.google.android.exoplayer2.c.m paramm)
   {
     super(paramm);
     AppMethodBeat.i(91993);
-    this.aXx = new com.google.android.exoplayer2.i.m(k.byG);
-    this.aXy = new com.google.android.exoplayer2.i.m(4);
+    this.aYj = new com.google.android.exoplayer2.i.m(k.bwo);
+    this.aYk = new com.google.android.exoplayer2.i.m(4);
     AppMethodBeat.o(91993);
   }
   
@@ -27,38 +27,38 @@ final class e
   {
     AppMethodBeat.i(91995);
     int i = paramm.readUnsignedByte();
-    long l = paramm.vL();
+    long l = paramm.vA();
     Object localObject;
-    if ((i == 0) && (!this.aXg))
+    if ((i == 0) && (!this.aXS))
     {
-      localObject = new com.google.android.exoplayer2.i.m(new byte[paramm.vJ()]);
-      paramm.readBytes(((com.google.android.exoplayer2.i.m)localObject).data, 0, paramm.vJ());
+      localObject = new com.google.android.exoplayer2.i.m(new byte[paramm.vy()]);
+      paramm.readBytes(((com.google.android.exoplayer2.i.m)localObject).data, 0, paramm.vy());
       paramm = a.K((com.google.android.exoplayer2.i.m)localObject);
-      this.aXz = paramm.aXz;
-      paramm = Format.a(null, "video/avc", paramm.width, paramm.height, paramm.aSf, paramm.byY);
-      this.aXw.f(paramm);
-      this.aXg = true;
+      this.aYl = paramm.aYl;
+      paramm = Format.a(null, "video/avc", paramm.width, paramm.height, paramm.aTa, paramm.bwG);
+      this.aYi.f(paramm);
+      this.aXS = true;
       AppMethodBeat.o(91995);
       return;
     }
-    if ((i == 1) && (this.aXg))
+    if ((i == 1) && (this.aXS))
     {
-      localObject = this.aXy.data;
+      localObject = this.aYk.data;
       localObject[0] = 0;
       localObject[1] = 0;
       localObject[2] = 0;
-      j = this.aXz;
+      j = this.aYl;
       int k;
-      for (i = 0; paramm.vJ() > 0; i = i + 4 + k)
+      for (i = 0; paramm.vy() > 0; i = i + 4 + k)
       {
-        paramm.readBytes(this.aXy.data, 4 - j, this.aXz);
-        this.aXy.setPosition(0);
-        k = this.aXy.vQ();
-        this.aXx.setPosition(0);
-        this.aXw.a(this.aXx, 4);
-        this.aXw.a(paramm, k);
+        paramm.readBytes(this.aYk.data, 4 - j, this.aYl);
+        this.aYk.setPosition(0);
+        k = this.aYk.vF();
+        this.aYj.setPosition(0);
+        this.aYi.a(this.aYj, 4);
+        this.aYi.a(paramm, k);
       }
-      paramm = this.aXw;
+      paramm = this.aYi;
       if (this.frameType != 1) {
         break label294;
       }

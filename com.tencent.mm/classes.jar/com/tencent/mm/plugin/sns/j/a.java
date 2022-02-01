@@ -1,259 +1,189 @@
 package com.tencent.mm.plugin.sns.j;
 
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.beq;
-import com.tencent.mm.protocal.protobuf.bpi;
-import com.tencent.mm.protocal.protobuf.bpk;
-import com.tencent.mm.protocal.protobuf.dj;
-import com.tencent.mm.protocal.protobuf.gg;
-import com.tencent.mm.protocal.protobuf.gh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.modelsns.e;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.plugin.sns.ui.SnsHeader;
+import com.tencent.mm.plugin.sns.ui.SnsLikesTextView;
+import com.tencent.mm.plugin.sns.ui.be;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
+import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
-import java.util.Map;
+import java.util.List;
 
 public final class a
 {
-  private static dj a(Map<String, String> paramMap, dj paramdj)
-  {
-    AppMethodBeat.i(96146);
-    gg localgg = new gg();
-    localgg.Name = zm((String)paramMap.get(".albumList.album.author.name"));
-    localgg.Title = zm((String)paramMap.get(".albumList.album.author.title"));
-    localgg.Cxw = zm((String)paramMap.get(".albumList.album.author.description"));
-    localgg.CAR = zm((String)paramMap.get(".albumList.album.author.quote"));
-    localgg.CAS = aB(paramMap);
-    paramdj.Cyd = localgg;
-    AppMethodBeat.o(96146);
-    return paramdj;
-  }
+  public ListView gFr;
+  public int mScreenHeight = 0;
+  public int mScreenWidth = 0;
+  public SnsHeader yaU;
+  public boolean yaV = false;
   
-  private static gh aB(Map<String, String> paramMap)
+  public final a a(be parambe)
   {
-    AppMethodBeat.i(96147);
-    gh localgh = new gh();
-    bpk localbpk = p(paramMap, ".albumList.album.author.icon.media");
-    String str1 = (String)paramMap.get(".albumList.album.author.icon.media.id");
-    String str2 = (String)paramMap.get(".albumList.album.author.icon.media.type");
-    String str3 = (String)paramMap.get(".albumList.album.author.icon.media.title");
-    String str4 = (String)paramMap.get(".albumList.album.author.icon.media.desc");
-    String str5 = (String)paramMap.get(".albumList.album.author.icon.media.url");
-    String str6 = (String)paramMap.get(".albumList.album.author.icon.media.private");
-    String str7 = (String)paramMap.get(".albumList.album.author.icon.media.thumb");
-    String str8 = (String)paramMap.get(".albumList.album.author.icon.media.url.$type");
-    paramMap = (String)paramMap.get(".albumList.album.author.icon.media.thumb.$type");
-    bpi localbpi = new bpi();
-    localbpi.Id = zm(str1);
-    localbpi.mBH = api(str2);
-    localbpi.Title = zm(str3);
-    localbpi.Desc = zm(str4);
-    localbpi.Url = zm(str5);
-    localbpi.Dzl = api(str8);
-    localbpi.DMQ = zm(str7);
-    localbpi.DMR = api(paramMap);
-    localbpi.DMS = api(str6);
-    localbpi.DMT = localbpk;
-    localgh.CAT = localbpi;
-    AppMethodBeat.o(96147);
-    return localgh;
-  }
-  
-  private static int api(String paramString)
-  {
-    int i = 0;
-    AppMethodBeat.i(96143);
-    try
+    AppMethodBeat.i(96173);
+    int i = e.hTV;
+    if (i == 2)
     {
-      int j = bt.getInt(paramString, 0);
-      i = j;
+      AppMethodBeat.o(96173);
+      return null;
     }
-    catch (Exception localException)
+    if ((i == 4) && (!this.yaV))
     {
-      for (;;)
-      {
-        ad.e("MicroMsg.AlbumBgHelper", "parserInt error ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(96173);
+      return null;
+    }
+    long l = System.nanoTime();
+    a locala = new a();
+    locala.yaW = System.currentTimeMillis();
+    locala.mScreenHeight = this.mScreenHeight;
+    locala.mScreenWidth = this.mScreenWidth;
+    int k = this.yaU.getTop();
+    int j = this.yaU.getHeight();
+    i = j;
+    if (k < 0) {
+      i = j + k;
+    }
+    locala.yaY = i;
+    j = this.gFr.getFirstVisiblePosition() - 1;
+    int m = this.gFr.getLastVisiblePosition() - 1;
+    locala.yaX = j;
+    locala.adx = m;
+    int n = parambe.getCount();
+    boolean bool = false;
+    if (this.gFr.getChildAt(0) != null) {
+      bool = this.gFr.getChildAt(0) instanceof SnsHeader;
+    }
+    ac.v("MicroMsg.CaptureSnsHelper", "first last %s %s isHeaderExist %s", new Object[] { Integer.valueOf(j), Integer.valueOf(m), Boolean.valueOf(bool) });
+    if (bool)
+    {
+      i = 1;
+      int i1 = this.gFr.getChildCount();
+      label232:
+      if (j > m) {
+        break label736;
       }
-    }
-    AppMethodBeat.o(96143);
-    return i;
-  }
-  
-  public static dj apj(String paramString)
-  {
-    AppMethodBeat.i(96145);
-    Map localMap = bw.K(paramString, "albumList");
-    paramString = new dj();
-    if (localMap != null)
-    {
-      paramString.sbA = zm((String)localMap.get(".albumList.$lang"));
-      paramString = b(localMap, a(localMap, paramString));
+      k = i;
+      if (j < n)
+      {
+        k = i;
+        if (j >= 0)
+        {
+          if (i < i1) {
+            break label304;
+          }
+          ac.e("MicroMsg.CaptureSnsHelper", "childPos biger than childCount %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(i1) });
+          k = i;
+        }
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(96145);
-      return paramString;
-    }
-  }
-  
-  private static dj b(Map<String, String> paramMap, dj paramdj)
-  {
-    AppMethodBeat.i(96149);
-    int i = 0;
-    beq localbeq = new beq();
-    String str2;
-    if (i == 0) {
-      str2 = ".albumList.album.groupList.group.name";
-    }
-    for (String str1 = ".albumList.album.groupList.group.mediaList";; str1 = ".albumList.album.groupList.group" + i + ".mediaList")
-    {
-      str2 = (String)paramMap.get(str2);
-      if (str2 == null) {
-        break label130;
-      }
-      localbeq.Name = zm(str2);
-      localbeq.DaC = q(paramMap, str1);
-      paramdj.GroupList.add(localbeq);
-      i += 1;
+      j += 1;
+      i = k;
+      break label232;
+      i = 0;
       break;
-      str2 = ".albumList.album.groupList.group" + i + ".name";
-    }
-    label130:
-    AppMethodBeat.o(96149);
-    return paramdj;
-  }
-  
-  private static bpk p(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(96148);
-    String str2 = paramString + ".size.$width";
-    String str1 = paramString + ".size.$height";
-    Object localObject = paramString + ".size.$totalSize";
-    paramString = (String)paramMap.get(str2);
-    str1 = (String)paramMap.get(str1);
-    paramMap = (String)paramMap.get(localObject);
-    localObject = new bpk();
-    ((bpk)localObject).DNI = 0.0F;
-    ((bpk)localObject).DNH = 0.0F;
-    ((bpk)localObject).DNJ = 0.0F;
-    if (paramString != null) {
-      ((bpk)localObject).DNH = zl(paramString);
-    }
-    if (str1 != null) {
-      ((bpk)localObject).DNI = zl(str1);
-    }
-    if (paramMap != null) {
-      ((bpk)localObject).DNJ = zl(paramMap);
-    }
-    AppMethodBeat.o(96148);
-    return localObject;
-  }
-  
-  private static LinkedList<bpi> q(Map<String, String> paramMap, String paramString)
-  {
-    AppMethodBeat.i(96150);
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    String str9;
-    String str8;
-    String str7;
-    String str6;
-    String str5;
-    String str3;
-    String str2;
-    String str1;
-    String str4;
-    if (i != 0)
-    {
-      str9 = paramString + ".media" + i + ".id";
-      str8 = paramString + ".media" + i + ".type";
-      str7 = paramString + ".media" + i + ".title";
-      str6 = paramString + ".media" + i + ".desc";
-      str5 = paramString + ".media" + i + ".url";
-      str3 = paramString + ".media" + i + ".thumb";
-      str2 = paramString + ".media" + i + ".url.$type";
-      str1 = paramString + ".media" + i + ".thumb.$type";
-      str4 = paramString + ".media" + i + ".private";
-    }
-    for (Object localObject = paramString + ".media" + i;; localObject = paramString + ".media")
-    {
-      if ((str9 == null) || (str8 == null)) {
-        break label819;
+      label304:
+      if (locala.yaZ == null) {
+        locala.yaZ = new LinkedList();
       }
-      localObject = p(paramMap, (String)localObject);
-      str9 = (String)paramMap.get(str9);
-      str8 = (String)paramMap.get(str8);
-      str7 = (String)paramMap.get(str7);
-      str6 = (String)paramMap.get(str6);
-      str5 = (String)paramMap.get(str5);
-      str4 = (String)paramMap.get(str4);
-      str3 = (String)paramMap.get(str3);
-      str2 = (String)paramMap.get(str2);
-      str1 = (String)paramMap.get(str1);
-      if ((str9 == null) || (str8 == null)) {
-        break label819;
-      }
-      bpi localbpi = new bpi();
-      localbpi.Id = zm(str9);
-      localbpi.mBH = api(str8);
-      localbpi.Title = zm(str7);
-      localbpi.Desc = zm(str6);
-      localbpi.Url = zm(str5);
-      localbpi.Dzl = api(str2);
-      localbpi.DMQ = zm(str3);
-      localbpi.DMR = api(str1);
-      localbpi.DMS = api(str4);
-      localbpi.DMT = ((bpk)localObject);
-      localLinkedList.add(localbpi);
-      i += 1;
-      break;
-      str9 = paramString + ".media.id";
-      str8 = paramString + ".media.type";
-      str7 = paramString + ".media.title";
-      str6 = paramString + ".media.desc";
-      str5 = paramString + ".media.url";
-      str3 = paramString + ".media.thumb";
-      str2 = paramString + ".media.url.$type";
-      str1 = paramString + ".media.thumb.$type";
-      str4 = paramString + ".media.private";
-    }
-    label819:
-    AppMethodBeat.o(96150);
-    return localLinkedList;
-  }
-  
-  private static float zl(String paramString)
-  {
-    float f1 = 0.0F;
-    AppMethodBeat.i(96144);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(96144);
-      return 0.0F;
-    }
-    try
-    {
-      float f2 = bt.getFloat(paramString, 0.0F);
-      f1 = f2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      b localb = new b();
+      locala.yaZ.add(localb);
+      Object localObject = this.gFr.getChildAt(i);
+      k = i + 1;
+      int i2;
+      int i3;
+      int i4;
+      if (localObject != null)
       {
-        ad.e("MicroMsg.AlbumBgHelper", "parseFloat error ".concat(String.valueOf(paramString)));
+        i = ((View)localObject).getTop();
+        i2 = ((View)localObject).getLeft();
+        i3 = ((View)localObject).getHeight();
+        i4 = ((View)localObject).getWidth();
+        p localp = parambe.Pl(j);
+        localb.ybe = q.l(localp);
+        localb.ybc = localp.field_type;
+        localb.ybd = localp.Pe(32);
+        localb.yba = i;
+        localb.ybb = i2;
+        localb.aOz = i3;
+        localb.aOy = i4;
+      }
+      if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof BaseTimeLineItem.BaseViewHolder)))
+      {
+        localObject = (BaseTimeLineItem.BaseViewHolder)((View)localObject).getTag();
+        if ((((BaseTimeLineItem.BaseViewHolder)localObject).zdJ) && (((BaseTimeLineItem.BaseViewHolder)localObject).ywY != null))
+        {
+          i = ((BaseTimeLineItem.BaseViewHolder)localObject).ywY.getTop();
+          i2 = ((BaseTimeLineItem.BaseViewHolder)localObject).ywY.getLeft();
+          i3 = ((BaseTimeLineItem.BaseViewHolder)localObject).zdA.getHeight();
+          i4 = ((BaseTimeLineItem.BaseViewHolder)localObject).zdA.getWidth();
+          int i5 = ((BaseTimeLineItem.BaseViewHolder)localObject).zdC.getTop();
+          int i6 = ((BaseTimeLineItem.BaseViewHolder)localObject).zdC.getLeft();
+          int i7 = ((BaseTimeLineItem.BaseViewHolder)localObject).zdC.getHeight();
+          int i8 = ((BaseTimeLineItem.BaseViewHolder)localObject).zdC.getWidth();
+          ac.v("MicroMsg.CaptureSnsHelper", "holder position %s %s index %s", new Object[] { Integer.valueOf(((BaseTimeLineItem.BaseViewHolder)localObject).position), Integer.valueOf(j), Integer.valueOf(k) });
+          if (((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.LikeCount != 0)
+          {
+            localb.ybg = ((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.LikeCount;
+            localb.ybh = i;
+            localb.ybi = i2;
+            localb.ybj = i4;
+            localb.ybk = i3;
+          }
+          if (((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.CommentCount != 0)
+          {
+            localb.ybf = ((BaseTimeLineItem.BaseViewHolder)localObject).snsobj.CommentCount;
+            localb.ybm = (i6 + i2);
+            localb.ybl = (i5 + i);
+            localb.ybn = i8;
+            localb.ybo = i7;
+          }
+        }
       }
     }
-    AppMethodBeat.o(96144);
-    return f1;
+    label736:
+    ac.i("MicroMsg.CaptureSnsHelper", "end cap: " + (System.nanoTime() - l));
+    AppMethodBeat.o(96173);
+    return locala;
   }
   
-  private static String zm(String paramString)
+  public static final class a
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
+    public int adx;
+    public int mScreenHeight;
+    public int mScreenWidth;
+    public long yaW;
+    public int yaX;
+    public int yaY;
+    public List<a.b> yaZ;
+  }
+  
+  public static final class b
+  {
+    public int aOy;
+    public int aOz;
+    public int yba;
+    public int ybb;
+    public int ybc;
+    public boolean ybd;
+    public String ybe;
+    public int ybf;
+    public int ybg;
+    public int ybh;
+    public int ybi;
+    public int ybj;
+    public int ybk;
+    public int ybl;
+    public int ybm;
+    public int ybn;
+    public int ybo;
   }
 }
 

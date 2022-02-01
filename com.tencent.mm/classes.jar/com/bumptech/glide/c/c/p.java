@@ -9,8 +9,8 @@ import java.util.Map;
 
 public final class p
 {
-  private final r aHJ;
-  private final p.a aHK;
+  private final p.a aIA;
+  private final r aIz;
   
   public p(l.a<List<Throwable>> parama)
   {
@@ -22,12 +22,12 @@ public final class p
   private p(r paramr)
   {
     AppMethodBeat.i(77271);
-    this.aHK = new p.a();
-    this.aHJ = paramr;
+    this.aIA = new p.a();
+    this.aIz = paramr;
     AppMethodBeat.o(77271);
   }
   
-  public final <A> List<n<A, ?>> M(A paramA)
+  public final <A> List<n<A, ?>> O(A paramA)
   {
     Object localObject2;
     Object localObject1;
@@ -39,15 +39,15 @@ public final class p
       {
         AppMethodBeat.i(77273);
         localObject2 = paramA.getClass();
-        localObject1 = (a.a)this.aHK.aHL.get(localObject2);
+        localObject1 = (a.a)this.aIA.aIB.get(localObject2);
         if (localObject1 == null)
         {
           localObject1 = null;
           if (localObject1 != null) {
             break;
           }
-          localObject1 = Collections.unmodifiableList(this.aHJ.r((Class)localObject2));
-          if ((a.a)this.aHK.aHL.put(localObject2, new a.a((List)localObject1)) == null) {
+          localObject1 = Collections.unmodifiableList(this.aIz.r((Class)localObject2));
+          if ((a.a)this.aIA.aIB.put(localObject2, new a.a((List)localObject1)) == null) {
             break label203;
           }
           paramA = new IllegalStateException("Already cached loaders for model: ".concat(String.valueOf(localObject2)));
@@ -56,7 +56,7 @@ public final class p
         }
       }
       finally {}
-      localObject1 = ((a.a)localObject1).aHM;
+      localObject1 = ((a.a)localObject1).aIC;
       continue;
       j = ((List)localObject1).size();
       localObject2 = new ArrayList(j);
@@ -67,7 +67,7 @@ public final class p
       if (i < j)
       {
         n localn = (n)((List)localObject1).get(i);
-        if (localn.U(paramA)) {
+        if (localn.W(paramA)) {
           ((List)localObject2).add(localn);
         }
       }
@@ -88,8 +88,8 @@ public final class p
     try
     {
       AppMethodBeat.i(77272);
-      this.aHJ.b(paramClass, paramClass1, paramo);
-      this.aHK.aHL.clear();
+      this.aIz.b(paramClass, paramClass1, paramo);
+      this.aIA.aIB.clear();
       AppMethodBeat.o(77272);
       return;
     }
@@ -105,7 +105,7 @@ public final class p
     try
     {
       AppMethodBeat.i(77274);
-      paramClass = this.aHJ.q(paramClass);
+      paramClass = this.aIz.q(paramClass);
       AppMethodBeat.o(77274);
       return paramClass;
     }
@@ -118,17 +118,17 @@ public final class p
   
   static final class a$a<Model>
   {
-    final List<n<Model, ?>> aHM;
+    final List<n<Model, ?>> aIC;
     
     public a$a(List<n<Model, ?>> paramList)
     {
-      this.aHM = paramList;
+      this.aIC = paramList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.p
  * JD-Core Version:    0.7.0.1
  */

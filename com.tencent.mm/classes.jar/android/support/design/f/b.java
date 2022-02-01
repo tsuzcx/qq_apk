@@ -4,7 +4,7 @@ public class b
 {
   public void a(float paramFloat1, float paramFloat2, d paramd)
   {
-    paramd.g(paramFloat1);
+    paramd.k(paramFloat1);
   }
 }
 

@@ -7,11 +7,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.ax.b.a;
-import com.tencent.mm.model.az;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.aw.b.a;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
@@ -20,15 +19,14 @@ import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.a;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.b;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.d;
-import com.tencent.mm.protocal.protobuf.abq;
-import com.tencent.mm.protocal.protobuf.hj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.ba;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.acp;
+import com.tencent.mm.protocal.protobuf.hn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMWizardActivity;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -46,21 +44,21 @@ import java.util.UUID;
 
 public final class m
 {
-  private static SimpleDateFormat mug;
+  private static SimpleDateFormat mWi;
   
   static
   {
     AppMethodBeat.i(24732);
-    mug = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+    mWi = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
     AppMethodBeat.o(24732);
   }
   
   public static String a(int paramInt1, k.b paramb, int paramInt2)
   {
     AppMethodBeat.i(24720);
-    ad.i("MicroMsg.FreeWifi.Utils", "getUiErrorCode, protocol=%d, stageName=%s, stageCode=%d, errocode=%d", new Object[] { Integer.valueOf(paramInt1), paramb.name, Long.valueOf(paramb.rgx), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.FreeWifi.Utils", "getUiErrorCode, protocol=%d, stageName=%s, stageCode=%d, errocode=%d", new Object[] { Integer.valueOf(paramInt1), paramb.name, Long.valueOf(paramb.spp), Integer.valueOf(paramInt2) });
     paramInt2 = Math.abs(paramInt2);
-    StringBuilder localStringBuilder = new StringBuilder().append(String.format("%02d", new Object[] { Integer.valueOf(paramInt1) })).append(String.format("%03d", new Object[] { Long.valueOf(paramb.rgx) }));
+    StringBuilder localStringBuilder = new StringBuilder().append(String.format("%02d", new Object[] { Integer.valueOf(paramInt1) })).append(String.format("%03d", new Object[] { Long.valueOf(paramb.spp) }));
     if (paramInt2 <= 999) {}
     for (paramb = String.format("%03d", new Object[] { Integer.valueOf(paramInt2) });; paramb = Integer.valueOf(paramInt2))
     {
@@ -116,7 +114,7 @@ public final class m
       }
       catch (Exception paramLinkedHashMap)
       {
-        ad.i(paramString2, "print " + paramString1 + "error." + paramLinkedHashMap.getMessage());
+        ac.i(paramString2, "print " + paramString1 + "error." + paramLinkedHashMap.getMessage());
         return "";
         if (localObject2 != Long.TYPE) {
           break label438;
@@ -147,14 +145,14 @@ public final class m
         }
         else
         {
-          ad.e(paramString2, "unkonwn type " + ((Class)localObject2).toString());
+          ac.e(paramString2, "unkonwn type " + ((Class)localObject2).toString());
           localStringBuilder.append(paramj.getString(i));
           continue;
           localStringBuilder.append("\r\n");
         }
       }
     }
-    ad.i(paramString2, localStringBuilder.toString());
+    ac.i(paramString2, localStringBuilder.toString());
     paramLinkedHashMap = localStringBuilder.toString();
     paramj.close();
     AppMethodBeat.o(24730);
@@ -164,48 +162,48 @@ public final class m
   public static void a(final Intent paramIntent, final String paramString1, final int paramInt1, final int paramInt2, final a parama, String paramString2)
   {
     AppMethodBeat.i(24722);
-    com.tencent.mm.plugin.freewifi.model.j.cwb().cvK().post(new Runnable()
+    com.tencent.mm.plugin.freewifi.model.j.cJn().cIW().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24703);
-        Object localObject = k.cvq();
-        ((k.a)localObject).ssid = m.aau(this.lMn);
-        ((k.a)localObject).bssid = m.aav(this.lMn);
-        ((k.a)localObject).ddV = m.aaw(this.lMn);
-        ((k.a)localObject).ddU = paramString1;
-        ((k.a)localObject).nSA = m.ai(paramIntent);
-        ((k.a)localObject).rfL = paramInt1;
-        ((k.a)localObject).rfM = k.b.rfY.rgx;
-        ((k.a)localObject).rfN = k.b.rfY.name;
-        ((k.a)localObject).channel = m.al(paramIntent);
+        Object localObject = k.cIC();
+        ((k.a)localObject).ssid = m.afm(this.mok);
+        ((k.a)localObject).bssid = m.afn(this.mok);
+        ((k.a)localObject).dbr = m.afo(this.mok);
+        ((k.a)localObject).dbq = paramString1;
+        ((k.a)localObject).ovU = m.aj(paramIntent);
+        ((k.a)localObject).soD = paramInt1;
+        ((k.a)localObject).soE = k.b.soQ.spp;
+        ((k.a)localObject).soF = k.b.soQ.name;
+        ((k.a)localObject).channel = m.am(paramIntent);
         ((k.a)localObject).result = 0;
-        ((k.a)localObject).cvs().cvr();
-        localObject = m.aav(this.lMn);
-        String str = m.aau(this.lMn);
-        int i = com.tencent.mm.plugin.freewifi.model.d.cvN();
-        ad.i(this.lMn, "NetStatusUtil.getNetType(MMApplicationContext.getContext()) = " + ay.getNetType(aj.getContext()));
-        ad.i(this.lMn, "sessionKey=%s, step=%d, method=getBackPageInfoAfterConnectSuccess, desc=it starts net request [apauth.getBackPage]  for backpage info. fullUrl=%s, nowApMac=%s, nowNetworkSSID=%s, rssi=%d", new Object[] { m.ai(paramIntent), Integer.valueOf(m.aj(paramIntent)), paramString1, localObject, str, Integer.valueOf(i) });
-        new a(paramString1, (String)localObject, str, i, paramInt2, m.ai(paramIntent)).c(new g()
+        ((k.a)localObject).cIE().cID();
+        localObject = m.afn(this.mok);
+        String str = m.afm(this.mok);
+        int i = com.tencent.mm.plugin.freewifi.model.d.cIZ();
+        ac.i(this.mok, "NetStatusUtil.getNetType(MMApplicationContext.getContext()) = " + ax.getNetType(ai.getContext()));
+        ac.i(this.mok, "sessionKey=%s, step=%d, method=getBackPageInfoAfterConnectSuccess, desc=it starts net request [apauth.getBackPage]  for backpage info. fullUrl=%s, nowApMac=%s, nowNetworkSSID=%s, rssi=%d", new Object[] { m.aj(paramIntent), Integer.valueOf(m.ak(paramIntent)), paramString1, localObject, str, Integer.valueOf(i) });
+        new a(paramString1, (String)localObject, str, i, paramInt2, m.aj(paramIntent)).c(new g()
         {
           public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
           {
             AppMethodBeat.i(24702);
-            ad.i(m.2.this.lMn, "sessionKey=%s, step=%d, desc=net request [apauth.getBackPage] returns. errType=%d, errCode=%d, errMsg=%s", new Object[] { m.ai(m.2.this.val$intent), Integer.valueOf(m.aj(m.2.this.val$intent)), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
-            k.a locala = k.cvq();
-            locala.ssid = m.aau(m.2.this.lMn);
-            locala.bssid = m.aav(m.2.this.lMn);
-            locala.ddV = m.aaw(m.2.this.lMn);
-            locala.ddU = m.2.this.rgB;
-            locala.nSA = m.ai(m.2.this.val$intent);
-            locala.rfL = m.ak(m.2.this.val$intent);
-            locala.rfM = k.b.rgb.rgx;
-            locala.rfN = k.b.rgb.name;
-            locala.channel = m.al(m.2.this.val$intent);
+            ac.i(m.2.this.mok, "sessionKey=%s, step=%d, desc=net request [apauth.getBackPage] returns. errType=%d, errCode=%d, errMsg=%s", new Object[] { m.aj(m.2.this.val$intent), Integer.valueOf(m.ak(m.2.this.val$intent)), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
+            k.a locala = k.cIC();
+            locala.ssid = m.afm(m.2.this.mok);
+            locala.bssid = m.afn(m.2.this.mok);
+            locala.dbr = m.afo(m.2.this.mok);
+            locala.dbq = m.2.this.spt;
+            locala.ovU = m.aj(m.2.this.val$intent);
+            locala.soD = m.al(m.2.this.val$intent);
+            locala.soE = k.b.soT.spp;
+            locala.soF = k.b.soT.name;
+            locala.channel = m.am(m.2.this.val$intent);
             locala.result = paramAnonymous2Int2;
-            locala.foR = paramAnonymous2String;
-            locala.cvs().c(m.2.this.val$intent, true).cvr();
-            m.2.this.rgD.g(paramAnonymous2Int1, paramAnonymous2Int2, paramAnonymous2String, paramAnonymous2n);
+            locala.fsq = paramAnonymous2String;
+            locala.cIE().c(m.2.this.val$intent, true).cID();
+            m.2.this.spv.g(paramAnonymous2Int1, paramAnonymous2Int2, paramAnonymous2String, paramAnonymous2n);
             AppMethodBeat.o(24702);
           }
         });
@@ -231,42 +229,42 @@ public final class m
             AppMethodBeat.o(24701);
             return;
           }
-          paramAnonymousString = ((a)paramAnonymousn).cwk();
+          paramAnonymousString = ((a)paramAnonymousn).cJw();
           if (paramAnonymousString != null)
           {
-            ad.i(this.lMn, "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s, qingHuaiPageUrl: %s", new Object[] { paramAnonymousString.Cxj, paramAnonymousString.mBV, paramAnonymousString.mAQ, Integer.valueOf(paramAnonymousString.CCv), paramAnonymousString.CCw, paramAnonymousString.ijP, paramAnonymousString.CCx });
+            ac.i(this.mok, "backPageInfo appid: %s, nickName: %s, userName: %s, finishActionCode: %d, finishUrl: %s, signature: %s, qingHuaiPageUrl: %s", new Object[] { paramAnonymousString.DPF, paramAnonymousString.ndW, paramAnonymousString.ncR, Integer.valueOf(paramAnonymousString.DUS), paramAnonymousString.DUT, paramAnonymousString.iJW, paramAnonymousString.DUU });
             paramAnonymousn = paramFreeWifiFrontPageUI;
-            localObject1 = FreeWifiFrontPageUI.d.rkC;
+            localObject1 = FreeWifiFrontPageUI.d.stv;
             localObject2 = new FreeWifiFrontPageUI.b();
-            ((FreeWifiFrontPageUI.b)localObject2).rky = paramAnonymousString;
+            ((FreeWifiFrontPageUI.b)localObject2).str = paramAnonymousString;
             paramAnonymousn.a((FreeWifiFrontPageUI.d)localObject1, localObject2);
             AppMethodBeat.o(24701);
             return;
           }
-          ad.i(this.lMn, "backPageInfo is null");
+          ac.i(this.mok, "backPageInfo is null");
           paramAnonymousString = paramFreeWifiFrontPageUI;
-          paramAnonymousn = FreeWifiFrontPageUI.d.rkB;
+          paramAnonymousn = FreeWifiFrontPageUI.d.stu;
           localObject1 = new FreeWifiFrontPageUI.a();
-          ((FreeWifiFrontPageUI.a)localObject1).rka = m.a(paramInt1, k.b.rfZ, 21);
+          ((FreeWifiFrontPageUI.a)localObject1).ssT = m.a(paramInt1, k.b.soR, 21);
           paramAnonymousString.a(paramAnonymousn, localObject1);
           AppMethodBeat.o(24701);
           return;
         }
-        if ((m.fG(paramAnonymousInt1, paramAnonymousInt2)) && (!m.dq(paramAnonymousString)))
+        if ((m.fN(paramAnonymousInt1, paramAnonymousInt2)) && (!m.cX(paramAnonymousString)))
         {
           paramAnonymousn = paramFreeWifiFrontPageUI;
-          localObject1 = FreeWifiFrontPageUI.d.rkB;
+          localObject1 = FreeWifiFrontPageUI.d.stu;
           localObject2 = new FreeWifiFrontPageUI.a();
           ((FreeWifiFrontPageUI.a)localObject2).text = paramAnonymousString;
-          ((FreeWifiFrontPageUI.a)localObject2).rka = m.a(paramInt1, k.b.rfZ, paramAnonymousInt2);
+          ((FreeWifiFrontPageUI.a)localObject2).ssT = m.a(paramInt1, k.b.soR, paramAnonymousInt2);
           paramAnonymousn.a((FreeWifiFrontPageUI.d)localObject1, localObject2);
           AppMethodBeat.o(24701);
           return;
         }
         paramAnonymousString = paramFreeWifiFrontPageUI;
-        paramAnonymousn = FreeWifiFrontPageUI.d.rkB;
+        paramAnonymousn = FreeWifiFrontPageUI.d.stu;
         Object localObject1 = new FreeWifiFrontPageUI.a();
-        ((FreeWifiFrontPageUI.a)localObject1).rka = m.a(paramInt1, k.b.rfZ, paramAnonymousInt2);
+        ((FreeWifiFrontPageUI.a)localObject1).ssT = m.a(paramInt1, k.b.soR, paramAnonymousInt2);
         paramAnonymousString.a(paramAnonymousn, localObject1);
         AppMethodBeat.o(24701);
       }
@@ -274,10 +272,10 @@ public final class m
     AppMethodBeat.o(24721);
   }
   
-  public static String aas(String paramString)
+  public static String afk(String paramString)
   {
     AppMethodBeat.i(24705);
-    if (dq(paramString))
+    if (cX(paramString))
     {
       AppMethodBeat.o(24705);
       return "";
@@ -294,7 +292,7 @@ public final class m
     return str;
   }
   
-  public static String aat(String paramString)
+  public static String afl(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -303,58 +301,58 @@ public final class m
     return str;
   }
   
-  public static String aau(String paramString)
+  public static String afm(String paramString)
   {
     AppMethodBeat.i(24715);
-    String str = ay.iA(aj.getContext());
-    ad.i(paramString, "getConnectedWifiSsid()=".concat(String.valueOf(str)));
+    String str = ax.iL(ai.getContext());
+    ac.i(paramString, "getConnectedWifiSsid()=".concat(String.valueOf(str)));
     AppMethodBeat.o(24715);
     return str;
   }
   
-  public static String aav(String paramString)
+  public static String afn(String paramString)
   {
     AppMethodBeat.i(24716);
-    String str = ay.iB(aj.getContext());
-    ad.i(paramString, "getConnectedWifiBssid()=".concat(String.valueOf(str)));
+    String str = ax.iM(ai.getContext());
+    ac.i(paramString, "getConnectedWifiBssid()=".concat(String.valueOf(str)));
     AppMethodBeat.o(24716);
     return str;
   }
   
-  public static String aaw(String paramString)
+  public static String afo(String paramString)
   {
     AppMethodBeat.i(24717);
-    String str = ay.iC(aj.getContext());
-    ad.i(paramString, "getConnectedWifiClientMac()=".concat(String.valueOf(str)));
+    String str = ax.iN(ai.getContext());
+    ac.i(paramString, "getConnectedWifiClientMac()=".concat(String.valueOf(str)));
     AppMethodBeat.o(24717);
     return str;
   }
   
-  public static void aax(String paramString)
+  public static void afp(String paramString)
   {
     AppMethodBeat.i(24731);
-    ad.i("FreeWifi", paramString);
+    ac.i("FreeWifi", paramString);
     AppMethodBeat.o(24731);
   }
   
-  public static void ah(Intent paramIntent)
+  public static void ai(Intent paramIntent)
   {
     AppMethodBeat.i(24707);
-    if (dq(paramIntent.getStringExtra("free_wifi_sessionkey"))) {
-      e(paramIntent, cvu());
+    if (cX(paramIntent.getStringExtra("free_wifi_sessionkey"))) {
+      e(paramIntent, cIG());
     }
     AppMethodBeat.o(24707);
   }
   
-  public static String ai(Intent paramIntent)
+  public static String aj(Intent paramIntent)
   {
     AppMethodBeat.i(24710);
-    paramIntent = aat(paramIntent.getStringExtra("free_wifi_sessionkey"));
+    paramIntent = afl(paramIntent.getStringExtra("free_wifi_sessionkey"));
     AppMethodBeat.o(24710);
     return paramIntent;
   }
   
-  public static int aj(Intent paramIntent)
+  public static int ak(Intent paramIntent)
   {
     AppMethodBeat.i(24711);
     int i = paramIntent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_LOG_STEP_ID", 0) + 1;
@@ -363,7 +361,7 @@ public final class m
     return i;
   }
   
-  public static int ak(Intent paramIntent)
+  public static int al(Intent paramIntent)
   {
     AppMethodBeat.i(24712);
     int i = paramIntent.getIntExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 0);
@@ -371,7 +369,7 @@ public final class m
     return i;
   }
   
-  public static int al(Intent paramIntent)
+  public static int am(Intent paramIntent)
   {
     AppMethodBeat.i(24713);
     int i = paramIntent.getIntExtra("free_wifi_channel_id", 0);
@@ -379,7 +377,7 @@ public final class m
     return i;
   }
   
-  public static String am(Intent paramIntent)
+  public static String an(Intent paramIntent)
   {
     AppMethodBeat.i(24714);
     paramIntent = paramIntent.getStringExtra("free_wifi_ap_key");
@@ -387,11 +385,11 @@ public final class m
     return paramIntent;
   }
   
-  public static boolean cvt()
+  public static boolean cIF()
   {
     AppMethodBeat.i(24706);
-    String str = bt.cC(aj.getContext());
-    if ((str != null) && (str.toLowerCase().startsWith(aj.getPackageName())))
+    String str = bs.cL(ai.getContext());
+    if ((str != null) && (str.toLowerCase().startsWith(ai.getPackageName())))
     {
       AppMethodBeat.o(24706);
       return true;
@@ -400,7 +398,7 @@ public final class m
     return false;
   }
   
-  public static String cvu()
+  public static String cIG()
   {
     AppMethodBeat.i(24708);
     String str = UUID.randomUUID().toString().replace("-", "");
@@ -408,24 +406,24 @@ public final class m
     return str;
   }
   
-  public static int cvv()
+  public static int cIH()
   {
     AppMethodBeat.i(24723);
-    Object localObject = l.aIL();
-    if ((localObject == l.a.ikw) || (localObject == l.a.ikx))
+    Object localObject = l.aPC();
+    if ((localObject == l.a.iKD) || (localObject == l.a.iKE))
     {
       AppMethodBeat.o(24723);
       return 1;
     }
-    az.arV();
-    localObject = (String)com.tencent.mm.model.c.afk().get(6, null);
-    if (dq((String)localObject))
+    com.tencent.mm.model.az.ayM();
+    localObject = (String)com.tencent.mm.model.c.agA().get(6, null);
+    if (cX((String)localObject))
     {
       AppMethodBeat.o(24723);
       return 1;
     }
     if (((String)localObject).startsWith("+")) {}
-    for (localObject = ba.aew((String)localObject); "86".equals(localObject); localObject = "86")
+    for (localObject = com.tencent.mm.sdk.platformtools.az.ajo((String)localObject); "86".equals(localObject); localObject = "86")
     {
       AppMethodBeat.o(24723);
       return 2;
@@ -434,37 +432,37 @@ public final class m
     return 3;
   }
   
-  public static boolean cvw()
+  public static boolean cII()
   {
     AppMethodBeat.i(24728);
-    if (((ConnectivityManager)aj.getContext().getSystemService("connectivity")).getNetworkInfo(1).isConnected())
+    if (((ConnectivityManager)ai.getContext().getSystemService("connectivity")).getNetworkInfo(1).isConnected())
     {
-      ad.i("TAG", "isWifiConnected()=true");
+      ac.i("TAG", "isWifiConnected()=true");
       AppMethodBeat.o(24728);
       return true;
     }
-    ad.i("TAG", "isWifiConnected()=false");
+    ac.i("TAG", "isWifiConnected()=false");
     AppMethodBeat.o(24728);
     return false;
   }
   
-  public static abq cvx()
+  public static acp cIJ()
   {
     AppMethodBeat.i(24729);
-    abq localabq = new abq();
-    localabq.deviceBrand = com.tencent.mm.protocal.d.CpE;
-    if ((d.rfs != null) && (!d.rfs.equals(""))) {}
-    for (localabq.DbZ = d.rfs;; localabq.DbZ = aaw("MicroMsg.FreeWifi.Utils"))
+    acp localacp = new acp();
+    localacp.deviceBrand = com.tencent.mm.protocal.d.DHW;
+    if ((d.sok != null) && (!d.sok.equals(""))) {}
+    for (localacp.Evg = d.sok;; localacp.Evg = afo("MicroMsg.FreeWifi.Utils"))
     {
-      localabq.deviceModel = com.tencent.mm.protocal.d.CpF;
-      localabq.osName = com.tencent.mm.protocal.d.CpH;
-      localabq.osVersion = com.tencent.mm.protocal.d.CpI;
+      localacp.deviceModel = com.tencent.mm.protocal.d.DHX;
+      localacp.osName = com.tencent.mm.protocal.d.DHZ;
+      localacp.osVersion = com.tencent.mm.protocal.d.DIa;
       AppMethodBeat.o(24729);
-      return localabq;
+      return localacp;
     }
   }
   
-  public static boolean dq(String paramString)
+  public static boolean cX(String paramString)
   {
     AppMethodBeat.i(24704);
     if ((paramString == null) || (paramString.length() == 0))
@@ -484,50 +482,50 @@ public final class m
     AppMethodBeat.o(24709);
   }
   
-  public static void eT(Context paramContext)
-  {
-    AppMethodBeat.i(24724);
-    Intent localIntent = new Intent(paramContext, BindMContactUI.class);
-    Object localObject = ((TelephonyManager)paramContext.getSystemService("phone")).getSimCountryIso();
-    if (!bt.isNullOrNil((String)localObject))
-    {
-      localObject = b.bh((String)localObject, paramContext.getString(2131757950));
-      if (localObject != null)
-      {
-        localIntent.putExtra("country_name", ((b.a)localObject).hkO);
-        localIntent.putExtra("couttry_code", ((b.a)localObject).hkN);
-      }
-    }
-    MMWizardActivity.V(paramContext, localIntent);
-    AppMethodBeat.o(24724);
-  }
-  
-  public static boolean fF(int paramInt1, int paramInt2)
+  public static boolean fM(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 0) && (paramInt2 == 0);
   }
   
-  public static boolean fG(int paramInt1, int paramInt2)
+  public static boolean fN(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 4) && (paramInt2 <= -30000) && (paramInt2 > -31000);
   }
   
-  private static boolean gd(String paramString1, String paramString2)
+  public static void fg(Context paramContext)
+  {
+    AppMethodBeat.i(24724);
+    Intent localIntent = new Intent(paramContext, BindMContactUI.class);
+    Object localObject = ((TelephonyManager)paramContext.getSystemService("phone")).getSimCountryIso();
+    if (!bs.isNullOrNil((String)localObject))
+    {
+      localObject = b.bp((String)localObject, paramContext.getString(2131757950));
+      if (localObject != null)
+      {
+        localIntent.putExtra("country_name", ((b.a)localObject).hLr);
+        localIntent.putExtra("couttry_code", ((b.a)localObject).hLq);
+      }
+    }
+    MMWizardActivity.aj(paramContext, localIntent);
+    AppMethodBeat.o(24724);
+  }
+  
+  private static boolean gu(String paramString1, String paramString2)
   {
     AppMethodBeat.i(24727);
-    int i = bt.getInt(paramString1, 0);
-    int j = bt.getInt(paramString2, 0);
-    if ((i == 0) && (j != 0) && (com.tencent.mm.protocal.d.CpK <= j))
+    int i = bs.getInt(paramString1, 0);
+    int j = bs.getInt(paramString2, 0);
+    if ((i == 0) && (j != 0) && (com.tencent.mm.protocal.d.DIc <= j))
     {
       AppMethodBeat.o(24727);
       return true;
     }
-    if ((i != 0) && (j == 0) && (com.tencent.mm.protocal.d.CpK >= i))
+    if ((i != 0) && (j == 0) && (com.tencent.mm.protocal.d.DIc >= i))
     {
       AppMethodBeat.o(24727);
       return true;
     }
-    if ((i != 0) && (j != 0) && (com.tencent.mm.protocal.d.CpK >= i) && (com.tencent.mm.protocal.d.CpK <= j))
+    if ((i != 0) && (j != 0) && (com.tencent.mm.protocal.d.DIc >= i) && (com.tencent.mm.protocal.d.DIc <= j))
     {
       AppMethodBeat.o(24727);
       return true;
@@ -539,16 +537,16 @@ public final class m
   public static boolean j(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(24726);
-    ad.i(paramString, "CLIENT_VERSION=" + com.tencent.mm.protocal.d.CpK);
+    ac.i(paramString, "CLIENT_VERSION=" + com.tencent.mm.protocal.d.DIc);
     String str1 = (String)paramMap.get(".sysmsg.apply_versions.version_desc.$minInclude");
     String str2 = (String)paramMap.get(".sysmsg.apply_versions.version_desc.$maxInclude");
-    ad.i(paramString, "checkMsgPushedVersion. min0=%s,max0=%s", new Object[] { str1, str2 });
-    if ((dq(str1)) && (dq(str2)))
+    ac.i(paramString, "checkMsgPushedVersion. min0=%s,max0=%s", new Object[] { str1, str2 });
+    if ((cX(str1)) && (cX(str2)))
     {
       AppMethodBeat.o(24726);
       return false;
     }
-    if (gd(str1, str2))
+    if (gu(str1, str2))
     {
       AppMethodBeat.o(24726);
       return true;
@@ -558,11 +556,11 @@ public final class m
     {
       str1 = (String)paramMap.get(".sysmsg.apply_versions.version_desc#" + i + ".$minInclude");
       str2 = (String)paramMap.get(".sysmsg.apply_versions.version_desc#" + i + ".$maxInclude");
-      ad.i(paramString, "checkMsgPushedVersion. min" + i + "=%s,max" + i + "=%s", new Object[] { str1, str2 });
-      if ((dq(str1)) && (dq(str2))) {
+      ac.i(paramString, "checkMsgPushedVersion. min" + i + "=%s,max" + i + "=%s", new Object[] { str1, str2 });
+      if ((cX(str1)) && (cX(str2))) {
         break;
       }
-      if (gd(str1, str2))
+      if (gu(str1, str2))
       {
         AppMethodBeat.o(24726);
         return true;
@@ -578,7 +576,7 @@ public final class m
     AppMethodBeat.i(24718);
     Object localObject = new StringWriter();
     paramException.printStackTrace(new PrintWriter((Writer)localObject));
-    localObject = aat(((StringWriter)localObject).toString());
+    localObject = afl(((StringWriter)localObject).toString());
     paramException = (Exception)localObject;
     if (((String)localObject).length() > 1024) {
       paramException = ((String)localObject).substring(0, 1024);
@@ -592,7 +590,7 @@ public final class m
     AppMethodBeat.i(24719);
     StringWriter localStringWriter = new StringWriter();
     paramException.printStackTrace(new PrintWriter(localStringWriter));
-    paramException = aat(localStringWriter.toString());
+    paramException = afl(localStringWriter.toString());
     AppMethodBeat.o(24719);
     return paramException;
   }
@@ -637,7 +635,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.m
  * JD-Core Version:    0.7.0.1
  */

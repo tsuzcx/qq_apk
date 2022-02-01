@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 public abstract class c<TARGET extends n>
 {
-  public abstract JSONObject AM();
+  public abstract JSONObject Aq();
   
   public abstract String name();
 }

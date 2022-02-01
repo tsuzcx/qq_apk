@@ -14,12 +14,12 @@ import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.k;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.protocal.protobuf.xo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.adn;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 
 public final class n
@@ -33,14 +33,14 @@ public final class n
   private void a(Button paramButton, com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113698);
-    paramb = paramb.bHV().gHT;
-    if (!bt.isNullOrNil(paramb))
+    paramb = paramb.bPi().hiu;
+    if (!bs.isNullOrNil(paramb))
     {
-      int i = com.tencent.mm.plugin.card.d.l.Rm(paramb);
-      paramButton.setText(this.nqt.getResources().getString(2131756813));
+      int i = com.tencent.mm.plugin.card.d.l.Vy(paramb);
+      paramButton.setText(this.nTt.getResources().getString(2131756813));
       paramButton.setTextColor(i);
       paramb = new GradientDrawable();
-      paramb.setColor(this.nqt.getResources().getColor(2131100088));
+      paramb.setColor(this.nTt.getResources().getColor(2131100088));
       paramb.setStroke(2, i);
       paramb.setCornerRadius(8.0F);
       paramButton.setBackground(paramb);
@@ -51,17 +51,17 @@ public final class n
   public final void a(ViewGroup paramViewGroup, final com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113696);
-    am.bJl().bIo();
+    am.bQy().bPB();
     paramViewGroup.findViewById(2131298402).setVisibility(0);
     paramViewGroup.findViewById(2131298400).setVisibility(8);
-    final xo localxo = paramb.bHW().CPI;
-    if (localxo != null)
+    final yg localyg = paramb.bPj().Eit;
+    if (localyg != null)
     {
       paramViewGroup.findViewById(2131298407).setVisibility(0);
-      if (!bt.isNullOrNil(localxo.title))
+      if (!bs.isNullOrNil(localyg.title))
       {
         Button localButton = (Button)paramViewGroup.findViewById(2131298386);
-        localButton.setText(localxo.title);
+        localButton.setText(localyg.title);
         localButton.setVisibility(0);
         a(localButton, paramb);
         localButton.setOnClickListener(new View.OnClickListener()
@@ -69,53 +69,53 @@ public final class n
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(113690);
-            if ((!bt.isNullOrNil(localxo.CRr)) && (!bt.isNullOrNil(localxo.CRq)))
+            if ((!bs.isNullOrNil(localyg.Ekc)) && (!bs.isNullOrNil(localyg.Ekb)))
             {
               int i;
-              if (n.this.nqt.getIntent() != null)
+              if (n.this.nTt.getIntent() != null)
               {
-                i = n.this.nqt.getIntent().getIntExtra("key_from_scene", 3);
-                if (n.this.nqt.getIntent() == null) {
+                i = n.this.nTt.getIntent().getIntExtra("key_from_scene", 3);
+                if (n.this.nTt.getIntent() == null) {
                   break label181;
                 }
               }
               label181:
-              for (int j = n.this.nqt.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
+              for (int j = n.this.nTt.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
               {
-                com.tencent.mm.plugin.card.d.b.a(paramb.bHZ(), localxo, i, j);
-                com.tencent.mm.plugin.report.service.h.vKh.f(11941, new Object[] { Integer.valueOf(20), paramb.bHZ(), paramb.bIa(), "", localxo.title });
+                com.tencent.mm.plugin.card.d.b.a(paramb.bPm(), localyg, i, j);
+                com.tencent.mm.plugin.report.service.h.wUl.f(11941, new Object[] { Integer.valueOf(20), paramb.bPm(), paramb.bPn(), "", localyg.title });
                 AppMethodBeat.o(113690);
                 return;
                 i = 3;
                 break;
               }
             }
-            if (!bt.isNullOrNil(localxo.url))
+            if (!bs.isNullOrNil(localyg.url))
             {
-              paramAnonymousView = com.tencent.mm.plugin.card.d.l.R(localxo.url, localxo.CSH);
-              com.tencent.mm.plugin.card.d.b.a(n.this.nqt, paramAnonymousView, 1);
-              com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
-              String str1 = paramb.bHZ();
-              String str2 = paramb.bIa();
-              if (localxo.title != null) {}
-              for (paramAnonymousView = localxo.title;; paramAnonymousView = "")
+              paramAnonymousView = com.tencent.mm.plugin.card.d.l.S(localyg.url, localyg.Els);
+              com.tencent.mm.plugin.card.d.b.a(n.this.nTt, paramAnonymousView, 1);
+              com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+              String str1 = paramb.bPm();
+              String str2 = paramb.bPn();
+              if (localyg.title != null) {}
+              for (paramAnonymousView = localyg.title;; paramAnonymousView = "")
               {
                 localh.f(11941, new Object[] { Integer.valueOf(9), str1, str2, "", paramAnonymousView });
                 AppMethodBeat.o(113690);
                 return;
               }
             }
-            d.a(n.this.nqt, n.this.nqt.getString(2131757027), true);
+            d.a(n.this.nTt, n.this.nTt.getString(2131757027), true);
             AppMethodBeat.o(113690);
           }
         });
-        if (!bt.isNullOrNil(localxo.nrs)) {
-          ((TextView)paramViewGroup.findViewById(2131298388)).setText(localxo.nrs);
+        if (!bs.isNullOrNil(localyg.nUs)) {
+          ((TextView)paramViewGroup.findViewById(2131298388)).setText(localyg.nUs);
         }
         paramViewGroup = (TextView)paramViewGroup.findViewById(2131298406);
-        if (!bt.isNullOrNil(localxo.nrt))
+        if (!bs.isNullOrNil(localyg.nUt))
         {
-          paramViewGroup.setText(localxo.nrt);
+          paramViewGroup.setText(localyg.nUt);
           paramViewGroup.setVisibility(0);
           AppMethodBeat.o(113696);
           return;
@@ -129,11 +129,11 @@ public final class n
   public final void b(final ViewGroup paramViewGroup, final com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113697);
-    ad.i("MicroMsg.CardDynamicQrCodeController", "onScreenShot! ");
+    ac.i("MicroMsg.CardDynamicQrCodeController", "onScreenShot! ");
     final View localView1 = paramViewGroup.findViewById(2131298402);
     if (localView1.getVisibility() == 0)
     {
-      ad.e("MicroMsg.CardDynamicQrCodeController", "code_qr_disable_layout is visible! do not show hint!");
+      ac.e("MicroMsg.CardDynamicQrCodeController", "code_qr_disable_layout is visible! do not show hint!");
       AppMethodBeat.o(113697);
       return;
     }
@@ -146,13 +146,13 @@ public final class n
     ((ImageView)localObject).setVisibility(8);
     final View localView2 = paramViewGroup.findViewById(2131298407);
     localView2.setVisibility(0);
-    ((TextView)paramViewGroup.findViewById(2131298388)).setText(this.nqt.getResources().getString(2131756812));
+    ((TextView)paramViewGroup.findViewById(2131298388)).setText(this.nTt.getResources().getString(2131756812));
     final Button localButton = (Button)paramViewGroup.findViewById(2131298386);
     localButton.setVisibility(0);
     a(localButton, paramb);
-    com.tencent.mm.plugin.card.b.g localg = am.bJl();
+    com.tencent.mm.plugin.card.b.g localg = am.bQy();
     if (paramb == null) {
-      ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport do nothing return !cardInfo is null!");
+      ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport do nothing return !cardInfo is null!");
     }
     for (;;)
     {
@@ -163,39 +163,39 @@ public final class n
           AppMethodBeat.i(113691);
           localView1.setVisibility(8);
           localView2.setVisibility(8);
-          this.nIv.setVisibility(0);
+          this.olv.setVisibility(0);
           localButton.setVisibility(8);
-          n.this.nId.d(c.nIZ);
+          n.this.old.d(c.olZ);
           n.this.d(paramViewGroup, paramb);
           AppMethodBeat.o(113691);
         }
       });
       AppMethodBeat.o(113697);
       return;
-      localg.bIo();
-      k localk = am.bJj().Qx(paramb.bHZ());
+      localg.bPB();
+      k localk = am.bQw().UJ(paramb.bPm());
       if (localk != null)
       {
-        ad.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport currentCode cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
-        if (am.bJj().ez(paramb.bHZ(), localk.field_code_id)) {
-          localg.a(paramb.bHZ(), localk.field_code_id, c.nIZ);
+        ac.i("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport currentCode cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
+        if (am.bQw().eM(paramb.bPm(), localk.field_code_id)) {
+          localg.a(paramb.bPm(), localk.field_code_id, c.olZ);
         } else {
-          ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport delete failue! do not report! cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
+          ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport delete failue! do not report! cardId =%s,codeId=%s", new Object[] { localk.field_card_id, localk.field_code_id });
         }
       }
       else
       {
-        ad.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport  failue! currentCode is null!");
+        ac.e("MicroMsg.CardDynamicQrcodeOfflineMgr", "doScreenshotReport  failue! currentCode is null!");
       }
     }
   }
   
-  public final boolean bMC()
+  public final boolean bTN()
   {
     return false;
   }
   
-  public final boolean bMD()
+  public final boolean bTO()
   {
     return true;
   }
@@ -211,14 +211,14 @@ public final class n
   final void d(final ViewGroup paramViewGroup, com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113695);
-    paramb = paramb.bHV().CSj;
+    paramb = paramb.bPi().EkU;
     View localView = paramViewGroup.findViewById(2131298404);
-    if ((paramb != null) && (paramb.DcW))
+    if ((paramb != null) && (paramb.Ewd))
     {
       localView.setVisibility(0);
-      if (!bt.isNullOrNil(paramb.DcX))
+      if (!bs.isNullOrNil(paramb.Ewe))
       {
-        ((TextView)paramViewGroup.findViewById(2131298405)).setText(paramb.DcX);
+        ((TextView)paramViewGroup.findViewById(2131298405)).setText(paramb.Ewe);
         ((ImageView)paramViewGroup.findViewById(2131298403)).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
@@ -233,16 +233,16 @@ public final class n
             }
             if (localView.getVisibility() == 0)
             {
-              if (!com.tencent.mm.plugin.card.d.l.isNetworkAvailable(n.this.nqt.getContext()))
+              if (!com.tencent.mm.plugin.card.d.l.isNetworkAvailable(n.this.nTt.getContext()))
               {
-                d.a(n.this.nqt, n.this.nqt.getString(2131756842), false);
+                d.a(n.this.nTt, n.this.nTt.getString(2131756842), false);
                 AppMethodBeat.o(113689);
                 return;
               }
               localView.setVisibility(8);
               paramViewGroup.findViewById(2131298400).setVisibility(0);
             }
-            n.this.nId.d(c.nJa);
+            n.this.old.d(c.oma);
             AppMethodBeat.o(113689);
           }
         });
@@ -259,16 +259,16 @@ public final class n
   public final boolean g(com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113692);
-    if (!paramb.bHW().CPJ)
+    if (!paramb.bPj().Eiu)
     {
-      ad.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : is_commom_card false!ban card show!");
+      ac.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : is_commom_card false!ban card show!");
       AppMethodBeat.o(113692);
       return false;
     }
-    paramb = paramb.bHW().CPI;
-    if ((paramb != null) && (!bt.isNullOrNil(paramb.title)))
+    paramb = paramb.bPj().Eit;
+    if ((paramb != null) && (!bs.isNullOrNil(paramb.title)))
     {
-      ad.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : unavailable_qrcode_field is not null  !ban card show!");
+      ac.e("MicroMsg.CardDynamicQrCodeController", "isCanGetAndShowCode false : unavailable_qrcode_field is not null  !ban card show!");
       AppMethodBeat.o(113692);
       return false;
     }

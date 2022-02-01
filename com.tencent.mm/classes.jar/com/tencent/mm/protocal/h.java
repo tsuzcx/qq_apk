@@ -11,9 +11,9 @@ public abstract interface h
 {
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt3, boolean paramBoolean);
   
-  public abstract byte[] avk();
+  public abstract byte[] aCd();
   
-  public abstract String avl();
+  public abstract String aCe();
   
   public abstract int getClientVersion();
   
@@ -121,7 +121,7 @@ public abstract interface h
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        paramParcel1 = avk();
+        paramParcel1 = aCd();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -216,7 +216,7 @@ public abstract interface h
         return true;
       case 19: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        paramParcel1 = avl();
+        paramParcel1 = aCe();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -381,12 +381,7 @@ public abstract interface h
         //   71	104	141	finally
       }
       
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final byte[] avk()
+      public final byte[] aCd()
       {
         AppMethodBeat.i(133046);
         Parcel localParcel1 = Parcel.obtain();
@@ -407,7 +402,7 @@ public abstract interface h
         }
       }
       
-      public final String avl()
+      public final String aCe()
       {
         AppMethodBeat.i(133063);
         Parcel localParcel1 = Parcel.obtain();
@@ -426,6 +421,11 @@ public abstract interface h
           localParcel1.recycle();
           AppMethodBeat.o(133063);
         }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
       }
       
       public final int getClientVersion()

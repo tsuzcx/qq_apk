@@ -7,56 +7,56 @@ import com.google.b.a.e;
 public final class a$p
   extends e
 {
-  private static volatile p[] Ile;
-  public int Ilf = 0;
-  public String Ilg = "";
+  private static volatile p[] JMP;
+  public int JMQ = 0;
+  public String JMR = "";
   public int port = 0;
   
   public a$p()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static p[] fls()
+  public static p[] fBJ()
   {
-    if (Ile == null) {}
-    synchronized (c.bIR)
+    if (JMP == null) {}
+    synchronized (c.bGz)
     {
-      if (Ile == null) {
-        Ile = new p[0];
+      if (JMP == null) {
+        JMP = new p[0];
       }
-      return Ile;
+      return JMP;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.Ilf != 0) {
-      paramb.bz(1, this.Ilf);
+    if (this.JMQ != 0) {
+      paramb.bw(1, this.JMQ);
     }
     if (this.port != 0) {
-      paramb.by(2, this.port);
+      paramb.bv(2, this.port);
     }
-    if (!this.Ilg.equals("")) {
-      paramb.d(3, this.Ilg);
+    if (!this.JMR.equals("")) {
+      paramb.d(3, this.JMR);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.Ilf != 0) {
-      i = j + b.bB(1, this.Ilf);
+    if (this.JMQ != 0) {
+      i = j + b.by(1, this.JMQ);
     }
     j = i;
     if (this.port != 0) {
-      j = i + b.bA(2, this.port);
+      j = i + b.bx(2, this.port);
     }
     i = j;
-    if (!this.Ilg.equals("")) {
-      i = j + b.e(3, this.Ilg);
+    if (!this.JMR.equals("")) {
+      i = j + b.e(3, this.JMR);
     }
     return i;
   }

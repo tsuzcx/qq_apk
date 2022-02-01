@@ -1,12 +1,12 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class s
 {
-  private static boolean BNC = false;
-  public boolean BNB = false;
+  private static boolean DfM = false;
+  public boolean DfL = false;
   public String mTag = "";
   
   public s(String paramString)
@@ -14,23 +14,23 @@ public final class s
     this.mTag = paramString;
   }
   
-  public static void euR()
+  public static void eKk()
   {
-    BNC = true;
+    DfM = true;
   }
   
-  public final boolean em(String paramString)
+  public final boolean eb(String paramString)
   {
     AppMethodBeat.i(141158);
-    if (BNC)
+    if (DfM)
     {
-      ad.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
+      ac.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
       AppMethodBeat.o(141158);
       return false;
     }
-    if (this.BNB)
+    if (this.DfL)
     {
-      ad.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
+      ac.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
       AppMethodBeat.o(141158);
       return true;
     }

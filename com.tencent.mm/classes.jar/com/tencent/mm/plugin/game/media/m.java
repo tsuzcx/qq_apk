@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.b.b.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,21 +26,21 @@ import org.json.JSONArray;
 public final class m
   extends FrameLayout
 {
-  private View DR;
-  private View fwo;
+  private View EP;
+  private View fzV;
   private int mRequestCode;
-  private l rSB;
-  private ThreeDotsLoadingView rSC;
-  private long rSD;
-  private h rSo;
-  private a rSr;
-  private boolean rSs;
+  private h tae;
+  private a tai;
+  private boolean taj;
+  private l tat;
+  private ThreeDotsLoadingView tau;
+  private long tav;
   
   public m(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(41087);
-    this.rSs = true;
+    this.taj = true;
     this.mRequestCode = paramInt;
     a(0, 1, null);
     AppMethodBeat.o(41087);
@@ -53,22 +53,22 @@ public final class m
     if (paramMap == null) {
       localObject = new HashMap();
     }
-    com.tencent.mm.game.report.b.a.a(aj.getContext(), 8766, paramInt1, paramInt2, com.tencent.mm.game.report.b.a.a(6, (Map)localObject));
+    com.tencent.mm.game.report.b.a.a(ai.getContext(), 8766, paramInt1, paramInt2, com.tencent.mm.game.report.b.a.a(6, (Map)localObject));
     AppMethodBeat.o(41095);
   }
   
   private void b(LinkedList<e> paramLinkedList, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(41094);
-    cBH();
-    ad.i("MicroMsg.GameTabGalleryView", "setData, data is null : %b", new Object[] { Boolean.valueOf(bt.gL(paramLinkedList)) });
-    if (!bt.gL(paramLinkedList))
+    cOS();
+    ac.i("MicroMsg.GameTabGalleryView", "setData, data is null : %b", new Object[] { Boolean.valueOf(bs.gY(paramLinkedList)) });
+    if (!bs.gY(paramLinkedList))
     {
-      cCl();
-      if (a.cBX())
+      cPw();
+      if (a.cPi())
       {
-        a.cBW();
-        aq.n(new Runnable()
+        a.cPh();
+        ap.n(new Runnable()
         {
           public final void run()
           {
@@ -81,39 +81,39 @@ public final class m
     }
     for (;;)
     {
-      this.rSo.b(paramLinkedList, paramBoolean1, paramBoolean2);
+      this.tae.b(paramLinkedList, paramBoolean1, paramBoolean2);
       AppMethodBeat.o(41094);
       return;
-      bbB();
+      biu();
     }
   }
   
-  private void bbB()
+  private void biu()
   {
     AppMethodBeat.i(41091);
-    this.DR.setVisibility(0);
+    this.EP.setVisibility(0);
     a(502, 1, null);
     AppMethodBeat.o(41091);
   }
   
-  private void cBH()
+  private void cOS()
   {
     AppMethodBeat.i(41090);
-    this.fwo.setVisibility(8);
+    this.fzV.setVisibility(8);
     AppMethodBeat.o(41090);
   }
   
-  private void cCl()
+  private void cPw()
   {
     AppMethodBeat.i(41092);
-    this.DR.setVisibility(8);
+    this.EP.setVisibility(8);
     AppMethodBeat.o(41092);
   }
   
   private void getDataFromNet()
   {
     AppMethodBeat.i(41093);
-    this.rSr.b(new a.a()
+    this.tai.b(new a.a()
     {
       public final void b(final LinkedList<e> paramAnonymousLinkedList, final boolean paramAnonymousBoolean)
       {
@@ -128,7 +128,7 @@ public final class m
               public final void run()
               {
                 AppMethodBeat.i(41083);
-                m.g(m.this).bkk();
+                m.g(m.this).bqZ();
                 AppMethodBeat.o(41083);
               }
             }, 100L);
@@ -146,86 +146,86 @@ public final class m
   {
     AppMethodBeat.i(41088);
     super.onDetachedFromWindow();
-    this.rSr.destroy();
+    this.tai.destroy();
     AppMethodBeat.o(41088);
   }
   
   public final void setIgnoreVideoPreview(boolean paramBoolean)
   {
-    this.rSs = paramBoolean;
+    this.taj = paramBoolean;
   }
   
   public final void setLocalAlbumInfos(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(41089);
-    this.rSr = new a();
-    a.a(this.rSr);
-    this.rSr.v(paramJSONArray);
-    this.rSo = new h(getContext(), 8766);
-    this.rSo.setBackgroundColor(-1);
-    this.rSo.a(new RecyclerView.m()
+    this.tai = new a();
+    a.a(this.tai);
+    this.tai.v(paramJSONArray);
+    this.tae = new h(getContext(), 8766);
+    this.tae.setBackgroundColor(-1);
+    this.tae.a(new RecyclerView.m()
     {
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(204996);
+        AppMethodBeat.i(199211);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt1);
-        localb.lT(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameTabGalleryView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt1);
+        localb.lS(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameTabGalleryView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/GameTabGalleryView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(204996);
+        AppMethodBeat.o(199211);
       }
       
       public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
         AppMethodBeat.i(41076);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameTabGalleryView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/GameTabGalleryView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-        if (m.a(m.this).Ep(paramAnonymousInt)) {
+        if (m.a(m.this).Gl(paramAnonymousInt)) {
           m.b(m.this);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/GameTabGalleryView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
         AppMethodBeat.o(41076);
       }
     });
-    this.rSo.setOnItemClickListener(new com.tencent.mm.plugin.appbrand.widget.recyclerview.b()
+    this.tae.setOnItemClickListener(new com.tencent.mm.plugin.appbrand.widget.recyclerview.b()
     {
-      public final void Q(View paramAnonymousView, int paramAnonymousInt)
+      public final void R(View paramAnonymousView, int paramAnonymousInt)
       {
         AppMethodBeat.i(41077);
-        paramAnonymousView = m.a(m.this).Eq(paramAnonymousInt);
-        if ((paramAnonymousView.rNJ) || (paramAnonymousView.rNK))
+        paramAnonymousView = m.a(m.this).Gm(paramAnonymousInt);
+        if ((paramAnonymousView.sVz) || (paramAnonymousView.sVA))
         {
           AppMethodBeat.o(41077);
           return;
         }
         if (m.c(m.this))
         {
-          if (paramAnonymousView.dtp)
+          if (paramAnonymousView.dqZ)
           {
             ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(m.this.getContext(), 6, paramAnonymousView.appId, paramAnonymousView.videoUrl, null, null, m.d(m.this), null);
             AppMethodBeat.o(41077);
             return;
           }
-          ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(m.this.getContext(), 6, paramAnonymousView.appId, null, paramAnonymousView.videoUrl, paramAnonymousView.rNM, m.d(m.this), null);
+          ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(m.this.getContext(), 6, paramAnonymousView.appId, null, paramAnonymousView.videoUrl, paramAnonymousView.sVC, m.d(m.this), null);
           AppMethodBeat.o(41077);
           return;
         }
         Intent localIntent = new Intent();
         com.tencent.mm.plugin.game.b.b.f localf = new com.tencent.mm.plugin.game.b.b.f();
-        localf.rNQ = m.e(m.this).rQW;
-        paramAnonymousInt = localf.rNQ.indexOf(paramAnonymousView);
+        localf.sVH = m.e(m.this).sYM;
+        paramAnonymousInt = localf.sVH.indexOf(paramAnonymousView);
         try
         {
           localIntent.putExtra("game_video_list", localf.toByteArray());
           localIntent.putExtra("game_video_list_current_index", paramAnonymousInt);
           localIntent.putExtra("game_video_has_next", m.e(m.this).hasNext());
-          localIntent.putExtra("game_video_preview_source", p.a.rTF);
+          localIntent.putExtra("game_video_preview_source", p.a.tbx);
           d.b(m.this.getContext(), "game", ".media.preview.GameVideoPreviewUI", localIntent, m.d(m.this));
           AppMethodBeat.o(41077);
           return;
@@ -236,29 +236,29 @@ public final class m
         }
       }
     });
-    this.rSB = new l(getContext());
-    this.rSB.setPullDownEnabled(true);
-    this.rSB.setNeedStay(true);
-    this.rSB.setOnPullDownListener(new l.a()
+    this.tat = new l(getContext());
+    this.tat.setPullDownEnabled(true);
+    this.tat.setNeedStay(true);
+    this.tat.setOnPullDownListener(new l.a()
     {
-      public final void bkl()
+      public final void bra()
       {
         AppMethodBeat.i(41079);
         m.a(m.this, System.currentTimeMillis());
-        m.f(m.this).ffb();
+        m.f(m.this).fuW();
         m.this.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(41078);
-            m.g(m.this).bkk();
+            m.g(m.this).bqZ();
             AppMethodBeat.o(41078);
           }
         }, 400L);
         AppMethodBeat.o(41079);
       }
       
-      public final void cCn()
+      public final void cPy()
       {
         AppMethodBeat.i(41080);
         if (m.h(m.this) == 0L)
@@ -271,26 +271,26 @@ public final class m
         m.a(m.this, 0L);
         HashMap localHashMap = new HashMap();
         localHashMap.put("loading_time", Long.valueOf(l1 - l2));
-        m.X(localHashMap);
-        m.f(m.this).ffc();
+        m.Y(localHashMap);
+        m.f(m.this).fuX();
         AppMethodBeat.o(41080);
       }
     });
     paramJSONArray = LayoutInflater.from(getContext()).inflate(2131494239, this, false);
-    this.rSC = ((ThreeDotsLoadingView)paramJSONArray.findViewById(2131300543));
-    this.rSB.j(paramJSONArray, this.rSo);
-    addView(this.rSB, -1, -1);
-    this.DR = LayoutInflater.from(getContext()).inflate(2131494236, this, false);
-    this.DR.setVisibility(8);
-    addView(this.DR, -1, -1);
-    this.fwo = LayoutInflater.from(getContext()).inflate(2131494238, this, false);
-    this.fwo.setVisibility(8);
-    addView(this.fwo, -1, -1);
-    paramJSONArray = this.rSr.cBR();
-    if (bt.gL(paramJSONArray))
+    this.tau = ((ThreeDotsLoadingView)paramJSONArray.findViewById(2131300543));
+    this.tat.j(paramJSONArray, this.tae);
+    addView(this.tat, -1, -1);
+    this.EP = LayoutInflater.from(getContext()).inflate(2131494236, this, false);
+    this.EP.setVisibility(8);
+    addView(this.EP, -1, -1);
+    this.fzV = LayoutInflater.from(getContext()).inflate(2131494238, this, false);
+    this.fzV.setVisibility(8);
+    addView(this.fzV, -1, -1);
+    paramJSONArray = this.tai.cPc();
+    if (bs.gY(paramJSONArray))
     {
-      this.fwo.setVisibility(0);
-      ((ThreeDotsLoadingView)this.fwo.findViewById(2131300503)).ffb();
+      this.fzV.setVisibility(0);
+      ((ThreeDotsLoadingView)this.fzV.findViewById(2131300503)).fuW();
     }
     for (;;)
     {
@@ -303,7 +303,7 @@ public final class m
         public final void run()
         {
           AppMethodBeat.i(41081);
-          m.g(m.this).cCm();
+          m.g(m.this).cPx();
           AppMethodBeat.o(41081);
         }
       }, 0L);
@@ -312,7 +312,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.m
  * JD-Core Version:    0.7.0.1
  */

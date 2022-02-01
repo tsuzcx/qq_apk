@@ -20,14 +20,14 @@ public final class a
   {
     AppMethodBeat.i(60038);
     k.h(paramy, "module");
-    paramy = ((c)getValue()).fzr();
+    paramy = ((c)getValue()).fRV();
     AppMethodBeat.o(60038);
     return paramy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.a
  * JD-Core Version:    0.7.0.1
  */

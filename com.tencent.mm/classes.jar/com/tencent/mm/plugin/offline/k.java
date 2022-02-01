@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.offline;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
-import com.tencent.mm.g.a.ao;
-import com.tencent.mm.g.a.ih;
-import com.tencent.mm.g.a.kb;
-import com.tencent.mm.g.a.mw;
-import com.tencent.mm.g.a.xi;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.g.a.ap;
+import com.tencent.mm.g.a.io;
+import com.tencent.mm.g.a.kj;
+import com.tencent.mm.g.a.nf;
+import com.tencent.mm.g.a.xt;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.cc;
 import com.tencent.mm.model.cc.a;
@@ -20,14 +20,14 @@ import com.tencent.mm.plugin.offline.a.s;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
-import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.cu;
 import com.tencent.mm.protocal.x.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,31 +37,31 @@ public class k
   implements aw
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private static Map<String, String> fZH;
-  public static boolean ujs;
-  public static int ujt;
-  private com.tencent.mm.vending.b.b iKz;
-  private ap mHandler;
-  private cc.a nSR;
-  private s ujm;
-  private e ujn;
-  private i ujo;
-  private com.tencent.mm.plugin.offline.b.a ujp;
-  private com.tencent.mm.plugin.offline.ui.d ujq;
-  public f ujr;
-  private com.tencent.mm.sdk.b.c<xi> uju;
-  private com.tencent.mm.sdk.b.c<kb> ujv;
-  private com.tencent.mm.sdk.b.c<mw> ujw;
-  private m ujx;
-  private com.tencent.mm.sdk.b.c<ih> ujy;
-  private com.tencent.mm.sdk.b.c<ao> ujz;
+  private static Map<String, String> gen;
+  public static boolean vso;
+  public static int vsp;
+  private com.tencent.mm.vending.b.b jkF;
+  private ao mHandler;
+  private cc.a owm;
+  private s vsi;
+  private e vsj;
+  private i vsk;
+  private com.tencent.mm.plugin.offline.b.a vsl;
+  private com.tencent.mm.plugin.offline.ui.d vsm;
+  public f vsn;
+  private com.tencent.mm.sdk.b.c<xt> vsq;
+  private com.tencent.mm.sdk.b.c<kj> vsr;
+  private com.tencent.mm.sdk.b.c<nf> vss;
+  private m vst;
+  private com.tencent.mm.sdk.b.c<io> vsu;
+  private com.tencent.mm.sdk.b.c<ap> vsv;
   
   static
   {
     AppMethodBeat.i(66271);
-    ujs = false;
-    ujt = 10;
-    fZH = new HashMap();
+    vso = false;
+    vsp = 10;
+    gen = new HashMap();
     baseDBFactories = new HashMap();
     com.tencent.mm.wallet_core.a.i("OfflineBindCardRegProcess", d.class);
     com.tencent.mm.wallet_core.a.i("OfflineBindCardProcess", c.class);
@@ -78,40 +78,40 @@ public class k
   public k()
   {
     AppMethodBeat.i(66261);
-    this.ujm = null;
-    this.ujn = null;
-    this.ujo = null;
-    this.ujp = null;
-    this.ujq = new com.tencent.mm.plugin.offline.ui.d();
-    this.ujr = new f();
-    this.uju = new com.tencent.mm.sdk.b.c() {};
-    this.ujv = new com.tencent.mm.sdk.b.c() {};
-    this.ujw = new com.tencent.mm.sdk.b.c() {};
-    this.mHandler = new ap(Looper.getMainLooper());
-    this.nSR = new cc.a()
+    this.vsi = null;
+    this.vsj = null;
+    this.vsk = null;
+    this.vsl = null;
+    this.vsm = new com.tencent.mm.plugin.offline.ui.d();
+    this.vsn = new f();
+    this.vsq = new com.tencent.mm.sdk.b.c() {};
+    this.vsr = new com.tencent.mm.sdk.b.c() {};
+    this.vss = new com.tencent.mm.sdk.b.c() {};
+    this.mHandler = new ao(Looper.getMainLooper());
+    this.owm = new cc.a()
     {
       public final void a(final f.a paramAnonymousa)
       {
         AppMethodBeat.i(182491);
-        final String str = z.a(paramAnonymousa.fTo.Cxz);
-        ad.d("MicroMsg.SubCoreOffline", "OfflinePayMsg:".concat(String.valueOf(str)));
+        final String str = z.a(paramAnonymousa.fXi.DPV);
+        ac.d("MicroMsg.SubCoreOffline", "OfflinePayMsg:".concat(String.valueOf(str)));
         k.a(k.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(182490);
-            s locals = k.cYs();
+            s locals = k.dma();
             String str2 = str;
-            long l = paramAnonymousa.fTo.uKZ;
-            ad.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is :".concat(String.valueOf(l)));
-            ad.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg content is :".concat(String.valueOf(str2)));
+            long l = paramAnonymousa.fXi.vTQ;
+            ac.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is :".concat(String.valueOf(l)));
+            ac.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg content is :".concat(String.valueOf(str2)));
             label160:
             String str1;
             Map localMap;
             if (!TextUtils.isEmpty(str2))
             {
-              if ((locals.uhy == null) || (locals.uhy.size() == 0)) {
-                ad.e("MicroMsg.WalletOfflineMsgManager", "mMsgIdList is null or size == 0");
+              if ((locals.vqw == null) || (locals.vqw.size() == 0)) {
+                ac.e("MicroMsg.WalletOfflineMsgManager", "mMsgIdList is null or size == 0");
               }
               for (;;)
               {
@@ -119,16 +119,16 @@ public class k
                 if (i == 0) {
                   break;
                 }
-                ad.e("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is exist in list:".concat(String.valueOf(l)));
+                ac.e("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is exist in list:".concat(String.valueOf(l)));
                 AppMethodBeat.o(182490);
                 return;
                 i = 0;
                 for (;;)
                 {
-                  if (i >= locals.uhy.size()) {
+                  if (i >= locals.vqw.size()) {
                     break label160;
                   }
-                  if (((Long)locals.uhy.get(i)).longValue() == l)
+                  if (((Long)locals.vqw.get(i)).longValue() == l)
                   {
                     i = 1;
                     break;
@@ -137,42 +137,42 @@ public class k
                 }
               }
               str1 = null;
-              localMap = bw.K(str2, "sysmsg");
+              localMap = bv.L(str2, "sysmsg");
               if (localMap == null) {
                 break label384;
               }
               str1 = (String)localMap.get(".sysmsg.paymsg.ack_key");
             }
             label384:
-            for (int i = bt.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);; i = -1)
+            for (int i = bs.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);; i = -1)
             {
-              if (com.tencent.mm.plugin.offline.c.a.cZJ())
+              if (com.tencent.mm.plugin.offline.c.a.dnr())
               {
-                ad.i("MicroMsg.WalletOfflineMsgManager", "pos is enabled. PayMsgType is %d", new Object[] { Integer.valueOf(i) });
+                ac.i("MicroMsg.WalletOfflineMsgManager", "pos is enabled. PayMsgType is %d", new Object[] { Integer.valueOf(i) });
                 if ((i == 7) || (i == 10))
                 {
-                  locals.ajD(str2);
-                  locals.ajE(str2);
+                  locals.aoB(str2);
+                  locals.aoC(str2);
                 }
               }
               for (;;)
               {
-                if (locals.uhy.size() > 10) {
-                  locals.uhy.remove(locals.uhy.size() - 1);
+                if (locals.vqw.size() > 10) {
+                  locals.vqw.remove(locals.vqw.size() - 1);
                 }
-                locals.uhy.add(0, Long.valueOf(l));
+                locals.vqw.add(0, Long.valueOf(l));
                 AppMethodBeat.o(182490);
                 return;
-                if (g.hN(str1, str2))
+                if (g.ig(str1, str2))
                 {
-                  ad.i("MicroMsg.WalletOfflineMsgManager", "process msg from push");
-                  h.vKh.idkeyStat(135L, 70L, 1L, true);
-                  locals.ajD(str2);
-                  locals.ajE(str2);
+                  ac.i("MicroMsg.WalletOfflineMsgManager", "process msg from push");
+                  h.wUl.idkeyStat(135L, 70L, 1L, true);
+                  locals.aoB(str2);
+                  locals.aoC(str2);
                   continue;
-                  g.hN(str1, str2);
-                  locals.ajD(str2);
-                  locals.ajE(str2);
+                  g.ig(str1, str2);
+                  locals.aoB(str2);
+                  locals.aoC(str2);
                 }
               }
             }
@@ -183,34 +183,34 @@ public class k
       
       public final void a(f.c paramAnonymousc) {}
     };
-    this.ujy = new com.tencent.mm.sdk.b.c() {};
-    this.ujz = new com.tencent.mm.sdk.b.c() {};
+    this.vsu = new com.tencent.mm.sdk.b.c() {};
+    this.vsv = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(66261);
   }
   
-  public static String IH(int paramInt)
+  public static String KG(int paramInt)
   {
     AppMethodBeat.i(66269);
-    com.tencent.mm.kernel.g.afC();
-    String str = (String)com.tencent.mm.kernel.g.afB().afk().get(paramInt, null);
+    com.tencent.mm.kernel.g.agS();
+    String str = (String)com.tencent.mm.kernel.g.agR().agA().get(paramInt, null);
     AppMethodBeat.o(66269);
     return str;
   }
   
-  public static void bp(int paramInt, String paramString)
+  public static void bu(int paramInt, String paramString)
   {
     AppMethodBeat.i(66268);
     if (paramString != null)
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().set(paramInt, paramString);
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().eKy();
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().set(paramInt, paramString);
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().faa();
     }
     AppMethodBeat.o(66268);
   }
   
-  public static k cYr()
+  public static k dlZ()
   {
     AppMethodBeat.i(66262);
     k localk = (k)t.ap(k.class);
@@ -218,58 +218,58 @@ public class k
     return localk;
   }
   
-  public static s cYs()
+  public static s dma()
   {
     AppMethodBeat.i(66265);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cYr().ujm == null) {
-      cYr().ujm = new s();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dlZ().vsi == null) {
+      dlZ().vsi = new s();
     }
-    s locals = cYr().ujm;
+    s locals = dlZ().vsi;
     AppMethodBeat.o(66265);
     return locals;
   }
   
-  public static e cYt()
+  public static e dmb()
   {
     AppMethodBeat.i(66266);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cYr().ujn == null) {
-      cYr().ujn = new e();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dlZ().vsj == null) {
+      dlZ().vsj = new e();
     }
-    e locale = cYr().ujn;
+    e locale = dlZ().vsj;
     AppMethodBeat.o(66266);
     return locale;
   }
   
-  public static i cYu()
+  public static i dmc()
   {
     AppMethodBeat.i(66267);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (cYr().ujo == null) {
-      cYr().ujo = new i();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (dlZ().vsk == null) {
+      dlZ().vsk = new i();
     }
-    i locali = cYr().ujo;
+    i locali = dlZ().vsk;
     AppMethodBeat.o(66267);
     return locali;
   }
   
-  public static com.tencent.mm.plugin.offline.b.a cYv()
+  public static com.tencent.mm.plugin.offline.b.a dmd()
   {
     AppMethodBeat.i(66270);
-    if (!com.tencent.mm.kernel.g.afw())
+    if (!com.tencent.mm.kernel.g.agM())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(66270);
       throw ((Throwable)localObject);
     }
-    if (cYr().ujp == null)
+    if (dlZ().vsl == null)
     {
-      localObject = cYr();
-      com.tencent.mm.kernel.g.afC();
-      ((k)localObject).ujp = new com.tencent.mm.plugin.offline.b.a(com.tencent.mm.kernel.g.afB().gda);
+      localObject = dlZ();
+      com.tencent.mm.kernel.g.agS();
+      ((k)localObject).vsl = new com.tencent.mm.plugin.offline.b.a(com.tencent.mm.kernel.g.agR().ghG);
     }
-    Object localObject = cYr().ujp;
+    Object localObject = dlZ().vsl;
     AppMethodBeat.o(66270);
     return localObject;
   }
@@ -284,55 +284,55 @@ public class k
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(66263);
-    ujt = com.tencent.mm.kernel.g.afB().afk().getInt(ae.a.Fpt, 10);
-    ad.i("MicroMsg.SubCoreOffline", "init get token count: %s", new Object[] { Integer.valueOf(ujt) });
-    this.iKz = ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(new com.tencent.mm.plugin.auth.a.a()
+    vsp = com.tencent.mm.kernel.g.agR().agA().getInt(ah.a.GNj, 10);
+    ac.i("MicroMsg.SubCoreOffline", "init get token count: %s", new Object[] { Integer.valueOf(vsp) });
+    this.jkF = ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(new com.tencent.mm.plugin.auth.a.a()
     {
       public final void a(j.h paramAnonymoush, j.i paramAnonymousi, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(182489);
-        ad.i("MicroMsg.SubCoreOffline", "autoAuth: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        ac.i("MicroMsg.SubCoreOffline", "autoAuth: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (!paramAnonymousBoolean) {
-          k.cYu().gt(7, 7);
+          k.dmc().gA(7, 7);
         }
         AppMethodBeat.o(182489);
       }
       
       public final void a(x.b paramAnonymousb, String paramAnonymousString1, int paramAnonymousInt1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt2) {}
     });
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("paymsg", this.nSR, true);
-    com.tencent.mm.sdk.b.a.ESL.c(this.ujq);
-    com.tencent.mm.sdk.b.a.ESL.c(this.uju);
-    this.ujy.alive();
-    this.ujz.alive();
-    this.ujv.alive();
-    this.ujw.alive();
-    this.ujm = null;
-    this.ujn = null;
-    this.ujo = null;
-    this.ujx = new m();
+    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("paymsg", this.owm, true);
+    com.tencent.mm.sdk.b.a.GpY.c(this.vsm);
+    com.tencent.mm.sdk.b.a.GpY.c(this.vsq);
+    this.vsu.alive();
+    this.vsv.alive();
+    this.vsr.alive();
+    this.vss.alive();
+    this.vsi = null;
+    this.vsj = null;
+    this.vsk = null;
+    this.vst = new m();
     AppMethodBeat.o(66263);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(66264);
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("paymsg", this.nSR, true);
-    com.tencent.mm.sdk.b.a.ESL.d(this.ujq);
-    com.tencent.mm.sdk.b.a.ESL.d(this.uju);
-    this.ujy.dead();
-    this.ujz.dead();
-    this.ujv.dead();
-    this.ujw.dead();
-    if (this.ujx != null)
+    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("paymsg", this.owm, true);
+    com.tencent.mm.sdk.b.a.GpY.d(this.vsm);
+    com.tencent.mm.sdk.b.a.GpY.d(this.vsq);
+    this.vsu.dead();
+    this.vsv.dead();
+    this.vsr.dead();
+    this.vss.dead();
+    if (this.vst != null)
     {
-      m localm = this.ujx;
-      cYr();
-      cYs().b(localm);
-      com.tencent.mm.sdk.b.a.ESL.d(localm.tgb);
+      m localm = this.vst;
+      dlZ();
+      dma().b(localm);
+      com.tencent.mm.sdk.b.a.GpY.d(localm.uoq);
     }
-    this.ujx = null;
-    this.iKz.dead();
+    this.vst = null;
+    this.jkF.dead();
     AppMethodBeat.o(66264);
   }
   

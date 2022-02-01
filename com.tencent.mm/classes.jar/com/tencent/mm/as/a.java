@@ -1,99 +1,33 @@
 package com.tencent.mm.as;
 
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
-import com.tencent.mm.g.c.du;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.w;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.bl;
-import junit.framework.Assert;
 
-public final class a
-  extends n
-  implements k
+public class a
 {
-  private g callback;
-  private bl dbD;
-  private ap handler;
+  private static a hFz;
   
-  public a(String paramString1, String paramString2)
+  public static a aEQ()
   {
-    AppMethodBeat.i(20484);
-    this.handler = new ap()
+    AppMethodBeat.i(20488);
+    if (hFz == null) {}
+    try
     {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(20483);
-        a.this.onGYNetEnd(999, 0, 0, "", null, null);
-        AppMethodBeat.o(20483);
+      if (hFz == null) {
+        hFz = new a();
       }
-    };
-    this.dbD = new bl();
-    this.dbD.setStatus(1);
-    this.dbD.nY(paramString1);
-    this.dbD.kY(bi.uj(paramString1));
-    this.dbD.jV(1);
-    this.dbD.setContent(paramString2);
-    this.dbD.setType(w.tq(paramString1));
-    az.arV();
-    long l = c.apO().an(this.dbD);
-    if (l != -1L) {}
-    for (;;)
-    {
-      Assert.assertTrue(bool);
-      ad.i("MicroMsg.NetSceneSendMsgFake", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
-      AppMethodBeat.o(20484);
-      return;
-      bool = false;
+      a locala = hFz;
+      AppMethodBeat.o(20488);
+      return locala;
     }
-  }
-  
-  public final int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(20485);
-    this.callback = paramg;
-    ad.i("MicroMsg.NetSceneSendMsgFake", "send local msg, msgId = " + this.dbD.field_msgId);
-    this.handler.sendEmptyMessageDelayed(0, 500L);
-    AppMethodBeat.o(20485);
-    return 999;
-  }
-  
-  public final int getType()
-  {
-    return 522;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(20486);
-    ad.i("MicroMsg.NetSceneSendMsgFake", "recv local msg, msgId = " + this.dbD.field_msgId);
-    this.dbD.setStatus(2);
-    this.dbD.kY(bi.y(this.dbD.field_talker, System.currentTimeMillis() / 1000L));
-    az.arV();
-    c.apO().a(this.dbD.field_msgId, this.dbD);
-    this.callback.onSceneEnd(0, 0, paramString, this);
-    AppMethodBeat.o(20486);
-  }
-  
-  public final n.b securityVerificationChecked(q paramq)
-  {
-    return n.b.gVB;
+    finally
+    {
+      AppMethodBeat.o(20488);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.as.a
  * JD-Core Version:    0.7.0.1
  */

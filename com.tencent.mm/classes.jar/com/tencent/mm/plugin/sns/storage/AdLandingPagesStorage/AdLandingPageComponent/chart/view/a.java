@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComp
 public final class a
   extends View
 {
-  private c wYt;
+  private c ylh;
   
   public a(Context paramContext, c paramc)
   {
     super(paramContext);
-    this.wYt = paramc;
+    this.ylh = paramc;
   }
   
   public final void onDraw(Canvas paramCanvas)
@@ -27,10 +27,10 @@ public final class a
     int j = (int)(Math.min(k, i) / 2.0F * 0.8D);
     i = (int)(i / 2.0F);
     k = (int)(k / 2.0F);
-    Bitmap localBitmap = this.wYt.wYb;
+    Bitmap localBitmap = this.ylh.ykP;
     if (localBitmap != null)
     {
-      j = (int)(j * 2 + this.wYt.wYc * 2.0F);
+      j = (int)(j * 2 + this.ylh.ykQ * 2.0F);
       int m = localBitmap.getWidth() * j / localBitmap.getHeight();
       paramCanvas.drawBitmap(Bitmap.createScaledBitmap(localBitmap, m, j, false), i - (m >>> 1), k - (j >>> 1), null);
     }
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.a
  * JD-Core Version:    0.7.0.1
  */

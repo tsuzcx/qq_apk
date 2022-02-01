@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class c$1
   implements Runnable
@@ -17,7 +17,7 @@ final class c$1
     try
     {
       Uri localUri = Uri.parse("content://com.tencent.mm.plugin.sport");
-      aj.getContext().getContentResolver().query(localUri, null, "Key_mmSensorChange", new String[] { String.valueOf(this.ybU), String.valueOf(this.ybV) }, null);
+      ai.getContext().getContentResolver().query(localUri, null, "Key_mmSensorChange", new String[] { String.valueOf(this.zoU), String.valueOf(this.zoV) }, null);
       AppMethodBeat.o(149292);
       return;
     }

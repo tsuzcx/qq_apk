@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="376.0dip" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/hmb" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:background="@drawable/c6b" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/BW_0" android:id="@id/hme" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c8" android:text="@string/hpw" style="@style/he" />
+        <TextView android:id="@id/hm2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c8" android:text="@string/hp9" android:layout_below="@id/hme" style="@style/hh" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/c_" android:layout_below="@id/hm2">
+            <TextView android:textColor="@color/Purple" android:id="@id/hm3" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ci" android:text="@string/hp4" android:layout_weight="1.0" style="@style/q1" />
+            <TextView android:id="@id/hm5" android:background="@drawable/c6n" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ce" android:text="@string/hph" android:layout_weight="1.0" style="@style/o7" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

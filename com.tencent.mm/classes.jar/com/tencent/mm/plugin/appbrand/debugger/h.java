@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.bc.c;
 import com.tencent.mm.plugin.appbrand.appusage.an;
 import com.tencent.mm.plugin.appbrand.config.u;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.l;
 import d.v;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class h
   implements bc.c
 {
-  private final String jgm = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
+  private final String jGB = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(196267);
+    AppMethodBeat.i(187132);
     if (paramMap == null)
     {
-      AppMethodBeat.o(196267);
+      AppMethodBeat.o(187132);
       return;
     }
-    int k = bt.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
+    int k = bs.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
     if (k <= 0)
     {
-      AppMethodBeat.o(196267);
+      AppMethodBeat.o(187132);
       return;
     }
     if (k >= 0)
@@ -42,7 +42,7 @@ public final class h
           Object localObject2 = paramString;
           paramString = (String)paramMap.get((String)localObject2 + ".UserName");
           localObject1 = (String)paramMap.get((String)localObject2 + ".AppID");
-          m = bt.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
+          m = bs.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
           localObject2 = (CharSequence)paramString;
           if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
             break label325;
@@ -72,13 +72,13 @@ public final class h
         for (int j = 1;; j = 0)
         {
           if (j != 0) {
-            paramString = u.Gj((String)localObject1);
+            paramString = u.Kn((String)localObject1);
           }
           if (localObject1 != null) {
             break label343;
           }
           paramString = new v("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(196267);
+          AppMethodBeat.o(187132);
           throw paramString;
           paramString = Integer.valueOf(i);
           break;
@@ -88,7 +88,7 @@ public final class h
           break label255;
         }
         label343:
-        an.t(paramString, (String)localObject1, m);
+        an.u(paramString, (String)localObject1, m);
         label351:
         if (i == k) {
           break;
@@ -96,12 +96,12 @@ public final class h
         i += 1;
       }
     }
-    AppMethodBeat.o(196267);
+    AppMethodBeat.o(187132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.h
  * JD-Core Version:    0.7.0.1
  */

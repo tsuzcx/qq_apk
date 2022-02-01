@@ -4,15 +4,15 @@ import java.util.List;
 
 public abstract interface ab
 {
-  public abstract h atX();
+  public abstract h aAO();
   
-  public abstract List<o> atY();
+  public abstract List<o> aAP();
   
-  public abstract <T> T vi(String paramString);
+  public abstract <T> T zo(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ab
  * JD-Core Version:    0.7.0.1
  */

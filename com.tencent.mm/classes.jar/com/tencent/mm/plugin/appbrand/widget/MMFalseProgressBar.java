@@ -6,21 +6,21 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private float aae;
-  private float lQA;
-  private boolean lQB;
-  private float lQx;
-  private float lQy;
-  private float lQz;
-  private ap mHandler;
+  private float aaZ;
+  private ao mHandler;
   private boolean mIsStart;
+  private float msA;
+  private float msB;
+  private float msC;
+  private float msD;
+  private boolean msE;
   
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,9 +32,9 @@ public class MMFalseProgressBar
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(135398);
     this.mIsStart = false;
-    this.aae = 0.0F;
-    this.lQB = true;
-    this.mHandler = new ap(Looper.getMainLooper())
+    this.aaZ = 0.0F;
+    this.msE = true;
+    this.mHandler = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -60,19 +60,19 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    if (ay.iD(aj.getContext()))
+    if (ax.iO(ai.getContext()))
     {
-      this.lQx = 4.0F;
-      this.lQy = 1.0F;
-      this.lQz = 0.3F;
-      this.lQA = 50.0F;
+      this.msA = 4.0F;
+      this.msB = 1.0F;
+      this.msC = 0.3F;
+      this.msD = 50.0F;
       AppMethodBeat.o(135398);
       return;
     }
-    this.lQx = 2.0F;
-    this.lQy = 0.5F;
-    this.lQz = 0.15F;
-    this.lQA = 50.0F;
+    this.msA = 2.0F;
+    this.msB = 0.5F;
+    this.msC = 0.15F;
+    this.msD = 50.0F;
     AppMethodBeat.o(135398);
   }
 }

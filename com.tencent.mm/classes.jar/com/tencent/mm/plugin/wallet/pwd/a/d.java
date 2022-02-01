@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.dfj;
-import com.tencent.mm.protocal.protobuf.dgh;
-import com.tencent.mm.protocal.protobuf.dgi;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.dky;
+import com.tencent.mm.protocal.protobuf.dlw;
+import com.tencent.mm.protocal.protobuf.dlx;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class d
-  extends c<dgi>
+  extends c<dlx>
 {
-  public d(LinkedList<dfj> paramLinkedList)
+  public d(LinkedList<dky> paramLinkedList)
   {
     AppMethodBeat.i(69525);
-    dgh localdgh = new dgh();
-    localdgh.CtY = paramLinkedList;
+    dlw localdlw = new dlw();
+    localdlw.DMp = paramLinkedList;
     paramLinkedList = new b.a();
-    paramLinkedList.gUU = localdgh;
-    paramLinkedList.gUV = new dgi();
+    paramLinkedList.hvt = localdlw;
+    paramLinkedList.hvu = new dlx();
     paramLinkedList.funcId = 2638;
     paramLinkedList.uri = "/cgi-bin/mmpay-bin/updateunipayorder";
     paramLinkedList.reqCmdId = 0;
     paramLinkedList.respCmdId = 0;
-    this.rr = paramLinkedList.atI();
-    ad.i("MicroMsg.CgiUpdateUniPayOrder", "update uni pay order");
+    this.rr = paramLinkedList.aAz();
+    ac.i("MicroMsg.CgiUpdateUniPayOrder", "update uni pay order");
     AppMethodBeat.o(69525);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.d
  * JD-Core Version:    0.7.0.1
  */

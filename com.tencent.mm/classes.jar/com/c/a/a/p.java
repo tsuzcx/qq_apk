@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class p
 {
-  final long bRC;
-  final long bRD;
+  final long bPk;
+  final long bPl;
   final int what;
   
   p(int paramInt)
@@ -19,8 +19,8 @@ class p
   private p(int paramInt, long paramLong1, long paramLong2)
   {
     this.what = paramInt;
-    this.bRC = paramLong1;
-    this.bRD = paramLong2;
+    this.bPk = paramLong1;
+    this.bPl = paramLong2;
   }
 }
 

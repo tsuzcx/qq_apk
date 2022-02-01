@@ -6,26 +6,7 @@ public final class d
 {
   private static final char[] HEX_DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static String A(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(149089);
-    char[] arrayOfChar = new char[(paramInt2 - paramInt1) * 2];
-    int i = 0;
-    while (paramInt1 < paramInt2)
-    {
-      int j = paramArrayOfByte[paramInt1];
-      int k = i + 1;
-      arrayOfChar[i] = HEX_DIGITS[(j >>> 4 & 0xF)];
-      i = k + 1;
-      arrayOfChar[k] = HEX_DIGITS[(j & 0xF)];
-      paramInt1 += 1;
-    }
-    paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(149089);
-    return paramArrayOfByte;
-  }
-  
-  public static String ajp(String paramString)
+  public static String aon(String paramString)
   {
     AppMethodBeat.i(149090);
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
@@ -90,10 +71,29 @@ public final class d
       }
     }
   }
+  
+  public static String z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(149089);
+    char[] arrayOfChar = new char[(paramInt2 - paramInt1) * 2];
+    int i = 0;
+    while (paramInt1 < paramInt2)
+    {
+      int j = paramArrayOfByte[paramInt1];
+      int k = i + 1;
+      arrayOfChar[i] = HEX_DIGITS[(j >>> 4 & 0xF)];
+      i = k + 1;
+      arrayOfChar[k] = HEX_DIGITS[(j & 0xF)];
+      paramInt1 += 1;
+    }
+    paramArrayOfByte = new String(arrayOfChar);
+    AppMethodBeat.o(149089);
+    return paramArrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.d
  * JD-Core Version:    0.7.0.1
  */

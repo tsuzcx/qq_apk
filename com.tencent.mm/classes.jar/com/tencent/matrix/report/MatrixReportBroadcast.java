@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.x;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,20 +19,20 @@ public class MatrixReportBroadcast
     for (;;)
     {
       return;
-      Object localObject = y.getStringExtra(paramIntent, "tag");
-      String str1 = y.getStringExtra(paramIntent, "key");
-      int i = y.getIntExtra(paramIntent, "type", 0);
-      String str2 = y.getStringExtra(paramIntent, "value");
-      paramContext = y.getStringExtra(paramIntent, "filePath");
+      Object localObject = x.getStringExtra(paramIntent, "tag");
+      String str1 = x.getStringExtra(paramIntent, "key");
+      int i = x.getIntExtra(paramIntent, "type", 0);
+      String str2 = x.getStringExtra(paramIntent, "value");
+      paramContext = x.getStringExtra(paramIntent, "filePath");
       paramIntent = new c();
       paramIntent.tag = ((String)localObject);
       paramIntent.key = str1;
       paramIntent.type = i;
       try
       {
-        paramIntent.cwV = new JSONObject(str2);
+        paramIntent.cue = new JSONObject(str2);
         label93:
-        localObject = d.ctd.cte;
+        localObject = d.cql.cqm;
         if (localObject == null) {
           continue;
         }

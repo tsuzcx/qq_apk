@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class id
   extends b
 {
-  public a dlU;
+  public a djk;
   
   public id()
   {
@@ -15,21 +15,22 @@ public final class id
   
   private id(byte paramByte)
   {
-    AppMethodBeat.i(93323);
-    this.dlU = new a();
-    this.ESR = false;
+    AppMethodBeat.i(89646);
+    this.djk = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(93323);
+    AppMethodBeat.o(89646);
   }
   
   public static final class a
   {
-    public boolean dlV = false;
+    public int cZu;
+    public String djj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.id
  * JD-Core Version:    0.7.0.1
  */

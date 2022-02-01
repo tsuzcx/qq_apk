@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.n.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m.c;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Constructor;
 
 public abstract class b
 {
-  public a mhO;
+  public a mJP;
   
-  private a hF(boolean paramBoolean)
+  private a ie(boolean paramBoolean)
   {
     a locala2 = null;
-    if (this.mhO != null) {
-      locala1 = this.mhO;
+    if (this.mJP != null) {
+      locala1 = this.mJP;
     }
     View localView;
     n localn;
@@ -28,13 +28,13 @@ public abstract class b
           do
           {
             return locala1;
-            localView = bbA();
+            localView = bit();
             locala1 = locala2;
           } while (localView == null);
-          localn = n.cZ(localView);
+          localn = n.db(localView);
           locala1 = locala2;
         } while (localn == null);
-        locala2 = a.jdMethod_do(localn);
+        locala2 = a.dq(localn);
         locala1 = locala2;
       } while (locala2 != null);
       locala1 = locala2;
@@ -46,9 +46,9 @@ public abstract class b
   
   public final <T extends c> T aK(Class<T> paramClass)
   {
-    ad.d("MicroMsg.AppBrandBottomPickerInvokeHandler", paramClass.getSimpleName());
-    a locala = hF(true);
-    this.mhO = locala;
+    ac.d("MicroMsg.AppBrandBottomPickerInvokeHandler", paramClass.getSimpleName());
+    a locala = ie(true);
+    this.mJP = locala;
     if (locala == null) {
       return null;
     }
@@ -63,18 +63,18 @@ public abstract class b
   
   public final <T extends c> T aL(Class<T> paramClass)
   {
-    a locala = hF(false);
+    a locala = ie(false);
     if ((locala != null) && (paramClass.isInstance(locala.getPicker()))) {
       return locala.getPicker();
     }
     return null;
   }
   
-  protected abstract View bbA();
+  protected abstract View bit();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.b
  * JD-Core Version:    0.7.0.1
  */

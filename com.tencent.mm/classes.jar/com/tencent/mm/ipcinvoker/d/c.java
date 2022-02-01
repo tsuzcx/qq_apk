@@ -11,26 +11,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class c
 {
-  private static volatile c fZG;
-  Map<String, List<e>> fZH;
+  private static volatile c gem;
+  Map<String, List<e>> gen;
   
   private c()
   {
     AppMethodBeat.i(158785);
-    this.fZH = new ConcurrentHashMap();
+    this.gen = new ConcurrentHashMap();
     AppMethodBeat.o(158785);
   }
   
-  public static c adD()
+  public static c aeT()
   {
     AppMethodBeat.i(158784);
-    if (fZG == null) {}
+    if (gem == null) {}
     try
     {
-      if (fZG == null) {
-        fZG = new c();
+      if (gem == null) {
+        gem = new c();
       }
-      c localc = fZG;
+      c localc = gem;
       AppMethodBeat.o(158784);
       return localc;
     }
@@ -48,12 +48,12 @@ public class c
       AppMethodBeat.o(158787);
       return false;
     }
-    List localList = (List)this.fZH.get(paramString);
+    List localList = (List)this.gen.get(paramString);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.fZH.put(paramString, localObject);
+      this.gen.put(paramString, localObject);
     }
     if (((List)localObject).contains(parame))
     {
@@ -79,7 +79,7 @@ public class c
       AppMethodBeat.o(158788);
       return false;
     }
-    List localList = (List)this.fZH.get(paramString);
+    List localList = (List)this.gen.get(paramString);
     if (localList != null) {}
     for (;;)
     {
@@ -87,7 +87,7 @@ public class c
       {
         bool = localList.remove(parame);
         if (localList.isEmpty()) {
-          this.fZH.remove(paramString);
+          this.gen.remove(paramString);
         }
         AppMethodBeat.o(158788);
         return bool;
@@ -108,7 +108,7 @@ public class c
       AppMethodBeat.o(158786);
       return false;
     }
-    paramString = (List)this.fZH.get(paramString);
+    paramString = (List)this.gen.get(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(158786);
@@ -119,7 +119,7 @@ public class c
       ArrayList localArrayList = new ArrayList(paramString);
       paramString = localArrayList.iterator();
       while (paramString.hasNext()) {
-        ((e)paramString.next()).bf(paramBundle);
+        ((e)paramString.next()).bc(paramBundle);
       }
       AppMethodBeat.o(158786);
     }
@@ -132,7 +132,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/utils/ListenerList;", "T", "", "()V", "listeners", "", "add", "", "l", "(Ljava/lang/Object;)V", "clear", "dispatch", "", "R", "block", "Lkotlin/Function1;", "dispatchNoThrow", "default", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "remove", "lib-magicbrush-nano_release"})
+@d.l(fNY={1, 1, 13}, fNZ={""}, fOa={"Lcom/tencent/magicbrush/utils/ListenerList;", "T", "", "()V", "listeners", "", "add", "", "l", "(Ljava/lang/Object;)V", "clear", "dispatch", "", "R", "block", "Lkotlin/Function1;", "dispatchNoThrow", "default", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "remove", "lib-magicbrush-nano_release"})
 public final class c<T>
 {
   public final List<T> listeners;
@@ -32,11 +32,11 @@ public final class c<T>
         ((List)localObject1).add(((Iterator)localObject2).next());
       }
     }
-    Object localObject2 = y.JfV;
+    Object localObject2 = y.KTp;
     ??? = (List)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      ???.add(paramb.aA(((Iterator)localObject1).next()));
+      ???.add(paramb.ay(((Iterator)localObject1).next()));
     }
     AppMethodBeat.o(140288);
     return ???;
@@ -67,13 +67,13 @@ public final class c<T>
     synchronized (this.listeners)
     {
       this.listeners.clear();
-      y localy = y.JfV;
+      y localy = y.KTp;
       AppMethodBeat.o(140290);
       return;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "T", "it", "invoke", "(Ljava/lang/Object;)V"})
+  @d.l(fNY={1, 1, 13}, fNZ={""}, fOa={"<anonymous>", "", "T", "it", "invoke", "(Ljava/lang/Object;)V"})
   static final class a
     extends d.g.b.l
     implements b<T, y>
@@ -86,7 +86,7 @@ public final class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.backup.f;
 
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.protobuf.hu;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.hy;
+import com.tencent.mm.storage.bo;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public abstract interface l
 {
-  public abstract int a(hu paramhu, boolean paramBoolean1, bl parambl, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong);
+  public abstract int a(hy paramhy, boolean paramBoolean1, bo parambo, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong);
   
-  public abstract int a(String paramString, hu paramhu, bl parambl);
+  public abstract int a(String paramString, hy paramhy, bo parambo);
 }
 
 

@@ -21,18 +21,18 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bk.d;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.bj.d;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl.d;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bo.d;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
@@ -44,30 +44,30 @@ import com.tencent.mm.ui.base.n.d;
 public class ShakeSayHiListUI
   extends MMActivity
 {
-  private ListView iiS;
+  private ListView iIZ;
   private int limit;
-  private n.d mRw;
-  private long muT;
-  private int ubj;
-  private int ubk;
-  private bv woh;
-  private int wqp;
-  private b wqq;
+  private long mWU;
+  private n.d ntM;
+  private int vkh;
+  private int vki;
+  private int xBG;
+  private b xBH;
+  private by xzy;
   
   public ShakeSayHiListUI()
   {
     AppMethodBeat.i(28553);
-    this.wqp = 0;
-    this.woh = null;
+    this.xBG = 0;
+    this.xzy = null;
     this.limit = 0;
-    this.ubj = 0;
-    this.ubk = 0;
-    this.mRw = new n.d()
+    this.vkh = 0;
+    this.vki = 0;
+    this.ntM = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(28543);
-        d.aCq().agi(String.valueOf(ShakeSayHiListUI.g(ShakeSayHiListUI.this)));
+        d.aJg().alc(String.valueOf(ShakeSayHiListUI.g(ShakeSayHiListUI.this)));
         ShakeSayHiListUI.b(ShakeSayHiListUI.this).a(null, null);
         AppMethodBeat.o(28543);
       }
@@ -84,19 +84,19 @@ public class ShakeSayHiListUI
   {
     AppMethodBeat.i(28559);
     Object localObject = getLayoutInflater().inflate(2131495281, null);
-    this.iiS = ((ListView)findViewById(2131304293));
+    this.iIZ = ((ListView)findViewById(2131304293));
     ((View)localObject).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28542);
         ShakeSayHiListUI.a(ShakeSayHiListUI.this, ShakeSayHiListUI.a(ShakeSayHiListUI.this) + 8);
-        ad.d("MicroMsg.SayHiListUI", "dkfooter more btn:" + ShakeSayHiListUI.a(ShakeSayHiListUI.this));
-        ShakeSayHiListUI.b(ShakeSayHiListUI.this).LO(ShakeSayHiListUI.a(ShakeSayHiListUI.this));
+        ac.d("MicroMsg.SayHiListUI", "dkfooter more btn:" + ShakeSayHiListUI.a(ShakeSayHiListUI.this));
+        ShakeSayHiListUI.b(ShakeSayHiListUI.this).NO(ShakeSayHiListUI.a(ShakeSayHiListUI.this));
         if (ShakeSayHiListUI.c(ShakeSayHiListUI.this) <= ShakeSayHiListUI.a(ShakeSayHiListUI.this))
         {
-          ShakeSayHiListUI.d(ShakeSayHiListUI.this).removeFooterView(this.ubn);
-          ad.d("MicroMsg.SayHiListUI", "dkfooter REMOVE more btn: " + ShakeSayHiListUI.a(ShakeSayHiListUI.this));
+          ShakeSayHiListUI.d(ShakeSayHiListUI.this).removeFooterView(this.vkl);
+          ac.d("MicroMsg.SayHiListUI", "dkfooter REMOVE more btn: " + ShakeSayHiListUI.a(ShakeSayHiListUI.this));
         }
         AppMethodBeat.o(28542);
       }
@@ -111,8 +111,8 @@ public class ShakeSayHiListUI
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(28544);
-            ShakeSayHiListUI.e(ShakeSayHiListUI.this).aSi();
-            ShakeSayHiListUI.b(ShakeSayHiListUI.this).Wd();
+            ShakeSayHiListUI.e(ShakeSayHiListUI.this).aZf();
+            ShakeSayHiListUI.b(ShakeSayHiListUI.this).Xb();
             paramAnonymous2DialogInterface = (TextView)ShakeSayHiListUI.this.findViewById(2131299468);
             paramAnonymous2DialogInterface.setText(2131762792);
             paramAnonymous2DialogInterface.setVisibility(0);
@@ -127,20 +127,20 @@ public class ShakeSayHiListUI
         return true;
       }
     });
-    if (this.ubj == 0)
+    if (this.vkh == 0)
     {
       TextView localTextView = (TextView)findViewById(2131299468);
       localTextView.setText(2131762792);
       localTextView.setVisibility(0);
       enableOptionMenu(false);
     }
-    if ((this.ubj > 0) && (this.limit < this.ubj)) {
-      this.iiS.addFooterView((View)localObject);
+    if ((this.vkh > 0) && (this.limit < this.vkh)) {
+      this.iIZ.addFooterView((View)localObject);
     }
-    this.wqq = new b(this, this.woh, this.limit);
-    this.wqq.setGetViewPositionCallback(new MMSlideDelView.c()
+    this.xBH = new b(this, this.xzy, this.limit);
+    this.xBH.setGetViewPositionCallback(new MMSlideDelView.c()
     {
-      public final int dw(View paramAnonymousView)
+      public final int dy(View paramAnonymousView)
       {
         AppMethodBeat.i(28546);
         int i = ShakeSayHiListUI.d(ShakeSayHiListUI.this).getPositionForView(paramAnonymousView);
@@ -148,7 +148,7 @@ public class ShakeSayHiListUI
         return i;
       }
     });
-    this.wqq.setPerformItemClickListener(new MMSlideDelView.g()
+    this.xBH.setPerformItemClickListener(new MMSlideDelView.g()
     {
       public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -157,91 +157,91 @@ public class ShakeSayHiListUI
         AppMethodBeat.o(28547);
       }
     });
-    this.wqq.a(new MMSlideDelView.f()
+    this.xBH.a(new MMSlideDelView.f()
     {
-      public final void cO(Object paramAnonymousObject)
+      public final void cN(Object paramAnonymousObject)
       {
         AppMethodBeat.i(28548);
         if (paramAnonymousObject == null)
         {
-          ad.e("MicroMsg.SayHiListUI", "onItemDel object null");
+          ac.e("MicroMsg.SayHiListUI", "onItemDel object null");
           AppMethodBeat.o(28548);
           return;
         }
-        d.aCq().agi(paramAnonymousObject.toString());
+        d.aJg().alc(paramAnonymousObject.toString());
         ShakeSayHiListUI.b(ShakeSayHiListUI.this).a(null, null);
         AppMethodBeat.o(28548);
       }
     });
-    this.iiS.setAdapter(this.wqq);
-    this.iiS.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.iIZ.setAdapter(this.xBH);
+    this.iIZ.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(28549);
-        paramAnonymousAdapterView = (bu)ShakeSayHiListUI.b(ShakeSayHiListUI.this).getItem(paramAnonymousInt);
+        paramAnonymousAdapterView = (bx)ShakeSayHiListUI.b(ShakeSayHiListUI.this).getItem(paramAnonymousInt);
         if ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.field_content == null))
         {
           AppMethodBeat.o(28549);
           return;
         }
-        paramAnonymousView = bl.d.aIR(paramAnonymousAdapterView.field_content);
+        paramAnonymousView = bo.d.aOn(paramAnonymousAdapterView.field_content);
         Intent localIntent = new Intent();
-        localIntent.putExtra("Contact_User", paramAnonymousView.yGA);
-        localIntent.putExtra("Contact_Encryptusername", paramAnonymousView.FAk);
-        localIntent.putExtra("Contact_Alias", paramAnonymousView.eKn);
+        localIntent.putExtra("Contact_User", paramAnonymousView.zTO);
+        localIntent.putExtra("Contact_Encryptusername", paramAnonymousView.GZm);
+        localIntent.putExtra("Contact_Alias", paramAnonymousView.eNf);
         localIntent.putExtra("Contact_Nick", paramAnonymousView.nickname);
-        localIntent.putExtra("Contact_QuanPin", paramAnonymousView.ilF);
-        localIntent.putExtra("Contact_PyInitial", paramAnonymousView.ilE);
-        localIntent.putExtra("Contact_Sex", paramAnonymousView.evp);
+        localIntent.putExtra("Contact_QuanPin", paramAnonymousView.iLM);
+        localIntent.putExtra("Contact_PyInitial", paramAnonymousView.iLL);
+        localIntent.putExtra("Contact_Sex", paramAnonymousView.exL);
         localIntent.putExtra("Contact_Signature", paramAnonymousView.signature);
         localIntent.putExtra("Contact_Scene", paramAnonymousView.scene);
         localIntent.putExtra("Contact_FMessageCard", true);
         localIntent.putExtra("Contact_City", paramAnonymousView.getCity());
         localIntent.putExtra("Contact_Province", paramAnonymousView.getProvince());
-        if (bt.isNullOrNil(paramAnonymousAdapterView.field_sayhicontent)) {}
+        if (bs.isNullOrNil(paramAnonymousAdapterView.field_sayhicontent)) {}
         for (paramAnonymousAdapterView = ShakeSayHiListUI.this.getString(2131757177);; paramAnonymousAdapterView = paramAnonymousAdapterView.field_sayhicontent)
         {
           localIntent.putExtra("Contact_Content", paramAnonymousAdapterView);
           localIntent.putExtra("Contact_verify_Scene", paramAnonymousView.scene);
-          localIntent.putExtra("Contact_Uin", paramAnonymousView.uCr);
-          localIntent.putExtra("Contact_QQNick", paramAnonymousView.ilG);
-          localIntent.putExtra("Contact_Mobile_MD5", paramAnonymousView.FzV);
+          localIntent.putExtra("Contact_Uin", paramAnonymousView.vLk);
+          localIntent.putExtra("Contact_QQNick", paramAnonymousView.iLN);
+          localIntent.putExtra("Contact_Mobile_MD5", paramAnonymousView.GYX);
           localIntent.putExtra("User_From_Fmessage", true);
           localIntent.putExtra("Contact_from_msgType", 37);
-          localIntent.putExtra("Verify_ticket", paramAnonymousView.rso);
+          localIntent.putExtra("Verify_ticket", paramAnonymousView.sBi);
           localIntent.putExtra("Contact_ShowFMessageList", true);
           localIntent.putExtra("Contact_Source_FMessage", paramAnonymousView.scene);
-          az.arV();
-          paramAnonymousAdapterView = c.apM().aHY(paramAnonymousView.yGA);
-          if ((paramAnonymousAdapterView != null) && ((int)paramAnonymousAdapterView.fId >= 0) && (!com.tencent.mm.n.b.ls(paramAnonymousAdapterView.field_type)))
+          az.ayM();
+          paramAnonymousAdapterView = c.awB().aNt(paramAnonymousView.zTO);
+          if ((paramAnonymousAdapterView != null) && ((int)paramAnonymousAdapterView.fLJ >= 0) && (!com.tencent.mm.n.b.ln(paramAnonymousAdapterView.field_type)))
           {
-            paramAnonymousInt = paramAnonymousView.djq;
+            paramAnonymousInt = paramAnonymousView.dgL;
             if ((paramAnonymousInt == 0) || (paramAnonymousInt == 2) || (paramAnonymousInt == 5)) {
               localIntent.putExtra("User_Verify", true);
             }
             localIntent.putExtra("Contact_IsLBSFriend", true);
             localIntent.putExtra("Sns_from_Scene", 18);
           }
-          com.tencent.mm.plugin.shake.a.hYt.c(localIntent, ShakeSayHiListUI.this);
+          com.tencent.mm.plugin.shake.a.iyx.c(localIntent, ShakeSayHiListUI.this);
           AppMethodBeat.o(28549);
           return;
         }
       }
     });
     localObject = new com.tencent.mm.ui.tools.l(this);
-    this.iiS.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.iIZ.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(28550);
         if (paramAnonymousInt < ShakeSayHiListUI.d(ShakeSayHiListUI.this).getHeaderViewsCount())
         {
-          ad.w("MicroMsg.SayHiListUI", "on header view long click, ignore");
+          ac.w("MicroMsg.SayHiListUI", "on header view long click, ignore");
           AppMethodBeat.o(28550);
           return true;
         }
-        this.mRz.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeSayHiListUI.this, ShakeSayHiListUI.f(ShakeSayHiListUI.this));
+        this.ntP.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeSayHiListUI.this, ShakeSayHiListUI.f(ShakeSayHiListUI.this));
         AppMethodBeat.o(28550);
         return true;
       }
@@ -263,10 +263,10 @@ public class ShakeSayHiListUI
       {
         AppMethodBeat.i(28552);
         paramAnonymousView = ShakeSayHiListUI.d(ShakeSayHiListUI.this);
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
         Object localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/shake/ui/ShakeSayHiListUI$9", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/shake/ui/ShakeSayHiListUI$9", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/shake/ui/ShakeSayHiListUI$9", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
         AppMethodBeat.o(28552);
       }
@@ -278,22 +278,22 @@ public class ShakeSayHiListUI
   {
     AppMethodBeat.i(28554);
     super.onCreate(paramBundle);
-    this.wqp = getIntent().getIntExtra("IntentSayHiType", 1);
-    if (this.wqp == 1)
+    this.xBG = getIntent().getIntExtra("IntentSayHiType", 1);
+    if (this.xBG == 1)
     {
-      this.woh = d.aCq();
+      this.xzy = d.aJg();
       setMMTitle(2131762791);
-      this.ubk = this.woh.bIR();
-      if (this.ubk != 0) {
+      this.vki = this.xzy.bQe();
+      if (this.vki != 0) {
         break label161;
       }
     }
     label161:
-    for (int i = 8;; i = this.ubk)
+    for (int i = 8;; i = this.vki)
     {
       this.limit = i;
-      this.ubj = this.woh.getCount();
-      paramBundle = this.woh;
+      this.vkh = this.xzy.getCount();
+      paramBundle = this.xzy;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("status", Integer.valueOf(4));
       if (paramBundle.db.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "4" }) != 0) {
@@ -311,7 +311,7 @@ public class ShakeSayHiListUI
   {
     AppMethodBeat.i(28560);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.muT = ((bu)this.wqq.getItem(paramView.position)).field_svrid;
+    this.mWU = ((bx)this.xBH.getItem(paramView.position)).field_svrid;
     paramContextMenu.add(paramView.position, 0, 0, 2131755707);
     AppMethodBeat.o(28560);
   }
@@ -319,7 +319,7 @@ public class ShakeSayHiListUI
   public void onDestroy()
   {
     AppMethodBeat.i(28556);
-    this.wqq.cHX();
+    this.xBH.cVi();
     super.onDestroy();
     AppMethodBeat.o(28556);
   }
@@ -336,8 +336,8 @@ public class ShakeSayHiListUI
   {
     AppMethodBeat.i(28557);
     super.onPause();
-    if (this.wqq.mRn != null) {
-      this.wqq.mRn.cIg();
+    if (this.xBH.ntD != null) {
+      this.xBH.ntD.cVr();
     }
     AppMethodBeat.o(28557);
   }
@@ -346,19 +346,19 @@ public class ShakeSayHiListUI
   {
     AppMethodBeat.i(28555);
     super.onResume();
-    if (this.ubj != this.woh.getCount())
+    if (this.vkh != this.xzy.getCount())
     {
-      this.ubj = this.woh.getCount();
-      if (this.ubj == 0)
+      this.vkh = this.xzy.getCount();
+      if (this.vkh == 0)
       {
         TextView localTextView = (TextView)findViewById(2131299468);
         localTextView.setText(2131762792);
         localTextView.setVisibility(0);
         enableOptionMenu(false);
       }
-      this.wqq.Wd();
+      this.xBH.Xb();
     }
-    this.wqq.notifyDataSetChanged();
+    this.xBH.notifyDataSetChanged();
     AppMethodBeat.o(28555);
   }
   
@@ -370,7 +370,7 @@ public class ShakeSayHiListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeSayHiListUI
  * JD-Core Version:    0.7.0.1
  */

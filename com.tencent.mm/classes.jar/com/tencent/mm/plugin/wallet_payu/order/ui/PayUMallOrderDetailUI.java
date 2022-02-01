@@ -5,108 +5,108 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_payu.order.a.c;
-import com.tencent.mm.protocal.protobuf.bzr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cep;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class PayUMallOrderDetailUI
   extends WalletBaseUI
 {
-  private TextView AAa;
-  private TextView AAb;
-  private TextView AAc;
-  private TextView AAd;
-  private bzr AzS;
-  private LinearLayout AzT;
-  private LinearLayout AzU;
-  private LinearLayout AzV;
-  private LinearLayout AzW;
-  private LinearLayout AzX;
-  private LinearLayout AzY;
-  private LinearLayout AzZ;
-  private TextView kXs;
-  private TextView sYS;
-  private String ujI = "";
-  private TextView vDD;
+  private cep BSo;
+  private LinearLayout BSp;
+  private LinearLayout BSq;
+  private LinearLayout BSr;
+  private LinearLayout BSs;
+  private LinearLayout BSt;
+  private LinearLayout BSu;
+  private LinearLayout BSv;
+  private TextView BSw;
+  private TextView BSx;
+  private TextView BSy;
+  private TextView BSz;
+  private TextView lzc;
+  private TextView uhg;
+  private String vsE = "";
+  private TextView wNI;
   
-  private void dbK()
+  private void dps()
   {
     AppMethodBeat.i(72068);
-    if (this.AzS == null)
+    if (this.BSo == null)
     {
       AppMethodBeat.o(72068);
       return;
     }
-    if (!bt.isNullOrNil(this.AzS.uoY))
+    if (!bs.isNullOrNil(this.BSo.vxU))
     {
-      this.AzT.setVisibility(0);
-      this.AAa.setText(this.AzS.uoY);
+      this.BSp.setVisibility(0);
+      this.BSw.setText(this.BSo.vxU);
       label53:
-      if (bt.isNullOrNil(this.AzS.uph)) {
+      if (bs.isNullOrNil(this.BSo.vyd)) {
         break label303;
       }
-      this.AzU.setVisibility(0);
-      this.AAb.setText(this.AzS.uph);
+      this.BSq.setVisibility(0);
+      this.BSx.setText(this.BSo.vyd);
       label88:
-      if (bt.isNullOrNil(this.AzS.upa)) {
+      if (bs.isNullOrNil(this.BSo.vxW)) {
         break label315;
       }
-      this.AzV.setVisibility(0);
-      this.AAc.setText(this.AzS.upa);
+      this.BSr.setVisibility(0);
+      this.BSy.setText(this.BSo.vxW);
       label123:
-      if (bt.isNullOrNil(this.AzS.upd)) {
+      if (bs.isNullOrNil(this.BSo.vxZ)) {
         break label327;
       }
-      this.AzW.setVisibility(0);
-      this.vDD.setText(e.d(this.AzS.DWt / 100.0D, this.AzS.upd));
+      this.BSs.setVisibility(0);
+      this.wNI.setText(e.d(this.BSo.Ftl / 100.0D, this.BSo.vxZ));
       label173:
-      if (this.AzS.CreateTime < 0) {
+      if (this.BSo.CreateTime < 0) {
         break label339;
       }
-      this.AzX.setVisibility(0);
-      this.sYS.setText(e.nh(this.AzS.CreateTime));
+      this.BSt.setVisibility(0);
+      this.uhg.setText(e.nV(this.BSo.CreateTime));
       label208:
-      if (bt.isNullOrNil(this.AzS.upb)) {
+      if (bs.isNullOrNil(this.BSo.vxX)) {
         break label351;
       }
-      this.AzY.setVisibility(0);
-      this.kXs.setText(this.AzS.upb);
+      this.BSu.setVisibility(0);
+      this.lzc.setText(this.BSo.vxX);
     }
     for (;;)
     {
-      switch (this.AzS.upf)
+      switch (this.BSo.vyb)
       {
       case 4: 
       default: 
-        this.AAd.setText(2131765712);
+        this.BSz.setText(2131765712);
         AppMethodBeat.o(72068);
         return;
-        this.AzT.setVisibility(8);
+        this.BSp.setVisibility(8);
         break label53;
         label303:
-        this.AzU.setVisibility(8);
+        this.BSq.setVisibility(8);
         break label88;
         label315:
-        this.AzV.setVisibility(8);
+        this.BSr.setVisibility(8);
         break label123;
         label327:
-        this.AzW.setVisibility(8);
+        this.BSs.setVisibility(8);
         break label173;
         label339:
-        this.AzX.setVisibility(8);
+        this.BSt.setVisibility(8);
         break label208;
         label351:
-        this.AzY.setVisibility(8);
+        this.BSu.setVisibility(8);
       }
     }
-    this.AAd.setText(2131765007);
+    this.BSz.setText(2131765007);
     AppMethodBeat.o(72068);
     return;
-    this.AAd.setText(2131765318);
+    this.BSz.setText(2131765318);
     AppMethodBeat.o(72068);
   }
   
@@ -120,28 +120,28 @@ public class PayUMallOrderDetailUI
     AppMethodBeat.i(72067);
     super.onCreate(paramBundle);
     addSceneEndListener(1520);
-    this.ujI = getInput().getString("key_trans_id");
-    if (bt.isNullOrNil(this.ujI))
+    this.vsE = getInput().getString("key_trans_id");
+    if (bs.isNullOrNil(this.vsE))
     {
-      ad.e("MicroMsg.PayUMallOrderDetailUI", "hy: trans id is null");
+      ac.e("MicroMsg.PayUMallOrderDetailUI", "hy: trans id is null");
       finish();
     }
-    doSceneProgress(new c(this.ujI));
-    this.AzT = ((LinearLayout)findViewById(2131299059));
-    this.AzU = ((LinearLayout)findViewById(2131299036));
-    this.AzV = ((LinearLayout)findViewById(2131299044));
-    this.AzW = ((LinearLayout)findViewById(2131299050));
-    this.AzX = ((LinearLayout)findViewById(2131299057));
-    this.AzY = ((LinearLayout)findViewById(2131299052));
-    this.AzZ = ((LinearLayout)findViewById(2131299062));
-    this.AAa = ((TextView)findViewById(2131299060));
-    this.AAb = ((TextView)findViewById(2131299037));
-    this.AAc = ((TextView)findViewById(2131299045));
-    this.vDD = ((TextView)findViewById(2131299051));
-    this.sYS = ((TextView)findViewById(2131299058));
-    this.kXs = ((TextView)findViewById(2131299053));
-    this.AAd = ((TextView)findViewById(2131299063));
-    dbK();
+    doSceneProgress(new c(this.vsE));
+    this.BSp = ((LinearLayout)findViewById(2131299059));
+    this.BSq = ((LinearLayout)findViewById(2131299036));
+    this.BSr = ((LinearLayout)findViewById(2131299044));
+    this.BSs = ((LinearLayout)findViewById(2131299050));
+    this.BSt = ((LinearLayout)findViewById(2131299057));
+    this.BSu = ((LinearLayout)findViewById(2131299052));
+    this.BSv = ((LinearLayout)findViewById(2131299062));
+    this.BSw = ((TextView)findViewById(2131299060));
+    this.BSx = ((TextView)findViewById(2131299037));
+    this.BSy = ((TextView)findViewById(2131299045));
+    this.wNI = ((TextView)findViewById(2131299051));
+    this.uhg = ((TextView)findViewById(2131299058));
+    this.lzc = ((TextView)findViewById(2131299053));
+    this.BSz = ((TextView)findViewById(2131299063));
+    dps();
     AppMethodBeat.o(72067);
   }
   
@@ -160,8 +160,8 @@ public class PayUMallOrderDetailUI
     {
       if ((paramn instanceof c))
       {
-        this.AzS = ((c)paramn).AzR;
-        dbK();
+        this.BSo = ((c)paramn).BSn;
+        dps();
       }
       AppMethodBeat.o(72069);
       return true;

@@ -1,80 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.bw.b;
 
 public final class eba
-  extends ckq
+  extends com.tencent.mm.bw.a
 {
+  public boolean GgA;
+  public String GgI;
+  public b GgJ;
+  public int GgK;
+  public int GgL;
+  public int GgM;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(202524);
+    AppMethodBeat.i(50123);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.bl(1, this.GgA);
+      if (this.GgI != null) {
+        paramVarArgs.d(2, this.GgI);
       }
-      AppMethodBeat.o(202524);
+      if (this.GgJ != null) {
+        paramVarArgs.c(3, this.GgJ);
+      }
+      paramVarArgs.aR(4, this.GgK);
+      paramVarArgs.aR(5, this.GgL);
+      paramVarArgs.aR(6, this.GgM);
+      AppMethodBeat.o(50123);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label310;
-      }
-    }
-    label310:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(202524);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(202524);
-        return 0;
+      int i = f.a.a.b.b.a.fK(1) + 1 + 0;
+      paramInt = i;
+      if (this.GgI != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GgI);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        eba localeba = (eba)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(202524);
-          return -1;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new ip();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localeba.BaseRequest = ((ip)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(202524);
-        return 0;
+      i = paramInt;
+      if (this.GgJ != null) {
+        i = paramInt + f.a.a.b.b.a.b(3, this.GgJ);
       }
-      AppMethodBeat.o(202524);
-      return -1;
+      paramInt = f.a.a.b.b.a.bx(4, this.GgK);
+      int j = f.a.a.b.b.a.bx(5, this.GgL);
+      int k = f.a.a.b.b.a.bx(6, this.GgM);
+      AppMethodBeat.o(50123);
+      return i + paramInt + j + k;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      AppMethodBeat.o(50123);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      eba localeba = (eba)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(50123);
+        return -1;
+      case 1: 
+        localeba.GgA = locala.LVo.fZX();
+        AppMethodBeat.o(50123);
+        return 0;
+      case 2: 
+        localeba.GgI = locala.LVo.readString();
+        AppMethodBeat.o(50123);
+        return 0;
+      case 3: 
+        localeba.GgJ = locala.LVo.gfk();
+        AppMethodBeat.o(50123);
+        return 0;
+      case 4: 
+        localeba.GgK = locala.LVo.xF();
+        AppMethodBeat.o(50123);
+        return 0;
+      case 5: 
+        localeba.GgL = locala.LVo.xF();
+        AppMethodBeat.o(50123);
+        return 0;
+      }
+      localeba.GgM = locala.LVo.xF();
+      AppMethodBeat.o(50123);
+      return 0;
+    }
+    AppMethodBeat.o(50123);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eba
  * JD-Core Version:    0.7.0.1
  */

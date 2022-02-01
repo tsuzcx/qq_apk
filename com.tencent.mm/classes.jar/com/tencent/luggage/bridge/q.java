@@ -8,22 +8,22 @@ import java.util.regex.Pattern;
 final class q
   implements p
 {
-  private static final Pattern bZI;
-  private o bZw;
+  private static final Pattern bWF;
+  private o bWt;
   
   static
   {
     AppMethodBeat.i(140345);
-    bZI = Pattern.compile("^<<//([a-z]{0,10})//>>");
+    bWF = Pattern.compile("^<<//([a-z]{0,10})//>>");
     AppMethodBeat.o(140345);
   }
   
   q(o paramo)
   {
-    this.bZw = paramo;
+    this.bWt = paramo;
   }
   
-  public final String bN(String paramString)
+  public final String bD(String paramString)
   {
     AppMethodBeat.i(140344);
     if (TextUtils.isEmpty(paramString))
@@ -31,7 +31,7 @@ final class q
       AppMethodBeat.o(140344);
       return null;
     }
-    Object localObject = bZI.matcher(paramString);
+    Object localObject = bWF.matcher(paramString);
     if (((Matcher)localObject).find()) {}
     for (localObject = ((Matcher)localObject).group(1); localObject == null; localObject = null)
     {
@@ -40,7 +40,7 @@ final class q
     }
     paramString = paramString.replaceFirst("^<<//([a-z]{0,10})//>>", "");
     boolean bool = ((String)localObject).equals("sync");
-    paramString = this.bZw.bZB.i(paramString, bool);
+    paramString = this.bWt.bWy.i(paramString, bool);
     AppMethodBeat.o(140344);
     return paramString;
   }
@@ -48,7 +48,7 @@ final class q
   public final void onReady()
   {
     AppMethodBeat.i(140343);
-    this.bZw.AK();
+    this.bWt.Ao();
     AppMethodBeat.o(140343);
   }
 }

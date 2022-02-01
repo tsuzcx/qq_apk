@@ -5,23 +5,23 @@ import android.view.View;
 public final class e
   extends f
 {
+  public String fBR;
   public String fileName;
   public int fileSize;
-  public String fyk;
-  public boolean nLP;
-  public boolean nLQ;
-  public boolean nLR;
-  public boolean nLS;
-  public long nLT;
+  public boolean ooP;
+  public boolean ooQ;
+  public boolean ooR;
+  public boolean ooS;
+  public long ooT;
   
   public final void a(View paramView, a parama) {}
   
-  public final String bNx()
+  public final String bUI()
   {
-    return this.fyk;
+    return this.fBR;
   }
   
-  public final int bNy()
+  public final int bUJ()
   {
     return this.fileSize;
   }
@@ -43,7 +43,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.e
  * JD-Core Version:    0.7.0.1
  */

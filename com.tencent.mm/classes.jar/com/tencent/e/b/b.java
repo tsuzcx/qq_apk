@@ -17,7 +17,7 @@ public final class b
   extends SQLiteOpenHelper
   implements d
 {
-  private SQLiteDatabase IyD;
+  private SQLiteDatabase Kam;
   
   public b(Context paramContext)
   {
@@ -25,13 +25,13 @@ public final class b
     AppMethodBeat.i(183214);
     try
     {
-      this.IyD = getWritableDatabase();
+      this.Kam = getWritableDatabase();
       AppMethodBeat.o(183214);
       return;
     }
     catch (Exception paramContext)
     {
-      com.tencent.e.d.IxU.e("ExperienceStorage", "%s", new Object[] { paramContext.toString() });
+      com.tencent.e.d.JZD.e("ExperienceStorage", "%s", new Object[] { paramContext.toString() });
       AppMethodBeat.o(183214);
     }
   }
@@ -39,7 +39,7 @@ public final class b
   public final void delete(long paramLong)
   {
     AppMethodBeat.i(183217);
-    if (this.IyD == null)
+    if (this.Kam == null)
     {
       AppMethodBeat.o(183217);
       return;
@@ -47,24 +47,24 @@ public final class b
     if (paramLong <= 0L) {}
     for (paramLong = System.currentTimeMillis();; paramLong = System.currentTimeMillis() + paramLong)
     {
-      this.IyD.delete("DisposedTask", "timestamp<?", new String[] { String.valueOf(paramLong) });
+      this.Kam.delete("DisposedTask", "timestamp<?", new String[] { String.valueOf(paramLong) });
       AppMethodBeat.o(183217);
       return;
     }
   }
   
-  public final Map<String, a.a> fnT()
+  public final Map<String, a.a> fEj()
   {
     AppMethodBeat.i(183218);
     localObject3 = new HashMap();
-    if (this.IyD == null)
+    if (this.Kam == null)
     {
       AppMethodBeat.o(183218);
       return localObject3;
     }
     try
     {
-      localObject1 = this.IyD.query("DisposedTask", new String[] { "taskName", String.format("avg(%s)", new Object[] { "rate" }), String.format("avg(%s)", new Object[] { "threadTime" }) }, null, null, "taskName", null, null);
+      localObject1 = this.Kam.query("DisposedTask", new String[] { "taskName", String.format("avg(%s)", new Object[] { "rate" }), String.format("avg(%s)", new Object[] { "threadTime" }) }, null, null, "taskName", null, null);
       try
       {
         ((Cursor)localObject1).moveToFirst();
@@ -107,42 +107,42 @@ public final class b
     return localObject3;
   }
   
-  public final void m(Collection<a.a> paramCollection)
+  public final void n(Collection<a.a> paramCollection)
   {
     AppMethodBeat.i(183216);
-    if ((this.IyD == null) || (paramCollection.size() <= 0))
+    if ((this.Kam == null) || (paramCollection.size() <= 0))
     {
       AppMethodBeat.o(183216);
       return;
     }
     try
     {
-      this.IyD.beginTransaction();
+      this.Kam.beginTransaction();
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext())
       {
         Object localObject = (a.a)paramCollection.next();
-        localObject = new a.b(((a.a)localObject).name, ((a.a)localObject).Iyw, ((a.a)localObject).cVx, "");
+        localObject = new a.b(((a.a)localObject).name, ((a.a)localObject).Kaf, ((a.a)localObject).cST, "");
         ((a.b)localObject).timestamp = System.currentTimeMillis();
-        SQLiteDatabase localSQLiteDatabase = this.IyD;
+        SQLiteDatabase localSQLiteDatabase = this.Kam;
         ContentValues localContentValues = new ContentValues();
         localContentValues.put("taskName", ((a.b)localObject).name);
-        localContentValues.put("threadTime", Long.valueOf(((a.b)localObject).utu));
+        localContentValues.put("threadTime", Long.valueOf(((a.b)localObject).vCR));
         localContentValues.put("time", Long.valueOf(((a.b)localObject).time));
         localContentValues.put("timestamp", Long.valueOf(((a.b)localObject).timestamp));
         localContentValues.put("rate", Float.valueOf(((a.b)localObject).rate));
-        localContentValues.put("scheduler", ((a.b)localObject).IyC);
+        localContentValues.put("scheduler", ((a.b)localObject).Kal);
         localSQLiteDatabase.insert("DisposedTask", null, localContentValues);
       }
-      this.IyD.setTransactionSuccessful();
+      this.Kam.setTransactionSuccessful();
     }
     finally
     {
-      this.IyD.setTransactionSuccessful();
-      this.IyD.endTransaction();
+      this.Kam.setTransactionSuccessful();
+      this.Kam.endTransaction();
       AppMethodBeat.o(183216);
     }
-    this.IyD.endTransaction();
+    this.Kam.endTransaction();
     AppMethodBeat.o(183216);
   }
   

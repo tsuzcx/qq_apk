@@ -100,6 +100,41 @@ public final class f
     return null;
   }
   
+  public final Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
+  {
+    AppMethodBeat.i(191285);
+    Object localObject = null;
+    try
+    {
+      paramString = b.a(paramClass, paramString, paramArrayOfClass);
+      try
+      {
+        paramClass = b.a(paramClass, paramString, paramArrayOfObject);
+        AppMethodBeat.o(191285);
+        return paramClass;
+      }
+      catch (Exception paramClass)
+      {
+        if ((paramClass instanceof InvocationTargetException))
+        {
+          paramClass = new RuntimeException(((InvocationTargetException)paramClass).getTargetException());
+          AppMethodBeat.o(191285);
+          throw paramClass;
+        }
+        paramClass = new RuntimeException(paramClass);
+        AppMethodBeat.o(191285);
+        throw paramClass;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString = localObject;
+      }
+    }
+  }
+  
   public final Class findSheet(String paramString)
   {
     AppMethodBeat.i(180782);

@@ -14,8 +14,8 @@ import com.tencent.mm.svg.c;
 public final class vv
   extends c
 {
-  private final int height = 24;
-  private final int width = 24;
+  private final int height = 25;
+  private final int width = 25;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -25,8 +25,8 @@ public final class vv
     for (;;)
     {
       return 0;
-      return 24;
-      return 24;
+      return 25;
+      return 25;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       Object localObject1 = c.j(paramVarArgs);
@@ -45,22 +45,22 @@ public final class vv
       ((Paint)localObject3).setPathEffect(null);
       c.a((Paint)localObject3, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -278.0F, 0.0F, 1.0F, -696.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -278.0F, 0.0F, 1.0F, -695.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 684.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, 682.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 16.0F, 0.0F, 1.0F, 12.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 16.200001F, 0.0F, 1.0F, 12.2F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 262.0F, 0.0F, 1.0F, 0.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 261.79999F, 0.0F, 1.0F, 0.8F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues(arrayOfFloat);
       localCanvas.concat((Matrix)localObject1);
@@ -72,7 +72,7 @@ public final class vv
       ((Path)localObject3).lineTo(0.0F, 0.0F);
       ((Path)localObject3).close();
       localObject2 = c.a((Paint)localObject2, paramVarArgs);
-      ((Paint)localObject2).setColor(-372399);
+      ((Paint)localObject2).setColor(637534208);
       localCanvas.save();
       arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 3.0F, 0.0F, 1.0F, 3.0F);
       ((Matrix)localObject1).reset();

@@ -5,13 +5,13 @@ import java.util.List;
 
 public abstract class c
 {
-  public final String bqj;
-  public final List<String> bqk;
+  public final String boJ;
+  public final List<String> boK;
   
   protected c(String paramString, List<String> paramList)
   {
-    this.bqj = paramString;
-    this.bqk = Collections.unmodifiableList(paramList);
+    this.boJ = paramString;
+    this.boK = Collections.unmodifiableList(paramList);
   }
 }
 

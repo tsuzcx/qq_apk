@@ -10,7 +10,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.ct;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMVerticalTextView;
 import com.tencent.mm.ui.base.o;
@@ -18,23 +18,23 @@ import java.util.ArrayList;
 
 public final class c
 {
-  ViewGroup Ifj;
-  private boolean Ifk;
-  public o iAs;
-  private ImageView iAt;
-  private View iAu;
-  private View.OnClickListener iAw;
-  private Bitmap nCX;
-  private View nDa;
-  private ImageView nDb;
-  private MMVerticalTextView nDc;
-  private ArrayList<Bitmap> nDe;
-  private MMActivity nqt;
-  public boolean nzc;
-  private String ujd;
-  private String ulT;
-  public Bitmap uln;
-  public Bitmap ulo;
+  ViewGroup JGL;
+  private boolean JGM;
+  public o jat;
+  private ImageView jau;
+  private View jav;
+  private View.OnClickListener jax;
+  private MMActivity nTt;
+  public boolean ocd;
+  private Bitmap ofY;
+  private View ogb;
+  private ImageView ogc;
+  private MMVerticalTextView ogd;
+  private ArrayList<Bitmap> ogf;
+  private String vrZ;
+  private String vuP;
+  public Bitmap vuj;
+  public Bitmap vuk;
   
   public c(MMActivity paramMMActivity)
   {
@@ -44,81 +44,81 @@ public final class c
   public c(MMActivity paramMMActivity, boolean paramBoolean)
   {
     AppMethodBeat.i(72952);
-    this.uln = null;
-    this.ulo = null;
-    this.nCX = null;
-    this.ulT = "";
-    this.ujd = "";
-    this.nzc = true;
-    this.nDe = new ArrayList();
-    this.iAs = null;
-    this.Ifk = false;
-    this.iAw = new View.OnClickListener()
+    this.vuj = null;
+    this.vuk = null;
+    this.ofY = null;
+    this.vuP = "";
+    this.vrZ = "";
+    this.ocd = true;
+    this.ogf = new ArrayList();
+    this.jat = null;
+    this.JGM = false;
+    this.jax = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72948);
-        if (((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346)) && (c.this.iAs != null) && (c.this.iAs.isShowing())) {
-          c.this.iAs.dismiss();
+        if (((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346)) && (c.this.jat != null) && (c.this.jat.isShowing())) {
+          c.this.jat.dismiss();
         }
         AppMethodBeat.o(72948);
       }
     };
-    this.nqt = paramMMActivity;
-    this.Ifk = paramBoolean;
+    this.nTt = paramMMActivity;
+    this.JGM = paramBoolean;
     AppMethodBeat.o(72952);
   }
   
-  private void fky()
+  private void fAO()
   {
     AppMethodBeat.i(72958);
-    if (this.nzc)
+    if (this.ocd)
     {
-      this.nDb.setOnClickListener(this.iAw);
-      Bitmap localBitmap = this.nCX;
-      if (this.ulo != null)
+      this.ogc.setOnClickListener(this.jax);
+      Bitmap localBitmap = this.ofY;
+      if (this.vuk != null)
       {
-        this.nCX = e.S(this.ulo);
-        ad.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
+        this.ofY = e.S(this.vuk);
+        ac.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp != null");
       }
       for (;;)
       {
-        this.nDb.setImageBitmap(this.nCX);
-        this.nDe.add(0, localBitmap);
+        this.ogc.setImageBitmap(this.ofY);
+        this.ogf.add(0, localBitmap);
         recycleBmpList();
-        this.iAu.setVisibility(8);
-        this.nDa.setVisibility(0);
-        this.nDc.setText(e.aNk(this.ujd));
-        this.iAs.update();
+        this.jav.setVisibility(8);
+        this.ogb.setVisibility(0);
+        this.ogd.setText(e.aSN(this.vrZ));
+        this.jat.update();
         AppMethodBeat.o(72958);
         return;
-        this.nCX = null;
-        ad.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
+        this.ofY = null;
+        ac.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mRoateBmp == null");
       }
     }
-    this.iAt.setOnClickListener(this.iAw);
-    this.iAt.setImageBitmap(this.uln);
-    if (this.uln != null) {
-      ad.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
+    this.jau.setOnClickListener(this.jax);
+    this.jau.setImageBitmap(this.vuj);
+    if (this.vuj != null) {
+      ac.e("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp != null");
     }
     for (;;)
     {
-      this.iAu.setVisibility(0);
-      this.nDa.setVisibility(8);
+      this.jav.setVisibility(0);
+      this.ogb.setVisibility(8);
       break;
-      ad.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
+      ac.i("MicroMsg.OfflinePopupWindow", "updatePopWindowContent mQRCodeBmp == null");
     }
   }
   
   private void recycleBmpList()
   {
     AppMethodBeat.i(72959);
-    if (this.nDe.size() >= 2)
+    if (this.ogf.size() >= 2)
     {
-      int i = this.nDe.size() - 1;
+      int i = this.ogf.size() - 1;
       while (i > 1)
       {
-        e.T((Bitmap)this.nDe.remove(i));
+        e.T((Bitmap)this.ogf.remove(i));
         i -= 1;
       }
     }
@@ -128,18 +128,18 @@ public final class c
   public final void M(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(72955);
-    this.nzc = paramBoolean;
-    if ((this.iAs != null) && (!this.iAs.isShowing()))
+    this.ocd = paramBoolean;
+    if ((this.jat != null) && (!this.jat.isShowing()))
     {
-      this.iAs.showAtLocation(paramView.getRootView(), 17, 0, 0);
-      this.iAs.setFocusable(true);
-      this.iAs.setTouchable(true);
-      this.iAs.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.iAs.setOutsideTouchable(true);
-      if (this.nzc) {
-        fkx();
+      this.jat.showAtLocation(paramView.getRootView(), 17, 0, 0);
+      this.jat.setFocusable(true);
+      this.jat.setTouchable(true);
+      this.jat.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.jat.setOutsideTouchable(true);
+      if (this.ocd) {
+        fAN();
       }
-      fky();
+      fAO();
     }
     AppMethodBeat.o(72955);
   }
@@ -147,36 +147,36 @@ public final class c
   public final void dismiss()
   {
     AppMethodBeat.i(72960);
-    if ((this.iAs != null) && (this.iAs.isShowing())) {
-      this.iAs.dismiss();
+    if ((this.jat != null) && (this.jat.isShowing())) {
+      this.jat.dismiss();
     }
     AppMethodBeat.o(72960);
   }
   
-  public final void fkv()
+  public final void fAL()
   {
     AppMethodBeat.i(72954);
-    if (this.iAs != null)
+    if (this.jat != null)
     {
       AppMethodBeat.o(72954);
       return;
     }
     View localView;
-    if (this.Ifk)
+    if (this.JGM)
     {
-      localView = View.inflate(this.nqt, 2131495991, null);
+      localView = View.inflate(this.nTt, 2131495991, null);
       MMVerticalTextView localMMVerticalTextView = (MMVerticalTextView)localView.findViewById(2131302163);
-      this.Ifj = ((ViewGroup)localView.findViewById(2131303349));
+      this.JGL = ((ViewGroup)localView.findViewById(2131303349));
       localMMVerticalTextView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72949);
-          ad.d("MicroMsg.OfflinePopupWindow", "on click know");
-          c.this.Ifj.setVisibility(8);
+          ac.d("MicroMsg.OfflinePopupWindow", "on click know");
+          c.this.JGL.setVisibility(8);
           paramAnonymousView = new ct();
-          paramAnonymousView.deZ.dfa = 1;
-          a.ESL.l(paramAnonymousView);
+          paramAnonymousView.dct.dcu = 1;
+          a.GpY.l(paramAnonymousView);
           AppMethodBeat.o(72949);
         }
       });
@@ -185,9 +185,9 @@ public final class c
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72950);
-          ad.d("MicroMsg.OfflinePopupWindow", "root on click");
-          if ((c.this.iAs != null) && (c.this.iAs.isShowing())) {
-            c.this.iAs.dismiss();
+          ac.d("MicroMsg.OfflinePopupWindow", "root on click");
+          if ((c.this.jat != null) && (c.this.jat.isShowing())) {
+            c.this.jat.dismiss();
           }
           AppMethodBeat.o(72950);
         }
@@ -195,29 +195,29 @@ public final class c
     }
     for (;;)
     {
-      this.iAu = localView.findViewById(2131303351);
-      this.iAt = ((ImageView)localView.findViewById(2131303350));
-      this.nDa = localView.findViewById(2131303347);
-      this.nDb = ((ImageView)localView.findViewById(2131303346));
-      this.nDc = ((MMVerticalTextView)localView.findViewById(2131306295));
-      this.iAs = new o(localView, -1, -1, true);
-      this.iAs.setClippingEnabled(false);
-      this.iAs.update();
-      this.iAs.setBackgroundDrawable(new ColorDrawable(16777215));
-      this.iAs.setOnDismissListener(new PopupWindow.OnDismissListener()
+      this.jav = localView.findViewById(2131303351);
+      this.jau = ((ImageView)localView.findViewById(2131303350));
+      this.ogb = localView.findViewById(2131303347);
+      this.ogc = ((ImageView)localView.findViewById(2131303346));
+      this.ogd = ((MMVerticalTextView)localView.findViewById(2131306295));
+      this.jat = new o(localView, -1, -1, true);
+      this.jat.setClippingEnabled(false);
+      this.jat.update();
+      this.jat.setBackgroundDrawable(new ColorDrawable(16777215));
+      this.jat.setOnDismissListener(new PopupWindow.OnDismissListener()
       {
         public final void onDismiss() {}
       });
       AppMethodBeat.o(72954);
       return;
-      localView = View.inflate(this.nqt, 2131495994, null);
+      localView = View.inflate(this.nTt, 2131495994, null);
       localView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72951);
-          if ((c.this.iAs != null) && (c.this.iAs.isShowing())) {
-            c.this.iAs.dismiss();
+          if ((c.this.jat != null) && (c.this.jat.isShowing())) {
+            c.this.jat.dismiss();
           }
           AppMethodBeat.o(72951);
         }
@@ -225,40 +225,40 @@ public final class c
     }
   }
   
-  public final void fkw()
+  public final void fAM()
   {
     AppMethodBeat.i(72956);
-    if ((this.iAs != null) && (this.iAs.isShowing())) {
-      fky();
+    if ((this.jat != null) && (this.jat.isShowing())) {
+      fAO();
     }
     AppMethodBeat.o(72956);
   }
   
-  public final void fkx()
+  public final void fAN()
   {
     AppMethodBeat.i(72957);
-    if (this.Ifj != null) {
-      this.Ifj.setVisibility(0);
+    if (this.JGL != null) {
+      this.JGL.setVisibility(0);
     }
     AppMethodBeat.o(72957);
   }
   
-  public final void lK(String paramString1, String paramString2)
+  public final void mh(String paramString1, String paramString2)
   {
-    this.ulT = paramString1;
-    this.ujd = paramString2;
+    this.vuP = paramString1;
+    this.vrZ = paramString2;
   }
   
   public final void release()
   {
     AppMethodBeat.i(72953);
-    if ((this.iAs != null) && (this.iAs.isShowing())) {
-      this.iAs.dismiss();
+    if ((this.jat != null) && (this.jat.isShowing())) {
+      this.jat.dismiss();
     }
-    e.T(this.nCX);
-    e.aQ(this.nDe);
-    this.nDe.clear();
-    this.nqt = null;
+    e.T(this.ofY);
+    e.bc(this.ogf);
+    this.ogf.clear();
+    this.nTt = null;
     AppMethodBeat.o(72953);
   }
 }

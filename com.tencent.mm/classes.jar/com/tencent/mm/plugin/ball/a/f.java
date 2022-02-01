@@ -12,15 +12,15 @@ public abstract interface f
   
   public abstract void a(f.b paramb);
   
-  public abstract boolean aVX();
+  public abstract ViewGroup bFF();
   
-  public abstract boolean aWk();
+  public abstract int bFG();
   
-  public abstract ViewGroup byJ();
+  public abstract boolean bcV();
   
-  public abstract int byK();
+  public abstract boolean bdi();
   
-  public abstract void fF(boolean paramBoolean);
+  public abstract void gb(boolean paramBoolean);
   
   public abstract Activity getActivity();
   
@@ -34,7 +34,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.f
  * JD-Core Version:    0.7.0.1
  */

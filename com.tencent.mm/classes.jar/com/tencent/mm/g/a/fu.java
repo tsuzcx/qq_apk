@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fu
   extends b
 {
-  public b diA;
-  public a diz;
-  
   public fu()
   {
     this((byte)0);
@@ -16,26 +12,8 @@ public final class fu
   
   private fu(byte paramByte)
   {
-    AppMethodBeat.i(116021);
-    this.diz = new a();
-    this.diA = new b();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116021);
-  }
-  
-  public static final class a
-  {
-    public Runnable cOC;
-    public int duration;
-    public String filePath;
-    public int op;
-  }
-  
-  public static final class b
-  {
-    public boolean dew = false;
-    public int diB;
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
 import com.tencent.mm.plugin.appbrand.appstorage.i;
 import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.z;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.Closeable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -23,14 +23,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class ba
   implements InvocationHandler
 {
-  private final Map<String, Method> iOb;
-  private final b iOc;
+  private final Map<String, Method> joj;
+  private final b jok;
   
   private ba(q paramq)
   {
     AppMethodBeat.i(178543);
-    this.iOb = new ConcurrentHashMap();
-    this.iOc = new b(paramq, (byte)0);
+    this.joj = new ConcurrentHashMap();
+    this.jok = new b(paramq, (byte)0);
     AppMethodBeat.o(178543);
   }
   
@@ -46,7 +46,7 @@ public final class ba
     }
     catch (Exception paramAppBrandRuntime)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "createInstance e=%s", new Object[] { paramAppBrandRuntime });
+      ac.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "createInstance e=%s", new Object[] { paramAppBrandRuntime });
       paramAppBrandRuntime = new a((byte)0);
       AppMethodBeat.o(134684);
     }
@@ -69,7 +69,7 @@ public final class ba
   {
     AppMethodBeat.i(134687);
     String str = paramMethod.toGenericString();
-    Method localMethod2 = (Method)this.iOb.get(str);
+    Method localMethod2 = (Method)this.joj.get(str);
     Method localMethod1 = localMethod2;
     if (localMethod2 == null)
     {
@@ -77,7 +77,7 @@ public final class ba
       localMethod1 = paramMethod;
       if (paramMethod != null)
       {
-        this.iOb.put(str, paramMethod);
+        this.joj.put(str, paramMethod);
         localMethod1 = paramMethod;
       }
     }
@@ -102,10 +102,10 @@ public final class ba
     if (paramMethod.getReturnType().equals(WxaPkg.Info.class)) {
       try
       {
-        paramObject = b.a(this.iOc).DQ((String)paramArrayOfObject[0]);
+        paramObject = b.a(this.jok).HT((String)paramArrayOfObject[0]);
         if (paramObject != null)
         {
-          paramObject = paramObject.aPB();
+          paramObject = paramObject.aWt();
           AppMethodBeat.o(134685);
           return paramObject;
         }
@@ -114,24 +114,24 @@ public final class ba
       }
       catch (Throwable paramObject)
       {
-        ad.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), call openReadPartialInfo get exception(%s)", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject), paramObject });
+        ac.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), call openReadPartialInfo get exception(%s)", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject), paramObject });
         AppMethodBeat.o(134685);
         return null;
       }
     }
     if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0) && ((paramArrayOfObject[0] instanceof String)))
     {
-      paramObject = this.iOc.Ef((String)paramArrayOfObject[0]);
+      paramObject = this.jok.Ii((String)paramArrayOfObject[0]);
       if (paramObject == null)
       {
-        ad.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), get NULL targetFS", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject) });
-        paramObject = a(paramMethod, l.iSw);
+        ac.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), get NULL targetFS", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject) });
+        paramObject = a(paramMethod, l.jsH);
         AppMethodBeat.o(134685);
         return paramObject;
       }
       if (paramMethod.getReturnType().equals(WxaPkg.class))
       {
-        paramObject = paramObject.iNh;
+        paramObject = paramObject.jnp;
         AppMethodBeat.o(134685);
         return paramObject;
       }
@@ -145,7 +145,7 @@ public final class ba
     }
     else if (paramMethod.getReturnType().equals(Void.TYPE))
     {
-      paramObject = this.iOc.aQr();
+      paramObject = this.jok.aXj();
       if (paramObject != null)
       {
         paramMethod = a(paramMethod);
@@ -160,8 +160,8 @@ public final class ba
       AppMethodBeat.o(134685);
       return null;
     }
-    ad.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), fallback return access denied", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject) });
-    paramObject = a(paramMethod, l.iSu);
+    ac.e("MicroMsg.AppBrand.WxaPkgFileSystemWithModuleInvokeAdapter", "invoke with method(%s) args(%s), fallback return access denied", new Object[] { paramMethod.toGenericString(), Arrays.toString(paramArrayOfObject) });
+    paramObject = a(paramMethod, l.jsF);
     AppMethodBeat.o(134685);
     return paramObject;
   }
@@ -179,38 +179,38 @@ public final class ba
   static final class b
     implements Closeable
   {
-    private final q iOd;
-    private final Map<WxaPkg, z> iOe;
+    private final q jol;
+    private final Map<WxaPkg, z> jom;
     
     private b(q paramq)
     {
       AppMethodBeat.i(178541);
-      this.iOe = new HashMap();
-      this.iOd = paramq;
+      this.jom = new HashMap();
+      this.jol = paramq;
       AppMethodBeat.o(178541);
     }
     
-    final z Ef(String paramString)
+    final z Ii(String paramString)
     {
       AppMethodBeat.i(134682);
-      if (this.iOd == null)
+      if (this.jol == null)
       {
         AppMethodBeat.o(134682);
         return null;
       }
-      WxaPkg localWxaPkg = this.iOd.DO(paramString);
+      WxaPkg localWxaPkg = this.jol.HR(paramString);
       if (localWxaPkg == null)
       {
         AppMethodBeat.o(134682);
         return null;
       }
-      synchronized (this.iOe)
+      synchronized (this.jom)
       {
-        Object localObject = (z)this.iOe.get(localWxaPkg);
+        Object localObject = (z)this.jom.get(localWxaPkg);
         paramString = (String)localObject;
         if (localObject == null)
         {
-          localObject = this.iOe;
+          localObject = this.jom;
           paramString = new z(localWxaPkg);
           ((Map)localObject).put(localWxaPkg, paramString);
         }
@@ -219,12 +219,12 @@ public final class ba
       }
     }
     
-    final Collection<z> aQr()
+    final Collection<z> aXj()
     {
       AppMethodBeat.i(134681);
-      synchronized (this.iOe)
+      synchronized (this.jom)
       {
-        Collection localCollection = this.iOe.values();
+        Collection localCollection = this.jom.values();
         AppMethodBeat.o(134681);
         return localCollection;
       }
@@ -233,11 +233,11 @@ public final class ba
     public final void close()
     {
       AppMethodBeat.i(134683);
-      synchronized (this.iOe)
+      synchronized (this.jom)
       {
-        this.iOe.clear();
-        if (this.iOd != null) {
-          this.iOd.close();
+        this.jom.clear();
+        if (this.jol != null) {
+          this.jol.close();
         }
         AppMethodBeat.o(134683);
         return;
@@ -247,7 +247,7 @@ public final class ba
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ba
  * JD-Core Version:    0.7.0.1
  */

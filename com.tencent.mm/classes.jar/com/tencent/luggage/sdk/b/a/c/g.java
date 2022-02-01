@@ -16,7 +16,7 @@ public class g<SERVICE extends c>
     super(paramSERVICE, paramt);
   }
   
-  protected final String Ci()
+  protected final String BM()
   {
     return "WASubContext.js";
   }
@@ -33,7 +33,7 @@ public class g<SERVICE extends c>
       }
     }
     label62:
-    for (paramSERVICE = com.tencent.mm.plugin.appbrand.aa.d.Ne("wxa_library/native/WASubContext.js");; paramSERVICE = paramSERVICE.aLC().DH("WASubContext.js"))
+    for (paramSERVICE = com.tencent.mm.plugin.appbrand.z.d.Rn("wxa_library/native/WASubContext.js");; paramSERVICE = paramSERVICE.aSt().HL("WASubContext.js"))
     {
       if (!TextUtils.isEmpty(paramSERVICE)) {
         break label77;
@@ -41,7 +41,7 @@ public class g<SERVICE extends c>
       paramSERVICE = new ao("WASubContext.js");
       AppMethodBeat.o(146851);
       throw paramSERVICE;
-      bool = paramSERVICE.getRuntime().Eg().jdi;
+      bool = paramSERVICE.getRuntime().DJ().jDv;
       break;
     }
     label77:
@@ -51,7 +51,7 @@ public class g<SERVICE extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.g
  * JD-Core Version:    0.7.0.1
  */

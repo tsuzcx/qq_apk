@@ -13,29 +13,29 @@ import java.util.List;
 public final class d
   implements t, Cloneable
 {
-  public static final d bFW;
-  public double bFX;
-  public int bFY;
-  public boolean bFZ;
-  public boolean bGa;
-  public List<b> bGb;
-  public List<b> bGc;
+  public static final d bDE;
+  public double bDF;
+  public int bDG;
+  public boolean bDH;
+  public boolean bDI;
+  public List<b> bDJ;
+  public List<b> bDK;
   
   static
   {
     AppMethodBeat.i(108104);
-    bFW = new d();
+    bDE = new d();
     AppMethodBeat.o(108104);
   }
   
   public d()
   {
     AppMethodBeat.i(108092);
-    this.bFX = -1.0D;
-    this.bFY = 136;
-    this.bFZ = true;
-    this.bGb = Collections.emptyList();
-    this.bGc = Collections.emptyList();
+    this.bDF = -1.0D;
+    this.bDG = 136;
+    this.bDH = true;
+    this.bDJ = Collections.emptyList();
+    this.bDK = Collections.emptyList();
     AppMethodBeat.o(108092);
   }
   
@@ -78,7 +78,7 @@ public final class d
   private boolean a(com.google.a.a.d paramd)
   {
     AppMethodBeat.i(108101);
-    if ((paramd != null) && (paramd.xw() > this.bFX))
+    if ((paramd != null) && (paramd.xj() > this.bDF))
     {
       AppMethodBeat.o(108101);
       return false;
@@ -90,7 +90,7 @@ public final class d
   private boolean a(e parame)
   {
     AppMethodBeat.i(108102);
-    if ((parame != null) && (parame.xw() <= this.bFX))
+    if ((parame != null) && (parame.xj() <= this.bDF))
     {
       AppMethodBeat.o(108102);
       return false;
@@ -99,7 +99,7 @@ public final class d
     return true;
   }
   
-  private d xy()
+  private d xl()
   {
     AppMethodBeat.i(108093);
     try
@@ -119,12 +119,12 @@ public final class d
   public final boolean D(Class<?> paramClass)
   {
     AppMethodBeat.i(108095);
-    if ((this.bFX != -1.0D) && (!a((com.google.a.a.d)paramClass.getAnnotation(com.google.a.a.d.class), (e)paramClass.getAnnotation(e.class))))
+    if ((this.bDF != -1.0D) && (!a((com.google.a.a.d)paramClass.getAnnotation(com.google.a.a.d.class), (e)paramClass.getAnnotation(e.class))))
     {
       AppMethodBeat.o(108095);
       return true;
     }
-    if ((!this.bFZ) && (F(paramClass)))
+    if ((!this.bDH) && (F(paramClass)))
     {
       AppMethodBeat.o(108095);
       return true;
@@ -142,11 +142,11 @@ public final class d
   {
     final boolean bool2 = false;
     AppMethodBeat.i(108094);
-    boolean bool3 = D(parama.bIC);
-    if ((bool3) || (bf(true))) {}
+    boolean bool3 = D(parama.bGk);
+    if ((bool3) || (be(true))) {}
     for (final boolean bool1 = true;; bool1 = false)
     {
-      if ((bool3) || (bf(false))) {
+      if ((bool3) || (be(false))) {
         bool2 = true;
       }
       if ((bool1) || (bool2)) {
@@ -157,18 +157,18 @@ public final class d
     }
     paramf = new s()
     {
-      private s<T> bFw;
+      private s<T> bDe;
       
       public final void a(com.google.a.d.a paramAnonymousa, T paramAnonymousT)
       {
         AppMethodBeat.i(107890);
         if (bool1)
         {
-          paramAnonymousa.xI();
+          paramAnonymousa.xv();
           AppMethodBeat.o(107890);
           return;
         }
-        s locals = this.bFw;
+        s locals = this.bDe;
         if (locals != null) {}
         for (;;)
         {
@@ -176,7 +176,7 @@ public final class d
           AppMethodBeat.o(107890);
           return;
           locals = paramf.a(d.this, parama);
-          this.bFw = locals;
+          this.bDe = locals;
         }
       }
     };
@@ -196,11 +196,11 @@ public final class d
     return false;
   }
   
-  public final boolean bf(boolean paramBoolean)
+  public final boolean be(boolean paramBoolean)
   {
     AppMethodBeat.i(108096);
     if (paramBoolean) {}
-    for (Object localObject = this.bGb;; localObject = this.bGc)
+    for (Object localObject = this.bDJ;; localObject = this.bDK)
     {
       localObject = ((List)localObject).iterator();
       do
@@ -208,7 +208,7 @@ public final class d
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-      } while (!((b)((Iterator)localObject).next()).xk());
+      } while (!((b)((Iterator)localObject).next()).wX());
       AppMethodBeat.o(108096);
       return true;
     }
@@ -218,7 +218,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.xweb.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.o;
-import com.tencent.xweb.o.a;
+import com.tencent.xweb.p;
+import com.tencent.xweb.p.a;
 import org.xwalk.core.Log;
 
 public class BSpatch
@@ -11,9 +11,9 @@ public class BSpatch
   {
     AppMethodBeat.i(156988);
     BSpatch.class.getClassLoader();
-    if (o.IMN != null)
+    if (p.Kzl != null)
     {
-      o.IMN.pq("bspatch_utils");
+      p.Kzl.sC("bspatch_utils");
       AppMethodBeat.o(156988);
       return;
     }
@@ -21,12 +21,12 @@ public class BSpatch
     AppMethodBeat.o(156988);
   }
   
-  public static int aY(String paramString1, String paramString2, String paramString3)
+  public static int bd(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(156987);
     Log.i("BSpatch", "doPatch oldFile:" + paramString1 + ",patchFile:" + paramString2 + ",newFile:" + paramString3);
     long l = System.currentTimeMillis();
-    g.fsz();
+    g.fLc();
     int i = 0;
     String str = paramString3;
     if (paramString1.equals(paramString3))
@@ -38,7 +38,7 @@ public class BSpatch
     if (j < 0)
     {
       Log.i("BSpatch", "doPatch failed");
-      g.fsA();
+      g.fLd();
     }
     for (;;)
     {
@@ -47,7 +47,7 @@ public class BSpatch
       Log.i("BSpatch", "doPatch successful");
       if (i != 0)
       {
-        if (!c.kP(str, paramString1))
+        if (!c.lm(str, paramString1))
         {
           Log.e("BSpatch", "doPatch same path, copy failed");
           AppMethodBeat.o(156987);
@@ -55,7 +55,7 @@ public class BSpatch
         }
         c.deleteFile(str);
       }
-      g.xz(System.currentTimeMillis() - l);
+      g.Cm(System.currentTimeMillis() - l);
     }
   }
   
@@ -63,7 +63,7 @@ public class BSpatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.BSpatch
  * JD-Core Version:    0.7.0.1
  */

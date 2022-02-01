@@ -8,34 +8,34 @@ import java.io.IOException;
 final class a
   implements f
 {
-  final long bbw;
-  private final e bdP;
-  final long bdQ;
-  final h bdR;
-  long bdS;
-  private long bdT;
-  private long bdU;
-  private long bdV;
-  private long bdW;
-  private long bdX;
+  final long bci;
+  private final e beB;
+  final long beC;
+  final h beD;
+  long beE;
+  private long beF;
+  private long beG;
+  private long beH;
+  private long beI;
+  private long beJ;
   private long start;
   private int state;
   
   public a(long paramLong1, long paramLong2, h paramh, int paramInt, long paramLong3)
   {
     AppMethodBeat.i(92137);
-    this.bdP = new e();
+    this.beB = new e();
     if ((paramLong1 >= 0L) && (paramLong2 > paramLong1)) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool);
-      this.bdR = paramh;
-      this.bdQ = paramLong1;
-      this.bbw = paramLong2;
+      this.beD = paramh;
+      this.beC = paramLong1;
+      this.bci = paramLong2;
       if (paramInt != paramLong2 - paramLong1) {
         break;
       }
-      this.bdS = paramLong3;
+      this.beE = paramLong3;
       this.state = 3;
       AppMethodBeat.o(92137);
       return;
@@ -47,14 +47,14 @@ final class a
   private long a(com.google.android.exoplayer2.c.f paramf, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92141);
-    this.bdP.c(paramf, false);
-    while (this.bdP.ben < paramLong1)
+    this.beB.c(paramf, false);
+    while (this.beB.beZ < paramLong1)
     {
-      paramf.dR(this.bdP.aZG + this.bdP.bes);
-      paramLong2 = this.bdP.ben;
-      this.bdP.c(paramf, false);
+      paramf.dQ(this.beB.bas + this.beB.bfe);
+      paramLong2 = this.beB.beZ;
+      this.beB.c(paramf, false);
     }
-    paramf.sI();
+    paramf.sR();
     AppMethodBeat.o(92141);
     return paramLong2;
   }
@@ -63,7 +63,7 @@ final class a
   {
     int j = 2048;
     AppMethodBeat.i(92140);
-    paramLong = Math.min(3L + paramLong, this.bbw);
+    paramLong = Math.min(3L + paramLong, this.bci);
     byte[] arrayOfByte = new byte[2048];
     for (;;)
     {
@@ -84,18 +84,18 @@ final class a
       {
         if ((arrayOfByte[j] == 79) && (arrayOfByte[(j + 1)] == 103) && (arrayOfByte[(j + 2)] == 103) && (arrayOfByte[(j + 3)] == 83))
         {
-          paramf.dR(j);
+          paramf.dQ(j);
           AppMethodBeat.o(92140);
           return true;
         }
         j += 1;
       }
-      paramf.dR(i - 3);
+      paramf.dQ(i - 3);
       j = i;
     }
   }
   
-  public final long Q(long paramLong)
+  public final long R(long paramLong)
   {
     AppMethodBeat.i(92139);
     boolean bool;
@@ -108,15 +108,15 @@ final class a
       }
     }
     label91:
-    for (paramLong = 0L;; paramLong = this.bdR.S(paramLong))
+    for (paramLong = 0L;; paramLong = this.beD.T(paramLong))
     {
-      this.bdU = paramLong;
+      this.beG = paramLong;
       this.state = 2;
-      this.start = this.bdQ;
-      this.bdV = this.bbw;
-      this.bdW = 0L;
-      this.bdX = this.bdS;
-      paramLong = this.bdU;
+      this.start = this.beC;
+      this.beH = this.bci;
+      this.beI = 0L;
+      this.beJ = this.beE;
+      paramLong = this.beG;
       AppMethodBeat.o(92139);
       return paramLong;
       bool = false;
@@ -138,50 +138,50 @@ final class a
       AppMethodBeat.o(92138);
       return -1L;
     case 0: 
-      this.bdT = paramf.getPosition();
+      this.beF = paramf.getPosition();
       this.state = 1;
-      l1 = this.bbw - 65307L;
-      if (l1 > this.bdT)
+      l1 = this.bci - 65307L;
+      if (l1 > this.beF)
       {
         AppMethodBeat.o(92138);
         return l1;
       }
     case 1: 
-      if (!a(paramf, this.bbw))
+      if (!a(paramf, this.bci))
       {
         paramf = new EOFException();
         AppMethodBeat.o(92138);
         throw paramf;
       }
-      this.bdP.reset();
-      while (((this.bdP.type & 0x4) != 4) && (paramf.getPosition() < this.bbw))
+      this.beB.reset();
+      while (((this.beB.type & 0x4) != 4) && (paramf.getPosition() < this.bci))
       {
-        this.bdP.c(paramf, false);
-        paramf.dR(this.bdP.aZG + this.bdP.bes);
+        this.beB.c(paramf, false);
+        paramf.dQ(this.beB.bas + this.beB.bfe);
       }
-      this.bdS = this.bdP.ben;
+      this.beE = this.beB.beZ;
       this.state = 3;
-      l1 = this.bdT;
+      l1 = this.beF;
       AppMethodBeat.o(92138);
       return l1;
     }
-    if (this.bdU == 0L) {}
-    for (long l1 = 0L;; l1 = a(paramf, this.bdU, -(l1 + 2L)))
+    if (this.beG == 0L) {}
+    for (long l1 = 0L;; l1 = a(paramf, this.beG, -(l1 + 2L)))
     {
       this.state = 3;
       l1 = -(l1 + 2L);
       AppMethodBeat.o(92138);
       return l1;
-      long l2 = this.bdU;
-      if (this.start == this.bdV) {
-        l1 = -(this.bdW + 2L);
+      long l2 = this.beG;
+      if (this.start == this.beH) {
+        l1 = -(this.beI + 2L);
       }
       while (l1 >= 0L)
       {
         AppMethodBeat.o(92138);
         return l1;
         l1 = paramf.getPosition();
-        if (!a(paramf, this.bdV))
+        if (!a(paramf, this.beH))
         {
           if (this.start == l1)
           {
@@ -193,30 +193,30 @@ final class a
         }
         else
         {
-          this.bdP.c(paramf, false);
-          paramf.sI();
-          l2 -= this.bdP.ben;
-          int j = this.bdP.aZG + this.bdP.bes;
+          this.beB.c(paramf, false);
+          paramf.sR();
+          l2 -= this.beB.beZ;
+          int j = this.beB.bas + this.beB.bfe;
           if ((l2 < 0L) || (l2 > 72000L))
           {
             if (l2 < 0L)
             {
-              this.bdV = l1;
-              this.bdX = this.bdP.ben;
+              this.beH = l1;
+              this.beJ = this.beB.beZ;
             }
             for (;;)
             {
-              if (this.bdV - this.start < 100000L)
+              if (this.beH - this.start < 100000L)
               {
-                this.bdV = this.start;
+                this.beH = this.start;
                 l1 = this.start;
                 break;
                 this.start = (paramf.getPosition() + j);
-                this.bdW = this.bdP.ben;
-                if (this.bdV - this.start + j < 100000L)
+                this.beI = this.beB.beZ;
+                if (this.beH - this.start + j < 100000L)
                 {
-                  paramf.dR(j);
-                  l1 = -(this.bdW + 2L);
+                  paramf.dQ(j);
+                  l1 = -(this.beI + 2L);
                   break;
                 }
               }
@@ -225,12 +225,12 @@ final class a
               i = 2;
             }
             l1 = i * j;
-            l1 = Math.min(Math.max(paramf.getPosition() - l1 + l2 * (this.bdV - this.start) / (this.bdX - this.bdW), this.start), this.bdV - 1L);
+            l1 = Math.min(Math.max(paramf.getPosition() - l1 + l2 * (this.beH - this.start) / (this.beJ - this.beI), this.start), this.beH - 1L);
           }
           else
           {
-            paramf.dR(j);
-            l1 = -(this.bdP.ben + 2L);
+            paramf.dQ(j);
+            l1 = -(this.beB.beZ + 2L);
           }
         }
       }
@@ -242,26 +242,26 @@ final class a
   {
     private a() {}
     
-    public final long K(long paramLong)
+    public final long L(long paramLong)
     {
       AppMethodBeat.i(92135);
       if (paramLong == 0L)
       {
-        paramLong = a.this.bdQ;
+        paramLong = a.this.beC;
         AppMethodBeat.o(92135);
         return paramLong;
       }
-      paramLong = a.this.bdR.S(paramLong);
+      paramLong = a.this.beD.T(paramLong);
       a locala = a.this;
-      long l = a.this.bdQ;
-      l = paramLong * (locala.bbw - locala.bdQ) / locala.bdS - 30000L + l;
+      long l = a.this.beC;
+      l = paramLong * (locala.bci - locala.beC) / locala.beE - 30000L + l;
       paramLong = l;
-      if (l < locala.bdQ) {
-        paramLong = locala.bdQ;
+      if (l < locala.beC) {
+        paramLong = locala.beC;
       }
       l = paramLong;
-      if (paramLong >= locala.bbw) {
-        l = locala.bbw - 1L;
+      if (paramLong >= locala.bci) {
+        l = locala.bci - 1L;
       }
       AppMethodBeat.o(92135);
       return l;
@@ -270,12 +270,12 @@ final class a
     public final long getDurationUs()
     {
       AppMethodBeat.i(92136);
-      long l = a.this.bdR.R(a.this.bdS);
+      long l = a.this.beD.S(a.this.beE);
       AppMethodBeat.o(92136);
       return l;
     }
     
-    public final boolean sH()
+    public final boolean sQ()
     {
       return true;
     }

@@ -5,19 +5,19 @@ import d.g.a.a;
 import d.g.b.k;
 import java.io.Serializable;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/SynchronizedLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "lock", "", "(Lkotlin/jvm/functions/Function0;Ljava/lang/Object;)V", "_value", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/SynchronizedLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "lock", "", "(Lkotlin/jvm/functions/Function0;Ljava/lang/Object;)V", "_value", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
 final class s<T>
   implements f<T>, Serializable
 {
-  private a<? extends T> JfO;
-  private volatile Object JfP;
+  private a<? extends T> KTi;
+  private volatile Object KTj;
   private final Object lock;
   
   private s(a<? extends T> parama)
   {
     AppMethodBeat.i(129585);
-    this.JfO = parama;
-    this.JfP = w.JfU;
+    this.KTi = parama;
+    this.KTj = w.KTo;
     this.lock = this;
     AppMethodBeat.o(129585);
   }
@@ -33,35 +33,35 @@ final class s<T>
   public final T getValue()
   {
     AppMethodBeat.i(129582);
-    Object localObject1 = this.JfP;
-    if (localObject1 != w.JfU)
+    Object localObject1 = this.KTj;
+    if (localObject1 != w.KTo)
     {
       AppMethodBeat.o(129582);
       return localObject1;
     }
     synchronized (this.lock)
     {
-      localObject1 = this.JfP;
-      w localw = w.JfU;
+      localObject1 = this.KTj;
+      w localw = w.KTo;
       if (localObject1 != localw)
       {
         AppMethodBeat.o(129582);
         return localObject1;
       }
-      localObject1 = this.JfO;
+      localObject1 = this.KTi;
       if (localObject1 == null) {
-        k.fvU();
+        k.fOy();
       }
       localObject1 = ((a)localObject1).invoke();
-      this.JfP = localObject1;
-      this.JfO = null;
+      this.KTj = localObject1;
+      this.KTi = null;
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(129583);
-    if (this.JfP != w.JfU) {}
+    if (this.KTj != w.KTo) {}
     for (int i = 1; i != 0; i = 0)
     {
       String str = String.valueOf(getValue());

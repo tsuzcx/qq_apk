@@ -5,10 +5,10 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public static String CD(String paramString)
+  public static String GG(String paramString)
   {
     AppMethodBeat.i(67093);
     if (paramString == null)
@@ -57,13 +57,13 @@ public final class b
     }
     catch (JSONException paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MallLogic", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MallLogic", paramString, "", new Object[0]);
       AppMethodBeat.o(67091);
     }
     return null;
   }
   
-  public static String alm(String paramString)
+  public static String aql(String paramString)
   {
     AppMethodBeat.i(67094);
     if (paramString == null)
@@ -91,13 +91,13 @@ public final class b
   public static boolean c(MallFunction paramMallFunction)
   {
     AppMethodBeat.i(67096);
-    if ((paramMallFunction.AiC == null) || (paramMallFunction.AiC.Agu != 1) || (bt.isNullOrNil(paramMallFunction.AiC.AiR)))
+    if ((paramMallFunction.BAX == null) || (paramMallFunction.BAX.ByO != 1) || (bs.isNullOrNil(paramMallFunction.BAX.BBm)))
     {
       AppMethodBeat.o(67096);
       return false;
     }
-    g.afC();
-    if (!((Boolean)g.afB().afk().get(ae.a.Flb, Boolean.FALSE)).booleanValue())
+    g.agS();
+    if (!((Boolean)g.agR().agA().get(ah.a.GIQ, Boolean.FALSE)).booleanValue())
     {
       AppMethodBeat.o(67096);
       return true;
@@ -106,11 +106,11 @@ public final class b
     return false;
   }
   
-  public static void dfF()
+  public static void dtm()
   {
     AppMethodBeat.i(67095);
-    g.afC();
-    g.afB().afk().set(ae.a.Flb, Boolean.TRUE);
+    g.agS();
+    g.agR().agA().set(ah.a.GIQ, Boolean.TRUE);
     AppMethodBeat.o(67095);
   }
   
@@ -122,21 +122,21 @@ public final class b
     {
       bool = true;
       localMallRechargeProduct = new MallRechargeProduct(bool);
-      localMallRechargeProduct.uWF = paramString;
-      localMallRechargeProduct.dft = paramJSONObject.getString("product_id");
-      localMallRechargeProduct.oEN = paramJSONObject.getString("product_name");
-      localMallRechargeProduct.uWG = paramJSONObject.optString("product_desc");
-      localMallRechargeProduct.uWH = (paramJSONObject.getInt("product_min_price") / 100.0F);
-      localMallRechargeProduct.uWI = (paramJSONObject.getInt("product_max_price") / 100.0F);
+      localMallRechargeProduct.wfu = paramString;
+      localMallRechargeProduct.dcO = paramJSONObject.getString("product_id");
+      localMallRechargeProduct.pio = paramJSONObject.getString("product_name");
+      localMallRechargeProduct.wfv = paramJSONObject.optString("product_desc");
+      localMallRechargeProduct.wfw = (paramJSONObject.getInt("product_min_price") / 100.0F);
+      localMallRechargeProduct.wfx = (paramJSONObject.getInt("product_max_price") / 100.0F);
       localMallRechargeProduct.appId = paramJSONObject.optString("app_id");
       if (paramJSONObject.getInt("is_infinite") != 1) {
         break label183;
       }
       bool = true;
       label112:
-      localMallRechargeProduct.uWJ = bool;
-      localMallRechargeProduct.uWK = paramJSONObject.getInt("left_count");
-      localMallRechargeProduct.uWL = paramJSONObject.getInt("discount");
+      localMallRechargeProduct.wfy = bool;
+      localMallRechargeProduct.wfz = paramJSONObject.getInt("left_count");
+      localMallRechargeProduct.wfA = paramJSONObject.getInt("discount");
       if (paramJSONObject.optInt("is_default_choose", 0) != 1) {
         break label188;
       }
@@ -146,8 +146,8 @@ public final class b
     for (boolean bool = true;; bool = false)
     {
       localMallRechargeProduct.isDefault = bool;
-      localMallRechargeProduct.uWN = true;
-      localMallRechargeProduct.gOH = paramJSONObject.optInt("product_type", 0);
+      localMallRechargeProduct.wfC = true;
+      localMallRechargeProduct.hph = paramJSONObject.optInt("product_type", 0);
       AppMethodBeat.o(67092);
       return localMallRechargeProduct;
       bool = false;
@@ -159,7 +159,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.b
  * JD-Core Version:    0.7.0.1
  */

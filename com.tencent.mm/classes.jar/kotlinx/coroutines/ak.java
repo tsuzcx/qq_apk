@@ -2,19 +2,18 @@ package kotlinx.coroutines;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"DefaultDelay", "Lkotlinx/coroutines/Delay;", "getDefaultDelay", "()Lkotlinx/coroutines/Delay;", "kotlinx-coroutines-core"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CoroutinesInternalError;", "Ljava/lang/Error;", "Lkotlin/Error;", "message", "", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "kotlinx-coroutines-core"})
 public final class ak
+  extends Error
 {
-  private static final an KdK = (an)aj.KdJ;
-  
-  public static final an fLd()
+  public ak(String paramString, Throwable paramThrowable)
   {
-    return KdK;
+    super(paramString, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ak
  * JD-Core Version:    0.7.0.1
  */

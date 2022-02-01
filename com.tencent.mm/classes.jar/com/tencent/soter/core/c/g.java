@@ -5,6 +5,14 @@ import java.security.MessageDigest;
 
 public final class g
 {
+  public static long BT(long paramLong)
+  {
+    AppMethodBeat.i(88664);
+    paramLong = (System.nanoTime() - paramLong) / 1000L / 1000L;
+    AppMethodBeat.o(88664);
+    return paramLong;
+  }
+  
   public static String getMessageDigest(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88665);
@@ -98,18 +106,10 @@ public final class g
     }
     return str;
   }
-  
-  public static long xj(long paramLong)
-  {
-    AppMethodBeat.i(88664);
-    paramLong = (System.nanoTime() - paramLong) / 1000L / 1000L;
-    AppMethodBeat.o(88664);
-    return paramLong;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.core.c.g
  * JD-Core Version:    0.7.0.1
  */

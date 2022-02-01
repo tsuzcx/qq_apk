@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
 
 public final class qv
   extends b
 {
-  public a dww;
+  public a dtQ;
   
   public qv()
   {
@@ -16,22 +17,22 @@ public final class qv
   
   private qv(byte paramByte)
   {
-    AppMethodBeat.i(125629);
-    this.dww = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91217);
+    this.dtQ = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125629);
+    AppMethodBeat.o(91217);
   }
   
   public static final class a
   {
-    public ArrayList dwx;
-    public String dwy;
+    public Context context;
+    public Intent intent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.qv
  * JD-Core Version:    0.7.0.1
  */

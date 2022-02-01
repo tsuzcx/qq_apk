@@ -21,11 +21,11 @@ final class h
       AppMethodBeat.o(76769);
       return;
       int i = paramMessage.getData().getInt("errorCode");
-      this.bNQ.bNR.gp(i);
+      this.bLy.bLz.onGetError(i);
       AppMethodBeat.o(76769);
       return;
       paramMessage = (a)paramMessage.obj;
-      this.bNQ.bNR.a(paramMessage);
+      this.bLy.bLz.a(paramMessage);
     }
   }
 }

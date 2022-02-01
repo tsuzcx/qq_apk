@@ -3,13 +3,13 @@ package com.tencent.luggage.sdk.b.a.b;
 import d.g.a.a;
 import d.l;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 16})
 public final class d
   implements Runnable
 {
   public d(a parama)
   {
-    this.cbg = parama;
+    this.bYd = parama;
   }
 }
 

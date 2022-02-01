@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sight.decode.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class b$2
   implements Runnable
@@ -14,7 +14,7 @@ final class b$2
     try
     {
       SightVideoJNI.freeAll();
-      ad.i("MicroMsg.SightPlayController", "free all, use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ac.i("MicroMsg.SightPlayController", "free all, use %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(116073);
       return;
     }
@@ -22,8 +22,8 @@ final class b$2
     {
       for (;;)
       {
-        ad.e("MicroMsg.SightPlayController", "free all sight error");
-        ad.printErrStackTrace("MicroMsg.SightPlayController", localException, "", new Object[0]);
+        ac.e("MicroMsg.SightPlayController", "free all sight error");
+        ac.printErrStackTrace("MicroMsg.SightPlayController", localException, "", new Object[0]);
       }
     }
   }

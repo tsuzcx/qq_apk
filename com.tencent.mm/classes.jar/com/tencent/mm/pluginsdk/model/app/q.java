@@ -19,15 +19,15 @@ import android.widget.Toast;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.c;
-import com.tencent.mm.plugin.appbrand.aa.b;
+import com.tencent.mm.plugin.appbrand.z.b;
 import com.tencent.mm.plugin.s.a.a;
 import com.tencent.mm.plugin.s.a.a.a;
 import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -38,23 +38,23 @@ import java.util.Set;
 
 public final class q
 {
-  public static String K(Context paramContext, String paramString1, String paramString2)
+  public static String J(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(151762);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "buildUnistallUrl fail, invalid arguments");
+      ac.e("MicroMsg.AppUtil", "buildUnistallUrl fail, invalid arguments");
       AppMethodBeat.o(151762);
       return null;
     }
-    String str2 = ac.f(paramContext.getSharedPreferences(aj.eFD(), 0));
+    String str2 = ab.f(paramContext.getSharedPreferences(ai.eUX(), 0));
     String str1;
     if ((str2 == null) || (str2.length() == 0)) {
       str1 = "zh_CN";
     }
     for (;;)
     {
-      paramContext = paramContext.getString(2131761813, new Object[] { paramString1, Integer.valueOf(d.CpK), str1, d.glX, paramString2, Integer.valueOf(0) });
+      paramContext = paramContext.getString(2131761813, new Object[] { paramString1, Integer.valueOf(d.DIc), str1, d.gMK, paramString2, Integer.valueOf(0) });
       AppMethodBeat.o(151762);
       return paramContext;
       str1 = str2;
@@ -64,12 +64,12 @@ public final class q
     }
   }
   
-  public static String O(String paramString1, String paramString2)
+  public static String P(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151763);
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "buildRedirectUrl fail, invalid arguments");
+      ac.e("MicroMsg.AppUtil", "buildRedirectUrl fail, invalid arguments");
       AppMethodBeat.o(151763);
       return null;
     }
@@ -91,9 +91,9 @@ public final class q
         str3 = paramString1.substring(i + 1);
         str2 = paramString1.substring(0, i);
       }
-      ad.v("MicroMsg.AppUtil", "buildRedirectUrl, sharpStr = %s, paramStr = %s, srcUrl = %s", new Object[] { str1, str3, str2 });
+      ac.v("MicroMsg.AppUtil", "buildRedirectUrl, sharpStr = %s, paramStr = %s, srcUrl = %s", new Object[] { str1, str3, str2 });
       LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-      if (!bt.isNullOrNil(str3))
+      if (!bs.isNullOrNil(str3))
       {
         String[] arrayOfString = str3.split("&");
         if ((arrayOfString != null) && (arrayOfString.length > 0))
@@ -103,10 +103,10 @@ public final class q
           if (i < j)
           {
             String str4 = arrayOfString[i];
-            if (!bt.isNullOrNil(str4))
+            if (!bs.isNullOrNil(str4))
             {
               int k = str4.indexOf("=");
-              ad.v("MicroMsg.AppUtil", "buildRedirectUrl, equalIdx = %d", new Object[] { Integer.valueOf(k) });
+              ac.v("MicroMsg.AppUtil", "buildRedirectUrl, equalIdx = %d", new Object[] { Integer.valueOf(k) });
               if (k < 0) {
                 break label256;
               }
@@ -130,7 +130,7 @@ public final class q
         paramString1 = "";
       }
       localLinkedHashMap.put("from=", paramString1);
-      ad.v("MicroMsg.AppUtil", "buildRedirectUrl, pMap size = %d", new Object[] { Integer.valueOf(localLinkedHashMap.size()) });
+      ac.v("MicroMsg.AppUtil", "buildRedirectUrl, pMap size = %d", new Object[] { Integer.valueOf(localLinkedHashMap.size()) });
       paramString1 = new StringBuilder();
       paramString2 = localLinkedHashMap.keySet().iterator();
       while (paramString2.hasNext())
@@ -145,10 +145,10 @@ public final class q
       paramString1 = paramString1.toString();
       paramString2 = str2 + "?" + paramString1;
       paramString1 = paramString2;
-      if (!bt.isNullOrNil(str1)) {
+      if (!bs.isNullOrNil(str1)) {
         paramString1 = paramString2 + str1;
       }
-      ad.v("MicroMsg.AppUtil", "buildRedirectUrl, ret url = %s", new Object[] { paramString1 });
+      ac.v("MicroMsg.AppUtil", "buildRedirectUrl, ret url = %s", new Object[] { paramString1 });
       AppMethodBeat.o(151763);
       return paramString1;
       str1 = "";
@@ -158,48 +158,48 @@ public final class q
   public static boolean a(Context paramContext, g paramg, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(151767);
-    a locala = a.a.cZX();
+    a locala = a.a.dnF();
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "isAppValid, packageName is null");
+      ac.e("MicroMsg.AppUtil", "isAppValid, packageName is null");
       locala.e(paramg);
       AppMethodBeat.o(151767);
       return false;
     }
     if (paramg == null)
     {
-      ad.i("MicroMsg.AppUtil", "app does not exist");
+      ac.i("MicroMsg.AppUtil", "app does not exist");
       AppMethodBeat.o(151767);
       return true;
     }
     if ((paramg.field_packageName == null) || (paramg.field_packageName.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "isAppValid fail, local packageName is null");
+      ac.e("MicroMsg.AppUtil", "isAppValid fail, local packageName is null");
       locala.e(paramg);
       AppMethodBeat.o(151767);
       return false;
     }
     if ((paramg.field_signature == null) || (paramg.field_signature.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "isAppValid fail, local signature is null");
+      ac.e("MicroMsg.AppUtil", "isAppValid fail, local signature is null");
       locala.e(paramg);
       AppMethodBeat.o(151767);
       return false;
     }
-    Signature[] arrayOfSignature = bJ(paramContext, paramString);
+    Signature[] arrayOfSignature = bK(paramContext, paramString);
     if ((arrayOfSignature == null) || (arrayOfSignature.length == 0))
     {
-      ad.e("MicroMsg.AppUtil", "isAppValid, apk signatures is null");
+      ac.e("MicroMsg.AppUtil", "isAppValid, apk signatures is null");
       locala.e(paramg);
       AppMethodBeat.o(151767);
       return false;
     }
-    if (!bt.kU(paramg.field_packageName, paramString))
+    if (!bs.lr(paramg.field_packageName, paramString))
     {
-      ad.e("MicroMsg.AppUtil", "isAppValid, packageName is diff, src:%s,local:%s", new Object[] { paramg.field_packageName, paramString });
+      ac.e("MicroMsg.AppUtil", "isAppValid, packageName is diff, src:%s,local:%s", new Object[] { paramg.field_packageName, paramString });
       locala.e(paramg);
       if (paramBoolean) {
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
@@ -212,13 +212,13 @@ public final class q
       AppMethodBeat.o(151767);
       return false;
     }
-    ad.i("MicroMsg.AppUtil", "server signatures:%s", new Object[] { paramg.field_signature });
+    ac.i("MicroMsg.AppUtil", "server signatures:%s", new Object[] { paramg.field_signature });
     int j = arrayOfSignature.length;
     int i = 0;
     while (i < j)
     {
-      paramString = r.aAY(com.tencent.mm.b.g.getMessageDigest(arrayOfSignature[i].toByteArray()));
-      ad.i("MicroMsg.AppUtil", "local signatures:%s", new Object[] { paramString });
+      paramString = r.aGq(com.tencent.mm.b.g.getMessageDigest(arrayOfSignature[i].toByteArray()));
+      ac.i("MicroMsg.AppUtil", "local signatures:%s", new Object[] { paramString });
       if ((paramg.field_signature != null) && (paramg.field_signature.equals(paramString)))
       {
         locala.f(paramg);
@@ -228,7 +228,7 @@ public final class q
       i += 1;
     }
     if (paramBoolean) {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -238,28 +238,28 @@ public final class q
         }
       });
     }
-    ad.w("MicroMsg.AppUtil", "isAppValid, signature is diff");
+    ac.w("MicroMsg.AppUtil", "isAppValid, signature is diff");
     locala.e(paramg);
     AppMethodBeat.o(151767);
     return false;
   }
   
-  public static void aAX(String paramString)
+  public static void aGp(String paramString)
   {
     AppMethodBeat.i(151773);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.AppUtil", "appid is null");
+      ac.e("MicroMsg.AppUtil", "appid is null");
       AppMethodBeat.o(151773);
       return;
     }
-    SharedPreferences localSharedPreferences = aj.eFE();
+    SharedPreferences localSharedPreferences = ai.eUY();
     if (localSharedPreferences != null)
     {
       String str = localSharedPreferences.getString("key_app_ids_registion_while_not_login", "");
       if (str.contains(paramString))
       {
-        ad.i("MicroMsg.AppUtil", "this app has been saved : %s in %s", new Object[] { paramString, str });
+        ac.i("MicroMsg.AppUtil", "this app has been saved : %s in %s", new Object[] { paramString, str });
         AppMethodBeat.o(151773);
         return;
       }
@@ -273,7 +273,7 @@ public final class q
     AppMethodBeat.o(151773);
   }
   
-  public static String aK(Activity paramActivity)
+  public static String aO(Activity paramActivity)
   {
     AppMethodBeat.i(151776);
     Object localObject1 = "";
@@ -281,10 +281,10 @@ public final class q
     if (localObject2 != null)
     {
       localObject1 = ((ComponentName)localObject2).getPackageName();
-      ad.i("MicroMsg.AppUtil", "get calling activity, %s", new Object[] { localObject1 });
+      ac.i("MicroMsg.AppUtil", "get calling activity, %s", new Object[] { localObject1 });
     }
     localObject2 = localObject1;
-    if (bt.isNullOrNil((String)localObject1))
+    if (bs.isNullOrNil((String)localObject1))
     {
       localObject2 = localObject1;
       if (Build.VERSION.SDK_INT >= 22) {
@@ -301,18 +301,18 @@ public final class q
         localObject2 = (String)localObject4;
       }
       localObject3 = localObject2;
-      ad.i("MicroMsg.AppUtil", "get referrer, %s", new Object[] { localObject2 });
+      ac.i("MicroMsg.AppUtil", "get referrer, %s", new Object[] { localObject2 });
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AppUtil", localException, "get mReferrer error", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.AppUtil", localException, "get mReferrer error", new Object[0]);
         localObject2 = localObject3;
       }
     }
     localObject1 = localObject2;
-    if (bt.isNullOrNil((String)localObject2))
+    if (bs.isNullOrNil((String)localObject2))
     {
       localObject1 = localObject2;
       if (Build.VERSION.SDK_INT >= 22)
@@ -322,7 +322,7 @@ public final class q
         if (paramActivity != null)
         {
           localObject1 = paramActivity.getAuthority();
-          ad.i("MicroMsg.AppUtil", "get referrer, %s", new Object[] { localObject1 });
+          ac.i("MicroMsg.AppUtil", "get referrer, %s", new Object[] { localObject1 });
         }
       }
     }
@@ -330,7 +330,7 @@ public final class q
     return localObject1;
   }
   
-  public static void aS(Bundle paramBundle)
+  public static void aW(Bundle paramBundle)
   {
     AppMethodBeat.i(151768);
     if (paramBundle != null) {
@@ -339,7 +339,7 @@ public final class q
     AppMethodBeat.o(151768);
   }
   
-  public static void aT(Bundle paramBundle)
+  public static void aX(Bundle paramBundle)
   {
     AppMethodBeat.i(151769);
     if (paramBundle != null) {
@@ -351,35 +351,35 @@ public final class q
   public static boolean b(Context paramContext, g paramg)
   {
     AppMethodBeat.i(151772);
-    ad.i("MicroMsg.AppUtil", "check the signature of the Application.");
+    ac.i("MicroMsg.AppUtil", "check the signature of the Application.");
     if (paramContext == null)
     {
-      ad.e("MicroMsg.AppUtil", "context is null.");
+      ac.e("MicroMsg.AppUtil", "context is null.");
       AppMethodBeat.o(151772);
       return true;
     }
     if (paramg == null)
     {
-      ad.e("MicroMsg.AppUtil", "appInfo is null.");
+      ac.e("MicroMsg.AppUtil", "appInfo is null.");
       AppMethodBeat.o(151772);
       return true;
     }
-    if (bt.isNullOrNil(paramg.field_packageName))
+    if (bs.isNullOrNil(paramg.field_packageName))
     {
-      ad.e("MicroMsg.AppUtil", "packageName is null.");
+      ac.e("MicroMsg.AppUtil", "packageName is null.");
       AppMethodBeat.o(151772);
       return true;
     }
-    if (bt.isNullOrNil(paramg.field_signature))
+    if (bs.isNullOrNil(paramg.field_signature))
     {
-      ad.e("MicroMsg.AppUtil", "app.field_signature is null. app.field_packageName is %s", new Object[] { paramg.field_packageName });
+      ac.e("MicroMsg.AppUtil", "app.field_signature is null. app.field_packageName is %s", new Object[] { paramg.field_packageName });
       AppMethodBeat.o(151772);
       return true;
     }
-    paramContext = bJ(paramContext, paramg.field_packageName);
+    paramContext = bK(paramContext, paramg.field_packageName);
     if ((paramContext == null) || (paramContext.length == 0))
     {
-      ad.e("MicroMsg.AppUtil", "apk signatures is null");
+      ac.e("MicroMsg.AppUtil", "apk signatures is null");
       AppMethodBeat.o(151772);
       return false;
     }
@@ -387,42 +387,42 @@ public final class q
     int i = 0;
     while (i < j)
     {
-      String str = r.aAY(com.tencent.mm.b.g.getMessageDigest(paramContext[i].toByteArray()));
+      String str = r.aGq(com.tencent.mm.b.g.getMessageDigest(paramContext[i].toByteArray()));
       if (paramg.field_signature.equals(str))
       {
-        ad.i("MicroMsg.AppUtil", "app_name : %s ,signature : %s", new Object[] { paramg.field_appName, paramg.field_signature });
+        ac.i("MicroMsg.AppUtil", "app_name : %s ,signature : %s", new Object[] { paramg.field_appName, paramg.field_signature });
         AppMethodBeat.o(151772);
         return true;
       }
       i += 1;
     }
-    ad.w("MicroMsg.AppUtil", "signature is diff.(app_name:%s)", new Object[] { paramg.field_appName });
+    ac.w("MicroMsg.AppUtil", "signature is diff.(app_name:%s)", new Object[] { paramg.field_appName });
     AppMethodBeat.o(151772);
     return false;
   }
   
-  public static String bH(Context paramContext, String paramString)
+  public static String bI(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151765);
-    paramContext = bJ(paramContext, paramString);
+    paramContext = bK(paramContext, paramString);
     if ((paramContext == null) || (paramContext.length == 0))
     {
-      ad.e("MicroMsg.AppUtil", "signs is null");
+      ac.e("MicroMsg.AppUtil", "signs is null");
       AppMethodBeat.o(151765);
       return null;
     }
-    paramContext = r.aAY(com.tencent.mm.b.g.getMessageDigest(paramContext[0].toByteArray()));
+    paramContext = r.aGq(com.tencent.mm.b.g.getMessageDigest(paramContext[0].toByteArray()));
     AppMethodBeat.o(151765);
     return paramContext;
   }
   
-  public static String bI(Context paramContext, String paramString)
+  public static String bJ(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151766);
-    paramContext = bJ(paramContext, paramString);
+    paramContext = bK(paramContext, paramString);
     if ((paramContext == null) || (paramContext.length == 0))
     {
-      ad.e("MicroMsg.AppUtil", "signs is null");
+      ac.e("MicroMsg.AppUtil", "signs is null");
       AppMethodBeat.o(151766);
       return null;
     }
@@ -431,18 +431,18 @@ public final class q
     return paramContext;
   }
   
-  public static Signature[] bJ(Context paramContext, String paramString)
+  public static Signature[] bK(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151771);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "getSignature, packageName is null");
+      ac.e("MicroMsg.AppUtil", "getSignature, packageName is null");
       AppMethodBeat.o(151771);
       return null;
     }
     if (paramContext == null)
     {
-      ad.e("MicroMsg.AppUtil", "getSignature, context is null");
+      ac.e("MicroMsg.AppUtil", "getSignature, context is null");
       AppMethodBeat.o(151771);
       return null;
     }
@@ -452,14 +452,14 @@ public final class q
       paramContext = paramContext.getPackageInfo(paramString, 64);
       if (paramContext == null)
       {
-        ad.e("MicroMsg.AppUtil", "info is null, packageName = ".concat(String.valueOf(paramString)));
+        ac.e("MicroMsg.AppUtil", "info is null, packageName = ".concat(String.valueOf(paramString)));
         AppMethodBeat.o(151771);
         return null;
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      ad.e("MicroMsg.AppUtil", "NameNotFoundException");
+      ac.e("MicroMsg.AppUtil", "NameNotFoundException");
       AppMethodBeat.o(151771);
       return null;
     }
@@ -473,18 +473,18 @@ public final class q
     AppMethodBeat.i(151761);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0))
     {
-      ad.e("MicroMsg.AppUtil", "buildSourceUrl fail, invalid arguments");
+      ac.e("MicroMsg.AppUtil", "buildSourceUrl fail, invalid arguments");
       AppMethodBeat.o(151761);
       return null;
     }
-    String str2 = ac.f(paramContext.getSharedPreferences(aj.eFD(), 0));
+    String str2 = ab.f(paramContext.getSharedPreferences(ai.eUX(), 0));
     String str1;
     if ((str2 == null) || (str2.length() == 0)) {
       str1 = "zh_CN";
     }
     for (;;)
     {
-      paramContext = paramContext.getString(2131761812, new Object[] { paramString1, Integer.valueOf(d.CpK), str1, d.glX, paramString2 });
+      paramContext = paramContext.getString(2131761812, new Object[] { paramString1, Integer.valueOf(d.DIc), str1, d.gMK, paramString2 });
       AppMethodBeat.o(151761);
       return paramContext;
       str1 = str2;
@@ -494,16 +494,16 @@ public final class q
     }
   }
   
-  public static void evM()
+  public static void eLg()
   {
-    ar.BRb = null;
-    ar.BRc = -1L;
+    ar.Djr = null;
+    ar.Djs = -1L;
   }
   
-  public static void evN()
+  public static void eLh()
   {
     AppMethodBeat.i(151774);
-    SharedPreferences localSharedPreferences = aj.eFE();
+    SharedPreferences localSharedPreferences = ai.eUY();
     if (localSharedPreferences != null) {
       localSharedPreferences.edit().putString("key_app_ids_registion_while_not_login", "").commit();
     }
@@ -513,7 +513,7 @@ public final class q
   public static void j(Activity paramActivity, final String paramString)
   {
     AppMethodBeat.i(151775);
-    com.tencent.e.h.Iye.f(new Runnable()
+    com.tencent.e.h.JZN.f(new Runnable()
     {
       public final void run()
       {
@@ -523,14 +523,14 @@ public final class q
           AppMethodBeat.o(162009);
           return;
         }
-        ad.v("MicroMsg.AppUtil", "reportLaunchWechat");
+        ac.v("MicroMsg.AppUtil", "reportLaunchWechat");
         try
         {
-          String str2 = q.aK(this.val$activity);
+          String str2 = q.aO(this.val$activity);
           boolean bool1;
-          if (bt.isNullOrNil(str2))
+          if (bs.isNullOrNil(str2))
           {
-            bool1 = bt.isNullOrNil(paramString);
+            bool1 = bs.isNullOrNil(paramString);
             if (bool1)
             {
               AppMethodBeat.o(162009);
@@ -542,15 +542,15 @@ public final class q
           ((Intent)localObject2).addCategory("android.intent.category.HOME");
           localObject1 = ((Activity)localObject1).getPackageManager().queryIntentActivities((Intent)localObject2, 0);
           int i;
-          if (!bt.gL((List)localObject1))
+          if (!bs.gY((List)localObject1))
           {
             i = 0;
             if (i < ((List)localObject1).size()) {
-              if (bt.kU(str2, ((ResolveInfo)((List)localObject1).get(i)).activityInfo.packageName))
+              if (bs.lr(str2, ((ResolveInfo)((List)localObject1).get(i)).activityInfo.packageName))
               {
                 bool1 = true;
                 label157:
-                boolean bool2 = bt.isNullOrNil(paramString);
+                boolean bool2 = bs.isNullOrNil(paramString);
                 if (bool2) {
                   break label287;
                 }
@@ -562,19 +562,19 @@ public final class q
             try
             {
               localObject1 = URLEncoder.encode(paramString, "UTF-8");
-              localObject2 = com.tencent.mm.plugin.report.service.h.vKh;
+              localObject2 = com.tencent.mm.plugin.report.service.h.wUl;
               if (!bool1) {
                 break label294;
               }
               i = 1;
               ((com.tencent.mm.plugin.report.service.h)localObject2).f(17591, new Object[] { "", str2, localObject1, Integer.valueOf(i) });
-              ad.i("MicroMsg.AppUtil", "reportLaunchWechat callPackage=%s, isCategoryHome = %b, url=%s, isCategoryHome= %b", new Object[] { str2, Boolean.valueOf(bool1), localObject1, Boolean.valueOf(bool1) });
+              ac.i("MicroMsg.AppUtil", "reportLaunchWechat callPackage=%s, isCategoryHome = %b, url=%s, isCategoryHome= %b", new Object[] { str2, Boolean.valueOf(bool1), localObject1, Boolean.valueOf(bool1) });
               AppMethodBeat.o(162009);
               return;
             }
             catch (UnsupportedEncodingException localUnsupportedEncodingException)
             {
-              ad.e("MicroMsg.AppUtil", "reportLaunchWechat parse fail");
+              ac.e("MicroMsg.AppUtil", "reportLaunchWechat parse fail");
             }
             i += 1;
             break;
@@ -590,7 +590,7 @@ public final class q
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.AppUtil", "reportLaunchWechat ex:%s", new Object[] { localException.getMessage() });
+          ac.e("MicroMsg.AppUtil", "reportLaunchWechat ex:%s", new Object[] { localException.getMessage() });
           AppMethodBeat.o(162009);
         }
       }
@@ -598,11 +598,11 @@ public final class q
     AppMethodBeat.o(151775);
   }
   
-  public static void j(Bundle paramBundle, String paramString)
+  public static void k(Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(151770);
     paramBundle.putString("platformId", "wechat");
-    if (!bt.isNullOrNil(paramString)) {
+    if (!bs.isNullOrNil(paramString)) {
       paramBundle.putString("launchParam", paramString);
     }
     AppMethodBeat.o(151770);

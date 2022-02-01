@@ -9,21 +9,21 @@ import java.util.List;
 
 public final class i
 {
-  private static final i JKJ;
-  public static final a JKK;
-  final List<a.u> gQs;
+  private static final i Lyc;
+  public static final a Lyd;
+  final List<a.u> hqS;
   
   static
   {
     AppMethodBeat.i(59086);
-    JKK = new a((byte)0);
-    JKJ = new i((List)v.Jgl);
+    Lyd = new a((byte)0);
+    Lyc = new i((List)v.KTF);
     AppMethodBeat.o(59086);
   }
   
   private i(List<a.u> paramList)
   {
-    this.gQs = paramList;
+    this.hqS = paramList;
   }
   
   public static final class a
@@ -32,13 +32,13 @@ public final class i
     {
       AppMethodBeat.i(59085);
       k.h(paramv, "table");
-      if (paramv.JJt.size() == 0)
+      if (paramv.LwM.size() == 0)
       {
-        paramv = i.fGj();
+        paramv = i.fYN();
         AppMethodBeat.o(59085);
         return paramv;
       }
-      paramv = paramv.JJt;
+      paramv = paramv.LwM;
       k.g(paramv, "table.requirementList");
       paramv = new i(paramv, (byte)0);
       AppMethodBeat.o(59085);
@@ -48,7 +48,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.b.i
  * JD-Core Version:    0.7.0.1
  */

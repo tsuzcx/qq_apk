@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.forcenotify.c.d;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bo;
 import d.l;
 import d.n.n;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/forcenotify/core/ForceNotifyReport;", "Lcom/tencent/mm/plugin/forcenotify/api/IForceNotifyReport;", "()V", "TAG", "", "_16505", "", "forcePushId", "clickType", "", "clickTime", "", "sessionId", "_16506", "toUsername", "_16507", "noticeState", "receiveTime", "plugin-force-notify_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/forcenotify/core/ForceNotifyReport;", "Lcom/tencent/mm/plugin/forcenotify/api/IForceNotifyReport;", "()V", "TAG", "", "_16505", "", "forcePushId", "clickType", "", "clickTime", "", "sessionId", "_16506", "toUsername", "_16507", "noticeState", "receiveTime", "plugin-force-notify_release"})
 public final class b
   implements com.tencent.mm.plugin.forcenotify.a.a
 {
-  public static final b res;
+  public static final b snl;
   
   static
   {
     AppMethodBeat.i(149158);
-    res = new b();
+    snl = new b();
     AppMethodBeat.o(149158);
   }
   
@@ -32,16 +32,16 @@ public final class b
     {
       try
       {
-        d.g.b.k.fvU();
+        d.g.b.k.fOy();
         paramString1 = n.h(paramString1, "@wxcontact", "", false);
         Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
         d.g.b.k.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).cOI().agq(paramString1);
-        com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).dcr().alk(paramString1);
+        com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
         d.g.b.k.g(localObject, "msgInfo");
-        long l = ((bl)localObject).getCreateTime() / 1000L;
-        if (!((bl)localObject).isSystem()) {
-          if (((bl)localObject).eLW())
+        long l = ((bo)localObject).getCreateTime() / 1000L;
+        if (!((bo)localObject).isSystem()) {
+          if (((bo)localObject).fbA())
           {
             break label206;
             localh.f(16505, new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(l), Integer.valueOf(i), paramString2, Long.valueOf(paramLong) });
@@ -49,7 +49,7 @@ public final class b
           }
           else
           {
-            i = ((bl)localObject).SH();
+            i = ((bo)localObject).TB();
             if (i == 1)
             {
               i = 1;
@@ -63,7 +63,7 @@ public final class b
       }
       catch (Exception paramString1)
       {
-        ad.e("ForceNotifyReport", "[_16505] ".concat(String.valueOf(paramString1)));
+        ac.e("ForceNotifyReport", "[_16505] ".concat(String.valueOf(paramString1)));
         AppMethodBeat.o(149154);
         return;
       }
@@ -73,14 +73,14 @@ public final class b
   public final void g(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(149157);
-    com.tencent.mm.plugin.report.service.h.vKh.f(16507, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    com.tencent.mm.plugin.report.service.h.wUl.f(16507, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     AppMethodBeat.o(149157);
   }
   
   public final void h(String paramString, int paramInt, long paramLong)
   {
     AppMethodBeat.i(149156);
-    com.tencent.mm.plugin.report.service.h.vKh.f(16506, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    com.tencent.mm.plugin.report.service.h.wUl.f(16506, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     AppMethodBeat.o(149156);
   }
   
@@ -89,7 +89,7 @@ public final class b
     AppMethodBeat.i(149155);
     d locald = new d();
     locald.field_ForcePushId = paramString;
-    if (com.tencent.mm.plugin.forcenotify.d.a.rez.get((c)locald, new String[0])) {
+    if (com.tencent.mm.plugin.forcenotify.d.a.snr.get((c)locald, new String[0])) {
       b(paramString, String.valueOf(locald.field_CreateTime / 1000L) + locald.field_UserName, paramInt, paramLong);
     }
     AppMethodBeat.o(149155);
@@ -97,7 +97,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.b.b
  * JD-Core Version:    0.7.0.1
  */

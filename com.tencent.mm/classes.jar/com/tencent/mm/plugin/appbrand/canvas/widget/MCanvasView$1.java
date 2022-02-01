@@ -12,7 +12,7 @@ final class MCanvasView$1
   public final void run()
   {
     AppMethodBeat.i(145394);
-    Object localObject = this.jan.getParent();
+    Object localObject = this.jAA.getParent();
     ViewParent localViewParent;
     do
     {
@@ -23,14 +23,14 @@ final class MCanvasView$1
     if (localViewParent != null)
     {
       localViewParent.requestLayout();
-      this.jan.invalidate();
+      this.jAA.invalidate();
     }
     AppMethodBeat.o(145394);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MCanvasView.1
  * JD-Core Version:    0.7.0.1
  */

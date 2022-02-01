@@ -7,8 +7,8 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.scanner.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,78 +18,78 @@ import java.util.Map;
 
 public final class h
 {
-  private static h Ipp;
-  private int[] Ipj;
-  public com.tencent.mm.plugin.scanner.d.c Ipq;
-  private int[] Ipr;
-  private c Ips;
-  private long Ipt;
-  private Runnable Ipu;
-  private ScanDecodeFrameData Ipv;
-  private boolean Ipw;
-  private int Ipx;
-  private int Ipy;
-  private boolean aMX;
-  public g jMM;
-  private Map vNh;
-  private Object vNi;
-  private long vNo;
-  private boolean vNq;
-  public int vNr;
-  private long vPG;
-  public boolean vRl;
+  private static h JQZ;
+  private int[] JQT;
+  public com.tencent.mm.plugin.scanner.d.c JRa;
+  private int[] JRb;
+  private c JRc;
+  private long JRd;
+  private Runnable JRe;
+  private ScanDecodeFrameData JRf;
+  private boolean JRg;
+  private int JRh;
+  private int JRi;
+  private boolean aNN;
+  public g knn;
+  private Map wXC;
+  private Object wXD;
+  private long wXJ;
+  private boolean wXL;
+  public int wXM;
+  private long xan;
+  public boolean xbW;
   
   static
   {
     AppMethodBeat.i(91183);
-    Ipp = new h();
+    JQZ = new h();
     AppMethodBeat.o(91183);
   }
   
   public h()
   {
     AppMethodBeat.i(91175);
-    this.Ipq = new com.tencent.mm.plugin.scanner.d.b();
-    this.vRl = false;
-    this.Ipr = new int[] { 0 };
-    this.Ipj = this.Ipr;
-    this.vNh = new HashMap();
-    this.vNi = new Object();
-    this.vPG = 0L;
-    this.jMM = new g("MicroMsg.WxScanDecodeQueue");
-    this.aMX = false;
-    this.Ipt = 1000L;
-    this.Ipu = null;
-    this.Ipv = null;
-    this.Ipw = false;
-    this.Ipx = 2;
-    this.Ipy = 0;
+    this.JRa = new com.tencent.mm.plugin.scanner.d.b();
+    this.xbW = false;
+    this.JRb = new int[] { 0 };
+    this.JQT = this.JRb;
+    this.wXC = new HashMap();
+    this.wXD = new Object();
+    this.xan = 0L;
+    this.knn = new g("MicroMsg.WxScanDecodeQueue");
+    this.aNN = false;
+    this.JRd = 1000L;
+    this.JRe = null;
+    this.JRf = null;
+    this.JRg = false;
+    this.JRh = 2;
+    this.JRi = 0;
     AppMethodBeat.o(91175);
   }
   
-  public static h flW()
+  public static h fCn()
   {
-    return Ipp;
+    return JQZ;
   }
   
-  private void flX()
+  private void fCo()
   {
-    AppMethodBeat.i(190147);
-    if (this.Ipu != null) {
-      aq.az(this.Ipu);
+    AppMethodBeat.i(204950);
+    if (this.JRe != null) {
+      ap.aB(this.JRe);
     }
-    AppMethodBeat.o(190147);
+    AppMethodBeat.o(204950);
   }
   
   public final void K(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(91177);
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-      synchronized (this.jMM)
+      synchronized (this.knn)
       {
-        this.Ipj = paramArrayOfInt;
-        if (this.jMM.hasInited()) {
-          this.jMM.L(this.Ipj);
+        this.JQT = paramArrayOfInt;
+        if (this.knn.hasInited()) {
+          this.knn.L(this.JQT);
         }
         AppMethodBeat.o(91177);
         return;
@@ -101,21 +101,21 @@ public final class h
   public final void a(long paramLong, c arg3)
   {
     AppMethodBeat.i(91178);
-    synchronized (this.vNi)
+    synchronized (this.wXD)
     {
-      c.IoG.reset();
-      c.IoG.vPG = System.currentTimeMillis();
-      c.IoG.abG(c.IoA);
-      c.IoG.abI(c.IoD);
-      this.vNo = paramLong;
-      this.Ips = ???;
-      this.vNr = 0;
-      this.vPG = System.currentTimeMillis();
+      c.JQr.reset();
+      c.JQr.xan = System.currentTimeMillis();
+      c.JQr.adZ(c.JQl);
+      c.JQr.aeb(c.JQo);
+      this.wXJ = paramLong;
+      this.JRc = ???;
+      this.wXM = 0;
+      this.xan = System.currentTimeMillis();
     }
-    synchronized (this.jMM)
+    synchronized (this.knn)
     {
-      if (this.jMM.hasInited()) {
-        this.jMM.reset(false);
+      if (this.knn.hasInited()) {
+        this.knn.reset(false);
       }
       AppMethodBeat.o(91178);
       return;
@@ -128,14 +128,14 @@ public final class h
   public final void a(byte[] paramArrayOfByte, Point paramPoint, int paramInt, Rect paramRect)
   {
     AppMethodBeat.i(91179);
-    synchronized (this.vNi)
+    synchronized (this.wXD)
     {
-      ad.d("MicroMsg.WxScanDecodeQueue", "%d submit crop gray", new Object[] { Long.valueOf(this.vNo) });
-      if (this.vNo != 0L) {
-        com.tencent.mm.sdk.g.b.c(new a(this.vNo, paramArrayOfByte, paramPoint, paramInt, paramRect), "WxScanDecodeQueue_Crop_Gray");
+      ac.d("MicroMsg.WxScanDecodeQueue", "%d submit crop gray", new Object[] { Long.valueOf(this.wXJ) });
+      if (this.wXJ != 0L) {
+        com.tencent.mm.sdk.g.b.c(new a(this.wXJ, paramArrayOfByte, paramPoint, paramInt, paramRect), "WxScanDecodeQueue_Crop_Gray");
       }
-      if ((this.aMX) && (this.Ipw)) {
-        this.Ipv = new ScanDecodeFrameData(paramArrayOfByte, paramPoint.x, paramPoint.y, paramInt);
+      if ((this.aNN) && (this.JRg)) {
+        this.JRf = new ScanDecodeFrameData(paramArrayOfByte, paramPoint.x, paramPoint.y, paramInt);
       }
       AppMethodBeat.o(91179);
       return;
@@ -147,25 +147,25 @@ public final class h
     AppMethodBeat.i(91176);
     for (;;)
     {
-      synchronized (this.jMM)
+      synchronized (this.knn)
       {
-        if (!this.jMM.hasInited())
+        if (!this.knn.hasInited())
         {
-          this.jMM.a(0, com.tencent.scanlib.a.kB(paramContext));
-          if (this.jMM.hasInited())
+          this.knn.a(0, com.tencent.scanlib.a.kN(paramContext));
+          if (this.knn.hasInited())
           {
-            this.jMM.flV();
-            this.jMM.L(this.Ipj);
+            this.knn.fCm();
+            this.knn.L(this.JQT);
           }
         }
-        int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.psz, 0);
+        int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pWI, 0);
         if ((i != 0) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG))
         {
           bool = true;
-          this.Ipw = bool;
-          this.Ipt = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.psA, 1000L);
-          this.Ipx = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.psD, 2);
-          ad.i("MicroMsg.WxScanDecodeQueue", "alvinluo initScanDecodeQueue configValue: %d, needShowSuccessFrameWhenZoom: %b, zoomDuration: %d, ignoreFrameNum: %d", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.Ipw), Long.valueOf(this.Ipt), Integer.valueOf(this.Ipx) });
+          this.JRg = bool;
+          this.JRd = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pWJ, 1000L);
+          this.JRh = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pWM, 2);
+          ac.i("MicroMsg.WxScanDecodeQueue", "alvinluo initScanDecodeQueue configValue: %d, needShowSuccessFrameWhenZoom: %b, zoomDuration: %d, ignoreFrameNum: %d", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.JRg), Long.valueOf(this.JRd), Integer.valueOf(this.JRh) });
           AppMethodBeat.o(91176);
           return;
         }
@@ -174,38 +174,38 @@ public final class h
     }
   }
   
-  public final void rW(long paramLong)
+  public final void release()
   {
-    AppMethodBeat.i(91180);
-    synchronized (this.vNi)
+    AppMethodBeat.i(91181);
+    ac.i("MicroMsg.WxScanDecodeQueue", "release QBar");
+    this.JQT = this.JRb;
+    wz(this.wXJ);
+    synchronized (this.knn)
     {
-      if (this.vNo == paramLong)
-      {
-        this.vNo = 0L;
-        this.vNr = 0;
-        this.Ips = null;
-        this.vNh.clear();
-        this.aMX = false;
-        this.vPG = 0L;
-      }
-      flX();
-      AppMethodBeat.o(91180);
+      this.knn.release();
+      c.JQr.JQG = 1.0F;
+      fCo();
+      AppMethodBeat.o(91181);
       return;
     }
   }
   
-  public final void release()
+  public final void wz(long paramLong)
   {
-    AppMethodBeat.i(91181);
-    ad.i("MicroMsg.WxScanDecodeQueue", "release QBar");
-    this.Ipj = this.Ipr;
-    rW(this.vNo);
-    synchronized (this.jMM)
+    AppMethodBeat.i(91180);
+    synchronized (this.wXD)
     {
-      this.jMM.release();
-      c.IoG.IoW = 1.0F;
-      flX();
-      AppMethodBeat.o(91181);
+      if (this.wXJ == paramLong)
+      {
+        this.wXJ = 0L;
+        this.wXM = 0;
+        this.JRc = null;
+        this.wXC.clear();
+        this.aNN = false;
+        this.xan = 0L;
+      }
+      fCo();
+      AppMethodBeat.o(91180);
       return;
     }
   }
@@ -213,19 +213,19 @@ public final class h
   final class a
     implements Runnable
   {
-    private long dcQ;
-    private Rect gtE;
-    private int pPJ;
-    private byte[] vNs;
-    private Point vNt;
+    private long dao;
+    private Rect gUl;
+    private int qyr;
+    private byte[] wXN;
+    private Point wXO;
     
     a(long paramLong, byte[] paramArrayOfByte, Point paramPoint, int paramInt, Rect paramRect)
     {
-      this.dcQ = paramLong;
-      this.vNs = paramArrayOfByte;
-      this.vNt = paramPoint;
-      this.pPJ = paramInt;
-      this.gtE = paramRect;
+      this.dao = paramLong;
+      this.wXN = paramArrayOfByte;
+      this.wXO = paramPoint;
+      this.qyr = paramInt;
+      this.gUl = paramRect;
     }
     
     public final void run()
@@ -235,7 +235,7 @@ public final class h
       byte[] arrayOfByte;
       synchronized (h.a(h.this))
       {
-        arrayOfByte = h.a(h.this).a(this.vNs, this.vNt, this.pPJ, this.gtE, arrayOfInt);
+        arrayOfByte = h.a(h.this).a(this.wXN, this.wXO, this.qyr, this.gUl, arrayOfInt);
         ??? = h.b(h.this);
         if (arrayOfByte == null) {}
       }
@@ -245,13 +245,13 @@ public final class h
   final class b
     implements Runnable
   {
-    private byte[] IpA;
-    private Point IpB;
-    private long dcQ;
+    private byte[] JRk;
+    private Point JRl;
+    private long dao;
     
     b(long paramLong)
     {
-      this.dcQ = paramLong;
+      this.dao = paramLong;
     }
     
     public final void run()
@@ -262,20 +262,20 @@ public final class h
       ArrayList localArrayList2;
       synchronized (h.b(h.this))
       {
-        if (this.dcQ == h.c(h.this))
+        if (this.dao == h.c(h.this))
         {
           h.a(h.this, true);
           if (!h.d(h.this).isEmpty())
           {
             ??? = (byte[])h.d(h.this).get("param_gray_data");
-            this.IpA = Arrays.copyOf((byte[])???, ???.length);
-            this.IpB = new Point((Point)h.d(h.this).get("param_out_size"));
+            this.JRk = Arrays.copyOf((byte[])???, ???.length);
+            this.JRl = new Point((Point)h.d(h.this).get("param_out_size"));
             h.d(h.this).clear();
           }
           l = System.currentTimeMillis();
           localArrayList1 = new ArrayList();
           localArrayList2 = new ArrayList();
-          if ((this.IpA == null) || (this.IpB == null)) {
+          if ((this.JRk == null) || (this.JRl == null)) {
             break label663;
           }
         }
@@ -294,32 +294,32 @@ public final class h
             if (h.i(h.this))
             {
               h.j(h.this);
-              ad.i("MicroMsg.WxScanDecodeQueue", "alvinluo decodeGrayData isZooming and reset, currentFrameNumWhenZooming: %d", new Object[] { Integer.valueOf(h.k(h.this)) });
+              ac.i("MicroMsg.WxScanDecodeQueue", "alvinluo decodeGrayData isZooming and reset, currentFrameNumWhenZooming: %d", new Object[] { Integer.valueOf(h.k(h.this)) });
               h.a(h.this).reset(true);
             }
-            localObject4 = h.a(h.this).a(this.IpA, this.IpB.x, this.IpB.y, localArrayList2, localArrayList1);
-            localObject6 = h.a(h.this).fmJ();
-            k = h.a(h.this).flU();
-            if (!d.dnh()) {
+            localObject4 = h.a(h.this).a(this.JRk, this.JRl.x, this.JRl.y, localArrayList2, localArrayList1);
+            localObject6 = h.a(h.this).fCZ();
+            k = h.a(h.this).fCl();
+            if (!d.dBp()) {
               break label1272;
             }
-            ??? = h.a(h.this).jl();
+            ??? = h.a(h.this).jt();
             ??? = localObject4;
             if (h.l(h.this) != null)
             {
               ??? = localObject4;
               if (h.m(h.this)) {
-                ??? = h.l(h.this).fc((List)localObject4);
+                ??? = h.l(h.this).fj((List)localObject4);
               }
             }
             m = (int)(System.currentTimeMillis() - l);
-            c.IoG.flP();
-            c.IoG.xe(m);
-            c.IoG.kj(this.IpB.x, this.IpB.y);
-            c.IoG.IoZ = h.n(h.this);
+            c.JQr.fCg();
+            c.JQr.BO(m);
+            c.JQr.kw(this.JRl.x, this.JRl.y);
+            c.JQr.JQJ = h.n(h.this);
             synchronized (h.b(h.this))
             {
-              if (this.dcQ != h.c(h.this)) {
+              if (this.dao != h.c(h.this)) {
                 break label1248;
               }
               localObject4 = a.getVersion();
@@ -327,7 +327,7 @@ public final class h
                 break label685;
               }
               i = 0;
-              ad.i("MicroMsg.WxScanDecodeQueue", "qbar version %s, get %d decode results", new Object[] { localObject4, Integer.valueOf(i) });
+              ac.i("MicroMsg.WxScanDecodeQueue", "qbar version %s, get %d decode results", new Object[] { localObject4, Integer.valueOf(i) });
               if (??? == null) {
                 break label696;
               }
@@ -336,7 +336,7 @@ public final class h
                 break label696;
               }
               localObject7 = (a.a)((Iterator)localObject4).next();
-              ad.i("MicroMsg.WxScanDecodeQueue", "result " + ((a.a)localObject7).typeName + "," + ((a.a)localObject7).data);
+              ac.i("MicroMsg.WxScanDecodeQueue", "result " + ((a.a)localObject7).typeName + "," + ((a.a)localObject7).data);
             }
             h.a(h.this, false);
             h.g(h.this);
@@ -363,7 +363,7 @@ public final class h
         Object localObject4 = new Bundle();
         if (localObject6 != null)
         {
-          ad.i("MicroMsg.WxScanDecodeQueue", "isZoom %b, zoomFactor %f", new Object[] { Boolean.valueOf(((QbarNative.QBarZoomInfo)localObject6).isZoom), Float.valueOf(((QbarNative.QBarZoomInfo)localObject6).zoomFactor) });
+          ac.i("MicroMsg.WxScanDecodeQueue", "isZoom %b, zoomFactor %f", new Object[] { Boolean.valueOf(((QbarNative.QBarZoomInfo)localObject6).isZoom), Float.valueOf(((QbarNative.QBarZoomInfo)localObject6).zoomFactor) });
           if ((localList == null) || ((localList.isEmpty()) && (((QbarNative.QBarZoomInfo)localObject6).isZoom))) {
             ((Bundle)localObject4).putFloat("param_zoom_ratio", ((QbarNative.QBarZoomInfo)localObject6).zoomFactor);
           }
@@ -376,16 +376,16 @@ public final class h
           if (localList == null)
           {
             j = 0;
-            ad.i("MicroMsg.WxScanDecodeQueue", "alvinluo decodeGrayData ignoreResult: %b, isZooming: %b, result size: %d", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(j) });
+            ac.i("MicroMsg.WxScanDecodeQueue", "alvinluo decodeGrayData ignoreResult: %b, isZooming: %b, result size: %d", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(j) });
             if (!((Bundle)localObject4).isEmpty()) {
-              h.f(h.this).b(this.dcQ, (Bundle)localObject4);
+              h.f(h.this).b(this.dao, (Bundle)localObject4);
             }
             if ((localList == null) || (localList.isEmpty()) || (bool1)) {
               break label1210;
             }
-            c.IoG.flO();
-            c.IoG.xf(m);
-            localObject6 = c.IoG;
+            c.JQr.fCf();
+            c.JQr.BP(m);
+            localObject6 = c.JQr;
             localObject7 = ((a.a)localList.get(0)).typeName;
             String str3 = ((a.a)localList.get(0)).data;
             String str4 = ((a.a)localList.get(0)).charset;
@@ -395,11 +395,11 @@ public final class h
             localObject4 = null;
             label971:
             ((c)localObject6).a((String)localObject7, str3, str4, (WxQbarNative.QBarReportMsg)localObject4, localList.size(), localArrayList1);
-            c.IoG.IoY = k;
-            ad.v("MicroMsg.QBarEngineReporter", "alvinluo setWaitingFrameCount: %d", new Object[] { Integer.valueOf(k) });
-            c.IoG.bmJ();
+            c.JQr.JQI = k;
+            ac.v("MicroMsg.QBarEngineReporter", "alvinluo setWaitingFrameCount: %d", new Object[] { Integer.valueOf(k) });
+            c.JQr.btF();
             localObject4 = new Bundle();
-            ad.v("MicroMsg.WxScanDecodeQueue", "alvinluo decodeSuccess result size: %d, isZooming: %b", new Object[] { Integer.valueOf(localList.size()), Boolean.valueOf(h.i(h.this)) });
+            ac.v("MicroMsg.WxScanDecodeQueue", "alvinluo decodeSuccess result size: %d, isZooming: %b", new Object[] { Integer.valueOf(localList.size()), Boolean.valueOf(h.i(h.this)) });
             if ((localList.size() > 1) && (h.i(h.this))) {
               ((Bundle)localObject4).putParcelable("decode_success_frame_data", h.o(h.this));
             }
@@ -441,7 +441,7 @@ public final class h
   {
     public abstract void a(long paramLong, List<a.a> paramList, List<QbarNative.QBarPoint> paramList1, List<WxQbarNative.QBarReportMsg> paramList2, Bundle paramBundle);
     
-    public abstract void ag(long paramLong1, long paramLong2);
+    public abstract void ad(long paramLong1, long paramLong2);
     
     public abstract void b(long paramLong, Bundle paramBundle);
   }

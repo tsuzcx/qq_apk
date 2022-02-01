@@ -17,48 +17,48 @@ import java.util.Map;
 public final class e
   implements Cloneable
 {
-  public g aDC;
-  public com.bumptech.glide.c.b.i aDD;
-  public boolean aDE;
-  public boolean aDF;
-  public boolean aDR;
-  public boolean aDi;
-  public h aDt;
-  public com.bumptech.glide.c.j aDv;
-  public Class<?> aDx;
-  public Map<Class<?>, m<?>> aDz;
-  public boolean aFc;
-  public boolean aFx;
-  public float aKA;
-  public Drawable aKB;
-  public int aKC;
-  public Drawable aKD;
-  public int aKE;
-  public int aKF;
-  public int aKG;
-  public boolean aKH;
-  public Drawable aKI;
-  public int aKJ;
-  public Resources.Theme aKK;
-  public boolean aKL;
-  public boolean aKM;
-  public int aKz;
+  public boolean aDZ;
+  public boolean aEI;
+  public h aEk;
+  public com.bumptech.glide.c.j aEm;
+  public Class<?> aEo;
+  public Map<Class<?>, m<?>> aEq;
+  public g aEt;
+  public com.bumptech.glide.c.b.i aEu;
+  public boolean aEv;
+  public boolean aEw;
+  public boolean aFS;
+  public boolean aGn;
+  public Resources.Theme aLA;
+  public boolean aLB;
+  public boolean aLC;
+  public int aLp;
+  public float aLq;
+  public Drawable aLr;
+  public int aLs;
+  public Drawable aLt;
+  public int aLu;
+  public int aLv;
+  public int aLw;
+  public boolean aLx;
+  public Drawable aLy;
+  public int aLz;
   
   public e()
   {
     AppMethodBeat.i(77636);
-    this.aKA = 1.0F;
-    this.aDD = com.bumptech.glide.c.b.i.aEE;
-    this.aDC = g.aAd;
-    this.aDi = true;
-    this.aKF = -1;
-    this.aKG = -1;
-    this.aDt = a.pN();
-    this.aKH = true;
-    this.aDv = new com.bumptech.glide.c.j();
-    this.aDz = new b();
-    this.aDx = Object.class;
-    this.aDF = true;
+    this.aLq = 1.0F;
+    this.aEu = com.bumptech.glide.c.b.i.aFu;
+    this.aEt = g.aAX;
+    this.aDZ = true;
+    this.aLv = -1;
+    this.aLw = -1;
+    this.aEk = a.pX();
+    this.aLx = true;
+    this.aEm = new com.bumptech.glide.c.j();
+    this.aEq = new b();
+    this.aEo = Object.class;
+    this.aEw = true;
     AppMethodBeat.o(77636);
   }
   
@@ -73,17 +73,17 @@ public final class e
   private <T> e a(Class<T> paramClass, m<T> paramm)
   {
     AppMethodBeat.i(77648);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
     com.bumptech.glide.h.i.checkNotNull(paramClass, "Argument must not be null");
     com.bumptech.glide.h.i.checkNotNull(paramm, "Argument must not be null");
-    locale.aDz.put(paramClass, paramm);
-    locale.aKz |= 0x800;
-    locale.aKH = true;
-    locale.aKz |= 0x10000;
-    locale.aDF = false;
-    locale.aKz |= 0x20000;
-    locale.aDE = true;
-    paramClass = locale.px();
+    locale.aEq.put(paramClass, paramm);
+    locale.aLp |= 0x800;
+    locale.aLx = true;
+    locale.aLp |= 0x10000;
+    locale.aEw = false;
+    locale.aLp |= 0x20000;
+    locale.aEv = true;
+    paramClass = locale.pH();
     AppMethodBeat.o(77648);
     return paramClass;
   }
@@ -96,10 +96,10 @@ public final class e
   public static e e(h paramh)
   {
     AppMethodBeat.i(77638);
-    for (e locale = new e(); locale.aKL; locale = locale.pv()) {}
-    locale.aDt = ((h)com.bumptech.glide.h.i.checkNotNull(paramh, "Argument must not be null"));
-    locale.aKz |= 0x400;
-    paramh = locale.px();
+    for (e locale = new e(); locale.aLB; locale = locale.pF()) {}
+    locale.aEk = ((h)com.bumptech.glide.h.i.checkNotNull(paramh, "Argument must not be null"));
+    locale.aLp |= 0x400;
+    paramh = locale.pH();
     AppMethodBeat.o(77638);
     return paramh;
   }
@@ -107,27 +107,27 @@ public final class e
   public static e v(Class<?> paramClass)
   {
     AppMethodBeat.i(77639);
-    for (e locale = new e(); locale.aKL; locale = locale.pv()) {}
-    locale.aDx = ((Class)com.bumptech.glide.h.i.checkNotNull(paramClass, "Argument must not be null"));
-    locale.aKz |= 0x1000;
-    paramClass = locale.px();
+    for (e locale = new e(); locale.aLB; locale = locale.pF()) {}
+    locale.aEo = ((Class)com.bumptech.glide.h.i.checkNotNull(paramClass, "Argument must not be null"));
+    locale.aLp |= 0x1000;
+    paramClass = locale.pH();
     AppMethodBeat.o(77639);
     return paramClass;
   }
   
-  public final e O(float paramFloat)
+  public final e S(float paramFloat)
   {
     AppMethodBeat.i(77640);
-    for (Object localObject = this; ((e)localObject).aKL; localObject = ((e)localObject).pv()) {}
+    for (Object localObject = this; ((e)localObject).aLB; localObject = ((e)localObject).pF()) {}
     if ((paramFloat < 0.0F) || (paramFloat > 1.0F))
     {
       localObject = new IllegalArgumentException("sizeMultiplier must be between 0 and 1");
       AppMethodBeat.o(77640);
       throw ((Throwable)localObject);
     }
-    ((e)localObject).aKA = paramFloat;
-    ((e)localObject).aKz |= 0x2;
-    localObject = ((e)localObject).px();
+    ((e)localObject).aLq = paramFloat;
+    ((e)localObject).aLp |= 0x2;
+    localObject = ((e)localObject).pH();
     AppMethodBeat.o(77640);
     return localObject;
   }
@@ -135,13 +135,13 @@ public final class e
   public final e a(m<Bitmap> paramm)
   {
     AppMethodBeat.i(77647);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
     com.bumptech.glide.c.d.a.j localj = new com.bumptech.glide.c.d.a.j(paramm);
     locale.a(Bitmap.class, paramm);
     locale.a(Drawable.class, localj);
     locale.a(BitmapDrawable.class, localj);
     locale.a(c.class, new f(paramm));
-    paramm = locale.px();
+    paramm = locale.pH();
     AppMethodBeat.o(77647);
     return paramm;
   }
@@ -149,11 +149,11 @@ public final class e
   public final e aW(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(77645);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
-    locale.aKG = paramInt1;
-    locale.aKF = paramInt2;
-    locale.aKz |= 0x200;
-    locale = locale.px();
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
+    locale.aLw = paramInt1;
+    locale.aLv = paramInt2;
+    locale.aLp |= 0x200;
+    locale = locale.pH();
     AppMethodBeat.o(77645);
     return locale;
   }
@@ -161,10 +161,10 @@ public final class e
   public final e b(com.bumptech.glide.c.b.i parami)
   {
     AppMethodBeat.i(77642);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
-    locale.aDD = ((com.bumptech.glide.c.b.i)com.bumptech.glide.h.i.checkNotNull(parami, "Argument must not be null"));
-    locale.aKz |= 0x4;
-    parami = locale.px();
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
+    locale.aEu = ((com.bumptech.glide.c.b.i)com.bumptech.glide.h.i.checkNotNull(parami, "Argument must not be null"));
+    locale.aLp |= 0x4;
+    parami = locale.pH();
     AppMethodBeat.o(77642);
     return parami;
   }
@@ -172,10 +172,10 @@ public final class e
   public final e b(g paramg)
   {
     AppMethodBeat.i(77643);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
-    locale.aDC = ((g)com.bumptech.glide.h.i.checkNotNull(paramg, "Argument must not be null"));
-    locale.aKz |= 0x8;
-    paramg = locale.px();
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
+    locale.aEt = ((g)com.bumptech.glide.h.i.checkNotNull(paramg, "Argument must not be null"));
+    locale.aLp |= 0x8;
+    paramg = locale.pH();
     AppMethodBeat.o(77643);
     return paramg;
   }
@@ -186,7 +186,7 @@ public final class e
     if ((paramObject instanceof e))
     {
       paramObject = (e)paramObject;
-      if ((Float.compare(paramObject.aKA, this.aKA) == 0) && (this.aKC == paramObject.aKC) && (com.bumptech.glide.h.j.e(this.aKB, paramObject.aKB)) && (this.aKE == paramObject.aKE) && (com.bumptech.glide.h.j.e(this.aKD, paramObject.aKD)) && (this.aKJ == paramObject.aKJ) && (com.bumptech.glide.h.j.e(this.aKI, paramObject.aKI)) && (this.aDi == paramObject.aDi) && (this.aKF == paramObject.aKF) && (this.aKG == paramObject.aKG) && (this.aDE == paramObject.aDE) && (this.aKH == paramObject.aKH) && (this.aKM == paramObject.aKM) && (this.aDR == paramObject.aDR) && (this.aDD.equals(paramObject.aDD)) && (this.aDC == paramObject.aDC) && (this.aDv.equals(paramObject.aDv)) && (this.aDz.equals(paramObject.aDz)) && (this.aDx.equals(paramObject.aDx)) && (com.bumptech.glide.h.j.e(this.aDt, paramObject.aDt)) && (com.bumptech.glide.h.j.e(this.aKK, paramObject.aKK)))
+      if ((Float.compare(paramObject.aLq, this.aLq) == 0) && (this.aLs == paramObject.aLs) && (com.bumptech.glide.h.j.e(this.aLr, paramObject.aLr)) && (this.aLu == paramObject.aLu) && (com.bumptech.glide.h.j.e(this.aLt, paramObject.aLt)) && (this.aLz == paramObject.aLz) && (com.bumptech.glide.h.j.e(this.aLy, paramObject.aLy)) && (this.aDZ == paramObject.aDZ) && (this.aLv == paramObject.aLv) && (this.aLw == paramObject.aLw) && (this.aEv == paramObject.aEv) && (this.aLx == paramObject.aLx) && (this.aLC == paramObject.aLC) && (this.aEI == paramObject.aEI) && (this.aEu.equals(paramObject.aEu)) && (this.aEt == paramObject.aEt) && (this.aEm.equals(paramObject.aEm)) && (this.aEq.equals(paramObject.aEq)) && (this.aEo.equals(paramObject.aEo)) && (com.bumptech.glide.h.j.e(this.aEk, paramObject.aEk)) && (com.bumptech.glide.h.j.e(this.aLA, paramObject.aLA)))
       {
         AppMethodBeat.o(77649);
         return true;
@@ -201,65 +201,65 @@ public final class e
   public final int hashCode()
   {
     AppMethodBeat.i(77650);
-    int i = com.bumptech.glide.h.j.hashCode(this.aKA);
-    i = com.bumptech.glide.h.j.hashCode(this.aKC, i);
-    i = com.bumptech.glide.h.j.b(this.aKB, i);
-    i = com.bumptech.glide.h.j.hashCode(this.aKE, i);
-    i = com.bumptech.glide.h.j.b(this.aKD, i);
-    i = com.bumptech.glide.h.j.hashCode(this.aKJ, i);
-    i = com.bumptech.glide.h.j.b(this.aKI, i);
-    i = com.bumptech.glide.h.j.d(this.aDi, i);
-    i = com.bumptech.glide.h.j.hashCode(this.aKF, i);
-    i = com.bumptech.glide.h.j.hashCode(this.aKG, i);
-    i = com.bumptech.glide.h.j.d(this.aDE, i);
-    i = com.bumptech.glide.h.j.d(this.aKH, i);
-    i = com.bumptech.glide.h.j.d(this.aKM, i);
-    i = com.bumptech.glide.h.j.d(this.aDR, i);
-    i = com.bumptech.glide.h.j.b(this.aDD, i);
-    i = com.bumptech.glide.h.j.b(this.aDC, i);
-    i = com.bumptech.glide.h.j.b(this.aDv, i);
-    i = com.bumptech.glide.h.j.b(this.aDz, i);
-    i = com.bumptech.glide.h.j.b(this.aDx, i);
-    i = com.bumptech.glide.h.j.b(this.aDt, i);
-    i = com.bumptech.glide.h.j.b(this.aKK, i);
+    int i = com.bumptech.glide.h.j.hashCode(this.aLq);
+    i = com.bumptech.glide.h.j.hashCode(this.aLs, i);
+    i = com.bumptech.glide.h.j.b(this.aLr, i);
+    i = com.bumptech.glide.h.j.hashCode(this.aLu, i);
+    i = com.bumptech.glide.h.j.b(this.aLt, i);
+    i = com.bumptech.glide.h.j.hashCode(this.aLz, i);
+    i = com.bumptech.glide.h.j.b(this.aLy, i);
+    i = com.bumptech.glide.h.j.d(this.aDZ, i);
+    i = com.bumptech.glide.h.j.hashCode(this.aLv, i);
+    i = com.bumptech.glide.h.j.hashCode(this.aLw, i);
+    i = com.bumptech.glide.h.j.d(this.aEv, i);
+    i = com.bumptech.glide.h.j.d(this.aLx, i);
+    i = com.bumptech.glide.h.j.d(this.aLC, i);
+    i = com.bumptech.glide.h.j.d(this.aEI, i);
+    i = com.bumptech.glide.h.j.b(this.aEu, i);
+    i = com.bumptech.glide.h.j.b(this.aEt, i);
+    i = com.bumptech.glide.h.j.b(this.aEm, i);
+    i = com.bumptech.glide.h.j.b(this.aEq, i);
+    i = com.bumptech.glide.h.j.b(this.aEo, i);
+    i = com.bumptech.glide.h.j.b(this.aEk, i);
+    i = com.bumptech.glide.h.j.b(this.aLA, i);
     AppMethodBeat.o(77650);
     return i;
   }
   
-  public final e pt()
+  public final e pD()
   {
     AppMethodBeat.i(77641);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
-    locale.aFc = true;
-    locale.aKz |= 0x100000;
-    locale = locale.px();
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
+    locale.aFS = true;
+    locale.aLp |= 0x100000;
+    locale = locale.pH();
     AppMethodBeat.o(77641);
     return locale;
   }
   
-  public final e pu()
+  public final e pE()
   {
     AppMethodBeat.i(77644);
-    for (e locale = this; locale.aKL; locale = locale.pv()) {}
-    locale.aDi = false;
-    locale.aKz |= 0x100;
-    locale = locale.px();
+    for (e locale = this; locale.aLB; locale = locale.pF()) {}
+    locale.aDZ = false;
+    locale.aLp |= 0x100;
+    locale = locale.pH();
     AppMethodBeat.o(77644);
     return locale;
   }
   
-  public final e pv()
+  public final e pF()
   {
     AppMethodBeat.i(77646);
     try
     {
       e locale = (e)super.clone();
-      locale.aDv = new com.bumptech.glide.c.j();
-      locale.aDv.a(this.aDv);
-      locale.aDz = new b();
-      locale.aDz.putAll(this.aDz);
-      locale.aFx = false;
-      locale.aKL = false;
+      locale.aEm = new com.bumptech.glide.c.j();
+      locale.aEm.a(this.aEm);
+      locale.aEq = new b();
+      locale.aEq.putAll(this.aEq);
+      locale.aGn = false;
+      locale.aLB = false;
       AppMethodBeat.o(77646);
       return locale;
     }
@@ -271,25 +271,25 @@ public final class e
     }
   }
   
-  public final e pw()
+  public final e pG()
   {
     AppMethodBeat.i(77651);
-    if ((this.aFx) && (!this.aKL))
+    if ((this.aGn) && (!this.aLB))
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("You cannot auto lock an already locked options object, try clone() first");
       AppMethodBeat.o(77651);
       throw localIllegalStateException;
     }
-    this.aKL = true;
-    this.aFx = true;
+    this.aLB = true;
+    this.aGn = true;
     AppMethodBeat.o(77651);
     return this;
   }
   
-  public final e px()
+  public final e pH()
   {
     AppMethodBeat.i(77652);
-    if (this.aFx)
+    if (this.aGn)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("You cannot modify locked RequestOptions, consider clone()");
       AppMethodBeat.o(77652);
@@ -299,25 +299,25 @@ public final class e
     return this;
   }
   
-  public final boolean py()
+  public final boolean pI()
   {
     AppMethodBeat.i(77653);
-    boolean bool = com.bumptech.glide.h.j.aY(this.aKG, this.aKF);
+    boolean bool = com.bumptech.glide.h.j.aY(this.aLw, this.aLv);
     AppMethodBeat.o(77653);
     return bool;
   }
   
-  public final boolean pz()
+  public final boolean pJ()
   {
     AppMethodBeat.i(77654);
-    boolean bool = aV(this.aKz, 8);
+    boolean bool = aV(this.aLp, 8);
     AppMethodBeat.o(77654);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.f.e
  * JD-Core Version:    0.7.0.1
  */

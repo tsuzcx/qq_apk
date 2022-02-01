@@ -15,9 +15,9 @@ public final class r
     AppMethodBeat.i(69572);
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("verify_code", paramu.Ahs);
+    localHashMap1.put("verify_code", paramu.BzM);
     localHashMap1.put("token", paramu.token);
-    setPayInfo(paramu.uXi, localHashMap1, localHashMap2);
+    setPayInfo(paramu.wfX, localHashMap1, localHashMap2);
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(69572);

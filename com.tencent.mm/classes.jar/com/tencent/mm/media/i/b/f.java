@@ -1,11 +1,10 @@
 package com.tencent.mm.media.i.b;
 
 import android.opengl.GLES20;
-import android.opengl.GLES30;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.f.d;
 import com.tencent.mm.media.j.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.nio.Buffer;
@@ -13,173 +12,150 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/render/proc/GLTextureRenderProcI420ToRgb;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "attributeYUVPosition", "attributeYUVTextureCoord", "frame", "", "uBuffer", "Ljava/nio/ByteBuffer;", "uTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "uniformUTexture", "uniformVTexture", "uniformYTexture", "uniformYUVRotateMatrix", "vBuffer", "vTextureObj", "yBuffer", "yTextureObj", "yuvProgramId", "afterRender", "", "getFrame", "release", "renderImpl", "setFrame", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/render/proc/GLTextureRenderProcYuvToRgb;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "attributeYUVPosition", "attributeYUVTextureCoord", "frame", "", "uniformUVTexture", "uniformYTexture", "uniformYUVRotateMatrix", "uvBuffer", "Ljava/nio/ByteBuffer;", "uvTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "yBuffer", "yTextureObj", "yuvProgramId", "getFrame", "release", "", "renderImpl", "setFrame", "Companion", "plugin-mediaeditor_release"})
 public final class f
   extends a
 {
-  public static final a KBM;
   private static final String TAG = "MicroMsg.GLTextureRenderProcYuvToRgb";
-  private d KBG;
-  private d KBH;
-  private int KBI;
-  private int KBJ;
-  private ByteBuffer KBK;
-  private ByteBuffer KBL;
-  private d gvR;
-  private int gvT;
-  private int gvU;
-  private int gvV;
-  private int gvW;
-  private int gvY;
-  private ByteBuffer gvZ;
-  private byte[] gwb;
+  public static final f.a gWA;
+  private d gWi;
+  private int gWl;
+  private int gWm;
+  private int gWn;
+  private int gWo;
+  private int gWr;
+  private ByteBuffer gWs;
+  private byte[] gWv;
+  private d gWx;
+  private int gWy;
+  private ByteBuffer gWz;
   
   static
   {
-    AppMethodBeat.i(205883);
-    KBM = new a((byte)0);
+    AppMethodBeat.i(93867);
+    gWA = new f.a((byte)0);
     TAG = "MicroMsg.GLTextureRenderProcYuvToRgb";
-    AppMethodBeat.o(205883);
+    AppMethodBeat.o(93867);
   }
   
-  private f(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, 1, 5);
-    AppMethodBeat.i(205882);
-    this.gwb = new byte[0];
-    c.a locala = com.tencent.mm.media.j.c.gwl;
-    this.gvT = c.a.ap("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        uniform mat4 uMatrix;\n        void main() {\n            gl_Position = uMatrix * a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform sampler2D y_texture;\n        uniform sampler2D u_texture;\n        uniform sampler2D v_texture;\n\n        void main () {\n           float r, g, b, y, u, v;\n\n        //We had put the Y values of each pixel to the R,G,B components by GL_LUMINANCE,\n        //that's why we're pulling it from the R component, we could also use G or B\n           y = texture2D(y_texture, v_texCoord).r;\n\n        //We had put the U and V values of each pixel to the A and R,G,B components of the\n        //texture respectively using GL_LUMINANCE_ALPHA. Since U,V bytes are interspread\n        //in the texture, this is probably the fastest way to use them in the shader\n        //GL_LUMINANCE_ALPHA is a luminance/alpha pair, so r correspond to v, and\n        //a correspond to u\n        //NV21 is a VUVU pair\n           v = texture2D(v_texture, v_texCoord).r;\n           u = texture2D(u_texture, v_texCoord).r;\n           u = u - 0.5;\n           v = v - 0.5;\n\n        //The numbers are just YUV to RGB conversion constants\n        //https://en.wikipedia.org/wiki/YUV#Y.E2.80.B2UV420sp_.28NV21.29_to_RGB_conversion_.28Android.29\n           r = y + 1.370705 * v;\n           g = y - 0.337633 * u - 0.698001 * v;\n           b = y + 1.732446 * u;\n\n        //We finally set the RGB color of our pixel\n           gl_FragColor = vec4(r, g, b, 1.0);\n        }\n        ");
-    if (this.gvT == 0) {
-      ad.e(TAG, "checkInit, load program failed!");
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    AppMethodBeat.i(93866);
+    this.gWv = new byte[0];
+    c.a locala = com.tencent.mm.media.j.c.gWJ;
+    this.gWl = c.a.ax("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        uniform mat4 uMatrix;\n        void main() {\n            gl_Position = uMatrix * a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform sampler2D y_texture;\n        uniform sampler2D uv_texture;\n\n        void main () {\n           float r, g, b, y, u, v;\n\n        //We had put the Y values of each pixel to the R,G,B components by GL_LUMINANCE,\n        //that's why we're pulling it from the R component, we could also use G or B\n           y = texture2D(y_texture, v_texCoord).r;\n\n        //We had put the U and V values of each pixel to the A and R,G,B components of the\n        //texture respectively using GL_LUMINANCE_ALPHA. Since U,V bytes are interspread\n        //in the texture, this is probably the fastest way to use them in the shader\n        //GL_LUMINANCE_ALPHA is a luminance/alpha pair, so r correspond to v, and\n        //a correspond to u\n        //NV21 is a VUVU pair\n           u = texture2D(uv_texture, v_texCoord).a;\n           v = texture2D(uv_texture, v_texCoord).r;\n           u = u - 0.5;\n           v = v - 0.5;\n\n        //The numbers are just YUV to RGB conversion constants\n        //https://en.wikipedia.org/wiki/YUV#Y.E2.80.B2UV420sp_.28NV21.29_to_RGB_conversion_.28Android.29\n           r = y + 1.370705 * v;\n           g = y - 0.337633 * u - 0.698001 * v;\n           b = y + 1.732446 * u;\n\n        //We finally set the RGB color of our pixel\n           gl_FragColor = vec4(r, g, b, 1.0);\n        }\n        ");
+    if (this.gWl == 0) {
+      ac.e(TAG, "checkInit, load program failed!");
     }
-    this.gvV = GLES20.glGetAttribLocation(this.gvT, "a_position");
-    this.gvU = GLES20.glGetAttribLocation(this.gvT, "a_texCoord");
-    this.gvW = GLES20.glGetUniformLocation(this.gvT, "y_texture");
-    this.KBI = GLES20.glGetUniformLocation(this.gvT, "u_texture");
-    this.KBJ = GLES20.glGetUniformLocation(this.gvT, "v_texture");
-    this.gvY = GLES20.glGetUniformLocation(this.gvT, "uMatrix");
-    this.gvR = com.tencent.mm.media.f.c.a(true, 5L);
-    this.KBG = com.tencent.mm.media.f.c.a(true, 5L);
-    this.KBH = com.tencent.mm.media.f.c.a(true, 5L);
-    AppMethodBeat.o(205882);
+    this.gWn = GLES20.glGetAttribLocation(this.gWl, "a_position");
+    this.gWm = GLES20.glGetAttribLocation(this.gWl, "a_texCoord");
+    this.gWo = GLES20.glGetUniformLocation(this.gWl, "y_texture");
+    this.gWy = GLES20.glGetUniformLocation(this.gWl, "uv_texture");
+    this.gWr = GLES20.glGetUniformLocation(this.gWl, "uMatrix");
+    this.gWi = com.tencent.mm.media.f.c.a(true, 5L);
+    this.gWx = com.tencent.mm.media.f.c.a(true, 5L);
+    AppMethodBeat.o(93866);
   }
   
-  public final void U(byte[] paramArrayOfByte)
+  public final void T(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(205878);
+    AppMethodBeat.i(93863);
     k.h(paramArrayOfByte, "frame");
-    this.gwb = paramArrayOfByte;
-    AppMethodBeat.o(205878);
+    this.gWv = paramArrayOfByte;
+    AppMethodBeat.o(93863);
   }
   
-  protected final void aku()
+  protected final void arr()
   {
-    AppMethodBeat.i(205880);
-    super.aku();
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    AppMethodBeat.o(205880);
-  }
-  
-  protected final void akv()
-  {
-    AppMethodBeat.i(205879);
-    GLES30.glClear(16640);
-    GLES30.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    if ((this.gvT != 0) && (this.guK > 0) && (this.guL > 0))
+    AppMethodBeat.i(93864);
+    if ((this.gWl != 0) && (this.grV > 0) && (this.grW > 0))
     {
-      if (this.gwb.length != 0) {
-        break label688;
+      if (this.gWv.length != 0) {
+        break label517;
       }
       i = 1;
       if (i != 0) {
-        break label693;
+        break label522;
       }
     }
-    label262:
-    label688:
-    label693:
+    label517:
+    label522:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        if ((this.gvZ != null) && (this.KBK != null) && (this.KBL != null))
+        if ((this.gWs != null) && (this.gWz != null))
         {
-          localByteBuffer = this.gvZ;
-          if ((localByteBuffer != null) && (localByteBuffer.capacity() == this.guI * this.guJ))
+          localByteBuffer = this.gWs;
+          if (localByteBuffer == null) {
+            k.fOy();
+          }
+          if (localByteBuffer.capacity() == this.gqZ * this.gra)
           {
-            localByteBuffer = this.KBK;
-            if ((localByteBuffer != null) && (localByteBuffer.capacity() == this.guI * this.guJ / 4))
-            {
-              localByteBuffer = this.KBL;
-              if ((localByteBuffer != null) && (localByteBuffer.capacity() == this.guI * this.guI / 4)) {
-                break label262;
-              }
+            localByteBuffer = this.gWz;
+            if (localByteBuffer == null) {
+              k.fOy();
+            }
+            if (localByteBuffer.capacity() == this.gqZ * this.gra / 2) {
+              break label192;
             }
           }
         }
-        this.gvZ = ByteBuffer.allocateDirect(this.guI * this.guJ);
-        this.KBK = ByteBuffer.allocateDirect(this.guI * this.guJ / 4);
-        this.KBL = ByteBuffer.allocateDirect(this.guI * this.guJ / 4);
-        ByteBuffer localByteBuffer = this.gvZ;
-        if (localByteBuffer != null) {
-          localByteBuffer.order(ByteOrder.nativeOrder());
+        this.gWs = ByteBuffer.allocateDirect(this.gqZ * this.gra);
+        this.gWz = ByteBuffer.allocateDirect(this.gqZ * this.gra / 2);
+        ByteBuffer localByteBuffer = this.gWs;
+        if (localByteBuffer == null) {
+          k.fOy();
         }
-        localByteBuffer = this.KBK;
-        if (localByteBuffer != null) {
-          localByteBuffer.order(ByteOrder.nativeOrder());
+        localByteBuffer.order(ByteOrder.nativeOrder());
+        localByteBuffer = this.gWz;
+        if (localByteBuffer == null) {
+          k.fOy();
         }
-        localByteBuffer = this.KBL;
-        if (localByteBuffer != null) {
-          localByteBuffer.order(ByteOrder.nativeOrder());
+        localByteBuffer.order(ByteOrder.nativeOrder());
+        label192:
+        localByteBuffer = this.gWs;
+        if (localByteBuffer == null) {
+          k.fOy();
         }
-        localByteBuffer = this.gvZ;
-        if (localByteBuffer != null) {
-          localByteBuffer.put(this.gwb, 0, this.guI * this.guJ);
+        localByteBuffer.put(this.gWv, 0, this.gqZ * this.gra);
+        localByteBuffer = this.gWs;
+        if (localByteBuffer == null) {
+          k.fOy();
         }
-        localByteBuffer = this.gvZ;
-        if (localByteBuffer != null) {
-          localByteBuffer.position(0);
+        localByteBuffer.position(0);
+        localByteBuffer = this.gWz;
+        if (localByteBuffer == null) {
+          k.fOy();
         }
-        localByteBuffer = this.KBK;
-        if (localByteBuffer != null) {
-          localByteBuffer.put(this.gwb, this.guI * this.guJ, this.guI * this.guJ / 4);
+        localByteBuffer.put(this.gWv, this.gqZ * this.gra, this.gqZ * this.gra / 2);
+        localByteBuffer = this.gWz;
+        if (localByteBuffer == null) {
+          k.fOy();
         }
-        localByteBuffer = this.KBK;
-        if (localByteBuffer != null) {
-          localByteBuffer.position(0);
-        }
-        localByteBuffer = this.KBL;
-        if (localByteBuffer != null) {
-          localByteBuffer.put(this.gwb, this.guI * this.guJ + this.guI * this.guJ / 4, this.guI * this.guJ / 4);
-        }
-        localByteBuffer = this.KBL;
-        if (localByteBuffer != null) {
-          localByteBuffer.position(0);
-        }
-        GLES20.glUseProgram(this.gvT);
+        localByteBuffer.position(0);
+        GLES20.glUseProgram(this.gWl);
         GLES20.glActiveTexture(33984);
-        d.a(this.gvR, this.guI, this.guJ, 6409, (Buffer)this.gvZ, 0, 0, 48);
-        GLES20.glUniform1i(this.gvW, 0);
+        d.a(this.gWi, this.gqZ, this.gra, 6409, (Buffer)this.gWs, 0, 0, 48);
+        GLES20.glUniform1i(this.gWo, 0);
         GLES20.glActiveTexture(33985);
-        d.a(this.KBG, this.guI / 2, this.guJ / 2, 6409, (Buffer)this.KBK, 0, 0, 48);
-        GLES20.glUniform1i(this.KBI, 1);
-        GLES20.glActiveTexture(33986);
-        d.a(this.KBH, this.guI / 2, this.guJ / 2, 6409, (Buffer)this.KBL, 0, 0, 48);
-        GLES20.glUniform1i(this.KBJ, 2);
-        GLES20.glUniformMatrix4fv(this.gvY, 1, false, this.guX, 0);
-        this.guT.position(0);
-        GLES20.glVertexAttribPointer(this.gvV, 2, 5126, false, 0, (Buffer)this.guT);
-        GLES20.glEnableVertexAttribArray(this.gvV);
-        this.guS.position(0);
-        GLES20.glVertexAttribPointer(this.gvU, 2, 5126, false, 0, (Buffer)this.guS);
-        GLES20.glEnableVertexAttribArray(this.gvU);
+        d.a(this.gWx, this.gqZ / 2, this.gra / 2, 6410, (Buffer)this.gWz, 0, 0, 48);
+        GLES20.glUniform1i(this.gWy, 1);
+        GLES20.glUniformMatrix4fv(this.gWr, 1, false, this.gVu, 0);
+        this.grE.position(0);
+        GLES20.glVertexAttribPointer(this.gWn, 2, 5126, false, 0, (Buffer)this.grE);
+        GLES20.glEnableVertexAttribArray(this.gWn);
+        this.grD.position(0);
+        GLES20.glVertexAttribPointer(this.gWm, 2, 5126, false, 0, (Buffer)this.grD);
+        GLES20.glEnableVertexAttribArray(this.gWm);
         GLES20.glDrawArrays(5, 0, 4);
-        GLES20.glDisableVertexAttribArray(this.gvV);
-        GLES20.glDisableVertexAttribArray(this.gvU);
+        GLES20.glDisableVertexAttribArray(this.gWn);
+        GLES20.glDisableVertexAttribArray(this.gWm);
         GLES20.glBindTexture(3553, 0);
         GLES20.glFinish();
       }
-      AppMethodBeat.o(205879);
+      AppMethodBeat.o(93864);
       return;
       i = 0;
       break;
@@ -188,19 +164,16 @@ public final class f
   
   public final void release()
   {
-    AppMethodBeat.i(205881);
+    AppMethodBeat.i(93865);
     super.release();
-    this.gvR.close();
-    this.KBG.close();
-    AppMethodBeat.o(205881);
+    this.gWi.close();
+    this.gWx.close();
+    AppMethodBeat.o(93865);
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/render/proc/GLTextureRenderProcI420ToRgb$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-mediaeditor_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.media.i.b.f
  * JD-Core Version:    0.7.0.1
  */

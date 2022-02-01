@@ -3,53 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dty
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int CHC;
-  public int DGx;
-  public int DKW;
-  public int DKX;
-  public String DKY;
-  public int Scene;
+  public int DOr;
+  public long GbP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123683);
+    AppMethodBeat.i(147802);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DGx);
-      paramVarArgs.aR(2, this.CHC);
-      paramVarArgs.aR(3, this.Scene);
-      if (this.DKY != null) {
-        paramVarArgs.d(4, this.DKY);
-      }
-      paramVarArgs.aR(5, this.DKX);
-      paramVarArgs.aR(6, this.DKW);
-      AppMethodBeat.o(123683);
+      paramVarArgs.aO(1, this.GbP);
+      paramVarArgs.aR(2, this.DOr);
+      AppMethodBeat.o(147802);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.DGx) + 0 + f.a.a.b.b.a.bA(2, this.CHC) + f.a.a.b.b.a.bA(3, this.Scene);
-      paramInt = i;
-      if (this.DKY != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.DKY);
-      }
-      i = f.a.a.b.b.a.bA(5, this.DKX);
-      int j = f.a.a.b.b.a.bA(6, this.DKW);
-      AppMethodBeat.o(123683);
-      return paramInt + i + j;
+      paramInt = f.a.a.b.b.a.p(1, this.GbP);
+      int i = f.a.a.b.b.a.bx(2, this.DOr);
+      AppMethodBeat.o(147802);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(123683);
+      AppMethodBeat.o(147802);
       return 0;
     }
     if (paramInt == 3)
@@ -59,34 +44,18 @@ public final class dty
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(123683);
+        AppMethodBeat.o(147802);
         return -1;
       case 1: 
-        localdty.DGx = locala.KhF.xS();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 2: 
-        localdty.CHC = locala.KhF.xS();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 3: 
-        localdty.Scene = locala.KhF.xS();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 4: 
-        localdty.DKY = locala.KhF.readString();
-        AppMethodBeat.o(123683);
-        return 0;
-      case 5: 
-        localdty.DKX = locala.KhF.xS();
-        AppMethodBeat.o(123683);
+        localdty.GbP = locala.LVo.xG();
+        AppMethodBeat.o(147802);
         return 0;
       }
-      localdty.DKW = locala.KhF.xS();
-      AppMethodBeat.o(123683);
+      localdty.DOr = locala.LVo.xF();
+      AppMethodBeat.o(147802);
       return 0;
     }
-    AppMethodBeat.o(123683);
+    AppMethodBeat.o(147802);
     return -1;
   }
 }

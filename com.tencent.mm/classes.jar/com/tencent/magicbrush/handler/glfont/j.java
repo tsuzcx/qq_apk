@@ -7,15 +7,15 @@ import java.util.List;
 
 final class j
 {
-  static final j cra;
-  float crb;
-  float crd;
-  float cre;
-  float crf;
-  float crg;
-  float crh;
-  boolean cri;
-  int crj = 1;
+  static final j coh;
+  float coi;
+  float coj;
+  float cok;
+  float col;
+  float com;
+  float con;
+  boolean coo;
+  int cop = 1;
   float height;
   float width;
   
@@ -23,7 +23,7 @@ final class j
   {
     AppMethodBeat.i(140056);
     j localj = new j();
-    cra = localj;
+    coh = localj;
     localj.setEmpty();
     AppMethodBeat.o(140056);
   }
@@ -42,11 +42,11 @@ final class j
       j localj = (j)paramList.next();
       if (localj != null)
       {
-        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localj.crb).put(localj.crd).put(localj.width).put(localj.height).put(localj.cre).put(localj.crf).put(localj.crg).put(localj.crh);
-        if (localj.cri) {}
+        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localj.coi).put(localj.coj).put(localj.width).put(localj.height).put(localj.cok).put(localj.col).put(localj.com).put(localj.con);
+        if (localj.coo) {}
         for (float f = 1.0F;; f = 0.0F)
         {
-          localFloatBuffer.put(f).put(localj.crj);
+          localFloatBuffer.put(f).put(localj.cop);
           break;
         }
       }
@@ -56,10 +56,10 @@ final class j
   
   public final void i(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.cre = paramFloat1;
-    this.crf = paramFloat2;
-    this.crg = paramFloat3;
-    this.crh = paramFloat4;
+    this.cok = paramFloat1;
+    this.col = paramFloat2;
+    this.com = paramFloat3;
+    this.con = paramFloat4;
   }
   
   public final void r(float paramFloat1, float paramFloat2)
@@ -72,27 +72,27 @@ final class j
   {
     this.height = 0.0F;
     this.width = 0.0F;
-    this.crd = 0.0F;
-    this.crb = 0.0F;
-    this.crh = 0.0F;
-    this.crg = 0.0F;
-    this.crf = 0.0F;
-    this.cre = 0.0F;
-    this.crj = 1;
-    this.cri = false;
+    this.coj = 0.0F;
+    this.coi = 0.0F;
+    this.con = 0.0F;
+    this.com = 0.0F;
+    this.col = 0.0F;
+    this.cok = 0.0F;
+    this.cop = 1;
+    this.coo = false;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(140055);
-    String str = "glyph(" + this.crb + ", " + this.crd + ", [" + this.width + ", " + this.height + "], [" + this.cre + ", " + this.crf + ", " + this.crg + ", " + this.crh + ", " + this.cri + "])";
+    String str = "glyph(" + this.coi + ", " + this.coj + ", [" + this.width + ", " + this.height + "], [" + this.cok + ", " + this.col + ", " + this.com + ", " + this.con + ", " + this.coo + "])";
     AppMethodBeat.o(140055);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.j
  * JD-Core Version:    0.7.0.1
  */

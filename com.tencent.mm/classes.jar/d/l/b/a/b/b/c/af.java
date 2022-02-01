@@ -20,14 +20,14 @@ import java.util.List;
 public final class af
   extends i
 {
-  private final y Jpd;
-  private final d.l.b.a.b.f.b JrG;
+  private final y Lcw;
+  private final d.l.b.a.b.f.b LeZ;
   
   public af(y paramy, d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57295);
-    this.Jpd = paramy;
-    this.JrG = paramb;
+    this.Lcw = paramy;
+    this.LeZ = paramb;
     AppMethodBeat.o(57295);
   }
   
@@ -36,39 +36,39 @@ public final class af
     AppMethodBeat.i(57294);
     k.h(paramd, "kindFilter");
     k.h(paramb, "nameFilter");
-    Object localObject = d.JTw;
-    if (!paramd.afP(d.fJl()))
+    Object localObject = d.LGP;
+    if (!paramd.aiL(d.gbO()))
     {
-      paramd = (Collection)v.Jgl;
+      paramd = (Collection)v.KTF;
       AppMethodBeat.o(57294);
       return paramd;
     }
-    if ((this.JrG.JLQ.JLV.isEmpty()) && (paramd.JSY.contains(c.b.JSW)))
+    if ((this.LeZ.Lzj.Lzo.isEmpty()) && (paramd.LGr.contains(c.b.LGp)))
     {
-      paramd = (Collection)v.Jgl;
+      paramd = (Collection)v.KTF;
       AppMethodBeat.o(57294);
       return paramd;
     }
-    paramd = this.Jpd.a(this.JrG, paramb);
+    paramd = this.Lcw.a(this.LeZ, paramb);
     ArrayList localArrayList = new ArrayList(paramd.size());
     Iterator localIterator = paramd.iterator();
     while (localIterator.hasNext())
     {
-      localObject = ((d.l.b.a.b.f.b)localIterator.next()).fHe();
+      localObject = ((d.l.b.a.b.f.b)localIterator.next()).fZI();
       k.g(localObject, "subFqName.shortName()");
-      if (((Boolean)paramb.aA(localObject)).booleanValue())
+      if (((Boolean)paramb.ay(localObject)).booleanValue())
       {
         Collection localCollection = (Collection)localArrayList;
         k.h(localObject, "name");
-        if (((f)localObject).JLZ) {
+        if (((f)localObject).Lzs) {
           paramd = null;
         }
         for (;;)
         {
           a.c(localCollection, paramd);
           break;
-          paramd = this.Jpd;
-          localObject = this.JrG.p((f)localObject);
+          paramd = this.Lcw;
+          localObject = this.LeZ.p((f)localObject);
           k.g(localObject, "fqName.child(name)");
           localObject = paramd.e((d.l.b.a.b.f.b)localObject);
           paramd = (d)localObject;
@@ -85,7 +85,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.af
  * JD-Core Version:    0.7.0.1
  */

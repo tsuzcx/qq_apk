@@ -13,14 +13,12 @@ import android.util.Base64;
 import android.util.TypedValue;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.kp;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.ky;
 import com.tencent.mm.g.a.l;
 import com.tencent.mm.g.a.l.b;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
 import com.tencent.mm.model.w;
 import com.tencent.mm.modelsimple.j;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
@@ -31,13 +29,11 @@ import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.g;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.appbrand.f.4;
 import com.tencent.mm.ui.appbrand.f.a;
 import com.tencent.mm.ui.chatting.viewitems.c.d;
@@ -50,7 +46,7 @@ import java.util.List;
 public class AppBrandServiceChattingUI
   extends ChattingUI
 {
-  protected final ChattingUIFragment eUw()
+  protected final ChattingUIFragment fkj()
   {
     AppMethodBeat.i(34219);
     AppBrandServiceChattingFmUI localAppBrandServiceChattingFmUI = new AppBrandServiceChattingFmUI((byte)0);
@@ -76,54 +72,54 @@ public class AppBrandServiceChattingUI
   public static class AppBrandServiceChattingFmUI
     extends ChattingUIFragment
   {
-    private byte[] Gkp;
-    private final ChatFooter.g Gkq;
-    private com.tencent.mm.ui.appbrand.f Gkr;
-    private com.tencent.mm.ui.chatting.c.c.b Gks;
+    private byte[] HKe;
+    private final ChatFooter.g HKf;
+    private com.tencent.mm.ui.appbrand.f HKg;
+    private com.tencent.mm.ui.chatting.c.c.b HKh;
     private String appId;
     private int fromScene;
-    private String jOA;
-    private boolean jOB;
-    private String jOC;
-    private boolean jOD;
-    private String jOy;
-    private String jOz;
-    private WxaAttributes.b jfc;
-    private WxaExposedParams lBG;
+    private WxaAttributes.b jFr;
+    private String koZ;
+    private String kpa;
+    private String kpb;
+    private boolean kpc;
+    private String kpd;
+    private boolean kpe;
     private String mSceneId;
-    private com.tencent.mm.pluginsdk.ui.span.h mYs;
+    private WxaExposedParams mdC;
+    private com.tencent.mm.pluginsdk.ui.span.h nAR;
     
     public AppBrandServiceChattingFmUI()
     {
       AppMethodBeat.i(34205);
-      this.Gkq = new ChatFooter.g()
+      this.HKf = new ChatFooter.g()
       {
-        public final boolean us(boolean paramAnonymousBoolean)
+        public final boolean vu(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(34199);
           if (AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this) != null)
           {
-            WxaAttributes.b.a locala = (WxaAttributes.b.a)AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jfl.get(0);
+            WxaAttributes.b.a locala = (WxaAttributes.b.a)AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jFA.get(0);
             if ((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.b(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this) == 2) && (AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).username.equals(locala.userName)))
             {
-              ad.i("MicroMsg.AppBrandServiceChattingUI", "[bizmenu]onBackFromContact username:%s path:%s", new Object[] { locala.userName, locala.dbu });
-              AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this, locala.dbu);
+              ac.i("MicroMsg.AppBrandServiceChattingUI", "[bizmenu]onBackFromContact username:%s path:%s", new Object[] { locala.userName, locala.cYQ });
+              AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this, locala.cYQ);
               AppMethodBeat.o(34199);
               return true;
             }
             AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
             localAppBrandStatObject.scene = 1080;
-            ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.getContext(), locala.userName, "", 0, locala.version, locala.dbu, localAppBrandStatObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.d(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
+            ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.getContext(), locala.userName, "", 0, locala.version, locala.cYQ, localAppBrandStatObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.d(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
           }
           for (;;)
           {
             AppMethodBeat.o(34199);
             return true;
-            ad.e("MicroMsg.AppBrandServiceChattingUI", "[mOnOpenMiniProgramBtnClickListener]wxaBizMenu or wxaBizMenu.ButtonList is empty, error");
+            ac.e("MicroMsg.AppBrandServiceChattingUI", "[mOnOpenMiniProgramBtnClickListener]wxaBizMenu or wxaBizMenu.ButtonList is empty, error");
           }
         }
       };
-      this.mYs = new com.tencent.mm.pluginsdk.ui.span.h()
+      this.nAR = new com.tencent.mm.pluginsdk.ui.span.h()
       {
         public final Object a(u paramAnonymousu)
         {
@@ -134,7 +130,7 @@ public class AppBrandServiceChattingUI
             AppMethodBeat.o(34200);
             return null;
           }
-          paramAnonymousu = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.cOd.getTalkerUserName();
+          paramAnonymousu = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.cLy.getTalkerUserName();
           AppMethodBeat.o(34200);
           return paramAnonymousu;
         }
@@ -145,11 +141,11 @@ public class AppBrandServiceChattingUI
           if (paramAnonymousu.type == 45)
           {
             String str = new String(Base64.decode(paramAnonymousu.url, 0));
-            paramAnonymousu = new String(Base64.decode(bt.by((String)paramAnonymousu.aV(String.class), ""), 0));
-            ad.d("MicroMsg.AppBrandServiceChattingUI", "appId:%s,path:%s", new Object[] { str, paramAnonymousu });
+            paramAnonymousu = new String(Base64.decode(bs.bG((String)paramAnonymousu.aW(String.class), ""), 0));
+            ac.d("MicroMsg.AppBrandServiceChattingUI", "appId:%s,path:%s", new Object[] { str, paramAnonymousu });
             if ((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.b(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this) == 2) && (AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).appId.equals(str)))
             {
-              ad.i("MicroMsg.AppBrandServiceChattingUI", "onBackFromContact appId:%s path:%s", new Object[] { str, paramAnonymousu });
+              ac.i("MicroMsg.AppBrandServiceChattingUI", "onBackFromContact appId:%s path:%s", new Object[] { str, paramAnonymousu });
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this, paramAnonymousu);
               paramAnonymousu = Boolean.TRUE;
               AppMethodBeat.o(34201);
@@ -163,7 +159,7 @@ public class AppBrandServiceChattingUI
           return null;
         }
       };
-      this.Gks = new com.tencent.mm.ui.chatting.c.c.b(new com.tencent.mm.ui.chatting.c.c.a());
+      this.HKh = new com.tencent.mm.ui.chatting.c.c.b(new com.tencent.mm.ui.chatting.c.c.a());
       AppMethodBeat.o(34205);
     }
     
@@ -171,34 +167,34 @@ public class AppBrandServiceChattingUI
     {
       super();
       AppMethodBeat.i(34206);
-      this.Gkq = new ChatFooter.g()
+      this.HKf = new ChatFooter.g()
       {
-        public final boolean us(boolean paramAnonymousBoolean)
+        public final boolean vu(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(34199);
           if (AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this) != null)
           {
-            WxaAttributes.b.a locala = (WxaAttributes.b.a)AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jfl.get(0);
+            WxaAttributes.b.a locala = (WxaAttributes.b.a)AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jFA.get(0);
             if ((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.b(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this) == 2) && (AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).username.equals(locala.userName)))
             {
-              ad.i("MicroMsg.AppBrandServiceChattingUI", "[bizmenu]onBackFromContact username:%s path:%s", new Object[] { locala.userName, locala.dbu });
-              AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this, locala.dbu);
+              ac.i("MicroMsg.AppBrandServiceChattingUI", "[bizmenu]onBackFromContact username:%s path:%s", new Object[] { locala.userName, locala.cYQ });
+              AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this, locala.cYQ);
               AppMethodBeat.o(34199);
               return true;
             }
             AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
             localAppBrandStatObject.scene = 1080;
-            ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.getContext(), locala.userName, "", 0, locala.version, locala.dbu, localAppBrandStatObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.d(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
+            ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.getContext(), locala.userName, "", 0, locala.version, locala.cYQ, localAppBrandStatObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.d(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
           }
           for (;;)
           {
             AppMethodBeat.o(34199);
             return true;
-            ad.e("MicroMsg.AppBrandServiceChattingUI", "[mOnOpenMiniProgramBtnClickListener]wxaBizMenu or wxaBizMenu.ButtonList is empty, error");
+            ac.e("MicroMsg.AppBrandServiceChattingUI", "[mOnOpenMiniProgramBtnClickListener]wxaBizMenu or wxaBizMenu.ButtonList is empty, error");
           }
         }
       };
-      this.mYs = new com.tencent.mm.pluginsdk.ui.span.h()
+      this.nAR = new com.tencent.mm.pluginsdk.ui.span.h()
       {
         public final Object a(u paramAnonymousu)
         {
@@ -209,7 +205,7 @@ public class AppBrandServiceChattingUI
             AppMethodBeat.o(34200);
             return null;
           }
-          paramAnonymousu = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.cOd.getTalkerUserName();
+          paramAnonymousu = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.cLy.getTalkerUserName();
           AppMethodBeat.o(34200);
           return paramAnonymousu;
         }
@@ -220,11 +216,11 @@ public class AppBrandServiceChattingUI
           if (paramAnonymousu.type == 45)
           {
             String str = new String(Base64.decode(paramAnonymousu.url, 0));
-            paramAnonymousu = new String(Base64.decode(bt.by((String)paramAnonymousu.aV(String.class), ""), 0));
-            ad.d("MicroMsg.AppBrandServiceChattingUI", "appId:%s,path:%s", new Object[] { str, paramAnonymousu });
+            paramAnonymousu = new String(Base64.decode(bs.bG((String)paramAnonymousu.aW(String.class), ""), 0));
+            ac.d("MicroMsg.AppBrandServiceChattingUI", "appId:%s,path:%s", new Object[] { str, paramAnonymousu });
             if ((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.b(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this) == 2) && (AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).appId.equals(str)))
             {
-              ad.i("MicroMsg.AppBrandServiceChattingUI", "onBackFromContact appId:%s path:%s", new Object[] { str, paramAnonymousu });
+              ac.i("MicroMsg.AppBrandServiceChattingUI", "onBackFromContact appId:%s path:%s", new Object[] { str, paramAnonymousu });
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this, paramAnonymousu);
               paramAnonymousu = Boolean.TRUE;
               AppMethodBeat.o(34201);
@@ -238,11 +234,11 @@ public class AppBrandServiceChattingUI
           return null;
         }
       };
-      this.Gks = new com.tencent.mm.ui.chatting.c.c.b(new com.tencent.mm.ui.chatting.c.c.a());
+      this.HKh = new com.tencent.mm.ui.chatting.c.c.b(new com.tencent.mm.ui.chatting.c.c.a());
       AppMethodBeat.o(34206);
     }
     
-    private float Vg(int paramInt)
+    private float Xp(int paramInt)
     {
       AppMethodBeat.i(34214);
       float f = TypedValue.applyDimension(1, paramInt, getContext().getResources().getDisplayMetrics());
@@ -250,21 +246,21 @@ public class AppBrandServiceChattingUI
       return f;
     }
     
-    private static byte[] eUy()
+    private static byte[] fkl()
     {
-      AppMethodBeat.i(191470);
+      AppMethodBeat.i(196412);
       try
       {
         Object localObject = com.tencent.mm.sdk.platformtools.f.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
         new Canvas((Bitmap)localObject).drawColor(-1);
         localObject = com.tencent.mm.sdk.platformtools.f.Bitmap2Bytes((Bitmap)localObject);
-        AppMethodBeat.o(191470);
+        AppMethodBeat.o(196412);
         return localObject;
       }
       catch (Exception localException)
       {
-        ad.i("MicroMsg.AppBrandServiceChattingUI", "obtainMessageDefaultImg fail:%s", new Object[] { localException });
-        AppMethodBeat.o(191470);
+        ac.i("MicroMsg.AppBrandServiceChattingUI", "obtainMessageDefaultImg fail:%s", new Object[] { localException });
+        AppMethodBeat.o(196412);
       }
       return new byte[0];
     }
@@ -272,9 +268,9 @@ public class AppBrandServiceChattingUI
     private String getAppId()
     {
       AppMethodBeat.i(34210);
-      if (bt.isNullOrNil(this.appId))
+      if (bs.isNullOrNil(this.appId))
       {
-        localObject = ((com.tencent.mm.plugin.appbrand.service.m)g.ab(com.tencent.mm.plugin.appbrand.service.m.class)).FW(this.cOd.getTalkerUserName());
+        localObject = ((com.tencent.mm.plugin.appbrand.service.m)g.ab(com.tencent.mm.plugin.appbrand.service.m.class)).Ka(this.cLy.getTalkerUserName());
         if (localObject != null) {
           break label76;
         }
@@ -283,8 +279,8 @@ public class AppBrandServiceChattingUI
       for (Object localObject = null;; localObject = ((WxaAttributes)localObject).field_appId)
       {
         this.appId = ((String)localObject);
-        if (bt.isNullOrNil(this.appId)) {
-          ad.e("MicroMsg.AppBrandServiceChattingUI", "error, appId is null");
+        if (bs.isNullOrNil(this.appId)) {
+          ac.e("MicroMsg.AppBrandServiceChattingUI", "error, appId is null");
         }
         localObject = this.appId;
         AppMethodBeat.o(34210);
@@ -292,102 +288,102 @@ public class AppBrandServiceChattingUI
       }
     }
     
-    public final void dDq()
+    public final void dRO()
     {
       AppMethodBeat.i(34215);
-      super.dDq();
-      com.tencent.mm.pluginsdk.ui.span.k.b(this.mYs);
+      super.dRO();
+      com.tencent.mm.pluginsdk.ui.span.k.b(this.nAR);
       AppMethodBeat.o(34215);
     }
     
-    public final void ddQ()
+    public final void dry()
     {
       AppMethodBeat.i(34212);
       Object localObject;
       if ((this.fromScene == 2) || (this.fromScene == 3))
       {
-        az.arV();
-        localObject = com.tencent.mm.model.c.apR().aIn("appbrandcustomerservicemsg");
-        if ((localObject != null) && (!bt.isNullOrNil(((ay)localObject).field_username)))
+        com.tencent.mm.model.az.ayM();
+        localObject = com.tencent.mm.model.c.awG().aNI("appbrandcustomerservicemsg");
+        if ((localObject != null) && (!bs.isNullOrNil(((com.tencent.mm.g.c.az)localObject).field_username)))
         {
-          int i = ((ay)localObject).field_unReadCount;
+          int i = ((com.tencent.mm.g.c.az)localObject).field_unReadCount;
           l locall = new l();
-          locall.dbh.dbj = this.cOd.getTalkerUserName();
-          com.tencent.mm.sdk.b.a.ESL.l(locall);
-          int j = locall.dbi.dbk;
-          ad.i("MicroMsg.AppBrandServiceChattingUI", "parUnReadCount:%d, unReadCount:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          ((am)localObject).jT(Math.max(0, i - j));
-          az.arV();
-          if (com.tencent.mm.model.c.apR().a((am)localObject, ((ay)localObject).field_username) == -1) {
-            ad.e("MicroMsg.AppBrandServiceChattingUI", "update SPUSER_APP_BRAND_SERVICE cvs unread failed");
+          locall.cYD.cYF = this.cLy.getTalkerUserName();
+          com.tencent.mm.sdk.b.a.GpY.l(locall);
+          int j = locall.cYE.cYG;
+          ac.i("MicroMsg.AppBrandServiceChattingUI", "parUnReadCount:%d, unReadCount:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          ((com.tencent.mm.storage.ap)localObject).jR(Math.max(0, i - j));
+          com.tencent.mm.model.az.ayM();
+          if (com.tencent.mm.model.c.awG().a((com.tencent.mm.storage.ap)localObject, ((com.tencent.mm.g.c.az)localObject).field_username) == -1) {
+            ac.e("MicroMsg.AppBrandServiceChattingUI", "update SPUSER_APP_BRAND_SERVICE cvs unread failed");
           }
         }
       }
       for (;;)
       {
-        super.ddQ();
+        super.dry();
         AppMethodBeat.o(34212);
         return;
         localObject = new com.tencent.mm.g.a.q();
-        ((com.tencent.mm.g.a.q)localObject).dby.dbj = this.cOd.getTalkerUserName();
-        ((com.tencent.mm.g.a.q)localObject).dby.dbk = 0;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+        ((com.tencent.mm.g.a.q)localObject).cYV.cYF = this.cLy.getTalkerUserName();
+        ((com.tencent.mm.g.a.q)localObject).cYV.cYG = 0;
+        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
         continue;
-        ad.e("MicroMsg.AppBrandServiceChattingUI", "update Unread: can not find SPUSER_APP_BRAND_SERVICE cvs");
+        ac.e("MicroMsg.AppBrandServiceChattingUI", "update Unread: can not find SPUSER_APP_BRAND_SERVICE cvs");
         continue;
-        ad.i("MicroMsg.AppBrandServiceChattingUI", "writeOpLogAndMarkRead clear AppBrandKvData username:%s", new Object[] { this.cOd.getTalkerUserName() });
+        ac.i("MicroMsg.AppBrandServiceChattingUI", "writeOpLogAndMarkRead clear AppBrandKvData username:%s", new Object[] { this.cLy.getTalkerUserName() });
         localObject = new com.tencent.mm.g.a.q();
-        ((com.tencent.mm.g.a.q)localObject).dby.dbj = this.cOd.getTalkerUserName();
-        ((com.tencent.mm.g.a.q)localObject).dby.dbk = 0;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+        ((com.tencent.mm.g.a.q)localObject).cYV.cYF = this.cLy.getTalkerUserName();
+        ((com.tencent.mm.g.a.q)localObject).cYV.cYG = 0;
+        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
       }
     }
     
-    protected final void eUA()
-    {
-      AppMethodBeat.i(34211);
-      super.eUA();
-      kp localkp = new kp();
-      localkp.dpf.doZ = 0;
-      localkp.dpf.aSt = ac.eFu();
-      if (w.pF(this.cOd.getTalkerUserName())) {}
-      for (localkp.dpf.dph = true;; localkp.dpf.dph = false)
-      {
-        com.tencent.mm.sdk.b.a.ESL.l(localkp);
-        AppMethodBeat.o(34211);
-        return;
-      }
-    }
-    
-    public final void eUx()
+    public final void fkk()
     {
       AppMethodBeat.i(34207);
-      if (!this.cOd.GzF.GFl.containsKey(com.tencent.mm.ui.chatting.c.b.a.class)) {
-        this.cOd.a(com.tencent.mm.ui.chatting.c.b.a.class, this.Gks);
+      if (!this.cLy.HZB.Ifh.containsKey(com.tencent.mm.ui.chatting.c.b.a.class)) {
+        this.cLy.a(com.tencent.mm.ui.chatting.c.b.a.class, this.HKh);
       }
-      super.eUx();
+      super.fkk();
       this.fromScene = getIntExtra("app_brand_chatting_from_scene", 1);
-      this.lBG = ((WxaExposedParams)getParcelableExtra("app_brand_chatting_expose_params"));
-      this.mSceneId = bt.nullAsNil(getStringExtra("key_scene_id"));
-      this.jOy = getStringExtra("sendMessageTitle");
-      this.jOz = getStringExtra("sendMessagePath");
-      this.jOA = getStringExtra("sendMessageImg");
-      this.Gkp = eUy();
-      this.jOC = getStringExtra("sendMessageLocalImg");
-      this.jOB = getBooleanExtra("showMessageCard", false).booleanValue();
-      this.jOD = getBooleanExtra("needDelThumb", false).booleanValue();
-      ad.i("MicroMsg.AppBrandServiceChattingUI", "AppBrandServiceChattingFmUI onCreate fromScene:%d", new Object[] { Integer.valueOf(this.fromScene) });
-      ad.i("MicroMsg.AppBrandServiceChattingUI", "AppBrandServiceChattingFmUI onCreate wxaExposedParams:%s", new Object[] { this.lBG });
-      ad.i("MicroMsg.AppBrandServiceChattingUI", "mSceneId:%s, sendMessageTitle:%s, sendMessagePath:%s, sendMessageImg:%s, showMessageCard:%b, needDelThumb:%b", new Object[] { this.mSceneId, this.jOy, this.jOz, this.jOA, Boolean.valueOf(this.jOB), Boolean.valueOf(this.jOD) });
+      this.mdC = ((WxaExposedParams)getParcelableExtra("app_brand_chatting_expose_params"));
+      this.mSceneId = bs.nullAsNil(getStringExtra("key_scene_id"));
+      this.koZ = getStringExtra("sendMessageTitle");
+      this.kpa = getStringExtra("sendMessagePath");
+      this.kpb = getStringExtra("sendMessageImg");
+      this.HKe = fkl();
+      this.kpd = getStringExtra("sendMessageLocalImg");
+      this.kpc = getBooleanExtra("showMessageCard", false).booleanValue();
+      this.kpe = getBooleanExtra("needDelThumb", false).booleanValue();
+      ac.i("MicroMsg.AppBrandServiceChattingUI", "AppBrandServiceChattingFmUI onCreate fromScene:%d", new Object[] { Integer.valueOf(this.fromScene) });
+      ac.i("MicroMsg.AppBrandServiceChattingUI", "AppBrandServiceChattingFmUI onCreate wxaExposedParams:%s", new Object[] { this.mdC });
+      ac.i("MicroMsg.AppBrandServiceChattingUI", "mSceneId:%s, sendMessageTitle:%s, sendMessagePath:%s, sendMessageImg:%s, showMessageCard:%b, needDelThumb:%b", new Object[] { this.mSceneId, this.koZ, this.kpa, this.kpb, Boolean.valueOf(this.kpc), Boolean.valueOf(this.kpe) });
       AppMethodBeat.o(34207);
     }
     
-    public final void eUz()
+    public final void fkm()
     {
       AppMethodBeat.i(34208);
-      super.eUz();
-      com.tencent.mm.pluginsdk.ui.span.k.a(this.mYs);
+      super.fkm();
+      com.tencent.mm.pluginsdk.ui.span.k.a(this.nAR);
       AppMethodBeat.o(34208);
+    }
+    
+    protected final void fkn()
+    {
+      AppMethodBeat.i(34211);
+      super.fkn();
+      ky localky = new ky();
+      localky.dmP.dmJ = 0;
+      localky.dmP.aTm = ab.eUO();
+      if (w.sQ(this.cLy.getTalkerUserName())) {}
+      for (localky.dmP.dmR = true;; localky.dmP.dmR = false)
+      {
+        com.tencent.mm.sdk.b.a.GpY.l(localky);
+        AppMethodBeat.o(34211);
+        return;
+      }
     }
     
     public final void onEnterBegin()
@@ -395,7 +391,7 @@ public class AppBrandServiceChattingUI
       String str = null;
       AppMethodBeat.i(34209);
       super.onEnterBegin();
-      Object localObject1 = this.cOd.getTalkerUserName();
+      Object localObject1 = this.cLy.getTalkerUserName();
       label90:
       int i;
       label132:
@@ -403,49 +399,49 @@ public class AppBrandServiceChattingUI
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = null;
-        this.jfc = ((WxaAttributes.b)localObject1);
-        if ((this.jfc == null) || (this.jfc.jfl.size() != 1)) {
+        this.jFr = ((WxaAttributes.b)localObject1);
+        if ((this.jFr == null) || (this.jFr.jFA.size() != 1)) {
           break label256;
         }
-        localObject1 = ((com.tencent.mm.ui.chatting.c.b.q)this.cOd.be(com.tencent.mm.ui.chatting.c.b.q.class)).eXs();
+        localObject1 = ((com.tencent.mm.ui.chatting.c.b.q)this.cLy.bf(com.tencent.mm.ui.chatting.c.b.q.class)).fne();
         ((ChatFooter)localObject1).setSwitchButtonMode(1);
-        ((ChatFooter)localObject1).setOnFooterSwitchListener(this.Gkq);
+        ((ChatFooter)localObject1).setOnFooterSwitchListener(this.HKf);
         if (this.fromScene != 2) {
           break label317;
         }
-        localObject1 = new j(this.cOd.getTalkerUserName(), 19, getStringExtra("key_temp_session_from"), null);
-        az.aeS().a((com.tencent.mm.al.n)localObject1, 0);
+        localObject1 = new j(this.cLy.getTalkerUserName(), 19, getStringExtra("key_temp_session_from"), null);
+        com.tencent.mm.model.az.agi().a((com.tencent.mm.ak.n)localObject1, 0);
         localObject1 = getAppId();
-        str = this.cOd.getTalkerUserName();
+        str = this.cLy.getTalkerUserName();
         i = this.fromScene;
-        az.arV();
-        localObject2 = com.tencent.mm.model.c.apR().aIn(str);
+        com.tencent.mm.model.az.ayM();
+        localObject2 = com.tencent.mm.model.c.awG().aNI(str);
         if (localObject2 != null) {
           break label388;
         }
-        ad.e("MicroMsg.AppBrandServiceChattingUI", "cvs:%s is null, error", new Object[] { str });
+        ac.e("MicroMsg.AppBrandServiceChattingUI", "cvs:%s is null, error", new Object[] { str });
       }
       for (;;)
       {
-        ad.i("MicroMsg.AppBrandServiceChattingUI", "AppBrandServiceChattingFmUI onActivityCreated NetSceneEnterTempSession");
+        ac.i("MicroMsg.AppBrandServiceChattingUI", "AppBrandServiceChattingFmUI onActivityCreated NetSceneEnterTempSession");
         AppMethodBeat.o(34209);
         return;
-        localObject2 = ((com.tencent.mm.plugin.appbrand.service.m)g.ab(com.tencent.mm.plugin.appbrand.service.m.class)).FW((String)localObject1);
+        localObject2 = ((com.tencent.mm.plugin.appbrand.service.m)g.ab(com.tencent.mm.plugin.appbrand.service.m.class)).Ka((String)localObject1);
         if (localObject2 != null)
         {
-          localObject1 = ((WxaAttributes)localObject2).aTR();
+          localObject1 = ((WxaAttributes)localObject2).baP();
           break;
         }
-        ad.e("MicroMsg.AppBrandServiceHelper", "username:%s, attr is null or getWxaBizMenuByUsername return null", new Object[] { localObject1 });
+        ac.e("MicroMsg.AppBrandServiceHelper", "username:%s, attr is null or getWxaBizMenuByUsername return null", new Object[] { localObject1 });
         localObject1 = null;
         break;
         label256:
-        if ((this.jfc != null) && (this.jfc.jfl != null))
+        if ((this.jFr != null) && (this.jFr.jFA != null))
         {
-          ad.e("MicroMsg.AppBrandServiceChattingUI", "wxaBizMenu.buttonList.size():%d", new Object[] { Integer.valueOf(this.jfc.jfl.size()) });
+          ac.e("MicroMsg.AppBrandServiceChattingUI", "wxaBizMenu.buttonList.size():%d", new Object[] { Integer.valueOf(this.jFr.jFA.size()) });
           break label90;
         }
-        ad.e("MicroMsg.AppBrandServiceChattingUI", "wxaBizMenu or wxaBizMenu.buttonList is empty");
+        ac.e("MicroMsg.AppBrandServiceChattingUI", "wxaBizMenu or wxaBizMenu.buttonList is empty");
         break label90;
         label317:
         if (this.fromScene != 3) {
@@ -455,15 +451,15 @@ public class AppBrandServiceChattingUI
         if (TextUtils.isEmpty((CharSequence)localObject1)) {}
         for (localObject1 = str;; localObject1 = ((String)localObject1).getBytes())
         {
-          localObject1 = new j(this.cOd.getTalkerUserName(), 20, getStringExtra("key_temp_session_from"), (byte[])localObject1);
-          az.aeS().a((com.tencent.mm.al.n)localObject1, 0);
+          localObject1 = new j(this.cLy.getTalkerUserName(), 20, getStringExtra("key_temp_session_from"), (byte[])localObject1);
+          com.tencent.mm.model.az.agi().a((com.tencent.mm.ak.n)localObject1, 0);
           break;
         }
         label388:
-        int j = ((ay)localObject2).field_unReadCount;
-        str = bt.nullAsNil(this.mSceneId);
-        ad.d("MicroMsg.AppBrandServiceChattingUI", "stev report(%s), appId : %s, scene %s, unReadCount %d, sceneId %s", new Object[] { Integer.valueOf(13799), localObject1, Integer.valueOf(i), Integer.valueOf(j), str });
-        com.tencent.mm.plugin.report.service.h.vKh.f(13799, new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(j), str, Long.valueOf(bt.aGK()) });
+        int j = ((com.tencent.mm.g.c.az)localObject2).field_unReadCount;
+        str = bs.nullAsNil(this.mSceneId);
+        ac.d("MicroMsg.AppBrandServiceChattingUI", "stev report(%s), appId : %s, scene %s, unReadCount %d, sceneId %s", new Object[] { Integer.valueOf(13799), localObject1, Integer.valueOf(i), Integer.valueOf(j), str });
+        com.tencent.mm.plugin.report.service.h.wUl.f(13799, new Object[] { localObject1, Integer.valueOf(i), Integer.valueOf(j), str, Long.valueOf(bs.aNx()) });
       }
     }
     
@@ -471,90 +467,90 @@ public class AppBrandServiceChattingUI
     {
       AppMethodBeat.i(34213);
       super.onViewAttachedToWindow(paramView);
-      if ((this.fromScene == 2) && (this.jOB))
+      if (((this.fromScene == 2) || (this.fromScene == 3)) && (this.kpc))
       {
-        if (this.Gkr == null)
+        if (this.HKg == null)
         {
-          paramView = ((com.tencent.mm.ui.chatting.c.b.q)this.cOd.be(com.tencent.mm.ui.chatting.c.b.q.class)).eXs();
-          this.Gkr = new com.tencent.mm.ui.appbrand.f(getActivity(), paramView, paramView);
-          this.Gkr.Cgq = false;
+          paramView = ((com.tencent.mm.ui.chatting.c.b.q)this.cLy.bf(com.tencent.mm.ui.chatting.c.b.q.class)).fne();
+          this.HKg = new com.tencent.mm.ui.appbrand.f(getActivity(), paramView, paramView);
+          this.HKg.DyH = false;
         }
-        if (bt.isNullOrNil(this.jOC)) {
-          break label198;
+        if (bs.isNullOrNil(this.kpd)) {
+          break label206;
         }
-        com.tencent.mm.modelappbrand.a.b.aub().a(this.Gkr, "file://" + this.jOC, null, ((com.tencent.mm.modelappbrand.k)g.ab(com.tencent.mm.modelappbrand.k.class)).dc((int)Vg(75), (int)Vg(60)));
+        com.tencent.mm.modelappbrand.a.b.aAS().a(this.HKg, "file://" + this.kpd, null, ((com.tencent.mm.modelappbrand.k)g.ab(com.tencent.mm.modelappbrand.k.class)).dc((int)Xp(75), (int)Xp(60)));
       }
       for (;;)
       {
-        this.Gkr.FTX = new f.a()
+        this.HKg.HtM = new f.a()
         {
-          public final void eSm()
+          public final void fhW()
           {
             AppMethodBeat.i(34203);
             AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.hideVKB();
             k.b localb = new k.b();
             localb.title = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.e(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this);
             localb.type = 33;
-            localb.gJE = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).username;
-            if (bt.isNullOrNil(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.f(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this))) {}
+            localb.hke = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).username;
+            if (bs.isNullOrNil(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.f(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this))) {}
             for (Object localObject = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).pageId;; localObject = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.f(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this))
             {
-              localb.gJD = ((String)localObject);
-              localb.gJF = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).appId;
-              localb.gJQ = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).iOQ;
-              localb.gJR = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).pkgVersion;
-              localb.gJH = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jfT;
-              localb.gJG = 2;
-              localb.url = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jfU;
-              localb.gJS = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).iconUrl;
-              localb.dxF = ("wxapp_" + AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).appId + AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).pageId);
-              localb.dxz = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).username;
-              localb.dxA = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).nickname;
+              localb.hkd = ((String)localObject);
+              localb.hkf = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).appId;
+              localb.hkq = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jpa;
+              localb.hkr = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).pkgVersion;
+              localb.hkh = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jGi;
+              localb.hkg = 2;
+              localb.url = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).jGj;
+              localb.hks = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).iconUrl;
+              localb.dvr = ("wxapp_" + AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).appId + AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).pageId);
+              localb.dvl = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).username;
+              localb.dvm = AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.c(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this).nickname;
               localObject = new AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a((byte)0);
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.a((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.d(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.a((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, localb);
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.b((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.g(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.c((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.h(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
-              AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.d((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.cOd.getTalkerUserName());
+              AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.d((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this.cLy.getTalkerUserName());
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.e((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.e(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.a((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.i(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
               AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a.a((AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.a)localObject, AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.j(AppBrandServiceChattingUI.AppBrandServiceChattingFmUI.this));
-              az.afE().ax((Runnable)localObject);
+              com.tencent.mm.model.az.agU().az((Runnable)localObject);
               AppMethodBeat.o(34203);
               return;
             }
           }
         };
-        paramView = this.Gkr;
-        ad.d("MicroMsg.AppBrandServiceImageBubble", "show");
-        az.afE().ax(new f.4(paramView));
+        paramView = this.HKg;
+        ac.d("MicroMsg.AppBrandServiceImageBubble", "show");
+        com.tencent.mm.model.az.agU().az(new f.4(paramView));
         AppMethodBeat.o(34213);
         return;
-        label198:
-        com.tencent.mm.modelappbrand.a.b.aub().a(this.Gkr, this.jOA, null, ((com.tencent.mm.modelappbrand.k)g.ab(com.tencent.mm.modelappbrand.k.class)).dc((int)Vg(75), (int)Vg(60)));
+        label206:
+        com.tencent.mm.modelappbrand.a.b.aAS().a(this.HKg, this.kpb, null, ((com.tencent.mm.modelappbrand.k)g.ab(com.tencent.mm.modelappbrand.k.class)).dc((int)Xp(75), (int)Xp(60)));
       }
     }
     
     static final class a
       implements Runnable
     {
-      private byte[] Gkp;
-      private String Gku;
-      private String dlB;
-      private k.b duP;
-      private String jOA;
-      private String jOC;
-      private boolean jOD;
-      private String jOy;
+      private byte[] HKe;
+      private String HKj;
+      private String djj;
+      private k.b dsB;
+      private String koZ;
+      private String kpb;
+      private String kpd;
+      private boolean kpe;
       
       public final void run()
       {
         boolean bool1 = true;
         AppMethodBeat.i(34204);
         Object localObject2;
-        if (!bt.isNullOrNil(this.jOC))
+        if (!bs.isNullOrNil(this.kpd))
         {
-          localObject2 = com.tencent.mm.modelappbrand.a.b.aub().a("file://" + this.jOC, null);
+          localObject2 = com.tencent.mm.modelappbrand.a.b.aAS().a("file://" + this.kpd, null);
           if (localObject2 != null)
           {
             localObject1 = localObject2;
@@ -562,30 +558,30 @@ public class AppBrandServiceChattingUI
           }
           else
           {
-            localObject2 = com.tencent.mm.sdk.platformtools.f.aFi(this.jOA);
+            localObject2 = com.tencent.mm.sdk.platformtools.f.aKz(this.kpb);
             localObject1 = localObject2;
-            if (this.jOD)
+            if (this.kpe)
             {
-              boolean bool2 = i.deleteFile(this.jOC);
-              ad.v("MicroMsg.AppBrandServiceChattingUI", "decode thumb icon bitmap by path(%s), and deleted(%s) file.", new Object[] { this.jOA, Boolean.valueOf(bool2) });
+              boolean bool2 = i.deleteFile(this.kpd);
+              ac.v("MicroMsg.AppBrandServiceChattingUI", "decode thumb icon bitmap by path(%s), and deleted(%s) file.", new Object[] { this.kpb, Boolean.valueOf(bool2) });
             }
           }
         }
-        for (Object localObject1 = localObject2; (localObject1 != null) && (!((Bitmap)localObject1).isRecycled()); localObject1 = com.tencent.mm.modelappbrand.a.b.aub().a(this.jOA, null))
+        for (Object localObject1 = localObject2; (localObject1 != null) && (!((Bitmap)localObject1).isRecycled()); localObject1 = com.tencent.mm.modelappbrand.a.b.aAS().a(this.kpb, null))
         {
-          ad.i("MicroMsg.AppBrandServiceChattingUI", "thumb image is not null ");
+          ac.i("MicroMsg.AppBrandServiceChattingUI", "thumb image is not null ");
           localObject2 = new ByteArrayOutputStream();
           ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject2);
           localObject1 = ((ByteArrayOutputStream)localObject2).toByteArray();
-          com.tencent.mm.pluginsdk.model.app.m.a(this.duP, this.dlB, this.jOy, this.Gku, null, (byte[])localObject1);
+          com.tencent.mm.pluginsdk.model.app.m.a(this.dsB, this.djj, this.koZ, this.HKj, null, (byte[])localObject1);
           AppMethodBeat.o(34204);
           return;
         }
-        if (this.Gkp != null) {}
+        if (this.HKe != null) {}
         for (;;)
         {
-          ad.e("MicroMsg.AppBrandServiceChattingUI", "thumb image is null sendMessageDefaultImg:%b", new Object[] { Boolean.valueOf(bool1) });
-          localObject1 = this.Gkp;
+          ac.e("MicroMsg.AppBrandServiceChattingUI", "thumb image is null sendMessageDefaultImg:%b", new Object[] { Boolean.valueOf(bool1) });
+          localObject1 = this.HKe;
           break;
           bool1 = false;
         }
@@ -595,7 +591,7 @@ public class AppBrandServiceChattingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppBrandServiceChattingUI
  * JD-Core Version:    0.7.0.1
  */

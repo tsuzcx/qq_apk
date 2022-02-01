@@ -20,9 +20,9 @@ class CustomTabMainActivity$1
     paramContext.putExtra(CustomTabMainActivity.EXTRA_URL, paramIntent.getStringExtra(CustomTabMainActivity.EXTRA_URL));
     paramContext.addFlags(603979776);
     paramIntent = this.this$0;
-    paramContext = new com.tencent.mm.hellhoundlib.b.a().bd(paramContext);
-    com.tencent.mm.hellhoundlib.a.a.a(paramIntent, paramContext.adn(), "com/facebook/CustomTabMainActivity$1", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramIntent.startActivity((Intent)paramContext.lS(0));
+    paramContext = new com.tencent.mm.hellhoundlib.b.a().ba(paramContext);
+    com.tencent.mm.hellhoundlib.a.a.a(paramIntent, paramContext.aeD(), "com/facebook/CustomTabMainActivity$1", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramIntent.startActivity((Intent)paramContext.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramIntent, "com/facebook/CustomTabMainActivity$1", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(7605);
   }

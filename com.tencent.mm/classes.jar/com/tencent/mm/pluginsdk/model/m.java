@@ -2,29 +2,29 @@ package com.tencent.mm.pluginsdk.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.concurrent.ExecutorService;
 import junit.framework.Assert;
 
 public abstract class m<Params, Progress, Result>
 {
-  ap handler = new ap(Looper.getMainLooper());
+  ao handler = new ao(Looper.getMainLooper());
   private boolean isStart = false;
   
-  public abstract Result dQ();
+  public abstract ExecutorService dBu();
   
-  public abstract ExecutorService dnm();
+  public abstract Result dX();
   
   public void onPostExecute(Result paramResult) {}
   
-  public final boolean v(final Params... paramVarArgs)
+  public final boolean x(final Params... paramVarArgs)
   {
     if (this.isStart) {
       Assert.assertTrue("MicroMsg.MMAsyncTask Should construct a new Task", false);
     }
     this.isStart = true;
-    w(paramVarArgs);
-    ExecutorService localExecutorService = dnm();
+    y(paramVarArgs);
+    ExecutorService localExecutorService = dBu();
     if (localExecutorService == null) {
       return false;
     }
@@ -33,7 +33,7 @@ public abstract class m<Params, Progress, Result>
       public final void run()
       {
         AppMethodBeat.i(151637);
-        final Object localObject = m.this.dQ();
+        final Object localObject = m.this.dX();
         m.this.handler.post(new Runnable()
         {
           public final void run()
@@ -49,7 +49,7 @@ public abstract class m<Params, Progress, Result>
     return true;
   }
   
-  public void w(Params... paramVarArgs) {}
+  public void y(Params... paramVarArgs) {}
 }
 
 

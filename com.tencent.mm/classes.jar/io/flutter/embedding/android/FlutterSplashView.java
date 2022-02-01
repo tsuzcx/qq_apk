@@ -12,21 +12,20 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.embedding.engine.b.b;
 import io.flutter.embedding.engine.dart.DartExecutor;
-import java.util.Set;
 
 final class FlutterSplashView
   extends FrameLayout
 {
   private static String TAG = "FlutterSplashView";
-  private final FlutterView.a IXA;
-  private final Runnable IXB;
-  private f IXv;
-  private View IXw;
-  private Bundle IXx;
-  private String IXy;
-  private String IXz;
-  private final b rdC;
-  private FlutterView rdJ;
+  private final b KKx;
+  private g Kvg;
+  private View Kvh;
+  private Bundle Kvi;
+  private String Kvj;
+  private String Kvk;
+  private final FlutterView.a Kvl;
+  private final Runnable Kvm;
+  private FlutterView smb;
   
   public FlutterSplashView(Context paramContext)
   {
@@ -42,28 +41,30 @@ final class FlutterSplashView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(10060);
-    this.IXA = new FlutterView.a()
+    this.Kvl = new FlutterView.a()
     {
-      public final void fus()
+      public final void fHN()
       {
         AppMethodBeat.i(10025);
-        FlutterSplashView.a(FlutterSplashView.this).IXP.remove(this);
+        FlutterSplashView.a(FlutterSplashView.this).b(this);
         FlutterSplashView.this.a(FlutterSplashView.a(FlutterSplashView.this), FlutterSplashView.b(FlutterSplashView.this));
         AppMethodBeat.o(10025);
       }
     };
-    this.rdC = new b()
+    this.KKx = new b()
     {
-      public final void onFirstFrameRendered()
+      public final void cHX()
       {
-        AppMethodBeat.i(9963);
+        AppMethodBeat.i(192896);
         if (FlutterSplashView.b(FlutterSplashView.this) != null) {
           FlutterSplashView.c(FlutterSplashView.this);
         }
-        AppMethodBeat.o(9963);
+        AppMethodBeat.o(192896);
       }
+      
+      public final void cHY() {}
     };
-    this.IXB = new Runnable()
+    this.Kvm = new Runnable()
     {
       public final void run()
       {
@@ -77,10 +78,10 @@ final class FlutterSplashView
     AppMethodBeat.o(10060);
   }
   
-  private boolean fuq()
+  private boolean fHK()
   {
     AppMethodBeat.i(10064);
-    if ((this.rdJ != null) && (this.rdJ.fux()) && (!this.rdJ.IXO) && (!fur()))
+    if ((this.smb != null) && (this.smb.fMY()) && (!this.smb.KKU) && (!fHM()))
     {
       AppMethodBeat.o(10064);
       return true;
@@ -89,23 +90,33 @@ final class FlutterSplashView
     return false;
   }
   
-  private boolean fur()
+  private boolean fHL()
+  {
+    AppMethodBeat.i(192850);
+    if (this.smb != null) {
+      this.smb.fMY();
+    }
+    AppMethodBeat.o(192850);
+    return false;
+  }
+  
+  private boolean fHM()
   {
     AppMethodBeat.i(10065);
     IllegalStateException localIllegalStateException;
-    if (this.rdJ == null)
+    if (this.smb == null)
     {
       localIllegalStateException = new IllegalStateException("Cannot determine if splash has completed when no FlutterView is set.");
       AppMethodBeat.o(10065);
       throw localIllegalStateException;
     }
-    if (!this.rdJ.fux())
+    if (!this.smb.fMY())
     {
       localIllegalStateException = new IllegalStateException("Cannot determine if splash has completed when no FlutterEngine is attached to our FlutterView. This question depends on an isolate ID to differentiate Flutter experiences.");
       AppMethodBeat.o(10065);
       throw localIllegalStateException;
     }
-    if ((this.rdJ.getAttachedFlutterEngine().IYe.IYR != null) && (this.rdJ.getAttachedFlutterEngine().IYe.IYR.equals(this.IXz)))
+    if ((this.smb.getAttachedFlutterEngine().KLk.KLW != null) && (this.smb.getAttachedFlutterEngine().KLk.KLW.equals(this.Kvk)))
     {
       AppMethodBeat.o(10065);
       return true;
@@ -114,35 +125,36 @@ final class FlutterSplashView
     return false;
   }
   
-  public final void a(FlutterView paramFlutterView, f paramf)
+  public final void a(FlutterView paramFlutterView, g paramg)
   {
     AppMethodBeat.i(10063);
-    if (this.rdJ != null)
+    if (this.smb != null)
     {
-      this.rdJ.removeOnFirstFrameRenderedListener(this.rdC);
-      removeView(this.rdJ);
+      this.smb.b(this.KKx);
+      removeView(this.smb);
     }
-    if (this.IXw != null) {
-      removeView(this.IXw);
+    if (this.Kvh != null) {
+      removeView(this.Kvh);
     }
-    this.rdJ = paramFlutterView;
+    this.smb = paramFlutterView;
     addView(paramFlutterView);
-    this.IXv = paramf;
-    if (paramf != null)
+    this.Kvg = paramg;
+    if (paramg != null)
     {
-      if (fuq())
+      if (fHK())
       {
-        io.flutter.a.ftS();
-        this.IXw = paramf.lh(getContext());
-        addView(this.IXw);
-        paramFlutterView.addOnFirstFrameRenderedListener(this.rdC);
+        io.flutter.a.fMD();
+        this.Kvh = paramg.lv(getContext());
+        addView(this.Kvh);
+        paramFlutterView.a(this.KKx);
         AppMethodBeat.o(10063);
         return;
       }
-      if (!paramFlutterView.fux())
+      fHL();
+      if (!paramFlutterView.fMY())
       {
-        io.flutter.a.ftS();
-        paramFlutterView.a(this.IXA);
+        io.flutter.a.fMD();
+        paramFlutterView.a(this.Kvl);
       }
     }
     AppMethodBeat.o(10063);
@@ -153,8 +165,8 @@ final class FlutterSplashView
     AppMethodBeat.i(10062);
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.IXz = SavedState.b(paramParcelable);
-    this.IXx = SavedState.c(paramParcelable);
+    this.Kvk = SavedState.b(paramParcelable);
+    this.Kvi = SavedState.c(paramParcelable);
     AppMethodBeat.o(10062);
   }
   
@@ -162,7 +174,7 @@ final class FlutterSplashView
   {
     AppMethodBeat.i(10061);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    SavedState.a(localSavedState, this.IXz);
+    SavedState.a(localSavedState, this.Kvk);
     SavedState.a(localSavedState);
     AppMethodBeat.o(10061);
     return localSavedState;
@@ -172,8 +184,8 @@ final class FlutterSplashView
     extends View.BaseSavedState
   {
     public static Parcelable.Creator CREATOR;
-    private Bundle IXx;
-    private String IXz;
+    private Bundle Kvi;
+    private String Kvk;
     
     static
     {
@@ -186,8 +198,8 @@ final class FlutterSplashView
     {
       super();
       AppMethodBeat.i(9964);
-      this.IXz = paramParcel.readString();
-      this.IXx = paramParcel.readBundle(getClass().getClassLoader());
+      this.Kvk = paramParcel.readString();
+      this.Kvi = paramParcel.readBundle(getClass().getClassLoader());
       AppMethodBeat.o(9964);
     }
     
@@ -200,15 +212,15 @@ final class FlutterSplashView
     {
       AppMethodBeat.i(9965);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.IXz);
-      paramParcel.writeBundle(this.IXx);
+      paramParcel.writeString(this.Kvk);
+      paramParcel.writeBundle(this.Kvi);
       AppMethodBeat.o(9965);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView
  * JD-Core Version:    0.7.0.1
  */

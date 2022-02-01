@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionSummary
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String CoverUrl;
   public String ExptDesc;
@@ -115,17 +115,17 @@ public class EmotionSummary
       if (this.PackPrice != null) {
         paramInt = i + f.a.a.b.b.a.e(6, this.PackPrice);
       }
-      i = paramInt + f.a.a.b.b.a.bA(7, this.PackType) + f.a.a.b.b.a.bA(8, this.PackFlag);
+      i = paramInt + f.a.a.b.b.a.bx(7, this.PackType) + f.a.a.b.b.a.bx(8, this.PackFlag);
       paramInt = i;
       if (this.CoverUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(9, this.CoverUrl);
       }
-      i = paramInt + f.a.a.b.b.a.bA(10, this.PackExpire);
+      i = paramInt + f.a.a.b.b.a.bx(10, this.PackExpire);
       paramInt = i;
       if (this.PackCopyright != null) {
         paramInt = i + f.a.a.b.b.a.e(11, this.PackCopyright);
       }
-      i = paramInt + f.a.a.b.b.a.bA(12, this.Timestamp);
+      i = paramInt + f.a.a.b.b.a.bx(12, this.Timestamp);
       paramInt = i;
       if (this.PanelUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(13, this.PanelUrl);
@@ -163,9 +163,9 @@ public class EmotionSummary
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(104781);
@@ -181,83 +181,83 @@ public class EmotionSummary
           AppMethodBeat.o(104781);
           return -1;
         case 1: 
-          localEmotionSummary.ProductID = locala.KhF.readString();
+          localEmotionSummary.ProductID = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 2: 
-          localEmotionSummary.IconUrl = locala.KhF.readString();
+          localEmotionSummary.IconUrl = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 3: 
-          localEmotionSummary.PackName = locala.KhF.readString();
+          localEmotionSummary.PackName = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 4: 
-          localEmotionSummary.PackDesc = locala.KhF.readString();
+          localEmotionSummary.PackDesc = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 5: 
-          localEmotionSummary.PackAuthInfo = locala.KhF.readString();
+          localEmotionSummary.PackAuthInfo = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 6: 
-          localEmotionSummary.PackPrice = locala.KhF.readString();
+          localEmotionSummary.PackPrice = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 7: 
-          localEmotionSummary.PackType = locala.KhF.xS();
+          localEmotionSummary.PackType = locala.LVo.xF();
           AppMethodBeat.o(104781);
           return 0;
         case 8: 
-          localEmotionSummary.PackFlag = locala.KhF.xS();
+          localEmotionSummary.PackFlag = locala.LVo.xF();
           AppMethodBeat.o(104781);
           return 0;
         case 9: 
-          localEmotionSummary.CoverUrl = locala.KhF.readString();
+          localEmotionSummary.CoverUrl = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 10: 
-          localEmotionSummary.PackExpire = locala.KhF.xS();
+          localEmotionSummary.PackExpire = locala.LVo.xF();
           AppMethodBeat.o(104781);
           return 0;
         case 11: 
-          localEmotionSummary.PackCopyright = locala.KhF.readString();
+          localEmotionSummary.PackCopyright = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 12: 
-          localEmotionSummary.Timestamp = locala.KhF.xS();
+          localEmotionSummary.Timestamp = locala.LVo.xF();
           AppMethodBeat.o(104781);
           return 0;
         case 13: 
-          localEmotionSummary.PanelUrl = locala.KhF.readString();
+          localEmotionSummary.PanelUrl = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 14: 
-          localEmotionSummary.PriceNum = locala.KhF.readString();
+          localEmotionSummary.PriceNum = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 15: 
-          localEmotionSummary.PriceType = locala.KhF.readString();
+          localEmotionSummary.PriceType = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 16: 
-          localEmotionSummary.SendInfo = locala.KhF.readString();
+          localEmotionSummary.SendInfo = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 17: 
-          localEmotionSummary.TimeLimitStr = locala.KhF.readString();
+          localEmotionSummary.TimeLimitStr = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 18: 
-          localEmotionSummary.Introduce = locala.KhF.readString();
+          localEmotionSummary.Introduce = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         case 19: 
-          localEmotionSummary.TagUri = locala.KhF.readString();
+          localEmotionSummary.TagUri = locala.LVo.readString();
           AppMethodBeat.o(104781);
           return 0;
         }
-        localEmotionSummary.ExptDesc = locala.KhF.readString();
+        localEmotionSummary.ExptDesc = locala.LVo.readString();
         AppMethodBeat.o(104781);
         return 0;
       }
@@ -268,7 +268,7 @@ public class EmotionSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionSummary
  * JD-Core Version:    0.7.0.1
  */

@@ -8,23 +8,23 @@ import java.util.List;
 
 public final class b
 {
-  private final List<b<a>> gab;
-  private final List<Object> gac;
+  private final List<b<a>> geH;
+  private final List<Object> geI;
   
   private b()
   {
     AppMethodBeat.i(146427);
-    this.gab = new LinkedList();
-    this.gac = new LinkedList();
+    this.geH = new LinkedList();
+    this.geI = new LinkedList();
     AppMethodBeat.o(146427);
   }
   
-  private void adJ()
+  private void aeZ()
   {
     try
     {
       AppMethodBeat.i(146432);
-      Iterator localIterator = this.gac.iterator();
+      Iterator localIterator = this.geI.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -33,12 +33,12 @@ public final class b
     finally {}
   }
   
-  private void adK()
+  private void afa()
   {
     try
     {
       AppMethodBeat.i(146433);
-      Iterator localIterator = this.gac.iterator();
+      Iterator localIterator = this.geI.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -55,10 +55,10 @@ public final class b
       AppMethodBeat.o(146428);
       return false;
     }
-    synchronized (this.gab)
+    synchronized (this.geH)
     {
-      this.gab.add(new b(parama));
-      adJ();
+      this.geH.add(new b(parama));
+      aeZ();
       AppMethodBeat.o(146428);
       return true;
     }
@@ -72,10 +72,10 @@ public final class b
       AppMethodBeat.o(146429);
       return false;
     }
-    synchronized (this.gab)
+    synchronized (this.geH)
     {
-      boolean bool = this.gab.remove(new b(parama));
-      adK();
+      boolean bool = this.geH.remove(new b(parama));
+      afa();
       AppMethodBeat.o(146429);
       return bool;
     }
@@ -89,9 +89,9 @@ public final class b
       AppMethodBeat.o(146430);
       return false;
     }
-    synchronized (this.gab)
+    synchronized (this.geH)
     {
-      Iterator localIterator = this.gab.iterator();
+      Iterator localIterator = this.geH.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (b)localIterator.next();
@@ -113,9 +113,9 @@ public final class b
   public final int size()
   {
     AppMethodBeat.i(146431);
-    synchronized (this.gab)
+    synchronized (this.geH)
     {
-      int i = this.gab.size();
+      int i = this.geH.size();
       AppMethodBeat.o(146431);
       return i;
     }
@@ -123,12 +123,12 @@ public final class b
   
   public static final class a
   {
-    private static b gad;
+    private static b geJ;
     
     static
     {
       AppMethodBeat.i(146425);
-      gad = new b((byte)0);
+      geJ = new b((byte)0);
       AppMethodBeat.o(146425);
     }
   }

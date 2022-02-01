@@ -4,9 +4,9 @@ import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
+import com.tencent.mm.plugin.appbrand.z.g;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +34,7 @@ public class RealSetFillStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145055);
-    paramd = paramd.iYM;
+    paramd = paramd.jzc;
     paramd.setShader(null);
     paramd.setColor(this.color);
     AppMethodBeat.o(145055);
@@ -121,7 +121,7 @@ public class RealSetFillStyleActionNormalArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionNormalArg
  * JD-Core Version:    0.7.0.1
  */

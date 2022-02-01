@@ -14,27 +14,27 @@ import java.util.List;
 public class SwitchPhoneItemGroupView
   extends LinearLayout
 {
-  List<SwitchPhoneItemView> Att;
-  private a Atu;
-  private View.OnClickListener Atv;
+  List<SwitchPhoneItemView> BLN;
+  private a BLO;
+  private View.OnClickListener BLP;
   
   public SwitchPhoneItemGroupView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71485);
-    this.Att = new ArrayList();
-    this.Atv = new View.OnClickListener()
+    this.BLN = new ArrayList();
+    this.BLP = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71484);
-        Iterator localIterator = SwitchPhoneItemGroupView.this.Att.iterator();
+        Iterator localIterator = SwitchPhoneItemGroupView.this.BLN.iterator();
         while (localIterator.hasNext()) {
-          ((SwitchPhoneItemView)localIterator.next()).Atz.setImageResource(2131691077);
+          ((SwitchPhoneItemView)localIterator.next()).BLT.setImageResource(2131691077);
         }
-        ((SwitchPhoneItemView)paramAnonymousView).Atz.setImageResource(2131691078);
+        ((SwitchPhoneItemView)paramAnonymousView).BLT.setImageResource(2131691078);
         if (SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this) != null) {
-          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fi(paramAnonymousView);
+          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fv(paramAnonymousView);
         }
         AppMethodBeat.o(71484);
       }
@@ -46,19 +46,19 @@ public class SwitchPhoneItemGroupView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71486);
-    this.Att = new ArrayList();
-    this.Atv = new View.OnClickListener()
+    this.BLN = new ArrayList();
+    this.BLP = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71484);
-        Iterator localIterator = SwitchPhoneItemGroupView.this.Att.iterator();
+        Iterator localIterator = SwitchPhoneItemGroupView.this.BLN.iterator();
         while (localIterator.hasNext()) {
-          ((SwitchPhoneItemView)localIterator.next()).Atz.setImageResource(2131691077);
+          ((SwitchPhoneItemView)localIterator.next()).BLT.setImageResource(2131691077);
         }
-        ((SwitchPhoneItemView)paramAnonymousView).Atz.setImageResource(2131691078);
+        ((SwitchPhoneItemView)paramAnonymousView).BLT.setImageResource(2131691078);
         if (SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this) != null) {
-          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fi(paramAnonymousView);
+          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fv(paramAnonymousView);
         }
         AppMethodBeat.o(71484);
       }
@@ -70,19 +70,19 @@ public class SwitchPhoneItemGroupView
   {
     AppMethodBeat.i(71487);
     addView(paramSwitchPhoneItemView, paramInt);
-    this.Att.add(paramSwitchPhoneItemView);
-    paramSwitchPhoneItemView.setOnClickListener(this.Atv);
+    this.BLN.add(paramSwitchPhoneItemView);
+    paramSwitchPhoneItemView.setOnClickListener(this.BLP);
     AppMethodBeat.o(71487);
   }
   
   public void setOnItemSelectListener(a parama)
   {
-    this.Atu = parama;
+    this.BLO = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fi(View paramView);
+    public abstract void fv(View paramView);
   }
 }
 

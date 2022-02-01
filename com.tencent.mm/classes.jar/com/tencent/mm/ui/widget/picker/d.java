@@ -18,30 +18,30 @@ import java.util.Locale;
 public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private LinearLayout HJa;
-  private CustomTimePickerNew HJb;
-  public a HJc;
-  private Button hJg;
-  private Button hJh;
-  private View jGG;
-  private int kBk;
-  private BottomSheetBehavior kBl;
+  private LinearLayout Jjx;
+  private CustomTimePickerNew Jjy;
+  public d.a Jjz;
+  private Button gAJ;
+  private Button gCY;
+  private View khe;
+  private int lcC;
+  private BottomSheetBehavior lcD;
   private Context mContext;
-  private a sri;
+  private a tyZ;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(159555);
     this.mContext = paramContext;
-    this.sri = new a(this.mContext);
-    this.jGG = View.inflate(this.mContext, 2131495753, null);
-    this.HJa = ((LinearLayout)this.jGG.findViewById(2131305816));
-    this.HJb = new CustomTimePickerNew(this.mContext);
-    this.HJa.removeAllViews();
-    this.HJa.setGravity(17);
-    this.HJa.addView(this.HJb.getView(), new LinearLayout.LayoutParams(-1, -1));
-    this.hJh = ((Button)this.jGG.findViewById(2131302999));
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.tyZ = new a(this.mContext);
+    this.khe = View.inflate(this.mContext, 2131495753, null);
+    this.Jjx = ((LinearLayout)this.khe.findViewById(2131305816));
+    this.Jjy = new CustomTimePickerNew(this.mContext);
+    this.Jjx.removeAllViews();
+    this.Jjx.setGravity(17);
+    this.Jjx.addView(this.Jjy.getView(), new LinearLayout.LayoutParams(-1, -1));
+    this.gAJ = ((Button)this.khe.findViewById(2131302999));
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -54,12 +54,12 @@ public final class d
           AppMethodBeat.o(159552);
           return;
           paramAnonymousView = d.a(d.this);
-          paramAnonymousView.HIG.aGe();
+          paramAnonymousView.Jjd.aMR();
         }
       }
     });
-    this.hJg = ((Button)this.jGG.findViewById(2131297690));
-    this.hJg.setOnClickListener(new View.OnClickListener()
+    this.gCY = ((Button)this.khe.findViewById(2131297690));
+    this.gCY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -68,15 +68,15 @@ public final class d
         AppMethodBeat.o(159553);
       }
     });
-    this.sri.setContentView(this.jGG);
-    this.kBk = ao.fromDPToPix(this.mContext, 420);
-    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-    if (this.kBl != null)
+    this.tyZ.setContentView(this.khe);
+    this.lcC = ao.fromDPToPix(this.mContext, 420);
+    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+    if (this.lcD != null)
     {
-      this.kBl.J(this.kBk);
-      this.kBl.lh = false;
+      this.lcD.J(this.lcC);
+      this.lcD.mg = false;
     }
-    this.sri.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -91,17 +91,17 @@ public final class d
   public final void hide()
   {
     AppMethodBeat.i(159560);
-    if (this.sri != null) {
-      this.sri.dismiss();
+    if (this.tyZ != null) {
+      this.tyZ.dismiss();
     }
     AppMethodBeat.o(159560);
   }
   
-  public final void jM(int paramInt1, int paramInt2)
+  public final void jY(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159558);
-    if (this.HJb != null) {
-      this.HJb.init(paramInt1, paramInt2);
+    if (this.Jjy != null) {
+      this.Jjy.init(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159558);
   }
@@ -111,8 +111,8 @@ public final class d
   public final void setMaxTime(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159557);
-    if (this.HJb != null) {
-      this.HJb.setMaxTime(paramInt1, paramInt2);
+    if (this.Jjy != null) {
+      this.Jjy.setMaxTime(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159557);
   }
@@ -120,8 +120,8 @@ public final class d
   public final void setMinTime(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159556);
-    if (this.HJb != null) {
-      this.HJb.setMinTime(paramInt1, paramInt2);
+    if (this.Jjy != null) {
+      this.Jjy.setMinTime(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159556);
   }
@@ -129,19 +129,14 @@ public final class d
   public final void show()
   {
     AppMethodBeat.i(159559);
-    if (this.sri != null)
+    if (this.tyZ != null)
     {
-      if (this.HJb != null) {
-        this.HJb.onShow();
+      if (this.Jjy != null) {
+        this.Jjy.onShow();
       }
-      this.sri.show();
+      this.tyZ.show();
     }
     AppMethodBeat.o(159559);
-  }
-  
-  public static abstract interface a<T>
-  {
-    public abstract void a(boolean paramBoolean, T paramT);
   }
 }
 

@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.cld;
+import com.tencent.mm.protocal.protobuf.cqk;
 import f.a.a.b;
 import java.util.LinkedList;
 
 public final class ai
-  extends cld
+  extends cqk
 {
-  public String gKn;
-  public int uKQ;
-  public int uKR;
-  public String uKY;
+  public String hkN;
+  public int vTH;
+  public int vTI;
+  public String vTP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -28,16 +28,16 @@ public final class ai
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.kX(1, this.BaseResponse.computeSize());
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(2, this.uKR);
-      if (this.uKY != null) {
-        paramVarArgs.d(3, this.uKY);
+      paramVarArgs.aR(2, this.vTI);
+      if (this.vTP != null) {
+        paramVarArgs.d(3, this.vTP);
       }
-      paramVarArgs.aR(4, this.uKQ);
-      if (this.gKn != null) {
-        paramVarArgs.d(5, this.gKn);
+      paramVarArgs.aR(4, this.vTH);
+      if (this.hkN != null) {
+        paramVarArgs.d(5, this.hkN);
       }
       AppMethodBeat.o(122800);
       return 0;
@@ -48,26 +48,26 @@ public final class ai
       }
     }
     label566:
-    for (paramInt = f.a.a.a.kW(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bA(2, this.uKR);
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.vTI);
       paramInt = i;
-      if (this.uKY != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.uKY);
+      if (this.vTP != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.vTP);
       }
-      i = paramInt + f.a.a.b.b.a.bA(4, this.uKQ);
+      i = paramInt + f.a.a.b.b.a.bx(4, this.vTH);
       paramInt = i;
-      if (this.gKn != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.gKn);
+      if (this.hkN != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.hkN);
       }
       AppMethodBeat.o(122800);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cld.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cld.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.BaseResponse == null)
@@ -90,7 +90,7 @@ public final class ai
           AppMethodBeat.o(122800);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -98,26 +98,26 @@ public final class ai
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localai.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(122800);
           return 0;
         case 2: 
-          localai.uKR = ((f.a.a.a.a)localObject1).KhF.xS();
+          localai.vTI = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(122800);
           return 0;
         case 3: 
-          localai.uKY = ((f.a.a.a.a)localObject1).KhF.readString();
+          localai.vTP = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(122800);
           return 0;
         case 4: 
-          localai.uKQ = ((f.a.a.a.a)localObject1).KhF.xS();
+          localai.vTH = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(122800);
           return 0;
         }
-        localai.gKn = ((f.a.a.a.a)localObject1).KhF.readString();
+        localai.hkN = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(122800);
         return 0;
       }
@@ -128,7 +128,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.ai
  * JD-Core Version:    0.7.0.1
  */

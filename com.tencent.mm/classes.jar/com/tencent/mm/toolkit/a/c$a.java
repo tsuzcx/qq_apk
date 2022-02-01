@@ -6,13 +6,13 @@ public enum c$a
 {
   static
   {
-    AppMethodBeat.i(189804);
-    FEK = new a("LOW", 0);
-    FEL = new a("NORMAL", 1);
-    FEM = new a("HIGH", 2);
-    FEN = new a("IMMEDIATE", 3);
-    FEO = new a[] { FEK, FEL, FEM, FEN };
-    AppMethodBeat.o(189804);
+    AppMethodBeat.i(193025);
+    HdN = new a("LOW", 0);
+    HdO = new a("NORMAL", 1);
+    HdP = new a("HIGH", 2);
+    HdQ = new a("IMMEDIATE", 3);
+    HdR = new a[] { HdN, HdO, HdP, HdQ };
+    AppMethodBeat.o(193025);
   }
   
   private c$a() {}

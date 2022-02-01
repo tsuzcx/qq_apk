@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String ID;
   public int Version;
-  public com.tencent.mm.bx.b mAx;
-  public int mBG;
-  public int mBH;
-  public int mBI;
-  public int mBJ;
+  public com.tencent.mm.bw.b ncy;
+  public int ndH;
+  public int ndI;
+  public int ndJ;
+  public int ndK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -25,44 +25,44 @@ public final class v
         AppMethodBeat.o(22127);
         throw paramVarArgs;
       }
-      paramVarArgs.aR(1, this.mBG);
+      paramVarArgs.aR(1, this.ndH);
       if (this.ID != null) {
         paramVarArgs.d(2, this.ID);
       }
-      if (this.mAx != null) {
-        paramVarArgs.c(3, this.mAx);
+      if (this.ncy != null) {
+        paramVarArgs.c(3, this.ncy);
       }
       paramVarArgs.aR(4, this.Version);
-      paramVarArgs.aR(5, this.mBH);
-      paramVarArgs.aR(6, this.mBI);
-      paramVarArgs.aR(7, this.mBJ);
+      paramVarArgs.aR(5, this.ndI);
+      paramVarArgs.aR(6, this.ndJ);
+      paramVarArgs.aR(7, this.ndK);
       AppMethodBeat.o(22127);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.mBG) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.ndH) + 0;
       paramInt = i;
       if (this.ID != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.ID);
       }
       i = paramInt;
-      if (this.mAx != null) {
-        i = paramInt + f.a.a.b.b.a.b(3, this.mAx);
+      if (this.ncy != null) {
+        i = paramInt + f.a.a.b.b.a.b(3, this.ncy);
       }
-      paramInt = f.a.a.b.b.a.bA(4, this.Version);
-      int j = f.a.a.b.b.a.bA(5, this.mBH);
-      int k = f.a.a.b.b.a.bA(6, this.mBI);
-      int m = f.a.a.b.b.a.bA(7, this.mBJ);
+      paramInt = f.a.a.b.b.a.bx(4, this.Version);
+      int j = f.a.a.b.b.a.bx(5, this.ndI);
+      int k = f.a.a.b.b.a.bx(6, this.ndJ);
+      int m = f.a.a.b.b.a.bx(7, this.ndK);
       AppMethodBeat.o(22127);
       return i + paramInt + j + k + m;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       if (this.ID == null)
@@ -84,31 +84,31 @@ public final class v
         AppMethodBeat.o(22127);
         return -1;
       case 1: 
-        localv.mBG = locala.KhF.xS();
+        localv.ndH = locala.LVo.xF();
         AppMethodBeat.o(22127);
         return 0;
       case 2: 
-        localv.ID = locala.KhF.readString();
+        localv.ID = locala.LVo.readString();
         AppMethodBeat.o(22127);
         return 0;
       case 3: 
-        localv.mAx = locala.KhF.fMu();
+        localv.ncy = locala.LVo.gfk();
         AppMethodBeat.o(22127);
         return 0;
       case 4: 
-        localv.Version = locala.KhF.xS();
+        localv.Version = locala.LVo.xF();
         AppMethodBeat.o(22127);
         return 0;
       case 5: 
-        localv.mBH = locala.KhF.xS();
+        localv.ndI = locala.LVo.xF();
         AppMethodBeat.o(22127);
         return 0;
       case 6: 
-        localv.mBI = locala.KhF.xS();
+        localv.ndJ = locala.LVo.xF();
         AppMethodBeat.o(22127);
         return 0;
       }
-      localv.mBJ = locala.KhF.xS();
+      localv.ndK = locala.LVo.xF();
       AppMethodBeat.o(22127);
       return 0;
     }

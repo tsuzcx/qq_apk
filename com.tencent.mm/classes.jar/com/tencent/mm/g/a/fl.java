@@ -1,13 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fl
   extends b
 {
-  public a dhN;
-  public b dhO;
+  public a dfe;
+  public b dff;
   
   public fl()
   {
@@ -16,27 +19,26 @@ public final class fl
   
   private fl(byte paramByte)
   {
-    AppMethodBeat.i(19805);
-    this.dhN = new a();
-    this.dhO = new b();
-    this.ESR = false;
+    AppMethodBeat.i(19804);
+    this.dfe = new a();
+    this.dff = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19805);
+    AppMethodBeat.o(19804);
   }
   
   public static final class a
   {
-    public String bssid;
-    public int dhP;
-    public String ssid;
-    public int version = 1;
+    public String[] cYr;
+    public Context context;
+    public int dfg = 0;
+    public String[] selectionArgs;
+    public Uri uri;
   }
   
   public static final class b
   {
-    public int dhQ = 0;
-    public int dhR = 0;
-    public String dhS;
+    public Cursor dfh;
   }
 }
 

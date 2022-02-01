@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.input.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandActivityUtils;", "", "()V", "TAG", "", "hideVKB", "", "Landroid/app/Activity;", "showVKB", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandActivityUtils;", "", "()V", "TAG", "", "hideVKB", "", "Landroid/app/Activity;", "showVKB", "plugin-appbrand-integration_release"})
 public final class b
 {
-  public static final b lxG;
+  public static final b lZA;
   
   static
   {
     AppMethodBeat.i(175216);
-    lxG = new b();
+    lZA = new b();
     AppMethodBeat.o(175216);
   }
   
@@ -28,13 +30,13 @@ public final class b
         AppMethodBeat.o(175215);
         return;
       }
-      if ((paramActivity instanceof com.tencent.mm.plugin.appbrand.widget.input.ad))
+      if ((paramActivity instanceof ad))
       {
-        ((com.tencent.mm.plugin.appbrand.widget.input.ad)paramActivity).hideVKB();
+        ((ad)paramActivity).hideVKB();
         AppMethodBeat.o(175215);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrandActivityUtils", "hideVKB not supported in " + paramActivity.getLocalClassName());
+      ac.e("MicroMsg.AppBrandActivityUtils", "hideVKB not supported in " + paramActivity.getLocalClassName());
     }
     AppMethodBeat.o(175215);
   }

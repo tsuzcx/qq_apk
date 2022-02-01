@@ -2,29 +2,32 @@ package com.tencent.mm.ui.chatting.c.b;
 
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mm.ui.chatting.c.ab;
-import com.tencent.mm.ui.u;
+import com.tencent.mm.ui.v;
 
 public abstract interface w
   extends ab
 {
-  public abstract void YM(int paramInt);
+  public abstract void a(boolean paramBoolean, View.OnClickListener paramOnClickListener);
   
-  public abstract u eUV();
+  public abstract void aaX(int paramInt);
   
-  public abstract void eXO();
+  public abstract void fW(View paramView);
   
-  public abstract void eXQ();
+  public abstract v fkH();
   
-  public abstract void eXR();
+  public abstract void fnA();
   
-  public abstract void eXT();
+  public abstract void fnC();
   
-  public abstract void eXV();
+  public abstract void fnD();
   
-  public abstract int eYb();
+  public abstract void fnF();
   
-  public abstract void fJ(View paramView);
+  public abstract void fnH();
+  
+  public abstract int fnN();
   
   public abstract void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener);
   
@@ -40,7 +43,7 @@ public abstract interface w
   
   public abstract void setTitlePhoneIconVisibility(int paramInt);
   
-  public abstract void wg(boolean paramBoolean);
+  public abstract void xk(boolean paramBoolean);
 }
 
 

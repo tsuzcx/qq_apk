@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public abstract interface a$a
 {
-  public abstract Bitmap cPA();
+  public abstract Bitmap ddj();
 }
 
 

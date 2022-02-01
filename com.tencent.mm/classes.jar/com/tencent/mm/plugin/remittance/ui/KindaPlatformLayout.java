@@ -4,19 +4,19 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class KindaPlatformLayout
   extends LinearLayout
 {
   public static String TAG = "KindaPlatformLayout";
-  private h vCf;
+  private h wMk;
   
   public KindaPlatformLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67928);
-    this.vCf = new h();
+    this.wMk = new h();
     AppMethodBeat.o(67928);
   }
   
@@ -24,7 +24,7 @@ public class KindaPlatformLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(67929);
-    this.vCf = new h();
+    this.wMk = new h();
     AppMethodBeat.o(67929);
   }
   
@@ -34,9 +34,9 @@ public class KindaPlatformLayout
     long l = System.currentTimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     l = System.currentTimeMillis() - l;
-    h localh = this.vCf;
+    h localh = this.wMk;
     localh.valLayout += l;
-    ad.i(TAG, "testandroid root layout out %s %s", new Object[] { Long.valueOf(l), this.vCf.result() });
+    ac.i(TAG, "testandroid root layout out %s %s", new Object[] { Long.valueOf(l), this.wMk.result() });
     AppMethodBeat.o(67932);
   }
   
@@ -46,9 +46,9 @@ public class KindaPlatformLayout
     long l = System.currentTimeMillis();
     super.onMeasure(paramInt1, paramInt2);
     l = System.currentTimeMillis() - l;
-    h localh = this.vCf;
+    h localh = this.wMk;
     localh.valMeasure += l;
-    ad.i(TAG, "testandroid root measure out %s %s", new Object[] { Long.valueOf(l), this.vCf.result() });
+    ac.i(TAG, "testandroid root measure out %s %s", new Object[] { Long.valueOf(l), this.wMk.result() });
     AppMethodBeat.o(67930);
   }
   
@@ -61,7 +61,7 @@ public class KindaPlatformLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.KindaPlatformLayout
  * JD-Core Version:    0.7.0.1
  */

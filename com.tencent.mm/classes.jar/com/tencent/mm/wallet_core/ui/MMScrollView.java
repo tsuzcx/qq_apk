@@ -7,8 +7,8 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
@@ -16,8 +16,8 @@ public class MMScrollView
   extends ScrollView
   implements View.OnFocusChangeListener
 {
-  private b Ifg;
-  private a Ifh;
+  private b JGI;
+  private a JGJ;
   
   public MMScrollView(Context paramContext)
   {
@@ -60,7 +60,7 @@ public class MMScrollView
   public void onFocusChange(final View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(72944);
-    ad.d("MicroMsg.MMScrollView", "onFocusChange:".concat(String.valueOf(paramBoolean)));
+    ac.d("MicroMsg.MMScrollView", "onFocusChange:".concat(String.valueOf(paramBoolean)));
     if (!paramBoolean)
     {
       AppMethodBeat.o(72944);
@@ -82,8 +82,8 @@ public class MMScrollView
   {
     AppMethodBeat.i(72946);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.Ifh != null) {
-      this.Ifh.onScrollChange(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.JGJ != null) {
+      this.JGJ.onScrollChange(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
     AppMethodBeat.o(72946);
   }
@@ -92,9 +92,9 @@ public class MMScrollView
   {
     AppMethodBeat.i(72945);
     b localb;
-    if ((this.Ifg != null) && (paramInt2 != paramInt4))
+    if ((this.JGI != null) && (paramInt2 != paramInt4))
     {
-      localb = this.Ifg;
+      localb = this.JGI;
       if (paramInt2 >= paramInt4) {
         break label57;
       }
@@ -102,7 +102,7 @@ public class MMScrollView
     label57:
     for (boolean bool = true;; bool = false)
     {
-      localb.sF(bool);
+      localb.tG(bool);
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       AppMethodBeat.o(72945);
       return;
@@ -111,13 +111,13 @@ public class MMScrollView
   
   public void setOnScrollListener(a parama)
   {
-    this.Ifh = parama;
+    this.JGJ = parama;
   }
   
   public void setOnSizeChangeListener(b paramb)
   {
     if (paramb != null) {
-      this.Ifg = paramb;
+      this.JGI = paramb;
     }
   }
   
@@ -128,7 +128,7 @@ public class MMScrollView
   
   public static abstract interface b
   {
-    public abstract void sF(boolean paramBoolean);
+    public abstract void tG(boolean paramBoolean);
   }
 }
 

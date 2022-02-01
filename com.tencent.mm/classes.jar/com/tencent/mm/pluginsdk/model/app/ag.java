@@ -1,123 +1,123 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.g.c.y;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.s.a.a;
 import com.tencent.mm.plugin.s.a.a.a;
-import com.tencent.mm.protocal.protobuf.bay;
-import com.tencent.mm.protocal.protobuf.baz;
-import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.cgi;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.beq;
+import com.tencent.mm.protocal.protobuf.ber;
+import com.tencent.mm.protocal.protobuf.bl;
+import com.tencent.mm.protocal.protobuf.cll;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.eco;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class ag
   extends aa
 {
-  LinkedList<g> BQl;
-  private LinkedList<g> BQm;
-  private LinkedList<String> BQn;
+  private LinkedList<g> DiA;
+  private LinkedList<String> DiB;
+  LinkedList<g> Diz;
   private int appType;
   
   public ag(String paramString, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(151821);
-    ad.i("MicroMsg.NetSceneGetSuggestionAppList", "offset: 0, limit = 20, lang = " + paramString + "installedApp list size: " + paramLinkedList.size());
+    ac.i("MicroMsg.NetSceneGetSuggestionAppList", "offset: 0, limit = 20, lang = " + paramString + "installedApp list size: " + paramLinkedList.size());
     Object localObject = paramLinkedList.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ad.i("MicroMsg.NetSceneGetSuggestionAppList", "install id:[%s]", new Object[] { (String)((Iterator)localObject).next() });
+      ac.i("MicroMsg.NetSceneGetSuggestionAppList", "install id:[%s]", new Object[] { (String)((Iterator)localObject).next() });
     }
     this.appType = 3;
     localObject = new b.a();
-    ((b.a)localObject).gUU = new bay();
-    ((b.a)localObject).gUV = new baz();
+    ((b.a)localObject).hvt = new beq();
+    ((b.a)localObject).hvu = new ber();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getsuggestionapplist";
     ((b.a)localObject).funcId = 409;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.fUF = ((b.a)localObject).atI();
-    localObject = (bay)this.fUF.gUS.gUX;
-    ((bay)localObject).rZJ = 3;
-    ((bay)localObject).scx = 0;
-    ((bay)localObject).scy = 20;
-    ((bay)localObject).sbA = paramString;
-    paramString = bc(paramLinkedList);
-    ((bay)localObject).DyI = paramString.size();
-    ((bay)localObject).sch = paramString;
-    this.BQl = new LinkedList();
-    this.BQm = new LinkedList();
-    this.BQn = new LinkedList();
-    this.BQn.addAll(paramLinkedList);
+    this.fYA = ((b.a)localObject).aAz();
+    localObject = (beq)this.fYA.hvr.hvw;
+    ((beq)localObject).thC = 3;
+    ((beq)localObject).tkr = 0;
+    ((beq)localObject).tks = 20;
+    ((beq)localObject).tju = paramString;
+    paramString = bj(paramLinkedList);
+    ((beq)localObject).EUe = paramString.size();
+    ((beq)localObject).tkb = paramString;
+    this.Diz = new LinkedList();
+    this.DiA = new LinkedList();
+    this.DiB = new LinkedList();
+    this.DiB.addAll(paramLinkedList);
     AppMethodBeat.o(151821);
   }
   
-  private static void a(g paramg, bj parambj)
+  private static void a(g paramg, bl parambl)
   {
     AppMethodBeat.i(151829);
-    paramg.mJ(parambj.CvP);
-    paramg.mM(parambj.sao);
-    paramg.mK(parambj.CvR);
-    paramg.field_appName = parambj.scR;
-    paramg.field_appIconUrl = parambj.CvQ;
-    paramg.mN(parambj.CvT);
-    paramg.mV(parambj.CvV);
-    a(paramg, parambj.CvU);
+    paramg.pP(parambl.DOk);
+    paramg.pS(parambl.tii);
+    paramg.pQ(parambl.DOm);
+    paramg.field_appName = parambl.tkL;
+    paramg.field_appIconUrl = parambl.DOl;
+    paramg.pT(parambl.DOo);
+    paramg.qb(parambl.DOq);
+    a(paramg, parambl.DOp);
     AppMethodBeat.o(151829);
   }
   
-  private static void a(g paramg, cgi paramcgi)
+  private static void a(g paramg, cll paramcll)
   {
     AppMethodBeat.i(151826);
-    paramg.mJ(paramcgi.CvP);
-    paramg.field_appIconUrl = paramcgi.CvQ;
-    paramg.mI(paramcgi.EbS);
-    paramg.field_appName = paramcgi.scR;
-    paramg.mK(paramcgi.CvR);
-    paramg.field_appType = paramcgi.CHA;
-    paramg.mM(paramcgi.sao);
-    paramg.field_packageName = paramcgi.CvS;
-    paramg.mN(paramcgi.CvT);
-    if (!bt.isNullOrNil(paramcgi.CvT))
+    paramg.pP(paramcll.DOk);
+    paramg.field_appIconUrl = paramcll.DOl;
+    paramg.pO(paramcll.FyN);
+    paramg.field_appName = paramcll.tkL;
+    paramg.pQ(paramcll.DOm);
+    paramg.field_appType = paramcll.Eac;
+    paramg.pS(paramcll.tii);
+    paramg.field_packageName = paramcll.DOn;
+    paramg.pT(paramcll.DOo);
+    if (!bs.isNullOrNil(paramcll.DOo))
     {
-      ad.i("MicroMsg.NetSceneGetSuggestionAppList", "google play download url is : %s, download flag is %d", new Object[] { paramcgi.CvT, Integer.valueOf(paramcgi.Ecc) });
-      paramg.jz(paramcgi.Ecc);
+      ac.i("MicroMsg.NetSceneGetSuggestionAppList", "google play download url is : %s, download flag is %d", new Object[] { paramcll.DOo, Integer.valueOf(paramcll.FyX) });
+      paramg.jx(paramcll.FyX);
     }
-    paramg.mO(paramcgi.EbZ);
-    paramg.mP(paramcgi.Eca);
-    a(paramg, paramcgi.CvU);
+    paramg.pU(paramcll.FyU);
+    paramg.pV(paramcll.FyV);
+    a(paramg, paramcll.DOp);
     r(paramg);
     AppMethodBeat.o(151826);
   }
   
-  private static void a(g paramg, dwx paramdwx)
+  private static void a(g paramg, eco parameco)
   {
     AppMethodBeat.i(151828);
-    ad.v("MicroMsg.NetSceneGetSuggestionAppList", "dealYYBDownloadInfos, appId = %s", new Object[] { paramg.field_appId });
-    if (paramdwx != null)
+    ac.v("MicroMsg.NetSceneGetSuggestionAppList", "dealYYBDownloadInfos, appId = %s", new Object[] { paramg.field_appId });
+    if (parameco != null)
     {
-      paramg.jz(paramdwx.EKQ);
-      paramg.mS(paramdwx.rNA);
-      paramg.mT(paramdwx.seb);
-      paramg.mQ(paramdwx.EKR);
-      paramg.mR(paramdwx.sed);
-      paramg.mU(paramdwx.see);
-      paramg.jA(paramdwx.sef);
-      ad.i("MicroMsg.NetSceneGetSuggestionAppList", "get yyb download infos:[%d],[%s],[%s],[%s],[%s],[%s],[%d]", new Object[] { Integer.valueOf(paramdwx.EKQ), paramdwx.rNA, paramdwx.seb, paramdwx.EKR, paramdwx.sed, paramdwx.see, Integer.valueOf(paramdwx.sef) });
+      paramg.jx(parameco.Gic);
+      paramg.pY(parameco.sVp);
+      paramg.pZ(parameco.tlV);
+      paramg.pW(parameco.Gid);
+      paramg.pX(parameco.tlX);
+      paramg.qa(parameco.tlY);
+      paramg.jy(parameco.tlZ);
+      ac.i("MicroMsg.NetSceneGetSuggestionAppList", "get yyb download infos:[%d],[%s],[%s],[%s],[%s],[%s],[%d]", new Object[] { Integer.valueOf(parameco.Gic), parameco.sVp, parameco.tlV, parameco.Gid, parameco.tlX, parameco.tlY, Integer.valueOf(parameco.tlZ) });
     }
     AppMethodBeat.o(151828);
   }
   
-  private void a(j paramj, LinkedList<bj> paramLinkedList)
+  private void a(j paramj, LinkedList<bl> paramLinkedList)
   {
     AppMethodBeat.i(151823);
     if ((paramLinkedList != null) && (paramLinkedList.size() > 0))
@@ -125,20 +125,20 @@ public final class ag
       Iterator localIterator = paramLinkedList.iterator();
       if (localIterator.hasNext())
       {
-        bj localbj = (bj)localIterator.next();
-        paramLinkedList = h.j(localbj.fVC, true, false);
+        bl localbl = (bl)localIterator.next();
+        paramLinkedList = h.k(localbl.fZx, true, false);
         if (paramLinkedList != null)
         {
-          a(paramLinkedList, localbj);
+          a(paramLinkedList, localbl);
           paramj.a(paramLinkedList, new String[0]);
         }
         for (;;)
         {
-          this.BQm.add(paramLinkedList);
+          this.DiA.add(paramLinkedList);
           break;
           paramLinkedList = new g();
-          paramLinkedList.field_appId = localbj.fVC;
-          a(paramLinkedList, localbj);
+          paramLinkedList.field_appId = localbl.fZx;
+          a(paramLinkedList, localbl);
           paramj.q(paramLinkedList);
         }
       }
@@ -146,7 +146,7 @@ public final class ag
     AppMethodBeat.o(151823);
   }
   
-  private void b(j paramj, LinkedList<cgi> paramLinkedList)
+  private void b(j paramj, LinkedList<cll> paramLinkedList)
   {
     AppMethodBeat.i(151824);
     if ((paramLinkedList != null) && (paramLinkedList.size() > 0))
@@ -154,47 +154,47 @@ public final class ag
       Iterator localIterator = paramLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        cgi localcgi = (cgi)localIterator.next();
-        if (bt.isNullOrNil(localcgi.fVC))
+        cll localcll = (cll)localIterator.next();
+        if (bs.isNullOrNil(localcll.fZx))
         {
-          ad.e("MicroMsg.NetSceneGetSuggestionAppList", "error appinfo, the appid is null");
+          ac.e("MicroMsg.NetSceneGetSuggestionAppList", "error appinfo, the appid is null");
         }
         else
         {
           boolean bool4 = true;
           boolean bool1 = true;
           boolean bool3 = false;
-          paramLinkedList = h.j(localcgi.fVC, true, false);
+          paramLinkedList = h.k(localcll.fZx, true, false);
           label138:
           boolean bool2;
           if (paramLinkedList != null)
           {
-            a(paramLinkedList, localcgi);
+            a(paramLinkedList, localcll);
             if (this.appType == 3)
             {
               paramLinkedList.field_status = 5;
-              if ((bt.isNullOrNil(paramLinkedList.eoo)) || (bt.isNullOrNil(paramLinkedList.eon))) {
-                if (paramLinkedList.eoo != null)
+              if ((bs.isNullOrNil(paramLinkedList.eqs)) || (bs.isNullOrNil(paramLinkedList.eqr))) {
+                if (paramLinkedList.eqs != null)
                 {
                   bool1 = true;
-                  if (paramLinkedList.eon == null) {
+                  if (paramLinkedList.eqr == null) {
                     break label262;
                   }
                   bool2 = true;
                   label148:
-                  ad.e("MicroMsg.NetSceneGetSuggestionAppList", "wrong suggestion params1, has IntroUrl %s, has IconUrl %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+                  ac.e("MicroMsg.NetSceneGetSuggestionAppList", "wrong suggestion params1, has IntroUrl %s, has IconUrl %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
                   bool1 = false;
                 }
               }
             }
             for (bool2 = false;; bool2 = paramj.a(paramLinkedList, new String[0]))
             {
-              ad.i("MicroMsg.NetSceneGetSuggestionAppList", "update appinfo: AppID = %s, ret = %s, needAddToList = %s", new Object[] { localcgi.fVC, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+              ac.i("MicroMsg.NetSceneGetSuggestionAppList", "update appinfo: AppID = %s, ret = %s, needAddToList = %s", new Object[] { localcll.fZx, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
               label215:
-              if ((!bool1) || (this.BQn.contains(localcgi.fVC)) || (this.BQl.contains(paramLinkedList))) {
+              if ((!bool1) || (this.DiB.contains(localcll.fZx)) || (this.Diz.contains(paramLinkedList))) {
                 break label426;
               }
-              this.BQl.add(paramLinkedList);
+              this.Diz.add(paramLinkedList);
               break;
               bool1 = false;
               break label138;
@@ -204,22 +204,22 @@ public final class ag
             }
           }
           paramLinkedList = new g();
-          paramLinkedList.field_appId = localcgi.fVC;
-          a(paramLinkedList, localcgi);
+          paramLinkedList.field_appId = localcll.fZx;
+          a(paramLinkedList, localcll);
           if (this.appType == 3)
           {
             paramLinkedList.field_status = 5;
-            if ((bt.isNullOrNil(paramLinkedList.eoo)) || (bt.isNullOrNil(paramLinkedList.eon))) {
-              if (paramLinkedList.eoo != null)
+            if ((bs.isNullOrNil(paramLinkedList.eqs)) || (bs.isNullOrNil(paramLinkedList.eqr))) {
+              if (paramLinkedList.eqs != null)
               {
                 bool1 = true;
                 label347:
-                if (paramLinkedList.eon == null) {
+                if (paramLinkedList.eqr == null) {
                   break label433;
                 }
                 bool2 = true;
                 label357:
-                ad.e("MicroMsg.NetSceneGetSuggestionAppList", "wrong suggestion params2, has IntroUrl %s, has IconUrl %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+                ac.e("MicroMsg.NetSceneGetSuggestionAppList", "wrong suggestion params2, has IntroUrl %s, has IconUrl %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
                 bool1 = false;
                 bool2 = bool3;
               }
@@ -227,7 +227,7 @@ public final class ag
           }
           for (;;)
           {
-            ad.i("MicroMsg.NetSceneGetSuggestionAppList", "insert appinfo: AppID = %s, ret = %s, needAddToList = %s", new Object[] { localcgi.fVC, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+            ac.i("MicroMsg.NetSceneGetSuggestionAppList", "insert appinfo: AppID = %s, ret = %s, needAddToList = %s", new Object[] { localcll.fZx, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
             break label215;
             label426:
             break;
@@ -245,7 +245,7 @@ public final class ag
     AppMethodBeat.o(151824);
   }
   
-  private static LinkedList<cmf> bc(LinkedList<String> paramLinkedList)
+  private static LinkedList<crm> bj(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(151825);
     LinkedList localLinkedList = new LinkedList();
@@ -258,8 +258,8 @@ public final class ag
     while (paramLinkedList.hasNext())
     {
       String str = (String)paramLinkedList.next();
-      if (!bt.isNullOrNil(str)) {
-        localLinkedList.add(z.BE(str));
+      if (!bs.isNullOrNil(str)) {
+        localLinkedList.add(z.FI(str));
       }
     }
     AppMethodBeat.o(151825);
@@ -269,7 +269,7 @@ public final class ag
   private static void r(g paramg)
   {
     AppMethodBeat.i(151827);
-    if ((!bt.isNullOrNil(paramg.field_appType)) && ((paramg.field_appType.startsWith("1")) || (paramg.field_appType.startsWith("6"))))
+    if ((!bs.isNullOrNil(paramg.field_appType)) && ((paramg.field_appType.startsWith("1")) || (paramg.field_appType.startsWith("6"))))
     {
       if (!paramg.field_appType.endsWith(",")) {
         paramg.field_appType += ",";
@@ -279,16 +279,16 @@ public final class ag
     AppMethodBeat.o(151827);
   }
   
-  public final void cb(byte[] paramArrayOfByte)
+  public final void ca(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151831);
     if (paramArrayOfByte == null)
     {
-      ad.e("MicroMsg.NetSceneGetSuggestionAppList", "buf is null");
+      ac.e("MicroMsg.NetSceneGetSuggestionAppList", "buf is null");
       AppMethodBeat.o(151831);
       return;
     }
-    b.c localc = this.fUF.gUT;
+    b.c localc = this.fYA.hvs;
     try
     {
       localc.fromProtoBuf(paramArrayOfByte);
@@ -297,33 +297,33 @@ public final class ag
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("MicroMsg.NetSceneGetSuggestionAppList", paramArrayOfByte.getMessage());
-      ad.printErrStackTrace("MicroMsg.NetSceneGetSuggestionAppList", paramArrayOfByte, "", new Object[0]);
+      ac.e("MicroMsg.NetSceneGetSuggestionAppList", paramArrayOfByte.getMessage());
+      ac.printErrStackTrace("MicroMsg.NetSceneGetSuggestionAppList", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(151831);
     }
   }
   
-  public final int evO()
-  {
-    return ((baz)this.fUF.gUT.gUX).DyJ;
-  }
-  
-  public final byte[] evp()
+  public final byte[] eKJ()
   {
     AppMethodBeat.i(151830);
     try
     {
-      byte[] arrayOfByte = ((b.b)this.fUF.getReqObj()).toProtoBuf();
+      byte[] arrayOfByte = ((b.b)this.fYA.getReqObj()).toProtoBuf();
       AppMethodBeat.o(151830);
       return arrayOfByte;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.NetSceneGetSuggestionAppList", localException.getMessage());
-      ad.printErrStackTrace("MicroMsg.NetSceneGetSuggestionAppList", localException, "", new Object[0]);
+      ac.e("MicroMsg.NetSceneGetSuggestionAppList", localException.getMessage());
+      ac.printErrStackTrace("MicroMsg.NetSceneGetSuggestionAppList", localException, "", new Object[0]);
       AppMethodBeat.o(151830);
     }
     return null;
+  }
+  
+  public final int eLi()
+  {
+    return ((ber)this.fYA.hvs.hvw).EUf;
   }
   
   public final int getType()
@@ -334,30 +334,30 @@ public final class ag
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151822);
-    ad.i("MicroMsg.NetSceneGetSuggestionAppList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    ac.i("MicroMsg.NetSceneGetSuggestionAppList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.e("MicroMsg.NetSceneGetSuggestionAppList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+      ac.e("MicroMsg.NetSceneGetSuggestionAppList", "errType = " + paramInt2 + ", errCode = " + paramInt3);
       AppMethodBeat.o(151822);
       return;
     }
-    paramString = (baz)this.fUF.gUT.gUX;
+    paramString = (ber)this.fYA.hvs.hvw;
     if (paramString == null)
     {
-      ad.e("MicroMsg.NetSceneGetSuggestionAppList", "resp == null");
+      ac.e("MicroMsg.NetSceneGetSuggestionAppList", "resp == null");
       AppMethodBeat.o(151822);
       return;
     }
-    ad.v("MicroMsg.NetSceneGetSuggestionAppList", "suggestion app count = %s, appType = %s, ", new Object[] { Integer.valueOf(paramString.DyJ), Integer.valueOf(this.appType) });
-    paramq = a.a.cZX().cZV();
-    b(paramq, paramString.DyK);
-    a(paramq, paramString.sdc);
+    ac.v("MicroMsg.NetSceneGetSuggestionAppList", "suggestion app count = %s, appType = %s, ", new Object[] { Integer.valueOf(paramString.EUf), Integer.valueOf(this.appType) });
+    paramq = a.a.dnF().dnD();
+    b(paramq, paramString.EUg);
+    a(paramq, paramString.tkW);
     AppMethodBeat.o(151822);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ag
  * JD-Core Version:    0.7.0.1
  */

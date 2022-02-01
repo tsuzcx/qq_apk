@@ -1,92 +1,92 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.audio.b.c;
 import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.model.az;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.qafpapi.QAFPNative;
 
 public final class a
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  c cXI;
-  private c.a cYN;
-  Object dah;
-  private boolean wnA;
-  long wnB;
-  int wnC;
-  private boolean wnD;
-  byte[] wno;
-  int wnp;
-  int wnq;
-  long wnr;
-  int wns;
-  boolean wnt;
-  e wnu;
-  private a wnv;
-  boolean wnw;
-  boolean wnx;
-  int wny;
-  int wnz;
+  c cVe;
+  private c.a cWj;
+  Object cXD;
+  byte[] xyF;
+  int xyG;
+  int xyH;
+  long xyI;
+  int xyJ;
+  boolean xyK;
+  e xyL;
+  private a xyM;
+  boolean xyN;
+  boolean xyO;
+  int xyP;
+  int xyQ;
+  private boolean xyR;
+  long xyS;
+  int xyT;
+  private boolean xyU;
   
   public a()
   {
     AppMethodBeat.i(28263);
-    this.wno = new byte[10240];
-    this.wnp = 0;
-    this.wnq = 0;
-    this.wnr = 0L;
-    this.wns = 0;
-    this.wnt = false;
-    this.wnu = null;
-    this.dah = new Object();
-    this.wnv = null;
-    this.wnw = false;
-    this.wnx = false;
-    this.wny = 0;
-    this.wnA = false;
-    this.wnD = false;
-    this.cYN = new c.a()
+    this.xyF = new byte[10240];
+    this.xyG = 0;
+    this.xyH = 0;
+    this.xyI = 0L;
+    this.xyJ = 0;
+    this.xyK = false;
+    this.xyL = null;
+    this.cXD = new Object();
+    this.xyM = null;
+    this.xyN = false;
+    this.xyO = false;
+    this.xyP = 0;
+    this.xyR = false;
+    this.xyU = false;
+    this.cWj = new c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cf(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final void w(byte[] arg1, int paramAnonymousInt)
+      public final void u(byte[] arg1, int paramAnonymousInt)
       {
         AppMethodBeat.i(28259);
         f.a locala = new f.a();
         long l;
         for (;;)
         {
-          synchronized (a.this.dah)
+          synchronized (a.this.cXD)
           {
             int i;
-            if (a.this.wns == 408)
+            if (a.this.xyJ == 408)
             {
-              ad.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPProcessTV");
+              ac.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPProcessTV");
               i = QAFPNative.QAFPProcessTV(???, paramAnonymousInt);
-              l = bt.eGO() - a.this.wnB;
-              ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPProcess clientid:%d pcm:%d ret:%d dur:%d usetime:%d", new Object[] { Integer.valueOf(a.this.wny), Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), Long.valueOf(l), Long.valueOf(locala.XK()) });
-              if (l <= a.this.wnC * 3000 + 4000) {
+              l = bs.eWj() - a.this.xyS;
+              ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPProcess clientid:%d pcm:%d ret:%d dur:%d usetime:%d", new Object[] { Integer.valueOf(a.this.xyP), Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), Long.valueOf(l), Long.valueOf(locala.YH()) });
+              if (l <= a.this.xyT * 3000 + 4000) {
                 break label414;
               }
               ??? = new byte[10240];
               ??? = new f.a();
-              if (a.this.wns == 408)
+              if (a.this.xyJ == 408)
               {
-                ad.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPGetAudioFingerPrintTV");
+                ac.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPGetAudioFingerPrintTV");
                 paramAnonymousInt = QAFPNative.QAFPGetAudioFingerPrintTV((byte[])???);
-                ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d outLen:%d time:%d", new Object[] { Integer.valueOf(a.this.wny), Integer.valueOf(paramAnonymousInt), Long.valueOf(???.XK()) });
+                ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d outLen:%d time:%d", new Object[] { Integer.valueOf(a.this.xyP), Integer.valueOf(paramAnonymousInt), Long.valueOf(???.YH()) });
                 if ((paramAnonymousInt < 10240) && (paramAnonymousInt > 0)) {
                   break;
                 }
-                ad.e("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d  out ret:%d  !stop record now", new Object[] { Integer.valueOf(a.this.wny), Integer.valueOf(paramAnonymousInt) });
+                ac.e("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d  out ret:%d  !stop record now", new Object[] { Integer.valueOf(a.this.xyP), Integer.valueOf(paramAnonymousInt) });
                 a.this.reset();
                 AppMethodBeat.o(28259);
               }
@@ -98,23 +98,23 @@ public final class a
           }
           paramAnonymousInt = QAFPNative.QAFPGetAudioFingerPrint((byte[])???);
         }
-        synchronized (a.this.wno)
+        synchronized (a.this.xyF)
         {
-          System.arraycopy(???, 0, a.this.wno, 0, paramAnonymousInt);
-          a.this.wnp = paramAnonymousInt;
+          System.arraycopy(???, 0, a.this.xyF, 0, paramAnonymousInt);
+          a.this.xyG = paramAnonymousInt;
           ??? = a.this;
-          if (a.this.wnC >= 3)
+          if (a.this.xyT >= 3)
           {
             bool = true;
-            ((a)???).wnx = bool;
-            a.this.wnq = ((int)(l / 1000L));
-            a.this.ayc();
+            ((a)???).xyO = bool;
+            a.this.xyH = ((int)(l / 1000L));
+            a.this.aEU();
             ??? = a.this;
-            ???.wnC += 1;
+            ???.xyT += 1;
             label414:
-            if (a.this.wnx)
+            if (a.this.xyO)
             {
-              ad.w("MicroMsg.MusicFingerPrintRecorder", "client:%d stop now! duration:%d  ", new Object[] { Integer.valueOf(a.this.wny), Long.valueOf(l) });
+              ac.w("MicroMsg.MusicFingerPrintRecorder", "client:%d stop now! duration:%d  ", new Object[] { Integer.valueOf(a.this.xyP), Long.valueOf(l) });
               a.this.reset();
             }
             AppMethodBeat.o(28259);
@@ -128,7 +128,7 @@ public final class a
   }
   
   /* Error */
-  private void a(cld paramcld, long paramLong, boolean paramBoolean)
+  private void a(cqk paramcqk, long paramLong, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
@@ -136,17 +136,17 @@ public final class a
     //   2: sipush 28270
     //   5: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 81	com/tencent/mm/plugin/shake/d/a/a:wnD	Z
+    //   9: getfield 81	com/tencent/mm/plugin/shake/d/a/a:xyU	Z
     //   12: ifne +30 -> 42
     //   15: aload_0
-    //   16: getfield 71	com/tencent/mm/plugin/shake/d/a/a:wnv	Lcom/tencent/mm/plugin/shake/d/a/a$a;
+    //   16: getfield 71	com/tencent/mm/plugin/shake/d/a/a:xyM	Lcom/tencent/mm/plugin/shake/d/a/a$a;
     //   19: aload_1
     //   20: lload_2
     //   21: iload 4
     //   23: invokeinterface 97 5 0
     //   28: aload_0
     //   29: iconst_1
-    //   30: putfield 81	com/tencent/mm/plugin/shake/d/a/a:wnD	Z
+    //   30: putfield 81	com/tencent/mm/plugin/shake/d/a/a:xyU	Z
     //   33: sipush 28270
     //   36: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_0
@@ -154,7 +154,7 @@ public final class a
     //   41: return
     //   42: ldc 99
     //   44: ldc 101
-    //   46: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokestatic 107	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   49: sipush 28270
     //   52: invokestatic 89	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: goto -16 -> 39
@@ -166,7 +166,7 @@ public final class a
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	63	0	this	a
-    //   0	63	1	paramcld	cld
+    //   0	63	1	paramcqk	cqk
     //   0	63	2	paramLong	long
     //   0	63	4	paramBoolean	boolean
     // Exception table:
@@ -175,48 +175,48 @@ public final class a
     //   42	55	58	finally
   }
   
-  private void ps(final boolean paramBoolean)
+  private void qr(final boolean paramBoolean)
   {
     AppMethodBeat.i(28269);
-    ad.d("MicroMsg.MusicFingerPrintRecorder", "tryCallBack, directFail = %s", new Object[] { Boolean.FALSE });
-    aq.f(new Runnable()
+    ac.d("MicroMsg.MusicFingerPrintRecorder", "tryCallBack, directFail = %s", new Object[] { Boolean.FALSE });
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28260);
-        if (this.wnF)
+        if (this.xyW)
         {
           a.a(a.this, null, -1L, paramBoolean);
           AppMethodBeat.o(28260);
           return;
         }
-        if (!a.this.wnt)
+        if (!a.this.xyK)
         {
-          ad.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack netscen not return.");
+          ac.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack netscen not return.");
           AppMethodBeat.o(28260);
           return;
         }
-        if (a.this.cXI != null)
+        if (a.this.cVe != null)
         {
-          ad.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack device not ready!");
+          ac.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack device not ready!");
           AppMethodBeat.o(28260);
           return;
         }
-        if (a.this.wnu != null)
+        if (a.this.xyL != null)
         {
           a locala = a.this;
-          cld localcld = a.this.wnu.dpE();
-          e locale = a.this.wnu;
-          long l2 = bt.eGO();
+          cqk localcqk = a.this.xyL.dDO();
+          e locale = a.this.xyL;
+          long l2 = bs.eWj();
           long l1 = l2;
-          if (locale.wnJ > 0L)
+          if (locale.xza > 0L)
           {
             l1 = l2;
-            if (locale.wnJ < l2) {
-              l1 = locale.wnJ;
+            if (locale.xza < l2) {
+              l1 = locale.xza;
             }
           }
-          a.a(locala, localcld, l1, paramBoolean);
+          a.a(locala, localcqk, l1, paramBoolean);
           AppMethodBeat.o(28260);
           return;
         }
@@ -227,19 +227,19 @@ public final class a
     AppMethodBeat.o(28269);
   }
   
-  public final boolean Ob()
+  public final boolean NX()
   {
     AppMethodBeat.i(28266);
-    ad.d("MicroMsg.MusicFingerPrintRecorder", "stopRecord now clientid:%d", new Object[] { Integer.valueOf(this.wny) });
-    az.aeS().b(367, this);
-    az.aeS().b(408, this);
-    synchronized (this.wno)
+    ac.d("MicroMsg.MusicFingerPrintRecorder", "stopRecord now clientid:%d", new Object[] { Integer.valueOf(this.xyP) });
+    az.agi().b(367, this);
+    az.agi().b(408, this);
+    synchronized (this.xyF)
     {
-      this.wnp = 0;
-      if (this.cXI != null)
+      this.xyG = 0;
+      if (this.cVe != null)
       {
-        this.cXI.Ob();
-        this.cXI = null;
+        this.cVe.NX();
+        this.cVe = null;
       }
       AppMethodBeat.o(28266);
       return true;
@@ -249,62 +249,62 @@ public final class a
   public final boolean a(int paramInt, a arg2)
   {
     AppMethodBeat.i(28267);
-    Ob();
-    synchronized (this.dah)
+    NX();
+    synchronized (this.cXD)
     {
-      this.wnz = QAFPNative.QAFPGetVersion();
-      dpB();
-      this.wns = paramInt;
-      this.wnv = ???;
-      this.wnx = false;
-      this.wnw = false;
-      this.wnt = false;
-      this.wnD = false;
-      az.aeS().a(367, this);
-      az.aeS().a(408, this);
-      this.wny = ((int)bt.eGO());
-      ad.d("MicroMsg.MusicFingerPrintRecorder", "startRecord now clientid:%d", new Object[] { Integer.valueOf(this.wny) });
-      this.cXI = new c(8000, 1, 4);
-      this.cXI.cYk = -19;
-      this.cXI.cYv = this.cYN;
-      if (!this.cXI.Ok())
+      this.xyQ = QAFPNative.QAFPGetVersion();
+      dDL();
+      this.xyJ = paramInt;
+      this.xyM = ???;
+      this.xyO = false;
+      this.xyN = false;
+      this.xyK = false;
+      this.xyU = false;
+      az.agi().a(367, this);
+      az.agi().a(408, this);
+      this.xyP = ((int)bs.eWj());
+      ac.d("MicroMsg.MusicFingerPrintRecorder", "startRecord now clientid:%d", new Object[] { Integer.valueOf(this.xyP) });
+      this.cVe = new c(8000, 1, 4);
+      this.cVe.cVG = -19;
+      this.cVe.cVR = this.cWj;
+      if (!this.cVe.Og())
       {
-        ad.e("MicroMsg.MusicFingerPrintRecorder", "start record failed");
+        ac.e("MicroMsg.MusicFingerPrintRecorder", "start record failed");
         reset();
         AppMethodBeat.o(28267);
         return false;
       }
     }
-    synchronized (this.dah)
+    synchronized (this.cXD)
     {
       paramInt = QAFPNative.QAFPReset();
-      ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPReset ret:%d", new Object[] { Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPReset ret:%d", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt < 0)
       {
-        ad.e("MicroMsg.MusicFingerPrintRecorder", "init failed QAFPReset:%d clientid:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.wny) });
+        ac.e("MicroMsg.MusicFingerPrintRecorder", "init failed QAFPReset:%d clientid:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.xyP) });
         reset();
         AppMethodBeat.o(28267);
         return false;
       }
-      this.wnr = bt.eGO();
-      this.wnB = bt.eGO();
-      this.wnC = 0;
+      this.xyI = bs.eWj();
+      this.xyS = bs.eWj();
+      this.xyT = 0;
       AppMethodBeat.o(28267);
       return true;
     }
   }
   
-  final void ayc()
+  final void aEU()
   {
     AppMethodBeat.i(28271);
-    az.afE().ax(new Runnable()
+    az.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28261);
-        if (a.this.wnw)
+        if (a.this.xyN)
         {
-          ad.e("MicroMsg.MusicFingerPrintRecorder", "tryStartNetscene clientid: %d but netscene is running.", new Object[] { Integer.valueOf(a.this.wny) });
+          ac.e("MicroMsg.MusicFingerPrintRecorder", "tryStartNetscene clientid: %d but netscene is running.", new Object[] { Integer.valueOf(a.this.xyP) });
           AppMethodBeat.o(28261);
           return;
         }
@@ -316,27 +316,27 @@ public final class a
           int k;
           boolean bool;
           int m;
-          synchronized (a.this.wno)
+          synchronized (a.this.xyF)
           {
-            if (a.this.wnp <= 0)
+            if (a.this.xyG <= 0)
             {
               AppMethodBeat.o(28261);
               return;
             }
-            byte[] arrayOfByte1 = new byte[a.this.wnp];
-            System.arraycopy(a.this.wno, 0, arrayOfByte1, 0, a.this.wnp);
-            a.this.wnp = 0;
-            l = a.this.wnr;
-            a.this.wnw = true;
-            i = a.this.wns;
-            j = a.this.wnq;
-            k = a.this.wny;
-            bool = a.this.wnx;
-            m = a.this.wnz;
+            byte[] arrayOfByte1 = new byte[a.this.xyG];
+            System.arraycopy(a.this.xyF, 0, arrayOfByte1, 0, a.this.xyG);
+            a.this.xyG = 0;
+            l = a.this.xyI;
+            a.this.xyN = true;
+            i = a.this.xyJ;
+            j = a.this.xyH;
+            k = a.this.xyP;
+            bool = a.this.xyO;
+            m = a.this.xyQ;
             if (i == 367)
             {
               ??? = new f(arrayOfByte1, j, l, k, bool, m);
-              az.aeS().a((n)???, 0);
+              az.agi().a((n)???, 0);
               AppMethodBeat.o(28261);
               return;
             }
@@ -360,26 +360,26 @@ public final class a
     AppMethodBeat.o(28271);
   }
   
-  public final boolean dpB()
+  public final boolean dDL()
   {
     boolean bool = false;
     AppMethodBeat.i(28264);
     for (;;)
     {
       int i;
-      synchronized (this.dah)
+      synchronized (this.cXD)
       {
-        if (this.wnA)
+        if (this.xyR)
         {
-          ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit already inited");
+          ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit already inited");
           AppMethodBeat.o(28264);
           return false;
         }
         i = QAFPNative.QAFPInit();
-        ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit ret:%d", new Object[] { Integer.valueOf(i) });
+        ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPInit ret:%d", new Object[] { Integer.valueOf(i) });
         if (i >= 0)
         {
-          this.wnA = true;
+          this.xyR = true;
           break label96;
           AppMethodBeat.o(28264);
           return bool;
@@ -392,20 +392,20 @@ public final class a
     }
   }
   
-  public final boolean dpC()
+  public final boolean dDM()
   {
     boolean bool = false;
     AppMethodBeat.i(28265);
-    synchronized (this.dah)
+    synchronized (this.cXD)
     {
-      if (!this.wnA)
+      if (!this.xyR)
       {
-        ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease never inited");
+        ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease never inited");
         AppMethodBeat.o(28265);
         return false;
       }
       int i = QAFPNative.QAFPRelease();
-      ad.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease ret:%d", new Object[] { Integer.valueOf(i) });
+      ac.d("MicroMsg.MusicFingerPrintRecorder", "QAFPRelease ret:%d", new Object[] { Integer.valueOf(i) });
       if (i >= 0) {
         bool = true;
       }
@@ -422,56 +422,56 @@ public final class a
       AppMethodBeat.o(28272);
       return;
     }
-    ad.d("MicroMsg.MusicFingerPrintRecorder", "onSceneEnd errType = %s, errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.wnw = false;
-    if (((e)paramn).dpD())
+    ac.d("MicroMsg.MusicFingerPrintRecorder", "onSceneEnd errType = %s, errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.xyN = false;
+    if (((e)paramn).dDN())
     {
-      ad.d("MicroMsg.MusicFingerPrintRecorder", "NetSceneShakeMedia isRecogSuccess stop now ! clientid:%d", new Object[] { Integer.valueOf(this.wny) });
-      Ob();
-      this.wnu = ((e)paramn);
-      this.wnt = true;
-      ps(false);
+      ac.d("MicroMsg.MusicFingerPrintRecorder", "NetSceneShakeMedia isRecogSuccess stop now ! clientid:%d", new Object[] { Integer.valueOf(this.xyP) });
+      NX();
+      this.xyL = ((e)paramn);
+      this.xyK = true;
+      qr(false);
       AppMethodBeat.o(28272);
       return;
     }
-    if ((this.wnp == 0) && (this.wnx))
+    if ((this.xyG == 0) && (this.xyO))
     {
-      ad.d("MicroMsg.MusicFingerPrintRecorder", "recog failed . clientid:%d", new Object[] { Integer.valueOf(this.wny) });
-      this.wnu = null;
-      this.wnt = true;
+      ac.d("MicroMsg.MusicFingerPrintRecorder", "recog failed . clientid:%d", new Object[] { Integer.valueOf(this.xyP) });
+      this.xyL = null;
+      this.xyK = true;
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        ps(false);
+        qr(false);
       }
       for (;;)
       {
-        az.aeS().b(367, this);
-        az.aeS().b(408, this);
+        az.agi().b(367, this);
+        az.agi().b(408, this);
         AppMethodBeat.o(28272);
         return;
-        ps(true);
+        qr(true);
       }
     }
-    ad.d("MicroMsg.MusicFingerPrintRecorder", "NetScene try again clientId:%d", new Object[] { Integer.valueOf(this.wny) });
-    ayc();
+    ac.d("MicroMsg.MusicFingerPrintRecorder", "NetScene try again clientId:%d", new Object[] { Integer.valueOf(this.xyP) });
+    aEU();
     AppMethodBeat.o(28272);
   }
   
   final void reset()
   {
     AppMethodBeat.i(28268);
-    ad.d("MicroMsg.MusicFingerPrintRecorder", "reset recorder clientid:%d", new Object[] { Integer.valueOf(this.wny) });
-    if (this.cXI != null)
+    ac.d("MicroMsg.MusicFingerPrintRecorder", "reset recorder clientid:%d", new Object[] { Integer.valueOf(this.xyP) });
+    if (this.cVe != null)
     {
-      this.cXI.Ob();
-      this.cXI = null;
+      this.cVe.NX();
+      this.cVe = null;
     }
-    ps(false);
+    qr(false);
     AppMethodBeat.o(28268);
   }
   
   public static abstract interface a
   {
-    public abstract void b(cld paramcld, long paramLong, boolean paramBoolean);
+    public abstract void b(cqk paramcqk, long paramLong, boolean paramBoolean);
   }
 }
 

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -15,33 +15,33 @@ import java.util.Map;
 
 public final class bg
 {
-  private static HashMap<Long, Long> nmE;
-  private static HashMap<Long, String> nmF;
-  private static Map<String, List<String>> qSp;
-  private static Map<String, List<String>> qSq;
+  private static HashMap<Long, Long> nPE;
+  private static HashMap<Long, String> nPF;
+  private static Map<String, List<String>> rOO;
+  private static Map<String, List<String>> rOP;
   
   static
   {
     AppMethodBeat.i(99442);
-    qSp = new HashMap();
-    qSq = new HashMap();
-    nmE = new HashMap();
-    nmF = new HashMap();
+    rOO = new HashMap();
+    rOP = new HashMap();
+    nPE = new HashMap();
+    nPF = new HashMap();
     AppMethodBeat.o(99442);
   }
   
-  public static String E(Context paramContext, String paramString1, String paramString2)
+  public static String D(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(99438);
-    if (qSq.get(paramString2) == null) {
-      bd(paramContext, paramString2);
+    if (rOP.get(paramString2) == null) {
+      be(paramContext, paramString2);
     }
-    int i = bt.getInt(paramString1, 0);
-    paramString1 = (List)qSq.get(paramString2);
+    int i = bs.getInt(paramString1, 0);
+    paramString1 = (List)rOP.get(paramString2);
     if ((i >= paramString1.size()) || (paramString1.get(i) == null) || (((String)paramString1.get(i)).equals(""))) {
-      bd(paramContext, paramString2);
+      be(paramContext, paramString2);
     }
-    paramContext = (List)qSq.get(paramString2);
+    paramContext = (List)rOP.get(paramString2);
     if (i < paramContext.size())
     {
       paramContext = (String)paramContext.get(i);
@@ -50,28 +50,6 @@ public final class bg
     }
     AppMethodBeat.o(99438);
     return "";
-  }
-  
-  private static String Z(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(99437);
-    paramContext = paramContext.getResources().getStringArray(2130903094);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add("");
-    int i = 0;
-    while (i < paramContext.length)
-    {
-      localArrayList.add(paramContext[i]);
-      i += 1;
-    }
-    if (paramInt >= localArrayList.size())
-    {
-      AppMethodBeat.o(99437);
-      return "";
-    }
-    paramContext = (String)localArrayList.get(paramInt);
-    AppMethodBeat.o(99437);
-    return paramContext;
   }
   
   public static CharSequence a(Context paramContext, long paramLong, boolean paramBoolean)
@@ -104,7 +82,29 @@ public final class bg
     return paramContext;
   }
   
-  private static void bd(Context paramContext, String paramString)
+  private static String af(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(99437);
+    paramContext = paramContext.getResources().getStringArray(2130903094);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      localArrayList.add(paramContext[i]);
+      i += 1;
+    }
+    if (paramInt >= localArrayList.size())
+    {
+      AppMethodBeat.o(99437);
+      return "";
+    }
+    paramContext = (String)localArrayList.get(paramInt);
+    AppMethodBeat.o(99437);
+    return paramContext;
+  }
+  
+  private static void be(Context paramContext, String paramString)
   {
     AppMethodBeat.i(99436);
     paramContext = paramContext.getResources().getStringArray(2130903094);
@@ -116,7 +116,7 @@ public final class bg
       localArrayList.add(paramContext[i]);
       i += 1;
     }
-    qSq.put(paramString, localArrayList);
+    rOP.put(paramString, localArrayList);
     AppMethodBeat.o(99436);
   }
   
@@ -125,8 +125,8 @@ public final class bg
     try
     {
       AppMethodBeat.i(99434);
-      nmE.clear();
-      nmF.clear();
+      nPE.clear();
+      nPF.clear();
       AppMethodBeat.o(99434);
       return;
     }
@@ -145,7 +145,7 @@ public final class bg
     return i;
   }
   
-  public static String k(Context paramContext, long paramLong)
+  public static String l(Context paramContext, long paramLong)
   {
     for (;;)
     {
@@ -162,17 +162,17 @@ public final class bg
           return paramContext;
         }
         l1 = localGregorianCalendar.getTimeInMillis();
-        if (nmE.containsKey(Long.valueOf(paramLong))) {
-          if (l1 - ((Long)nmE.get(Long.valueOf(paramLong))).longValue() < 60000L)
+        if (nPE.containsKey(Long.valueOf(paramLong))) {
+          if (l1 - ((Long)nPE.get(Long.valueOf(paramLong))).longValue() < 60000L)
           {
-            if (nmF.containsKey(Long.valueOf(paramLong)))
+            if (nPF.containsKey(Long.valueOf(paramLong)))
             {
-              paramContext = (String)nmF.get(Long.valueOf(paramLong));
+              paramContext = (String)nPF.get(Long.valueOf(paramLong));
               AppMethodBeat.o(99435);
             }
           }
           else {
-            nmE.remove(Long.valueOf(paramLong));
+            nPE.remove(Long.valueOf(paramLong));
           }
         }
       }
@@ -187,8 +187,8 @@ public final class bg
           i = 1;
         }
         paramContext = paramContext.getResources().getQuantityString(2131623946, i, new Object[] { Integer.valueOf(i) });
-        nmF.put(Long.valueOf(paramLong), paramContext);
-        nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+        nPF.put(Long.valueOf(paramLong), paramContext);
+        nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
         AppMethodBeat.o(99435);
       }
       else
@@ -203,8 +203,8 @@ public final class bg
             i = 1;
           }
           paramContext = paramContext.getResources().getQuantityString(2131623945, i, new Object[] { Integer.valueOf(i) });
-          nmF.put(Long.valueOf(paramLong), paramContext);
-          nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+          nPF.put(Long.valueOf(paramLong), paramContext);
+          nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
           AppMethodBeat.o(99435);
         }
         else
@@ -213,8 +213,8 @@ public final class bg
           if ((l2 > 0L) && (l2 <= 86400000L))
           {
             paramContext = paramContext.getString(2131759551);
-            nmF.put(Long.valueOf(paramLong), paramContext);
-            nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            nPF.put(Long.valueOf(paramLong), paramContext);
+            nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
             AppMethodBeat.o(99435);
           }
           else
@@ -225,8 +225,8 @@ public final class bg
               i = 1;
             }
             paramContext = paramContext.getResources().getQuantityString(2131623947, i, new Object[] { Integer.valueOf(i) });
-            nmF.put(Long.valueOf(paramLong), paramContext);
-            nmE.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            nPF.put(Long.valueOf(paramLong), paramContext);
+            nPE.put(Long.valueOf(paramLong), Long.valueOf(l1));
             AppMethodBeat.o(99435);
           }
         }
@@ -234,7 +234,7 @@ public final class bg
     }
   }
   
-  private static CharSequence l(Context paramContext, long paramLong)
+  private static CharSequence m(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(99431);
     paramContext = DateFormat.format(paramContext.getString(2131759529), paramLong);
@@ -242,7 +242,7 @@ public final class bg
     return paramContext;
   }
   
-  public static String o(Context paramContext, long paramLong)
+  public static String p(Context paramContext, long paramLong)
   {
     int n = 0;
     AppMethodBeat.i(99432);
@@ -307,7 +307,7 @@ public final class bg
       {
         if (m != 0)
         {
-          paramContext = (String)l(paramContext, paramLong);
+          paramContext = (String)m(paramContext, paramLong);
           AppMethodBeat.o(99432);
           return paramContext;
           k = 0;
@@ -326,7 +326,7 @@ public final class bg
         }
         if (i != 0)
         {
-          paramContext = paramContext.getString(2131759551) + " " + (String)l(paramContext, paramLong);
+          paramContext = paramContext.getString(2131759551) + " " + (String)m(paramContext, paramLong);
           AppMethodBeat.o(99432);
           return paramContext;
         }
@@ -338,14 +338,14 @@ public final class bg
           {
             i = localCalendar.get(2);
             j = localCalendar.get(5);
-            localObject = Z(paramContext, i + 1);
+            localObject = af(paramContext, i + 1);
             str = j + " " + (String)localObject;
             localObject = str;
             if (k == 0) {
               localObject = str + " " + localCalendar.get(1);
             }
           }
-          paramContext = (String)localObject + " " + (String)l(paramContext, paramLong);
+          paramContext = (String)localObject + " " + (String)m(paramContext, paramLong);
           AppMethodBeat.o(99432);
           return paramContext;
         }
@@ -355,7 +355,7 @@ public final class bg
     }
   }
   
-  public static String p(Context paramContext, long paramLong)
+  public static String q(Context paramContext, long paramLong)
   {
     int n = 0;
     AppMethodBeat.i(99433);
@@ -417,7 +417,7 @@ public final class bg
       {
         if (m != 0)
         {
-          paramContext = (String)l(paramContext, paramLong);
+          paramContext = (String)m(paramContext, paramLong);
           AppMethodBeat.o(99433);
           return paramContext;
           k = 0;
@@ -439,7 +439,7 @@ public final class bg
         }
         if (i != 0)
         {
-          paramContext = paramContext.getString(2131759551) + " " + (String)l(paramContext, paramLong);
+          paramContext = paramContext.getString(2131759551) + " " + (String)m(paramContext, paramLong);
           AppMethodBeat.o(99433);
           return paramContext;
         }
@@ -449,14 +449,14 @@ public final class bg
         {
           i = localCalendar.get(2);
           j = localCalendar.get(5);
-          localObject = Z(paramContext, i + 1);
+          localObject = af(paramContext, i + 1);
           str = j + " " + (String)localObject;
           localObject = str;
           if (k == 0) {
             localObject = str + " " + localCalendar.get(1);
           }
         }
-        paramContext = (String)localObject + " " + (String)l(paramContext, paramLong);
+        paramContext = (String)localObject + " " + (String)m(paramContext, paramLong);
         AppMethodBeat.o(99433);
         return paramContext;
       }
@@ -465,7 +465,7 @@ public final class bg
     }
   }
   
-  public static CharSequence tq(long paramLong)
+  public static CharSequence xT(long paramLong)
   {
     AppMethodBeat.i(99440);
     Object localObject = new GregorianCalendar();
@@ -473,7 +473,7 @@ public final class bg
     if ((l1 > 0L) && (l1 <= 86400000L)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      localObject = aj.getContext().getResources().getString(2131759542);
+      localObject = ai.getContext().getResources().getString(2131759542);
       AppMethodBeat.o(99440);
       return localObject;
     }
@@ -491,18 +491,18 @@ public final class bg
     if ((paramLong >= l1 - l2 * 86400000L) && (paramLong < l3 + l4 * 86400000L)) {}
     for (i = 1; i != 0; i = 0)
     {
-      localObject = aj.getContext().getResources().getString(2131759508);
+      localObject = ai.getContext().getResources().getString(2131759508);
       AppMethodBeat.o(99440);
       return localObject;
     }
-    localObject = DateFormat.format(aj.getContext().getString(2131759580), paramLong);
+    localObject = DateFormat.format(ai.getContext().getString(2131759580), paramLong);
     AppMethodBeat.o(99440);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bg
  * JD-Core Version:    0.7.0.1
  */

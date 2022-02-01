@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.ui.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.ry;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 
@@ -15,16 +15,23 @@ public final class h
     super(paramMMActivity);
   }
   
-  public final boolean bLI()
+  protected final void bSL()
+  {
+    AppMethodBeat.i(113650);
+    super.bSL();
+    AppMethodBeat.o(113650);
+  }
+  
+  public final boolean bSV()
   {
     AppMethodBeat.i(113651);
-    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.QC(this.nqp.bIa());
-    if (((!this.nzk.nrB) || (this.nzk.fsv == 4)) && (!TextUtils.isEmpty(this.nqp.bIb())))
+    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.UO(this.nTp.bPn());
+    if (((!this.ocl.nUB) || (this.ocl.fwc == 4)) && (!TextUtils.isEmpty(this.nTp.bPo())))
     {
       AppMethodBeat.o(113651);
       return true;
     }
-    if (((this.nzk.nrB) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.nqp.bIb())) && (bLJ())))
+    if (((this.ocl.nUB) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.nTp.bPo())) && (bSW())))
     {
       AppMethodBeat.o(113651);
       return true;
@@ -33,35 +40,35 @@ public final class h
     return false;
   }
   
-  public final boolean bLJ()
+  public final boolean bSW()
   {
-    return this.nzk.fsv == 3;
+    return this.ocl.fwc == 3;
   }
   
-  public final boolean bLK()
-  {
-    return false;
-  }
-  
-  public final boolean bLM()
-  {
-    return this.nDT;
-  }
-  
-  public final boolean bLN()
+  public final boolean bSX()
   {
     return false;
   }
   
-  public final boolean bLP()
+  public final boolean bSZ()
+  {
+    return this.ogU;
+  }
+  
+  public final boolean bTa()
   {
     return false;
   }
   
-  public final boolean bLQ()
+  public final boolean bTc()
+  {
+    return false;
+  }
+  
+  public final boolean bTd()
   {
     AppMethodBeat.i(113652);
-    if ((this.nDT) && (super.bLQ()))
+    if ((this.ogU) && (super.bTd()))
     {
       AppMethodBeat.o(113652);
       return true;
@@ -70,30 +77,30 @@ public final class h
     return false;
   }
   
-  public final boolean bLU()
+  public final boolean bTh()
   {
     return false;
   }
   
-  public final boolean bLV()
+  public final boolean bTi()
   {
     return false;
   }
   
-  public final boolean bLW()
+  public final boolean bTj()
   {
     AppMethodBeat.i(113653);
-    if (super.bLW())
+    if (super.bTj())
     {
       AppMethodBeat.o(113653);
       return true;
     }
-    if (bLX())
+    if (bTk())
     {
       AppMethodBeat.o(113653);
       return true;
     }
-    if ((this.nqp.bHB()) && (this.nDT))
+    if ((this.nTp.bOO()) && (this.ogU))
     {
       AppMethodBeat.o(113653);
       return true;
@@ -102,23 +109,16 @@ public final class h
     return false;
   }
   
-  public final boolean bLX()
+  public final boolean bTk()
   {
     AppMethodBeat.i(113654);
-    if ((!this.nDT) && (this.nqp.bHV().CSb == 1))
+    if ((!this.ogU) && (this.nTp.bPi().EkM == 1))
     {
       AppMethodBeat.o(113654);
       return true;
     }
     AppMethodBeat.o(113654);
     return false;
-  }
-  
-  protected final void bLy()
-  {
-    AppMethodBeat.i(113650);
-    super.bLy();
-    AppMethodBeat.o(113650);
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.webwx.a;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.aw.d.a;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.av.d.a;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelvideo.o;
@@ -14,39 +14,39 @@ import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.util.HashMap;
 
 public final class a
-  implements com.tencent.mm.al.g, t.a
+  implements com.tencent.mm.ak.g, t.a
 {
-  private static int BAG = 1048576;
-  private static int BAH = 26214400;
-  private bn BAI;
-  private HashMap<String, bl> BAJ;
+  private static int CSN = 1048576;
+  private static int CSO = 26214400;
+  private bq CSP;
+  private HashMap<String, bo> CSQ;
   
   public a()
   {
     AppMethodBeat.i(30159);
-    this.BAJ = new HashMap();
-    this.BAI = new bn();
+    this.CSQ = new HashMap();
+    this.CSP = new bq();
     Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.afC();
-    localObject = i.aR(com.tencent.mm.kernel.g.afB().cachePath + "syncmsgid.ini", 0, -1);
-    if (!bt.cw((byte[])localObject)) {}
+    com.tencent.mm.kernel.g.agS();
+    localObject = i.aU(com.tencent.mm.kernel.g.agR().cachePath + "syncmsgid.ini", 0, -1);
+    if (!bs.cv((byte[])localObject)) {}
     try
     {
-      this.BAI.parseFrom((byte[])localObject);
-      o.aCI().a(this, Looper.getMainLooper());
-      com.tencent.mm.kernel.g.aeS().a(221, this);
+      this.CSP.parseFrom((byte[])localObject);
+      o.aJy().a(this, Looper.getMainLooper());
+      com.tencent.mm.kernel.g.agi().a(221, this);
       AppMethodBeat.o(30159);
       return;
     }
@@ -54,26 +54,26 @@ public final class a
     {
       for (;;)
       {
-        ad.w("MicroMsg.MultiTerminalSyncMgr", "task parse Error");
+        ac.w("MicroMsg.MultiTerminalSyncMgr", "task parse Error");
       }
     }
   }
   
-  private void cos()
+  private void cxP()
   {
     AppMethodBeat.i(30163);
     try
     {
-      byte[] arrayOfByte = this.BAI.toByteArray();
+      byte[] arrayOfByte = this.CSP.toByteArray();
       StringBuilder localStringBuilder = new StringBuilder();
-      com.tencent.mm.kernel.g.afC();
-      i.f(com.tencent.mm.kernel.g.afB().cachePath + "syncmsgid.ini", arrayOfByte, arrayOfByte.length);
+      com.tencent.mm.kernel.g.agS();
+      i.f(com.tencent.mm.kernel.g.agR().cachePath + "syncmsgid.ini", arrayOfByte, arrayOfByte.length);
       AppMethodBeat.o(30163);
       return;
     }
     catch (IOException localIOException)
     {
-      ad.w("MicroMsg.MultiTerminalSyncMgr", "task to file Error");
+      ac.w("MicroMsg.MultiTerminalSyncMgr", "task to file Error");
       AppMethodBeat.o(30163);
     }
   }
@@ -81,36 +81,36 @@ public final class a
   public final void a(t.a.a parama)
   {
     AppMethodBeat.i(30164);
-    parama = (bl)this.BAJ.get(parama.fileName);
+    parama = (bo)this.CSQ.get(parama.fileName);
     if (parama == null)
     {
       AppMethodBeat.o(30164);
       return;
     }
-    s locals = u.Ae(parama.field_imgPath);
+    s locals = u.Ej(parama.field_imgPath);
     if (locals == null)
     {
       AppMethodBeat.o(30164);
       return;
     }
-    if ((parama.eMl()) || (locals.status == 199))
+    if ((parama.fbQ()) || (locals.status == 199))
     {
-      ad.i("MicroMsg.MultiTerminalSyncMgr", "download video end: %d, status:%d", new Object[] { Long.valueOf(parama.field_msgId), Integer.valueOf(locals.status) });
-      vd(parama.field_msgId);
-      this.BAJ.remove(parama.field_imgPath);
+      ac.i("MicroMsg.MultiTerminalSyncMgr", "download video end: %d, status:%d", new Object[] { Long.valueOf(parama.field_msgId), Integer.valueOf(locals.status) });
+      zG(parama.field_msgId);
+      this.CSQ.remove(parama.field_imgPath);
       AppMethodBeat.o(30164);
       return;
     }
     if (parama.field_status == 198) {
-      this.BAJ.remove(parama.field_imgPath);
+      this.CSQ.remove(parama.field_imgPath);
     }
     AppMethodBeat.o(30164);
   }
   
-  public final void erV()
+  public final void eHp()
   {
     AppMethodBeat.i(30162);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new ao(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -128,23 +128,23 @@ public final class a
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof com.tencent.mm.plugin.record.b.e)))
     {
       long l = ((com.tencent.mm.plugin.record.b.e)paramn).msgId;
-      vd(l);
-      ad.i("MicroMsg.MultiTerminalSyncMgr", "download attach end: %d", new Object[] { Long.valueOf(l) });
+      zG(l);
+      ac.i("MicroMsg.MultiTerminalSyncMgr", "download attach end: %d", new Object[] { Long.valueOf(l) });
     }
     AppMethodBeat.o(30165);
   }
   
-  public final void vc(final long paramLong)
+  public final void zF(final long paramLong)
   {
     AppMethodBeat.i(30160);
-    az.arV();
-    if (!((Boolean)c.afk().get(ae.a.Fnm, Boolean.TRUE)).booleanValue())
+    az.ayM();
+    if (!((Boolean)c.agA().get(ah.a.GLb, Boolean.TRUE)).booleanValue())
     {
-      ad.i("MicroMsg.MultiTerminalSyncMgr", "autoSyncState close");
+      ac.i("MicroMsg.MultiTerminalSyncMgr", "autoSyncState close");
       AppMethodBeat.o(30160);
       return;
     }
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new ao(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -156,10 +156,10 @@ public final class a
     AppMethodBeat.o(30160);
   }
   
-  public final void vd(final long paramLong)
+  public final void zG(final long paramLong)
   {
     AppMethodBeat.i(30161);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    new ao(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -173,7 +173,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.a
  * JD-Core Version:    0.7.0.1
  */

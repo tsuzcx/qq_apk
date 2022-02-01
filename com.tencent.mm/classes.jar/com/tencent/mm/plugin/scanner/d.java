@@ -1,19 +1,11 @@
 package com.tencent.mm.plugin.scanner;
 
-import com.tencent.mm.plugin.scanner.util.m;
+import com.tencent.mm.g.c.ff;
 
 public abstract interface d
   extends com.tencent.mm.kernel.b.d
 {
-  public abstract String genScanCaptureImgPath(String paramString);
-  
-  public abstract String genScanTmpImgPath(String paramString);
-  
-  public abstract String getAccScannerPath();
-  
-  public abstract m getScanCdnService();
-  
-  public abstract String getScanImageSaveDir();
+  public abstract ff getTranslationResult(String paramString);
 }
 
 

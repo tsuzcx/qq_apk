@@ -5,25 +5,25 @@ import com.tencent.mm.m.e;
 import com.tencent.mm.m.g;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class d
 {
-  public static boolean cGO()
+  public static boolean cTZ()
   {
     AppMethodBeat.i(25325);
-    if (az.afw())
+    if (az.agM())
     {
-      if (g.Zd().getInt("WCOEntranceSwitch", 0) > 0)
+      if (g.ZY().getInt("WCOEntranceSwitch", 0) > 0)
       {
-        az.arV();
-        c.afk().set(ae.a.FiL, Boolean.TRUE);
+        az.ayM();
+        c.agA().set(ah.a.GGA, Boolean.TRUE);
         AppMethodBeat.o(25325);
         return true;
       }
-      az.arV();
-      c.afk().set(ae.a.FiL, Boolean.FALSE);
+      az.ayM();
+      c.agA().set(ah.a.GGA, Boolean.FALSE);
       AppMethodBeat.o(25325);
       return false;
     }
@@ -33,7 +33,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.d
  * JD-Core Version:    0.7.0.1
  */

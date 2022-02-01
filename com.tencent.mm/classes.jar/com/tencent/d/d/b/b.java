@@ -7,23 +7,7 @@ import java.io.OutputStream;
 
 public final class b
 {
-  public static void closeQuietly(Closeable paramCloseable)
-  {
-    AppMethodBeat.i(138359);
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      AppMethodBeat.o(138359);
-      return;
-    }
-    catch (Throwable paramCloseable)
-    {
-      AppMethodBeat.o(138359);
-    }
-  }
-  
-  public static long d(InputStream paramInputStream, OutputStream paramOutputStream)
+  public static long c(InputStream paramInputStream, OutputStream paramOutputStream)
   {
     AppMethodBeat.i(138360);
     byte[] arrayOfByte = new byte[4096];
@@ -39,10 +23,26 @@ public final class b
     AppMethodBeat.o(138360);
     return l;
   }
+  
+  public static void closeQuietly(Closeable paramCloseable)
+  {
+    AppMethodBeat.i(138359);
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      AppMethodBeat.o(138359);
+      return;
+    }
+    catch (Throwable paramCloseable)
+    {
+      AppMethodBeat.o(138359);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.b.b
  * JD-Core Version:    0.7.0.1
  */

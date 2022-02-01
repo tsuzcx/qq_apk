@@ -17,19 +17,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.j.d;
 import com.tencent.mm.pluginsdk.j.d.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class WalletScratchShakeView
   extends FrameLayout
 {
-  b AtV;
-  boolean AtW;
-  boolean AtX;
-  private a AtY;
+  b BMp;
+  boolean BMq;
+  boolean BMr;
+  private a BMs;
   
   public WalletScratchShakeView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,12 +44,12 @@ public class WalletScratchShakeView
   public final void onDestroy()
   {
     AppMethodBeat.i(71547);
-    if (this.AtV != null)
+    if (this.BMp != null)
     {
-      b localb = this.AtV;
-      ad.i("MicroMsg.WalletScratchShakeView", "onDestroy");
+      b localb = this.BMp;
+      ac.i("MicroMsg.WalletScratchShakeView", "onDestroy");
       if (localb.shakeSensor != null) {
-        localb.shakeSensor.bQk();
+        localb.shakeSensor.bXB();
       }
     }
     AppMethodBeat.o(71547);
@@ -57,51 +57,51 @@ public class WalletScratchShakeView
   
   public void setScratchShakeCallback(a parama)
   {
-    this.AtY = parama;
+    this.BMs = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void efg();
+    public abstract void euB();
     
-    public abstract void sR(boolean paramBoolean);
+    public abstract void tS(boolean paramBoolean);
   }
   
   final class b
     extends View
   {
-    private Canvas AtZ;
-    Drawable Aua;
-    Paint Aub;
-    Paint Auc;
-    Path Aud;
-    Path Aue;
-    private float Auf;
-    private float Aug;
-    private int[] Auh;
-    private int Aui = -1;
-    boolean Auj;
-    boolean Auk;
-    float Aul;
-    float Aum;
-    int Aun;
-    private boolean Auo;
-    boolean Aup;
-    private float Auq = 0.9F;
-    Paint aNu;
+    private float BMA;
+    private int[] BMB;
+    private int BMC = -1;
+    boolean BMD;
+    boolean BME;
+    float BMF;
+    float BMG;
+    int BMH;
+    private boolean BMI;
+    boolean BMJ;
+    private float BMK = 0.9F;
+    private Canvas BMt;
+    Drawable BMu;
+    Paint BMv;
+    Paint BMw;
+    Path BMx;
+    Path BMy;
+    private float BMz;
+    Paint aOk;
     private boolean isStartShake = false;
-    private int jYq = 0;
+    private int kzc = 0;
     long lastShakeTime;
-    int pd;
+    int qc;
     d shakeSensor;
-    private Bitmap xdI;
+    private Bitmap yqx;
     
     public b(Context paramContext)
     {
       super();
     }
     
-    static byte[] an(Bitmap paramBitmap)
+    static byte[] ao(Bitmap paramBitmap)
     {
       int i = 0;
       AppMethodBeat.i(71538);
@@ -141,27 +141,27 @@ public class WalletScratchShakeView
       return paramBitmap;
     }
     
-    private boolean efh()
+    private boolean euC()
     {
       AppMethodBeat.i(71539);
-      if (this.Aum >= getHeight())
+      if (this.BMG >= getHeight())
       {
-        this.Aup = true;
-        if (!this.Auk)
+        this.BMJ = true;
+        if (!this.BME)
         {
           if (WalletScratchShakeView.a(WalletScratchShakeView.this) != null) {
-            WalletScratchShakeView.a(WalletScratchShakeView.this).efg();
+            WalletScratchShakeView.a(WalletScratchShakeView.this).euB();
           }
-          this.Auk = true;
+          this.BME = true;
         }
-        if (this.AtZ != null)
+        if (this.BMt != null)
         {
-          this.Aue.reset();
-          this.Aue.moveTo(0.0F, 0.0F);
-          this.Aue.lineTo(getWidth(), 0.0F);
-          this.Aue.lineTo(getWidth(), getHeight());
-          this.Aue.lineTo(0.0F, getHeight());
-          this.AtZ.drawPath(this.Aue, this.Auc);
+          this.BMy.reset();
+          this.BMy.moveTo(0.0F, 0.0F);
+          this.BMy.lineTo(getWidth(), 0.0F);
+          this.BMy.lineTo(getWidth(), getHeight());
+          this.BMy.lineTo(0.0F, getHeight());
+          this.BMt.drawPath(this.BMy, this.BMw);
         }
         invalidate();
         AppMethodBeat.o(71539);
@@ -171,17 +171,17 @@ public class WalletScratchShakeView
       return false;
     }
     
-    private void efi()
+    private void euD()
     {
       AppMethodBeat.i(71540);
-      if (this.AtZ != null)
+      if (this.BMt != null)
       {
-        this.Aue.reset();
-        this.Aue.moveTo(0.0F, this.Aum);
-        this.Aue.cubicTo(getWidth() / 2, getHeight(), getWidth() / 2, 0.0F, getWidth(), this.Aul);
-        this.Aue.lineTo(getWidth(), 0.0F);
-        this.Aue.lineTo(0.0F, 0.0F);
-        this.AtZ.drawPath(this.Aue, this.Auc);
+        this.BMy.reset();
+        this.BMy.moveTo(0.0F, this.BMG);
+        this.BMy.cubicTo(getWidth() / 2, getHeight(), getWidth() / 2, 0.0F, getWidth(), this.BMF);
+        this.BMy.lineTo(getWidth(), 0.0F);
+        this.BMy.lineTo(0.0F, 0.0F);
+        this.BMt.drawPath(this.BMy, this.BMw);
       }
       invalidate();
       AppMethodBeat.o(71540);
@@ -190,7 +190,7 @@ public class WalletScratchShakeView
     public final boolean X(MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(71543);
-      if ((this.xdI != null) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 0)))
+      if ((this.yqx != null) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 0)))
       {
         int i = getWidth();
         int j = getHeight();
@@ -199,10 +199,10 @@ public class WalletScratchShakeView
         int n = m * i + k;
         int i1 = getWidth();
         int i2 = getHeight();
-        ad.d("MicroMsg.WalletScratchShakeView", "checkIsTouchEraseArea, x: %s, y: %s, width: %s, height: %s, index: %s, len: %s", new Object[] { Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1 * i2) });
+        ac.d("MicroMsg.WalletScratchShakeView", "checkIsTouchEraseArea, x: %s, y: %s, width: %s, height: %s, index: %s, len: %s", new Object[] { Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1 * i2) });
         if ((n > 0) && (k > 0) && (m > 0) && (k < getWidth()) && (m < getHeight()))
         {
-          if (this.xdI.getPixel(k, m) == 0)
+          if (this.yqx.getPixel(k, m) == 0)
           {
             AppMethodBeat.o(71543);
             return true;
@@ -219,22 +219,22 @@ public class WalletScratchShakeView
     {
       AppMethodBeat.i(71541);
       paramCanvas.save();
-      if (this.xdI == null)
+      if (this.yqx == null)
       {
         int i = getWidth();
         int j = getHeight();
-        ad.i("MicroMsg.WalletScratchShakeView", "createMasker width: %s, height: %s, waterMark: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.Aua });
-        this.xdI = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        this.AtZ = new Canvas(this.xdI);
-        if (this.Aua != null)
+        ac.i("MicroMsg.WalletScratchShakeView", "createMasker width: %s, height: %s, waterMark: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.BMu });
+        this.yqx = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        this.BMt = new Canvas(this.yqx);
+        if (this.BMu != null)
         {
           Rect localRect = new Rect(0, 0, i, j);
-          this.Aua.setBounds(localRect);
-          this.Aua.draw(this.AtZ);
+          this.BMu.setBounds(localRect);
+          this.BMu.draw(this.BMt);
         }
-        this.Auh = new int[i * j];
+        this.BMB = new int[i * j];
       }
-      paramCanvas.drawBitmap(this.xdI, 0.0F, 0.0F, this.aNu);
+      paramCanvas.drawBitmap(this.yqx, 0.0F, 0.0F, this.aOk);
       paramCanvas.restore();
       AppMethodBeat.o(71541);
     }
@@ -253,55 +253,55 @@ public class WalletScratchShakeView
       switch (j)
       {
       }
-      while ((!this.Aup) && (!X(paramMotionEvent)) && (i != 0))
+      while ((!this.BMJ) && (!X(paramMotionEvent)) && (i != 0))
       {
         AppMethodBeat.o(71542);
         return true;
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        this.Aud.reset();
-        this.Aud.moveTo(f1, f2);
-        this.Auf = f1;
-        this.Aug = f2;
+        this.BMx.reset();
+        this.BMx.moveTo(f1, f2);
+        this.BMz = f1;
+        this.BMA = f2;
         invalidate();
-        if (!this.Auj)
+        if (!this.BMD)
         {
-          aq.n(new Runnable()
+          ap.n(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(71535);
               if (WalletScratchShakeView.a(WalletScratchShakeView.this) != null) {
-                WalletScratchShakeView.a(WalletScratchShakeView.this).sR(true);
+                WalletScratchShakeView.a(WalletScratchShakeView.this).tS(true);
               }
               AppMethodBeat.o(71535);
             }
           }, 50L);
-          this.Auj = true;
+          this.BMD = true;
           i = 1;
           continue;
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if (this.AtZ != null)
+          if (this.BMt != null)
           {
-            i = (int)Math.abs(f1 - this.Auf);
-            j = (int)Math.abs(f2 - this.Aug);
-            if ((i >= this.pd) || (j >= this.pd))
+            i = (int)Math.abs(f1 - this.BMz);
+            j = (int)Math.abs(f2 - this.BMA);
+            if ((i >= this.qc) || (j >= this.qc))
             {
-              this.Auf = f1;
-              this.Aug = f2;
-              this.Aud.quadTo((this.Auf + f1) / 2.0F, (this.Aug + f2) / 2.0F, f1, f2);
-              this.AtZ.drawPath(this.Aud, this.Aub);
-              this.Aud.reset();
-              this.Aud.moveTo(this.Auf, this.Aug);
+              this.BMz = f1;
+              this.BMA = f2;
+              this.BMx.quadTo((this.BMz + f1) / 2.0F, (this.BMA + f2) / 2.0F, f1, f2);
+              this.BMt.drawPath(this.BMx, this.BMv);
+              this.BMx.reset();
+              this.BMx.moveTo(this.BMz, this.BMA);
             }
           }
           invalidate();
           i = 1;
           continue;
-          this.Auf = 0.0F;
-          this.Aug = 0.0F;
-          this.Aud.reset();
+          this.BMz = 0.0F;
+          this.BMA = 0.0F;
+          this.BMx.reset();
           b.c(new Runnable()
           {
             public final void run()

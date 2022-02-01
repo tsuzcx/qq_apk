@@ -15,27 +15,22 @@ public final class c
   extends i
   implements Comparable<c>
 {
-  private final long bWa;
-  long bWb;
-  long bWc;
-  d[] bWd;
-  d[] bWe;
-  int bWf;
-  boolean bWg = false;
-  com.d.a.c.g<a> bWh = new com.d.a.c.g();
-  Set<c> bWi = new HashSet();
+  private final long bTI;
+  long bTJ;
+  long bTK;
+  d[] bTL;
+  d[] bTM;
+  int bTN;
+  boolean bTO = false;
+  com.d.a.c.g<a> bTP = new com.d.a.c.g();
+  Set<c> bTQ = new HashSet();
   public final String mClassName;
   
   public c(long paramLong1, n paramn, String paramString, long paramLong2)
   {
     super(paramLong1, paramn);
     this.mClassName = paramString;
-    this.bWa = paramLong2;
-  }
-  
-  public static String Ab()
-  {
-    return "java.lang.ref.Reference";
+    this.bTI = paramLong2;
   }
   
   private int a(c paramc)
@@ -57,72 +52,9 @@ public final class c
     return -1;
   }
   
-  public final List<i> Aa()
+  public static String zO()
   {
-    Object localObject2 = this.bWh;
-    Object localObject1 = new Object[((com.d.a.c.g)localObject2).size()];
-    localObject2 = ((com.d.a.c.g)localObject2).bXN;
-    int i = localObject2.length;
-    int j = 0;
-    for (;;)
-    {
-      int k = i - 1;
-      if (i > 0)
-      {
-        if (com.d.a.c.g.b((Object[])localObject2, k))
-        {
-          localObject1[j] = com.d.a.c.g.au(localObject2[k]);
-          j += 1;
-          i = k;
-        }
-      }
-      else
-      {
-        k = localObject1.length;
-        i = 0;
-        j = 0;
-        while (i < k)
-        {
-          j += ((a)localObject1[i]).bWk.size();
-          i += 1;
-        }
-        localObject2 = new ArrayList(j);
-        int[] arrayOfInt = this.bWh.As();
-        j = arrayOfInt.length;
-        i = 0;
-        if (i < j)
-        {
-          k = arrayOfInt[i];
-          localObject1 = (a)this.bWh.get(k);
-          if (localObject1 == null) {}
-          for (localObject1 = new ArrayList(0);; localObject1 = ((a)localObject1).bWk)
-          {
-            ((ArrayList)localObject2).addAll((Collection)localObject1);
-            i += 1;
-            break;
-          }
-        }
-        return localObject2;
-      }
-      i = k;
-    }
-  }
-  
-  public final List<c> Ac()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Stack localStack = new Stack();
-    localStack.push(this);
-    while (!localStack.isEmpty())
-    {
-      Object localObject = (c)localStack.pop();
-      localArrayList.add(localObject);
-      localObject = ((c)localObject).bWi.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localStack.push((c)((Iterator)localObject).next());
-      }
-    }
-    return localArrayList;
+    return "java.lang.ref.Reference";
   }
   
   public final boolean equals(Object paramObject)
@@ -144,32 +76,100 @@ public final class c
     return this.mClassName.replace('/', '.');
   }
   
-  public final Map<d, Object> zY()
+  public final Map<d, Object> zL()
   {
     HashMap localHashMap = new HashMap();
-    Ai().aK(this.bWa);
+    zV().aG(this.bTI);
     int j = readUnsignedShort();
     int i = 0;
     while (i < j)
     {
-      d locald = this.bWe[i];
-      Ae();
+      d locald = this.bTM[i];
+      zR();
       readUnsignedByte();
-      localHashMap.put(locald, a(locald.bVX));
+      localHashMap.put(locald, a(locald.bTF));
       i += 1;
     }
     return localHashMap;
   }
   
-  public final c zZ()
+  public final c zM()
   {
-    return this.bWC.bWt.aJ(this.bWb);
+    return this.bUk.bUb.aF(this.bTJ);
+  }
+  
+  public final List<i> zN()
+  {
+    Object localObject2 = this.bTP;
+    Object localObject1 = new Object[((com.d.a.c.g)localObject2).size()];
+    localObject2 = ((com.d.a.c.g)localObject2).bVv;
+    int i = localObject2.length;
+    int j = 0;
+    for (;;)
+    {
+      int k = i - 1;
+      if (i > 0)
+      {
+        if (com.d.a.c.g.b((Object[])localObject2, k))
+        {
+          localObject1[j] = com.d.a.c.g.au(localObject2[k]);
+          j += 1;
+          i = k;
+        }
+      }
+      else
+      {
+        k = localObject1.length;
+        i = 0;
+        j = 0;
+        while (i < k)
+        {
+          j += ((a)localObject1[i]).bTS.size();
+          i += 1;
+        }
+        localObject2 = new ArrayList(j);
+        int[] arrayOfInt = this.bTP.Af();
+        j = arrayOfInt.length;
+        i = 0;
+        if (i < j)
+        {
+          k = arrayOfInt[i];
+          localObject1 = (a)this.bTP.get(k);
+          if (localObject1 == null) {}
+          for (localObject1 = new ArrayList(0);; localObject1 = ((a)localObject1).bTS)
+          {
+            ((ArrayList)localObject2).addAll((Collection)localObject1);
+            i += 1;
+            break;
+          }
+        }
+        return localObject2;
+      }
+      i = k;
+    }
+  }
+  
+  public final List<c> zP()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Stack localStack = new Stack();
+    localStack.push(this);
+    while (!localStack.isEmpty())
+    {
+      Object localObject = (c)localStack.pop();
+      localArrayList.add(localObject);
+      localObject = ((c)localObject).bTQ.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStack.push((c)((Iterator)localObject).next());
+      }
+    }
+    return localArrayList;
   }
   
   public static final class a
   {
-    public int bWj = 0;
-    public List<i> bWk = new ArrayList();
+    public int bTR = 0;
+    public List<i> bTS = new ArrayList();
   }
 }
 

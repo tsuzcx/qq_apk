@@ -10,28 +10,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.story.api.AbsStoryMuteView;
 import com.tencent.mm.ui.am;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/StoryMuteView;", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MUTE_IN_BG_PADDING", "MUTE_OUT_BG_PADDING", "mMuteBg", "Landroid/widget/ImageView;", "mMuteTv", "Landroid/widget/TextView;", "muteDrawable", "Landroid/graphics/drawable/Drawable;", "initViews", "", "measureDimension", "defaultSize", "parentMeasureSpec", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "triggerMuteIn", "triggerMuteOut", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryMuteView;", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MUTE_IN_BG_PADDING", "MUTE_OUT_BG_PADDING", "mMuteBg", "Landroid/widget/ImageView;", "mMuteTv", "Landroid/widget/TextView;", "muteDrawable", "Landroid/graphics/drawable/Drawable;", "initViews", "", "measureDimension", "defaultSize", "parentMeasureSpec", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "triggerMuteIn", "triggerMuteOut", "plugin-story_release"})
 public final class StoryMuteView
   extends AbsStoryMuteView
 {
-  private final int ywN;
-  private final int ywO;
-  private Drawable ywP;
-  private TextView ywQ;
-  private ImageView ywR;
+  private final int zKd;
+  private final int zKe;
+  private Drawable zKf;
+  private TextView zKg;
+  private ImageView zKh;
   
   public StoryMuteView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(120281);
-    this.ywN = 30;
-    aFZ();
+    this.zKd = 30;
+    aMM();
     AppMethodBeat.o(120281);
   }
   
@@ -39,8 +39,8 @@ public final class StoryMuteView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(120282);
-    this.ywN = 30;
-    aFZ();
+    this.zKd = 30;
+    aMM();
     AppMethodBeat.o(120282);
   }
   
@@ -48,47 +48,47 @@ public final class StoryMuteView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120283);
-    this.ywN = 30;
-    aFZ();
+    this.zKd = 30;
+    aMM();
     AppMethodBeat.o(120283);
   }
   
-  private final void aFZ()
+  private final void aMM()
   {
     AppMethodBeat.i(120276);
     LayoutInflater.from(getContext()).inflate(2131495712, (ViewGroup)this);
-    this.ywQ = ((TextView)findViewById(2131305481));
-    this.ywR = ((ImageView)findViewById(2131305480));
+    this.zKg = ((TextView)findViewById(2131305481));
+    this.zKh = ((ImageView)findViewById(2131305480));
     Object localObject = getContext();
     k.g(localObject, "context");
-    this.ywP = am.e(((Context)localObject).getResources().getDrawable(2131690675), -1);
-    localObject = this.ywP;
+    this.zKf = am.e(((Context)localObject).getResources().getDrawable(2131690675), -1);
+    localObject = this.zKf;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((Drawable)localObject).setBounds(0, 0, a.fromDPToPix(getContext(), 48), a.fromDPToPix(getContext(), 48));
-    localObject = this.ywQ;
+    localObject = this.zKg;
     if (localObject != null) {
-      ((TextView)localObject).setCompoundDrawables(null, this.ywP, null, null);
+      ((TextView)localObject).setCompoundDrawables(null, this.zKf, null, null);
     }
-    localObject = this.ywQ;
+    localObject = this.zKg;
     if (localObject != null)
     {
       Context localContext = getContext();
       k.g(localContext, "context");
       ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131764287));
     }
-    localObject = this.ywR;
+    localObject = this.zKh;
     if (localObject != null)
     {
-      ((ImageView)localObject).setPadding(this.ywO, this.ywN, this.ywN, this.ywO);
+      ((ImageView)localObject).setPadding(this.zKe, this.zKd, this.zKd, this.zKe);
       AppMethodBeat.o(120276);
       return;
     }
     AppMethodBeat.o(120276);
   }
   
-  private static int hI(int paramInt1, int paramInt2)
+  private static int hR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(120277);
     int j = View.MeasureSpec.getMode(paramInt2);
@@ -107,26 +107,26 @@ public final class StoryMuteView
     }
   }
   
-  public final void dFX()
+  public final void dUy()
   {
     AppMethodBeat.i(120279);
-    ImageView localImageView = this.ywR;
+    ImageView localImageView = this.zKh;
     if (localImageView != null)
     {
-      localImageView.setPadding(this.ywO, this.ywO, this.ywO, this.ywO);
+      localImageView.setPadding(this.zKe, this.zKe, this.zKe, this.zKe);
       AppMethodBeat.o(120279);
       return;
     }
     AppMethodBeat.o(120279);
   }
   
-  public final void dFY()
+  public final void dUz()
   {
     AppMethodBeat.i(120280);
-    ImageView localImageView = this.ywR;
+    ImageView localImageView = this.zKh;
     if (localImageView != null)
     {
-      localImageView.setPadding(this.ywO, this.ywN, this.ywN, this.ywO);
+      localImageView.setPadding(this.zKe, this.zKd, this.zKd, this.zKe);
       AppMethodBeat.o(120280);
       return;
     }
@@ -136,8 +136,8 @@ public final class StoryMuteView
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(120278);
-    int i = hI(a.ap(getContext(), 2131166720), paramInt1);
-    int j = hI(a.ap(getContext(), 2131166720), paramInt2);
+    int i = hR(a.av(getContext(), 2131166720), paramInt1);
+    int j = hR(a.av(getContext(), 2131166720), paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(i, j);
     AppMethodBeat.o(120278);
@@ -145,7 +145,7 @@ public final class StoryMuteView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryMuteView
  * JD-Core Version:    0.7.0.1
  */

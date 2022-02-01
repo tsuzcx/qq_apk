@@ -3,28 +3,28 @@ package com.tencent.mm.modelsimple;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.dwy;
-import com.tencent.mm.protocal.protobuf.dwz;
+import com.tencent.mm.protocal.protobuf.ecp;
+import com.tencent.mm.protocal.protobuf.ecq;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class ae
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
-  private final com.tencent.mm.al.b gOF;
+  private com.tencent.mm.ak.g callback;
+  private final com.tencent.mm.ak.b hpf;
   private int retryCount;
   
   public ae(String paramString, int paramInt)
@@ -32,27 +32,27 @@ public final class ae
     AppMethodBeat.i(150966);
     this.retryCount = 3;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new dwy();
-    ((b.a)localObject).gUV = new dwz();
+    ((b.a)localObject).hvt = new ecp();
+    ((b.a)localObject).hvu = new ecq();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/yybgetpkgsig";
     ((b.a)localObject).funcId = 729;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.gOF = ((b.a)localObject).atI();
-    localObject = (dwy)this.gOF.gUS.gUX;
-    ((dwy)localObject).oXs = ac.eFu();
-    ((dwy)localObject).CBO = com.tencent.mm.plugin.normsg.a.b.ufs.Ix(0);
-    ((dwy)localObject).EKS = paramString;
-    ((dwy)localObject).rZz = paramInt;
-    ad.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig Language[%s], PkgName[%s], versionCode[%d], stack[%s]", new Object[] { ((dwy)localObject).oXs, paramString, Integer.valueOf(paramInt), bt.eGN() });
+    this.hpf = ((b.a)localObject).aAz();
+    localObject = (ecp)this.hpf.hvr.hvw;
+    ((ecp)localObject).pAD = ab.eUO();
+    ((ecp)localObject).DUm = com.tencent.mm.plugin.normsg.a.b.vor.Kw(0);
+    ((ecp)localObject).Gie = paramString;
+    ((ecp)localObject).ths = paramInt;
+    ac.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig Language[%s], PkgName[%s], versionCode[%d], stack[%s]", new Object[] { ((ecp)localObject).pAD, paramString, Integer.valueOf(paramInt), bs.eWi() });
     AppMethodBeat.o(150966);
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(150967);
     this.callback = paramg;
-    int i = dispatch(parame, this.gOF, this);
+    int i = dispatch(parame, this.hpf, this);
     AppMethodBeat.o(150967);
     return i;
   }
@@ -65,31 +65,31 @@ public final class ae
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150968);
-    paramq = (dwy)this.gOF.gUS.gUX;
-    paramArrayOfByte = (dwz)this.gOF.gUT.gUX;
-    ad.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s], ret[%d], sig[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(paramArrayOfByte.EKT), paramArrayOfByte.EKU });
+    paramq = (ecp)this.hpf.hvr.hvw;
+    paramArrayOfByte = (ecq)this.hpf.hvs.hvw;
+    ac.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s], ret[%d], sig[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(paramArrayOfByte.Gif), paramArrayOfByte.Gig });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ad.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig err and return!");
-      h.vKh.idkeyStat(322L, 1L, 1L, false);
-      h.vKh.f(11098, new Object[] { Integer.valueOf(4001), String.format("%s,%d,%d,%d", new Object[] { paramq.EKS, Integer.valueOf(paramq.rZz), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }) });
+      ac.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken YybGetPkgSig err and return!");
+      h.wUl.idkeyStat(322L, 1L, 1L, false);
+      h.wUl.f(11098, new Object[] { Integer.valueOf(4001), String.format("%s,%d,%d,%d", new Object[] { paramq.Gie, Integer.valueOf(paramq.ths), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }) });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(150968);
       return;
     }
-    if ((paramArrayOfByte.EKT == 2) || (paramArrayOfByte.EKT == 3))
+    if ((paramArrayOfByte.Gif == 2) || (paramArrayOfByte.Gif == 3))
     {
       this.retryCount -= 1;
       if (this.retryCount <= 0)
       {
-        ad.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken err and return with no try!");
-        h.vKh.idkeyStat(322L, 2L, 1L, false);
-        h.vKh.f(11098, new Object[] { Integer.valueOf(4002), String.format("%s,%d", new Object[] { paramq.EKS, Integer.valueOf(paramq.rZz) }) });
+        ac.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken err and return with no try!");
+        h.wUl.idkeyStat(322L, 2L, 1L, false);
+        h.wUl.f(11098, new Object[] { Integer.valueOf(4002), String.format("%s,%d", new Object[] { paramq.Gie, Integer.valueOf(paramq.ths) }) });
         this.callback.onSceneEnd(3, -1, "", this);
         AppMethodBeat.o(150968);
         return;
       }
-      ad.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken do scene again retryCount:%d", new Object[] { Integer.valueOf(this.retryCount) });
+      ac.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken do scene again retryCount:%d", new Object[] { Integer.valueOf(this.retryCount) });
       doScene(dispatcher(), this.callback);
     }
     for (;;)
@@ -97,25 +97,25 @@ public final class ae
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(150968);
       return;
-      if (paramArrayOfByte.EKT == 1)
+      if (paramArrayOfByte.Gif == 1)
       {
-        MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.XN()).edit().remove(paramq.EKS).commit();
-        h.vKh.idkeyStat(322L, 5L, 1L, false);
-        h.vKh.f(11098, new Object[] { Integer.valueOf(4005), String.format("%s,%d", new Object[] { paramq.EKS, Integer.valueOf(paramq.rZz) }) });
-        ad.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret no sig[%s] and remove", new Object[] { paramArrayOfByte.EKU });
+        MultiProcessSharedPreferences.getSharedPreferences(ai.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.YK()).edit().remove(paramq.Gie).commit();
+        h.wUl.idkeyStat(322L, 5L, 1L, false);
+        h.wUl.f(11098, new Object[] { Integer.valueOf(4005), String.format("%s,%d", new Object[] { paramq.Gie, Integer.valueOf(paramq.ths) }) });
+        ac.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret no sig[%s] and remove", new Object[] { paramArrayOfByte.Gig });
       }
-      else if (paramArrayOfByte.EKT == 4)
+      else if (paramArrayOfByte.Gif == 4)
       {
-        ad.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret no need try and revise");
-        h.vKh.idkeyStat(322L, 4L, 1L, false);
-        h.vKh.f(11098, new Object[] { Integer.valueOf(4004), String.format("%s,%d", new Object[] { paramq.EKS, Integer.valueOf(paramq.rZz) }) });
+        ac.w("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret no need try and revise");
+        h.wUl.idkeyStat(322L, 4L, 1L, false);
+        h.wUl.f(11098, new Object[] { Integer.valueOf(4004), String.format("%s,%d", new Object[] { paramq.Gie, Integer.valueOf(paramq.ths) }) });
       }
       else
       {
-        ad.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret sig[%s]", new Object[] { paramArrayOfByte.EKU });
-        MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.XN()).edit().putString(paramq.EKS, paramArrayOfByte.EKU).commit();
-        h.vKh.idkeyStat(322L, 3L, 1L, false);
-        h.vKh.f(11098, new Object[] { Integer.valueOf(4003), String.format("%s,%d,%s", new Object[] { paramq.EKS, Integer.valueOf(paramq.rZz), paramArrayOfByte.EKU }) });
+        ac.i("MicroMsg.NetSceneYybGetPkgSig", "summertoken ret sig[%s]", new Object[] { paramArrayOfByte.Gig });
+        MultiProcessSharedPreferences.getSharedPreferences(ai.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.YK()).edit().putString(paramq.Gie, paramArrayOfByte.Gig).commit();
+        h.wUl.idkeyStat(322L, 3L, 1L, false);
+        h.wUl.f(11098, new Object[] { Integer.valueOf(4003), String.format("%s,%d,%s", new Object[] { paramq.Gie, Integer.valueOf(paramq.ths), paramArrayOfByte.Gig }) });
       }
     }
   }

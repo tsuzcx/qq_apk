@@ -1,7 +1,7 @@
 package com.tencent.mm.modelvoiceaddr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class SceneVoiceInputAddrProxy$1
   implements Runnable
@@ -11,7 +11,7 @@ final class SceneVoiceInputAddrProxy$1
   public final void run()
   {
     AppMethodBeat.i(148564);
-    ad.i("SceneVoiceInputAddrProxy", "remote service connected");
+    ac.i("SceneVoiceInputAddrProxy", "remote service connected");
     AppMethodBeat.o(148564);
   }
 }

@@ -1,8 +1,8 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.j;
-import com.tencent.mm.emoji.a.j.b;
+import com.tencent.mm.emoji.a.k;
+import com.tencent.mm.emoji.a.k.b;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class g
@@ -12,7 +12,7 @@ public final class g
   {
     super(paramEmojiInfo, paramBoolean, parama);
     AppMethodBeat.i(104496);
-    new j(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.fZZ(), paramEmojiInfo.field_imitateMd5).fNd = new j.b()
+    new k(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.fGt(), paramEmojiInfo.field_imitateMd5).fQO = new k.b()
     {
       public final void b(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
@@ -25,11 +25,11 @@ public final class g
         }
         if (paramAnonymousBoolean)
         {
-          g.this.lK(2);
+          g.this.lG(2);
           AppMethodBeat.o(104495);
           return;
         }
-        g.this.lK(paramAnonymousInt2);
+        g.this.lG(paramAnonymousInt2);
         AppMethodBeat.o(104495);
       }
     };
@@ -38,7 +38,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.c.g
  * JD-Core Version:    0.7.0.1
  */

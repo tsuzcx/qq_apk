@@ -10,28 +10,28 @@ import rx.schedulers.Schedulers;
 public class a
   implements Executor
 {
-  private static a jjT;
-  private final g jjU;
+  private static a jKg;
+  private final g jKh;
   private final Handler mHandler;
   
   private a()
   {
     AppMethodBeat.i(159030);
     this.mHandler = new Handler(Looper.getMainLooper());
-    this.jjU = Schedulers.from(this);
+    this.jKh = Schedulers.from(this);
     AppMethodBeat.o(159030);
   }
   
-  public static g aVc()
+  public static g bca()
   {
     AppMethodBeat.i(159031);
-    if (jjT == null) {}
+    if (jKg == null) {}
     try
     {
-      if (jjT == null) {
-        jjT = new a();
+      if (jKg == null) {
+        jKg = new a();
       }
-      g localg = jjT.jjU;
+      g localg = jKg.jKh;
       AppMethodBeat.o(159031);
       return localg;
     }

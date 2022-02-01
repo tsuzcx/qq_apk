@@ -12,11 +12,11 @@ import org.apache.commons.b.h;
 
 public final class a
 {
-  private static final Object Knd = new Object();
-  private static String[] Kne = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
-  private static final Method Knf;
-  private static final Method Kng;
-  static Class Knh;
+  private static final Object MaM = new Object();
+  private static String[] MaN = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
+  private static final Method MaO;
+  private static final Method MaP;
+  static Class MaQ;
   
   static
   {
@@ -26,11 +26,11 @@ public final class a
     {
       try
       {
-        if (Knh != null) {
+        if (MaQ != null) {
           continue;
         }
-        localObject1 = aRo("java.lang.Throwable");
-        Knh = (Class)localObject1;
+        localObject1 = aXo("java.lang.Throwable");
+        MaQ = (Class)localObject1;
         localObject1 = ((Class)localObject1).getMethod("getCause", null);
       }
       catch (Exception localException1)
@@ -38,24 +38,24 @@ public final class a
         Object localObject1;
         localClass1 = null;
         continue;
-        localClass1 = Knh;
+        localClass1 = MaQ;
         continue;
-        localClass2 = Knh;
+        localClass2 = MaQ;
         continue;
       }
-      Knf = (Method)localObject1;
+      MaO = (Method)localObject1;
       try
       {
-        if (Knh != null) {
+        if (MaQ != null) {
           continue;
         }
-        localObject1 = aRo("java.lang.Throwable");
-        Knh = (Class)localObject1;
-        if (Knh != null) {
+        localObject1 = aXo("java.lang.Throwable");
+        MaQ = (Class)localObject1;
+        if (MaQ != null) {
           continue;
         }
-        localClass2 = aRo("java.lang.Throwable");
-        Knh = localClass2;
+        localClass2 = aXo("java.lang.Throwable");
+        MaQ = localClass2;
         localObject1 = ((Class)localObject1).getMethod("initCause", new Class[] { localClass2 });
       }
       catch (Exception localException2)
@@ -65,19 +65,19 @@ public final class a
         Object localObject2 = localObject3;
         continue;
       }
-      Kng = (Method)localObject1;
+      MaP = (Method)localObject1;
       AppMethodBeat.o(40719);
       return;
-      localObject1 = Knh;
+      localObject1 = MaQ;
     }
   }
   
-  public static Throwable E(Throwable paramThrowable)
+  public static Throwable F(Throwable paramThrowable)
   {
     AppMethodBeat.i(40712);
-    synchronized (Knd)
+    synchronized (MaM)
     {
-      paramThrowable = a(paramThrowable, Kne);
+      paramThrowable = a(paramThrowable, MaN);
       AppMethodBeat.o(40712);
       return paramThrowable;
     }
@@ -120,9 +120,9 @@ public final class a
       }
       localObject2 = ???;
       if (??? == null) {}
-      synchronized (Knd)
+      synchronized (MaM)
       {
-        localObject2 = Kne;
+        localObject2 = MaN;
         int i = 0;
         for (;;)
         {
@@ -133,7 +133,7 @@ public final class a
           ??? = localObject2[i];
           if (??? != null)
           {
-            localObject1 = d(paramThrowable, ???);
+            localObject1 = e(paramThrowable, ???);
             ??? = (String[])localObject1;
             if (localObject1 != null) {
               break;
@@ -150,14 +150,14 @@ public final class a
     }
     Object localObject2 = ???;
     if (??? == null) {
-      localObject2 = e(paramThrowable, "detail");
+      localObject2 = f(paramThrowable, "detail");
     }
     label162:
     AppMethodBeat.o(40713);
     return localObject2;
   }
   
-  private static Class aRo(String paramString)
+  private static Class aXo(String paramString)
   {
     AppMethodBeat.i(40718);
     try
@@ -174,10 +174,10 @@ public final class a
     }
   }
   
-  static String[] aRz(String paramString)
+  static String[] aXz(String paramString)
   {
     AppMethodBeat.i(40717);
-    paramString = new StringTokenizer(paramString, h.Kdb);
+    paramString = new StringTokenizer(paramString, h.LQw);
     ArrayList localArrayList = new ArrayList();
     while (paramString.hasMoreTokens()) {
       localArrayList.add(paramString.nextToken());
@@ -187,17 +187,17 @@ public final class a
     return paramString;
   }
   
-  private static Throwable d(Throwable paramThrowable, String paramString)
+  private static Throwable e(Throwable paramThrowable, String paramString)
   {
     AppMethodBeat.i(40714);
     try
     {
       paramString = paramThrowable.getClass().getMethod(paramString, null);
       if (paramString != null) {
-        if (Knh == null)
+        if (MaQ == null)
         {
-          localClass = aRo("java.lang.Throwable");
-          Knh = localClass;
+          localClass = aXo("java.lang.Throwable");
+          MaQ = localClass;
           if (!localClass.isAssignableFrom(paramString.getReturnType())) {
             break label85;
           }
@@ -210,7 +210,7 @@ public final class a
       {
         try
         {
-          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.Kky);
+          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.LYh);
           AppMethodBeat.o(40714);
           return paramThrowable;
         }
@@ -238,22 +238,22 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = Knh;
+        localClass = MaQ;
       }
     }
   }
   
-  private static Throwable e(Throwable paramThrowable, String paramString)
+  private static Throwable f(Throwable paramThrowable, String paramString)
   {
     AppMethodBeat.i(40715);
     try
     {
       paramString = paramThrowable.getClass().getField(paramString);
       if (paramString != null) {
-        if (Knh == null)
+        if (MaQ == null)
         {
-          localClass = aRo("java.lang.Throwable");
-          Knh = localClass;
+          localClass = aXo("java.lang.Throwable");
+          MaQ = localClass;
           if (!localClass.isAssignableFrom(paramString.getType())) {
             break label81;
           }
@@ -290,19 +290,19 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = Knh;
+        localClass = MaQ;
       }
     }
   }
   
-  public static boolean fMU()
+  public static boolean gfK()
   {
-    return Knf != null;
+    return MaO != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.b.b.a
  * JD-Core Version:    0.7.0.1
  */

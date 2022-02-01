@@ -6,27 +6,27 @@ import com.google.b.a.e;
 public final class a$ba
   extends e
 {
-  public int InL = 0;
+  public int JPv = 0;
   
   public a$ba()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.InL != 0) {
-      paramb.bz(1, this.InL);
+    if (this.JPv != 0) {
+      paramb.bw(1, this.JPv);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.InL != 0) {
-      i = j + b.bB(1, this.InL);
+    if (this.JPv != 0) {
+      i = j + b.by(1, this.JPv);
     }
     return i;
   }

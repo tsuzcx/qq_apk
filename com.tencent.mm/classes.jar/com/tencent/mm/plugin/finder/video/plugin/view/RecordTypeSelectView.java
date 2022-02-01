@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.af;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -16,9 +16,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.recordvideo.plugin.effect.FinderFilterLayoutManager;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.a.b;
 import d.g.b.k;
 import d.v;
@@ -26,85 +26,82 @@ import d.y;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "adapter", "Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordTypeAdapter;", "itemClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "pos", "", "layoutManager", "Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager;", "selectChangeListener", "position", "selectIndex", "selectTypeList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "selectTypeView", "Landroid/support/v7/widget/RecyclerView;", "snapHelper", "Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordLinearSnapHelper;", "setData", "title", "setSelectChangeListener", "listener", "Companion", "RecordLinearSnapHelper", "RecordTypeAdapter", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "adapter", "Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordTypeAdapter;", "itemClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "pos", "", "layoutManager", "Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager;", "selectChangeListener", "position", "selectIndex", "selectTypeList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "selectTypeView", "Landroid/support/v7/widget/RecyclerView;", "snapHelper", "Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordLinearSnapHelper;", "setData", "title", "setSelectChangeListener", "listener", "Companion", "RecordLinearSnapHelper", "RecordTypeAdapter", "plugin-finder_release"})
 public final class RecordTypeSelectView
   extends RelativeLayout
 {
-  public static final a Ldz;
-  private b<? super Integer, y> KBy;
-  private RecyclerView Ldt;
-  private ArrayList<String> Ldu;
-  private c Ldv;
-  private FinderFilterLayoutManager Ldw;
-  private b Ldx;
-  private b<? super Integer, y> Ldy;
-  private int zGx;
+  public static final RecordTypeSelectView.a rUr;
+  private b<? super Integer, y> gIr;
+  private RecyclerView rUk;
+  private ArrayList<String> rUl;
+  private int rUm;
+  private c rUn;
+  private FinderFilterLayoutManager rUo;
+  private b rUp;
+  private b<? super Integer, y> rUq;
   
   static
   {
-    AppMethodBeat.i(199938);
-    Ldz = new a((byte)0);
-    AppMethodBeat.o(199938);
+    AppMethodBeat.i(204006);
+    rUr = new RecordTypeSelectView.a((byte)0);
+    AppMethodBeat.o(204006);
   }
   
   public RecordTypeSelectView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(199937);
-    this.Ldu = new ArrayList();
-    this.Ldv = new c(paramContext);
-    this.Ldw = new FinderFilterLayoutManager(paramContext);
-    this.Ldx = new b();
-    this.KBy = ((b)new d(this));
-    LayoutInflater.from(paramContext).inflate(2131496247, (ViewGroup)this, true);
-    paramContext = findViewById(2131307860);
+    AppMethodBeat.i(204005);
+    this.rUl = new ArrayList();
+    this.rUn = new c(paramContext);
+    this.rUo = new FinderFilterLayoutManager(paramContext);
+    this.rUp = new b();
+    this.gIr = ((b)new d(this));
+    LayoutInflater.from(paramContext).inflate(2131496248, (ViewGroup)this, true);
+    paramContext = findViewById(2131307968);
     k.g(paramContext, "findViewById(R.id.select_type_list)");
-    this.Ldt = ((RecyclerView)paramContext);
-    this.Ldt.setLayoutManager((RecyclerView.i)this.Ldw);
-    this.Ldt.setAdapter((RecyclerView.a)this.Ldv);
-    this.Ldx.j(this.Ldt);
-    AppMethodBeat.o(199937);
+    this.rUk = ((RecyclerView)paramContext);
+    this.rUk.setLayoutManager((RecyclerView.i)this.rUo);
+    this.rUk.setAdapter((RecyclerView.a)this.rUn);
+    this.rUp.j(this.rUk);
+    AppMethodBeat.o(204005);
   }
   
   public final void setData(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(199936);
+    AppMethodBeat.i(204004);
     k.h(paramArrayList, "title");
-    this.Ldu.addAll((Collection)paramArrayList);
-    this.Ldv.notifyDataSetChanged();
-    AppMethodBeat.o(199936);
+    this.rUl.addAll((Collection)paramArrayList);
+    this.rUn.notifyDataSetChanged();
+    AppMethodBeat.o(204004);
   }
   
   public final void setSelectChangeListener(b<? super Integer, y> paramb)
   {
-    this.Ldy = paramb;
+    this.rUq = paramb;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordLinearSnapHelper;", "Landroid/support/v7/widget/LinearSnapHelper;", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView;)V", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "findSnapView", "findTargetSnapPosition", "", "velocityX", "velocityY", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordLinearSnapHelper;", "Landroid/support/v7/widget/LinearSnapHelper;", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView;)V", "calculateDistanceToFinalSnap", "", "layoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "findSnapView", "findTargetSnapPosition", "", "velocityX", "velocityY", "plugin-finder_release"})
   public final class b
     extends af
   {
     public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(199927);
+      AppMethodBeat.i(203995);
       paramInt1 = super.a(parami, paramInt1, paramInt2);
-      AppMethodBeat.o(199927);
+      AppMethodBeat.o(203995);
       return paramInt1;
     }
     
     public final View a(RecyclerView.i parami)
     {
-      AppMethodBeat.i(199928);
+      AppMethodBeat.i(203996);
       View localView = super.a(parami);
       Object localObject = new StringBuilder("findSnapView ");
       if (localView != null)
       {
         parami = localView.getTag();
-        ad.i("MicroMsg.RecordTypeSelectView", parami);
-        i = RecordTypeSelectView.a(this.LdA);
+        ac.i("MicroMsg.RecordTypeSelectView", parami);
+        i = RecordTypeSelectView.a(this.rUs);
         if (localView == null) {
           break label155;
         }
@@ -114,7 +111,7 @@ public final class RecordTypeSelectView
           break label160;
         }
         label69:
-        localObject = this.LdA;
+        localObject = this.rUs;
         if (localView == null) {
           break label174;
         }
@@ -132,14 +129,14 @@ public final class RecordTypeSelectView
       for (int i = parami.intValue();; i = 0)
       {
         RecordTypeSelectView.a((RecordTypeSelectView)localObject, i);
-        parami = RecordTypeSelectView.b(this.LdA);
+        parami = RecordTypeSelectView.b(this.rUs);
         if (parami != null) {
-          parami.aA(Integer.valueOf(RecordTypeSelectView.a(this.LdA)));
+          parami.ay(Integer.valueOf(RecordTypeSelectView.a(this.rUs)));
         }
-        RecordTypeSelectView.c(this.LdA).notifyDataSetChanged();
+        RecordTypeSelectView.c(this.rUs).notifyDataSetChanged();
         do
         {
-          AppMethodBeat.o(199928);
+          AppMethodBeat.o(203996);
           return localView;
           parami = null;
           break;
@@ -154,108 +151,108 @@ public final class RecordTypeSelectView
     
     public final int[] a(RecyclerView.i parami, View paramView)
     {
-      AppMethodBeat.i(199926);
+      AppMethodBeat.i(203994);
       k.h(parami, "layoutManager");
       k.h(paramView, "targetView");
       parami = super.a(parami, paramView);
-      AppMethodBeat.o(199926);
+      AppMethodBeat.o(203994);
       return parami;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordTypeAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "getItemCount", "", "getSpecialMargin", "width", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordTypeAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "getItemCount", "", "getSpecialMargin", "width", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
   public final class c
-    extends RecyclerView.a<RecyclerView.v>
+    extends RecyclerView.a<RecyclerView.w>
   {
     private Context context;
     
     public c()
     {
-      AppMethodBeat.i(199934);
+      AppMethodBeat.i(204002);
       this.context = localObject;
-      AppMethodBeat.o(199934);
+      AppMethodBeat.o(204002);
     }
     
-    private final int ahK(int paramInt)
+    private final int EO(int paramInt)
     {
-      AppMethodBeat.i(199933);
-      paramInt = (a.hV(this.context) - paramInt) / 2;
-      AppMethodBeat.o(199933);
+      AppMethodBeat.i(204001);
+      paramInt = (a.ig(this.context) - paramInt) / 2;
+      AppMethodBeat.o(204001);
       return paramInt;
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(199930);
+      AppMethodBeat.i(203998);
       k.h(paramViewGroup, "parent");
-      paramViewGroup = LayoutInflater.from(this.context).inflate(2131496246, paramViewGroup, false);
-      paramViewGroup = (RecyclerView.v)new b(paramViewGroup, paramViewGroup);
-      AppMethodBeat.o(199930);
+      paramViewGroup = LayoutInflater.from(this.context).inflate(2131496247, paramViewGroup, false);
+      paramViewGroup = (RecyclerView.w)new b(paramViewGroup, paramViewGroup);
+      AppMethodBeat.o(203998);
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.v paramv, final int paramInt)
+    public final void a(RecyclerView.w paramw, final int paramInt)
     {
       int j = 0;
-      AppMethodBeat.i(199932);
-      k.h(paramv, "viewHolder");
-      paramv = paramv.arI;
-      if (paramv == null)
+      AppMethodBeat.i(204000);
+      k.h(paramw, "viewHolder");
+      paramw = paramw.asD;
+      if (paramw == null)
       {
-        paramv = new v("null cannot be cast to non-null type android.widget.TextView");
-        AppMethodBeat.o(199932);
-        throw paramv;
+        paramw = new v("null cannot be cast to non-null type android.widget.TextView");
+        AppMethodBeat.o(204000);
+        throw paramw;
       }
-      paramv = (TextView)paramv;
-      paramv.setText((CharSequence)RecordTypeSelectView.d(RecordTypeSelectView.this).get(paramInt));
-      float f = paramv.getPaint().measureText((String)RecordTypeSelectView.d(RecordTypeSelectView.this).get(paramInt)) + a.ao(this.context, 2131165294);
-      ad.d("MicroMsg.RecordTypeSelectView", "onBindViewHolder pos:" + paramInt + " width:" + f);
-      Object localObject = paramv.getLayoutParams();
+      paramw = (TextView)paramw;
+      paramw.setText((CharSequence)RecordTypeSelectView.d(RecordTypeSelectView.this).get(paramInt));
+      float f = paramw.getPaint().measureText((String)RecordTypeSelectView.d(RecordTypeSelectView.this).get(paramInt)) + a.au(this.context, 2131165294);
+      ac.d("MicroMsg.RecordTypeSelectView", "onBindViewHolder pos:" + paramInt + " width:" + f);
+      Object localObject = paramw.getLayoutParams();
       if (localObject == null)
       {
-        paramv = new v("null cannot be cast to non-null type android.support.v7.widget.RecyclerView.LayoutParams");
-        AppMethodBeat.o(199932);
-        throw paramv;
+        paramw = new v("null cannot be cast to non-null type android.support.v7.widget.RecyclerView.LayoutParams");
+        AppMethodBeat.o(204000);
+        throw paramw;
       }
       localObject = (RecyclerView.LayoutParams)localObject;
       if (paramInt == 0) {}
-      for (int i = ahK((int)f);; i = 0)
+      for (int i = EO((int)f);; i = 0)
       {
         ((RecyclerView.LayoutParams)localObject).setMarginStart(i);
-        localObject = paramv.getLayoutParams();
+        localObject = paramw.getLayoutParams();
         if (localObject != null) {
           break;
         }
-        paramv = new v("null cannot be cast to non-null type android.support.v7.widget.RecyclerView.LayoutParams");
-        AppMethodBeat.o(199932);
-        throw paramv;
+        paramw = new v("null cannot be cast to non-null type android.support.v7.widget.RecyclerView.LayoutParams");
+        AppMethodBeat.o(204000);
+        throw paramw;
       }
       localObject = (RecyclerView.LayoutParams)localObject;
       i = j;
       if (paramInt == getItemCount() - 1) {
-        i = ahK((int)f);
+        i = EO((int)f);
       }
       ((RecyclerView.LayoutParams)localObject).setMarginEnd(i);
       if (paramInt == RecordTypeSelectView.a(RecordTypeSelectView.this)) {}
       for (f = 1.0F;; f = 0.5F)
       {
-        paramv.setAlpha(f);
-        paramv.setTag(Integer.valueOf(paramInt));
-        paramv.setOnClickListener((View.OnClickListener)new a(this, paramInt));
-        AppMethodBeat.o(199932);
+        paramw.setAlpha(f);
+        paramw.setTag(Integer.valueOf(paramInt));
+        paramw.setOnClickListener((View.OnClickListener)new a(this, paramInt));
+        AppMethodBeat.o(204000);
         return;
       }
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(199931);
+      AppMethodBeat.i(203999);
       int i = RecordTypeSelectView.d(RecordTypeSelectView.this).size();
-      AppMethodBeat.o(199931);
+      AppMethodBeat.o(203999);
       return i;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -263,15 +260,15 @@ public final class RecordTypeSelectView
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(199929);
-        RecordTypeSelectView.e(this.LdB.LdA).aA(Integer.valueOf(paramInt));
-        AppMethodBeat.o(199929);
+        AppMethodBeat.i(203997);
+        RecordTypeSelectView.e(this.rUt.rUs).ay(Integer.valueOf(paramInt));
+        AppMethodBeat.o(203997);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordTypeAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-finder_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/video/plugin/view/RecordTypeSelectView$RecordTypeAdapter$onCreateViewHolder$1", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "plugin-finder_release"})
     public static final class b
-      extends RecyclerView.v
+      extends RecyclerView.w
     {
       b(View paramView1, View paramView2)
       {
@@ -280,7 +277,7 @@ public final class RecordTypeSelectView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
   static final class d
     extends d.g.b.l
     implements b<Integer, y>
@@ -293,7 +290,7 @@ public final class RecordTypeSelectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.plugin.view.RecordTypeSelectView
  * JD-Core Version:    0.7.0.1
  */

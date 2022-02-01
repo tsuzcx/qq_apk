@@ -5,22 +5,22 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.ui.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class LocationInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationInfo> CREATOR;
-  public String dtN;
-  String sOA;
-  public int sOB;
-  public String sOC;
-  public String sOu;
-  public double sOv;
-  public double sOw;
-  public int sOx;
-  public String sOy;
-  public String sOz;
+  public String dry;
+  public String tWH;
+  public double tWI;
+  public double tWJ;
+  public int tWK;
+  public String tWL;
+  public String tWM;
+  String tWN;
+  public int tWO;
+  public String tWP;
   
   static
   {
@@ -31,39 +31,39 @@ public class LocationInfo
   
   public LocationInfo()
   {
-    this.sOu = "";
-    this.sOv = -85.0D;
-    this.sOw = -1000.0D;
-    this.sOy = "";
-    this.sOz = "zh-cn";
-    this.sOA = "";
-    this.sOB = 0;
+    this.tWH = "";
+    this.tWI = -85.0D;
+    this.tWJ = -1000.0D;
+    this.tWL = "";
+    this.tWM = "zh-cn";
+    this.tWN = "";
+    this.tWO = 0;
   }
   
   public LocationInfo(byte paramByte)
   {
     AppMethodBeat.i(55673);
-    this.sOu = "";
-    this.sOv = -85.0D;
-    this.sOw = -1000.0D;
-    this.sOy = "";
-    this.sOz = "zh-cn";
-    this.sOA = "";
-    this.sOB = 0;
-    this.sOu = (toString() + " " + System.nanoTime());
-    this.sOx = d.cJD();
+    this.tWH = "";
+    this.tWI = -85.0D;
+    this.tWJ = -1000.0D;
+    this.tWL = "";
+    this.tWM = "zh-cn";
+    this.tWN = "";
+    this.tWO = 0;
+    this.tWH = (toString() + " " + System.nanoTime());
+    this.tWK = d.cXi();
     AppMethodBeat.o(55673);
   }
   
-  public final boolean cJg()
+  public final boolean cWL()
   {
-    return (this.sOv != -85.0D) && (this.sOw != -1000.0D);
+    return (this.tWI != -85.0D) && (this.tWJ != -1000.0D);
   }
   
-  public final boolean cJh()
+  public final boolean cWM()
   {
     AppMethodBeat.i(55675);
-    if ((bt.isNullOrNil(this.sOy)) && (bt.isNullOrNil(this.dtN)))
+    if ((bs.isNullOrNil(this.tWL)) && (bs.isNullOrNil(this.dry)))
     {
       AppMethodBeat.o(55675);
       return false;
@@ -80,7 +80,7 @@ public class LocationInfo
   public String toString()
   {
     AppMethodBeat.i(55676);
-    String str = this.sOv + " " + this.sOw + " " + this.sOy + " " + this.dtN + "  " + this.sOu;
+    String str = this.tWI + " " + this.tWJ + " " + this.tWL + " " + this.dry + "  " + this.tWH;
     AppMethodBeat.o(55676);
     return str;
   }
@@ -88,22 +88,22 @@ public class LocationInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(55674);
-    paramParcel.writeString(this.sOu);
-    paramParcel.writeDouble(this.sOv);
-    paramParcel.writeDouble(this.sOw);
-    paramParcel.writeInt(this.sOx);
-    paramParcel.writeString(this.sOy);
-    paramParcel.writeString(this.sOz);
-    paramParcel.writeString(this.dtN);
-    paramParcel.writeString(this.sOA);
-    paramParcel.writeInt(this.sOB);
-    paramParcel.writeString(this.sOC);
+    paramParcel.writeString(this.tWH);
+    paramParcel.writeDouble(this.tWI);
+    paramParcel.writeDouble(this.tWJ);
+    paramParcel.writeInt(this.tWK);
+    paramParcel.writeString(this.tWL);
+    paramParcel.writeString(this.tWM);
+    paramParcel.writeString(this.dry);
+    paramParcel.writeString(this.tWN);
+    paramParcel.writeInt(this.tWO);
+    paramParcel.writeString(this.tWP);
     AppMethodBeat.o(55674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

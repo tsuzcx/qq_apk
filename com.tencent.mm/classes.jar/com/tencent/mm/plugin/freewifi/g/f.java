@@ -4,20 +4,20 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedHashMap;
 
 public final class f
   extends j<e>
 {
   public static final String[] SQL_CREATE;
-  public static LinkedHashMap<String, Class> rjq;
+  public static LinkedHashMap<String, Class> ssj;
   
   static
   {
     AppMethodBeat.i(24958);
     SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "FreeWifiLog"), "CREATE INDEX IF NOT EXISTS idx_FreeWifiLog_key  on FreeWifiLog  (  id )" };
-    rjq = new f.1();
+    ssj = new LinkedHashMap() {};
     AppMethodBeat.o(24958);
   }
   
@@ -29,8 +29,8 @@ public final class f
   public final boolean b(String paramString1, int paramInt, String paramString2, long paramLong)
   {
     AppMethodBeat.i(24957);
-    ad.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "save. id=%s, protocolNumber=%d, logContent=%s, createTime=%d", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2, Long.valueOf(paramLong) });
-    if (m.dq(paramString1))
+    ac.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "save. id=%s, protocolNumber=%d, logContent=%s, createTime=%d", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2, Long.valueOf(paramLong) });
+    if (m.cX(paramString1))
     {
       AppMethodBeat.o(24957);
       return false;
@@ -46,16 +46,16 @@ public final class f
       if (localCursor.getCount() == 0)
       {
         bool = insert(locale);
-        ad.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "insert ret".concat(String.valueOf(bool)));
+        ac.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "insert ret".concat(String.valueOf(bool)));
         return bool;
       }
       boolean bool = update(locale, new String[0]);
-      ad.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "update ret".concat(String.valueOf(bool)));
+      ac.i("MicroMsg.FreeWifi.FreeWifiLogStorage", "update ret".concat(String.valueOf(bool)));
       return bool;
     }
     catch (Exception paramString1)
     {
-      ad.e("MicroMsg.FreeWifi.FreeWifiLogStorage", m.m(paramString1));
+      ac.e("MicroMsg.FreeWifi.FreeWifiLogStorage", m.m(paramString1));
       return false;
     }
     finally
@@ -67,7 +67,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.g.f
  * JD-Core Version:    0.7.0.1
  */

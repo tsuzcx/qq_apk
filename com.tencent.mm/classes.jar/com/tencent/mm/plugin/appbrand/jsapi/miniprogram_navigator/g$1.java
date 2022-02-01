@@ -10,13 +10,13 @@ final class g$1
 {
   g$1(g paramg, d paramd, int paramInt) {}
   
-  public final void k(boolean paramBoolean, String paramString)
+  public final void l(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(147183);
     if (paramBoolean)
     {
       paramString = "ok";
-      this.jyp.h(this.ccB, this.jZf.e(paramString, null));
+      this.jYK.h(this.bZy, this.kzS.e(paramString, null));
       AppMethodBeat.o(147183);
       return;
     }

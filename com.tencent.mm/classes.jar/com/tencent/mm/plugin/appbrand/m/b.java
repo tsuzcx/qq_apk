@@ -11,23 +11,23 @@ import java.util.TimeZone;
 
 public final class b
 {
-  private static SimpleDateFormat vF = null;
+  private static SimpleDateFormat wE = null;
   
   public static void a(String paramString, double paramDouble1, double paramDouble2, long paramLong)
   {
     AppMethodBeat.i(179483);
-    if (!eK(paramString))
+    if (!eA(paramString))
     {
       AppMethodBeat.o(179483);
       return;
     }
-    if (vF == null)
+    if (wE == null)
     {
       localObject = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss", Locale.US);
-      vF = (SimpleDateFormat)localObject;
+      wE = (SimpleDateFormat)localObject;
       ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("UTC"));
     }
-    Object localObject = new android.support.d.a(paramString);
+    Object localObject = new android.support.e.a(paramString);
     if ((paramDouble1 < -90.0D) || (paramDouble1 > 90.0D) || (Double.isNaN(paramDouble1)))
     {
       paramString = new IllegalArgumentException("Latitude value " + paramDouble1 + " is not valid.");
@@ -43,8 +43,8 @@ public final class b
     if (paramDouble1 >= 0.0D)
     {
       paramString = "N";
-      ((android.support.d.a)localObject).setAttribute("GPSLatitudeRef", paramString);
-      ((android.support.d.a)localObject).setAttribute("GPSLatitude", android.support.d.a.b(Math.abs(paramDouble1)));
+      ((android.support.e.a)localObject).setAttribute("GPSLatitudeRef", paramString);
+      ((android.support.e.a)localObject).setAttribute("GPSLatitude", android.support.e.a.b(Math.abs(paramDouble1)));
       if (paramDouble2 < 0.0D) {
         break label340;
       }
@@ -52,14 +52,14 @@ public final class b
     label340:
     for (paramString = "E";; paramString = "W")
     {
-      ((android.support.d.a)localObject).setAttribute("GPSLongitudeRef", paramString);
-      ((android.support.d.a)localObject).setAttribute("GPSLongitude", android.support.d.a.b(Math.abs(paramDouble2)));
-      paramString = vF.format(new Date(paramLong)).split("\\s+", -1);
-      ((android.support.d.a)localObject).setAttribute("GPSDateStamp", paramString[0]);
-      ((android.support.d.a)localObject).setAttribute("GPSTimeStamp", paramString[1]);
-      ((android.support.d.a)localObject).setAttribute("DateTime", vF.format(new Date(paramLong)));
-      ((android.support.d.a)localObject).setAttribute("SubSecTime", Long.toString(paramLong % 1000L));
-      ((android.support.d.a)localObject).saveAttributes();
+      ((android.support.e.a)localObject).setAttribute("GPSLongitudeRef", paramString);
+      ((android.support.e.a)localObject).setAttribute("GPSLongitude", android.support.e.a.b(Math.abs(paramDouble2)));
+      paramString = wE.format(new Date(paramLong)).split("\\s+", -1);
+      ((android.support.e.a)localObject).setAttribute("GPSDateStamp", paramString[0]);
+      ((android.support.e.a)localObject).setAttribute("GPSTimeStamp", paramString[1]);
+      ((android.support.e.a)localObject).setAttribute("DateTime", wE.format(new Date(paramLong)));
+      ((android.support.e.a)localObject).setAttribute("SubSecTime", Long.toString(paramLong % 1000L));
+      ((android.support.e.a)localObject).saveAttributes();
       AppMethodBeat.o(179483);
       return;
       paramString = "S";
@@ -70,13 +70,13 @@ public final class b
   public static void b(InputStream paramInputStream, String paramString)
   {
     AppMethodBeat.i(138802);
-    if ((paramInputStream == null) || (!eK(paramString)))
+    if ((paramInputStream == null) || (!eA(paramString)))
     {
       AppMethodBeat.o(138802);
       return;
     }
-    paramString = new android.support.d.a(paramString);
-    a.a(new android.support.d.a(paramInputStream), paramString);
+    paramString = new android.support.e.a(paramString);
+    a.a(new android.support.e.a(paramInputStream), paramString);
     paramString.setAttribute("Orientation", null);
     paramString.setAttribute("ImageWidth", null);
     paramString.setAttribute("ThumbnailImageWidth", null);
@@ -84,16 +84,16 @@ public final class b
     AppMethodBeat.o(138802);
   }
   
-  public static void cH(String paramString1, String paramString2)
+  public static void cR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(138801);
-    if ((!eK(paramString1)) || (!eK(paramString2)))
+    if ((!eA(paramString1)) || (!eA(paramString2)))
     {
       AppMethodBeat.o(138801);
       return;
     }
-    paramString2 = new android.support.d.a(paramString2);
-    a.a(new android.support.d.a(paramString1), paramString2);
+    paramString2 = new android.support.e.a(paramString2);
+    a.a(new android.support.e.a(paramString1), paramString2);
     paramString2.setAttribute("Orientation", null);
     paramString2.setAttribute("ImageWidth", null);
     paramString2.setAttribute("ThumbnailImageWidth", null);
@@ -101,7 +101,7 @@ public final class b
     AppMethodBeat.o(138801);
   }
   
-  private static boolean eK(String paramString)
+  private static boolean eA(String paramString)
   {
     AppMethodBeat.i(138803);
     if ((!TextUtils.isEmpty(paramString)) && (new e(paramString).exists()))
@@ -113,7 +113,7 @@ public final class b
     return false;
   }
   
-  public static int j(InputStream paramInputStream)
+  public static int i(InputStream paramInputStream)
   {
     AppMethodBeat.i(138800);
     if (paramInputStream == null)
@@ -123,7 +123,7 @@ public final class b
     }
     try
     {
-      int i = new android.support.d.a(paramInputStream).l("Orientation");
+      int i = new android.support.e.a(paramInputStream).m("Orientation");
       AppMethodBeat.o(138800);
       return i;
     }
@@ -141,7 +141,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.b
  * JD-Core Version:    0.7.0.1
  */

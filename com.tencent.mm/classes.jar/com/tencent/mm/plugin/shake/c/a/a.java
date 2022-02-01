@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.shake.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.qj;
-import com.tencent.mm.protocal.protobuf.qk;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.qt;
+import com.tencent.mm.protocal.protobuf.qu;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n
@@ -24,16 +24,16 @@ public final class a
   {
     AppMethodBeat.i(28179);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new qj();
-    ((b.a)localObject).gUV = new qk();
+    ((b.a)localObject).hvt = new qt();
+    ((b.a)localObject).hvu = new qu();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/cancelshakecard";
     ((b.a)localObject).funcId = 1252;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (qj)this.rr.gUS.gUX;
-    ((qj)localObject).nrr = paramString1;
-    ((qj)localObject).dyd = paramString2;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (qt)this.rr.hvr.hvw;
+    ((qt)localObject).nUr = paramString1;
+    ((qt)localObject).dvP = paramString2;
     AppMethodBeat.o(28179);
   }
   
@@ -54,7 +54,7 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28181);
-    ad.i("MicroMsg.NetSceneCancelShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
+    ac.i("MicroMsg.NetSceneCancelShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(28181);
   }

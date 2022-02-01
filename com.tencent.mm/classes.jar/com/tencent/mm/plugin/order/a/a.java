@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.order.ui.MallOrderDetailInfoUI;
 import com.tencent.mm.plugin.order.ui.MallOrderProductListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderTransactionInfoUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.d;
 
 public class a
@@ -16,7 +16,7 @@ public class a
   public d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66631);
-    ad.d("MicroMsg.ShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
+    ac.d("MicroMsg.ShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
     b(paramActivity, MallOrderRecordListUI.class, paramBundle);
     AppMethodBeat.o(66631);
     return this;
@@ -47,7 +47,7 @@ public class a
       return;
     }
     if (((paramActivity instanceof MallOrderProductListUI)) || ((paramActivity instanceof MallOrderTransactionInfoUI))) {
-      P(paramActivity);
+      Q(paramActivity);
     }
     AppMethodBeat.o(66632);
   }
@@ -55,7 +55,7 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66633);
-    super.bq(paramActivity);
+    super.bt(paramActivity);
     AppMethodBeat.o(66633);
   }
   
@@ -64,7 +64,7 @@ public class a
     return false;
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "ShowOrdersInfoProcess";
   }
@@ -72,7 +72,7 @@ public class a
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(66634);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(66634);
   }
 }

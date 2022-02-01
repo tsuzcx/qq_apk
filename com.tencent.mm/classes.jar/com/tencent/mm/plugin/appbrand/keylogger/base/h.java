@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.appbrand.keylogger.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class h
 {
-  public final d kEY;
-  public List<h> kEZ;
-  public final String kFa;
+  public final d lgr;
+  public List<h> lgs;
+  public final String lgt;
   
   public h(d paramd, String paramString)
   {
-    this.kEY = paramd;
-    this.kFa = paramString;
+    this.lgr = paramd;
+    this.lgt = paramString;
   }
   
   public static void a(h paramh, b paramb)
   {
-    AppMethodBeat.i(194889);
+    AppMethodBeat.i(201044);
     if (paramh == null)
     {
-      AppMethodBeat.o(194889);
+      AppMethodBeat.o(201044);
       return;
     }
     if (paramb == null)
     {
-      AppMethodBeat.o(194889);
+      AppMethodBeat.o(201044);
       return;
     }
     paramb.a(paramh);
-    paramh = paramh.kEZ;
+    paramh = paramh.lgs;
     if ((paramh == null) || (paramh.isEmpty()))
     {
-      AppMethodBeat.o(194889);
+      AppMethodBeat.o(201044);
       return;
     }
     int i = 0;
@@ -43,49 +43,53 @@ public final class h
       a((h)paramh.get(i), paramb);
       i += 1;
     }
-    AppMethodBeat.o(194889);
+    AppMethodBeat.o(201044);
   }
   
   public static boolean a(d paramd)
   {
-    AppMethodBeat.i(194890);
+    AppMethodBeat.i(201045);
     if ((paramd.getType() == 3) || (paramd.getType() == 2))
     {
-      AppMethodBeat.o(194890);
+      AppMethodBeat.o(201045);
       return true;
     }
-    AppMethodBeat.o(194890);
+    AppMethodBeat.o(201045);
     return false;
   }
   
   public final void b(h paramh)
   {
-    AppMethodBeat.i(194888);
-    if (!a(this.kEY))
+    AppMethodBeat.i(201043);
+    if (!a(this.lgr))
     {
-      ad.e("StepNode", "addChild but not a node group");
-      AppMethodBeat.o(194888);
+      ac.e("StepNode", "addChild but not a node group");
+      AppMethodBeat.o(201043);
       return;
     }
-    if (this.kEZ == null) {
-      this.kEZ = new ArrayList();
+    if (this.lgs == null) {
+      this.lgs = new ArrayList();
     }
-    this.kEZ.add(paramh);
-    AppMethodBeat.o(194888);
+    this.lgs.add(paramh);
+    AppMethodBeat.o(201043);
   }
   
-  public final List<h> bga()
+  public final List<h> bmU()
   {
-    return this.kEZ;
+    return this.lgs;
   }
   
-  public final a bgb()
+  public final a bmV()
   {
-    if ((this.kEY instanceof a)) {
-      return (a)this.kEY;
+    if ((this.lgr instanceof a)) {
+      return (a)this.lgr;
     }
     return null;
   }
+  
+  public static final class a
+    extends g
+  {}
   
   public static abstract interface b
   {
@@ -94,7 +98,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.h
  * JD-Core Version:    0.7.0.1
  */

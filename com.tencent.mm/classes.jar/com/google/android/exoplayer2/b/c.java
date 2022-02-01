@@ -2,15 +2,15 @@ package com.google.android.exoplayer2.b;
 
 public abstract interface c<I, O, E extends Exception>
 {
-  public abstract void ab(I paramI);
+  public abstract void ad(I paramI);
   
   public abstract void flush();
   
   public abstract void release();
   
-  public abstract I ss();
+  public abstract I sB();
   
-  public abstract O st();
+  public abstract O sC();
 }
 
 

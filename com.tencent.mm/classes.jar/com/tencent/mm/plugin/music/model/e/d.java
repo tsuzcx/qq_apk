@@ -10,23 +10,23 @@ public final class d
   extends j<c>
 {
   public e db;
-  public f<String, c> tXI;
+  public f<String, c> vgu;
   
   public d(e parame)
   {
     super(parame, c.info, "PieceMusicInfo", null);
     AppMethodBeat.i(63179);
     this.db = parame;
-    this.tXI = new com.tencent.mm.memory.a.c(20);
+    this.vgu = new com.tencent.mm.memory.a.c(20);
     AppMethodBeat.o(63179);
   }
   
-  public final c aiQ(String paramString)
+  public final c anL(String paramString)
   {
     AppMethodBeat.i(63180);
-    if (this.tXI.get(paramString) != null)
+    if (this.vgu.get(paramString) != null)
     {
-      paramString = (c)this.tXI.get(paramString);
+      paramString = (c)this.vgu.get(paramString);
       AppMethodBeat.o(63180);
       return paramString;
     }
@@ -37,7 +37,7 @@ public final class d
       c localc = new c();
       localc.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.tXI.put(paramString, localc);
+      this.vgu.put(paramString, localc);
       AppMethodBeat.o(63180);
       return localc;
     }
@@ -50,7 +50,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.d
  * JD-Core Version:    0.7.0.1
  */

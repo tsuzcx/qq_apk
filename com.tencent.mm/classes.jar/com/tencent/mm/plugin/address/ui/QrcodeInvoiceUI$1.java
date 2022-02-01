@@ -12,8 +12,8 @@ final class QrcodeInvoiceUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(20957);
-    this.iAy.setResult(0);
-    this.iAy.finish();
+    this.jaz.setResult(0);
+    this.jaz.finish();
     AppMethodBeat.o(20957);
     return true;
   }

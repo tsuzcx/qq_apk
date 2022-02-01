@@ -14,23 +14,23 @@ final class ImageGalleryUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(36105);
+    AppMethodBeat.i(196554);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(36105);
+      AppMethodBeat.o(196554);
       return false;
-      paramView = y.arz().E("basescanui@datacenter", true);
-      paramView.m("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
-      paramView.m("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
+      paramView = y.ayq().F("basescanui@datacenter", true);
+      paramView.l("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
+      paramView.l("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.ImageGalleryUI.4
  * JD-Core Version:    0.7.0.1
  */

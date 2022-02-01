@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int cp(int paramInt1, int paramInt2)
+  public static int cn(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(13023);
     switch (paramInt1)

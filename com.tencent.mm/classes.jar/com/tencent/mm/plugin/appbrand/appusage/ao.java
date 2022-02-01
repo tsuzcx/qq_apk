@@ -10,19 +10,19 @@ import java.util.ArrayList;
 public final class ao
   implements r
 {
-  public final r.a aSg()
+  public final r.a aZd()
   {
     AppMethodBeat.i(44663);
     r.a locala = new r.a();
-    locala.gQr = new ArrayList(0);
-    locala.luJ = -1;
-    locala.doh = "";
-    if (!g.afz().gcn)
+    locala.hqR = new ArrayList(0);
+    locala.lWD = -1;
+    locala.dlQ = "";
+    if (!g.agP().ggT)
     {
       AppMethodBeat.o(44663);
       return locala;
     }
-    if (!i.aRy())
+    if (!i.aYt())
     {
       AppMethodBeat.o(44663);
       return locala;
@@ -33,7 +33,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ao
  * JD-Core Version:    0.7.0.1
  */

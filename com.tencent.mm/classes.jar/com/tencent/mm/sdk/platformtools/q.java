@@ -18,30 +18,30 @@ import java.util.List;
 
 public final class q
 {
-  private static int ETD;
-  private static int ETE;
-  private static q.b ETF;
+  private static int GqQ;
+  private static int GqR;
+  private static q.b GqS;
   private static BroadcastReceiver broadcastReceiver;
   
   static
   {
     AppMethodBeat.i(157554);
     broadcastReceiver = null;
-    ETD = 0;
-    ETE = -1;
-    ETF = new q.a();
+    GqQ = 0;
+    GqR = -1;
+    GqS = new q.a();
     AppMethodBeat.o(157554);
   }
   
   public static int a(ActivityManager.RunningAppProcessInfo paramRunningAppProcessInfo)
   {
     AppMethodBeat.i(157550);
-    if (!(ETF instanceof q.a))
+    if (!(GqS instanceof q.a))
     {
       AppMethodBeat.o(157550);
       return -1;
     }
-    Field localField = ((q.a)ETF).ETG;
+    Field localField = ((q.a)GqS).GqT;
     if ((Build.VERSION.SDK_INT >= 21) && (localField != null)) {
       try
       {
@@ -51,14 +51,14 @@ public final class q
       }
       catch (Throwable paramRunningAppProcessInfo)
       {
-        ad.printErrStackTrace("MicroMsg.GreenManUtil", paramRunningAppProcessInfo, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.GreenManUtil", paramRunningAppProcessInfo, "", new Object[0]);
       }
     }
     AppMethodBeat.o(157550);
     return -1;
   }
   
-  public static boolean cB(Context paramContext)
+  public static boolean cK(Context paramContext)
   {
     AppMethodBeat.i(157549);
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
@@ -81,10 +81,10 @@ public final class q
     return false;
   }
   
-  public static String cC(Context paramContext)
+  public static String cL(Context paramContext)
   {
     AppMethodBeat.i(157553);
-    if (!cB(paramContext))
+    if (!cK(paramContext))
     {
       AppMethodBeat.o(157553);
       return "";
@@ -123,13 +123,13 @@ public final class q
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.GreenManUtil", "getTopActivityName Exception:%s stack:%s", new Object[] { paramContext.getMessage(), bt.m(paramContext) });
+      ac.e("MicroMsg.GreenManUtil", "getTopActivityName Exception:%s stack:%s", new Object[] { paramContext.getMessage(), bs.m(paramContext) });
       AppMethodBeat.o(157553);
     }
     return "";
   }
   
-  public static boolean ig(Context paramContext)
+  public static boolean ir(Context paramContext)
   {
     AppMethodBeat.i(157548);
     try
@@ -147,13 +147,13 @@ public final class q
     }
     catch (Exception paramContext)
     {
-      ad.e("MicroMsg.GreenManUtil", "isScreenOn ERROR use isScreenOn e:%s", new Object[] { bt.m(paramContext) });
+      ac.e("MicroMsg.GreenManUtil", "isScreenOn ERROR use isScreenOn e:%s", new Object[] { bs.m(paramContext) });
       AppMethodBeat.o(157548);
     }
     return false;
   }
   
-  public static void ih(Context paramContext)
+  public static void is(Context paramContext)
   {
     AppMethodBeat.i(157551);
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(10);
@@ -166,22 +166,22 @@ public final class q
     while (paramContext.hasNext())
     {
       ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)paramContext.next();
-      ad.i("MicroMsg.GreenManUtil", "dumpRunningServices %s %s", new Object[] { localRunningServiceInfo.service, Boolean.valueOf(localRunningServiceInfo.foreground), Long.valueOf(localRunningServiceInfo.activeSince) });
+      ac.i("MicroMsg.GreenManUtil", "dumpRunningServices %s %s", new Object[] { localRunningServiceInfo.service, Boolean.valueOf(localRunningServiceInfo.foreground), Long.valueOf(localRunningServiceInfo.activeSince) });
     }
     AppMethodBeat.o(157551);
   }
   
-  public static boolean ii(Context paramContext)
+  public static boolean it(Context paramContext)
   {
     AppMethodBeat.i(157552);
-    boolean bool = ETF.ij(paramContext);
+    boolean bool = GqS.iu(paramContext);
     AppMethodBeat.o(157552);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.q
  * JD-Core Version:    0.7.0.1
  */

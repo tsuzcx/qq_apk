@@ -8,8 +8,8 @@ public final class c
   implements f.a
 {
   private final int bufferSize;
-  private final a bxF;
-  private final long bxG;
+  private final a bvo;
+  private final long bvp;
   
   public c(a parama)
   {
@@ -18,15 +18,15 @@ public final class c
   
   private c(a parama, byte paramByte)
   {
-    this.bxF = parama;
-    this.bxG = 10485760L;
+    this.bvo = parama;
+    this.bvp = 10485760L;
     this.bufferSize = 20480;
   }
   
-  public final f vh()
+  public final f vb()
   {
     AppMethodBeat.i(92965);
-    b localb = new b(this.bxF, this.bxG, this.bufferSize);
+    b localb = new b(this.bvo, this.bvp, this.bufferSize);
     AppMethodBeat.o(92965);
     return localb;
   }

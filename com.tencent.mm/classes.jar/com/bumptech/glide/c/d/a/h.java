@@ -25,48 +25,48 @@ import java.util.concurrent.locks.Lock;
 
 public final class h
 {
-  public static final com.bumptech.glide.c.i<com.bumptech.glide.c.b> aID;
+  private static final Queue<BitmapFactory.Options> aJA;
+  public static final com.bumptech.glide.c.i<com.bumptech.glide.c.b> aJt;
   @Deprecated
-  public static final com.bumptech.glide.c.i<g> aIE;
-  public static final com.bumptech.glide.c.i<Boolean> aIF;
-  public static final com.bumptech.glide.c.i<Boolean> aIG;
-  private static final Set<String> aIH;
-  static final a aII;
-  private static final Set<f.a> aIJ;
-  private static final Queue<BitmapFactory.Options> aIK;
-  private final com.bumptech.glide.c.b.a.b aCQ;
-  private final List<f> aCZ;
-  private final DisplayMetrics aGM;
-  private final k aIL;
-  private final com.bumptech.glide.c.b.a.e azz;
+  public static final com.bumptech.glide.c.i<g> aJu;
+  public static final com.bumptech.glide.c.i<Boolean> aJv;
+  public static final com.bumptech.glide.c.i<Boolean> aJw;
+  private static final Set<String> aJx;
+  static final a aJy;
+  private static final Set<f.a> aJz;
+  private final com.bumptech.glide.c.b.a.e aAt;
+  private final com.bumptech.glide.c.b.a.b aDH;
+  private final List<f> aDQ;
+  private final DisplayMetrics aHC;
+  private final k aJB;
   
   static
   {
     AppMethodBeat.i(77400);
-    aID = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.DecodeFormat", com.bumptech.glide.c.b.aCg);
-    aIE = g.aIz;
-    aIF = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.FixBitmapSize", Boolean.FALSE);
-    aIG = com.bumptech.glide.c.i.O("com.bumtpech.glide.load.resource.bitmap.Downsampler.AllowHardwareDecode");
-    aIH = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "image/vnd.wap.wbmp", "image/x-ico" })));
-    aII = new a()
+    aJt = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.DecodeFormat", com.bumptech.glide.c.b.aCY);
+    aJu = g.aJp;
+    aJv = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.FixBitmapSize", Boolean.FALSE);
+    aJw = com.bumptech.glide.c.i.Q("com.bumtpech.glide.load.resource.bitmap.Downsampler.AllowHardwareDecode");
+    aJx = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[] { "image/vnd.wap.wbmp", "image/x-ico" })));
+    aJy = new a()
     {
       public final void a(com.bumptech.glide.c.b.a.e paramAnonymouse, Bitmap paramAnonymousBitmap) {}
       
-      public final void oW() {}
+      public final void pg() {}
     };
-    aIJ = Collections.unmodifiableSet(EnumSet.of(f.a.aCn, f.a.aCp, f.a.aCq));
-    aIK = com.bumptech.glide.h.j.dy(0);
+    aJz = Collections.unmodifiableSet(EnumSet.of(f.a.aDf, f.a.aDh, f.a.aDi));
+    aJA = com.bumptech.glide.h.j.dx(0);
     AppMethodBeat.o(77400);
   }
   
   public h(List<f> paramList, DisplayMetrics paramDisplayMetrics, com.bumptech.glide.c.b.a.e parame, com.bumptech.glide.c.b.a.b paramb)
   {
     AppMethodBeat.i(77392);
-    this.aIL = k.oX();
-    this.aCZ = paramList;
-    this.aGM = ((DisplayMetrics)com.bumptech.glide.h.i.checkNotNull(paramDisplayMetrics, "Argument must not be null"));
-    this.azz = ((com.bumptech.glide.c.b.a.e)com.bumptech.glide.h.i.checkNotNull(parame, "Argument must not be null"));
-    this.aCQ = ((com.bumptech.glide.c.b.a.b)com.bumptech.glide.h.i.checkNotNull(paramb, "Argument must not be null"));
+    this.aJB = k.ph();
+    this.aDQ = paramList;
+    this.aHC = ((DisplayMetrics)com.bumptech.glide.h.i.checkNotNull(paramDisplayMetrics, "Argument must not be null"));
+    this.aAt = ((com.bumptech.glide.c.b.a.e)com.bumptech.glide.h.i.checkNotNull(parame, "Argument must not be null"));
+    this.aDH = ((com.bumptech.glide.c.b.a.b)com.bumptech.glide.h.i.checkNotNull(paramb, "Argument must not be null"));
     AppMethodBeat.o(77392);
   }
   
@@ -101,11 +101,11 @@ public final class h
       i = paramOptions.outWidth;
       j = paramOptions.outHeight;
       localObject = paramOptions.outMimeType;
-      p.pb().lock();
+      p.pl().lock();
       try
       {
         Bitmap localBitmap1 = BitmapFactory.decodeStream(paramInputStream, null, paramOptions);
-        p.pb().unlock();
+        p.pl().unlock();
         if (paramOptions.inJustDecodeBounds) {
           paramInputStream.reset();
         }
@@ -136,10 +136,10 @@ public final class h
       }
       finally
       {
-        p.pb().unlock();
+        p.pl().unlock();
         AppMethodBeat.o(77396);
       }
-      parama.oW();
+      parama.pg();
     }
     label243:
     AppMethodBeat.o(77396);
@@ -150,9 +150,9 @@ public final class h
   {
     AppMethodBeat.i(77399);
     c(paramOptions);
-    synchronized (aIK)
+    synchronized (aJA)
     {
-      aIK.offer(paramOptions);
+      aJA.offer(paramOptions);
       AppMethodBeat.o(77399);
       return;
     }
@@ -207,18 +207,18 @@ public final class h
   }
   
   /* Error */
-  private static BitmapFactory.Options oV()
+  private static BitmapFactory.Options pf()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc_w 384
     //   6: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 147	com/bumptech/glide/c/d/a/h:aIK	Ljava/util/Queue;
+    //   9: getstatic 147	com/bumptech/glide/c/d/a/h:aJA	Ljava/util/Queue;
     //   12: astore_0
     //   13: aload_0
     //   14: monitorenter
-    //   15: getstatic 147	com/bumptech/glide/c/d/a/h:aIK	Ljava/util/Queue;
+    //   15: getstatic 147	com/bumptech/glide/c/d/a/h:aJA	Ljava/util/Queue;
     //   18: invokeinterface 388 1 0
     //   23: checkcast 189	android/graphics/BitmapFactory$Options
     //   26: astore_1
@@ -271,16 +271,16 @@ public final class h
   {
     AppMethodBeat.i(77393);
     com.bumptech.glide.h.i.checkArgument(paramInputStream.markSupported(), "You must provide an InputStream that supports mark()");
-    byte[] arrayOfByte = (byte[])this.aCQ.a(65536, [B.class);
-    BitmapFactory.Options localOptions = oV();
+    byte[] arrayOfByte = (byte[])this.aDH.a(65536, [B.class);
+    BitmapFactory.Options localOptions = pf();
     localOptions.inTempStorage = arrayOfByte;
-    Object localObject2 = (com.bumptech.glide.c.b)paramj.a(aID);
-    g localg = (g)paramj.a(g.aIz);
-    boolean bool2 = ((Boolean)paramj.a(aIF)).booleanValue();
-    if ((paramj.a(aIG) != null) && (((Boolean)paramj.a(aIG)).booleanValue()))
+    Object localObject2 = (com.bumptech.glide.c.b)paramj.a(aJt);
+    g localg = (g)paramj.a(g.aJp);
+    boolean bool2 = ((Boolean)paramj.a(aJv)).booleanValue();
+    if ((paramj.a(aJw) != null) && (((Boolean)paramj.a(aJw)).booleanValue()))
     {
       i = 1;
-      if (localObject2 == com.bumptech.glide.c.b.aCe) {
+      if (localObject2 == com.bumptech.glide.c.b.aCW) {
         i = 0;
       }
     }
@@ -288,8 +288,8 @@ public final class h
     int i3;
     try
     {
-      l = com.bumptech.glide.h.e.pO();
-      paramj = a(paramInputStream, localOptions, parama, this.azz);
+      l = com.bumptech.glide.h.e.pY();
+      paramj = a(paramInputStream, localOptions, parama, this.aAt);
       i2 = paramj[0];
       i3 = paramj[1];
       str = localOptions.outMimeType;
@@ -306,12 +306,12 @@ public final class h
       String str;
       int i6;
       b(localOptions);
-      this.aCQ.put(arrayOfByte);
+      this.aDH.put(arrayOfByte);
       AppMethodBeat.o(77393);
     }
-    i6 = com.bumptech.glide.c.g.b(this.aCZ, paramInputStream, this.aCQ);
-    int i = p.dt(i6);
-    boolean bool1 = p.du(i6);
+    i6 = com.bumptech.glide.c.g.b(this.aDQ, paramInputStream, this.aDH);
+    int i = p.ds(i6);
+    boolean bool1 = p.dt(i6);
     int k;
     label227:
     Object localObject1;
@@ -324,16 +324,16 @@ public final class h
     {
       k = i2;
       break label2052;
-      localObject1 = com.bumptech.glide.c.g.a(this.aCZ, paramInputStream, this.aCQ);
-      paramj = this.azz;
+      localObject1 = com.bumptech.glide.c.g.a(this.aDQ, paramInputStream, this.aDH);
+      paramj = this.aAt;
       if ((i2 > 0) && (i3 > 0)) {
         break label808;
       }
       if (Log.isLoggable("Downsampler", 3)) {
         new StringBuilder("Unable to determine dimensions for: ").append(localObject1).append(" with target [").append(k).append("x").append(m).append("]");
       }
-      paramj = this.aIL;
-      if ((i1 == 0) || (Build.VERSION.SDK_INT < 26) || (localObject2 == com.bumptech.glide.c.b.aCe)) {
+      paramj = this.aJB;
+      if ((i1 == 0) || (Build.VERSION.SDK_INT < 26) || (localObject2 == com.bumptech.glide.c.b.aCW)) {
         break label2066;
       }
       if (!bool1) {
@@ -342,7 +342,7 @@ public final class h
       break label2066;
       if (j == 0)
       {
-        if ((localObject2 != com.bumptech.glide.c.b.aCd) && (localObject2 != com.bumptech.glide.c.b.aCe) && (Build.VERSION.SDK_INT != 16)) {
+        if ((localObject2 != com.bumptech.glide.c.b.aCV) && (localObject2 != com.bumptech.glide.c.b.aCW) && (Build.VERSION.SDK_INT != 16)) {
           break label1730;
         }
         localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
@@ -368,7 +368,7 @@ public final class h
         break label2072;
         if ((k > 0) && (i > 0))
         {
-          localObject2 = this.azz;
+          localObject2 = this.aAt;
           paramj = null;
           if (Build.VERSION.SDK_INT >= 26)
           {
@@ -387,26 +387,26 @@ public final class h
         }
       }
       label501:
-      localObject1 = b(paramInputStream, localOptions, parama, this.azz);
-      parama.a(this.azz, (Bitmap)localObject1);
+      localObject1 = b(paramInputStream, localOptions, parama, this.aAt);
+      parama.a(this.aAt, (Bitmap)localObject1);
       if (Log.isLoggable("Downsampler", 2)) {
-        new StringBuilder("Decoded ").append(j((Bitmap)localObject1)).append(" from [").append(i2).append("x").append(i3).append("] ").append(str).append(" with inBitmap ").append(j(localOptions.inBitmap)).append(" for [").append(paramInt1).append("x").append(paramInt2).append("], sample size: ").append(localOptions.inSampleSize).append(", density: ").append(localOptions.inDensity).append(", target density: ").append(localOptions.inTargetDensity).append(", thread: ").append(Thread.currentThread().getName()).append(", duration: ").append(com.bumptech.glide.h.e.n(l));
+        new StringBuilder("Decoded ").append(j((Bitmap)localObject1)).append(" from [").append(i2).append("x").append(i3).append("] ").append(str).append(" with inBitmap ").append(j(localOptions.inBitmap)).append(" for [").append(paramInt1).append("x").append(paramInt2).append("], sample size: ").append(localOptions.inSampleSize).append(", density: ").append(localOptions.inDensity).append(", target density: ").append(localOptions.inTargetDensity).append(", thread: ").append(Thread.currentThread().getName()).append(", duration: ").append(com.bumptech.glide.h.e.p(l));
       }
       paramInputStream = null;
       if (localObject1 != null)
       {
-        ((Bitmap)localObject1).setDensity(this.aGM.densityDpi);
-        paramj = p.a(this.azz, (Bitmap)localObject1, i6);
+        ((Bitmap)localObject1).setDensity(this.aHC.densityDpi);
+        paramj = p.a(this.aAt, (Bitmap)localObject1, i6);
         paramInputStream = paramj;
         if (!localObject1.equals(paramj))
         {
-          this.azz.g((Bitmap)localObject1);
+          this.aAt.g((Bitmap)localObject1);
           paramInputStream = paramj;
         }
       }
-      paramInputStream = d.a(paramInputStream, this.azz);
+      paramInputStream = d.a(paramInputStream, this.aAt);
       b(localOptions);
-      this.aCQ.put(arrayOfByte);
+      this.aDH.put(arrayOfByte);
       AppMethodBeat.o(77393);
       return paramInputStream;
       i = 0;
@@ -422,7 +422,7 @@ public final class h
         AppMethodBeat.o(77393);
         throw paramInputStream;
       }
-      g.g localg1 = localg.oU();
+      g.g localg1 = localg.pe();
       if (localg1 == null)
       {
         paramInputStream = new IllegalArgumentException("Cannot round with null rounding");
@@ -435,15 +435,15 @@ public final class h
       i = i3 / i;
       int n;
       double d1;
-      if (localg1 == g.g.aIA)
+      if (localg1 == g.g.aJq)
       {
         i = Math.max(j, i);
-        if ((Build.VERSION.SDK_INT > 23) || (!aIH.contains(localOptions.outMimeType))) {
+        if ((Build.VERSION.SDK_INT > 23) || (!aJx.contains(localOptions.outMimeType))) {
           break label1440;
         }
         n = 1;
         localOptions.inSampleSize = n;
-        if (localObject1 != f.a.aCn) {
+        if (localObject1 != f.a.aDf) {
           break label1479;
         }
         i = Math.min(n, 8);
@@ -481,18 +481,18 @@ public final class h
         i = Math.min(j, i);
         break label1073;
         n = Math.max(1, Integer.highestOneBit(i));
-        if ((localg1 != g.g.aIA) || (n >= 1.0F / f)) {
+        if ((localg1 != g.g.aJq) || (n >= 1.0F / f)) {
           break label2036;
         }
         n <<= 1;
         break label1100;
-        if ((localObject1 == f.a.aCq) || (localObject1 == f.a.aCp))
+        if ((localObject1 == f.a.aDi) || (localObject1 == f.a.aDh))
         {
           j = (int)Math.floor(i2 / n);
           i = (int)Math.floor(i3 / n);
           break label1186;
         }
-        if ((localObject1 != f.a.aCs) && (localObject1 != f.a.aCr)) {
+        if ((localObject1 != f.a.aDk) && (localObject1 != f.a.aDj)) {
           break label2104;
         }
         if (Build.VERSION.SDK_INT >= 24)
@@ -517,7 +517,7 @@ public final class h
         localOptions.inDensity = 0;
       }
       break label311;
-      if ((k >= 128) && (m >= 128) && (paramj.oY())) {}
+      if ((k >= 128) && (m >= 128) && (paramj.pi())) {}
       for (i = 1;; i = 0)
       {
         j = i;
@@ -533,7 +533,7 @@ public final class h
       {
         try
         {
-          bool1 = com.bumptech.glide.c.g.a(this.aCZ, paramInputStream, this.aCQ).aCu;
+          bool1 = com.bumptech.glide.c.g.a(this.aDQ, paramInputStream, this.aDH).aDm;
           if (!bool1) {
             break label1815;
           }
@@ -554,7 +554,7 @@ public final class h
         break label2123;
         paramj = Bitmap.Config.RGB_565;
         continue;
-        bool1 = aIJ.contains(localObject1);
+        bool1 = aJz.contains(localObject1);
         label2036:
         label2039:
         label2046:
@@ -607,12 +607,12 @@ public final class h
   {
     public abstract void a(com.bumptech.glide.c.b.a.e parame, Bitmap paramBitmap);
     
-    public abstract void oW();
+    public abstract void pg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.h
  * JD-Core Version:    0.7.0.1
  */

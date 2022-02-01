@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public final int aGB;
-  public final int aGC;
-  public final int aGD;
+  public final int aHr;
+  public final int aHs;
+  public final int aHt;
   private final Context context;
   
   public i(a parama)
@@ -26,13 +26,13 @@ public final class i
     float f1;
     label91:
     int m;
-    if (a(parama.aGF))
+    if (a(parama.aHv))
     {
-      i = parama.aGL / 2;
-      this.aGD = i;
-      localObject = parama.aGF;
-      f1 = parama.aGJ;
-      float f2 = parama.aGK;
+      i = parama.aHB / 2;
+      this.aHt = i;
+      localObject = parama.aHv;
+      f1 = parama.aHz;
+      float f2 = parama.aHA;
       i = ((ActivityManager)localObject).getMemoryClass();
       bool = a((ActivityManager)localObject);
       float f3 = i * 1024 * 1024;
@@ -41,19 +41,19 @@ public final class i
       }
       f1 = f2;
       i = Math.round(f1 * f3);
-      int k = parama.aGG.oC() * parama.aGG.oD() * 4;
-      int j = Math.round(k * parama.aGI);
-      k = Math.round(k * parama.aGH);
-      m = i - this.aGD;
+      int k = parama.aHw.oM() * parama.aHw.oN() * 4;
+      int j = Math.round(k * parama.aHy);
+      k = Math.round(k * parama.aHx);
+      m = i - this.aHt;
       if (k + j > m) {
         break label331;
       }
-      this.aGC = k;
-      this.aGB = j;
+      this.aHs = k;
+      this.aHr = j;
       label180:
       if (Log.isLoggable("MemorySizeCalculator", 3))
       {
-        localObject = new StringBuilder("Calculation complete, Calculated memory cache size: ").append(dq(this.aGC)).append(", pool size: ").append(dq(this.aGB)).append(", byte array size: ").append(dq(this.aGD)).append(", memory class limited? ");
+        localObject = new StringBuilder("Calculation complete, Calculated memory cache size: ").append(dp(this.aHs)).append(", pool size: ").append(dp(this.aHr)).append(", byte array size: ").append(dp(this.aHt)).append(", memory class limited? ");
         if (k + j <= i) {
           break label374;
         }
@@ -64,15 +64,15 @@ public final class i
     label374:
     for (boolean bool = true;; bool = false)
     {
-      ((StringBuilder)localObject).append(bool).append(", max size: ").append(dq(i)).append(", memoryClass: ").append(parama.aGF.getMemoryClass()).append(", isLowMemoryDevice: ").append(a(parama.aGF));
+      ((StringBuilder)localObject).append(bool).append(", max size: ").append(dp(i)).append(", memoryClass: ").append(parama.aHv.getMemoryClass()).append(", isLowMemoryDevice: ").append(a(parama.aHv));
       AppMethodBeat.o(77162);
       return;
-      i = parama.aGL;
+      i = parama.aHB;
       break;
       break label91;
-      f1 = m / (parama.aGI + parama.aGH);
-      this.aGC = Math.round(parama.aGH * f1);
-      this.aGB = Math.round(f1 * parama.aGI);
+      f1 = m / (parama.aHy + parama.aHx);
+      this.aHs = Math.round(parama.aHx * f1);
+      this.aHr = Math.round(f1 * parama.aHy);
       break label180;
     }
   }
@@ -91,7 +91,7 @@ public final class i
     return true;
   }
   
-  private String dq(int paramInt)
+  private String dp(int paramInt)
   {
     AppMethodBeat.i(77163);
     String str = Formatter.formatFileSize(this.context, paramInt);
@@ -101,14 +101,14 @@ public final class i
   
   public static final class a
   {
-    static final int aGE;
-    ActivityManager aGF;
-    i.c aGG;
-    float aGH;
-    float aGI;
-    float aGJ;
-    float aGK;
-    int aGL;
+    static final int aHu;
+    float aHA;
+    int aHB;
+    ActivityManager aHv;
+    i.c aHw;
+    float aHx;
+    float aHy;
+    float aHz;
     final Context context;
     
     static
@@ -116,7 +116,7 @@ public final class i
       if (Build.VERSION.SDK_INT < 26) {}
       for (int i = 4;; i = 1)
       {
-        aGE = i;
+        aHu = i;
         return;
       }
     }
@@ -124,16 +124,16 @@ public final class i
     public a(Context paramContext)
     {
       AppMethodBeat.i(77161);
-      this.aGH = 2.0F;
-      this.aGI = aGE;
-      this.aGJ = 0.4F;
-      this.aGK = 0.33F;
-      this.aGL = 4194304;
+      this.aHx = 2.0F;
+      this.aHy = aHu;
+      this.aHz = 0.4F;
+      this.aHA = 0.33F;
+      this.aHB = 4194304;
       this.context = paramContext;
-      this.aGF = ((ActivityManager)paramContext.getSystemService("activity"));
-      this.aGG = new i.b(paramContext.getResources().getDisplayMetrics());
-      if ((Build.VERSION.SDK_INT >= 26) && (i.a(this.aGF))) {
-        this.aGI = 0.0F;
+      this.aHv = ((ActivityManager)paramContext.getSystemService("activity"));
+      this.aHw = new i.b(paramContext.getResources().getDisplayMetrics());
+      if ((Build.VERSION.SDK_INT >= 26) && (i.a(this.aHv))) {
+        this.aHy = 0.0F;
       }
       AppMethodBeat.o(77161);
     }
@@ -142,34 +142,34 @@ public final class i
   static final class b
     implements i.c
   {
-    private final DisplayMetrics aGM;
+    private final DisplayMetrics aHC;
     
     b(DisplayMetrics paramDisplayMetrics)
     {
-      this.aGM = paramDisplayMetrics;
+      this.aHC = paramDisplayMetrics;
     }
     
-    public final int oC()
+    public final int oM()
     {
-      return this.aGM.widthPixels;
+      return this.aHC.widthPixels;
     }
     
-    public final int oD()
+    public final int oN()
     {
-      return this.aGM.heightPixels;
+      return this.aHC.heightPixels;
     }
   }
   
   static abstract interface c
   {
-    public abstract int oC();
+    public abstract int oM();
     
-    public abstract int oD();
+    public abstract int oN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.i
  * JD-Core Version:    0.7.0.1
  */

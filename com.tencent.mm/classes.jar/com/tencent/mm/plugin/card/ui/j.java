@@ -18,99 +18,99 @@ import java.util.ArrayList;
 
 public final class j
 {
-  public Bitmap iAr;
-  public o iAs;
-  ImageView iAt;
-  View iAu;
-  View.OnClickListener iAw;
-  MMActivity nCW;
-  Bitmap nCX;
-  TextView nCY;
-  TextView nCZ;
-  View nDa;
-  ImageView nDb;
-  MMVerticalTextView nDc;
-  MMVerticalTextView nDd;
-  ArrayList<Bitmap> nDe;
-  String nDf;
-  b nqp;
-  public Bitmap nvK;
-  float nvS;
-  boolean nzc;
+  public Bitmap jas;
+  public o jat;
+  ImageView jau;
+  View jav;
+  View.OnClickListener jax;
+  b nTp;
+  public Bitmap nYK;
+  float nYS;
+  boolean ocd;
+  MMActivity ofX;
+  Bitmap ofY;
+  TextView ofZ;
+  TextView oga;
+  View ogb;
+  ImageView ogc;
+  MMVerticalTextView ogd;
+  MMVerticalTextView oge;
+  ArrayList<Bitmap> ogf;
+  String ogg;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113550);
-    this.nzc = true;
-    this.nCX = null;
-    this.iAs = null;
-    this.nvS = 0.0F;
-    this.nDe = new ArrayList();
-    this.nDf = "";
-    this.iAw = new View.OnClickListener()
+    this.ocd = true;
+    this.ofY = null;
+    this.jat = null;
+    this.nYS = 0.0F;
+    this.ogf = new ArrayList();
+    this.ogg = "";
+    this.jax = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(113548);
         if ((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346))
         {
-          if ((j.this.iAs != null) && (j.this.iAs.isShowing())) {
-            j.this.iAs.dismiss();
+          if ((j.this.jat != null) && (j.this.jat.isShowing())) {
+            j.this.jat.dismiss();
           }
-          if (!j.this.nqp.bHE()) {
-            j.this.bLm();
+          if (!j.this.nTp.bOR()) {
+            j.this.bSz();
           }
         }
         AppMethodBeat.o(113548);
       }
     };
-    this.nCW = paramMMActivity;
+    this.ofX = paramMMActivity;
     AppMethodBeat.o(113550);
   }
   
-  private void aP(float paramFloat)
+  private void aT(float paramFloat)
   {
     AppMethodBeat.i(113551);
-    WindowManager.LayoutParams localLayoutParams = this.nCW.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.ofX.getWindow().getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
-    this.nCW.getWindow().setAttributes(localLayoutParams);
+    this.ofX.getWindow().setAttributes(localLayoutParams);
     AppMethodBeat.o(113551);
   }
   
-  public final void bLl()
+  public final void bSA()
+  {
+    AppMethodBeat.i(113554);
+    if ((this.jat != null) && (this.jat.isShowing())) {
+      this.jau.setImageBitmap(this.jas);
+    }
+    AppMethodBeat.o(113554);
+  }
+  
+  public final void bSy()
   {
     AppMethodBeat.i(113552);
-    if (this.nvS < 0.8F) {
-      aP(0.8F);
+    if (this.nYS < 0.8F) {
+      aT(0.8F);
     }
     AppMethodBeat.o(113552);
   }
   
-  public final void bLm()
+  public final void bSz()
   {
     AppMethodBeat.i(113553);
-    aP(this.nvS);
+    aT(this.nYS);
     AppMethodBeat.o(113553);
-  }
-  
-  public final void bLn()
-  {
-    AppMethodBeat.i(113554);
-    if ((this.iAs != null) && (this.iAs.isShowing())) {
-      this.iAt.setImageBitmap(this.iAr);
-    }
-    AppMethodBeat.o(113554);
   }
   
   final void recycleBmpList()
   {
     AppMethodBeat.i(113555);
-    if (this.nDe.size() > 2)
+    if (this.ogf.size() > 2)
     {
-      int i = this.nDe.size() - 1;
+      int i = this.ogf.size() - 1;
       while (i > 1)
       {
-        l.T((Bitmap)this.nDe.remove(i));
+        l.T((Bitmap)this.ogf.remove(i));
         i -= 1;
       }
     }

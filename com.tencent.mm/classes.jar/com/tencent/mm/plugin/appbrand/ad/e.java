@@ -18,42 +18,42 @@ import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.s.a.c;
-import com.tencent.mm.plugin.appbrand.s.a.c.d;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.r.a.c;
+import com.tencent.mm.plugin.appbrand.r.a.c.d;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 @SuppressLint({"ViewConstructor"})
 public final class e
   extends FrameLayout
 {
-  private AppBrandRuntime iIE;
-  private FrameLayout iIF;
-  private LinearLayout iIG;
-  public b iIH;
-  private e.a iII;
+  private AppBrandRuntime jiI;
+  private FrameLayout jiJ;
+  private LinearLayout jiK;
+  public b jiL;
+  private a jiM;
   
   public e(Context paramContext, AppBrandRuntime paramAppBrandRuntime)
   {
     super(paramContext);
     AppMethodBeat.i(134634);
-    this.iIE = paramAppBrandRuntime;
-    if (i.cjn.Eq())
+    this.jiI = paramAppBrandRuntime;
+    if (i.cgk.DT())
     {
       setBackgroundColor(-16777216);
       setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      this.iIF = new FrameLayout(paramContext);
-      addView(this.iIF, new ViewGroup.LayoutParams(-1, -1));
-      this.iIG = new LinearLayout(paramContext);
-      this.iIG.setOrientation(1);
-      addView(this.iIG, new ViewGroup.LayoutParams(-1, -2));
-      if ((this.iIG.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+      this.jiJ = new FrameLayout(paramContext);
+      addView(this.jiJ, new ViewGroup.LayoutParams(-1, -1));
+      this.jiK = new LinearLayout(paramContext);
+      this.jiK.setOrientation(1);
+      addView(this.jiK, new ViewGroup.LayoutParams(-1, -2));
+      if ((this.jiK.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
       {
         paramContext = paramAppBrandRuntime.getWindowAndroid().getStatusBar();
-        paramAppBrandRuntime = (ViewGroup.MarginLayoutParams)this.iIG.getLayoutParams();
+        paramAppBrandRuntime = (ViewGroup.MarginLayoutParams)this.jiK.getLayoutParams();
         if (paramContext != null) {
           break label169;
         }
@@ -70,12 +70,12 @@ public final class e
     }
   }
   
-  private void DB(String paramString)
+  private void HE(String paramString)
   {
     AppMethodBeat.i(134647);
     setVisibility(8);
-    if (this.iII != null) {
-      this.iII.Di(paramString);
+    if (this.jiM != null) {
+      this.jiM.Hl(paramString);
     }
     AppMethodBeat.o(134647);
   }
@@ -106,7 +106,7 @@ public final class e
     AppMethodBeat.o(134648);
   }
   
-  private void aOc()
+  private void aUS()
   {
     AppMethodBeat.i(134644);
     setVisibility(0);
@@ -114,19 +114,19 @@ public final class e
     AppMethodBeat.o(134644);
   }
   
-  private void i(boolean paramBoolean, final String paramString)
+  private void j(boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(134646);
-    ad.i("MicroMsg.AppBrandRuntimeAdViewContainer", "hideOnMainThread, animation:%s, source:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+    ac.i("MicroMsg.AppBrandRuntimeAdViewContainer", "hideOnMainThread, animation:%s, source:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
     AppBrandOptionButton localAppBrandOptionButton;
     int j;
     int i;
     if (paramBoolean)
     {
       localAppBrandOptionButton = null;
-      if ((this.iIE != null) && (this.iIE.aLK() != null) && (this.iIE.aLK().getPageView() != null))
+      if ((this.jiI != null) && (this.jiI.aSA() != null) && (this.jiI.aSA().getPageView() != null))
       {
-        localAppBrandOptionButton = this.iIE.aLK().getPageView().bjH().getOptionButton();
+        localAppBrandOptionButton = this.jiI.aSA().getPageView().bqy().getOptionButton();
         if (localAppBrandOptionButton == null) {
           break label235;
         }
@@ -141,7 +141,7 @@ public final class e
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandRuntimeAdViewContainer", "hideOnMainThread, targetX:%s, targetY:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      ac.i("MicroMsg.AppBrandRuntimeAdViewContainer", "hideOnMainThread, targetX:%s, targetY:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       if ((j > 0) && (i > 0))
       {
         a(this, j, i, new Runnable()
@@ -155,16 +155,16 @@ public final class e
         });
         AppMethodBeat.o(134646);
         return;
-        if (this.iIH == null) {
+        if (this.jiL == null) {
           break;
         }
-        localAppBrandOptionButton = this.iIH.getOptionButton();
+        localAppBrandOptionButton = this.jiL.getOptionButton();
         break;
       }
-      DB(paramString);
+      HE(paramString);
       AppMethodBeat.o(134646);
       return;
-      DB(paramString);
+      HE(paramString);
       AppMethodBeat.o(134646);
       return;
       label235:
@@ -173,44 +173,44 @@ public final class e
     }
   }
   
-  public final void aOa()
+  public final void aUQ()
   {
     AppMethodBeat.i(134635);
-    this.iIG.removeAllViews();
-    this.iIH = new b(getContext());
-    this.iIG.addView(this.iIH.getActionView());
-    this.iIH.setFullscreenMode(true);
-    this.iIH.ho(false);
-    this.iIH.hp(false);
-    this.iIH.hd(false);
-    this.iIH.setBackgroundColor(0);
+    this.jiK.removeAllViews();
+    this.jiL = new b(getContext());
+    this.jiK.addView(this.jiL.getActionView());
+    this.jiL.setFullscreenMode(true);
+    this.jiL.hM(false);
+    this.jiL.hN(false);
+    this.jiL.hA(false);
+    this.jiL.setBackgroundColor(0);
     AppMethodBeat.o(134635);
   }
   
-  public final void aOb()
+  public final void aUR()
   {
     AppMethodBeat.i(134641);
-    if (this.iIH != null) {
-      this.iIH.hd(true);
+    if (this.jiL != null) {
+      this.jiL.hA(true);
     }
     AppMethodBeat.o(134641);
   }
   
   public final ViewGroup getContentContainer()
   {
-    return this.iIF;
+    return this.jiJ;
   }
   
-  public final void h(final boolean paramBoolean, final String paramString)
+  public final void i(final boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(134645);
-    if (aq.isMainThread())
+    if (ap.isMainThread())
     {
-      i(paramBoolean, paramString);
+      j(paramBoolean, paramString);
       AppMethodBeat.o(134645);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -225,8 +225,8 @@ public final class e
   public final void setActionBarFullscreenMode(boolean paramBoolean)
   {
     AppMethodBeat.i(134636);
-    if (this.iIH != null) {
-      this.iIH.setFullscreenMode(paramBoolean);
+    if (this.jiL != null) {
+      this.jiL.setFullscreenMode(paramBoolean);
     }
     AppMethodBeat.o(134636);
   }
@@ -234,8 +234,8 @@ public final class e
   public final void setBackButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134637);
-    if (this.iIH != null) {
-      this.iIH.setBackButtonClickListener(paramOnClickListener);
+    if (this.jiL != null) {
+      this.jiL.setBackButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134637);
   }
@@ -243,8 +243,8 @@ public final class e
   public final void setCloseButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134639);
-    if (this.iIH != null) {
-      this.iIH.setCloseButtonClickListener(paramOnClickListener);
+    if (this.jiL != null) {
+      this.jiL.setCloseButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134639);
   }
@@ -252,22 +252,22 @@ public final class e
   public final void setForegroundStyle(boolean paramBoolean)
   {
     AppMethodBeat.i(134642);
-    if (this.iIH != null) {
-      this.iIH.setForegroundStyle(paramBoolean);
+    if (this.jiL != null) {
+      this.jiL.setForegroundStyle(paramBoolean);
     }
     AppMethodBeat.o(134642);
   }
   
-  public final void setOnHideListener(e.a parama)
+  public final void setOnHideListener(a parama)
   {
-    this.iII = parama;
+    this.jiM = parama;
   }
   
   public final void setOptionButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134638);
-    if (this.iIH != null) {
-      this.iIH.setOptionButtonClickListener(paramOnClickListener);
+    if (this.jiL != null) {
+      this.jiL.setOptionButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134638);
   }
@@ -275,8 +275,8 @@ public final class e
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(134640);
-    if (this.iIH != null) {
-      this.iIH.setMainTitle(paramString);
+    if (this.jiL != null) {
+      this.jiL.setMainTitle(paramString);
     }
     AppMethodBeat.o(134640);
   }
@@ -284,13 +284,13 @@ public final class e
   public final void show()
   {
     AppMethodBeat.i(134643);
-    if (aq.isMainThread())
+    if (ap.isMainThread())
     {
-      aOc();
+      aUS();
       AppMethodBeat.o(134643);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -301,10 +301,15 @@ public final class e
     });
     AppMethodBeat.o(134643);
   }
+  
+  public static abstract interface a
+  {
+    public abstract void Hl(String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.e
  * JD-Core Version:    0.7.0.1
  */

@@ -13,56 +13,56 @@ import d.l.b.a.b.f.a;
 
 public abstract class z
 {
-  public final c Jiu;
-  public final h Jiv;
-  public final an Jrj;
+  public final c KVO;
+  public final h KVP;
+  public final an LeC;
   
   private z(c paramc, h paramh, an paraman)
   {
-    this.Jiu = paramc;
-    this.Jiv = paramh;
-    this.Jrj = paraman;
+    this.KVO = paramc;
+    this.KVP = paramh;
+    this.LeC = paraman;
   }
   
-  public abstract d.l.b.a.b.f.b fJy();
+  public abstract d.l.b.a.b.f.b gcb();
   
   public String toString()
   {
-    return getClass().getSimpleName() + ": " + fJy();
+    return getClass().getSimpleName() + ": " + gcb();
   }
   
   public static final class a
     extends z
   {
-    final a.b JUg;
-    public final a.b.b JVg;
-    public final a JVh;
-    public final a Joh;
-    public final boolean Jqy;
+    final a.b LHz;
+    public final a LIA;
+    public final a.b.b LIz;
+    public final a LbB;
+    public final boolean LdR;
     
     public a(a.b paramb, c paramc, h paramh, an paraman, a parama)
     {
       super(paramh, paraman, (byte)0);
       AppMethodBeat.i(60347);
-      this.JUg = paramb;
-      this.JVh = parama;
-      this.Joh = x.a(paramc, this.JUg.JGu);
-      paramc = (a.b.b)d.l.b.a.b.e.b.b.JJY.get(this.JUg.JGd);
+      this.LHz = paramb;
+      this.LIA = parama;
+      this.LbB = x.a(paramc, this.LHz.LtN);
+      paramc = (a.b.b)d.l.b.a.b.e.b.b.Lxr.get(this.LHz.Ltw);
       paramb = paramc;
       if (paramc == null) {
-        paramb = a.b.b.JGM;
+        paramb = a.b.b.Luf;
       }
-      this.JVg = paramb;
-      paramb = d.l.b.a.b.e.b.b.JJZ.afn(this.JUg.JGd);
+      this.LIz = paramb;
+      paramb = d.l.b.a.b.e.b.b.Lxs.aij(this.LHz.Ltw);
       k.g(paramb, "Flags.IS_INNER.get(classProto.flags)");
-      this.Jqy = paramb.booleanValue();
+      this.LdR = paramb.booleanValue();
       AppMethodBeat.o(60347);
     }
     
-    public final d.l.b.a.b.f.b fJy()
+    public final d.l.b.a.b.f.b gcb()
     {
       AppMethodBeat.i(60346);
-      d.l.b.a.b.f.b localb = this.Joh.fHb();
+      d.l.b.a.b.f.b localb = this.LbB.fZF();
       k.g(localb, "classId.asSingleFqName()");
       AppMethodBeat.o(60346);
       return localb;
@@ -72,25 +72,25 @@ public abstract class z
   public static final class b
     extends z
   {
-    private final d.l.b.a.b.f.b JrG;
+    private final d.l.b.a.b.f.b LeZ;
     
     public b(d.l.b.a.b.f.b paramb, c paramc, h paramh, an paraman)
     {
       super(paramh, paraman, (byte)0);
       AppMethodBeat.i(60348);
-      this.JrG = paramb;
+      this.LeZ = paramb;
       AppMethodBeat.o(60348);
     }
     
-    public final d.l.b.a.b.f.b fJy()
+    public final d.l.b.a.b.f.b gcb()
     {
-      return this.JrG;
+      return this.LeZ;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.z
  * JD-Core Version:    0.7.0.1
  */

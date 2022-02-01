@@ -33,7 +33,7 @@ public class TAVAudioConfiguration
   
   public TAVAudioConfiguration(float paramFloat, List<TAVAudioProcessorNode> paramList, List<VolumeEdge> paramList1)
   {
-    AppMethodBeat.i(204689);
+    AppMethodBeat.i(192061);
     this.volume = paramFloat;
     this.nodes = new ArrayList();
     if (paramList != null) {
@@ -43,7 +43,7 @@ public class TAVAudioConfiguration
     if (paramList1 != null) {
       this.volumeEdges.addAll(paramList1);
     }
-    AppMethodBeat.o(204689);
+    AppMethodBeat.o(192061);
   }
   
   public TAVAudioConfiguration(List<VolumeEdge> paramList)
@@ -53,31 +53,31 @@ public class TAVAudioConfiguration
   
   public void addAudioProcessorNode(TAVAudioProcessorNode paramTAVAudioProcessorNode)
   {
-    AppMethodBeat.i(204692);
+    AppMethodBeat.i(192064);
     this.nodes.add(paramTAVAudioProcessorNode);
-    AppMethodBeat.o(204692);
+    AppMethodBeat.o(192064);
   }
   
   public void addVolumeEdge(VolumeEdge paramVolumeEdge)
   {
-    AppMethodBeat.i(204690);
+    AppMethodBeat.i(192062);
     if (paramVolumeEdge == null)
     {
-      AppMethodBeat.o(204690);
+      AppMethodBeat.o(192062);
       return;
     }
     if (this.volumeEdges == null) {
       this.volumeEdges = new ArrayList();
     }
     this.volumeEdges.add(0, paramVolumeEdge);
-    AppMethodBeat.o(204690);
+    AppMethodBeat.o(192062);
   }
   
   public TAVAudioConfiguration clone()
   {
-    AppMethodBeat.i(204694);
+    AppMethodBeat.i(192066);
     TAVAudioConfiguration localTAVAudioConfiguration = new TAVAudioConfiguration(this.volume, this.nodes);
-    AppMethodBeat.o(204694);
+    AppMethodBeat.o(192066);
     return localTAVAudioConfiguration;
   }
   
@@ -103,17 +103,17 @@ public class TAVAudioConfiguration
   
   public float getVolume(CMTime paramCMTime)
   {
-    AppMethodBeat.i(204691);
+    AppMethodBeat.i(192063);
     if ((this.startVolumeEdge != null) && (this.startVolumeEdge.getTimeRange() != null) && (this.startVolumeEdge.getTimeRange().containsTime(paramCMTime)))
     {
       f = this.startVolumeEdge.getVolume(paramCMTime.sub(this.startVolumeEdge.getTimeRange().getStart()));
-      AppMethodBeat.o(204691);
+      AppMethodBeat.o(192063);
       return f;
     }
     if ((this.endVolumeEdge != null) && (this.endVolumeEdge.getTimeRange() != null) && (this.endVolumeEdge.getTimeRange().containsTime(paramCMTime)))
     {
       f = this.endVolumeEdge.getVolume(paramCMTime.sub(this.endVolumeEdge.getTimeRange().getStart()));
-      AppMethodBeat.o(204691);
+      AppMethodBeat.o(192063);
       return f;
     }
     if ((this.volumeEdges != null) && (!this.volumeEdges.isEmpty()))
@@ -125,24 +125,24 @@ public class TAVAudioConfiguration
         if ((localVolumeEdge != null) && (localVolumeEdge.getTimeRange() != null) && (localVolumeEdge.getTimeRange().containsTime(paramCMTime)))
         {
           f = localVolumeEdge.getVolume(paramCMTime.sub(localVolumeEdge.getTimeRange().getStart()));
-          AppMethodBeat.o(204691);
+          AppMethodBeat.o(192063);
           return f;
         }
       }
     }
     float f = this.volume;
-    AppMethodBeat.o(204691);
+    AppMethodBeat.o(192063);
     return f;
   }
   
   public void setAudioProcessorNodes(List<TAVAudioProcessorNode> paramList)
   {
-    AppMethodBeat.i(204693);
+    AppMethodBeat.i(192065);
     this.nodes.clear();
     if (paramList != null) {
       this.nodes.addAll(paramList);
     }
-    AppMethodBeat.o(204693);
+    AppMethodBeat.o(192065);
   }
   
   public void setEndVolumeEdge(VolumeEdge paramVolumeEdge)
@@ -162,9 +162,9 @@ public class TAVAudioConfiguration
   
   public String toString()
   {
-    AppMethodBeat.i(204695);
+    AppMethodBeat.i(192067);
     String str = "TAVAudioConfiguration{volume=" + this.volume + ", startVolumeEdge=" + this.startVolumeEdge + ", endVolumeEdge=" + this.endVolumeEdge + ", nodes=" + this.nodes + '}';
-    AppMethodBeat.o(204695);
+    AppMethodBeat.o(192067);
     return str;
   }
   
@@ -178,11 +178,11 @@ public class TAVAudioConfiguration
     
     public VolumeEdge(CMTime paramCMTime, float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(204685);
+      AppMethodBeat.i(192057);
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
       this.startVolume = paramFloat1;
       this.endVolume = paramFloat2;
-      AppMethodBeat.o(204685);
+      AppMethodBeat.o(192057);
     }
     
     public VolumeEdge(CMTimeRange paramCMTimeRange, float paramFloat1, float paramFloat2)
@@ -194,15 +194,15 @@ public class TAVAudioConfiguration
     
     public CMTime getDuration()
     {
-      AppMethodBeat.i(204686);
+      AppMethodBeat.i(192058);
       if (this.timeRange != null)
       {
         localCMTime = this.timeRange.getDuration();
-        AppMethodBeat.o(204686);
+        AppMethodBeat.o(192058);
         return localCMTime;
       }
       CMTime localCMTime = CMTime.CMTimeZero;
-      AppMethodBeat.o(204686);
+      AppMethodBeat.o(192058);
       return localCMTime;
     }
     
@@ -223,21 +223,21 @@ public class TAVAudioConfiguration
     
     public float getVolume(CMTime paramCMTime)
     {
-      AppMethodBeat.i(204688);
+      AppMethodBeat.i(192060);
       long l = paramCMTime.getTimeUs();
       float f1 = this.startVolume;
       float f2 = this.endVolume;
       float f3 = this.startVolume;
       float f4 = (float)l * 1.0F / (float)getDuration().getTimeUs();
-      AppMethodBeat.o(204688);
+      AppMethodBeat.o(192060);
       return f4 * (f2 - f3) + f1;
     }
     
     public void setDuration(CMTime paramCMTime)
     {
-      AppMethodBeat.i(204687);
+      AppMethodBeat.i(192059);
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-      AppMethodBeat.o(204687);
+      AppMethodBeat.o(192059);
     }
     
     public void setEndVolume(float paramFloat)
@@ -258,7 +258,7 @@ public class TAVAudioConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVAudioConfiguration
  * JD-Core Version:    0.7.0.1
  */

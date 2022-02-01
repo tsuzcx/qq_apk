@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.story.api.n;
 public class StoryTouchImageView
   extends TouchImageView
 {
-  i xLj;
+  i yXY;
   
   public StoryTouchImageView(Context paramContext)
   {
@@ -24,9 +24,9 @@ public class StoryTouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99695);
-    this.xLj = null;
-    this.xLj = ((e)g.ad(e.class)).getStoryUIFactory().ge(paramContext);
-    this.xLj.aZ(this);
+    this.yXY = null;
+    this.yXY = ((e)g.ad(e.class)).getStoryUIFactory().gq(paramContext);
+    this.yXY.aZ(this);
     setLayerType(1, null);
     AppMethodBeat.o(99695);
   }
@@ -35,30 +35,30 @@ public class StoryTouchImageView
   {
     AppMethodBeat.i(99696);
     super.onDraw(paramCanvas);
-    this.xLj.a(paramCanvas, true, 0);
+    this.yXY.a(paramCanvas, true, 0);
     AppMethodBeat.o(99696);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(99697);
-    super.setOnClickListener(this.xLj.dGg());
-    this.xLj.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.yXY.dUH());
+    this.yXY.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(99697);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(99698);
-    this.xLj.setShowStoryHint(paramBoolean);
+    this.yXY.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(99698);
   }
   
   public final void setUserNameAndPageNumber$505cff1c(String paramString)
   {
-    AppMethodBeat.i(201288);
-    this.xLj.eE(paramString, 1);
-    AppMethodBeat.o(201288);
+    AppMethodBeat.i(210273);
+    this.yXY.eM(paramString, 1);
+    AppMethodBeat.o(210273);
   }
 }
 

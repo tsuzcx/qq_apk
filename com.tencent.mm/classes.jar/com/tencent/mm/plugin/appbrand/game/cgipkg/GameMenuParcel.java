@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aum;
+import com.tencent.mm.protocal.protobuf.axs;
 
 public class GameMenuParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<GameMenuParcel> CREATOR;
   public String appId;
-  public aum jpR;
+  public axs jQg;
   
   static
   {
@@ -26,7 +26,7 @@ public class GameMenuParcel
   {
     AppMethodBeat.i(45093);
     this.appId = paramParcel.readString();
-    this.jpR = ((aum)com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.ipcinvoker.wx_extension.c.class.getName(), paramParcel));
+    this.jQg = ((axs)com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.ipcinvoker.wx_extension.c.class.getName(), paramParcel));
     AppMethodBeat.o(45093);
   }
   
@@ -39,7 +39,7 @@ public class GameMenuParcel
   {
     AppMethodBeat.i(45092);
     paramParcel.writeString(this.appId);
-    com.tencent.mm.ipcinvoker.extension.c.a(this.jpR, paramParcel);
+    com.tencent.mm.ipcinvoker.extension.c.a(this.jQg, paramParcel);
     AppMethodBeat.o(45092);
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.websocket;
 
-import com.tencent.mm.plugin.appbrand.ab.e.a;
-import com.tencent.mm.plugin.appbrand.ab.e.h;
+import com.tencent.mm.plugin.appbrand.aa.e.a;
+import com.tencent.mm.plugin.appbrand.aa.e.h;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Map;
@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 public abstract interface d
 {
-  public static final ArrayList<e> kwL = new ArrayList();
+  public static final ArrayList<e> kXZ = new ArrayList();
   
-  public abstract e JE(String paramString);
+  public abstract e NL(String paramString);
   
   public abstract void a(e parame);
   
@@ -29,13 +29,13 @@ public abstract interface d
   
   public static abstract interface a
   {
-    public abstract void GD(String paramString);
+    public abstract void KH(String paramString);
     
-    public abstract void GE(String paramString);
+    public abstract void KI(String paramString);
     
-    public abstract void IJ(String paramString);
+    public abstract void MK(String paramString);
     
-    public abstract void X(int paramInt, String paramString);
+    public abstract void Y(int paramInt, String paramString);
     
     public abstract void a(a parama);
     
@@ -46,7 +46,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.d
  * JD-Core Version:    0.7.0.1
  */

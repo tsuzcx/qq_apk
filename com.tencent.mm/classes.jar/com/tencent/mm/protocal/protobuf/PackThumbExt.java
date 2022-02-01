@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PackThumbExt
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String ActivityID;
   public String AesKey;
@@ -104,9 +104,9 @@ public class PackThumbExt
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(104824);
@@ -122,43 +122,43 @@ public class PackThumbExt
           AppMethodBeat.o(104824);
           return -1;
         case 1: 
-          localPackThumbExt.PreviewUrl = locala.KhF.readString();
+          localPackThumbExt.PreviewUrl = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 2: 
-          localPackThumbExt.Desc = locala.KhF.readString();
+          localPackThumbExt.Desc = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 3: 
-          localPackThumbExt.Md5 = locala.KhF.readString();
+          localPackThumbExt.Md5 = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 4: 
-          localPackThumbExt.AesKey = locala.KhF.readString();
+          localPackThumbExt.AesKey = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 5: 
-          localPackThumbExt.CDNUrl = locala.KhF.readString();
+          localPackThumbExt.CDNUrl = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 6: 
-          localPackThumbExt.ThumbUrl = locala.KhF.readString();
+          localPackThumbExt.ThumbUrl = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 7: 
-          localPackThumbExt.EncryptUrl = locala.KhF.readString();
+          localPackThumbExt.EncryptUrl = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 8: 
-          localPackThumbExt.ExternUrl = locala.KhF.readString();
+          localPackThumbExt.ExternUrl = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 9: 
-          localPackThumbExt.ExternMd5 = locala.KhF.readString();
+          localPackThumbExt.ExternMd5 = locala.LVo.readString();
           AppMethodBeat.o(104824);
           return 0;
         }
-        localPackThumbExt.ActivityID = locala.KhF.readString();
+        localPackThumbExt.ActivityID = locala.LVo.readString();
         AppMethodBeat.o(104824);
         return 0;
       }
@@ -169,7 +169,7 @@ public class PackThumbExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.PackThumbExt
  * JD-Core Version:    0.7.0.1
  */

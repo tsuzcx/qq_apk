@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.label.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class ContactLabelManagerUI$7
   implements k.a
@@ -13,8 +13,8 @@ final class ContactLabelManagerUI$7
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(26214);
-    if (!bt.isNullOrNil(paramString)) {
-      ContactLabelManagerUI.a(this.sMH);
+    if (!bs.isNullOrNil(paramString)) {
+      ContactLabelManagerUI.a(this.tUm);
     }
     AppMethodBeat.o(26214);
   }

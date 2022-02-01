@@ -12,40 +12,40 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView;
 import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.search.FTSEditTextView;
 
 public class FTSSOSMoreWebViewUI
   extends BaseSOSWebViewUI
 {
-  private int BkY;
-  private View Blw;
+  private View CDI;
+  private int CDm;
   
-  public final void bol()
+  public final void bvh()
   {
     boolean bool = false;
     AppMethodBeat.i(80692);
-    super.bol();
-    this.Blw = findViewById(2131306921);
-    epC().eix();
-    epC().fdm();
-    this.sUG.setVisibility(0);
-    epC().fdg();
-    this.BkY = a.fromDPToPix(this, 48);
+    super.bvh();
+    this.CDI = findViewById(2131306921);
+    eEX().exR();
+    eEX().fth();
+    this.ucS.setVisibility(0);
+    eEX().ftb();
+    this.CDm = a.fromDPToPix(this, 48);
     if (getScene() == 24) {
-      this.Blw.setVisibility(4);
+      this.CDI.setVisibility(4);
     }
     findViewById(2131304239).setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(80690);
-        FTSSOSMoreWebViewUI.this.epC().sz.clearFocus();
+        FTSSOSMoreWebViewUI.this.eEX().ty.clearFocus();
         FTSSOSMoreWebViewUI.this.hideVKB();
         AppMethodBeat.o(80690);
         return false;
@@ -57,60 +57,60 @@ public class FTSSOSMoreWebViewUI
         public final void run()
         {
           AppMethodBeat.i(80691);
-          FTSSOSMoreWebViewUI.this.epC().fdj();
-          FTSSOSMoreWebViewUI.this.epC().fdi();
+          FTSSOSMoreWebViewUI.this.eEX().fte();
+          FTSSOSMoreWebViewUI.this.eEX().ftd();
           AppMethodBeat.o(80691);
         }
       }, 128L);
     }
     int i = getResources().getColor(2131101179);
-    if (!ai.Eq()) {
+    if (!aj.DT()) {
       bool = true;
     }
-    aI(i, bool);
-    ImageButton localImageButton = epC().getClearBtn();
+    aM(i, bool);
+    ImageButton localImageButton = eEX().getClearBtn();
     if (localImageButton != null) {
       localImageButton.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(80692);
   }
   
-  public final int bom()
+  public final int bvi()
   {
     AppMethodBeat.i(80693);
-    if ((d.lf(23)) && (!b.XM()))
+    if ((d.kZ(23)) && (!b.YJ()))
     {
       i = getResources().getColor(2131101179);
       AppMethodBeat.o(80693);
       return i;
     }
-    int i = super.bom();
+    int i = super.bvi();
     AppMethodBeat.o(80693);
     return i;
   }
   
-  public boolean bow()
+  public boolean bvs()
   {
     AppMethodBeat.i(80695);
-    epC().fdm();
-    this.Blw.setVisibility(0);
-    boolean bool = super.bow();
+    eEX().fth();
+    this.CDI.setVisibility(0);
+    boolean bool = super.bvs();
     AppMethodBeat.o(80695);
     return bool;
   }
   
-  protected final void epy()
+  protected final void eET()
   {
     AppMethodBeat.i(80696);
     finish();
     AppMethodBeat.o(80696);
   }
   
-  protected final void epz()
+  protected final void eEU()
   {
     AppMethodBeat.i(80698);
-    super.epz();
-    this.Blw.setVisibility(0);
+    super.eEU();
+    this.CDI.setVisibility(0);
     AppMethodBeat.o(80698);
   }
   
@@ -118,12 +118,12 @@ public class FTSSOSMoreWebViewUI
   {
     AppMethodBeat.i(80697);
     int i = -1;
-    if ((getType() == 8) && (this.Bkx)) {
+    if ((getType() == 8) && (this.CCM)) {
       i = 2131759697;
     }
     while (i < 0)
     {
-      str = aj.getContext().getResources().getString(2131755882) + TE(getType());
+      str = ai.getContext().getResources().getString(2131755882) + VM(getType());
       AppMethodBeat.o(80697);
       return str;
       switch (getType())
@@ -159,7 +159,7 @@ public class FTSSOSMoreWebViewUI
         i = 2131759693;
       }
     }
-    String str = aj.getContext().getResources().getString(2131762937, new Object[] { aj.getContext().getResources().getString(i) });
+    String str = ai.getContext().getResources().getString(2131762937, new Object[] { ai.getContext().getResources().getString(i) });
     AppMethodBeat.o(80697);
     return str;
   }
@@ -169,17 +169,17 @@ public class FTSSOSMoreWebViewUI
     return 2131495631;
   }
   
-  public final void lb(boolean paramBoolean)
+  public final void lF(boolean paramBoolean)
   {
     AppMethodBeat.i(80694);
-    super.lb(paramBoolean);
+    super.lF(paramBoolean);
     if (!paramBoolean)
     {
-      this.Bke.setPadding(this.BkY, 0, this.Bke.getPaddingRight(), 0);
-      this.sUG.setVisibility(0);
-      epC().fdg();
+      this.CCt.setPadding(this.CDm, 0, this.CCt.getPaddingRight(), 0);
+      this.ucS.setVisibility(0);
+      eEX().ftb();
     }
-    epC().fdm();
+    eEX().fth();
     AppMethodBeat.o(80694);
   }
   
@@ -191,7 +191,7 @@ public class FTSSOSMoreWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSMoreWebViewUI
  * JD-Core Version:    0.7.0.1
  */

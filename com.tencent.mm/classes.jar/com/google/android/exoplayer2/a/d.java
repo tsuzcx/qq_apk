@@ -5,7 +5,7 @@ import java.nio.ByteOrder;
 
 public abstract interface d
 {
-  public static final ByteBuffer aTH = ByteBuffer.allocateDirect(0).order(ByteOrder.nativeOrder());
+  public static final ByteBuffer aUx = ByteBuffer.allocateDirect(0).order(ByteOrder.nativeOrder());
   
   public abstract void f(ByteBuffer paramByteBuffer);
   
@@ -13,17 +13,17 @@ public abstract interface d
   
   public abstract boolean isActive();
   
-  public abstract boolean rM();
-  
-  public abstract int rU();
-  
-  public abstract void rV();
-  
-  public abstract ByteBuffer rW();
+  public abstract boolean rX();
   
   public abstract void reset();
   
   public abstract boolean s(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract int sd();
+  
+  public abstract void se();
+  
+  public abstract ByteBuffer sf();
 }
 
 

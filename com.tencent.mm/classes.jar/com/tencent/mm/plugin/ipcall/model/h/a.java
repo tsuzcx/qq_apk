@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.ipcall.model.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.Map;
 
 public final class a
@@ -12,25 +12,25 @@ public final class a
   public String Desc = "";
   public String ImgUrl = "";
   public String Title = "";
-  public int mBH = 0;
-  public String sDV = "";
+  public int ndI = 0;
+  public String tLC = "";
   
-  public static a adS(String paramString)
+  public static a aiK(String paramString)
   {
     AppMethodBeat.i(25530);
-    ad.d(TAG, "getIPCallActivityMsgInfoFromXML:".concat(String.valueOf(paramString)));
+    ac.d(TAG, "getIPCallActivityMsgInfoFromXML:".concat(String.valueOf(paramString)));
     a locala = new a();
     int i = paramString.indexOf("<ActivityInfo");
     if (i == -1)
     {
-      ad.e(TAG, "msgContent not start with <ActivityInfo");
+      ac.e(TAG, "msgContent not start with <ActivityInfo");
       AppMethodBeat.o(25530);
       return locala;
     }
-    Map localMap = bw.K(paramString.substring(i), "ActivityInfo");
+    Map localMap = bv.L(paramString.substring(i), "ActivityInfo");
     if (localMap == null)
     {
-      ad.e(TAG, "XmlParser values is null, xml %s", new Object[] { paramString });
+      ac.e(TAG, "XmlParser values is null, xml %s", new Object[] { paramString });
       AppMethodBeat.o(25530);
       return null;
     }
@@ -44,19 +44,19 @@ public final class a
       locala.ImgUrl = ((String)localMap.get(".ActivityInfo.ImgUrl"));
     }
     if (localMap.containsKey(".ActivityInfo.StartBtnText")) {
-      locala.sDV = ((String)localMap.get(".ActivityInfo.StartBtnText"));
+      locala.tLC = ((String)localMap.get(".ActivityInfo.StartBtnText"));
     }
     if (localMap.containsKey(".ActivityInfo.ActivityType")) {
-      locala.mBH = bt.getInt((String)localMap.get(".ActivityInfo.ActivityType"), 0);
+      locala.ndI = bs.getInt((String)localMap.get(".ActivityInfo.ActivityType"), 0);
     }
-    ad.d(TAG, "msgInfo:", new Object[] { locala.toString() });
+    ac.d(TAG, "msgInfo:", new Object[] { locala.toString() });
     AppMethodBeat.o(25530);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.a
  * JD-Core Version:    0.7.0.1
  */

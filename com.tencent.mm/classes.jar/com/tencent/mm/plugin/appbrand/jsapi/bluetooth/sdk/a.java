@@ -4,75 +4,75 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static a jIN;
-  public static boolean jIQ;
-  public static boolean jIR;
-  public static boolean jIT;
-  public static boolean jIV;
-  public static int jIW;
-  public static boolean jJa;
-  public boolean aMt;
-  public int fWw;
-  public boolean jIO;
-  public long jIP;
-  public boolean jIS;
-  public boolean jIU;
-  public String jIX;
-  public int jIY;
-  public boolean jIZ;
+  public static boolean kjB;
+  public static a kjo;
+  public static boolean kjr;
+  public static boolean kjs;
+  public static boolean kju;
+  public static boolean kjw;
+  public static int kjx;
+  public boolean aNj;
+  public int gbd;
+  public boolean kjA;
+  public boolean kjp;
+  public long kjq;
+  public boolean kjt;
+  public boolean kjv;
+  public String kjy;
+  public int kjz;
   
   static
   {
     AppMethodBeat.i(144530);
-    jIN = new a().aYN();
-    jIQ = false;
-    jIR = true;
-    jIT = true;
-    jIV = false;
-    jIW = 5;
-    jJa = true;
+    kjo = new a().bfJ();
+    kjr = false;
+    kjs = true;
+    kju = true;
+    kjw = false;
+    kjx = 5;
+    kjB = true;
     AppMethodBeat.o(144530);
   }
   
   public a(a parama)
   {
-    this.fWw = parama.fWw;
-    this.jIO = parama.jIO;
-    this.jIP = parama.jIP;
-    this.aMt = parama.aMt;
-    this.jIS = parama.jIS;
-    this.jIU = parama.jIU;
-    this.jIX = parama.jIX;
-    this.jIY = parama.jIY;
-    this.jIZ = parama.jIZ;
+    this.gbd = parama.gbd;
+    this.kjp = parama.kjp;
+    this.kjq = parama.kjq;
+    this.aNj = parama.aNj;
+    this.kjt = parama.kjt;
+    this.kjv = parama.kjv;
+    this.kjy = parama.kjy;
+    this.kjz = parama.kjz;
+    this.kjA = parama.kjA;
   }
   
   public static void a(a parama)
   {
-    jIN = parama;
+    kjo = parama;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(144529);
-    String str = "BleConfig{interval=" + this.fWw + ", allowDuplicatesKey=" + this.jIO + ", actionTimeOutTime=" + this.jIP + ", debug=" + this.aMt + ", mainThread=" + this.jIS + ", serial=" + this.jIU + ", mode='" + this.jIX + '\'' + ", actionDelayTime=" + this.jIY + '}';
+    String str = "BleConfig{interval=" + this.gbd + ", allowDuplicatesKey=" + this.kjp + ", actionTimeOutTime=" + this.kjq + ", debug=" + this.aNj + ", mainThread=" + this.kjt + ", serial=" + this.kjv + ", mode='" + this.kjy + '\'' + ", actionDelayTime=" + this.kjz + '}';
     AppMethodBeat.o(144529);
     return str;
   }
   
   public static final class a
   {
-    public boolean aMt = a.jIQ;
-    public int fWw = 0;
-    public boolean jIO = false;
-    long jIP = 20000L;
-    public boolean jIS = a.jIR;
-    public boolean jIU = a.jIT;
-    public String jIX = "medium";
-    public int jIY = 10;
-    public boolean jIZ = true;
+    public boolean aNj = a.kjr;
+    public int gbd = 0;
+    public boolean kjA = true;
+    public boolean kjp = false;
+    long kjq = 20000L;
+    public boolean kjt = a.kjs;
+    public boolean kjv = a.kju;
+    public String kjy = "medium";
+    public int kjz = 10;
     
-    public final a aYN()
+    public final a bfJ()
     {
       AppMethodBeat.i(144528);
       a locala = new a(this);

@@ -2,51 +2,89 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cqv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cwc;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import java.io.IOException;
 import java.util.LinkedList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath;", "", "()V", "Companion", "plugin-expt_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath;", "", "()V", "Companion", "plugin-expt_release"})
 public final class l
 {
-  public static final a pHD;
+  public static final a qqk;
   
   static
   {
     AppMethodBeat.i(185607);
-    pHD = new a((byte)0);
+    qqk = new a((byte)0);
     AppMethodBeat.o(185607);
   }
   
-  public static final String ccJ()
+  public static final void Bk(String paramString)
   {
-    AppMethodBeat.i(190934);
-    Object localObject = a.cdy();
+    AppMethodBeat.i(185608);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(185608);
+      return;
+    }
+    cwc localcwc2 = a.clg();
+    cwc localcwc1 = localcwc2;
+    if (localcwc2 == null) {
+      localcwc1 = new cwc();
+    }
+    if (localcwc1.EZo.size() > 100) {
+      localcwc1.EZo.removeFirst();
+    }
+    localcwc1.EZo.addLast(paramString);
+    if ((localcwc1 == null) || (localcwc1.EZo.isEmpty()))
+    {
+      AppMethodBeat.o(185608);
+      return;
+    }
+    try
+    {
+      paramString = localcwc1.toByteArray();
+      if (paramString != null) {
+        b.o("mmkv_sionId_table_hell", paramString);
+      }
+      AppMethodBeat.o(185608);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      ac.printErrStackTrace("FuzzyMatchedBackup", (Throwable)paramString, "HABBYGE-MALI, SessionTable, _write: %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(185608);
+    }
+  }
+  
+  public static final String ckr()
+  {
+    AppMethodBeat.i(195595);
+    Object localObject = a.clg();
     if (localObject == null)
     {
-      AppMethodBeat.o(190934);
+      AppMethodBeat.o(195595);
       return null;
     }
-    if (((cqv)localObject).DDT.isEmpty())
+    if (((cwc)localObject).EZo.isEmpty())
     {
-      AppMethodBeat.o(190934);
+      AppMethodBeat.o(195595);
       return null;
     }
-    localObject = ((cqv)localObject).DDT;
+    localObject = ((cwc)localObject).EZo;
     k.g(localObject, "table.sessions");
     localObject = (String)((LinkedList)localObject).getLast();
-    AppMethodBeat.o(190934);
+    AppMethodBeat.o(195595);
     return localObject;
   }
   
-  public static final cqv cdx()
+  public static final cwc clf()
   {
     AppMethodBeat.i(185609);
-    cqv localcqv = a.cdy();
+    cwc localcwc = a.clg();
     AppMethodBeat.o(185609);
-    return localcqv;
+    return localcwc;
   }
   
   public static final void reset()
@@ -56,48 +94,10 @@ public final class l
     AppMethodBeat.o(185610);
   }
   
-  public static final void xe(String paramString)
-  {
-    AppMethodBeat.i(185608);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(185608);
-      return;
-    }
-    cqv localcqv2 = a.cdy();
-    cqv localcqv1 = localcqv2;
-    if (localcqv2 == null) {
-      localcqv1 = new cqv();
-    }
-    if (localcqv1.DDT.size() > 100) {
-      localcqv1.DDT.removeFirst();
-    }
-    localcqv1.DDT.addLast(paramString);
-    if ((localcqv1 == null) || (localcqv1.DDT.isEmpty()))
-    {
-      AppMethodBeat.o(185608);
-      return;
-    }
-    try
-    {
-      paramString = localcqv1.toByteArray();
-      if (paramString != null) {
-        b.o("mmkv_sionId_table_hell", paramString);
-      }
-      AppMethodBeat.o(185608);
-      return;
-    }
-    catch (IOException paramString)
-    {
-      ad.printErrStackTrace("FuzzyMatchedBackup", (Throwable)paramString, "HABBYGE-MALI, SessionTable, _write: %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(185608);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath$Companion;", "", "()V", "KEY_MMKV", "", "MAX_ITMES", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/SessionTable;", "_write", "", "table", "add", "sessionId", "get", "getCurSessionId", "reset", "plugin-expt_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath$Companion;", "", "()V", "KEY_MMKV", "", "MAX_ITMES", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/SessionTable;", "_write", "", "table", "add", "sessionId", "get", "getCurSessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    static cqv cdy()
+    static cwc clg()
     {
       AppMethodBeat.i(185606);
       byte[] arrayOfByte = b.getBytes("mmkv_sionId_table_hell");
@@ -112,16 +112,16 @@ public final class l
         AppMethodBeat.o(185606);
         return null;
       }
-      cqv localcqv = new cqv();
+      cwc localcwc = new cwc();
       try
       {
-        localcqv.parseFrom(arrayOfByte);
+        localcwc.parseFrom(arrayOfByte);
         AppMethodBeat.o(185606);
-        return localcqv;
+        return localcwc;
       }
       catch (IOException localIOException)
       {
-        ad.printErrStackTrace("FuzzyMatchedBackup", (Throwable)localIOException, "HABBYGE-MALI, SessionTable, _read: %s", new Object[] { localIOException.getMessage() });
+        ac.printErrStackTrace("FuzzyMatchedBackup", (Throwable)localIOException, "HABBYGE-MALI, SessionTable, _read: %s", new Object[] { localIOException.getMessage() });
         AppMethodBeat.o(185606);
       }
       return null;
@@ -130,7 +130,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.l
  * JD-Core Version:    0.7.0.1
  */

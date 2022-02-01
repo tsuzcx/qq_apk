@@ -1,11 +1,12 @@
 package com.tencent.kinda.framework.animate;
 
+import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.widget.base.MMKView;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,15 +18,15 @@ public class KindaAnimatorViewProxy
 {
   private static final String TAG = "MicroMsg.Kinda.KindaAnimatorViewProxy";
   private static ArgbEvaluator defaultArgbEvaluator;
-  private static KindaAnimatorViewProxy.DoubleEvaluator defaultDoubleEvaluator;
-  private static KindaAnimatorViewProxy.LongEvaluator defaultLongEvaluator;
+  private static DoubleEvaluator defaultDoubleEvaluator;
+  private static LongEvaluator defaultLongEvaluator;
   private MMKView target = null;
   
   static
   {
     AppMethodBeat.i(18319);
-    defaultLongEvaluator = new KindaAnimatorViewProxy.LongEvaluator();
-    defaultDoubleEvaluator = new KindaAnimatorViewProxy.DoubleEvaluator();
+    defaultLongEvaluator = new LongEvaluator();
+    defaultDoubleEvaluator = new DoubleEvaluator();
     defaultArgbEvaluator = new ArgbEvaluator();
     AppMethodBeat.o(18319);
   }
@@ -231,7 +232,7 @@ public class KindaAnimatorViewProxy
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
+        ac.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", localException, "unWrapRealObj %s", new Object[] { localException.getMessage() });
       }
     }
     if ((paramObject instanceof KView))
@@ -344,7 +345,7 @@ public class KindaAnimatorViewProxy
     }
     catch (InvocationTargetException paramObject)
     {
-      ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+      ac.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       AppMethodBeat.o(18311);
       return null;
     }
@@ -352,14 +353,14 @@ public class KindaAnimatorViewProxy
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        ac.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
     catch (IllegalArgumentException paramObject)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
+        ac.printErrStackTrace("MicroMsg.Kinda.KindaAnimatorViewProxy", paramObject, "invoke %s error: %s %s", new Object[] { paramMethod.getName(), paramObject.getMessage(), this.target });
       }
     }
   }
@@ -368,10 +369,38 @@ public class KindaAnimatorViewProxy
   {
     this.target = paramMMKView;
   }
+  
+  static class DoubleEvaluator
+    implements TypeEvaluator<Number>
+  {
+    public Number evaluate(float paramFloat, Number paramNumber1, Number paramNumber2)
+    {
+      AppMethodBeat.i(18307);
+      double d1 = paramNumber1.doubleValue();
+      double d2 = paramFloat;
+      double d3 = paramNumber2.doubleValue();
+      AppMethodBeat.o(18307);
+      return Double.valueOf(d1 + d2 * (d3 - d1));
+    }
+  }
+  
+  static class LongEvaluator
+    implements TypeEvaluator<Number>
+  {
+    public Number evaluate(float paramFloat, Number paramNumber1, Number paramNumber2)
+    {
+      AppMethodBeat.i(18309);
+      long l = paramNumber1.longValue();
+      float f = (float)l;
+      l = ((float)(paramNumber2.longValue() - l) * paramFloat + f);
+      AppMethodBeat.o(18309);
+      return Long.valueOf(l);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaAnimatorViewProxy
  * JD-Core Version:    0.7.0.1
  */

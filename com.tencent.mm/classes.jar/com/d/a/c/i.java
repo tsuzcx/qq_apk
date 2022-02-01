@@ -5,21 +5,21 @@ import java.util.NoSuchElementException;
 
 abstract class i
 {
-  private b bXY;
-  protected int bXZ;
-  protected int bYa;
+  private b bVG;
+  protected int bVH;
+  protected int bVI;
   
   public i(b paramb)
   {
-    this.bXY = paramb;
-    this.bXZ = this.bXY.size();
-    this.bYa = this.bXY.capacity();
+    this.bVG = paramb;
+    this.bVH = this.bVG.size();
+    this.bVI = this.bVG.capacity();
   }
   
-  protected final void At()
+  protected final void Ag()
   {
     int i = nextIndex();
-    this.bYa = i;
+    this.bVI = i;
     if (i < 0) {
       throw new NoSuchElementException();
     }
@@ -34,20 +34,20 @@ abstract class i
   
   public void remove()
   {
-    if (this.bXZ != this.bXY.size()) {
+    if (this.bVH != this.bVG.size()) {
       throw new ConcurrentModificationException();
     }
-    this.bXY.Ao();
+    this.bVG.Ab();
     try
     {
-      this.bXY.removeAt(this.bYa);
-      this.bXY.Ap();
-      this.bXZ -= 1;
+      this.bVG.removeAt(this.bVI);
+      this.bVG.Ac();
+      this.bVH -= 1;
       return;
     }
     finally
     {
-      this.bXY.Ap();
+      this.bVG.Ac();
     }
   }
 }

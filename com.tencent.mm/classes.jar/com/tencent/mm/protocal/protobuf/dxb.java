@@ -4,77 +4,86 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class dxb
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int nUh;
-  public String username;
+  public long FvQ;
+  public boolean GdL;
+  public String Username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32571);
+    AppMethodBeat.i(32540);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.username == null)
+      if (this.Username == null)
       {
-        paramVarArgs = new b("Not all required fields were included: username");
-        AppMethodBeat.o(32571);
+        paramVarArgs = new b("Not all required fields were included: Username");
+        AppMethodBeat.o(32540);
         throw paramVarArgs;
       }
-      paramVarArgs.aR(1, this.nUh);
-      if (this.username != null) {
-        paramVarArgs.d(2, this.username);
+      if (this.Username != null) {
+        paramVarArgs.d(1, this.Username);
       }
-      AppMethodBeat.o(32571);
+      paramVarArgs.aO(2, this.FvQ);
+      paramVarArgs.bl(3, this.GdL);
+      AppMethodBeat.o(32540);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bA(1, this.nUh) + 0;
-      paramInt = i;
-      if (this.username != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.username);
+    if (paramInt == 1) {
+      if (this.Username == null) {
+        break label363;
       }
-      AppMethodBeat.o(32571);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label363:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Username) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+      int i = f.a.a.b.b.a.p(2, this.FvQ);
+      int j = f.a.a.b.b.a.fK(3);
+      AppMethodBeat.o(32540);
+      return paramInt + i + (j + 1);
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
         }
-      }
-      if (this.username == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: username");
-        AppMethodBeat.o(32571);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32571);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dxb localdxb = (dxb)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(32571);
-        return -1;
-      case 1: 
-        localdxb.nUh = locala.KhF.xS();
-        AppMethodBeat.o(32571);
+        if (this.Username == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Username");
+          AppMethodBeat.o(32540);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32540);
         return 0;
       }
-      localdxb.username = locala.KhF.readString();
-      AppMethodBeat.o(32571);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        dxb localdxb = (dxb)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32540);
+          return -1;
+        case 1: 
+          localdxb.Username = locala.LVo.readString();
+          AppMethodBeat.o(32540);
+          return 0;
+        case 2: 
+          localdxb.FvQ = locala.LVo.xG();
+          AppMethodBeat.o(32540);
+          return 0;
+        }
+        localdxb.GdL = locala.LVo.fZX();
+        AppMethodBeat.o(32540);
+        return 0;
+      }
+      AppMethodBeat.o(32540);
+      return -1;
     }
-    AppMethodBeat.o(32571);
-    return -1;
   }
 }
 

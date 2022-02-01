@@ -11,24 +11,24 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"all", "", "K", "V", "", "predicate", "Lkotlin/Function1;", "", "any", "asIterable", "", "asSequence", "Lkotlin/sequences/Sequence;", "count", "", "flatMap", "", "R", "transform", "flatMapTo", "C", "", "destination", "(Ljava/util/Map;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "forEach", "", "action", "map", "mapNotNull", "", "mapNotNullTo", "mapTo", "maxBy", "", "selector", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "minBy", "minWith", "none", "onEach", "M", "(Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "toList", "Lkotlin/Pair;", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"all", "", "K", "V", "", "predicate", "Lkotlin/Function1;", "", "any", "asIterable", "", "asSequence", "Lkotlin/sequences/Sequence;", "count", "", "flatMap", "", "R", "transform", "flatMapTo", "C", "", "destination", "(Ljava/util/Map;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "forEach", "", "action", "map", "mapNotNull", "", "mapNotNullTo", "mapTo", "maxBy", "", "selector", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "minBy", "minWith", "none", "onEach", "M", "(Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "toList", "Lkotlin/Pair;", "kotlin-stdlib"}, fOb=1)
 public class ai
   extends ah
 {
-  public static final <K, V> List<o<K, V>> bS(Map<? extends K, ? extends V> paramMap)
+  public static final <K, V> List<o<K, V>> cb(Map<? extends K, ? extends V> paramMap)
   {
     AppMethodBeat.i(129241);
     k.h(paramMap, "$this$toList");
     if (paramMap.size() == 0)
     {
-      paramMap = (List)v.Jgl;
+      paramMap = (List)v.KTF;
       AppMethodBeat.o(129241);
       return paramMap;
     }
     Iterator localIterator = paramMap.entrySet().iterator();
     if (!localIterator.hasNext())
     {
-      paramMap = (List)v.Jgl;
+      paramMap = (List)v.KTF;
       AppMethodBeat.o(129241);
       return paramMap;
     }

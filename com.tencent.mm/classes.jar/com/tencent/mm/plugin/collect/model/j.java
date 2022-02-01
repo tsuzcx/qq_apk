@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ry;
-import com.tencent.mm.protocal.protobuf.rz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.si;
+import com.tencent.mm.protocal.protobuf.sj;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class j
   extends n
   implements k
 {
   private g callback;
-  private b iaa;
-  public rz nTF;
+  private b gvE;
+  public sj oxa;
   
   public j()
   {
     AppMethodBeat.i(63822);
     b.a locala = new b.a();
-    locala.gUU = new ry();
-    locala.gUV = new rz();
+    locala.hvt = new si();
+    locala.hvu = new sj();
     locala.funcId = 1256;
     locala.uri = "/cgi-bin/mmpay-bin/f2fannounce";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.iaa = locala.atI();
-    ad.d("MicroMsg.NetSceneF2fAnnouce", "do cgi");
+    this.gvE = locala.aAz();
+    ac.d("MicroMsg.NetSceneF2fAnnouce", "do cgi");
     AppMethodBeat.o(63822);
   }
   
@@ -40,7 +40,7 @@ public final class j
   {
     AppMethodBeat.i(63823);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(63823);
     return i;
   }
@@ -53,8 +53,8 @@ public final class j
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63824);
-    ad.i("MicroMsg.NetSceneF2fAnnouce", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.nTF = ((rz)((b)paramq).gUT.gUX);
+    ac.i("MicroMsg.NetSceneF2fAnnouce", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.oxa = ((sj)((b)paramq).hvs.hvw);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

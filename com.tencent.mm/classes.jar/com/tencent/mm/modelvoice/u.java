@@ -8,34 +8,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.util.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bb;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 
 public final class u
   implements d
 {
   String fileName;
-  boolean hCL;
-  d.a hCS;
-  d.b hCT;
-  MediaPlayer hDA;
-  com.tencent.mm.compatible.util.b hDB;
+  boolean idm;
+  d.a idt;
+  d.b idu;
+  MediaPlayer iec;
+  com.tencent.mm.compatible.util.b ied;
   int status;
   
   public u()
   {
     AppMethodBeat.i(130095);
     this.fileName = "";
-    this.hCS = null;
-    this.hCT = null;
+    this.idt = null;
+    this.idu = null;
     this.status = 0;
-    this.hCL = true;
-    this.hDA = new k();
-    aDF();
-    aDG();
-    ad.d("MicroMsg.VoicePlayer", "VoicePlayer");
+    this.idm = true;
+    this.iec = new k();
+    aKw();
+    aKx();
+    ac.d("MicroMsg.VoicePlayer", "VoicePlayer");
     AppMethodBeat.o(130095);
   }
   
@@ -43,42 +43,42 @@ public final class u
   {
     this();
     AppMethodBeat.i(130096);
-    this.hDB = new com.tencent.mm.compatible.util.b(paramContext);
-    ad.d("MicroMsg.VoicePlayer", "VoicePlayer context");
+    this.ied = new com.tencent.mm.compatible.util.b(paramContext);
+    ac.d("MicroMsg.VoicePlayer", "VoicePlayer context");
     AppMethodBeat.o(130096);
   }
   
-  private void aDF()
+  private void aKw()
   {
     AppMethodBeat.i(130097);
-    this.hDA.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+    this.iec.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(130093);
-        ad.d("MicroMsg.VoicePlayer", "OnCompletionListener");
-        if ((u.this.hDB != null) && (u.this.hCL))
+        ac.d("MicroMsg.VoicePlayer", "OnCompletionListener");
+        if ((u.this.ied != null) && (u.this.idm))
         {
-          ad.d("MicroMsg.VoicePlayer", "OnCompletionListener abandonFocus");
-          u.this.hDB.XF();
+          ac.d("MicroMsg.VoicePlayer", "OnCompletionListener abandonFocus");
+          u.this.ied.YC();
         }
-        if (u.this.hCS != null)
+        if (u.this.idt != null)
         {
-          ad.d("MicroMsg.VoicePlayer", "OnCompletionListener onCompletion");
-          u.this.hCS.onCompletion();
+          ac.d("MicroMsg.VoicePlayer", "OnCompletionListener onCompletion");
+          u.this.idt.onCompletion();
         }
         try
         {
-          ad.d("MicroMsg.VoicePlayer", "OnCompletionListener release");
-          u.this.hDA.reset();
-          u.this.hDA.release();
+          ac.d("MicroMsg.VoicePlayer", "OnCompletionListener release");
+          u.this.iec.reset();
+          u.this.iec.release();
           u.this.status = 0;
           AppMethodBeat.o(130093);
           return;
         }
         catch (Exception paramAnonymousMediaPlayer)
         {
-          ad.e("MicroMsg.VoicePlayer", "setCompletion File[" + u.this.fileName + "] ErrMsg[" + paramAnonymousMediaPlayer.getStackTrace() + "]");
+          ac.e("MicroMsg.VoicePlayer", "setCompletion File[" + u.this.fileName + "] ErrMsg[" + paramAnonymousMediaPlayer.getStackTrace() + "]");
           AppMethodBeat.o(130093);
         }
       }
@@ -86,30 +86,30 @@ public final class u
     AppMethodBeat.o(130097);
   }
   
-  private void aDG()
+  private void aKx()
   {
     AppMethodBeat.i(130098);
-    this.hDA.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    this.iec.setOnErrorListener(new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(130094);
-        ad.d("MicroMsg.VoicePlayer", "OnErrorListener");
-        if ((u.this.hDB != null) && (u.this.hCL))
+        ac.d("MicroMsg.VoicePlayer", "OnErrorListener");
+        if ((u.this.ied != null) && (u.this.idm))
         {
-          ad.d("MicroMsg.VoicePlayer", "OnErrorListener abandonFocus");
-          u.this.hDB.XF();
+          ac.d("MicroMsg.VoicePlayer", "OnErrorListener abandonFocus");
+          u.this.ied.YC();
         }
-        if (u.this.hCT != null)
+        if (u.this.idu != null)
         {
-          ad.d("MicroMsg.VoicePlayer", "OnErrorListener onError");
-          u.this.hCT.onError();
+          ac.d("MicroMsg.VoicePlayer", "OnErrorListener onError");
+          u.this.idu.onError();
         }
         try
         {
-          ad.d("MicroMsg.VoicePlayer", "OnErrorListener release");
-          u.this.hDA.reset();
-          u.this.hDA.release();
+          ac.d("MicroMsg.VoicePlayer", "OnErrorListener release");
+          u.this.iec.reset();
+          u.this.iec.release();
           u.this.status = -1;
           AppMethodBeat.o(130094);
           return false;
@@ -118,7 +118,7 @@ public final class u
         {
           for (;;)
           {
-            ad.e("MicroMsg.VoicePlayer", "setErrorListener File[" + u.this.fileName + "] ErrMsg[" + paramAnonymousMediaPlayer.getStackTrace() + "]");
+            ac.e("MicroMsg.VoicePlayer", "setErrorListener File[" + u.this.fileName + "] ErrMsg[" + paramAnonymousMediaPlayer.getStackTrace() + "]");
           }
         }
       }
@@ -131,15 +131,15 @@ public final class u
     AppMethodBeat.i(130102);
     if (this.status != 0)
     {
-      ad.e("MicroMsg.VoicePlayer", "startPlay error status:" + this.status);
+      ac.e("MicroMsg.VoicePlayer", "startPlay error status:" + this.status);
       AppMethodBeat.o(130102);
       return false;
     }
-    ad.i("MicroMsg.VoicePlayer", "startPlay speakerOn:%s,seekTo:%s,", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.VoicePlayer", "startPlay speakerOn:%s,seekTo:%s,", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     this.fileName = paramString;
     try
     {
-      k(paramBoolean, paramInt);
+      l(paramBoolean, paramInt);
       this.status = 1;
       AppMethodBeat.o(130102);
       return true;
@@ -148,12 +148,12 @@ public final class u
     {
       try
       {
-        k(true, paramInt);
+        l(true, paramInt);
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.VoicePlayer", "startPlay File[" + this.fileName + "] failed");
-        ad.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bt.m(paramString) });
+        ac.e("MicroMsg.VoicePlayer", "startPlay File[" + this.fileName + "] failed");
+        ac.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bs.m(paramString) });
         this.status = -1;
         AppMethodBeat.o(130102);
       }
@@ -161,11 +161,11 @@ public final class u
     return false;
   }
   
-  private void k(boolean paramBoolean, int paramInt)
+  private void l(boolean paramBoolean, int paramInt)
   {
     int j = 3;
     AppMethodBeat.i(130103);
-    if (!i.eK(this.fileName))
+    if (!i.eA(this.fileName))
     {
       AppMethodBeat.o(130103);
       return;
@@ -179,38 +179,38 @@ public final class u
     {
       try
       {
-        ad.d("MicroMsg.VoicePlayer", "playImp speakerOn:%s,seekTo:%s,type:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i) });
-        if (!ae.fFx.fzm) {
+        ac.d("MicroMsg.VoicePlayer", "playImp speakerOn:%s,seekTo:%s,type:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i) });
+        if (!ae.fJe.fCT) {
           break label249;
         }
-        ae.fFx.dump();
-        if (ae.fFx.fzt != 1) {
+        ae.fJe.dump();
+        if (ae.fJe.fDa != 1) {
           break label249;
         }
         i = j;
-        if ((this.hDB != null) && (this.hCL))
+        if ((this.ied != null) && (this.idm))
         {
-          ad.d("MicroMsg.VoicePlayer", "playImp audioFocusHelper.requestFocus");
-          this.hDB.requestFocus();
+          ac.d("MicroMsg.VoicePlayer", "playImp audioFocusHelper.requestFocus");
+          this.ied.requestFocus();
         }
-        this.hDA.setAudioStreamType(i);
-        this.hDA.setDataSource(this.fileName);
-        this.hDA.prepare();
+        this.iec.setAudioStreamType(i);
+        this.iec.setDataSource(this.fileName);
+        this.iec.prepare();
         if (paramInt > 0) {
-          this.hDA.seekTo(paramInt);
+          this.iec.seekTo(paramInt);
         }
-        this.hDA.start();
+        this.iec.start();
         AppMethodBeat.o(130103);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.VoicePlayer", "playImp : fail, exception = " + localException.getMessage());
-        ad.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bt.m(localException) });
-        if ((this.hDB == null) || (!this.hCL)) {
+        ac.e("MicroMsg.VoicePlayer", "playImp : fail, exception = " + localException.getMessage());
+        ac.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bs.m(localException) });
+        if ((this.ied == null) || (!this.idm)) {
           continue;
         }
-        this.hDB.XF();
+        this.ied.YC();
         AppMethodBeat.o(130103);
         return;
       }
@@ -218,24 +218,24 @@ public final class u
     }
   }
   
-  public final boolean Ft()
+  public final boolean Fb()
   {
     AppMethodBeat.i(130106);
     if ((this.status != 1) && (this.status != 2))
     {
-      ad.e("MicroMsg.VoicePlayer", "stop not STATUS_PLAYING or STATUS_PAUSE error status:" + this.status);
+      ac.e("MicroMsg.VoicePlayer", "stop not STATUS_PLAYING or STATUS_PAUSE error status:" + this.status);
       AppMethodBeat.o(130106);
       return false;
     }
     try
     {
-      ad.d("MicroMsg.VoicePlayer", "stop mediaPlayer.stop()");
-      this.hDA.stop();
-      this.hDA.release();
-      if ((this.hDB != null) && (this.hCL))
+      ac.d("MicroMsg.VoicePlayer", "stop mediaPlayer.stop()");
+      this.iec.stop();
+      this.iec.release();
+      if ((this.ied != null) && (this.idm))
       {
-        ad.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
-        this.hDB.XF();
+        ac.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
+        this.ied.YC();
       }
       this.status = 0;
       AppMethodBeat.o(130106);
@@ -243,22 +243,22 @@ public final class u
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.VoicePlayer", "stop File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      ac.e("MicroMsg.VoicePlayer", "stop File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
       this.status = -1;
       return false;
     }
     finally
     {
-      if ((this.hDB != null) && (this.hCL))
+      if ((this.ied != null) && (this.idm))
       {
-        ad.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
-        this.hDB.XF();
+        ac.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
+        this.ied.YC();
       }
       AppMethodBeat.o(130106);
     }
   }
   
-  public final double Oa()
+  public final double NW()
   {
     AppMethodBeat.i(130107);
     if ((this.status != 1) && (this.status != 2))
@@ -270,19 +270,19 @@ public final class u
     int j;
     try
     {
-      i = this.hDA.getCurrentPosition();
-      j = this.hDA.getDuration();
+      i = this.iec.getCurrentPosition();
+      j = this.iec.getDuration();
       if (j == 0)
       {
-        ad.e("MicroMsg.VoicePlayer", "getDuration File[" + this.fileName + "] Failed");
+        ac.e("MicroMsg.VoicePlayer", "getDuration File[" + this.fileName + "] Failed");
         AppMethodBeat.o(130107);
         return 0.0D;
       }
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.VoicePlayer", "getNowProgress File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-      Ft();
+      ac.e("MicroMsg.VoicePlayer", "getNowProgress File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      Fb();
       AppMethodBeat.o(130107);
       return 0.0D;
     }
@@ -293,26 +293,65 @@ public final class u
   
   public final void a(d.a parama)
   {
-    this.hCS = parama;
+    this.idt = parama;
   }
   
   public final void a(d.b paramb)
   {
-    this.hCT = paramb;
+    this.idu = paramb;
   }
   
-  public final void aDn()
+  public final void aKe()
   {
-    this.hCL = false;
+    this.idm = false;
   }
   
   public final void b(b.a parama)
   {
     AppMethodBeat.i(130108);
-    if ((this.hDB != null) && (parama != null)) {
-      this.hDB.a(parama);
+    if ((this.ied != null) && (parama != null)) {
+      this.ied.a(parama);
     }
     AppMethodBeat.o(130108);
+  }
+  
+  public final boolean bF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(130104);
+    if (this.status != 1)
+    {
+      ac.e("MicroMsg.VoicePlayer", "pause not STATUS_PLAYING error status:" + this.status);
+      AppMethodBeat.o(130104);
+      return false;
+    }
+    try
+    {
+      ac.d("MicroMsg.VoicePlayer", "pause mediaPlayer.pause()");
+      this.iec.pause();
+      if ((this.ied != null) && (paramBoolean) && (this.idm))
+      {
+        ac.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
+        this.ied.YC();
+      }
+      this.status = 2;
+      AppMethodBeat.o(130104);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ac.e("MicroMsg.VoicePlayer", "pause File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      this.status = -1;
+      return false;
+    }
+    finally
+    {
+      if ((this.ied != null) && (paramBoolean) && (this.idm))
+      {
+        ac.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
+        this.ied.YC();
+      }
+      AppMethodBeat.o(130104);
+    }
   }
   
   public final boolean c(String paramString, boolean paramBoolean, int paramInt)
@@ -323,67 +362,28 @@ public final class u
     return paramBoolean;
   }
   
-  public final void cj(boolean paramBoolean)
+  public final void cl(boolean paramBoolean)
   {
     AppMethodBeat.i(130099);
-    ad.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
-    if (this.hDA == null)
+    ac.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
+    if (this.iec == null)
     {
       AppMethodBeat.o(130099);
       return;
     }
-    if (bc.NY())
+    if (bb.NU())
     {
-      ad.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
+      ac.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
       AppMethodBeat.o(130099);
       return;
     }
-    int i = this.hDA.getCurrentPosition();
-    Ft();
-    this.hDA = new k();
-    aDF();
-    aDG();
+    int i = this.iec.getCurrentPosition();
+    Fb();
+    this.iec = new k();
+    aKw();
+    aKx();
     d(this.fileName, paramBoolean, i);
     AppMethodBeat.o(130099);
-  }
-  
-  public final boolean cp(boolean paramBoolean)
-  {
-    AppMethodBeat.i(130104);
-    if (this.status != 1)
-    {
-      ad.e("MicroMsg.VoicePlayer", "pause not STATUS_PLAYING error status:" + this.status);
-      AppMethodBeat.o(130104);
-      return false;
-    }
-    try
-    {
-      ad.d("MicroMsg.VoicePlayer", "pause mediaPlayer.pause()");
-      this.hDA.pause();
-      if ((this.hDB != null) && (paramBoolean) && (this.hCL))
-      {
-        ad.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
-        this.hDB.XF();
-      }
-      this.status = 2;
-      AppMethodBeat.o(130104);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      ad.e("MicroMsg.VoicePlayer", "pause File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-      this.status = -1;
-      return false;
-    }
-    finally
-    {
-      if ((this.hDB != null) && (paramBoolean) && (this.hCL))
-      {
-        ad.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
-        this.hDB.XF();
-      }
-      AppMethodBeat.o(130104);
-    }
   }
   
   public final int getStatus()
@@ -401,18 +401,18 @@ public final class u
     AppMethodBeat.i(130105);
     if (this.status != 2)
     {
-      ad.e("MicroMsg.VoicePlayer", "resume not STATUS_PAUSE error status:" + this.status);
+      ac.e("MicroMsg.VoicePlayer", "resume not STATUS_PAUSE error status:" + this.status);
       AppMethodBeat.o(130105);
       return false;
     }
     try
     {
-      ad.d("MicroMsg.VoicePlayer", "resume mediaPlayer.start()");
-      this.hDA.start();
-      if ((this.hDB != null) && (this.hCL))
+      ac.d("MicroMsg.VoicePlayer", "resume mediaPlayer.start()");
+      this.iec.start();
+      if ((this.ied != null) && (this.idm))
       {
-        ad.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
-        this.hDB.requestFocus();
+        ac.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
+        this.ied.requestFocus();
       }
       this.status = 1;
       AppMethodBeat.o(130105);
@@ -420,16 +420,16 @@ public final class u
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.VoicePlayer", "resume File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      ac.e("MicroMsg.VoicePlayer", "resume File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
       this.status = -1;
       return false;
     }
     finally
     {
-      if ((this.hDB != null) && (this.hCL))
+      if ((this.ied != null) && (this.idm))
       {
-        ad.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
-        this.hDB.requestFocus();
+        ac.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
+        this.ied.requestFocus();
       }
       AppMethodBeat.o(130105);
     }
@@ -437,7 +437,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvoice.u
  * JD-Core Version:    0.7.0.1
  */

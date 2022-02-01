@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Rect;
@@ -16,27 +15,26 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.cl;
-import com.tencent.mm.g.a.pj;
-import com.tencent.mm.g.a.pk;
-import com.tencent.mm.g.a.pl;
+import com.tencent.mm.g.a.ps;
+import com.tencent.mm.g.a.pt;
+import com.tencent.mm.g.a.pu;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.page.ae;
 import com.tencent.mm.plugin.appbrand.utils.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.widget.a.e.b;
 import com.tencent.mm.vending.g.d.b;
+import com.tencent.mm.vfs.q;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,62 +46,62 @@ public final class JsApiShowImageOperateSheet
   
   static final class BottomSheetLogicHelper
   {
-    private static Set<Integer> jzn;
-    private static Set<Integer> jzo;
-    private IPCQRCodeRecognizeResult jzp;
-    private com.tencent.mm.ui.widget.a.e jzq;
-    private final ae jzr;
-    private final String jzs;
-    private final String jzt;
-    private final Rect jzu;
+    private static Set<Integer> jZK;
+    private static Set<Integer> jZL;
+    private IPCQRCodeRecognizeResult jZM;
+    private com.tencent.mm.ui.widget.a.e jZN;
+    private final ae jZO;
+    private final String jZP;
+    private final String jZQ;
+    private final Rect jZR;
     
     static
     {
       AppMethodBeat.i(45700);
       HashSet localHashSet = new HashSet();
-      jzn = localHashSet;
+      jZK = localHashSet;
       localHashSet.add(Integer.valueOf(3));
       localHashSet = new HashSet();
-      jzo = localHashSet;
+      jZL = localHashSet;
       localHashSet.add(Integer.valueOf(22));
       AppMethodBeat.o(45700);
     }
     
     public BottomSheetLogicHelper(ae paramae, String paramString1, String paramString2, Rect paramRect)
     {
-      this.jzr = paramae;
-      this.jzs = paramString1;
-      this.jzt = paramString2;
-      this.jzu = paramRect;
+      this.jZO = paramae;
+      this.jZP = paramString1;
+      this.jZQ = paramString2;
+      this.jZR = paramRect;
     }
     
     private void a(b.a parama)
     {
       AppMethodBeat.i(45692);
-      if (!bt.isNullOrNil(this.jzt))
+      if (!bs.isNullOrNil(this.jZQ))
       {
-        Object localObject = this.jzr.Ee().ER("showSheet_base64_" + System.currentTimeMillis());
+        Object localObject = this.jZO.DH().IU("showSheet_base64_" + System.currentTimeMillis());
         if (localObject == null)
         {
-          ad.e("MicroMsg.JsApiShowImageOperateSheet", "loadImage failed for allocTempFile");
+          ac.e("MicroMsg.JsApiShowImageOperateSheet", "loadImage failed for allocTempFile");
           AppMethodBeat.o(45692);
           return;
         }
-        localObject = com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject).fhU());
-        byte[] arrayOfByte = Base64.decode(this.jzt, 0);
+        localObject = q.B(((com.tencent.mm.vfs.e)localObject).fxV());
+        byte[] arrayOfByte = Base64.decode(this.jZQ, 0);
         com.tencent.mm.vfs.i.f((String)localObject, arrayOfByte, arrayOfByte.length);
-        parama.Fn((String)localObject);
+        parama.Jr((String)localObject);
         AppMethodBeat.o(45692);
         return;
       }
-      com.tencent.mm.plugin.appbrand.utils.b.a(this.jzr, this.jzs, null, parama);
+      com.tencent.mm.plugin.appbrand.utils.b.a(this.jZO, this.jZP, null, parama);
       AppMethodBeat.o(45692);
     }
     
-    public final void aXS()
+    public final void beP()
     {
       AppMethodBeat.i(45691);
-      boolean bool = com.tencent.luggage.h.f.aB(this.jzr.getContext());
+      boolean bool = com.tencent.luggage.h.f.aC(this.jZO.getContext());
       Runnable local1 = new Runnable()
       {
         public final void run()
@@ -116,7 +114,7 @@ public final class JsApiShowImageOperateSheet
       if (bool) {}
       for (int i = 100;; i = 0)
       {
-        aq.n(local1, i);
+        ap.n(local1, i);
         AppMethodBeat.o(45691);
         return;
       }
@@ -126,9 +124,9 @@ public final class JsApiShowImageOperateSheet
       extends AppBrandProxyUIProcessTask.ProcessRequest
     {
       public static final Parcelable.Creator<IPCProcessQRCodeResultRequest> CREATOR;
-      private JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult jzE;
-      private String jzF;
-      private String jzG;
+      private JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult kab;
+      private String kac;
+      private String pageUrl;
       
       static
       {
@@ -142,18 +140,18 @@ public final class JsApiShowImageOperateSheet
       protected IPCProcessQRCodeResultRequest(Parcel paramParcel)
       {
         AppMethodBeat.i(45667);
-        this.jzE = ((JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult)paramParcel.readParcelable(IPCProcessQRCodeResultRequest.class.getClassLoader()));
-        this.jzF = paramParcel.readString();
-        this.jzG = paramParcel.readString();
+        this.kab = ((JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult)paramParcel.readParcelable(IPCProcessQRCodeResultRequest.class.getClassLoader()));
+        this.kac = paramParcel.readString();
+        this.pageUrl = paramParcel.readString();
         AppMethodBeat.o(45667);
       }
       
-      public final Class<? extends AppBrandProxyUIProcessTask> aWl()
+      public final Class<? extends AppBrandProxyUIProcessTask> bdj()
       {
         return JsApiShowImageOperateSheet.BottomSheetLogicHelper.b.class;
       }
       
-      public final boolean aXq()
+      public final boolean ben()
       {
         return true;
       }
@@ -166,9 +164,9 @@ public final class JsApiShowImageOperateSheet
       public final void writeToParcel(Parcel paramParcel, int paramInt)
       {
         AppMethodBeat.i(45668);
-        paramParcel.writeParcelable(this.jzE, paramInt);
-        paramParcel.writeString(this.jzF);
-        paramParcel.writeString(this.jzG);
+        paramParcel.writeParcelable(this.kab, paramInt);
+        paramParcel.writeString(this.kac);
+        paramParcel.writeString(this.pageUrl);
         AppMethodBeat.o(45668);
       }
     }
@@ -177,8 +175,8 @@ public final class JsApiShowImageOperateSheet
       implements Parcelable
     {
       public static final Parcelable.Creator<IPCQRCodeRecognizeParam> CREATOR;
-      private String iTJ;
-      private String jzO;
+      private String jtV;
+      private String kak;
       
       static
       {
@@ -192,8 +190,8 @@ public final class JsApiShowImageOperateSheet
       protected IPCQRCodeRecognizeParam(Parcel paramParcel)
       {
         AppMethodBeat.i(45679);
-        this.iTJ = paramParcel.readString();
-        this.jzO = paramParcel.readString();
+        this.jtV = paramParcel.readString();
+        this.kak = paramParcel.readString();
         AppMethodBeat.o(45679);
       }
       
@@ -205,8 +203,8 @@ public final class JsApiShowImageOperateSheet
       public final void writeToParcel(Parcel paramParcel, int paramInt)
       {
         AppMethodBeat.i(45680);
-        paramParcel.writeString(this.iTJ);
-        paramParcel.writeString(this.jzO);
+        paramParcel.writeString(this.jtV);
+        paramParcel.writeString(this.kak);
         AppMethodBeat.o(45680);
       }
     }
@@ -215,11 +213,11 @@ public final class JsApiShowImageOperateSheet
       implements Parcelable
     {
       public static final Parcelable.Creator<IPCQRCodeRecognizeResult> CREATOR;
-      private String bNK;
-      private int deB;
-      private int deC;
+      private String bLs;
+      private int dbX;
+      private int dbY;
       private String filePath;
-      private String gLg;
+      private String hlG;
       private String result;
       
       static
@@ -236,10 +234,10 @@ public final class JsApiShowImageOperateSheet
         AppMethodBeat.i(45683);
         this.result = paramParcel.readString();
         this.filePath = paramParcel.readString();
-        this.deB = paramParcel.readInt();
-        this.deC = paramParcel.readInt();
-        this.bNK = paramParcel.readString();
-        this.gLg = paramParcel.readString();
+        this.dbX = paramParcel.readInt();
+        this.dbY = paramParcel.readInt();
+        this.bLs = paramParcel.readString();
+        this.hlG = paramParcel.readString();
         AppMethodBeat.o(45683);
       }
       
@@ -253,10 +251,10 @@ public final class JsApiShowImageOperateSheet
         AppMethodBeat.i(45684);
         paramParcel.writeString(this.result);
         paramParcel.writeString(this.filePath);
-        paramParcel.writeInt(this.deB);
-        paramParcel.writeInt(this.deC);
-        paramParcel.writeString(this.bNK);
-        paramParcel.writeString(this.gLg);
+        paramParcel.writeInt(this.dbX);
+        paramParcel.writeInt(this.dbY);
+        paramParcel.writeString(this.bLs);
+        paramParcel.writeString(this.hlG);
         AppMethodBeat.o(45684);
       }
     }
@@ -269,23 +267,23 @@ public final class JsApiShowImageOperateSheet
         AppMethodBeat.i(45670);
         if (!(paramProcessRequest instanceof JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest))
         {
-          ad.e("MicroMsg.JsApiShowImageOperateSheet", "IPCProcessQRCodeResultTask request instance not valid");
+          ac.e("MicroMsg.JsApiShowImageOperateSheet", "IPCProcessQRCodeResultTask request instance not valid");
           AppMethodBeat.o(45670);
           return;
         }
         paramProcessRequest = (JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest)paramProcessRequest;
         cl localcl = new cl();
-        localcl.deA.activity = aXi();
-        localcl.deA.dcO = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult.a(JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.a(paramProcessRequest));
-        localcl.deA.deB = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult.b(JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.a(paramProcessRequest));
-        localcl.deA.deC = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult.e(JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.a(paramProcessRequest));
-        localcl.deA.scene = 44;
+        localcl.dbW.activity = bef();
+        localcl.dbW.dam = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult.a(JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.a(paramProcessRequest));
+        localcl.dbW.dbX = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult.b(JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.a(paramProcessRequest));
+        localcl.dbW.dbY = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult.e(JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.a(paramProcessRequest));
+        localcl.dbW.scene = 44;
         Bundle localBundle = new Bundle();
         localBundle.putInt("stat_scene", 6);
         localBundle.putString("stat_app_id", JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.b(paramProcessRequest));
         localBundle.putString("stat_url", JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCProcessQRCodeResultRequest.c(paramProcessRequest));
-        localcl.deA.deG = localBundle;
-        com.tencent.mm.sdk.b.a.ESL.l(localcl);
+        localcl.dbW.dcb = localBundle;
+        com.tencent.mm.sdk.b.a.GpY.l(localcl);
         AppMethodBeat.o(45670);
       }
     }
@@ -293,35 +291,35 @@ public final class JsApiShowImageOperateSheet
     static final class c
       implements com.tencent.mm.ipcinvoker.b<JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeParam, JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult>
     {
-      private boolean jzH = false;
+      private boolean kad = false;
       
-      private void a(final JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeParam paramIPCQRCodeRecognizeParam, final com.tencent.mm.ipcinvoker.d<JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult> paramd, boolean paramBoolean)
+      private void a(final JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeParam paramIPCQRCodeRecognizeParam, final d<JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeResult> paramd, boolean paramBoolean)
       {
         AppMethodBeat.i(45674);
         if (paramBoolean) {}
         for (final String str = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeParam.a(paramIPCQRCodeRecognizeParam);; str = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCQRCodeRecognizeParam.b(paramIPCQRCodeRecognizeParam))
         {
-          ad.i("MicroMsg.JsApiShowImageOperateSheet", "doRecognizeLogic mIsBakPathUsed:%b useBak:%b path:%s", new Object[] { Boolean.valueOf(this.jzH), Boolean.valueOf(paramBoolean), str });
-          this.jzH = paramBoolean;
-          if (!bt.isNullOrNil(str)) {
+          ac.i("MicroMsg.JsApiShowImageOperateSheet", "doRecognizeLogic mIsBakPathUsed:%b useBak:%b path:%s", new Object[] { Boolean.valueOf(this.kad), Boolean.valueOf(paramBoolean), str });
+          this.kad = paramBoolean;
+          if (!bs.isNullOrNil(str)) {
             break;
           }
           AppMethodBeat.o(45674);
           return;
         }
-        final com.tencent.mm.plugin.appbrand.aa.i locali2 = new com.tencent.mm.plugin.appbrand.aa.i();
-        final com.tencent.mm.plugin.appbrand.aa.i locali1 = new com.tencent.mm.plugin.appbrand.aa.i();
+        final com.tencent.mm.plugin.appbrand.z.i locali2 = new com.tencent.mm.plugin.appbrand.z.i();
+        final com.tencent.mm.plugin.appbrand.z.i locali1 = new com.tencent.mm.plugin.appbrand.z.i();
         c local1 = new c() {};
         locali2.value = local1;
         paramIPCQRCodeRecognizeParam = new c() {};
         locali1.value = paramIPCQRCodeRecognizeParam;
-        com.tencent.mm.sdk.b.a.ESL.c(local1);
-        com.tencent.mm.sdk.b.a.ESL.c(paramIPCQRCodeRecognizeParam);
-        paramIPCQRCodeRecognizeParam = new pj();
-        paramIPCQRCodeRecognizeParam.duX.dcQ = System.currentTimeMillis();
-        paramIPCQRCodeRecognizeParam.duX.filePath = str;
-        paramIPCQRCodeRecognizeParam.duX.duY = JsApiShowImageOperateSheet.BottomSheetLogicHelper.aXU();
-        com.tencent.mm.sdk.b.a.ESL.l(paramIPCQRCodeRecognizeParam);
+        com.tencent.mm.sdk.b.a.GpY.c(local1);
+        com.tencent.mm.sdk.b.a.GpY.c(paramIPCQRCodeRecognizeParam);
+        paramIPCQRCodeRecognizeParam = new ps();
+        paramIPCQRCodeRecognizeParam.dsJ.dao = System.currentTimeMillis();
+        paramIPCQRCodeRecognizeParam.dsJ.filePath = str;
+        paramIPCQRCodeRecognizeParam.dsJ.dsK = JsApiShowImageOperateSheet.BottomSheetLogicHelper.beR();
+        com.tencent.mm.sdk.b.a.GpY.l(paramIPCQRCodeRecognizeParam);
         AppMethodBeat.o(45674);
       }
     }
@@ -329,7 +327,7 @@ public final class JsApiShowImageOperateSheet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiShowImageOperateSheet
  * JD-Core Version:    0.7.0.1
  */

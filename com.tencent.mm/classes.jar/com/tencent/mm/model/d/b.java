@@ -15,17 +15,17 @@ import android.os.StatFs;
 import android.preference.PreferenceManager;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.o;
-import com.tencent.mm.bc.t;
+import com.tencent.mm.bb.o;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -42,53 +42,53 @@ import java.util.Locale;
 public final class b
   implements c.a
 {
-  private static final String cLR;
-  private static final String cLS;
-  private static b gRd;
-  public static final String gRe;
-  public static List<String> gRn;
-  long[] cLU;
-  private long gQK;
-  public volatile boolean gQL;
-  public long gRf;
-  public long gRg;
-  public long gRh;
-  public long gRi;
-  private long gRj;
-  private long gRk;
-  private long gRl;
-  private long gRm;
+  private static final String cIZ;
+  private static final String cJa;
+  private static b hrD;
+  public static final String hrE;
+  public static List<String> hrN;
+  long[] cJc;
+  public long hrF;
+  public long hrG;
+  public long hrH;
+  public long hrI;
+  private long hrJ;
+  private long hrK;
+  private long hrL;
+  private long hrM;
+  private long hrk;
+  public volatile boolean hrl;
   private SharedPreferences sp;
   
   static
   {
     AppMethodBeat.i(20462);
-    String str = q.Xa();
-    cLR = str;
-    cLS = com.tencent.mm.b.p.getString(str.hashCode());
-    gRe = com.tencent.mm.loader.j.b.aib() + "/tencent/MicroMsg/SQLTrace/";
-    gRn = Arrays.asList(new String[] { "FTS5IndexMicroMsg_encrypt.db" });
+    String str = q.XX();
+    cIZ = str;
+    cJa = com.tencent.mm.b.p.getString(str.hashCode());
+    hrE = com.tencent.mm.loader.j.b.apN();
+    hrN = Arrays.asList(new String[] { "FTS5IndexMicroMsg_encrypt.db" });
     AppMethodBeat.o(20462);
   }
   
   public b()
   {
     AppMethodBeat.i(20441);
-    this.gQL = false;
-    this.cLU = new long[] { 0L, 0L, 0L };
-    this.gQK = 0L;
-    this.sp = aj.eFE();
-    atF();
+    this.hrl = false;
+    this.cJc = new long[] { 0L, 0L, 0L };
+    this.hrk = 0L;
+    this.sp = ai.eUY();
+    aAw();
     AppMethodBeat.o(20441);
   }
   
-  private static String KN()
+  private static String Ky()
   {
     AppMethodBeat.i(20451);
-    String str2 = ay.gNa.ao("login_weixin_username", "");
+    String str2 = ay.hnA.aw("login_weixin_username", "");
     String str1 = str2;
-    if (bt.isNullOrNil(str2)) {
-      str1 = ay.gNa.ao("login_user_name", "never_login_crash");
+    if (bs.isNullOrNil(str2)) {
+      str1 = ay.hnA.aw("login_user_name", "never_login_crash");
     }
     AppMethodBeat.o(20451);
     return str1;
@@ -112,7 +112,7 @@ public final class b
     AppMethodBeat.i(20448);
     if ((paramh == null) || (!paramh.isOpen()))
     {
-      ad.i("MicroMsg.SQLTraceManager", "db is not open!");
+      ac.i("MicroMsg.SQLTraceManager", "db is not open!");
       AppMethodBeat.o(20448);
       return;
     }
@@ -133,14 +133,14 @@ public final class b
       }
       paramList.close();
     }
-    ad.i("MicroMsg.SQLTraceManager", "dump all table count last %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ac.i("MicroMsg.SQLTraceManager", "dump all table count last %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     AppMethodBeat.o(20448);
   }
   
   private void a(com.tencent.mm.vfs.e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(169698);
-    ad.i("MicroMsg.SQLTraceManager", "build log file ,needRecreate %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.SQLTraceManager", "build log file ,needRecreate %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (parame.exists())
     {
       if (paramBoolean) {
@@ -161,57 +161,57 @@ public final class b
     AppMethodBeat.o(20449);
   }
   
-  private String atC()
+  private String aAt()
   {
     AppMethodBeat.i(20447);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
-    localPrintStream.println("#client.version=" + d.CpK);
+    localPrintStream.println("#client.version=" + d.DIc);
     localPrintStream.println("#accinfo.revision=" + com.tencent.mm.sdk.platformtools.h.REV);
-    localPrintStream.println("#accinfo.uin=" + ay.gNa.ao("last_login_uin", cLS));
-    localPrintStream.println("#accinfo.dev=" + cLR);
-    localPrintStream.println("#accinfo.build=" + com.tencent.mm.sdk.platformtools.h.TIME + ":" + com.tencent.mm.sdk.platformtools.h.HOSTNAME + ":" + com.tencent.mm.sdk.platformtools.i.cJR);
+    localPrintStream.println("#accinfo.uin=" + ay.hnA.aw("last_login_uin", cJa));
+    localPrintStream.println("#accinfo.dev=" + cIZ);
+    localPrintStream.println("#accinfo.build=" + com.tencent.mm.sdk.platformtools.h.TIME + ":" + com.tencent.mm.sdk.platformtools.h.HOSTNAME + ":" + com.tencent.mm.sdk.platformtools.i.cGY);
     try
     {
       localObject1 = new StatFs(com.tencent.mm.compatible.util.g.getDataDirectory().getPath());
-      Object localObject2 = new StatFs(com.tencent.mm.loader.j.b.aib());
-      localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)aj.getContext().getSystemService("activity")).getMemoryClass()), com.tencent.mm.compatible.util.g.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), com.tencent.mm.loader.j.b.aib(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
+      Object localObject2 = new StatFs(com.tencent.mm.loader.j.b.apb());
+      localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)ai.getContext().getSystemService("activity")).getMemoryClass()), com.tencent.mm.compatible.util.g.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), com.tencent.mm.loader.j.b.apb(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
       localPrintStream.println("#accinfo.data=".concat(String.valueOf(localObject1)));
       localObject1 = new Date();
       localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
       localPrintStream.println("#accinfo.uploadTime=" + ((SimpleDateFormat)localObject2).format((Date)localObject1));
-      long l1 = cp(aj.getContext());
+      long l1 = cy(ai.getContext());
       if (l1 > 0L) {
         localPrintStream.println("#logfile.autoAdapteTime :".concat(String.valueOf(l1)));
       }
-      if (co(aj.getContext()) != 0L)
+      if (cx(ai.getContext()) != 0L)
       {
-        long l2 = co(aj.getContext()) - cn(aj.getContext());
+        long l2 = cx(ai.getContext()) - cw(ai.getContext());
         localPrintStream.println("#logfile.fulllast :".concat(String.valueOf(l2)));
         if ((l2 > 0L) && (l2 < 28800000L))
         {
           l1 += 100L;
-          PreferenceManager.getDefaultSharedPreferences(aj.getContext()).edit().putLong("sql_trace_log_autoAdaptaTime", l1).commit();
-          ad.i("MicroMsg.SQLTraceManager", "auto Adapte Time to %d", new Object[] { Long.valueOf(l1) });
-          atF();
+          PreferenceManager.getDefaultSharedPreferences(ai.getContext()).edit().putLong("sql_trace_log_autoAdaptaTime", l1).commit();
+          ac.i("MicroMsg.SQLTraceManager", "auto Adapte Time to %d", new Object[] { Long.valueOf(l1) });
+          aAw();
         }
-        localObject1 = t.azY().oA(21);
+        localObject1 = t.aGO().po(21);
         if ((localObject1 != null) && (localObject1.length != 0) && (localObject1[0] != null)) {
           break label960;
         }
         localPrintStream.println("#traceconfig hardcode");
-        if (this.cLU[1] != -1L) {
-          localPrintStream.println("#wxpackage :cache size=" + this.cLU[0] + " data size= " + this.cLU[1] + " code size =" + this.cLU[2]);
+        if (this.cJc[1] != -1L) {
+          localPrintStream.println("#wxpackage :cache size=" + this.cJc[0] + " data size= " + this.cJc[1] + " code size =" + this.cJc[2]);
         }
         localObject1 = new StringBuilder("#dbsize : EnMicroMsg.db size=");
-        az.arV();
-        localPrintStream.println(new com.tencent.mm.vfs.e(c.afi()).length());
+        az.ayM();
+        localPrintStream.println(new com.tencent.mm.vfs.e(c.agy()).length());
         localObject1 = new StringBuilder("#dbsize : SnsMicroMsg.db size=");
         localObject2 = new StringBuilder();
-        az.arV();
-        localPrintStream.println(new com.tencent.mm.vfs.e(((StringBuilder)localObject2).append(c.aff()).append("SnsMicroMsg.db").toString()).length());
-        az.arV();
-        a(c.apK(), localPrintStream, Arrays.asList(new String[] { "message", "rconversation", "rcontact", "ImgInfo2", "BizInfo", "img_flag", "fmessage_conversation", "AppInfo", "AppMessage", "EmojiInfo", "EmojiGroupInfo", "bottleconversation", "bottlemessage", "chatroom", "rbottleconversation", "userinfo" }));
+        az.ayM();
+        localPrintStream.println(new com.tencent.mm.vfs.e(((StringBuilder)localObject2).append(c.agv()).append("SnsMicroMsg.db").toString()).length());
+        az.ayM();
+        a(c.awz(), localPrintStream, Arrays.asList(new String[] { "message", "rconversation", "rcontact", "ImgInfo2", "BizInfo", "img_flag", "fmessage_conversation", "AppInfo", "AppMessage", "EmojiInfo", "EmojiGroupInfo", "bottleconversation", "bottlemessage", "chatroom", "rbottleconversation", "userinfo" }));
         localPrintStream.println("#sql.content:");
         localObject1 = localByteArrayOutputStream.toString();
       }
@@ -229,10 +229,10 @@ public final class b
           AppMethodBeat.o(20447);
           return localObject1;
           localException1 = localException1;
-          ad.e("MicroMsg.SQLTraceManager", "check data size failed :%s", new Object[] { localException1.getMessage() });
+          ac.e("MicroMsg.SQLTraceManager", "check data size failed :%s", new Object[] { localException1.getMessage() });
           str = "";
           continue;
-          localPrintStream.println("#logfile.fullTimelast :" + (System.currentTimeMillis() - cn(aj.getContext())));
+          localPrintStream.println("#logfile.fullTimelast :" + (System.currentTimeMillis() - cw(ai.getContext())));
         }
         label960:
         localPrintStream.println("#traceconfig id=" + str[0].id + " version=" + str[0].version);
@@ -244,38 +244,38 @@ public final class b
     }
   }
   
-  public static b atE()
+  public static b aAv()
   {
     AppMethodBeat.i(20440);
-    if (gRd == null) {
-      gRd = new b();
+    if (hrD == null) {
+      hrD = new b();
     }
-    b localb = gRd;
+    b localb = hrD;
     AppMethodBeat.o(20440);
     return localb;
   }
   
-  private void atF()
+  private void aAw()
   {
     AppMethodBeat.i(20442);
-    this.gRf = this.sp.getLong("sql_trace_main_thread_select_interval_time", 300L);
-    this.gRg = this.sp.getLong("sql_trace_main_thread_update_interval_time", 500L);
-    this.gRh = this.sp.getLong("sql_trace_child_thread_interval_time", 1500L);
-    long l = cp(aj.getContext());
+    this.hrF = this.sp.getLong("sql_trace_main_thread_select_interval_time", 300L);
+    this.hrG = this.sp.getLong("sql_trace_main_thread_update_interval_time", 500L);
+    this.hrH = this.sp.getLong("sql_trace_child_thread_interval_time", 1500L);
+    long l = cy(ai.getContext());
     if (l > 0L)
     {
-      this.gRf += l;
-      this.gRg += l;
-      this.gRh += l;
-      ad.i("MicroMsg.SQLTraceManager", "auto adapte Time %d", new Object[] { Long.valueOf(l) });
+      this.hrF += l;
+      this.hrG += l;
+      this.hrH += l;
+      ac.i("MicroMsg.SQLTraceManager", "auto adapte Time %d", new Object[] { Long.valueOf(l) });
     }
-    this.gRi = this.sp.getLong("sql_trace_child_transaction_interval_time", 5000L);
-    this.gRm = this.sp.getLong("sql_trace_file_full_size", 30720L);
-    this.gRj = this.sp.getLong("sql_trace_log_file_max_size", 35840L);
-    this.gRk = this.sp.getLong("sql_trace_upload_file_min_size", 10240L);
-    this.gRl = this.sp.getLong("sql_upload_time_interval", 21600000L);
-    i(new com.tencent.mm.vfs.e(gRe, "MMSQL.trace"));
-    ad.i("MicroMsg.SQLTraceManager", "update arg %d %d %d %d %d %d %d %d", new Object[] { Long.valueOf(this.gRf), Long.valueOf(this.gRg), Long.valueOf(this.gRh), Long.valueOf(this.gRi), Long.valueOf(this.gRm), Long.valueOf(this.gRj), Long.valueOf(this.gRk), Long.valueOf(this.gRl) });
+    this.hrI = this.sp.getLong("sql_trace_child_transaction_interval_time", 5000L);
+    this.hrM = this.sp.getLong("sql_trace_file_full_size", 30720L);
+    this.hrJ = this.sp.getLong("sql_trace_log_file_max_size", 35840L);
+    this.hrK = this.sp.getLong("sql_trace_upload_file_min_size", 10240L);
+    this.hrL = this.sp.getLong("sql_upload_time_interval", 21600000L);
+    i(new com.tencent.mm.vfs.e(hrE, "MMSQL.trace"));
+    ac.i("MicroMsg.SQLTraceManager", "update arg %d %d %d %d %d %d %d %d", new Object[] { Long.valueOf(this.hrF), Long.valueOf(this.hrG), Long.valueOf(this.hrH), Long.valueOf(this.hrI), Long.valueOf(this.hrM), Long.valueOf(this.hrJ), Long.valueOf(this.hrK), Long.valueOf(this.hrL) });
     AppMethodBeat.o(20442);
   }
   
@@ -286,7 +286,7 @@ public final class b
     AppMethodBeat.o(20453);
   }
   
-  public static long cm(Context paramContext)
+  public static long cv(Context paramContext)
   {
     AppMethodBeat.i(20454);
     long l = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("sql_report_lastUploadTime", 0L);
@@ -294,7 +294,7 @@ public final class b
     return l;
   }
   
-  private static long cn(Context paramContext)
+  private static long cw(Context paramContext)
   {
     AppMethodBeat.i(20455);
     long l = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("sql_trace_log_file_create_time", 0L);
@@ -302,7 +302,7 @@ public final class b
     return l;
   }
   
-  private static long co(Context paramContext)
+  private static long cx(Context paramContext)
   {
     AppMethodBeat.i(20457);
     long l = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("sql_trace_log_file_full_time", 0L);
@@ -310,7 +310,7 @@ public final class b
     return l;
   }
   
-  private static long cp(Context paramContext)
+  private static long cy(Context paramContext)
   {
     AppMethodBeat.i(20458);
     long l = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("sql_trace_log_autoAdaptaTime", 0L);
@@ -339,14 +339,14 @@ public final class b
     if (parame.exists())
     {
       long l;
-      if (parame.length() > this.gRm)
+      if (parame.length() > this.hrM)
       {
         bool1 = true;
-        this.gQL = bool1;
-        if (!this.gQL) {
+        this.hrl = bool1;
+        if (!this.hrl) {
           break label115;
         }
-        l = co(aj.getContext());
+        l = cx(ai.getContext());
         if (l == 0L) {
           break label105;
         }
@@ -354,9 +354,9 @@ public final class b
       label105:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        ad.i("MicroMsg.SQLTraceManager", "has mark lastFullTime %b", new Object[] { Boolean.valueOf(bool1) });
+        ac.i("MicroMsg.SQLTraceManager", "has mark lastFullTime %b", new Object[] { Boolean.valueOf(bool1) });
         if (l == 0L) {
-          e(aj.getContext(), System.currentTimeMillis());
+          e(ai.getContext(), System.currentTimeMillis());
         }
         AppMethodBeat.o(169696);
         return;
@@ -366,7 +366,7 @@ public final class b
     }
     else
     {
-      this.gQL = false;
+      this.hrl = false;
     }
     label115:
     AppMethodBeat.o(169696);
@@ -378,14 +378,14 @@ public final class b
     try
     {
       parame.createNewFile();
-      d(aj.getContext(), System.currentTimeMillis());
-      e(aj.getContext(), 0L);
+      d(ai.getContext(), System.currentTimeMillis());
+      e(ai.getContext(), 0L);
       AppMethodBeat.o(169699);
       return;
     }
     catch (IOException parame)
     {
-      ad.e("MicroMsg.SQLTraceManager", "recreate log file fail");
+      ac.e("MicroMsg.SQLTraceManager", "recreate log file fail");
       AppMethodBeat.o(169699);
     }
   }
@@ -393,38 +393,38 @@ public final class b
   public static void setup()
   {
     AppMethodBeat.i(20443);
-    if (aj.EUA) {
-      ad.i("MicroMsg.SQLTraceManager", "trace setup delete old file ret: ".concat(String.valueOf(com.tencent.mm.vfs.i.deleteFile(gRe + "MMSQL.trace"))));
+    if (ai.GrM) {
+      ac.i("MicroMsg.SQLTraceManager", "trace setup delete old file ret: ".concat(String.valueOf(com.tencent.mm.vfs.i.deleteFile(hrE + "MMSQL.trace"))));
     }
     AppMethodBeat.o(20443);
   }
   
   /* Error */
-  public static String uP(String paramString)
+  public static String yV(String paramString)
   {
     // Byte code:
     //   0: sipush 20445
     //   3: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 265	com/tencent/mm/vfs/e
+    //   6: new 262	com/tencent/mm/vfs/e
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 488	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 487	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   14: astore_0
     //   15: aload_0
-    //   16: invokestatic 677	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   16: invokestatic 678	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   19: astore_0
     //   20: aload_0
-    //   21: invokevirtual 682	java/io/InputStream:available	()I
+    //   21: invokevirtual 683	java/io/InputStream:available	()I
     //   24: newarray byte
     //   26: astore_1
     //   27: aload_0
     //   28: aload_1
-    //   29: invokevirtual 686	java/io/InputStream:read	([B)I
+    //   29: invokevirtual 687	java/io/InputStream:read	([B)I
     //   32: pop
     //   33: new 55	java/lang/String
     //   36: dup
     //   37: aload_1
-    //   38: invokestatic 692	com/tencent/mm/ck/e:cz	([B)[B
+    //   38: invokestatic 692	com/tencent/mm/cj/e:cy	([B)[B
     //   41: invokespecial 695	java/lang/String:<init>	([B)V
     //   44: astore_1
     //   45: aload_0
@@ -432,16 +432,16 @@ public final class b
     //   49: aload_0
     //   50: invokevirtual 696	java/io/InputStream:close	()V
     //   53: sipush 20445
-    //   56: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: aload_1
     //   60: areturn
     //   61: astore_0
-    //   62: ldc 189
+    //   62: ldc 177
     //   64: aload_0
-    //   65: ldc 131
+    //   65: ldc 119
     //   67: iconst_0
     //   68: anewarray 4	java/lang/Object
-    //   71: invokestatic 700	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   71: invokestatic 700	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   74: goto -21 -> 53
     //   77: astore_0
     //   78: aconst_null
@@ -451,16 +451,16 @@ public final class b
     //   84: aload_0
     //   85: invokevirtual 696	java/io/InputStream:close	()V
     //   88: sipush 20445
-    //   91: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: aconst_null
     //   95: areturn
     //   96: astore_0
-    //   97: ldc 189
+    //   97: ldc 177
     //   99: aload_0
-    //   100: ldc 131
+    //   100: ldc 119
     //   102: iconst_0
     //   103: anewarray 4	java/lang/Object
-    //   106: invokestatic 700	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   106: invokestatic 700	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   109: goto -21 -> 88
     //   112: astore_1
     //   113: aconst_null
@@ -470,16 +470,16 @@ public final class b
     //   119: aload_0
     //   120: invokevirtual 696	java/io/InputStream:close	()V
     //   123: sipush 20445
-    //   126: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   129: aload_1
     //   130: athrow
     //   131: astore_0
-    //   132: ldc 189
+    //   132: ldc 177
     //   134: aload_0
-    //   135: ldc 131
+    //   135: ldc 119
     //   137: iconst_0
     //   138: anewarray 4	java/lang/Object
-    //   141: invokestatic 700	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   141: invokestatic 700	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   144: goto -21 -> 123
     //   147: astore_1
     //   148: goto -33 -> 115
@@ -503,22 +503,30 @@ public final class b
     //   20	45	151	java/io/IOException
   }
   
-  public final void aI(String paramString1, String paramString2)
+  public final void aAu()
+  {
+    AppMethodBeat.i(20459);
+    ac.i("MicroMsg.SQLTraceManager", "updateIntervalArg ");
+    aAw();
+    AppMethodBeat.o(20459);
+  }
+  
+  public final void aQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(169697);
-    if (!com.tencent.mm.compatible.util.e.XG())
+    if (!com.tencent.mm.compatible.util.e.YD())
     {
-      ad.i("MicroMsg.SQLTraceManager", "sdcard is not  Available,appendToFile fail ");
+      ac.i("MicroMsg.SQLTraceManager", "sdcard is not  Available,appendToFile fail ");
       AppMethodBeat.o(169697);
       return;
     }
     try
     {
-      localObject1 = new com.tencent.mm.vfs.e(gRe);
+      localObject1 = new com.tencent.mm.vfs.e(hrE);
       if (!((com.tencent.mm.vfs.e)localObject1).exists()) {
         ((com.tencent.mm.vfs.e)localObject1).mkdirs();
       }
-      a(new com.tencent.mm.vfs.e(gRe, "MMSQL.trace"), false);
+      a(new com.tencent.mm.vfs.e(hrE, "MMSQL.trace"), false);
     }
     catch (Exception localException)
     {
@@ -526,18 +534,18 @@ public final class b
       {
         try
         {
-          paramString1 = com.tencent.mm.vfs.i.cS(paramString1, true);
+          paramString1 = com.tencent.mm.vfs.i.cY(paramString1, true);
           Object localObject1 = paramString1;
           localObject2 = paramString1;
           paramString1.seek(paramString1.length());
           localObject1 = paramString1;
           localObject2 = paramString1;
-          paramString1.write(com.tencent.mm.ck.e.cz(paramString2.getBytes()));
+          paramString1.write(com.tencent.mm.cj.e.cy(paramString2.getBytes()));
         }
         catch (IOException paramString1)
         {
           localObject2 = localException;
-          ad.printErrStackTrace("MicroMsg.SQLTraceManager", paramString1, "appendToFile fail with exception", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SQLTraceManager", paramString1, "appendToFile fail with exception", new Object[0]);
           if (localException == null) {
             continue;
           }
@@ -547,7 +555,7 @@ public final class b
           }
           catch (Exception paramString1)
           {
-            ad.printErrStackTrace("MicroMsg.SQLTraceManager", paramString1, "appendToFile fail with exception", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.SQLTraceManager", paramString1, "appendToFile fail with exception", new Object[0]);
           }
           continue;
         }
@@ -560,22 +568,22 @@ public final class b
         try
         {
           paramString1.close();
-          i(new com.tencent.mm.vfs.e(gRe + "MMSQL.trace"));
+          i(new com.tencent.mm.vfs.e(hrE + "MMSQL.trace"));
           AppMethodBeat.o(169697);
           return;
           localException = localException;
-          ad.e("MicroMsg.SQLTraceManager", "init dir fail");
+          ac.e("MicroMsg.SQLTraceManager", "init dir fail");
         }
         catch (Exception paramString1)
         {
-          ad.printErrStackTrace("MicroMsg.SQLTraceManager", paramString1, "appendToFile fail with exception", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SQLTraceManager", paramString1, "appendToFile fail with exception", new Object[0]);
         }
       }
     }
     localObject1 = new com.tencent.mm.vfs.e(paramString1);
-    if (((com.tencent.mm.vfs.e)localObject1).length() > this.gRj)
+    if (((com.tencent.mm.vfs.e)localObject1).length() > this.hrJ)
     {
-      ad.e("MicroMsg.SQLTraceManager", "log file invaild foramt,recreate");
+      ac.e("MicroMsg.SQLTraceManager", "log file invaild foramt,recreate");
       a((com.tencent.mm.vfs.e)localObject1, true);
     }
     Object localObject2 = null;
@@ -591,20 +599,12 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.SQLTraceManager", paramString2, "appendToFile fail with exception", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SQLTraceManager", paramString2, "appendToFile fail with exception", new Object[0]);
       }
     }
   }
   
-  public final void atD()
-  {
-    AppMethodBeat.i(20459);
-    ad.i("MicroMsg.SQLTraceManager", "updateIntervalArg ");
-    atF();
-    AppMethodBeat.o(20459);
-  }
-  
-  public final void uR(String paramString)
+  public final void yX(String paramString)
   {
     AppMethodBeat.i(20450);
     String str = paramString;
@@ -612,19 +612,19 @@ public final class b
       str = "";
     }
     paramString = new Intent();
-    paramString.setClassName(aj.getPackageName(), "com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver");
+    paramString.setClassName(ai.getPackageName(), "com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver");
     paramString.setAction("uncatch_exception");
     paramString.putExtra("exceptionPid", Process.myPid());
-    paramString.putExtra("userName", KN());
+    paramString.putExtra("userName", Ky());
     paramString.putExtra("tag", "SqlTrace");
-    paramString.putExtra("exceptionMsg", Base64.encodeToString((atC() + str).getBytes(), 2));
-    aj.getContext().sendBroadcast(paramString);
+    paramString.putExtra("exceptionMsg", Base64.encodeToString((aAt() + str).getBytes(), 2));
+    ai.getContext().sendBroadcast(paramString);
     AppMethodBeat.o(20450);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.d.b
  * JD-Core Version:    0.7.0.1
  */

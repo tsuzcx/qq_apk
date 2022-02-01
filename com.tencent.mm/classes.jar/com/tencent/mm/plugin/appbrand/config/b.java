@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"})
 public final class b
 {
-  public static final b jce;
+  public static final b jCr;
   
   static
   {
     AppMethodBeat.i(135557);
-    jce = new b();
+    jCr = new b();
     AppMethodBeat.o(135557);
   }
   
@@ -26,7 +26,7 @@ public final class b
     AppMethodBeat.i(135556);
     k.h(paramString, "appId");
     k.h(paramJSONObject, "injectConfig");
-    long l1 = bt.eGO();
+    long l1 = bs.eWj();
     Object localObject = paramJSONObject.optJSONObject("tabBar");
     int k;
     int i;
@@ -72,8 +72,8 @@ public final class b
       paramJSONObject.remove("page");
       paramJSONObject.remove("preloadRule");
     }
-    long l2 = bt.eGO();
-    ad.d("Luggage.WXA.AppBrandAppConfigTrimHelper", "trimOffInjectConfigFields appId[" + paramString + "] cost[" + (l2 - l1) + "ms]");
+    long l2 = bs.eWj();
+    ac.d("Luggage.WXA.AppBrandAppConfigTrimHelper", "trimOffInjectConfigFields appId[" + paramString + "] cost[" + (l2 - l1) + "ms]");
     AppMethodBeat.o(135556);
   }
 }

@@ -6,43 +6,43 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class a
   implements b
 {
-  public final boolean bJs()
+  public final boolean bQF()
   {
     AppMethodBeat.i(112904);
-    boolean bool = l.bML();
+    boolean bool = l.bTW();
     AppMethodBeat.o(112904);
     return bool;
   }
   
-  public final boolean bJt()
+  public final boolean bQG()
   {
     AppMethodBeat.i(112905);
-    boolean bool = l.bMN();
+    boolean bool = l.bTY();
     AppMethodBeat.o(112905);
     return bool;
   }
   
-  public final String bJu()
+  public final String bQH()
   {
     AppMethodBeat.i(112906);
-    String str = (String)g.afB().afk().get(ae.a.Fho, null);
+    String str = (String)g.agR().agA().get(ah.a.GFd, null);
     AppMethodBeat.o(112906);
     return str;
   }
   
-  public final int bJv()
+  public final int bQI()
   {
     int j = 0;
     int i = 0;
     AppMethodBeat.i(112907);
-    Object localObject1 = am.bIV();
+    Object localObject1 = am.bQi();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(" where (status=0 OR status=5) and (block_mask= '1' OR block_mask= '0' )");
     localObject2 = "select count(*) from UserCardInfo" + ((StringBuilder)localObject2).toString();
@@ -50,7 +50,7 @@ public final class a
     if (localObject1 == null) {}
     for (;;)
     {
-      ad.i("MicroMsg.CardMgrImpl", "getGiftCardCount:".concat(String.valueOf(i)));
+      ac.i("MicroMsg.CardMgrImpl", "getGiftCardCount:".concat(String.valueOf(i)));
       AppMethodBeat.o(112907);
       return i;
       i = j;
@@ -61,17 +61,17 @@ public final class a
     }
   }
   
-  public final boolean yQ(int paramInt)
+  public final boolean zG(int paramInt)
   {
     AppMethodBeat.i(112908);
-    boolean bool = l.yQ(paramInt);
+    boolean bool = l.zG(paramInt);
     AppMethodBeat.o(112908);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.c.a
  * JD-Core Version:    0.7.0.1
  */

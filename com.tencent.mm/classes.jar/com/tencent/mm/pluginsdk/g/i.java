@@ -14,57 +14,41 @@ import com.tencent.mm.d.b;
 import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.pluginsdk.model.app.r;
 import com.tencent.mm.protocal.o;
-import com.tencent.mm.protocal.protobuf.dbz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dhl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import java.util.List;
 
 public final class i
 {
-  private static final long[] BRK = { 0L, 259200000L, 604800000L };
-  private static String syP = "tinker-boots-install-info";
-  private static String syQ = "tinker-boots-last-show";
-  private static String syR = "tinker-boots-show-time";
-  private static String syS = "";
+  private static final long[] Dka = { 0L, 259200000L, 604800000L };
+  private static String tGA = "tinker-boots-last-show";
+  private static String tGB = "tinker-boots-show-time";
+  private static String tGC = "";
+  private static String tGz = "tinker-boots-install-info";
   
-  public static void aG(Context paramContext, String paramString)
+  public static void aH(Context paramContext, String paramString)
   {
     AppMethodBeat.i(31145);
     r.b(paramContext, paramString, null, false);
     AppMethodBeat.o(31145);
   }
   
-  public static String ewe()
-  {
-    AppMethodBeat.i(31139);
-    String str = aj.getContext().getSharedPreferences("update_config_prefs", g.XN()).getString("update_downloaded_pack_md5_key", null);
-    AppMethodBeat.o(31139);
-    return str;
-  }
-  
-  public static int ewf()
-  {
-    AppMethodBeat.i(31140);
-    int i = aj.getContext().getSharedPreferences("update_config_prefs", g.XN()).getInt("update_downloaded_pack_update_type", 3);
-    AppMethodBeat.o(31140);
-    return i;
-  }
-  
-  public static boolean ewg()
+  public static boolean eLA()
   {
     AppMethodBeat.i(31141);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("update_config_prefs", g.XN());
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("update_config_prefs", g.YK());
     long l1 = localSharedPreferences.getLong("update_downloaded_cancel_ts", 0L);
     int i = localSharedPreferences.getInt("update_downloaded_cancel_times", 0);
-    ad.i("MicroMsg.UpdateUtil", "checkIgnoreDownloadedPack last: %s times: %s", new Object[] { Long.valueOf(l1), Integer.valueOf(i) });
-    if (i > BRK.length - 1)
+    ac.i("MicroMsg.UpdateUtil", "checkIgnoreDownloadedPack last: %s times: %s", new Object[] { Long.valueOf(l1), Integer.valueOf(i) });
+    if (i > Dka.length - 1)
     {
       AppMethodBeat.o(31141);
       return true;
     }
-    long l2 = BRK[i];
+    long l2 = Dka[i];
     if (System.currentTimeMillis() - l1 > l2)
     {
       AppMethodBeat.o(31141);
@@ -72,9 +56,9 @@ public final class i
     }
     if (System.currentTimeMillis() - l1 < 0L)
     {
-      ad.e("MicroMsg.UpdateUtil", "user modify mobile time. we just remove the config.");
-      aj.getContext().getSharedPreferences("update_config_prefs", g.XN()).edit().clear().commit();
-      ad.i("MicroMsg.UpdateUtil", "clearUpdateConfigPrefs");
+      ac.e("MicroMsg.UpdateUtil", "user modify mobile time. we just remove the config.");
+      ai.getContext().getSharedPreferences("update_config_prefs", g.YK()).edit().clear().commit();
+      ac.i("MicroMsg.UpdateUtil", "clearUpdateConfigPrefs");
       AppMethodBeat.o(31141);
       return true;
     }
@@ -82,13 +66,13 @@ public final class i
     return true;
   }
   
-  public static boolean ewh()
+  public static boolean eLB()
   {
     AppMethodBeat.i(31142);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("update_config_prefs", g.XN());
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("update_config_prefs", g.YK());
     long l = localSharedPreferences.getLong("update_downloading_in_silence", 0L);
     boolean bool = localSharedPreferences.getBoolean("update_download_start_one_immediate", false);
-    ad.i("MicroMsg.UpdateUtil", "hasUnfinishDownloadingInSilence unfinish %s", new Object[] { Long.valueOf(l) });
+    ac.i("MicroMsg.UpdateUtil", "hasUnfinishDownloadingInSilence unfinish %s", new Object[] { Long.valueOf(l) });
     if ((bool) || ((l != 0L) && (System.currentTimeMillis() - l > 3600000L)))
     {
       AppMethodBeat.o(31142);
@@ -98,23 +82,23 @@ public final class i
     return false;
   }
   
-  public static dbz ewi()
+  public static dhl eLC()
   {
     AppMethodBeat.i(31146);
-    Object localObject2 = aj.getContext().getSharedPreferences("tinker_patch_share_config", g.XN()).getString(syP, "");
-    if (!bt.isNullOrNil((String)localObject2)) {}
+    Object localObject2 = ai.getContext().getSharedPreferences("tinker_patch_share_config", g.YK()).getString(tGz, "");
+    if (!bs.isNullOrNil((String)localObject2)) {}
     for (;;)
     {
       try
       {
-        localObject1 = new dbz();
-        ad.printErrStackTrace("MicroMsg.UpdateUtil", localException1, "parse tinker install failed.", new Object[0]);
+        localObject1 = new dhl();
+        ac.printErrStackTrace("MicroMsg.UpdateUtil", localException1, "parse tinker install failed.", new Object[0]);
       }
       catch (Exception localException1)
       {
         try
         {
-          localObject2 = (dbz)((dbz)localObject1).parseFrom(Base64.decode((String)localObject2, 0));
+          localObject2 = (dhl)((dhl)localObject1).parseFrom(Base64.decode((String)localObject2, 0));
           localObject1 = localObject2;
           if (localObject1 == null) {
             break label88;
@@ -132,21 +116,21 @@ public final class i
       label73:
       continue;
       label88:
-      ad.i("MicroMsg.UpdateUtil", "update info is null.");
+      ac.i("MicroMsg.UpdateUtil", "update info is null.");
       AppMethodBeat.o(31146);
       return null;
       Object localObject1 = null;
     }
   }
   
-  public static boolean ewj()
+  public static boolean eLD()
   {
     AppMethodBeat.i(31147);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("tinker_patch_share_config", g.XN());
-    long l1 = localSharedPreferences.getLong(syQ, 0L);
-    int i = localSharedPreferences.getInt(syR, 0);
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("tinker_patch_share_config", g.YK());
+    long l1 = localSharedPreferences.getLong(tGA, 0L);
+    int i = localSharedPreferences.getInt(tGB, 0);
     long l2 = System.currentTimeMillis();
-    ad.d("MicroMsg.UpdateUtil", "isNeedShowTinkerDialog now:%d last:%d time:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
+    ac.d("MicroMsg.UpdateUtil", "isNeedShowTinkerDialog now:%d last:%d time:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(i) });
     if ((l2 - l1 > 21600000L) && (i < 3))
     {
       AppMethodBeat.o(31147);
@@ -156,17 +140,33 @@ public final class i
     return false;
   }
   
-  public static void ewk()
+  public static void eLE()
   {
     AppMethodBeat.i(31148);
-    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("tinker_patch_share_config", g.XN());
-    localSharedPreferences.edit().putLong(syQ, System.currentTimeMillis()).apply();
-    int i = localSharedPreferences.getInt(syR, 0);
-    localSharedPreferences.edit().putInt(syR, i + 1).apply();
+    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("tinker_patch_share_config", g.YK());
+    localSharedPreferences.edit().putLong(tGA, System.currentTimeMillis()).apply();
+    int i = localSharedPreferences.getInt(tGB, 0);
+    localSharedPreferences.edit().putInt(tGB, i + 1).apply();
     AppMethodBeat.o(31148);
   }
   
-  public static String fm(Context paramContext)
+  public static String eLy()
+  {
+    AppMethodBeat.i(31139);
+    String str = ai.getContext().getSharedPreferences("update_config_prefs", g.YK()).getString("update_downloaded_pack_md5_key", null);
+    AppMethodBeat.o(31139);
+    return str;
+  }
+  
+  public static int eLz()
+  {
+    AppMethodBeat.i(31140);
+    int i = ai.getContext().getSharedPreferences("update_config_prefs", g.YK()).getInt("update_downloaded_pack_update_type", 3);
+    AppMethodBeat.o(31140);
+    return i;
+  }
+  
+  public static String fz(Context paramContext)
   {
     AppMethodBeat.i(31144);
     try
@@ -177,7 +177,7 @@ public final class i
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.UpdateUtil", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.UpdateUtil", paramContext, "", new Object[0]);
       AppMethodBeat.o(31144);
     }
     return null;
@@ -187,22 +187,22 @@ public final class i
   {
     int i = 0;
     AppMethodBeat.i(31149);
-    if ((ab.hVl != null) && (ab.hVl.length() > 0))
+    if ((ab.ivp != null) && (ab.ivp.length() > 0))
     {
-      localObject = ab.hVl;
+      localObject = ab.ivp;
       AppMethodBeat.o(31149);
       return new String[] { localObject };
     }
-    Object localObject = aj.getContext().getSharedPreferences("system_config_prefs", 0).getString("builtin_short_ips", "");
+    Object localObject = ai.getContext().getSharedPreferences("system_config_prefs", 0).getString("builtin_short_ips", "");
     if ((localObject != null) && (((String)localObject).length() > 0)) {}
     String[] arrayOfString;
     for (;;)
     {
-      localObject = o.aDj((String)localObject);
+      localObject = o.aIA((String)localObject);
       arrayOfString = new String[((List)localObject).size()];
       while (i < ((List)localObject).size())
       {
-        arrayOfString[i] = ((o)((List)localObject).get(i)).sOr;
+        arrayOfString[i] = ((o)((List)localObject).get(i)).tWE;
         i += 1;
       }
       localObject = "0,112.64.200.240,80|0,180.153.82.27,80|0,117.135.130.177,80";
@@ -211,30 +211,30 @@ public final class i
     return arrayOfString;
   }
   
-  public static String hg(Context paramContext)
+  public static String hr(Context paramContext)
   {
     AppMethodBeat.i(31143);
-    paramContext = fm(paramContext);
+    paramContext = fz(paramContext);
     if ((paramContext == null) || (!new e(paramContext).exists()))
     {
       AppMethodBeat.o(31143);
       return null;
     }
-    a locala = a.el(paramContext);
-    if ((locala != null) && (locala.cJO != null))
+    a locala = a.ea(paramContext);
+    if ((locala != null) && (locala.cGV != null))
     {
-      paramContext = locala.cJO.apkMd5;
+      paramContext = locala.cGV.apkMd5;
       AppMethodBeat.o(31143);
       return paramContext;
     }
-    paramContext = com.tencent.mm.vfs.i.aEN(paramContext);
+    paramContext = com.tencent.mm.vfs.i.aKe(paramContext);
     AppMethodBeat.o(31143);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.i
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.b.h;
 import com.tencent.mm.plugin.remittance.a.c;
-import com.tencent.mm.plugin.remittance.model.ac;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.List;
@@ -36,41 +34,10 @@ public class RemittanceResultOldUI
 {
   private int mPayScene;
   private String mReceiverName;
-  private Orders vIq;
-  private boolean vIr;
+  private Orders wSu;
+  private boolean wSv;
   
-  private void dkA()
-  {
-    AppMethodBeat.i(68311);
-    getProcess().b(this, getInput());
-    new ap().postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(68306);
-        if ((RemittanceResultOldUI.c(RemittanceResultOldUI.this) == 33) || (RemittanceResultOldUI.c(RemittanceResultOldUI.this) == 32))
-        {
-          RemittanceResultOldUI.this.finish();
-          AppMethodBeat.o(68306);
-          return;
-        }
-        if ((!bt.isNullOrNil(RemittanceResultOldUI.d(RemittanceResultOldUI.this))) && (!RemittanceResultOldUI.e(RemittanceResultOldUI.this)))
-        {
-          Intent localIntent = new Intent();
-          localIntent.putExtra("Chat_User", RemittanceResultOldUI.d(RemittanceResultOldUI.this));
-          localIntent.putExtra("finish_direct", false);
-          com.tencent.mm.bs.d.e(RemittanceResultOldUI.this, ".ui.chatting.ChattingUI", localIntent);
-          AppMethodBeat.o(68306);
-          return;
-        }
-        RemittanceResultOldUI.this.finish();
-        AppMethodBeat.o(68306);
-      }
-    }, 100L);
-    AppMethodBeat.o(68311);
-  }
-  
-  private void dkz()
+  private void dyB()
   {
     AppMethodBeat.i(68310);
     if (getInput().containsKey("key_realname_guide_helper"))
@@ -95,11 +62,42 @@ public class RemittanceResultOldUI
       AppMethodBeat.o(68310);
       return;
     }
-    dkA();
+    dyC();
     AppMethodBeat.o(68310);
   }
   
-  protected final boolean dkB()
+  private void dyC()
+  {
+    AppMethodBeat.i(68311);
+    getProcess().b(this, getInput());
+    new ao().postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(68306);
+        if ((RemittanceResultOldUI.c(RemittanceResultOldUI.this) == 33) || (RemittanceResultOldUI.c(RemittanceResultOldUI.this) == 32))
+        {
+          RemittanceResultOldUI.this.finish();
+          AppMethodBeat.o(68306);
+          return;
+        }
+        if ((!bs.isNullOrNil(RemittanceResultOldUI.d(RemittanceResultOldUI.this))) && (!RemittanceResultOldUI.e(RemittanceResultOldUI.this)))
+        {
+          Intent localIntent = new Intent();
+          localIntent.putExtra("Chat_User", RemittanceResultOldUI.d(RemittanceResultOldUI.this));
+          localIntent.putExtra("finish_direct", false);
+          com.tencent.mm.br.d.e(RemittanceResultOldUI.this, ".ui.chatting.ChattingUI", localIntent);
+          AppMethodBeat.o(68306);
+          return;
+        }
+        RemittanceResultOldUI.this.finish();
+        AppMethodBeat.o(68306);
+      }
+    }, 100L);
+    AppMethodBeat.o(68311);
+  }
+  
+  protected final boolean dyD()
   {
     return false;
   }
@@ -118,32 +116,32 @@ public class RemittanceResultOldUI
     showHomeBtn(false);
     enableBackMenu(false);
     Object localObject1 = (TextView)findViewById(2131304070);
-    if (this.vIq != null) {
-      ((TextView)localObject1).setText(e.d(this.vIq.dcH, this.vIq.uop));
+    if (this.wSu != null) {
+      ((TextView)localObject1).setText(e.d(this.wSu.daf, this.wSu.vxl));
     }
     Object localObject3 = (PayInfo)getInput().getParcelable("key_pay_info");
     if (localObject3 == null)
     {
-      ad.e("MicroMsg.RemittanceResultOldUI", "payInfo is null!!!");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.RemittanceResultOldUI", "payInfo is null!!!");
       finish();
       AppMethodBeat.o(68309);
       return;
     }
     localObject1 = "";
-    if (((PayInfo)localObject3).Cos != null)
+    if (((PayInfo)localObject3).hbR != null)
     {
-      this.vIr = ((PayInfo)localObject3).Cos.getBoolean("extinfo_key_4");
-      localObject1 = ((PayInfo)localObject3).Cos.getString("extinfo_key_1");
+      this.wSv = ((PayInfo)localObject3).hbR.getBoolean("extinfo_key_4");
+      localObject1 = ((PayInfo)localObject3).hbR.getString("extinfo_key_1");
     }
-    int i = ((PayInfo)localObject3).dtb;
+    int i = ((PayInfo)localObject3).dqL;
     this.mPayScene = i;
     this.mReceiverName = ((String)localObject1);
-    Object localObject2 = e.sh((String)localObject1);
+    Object localObject2 = e.wk((String)localObject1);
     if (i == 31)
     {
       localObject1 = (TextView)findViewById(2131304072);
       localObject2 = getString(2131762525, new Object[] { localObject2 });
-      if (!bt.isNullOrNil((String)localObject2))
+      if (!bs.isNullOrNil((String)localObject2))
       {
         ((TextView)localObject1).setText(k.b(this, (CharSequence)localObject2, ((TextView)localObject1).getTextSize()));
         ((TextView)localObject1).setVisibility(0);
@@ -151,9 +149,9 @@ public class RemittanceResultOldUI
       for (;;)
       {
         findViewById(2131304063).setVisibility(8);
-        if (this.vIq.vAF > 0.0D)
+        if (this.wSu.wKK > 0.0D)
         {
-          localObject1 = getResources().getString(2131762523, new Object[] { e.d(this.vIq.vAF, this.vIq.uop) });
+          localObject1 = getResources().getString(2131762523, new Object[] { e.d(this.wSu.wKK, this.wSu.vxl) });
           ((TextView)findViewById(2131297953)).setText((CharSequence)localObject1);
           findViewById(2131297954).setVisibility(0);
         }
@@ -173,13 +171,13 @@ public class RemittanceResultOldUI
       }
     }
     localObject1 = "";
-    if (((PayInfo)localObject3).Cos != null) {
-      localObject1 = ((PayInfo)localObject3).Cos.getString("extinfo_key_2");
+    if (((PayInfo)localObject3).hbR != null) {
+      localObject1 = ((PayInfo)localObject3).hbR.getString("extinfo_key_2");
     }
     if ((i != 32) && (i != 33)) {
-      if (!bt.isNullOrNil((String)localObject1))
+      if (!bs.isNullOrNil((String)localObject1))
       {
-        localObject1 = e.aNf((String)localObject1);
+        localObject1 = e.aSI((String)localObject1);
         localObject1 = (String)localObject2 + "（" + (String)localObject1 + "）";
       }
     }
@@ -190,7 +188,7 @@ public class RemittanceResultOldUI
       label509:
       TextView localTextView;
       String str1;
-      if (!bt.isNullOrNil((String)localObject1))
+      if (!bs.isNullOrNil((String)localObject1))
       {
         ((TextView)localObject2).setText(k.b(this, getString(2131762524, new Object[] { localObject1 }), ((TextView)localObject2).getTextSize()));
         ((TextView)localObject2).setVisibility(0);
@@ -200,14 +198,14 @@ public class RemittanceResultOldUI
         localObject1 = findViewById(2131304068);
         localObject2 = (TextView)findViewById(2131304069);
         localTextView = (TextView)findViewById(2131304067);
-        str1 = ((PayInfo)localObject3).Cos.getString("extinfo_key_3");
-        String str2 = ((PayInfo)localObject3).Cos.getString("extinfo_key_8");
-        if (bt.isNullOrNil(str1)) {
+        str1 = ((PayInfo)localObject3).hbR.getString("extinfo_key_3");
+        String str2 = ((PayInfo)localObject3).hbR.getString("extinfo_key_8");
+        if (bs.isNullOrNil(str1)) {
           break label806;
         }
         localTextView.setText(k.b(this, str1, localTextView.getTextSize()));
         ((View)localObject1).setVisibility(0);
-        if (bt.isNullOrNil(str2)) {
+        if (bs.isNullOrNil(str2)) {
           break label913;
         }
         ((TextView)localObject2).setText(str2);
@@ -219,14 +217,14 @@ public class RemittanceResultOldUI
         localObject1 = findViewById(2131304065);
         localObject2 = (TextView)findViewById(2131304066);
         localTextView = (TextView)findViewById(2131304064);
-        str1 = ((PayInfo)localObject3).Cos.getString("extinfo_key_6");
-        localObject3 = ((PayInfo)localObject3).Cos.getString("extinfo_key_7");
-        if (!bt.isNullOrNil((String)localObject3))
+        str1 = ((PayInfo)localObject3).hbR.getString("extinfo_key_6");
+        localObject3 = ((PayInfo)localObject3).hbR.getString("extinfo_key_7");
+        if (!bs.isNullOrNil((String)localObject3))
         {
           localTextView.setText(k.b(this, (CharSequence)localObject3, localTextView.getTextSize()));
           localTextView.setVisibility(0);
           j = k;
-          if (!bt.isNullOrNil(str1)) {
+          if (!bs.isNullOrNil(str1)) {
             ((TextView)localObject2).setText(k.b(this, str1, ((TextView)localObject2).getTextSize()));
           }
         }
@@ -250,10 +248,10 @@ public class RemittanceResultOldUI
         label828:
         break;
         label830:
-        if ((i != 5) || (this.vIq.Afx == null) || (this.vIq.Afx.get(0) == null) || (TextUtils.isEmpty(((Orders.Commodity)this.vIq.Afx.get(0)).uoe))) {
+        if ((i != 5) || (this.wSu.BxR == null) || (this.wSu.BxR.get(0) == null) || (TextUtils.isEmpty(((Orders.Commodity)this.wSu.BxR.get(0)).vxa))) {
           break;
         }
-        ((TextView)localObject2).setText(((Orders.Commodity)this.vIq.Afx.get(0)).uoe);
+        ((TextView)localObject2).setText(((Orders.Commodity)this.wSu.BxR.get(0)).vxa);
         break;
         label913:
         i = 1;
@@ -266,16 +264,16 @@ public class RemittanceResultOldUI
   {
     AppMethodBeat.i(68307);
     super.onCreate(paramBundle);
-    this.vIq = ((Orders)getInput().getParcelable("key_orders"));
+    this.wSu = ((Orders)getInput().getParcelable("key_orders"));
     initView();
     if (this.mPayScene == 31)
     {
       paramBundle = "";
-      if (this.vIq.Afx.size() > 0) {
-        paramBundle = ((Orders.Commodity)this.vIq.Afx.get(0)).dcF;
+      if (this.wSu.BxR.size() > 0) {
+        paramBundle = ((Orders.Commodity)this.wSu.BxR.get(0)).dad;
       }
-      ad.i("MicroMsg.RemittanceResultOldUI", "transId: %s", new Object[] { paramBundle });
-      c.djj().djm().io(paramBundle, this.mReceiverName);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.RemittanceResultOldUI", "transId: %s", new Object[] { paramBundle });
+      c.dxj().dxm().iI(paramBundle, this.mReceiverName);
     }
     AppMethodBeat.o(68307);
   }
@@ -284,7 +282,7 @@ public class RemittanceResultOldUI
   {
     AppMethodBeat.i(68308);
     if (paramInt == 4) {
-      dkz();
+      dyB();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(68308);

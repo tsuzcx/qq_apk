@@ -18,21 +18,21 @@ import java.net.HttpURLConnection;
 final class b
   implements com.tencent.mm.toolkit.a.a.c
 {
-  private final a FEs;
+  private final a Hdv;
   private Context mContext;
   
   b(a parama)
   {
-    this.FEs = parama;
+    this.Hdv = parama;
   }
   
   private static int a(byte[] paramArrayOfByte, InputStream paramInputStream)
   {
-    AppMethodBeat.i(189800);
+    AppMethodBeat.i(193021);
     try
     {
       int i = paramInputStream.read(paramArrayOfByte);
-      AppMethodBeat.o(189800);
+      AppMethodBeat.o(193021);
       return i;
     }
     catch (IOException paramArrayOfByte)
@@ -40,24 +40,24 @@ final class b
       boolean bool = e.DEBUG;
       if ("unexpected end of stream".equals(paramArrayOfByte.getMessage()))
       {
-        AppMethodBeat.o(189800);
+        AppMethodBeat.o(193021);
         return -1;
       }
-      AppMethodBeat.o(189800);
+      AppMethodBeat.o(193021);
     }
     return -2147483648;
   }
   
   private static void a(c paramc, InputStream paramInputStream, OutputStream paramOutputStream, FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(189799);
+    AppMethodBeat.i(193020);
     paramc.mState = 2012;
     byte[] arrayOfByte = new byte[4096];
     long l = paramc.mContentLength;
     if (e.DEBUG)
     {
       new StringBuilder("Start transfer data, content length = ").append(l).append(", id = ").append(paramc.mId);
-      e.eOC();
+      e.feg();
     }
     for (;;)
     {
@@ -66,24 +66,24 @@ final class b
         if (e.DEBUG)
         {
           new StringBuilder("Stopping the download as Download Request is cancelled, id ").append(paramc.mId);
-          e.eOC();
+          e.feg();
         }
         paramc = new com.tencent.mm.toolkit.a.a.a(1201, "Download cancelled");
-        AppMethodBeat.o(189799);
+        AppMethodBeat.o(193020);
         throw paramc;
       }
       int i = a(arrayOfByte, paramInputStream);
-      l = paramc.FEC;
+      l = paramc.HdF;
       System.currentTimeMillis();
       if (i == -1)
       {
         paramc.mState = 2020;
         try
         {
-          if (!paramc.FEw.renameTo(paramc.FEx))
+          if (!paramc.Hdz.renameTo(paramc.HdA))
           {
             paramc = new com.tencent.mm.toolkit.a.a.a(1001, "Cannot rename intermediate file to dest file!");
-            AppMethodBeat.o(189799);
+            AppMethodBeat.o(193020);
             throw paramc;
           }
         }
@@ -91,42 +91,42 @@ final class b
         {
           boolean bool = e.DEBUG;
           paramc = new com.tencent.mm.toolkit.a.a.a(paramc.mErrorCode, paramc.getLocalizedMessage());
-          AppMethodBeat.o(189799);
+          AppMethodBeat.o(193020);
           throw paramc;
         }
-        if (paramc.FEG != null) {
-          paramc.FEG.d(paramc);
+        if (paramc.HdJ != null) {
+          paramc.HdJ.d(paramc);
         }
-        paramInputStream = paramc.FEI;
+        paramInputStream = paramc.HdL;
         if (paramInputStream != null) {
           paramInputStream.a(paramc);
         }
         paramc.finish();
-        AppMethodBeat.o(189799);
+        AppMethodBeat.o(193020);
         return;
       }
       if (i == -2147483648)
       {
         paramc = new com.tencent.mm.toolkit.a.a.a(1102, "Failed reading http response");
-        AppMethodBeat.o(189799);
+        AppMethodBeat.o(193020);
         throw paramc;
       }
       if (!a(arrayOfByte, i, paramOutputStream, paramFileDescriptor)) {
         break;
       }
-      paramc.FEC = (l + i);
+      paramc.HdF = (l + i);
     }
     paramc = new com.tencent.mm.toolkit.a.a.a(1001, "Failed writing file");
-    AppMethodBeat.o(189799);
+    AppMethodBeat.o(193020);
     throw paramc;
   }
   
   private static boolean a(c paramc, File paramFile)
   {
-    AppMethodBeat.i(189798);
-    if ((paramc.FEA) && (paramFile.exists()))
+    AppMethodBeat.i(193019);
+    if ((paramc.HdD) && (paramFile.exists()))
     {
-      AppMethodBeat.o(189798);
+      AppMethodBeat.o(193019);
       return true;
     }
     try
@@ -135,29 +135,29 @@ final class b
         paramFile.getParentFile().mkdirs();
       }
       bool = paramFile.createNewFile();
-      AppMethodBeat.o(189798);
+      AppMethodBeat.o(193019);
       return bool;
     }
     catch (IOException paramc)
     {
       boolean bool = e.DEBUG;
-      AppMethodBeat.o(189798);
+      AppMethodBeat.o(193019);
     }
     return false;
   }
   
   private static boolean a(c paramc, HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(189797);
+    AppMethodBeat.i(193018);
     if (paramc.mContentLength != -1L)
     {
-      AppMethodBeat.o(189797);
+      AppMethodBeat.o(193018);
       return true;
     }
     String str = paramHttpURLConnection.getHeaderField("Transfer-Encoding");
     if ((str != null) && (str.equalsIgnoreCase("chunked")))
     {
-      AppMethodBeat.o(189797);
+      AppMethodBeat.o(193018);
       return true;
     }
     label93:
@@ -172,11 +172,11 @@ final class b
       {
         try
         {
-          paramc.mContentLength = (paramc.FEC + l);
+          paramc.mContentLength = (paramc.HdF + l);
           if (l == -1L) {
             break;
           }
-          AppMethodBeat.o(189797);
+          AppMethodBeat.o(193018);
           return true;
         }
         catch (NumberFormatException paramc)
@@ -187,33 +187,33 @@ final class b
         l = -1L;
       }
     }
-    AppMethodBeat.o(189797);
+    AppMethodBeat.o(193018);
     return false;
   }
   
   private static boolean a(byte[] paramArrayOfByte, int paramInt, OutputStream paramOutputStream, FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(189801);
+    AppMethodBeat.i(193022);
     if (paramFileDescriptor.valid()) {
       try
       {
         paramOutputStream.write(paramArrayOfByte, 0, paramInt);
         paramOutputStream.flush();
         paramFileDescriptor.sync();
-        AppMethodBeat.o(189801);
+        AppMethodBeat.o(193022);
         return true;
       }
       catch (IOException paramArrayOfByte)
       {
         boolean bool = e.DEBUG;
-        AppMethodBeat.o(189801);
+        AppMethodBeat.o(193022);
         return false;
       }
     }
     if (e.DEBUG) {
-      e.eOD();
+      e.feh();
     }
-    AppMethodBeat.o(189801);
+    AppMethodBeat.o(193022);
     return false;
   }
   
@@ -226,7 +226,7 @@ final class b
     //   2: ldc 242
     //   4: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 246	com/tencent/mm/toolkit/a/c:FEv	Landroid/net/Uri;
+    //   8: getfield 246	com/tencent/mm/toolkit/a/c:Hdy	Landroid/net/Uri;
     //   11: invokevirtual 251	android/net/Uri:getScheme	()Ljava/lang/String;
     //   14: astore 4
     //   16: aload 4
@@ -247,7 +247,7 @@ final class b
     //   52: ldc_w 257
     //   55: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   58: aload_0
-    //   59: getfield 246	com/tencent/mm/toolkit/a/c:FEv	Landroid/net/Uri;
+    //   59: getfield 246	com/tencent/mm/toolkit/a/c:Hdy	Landroid/net/Uri;
     //   62: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   65: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   68: invokespecial 108	com/tencent/mm/toolkit/a/a/a:<init>	(ILjava/lang/String;)V
@@ -259,7 +259,7 @@ final class b
     //   79: new 265	java/net/URL
     //   82: dup
     //   83: aload_0
-    //   84: getfield 246	com/tencent/mm/toolkit/a/c:FEv	Landroid/net/Uri;
+    //   84: getfield 246	com/tencent/mm/toolkit/a/c:Hdy	Landroid/net/Uri;
     //   87: invokevirtual 266	android/net/Uri:toString	()Ljava/lang/String;
     //   90: invokespecial 267	java/net/URL:<init>	(Ljava/lang/String;)V
     //   93: astore 4
@@ -281,20 +281,20 @@ final class b
     //   129: astore 5
     //   131: aload 6
     //   133: aload_0
-    //   134: invokevirtual 284	com/tencent/mm/toolkit/a/c:eOB	()Lcom/tencent/mm/toolkit/a/a/e;
+    //   134: invokevirtual 284	com/tencent/mm/toolkit/a/c:fef	()Lcom/tencent/mm/toolkit/a/a/e;
     //   137: invokeinterface 290 1 0
     //   142: invokevirtual 293	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   145: aload 6
     //   147: astore 5
     //   149: aload 6
     //   151: aload_0
-    //   152: invokevirtual 284	com/tencent/mm/toolkit/a/c:eOB	()Lcom/tencent/mm/toolkit/a/a/e;
+    //   152: invokevirtual 284	com/tencent/mm/toolkit/a/c:fef	()Lcom/tencent/mm/toolkit/a/a/e;
     //   155: invokeinterface 290 1 0
     //   160: invokevirtual 296	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   163: aload 6
     //   165: astore 5
     //   167: aload_0
-    //   168: getfield 300	com/tencent/mm/toolkit/a/c:FEF	Ljava/util/HashMap;
+    //   168: getfield 300	com/tencent/mm/toolkit/a/c:HdI	Ljava/util/HashMap;
     //   171: astore_3
     //   172: aload_3
     //   173: ifnull +145 -> 318
@@ -333,7 +333,7 @@ final class b
     //   253: aload 6
     //   255: astore 5
     //   257: aload_0
-    //   258: invokevirtual 284	com/tencent/mm/toolkit/a/c:eOB	()Lcom/tencent/mm/toolkit/a/a/e;
+    //   258: invokevirtual 284	com/tencent/mm/toolkit/a/c:fef	()Lcom/tencent/mm/toolkit/a/a/e;
     //   261: invokeinterface 332 1 0
     //   266: ifeq +952 -> 1218
     //   269: aload 6
@@ -362,24 +362,24 @@ final class b
     //   318: aload 6
     //   320: astore 5
     //   322: aload_0
-    //   323: getfield 123	com/tencent/mm/toolkit/a/c:FEw	Ljava/io/File;
+    //   323: getfield 123	com/tencent/mm/toolkit/a/c:Hdz	Ljava/io/File;
     //   326: invokevirtual 177	java/io/File:exists	()Z
     //   329: ifeq +102 -> 431
     //   332: aload 6
     //   334: astore 5
-    //   336: invokestatic 98	com/tencent/mm/toolkit/a/e:eOC	()V
+    //   336: invokestatic 98	com/tencent/mm/toolkit/a/e:feg	()V
     //   339: aload 6
     //   341: astore 5
     //   343: aload_0
-    //   344: getfield 173	com/tencent/mm/toolkit/a/c:FEA	Z
+    //   344: getfield 173	com/tencent/mm/toolkit/a/c:HdD	Z
     //   347: ifeq +342 -> 689
     //   350: aload 6
     //   352: astore 5
     //   354: aload_0
     //   355: aload_0
-    //   356: getfield 123	com/tencent/mm/toolkit/a/c:FEw	Ljava/io/File;
+    //   356: getfield 123	com/tencent/mm/toolkit/a/c:Hdz	Ljava/io/File;
     //   359: invokevirtual 340	java/io/File:length	()J
-    //   362: putfield 113	com/tencent/mm/toolkit/a/c:FEC	J
+    //   362: putfield 113	com/tencent/mm/toolkit/a/c:HdF	J
     //   365: aload 6
     //   367: astore 5
     //   369: new 75	java/lang/StringBuilder
@@ -387,7 +387,7 @@ final class b
     //   373: ldc_w 342
     //   376: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   379: aload_0
-    //   380: getfield 113	com/tencent/mm/toolkit/a/c:FEC	J
+    //   380: getfield 113	com/tencent/mm/toolkit/a/c:HdF	J
     //   383: invokevirtual 84	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   386: ldc_w 344
     //   389: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -402,7 +402,7 @@ final class b
     //   410: pop
     //   411: aload 6
     //   413: astore 5
-    //   415: invokestatic 98	com/tencent/mm/toolkit/a/e:eOC	()V
+    //   415: invokestatic 98	com/tencent/mm/toolkit/a/e:feg	()V
     //   418: aload 6
     //   420: astore 5
     //   422: aload 6
@@ -439,7 +439,7 @@ final class b
     //   493: pop
     //   494: aload 6
     //   496: astore 5
-    //   498: invokestatic 98	com/tencent/mm/toolkit/a/e:eOC	()V
+    //   498: invokestatic 98	com/tencent/mm/toolkit/a/e:feg	()V
     //   501: goto +860 -> 1361
     //   504: aload 6
     //   506: astore 5
@@ -466,7 +466,7 @@ final class b
     //   559: pop
     //   560: aload 6
     //   562: astore 5
-    //   564: invokestatic 236	com/tencent/mm/toolkit/a/e:eOD	()V
+    //   564: invokestatic 236	com/tencent/mm/toolkit/a/e:feh	()V
     //   567: aload 6
     //   569: astore 5
     //   571: new 62	com/tencent/mm/toolkit/a/a/a
@@ -530,15 +530,15 @@ final class b
     //   691: astore 5
     //   693: aload_0
     //   694: lconst_0
-    //   695: putfield 113	com/tencent/mm/toolkit/a/c:FEC	J
+    //   695: putfield 113	com/tencent/mm/toolkit/a/c:HdF	J
     //   698: aload 6
     //   700: astore 5
-    //   702: invokestatic 98	com/tencent/mm/toolkit/a/e:eOC	()V
+    //   702: invokestatic 98	com/tencent/mm/toolkit/a/e:feg	()V
     //   705: aload 6
     //   707: astore 5
     //   709: aload_0
-    //   710: getfield 123	com/tencent/mm/toolkit/a/c:FEw	Ljava/io/File;
-    //   713: invokestatic 383	com/tencent/mm/toolkit/a/d$b:O	(Ljava/io/File;)V
+    //   710: getfield 123	com/tencent/mm/toolkit/a/c:Hdz	Ljava/io/File;
+    //   713: invokestatic 383	com/tencent/mm/toolkit/a/d$b:R	(Ljava/io/File;)V
     //   716: goto -285 -> 431
     //   719: aload 6
     //   721: astore 5
@@ -551,7 +551,7 @@ final class b
     //   736: new 128	java/io/File
     //   739: dup
     //   740: aload_0
-    //   741: getfield 123	com/tencent/mm/toolkit/a/c:FEw	Ljava/io/File;
+    //   741: getfield 123	com/tencent/mm/toolkit/a/c:Hdz	Ljava/io/File;
     //   744: invokevirtual 388	java/io/File:getPath	()Ljava/lang/String;
     //   747: invokespecial 389	java/io/File:<init>	(Ljava/lang/String;)V
     //   750: astore_3
@@ -684,12 +684,12 @@ final class b
     //   1009: aload 6
     //   1011: astore 5
     //   1013: aload_0
-    //   1014: getfield 428	com/tencent/mm/toolkit/a/c:FEz	Z
+    //   1014: getfield 428	com/tencent/mm/toolkit/a/c:HdC	Z
     //   1017: ifeq +101 -> 1118
     //   1020: aload 6
     //   1022: astore 5
     //   1024: aload_0
-    //   1025: getfield 431	com/tencent/mm/toolkit/a/c:FEB	I
+    //   1025: getfield 431	com/tencent/mm/toolkit/a/c:HdE	I
     //   1028: iconst_5
     //   1029: if_icmpge +89 -> 1118
     //   1032: aload 6
@@ -708,7 +708,7 @@ final class b
     //   1063: pop
     //   1064: aload 6
     //   1066: astore 5
-    //   1068: invokestatic 98	com/tencent/mm/toolkit/a/e:eOC	()V
+    //   1068: invokestatic 98	com/tencent/mm/toolkit/a/e:feg	()V
     //   1071: aload 6
     //   1073: astore 5
     //   1075: aload_0
@@ -716,15 +716,15 @@ final class b
     //   1078: ldc_w 435
     //   1081: invokevirtual 201	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   1084: invokestatic 439	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   1087: putfield 246	com/tencent/mm/toolkit/a/c:FEv	Landroid/net/Uri;
+    //   1087: putfield 246	com/tencent/mm/toolkit/a/c:Hdy	Landroid/net/Uri;
     //   1090: aload 6
     //   1092: astore 5
     //   1094: aload_0
     //   1095: aload_0
-    //   1096: getfield 431	com/tencent/mm/toolkit/a/c:FEB	I
+    //   1096: getfield 431	com/tencent/mm/toolkit/a/c:HdE	I
     //   1099: iconst_1
     //   1100: iadd
-    //   1101: putfield 431	com/tencent/mm/toolkit/a/c:FEB	I
+    //   1101: putfield 431	com/tencent/mm/toolkit/a/c:HdE	I
     //   1104: aload 6
     //   1106: astore 5
     //   1108: aload_0
@@ -734,7 +734,7 @@ final class b
     //   1118: aload 6
     //   1120: astore 5
     //   1122: aload_0
-    //   1123: getfield 428	com/tencent/mm/toolkit/a/c:FEz	Z
+    //   1123: getfield 428	com/tencent/mm/toolkit/a/c:HdC	Z
     //   1126: ifeq +329 -> 1455
     //   1129: aload 6
     //   1131: astore 5
@@ -743,7 +743,7 @@ final class b
     //   1137: ldc_w 441
     //   1140: invokespecial 80	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1143: aload_0
-    //   1144: getfield 431	com/tencent/mm/toolkit/a/c:FEB	I
+    //   1144: getfield 431	com/tencent/mm/toolkit/a/c:HdE	I
     //   1147: invokevirtual 95	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1150: invokevirtual 263	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1153: astore_3
@@ -1106,20 +1106,20 @@ final class b
   
   public final void b(c paramc)
   {
-    AppMethodBeat.i(189795);
+    AppMethodBeat.i(193016);
     Context localContext = this.mContext;
     locala = new a();
     if ((localContext != null) && (android.support.v4.content.b.checkSelfPermission(localContext, "android.permission.WAKE_LOCK") == 0))
     {
-      locala.zqF = ((PowerManager)localContext.getSystemService("power")).newWakeLock(1, e.TAG);
-      if (!locala.zqF.isHeld())
+      locala.gqI = ((PowerManager)localContext.getSystemService("power")).newWakeLock(1, e.TAG);
+      if (!locala.gqI.isHeld())
       {
-        locala.zqF.setWorkSource(new WorkSource());
-        locala.zqF.acquire();
+        locala.gqI.setWorkSource(new WorkSource());
+        locala.gqI.acquire();
       }
-      locala.FEt = ((WifiManager)localContext.getSystemService("wifi")).createWifiLock("WIFI LOCK : " + e.TAG);
-      if (!locala.FEt.isHeld()) {
-        locala.FEt.acquire();
+      locala.Hdw = ((WifiManager)localContext.getSystemService("wifi")).createWifiLock("WIFI LOCK : " + e.TAG);
+      if (!locala.Hdw.isHeld()) {
+        locala.Hdw.acquire();
       }
     }
     for (;;)
@@ -1140,16 +1140,16 @@ final class b
         int i = locala1.mErrorCode;
         String str = locala1.getLocalizedMessage();
         paramc.mState = 2040;
-        if (!paramc.FEy) {
+        if (!paramc.HdB) {
           continue;
         }
         if (!e.DEBUG) {
           continue;
         }
-        new StringBuilder("clean up target file, path = ").append(paramc.FEx.getPath());
-        e.eOC();
-        d.b.O(paramc.FEx);
-        d.b.O(paramc.FEw);
+        new StringBuilder("clean up target file, path = ").append(paramc.HdA.getPath());
+        e.feg();
+        d.b.R(paramc.HdA);
+        d.b.R(paramc.Hdz);
         a.a(paramc, i, str);
         paramc.finish();
         return;
@@ -1157,47 +1157,47 @@ final class b
       finally
       {
         locala.release();
-        AppMethodBeat.o(189795);
+        AppMethodBeat.o(193016);
       }
-      e.eOD();
+      e.feh();
     }
   }
   
-  public final void fM(Context paramContext)
+  public final void fX(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
   static final class a
   {
-    WifiManager.WifiLock FEt;
-    PowerManager.WakeLock zqF;
+    WifiManager.WifiLock Hdw;
+    PowerManager.WakeLock gqI;
     
     public final void release()
     {
-      AppMethodBeat.i(189794);
+      AppMethodBeat.i(193015);
       try
       {
-        if ((this.zqF != null) && (this.zqF.isHeld())) {
-          this.zqF.release();
+        if ((this.gqI != null) && (this.gqI.isHeld())) {
+          this.gqI.release();
         }
-        if ((this.FEt != null) && (this.FEt.isHeld())) {
-          this.FEt.release();
+        if ((this.Hdw != null) && (this.Hdw.isHeld())) {
+          this.Hdw.release();
         }
-        AppMethodBeat.o(189794);
+        AppMethodBeat.o(193015);
         return;
       }
       catch (Throwable localThrowable)
       {
         boolean bool = e.DEBUG;
-        AppMethodBeat.o(189794);
+        AppMethodBeat.o(193015);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class g
   public int certificateVerifyPolicy = 2;
   public int connectionCount = 1;
   public String customHeader = "";
-  public boolean dDS;
+  public boolean dBE;
   public String emojiExtinfo = "";
   public int expectImageFormat = 1;
   public int field_advideoflag = 0;
@@ -58,63 +58,63 @@ public class g
   public int field_videosource = 0;
   public String field_wxmsgparam = "";
   public byte[] fileBuffer;
-  public a fnH;
-  public int fnI = -1;
-  public int fnJ = -1;
-  public String fnK = "";
-  public int fnL = 0;
-  public int fnM = 0;
-  public String[] fnN = null;
-  public boolean fnO = true;
-  public boolean fnP = false;
-  public boolean fnQ = false;
-  public String fnR = "";
-  public Map<String, String> fnS = null;
-  public boolean fnT = false;
-  public boolean fnU = false;
-  public boolean fnV = false;
-  public int fnW;
-  public int fnX = 1;
-  public b fnY;
+  public a frb;
+  public int frc = -1;
+  public int frd = -1;
+  public String fre = "";
+  public int frf = 0;
+  public int frg = 0;
+  public String[] frh = null;
+  public boolean fri = true;
+  public boolean frj = false;
+  public boolean frk = false;
+  public String frl = "";
+  public Map<String, String> frm = null;
+  public boolean frn = false;
+  public boolean fro = false;
+  public boolean frp = false;
+  public int frq;
+  public int frr = 1;
+  public b frs;
   public boolean is_resume_task = false;
   public int lastError = 0;
   public long preloadMinSize = 0L;
   public int snsVersion = 0;
   public byte[] thumbnailBuffer;
   
-  public final boolean UF()
+  public final boolean VA()
   {
-    return this.fnX == 2;
+    return this.frr == 2;
   }
   
-  public final boolean UG()
+  public final boolean VB()
   {
-    return this.fnX == 3;
+    return this.frr == 3;
   }
   
-  public final boolean UH()
+  public final boolean VC()
   {
-    return this.fnX == 1;
+    return this.frr == 1;
   }
   
-  public final boolean UI()
+  public final boolean VD()
   {
-    return this.fnX == 4;
+    return this.frr == 4;
   }
   
-  public final boolean UJ()
+  public final boolean VE()
   {
-    return this.fnX == 6;
+    return this.frr == 6;
   }
   
-  public final boolean UK()
+  public final boolean VF()
   {
-    return this.fnX == 8;
+    return this.frr == 8;
   }
   
-  public final boolean ccl()
+  public final boolean VG()
   {
-    return this.fnX == 7;
+    return this.frr == 7;
   }
   
   public static abstract interface a
@@ -128,7 +128,7 @@ public class g
   
   public static abstract interface b
   {
-    public abstract void a(String paramString, d paramd);
+    public abstract void b(String paramString, d paramd);
   }
 }
 

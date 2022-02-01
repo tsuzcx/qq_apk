@@ -45,6 +45,7 @@ public final class TencentMapOptions
   private MapViewType mMapViewType;
   private AdapterType mNetAdapterType = AdapterType.DEFAULT;
   private Bundle mNetParams;
+  private boolean mOfflineMapEnable;
   private Object mProtocolDataDesc;
   private int mProtocolFrom;
   private String mSatelliteVersion = "0";
@@ -248,18 +249,40 @@ public final class TencentMapOptions
       AppMethodBeat.o(181046);
       return false;
     }
-    if (this.mCustomUserId != paramObject.mCustomUserId)
+    if (this.mNetParams != null)
+    {
+      if (this.mNetParams.equals(paramObject.mNetParams)) {}
+    }
+    else {
+      while (paramObject.mNetParams != null)
+      {
+        AppMethodBeat.o(181046);
+        return false;
+      }
+    }
+    if (this.mCustomUserId != null)
+    {
+      if (this.mCustomUserId.equals(paramObject.mCustomUserId)) {}
+    }
+    else {
+      while (paramObject.mCustomUserId != null)
+      {
+        AppMethodBeat.o(181046);
+        return false;
+      }
+    }
+    if (this.mOfflineMapEnable != paramObject.mOfflineMapEnable)
     {
       AppMethodBeat.o(181046);
       return false;
     }
-    if (this.mNetParams != null)
+    if (this.mMapCallback != null)
     {
-      boolean bool = this.mNetParams.equals(paramObject.mNetParams);
+      boolean bool = this.mMapCallback.equals(paramObject.mMapCallback);
       AppMethodBeat.o(181046);
       return bool;
     }
-    if (paramObject.mNetParams == null)
+    if (paramObject.mMapCallback == null)
     {
       AppMethodBeat.o(181046);
       return true;
@@ -368,8 +391,8 @@ public final class TencentMapOptions
   
   public final int hashCode()
   {
-    int i3 = 1;
-    int i11 = 0;
+    int i12 = 1;
+    int i13 = 0;
     AppMethodBeat.i(181047);
     int i;
     int j;
@@ -378,140 +401,161 @@ public final class TencentMapOptions
     label50:
     int m;
     label66:
-    int i12;
-    int i13;
+    int i14;
+    int i15;
     int n;
     label94:
     int i1;
     label110:
     int i2;
     label126:
-    int i14;
-    label133:
+    int i3;
+    label136:
+    int i16;
     int i4;
-    label158:
+    label161:
     int i5;
-    label174:
+    label177:
     int i6;
-    label190:
+    label193:
     int i7;
-    label206:
-    int i15;
+    label209:
+    int i17;
     int i8;
-    label228:
+    label231:
     int i9;
+    label247:
+    int i10;
+    label263:
+    int i11;
     if (this.customAssetsPath != null)
     {
       i = this.customAssetsPath.hashCode();
       if (this.customLocalPath == null) {
-        break label400;
+        break label438;
       }
       j = this.customLocalPath.hashCode();
       if (!this.isHandDrawMapEnable) {
-        break label405;
+        break label443;
       }
       k = 1;
       if (this.mExtSurface == null) {
-        break label410;
+        break label448;
       }
       m = this.mExtSurface.hashCode();
-      i12 = this.mExtSurfaceWidth;
-      i13 = this.mExtSurfaceHeight;
+      i14 = this.mExtSurfaceWidth;
+      i15 = this.mExtSurfaceHeight;
       if (this.mSubId == null) {
-        break label416;
+        break label454;
       }
       n = this.mSubId.hashCode();
       if (this.mSubKey == null) {
-        break label422;
+        break label460;
       }
       i1 = this.mSubKey.hashCode();
       if (this.mMapKey == null) {
-        break label428;
+        break label466;
       }
       i2 = this.mMapKey.hashCode();
       if (!this.isEnableMultipleInfoWindow) {
-        break label434;
+        break label472;
       }
-      i14 = Arrays.hashCode(this.mDebugTags);
+      i3 = 1;
+      i16 = Arrays.hashCode(this.mDebugTags);
       if (this.mSatelliteVersion == null) {
-        break label440;
+        break label478;
       }
       i4 = this.mSatelliteVersion.hashCode();
       if (this.mMapViewType == null) {
-        break label446;
+        break label484;
       }
       i5 = this.mMapViewType.hashCode();
       if (this.mMapKernel == null) {
-        break label452;
+        break label490;
       }
       i6 = this.mMapKernel.hashCode();
       if (this.mUserTypeface == null) {
-        break label458;
+        break label496;
       }
       i7 = this.mUserTypeface.hashCode();
-      i15 = this.mProtocolFrom;
+      i17 = this.mProtocolFrom;
       if (this.mProtocolDataDesc == null) {
-        break label464;
+        break label502;
       }
       i8 = this.mProtocolDataDesc.hashCode();
       if (this.mNetAdapterType == null) {
-        break label470;
+        break label508;
       }
       i9 = this.mNetAdapterType.hashCode();
-      label244:
       if (this.mNetParams == null) {
-        break label476;
+        break label514;
+      }
+      i10 = this.mNetParams.hashCode();
+      if (this.mCustomUserId == null) {
+        break label520;
+      }
+      i11 = this.mCustomUserId.hashCode();
+      label279:
+      if (!this.mOfflineMapEnable) {
+        break label526;
       }
     }
-    label400:
-    label405:
-    label410:
-    label416:
-    label422:
-    label428:
-    label434:
-    label440:
-    label446:
-    label452:
-    label458:
-    label464:
-    label470:
-    label476:
-    for (int i10 = this.mNetParams.hashCode();; i10 = 0)
+    for (;;)
     {
-      if (this.mCustomUserId != null) {
-        i11 = this.mCustomUserId.hashCode();
+      if (this.mMapCallback != null) {
+        i13 = this.mMapCallback.hashCode();
       }
       AppMethodBeat.o(181047);
-      return (i10 + (i9 + (i8 + ((i7 + (i6 + (i5 + (i4 + (((i2 + (i1 + (n + (((m + (k + (j + i * 31) * 31) * 31) * 31 + i12) * 31 + i13) * 31) * 31) * 31) * 31 + i3) * 31 + i14) * 31) * 31) * 31) * 31) * 31 + i15) * 31) * 31) * 31) * 31 + i11;
+      return ((i11 + (i10 + (i9 + (i8 + ((i7 + (i6 + (i5 + (i4 + ((i3 + (i2 + (i1 + (n + (((m + (k + (j + i * 31) * 31) * 31) * 31 + i14) * 31 + i15) * 31) * 31) * 31) * 31) * 31 + i16) * 31) * 31) * 31) * 31) * 31 + i17) * 31) * 31) * 31) * 31) * 31 + i12) * 31 + i13;
       i = 0;
       break;
+      label438:
       j = 0;
       break label41;
+      label443:
       k = 0;
       break label50;
+      label448:
       m = 0;
       break label66;
+      label454:
       n = 0;
       break label94;
+      label460:
       i1 = 0;
       break label110;
+      label466:
       i2 = 0;
       break label126;
+      label472:
       i3 = 0;
-      break label133;
+      break label136;
+      label478:
       i4 = 0;
-      break label158;
+      break label161;
+      label484:
       i5 = 0;
-      break label174;
+      break label177;
+      label490:
       i6 = 0;
-      break label190;
+      break label193;
+      label496:
       i7 = 0;
-      break label206;
+      break label209;
+      label502:
       i8 = 0;
-      break label228;
+      break label231;
+      label508:
       i9 = 0;
-      break label244;
+      break label247;
+      label514:
+      i10 = 0;
+      break label263;
+      label520:
+      i11 = 0;
+      break label279;
+      label526:
+      i12 = 0;
     }
   }
   
@@ -523,6 +567,11 @@ public final class TencentMapOptions
   public final boolean isMultipleInfoWindowEnable()
   {
     return this.isEnableMultipleInfoWindow;
+  }
+  
+  public final boolean isOfflineMapEnable()
+  {
+    return this.mOfflineMapEnable;
   }
   
   public final void openDebugLogByTags(String... paramVarArgs)
@@ -606,6 +655,12 @@ public final class TencentMapOptions
     return this;
   }
   
+  public final TencentMapOptions setOfflineMapEnable(boolean paramBoolean)
+  {
+    this.mOfflineMapEnable = paramBoolean;
+    return this;
+  }
+  
   public final TencentMapOptions setSatelliteVersion(String paramString)
   {
     this.mSatelliteVersion = paramString;
@@ -639,10 +694,23 @@ public final class TencentMapOptions
     setTypeface(paramTypeface, false);
     AppMethodBeat.o(181043);
   }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(191292);
+    StringBuilder localStringBuilder = new StringBuilder("{customAssetsPath='").append(this.customAssetsPath).append('\'').append(", customLocalPath='").append(this.customLocalPath).append('\'').append(", isHandDrawMapEnable=").append(this.isHandDrawMapEnable).append(", mExtSurface=").append(this.mExtSurface).append(", mExtSurfaceWidth=").append(this.mExtSurfaceWidth).append(", mExtSurfaceHeight=").append(this.mExtSurfaceHeight).append(", mSubId='").append(this.mSubId).append('\'').append(", mSubKey='").append(this.mSubKey).append('\'').append(", mMapKey='").append(this.mMapKey).append('\'').append(", isEnableMultipleInfoWindow=").append(this.isEnableMultipleInfoWindow).append(", mDebugTags=");
+    if (this.mDebugTags == null) {}
+    for (String str = "null";; str = Arrays.asList(this.mDebugTags).toString())
+    {
+      str = str + ", mSatelliteVersion='" + this.mSatelliteVersion + '\'' + ", mMapViewType=" + this.mMapViewType + ", mMapKernel=" + this.mMapKernel + ", mUserTypeface=" + this.mUserTypeface + ", mProtocolFrom=" + this.mProtocolFrom + ", mProtocolDataDesc=" + this.mProtocolDataDesc + ", mNetAdapterType=" + this.mNetAdapterType + ", mNetParams=" + this.mNetParams + ", mCustomUserId='" + this.mCustomUserId + '\'' + ", mOfflineMapEnable='" + this.mOfflineMapEnable + '\'' + ", mMapCallback=" + this.mMapCallback + '}';
+      AppMethodBeat.o(191292);
+      return str;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

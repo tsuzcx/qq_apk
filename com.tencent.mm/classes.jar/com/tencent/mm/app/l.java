@@ -1,15 +1,15 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.stubs.logger.Log.Logger;
 
 public final class l
   implements Log.Logger
 {
-  public static l KH()
+  public static l Ks()
   {
-    return a.cLv;
+    return a.cID;
   }
   
   public final boolean isLoggable(String paramString, int paramInt)
@@ -27,30 +27,30 @@ public final class l
     {
       AppMethodBeat.o(123466);
       return;
-      ad.v(paramString1, paramString2);
+      ac.v(paramString1, paramString2);
       AppMethodBeat.o(123466);
       return;
-      ad.d(paramString1, paramString2);
+      ac.d(paramString1, paramString2);
       AppMethodBeat.o(123466);
       return;
-      ad.i(paramString1, paramString2);
+      ac.i(paramString1, paramString2);
       AppMethodBeat.o(123466);
       return;
-      ad.w(paramString1, paramString2);
+      ac.w(paramString1, paramString2);
       AppMethodBeat.o(123466);
       return;
-      ad.e(paramString1, paramString2);
+      ac.e(paramString1, paramString2);
     }
   }
   
   static final class a
   {
-    static final l cLv;
+    static final l cID;
     
     static
     {
       AppMethodBeat.i(123465);
-      cLv = new l((byte)0);
+      cID = new l((byte)0);
       AppMethodBeat.o(123465);
     }
   }

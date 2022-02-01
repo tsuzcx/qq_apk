@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract interface q$b
 {
-  public abstract boolean ij(Context paramContext);
+  public abstract boolean iu(Context paramContext);
 }
 
 

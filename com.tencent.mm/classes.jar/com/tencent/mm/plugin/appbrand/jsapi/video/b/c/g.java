@@ -13,13 +13,13 @@ public final class g
   public g(Throwable paramThrowable)
   {
     super(paramThrowable.toString(), paramThrowable);
-    AppMethodBeat.i(193933);
-    AppMethodBeat.o(193933);
+    AppMethodBeat.i(194280);
+    AppMethodBeat.o(194280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.c.g
  * JD-Core Version:    0.7.0.1
  */

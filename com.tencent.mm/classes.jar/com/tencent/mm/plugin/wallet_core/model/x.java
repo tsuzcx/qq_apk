@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gf;
+import com.tencent.mm.g.c.gj;
 import com.tencent.mm.plugin.wallet_core.d.e;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class x
-  extends gf
+  extends gj
 {
   public static c.a info;
   
@@ -23,20 +23,20 @@ public final class x
   {
     AppMethodBeat.i(70415);
     c.a locala = new c.a();
-    locala.EYt = new Field[3];
+    locala.GvF = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "bulletin_scene";
-    locala.EYv.put("bulletin_scene", "TEXT PRIMARY KEY ");
+    locala.GvH.put("bulletin_scene", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" bulletin_scene TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "bulletin_scene";
+    locala.GvG = "bulletin_scene";
     locala.columns[1] = "bulletin_content";
-    locala.EYv.put("bulletin_content", "TEXT");
+    locala.GvH.put("bulletin_content", "TEXT");
     localStringBuilder.append(" bulletin_content TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "bulletin_url";
-    locala.EYv.put("bulletin_url", "TEXT");
+    locala.GvH.put("bulletin_url", "TEXT");
     localStringBuilder.append(" bulletin_url TEXT");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -44,13 +44,13 @@ public final class x
     AppMethodBeat.o(70415);
   }
   
-  public static void bd(JSONObject paramJSONObject)
+  public static void be(JSONObject paramJSONObject)
   {
     boolean bool3 = true;
     boolean bool2 = true;
     int j = 0;
     AppMethodBeat.i(70414);
-    Object localObject1 = s.ecg();
+    Object localObject1 = s.erC();
     if ((paramJSONObject != null) && (localObject1 != null))
     {
       Object localObject3 = paramJSONObject.optJSONArray("banner_map");
@@ -70,11 +70,11 @@ public final class x
           {
             str = ((JSONObject)localObject4).optString("banner_type");
             localObject4 = ((JSONObject)localObject4).optString("banner_template_id");
-            ad.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
-            if ((!bt.isNullOrNil(str)) && (!bt.isNullOrNil((String)localObject4)))
+            ac.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
+            if ((!bs.isNullOrNil(str)) && (!bs.isNullOrNil((String)localObject4)))
             {
               ((Map)localObject2).put(str, localObject4);
-              ad.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
+              ac.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
             }
           }
           i += 1;
@@ -98,7 +98,7 @@ public final class x
             localObject4 = (String)((Map)localObject2).get(str);
             if (localHashMap.containsKey(localObject4))
             {
-              ad.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
+              ac.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
               localObject4 = paramJSONObject.optJSONObject(((Integer)localHashMap.get(localObject4)).intValue());
               x localx = new x();
               localx.field_bulletin_scene = str;
@@ -108,7 +108,7 @@ public final class x
             }
             else
             {
-              ad.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
+              ac.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
             }
           }
         }
@@ -127,7 +127,7 @@ public final class x
       label537:
       for (bool1 = bool2;; bool1 = false)
       {
-        ad.e("MicroMsg.WalletBulletin", bool1);
+        ac.e("MicroMsg.WalletBulletin", bool1);
         AppMethodBeat.o(70414);
         return;
         bool1 = false;
@@ -146,7 +146,7 @@ public final class x
     label609:
     for (boolean bool1 = bool3;; bool1 = false)
     {
-      ad.e("MicroMsg.WalletBulletin", bool1);
+      ac.e("MicroMsg.WalletBulletin", bool1);
       AppMethodBeat.o(70414);
       return;
       bool1 = false;
@@ -161,7 +161,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.x
  * JD-Core Version:    0.7.0.1
  */

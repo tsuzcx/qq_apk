@@ -5,23 +5,23 @@ import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.File;
 
 public final class g
 {
-  private static Boolean fGq = null;
-  private static Boolean fGr = null;
-  private static Boolean fGs = null;
+  private static Boolean fJX = null;
+  private static Boolean fJY = null;
+  private static Boolean fJZ = null;
   
   /* Error */
   @java.lang.Deprecated
-  public static boolean XL()
+  public static boolean YI()
   {
     // Byte code:
     //   0: ldc 23
     //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 12	com/tencent/mm/compatible/util/g:fGq	Ljava/lang/Boolean;
+    //   5: getstatic 12	com/tencent/mm/compatible/util/g:fJX	Ljava/lang/Boolean;
     //   8: ifnonnull +58 -> 66
     //   11: new 31	java/io/FileInputStream
     //   14: dup
@@ -49,10 +49,10 @@ public final class g
     //   51: ldc 58
     //   53: invokevirtual 62	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
     //   56: invokestatic 68	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   59: putstatic 12	com/tencent/mm/compatible/util/g:fGq	Ljava/lang/Boolean;
+    //   59: putstatic 12	com/tencent/mm/compatible/util/g:fJX	Ljava/lang/Boolean;
     //   62: aload_2
     //   63: invokevirtual 71	java/io/FileInputStream:close	()V
-    //   66: getstatic 12	com/tencent/mm/compatible/util/g:fGq	Ljava/lang/Boolean;
+    //   66: getstatic 12	com/tencent/mm/compatible/util/g:fJX	Ljava/lang/Boolean;
     //   69: invokevirtual 74	java/lang/Boolean:booleanValue	()Z
     //   72: istore_0
     //   73: ldc 23
@@ -69,11 +69,11 @@ public final class g
     //   88: ldc 81
     //   90: iconst_0
     //   91: anewarray 4	java/lang/Object
-    //   94: invokestatic 87	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   94: invokestatic 87	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   97: aload_2
     //   98: astore_1
     //   99: getstatic 90	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   102: putstatic 12	com/tencent/mm/compatible/util/g:fGq	Ljava/lang/Boolean;
+    //   102: putstatic 12	com/tencent/mm/compatible/util/g:fJX	Ljava/lang/Boolean;
     //   105: aload_2
     //   106: ifnull -40 -> 66
     //   109: aload_2
@@ -132,12 +132,12 @@ public final class g
   }
   
   /* Error */
-  public static boolean XM()
+  public static boolean YJ()
   {
     // Byte code:
     //   0: ldc 93
     //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 14	com/tencent/mm/compatible/util/g:fGr	Ljava/lang/Boolean;
+    //   5: getstatic 14	com/tencent/mm/compatible/util/g:fJY	Ljava/lang/Boolean;
     //   8: ifnonnull +65 -> 73
     //   11: new 31	java/io/FileInputStream
     //   14: dup
@@ -168,10 +168,10 @@ public final class g
     //   58: ldc 101
     //   60: invokevirtual 107	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   63: invokestatic 68	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   66: putstatic 14	com/tencent/mm/compatible/util/g:fGr	Ljava/lang/Boolean;
+    //   66: putstatic 14	com/tencent/mm/compatible/util/g:fJY	Ljava/lang/Boolean;
     //   69: aload_2
     //   70: invokevirtual 71	java/io/FileInputStream:close	()V
-    //   73: getstatic 14	com/tencent/mm/compatible/util/g:fGr	Ljava/lang/Boolean;
+    //   73: getstatic 14	com/tencent/mm/compatible/util/g:fJY	Ljava/lang/Boolean;
     //   76: invokevirtual 74	java/lang/Boolean:booleanValue	()Z
     //   79: istore_0
     //   80: ldc 93
@@ -186,11 +186,11 @@ public final class g
     //   92: ldc 79
     //   94: aload_3
     //   95: invokevirtual 111	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   98: invokestatic 115	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: invokestatic 115	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   101: aload_2
     //   102: astore_1
     //   103: getstatic 90	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   106: putstatic 14	com/tencent/mm/compatible/util/g:fGr	Ljava/lang/Boolean;
+    //   106: putstatic 14	com/tencent/mm/compatible/util/g:fJY	Ljava/lang/Boolean;
     //   109: aload_2
     //   110: ifnull -37 -> 73
     //   113: aload_2
@@ -248,7 +248,7 @@ public final class g
     //   50	69	154	java/lang/Exception
   }
   
-  public static int XN()
+  public static int YK()
   {
     return 4;
   }
@@ -256,13 +256,13 @@ public final class g
   public static File getDataDirectory()
   {
     AppMethodBeat.i(155886);
-    if (bt.isNullOrNil(ae.fFH.fCL))
+    if (bs.isNullOrNil(ae.fJo.fGs))
     {
       localFile = Environment.getDataDirectory();
       AppMethodBeat.o(155886);
       return localFile;
     }
-    File localFile = new File(ae.fFH.fCL);
+    File localFile = new File(ae.fJo.fGs);
     AppMethodBeat.o(155886);
     return localFile;
   }
@@ -270,13 +270,13 @@ public final class g
   public static File getDownloadCacheDirectory()
   {
     AppMethodBeat.i(155888);
-    if (bt.isNullOrNil(ae.fFH.fCO))
+    if (bs.isNullOrNil(ae.fJo.fGv))
     {
       localFile = Environment.getDownloadCacheDirectory();
       AppMethodBeat.o(155888);
       return localFile;
     }
-    File localFile = new File(ae.fFH.fCO);
+    File localFile = new File(ae.fJo.fGv);
     AppMethodBeat.o(155888);
     return localFile;
   }
@@ -284,13 +284,13 @@ public final class g
   public static File getExternalStorageDirectory()
   {
     AppMethodBeat.i(155884);
-    if (bt.isNullOrNil(ae.fFH.fCJ))
+    if (bs.isNullOrNil(ae.fJo.fGq))
     {
       localFile = Environment.getExternalStorageDirectory();
       AppMethodBeat.o(155884);
       return localFile;
     }
-    File localFile = new File(ae.fFH.fCJ);
+    File localFile = new File(ae.fJo.fGq);
     AppMethodBeat.o(155884);
     return localFile;
   }
@@ -299,13 +299,13 @@ public final class g
   public static File getExternalStoragePublicDirectory(String paramString)
   {
     AppMethodBeat.i(155885);
-    if (bt.isNullOrNil(ae.fFH.fCK))
+    if (bs.isNullOrNil(ae.fJo.fGr))
     {
       paramString = Environment.getExternalStoragePublicDirectory(paramString);
       AppMethodBeat.o(155885);
       return paramString;
     }
-    paramString = new File(ae.fFH.fCK);
+    paramString = new File(ae.fJo.fGr);
     AppMethodBeat.o(155885);
     return paramString;
   }
@@ -313,13 +313,13 @@ public final class g
   public static String getExternalStorageState()
   {
     AppMethodBeat.i(155889);
-    if (bt.isNullOrNil(ae.fFH.fCN))
+    if (bs.isNullOrNil(ae.fJo.fGu))
     {
       str = Environment.getExternalStorageState();
       AppMethodBeat.o(155889);
       return str;
     }
-    String str = ae.fFH.fCN;
+    String str = ae.fJo.fGu;
     AppMethodBeat.o(155889);
     return str;
   }
@@ -327,13 +327,13 @@ public final class g
   public static File getRootDirectory()
   {
     AppMethodBeat.i(155887);
-    if (bt.isNullOrNil(ae.fFH.fCM))
+    if (bs.isNullOrNil(ae.fJo.fGt))
     {
       localFile = Environment.getRootDirectory();
       AppMethodBeat.o(155887);
       return localFile;
     }
-    File localFile = new File(ae.fFH.fCM);
+    File localFile = new File(ae.fJo.fGt);
     AppMethodBeat.o(155887);
     return localFile;
   }

@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -20,35 +20,35 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 public class WalletECardElementInputUI
   extends WalletECardBaseUI
 {
-  private WalletFormView Alw;
-  private Button ftn;
-  private ElementQuery zXS;
+  private WalletFormView BDR;
+  private ElementQuery Bqm;
+  private Button fwU;
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(71776);
-    if (this.zXS == null) {
-      this.zXS = new ElementQuery();
+    if (this.Bqm == null) {
+      this.Bqm = new ElementQuery();
     }
-    if (bt.isNullOrNil(this.zXS.szi))
+    if (bs.isNullOrNil(this.Bqm.tGS))
     {
-      this.Alw.setText("");
+      this.BDR.setText("");
       AppMethodBeat.o(71776);
       return;
     }
-    if (!bt.isNullOrNil(this.zXS.AdF))
+    if (!bs.isNullOrNil(this.Bqm.BvZ))
     {
-      this.Alw.setText(this.zXS.szi + " " + this.zXS.AdF);
+      this.BDR.setText(this.Bqm.tGS + " " + this.Bqm.BvZ);
       AppMethodBeat.o(71776);
       return;
     }
-    if (2 == this.zXS.AdE)
+    if (2 == this.Bqm.BvY)
     {
-      this.Alw.setText(this.zXS.szi + " " + getString(2131765221));
+      this.BDR.setText(this.Bqm.tGS + " " + getString(2131765221));
       AppMethodBeat.o(71776);
       return;
     }
-    this.Alw.setText(this.zXS.szi + " " + getString(2131765241));
+    this.BDR.setText(this.Bqm.tGS + " " + getString(2131765241));
     AppMethodBeat.o(71776);
   }
   
@@ -60,8 +60,8 @@ public class WalletECardElementInputUI
   public void initView()
   {
     AppMethodBeat.i(71775);
-    this.Alw = ((WalletFormView)findViewById(2131306717));
-    this.Alw.setOnClickListener(new View.OnClickListener()
+    this.BDR = ((WalletFormView)findViewById(2131306717));
+    this.BDR.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -69,26 +69,26 @@ public class WalletECardElementInputUI
         paramAnonymousView = new Bundle();
         paramAnonymousView.putInt("key_support_bankcard", WalletECardElementInputUI.this.getInput().getInt("key_support_bankcard", 3));
         paramAnonymousView.putInt("key_bind_scene", WalletECardElementInputUI.this.getInput().getInt("key_bind_scene", -1));
-        if (!bt.isNullOrNil(WalletECardElementInputUI.a(WalletECardElementInputUI.this).getText()))
+        if (!bs.isNullOrNil(WalletECardElementInputUI.a(WalletECardElementInputUI.this).getText()))
         {
-          paramAnonymousView.putString("key_bank_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).dca);
-          paramAnonymousView.putInt("key_bankcard_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).AdE);
+          paramAnonymousView.putString("key_bank_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).cZz);
+          paramAnonymousView.putInt("key_bankcard_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).BvY);
         }
-        d locald = a.bo(WalletECardElementInputUI.this);
+        d locald = a.br(WalletECardElementInputUI.this);
         if (locald != null) {
           locald.a(WalletECardElementInputUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
         }
         AppMethodBeat.o(71772);
       }
     });
-    this.ftn = ((Button)findViewById(2131302852));
-    this.ftn.setOnClickListener(new View.OnClickListener()
+    this.fwU = ((Button)findViewById(2131302852));
+    this.fwU.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71773);
-        ad.i("MicroMsg.WalletECardElementInputUI", "goto next: %s", new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this).dca });
-        WalletECardElementInputUI.this.getNetController().q(new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this) });
+        ac.i("MicroMsg.WalletECardElementInputUI", "goto next: %s", new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this).cZz });
+        WalletECardElementInputUI.this.getNetController().s(new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this) });
         AppMethodBeat.o(71773);
       }
     });
@@ -98,7 +98,7 @@ public class WalletECardElementInputUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(71777);
-    ad.i("MicroMsg.WalletECardElementInputUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    ac.i("MicroMsg.WalletECardElementInputUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(71777);
@@ -111,8 +111,8 @@ public class WalletECardElementInputUI
       AppMethodBeat.o(71777);
       return;
     }
-    this.zXS = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
-    cE();
+    this.Bqm = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
+    cL();
     AppMethodBeat.o(71777);
   }
   
@@ -122,7 +122,7 @@ public class WalletECardElementInputUI
     super.onCreate(paramBundle);
     setMMTitle(2131758169);
     initView();
-    cE();
+    cL();
     AppMethodBeat.o(71774);
   }
   

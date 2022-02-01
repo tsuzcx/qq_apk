@@ -5,7 +5,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip.model.t;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -17,31 +17,31 @@ import javax.microedition.khronos.opengles.GL10;
 public final class g
   implements GLSurfaceView.Renderer
 {
+  public volatile d AQV;
+  public volatile c AQW;
+  private int AQX;
+  private int AQY;
+  public boolean AQZ;
+  public int ARa;
+  public ByteBuffer ARb;
+  public ByteBuffer ARc;
+  public ByteBuffer ARd;
+  public ByteBuffer ARe;
+  public boolean ARf;
+  public int ARg;
+  public boolean ARh;
+  public volatile boolean ARi;
+  public int ARj;
+  public int ARk;
   private final String TAG;
-  private volatile boolean guA;
+  private volatile boolean gVf;
+  public int grS;
   public int mScreenHeight;
   public int mScreenWidth;
   public int mVideoHeight;
   public int mVideoWidth;
-  public int xYz;
   public ByteBuffer y;
-  public volatile d zyc;
-  public volatile c zyd;
-  private int zye;
-  private int zyf;
-  public int zyg;
-  public boolean zyh;
-  public int zyi;
-  public ByteBuffer zyj;
-  public ByteBuffer zyk;
-  public ByteBuffer zyl;
-  public ByteBuffer zym;
-  public boolean zyn;
-  public int zyo;
-  public boolean zyp;
-  public volatile boolean zyq;
-  public int zyr;
-  public int zys;
+  public int zlw;
   
   public g()
   {
@@ -51,22 +51,22 @@ public final class g
     this.mScreenHeight = 0;
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
-    this.zye = 0;
-    this.zyf = 0;
-    this.zyg = 0;
-    this.zyh = false;
-    this.zyi = 3;
-    this.zyj = ByteBuffer.allocate(0);
+    this.AQX = 0;
+    this.AQY = 0;
+    this.grS = 0;
+    this.AQZ = false;
+    this.ARa = 3;
+    this.ARb = ByteBuffer.allocate(0);
     this.y = ByteBuffer.allocate(0);
-    this.zyk = ByteBuffer.allocate(0);
-    this.zyl = ByteBuffer.allocate(0);
-    this.zym = ByteBuffer.allocate(0);
-    this.zyo = 0;
-    this.zyp = false;
-    this.zyq = false;
-    this.guA = false;
-    this.zyr = 0;
-    this.zys = 0;
+    this.ARc = ByteBuffer.allocate(0);
+    this.ARd = ByteBuffer.allocate(0);
+    this.ARe = ByteBuffer.allocate(0);
+    this.ARg = 0;
+    this.ARh = false;
+    this.ARi = false;
+    this.gVf = false;
+    this.ARj = 0;
+    this.ARk = 0;
     AppMethodBeat.o(115744);
   }
   
@@ -99,12 +99,12 @@ public final class g
     }
     for (;;)
     {
-      switch (this.xYz)
+      switch (this.zlw)
       {
       case 2: 
       default: 
-        if (this.zyc != null) {
-          this.zyc.c(paramArrayOfFloat2, paramArrayOfFloat1);
+        if (this.AQV != null) {
+          this.AQV.c(paramArrayOfFloat2, paramArrayOfFloat1);
         }
         AppMethodBeat.o(115751);
         return;
@@ -130,27 +130,27 @@ public final class g
       }
     }
     paramArrayOfFloat1[0] = f2;
-    if (this.zyn)
+    if (this.ARf)
     {
       f3 = 1.0F - f1;
       label318:
       paramArrayOfFloat1[1] = f3;
       paramArrayOfFloat1[2] = (1.0F - f2);
-      if (!this.zyn) {
+      if (!this.ARf) {
         break label453;
       }
       f3 = 1.0F - f1;
       label345:
       paramArrayOfFloat1[3] = f3;
       paramArrayOfFloat1[4] = f2;
-      if (!this.zyn) {
+      if (!this.ARf) {
         break label460;
       }
       f3 = f1;
       label368:
       paramArrayOfFloat1[5] = f3;
       paramArrayOfFloat1[6] = (1.0F - f2);
-      if (!this.zyn) {
+      if (!this.ARf) {
         break label469;
       }
     }
@@ -178,27 +178,27 @@ public final class g
       f1 = 1.0F - f1;
     }
     paramArrayOfFloat1[0] = f2;
-    if (this.zyn)
+    if (this.ARf)
     {
       f3 = 1.0F - f1;
       label497:
       paramArrayOfFloat1[1] = f3;
       paramArrayOfFloat1[2] = (1.0F - f2);
-      if (!this.zyn) {
+      if (!this.ARf) {
         break label632;
       }
       f3 = 1.0F - f1;
       label524:
       paramArrayOfFloat1[3] = f3;
       paramArrayOfFloat1[4] = f2;
-      if (!this.zyn) {
+      if (!this.ARf) {
         break label639;
       }
       f3 = f1;
       label547:
       paramArrayOfFloat1[5] = f3;
       paramArrayOfFloat1[6] = (1.0F - f2);
-      if (!this.zyn) {
+      if (!this.ARf) {
         break label648;
       }
     }
@@ -255,8 +255,8 @@ public final class g
       paramArrayOfFloat1[5] = 1.0F;
       paramArrayOfFloat1[6] = 1.0F;
       paramArrayOfFloat1[7] = -1.0F;
-      if (this.zyd != null) {
-        this.zyd.c(paramArrayOfFloat1, paramArrayOfFloat2);
+      if (this.AQW != null) {
+        this.AQW.c(paramArrayOfFloat1, paramArrayOfFloat2);
       }
       AppMethodBeat.o(115752);
       return;
@@ -265,15 +265,15 @@ public final class g
     }
   }
   
-  public final void QT(int paramInt)
+  public final void Tc(int paramInt)
   {
     AppMethodBeat.i(115747);
-    if (this.zyg != paramInt)
+    if (this.grS != paramInt)
     {
-      ad.i("MicroMsg.VoipRenderer", "setRenderType: %s, screenWidth: %s, screenHeight: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mScreenWidth), Integer.valueOf(this.mScreenHeight) });
-      this.zyg = paramInt;
+      ac.i("MicroMsg.VoipRenderer", "setRenderType: %s, screenWidth: %s, screenHeight: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mScreenWidth), Integer.valueOf(this.mScreenHeight) });
+      this.grS = paramInt;
       if ((paramInt != 1) && (this.mVideoWidth > 0) && (this.mVideoHeight > 0)) {
-        ib(this.mVideoWidth, this.mVideoHeight);
+        iq(this.mVideoWidth, this.mVideoHeight);
       }
     }
     AppMethodBeat.o(115747);
@@ -282,18 +282,18 @@ public final class g
   public final void a(SurfaceTexture paramSurfaceTexture, com.tencent.mm.media.f.d paramd)
   {
     AppMethodBeat.i(115755);
-    if (this.zyd != null) {
-      this.zyd.a(paramSurfaceTexture, paramd);
+    if (this.AQW != null) {
+      this.AQW.a(paramSurfaceTexture, paramd);
     }
     AppMethodBeat.o(115755);
   }
   
-  public final a dXB()
+  public final a emW()
   {
     AppMethodBeat.i(115756);
-    if (this.zyc != null)
+    if (this.AQV != null)
     {
-      a locala = this.zyc.dXB();
+      a locala = this.AQV.emW();
       AppMethodBeat.o(115756);
       return locala;
     }
@@ -301,20 +301,20 @@ public final class g
     return null;
   }
   
-  public final boolean dXE()
+  public final boolean emZ()
   {
     AppMethodBeat.i(115753);
-    ad.m("MicroMsg.VoipRenderer", "attachGLContext isContextAttached:%b, mHProgram:%s", new Object[] { Boolean.valueOf(this.zyh), this.zyd });
-    if ((!this.zyh) && (this.zyd != null)) {}
+    ac.m("MicroMsg.VoipRenderer", "attachGLContext isContextAttached:%b, mHProgram:%s", new Object[] { Boolean.valueOf(this.AQZ), this.AQW });
+    if ((!this.AQZ) && (this.AQW != null)) {}
     try
     {
-      Object localObject = t.zlN;
-      t.dUg();
-      localObject = this.zyd;
-      c.dXy();
-      this.zyh = true;
-      ad.i("MicroMsg.VoipRenderer", "attachGLContext done!");
-      boolean bool = this.zyh;
+      Object localObject = t.AEB;
+      t.ejs();
+      localObject = this.AQW;
+      c.emT();
+      this.AQZ = true;
+      ac.i("MicroMsg.VoipRenderer", "attachGLContext done!");
+      boolean bool = this.AQZ;
       AppMethodBeat.o(115753);
       return bool;
     }
@@ -322,28 +322,28 @@ public final class g
     {
       for (;;)
       {
-        this.zyh = false;
-        ad.printErrStackTrace("MicroMsg.VoipRenderer", localException, "attachGLContext error!", new Object[0]);
-        t localt = t.zlN;
-        t.dUh();
+        this.AQZ = false;
+        ac.printErrStackTrace("MicroMsg.VoipRenderer", localException, "attachGLContext error!", new Object[0]);
+        t localt = t.AEB;
+        t.ejt();
       }
     }
   }
   
-  public final boolean dXF()
+  public final boolean ena()
   {
     AppMethodBeat.i(115754);
-    ad.m("MicroMsg.VoipRenderer", "detachGLContext isContextAttached:%b!", new Object[] { Boolean.valueOf(this.zyh) });
-    if ((this.zyh) && (this.zyd != null)) {}
+    ac.m("MicroMsg.VoipRenderer", "detachGLContext isContextAttached:%b!", new Object[] { Boolean.valueOf(this.AQZ) });
+    if ((this.AQZ) && (this.AQW != null)) {}
     try
     {
-      Object localObject = t.zlN;
-      t.dUi();
-      localObject = this.zyd;
-      c.dXz();
-      this.zyh = false;
-      ad.i("MicroMsg.VoipRenderer", "detachGLContext done!");
-      boolean bool = this.zyh;
+      Object localObject = t.AEB;
+      t.eju();
+      localObject = this.AQW;
+      c.emU();
+      this.AQZ = false;
+      ac.i("MicroMsg.VoipRenderer", "detachGLContext done!");
+      boolean bool = this.AQZ;
       AppMethodBeat.o(115754);
       return bool;
     }
@@ -351,36 +351,36 @@ public final class g
     {
       for (;;)
       {
-        this.zyh = true;
-        ad.printErrStackTrace("MicroMsg.VoipRenderer", localException, "detachGLContext error!", new Object[0]);
-        t localt = t.zlN;
-        t.dUj();
+        this.AQZ = true;
+        ac.printErrStackTrace("MicroMsg.VoipRenderer", localException, "detachGLContext error!", new Object[0]);
+        t localt = t.AEB;
+        t.ejv();
       }
     }
   }
   
-  public final void ia(int paramInt1, int paramInt2)
+  public final void ip(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115748);
-    ad.i("MicroMsg.VoipRenderer", "setHWDecVideoSize: width:%s, height:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.zye = paramInt1;
-    this.zyf = paramInt2;
-    a(this.zye, this.zyf, c.gwe, c.zxL);
+    ac.i("MicroMsg.VoipRenderer", "setHWDecVideoSize: width:%s, height:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.AQX = paramInt1;
+    this.AQY = paramInt2;
+    a(this.AQX, this.AQY, c.gWC, c.AQE);
     AppMethodBeat.o(115748);
   }
   
-  public final void ib(int paramInt1, int paramInt2)
+  public final void iq(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115750);
-    if ((this.zyg != 1) && (this.zyc != null))
+    if ((this.grS != 1) && (this.AQV != null))
     {
-      if ((this.zyi == 0) || (this.zyi == 1))
+      if ((this.ARa == 0) || (this.ARa == 1))
       {
-        a(paramInt1, paramInt2, true, this.zyc.zxU, this.zyc.zxT);
+        a(paramInt1, paramInt2, true, this.AQV.AQN, this.AQV.AQM);
         AppMethodBeat.o(115750);
         return;
       }
-      a(paramInt1, paramInt2, false, this.zyc.zxU, this.zyc.zxT);
+      a(paramInt1, paramInt2, false, this.AQV.AQN, this.AQV.AQM);
     }
     AppMethodBeat.o(115750);
   }
@@ -399,38 +399,38 @@ public final class g
         GLES20.glViewport(0, 0, this.mScreenWidth, this.mScreenHeight);
         GLES20.glClear(16640);
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-        if (this.guA)
+        if (this.gVf)
         {
-          ad.i("MicroMsg.VoipRenderer", "onDrawFrame clearFrame, renderType:%s", new Object[] { Integer.valueOf(this.zyg) });
-          this.guA = false;
-          if ((this.zyg == 1) && (this.zyd != null)) {
-            this.zyd.updateTexImage();
+          ac.i("MicroMsg.VoipRenderer", "onDrawFrame clearFrame, renderType:%s", new Object[] { Integer.valueOf(this.grS) });
+          this.gVf = false;
+          if ((this.grS == 1) && (this.AQW != null)) {
+            this.AQW.updateTexImage();
           }
           return;
         }
-        if (this.zyg != 0) {
+        if (this.grS != 0) {
           break label995;
         }
-        if ((!this.zyq) || (this.zyc == null)) {
+        if ((!this.ARi) || (this.AQV == null)) {
           break label984;
         }
         if (this.y.capacity() == this.mVideoHeight * this.mVideoWidth)
         {
           this.y.position(0);
           i = this.mVideoHeight * this.mVideoWidth / 4;
-          if (this.zyi == 3) {
-            if (this.zym.capacity() == i * 2)
+          if (this.ARa == 3) {
+            if (this.ARe.capacity() == i * 2)
             {
-              this.zym.position(0);
-              paramGL10 = this.zyc;
+              this.ARe.position(0);
+              paramGL10 = this.AQV;
               localObject1 = this.y;
-              localObject2 = this.zym;
+              localObject2 = this.ARe;
               j = this.mVideoWidth;
               i = this.mVideoHeight;
-              paramGL10.a((ByteBuffer)localObject1, j, i, 0);
+              paramGL10.b((ByteBuffer)localObject1, j, i, 0);
               j /= 2;
               i /= 2;
-              paramGL10.zxM[1].a(j, i, 6410, (Buffer)localObject2, 9729, 33071);
+              paramGL10.AQF[1].a(j, i, 6410, (Buffer)localObject2, 9729, 33071);
             }
           }
         }
@@ -441,9 +441,9 @@ public final class g
       }
       try
       {
-        paramGL10 = this.zyc;
-        i = this.zyi;
-        j = this.zyo;
+        paramGL10 = this.AQV;
+        i = this.ARa;
+        j = this.ARg;
         if (i == 0) {
           break label1261;
         }
@@ -453,71 +453,71 @@ public final class g
       }
       catch (Exception paramGL10)
       {
-        ad.w("MicroMsg.VoipRenderer", paramGL10.getMessage());
+        ac.w("MicroMsg.VoipRenderer", paramGL10.getMessage());
         continue;
       }
-      paramGL10.zxS = bool;
-      if (paramGL10.zxS)
+      paramGL10.AQL = bool;
+      if (paramGL10.AQL)
       {
-        paramGL10.zxQ.a(paramGL10.zxR, paramGL10.gtF, paramGL10.gtG);
-        paramGL10.c(paramGL10.zxV, paramGL10.zxW);
-        GLES20.glViewport(0, 0, paramGL10.gtF, paramGL10.gtG);
-        paramGL10.QS(i);
-        d.akz();
-        localObject1 = paramGL10.zxP;
-        localObject2 = paramGL10.zxT;
-        Object localObject3 = paramGL10.zxU;
+        paramGL10.AQJ.a(paramGL10.AQK, paramGL10.grA, paramGL10.grB);
+        paramGL10.c(paramGL10.AQO, paramGL10.AQP);
+        GLES20.glViewport(0, 0, paramGL10.grA, paramGL10.grB);
+        paramGL10.Tb(i);
+        d.art();
+        localObject1 = paramGL10.AQI;
+        localObject2 = paramGL10.AQM;
+        Object localObject3 = paramGL10.AQN;
         if ((localObject3 != null) && (localObject2 != null))
         {
           localObject3 = Arrays.copyOf((float[])localObject3, localObject3.length);
           b.q((float[])localObject3);
-          if ((((b)localObject1).zxy == null) || (((b)localObject1).zxy.capacity() < localObject3.length)) {
-            ((b)localObject1).zxy = ByteBuffer.allocateDirect(localObject3.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+          if ((((b)localObject1).AQq == null) || (((b)localObject1).AQq.capacity() < localObject3.length)) {
+            ((b)localObject1).AQq = ByteBuffer.allocateDirect(localObject3.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
           }
-          ((b)localObject1).zxy.put((float[])localObject3);
-          ((b)localObject1).zxy.position(0);
+          ((b)localObject1).AQq.put((float[])localObject3);
+          ((b)localObject1).AQq.position(0);
           localObject2 = Arrays.copyOf((float[])localObject2, localObject2.length);
-          if ((((b)localObject1).zxz == null) || (((b)localObject1).zxz.capacity() < localObject2.length)) {
-            ((b)localObject1).zxz = ByteBuffer.allocateDirect(localObject2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+          if ((((b)localObject1).AQr == null) || (((b)localObject1).AQr.capacity() < localObject2.length)) {
+            ((b)localObject1).AQr = ByteBuffer.allocateDirect(localObject2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
           }
-          ((b)localObject1).zxz.put((float[])localObject2);
-          ((b)localObject1).zxz.position(0);
+          ((b)localObject1).AQr.put((float[])localObject2);
+          ((b)localObject1).AQr.position(0);
         }
-        paramGL10 = paramGL10.zxP;
-        if ((paramGL10.zxv == null) || (paramGL10.zxD <= 0) || (paramGL10.zxE <= 0)) {
-          paramGL10.hZ(paramGL10.gtF, paramGL10.gtG);
+        paramGL10 = paramGL10.AQI;
+        if ((paramGL10.AQn == null) || (paramGL10.AQv <= 0) || (paramGL10.AQw <= 0)) {
+          paramGL10.io(paramGL10.grA, paramGL10.grB);
         }
-        b.L(paramGL10.zxv.grh, paramGL10.zxw.gro, paramGL10.zxD, paramGL10.zxE);
-        paramGL10.a(paramGL10.zxs, paramGL10.zxu, paramGL10.zxx, paramGL10.zxI, true);
-        paramGL10.rY(true);
-        b.L(0, 0, 0, 0);
-        paramGL10.a(paramGL10.zxt, paramGL10.zxw.gro, paramGL10.zxz, paramGL10.zxy, false);
-        paramGL10.rY(false);
-        d.akz();
-        d.akz();
-        this.zyq = false;
+        b.N(paramGL10.AQn.gRP, paramGL10.AQo.gRW, paramGL10.AQv, paramGL10.AQw);
+        paramGL10.a(paramGL10.AQk, paramGL10.AQm, paramGL10.AQp, paramGL10.AQA, true);
+        paramGL10.sZ(true);
+        b.N(0, 0, 0, 0);
+        paramGL10.a(paramGL10.AQl, paramGL10.AQo.gRW, paramGL10.AQr, paramGL10.AQq, false);
+        paramGL10.sZ(false);
+        d.art();
+        d.art();
+        this.ARi = false;
         AppMethodBeat.o(115749);
         return;
-        ad.e("MicroMsg.VoipRenderer", "RENDER_NV21 draw error, uv buffer size not match, uv.capacity:%s, videoSize:%sx%s", new Object[] { Integer.valueOf(this.zym.capacity()), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
+        ac.e("MicroMsg.VoipRenderer", "RENDER_NV21 draw error, uv buffer size not match, uv.capacity:%s, videoSize:%sx%s", new Object[] { Integer.valueOf(this.ARe.capacity()), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
         continue;
-        if ((this.zyk.capacity() == i) && (this.zyl.capacity() == i))
+        if ((this.ARc.capacity() == i) && (this.ARd.capacity() == i))
         {
-          this.zyk.position(0);
-          this.zyl.position(0);
-          paramGL10 = this.zyc;
+          this.ARc.position(0);
+          this.ARd.position(0);
+          paramGL10 = this.AQV;
           localObject1 = this.y;
-          localObject2 = this.zyk;
-          localObject3 = this.zyl;
+          localObject2 = this.ARc;
+          localObject3 = this.ARd;
           i = this.mVideoWidth;
           j = this.mVideoHeight;
-          paramGL10.a((ByteBuffer)localObject1, i, j, 0);
-          paramGL10.a((ByteBuffer)localObject2, i / 2, j / 2, 1);
-          paramGL10.a((ByteBuffer)localObject3, i / 2, j / 2, 2);
+          paramGL10.b((ByteBuffer)localObject1, i, j, 0);
+          paramGL10.b((ByteBuffer)localObject2, i / 2, j / 2, 1);
+          paramGL10.b((ByteBuffer)localObject3, i / 2, j / 2, 2);
           continue;
         }
-        ad.e("MicroMsg.VoipRenderer", "RENDER_YV12/RENDER_YV12Edge draw error, uv buffer size not match, u.capacity:%s, v.capacity:%s, videoSize:%sx%s", new Object[] { Integer.valueOf(this.zyk.capacity()), Integer.valueOf(this.zyl.capacity()), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
+        ac.e("MicroMsg.VoipRenderer", "RENDER_YV12/RENDER_YV12Edge draw error, uv buffer size not match, u.capacity:%s, v.capacity:%s, videoSize:%sx%s", new Object[] { Integer.valueOf(this.ARc.capacity()), Integer.valueOf(this.ARd.capacity()), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
         continue;
-        ad.e("MicroMsg.VoipRenderer", "draw error, y buffer size not match, y.capacity:%s, videoSize:%sx%s", new Object[] { Integer.valueOf(this.y.capacity()), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
+        ac.e("MicroMsg.VoipRenderer", "draw error, y buffer size not match, y.capacity:%s, videoSize:%sx%s", new Object[] { Integer.valueOf(this.y.capacity()), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
         continue;
         label950:
         if ((j & 0x8) != 0)
@@ -528,21 +528,21 @@ public final class g
       }
       else
       {
-        paramGL10.QS(i);
+        paramGL10.Tb(i);
         continue;
         label984:
-        ad.e("MicroMsg.VoipRenderer", "render soft draw error, cannot draw yuv now");
+        ac.e("MicroMsg.VoipRenderer", "render soft draw error, cannot draw yuv now");
         continue;
         label995:
-        if (this.zyd == null) {
+        if (this.AQW == null) {
           continue;
         }
-        this.zys += 1;
-        if (this.zys % 100 == 0) {
-          ad.i("MicroMsg.VoipRenderer", "steve: remote HW texture videoSize:%sx%s, mHardDrawCnt:%d", new Object[] { Integer.valueOf(this.zye), Integer.valueOf(this.zyf), Integer.valueOf(this.zys) });
+        this.ARk += 1;
+        if (this.ARk % 100 == 0) {
+          ac.i("MicroMsg.VoipRenderer", "steve: remote HW texture videoSize:%sx%s, mHardDrawCnt:%d", new Object[] { Integer.valueOf(this.AQX), Integer.valueOf(this.AQY), Integer.valueOf(this.ARk) });
         }
-        a(this.zye, this.zyf, c.gwe, c.zxL);
-        paramGL10 = this.zyd;
+        a(this.AQX, this.AQY, c.gWC, c.AQE);
+        paramGL10 = this.AQW;
         localObject1 = paramGL10.surfaceTexture;
         if (localObject1 == null) {
           continue;
@@ -550,16 +550,16 @@ public final class g
         try
         {
           paramGL10.updateTexImage();
-          GLES20.glUseProgram(paramGL10.zxJ);
-          i = GLES20.glGetAttribLocation(paramGL10.zxJ, "vPosition");
-          j = GLES20.glGetAttribLocation(paramGL10.zxJ, "vTexCoord");
-          int k = GLES20.glGetUniformLocation(paramGL10.zxJ, "sTexture");
+          GLES20.glUseProgram(paramGL10.AQC);
+          i = GLES20.glGetAttribLocation(paramGL10.AQC, "vPosition");
+          j = GLES20.glGetAttribLocation(paramGL10.AQC, "vTexCoord");
+          int k = GLES20.glGetUniformLocation(paramGL10.AQC, "sTexture");
           GLES20.glVertexAttribPointer(i, 2, 5126, false, 8, paramGL10.mVertexBuffer);
           GLES20.glEnableVertexAttribArray(i);
-          GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, paramGL10.zxK);
+          GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, paramGL10.AQD);
           GLES20.glEnableVertexAttribArray(j);
           GLES20.glActiveTexture(33984);
-          GLES20.glBindTexture(36197, paramGL10.zpx.gro);
+          GLES20.glBindTexture(36197, paramGL10.AIm.gRW);
           GLES20.glUniform1i(k, 0);
           GLES20.glBindFramebuffer(36160, 0);
           GLES20.glDrawArrays(5, 0, 4);
@@ -570,7 +570,7 @@ public final class g
         }
         catch (Exception paramGL10)
         {
-          ad.printErrStackTrace("MicroMsg.VoipGLHProgram", paramGL10, "renderThis error", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VoipGLHProgram", paramGL10, "renderThis error", new Object[0]);
         }
         continue;
       }
@@ -582,51 +582,51 @@ public final class g
   public final void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115746);
-    ad.i("MicroMsg.VoipRenderer", "onSurfaceChanged and render type is %s, dataType is %s ", new Object[] { Integer.valueOf(this.zyg), Integer.valueOf(this.zyi) });
+    ac.i("MicroMsg.VoipRenderer", "onSurfaceChanged and render type is %s, dataType is %s ", new Object[] { Integer.valueOf(this.grS), Integer.valueOf(this.ARa) });
     GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    if (this.zyc == null) {
-      this.zyc = new d();
+    if (this.AQV == null) {
+      this.AQV = new d();
     }
-    if (this.zyd == null) {
-      this.zyd = new c();
+    if (this.AQW == null) {
+      this.AQW = new c();
     }
     this.mScreenHeight = paramInt2;
     this.mScreenWidth = paramInt1;
     if ((this.mVideoWidth > 0) && (this.mVideoHeight > 0)) {
-      ib(this.mVideoWidth, this.mVideoHeight);
+      iq(this.mVideoWidth, this.mVideoHeight);
     }
-    if (this.zyc != null)
+    if (this.AQV != null)
     {
-      paramGL10 = this.zyc;
-      ad.i("MicroMsg.VoipGLSProgram", "onSurfaceChanged, width: %s, height: %s, surfaceWidth: %s, surfaceHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramGL10.surfaceWidth), Integer.valueOf(paramGL10.surfaceHeight) });
+      paramGL10 = this.AQV;
+      ac.i("MicroMsg.VoipGLSProgram", "onSurfaceChanged, width: %s, height: %s, surfaceWidth: %s, surfaceHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramGL10.surfaceWidth), Integer.valueOf(paramGL10.surfaceHeight) });
       if ((paramInt1 != paramGL10.surfaceWidth) || (paramGL10.surfaceHeight != paramInt2))
       {
         paramGL10.surfaceWidth = paramInt1;
         paramGL10.surfaceHeight = paramInt2;
-        paramGL10 = paramGL10.zxP;
-        ad.i("MicroMsg.VoipGLSProgram", "onSurfaceChanged: %s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        paramGL10 = paramGL10.AQI;
+        ac.i("MicroMsg.VoipGLSProgram", "onSurfaceChanged: %s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
         paramGL10.surfaceWidth = paramInt1;
         paramGL10.surfaceHeight = paramInt2;
       }
     }
-    this.zyp = true;
-    ad.d("MicroMsg.VoipRenderer", "onSurfaceChanged width: %s * height: %s , and video size is width %s * height %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
+    this.ARh = true;
+    ac.d("MicroMsg.VoipRenderer", "onSurfaceChanged width: %s * height: %s , and video size is width %s * height %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.mVideoWidth), Integer.valueOf(this.mVideoHeight) });
     AppMethodBeat.o(115746);
   }
   
   public final void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
     AppMethodBeat.i(115745);
-    ad.i("MicroMsg.VoipRenderer", "onSurfaceCreated and render type is %s", new Object[] { Integer.valueOf(this.zyg) });
+    ac.i("MicroMsg.VoipRenderer", "onSurfaceCreated and render type is %s", new Object[] { Integer.valueOf(this.grS) });
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    if (this.zyc == null) {
-      this.zyc = new d();
+    if (this.AQV == null) {
+      this.AQV = new d();
     }
-    if (this.zyd == null) {
-      this.zyd = new c();
+    if (this.AQW == null) {
+      this.AQW = new c();
     }
-    this.zyr = 0;
-    this.zys = 0;
+    this.ARj = 0;
+    this.ARk = 0;
     AppMethodBeat.o(115745);
   }
 }

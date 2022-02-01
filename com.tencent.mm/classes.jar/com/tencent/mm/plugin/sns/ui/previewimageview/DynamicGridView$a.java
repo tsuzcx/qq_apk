@@ -7,19 +7,19 @@ import java.util.Stack;
 
 final class DynamicGridView$a
 {
-  List<Pair<Integer, Integer>> xVO;
+  List<Pair<Integer, Integer>> ziK;
   
   DynamicGridView$a()
   {
     AppMethodBeat.i(100319);
-    this.xVO = new Stack();
+    this.ziK = new Stack();
     AppMethodBeat.o(100319);
   }
   
-  public final void hx(int paramInt1, int paramInt2)
+  public final void hG(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100320);
-    this.xVO.add(new Pair(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)));
+    this.ziK.add(new Pair(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)));
     AppMethodBeat.o(100320);
   }
 }

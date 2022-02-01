@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.y;
+import com.tencent.mm.ah.y;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Parcelable;", "()V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appendText", "", "getAppendText$plugin_webview_release", "()Ljava/lang/String;", "setAppendText$plugin_webview_release", "(Ljava/lang/String;)V", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "getMsgInfo$plugin_webview_release", "()Lcom/tencent/mm/message/MPShareVideoInfo;", "setMsgInfo$plugin_webview_release", "(Lcom/tencent/mm/message/MPShareVideoInfo;)V", "msgInfoLength", "", "getMsgInfoLength$plugin_webview_release", "()I", "setMsgInfoLength$plugin_webview_release", "(I)V", "sessionId", "getSessionId$plugin_webview_release", "setSessionId$plugin_webview_release", "toUser", "getToUser$plugin_webview_release", "setToUser$plugin_webview_release", "describeContents", "readParcel", "", "writeToParcel", "dest", "flags", "CREATOR", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Parcelable;", "()V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appendText", "", "getAppendText$plugin_webview_release", "()Ljava/lang/String;", "setAppendText$plugin_webview_release", "(Ljava/lang/String;)V", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "getMsgInfo$plugin_webview_release", "()Lcom/tencent/mm/message/MPShareVideoInfo;", "setMsgInfo$plugin_webview_release", "(Lcom/tencent/mm/message/MPShareVideoInfo;)V", "msgInfoLength", "", "getMsgInfoLength$plugin_webview_release", "()I", "setMsgInfoLength$plugin_webview_release", "(I)V", "sessionId", "getSessionId$plugin_webview_release", "setSessionId$plugin_webview_release", "toUser", "getToUser$plugin_webview_release", "setToUser$plugin_webview_release", "describeContents", "readParcel", "", "writeToParcel", "dest", "flags", "CREATOR", "plugin-webview_release"})
 public final class MpVideoDataParcelable
   implements Parcelable
 {
   public static final a CREATOR;
-  y BsY;
-  String kkB;
-  private int nky;
+  y CLe;
+  String kLS;
+  private int nNy;
   private String sessionId;
   String toUser;
   
@@ -33,15 +33,15 @@ public final class MpVideoDataParcelable
     AppMethodBeat.i(82669);
     k.h(paramParcel, "parcel");
     this.toUser = paramParcel.readString();
-    this.kkB = paramParcel.readString();
-    this.nky = paramParcel.readInt();
-    if (this.nky > 0)
+    this.kLS = paramParcel.readString();
+    this.nNy = paramParcel.readInt();
+    if (this.nNy > 0)
     {
-      byte[] arrayOfByte = new byte[this.nky];
+      byte[] arrayOfByte = new byte[this.nNy];
       paramParcel.readByteArray(arrayOfByte);
       y localy = new y();
       localy.parseFrom(arrayOfByte);
-      this.BsY = localy;
+      this.CLe = localy;
     }
     this.sessionId = paramParcel.readString();
     AppMethodBeat.o(82669);
@@ -58,8 +58,8 @@ public final class MpVideoDataParcelable
     AppMethodBeat.i(82668);
     k.h(paramParcel, "dest");
     paramParcel.writeString(this.toUser);
-    paramParcel.writeString(this.kkB);
-    Object localObject = this.BsY;
+    paramParcel.writeString(this.kLS);
+    Object localObject = this.CLe;
     if (localObject != null)
     {
       localObject = ((y)localObject).toByteArray();
@@ -79,8 +79,8 @@ public final class MpVideoDataParcelable
       if (paramInt == 0) {
         break label121;
       }
-      this.nky = localObject.length;
-      paramParcel.writeInt(this.nky);
+      this.nNy = localObject.length;
+      paramParcel.writeInt(this.nNy);
       paramParcel.writeByteArray((byte[])localObject);
     }
     for (;;)
@@ -97,11 +97,11 @@ public final class MpVideoDataParcelable
       paramInt = 0;
       break label66;
       label121:
-      paramParcel.writeInt(this.nky);
+      paramParcel.writeInt(this.nNy);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "plugin-webview_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "plugin-webview_release"})
   public static final class a
     implements Parcelable.Creator<MpVideoDataParcelable>
   {}

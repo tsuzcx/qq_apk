@@ -6,15 +6,15 @@ import com.google.b.a.e;
 public final class a$f
   extends e
 {
-  public int IkP = 0;
-  public int bvJ = 0;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JMA = 0;
   public String groupId = "";
-  public int zkT = 0;
-  public long zkU = 0L;
+  public int reason = 0;
   
   public a$f()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -22,43 +22,43 @@ public final class a$f
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if (this.bvJ != 0) {
-      paramb.by(4, this.bvJ);
+    if (this.reason != 0) {
+      paramb.bv(4, this.reason);
     }
-    if (this.IkP != 0) {
-      paramb.by(5, this.IkP);
+    if (this.JMA != 0) {
+      paramb.bv(5, this.JMA);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.bvJ != 0) {
-      j = i + b.bA(4, this.bvJ);
+    if (this.reason != 0) {
+      j = i + b.bx(4, this.reason);
     }
     i = j;
-    if (this.IkP != 0) {
-      i = j + b.bA(5, this.IkP);
+    if (this.JMA != 0) {
+      i = j + b.bx(5, this.JMA);
     }
     return i;
   }

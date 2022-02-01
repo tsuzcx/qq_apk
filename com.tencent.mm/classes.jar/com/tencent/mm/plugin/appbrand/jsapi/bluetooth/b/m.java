@@ -4,17 +4,17 @@ import android.bluetooth.BluetoothDevice;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PendingRespStructure;", "", "device", "Landroid/bluetooth/BluetoothDevice;", "requestId", "", "offset", "(Landroid/bluetooth/BluetoothDevice;II)V", "getDevice", "()Landroid/bluetooth/BluetoothDevice;", "getOffset", "()I", "getRequestId", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/PendingRespStructure;", "", "device", "Landroid/bluetooth/BluetoothDevice;", "requestId", "", "offset", "(Landroid/bluetooth/BluetoothDevice;II)V", "getDevice", "()Landroid/bluetooth/BluetoothDevice;", "getOffset", "()I", "getRequestId", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class m
 {
-  final BluetoothDevice jIw;
+  final BluetoothDevice kiV;
   final int offset;
   final int requestId;
   
   public m(BluetoothDevice paramBluetoothDevice, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(144772);
-    this.jIw = paramBluetoothDevice;
+    this.kiV = paramBluetoothDevice;
     this.requestId = paramInt1;
     this.offset = paramInt2;
     AppMethodBeat.o(144772);

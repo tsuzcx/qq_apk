@@ -8,7 +8,7 @@ import d.l;
 import java.util.HashSet;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/convert/FinderFeedConvert$uiLifecycleObserver$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/convert/FinderFeedConvert$uiLifecycleObserver$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
 public final class FinderFeedConvert$uiLifecycleObserver$1
   implements UILifecycleObserver
 {
@@ -23,11 +23,11 @@ public final class FinderFeedConvert$uiLifecycleObserver$1
   {
     AppMethodBeat.i(165385);
     k.h(paramLifecycleOwner, "var1");
-    paramLifecycleOwner = ((Iterable)e.c(this.qqM)).iterator();
+    paramLifecycleOwner = ((Iterable)g.c(this.rat)).iterator();
     while (paramLifecycleOwner.hasNext()) {
-      ((e.b)paramLifecycleOwner.next()).dead();
+      ((g.b)paramLifecycleOwner.next()).dead();
     }
-    e.c(this.qqM).clear();
+    g.c(this.rat).clear();
     AppMethodBeat.o(165385);
   }
   
@@ -61,7 +61,7 @@ public final class FinderFeedConvert$uiLifecycleObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.FinderFeedConvert.uiLifecycleObserver.1
  * JD-Core Version:    0.7.0.1
  */

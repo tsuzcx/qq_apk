@@ -9,18 +9,18 @@ import android.os.Process;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.k;
-import com.tencent.mm.g.a.kz;
-import com.tencent.mm.g.b.a.ba;
-import com.tencent.mm.g.b.a.bk;
+import com.tencent.mm.g.a.li;
+import com.tencent.mm.g.b.a.cm;
+import com.tencent.mm.g.b.a.cy;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.expt.a.e.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,44 +31,44 @@ import java.util.List;
 public final class d
   implements Application.ActivityLifecycleCallbacks, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.expt.a.e
 {
-  private static int[] pIC = { 10, 1000, 10000, 100000 };
-  private static boolean pID = false;
-  private static d pIE;
+  private static int[] qrj = { 10, 1000, 10000, 100000 };
+  private static boolean qrk = false;
+  private static d qrl;
   private com.tencent.mm.sdk.b.c<k> appListener;
-  private boolean pIF;
-  private boolean pIG;
-  private String pIH;
-  private HashSet<String> pII;
-  private com.tencent.mm.sdk.b.c pIJ;
+  private boolean qrm;
+  private boolean qrn;
+  private String qro;
+  private HashSet<String> qrp;
+  private com.tencent.mm.sdk.b.c qrq;
   
   private d()
   {
     AppMethodBeat.i(122370);
-    this.pIF = false;
-    this.pIG = false;
-    this.pIH = "";
-    this.pII = new HashSet();
+    this.qrm = false;
+    this.qrn = false;
+    this.qro = "";
+    this.qrp = new HashSet();
     this.appListener = new com.tencent.mm.sdk.b.c() {};
-    this.pIJ = new com.tencent.mm.sdk.b.c()
+    this.qrq = new com.tencent.mm.sdk.b.c()
     {
-      private boolean cek()
+      private boolean clR()
       {
         AppMethodBeat.i(122367);
-        ad.i("MicroMsg.MMPageFlowService", "manual force login");
+        ac.i("MicroMsg.MMPageFlowService", "manual force login");
         if (!d.a(d.this))
         {
           d.b(d.this);
           com.tencent.mm.plugin.expt.hellhound.a.c.c.b(105, null, null, System.currentTimeMillis());
-          com.tencent.mm.plugin.expt.hellhound.a.c.c.ccq();
-          com.tencent.mm.plugin.expt.hellhound.a.c.a.BB(7);
-          com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Bp(7);
+          com.tencent.mm.plugin.expt.hellhound.a.c.c.cjZ();
+          com.tencent.mm.plugin.expt.hellhound.a.c.a.Cv(7);
+          com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(7);
         }
         AppMethodBeat.o(122367);
         return false;
       }
     };
-    if (!aj.cbv()) {
-      pID = true;
+    if (!ai.ciE()) {
+      qrk = true;
     }
     AppMethodBeat.o(122370);
   }
@@ -85,52 +85,52 @@ public final class d
   private void a(String paramString, e.a parama, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(122375);
-    long l1 = bt.GC();
-    if (!aj.cbv())
+    long l1 = bs.Gn();
+    if (!ai.ciE())
     {
-      if (c.pIA == null) {
-        c.pIA = new c();
+      if (c.qrh == null) {
+        c.qrh = new c();
       }
-      Object localObject1 = c.pIA;
-      ad.i("MicroMsg.MMPageFlowSenderByIPCInvoker", "%s send page flow [%s-%d-%d] [%s]", new Object[] { localObject1.hashCode(), paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong), parama });
+      Object localObject1 = c.qrh;
+      ac.i("MicroMsg.MMPageFlowSenderByIPCInvoker", "%s send page flow [%s-%d-%d] [%s]", new Object[] { localObject1.hashCode(), paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong), parama });
       localObject1 = new Bundle();
       ((Bundle)localObject1).putInt("key_page_flow_type", parama.value);
       ((Bundle)localObject1).putString("key_page_flow_name", paramString);
       ((Bundle)localObject1).putInt("key_page_flow_hashcode", paramInt1);
       ((Bundle)localObject1).putLong("key_page_flow_time_stamp", paramLong);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(932L, 100L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(932L, 100L, 1L, false);
       Object localObject3 = ((Bundle)localObject1).getString("key_page_flow_name");
       int i = ((Bundle)localObject1).getInt("key_page_flow_type");
       int j = ((Bundle)localObject1).getInt("key_page_flow_hashcode", 0);
       long l2 = ((Bundle)localObject1).getLong("key_page_flow_time_stamp", 0L);
       String str = new StringBuilder().append(j).append("_").append(l2).toString().hashCode();
-      Object localObject2 = new ba();
-      ((ba)localObject2).dNK = j;
-      localObject3 = ((ba)localObject2).hU((String)localObject3);
-      ((ba)localObject3).dNI = i;
-      ((ba)localObject3).ey(l2);
-      localObject3 = b.ceg();
-      localObject2 = ((ba)localObject2).PV();
-      localObject3 = ((b)localObject3).Km();
+      Object localObject2 = new cm();
+      ((cm)localObject2).dPl = j;
+      localObject3 = ((cm)localObject2).kw((String)localObject3);
+      ((cm)localObject3).dKB = i;
+      ((cm)localObject3).hH(l2);
+      localObject3 = b.clN();
+      localObject2 = ((cm)localObject2).PR();
+      localObject3 = ((b)localObject3).JW();
       if (localObject3 != null) {
-        ((ax)localObject3).putString(str, (String)localObject2);
+        ((aw)localObject3).putString(str, (String)localObject2);
       }
       com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)localObject1, c.a.class, null);
-      ad.d("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process NOT");
-      pID = true;
+      ac.d("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process NOT");
+      qrk = true;
     }
-    if (!pID)
+    if (!qrk)
     {
-      ad.e("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process isAccReady = FALSE");
+      ac.e("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process isAccReady = FALSE");
       AppMethodBeat.o(122375);
       return;
     }
-    ad.d("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process YES");
-    if (aj.cbv()) {
-      cej();
+    ac.d("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process YES");
+    if (ai.ciE()) {
+      clQ();
     }
     a(paramString, parama, paramInt1, paramLong, paramInt2);
-    ad.v("MicroMsg.MMPageFlowService", "report page Flow cost[%d]", new Object[] { Long.valueOf(bt.aS(l1)) });
+    ac.v("MicroMsg.MMPageFlowService", "report page Flow cost[%d]", new Object[] { Long.valueOf(bs.aO(l1)) });
     AppMethodBeat.o(122375);
   }
   
@@ -148,31 +148,31 @@ public final class d
     }
     for (;;)
     {
-      if (parama == e.a.pDH) {
-        this.pIG = true;
+      if (parama == e.a.qiu) {
+        this.qrn = true;
       }
-      if (parama == e.a.pDI) {
-        this.pIG = false;
+      if (parama == e.a.qiv) {
+        this.qrn = false;
       }
-      Object localObject = new bk();
-      ((bk)localObject).dKu = paramInt2;
-      paramString = ((bk)localObject).ij(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.afy().aeZ()).mProcessName).ik(paramString);
-      localObject = pIC;
+      Object localObject = new cy();
+      ((cy)localObject).dJu = paramInt2;
+      paramString = ((cy)localObject).kY(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.agO().agp()).mProcessName).kZ(paramString);
+      localObject = qrj;
       paramInt2 = localObject[i];
       localObject[i] = (paramInt2 + 1);
-      paramString.dPH = paramInt2;
-      paramString.dNI = parama.value;
-      paramString = paramString.eU(paramLong);
-      paramString.dNK = paramInt1;
-      e.cel().a(paramString);
-      ad.d("MicroMsg.MMPageFlowService", "%s pure report [%s]", new Object[] { info(), paramString.PW() });
-      if ((parama == e.a.pDH) || (parama == e.a.pDI)) {
-        ad.i("MicroMsg.MMPageFlowService", "habbyge-mali, %s frontback-pure-report [%s]", new Object[] { info(), paramString.PW() });
+      paramString.dRy = paramInt2;
+      paramString.dKB = parama.value;
+      paramString = paramString.ih(paramLong);
+      paramString.dPl = paramInt1;
+      e.clS().a(paramString);
+      ac.d("MicroMsg.MMPageFlowService", "%s pure report [%s]", new Object[] { info(), paramString.PS() });
+      if ((parama == e.a.qiu) || (parama == e.a.qiv)) {
+        ac.i("MicroMsg.MMPageFlowService", "habbyge-mali, %s frontback-pure-report [%s]", new Object[] { info(), paramString.PS() });
       }
-      if ((aj.cbv()) && ((parama == e.a.pDH) || (parama == e.a.pDI)))
+      if ((ai.ciE()) && ((parama == e.a.qiu) || (parama == e.a.qiv)))
       {
-        q(paramLong, this.pIG);
-        com.tencent.mm.plugin.expt.hellhound.a.c.b.BC(pIC[3]);
+        r(paramLong, this.qrn);
+        com.tencent.mm.plugin.expt.hellhound.a.c.b.Cw(qrj[3]);
       }
       AppMethodBeat.o(122378);
       return;
@@ -186,20 +186,20 @@ public final class d
     }
   }
   
-  public static d ceh()
+  public static d clO()
   {
     AppMethodBeat.i(122371);
-    if (pIE == null) {
-      pIE = new d();
+    if (qrl == null) {
+      qrl = new d();
     }
-    d locald = pIE;
+    d locald = qrl;
     AppMethodBeat.o(122371);
     return locald;
   }
   
-  public static boolean cei()
+  public static boolean clP()
   {
-    return pID;
+    return qrk;
   }
   
   private String info()
@@ -210,33 +210,33 @@ public final class d
     return str;
   }
   
-  private void q(final long paramLong, boolean paramBoolean)
+  private void r(final long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(122385);
-    if (!pID)
+    if (!qrk)
     {
       AppMethodBeat.o(122385);
       return;
     }
-    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pmO, 0);
+    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQo, 0);
     if (i <= 0)
     {
       AppMethodBeat.o(122385);
       return;
     }
-    long l = com.tencent.mm.kernel.g.afB().afk().a(ae.a.FuX, 0L);
-    if (bt.aGK() - l < i)
+    long l = com.tencent.mm.kernel.g.agR().agA().a(ah.a.GSR, 0L);
+    if (bs.aNx() - l < i)
     {
       AppMethodBeat.o(122385);
       return;
     }
-    com.tencent.e.h.Iye.aNW("calc_unread_task");
-    com.tencent.e.h.Iye.a(new Runnable()
+    com.tencent.e.h.JZN.aTz("calc_unread_task");
+    com.tencent.e.h.JZN.a(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(122369);
-        d.a(d.this, paramLong, this.cFt);
+        d.a(d.this, paramLong, this.cCB);
         AppMethodBeat.o(122369);
       }
     }, 5000L, "calc_unread_task");
@@ -245,8 +245,8 @@ public final class d
   
   private static void reset()
   {
-    pIC = new int[] { 10, 1000, 10000, 100000 };
-    pID = false;
+    qrj = new int[] { 10, 1000, 10000, 100000 };
+    qrk = false;
   }
   
   public final void a(String paramString, e.a parama, int paramInt, long paramLong)
@@ -263,16 +263,16 @@ public final class d
     AppMethodBeat.o(184399);
   }
   
-  protected final void cej()
+  protected final void clQ()
   {
     AppMethodBeat.i(122377);
-    if (!aj.cbv())
+    if (!ai.ciE())
     {
       AppMethodBeat.o(122377);
       return;
     }
-    long l = bt.GC();
-    Object localObject1 = b.ceg().allKeys();
+    long l = bs.Gn();
+    Object localObject1 = b.clN().allKeys();
     ArrayList localArrayList = new ArrayList();
     Object localObject2;
     if ((localObject1 != null) && (localObject1.length > 0))
@@ -282,25 +282,25 @@ public final class d
       if (i < j)
       {
         localObject2 = localObject1[i];
-        if (!this.pII.contains(localObject2))
+        if (!this.qrp.contains(localObject2))
         {
-          String str = b.ceg().get((String)localObject2, "");
-          if (!bt.isNullOrNil(str))
+          String str = b.clN().get((String)localObject2, "");
+          if (!bs.isNullOrNil(str))
           {
-            ba localba = new ba(str);
-            if ((localba.dNK > 0L) && (localba.dNJ > 0L))
+            cm localcm = new cm(str);
+            if ((localcm.dPl > 0L) && (localcm.dPk > 0L))
             {
-              localArrayList.add(new ba(str));
-              this.pII.add(localObject2);
+              localArrayList.add(new cm(str));
+              this.qrp.add(localObject2);
             }
-            b.ceg().remove((String)localObject2);
+            b.clN().remove((String)localObject2);
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          b.ceg().remove((String)localObject2);
+          b.clN().remove((String)localObject2);
         }
       }
     }
@@ -310,26 +310,26 @@ public final class d
       localObject1 = localArrayList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (ba)((Iterator)localObject1).next();
-        a(((ba)localObject2).dNH, e.a.Bm((int)((ba)localObject2).dNI), (int)((ba)localObject2).dNK, ((ba)localObject2).dNJ);
+        localObject2 = (cm)((Iterator)localObject1).next();
+        a(((cm)localObject2).dPj, e.a.Ce((int)((cm)localObject2).dKB), (int)((cm)localObject2).dPl, ((cm)localObject2).dPk);
       }
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(932L, 102L, localArrayList.size(), false);
-      ad.i("MicroMsg.MMPageFlowService", "check mmkv list[%d] cost[%d]", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(bt.aS(l)) });
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(932L, 102L, localArrayList.size(), false);
+      ac.i("MicroMsg.MMPageFlowService", "check mmkv list[%d] cost[%d]", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(bs.aO(l)) });
     }
-    ad.d("MicroMsg.MMPageFlowService", "check mm kv cost[%d]", new Object[] { Long.valueOf(bt.aS(l)) });
+    ac.d("MicroMsg.MMPageFlowService", "check mm kv cost[%d]", new Object[] { Long.valueOf(bs.aO(l)) });
     AppMethodBeat.o(122377);
   }
   
   public final void logout()
   {
     AppMethodBeat.i(122374);
-    pID = false;
+    qrk = false;
     com.tencent.mm.plugin.expt.hellhound.a.c.c.b(106, null, null, System.currentTimeMillis());
-    com.tencent.mm.plugin.expt.hellhound.a.c.c.ccq();
-    com.tencent.mm.plugin.expt.hellhound.a.c.a.BB(8);
-    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Bp(8);
-    com.tencent.mm.plugin.expt.hellhound.a.c.a.ke(true);
-    ad.i("MicroMsg.MMPageFlowService", "habbyge-mali, MMPageFlowService: logout补偿上报");
+    com.tencent.mm.plugin.expt.hellhound.a.c.c.cjZ();
+    com.tencent.mm.plugin.expt.hellhound.a.c.a.Cv(8);
+    com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(8);
+    com.tencent.mm.plugin.expt.hellhound.a.c.a.kI(true);
+    ac.i("MicroMsg.MMPageFlowService", "habbyge-mali, MMPageFlowService: logout补偿上报");
     AppMethodBeat.o(122374);
   }
   
@@ -338,15 +338,15 @@ public final class d
     int i = 1;
     AppMethodBeat.i(122380);
     reset();
-    pID = true;
-    com.tencent.mm.plugin.expt.f.c.ceF();
-    if (bt.getInt(com.tencent.mm.plugin.expt.f.c.b(b.a.pmW, ""), 0) > 0) {}
+    qrk = true;
+    com.tencent.mm.plugin.expt.f.c.cmm();
+    if (bs.getInt(com.tencent.mm.plugin.expt.f.c.b(b.a.pQw, ""), 0) > 0) {}
     for (;;)
     {
       if (i != 0) {
-        com.tencent.mm.sdk.b.a.ESL.b(this.appListener);
+        com.tencent.mm.sdk.b.a.GpY.b(this.appListener);
       }
-      com.tencent.mm.sdk.b.a.ESL.b(this.pIJ);
+      com.tencent.mm.sdk.b.a.GpY.b(this.qrq);
       AppMethodBeat.o(122380);
       return;
       i = 0;
@@ -357,9 +357,9 @@ public final class d
   {
     AppMethodBeat.i(122381);
     reset();
-    com.tencent.mm.sdk.b.a.ESL.d(this.appListener);
-    com.tencent.mm.sdk.b.a.ESL.d(this.pIJ);
-    this.pIF = false;
+    com.tencent.mm.sdk.b.a.GpY.d(this.appListener);
+    com.tencent.mm.sdk.b.a.GpY.d(this.qrq);
+    this.qrm = false;
     AppMethodBeat.o(122381);
   }
   
@@ -369,7 +369,7 @@ public final class d
   {
     AppMethodBeat.i(122384);
     String str = paramActivity.getComponentName().getClassName();
-    if ((pID) && ("com.tencent.mm.ui.LauncherUI".equals(str)) && (this.pIG))
+    if ((qrk) && ("com.tencent.mm.ui.LauncherUI".equals(str)) && (this.qrn))
     {
       str = info();
       if (paramActivity == null) {
@@ -379,7 +379,7 @@ public final class d
     label82:
     for (int i = paramActivity.hashCode();; i = -1)
     {
-      ad.i("MicroMsg.MMPageFlowService", "%s launcher ui ondestroyed but wechat in foreground hashcode[%d]", new Object[] { str, Integer.valueOf(i) });
+      ac.i("MicroMsg.MMPageFlowService", "%s launcher ui ondestroyed but wechat in foreground hashcode[%d]", new Object[] { str, Integer.valueOf(i) });
       AppMethodBeat.o(122384);
       return;
     }
@@ -388,14 +388,14 @@ public final class d
   public final void onActivityPaused(Activity paramActivity)
   {
     AppMethodBeat.i(122383);
-    a(paramActivity, e.a.pDE);
+    a(paramActivity, e.a.qir);
     AppMethodBeat.o(122383);
   }
   
   public final void onActivityResumed(Activity paramActivity)
   {
     AppMethodBeat.i(122382);
-    a(paramActivity, e.a.pDD);
+    a(paramActivity, e.a.qiq);
     AppMethodBeat.o(122382);
   }
   
@@ -407,7 +407,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.d
  * JD-Core Version:    0.7.0.1
  */

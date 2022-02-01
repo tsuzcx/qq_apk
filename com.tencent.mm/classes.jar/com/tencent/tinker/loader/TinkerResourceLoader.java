@@ -1,21 +1,14 @@
 package com.tencent.tinker.loader;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.Process;
 import com.tencent.tinker.loader.app.TinkerApplication;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
-import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
 import com.tencent.tinker.loader.shareutil.ShareResPatchInfo;
 import com.tencent.tinker.loader.shareutil.ShareSecurityCheck;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 
 public class TinkerResourceLoader
@@ -61,6 +54,7 @@ public class TinkerResourceLoader
     }
     catch (Throwable paramContext)
     {
+      ShareTinkerLog.e("Tinker.ResourceLoader", "resource hook check failed.", new Object[] { paramContext });
       paramIntent.putExtra("intent_patch_exception", paramContext);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -23);
     }
@@ -79,108 +73,34 @@ public class TinkerResourceLoader
     {
       if (!SharePatchFileUtil.checkResourceArscMd5(localFile, resPatchInfo.resArscMd5))
       {
-        new StringBuilder("Failed to load resource file, path: ").append(localFile.getPath()).append(", expect md5: ").append(resPatchInfo.resArscMd5);
+        ShareTinkerLog.e("Tinker.ResourceLoader", "Failed to load resource file, path: " + localFile.getPath() + ", expect md5: " + resPatchInfo.resArscMd5, new Object[0]);
         ShareIntentUtil.setIntentReturnCode(paramIntent, -24);
         return false;
       }
-      new StringBuilder("verify resource file:").append(localFile.getPath()).append(" md5, use time: ").append(System.currentTimeMillis() - l);
+      ShareTinkerLog.i("Tinker.ResourceLoader", "verify resource file:" + localFile.getPath() + " md5, use time: " + (System.currentTimeMillis() - l), new Object[0]);
     }
     try
     {
       TinkerResourcePatcher.monkeyPatchExistingResources(paramTinkerApplication, paramString);
-      new StringBuilder("monkeyPatchExistingResources resource file:").append(paramString).append(", use time: ").append(System.currentTimeMillis() - l);
-      ResourceStateMonitor.tryStart(paramTinkerApplication);
+      ShareTinkerLog.i("Tinker.ResourceLoader", "monkeyPatchExistingResources resource file:" + paramString + ", use time: " + (System.currentTimeMillis() - l), new Object[0]);
       return true;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      ShareTinkerLog.e("Tinker.ResourceLoader", "install resources failed", new Object[0]);
+    }
     try
     {
       SystemClassLoaderAdder.uninstallPatchDex(paramTinkerApplication.getClassLoader());
-      label189:
       paramIntent.putExtra("intent_patch_exception", paramString);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -23);
       return false;
     }
     catch (Throwable paramTinkerApplication)
     {
-      break label189;
-    }
-  }
-  
-  static class ResourceStateMonitor
-  {
-    private static boolean started = false;
-    
-    private static Handler fetchMHObject(Context paramContext)
-    {
-      paramContext = ShareReflectUtil.getActivityThread(paramContext, null);
-      return (Handler)ShareReflectUtil.findField(paramContext, "mH").get(paramContext);
-    }
-    
-    private static void interceptHandler(Handler paramHandler)
-    {
-      Field localField = ShareReflectUtil.findField(Handler.class, "mCallback");
-      localField.set(paramHandler, new HackerCallback((Handler.Callback)localField.get(paramHandler), paramHandler.getClass()));
-    }
-    
-    static void tryStart(Application paramApplication)
-    {
-      if ((Build.VERSION.SDK_INT < 26) || (started)) {
-        return;
-      }
-      try
+      for (;;)
       {
-        interceptHandler(fetchMHObject(paramApplication));
-        started = true;
-        return;
-      }
-      catch (Throwable paramApplication) {}
-    }
-    
-    static class HackerCallback
-      implements Handler.Callback
-    {
-      private final int APPLICATION_INFO_CHANGED;
-      private Handler.Callback origin;
-      
-      HackerCallback(Handler.Callback paramCallback, Class paramClass)
-      {
-        this.origin = paramCallback;
-        try
-        {
-          i = ShareReflectUtil.findField(paramClass, "APPLICATION_INFO_CHANGED").getInt(null);
-          this.APPLICATION_INFO_CHANGED = i;
-          return;
-        }
-        catch (Throwable paramCallback)
-        {
-          for (;;)
-          {
-            int i = 156;
-          }
-        }
-      }
-      
-      private boolean hackMessage(Message paramMessage)
-      {
-        if (paramMessage.what == this.APPLICATION_INFO_CHANGED)
-        {
-          Process.killProcess(Process.myPid());
-          return true;
-        }
-        return false;
-      }
-      
-      public boolean handleMessage(Message paramMessage)
-      {
-        boolean bool = false;
-        if (hackMessage(paramMessage)) {
-          bool = true;
-        }
-        while (this.origin == null) {
-          return bool;
-        }
-        return this.origin.handleMessage(paramMessage);
+        ShareTinkerLog.e("Tinker.ResourceLoader", "uninstallPatchDex failed", new Object[] { paramString });
       }
     }
   }

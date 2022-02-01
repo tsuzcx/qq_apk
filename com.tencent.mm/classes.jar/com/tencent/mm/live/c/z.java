@@ -10,14 +10,15 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
-import android.text.InputFilter.LengthFilter;
 import android.text.Spanned;
+import android.text.StaticLayout;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
@@ -26,10 +27,12 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.api.SmileyPanel;
 import com.tencent.mm.api.aa;
-import com.tencent.mm.live.b.e.c;
-import com.tencent.mm.live.b.h;
+import com.tencent.mm.live.b.a.s;
+import com.tencent.mm.live.b.i;
 import com.tencent.mm.live.d.f;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
@@ -39,582 +42,701 @@ import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.widget.MMEditText;
 import d.g.b.k;
-import d.l;
-import d.n.n;
+import d.k.h;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/plugin/LiveInputPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "cancelView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "context", "Landroid/content/Context;", "emojiLayout", "Landroid/widget/LinearLayout;", "inputEmoji", "Landroid/widget/ImageView;", "inputEt", "Lcom/tencent/mm/ui/widget/MMEditText;", "inputLayout", "inputParent", "Landroid/view/View;", "replyBtnWidth", "", "sendBtn", "sendBtnEnabled", "", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "changeToInputMode", "", "changeToPreviewMode", "keyboardChange", "show", "height", "layoutInputView", "onBackPress", "onHideSmileyPanel", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "forceShowVKB", "setupEmojiPanel", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-logic_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveInputPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "INPUT_MODE_DEFAULT", "", "INPUT_MODE_INPUT", "INPUT_MODE_SMILEY", "cancelView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "context", "Landroid/content/Context;", "curMode", "emojiLayout", "Landroid/widget/LinearLayout;", "inputEmoji", "Landroid/widget/ImageView;", "inputEt", "Lcom/tencent/mm/ui/widget/MMEditText;", "inputLayout", "inputParent", "Landroid/view/View;", "lastEditHeight", "replyBtnWidth", "sendBtn", "sendBtnEnabled", "", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "changeToInputMode", "", "changeToPreviewMode", "getEditPanel", "keyboardChange", "show", "height", "layoutInputView", "mount", "onBackPress", "onHideSmileyPanel", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "forceShowVKB", "setupEmojiPanel", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "Companion", "plugin-logic_release"})
 public final class z
   extends a
+  implements com.tencent.mm.ak.g
 {
-  public static final a KvG;
-  private final b IIs;
-  private final LinearLayout KvA;
-  private final View KvB;
-  private final MMEditText KvC;
-  private final TextView KvD;
-  private final ImageView KvE;
-  private final TextView KvF;
-  private final LinearLayout Kvz;
+  public static final z.a gBI;
   private Context context;
-  private SmileyPanel qVT;
-  private int qWg;
-  private boolean qWh;
+  private final TextView gBA;
+  private final ImageView gBB;
+  private final TextView gBC;
+  private SmileyPanel gBD;
+  private int gBE;
+  private boolean gBF;
+  private int gBG;
+  private int gBH;
+  private final int gBt;
+  private final int gBu;
+  private final int gBv;
+  private final LinearLayout gBw;
+  private final LinearLayout gBx;
+  private final View gBy;
+  private final MMEditText gBz;
+  private final b gzb;
   
   static
   {
-    AppMethodBeat.i(202970);
-    KvG = new a((byte)0);
-    AppMethodBeat.o(202970);
+    AppMethodBeat.i(190198);
+    gBI = new z.a((byte)0);
+    AppMethodBeat.o(190198);
   }
   
   public z(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(202969);
-    this.IIs = paramb;
-    this.Kvz = ((LinearLayout)paramViewGroup.findViewById(2131307556));
-    this.KvA = ((LinearLayout)paramViewGroup.findViewById(2131307540));
-    this.KvB = paramViewGroup.findViewById(2131307557);
-    this.KvC = ((MMEditText)paramViewGroup.findViewById(2131307559));
-    this.KvD = ((TextView)paramViewGroup.findViewById(2131307690));
-    this.KvE = ((ImageView)paramViewGroup.findViewById(2131307553));
-    this.KvF = ((TextView)paramViewGroup.findViewById(2131307517));
+    AppMethodBeat.i(190197);
+    this.gzb = paramb;
+    this.gBu = 1;
+    this.gBv = 2;
+    this.gBw = ((LinearLayout)paramViewGroup.findViewById(2131307640));
+    this.gBx = ((LinearLayout)paramViewGroup.findViewById(2131307621));
+    this.gBy = paramViewGroup.findViewById(2131307641);
+    this.gBz = ((MMEditText)paramViewGroup.findViewById(2131307643));
+    this.gBA = ((TextView)paramViewGroup.findViewById(2131307769));
+    this.gBB = ((ImageView)paramViewGroup.findViewById(2131307637));
+    this.gBC = ((TextView)paramViewGroup.findViewById(2131307598));
     paramb = aa.k(paramViewGroup.getContext(), false);
     k.g(paramb, "SmileyPanelFactory.getSm…anel(root.context, false)");
-    this.qVT = paramb;
+    this.gBD = paramb;
     paramb = paramViewGroup.getContext();
     k.g(paramb, "root.context");
     this.context = paramb;
-    this.qWg = ao.ap(this.context, 2131165299);
-    paramb = this.KvE;
-    k.g(paramb, "inputEmoji");
-    paramb.setTag(Boolean.FALSE);
-    paramb = this.KvE;
-    Context localContext = paramViewGroup.getContext();
-    k.g(localContext, "root.context");
-    paramb.setImageDrawable(am.e(localContext.getResources().getDrawable(2131690482), -1));
-    this.KvE.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gBG = this.gBt;
+    this.gBG = this.gBt;
+    paramb = this.gBB;
+    Object localObject = paramViewGroup.getContext();
+    k.g(localObject, "root.context");
+    paramb.setImageDrawable(am.e(((Context)localObject).getResources().getDrawable(2131690482), -1));
+    this.gBB.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(202946);
-        if (paramAnonymousView == null)
-        {
-          paramAnonymousView = new v("null cannot be cast to non-null type android.widget.ImageView");
-          AppMethodBeat.o(202946);
-          throw paramAnonymousView;
-        }
-        paramAnonymousView = ((ImageView)paramAnonymousView).getTag();
-        if (paramAnonymousView == null)
-        {
-          paramAnonymousView = new v("null cannot be cast to non-null type kotlin.Boolean");
-          AppMethodBeat.o(202946);
-          throw paramAnonymousView;
-        }
-        if (!((Boolean)paramAnonymousView).booleanValue()) {}
+        AppMethodBeat.i(190164);
+        if (z.e(this.gBJ) != z.f(this.gBJ)) {}
         for (boolean bool = true;; bool = false)
         {
-          z.a(this.KvH, bool);
-          AppMethodBeat.o(202946);
+          z.a(this.gBJ, bool);
+          AppMethodBeat.o(190164);
           return;
         }
       }
     });
-    paramb = this.KvC;
-    k.g(paramb, "inputEt");
-    paramb.setFilters(new InputFilter[] { (InputFilter)new InputFilter()
-    {
-      public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
-      {
-        AppMethodBeat.i(202947);
-        paramAnonymousCharSequence = String.valueOf(paramAnonymousCharSequence);
-        paramAnonymousSpanned = (CharSequence)"\n";
-        if (paramAnonymousCharSequence == null)
-        {
-          paramAnonymousCharSequence = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(202947);
-          throw paramAnonymousCharSequence;
-        }
-        if (paramAnonymousCharSequence.contentEquals(paramAnonymousSpanned))
-        {
-          paramAnonymousCharSequence = (CharSequence)"";
-          AppMethodBeat.o(202947);
-          return paramAnonymousCharSequence;
-        }
-        AppMethodBeat.o(202947);
-        return null;
-      }
-    }, (InputFilter)new InputFilter.LengthFilter(100) });
-    this.KvC.addTextChangedListener((TextWatcher)new TextWatcher()
+    paramb = (InputFilter)new b(this);
+    localObject = (InputFilter)new z.c(com.tencent.mm.ui.tools.f.a.IRJ);
+    MMEditText localMMEditText = this.gBz;
+    k.g(localMMEditText, "inputEt");
+    localMMEditText.setFilters(new InputFilter[] { paramb, localObject });
+    this.gBz.addTextChangedListener((TextWatcher)new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(202956);
+        AppMethodBeat.i(190173);
         int i;
-        if (paramAnonymousEditable != null) {
-          if (((CharSequence)paramAnonymousEditable).length() > 0) {
-            i = 1;
-          }
-        }
-        for (;;)
+        if ((z.g(this.gBJ) == 0) || (z.g(this.gBJ) != this.gBJ.ama().getHeight()))
         {
-          if (i != 0)
+          z.a(this.gBJ, this.gBJ.ama().getHeight());
+          paramAnonymousEditable = new Bundle();
+          i = com.tencent.mm.sdk.platformtools.y.iv(z.d(this.gBJ));
+          int j = this.gBJ.ama().getHeight();
+          int k = ap.ej(paramViewGroup.getContext());
+          LinearLayout localLinearLayout = z.h(this.gBJ);
+          k.g(localLinearLayout, "inputLayout");
+          paramAnonymousEditable.putInt("PARAM_LIVE_COMMENT_OFFSET_HEIGHT", i + j + k + localLinearLayout.getPaddingBottom());
+          z.c(this.gBJ).a(b.c.gyK, paramAnonymousEditable);
+        }
+        paramAnonymousEditable = z.b(this.gBJ);
+        k.g(paramAnonymousEditable, "inputEt");
+        paramAnonymousEditable = paramAnonymousEditable.getText();
+        if (paramAnonymousEditable != null) {
+          if (((CharSequence)paramAnonymousEditable).length() > 0)
           {
-            paramAnonymousEditable = String.valueOf(paramAnonymousEditable);
-            if (paramAnonymousEditable == null)
-            {
-              paramAnonymousEditable = new v("null cannot be cast to non-null type kotlin.CharSequence");
-              AppMethodBeat.o(202956);
-              throw paramAnonymousEditable;
-              i = 0;
-              continue;
-              i = 0;
+            i = 1;
+            if (i == 0) {
+              break label265;
             }
-            else if (((CharSequence)n.trim((CharSequence)paramAnonymousEditable).toString()).length() > 0)
-            {
-              i = 1;
-              if (i == 0) {
-                break label114;
-              }
+            paramAnonymousEditable = z.b(this.gBJ);
+            k.g(paramAnonymousEditable, "inputEt");
+            paramAnonymousEditable = paramAnonymousEditable.getText();
+            if (paramAnonymousEditable == null) {
+              break label260;
+            }
+            if (d.n.n.aD((CharSequence)paramAnonymousEditable)) {
+              break label255;
+            }
+            i = 1;
+            label220:
+            if (i == 0) {
+              break label265;
             }
           }
         }
-        label114:
+        label260:
+        label265:
         for (boolean bool = true;; bool = false)
         {
-          if (bool != z.d(this.KvH)) {
-            break label119;
+          if (bool != z.i(this.gBJ)) {
+            break label271;
           }
-          AppMethodBeat.o(202956);
+          AppMethodBeat.o(190173);
           return;
           i = 0;
           break;
+          i = 0;
+          break;
+          label255:
+          i = 0;
+          break label220;
+          i = 0;
+          break label220;
         }
-        label119:
-        z.b(this.KvH, bool);
-        if (z.d(this.KvH))
+        label271:
+        z.b(this.gBJ, bool);
+        if (z.i(this.gBJ))
         {
-          paramAnonymousEditable = z.e(this.KvH);
+          paramAnonymousEditable = z.j(this.gBJ);
           k.g(paramAnonymousEditable, "inputEmoji");
           paramAnonymousEditable = paramAnonymousEditable.getLayoutParams();
           if (paramAnonymousEditable == null)
           {
             paramAnonymousEditable = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-            AppMethodBeat.o(202956);
+            AppMethodBeat.o(190173);
             throw paramAnonymousEditable;
           }
-          ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cd.a.ao(paramViewGroup.getContext(), 2131165284));
+          ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cc.a.au(paramViewGroup.getContext(), 2131165284));
           paramAnonymousEditable = new ValueAnimator();
-          paramAnonymousEditable.setIntValues(new int[] { 0, z.f(this.KvH) });
+          paramAnonymousEditable.setIntValues(new int[] { 0, z.k(this.gBJ) });
           paramAnonymousEditable.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(this));
           paramAnonymousEditable.setDuration(150L);
           paramAnonymousEditable.addListener((Animator.AnimatorListener)new b(this));
           paramAnonymousEditable.start();
-          AppMethodBeat.o(202956);
+          AppMethodBeat.o(190173);
           return;
         }
-        paramAnonymousEditable = z.e(this.KvH);
+        paramAnonymousEditable = z.j(this.gBJ);
         k.g(paramAnonymousEditable, "inputEmoji");
         paramAnonymousEditable = paramAnonymousEditable.getLayoutParams();
         if (paramAnonymousEditable == null)
         {
           paramAnonymousEditable = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-          AppMethodBeat.o(202956);
+          AppMethodBeat.o(190173);
           throw paramAnonymousEditable;
         }
-        ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cd.a.ao(paramViewGroup.getContext(), 2131165289));
+        ((LinearLayout.LayoutParams)paramAnonymousEditable).setMarginStart(com.tencent.mm.cc.a.au(paramViewGroup.getContext(), 2131165289));
         paramAnonymousEditable = new ValueAnimator();
-        paramAnonymousEditable.setIntValues(new int[] { z.f(this.KvH), 0 });
+        paramAnonymousEditable.setIntValues(new int[] { z.k(this.gBJ), 0 });
         paramAnonymousEditable.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this));
         paramAnonymousEditable.setDuration(150L);
         paramAnonymousEditable.addListener((Animator.AnimatorListener)new d(this));
         paramAnonymousEditable.start();
-        AppMethodBeat.o(202956);
+        AppMethodBeat.o(190173);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
       static final class a
         implements ValueAnimator.AnimatorUpdateListener
       {
-        a(z.3 param3) {}
+        a(z.2 param2) {}
         
         public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
         {
-          AppMethodBeat.i(202948);
+          AppMethodBeat.i(190165);
           if (paramValueAnimator != null) {}
           for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
           {
             paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-            AppMethodBeat.o(202948);
+            AppMethodBeat.o(190165);
             throw paramValueAnimator;
           }
           float f = ((Integer)paramValueAnimator).intValue();
-          paramValueAnimator = z.g(this.KvI.KvH);
+          paramValueAnimator = z.l(this.gBK.gBJ);
           k.g(paramValueAnimator, "sendBtn");
           paramValueAnimator = paramValueAnimator.getLayoutParams();
-          paramValueAnimator.width = d.h.a.bU(f);
-          TextView localTextView = z.g(this.KvI.KvH);
+          paramValueAnimator.width = d.h.a.cj(f);
+          TextView localTextView = z.l(this.gBK.gBJ);
           k.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramValueAnimator);
-          paramValueAnimator = z.g(this.KvI.KvH);
+          paramValueAnimator = z.l(this.gBK.gBJ);
           k.g(paramValueAnimator, "sendBtn");
-          paramValueAnimator.setAlpha(f / z.f(this.KvI.KvH));
-          AppMethodBeat.o(202948);
+          paramValueAnimator.setAlpha(f / z.k(this.gBK.gBJ));
+          AppMethodBeat.o(190165);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/live/plugin/LiveInputPlugin$3$afterTextChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
+      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/plugin/LiveInputPlugin$2$afterTextChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
       public static final class b
         implements Animator.AnimatorListener
       {
         public final void onAnimationCancel(Animator paramAnimator)
         {
-          AppMethodBeat.i(202950);
-          paramAnimator = z.g(this.KvI.KvH);
+          AppMethodBeat.i(190167);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator = paramAnimator.getLayoutParams();
-          paramAnimator.width = z.f(this.KvI.KvH);
-          TextView localTextView = z.g(this.KvI.KvH);
+          paramAnimator.width = z.k(this.gBK.gBJ);
+          TextView localTextView = z.l(this.gBK.gBJ);
           k.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramAnimator);
-          paramAnimator = z.g(this.KvI.KvH);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator.setAlpha(1.0F);
-          AppMethodBeat.o(202950);
+          AppMethodBeat.o(190167);
         }
         
         public final void onAnimationEnd(Animator paramAnimator)
         {
-          AppMethodBeat.i(202949);
-          paramAnimator = z.g(this.KvI.KvH);
+          AppMethodBeat.i(190166);
+          paramAnimator = z.l(this.gBK.gBJ);
+          k.g(paramAnimator, "sendBtn");
+          paramAnimator.setVisibility(0);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator = paramAnimator.getLayoutParams();
-          paramAnimator.width = z.f(this.KvI.KvH);
-          TextView localTextView = z.g(this.KvI.KvH);
+          paramAnimator.width = z.k(this.gBK.gBJ);
+          TextView localTextView = z.l(this.gBK.gBJ);
           k.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramAnimator);
-          paramAnimator = z.g(this.KvI.KvH);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator.setAlpha(1.0F);
-          AppMethodBeat.o(202949);
+          AppMethodBeat.o(190166);
         }
         
         public final void onAnimationRepeat(Animator paramAnimator) {}
         
         public final void onAnimationStart(Animator paramAnimator)
         {
-          AppMethodBeat.i(202951);
-          paramAnimator = z.g(this.KvI.KvH);
+          AppMethodBeat.i(190168);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(0);
-          AppMethodBeat.o(202951);
+          AppMethodBeat.o(190168);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
       static final class c
         implements ValueAnimator.AnimatorUpdateListener
       {
-        c(z.3 param3) {}
+        c(z.2 param2) {}
         
         public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
         {
-          AppMethodBeat.i(202952);
+          AppMethodBeat.i(190169);
           if (paramValueAnimator != null) {}
           for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
           {
             paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-            AppMethodBeat.o(202952);
+            AppMethodBeat.o(190169);
             throw paramValueAnimator;
           }
           float f = ((Integer)paramValueAnimator).intValue();
-          paramValueAnimator = z.g(this.KvI.KvH);
+          paramValueAnimator = z.l(this.gBK.gBJ);
           k.g(paramValueAnimator, "sendBtn");
           paramValueAnimator = paramValueAnimator.getLayoutParams();
-          paramValueAnimator.width = d.h.a.bU(f);
-          TextView localTextView = z.g(this.KvI.KvH);
+          paramValueAnimator.width = d.h.a.cj(f);
+          TextView localTextView = z.l(this.gBK.gBJ);
           k.g(localTextView, "sendBtn");
           localTextView.setLayoutParams(paramValueAnimator);
-          paramValueAnimator = z.g(this.KvI.KvH);
+          paramValueAnimator = z.l(this.gBK.gBJ);
           k.g(paramValueAnimator, "sendBtn");
-          paramValueAnimator.setAlpha(f / z.f(this.KvI.KvH));
-          AppMethodBeat.o(202952);
+          paramValueAnimator.setAlpha(f / z.k(this.gBK.gBJ));
+          AppMethodBeat.o(190169);
         }
       }
       
-      @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/live/plugin/LiveInputPlugin$3$afterTextChanged$4", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
+      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/plugin/LiveInputPlugin$2$afterTextChanged$4", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
       public static final class d
         implements Animator.AnimatorListener
       {
         public final void onAnimationCancel(Animator paramAnimator)
         {
-          AppMethodBeat.i(202954);
-          paramAnimator = z.g(this.KvI.KvH);
+          AppMethodBeat.i(190171);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(8);
-          AppMethodBeat.o(202954);
+          AppMethodBeat.o(190171);
         }
         
         public final void onAnimationEnd(Animator paramAnimator)
         {
-          AppMethodBeat.i(202953);
-          paramAnimator = z.g(this.KvI.KvH);
+          AppMethodBeat.i(190170);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(8);
-          AppMethodBeat.o(202953);
+          AppMethodBeat.o(190170);
         }
         
         public final void onAnimationRepeat(Animator paramAnimator) {}
         
         public final void onAnimationStart(Animator paramAnimator)
         {
-          AppMethodBeat.i(202955);
-          paramAnimator = z.g(this.KvI.KvH);
+          AppMethodBeat.i(190172);
+          paramAnimator = z.l(this.gBK.gBJ);
           k.g(paramAnimator, "sendBtn");
           paramAnimator.setVisibility(0);
-          AppMethodBeat.o(202955);
+          AppMethodBeat.o(190172);
         }
       }
     });
-    this.KvD.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    if (aly())
+    {
+      paramb = this.gBy;
+      k.g(paramb, "inputParent");
+      paramb = paramb.getLayoutParams();
+      if (paramb == null)
+      {
+        paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(190197);
+        throw paramViewGroup;
+      }
+      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ap.ej(paramViewGroup.getContext()));
+    }
+    this.gBA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(202957);
-        paramAnonymousView = z.b(this.KvH);
+        AppMethodBeat.i(190175);
+        paramAnonymousView = com.tencent.mm.live.b.g.guG;
+        if (com.tencent.mm.live.b.g.akR())
+        {
+          new com.tencent.mm.ui.widget.a.f.a(z.d(this.gBJ)).fvx().av((CharSequence)z.d(this.gBJ).getResources().getString(2131766579)).acQ(2131755792).b((com.tencent.mm.ui.widget.a.f.c)1.gBL).show();
+          AppMethodBeat.o(190175);
+          return;
+        }
+        paramAnonymousView = z.b(this.gBJ);
         k.g(paramAnonymousView, "inputEt");
         if (paramAnonymousView.getText() != null)
         {
-          z.h(this.KvH);
-          paramAnonymousView = z.i(this.KvH);
+          z.m(this.gBJ);
+          paramAnonymousView = z.d(this.gBJ);
           if (paramAnonymousView == null)
           {
             paramAnonymousView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-            AppMethodBeat.o(202957);
+            AppMethodBeat.o(190175);
             throw paramAnonymousView;
           }
           ((MMActivity)paramAnonymousView).hideVKB();
-          z.j(this.KvH);
-          paramAnonymousView = z.b(this.KvH);
+          z.n(this.gBJ);
+          paramAnonymousView = z.b(this.gBJ);
           k.g(paramAnonymousView, "inputEt");
           paramAnonymousView = paramAnonymousView.getText();
-          Object localObject = z.b(this.KvH);
+          Object localObject = z.b(this.gBJ);
           k.g(localObject, "inputEt");
           ((MMEditText)localObject).setText(null);
-          localObject = h.xfu;
+          localObject = i.gvw;
           paramAnonymousView = paramAnonymousView.toString();
-          localObject = e.c.qYs;
-          h.gQ(paramAnonymousView, e.c.ema());
-          b.b.a(z.c(this.KvH), b.c.FBt);
-          if (z.c(this.KvH).getLiveRole() == 0) {
-            f.fQh();
+          localObject = com.tencent.mm.live.b.f.c.gtp;
+          i.T(paramAnonymousView, com.tencent.mm.live.b.f.c.akl());
+          b.b.a(z.c(this.gBJ), b.c.gyj);
+          if (z.c(this.gBJ).getLiveRole() == 0) {
+            f.anu();
           }
         }
-        AppMethodBeat.o(202957);
+        AppMethodBeat.o(190175);
       }
     });
-    this.KvF.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gBw.setOnClickListener((View.OnClickListener)z.4.gBM);
+    this.gBC.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(202958);
-        z.h(this.KvH);
-        paramAnonymousView = z.i(this.KvH);
+        AppMethodBeat.i(190177);
+        z.m(this.gBJ);
+        paramAnonymousView = z.d(this.gBJ);
         if (paramAnonymousView == null)
         {
           paramAnonymousView = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-          AppMethodBeat.o(202958);
+          AppMethodBeat.o(190177);
           throw paramAnonymousView;
         }
         ((MMActivity)paramAnonymousView).hideVKB();
-        z.j(this.KvH);
-        AppMethodBeat.o(202958);
+        z.n(this.gBJ);
+        AppMethodBeat.o(190177);
       }
     });
-    this.qVT.setEntranceScene(ChatFooterPanel.Lwx);
-    this.qVT.exn();
-    this.qVT.exp();
-    this.qVT.exo();
-    this.qVT.setVisibility(4);
-    this.qVT.onResume();
-    this.qVT.setOnTextOperationListener((ChatFooterPanel.a)new c(this));
-    AppMethodBeat.o(202969);
+    this.gBD.setEntranceScene(ChatFooterPanel.Dnw);
+    this.gBD.eMH();
+    this.gBD.eMJ();
+    this.gBD.eMI();
+    this.gBD.setVisibility(4);
+    this.gBD.onResume();
+    this.gBD.setOnTextOperationListener((ChatFooterPanel.a)new f(this));
+    AppMethodBeat.o(190197);
   }
   
-  private final void csT()
+  private final void alY()
   {
-    AppMethodBeat.i(202964);
-    ImageView localImageView = this.KvE;
-    k.g(localImageView, "inputEmoji");
-    if (k.g(localImageView.getTag(), Boolean.FALSE))
+    AppMethodBeat.i(190187);
+    if (this.gBG != this.gBv)
     {
-      AppMethodBeat.o(202964);
+      AppMethodBeat.o(190187);
       return;
     }
-    localImageView = this.KvE;
-    Context localContext = this.pTc.getContext();
+    ImageView localImageView = this.gBB;
+    Context localContext = this.gnb.getContext();
     k.g(localContext, "root.context");
     localImageView.setImageDrawable(am.e(localContext.getResources().getDrawable(2131690482), -1));
-    localImageView = this.KvE;
-    k.g(localImageView, "inputEmoji");
-    localImageView.setTag(Boolean.FALSE);
-    this.qVT.animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new b(this)).start();
-    AppMethodBeat.o(202964);
+    this.gBD.animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new d(this)).start();
+    AppMethodBeat.o(190187);
   }
   
-  private final void fOV()
+  private final void alZ()
   {
-    AppMethodBeat.i(202965);
-    Object localObject = this.KvE;
-    k.g(localObject, "inputEmoji");
-    if (k.g(((ImageView)localObject).getTag(), Boolean.TRUE))
-    {
-      AppMethodBeat.o(202965);
-      return;
-    }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("mode", "preview");
-    this.IIs.a(b.c.IId, (Bundle)localObject);
-    localObject = this.Kvz;
-    k.g(localObject, "inputLayout");
-    ((LinearLayout)localObject).setVisibility(4);
-    this.KvC.clearFocus();
-    localObject = this.pTc.getContext().getSystemService("input_method");
+    AppMethodBeat.i(190188);
+    this.gBG = this.gBt;
+    this.gnb.setVisibility(4);
+    this.gBz.clearFocus();
+    Object localObject = this.gnb.getContext().getSystemService("input_method");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-      AppMethodBeat.o(202965);
+      AppMethodBeat.o(190188);
       throw ((Throwable)localObject);
     }
     localObject = (InputMethodManager)localObject;
-    MMEditText localMMEditText = this.KvC;
+    MMEditText localMMEditText = this.gBz;
     k.g(localMMEditText, "inputEt");
     ((InputMethodManager)localObject).hideSoftInputFromWindow(localMMEditText.getWindowToken(), 0);
     localObject = new Bundle();
     ((Bundle)localObject).putBoolean("PARAM_IS_ENTERING_COMMENT", false);
-    this.IIs.a(b.c.FJZ, (Bundle)localObject);
-    AppMethodBeat.o(202965);
+    this.gzb.a(b.c.gyl, (Bundle)localObject);
+    AppMethodBeat.o(190188);
   }
   
-  public final void X(boolean paramBoolean, int paramInt)
+  private final void nl(int paramInt)
   {
-    AppMethodBeat.i(202967);
-    super.X(paramBoolean, paramInt);
-    if (!paramBoolean)
+    AppMethodBeat.i(190191);
+    Object localObject1;
+    Object localObject2;
+    if ((this.gnb.getContext() instanceof Activity))
     {
-      fOV();
-      AppMethodBeat.o(202967);
+      localObject1 = this.gBy;
+      k.g(localObject1, "inputParent");
+      localObject1 = ((View)localObject1).getLayoutParams();
+      if (localObject1 == null)
+      {
+        localObject1 = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        AppMethodBeat.o(190191);
+        throw ((Throwable)localObject1);
+      }
+      localObject2 = (LinearLayout.LayoutParams)localObject1;
+      if (aly()) {
+        break label268;
+      }
+      ((LinearLayout.LayoutParams)localObject2).bottomMargin = (ap.ej(this.context) + paramInt);
+      localObject2 = this.gBy;
+      k.g(localObject2, "inputParent");
+      ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = new LinearLayout.LayoutParams(-1, paramInt);
+      if (aly()) {
+        break label277;
+      }
+      ((LinearLayout.LayoutParams)localObject1).bottomMargin = ap.ej(this.context);
+    }
+    for (;;)
+    {
+      this.gBD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (this.gBD.getParent() == null) {
+        this.gBx.addView((View)this.gBD, (ViewGroup.LayoutParams)localObject1);
+      }
+      localObject1 = new Bundle();
+      int i = ama().getHeight();
+      int j = ap.ej(this.gnb.getContext());
+      localObject2 = this.gBw;
+      k.g(localObject2, "inputLayout");
+      ((Bundle)localObject1).putInt("PARAM_LIVE_COMMENT_OFFSET_HEIGHT", i + paramInt + j + ((LinearLayout)localObject2).getPaddingBottom());
+      this.gzb.a(b.c.gyK, (Bundle)localObject1);
+      AppMethodBeat.o(190191);
       return;
+      label268:
+      ((LinearLayout.LayoutParams)localObject2).bottomMargin = paramInt;
+      break;
+      label277:
+      ((LinearLayout.LayoutParams)localObject1).setMarginEnd(ap.ej(this.context));
     }
-    csT();
-    if ((this.pTc.getContext() instanceof Activity))
-    {
-      Object localObject = this.KvB;
-      k.g(localObject, "inputParent");
-      localObject = ((View)localObject).getLayoutParams();
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-        AppMethodBeat.o(202967);
-        throw ((Throwable)localObject);
-      }
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = (ap.eb(this.context) + paramInt);
-      View localView = this.KvB;
-      k.g(localView, "inputParent");
-      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      if (this.qVT.getParent() == null)
-      {
-        localObject = new LinearLayout.LayoutParams(-1, paramInt);
-        this.qVT.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.KvA.addView((View)this.qVT, (ViewGroup.LayoutParams)localObject);
-      }
-    }
-    AppMethodBeat.o(202967);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(202966);
+    AppMethodBeat.i(190189);
     k.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (aa.ciE[paramc.ordinal()])
+    switch (aa.cfA[paramc.ordinal()])
     {
     }
-    for (;;)
+    do
     {
-      AppMethodBeat.o(202966);
-      return;
-      agK(8);
-      AppMethodBeat.o(202966);
-      return;
-      agK(0);
-      AppMethodBeat.o(202966);
-      return;
-      if (paramBundle != null) {}
-      for (paramc = paramBundle.getString("mode"); paramc == null; paramc = null)
+      do
       {
-        AppMethodBeat.o(202966);
+        AppMethodBeat.o(190189);
         return;
-      }
-      switch (paramc.hashCode())
-      {
-      default: 
-        break;
-      case 100358090: 
-        if (paramc.equals("input"))
-        {
-          paramc = this.Kvz;
-          k.g(paramc, "inputLayout");
-          paramc.setVisibility(0);
-          this.KvC.requestFocus();
-          paramc = (InputMethodManager)this.pTc.getContext().getSystemService("input_method");
-          if (paramc != null) {
-            paramc.showSoftInput((View)this.KvC, 0);
-          }
-          paramc = new Bundle();
-          paramc.putBoolean("PARAM_IS_ENTERING_COMMENT", true);
-          this.IIs.a(b.c.FJZ, paramc);
+        nj(8);
+        AppMethodBeat.o(190189);
+        return;
+        AppMethodBeat.o(190189);
+        return;
+        if (paramBundle == null) {
+          break;
         }
-        break;
+      } while (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") != true);
+      this.gnb.setVisibility(0);
+      paramc = this.gBB;
+      paramBundle = this.gnb.getContext();
+      k.g(paramBundle, "root.context");
+      paramc.setImageDrawable(am.e(paramBundle.getResources().getDrawable(2131690482), -1));
+      this.gBz.requestFocus();
+      paramc = (InputMethodManager)this.gnb.getContext().getSystemService("input_method");
+    } while (paramc == null);
+    paramc.showSoftInput((View)this.gBz, 0);
+    AppMethodBeat.o(190189);
+    return;
+    AppMethodBeat.o(190189);
+  }
+  
+  public final void alM()
+  {
+    AppMethodBeat.i(190193);
+    super.alM();
+    Object localObject = this.gBA;
+    k.g(localObject, "sendBtn");
+    localObject = ((TextView)localObject).getText();
+    TextView localTextView = this.gBA;
+    k.g(localTextView, "sendBtn");
+    int i = (int)StaticLayout.getDesiredWidth((CharSequence)localObject, localTextView.getPaint());
+    int j = ao.av(this.context, 2131165299);
+    localObject = this.gBA;
+    k.g(localObject, "sendBtn");
+    int k = ((TextView)localObject).getPaddingStart();
+    localObject = this.gBA;
+    k.g(localObject, "sendBtn");
+    this.gBE = h.la(j, i + k + ((TextView)localObject).getPaddingEnd());
+    localObject = com.tencent.mm.kernel.g.agQ();
+    k.g(localObject, "MMKernel.network()");
+    ((com.tencent.mm.kernel.b)localObject).agi().a(904, (com.tencent.mm.ak.g)this);
+    AppMethodBeat.o(190193);
+  }
+  
+  public final void alN()
+  {
+    AppMethodBeat.i(190194);
+    super.alN();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
+    k.g(localb, "MMKernel.network()");
+    localb.agi().b(904, (com.tencent.mm.ak.g)this);
+    AppMethodBeat.o(190194);
+  }
+  
+  public final boolean alO()
+  {
+    AppMethodBeat.i(190195);
+    if (this.gnb.getVisibility() == 0)
+    {
+      if (this.gBG == this.gBv)
+      {
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
+        this.gBD.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
+        this.gBG = this.gBt;
+        nl(0);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(190195);
+        return true;
+        alZ();
       }
     }
+    boolean bool = super.alO();
+    AppMethodBeat.o(190195);
+    return bool;
   }
   
-  public final boolean dia()
+  public final View ama()
   {
-    AppMethodBeat.i(202968);
-    LinearLayout localLinearLayout = this.Kvz;
-    k.g(localLinearLayout, "inputLayout");
-    if (localLinearLayout.getVisibility() == 0)
-    {
-      fOV();
-      AppMethodBeat.o(202968);
-      return true;
-    }
-    AppMethodBeat.o(202968);
-    return false;
+    AppMethodBeat.i(190192);
+    View localView = this.gBy;
+    k.g(localView, "inputParent");
+    AppMethodBeat.o(190192);
+    return localView;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/plugin/LiveInputPlugin$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
-  public static final class a {}
+  public final void i(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(190190);
+    super.i(paramBoolean, paramInt);
+    if (!paramBoolean)
+    {
+      if (this.gBG == this.gBu)
+      {
+        this.gBG = this.gBt;
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
+        this.gBD.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
+        nl(0);
+        AppMethodBeat.o(190190);
+      }
+    }
+    else
+    {
+      this.gBG = this.gBu;
+      alY();
+      nl(paramInt);
+    }
+    AppMethodBeat.o(190190);
+  }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/live/plugin/LiveInputPlugin$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
-  public static final class b
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  {
+    AppMethodBeat.i(190196);
+    if (((paramn instanceof s)) && (paramInt2 == -100065))
+    {
+      paramString = com.tencent.mm.live.b.g.guG;
+      com.tencent.mm.live.b.g.akS();
+      c.g((d.g.a.a)new e(this));
+    }
+    AppMethodBeat.o(190196);
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "kotlin.jvm.PlatformType", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "filter"})
+  static final class b
+    implements InputFilter
+  {
+    b(z paramz) {}
+    
+    public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+    {
+      AppMethodBeat.i(190179);
+      paramSpanned = z.b(this.gBJ);
+      k.g(paramSpanned, "inputEt");
+      paramSpanned.getText();
+      paramCharSequence = paramCharSequence.toString();
+      paramSpanned = (CharSequence)"\n";
+      if (paramCharSequence == null)
+      {
+        paramCharSequence = new v("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(190179);
+        throw paramCharSequence;
+      }
+      if (paramCharSequence.contentEquals(paramSpanned))
+      {
+        paramCharSequence = (CharSequence)"";
+        AppMethodBeat.o(190179);
+        return paramCharSequence;
+      }
+      AppMethodBeat.o(190179);
+      return null;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/plugin/LiveInputPlugin$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-logic_release"})
+  public static final class d
     implements Animator.AnimatorListener
   {
     public final void onAnimationCancel(Animator paramAnimator) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(202960);
-      z.a(this.KvH).setAlpha(1.0F);
-      z.a(this.KvH).setVisibility(4);
-      AppMethodBeat.o(202960);
+      AppMethodBeat.i(190181);
+      z.a(this.gBJ).setAlpha(1.0F);
+      z.a(this.gBJ).setVisibility(4);
+      AppMethodBeat.o(190181);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -622,27 +744,25 @@ public final class z
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/live/plugin/LiveInputPlugin$setupEmojiPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-logic_release"})
-  public static final class c
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  static final class e
+    extends d.g.b.l
+    implements d.g.a.a<d.y>
+  {
+    e(z paramz)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/plugin/LiveInputPlugin$setupEmojiPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-logic_release"})
+  public static final class f
     implements ChatFooterPanel.a
   {
-    public final void append(String paramString)
+    public final void amb()
     {
-      AppMethodBeat.i(202961);
-      MMEditText localMMEditText = z.b(this.KvH);
-      if (localMMEditText != null) {
-        localMMEditText.aMd(paramString);
-      }
-      if (z.c(this.KvH).getLiveRole() == 0) {
-        f.fQi();
-      }
-      AppMethodBeat.o(202961);
-    }
-    
-    public final void btF()
-    {
-      AppMethodBeat.i(202962);
-      Object localObject = z.b(this.KvH);
+      AppMethodBeat.i(190185);
+      Object localObject = z.b(this.gBJ);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -650,28 +770,41 @@ public final class z
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
         }
       }
-      localObject = z.b(this.KvH);
+      localObject = z.b(this.gBJ);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
         if (localObject != null)
         {
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(1, 67));
-          AppMethodBeat.o(202962);
+          AppMethodBeat.o(190185);
           return;
         }
       }
-      AppMethodBeat.o(202962);
+      AppMethodBeat.o(190185);
     }
     
-    public final void cqY() {}
+    public final void amc() {}
     
-    public final void lf(boolean paramBoolean) {}
+    public final void append(String paramString)
+    {
+      AppMethodBeat.i(190184);
+      MMEditText localMMEditText = z.b(this.gBJ);
+      if (localMMEditText != null) {
+        localMMEditText.aRF(paramString);
+      }
+      if (z.c(this.gBJ).getLiveRole() == 0) {
+        f.anv();
+      }
+      AppMethodBeat.o(190184);
+    }
+    
+    public final void dS(boolean paramBoolean) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.z
  * JD-Core Version:    0.7.0.1
  */

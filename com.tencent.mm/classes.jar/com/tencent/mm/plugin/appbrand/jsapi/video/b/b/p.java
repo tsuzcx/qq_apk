@@ -6,32 +6,32 @@ import java.util.Comparator;
 
 public final class p
 {
-  static final Comparator<a> bzh;
-  static final Comparator<a> bzi;
-  final int bzj;
-  final ArrayList<a> bzk;
-  int bzm;
-  int bzn;
-  int bzo;
-  int bzp;
-  final a[] kpq;
+  static final Comparator<a> bwP;
+  static final Comparator<a> bwQ;
+  final int bwR;
+  final ArrayList<a> bwS;
+  int bwU;
+  int bwV;
+  int bwW;
+  int bwX;
+  final a[] kQJ;
   
   static
   {
-    AppMethodBeat.i(193916);
-    bzh = new Comparator() {};
-    bzi = new Comparator() {};
-    AppMethodBeat.o(193916);
+    AppMethodBeat.i(194263);
+    bwP = new Comparator() {};
+    bwQ = new Comparator() {};
+    AppMethodBeat.o(194263);
   }
   
   public p()
   {
-    AppMethodBeat.i(193915);
-    this.bzj = 2000;
-    this.kpq = new a[5];
-    this.bzk = new ArrayList();
-    this.bzm = -1;
-    AppMethodBeat.o(193915);
+    AppMethodBeat.i(194262);
+    this.bwR = 2000;
+    this.kQJ = new a[5];
+    this.bwS = new ArrayList();
+    this.bwU = -1;
+    AppMethodBeat.o(194262);
   }
   
   static final class a

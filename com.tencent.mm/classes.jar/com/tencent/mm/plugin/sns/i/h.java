@@ -1,115 +1,74 @@
 package com.tencent.mm.plugin.sns.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public final class h
+  extends com.tencent.mm.bw.a
 {
-  public boolean dfO;
-  public String sOz;
-  public String wMY;
-  public String wMZ;
-  public int wNA;
-  public List<a> wNB;
-  public String wNN;
-  public int[] wNO;
+  public int state;
+  public String xxO;
   
-  public h()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(96140);
-    this.wMZ = "";
-    this.wMY = "";
-    this.sOz = "";
-    this.wNN = "";
-    this.wNA = 0;
-    this.wNB = new ArrayList();
-    this.dfO = true;
-    AppMethodBeat.o(96140);
-  }
-  
-  public final boolean duO()
-  {
-    AppMethodBeat.i(96141);
-    if ((this.dfO) && (this.wNB != null) && (this.wNB.size() > 0))
+    AppMethodBeat.i(96159);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(96141);
-      return true;
-    }
-    AppMethodBeat.o(96141);
-    return false;
-  }
-  
-  public final boolean f(String paramString1, String paramString2, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(96142);
-    this.wMZ = paramString1;
-    this.wMY = paramString2;
-    if (paramMap == null)
-    {
-      AppMethodBeat.o(96142);
-      return false;
-    }
-    try
-    {
-      this.wNB.clear();
-      this.sOz = bt.by((String)paramMap.get("language"), "");
-      this.wNN = bt.by((String)paramMap.get("first_step_order"), "");
-      paramString2 = this.wNN.split("\\|");
-      this.wNO = new int[paramString2.length];
-      if (this.wNO.length != 0) {
-        break label476;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.xxO != null) {
+        paramVarArgs.d(1, this.xxO);
       }
-      this.dfO = false;
+      paramVarArgs.aR(2, this.state);
+      AppMethodBeat.o(96159);
+      return 0;
     }
-    catch (Exception paramString1)
+    if (paramInt == 1) {
+      if (this.xxO == null) {
+        break label258;
+      }
+    }
+    label258:
+    for (paramInt = f.a.a.b.b.a.e(1, this.xxO) + 0;; paramInt = 0)
     {
-      for (;;)
+      int i = f.a.a.b.b.a.bx(2, this.state);
+      AppMethodBeat.o(96159);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-        int j;
-        int k;
-        ad.printErrStackTrace("MicroMsg.SnsAdAbTestInfo", paramString1, "feed xml error ", new Object[0]);
-        continue;
-        int i = 0;
-        continue;
-        i += 1;
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        AppMethodBeat.o(96159);
+        return 0;
       }
-    }
-    if (i < paramString2.length)
-    {
-      this.wNO[i] = bt.aGh(paramString2[i]);
-      if ((this.wNO[i] <= 0) || (this.wNO[i] > 3)) {
-        this.dfO = false;
-      }
-    }
-    else
-    {
-      j = bt.aGh((String)paramMap.get("wording_count"));
-      k = bt.aGh((String)paramMap.get("expertype"));
-      i = 0;
-      while (i < j)
+      if (paramInt == 3)
       {
-        paramString2 = new a();
-        paramString2.wMs = bt.aGh((String)paramMap.get(String.format("wording_%d_id", new Object[] { Integer.valueOf(i + 1) })));
-        paramString2.wMt = bt.by((String)paramMap.get(String.format("wording_%d_zh_CN", new Object[] { Integer.valueOf(i + 1) })), "");
-        paramString2.wMu = bt.by((String)paramMap.get(String.format("wording_%d_zh_TW", new Object[] { Integer.valueOf(i + 1) })), "");
-        paramString2.wMv = bt.by((String)paramMap.get(String.format("wording_%d_en", new Object[] { Integer.valueOf(i + 1) })), "");
-        paramString2.wMw = bt.aGh((String)paramMap.get(String.format("wording_%d_action_type", new Object[] { Integer.valueOf(i + 1) })));
-        this.wNB.add(paramString2);
-        i += 1;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        h localh = (h)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(96159);
+          return -1;
+        case 1: 
+          localh.xxO = locala.LVo.readString();
+          AppMethodBeat.o(96159);
+          return 0;
+        }
+        localh.state = locala.LVo.xF();
+        AppMethodBeat.o(96159);
+        return 0;
       }
-      ad.i("MicroMsg.SnsAdAbTestInfo", "expertType " + k + " " + paramString1 + " " + this.wNN);
-      AppMethodBeat.o(96142);
-      return false;
+      AppMethodBeat.o(96159);
+      return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.i.h
  * JD-Core Version:    0.7.0.1
  */

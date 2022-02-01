@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements d
 {
-  private final g.a blq;
+  private final g.a blV;
   
   public b(g.a parama)
   {
-    this.blq = parama;
+    this.blV = parama;
   }
   
-  public final g uo()
+  public final g uk()
   {
     AppMethodBeat.i(62822);
-    g localg = this.blq.vi();
+    g localg = this.blV.vc();
     AppMethodBeat.o(62822);
     return localg;
   }

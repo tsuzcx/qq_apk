@@ -6,30 +6,30 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.l;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.l;
+import com.tencent.mm.plugin.appbrand.z.l.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class e
 {
-  private static final Set<Object> jvo;
-  private static final char[] lMb;
-  private static final String[] lMc;
+  private static final Set<Object> jVK;
+  private static final char[] mnY;
+  private static final String[] mnZ;
   
   static
   {
     AppMethodBeat.i(135362);
-    jvo = new HashSet();
-    lMb = new char[] { 60, 62, 34, 39, 38, 32, 39 };
-    lMc = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&nbsp;", "&#39;" };
+    jVK = new HashSet();
+    mnY = new char[] { 60, 62, 34, 39, 38, 32, 39 };
+    mnZ = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&nbsp;", "&#39;" };
     AppMethodBeat.o(135362);
   }
   
-  public static String Nl(String paramString)
+  public static String Ru(String paramString)
   {
     AppMethodBeat.i(135356);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -38,9 +38,9 @@ public final class e
     while (i < m)
     {
       int j = 0;
-      while (j < lMb.length)
+      while (j < mnY.length)
       {
-        String str = lMc[j];
+        String str = mnZ[j];
         int k = 0;
         while ((k < str.length()) && (i + k < m) && (str.charAt(k) == paramString.charAt(i + k))) {
           k += 1;
@@ -50,10 +50,10 @@ public final class e
         }
         j += 1;
       }
-      if (j != lMb.length)
+      if (j != mnY.length)
       {
-        localStringBuffer.append(lMb[j]);
-        i = lMc[j].length() + i;
+        localStringBuffer.append(mnY[j]);
+        i = mnZ[j].length() + i;
       }
       else
       {
@@ -66,7 +66,7 @@ public final class e
     return paramString;
   }
   
-  public static String Nm(String paramString)
+  public static String Rv(String paramString)
   {
     AppMethodBeat.i(135357);
     if (paramString == null)
@@ -79,42 +79,42 @@ public final class e
     return paramString;
   }
   
-  public static void bk(Object paramObject)
+  public static void bh(Object paramObject)
   {
     AppMethodBeat.i(135353);
-    jvo.remove(paramObject);
+    jVK.remove(paramObject);
     AppMethodBeat.o(135353);
   }
   
   @Deprecated
-  public static void bql()
+  public static void bxi()
   {
     AppMethodBeat.i(135354);
-    l.bql();
+    l.bxi();
     AppMethodBeat.o(135354);
   }
   
   @Deprecated
-  public static l.a bqm()
+  public static l.a bxj()
   {
-    AppMethodBeat.i(194535);
-    l.a locala = l.bqm();
-    AppMethodBeat.o(194535);
+    AppMethodBeat.i(193525);
+    l.a locala = l.bxj();
+    AppMethodBeat.o(193525);
     return locala;
   }
   
-  public static long bqp()
+  public static long bxm()
   {
     AppMethodBeat.i(135350);
-    long l = bt.aGK();
+    long l = bs.aNx();
     AppMethodBeat.o(135350);
     return l;
   }
   
-  public static <T> T cG(T paramT)
+  public static <T> T cF(T paramT)
   {
     AppMethodBeat.i(135352);
-    jvo.add(paramT);
+    jVK.add(paramT);
     AppMethodBeat.o(135352);
     return paramT;
   }
@@ -127,7 +127,7 @@ public final class e
       AppMethodBeat.o(135358);
       return "[UNKNOWN]";
     }
-    PackageManager localPackageManager = aj.getContext().getPackageManager();
+    PackageManager localPackageManager = ai.getContext().getPackageManager();
     if (localPackageManager == null)
     {
       AppMethodBeat.o(135358);
@@ -145,7 +145,7 @@ public final class e
     }
     catch (Exception paramComponentName)
     {
-      ad.e("MicroMsg.AppBrandUtil", "getActivityTaskAffinity e = %s", new Object[] { paramComponentName });
+      ac.e("MicroMsg.AppBrandUtil", "getActivityTaskAffinity e = %s", new Object[] { paramComponentName });
       AppMethodBeat.o(135358);
     }
     return "[UNKNOWN]";
@@ -154,14 +154,14 @@ public final class e
   public static String getMMString(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(135351);
-    paramVarArgs = aj.getResources().getString(paramInt, paramVarArgs);
+    paramVarArgs = ai.getResources().getString(paramInt, paramVarArgs);
     AppMethodBeat.o(135351);
     return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.e
  * JD-Core Version:    0.7.0.1
  */

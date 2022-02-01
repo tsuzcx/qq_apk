@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.soter.a.f.e.b;
 
 public final class e
   extends d
   implements k, com.tencent.soter.a.f.e
 {
-  private com.tencent.mm.al.g callback;
-  private com.tencent.soter.a.f.b<e.b> rcO = null;
-  private com.tencent.mm.al.b rr;
+  private com.tencent.mm.ak.g callback;
+  private com.tencent.mm.ak.b rr;
+  private com.tencent.soter.a.f.b<e.b> sli = null;
   
-  public final void Dr(int paramInt)
+  public final void Fn(int paramInt)
   {
     AppMethodBeat.i(130814);
-    ad.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
     if (this.callback != null) {
       this.callback.onSceneEnd(4, -1, "", this);
     }
@@ -25,18 +25,18 @@ public final class e
   
   public final void a(com.tencent.soter.a.f.b<e.b> paramb)
   {
-    this.rcO = paramb;
+    this.sli = paramb;
   }
   
-  public final void cuA()
+  public final void cHM()
   {
     AppMethodBeat.i(130813);
-    ad.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy:NetSceneSoterMPUpdateAuthKey authkey required");
+    ac.i("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy:NetSceneSoterMPUpdateAuthKey authkey required");
     if (this.callback != null) {
       this.callback.onSceneEnd(4, -1, "", this);
     }
-    if (this.rcO != null) {
-      this.rcO.eq(new e.b(false));
+    if (this.sli != null) {
+      this.sli.er(new e.b(false));
     }
     AppMethodBeat.o(130813);
   }
@@ -44,24 +44,24 @@ public final class e
   public final void d(int paramInt1, int paramInt2, String paramString, com.tencent.mm.network.q paramq)
   {
     AppMethodBeat.i(130812);
-    ad.d("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    ac.d("MicroMsg.NetSceneSoterMPUpdateAuthKey", "hy: NetSceneSoterMPUpdateAuthKey onGYNetEnd errType: %d , errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    if (this.rcO != null)
+    if (this.sli != null)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.rcO.eq(new e.b(true));
+        this.sli.er(new e.b(true));
         AppMethodBeat.o(130812);
         return;
       }
-      this.rcO.eq(new e.b(false));
+      this.sli.er(new e.b(false));
     }
     AppMethodBeat.o(130812);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(130811);
     this.callback = paramg;
@@ -73,7 +73,7 @@ public final class e
   public final void execute()
   {
     AppMethodBeat.i(130815);
-    com.tencent.mm.kernel.g.aeS().a(this, 0);
+    com.tencent.mm.kernel.g.agi().a(this, 0);
     AppMethodBeat.o(130815);
   }
   
@@ -84,7 +84,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.cqq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cvx;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
 {
-  public static void a(cqq paramcqq)
+  public static void a(cvx paramcvx)
   {
     try
     {
       AppMethodBeat.i(122152);
       try
       {
-        b.o("mkv_k_hellsionpgcldc", paramcqq.toByteArray());
+        b.o("mkv_k_hellsionpgcldc", paramcvx.toByteArray());
         AppMethodBeat.o(122152);
       }
-      catch (Exception paramcqq)
+      catch (Exception paramcvx)
       {
         for (;;)
         {
-          ad.printErrStackTrace("HellSessionPageCloudConfigDao", paramcqq, "habbyge-mali, HellSessionPageCloudConfigDao writeBack", new Object[0]);
+          ac.printErrStackTrace("HellSessionPageCloudConfigDao", paramcvx, "habbyge-mali, HellSessionPageCloudConfigDao writeBack", new Object[0]);
           AppMethodBeat.o(122152);
         }
       }
@@ -31,7 +31,7 @@ public final class e
   }
   
   /* Error */
-  public static cqq cdn()
+  public static cvx ckV()
   {
     // Byte code:
     //   0: ldc 2
@@ -48,7 +48,7 @@ public final class e
     //   20: ifgt +22 -> 42
     //   23: ldc 33
     //   25: ldc 53
-    //   27: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: ldc 47
     //   32: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: aconst_null
@@ -57,13 +57,13 @@ public final class e
     //   39: monitorexit
     //   40: aload_0
     //   41: areturn
-    //   42: new 19	com/tencent/mm/protocal/protobuf/cqq
+    //   42: new 19	com/tencent/mm/protocal/protobuf/cvx
     //   45: dup
-    //   46: invokespecial 61	com/tencent/mm/protocal/protobuf/cqq:<init>	()V
+    //   46: invokespecial 61	com/tencent/mm/protocal/protobuf/cvx:<init>	()V
     //   49: astore_0
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 65	com/tencent/mm/protocal/protobuf/cqq:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   52: invokevirtual 65	com/tencent/mm/protocal/protobuf/cvx:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   55: pop
     //   56: ldc 47
     //   58: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -79,7 +79,7 @@ public final class e
     //   74: ldc 67
     //   76: iconst_0
     //   77: anewarray 4	java/lang/Object
-    //   80: invokestatic 41	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   80: invokestatic 41	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   83: ldc 47
     //   85: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aconst_null
@@ -87,7 +87,7 @@ public final class e
     //   90: goto -53 -> 37
     // Local variable table:
     //   start	length	slot	name	signature
-    //   36	15	0	localcqq	cqq
+    //   36	15	0	localcvx	cvx
     //   64	5	0	localObject1	Object
     //   70	4	0	localIOException	java.io.IOException
     //   89	1	0	localObject2	Object
@@ -106,7 +106,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.e
  * JD-Core Version:    0.7.0.1
  */

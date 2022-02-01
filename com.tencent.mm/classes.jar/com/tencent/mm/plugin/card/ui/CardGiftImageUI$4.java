@@ -20,13 +20,13 @@ final class CardGiftImageUI$4
     {
       AppMethodBeat.o(113321);
       return;
-      q.j(CardGiftImageUI.b(this.nAb), this.nAb);
+      q.j(CardGiftImageUI.b(this.odb), this.odb);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftImageUI.4
  * JD-Core Version:    0.7.0.1
  */

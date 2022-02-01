@@ -18,7 +18,7 @@ public class WalletPayUCheckPwdUI
   {
     AppMethodBeat.i(72160);
     super.onCreate(paramBundle);
-    com.tencent.mm.wallet_core.ui.formview.a.a(this.swk, true);
+    com.tencent.mm.wallet_core.ui.formview.a.a(this.tDZ, true);
     AppMethodBeat.o(72160);
   }
   

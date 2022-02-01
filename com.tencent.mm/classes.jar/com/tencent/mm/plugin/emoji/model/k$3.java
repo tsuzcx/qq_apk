@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.storage.emotion.h;
+import com.tencent.mm.storage.emotion.i;
 import com.tencent.mm.storagebase.h.b;
 
 final class k$3
@@ -8,7 +8,7 @@ final class k$3
 {
   public final String[] getSQLs()
   {
-    return h.SQL_CREATE;
+    return i.SQL_CREATE;
   }
 }
 

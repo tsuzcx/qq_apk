@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public final class d
 {
-  public static int HR(String paramString)
+  public static int LW(String paramString)
   {
     AppMethodBeat.i(159054);
     if ("fingerPrint".equals(paramString))
@@ -25,7 +25,7 @@ public final class d
       AppMethodBeat.o(159054);
       return 2;
     }
-    ad.e("MicroMsg.AppBrandSoterTranslateUtil", "hy: invalid item");
+    ac.e("MicroMsg.AppBrandSoterTranslateUtil", "hy: invalid item");
     AppMethodBeat.o(159054);
     return 0;
   }
@@ -36,7 +36,7 @@ public final class d
     if (paramJSONArray == null) {}
     for (String str = null;; str = paramJSONArray.toString())
     {
-      ad.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translating string array: %s", new Object[] { str });
+      ac.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translating string array: %s", new Object[] { str });
       if ((paramJSONArray != null) && (paramJSONArray.length() != 0)) {
         break;
       }
@@ -52,21 +52,21 @@ public final class d
       }
       try
       {
-        int k = HR(paramJSONArray.getString(i));
+        int k = LW(paramJSONArray.getString(i));
         j = (byte)(j | k);
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.AppBrandSoterTranslateUtil", localJSONException, "hy: json error in translate", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AppBrandSoterTranslateUtil", localJSONException, "hy: json error in translate", new Object[0]);
         }
       }
       i += 1;
     }
     label107:
     paramJSONArray = "0x" + Integer.toHexString(j);
-    ad.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
+    ac.i("MicroMsg.AppBrandSoterTranslateUtil", "hy: translated bitsetStr: %s", new Object[] { paramJSONArray });
     AppMethodBeat.o(159053);
     return paramJSONArray;
   }

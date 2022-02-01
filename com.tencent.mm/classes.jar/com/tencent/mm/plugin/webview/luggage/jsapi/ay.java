@@ -7,9 +7,9 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.f.13;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class ay
@@ -20,21 +20,21 @@ public class ay
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78622);
-    ad.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
-    String str = parama.bZV.bZb.optString("backgroundColor");
-    if (bt.isNullOrNil(str))
+    ac.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
+    String str = parama.bWS.bVY.optString("backgroundColor");
+    if (bs.isNullOrNil(str))
     {
       parama.a("invalid_data", null);
       AppMethodBeat.o(78622);
       return;
     }
-    f localf = (f)parama.bZU;
+    f localf = (f)parama.bWR;
     localf.mHandler.post(new f.13(localf, str));
     parama.a("", null);
     AppMethodBeat.o(78622);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

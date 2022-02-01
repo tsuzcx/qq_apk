@@ -4,13 +4,13 @@ import java.util.List;
 
 public abstract interface d
 {
-  public abstract int am(long paramLong);
+  public abstract int ai(long paramLong);
   
-  public abstract List<a> an(long paramLong);
+  public abstract List<a> aj(long paramLong);
   
-  public abstract long eR(int paramInt);
+  public abstract long eE(int paramInt);
   
-  public abstract int uB();
+  public abstract int uw();
 }
 
 

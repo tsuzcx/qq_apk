@@ -12,18 +12,18 @@ import java.text.SimpleDateFormat;
 public final class j
   extends s<Time>
 {
-  public static final t bGF;
-  private final DateFormat bHd;
+  public static final t bEn;
+  private final DateFormat bEL;
   
   static
   {
     AppMethodBeat.i(108017);
-    bGF = new t()
+    bEn = new t()
     {
       public final <T> s<T> a(f paramAnonymousf, a<T> paramAnonymousa)
       {
         AppMethodBeat.i(107997);
-        if (paramAnonymousa.bIC == Time.class)
+        if (paramAnonymousa.bGk == Time.class)
         {
           paramAnonymousf = new j();
           AppMethodBeat.o(107997);
@@ -39,7 +39,7 @@ public final class j
   public j()
   {
     AppMethodBeat.i(108014);
-    this.bHd = new SimpleDateFormat("hh:mm:ss a");
+    this.bEL = new SimpleDateFormat("hh:mm:ss a");
     AppMethodBeat.o(108014);
   }
   
@@ -57,7 +57,7 @@ public final class j
     //   12: astore_2
     //   13: aload_1
     //   14: aload_2
-    //   15: invokevirtual 49	com/google/a/d/a:bq	(Ljava/lang/String;)Lcom/google/a/d/a;
+    //   15: invokevirtual 49	com/google/a/d/a:bh	(Ljava/lang/String;)Lcom/google/a/d/a;
     //   18: pop
     //   19: ldc 43
     //   21: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -65,7 +65,7 @@ public final class j
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 40	com/google/a/b/a/j:bHd	Ljava/text/DateFormat;
+    //   28: getfield 40	com/google/a/b/a/j:bEL	Ljava/text/DateFormat;
     //   31: aload_2
     //   32: invokevirtual 55	java/text/DateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
     //   35: astore_2
@@ -89,7 +89,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -5,100 +5,98 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dna
-  extends cld
+  extends cpx
 {
-  public int DZg;
-  public int DdZ;
-  public long Dea;
-  public LinkedList<dlh> EBM;
-  public int EDE;
-  public LinkedList<dlh> EDF;
-  public int EDG;
-  public LinkedList<dlh> EDH;
-  public int EDI;
-  public int EDJ;
-  public int EDK;
-  public dmu EDL;
-  
-  public dna()
-  {
-    AppMethodBeat.i(115907);
-    this.EDF = new LinkedList();
-    this.EDH = new LinkedList();
-    this.EBM = new LinkedList();
-    AppMethodBeat.o(115907);
-  }
+  public int DTc;
+  public int DTf;
+  public int EfV;
+  public String FUF;
+  public int FUG;
+  public int FUH;
+  public int hNR;
+  public String ncR;
+  public SKBuiltinBuffer_t vTK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115908);
+    AppMethodBeat.i(148657);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.vTK == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(115908);
+        paramVarArgs = new b("Not all required fields were included: Data");
+        AppMethodBeat.o(148657);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.kX(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(2, this.DdZ);
-      paramVarArgs.aR(3, this.EDE);
-      paramVarArgs.e(4, 8, this.EDF);
-      paramVarArgs.aR(5, this.EDG);
-      paramVarArgs.e(6, 8, this.EDH);
-      paramVarArgs.aG(7, this.Dea);
-      paramVarArgs.aR(8, this.DZg);
-      paramVarArgs.aR(9, this.EDI);
-      paramVarArgs.e(10, 8, this.EBM);
-      paramVarArgs.aR(11, this.EDJ);
-      paramVarArgs.aR(12, this.EDK);
-      if (this.EDL != null)
+      if (this.ncR != null) {
+        paramVarArgs.d(2, this.ncR);
+      }
+      if (this.vTK != null)
       {
-        paramVarArgs.kX(13, this.EDL.computeSize());
-        this.EDL.writeFields(paramVarArgs);
+        paramVarArgs.ln(3, this.vTK.computeSize());
+        this.vTK.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(115908);
+      paramVarArgs.aR(4, this.EfV);
+      if (this.FUF != null) {
+        paramVarArgs.d(5, this.FUF);
+      }
+      paramVarArgs.aR(6, this.hNR);
+      paramVarArgs.aR(7, this.FUG);
+      paramVarArgs.aR(8, this.DTf);
+      paramVarArgs.aR(9, this.FUH);
+      paramVarArgs.aR(10, this.DTc);
+      AppMethodBeat.o(148657);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label1278;
+      if (this.BaseRequest == null) {
+        break label914;
       }
     }
-    label1278:
-    for (paramInt = f.a.a.a.kW(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label914:
+    for (int i = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bA(2, this.DdZ) + f.a.a.b.b.a.bA(3, this.EDE) + f.a.a.a.c(4, 8, this.EDF) + f.a.a.b.b.a.bA(5, this.EDG) + f.a.a.a.c(6, 8, this.EDH) + f.a.a.b.b.a.q(7, this.Dea) + f.a.a.b.b.a.bA(8, this.DZg) + f.a.a.b.b.a.bA(9, this.EDI) + f.a.a.a.c(10, 8, this.EBM) + f.a.a.b.b.a.bA(11, this.EDJ) + f.a.a.b.b.a.bA(12, this.EDK);
       paramInt = i;
-      if (this.EDL != null) {
-        paramInt = i + f.a.a.a.kW(13, this.EDL.computeSize());
+      if (this.ncR != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.ncR);
       }
-      AppMethodBeat.o(115908);
-      return paramInt;
+      i = paramInt;
+      if (this.vTK != null) {
+        i = paramInt + f.a.a.a.lm(3, this.vTK.computeSize());
+      }
+      i += f.a.a.b.b.a.bx(4, this.EfV);
+      paramInt = i;
+      if (this.FUF != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.FUF);
+      }
+      i = f.a.a.b.b.a.bx(6, this.hNR);
+      int j = f.a.a.b.b.a.bx(7, this.FUG);
+      int k = f.a.a.b.b.a.bx(8, this.DTf);
+      int m = f.a.a.b.b.a.bx(9, this.FUH);
+      int n = f.a.a.b.b.a.bx(10, this.DTc);
+      AppMethodBeat.o(148657);
+      return paramInt + i + j + k + m + n;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.EDF.clear();
-        this.EDH.clear();
-        this.EBM.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cld.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cld.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.vTK == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(115908);
+          paramVarArgs = new b("Not all required fields were included: Data");
+          AppMethodBeat.o(148657);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(115908);
+        AppMethodBeat.o(148657);
         return 0;
       }
       if (paramInt == 3)
@@ -111,124 +109,79 @@ public final class dna
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(115908);
+          AppMethodBeat.o(148657);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
+            localObject1 = new iv();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdna.BaseResponse = ((BaseResponse)localObject1);
+            for (bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdna.BaseRequest = ((iv)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(115908);
+          AppMethodBeat.o(148657);
           return 0;
         case 2: 
-          localdna.DdZ = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
+          localdna.ncR = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(148657);
           return 0;
         case 3: 
-          localdna.EDE = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new SKBuiltinBuffer_t();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdna.vTK = ((SKBuiltinBuffer_t)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(148657);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dlh();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dlh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdna.EDF.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(115908);
+          localdna.EfV = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(148657);
           return 0;
         case 5: 
-          localdna.EDG = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
+          localdna.FUF = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(148657);
           return 0;
         case 6: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dlh();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dlh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdna.EDH.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(115908);
+          localdna.hNR = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(148657);
           return 0;
         case 7: 
-          localdna.Dea = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(115908);
+          localdna.FUG = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(148657);
           return 0;
         case 8: 
-          localdna.DZg = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
+          localdna.DTf = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(148657);
           return 0;
         case 9: 
-          localdna.EDI = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
-          return 0;
-        case 10: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dlh();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dlh)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdna.EBM.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(115908);
-          return 0;
-        case 11: 
-          localdna.EDJ = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
-          return 0;
-        case 12: 
-          localdna.EDK = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115908);
+          localdna.FUH = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(148657);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dmu();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dmu)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localdna.EDL = ((dmu)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(115908);
+        localdna.DTc = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(148657);
         return 0;
       }
-      AppMethodBeat.o(115908);
+      AppMethodBeat.o(148657);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dna
  * JD-Core Version:    0.7.0.1
  */

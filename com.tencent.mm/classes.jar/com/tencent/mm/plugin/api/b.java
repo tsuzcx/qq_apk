@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.a.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   extends com.tencent.mm.plugin.mmsight.api.b
 {
-  private com.tencent.mm.plugin.mmsight.model.a.d iBe;
-  private VideoTransPara iBf;
+  private com.tencent.mm.plugin.mmsight.model.a.d jbf;
+  private VideoTransPara jbg;
   
   public final void a(com.tencent.mm.remoteservice.d paramd, VideoTransPara paramVideoTransPara)
   {
@@ -19,25 +19,25 @@ public final class b
       CaptureMMProxy.createProxy(new CaptureMMProxy(paramd));
     }
     com.tencent.mm.plugin.mmsight.model.k.d(paramVideoTransPara);
-    this.iBf = paramVideoTransPara;
+    this.jbg = paramVideoTransPara;
     AppMethodBeat.o(89187);
   }
   
-  public final com.tencent.mm.plugin.mmsight.model.a.d aLg()
+  public final com.tencent.mm.plugin.mmsight.model.a.d aRX()
   {
     AppMethodBeat.i(89189);
-    if (this.iBf != null)
+    if (this.jbg != null)
     {
-      com.tencent.mm.plugin.mmsight.model.a.k.cQk();
-      this.iBe = com.tencent.mm.plugin.mmsight.model.a.k.q(this.iBf);
+      com.tencent.mm.plugin.mmsight.model.a.k.ddS();
+      this.jbf = com.tencent.mm.plugin.mmsight.model.a.k.q(this.jbg);
     }
-    if ((this.iBe instanceof l))
+    if ((this.jbf instanceof l))
     {
-      localObject = (l)this.iBe;
-      ad.i("MicroMsg.MMSightFFMpegRecorder", "setStopOnCameraDataThread: %s", new Object[] { Boolean.TRUE });
-      ((l)localObject).gDw = true;
+      localObject = (l)this.jbf;
+      ac.i("MicroMsg.MMSightFFMpegRecorder", "setStopOnCameraDataThread: %s", new Object[] { Boolean.TRUE });
+      ((l)localObject).hdX = true;
     }
-    Object localObject = this.iBe;
+    Object localObject = this.jbf;
     AppMethodBeat.o(89189);
     return localObject;
   }
@@ -49,15 +49,15 @@ public final class b
       CaptureMMProxy.createProxy(new CaptureMMProxy(paramd));
     }
     com.tencent.mm.plugin.mmsight.model.k.d(paramVideoTransPara);
-    com.tencent.mm.plugin.mmsight.model.k.tCN.fEc = 1;
-    this.iBf = paramVideoTransPara;
+    com.tencent.mm.plugin.mmsight.model.k.uLk.fHJ = 1;
+    this.jbg = paramVideoTransPara;
     AppMethodBeat.o(89188);
   }
   
   public static final class a
     implements com.tencent.mm.plugin.mmsight.api.b.a
   {
-    public final com.tencent.mm.plugin.mmsight.api.b aLh()
+    public final com.tencent.mm.plugin.mmsight.api.b aRY()
     {
       AppMethodBeat.i(89186);
       b localb = new b();
@@ -68,7 +68,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.api.b
  * JD-Core Version:    0.7.0.1
  */

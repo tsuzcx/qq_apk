@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import org.json.JSONObject;
 
 public final class ai
   extends m
 {
-  public double vAJ;
-  public String vCQ;
-  public String zWM;
-  public double zWN;
+  public String Bpg;
+  public double Bph;
+  public double wKO;
+  public String wMV;
   
   public final int getFuncId()
   {
@@ -31,17 +31,17 @@ public final class ai
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69962);
-    ad.i("Micromsg.NetSceneTransferChargeQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.i("Micromsg.NetSceneTransferChargeQuery", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
-      ad.i("Micromsg.NetSceneTransferChargeQuery", "NetSceneTransferChargeQuery request error");
+      ac.i("Micromsg.NetSceneTransferChargeQuery", "NetSceneTransferChargeQuery request error");
       AppMethodBeat.o(69962);
       return;
     }
-    this.zWM = paramJSONObject.optString("short_desc");
-    this.vCQ = paramJSONObject.optString("charge_desc");
-    this.zWN = paramJSONObject.optDouble("acc_fee");
-    this.vAJ = (paramJSONObject.optDouble("remain_fee") / 100.0D);
+    this.Bpg = paramJSONObject.optString("short_desc");
+    this.wMV = paramJSONObject.optString("charge_desc");
+    this.Bph = paramJSONObject.optDouble("acc_fee");
+    this.wKO = (paramJSONObject.optDouble("remain_fee") / 100.0D);
     AppMethodBeat.o(69962);
   }
 }

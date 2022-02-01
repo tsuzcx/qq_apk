@@ -2,31 +2,31 @@ package com.d.a.b;
 
 public final class m
 {
-  long JV;
-  String WM;
-  String bXk;
-  int bXl;
-  int bXm;
-  String wd;
+  long KQ;
+  String XH;
+  String bUS;
+  int bUT;
+  int bUU;
+  String xb;
   
   public m(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    this.JV = paramLong;
-    this.WM = paramString1;
-    this.bXk = paramString2;
-    this.wd = paramString3;
-    this.bXl = paramInt1;
-    this.bXm = paramInt2;
+    this.KQ = paramLong;
+    this.XH = paramString1;
+    this.bUS = paramString2;
+    this.xb = paramString3;
+    this.bUT = paramInt1;
+    this.bUU = paramInt2;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(this.WM).append(this.bXk.replace('/', '.')).append(" - ").append(this.wd).append(":");
+    StringBuilder localStringBuilder = new StringBuilder().append(this.XH).append(this.bUS.replace('/', '.')).append(" - ").append(this.xb).append(":");
     String str;
-    switch (this.bXm)
+    switch (this.bUU)
     {
     default: 
-      str = String.valueOf(this.bXm);
+      str = String.valueOf(this.bUU);
     }
     for (;;)
     {
@@ -43,7 +43,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.d.a.b.m
  * JD-Core Version:    0.7.0.1
  */

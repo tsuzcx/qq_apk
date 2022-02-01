@@ -3,45 +3,45 @@ package com.tencent.mm.plugin.sport.model;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ui;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.us;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bw;
 import java.util.Calendar;
 
 public final class a
 {
-  public c ybG;
-  public com.tencent.mm.sdk.b.c<ui> ybH;
-  public f ybI;
-  private long ybJ;
-  long ybK;
+  public c zoG;
+  public com.tencent.mm.sdk.b.c<us> zoH;
+  public f zoI;
+  private long zoJ;
+  long zoK;
   
   public a()
   {
     AppMethodBeat.i(149274);
-    this.ybH = new com.tencent.mm.sdk.b.c() {};
-    this.ybH.alive();
-    this.ybG = new c();
+    this.zoH = new com.tencent.mm.sdk.b.c() {};
+    this.zoH.alive();
+    this.zoG = new c();
     AppMethodBeat.o(149274);
   }
   
-  public static long dFo()
+  public static long dTP()
   {
     AppMethodBeat.i(149280);
-    long l1 = dFp();
-    if (com.tencent.mm.sdk.h.b.eHp()) {
+    long l1 = dTQ();
+    if (com.tencent.mm.sdk.h.b.eWK()) {
       try
       {
-        bool = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.poa, true);
+        bool = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pRA, true);
         if (bool)
         {
-          long l2 = l.dFO();
+          long l2 = l.dUp();
           if (l2 > l1)
           {
-            ad.i("MicroMsg.Sport.DeviceStepManager", "getTodayStep MIUI Step %d %d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
+            ac.i("MicroMsg.Sport.DeviceStepManager", "getTodayStep MIUI Step %d %d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
             AppMethodBeat.o(149280);
             return l2;
           }
@@ -60,21 +60,21 @@ public final class a
   }
   
   /* Error */
-  private static long dFp()
+  private static long dTQ()
   {
     // Byte code:
     //   0: ldc 101
     //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: invokestatic 106	java/lang/System:currentTimeMillis	()J
     //   8: lstore 4
-    //   10: invokestatic 109	com/tencent/mm/plugin/sport/model/l:dFK	()J
+    //   10: invokestatic 109	com/tencent/mm/plugin/sport/model/l:dUl	()J
     //   13: lstore 6
     //   15: aconst_null
     //   16: astore 9
     //   18: ldc 111
     //   20: invokestatic 117	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   23: astore 8
-    //   25: invokestatic 123	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   25: invokestatic 123	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   28: invokevirtual 129	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   31: aload 8
     //   33: aconst_null
@@ -120,13 +120,13 @@ public final class a
     //   113: ldc2_w 146
     //   116: lcmp
     //   117: ifne +44 -> 161
-    //   120: invokestatic 166	com/tencent/mm/plugin/sport/model/k:dFG	()Ljava/lang/String;
+    //   120: invokestatic 166	com/tencent/mm/plugin/sport/model/k:dUh	()Ljava/lang/String;
     //   123: astore 8
     //   125: aload 8
-    //   127: invokestatic 172	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   127: invokestatic 172	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   130: ifne +162 -> 292
     //   133: aload 8
-    //   135: invokestatic 176	com/tencent/mm/plugin/sport/model/l:arc	(Ljava/lang/String;)[J
+    //   135: invokestatic 176	com/tencent/mm/plugin/sport/model/l:awl	(Ljava/lang/String;)[J
     //   138: astore 8
     //   140: aload 8
     //   142: iconst_0
@@ -162,7 +162,7 @@ public final class a
     //   188: lsub
     //   189: invokestatic 95	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   192: aastore
-    //   193: invokestatic 100	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   193: invokestatic 100	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   196: ldc 101
     //   198: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   201: lload_0
@@ -252,54 +252,54 @@ public final class a
     //   52	86	317	java/lang/Exception
   }
   
-  private void tx(long paramLong)
+  private void ya(long paramLong)
   {
     AppMethodBeat.i(149278);
-    this.ybJ = paramLong;
-    k.ax(4, this.ybJ);
+    this.zoJ = paramLong;
+    k.aw(4, this.zoJ);
     AppMethodBeat.o(149278);
   }
   
-  private void ty(long paramLong)
+  private void yb(long paramLong)
   {
     AppMethodBeat.i(149279);
-    this.ybK = paramLong;
-    k.ax(3, paramLong);
+    this.zoK = paramLong;
+    k.aw(3, paramLong);
     AppMethodBeat.o(149279);
   }
   
-  public final void aqY(String paramString)
+  public final void awh(String paramString)
   {
     AppMethodBeat.i(149282);
-    h.Iye.f(new a.2(this, paramString), "Sport.updateConfigToPush");
+    h.JZN.f(new a.2(this, paramString), "Sport.updateConfigToPush");
     AppMethodBeat.o(149282);
   }
   
-  public final void dFm()
+  public final void dTN()
   {
     AppMethodBeat.i(149275);
-    long l = dFo();
-    ad.i("MicroMsg.Sport.DeviceStepManager", "forceUploadDeviceStep %d", new Object[] { Long.valueOf(l) });
-    tw(l);
+    long l = dTP();
+    ac.i("MicroMsg.Sport.DeviceStepManager", "forceUploadDeviceStep %d", new Object[] { Long.valueOf(l) });
+    xZ(l);
     AppMethodBeat.o(149275);
   }
   
-  public final long dFn()
+  public final long dTO()
   {
     AppMethodBeat.i(149277);
-    if (this.ybJ == 0L) {
-      this.ybJ = k.aw(4, 0L);
+    if (this.zoJ == 0L) {
+      this.zoJ = k.av(4, 0L);
     }
-    long l = this.ybJ;
+    long l = this.zoJ;
     AppMethodBeat.o(149277);
     return l;
   }
   
-  final boolean tw(long paramLong)
+  final boolean xZ(long paramLong)
   {
     AppMethodBeat.i(149276);
-    if (this.ybI != null) {
-      g.aeS().a(this.ybI);
+    if (this.zoI != null) {
+      g.agi().a(this.zoI);
     }
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(11, 0);
@@ -307,18 +307,18 @@ public final class a
     localCalendar.set(13, 0);
     long l1 = localCalendar.getTimeInMillis();
     long l2 = System.currentTimeMillis();
-    ad.i("MicroMsg.Sport.DeviceStepManager", "update device Step time: %s stepCount: %s", new Object[] { l.mz(l2), Long.valueOf(paramLong) });
-    this.ybI = new f("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), (int)paramLong, bt.eMY(), 1);
-    g.aeS().a(this.ybI, 0);
-    ty(System.currentTimeMillis());
-    tx(paramLong);
+    ac.i("MicroMsg.Sport.DeviceStepManager", "update device Step time: %s stepCount: %s", new Object[] { l.qn(l2), Long.valueOf(paramLong) });
+    this.zoI = new f("", "gh_43f2581f6fd6", (int)(l1 / 1000L), (int)(l2 / 1000L), (int)paramLong, bw.fcC(), 1);
+    g.agi().a(this.zoI, 0);
+    yb(System.currentTimeMillis());
+    ya(paramLong);
     AppMethodBeat.o(149276);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.a
  * JD-Core Version:    0.7.0.1
  */

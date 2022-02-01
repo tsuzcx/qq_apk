@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.compat;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.pluginsdk.model.app.m;
 
@@ -26,7 +26,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.compat.a
  * JD-Core Version:    0.7.0.1
  */

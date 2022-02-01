@@ -1,214 +1,79 @@
 package com.tencent.mm.al;
 
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vending.e.a;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.att;
+import com.tencent.mm.protocal.protobuf.atu;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class x
+  extends n
+  implements k
 {
-  public static b gWv = null;
+  private g callback;
+  Object data;
+  public b rr;
   
-  public static b a(b paramb, a parama)
+  public x(String paramString, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(132492);
-    a(paramb, parama, false, null);
-    AppMethodBeat.o(132492);
-    return paramb;
-  }
-  
-  public static n a(b paramb, a parama, boolean paramBoolean)
-  {
-    AppMethodBeat.i(202267);
-    paramb = a(paramb, parama, paramBoolean, null);
-    AppMethodBeat.o(202267);
-    return paramb;
-  }
-  
-  public static n a(b paramb, a parama, boolean paramBoolean, com.tencent.mm.vending.e.b paramb1)
-  {
-    AppMethodBeat.i(132494);
-    c localc = new c(parama);
-    if (parama == null) {
-      localc = null;
-    }
-    if ((paramb1 != null) && (localc != null)) {
-      paramb1.keep(localc);
-    }
-    paramb = b(paramb, localc, paramBoolean);
-    AppMethodBeat.o(132494);
-    return paramb;
-  }
-  
-  public static void a(n paramn)
-  {
-    AppMethodBeat.i(132490);
-    if (gWv == null)
+    AppMethodBeat.i(124126);
+    Object localObject = new b.a();
+    ((b.a)localObject).hvt = new att();
+    ((b.a)localObject).hvu = new atu();
+    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizenterpriseattr";
+    ((b.a)localObject).funcId = 1343;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (att)this.rr.hvr.hvw;
+    ((att)localObject).Ebs = paramString;
+    ((att)localObject).EMA = paramInt;
+    if (ab.eUO().equals("zh_CN")) {}
+    for (paramInt = 2;; paramInt = 1)
     {
-      ad.e("MicroMsg.RunCgi", "ERROR: MMCore Not init interface IGetNetSceneQueue.");
-      AppMethodBeat.o(132490);
+      ((att)localObject).EMB = paramInt;
+      this.data = paramObject;
+      AppMethodBeat.o(124126);
       return;
     }
-    if (gWv.aeT() == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: Get NetscneQueue is null.");
-      AppMethodBeat.o(132490);
-      return;
-    }
-    if (paramn == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: Param scene  == null.");
-      AppMethodBeat.o(132490);
-      return;
-    }
-    gWv.aeT().a(paramn);
-    AppMethodBeat.o(132490);
   }
   
-  public static boolean avu()
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(132489);
-    if (gWv == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: MMCore Not init interface IGetNetSceneQueue.");
-      AppMethodBeat.o(132489);
-      return false;
-    }
-    if (gWv.aeT() == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: Get NetscneQueue is null.");
-      AppMethodBeat.o(132489);
-      return false;
-    }
-    AppMethodBeat.o(132489);
-    return true;
+    AppMethodBeat.i(124128);
+    this.callback = paramg;
+    ac.i("MicroMsg.NetSceneGetBizEnterpriseAttr", "do scene");
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(124128);
+    return i;
   }
   
-  private static n b(b paramb, final a parama, final boolean paramBoolean)
+  public final int getType()
   {
-    AppMethodBeat.i(192876);
-    if (gWv == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: MMCore Not init interface IGetNetSceneQueue.");
-      AppMethodBeat.o(192876);
-      return null;
-    }
-    if (gWv.aeT() == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: Get NetscneQueue is null.");
-      AppMethodBeat.o(192876);
-      return null;
-    }
-    if (paramb == null)
-    {
-      ad.e("MicroMsg.RunCgi", "ERROR: Param CommReqResp is null");
-      AppMethodBeat.o(192876);
-      return null;
-    }
-    paramb = new n()
-    {
-      private k gUQ;
-      g gWw;
-      final n gWx;
-      int gWy;
-      av gWz;
-      final long startTime;
-      
-      public final int doScene(e paramAnonymouse, g paramAnonymousg)
-      {
-        AppMethodBeat.i(132484);
-        this.gWw = paramAnonymousg;
-        int i = dispatch(paramAnonymouse, this.gWA, this.gUQ);
-        ad.i("MicroMsg.RunCgi", "Start doScene:%d func:%d netid:%d time:%d", new Object[] { Integer.valueOf(this.gWx.hashCode()), Integer.valueOf(getType()), Integer.valueOf(i), Long.valueOf(bt.eGO() - this.startTime) });
-        if (parama != null)
-        {
-          if (i >= 0) {
-            break label121;
-          }
-          x.a(paramBoolean, parama, 3, -1, "", this.gWA, this.gWx);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(132484);
-          return i;
-          label121:
-          this.gWz.av(60000L, 60000L);
-        }
-      }
-      
-      public final int getType()
-      {
-        AppMethodBeat.i(132483);
-        int i = this.gWA.getType();
-        AppMethodBeat.o(132483);
-        return i;
-      }
-    };
-    if (gWv.aeT().a(paramb, 0))
-    {
-      AppMethodBeat.o(192876);
-      return paramb;
-    }
-    AppMethodBeat.o(192876);
-    return null;
+    return 1343;
   }
   
-  public static b d(b paramb)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(132491);
-    a(paramb, null, false, null);
-    AppMethodBeat.o(132491);
-    return paramb;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract q aeT();
-  }
-  
-  static final class c
-    implements x.a, a
-  {
-    private x.a gWF;
-    
-    public c(x.a parama)
-    {
-      this.gWF = parama;
+    AppMethodBeat.i(124127);
+    ac.d("MicroMsg.NetSceneGetBizEnterpriseAttr", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
-    {
-      AppMethodBeat.i(132488);
-      if (this.gWF != null)
-      {
-        paramInt1 = this.gWF.a(paramInt1, paramInt2, paramString, paramb, paramn);
-        AppMethodBeat.o(132488);
-        return paramInt1;
-      }
-      AppMethodBeat.o(132488);
-      return -100000;
-    }
-    
-    public final void dead()
-    {
-      this.gWF = null;
-    }
+    AppMethodBeat.o(124127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.x
  * JD-Core Version:    0.7.0.1
  */

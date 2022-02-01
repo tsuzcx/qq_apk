@@ -11,8 +11,8 @@ class c
     int i = paramStringBuilder1.length();
     paramStringBuilder1.delete(i - paramInt, i);
     paramh.pos -= 1;
-    paramInt = a(paramh.ym(), paramStringBuilder2);
-    paramh.bLm = null;
+    paramInt = a(paramh.xZ(), paramStringBuilder2);
+    paramh.bIU = null;
     AppMethodBeat.o(12355);
     return paramInt;
   }
@@ -21,7 +21,7 @@ class c
   {
     AppMethodBeat.i(12356);
     int i = paramStringBuilder.charAt(0) * 'ـ' + paramStringBuilder.charAt(1) * '(' + paramStringBuilder.charAt(2) + 1;
-    paramh.bv(new String(new char[] { (char)(i / 256), (char)(i % 256) }));
+    paramh.bm(new String(new char[] { (char)(i / 256), (char)(i % 256) }));
     paramStringBuilder.delete(0, 3);
     AppMethodBeat.o(12356);
   }
@@ -98,15 +98,15 @@ class c
   {
     AppMethodBeat.i(12354);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    while (paramh.yn())
+    while (paramh.ya())
     {
-      char c = paramh.ym();
+      char c = paramh.xZ();
       paramh.pos += 1;
       int j = a(c, localStringBuilder1);
-      int i = (localStringBuilder1.length() / 3 << 1) + paramh.bLk.length();
-      paramh.gi(i);
-      int k = paramh.bLm.bLv - i;
-      if (!paramh.yn())
+      int i = (localStringBuilder1.length() / 3 << 1) + paramh.bIS.length();
+      paramh.fU(i);
+      int k = paramh.bIU.bJd - i;
+      if (!paramh.ya())
       {
         StringBuilder localStringBuilder2 = new StringBuilder();
         i = j;
@@ -124,9 +124,9 @@ class c
       }
       if (localStringBuilder1.length() % 3 == 0)
       {
-        i = j.b(paramh.bLg, paramh.pos, yj());
-        if (i != yj()) {
-          paramh.bLl = i;
+        i = j.b(paramh.bIO, paramh.pos, xW());
+        if (i != xW()) {
+          paramh.bIT = i;
         }
       }
     }
@@ -139,22 +139,22 @@ class c
     AppMethodBeat.i(12357);
     int j = paramStringBuilder.length() / 3;
     int i = paramStringBuilder.length() % 3;
-    j = (j << 1) + paramh.bLk.length();
-    paramh.gi(j);
-    j = paramh.bLm.bLv - j;
+    j = (j << 1) + paramh.bIS.length();
+    paramh.fU(j);
+    j = paramh.bIU.bJd - j;
     if (i == 2)
     {
       paramStringBuilder.append('\000');
       while (paramStringBuilder.length() >= 3) {
         a(paramh, paramStringBuilder);
       }
-      if (paramh.yn()) {
+      if (paramh.ya()) {
         paramh.e('þ');
       }
     }
     for (;;)
     {
-      paramh.bLl = 0;
+      paramh.bIT = 0;
       AppMethodBeat.o(12357);
       return;
       if ((j == 1) && (i == 1))
@@ -162,7 +162,7 @@ class c
         while (paramStringBuilder.length() >= 3) {
           a(paramh, paramStringBuilder);
         }
-        if (paramh.yn()) {
+        if (paramh.ya()) {
           paramh.e('þ');
         }
         paramh.pos -= 1;
@@ -175,7 +175,7 @@ class c
         while (paramStringBuilder.length() >= 3) {
           a(paramh, paramStringBuilder);
         }
-        if ((j > 0) || (paramh.yn())) {
+        if ((j > 0) || (paramh.ya())) {
           paramh.e('þ');
         }
       }
@@ -185,7 +185,7 @@ class c
     throw paramh;
   }
   
-  public int yj()
+  public int xW()
   {
     return 1;
   }

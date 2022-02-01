@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
@@ -17,8 +17,8 @@ import com.tencent.mm.wallet_core.ui.e;
 public class WalletWXCreditOpenUI
   extends WalletBaseUI
 {
-  private Button iwY;
-  private Bankcard zNT;
+  private Bankcard Bgn;
+  private Button iXb;
   
   public int getLayoutId()
   {
@@ -47,8 +47,8 @@ public class WalletWXCreditOpenUI
         AppMethodBeat.o(72394);
       }
     });
-    this.iwY = ((Button)findViewById(2131302852));
-    this.iwY.setOnClickListener(new View.OnClickListener()
+    this.iXb = ((Button)findViewById(2131302852));
+    this.iXb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -64,7 +64,7 @@ public class WalletWXCreditOpenUI
   {
     AppMethodBeat.i(72396);
     super.onCreate(paramBundle);
-    this.zNT = ((Bankcard)getInput().getParcelable("key_bankcard"));
+    this.Bgn = ((Bankcard)getInput().getParcelable("key_bankcard"));
     initView();
     AppMethodBeat.o(72396);
   }

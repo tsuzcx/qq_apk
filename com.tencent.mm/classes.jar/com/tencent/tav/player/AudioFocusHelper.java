@@ -21,25 +21,25 @@ public class AudioFocusHelper
   
   private void ensureAudioManager()
   {
-    AppMethodBeat.i(202082);
+    AppMethodBeat.i(198143);
     if (this.mAudioManager == null) {
       this.mAudioManager = ((AudioManager)this.mContext.getSystemService("audio"));
     }
-    AppMethodBeat.o(202082);
+    AppMethodBeat.o(198143);
   }
   
   private AudioManager.OnAudioFocusChangeListener getAudioFocusChangeListener()
   {
-    AppMethodBeat.i(202083);
+    AppMethodBeat.i(198144);
     if (this.mAudioFocusListener == null) {
       this.mAudioFocusListener = new AudioManager.OnAudioFocusChangeListener()
       {
         public void onAudioFocusChange(int paramAnonymousInt)
         {
-          AppMethodBeat.i(202079);
+          AppMethodBeat.i(198140);
           if (AudioFocusHelper.this.mPlayer == null)
           {
-            AppMethodBeat.o(202079);
+            AppMethodBeat.o(198140);
             return;
           }
           switch (paramAnonymousInt)
@@ -47,21 +47,21 @@ public class AudioFocusHelper
           }
           for (;;)
           {
-            AppMethodBeat.o(202079);
+            AppMethodBeat.o(198140);
             return;
             try
             {
               AudioFocusHelper.access$102(AudioFocusHelper.this, true);
-              AppMethodBeat.o(202079);
+              AppMethodBeat.o(198140);
               return;
             }
             catch (Exception localException)
             {
-              AppMethodBeat.o(202079);
+              AppMethodBeat.o(198140);
               return;
             }
             AudioFocusHelper.access$200(AudioFocusHelper.this, false);
-            AppMethodBeat.o(202079);
+            AppMethodBeat.o(198140);
             return;
             AudioFocusHelper.access$200(AudioFocusHelper.this, true);
           }
@@ -69,13 +69,13 @@ public class AudioFocusHelper
       };
     }
     AudioManager.OnAudioFocusChangeListener localOnAudioFocusChangeListener = this.mAudioFocusListener;
-    AppMethodBeat.o(202083);
+    AppMethodBeat.o(198144);
     return localOnAudioFocusChangeListener;
   }
   
   private void onAudioFocusLoss(boolean paramBoolean)
   {
-    AppMethodBeat.i(202084);
+    AppMethodBeat.i(198145);
     if (!paramBoolean)
     {
       this.mAudioManager.abandonAudioFocus(this.mAudioFocusListener);
@@ -84,12 +84,12 @@ public class AudioFocusHelper
     if ((this.mPlayer != null) && (this.mPlayer.isPlaying())) {
       this.mPlayer.pause();
     }
-    AppMethodBeat.o(202084);
+    AppMethodBeat.o(198145);
   }
   
   public void release()
   {
-    AppMethodBeat.i(202081);
+    AppMethodBeat.i(198142);
     if (this.mAudioManager != null)
     {
       this.mAudioManager.abandonAudioFocus(this.mAudioFocusListener);
@@ -100,13 +100,13 @@ public class AudioFocusHelper
     if (this.mPlayer != null) {
       this.mPlayer = null;
     }
-    AppMethodBeat.o(202081);
+    AppMethodBeat.o(198142);
   }
   
   public void requestFocus()
   {
     boolean bool = true;
-    AppMethodBeat.i(202080);
+    AppMethodBeat.i(198141);
     ensureAudioManager();
     if (!this.mIsAudioFocus) {
       if (this.mAudioManager.requestAudioFocus(getAudioFocusChangeListener(), 3, 1) != 1) {
@@ -116,7 +116,7 @@ public class AudioFocusHelper
     for (;;)
     {
       this.mIsAudioFocus = bool;
-      AppMethodBeat.o(202080);
+      AppMethodBeat.o(198141);
       return;
       label46:
       bool = false;
@@ -125,7 +125,7 @@ public class AudioFocusHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.player.AudioFocusHelper
  * JD-Core Version:    0.7.0.1
  */

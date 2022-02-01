@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpi;
 import com.tencent.mm.sdk.b.b;
 
 public final class tn
   extends b
 {
-  public a dyR;
+  public a dwr;
   
   public tn()
   {
@@ -16,24 +15,22 @@ public final class tn
   
   private tn(byte paramByte)
   {
-    AppMethodBeat.i(125640);
-    this.dyR = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125633);
+    this.dwr = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125640);
+    AppMethodBeat.o(125633);
   }
   
   public static final class a
   {
-    public int dbV;
-    public bpi dyS;
-    public String mediaId;
-    public String path;
+    public String dnn;
+    public String dws;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.tn
  * JD-Core Version:    0.7.0.1
  */

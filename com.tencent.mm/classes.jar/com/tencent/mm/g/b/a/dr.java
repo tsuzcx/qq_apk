@@ -6,89 +6,89 @@ import com.tencent.mm.plugin.report.a;
 public final class dr
   extends a
 {
-  private long dLs = 0L;
-  private long dTd = 0L;
-  private String dUu = "";
-  private long dUv = 0L;
-  private long dVf = 0L;
+  private String dJw = "";
+  public long dSA = 0L;
+  private String dSB = "";
+  private String dSC = "";
+  private String dSz = "";
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(118522);
+    AppMethodBeat.i(116490);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUu);
+    ((StringBuffer)localObject).append(this.dSz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dLs);
+    ((StringBuffer)localObject).append(this.dJw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTd);
+    ((StringBuffer)localObject).append(this.dSA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUv);
+    ((StringBuffer)localObject).append(this.dSB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dVf);
+    ((StringBuffer)localObject).append(this.dSC);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(118522);
+    arz((String)localObject);
+    AppMethodBeat.o(116490);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(118523);
+    AppMethodBeat.i(116491);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("StoryId:").append(this.dUu);
+    ((StringBuffer)localObject).append("query:").append(this.dSz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoType:").append(this.dLs);
+    ((StringBuffer)localObject).append("sessionId:").append(this.dJw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dTd);
+    ((StringBuffer)localObject).append("isChange:").append(this.dSA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProfileSource:").append(this.dUv);
+    ((StringBuffer)localObject).append("appidBefore:").append(this.dSB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsAlbumStarButton:").append(this.dVf);
+    ((StringBuffer)localObject).append("appidAfter:").append(this.dSC);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118523);
+    AppMethodBeat.o(116491);
     return localObject;
-  }
-  
-  public final dr gG(long paramLong)
-  {
-    this.dLs = paramLong;
-    return this;
-  }
-  
-  public final dr gH(long paramLong)
-  {
-    this.dTd = paramLong;
-    return this;
-  }
-  
-  public final dr gI(long paramLong)
-  {
-    this.dUv = paramLong;
-    return this;
-  }
-  
-  public final dr gJ(long paramLong)
-  {
-    this.dVf = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 17090;
+    return 15960;
   }
   
-  public final dr jY(String paramString)
+  public final dr lE(String paramString)
   {
-    AppMethodBeat.i(118521);
-    this.dUu = t("StoryId", paramString, true);
-    AppMethodBeat.o(118521);
+    AppMethodBeat.i(116486);
+    this.dSz = t("query", paramString, true);
+    AppMethodBeat.o(116486);
+    return this;
+  }
+  
+  public final dr lF(String paramString)
+  {
+    AppMethodBeat.i(116487);
+    this.dJw = t("sessionId", paramString, true);
+    AppMethodBeat.o(116487);
+    return this;
+  }
+  
+  public final dr lG(String paramString)
+  {
+    AppMethodBeat.i(116488);
+    this.dSB = t("appidBefore", paramString, true);
+    AppMethodBeat.o(116488);
+    return this;
+  }
+  
+  public final dr lH(String paramString)
+  {
+    AppMethodBeat.i(116489);
+    this.dSC = t("appidAfter", paramString, true);
+    AppMethodBeat.o(116489);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.dr
  * JD-Core Version:    0.7.0.1
  */

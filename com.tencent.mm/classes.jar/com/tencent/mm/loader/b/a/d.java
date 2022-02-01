@@ -4,12 +4,12 @@ import com.tencent.mm.loader.l.b;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "T", "R", "", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "clear", "", "configure", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "delete", "", "diskGet", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "exists", "get", "makeConfig", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "T", "R", "", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "clear", "", "configure", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "delete", "", "diskGet", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "exists", "get", "makeConfig", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
 public abstract class d<T, R>
 {
   private static final String TAG = "MicroMsg.Loader.IDiskCache";
-  public static final a giF = new a((byte)0);
-  private com.tencent.mm.loader.f.f giB;
+  public static final d.a gJq = new d.a((byte)0);
+  private com.tencent.mm.loader.f.f gJm;
   
   public abstract boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, R> paramf);
   
@@ -24,7 +24,7 @@ public abstract class d<T, R>
     k.h(parama, "url");
     k.h(parame, "opts");
     k.h(paramf, "reaper");
-    String str = parame.gjt;
+    String str = parame.gKe;
     if (str != null)
     {
       paramf = str;
@@ -32,7 +32,7 @@ public abstract class d<T, R>
     }
     else
     {
-      paramf = parame.gjt;
+      paramf = parame.gKe;
     }
     if (paramf != null)
     {
@@ -41,10 +41,10 @@ public abstract class d<T, R>
     }
     else
     {
-      parame = new StringBuilder().append(b.gmz).append("/");
-      paramf = this.giB;
+      parame = new StringBuilder().append(b.gNm).append("/");
+      paramf = this.gJm;
       if (paramf == null) {
-        k.fvU();
+        k.fOy();
       }
       parame = paramf.b(parama);
     }
@@ -59,13 +59,10 @@ public abstract class d<T, R>
     }
     return parama;
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/IDiskCache$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final i Knw;
+  public static final i Mbf;
   
   static
   {
     AppMethodBeat.i(40517);
-    Knw = new i("", "");
+    Mbf = new i("", "");
     AppMethodBeat.o(40517);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.d.b
  * JD-Core Version:    0.7.0.1
  */

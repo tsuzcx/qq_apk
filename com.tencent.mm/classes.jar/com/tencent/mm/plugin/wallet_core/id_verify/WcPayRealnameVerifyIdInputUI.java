@@ -24,19 +24,19 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.RealNameBundle;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.g;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.l;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.protocal.protobuf.azf;
-import com.tencent.mm.protocal.protobuf.cgy;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aac;
+import com.tencent.mm.protocal.protobuf.bcx;
+import com.tencent.mm.protocal.protobuf.cmb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.picker.b;
 import com.tencent.mm.ui.widget.picker.b.a;
@@ -57,75 +57,75 @@ import java.util.List;
 public class WcPayRealnameVerifyIdInputUI
   extends WalletBaseUI
 {
-  private static final int zYB;
-  private Button iwY;
-  private TextView kEu;
+  private static final int BqV;
+  private WalletFormView BqW;
+  private WalletFormView BqX;
+  private WalletFormView BqY;
+  private WalletFormView BqZ;
+  private WalletFormView Bqi;
+  private WalletFormView Bqj;
+  private String BrA;
+  private TenpaySecureEncrypt BrB;
+  private WalletFormView Bra;
+  private WalletFormView Brb;
+  private WalletFormView Brc;
+  private WalletFormView Brd;
+  private WalletFormView Bre;
+  private c Brf;
+  private TextView Brg;
+  private b Brh;
+  private String Bri;
+  private String Brj;
+  private boolean Brk;
+  private VM Brl;
+  private String Brm;
+  private String Brn;
+  private String[] Bro;
+  private List<cmb> Brp;
+  private String[] Brq;
+  private int Brr;
+  private int Brs;
+  private int Brt;
+  private int Bru;
+  private int Brv;
+  private int Brw;
+  private int Brx;
+  private int Bry;
+  private int Brz;
+  private Button iXb;
+  private TextView lfN;
   private Profession[] mProfessions;
-  private WalletFormView vuR;
-  private WalletFormView zXO;
-  private WalletFormView zXP;
-  private WalletFormView zYC;
-  private WalletFormView zYD;
-  private WalletFormView zYE;
-  private WalletFormView zYF;
-  private WalletFormView zYG;
-  private WalletFormView zYH;
-  private WalletFormView zYI;
-  private WalletFormView zYJ;
-  private WalletFormView zYK;
-  private c zYL;
-  private TextView zYM;
-  private b zYN;
-  private String zYO;
-  private String zYP;
-  private boolean zYQ;
-  private VM zYR;
-  private String zYS;
-  private String zYT;
-  private String[] zYU;
-  private List<cgy> zYV;
-  private String[] zYW;
-  private int zYX;
-  private int zYY;
-  private int zYZ;
-  private int zZa;
-  private int zZb;
-  private int zZc;
-  private int zZd;
-  private int zZe;
-  private int zZf;
-  private String zZg;
-  private TenpaySecureEncrypt zZh;
+  private WalletFormView wEW;
   
   static
   {
     AppMethodBeat.i(70117);
-    zYB = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 88);
+    BqV = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 88);
     AppMethodBeat.o(70117);
   }
   
   public WcPayRealnameVerifyIdInputUI()
   {
     AppMethodBeat.i(70104);
-    this.zYV = new ArrayList();
-    this.zYW = new String[100];
+    this.Brp = new ArrayList();
+    this.Brq = new String[100];
     int i = 0;
-    while (i < this.zYW.length)
+    while (i < this.Brq.length)
     {
-      this.zYW[i] = aj.getContext().getString(2131765220, new Object[] { Integer.valueOf(i) });
+      this.Brq[i] = ai.getContext().getString(2131765220, new Object[] { Integer.valueOf(i) });
       i += 1;
     }
-    this.zYX = 0;
-    this.zYY = 0;
-    this.zYZ = 0;
-    this.zZa = 0;
-    this.zZb = 0;
-    this.zZc = 0;
-    this.zZd = 0;
-    this.zZe = 0;
-    this.zZf = 0;
-    this.zZg = "";
-    this.zZh = new TenpaySecureEncrypt();
+    this.Brr = 0;
+    this.Brs = 0;
+    this.Brt = 0;
+    this.Bru = 0;
+    this.Brv = 0;
+    this.Brw = 0;
+    this.Brx = 0;
+    this.Bry = 0;
+    this.Brz = 0;
+    this.BrA = "";
+    this.BrB = new TenpaySecureEncrypt();
     AppMethodBeat.o(70104);
   }
   
@@ -135,58 +135,58 @@ public class WcPayRealnameVerifyIdInputUI
     d locald = getProcess();
     Bundle localBundle = getInput();
     String str = paramg.token;
-    ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify response succ");
+    ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify response succ");
     if (locald != null)
     {
       localBundle.putString("key_real_name_token", str);
-      localBundle.putString("key_country_code", (String)this.zYR.zZw.getValue());
-      localBundle.putString("key_province_code", (String)this.zYR.zZx.getValue());
-      localBundle.putString("key_city_code", (String)this.zYR.zZy.getValue());
-      localBundle.putParcelable("key_profession", (Parcelable)this.zYR.zZB.getValue());
-      localBundle.putBoolean("realname_verify_process_need_bind_card", paramg.zZX);
-      localBundle.putBoolean("realname_verify_process_need_face", paramg.zZY);
-      localBundle.putLong("realname_verify_process_face_scene", paramg.gri);
+      localBundle.putString("key_country_code", (String)this.Brl.BrQ.getValue());
+      localBundle.putString("key_province_code", (String)this.Brl.BrR.getValue());
+      localBundle.putString("key_city_code", (String)this.Brl.BrS.getValue());
+      localBundle.putParcelable("key_profession", (Parcelable)this.Brl.BrV.getValue());
+      localBundle.putBoolean("realname_verify_process_need_bind_card", paramg.Bsr);
+      localBundle.putBoolean("realname_verify_process_need_face", paramg.Bss);
+      localBundle.putLong("realname_verify_process_face_scene", paramg.gRQ);
       localBundle.putString("realname_verify_process_face_package", paramg.packageExt);
-      localBundle.putString("realname_verify_process_face_package_sign", paramg.dwg);
-      localBundle.putString("realname_verify_process_add_bank_word", paramg.Aab);
-      localBundle.putString("realname_verify_process_req_key", paramg.dlJ);
+      localBundle.putString("realname_verify_process_face_package_sign", paramg.dtT);
+      localBundle.putString("realname_verify_process_add_bank_word", paramg.Bsv);
+      localBundle.putString("realname_verify_process_req_key", paramg.djr);
       paramg = new RealNameBundle();
-      paramg.Aar = ((String)this.zYR.zZr.getValue());
-      paramg.Aas = this.zYS;
-      paramg.Aat = this.zYT;
-      paramg.Aau = ((cgy)this.zYR.zZt.getValue()).Ecv.key;
-      paramg.Aav = this.zYC.getText();
-      paramg.Aaw = ((Profession)this.zYR.zZB.getValue());
-      paramg.Aax = ((String)this.zYR.zZw.getValue());
-      paramg.Aay = ((String)this.zYR.zZx.getValue());
-      paramg.Aaz = ((String)this.zYR.zZy.getValue());
-      paramg.AaA = ((String)this.zYR.zZz.getValue());
-      paramg.AaB = ((Integer)this.zYR.zZF.getValue()).intValue();
-      paramg.AaO = ((String)this.zYR.zZD.getValue());
-      paramg.AaP = this.zYX;
-      paramg.AaQ = this.zYY;
-      paramg.AaR = this.zYZ;
-      paramg.AaC = ((String)this.zYR.zZE.getValue());
-      paramg.AaD = this.zZa;
-      paramg.AaE = this.zZb;
-      paramg.AaF = this.zZc;
-      paramg.AaG = this.zYI.getText();
-      paramg.AaH = this.zZd;
-      paramg.AaI = this.zZe;
-      paramg.AaJ = this.zZf;
-      paramg.AaK = ((String)this.zYR.zZH.getValue());
-      paramg.AaL = ((String)this.zYR.zZI.getValue());
-      paramg.AaM = this.zZg;
-      paramg.AaN = ((String)this.zYR.zZA.getValue());
-      paramg.AaS = ((String)this.zYR.zZJ.getValue());
-      if (!getString(2131763533).equals(this.zYR.zZs.getValue())) {
+      paramg.BsL = ((String)this.Brl.BrL.getValue());
+      paramg.BsM = this.Brm;
+      paramg.BsN = this.Brn;
+      paramg.BsO = ((cmb)this.Brl.BrN.getValue()).Fzq.key;
+      paramg.BsP = this.BqW.getText();
+      paramg.BsQ = ((Profession)this.Brl.BrV.getValue());
+      paramg.BsR = ((String)this.Brl.BrQ.getValue());
+      paramg.BsS = ((String)this.Brl.BrR.getValue());
+      paramg.BsT = ((String)this.Brl.BrS.getValue());
+      paramg.BsU = ((String)this.Brl.BrT.getValue());
+      paramg.BsV = ((Integer)this.Brl.BrZ.getValue()).intValue();
+      paramg.Bti = ((String)this.Brl.BrX.getValue());
+      paramg.Btj = this.Brr;
+      paramg.Btk = this.Brs;
+      paramg.Btl = this.Brt;
+      paramg.BsW = ((String)this.Brl.BrY.getValue());
+      paramg.BsX = this.Bru;
+      paramg.BsY = this.Brv;
+      paramg.BsZ = this.Brw;
+      paramg.Bta = this.Brc.getText();
+      paramg.Btb = this.Brx;
+      paramg.Btc = this.Bry;
+      paramg.Btd = this.Brz;
+      paramg.Bte = ((String)this.Brl.Bsb.getValue());
+      paramg.Btf = ((String)this.Brl.Bsc.getValue());
+      paramg.Btg = this.BrA;
+      paramg.Bth = ((String)this.Brl.BrU.getValue());
+      paramg.Btm = ((String)this.Brl.Bsd.getValue());
+      if (!getString(2131763533).equals(this.Brl.BrM.getValue())) {
         break label640;
       }
     }
     label640:
     for (int i = 1;; i = 2)
     {
-      paramg.evp = i;
+      paramg.exL = i;
       localBundle.putParcelable("realname_verify_process_bundle", paramg);
       locald.a(this, 0, localBundle);
       AppMethodBeat.o(70109);
@@ -202,46 +202,46 @@ public class WcPayRealnameVerifyIdInputUI
   public void initView()
   {
     AppMethodBeat.i(70106);
-    this.vuR = ((WalletFormView)findViewById(2131307081));
-    this.zYK = ((WalletFormView)findViewById(2131307085));
-    this.zYC = ((WalletFormView)findViewById(2131307079));
-    this.zYD = ((WalletFormView)findViewById(2131307078));
-    this.zYE = ((WalletFormView)findViewById(2131307077));
-    this.zYF = ((WalletFormView)findViewById(2131307076));
-    this.zYG = ((WalletFormView)findViewById(2131307075));
-    this.zYH = ((WalletFormView)findViewById(2131307082));
-    this.zYI = ((WalletFormView)findViewById(2131307074));
-    this.zXO = ((WalletFormView)findViewById(2131307084));
-    this.zXP = ((WalletFormView)findViewById(2131307073));
-    this.zYJ = ((WalletFormView)findViewById(2131307080));
-    this.iwY = ((Button)findViewById(2131307083));
-    this.kEu = ((TextView)findViewById(2131307087));
-    this.zYM = ((TextView)findViewById(2131307086));
-    if (!bt.isNullOrNil(this.zYO)) {
-      this.kEu.setText(this.zYO);
+    this.wEW = ((WalletFormView)findViewById(2131307081));
+    this.Bre = ((WalletFormView)findViewById(2131307085));
+    this.BqW = ((WalletFormView)findViewById(2131307079));
+    this.BqX = ((WalletFormView)findViewById(2131307078));
+    this.BqY = ((WalletFormView)findViewById(2131307077));
+    this.BqZ = ((WalletFormView)findViewById(2131307076));
+    this.Bra = ((WalletFormView)findViewById(2131307075));
+    this.Brb = ((WalletFormView)findViewById(2131307082));
+    this.Brc = ((WalletFormView)findViewById(2131307074));
+    this.Bqi = ((WalletFormView)findViewById(2131307084));
+    this.Bqj = ((WalletFormView)findViewById(2131307073));
+    this.Brd = ((WalletFormView)findViewById(2131307080));
+    this.iXb = ((Button)findViewById(2131307083));
+    this.lfN = ((TextView)findViewById(2131307087));
+    this.Brg = ((TextView)findViewById(2131307086));
+    if (!bs.isNullOrNil(this.Bri)) {
+      this.lfN.setText(this.Bri);
     }
-    if (!bt.isNullOrNil(this.zYP))
+    if (!bs.isNullOrNil(this.Brj))
     {
-      this.zYM.setText(this.zYP);
-      this.zYM.setVisibility(0);
+      this.Brg.setText(this.Brj);
+      this.Brg.setVisibility(0);
     }
-    this.vuR.setFilterChar("\\x20\\t\\r\\n".toCharArray());
+    this.wEW.setFilterChar("\\x20\\t\\r\\n".toCharArray());
     int i = getResources().getDimensionPixelSize(2131165480);
     int j = getResources().getDimensionPixelSize(2131165274);
     Object localObject = new LinearLayout.LayoutParams(i, i);
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     ((LinearLayout.LayoutParams)localObject).rightMargin = j;
-    this.vuR.getInfoIv().setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.vuR.getInfoIv().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.vuR.getInfoIv().setClearBtnDrawableId$255f295(getResources().getColor(2131099735));
-    this.vuR.a(new TextWatcher()
+    this.wEW.getInfoIv().setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.wEW.getInfoIv().setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.wEW.getInfoIv().setClearBtnDrawableId$255f295(getResources().getColor(2131099735));
+    this.wEW.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(70075);
         paramAnonymousEditable = WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this);
         String str = WcPayRealnameVerifyIdInputUI.a(WcPayRealnameVerifyIdInputUI.this).getText();
-        paramAnonymousEditable.zZr.setValue(str);
+        paramAnonymousEditable.BrL.setValue(str);
         AppMethodBeat.o(70075);
       }
       
@@ -249,23 +249,23 @@ public class WcPayRealnameVerifyIdInputUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.zYC.setOnClickListener(new View.OnClickListener()
+    this.BqW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70087);
-        ad.d("MicroMsg.WcPayRealnameVerifyIdInputUI", "click cre type");
-        WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZv.setValue(Boolean.TRUE);
+        ac.d("MicroMsg.WcPayRealnameVerifyIdInputUI", "click cre type");
+        WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).BrP.setValue(Boolean.TRUE);
         AppMethodBeat.o(70087);
       }
     });
-    this.zYC.getInfoIv().setClickable(false);
-    this.zYC.getContentEt().setInputType(131073);
-    this.zYD.getInfoIv().setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.zYD.getInfoIv().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.zYD.getInfoIv().setClearBtnDrawableId$255f295(getResources().getColor(2131099735));
-    com.tencent.mm.wallet_core.ui.formview.a.d(this.zYD);
-    this.zYD.a(new TextWatcher()
+    this.BqW.getInfoIv().setClickable(false);
+    this.BqW.getContentEt().setInputType(131073);
+    this.BqX.getInfoIv().setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.BqX.getInfoIv().setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.BqX.getInfoIv().setClearBtnDrawableId$255f295(getResources().getColor(2131099735));
+    com.tencent.mm.wallet_core.ui.formview.a.d(this.BqX);
+    this.BqX.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -274,7 +274,7 @@ public class WcPayRealnameVerifyIdInputUI
         WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this, WcPayRealnameVerifyIdInputUI.c(WcPayRealnameVerifyIdInputUI.this).getText());
         paramAnonymousEditable = WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this);
         String str = WcPayRealnameVerifyIdInputUI.d(WcPayRealnameVerifyIdInputUI.this);
-        paramAnonymousEditable.zZu.setValue(str);
+        paramAnonymousEditable.BrO.setValue(str);
         AppMethodBeat.o(70090);
       }
       
@@ -282,14 +282,14 @@ public class WcPayRealnameVerifyIdInputUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.zYK.setOnClickListener(new View.OnClickListener()
+    this.Bre.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(70092);
         paramAnonymousView = WcPayRealnameVerifyIdInputUI.this.getResources().getStringArray(2130903102);
         paramAnonymousView = new c(WcPayRealnameVerifyIdInputUI.this.getContext(), paramAnonymousView);
-        paramAnonymousView.HIW = new c.a()
+        paramAnonymousView.Jjt = new c.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
           {
@@ -298,7 +298,7 @@ public class WcPayRealnameVerifyIdInputUI
             {
               paramAnonymous2Object2 = WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this);
               paramAnonymous2Object1 = (String)paramAnonymous2Object1;
-              paramAnonymous2Object2.zZs.setValue(paramAnonymous2Object1);
+              paramAnonymous2Object2.BrM.setValue(paramAnonymous2Object1);
             }
             paramAnonymousView.hide();
             AppMethodBeat.o(174489);
@@ -308,7 +308,7 @@ public class WcPayRealnameVerifyIdInputUI
         AppMethodBeat.o(70092);
       }
     });
-    this.zYE.setOnClickListener(new View.OnClickListener()
+    this.BqY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
@@ -318,34 +318,34 @@ public class WcPayRealnameVerifyIdInputUI
         int i = ((Calendar)localObject).get(1);
         int j = ((Calendar)localObject).get(2) + 1;
         int k = ((Calendar)localObject).get(5);
-        paramAnonymousView.aO(i, j, k);
-        paramAnonymousView.aN(1900, 1, 1);
-        paramAnonymousView.HIQ = new b.a()
+        paramAnonymousView.aQ(i, j, k);
+        paramAnonymousView.aP(1900, 1, 1);
+        paramAnonymousView.Jjn = new b.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
             AppMethodBeat.i(174490);
             if (paramAnonymous2Boolean)
             {
-              ad.d("MicroMsg.WcPayRealnameVerifyIdInputUI", "year: %s, month: %s, day: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
+              ac.d("MicroMsg.WcPayRealnameVerifyIdInputUI", "year: %s, month: %s, day: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
               String str = String.format("%04d/%02d/%02d", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
               WcPayRealnameVerifyIdInputUI.a(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int1);
               WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int2);
               WcPayRealnameVerifyIdInputUI.c(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int3);
-              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZD.setValue(str);
+              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).BrX.setValue(str);
             }
             paramAnonymousView.hide();
             AppMethodBeat.o(174490);
           }
         };
-        localObject = (String)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZD.getValue();
-        if ((!bt.isNullOrNil((String)localObject)) && (((String)localObject).length() >= 10))
+        localObject = (String)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).BrX.getValue();
+        if ((!bs.isNullOrNil((String)localObject)) && (((String)localObject).length() >= 10))
         {
-          i = bt.getInt(((String)localObject).substring(0, 4), 0);
-          j = bt.getInt(((String)localObject).substring(5, 7), 0);
-          k = bt.getInt(((String)localObject).substring(9, 10), 0);
+          i = bs.getInt(((String)localObject).substring(0, 4), 0);
+          j = bs.getInt(((String)localObject).substring(5, 7), 0);
+          k = bs.getInt(((String)localObject).substring(9, 10), 0);
           if ((i > 0) && (j > 0) && (k > 0)) {
-            paramAnonymousView.aM(i, j, k);
+            paramAnonymousView.aO(i, j, k);
           }
         }
         for (;;)
@@ -353,12 +353,12 @@ public class WcPayRealnameVerifyIdInputUI
           paramAnonymousView.show();
           AppMethodBeat.o(70094);
           return;
-          paramAnonymousView.aM(i, j, k);
+          paramAnonymousView.aO(i, j, k);
         }
       }
     });
-    this.zYE.getInfoIv().setClickable(false);
-    this.zYF.setOnClickListener(new View.OnClickListener()
+    this.BqY.getInfoIv().setClickable(false);
+    this.BqZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -368,11 +368,11 @@ public class WcPayRealnameVerifyIdInputUI
         int i = paramAnonymousView.get(1);
         int j = paramAnonymousView.get(2) + 1;
         int k = paramAnonymousView.get(5);
-        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aM(i, j, k);
-        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aN(i, j, k);
-        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aO(i + 200, 12, 31);
+        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aO(i, j, k);
+        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aP(i, j, k);
+        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aQ(i + 200, 12, 31);
         WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).setLongTermYear(true);
-        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).HIQ = new b.a()
+        WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).Jjn = new b.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
@@ -380,7 +380,7 @@ public class WcPayRealnameVerifyIdInputUI
             String str;
             if (paramAnonymous2Boolean)
             {
-              ad.d("MicroMsg.WcPayRealnameVerifyIdInputUI", "year: %s, month: %s, day: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
+              ac.d("MicroMsg.WcPayRealnameVerifyIdInputUI", "year: %s, month: %s, day: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), Integer.valueOf(paramAnonymous2Int3) });
               if (paramAnonymous2Int1 != 1) {
                 break label157;
               }
@@ -388,7 +388,7 @@ public class WcPayRealnameVerifyIdInputUI
               WcPayRealnameVerifyIdInputUI.d(WcPayRealnameVerifyIdInputUI.this, 9999);
               WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this, 12);
               WcPayRealnameVerifyIdInputUI.f(WcPayRealnameVerifyIdInputUI.this, 31);
-              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).atL(str);
+              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).azd(str);
             }
             for (;;)
             {
@@ -400,22 +400,22 @@ public class WcPayRealnameVerifyIdInputUI
               WcPayRealnameVerifyIdInputUI.d(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int1);
               WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int2);
               WcPayRealnameVerifyIdInputUI.f(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int3);
-              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).atL(str);
+              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).azd(str);
             }
           }
         };
-        paramAnonymousView = (String)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZE.getValue();
-        if ((!bt.isNullOrNil(paramAnonymousView)) && (paramAnonymousView.length() >= 8))
+        paramAnonymousView = (String)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).BrY.getValue();
+        if ((!bs.isNullOrNil(paramAnonymousView)) && (paramAnonymousView.length() >= 8))
         {
-          i = bt.getInt(paramAnonymousView.substring(0, 4), 0);
-          j = bt.getInt(paramAnonymousView.substring(5, 7), 0);
-          k = bt.getInt(paramAnonymousView.substring(8, 10), 0);
+          i = bs.getInt(paramAnonymousView.substring(0, 4), 0);
+          j = bs.getInt(paramAnonymousView.substring(5, 7), 0);
+          k = bs.getInt(paramAnonymousView.substring(8, 10), 0);
           if ((i > 0) && (j > 0) && (k > 0))
           {
             if (i != 9999) {
               break label247;
             }
-            WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aM(1, 1, 1);
+            WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aO(1, 1, 1);
           }
         }
         for (;;)
@@ -424,20 +424,20 @@ public class WcPayRealnameVerifyIdInputUI
           AppMethodBeat.o(70096);
           return;
           label247:
-          WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aM(i, j, k);
+          WcPayRealnameVerifyIdInputUI.e(WcPayRealnameVerifyIdInputUI.this).aO(i, j, k);
         }
       }
     });
-    this.zYF.getInfoIv().setClickable(false);
-    this.zYJ.setInputType(3);
-    this.zYJ.a(new TextWatcher()
+    this.BqZ.getInfoIv().setClickable(false);
+    this.Brd.setInputType(3);
+    this.Brd.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(174491);
         paramAnonymousEditable = WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this);
         String str = WcPayRealnameVerifyIdInputUI.f(WcPayRealnameVerifyIdInputUI.this).getText();
-        paramAnonymousEditable.zZJ.setValue(str);
+        paramAnonymousEditable.Bsd.setValue(str);
         AppMethodBeat.o(174491);
       }
       
@@ -445,13 +445,13 @@ public class WcPayRealnameVerifyIdInputUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.zYG.setOnClickListener(new View.OnClickListener()
+    this.Bra.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(70098);
         paramAnonymousView = new c(WcPayRealnameVerifyIdInputUI.this.getContext(), WcPayRealnameVerifyIdInputUI.g(WcPayRealnameVerifyIdInputUI.this));
-        paramAnonymousView.HIW = new c.a()
+        paramAnonymousView.Jjt = new c.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
           {
@@ -459,22 +459,22 @@ public class WcPayRealnameVerifyIdInputUI
             if (paramAnonymous2Boolean)
             {
               paramAnonymous2Object1 = WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this);
-              int i = paramAnonymousView.ffZ();
-              paramAnonymous2Object1.zZF.setValue(Integer.valueOf(i));
+              int i = paramAnonymousView.fvY();
+              paramAnonymous2Object1.BrZ.setValue(Integer.valueOf(i));
             }
             paramAnonymousView.hide();
             AppMethodBeat.o(174492);
           }
         };
-        if (WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZF.getValue() != null) {
-          paramAnonymousView.aaR(((Integer)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZF.getValue()).intValue());
+        if (WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).BrZ.getValue() != null) {
+          paramAnonymousView.adc(((Integer)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).BrZ.getValue()).intValue());
         }
         paramAnonymousView.show();
         AppMethodBeat.o(70098);
       }
     });
-    this.zYG.getInfoIv().setClickable(false);
-    this.zYI.setOnClickListener(new View.OnClickListener()
+    this.Bra.getInfoIv().setClickable(false);
+    this.Brc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
@@ -484,15 +484,15 @@ public class WcPayRealnameVerifyIdInputUI
         int k = ((Calendar)localObject).get(1);
         int m = ((Calendar)localObject).get(2) + 1;
         int n = ((Calendar)localObject).get(5);
-        paramAnonymousView.aM(k, m, n);
+        paramAnonymousView.aO(k, m, n);
         int j = k - 200;
         int i = j;
         if (j <= 0) {
           i = 1;
         }
-        paramAnonymousView.aN(i, 1, 1);
-        paramAnonymousView.aO(k, m, n);
-        paramAnonymousView.HIQ = new b.a()
+        paramAnonymousView.aP(i, 1, 1);
+        paramAnonymousView.aQ(k, m, n);
+        paramAnonymousView.Jjn = new b.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
@@ -503,28 +503,28 @@ public class WcPayRealnameVerifyIdInputUI
               WcPayRealnameVerifyIdInputUI.g(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int1);
               WcPayRealnameVerifyIdInputUI.h(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int2);
               WcPayRealnameVerifyIdInputUI.i(WcPayRealnameVerifyIdInputUI.this, paramAnonymous2Int3);
-              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZG.setValue(str);
+              WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).Bsa.setValue(str);
             }
             paramAnonymousView.hide();
             AppMethodBeat.o(174493);
           }
         };
-        localObject = (String)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).zZG.getValue();
-        if ((!bt.isNullOrNil((String)localObject)) && (((String)localObject).length() >= 10))
+        localObject = (String)WcPayRealnameVerifyIdInputUI.b(WcPayRealnameVerifyIdInputUI.this).Bsa.getValue();
+        if ((!bs.isNullOrNil((String)localObject)) && (((String)localObject).length() >= 10))
         {
-          i = bt.getInt(((String)localObject).substring(0, 4), 0);
-          j = bt.getInt(((String)localObject).substring(5, 7), 0);
-          k = bt.getInt(((String)localObject).substring(9, 10), 0);
+          i = bs.getInt(((String)localObject).substring(0, 4), 0);
+          j = bs.getInt(((String)localObject).substring(5, 7), 0);
+          k = bs.getInt(((String)localObject).substring(9, 10), 0);
           if ((i > 0) && (j > 0) && (k > 0)) {
-            paramAnonymousView.aM(i, j, k);
+            paramAnonymousView.aO(i, j, k);
           }
         }
         paramAnonymousView.show();
         AppMethodBeat.o(70099);
       }
     });
-    this.zYI.getInfoIv().setClickable(false);
-    this.zYH.setOnClickListener(new View.OnClickListener()
+    this.Brc.getInfoIv().setClickable(false);
+    this.Brb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -540,9 +540,9 @@ public class WcPayRealnameVerifyIdInputUI
         AppMethodBeat.o(70076);
       }
     });
-    this.zYH.getInfoIv().setClickable(false);
-    this.zXO.getContentEt().setInputType(131073);
-    this.zXO.setOnClickListener(new View.OnClickListener()
+    this.Brb.getInfoIv().setClickable(false);
+    this.Bqi.getContentEt().setInputType(131073);
+    this.Bqi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -552,9 +552,9 @@ public class WcPayRealnameVerifyIdInputUI
         AppMethodBeat.o(174477);
       }
     });
-    this.zXO.getInfoIv().setClickable(false);
-    this.zXP.getContentEt().setInputType(131073);
-    this.zXP.setOnClickListener(new View.OnClickListener()
+    this.Bqi.getInfoIv().setClickable(false);
+    this.Bqj.getContentEt().setInputType(131073);
+    this.Bqj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -570,8 +570,8 @@ public class WcPayRealnameVerifyIdInputUI
         AppMethodBeat.o(174478);
       }
     });
-    this.zXP.getInfoIv().setClickable(false);
-    this.iwY.setOnClickListener(new View.OnClickListener()
+    this.Bqj.getInfoIv().setClickable(false);
+    this.iXb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -581,33 +581,33 @@ public class WcPayRealnameVerifyIdInputUI
         AppMethodBeat.o(174479);
       }
     });
-    this.vuR.fkI();
-    this.zYR.zZv.observe(this, new Observer()
+    this.wEW.fAY();
+    this.Brl.BrP.observe(this, new Observer()
     {
-      int hRK = 0;
+      int irP = 0;
     });
-    this.zYR.zZt.observe(this, new Observer() {});
-    this.zYR.zZD.observe(this, new Observer() {});
-    this.zYR.zZE.observe(this, new Observer() {});
-    this.zYR.zZs.observe(this, new Observer() {});
-    this.zYR.zZF.observe(this, new Observer() {});
-    this.zYR.zZG.observe(this, new Observer() {});
-    this.zYR.zZz.observe(this, new Observer() {});
-    this.zYR.zZA.observe(this, new Observer() {});
-    this.zYR.zZI.observe(this, new Observer() {});
-    this.zYR.zZB.observe(this, new Observer() {});
-    this.zYR.zZC.observe(this, new Observer() {});
-    if (this.zYV.size() > 0) {
-      this.zYR.a((cgy)this.zYV.get(0));
+    this.Brl.BrN.observe(this, new Observer() {});
+    this.Brl.BrX.observe(this, new Observer() {});
+    this.Brl.BrY.observe(this, new Observer() {});
+    this.Brl.BrM.observe(this, new Observer() {});
+    this.Brl.BrZ.observe(this, new Observer() {});
+    this.Brl.Bsa.observe(this, new Observer() {});
+    this.Brl.BrT.observe(this, new Observer() {});
+    this.Brl.BrU.observe(this, new Observer() {});
+    this.Brl.Bsc.observe(this, new Observer() {});
+    this.Brl.BrV.observe(this, new Observer() {});
+    this.Brl.BrW.observe(this, new Observer() {});
+    if (this.Brp.size() > 0) {
+      this.Brl.a((cmb)this.Brp.get(0));
     }
     for (;;)
     {
-      e.a(new WalletFormView[] { this.vuR, this.zYC, this.zYD, this.zXO, this.zXP, this.zYE, this.zYF, this.zYG, this.zYH, this.zYI, this.zYJ, this.zYK });
+      e.a(new WalletFormView[] { this.wEW, this.BqW, this.BqX, this.Bqi, this.Bqj, this.BqY, this.BqZ, this.Bra, this.Brb, this.Brc, this.Brd, this.Bre });
       AppMethodBeat.o(70106);
       return;
-      localObject = this.zYD.getLogicDelegate();
+      localObject = this.BqX.getLogicDelegate();
       if ((localObject instanceof a.a)) {
-        ((a.a)localObject).abz(-1);
+        ((a.a)localObject).adS(-1);
       }
     }
   }
@@ -635,24 +635,24 @@ public class WcPayRealnameVerifyIdInputUI
         String str5 = paramIntent.getStringExtra("Contact_Province");
         paramIntent = paramIntent.getStringExtra("Contact_City");
         StringBuilder localStringBuilder = new StringBuilder();
-        if (!bt.isNullOrNil(str1))
+        if (!bs.isNullOrNil(str1))
         {
           localStringBuilder.append(str1);
           localStringBuilder.append(" ");
         }
-        if (!bt.isNullOrNil(str2))
+        if (!bs.isNullOrNil(str2))
         {
           localStringBuilder.append(str2);
           localStringBuilder.append(" ");
         }
-        if (!bt.isNullOrNil(str3)) {
+        if (!bs.isNullOrNil(str3)) {
           localStringBuilder.append(str3);
         }
-        this.zYR.x(str4, str5, paramIntent, localStringBuilder.toString());
+        this.Brl.z(str4, str5, paramIntent, localStringBuilder.toString());
         AppMethodBeat.o(70111);
         return;
       }
-      ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "no area choose!");
+      ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "no area choose!");
       AppMethodBeat.o(70111);
       return;
     }
@@ -661,24 +661,24 @@ public class WcPayRealnameVerifyIdInputUI
       if (paramInt2 == -1)
       {
         paramIntent = (Profession)paramIntent.getParcelableExtra("key_select_profession");
-        this.zYR.zZB.setValue(paramIntent);
+        this.Brl.BrV.setValue(paramIntent);
         AppMethodBeat.o(70111);
         return;
       }
-      ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "no choose!");
+      ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "no choose!");
       AppMethodBeat.o(70111);
       return;
     }
     if ((paramInt1 == 3) && (paramInt2 == 100))
     {
-      if (!bt.isNullOrNil(paramIntent.getStringExtra("country_name")))
+      if (!bs.isNullOrNil(paramIntent.getStringExtra("country_name")))
       {
         str1 = paramIntent.getStringExtra("iso_code");
         str2 = paramIntent.getStringExtra("country_name");
-        this.zZg = paramIntent.getStringExtra("couttry_code");
-        paramIntent = this.zYR;
-        paramIntent.zZH.setValue(str1);
-        paramIntent.zZI.setValue(str2);
+        this.BrA = paramIntent.getStringExtra("couttry_code");
+        paramIntent = this.Brl;
+        paramIntent.Bsb.setValue(str1);
+        paramIntent.Bsc.setValue(str2);
         AppMethodBeat.o(70111);
       }
     }
@@ -686,13 +686,13 @@ public class WcPayRealnameVerifyIdInputUI
     {
       if ((paramInt1 == 4) && (paramInt2 == -1) && (paramIntent != null))
       {
-        str1 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.zYc);
-        str2 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.zYd);
-        str3 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.zYe);
-        str4 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.zYf);
-        paramIntent = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.zYg);
-        this.zYR.x(str1, str2, str3, str4);
-        this.zYR.zZA.setValue(paramIntent);
+        str1 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.Bqw);
+        str2 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.Bqx);
+        str3 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.Bqy);
+        str4 = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.Bqz);
+        paramIntent = paramIntent.getStringExtra(WcPayRealnameInputAddressUI.BqA);
+        this.Brl.z(str1, str2, str3, str4);
+        this.Brl.BrU.setValue(paramIntent);
         AppMethodBeat.o(70111);
         return;
       }
@@ -709,19 +709,19 @@ public class WcPayRealnameVerifyIdInputUI
     hideActionbarLine();
     setMMTitle("");
     this.mNetSceneMgr.addSceneEndListener(1616);
-    this.zYR = ((VM)ViewModelProviders.of(this).get(VM.class));
+    this.Brl = ((VM)ViewModelProviders.of(this).get(VM.class));
     paramBundle = getInput().getString("realname_verify_process_get_wording_cache");
     try
     {
-      if (!bt.isNullOrNil(paramBundle))
+      if (!bs.isNullOrNil(paramBundle))
       {
-        paramBundle = (azf)new azf().parseFrom(paramBundle.getBytes(org.apache.commons.a.a.ISO_8859_1));
-        this.zYV.addAll(paramBundle.DxQ);
-        this.zYO = paramBundle.zYO;
-        this.zYP = paramBundle.zYP;
+        paramBundle = (bcx)new bcx().parseFrom(paramBundle.getBytes(org.apache.commons.a.a.ISO_8859_1));
+        this.Brp.addAll(paramBundle.ETm);
+        this.Bri = paramBundle.Bri;
+        this.Brj = paramBundle.Brj;
       }
       initView();
-      ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "do get user ext info");
+      ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "do get user ext info");
       doSceneForceProgress(new l());
       AppMethodBeat.o(70105);
       return;
@@ -730,7 +730,7 @@ public class WcPayRealnameVerifyIdInputUI
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.WcPayRealnameVerifyIdInputUI", paramBundle, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WcPayRealnameVerifyIdInputUI", paramBundle, "", new Object[0]);
       }
     }
   }
@@ -757,8 +757,8 @@ public class WcPayRealnameVerifyIdInputUI
     if ((paramn instanceof l))
     {
       paramString = (l)paramn;
-      this.mProfessions = paramString.Aan;
-      this.zYU = paramString.zYU;
+      this.mProfessions = paramString.BsH;
+      this.Bro = paramString.Bro;
     }
     while ((!(paramn instanceof g)) || (paramInt1 != 0) || (paramInt2 != 0))
     {
@@ -766,22 +766,22 @@ public class WcPayRealnameVerifyIdInputUI
       return false;
     }
     paramString = (g)paramn;
-    if (paramString.zVS == null) {
+    if (paramString.Bom == null) {
       a(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(70108);
       return true;
-      ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify show juveniles dialog");
-      h.d(this, paramString.zVS.doh, "", paramString.zVS.Ahr, paramString.zVS.Ahq, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify show juveniles dialog");
+      h.d(this, paramString.Bom.dlQ, "", paramString.Bom.BzL, paramString.Bom.BzK, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(174487);
-          ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify dialog lOk");
+          ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify dialog lOk");
           WcPayRealnameVerifyIdInputUI.a(WcPayRealnameVerifyIdInputUI.this, paramString);
-          t.sw(1);
+          t.tn(1);
           AppMethodBeat.o(174487);
         }
       }, new DialogInterface.OnClickListener()
@@ -789,8 +789,8 @@ public class WcPayRealnameVerifyIdInputUI
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(174488);
-          ad.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify dialog lCancel");
-          t.sw(0);
+          ac.i("MicroMsg.WcPayRealnameVerifyIdInputUI", "NetSceneRealNameVerify dialog lCancel");
+          t.tn(0);
           AppMethodBeat.o(174488);
         }
       });
@@ -806,49 +806,49 @@ public class WcPayRealnameVerifyIdInputUI
   public static class VM
     extends ViewModel
   {
-    public MutableLiveData<String> zZA;
-    public MutableLiveData<Profession> zZB;
-    public MutableLiveData<Boolean> zZC;
-    public MutableLiveData<String> zZD;
-    public MutableLiveData<String> zZE;
-    public MutableLiveData<Integer> zZF;
-    public MutableLiveData<String> zZG;
-    public MutableLiveData<String> zZH;
-    public MutableLiveData<String> zZI;
-    public MutableLiveData<String> zZJ;
-    public MutableLiveData<String> zZr;
-    public MutableLiveData<String> zZs;
-    public MutableLiveData<cgy> zZt;
-    public MutableLiveData<String> zZu;
-    public MutableLiveData<Boolean> zZv;
-    public MutableLiveData<String> zZw;
-    public MutableLiveData<String> zZx;
-    public MutableLiveData<String> zZy;
-    public MutableLiveData<String> zZz;
+    public MutableLiveData<String> BrL;
+    public MutableLiveData<String> BrM;
+    public MutableLiveData<cmb> BrN;
+    public MutableLiveData<String> BrO;
+    public MutableLiveData<Boolean> BrP;
+    public MutableLiveData<String> BrQ;
+    public MutableLiveData<String> BrR;
+    public MutableLiveData<String> BrS;
+    public MutableLiveData<String> BrT;
+    public MutableLiveData<String> BrU;
+    public MutableLiveData<Profession> BrV;
+    public MutableLiveData<Boolean> BrW;
+    public MutableLiveData<String> BrX;
+    public MutableLiveData<String> BrY;
+    public MutableLiveData<Integer> BrZ;
+    public MutableLiveData<String> Bsa;
+    public MutableLiveData<String> Bsb;
+    public MutableLiveData<String> Bsc;
+    public MutableLiveData<String> Bsd;
     
     public VM()
     {
       AppMethodBeat.i(70101);
-      this.zZr = new MutableLiveData();
-      this.zZs = new MutableLiveData();
-      this.zZt = new MutableLiveData();
-      this.zZu = new MutableLiveData();
-      this.zZv = new MutableLiveData();
-      this.zZw = new MutableLiveData();
-      this.zZx = new MutableLiveData();
-      this.zZy = new MutableLiveData();
-      this.zZz = new MutableLiveData();
-      this.zZA = new MutableLiveData();
-      this.zZB = new MutableLiveData();
-      this.zZC = new MutableLiveData();
-      this.zZD = new MutableLiveData();
-      this.zZE = new MutableLiveData();
-      this.zZF = new MutableLiveData();
-      this.zZG = new MutableLiveData();
-      this.zZH = new MutableLiveData();
-      this.zZI = new MutableLiveData();
-      this.zZJ = new MutableLiveData();
-      this.zZF.setValue(Integer.valueOf(0));
+      this.BrL = new MutableLiveData();
+      this.BrM = new MutableLiveData();
+      this.BrN = new MutableLiveData();
+      this.BrO = new MutableLiveData();
+      this.BrP = new MutableLiveData();
+      this.BrQ = new MutableLiveData();
+      this.BrR = new MutableLiveData();
+      this.BrS = new MutableLiveData();
+      this.BrT = new MutableLiveData();
+      this.BrU = new MutableLiveData();
+      this.BrV = new MutableLiveData();
+      this.BrW = new MutableLiveData();
+      this.BrX = new MutableLiveData();
+      this.BrY = new MutableLiveData();
+      this.BrZ = new MutableLiveData();
+      this.Bsa = new MutableLiveData();
+      this.Bsb = new MutableLiveData();
+      this.Bsc = new MutableLiveData();
+      this.Bsd = new MutableLiveData();
+      this.BrZ.setValue(Integer.valueOf(0));
       Observer local1 = new Observer()
       {
         public final void onChanged(Object paramAnonymousObject)
@@ -856,52 +856,52 @@ public class WcPayRealnameVerifyIdInputUI
           AppMethodBeat.i(70100);
           if (WcPayRealnameVerifyIdInputUI.VM.a(WcPayRealnameVerifyIdInputUI.VM.this))
           {
-            WcPayRealnameVerifyIdInputUI.VM.this.zZC.setValue(Boolean.TRUE);
+            WcPayRealnameVerifyIdInputUI.VM.this.BrW.setValue(Boolean.TRUE);
             AppMethodBeat.o(70100);
             return;
           }
-          WcPayRealnameVerifyIdInputUI.VM.this.zZC.setValue(Boolean.FALSE);
+          WcPayRealnameVerifyIdInputUI.VM.this.BrW.setValue(Boolean.FALSE);
           AppMethodBeat.o(70100);
         }
       };
-      this.zZr.observeForever(local1);
-      this.zZu.observeForever(local1);
-      this.zZB.observeForever(local1);
-      this.zZw.observeForever(local1);
-      this.zZx.observeForever(local1);
-      this.zZy.observeForever(local1);
-      this.zZD.observeForever(local1);
-      this.zZE.observeForever(local1);
-      this.zZF.observeForever(local1);
-      this.zZH.observeForever(local1);
-      this.zZI.observeForever(local1);
-      this.zZG.observeForever(local1);
-      this.zZJ.observeForever(local1);
-      this.zZs.observeForever(local1);
+      this.BrL.observeForever(local1);
+      this.BrO.observeForever(local1);
+      this.BrV.observeForever(local1);
+      this.BrQ.observeForever(local1);
+      this.BrR.observeForever(local1);
+      this.BrS.observeForever(local1);
+      this.BrX.observeForever(local1);
+      this.BrY.observeForever(local1);
+      this.BrZ.observeForever(local1);
+      this.Bsb.observeForever(local1);
+      this.Bsc.observeForever(local1);
+      this.Bsa.observeForever(local1);
+      this.Bsd.observeForever(local1);
+      this.BrM.observeForever(local1);
       AppMethodBeat.o(70101);
     }
     
-    public final void a(cgy paramcgy)
+    public final void a(cmb paramcmb)
     {
       AppMethodBeat.i(70102);
-      this.zZt.setValue(paramcgy);
+      this.BrN.setValue(paramcmb);
       AppMethodBeat.o(70102);
     }
     
-    public final void atL(String paramString)
+    public final void azd(String paramString)
     {
-      AppMethodBeat.i(187158);
-      this.zZE.setValue(paramString);
-      AppMethodBeat.o(187158);
+      AppMethodBeat.i(207279);
+      this.BrY.setValue(paramString);
+      AppMethodBeat.o(207279);
     }
     
-    public final void x(String paramString1, String paramString2, String paramString3, String paramString4)
+    public final void z(String paramString1, String paramString2, String paramString3, String paramString4)
     {
       AppMethodBeat.i(174494);
-      this.zZw.setValue(paramString1);
-      this.zZx.setValue(paramString2);
-      this.zZy.setValue(paramString3);
-      this.zZz.setValue(paramString4);
+      this.BrQ.setValue(paramString1);
+      this.BrR.setValue(paramString2);
+      this.BrS.setValue(paramString3);
+      this.BrT.setValue(paramString4);
       AppMethodBeat.o(174494);
     }
   }

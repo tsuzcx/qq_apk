@@ -4,27 +4,27 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class Addr
   implements Parcelable
 {
   public static final Parcelable.Creator<Addr> CREATOR;
   public String country;
-  public String hdQ;
-  public String hdR;
-  public String hdS;
-  public String hdT;
-  public String hdU;
-  public String hdV;
-  public String hdW;
-  public String hdX;
-  public String hdY;
-  public String hdZ;
-  public String hea;
-  public float heb;
-  public float hec;
+  public String hEA;
+  public String hEB;
+  public String hEC;
+  public String hED;
+  public float hEE;
+  public float hEF;
+  public String hEt;
+  public String hEu;
+  public String hEv;
+  public String hEw;
+  public String hEx;
+  public String hEy;
+  public String hEz;
   public Object tag = "";
   
   static
@@ -34,24 +34,24 @@ public class Addr
     AppMethodBeat.o(150459);
   }
   
-  public final String axP()
+  public final String aEH()
   {
     AppMethodBeat.i(150457);
     Object localObject = new StringBuilder();
-    if (!bt.isNullOrNil(this.hdS)) {
-      ((StringBuilder)localObject).append(this.hdS);
+    if (!bs.isNullOrNil(this.hEv)) {
+      ((StringBuilder)localObject).append(this.hEv);
     }
     for (;;)
     {
-      ((StringBuilder)localObject).append(bt.by(this.hdU, "")).append(bt.by(this.hdV, "")).append(bt.by(this.hdW, "")).append(bt.by(this.hdX, ""));
-      ad.d("MicroMsg.Addr", "little addr res: [%s].", new Object[] { localObject });
+      ((StringBuilder)localObject).append(bs.bG(this.hEx, "")).append(bs.bG(this.hEy, "")).append(bs.bG(this.hEz, "")).append(bs.bG(this.hEA, ""));
+      ac.d("MicroMsg.Addr", "little addr res: [%s].", new Object[] { localObject });
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(150457);
       return localObject;
-      if (!bt.isNullOrNil(this.hdT)) {
-        ((StringBuilder)localObject).append(this.hdT);
+      if (!bs.isNullOrNil(this.hEw)) {
+        ((StringBuilder)localObject).append(this.hEw);
       } else {
-        ad.e("MicroMsg.Addr", "wtf!!! locality & locality_shi all invalid!!!");
+        ac.e("MicroMsg.Addr", "wtf!!! locality & locality_shi all invalid!!!");
       }
     }
   }
@@ -65,19 +65,19 @@ public class Addr
   {
     AppMethodBeat.i(150456);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("address='" + this.hdQ + '\'');
+    ((StringBuilder)localObject).append("address='" + this.hEt + '\'');
     ((StringBuilder)localObject).append(", country='" + this.country + '\'');
-    ((StringBuilder)localObject).append(", administrative_area_level_1='" + this.hdR + '\'');
-    ((StringBuilder)localObject).append(", locality='" + this.hdS + '\'');
-    ((StringBuilder)localObject).append(", locality_shi='" + this.hdT + '\'');
-    ((StringBuilder)localObject).append(", sublocality='" + this.hdU + '\'');
-    ((StringBuilder)localObject).append(", neighborhood='" + this.hdV + '\'');
-    ((StringBuilder)localObject).append(", route='" + this.hdW + '\'');
-    ((StringBuilder)localObject).append(", streetNum='" + this.hdX + '\'');
-    ((StringBuilder)localObject).append(", roughAddr='" + this.hdY + '\'');
-    ((StringBuilder)localObject).append(", poi_name='" + this.hdZ + '\'');
-    ((StringBuilder)localObject).append(", lat=" + this.heb);
-    ((StringBuilder)localObject).append(", lng=" + this.hec);
+    ((StringBuilder)localObject).append(", administrative_area_level_1='" + this.hEu + '\'');
+    ((StringBuilder)localObject).append(", locality='" + this.hEv + '\'');
+    ((StringBuilder)localObject).append(", locality_shi='" + this.hEw + '\'');
+    ((StringBuilder)localObject).append(", sublocality='" + this.hEx + '\'');
+    ((StringBuilder)localObject).append(", neighborhood='" + this.hEy + '\'');
+    ((StringBuilder)localObject).append(", route='" + this.hEz + '\'');
+    ((StringBuilder)localObject).append(", streetNum='" + this.hEA + '\'');
+    ((StringBuilder)localObject).append(", roughAddr='" + this.hEB + '\'');
+    ((StringBuilder)localObject).append(", poi_name='" + this.hEC + '\'');
+    ((StringBuilder)localObject).append(", lat=" + this.hEE);
+    ((StringBuilder)localObject).append(", lng=" + this.hEF);
     ((StringBuilder)localObject).append(", tag=" + this.tag);
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(150456);
@@ -87,25 +87,25 @@ public class Addr
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(150458);
-    paramParcel.writeString(bt.by(this.hdQ, ""));
-    paramParcel.writeString(bt.by(this.country, ""));
-    paramParcel.writeString(bt.by(this.hdR, ""));
-    paramParcel.writeString(bt.by(this.hdS, ""));
-    paramParcel.writeString(bt.by(this.hdT, ""));
-    paramParcel.writeString(bt.by(this.hdU, ""));
-    paramParcel.writeString(bt.by(this.hdV, ""));
-    paramParcel.writeString(bt.by(this.hdW, ""));
-    paramParcel.writeString(bt.by(this.hdX, ""));
-    paramParcel.writeString(bt.by(this.hdY, ""));
-    paramParcel.writeString(bt.by(this.hdZ, ""));
-    paramParcel.writeFloat(this.heb);
-    paramParcel.writeFloat(this.hec);
+    paramParcel.writeString(bs.bG(this.hEt, ""));
+    paramParcel.writeString(bs.bG(this.country, ""));
+    paramParcel.writeString(bs.bG(this.hEu, ""));
+    paramParcel.writeString(bs.bG(this.hEv, ""));
+    paramParcel.writeString(bs.bG(this.hEw, ""));
+    paramParcel.writeString(bs.bG(this.hEx, ""));
+    paramParcel.writeString(bs.bG(this.hEy, ""));
+    paramParcel.writeString(bs.bG(this.hEz, ""));
+    paramParcel.writeString(bs.bG(this.hEA, ""));
+    paramParcel.writeString(bs.bG(this.hEB, ""));
+    paramParcel.writeString(bs.bG(this.hEC, ""));
+    paramParcel.writeFloat(this.hEE);
+    paramParcel.writeFloat(this.hEF);
     AppMethodBeat.o(150458);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelgeo.Addr
  * JD-Core Version:    0.7.0.1
  */

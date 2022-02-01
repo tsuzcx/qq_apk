@@ -28,20 +28,20 @@ public final class d
     }
   }
   
-  private static String abK(int paramInt)
+  private static String aed(int paramInt)
   {
     AppMethodBeat.i(138365);
     String str = "";
     try
     {
-      Object localObject = a.gq(String.format(Locale.ENGLISH, "/proc/%d/cmdline", new Object[] { Integer.valueOf(paramInt) }), 100);
+      Object localObject = a.gu(String.format(Locale.ENGLISH, "/proc/%d/cmdline", new Object[] { Integer.valueOf(paramInt) }), 100);
       if (localObject != null) {
         str = new String((byte[])localObject, 0, a((byte[])localObject, 0, '\000'));
       }
       localObject = str;
       if (TextUtils.isEmpty(str))
       {
-        byte[] arrayOfByte = a.gq(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
+        byte[] arrayOfByte = a.gu(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
         localObject = str;
         if (arrayOfByte != null)
         {
@@ -64,12 +64,12 @@ public final class d
     return "";
   }
   
-  private static d.a abL(int paramInt)
+  private static a aee(int paramInt)
   {
     AppMethodBeat.i(138366);
     try
     {
-      str1 = abK(paramInt);
+      str1 = aed(paramInt);
     }
     catch (Exception localException1)
     {
@@ -78,7 +78,7 @@ public final class d
         for (;;)
         {
           String str1;
-          Object localObject2 = new String(a.aNG(String.format(Locale.ENGLISH, "/proc/%d/attr/current", new Object[] { Integer.valueOf(paramInt) }))).trim();
+          Object localObject2 = new String(a.aTj(String.format(Locale.ENGLISH, "/proc/%d/attr/current", new Object[] { Integer.valueOf(paramInt) }))).trim();
           if ((str1 != null) && (i != -1) && (k != -1)) {
             break;
           }
@@ -98,7 +98,7 @@ public final class d
         {
           str2 = null;
         }
-        Object localObject1 = new d.a(paramInt, i, (String)localObject1, k, str2);
+        Object localObject1 = new a(paramInt, i, (String)localObject1, k, str2);
         AppMethodBeat.o(138366);
         return localObject1;
       }
@@ -107,7 +107,7 @@ public final class d
     {
       try
       {
-        localObject2 = a.gq(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
+        localObject2 = a.gu(String.format(Locale.ENGLISH, "/proc/%d/status", new Object[] { Integer.valueOf(paramInt) }), 150);
         if (localObject2 == null) {
           continue;
         }
@@ -155,7 +155,7 @@ public final class d
     i = j;
   }
   
-  public static List<d.a> fmg()
+  public static List<a> fCx()
   {
     int i = 0;
     AppMethodBeat.i(138364);
@@ -179,7 +179,7 @@ public final class d
             if ((k > 57) || (k < 48)) {
               break label125;
             }
-            localObject = abL(Integer.parseInt((String)localObject));
+            localObject = aee(Integer.parseInt((String)localObject));
             if (localObject == null) {
               break label125;
             }
@@ -197,10 +197,36 @@ public final class d
       i += 1;
     }
   }
+  
+  public static final class a
+  {
+    public int JTf;
+    public String JTg;
+    public String name = "";
+    public int pid;
+    public int uid;
+    
+    a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
+    {
+      this.pid = paramInt1;
+      this.JTf = paramInt2;
+      this.name = paramString1;
+      this.uid = paramInt3;
+      this.JTg = paramString2;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(138363);
+      String str = "PID=" + this.pid + " PPID=" + this.JTf + " NAME=" + this.name + " UID=" + this.uid + " CONTEXT=" + this.JTg;
+      AppMethodBeat.o(138363);
+      return str;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.b.d
  * JD-Core Version:    0.7.0.1
  */

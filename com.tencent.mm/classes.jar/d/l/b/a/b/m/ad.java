@@ -9,8 +9,8 @@ public final class ad
   {
     AppMethodBeat.i(60773);
     k.h(paramab, "$this$isError");
-    paramab = paramab.fJW();
-    if (((paramab instanceof t)) || (((paramab instanceof v)) && ((((v)paramab).fBP() instanceof t))))
+    paramab = paramab.gcz();
+    if (((paramab instanceof t)) || (((paramab instanceof v)) && ((((v)paramab).fUt() instanceof t))))
     {
       AppMethodBeat.o(60773);
       return true;
@@ -21,7 +21,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ad
  * JD-Core Version:    0.7.0.1
  */

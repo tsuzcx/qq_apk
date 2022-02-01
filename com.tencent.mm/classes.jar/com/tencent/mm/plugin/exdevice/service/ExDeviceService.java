@@ -8,20 +8,20 @@ import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.k;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.service.MMService;
 
 @k
 public class ExDeviceService
   extends MMService
 {
-  private h.a oZf = null;
+  private h.a pCq = null;
   
-  private static boolean bZX()
+  private static boolean chg()
   {
     AppMethodBeat.i(23637);
-    PackageManager localPackageManager = aj.getContext().getPackageManager();
+    PackageManager localPackageManager = ai.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
@@ -35,19 +35,19 @@ public class ExDeviceService
         boolean bool = false;
       }
     }
-    ad.i("MicroMsg.exdevice.ExDeviceService", "isInstallWearApp %b", new Object[] { Boolean.valueOf(bool) });
+    ac.i("MicroMsg.exdevice.ExDeviceService", "isInstallWearApp %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(23637);
     return bool;
   }
   
-  public final IBinder TF()
+  public final IBinder Uz()
   {
     AppMethodBeat.i(23638);
-    ad.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
-    if (this.oZf == null) {
-      this.oZf = new y();
+    ac.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
+    if (this.pCq == null) {
+      this.pCq = new y();
     }
-    h.a locala = this.oZf;
+    h.a locala = this.pCq;
     AppMethodBeat.o(23638);
     return locala;
   }
@@ -60,7 +60,7 @@ public class ExDeviceService
   public final void onCreate()
   {
     AppMethodBeat.i(23635);
-    ad.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onCreate");
+    ac.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onCreate");
     super.onCreate();
     AppMethodBeat.o(23635);
   }
@@ -68,12 +68,12 @@ public class ExDeviceService
   public final void onDestroy()
   {
     AppMethodBeat.i(23636);
-    ad.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
+    ac.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
     Java2CExDevice.closeBluetoothAccessoryLib();
     super.onDestroy();
-    if (!bZX())
+    if (!chg())
     {
-      ad.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
+      ac.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
       Process.killProcess(Process.myPid());
     }
     AppMethodBeat.o(23636);
@@ -81,7 +81,7 @@ public class ExDeviceService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.ExDeviceService
  * JD-Core Version:    0.7.0.1
  */

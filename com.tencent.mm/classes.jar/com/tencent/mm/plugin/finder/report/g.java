@@ -1,26 +1,35 @@
 package com.tencent.mm.plugin.finder.report;
 
 import android.content.Context;
-import android.media.AudioManager;
+import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.an;
-import com.tencent.mm.g.b.a.eu;
-import com.tencent.mm.i.d;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.ce;
-import com.tencent.mm.plugin.finder.model.r;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.event.b.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.v;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.utils.i;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.protocal.protobuf.alx;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import d.a.j;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.ajz;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.aob;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.protocal.protobuf.dcw;
+import com.tencent.mm.protocal.protobuf.lo;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import d.g.b.k;
+import d.g.b.v.f;
 import d.n.n;
-import d.o;
-import d.v;
+import d.y;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,573 +37,1516 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import org.json.JSONArray;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.json.JSONObject;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter;", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "currentVideoReportMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportData;", "Lkotlin/collections/HashMap;", "getCurrentVideoReportMap", "()Ljava/util/HashMap;", "setCurrentVideoReportMap", "(Ljava/util/HashMap;)V", "lazyReportDataList", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "getLazyReportDataList", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "setLazyReportDataList", "(Ljava/util/concurrent/ConcurrentLinkedDeque;)V", "checkVideoDataAvailable", "", "feedId", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "timestamp", "offset", "", "total", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "cloneSceneResult", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportSceneResult;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "cloneTaskInfo", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportTaskInfo;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "onDownloadFinish", "ret", "onDownloadProgress", "onDownloadStart", "onDownloadStop", "taskInfo", "onFirstFrameUpdate", "onMoovReady", "onPause", "onPlayProgress", "onRelease", "onReplay", "onResume", "onSeek", "onStartPlay", "position", "pageIndex", "onStopPlay", "onTabChange", "onUserClickPause", "it", "onWaiting", "onWaitingEnd", "report17000", "reportData", "report19059", "Companion", "ReportData", "ReportSceneResult", "ReportTaskInfo", "plugin-finder_release"})
-public final class g
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "Lcom/tencent/mm/plugin/finder/report/FinderFeedFlowReporter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "lastCenterFeed", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "lastVisibleFeedMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "lastVisibleNotFeedSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "waitForReportStatsList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/Stats;", "checkEmptyToHotTabExpose", "", "checkRedDotExpose", "isCareEvent", "", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "onExit", "onInvisible", "onRelease", "onVisible", "reportCenterRecord", "record", "stats", "reportExpose", "across", "resumeDataAdapter", "sendStatsList", "Companion", "plugin-finder_release"})
+public class g
+  extends a
 {
-  private static final LinkedList<aif> KVx;
-  public static final g.a qGu;
-  HashMap<Long, b> KVw;
-  private dzp contextObj;
-  ConcurrentLinkedDeque<b> qGr;
+  private static final String TAG = "Finder.FinderSingleFeedFlowReporter";
+  private static h rxx;
+  public static final g.a rxy;
+  private LinkedList<dcw> rxt;
+  private h rxu;
+  private HashSet<Long> rxv;
+  private HashMap<Long, h> rxw;
   
   static
   {
-    AppMethodBeat.i(166706);
-    qGu = new g.a((byte)0);
-    KVx = new LinkedList();
-    AppMethodBeat.o(166706);
+    AppMethodBeat.i(202780);
+    rxy = new g.a((byte)0);
+    TAG = "Finder.FinderSingleFeedFlowReporter";
+    AppMethodBeat.o(202780);
   }
   
-  public g(dzp paramdzp)
+  public g(MMActivity paramMMActivity, anm paramanm)
   {
-    AppMethodBeat.i(198873);
-    this.contextObj = paramdzp;
-    this.qGr = new ConcurrentLinkedDeque();
-    this.KVw = new HashMap();
-    AppMethodBeat.o(198873);
+    super(paramMMActivity, paramanm);
+    AppMethodBeat.i(202779);
+    this.rxt = new LinkedList();
+    this.rxv = new HashSet();
+    this.rxw = new HashMap();
+    AppMethodBeat.o(202779);
   }
   
-  private static g.d b(com.tencent.mm.i.h paramh)
+  private final dcw a(h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(198871);
-    k.h(paramh, "cloneTaskInfo");
-    String str = paramh.field_mediaId;
-    Object localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localObject = new g.d((String)localObject);
-    ((g.d)localObject).requestVideoFormat = paramh.field_requestVideoFormat;
-    ((g.d)localObject).foi = paramh.foi;
-    AppMethodBeat.o(198871);
-    return localObject;
-  }
-  
-  public static g.c c(d paramd)
-  {
-    AppMethodBeat.i(198872);
-    k.h(paramd, "sceneResult");
-    String str = paramd.mediaId;
-    Object localObject = str;
-    if (str == null) {
-      localObject = "";
-    }
-    localObject = new g.c((String)localObject);
-    ((g.c)localObject).retCode = paramd.field_retCode;
-    ((g.c)localObject).hWY = paramd.field_fileLength;
-    ((g.c)localObject).recvedBytes = paramd.field_recvedBytes;
-    ((g.c)localObject).endTime = paramd.field_endTime;
-    ((g.c)localObject).startTime = paramd.field_startTime;
-    ((g.c)localObject).enQueueTime = paramd.field_enQueueTime;
-    ((g.c)localObject).moovRequestTimes = paramd.field_moovRequestTimes;
-    ((g.c)localObject).moovCost = paramd.field_moovCost;
-    ((g.c)localObject).moovSize = paramd.field_moovSize;
-    ((g.c)localObject).moovCompleted = paramd.field_moovCompleted;
-    ((g.c)localObject).moovFailReason = paramd.field_moovFailReason;
-    ((g.c)localObject).firstConnectCost = paramd.field_firstConnectCost;
-    ((g.c)localObject).firstRequestCost = paramd.field_firstRequestCost;
-    ((g.c)localObject).firstRequestSize = paramd.field_firstRequestSize;
-    ((g.c)localObject).firstRequestDownloadSize = paramd.field_firstRequestDownloadSize;
-    ((g.c)localObject).firstRequestCompleted = paramd.field_firstRequestCompleted;
-    ((g.c)localObject).averageSpeed = paramd.field_averageSpeed;
-    ((g.c)localObject).averageConnectCost = paramd.field_averageConnectCost;
-    ((g.c)localObject).netConnectTimes = paramd.field_netConnectTimes;
-    str = paramd.UD();
-    if (str != null) {
-      ((g.c)localObject).aVw(str);
-    }
-    str = paramd.field_clientIP;
-    if (str != null) {
-      ((g.c)localObject).aVx(str);
-    }
-    ((g.c)localObject).KVJ = paramd.field_isCrossNet;
-    ((g.c)localObject).transportProtocol = paramd.transportProtocol;
-    ((g.c)localObject).transportProtocolError = paramd.transportProtocolError;
-    str = paramd.fnu;
-    if (str != null) {
-      ((g.c)localObject).aVy(str);
-    }
-    ((g.c)localObject).DkW = paramd.lastSvrPort;
-    ((g.c)localObject).netType = paramd.lastNetType;
-    AppMethodBeat.o(198872);
-    return localObject;
-  }
-  
-  public final void a(long paramLong, bmd parambmd, com.tencent.mm.i.h paramh, d paramd, com.tencent.mm.plugin.finder.loader.l paraml)
-  {
-    AppMethodBeat.i(198869);
-    k.h(parambmd, "media");
-    Object localObject1 = new StringBuilder("onDownloadStop ").append(com.tencent.mm.ad.c.ly(paramLong)).append(' ');
-    boolean bool;
-    label68:
-    Iterator localIterator;
-    if (paraml != null)
-    {
-      parambmd = paraml.aaX();
-      parambmd = ((StringBuilder)localObject1).append(parambmd).append(' ');
-      if (paramd == null) {
-        break label270;
-      }
-      bool = true;
-      ad.i("Finder.FinderVideoPlayReporter", bool);
-      parambmd = (b)this.KVw.get(Long.valueOf(paramLong));
-      if ((parambmd != null) && (parambmd.qHa))
+    AppMethodBeat.i(202775);
+    h.a(paramh);
+    Object localObject1 = h.ryk;
+    dcw localdcw = h.a.b(paramh);
+    a.a.a(this.contextObj, paramh.dig, 14, String.valueOf(paramh.endTime - paramh.startTime));
+    a.a.a(this.contextObj, paramh, 2);
+    if (paramBoolean) {
+      if (paramh != null)
       {
-        if ((paramh != null) && (parambmd.KVA == null)) {
-          parambmd.KVA = b(paramh);
+        localObject1 = paramh.feed;
+        if (localObject1 != null)
+        {
+          Object localObject2 = ((FinderItem)localObject1).getFoldedLayout();
+          if ((localObject2 != null) && (((ajz)localObject2).fAw > 0))
+          {
+            localObject1 = paramh.rdF;
+            if (localObject1 != null) {
+              localObject1 = ((com.tencent.mm.view.recyclerview.f)localObject1).JCx;
+            }
+            while (localObject1 == null)
+            {
+              localObject1 = paramh.rdF;
+              if (localObject1 != null)
+              {
+                LongSparseArray localLongSparseArray = new LongSparseArray();
+                localObject2 = ((ajz)localObject2).EEw;
+                k.g(localObject2, "it.objects");
+                localObject2 = ((Iterable)localObject2).iterator();
+                int i = 0;
+                for (;;)
+                {
+                  if (((Iterator)localObject2).hasNext())
+                  {
+                    Object localObject3 = ((Iterator)localObject2).next();
+                    if (i < 0) {
+                      d.a.j.fOc();
+                    }
+                    localObject3 = (FinderObject)localObject3;
+                    if (i <= 2)
+                    {
+                      com.tencent.mm.view.recyclerview.h localh = new com.tencent.mm.view.recyclerview.h((com.tencent.mm.view.recyclerview.a)new d((FinderObject)localObject3));
+                      localh.rdE = i;
+                      localLongSparseArray.put(((FinderObject)localObject3).id, localh);
+                    }
+                    i += 1;
+                    continue;
+                    localObject1 = null;
+                    break;
+                  }
+                }
+                ((com.tencent.mm.view.recyclerview.f)localObject1).JCx = localLongSparseArray;
+              }
+            }
+            a.a.a(this.contextObj, paramh);
+            paramh = paramh.rdF;
+            if (paramh != null)
+            {
+              paramh = paramh.JCy;
+              if (paramh != null)
+              {
+                paramh = (WxRecyclerAdapter)paramh.get();
+                if (paramh != null) {
+                  paramh.onPause();
+                }
+              }
+            }
+          }
         }
-        if ((paramd != null) && (parambmd.KVB == null)) {
-          parambmd.KVB = c(paramd);
-        }
-        parambmd.qHa = false;
       }
-      parambmd = (Iterable)this.qGr;
-      localObject1 = (Collection)new ArrayList();
-      localIterator = parambmd.iterator();
     }
-    label270:
-    label281:
-    label285:
     for (;;)
     {
-      label184:
-      if (!localIterator.hasNext()) {
-        break label287;
-      }
-      Object localObject2 = localIterator.next();
-      parambmd = (b)localObject2;
-      if (parambmd.qGv == paramLong)
+      AppMethodBeat.o(202775);
+      return localdcw;
+      if (paramh != null)
       {
-        String str = parambmd.qGw;
-        if (paraml != null)
+        localObject1 = paramh.rdF;
+        if ((localObject1 != null) && ((((com.tencent.mm.view.recyclerview.f)localObject1).JCv) || (((com.tencent.mm.view.recyclerview.f)localObject1).JCw)))
         {
-          parambmd = paraml.aaX();
-          label235:
-          if (!k.g(str, parambmd)) {
-            break label281;
+          a.a.a(this.contextObj, paramh);
+          ((com.tencent.mm.view.recyclerview.f)localObject1).JCw = false;
+          paramh = ((com.tencent.mm.view.recyclerview.f)localObject1).JCy;
+          if (paramh != null)
+          {
+            paramh = (WxRecyclerAdapter)paramh.get();
+            if (paramh != null) {
+              paramh.onPause();
+            }
           }
         }
       }
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label285;
-        }
-        ((Collection)localObject1).add(localObject2);
-        break label184;
-        parambmd = null;
-        break;
-        bool = false;
-        break label68;
-        parambmd = null;
-        break label235;
-      }
     }
-    label287:
-    paraml = (Iterable)localObject1;
-    parambmd = (Collection)new ArrayList(j.a(paraml, 10));
-    paraml = paraml.iterator();
-    while (paraml.hasNext())
-    {
-      localObject1 = (b)paraml.next();
-      if ((paramh != null) && (((b)localObject1).KVA == null)) {
-        ((b)localObject1).KVA = b(paramh);
-      }
-      if ((paramd != null) && (((b)localObject1).KVB == null)) {
-        ((b)localObject1).KVB = c(paramd);
-      }
-      parambmd.add(localObject1);
-    }
-    parambmd = (List)parambmd;
-    this.qGr.removeAll((Collection)parambmd);
-    ad.i("Finder.FinderVideoPlayReporter", "lazyReportDataList " + this.qGr.size() + " reportList " + parambmd.size());
-    parambmd = ((Iterable)parambmd).iterator();
-    while (parambmd.hasNext())
-    {
-      paramh = (b)parambmd.next();
-      a(paramh);
-      b(paramh);
-    }
-    AppMethodBeat.o(198869);
   }
   
-  final void a(b paramb)
+  private final void a(h paramh, dcw paramdcw)
   {
-    long l = 0L;
-    AppMethodBeat.i(166703);
-    if (paramb != null)
+    AppMethodBeat.i(202773);
+    if (paramh.rxJ > 0) {
+      a.a.a(this.contextObj, paramh.dig, 5, String.valueOf(paramh.rxJ), paramh.rxC);
+    }
+    long l1 = paramh.endTime;
+    long l2 = paramh.startTime;
+    a.a.a(this.contextObj, paramh.dig, 2, String.valueOf(l1 - l2), paramh.rxC);
+    if (paramh.rxM > 0) {
+      a.a.a(this.contextObj, paramh.dig, 11, String.valueOf(paramh.rxM), paramh.rxC);
+    }
+    Object localObject = this.contextObj;
+    l1 = paramh.dig;
+    paramdcw = paramdcw.FMx;
+    if (paramdcw != null) {}
+    for (paramdcw = Long.valueOf(paramdcw.DZq);; paramdcw = "")
     {
-      if (paramb.qGv == 0L)
+      a.a.a((anm)localObject, l1, 3, String.valueOf(paramdcw), paramh.rxC);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("netType", paramh.netType);
+      ((JSONObject)localObject).put("isPause", paramh.ryc);
+      ((JSONObject)localObject).put("isSeek", paramh.ryd);
+      ((JSONObject)localObject).put("playProgressInfo", paramh.rye);
+      ((JSONObject)localObject).put("maxPlayPercent", paramh.rxM);
+      ((JSONObject)localObject).put("maxPlayLength", paramh.rxL);
+      ((JSONObject)localObject).put("videoDuration", paramh.videoDuration);
+      ((JSONObject)localObject).put("playTime", paramh.rya);
+      ((JSONObject)localObject).put("realPlayTime", paramh.rxY);
+      ((JSONObject)localObject).put("voiceInfo", paramh.ryi);
+      paramdcw = this.contextObj;
+      l1 = paramh.dig;
+      localObject = ((JSONObject)localObject).toString();
+      k.g(localObject, "playInfoObj.toString()");
+      a.a.a(paramdcw, l1, 17, n.h((String)localObject, ",", ";", false), paramh.rxC);
+      a.a.a(this.contextObj, paramh, 1);
+      AppMethodBeat.o(202773);
+      return;
+    }
+  }
+  
+  private final void onExit()
+  {
+    AppMethodBeat.i(202772);
+    FinderReporterUIC.a locala = FinderReporterUIC.seQ;
+    com.tencent.mm.ac.c.c(FinderReporterUIC.cGf(), (d.g.a.a)new c(this));
+    AppMethodBeat.o(202772);
+  }
+  
+  public void a(com.tencent.mm.plugin.finder.event.base.b paramb)
+  {
+    AppMethodBeat.i(202774);
+    k.h(paramb, "event");
+    super.a(paramb);
+    Object localObject1;
+    Object localObject3;
+    Object localObject4;
+    label448:
+    label455:
+    Object localObject5;
+    label1150:
+    int m;
+    label1401:
+    int n;
+    int i1;
+    int i2;
+    int j;
+    int k;
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.j))
+    {
+      if (!this.visible)
       {
-        AppMethodBeat.o(166703);
+        ac.i(TAG, this.contextObj.rfR + " not visible");
+        AppMethodBeat.o(202774);
         return;
       }
-      com.tencent.mm.plugin.finder.loader.l locall = paramb.KVy;
-      if (locall != null)
+      localObject1 = v.rve;
+      localObject1 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdP;
+      if (localObject1 != null)
       {
-        an localan = new an();
-        localan.Qf();
-        localan.hB(locall.aaX());
-        localan.zC(this.contextObj.qqE);
-        localan.dV(locall.qCj.videoDuration);
-        localan.dW(paramb.qGD);
-        localan.dX(paramb.qGF);
-        localan.dY(paramb.qGG);
-        localan.dZ(locall.qCj.fileSize);
-        Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.KXF;
-        if (locall != null)
+        ??? = (Iterable)localObject1;
+        localObject1 = (Collection)new ArrayList(d.a.j.a((Iterable)???, 10));
+        ??? = ((Iterable)???).iterator();
+        while (((Iterator)???).hasNext()) {
+          ((Collection)localObject1).add(((com.tencent.mm.plugin.finder.event.base.g)((Iterator)???).next()).rdD);
+        }
+      }
+      for (localObject1 = (List)localObject1;; localObject1 = null)
+      {
+        v.a((List)localObject1, this.contextObj);
+        if ((((com.tencent.mm.plugin.finder.event.base.j)paramb).raQ == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdL) && (((com.tencent.mm.plugin.finder.event.base.j)paramb).nAG == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdH) && (((com.tencent.mm.plugin.finder.event.base.j)paramb).nAH == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdJ)) {
+          break label1150;
+        }
+        localObject1 = new LinkedList();
+        if (((com.tencent.mm.plugin.finder.event.base.j)paramb).raQ == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdL) {
+          break label455;
+        }
+        ??? = this.rxu;
+        if (??? != null)
         {
-          localObject1 = locall.aaX();
-          localObject1 = com.tencent.mm.plugin.finder.storage.logic.c.aVA((String)localObject1);
-          if (localObject1 != null) {
-            localan.dZ(((r)localObject1).field_totalSize);
-          }
-          localan.ea(paramb.qGC);
-          localan.eb(paramb.qGE);
-          localan.ec(paramb.qGH);
-          localObject1 = localan.ed(paramb.qGI).ee(paramb.qGJ).ef(paramb.qGz).hC(paramb.qGK).hD(paramb.sessionId).eg(paramb.qGA).Qh().eh(paramb.kut).ei(paramb.qEr).ej(paramb.qGM);
-          if (!com.tencent.mm.sdk.platformtools.h.DEBUG) {
-            break label476;
-          }
-          label292:
-          ((an)localObject1).ek(l).el(paramb.hxT).em(paramb.qGO).en(paramb.qGP).eo(paramb.qGR).ep(paramb.qGS).hE(com.tencent.mm.ad.c.ly(paramb.qGv)).eq(paramb.qGT).er(paramb.qGW);
-          localObject1 = paramb.KVB;
-          if (localObject1 != null)
+          ((h)???).a(this.rwW);
+          localObject3 = h.ryk;
+          localObject3 = h.a.b((h)???);
+          ((LinkedList)localObject1).add(localObject3);
+          a((h)???, (dcw)localObject3);
+          ??? = y.KTp;
+        }
+        ??? = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdQ;
+        if (??? == null) {
+          break label448;
+        }
+        ??? = ((Iterable)???).iterator();
+        while (((Iterator)???).hasNext())
+        {
+          localObject4 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)???).next();
+          if (((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.lx() == ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdL)
           {
-            localan.et(((g.c)localObject1).averageSpeed);
-            localan.zB(((g.c)localObject1).averageConnectCost);
-            localan.hG(((g.c)localObject1).DkV);
-            localan.ex(((g.c)localObject1).DkW);
-          }
-          if (paramb.KVp == paramb.KVq) {
-            break label483;
+            localObject3 = new h(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.lx(), paramb.rdg, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.feedObject, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdF, true, this.rwW);
+            ((h)localObject3).rxD = ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdE;
+            localObject4 = y.KTp;
+            this.rxu = ((h)localObject3);
           }
         }
-        label476:
-        label483:
-        for (paramb.KVD = 1;; paramb.KVD = 0)
+      }
+      ??? = y.KTp;
+      rxx = this.rxu;
+      localObject3 = new HashSet();
+      ??? = new HashSet();
+      ((HashSet)localObject3).addAll((Collection)this.rxw.keySet());
+      localObject4 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdQ;
+      if (localObject4 != null)
+      {
+        localObject4 = ((Iterable)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          localObject1 = aj.getContext().getSystemService("audio");
-          if (localObject1 != null) {
-            break label491;
-          }
-          paramb = new v("null cannot be cast to non-null type android.media.AudioManager");
-          AppMethodBeat.o(166703);
-          throw paramb;
-          localObject1 = null;
-          break;
-          l = 38L;
-          break label292;
+          localObject5 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject4).next();
+          ((HashSet)localObject3).add(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rdD.lx()));
+          ((HashSet)???).add(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rdD.lx()));
         }
-        label491:
-        int i = ((AudioManager)localObject1).getStreamMaxVolume(3);
-        localan.aSO(paramb.KVp * 100 / i + ';' + paramb.KVq * 100 / i + ';' + paramb.KVD);
-        localObject1 = new JSONArray();
-        Object localObject2 = ((Iterable)KVx).iterator();
-        JSONObject localJSONObject;
-        while (((Iterator)localObject2).hasNext())
+        localObject4 = y.KTp;
+      }
+      localObject4 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdP;
+      if (localObject4 != null)
+      {
+        localObject4 = ((Iterable)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          aif localaif = (aif)((Iterator)localObject2).next();
-          try
+          localObject5 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject4).next();
+          if (!((HashSet)localObject3).contains(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rdD.lx())))
           {
-            localJSONObject = new JSONObject();
-            localJSONObject.put("pos", localaif.qGA);
-            localJSONObject.put("spe", localaif.DkP);
-            localJSONObject.put("loadCost", localaif.DkR);
-            localJSONObject.put("fSize", localaif.DkM);
-            ((JSONArray)localObject1).put(localJSONObject);
+            ((LinkedList)localObject1).add(a(new h(((com.tencent.mm.plugin.finder.event.base.g)localObject5).rdD.lx(), paramb.rdg, ((com.tencent.mm.plugin.finder.event.base.g)localObject5).rdD.feedObject, ((com.tencent.mm.plugin.finder.event.base.g)localObject5).rdF, 48), true));
+            localObject5 = y.KTp;
           }
-          catch (Exception localException1) {}
         }
-        localObject1 = ((JSONArray)localObject1).toString();
-        k.g(localObject1, "historyInfoArray.toString()");
-        localan.hF(n.h((String)localObject1, ",", ";", false));
-        localan.es(paramb.qGX);
-        localan.eu(paramb.qGL);
-        localan.ev(paramb.qHb);
-        localan.zD(paramb.KVm);
-        localan.zE(paramb.KVl);
-        localan.aSP(paramb.KVH + ';' + paramb.KVE + ';' + paramb.KVF + ';' + paramb.KVG);
-        localObject2 = this.contextObj.qwV;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
+        localObject3 = y.KTp;
+      }
+      localObject3 = ((Map)this.rxw).entrySet().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (Map.Entry)((Iterator)localObject3).next();
+        if (!((HashSet)???).contains(((Map.Entry)localObject4).getKey())) {
+          ((LinkedList)localObject1).add(a((h)((Map.Entry)localObject4).getValue(), false));
         }
-        localan.aSR((String)localObject1);
-        localObject2 = this.contextObj.KHW;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = "";
+      }
+      ??? = new HashMap();
+      localObject3 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdQ;
+      if (localObject3 != null)
+      {
+        localObject3 = ((Iterable)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject3).next();
+          localObject5 = (h)this.rxw.get(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.lx()));
+          if (localObject5 != null)
+          {
+            ((HashMap)???).put(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.lx()), localObject5);
+          }
+          else
+          {
+            localObject5 = new h(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.lx(), paramb.rdg, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.feedObject, ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdF, 48);
+            ((h)localObject5).rxD = ((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdE;
+            ((HashMap)???).put(Long.valueOf(((com.tencent.mm.plugin.finder.event.base.g)localObject4).rdD.lx()), localObject5);
+          }
         }
-        localan.aSQ((String)localObject1);
-        localObject1 = b.qFq;
-        localan.aSS(b.am(paramb.qGv, this.contextObj.qqE));
-        localObject1 = com.tencent.mm.plugin.finder.storage.b.qJA;
-        localan.zF(((Number)com.tencent.mm.plugin.finder.storage.b.fUe().first).intValue());
-        localan.aSM(String.valueOf(paramb.KVz));
-        localObject1 = b.qFq;
-        localObject1 = b.qh(paramb.qGv);
-        if (localObject1 != null) {
-          localan.hI(((FinderItem)localObject1).getUserName());
+        localObject3 = y.KTp;
+      }
+      this.rxw = ((HashMap)???);
+      synchronized (this.rxt)
+      {
+        this.rxt.addAll((Collection)localObject1);
+        if (this.rxt.size() > 20)
+        {
+          localObject1 = FinderReporterUIC.seQ;
+          com.tencent.mm.ac.c.c(FinderReporterUIC.cGf(), (d.g.a.a)new g.b(this));
+        }
+        localObject1 = TAG;
+        ??? = new StringBuilder("waitForReportStatsList ");
+        localObject4 = (Iterable)this.rxt;
+        localObject3 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject4, 10));
+        localObject4 = ((Iterable)localObject4).iterator();
+        if (((Iterator)localObject4).hasNext()) {
+          ((Collection)localObject3).add(Long.valueOf(((dcw)((Iterator)localObject4).next()).qXP));
+        }
+      }
+      if (((com.tencent.mm.plugin.finder.event.base.j)paramb).nAH != ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdJ)
+      {
+        localObject1 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdR;
+        if (localObject1 != null)
+        {
+          ??? = ((Iterable)localObject1).iterator();
+          for (;;)
+          {
+            if (((Iterator)???).hasNext())
+            {
+              localObject1 = (com.tencent.mm.view.recyclerview.a)((Iterator)???).next();
+              if (!this.rxv.contains(Long.valueOf(((com.tencent.mm.view.recyclerview.a)localObject1).lx()))) {
+                switch (((com.tencent.mm.view.recyclerview.a)localObject1).bTF())
+                {
+                default: 
+                  break;
+                case -7: 
+                case -1: 
+                  if ((this.contextObj.rfR == 17) || (this.contextObj.rfR == 18))
+                  {
+                    localObject1 = d.rxr;
+                    d.b(1, this.contextObj);
+                  }
+                  break;
+                case -2: 
+                  if ((this.contextObj.rfR == 17) || (this.contextObj.rfR == 18) || (this.contextObj.rfR == 20))
+                  {
+                    localObject1 = FinderReporterUIC.seQ;
+                    localObject1 = FinderReporterUIC.a.eV((Context)this.activity);
+                    if (localObject1 != null) {
+                      if (((FinderReporterUIC)localObject1).cFY())
+                      {
+                        if (localObject1 == null) {
+                          break label1709;
+                        }
+                        localObject1 = FinderReporterUIC.d((FinderReporterUIC)localObject1);
+                        if ((localObject1 == null) || (((com.tencent.mm.plugin.finder.event.base.f)localObject1).nAG > 1)) {
+                          continue;
+                        }
+                        localObject1 = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+                        k.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+                        localObject3 = ((PluginFinder)localObject1).getRedDotManager().adx("TLWxBubble");
+                        if (localObject3 == null) {
+                          continue;
+                        }
+                        localObject1 = com.tencent.mm.kernel.g.agR();
+                        k.g(localObject1, "MMKernel.storage()");
+                        m = ((e)localObject1).agA().getInt(ah.a.GUV, 0);
+                        localObject1 = com.tencent.mm.kernel.g.agR();
+                        k.g(localObject1, "MMKernel.storage()");
+                        n = ((e)localObject1).agA().getInt(ah.a.GUW, 0);
+                        localObject1 = com.tencent.mm.kernel.g.agR();
+                        k.g(localObject1, "MMKernel.storage()");
+                        i1 = ((e)localObject1).agA().getInt(ah.a.GUX, 0);
+                        localObject1 = com.tencent.mm.kernel.g.agR();
+                        k.g(localObject1, "MMKernel.storage()");
+                        i2 = ((e)localObject1).agA().getInt(ah.a.GUY, 0);
+                        j = 0;
+                        localObject1 = com.tencent.mm.plugin.finder.storage.b.rCU;
+                        if (!com.tencent.mm.plugin.finder.storage.b.czT()) {
+                          break label1711;
+                        }
+                        k = 5;
+                        if (n > 0) {
+                          j = 1;
+                        }
+                        i = j;
+                        if (m > 0) {
+                          i = j | 0x8;
+                        }
+                        j = i;
+                        if (i1 > 0) {
+                          j = i | 0x2;
+                        }
+                        if (i2 <= 0) {
+                          break label5746;
+                        }
+                      }
+                    }
+                  }
+                  break;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    label1709:
+    label1711:
+    label2103:
+    label2138:
+    label2277:
+    label2289:
+    label2417:
+    label3569:
+    label5746:
+    for (int i = j | 0x4;; i = j)
+    {
+      localObject1 = d.rxr;
+      localObject1 = d.eN((Context)this.activity);
+      j = i;
+      i = k;
+      for (;;)
+      {
+        localObject4 = d.rxr;
+        localObject3 = ((com.tencent.mm.plugin.finder.extension.reddot.h)localObject3).field_tipsId;
+        k.g(localObject3, "ctrInfo.field_tipsId");
+        d.a((String)localObject1, i, 1, 2, j, m + n + i1 + i2, (String)localObject3, null, 0L, this.contextObj, 0, 0, 3456);
+        break;
+        localObject1 = null;
+        break label1401;
+        break;
+        localObject1 = "2";
+        i = 1;
+        j = 1;
+      }
+      localObject1 = y.KTp;
+      this.rxv = new HashSet();
+      ??? = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdR;
+      if (??? != null)
+      {
+        localObject1 = this.rxv;
+        localObject3 = (Iterable)???;
+        ??? = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
+        localObject3 = ((Iterable)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((Collection)???).add(Long.valueOf(((com.tencent.mm.view.recyclerview.a)((Iterator)localObject3).next()).lx()));
+        }
+        ((HashSet)localObject1).addAll((Collection)???);
+      }
+      localObject1 = ((com.tencent.mm.plugin.finder.event.base.j)paramb).rdQ;
+      if (localObject1 != null)
+      {
+        localObject1 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          ??? = (com.tencent.mm.plugin.finder.event.base.g)((Iterator)localObject1).next();
+          localObject3 = ((com.tencent.mm.plugin.finder.event.base.g)???).rdF;
+          if (localObject3 != null)
+          {
+            if (((com.tencent.mm.view.recyclerview.f)localObject3).JCw)
+            {
+              a.a.a(this.contextObj, new h(((com.tencent.mm.plugin.finder.event.base.g)???).rdD.lx(), paramb.rdg, ((com.tencent.mm.plugin.finder.event.base.g)???).rdD.feedObject, (com.tencent.mm.view.recyclerview.f)localObject3, 48));
+              ((com.tencent.mm.view.recyclerview.f)localObject3).JCw = false;
+              ??? = ((com.tencent.mm.view.recyclerview.f)localObject3).JCy;
+              if (??? != null)
+              {
+                ??? = (WxRecyclerAdapter)((WeakReference)???).get();
+                if (??? != null)
+                {
+                  ((WxRecyclerAdapter)???).onPause();
+                  ??? = y.KTp;
+                }
+              }
+            }
+            ??? = y.KTp;
+          }
+        }
+        paramb = y.KTp;
+        AppMethodBeat.o(202774);
+        return;
+      }
+      AppMethodBeat.o(202774);
+      return;
+      long l1;
+      long l2;
+      if ((paramb instanceof com.tencent.mm.plugin.finder.event.a.a))
+      {
+        ??? = null;
+        Object localObject7 = null;
+        Object localObject6 = null;
+        localObject5 = null;
+        localObject4 = null;
+        localObject3 = null;
+        Object localObject8 = null;
+        i = ((com.tencent.mm.plugin.finder.event.a.a)paramb).type;
+        localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+        if (i == com.tencent.mm.plugin.finder.event.a.a.ctd())
+        {
+          localObject1 = this.rxu;
+          if (localObject1 != null) {
+            if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+            {
+              i = 1;
+              if (i == 0) {
+                break label2277;
+              }
+              if (localObject1 == null) {
+                break label2289;
+              }
+              ((h)localObject1).kLX += 1;
+              i = ((h)localObject1).rxR;
+              ((h)localObject1).rxR = (i + 1);
+              localObject1 = localObject8;
+              ??? = this.contextObj;
+              l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+              localObject3 = a.b.rwZ;
+              a.a.a((anm)???, l1, 1, a.b.cwO());
+              ??? = this.contextObj;
+              l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+              paramb = u.axw();
+              k.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+              paramb = a.a.a(10, new String[] { "1", paramb }).toString();
+              k.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+              a.a.a((anm)???, l1, 10, paramb);
+              paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
+            }
+          }
         }
         for (;;)
         {
-          localObject1 = new JSONArray();
-          localObject2 = ((Iterable)paramb.qHc).iterator();
-          while (((Iterator)localObject2).hasNext())
+          if (paramb != null)
           {
-            alx localalx = (alx)((Iterator)localObject2).next();
-            try
+            h.a(paramb);
+            localObject1 = h.ryk;
+            paramb = h.a.b(paramb);
+            this.rxt.add(paramb);
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+            break label2103;
+            localObject1 = null;
+            break label2103;
+            l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+            l2 = paramb.rdg;
+            localObject1 = d.rxr;
+            localObject1 = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+            ((h)localObject1).kLX += 1;
+            ((h)localObject1).rxR += 1;
+            ??? = y.KTp;
+            ??? = y.KTp;
+            break label2138;
+            localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+            if (i == com.tencent.mm.plugin.finder.event.a.a.ctc())
             {
-              localJSONObject = new JSONObject();
-              localJSONObject.put("waitMs", localalx.DmW);
-              localJSONObject.put("percent", localalx.percent);
-              localJSONObject.put("type", localalx.type);
-              ((JSONArray)localObject1).put(localJSONObject);
+              localObject1 = this.rxu;
+              if (localObject1 != null) {
+                if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                {
+                  i = 1;
+                  if (i == 0) {
+                    break label2548;
+                  }
+                  if (localObject1 == null) {
+                    break label2560;
+                  }
+                  i = ((h)localObject1).kLX;
+                  ((h)localObject1).kLX = (i + 1);
+                  localObject1 = localObject7;
+                }
+              }
+              for (;;)
+              {
+                ??? = this.contextObj;
+                l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                localObject3 = a.b.rwZ;
+                a.a.a((anm)???, l1, 1, a.b.cwO());
+                ??? = this.contextObj;
+                l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                paramb = u.axw();
+                k.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                paramb = a.a.a(10, new String[] { "2", paramb }).toString();
+                k.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+                a.a.a((anm)???, l1, 10, paramb);
+                paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
+                break;
+                i = 0;
+                break label2413;
+                label2548:
+                localObject1 = null;
+                break label2417;
+                localObject1 = null;
+                break label2417;
+                l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                l2 = paramb.rdg;
+                localObject1 = d.rxr;
+                localObject1 = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                ((h)localObject1).kLX += 1;
+                ??? = y.KTp;
+                ??? = y.KTp;
+              }
             }
-            catch (Exception localException2) {}
+            localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+            if (i == com.tencent.mm.plugin.finder.event.a.a.ctf())
+            {
+              localObject1 = this.contextObj;
+              l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+              paramb = u.axw();
+              k.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+              paramb = a.a.a(13, new String[] { "1", paramb }).toString();
+              k.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+              a.a.a((anm)localObject1, l1, 13, paramb);
+              paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+            }
+            else
+            {
+              localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+              if (i == com.tencent.mm.plugin.finder.event.a.a.cte())
+              {
+                localObject1 = this.contextObj;
+                l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                paramb = u.axw();
+                k.g(paramb, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                paramb = a.a.a(13, new String[] { "2", paramb }).toString();
+                k.g(paramb, "buildJson(ConstantsFinde…romUserInfo()).toString()");
+                a.a.a((anm)localObject1, l1, 13, paramb);
+                paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+              }
+              else
+              {
+                localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                if (i == com.tencent.mm.plugin.finder.event.a.a.cth())
+                {
+                  localObject1 = this.rxu;
+                  if (localObject1 != null) {
+                    if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                    {
+                      i = 1;
+                      if (i == 0) {
+                        break label2911;
+                      }
+                      if (localObject1 == null) {
+                        break label2923;
+                      }
+                      ((h)localObject1).rxN += 1;
+                      localObject1 = localObject6;
+                    }
+                  }
+                  for (;;)
+                  {
+                    ??? = this.contextObj;
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    paramb = a.b.rwZ;
+                    a.a.a((anm)???, l1, 6, a.b.cwO());
+                    paramb = y.KTp;
+                    paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
+                    break;
+                    i = 0;
+                    break label2840;
+                    localObject1 = null;
+                    break label2844;
+                    localObject1 = null;
+                    break label2844;
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    l2 = paramb.rdg;
+                    localObject1 = d.rxr;
+                    localObject1 = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                    ((h)localObject1).rxN += 1;
+                    ??? = y.KTp;
+                  }
+                }
+                localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                if (i == com.tencent.mm.plugin.finder.event.a.a.ctk())
+                {
+                  localObject1 = this.rxu;
+                  if (localObject1 != null) {
+                    if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                    {
+                      i = 1;
+                      if (i == 0) {
+                        break label3101;
+                      }
+                      if (localObject1 == null) {
+                        break label3113;
+                      }
+                      ((h)localObject1).rxO += 1;
+                      localObject1 = localObject5;
+                    }
+                  }
+                  for (;;)
+                  {
+                    ??? = this.contextObj;
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    paramb = a.b.rwZ;
+                    a.a.a((anm)???, l1, 7, a.b.cwO());
+                    paramb = y.KTp;
+                    paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
+                    break;
+                    i = 0;
+                    break label3030;
+                    localObject1 = null;
+                    break label3034;
+                    localObject1 = null;
+                    break label3034;
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    l2 = paramb.rdg;
+                    localObject1 = d.rxr;
+                    localObject1 = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                    ((h)localObject1).rxO += 1;
+                    ??? = y.KTp;
+                  }
+                }
+                localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                if (i == com.tencent.mm.plugin.finder.event.a.a.ctl())
+                {
+                  localObject1 = this.rxu;
+                  if (localObject1 != null) {
+                    if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                    {
+                      i = 1;
+                      if (i == 0) {
+                        break label3291;
+                      }
+                      if (localObject1 == null) {
+                        break label3303;
+                      }
+                      ((h)localObject1).rxP += 1;
+                      localObject1 = localObject4;
+                    }
+                  }
+                  for (;;)
+                  {
+                    ??? = this.contextObj;
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    paramb = a.b.rwZ;
+                    a.a.a((anm)???, l1, 16, a.b.cwO());
+                    paramb = y.KTp;
+                    paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
+                    break;
+                    i = 0;
+                    break label3220;
+                    localObject1 = null;
+                    break label3224;
+                    localObject1 = null;
+                    break label3224;
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    l2 = paramb.rdg;
+                    localObject1 = d.rxr;
+                    localObject1 = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                    ((h)localObject1).rxP += 1;
+                    ??? = y.KTp;
+                  }
+                }
+                localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                if (i == com.tencent.mm.plugin.finder.event.a.a.ctn())
+                {
+                  localObject1 = this.rxu;
+                  if (localObject1 != null) {
+                    if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                    {
+                      i = 1;
+                      if (i == 0) {
+                        break label3444;
+                      }
+                    }
+                  }
+                  for (;;)
+                  {
+                    if (localObject1 == null) {
+                      break label3456;
+                    }
+                    i = ((h)localObject1).rxX;
+                    ((h)localObject1).rxX = (i + 1);
+                    paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+                    break;
+                    i = 0;
+                    break label3410;
+                    label3444:
+                    localObject1 = null;
+                    continue;
+                    localObject1 = null;
+                  }
+                  l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                  l2 = paramb.rdg;
+                  localObject1 = d.rxr;
+                  paramb = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                  paramb.rxX += 1;
+                  localObject1 = y.KTp;
+                  localObject1 = y.KTp;
+                }
+                else
+                {
+                  localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                  if (i == com.tencent.mm.plugin.finder.event.a.a.ctg())
+                  {
+                    localObject1 = this.rxu;
+                    if (localObject1 != null) {
+                      if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                      {
+                        i = 1;
+                        if (i == 0) {
+                          break label3634;
+                        }
+                        if (localObject1 == null) {
+                          break label3646;
+                        }
+                        i = ((h)localObject1).rxQ;
+                        ((h)localObject1).rxQ = (i + 1);
+                        localObject1 = localObject3;
+                      }
+                    }
+                    for (;;)
+                    {
+                      ??? = this.contextObj;
+                      l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                      paramb = a.b.rwZ;
+                      a.a.a((anm)???, l1, 12, a.b.cwO());
+                      paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;
+                      break;
+                      i = 0;
+                      break label3565;
+                      localObject1 = null;
+                      break label3569;
+                      localObject1 = null;
+                      break label3569;
+                      l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                      l2 = paramb.rdg;
+                      localObject1 = d.rxr;
+                      localObject1 = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                      ((h)localObject1).rxQ += 1;
+                      ??? = y.KTp;
+                      ??? = y.KTp;
+                    }
+                  }
+                  localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                  if (i == com.tencent.mm.plugin.finder.event.a.a.cto())
+                  {
+                    localObject1 = this.rxu;
+                    if (localObject1 != null) {
+                      if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                      {
+                        i = 1;
+                        if (i == 0) {
+                          break label3792;
+                        }
+                      }
+                    }
+                    for (;;)
+                    {
+                      if (localObject1 == null) {
+                        break label3804;
+                      }
+                      i = ((h)localObject1).rxT;
+                      ((h)localObject1).rxT = (i + 1);
+                      paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+                      break;
+                      i = 0;
+                      break label3758;
+                      localObject1 = null;
+                      continue;
+                      localObject1 = null;
+                    }
+                    l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                    l2 = paramb.rdg;
+                    localObject1 = d.rxr;
+                    paramb = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                    paramb.rxT += 1;
+                    localObject1 = y.KTp;
+                    localObject1 = y.KTp;
+                  }
+                  else
+                  {
+                    localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                    if (i == com.tencent.mm.plugin.finder.event.a.a.ctp())
+                    {
+                      localObject1 = this.rxu;
+                      if (localObject1 != null) {
+                        if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                        {
+                          i = 1;
+                          if (i == 0) {
+                            break label3947;
+                          }
+                        }
+                      }
+                      for (;;)
+                      {
+                        if (localObject1 == null) {
+                          break label3959;
+                        }
+                        i = ((h)localObject1).rxS;
+                        ((h)localObject1).rxS = (i + 1);
+                        paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+                        break;
+                        i = 0;
+                        break label3913;
+                        localObject1 = null;
+                        continue;
+                        localObject1 = null;
+                      }
+                      label3959:
+                      l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                      l2 = paramb.rdg;
+                      localObject1 = d.rxr;
+                      paramb = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                      paramb.rxS += 1;
+                      localObject1 = y.KTp;
+                      localObject1 = y.KTp;
+                    }
+                    else
+                    {
+                      localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                      if (i == com.tencent.mm.plugin.finder.event.a.a.ctq())
+                      {
+                        localObject1 = this.rxu;
+                        if (localObject1 != null) {
+                          if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                          {
+                            i = 1;
+                            if (i == 0) {
+                              break label4102;
+                            }
+                          }
+                        }
+                        for (;;)
+                        {
+                          if (localObject1 == null) {
+                            break label4114;
+                          }
+                          i = ((h)localObject1).rxU;
+                          ((h)localObject1).rxU = (i + 1);
+                          paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+                          break;
+                          i = 0;
+                          break label4068;
+                          localObject1 = null;
+                          continue;
+                          localObject1 = null;
+                        }
+                        l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                        l2 = paramb.rdg;
+                        localObject1 = d.rxr;
+                        paramb = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                        paramb.rxU += 1;
+                        localObject1 = y.KTp;
+                        localObject1 = y.KTp;
+                      }
+                      else
+                      {
+                        localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                        if (i == com.tencent.mm.plugin.finder.event.a.a.ctr())
+                        {
+                          localObject1 = this.rxu;
+                          if (localObject1 != null) {
+                            if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                            {
+                              i = 1;
+                              label4223:
+                              if (i == 0) {
+                                break label4257;
+                              }
+                            }
+                          }
+                          for (;;)
+                          {
+                            if (localObject1 == null) {
+                              break label4269;
+                            }
+                            i = ((h)localObject1).rxV;
+                            ((h)localObject1).rxV = (i + 1);
+                            paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+                            break;
+                            i = 0;
+                            break label4223;
+                            localObject1 = null;
+                            continue;
+                            localObject1 = null;
+                          }
+                          l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                          l2 = paramb.rdg;
+                          localObject1 = d.rxr;
+                          paramb = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                          paramb.rxV += 1;
+                          localObject1 = y.KTp;
+                          localObject1 = y.KTp;
+                        }
+                        else
+                        {
+                          localObject1 = com.tencent.mm.plugin.finder.event.a.a.rcW;
+                          if (i == com.tencent.mm.plugin.finder.event.a.a.cts())
+                          {
+                            localObject1 = this.rxu;
+                            if (localObject1 != null) {
+                              if (((h)localObject1).dig == ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig)
+                              {
+                                i = 1;
+                                if (i == 0) {
+                                  break label4412;
+                                }
+                              }
+                            }
+                            for (;;)
+                            {
+                              if (localObject1 == null) {
+                                break label4424;
+                              }
+                              i = ((h)localObject1).rxW;
+                              ((h)localObject1).rxW = (i + 1);
+                              paramb = (com.tencent.mm.plugin.finder.event.base.b)???;
+                              break;
+                              i = 0;
+                              break label4378;
+                              localObject1 = null;
+                              continue;
+                              localObject1 = null;
+                            }
+                            l1 = ((com.tencent.mm.plugin.finder.event.a.a)paramb).dig;
+                            l2 = paramb.rdg;
+                            localObject1 = d.rxr;
+                            paramb = new h(l1, l2, d.ur(((com.tencent.mm.plugin.finder.event.a.a)paramb).dig), null, 56);
+                            paramb.rxW += 1;
+                            localObject1 = y.KTp;
+                            localObject1 = y.KTp;
+                          }
+                          else
+                          {
+                            AppMethodBeat.o(202774);
+                            return;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-          localan.hI("");
         }
-        localObject1 = ((JSONArray)localObject1).toString();
-        k.g(localObject1, "waitingDetails.toString()");
-        localan.hH(n.h((String)localObject1, ",", ";", false));
-        localObject1 = "";
-        localObject2 = ((Iterable)paramb.KVC).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          i = ((Number)((Iterator)localObject2).next()).intValue();
-          localObject1 = (String)localObject1 + i + ';';
-        }
-        localan.aSN((String)localObject1);
-        localan.fYy();
-        localObject1 = b.qFq;
-        b.a((com.tencent.mm.plugin.report.a)localan);
-        localObject1 = paramb.KVB;
-        if (localObject1 != null)
-        {
-          localObject2 = new aif();
-          ((aif)localObject2).feedId = paramb.qGv;
-          ((aif)localObject2).xXi = 0;
-          ((aif)localObject2).DkP = ((int)localan.Qk());
-          ((aif)localObject2).DkR = ((int)localan.Qj());
-          ((aif)localObject2).DkM = ((int)localan.getFileSize());
-          ((aif)localObject2).DkL = d.h.a.bU((float)(localan.getFileSize() * localan.Qg()) / 100.0F);
-          ((aif)localObject2).kqF = d.h.a.bU((float)(localan.Qi() * localan.getFileSize()) / 100.0F);
-          ((aif)localObject2).scene = this.contextObj.qqE;
-          ((aif)localObject2).duration = locall.qCj.videoDuration;
-          ((aif)localObject2).qGA = ((int)localan.getPosition());
-          ((aif)localObject2).DkQ = ce.asT();
-          ((aif)localObject2).DkN = ((int)paramb.qGD);
-          ((aif)localObject2).DkO = ((int)paramb.qGV);
-          ((aif)localObject2).qHc = paramb.qHc;
-          ((aif)localObject2).DkS = paramb.KVE;
-          ((aif)localObject2).DkU = ((g.c)localObject1).averageConnectCost;
-          ((aif)localObject2).DkV = ((g.c)localObject1).DkV;
-          ((aif)localObject2).DkW = ((g.c)localObject1).DkW;
-          ((aif)localObject2).networkId = ((g.c)localObject1).netType;
-          ((aif)localObject2).KVz = paramb.KVz;
-          if (KVx.size() > 2) {
-            KVx.remove(0);
-          }
-          KVx.add(localObject2);
-          ad.i("Finder.FinderVideoPlayReporter", "downloadInfoList " + KVx.size());
-          AppMethodBeat.o(166703);
-          return;
-        }
-        AppMethodBeat.o(166703);
+        AppMethodBeat.o(202774);
         return;
       }
-      AppMethodBeat.o(166703);
-      return;
-    }
-    AppMethodBeat.o(166703);
-  }
-  
-  final void b(b paramb)
-  {
-    AppMethodBeat.i(166704);
-    if (paramb != null)
-    {
-      Object localObject = i.qTa;
-      bmd localbmd = paramb.qGx;
-      g.d locald = paramb.KVA;
-      g.c localc = paramb.KVB;
-      eu localeu;
-      long l1;
-      if ((localbmd != null) && (locald != null) && (localc != null))
+      if ((paramb instanceof p.b))
       {
-        localeu = new eu();
-        localObject = com.tencent.mm.plugin.finder.storage.logic.c.KXF;
-        localObject = paramb.KVy;
-        if (localObject != null)
+        localObject1 = this.rxu;
+        if (localObject1 != null)
         {
-          String str = ((com.tencent.mm.plugin.finder.loader.l)localObject).aaX();
-          localObject = str;
-          if (str != null) {}
+          if (((h)localObject1).dig == ((p.b)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label4766;
+            }
+            if (localObject1 == null) {
+              break label4777;
+            }
+            if (((p.b)paramb).rcY.mediaType != 2) {
+              break label4772;
+            }
+          }
+          for (i = 0;; i = 1)
+          {
+            j = ((p.b)paramb).index;
+            if (j + 1 > ((h)localObject1).rxK) {
+              ((h)localObject1).rxK = (j + 1);
+            }
+            k = ((h)localObject1).rxI;
+            if (k != j)
+            {
+              l1 = ce.azJ();
+              l2 = l1 - localObject1.rxE[localObject1.rxI];
+              m = localObject1.rxG[localObject1.rxI];
+              n = localObject1.rxH[localObject1.rxI];
+              ((h)localObject1).rxF[k] = l2;
+              ((h)localObject1).rxE[j] = l1;
+              ((h)localObject1).rxI = j;
+              a.a.a(this.contextObj, ((h)localObject1).dig, 4, String.valueOf(a.a.a(4, new String[] { String.valueOf(l2), String.valueOf(k), String.valueOf(j), String.valueOf(i), String.valueOf(m), String.valueOf(n) })));
+            }
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+            break label4546;
+          }
         }
-        else
+        AppMethodBeat.o(202774);
+        return;
+      }
+      if ((paramb instanceof b.a)) {
+        switch (((b.a)paramb).type)
         {
-          localObject = "";
         }
-        localObject = com.tencent.mm.plugin.finder.storage.logic.c.aVA((String)localObject);
-        long l2 = d.h.a.J((float)(paramb.qGG * ((r)localObject).field_totalSize) / 100.0F);
-        localObject = localeu.kM(com.tencent.mm.ad.c.ly(paramb.qGv)).gY(this.contextObj.qqE + 100).gZ(paramb.qEr);
-        if (paramb.qGA != 0) {
-          break label589;
-        }
-        l1 = 1L;
-        localObject = ((eu)localObject).ha(l1).hb(localbmd.videoDuration).hc(d.h.a.J(localbmd.videoDuration * paramb.qGE / 100.0F)).hd(paramb.qGS).he(paramb.qGI).hf(paramb.qHb).RK().hh(0L).hi(localc.retCode).kN("").hj(paramb.KVF).kO(String.valueOf(locald.requestVideoFormat)).hk(localc.hWY).hl(localc.recvedBytes).hm(localc.startTime).hn(localc.endTime).ho(localc.retCode).hp(localc.enQueueTime).hq(localc.moovRequestTimes).hr(localc.moovCost).hs(localc.moovSize);
-        if (!localc.moovCompleted) {
-          break label594;
-        }
-        l1 = 1L;
-        label353:
-        localObject = ((eu)localObject).ht(l1).hu(localc.moovFailReason).hv(localc.firstConnectCost).hw(localc.firstRequestCost).hx(localc.firstRequestSize).hy(localc.firstRequestDownloadSize);
-        if (!localc.firstRequestCompleted) {
-          break label599;
-        }
-        l1 = 1L;
-        label416:
-        localObject = ((eu)localObject).hz(l1).hA(localc.averageSpeed).hB(localc.averageConnectCost).hC(localc.netConnectTimes).kP(localc.KVI).kQ(localc.clientIP);
-        if (!localc.KVJ) {
-          break label604;
-        }
-        l1 = 1L;
-        label477:
-        localObject = ((eu)localObject).hD(l1).hE(locald.foi).hF(0L).hG(paramb.qGL).hH(paramb.qGz).hI(l2).RM().iE(localc.transportProtocol).iF(localc.transportProtocolError);
-        if (!com.tencent.mm.sdk.platformtools.h.DEBUG) {
-          break label609;
-        }
-        l1 = 0L;
-        label543:
-        ((eu)localObject).AU(l1);
-        if (paramb.qGT != 0) {
-          break label616;
-        }
-        localeu.hg(0L);
       }
       for (;;)
       {
-        localeu.aBj();
-        paramb = b.qFq;
-        b.a((com.tencent.mm.plugin.report.a)localeu);
-        AppMethodBeat.o(166704);
+        AppMethodBeat.o(202774);
         return;
-        label589:
-        l1 = 0L;
-        break;
-        label594:
-        l1 = 0L;
-        break label353;
-        label599:
-        l1 = 0L;
-        break label416;
-        label604:
-        l1 = 0L;
-        break label477;
-        label609:
-        l1 = 38L;
-        break label543;
-        label616:
-        localeu.hg(paramb.qGV / paramb.qGT);
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label4950;
+            }
+          }
+          for (;;)
+          {
+            if (localObject1 == null) {
+              break label4956;
+            }
+            ((h)localObject1).ryb = paramb.rdg;
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+          }
+        }
+        AppMethodBeat.o(202774);
+        return;
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label5042;
+            }
+          }
+          for (;;)
+          {
+            if (localObject1 == null) {
+              break label5048;
+            }
+            if (((h)localObject1).ryb != 0L) {
+              ((h)localObject1).rya = (paramb.rdg - ((h)localObject1).ryb);
+            }
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+          }
+        }
+        AppMethodBeat.o(202774);
+        return;
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label5118;
+            }
+          }
+          for (;;)
+          {
+            if (localObject1 == null) {
+              break label5124;
+            }
+            ((h)localObject1).rxZ = paramb.rdg;
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            label5118:
+            localObject1 = null;
+          }
+        }
+        AppMethodBeat.o(202774);
+        return;
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label5215;
+            }
+          }
+          for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;; paramb = null)
+          {
+            if (paramb == null) {
+              break label5220;
+            }
+            paramb.rxH[paramb.rxI] += 1;
+            i = paramb.rxJ;
+            paramb.rxJ = (i + 1);
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+          }
+        }
+        AppMethodBeat.o(202774);
+        return;
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label5377;
+            }
+          }
+          for (;;)
+          {
+            if (localObject1 == null) {
+              break label5383;
+            }
+            ((h)localObject1).ryf.add(Integer.valueOf(((b.a)paramb).offset));
+            i = (int)(100.0F * ((b.a)paramb).offset / ((b.a)paramb).hLN);
+            if (i > localObject1.rxG[localObject1.rxI]) {
+              ((h)localObject1).rxG[localObject1.rxI] = i;
+            }
+            if (i > ((h)localObject1).rxM)
+            {
+              ((h)localObject1).rxL = ((b.a)paramb).offset;
+              ((h)localObject1).rxM = i;
+            }
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+          }
+        }
+        AppMethodBeat.o(202774);
+        return;
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label5481;
+            }
+          }
+          for (;;)
+          {
+            if (localObject1 == null) {
+              break label5487;
+            }
+            if (((h)localObject1).rxZ != 0L)
+            {
+              ((h)localObject1).rxY += paramb.rdg - ((h)localObject1).rxZ;
+              ((h)localObject1).rxZ = 0L;
+            }
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+            localObject1 = null;
+          }
+        }
+        AppMethodBeat.o(202774);
+        return;
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig != ((b.a)paramb).dig) {
+            break label5615;
+          }
+          i = 1;
+          if (i == 0) {
+            break label5620;
+          }
+          if (localObject1 != null)
+          {
+            ((h)localObject1).ryd = 1;
+            localObject1 = y.KTp;
+          }
+        }
+        if (((b.a)paramb).rcY != null)
+        {
+          if (((b.a)paramb).rda <= ((b.a)paramb).rdb) {
+            break label5626;
+          }
+          a.a.a(this.contextObj, ((b.a)paramb).dig, 15, String.valueOf(a.a.a(15, new String[] { "-1" })));
+        }
+        for (;;)
+        {
+          paramb = y.KTp;
+          AppMethodBeat.o(202774);
+          return;
+          i = 0;
+          break;
+          label5620:
+          localObject1 = null;
+          break label5527;
+          label5626:
+          if (((b.a)paramb).rda < ((b.a)paramb).rdb) {
+            a.a.a(this.contextObj, ((b.a)paramb).dig, 15, String.valueOf(a.a.a(15, new String[] { "1" })));
+          }
+        }
+        localObject1 = this.rxu;
+        if (localObject1 != null)
+        {
+          if (((h)localObject1).dig == ((b.a)paramb).dig)
+          {
+            i = 1;
+            if (i == 0) {
+              break label5741;
+            }
+          }
+          for (paramb = (com.tencent.mm.plugin.finder.event.base.b)localObject1;; paramb = null)
+          {
+            if (paramb == null) {
+              break label5744;
+            }
+            paramb.ryc = 1;
+            paramb = y.KTp;
+            AppMethodBeat.o(202774);
+            return;
+            i = 0;
+            break;
+          }
+        }
       }
     }
-    AppMethodBeat.o(166704);
   }
   
-  public final void b(dzp paramdzp)
+  public final boolean a(com.tencent.mm.plugin.finder.event.base.c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
   {
-    AppMethodBeat.i(198870);
-    k.h(paramdzp, "contextObj");
-    this.contextObj = paramdzp;
-    AppMethodBeat.o(198870);
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportData;", "", "()V", "adjustVolume", "", "getAdjustVolume", "()I", "setAdjustVolume", "(I)V", "currentFeedId", "", "getCurrentFeedId", "()J", "setCurrentFeedId", "(J)V", "currentMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getCurrentMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setCurrentMedia", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "currentMediaId", "", "getCurrentMediaId", "()Ljava/lang/String;", "setCurrentMediaId", "(Ljava/lang/String;)V", "currentVideo", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "getCurrentVideo", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "setCurrentVideo", "(Lcom/tencent/mm/plugin/finder/loader/FinderVideo;)V", "currentWaiting", "", "getCurrentWaiting", "()Z", "setCurrentWaiting", "(Z)V", "downloadFinishTime", "getDownloadFinishTime", "setDownloadFinishTime", "downloadPercent", "getDownloadPercent", "setDownloadPercent", "downloadSpeed", "getDownloadSpeed", "setDownloadSpeed", "endVolume", "getEndVolume", "setEndVolume", "fetchTimestamp", "getFetchTimestamp", "setFetchTimestamp", "firstFrameTime", "getFirstFrameTime", "setFirstFrameTime", "firstLoadTime", "getFirstLoadTime", "setFirstLoadTime", "firstPlay", "getFirstPlay", "setFirstPlay", "firstRequestDataOffset", "getFirstRequestDataOffset", "setFirstRequestDataOffset", "hitPreload", "getHitPreload", "setHitPreload", "hitPreloadPercent", "getHitPreloadPercent", "setHitPreloadPercent", "isPause", "setPause", "isSeek", "setSeek", "isStartDownload", "setStartDownload", "moovReadyOffset", "getMoovReadyOffset", "setMoovReadyOffset", "moovReadyTime", "getMoovReadyTime", "setMoovReadyTime", "netType", "getNetType", "setNetType", "netTypeInt", "getNetTypeInt", "setNetTypeInt", "pauseTimestamp", "getPauseTimestamp", "setPauseTimestamp", "pauseTotalTime", "getPauseTotalTime", "setPauseTotalTime", "playAudioBitrate", "getPlayAudioBitrate", "setPlayAudioBitrate", "playCodeFormat", "getPlayCodeFormat", "setPlayCodeFormat", "playFileFormat", "getPlayFileFormat", "setPlayFileFormat", "playPageIndex", "getPlayPageIndex", "setPlayPageIndex", "playPercent", "getPlayPercent", "setPlayPercent", "playPercentSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "getPlayPercentSet", "()Ljava/util/HashSet;", "setPlayPercentSet", "(Ljava/util/HashSet;)V", "playPosition", "getPlayPosition", "setPlayPosition", "playStatus", "getPlayStatus", "setPlayStatus", "playTime", "getPlayTime", "setPlayTime", "playVideoBitrate", "getPlayVideoBitrate", "setPlayVideoBitrate", "playWaitingCount", "getPlayWaitingCount", "setPlayWaitingCount", "playing", "getPlaying", "setPlaying", "preloadStrategyId", "getPreloadStrategyId", "setPreloadStrategyId", "realPlayTime", "getRealPlayTime", "setRealPlayTime", "realPlayTimestamp", "getRealPlayTimestamp", "setRealPlayTimestamp", "replayCount", "getReplayCount", "setReplayCount", "reportSceneResult", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportSceneResult;", "getReportSceneResult", "()Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportSceneResult;", "setReportSceneResult", "(Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportSceneResult;)V", "reportTaskInfo", "Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportTaskInfo;", "getReportTaskInfo", "()Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportTaskInfo;", "setReportTaskInfo", "(Lcom/tencent/mm/plugin/finder/report/FinderVideoPlayReporter$ReportTaskInfo;)V", "sessionId", "getSessionId", "setSessionId", "startTimestamp", "getStartTimestamp", "setStartTimestamp", "startVolume", "getStartVolume", "setStartVolume", "startWaitingTime", "getStartWaitingTime", "setStartWaitingTime", "totalWaitingTime", "getTotalWaitingTime", "setTotalWaitingTime", "waitDetails", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderWaitDetail;", "getWaitDetails", "()Ljava/util/LinkedList;", "setWaitDetails", "(Ljava/util/LinkedList;)V", "waitingCount", "getWaitingCount", "setWaitingCount", "plugin-finder_release"})
-  public static final class b
-  {
-    g.d KVA;
-    g.c KVB;
-    HashSet<Integer> KVC;
-    int KVD;
-    String KVE;
-    int KVF;
-    int KVG;
-    String KVH;
-    long KVj;
-    int KVl;
-    int KVm;
-    int KVp;
-    int KVq;
-    com.tencent.mm.plugin.finder.loader.l KVy;
-    long KVz;
-    boolean aUR;
-    int hxT;
-    int kut;
-    int qEr;
-    int qGA;
-    int qGB;
-    long qGC;
-    long qGD;
-    int qGE;
-    int qGF;
-    int qGG;
-    long qGH;
-    long qGI;
-    long qGJ;
-    String qGK;
-    long qGL;
-    int qGM;
-    boolean qGN;
-    int qGO;
-    long qGP;
-    long qGQ;
-    long qGR;
-    long qGS;
-    int qGT;
-    long qGU;
-    long qGV;
-    long qGW;
-    long qGX;
-    long qGv;
-    String qGw;
-    bmd qGx;
-    long qGz;
-    boolean qHa;
-    long qHb;
-    LinkedList<alx> qHc;
-    String sessionId;
-    
-    public b()
+    AppMethodBeat.i(202770);
+    k.h(paramc, "dispatcher");
+    k.h(paramb, "event");
+    if (super.a(paramc, paramb))
     {
-      AppMethodBeat.i(178402);
-      this.sessionId = "";
-      this.qGw = "";
-      this.qGK = "";
-      this.qHc = new LinkedList();
-      this.KVC = new HashSet();
-      this.KVE = "";
-      this.KVH = "";
-      AppMethodBeat.o(178402);
+      AppMethodBeat.o(202770);
+      return true;
+    }
+    if ((paramb instanceof p.b))
+    {
+      AppMethodBeat.o(202770);
+      return true;
+    }
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.j))
+    {
+      AppMethodBeat.o(202770);
+      return true;
+    }
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.a.a))
+    {
+      AppMethodBeat.o(202770);
+      return true;
+    }
+    AppMethodBeat.o(202770);
+    return false;
+  }
+  
+  public final LinkedList<dcw> cwN()
+  {
+    AppMethodBeat.i(202776);
+    if (this.rxt.size() > 0)
+    {
+      localObject1 = new v.f();
+      ((v.f)localObject1).KUQ = this.rxt;
+      this.rxt = new LinkedList();
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder("start send stats list ").append(this.contextObj.rfR).append(' ');
+      Object localObject2 = (Iterable)((v.f)localObject1).KUQ;
+      Collection localCollection = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        localCollection.add(Long.valueOf(((dcw)((Iterator)localObject2).next()).qXP));
+      }
+      ac.i(str, (List)localCollection);
+      new com.tencent.mm.plugin.finder.cgi.j((List)((v.f)localObject1).KUQ, this.contextObj).aBB().j((com.tencent.mm.vending.c.a)new e(this, (v.f)localObject1));
+      localObject1 = (LinkedList)((v.f)localObject1).KUQ;
+      AppMethodBeat.o(202776);
+      return localObject1;
+    }
+    Object localObject1 = new LinkedList();
+    AppMethodBeat.o(202776);
+    return localObject1;
+  }
+  
+  public final void onInvisible()
+  {
+    AppMethodBeat.i(202778);
+    super.onInvisible();
+    onExit();
+    AppMethodBeat.o(202778);
+  }
+  
+  public final void onRelease()
+  {
+    AppMethodBeat.i(202771);
+    onExit();
+    super.onRelease();
+    AppMethodBeat.o(202771);
+  }
+  
+  public final void onVisible()
+  {
+    AppMethodBeat.i(202777);
+    super.onVisible();
+    Object localObject = FinderReporterUIC.seQ;
+    localObject = FinderReporterUIC.a.eV((Context)this.activity);
+    if (localObject != null)
+    {
+      localObject = ((FinderReporterUIC)localObject).seM;
+      if (localObject != null)
+      {
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          WxRecyclerAdapter localWxRecyclerAdapter = (WxRecyclerAdapter)((WeakReference)((Iterator)localObject).next()).get();
+          if (localWxRecyclerAdapter != null) {
+            localWxRecyclerAdapter.onResume();
+          }
+        }
+        AppMethodBeat.o(202777);
+        return;
+      }
+    }
+    AppMethodBeat.o(202777);
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  static final class c
+    extends d.g.b.l
+    implements d.g.a.a<y>
+  {
+    c(g paramg)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter$reportExpose$1$1$1$convertData$1", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+  public static final class d
+    implements com.tencent.mm.view.recyclerview.a
+  {
+    d(FinderObject paramFinderObject) {}
+    
+    public final int bTF()
+    {
+      return 0;
     }
     
-    public final void aVv(String paramString)
+    public final long lx()
     {
-      AppMethodBeat.i(198857);
-      k.h(paramString, "<set-?>");
-      this.KVE = paramString;
-      AppMethodBeat.o(198857);
+      return this.rxA.id;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderStatsReportResponse;", "kotlin.jvm.PlatformType", "call"})
+  static final class e<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    e(g paramg, v.f paramf) {}
+    
+    private Object b(com.tencent.mm.ak.a.a<aob> arg1)
+    {
+      AppMethodBeat.i(202769);
+      if ((???.errCode == 0) && (???.errType == 0))
+      {
+        ??? = g.rxy;
+        ac.i(g.access$getTAG$cp(), "successfully! size=" + ((LinkedList)this.rxB.KUQ).size());
+        ??? = y.KTp;
+        AppMethodBeat.o(202769);
+        return ???;
+      }
+      ??? = g.rxy;
+      ac.w(g.access$getTAG$cp(), "fail to report! size=" + ((LinkedList)this.rxB.KUQ).size());
+      synchronized (g.d(this.rxz))
+      {
+        boolean bool = g.d(this.rxz).addAll((Collection)this.rxB.KUQ);
+        AppMethodBeat.o(202769);
+        return Boolean.valueOf(bool);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.g
  * JD-Core Version:    0.7.0.1
  */

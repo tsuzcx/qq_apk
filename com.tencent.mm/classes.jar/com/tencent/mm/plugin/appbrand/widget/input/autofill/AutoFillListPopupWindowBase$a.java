@@ -11,19 +11,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class AutoFillListPopupWindowBase$a
   extends ListView
 {
-  private boolean akc;
-  private boolean akd;
+  private boolean akW;
+  private boolean akX;
   
   public AutoFillListPopupWindowBase$a(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, null, 2130968938);
     AppMethodBeat.i(136649);
-    this.akd = paramBoolean;
+    this.akX = paramBoolean;
     setCacheColorHint(0);
     AppMethodBeat.o(136649);
   }
   
-  final int et(int paramInt1, int paramInt2)
+  final int ew(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(136654);
     int i = getListPaddingTop();
@@ -97,7 +97,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean hasFocus()
   {
     AppMethodBeat.i(136653);
-    if ((this.akd) || (super.hasFocus()))
+    if ((this.akX) || (super.hasFocus()))
     {
       AppMethodBeat.o(136653);
       return true;
@@ -109,7 +109,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean hasWindowFocus()
   {
     AppMethodBeat.i(136651);
-    if ((this.akd) || (super.hasWindowFocus()))
+    if ((this.akX) || (super.hasWindowFocus()))
     {
       AppMethodBeat.o(136651);
       return true;
@@ -121,7 +121,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean isFocused()
   {
     AppMethodBeat.i(136652);
-    if ((this.akd) || (super.isFocused()))
+    if ((this.akX) || (super.isFocused()))
     {
       AppMethodBeat.o(136652);
       return true;
@@ -133,7 +133,7 @@ final class AutoFillListPopupWindowBase$a
   public final boolean isInTouchMode()
   {
     AppMethodBeat.i(136650);
-    if (((this.akd) && (this.akc)) || (super.isInTouchMode()))
+    if (((this.akX) && (this.akW)) || (super.isInTouchMode()))
     {
       AppMethodBeat.o(136650);
       return true;
@@ -144,7 +144,7 @@ final class AutoFillListPopupWindowBase$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.AutoFillListPopupWindowBase.a
  * JD-Core Version:    0.7.0.1
  */

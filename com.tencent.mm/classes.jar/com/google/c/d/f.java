@@ -27,7 +27,7 @@ public final class f
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12290);
-    if (parama != a.bJc)
+    if (parama != a.bGK)
     {
       paramString = new IllegalArgumentException("Can only encode CODE_39, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12290);
@@ -38,7 +38,7 @@ public final class f
     return paramString;
   }
   
-  public final boolean[] bw(String paramString)
+  public final boolean[] bn(String paramString)
   {
     AppMethodBeat.i(12291);
     int m = paramString.length();
@@ -61,7 +61,7 @@ public final class f
         AppMethodBeat.o(12291);
         throw paramString;
       }
-      a(e.bLH[k], arrayOfInt1);
+      a(e.bJp[k], arrayOfInt1);
       k = 0;
       while (k < 9)
       {
@@ -71,7 +71,7 @@ public final class f
       i += 1;
     }
     boolean[] arrayOfBoolean = new boolean[j];
-    a(e.bLT, arrayOfInt1);
+    a(e.bJB, arrayOfInt1);
     i = a(arrayOfBoolean, 0, arrayOfInt1, true);
     int[] arrayOfInt2 = new int[1];
     arrayOfInt2[0] = 1;
@@ -80,12 +80,12 @@ public final class f
     while (i < m)
     {
       k = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. *$/+%".indexOf(paramString.charAt(i));
-      a(e.bLH[k], arrayOfInt1);
+      a(e.bJp[k], arrayOfInt1);
       j += a(arrayOfBoolean, j, arrayOfInt1, true);
       j += a(arrayOfBoolean, j, arrayOfInt2, false);
       i += 1;
     }
-    a(e.bLT, arrayOfInt1);
+    a(e.bJB, arrayOfInt1);
     a(arrayOfBoolean, j, arrayOfInt1, true);
     AppMethodBeat.o(12291);
     return arrayOfBoolean;
@@ -93,7 +93,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.d.f
  * JD-Core Version:    0.7.0.1
  */

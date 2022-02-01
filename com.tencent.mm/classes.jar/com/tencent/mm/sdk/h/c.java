@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public final class c
 {
-  public static boolean eHr()
+  public static boolean eWM()
   {
     AppMethodBeat.i(153481);
     try
@@ -36,7 +36,7 @@ public final class c
     return false;
   }
   
-  public static int iX(Context paramContext)
+  public static int ji(Context paramContext)
   {
     int i = 0;
     AppMethodBeat.i(175933);
@@ -44,7 +44,7 @@ public final class c
     {
       Class localClass = Class.forName("com.android.internal.R$dimen");
       Object localObject = localClass.newInstance();
-      int j = bt.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
+      int j = bs.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
       j = paramContext.getResources().getDimensionPixelSize(j);
       i = j;
     }

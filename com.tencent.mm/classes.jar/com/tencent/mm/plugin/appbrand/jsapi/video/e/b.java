@@ -4,23 +4,23 @@ import android.view.Surface;
 
 public abstract interface b
 {
-  public abstract void a(a parama);
+  public abstract void a(b.a parama);
   
-  public abstract void a(b paramb);
+  public abstract void a(b.b paramb);
   
-  public abstract void a(c paramc);
+  public abstract void a(b.c paramc);
   
-  public abstract void a(d paramd);
+  public abstract void a(b.d paramd);
   
-  public abstract void a(e parame);
+  public abstract void a(b.e parame);
   
-  public abstract void a(f paramf);
+  public abstract void a(b.f paramf);
   
-  public abstract void a(g paramg);
+  public abstract void a(b.g paramg);
   
-  public abstract boolean ay(float paramFloat);
+  public abstract boolean aC(float paramFloat);
   
-  public abstract void dp(String paramString1, String paramString2);
+  public abstract void dB(String paramString1, String paramString2);
   
   public abstract int getCurrentPosition();
   
@@ -57,45 +57,10 @@ public abstract interface b
   public abstract void start();
   
   public abstract void stop();
-  
-  public static abstract interface a
-  {
-    public abstract void gX(int paramInt);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void Fz();
-  }
-  
-  public static abstract interface c
-  {
-    public abstract boolean cc(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract boolean cb(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface e
-  {
-    public abstract void a(b paramb);
-  }
-  
-  public static abstract interface f
-  {
-    public abstract void b(b paramb);
-  }
-  
-  public static abstract interface g
-  {
-    public abstract void a(b paramb, int paramInt1, int paramInt2);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b
  * JD-Core Version:    0.7.0.1
  */

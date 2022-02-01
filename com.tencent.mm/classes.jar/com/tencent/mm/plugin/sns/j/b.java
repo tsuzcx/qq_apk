@@ -1,109 +1,93 @@
 package com.tencent.mm.plugin.sns.j;
 
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpi;
-import java.util.LinkedList;
+import com.tencent.mm.msgsubscription.SubscribeMsgRequestDialogUiData;
+import com.tencent.mm.msgsubscription.SubscribeMsgRequestDialogUiData.ItemUiData;
+import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
+import com.tencent.mm.plugin.sns.data.j;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.plugin.sns.storage.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.f;
+import d.g.b.k;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public final class b
-  extends com.tencent.mm.bx.a
 {
-  public bpi dyS;
-  public int hgr;
-  public String wNP;
-  public int wNQ;
-  
-  public final int op(int paramInt, Object... paramVarArgs)
+  public static void a(p paramp, int paramInt, y paramy)
   {
-    AppMethodBeat.i(96151);
-    if (paramInt == 0)
+    AppMethodBeat.i(179126);
+    if (paramp == null)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dyS != null)
-      {
-        paramVarArgs.kX(1, this.dyS.computeSize());
-        this.dyS.writeFields(paramVarArgs);
-      }
-      if (this.wNP != null) {
-        paramVarArgs.d(2, this.wNP);
-      }
-      paramVarArgs.aR(3, this.hgr);
-      paramVarArgs.aR(4, this.wNQ);
-      AppMethodBeat.o(96151);
-      return 0;
+      ac.e("HalfScreenSubscribeUtils", "reportSubscribe snsInfo==null or reportInfo==null, scene = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(179126);
+      return;
     }
-    if (paramInt == 1) {
-      if (this.dyS == null) {
-        break label462;
-      }
-    }
-    label462:
-    for (paramInt = f.a.a.a.kW(1, this.dyS.computeSize()) + 0;; paramInt = 0)
+    try
     {
-      int i = paramInt;
-      if (this.wNP != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.wNP);
-      }
-      paramInt = f.a.a.b.b.a.bA(3, this.hgr);
-      int j = f.a.a.b.b.a.bA(4, this.wNQ);
-      AppMethodBeat.o(96151);
-      return i + paramInt + j;
-      if (paramInt == 2)
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("tempId", paramy.ygJ);
+      localJSONObject2.put("weausername", paramy.ywg);
+      localJSONObject2.put("clickSubmitBtn", paramy.ywh);
+      localJSONObject2.put("subscribeResult", paramy.ywi);
+      if (paramInt == 0) {}
+      for (paramInt = 1;; paramInt = 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(96151);
-        return 0;
+        paramy = bs.nullAsNil(paramp.dMD());
+        localJSONObject1.put("extInfo", localJSONObject2);
+        localJSONObject1.put("uxinfo", paramy);
+        localJSONObject1.put("snsid", paramp.field_snsId);
+        localJSONObject1.put("scene", paramInt);
+        paramp = localJSONObject1.toString();
+        j.iU("timeline_subscription_message", paramp);
+        ac.i("HalfScreenSubscribeUtils", "reportSubscribe timeline_subscription_message, content=".concat(String.valueOf(paramp)));
+        AppMethodBeat.o(179126);
+        return;
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        b localb = (b)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(96151);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bpi();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((bpi)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localb.dyS = ((bpi)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(96151);
-          return 0;
-        case 2: 
-          localb.wNP = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(96151);
-          return 0;
-        case 3: 
-          localb.hgr = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(96151);
-          return 0;
-        }
-        localb.wNQ = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(96151);
-        return 0;
-      }
-      AppMethodBeat.o(96151);
-      return -1;
+      return;
     }
+    catch (Exception paramp)
+    {
+      ac.e("HalfScreenSubscribeUtils", "reportSubscribe exp:" + paramp.toString());
+      AppMethodBeat.o(179126);
+    }
+  }
+  
+  public static SubscribeMsgRequestDialogUiData fA(List<SubscribeMsgTmpItem> paramList)
+  {
+    AppMethodBeat.i(179125);
+    SubscribeMsgRequestDialogUiData localSubscribeMsgRequestDialogUiData = new SubscribeMsgRequestDialogUiData();
+    localSubscribeMsgRequestDialogUiData.opType = 1;
+    localSubscribeMsgRequestDialogUiData.igs = 0;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)paramList.next();
+      SubscribeMsgRequestDialogUiData.ItemUiData localItemUiData = new SubscribeMsgRequestDialogUiData.ItemUiData();
+      if (localSubscribeMsgTmpItem != null)
+      {
+        localItemUiData.EQ(localSubscribeMsgTmpItem.hiK);
+        localItemUiData.igB = 1;
+        localArrayList.add(localItemUiData);
+      }
+    }
+    k.h(localArrayList, "<set-?>");
+    localSubscribeMsgRequestDialogUiData.igt = localArrayList;
+    AppMethodBeat.o(179125);
+    return localSubscribeMsgRequestDialogUiData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.j.b
  * JD-Core Version:    0.7.0.1
  */

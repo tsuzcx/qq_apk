@@ -1,28 +1,30 @@
 package com.tencent.mm.plugin.a;
 
-import android.annotation.TargetApi;
-import com.tencent.mm.pointers.PInt;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.RandomAccessFile;
 
-public abstract interface p
+public final class p
+  extends a
 {
-  public abstract boolean E(String paramString, long paramLong);
+  public g iyu;
+  public d iyv;
   
-  public abstract boolean a(int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2);
+  public p(int paramInt1, long paramLong, int paramInt2)
+  {
+    super(paramInt1, paramLong, paramInt2, 0L);
+  }
   
-  public abstract int aGP();
-  
-  public abstract int aGR();
-  
-  @TargetApi(5)
-  public abstract boolean b(int paramInt, PInt paramPInt1, PInt paramPInt2);
-  
-  public abstract int dw(int paramInt1, int paramInt2);
-  
-  public abstract void release();
+  public static g b(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(133892);
+    paramRandomAccessFile = (g)c.a(paramRandomAccessFile, paramArrayOfByte, a.baX);
+    AppMethodBeat.o(133892);
+    return paramRandomAccessFile;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 public class e
   implements a, d
 {
-  private final boolean kEU;
-  private final boolean kEV;
-  private final int kEW;
-  private final int kEX;
+  private final boolean lgn;
+  private final boolean lgo;
+  private final int lgp;
+  private final int lgq;
   private final String mDesc;
   private final String mName;
   private final String mProcessName;
@@ -16,42 +16,42 @@ public class e
   {
     this.mProcessName = paramString1;
     this.mName = paramString2;
-    this.kEU = paramBoolean1;
-    this.kEV = paramBoolean2;
+    this.lgn = paramBoolean1;
+    this.lgo = paramBoolean2;
     this.mDesc = paramString3;
     this.mType = paramInt1;
-    this.kEW = paramInt2;
-    this.kEX = paramInt3;
+    this.lgp = paramInt2;
+    this.lgq = paramInt3;
   }
   
-  public final String bfT()
+  public final String bmN()
   {
     return this.mProcessName;
   }
   
-  public final boolean bfU()
+  public final boolean bmO()
   {
-    return this.kEU;
+    return this.lgn;
   }
   
-  public final boolean bfV()
+  public final boolean bmP()
   {
-    return this.kEV;
+    return this.lgo;
   }
   
-  public final String bfW()
+  public final String bmQ()
   {
     return this.mDesc;
   }
   
-  public final int bfY()
+  public final int bmS()
   {
-    return this.kEX;
+    return this.lgq;
   }
   
-  public final int bfZ()
+  public final int bmT()
   {
-    return this.kEW;
+    return this.lgp;
   }
   
   public final int getType()
@@ -66,7 +66,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.e
  * JD-Core Version:    0.7.0.1
  */

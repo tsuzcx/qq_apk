@@ -15,15 +15,15 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.pluginsdk.ui.applet.aa.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.e;
 import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.q;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -33,19 +33,19 @@ import java.util.List;
 public class MMCreateChatroomUI
   extends MMBaseSelectContactUI
 {
-  private boolean GYs;
-  private List<String> HuS;
-  private boolean Hvb;
-  a Hvc;
-  private b Hvd;
-  private boolean Hve;
+  private b IVA;
+  private boolean IVB;
+  private List<String> IVp;
+  private boolean IVy;
+  a IVz;
+  private boolean IyI;
   private int scene;
   
-  private static List<String> Z(List<String> paramList)
+  private static List<String> Q(List<String> paramList)
   {
     AppMethodBeat.i(39251);
     LinkedList localLinkedList = new LinkedList();
-    if (!az.afw())
+    if (!az.agM())
     {
       AppMethodBeat.o(39251);
       return localLinkedList;
@@ -59,14 +59,14 @@ public class MMCreateChatroomUI
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      az.arV();
-      af localaf = com.tencent.mm.model.c.apM().aHY(str);
+      az.ayM();
+      ai localai = com.tencent.mm.model.c.awB().aNt(str);
       paramList = str;
-      if (localaf != null)
+      if (localai != null)
       {
         paramList = str;
-        if ((int)localaf.fId != 0) {
-          paramList = localaf.ZX();
+        if ((int)localai.fLJ != 0) {
+          paramList = localai.aaS();
         }
       }
       localLinkedList.add(paramList);
@@ -93,41 +93,41 @@ public class MMCreateChatroomUI
     AppMethodBeat.o(39250);
   }
   
-  public final void N(int paramInt, String paramString)
+  public final void O(int paramInt, String paramString)
   {
     AppMethodBeat.i(39253);
     if (paramInt == 1)
     {
-      a locala = this.Hvc;
-      locala.icg.remove(paramString);
-      Iterator localIterator = locala.HuU.iterator();
+      a locala = this.IVz;
+      locala.iCn.remove(paramString);
+      Iterator localIterator = locala.IVr.iterator();
       while (localIterator.hasNext())
       {
         a.a locala1 = (a.a)localIterator.next();
-        if (paramString.equals(locala1.HuX)) {
-          locala1.HuX = null;
+        if (paramString.equals(locala1.IVu)) {
+          locala1.IVu = null;
         }
       }
       locala.notifyDataSetChanged();
-      VV();
+      WT();
     }
     AppMethodBeat.o(39253);
   }
   
-  public final void VL()
+  public final void WJ()
   {
     AppMethodBeat.i(39241);
-    super.VL();
-    this.HuS = getIntent().getStringArrayListExtra("query_phrase_list");
-    this.Hvb = getIntent().getBooleanExtra("go_to_chatroom_direct", false);
+    super.WJ();
+    this.IVp = getIntent().getStringArrayListExtra("query_phrase_list");
+    this.IVy = getIntent().getBooleanExtra("go_to_chatroom_direct", false);
     this.scene = getIntent().getIntExtra("scene_from", 0);
     AppMethodBeat.o(39241);
   }
   
-  public final void VV()
+  public final void WT()
   {
     AppMethodBeat.i(39243);
-    List localList = this.Hvc.fej();
+    List localList = this.IVz.fue();
     if (localList.size() > 0)
     {
       updateOptionMenuText(1, getString(2131755835) + "(" + localList.size() + ")");
@@ -152,9 +152,9 @@ public class MMCreateChatroomUI
     if ((parama instanceof e))
     {
       Object localObject = (e)parama;
-      parama = this.Hvc;
-      localObject = ((e)localObject).jpy.roN;
-      if (parama.icg.contains(localObject))
+      parama = this.IVz;
+      localObject = ((e)localObject).jPN.sxG;
+      if (parama.iCn.contains(localObject))
       {
         AppMethodBeat.o(39249);
         return true;
@@ -166,17 +166,17 @@ public class MMCreateChatroomUI
     return false;
   }
   
-  public final boolean aHt()
+  public final boolean aOi()
   {
     return false;
   }
   
-  public final boolean aHu()
+  public final boolean aOj()
   {
     return false;
   }
   
-  public final String aHv()
+  public final String aOk()
   {
     AppMethodBeat.i(39245);
     String str = getString(2131763009);
@@ -184,24 +184,24 @@ public class MMCreateChatroomUI
     return str;
   }
   
-  public final q aHw()
+  public final q aOl()
   {
     AppMethodBeat.i(39246);
-    if (this.Hvc == null) {
-      this.Hvc = new a(this, this.HuS, this.scene);
+    if (this.IVz == null) {
+      this.IVz = new a(this, this.IVp, this.scene);
     }
-    a locala = this.Hvc;
+    a locala = this.IVz;
     AppMethodBeat.o(39246);
     return locala;
   }
   
-  public final o aHx()
+  public final o aOm()
   {
     AppMethodBeat.i(39247);
-    if (this.Hvd == null) {
-      this.Hvd = new b(this, this.scene);
+    if (this.IVA == null) {
+      this.IVA = new b(this, this.scene);
     }
-    b localb = this.Hvd;
+    b localb = this.IVA;
     AppMethodBeat.o(39247);
     return localb;
   }
@@ -212,23 +212,23 @@ public class MMCreateChatroomUI
     if ((parama instanceof e))
     {
       Object localObject = (e)parama;
-      a locala = this.Hvc;
-      localObject = ((e)localObject).jpy.roN;
+      a locala = this.IVz;
+      localObject = ((e)localObject).jPN.sxG;
       int j = parama.position;
-      if (locala.icg.contains(localObject))
+      if (locala.iCn.contains(localObject))
       {
-        int i = locala.HuU.size() - 1;
+        int i = locala.IVr.size() - 1;
         if (i >= 0)
         {
-          parama = (a.a)locala.HuU.get(i);
-          if (j < parama.rqs) {}
+          parama = (a.a)locala.IVr.get(i);
+          if (j < parama.szm) {}
         }
         for (;;)
         {
           if (parama == null) {
             break label129;
           }
-          if (((String)localObject).equals(parama.HuX)) {
+          if (((String)localObject).equals(parama.IVu)) {
             break label137;
           }
           AppMethodBeat.o(39248);
@@ -249,7 +249,7 @@ public class MMCreateChatroomUI
     return false;
   }
   
-  public final boolean fbI()
+  public final boolean frz()
   {
     return true;
   }
@@ -258,22 +258,22 @@ public class MMCreateChatroomUI
   {
     AppMethodBeat.i(39242);
     super.initView();
-    a locala = this.Hvc;
-    Iterator localIterator = locala.HuS.iterator();
+    a locala = this.IVz;
+    Iterator localIterator = locala.IVp.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
       j localj = new j();
       localj.handler = locala.handler;
-      localj.rpO = locala.uzW;
+      localj.syI = locala.vIP;
       localj.query = ((String)localObject);
-      localj.rpN = com.tencent.mm.plugin.fts.a.c.b.rqn;
-      localj.rpJ = new int[] { 131072 };
-      localj.rpM.add("filehelper");
-      localj.rpM.add(u.aqG());
+      localj.syH = com.tencent.mm.plugin.fts.a.c.b.szh;
+      localj.syD = new int[] { 131072 };
+      localj.syG.add("filehelper");
+      localj.syG.add(u.axw());
       localObject = ((com.tencent.mm.plugin.fts.a.n)g.ad(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
-      locala.HuT = new ArrayList();
-      locala.HuT.add(localObject);
+      locala.IVq = new ArrayList();
+      locala.IVq.add(localObject);
     }
     addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
     {
@@ -287,24 +287,24 @@ public class MMCreateChatroomUI
           if (MMCreateChatroomUI.c(MMCreateChatroomUI.this) == 3)
           {
             MMCreateChatroomUI.d(MMCreateChatroomUI.this);
-            com.tencent.mm.plugin.fts.ui.k.lB(true);
+            com.tencent.mm.plugin.fts.ui.k.mt(true);
           }
         }
-        ad.i("MicroMsg.MMCreateChatroomUI", "Create the chatroom");
+        ac.i("MicroMsg.MMCreateChatroomUI", "Create the chatroom");
         AppMethodBeat.o(39237);
         return true;
       }
-    }, null, r.b.FOB);
-    VV();
+    }, null, s.b.Hom);
+    WT();
     AppMethodBeat.o(39242);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(39244);
-    this.Hvc.finish();
-    if ((!this.Hve) && (this.scene == 3)) {
-      com.tencent.mm.plugin.fts.ui.k.lB(false);
+    this.IVz.finish();
+    if ((!this.IVB) && (this.scene == 3)) {
+      com.tencent.mm.plugin.fts.ui.k.mt(false);
     }
     super.onDestroy();
     AppMethodBeat.o(39244);
@@ -316,39 +316,39 @@ public class MMCreateChatroomUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void pT(int paramInt)
+  public final void qG(int paramInt)
   {
     AppMethodBeat.i(39252);
-    a locala = this.Hvc;
-    com.tencent.mm.plugin.fts.a.a.k localk = this.Hvd.rpE;
-    Object localObject = this.Hvd.query;
-    if ((localk.rpQ.size() != 1) || (!((m)localk.rpQ.get(0)).roN.equals("no_result​")))
+    a locala = this.IVz;
+    com.tencent.mm.plugin.fts.a.a.k localk = this.IVA.syy;
+    Object localObject = this.IVA.query;
+    if ((localk.syK.size() != 1) || (!((m)localk.syK.get(0)).sxG.equals("no_result​")))
     {
       a.a locala1 = new a.a(locala, (byte)0);
-      locala1.rpQ = localk.rpQ;
-      locala1.roS = localk.roS;
+      locala1.syK = localk.syK;
+      locala1.sxM = localk.sxM;
       locala1.query = ((String)localObject);
-      locala.HuU.add(locala1);
-      int i = paramInt - locala.GVS.getContentLV().getHeaderViewsCount();
+      locala.IVr.add(locala1);
+      int i = paramInt - locala.Iwg.getContentLV().getHeaderViewsCount();
       if (i >= 3)
       {
-        localObject = (m)localk.rpQ.remove(i);
-        localk.rpQ.add(0, localObject);
-        paramInt = locala.GVS.getContentLV().getHeaderViewsCount();
+        localObject = (m)localk.syK.remove(i);
+        localk.syK.add(0, localObject);
+        paramInt = locala.Iwg.getContentLV().getHeaderViewsCount();
       }
-      locala.fei();
-      i = locala1.rqs;
-      locala.GVS.getContentLV().post(new a.2(locala, i + paramInt + 1));
+      locala.fud();
+      i = locala1.szm;
+      locala.Iwg.getContentLV().post(new a.2(locala, i + paramInt + 1));
     }
-    fbG();
-    fbH();
+    frx();
+    fry();
     hideVKB();
     AppMethodBeat.o(39252);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.MMCreateChatroomUI
  * JD-Core Version:    0.7.0.1
  */

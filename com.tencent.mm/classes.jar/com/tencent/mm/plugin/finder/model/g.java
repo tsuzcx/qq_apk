@@ -1,36 +1,40 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.finder.feed.model.internal.h;
+import com.tencent.mm.view.recyclerview.d.b;
+import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"value", "Landroid/text/SpannableString;", "contentSpan", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getContentSpan", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;)Landroid/text/SpannableString;", "setContentSpan", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;Landroid/text/SpannableString;)V", "displayNameSpan", "getDisplayNameSpan", "setDisplayNameSpan", "replyDisplayNameSpan", "getReplyDisplayNameSpan", "setReplyDisplayNameSpan", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderSearchData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "()V", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class g
+  extends d.b
+  implements h
 {
-  public static final SpannableString b(FinderCommentInfo paramFinderCommentInfo)
+  public final int a(h paramh)
   {
-    AppMethodBeat.i(166379);
-    d.g.b.k.h(paramFinderCommentInfo, "$this$contentSpan");
-    Object localObject1 = f.qDu;
-    Object localObject2 = (SpannableString)f.cmX().get(paramFinderCommentInfo.content);
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      com.tencent.d.f.h.eo("{displayNameSpan} username=" + paramFinderCommentInfo.username + " get SpannableString without cache!");
-      localObject1 = com.tencent.mm.pluginsdk.ui.span.k.c(aj.getContext(), (CharSequence)paramFinderCommentInfo.content);
-      localObject2 = f.qDu;
-      f.cmX().put(paramFinderCommentInfo.content, localObject1);
-    }
-    d.g.b.k.g(localObject1, "value");
-    AppMethodBeat.o(166379);
-    return localObject1;
+    AppMethodBeat.i(166373);
+    k.h(paramh, "obj");
+    AppMethodBeat.o(166373);
+    return 2147483647;
+  }
+  
+  public final int bTF()
+  {
+    return -3;
+  }
+  
+  public final long lx()
+  {
+    AppMethodBeat.i(210188);
+    long l = hashCode();
+    AppMethodBeat.o(210188);
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.g
  * JD-Core Version:    0.7.0.1
  */

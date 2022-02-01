@@ -7,20 +7,20 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.c;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.ry.a;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.av.c;
+import com.tencent.mm.av.o;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sh.a;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.ipcinvoker.p;
 import com.tencent.mm.model.w;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.l;
@@ -36,8 +36,8 @@ public class bg
 {
   public final void a(final Context paramContext, final String paramString, final bn.a parama)
   {
-    AppMethodBeat.i(187883);
-    p.y(new Runnable()
+    AppMethodBeat.i(188309);
+    p.z(new Runnable()
     {
       /* Error */
       public final void run()
@@ -48,7 +48,7 @@ public class bg
         //   5: new 53	org/json/JSONObject
         //   8: dup
         //   9: aload_0
-        //   10: getfield 31	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1:jvL	Ljava/lang/String;
+        //   10: getfield 31	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1:jWh	Ljava/lang/String;
         //   13: invokespecial 56	org/json/JSONObject:<init>	(Ljava/lang/String;)V
         //   16: astore_3
         //   17: aload_3
@@ -79,7 +79,7 @@ public class bg
         //   64: dup
         //   65: aload_0
         //   66: invokespecial 84	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1$1:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bg$1;)V
-        //   69: putfield 88	com/tencent/mm/ui/widget/a/e:HrX	Lcom/tencent/mm/ui/base/n$c;
+        //   69: putfield 88	com/tencent/mm/ui/widget/a/e:ISu	Lcom/tencent/mm/ui/base/n$c;
         //   72: aload_2
         //   73: new 15	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1$2
         //   76: dup
@@ -88,16 +88,16 @@ public class bg
         //   79: aload_1
         //   80: aload_2
         //   81: invokespecial 91	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1$2:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bg$1;Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/mm/ui/widget/a/e;)V
-        //   84: putfield 95	com/tencent/mm/ui/widget/a/e:HrY	Lcom/tencent/mm/ui/base/n$d;
+        //   84: putfield 95	com/tencent/mm/ui/widget/a/e:ISv	Lcom/tencent/mm/ui/base/n$d;
         //   87: aload_2
         //   88: new 17	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1$3
         //   91: dup
         //   92: aload_0
         //   93: aload_1
         //   94: invokespecial 98	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1$3:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bg$1;Ljava/lang/String;)V
-        //   97: putfield 102	com/tencent/mm/ui/widget/a/e:GHn	Lcom/tencent/mm/ui/widget/a/e$b;
+        //   97: putfield 102	com/tencent/mm/ui/widget/a/e:Ihj	Lcom/tencent/mm/ui/widget/a/e$b;
         //   100: aload_2
-        //   101: invokevirtual 105	com/tencent/mm/ui/widget/a/e:csG	()V
+        //   101: invokevirtual 105	com/tencent/mm/ui/widget/a/e:cED	()V
         //   104: ldc 45
         //   106: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   109: return
@@ -107,9 +107,9 @@ public class bg
         //   114: ldc 64
         //   116: iconst_0
         //   117: anewarray 4	java/lang/Object
-        //   120: invokestatic 116	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   120: invokestatic 116	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   123: aload_0
-        //   124: getfield 33	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1:ohm	Lcom/tencent/mm/plugin/webview/luggage/jsapi/bn$a;
+        //   124: getfield 33	com/tencent/mm/plugin/webview/luggage/jsapi/bg$1:oKM	Lcom/tencent/mm/plugin/webview/luggage/jsapi/bn$a;
         //   127: aconst_null
         //   128: aconst_null
         //   129: invokevirtual 122	com/tencent/mm/plugin/webview/luggage/jsapi/bn$a:f	(Ljava/lang/String;Lorg/json/JSONObject;)V
@@ -136,12 +136,12 @@ public class bg
         //   35	46	138	java/io/UnsupportedEncodingException
       }
     });
-    AppMethodBeat.o(187883);
+    AppMethodBeat.o(188309);
   }
   
   public final void b(com.tencent.luggage.d.a<f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

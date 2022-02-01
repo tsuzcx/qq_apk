@@ -6,19 +6,19 @@ import d.a.j;
 import d.l;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/JSAPIsForAppBrandLauncherUI;", "", "()V", "collectAPIs", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/launcher/JSAPIsForAppBrandLauncherUI;", "", "()V", "collectAPIs", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"})
 public final class d
 {
-  public static final d kmo;
+  public static final d kNG;
   
   static
   {
     AppMethodBeat.i(50723);
-    kmo = new d();
+    kNG = new d();
     AppMethodBeat.o(50723);
   }
   
-  public static final List<m> bcb()
+  public static final List<m> biW()
   {
     AppMethodBeat.i(50722);
     List localList = j.listOf(new com.tencent.mm.plugin.appbrand.jsapi.a[] { (com.tencent.mm.plugin.appbrand.jsapi.a)new API_openWeAppSearch(), (com.tencent.mm.plugin.appbrand.jsapi.a)new a(), (com.tencent.mm.plugin.appbrand.jsapi.a)new c(), (com.tencent.mm.plugin.appbrand.jsapi.a)new b() });

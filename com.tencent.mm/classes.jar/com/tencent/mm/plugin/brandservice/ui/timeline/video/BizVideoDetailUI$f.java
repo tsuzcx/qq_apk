@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "posInfo", "", "webviewId", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "posInfo", "", "webviewId", "", "invoke"})
 final class BizVideoDetailUI$f
   extends d.g.b.l
   implements m<String, Integer, y>
 {
-  public static final f njJ;
+  public static final f nMC;
   
   static
   {
     AppMethodBeat.i(7089);
-    njJ = new f();
+    nMC = new f();
     AppMethodBeat.o(7089);
   }
   

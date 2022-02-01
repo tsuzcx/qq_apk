@@ -2,8 +2,8 @@ package com.tencent.mm.sdk.e;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,10 +28,10 @@ public abstract class j<T extends c>
     this.db = parame;
     this.dbInfo = parama;
     parama = this.dbInfo;
-    if (bt.isNullOrNil(this.dbInfo.EYu)) {}
-    for (parame = "rowid";; parame = this.dbInfo.EYu)
+    if (bs.isNullOrNil(this.dbInfo.GvG)) {}
+    for (parame = "rowid";; parame = this.dbInfo.GvG)
     {
-      parama.EYu = parame;
+      parama.GvG = parame;
       this.table = paramString;
       updateColumnSQLs(paramArrayOfString);
       return;
@@ -40,12 +40,12 @@ public abstract class j<T extends c>
   
   private void LOGD(String paramString)
   {
-    ad.d("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
+    ac.d("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
   }
   
   private void LOGE(String paramString)
   {
-    ad.e("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
+    ac.e("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
   }
   
   private static StringBuilder checkKeysWithValues(ContentValues paramContentValues, String... paramVarArgs)
@@ -68,7 +68,7 @@ public abstract class j<T extends c>
   
   private boolean checkOld(ContentValues paramContentValues)
   {
-    Cursor localCursor = this.db.query(getTableName(), this.dbInfo.columns, this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(paramContentValues.getAsString(this.dbInfo.EYu)) }, null, null, null);
+    Cursor localCursor = this.db.query(getTableName(), this.dbInfo.columns, this.dbInfo.GvG + " = ?", new String[] { bs.nullAsNil(paramContentValues.getAsString(this.dbInfo.GvG)) }, null, null, null);
     boolean bool = c.checkIOEqual(paramContentValues, localCursor);
     localCursor.close();
     return bool;
@@ -91,7 +91,7 @@ public abstract class j<T extends c>
       if (parame == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.e("MicroMsg.SDK.MAutoStorage", "dk getUpdateSQLs db==null :%b  table:%s", new Object[] { Boolean.valueOf(bool), paramString });
+        ac.e("MicroMsg.SDK.MAutoStorage", "dk getUpdateSQLs db==null :%b  table:%s", new Object[] { Boolean.valueOf(bool), paramString });
         return localArrayList;
       }
     }
@@ -106,7 +106,7 @@ public abstract class j<T extends c>
       parame.put(((Cursor)localObject1).getString(i), ((Cursor)localObject1).getString(j));
     }
     ((Cursor)localObject1).close();
-    parama = parama.EYv.entrySet().iterator();
+    parama = parama.GvH.entrySet().iterator();
     while (parama.hasNext())
     {
       Object localObject2 = (Map.Entry)parama.next();
@@ -122,7 +122,7 @@ public abstract class j<T extends c>
         }
         else if (!((String)localObject1).toLowerCase().startsWith(str.toLowerCase()))
         {
-          ad.e("MicroMsg.SDK.MAutoStorage", "conflicting alter table on column: " + (String)localObject2 + ", " + str + "<o-n>" + (String)localObject1);
+          ac.e("MicroMsg.SDK.MAutoStorage", "conflicting alter table on column: " + (String)localObject2 + ", " + str + "<o-n>" + (String)localObject1);
           parame.remove(localObject2);
         }
       }
@@ -138,7 +138,7 @@ public abstract class j<T extends c>
     while (i < localList.size())
     {
       if (!this.db.execSQL(this.table, (String)localList.get(i))) {
-        ad.i("MicroMsg.SDK.MAutoStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { this.table, localList.get(i) });
+        ac.i("MicroMsg.SDK.MAutoStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { this.table, localList.get(i) });
       }
       i += 1;
     }
@@ -159,7 +159,7 @@ public abstract class j<T extends c>
     int i = 0;
     while (i < arrayOfString.length)
     {
-      arrayOfString[i] = bt.nullAsNil(paramContentValues.getAsString(paramArrayOfString[i]));
+      arrayOfString[i] = bs.nullAsNil(paramContentValues.getAsString(paramArrayOfString[i]));
       i += 1;
     }
     return arrayOfString;
@@ -187,7 +187,7 @@ public abstract class j<T extends c>
           break;
         }
         LOGD("delete with primary key");
-        if (this.db.delete(getTableName(), this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(paramT.getAsString(this.dbInfo.EYu)) }) > 0) {
+        if (this.db.delete(getTableName(), this.dbInfo.GvG + " = ?", new String[] { bs.nullAsNil(paramT.getAsString(this.dbInfo.GvG)) }) > 0) {
           bool1 = true;
         }
         bool2 = bool1;
@@ -204,7 +204,7 @@ public abstract class j<T extends c>
     }
     if ((this.db.delete(getTableName(), localStringBuilder.toString(), valuesFromKeys(paramVarArgs, paramT)) > 0) && (paramBoolean))
     {
-      doNotify(this.dbInfo.EYu);
+      doNotify(this.dbInfo.GvG);
       return true;
     }
     LOGE("delete failed");
@@ -269,7 +269,7 @@ public abstract class j<T extends c>
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
       LOGD("get with primary key");
-      paramVarArgs = this.db.a(getTableName(), this.dbInfo.columns, this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(localContentValues.getAsString(this.dbInfo.EYu)) }, null, null, null, 2);
+      paramVarArgs = this.db.a(getTableName(), this.dbInfo.columns, this.dbInfo.GvG + " = ?", new String[] { bs.nullAsNil(localContentValues.getAsString(this.dbInfo.GvG)) }, null, null, null, 2);
       if (paramVarArgs.moveToFirst())
       {
         paramT.convertFrom(paramVarArgs);
@@ -317,7 +317,7 @@ public abstract class j<T extends c>
   
   public String getPrimaryKey()
   {
-    return this.dbInfo.EYu;
+    return this.dbInfo.GvG;
   }
   
   public String getTableName()
@@ -338,7 +338,7 @@ public abstract class j<T extends c>
       LOGE("insert failed, value.size <= 0");
       return false;
     }
-    paramT.systemRowid = this.db.insert(getTableName(), this.dbInfo.EYu, localContentValues);
+    paramT.systemRowid = this.db.insert(getTableName(), this.dbInfo.GvG, localContentValues);
     if (paramT.systemRowid <= 0L)
     {
       LOGE("insert failed");
@@ -346,7 +346,7 @@ public abstract class j<T extends c>
     }
     localContentValues.put("rowid", Long.valueOf(paramT.systemRowid));
     if (paramBoolean) {
-      doNotify(localContentValues.getAsString(this.dbInfo.EYu));
+      doNotify(localContentValues.getAsString(this.dbInfo.GvG));
     }
     return true;
   }
@@ -367,7 +367,7 @@ public abstract class j<T extends c>
     ContentValues localContentValues;
     int j;
     int k;
-    if (!bt.isNullOrNil(this.dbInfo.EYu))
+    if (!bs.isNullOrNil(this.dbInfo.GvG))
     {
       bool1 = true;
       Assert.assertTrue("replace primaryKey == null", bool1);
@@ -375,7 +375,7 @@ public abstract class j<T extends c>
       if (localContentValues != null)
       {
         j = localContentValues.size();
-        k = paramT.getDBInfo().EYt.length;
+        k = paramT.getDBInfo().GvF.length;
         if (!localContentValues.containsKey("rowid")) {
           break label91;
         }
@@ -399,12 +399,12 @@ public abstract class j<T extends c>
       return true;
     }
     boolean bool1 = bool2;
-    if (this.db.replace(getTableName(), this.dbInfo.EYu, localContentValues) > 0L) {
+    if (this.db.replace(getTableName(), this.dbInfo.GvG, localContentValues) > 0L) {
       bool1 = true;
     }
     if ((bool1) && (paramBoolean))
     {
-      doNotify(this.dbInfo.EYu);
+      doNotify(this.dbInfo.GvG);
       return true;
     }
     if (!bool1) {
@@ -479,7 +479,7 @@ public abstract class j<T extends c>
           LOGD("no need replace , fields no change");
           return true;
         }
-        if (this.db.update(getTableName(), paramT, this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(paramT.getAsString(this.dbInfo.EYu)) }) > 0) {
+        if (this.db.update(getTableName(), paramT, this.dbInfo.GvG + " = ?", new String[] { bs.nullAsNil(paramT.getAsString(this.dbInfo.GvG)) }) > 0) {
           bool1 = true;
         }
         bool2 = bool1;
@@ -497,7 +497,7 @@ public abstract class j<T extends c>
     if (this.db.update(getTableName(), paramT, localStringBuilder.toString(), valuesFromKeys(paramVarArgs, paramT)) > 0)
     {
       if (paramBoolean) {
-        doNotify(paramT.getAsString(this.dbInfo.EYu));
+        doNotify(paramT.getAsString(this.dbInfo.GvG));
       }
       return true;
     }

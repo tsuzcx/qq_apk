@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class LuckyMoneyAutoScrollView
   extends RelativeLayout
@@ -21,22 +21,22 @@ public class LuckyMoneyAutoScrollView
   private View contentView;
   boolean hasCallBack;
   private Context mContext;
-  private RelativeLayout tjH;
-  private RelativeLayout tjI;
-  private RelativeLayout tjJ;
-  LuckyMoneyAutoScrollItem tjK;
-  LuckyMoneyAutoScrollItem tjL;
-  LuckyMoneyAutoScrollItem tjM;
-  private RelativeLayout tjN;
-  private RelativeLayout tjO;
-  private RelativeLayout tjP;
-  ImageView tjQ;
-  ImageView tjR;
-  ImageView tjS;
-  private String tjT;
-  private String tjU;
-  private String tjV;
-  private a tjW;
+  private RelativeLayout usa;
+  private RelativeLayout usb;
+  private RelativeLayout usc;
+  LuckyMoneyAutoScrollItem usd;
+  LuckyMoneyAutoScrollItem use;
+  LuckyMoneyAutoScrollItem usf;
+  private RelativeLayout usg;
+  private RelativeLayout ush;
+  private RelativeLayout usi;
+  ImageView usj;
+  ImageView usk;
+  ImageView usl;
+  private String usm;
+  private String usn;
+  private String uso;
+  private a usp;
   
   public LuckyMoneyAutoScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,36 +47,36 @@ public class LuckyMoneyAutoScrollView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65434);
-    this.tjT = "0";
-    this.tjU = "0";
-    this.tjV = "0";
+    this.usm = "0";
+    this.usn = "0";
+    this.uso = "0";
     this.hasCallBack = false;
     this.mContext = paramContext;
     paramContext = LayoutInflater.from(this.mContext).inflate(2131494627, this);
     this.contentView = paramContext;
-    this.tjK = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(2131296656));
-    this.tjL = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(2131296657));
-    this.tjM = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(2131296658));
-    t.p(this.tjK, 2);
-    t.p(this.tjL, 2);
-    t.p(this.tjM, 2);
-    this.tjN = ((RelativeLayout)paramContext.findViewById(2131296659));
-    this.tjO = ((RelativeLayout)paramContext.findViewById(2131296660));
-    this.tjP = ((RelativeLayout)paramContext.findViewById(2131296661));
-    this.tjQ = ((ImageView)paramContext.findViewById(2131305736));
-    this.tjR = ((ImageView)paramContext.findViewById(2131305737));
-    this.tjS = ((ImageView)paramContext.findViewById(2131305738));
-    this.tjH = ((RelativeLayout)paramContext.findViewById(2131301160));
-    this.tjI = ((RelativeLayout)paramContext.findViewById(2131301161));
-    this.tjJ = ((RelativeLayout)paramContext.findViewById(2131301162));
+    this.usd = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(2131296656));
+    this.use = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(2131296657));
+    this.usf = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(2131296658));
+    t.p(this.usd, 2);
+    t.p(this.use, 2);
+    t.p(this.usf, 2);
+    this.usg = ((RelativeLayout)paramContext.findViewById(2131296659));
+    this.ush = ((RelativeLayout)paramContext.findViewById(2131296660));
+    this.usi = ((RelativeLayout)paramContext.findViewById(2131296661));
+    this.usj = ((ImageView)paramContext.findViewById(2131305736));
+    this.usk = ((ImageView)paramContext.findViewById(2131305737));
+    this.usl = ((ImageView)paramContext.findViewById(2131305738));
+    this.usa = ((RelativeLayout)paramContext.findViewById(2131301160));
+    this.usb = ((RelativeLayout)paramContext.findViewById(2131301161));
+    this.usc = ((RelativeLayout)paramContext.findViewById(2131301162));
     AppMethodBeat.o(65434);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(65436);
-    this.tjW = parama;
-    aq.f(new Runnable()
+    this.usp = parama;
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -84,22 +84,22 @@ public class LuckyMoneyAutoScrollView
         LuckyMoneyAutoScrollView.a(LuckyMoneyAutoScrollView.this).setVisibility(0);
         LuckyMoneyAutoScrollView.b(LuckyMoneyAutoScrollView.this).setVisibility(0);
         LuckyMoneyAutoScrollView.c(LuckyMoneyAutoScrollView.this).setVisibility(0);
-        LuckyMoneyAutoScrollView.d(LuckyMoneyAutoScrollView.this).cMi();
-        LuckyMoneyAutoScrollView.e(LuckyMoneyAutoScrollView.this).cMi();
-        LuckyMoneyAutoScrollView.f(LuckyMoneyAutoScrollView.this).cMi();
+        LuckyMoneyAutoScrollView.d(LuckyMoneyAutoScrollView.this).cZO();
+        LuckyMoneyAutoScrollView.e(LuckyMoneyAutoScrollView.this).cZO();
+        LuckyMoneyAutoScrollView.f(LuckyMoneyAutoScrollView.this).cZO();
         AppMethodBeat.o(65432);
       }
     });
     AppMethodBeat.o(65436);
   }
   
-  public final void bss()
+  public final void bzs()
   {
     AppMethodBeat.i(65438);
     if (!this.hasCallBack)
     {
       this.hasCallBack = true;
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -114,7 +114,7 @@ public class LuckyMoneyAutoScrollView
           LuckyMoneyAutoScrollView.h(LuckyMoneyAutoScrollView.this).setVisibility(0);
           LuckyMoneyAutoScrollView.i(LuckyMoneyAutoScrollView.this).setVisibility(0);
           if (LuckyMoneyAutoScrollView.j(LuckyMoneyAutoScrollView.this) != null) {
-            LuckyMoneyAutoScrollView.j(LuckyMoneyAutoScrollView.this).cMk();
+            LuckyMoneyAutoScrollView.j(LuckyMoneyAutoScrollView.this).cZQ();
           }
           AppMethodBeat.o(65433);
         }
@@ -123,19 +123,19 @@ public class LuckyMoneyAutoScrollView
     AppMethodBeat.o(65438);
   }
   
-  public final void cMj()
+  public final void cZP()
   {
     AppMethodBeat.i(65437);
-    this.tjK.setVisibility(8);
-    this.tjL.setVisibility(8);
-    this.tjM.setVisibility(8);
-    this.tjQ.setVisibility(0);
-    this.tjR.setVisibility(0);
-    this.tjS.setVisibility(0);
+    this.usd.setVisibility(8);
+    this.use.setVisibility(8);
+    this.usf.setVisibility(8);
+    this.usj.setVisibility(0);
+    this.usk.setVisibility(0);
+    this.usl.setVisibility(0);
     AppMethodBeat.o(65437);
   }
   
-  public final void fZ(int paramInt1, int paramInt2)
+  public final void gg(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(65439);
     if ((paramInt1 > 0) && (paramInt2 > 0))
@@ -144,22 +144,22 @@ public class LuckyMoneyAutoScrollView
       localLayoutParams.height = paramInt2;
       this.contentView.setLayoutParams(localLayoutParams);
       this.contentView.invalidate();
-      localLayoutParams = (LinearLayout.LayoutParams)this.tjH.getLayoutParams();
+      localLayoutParams = (LinearLayout.LayoutParams)this.usa.getLayoutParams();
       localLayoutParams.height = paramInt2;
       localLayoutParams.width = paramInt1;
-      this.tjH.setLayoutParams(localLayoutParams);
-      this.tjH.invalidate();
-      localLayoutParams = (LinearLayout.LayoutParams)this.tjI.getLayoutParams();
+      this.usa.setLayoutParams(localLayoutParams);
+      this.usa.invalidate();
+      localLayoutParams = (LinearLayout.LayoutParams)this.usb.getLayoutParams();
       localLayoutParams.height = paramInt2;
       localLayoutParams.width = paramInt1;
-      this.tjI.setLayoutParams(localLayoutParams);
-      this.tjI.invalidate();
-      localLayoutParams = (LinearLayout.LayoutParams)this.tjJ.getLayoutParams();
+      this.usb.setLayoutParams(localLayoutParams);
+      this.usb.invalidate();
+      localLayoutParams = (LinearLayout.LayoutParams)this.usc.getLayoutParams();
       localLayoutParams.height = paramInt2;
       localLayoutParams.width = paramInt1;
       localLayoutParams.leftMargin = 0;
-      this.tjJ.setLayoutParams(localLayoutParams);
-      this.tjJ.invalidate();
+      this.usc.setLayoutParams(localLayoutParams);
+      this.usc.invalidate();
     }
     AppMethodBeat.o(65439);
   }
@@ -167,29 +167,29 @@ public class LuckyMoneyAutoScrollView
   public void setFinalText(String paramString)
   {
     AppMethodBeat.i(65435);
-    ad.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: setting text: %s", new Object[] { paramString });
-    this.tjT = paramString.substring(0, 1);
-    this.tjU = paramString.substring(2, 3);
-    this.tjV = paramString.substring(3, 4);
-    this.tjK.setFinalNumber(bt.getInt(this.tjT, 0));
-    this.tjL.setFinalNumber(bt.getInt(this.tjU, 0));
-    this.tjM.setFinalNumber(bt.getInt(this.tjV, 0));
-    this.tjQ.setImageResource(((Integer)LuckyMoneyAutoScrollItem.tjB.get(bt.getInt(this.tjT, 0))).intValue());
-    this.tjR.setImageResource(((Integer)LuckyMoneyAutoScrollItem.tjB.get(bt.getInt(this.tjU, 0))).intValue());
-    this.tjS.setImageResource(((Integer)LuckyMoneyAutoScrollItem.tjB.get(bt.getInt(this.tjV, 0))).intValue());
-    this.tjQ.setVisibility(4);
-    this.tjR.setVisibility(4);
-    this.tjS.setVisibility(4);
-    this.tjK.setOnScrollEndListener(this);
-    this.tjL.setOnScrollEndListener(this);
-    this.tjM.setOnScrollEndListener(this);
-    ad.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: first: %s, second :%s, third: %s", new Object[] { this.tjT, this.tjU, this.tjV });
+    ac.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: setting text: %s", new Object[] { paramString });
+    this.usm = paramString.substring(0, 1);
+    this.usn = paramString.substring(2, 3);
+    this.uso = paramString.substring(3, 4);
+    this.usd.setFinalNumber(bs.getInt(this.usm, 0));
+    this.use.setFinalNumber(bs.getInt(this.usn, 0));
+    this.usf.setFinalNumber(bs.getInt(this.uso, 0));
+    this.usj.setImageResource(((Integer)LuckyMoneyAutoScrollItem.urU.get(bs.getInt(this.usm, 0))).intValue());
+    this.usk.setImageResource(((Integer)LuckyMoneyAutoScrollItem.urU.get(bs.getInt(this.usn, 0))).intValue());
+    this.usl.setImageResource(((Integer)LuckyMoneyAutoScrollItem.urU.get(bs.getInt(this.uso, 0))).intValue());
+    this.usj.setVisibility(4);
+    this.usk.setVisibility(4);
+    this.usl.setVisibility(4);
+    this.usd.setOnScrollEndListener(this);
+    this.use.setOnScrollEndListener(this);
+    this.usf.setOnScrollEndListener(this);
+    ac.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: first: %s, second :%s, third: %s", new Object[] { this.usm, this.usn, this.uso });
     AppMethodBeat.o(65435);
   }
   
   public static abstract interface a
   {
-    public abstract void cMk();
+    public abstract void cZQ();
   }
 }
 

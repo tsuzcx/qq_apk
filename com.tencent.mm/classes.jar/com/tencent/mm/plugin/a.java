@@ -7,22 +7,22 @@ import com.tencent.mm.modelstat.q;
 public final class a
   extends t
 {
-  private static a hYs;
+  private static a iyw;
   
   private a()
   {
     super(q.class);
   }
   
-  public static a aGU()
+  public static a aNI()
   {
     try
     {
       AppMethodBeat.i(151419);
-      if (hYs == null) {
-        hYs = new a();
+      if (iyw == null) {
+        iyw = new a();
       }
-      a locala = hYs;
+      a locala = iyw;
       AppMethodBeat.o(151419);
       return locala;
     }
@@ -31,7 +31,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.a
  * JD-Core Version:    0.7.0.1
  */

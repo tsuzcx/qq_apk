@@ -5,9 +5,9 @@ import android.view.View.OnClickListener;
 
 public abstract interface c
 {
-  public abstract void X(View paramView, int paramInt);
-  
   public abstract void Y(View paramView, int paramInt);
+  
+  public abstract void Z(View paramView, int paramInt);
   
   public abstract View a(int paramInt, View paramView, b paramb);
   

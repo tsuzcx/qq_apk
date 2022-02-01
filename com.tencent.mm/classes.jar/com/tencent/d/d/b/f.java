@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private static Boolean Irx;
-  private static final Object Iry;
+  private static Boolean JTh;
+  private static final Object JTi;
   
   static
   {
     AppMethodBeat.i(138374);
-    Irx = null;
-    Iry = new Object();
+    JTh = null;
+    JTi = new Object();
     AppMethodBeat.o(138374);
   }
   
   /* Error */
-  public static boolean fmh()
+  public static boolean fCy()
   {
     // Byte code:
     //   0: ldc 33
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 24	com/tencent/d/d/b/f:Iry	Ljava/lang/Object;
+    //   5: getstatic 24	com/tencent/d/d/b/f:JTi	Ljava/lang/Object;
     //   8: astore 4
     //   10: aload 4
     //   12: monitorenter
-    //   13: getstatic 19	com/tencent/d/d/b/f:Irx	Ljava/lang/Boolean;
+    //   13: getstatic 19	com/tencent/d/d/b/f:JTh	Ljava/lang/Boolean;
     //   16: ifnonnull +72 -> 88
     //   19: getstatic 39	android/os/Build$VERSION:SDK_INT	I
     //   22: bipush 17
@@ -61,8 +61,8 @@ public final class f
     //   80: getstatic 73	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
     //   83: astore_2
     //   84: aload_2
-    //   85: putstatic 19	com/tencent/d/d/b/f:Irx	Ljava/lang/Boolean;
-    //   88: getstatic 19	com/tencent/d/d/b/f:Irx	Ljava/lang/Boolean;
+    //   85: putstatic 19	com/tencent/d/d/b/f:JTh	Ljava/lang/Boolean;
+    //   88: getstatic 19	com/tencent/d/d/b/f:JTh	Ljava/lang/Boolean;
     //   91: invokevirtual 76	java/lang/Boolean:booleanValue	()Z
     //   94: istore_0
     //   95: aload 4
@@ -142,7 +142,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.b.f
  * JD-Core Version:    0.7.0.1
  */

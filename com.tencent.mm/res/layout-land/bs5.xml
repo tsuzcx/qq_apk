@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bsy" />
+    <include layout="@layout/bt5" />
+    <include layout="@layout/bsn" />
+    <include layout="@layout/bsz" />
+    <include layout="@layout/bs7" />
+    <include layout="@layout/bso" />
+    <include android:id="@id/hj2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c8" android:layout_alignParentBottom="true" android:layout_alignStart="@id/hp6" layout="@layout/bs6" />
+    <include android:id="@id/hia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cc" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true" layout="@layout/brs" />
+    <include android:id="@id/hmo" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/cc" android:layout_marginEnd="@dimen/c8" android:layout_toStartOf="@id/hia" layout="@layout/bsx" />
+    <include android:id="@id/hp6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/ci" android:layout_toStartOf="@id/hmo" android:layout_alignParentStart="true" layout="@layout/btb" />
+    <include android:id="@id/hjz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" android:layout_below="@id/hp6" android:layout_alignStart="@id/hp6" layout="@layout/bsc" />
+    <include android:id="@id/hmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" android:layout_below="@id/hjz" android:layout_alignStart="@id/hp6" layout="@layout/bsw" />
+    <include android:id="@id/ho2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c8" android:layout_alignParentBottom="true" android:layout_alignEnd="@id/hia" layout="@layout/bsj" />
+    <include android:id="@id/hjo" android:layout_width="fill_parent" android:layout_height="112.0dip" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:layout_above="@id/hj2" android:layout_below="@id/hmg" android:layout_marginEnd="82.0dip" android:layout_alignStart="@id/hp6" layout="@layout/bsb" />
+    <include layout="@layout/bsv" />
+    <include layout="@layout/bsr" />
+    <include layout="@layout/bt7" />
+    <include layout="@layout/bse" />
+    <include layout="@layout/brr" />
+    <include layout="@layout/bte" />
+    <include layout="@layout/bsg" />
+</RelativeLayout>

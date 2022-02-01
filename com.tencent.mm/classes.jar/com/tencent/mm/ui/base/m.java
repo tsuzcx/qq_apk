@@ -16,39 +16,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   implements MenuItem
 {
-  public boolean FYu;
-  private int FYv;
-  public int FYw;
-  private Drawable FYx;
-  public ContextMenu.ContextMenuInfo FYy;
-  private MenuItem.OnMenuItemClickListener FYz;
-  private int aaU;
-  private int abb;
-  public boolean dyl;
+  public boolean Hyj;
+  private int Hyk;
+  public int Hyl;
+  private Drawable Hym;
+  public ContextMenu.ContextMenuInfo Hyn;
+  private MenuItem.OnMenuItemClickListener Hyo;
+  private int abP;
+  private int abW;
+  public boolean dvX;
   private int iconId;
   private Intent intent;
-  public String jBp;
-  public boolean kRX;
+  public String kbL;
+  public boolean ltx;
   private Context mContext;
-  public CharSequence rvA;
+  public CharSequence sEs;
   private CharSequence title;
   
   public m(Context paramContext, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159237);
-    this.rvA = null;
-    this.kRX = false;
+    this.sEs = null;
+    this.ltx = false;
     this.mContext = paramContext;
-    this.abb = paramInt1;
-    this.aaU = paramInt2;
-    this.FYw = paramContext.getResources().getColor(2131099732);
+    this.abW = paramInt1;
+    this.abP = paramInt2;
+    this.Hyl = paramContext.getResources().getColor(2131099732);
     AppMethodBeat.o(159237);
   }
   
-  public final MenuItem D(Drawable paramDrawable)
+  public final MenuItem C(Drawable paramDrawable)
   {
-    this.FYx = paramDrawable;
-    this.FYw = 0;
+    this.Hym = paramDrawable;
+    this.Hyl = 0;
     return this;
   }
   
@@ -79,13 +79,13 @@ public final class m
   
   public final int getGroupId()
   {
-    return this.aaU;
+    return this.abP;
   }
   
   public final Drawable getIcon()
   {
     AppMethodBeat.i(159239);
-    if (this.FYx == null)
+    if (this.Hym == null)
     {
       if ((this.iconId != 0) && (this.mContext != null))
       {
@@ -96,7 +96,7 @@ public final class m
       AppMethodBeat.o(159239);
       return null;
     }
-    Drawable localDrawable = this.FYx;
+    Drawable localDrawable = this.Hym;
     AppMethodBeat.o(159239);
     return localDrawable;
   }
@@ -108,12 +108,12 @@ public final class m
   
   public final int getItemId()
   {
-    return this.abb;
+    return this.abW;
   }
   
   public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.FYy;
+    return this.Hyn;
   }
   
   public final char getNumericShortcut()
@@ -136,9 +136,9 @@ public final class m
     AppMethodBeat.i(159238);
     if (this.title == null)
     {
-      if ((this.FYv != 0) && (this.mContext != null))
+      if ((this.Hyk != 0) && (this.mContext != null))
       {
-        localObject = this.mContext.getString(this.FYv);
+        localObject = this.mContext.getString(this.Hyk);
         AppMethodBeat.o(159238);
         return localObject;
       }
@@ -185,19 +185,19 @@ public final class m
     return true;
   }
   
-  public final MenuItem jk(int paramInt1, int paramInt2)
+  public final MenuItem jx(int paramInt1, int paramInt2)
   {
     this.iconId = paramInt1;
-    this.FYw = paramInt2;
+    this.Hyl = paramInt2;
     return this;
   }
   
   public final boolean performClick()
   {
     AppMethodBeat.i(159240);
-    if (this.FYz != null)
+    if (this.Hyo != null)
     {
-      boolean bool = this.FYz.onMenuItemClick(this);
+      boolean bool = this.Hyo.onMenuItemClick(this);
       AppMethodBeat.o(159240);
       return bool;
     }
@@ -248,7 +248,7 @@ public final class m
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.FYx = paramDrawable;
+    this.Hym = paramDrawable;
     return this;
   }
   
@@ -270,7 +270,7 @@ public final class m
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.FYz = paramOnMenuItemClickListener;
+    this.Hyo = paramOnMenuItemClickListener;
     return this;
   }
   
@@ -288,7 +288,7 @@ public final class m
   
   public final MenuItem setTitle(int paramInt)
   {
-    this.FYv = paramInt;
+    this.Hyk = paramInt;
     return this;
   }
   

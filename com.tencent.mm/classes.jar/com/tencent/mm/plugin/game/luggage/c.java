@@ -5,37 +5,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.game.luggage.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import org.json.JSONArray;
 
 public final class c
   implements a
 {
-  private static void acc(String paramString)
+  private static void agU(String paramString)
   {
     AppMethodBeat.i(82990);
-    ad.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
+    ac.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(paramString);
-    com.tencent.mm.plugin.webview.b.b.ejJ().b("wx62d9035fd4fd2059", localJSONArray);
+    com.tencent.mm.plugin.webview.b.b.eze().b("wx62d9035fd4fd2059", localJSONArray);
     AppMethodBeat.o(82990);
   }
   
-  public final String aca(String paramString)
+  public final String agS(String paramString)
   {
     AppMethodBeat.i(82988);
-    com.tencent.mm.plugin.webview.b.b.ejJ();
-    paramString = com.tencent.mm.plugin.webview.b.b.avL(paramString);
+    com.tencent.mm.plugin.webview.b.b.eze();
+    paramString = com.tencent.mm.plugin.webview.b.b.aBd(paramString);
     AppMethodBeat.o(82988);
     return paramString;
   }
   
-  public final boolean acb(String paramString)
+  public final boolean agT(String paramString)
   {
     AppMethodBeat.i(82989);
-    if (aj.cbe()) {
-      acc(paramString);
+    if (ai.cin()) {
+      agU(paramString);
     }
     for (;;)
     {

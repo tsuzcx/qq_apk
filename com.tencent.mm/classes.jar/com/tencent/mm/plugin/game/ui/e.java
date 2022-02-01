@@ -16,8 +16,8 @@ import com.tencent.mm.plugin.game.d.dc;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e.a.a;
 import com.tencent.mm.plugin.game.widget.EllipsizingTextView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -28,7 +28,7 @@ public final class e
   private String mAppId;
   private Context mContext;
   private LayoutInflater mInflater;
-  private int rXI;
+  private int tfA;
   
   public e(Context paramContext)
   {
@@ -40,12 +40,12 @@ public final class e
     AppMethodBeat.o(41900);
   }
   
-  private void q(ViewGroup paramViewGroup)
+  private void r(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(41903);
     ImageView localImageView = (ImageView)this.mInflater.inflate(2131494293, paramViewGroup, false);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localImageView.getLayoutParams();
-    localMarginLayoutParams.leftMargin = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 20);
+    localMarginLayoutParams.leftMargin = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 20);
     localImageView.setLayoutParams(localMarginLayoutParams);
     paramViewGroup.addView(localImageView);
     AppMethodBeat.o(41903);
@@ -54,15 +54,15 @@ public final class e
   public final void a(ah paramah, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(41901);
-    if ((paramah == null) || (bt.gL(paramah.saZ)))
+    if ((paramah == null) || (bs.gY(paramah.tiT)))
     {
       setVisibility(8);
       AppMethodBeat.o(41901);
       return;
     }
     this.mAppId = paramString;
-    this.rXI = paramInt2;
-    paramah = paramah.saZ.iterator();
+    this.tfA = paramInt2;
+    paramah = paramah.tiT.iterator();
     while (paramah.hasNext())
     {
       com.tencent.mm.plugin.game.d.k localk = (com.tencent.mm.plugin.game.d.k)paramah.next();
@@ -74,32 +74,32 @@ public final class e
         TextView localTextView1;
         TextView localTextView2;
         Object localObject;
-        switch (localk.sab)
+        switch (localk.thU)
         {
         default: 
           if (paramInt1 == 2) {
-            com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1002, localk.rZY, paramString, paramInt2, com.tencent.mm.plugin.game.e.a.qh(localk.rZW));
+            com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1002, localk.thR, paramString, paramInt2, com.tencent.mm.plugin.game.e.a.tu(localk.thP));
           }
           break;
         case 1: 
-          if (localk.rZZ != null)
+          if (localk.thS != null)
           {
-            q(this);
+            r(this);
             localView = this.mInflater.inflate(2131494248, this, false);
             localTextView1 = (TextView)localView.findViewById(2131302568);
             localTextView2 = (TextView)localView.findViewById(2131302570);
             localObject = (EllipsizingTextView)localView.findViewById(2131302567);
             ((EllipsizingTextView)localObject).setMaxLines(2);
             ImageView localImageView = (ImageView)localView.findViewById(2131302569);
-            localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.rZX, localTextView1.getTextSize()));
-            localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.rZZ.Title, localTextView2.getTextSize()));
-            ((EllipsizingTextView)localObject).setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.rZZ.Desc, ((EllipsizingTextView)localObject).getTextSize()));
-            if (!bt.isNullOrNil(localk.rZZ.rZn)) {
-              com.tencent.mm.plugin.game.f.e.cEB().a(localImageView, localk.rZZ.rZn, locala.cEC());
+            localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.thQ, localTextView1.getTextSize()));
+            localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.thS.Title, localTextView2.getTextSize()));
+            ((EllipsizingTextView)localObject).setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.thS.Desc, ((EllipsizingTextView)localObject).getTextSize()));
+            if (!bs.isNullOrNil(localk.thS.thg)) {
+              com.tencent.mm.plugin.game.f.e.cRL().a(localImageView, localk.thS.thg, locala.cRM());
             }
             for (;;)
             {
-              localView.setTag(new a(localk.rZY, localk.rZZ.rZo, localk.rZW));
+              localView.setTag(new a(localk.thR, localk.thS.thh, localk.thP));
               localView.setOnClickListener(this);
               addView(localView);
               break;
@@ -108,33 +108,33 @@ public final class e
           }
           break;
         case 2: 
-          if (localk.saa != null)
+          if (localk.thT != null)
           {
-            q(this);
+            r(this);
             localView = this.mInflater.inflate(2131494249, this, false);
             localTextView1 = (TextView)localView.findViewById(2131304833);
             localTextView2 = (TextView)localView.findViewById(2131304835);
             localObject = (ImageView)localView.findViewById(2131304834);
-            localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.rZX, localTextView1.getTextSize()));
-            localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.saa.Title, localTextView2.getTextSize()));
-            if (!bt.isNullOrNil(localk.saa.rZn)) {
-              if (localk.saa.sdL == 1)
+            localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.thQ, localTextView1.getTextSize()));
+            localTextView2.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, localk.thT.Title, localTextView2.getTextSize()));
+            if (!bs.isNullOrNil(localk.thT.thg)) {
+              if (localk.thT.tlF == 1)
               {
-                locala.soD = true;
-                locala.gjx = 2131232501;
+                locala.tww = true;
+                locala.gKi = 2131232501;
                 label538:
-                com.tencent.mm.plugin.game.f.e.cEB().a((ImageView)localObject, localk.saa.rZn, locala.cEC());
+                com.tencent.mm.plugin.game.f.e.cRL().a((ImageView)localObject, localk.thT.thg, locala.cRM());
               }
             }
             for (;;)
             {
-              localView.setTag(new a(localk.rZY, localk.saa.rZo, localk.rZW));
+              localView.setTag(new a(localk.thR, localk.thT.thh, localk.thP));
               localView.setOnClickListener(this);
               addView(localView);
               break label112;
               break;
-              locala.gkG = true;
-              locala.gjx = 2131232500;
+              locala.gLt = true;
+              locala.gKi = 2131232500;
               break label538;
               ((ImageView)localObject).setVisibility(8);
             }
@@ -151,33 +151,33 @@ public final class e
     AppMethodBeat.i(41902);
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
-      ad.w("MicroMsg.GameBlockContentView", "getTag is null");
+      ac.w("MicroMsg.GameBlockContentView", "getTag is null");
       AppMethodBeat.o(41902);
       return;
     }
     paramView = (a)paramView.getTag();
-    if (bt.isNullOrNil(paramView.jumpUrl))
+    if (bs.isNullOrNil(paramView.jumpUrl))
     {
-      ad.w("MicroMsg.GameBlockContentView", "jumpUrl is null");
+      ac.w("MicroMsg.GameBlockContentView", "jumpUrl is null");
       AppMethodBeat.o(41902);
       return;
     }
-    int i = c.A(this.mContext, paramView.jumpUrl, "game_center_mygame_comm");
-    com.tencent.mm.game.report.e.a(this.mContext, 10, 1002, paramView.rYB, i, this.mAppId, this.rXI, com.tencent.mm.plugin.game.e.a.qh(paramView.rVj));
+    int i = c.z(this.mContext, paramView.jumpUrl, "game_center_mygame_comm");
+    com.tencent.mm.game.report.e.a(this.mContext, 10, 1002, paramView.tgt, i, this.mAppId, this.tfA, com.tencent.mm.plugin.game.e.a.tu(paramView.tdb));
     AppMethodBeat.o(41902);
   }
   
   static final class a
   {
     public String jumpUrl;
-    public String rVj;
-    public int rYB;
+    public String tdb;
+    public int tgt;
     
     public a(int paramInt, String paramString1, String paramString2)
     {
-      this.rYB = paramInt;
+      this.tgt = paramInt;
       this.jumpUrl = paramString1;
-      this.rVj = paramString2;
+      this.tdb = paramString2;
     }
   }
 }

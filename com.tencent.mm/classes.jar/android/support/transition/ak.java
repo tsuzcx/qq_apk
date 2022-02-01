@@ -5,7 +5,7 @@ import android.view.View;
 
 class ak
 {
-  private float[] Ba;
+  private float[] BY;
   
   public float O(View paramView)
   {
@@ -87,12 +87,12 @@ class ak
       paramView.setRotation(0.0F);
       return;
     }
-    float[] arrayOfFloat2 = this.Ba;
+    float[] arrayOfFloat2 = this.BY;
     float[] arrayOfFloat1 = arrayOfFloat2;
     if (arrayOfFloat2 == null)
     {
       arrayOfFloat1 = new float[9];
-      this.Ba = arrayOfFloat1;
+      this.BY = arrayOfFloat1;
     }
     paramMatrix.getValues(arrayOfFloat1);
     float f1 = arrayOfFloat1[3];
@@ -130,7 +130,7 @@ class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.p;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.List;
@@ -17,45 +17,45 @@ import org.xwalk.core.Log;
 public final class a
   extends m
 {
-  private int zXe;
-  public Orders zXf;
+  private int Bpy;
+  public Orders Bpz;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, String paramString7)
   {
     AppMethodBeat.i(69979);
     Log.i("MicroMsg.NetSceneGetPaidOrderDetail", "do NetSceneGetPaidOrderDetail");
-    this.zXe = paramInt;
+    this.Bpy = paramInt;
     HashMap localHashMap = new HashMap();
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       localHashMap.put("appId", paramString1);
-      if (!bt.isNullOrNil(paramString2)) {
+      if (!bs.isNullOrNil(paramString2)) {
         break label203;
       }
       label56:
       localHashMap.put("timeStamp", paramString2);
-      if (!bt.isNullOrNil(paramString3)) {
+      if (!bs.isNullOrNil(paramString3)) {
         break label211;
       }
       label74:
       localHashMap.put("nonceStr", paramString3);
-      if (!bt.isNullOrNil(paramString4)) {
+      if (!bs.isNullOrNil(paramString4)) {
         break label219;
       }
       label93:
       localHashMap.put("package", paramString4);
-      if (!bt.isNullOrNil(paramString5)) {
+      if (!bs.isNullOrNil(paramString5)) {
         break label229;
       }
       label113:
       localHashMap.put("reqKey", paramString5);
       localHashMap.put("payScene", p.encode(String.valueOf(paramInt)));
-      if (!bt.isNullOrNil(paramString6)) {
+      if (!bs.isNullOrNil(paramString6)) {
         break label239;
       }
       label151:
       localHashMap.put("signType", paramString6);
-      if (!bt.isNullOrNil(paramString7)) {
+      if (!bs.isNullOrNil(paramString7)) {
         break label249;
       }
     }
@@ -87,11 +87,11 @@ public final class a
     }
   }
   
-  private Orders aP(JSONObject paramJSONObject)
+  private Orders aQ(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69981);
-    if (this.zXf == null) {
-      this.zXf = new Orders();
+    if (this.Bpz == null) {
+      this.Bpz = new Orders();
     }
     try
     {
@@ -101,19 +101,19 @@ public final class a
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         Orders.Commodity localCommodity = new Orders.Commodity();
-        localCommodity.dcF = localJSONObject.getString("transaction_id");
-        localCommodity.uoe = localJSONObject.optString("sp_name");
-        if (bt.isNullOrNil(this.zXf.uop)) {
-          this.zXf.uop = localJSONObject.optString("fee_type");
+        localCommodity.dad = localJSONObject.getString("transaction_id");
+        localCommodity.vxa = localJSONObject.optString("sp_name");
+        if (bs.isNullOrNil(this.Bpz.vxl)) {
+          this.Bpz.vxl = localJSONObject.optString("fee_type");
         }
-        this.zXf.Afx.add(localCommodity);
+        this.Bpz.BxR.add(localCommodity);
         i += 1;
       }
       return paramJSONObject;
     }
     catch (JSONException paramJSONObject)
     {
-      paramJSONObject = this.zXf;
+      paramJSONObject = this.Bpz;
       AppMethodBeat.o(69981);
     }
   }
@@ -121,7 +121,7 @@ public final class a
   public final int getFuncId()
   {
     int i = 2570;
-    if (this.zXe == 2) {
+    if (this.Bpy == 2) {
       i = 2516;
     }
     return i;
@@ -130,7 +130,7 @@ public final class a
   public final int getTenpayCgicmd()
   {
     int i = 2570;
-    if (this.zXe == 2) {
+    if (this.Bpy == 2) {
       i = 2516;
     }
     return i;
@@ -139,7 +139,7 @@ public final class a
   public final String getUri()
   {
     String str = "/cgi-bin/mmpay-bin/tenpay/getpaidorderdetail";
-    if (this.zXe == 2) {
+    if (this.Bpy == 2) {
       str = "/cgi-bin/mmpay-bin/tenpay/offlinegetpaidorderdetail";
     }
     return str;
@@ -151,8 +151,8 @@ public final class a
     Log.i("MicroMsg.NetSceneGetPaidOrderDetail", "errCode: " + paramInt + " errMsg: " + paramString);
     if ((paramJSONObject != null) && (isPayEnd()))
     {
-      this.zXf = aP(paramJSONObject);
-      this.zXf = Orders.a(paramJSONObject, this.zXf);
+      this.Bpz = aQ(paramJSONObject);
+      this.Bpz = Orders.a(paramJSONObject, this.Bpz);
     }
     AppMethodBeat.o(69980);
   }

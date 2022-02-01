@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public final class q
 {
-  public int AeN;
-  public int AeO;
-  public int AeP;
-  public String AeQ;
-  public String AeR;
-  public String AeS;
-  public String AeT;
+  public int Bxh;
+  public int Bxi;
+  public int Bxj;
+  public String Bxk;
+  public String Bxl;
+  public String Bxm;
+  public String Bxn;
 }
 
 

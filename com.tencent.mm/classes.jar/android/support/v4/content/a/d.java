@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.Shader.TileMode;
-import android.support.a.a.a;
+import android.support.b.a.a;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,31 +63,31 @@ final class d
   
   static final class a
   {
-    final float[] GM;
+    final float[] HJ;
     final int[] mColors;
     
     a(int paramInt1, int paramInt2)
     {
       this.mColors = new int[] { paramInt1, paramInt2 };
-      this.GM = new float[] { 0.0F, 1.0F };
+      this.HJ = new float[] { 0.0F, 1.0F };
     }
     
     a(int paramInt1, int paramInt2, int paramInt3)
     {
       this.mColors = new int[] { paramInt1, paramInt2, paramInt3 };
-      this.GM = new float[] { 0.0F, 0.5F, 1.0F };
+      this.HJ = new float[] { 0.0F, 0.5F, 1.0F };
     }
     
     a(List<Integer> paramList, List<Float> paramList1)
     {
       int j = paramList.size();
       this.mColors = new int[j];
-      this.GM = new float[j];
+      this.HJ = new float[j];
       int i = 0;
       while (i < j)
       {
         this.mColors[i] = ((Integer)paramList.get(i)).intValue();
-        this.GM[i] = ((Float)paramList1.get(i)).floatValue();
+        this.HJ[i] = ((Float)paramList1.get(i)).floatValue();
         i += 1;
       }
     }

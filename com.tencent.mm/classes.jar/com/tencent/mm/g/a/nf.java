@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nf
   extends b
 {
-  public a dsk;
+  public a dpN;
   
   public nf()
   {
@@ -15,22 +15,22 @@ public final class nf
   
   private nf(byte paramByte)
   {
-    AppMethodBeat.i(121051);
-    this.dsk = new a();
-    this.ESR = false;
+    AppMethodBeat.i(183832);
+    this.dpN = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(121051);
+    AppMethodBeat.o(183832);
   }
   
   public static final class a
   {
-    public String dbj;
-    public int dsl;
+    public String dlU;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.nf
  * JD-Core Version:    0.7.0.1
  */

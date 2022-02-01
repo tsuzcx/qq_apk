@@ -10,51 +10,51 @@ import java.util.List;
 public class i
   implements p
 {
-  protected static l f(long paramLong1, long paramLong2, long paramLong3)
+  protected static l g(long paramLong1, long paramLong2, long paramLong3)
   {
-    l locall = l.iSq;
+    l locall = l.jsB;
     if ((paramLong1 < 0L) || (paramLong1 > paramLong3 - 1L)) {
-      locall = l.iSB;
+      locall = l.jsM;
     }
     while ((paramLong2 >= 1L) && (paramLong2 <= paramLong3 - paramLong1)) {
       return locall;
     }
-    return l.iSC;
+    return l.jsN;
   }
   
-  public l EO(String paramString)
+  public l IR(String paramString)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
-  public e EP(String paramString)
+  public e IS(String paramString)
   {
     AppMethodBeat.i(174620);
-    paramString = ad(paramString, false);
+    paramString = ae(paramString, false);
     AppMethodBeat.o(174620);
     return paramString;
   }
   
-  public boolean EQ(String paramString)
+  public boolean IT(String paramString)
   {
     return false;
   }
   
-  public e ER(String paramString)
+  public e IU(String paramString)
   {
     return null;
   }
   
-  public boolean ES(String paramString)
+  public boolean IV(String paramString)
   {
     return false;
   }
   
-  public final InputStream ET(String paramString)
+  public final InputStream IW(String paramString)
   {
     AppMethodBeat.i(140587);
-    com.tencent.mm.plugin.appbrand.aa.i locali = new com.tencent.mm.plugin.appbrand.aa.i();
-    if (b(paramString, locali) == l.iSq)
+    com.tencent.mm.plugin.appbrand.z.i locali = new com.tencent.mm.plugin.appbrand.z.i();
+    if (b(paramString, locali) == l.jsB)
     {
       paramString = new a((ByteBuffer)locali.value);
       AppMethodBeat.o(140587);
@@ -64,105 +64,105 @@ public class i
     return null;
   }
   
-  public boolean Eb(String paramString)
+  public boolean Ie(String paramString)
   {
     return false;
   }
   
-  public l Ec(String paramString)
+  public l If(String paramString)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
-  public l Ee(String paramString)
+  public l Ih(String paramString)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
-  public l a(com.tencent.mm.plugin.appbrand.aa.i<String> parami)
+  public l a(com.tencent.mm.plugin.appbrand.z.i<String> parami)
   {
-    return l.iSG;
+    return l.jsR;
   }
   
-  public l a(e parame, String paramString, com.tencent.mm.plugin.appbrand.aa.i<String> parami)
+  public l a(e parame, String paramString, com.tencent.mm.plugin.appbrand.z.i<String> parami)
   {
-    return l.iSG;
+    return l.jsR;
   }
   
-  public l a(e parame, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.aa.i<String> parami)
+  public l a(e parame, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.z.i<String> parami)
   {
-    return l.iSG;
+    return l.jsR;
   }
   
-  public l a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.aa.i<ByteBuffer> parami)
+  public l a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.z.i<ByteBuffer> parami)
   {
-    return l.iSu;
-  }
-  
-  public l a(String paramString, com.tencent.mm.plugin.appbrand.aa.i<List<j>> parami)
-  {
-    return l.iSu;
+    return l.jsF;
   }
   
   public l a(String paramString, FileStructStat paramFileStructStat)
   {
-    return l.iSu;
+    return l.jsF;
+  }
+  
+  public l a(String paramString, com.tencent.mm.plugin.appbrand.z.i<List<j>> parami)
+  {
+    return l.jsF;
   }
   
   public l a(String paramString, e parame)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
   public l a(String paramString, e parame, boolean paramBoolean)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
   public l a(String paramString, InputStream paramInputStream, boolean paramBoolean)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
-  public void aRg() {}
+  public void aYb() {}
   
-  public List<? extends p.a> aRh()
+  public List<? extends p.a> aYc()
   {
     return null;
   }
   
-  public e ad(String paramString, boolean paramBoolean)
+  public e ae(String paramString, boolean paramBoolean)
   {
     return null;
-  }
-  
-  public l af(String paramString, boolean paramBoolean)
-  {
-    return l.iSu;
   }
   
   public l ag(String paramString, boolean paramBoolean)
   {
-    return l.iSu;
+    return l.jsF;
   }
   
-  public l b(String paramString, com.tencent.mm.plugin.appbrand.aa.i<ByteBuffer> parami)
+  public l ah(String paramString, boolean paramBoolean)
   {
-    return l.iSu;
+    return l.jsF;
+  }
+  
+  public l b(String paramString, com.tencent.mm.plugin.appbrand.z.i<ByteBuffer> parami)
+  {
+    return l.jsF;
+  }
+  
+  public l h(String paramString, List<v> paramList)
+  {
+    return l.jsF;
   }
   
   public void initialize() {}
-  
-  public l j(String paramString, List<v> paramList)
-  {
-    return l.iSu;
-  }
   
   public void release() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.i
  * JD-Core Version:    0.7.0.1
  */

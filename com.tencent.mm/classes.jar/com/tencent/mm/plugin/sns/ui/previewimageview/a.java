@@ -9,32 +9,32 @@ public abstract class a
   extends BaseAdapter
   implements d
 {
-  private int xUx = 0;
-  HashMap<Object, Integer> xUy = new HashMap();
+  private int zht = 0;
+  HashMap<Object, Integer> zhu = new HashMap();
   
-  protected final void dF(Object paramObject)
+  protected final void dG(Object paramObject)
   {
-    HashMap localHashMap = this.xUy;
-    int i = this.xUx;
-    this.xUx = (i + 1);
+    HashMap localHashMap = this.zhu;
+    int i = this.zht;
+    this.zht = (i + 1);
     localHashMap.put(paramObject, Integer.valueOf(i));
   }
   
-  protected final void fL(List<?> paramList)
+  protected final void fT(List<?> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      dF(paramList.next());
+      dG(paramList.next());
     }
   }
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.xUy.size())) {
+    if ((paramInt < 0) || (paramInt >= this.zhu.size())) {
       return -1L;
     }
     Object localObject = getItem(paramInt);
-    return ((Integer)this.xUy.get(localObject)).intValue();
+    return ((Integer)this.zhu.get(localObject)).intValue();
   }
   
   public final boolean hasStableIds()
@@ -44,7 +44,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.a
  * JD-Core Version:    0.7.0.1
  */

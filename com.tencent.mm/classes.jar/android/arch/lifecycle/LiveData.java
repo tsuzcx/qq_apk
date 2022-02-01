@@ -84,7 +84,7 @@ public abstract class LiveData<T>
     }
   }
   
-  private static void i(String paramString)
+  private static void j(String paramString)
   {
     if (!a.P().bK.isMainThread()) {
       throw new IllegalStateException("Cannot invoke " + paramString + " on a background thread");
@@ -167,7 +167,7 @@ public abstract class LiveData<T>
   
   public void removeObserver(Observer<T> paramObserver)
   {
-    i("removeObserver");
+    j("removeObserver");
     paramObserver = (ObserverWrapper)this.cO.remove(paramObserver);
     if (paramObserver == null) {
       return;
@@ -178,7 +178,7 @@ public abstract class LiveData<T>
   
   public void removeObservers(LifecycleOwner paramLifecycleOwner)
   {
-    i("removeObservers");
+    j("removeObservers");
     Iterator localIterator = this.cO.iterator();
     while (localIterator.hasNext())
     {
@@ -191,7 +191,7 @@ public abstract class LiveData<T>
   
   protected void setValue(T paramT)
   {
-    i("setValue");
+    j("setValue");
     this.cR += 1;
     this.mData = paramT;
     b(null);

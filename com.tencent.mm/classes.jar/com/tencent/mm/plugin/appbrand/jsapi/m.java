@@ -4,7 +4,7 @@ import com.tencent.luggage.h.d;
 import com.tencent.mm.plugin.appbrand.utils.v;
 import com.tencent.mm.plugin.appbrand.utils.v.a;
 import com.tencent.mm.plugin.appbrand.utils.v.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -13,22 +13,22 @@ import org.json.JSONObject;
 public abstract class m
   extends b
 {
-  protected boolean jvW = false;
+  protected boolean jWs = false;
   
-  public final String HI(String paramString)
+  public final String LM(String paramString)
   {
     return e(paramString, null);
   }
   
   public final String a(c paramc, String paramString, Map<String, ? extends Object> paramMap)
   {
-    if (v.a(paramc.aOf(), paramMap, (v.a)paramc.ar(v.a.class)) == v.b.lMK) {
+    if (v.a(paramc.aUV(), paramMap, (v.a)paramc.ar(v.a.class)) == v.b.moH) {
       return e("fail:convert native buffer parameter fail. native buffer exceed size limit.", null);
     }
     return k(paramString, paramMap);
   }
   
-  public boolean aXI()
+  public boolean beF()
   {
     return false;
   }
@@ -42,10 +42,10 @@ public abstract class m
     if (localJSONObject.has("errMsg"))
     {
       paramJSONObject = "api " + getName() + ": Cant put errMsg in res!!!";
-      if (this.jvW) {
+      if (this.jWs) {
         throw new IllegalArgumentException(paramJSONObject);
       }
-      ad.e("MicroMsg.AppBrandJsApi", paramJSONObject);
+      ac.e("MicroMsg.AppBrandJsApi", paramJSONObject);
     }
     try
     {
@@ -56,7 +56,7 @@ public abstract class m
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errMsg, e=%s", new Object[] { paramString });
+        ac.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errMsg, e=%s", new Object[] { paramString });
       }
     }
   }
@@ -70,10 +70,10 @@ public abstract class m
     if ((!str.startsWith("fail")) && (!str.startsWith("ok")))
     {
       paramString = String.format(Locale.ENGLISH, "api[%s] assert, argument [reason] must start with special prefix", new Object[] { getName() });
-      if (this.jvW) {
+      if (this.jWs) {
         throw new IllegalArgumentException(paramString);
       }
-      ad.e("MicroMsg.AppBrandJsApi", paramString);
+      ac.e("MicroMsg.AppBrandJsApi", paramString);
     }
     if ((paramMap instanceof HashMap)) {
       paramString = paramMap;
@@ -81,18 +81,18 @@ public abstract class m
     while ((paramMap != null) && (paramMap.containsKey("errMsg")))
     {
       paramMap = "api " + getName() + ": Cant put errMsg in res!!!";
-      if (this.jvW)
+      if (this.jWs)
       {
         throw new IllegalArgumentException(paramMap);
         paramString = new HashMap();
       }
       else
       {
-        ad.e("MicroMsg.AppBrandJsApi", paramMap);
+        ac.e("MicroMsg.AppBrandJsApi", paramMap);
       }
     }
     paramString.put("errMsg", getName() + ":" + str);
-    d.e(paramString);
+    d.d(paramString);
     return new JSONObject(paramString).toString();
   }
 }

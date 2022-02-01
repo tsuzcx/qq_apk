@@ -10,39 +10,39 @@ import java.util.List;
 public final class a
   implements b, c
 {
-  private static a vtT;
+  private static a wDY;
   
-  public static a djh()
+  public static a dxh()
   {
     try
     {
       AppMethodBeat.i(90773);
-      if (vtT == null) {
-        vtT = new a();
+      if (wDY == null) {
+        wDY = new a();
       }
-      a locala = vtT;
+      a locala = wDY;
       AppMethodBeat.o(90773);
       return locala;
     }
     finally {}
   }
   
-  public static String dji()
+  public static String dxi()
   {
     AppMethodBeat.i(90774);
-    String str = g.afB().gcW + "remark/";
+    String str = g.agR().ghC + "remark/";
     AppMethodBeat.o(90774);
     return str;
   }
   
-  public final List<String> afI()
+  public final List<String> agY()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.w.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,101 +4,101 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.c.a;
 import com.tencent.mm.plugin.webview.core.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import java.util.HashMap;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/jsapi/WebViewJsApiPool;", "", "()V", "TAG", "", "jsApiFrequentHelper", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper;", "jsApis", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "setJsApis", "(Ljava/util/Map;)V", "getJsApi", "function", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "initReportData", "", "report", "isSucc", "reportTooFrequent", "api", "webview-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/jsapi/WebViewJsApiPool;", "", "()V", "TAG", "", "jsApiFrequentHelper", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper;", "jsApis", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "setJsApis", "(Ljava/util/Map;)V", "getJsApi", "function", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "initReportData", "", "report", "isSucc", "reportTooFrequent", "api", "webview-sdk_release"})
 public final class m
 {
-  static Map<String, a> ASk;
-  static final e ASl;
-  public static final m ASm;
+  static Map<String, a> Ckx;
+  static final e Cky;
+  public static final m Ckz;
   
   static
   {
-    AppMethodBeat.i(189407);
-    ASm = new m();
-    ASk = (Map)new HashMap();
-    ASl = new e();
-    AppMethodBeat.o(189407);
+    AppMethodBeat.i(205539);
+    Ckz = new m();
+    Ckx = (Map)new HashMap();
+    Cky = new e();
+    AppMethodBeat.o(205539);
   }
   
   static void a(d paramd, a parama)
   {
-    AppMethodBeat.i(189404);
+    AppMethodBeat.i(205536);
     paramd = paramd.context;
     if ((paramd instanceof b))
     {
-      paramd = ((b)paramd).ejo();
-      ASl.N(parama.ekB(), parama.ekC(), paramd);
+      paramd = ((b)paramd).eyJ();
+      Cky.N(parama.ezX(), parama.ezY(), paramd);
     }
-    AppMethodBeat.o(189404);
+    AppMethodBeat.o(205536);
   }
   
   static void a(l paraml, boolean paramBoolean)
   {
-    AppMethodBeat.i(189405);
+    AppMethodBeat.i(205537);
     if (paraml == null)
     {
-      ad.e("MicroMsg.WebViewJsApiPool", "msg is null when report.");
-      AppMethodBeat.o(189405);
+      ac.e("MicroMsg.WebViewJsApiPool", "msg is null when report.");
+      AppMethodBeat.o(205537);
       return;
     }
-    String str = paraml.kbU;
-    Map localMap = paraml.ekJ();
-    Object localObject = paraml.uLu.get("key_wxapp_id");
+    String str = paraml.kCH;
+    Map localMap = paraml.eAf();
+    Object localObject = paraml.vUl.get("key_wxapp_id");
     paraml = localObject;
     if (!(localObject instanceof String)) {
       paraml = null;
     }
-    paraml = bt.by((String)paraml, "");
+    paraml = bs.bG((String)paraml, "");
     if (localMap != null)
     {
       localMap.put("isSuccess", Boolean.valueOf(paramBoolean));
       localMap.put("containerEnv", paraml);
     }
-    n.H(str, localMap);
-    AppMethodBeat.o(189405);
+    n.I(str, localMap);
+    AppMethodBeat.o(205537);
   }
   
-  public static a awd(String paramString)
+  public static a aBv(String paramString)
   {
-    AppMethodBeat.i(189406);
+    AppMethodBeat.i(205538);
     k.h(paramString, "function");
-    if (ASk.containsKey(paramString))
+    if (Ckx.containsKey(paramString))
     {
-      paramString = (a)ASk.get(paramString);
-      AppMethodBeat.o(189406);
+      paramString = (a)Ckx.get(paramString);
+      AppMethodBeat.o(205538);
       return paramString;
     }
-    AppMethodBeat.o(189406);
+    AppMethodBeat.o(205538);
     return null;
   }
   
   static void b(d paramd, l paraml)
   {
-    AppMethodBeat.i(189403);
-    if (!n.awe(paraml.kbU))
+    AppMethodBeat.i(205535);
+    if (!n.aBw(paraml.kCH))
     {
-      AppMethodBeat.o(189403);
+      AppMethodBeat.o(205535);
       return;
     }
     paramd = paramd.context;
     if ((paramd instanceof b)) {
-      n.aH(((b)paramd).bEx(), ((b)paramd).ejo(), ((b)paramd).getIntent().getStringExtra("srcUsername"));
+      n.aK(((b)paramd).bLL(), ((b)paramd).eyJ(), ((b)paramd).getIntent().getStringExtra("srcUsername"));
     }
-    AppMethodBeat.o(189403);
+    AppMethodBeat.o(205535);
   }
   
-  public static void bu(Map<String, a> paramMap)
+  public static void bz(Map<String, a> paramMap)
   {
-    AppMethodBeat.i(189402);
+    AppMethodBeat.i(205534);
     k.h(paramMap, "<set-?>");
-    ASk = paramMap;
-    AppMethodBeat.o(189402);
+    Ckx = paramMap;
+    AppMethodBeat.o(205534);
   }
 }
 

@@ -11,13 +11,13 @@ import java.util.List;
 
 final class a
 {
-  private static a JvR;
-  public static final a JvS;
+  private static a Ljk;
+  public static final a Ljl;
   
   static
   {
     AppMethodBeat.i(57394);
-    JvS = new a();
+    Ljl = new a();
     AppMethodBeat.o(57394);
   }
   
@@ -29,7 +29,7 @@ final class a
     try
     {
       Method localMethod = paramMember.getMethod("getParameters", new Class[0]);
-      paramMember = new a(localMethod, b.bs(paramMember).loadClass("java.lang.reflect.Parameter").getMethod("getName", new Class[0]));
+      paramMember = new a(localMethod, b.bv(paramMember).loadClass("java.lang.reflect.Parameter").getMethod("getName", new Class[0]));
       AppMethodBeat.o(57392);
       return paramMember;
     }
@@ -45,20 +45,20 @@ final class a
   {
     AppMethodBeat.i(57393);
     k.h(paramMember, "member");
-    Object localObject2 = JvR;
+    Object localObject2 = Ljk;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = a(paramMember);
-      JvR = (a)localObject1;
+      Ljk = (a)localObject1;
     }
-    localObject2 = ((a)localObject1).JvT;
+    localObject2 = ((a)localObject1).Ljm;
     if (localObject2 == null)
     {
       AppMethodBeat.o(57393);
       return null;
     }
-    localObject1 = ((a)localObject1).JvU;
+    localObject1 = ((a)localObject1).Ljn;
     if (localObject1 == null)
     {
       AppMethodBeat.o(57393);
@@ -94,19 +94,19 @@ final class a
   
   public static final class a
   {
-    final Method JvT;
-    final Method JvU;
+    final Method Ljm;
+    final Method Ljn;
     
     public a(Method paramMethod1, Method paramMethod2)
     {
-      this.JvT = paramMethod1;
-      this.JvU = paramMethod2;
+      this.Ljm = paramMethod1;
+      this.Ljn = paramMethod2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.a
  * JD-Core Version:    0.7.0.1
  */

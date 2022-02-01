@@ -6,97 +6,80 @@ import com.tencent.mm.plugin.report.a;
 public final class bw
   extends a
 {
-  public long dHG;
-  public long dKc;
-  public long dPY;
-  private String dQn = "";
-  private long dQo;
-  private String dQp = "";
-  private String dQq = "";
+  public long dFd = 0L;
+  public long dNA = 0L;
+  public long dNB = 0L;
+  public long dNC = 0L;
+  private String dND = "";
+  public long dNE = 0L;
+  public long dNy = 0L;
+  public long dNz = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(184769);
+    AppMethodBeat.i(149910);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dQn);
+    ((StringBuffer)localObject).append(this.dFd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHG);
+    ((StringBuffer)localObject).append(this.dNy);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPY);
+    ((StringBuffer)localObject).append(this.dNz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKc);
+    ((StringBuffer)localObject).append(this.dNA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQo);
+    ((StringBuffer)localObject).append(this.dNB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQp);
+    ((StringBuffer)localObject).append(this.dNC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQq);
+    ((StringBuffer)localObject).append(this.dND);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dNE);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(184769);
+    arz((String)localObject);
+    AppMethodBeat.o(149910);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(184770);
+    AppMethodBeat.i(149911);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomId:").append(this.dQn);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dFd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dHG);
+    ((StringBuffer)localObject).append("Content:").append(this.dNy);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgType:").append(this.dPY);
+    ((StringBuffer)localObject).append("ChangeAmountTimes:").append(this.dNz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dKc);
+    ((StringBuffer)localObject).append("AddSelfieEmoticonTimes:").append(this.dNA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exit:").append(this.dQo);
+    ((StringBuffer)localObject).append("AddCustonEmoticonTimes:").append(this.dNB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("todoid:").append(this.dQp);
+    ((StringBuffer)localObject).append("AddSelfieEmoticonFormBoardTimes:").append(this.dNC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appusername:").append(this.dQq);
+    ((StringBuffer)localObject).append("EmoticonMd5:").append(this.dND);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AddShopEmoticonTimes:").append(this.dNE);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184770);
+    AppMethodBeat.o(149911);
     return localObject;
-  }
-  
-  public final bw QA()
-  {
-    this.dQo = 2L;
-    return this;
   }
   
   public final int getId()
   {
-    return 19443;
+    return 16724;
   }
   
-  public final bw iA(String paramString)
+  public final bw jQ(String paramString)
   {
-    AppMethodBeat.i(196558);
-    this.dQq = t("appusername", paramString, true);
-    AppMethodBeat.o(196558);
-    return this;
-  }
-  
-  public final bw iy(String paramString)
-  {
-    AppMethodBeat.i(184767);
-    this.dQn = t("roomId", paramString, true);
-    AppMethodBeat.o(184767);
-    return this;
-  }
-  
-  public final bw iz(String paramString)
-  {
-    AppMethodBeat.i(184768);
-    this.dQp = t("todoid", paramString, true);
-    AppMethodBeat.o(184768);
+    AppMethodBeat.i(149909);
+    this.dND = t("EmoticonMd5", paramString, true);
+    AppMethodBeat.o(149909);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bw
  * JD-Core Version:    0.7.0.1
  */

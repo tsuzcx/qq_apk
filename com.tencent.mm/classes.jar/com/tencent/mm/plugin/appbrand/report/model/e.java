@@ -6,20 +6,20 @@ import java.util.Map;
 
 public enum e
 {
-  public Map<String, e.a> lqP;
+  public Map<String, e.a> lSK;
   
   static
   {
     AppMethodBeat.i(48117);
-    lqO = new e("INSTANCE");
-    lqQ = new e[] { lqO };
+    lSJ = new e("INSTANCE");
+    lSL = new e[] { lSJ };
     AppMethodBeat.o(48117);
   }
   
   private e()
   {
     AppMethodBeat.i(48116);
-    this.lqP = new HashMap();
+    this.lSK = new HashMap();
     AppMethodBeat.o(48116);
   }
 }

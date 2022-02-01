@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.image;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.o;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.t;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bn;
 
 public final class c
   extends t
 {
-  private static c szb;
+  private static c tGL;
   
   private c()
   {
     super(o.class);
   }
   
-  public static bk apT()
+  public static bn awI()
   {
     AppMethodBeat.i(151491);
-    g.afz().aeD();
-    bk localbk = ((com.tencent.mm.plugin.n.a.a)g.ab(com.tencent.mm.plugin.n.a.a.class)).apT();
+    g.agP().afT();
+    bn localbn = ((com.tencent.mm.plugin.n.a.a)g.ab(com.tencent.mm.plugin.n.a.a.class)).awI();
     AppMethodBeat.o(151491);
-    return localbk;
+    return localbn;
   }
   
-  public static c cGv()
+  public static c cTF()
   {
     try
     {
       AppMethodBeat.i(151490);
-      if (szb == null) {
-        szb = new c();
+      if (tGL == null) {
+        tGL = new c();
       }
-      c localc = szb;
+      c localc = tGL;
       AppMethodBeat.o(151490);
       return localc;
     }
@@ -42,7 +42,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.image.c
  * JD-Core Version:    0.7.0.1
  */

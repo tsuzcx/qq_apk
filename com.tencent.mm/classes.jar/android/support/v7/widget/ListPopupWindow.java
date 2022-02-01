@@ -37,38 +37,38 @@ import java.lang.reflect.Method;
 public class ListPopupWindow
   implements s
 {
-  private static Method aoa;
-  private static Method aob;
-  private static Method aoc;
-  private ListAdapter DP;
-  public int acB = 0;
-  public Rect aef;
-  private boolean ahM;
-  public int aib = -2;
-  public PopupWindow aoA;
-  public y aod;
-  private int aoe = -2;
-  public int aof;
-  private int aog;
-  private int aoh = 1002;
-  private boolean aoi;
-  private boolean aoj = true;
-  private boolean aok;
-  private boolean aol = false;
-  private boolean aom = false;
-  int aon = 2147483647;
-  private View aoo;
-  int aop = 0;
-  public View aoq;
-  private Drawable aor;
-  public AdapterView.OnItemClickListener aos;
-  private AdapterView.OnItemSelectedListener aot;
-  final e aou = new e();
-  private final d aov = new d();
-  private final c aow = new c();
-  private final a aox = new a();
-  private Runnable aoy;
-  public boolean aoz;
+  private static Method aoV;
+  private static Method aoW;
+  private static Method aoX;
+  private ListAdapter EN;
+  public int adv = 0;
+  public Rect aeZ;
+  private boolean aiG;
+  public int aiV = -2;
+  public y aoY;
+  private int aoZ = -2;
+  public int apa;
+  private int apb;
+  private int apc = 1002;
+  private boolean apd;
+  private boolean ape = true;
+  private boolean apf;
+  private boolean apg = false;
+  private boolean aph = false;
+  int api = 2147483647;
+  private View apj;
+  int apk = 0;
+  public View apl;
+  private Drawable apm;
+  public AdapterView.OnItemClickListener apn;
+  private AdapterView.OnItemSelectedListener apo;
+  final e apq = new e();
+  private final d apr = new d();
+  private final c aps = new c();
+  private final a apt = new a();
+  private Runnable apu;
+  public boolean apv;
+  public PopupWindow apw;
   private Context mContext;
   final Handler mHandler;
   private DataSetObserver mObserver;
@@ -78,15 +78,15 @@ public class ListPopupWindow
   {
     try
     {
-      aoa = PopupWindow.class.getDeclaredMethod("setClipToScreenEnabled", new Class[] { Boolean.TYPE });
+      aoV = PopupWindow.class.getDeclaredMethod("setClipToScreenEnabled", new Class[] { Boolean.TYPE });
       try
       {
         label20:
-        aob = PopupWindow.class.getDeclaredMethod("getMaxAvailableHeight", new Class[] { View.class, Integer.TYPE, Boolean.TYPE });
+        aoW = PopupWindow.class.getDeclaredMethod("getMaxAvailableHeight", new Class[] { View.class, Integer.TYPE, Boolean.TYPE });
         try
         {
           label51:
-          aoc = PopupWindow.class.getDeclaredMethod("setEpicenterBounds", new Class[] { Rect.class });
+          aoX = PopupWindow.class.getDeclaredMethod("setEpicenterBounds", new Class[] { Rect.class });
           return;
         }
         catch (NoSuchMethodException localNoSuchMethodException1) {}
@@ -122,43 +122,43 @@ public class ListPopupWindow
     this.mContext = paramContext;
     this.mHandler = new Handler(paramContext.getMainLooper());
     TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ListPopupWindow, paramInt1, paramInt2);
-    this.aof = localTypedArray.getDimensionPixelOffset(0, 0);
-    this.aog = localTypedArray.getDimensionPixelOffset(1, 0);
-    if (this.aog != 0) {
-      this.aoi = true;
+    this.apa = localTypedArray.getDimensionPixelOffset(0, 0);
+    this.apb = localTypedArray.getDimensionPixelOffset(1, 0);
+    if (this.apb != 0) {
+      this.apd = true;
     }
     localTypedArray.recycle();
-    this.aoA = new AppCompatPopupWindow(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    this.aoA.setInputMethodMode(1);
+    this.apw = new AppCompatPopupWindow(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    this.apw.setInputMethodMode(1);
   }
   
   private int getMaxAvailableHeight(View paramView, int paramInt, boolean paramBoolean)
   {
-    if (aob != null) {
+    if (aoW != null) {
       try
       {
-        int i = ((Integer)aob.invoke(this.aoA, new Object[] { paramView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) })).intValue();
+        int i = ((Integer)aoW.invoke(this.apw, new Object[] { paramView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) })).intValue();
         return i;
       }
       catch (Exception localException) {}
     }
-    return this.aoA.getMaxAvailableHeight(paramView, paramInt);
+    return this.apw.getMaxAvailableHeight(paramView, paramInt);
   }
   
-  private void jX()
+  private void kf()
   {
-    if (this.aoo != null)
+    if (this.apj != null)
     {
-      ViewParent localViewParent = this.aoo.getParent();
+      ViewParent localViewParent = this.apj.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.aoo);
+        ((ViewGroup)localViewParent).removeView(this.apj);
       }
     }
   }
   
   public final void clearListSelection()
   {
-    y localy = this.aod;
+    y localy = this.aoY;
     if (localy != null)
     {
       localy.setListSelectionHidden(true);
@@ -168,24 +168,24 @@ public class ListPopupWindow
   
   public final void dismiss()
   {
-    this.aoA.dismiss();
-    jX();
-    this.aoA.setContentView(null);
-    this.aod = null;
-    this.mHandler.removeCallbacks(this.aou);
+    this.apw.dismiss();
+    kf();
+    this.apw.setContentView(null);
+    this.aoY = null;
+    this.mHandler.removeCallbacks(this.apq);
   }
   
   public final ListView getListView()
   {
-    return this.aod;
+    return this.aoY;
   }
   
   public final int getVerticalOffset()
   {
-    if (!this.aoi) {
+    if (!this.apd) {
       return 0;
     }
-    return this.aog;
+    return this.apb;
   }
   
   y i(Context paramContext, boolean paramBoolean)
@@ -195,23 +195,23 @@ public class ListPopupWindow
   
   public final boolean isInputMethodNotNeeded()
   {
-    return this.aoA.getInputMethodMode() == 2;
+    return this.apw.getInputMethodMode() == 2;
   }
   
   public final boolean isShowing()
   {
-    return this.aoA.isShowing();
+    return this.apw.isShowing();
   }
   
-  public final void jY()
+  public final void kg()
   {
-    this.aoA.setInputMethodMode(2);
+    this.apw.setInputMethodMode(2);
   }
   
-  public final void jZ()
+  public final void kh()
   {
-    this.aok = true;
-    this.ahM = true;
+    this.apf = true;
+    this.aiG = true;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
@@ -221,40 +221,40 @@ public class ListPopupWindow
     }
     for (;;)
     {
-      this.DP = paramListAdapter;
+      this.EN = paramListAdapter;
       if (paramListAdapter != null) {
         paramListAdapter.registerDataSetObserver(this.mObserver);
       }
-      if (this.aod != null) {
-        this.aod.setAdapter(this.DP);
+      if (this.aoY != null) {
+        this.aoY.setAdapter(this.EN);
       }
       return;
-      if (this.DP != null) {
-        this.DP.unregisterDataSetObserver(this.mObserver);
+      if (this.EN != null) {
+        this.EN.unregisterDataSetObserver(this.mObserver);
       }
     }
   }
   
   public final void setAnimationStyle(int paramInt)
   {
-    this.aoA.setAnimationStyle(paramInt);
+    this.apw.setAnimationStyle(paramInt);
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    this.aoA.setBackgroundDrawable(paramDrawable);
+    this.apw.setBackgroundDrawable(paramDrawable);
   }
   
   public final void setContentWidth(int paramInt)
   {
-    Drawable localDrawable = this.aoA.getBackground();
+    Drawable localDrawable = this.apw.getBackground();
     if (localDrawable != null)
     {
       localDrawable.getPadding(this.mTempRect);
-      this.aib = (this.mTempRect.left + this.mTempRect.right + paramInt);
+      this.aiV = (this.mTempRect.left + this.mTempRect.right + paramInt);
       return;
     }
-    this.aib = paramInt;
+    this.aiV = paramInt;
   }
   
   public final void setHeight(int paramInt)
@@ -262,24 +262,24 @@ public class ListPopupWindow
     if ((paramInt < 0) && (-2 != paramInt) && (-1 != paramInt)) {
       throw new IllegalArgumentException("Invalid height. Must be a positive value, MATCH_PARENT, or WRAP_CONTENT.");
     }
-    this.aoe = paramInt;
+    this.aoZ = paramInt;
   }
   
   public final void setModal(boolean paramBoolean)
   {
-    this.aoz = paramBoolean;
-    this.aoA.setFocusable(paramBoolean);
+    this.apv = paramBoolean;
+    this.apw.setFocusable(paramBoolean);
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.aoA.setOnDismissListener(paramOnDismissListener);
+    this.apw.setOnDismissListener(paramOnDismissListener);
   }
   
   public final void setVerticalOffset(int paramInt)
   {
-    this.aog = paramInt;
-    this.aoi = true;
+    this.apb = paramInt;
+    this.apd = true;
   }
   
   public void show()
@@ -294,37 +294,37 @@ public class ListPopupWindow
     label242:
     int j;
     int i;
-    if (this.aod == null)
+    if (this.aoY == null)
     {
       localObject2 = this.mContext;
-      this.aoy = new Runnable()
+      this.apu = new Runnable()
       {
         public final void run()
         {
-          View localView = ListPopupWindow.this.aoq;
+          View localView = ListPopupWindow.this.apl;
           if ((localView != null) && (localView.getWindowToken() != null)) {
             ListPopupWindow.this.show();
           }
         }
       };
-      if (!this.aoz)
+      if (!this.apv)
       {
         bool1 = true;
-        this.aod = i((Context)localObject2, bool1);
-        if (this.aor != null) {
-          this.aod.setSelector(this.aor);
+        this.aoY = i((Context)localObject2, bool1);
+        if (this.apm != null) {
+          this.aoY.setSelector(this.apm);
         }
-        this.aod.setAdapter(this.DP);
-        this.aod.setOnItemClickListener(this.aos);
-        this.aod.setFocusable(true);
-        this.aod.setFocusableInTouchMode(true);
-        this.aod.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        this.aoY.setAdapter(this.EN);
+        this.aoY.setOnItemClickListener(this.apn);
+        this.aoY.setFocusable(true);
+        this.aoY.setFocusableInTouchMode(true);
+        this.aoY.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
           public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
             if (paramAnonymousInt != -1)
             {
-              paramAnonymousAdapterView = ListPopupWindow.this.aod;
+              paramAnonymousAdapterView = ListPopupWindow.this.aoY;
               if (paramAnonymousAdapterView != null) {
                 paramAnonymousAdapterView.setListSelectionHidden(false);
               }
@@ -333,25 +333,25 @@ public class ListPopupWindow
           
           public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
         });
-        this.aod.setOnScrollListener(this.aow);
-        if (this.aot != null) {
-          this.aod.setOnItemSelectedListener(this.aot);
+        this.aoY.setOnScrollListener(this.aps);
+        if (this.apo != null) {
+          this.aoY.setOnItemSelectedListener(this.apo);
         }
-        localObject1 = this.aod;
-        localView = this.aoo;
+        localObject1 = this.aoY;
+        localView = this.apj;
         if (localView == null) {
           break label1351;
         }
         localObject2 = new LinearLayout((Context)localObject2);
         ((LinearLayout)localObject2).setOrientation(1);
         localLayoutParams = new LinearLayout.LayoutParams(-1, 0, 1.0F);
-        switch (this.aop)
+        switch (this.apk)
         {
         default: 
-          new StringBuilder("Invalid hint position ").append(this.aop);
-          if (this.aib >= 0)
+          new StringBuilder("Invalid hint position ").append(this.apk);
+          if (this.aiV >= 0)
           {
-            j = this.aib;
+            j = this.aiV;
             i = -2147483648;
             label258:
             localView.measure(View.MeasureSpec.makeMeasureSpec(j, i), 0);
@@ -365,7 +365,7 @@ public class ListPopupWindow
     }
     for (;;)
     {
-      this.aoA.setContentView((View)localObject1);
+      this.apw.setContentView((View)localObject1);
       label768:
       label789:
       label921:
@@ -373,15 +373,15 @@ public class ListPopupWindow
       for (;;)
       {
         label310:
-        localObject1 = this.aoA.getBackground();
+        localObject1 = this.apw.getBackground();
         if (localObject1 != null)
         {
           ((Drawable)localObject1).getPadding(this.mTempRect);
           j = this.mTempRect.top + this.mTempRect.bottom;
-          if (this.aoi) {
+          if (this.apd) {
             break label1343;
           }
-          this.aog = (-this.mTempRect.top);
+          this.apb = (-this.mTempRect.top);
         }
         label803:
         label1074:
@@ -390,21 +390,21 @@ public class ListPopupWindow
         for (;;)
         {
           label369:
-          if (this.aoA.getInputMethodMode() == 2) {}
+          if (this.apw.getInputMethodMode() == 2) {}
           int m;
           for (bool1 = true;; bool1 = false)
           {
-            m = getMaxAvailableHeight(this.aoq, this.aog, bool1);
-            if ((!this.aol) && (this.aoe != -1)) {
+            m = getMaxAvailableHeight(this.apl, this.apb, bool1);
+            if ((!this.apg) && (this.aoZ != -1)) {
               break label576;
             }
             i = m + j;
             bool1 = isInputMethodNotNeeded();
-            n.a(this.aoA, this.aoh);
-            if (!this.aoA.isShowing()) {
+            n.a(this.apw, this.apc);
+            if (!this.apw.isShowing()) {
               break label987;
             }
-            if (t.aC(this.aoq)) {
+            if (t.aC(this.apl)) {
               break label745;
             }
             return;
@@ -419,8 +419,8 @@ public class ListPopupWindow
             i = 0;
             j = 0;
             break label258;
-            this.aoA.getContentView();
-            localObject1 = this.aoo;
+            this.apw.getContentView();
+            localObject1 = this.apj;
             if (localObject1 == null) {
               break label1346;
             }
@@ -433,17 +433,17 @@ public class ListPopupWindow
           }
           label576:
           int k;
-          switch (this.aib)
+          switch (this.aiV)
           {
           default: 
-            k = View.MeasureSpec.makeMeasureSpec(this.aib, 1073741824);
+            k = View.MeasureSpec.makeMeasureSpec(this.aiV, 1073741824);
           }
           for (;;)
           {
-            m = this.aod.d(k, 0, -1, m - i, -1);
+            m = this.aoY.d(k, 0, -1, m - i, -1);
             k = i;
             if (m > 0) {
-              k = i + (this.aod.getPaddingTop() + this.aod.getPaddingBottom() + j);
+              k = i + (this.aoY.getPaddingTop() + this.aoY.getPaddingBottom() + j);
             }
             i = m + k;
             break;
@@ -452,10 +452,10 @@ public class ListPopupWindow
             k = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
           }
           label745:
-          if (this.aib == -1)
+          if (this.aiV == -1)
           {
             j = -1;
-            if (this.aoe != -1) {
+            if (this.aoZ != -1) {
               break label964;
             }
             if (!bool1) {
@@ -464,27 +464,27 @@ public class ListPopupWindow
             if (!bool1) {
               break label926;
             }
-            localObject1 = this.aoA;
-            if (this.aib != -1) {
+            localObject1 = this.apw;
+            if (this.aiV != -1) {
               break label921;
             }
             k = -1;
             ((PopupWindow)localObject1).setWidth(k);
-            this.aoA.setHeight(0);
+            this.apw.setHeight(0);
           }
           for (;;)
           {
             for (;;)
             {
-              localObject1 = this.aoA;
-              if ((!this.aom) && (!this.aol)) {}
+              localObject1 = this.apw;
+              if ((!this.aph) && (!this.apg)) {}
               for (bool1 = bool2;; bool1 = false)
               {
                 ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-                localObject1 = this.aoA;
-                localObject2 = this.aoq;
-                m = this.aof;
-                int n = this.aog;
+                localObject1 = this.apw;
+                localObject2 = this.apl;
+                m = this.apa;
+                int n = this.apb;
                 k = j;
                 if (j < 0) {
                   k = -1;
@@ -495,97 +495,97 @@ public class ListPopupWindow
                 }
                 ((PopupWindow)localObject1).update((View)localObject2, m, n, k, j);
                 return;
-                if (this.aib == -2)
+                if (this.aiV == -2)
                 {
-                  j = this.aoq.getWidth();
+                  j = this.apl.getWidth();
                   break;
                 }
-                j = this.aib;
+                j = this.aiV;
                 break;
                 i = -1;
                 break label768;
                 k = 0;
                 break label789;
-                localObject1 = this.aoA;
-                if (this.aib == -1) {}
+                localObject1 = this.apw;
+                if (this.aiV == -1) {}
                 for (k = -1;; k = 0)
                 {
                   ((PopupWindow)localObject1).setWidth(k);
-                  this.aoA.setHeight(-1);
+                  this.apw.setHeight(-1);
                   break;
                 }
                 label964:
-                if (this.aoe == -2) {
+                if (this.aoZ == -2) {
                   break label1340;
                 }
-                i = this.aoe;
+                i = this.aoZ;
                 break label803;
               }
               label987:
-              if (this.aib == -1)
+              if (this.aiV == -1)
               {
                 j = -1;
                 label997:
-                if (this.aoe != -1) {
+                if (this.aoZ != -1) {
                   break label1262;
                 }
                 i = -1;
                 label1007:
-                this.aoA.setWidth(j);
-                this.aoA.setHeight(i);
-                if (aoa == null) {}
+                this.apw.setWidth(j);
+                this.apw.setHeight(i);
+                if (aoV == null) {}
               }
               try
               {
                 for (;;)
                 {
-                  aoa.invoke(this.aoA, new Object[] { Boolean.TRUE });
-                  localObject1 = this.aoA;
-                  if ((!this.aom) && (!this.aol))
+                  aoV.invoke(this.apw, new Object[] { Boolean.TRUE });
+                  localObject1 = this.apw;
+                  if ((!this.aph) && (!this.apg))
                   {
                     bool1 = bool3;
                     ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-                    this.aoA.setTouchInterceptor(this.aov);
-                    if (this.aok) {
-                      n.a(this.aoA, this.ahM);
+                    this.apw.setTouchInterceptor(this.apr);
+                    if (this.apf) {
+                      n.a(this.apw, this.aiG);
                     }
-                    if (aoc == null) {}
+                    if (aoX == null) {}
                   }
                   try
                   {
-                    aoc.invoke(this.aoA, new Object[] { this.aef });
+                    aoX.invoke(this.apw, new Object[] { this.aeZ });
                     label1138:
-                    localObject1 = this.aoA;
-                    localObject2 = this.aoq;
-                    j = this.aof;
-                    k = this.aog;
-                    m = this.acB;
+                    localObject1 = this.apw;
+                    localObject2 = this.apl;
+                    j = this.apa;
+                    k = this.apb;
+                    m = this.adv;
                     if (Build.VERSION.SDK_INT >= 19) {
                       ((PopupWindow)localObject1).showAsDropDown((View)localObject2, j, k, m);
                     }
                     for (;;)
                     {
-                      this.aod.setSelection(-1);
-                      if ((!this.aoz) || (this.aod.isInTouchMode())) {
+                      this.aoY.setSelection(-1);
+                      if ((!this.apv) || (this.aoY.isInTouchMode())) {
                         clearListSelection();
                       }
-                      if (this.aoz) {
+                      if (this.apv) {
                         break;
                       }
-                      this.mHandler.post(this.aox);
+                      this.mHandler.post(this.apt);
                       return;
-                      if (this.aib == -2)
+                      if (this.aiV == -2)
                       {
-                        j = this.aoq.getWidth();
+                        j = this.apl.getWidth();
                         break label997;
                       }
-                      j = this.aib;
+                      j = this.aiV;
                       break label997;
                       label1262:
-                      if (this.aoe == -2) {
+                      if (this.aoZ == -2) {
                         break label1007;
                       }
-                      i = this.aoe;
+                      i = this.aoZ;
                       break label1007;
                       bool1 = false;
                       break label1074;
@@ -637,7 +637,7 @@ public class ListPopupWindow
     
     public final void onChanged()
     {
-      if (ListPopupWindow.this.aoA.isShowing()) {
+      if (ListPopupWindow.this.apw.isShowing()) {
         ListPopupWindow.this.show();
       }
     }
@@ -657,10 +657,10 @@ public class ListPopupWindow
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
     {
-      if ((paramInt == 1) && (!ListPopupWindow.this.isInputMethodNotNeeded()) && (ListPopupWindow.this.aoA.getContentView() != null))
+      if ((paramInt == 1) && (!ListPopupWindow.this.isInputMethodNotNeeded()) && (ListPopupWindow.this.apw.getContentView() != null))
       {
-        ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.aou);
-        ListPopupWindow.this.aou.run();
+        ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.apq);
+        ListPopupWindow.this.apq.run();
       }
     }
   }
@@ -675,14 +675,14 @@ public class ListPopupWindow
       int i = paramMotionEvent.getAction();
       int j = (int)paramMotionEvent.getX();
       int k = (int)paramMotionEvent.getY();
-      if ((i == 0) && (ListPopupWindow.this.aoA != null) && (ListPopupWindow.this.aoA.isShowing()) && (j >= 0) && (j < ListPopupWindow.this.aoA.getWidth()) && (k >= 0) && (k < ListPopupWindow.this.aoA.getHeight())) {
-        ListPopupWindow.this.mHandler.postDelayed(ListPopupWindow.this.aou, 250L);
+      if ((i == 0) && (ListPopupWindow.this.apw != null) && (ListPopupWindow.this.apw.isShowing()) && (j >= 0) && (j < ListPopupWindow.this.apw.getWidth()) && (k >= 0) && (k < ListPopupWindow.this.apw.getHeight())) {
+        ListPopupWindow.this.mHandler.postDelayed(ListPopupWindow.this.apq, 250L);
       }
       for (;;)
       {
         return false;
         if (i == 1) {
-          ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.aou);
+          ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.apq);
         }
       }
     }
@@ -695,9 +695,9 @@ public class ListPopupWindow
     
     public final void run()
     {
-      if ((ListPopupWindow.this.aod != null) && (t.aC(ListPopupWindow.this.aod)) && (ListPopupWindow.this.aod.getCount() > ListPopupWindow.this.aod.getChildCount()) && (ListPopupWindow.this.aod.getChildCount() <= ListPopupWindow.this.aon))
+      if ((ListPopupWindow.this.aoY != null) && (t.aC(ListPopupWindow.this.aoY)) && (ListPopupWindow.this.aoY.getCount() > ListPopupWindow.this.aoY.getChildCount()) && (ListPopupWindow.this.aoY.getChildCount() <= ListPopupWindow.this.api))
       {
-        ListPopupWindow.this.aoA.setInputMethodMode(2);
+        ListPopupWindow.this.apw.setInputMethodMode(2);
         ListPopupWindow.this.show();
       }
     }

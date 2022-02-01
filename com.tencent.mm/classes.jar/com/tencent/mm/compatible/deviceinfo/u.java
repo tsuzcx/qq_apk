@@ -2,11 +2,11 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public abstract interface u
 {
-  public abstract boolean Xo();
+  public abstract boolean Yl();
   
-  public abstract void ln(long paramLong);
+  public abstract void oQ(long paramLong);
   
-  public abstract void pj(String paramString);
+  public abstract void sv(String paramString);
 }
 
 

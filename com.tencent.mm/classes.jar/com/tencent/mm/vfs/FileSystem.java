@@ -18,73 +18,73 @@ public abstract interface FileSystem
   
   public abstract boolean a(String paramString1, FileSystem paramFileSystem, String paramString2);
   
-  public abstract ReadableByteChannel aMA(String paramString);
+  public abstract ReadableByteChannel aSc(String paramString);
   
-  public abstract ByteChannel aMB(String paramString);
+  public abstract ByteChannel aSd(String paramString);
   
-  public abstract b aMC(String paramString);
+  public abstract b aSe(String paramString);
   
-  public abstract boolean aMD(String paramString);
+  public abstract boolean aSf(String paramString);
   
-  public abstract a aME(String paramString);
+  public abstract a aSg(String paramString);
   
-  public abstract boolean aMF(String paramString);
+  public abstract boolean aSh(String paramString);
   
-  public abstract void bN(Map<String, String> paramMap);
+  public abstract void bS(Map<String, String> paramMap);
   
   public abstract long c(String paramString1, FileSystem paramFileSystem, String paramString2);
   
-  public abstract WritableByteChannel cL(String paramString, boolean paramBoolean);
+  public abstract WritableByteChannel cR(String paramString, boolean paramBoolean);
   
-  public abstract OutputStream cM(String paramString, boolean paramBoolean);
+  public abstract OutputStream cS(String paramString, boolean paramBoolean);
   
-  public abstract Iterable<a> cN(String paramString, boolean paramBoolean);
+  public abstract Iterable<a> cT(String paramString, boolean paramBoolean);
   
-  public abstract boolean cO(String paramString, boolean paramBoolean);
+  public abstract boolean cU(String paramString, boolean paramBoolean);
   
-  public abstract String cP(String paramString, boolean paramBoolean);
+  public abstract String cV(String paramString, boolean paramBoolean);
   
-  public abstract boolean cf(String paramString, long paramLong);
+  public abstract boolean ch(String paramString, long paramLong);
   
-  public abstract int fhA();
+  public abstract int fxC();
   
-  public abstract ParcelFileDescriptor lw(String paramString1, String paramString2);
+  public abstract ParcelFileDescriptor lT(String paramString1, String paramString2);
   
   public abstract InputStream openRead(String paramString);
   
-  public abstract boolean vv(String paramString);
+  public abstract boolean zB(String paramString);
   
   public static final class a
   {
-    public final String EQk;
-    public final long HRA;
-    public final boolean HRB;
-    final FileSystem HRC;
-    public final long HRz;
+    public final String Gnx;
+    public final long Jse;
+    public final long Jsf;
+    public final boolean Jsg;
+    final FileSystem Jsh;
     public final String name;
     public final long size;
     
     public a(FileSystem paramFileSystem, String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
     {
-      this.HRC = paramFileSystem;
-      this.EQk = paramString1;
+      this.Jsh = paramFileSystem;
+      this.Gnx = paramString1;
       this.name = paramString2;
       this.size = paramLong1;
-      this.HRz = paramLong2;
-      this.HRA = paramLong3;
-      this.HRB = paramBoolean;
+      this.Jse = paramLong2;
+      this.Jsf = paramLong3;
+      this.Jsg = paramBoolean;
     }
     
     public final boolean delete()
     {
       AppMethodBeat.i(13102);
-      if (this.HRB)
+      if (this.Jsg)
       {
-        bool = this.HRC.cO(this.EQk, false);
+        bool = this.Jsh.cU(this.Gnx, false);
         AppMethodBeat.o(13102);
         return bool;
       }
-      boolean bool = this.HRC.vv(this.EQk);
+      boolean bool = this.Jsh.zB(this.Gnx);
       AppMethodBeat.o(13102);
       return bool;
     }
@@ -92,8 +92,8 @@ public abstract interface FileSystem
     public final String toString()
     {
       AppMethodBeat.i(13103);
-      String str = this.EQk + " -> " + this.HRC.toString();
-      if (this.HRB)
+      String str = this.Gnx + " -> " + this.Jsh.toString();
+      if (this.Jsg)
       {
         str = "[DIR] ".concat(String.valueOf(str));
         AppMethodBeat.o(13103);
@@ -106,11 +106,11 @@ public abstract interface FileSystem
   
   public static final class b
   {
-    public long EWO;
-    public long EWQ;
-    public long EWR;
-    public long HRD;
-    public long byv;
+    public long Gua;
+    public long Guc;
+    public long Gud;
+    public long Jsi;
+    public long bwd;
   }
 }
 

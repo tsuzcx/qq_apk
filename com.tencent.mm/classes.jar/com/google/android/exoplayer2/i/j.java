@@ -5,81 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public static boolean aJ(String paramString)
+  public static boolean aE(String paramString)
   {
     AppMethodBeat.i(93140);
-    boolean bool = "audio".equals(aQ(paramString));
+    boolean bool = "audio".equals(aJ(paramString));
     AppMethodBeat.o(93140);
     return bool;
   }
   
-  public static boolean aK(String paramString)
+  public static boolean aF(String paramString)
   {
     AppMethodBeat.i(93141);
-    boolean bool = "video".equals(aQ(paramString));
+    boolean bool = "video".equals(aJ(paramString));
     AppMethodBeat.o(93141);
     return bool;
   }
   
-  public static boolean aL(String paramString)
+  public static boolean aG(String paramString)
   {
     AppMethodBeat.i(93142);
-    boolean bool = "text".equals(aQ(paramString));
+    boolean bool = "text".equals(aJ(paramString));
     AppMethodBeat.o(93142);
     return bool;
   }
   
-  public static String aM(String paramString)
-  {
-    AppMethodBeat.i(93143);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(93143);
-      return null;
-    }
-    paramString = paramString.split(",");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = aO(paramString[i]);
-      if ((str != null) && (aK(str)))
-      {
-        AppMethodBeat.o(93143);
-        return str;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(93143);
-    return null;
-  }
-  
-  public static String aN(String paramString)
-  {
-    AppMethodBeat.i(93144);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(93144);
-      return null;
-    }
-    paramString = paramString.split(",");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = aO(paramString[i]);
-      if ((str != null) && (aJ(str)))
-      {
-        AppMethodBeat.o(93144);
-        return str;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(93144);
-    return null;
-  }
-  
-  public static String aO(String paramString)
+  public static String aH(String paramString)
   {
     AppMethodBeat.i(93145);
     if (paramString == null)
@@ -147,7 +97,7 @@ public final class j
     return null;
   }
   
-  public static int aP(String paramString)
+  public static int aI(String paramString)
   {
     AppMethodBeat.i(93146);
     if (TextUtils.isEmpty(paramString))
@@ -155,17 +105,17 @@ public final class j
       AppMethodBeat.o(93146);
       return -1;
     }
-    if (aJ(paramString))
+    if (aE(paramString))
     {
       AppMethodBeat.o(93146);
       return 1;
     }
-    if (aK(paramString))
+    if (aF(paramString))
     {
       AppMethodBeat.o(93146);
       return 2;
     }
-    if ((aL(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString)))
+    if ((aG(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString)))
     {
       AppMethodBeat.o(93146);
       return 3;
@@ -179,7 +129,7 @@ public final class j
     return -1;
   }
   
-  private static String aQ(String paramString)
+  private static String aJ(String paramString)
   {
     AppMethodBeat.i(93147);
     if (paramString == null)

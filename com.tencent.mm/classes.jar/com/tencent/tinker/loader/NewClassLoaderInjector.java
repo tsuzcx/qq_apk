@@ -3,7 +3,7 @@ package com.tencent.tinker.loader;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build.VERSION;
-import com.tencent.tinker.loader.app.TinkerApplication;
+import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -130,7 +130,25 @@ final class NewClassLoaderInjector
   
   public static void triggerDex2Oat(Context paramContext, File paramFile, String... paramVarArgs)
   {
-    createNewClassLoader(paramContext, TinkerApplication.class.getClassLoader(), paramFile, paramVarArgs);
+    paramContext = new StringBuilder();
+    int j = 1;
+    int k = paramVarArgs.length;
+    int i = 0;
+    if (i < k)
+    {
+      paramFile = paramVarArgs[i];
+      if (j != 0) {
+        j = 0;
+      }
+      for (;;)
+      {
+        paramContext.append(paramFile);
+        i += 1;
+        break;
+        paramContext.append(File.pathSeparator);
+      }
+    }
+    new PathClassLoader(paramContext.toString(), ClassLoader.getSystemClassLoader());
   }
 }
 

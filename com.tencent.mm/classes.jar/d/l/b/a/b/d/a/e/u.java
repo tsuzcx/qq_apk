@@ -5,11 +5,11 @@ import d.l.b.a.b.a.h;
 public abstract interface u
   extends v
 {
-  public abstract h fBa();
+  public abstract h fTE();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.u
  * JD-Core Version:    0.7.0.1
  */

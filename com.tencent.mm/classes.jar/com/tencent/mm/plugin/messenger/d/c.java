@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.messenger.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 
 public final class c
 {
-  public static ArrayList<a> agU(String paramString)
+  public static ArrayList<a> alO(String paramString)
   {
     AppMethodBeat.i(90772);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.SysMsgTemplateParser", "hy: null text!!");
+      ac.w("MicroMsg.SysMsgTemplateParser", "hy: null text!!");
       AppMethodBeat.o(90772);
       return null;
     }

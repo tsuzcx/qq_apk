@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.emoji.b;
 
 import com.tencent.mm.kernel.b.a;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.av;
+import com.tencent.mm.storage.az;
 
 public abstract interface d
   extends a
 {
-  public abstract as getEmojiDescMgr();
+  public abstract av getEmojiDescMgr();
   
   public abstract com.tencent.mm.pluginsdk.a.d getEmojiMgr();
   
-  public abstract aw getEmojiStorageMgr();
+  public abstract az getEmojiStorageMgr();
   
   public abstract e getProvider();
   
@@ -22,7 +22,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.b.d
  * JD-Core Version:    0.7.0.1
  */

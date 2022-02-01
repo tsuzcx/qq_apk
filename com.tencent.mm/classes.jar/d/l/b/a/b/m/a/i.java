@@ -26,12 +26,12 @@ public abstract class i
   public static final class a
     extends i
   {
-    public static final a JYQ;
+    public static final a LMj;
     
     static
     {
       AppMethodBeat.i(61057);
-      JYQ = new a();
+      LMj = new a();
       AppMethodBeat.o(61057);
     }
     
@@ -39,9 +39,9 @@ public abstract class i
     {
       AppMethodBeat.i(61053);
       k.h(parame, "classDescriptor");
-      parame = parame.fxs();
+      parame = parame.fPW();
       k.g(parame, "classDescriptor.typeConstructor");
-      parame = parame.fzP();
+      parame = parame.fSt();
       k.g(parame, "classDescriptor.typeConstructor.supertypes");
       AppMethodBeat.o(61053);
       return parame;
@@ -74,7 +74,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.i
  * JD-Core Version:    0.7.0.1
  */

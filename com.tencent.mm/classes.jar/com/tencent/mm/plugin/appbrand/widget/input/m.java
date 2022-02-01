@@ -18,11 +18,11 @@ public final class m
   static final class a
     implements CharSequence
   {
-    private CharSequence mbN;
+    private CharSequence mDL;
     
     a(CharSequence paramCharSequence)
     {
-      this.mbN = paramCharSequence;
+      this.mDL = paramCharSequence;
     }
     
     public final char charAt(int paramInt)
@@ -33,7 +33,7 @@ public final class m
     public final int length()
     {
       AppMethodBeat.i(131501);
-      int i = this.mbN.length();
+      int i = this.mDL.length();
       AppMethodBeat.o(131501);
       return i;
     }
@@ -41,7 +41,7 @@ public final class m
     public final CharSequence subSequence(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(131502);
-      CharSequence localCharSequence = this.mbN.subSequence(paramInt1, paramInt2);
+      CharSequence localCharSequence = this.mDL.subSequence(paramInt1, paramInt2);
       AppMethodBeat.o(131502);
       return localCharSequence;
     }

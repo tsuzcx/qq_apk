@@ -17,10 +17,10 @@ public final class c
   extends BaseAdapter
   implements Filterable
 {
-  private List<String> ipH;
-  private ArrayList<String> ipI;
-  private a ipJ;
-  private String ipK;
+  private List<String> iPO;
+  private ArrayList<String> iPP;
+  private a iPQ;
+  private String iPR;
   private Context mContext;
   private final Object mLock;
   
@@ -29,15 +29,15 @@ public final class c
     AppMethodBeat.i(127871);
     this.mLock = new Object();
     this.mContext = paramContext;
-    this.ipH = Arrays.asList(paramArrayOfString);
-    this.ipK = paramString;
+    this.iPO = Arrays.asList(paramArrayOfString);
+    this.iPR = paramString;
     AppMethodBeat.o(127871);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(127873);
-    String str = (String)this.ipH.get(paramInt);
+    String str = (String)this.iPO.get(paramInt);
     AppMethodBeat.o(127873);
     return str;
   }
@@ -45,7 +45,7 @@ public final class c
   public final int getCount()
   {
     AppMethodBeat.i(127872);
-    int i = this.ipH.size();
+    int i = this.iPO.size();
     AppMethodBeat.o(127872);
     return i;
   }
@@ -53,10 +53,10 @@ public final class c
   public final Filter getFilter()
   {
     AppMethodBeat.i(127875);
-    if (this.ipJ == null) {
-      this.ipJ = new a((byte)0);
+    if (this.iPQ == null) {
+      this.iPQ = new a((byte)0);
     }
-    a locala = this.ipJ;
+    a locala = this.iPQ;
     AppMethodBeat.o(127875);
     return locala;
   }
@@ -73,13 +73,13 @@ public final class c
     {
       paramView = View.inflate(this.mContext, 2131493123, null);
       paramViewGroup = new b();
-      paramViewGroup.ss = ((TextView)paramView.findViewById(2131305754));
+      paramViewGroup.tr = ((TextView)paramView.findViewById(2131305754));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
       String str = getItem(paramInt);
-      paramViewGroup.ss.setText(str);
+      paramViewGroup.tr.setText(str);
       paramView.setBackgroundResource(2131231818);
       AppMethodBeat.o(127874);
       return paramView;
@@ -167,7 +167,7 @@ public final class c
   
   static final class b
   {
-    public TextView ss;
+    public TextView tr;
   }
 }
 

@@ -7,32 +7,32 @@ import com.tencent.mm.model.t;
 public final class c
   extends t
 {
-  private static c ieR;
+  private static c iFa;
   
   private c()
   {
     super(d.class);
   }
   
-  public static c aHL()
+  public static c aOC()
   {
     try
     {
       AppMethodBeat.i(153140);
-      if (ieR == null) {
-        ieR = new c();
+      if (iFa == null) {
+        iFa = new c();
       }
-      c localc = ieR;
+      c localc = iFa;
       AppMethodBeat.o(153140);
       return localc;
     }
     finally {}
   }
   
-  public final void qW(String paramString)
+  public final void ul(String paramString)
   {
     AppMethodBeat.i(153141);
-    super.qW(paramString);
+    super.ul(paramString);
     AppMethodBeat.o(153141);
   }
 }

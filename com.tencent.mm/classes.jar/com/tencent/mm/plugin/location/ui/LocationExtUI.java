@@ -11,23 +11,23 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
 
 public class LocationExtUI
   extends MMActivity
 {
-  private ArrayList<String> oHO;
-  private TextView sQA;
-  private String sQB;
-  private TextView sQz;
+  private ArrayList<String> plo;
+  private TextView tYM;
+  private TextView tYN;
+  private String tYO;
   
   public LocationExtUI()
   {
     AppMethodBeat.i(55812);
-    this.oHO = new ArrayList();
+    this.plo = new ArrayList();
     AppMethodBeat.o(55812);
   }
   
@@ -50,8 +50,8 @@ public class LocationExtUI
       if (paramIntent == null) {}
       for (paramIntent = "";; paramIntent = paramIntent.toString())
       {
-        this.sQB = paramIntent;
-        this.sQA.setText(this.sQB);
+        this.tYO = paramIntent;
+        this.tYN.setText(this.tYO);
         AppMethodBeat.o(55814);
         return;
       }
@@ -63,7 +63,7 @@ public class LocationExtUI
         AppMethodBeat.o(55814);
         return;
       }
-      this.oHO.clear();
+      this.plo.clear();
       String[] arrayOfString = paramIntent.getStringArrayExtra("key_fav_result_array");
       if ((arrayOfString == null) || (arrayOfString.length <= 0))
       {
@@ -71,16 +71,16 @@ public class LocationExtUI
         return;
       }
       paramIntent = arrayOfString[0];
-      this.oHO.add(arrayOfString[0]);
+      this.plo.add(arrayOfString[0]);
       String str = getResources().getString(2131759020);
       paramInt1 = 1;
       while (paramInt1 < arrayOfString.length)
       {
-        this.oHO.add(arrayOfString[paramInt1]);
+        this.plo.add(arrayOfString[paramInt1]);
         paramIntent = paramIntent + str + arrayOfString[paramInt1];
         paramInt1 += 1;
       }
-      this.sQz.setText(paramIntent);
+      this.tYM.setText(paramIntent);
       AppMethodBeat.o(55814);
       return;
     }
@@ -93,14 +93,14 @@ public class LocationExtUI
     AppMethodBeat.i(55813);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("Kwebmap_locaion");
-    if (bt.isNullOrNil(paramBundle)) {
+    if (bs.isNullOrNil(paramBundle)) {
       findViewById(2131301528).setVisibility(8);
     }
     for (;;)
     {
-      this.sQz = ((TextView)findViewById(2131305635));
-      this.sQA = ((TextView)findViewById(2131303977));
-      this.sQz.setOnClickListener(new View.OnClickListener()
+      this.tYM = ((TextView)findViewById(2131305635));
+      this.tYN = ((TextView)findViewById(2131303977));
+      this.tYM.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -111,7 +111,7 @@ public class LocationExtUI
           AppMethodBeat.o(55808);
         }
       });
-      this.sQA.setOnClickListener(new View.OnClickListener()
+      this.tYN.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -142,7 +142,7 @@ public class LocationExtUI
           AppMethodBeat.o(55810);
           return true;
         }
-      }, null, r.b.FOB);
+      }, null, s.b.Hom);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -167,7 +167,7 @@ public class LocationExtUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.LocationExtUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,98 +2,98 @@ package com.tencent.mm.game.report;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 final class d
 {
-  private static LinkedList<com.tencent.mm.game.report.api.b> fUG;
-  private static boolean fUH;
-  private static String fUI;
-  private static String fUJ;
+  private static LinkedList<com.tencent.mm.game.report.api.b> fYB;
+  private static boolean fYC;
+  private static String fYD;
+  private static String fYE;
   
   static
   {
     AppMethodBeat.i(108259);
-    fUG = new LinkedList();
-    fUI = "log_id";
-    fUJ = "log_ext";
+    fYB = new LinkedList();
+    fYD = "log_id";
+    fYE = "log_ext";
     AppMethodBeat.o(108259);
   }
   
   public static void a(com.tencent.mm.game.report.api.b paramb)
   {
     AppMethodBeat.i(108255);
-    if (aj.cbv())
+    if (ai.ciE())
     {
       b(paramb);
       AppMethodBeat.o(108255);
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putInt(fUI, paramb.fUL);
-    localBundle.putString(fUJ, paramb.fUM);
+    localBundle.putInt(fYD, paramb.fYG);
+    localBundle.putString(fYE, paramb.fYH);
     h.a("com.tencent.mm", localBundle, a.class, null);
     AppMethodBeat.o(108255);
   }
   
-  private static void acS()
+  private static void adY()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(108257);
-        if (fUH)
+        if (fYC)
         {
-          ad.i("MicroMsg.ReportService", "tryDoScene isBusy");
+          ac.i("MicroMsg.ReportService", "tryDoScene isBusy");
           AppMethodBeat.o(108257);
           return;
         }
-        if (bt.gL(fUG))
+        if (bs.gY(fYB))
         {
-          ad.i("MicroMsg.ReportService", "waitingList is null");
+          ac.i("MicroMsg.ReportService", "waitingList is null");
           AppMethodBeat.o(108257);
           continue;
         }
-        localb = (com.tencent.mm.game.report.api.b)fUG.remove(0);
+        localb = (com.tencent.mm.game.report.api.b)fYB.remove(0);
       }
       finally {}
       com.tencent.mm.game.report.api.b localb;
       if (localb != null)
       {
-        fUH = true;
+        fYC = true;
         b.a locala = new b.a();
         locala.uri = "/cgi-bin/micromsg-bin/gamereportkv";
         locala.funcId = 427;
         locala.reqCmdId = 0;
         locala.respCmdId = 0;
         com.tencent.mm.game.report.c.a locala1 = new com.tencent.mm.game.report.c.a();
-        locala1.fVv = com.tencent.mm.protocal.d.CpF;
-        locala1.fVw = com.tencent.mm.protocal.d.CpE;
-        locala1.fVx = com.tencent.mm.protocal.d.CpH;
-        locala1.fVy = com.tencent.mm.protocal.d.CpI;
-        locala1.fVz = ac.eFu();
-        locala1.fVA = localb.fUL;
-        locala1.fVB = localb.fUM;
-        locala.gUU = locala1;
-        locala.gUV = new com.tencent.mm.game.report.c.b();
-        x.a(locala.atI(), new x.a()
+        locala1.fZq = com.tencent.mm.protocal.d.DHX;
+        locala1.fZr = com.tencent.mm.protocal.d.DHW;
+        locala1.fZs = com.tencent.mm.protocal.d.DHZ;
+        locala1.fZt = com.tencent.mm.protocal.d.DIa;
+        locala1.fZu = ab.eUO();
+        locala1.fZv = localb.fYG;
+        locala1.fZw = localb.fYH;
+        locala.hvt = locala1;
+        locala.hvu = new com.tencent.mm.game.report.c.b();
+        x.a(locala.aAz(), new x.a()
         {
-          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
+          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
           {
             AppMethodBeat.i(108253);
-            ad.i("MicroMsg.ReportService", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            d.acT();
+            ac.i("MicroMsg.ReportService", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            d.adZ();
             d.access$100();
             AppMethodBeat.o(108253);
             return 0;
@@ -103,7 +103,7 @@ final class d
       }
       else
       {
-        acS();
+        adY();
         AppMethodBeat.o(108257);
       }
     }
@@ -116,9 +116,9 @@ final class d
       try
       {
         AppMethodBeat.i(108256);
-        if ((!g.afz().aeI()) || (com.tencent.mm.kernel.a.aeC()))
+        if ((!g.agP().afY()) || (com.tencent.mm.kernel.a.afS()))
         {
-          ad.w("MicroMsg.ReportService", "report, account not ready");
+          ac.w("MicroMsg.ReportService", "report, account not ready");
           AppMethodBeat.o(108256);
           return;
         }
@@ -127,10 +127,10 @@ final class d
           AppMethodBeat.o(108256);
           continue;
         }
-        fUG.add(paramb);
+        fYB.add(paramb);
       }
       finally {}
-      acS();
+      adY();
       AppMethodBeat.o(108256);
     }
   }

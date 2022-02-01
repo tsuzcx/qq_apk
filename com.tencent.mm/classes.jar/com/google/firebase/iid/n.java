@@ -16,7 +16,7 @@ final class n
   public final void handleMessage(Message paramMessage)
   {
     AppMethodBeat.i(4179);
-    m.a(this.bDy, paramMessage);
+    m.a(this.bBg, paramMessage);
     AppMethodBeat.o(4179);
   }
 }

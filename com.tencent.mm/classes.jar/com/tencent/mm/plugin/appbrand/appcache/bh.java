@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.a;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
 import com.tencent.mm.pluginsdk.h.a.c.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.util.HashMap;
@@ -17,33 +17,33 @@ import java.util.Set;
 
 public final class bh
 {
-  private static volatile bh iOM = null;
-  private final Map<String, Map<a, Boolean>> iON;
-  public final ax iOO;
+  private static volatile bh joV = null;
+  private final Map<String, Map<a, Boolean>> joW;
+  public final ax joX;
   
   public bh()
   {
     AppMethodBeat.i(90644);
-    this.iON = new android.support.v4.e.a();
-    this.iOO = new ax();
+    this.joW = new android.support.v4.e.a();
+    this.joX = new ax();
     AppMethodBeat.o(90644);
   }
   
-  static Map<a, Boolean> En(String paramString)
+  static Map<a, Boolean> Iq(String paramString)
   {
     AppMethodBeat.i(90649);
-    paramString = ae(paramString, true);
+    paramString = af(paramString, true);
     AppMethodBeat.o(90649);
     return paramString;
   }
   
-  private static Map<a, Boolean> Eo(String paramString)
+  private static Map<a, Boolean> Ir(String paramString)
   {
     AppMethodBeat.i(90651);
     Object localObject;
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
-      localObject = aQy();
+      localObject = aXq();
       if (localObject != null) {}
     }
     else
@@ -53,7 +53,7 @@ public final class bh
     }
     try
     {
-      localObject = (Map)((bh)localObject).iON.get(paramString);
+      localObject = (Map)((bh)localObject).joW.get(paramString);
       paramString = (String)localObject;
       if (localObject != null) {
         paramString = new HashMap((Map)localObject);
@@ -69,8 +69,8 @@ public final class bh
   static void a(String paramString, WxaPkgLoadProgress paramWxaPkgLoadProgress)
   {
     AppMethodBeat.i(90653);
-    ad.i("MicroMsg.AppBrand.WxaPkgUpdater", "hy: urlkey: %s, onProgressUpdate %s", new Object[] { paramString, paramWxaPkgLoadProgress });
-    Object localObject = Eo(paramString);
+    ac.i("MicroMsg.AppBrand.WxaPkgUpdater", "hy: urlkey: %s, onProgressUpdate %s", new Object[] { paramString, paramWxaPkgLoadProgress });
+    Object localObject = Ir(paramString);
     if (localObject != null)
     {
       paramString = ((Map)localObject).keySet().iterator();
@@ -78,13 +78,13 @@ public final class bh
       {
         localObject = (a)paramString.next();
         if (localObject != null) {
-          ((a)localObject).ci(paramWxaPkgLoadProgress);
+          ((a)localObject).cg(paramWxaPkgLoadProgress);
         }
       }
       AppMethodBeat.o(90653);
       return;
     }
-    ad.d("MicroMsg.AppBrand.WxaPkgUpdater", "callback progress, null callback urlKey = %s", new Object[] { paramString });
+    ac.d("MicroMsg.AppBrand.WxaPkgUpdater", "callback progress, null callback urlKey = %s", new Object[] { paramString });
     AppMethodBeat.o(90653);
   }
   
@@ -92,9 +92,9 @@ public final class bh
   {
     AppMethodBeat.i(90648);
     Object localObject;
-    if ((!bt.isNullOrNil(paramString)) && (parama != null))
+    if ((!bs.isNullOrNil(paramString)) && (parama != null))
     {
-      localObject = aQy();
+      localObject = aXq();
       if (localObject != null) {}
     }
     else
@@ -104,12 +104,12 @@ public final class bh
     }
     try
     {
-      Map localMap = (Map)((bh)localObject).iON.get(paramString);
+      Map localMap = (Map)((bh)localObject).joW.get(paramString);
       localObject = localMap;
       if (localMap == null)
       {
         localObject = new HashMap();
-        aQy().iON.put(paramString, localObject);
+        aXq().joW.put(paramString, localObject);
       }
       ((Map)localObject).put(parama, Boolean.TRUE);
       return;
@@ -123,9 +123,9 @@ public final class bh
   static void a(String paramString1, String paramString2, b.a.a parama)
   {
     AppMethodBeat.i(90660);
-    if (aQy() == null)
+    if (aXq() == null)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadFail, get instance null !!!");
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadFail, get instance null !!!");
       AppMethodBeat.o(90660);
       return;
     }
@@ -136,7 +136,7 @@ public final class bh
   static void a(String paramString1, String paramString2, b.a.a parama, b paramb)
   {
     AppMethodBeat.i(90659);
-    paramString1 = ae(paramString1, false);
+    paramString1 = af(paramString1, false);
     if (paramString1 != null)
     {
       paramString1 = paramString1.keySet().iterator();
@@ -150,93 +150,106 @@ public final class bh
       AppMethodBeat.o(90659);
       return;
     }
-    ad.d("MicroMsg.AppBrand.WxaPkgUpdater", "callback, null callback appId = %s", new Object[] { paramString2 });
+    ac.d("MicroMsg.AppBrand.WxaPkgUpdater", "callback, null callback appId = %s", new Object[] { paramString2 });
     AppMethodBeat.o(90659);
   }
   
   static void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, ac.a parama)
   {
     AppMethodBeat.i(90661);
-    boolean bool = j.a.nz(paramInt2);
-    if (aQy() == null)
+    boolean bool = j.a.on(paramInt2);
+    if (aXq() == null)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, get instance null !!!");
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, get instance null !!!");
       AppMethodBeat.o(90661);
       return;
     }
-    if (bt.isNullOrNil(paramString3))
+    if (bs.isNullOrNil(paramString3))
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, filePath is null or nil");
-      a(paramString1, paramString2, b.a.a.iPu, null);
-      parama.aPm();
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, filePath is null or nil");
+      a(paramString1, paramString2, b.a.a.jpE, null);
+      parama.aWe();
       AppMethodBeat.o(90661);
       return;
     }
     if (!new com.tencent.mm.vfs.e(paramString3).exists())
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, pkg file not exists");
-      a(paramString1, paramString2, b.a.a.iPu, null);
-      parama.aPm();
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, pkg file not exists");
+      a(paramString1, paramString2, b.a.a.jpE, null);
+      parama.aWe();
       AppMethodBeat.o(90661);
       return;
     }
-    if (((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk() == null)
+    if (((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa() == null)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, WxaPkgStorage is null");
-      bU(paramString1, paramString2);
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, WxaPkgStorage is null");
+      cd(paramString1, paramString2);
       AppMethodBeat.o(90661);
       return;
     }
     if (!bool) {}
-    Object localObject2;
+    Object localObject;
     for (int i = paramInt1;; i = 1)
     {
-      localObject2 = ((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk().a(paramString2, i, paramInt2, new String[0]);
-      if (localObject2 != null) {
+      localObject = ((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa().a(paramString2, i, paramInt2, new String[0]);
+      if (localObject != null) {
         break;
       }
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, no manifest record!!! with given appId(%s) version(%d) debugType(%d)", new Object[] { paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      a(paramString1, paramString2, b.a.a.iPt, null);
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, no manifest record!!! with given appId(%s) version(%d) debugType(%d)", new Object[] { paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      a(paramString1, paramString2, b.a.a.jpD, null);
       AppMethodBeat.o(90661);
       return;
     }
-    parama.aPn();
-    if (!bt.isNullOrNil(paramString2))
+    parama.aWf();
+    String[] arrayOfString;
+    int j;
+    if (!bs.isNullOrNil(paramString2))
     {
-      Object localObject1 = new com.tencent.mm.vfs.e(paramString3);
-      localObject2 = ((bb)localObject2).field_versionMd5;
-      localObject1 = WxaPkgIntegrityChecker.Eg(q.B(((com.tencent.mm.vfs.e)localObject1).fhU()));
-      if (!bt.nullAsNil((String)localObject2).equals(localObject1))
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(paramString3);
+      arrayOfString = new String[2];
+      arrayOfString[0] = ((bb)localObject).field_versionMd5;
+      arrayOfString[1] = ((bb)localObject).field_NewMd5;
+      localObject = WxaPkgIntegrityChecker.Ij(q.B(locale.fxV()));
+      j = 0;
+      if (j < 2)
       {
-        ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, appId(%s) record.md5(%s) != file.md5(%s)", new Object[] { paramString2, localObject2, localObject1 });
-        bool = false;
+        locale = arrayOfString[j];
+        if ((!TextUtils.isEmpty(locale)) && (locale.equals(localObject)))
+        {
+          ac.i("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete$verifyPkg, appId[%s] verify ok with checksumMd5[%s]", new Object[] { paramString2, locale });
+          bool = true;
+        }
       }
     }
     for (;;)
     {
-      parama.fj(bool);
+      parama.fF(bool);
       if (bool) {
-        break;
+        break label441;
       }
       i.deleteFile(paramString3);
-      a(paramString1, paramString2, b.a.a.iPx, null);
+      a(paramString1, paramString2, b.a.a.jpG, null);
       AppMethodBeat.o(90661);
       return;
-      bool = true;
+      j += 1;
+      break;
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete$verifyPkg, appId[%s] checksumMd5List[%s] != file.md5[%s]", new Object[] { paramString2, org.apache.commons.b.g.a(arrayOfString, ","), localObject });
+      bool = false;
       continue;
       bool = false;
     }
-    ad.i("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, update ret = %b, appId = %s, debugType = %d, pkgVersion = %d, String filePath = %s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk().d(paramString2, paramInt2, i, paramString3)), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString3 });
-    a(paramString1, paramString2, b.a.a.iPs, new b(paramString2, paramString3, paramInt1, paramInt2));
+    label441:
+    ac.i("MicroMsg.AppBrand.WxaPkgUpdater", "onDownloadComplete, update ret = %b, appId = %s, debugType = %d, pkgVersion = %d, String filePath = %s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa().e(paramString2, paramInt2, i, paramString3)), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(i), paramString3 });
+    a(paramString1, paramString2, b.a.a.jpC, new b(paramString2, paramString3, paramInt1, paramInt2));
     AppMethodBeat.o(90661);
   }
   
   static boolean a(com.tencent.mm.plugin.appbrand.appcache.a.a parama, a parama1)
   {
     AppMethodBeat.i(90654);
-    if (aQy() == null)
+    if (aXq() == null)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadPkg, get null updater instance!!!");
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadPkg, get null updater instance!!!");
       AppMethodBeat.o(90654);
       return false;
     }
@@ -245,11 +258,11 @@ public final class bh
       AppMethodBeat.o(90654);
       return false;
     }
-    a(parama.BRL, parama1);
-    int i = aQy().iOO.b(parama);
+    a(parama.Dkb, parama1);
+    int i = aXq().joX.b(parama);
     if ((i != 0) && (i != 2))
     {
-      a(parama.BRL, parama.appId, b.a.a.iPA, null);
+      a(parama.Dkb, parama.appId, b.a.a.jpJ, null);
       AppMethodBeat.o(90654);
       return false;
     }
@@ -261,14 +274,14 @@ public final class bh
   {
     Object localObject2 = null;
     AppMethodBeat.i(90655);
-    if (aQy() == null)
+    if (aXq() == null)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadPkg, get null updater instance!!!");
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadPkg, get null updater instance!!!");
       AppMethodBeat.o(90655);
       return false;
     }
     Object localObject1;
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2))) {
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2))) {
       localObject1 = null;
     }
     while (localObject1 == null)
@@ -277,7 +290,7 @@ public final class bh
       if (localObject1 != null) {
         break label346;
       }
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadPkg, create Null request, appId %s, pkgType %d, pkgVersion %d, url %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadPkg, create Null request, appId %s, pkgType %d, pkgVersion %d, url %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
       AppMethodBeat.o(90655);
       return false;
       switch (paramInt1)
@@ -310,7 +323,7 @@ public final class bh
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.appbrand.appcache.a.a)localObject1).iPr = bool;
+      ((com.tencent.mm.plugin.appbrand.appcache.a.a)localObject1).jpB = bool;
       if (paramInt3 > 2097152)
       {
         ((com.tencent.mm.plugin.appbrand.appcache.a.a)localObject1).setReadTimeout(((com.tencent.mm.plugin.appbrand.appcache.a.a)localObject1).getReadTimeout() * 2);
@@ -348,9 +361,9 @@ public final class bh
   public static boolean a(String paramString1, int paramInt, String paramString2, a parama, a.a parama1)
   {
     AppMethodBeat.i(90658);
-    if (aQy() == null)
+    if (aXq() == null)
     {
-      ad.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadDebugPkg with keyGen, get null updater instance!!!");
+      ac.e("MicroMsg.AppBrand.WxaPkgUpdater", "startDownloadDebugPkg with keyGen, get null updater instance!!!");
       AppMethodBeat.o(90658);
       return false;
     }
@@ -359,22 +372,22 @@ public final class bh
     return bool;
   }
   
-  public static bh aQy()
+  public static bh aXq()
   {
     AppMethodBeat.i(90645);
-    if (((com.tencent.mm.plugin.appbrand.a.e)g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aOk() == null)
+    if (((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa() == null)
     {
-      iOM = null;
+      joV = null;
       AppMethodBeat.o(90645);
       return null;
     }
-    if (iOM == null) {}
+    if (joV == null) {}
     try
     {
-      if (iOM == null) {
-        iOM = new bh();
+      if (joV == null) {
+        joV = new bh();
       }
-      bh localbh = iOM;
+      bh localbh = joV;
       AppMethodBeat.o(90645);
       return localbh;
     }
@@ -384,13 +397,13 @@ public final class bh
     }
   }
   
-  private static Map<a, Boolean> ae(String paramString, boolean paramBoolean)
+  private static Map<a, Boolean> af(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(90650);
     bh localbh;
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
-      localbh = aQy();
+      localbh = aXq();
       if (localbh != null) {}
     }
     else
@@ -399,11 +412,11 @@ public final class bh
       return null;
     }
     if (paramBoolean) {
-      ad.i("MicroMsg.AppBrand.WxaPkgUpdater", "removeCallbacks, key[%s]", new Object[] { paramString });
+      ac.i("MicroMsg.AppBrand.WxaPkgUpdater", "removeCallbacks, key[%s]", new Object[] { paramString });
     }
     try
     {
-      paramString = (Map)localbh.iON.remove(paramString);
+      paramString = (Map)localbh.joW.remove(paramString);
       return paramString;
     }
     finally
@@ -420,10 +433,10 @@ public final class bh
     return bool;
   }
   
-  static void bU(String paramString1, String paramString2)
+  static void cd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(90652);
-    a(paramString1, paramString2, b.a.a.iPA, null);
+    a(paramString1, paramString2, b.a.a.jpJ, null);
     AppMethodBeat.o(90652);
   }
   
@@ -432,10 +445,10 @@ public final class bh
     AppMethodBeat.i(90646);
     try
     {
-      bh localbh = iOM;
-      iOM = null;
+      bh localbh = joV;
+      joV = null;
       if (localbh != null) {
-        localbh.iOO.iNG.shutdown();
+        localbh.joX.jnO.shutdown();
       }
       AppMethodBeat.o(90646);
       return;
@@ -454,7 +467,7 @@ public final class bh
   {
     public final String appId;
     public final String filePath;
-    public final int iOP;
+    public final int joY;
     public final int version;
     
     public b(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -462,13 +475,13 @@ public final class bh
       this.appId = paramString1;
       this.filePath = paramString2;
       this.version = paramInt1;
-      this.iOP = paramInt2;
+      this.joY = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bh
  * JD-Core Version:    0.7.0.1
  */

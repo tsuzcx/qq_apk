@@ -15,18 +15,18 @@ import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.i.a.a.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class c
 {
-  com.tencent.mm.pluginsdk.i.a.a Hgt;
+  com.tencent.mm.pluginsdk.i.a.a IGM;
   
   c(com.tencent.mm.pluginsdk.i.a.a parama)
   {
-    this.Hgt = parama;
+    this.IGM = parama;
   }
   
   private static Drawable a(Map<String, String> paramMap, Context paramContext)
@@ -37,24 +37,24 @@ public final class c
       AppMethodBeat.o(38771);
       return null;
     }
-    Object localObject2 = (String)paramMap.get(BackwardSupportUtil.b.id(paramContext));
+    Object localObject2 = (String)paramMap.get(BackwardSupportUtil.b.io(paramContext));
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = (String)paramMap.get(BackwardSupportUtil.b.ic(paramContext));
+      localObject1 = (String)paramMap.get(BackwardSupportUtil.b.in(paramContext));
     }
-    if (bt.nullAsNil((String)localObject1).length() <= 0)
+    if (bs.nullAsNil((String)localObject1).length() <= 0)
     {
       AppMethodBeat.o(38771);
       return null;
     }
-    localObject2 = com.tencent.mm.pluginsdk.i.a.a.aBv((String)localObject1);
-    if (localObject2 == a.a.BTY)
+    localObject2 = com.tencent.mm.pluginsdk.i.a.a.aGN((String)localObject1);
+    if (localObject2 == a.a.Dmo)
     {
       AppMethodBeat.o(38771);
       return null;
     }
-    localObject1 = com.tencent.mm.pluginsdk.i.a.a.aBu((String)localObject1);
-    if (bt.nullAsNil((String)localObject1).length() <= 0)
+    localObject1 = com.tencent.mm.pluginsdk.i.a.a.aGM((String)localObject1);
+    if (bs.nullAsNil((String)localObject1).length() <= 0)
     {
       AppMethodBeat.o(38771);
       return null;
@@ -63,19 +63,19 @@ public final class c
     {
       try
       {
-        if (localObject2 == a.a.BTW)
+        if (localObject2 == a.a.Dmm)
         {
-          paramMap = BackwardSupportUtil.b.b(paramContext.getAssets().open((String)localObject1), com.tencent.mm.cd.a.getDensity(paramContext));
+          paramMap = BackwardSupportUtil.b.b(paramContext.getAssets().open((String)localObject1), com.tencent.mm.cc.a.getDensity(paramContext));
           if (paramMap == null)
           {
-            ad.e("MicroMsg.ADListView.Message", "get Bitmap failed type:" + localObject2 + " path:" + (String)localObject1);
+            ac.e("MicroMsg.ADListView.Message", "get Bitmap failed type:" + localObject2 + " path:" + (String)localObject1);
             AppMethodBeat.o(38771);
             return null;
           }
         }
         else
         {
-          paramMap = BackwardSupportUtil.b.n((String)localObject1, com.tencent.mm.cd.a.getDensity(paramContext));
+          paramMap = BackwardSupportUtil.b.n((String)localObject1, com.tencent.mm.cc.a.getDensity(paramContext));
           continue;
         }
         localObject1 = paramMap.getNinePatchChunk();
@@ -92,7 +92,7 @@ public final class c
         {
           if (paramMap != localObject1)
           {
-            ad.i("MicroMsg.ADListView.Message", "recycle bitmap:%s", new Object[] { paramMap });
+            ac.i("MicroMsg.ADListView.Message", "recycle bitmap:%s", new Object[] { paramMap });
             paramMap.recycle();
           }
         }
@@ -106,7 +106,7 @@ public final class c
       }
       catch (Exception paramMap)
       {
-        ad.printErrStackTrace("MicroMsg.ADListView.Message", paramMap, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ADListView.Message", paramMap, "", new Object[0]);
         AppMethodBeat.o(38771);
         return null;
       }
@@ -122,7 +122,7 @@ public final class c
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      if (paramd.Hgv == null) {
+      if (paramd.IGO == null) {
         break label68;
       }
     }
@@ -131,7 +131,7 @@ public final class c
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      localDrawable = a(this.Hgt.BTU, paramd.Hgu.getContext());
+      localDrawable = a(this.IGM.Dmk, paramd.IGN.getContext());
       if (localDrawable != null) {
         break label73;
       }
@@ -141,9 +141,9 @@ public final class c
       break;
     }
     label73:
-    paramd.Hgu.setBackgroundDrawable(localDrawable);
-    paramd = paramd.Hgv;
-    if (this.Hgt.BTP) {}
+    paramd.IGN.setBackgroundDrawable(localDrawable);
+    paramd = paramd.IGO;
+    if (this.IGM.Dmf) {}
     for (int i = 0;; i = 8)
     {
       paramd.setVisibility(i);
@@ -154,7 +154,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,63 +10,63 @@ import com.tencent.mars.smc.SmcLogic.BaseInfo;
 import com.tencent.mars.smc.SmcLogic.ICallBack;
 import com.tencent.mars.smc.SmcProtoBufUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.report.b.h;
-import com.tencent.mm.protocal.protobuf.bhg;
+import com.tencent.mm.plugin.report.c.h;
+import com.tencent.mm.protocal.protobuf.bky;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import java.util.Map;
 
 public final class j
   implements SmcLogic.ICallBack
 {
-  public static IKVReportNotify vKM = null;
+  public static IKVReportNotify wUQ = null;
   
-  public static void amw(String paramString)
+  public static void arD(String paramString)
   {
     AppMethodBeat.i(143926);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.SmcCallBack", "msg content is null");
+      ac.w("MicroMsg.SmcCallBack", "msg content is null");
       AppMethodBeat.o(143926);
       return;
     }
-    ad.i("MicroMsg.SmcCallBack", "receive msg: ".concat(String.valueOf(paramString)));
-    Map localMap = bw.K(paramString, "sysmsg");
+    ac.i("MicroMsg.SmcCallBack", "receive msg: ".concat(String.valueOf(paramString)));
+    Map localMap = bv.L(paramString, "sysmsg");
     if ((localMap == null) || (localMap.size() == 0))
     {
-      ad.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
+      ac.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(143926);
       return;
     }
     String str = (String)localMap.get(".sysmsg.$type");
-    if ((bt.isNullOrNil(str)) || (!str.equalsIgnoreCase("getkvidkeystg")))
+    if ((bs.isNullOrNil(str)) || (!str.equalsIgnoreCase("getkvidkeystg")))
     {
-      ad.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
+      ac.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(143926);
       return;
     }
-    long l1 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.generalversion"), -1L);
-    long l2 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.specialversion"), -1L);
-    long l3 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.whiteorblackuinversion"), -1L);
-    long l4 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.timeinterval"), -1L);
-    long l5 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvgeneralversion"), -1L);
-    long l6 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvspecialversion"), -1L);
-    long l7 = bt.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvwhiteorblackuinversion"), -1L);
+    long l1 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.generalversion"), -1L);
+    long l2 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.specialversion"), -1L);
+    long l3 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.whiteorblackuinversion"), -1L);
+    long l4 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.timeinterval"), -1L);
+    long l5 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvgeneralversion"), -1L);
+    long l6 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvspecialversion"), -1L);
+    long l7 = bs.getLong((String)localMap.get(".sysmsg.getkvidkeystg.kvwhiteorblackuinversion"), -1L);
     if ((l1 == -1L) || (l2 == -1L) || (l3 == -1L) || (l4 == -1L) || (-1L == l5) || (-1L == l6) || (-1L == l7))
     {
-      ad.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
+      ac.e("MicroMsg.SmcCallBack", "plugin msg parse fail:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(143926);
       return;
     }
-    ad.i("MicroMsg.SmcCallBack", "plugin msg version:" + l1 + ", " + l2 + ", " + l3);
+    ac.i("MicroMsg.SmcCallBack", "plugin msg version:" + l1 + ", " + l2 + ", " + l3);
     SmcLogic.OnPluginMsg(l5, l6, l7, l1, l2, l4);
     AppMethodBeat.o(143926);
   }
@@ -74,10 +74,10 @@ public final class j
   public final boolean OnSelfMonitorOpLogReady(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(143923);
-    g.afz();
-    if (!a.aeH())
+    g.agP();
+    if (!a.afX())
     {
-      ad.e("MicroMsg.SmcCallBack", "onReportKVDaSelfMonitorOpLogReady account not ready");
+      ac.e("MicroMsg.SmcCallBack", "onReportKVDaSelfMonitorOpLogReady account not ready");
       AppMethodBeat.o(143923);
       return false;
     }
@@ -86,19 +86,19 @@ public final class j
       com.tencent.mm.protocal.a.a.k localk = new com.tencent.mm.protocal.a.a.k();
       localk.parseFrom(paramArrayOfByte);
       paramArrayOfByte = SmcProtoBufUtil.toMMSelfMonitor(localk);
-      if (paramArrayOfByte.DFc <= 0)
+      if (paramArrayOfByte.Faw <= 0)
       {
-        ad.e("KVReportJni", "error selfmonitor count");
+        ac.e("KVReportJni", "error selfmonitor count");
         AppMethodBeat.o(143923);
         return true;
       }
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new j.a(202, paramArrayOfByte));
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new j.a(202, paramArrayOfByte));
       AppMethodBeat.o(143923);
       return true;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("KVReportJni", paramArrayOfByte.getMessage());
+      ac.e("KVReportJni", paramArrayOfByte.getMessage());
       AppMethodBeat.o(143923);
     }
     return false;
@@ -108,7 +108,7 @@ public final class j
   {
     AppMethodBeat.i(143925);
     String str = AppLogic.getAppFilePath() + "/kvcomm/";
-    ad.i("MicroMsg.SmcCallBack", "[TEST-PATH (Smc)]path:" + AppLogic.getAppFilePath());
+    ac.i("MicroMsg.SmcCallBack", "[TEST-PATH (Smc)]path:" + AppLogic.getAppFilePath());
     AppMethodBeat.o(143925);
     return str;
   }
@@ -121,7 +121,7 @@ public final class j
     localBaseInfo.deviceBrand = Build.BRAND;
     localBaseInfo.osName = ("android-" + Build.MANUFACTURER);
     localBaseInfo.osVersion = Build.VERSION.SDK_INT;
-    localBaseInfo.languageVer = ac.eFu();
+    localBaseInfo.languageVer = ab.eUO();
     AppMethodBeat.o(143924);
     return localBaseInfo;
   }
@@ -133,19 +133,19 @@ public final class j
   
   public final void onReportDataReady(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString)
   {
-    AppMethodBeat.i(193475);
+    AppMethodBeat.i(206469);
     try
     {
-      if ((vKM != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
-        vKM.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
+      if ((wUQ != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length > 0)) {
+        wUQ.onReportKVDataReady(paramArrayOfByte1, paramArrayOfByte2, paramInt);
       }
-      AppMethodBeat.o(193475);
+      AppMethodBeat.o(206469);
       return;
     }
     catch (Exception paramArrayOfByte1)
     {
-      ad.e("KVReportJni", paramArrayOfByte1.getMessage());
-      AppMethodBeat.o(193475);
+      ac.e("KVReportJni", paramArrayOfByte1.getMessage());
+      AppMethodBeat.o(206469);
     }
   }
   
@@ -154,9 +154,9 @@ public final class j
     AppMethodBeat.i(143922);
     try
     {
-      if ((com.tencent.mm.sdk.platformtools.i.ETy) && (aj.getContext().getSharedPreferences(aj.eFD(), 0).getBoolean("gprs_alert", true)))
+      if ((com.tencent.mm.sdk.platformtools.i.GqL) && (ai.getContext().getSharedPreferences(ai.eUX(), 0).getBoolean("gprs_alert", true)))
       {
-        ad.i("MicroMsg.SmcCallBack", "onRequestGetStrategy gprs alert return false");
+        ac.i("MicroMsg.SmcCallBack", "onRequestGetStrategy gprs alert return false");
         AppMethodBeat.o(143922);
         return false;
       }
@@ -164,11 +164,11 @@ public final class j
       {
         if (h.isRunning())
         {
-          ad.i("KVReportJni", "already running");
+          ac.i("KVReportJni", "already running");
           return false;
         }
         paramArrayOfByte = new h();
-        g.afA().gcy.a(paramArrayOfByte, 0);
+        g.agQ().ghe.a(paramArrayOfByte, 0);
         return true;
       }
       finally
@@ -179,14 +179,14 @@ public final class j
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("KVReportJni", "onRequestGetStrategy error: " + paramArrayOfByte.getMessage());
+      ac.e("KVReportJni", "onRequestGetStrategy error: " + paramArrayOfByte.getMessage());
       AppMethodBeat.o(143922);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.j
  * JD-Core Version:    0.7.0.1
  */

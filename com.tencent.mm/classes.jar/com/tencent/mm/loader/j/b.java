@@ -2,52 +2,52 @@ package com.tencent.mm.loader.j;
 
 import android.content.Context;
 import android.os.Environment;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.io.File;
 
 public final class b
 {
-  private static final String[] gmb = { null };
-  private static final String[] gmc = { null };
-  private static final String[] gmd = { null };
-  private static final String[] gme = { null };
-  private static final String[] gmf = { null };
-  private static final String[] gmg = { null };
+  private static final String[] gMO = { null };
+  private static final String[] gMP = { null };
+  private static final String[] gMQ = { null };
+  private static final String[] gMR = { null };
+  private static final String[] gMS = { null };
+  private static final String[] gMT = { null };
   
-  public static String ahX()
+  public static String aoX()
   {
     try
     {
-      if (gmb[0] == null) {
-        gmb[0] = "/tencent/MicroMsg/";
+      if (gMO[0] == null) {
+        gMO[0] = "/tencent/MicroMsg/";
       }
-      String str = gmb[0];
+      String str = gMO[0];
       return str;
     }
     finally {}
   }
   
-  public static String ahY()
+  public static String aoY()
   {
     try
     {
-      if (gmd[0] != null) {
+      if (gMQ[0] != null) {
         break label68;
       }
-      Context localContext = aj.getContext();
+      Context localContext = ai.getContext();
       if (localContext == null) {
         throw new RuntimeException("MMApplicationContext not initialized.");
       }
     }
     finally {}
-    gmd[0] = (localObject.getFilesDir().getParentFile().getAbsolutePath() + "/");
+    gMQ[0] = (localObject.getFilesDir().getParentFile().getAbsolutePath() + "/");
     label68:
-    String str = gmd[0];
+    String str = gMQ[0];
     return str;
   }
   
   /* Error */
-  public static String ahZ()
+  public static String aoZ()
   {
     // Byte code:
     //   0: ldc 2
@@ -55,7 +55,7 @@ public final class b
     //   3: new 49	java/lang/StringBuilder
     //   6: dup
     //   7: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   10: invokestatic 79	com/tencent/mm/loader/j/b:ahY	()Ljava/lang/String;
+    //   10: invokestatic 79	com/tencent/mm/loader/j/b:aoY	()Ljava/lang/String;
     //   13: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: ldc 81
     //   18: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -96,11 +96,11 @@ public final class b
     //   25	46	57	java/lang/Throwable
   }
   
-  public static String aiA()
+  public static String apA()
   {
     try
     {
-      String str = aih() + "card/";
+      String str = aph() + "card/";
       return str;
     }
     finally
@@ -110,11 +110,11 @@ public final class b
     }
   }
   
-  public static String aiB()
+  public static String apB()
   {
     try
     {
-      String str = aih() + "CheckResUpdate/";
+      String str = aph() + "CheckResUpdate/";
       return str;
     }
     finally
@@ -124,11 +124,11 @@ public final class b
     }
   }
   
-  public static String aiC()
+  public static String apC()
   {
     try
     {
-      String str = aih() + "crash/";
+      String str = aph() + "crash/";
       return str;
     }
     finally
@@ -138,11 +138,11 @@ public final class b
     }
   }
   
-  public static String aiD()
+  public static String apD()
   {
     try
     {
-      String str = aih() + "diskcache/";
+      String str = aph() + "diskcache/";
       return str;
     }
     finally
@@ -152,11 +152,11 @@ public final class b
     }
   }
   
-  public static String aiE()
+  public static String apE()
   {
     try
     {
-      String str = aih() + "FailMsgFileCache/";
+      String str = aph() + "FailMsgFileCache/";
       return str;
     }
     finally
@@ -166,11 +166,11 @@ public final class b
     }
   }
   
-  public static String aiF()
+  public static String apF()
   {
     try
     {
-      String str = aih() + "fts/";
+      String str = aph() + "fts/";
       return str;
     }
     finally
@@ -180,11 +180,11 @@ public final class b
     }
   }
   
-  public static String aiG()
+  public static String apG()
   {
     try
     {
-      String str = aih() + "Handler/";
+      String str = aph() + "Handler/";
       return str;
     }
     finally
@@ -194,11 +194,11 @@ public final class b
     }
   }
   
-  public static String aiH()
+  public static String apH()
   {
     try
     {
-      String str = aih() + "MixAudio/";
+      String str = aph() + "MixAudio/";
       return str;
     }
     finally
@@ -208,11 +208,11 @@ public final class b
     }
   }
   
-  public static String aiI()
+  public static String apI()
   {
     try
     {
-      String str = aih() + "preloadedRes/";
+      String str = aph() + "preloadedRes/";
       return str;
     }
     finally
@@ -222,11 +222,11 @@ public final class b
     }
   }
   
-  public static String aiJ()
+  public static String apJ()
   {
     try
     {
-      String str = aih() + "recovery/";
+      String str = aph() + "recovery/";
       return str;
     }
     finally
@@ -236,11 +236,11 @@ public final class b
     }
   }
   
-  public static String aiK()
+  public static String apK()
   {
     try
     {
-      String str = aih() + "share/";
+      String str = aph() + "share/";
       return str;
     }
     finally
@@ -250,11 +250,11 @@ public final class b
     }
   }
   
-  public static String aiL()
+  public static String apL()
   {
     try
     {
-      String str = aiK() + "upload_cache/";
+      String str = apK() + "upload_cache/";
       return str;
     }
     finally
@@ -264,11 +264,11 @@ public final class b
     }
   }
   
-  public static String aiM()
+  public static String apM()
   {
     try
     {
-      String str = aih() + "sns_ad_landingpages/";
+      String str = aph() + "sns_ad_landingpages/";
       return str;
     }
     finally
@@ -278,11 +278,11 @@ public final class b
     }
   }
   
-  public static String aiN()
+  public static String apN()
   {
     try
     {
-      String str = aih() + "SQLTrace/";
+      String str = aph() + "SQLTrace/";
       return str;
     }
     finally
@@ -292,11 +292,11 @@ public final class b
     }
   }
   
-  public static String aiO()
+  public static String apO()
   {
     try
     {
-      String str = aih() + "tracedog/";
+      String str = aph() + "tracedog/";
       return str;
     }
     finally
@@ -306,11 +306,11 @@ public final class b
     }
   }
   
-  public static String aiP()
+  public static String apP()
   {
     try
     {
-      String str = aih() + "vproxy/";
+      String str = aph() + "vproxy/";
       return str;
     }
     finally
@@ -320,11 +320,11 @@ public final class b
     }
   }
   
-  public static String aiQ()
+  public static String apQ()
   {
     try
     {
-      String str = aih() + "wagamefiles/";
+      String str = aph() + "wagamefiles/";
       return str;
     }
     finally
@@ -334,11 +334,11 @@ public final class b
     }
   }
   
-  public static String aiR()
+  public static String apR()
   {
     try
     {
-      String str = aih() + "wallet/";
+      String str = aph() + "wallet/";
       return str;
     }
     finally
@@ -348,11 +348,11 @@ public final class b
     }
   }
   
-  public static String aiS()
+  public static String apS()
   {
     try
     {
-      String str = aih() + "wepkg/";
+      String str = aph() + "wepkg/";
       return str;
     }
     finally
@@ -362,11 +362,11 @@ public final class b
     }
   }
   
-  public static String aiT()
+  public static String apT()
   {
     try
     {
-      String str = aih() + "wxacache/";
+      String str = aph() + "wxacache/";
       return str;
     }
     finally
@@ -376,11 +376,11 @@ public final class b
     }
   }
   
-  public static String aiU()
+  public static String apU()
   {
     try
     {
-      String str = aih() + "wxafiles/";
+      String str = aph() + "wxafiles/";
       return str;
     }
     finally
@@ -390,11 +390,11 @@ public final class b
     }
   }
   
-  public static String aiV()
+  public static String apV()
   {
     try
     {
-      String str = aih() + "wxajscahce/";
+      String str = aph() + "wxajscahce/";
       return str;
     }
     finally
@@ -404,11 +404,11 @@ public final class b
     }
   }
   
-  public static String aiW()
+  public static String apW()
   {
     try
     {
-      String str = aih() + "wxanewfiles/";
+      String str = aph() + "wxanewfiles/";
       return str;
     }
     finally
@@ -418,11 +418,11 @@ public final class b
     }
   }
   
-  public static String aiX()
+  public static String apX()
   {
     try
     {
-      String str = aih() + "temp_video_cache";
+      String str = aph() + "temp_video_cache";
       return str;
     }
     finally
@@ -432,11 +432,11 @@ public final class b
     }
   }
   
-  public static String aiY()
+  public static String apY()
   {
     try
     {
-      String str = aih() + "egg_spring/";
+      String str = aph() + "egg_spring/";
       return str;
     }
     finally
@@ -446,11 +446,11 @@ public final class b
     }
   }
   
-  public static String aiZ()
+  public static String apZ()
   {
     try
     {
-      String str = aih() + "wxvideocache/";
+      String str = aph() + "wxvideocache/";
       return str;
     }
     finally
@@ -460,11 +460,11 @@ public final class b
     }
   }
   
-  public static String aia()
+  public static String apa()
   {
     try
     {
-      String str = ahY() + "files/public/";
+      String str = aoY() + "files/public/";
       return str;
     }
     finally
@@ -474,30 +474,30 @@ public final class b
     }
   }
   
-  public static String aib()
+  public static String apb()
   {
     try
     {
-      if (gme[0] == null) {
-        gme[0] = aic();
+      if (gMR[0] == null) {
+        gMR[0] = apc();
       }
-      String str = gme[0];
+      String str = gMR[0];
       return str;
     }
     finally {}
   }
   
-  public static String aic()
+  public static String apc()
   {
     for (;;)
     {
       String[] arrayOfString;
       try
       {
-        if (gmf[0] == null)
+        if (gMS[0] == null)
         {
-          arrayOfString = gmf;
-          if (aj.eFI())
+          arrayOfString = gMS;
+          if (ai.eVc())
           {
             str = "/sdcard";
             break label54;
@@ -505,7 +505,7 @@ public final class b
         }
         else
         {
-          str = gmf[0];
+          str = gMS[0];
           return str;
         }
         String str = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -516,25 +516,25 @@ public final class b
     }
   }
   
-  public static String aid()
+  public static String apd()
   {
     try
     {
-      if (gmg[0] == null) {
-        gmg[0] = new File(aie()).getParentFile().getAbsolutePath();
+      if (gMT[0] == null) {
+        gMT[0] = new File(ape()).getParentFile().getAbsolutePath();
       }
-      String str = gmg[0];
+      String str = gMT[0];
       return str;
     }
     finally {}
   }
   
-  private static String aie()
+  private static String ape()
   {
     Object localObject1 = null;
     try
     {
-      localObject5 = aj.getContext();
+      localObject5 = ai.getContext();
       if (localObject5 == null) {
         throw new RuntimeException("MMApplicationContext not initialized.");
       }
@@ -565,7 +565,7 @@ public final class b
     Object localObject5 = localObject2;
     if (localObject2 == null)
     {
-      if (!aj.eFI()) {
+      if (!ai.eVc()) {
         break label121;
       }
       localObject3 = Environment.getExternalStorageDirectory();
@@ -599,11 +599,11 @@ public final class b
     }
   }
   
-  public static String aif()
+  public static String apf()
   {
     try
     {
-      String str = aie() + "/image/";
+      String str = ape() + "/image/";
       return str;
     }
     finally
@@ -613,11 +613,11 @@ public final class b
     }
   }
   
-  public static String aig()
+  public static String apg()
   {
     try
     {
-      String str = aic() + "/tencent/MicroMsg/";
+      String str = apc() + "/tencent/MicroMsg/";
       return str;
     }
     finally
@@ -627,11 +627,11 @@ public final class b
     }
   }
   
-  public static String aih()
+  public static String aph()
   {
     try
     {
-      String str = aib() + ahX();
+      String str = apb() + aoX();
       return str;
     }
     finally
@@ -641,11 +641,11 @@ public final class b
     }
   }
   
-  public static String aii()
+  public static String api()
   {
     try
     {
-      String str = aih() + "crash/";
+      String str = aph() + "crash/";
       return str;
     }
     finally
@@ -655,11 +655,11 @@ public final class b
     }
   }
   
-  public static String aij()
+  public static String apj()
   {
     try
     {
-      String str = aih() + "Download/";
+      String str = aph() + "Download/";
       return str;
     }
     finally
@@ -669,11 +669,11 @@ public final class b
     }
   }
   
-  public static String aik()
+  public static String apk()
   {
     try
     {
-      String str = aih() + "vusericon/";
+      String str = aph() + "vusericon/";
       return str;
     }
     finally
@@ -683,11 +683,11 @@ public final class b
     }
   }
   
-  public static String ail()
+  public static String apl()
   {
     try
     {
-      String str = aih() + "Game/";
+      String str = aph() + "Game/";
       return str;
     }
     finally
@@ -697,11 +697,11 @@ public final class b
     }
   }
   
-  public static String aim()
+  public static String apm()
   {
     try
     {
-      String str = aih() + "CDNTemp/";
+      String str = aph() + "CDNTemp/";
       return str;
     }
     finally
@@ -711,11 +711,11 @@ public final class b
     }
   }
   
-  public static String ain()
+  public static String apn()
   {
     try
     {
-      String str = aih() + "xlog";
+      String str = aph() + "xlog";
       return str;
     }
     finally
@@ -725,11 +725,11 @@ public final class b
     }
   }
   
-  public static String aio()
+  public static String apo()
   {
     try
     {
-      String str = aih() + "avatar/";
+      String str = aph() + "avatar/";
       return str;
     }
     finally
@@ -739,11 +739,11 @@ public final class b
     }
   }
   
-  public static String aip()
+  public static String app()
   {
     try
     {
-      String str = aih() + "Cache/";
+      String str = aph() + "Cache/";
       return str;
     }
     finally
@@ -753,11 +753,11 @@ public final class b
     }
   }
   
-  public static String aiq()
+  public static String apq()
   {
     try
     {
-      String str = aic() + "/tencent/MicroMsg/" + ait();
+      String str = apc() + "/tencent/MicroMsg/" + apt();
       return str;
     }
     finally
@@ -767,7 +767,7 @@ public final class b
     }
   }
   
-  public static String air()
+  public static String apr()
   {
     for (;;)
     {
@@ -775,7 +775,7 @@ public final class b
       {
         localObject1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         if (localObject1 != null) {
-          localObject1 = new File((File)localObject1, ait());
+          localObject1 = new File((File)localObject1, apt());
         }
       }
       finally {}
@@ -790,35 +790,35 @@ public final class b
         continue;
       }
       return localObject1;
-      Object localObject3 = new File(aid(), "Pictures/" + ait());
+      Object localObject3 = new File(apd(), "Pictures/" + apt());
       Object localObject1 = localObject3;
       if (!((File)localObject3).exists())
       {
         localObject1 = localObject3;
         if (!((File)localObject3).mkdirs()) {
-          localObject1 = new File(aiq());
+          localObject1 = new File(apq());
         }
       }
     }
   }
   
   /* Error */
-  public static String ais()
+  public static String aps()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 212	com/tencent/mm/loader/j/b:aib	()Ljava/lang/String;
-    //   6: invokestatic 251	com/tencent/mm/loader/j/b:aid	()Ljava/lang/String;
+    //   3: invokestatic 212	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
+    //   6: invokestatic 251	com/tencent/mm/loader/j/b:apd	()Ljava/lang/String;
     //   9: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   12: ifeq +12 -> 24
-    //   15: invokestatic 266	com/tencent/mm/loader/j/b:air	()Ljava/lang/String;
+    //   15: invokestatic 266	com/tencent/mm/loader/j/b:apr	()Ljava/lang/String;
     //   18: astore_0
     //   19: ldc 2
     //   21: monitorexit
     //   22: aload_0
     //   23: areturn
-    //   24: invokestatic 259	com/tencent/mm/loader/j/b:aiq	()Ljava/lang/String;
+    //   24: invokestatic 259	com/tencent/mm/loader/j/b:apq	()Ljava/lang/String;
     //   27: astore_0
     //   28: goto -9 -> 19
     //   31: astore_0
@@ -837,7 +837,7 @@ public final class b
   }
   
   /* Error */
-  private static String ait()
+  private static String apt()
   {
     // Byte code:
     //   0: ldc 2
@@ -845,7 +845,7 @@ public final class b
     //   3: new 49	java/lang/StringBuilder
     //   6: dup
     //   7: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   10: invokestatic 179	com/tencent/mm/loader/j/b:aic	()Ljava/lang/String;
+    //   10: invokestatic 179	com/tencent/mm/loader/j/b:apc	()Ljava/lang/String;
     //   13: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: ldc_w 268
     //   19: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -854,7 +854,7 @@ public final class b
     //   26: new 49	java/lang/StringBuilder
     //   29: dup
     //   30: invokespecial 51	java/lang/StringBuilder:<init>	()V
-    //   33: invokestatic 179	com/tencent/mm/loader/j/b:aic	()Ljava/lang/String;
+    //   33: invokestatic 179	com/tencent/mm/loader/j/b:apc	()Ljava/lang/String;
     //   36: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: ldc_w 270
     //   42: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -881,7 +881,7 @@ public final class b
     //   86: ldc_w 274
     //   89: astore_0
     //   90: goto -23 -> 67
-    //   93: invokestatic 279	com/tencent/mm/sdk/platformtools/ac:eFu	()Ljava/lang/String;
+    //   93: invokestatic 279	com/tencent/mm/sdk/platformtools/ab:eUO	()Ljava/lang/String;
     //   96: ldc_w 281
     //   99: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   102: ifeq +10 -> 112
@@ -908,11 +908,11 @@ public final class b
     //   93	105	119	finally
   }
   
-  public static String aiu()
+  public static String apu()
   {
     try
     {
-      String str = aih() + "appbrand/";
+      String str = aph() + "appbrand/";
       return str;
     }
     finally
@@ -922,11 +922,11 @@ public final class b
     }
   }
   
-  public static String aiv()
+  public static String apv()
   {
     try
     {
-      String str = aih() + "watchdog/";
+      String str = aph() + "watchdog/";
       return str;
     }
     finally
@@ -936,11 +936,11 @@ public final class b
     }
   }
   
-  public static String aiw()
+  public static String apw()
   {
     try
     {
-      String str = aih() + "exdevice/";
+      String str = aph() + "exdevice/";
       return str;
     }
     finally
@@ -950,11 +950,11 @@ public final class b
     }
   }
   
-  public static String aix()
+  public static String apx()
   {
     try
     {
-      String str = aih() + "newyear/";
+      String str = aph() + "newyear/";
       return str;
     }
     finally
@@ -964,11 +964,11 @@ public final class b
     }
   }
   
-  public static String aiy()
+  public static String apy()
   {
     try
     {
-      String str = aih() + "WebviewCache/";
+      String str = aph() + "WebviewCache/";
       return str;
     }
     finally
@@ -978,11 +978,11 @@ public final class b
     }
   }
   
-  public static String aiz()
+  public static String apz()
   {
     try
     {
-      String str = aih() + "browser/";
+      String str = aph() + "browser/";
       return str;
     }
     finally
@@ -992,11 +992,11 @@ public final class b
     }
   }
   
-  public static String aja()
+  public static String aqa()
   {
     try
     {
-      String str = aih() + "wxvideotmp/";
+      String str = aph() + "wxvideotmp/";
       return str;
     }
     finally
@@ -1006,11 +1006,11 @@ public final class b
     }
   }
   
-  public static String ajb()
+  public static String aqb()
   {
     try
     {
-      String str = aih() + "favoffline/";
+      String str = aph() + "favoffline/";
       return str;
     }
     finally
@@ -1020,11 +1020,11 @@ public final class b
     }
   }
   
-  public static String ajc()
+  public static String aqc()
   {
     try
     {
-      String str = aih() + "image_crop/";
+      String str = aph() + "image_crop/";
       return str;
     }
     finally
@@ -1035,7 +1035,7 @@ public final class b
   }
   
   /* Error */
-  public static String ajd()
+  public static String aqd()
   {
     // Byte code:
     //   0: ldc 2
@@ -1049,14 +1049,14 @@ public final class b
     //   13: ifnonnull +17 -> 30
     //   16: new 59	java/io/File
     //   19: dup
-    //   20: invokestatic 179	com/tencent/mm/loader/j/b:aic	()Ljava/lang/String;
+    //   20: invokestatic 179	com/tencent/mm/loader/j/b:apc	()Ljava/lang/String;
     //   23: getstatic 312	android/os/Environment:DIRECTORY_DOWNLOADS	Ljava/lang/String;
     //   26: invokespecial 257	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: astore_1
     //   30: new 59	java/io/File
     //   33: dup
     //   34: aload_1
-    //   35: invokestatic 240	com/tencent/mm/loader/j/b:ait	()Ljava/lang/String;
+    //   35: invokestatic 240	com/tencent/mm/loader/j/b:apt	()Ljava/lang/String;
     //   38: invokespecial 203	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   41: astore_1
     //   42: aload_1
@@ -1072,7 +1072,7 @@ public final class b
     //   57: ldc_w 316
     //   60: iconst_0
     //   61: anewarray 4	java/lang/Object
-    //   64: invokestatic 322	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   64: invokestatic 322	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   67: aconst_null
     //   68: astore_0
     //   69: goto -59 -> 10
@@ -1107,11 +1107,11 @@ public final class b
     //   73	78	81	finally
   }
   
-  public static void aje()
+  public static void aqe()
   {
     try
     {
-      gmg[0] = null;
+      gMT[0] = null;
       return;
     }
     finally
@@ -1122,7 +1122,7 @@ public final class b
   }
   
   /* Error */
-  public static void y(String paramString, boolean paramBoolean)
+  public static void z(String paramString, boolean paramBoolean)
   {
     // Byte code:
     //   0: ldc 2
@@ -1132,21 +1132,21 @@ public final class b
     //   9: dup
     //   10: ldc_w 327
     //   13: invokespecial 254	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   16: invokestatic 212	com/tencent/mm/loader/j/b:aib	()Ljava/lang/String;
+    //   16: invokestatic 212	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
     //   19: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: ldc_w 329
     //   25: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: invokestatic 179	com/tencent/mm/loader/j/b:aic	()Ljava/lang/String;
+    //   28: invokestatic 179	com/tencent/mm/loader/j/b:apc	()Ljava/lang/String;
     //   31: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokestatic 332	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: invokestatic 332	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   40: iload_1
     //   41: ifeq +58 -> 99
-    //   44: getstatic 23	com/tencent/mm/loader/j/b:gme	[Ljava/lang/String;
+    //   44: getstatic 23	com/tencent/mm/loader/j/b:gMR	[Ljava/lang/String;
     //   47: iconst_0
     //   48: aload_0
     //   49: aastore
-    //   50: getstatic 17	com/tencent/mm/loader/j/b:gmb	[Ljava/lang/String;
+    //   50: getstatic 17	com/tencent/mm/loader/j/b:gMO	[Ljava/lang/String;
     //   53: iconst_0
     //   54: ldc_w 334
     //   57: aastore
@@ -1155,26 +1155,26 @@ public final class b
     //   64: dup
     //   65: ldc_w 336
     //   68: invokespecial 254	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   71: invokestatic 212	com/tencent/mm/loader/j/b:aib	()Ljava/lang/String;
+    //   71: invokestatic 212	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
     //   74: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: ldc_w 329
     //   80: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: invokestatic 179	com/tencent/mm/loader/j/b:aic	()Ljava/lang/String;
+    //   83: invokestatic 179	com/tencent/mm/loader/j/b:apc	()Ljava/lang/String;
     //   86: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 332	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   92: invokestatic 332	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   95: ldc 2
     //   97: monitorexit
     //   98: return
-    //   99: invokestatic 212	com/tencent/mm/loader/j/b:aib	()Ljava/lang/String;
-    //   102: invokestatic 251	com/tencent/mm/loader/j/b:aid	()Ljava/lang/String;
+    //   99: invokestatic 212	com/tencent/mm/loader/j/b:apb	()Ljava/lang/String;
+    //   102: invokestatic 251	com/tencent/mm/loader/j/b:apd	()Ljava/lang/String;
     //   105: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   108: ifne +9 -> 117
-    //   111: getstatic 23	com/tencent/mm/loader/j/b:gme	[Ljava/lang/String;
+    //   111: getstatic 23	com/tencent/mm/loader/j/b:gMR	[Ljava/lang/String;
     //   114: iconst_0
     //   115: aload_0
     //   116: aastore
-    //   117: getstatic 25	com/tencent/mm/loader/j/b:gmf	[Ljava/lang/String;
+    //   117: getstatic 25	com/tencent/mm/loader/j/b:gMS	[Ljava/lang/String;
     //   120: iconst_0
     //   121: aload_0
     //   122: aastore

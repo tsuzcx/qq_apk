@@ -5,21 +5,21 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.b.b;
 import com.tencent.mm.plugin.appbrand.b.c;
 import com.tencent.mm.plugin.appbrand.b.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 import java.util.HashSet;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic;", "", "()V", "TAG", "", "mCanTrim", "", "canTrimThisPage", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "canTrimThisPageWrapped", "getTrimPages", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic$RuntimeTrimmedPages;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onPageReload", "", "setCanTrim", "can", "RuntimeTrimmedPages", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic;", "", "()V", "TAG", "", "mCanTrim", "", "canTrimThisPage", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "canTrimThisPageWrapped", "getTrimPages", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic$RuntimeTrimmedPages;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "onPageReload", "", "setCanTrim", "can", "RuntimeTrimmedPages", "luggage-wechat-full-sdk_release"})
 public final class z
 {
-  private static boolean laN;
-  public static final z laO;
+  private static boolean lCm;
+  public static final z lCn;
   
   static
   {
     AppMethodBeat.i(147973);
-    laO = new z();
-    laN = true;
+    lCn = new z();
+    lCm = true;
     AppMethodBeat.o(147973);
   }
   
@@ -39,9 +39,9 @@ public final class z
     }
   }
   
-  public static final void gz(boolean paramBoolean)
+  public static final void gW(boolean paramBoolean)
   {
-    laN = paramBoolean;
+    lCm = paramBoolean;
   }
   
   public static final void i(aa paramaa)
@@ -63,7 +63,7 @@ public final class z
     }
     catch (Exception paramaa)
     {
-      ad.w("Luggage.AppBrandPageTrimLogic[wxa_reload]", "onPageReload ".concat(String.valueOf(paramaa)));
+      ac.w("Luggage.AppBrandPageTrimLogic[wxa_reload]", "onPageReload ".concat(String.valueOf(paramaa)));
       AppMethodBeat.o(147970);
     }
   }
@@ -74,7 +74,7 @@ public final class z
     d.g.b.k.h(paramaa, "page");
     try
     {
-      if (!laN) {
+      if (!lCm) {
         break label306;
       }
       localObject = (CharSequence)paramaa.getURL();
@@ -92,7 +92,7 @@ public final class z
         Object localObject;
         label168:
         label306:
-        ad.w("Luggage.AppBrandPageTrimLogic[wxa_reload]", "canTrimThisPage ".concat(String.valueOf(localException)));
+        ac.w("Luggage.AppBrandPageTrimLogic[wxa_reload]", "canTrimThisPage ".concat(String.valueOf(localException)));
         boolean bool = false;
         continue;
         int i = 1;
@@ -107,9 +107,9 @@ public final class z
       {
         localObject = paramaa.getRuntime();
         if (localObject == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
-        bool = ((AppBrandRuntime)localObject).aMh();
+        bool = ((AppBrandRuntime)localObject).aSX();
         if (bool) {
           bool = true;
         }
@@ -122,32 +122,32 @@ public final class z
         localObject = paramaa.getRuntime();
         d.g.b.k.g(localObject, "page.runtime");
         am((AppBrandRuntime)localObject).add(paramaa);
-        ad.i("Luggage.AppBrandPageTrimLogic[wxa_reload]", "page trimmed, appId[" + paramaa.getAppId() + "] path[" + paramaa.getURL() + ']');
+        ac.i("Luggage.AppBrandPageTrimLogic[wxa_reload]", "page trimmed, appId[" + paramaa.getAppId() + "] path[" + paramaa.getURL() + ']');
       }
       AppMethodBeat.o(147971);
       return bool;
       i = 0;
       break;
-      localObject = paramaa.bjB();
-      if ((localObject == null) || (((q)localObject).isInBackground() != true)) {
+      localObject = paramaa.bqs();
+      if ((localObject == null) || (((r)localObject).isInBackground() != true)) {
         break label338;
       }
-      if ((!(paramaa.bjB() instanceof j)) && (paramaa.getRuntime() != null))
+      if ((!(paramaa.bqs() instanceof k)) && (paramaa.getRuntime() != null))
       {
         localObject = paramaa.getRuntime();
         d.g.b.k.g(localObject, "page.runtime");
-        if ((((AppBrandRuntime)localObject).aLK() != null) && (paramaa.bjB() != null))
+        if ((((AppBrandRuntime)localObject).aSA() != null) && (paramaa.bqs() != null))
         {
-          localObject = paramaa.bjB();
+          localObject = paramaa.bqs();
           if (localObject == null) {
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
-          i = ((q)localObject).bji();
+          i = ((r)localObject).bqa();
           localObject = paramaa.getRuntime();
           d.g.b.k.g(localObject, "page.runtime");
-          localObject = ((AppBrandRuntime)localObject).aLK();
+          localObject = ((AppBrandRuntime)localObject).aSA();
           d.g.b.k.g(localObject, "page.runtime.pageContainer");
-          int j = ((t)localObject).getPageCount();
+          int j = ((u)localObject).getPageCount();
           if (i < j - 5)
           {
             bool = true;
@@ -159,7 +159,7 @@ public final class z
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic$RuntimeTrimmedPages;", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "Lkotlin/collections/HashSet;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandEnvContext;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "luggage-wechat-full-sdk_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageTrimLogic$RuntimeTrimmedPages;", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "Lkotlin/collections/HashSet;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandEnvContext;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "luggage-wechat-full-sdk_release"})
   static final class a
     extends HashSet<aa>
     implements com.tencent.mm.plugin.appbrand.jsapi.k
@@ -167,7 +167,7 @@ public final class z
     public a(AppBrandRuntime paramAppBrandRuntime)
     {
       AppMethodBeat.i(147966);
-      paramAppBrandRuntime = paramAppBrandRuntime.aLM();
+      paramAppBrandRuntime = paramAppBrandRuntime.aSC();
       if (paramAppBrandRuntime != null)
       {
         paramAppBrandRuntime.a((c.a)new c.a()
@@ -175,8 +175,8 @@ public final class z
           public final void a(String paramAnonymousString, b paramAnonymousb)
           {
             AppMethodBeat.i(147965);
-            if (paramAnonymousb == b.iQN) {
-              this.laP.clear();
+            if (paramAnonymousb == b.jqX) {
+              this.lCo.clear();
             }
             AppMethodBeat.o(147965);
           }
@@ -190,7 +190,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.z
  * JD-Core Version:    0.7.0.1
  */

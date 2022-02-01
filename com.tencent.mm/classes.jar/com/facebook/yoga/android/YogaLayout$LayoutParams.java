@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.kinda.framework.R.styleable;
+import com.tencent.kinda.R.styleable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class YogaLayout$LayoutParams
@@ -92,7 +92,7 @@ public class YogaLayout$LayoutParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.facebook.yoga.android.YogaLayout.LayoutParams
  * JD-Core Version:    0.7.0.1
  */

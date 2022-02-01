@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.fts.ui;
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.az;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelsns.f;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.ui.a.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bk;
 import com.tencent.mm.util.c;
 import java.util.ArrayList;
 
 public final class k
 {
-  private static int DL(int paramInt)
+  private static int FH(int paramInt)
   {
     int i = 6;
     switch (paramInt)
@@ -43,22 +43,22 @@ public final class k
     return 3;
   }
   
-  public static void H(long paramLong, int paramInt)
+  public static void K(long paramLong, int paramInt)
   {
     AppMethodBeat.i(112023);
-    ad.d("MicroMsg.FTS.FTSReportLogic", "reportWebSearchPardusStatus 18201 %s %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    com.tencent.mm.plugin.report.e.vIY.f(18201, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()) });
+    ac.d("MicroMsg.FTS.FTSReportLogic", "reportWebSearchPardusStatus 18201 %s %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    com.tencent.mm.plugin.report.e.wTc.f(18201, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()) });
     AppMethodBeat.o(112023);
   }
   
   public static final int a(com.tencent.mm.plugin.fts.a.d.a.a parama)
   {
     int i = 3;
-    int j = parama.oEL;
+    int j = parama.pil;
     if (j == -8)
     {
-      if (parama.oEL == -8) {}
-      switch (parama.nBH)
+      if (parama.pil == -8) {}
+      switch (parama.oeH)
       {
       case 5: 
       case 6: 
@@ -79,7 +79,7 @@ public final class k
         i = 19;
       }
     }
-    switch (parama.nBH)
+    switch (parama.oeH)
     {
     case 11: 
     default: 
@@ -129,12 +129,12 @@ public final class k
           return 5;
         }
       } while (j != -20);
-      if (parama.rqF == 2) {
+      if (parama.szz == 2) {
         return 26;
       }
       return 25;
     case 7: 
-      if (parama.rqE) {
+      if (parama.szy) {
         return 8;
       }
       return 9;
@@ -145,7 +145,7 @@ public final class k
     case 12: 
       return 22;
     }
-    if (parama.rqF == 2) {
+    if (parama.szz == 2) {
       return 26;
     }
     return 25;
@@ -154,17 +154,17 @@ public final class k
   public static void a(com.tencent.mm.plugin.fts.a.d.a.a parama, com.tencent.mm.plugin.fts.ui.c.a parama1)
   {
     AppMethodBeat.i(112018);
-    int m = parama.rqA;
-    String str2 = parama.rqC;
-    long l2 = parama.rqD;
-    int n = s(parama.rqF, parama.rqG, parama.cxw());
+    int m = parama.szu;
+    String str2 = parama.szw;
+    long l2 = parama.szx;
+    int n = s(parama.szz, parama.szA, parama.cKI());
     int i;
     long l1;
     long l3;
     int j;
     label205:
     int k;
-    switch (parama.nBH)
+    switch (parama.oeH)
     {
     case 7: 
     case 8: 
@@ -178,14 +178,14 @@ public final class k
       if ((parama instanceof q))
       {
         localObject = (q)parama;
-        boolean bool = ((q)localObject).contact.Ny();
-        l1 = ((q)localObject).jpy.timestamp / 1000L;
-        l3 = ((q)localObject).jpy.rpT;
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().aIn(((q)localObject).username);
+        boolean bool = ((q)localObject).contact.Nw();
+        l1 = ((q)localObject).jPN.timestamp / 1000L;
+        l3 = ((q)localObject).jPN.syN;
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNI(((q)localObject).username);
         j = 0;
         if (localObject != null)
         {
-          j = ((ay)localObject).field_unReadCount;
+          j = ((az)localObject).field_unReadCount;
           if (!bool) {
             break label774;
           }
@@ -197,13 +197,13 @@ public final class k
     label213:
     for (Object localObject = String.format("%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l1), Integer.valueOf(0), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(0) });; localObject = "0,0,0,0,0,0")
     {
-      l1 = System.currentTimeMillis() - parama1.rwE;
-      if ((l1 < 0L) || (parama1.rwE == 0L)) {
+      l1 = System.currentTimeMillis() - parama1.sFw;
+      if ((l1 < 0L) || (parama1.sFw == 0L)) {
         l1 = 0L;
       }
-      parama = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(parama.kme), Integer.valueOf(i), Integer.valueOf(m), bt.by(str2, ""), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(parama.aWu()), Integer.valueOf(DL(parama.cxv())), parama.aWt(), Long.valueOf(l1), Integer.valueOf(parama1.rwF), localObject, "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Long.valueOf(parama1.rwG) });
-      ad.d("MicroMsg.FTS.FTSReportLogic", "report detail page click 11310: %s", new Object[] { parama });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(11310, parama);
+      parama = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(parama.kNw), Integer.valueOf(i), Integer.valueOf(m), bs.bG(str2, ""), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(parama.bds()), Integer.valueOf(FH(parama.cKH())), parama.bdr(), Long.valueOf(l1), Integer.valueOf(parama1.sFx), localObject, "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(parama1.sFy) });
+      ac.d("MicroMsg.FTS.FTSReportLogic", "report detail page click 11310: %s", new Object[] { parama });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(11310, parama);
       AppMethodBeat.o(112018);
       return;
       i = 4;
@@ -219,24 +219,24 @@ public final class k
       i = 20;
       break;
       f localf = new f();
-      String str1 = parama.roS.rpq;
+      String str1 = parama.sxM.syk;
       localObject = str1;
       if (str1 != null) {
         localObject = str1.replaceAll(",", " ");
       }
-      localf.o("20KeyWordId", (String)localObject + ",");
-      localf.o("21ViewType", "2,");
-      localf.o("22OpType", "2,");
-      localf.o("23ResultCount", ",");
-      localf.o("24ClickPos", parama.rqB + ",");
-      localf.o("25ClickAppUserName", parama.info + ",");
-      ad.i("MicroMsg.FTS.FTSReportLogic", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PW() });
-      com.tencent.mm.plugin.report.service.h.vKh.f(13963, new Object[] { localf });
+      localf.n("20KeyWordId", (String)localObject + ",");
+      localf.n("21ViewType", "2,");
+      localf.n("22OpType", "2,");
+      localf.n("23ResultCount", ",");
+      localf.n("24ClickPos", parama.szv + ",");
+      localf.n("25ClickAppUserName", parama.info + ",");
+      ac.i("MicroMsg.FTS.FTSReportLogic", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PS() });
+      com.tencent.mm.plugin.report.service.h.wUl.f(13963, new Object[] { localf });
       i = 19;
       break;
       i = 21;
       break;
-      ad.w("MicroMsg.FTS.FTSReportLogic", "11310 conv null");
+      ac.w("MicroMsg.FTS.FTSReportLogic", "11310 conv null");
       break label205;
       k = 0;
       break label213;
@@ -247,12 +247,12 @@ public final class k
   {
     AppMethodBeat.i(112016);
     int j = 1;
-    int n = parama.rqA;
-    int i1 = parama.rqB;
-    String str2 = parama.rqC;
-    long l2 = parama.rqD;
-    Object localObject2 = parama.aWt();
-    int i2 = s(parama.rqF, parama.rqG, parama.cxw());
+    int n = parama.szu;
+    int i1 = parama.szv;
+    String str2 = parama.szw;
+    long l2 = parama.szx;
+    Object localObject2 = parama.bdr();
+    int i2 = s(parama.szz, parama.szA, parama.cKI());
     int i;
     Object localObject1;
     long l1;
@@ -274,11 +274,11 @@ public final class k
     int i11;
     int i12;
     int i13;
-    if (parama.oEL == -8)
+    if (parama.pil == -8)
     {
       k = 0;
       i = k;
-      switch (parama.nBH)
+      switch (parama.oeH)
       {
       default: 
         i = k;
@@ -291,42 +291,42 @@ public final class k
         if ((parama instanceof q))
         {
           localObject2 = (q)parama;
-          boolean bool = ((q)localObject2).contact.Ny();
-          l1 = ((q)localObject2).jpy.timestamp / 1000L;
-          l3 = ((q)localObject2).jpy.rpT;
-          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().aIn(((q)localObject2).username);
+          boolean bool = ((q)localObject2).contact.Nw();
+          l1 = ((q)localObject2).jPN.timestamp / 1000L;
+          l3 = ((q)localObject2).jPN.syN;
+          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNI(((q)localObject2).username);
           k = 0;
           if (localObject2 != null)
           {
-            k = ((ay)localObject2).field_unReadCount;
+            k = ((az)localObject2).field_unReadCount;
             if (!bool) {
               break label1567;
             }
             m = 1;
             localObject2 = String.format("%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l1), Integer.valueOf(0), Long.valueOf(l3), Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(0) });
-            l1 = System.currentTimeMillis() - paramb.rwE;
-            if ((l1 < 0L) || (paramb.rwE == 0L)) {
+            l1 = System.currentTimeMillis() - paramb.sFw;
+            if ((l1 < 0L) || (paramb.sFw == 0L)) {
               l1 = 0L;
             }
-            if (paramb.rwZ.equals(parama.roS.rpq)) {
+            if (paramb.sFR.equals(parama.sxM.syk)) {
               break label1581;
             }
             k = 1;
-            m = parama.kme;
-            str1 = bt.by(str2, "");
-            i3 = parama.aWu();
-            i4 = DL(parama.cxv());
-            i5 = paramb.rwI;
-            i6 = paramb.rwJ;
-            i7 = paramb.rwK;
-            i8 = paramb.rwL;
-            i9 = paramb.rwM;
+            m = parama.kNw;
+            str1 = bs.bG(str2, "");
+            i3 = parama.bds();
+            i4 = FH(parama.cKH());
+            i5 = paramb.sFA;
+            i6 = paramb.sFB;
+            i7 = paramb.sFC;
+            i8 = paramb.sFD;
+            i9 = paramb.sFE;
             i10 = paramb.favCount;
-            i11 = paramb.rwN;
-            i12 = paramb.rwO;
-            l3 = com.tencent.mm.plugin.fts.a.e.rob;
-            str2 = parama.roS.rpq;
-            i13 = paramb.cyf();
+            i11 = paramb.sFF;
+            i12 = paramb.sFG;
+            l3 = com.tencent.mm.plugin.fts.a.e.swV;
+            str2 = parama.sxM.syk;
+            i13 = paramb.cLr();
             if (k == 0) {
               break label1587;
             }
@@ -340,9 +340,9 @@ public final class k
     label1587:
     for (int k = 1;; k = 0)
     {
-      parama = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), str1, Long.valueOf(l2), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), localObject1, Long.valueOf(l1), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(0), Integer.valueOf(i11), Integer.valueOf(i12), Long.valueOf(l3), str2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i13), "", "", "", Integer.valueOf(1), Integer.valueOf(k), localObject2, "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Long.valueOf(com.tencent.mm.plugin.fts.a.e.roc), "", parama.getAppId() });
-      ad.d("MicroMsg.FTS.FTSReportLogic", "10991 report home page click: %d, %s", new Object[] { Integer.valueOf(10991), parama });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(10991, parama);
+      parama = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), str1, Long.valueOf(l2), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), localObject1, Long.valueOf(l1), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(0), Integer.valueOf(i11), Integer.valueOf(i12), Long.valueOf(l3), str2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i13), "", "", "", Integer.valueOf(1), Integer.valueOf(k), localObject2, "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swW), "", parama.getAppId() });
+      ac.d("MicroMsg.FTS.FTSReportLogic", "10991 report home page click: %d, %s", new Object[] { Integer.valueOf(10991), parama });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10991, parama);
       AppMethodBeat.o(112016);
       return;
       i = 3;
@@ -355,7 +355,7 @@ public final class k
       break;
       i = 19;
       break;
-      switch (parama.nBH)
+      switch (parama.oeH)
       {
       case 11: 
       default: 
@@ -390,72 +390,72 @@ public final class k
         localObject1 = localObject2;
         break;
       case 8: 
-        if (parama.oEL == -5)
+        if (parama.pil == -5)
         {
           i = 16;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -3)
+        if (parama.pil == -3)
         {
           i = 4;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -4)
+        if (parama.pil == -4)
         {
           i = 3;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -1)
+        if (parama.pil == -1)
         {
           i = 12;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -2)
+        if (parama.pil == -2)
         {
           i = 11;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -15)
+        if (parama.pil == -15)
         {
           i = 21;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -6)
+        if (parama.pil == -6)
         {
           i = 10;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -13)
+        if (parama.pil == -13)
         {
           i = 19;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -7)
+        if (parama.pil == -7)
         {
           i = 5;
           j = 2;
           localObject1 = localObject2;
           break;
         }
-        if (parama.oEL == -20)
+        if (parama.pil == -20)
         {
-          if (parama.rqF == 2)
+          if (parama.szz == 2)
           {
             i = 26;
             j = 2;
@@ -470,7 +470,7 @@ public final class k
         AppMethodBeat.o(112016);
         return;
       case 7: 
-        if (parama.rqE)
+        if (parama.szy)
         {
           i = 8;
           localObject1 = localObject2;
@@ -481,19 +481,19 @@ public final class k
         break;
       case 9: 
         f localf = new f();
-        str1 = parama.roS.rpq;
+        str1 = parama.sxM.syk;
         localObject1 = str1;
         if (str1 != null) {
           localObject1 = str1.replaceAll(",", " ");
         }
-        localf.o("20KeyWordId", (String)localObject1 + ",");
-        localf.o("21ViewType", "1,");
-        localf.o("22OpType", "2,");
-        localf.o("23ResultCount", ",");
-        localf.o("24ClickPos", parama.rqB + ",");
-        localf.o("25ClickAppUserName", parama.info + ",");
-        ad.i("MicroMsg.FTS.FTSReportLogic", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PW() });
-        com.tencent.mm.plugin.report.service.h.vKh.f(13963, new Object[] { localf });
+        localf.n("20KeyWordId", (String)localObject1 + ",");
+        localf.n("21ViewType", "1,");
+        localf.n("22OpType", "2,");
+        localf.n("23ResultCount", ",");
+        localf.n("24ClickPos", parama.szv + ",");
+        localf.n("25ClickAppUserName", parama.info + ",");
+        ac.i("MicroMsg.FTS.FTSReportLogic", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PS() });
+        com.tencent.mm.plugin.report.service.h.wUl.f(13963, new Object[] { localf });
         i = 19;
         localObject1 = localObject2;
         break;
@@ -506,7 +506,7 @@ public final class k
         localObject1 = localObject2;
         break;
       case 14: 
-        if (parama.rqF == 2)
+        if (parama.szz == 2)
         {
           i = 26;
           localObject1 = localObject2;
@@ -515,7 +515,7 @@ public final class k
         i = 25;
         localObject1 = localObject2;
         break;
-        ad.w("MicroMsg.FTS.FTSReportLogic", "10991 conv null");
+        ac.w("MicroMsg.FTS.FTSReportLogic", "10991 conv null");
         break label243;
         m = 0;
         break label251;
@@ -530,35 +530,35 @@ public final class k
   public static void a(com.tencent.mm.plugin.fts.ui.c.b paramb)
   {
     AppMethodBeat.i(112011);
-    if (bt.isNullOrNil(paramb.query))
+    if (bs.isNullOrNil(paramb.query))
     {
       AppMethodBeat.o(112011);
       return;
     }
-    int k = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.prb, c.fgV());
-    long l2 = paramb.rwE - paramb.rty;
+    int k = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUO, c.fwV());
+    long l2 = paramb.sFw - paramb.sCr;
     long l1 = l2;
     if (l2 < 0L) {
       l1 = 0L;
     }
-    l2 = paramb.rwG;
-    long l3 = com.tencent.mm.plugin.fts.a.e.rob;
+    l2 = paramb.sFy;
+    long l3 = com.tencent.mm.plugin.fts.a.e.swV;
     String str1 = paramb.query;
-    String str2 = paramb.cyi();
+    String str2 = paramb.cLu();
     int i;
-    if (paramb.rxa)
+    if (paramb.sFS)
     {
       i = 2;
-      if (paramb.rxb <= 0) {
+      if (paramb.sFT <= 0) {
         break label269;
       }
     }
     label269:
     for (int j = 1;; j = 0)
     {
-      paramb = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3), str1, str2, Integer.valueOf(i), Integer.valueOf(j), paramb.cyh(), paramb.cyl(), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(paramb.rwY), paramb.cyj(), paramb.cyk() });
-      ad.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(17510), paramb });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(17510, paramb);
+      paramb = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3), str1, str2, Integer.valueOf(i), Integer.valueOf(j), paramb.cLt(), paramb.cLx(), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(paramb.sFQ), paramb.cLv(), paramb.cLw() });
+      ac.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(17510), paramb });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(17510, paramb);
       AppMethodBeat.o(112011);
       return;
       i = 1;
@@ -569,8 +569,8 @@ public final class k
   public static final void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, com.tencent.mm.plugin.fts.ui.c.b paramb, int paramInt4, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(112020);
-    long l1 = System.currentTimeMillis() - paramb.rwE;
-    if ((l1 < 0L) || (paramb.rwE == 0L)) {
+    long l1 = System.currentTimeMillis() - paramb.sFw;
+    if ((l1 < 0L) || (paramb.sFw == 0L)) {
       l1 = 0L;
     }
     int j;
@@ -583,19 +583,19 @@ public final class k
     int i4;
     long l2;
     int i5;
-    if (!paramb.rwZ.equals(paramString1))
+    if (!paramb.sFR.equals(paramString1))
     {
       i = 1;
-      j = paramb.rwI;
-      k = paramb.rwJ;
-      m = paramb.rwK;
-      n = paramb.rwL;
-      i1 = paramb.rwM;
+      j = paramb.sFA;
+      k = paramb.sFB;
+      m = paramb.sFC;
+      n = paramb.sFD;
+      i1 = paramb.sFE;
       i2 = paramb.favCount;
-      i3 = paramb.rwN;
-      i4 = paramb.rwO;
-      l2 = com.tencent.mm.plugin.fts.a.e.rob;
-      i5 = paramb.cyf();
+      i3 = paramb.sFF;
+      i4 = paramb.sFG;
+      l2 = com.tencent.mm.plugin.fts.a.e.swV;
+      i5 = paramb.cLr();
       if (i == 0) {
         break label531;
       }
@@ -603,9 +603,9 @@ public final class k
     label531:
     for (int i = 1;; i = 0)
     {
-      paramString1 = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString2, Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l2), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i5), "", "", "", Integer.valueOf(1), Integer.valueOf(i), "0,0,0,0,0,0", "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Long.valueOf(paramb.rwG), paramString3, paramString4 });
-      ad.d("MicroMsg.FTS.FTSReportLogic", "10991 reportPardusResultClick click: %d, %s", new Object[] { Integer.valueOf(10991), paramString1 });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(10991, paramString1);
+      paramString1 = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString2, Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l2), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i5), "", "", "", Integer.valueOf(1), Integer.valueOf(i), "0,0,0,0,0,0", "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(paramb.sFy), paramString3, paramString4 });
+      ac.d("MicroMsg.FTS.FTSReportLogic", "10991 reportPardusResultClick click: %d, %s", new Object[] { Integer.valueOf(10991), paramString1 });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10991, paramString1);
       AppMethodBeat.o(112020);
       return;
       i = 0;
@@ -632,9 +632,9 @@ public final class k
     }
     for (;;)
     {
-      paramString = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d,%s,%s,%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramb.rwH), Integer.valueOf(paramb.rwK), Integer.valueOf(paramb.rwO), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Integer.valueOf(paramb.rwJ), Integer.valueOf(paramb.rwL), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Long.valueOf(paramb.rwG) });
-      ad.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(11062), paramString });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(11062, paramString);
+      paramString = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d,%s,%s,%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramb.sFz), Integer.valueOf(paramb.sFC), Integer.valueOf(paramb.sFG), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Integer.valueOf(paramb.sFB), Integer.valueOf(paramb.sFD), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(paramb.sFy) });
+      ac.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(11062), paramString });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(11062, paramString);
       AppMethodBeat.o(112014);
       return;
       paramInt2 = 2;
@@ -646,8 +646,8 @@ public final class k
   public static void a(String paramString, int paramInt1, int paramInt2, com.tencent.mm.plugin.fts.ui.c.b paramb, int paramInt3)
   {
     AppMethodBeat.i(112017);
-    long l1 = System.currentTimeMillis() - paramb.rwE;
-    if ((l1 < 0L) || (paramb.rwE == 0L)) {
+    long l1 = System.currentTimeMillis() - paramb.sFw;
+    if ((l1 < 0L) || (paramb.sFw == 0L)) {
       l1 = 0L;
     }
     int j;
@@ -660,19 +660,19 @@ public final class k
     int i4;
     long l2;
     int i5;
-    if (!paramb.rwZ.equals(paramString))
+    if (!paramb.sFR.equals(paramString))
     {
       i = 1;
-      j = paramb.rwI;
-      k = paramb.rwJ;
-      m = paramb.rwK;
-      n = paramb.rwL;
-      i1 = paramb.rwM;
+      j = paramb.sFA;
+      k = paramb.sFB;
+      m = paramb.sFC;
+      n = paramb.sFD;
+      i1 = paramb.sFE;
       i2 = paramb.favCount;
-      i3 = paramb.rwN;
-      i4 = paramb.rwO;
-      l2 = com.tencent.mm.plugin.fts.a.e.rob;
-      i5 = paramb.cyf();
+      i3 = paramb.sFF;
+      i4 = paramb.sFG;
+      l2 = com.tencent.mm.plugin.fts.a.e.swV;
+      i5 = paramb.cLr();
       if (i == 0) {
         break label520;
       }
@@ -680,9 +680,9 @@ public final class k
     label520:
     for (int i = 1;; i = 0)
     {
-      paramString = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1 + 1), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l2), paramString, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i5), "", "", "", Integer.valueOf(1), Integer.valueOf(i), "0,0,0,0,0,0", "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Long.valueOf(paramb.rwG), "", "" });
-      ad.d("MicroMsg.FTS.FTSReportLogic", "10991 reportWebSearch click: %d, %s", new Object[] { Integer.valueOf(10991), paramString });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(10991, paramString);
+      paramString = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1 + 1), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l2), paramString, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i5), "", "", "", Integer.valueOf(1), Integer.valueOf(i), "0,0,0,0,0,0", "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(paramb.sFy), "", "" });
+      ac.d("MicroMsg.FTS.FTSReportLogic", "10991 reportWebSearch click: %d, %s", new Object[] { Integer.valueOf(10991), paramString });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10991, paramString);
       AppMethodBeat.o(112017);
       return;
       i = 0;
@@ -709,23 +709,10 @@ public final class k
     }
   }
   
-  public static String aby(String paramString)
-  {
-    AppMethodBeat.i(112022);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(112022);
-      return "";
-    }
-    paramString = paramString.replaceAll("<em class=\"highlight\">", "").replaceAll("</em>", "");
-    AppMethodBeat.o(112022);
-    return paramString;
-  }
-  
-  public static void af(int paramInt, long paramLong)
+  public static void ae(int paramInt, long paramLong)
   {
     AppMethodBeat.i(112010);
-    ad.v("MicroMsg.FTS.FTSReportLogic", "reportIDKey: type=%d time=%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    ac.v("MicroMsg.FTS.FTSReportLogic", "reportIDKey: type=%d time=%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     switch (paramInt)
     {
     }
@@ -744,8 +731,21 @@ public final class k
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      com.tencent.mm.plugin.report.service.h.vKh.b(localArrayList, false);
+      com.tencent.mm.plugin.report.service.h.wUl.b(localArrayList, false);
     }
+  }
+  
+  public static String agq(String paramString)
+  {
+    AppMethodBeat.i(112022);
+    if (bs.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(112022);
+      return "";
+    }
+    paramString = paramString.replaceAll("<em class=\"highlight\">", "").replaceAll("</em>", "");
+    AppMethodBeat.o(112022);
+    return paramString;
   }
   
   public static void b(com.tencent.mm.plugin.fts.ui.c.b paramb)
@@ -757,9 +757,9 @@ public final class k
       AppMethodBeat.o(112015);
       return;
     }
-    paramb = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d,%s,%s", new Object[] { str, Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(paramb.rwH), Integer.valueOf(paramb.rwK), Integer.valueOf(paramb.rwO), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob), Integer.valueOf(paramb.rwJ), Integer.valueOf(paramb.rwL), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.rob) });
-    ad.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(16050), paramb });
-    com.tencent.mm.plugin.report.service.h.vKh.kvStat(16050, paramb);
+    paramb = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d,%s,%s", new Object[] { str, Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(paramb.sFz), Integer.valueOf(paramb.sFC), Integer.valueOf(paramb.sFG), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Integer.valueOf(paramb.sFB), Integer.valueOf(paramb.sFD), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV) });
+    ac.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(16050), paramb });
+    com.tencent.mm.plugin.report.service.h.wUl.kvStat(16050, paramb);
     AppMethodBeat.o(112015);
   }
   
@@ -770,7 +770,7 @@ public final class k
     AppMethodBeat.o(112012);
   }
   
-  public static final void lB(boolean paramBoolean)
+  public static final void mt(boolean paramBoolean)
   {
     int j = 1;
     AppMethodBeat.i(112019);
@@ -778,8 +778,8 @@ public final class k
     if (paramBoolean)
     {
       i = 1;
-      ad.v("MicroMsg.FTS.FTSReportLogic", "reportFTSCreateChatroom: %d %d", new Object[] { Integer.valueOf(13970), Integer.valueOf(i) });
-      localh = com.tencent.mm.plugin.report.service.h.vKh;
+      ac.v("MicroMsg.FTS.FTSReportLogic", "reportFTSCreateChatroom: %d %d", new Object[] { Integer.valueOf(13970), Integer.valueOf(i) });
+      localh = com.tencent.mm.plugin.report.service.h.wUl;
       if (!paramBoolean) {
         break label82;
       }
@@ -868,7 +868,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.k
  * JD-Core Version:    0.7.0.1
  */

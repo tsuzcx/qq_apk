@@ -1,210 +1,199 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.n.b;
-import com.tencent.mm.bx.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.alr;
-import com.tencent.mm.protocal.protobuf.als;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.akr;
+import com.tencent.mm.protocal.protobuf.aks;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.l;
 import d.v;
+import d.y;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUploadHeadImg;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "filePath", "", "scene", "", "(Ljava/lang/String;I)V", "ERRCODE_REACH_RETRY_LIMIT", "getERRCODE_REACH_RETRY_LIMIT", "()I", "IMG_SLICE_LEN", "MAX_DO_SCENE_LIMIT", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "fileMD5", "getFilePath", "()Ljava/lang/String;", "imgUrl", "readBuf", "", "getScene", "startPos", "totalLen", "doNextUpload", "doScene", "getImgUrl", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetFollowList;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "(Lcom/tencent/mm/protobuf/ByteString;)V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getFollowContactList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "getRequestBuffer", "getResponseBuffer", "getType", "hasContinue", "", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
 public final class ad
   extends n
   implements com.tencent.mm.network.k
 {
-  private static final int qpF = 1;
-  private static final int qpG = 2;
-  public static final a qpH;
   private final String TAG;
-  private int cWU;
-  private g callback;
-  private e dispatcher;
-  private final String filePath;
-  private int gTY;
-  private byte[] qpA;
-  public String qpB;
-  private final int qpC;
-  private final int qpD;
-  private final int qpE;
-  private String qpz;
-  private final int scene;
+  private com.tencent.mm.ak.g callback;
+  private com.tencent.mm.ak.b rr;
   
-  static
+  public ad(com.tencent.mm.bw.b paramb)
   {
-    AppMethodBeat.i(165287);
-    qpH = new a((byte)0);
-    qpF = 1;
-    qpG = 2;
-    AppMethodBeat.o(165287);
+    AppMethodBeat.i(165225);
+    this.TAG = "Finder.NetSceneFinderGetFollowList";
+    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
+    locala.op(getType());
+    akr localakr = new akr();
+    localakr.lastBuffer = paramb;
+    paramb = q.qXH;
+    localakr.EDL = q.csi();
+    locala.c((a)localakr);
+    locala.d((a)new aks());
+    locala.Am("/cgi-bin/micromsg-bin/findergetfollowlist");
+    paramb = locala.aAz();
+    d.g.b.k.g(paramb, "builder.buildInstance()");
+    this.rr = paramb;
+    ac.i(this.TAG, "NetSceneFinderGetFollowList init ");
+    AppMethodBeat.o(165225);
   }
   
-  public ad(String paramString, int paramInt)
+  public final com.tencent.mm.bw.b csq()
   {
-    AppMethodBeat.i(165286);
-    this.filePath = paramString;
-    this.scene = paramInt;
-    this.TAG = "Finder.NetSceneFinderUploadHeadImg";
-    this.qpC = 51200;
-    this.qpD = 20;
-    this.qpE = -40000;
-    com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "filePath " + this.filePath + " and size: " + bt.mK(i.aMN(this.filePath)) + " total:" + i.aMN(this.filePath));
-    AppMethodBeat.o(165286);
+    AppMethodBeat.i(165224);
+    a locala = this.rr.aBD();
+    Object localObject = locala;
+    if (!(locala instanceof aks)) {
+      localObject = null;
+    }
+    localObject = (aks)localObject;
+    if (localObject != null)
+    {
+      localObject = ((aks)localObject).lastBuffer;
+      AppMethodBeat.o(165224);
+      return localObject;
+    }
+    AppMethodBeat.o(165224);
+    return null;
   }
   
-  private final int ckY()
+  public final boolean css()
   {
-    AppMethodBeat.i(165284);
-    b.a locala = new b.a();
-    locala.wg("/cgi-bin/micromsg-bin/finderuploadheadimg");
-    locala.nB(getType());
-    alr localalr = new alr();
-    localalr.scene = this.scene;
-    localalr.cWU = this.cWU;
-    localalr.gTY = this.gTY;
-    localalr.DmO = this.qpz;
-    this.qpA = i.aR(this.filePath, this.cWU, this.qpC);
-    Object localObject1 = this.qpA;
-    Object localObject2 = this.qpA;
-    int i;
-    StringBuilder localStringBuilder;
-    if (localObject2 != null)
+    AppMethodBeat.i(201176);
+    Object localObject = this.rr.aBD();
+    if (localObject == null)
     {
-      i = localObject2.length;
-      localalr.DcU = com.tencent.mm.bx.b.F((byte[])localObject1, 0, i);
-      localObject2 = this.TAG;
-      localStringBuilder = new StringBuilder("next upload start:").append(this.cWU).append(", len:");
-      localObject1 = this.qpA;
-      if (localObject1 == null) {
-        break label279;
-      }
+      localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFollowListResponse");
+      AppMethodBeat.o(201176);
+      throw ((Throwable)localObject);
     }
-    label279:
-    for (localObject1 = Integer.valueOf(localObject1.length);; localObject1 = null)
+    if (((aks)localObject).continueFlag != 0)
     {
-      com.tencent.mm.sdk.platformtools.ad.i((String)localObject2, localObject1);
-      localObject1 = am.KJy;
-      localalr.Dkw = am.fRS();
-      locala.c((a)localalr);
-      locala.d((a)new als());
-      i = dispatch(this.dispatcher, (q)locala.atI(), (com.tencent.mm.network.k)this);
-      if (i == -1)
-      {
-        localObject1 = this.callback;
-        if (localObject1 != null) {
-          ((g)localObject1).onSceneEnd(3, this.qpE, "", (n)this);
-        }
-      }
-      AppMethodBeat.o(165284);
-      return i;
-      i = 0;
-      break;
+      AppMethodBeat.o(201176);
+      return true;
     }
+    AppMethodBeat.o(201176);
+    return false;
   }
   
-  public final int doScene(e parame, g paramg)
+  public final LinkedList<FinderContact> csu()
   {
-    AppMethodBeat.i(165283);
-    if (bt.isNullOrNil(this.qpz))
+    AppMethodBeat.i(165223);
+    Object localObject = this.rr.aBD();
+    if (localObject == null)
     {
-      this.qpz = i.aEN(this.filePath);
-      this.gTY = ((int)i.aMN(this.filePath));
-      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "upload img file path:" + this.filePath + " totalLen:" + this.gTY + " md5:" + this.qpz);
+      localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFollowListResponse");
+      AppMethodBeat.o(165223);
+      throw ((Throwable)localObject);
     }
+    localObject = ((aks)localObject).rHC;
+    d.g.b.k.g(localObject, "(rr.responseProtoBuf as …ListResponse).contactList");
+    AppMethodBeat.o(165223);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.bw.b csv()
+  {
+    AppMethodBeat.i(201177);
+    a locala = this.rr.aBC();
+    Object localObject = locala;
+    if (!(locala instanceof akr)) {
+      localObject = null;
+    }
+    localObject = (akr)localObject;
+    if (localObject != null)
+    {
+      localObject = ((akr)localObject).lastBuffer;
+      AppMethodBeat.o(201177);
+      return localObject;
+    }
+    AppMethodBeat.o(201177);
+    return null;
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  {
+    AppMethodBeat.i(165221);
     this.callback = paramg;
-    this.dispatcher = parame;
-    int i = ckY();
-    AppMethodBeat.o(165283);
+    int i = dispatch(parame, (com.tencent.mm.network.q)this.rr, (com.tencent.mm.network.k)this);
+    AppMethodBeat.o(165221);
     return i;
   }
   
   public final int getType()
   {
-    return 3759;
+    return 713;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(165285);
-    com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "errType " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      if (paramq == null)
-      {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-        AppMethodBeat.o(165285);
-        throw paramString;
-      }
-      paramq = ((com.tencent.mm.al.b)paramq).auM();
-      if (paramq == null)
-      {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderUploadHeadImgResponse");
-        AppMethodBeat.o(165285);
-        throw paramString;
-      }
-      paramq = (als)paramq;
-      if (paramq.completed)
-      {
-        this.qpB = paramq.qpB;
-        com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "upload completed " + this.qpB);
-        paramq = this.callback;
-        if (paramq != null)
-        {
-          paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-          AppMethodBeat.o(165285);
-          return;
-        }
-        AppMethodBeat.o(165285);
-        return;
-      }
-      this.cWU = paramq.cWU;
-      ckY();
-      AppMethodBeat.o(165285);
-      return;
+    AppMethodBeat.i(165222);
+    ac.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      com.tencent.mm.plugin.report.e.wTc.idkeyStat(1279L, 7L, 1L, false);
     }
-    paramq = this.callback;
-    if (paramq != null)
+    for (;;)
     {
+      paramq = this.rr.aBC();
+      if (paramq != null) {
+        break;
+      }
+      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFollowListRequest");
+      AppMethodBeat.o(165222);
+      throw paramString;
+      com.tencent.mm.plugin.report.e.wTc.idkeyStat(1279L, 8L, 1L, false);
+    }
+    if (((akr)paramq).lastBuffer == null)
+    {
+      paramq = com.tencent.mm.kernel.g.agR();
+      d.g.b.k.g(paramq, "MMKernel.storage()");
+      paramq = paramq.agA();
+      paramArrayOfByte = ah.a.GVm;
+      localObject = this.rr.aBD();
+      if (localObject == null)
+      {
+        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFollowListResponse");
+        AppMethodBeat.o(165222);
+        throw paramString;
+      }
+      paramq.set(paramArrayOfByte, Integer.valueOf(((aks)localObject).EEH));
+      paramq = y.KTp;
+    }
+    paramq = csu();
+    paramArrayOfByte = this.TAG;
+    Object localObject = new StringBuilder("firstPage ");
+    if (csq() == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ac.i(paramArrayOfByte, bool + ", get " + paramq.size() + " follow contact ");
+      paramq = ((Iterable)paramq).iterator();
+      while (paramq.hasNext())
+      {
+        paramArrayOfByte = (FinderContact)paramq.next();
+        localObject = com.tencent.mm.plugin.finder.api.b.qWt;
+        com.tencent.mm.plugin.finder.api.b.a.a(paramArrayOfByte);
+      }
+    }
+    if (this.callback != null)
+    {
+      paramq = this.callback;
+      if (paramq == null) {
+        d.g.b.k.fOy();
+      }
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(165285);
-      return;
     }
-    AppMethodBeat.o(165285);
+    AppMethodBeat.o(165222);
   }
-  
-  public final int securityLimitCount()
-  {
-    return this.qpD;
-  }
-  
-  public final n.b securityVerificationChecked(q paramq)
-  {
-    AppMethodBeat.i(165282);
-    d.g.b.k.h(paramq, "rr");
-    if (bt.isNullOrNil(this.filePath))
-    {
-      paramq = n.b.gVC;
-      AppMethodBeat.o(165282);
-      return paramq;
-    }
-    paramq = n.b.gVB;
-    AppMethodBeat.o(165282);
-    return paramq;
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUploadHeadImg$Companion;", "", "()V", "UPLOAD_FINDER_HEAD_IMG_SCENE_CREATE_CONTACT", "", "getUPLOAD_FINDER_HEAD_IMG_SCENE_CREATE_CONTACT", "()I", "UPLOAD_FINDER_HEAD_IMG_SCENE_UPDATE_CONTACT", "getUPLOAD_FINDER_HEAD_IMG_SCENE_UPDATE_CONTACT", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ad
  * JD-Core Version:    0.7.0.1
  */

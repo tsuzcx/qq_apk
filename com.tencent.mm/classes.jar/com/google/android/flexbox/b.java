@@ -7,31 +7,31 @@ import java.util.List;
 
 public final class b
 {
-  int Zp;
-  int ars;
-  int bAO;
-  int bAP;
-  int bAQ;
-  int bAR;
-  float bAS;
-  float bAT;
-  int bAU;
-  int bAV;
-  List<Integer> bAW;
-  int bAX;
-  int xo;
-  int xp;
-  int xq;
-  int xr;
+  int aak;
+  int asn;
+  float byA;
+  float byB;
+  int byC;
+  int byD;
+  List<Integer> byE;
+  int byF;
+  int byw;
+  int byx;
+  int byy;
+  int byz;
+  int ym;
+  int yn;
+  int yo;
+  int yp;
   
   b()
   {
     AppMethodBeat.i(62214);
-    this.xo = 2147483647;
-    this.xp = 2147483647;
-    this.xq = -2147483648;
-    this.xr = -2147483648;
-    this.bAW = new ArrayList();
+    this.ym = 2147483647;
+    this.yn = 2147483647;
+    this.yo = -2147483648;
+    this.yp = -2147483648;
+    this.byE = new ArrayList();
     AppMethodBeat.o(62214);
   }
   
@@ -39,23 +39,23 @@ public final class b
   {
     AppMethodBeat.i(62215);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    this.xo = Math.min(this.xo, paramView.getLeft() - localFlexItem.wo() - paramInt1);
-    this.xp = Math.min(this.xp, paramView.getTop() - localFlexItem.wp() - paramInt2);
-    this.xq = Math.max(this.xq, paramView.getRight() + localFlexItem.wq() + paramInt3);
-    paramInt1 = this.xr;
+    this.ym = Math.min(this.ym, paramView.getLeft() - localFlexItem.wb() - paramInt1);
+    this.yn = Math.min(this.yn, paramView.getTop() - localFlexItem.wc() - paramInt2);
+    this.yo = Math.max(this.yo, paramView.getRight() + localFlexItem.wd() + paramInt3);
+    paramInt1 = this.yp;
     paramInt2 = paramView.getBottom();
-    this.xr = Math.max(paramInt1, localFlexItem.getMarginBottom() + paramInt2 + paramInt4);
+    this.yp = Math.max(paramInt1, localFlexItem.getMarginBottom() + paramInt2 + paramInt4);
     AppMethodBeat.o(62215);
   }
   
-  public final int wr()
+  public final int we()
   {
-    return this.ars - this.bAR;
+    return this.asn - this.byz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.flexbox.b
  * JD-Core Version:    0.7.0.1
  */

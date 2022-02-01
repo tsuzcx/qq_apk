@@ -4,7 +4,7 @@ import android.app.Activity;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.widget.dialog.c.c;
-import com.tencent.mm.protocal.protobuf.cmy;
+import com.tencent.mm.protocal.protobuf.csf;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,10 +19,10 @@ public abstract class h
     for (paramh = ((q)paramh).au(Activity.class); paramh == null; paramh = paramh.getContext()) {
       return null;
     }
-    return com.tencent.mm.sdk.f.a.iV(paramh);
+    return com.tencent.mm.sdk.f.a.jg(paramh);
   }
   
-  protected static <T> LinkedList<T> q(ArrayList<T> paramArrayList)
+  protected static <T> LinkedList<T> v(ArrayList<T> paramArrayList)
   {
     if (paramArrayList == null) {
       return null;
@@ -32,17 +32,17 @@ public abstract class h
     return localLinkedList;
   }
   
-  protected static LinkedList<c.c> y(LinkedList<cmy> paramLinkedList)
+  protected static LinkedList<c.c> y(LinkedList<csf> paramLinkedList)
   {
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      cmy localcmy = (cmy)paramLinkedList.next();
+      csf localcsf = (csf)paramLinkedList.next();
       c.c localc = new c.c();
-      localc.scope = localcmy.CLe;
-      localc.desc = localcmy.Desc;
-      localc.state = localcmy.EhH;
+      localc.scope = localcsf.EdG;
+      localc.desc = localcsf.Desc;
+      localc.state = localcsf.FEG;
       localLinkedList.add(localc);
     }
     return localLinkedList;
@@ -68,7 +68,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.h
  * JD-Core Version:    0.7.0.1
  */

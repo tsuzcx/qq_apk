@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
+  public String Bhh;
   public int selected;
-  public String uns;
-  public String zON;
+  public String vwo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,37 +15,37 @@ public final class m
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.zON != null) {
-        paramVarArgs.d(1, this.zON);
+      if (this.Bhh != null) {
+        paramVarArgs.d(1, this.Bhh);
       }
       paramVarArgs.aR(2, this.selected);
-      if (this.uns != null) {
-        paramVarArgs.d(3, this.uns);
+      if (this.vwo != null) {
+        paramVarArgs.d(3, this.vwo);
       }
       AppMethodBeat.o(91298);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.zON == null) {
+      if (this.Bhh == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.zON) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.Bhh) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bA(2, this.selected);
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.selected);
       paramInt = i;
-      if (this.uns != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.uns);
+      if (this.vwo != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.vwo);
       }
       AppMethodBeat.o(91298);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(91298);
@@ -61,15 +61,15 @@ public final class m
           AppMethodBeat.o(91298);
           return -1;
         case 1: 
-          localm.zON = locala.KhF.readString();
+          localm.Bhh = locala.LVo.readString();
           AppMethodBeat.o(91298);
           return 0;
         case 2: 
-          localm.selected = locala.KhF.xS();
+          localm.selected = locala.LVo.xF();
           AppMethodBeat.o(91298);
           return 0;
         }
-        localm.uns = locala.KhF.readString();
+        localm.vwo = locala.LVo.readString();
         AppMethodBeat.o(91298);
         return 0;
       }
@@ -80,7 +80,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.m
  * JD-Core Version:    0.7.0.1
  */

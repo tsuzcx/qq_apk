@@ -15,8 +15,8 @@ public class zzi
   implements Parcelable
 {
   public static final Parcelable.Creator<zzi> CREATOR;
-  private Messenger bEg;
-  private zze bEh;
+  private Messenger bBO;
+  private zze bBP;
   
   static
   {
@@ -30,24 +30,24 @@ public class zzi
     AppMethodBeat.i(4221);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.bEg = new Messenger(paramIBinder);
+      this.bBO = new Messenger(paramIBinder);
       AppMethodBeat.o(4221);
       return;
     }
-    this.bEh = zzf.zza(paramIBinder);
+    this.bBP = zzf.zza(paramIBinder);
     AppMethodBeat.o(4221);
   }
   
   private final IBinder getBinder()
   {
     AppMethodBeat.i(4223);
-    if (this.bEg != null)
+    if (this.bBO != null)
     {
-      localIBinder = this.bEg.getBinder();
+      localIBinder = this.bBO.getBinder();
       AppMethodBeat.o(4223);
       return localIBinder;
     }
-    IBinder localIBinder = this.bEh.asBinder();
+    IBinder localIBinder = this.bBP.asBinder();
     AppMethodBeat.o(4223);
     return localIBinder;
   }
@@ -89,32 +89,32 @@ public class zzi
   public final void send(Message paramMessage)
   {
     AppMethodBeat.i(4222);
-    if (this.bEg != null)
+    if (this.bBO != null)
     {
-      this.bEg.send(paramMessage);
+      this.bBO.send(paramMessage);
       AppMethodBeat.o(4222);
       return;
     }
-    this.bEh.send(paramMessage);
+    this.bBP.send(paramMessage);
     AppMethodBeat.o(4222);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(4226);
-    if (this.bEg != null)
+    if (this.bBO != null)
     {
-      paramParcel.writeStrongBinder(this.bEg.getBinder());
+      paramParcel.writeStrongBinder(this.bBO.getBinder());
       AppMethodBeat.o(4226);
       return;
     }
-    paramParcel.writeStrongBinder(this.bEh.asBinder());
+    paramParcel.writeStrongBinder(this.bBP.asBinder());
     AppMethodBeat.o(4226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.firebase.iid.zzi
  * JD-Core Version:    0.7.0.1
  */

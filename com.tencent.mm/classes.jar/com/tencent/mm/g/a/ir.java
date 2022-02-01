@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ir
   extends b
 {
-  public a dmI;
+  public a djU;
   
   public ir()
   {
@@ -15,21 +15,22 @@ public final class ir
   
   private ir(byte paramByte)
   {
-    AppMethodBeat.i(149864);
-    this.dmI = new a();
-    this.ESR = false;
+    AppMethodBeat.i(117547);
+    this.djU = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149864);
+    AppMethodBeat.o(117547);
   }
   
   public static final class a
   {
-    public String url;
+    public String djV;
+    public String djW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ir
  * JD-Core Version:    0.7.0.1
  */

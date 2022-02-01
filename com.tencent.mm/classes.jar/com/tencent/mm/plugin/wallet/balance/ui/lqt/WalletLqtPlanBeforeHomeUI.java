@@ -10,16 +10,16 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.CgiLqtPlanIndex;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.q;
-import com.tencent.mm.protocal.protobuf.caq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.protocal.protobuf.cfp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.wallet_core.c.a;
 import com.tencent.mm.wallet_core.c.a.a;
 
 public class WalletLqtPlanBeforeHomeUI
   extends AppCompatActivity
 {
-  private void dZz()
+  private void eoV()
   {
     AppMethodBeat.i(68901);
     q localq = new q();
@@ -39,12 +39,12 @@ public class WalletLqtPlanBeforeHomeUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(68902);
-    ad.i("MicroMsg.WalletLqtPlanBeforeHomeUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.WalletLqtPlanBeforeHomeUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 65281)
     {
       if (paramInt2 == -1)
       {
-        dZz();
+        eoV();
         AppMethodBeat.o(68902);
         return;
       }
@@ -59,8 +59,8 @@ public class WalletLqtPlanBeforeHomeUI
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    ai.r(this, getResources().getColor(2131101053));
-    dZz();
+    aj.r(this, getResources().getColor(2131101053));
+    eoV();
     AppMethodBeat.o(68899);
   }
   
@@ -72,7 +72,7 @@ public class WalletLqtPlanBeforeHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanBeforeHomeUI
  * JD-Core Version:    0.7.0.1
  */

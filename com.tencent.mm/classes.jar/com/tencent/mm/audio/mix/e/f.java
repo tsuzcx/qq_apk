@@ -10,17 +10,17 @@ public abstract class f
 {
   protected int MAX_VALUE = 32767;
   protected int MIN_VALUE = -32768;
-  protected short[][] cVN = (short[][])Array.newInstance(Short.TYPE, new int[] { 1, 1 });
-  protected int cVO = 1;
-  protected int cVP = 1;
-  protected short[] cVQ = new short[1];
-  protected int cVR = 1;
-  protected com.tencent.mm.audio.mix.a.b cVS;
+  protected short[][] cTj = (short[][])Array.newInstance(Short.TYPE, new int[] { 1, 1 });
+  protected int cTk = 1;
+  protected int cTl = 1;
+  protected short[] cTm = new short[1];
+  protected int cTn = 1;
+  protected com.tencent.mm.audio.mix.a.b cTo;
   
-  private byte[] NE()
+  private byte[] NC()
   {
-    if (this.cVS != null) {
-      return this.cVS.cTk;
+    if (this.cTo != null) {
+      return this.cTo.cQH;
     }
     return null;
   }
@@ -38,10 +38,10 @@ public abstract class f
     int i = 0;
     while (i < paramList.size())
     {
-      localObject1[i] = ((e)paramList.get(i)).cTk;
+      localObject1[i] = ((e)paramList.get(i)).cQH;
       i += 1;
     }
-    this.cVS = paramb;
+    this.cTo = paramb;
     if (localObject1.length == 0) {
       localObject1 = null;
     }
@@ -56,7 +56,7 @@ public abstract class f
       }
       else if (localObject1.length == 1)
       {
-        byte[] arrayOfByte = NE();
+        byte[] arrayOfByte = NC();
         if (arrayOfByte != null)
         {
           localObject1 = arrayOfByte;
@@ -87,42 +87,42 @@ public abstract class f
         label232:
         int k = localObject1.length;
         int m = localObject2.length / 2;
-        if ((k != this.cVO) || (m != this.cVP))
+        if ((k != this.cTk) || (m != this.cTl))
         {
-          this.cVN = ((short[][])Array.newInstance(Short.TYPE, new int[] { k, m }));
-          this.cVO = k;
-          this.cVP = m;
+          this.cTj = ((short[][])Array.newInstance(Short.TYPE, new int[] { k, m }));
+          this.cTk = k;
+          this.cTl = m;
         }
         i = 0;
         while (i < k)
         {
-          Arrays.fill(this.cVN[i], 0, m - 1, (short)0);
+          Arrays.fill(this.cTj[i], 0, m - 1, (short)0);
           int j = 0;
           while (j < m)
           {
-            this.cVN[i][j] = ((short)(localObject1[i][(j * 2)] & 0xFF | (localObject1[i][(j * 2 + 1)] & 0xFF) << 8));
+            this.cTj[i][j] = ((short)(localObject1[i][(j * 2)] & 0xFF | (localObject1[i][(j * 2 + 1)] & 0xFF) << 8));
             j += 1;
           }
           i += 1;
         }
-        if (this.cVR != m)
+        if (this.cTn != m)
         {
-          this.cVR = m;
-          this.cVQ = new short[m];
+          this.cTn = m;
+          this.cTm = new short[m];
         }
-        Arrays.fill(this.cVQ, 0, m - 1, (short)0);
+        Arrays.fill(this.cTm, 0, m - 1, (short)0);
         localObject1 = G(k, m, localObject2.length);
       }
     }
-    paramb.cTk = ((byte[])localObject1);
+    paramb.cQH = ((byte[])localObject1);
     paramb.channels = ((e)paramList.get(0)).channels;
     paramb.sampleRate = ((e)paramList.get(0)).sampleRate;
     return true;
   }
   
-  protected final byte[] cg(int paramInt1, int paramInt2)
+  protected final byte[] ce(int paramInt1, int paramInt2)
   {
-    byte[] arrayOfByte2 = NE();
+    byte[] arrayOfByte2 = NC();
     byte[] arrayOfByte1;
     if (arrayOfByte2 != null)
     {
@@ -136,14 +136,14 @@ public abstract class f
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      arrayOfByte1[(paramInt1 * 2)] = ((byte)(this.cVQ[paramInt1] & 0xFF));
-      arrayOfByte1[(paramInt1 * 2 + 1)] = ((byte)((this.cVQ[paramInt1] & 0xFF00) >> 8));
+      arrayOfByte1[(paramInt1 * 2)] = ((byte)(this.cTm[paramInt1] & 0xFF));
+      arrayOfByte1[(paramInt1 * 2 + 1)] = ((byte)((this.cTm[paramInt1] & 0xFF00) >> 8));
       paramInt1 += 1;
     }
     return arrayOfByte1;
   }
   
-  protected final short hS(int paramInt)
+  protected final short hC(int paramInt)
   {
     if (paramInt > this.MAX_VALUE) {
       return (short)this.MAX_VALUE;

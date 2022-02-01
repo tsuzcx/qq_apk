@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public String BKA;
-  public String BKB;
-  public String BKC;
-  public String BKD;
-  public j BKE;
-  public double BKl;
-  public int BKq;
-  public double BKr;
-  public double BKs;
-  public int BKt;
-  public double BKu;
-  public double BKv;
-  public boolean BKw;
-  public int BKx;
-  public String BKy;
-  public String BKz;
-  public String vBe;
+  public double DcA;
+  public int DcB;
+  public double DcC;
+  public double DcD;
+  public boolean DcE;
+  public int DcF;
+  public String DcG;
+  public String DcH;
+  public String DcI;
+  public String DcJ;
+  public String DcK;
+  public String DcL;
+  public j DcM;
+  public double Dct;
+  public int Dcy;
+  public double Dcz;
+  public String wLj;
   
   public k()
   {
     AppMethodBeat.i(72315);
-    this.BKE = new j();
+    this.DcM = new j();
     AppMethodBeat.o(72315);
   }
 }

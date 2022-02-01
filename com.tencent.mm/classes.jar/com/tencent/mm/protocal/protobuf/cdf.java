@@ -1,104 +1,146 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cdf
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int DZv;
-  public int DZw;
-  public int DZx;
-  public int oXv;
-  public String oXw;
-  public int sBd;
-  public String sBe;
+  public String DSu;
+  public String Eel;
+  public int FhS;
+  public bpa FhT;
+  public String FrO;
+  public String FrP;
+  public int FrQ;
+  public int FrR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32392);
+    AppMethodBeat.i(117889);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DZw);
-      paramVarArgs.aR(2, this.DZx);
-      paramVarArgs.aR(3, this.DZv);
-      paramVarArgs.aR(4, this.oXv);
-      if (this.oXw != null) {
-        paramVarArgs.d(5, this.oXw);
+      if (this.Eel != null) {
+        paramVarArgs.d(1, this.Eel);
       }
-      paramVarArgs.aR(6, this.sBd);
-      if (this.sBe != null) {
-        paramVarArgs.d(7, this.sBe);
-      }
-      AppMethodBeat.o(32392);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bA(1, this.DZw) + 0 + f.a.a.b.b.a.bA(2, this.DZx) + f.a.a.b.b.a.bA(3, this.DZv) + f.a.a.b.b.a.bA(4, this.oXv);
-      paramInt = i;
-      if (this.oXw != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.oXw);
-      }
-      i = paramInt + f.a.a.b.b.a.bA(6, this.sBd);
-      paramInt = i;
-      if (this.sBe != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.sBe);
-      }
-      AppMethodBeat.o(32392);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
-      }
-      AppMethodBeat.o(32392);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      cdf localcdf = (cdf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.FhT != null)
       {
-      default: 
-        AppMethodBeat.o(32392);
-        return -1;
-      case 1: 
-        localcdf.DZw = locala.KhF.xS();
-        AppMethodBeat.o(32392);
-        return 0;
-      case 2: 
-        localcdf.DZx = locala.KhF.xS();
-        AppMethodBeat.o(32392);
-        return 0;
-      case 3: 
-        localcdf.DZv = locala.KhF.xS();
-        AppMethodBeat.o(32392);
-        return 0;
-      case 4: 
-        localcdf.oXv = locala.KhF.xS();
-        AppMethodBeat.o(32392);
-        return 0;
-      case 5: 
-        localcdf.oXw = locala.KhF.readString();
-        AppMethodBeat.o(32392);
-        return 0;
-      case 6: 
-        localcdf.sBd = locala.KhF.xS();
-        AppMethodBeat.o(32392);
-        return 0;
+        paramVarArgs.ln(2, this.FhT.computeSize());
+        this.FhT.writeFields(paramVarArgs);
       }
-      localcdf.sBe = locala.KhF.readString();
-      AppMethodBeat.o(32392);
+      if (this.DSu != null) {
+        paramVarArgs.d(3, this.DSu);
+      }
+      if (this.FrP != null) {
+        paramVarArgs.d(4, this.FrP);
+      }
+      if (this.FrO != null) {
+        paramVarArgs.d(5, this.FrO);
+      }
+      paramVarArgs.aR(6, this.FrQ);
+      paramVarArgs.aR(7, this.FhS);
+      paramVarArgs.aR(8, this.FrR);
+      AppMethodBeat.o(117889);
       return 0;
     }
-    AppMethodBeat.o(32392);
-    return -1;
+    if (paramInt == 1) {
+      if (this.Eel == null) {
+        break label694;
+      }
+    }
+    label694:
+    for (int i = f.a.a.b.b.a.e(1, this.Eel) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.FhT != null) {
+        paramInt = i + f.a.a.a.lm(2, this.FhT.computeSize());
+      }
+      i = paramInt;
+      if (this.DSu != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DSu);
+      }
+      paramInt = i;
+      if (this.FrP != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FrP);
+      }
+      i = paramInt;
+      if (this.FrO != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FrO);
+      }
+      paramInt = f.a.a.b.b.a.bx(6, this.FrQ);
+      int j = f.a.a.b.b.a.bx(7, this.FhS);
+      int k = f.a.a.b.b.a.bx(8, this.FrR);
+      AppMethodBeat.o(117889);
+      return i + paramInt + j + k;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        AppMethodBeat.o(117889);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        cdf localcdf = (cdf)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(117889);
+          return -1;
+        case 1: 
+          localcdf.Eel = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(117889);
+          return 0;
+        case 2: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new bpa();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((bpa)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcdf.FhT = ((bpa)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(117889);
+          return 0;
+        case 3: 
+          localcdf.DSu = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(117889);
+          return 0;
+        case 4: 
+          localcdf.FrP = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(117889);
+          return 0;
+        case 5: 
+          localcdf.FrO = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(117889);
+          return 0;
+        case 6: 
+          localcdf.FrQ = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(117889);
+          return 0;
+        case 7: 
+          localcdf.FhS = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(117889);
+          return 0;
+        }
+        localcdf.FrR = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(117889);
+        return 0;
+      }
+      AppMethodBeat.o(117889);
+      return -1;
+    }
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,30 +12,30 @@ import java.util.TimerTask;
 
 public final class j
 {
-  final ArrayList<b> nQn;
-  ArrayList<b> nQo;
-  final ArrayList<a> nQp;
-  Timer nQq;
+  final ArrayList<b> ots;
+  ArrayList<b> ott;
+  final ArrayList<a> otu;
+  Timer otv;
   
   public j()
   {
     AppMethodBeat.i(90816);
-    this.nQo = new ArrayList(10);
-    this.nQp = new ArrayList(2);
-    this.nQn = new ArrayList(10);
+    this.ott = new ArrayList(10);
+    this.otu = new ArrayList(2);
+    this.ots = new ArrayList(10);
     AppMethodBeat.o(90816);
   }
   
-  final String zz(int paramInt)
+  final String Aq(int paramInt)
   {
     AppMethodBeat.i(184466);
-    if (this.nQn != null)
+    if (this.ots != null)
     {
-      Object localObject = this.nQn.iterator();
+      Object localObject = this.ots.iterator();
       while (((Iterator)localObject).hasNext())
       {
         b localb = (b)((Iterator)localObject).next();
-        if ((localb != null) && (paramInt == localb.nPB))
+        if ((localb != null) && (paramInt == localb.osF))
         {
           localObject = localb.openId;
           AppMethodBeat.o(184466);
@@ -49,12 +49,12 @@ public final class j
   
   static abstract interface a
   {
-    public abstract void E(ArrayList<b> paramArrayList);
+    public abstract void J(ArrayList<b> paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.j
  * JD-Core Version:    0.7.0.1
  */

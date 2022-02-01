@@ -1,84 +1,82 @@
 package com.tencent.mm.bt;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.protocal.protobuf.bel;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.text.Editable;
+import android.view.MotionEvent;
+import com.tencent.mm.api.g;
+import com.tencent.mm.api.i;
+import com.tencent.mm.api.p;
+import com.tencent.mm.api.s;
+import com.tencent.mm.api.w;
+import com.tencent.mm.api.y.a;
+import com.tencent.mm.cache.f;
 
-public final class b
+public abstract interface b
 {
-  public static void run()
-  {
-    AppMethodBeat.i(32072);
-    if ((!az.afw()) || (az.aeC()))
-    {
-      AppMethodBeat.o(32072);
-      return;
-    }
-    long l3 = bt.aGK();
-    az.arV();
-    long l2 = bt.a((Long)c.afk().get(331797, null), 0L);
-    long l1 = l2;
-    if (10013 == com.tencent.mm.platformtools.ab.hVC)
-    {
-      l1 = l2;
-      if (com.tencent.mm.platformtools.ab.hVD != 0) {
-        l1 = 0L;
-      }
-    }
-    if (l1 < l3)
-    {
-      az.arV();
-      c.afk().set(331797, Long.valueOf(432000L + l3));
-      try
-      {
-        bel localbel = new bel();
-        localbel.DBY = "";
-        Account[] arrayOfAccount = AccountManager.get(aj.getContext()).getAccountsByType("com.google");
-        int j = arrayOfAccount.length;
-        int i = 0;
-        while (i < j)
-        {
-          Account localAccount = arrayOfAccount[i];
-          if (!bt.isNullOrNil(localbel.DBY)) {
-            break;
-          }
-          ad.i("MicroMsg.PostTaskGoogleAcc", "google account[%s]", new Object[] { localAccount.name });
-          localbel.DBY = localAccount.name;
-          i += 1;
-        }
-        if ((10013 == com.tencent.mm.platformtools.ab.hVC) && (com.tencent.mm.platformtools.ab.hVD != 0)) {
-          localbel.DBY = "rssjbbk@gmail.com";
-        }
-        if (!bt.isNullOrNil(localbel.DBY))
-        {
-          az.arV();
-          c.apL().c(new j.a(57, localbel));
-          AppMethodBeat.o(32072);
-          return;
-        }
-        ad.w("MicroMsg.PostTaskGoogleAcc", "Get Accounts failed , Not any info?");
-        AppMethodBeat.o(32072);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ad.w("MicroMsg.PostTaskGoogleAcc", "Get Accounts failed :%s", new Object[] { localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(32072);
-  }
+  public abstract boolean Iu();
+  
+  public abstract boolean R(MotionEvent paramMotionEvent);
+  
+  public abstract f a(com.tencent.mm.e.a parama);
+  
+  public abstract void a(Editable paramEditable, int paramInt1, int paramInt2);
+  
+  public abstract void a(s params, boolean paramBoolean);
+  
+  public abstract void a(y.a parama);
+  
+  public abstract void a(com.tencent.mm.view.a parama);
+  
+  public abstract <T extends com.tencent.mm.e.b> T c(g paramg);
+  
+  public abstract void c(p paramp);
+  
+  public abstract boolean eQK();
+  
+  public abstract void eQL();
+  
+  public abstract void eQM();
+  
+  public abstract com.tencent.mm.view.a eQN();
+  
+  public abstract <T extends com.tencent.mm.e.b> T eQO();
+  
+  public abstract void eQP();
+  
+  public abstract Bitmap eQQ();
+  
+  public abstract boolean eQR();
+  
+  public abstract y.a getConfig();
+  
+  public abstract float getCurScale();
+  
+  public abstract g[] getFeatures();
+  
+  public abstract float getInitScale();
+  
+  public abstract w getSelectedFeatureListener();
+  
+  public abstract void onAttachedToWindow();
+  
+  public abstract void onDestroy();
+  
+  public abstract void onDraw(Canvas paramCanvas);
+  
+  public abstract void onExit();
+  
+  public abstract void onFinish();
+  
+  public abstract void setActionBarCallback(i parami);
+  
+  public abstract void setAutoShowFooterAndBar(boolean paramBoolean);
+  
+  public abstract void setInitScale(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bt.b
  * JD-Core Version:    0.7.0.1
  */

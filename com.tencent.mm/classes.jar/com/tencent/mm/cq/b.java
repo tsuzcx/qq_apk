@@ -1,126 +1,243 @@
 package com.tencent.mm.cq;
 
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.af;
-import com.tencent.mm.compatible.util.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.xweb.ISharedPreferenceProvider;
+import com.tencent.xweb.af;
+import com.tencent.xweb.util.IXWebLogClient;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.xwalk.core.WebViewExtensionListener;
 
 public final class b
 {
-  private static BitmapFactory.Options aKR(String paramString)
-  {
-    AppMethodBeat.i(152889);
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    paramString = BitmapFactory.decodeFile(i.k(paramString, false), localOptions);
-    if (paramString != null) {
-      paramString.recycle();
-    }
-    AppMethodBeat.o(152889);
-    return localOptions;
-  }
+  public static IXWebLogClient JIj;
+  public static af JIk;
+  public static WebViewExtensionListener JIl;
+  public static ISharedPreferenceProvider JIm;
   
-  public static boolean aNp(String paramString)
+  static
   {
-    AppMethodBeat.i(152885);
-    if (fkO())
+    AppMethodBeat.i(152920);
+    JIj = new IXWebLogClient()
     {
-      AppMethodBeat.o(152885);
-      return false;
-    }
-    paramString = aKR(paramString);
-    int i = paramString.outWidth;
-    int j = paramString.outHeight;
-    ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImgOpt ignore abTestFlag, widthFactor: %f, heightFactor: %f, width: %d, height: %d", new Object[] { Float.valueOf(1.0F), Float.valueOf(1.0F), Integer.valueOf(i), Integer.valueOf(j) });
-    if (a.ke(i, j))
-    {
-      ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt filter image");
-      AppMethodBeat.o(152885);
-      return false;
-    }
-    ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt not filter");
-    int k = getScreenWidth(aj.getContext());
-    int m = getScreenHeight(aj.getContext());
-    ad.d("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt width: %d, height: %d, screenWidth: %d, screenHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-    if (i >= k * 1.0F)
-    {
-      AppMethodBeat.o(152885);
-      return true;
-    }
-    if (j >= m * 1.0F)
-    {
-      AppMethodBeat.o(152885);
-      return true;
-    }
-    AppMethodBeat.o(152885);
-    return false;
-  }
-  
-  private static boolean fkO()
-  {
-    AppMethodBeat.i(152886);
-    if (Build.VERSION.SDK_INT == 27)
-    {
-      String str = af.get("ro.mediatek.platform");
-      if ((str != null) && ((str.startsWith("mt6765")) || (str.startsWith("MT6765"))))
+      final String TAG = "IXWebLogClient";
+      
+      public final void d(String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.o(152886);
-        return false;
+        AppMethodBeat.i(152908);
+        ac.d(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(152908);
+      }
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(152906);
+        ac.e(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(152906);
+      }
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(152905);
+        ac.i(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(152905);
+      }
+      
+      public final void v(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(152909);
+        ac.v(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(152909);
+      }
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(152907);
+        ac.w(paramAnonymousString1, paramAnonymousString2);
+        AppMethodBeat.o(152907);
+      }
+    };
+    JIk = new af()
+    {
+      final String TAG = "XWebIdkey";
+      
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7)
+      {
+        AppMethodBeat.i(152913);
+        ac.v("XWebIdkey", "callback: kvStat:15003, 200601," + paramAnonymousInt1 + ",0," + paramAnonymousString + "," + paramAnonymousInt3 + ",-1," + paramAnonymousInt4 + "," + paramAnonymousInt5 + "," + paramAnonymousInt6);
+        h.wUl.f(15003, new Object[] { Integer.valueOf(200601), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(0), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Integer.valueOf(ax.getNetType(ai.getContext())), Integer.valueOf(paramAnonymousInt3), Integer.valueOf(-1), Integer.valueOf(paramAnonymousInt4), Integer.valueOf(paramAnonymousInt5), Integer.valueOf(paramAnonymousInt6), Integer.valueOf(paramAnonymousInt7) });
+        AppMethodBeat.o(152913);
+      }
+      
+      public final void aT(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(152911);
+        ac.v("XWebIdkey", "callback: idkeyForPair:577, " + paramAnonymousInt1 + ", 1, 577, " + paramAnonymousInt2 + ", " + paramAnonymousInt3);
+        h.wUl.a(577, 577, paramAnonymousInt1, paramAnonymousInt2, 1, paramAnonymousInt3, true);
+        AppMethodBeat.o(152911);
+      }
+      
+      public final void kvStat(int paramAnonymousInt, String paramAnonymousString)
+      {
+        AppMethodBeat.i(152912);
+        ac.v("XWebIdkey", "callback: kvStat:" + paramAnonymousInt + ", " + paramAnonymousString);
+        h.wUl.kvStat(paramAnonymousInt, paramAnonymousString);
+        AppMethodBeat.o(152912);
+      }
+      
+      public final void n(long paramAnonymousLong1, long paramAnonymousLong2, long paramAnonymousLong3)
+      {
+        AppMethodBeat.i(152910);
+        ac.v("XWebIdkey", "callback: idkeyStat:" + paramAnonymousLong1 + ", " + paramAnonymousLong2 + ", " + paramAnonymousLong3);
+        h.wUl.idkeyStat(paramAnonymousLong1, paramAnonymousLong2, paramAnonymousLong3, true);
+        AppMethodBeat.o(152910);
+      }
+    };
+    JIl = new WebViewExtensionListener()
+    {
+      public final int getHostByName(String paramAnonymousString, List<String> paramAnonymousList)
+      {
+        AppMethodBeat.i(152915);
+        if (!com.tencent.mm.ipcinvoker.c.aeI().tC("com.tencent.mm"))
+        {
+          AppMethodBeat.o(152915);
+          return 0;
+        }
+        paramAnonymousString = (Bundle)XIPCInvoker.a("com.tencent.mm", new IPCString(paramAnonymousString), b.a.class);
+        if ((paramAnonymousList != null) && (paramAnonymousString != null))
+        {
+          paramAnonymousList.clear();
+          ArrayList localArrayList = paramAnonymousString.getStringArrayList("ipList");
+          int i = paramAnonymousString.getInt("result");
+          paramAnonymousList.addAll(localArrayList);
+          AppMethodBeat.o(152915);
+          return i;
+        }
+        AppMethodBeat.o(152915);
+        return 0;
+      }
+      
+      public final Object onMiscCallBack(String paramAnonymousString, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(152914);
+        if ("AddFilterResources".equals(paramAnonymousString)) {
+          com.tencent.mm.svg.a.e.a((Resources)paramAnonymousVarArgs[0], (Map)paramAnonymousVarArgs[1]);
+        }
+        AppMethodBeat.o(152914);
+        return null;
+      }
+    };
+    JIm = new ISharedPreferenceProvider()
+    {
+      public final SharedPreferences z(String paramAnonymousString, int paramAnonymousInt, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(152916);
+        if (paramAnonymousBoolean)
+        {
+          paramAnonymousString = aw.aKV(paramAnonymousString);
+          if (paramAnonymousString == null)
+          {
+            AppMethodBeat.o(152916);
+            return null;
+          }
+        }
+        else
+        {
+          if (paramAnonymousInt == 4) {}
+          for (paramAnonymousInt = 2;; paramAnonymousInt = 1)
+          {
+            paramAnonymousString = aw.fK(paramAnonymousString, paramAnonymousInt);
+            break;
+          }
+        }
+        paramAnonymousString = new c(paramAnonymousString);
+        AppMethodBeat.o(152916);
+        return paramAnonymousString;
+      }
+    };
+    AppMethodBeat.o(152920);
+  }
+  
+  public static String getModuleName()
+  {
+    AppMethodBeat.i(152919);
+    String str = ai.getProcessName();
+    if (str == null)
+    {
+      AppMethodBeat.o(152919);
+      return "";
+    }
+    if (str.contains(":"))
+    {
+      str = str.substring(str.lastIndexOf(":") + 1).toLowerCase();
+      if (str.startsWith("appbrand"))
+      {
+        AppMethodBeat.o(152919);
+        return "appbrand";
+      }
+      AppMethodBeat.o(152919);
+      return str;
+    }
+    if (str.contains("."))
+    {
+      str = str.substring(str.lastIndexOf(".") + 1).toLowerCase();
+      AppMethodBeat.o(152919);
+      return str;
+    }
+    AppMethodBeat.o(152919);
+    return str;
+  }
+  
+  static final class a
+    implements k<IPCString, Bundle>
+  {
+    private static Bundle f(IPCString paramIPCString)
+    {
+      AppMethodBeat.i(152917);
+      Bundle localBundle = new Bundle();
+      for (;;)
+      {
+        try
+        {
+          ArrayList localArrayList = new ArrayList();
+          if (!bs.isNullOrNil(paramIPCString.value))
+          {
+            i = g.agQ().ghe.hwg.getHostByName(paramIPCString.value, localArrayList);
+            localBundle.putStringArrayList("ipList", localArrayList);
+            localBundle.putInt("result", i);
+            AppMethodBeat.o(152917);
+            return localBundle;
+          }
+        }
+        catch (Exception paramIPCString)
+        {
+          ac.printErrStackTrace("GetHostByNameTask", paramIPCString, "GetHostByNameTask", new Object[0]);
+          AppMethodBeat.o(152917);
+          return localBundle;
+        }
+        int i = 0;
       }
     }
-    if (l.XU())
-    {
-      ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt is MTK platform");
-      if ((Build.VERSION.SDK_INT == 24) || (Build.VERSION.SDK_INT == 25) || (Build.VERSION.SDK_INT == 27))
-      {
-        ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImgOpt is MTK platform, android api: %d, cannot use BigImgOpt", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-        c.abB(Build.VERSION.SDK_INT);
-        AppMethodBeat.o(152886);
-        return true;
-      }
-    }
-    AppMethodBeat.o(152886);
-    return false;
-  }
-  
-  private static int getScreenHeight(Context paramContext)
-  {
-    AppMethodBeat.i(152888);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(152888);
-      return 0;
-    }
-    int i = paramContext.getResources().getDisplayMetrics().heightPixels;
-    AppMethodBeat.o(152888);
-    return i;
-  }
-  
-  private static int getScreenWidth(Context paramContext)
-  {
-    AppMethodBeat.i(152887);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(152887);
-      return 0;
-    }
-    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
-    AppMethodBeat.o(152887);
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.cq.b
  * JD-Core Version:    0.7.0.1
  */

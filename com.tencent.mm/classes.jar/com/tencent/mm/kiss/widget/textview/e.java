@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private final d[] ggT;
+  private final d[] glz;
   private final Object mLock;
   private int mPoolSize;
   
@@ -14,7 +14,7 @@ public final class e
   {
     AppMethodBeat.i(141032);
     this.mLock = new Object();
-    this.ggT = new d[3];
+    this.glz = new d[3];
     AppMethodBeat.o(141032);
   }
   
@@ -30,7 +30,7 @@ public final class e
         if (i >= this.mPoolSize) {
           break label72;
         }
-        if (this.ggT[i] == paramd)
+        if (this.glz[i] == paramd)
         {
           i = 1;
           if (i == 0) {
@@ -50,26 +50,26 @@ public final class e
       label72:
       i = 0;
     }
-    paramd.ggG = null;
-    paramd.ggH = null;
-    paramd.ggI = 0;
-    paramd.ggJ = 0;
-    paramd.ggK = new TextPaint();
+    paramd.glm = null;
+    paramd.gln = null;
+    paramd.glo = 0;
+    paramd.glp = 0;
+    paramd.glq = new TextPaint();
     paramd.width = 0;
-    paramd.ggL = Layout.Alignment.ALIGN_NORMAL;
+    paramd.glr = Layout.Alignment.ALIGN_NORMAL;
     paramd.gravity = 51;
-    paramd.ggM = null;
-    paramd.ggN = 0;
+    paramd.gls = null;
+    paramd.glt = 0;
     paramd.maxLines = 2147483647;
-    paramd.ggO = null;
-    paramd.ggP = 0.0F;
-    paramd.ggQ = 1.0F;
-    paramd.ggR = false;
+    paramd.glu = null;
+    paramd.glv = 0.0F;
+    paramd.glw = 1.0F;
+    paramd.glx = false;
     paramd.maxLength = 0;
-    paramd.ggS = null;
-    if (this.mPoolSize < this.ggT.length)
+    paramd.gly = null;
+    if (this.mPoolSize < this.glz.length)
     {
-      this.ggT[this.mPoolSize] = paramd;
+      this.glz[this.mPoolSize] = paramd;
       this.mPoolSize += 1;
       AppMethodBeat.o(141033);
       return true;
@@ -78,15 +78,15 @@ public final class e
     return false;
   }
   
-  public final d agE()
+  public final d ahV()
   {
     synchronized (this.mLock)
     {
       if (this.mPoolSize > 0)
       {
         int i = this.mPoolSize - 1;
-        d locald = this.ggT[i];
-        this.ggT[i] = null;
+        d locald = this.glz[i];
+        this.glz[i] = null;
         this.mPoolSize -= 1;
         return locald;
       }
@@ -96,7 +96,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.e
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import com.tencent.liteav.a.a.b;
 import com.tencent.liteav.audio.c;
+import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCStatus;
@@ -665,13 +666,13 @@ public class e
     AppMethodBeat.o(16561);
   }
   
-  public void a(com.tencent.liteav.basic.d.n paramn)
+  public void a(o paramo)
   {
-    AppMethodBeat.i(16579);
+    AppMethodBeat.i(193042);
     if (this.f != null) {
-      this.f.a(paramn);
+      this.f.a(paramo);
     }
-    AppMethodBeat.o(16579);
+    AppMethodBeat.o(193042);
   }
   
   public void a(g paramg)

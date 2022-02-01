@@ -16,7 +16,7 @@ public abstract interface KTimerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.gen.KTimerService
  * JD-Core Version:    0.7.0.1
  */

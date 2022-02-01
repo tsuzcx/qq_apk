@@ -16,15 +16,15 @@ import java.util.ArrayList;
 public final class BottomNavigationPresenter
   implements o
 {
-  private h hI;
-  public BottomNavigationMenuView hK;
-  public boolean hL = false;
+  private h iL;
+  public BottomNavigationMenuView iN;
+  public boolean iO = false;
   public int id;
   
   public final void a(Context paramContext, h paramh)
   {
-    this.hI = paramh;
-    this.hK.hI = this.hI;
+    this.iL = paramh;
+    this.iN.iL = this.iL;
   }
   
   public final void a(h paramh, boolean paramBoolean) {}
@@ -41,7 +41,7 @@ public final class BottomNavigationPresenter
     return false;
   }
   
-  public final boolean bh()
+  public final boolean bo()
   {
     return false;
   }
@@ -64,20 +64,20 @@ public final class BottomNavigationPresenter
     int i;
     if ((paramParcelable instanceof SavedState))
     {
-      localBottomNavigationMenuView = this.hK;
-      j = ((SavedState)paramParcelable).hw;
-      k = localBottomNavigationMenuView.hI.size();
+      localBottomNavigationMenuView = this.iN;
+      j = ((SavedState)paramParcelable).iz;
+      k = localBottomNavigationMenuView.iL.size();
       i = 0;
     }
     for (;;)
     {
       if (i < k)
       {
-        paramParcelable = localBottomNavigationMenuView.hI.getItem(i);
+        paramParcelable = localBottomNavigationMenuView.iL.getItem(i);
         if (j == paramParcelable.getItemId())
         {
-          localBottomNavigationMenuView.hw = j;
-          localBottomNavigationMenuView.hx = i;
+          localBottomNavigationMenuView.iz = j;
+          localBottomNavigationMenuView.iA = i;
           paramParcelable.setChecked(true);
         }
       }
@@ -92,54 +92,54 @@ public final class BottomNavigationPresenter
   public final Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState();
-    localSavedState.hw = this.hK.getSelectedItemId();
+    localSavedState.iz = this.iN.getSelectedItemId();
     return localSavedState;
   }
   
   public final void p(boolean paramBoolean)
   {
-    if (this.hL) {}
+    if (this.iO) {}
     for (;;)
     {
       return;
       if (paramBoolean)
       {
-        this.hK.bg();
+        this.iN.bn();
         return;
       }
-      BottomNavigationMenuView localBottomNavigationMenuView = this.hK;
-      if ((localBottomNavigationMenuView.hI != null) && (localBottomNavigationMenuView.hv != null))
+      BottomNavigationMenuView localBottomNavigationMenuView = this.iN;
+      if ((localBottomNavigationMenuView.iL != null) && (localBottomNavigationMenuView.iy != null))
       {
-        int j = localBottomNavigationMenuView.hI.size();
-        if (j != localBottomNavigationMenuView.hv.length)
+        int j = localBottomNavigationMenuView.iL.size();
+        if (j != localBottomNavigationMenuView.iy.length)
         {
-          localBottomNavigationMenuView.bg();
+          localBottomNavigationMenuView.bn();
           return;
         }
-        int k = localBottomNavigationMenuView.hw;
+        int k = localBottomNavigationMenuView.iz;
         int i = 0;
         while (i < j)
         {
-          MenuItem localMenuItem = localBottomNavigationMenuView.hI.getItem(i);
+          MenuItem localMenuItem = localBottomNavigationMenuView.iL.getItem(i);
           if (localMenuItem.isChecked())
           {
-            localBottomNavigationMenuView.hw = localMenuItem.getItemId();
-            localBottomNavigationMenuView.hx = i;
+            localBottomNavigationMenuView.iz = localMenuItem.getItemId();
+            localBottomNavigationMenuView.iA = i;
           }
           i += 1;
         }
-        if (k != localBottomNavigationMenuView.hw) {
-          r.a(localBottomNavigationMenuView, localBottomNavigationMenuView.hm);
+        if (k != localBottomNavigationMenuView.iz) {
+          r.a(localBottomNavigationMenuView, localBottomNavigationMenuView.im);
         }
-        paramBoolean = BottomNavigationMenuView.f(localBottomNavigationMenuView.he, localBottomNavigationMenuView.hI.hx().size());
+        paramBoolean = BottomNavigationMenuView.f(localBottomNavigationMenuView.ie, localBottomNavigationMenuView.iL.hF().size());
         i = 0;
         while (i < j)
         {
-          localBottomNavigationMenuView.hH.hL = true;
-          localBottomNavigationMenuView.hv[i].setLabelVisibilityMode(localBottomNavigationMenuView.he);
-          localBottomNavigationMenuView.hv[i].setShifting(paramBoolean);
-          localBottomNavigationMenuView.hv[i].a((j)localBottomNavigationMenuView.hI.getItem(i));
-          localBottomNavigationMenuView.hH.hL = false;
+          localBottomNavigationMenuView.iK.iO = true;
+          localBottomNavigationMenuView.iy[i].setLabelVisibilityMode(localBottomNavigationMenuView.ie);
+          localBottomNavigationMenuView.iy[i].setShifting(paramBoolean);
+          localBottomNavigationMenuView.iy[i].a((j)localBottomNavigationMenuView.iL.getItem(i));
+          localBottomNavigationMenuView.iK.iO = false;
           i += 1;
         }
       }
@@ -150,13 +150,13 @@ public final class BottomNavigationPresenter
     implements Parcelable
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-    int hw;
+    int iz;
     
     SavedState() {}
     
     SavedState(Parcel paramParcel)
     {
-      this.hw = paramParcel.readInt();
+      this.iz = paramParcel.readInt();
     }
     
     public int describeContents()
@@ -166,13 +166,13 @@ public final class BottomNavigationPresenter
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeInt(this.hw);
+      paramParcel.writeInt(this.iz);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.internal.BottomNavigationPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class WalletPayUOpenIntroView
   extends LinearLayout
 {
-  private a AzA;
-  private d[] AzB;
-  private MMAutoHeightViewPager Azy;
-  private MMPageControlView Azz;
-  private ArrayList<View> auF;
+  private MMAutoHeightViewPager BRU;
+  private MMPageControlView BRV;
+  private a BRW;
+  private d[] BRX;
+  private ArrayList<View> avB;
   private Context mContext;
   
   public WalletPayUOpenIntroView(Context paramContext, AttributeSet paramAttributeSet)
@@ -38,10 +38,10 @@ public class WalletPayUOpenIntroView
     AppMethodBeat.i(72033);
     this.mContext = paramContext;
     paramContext = LayoutInflater.from(this.mContext).inflate(2131495077, this, true);
-    this.Azy = ((MMAutoHeightViewPager)paramContext.findViewById(2131303135));
-    this.Azz = ((MMPageControlView)paramContext.findViewById(2131298788));
-    this.Azz.setVisibility(0);
-    this.Azy.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    this.BRU = ((MMAutoHeightViewPager)paramContext.findViewById(2131303135));
+    this.BRV = ((MMPageControlView)paramContext.findViewById(2131298788));
+    this.BRV.setVisibility(0);
+    this.BRU.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
     {
       public final void onPageScrollStateChanged(int paramAnonymousInt) {}
       
@@ -63,25 +63,25 @@ public class WalletPayUOpenIntroView
   public void setPagerData(d[] paramArrayOfd)
   {
     AppMethodBeat.i(72034);
-    this.AzB = paramArrayOfd;
-    this.auF = new ArrayList();
-    if (this.AzB != null)
+    this.BRX = paramArrayOfd;
+    this.avB = new ArrayList();
+    if (this.BRX != null)
     {
       i = 0;
-      while (i < this.AzB.length)
+      while (i < this.BRX.length)
       {
         paramArrayOfd = LayoutInflater.from(this.mContext).inflate(2131495078, null);
-        this.auF.add(paramArrayOfd);
+        this.avB.add(paramArrayOfd);
         i += 1;
       }
     }
-    this.AzA = new a((byte)0);
-    this.Azy.setAdapter(this.AzA);
-    paramArrayOfd = this.Azz;
-    if (this.AzB == null) {}
-    for (int i = 0;; i = this.AzB.length)
+    this.BRW = new a((byte)0);
+    this.BRU.setAdapter(this.BRW);
+    paramArrayOfd = this.BRV;
+    if (this.BRX == null) {}
+    for (int i = 0;; i = this.BRX.length)
     {
-      paramArrayOfd.jl(i, 0);
+      paramArrayOfd.jy(i, 0);
       AppMethodBeat.o(72034);
       return;
     }
@@ -121,9 +121,9 @@ public class WalletPayUOpenIntroView
       ImageView localImageView = (ImageView)localView.findViewById(2131301584);
       TextView localTextView1 = (TextView)localView.findViewById(2131305860);
       TextView localTextView2 = (TextView)localView.findViewById(2131300741);
-      localImageView.setImageResource(paramViewGroup.Azw);
+      localImageView.setImageResource(paramViewGroup.BRS);
       localTextView1.setText(paramViewGroup.titleRes);
-      localTextView2.setText(paramViewGroup.Azx);
+      localTextView2.setText(paramViewGroup.BRT);
       AppMethodBeat.o(72031);
       return localView;
     }
@@ -136,7 +136,7 @@ public class WalletPayUOpenIntroView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.create.ui.WalletPayUOpenIntroView
  * JD-Core Version:    0.7.0.1
  */

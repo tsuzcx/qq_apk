@@ -29,10 +29,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
@@ -42,12 +42,12 @@ import com.tencent.mm.pluginsdk.model.app.m;
 import com.tencent.mm.pluginsdk.ui.applet.o;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.pluginsdk.ui.applet.y.b;
-import com.tencent.mm.protocal.protobuf.bdc;
-import com.tencent.mm.protocal.protobuf.dpg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bgu;
+import com.tencent.mm.protocal.protobuf.dux;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
@@ -60,63 +60,63 @@ import java.util.LinkedList;
 
 public class IPCallShareCouponCardUI
   extends MMActivity
-  implements com.tencent.mm.al.g, a.a, com.tencent.mm.ui.k.a.b
+  implements com.tencent.mm.ak.g, a.a, com.tencent.mm.ui.k.a.b
 {
-  private ProgressDialog fpP;
-  private View lvh;
+  private ProgressDialog fts;
+  private View lXb;
   private String mDesc;
   private int mFrom;
   private String mTitle;
   private String mWording;
-  private ProgressDialog qLE;
-  private ProgressDialog sFV;
-  private TextView sIZ;
-  private TextView sJa;
-  private TextView sJb;
-  private TextView sJc;
-  private Button sJd;
-  private ImageView sJe;
-  private com.tencent.mm.ui.k.a sJf;
-  private i sJg;
-  private ImageView sJh;
-  private ProgressBar sJi;
-  private e sJj;
-  private String sJk;
-  private String sJl;
-  private String sJm;
-  private String sJn;
-  private String sJo;
-  private String sJp;
-  private String sJq;
-  private String sJr;
-  private dpg sJs;
-  private String sJt;
-  private View sJu;
+  private ProgressDialog rGq;
+  private ProgressDialog tNC;
+  private TextView tQF;
+  private TextView tQG;
+  private TextView tQH;
+  private TextView tQI;
+  private Button tQJ;
+  private ImageView tQK;
+  private com.tencent.mm.ui.k.a tQL;
+  private i tQM;
+  private ImageView tQN;
+  private ProgressBar tQO;
+  private e tQP;
+  private String tQQ;
+  private String tQR;
+  private String tQS;
+  private String tQT;
+  private String tQU;
+  private String tQV;
+  private String tQW;
+  private String tQX;
+  private dux tQY;
+  private String tQZ;
+  private View tRa;
   
   public IPCallShareCouponCardUI()
   {
     AppMethodBeat.i(25917);
-    this.sJf = new com.tencent.mm.ui.k.a();
-    this.fpP = null;
-    this.qLE = null;
-    this.sJg = null;
-    this.sFV = null;
-    this.sJh = null;
-    this.sJi = null;
-    this.sJj = new e();
-    this.sJk = null;
+    this.tQL = new com.tencent.mm.ui.k.a();
+    this.fts = null;
+    this.rGq = null;
+    this.tQM = null;
+    this.tNC = null;
+    this.tQN = null;
+    this.tQO = null;
+    this.tQP = new e();
+    this.tQQ = null;
     this.mDesc = null;
-    this.sJl = null;
+    this.tQR = null;
     this.mTitle = null;
     this.mWording = null;
-    this.sJm = null;
-    this.sJn = null;
-    this.sJo = null;
-    this.sJp = null;
-    this.sJq = null;
-    this.sJr = null;
-    this.sJs = null;
-    this.sJt = null;
+    this.tQS = null;
+    this.tQT = null;
+    this.tQU = null;
+    this.tQV = null;
+    this.tQW = null;
+    this.tQX = null;
+    this.tQY = null;
+    this.tQZ = null;
     this.mFrom = 0;
     AppMethodBeat.o(25917);
   }
@@ -124,25 +124,25 @@ public class IPCallShareCouponCardUI
   private void C(final int paramInt, final String paramString1, String paramString2)
   {
     AppMethodBeat.i(25930);
-    this.sJu = View.inflate(getContext(), 2131493586, null);
-    final EditText localEditText = (EditText)this.sJu.findViewById(2131298569);
-    this.sJh = ((ImageView)this.sJu.findViewById(2131298566));
-    this.sJi = ((ProgressBar)this.sJu.findViewById(2131301506));
+    this.tRa = View.inflate(getContext(), 2131493586, null);
+    final EditText localEditText = (EditText)this.tRa.findViewById(2131298569);
+    this.tQN = ((ImageView)this.tRa.findViewById(2131298566));
+    this.tQO = ((ProgressBar)this.tRa.findViewById(2131301506));
     localEditText.setText(paramString1);
-    Object localObject = cIl();
+    Object localObject = cVw();
     if (localObject == null)
     {
-      localObject = u.aqG();
-      az.arV();
-      localObject = new com.tencent.mm.bd.a((String)localObject, bt.l((Integer)com.tencent.mm.model.c.afk().get(66561, null)));
-      az.aeS().a((n)localObject, 0);
-      this.sJi.setVisibility(0);
+      localObject = u.axw();
+      az.ayM();
+      localObject = new com.tencent.mm.bc.a((String)localObject, bs.m((Integer)com.tencent.mm.model.c.agA().get(66561, null)));
+      az.agi().a((n)localObject, 0);
+      this.tQO.setVisibility(0);
     }
     for (;;)
     {
-      o.a(this.mController, paramString2, this.sJu, getResources().getString(2131755884), new y.b()
+      o.a(this.mController, paramString2, this.tRa, getResources().getString(2131755884), new y.b()
       {
-        public final void mB(boolean paramAnonymousBoolean)
+        public final void nu(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(25906);
           if (paramAnonymousBoolean)
@@ -159,11 +159,11 @@ public class IPCallShareCouponCardUI
                 public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                 {
                   AppMethodBeat.i(25905);
-                  az.aeS().a(this.sJy);
+                  az.agi().a(this.tRe);
                   AppMethodBeat.o(25905);
                 }
               }));
-              az.aeS().a((n)localObject, 0);
+              az.agi().a((n)localObject, 0);
               AppMethodBeat.o(25906);
               return;
             }
@@ -173,13 +173,13 @@ public class IPCallShareCouponCardUI
       });
       AppMethodBeat.o(25930);
       return;
-      if (this.sJh != null) {
-        this.sJh.setImageBitmap((Bitmap)localObject);
+      if (this.tQN != null) {
+        this.tQN.setImageBitmap((Bitmap)localObject);
       }
     }
   }
   
-  public static int Fv(int paramInt)
+  public static int Hq(int paramInt)
   {
     AppMethodBeat.i(25924);
     HashMap localHashMap = new HashMap();
@@ -202,7 +202,7 @@ public class IPCallShareCouponCardUI
     return -1;
   }
   
-  private void Fw(int paramInt)
+  private void Hr(int paramInt)
   {
     AppMethodBeat.i(25927);
     com.tencent.mm.ui.base.h.a(getContext(), paramInt, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
@@ -215,7 +215,21 @@ public class IPCallShareCouponCardUI
     AppMethodBeat.o(25927);
   }
   
-  public static String U(Context paramContext, int paramInt)
+  public static void a(Context paramContext, int paramInt, TextView paramTextView, ImageView paramImageView)
+  {
+    AppMethodBeat.i(25922);
+    paramContext = aa(paramContext, paramInt);
+    if (paramContext != null) {
+      paramTextView.setText(paramContext);
+    }
+    paramInt = Hq(paramInt);
+    if (paramInt != -1) {
+      paramImageView.setImageResource(paramInt);
+    }
+    AppMethodBeat.o(25922);
+  }
+  
+  public static String aa(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(25923);
     HashMap localHashMap = new HashMap();
@@ -238,34 +252,20 @@ public class IPCallShareCouponCardUI
     return null;
   }
   
-  public static void a(Context paramContext, int paramInt, TextView paramTextView, ImageView paramImageView)
-  {
-    AppMethodBeat.i(25922);
-    paramContext = U(paramContext, paramInt);
-    if (paramContext != null) {
-      paramTextView.setText(paramContext);
-    }
-    paramInt = Fv(paramInt);
-    if (paramInt != -1) {
-      paramImageView.setImageResource(paramInt);
-    }
-    AppMethodBeat.o(25922);
-  }
-  
   /* Error */
-  private static byte[] aen(String paramString)
+  private static byte[] ajf(String paramString)
   {
     // Byte code:
     //   0: sipush 25929
     //   3: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 200	com/tencent/mm/model/az:arV	()Lcom/tencent/mm/model/c;
+    //   6: invokestatic 200	com/tencent/mm/model/az:ayM	()Lcom/tencent/mm/model/c;
     //   9: pop
-    //   10: invokestatic 681	com/tencent/mm/model/c:apW	()Ljava/lang/String;
+    //   10: invokestatic 681	com/tencent/mm/model/c:awL	()Ljava/lang/String;
     //   13: astore_1
-    //   14: invokestatic 200	com/tencent/mm/model/az:arV	()Lcom/tencent/mm/model/c;
+    //   14: invokestatic 200	com/tencent/mm/model/az:ayM	()Lcom/tencent/mm/model/c;
     //   17: pop
     //   18: aload_1
-    //   19: invokestatic 684	com/tencent/mm/model/c:apX	()Ljava/lang/String;
+    //   19: invokestatic 684	com/tencent/mm/model/c:awM	()Ljava/lang/String;
     //   22: ldc_w 686
     //   25: aload_0
     //   26: invokevirtual 690	java/lang/String:getBytes	()[B
@@ -274,18 +274,18 @@ public class IPCallShareCouponCardUI
     //   35: invokestatic 704	com/tencent/mm/sdk/platformtools/l:j	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   38: astore_0
     //   39: aload_0
-    //   40: invokestatic 708	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   40: invokestatic 708	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   43: ifeq +20 -> 63
-    //   46: ldc_w 330
+    //   46: ldc_w 314
     //   49: ldc_w 710
-    //   52: invokestatic 667	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: invokestatic 655	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: sipush 25929
     //   58: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: aconst_null
     //   62: areturn
     //   63: aload_0
     //   64: iconst_0
-    //   65: invokestatic 716	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   65: invokestatic 716	com/tencent/mm/vfs/i:cY	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   68: astore_1
     //   69: aload_1
     //   70: astore_0
@@ -313,12 +313,12 @@ public class IPCallShareCouponCardUI
     //   105: astore_1
     //   106: aload_1
     //   107: astore_0
-    //   108: ldc_w 330
+    //   108: ldc_w 314
     //   111: aload_2
-    //   112: ldc_w 529
+    //   112: ldc_w 517
     //   115: iconst_0
-    //   116: anewarray 459	java/lang/Object
-    //   119: invokestatic 733	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   116: anewarray 445	java/lang/Object
+    //   119: invokestatic 733	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   122: aload_1
     //   123: ifnull +7 -> 130
     //   126: aload_1
@@ -371,16 +371,16 @@ public class IPCallShareCouponCardUI
     //   81	87	173	java/lang/Exception
   }
   
-  private static Bitmap cIl()
+  private static Bitmap cVw()
   {
     AppMethodBeat.i(25928);
-    Object localObject = aen(u.aqG());
+    Object localObject = ajf(u.axw());
     if (localObject == null)
     {
       AppMethodBeat.o(25928);
       return null;
     }
-    localObject = f.cl((byte[])localObject);
+    localObject = f.ck((byte[])localObject);
     AppMethodBeat.o(25928);
     return localObject;
   }
@@ -388,7 +388,7 @@ public class IPCallShareCouponCardUI
   private static boolean checkApkExist(Context paramContext, String paramString)
   {
     AppMethodBeat.i(25925);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(25925);
       return false;
@@ -409,22 +409,22 @@ public class IPCallShareCouponCardUI
   public final void a(a.c paramc)
   {
     AppMethodBeat.i(25926);
-    if (this.qLE != null) {
-      this.qLE.cancel();
+    if (this.rGq != null) {
+      this.rGq.cancel();
     }
-    switch (IPCallShareCouponCardUI.8.sJC[paramc.ordinal()])
+    switch (IPCallShareCouponCardUI.8.tRi[paramc.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(25926);
       return;
-      Fw(2131764543);
+      Hr(2131764543);
       AppMethodBeat.o(25926);
       return;
       AppMethodBeat.o(25926);
       return;
-      Fw(2131764542);
+      Hr(2131764542);
     }
   }
   
@@ -446,8 +446,8 @@ public class IPCallShareCouponCardUI
     if ((paramInt1 == 1) && (paramIntent != null))
     {
       paramIntent = paramIntent.getStringExtra("Select_Conv_User");
-      if (!bt.isNullOrNil(paramIntent)) {
-        o.a(getController(), this.mTitle, this.sJl, this.mDesc, true, getResources().getString(2131755884), new y.a()
+      if (!bs.isNullOrNil(paramIntent)) {
+        o.a(getController(), this.mTitle, this.tQR, this.mDesc, true, getResources().getString(2131755884), new y.a()
         {
           public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
           {
@@ -461,16 +461,16 @@ public class IPCallShareCouponCardUI
               ((k.b)localObject).thumburl = IPCallShareCouponCardUI.g(IPCallShareCouponCardUI.this);
               ((k.b)localObject).type = 5;
               m.a((k.b)localObject, null, null, paramIntent, "", null, null);
-              if (!bt.isNullOrNil(paramAnonymousString))
+              if (!bs.isNullOrNil(paramAnonymousString))
               {
-                localObject = new sb();
-                ((sb)localObject).dxJ.dxK = paramIntent;
-                ((sb)localObject).dxJ.content = paramAnonymousString;
-                ((sb)localObject).dxJ.type = w.tq(paramIntent);
-                ((sb)localObject).dxJ.flags = 0;
-                com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+                localObject = new sk();
+                ((sk)localObject).dvv.dvw = paramIntent;
+                ((sk)localObject).dvv.content = paramAnonymousString;
+                ((sk)localObject).dvv.type = w.xt(paramIntent);
+                ((sk)localObject).dvv.flags = 0;
+                com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
               }
-              com.tencent.mm.ui.base.h.cf(IPCallShareCouponCardUI.this.getContext(), IPCallShareCouponCardUI.this.getResources().getString(2131755894));
+              com.tencent.mm.ui.base.h.cg(IPCallShareCouponCardUI.this.getContext(), IPCallShareCouponCardUI.this.getResources().getString(2131755894));
               AppMethodBeat.o(25909);
               return;
             }
@@ -497,18 +497,18 @@ public class IPCallShareCouponCardUI
         return true;
       }
     });
-    this.lvh = findViewById(2131301339);
-    this.sIZ = ((TextView)findViewById(2131298810));
-    this.sJa = ((TextView)findViewById(2131298927));
-    this.sJb = ((TextView)findViewById(2131298809));
-    this.sJc = ((TextView)findViewById(2131298811));
-    this.sJd = ((Button)findViewById(2131304737));
-    this.sJe = ((ImageView)findViewById(2131300718));
-    this.lvh.setVisibility(8);
-    com.tencent.mm.pluginsdk.ui.a.b.a(this.sJe, u.aqG(), 0.5F, false);
+    this.lXb = findViewById(2131301339);
+    this.tQF = ((TextView)findViewById(2131298810));
+    this.tQG = ((TextView)findViewById(2131298927));
+    this.tQH = ((TextView)findViewById(2131298809));
+    this.tQI = ((TextView)findViewById(2131298811));
+    this.tQJ = ((Button)findViewById(2131304737));
+    this.tQK = ((ImageView)findViewById(2131300718));
+    this.lXb.setVisibility(8);
+    com.tencent.mm.pluginsdk.ui.a.b.a(this.tQK, u.axw(), 0.5F, false);
     paramBundle = getContext();
     getString(2131755906);
-    this.sFV = com.tencent.mm.ui.base.h.b(paramBundle, getString(2131760457), true, new DialogInterface.OnCancelListener()
+    this.tNC = com.tencent.mm.ui.base.h.b(paramBundle, getString(2131760457), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -521,15 +521,15 @@ public class IPCallShareCouponCardUI
         }
         catch (Exception paramAnonymousDialogInterface)
         {
-          ad.e("MicroMsg.IPCallShareCouponCardUI", "loadFromSystemAddressBook error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
+          ac.e("MicroMsg.IPCallShareCouponCardUI", "loadFromSystemAddressBook error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
           AppMethodBeat.o(25911);
         }
       }
     });
-    com.tencent.mm.plugin.ipcall.model.g.b.cHM().my(false);
+    com.tencent.mm.plugin.ipcall.model.g.b.cUX().nr(false);
     this.mFrom = getIntent().getIntExtra("IPCallShareCouponCardUI_KFrom", 0);
-    az.aeS().a(257, this);
-    az.aeS().a(1804, this);
+    az.agi().a(257, this);
+    az.agi().a(1804, this);
     AppMethodBeat.o(25918);
   }
   
@@ -537,8 +537,8 @@ public class IPCallShareCouponCardUI
   {
     AppMethodBeat.i(25920);
     super.onDestroy();
-    az.aeS().b(257, this);
-    az.aeS().b(1804, this);
+    az.agi().b(257, this);
+    az.agi().b(1804, this);
     AppMethodBeat.o(25920);
   }
   
@@ -558,26 +558,26 @@ public class IPCallShareCouponCardUI
     if ((paramn instanceof com.tencent.mm.plugin.ipcall.model.e.g)) {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.lvh.setVisibility(0);
-        paramString = com.tencent.mm.plugin.ipcall.a.c.cIM();
+        this.lXb.setVisibility(0);
+        paramString = com.tencent.mm.plugin.ipcall.a.c.cVX();
         if (paramString != null)
         {
-          this.sJk = paramString.DAt;
+          this.tQQ = paramString.EVP;
           this.mDesc = paramString.Desc;
-          this.sJl = paramString.DAu;
+          this.tQR = paramString.EVQ;
           this.mTitle = paramString.Title;
-          this.mWording = paramString.sDZ;
-          this.sJm = paramString.DAv;
-          this.sJo = paramString.DAw;
-          this.sJp = paramString.DAx;
-          this.sJq = paramString.DAy;
-          this.sJr = paramString.DAA;
-          this.sJs = paramString.DAz;
-          this.sJt = paramString.DAB;
+          this.mWording = paramString.tLG;
+          this.tQS = paramString.EVR;
+          this.tQU = paramString.EVS;
+          this.tQV = paramString.EVT;
+          this.tQW = paramString.EVU;
+          this.tQX = paramString.EVW;
+          this.tQY = paramString.EVV;
+          this.tQZ = paramString.EVX;
         }
-        this.sIZ.setText(this.sJr);
-        this.sJa.setText(String.format(getContext().getString(2131760551), new Object[] { this.sJk }));
-        this.sJd.setOnClickListener(new View.OnClickListener()
+        this.tQF.setText(this.tQX);
+        this.tQG.setText(String.format(getContext().getString(2131760551), new Object[] { this.tQQ }));
+        this.tQJ.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -586,15 +586,15 @@ public class IPCallShareCouponCardUI
             AppMethodBeat.o(25913);
           }
         });
-        this.sJb.setText(String.format(getString(2131760553), new Object[] { this.sJr }));
-        paramn = this.sJc;
-        str = String.format(getString(2131760552), new Object[] { this.sJr });
+        this.tQH.setText(String.format(getString(2131760553), new Object[] { this.tQX }));
+        paramn = this.tQI;
+        str = String.format(getString(2131760552), new Object[] { this.tQX });
         localObject1 = getString(2131760557);
-        if (bt.isNullOrNil((String)localObject1))
+        if (bs.isNullOrNil((String)localObject1))
         {
           paramn.setText(str);
-          if ((this.sFV != null) && (this.sFV.isShowing())) {
-            this.sFV.dismiss();
+          if ((this.tNC != null) && (this.tNC.isShowing())) {
+            this.tNC.dismiss();
           }
           AppMethodBeat.o(25921);
           return;
@@ -603,7 +603,7 @@ public class IPCallShareCouponCardUI
         localObject2 = paramn.getPaint();
         float f1 = ((TextPaint)localObject2).measureText(str);
         float f2 = ((TextPaint)localObject2).measureText(paramString);
-        paramInt1 = com.tencent.mm.cd.a.hV(getContext());
+        paramInt1 = com.tencent.mm.cc.a.ig(getContext());
         paramInt2 = ((LinearLayout.LayoutParams)paramn.getLayoutParams()).leftMargin;
         paramInt1 -= ((LinearLayout.LayoutParams)paramn.getLayoutParams()).rightMargin + paramInt2;
         paramInt2 = (int)Math.ceil(f1 / paramInt1);
@@ -629,8 +629,8 @@ public class IPCallShareCouponCardUI
         {
           AppMethodBeat.i(25907);
           ((TextView)paramAnonymousView).setHighlightColor(IPCallShareCouponCardUI.this.getResources().getColor(2131101053));
-          com.tencent.mm.plugin.report.service.h.vKh.f(13340, new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(1) });
-          com.tencent.mm.ui.base.h.c(IPCallShareCouponCardUI.this.getContext(), this.sJA, IPCallShareCouponCardUI.this.getString(2131760561), true).a(2131760433, new DialogInterface.OnClickListener()
+          com.tencent.mm.plugin.report.service.h.wUl.f(13340, new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(1) });
+          com.tencent.mm.ui.base.h.c(IPCallShareCouponCardUI.this.getContext(), this.tRg, IPCallShareCouponCardUI.this.getString(2131760561), true).a(2131760433, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
           });
@@ -651,9 +651,9 @@ public class IPCallShareCouponCardUI
       paramn.setText((CharSequence)localObject2);
       paramn.setMovementMethod(LinkMovementMethod.getInstance());
       break;
-      if ((this.sFV != null) && (this.sFV.isShowing()))
+      if ((this.tNC != null) && (this.tNC.isShowing()))
       {
-        this.sFV.dismiss();
+        this.tNC.dismiss();
         com.tencent.mm.ui.base.h.d(getContext(), getString(2131760455), getString(2131760448), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -667,39 +667,39 @@ public class IPCallShareCouponCardUI
         return;
         if ((paramn instanceof com.tencent.mm.modelmulti.h))
         {
-          if (this.fpP != null)
+          if (this.fts != null)
           {
-            this.fpP.dismiss();
-            this.fpP = null;
+            this.fts.dismiss();
+            this.fts = null;
           }
-          if (com.tencent.mm.plugin.subapp.b.hYu.b(getContext(), paramInt1, paramInt2, paramString))
+          if (com.tencent.mm.plugin.subapp.b.iyy.b(getContext(), paramInt1, paramInt2, paramString))
           {
             AppMethodBeat.o(25921);
             return;
           }
           if ((paramInt1 != 0) || (paramInt2 != 0))
           {
-            com.tencent.mm.ui.base.h.j(getContext(), 2131763075, 2131755906);
+            com.tencent.mm.ui.base.h.l(getContext(), 2131763075, 2131755906);
             AppMethodBeat.o(25921);
             return;
           }
-          com.tencent.mm.ui.base.h.cf(this, getResources().getString(2131757561));
+          com.tencent.mm.ui.base.h.cg(this, getResources().getString(2131757561));
           AppMethodBeat.o(25921);
           return;
         }
-        if ((paramn instanceof com.tencent.mm.bd.a))
+        if ((paramn instanceof com.tencent.mm.bc.a))
         {
           if ((paramInt1 != 0) || (paramInt2 != 0))
           {
             AppMethodBeat.o(25921);
             return;
           }
-          if (this.sJh != null)
+          if (this.tQN != null)
           {
-            if (this.sJi != null) {
-              this.sJi.setVisibility(8);
+            if (this.tQO != null) {
+              this.tQO.setVisibility(8);
             }
-            this.sJh.setImageBitmap(cIl());
+            this.tQN.setImageBitmap(cVw());
           }
         }
       }
@@ -716,7 +716,7 @@ public class IPCallShareCouponCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareCouponCardUI
  * JD-Core Version:    0.7.0.1
  */

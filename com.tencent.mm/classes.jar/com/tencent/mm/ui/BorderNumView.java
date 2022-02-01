@@ -12,10 +12,10 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 public class BorderNumView
   extends View
 {
-  private static int FHu = 22;
-  private static int FHv = 105;
-  private static int FHw = 100;
-  private int FHt;
+  private static int HgC = 22;
+  private static int HgD = 105;
+  private static int HgE = 100;
+  private int HgB;
   private Context context;
   private Paint mPaint;
   
@@ -24,7 +24,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(32961);
     this.context = null;
-    this.FHt = 100;
+    this.HgB = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32961);
@@ -35,7 +35,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(32962);
     this.context = null;
-    this.FHt = 100;
+    this.HgB = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32962);
@@ -52,22 +52,22 @@ public class BorderNumView
   {
     AppMethodBeat.i(32964);
     super.onDraw(paramCanvas);
-    if (this.FHt < 100) {
-      FHu += 15;
+    if (this.HgB < 100) {
+      HgC += 15;
     }
-    if (this.FHt >= 1000) {
-      FHw -= 20;
+    if (this.HgB >= 1000) {
+      HgE -= 20;
     }
-    float f1 = BackwardSupportUtil.b.g(this.context, FHu);
-    float f2 = BackwardSupportUtil.b.g(this.context, FHv);
-    String str = this.FHt;
+    float f1 = BackwardSupportUtil.b.g(this.context, HgC);
+    float f2 = BackwardSupportUtil.b.g(this.context, HgD);
+    String str = this.HgB;
     this.mPaint.setAntiAlias(true);
-    this.mPaint.setTextSize(FHw);
+    this.mPaint.setTextSize(HgE);
     this.mPaint.setColor(-11491572);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setStrokeWidth(8.0F);
     paramCanvas.drawText(str, f1, f2, this.mPaint);
-    this.mPaint.setTextSize(FHw);
+    this.mPaint.setTextSize(HgE);
     this.mPaint.setColor(-1770573);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setStrokeWidth(8.0F);
@@ -77,7 +77,7 @@ public class BorderNumView
   
   public void setPaintNum(int paramInt)
   {
-    this.FHt = paramInt;
+    this.HgB = paramInt;
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.widget.base;
 
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
 {
-  public static String M(MotionEvent paramMotionEvent)
+  public static String K(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(131468);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -29,7 +29,7 @@ public final class a
   public static void a(String paramString1, String paramString2, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(131467);
-    if (ad.getLogLevel() > 0)
+    if (ac.getLogLevel() > 0)
     {
       AppMethodBeat.o(131467);
       return;
@@ -47,7 +47,7 @@ public final class a
     }
     localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
     localStringBuilder.append(" }");
-    ad.v(paramString1, localStringBuilder.toString());
+    ac.v(paramString1, localStringBuilder.toString());
     AppMethodBeat.o(131467);
   }
   
@@ -111,7 +111,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.base.a
  * JD-Core Version:    0.7.0.1
  */

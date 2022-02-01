@@ -11,7 +11,7 @@ import java.util.TimeZone;
 
 public final class a
 {
-  private static float dn(Context paramContext)
+  private static float dw(Context paramContext)
   {
     AppMethodBeat.i(110227);
     paramContext = paramContext.getContentResolver();
@@ -30,13 +30,13 @@ public final class a
     return f;
   }
   
-  public static float dp(Context paramContext)
+  public static float dy(Context paramContext)
   {
     AppMethodBeat.i(110226);
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = dn(paramContext);
+      f = dw(paramContext);
       AppMethodBeat.o(110226);
       return f;
     }
@@ -45,7 +45,7 @@ public final class a
     return f;
   }
   
-  public static String mz(long paramLong)
+  public static String qn(long paramLong)
   {
     AppMethodBeat.i(110228);
     if (paramLong < 3600000L) {}
@@ -61,7 +61,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.a
  * JD-Core Version:    0.7.0.1
  */

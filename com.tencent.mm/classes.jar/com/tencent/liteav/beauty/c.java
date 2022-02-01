@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
-import com.tencent.liteav.basic.d.i;
+import com.tencent.liteav.basic.d.j;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -60,7 +60,7 @@ public class c
       if (((ConfigurationInfo)localObject).reqGlEsVersion > 131072)
       {
         TXCLog.i("TXCVideoPreprocessor", "This devices is OpenGlUtils.OPENGL_ES_3");
-        i.a(3);
+        j.a(3);
       }
     }
     for (;;)
@@ -72,7 +72,7 @@ public class c
       AppMethodBeat.o(15215);
       return;
       TXCLog.i("TXCVideoPreprocessor", "This devices is OpenGlUtils.OPENGL_ES_2");
-      i.a(2);
+      j.a(2);
       continue;
       TXCLog.e("TXCVideoPreprocessor", "getDeviceConfigurationInfo opengl Info failed!");
     }

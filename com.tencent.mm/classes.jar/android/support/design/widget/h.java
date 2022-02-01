@@ -34,65 +34,65 @@ public class h
   static final int[] EMPTY_STATE_SET = new int[0];
   static final int[] ENABLED_STATE_SET;
   static final int[] PRESSED_ENABLED_STATE_SET;
-  static final int[] oL;
-  static final int[] oM;
-  static final int[] oN;
-  static final TimeInterpolator ov = android.support.design.a.a.dR;
+  static final int[] pK;
+  static final int[] pL;
+  static final int[] pM;
+  static final TimeInterpolator pu = android.support.design.a.a.eR;
   float elevation;
-  android.support.design.a.h fQ;
-  android.support.design.a.h fR;
-  private final Rect jL = new Rect();
-  private final RectF jM = new RectF();
-  private final RectF jN = new RectF();
-  private final o oA;
-  l oB;
-  Drawable oC;
-  Drawable oD;
-  b oE;
-  Drawable oF;
-  float oG;
-  float oH;
-  float oI = 1.0F;
-  public ArrayList<Animator.AnimatorListener> oJ;
-  public ArrayList<Animator.AnimatorListener> oK;
-  final VisibilityAwareImageButton oO;
-  final m oP;
-  private final Matrix oQ = new Matrix();
-  ViewTreeObserver.OnPreDrawListener oR;
-  int oi;
-  int ow = 0;
-  Animator ox;
-  android.support.design.a.h oy;
-  android.support.design.a.h oz;
+  android.support.design.a.h gP;
+  android.support.design.a.h gQ;
+  private final Rect kK = new Rect();
+  private final RectF kL = new RectF();
+  private final RectF kM = new RectF();
+  l pA;
+  Drawable pB;
+  Drawable pC;
+  b pD;
+  Drawable pE;
+  float pF;
+  float pG;
+  float pH = 1.0F;
+  public ArrayList<Animator.AnimatorListener> pI;
+  public ArrayList<Animator.AnimatorListener> pJ;
+  final VisibilityAwareImageButton pN;
+  final m pO;
+  private final Matrix pP = new Matrix();
+  ViewTreeObserver.OnPreDrawListener pQ;
+  int pj;
+  int pv = 0;
+  Animator pw;
+  android.support.design.a.h px;
+  android.support.design.a.h py;
+  private final o pz;
   float rotation;
   
   static
   {
     PRESSED_ENABLED_STATE_SET = new int[] { 16842919, 16842910 };
-    oL = new int[] { 16843623, 16842908, 16842910 };
-    oM = new int[] { 16842908, 16842910 };
-    oN = new int[] { 16843623, 16842910 };
+    pK = new int[] { 16843623, 16842908, 16842910 };
+    pL = new int[] { 16842908, 16842910 };
+    pM = new int[] { 16843623, 16842910 };
     ENABLED_STATE_SET = new int[] { 16842910 };
   }
   
   h(VisibilityAwareImageButton paramVisibilityAwareImageButton, m paramm)
   {
-    this.oO = paramVisibilityAwareImageButton;
-    this.oP = paramm;
-    this.oA = new o();
-    this.oA.a(PRESSED_ENABLED_STATE_SET, a(new c()));
-    this.oA.a(oL, a(new b()));
-    this.oA.a(oM, a(new b()));
-    this.oA.a(oN, a(new b()));
-    this.oA.a(ENABLED_STATE_SET, a(new e()));
-    this.oA.a(EMPTY_STATE_SET, a(new a()));
-    this.rotation = this.oO.getRotation();
+    this.pN = paramVisibilityAwareImageButton;
+    this.pO = paramm;
+    this.pz = new o();
+    this.pz.a(PRESSED_ENABLED_STATE_SET, a(new c()));
+    this.pz.a(pK, a(new b()));
+    this.pz.a(pL, a(new b()));
+    this.pz.a(pM, a(new b()));
+    this.pz.a(ENABLED_STATE_SET, a(new e()));
+    this.pz.a(EMPTY_STATE_SET, a(new a()));
+    this.rotation = this.pN.getRotation();
   }
   
   private static ValueAnimator a(f paramf)
   {
     ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setInterpolator(ov);
+    localValueAnimator.setInterpolator(pu);
     localValueAnimator.setDuration(100L);
     localValueAnimator.addListener(paramf);
     localValueAnimator.addUpdateListener(paramf);
@@ -103,33 +103,33 @@ public class h
   private void a(float paramFloat, Matrix paramMatrix)
   {
     paramMatrix.reset();
-    Drawable localDrawable = this.oO.getDrawable();
-    if ((localDrawable != null) && (this.oi != 0))
+    Drawable localDrawable = this.pN.getDrawable();
+    if ((localDrawable != null) && (this.pj != 0))
     {
-      RectF localRectF1 = this.jM;
-      RectF localRectF2 = this.jN;
+      RectF localRectF1 = this.kL;
+      RectF localRectF2 = this.kM;
       localRectF1.set(0.0F, 0.0F, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      localRectF2.set(0.0F, 0.0F, this.oi, this.oi);
+      localRectF2.set(0.0F, 0.0F, this.pj, this.pj);
       paramMatrix.setRectToRect(localRectF1, localRectF2, Matrix.ScaleToFit.CENTER);
-      paramMatrix.postScale(paramFloat, paramFloat, this.oi / 2.0F, this.oi / 2.0F);
+      paramMatrix.postScale(paramFloat, paramFloat, this.pj / 2.0F, this.pj / 2.0F);
     }
   }
   
   final AnimatorSet a(android.support.design.a.h paramh, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     ArrayList localArrayList = new ArrayList();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.oO, View.ALPHA, new float[] { paramFloat1 });
-    paramh.j("opacity").a(localObjectAnimator);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.pN, View.ALPHA, new float[] { paramFloat1 });
+    paramh.k("opacity").a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
-    localObjectAnimator = ObjectAnimator.ofFloat(this.oO, View.SCALE_X, new float[] { paramFloat2 });
-    paramh.j("scale").a(localObjectAnimator);
+    localObjectAnimator = ObjectAnimator.ofFloat(this.pN, View.SCALE_X, new float[] { paramFloat2 });
+    paramh.k("scale").a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
-    localObjectAnimator = ObjectAnimator.ofFloat(this.oO, View.SCALE_Y, new float[] { paramFloat2 });
-    paramh.j("scale").a(localObjectAnimator);
+    localObjectAnimator = ObjectAnimator.ofFloat(this.pN, View.SCALE_Y, new float[] { paramFloat2 });
+    paramh.k("scale").a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
-    a(paramFloat3, this.oQ);
-    localObjectAnimator = ObjectAnimator.ofObject(this.oO, new f(), new g(), new Matrix[] { new Matrix(this.oQ) });
-    paramh.j("iconScale").a(localObjectAnimator);
+    a(paramFloat3, this.pP);
+    localObjectAnimator = ObjectAnimator.ofObject(this.pN, new f(), new g(), new Matrix[] { new Matrix(this.pP) });
+    paramh.k("iconScale").a(localObjectAnimator);
     localArrayList.add(localObjectAnimator);
     paramh = new AnimatorSet();
     android.support.design.a.b.a(paramh, localArrayList);
@@ -138,8 +138,8 @@ public class h
   
   final b a(int paramInt, ColorStateList paramColorStateList)
   {
-    Context localContext = this.oO.getContext();
-    b localb = ci();
+    Context localContext = this.pN.getContext();
+    b localb = cp();
     localb.b(android.support.v4.content.b.n(localContext, 2131100223), android.support.v4.content.b.n(localContext, 2131100222), android.support.v4.content.b.n(localContext, 2131100220), android.support.v4.content.b.n(localContext, 2131100221));
     localb.setBorderWidth(paramInt);
     localb.c(paramColorStateList);
@@ -148,91 +148,100 @@ public class h
   
   void a(ColorStateList paramColorStateList1, PorterDuff.Mode paramMode, ColorStateList paramColorStateList2, int paramInt)
   {
-    this.oC = android.support.v4.graphics.drawable.a.i(cj());
-    android.support.v4.graphics.drawable.a.a(this.oC, paramColorStateList1);
+    this.pB = android.support.v4.graphics.drawable.a.i(cq());
+    android.support.v4.graphics.drawable.a.a(this.pB, paramColorStateList1);
     if (paramMode != null) {
-      android.support.v4.graphics.drawable.a.a(this.oC, paramMode);
+      android.support.v4.graphics.drawable.a.a(this.pB, paramMode);
     }
-    this.oD = android.support.v4.graphics.drawable.a.i(cj());
-    android.support.v4.graphics.drawable.a.a(this.oD, android.support.design.e.a.b(paramColorStateList2));
+    this.pC = android.support.v4.graphics.drawable.a.i(cq());
+    android.support.v4.graphics.drawable.a.a(this.pC, android.support.design.e.a.b(paramColorStateList2));
     if (paramInt > 0)
     {
-      this.oE = a(paramInt, paramColorStateList1);
+      this.pD = a(paramInt, paramColorStateList1);
       paramColorStateList1 = new Drawable[3];
-      paramColorStateList1[0] = this.oE;
-      paramColorStateList1[1] = this.oC;
-      paramColorStateList1[2] = this.oD;
+      paramColorStateList1[0] = this.pD;
+      paramColorStateList1[1] = this.pB;
+      paramColorStateList1[2] = this.pC;
     }
     for (;;)
     {
-      this.oF = new LayerDrawable(paramColorStateList1);
-      this.oB = new l(this.oO.getContext(), this.oF, this.oP.getRadius(), this.elevation, this.elevation + this.oH);
-      paramColorStateList1 = this.oB;
-      paramColorStateList1.qB = false;
+      this.pE = new LayerDrawable(paramColorStateList1);
+      this.pA = new l(this.pN.getContext(), this.pE, this.pO.getRadius(), this.elevation, this.elevation + this.pG);
+      paramColorStateList1 = this.pA;
+      paramColorStateList1.rB = false;
       paramColorStateList1.invalidateSelf();
-      this.oP.setBackgroundDrawable(this.oB);
+      this.pO.setBackgroundDrawable(this.pA);
       return;
-      this.oE = null;
+      this.pD = null;
       paramColorStateList1 = new Drawable[2];
-      paramColorStateList1[0] = this.oC;
-      paramColorStateList1[1] = this.oD;
+      paramColorStateList1[0] = this.pB;
+      paramColorStateList1[1] = this.pC;
     }
   }
   
-  final void cd()
+  void c(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    p(this.oI);
-  }
-  
-  void ce()
-  {
-    o localo = this.oA;
-    if (localo.qP != null)
+    if (this.pA != null)
     {
-      localo.qP.end();
-      localo.qP = null;
+      this.pA.f(paramFloat1, this.pG + paramFloat1);
+      cn();
     }
   }
   
-  void cf() {}
-  
-  final void cg()
+  final void ck()
   {
-    Rect localRect = this.jL;
+    t(this.pH);
+  }
+  
+  void cl()
+  {
+    o localo = this.pz;
+    if (localo.rP != null)
+    {
+      localo.rP.end();
+      localo.rP = null;
+    }
+  }
+  
+  void cm() {}
+  
+  final void cn()
+  {
+    Rect localRect = this.kK;
     d(localRect);
     e(localRect);
-    this.oP.e(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    this.pO.e(localRect.left, localRect.top, localRect.right, localRect.bottom);
   }
   
-  boolean ch()
+  boolean co()
   {
     return true;
   }
   
-  b ci()
+  b cp()
   {
     return new b();
   }
   
-  final GradientDrawable cj()
+  final GradientDrawable cq()
   {
-    GradientDrawable localGradientDrawable = ck();
+    GradientDrawable localGradientDrawable = cr();
     localGradientDrawable.setShape(1);
     localGradientDrawable.setColor(-1);
     return localGradientDrawable;
   }
   
-  GradientDrawable ck()
+  GradientDrawable cr()
   {
     return new GradientDrawable();
   }
   
-  public final boolean cl()
+  public final boolean cs()
   {
-    if (this.oO.getVisibility() != 0) {
-      if (this.ow != 2) {}
+    if (this.pN.getVisibility() != 0) {
+      if (this.pv != 2) {}
     }
-    while (this.ow != 1)
+    while (this.pv != 1)
     {
       return true;
       return false;
@@ -240,50 +249,41 @@ public class h
     return false;
   }
   
-  final boolean cm()
+  final boolean ct()
   {
-    return (t.ay(this.oO)) && (!this.oO.isInEditMode());
-  }
-  
-  void d(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (this.oB != null)
-    {
-      this.oB.f(paramFloat1, this.oH + paramFloat1);
-      cg();
-    }
+    return (t.ay(this.pN)) && (!this.pN.isInEditMode());
   }
   
   void d(Rect paramRect)
   {
-    this.oB.getPadding(paramRect);
+    this.pA.getPadding(paramRect);
   }
   
   void d(int[] paramArrayOfInt)
   {
-    o localo = this.oA;
-    int j = localo.qN.size();
+    o localo = this.pz;
+    int j = localo.rN.size();
     int i = 0;
     o.a locala;
     if (i < j)
     {
-      locala = (o.a)localo.qN.get(i);
-      if (!StateSet.stateSetMatches(locala.qS, paramArrayOfInt)) {}
+      locala = (o.a)localo.rN.get(i);
+      if (!StateSet.stateSetMatches(locala.rS, paramArrayOfInt)) {}
     }
     for (paramArrayOfInt = locala;; paramArrayOfInt = null)
     {
-      if (paramArrayOfInt != localo.qO)
+      if (paramArrayOfInt != localo.rO)
       {
-        if ((localo.qO != null) && (localo.qP != null))
+        if ((localo.rO != null) && (localo.rP != null))
         {
-          localo.qP.cancel();
-          localo.qP = null;
+          localo.rP.cancel();
+          localo.rP = null;
         }
-        localo.qO = paramArrayOfInt;
+        localo.rO = paramArrayOfInt;
         if (paramArrayOfInt != null)
         {
-          localo.qP = paramArrayOfInt.qT;
-          localo.qP.start();
+          localo.rP = paramArrayOfInt.rT;
+          localo.rP.start();
         }
       }
       return;
@@ -299,30 +299,22 @@ public class h
     return this.elevation;
   }
   
-  final void n(float paramFloat)
+  final void r(float paramFloat)
   {
-    if (this.oG != paramFloat)
+    if (this.pF != paramFloat)
     {
-      this.oG = paramFloat;
-      d(this.elevation, this.oG, this.oH);
+      this.pF = paramFloat;
+      c(this.elevation, this.pF, this.pG);
     }
   }
   
-  final void o(float paramFloat)
+  final void s(float paramFloat)
   {
-    if (this.oH != paramFloat)
+    if (this.pG != paramFloat)
     {
-      this.oH = paramFloat;
-      d(this.elevation, this.oG, this.oH);
+      this.pG = paramFloat;
+      c(this.elevation, this.pF, this.pG);
     }
-  }
-  
-  final void p(float paramFloat)
-  {
-    this.oI = paramFloat;
-    Matrix localMatrix = this.oQ;
-    a(paramFloat, localMatrix);
-    this.oO.setImageMatrix(localMatrix);
   }
   
   final void setElevation(float paramFloat)
@@ -330,15 +322,23 @@ public class h
     if (this.elevation != paramFloat)
     {
       this.elevation = paramFloat;
-      d(this.elevation, this.oG, this.oH);
+      c(this.elevation, this.pF, this.pG);
     }
   }
   
   void setRippleColor(ColorStateList paramColorStateList)
   {
-    if (this.oD != null) {
-      android.support.v4.graphics.drawable.a.a(this.oD, android.support.design.e.a.b(paramColorStateList));
+    if (this.pC != null) {
+      android.support.v4.graphics.drawable.a.a(this.pC, android.support.design.e.a.b(paramColorStateList));
     }
+  }
+  
+  final void t(float paramFloat)
+  {
+    this.pH = paramFloat;
+    Matrix localMatrix = this.pP;
+    a(paramFloat, localMatrix);
+    this.pN.setImageMatrix(localMatrix);
   }
   
   final class a
@@ -349,7 +349,7 @@ public class h
       super((byte)0);
     }
     
-    protected final float cn()
+    protected final float cu()
     {
       return 0.0F;
     }
@@ -363,9 +363,9 @@ public class h
       super((byte)0);
     }
     
-    protected final float cn()
+    protected final float cu()
     {
-      return h.this.elevation + h.this.oG;
+      return h.this.elevation + h.this.pF;
     }
   }
   
@@ -377,9 +377,9 @@ public class h
       super((byte)0);
     }
     
-    protected final float cn()
+    protected final float cu()
     {
-      return h.this.elevation + h.this.oH;
+      return h.this.elevation + h.this.pG;
     }
   }
   
@@ -393,7 +393,7 @@ public class h
       super((byte)0);
     }
     
-    protected final float cn()
+    protected final float cu()
     {
       return h.this.elevation;
     }
@@ -403,29 +403,29 @@ public class h
     extends AnimatorListenerAdapter
     implements ValueAnimator.AnimatorUpdateListener
   {
-    private boolean oV;
-    private float oW;
-    private float oX;
+    private boolean pU;
+    private float pV;
+    private float pW;
     
     private f() {}
     
-    protected abstract float cn();
+    protected abstract float cu();
     
     public void onAnimationEnd(Animator paramAnimator)
     {
-      h.this.oB.r(this.oX);
-      this.oV = false;
+      h.this.pA.v(this.pW);
+      this.pU = false;
     }
     
     public void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      if (!this.oV)
+      if (!this.pU)
       {
-        this.oW = h.this.oB.qx;
-        this.oX = cn();
-        this.oV = true;
+        this.pV = h.this.pA.rx;
+        this.pW = cu();
+        this.pU = true;
       }
-      h.this.oB.r(this.oW + (this.oX - this.oW) * paramValueAnimator.getAnimatedFraction());
+      h.this.pA.v(this.pV + (this.pW - this.pV) * paramValueAnimator.getAnimatedFraction());
     }
   }
 }

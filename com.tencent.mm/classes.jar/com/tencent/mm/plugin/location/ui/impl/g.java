@@ -6,21 +6,21 @@ import com.tencent.mm.plugin.report.service.h;
 public final class g
 {
   private int enterScene;
-  private int fjS;
-  private int ici;
-  int sWk;
+  private int fnm;
+  private int iCp;
+  int uex;
   
   private g()
   {
     AppMethodBeat.i(56107);
-    this.ici = b.sWu.ordinal();
+    this.iCp = b.ueH.ordinal();
     AppMethodBeat.o(56107);
   }
   
   private void report()
   {
     AppMethodBeat.i(56111);
-    h.vKh.f(17993, new Object[] { Integer.valueOf(this.fjS), Integer.valueOf(this.enterScene), Integer.valueOf(this.ici), Integer.valueOf(this.sWk) });
+    h.wUl.f(17993, new Object[] { Integer.valueOf(this.fnm), Integer.valueOf(this.enterScene), Integer.valueOf(this.iCp), Integer.valueOf(this.uex) });
     reset();
     AppMethodBeat.o(56111);
   }
@@ -29,16 +29,16 @@ public final class g
   {
     AppMethodBeat.i(56110);
     this.enterScene = 0;
-    this.ici = b.sWu.ordinal();
-    this.sWk = 0;
-    this.fjS = 0;
+    this.iCp = b.ueH.ordinal();
+    this.uex = 0;
+    this.fnm = 0;
     AppMethodBeat.o(56110);
   }
   
   public final void a(g.a parama)
   {
     AppMethodBeat.i(56109);
-    this.fjS = parama.ordinal();
+    this.fnm = parama.ordinal();
     report();
     AppMethodBeat.o(56109);
   }
@@ -46,7 +46,7 @@ public final class g
   public final void a(b paramb)
   {
     AppMethodBeat.i(56108);
-    this.ici = paramb.ordinal();
+    this.iCp = paramb.ordinal();
     AppMethodBeat.o(56108);
   }
   
@@ -73,13 +73,13 @@ public final class g
     static
     {
       AppMethodBeat.i(56105);
-      sWp = new b("UNKNOWN", 0);
-      sWq = new b("SEARCH_LIST", 1);
-      sWr = new b("SEARCH_MAP", 2);
-      sWs = new b("DRAG_MAP", 3);
-      sWt = new b("LIST", 4);
-      sWu = new b("DIRECT", 5);
-      sWv = new b[] { sWp, sWq, sWr, sWs, sWt, sWu };
+      ueC = new b("UNKNOWN", 0);
+      ueD = new b("SEARCH_LIST", 1);
+      ueE = new b("SEARCH_MAP", 2);
+      ueF = new b("DRAG_MAP", 3);
+      ueG = new b("LIST", 4);
+      ueH = new b("DIRECT", 5);
+      ueI = new b[] { ueC, ueD, ueE, ueF, ueG, ueH };
       AppMethodBeat.o(56105);
     }
     
@@ -88,12 +88,12 @@ public final class g
   
   static final class c
   {
-    static g sWw;
+    static g ueJ;
     
     static
     {
       AppMethodBeat.i(56106);
-      sWw = new g((byte)0);
+      ueJ = new g((byte)0);
       AppMethodBeat.o(56106);
     }
   }

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.afc;
-import com.tencent.mm.protocal.protobuf.afd;
-import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agb;
+import com.tencent.mm.protocal.protobuf.agc;
+import com.tencent.mm.protocal.protobuf.bb;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.j;
 
 public final class d
@@ -20,34 +20,34 @@ public final class d
   implements com.tencent.mm.network.k, j
 {
   private g callback;
-  public String dcE;
-  private b iaa;
-  public String sZn;
-  private afc taE;
-  private afd taF;
-  public String taG;
+  public String dac;
+  private b gvE;
+  public String uhB;
+  private agb uiT;
+  private agc uiU;
+  public String uiV;
   
   public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(65044);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new afc();
-    ((b.a)localObject).gUV = new afd();
+    ((b.a)localObject).hvt = new agb();
+    ((b.a)localObject).hvu = new agc();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffrequestwxhb";
-    this.iaa = ((b.a)localObject).atI();
-    this.taE = ((afc)this.iaa.gUS.gUX);
-    this.taE.nTB = paramInt1;
-    this.taE.uxV = paramInt2;
-    this.taE.dDN = paramInt3;
-    this.taE.Dff = paramInt4;
-    localObject = com.tencent.mm.plugin.wallet_core.model.k.ebS();
+    this.gvE = ((b.a)localObject).aAz();
+    this.uiT = ((agb)this.gvE.hvr.hvw);
+    this.uiT.owW = paramInt1;
+    this.uiT.vGO = paramInt2;
+    this.uiT.dBz = paramInt3;
+    this.uiT.Eyl = paramInt4;
+    localObject = com.tencent.mm.plugin.wallet_core.model.k.ero();
     if (localObject != null)
     {
-      this.taE.latitude = ((az)localObject).latitude;
-      this.taE.longitude = ((az)localObject).longitude;
+      this.uiT.latitude = ((bb)localObject).latitude;
+      this.uiT.longitude = ((bb)localObject).longitude;
     }
     AppMethodBeat.o(65044);
   }
@@ -56,7 +56,7 @@ public final class d
   {
     AppMethodBeat.i(65046);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(65046);
     return i;
   }
@@ -69,11 +69,11 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(65045);
-    ad.i("NetSceneF2FLuckyMoneyPrepare", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.taF = ((afd)((b)paramq).gUT.gUX);
-    this.dcE = this.taF.rcq;
-    this.sZn = this.taF.sZn;
-    this.taG = this.taF.tfK;
+    ac.i("NetSceneF2FLuckyMoneyPrepare", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.uiU = ((agc)((b)paramq).hvs.hvw);
+    this.dac = this.uiU.skK;
+    this.uhB = this.uiU.uhB;
+    this.uiV = this.uiU.unZ;
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

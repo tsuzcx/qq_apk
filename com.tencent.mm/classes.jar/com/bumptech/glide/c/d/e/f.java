@@ -13,12 +13,12 @@ import java.security.MessageDigest;
 public final class f
   implements m<c>
 {
-  private final m<Bitmap> aIN;
+  private final m<Bitmap> aJD;
   
   public f(m<Bitmap> paramm)
   {
     AppMethodBeat.i(77506);
-    this.aIN = ((m)i.checkNotNull(paramm, "Argument must not be null"));
+    this.aJD = ((m)i.checkNotNull(paramm, "Argument must not be null"));
     AppMethodBeat.o(77506);
   }
   
@@ -26,15 +26,15 @@ public final class f
   {
     AppMethodBeat.i(77507);
     c localc = (c)paramu.get();
-    Object localObject = com.bumptech.glide.c.ac(paramContext).azz;
-    localObject = new d(localc.pc(), (e)localObject);
-    paramContext = this.aIN.a(paramContext, (u)localObject, paramInt1, paramInt2);
+    Object localObject = com.bumptech.glide.c.ad(paramContext).aAt;
+    localObject = new d(localc.pm(), (e)localObject);
+    paramContext = this.aJD.a(paramContext, (u)localObject, paramInt1, paramInt2);
     if (!localObject.equals(paramContext)) {
       ((u)localObject).recycle();
     }
     paramContext = (Bitmap)paramContext.get();
-    localObject = this.aIN;
-    localc.aJm.aJr.a((m)localObject, paramContext);
+    localObject = this.aJD;
+    localc.aKc.aKh.a((m)localObject, paramContext);
     AppMethodBeat.o(77507);
     return paramu;
   }
@@ -42,7 +42,7 @@ public final class f
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77510);
-    this.aIN.a(paramMessageDigest);
+    this.aJD.a(paramMessageDigest);
     AppMethodBeat.o(77510);
   }
   
@@ -52,7 +52,7 @@ public final class f
     if ((paramObject instanceof f))
     {
       paramObject = (f)paramObject;
-      boolean bool = this.aIN.equals(paramObject.aIN);
+      boolean bool = this.aJD.equals(paramObject.aJD);
       AppMethodBeat.o(77508);
       return bool;
     }
@@ -63,14 +63,14 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(77509);
-    int i = this.aIN.hashCode();
+    int i = this.aJD.hashCode();
     AppMethodBeat.o(77509);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.e.f
  * JD-Core Version:    0.7.0.1
  */

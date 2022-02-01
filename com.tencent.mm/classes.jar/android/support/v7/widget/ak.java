@@ -1,20 +1,22 @@
 package android.support.v7.widget;
 
+import android.content.Context;
 import android.graphics.PointF;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 public class ak
   extends at
 {
-  private aj anY;
-  private aj anZ;
+  private aj aoT;
+  private aj aoU;
   
   private static int a(RecyclerView.i parami, View paramView, aj paramaj)
   {
     int j = paramaj.bn(paramView);
     int k = paramaj.br(paramView) / 2;
     if (parami.getClipToPadding()) {}
-    for (int i = paramaj.kd() + paramaj.kf() / 2;; i = paramaj.getEnd() / 2) {
+    for (int i = paramaj.kl() + paramaj.kn() / 2;; i = paramaj.getEnd() / 2) {
       return k + j - i;
     }
   }
@@ -35,7 +37,7 @@ public class ak
       if (!parami.getClipToPadding()) {
         break;
       }
-      j = paramaj.kd() + paramaj.kf() / 2;
+      j = paramaj.kl() + paramaj.kn() / 2;
       i = 2147483647;
       k = 0;
       localObject2 = localObject1;
@@ -58,18 +60,18 @@ public class ak
   
   private aj b(RecyclerView.i parami)
   {
-    if ((this.anY == null) || (this.anY.aoI != parami)) {
-      this.anY = aj.e(parami);
+    if ((this.aoT == null) || (this.aoT.apE != parami)) {
+      this.aoT = aj.e(parami);
     }
-    return this.anY;
+    return this.aoT;
   }
   
   private aj c(RecyclerView.i parami)
   {
-    if ((this.anZ == null) || (this.anZ.aoI != parami)) {
-      this.anZ = aj.d(parami);
+    if ((this.aoU == null) || (this.aoU.apE != parami)) {
+      this.aoU = aj.d(parami);
     }
-    return this.anZ;
+    return this.aoU;
   }
   
   private static View c(RecyclerView.i parami, aj paramaj)
@@ -113,7 +115,7 @@ public class ak
     {
       return -1;
       localView = null;
-      if (!parami.jF()) {
+      if (!parami.jN()) {
         break;
       }
       localView = c(parami, b(parami));
@@ -122,7 +124,7 @@ public class ak
       }
       j = RecyclerView.i.bB(localView);
     } while (j == -1);
-    if (parami.jE()) {
+    if (parami.jM()) {
       if (paramInt1 > 0) {
         paramInt1 = 1;
       }
@@ -130,9 +132,9 @@ public class ak
     for (;;)
     {
       paramInt2 = i;
-      if ((parami instanceof RecyclerView.r.b))
+      if ((parami instanceof RecyclerView.s.b))
       {
-        parami = ((RecyclerView.r.b)parami).bZ(k - 1);
+        parami = ((RecyclerView.s.b)parami).bZ(k - 1);
         paramInt2 = i;
         if (parami != null) {
           if (parami.x >= 0.0F)
@@ -153,7 +155,7 @@ public class ak
         break label175;
       }
       return j - 1;
-      if (!parami.jE()) {
+      if (!parami.jM()) {
         break label37;
       }
       localView = c(parami, c(parami));
@@ -179,10 +181,10 @@ public class ak
   
   public View a(RecyclerView.i parami)
   {
-    if (parami.jF()) {
+    if (parami.jN()) {
       return a(parami, b(parami));
     }
-    if (parami.jE()) {
+    if (parami.jM()) {
       return a(parami, c(parami));
     }
     return null;
@@ -191,10 +193,10 @@ public class ak
   public int[] a(RecyclerView.i parami, View paramView)
   {
     int[] arrayOfInt = new int[2];
-    if (parami.jE()) {
+    if (parami.jM()) {
       arrayOfInt[0] = a(parami, paramView, c(parami));
     }
-    while (parami.jF())
+    while (parami.jN())
     {
       arrayOfInt[1] = a(parami, paramView, b(parami));
       return arrayOfInt;
@@ -206,10 +208,32 @@ public class ak
   
   protected final ae f(RecyclerView.i parami)
   {
-    if (!(parami instanceof RecyclerView.r.b)) {
+    if (!(parami instanceof RecyclerView.s.b)) {
       return null;
     }
-    return new ak.1(this, this.akA.getContext());
+    new ae(this.alu.getContext())
+    {
+      protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+      
+      protected final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      {
+        paramAnonymousView = ak.this.a(ak.this.alu.getLayoutManager(), paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.TN);
+        }
+      }
+      
+      protected final int ce(int paramAnonymousInt)
+      {
+        return Math.min(100, super.ce(paramAnonymousInt));
+      }
+    };
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.caption;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.protocal.protobuf.dxl;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.qc;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.a.j;
 import d.g.b.k;
 import d.l;
@@ -13,98 +13,98 @@ import d.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callback", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "key", "", "ret", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "transition", "", "filePath", "mediaExtractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "netScene", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/NetSceneGetVideoCaption;", "total", "transResult", "voiceData", "Ljava/nio/ByteBuffer;", "doNetRequest", "data", "Lcom/tencent/mm/protobuf/ByteString;", "seq", "offset", "getTransResult", "loadAudioTrackData", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "saveBuffer2File", "voiceTransLate", "", "Companion", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callback", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "key", "", "ret", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "transition", "", "filePath", "mediaExtractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "netScene", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/NetSceneGetVideoCaption;", "total", "transResult", "voiceData", "Ljava/nio/ByteBuffer;", "doNetRequest", "data", "Lcom/tencent/mm/protobuf/ByteString;", "seq", "offset", "getTransResult", "loadAudioTrackData", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "saveBuffer2File", "voiceTransLate", "", "Companion", "plugin-vlog_release"})
 public final class a
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  public static final a LuE;
-  private d LuC;
-  private ArrayList<dxl> LuD;
+  public static final a AtX;
+  private d AtV;
+  private ArrayList<qc> AtW;
   private String filePath;
-  c gqX;
-  private int hlk;
-  private d.g.a.q<? super String, ? super Integer, ? super ArrayList<dxl>, y> rDO;
+  c gRF;
+  private int hLN;
+  private d.g.a.q<? super String, ? super Integer, ? super ArrayList<qc>, y> sMG;
   
   static
   {
-    AppMethodBeat.i(201177);
-    LuE = new a((byte)0);
-    AppMethodBeat.o(201177);
+    AppMethodBeat.i(207862);
+    AtX = new a((byte)0);
+    AppMethodBeat.o(207862);
   }
   
   public a()
   {
-    AppMethodBeat.i(201176);
-    this.LuD = new ArrayList();
+    AppMethodBeat.i(207861);
+    this.AtW = new ArrayList();
     this.filePath = "";
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.afA();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
     k.g(localb, "MMKernel.network()");
-    localb.aeS().a(3835, (com.tencent.mm.al.g)this);
-    AppMethodBeat.o(201176);
+    localb.agi().a(3835, (com.tencent.mm.ak.g)this);
+    AppMethodBeat.o(207861);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(201175);
+    AppMethodBeat.i(207860);
     if (paramn == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.NetSceneGetVideoCaption");
-      AppMethodBeat.o(201175);
+      AppMethodBeat.o(207860);
       throw paramString;
     }
     if (k.g(((d)paramn).filePath, this.filePath))
     {
-      ad.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
+      ac.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.LuD = ((d)paramn).LuW;
-        ad.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]scene seq:" + ((d)paramn).htk + " isLastRequest:" + ((d)paramn).LuX + " progress:" + ((d)paramn).getProgress());
-        paramString = ((Iterable)this.LuD).iterator();
+        this.AtW = ((d)paramn).Auq;
+        ac.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]scene seq:" + ((d)paramn).hTM + " isLastRequest:" + ((d)paramn).Aur + " progress:" + ((d)paramn).getProgress());
+        paramString = ((Iterable)this.AtW).iterator();
         paramInt1 = 0;
         Object localObject;
         while (paramString.hasNext())
         {
           localObject = paramString.next();
           if (paramInt1 < 0) {
-            j.fvx();
+            j.fOc();
           }
-          localObject = (dxl)localObject;
-          ad.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]result" + paramInt1 + ": start:" + ((dxl)localObject).LwH + " end:" + ((dxl)localObject).LwI + " text:" + ((dxl)localObject).LwG.toString("UTF-8"));
+          localObject = (qc)localObject;
+          ac.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]result" + paramInt1 + ": start:" + ((qc)localObject).EgL + " end:" + ((qc)localObject).EgM + " text:" + ((qc)localObject).EgK.toString("UTF-8"));
           paramInt1 += 1;
         }
-        ad.i("MicroMsg.EditCaptionDataManager", "\n");
-        if (((d)paramn).LuX)
+        ac.i("MicroMsg.EditCaptionDataManager", "\n");
+        if (((d)paramn).Aur)
         {
           if (((d)paramn).getProgress() >= 100)
           {
-            paramString = this.rDO;
+            paramString = this.sMG;
             if (paramString != null)
             {
-              paramString.d(this.filePath, Integer.valueOf(0), this.LuD);
-              AppMethodBeat.o(201175);
+              paramString.d(this.filePath, Integer.valueOf(0), this.AtW);
+              AppMethodBeat.o(207860);
               return;
             }
-            AppMethodBeat.o(201175);
+            AppMethodBeat.o(207860);
             return;
           }
-          paramString = this.rDO;
+          paramString = this.sMG;
           if (paramString != null) {
-            paramString.d(this.filePath, Integer.valueOf(0), this.LuD);
+            paramString.d(this.filePath, Integer.valueOf(0), this.AtW);
           }
-          ad.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]repeat query voice data");
-          paramString = this.LuC;
+          ac.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]repeat query voice data");
+          paramString = this.AtV;
           if (paramString == null) {
-            k.fvU();
+            k.fOy();
           }
-          paramInt1 = paramString.htk;
-          paramInt2 = this.hlk;
-          paramString = this.LuC;
+          paramInt1 = paramString.hTM;
+          paramInt2 = this.hLN;
+          paramString = this.AtV;
           if (paramString != null)
           {
-            paramString = paramString.LuY;
+            paramString = paramString.Aus;
             paramn = new d(paramInt1, paramInt2, paramString);
             localObject = new StringBuilder("[").append(hashCode()).append("]do voiceTransLate vid:");
-            paramString = paramn.LuY;
+            paramString = paramn.Aus;
             if (paramString == null) {
               break label636;
             }
@@ -112,15 +112,15 @@ public final class a
           label636:
           for (paramString = paramString.toString("UTF-8");; paramString = null)
           {
-            ad.i("MicroMsg.EditCaptionDataManager", paramString + " seq:" + paramInt1 + " size:" + null + " offset:0");
+            ac.i("MicroMsg.EditCaptionDataManager", paramString + " seq:" + paramInt1 + " size:" + null + " offset:0");
             paramString = this.filePath;
             k.h(paramString, "<set-?>");
             paramn.filePath = paramString;
-            this.LuC = paramn;
-            paramString = com.tencent.mm.kernel.g.afA();
+            this.AtV = paramn;
+            paramString = com.tencent.mm.kernel.g.agQ();
             k.g(paramString, "MMKernel.network()");
-            paramString.aeS().b((n)this.LuC);
-            AppMethodBeat.o(201175);
+            paramString.agi().b((n)this.AtV);
+            AppMethodBeat.o(207860);
             return;
             paramString = null;
             break;
@@ -129,24 +129,24 @@ public final class a
       }
       else
       {
-        paramString = this.rDO;
+        paramString = this.sMG;
         if (paramString != null)
         {
           paramString.d(this.filePath, Integer.valueOf(-1), null);
-          AppMethodBeat.o(201175);
+          AppMethodBeat.o(207860);
           return;
         }
       }
     }
-    AppMethodBeat.o(201175);
+    AppMethodBeat.o(207860);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager$Companion;", "", "()V", "REQUEST_VOICE_SIZE", "", "RESULT_ERROR", "RESULT_LOAD_MORE", "RESULT_OK", "TAG", "", "plugin-vlog_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager$Companion;", "", "()V", "REQUEST_VOICE_SIZE", "", "RESULT_ERROR", "RESULT_LOAD_MORE", "RESULT_OK", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.caption.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,36 +10,36 @@ import com.tencent.tbs.reader.TbsReaderManager;
 
 public final class at
 {
-  public static at jRb;
-  private TbsReaderManager jRc;
+  public static at krN;
+  private TbsReaderManager krO;
   
   private at(Context paramContext)
   {
-    AppMethodBeat.i(195892);
-    this.jRc = null;
+    AppMethodBeat.i(186666);
+    this.krO = null;
     ReaderEngine.getInstance().initReaderEntry(paramContext);
-    this.jRc = new TbsReaderManager();
-    AppMethodBeat.o(195892);
+    this.krO = new TbsReaderManager();
+    AppMethodBeat.o(186666);
   }
   
   public static boolean canOpenFile(String paramString)
   {
-    AppMethodBeat.i(195894);
+    AppMethodBeat.i(186668);
     boolean bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
-    AppMethodBeat.o(195894);
+    AppMethodBeat.o(186668);
     return bool;
   }
   
-  public static at dl(Context paramContext)
+  public static at du(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(195891);
-      if (jRb == null) {
-        jRb = new at(paramContext);
+      AppMethodBeat.i(186665);
+      if (krN == null) {
+        krN = new at(paramContext);
       }
-      paramContext = jRb;
-      AppMethodBeat.o(195891);
+      paramContext = krN;
+      AppMethodBeat.o(186665);
       return paramContext;
     }
     finally {}
@@ -47,29 +47,29 @@ public final class at
   
   public final int a(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(195893);
-    if (this.jRc == null)
+    AppMethodBeat.i(186667);
+    if (this.krO == null)
     {
-      AppMethodBeat.o(195893);
+      AppMethodBeat.o(186667);
       return -1;
     }
-    int i = this.jRc.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
-    AppMethodBeat.o(195893);
+    int i = this.krO.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
+    AppMethodBeat.o(186667);
     return i;
   }
   
   public final void closeFileReader()
   {
-    AppMethodBeat.i(195895);
-    if (this.jRc != null) {
-      this.jRc.destroy();
+    AppMethodBeat.i(186669);
+    if (this.krO != null) {
+      this.krO.destroy();
     }
-    AppMethodBeat.o(195895);
+    AppMethodBeat.o(186669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.at
  * JD-Core Version:    0.7.0.1
  */

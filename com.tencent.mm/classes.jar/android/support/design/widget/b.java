@@ -16,15 +16,15 @@ public class b
   extends Drawable
 {
   float borderWidth;
-  final RectF eU = new RectF();
-  final a lI = new a((byte)0);
-  private int lJ;
-  private int lK;
-  private int lL;
-  private int lM;
-  private ColorStateList lN;
-  private int lO;
-  private boolean lP = true;
+  final RectF fV = new RectF();
+  final a mH = new a((byte)0);
+  private int mI;
+  private int mJ;
+  private int mK;
+  private int mL;
+  private ColorStateList mM;
+  private int mN;
+  private boolean mO = true;
   final Paint paint = new Paint(1);
   final Rect rect = new Rect();
   float rotation;
@@ -36,44 +36,44 @@ public class b
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.lJ = paramInt1;
-    this.lK = paramInt2;
-    this.lL = paramInt3;
-    this.lM = paramInt4;
+    this.mI = paramInt1;
+    this.mJ = paramInt2;
+    this.mK = paramInt3;
+    this.mL = paramInt4;
   }
   
   public final void c(ColorStateList paramColorStateList)
   {
     if (paramColorStateList != null) {
-      this.lO = paramColorStateList.getColorForState(getState(), this.lO);
+      this.mN = paramColorStateList.getColorForState(getState(), this.mN);
     }
-    this.lN = paramColorStateList;
-    this.lP = true;
+    this.mM = paramColorStateList;
+    this.mO = true;
     invalidateSelf();
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.lP)
+    if (this.mO)
     {
       localObject1 = this.paint;
       Object localObject2 = this.rect;
       copyBounds((Rect)localObject2);
       f1 = this.borderWidth / ((Rect)localObject2).height();
-      int i = android.support.v4.graphics.b.o(this.lJ, this.lO);
-      int j = android.support.v4.graphics.b.o(this.lK, this.lO);
-      int k = android.support.v4.graphics.b.o(android.support.v4.graphics.b.q(this.lK, 0), this.lO);
-      int m = android.support.v4.graphics.b.o(android.support.v4.graphics.b.q(this.lM, 0), this.lO);
-      int n = android.support.v4.graphics.b.o(this.lM, this.lO);
-      int i1 = android.support.v4.graphics.b.o(this.lL, this.lO);
+      int i = android.support.v4.graphics.b.o(this.mI, this.mN);
+      int j = android.support.v4.graphics.b.o(this.mJ, this.mN);
+      int k = android.support.v4.graphics.b.o(android.support.v4.graphics.b.q(this.mJ, 0), this.mN);
+      int m = android.support.v4.graphics.b.o(android.support.v4.graphics.b.q(this.mL, 0), this.mN);
+      int n = android.support.v4.graphics.b.o(this.mL, this.mN);
+      int i1 = android.support.v4.graphics.b.o(this.mK, this.mN);
       float f2 = ((Rect)localObject2).top;
       float f3 = ((Rect)localObject2).bottom;
       localObject2 = Shader.TileMode.CLAMP;
       ((Paint)localObject1).setShader(new LinearGradient(0.0F, f2, 0.0F, f3, new int[] { i, j, k, m, n, i1 }, new float[] { 0.0F, f1, 0.5F, 0.5F, 1.0F - f1, 1.0F }, (Shader.TileMode)localObject2));
-      this.lP = false;
+      this.mO = false;
     }
     float f1 = this.paint.getStrokeWidth() / 2.0F;
-    Object localObject1 = this.eU;
+    Object localObject1 = this.fV;
     copyBounds(this.rect);
     ((RectF)localObject1).set(this.rect);
     ((RectF)localObject1).left += f1;
@@ -88,7 +88,7 @@ public class b
   
   public Drawable.ConstantState getConstantState()
   {
-    return this.lI;
+    return this.mH;
   }
   
   public int getOpacity()
@@ -108,29 +108,29 @@ public class b
   
   public boolean isStateful()
   {
-    return ((this.lN != null) && (this.lN.isStateful())) || (super.isStateful());
+    return ((this.mM != null) && (this.mM.isStateful())) || (super.isStateful());
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.lP = true;
+    this.mO = true;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    if (this.lN != null)
+    if (this.mM != null)
     {
-      int i = this.lN.getColorForState(paramArrayOfInt, this.lO);
-      if (i != this.lO)
+      int i = this.mM.getColorForState(paramArrayOfInt, this.mN);
+      if (i != this.mN)
       {
-        this.lP = true;
-        this.lO = i;
+        this.mO = true;
+        this.mN = i;
       }
     }
-    if (this.lP) {
+    if (this.mO) {
       invalidateSelf();
     }
-    return this.lP;
+    return this.mO;
   }
   
   public void setAlpha(int paramInt)
@@ -145,7 +145,7 @@ public class b
     {
       this.borderWidth = paramFloat;
       this.paint.setStrokeWidth(1.3333F * paramFloat);
-      this.lP = true;
+      this.mO = true;
       invalidateSelf();
     }
   }

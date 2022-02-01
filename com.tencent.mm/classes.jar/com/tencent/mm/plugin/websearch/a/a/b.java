@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,29 +20,29 @@ import java.util.concurrent.TimeUnit;
 public final class b
   implements c
 {
-  Map<a, CountDownLatch> AHS;
-  private l AHT;
-  private l AHU;
-  Map<a, c.a> mwx;
+  Map<a, CountDownLatch> Caj;
+  private l Cak;
+  private l Cal;
+  Map<a, c.a> mYy;
   
   public b()
   {
     AppMethodBeat.i(116556);
-    this.AHS = new ConcurrentHashMap();
-    this.mwx = new HashMap();
-    this.AHT = new l()
+    this.Caj = new ConcurrentHashMap();
+    this.mYy = new HashMap();
+    this.Cak = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(116554);
-        a locala = (a)paramAnonymousk.rpP.roI;
+        a locala = (a)paramAnonymousk.syJ.sxB;
         if (locala == null)
         {
           AppMethodBeat.o(116554);
           return;
         }
-        CountDownLatch localCountDownLatch = (CountDownLatch)b.this.AHS.remove(locala);
-        switch (paramAnonymousk.bRZ)
+        CountDownLatch localCountDownLatch = (CountDownLatch)b.this.Caj.remove(locala);
+        switch (paramAnonymousk.bPH)
         {
         }
         for (;;)
@@ -50,55 +50,55 @@ public final class b
           localCountDownLatch.countDown();
           AppMethodBeat.o(116554);
           return;
-          if ((paramAnonymousk.rpQ == null) || (paramAnonymousk.rpQ.size() == 0))
+          if ((paramAnonymousk.syK == null) || (paramAnonymousk.syK.size() == 0))
           {
-            ad.i("FTSMatchContact", "local contact search size 0");
-            locala.gu(Collections.emptyList());
+            ac.i("FTSMatchContact", "local contact search size 0");
+            locala.gF(Collections.emptyList());
             localCountDownLatch.countDown();
             AppMethodBeat.o(116554);
             return;
           }
-          locala.gu(paramAnonymousk.rpQ);
+          locala.gF(paramAnonymousk.syK);
           continue;
-          locala.gu(Collections.emptyList());
+          locala.gF(Collections.emptyList());
         }
       }
     };
-    this.AHU = new l()
+    this.Cal = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(116555);
-        a locala = (a)paramAnonymousk.rpP.roI;
+        a locala = (a)paramAnonymousk.syJ.sxB;
         if (locala == null)
         {
           AppMethodBeat.o(116555);
           return;
         }
-        c.a locala1 = (c.a)b.this.mwx.remove(locala);
+        c.a locala1 = (c.a)b.this.mYy.remove(locala);
         if (locala1 == null)
         {
           AppMethodBeat.o(116555);
           return;
         }
-        switch (paramAnonymousk.bRZ)
+        switch (paramAnonymousk.bPH)
         {
         }
         for (;;)
         {
-          locala1.eis();
+          locala1.exM();
           AppMethodBeat.o(116555);
           return;
-          if ((paramAnonymousk.rpQ == null) || (paramAnonymousk.rpQ.size() == 0))
+          if ((paramAnonymousk.syK == null) || (paramAnonymousk.syK.size() == 0))
           {
-            ad.i("FTSMatchContact", "local contact search size 0");
-            locala1.eis();
+            ac.i("FTSMatchContact", "local contact search size 0");
+            locala1.exM();
             AppMethodBeat.o(116555);
             return;
           }
-          locala.gu(paramAnonymousk.rpQ);
+          locala.gF(paramAnonymousk.syK);
           continue;
-          locala.gu(Collections.emptyList());
+          locala.gF(Collections.emptyList());
         }
       }
     };
@@ -108,21 +108,21 @@ public final class b
   private static boolean a(a parama, l paraml)
   {
     AppMethodBeat.i(116559);
-    if (bt.isNullOrNil(parama.query))
+    if (bs.isNullOrNil(parama.query))
     {
       AppMethodBeat.o(116559);
       return false;
     }
     j localj = new j();
     localj.query = parama.query;
-    localj.rpJ = new int[] { 131072 };
-    localj.rpK = new int[] { 1, 5 };
-    localj.rpL = parama.AHR;
-    localj.rpN = com.tencent.mm.plugin.fts.a.c.b.rqn;
-    localj.rpM = new HashSet();
-    localj.rpO = paraml;
+    localj.syD = new int[] { 131072 };
+    localj.syE = new int[] { 1, 5 };
+    localj.syF = parama.Cai;
+    localj.syH = com.tencent.mm.plugin.fts.a.c.b.szh;
+    localj.syG = new HashSet();
+    localj.syI = paraml;
     localj.scene = 1;
-    ((n)g.ad(n.class)).search(2, localj).roI = parama;
+    ((n)g.ad(n.class)).search(2, localj).sxB = parama;
     AppMethodBeat.o(116559);
     return true;
   }
@@ -130,22 +130,22 @@ public final class b
   public final void a(a parama, c.a parama1)
   {
     AppMethodBeat.i(116558);
-    this.mwx.put(parama, parama1);
-    a(parama, this.AHU);
+    this.mYy.put(parama, parama1);
+    a(parama, this.Cal);
     AppMethodBeat.o(116558);
   }
   
-  public final a avl(String paramString)
+  public final a aAD(String paramString)
   {
     AppMethodBeat.i(116557);
     e locale = new e(paramString);
-    CountDownLatch localCountDownLatch = (CountDownLatch)this.AHS.get(locale);
+    CountDownLatch localCountDownLatch = (CountDownLatch)this.Caj.get(locale);
     if (localCountDownLatch == null) {
-      if (a(locale, this.AHT))
+      if (a(locale, this.Cak))
       {
-        ad.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ac.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = new CountDownLatch(1);
-        this.AHS.put(locale, paramString);
+        this.Caj.put(locale, paramString);
       }
     }
     for (;;)
@@ -154,20 +154,20 @@ public final class b
       try
       {
         paramString.await(2000L, TimeUnit.MILLISECONDS);
-        this.AHS.remove(locale);
+        this.Caj.remove(locale);
         AppMethodBeat.o(116557);
         return locale;
-        ad.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ac.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = localCountDownLatch;
         continue;
-        ad.i("FTSMatchContact", "have a running task ,wait for result, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ac.i("FTSMatchContact", "have a running task ,wait for result, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = localCountDownLatch;
       }
       catch (Exception paramString)
       {
         for (;;)
         {
-          ad.printErrStackTrace("FTSMatchContact", paramString, "", new Object[0]);
+          ac.printErrStackTrace("FTSMatchContact", paramString, "", new Object[0]);
         }
       }
     }

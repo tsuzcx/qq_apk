@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.appcache;
 import android.os.Looper;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.dud;
+import com.tencent.mm.protocal.protobuf.dzu;
 import com.tencent.mm.sdk.d.c;
 import com.tencent.mm.sdk.d.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.util.Locale;
@@ -22,25 +22,25 @@ public final class t
   extends d
   implements Runnable
 {
-  private final int iLU;
-  private final String iLV;
-  private final c iLW;
-  private final c iLX;
-  final c iLY;
+  private final int jmb;
+  private final String jmc;
+  private final c jmd;
+  private final c jme;
+  final c jmf;
   
   public t(int paramInt, String paramString)
   {
     super("LibIncrementalTestCase", Looper.getMainLooper());
     AppMethodBeat.i(44264);
-    this.iLW = new c()
+    this.jmd = new c()
     {
       public final void enter()
       {
         AppMethodBeat.i(44256);
         super.enter();
-        ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "WriteMockLibInfo enter");
-        Object localObject2 = aw.aQb();
-        if (bt.isNullOrNil((String)localObject2))
+        ac.i("MicroMsg.LibIncrementalTestCase[incremental]", "WriteMockLibInfo enter");
+        Object localObject2 = aw.aWT();
+        if (bs.isNullOrNil((String)localObject2))
         {
           t.a(t.this, "!!MockLibInfo Path Error!!");
           AppMethodBeat.o(44256);
@@ -54,7 +54,7 @@ public final class t
           ((e)localObject2).delete();
           ((e)localObject2).createNewFile();
           localObject1 = ((JSONObject)localObject1).toString().getBytes("UTF-8");
-          int i = i.f(com.tencent.mm.vfs.q.B(((e)localObject2).fhU()), (byte[])localObject1, localObject1.length);
+          int i = i.f(com.tencent.mm.vfs.q.B(((e)localObject2).fxV()), (byte[])localObject1, localObject1.length);
           if (i != 0)
           {
             t.a(t.this, "MockLibInfo Write Error ".concat(String.valueOf(i)));
@@ -72,78 +72,78 @@ public final class t
         AppMethodBeat.o(44256);
       }
     };
-    this.iLX = new c()
+    this.jme = new c()
     {
       public final void enter()
       {
         AppMethodBeat.i(44259);
         super.enter();
-        ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "DownloadMockLibInfo enter");
-        dud localdud = new dud();
-        localdud.url = String.format(Locale.US, "https://res.servicewechat.com/weapp/public/commlib/%d.wxapkg", new Object[] { Integer.valueOf(t.a(t.this)) });
-        localdud.version = t.a(t.this);
-        localdud.md5 = t.c(t.this);
-        localdud.DZz = 1;
-        j.aOK().a(localdud, new PInt());
-        bh.a(localdud.url, localdud.version, new bh.a() {});
+        ac.i("MicroMsg.LibIncrementalTestCase[incremental]", "DownloadMockLibInfo enter");
+        dzu localdzu = new dzu();
+        localdzu.url = String.format(Locale.US, "https://res.servicewechat.com/weapp/public/commlib/%d.wxapkg", new Object[] { Integer.valueOf(t.a(t.this)) });
+        localdzu.version = t.a(t.this);
+        localdzu.md5 = t.c(t.this);
+        localdzu.Fwu = 1;
+        j.aVC().a(localdzu, new PInt());
+        bh.a(localdzu.url, localdzu.version, new bh.a() {});
         AppMethodBeat.o(44259);
       }
     };
-    this.iLY = new c()
+    this.jmf = new c()
     {
       public final void enter()
       {
         AppMethodBeat.i(44262);
         super.enter();
-        ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "FetchNewestLibAndDoIncremental enter");
-        as.fm(true);
-        com.tencent.mm.kernel.g.afA().gcy.a(1168, new com.tencent.mm.al.g()
+        ac.i("MicroMsg.LibIncrementalTestCase[incremental]", "FetchNewestLibAndDoIncremental enter");
+        as.fI(true);
+        com.tencent.mm.kernel.g.agQ().ghe.a(1168, new com.tencent.mm.ak.g()
         {
           public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
           {
             AppMethodBeat.i(44261);
-            if ((paramAnonymous2n != null) && ((paramAnonymous2n.getReqResp() instanceof com.tencent.mm.al.b)))
+            if ((paramAnonymous2n != null) && ((paramAnonymous2n.getReqResp() instanceof com.tencent.mm.ak.b)))
             {
-              paramAnonymous2String = (dud)((com.tencent.mm.al.b)paramAnonymous2n.getReqResp()).gUT.gUX;
+              paramAnonymous2String = (dzu)((com.tencent.mm.ak.b)paramAnonymous2n.getReqResp()).hvs.hvw;
               paramAnonymous2Int1 = t.a(t.this);
               paramAnonymous2Int2 = paramAnonymous2String.version;
               paramAnonymous2String = new bh.a() {};
-              bh.a(au.A("@LibraryAppId", paramAnonymous2Int1, paramAnonymous2Int2), paramAnonymous2String);
+              bh.a(au.z("@LibraryAppId", paramAnonymous2Int1, paramAnonymous2Int2), paramAnonymous2String);
             }
-            com.tencent.mm.kernel.g.afA().gcy.b(1168, this);
+            com.tencent.mm.kernel.g.agQ().ghe.b(1168, this);
             AppMethodBeat.o(44261);
           }
         });
         AppMethodBeat.o(44262);
       }
     };
-    this.iLU = paramInt;
-    this.iLV = paramString;
+    this.jmb = paramInt;
+    this.jmc = paramString;
     AppMethodBeat.o(44264);
   }
   
-  public final void aPC()
+  public final void aWu()
   {
     AppMethodBeat.i(44266);
-    super.aPC();
-    ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "TestCase onQuitting");
+    super.aWu();
+    ac.i("MicroMsg.LibIncrementalTestCase[incremental]", "TestCase onQuitting");
     AppMethodBeat.o(44266);
   }
   
   public final void run()
   {
     AppMethodBeat.i(44265);
-    a(this.iLW);
-    a(this.iLX);
-    a(this.iLY);
-    b(this.iLW);
+    a(this.jmd);
+    a(this.jme);
+    a(this.jmf);
+    b(this.jmd);
     start();
     AppMethodBeat.o(44265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.t
  * JD-Core Version:    0.7.0.1
  */

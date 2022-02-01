@@ -5,11 +5,11 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class g
 {
-  public static void fL(int paramInt1, int paramInt2)
+  public static void fS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91309);
     if (paramInt1 >= 0) {
-      h.vKh.idkeyStat(320L, paramInt1 + paramInt2, 1L, true);
+      h.wUl.idkeyStat(320L, paramInt1 + paramInt2, 1L, true);
     }
     AppMethodBeat.o(91309);
   }

@@ -5,41 +5,64 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.aj;
 import java.lang.ref.WeakReference;
 
 public class OpenGlView
   extends GLTextureView
 {
   public static String TAG = "OpenGlView";
-  public boolean lUw;
-  public boolean zvT;
-  public boolean zvU;
-  public int zvV;
-  private int zvW;
-  private int zvX;
-  public boolean zvY;
-  WeakReference<OpenGlRender> zvZ;
+  public boolean AOK;
+  public boolean AOL;
+  public int AOM;
+  private int AON;
+  private int AOO;
+  public boolean AOP;
+  WeakReference<OpenGlRender> AOQ;
+  public boolean mwy;
+  
+  public OpenGlView(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(208518);
+    this.AOK = false;
+    this.AOL = true;
+    this.mwy = false;
+    this.AOM = 1;
+    this.AON = 0;
+    this.AOO = 0;
+    this.AOP = false;
+    this.AOM = OpenGlRender.getGLVersion();
+    emG();
+    AppMethodBeat.o(208518);
+  }
   
   public OpenGlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115670);
-    this.zvT = false;
-    this.zvU = true;
-    this.lUw = false;
-    this.zvV = 1;
-    this.zvW = 0;
-    this.zvX = 0;
-    this.zvY = false;
-    this.zvV = OpenGlRender.getGLVersion();
-    if (this.zvV == 2)
+    this.AOK = false;
+    this.AOL = true;
+    this.mwy = false;
+    this.AOM = 1;
+    this.AON = 0;
+    this.AOO = 0;
+    this.AOP = false;
+    this.AOM = OpenGlRender.getGLVersion();
+    emG();
+    AppMethodBeat.o(115670);
+  }
+  
+  private void emG()
+  {
+    AppMethodBeat.i(208519);
+    if (this.AOM == 2)
     {
       setEGLContextFactory(new c());
       setEGLConfigChooser(new b());
     }
-    AppMethodBeat.o(115670);
+    AppMethodBeat.o(208519);
   }
   
   public final void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)
@@ -49,26 +72,26 @@ public class OpenGlView
     AppMethodBeat.o(115674);
   }
   
-  public final void dXl()
+  public final void emF()
   {
     AppMethodBeat.i(115675);
-    this.zvT = true;
-    this.zuE.requestRender();
+    this.AOK = true;
+    this.ANw.requestRender();
     AppMethodBeat.o(115675);
   }
   
-  public void hV(int paramInt1, int paramInt2)
+  public void ik(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115669);
-    this.zvW = paramInt1;
-    this.zvX = paramInt2;
+    this.AON = paramInt1;
+    this.AOO = paramInt2;
     RelativeLayout.LayoutParams localLayoutParams;
-    if (ai.eRQ())
+    if (aj.fhA())
     {
       paramInt1 = paramInt2 * 9 / 16;
       localLayoutParams = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
       localLayoutParams.addRule(13);
-      this.zvW = paramInt1;
+      this.AON = paramInt1;
     }
     for (;;)
     {
@@ -79,44 +102,44 @@ public class OpenGlView
     }
   }
   
-  public void hW(int paramInt1, int paramInt2) {}
+  public void il(int paramInt1, int paramInt2) {}
   
   public final void m(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(115672);
-    ad.i(TAG, "surfaceCreated");
+    ac.i(TAG, "surfaceCreated");
     super.m(paramSurfaceTexture);
-    paramSurfaceTexture = (OpenGlRender)this.zvZ.get();
-    ad.i(OpenGlRender.TAG, "%s surfaceCreated", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
+    paramSurfaceTexture = (OpenGlRender)this.AOQ.get();
+    ac.i(OpenGlRender.TAG, "%s surfaceCreated", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
     OpenGlRender.getGLVersion();
-    paramSurfaceTexture.zvk = true;
-    paramSurfaceTexture.zvg = true;
+    paramSurfaceTexture.AOb = true;
+    paramSurfaceTexture.ANX = true;
     AppMethodBeat.o(115672);
   }
   
   public final void n(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(115673);
-    ad.i(TAG, "surfaceDestroyed");
-    OpenGlRender localOpenGlRender = (OpenGlRender)this.zvZ.get();
-    ad.i(OpenGlRender.TAG, "onSurfaceDestroyed,mRenderMode:%d", new Object[] { Integer.valueOf(localOpenGlRender.mRenderMode) });
-    if (localOpenGlRender.zvz != null)
+    ac.i(TAG, "surfaceDestroyed");
+    OpenGlRender localOpenGlRender = (OpenGlRender)this.AOQ.get();
+    ac.i(OpenGlRender.TAG, "onSurfaceDestroyed,mRenderMode:%d", new Object[] { Integer.valueOf(localOpenGlRender.mRenderMode) });
+    if (localOpenGlRender.AOq != null)
     {
-      localOpenGlRender.zvR = true;
-      ad.i(OpenGlRender.TAG, "surfaceDestroy call detachGLContext");
-      localOpenGlRender.dXj();
+      localOpenGlRender.AOI = true;
+      ac.i(OpenGlRender.TAG, "surfaceDestroy call detachGLContext");
+      localOpenGlRender.emD();
     }
-    localOpenGlRender.zvg = false;
-    ad.i(OpenGlRender.TAG, "steve: after Uninit in onSurfaceDestroyed");
-    localOpenGlRender.zve = 0;
-    localOpenGlRender.zvl = 0;
-    localOpenGlRender.zvm = 0;
-    if (localOpenGlRender.zvn != null)
+    localOpenGlRender.ANX = false;
+    ac.i(OpenGlRender.TAG, "steve: after Uninit in onSurfaceDestroyed");
+    localOpenGlRender.ANV = 0;
+    localOpenGlRender.AOc = 0;
+    localOpenGlRender.AOd = 0;
+    if (localOpenGlRender.AOe != null)
     {
-      OpenGlView localOpenGlView = (OpenGlView)localOpenGlRender.zvn.get();
+      OpenGlView localOpenGlView = (OpenGlView)localOpenGlRender.AOe.get();
       if (localOpenGlView != null)
       {
-        ad.i(OpenGlRender.TAG, "onSurfaceDestroyed queue release renderer event");
+        ac.i(OpenGlRender.TAG, "onSurfaceDestroyed queue release renderer event");
         localOpenGlView.queueEvent(new OpenGlRender.2(localOpenGlRender));
       }
     }
@@ -124,10 +147,10 @@ public class OpenGlView
     AppMethodBeat.o(115673);
   }
   
-  public final void rV(boolean paramBoolean)
+  public final void sW(boolean paramBoolean)
   {
     AppMethodBeat.i(115676);
-    this.zvY = paramBoolean;
+    this.AOP = paramBoolean;
     if (paramBoolean)
     {
       setAlpha(0.0F);
@@ -141,7 +164,7 @@ public class OpenGlView
   public void setRenderer(OpenGlRender paramOpenGlRender)
   {
     AppMethodBeat.i(115671);
-    this.zvZ = new WeakReference(paramOpenGlRender);
+    this.AOQ = new WeakReference(paramOpenGlRender);
     super.setRenderer(paramOpenGlRender);
     setRenderMode(0);
     AppMethodBeat.o(115671);

@@ -14,16 +14,16 @@ import com.tencent.mm.plugin.webview.e.g;
 import com.tencent.mm.plugin.webview.modeltools.j;
 import com.tencent.mm.pluginsdk.ui.tools.x;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.y;
+import com.tencent.xweb.z;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -38,157 +38,157 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class f
+public class f
   implements b, c, com.tencent.mm.plugin.webview.c.d.a
 {
-  private static final int ARh;
-  private JSONArray ARA;
-  private List<String> ARB;
-  private av ARC;
-  public long ARD;
-  public com.tencent.mm.plugin.webview.k.k ARE;
-  public MMWebView ARe;
-  private final List<String> ARi;
-  private ap ARj;
-  public Map<String, Object> ARk;
-  private g ARl;
-  public boolean ARm;
-  public String ARn;
-  public int ARo;
-  private a ARp;
-  private Set<String> ARq;
-  private boolean ARr;
-  public String ARs;
-  private com.tencent.mm.plugin.webview.c.b.a ARt;
-  public String ARu;
-  public String ARv;
-  private final List<String> ARw;
-  volatile String ARx;
-  volatile int ARy;
-  private JSONObject ARz;
-  HashMap<String, b> fSr;
-  public com.tencent.mm.plugin.webview.stub.e kxf;
-  public boolean yZR;
-  private final LinkedList<l> yhC;
+  private static final int Cju;
+  public boolean Apr;
+  public String CjA;
+  public int CjB;
+  private a CjC;
+  private Set<String> CjD;
+  private boolean CjE;
+  public String CjF;
+  private com.tencent.mm.plugin.webview.c.b.a CjG;
+  public String CjH;
+  public String CjI;
+  private final List<String> CjJ;
+  volatile String CjK;
+  volatile int CjL;
+  private JSONObject CjM;
+  private JSONArray CjN;
+  private List<String> CjO;
+  private au CjP;
+  public long CjQ;
+  public com.tencent.mm.plugin.webview.k.k CjR;
+  public MMWebView Cjr;
+  private final List<String> Cjv;
+  private ao Cjw;
+  public Map<String, Object> Cjx;
+  private g Cjy;
+  public boolean Cjz;
+  HashMap<String, b> fWm;
+  public com.tencent.mm.plugin.webview.stub.e kYt;
+  private final LinkedList<l> zuC;
   
   static
   {
-    AppMethodBeat.i(189669);
-    if (com.tencent.mm.compatible.util.d.lg(19)) {}
+    AppMethodBeat.i(205298);
+    if (com.tencent.mm.compatible.util.d.la(19)) {}
     for (int i = 200;; i = 20)
     {
-      ARh = i;
-      AppMethodBeat.o(189669);
+      Cju = i;
+      AppMethodBeat.o(205298);
       return;
     }
   }
   
   public f(MMWebView paramMMWebView, g paramg, int paramInt)
   {
-    AppMethodBeat.i(189572);
-    this.ARi = new LinkedList();
-    this.yhC = new LinkedList();
-    this.ARj = null;
-    this.yZR = false;
-    this.ARm = false;
-    this.ARn = "";
-    this.ARq = null;
-    this.ARr = false;
-    this.ARt = null;
-    this.fSr = new HashMap();
-    this.ARw = new LinkedList();
-    this.ARx = null;
-    this.ARy = 0;
-    this.ARz = new JSONObject();
-    this.ARA = new JSONArray();
-    this.ARB = new LinkedList();
-    this.ARC = new av(new av.a()
+    AppMethodBeat.i(205203);
+    this.Cjv = new LinkedList();
+    this.zuC = new LinkedList();
+    this.Cjw = null;
+    this.Apr = false;
+    this.Cjz = false;
+    this.CjA = "";
+    this.CjD = null;
+    this.CjE = false;
+    this.CjG = null;
+    this.fWm = new HashMap();
+    this.CjJ = new LinkedList();
+    this.CjK = null;
+    this.CjL = 0;
+    this.CjM = new JSONObject();
+    this.CjN = new JSONArray();
+    this.CjO = new LinkedList();
+    this.CjP = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(189523);
+        AppMethodBeat.i(205154);
         String str = l.a.a("onBeaconsInRange", f.j(f.this), f.k(f.this), f.l(f.this));
         f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
         f.m(f.this).clear();
         f.a(f.this, new JSONObject());
         f.a(f.this, new JSONArray());
-        AppMethodBeat.o(189523);
+        AppMethodBeat.o(205154);
         return false;
       }
     }, false);
-    this.ARD = 0L;
-    this.ARE = new com.tencent.mm.plugin.webview.k.k(this);
-    this.ARe = paramMMWebView;
-    this.ARl = paramg;
-    this.ARo = paramInt;
-    ekl();
-    ad.i("MicroMsg.JsApiHandler", "Abe-Debug JsApiHandler<init>, webview: %d, this: %d", new Object[] { Integer.valueOf(paramMMWebView.hashCode()), Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(189572);
+    this.CjQ = 0L;
+    this.CjR = new com.tencent.mm.plugin.webview.k.k(this);
+    this.Cjr = paramMMWebView;
+    this.Cjy = paramg;
+    this.CjB = paramInt;
+    ezG();
+    ac.i("MicroMsg.JsApiHandler", "Abe-Debug JsApiHandler<init>, webview: %d, this: %d", new Object[] { Integer.valueOf(paramMMWebView.hashCode()), Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(205203);
   }
   
   public f(MMWebView paramMMWebView, g paramg, int paramInt, Set<String> paramSet)
   {
-    AppMethodBeat.i(189573);
-    this.ARi = new LinkedList();
-    this.yhC = new LinkedList();
-    this.ARj = null;
-    this.yZR = false;
-    this.ARm = false;
-    this.ARn = "";
-    this.ARq = null;
-    this.ARr = false;
-    this.ARt = null;
-    this.fSr = new HashMap();
-    this.ARw = new LinkedList();
-    this.ARx = null;
-    this.ARy = 0;
-    this.ARz = new JSONObject();
-    this.ARA = new JSONArray();
-    this.ARB = new LinkedList();
-    this.ARC = new av(new av.a()
+    AppMethodBeat.i(205204);
+    this.Cjv = new LinkedList();
+    this.zuC = new LinkedList();
+    this.Cjw = null;
+    this.Apr = false;
+    this.Cjz = false;
+    this.CjA = "";
+    this.CjD = null;
+    this.CjE = false;
+    this.CjG = null;
+    this.fWm = new HashMap();
+    this.CjJ = new LinkedList();
+    this.CjK = null;
+    this.CjL = 0;
+    this.CjM = new JSONObject();
+    this.CjN = new JSONArray();
+    this.CjO = new LinkedList();
+    this.CjP = new au(new au.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(189523);
+        AppMethodBeat.i(205154);
         String str = l.a.a("onBeaconsInRange", f.j(f.this), f.k(f.this), f.l(f.this));
         f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
         f.m(f.this).clear();
         f.a(f.this, new JSONObject());
         f.a(f.this, new JSONArray());
-        AppMethodBeat.o(189523);
+        AppMethodBeat.o(205154);
         return false;
       }
     }, false);
-    this.ARD = 0L;
-    this.ARE = new com.tencent.mm.plugin.webview.k.k(this);
-    this.ARe = paramMMWebView;
-    this.ARl = paramg;
-    this.ARo = paramInt;
+    this.CjQ = 0L;
+    this.CjR = new com.tencent.mm.plugin.webview.k.k(this);
+    this.Cjr = paramMMWebView;
+    this.Cjy = paramg;
+    this.CjB = paramInt;
     paramg = paramSet;
     if (paramSet == null) {
       paramg = new HashSet();
     }
-    this.ARq = paramg;
-    this.ARr = true;
-    ekl();
-    ad.i("MicroMsg.JsApiHandler", "Abe-Debug JsApiHandler<init>, webview: %d, this: %d, limitedJsApiListModeEnable = true", new Object[] { Integer.valueOf(paramMMWebView.hashCode()), Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(189573);
+    this.CjD = paramg;
+    this.CjE = true;
+    ezG();
+    ac.i("MicroMsg.JsApiHandler", "Abe-Debug JsApiHandler<init>, webview: %d, this: %d, limitedJsApiListModeEnable = true", new Object[] { Integer.valueOf(paramMMWebView.hashCode()), Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(205204);
   }
   
   /* Error */
-  private static boolean F(String paramString, Map<String, Integer> paramMap)
+  private static boolean G(String paramString, Map<String, Integer> paramMap)
   {
     // Byte code:
     //   0: ldc_w 351
     //   3: invokestatic 227	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 357	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   7: invokestatic 357	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   10: ifne +7 -> 17
     //   13: aload_1
     //   14: ifnonnull +20 -> 34
     //   17: ldc_w 318
     //   20: ldc_w 359
-    //   23: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: invokestatic 363	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   26: ldc_w 351
     //   29: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: iconst_0
@@ -257,10 +257,10 @@ public final class f
     //   175: ldc_w 259
     //   178: iconst_0
     //   179: anewarray 4	java/lang/Object
-    //   182: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   185: ldc_w 318
     //   188: ldc_w 445
-    //   191: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   191: invokestatic 363	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   194: aload_0
     //   195: ifnull +7 -> 202
     //   198: aload_0
@@ -275,13 +275,13 @@ public final class f
     //   217: aload_0
     //   218: invokestatic 453	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   221: invokevirtual 457	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   224: invokestatic 460	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   224: invokestatic 460	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   227: ldc_w 318
     //   230: aload_1
     //   231: ldc_w 259
     //   234: iconst_0
     //   235: anewarray 4	java/lang/Object
-    //   238: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   238: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   241: ldc_w 351
     //   244: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   247: iconst_0
@@ -297,7 +297,7 @@ public final class f
     //   267: aload_0
     //   268: invokestatic 453	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   271: invokevirtual 457	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   274: invokestatic 467	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   274: invokestatic 467	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   277: ldc_w 351
     //   280: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   283: iconst_1
@@ -308,7 +308,7 @@ public final class f
     //   290: ldc_w 259
     //   293: iconst_0
     //   294: anewarray 4	java/lang/Object
-    //   297: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   297: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   300: goto -39 -> 261
     //   303: astore_0
     //   304: ldc_w 318
@@ -316,7 +316,7 @@ public final class f
     //   308: ldc_w 259
     //   311: iconst_0
     //   312: anewarray 4	java/lang/Object
-    //   315: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   315: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   318: goto -116 -> 202
     //   321: astore_0
     //   322: aconst_null
@@ -335,7 +335,7 @@ public final class f
     //   345: ldc_w 259
     //   348: iconst_0
     //   349: anewarray 4	java/lang/Object
-    //   352: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   352: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   355: goto -23 -> 332
     //   358: astore_0
     //   359: goto -35 -> 324
@@ -376,87 +376,87 @@ public final class f
   
   private boolean a(final l paraml, JsapiPermissionWrapper paramJsapiPermissionWrapper)
   {
-    AppMethodBeat.i(189589);
+    AppMethodBeat.i(205222);
     if (paraml == null)
     {
-      ad.e("MicroMsg.JsApiHandler", "dealNextMsg fail, msg is null");
-      AppMethodBeat.o(189589);
+      ac.e("MicroMsg.JsApiHandler", "dealNextMsg fail, msg is null");
+      AppMethodBeat.o(205222);
       return true;
     }
-    if ((paraml.kbU == null) || (paraml.uLu == null) || (paraml.type == null) || (this.ARe == null))
+    if ((paraml.kCH == null) || (paraml.vUl == null) || (paraml.type == null) || (this.Cjr == null))
     {
-      ad.e("MicroMsg.JsApiHandler", "dealNextMsg fail, can cause nullpointer, function = " + paraml.kbU + ", params = " + paraml.uLu + ", type = " + paraml.type + ", wv = " + this.ARe);
-      AppMethodBeat.o(189589);
+      ac.e("MicroMsg.JsApiHandler", "dealNextMsg fail, can cause nullpointer, function = " + paraml.kCH + ", params = " + paraml.vUl + ", type = " + paraml.type + ", wv = " + this.Cjr);
+      AppMethodBeat.o(205222);
       return true;
     }
-    if ((this.ARr) && ((this.ARq == null) || (!this.ARq.contains(paraml.kbU))))
+    if ((this.CjE) && ((this.CjD == null) || (!this.CjD.contains(paraml.kCH))))
     {
-      ad.i("MicroMsg.JsApiHandler", "limited mode, call unsupported JsApi: %s", new Object[] { paraml.kbU });
-      com.tencent.e.h.Iye.aN(new Runnable()
+      ac.i("MicroMsg.JsApiHandler", "limited mode, call unsupported JsApi: %s", new Object[] { paraml.kCH });
+      com.tencent.e.h.JZN.aQ(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189560);
-          f.this.h(paraml.ASg, "system:access_denied", null);
-          AppMethodBeat.o(189560);
+          AppMethodBeat.i(205191);
+          f.this.j(paraml.Ckt, "system:access_denied", null);
+          AppMethodBeat.o(205191);
         }
       });
-      AppMethodBeat.o(189589);
+      AppMethodBeat.o(205222);
       return true;
     }
-    if ((this.ARk != null) && (this.ARk.get("srcUsername") != null) && (!bt.isNullOrNil(this.ARk.get("srcUsername").toString()))) {
-      paraml.uLu.put("src_username", this.ARk.get("srcUsername").toString());
+    if ((this.Cjx != null) && (this.Cjx.get("srcUsername") != null) && (!bs.isNullOrNil(this.Cjx.get("srcUsername").toString()))) {
+      paraml.vUl.put("src_username", this.Cjx.get("srcUsername").toString());
     }
-    if ((this.ARk != null) && (this.ARk.get("srcDisplayname") != null) && (!bt.isNullOrNil(this.ARk.get("srcDisplayname").toString()))) {
-      paraml.uLu.put("src_displayname", this.ARk.get("srcDisplayname").toString());
+    if ((this.Cjx != null) && (this.Cjx.get("srcDisplayname") != null) && (!bs.isNullOrNil(this.Cjx.get("srcDisplayname").toString()))) {
+      paraml.vUl.put("src_displayname", this.Cjx.get("srcDisplayname").toString());
     }
-    if ((this.ARk != null) && (this.ARk.get("KTemplateId") != null) && (!bt.isNullOrNil(this.ARk.get("KTemplateId").toString()))) {
-      paraml.uLu.put("tempalate_id", this.ARk.get("KTemplateId").toString());
+    if ((this.Cjx != null) && (this.Cjx.get("KTemplateId") != null) && (!bs.isNullOrNil(this.Cjx.get("KTemplateId").toString()))) {
+      paraml.vUl.put("tempalate_id", this.Cjx.get("KTemplateId").toString());
     }
     Object localObject1;
     Bundle localBundle;
-    if (this.ARk != null)
+    if (this.Cjx != null)
     {
-      paraml.uLu.put("message_id", this.ARk.get("message_id"));
-      paraml.uLu.put("message_index", this.ARk.get("message_index"));
-      paraml.uLu.put("webview_scene", this.ARk.get("scene"));
-      paraml.uLu.put("pay_channel", this.ARk.get("pay_channel"));
-      paraml.uLu.put("pay_scene", this.ARk.get("pay_scene"));
-      ad.i("MicroMsg.JsApiHandler", "getPackageName %s", new Object[] { this.ARk.get("pay_package") });
-      if (this.ARk.get("pay_package") != null) {
-        paraml.uLu.put("pay_packageName", this.ARk.get("pay_package"));
+      paraml.vUl.put("message_id", this.Cjx.get("message_id"));
+      paraml.vUl.put("message_index", this.Cjx.get("message_index"));
+      paraml.vUl.put("webview_scene", this.Cjx.get("scene"));
+      paraml.vUl.put("pay_channel", this.Cjx.get("pay_channel"));
+      paraml.vUl.put("pay_scene", this.Cjx.get("pay_scene"));
+      ac.i("MicroMsg.JsApiHandler", "getPackageName %s", new Object[] { this.Cjx.get("pay_package") });
+      if (this.Cjx.get("pay_package") != null) {
+        paraml.vUl.put("pay_packageName", this.Cjx.get("pay_package"));
       }
-      paraml.uLu.put("stastic_scene", this.ARk.get("stastic_scene"));
-      paraml.uLu.put("open_from_scene", this.ARk.get("from_scence"));
-      localObject1 = paraml.uLu;
+      paraml.vUl.put("stastic_scene", this.Cjx.get("stastic_scene"));
+      paraml.vUl.put("open_from_scene", this.Cjx.get("from_scence"));
+      localObject1 = paraml.vUl;
       localBundle = new Bundle();
-      localBundle.putString("__jsapi_fw_ext_info_key_current_url", this.ARe.getUrl());
+      localBundle.putString("__jsapi_fw_ext_info_key_current_url", this.Cjr.getUrl());
       ((Map)localObject1).put("__jsapi_fw_ext_info", localBundle);
     }
-    if ((!paraml.kbU.equals("shareWeibo")) && (!paraml.kbU.equals("openUrlByExtBrowser")) && (!paraml.kbU.equals("openUrlWithExtraWebview")) && (!paraml.kbU.equals("openCustomWebview")) && (!paraml.kbU.equals("openGameWebView")) && (!paraml.kbU.equals("addToEmoticon")) && (!paraml.kbU.equals("shareEmoticon")) && (!paraml.kbU.equals("openGameUrlWithExtraWebView")) && (!paraml.kbU.equals("request")))
+    if ((!paraml.kCH.equals("shareWeibo")) && (!paraml.kCH.equals("openUrlByExtBrowser")) && (!paraml.kCH.equals("openUrlWithExtraWebview")) && (!paraml.kCH.equals("openCustomWebview")) && (!paraml.kCH.equals("openGameWebView")) && (!paraml.kCH.equals("addToEmoticon")) && (!paraml.kCH.equals("shareEmoticon")) && (!paraml.kCH.equals("openGameUrlWithExtraWebView")) && (!paraml.kCH.equals("request")))
     {
-      paraml.uLu.put("url", this.ARe.getUrl());
-      ad.i("MicroMsg.JsApiHandler", "cuiqi wv.getUrl:" + this.ARe.getUrl());
+      paraml.vUl.put("url", this.Cjr.getUrl());
+      ac.i("MicroMsg.JsApiHandler", "cuiqi wv.getUrl:" + this.Cjr.getUrl());
     }
-    if ((paraml.kbU.equalsIgnoreCase("openDesignerEmojiView")) || (paraml.kbU.equalsIgnoreCase("openEmotionDetailViewLocal")) || (paraml.kbU.equalsIgnoreCase("openDesignerEmojiView")) || (paraml.kbU.equalsIgnoreCase("openDesignerEmojiViewLocal")) || (paraml.kbU.equalsIgnoreCase("openDesignerEmojiView")) || (paraml.kbU.equalsIgnoreCase("openDesignerProfile")) || (paraml.kbU.equalsIgnoreCase("openDesignerProfileLocal")) || (paraml.kbU.equalsIgnoreCase("getSearchEmotionData")))
+    if ((paraml.kCH.equalsIgnoreCase("openDesignerEmojiView")) || (paraml.kCH.equalsIgnoreCase("openEmotionDetailViewLocal")) || (paraml.kCH.equalsIgnoreCase("openDesignerEmojiView")) || (paraml.kCH.equalsIgnoreCase("openDesignerEmojiViewLocal")) || (paraml.kCH.equalsIgnoreCase("openDesignerEmojiView")) || (paraml.kCH.equalsIgnoreCase("openDesignerProfile")) || (paraml.kCH.equalsIgnoreCase("openDesignerProfileLocal")) || (paraml.kCH.equalsIgnoreCase("getSearchEmotionData")))
     {
-      paraml.uLu.put("searchID", Long.valueOf(eky()));
-      ad.d("MicroMsg.JsApiHandler", "emoji search id:%d", new Object[] { Long.valueOf(eky()) });
+      paraml.vUl.put("searchID", Long.valueOf(ezU()));
+      ac.d("MicroMsg.JsApiHandler", "emoji search id:%d", new Object[] { Long.valueOf(ezU()) });
     }
-    if (paraml.kbU.equals("request"))
+    if (paraml.kCH.equals("request"))
     {
-      if (this.ARu != null) {
-        paraml.uLu.put("key_request_full_url_query", this.ARu);
+      if (this.CjH != null) {
+        paraml.vUl.put("key_request_full_url_query", this.CjH);
       }
-      if (this.ARv != null) {
-        paraml.uLu.put("key_request_header", this.ARv);
+      if (this.CjI != null) {
+        paraml.vUl.put("key_request_header", this.CjI);
       }
     }
-    if (paraml.kbU.equals("imagePreview")) {
-      j.a(paraml.uLu, this.ARe);
+    if (paraml.kCH.equals("imagePreview")) {
+      j.a(paraml.vUl, this.Cjr);
     }
-    if ((paraml.kbU.equals("preVerifyJSAPI")) && (paraml.uLu.containsKey("verifyOpenTagList"))) {
-      com.tencent.mm.plugin.webview.k.c.erJ();
+    if ((paraml.kCH.equals("preVerifyJSAPI")) && (paraml.vUl.containsKey("verifyOpenTagList"))) {
+      com.tencent.mm.plugin.webview.k.c.eHd();
     }
     if (paramJsapiPermissionWrapper != null) {}
     for (;;)
@@ -467,25 +467,25 @@ public final class f
         localObject1 = new Bundle();
         if (paramJsapiPermissionWrapper != null)
         {
-          ((Bundle)localObject1).putByteArray("jsapi_perm_wrapper_bytes", paramJsapiPermissionWrapper.Cqi);
-          ((Bundle)localObject1).putInt("jsapi_perm_wrapper_hardcodePermission", paramJsapiPermissionWrapper.Cqj);
-          ((Bundle)localObject1).putIntArray("jsapi_perm_wrapper_blacklist", paramJsapiPermissionWrapper.eBT());
-          ((Bundle)localObject1).putIntArray("jsapi_perm_wrapper_whitelist", paramJsapiPermissionWrapper.eBU());
+          ((Bundle)localObject1).putByteArray("jsapi_perm_wrapper_bytes", paramJsapiPermissionWrapper.DIA);
+          ((Bundle)localObject1).putInt("jsapi_perm_wrapper_hardcodePermission", paramJsapiPermissionWrapper.DIB);
+          ((Bundle)localObject1).putIntArray("jsapi_perm_wrapper_blacklist", paramJsapiPermissionWrapper.eRo());
+          ((Bundle)localObject1).putIntArray("jsapi_perm_wrapper_whitelist", paramJsapiPermissionWrapper.eRp());
         }
-        localObject2 = l.bt(paraml.uLu);
-        if (!bt.isNullOrNil(this.ARs)) {
-          ((Bundle)localObject2).putString("key_wxapp_id", this.ARs);
+        localObject2 = l.by(paraml.vUl);
+        if (!bs.isNullOrNil(this.CjF)) {
+          ((Bundle)localObject2).putString("key_wxapp_id", this.CjF);
         }
         localBundle = new Bundle(3);
-        if (paraml.ASi != null) {
-          localBundle.putBundle("webCompt", paraml.ASi);
+        if (paraml.Ckv != null) {
+          localBundle.putBundle("webCompt", paraml.Ckv);
         }
         localBundle.putBundle("compatParams", (Bundle)localObject2);
-        if (paraml.ASh != null) {
-          localBundle.putString("rawParams", paraml.ASh.toString());
+        if (paraml.Cku != null) {
+          localBundle.putString("rawParams", paraml.Cku.toString());
         }
-        ad.v("MicroMsg.JsApiHandler", "dealNextMsg start %s", new Object[] { paraml.kbU });
-        localObject2 = this.ARp;
+        ac.v("MicroMsg.JsApiHandler", "dealNextMsg start %s", new Object[] { paraml.kCH });
+        localObject2 = this.CjC;
         if (localObject2 == null) {
           break label1949;
         }
@@ -497,24 +497,24 @@ public final class f
         Object localObject2;
         i = 0;
         bool1 = false;
-        ad.printErrStackTrace("MicroMsg.JsApiHandler", paramJsapiPermissionWrapper, "", new Object[0]);
-        ad.w("MicroMsg.JsApiHandler", "handleMsg, ex = " + paramJsapiPermissionWrapper.getMessage());
+        ac.printErrStackTrace("MicroMsg.JsApiHandler", paramJsapiPermissionWrapper, "", new Object[0]);
+        ac.w("MicroMsg.JsApiHandler", "handleMsg, ex = " + paramJsapiPermissionWrapper.getMessage());
         continue;
-        AppMethodBeat.o(189589);
+        AppMethodBeat.o(205222);
         return false;
       }
       try
       {
-        this.ARl.emS();
+        this.Cjy.eCn();
         bool3 = bool2;
         getContext();
         bool1 = bool2;
         if (!bool2)
         {
           bool3 = bool2;
-          paramJsapiPermissionWrapper = new d(getContext(), paramJsapiPermissionWrapper, this.kxf, this, this.ARe);
+          paramJsapiPermissionWrapper = new d(getContext(), paramJsapiPermissionWrapper, this.kYt, this, this.Cjr);
           bool3 = bool2;
-          localObject2 = m.ASm;
+          localObject2 = m.Ckz;
           bool3 = bool2;
           d.g.b.k.h(paramJsapiPermissionWrapper, "env");
           bool3 = bool2;
@@ -523,10 +523,10 @@ public final class f
           if (com.tencent.mm.sdk.platformtools.h.DEBUG)
           {
             bool3 = bool2;
-            if (1 > ad.getLogLevel())
+            if (1 > ac.getLogLevel())
             {
               bool3 = bool2;
-              if (m.ASk.isEmpty()) {
+              if (m.Ckx.isEmpty()) {
                 continue;
               }
               bool1 = true;
@@ -535,24 +535,24 @@ public final class f
             }
           }
           bool3 = bool2;
-          if (!m.ASk.containsKey(paraml.kbU)) {
+          if (!m.Ckx.containsKey(paraml.kCH)) {
             break label1955;
           }
           bool3 = bool2;
-          localObject2 = m.ASk.get(paraml.kbU);
+          localObject2 = m.Ckx.get(paraml.kCH);
           if (localObject2 == null)
           {
             bool3 = bool2;
-            d.g.b.k.fvU();
+            d.g.b.k.fOy();
           }
           bool3 = bool2;
           localObject2 = (com.tencent.mm.plugin.webview.c.c.a)localObject2;
           bool3 = bool2;
-          if (!m.ASl.SE(((com.tencent.mm.plugin.webview.c.c.a)localObject2).ekB())) {
+          if (!m.Cky.UM(((com.tencent.mm.plugin.webview.c.c.a)localObject2).ezX())) {
             continue;
           }
           bool3 = bool2;
-          paramJsapiPermissionWrapper.ARd.h(paraml.ASg, "system:too_frequent", null);
+          paramJsapiPermissionWrapper.Cjq.j(paraml.Ckt, "system:too_frequent", null);
           bool3 = bool2;
           m.a(paramJsapiPermissionWrapper, (com.tencent.mm.plugin.webview.c.c.a)localObject2);
           bool1 = true;
@@ -572,14 +572,14 @@ public final class f
       }
       try
       {
-        ad.v("MicroMsg.JsApiHandler", "dealNextMsg intercepted %s", new Object[] { paraml.kbU });
+        ac.v("MicroMsg.JsApiHandler", "dealNextMsg intercepted %s", new Object[] { paraml.kCH });
         i = 1;
-        j.emL();
-        ad.i("MicroMsg.JsApiHandler", "dealNextMsg, %s, handleRet = %s", new Object[] { paraml.kbU, Boolean.valueOf(bool1) });
+        j.eCg();
+        ac.i("MicroMsg.JsApiHandler", "dealNextMsg, %s, handleRet = %s", new Object[] { paraml.kCH, Boolean.valueOf(bool1) });
         if ((bool1) && (i == 0)) {
           continue;
         }
-        AppMethodBeat.o(189589);
+        AppMethodBeat.o(205222);
         return true;
       }
       catch (Exception paramJsapiPermissionWrapper)
@@ -588,21 +588,21 @@ public final class f
         continue;
         continue;
       }
-      paramJsapiPermissionWrapper = this.ARl.emR();
+      paramJsapiPermissionWrapper = this.Cjy.eCm();
       continue;
       boolean bool1 = false;
       continue;
       boolean bool3 = bool2;
-      int i = ((com.tencent.mm.plugin.webview.c.c.a)localObject2).ekB();
+      int i = ((com.tencent.mm.plugin.webview.c.c.a)localObject2).ezX();
       bool3 = bool2;
-      if (paramJsapiPermissionWrapper.ARc.mb(i))
+      if (paramJsapiPermissionWrapper.Cjp.ma(i))
       {
         bool3 = bool2;
         bool1 = ((com.tencent.mm.plugin.webview.c.c.a)localObject2).a(paramJsapiPermissionWrapper, paraml);
         if (!bool1)
         {
           bool3 = bool2;
-          if (bt.kU(((com.tencent.mm.plugin.webview.c.c.a)localObject2).ekC(), "handleMPPageAction")) {}
+          if (bs.lr(((com.tencent.mm.plugin.webview.c.c.a)localObject2).ezY(), "handleMPPageAction")) {}
         }
         else
         {
@@ -616,16 +616,16 @@ public final class f
       else
       {
         bool3 = bool2;
-        ad.e("MicroMsg.WebViewJsApiPool", "handleMsg access denied func: " + paraml.kbU);
+        ac.e("MicroMsg.WebViewJsApiPool", "handleMsg access denied func: " + paraml.kCH);
         bool3 = bool2;
-        paramJsapiPermissionWrapper.ARd.h(paraml.ASg, "system:access_denied", null);
+        paramJsapiPermissionWrapper.Cjq.j(paraml.Ckt, "system:access_denied", null);
         bool1 = false;
         continue;
         bool3 = bool1;
-        if ((this.kxf != null) && (paraml != null))
+        if ((this.kYt != null) && (paraml != null))
         {
           bool3 = bool1;
-          bool1 = this.kxf.a(paraml.type, paraml.kbU, paraml.ASg, (Bundle)localObject1, localBundle, this.ARo);
+          bool1 = this.kYt.a(paraml.type, paraml.kCH, paraml.Ckt, (Bundle)localObject1, localBundle, this.CjB);
           i = 0;
           continue;
         }
@@ -638,88 +638,88 @@ public final class f
     }
   }
   
-  public static String avY(String paramString)
+  public static String aBq(String paramString)
   {
-    AppMethodBeat.i(189648);
-    paramString = String.format("javascript:WeixinJSBridge._handleMessageFromWeixin(%s)", new Object[] { bt.nullAsNil(paramString) });
-    AppMethodBeat.o(189648);
+    AppMethodBeat.i(205277);
+    paramString = String.format("javascript:WeixinJSBridge._handleMessageFromWeixin(%s)", new Object[] { bs.nullAsNil(paramString) });
+    AppMethodBeat.o(205277);
     return paramString;
   }
   
-  private String awa(String paramString)
+  private String aBs(String paramString)
   {
-    AppMethodBeat.i(189660);
-    String str1 = this.ARe.getUrl();
+    AppMethodBeat.i(205289);
+    String str1 = this.Cjr.getUrl();
     try
     {
-      String str2 = n.dF(str1 + paramString);
-      str2 = com.tencent.mm.loader.j.b.aim() + str2;
-      ad.i("MicroMsg.JsApiHandler", "generate upload file name, url=%s, tag=%s, fullName=%s", new Object[] { str1, paramString, str2 });
-      AppMethodBeat.o(189660);
+      String str2 = n.du(str1 + paramString);
+      str2 = com.tencent.mm.loader.j.b.apm() + str2;
+      ac.i("MicroMsg.JsApiHandler", "generate upload file name, url=%s, tag=%s, fullName=%s", new Object[] { str1, paramString, str2 });
+      AppMethodBeat.o(205289);
       return str2;
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.JsApiHandler", "generating temp file name failed, url is ".concat(String.valueOf(str1)));
-      ad.printErrStackTrace("MicroMsg.JsApiHandler", paramString, "", new Object[0]);
-      AppMethodBeat.o(189660);
+      ac.e("MicroMsg.JsApiHandler", "generating temp file name failed, url is ".concat(String.valueOf(str1)));
+      ac.printErrStackTrace("MicroMsg.JsApiHandler", paramString, "", new Object[0]);
+      AppMethodBeat.o(205289);
     }
     return null;
   }
   
-  private void ekl()
+  private void ezG()
   {
-    AppMethodBeat.i(189574);
-    this.ARj = new ap(Looper.getMainLooper())
+    AppMethodBeat.i(205205);
+    this.Cjw = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(189496);
+        AppMethodBeat.i(205127);
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(189496);
+          AppMethodBeat.o(205127);
           return;
           paramAnonymousMessage = (String)paramAnonymousMessage.obj;
-          if (!bt.isNullOrNil(paramAnonymousMessage)) {
+          if (!bs.isNullOrNil(paramAnonymousMessage)) {
             f.b(f.this).add(paramAnonymousMessage);
           }
           f.c(f.this);
-          AppMethodBeat.o(189496);
+          AppMethodBeat.o(205127);
           return;
-          ad.v("MicroMsg.JsApiHandler", "handle msg from wx done, msg = " + paramAnonymousMessage.obj);
+          ac.v("MicroMsg.JsApiHandler", "handle msg from wx done, msg = " + paramAnonymousMessage.obj);
         }
       }
     };
-    AppMethodBeat.o(189574);
+    AppMethodBeat.o(205205);
   }
   
-  private Map<String, Object> ekq()
+  private Map<String, Object> ezM()
   {
-    AppMethodBeat.i(189585);
+    AppMethodBeat.i(205218);
     HashMap localHashMap = new HashMap();
-    JsapiPermissionWrapper localJsapiPermissionWrapper = this.ARl.emR();
+    JsapiPermissionWrapper localJsapiPermissionWrapper = this.Cjy.eCm();
     LinkedList localLinkedList = new LinkedList();
     if (localJsapiPermissionWrapper != null)
     {
-      if (localJsapiPermissionWrapper.mb(88)) {
+      if (localJsapiPermissionWrapper.ma(88)) {
         localLinkedList.add("menu:share:timeline");
       }
-      if (localJsapiPermissionWrapper.mb(89)) {
+      if (localJsapiPermissionWrapper.ma(89)) {
         localLinkedList.add("menu:share:appmessage");
       }
-      if (localJsapiPermissionWrapper.mb(94)) {
+      if (localJsapiPermissionWrapper.ma(94)) {
         localLinkedList.add("menu:share:qq");
       }
-      if (localJsapiPermissionWrapper.mb(109)) {
+      if (localJsapiPermissionWrapper.ma(109)) {
         localLinkedList.add("menu:share:weiboApp");
       }
-      if (localJsapiPermissionWrapper.mb(134)) {
+      if (localJsapiPermissionWrapper.ma(134)) {
         localLinkedList.add("menu:share:QZone");
       }
-      if (localJsapiPermissionWrapper.mb(219)) {
+      if (localJsapiPermissionWrapper.ma(219)) {
         localLinkedList.add("sys:record");
       }
       localLinkedList.add("onVoiceRecordEnd");
@@ -766,6 +766,7 @@ public final class f
       localLinkedList.add("onBeaconMonitoring");
       localLinkedList.add("onBeaconsInRange");
       localLinkedList.add("menu:custom");
+      localLinkedList.add("onMenuClick");
       localLinkedList.add("onSearchWAWidgetOpenApp");
       localLinkedList.add("onSearchDataReady");
       localLinkedList.add("onGetPoiInfoReturn");
@@ -818,7 +819,7 @@ public final class f
       localLinkedList.add("onMiniProgramData");
       localLinkedList.add("onBackgroundAudioStateChange");
       localLinkedList.add("onArticleReadingBtnClicked");
-      if (!bt.gL(null)) {
+      if (!bs.gY(null)) {
         localLinkedList.addAll(null);
       }
       localLinkedList.add("onReceivePageData");
@@ -828,35 +829,35 @@ public final class f
       localLinkedList.add("onPublishHaowanProgress");
     }
     localHashMap.put("__runOn3rd_apis", new JSONArray(localLinkedList));
-    AppMethodBeat.o(189585);
+    AppMethodBeat.o(205218);
     return localHashMap;
   }
   
-  private void ekr()
+  private void ezN()
   {
-    AppMethodBeat.i(189586);
-    while (eks()) {}
-    AppMethodBeat.o(189586);
+    AppMethodBeat.i(205219);
+    while (ezO()) {}
+    AppMethodBeat.o(205219);
   }
   
-  private boolean eks()
+  private boolean ezO()
   {
-    AppMethodBeat.i(189587);
-    if (bt.gL(this.yhC))
+    AppMethodBeat.i(205220);
+    if (bs.gY(this.zuC))
     {
-      ad.i("MicroMsg.JsApiHandler", "dealNextMsg stop, msgList is empty");
-      AppMethodBeat.o(189587);
+      ac.i("MicroMsg.JsApiHandler", "dealNextMsg stop, msgList is empty");
+      AppMethodBeat.o(205220);
       return false;
     }
     boolean bool;
     try
     {
-      bool = this.kxf.Tl(this.ARo);
-      ad.i("MicroMsg.JsApiHandler", "dealNextMsg isBusy = ".concat(String.valueOf(bool)));
+      bool = this.kYt.Vt(this.CjB);
+      ac.i("MicroMsg.JsApiHandler", "dealNextMsg isBusy = ".concat(String.valueOf(bool)));
       if (bool)
       {
-        ad.w("MicroMsg.JsApiHandler", "dealNextMsg fail, msgHandler is busy now");
-        AppMethodBeat.o(189587);
+        ac.w("MicroMsg.JsApiHandler", "dealNextMsg fail, msgHandler is busy now");
+        AppMethodBeat.o(205220);
         return false;
       }
     }
@@ -864,37 +865,37 @@ public final class f
     {
       for (;;)
       {
-        ad.w("MicroMsg.JsApiHandler", "isBusy, ex = " + localException.getMessage());
+        ac.w("MicroMsg.JsApiHandler", "isBusy, ex = " + localException.getMessage());
         bool = false;
       }
-      if (this.yhC.size() == 0)
+      if (this.zuC.size() == 0)
       {
-        ad.w("MicroMsg.JsApiHandler", "msgList size is 0.");
-        AppMethodBeat.o(189587);
+        ac.w("MicroMsg.JsApiHandler", "msgList size is 0.");
+        AppMethodBeat.o(205220);
         return false;
       }
-      bool = a((l)this.yhC.remove(0), null);
-      AppMethodBeat.o(189587);
+      bool = a((l)this.zuC.remove(0), null);
+      AppMethodBeat.o(205220);
     }
     return bool;
   }
   
   /* Error */
-  private static boolean jW(String paramString1, String paramString2)
+  private static boolean ks(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 1235
+    //   0: ldc_w 1237
     //   3: invokestatic 227	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 357	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   7: invokestatic 357	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   10: ifne +10 -> 20
     //   13: aload_1
-    //   14: invokestatic 357	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   14: invokestatic 357	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   17: ifeq +20 -> 37
     //   20: ldc_w 318
     //   23: ldc_w 359
-    //   26: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: ldc_w 1235
+    //   26: invokestatic 363	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: ldc_w 1237
     //   32: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: iconst_0
     //   36: ireturn
@@ -914,7 +915,7 @@ public final class f
     //   63: aconst_null
     //   64: astore_2
     //   65: aload 4
-    //   67: invokestatic 1239	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   67: invokestatic 1241	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   70: astore 4
     //   72: aload 4
     //   74: astore_2
@@ -953,8 +954,8 @@ public final class f
     //   140: aload_0
     //   141: invokestatic 453	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   144: invokevirtual 457	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   147: invokestatic 467	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   150: ldc_w 1235
+    //   147: invokestatic 467	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: ldc_w 1237
     //   153: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   156: iconst_1
     //   157: ireturn
@@ -964,14 +965,14 @@ public final class f
     //   165: aload_0
     //   166: invokestatic 453	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   169: invokevirtual 457	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   172: invokestatic 460	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: invokestatic 460	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   175: ldc_w 318
     //   178: aload_1
     //   179: ldc_w 259
     //   182: iconst_0
     //   183: anewarray 4	java/lang/Object
-    //   186: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   189: ldc_w 1235
+    //   186: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   189: ldc_w 1237
     //   192: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   195: iconst_0
     //   196: ireturn
@@ -981,7 +982,7 @@ public final class f
     //   202: ldc_w 259
     //   205: iconst_0
     //   206: anewarray 4	java/lang/Object
-    //   209: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   209: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   212: goto -78 -> 134
     //   215: astore_0
     //   216: aload_2
@@ -991,17 +992,17 @@ public final class f
     //   222: ldc_w 259
     //   225: iconst_0
     //   226: anewarray 4	java/lang/Object
-    //   229: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   232: aload_2
     //   233: astore_3
     //   234: ldc_w 318
     //   237: ldc_w 445
-    //   240: invokestatic 363	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: invokestatic 363	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: aload_2
     //   244: ifnull +7 -> 251
     //   247: aload_2
     //   248: invokevirtual 448	java/io/OutputStream:close	()V
-    //   251: ldc_w 1235
+    //   251: ldc_w 1237
     //   254: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   257: iconst_0
     //   258: ireturn
@@ -1011,14 +1012,14 @@ public final class f
     //   264: ldc_w 259
     //   267: iconst_0
     //   268: anewarray 4	java/lang/Object
-    //   271: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   271: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   274: goto -23 -> 251
     //   277: astore_0
     //   278: aload_3
     //   279: ifnull +7 -> 286
     //   282: aload_3
     //   283: invokevirtual 448	java/io/OutputStream:close	()V
-    //   286: ldc_w 1235
+    //   286: ldc_w 1237
     //   289: invokestatic 238	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   292: aload_0
     //   293: athrow
@@ -1028,7 +1029,7 @@ public final class f
     //   299: ldc_w 259
     //   302: iconst_0
     //   303: anewarray 4	java/lang/Object
-    //   306: invokestatic 443	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   306: invokestatic 443	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   309: goto -23 -> 286
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1057,175 +1058,175 @@ public final class f
     //   282	286	294	java/io/IOException
   }
   
-  public final void E(final String paramString, final Map<String, String> paramMap)
+  public final void F(final String paramString, final Map<String, String> paramMap)
   {
-    AppMethodBeat.i(189621);
-    ad.d("MicroMsg.JsApiHandler", "onGetA8KeyUrl, fullUrl = %s", new Object[] { paramString });
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(205254);
+    ac.d("MicroMsg.JsApiHandler", "onGetA8KeyUrl, fullUrl = %s", new Object[] { paramString });
+    if (bs.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(189621);
+      AppMethodBeat.o(205254);
       return;
     }
-    this.ARx = paramString;
+    this.CjK = paramString;
     if ((paramMap != null) && (paramMap.size() != 0)) {}
-    for (this.ARy = 1;; this.ARy = 0)
+    for (this.CjL = 1;; this.CjL = 0)
     {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189522);
+          AppMethodBeat.i(205153);
           try
           {
             if ((paramMap == null) || (paramMap.size() == 0)) {
               break label188;
             }
-            com.tencent.xweb.d.kU(aj.getContext());
-            com.tencent.xweb.c localc = com.tencent.xweb.c.fqC();
+            com.tencent.xweb.d.li(ai.getContext());
+            com.tencent.xweb.c localc = com.tencent.xweb.c.fJa();
             Iterator localIterator = paramMap.keySet().iterator();
             while (localIterator.hasNext())
             {
               String str = (String)localIterator.next();
-              localc.setCookie(bt.aGy(paramString), str + "=" + (String)paramMap.get(str));
+              localc.setCookie(bs.aLP(paramString), str + "=" + (String)paramMap.get(str));
             }
-            localException.setCookie(bt.aGy(paramString), "httponly");
+            localException.setCookie(bs.aLP(paramString), "httponly");
           }
           catch (Exception localException)
           {
-            ad.e("MicroMsg.JsApiHandler", "onGetA8KeyUrl fail, ex = %s", new Object[] { localException.getMessage() });
-            AppMethodBeat.o(189522);
+            ac.e("MicroMsg.JsApiHandler", "onGetA8KeyUrl fail, ex = %s", new Object[] { localException.getMessage() });
+            AppMethodBeat.o(205153);
             return;
           }
-          com.tencent.xweb.d.fqE();
+          com.tencent.xweb.d.fJc();
           com.tencent.xweb.d.sync();
-          ad.i("MicroMsg.JsApiHandler", "cookies:%s", new Object[] { localException.getCookie(bt.aGy(paramString)) });
+          ac.i("MicroMsg.JsApiHandler", "cookies:%s", new Object[] { localException.getCookie(bs.aLP(paramString)) });
           label188:
           f.f(f.this).evaluateJavascript(String.format("javascript:(function(){ window.getA8KeyUrl='%s'; })()", new Object[] { paramString }), null);
           f.f(f.this).evaluateJavascript("javascript:(function(){ window.isWeixinCached=true; })()", null);
           if (f.g(f.this))
           {
-            f.f(f.this).evaluateJavascript(this.ARH, null);
+            f.f(f.this).evaluateJavascript(this.CjU, null);
             f.h(f.this);
             f.i(f.this);
           }
-          AppMethodBeat.o(189522);
+          AppMethodBeat.o(205153);
         }
       });
-      AppMethodBeat.o(189621);
+      AppMethodBeat.o(205254);
       return;
     }
   }
   
-  public final void M(int paramInt1, int paramInt2, String paramString)
+  public final void L(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(189598);
-    if (!this.yZR)
+    AppMethodBeat.i(205231);
+    if (!this.Apr)
     {
-      ad.w("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189598);
+      ac.w("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(205231);
       return;
     }
-    ad.d("MicroMsg.JsApiHandler", "onMPDotWebviewStateChange");
+    ac.d("MicroMsg.JsApiHandler", "onMPDotWebviewStateChange");
     HashMap localHashMap = new HashMap();
     localHashMap.put("action", "onMPDotWebviewStateChange");
     localHashMap.put("id", Integer.valueOf(paramInt1));
     localHashMap.put("webviewId", Integer.valueOf(paramInt2));
     localHashMap.put("state", paramString);
-    paramString = l.a.b("onMPPageAction", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-    AppMethodBeat.o(189598);
+    paramString = l.a.b("onMPPageAction", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(205231);
   }
   
-  public final Bundle SF(int paramInt)
+  public final void UD(int paramInt)
   {
-    AppMethodBeat.i(189603);
-    try
+    AppMethodBeat.i(205225);
+    if (!this.Apr)
     {
-      Object localObject = this.ARe;
-      if (localObject == null)
-      {
-        AppMethodBeat.o(189603);
-        return null;
-      }
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("WebViewShare_type", paramInt);
-      ((Bundle)localObject).putInt("WebViewShare_BinderID", this.ARo);
-      ((Bundle)localObject).putString("WebViewShare_wv_url", this.ARe.getUrl());
-      localObject = this.kxf.j(105, (Bundle)localObject);
-      ((Bundle)localObject).putBoolean("use_update_jsapi_data", true);
-      AppMethodBeat.o(189603);
-      return localObject;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      ad.e("MicroMsg.JsApiHandler", "getShareData err %s", new Object[] { localRemoteException.getMessage() });
-      AppMethodBeat.o(189603);
-    }
-    return null;
-  }
-  
-  public final void SG(int paramInt)
-  {
-    AppMethodBeat.i(189618);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189618);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("height", Integer.valueOf(com.tencent.mm.cd.a.ar(aj.getContext(), paramInt)));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189517);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189517);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onGetKeyboardHeight fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189517);
-        }
-      }
-    });
-    AppMethodBeat.o(189618);
-  }
-  
-  public final void Sv(int paramInt)
-  {
-    AppMethodBeat.i(189592);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onFontSizeChanged fail, not ready");
-      AppMethodBeat.o(189592);
+      ac.e("MicroMsg.JsApiHandler", "onFontSizeChanged fail, not ready");
+      AppMethodBeat.o(205225);
       return;
     }
     Object localObject = new HashMap();
     ((Map)localObject).put("fontSize", String.valueOf(paramInt));
-    localObject = l.a.b("menu:setfont", (Map)localObject, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + (String)localObject + ")", null);
-    AppMethodBeat.o(189592);
+    localObject = l.a.b("menu:setfont", (Map)localObject, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + (String)localObject + ")", null);
+    AppMethodBeat.o(205225);
+  }
+  
+  public final Bundle UN(int paramInt)
+  {
+    AppMethodBeat.i(205236);
+    try
+    {
+      Object localObject = this.Cjr;
+      if (localObject == null)
+      {
+        AppMethodBeat.o(205236);
+        return null;
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putInt("WebViewShare_type", paramInt);
+      ((Bundle)localObject).putInt("WebViewShare_BinderID", this.CjB);
+      ((Bundle)localObject).putString("WebViewShare_wv_url", this.Cjr.getUrl());
+      localObject = this.kYt.k(105, (Bundle)localObject);
+      ((Bundle)localObject).putBoolean("use_update_jsapi_data", true);
+      AppMethodBeat.o(205236);
+      return localObject;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      ac.e("MicroMsg.JsApiHandler", "getShareData err %s", new Object[] { localRemoteException.getMessage() });
+      AppMethodBeat.o(205236);
+    }
+    return null;
+  }
+  
+  public final void UO(int paramInt)
+  {
+    AppMethodBeat.i(205251);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(205251);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("height", Integer.valueOf(com.tencent.mm.cc.a.ax(ai.getContext(), paramInt)));
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(205148);
+        try
+        {
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205148);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ac.e("MicroMsg.JsApiHandler", "onGetKeyboardHeight fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205148);
+        }
+      }
+    });
+    AppMethodBeat.o(205251);
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
-  public final void _getAllHosts(final String paramString)
+  public void _getAllHosts(final String paramString)
   {
-    AppMethodBeat.i(189579);
+    AppMethodBeat.i(205211);
     if (paramString != null) {
-      this.ARj.post(new Runnable()
+      this.Cjw.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189568);
+          AppMethodBeat.i(205199);
           Map localMap = f.O(paramString.split(","));
           String str = f.a(f.this, "hosts");
-          if (f.G(str, localMap))
+          if (f.H(str, localMap))
           {
             if ((f.n(f.this) == null) || (f.f(f.this) == null)) {
               break label118;
@@ -1233,45 +1234,45 @@ public final class f
             try
             {
               f.n(f.this).P(0, f.f(f.this).getUrl(), str);
-              AppMethodBeat.o(189568);
+              AppMethodBeat.o(205199);
               return;
             }
             catch (RemoteException localRemoteException)
             {
-              ad.e("MicroMsg.JsApiHandler", "uploadFileToCDN error ", new Object[] { localRemoteException.getMessage() });
-              AppMethodBeat.o(189568);
+              ac.e("MicroMsg.JsApiHandler", "uploadFileToCDN error ", new Object[] { localRemoteException.getMessage() });
+              AppMethodBeat.o(205199);
               return;
             }
           }
-          ad.e("MicroMsg.JsApiHandler", "failed to write Hosts file");
+          ac.e("MicroMsg.JsApiHandler", "failed to write Hosts file");
           label118:
-          AppMethodBeat.o(189568);
+          AppMethodBeat.o(205199);
         }
       });
     }
-    AppMethodBeat.o(189579);
+    AppMethodBeat.o(205211);
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
-  public final String _getDgtVerifyRandomStr()
+  public String _getDgtVerifyRandomStr()
   {
-    return this.ARn;
+    return this.CjA;
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
-  public final void _getHtmlContent(final String paramString)
+  public void _getHtmlContent(final String paramString)
   {
-    AppMethodBeat.i(189580);
+    AppMethodBeat.i(205212);
     if (paramString != null) {
-      this.ARj.post(new Runnable()
+      this.Cjw.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189569);
+          AppMethodBeat.i(205200);
           String str = f.a(f.this, "html");
-          if (f.jX(str, paramString))
+          if (f.kt(str, paramString))
           {
             if ((f.n(f.this) == null) || (f.f(f.this) == null)) {
               break label108;
@@ -1279,96 +1280,96 @@ public final class f
             try
             {
               f.n(f.this).P(1, f.f(f.this).getUrl(), str);
-              AppMethodBeat.o(189569);
+              AppMethodBeat.o(205200);
               return;
             }
             catch (RemoteException localRemoteException)
             {
-              ad.e("MicroMsg.JsApiHandler", "uploadFileToCDN error ", new Object[] { localRemoteException.getMessage() });
-              AppMethodBeat.o(189569);
+              ac.e("MicroMsg.JsApiHandler", "uploadFileToCDN error ", new Object[] { localRemoteException.getMessage() });
+              AppMethodBeat.o(205200);
               return;
             }
           }
-          ad.e("MicroMsg.JsApiHandler", "failed to write Html file");
+          ac.e("MicroMsg.JsApiHandler", "failed to write Html file");
           label108:
-          AppMethodBeat.o(189569);
+          AppMethodBeat.o(205200);
         }
       });
     }
-    AppMethodBeat.o(189580);
+    AppMethodBeat.o(205212);
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
-  public final boolean _isDgtVerifyEnabled()
+  public boolean _isDgtVerifyEnabled()
   {
-    return this.ARm;
+    return this.Cjz;
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
-  public final void _ready(boolean paramBoolean)
+  public void _ready(boolean paramBoolean)
   {
-    this.yZR = paramBoolean;
+    this.Apr = paramBoolean;
   }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
-  public final void _sendMessage(String paramString)
+  public void _sendMessage(String paramString)
   {
-    AppMethodBeat.i(189578);
-    ad.d("MicroMsg.JsApiHandler", "_sendMessage");
-    if (this.ARj != null)
+    AppMethodBeat.i(205210);
+    ac.d("MicroMsg.JsApiHandler", "_sendMessage");
+    if (this.Cjw != null)
     {
       Message localMessage = Message.obtain();
       localMessage.what = 1;
       localMessage.obj = paramString;
-      this.ARj.sendMessage(localMessage);
-      AppMethodBeat.o(189578);
+      this.Cjw.sendMessage(localMessage);
+      AppMethodBeat.o(205210);
       return;
     }
-    ad.e("MicroMsg.JsApiHandler", "msgQueueHandler err");
-    AppMethodBeat.o(189578);
+    ac.e("MicroMsg.JsApiHandler", "msgQueueHandler err");
+    AppMethodBeat.o(205210);
   }
   
   public final void a(int paramInt, long paramLong, String paramString)
   {
-    AppMethodBeat.i(189645);
-    if (!this.yZR)
+    AppMethodBeat.i(205274);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onUxOplogDataReady fail, not ready");
-      AppMethodBeat.o(189645);
+      ac.e("MicroMsg.JsApiHandler", "onUxOplogDataReady fail, not ready");
+      AppMethodBeat.o(205274);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onUxOplogDataReady success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onUxOplogDataReady success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("ret", Integer.valueOf(paramInt));
     localHashMap.put("reqId", Long.valueOf(paramLong));
     localHashMap.put("json", paramString);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189552);
+        AppMethodBeat.i(205183);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189552);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205183);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onUxOplogDataReady fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189552);
+          ac.e("MicroMsg.JsApiHandler", "onUxOplogDataReady fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205183);
         }
       }
     });
-    AppMethodBeat.o(189645);
+    AppMethodBeat.o(205274);
   }
   
   public final void a(a parama)
   {
-    this.ARp = parama;
+    this.CjC = parama;
   }
   
   public final void a(String paramString, int paramInt1, int paramInt2, double paramDouble1, double paramDouble2, float paramFloat)
@@ -1378,17 +1379,17 @@ public final class f
     {
       try
       {
-        AppMethodBeat.i(189623);
-        if (this.ARC.eFX()) {
-          this.ARC.av(1000L, 1000L);
+        AppMethodBeat.i(205256);
+        if (this.CjP.eVs()) {
+          this.CjP.au(1000L, 1000L);
         }
         JSONObject localJSONObject = new JSONObject();
         if ((paramDouble1 > 0.0D) && (paramDouble1 < 0.5D)) {
           try
           {
-            if (!this.ARB.contains(String.valueOf(paramString) + String.valueOf(paramInt1) + String.valueOf(paramInt2)))
+            if (!this.CjO.contains(String.valueOf(paramString) + String.valueOf(paramInt1) + String.valueOf(paramInt2)))
             {
-              this.ARB.add(String.valueOf(paramString) + String.valueOf(paramInt1) + String.valueOf(paramInt2));
+              this.CjO.add(String.valueOf(paramString) + String.valueOf(paramInt1) + String.valueOf(paramInt2));
               localJSONObject.put("uuid", String.valueOf(paramString));
               localJSONObject.put("major", String.valueOf(paramInt1));
               localJSONObject.put("minor", String.valueOf(paramInt2));
@@ -1396,17 +1397,17 @@ public final class f
               localJSONObject.put("rssi", String.valueOf(paramDouble2));
               localJSONObject.put("heading", String.valueOf(paramFloat));
               localJSONObject.put("proximity", String.valueOf(i));
-              this.ARA.put(localJSONObject);
-              this.ARz.put("beacons", this.ARA);
-              this.ARz.put("err_msg", "onBeaconsInRange:ok");
+              this.CjN.put(localJSONObject);
+              this.CjM.put("beacons", this.CjN);
+              this.CjM.put("err_msg", "onBeaconsInRange:ok");
             }
-            l.a.a("onBeaconsInRange", this.ARz, this.ARm, this.ARn);
-            AppMethodBeat.o(189623);
+            l.a.a("onBeaconsInRange", this.CjM, this.Cjz, this.CjA);
+            AppMethodBeat.o(205256);
             return;
           }
           catch (Exception paramString)
           {
-            ad.e("MicroMsg.JsApiHandler", "parse json error in onBeaconsInRange!! ", new Object[] { paramString.getMessage() });
+            ac.e("MicroMsg.JsApiHandler", "parse json error in onBeaconsInRange!! ", new Object[] { paramString.getMessage() });
             continue;
           }
         }
@@ -1418,11 +1419,11 @@ public final class f
   
   public final void a(String paramString, long paramLong, int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(189607);
-    if (!this.yZR)
+    AppMethodBeat.i(205240);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onDownloadStateChange fail, not ready");
-      AppMethodBeat.o(189607);
+      ac.e("MicroMsg.JsApiHandler", "onDownloadStateChange fail, not ready");
+      AppMethodBeat.o(205240);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -1430,106 +1431,106 @@ public final class f
     localHashMap.put("download_id", Long.valueOf(paramLong));
     localHashMap.put("progress", Integer.valueOf(paramInt));
     localHashMap.put("progress_float", Float.valueOf(paramFloat));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189497);
+        AppMethodBeat.i(205128);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189497);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205128);
           return;
         }
         catch (Exception localException)
         {
-          ad.w("MicroMsg.JsApiHandler", "onDownloadStateChange, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189497);
+          ac.w("MicroMsg.JsApiHandler", "onDownloadStateChange, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205128);
         }
       }
     });
-    AppMethodBeat.o(189607);
+    AppMethodBeat.o(205240);
   }
   
   public final void a(String paramString, JsapiPermissionWrapper paramJsapiPermissionWrapper, Bundle paramBundle, b paramb)
   {
-    AppMethodBeat.i(189588);
-    paramString = (l)l.a.k(paramString, false, this.ARn).remove(0);
-    paramString.ASi = paramBundle;
-    this.fSr.put(paramString.ASg, paramb);
+    AppMethodBeat.i(205221);
+    paramString = (l)l.a.k(paramString, false, this.CjA).remove(0);
+    paramString.Ckv = paramBundle;
+    this.fWm.put(paramString.Ckt, paramb);
     a(paramString, paramJsapiPermissionWrapper);
-    AppMethodBeat.o(189588);
+    AppMethodBeat.o(205221);
   }
   
   public final void a(String paramString1, String paramString2, Map<String, Object> paramMap, boolean paramBoolean)
   {
-    AppMethodBeat.i(189624);
-    if (!bt.isNullOrNil(paramString1)) {
-      h(paramString1, paramString2, paramMap);
+    AppMethodBeat.i(205257);
+    if (!bs.isNullOrNil(paramString1)) {
+      j(paramString1, paramString2, paramMap);
     }
     if (paramBoolean) {
-      ekt();
+      ezP();
     }
-    AppMethodBeat.o(189624);
+    AppMethodBeat.o(205257);
   }
   
   public final void a(String paramString1, String paramString2, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(189636);
+    AppMethodBeat.i(205266);
     HashMap localHashMap = new HashMap();
     localHashMap.put("query", paramString1);
     localHashMap.put("custom", paramString2);
     localHashMap.put("tagList", paramJSONArray);
     b("onSearchInputChange", localHashMap, null);
-    AppMethodBeat.o(189636);
+    AppMethodBeat.o(205266);
   }
   
   public final void a(String paramString1, String paramString2, JSONArray paramJSONArray, int paramInt)
   {
-    AppMethodBeat.i(189635);
-    if (!this.yZR)
+    AppMethodBeat.i(205265);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchInputChange fail, not ready");
-      AppMethodBeat.o(189635);
+      ac.e("MicroMsg.JsApiHandler", "onSearchInputChange fail, not ready");
+      AppMethodBeat.o(205265);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSearchInputChange success, ready %s %s %s", new Object[] { paramString1, paramString2, paramJSONArray.toString() });
+    ac.i("MicroMsg.JsApiHandler", "onSearchInputChange success, ready %s %s %s", new Object[] { paramString1, paramString2, paramJSONArray.toString() });
     HashMap localHashMap = new HashMap();
     localHashMap.put("query", paramString1);
     localHashMap.put("custom", paramString2);
     localHashMap.put("tagList", paramJSONArray);
     localHashMap.put("isCancelButtonClick", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189543);
+        AppMethodBeat.i(205174);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189543);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205174);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSearchInputChange fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189543);
+          ac.e("MicroMsg.JsApiHandler", "onSearchInputChange fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205174);
         }
       }
     });
-    AppMethodBeat.o(189635);
+    AppMethodBeat.o(205265);
   }
   
   public final void a(String paramString1, String paramString2, JSONArray paramJSONArray, int paramInt, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189639);
-    if (!this.yZR)
+    AppMethodBeat.i(205269);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchInputConfirm fail, not ready");
-      AppMethodBeat.o(189639);
+      ac.e("MicroMsg.JsApiHandler", "onSearchInputConfirm fail, not ready");
+      AppMethodBeat.o(205269);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSearchInputConfirm success, ready %s %s %s", new Object[] { paramString1, paramString2, paramJSONArray.toString() });
+    ac.i("MicroMsg.JsApiHandler", "onSearchInputConfirm success, ready %s %s %s", new Object[] { paramString1, paramString2, paramJSONArray.toString() });
     JSONObject localJSONObject = new JSONObject();
     if (paramMap != null)
     {
@@ -1556,7 +1557,7 @@ public final class f
               }
               catch (JSONException localJSONException2)
               {
-                ad.printErrStackTrace("MicroMsg.JsApiHandler", localJSONException1, "", new Object[0]);
+                ac.printErrStackTrace("MicroMsg.JsApiHandler", localJSONException1, "", new Object[0]);
               }
             }
           }
@@ -1571,75 +1572,75 @@ public final class f
       localJSONObject.put("isBackButtonClick", paramInt);
       localJSONObject.put("sugId", "");
       localJSONObject.put("sugClickType", 0);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189545);
+          AppMethodBeat.i(205176);
           try
           {
-            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-            AppMethodBeat.o(189545);
+            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+            AppMethodBeat.o(205176);
             return;
           }
           catch (Exception localException)
           {
-            ad.e("MicroMsg.JsApiHandler", "onSearchInputConfirm fail, ex = %s", new Object[] { localException.getMessage() });
-            AppMethodBeat.o(189545);
+            ac.e("MicroMsg.JsApiHandler", "onSearchInputConfirm fail, ex = %s", new Object[] { localException.getMessage() });
+            AppMethodBeat.o(205176);
           }
         }
       });
-      AppMethodBeat.o(189639);
+      AppMethodBeat.o(205269);
       return;
     }
     catch (JSONException paramString1)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiHandler", paramString1, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.JsApiHandler", paramString1, "", new Object[0]);
       }
     }
   }
   
   public final void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(189633);
-    if (!this.yZR)
+    AppMethodBeat.i(205263);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchWAWidgetOnTapCallback fail, not ready");
-      AppMethodBeat.o(189633);
+      ac.e("MicroMsg.JsApiHandler", "onSearchWAWidgetOnTapCallback fail, not ready");
+      AppMethodBeat.o(205263);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSearchWAWidgetOnTapCallback success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onSearchWAWidgetOnTapCallback success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("eventId", paramString1);
     localHashMap.put("widgetId", paramString3);
     localHashMap.put("hitTest", Boolean.valueOf(paramBoolean));
     localHashMap.put("err_msg", paramString2);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189535);
+        AppMethodBeat.i(205166);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189535);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205166);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSearchWAWidgetOnTapCallback fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189535);
+          ac.e("MicroMsg.JsApiHandler", "onSearchWAWidgetOnTapCallback fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205166);
         }
       }
     });
-    AppMethodBeat.o(189633);
+    AppMethodBeat.o(205263);
   }
   
   public final boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189637);
+    AppMethodBeat.i(205267);
     localJSONObject = new JSONObject();
     try
     {
@@ -1657,342 +1658,307 @@ public final class f
         localJSONObject.put("isLocalSug", paramString4);
         localJSONObject.put("sessionId", paramString5);
         b("switchToTabSearch", null, localJSONObject);
-        AppMethodBeat.o(189637);
+        AppMethodBeat.o(205267);
         return true;
       }
       catch (JSONException paramString1)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.JsApiHandler", paramString1, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.JsApiHandler", paramString1, "", new Object[0]);
         }
       }
     }
     catch (Exception paramMap)
     {
-      ad.printErrStackTrace("MicroMsg.JsApiHandler", paramMap, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.JsApiHandler", paramMap, "", new Object[0]);
     }
   }
   
-  public final void ao(Bundle paramBundle)
+  public final boolean aAU(final String paramString)
   {
-    AppMethodBeat.i(189632);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onGetPoiInfo fail, not ready");
-      AppMethodBeat.o(189632);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onGetPoiInfo success, ready");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("json", paramBundle.getString("json"));
-    localHashMap.put("searchId", paramBundle.getString("searchId"));
-    localHashMap.put("poiId", paramBundle.getString("poiId"));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189533);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189533);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onGetPoiInfoReturn fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189533);
-        }
-      }
-    });
-    AppMethodBeat.o(189632);
-  }
-  
-  public final boolean avC(final String paramString)
-  {
-    AppMethodBeat.i(189583);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._fetchQueue()", new ValueCallback() {});
-    AppMethodBeat.o(189583);
+    AppMethodBeat.i(205215);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._fetchQueue()", new ValueCallback() {});
+    AppMethodBeat.o(205215);
     return true;
   }
   
-  public final boolean avD(String paramString)
+  public final boolean aAV(String paramString)
   {
-    AppMethodBeat.i(189582);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(205214);
+    if (bs.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(189582);
+      AppMethodBeat.o(205214);
       return false;
     }
-    boolean bool = x.A(paramString, "weixin://dispatch_message/");
-    AppMethodBeat.o(189582);
+    boolean bool = x.B(paramString, "weixin://dispatch_message/");
+    AppMethodBeat.o(205214);
     return bool;
   }
   
-  public final void avQ(String paramString)
+  public final void aBi(String paramString)
   {
-    this.ARu = paramString;
+    this.CjH = paramString;
   }
   
-  public final void avR(String paramString)
+  public final void aBj(String paramString)
   {
-    this.ARv = paramString;
+    this.CjI = paramString;
   }
   
-  public final void avS(String paramString)
+  public final void aBk(String paramString)
   {
-    AppMethodBeat.i(189600);
-    if (!this.yZR)
+    AppMethodBeat.i(205233);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189600);
+      AppMethodBeat.o(205233);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("data", paramString);
-    paramString = l.a.b("onReceiveMPPageData", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-    AppMethodBeat.o(189600);
+    paramString = l.a.b("onReceiveMPPageData", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(205233);
   }
   
-  public final void avT(String paramString)
+  public final void aBl(String paramString)
   {
-    AppMethodBeat.i(189601);
-    if (!this.yZR)
+    AppMethodBeat.i(205234);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189601);
+      AppMethodBeat.o(205234);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("state", paramString);
-    paramString = l.a.b("onMPAdWebviewStateChange", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-    AppMethodBeat.o(189601);
+    paramString = l.a.b("onMPAdWebviewStateChange", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(205234);
   }
   
-  public final void avU(final String paramString)
+  public final void aBm(final String paramString)
   {
-    AppMethodBeat.i(189609);
-    if (!this.yZR)
+    AppMethodBeat.i(205242);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onActivityStateChanged fail, not ready %s", new Object[] { paramString });
-      AppMethodBeat.o(189609);
+      ac.e("MicroMsg.JsApiHandler", "onActivityStateChanged fail, not ready %s", new Object[] { paramString });
+      AppMethodBeat.o(205242);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onActivityStateChanged, state = ".concat(String.valueOf(paramString)));
+    ac.i("MicroMsg.JsApiHandler", "onActivityStateChanged, state = ".concat(String.valueOf(paramString)));
     HashMap localHashMap = new HashMap();
     localHashMap.put("state", paramString);
-    paramString = l.a.b("activity:state_change", localHashMap, this.ARm, this.ARn);
+    paramString = l.a.b("activity:state_change", localHashMap, this.Cjz, this.CjA);
     if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
       try
       {
-        this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-        AppMethodBeat.o(189609);
+        this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+        AppMethodBeat.o(205242);
         return;
       }
       catch (Exception paramString)
       {
-        ad.w("MicroMsg.JsApiHandler", "onActivityStateChanged, ex = %s", new Object[] { paramString.getMessage() });
-        AppMethodBeat.o(189609);
+        ac.w("MicroMsg.JsApiHandler", "onActivityStateChanged, ex = %s", new Object[] { paramString.getMessage() });
+        AppMethodBeat.o(205242);
         return;
       }
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189503);
+        AppMethodBeat.i(205134);
         try
         {
           f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-          AppMethodBeat.o(189503);
+          AppMethodBeat.o(205134);
           return;
         }
         catch (Exception localException)
         {
-          ad.w("MicroMsg.JsApiHandler", "onActivityStateChanged, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189503);
+          ac.w("MicroMsg.JsApiHandler", "onActivityStateChanged, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205134);
         }
       }
     });
-    AppMethodBeat.o(189609);
+    AppMethodBeat.o(205242);
   }
   
-  public final void avV(final String paramString)
+  public final void aBn(final String paramString)
   {
-    AppMethodBeat.i(189617);
-    if (!this.yZR)
+    AppMethodBeat.i(205250);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onGoProfile fail, not ready");
-      AppMethodBeat.o(189617);
+      ac.e("MicroMsg.JsApiHandler", "onGoProfile fail, not ready");
+      AppMethodBeat.o(205250);
       return;
     }
-    if (this.ARj != null) {
-      this.ARj.post(new Runnable()
+    if (this.Cjw != null) {
+      this.Cjw.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189516);
+          AppMethodBeat.i(205147);
           l locall = new l();
-          locall.uLu = new HashMap();
-          locall.uLu.put("username", paramString);
-          locall.ASh = new JSONObject();
+          locall.vUl = new HashMap();
+          locall.vUl.put("username", paramString);
+          locall.Cku = new JSONObject();
           locall.type = "call";
-          locall.ASg = "";
-          locall.kbU = "profile";
+          locall.Ckt = "";
+          locall.kCH = "profile";
           f.d(f.this).add(locall);
           f.e(f.this);
-          AppMethodBeat.o(189516);
+          AppMethodBeat.o(205147);
         }
       });
     }
-    AppMethodBeat.o(189617);
+    AppMethodBeat.o(205250);
   }
   
-  public final void avW(String paramString)
+  public final void aBo(String paramString)
   {
-    AppMethodBeat.i(189620);
-    if (!this.yZR)
+    AppMethodBeat.i(205253);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189620);
+      ac.e("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(205253);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("err_msg", paramString);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189521);
+        AppMethodBeat.i(205152);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189521);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205152);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onBeaconMonitoring fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189521);
+          ac.e("MicroMsg.JsApiHandler", "onBeaconMonitoring fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205152);
         }
       }
     });
-    AppMethodBeat.o(189620);
+    AppMethodBeat.o(205253);
   }
   
-  public final void avX(String paramString)
+  public final void aBp(String paramString)
   {
-    AppMethodBeat.i(189640);
-    if (!this.yZR)
+    AppMethodBeat.i(205270);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchSuggestionDataReady fail, not ready");
-      AppMethodBeat.o(189640);
+      ac.e("MicroMsg.JsApiHandler", "onSearchSuggestionDataReady fail, not ready");
+      AppMethodBeat.o(205270);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSearchSuggestionDataReady success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onSearchSuggestionDataReady success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("json", paramString);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189546);
+        AppMethodBeat.i(205177);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189546);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205177);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSearchSuggestionDataReady fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189546);
+          ac.e("MicroMsg.JsApiHandler", "onSearchSuggestionDataReady fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205177);
         }
       }
     });
-    AppMethodBeat.o(189640);
+    AppMethodBeat.o(205270);
   }
   
-  public final void avZ(String paramString)
+  public final void aBr(String paramString)
   {
-    AppMethodBeat.i(189653);
-    if (!this.yZR)
+    AppMethodBeat.i(205282);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189653);
+      ac.e("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(205282);
       return;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(189653);
+      AppMethodBeat.o(205282);
       return;
     }
-    ad.d("MicroMsg.JsApiHandler", "onNetWorkChange");
+    ac.d("MicroMsg.JsApiHandler", "onNetWorkChange");
     HashMap localHashMap = new HashMap();
     localHashMap.put("netType", paramString);
-    paramString = aj.getContext();
-    if (!ay.isConnected(paramString)) {
+    paramString = ai.getContext();
+    if (!ax.isConnected(paramString)) {
       localHashMap.put("networkType", "none");
     }
-    if (ay.is2G(paramString))
+    if (ax.is2G(paramString))
     {
-      ad.i("MicroMsg.JsApiHandler", "onNetWorkChange 2g");
+      ac.i("MicroMsg.JsApiHandler", "onNetWorkChange 2g");
       localHashMap.put("networkType", "2g");
     }
-    if (ay.is3G(paramString))
+    if (ax.is3G(paramString))
     {
-      ad.i("MicroMsg.JsApiHandler", "onNetWorkChange 3g");
+      ac.i("MicroMsg.JsApiHandler", "onNetWorkChange 3g");
       localHashMap.put("networkType", "3g");
     }
-    if (ay.is4G(paramString))
+    if (ax.is4G(paramString))
     {
-      ad.i("MicroMsg.JsApiHandler", "onNetWorkChange 4g");
+      ac.i("MicroMsg.JsApiHandler", "onNetWorkChange 4g");
       localHashMap.put("networkType", "4g");
     }
-    if (ay.isWifi(paramString))
+    if (ax.isWifi(paramString))
     {
-      ad.i("MicroMsg.JsApiHandler", "onNetWorkChange wifi");
+      ac.i("MicroMsg.JsApiHandler", "onNetWorkChange wifi");
       localHashMap.put("networkType", "wifi");
     }
-    if (this.kxf != null) {}
+    if (this.kYt != null) {}
     for (;;)
     {
       try
       {
-        i = this.kxf.j(110, new Bundle()).getInt("sim_card_type", 0);
+        i = this.kYt.k(110, new Bundle()).getInt("sim_card_type", 0);
         if (i != 0) {
           continue;
         }
         i = 0;
         localHashMap.put("simType", Integer.valueOf(i));
-        ad.d("MicroMsg.JsApiHandler", "onNetWorkChange simType=%s", new Object[] { Integer.valueOf(i) });
+        ac.d("MicroMsg.JsApiHandler", "onNetWorkChange simType=%s", new Object[] { Integer.valueOf(i) });
       }
       catch (Exception paramString)
       {
         int i;
-        ad.e("MicroMsg.JsApiHandler", "invokeAsResult ex %s", new Object[] { paramString.getMessage() });
+        ac.e("MicroMsg.JsApiHandler", "invokeAsResult ex %s", new Object[] { paramString.getMessage() });
         continue;
       }
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189561);
+          AppMethodBeat.i(205192);
           try
           {
-            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-            AppMethodBeat.o(189561);
+            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+            AppMethodBeat.o(205192);
             return;
           }
           catch (Exception localException)
           {
-            ad.e("MicroMsg.JsApiHandler", "onGetMsgProofItems fail, ex = %s", new Object[] { localException.getMessage() });
-            AppMethodBeat.o(189561);
+            ac.e("MicroMsg.JsApiHandler", "onGetMsgProofItems fail, ex = %s", new Object[] { localException.getMessage() });
+            AppMethodBeat.o(205192);
           }
         }
       });
-      AppMethodBeat.o(189653);
+      AppMethodBeat.o(205282);
       return;
       if (i == 1) {
         i = 1;
@@ -2002,17 +1968,39 @@ public final class f
     }
   }
   
+  public final void aCo(String paramString)
+  {
+    AppMethodBeat.i(210489);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(210489);
+      return;
+    }
+    if (!x.aXH(getCurrentUrl()))
+    {
+      AppMethodBeat.o(210489);
+      return;
+    }
+    ac.i("MicroMsg.JsApiHandler", "onMenuClick");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("action", paramString);
+    paramString = l.a.b("onMenuClick", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(210489);
+  }
+  
   public final void b(com.tencent.mm.plugin.webview.stub.e parame)
   {
-    this.kxf = parame;
+    this.kYt = parame;
   }
   
   public final void b(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(189594);
-    if (!this.yZR)
+    AppMethodBeat.i(205227);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189594);
+      AppMethodBeat.o(205227);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -2025,9 +2013,9 @@ public final class f
     }
     for (;;)
     {
-      paramString1 = l.a.b("onMPPageAction", localHashMap, this.ARm, this.ARn);
-      this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
-      AppMethodBeat.o(189594);
+      paramString1 = l.a.b("onMPPageAction", localHashMap, this.Cjz, this.CjA);
+      this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
+      AppMethodBeat.o(205227);
       return;
       localHashMap.put("replyId", Integer.valueOf(paramInt2));
       localHashMap.put("openid", paramString2);
@@ -2036,14 +2024,14 @@ public final class f
   
   public final void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(189642);
-    if (!this.yZR)
+    AppMethodBeat.i(205272);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onEmoticonIsChosen fail, not ready");
-      AppMethodBeat.o(189642);
+      ac.e("MicroMsg.JsApiHandler", "onEmoticonIsChosen fail, not ready");
+      AppMethodBeat.o(205272);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onEmoticonIsChosen success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onEmoticonIsChosen success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("md5", paramString1);
     localHashMap.put("thumbPath", paramString2);
@@ -2051,34 +2039,34 @@ public final class f
     localHashMap.put("asyncDownload", Integer.valueOf(paramInt2));
     localHashMap.put("emojiUrl", paramString3);
     localHashMap.put("aesKey", paramString4);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189548);
+        AppMethodBeat.i(205179);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189548);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205179);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onEmoticonIsChosen fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189548);
+          ac.e("MicroMsg.JsApiHandler", "onEmoticonIsChosen fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205179);
         }
       }
     });
-    AppMethodBeat.o(189642);
+    AppMethodBeat.o(205272);
   }
   
   public final void b(final String paramString, final Map<String, Object> paramMap, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(189638);
-    if ((!this.yZR) || ((paramMap == null) && (paramJSONObject == null)))
+    AppMethodBeat.i(205268);
+    if ((!this.Apr) || ((paramMap == null) && (paramJSONObject == null)))
     {
-      ad.e("MicroMsg.JsApiHandler", "onSendEventToJSBridge fail, event=%s", new Object[] { paramString });
-      AppMethodBeat.o(189638);
+      ac.e("MicroMsg.JsApiHandler", "onSendEventToJSBridge fail, event=%s", new Object[] { paramString });
+      AppMethodBeat.o(205268);
       return;
     }
     String str1;
@@ -2091,38 +2079,38 @@ public final class f
       }
       str2 = "";
       label63:
-      ad.i("MicroMsg.JsApiHandler", "onSendEventToJSBridge success, event=%s, params=%s, jsonParams=%s", new Object[] { paramString, str1, str2 });
+      ac.i("MicroMsg.JsApiHandler", "onSendEventToJSBridge success, event=%s, params=%s, jsonParams=%s", new Object[] { paramString, str1, str2 });
       if (paramMap == null) {
         break label156;
       }
     }
     label147:
     label156:
-    for (paramMap = l.a.b(paramString, paramMap, this.ARm, this.ARn);; paramMap = l.a.a(paramString, paramJSONObject, this.ARm, this.ARn))
+    for (paramMap = l.a.b(paramString, paramMap, this.Cjz, this.CjA);; paramMap = l.a.a(paramString, paramJSONObject, this.Cjz, this.CjA))
     {
       paramString = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189544);
+          AppMethodBeat.i(205175);
           try
           {
             f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramMap + ")", null);
-            AppMethodBeat.o(189544);
+            AppMethodBeat.o(205175);
             return;
           }
           catch (Exception localException)
           {
-            ad.e("MicroMsg.JsApiHandler", "onSendEventToJSBridge fail, event=%s, ex=%s", new Object[] { paramString, localException.getMessage() });
-            AppMethodBeat.o(189544);
+            ac.e("MicroMsg.JsApiHandler", "onSendEventToJSBridge fail, event=%s, ex=%s", new Object[] { paramString, localException.getMessage() });
+            AppMethodBeat.o(205175);
           }
         }
       };
-      if (!aq.isMainThread()) {
+      if (!ap.isMainThread()) {
         break label173;
       }
       paramString.run();
-      AppMethodBeat.o(189638);
+      AppMethodBeat.o(205268);
       return;
       str1 = paramMap.toString();
       break;
@@ -2130,41 +2118,25 @@ public final class f
       break label63;
     }
     label173:
-    aq.f(paramString);
-    AppMethodBeat.o(189638);
+    ap.f(paramString);
+    AppMethodBeat.o(205268);
   }
   
-  public final void bZ(String paramString, boolean paramBoolean)
+  public final void bt(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189577);
-    try
-    {
-      this.kxf.l(paramString, paramBoolean, this.ARo);
-      AppMethodBeat.o(189577);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ad.w("MicroMsg.JsApiHandler", "addInvokedJsApiFromMenu, ex = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(189577);
-    }
+    this.Cjx = paramMap;
   }
   
-  public final void bo(Map<String, Object> paramMap)
+  public final Bundle bu(Map<String, String> paramMap)
   {
-    this.ARk = paramMap;
-  }
-  
-  public final Bundle bp(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(189604);
+    AppMethodBeat.i(205237);
     Bundle localBundle = new Bundle();
-    String str1 = this.ARe.getUrl();
+    String str1 = this.Cjr.getUrl();
     String str2;
     if (paramMap != null)
     {
       str2 = (String)paramMap.get("share_report_pre_msg_url");
-      if (!bt.isNullOrNil(str2)) {
+      if (!bs.isNullOrNil(str2)) {
         break label273;
       }
       str2 = str1;
@@ -2173,21 +2145,21 @@ public final class f
     for (;;)
     {
       Object localObject = (String)paramMap.get("share_report_pre_msg_title");
-      if (bt.isNullOrNil((String)localObject)) {
-        localObject = this.ARe.getTitle();
+      if (bs.isNullOrNil((String)localObject)) {
+        localObject = this.Cjr.getTitle();
       }
       for (;;)
       {
         String str4 = (String)paramMap.get("share_report_pre_msg_desc");
         String str3 = str4;
-        if (bt.isNullOrNil(str4)) {
+        if (bs.isNullOrNil(str4)) {
           str3 = str1;
         }
         localBundle.putString("link", str2);
         localBundle.putString("desc", str3);
-        localBundle.putString("img_url", bt.nullAsNil((String)paramMap.get("share_report_pre_msg_icon_url")));
-        if (bt.isNullOrNil((String)localObject)) {
-          if (!bt.isNullOrNil(str1))
+        localBundle.putString("img_url", bs.nullAsNil((String)paramMap.get("share_report_pre_msg_icon_url")));
+        if (bs.isNullOrNil((String)localObject)) {
+          if (!bs.isNullOrNil(str1))
           {
             localObject = Uri.parse(str1);
             paramMap = str1;
@@ -2200,14 +2172,14 @@ public final class f
         {
           localBundle.putString("title", paramMap);
           localBundle.putBoolean("use_update_jsapi_data", false);
-          AppMethodBeat.o(189604);
+          AppMethodBeat.o(205237);
           return localBundle;
-          localObject = this.ARe.getTitle();
+          localObject = this.Cjr.getTitle();
           localBundle.putString("link", str1);
           localBundle.putString("desc", str1);
           localBundle.putString("img_url", "");
           break;
-          paramMap = aj.getContext().getString(2131766105);
+          paramMap = ai.getContext().getString(2131766105);
           continue;
           paramMap = (Map<String, String>)localObject;
         }
@@ -2215,253 +2187,458 @@ public final class f
     }
   }
   
-  public final void bq(Map<String, Object> paramMap)
+  public final void bv(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189610);
-    if (!this.yZR)
+    AppMethodBeat.i(205243);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onVoicePlayEnd fail, not ready");
-      AppMethodBeat.o(189610);
+      ac.e("MicroMsg.JsApiHandler", "onVoicePlayEnd fail, not ready");
+      AppMethodBeat.o(205243);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onVoicePlayEnd");
-    aq.f(new Runnable()
+    ac.i("MicroMsg.JsApiHandler", "onVoicePlayEnd");
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189504);
+        AppMethodBeat.i(205135);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189504);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205135);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onVoicePlayEnd fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189504);
+          ac.e("MicroMsg.JsApiHandler", "onVoicePlayEnd fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205135);
         }
       }
     });
-    AppMethodBeat.o(189610);
+    AppMethodBeat.o(205243);
   }
   
-  public final void bq(JSONObject paramJSONObject)
+  public final void bw(final Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189630);
-    if (!this.yZR)
+    AppMethodBeat.i(205244);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189630);
+      ac.e("MicroMsg.JsApiHandler", "onVoiceRecordEnd fail, not ready");
+      AppMethodBeat.o(205244);
       return;
     }
-    aq.f(new Runnable()
+    ac.i("MicroMsg.JsApiHandler", "onVoiceRecordEnd");
+    paramMap = l.a.b("onVoiceRecordEnd", paramMap, this.Cjz, this.CjA);
+    ac.i("MicroMsg.JsApiHandler", "onVoiceRecordEnd event : %s", new Object[] { paramMap });
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189530);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189530);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onGetMatchContactList fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189530);
-        }
-      }
-    });
-    AppMethodBeat.o(189630);
-  }
-  
-  public final void br(final Map<String, Object> paramMap)
-  {
-    AppMethodBeat.i(189611);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onVoiceRecordEnd fail, not ready");
-      AppMethodBeat.o(189611);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onVoiceRecordEnd");
-    paramMap = l.a.b("onVoiceRecordEnd", paramMap, this.ARm, this.ARn);
-    ad.i("MicroMsg.JsApiHandler", "onVoiceRecordEnd event : %s", new Object[] { paramMap });
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189505);
+        AppMethodBeat.i(205136);
         try
         {
           f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramMap + ")", null);
-          AppMethodBeat.o(189505);
+          AppMethodBeat.o(205136);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onVoiceRecordEnd fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189505);
+          ac.e("MicroMsg.JsApiHandler", "onVoiceRecordEnd fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205136);
         }
       }
     });
-    AppMethodBeat.o(189611);
+    AppMethodBeat.o(205244);
   }
   
-  public final void bs(Map<String, Object> paramMap)
+  public final void bx(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(189628);
-    if (!this.yZR)
+    AppMethodBeat.i(205261);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSelectContact fail, not ready");
-      AppMethodBeat.o(189628);
+      ac.e("MicroMsg.JsApiHandler", "onSelectContact fail, not ready");
+      AppMethodBeat.o(205261);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSelectContact success, ready");
-    aq.f(new Runnable()
+    ac.i("MicroMsg.JsApiHandler", "onSelectContact success, ready");
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189526);
+        AppMethodBeat.i(205157);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189526);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205157);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSelectContact fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189526);
+          ac.e("MicroMsg.JsApiHandler", "onSelectContact fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205157);
         }
       }
     });
-    AppMethodBeat.o(189628);
+    AppMethodBeat.o(205261);
   }
   
-  public final void cq(int paramInt, String paramString)
+  public final void cf(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(189641);
-    if (!this.yZR)
+    AppMethodBeat.i(205209);
+    try
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchImageListReady fail, not ready");
-      AppMethodBeat.o(189641);
+      this.kYt.l(paramString, paramBoolean, this.CjB);
+      AppMethodBeat.o(205209);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ac.w("MicroMsg.JsApiHandler", "addInvokedJsApiFromMenu, ex = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(205209);
+    }
+  }
+  
+  public final void ct(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(205271);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "onSearchImageListReady fail, not ready");
+      AppMethodBeat.o(205271);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("ret", Integer.valueOf(paramInt));
     localHashMap.put("data", paramString);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189547);
+        AppMethodBeat.i(205178);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189547);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205178);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSearchImageListReady fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189547);
+          ac.e("MicroMsg.JsApiHandler", "onSearchImageListReady fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205178);
         }
       }
     });
-    AppMethodBeat.o(189641);
+    AppMethodBeat.o(205271);
   }
   
   public final void detach()
   {
-    AppMethodBeat.i(189591);
-    this.yZR = false;
-    this.yhC.clear();
-    this.ARi.clear();
-    this.ARj = null;
-    AppMethodBeat.o(189591);
+    AppMethodBeat.i(205224);
+    this.Apr = false;
+    this.zuC.clear();
+    this.Cjv.clear();
+    this.Cjw = null;
+    AppMethodBeat.o(205224);
   }
   
   public final void dispatchEvent(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(189655);
-    if (!this.yZR)
+    AppMethodBeat.i(205284);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189655);
+      ac.e("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(205284);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189565);
+        AppMethodBeat.i(205196);
         try
         {
           if (f.f(f.this) != null) {
-            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.ARL + ")", null);
+            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.CjY + ")", null);
           }
-          AppMethodBeat.o(189565);
+          AppMethodBeat.o(205196);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "eval onMiniProgramData, ex = %s", new Object[] { localException });
-          AppMethodBeat.o(189565);
+          ac.e("MicroMsg.JsApiHandler", "eval onMiniProgramData, ex = %s", new Object[] { localException });
+          AppMethodBeat.o(205196);
         }
       }
     });
-    AppMethodBeat.o(189655);
+    AppMethodBeat.o(205284);
   }
   
-  public final void eU(String paramString, int paramInt)
+  public final void evaluateJavascript(final String paramString, final ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(189595);
-    if (!this.yZR)
+    AppMethodBeat.i(205288);
+    if (ap.isMainThread())
     {
-      AppMethodBeat.o(189595);
+      this.Cjr.evaluateJavascript(paramString, paramValueCallback);
+      AppMethodBeat.o(205288);
+      return;
+    }
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(205198);
+        f.f(f.this).evaluateJavascript(paramString, paramValueCallback);
+        AppMethodBeat.o(205198);
+      }
+    });
+    AppMethodBeat.o(205288);
+  }
+  
+  public final void ezH()
+  {
+    AppMethodBeat.i(205207);
+    if (this.Cjz != true)
+    {
+      this.Cjz = true;
+      if (!com.tencent.matrix.trace.g.b.cX(this.Cjr.getRandomStr())) {
+        break label80;
+      }
+    }
+    label80:
+    for (String str = bs.Yu(16);; str = this.Cjr.getRandomStr())
+    {
+      this.CjA = str;
+      ac.i("MicroMsg.JsApiHandler", "js digest verification randomStr = %s, hashCode: %d", new Object[] { this.CjA, Integer.valueOf(hashCode()) });
+      AppMethodBeat.o(205207);
+      return;
+    }
+  }
+  
+  public final void ezI()
+  {
+    AppMethodBeat.i(205208);
+    this.Cjz = true;
+    this.CjA = bs.Yu(16);
+    this.Cjr.setRandomStr(this.CjA);
+    ac.i("MicroMsg.JsApiHandler", "js digest updateDgtVerify randomStr = %s, hashCode: %d", new Object[] { this.CjA, Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(205208);
+  }
+  
+  public final String ezJ()
+  {
+    return this.CjA;
+  }
+  
+  public final com.tencent.mm.plugin.webview.c.b.a ezK()
+  {
+    AppMethodBeat.i(205213);
+    if (this.CjG == null) {
+      this.CjG = new com.tencent.mm.plugin.webview.c.b.a();
+    }
+    this.CjG.Cjl = this.Cjr;
+    com.tencent.mm.plugin.webview.c.b.a locala = this.CjG;
+    AppMethodBeat.o(205213);
+    return locala;
+  }
+  
+  public final void ezL()
+  {
+    AppMethodBeat.i(205217);
+    ac.v("MicroMsg.JsApiHandler", "doAttachRunOn3rdApis, ready(%s).", new Object[] { Boolean.valueOf(this.Apr) });
+    if ((this.Cjr != null) && (this.Apr)) {
+      this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:attach_runOn3rd_apis", ezM(), this.Cjz, this.CjA) + ")", new ValueCallback() {});
+    }
+    AppMethodBeat.o(205217);
+  }
+  
+  public final void ezP()
+  {
+    AppMethodBeat.i(205258);
+    if (this.Cjw != null) {
+      this.Cjw.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(205155);
+          f.e(f.this);
+          AppMethodBeat.o(205155);
+        }
+      });
+    }
+    AppMethodBeat.o(205258);
+  }
+  
+  public final void ezQ()
+  {
+    AppMethodBeat.i(205259);
+    if (this.zuC != null) {
+      this.zuC.clear();
+    }
+    AppMethodBeat.o(205259);
+  }
+  
+  public final void ezR()
+  {
+    AppMethodBeat.i(205279);
+    ac.i("MicroMsg.JsApiHandler", "getAllHostsInPage, ready(%s).", new Object[] { Boolean.valueOf(this.Apr) });
+    if ((this.Cjr != null) && (this.Apr)) {
+      this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:get_all_hosts", new HashMap(), this.Cjz, this.CjA) + ")", null);
+    }
+    AppMethodBeat.o(205279);
+  }
+  
+  public final void ezS()
+  {
+    AppMethodBeat.i(205281);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "onEmojiStoreShowLoading fail, not ready");
+      AppMethodBeat.o(205281);
+      return;
+    }
+    ac.i("MicroMsg.JsApiHandler", "onEmojiStoreShowLoading success, ready");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("needShow", Boolean.TRUE);
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(205189);
+        try
+        {
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205189);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ac.e("MicroMsg.JsApiHandler", "onEmojiStoreGetSearchData fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205189);
+        }
+      }
+    });
+    AppMethodBeat.o(205281);
+  }
+  
+  public final void ezT()
+  {
+    AppMethodBeat.i(205283);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "onNavigationBarRightButtonClick fail, not ready");
+      AppMethodBeat.o(205283);
+      return;
+    }
+    ac.i("MicroMsg.JsApiHandler", "onNavigationBarRightButtonClick success, ready");
+    String str = l.a.b("onNavigationBarRightButtonClick", new HashMap(), this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
+    AppMethodBeat.o(205283);
+  }
+  
+  public final long ezU()
+  {
+    AppMethodBeat.i(205285);
+    ac.d("MicroMsg.JsApiHandler", "cpan emoji get SearchID:%d", new Object[] { Long.valueOf(this.CjQ) });
+    long l = this.CjQ;
+    AppMethodBeat.o(205285);
+    return l;
+  }
+  
+  public final com.tencent.mm.plugin.webview.k.k ezV()
+  {
+    return this.CjR;
+  }
+  
+  public final void ezW()
+  {
+    AppMethodBeat.i(205286);
+    if (!this.Apr)
+    {
+      AppMethodBeat.o(205286);
+      return;
+    }
+    this.CjR.clear();
+    if (this.kYt != null) {
+      try
+      {
+        this.kYt.Vu(this.CjB);
+        AppMethodBeat.o(205286);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ac.printErrStackTrace("MicroMsg.JsApiHandler", localException, "clearSession", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(205286);
+  }
+  
+  public final void f(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    AppMethodBeat.i(205232);
+    if (!this.Apr)
+    {
+      AppMethodBeat.o(205232);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("state", paramString1);
+    localHashMap.put("vid", paramString2);
+    localHashMap.put("errMsg", paramString3);
+    localHashMap.put("currentTime", paramString4);
+    localHashMap.put("playedTotalTime", paramString5);
+    paramString1 = l.a.b("onMPVideoStateChange", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
+    AppMethodBeat.o(205232);
+  }
+  
+  public final void fc(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(205228);
+    if (!this.Apr)
+    {
+      AppMethodBeat.o(205228);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("videoVid", paramString);
     localHashMap.put("videoCurrTime", Integer.valueOf(paramInt));
     localHashMap.put("action", "onExitMpVideoFullPage");
-    paramString = l.a.b("onMPPageAction", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-    AppMethodBeat.o(189595);
+    paramString = l.a.b("onMPPageAction", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(205228);
   }
   
-  public final void eV(String paramString, int paramInt)
+  public final void fd(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189597);
-    if (!this.yZR)
+    AppMethodBeat.i(205230);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189597);
+      AppMethodBeat.o(205230);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("action", paramString);
     localHashMap.put("shareFuncFlag", Integer.valueOf(paramInt));
-    paramString = l.a.b("onMPPageAction", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-    AppMethodBeat.o(189597);
+    paramString = l.a.b("onMPPageAction", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(205230);
   }
   
-  public final void eW(String paramString, int paramInt)
+  public final void fe(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189608);
-    if (!this.yZR)
+    AppMethodBeat.i(205241);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onExdeviceStateChange fail, not ready");
-      AppMethodBeat.o(189608);
+      ac.e("MicroMsg.JsApiHandler", "onExdeviceStateChange fail, not ready");
+      AppMethodBeat.o(205241);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onExdeviceStateChange: device id = %s, state = %s", new Object[] { paramString, Integer.valueOf(paramInt) });
-    if (bt.isNullOrNil(paramString))
+    ac.i("MicroMsg.JsApiHandler", "onExdeviceStateChange: device id = %s, state = %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.JsApiHandler", "parameter error!!!");
-      AppMethodBeat.o(189608);
+      ac.e("MicroMsg.JsApiHandler", "parameter error!!!");
+      AppMethodBeat.o(205241);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -2471,25 +2648,25 @@ public final class f
     }
     for (;;)
     {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189498);
+          AppMethodBeat.i(205129);
           try
           {
-            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-            AppMethodBeat.o(189498);
+            f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+            AppMethodBeat.o(205129);
             return;
           }
           catch (Exception localException)
           {
-            ad.w("MicroMsg.JsApiHandler", "onExdeviceStateChange, %s", new Object[] { localException.getMessage() });
-            AppMethodBeat.o(189498);
+            ac.w("MicroMsg.JsApiHandler", "onExdeviceStateChange, %s", new Object[] { localException.getMessage() });
+            AppMethodBeat.o(205129);
           }
         }
       });
-      AppMethodBeat.o(189608);
+      AppMethodBeat.o(205241);
       return;
       if (paramInt == 1) {
         localHashMap.put("state", "connecting");
@@ -2499,984 +2676,726 @@ public final class f
     }
   }
   
-  public final void eX(String paramString, int paramInt)
+  public final void ff(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189612);
-    if (!this.yZR)
+    AppMethodBeat.i(205245);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onImageUploadProgress fail, not ready");
-      AppMethodBeat.o(189612);
+      ac.e("MicroMsg.JsApiHandler", "onImageUploadProgress fail, not ready");
+      AppMethodBeat.o(205245);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onImageUploadProgress, local id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.JsApiHandler", "onImageUploadProgress, local id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     HashMap localHashMap = new HashMap();
     localHashMap.put("localId", paramString);
     localHashMap.put("percent", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189508);
+        AppMethodBeat.i(205139);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189508);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205139);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onLocalImageUploadProgress fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189508);
+          ac.e("MicroMsg.JsApiHandler", "onLocalImageUploadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205139);
         }
       }
     });
-    AppMethodBeat.o(189612);
+    AppMethodBeat.o(205245);
   }
   
-  public final void eY(String paramString, int paramInt)
+  public final void fg(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189613);
-    if (!this.yZR)
+    AppMethodBeat.i(205246);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onImageDownloadProgress fail, not ready");
-      AppMethodBeat.o(189613);
+      ac.e("MicroMsg.JsApiHandler", "onImageDownloadProgress fail, not ready");
+      AppMethodBeat.o(205246);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onImageDownloadProgress, serverId id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.JsApiHandler", "onImageDownloadProgress, serverId id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     HashMap localHashMap = new HashMap();
     localHashMap.put("serverId", paramString);
     localHashMap.put("percent", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189509);
+        AppMethodBeat.i(205140);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189509);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205140);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onImageDownloadProgress fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189509);
+          ac.e("MicroMsg.JsApiHandler", "onImageDownloadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205140);
         }
       }
     });
-    AppMethodBeat.o(189613);
+    AppMethodBeat.o(205246);
   }
   
-  public final void eZ(String paramString, int paramInt)
+  public final void fh(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189614);
-    if (!this.yZR)
+    AppMethodBeat.i(205247);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onVoiceUploadProgress fail, not ready");
-      AppMethodBeat.o(189614);
+      ac.e("MicroMsg.JsApiHandler", "onVoiceUploadProgress fail, not ready");
+      AppMethodBeat.o(205247);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onVoiceUploadProgress, local id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.JsApiHandler", "onVoiceUploadProgress, local id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     HashMap localHashMap = new HashMap();
     localHashMap.put("localId", paramString);
     localHashMap.put("percent", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189510);
+        AppMethodBeat.i(205141);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189510);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205141);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onVoiceUploadProgress fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189510);
+          ac.e("MicroMsg.JsApiHandler", "onVoiceUploadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205141);
         }
       }
     });
-    AppMethodBeat.o(189614);
+    AppMethodBeat.o(205247);
   }
   
-  public final void ekA()
+  public final void fi(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189657);
-    if (!this.yZR)
+    AppMethodBeat.i(205248);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189657);
+      ac.e("MicroMsg.JsApiHandler", "onVoiceDownloadProgress fail, not ready");
+      AppMethodBeat.o(205248);
       return;
     }
-    this.ARE.clear();
-    if (this.kxf != null) {
-      try
-      {
-        this.kxf.Tm(this.ARo);
-        AppMethodBeat.o(189657);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ad.printErrStackTrace("MicroMsg.JsApiHandler", localException, "clearSession", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(189657);
-  }
-  
-  public final void ekm()
-  {
-    AppMethodBeat.i(189576);
-    if (this.ARm != true)
-    {
-      this.ARm = true;
-      if (!com.tencent.matrix.trace.g.b.dq(this.ARe.getRandomStr())) {
-        break label80;
-      }
-    }
-    label80:
-    for (String str = bt.Wl(16);; str = this.ARe.getRandomStr())
-    {
-      this.ARn = str;
-      ad.i("MicroMsg.JsApiHandler", "js digest verification randomStr = %s, hashCode: %d", new Object[] { this.ARn, Integer.valueOf(hashCode()) });
-      AppMethodBeat.o(189576);
-      return;
-    }
-  }
-  
-  public final String ekn()
-  {
-    return this.ARn;
-  }
-  
-  public final com.tencent.mm.plugin.webview.c.b.a eko()
-  {
-    AppMethodBeat.i(189581);
-    if (this.ARt == null) {
-      this.ARt = new com.tencent.mm.plugin.webview.c.b.a();
-    }
-    this.ARt.AQY = this.ARe;
-    com.tencent.mm.plugin.webview.c.b.a locala = this.ARt;
-    AppMethodBeat.o(189581);
-    return locala;
-  }
-  
-  public final void ekp()
-  {
-    AppMethodBeat.i(189584);
-    ad.v("MicroMsg.JsApiHandler", "doAttachRunOn3rdApis, ready(%s).", new Object[] { Boolean.valueOf(this.yZR) });
-    if ((this.ARe != null) && (this.yZR)) {
-      this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:attach_runOn3rd_apis", ekq(), this.ARm, this.ARn) + ")", new ValueCallback() {});
-    }
-    AppMethodBeat.o(189584);
-  }
-  
-  public final void ekt()
-  {
-    AppMethodBeat.i(189625);
-    if (this.ARj != null) {
-      this.ARj.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(189524);
-          f.e(f.this);
-          AppMethodBeat.o(189524);
-        }
-      });
-    }
-    AppMethodBeat.o(189625);
-  }
-  
-  public final void eku()
-  {
-    AppMethodBeat.i(189626);
-    if (this.yhC != null) {
-      this.yhC.clear();
-    }
-    AppMethodBeat.o(189626);
-  }
-  
-  public final void ekv()
-  {
-    AppMethodBeat.i(189650);
-    ad.i("MicroMsg.JsApiHandler", "getAllHostsInPage, ready(%s).", new Object[] { Boolean.valueOf(this.yZR) });
-    if ((this.ARe != null) && (this.yZR)) {
-      this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:get_all_hosts", new HashMap(), this.ARm, this.ARn) + ")", null);
-    }
-    AppMethodBeat.o(189650);
-  }
-  
-  public final void ekw()
-  {
-    AppMethodBeat.i(189652);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onEmojiStoreShowLoading fail, not ready");
-      AppMethodBeat.o(189652);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onEmojiStoreShowLoading success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onVoiceDownloadProgress, serverId id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     HashMap localHashMap = new HashMap();
-    localHashMap.put("needShow", Boolean.TRUE);
-    aq.f(new Runnable()
+    localHashMap.put("serverId", paramString);
+    localHashMap.put("percent", Integer.valueOf(paramInt));
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189558);
+        AppMethodBeat.i(205142);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189558);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205142);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onEmojiStoreGetSearchData fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189558);
+          ac.e("MicroMsg.JsApiHandler", "onVoiceDownloadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205142);
         }
       }
     });
-    AppMethodBeat.o(189652);
+    AppMethodBeat.o(205248);
   }
   
-  public final void ekx()
+  public final void fj(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189654);
-    if (!this.yZR)
+    AppMethodBeat.i(205249);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onNavigationBarRightButtonClick fail, not ready");
-      AppMethodBeat.o(189654);
+      ac.e("MicroMsg.JsApiHandler", "onVideoUploadoadProgress fail, not ready");
+      AppMethodBeat.o(205249);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onNavigationBarRightButtonClick success, ready");
-    String str = l.a.b("onNavigationBarRightButtonClick", new HashMap(), this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", null);
-    AppMethodBeat.o(189654);
-  }
-  
-  public final long eky()
-  {
-    AppMethodBeat.i(189656);
-    ad.d("MicroMsg.JsApiHandler", "cpan emoji get SearchID:%d", new Object[] { Long.valueOf(this.ARD) });
-    long l = this.ARD;
-    AppMethodBeat.o(189656);
-    return l;
-  }
-  
-  public final com.tencent.mm.plugin.webview.k.k ekz()
-  {
-    return this.ARE;
-  }
-  
-  public final void evaluateJavascript(final String paramString, final ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(189659);
-    if (aq.isMainThread())
-    {
-      this.ARe.evaluateJavascript(paramString, paramValueCallback);
-      AppMethodBeat.o(189659);
-      return;
-    }
-    aq.f(new Runnable()
+    ac.i("MicroMsg.JsApiHandler", "onVideoUploadoadProgress, local id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("localId", paramString);
+    localHashMap.put("percent", Integer.valueOf(paramInt));
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189567);
-        f.f(f.this).evaluateJavascript(paramString, paramValueCallback);
-        AppMethodBeat.o(189567);
+        AppMethodBeat.i(205143);
+        try
+        {
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205143);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ac.e("MicroMsg.JsApiHandler", "onVideoUploadoadProgress fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205143);
+        }
       }
     });
-    AppMethodBeat.o(189659);
+    AppMethodBeat.o(205249);
   }
   
-  public final void f(int paramInt, String paramString1, String paramString2, String paramString3, final String paramString4)
+  final String fk(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189646);
-    if (!this.yZR)
+    AppMethodBeat.i(205255);
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("url", paramString);
+    localHashMap.put("set_cookie", Integer.valueOf(paramInt));
+    paramString = aBq(l.a.b("onGetA8KeyUrl", localHashMap, this.Cjz, this.CjA));
+    AppMethodBeat.o(205255);
+    return paramString;
+  }
+  
+  public final void fl(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(205276);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "%s fail, not ready", new Object[] { paramString4 });
-      AppMethodBeat.o(189646);
+      ac.e("MicroMsg.JsApiHandler", "onMusicStatusChanged fail, not ready");
+      AppMethodBeat.o(205276);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "%s success, ready", new Object[] { paramString4 });
+    ac.i("MicroMsg.JsApiHandler", "onMusicStatusChanged success, ready");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("snsid", paramString);
+    localHashMap.put("status", Integer.valueOf(paramInt));
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(205185);
+        try
+        {
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205185);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ac.e("MicroMsg.JsApiHandler", "onMusicStatusChanged fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205185);
+        }
+      }
+    });
+    AppMethodBeat.o(205276);
+  }
+  
+  public final void g(int paramInt, String paramString1, String paramString2, String paramString3, final String paramString4)
+  {
+    AppMethodBeat.i(205275);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "%s fail, not ready", new Object[] { paramString4 });
+      AppMethodBeat.o(205275);
+      return;
+    }
+    ac.i("MicroMsg.JsApiHandler", "%s success, ready", new Object[] { paramString4 });
     HashMap localHashMap = new HashMap();
     localHashMap.put("retCode", Integer.valueOf(paramInt));
     localHashMap.put("errMsg", paramString1);
     localHashMap.put("json", paramString2);
-    if (!bt.isNullOrNil(paramString3)) {
+    if (!bs.isNullOrNil(paramString3)) {
       localHashMap.put("requestId", paramString3);
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189553);
+        AppMethodBeat.i(205184);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189553);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205184);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "%s fail, ex = %s", new Object[] { paramString4, localException.getMessage() });
-          AppMethodBeat.o(189553);
+          ac.e("MicroMsg.JsApiHandler", "%s fail, ex = %s", new Object[] { paramString4, localException.getMessage() });
+          AppMethodBeat.o(205184);
         }
       }
     });
-    AppMethodBeat.o(189646);
-  }
-  
-  public final void f(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    AppMethodBeat.i(189599);
-    if (!this.yZR)
-    {
-      AppMethodBeat.o(189599);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("state", paramString1);
-    localHashMap.put("vid", paramString2);
-    localHashMap.put("errMsg", paramString3);
-    localHashMap.put("currentTime", paramString4);
-    localHashMap.put("playedTotalTime", paramString5);
-    paramString1 = l.a.b("onMPVideoStateChange", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
-    AppMethodBeat.o(189599);
-  }
-  
-  public final void fa(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(189615);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onVoiceDownloadProgress fail, not ready");
-      AppMethodBeat.o(189615);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onVoiceDownloadProgress, serverId id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("serverId", paramString);
-    localHashMap.put("percent", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189511);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189511);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onVoiceDownloadProgress fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189511);
-        }
-      }
-    });
-    AppMethodBeat.o(189615);
-  }
-  
-  public final void fb(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(189616);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onVideoUploadoadProgress fail, not ready");
-      AppMethodBeat.o(189616);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onVideoUploadoadProgress, local id : %s, percent : %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("localId", paramString);
-    localHashMap.put("percent", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189512);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189512);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onVideoUploadoadProgress fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189512);
-        }
-      }
-    });
-    AppMethodBeat.o(189616);
-  }
-  
-  final String fc(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(189622);
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("url", paramString);
-    localHashMap.put("set_cookie", Integer.valueOf(paramInt));
-    paramString = avY(l.a.b("onGetA8KeyUrl", localHashMap, this.ARm, this.ARn));
-    AppMethodBeat.o(189622);
-    return paramString;
-  }
-  
-  public final void fd(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(189647);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onMusicStatusChanged fail, not ready");
-      AppMethodBeat.o(189647);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onMusicStatusChanged success, ready");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("snsid", paramString);
-    localHashMap.put("status", Integer.valueOf(paramInt));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189554);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189554);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onMusicStatusChanged fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189554);
-        }
-      }
-    });
-    AppMethodBeat.o(189647);
+    AppMethodBeat.o(205275);
   }
   
   public final int getBinderID()
   {
-    return this.ARo;
+    return this.CjB;
   }
   
   public final Context getContext()
   {
-    AppMethodBeat.i(189590);
-    if (this.ARe == null)
+    AppMethodBeat.i(205223);
+    if (this.Cjr == null)
     {
-      AppMethodBeat.o(189590);
+      AppMethodBeat.o(205223);
       return null;
     }
-    Context localContext = this.ARe.getActivityContextIfHas();
-    AppMethodBeat.o(189590);
+    Context localContext = this.Cjr.getActivityContextIfHas();
+    AppMethodBeat.o(205223);
     return localContext;
   }
   
-  public final y getSettings()
+  public final String getCurrentUrl()
   {
-    AppMethodBeat.i(189575);
-    y localy = this.ARe.getSettings();
-    AppMethodBeat.o(189575);
-    return localy;
+    AppMethodBeat.i(210490);
+    if (this.Cjr == null)
+    {
+      AppMethodBeat.o(210490);
+      return "";
+    }
+    String str = this.Cjr.getUrl();
+    AppMethodBeat.o(210490);
+    return str;
+  }
+  
+  public final z getSettings()
+  {
+    AppMethodBeat.i(205206);
+    z localz = this.Cjr.getSettings();
+    AppMethodBeat.o(205206);
+    return localz;
   }
   
   public final String getUsername()
   {
-    AppMethodBeat.i(189658);
-    String str = (String)this.ARk.get("srcUsername");
-    AppMethodBeat.o(189658);
+    AppMethodBeat.i(205287);
+    String str = (String)this.Cjx.get("srcUsername");
+    AppMethodBeat.o(205287);
     return str;
   }
   
-  public final void h(final Bundle paramBundle, final String paramString)
+  public final void i(final Bundle paramBundle, final String paramString)
   {
-    AppMethodBeat.i(189605);
+    AppMethodBeat.i(205238);
     if (paramBundle == null)
     {
-      ad.w("MicroMsg.JsApiHandler", "sendDataWithSetData data is null");
-      AppMethodBeat.o(189605);
+      ac.w("MicroMsg.JsApiHandler", "sendDataWithSetData data is null");
+      AppMethodBeat.o(205238);
       return;
     }
-    if (this.ARj != null) {
-      this.ARj.post(new Runnable()
+    if (this.Cjw != null) {
+      this.Cjw.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189570);
+          AppMethodBeat.i(205201);
           l locall = new l();
-          locall.uLu = new HashMap();
-          locall.uLu.put("link", paramBundle.getString("link"));
-          locall.uLu.put("title", paramBundle.getString("title"));
-          locall.uLu.put("desc", paramBundle.getString("desc"));
-          locall.ASh = new JSONObject();
-          locall.uLu.put("img_url", paramBundle.getString("img_url"));
-          locall.uLu.put("use_update_jsapi_data", Boolean.valueOf(paramBundle.getBoolean("use_update_jsapi_data")));
+          locall.vUl = new HashMap();
+          locall.vUl.put("link", paramBundle.getString("link"));
+          locall.vUl.put("title", paramBundle.getString("title"));
+          locall.vUl.put("desc", paramBundle.getString("desc"));
+          locall.Cku = new JSONObject();
+          locall.vUl.put("img_url", paramBundle.getString("img_url"));
+          locall.vUl.put("use_update_jsapi_data", Boolean.valueOf(paramBundle.getBoolean("use_update_jsapi_data")));
           locall.type = "call";
-          locall.ASg = "";
-          locall.kbU = paramString;
+          locall.Ckt = "";
+          locall.kCH = paramString;
           f.d(f.this).add(locall);
           f.e(f.this);
-          AppMethodBeat.o(189570);
+          AppMethodBeat.o(205201);
         }
       });
     }
-    AppMethodBeat.o(189605);
+    AppMethodBeat.o(205238);
   }
   
-  public final void h(final String paramString1, String paramString2, Map<String, Object> paramMap)
+  public final boolean isReady()
   {
-    AppMethodBeat.i(189627);
+    return this.Apr;
+  }
+  
+  public final void j(Bundle paramBundle, String paramString)
+  {
+    AppMethodBeat.i(205239);
+    if ((!this.Apr) || (paramBundle == null))
+    {
+      ac.e("MicroMsg.JsApiHandler", "onDownloadStateChange fail, not ready");
+      AppMethodBeat.o(205239);
+      return;
+    }
+    long l = paramBundle.getLong("download_manager_downloadid");
+    String str = paramBundle.getString("download_manager_appid", "");
+    int i = paramBundle.getInt("download_manager_errcode");
+    ac.i("MicroMsg.JsApiHandler", "onDownloadStateChange, downloadId = " + l + ", state = " + paramString + ", errCode = " + i);
+    paramBundle = new HashMap();
+    paramBundle.put("appid", str);
+    paramBundle.put("download_id", Long.valueOf(l));
+    paramBundle.put("err_code", Integer.valueOf(i));
+    paramBundle.put("state", paramString);
+    ap.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(205202);
+        try
+        {
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205202);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ac.w("MicroMsg.JsApiHandler", "onDownloadStateChange, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205202);
+        }
+      }
+    });
+    AppMethodBeat.o(205239);
+  }
+  
+  public final void j(final String paramString1, String paramString2, Map<String, Object> paramMap)
+  {
+    AppMethodBeat.i(205260);
     if ((paramString2 == null) || (paramString2.length() == 0) || (paramString1 == null))
     {
-      ad.e("MicroMsg.JsApiHandler", "doCallback, invalid args, ret = ".concat(String.valueOf(paramString2)));
-      AppMethodBeat.o(189627);
+      ac.e("MicroMsg.JsApiHandler", "doCallback, invalid args, ret = ".concat(String.valueOf(paramString2)));
+      AppMethodBeat.o(205260);
       return;
     }
-    if (this.fSr.containsKey(paramString1))
+    if (this.fWm.containsKey(paramString1))
     {
-      ((b)this.fSr.get(paramString1)).h(paramString1, paramString2, paramMap);
-      this.fSr.remove(paramString1);
-      AppMethodBeat.o(189627);
+      ((b)this.fWm.get(paramString1)).j(paramString1, paramString2, paramMap);
+      this.fWm.remove(paramString1);
+      AppMethodBeat.o(205260);
       return;
     }
-    if (!this.yZR)
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "doCallback fail, not ready");
-      AppMethodBeat.o(189627);
+      ac.e("MicroMsg.JsApiHandler", "doCallback fail, not ready");
+      AppMethodBeat.o(205260);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("err_msg", paramString2);
     if ((paramMap != null) && (paramMap.size() > 0))
     {
-      ad.i("MicroMsg.JsApiHandler", "doCallback, retValue size = " + paramMap.size());
+      ac.i("MicroMsg.JsApiHandler", "doCallback, retValue size = " + paramMap.size());
       localHashMap.putAll(paramMap);
     }
-    paramString1 = l.a.a(paramString1, localHashMap, this.ARm, this.ARn);
-    ad.i("MicroMsg.JsApiHandler", "doCallback, ret = " + paramString2 + ", cb = " + paramString1);
-    if ((paramString1 != null) && (this.ARe != null))
+    paramString1 = l.a.a(paramString1, localHashMap, this.Cjz, this.CjA);
+    ac.i("MicroMsg.JsApiHandler", "doCallback, ret = " + paramString2 + ", cb = " + paramString1);
+    if ((paramString1 != null) && (this.Cjr != null))
     {
       paramString1 = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189525);
+          AppMethodBeat.i(205156);
           try
           {
             f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
-            AppMethodBeat.o(189525);
+            AppMethodBeat.o(205156);
             return;
           }
           catch (Exception localException)
           {
-            ad.w("MicroMsg.JsApiHandler", "doCallback, ex = %s", new Object[] { localException.getMessage() });
-            AppMethodBeat.o(189525);
+            ac.w("MicroMsg.JsApiHandler", "doCallback, ex = %s", new Object[] { localException.getMessage() });
+            AppMethodBeat.o(205156);
           }
         }
       };
-      if (aq.isMainThread())
+      if (ap.isMainThread())
       {
         paramString1.run();
-        AppMethodBeat.o(189627);
+        AppMethodBeat.o(205260);
         return;
       }
-      aq.f(paramString1);
+      ap.f(paramString1);
     }
-    AppMethodBeat.o(189627);
-  }
-  
-  public final void i(Bundle paramBundle, String paramString)
-  {
-    AppMethodBeat.i(189606);
-    if ((!this.yZR) || (paramBundle == null))
-    {
-      ad.e("MicroMsg.JsApiHandler", "onDownloadStateChange fail, not ready");
-      AppMethodBeat.o(189606);
-      return;
-    }
-    long l = paramBundle.getLong("download_manager_downloadid");
-    String str = paramBundle.getString("download_manager_appid", "");
-    int i = paramBundle.getInt("download_manager_errcode");
-    ad.i("MicroMsg.JsApiHandler", "onDownloadStateChange, downloadId = " + l + ", state = " + paramString + ", errCode = " + i);
-    paramBundle = new HashMap();
-    paramBundle.put("appid", str);
-    paramBundle.put("download_id", Long.valueOf(l));
-    paramBundle.put("err_code", Integer.valueOf(i));
-    paramBundle.put("state", paramString);
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189571);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189571);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.w("MicroMsg.JsApiHandler", "onDownloadStateChange, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189571);
-        }
-      }
-    });
-    AppMethodBeat.o(189606);
-  }
-  
-  public final boolean isReady()
-  {
-    return this.yZR;
-  }
-  
-  public final void it(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(189629);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onSearchActionSheetClick fail, not ready");
-      AppMethodBeat.o(189629);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onSearchActionSheetClick success, ready");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("index", Integer.valueOf(paramInt1));
-    localHashMap.put("actionSheetId", Integer.valueOf(paramInt2));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189527);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189527);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onSearchActionSheetClick fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189527);
-        }
-      }
-    });
-    AppMethodBeat.o(189629);
+    AppMethodBeat.o(205260);
   }
   
   public final void j(String paramString1, boolean paramBoolean, String paramString2)
   {
-    AppMethodBeat.i(189631);
-    if (!this.yZR)
+    AppMethodBeat.i(205262);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchDataReady fail, not ready");
-      AppMethodBeat.o(189631);
+      ac.e("MicroMsg.JsApiHandler", "onSearchDataReady fail, not ready");
+      AppMethodBeat.o(205262);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSearchDataReady success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onSearchDataReady success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("json", paramString1);
     localHashMap.put("newQuery", Boolean.valueOf(paramBoolean));
     localHashMap.put("requestId", paramString2);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189532);
+        AppMethodBeat.i(205163);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189532);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205163);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSearchDataReady fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189532);
+          ac.e("MicroMsg.JsApiHandler", "onSearchDataReady fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205163);
         }
       }
     });
-    AppMethodBeat.o(189631);
+    AppMethodBeat.o(205262);
   }
   
-  public final void jU(String paramString1, String paramString2)
+  public final void kq(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189596);
-    if (!this.yZR)
+    AppMethodBeat.i(205229);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189596);
+      AppMethodBeat.o(205229);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("videoVid", paramString1);
     localHashMap.put("result", paramString2);
     localHashMap.put("action", "onEmbedMpVideoShare");
-    paramString1 = l.a.b("onMPPageAction", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
-    AppMethodBeat.o(189596);
+    paramString1 = l.a.b("onMPPageAction", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString1 + ")", null);
+    AppMethodBeat.o(205229);
   }
   
-  public final void jV(String paramString1, String paramString2)
+  public final void kr(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189634);
-    if (!this.yZR)
+    AppMethodBeat.i(205264);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish fail, not ready");
-      AppMethodBeat.o(189634);
+      ac.e("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish fail, not ready");
+      AppMethodBeat.o(205264);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish success, ready");
+    ac.i("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("widgetId", paramString1);
     localHashMap.put("data", paramString2);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189539);
+        AppMethodBeat.i(205170);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", new ValueCallback() {});
-          AppMethodBeat.o(189539);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", new ValueCallback() {});
+          AppMethodBeat.o(205170);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189539);
+          ac.e("MicroMsg.JsApiHandler", "onSearchWAWidgetReloadDataFinish fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205170);
         }
       }
     });
-    AppMethodBeat.o(189634);
+    AppMethodBeat.o(205264);
   }
   
-  public final void l(HashMap<String, String> paramHashMap)
+  public final void m(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(189602);
-    ad.i("MicroMsg.JsApiHandler", "onSendToFriend %b", new Object[] { Boolean.valueOf(this.yZR) });
-    if (!this.yZR)
+    AppMethodBeat.i(205235);
+    ac.i("MicroMsg.JsApiHandler", "onSendToFriend %b", new Object[] { Boolean.valueOf(this.Apr) });
+    if (!this.Apr)
     {
-      ad.w("MicroMsg.JsApiHandler", "onSendToFriend not ready");
-      h(bp(paramHashMap), "sendAppMessage");
-      AppMethodBeat.o(189602);
+      ac.w("MicroMsg.JsApiHandler", "onSendToFriend not ready");
+      i(bu(paramHashMap), "sendAppMessage");
+      AppMethodBeat.o(205235);
       return;
     }
-    paramHashMap = SF(1);
+    paramHashMap = UN(1);
     if ((paramHashMap != null) && (paramHashMap.getBoolean("WebViewShare_reslut", false)))
     {
-      h(paramHashMap, "sendAppMessage");
-      AppMethodBeat.o(189602);
+      i(paramHashMap, "sendAppMessage");
+      AppMethodBeat.o(205235);
       return;
     }
     paramHashMap = new HashMap();
     paramHashMap.put("scene", "friend");
-    paramHashMap = l.a.b("menu:share:appmessage", paramHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramHashMap + ")", null);
+    paramHashMap = l.a.b("menu:share:appmessage", paramHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramHashMap + ")", null);
     try
     {
-      this.kxf.ab("scene", "friend", this.ARo);
-      AppMethodBeat.o(189602);
+      this.kYt.ac("scene", "friend", this.CjB);
+      AppMethodBeat.o(205235);
       return;
     }
     catch (Exception paramHashMap)
     {
-      ad.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + paramHashMap.getMessage());
-      AppMethodBeat.o(189602);
+      ac.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + paramHashMap.getMessage());
+      AppMethodBeat.o(205235);
     }
   }
   
-  public final void q(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public final void ui(boolean paramBoolean)
   {
-    AppMethodBeat.i(189644);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "onSearchGuideDataReady fail, not ready");
-      AppMethodBeat.o(189644);
-      return;
-    }
-    ad.i("MicroMsg.JsApiHandler", "onSearchGuideDataReady success, ready");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("json", paramString);
-    localHashMap.put("isCacheData", Integer.valueOf(paramInt1));
-    localHashMap.put("isExpired", Integer.valueOf(paramInt2));
-    localHashMap.put("isPreload", Integer.valueOf(paramInt3));
-    aq.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(189551);
-        try
-        {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189551);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ad.e("MicroMsg.JsApiHandler", "onSearchGuideDataReady fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189551);
-        }
-      }
-    });
-    AppMethodBeat.o(189644);
+    AppMethodBeat.i(205216);
+    this.Apr = paramBoolean;
+    ac.i("MicroMsg.JsApiHandler", "js ready now");
+    AppMethodBeat.o(205216);
   }
   
-  public final void t(int paramInt1, String paramString, int paramInt2)
+  public final void uj(boolean paramBoolean)
   {
-    AppMethodBeat.i(189593);
-    if (!this.yZR)
+    AppMethodBeat.i(205252);
+    if (!this.Apr)
     {
-      AppMethodBeat.o(189593);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("recommend", Integer.valueOf(paramInt1));
-    localHashMap.put("comment", paramString);
-    localHashMap.put("scene", Integer.valueOf(paramInt2));
-    paramString = l.a.b("menu:haokan", localHashMap, this.ARm, this.ARn);
-    this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
-    AppMethodBeat.o(189593);
-  }
-  
-  public final void th(boolean paramBoolean)
-  {
-    AppMethodBeat.i(189619);
-    if (!this.yZR)
-    {
-      ad.e("MicroMsg.JsApiHandler", "not ready");
-      AppMethodBeat.o(189619);
+      ac.e("MicroMsg.JsApiHandler", "not ready");
+      AppMethodBeat.o(205252);
       return;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("success", Boolean.valueOf(paramBoolean));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189520);
+        AppMethodBeat.i(205151);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189520);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205151);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onGetSmiley fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189520);
+          ac.e("MicroMsg.JsApiHandler", "onGetSmiley fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205151);
         }
       }
     });
-    AppMethodBeat.o(189619);
+    AppMethodBeat.o(205252);
   }
   
-  public final void ti(boolean paramBoolean)
+  public final void uk(boolean paramBoolean)
   {
-    AppMethodBeat.i(189649);
-    if (!this.yZR)
+    AppMethodBeat.i(205278);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onPageStateChange fail, not ready");
-      AppMethodBeat.o(189649);
+      ac.e("MicroMsg.JsApiHandler", "onPageStateChange fail, not ready");
+      AppMethodBeat.o(205278);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onPageStateChange success, ready, active = %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.JsApiHandler", "onPageStateChange success, ready, active = %b", new Object[] { Boolean.valueOf(paramBoolean) });
     HashMap localHashMap = new HashMap();
     localHashMap.put("active", String.valueOf(paramBoolean));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189556);
+        AppMethodBeat.i(205187);
         try
         {
-          f.f(f.this).evaluateJavascript(this.ARL, null);
-          AppMethodBeat.o(189556);
+          f.f(f.this).evaluateJavascript(this.CjY, null);
+          AppMethodBeat.o(205187);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onPullDownRefresh fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189556);
+          ac.e("MicroMsg.JsApiHandler", "onPullDownRefresh fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205187);
         }
       }
     });
-    AppMethodBeat.o(189649);
+    AppMethodBeat.o(205278);
   }
   
-  public final void tj(boolean paramBoolean)
+  public final void ul(boolean paramBoolean)
   {
-    AppMethodBeat.i(189651);
-    ad.i("MicroMsg.JsApiHandler", "getHtmlContent, ready(%s).", new Object[] { Boolean.valueOf(this.yZR) });
-    if ((this.ARe != null) && (this.kxf != null) && (this.yZR)) {
+    AppMethodBeat.i(205280);
+    ac.i("MicroMsg.JsApiHandler", "getHtmlContent, ready(%s).", new Object[] { Boolean.valueOf(this.Apr) });
+    if ((this.Cjr != null) && (this.kYt != null) && (this.Apr)) {
       if (paramBoolean)
       {
-        this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:get_html_content", new HashMap(), this.ARm, this.ARn) + ")", null);
-        AppMethodBeat.o(189651);
+        this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:get_html_content", new HashMap(), this.Cjz, this.CjA) + ")", null);
+        AppMethodBeat.o(205280);
         return;
       }
     }
     try
     {
-      List localList = this.kxf.enw();
-      Uri localUri = Uri.parse(this.ARe.getUrl());
+      List localList = this.kYt.eCP();
+      Uri localUri = Uri.parse(this.Cjr.getUrl());
       if (localUri != null) {
-        ad.d("MicroMsg.JsApiHandler", "wv hijack url host" + localUri.getHost());
+        ac.d("MicroMsg.JsApiHandler", "wv hijack url host" + localUri.getHost());
       }
       if ((localList != null) && (localUri != null) && (localList.contains(localUri.getHost()))) {
-        this.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:get_html_content", new HashMap(), this.ARm, this.ARn) + ")", null);
+        this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + l.a.b("sys:get_html_content", new HashMap(), this.Cjz, this.CjA) + ")", null);
       }
-      AppMethodBeat.o(189651);
+      AppMethodBeat.o(205280);
       return;
     }
     catch (RemoteException localRemoteException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.JsApiHandler", localRemoteException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.JsApiHandler", localRemoteException, "", new Object[0]);
         Object localObject = null;
       }
     }
   }
   
-  public final void u(int paramInt1, String paramString, int paramInt2)
+  public final void v(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(189643);
-    if (!this.yZR)
+    AppMethodBeat.i(205226);
+    if (!this.Apr)
     {
-      ad.e("MicroMsg.JsApiHandler", "onTeachSearchDataReady fail, not ready");
-      AppMethodBeat.o(189643);
+      AppMethodBeat.o(205226);
       return;
     }
-    ad.i("MicroMsg.JsApiHandler", "onTeachSearchDataReady success, ready");
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("recommend", Integer.valueOf(paramInt1));
+    localHashMap.put("comment", paramString);
+    localHashMap.put("scene", Integer.valueOf(paramInt2));
+    paramString = l.a.b("menu:haokan", localHashMap, this.Cjz, this.CjA);
+    this.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + paramString + ")", null);
+    AppMethodBeat.o(205226);
+  }
+  
+  public final void w(int paramInt1, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(205273);
+    if (!this.Apr)
+    {
+      ac.e("MicroMsg.JsApiHandler", "onTeachSearchDataReady fail, not ready");
+      AppMethodBeat.o(205273);
+      return;
+    }
+    ac.i("MicroMsg.JsApiHandler", "onTeachSearchDataReady success, ready");
     HashMap localHashMap = new HashMap();
     localHashMap.put("requestType", Integer.valueOf(paramInt1));
     localHashMap.put("json", paramString);
     localHashMap.put("isCacheData", Integer.valueOf(paramInt2));
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189549);
+        AppMethodBeat.i(205180);
         try
         {
-          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.kDn + ")", null);
-          AppMethodBeat.o(189549);
+          f.f(f.this).evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + this.leF + ")", null);
+          AppMethodBeat.o(205180);
           return;
         }
         catch (Exception localException)
         {
-          ad.e("MicroMsg.JsApiHandler", "onTeachSearchDataReady fail, ex = %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(189549);
+          ac.e("MicroMsg.JsApiHandler", "onTeachSearchDataReady fail, ex = %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(205180);
         }
       }
     });
-    AppMethodBeat.o(189643);
+    AppMethodBeat.o(205273);
   }
   
   public static abstract interface a

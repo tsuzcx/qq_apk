@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,10 +18,10 @@ public final class a
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(144494);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(91);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(91);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiCloseBLEConnection", "JsApiCloseBLEConnection data is null");
+      ac.e("MicroMsg.JsApiCloseBLEConnection", "JsApiCloseBLEConnection data is null");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10013));
       paramc.h(paramInt, k("fail:invalid data", paramJSONObject));
@@ -29,11 +29,11 @@ public final class a
       AppMethodBeat.o(144494);
       return;
     }
-    ad.i("MicroMsg.JsApiCloseBLEConnection", "appId:%s closeBLEConnection data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.HS(paramc.getAppId());
+    ac.i("MicroMsg.JsApiCloseBLEConnection", "appId:%s closeBLEConnection data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.LX(paramc.getAppId());
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiCloseBLEConnection", "bleWorker is null, may not open ble");
+      ac.e("MicroMsg.JsApiCloseBLEConnection", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
       paramc.h(paramInt, k("fail:not init", paramJSONObject));
@@ -41,9 +41,9 @@ public final class a
       AppMethodBeat.o(144494);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZd())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV())
     {
-      ad.e("MicroMsg.JsApiCloseBLEConnection", "adapter is null or not enabled!");
+      ac.e("MicroMsg.JsApiCloseBLEConnection", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
       paramc.h(paramInt, k("fail:not available", paramJSONObject));
@@ -56,9 +56,9 @@ public final class a
     boolean bool2 = paramJSONObject.optBoolean("mainThread", true);
     boolean bool3 = paramJSONObject.optBoolean("serial", true);
     paramJSONObject = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.a();
-    paramJSONObject.aMt = bool1;
-    paramJSONObject.jIS = bool2;
-    paramJSONObject.jIU = bool3;
+    paramJSONObject.aNj = bool1;
+    paramJSONObject.kjt = bool2;
+    paramJSONObject.kjv = bool3;
     localb.a(str, paramJSONObject, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b()
     {
       public final void a(j paramAnonymousj)
@@ -70,14 +70,14 @@ public final class a
           HashMap localHashMap = new HashMap();
           localHashMap.put("errCode", Integer.valueOf(paramAnonymousj.errCode));
           paramc.h(paramInt, a.this.k(paramAnonymousj.errMsg, localHashMap));
-          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(93);
+          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(93);
           AppMethodBeat.o(144493);
           return;
         }
         paramAnonymousj = new HashMap();
         paramAnonymousj.put("errCode", Integer.valueOf(0));
         paramc.h(paramInt, a.this.k("ok", paramAnonymousj));
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(92);
+        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(92);
         AppMethodBeat.o(144493);
       }
     });

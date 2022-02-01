@@ -11,13 +11,13 @@ import com.tencent.mm.compatible.deviceinfo.n;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.protocal.protobuf.dkl;
-import com.tencent.mm.protocal.protobuf.dkn;
-import com.tencent.mm.protocal.protobuf.xy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dqc;
+import com.tencent.mm.protocal.protobuf.dqe;
+import com.tencent.mm.protocal.protobuf.yt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.wxmm.IConfCallBack;
 import com.tencent.wxmm.v2conference;
 import java.io.IOException;
@@ -27,61 +27,110 @@ import java.util.LinkedList;
 
 class l
 {
-  private static final String[] nPv;
-  private static v2conference nQx;
+  private static final String[] osz;
+  private static v2conference otC;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(90838);
-    nPv = new String[] { "marsbridgenetwork", "marsbridgexlog", "confService" };
-    Context localContext = aj.getContext();
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: load so");
-    String[] arrayOfString = nPv;
+    osz = new String[] { "marsbridgenetwork", "marsbridgexlog", "confService" };
+    Context localContext = ai.getContext();
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: load so");
+    String[] arrayOfString = osz;
     int j = arrayOfString.length;
     while (i < j)
     {
       String str = arrayOfString[i];
       l.class.getClassLoader();
-      j.pq(str);
+      j.sC(str);
       i += 1;
     }
-    h.Iye.aO(new l.1(localContext));
-    nQx = new v2conference();
+    h.JZN.aR(new l.1(localContext));
+    otC = new v2conference();
     AppMethodBeat.o(90838);
   }
   
-  public static int F(ArrayList<dkl> paramArrayList)
+  public static int Ar(int paramInt)
+  {
+    AppMethodBeat.i(90831);
+    paramInt = otC.GetVoiceActivity(paramInt);
+    AppMethodBeat.o(90831);
+    return paramInt;
+  }
+  
+  static int As(int paramInt)
+  {
+    AppMethodBeat.i(90832);
+    paramInt = otC.ExitRoom(paramInt);
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "exitRoom ret:".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(90832);
+    return paramInt;
+  }
+  
+  public static void At(int paramInt)
+  {
+    AppMethodBeat.i(90835);
+    otC.OnNetworkChange(paramInt);
+    AppMethodBeat.o(90835);
+  }
+  
+  public static void I(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int j = 1;
+    AppMethodBeat.i(200741);
+    v2conference localv2conference = otC;
+    int i;
+    if (paramBoolean1)
+    {
+      i = 1;
+      if (!paramBoolean2) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      localv2conference.SwitchAV(i, j);
+      AppMethodBeat.o(200741);
+      return;
+      i = 0;
+      break;
+      label41:
+      j = 0;
+    }
+  }
+  
+  public static int K(ArrayList<dqc> paramArrayList)
   {
     AppMethodBeat.i(184468);
     if (paramArrayList.size() == 0)
     {
-      ad.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "steve: memberIdArr is null");
+      ac.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "steve: memberIdArr is null");
       AppMethodBeat.o(184468);
       return -1;
     }
-    dkn localdkn = new dkn();
-    localdkn.CZN = 320;
+    dqe localdqe = new dqe();
+    localdqe.EsK = 320;
     LinkedList localLinkedList = new LinkedList();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      localLinkedList.add((dkl)paramArrayList.next());
+      localLinkedList.add((dqc)paramArrayList.next());
     }
-    localdkn.hom = localLinkedList;
+    localdqe.hOP = localLinkedList;
     label169:
     for (;;)
     {
       try
       {
-        ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "videoResParam:" + new String(localdkn.toByteArray()) + ",length:" + localdkn.toByteArray().length);
-        int i = nQx.SetVideoResolution(localdkn.toByteArray(), localdkn.toByteArray().length);
-        ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramArrayList, "SetVideoResolution exception", new Object[0]);
+        ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "videoResParam:" + new String(localdqe.toByteArray()) + ",length:" + localdqe.toByteArray().length);
+        int i = otC.SetVideoResolution(localdqe.toByteArray(), localdqe.toByteArray().length);
+        ac.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramArrayList, "SetVideoResolution exception", new Object[0]);
       }
       catch (IOException paramArrayList)
       {
         try
         {
-          ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "steve: subScribeVideoAndResList ret:".concat(String.valueOf(i)));
+          ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "steve: subScribeVideoAndResList ret:".concat(String.valueOf(i)));
           AppMethodBeat.o(184468);
           return i;
         }
@@ -95,18 +144,18 @@ class l
     }
   }
   
-  public static int R(byte[] paramArrayOfByte, int paramInt)
+  public static int P(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(90828);
-    paramInt = nQx.GetAudioData(paramArrayOfByte, paramInt);
+    paramInt = otC.GetAudioData(paramArrayOfByte, paramInt);
     AppMethodBeat.o(90828);
     return paramInt;
   }
   
-  public static int RP(String paramString)
+  public static int Wb(String paramString)
   {
     AppMethodBeat.i(90825);
-    int i = nQx.UpdateAuthKey(paramString.getBytes(), paramString.getBytes().length);
+    int i = otC.UpdateAuthKey(paramString.getBytes(), paramString.getBytes().length);
     AppMethodBeat.o(90825);
     return i;
   }
@@ -114,52 +163,52 @@ class l
   public static int a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, IConfCallBack paramIConfCallBack)
   {
     AppMethodBeat.i(90824);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: init voip");
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "hy: init voip");
     int j = -1;
     i = j;
     for (;;)
     {
       try
       {
-        xy localxy = new xy();
+        yt localyt = new yt();
         i = j;
-        localxy.app_id = paramString1;
+        localyt.app_id = paramString1;
         i = j;
-        localxy.CZE = paramString2;
+        localyt.EsB = paramString2;
         i = j;
-        localxy.CZF = paramString3;
+        localyt.EsC = paramString3;
         i = j;
-        localxy.CZG = (com.tencent.mm.loader.j.b.ahY() + "/openvoice");
+        localyt.EsD = (com.tencent.mm.loader.j.b.aoY() + "/openvoice");
         i = j;
-        localxy.CZH = 0;
+        localyt.EsE = 0;
         i = j;
-        localxy.CZI = 1;
+        localyt.EsF = 1;
         i = j;
-        localxy.CZJ = c.bOb();
+        localyt.EsG = c.bVn();
         i = j;
-        localxy.CZK = paramInt1;
+        localyt.EsH = paramInt1;
         i = j;
-        localxy.CZO = paramInt2;
+        localyt.EsL = paramInt2;
         i = j;
-        localxy.CZP = paramInt3;
+        localyt.EsM = paramInt3;
         i = j;
-        localxy.CZR = n.WO();
+        localyt.EsO = n.getNumCores();
         i = j;
-        localxy.CZS = bt.getInt(m.WI(), 0);
+        localyt.EsP = bs.getInt(m.XG(), 0);
         i = j;
-        localxy.CZT = m.WG();
+        localyt.EsQ = m.XE();
         i = j;
-        localxy.CZU = Build.MANUFACTURER;
+        localyt.EsR = Build.MANUFACTURER;
         i = j;
-        localxy.CZV = Build.MODEL;
+        localyt.EsS = Build.MODEL;
         i = j;
-        localxy.CZW = Build.VERSION.RELEASE;
+        localyt.EsT = Build.VERSION.RELEASE;
         i = j;
-        localxy.CZX = Build.VERSION.INCREMENTAL;
+        localyt.EsU = Build.VERSION.INCREMENTAL;
         i = j;
-        localxy.CZY = Build.DISPLAY;
+        localyt.EsV = Build.DISPLAY;
         i = j;
-        paramString1 = q.cG(false);
+        paramString1 = q.cF(false);
         if (paramString1 == null) {
           continue;
         }
@@ -168,47 +217,47 @@ class l
           continue;
         }
         i = j;
-        localxy.CZZ = com.tencent.mm.bx.b.cd(ai.du(paramString1).getBytes());
+        localyt.EsW = com.tencent.mm.bw.b.cc(ah.dg(paramString1).getBytes());
         i = j;
-        localxy.Daa = Build.VERSION.RELEASE;
+        localyt.EsX = Build.VERSION.RELEASE;
         i = j;
-        ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "envInfo:" + new String(localxy.toByteArray()) + ",length:" + localxy.toByteArray().length);
+        ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "envInfo:" + new String(localyt.toByteArray()) + ",length:" + localyt.toByteArray().length);
         i = j;
-        paramInt1 = nQx.InitSDK(localxy.toByteArray(), localxy.toByteArray().length, paramIConfCallBack);
+        paramInt1 = otC.InitSDK(localyt.toByteArray(), localyt.toByteArray().length, paramIConfCallBack);
         i = paramInt1;
-        ad.v("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "init ret:".concat(String.valueOf(paramInt1)));
+        ac.v("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "init ret:".concat(String.valueOf(paramInt1)));
       }
       catch (IOException paramString1)
       {
-        ad.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramString1, "envInfo exception", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.OpenVoice.OpenVoiceNativeEngine", paramString1, "envInfo exception", new Object[0]);
         paramInt1 = i;
         continue;
       }
       AppMethodBeat.o(90824);
       return paramInt1;
       i = j;
-      ad.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "getDeviceId failed");
+      ac.e("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "getDeviceId failed");
     }
   }
   
-  public static int aO(byte[] paramArrayOfByte)
+  public static int aN(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(90830);
-    int i = nQx.GetDecodeVideoData(paramArrayOfByte);
+    int i = otC.GetDecodeVideoData(paramArrayOfByte);
     AppMethodBeat.o(90830);
     return i;
   }
   
-  public static v2conference bOh()
+  public static v2conference bVu()
   {
-    return nQx;
+    return otC;
   }
   
-  public static int bOi()
+  public static int bVv()
   {
     AppMethodBeat.i(90833);
-    int i = nQx.UnInit();
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "unInit ret:".concat(String.valueOf(i)));
+    int i = otC.UnInit();
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "unInit ret:".concat(String.valueOf(i)));
     AppMethodBeat.o(90833);
     return i;
   }
@@ -216,7 +265,7 @@ class l
   public static int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(90829);
-    paramInt1 = nQx.SendVideoData(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
+    paramInt1 = otC.SendVideoData(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(90829);
     return paramInt1;
   }
@@ -224,76 +273,39 @@ class l
   public static int e(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
     AppMethodBeat.i(90834);
-    paramInt1 = nQx.SetAppCmd(paramInt1, paramArrayOfByte, paramInt2);
+    paramInt1 = otC.SetAppCmd(paramInt1, paramArrayOfByte, paramInt2);
     AppMethodBeat.o(90834);
     return paramInt1;
   }
   
-  public static void iV(boolean paramBoolean)
-  {
-    AppMethodBeat.i(90836);
-    v2conference localv2conference = nQx;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localv2conference.SwitchAV(1, i);
-      AppMethodBeat.o(90836);
-      return;
-    }
-  }
-  
-  public static int q(long paramLong, int paramInt)
+  public static int r(long paramLong, int paramInt)
   {
     AppMethodBeat.i(90826);
-    paramInt = nQx.JoinRoom(paramLong, paramInt, 4);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "joinRoom ret:".concat(String.valueOf(paramInt)));
+    paramInt = otC.JoinRoom(paramLong, paramInt, 4);
+    ac.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "joinRoom ret:".concat(String.valueOf(paramInt)));
     AppMethodBeat.o(90826);
     return paramInt;
+  }
+  
+  public static int v(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(90827);
+    paramInt1 = otC.SendAudioData(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(90827);
+    return paramInt1;
   }
   
   public static int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(90837);
-    paramInt1 = nQx.videoHWProcess(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte2);
+    paramInt1 = otC.videoHWProcess(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte2);
     AppMethodBeat.o(90837);
     return paramInt1;
-  }
-  
-  public static int w(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90827);
-    paramInt1 = nQx.SendAudioData(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(90827);
-    return paramInt1;
-  }
-  
-  public static int zA(int paramInt)
-  {
-    AppMethodBeat.i(90831);
-    paramInt = nQx.GetVoiceActivity(paramInt);
-    AppMethodBeat.o(90831);
-    return paramInt;
-  }
-  
-  static int zB(int paramInt)
-  {
-    AppMethodBeat.i(90832);
-    paramInt = nQx.ExitRoom(paramInt);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceNativeEngine", "exitRoom ret:".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(90832);
-    return paramInt;
-  }
-  
-  public static void zC(int paramInt)
-  {
-    AppMethodBeat.i(90835);
-    nQx.OnNetworkChange(paramInt);
-    AppMethodBeat.o(90835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.l
  * JD-Core Version:    0.7.0.1
  */

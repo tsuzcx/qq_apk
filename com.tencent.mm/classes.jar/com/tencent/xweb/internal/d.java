@@ -2,9 +2,9 @@ package com.tencent.xweb.internal;
 
 public abstract interface d
 {
-  public abstract boolean aPe(String paramString);
+  public abstract boolean aUX(String paramString);
   
-  public abstract void frk();
+  public abstract void fJL();
 }
 
 

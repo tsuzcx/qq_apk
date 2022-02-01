@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class px
   extends b
 {
+  public a dtb;
+  
   public px()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class px
   
   private px(byte paramByte)
   {
-    this.ESR = false;
+    AppMethodBeat.i(149882);
+    this.dtb = new a();
+    this.Gqe = false;
     this.callback = null;
+    AppMethodBeat.o(149882);
+  }
+  
+  public static final class a
+  {
+    public int state = 0;
   }
 }
 

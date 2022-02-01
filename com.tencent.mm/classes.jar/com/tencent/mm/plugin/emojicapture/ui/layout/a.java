@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "calculateDxToMakeVisible", "", "view", "Landroid/view/View;", "snapPreference", "calculateDyToMakeVisible", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "calculateDxToMakeVisible", "", "view", "Landroid/view/View;", "snapPreference", "calculateDyToMakeVisible", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-emojicapture_release"})
 public final class a
   extends ae
 {
@@ -25,7 +25,7 @@ public final class a
     AppMethodBeat.i(879);
     k.h(paramView, "view");
     RecyclerView.i locali = getLayoutManager();
-    if ((locali == null) || (!locali.jF()))
+    if ((locali == null) || (!locali.jN()))
     {
       AppMethodBeat.o(879);
       return 0;
@@ -41,7 +41,7 @@ public final class a
     AppMethodBeat.i(878);
     k.h(paramView, "view");
     RecyclerView.i locali = getLayoutManager();
-    if ((locali == null) || (!locali.jE()))
+    if ((locali == null) || (!locali.jM()))
     {
       AppMethodBeat.o(878);
       return 0;
@@ -63,7 +63,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.layout.a
  * JD-Core Version:    0.7.0.1
  */

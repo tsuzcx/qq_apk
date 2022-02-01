@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.i.a;
-import com.tencent.mm.al.i.b;
+import com.tencent.mm.ak.i.a;
+import com.tencent.mm.ak.i.b;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.plugin.appbrand.d.b;
@@ -15,7 +15,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.f.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,19 +24,19 @@ public final class JsApiStartPlayVoice
 {
   public static final int CTRL_INDEX = 33;
   public static final String NAME = "playVoice";
-  public static String jCl = null;
-  private StartPlayVoice jCm;
+  public static String kcH = null;
+  private StartPlayVoice kcI;
   
   static class StartPlayVoice
     extends MainProcessTask
   {
     public static final Parcelable.Creator<StartPlayVoice> CREATOR;
-    public String diQ;
+    public String dgl;
     public boolean error;
     public String filePath;
-    private q iIL;
-    private int joH;
-    private m jwG;
+    private int jOT;
+    private m jXc;
+    private q jiP;
     
     static
     {
@@ -56,38 +56,20 @@ public final class JsApiStartPlayVoice
     public StartPlayVoice(m paramm, q paramq, int paramInt)
     {
       this.error = false;
-      this.jwG = paramm;
-      this.iIL = paramq;
-      this.joH = paramInt;
+      this.jXc = paramm;
+      this.jiP = paramq;
+      this.jOT = paramInt;
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(45966);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("localId", this.diQ);
-      q localq = this.iIL;
-      int i = this.joH;
-      m localm = this.jwG;
-      if (this.error) {}
-      for (String str = "fail";; str = "ok")
-      {
-        localq.h(i, localm.k(str, localHashMap));
-        JsApiStartPlayVoice.jCl = null;
-        AppMethodBeat.o(45966);
-        return;
-      }
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(45965);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(45962);
-          b localb = b.jaW;
+          b localb = b.jBj;
           b.a(JsApiStartPlayVoice.StartPlayVoice.this.filePath, new i.a()new i.b
           {
             public final void onCompletion()
@@ -113,10 +95,28 @@ public final class JsApiStartPlayVoice
       AppMethodBeat.o(45965);
     }
     
+    public final void aLr()
+    {
+      AppMethodBeat.i(45966);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("localId", this.dgl);
+      q localq = this.jiP;
+      int i = this.jOT;
+      m localm = this.jXc;
+      if (this.error) {}
+      for (String str = "fail";; str = "ok")
+      {
+        localq.h(i, localm.k(str, localHashMap));
+        JsApiStartPlayVoice.kcH = null;
+        AppMethodBeat.o(45966);
+        return;
+      }
+    }
+    
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(45967);
-      this.diQ = paramParcel.readString();
+      this.dgl = paramParcel.readString();
       this.filePath = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
@@ -130,7 +130,7 @@ public final class JsApiStartPlayVoice
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45968);
-      paramParcel.writeString(this.diQ);
+      paramParcel.writeString(this.dgl);
       paramParcel.writeString(this.filePath);
       if (this.error) {}
       for (byte b = 1;; b = 0)
@@ -144,7 +144,7 @@ public final class JsApiStartPlayVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiStartPlayVoice
  * JD-Core Version:    0.7.0.1
  */

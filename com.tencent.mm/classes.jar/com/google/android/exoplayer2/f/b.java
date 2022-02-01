@@ -13,15 +13,15 @@ public abstract class b
   {
     super(new h[2], new i[2]);
     this.name = paramString;
-    if (this.aWs == this.aWq.length) {}
+    if (this.aXe == this.aXc.length) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      paramString = this.aWq;
+      paramString = this.aXc;
       int j = paramString.length;
       while (i < j)
       {
-        paramString[i].dO(1024);
+        paramString[i].dN(1024);
         i += 1;
       }
     }
@@ -31,9 +31,9 @@ public abstract class b
   {
     try
     {
-      Object localObject = paramh.aIq;
+      Object localObject = paramh.aJg;
       localObject = b(((ByteBuffer)localObject).array(), ((ByteBuffer)localObject).limit(), paramBoolean);
-      parami.a(paramh.timeUs, (d)localObject, paramh.aSr);
+      parami.a(paramh.timeUs, (d)localObject, paramh.aTk);
       parami.flags &= 0x7FFFFFFF;
       return null;
     }
@@ -46,7 +46,7 @@ public abstract class b
     super.a(parami);
   }
   
-  public final void al(long paramLong) {}
+  public final void ah(long paramLong) {}
   
   protected abstract d b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
 }

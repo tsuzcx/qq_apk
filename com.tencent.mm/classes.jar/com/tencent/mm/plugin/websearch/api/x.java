@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.websearch.api;
 
-public abstract interface x
+public final class x
 {
-  public abstract void io(int paramInt1, int paramInt2);
+  public String desc;
+  public String iconUrl;
+  public boolean isSelected;
+  public String title;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.x
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.data;
 
 public final class a
 {
-  public String diQ;
-  public int hsX;
+  public String dgl;
+  public int hTz;
   public boolean isAd = false;
   public int scene;
   public String userName;
@@ -12,18 +12,18 @@ public final class a
   {
     this.isAd = paramBoolean;
     this.userName = paramString1;
-    this.diQ = paramString2;
+    this.dgl = paramString2;
     this.scene = paramInt;
-    this.hsX = -1;
+    this.hTz = -1;
   }
   
   public a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     this.isAd = paramBoolean;
     this.userName = paramString1;
-    this.diQ = paramString2;
+    this.dgl = paramString2;
     this.scene = paramInt1;
-    this.hsX = paramInt2;
+    this.hTz = paramInt2;
   }
 }
 

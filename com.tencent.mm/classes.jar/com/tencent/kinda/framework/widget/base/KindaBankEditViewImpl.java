@@ -11,11 +11,11 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.KBankEditView;
 import com.tencent.kinda.gen.KBankEditViewOnSeletBankCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.af;
-import com.tencent.mm.g.a.af.a;
+import com.tencent.mm.g.a.ag;
+import com.tencent.mm.g.a.ag.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class KindaBankEditViewImpl
   extends MMKView<EditText>
@@ -23,7 +23,7 @@ public class KindaBankEditViewImpl
 {
   String TAG;
   private byte _hellAccFlag_;
-  private c<af> bankEditSelectedEventIListener;
+  private c<ag> bankEditSelectedEventIListener;
   private FontStyle fontStyle;
   private byte[] mBankLiskBuffer;
   private String mBankType;
@@ -41,29 +41,29 @@ public class KindaBankEditViewImpl
     this.fontStyle = FontStyle.REGULAR;
     this.bankEditSelectedEventIListener = new c()
     {
-      public boolean callback(af paramAnonymousaf)
+      public boolean callback(ag paramAnonymousag)
       {
         AppMethodBeat.i(18842);
-        if ("flag_activity_close_KindaWrapBankEditActivity".equals(paramAnonymousaf.dbY.dbZ)) {
+        if ("flag_activity_close_KindaWrapBankEditActivity".equals(paramAnonymousag.cZx.cZy)) {
           KindaBankEditViewImpl.this.bankEditSelectedEventIListener.dead();
         }
         for (;;)
         {
           AppMethodBeat.o(18842);
           return false;
-          if (!"flag_activity_back_KindaWrapBankEditActivity".equals(paramAnonymousaf.dbY.dbZ)) {
+          if (!"flag_activity_back_KindaWrapBankEditActivity".equals(paramAnonymousag.cZx.cZy)) {
             break;
           }
           KindaBankEditViewImpl.this.mCallBack.onSeletBank("");
         }
-        if (!bt.cw(KindaBankEditViewImpl.this.mBankTypeLiskBuffer)) {}
-        for (String str = paramAnonymousaf.dbY.dbZ + " " + paramAnonymousaf.dbY.dcb;; str = paramAnonymousaf.dbY.dbZ)
+        if (!bs.cv(KindaBankEditViewImpl.this.mBankTypeLiskBuffer)) {}
+        for (String str = paramAnonymousag.cZx.cZy + " " + paramAnonymousag.cZx.cZA;; str = paramAnonymousag.cZx.cZy)
         {
           KindaBankEditViewImpl.this.mEditText.setText(str);
           if (KindaBankEditViewImpl.this.mCallBack == null) {
             break;
           }
-          KindaBankEditViewImpl.access$402(KindaBankEditViewImpl.this, paramAnonymousaf.dbY.dca);
+          KindaBankEditViewImpl.access$402(KindaBankEditViewImpl.this, paramAnonymousag.cZx.cZz);
           KindaBankEditViewImpl.this.mCallBack.onSeletBank(str);
           break;
         }
@@ -91,7 +91,7 @@ public class KindaBankEditViewImpl
       this.mEditText.setTextColor(paramContext.getResources().getColor(2131100711));
     }
     this.mContext = paramContext;
-    ad.i(this.TAG, "BankEditSelected callback，注册监听，当前线程：" + Thread.currentThread().getId());
+    ac.i(this.TAG, "BankEditSelected callback，注册监听，当前线程：" + Thread.currentThread().getId());
     paramContext = this.mEditText;
     AppMethodBeat.o(18845);
     return paramContext;
@@ -149,9 +149,9 @@ public class KindaBankEditViewImpl
       ((Intent)localObject).putExtra("bank_list", this.mBankLiskBuffer);
       ((Intent)localObject).putExtra("bank_type_list", this.mBankTypeLiskBuffer);
       Context localContext = this.mContext;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/kinda/framework/widget/base/KindaBankEditViewImpl", "setFocus", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/kinda/framework/widget/base/KindaBankEditViewImpl", "setFocus", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/kinda/framework/widget/base/KindaBankEditViewImpl", "setFocus", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(18848);

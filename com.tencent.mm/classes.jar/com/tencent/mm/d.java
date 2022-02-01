@@ -12,35 +12,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends ScriptC
 {
-  private Element cGU;
-  private Element cGV;
-  private Element cGW;
-  private Element cGX;
-  private FieldPacker cGY;
-  private Allocation cGZ;
-  private int cHa;
-  private int cHb;
-  private long cHc;
-  private long cHd;
-  private long cHe;
-  private long cHf;
-  private Allocation cHg;
-  private Allocation cHh;
-  private Allocation cHi;
+  private Element cEc;
+  private Element cEd;
+  private Element cEe;
+  private Element cEf;
+  private FieldPacker cEg;
+  private Allocation cEh;
+  private int cEi;
+  private int cEj;
+  private long cEk;
+  private long cEl;
+  private long cEm;
+  private long cEn;
+  private Allocation cEo;
+  private Allocation cEp;
+  private Allocation cEq;
   
   public d(RenderScript paramRenderScript)
   {
-    super(paramRenderScript, "imagerenderscriptutil", a.IF(), a.IG());
+    super(paramRenderScript, "imagerenderscriptutil", a.Io(), a.Ip());
     AppMethodBeat.i(93336);
-    this.cGU = Element.ALLOCATION(paramRenderScript);
-    this.cGV = Element.I32(paramRenderScript);
-    this.cGW = Element.U32(paramRenderScript);
-    this.cGX = Element.U8_4(paramRenderScript);
+    this.cEc = Element.ALLOCATION(paramRenderScript);
+    this.cEd = Element.I32(paramRenderScript);
+    this.cEe = Element.U32(paramRenderScript);
+    this.cEf = Element.U8_4(paramRenderScript);
     AppMethodBeat.o(93336);
   }
   
   /* Error */
-  public final void IP()
+  public final void Iy()
   {
     // Byte code:
     //   0: aload_0
@@ -48,23 +48,23 @@ public final class d
     //   2: ldc 77
     //   4: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   8: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   11: ifnull +40 -> 51
     //   14: aload_0
-    //   15: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   15: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   18: invokevirtual 84	android/renderscript/FieldPacker:reset	()V
     //   21: aload_0
-    //   22: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   22: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   25: lconst_0
     //   26: invokevirtual 88	android/renderscript/FieldPacker:addU32	(J)V
     //   29: aload_0
     //   30: iconst_3
     //   31: aload_0
-    //   32: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   32: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   35: invokevirtual 92	com/tencent/mm/d:setVar	(ILandroid/renderscript/FieldPacker;)V
     //   38: aload_0
     //   39: lconst_0
-    //   40: putfield 94	com/tencent/mm/d:cHc	J
+    //   40: putfield 94	com/tencent/mm/d:cEk	J
     //   43: ldc 77
     //   45: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: aload_0
@@ -75,7 +75,7 @@ public final class d
     //   55: dup
     //   56: iconst_4
     //   57: invokespecial 96	android/renderscript/FieldPacker:<init>	(I)V
-    //   60: putfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   60: putfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   63: goto -42 -> 21
     //   66: astore_1
     //   67: aload_0
@@ -99,7 +99,7 @@ public final class d
     {
       AppMethodBeat.i(93337);
       setVar(0, paramAllocation);
-      this.cGZ = paramAllocation;
+      this.cEh = paramAllocation;
       AppMethodBeat.o(93337);
       return;
     }
@@ -113,13 +113,13 @@ public final class d
   public final void a(Allocation paramAllocation1, Allocation paramAllocation2)
   {
     AppMethodBeat.i(93347);
-    if (!paramAllocation1.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation1.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93347);
       throw paramAllocation1;
     }
-    if (!paramAllocation2.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation2.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93347);
@@ -137,77 +137,33 @@ public final class d
     AppMethodBeat.o(93347);
   }
   
-  public final void b(Allocation paramAllocation)
-  {
-    try
-    {
-      AppMethodBeat.i(93344);
-      setVar(8, paramAllocation);
-      this.cHg = paramAllocation;
-      AppMethodBeat.o(93344);
-      return;
-    }
-    finally
-    {
-      paramAllocation = finally;
-      throw paramAllocation;
-    }
-  }
-  
-  public final void b(Allocation paramAllocation1, Allocation paramAllocation2)
-  {
-    AppMethodBeat.i(93348);
-    if (!paramAllocation1.getType().getElement().isCompatible(this.cGX))
-    {
-      paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
-      AppMethodBeat.o(93348);
-      throw paramAllocation1;
-    }
-    if (!paramAllocation2.getType().getElement().isCompatible(this.cGX))
-    {
-      paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
-      AppMethodBeat.o(93348);
-      throw paramAllocation1;
-    }
-    Type localType1 = paramAllocation1.getType();
-    Type localType2 = paramAllocation2.getType();
-    if ((localType1.getCount() != localType2.getCount()) || (localType1.getX() != localType2.getX()) || (localType1.getY() != localType2.getY()) || (localType1.getZ() != localType2.getZ()) || (localType1.hasFaces() != localType2.hasFaces()) || (localType1.hasMipmaps() != localType2.hasMipmaps()))
-    {
-      paramAllocation1 = new RSRuntimeException("Dimension mismatch between parameters ain and aout!");
-      AppMethodBeat.o(93348);
-      throw paramAllocation1;
-    }
-    forEach(3, paramAllocation1, paramAllocation2, null, null);
-    AppMethodBeat.o(93348);
-  }
-  
   /* Error */
-  public final void ba(long paramLong)
+  public final void aW(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 162
+    //   2: ldc 157
     //   4: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   8: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   11: ifnull +40 -> 51
     //   14: aload_0
-    //   15: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   15: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   18: invokevirtual 84	android/renderscript/FieldPacker:reset	()V
     //   21: aload_0
-    //   22: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   22: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   25: lload_1
     //   26: invokevirtual 88	android/renderscript/FieldPacker:addU32	(J)V
     //   29: aload_0
     //   30: iconst_4
     //   31: aload_0
-    //   32: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   32: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   35: invokevirtual 92	com/tencent/mm/d:setVar	(ILandroid/renderscript/FieldPacker;)V
     //   38: aload_0
     //   39: lload_1
-    //   40: putfield 164	com/tencent/mm/d:cHd	J
-    //   43: ldc 162
+    //   40: putfield 159	com/tencent/mm/d:cEl	J
+    //   43: ldc 157
     //   45: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: aload_0
     //   49: monitorexit
@@ -217,7 +173,7 @@ public final class d
     //   55: dup
     //   56: iconst_4
     //   57: invokespecial 96	android/renderscript/FieldPacker:<init>	(I)V
-    //   60: putfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   60: putfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   63: goto -42 -> 21
     //   66: astore_3
     //   67: aload_0
@@ -237,32 +193,32 @@ public final class d
   }
   
   /* Error */
-  public final void bb(long paramLong)
+  public final void aX(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 166
+    //   2: ldc 161
     //   4: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   8: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   11: ifnull +40 -> 51
     //   14: aload_0
-    //   15: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   15: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   18: invokevirtual 84	android/renderscript/FieldPacker:reset	()V
     //   21: aload_0
-    //   22: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   22: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   25: lload_1
     //   26: invokevirtual 88	android/renderscript/FieldPacker:addU32	(J)V
     //   29: aload_0
     //   30: iconst_5
     //   31: aload_0
-    //   32: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   32: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   35: invokevirtual 92	com/tencent/mm/d:setVar	(ILandroid/renderscript/FieldPacker;)V
     //   38: aload_0
     //   39: lload_1
-    //   40: putfield 168	com/tencent/mm/d:cHe	J
-    //   43: ldc 166
+    //   40: putfield 163	com/tencent/mm/d:cEm	J
+    //   43: ldc 161
     //   45: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: aload_0
     //   49: monitorexit
@@ -272,7 +228,7 @@ public final class d
     //   55: dup
     //   56: iconst_4
     //   57: invokespecial 96	android/renderscript/FieldPacker:<init>	(I)V
-    //   60: putfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   60: putfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   63: goto -42 -> 21
     //   66: astore_3
     //   67: aload_0
@@ -292,32 +248,32 @@ public final class d
   }
   
   /* Error */
-  public final void bc(long paramLong)
+  public final void aY(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 170
+    //   2: ldc 165
     //   4: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   8: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   11: ifnull +41 -> 52
     //   14: aload_0
-    //   15: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   15: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   18: invokevirtual 84	android/renderscript/FieldPacker:reset	()V
     //   21: aload_0
-    //   22: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   22: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   25: lload_1
     //   26: invokevirtual 88	android/renderscript/FieldPacker:addU32	(J)V
     //   29: aload_0
     //   30: bipush 6
     //   32: aload_0
-    //   33: getfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   33: getfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   36: invokevirtual 92	com/tencent/mm/d:setVar	(ILandroid/renderscript/FieldPacker;)V
     //   39: aload_0
     //   40: lload_1
-    //   41: putfield 172	com/tencent/mm/d:cHf	J
-    //   44: ldc 170
+    //   41: putfield 167	com/tencent/mm/d:cEn	J
+    //   44: ldc 165
     //   46: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: aload_0
     //   50: monitorexit
@@ -327,7 +283,7 @@ public final class d
     //   56: dup
     //   57: iconst_4
     //   58: invokespecial 96	android/renderscript/FieldPacker:<init>	(I)V
-    //   61: putfield 79	com/tencent/mm/d:cGY	Landroid/renderscript/FieldPacker;
+    //   61: putfield 79	com/tencent/mm/d:cEg	Landroid/renderscript/FieldPacker;
     //   64: goto -43 -> 21
     //   67: astore_3
     //   68: aload_0
@@ -346,13 +302,57 @@ public final class d
     //   52	64	67	finally
   }
   
+  public final void b(Allocation paramAllocation)
+  {
+    try
+    {
+      AppMethodBeat.i(93344);
+      setVar(8, paramAllocation);
+      this.cEo = paramAllocation;
+      AppMethodBeat.o(93344);
+      return;
+    }
+    finally
+    {
+      paramAllocation = finally;
+      throw paramAllocation;
+    }
+  }
+  
+  public final void b(Allocation paramAllocation1, Allocation paramAllocation2)
+  {
+    AppMethodBeat.i(93348);
+    if (!paramAllocation1.getType().getElement().isCompatible(this.cEf))
+    {
+      paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
+      AppMethodBeat.o(93348);
+      throw paramAllocation1;
+    }
+    if (!paramAllocation2.getType().getElement().isCompatible(this.cEf))
+    {
+      paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
+      AppMethodBeat.o(93348);
+      throw paramAllocation1;
+    }
+    Type localType1 = paramAllocation1.getType();
+    Type localType2 = paramAllocation2.getType();
+    if ((localType1.getCount() != localType2.getCount()) || (localType1.getX() != localType2.getX()) || (localType1.getY() != localType2.getY()) || (localType1.getZ() != localType2.getZ()) || (localType1.hasFaces() != localType2.hasFaces()) || (localType1.hasMipmaps() != localType2.hasMipmaps()))
+    {
+      paramAllocation1 = new RSRuntimeException("Dimension mismatch between parameters ain and aout!");
+      AppMethodBeat.o(93348);
+      throw paramAllocation1;
+    }
+    forEach(3, paramAllocation1, paramAllocation2, null, null);
+    AppMethodBeat.o(93348);
+  }
+  
   public final void c(Allocation paramAllocation)
   {
     try
     {
       AppMethodBeat.i(93345);
       setVar(9, paramAllocation);
-      this.cHh = paramAllocation;
+      this.cEp = paramAllocation;
       AppMethodBeat.o(93345);
       return;
     }
@@ -366,13 +366,13 @@ public final class d
   public final void c(Allocation paramAllocation1, Allocation paramAllocation2)
   {
     AppMethodBeat.i(93349);
-    if (!paramAllocation1.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation1.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93349);
       throw paramAllocation1;
     }
-    if (!paramAllocation2.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation2.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93349);
@@ -396,7 +396,7 @@ public final class d
     {
       AppMethodBeat.i(93346);
       setVar(10, paramAllocation);
-      this.cHi = paramAllocation;
+      this.cEq = paramAllocation;
       AppMethodBeat.o(93346);
       return;
     }
@@ -410,13 +410,13 @@ public final class d
   public final void d(Allocation paramAllocation1, Allocation paramAllocation2)
   {
     AppMethodBeat.i(93350);
-    if (!paramAllocation1.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation1.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93350);
       throw paramAllocation1;
     }
-    if (!paramAllocation2.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation2.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation1 = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93350);
@@ -437,7 +437,7 @@ public final class d
   public final void e(Allocation paramAllocation)
   {
     AppMethodBeat.i(93351);
-    if (!paramAllocation.getType().getElement().isCompatible(this.cGX))
+    if (!paramAllocation.getType().getElement().isCompatible(this.cEf))
     {
       paramAllocation = new RSRuntimeException("Type mismatch with U8_4!");
       AppMethodBeat.o(93351);
@@ -447,13 +447,13 @@ public final class d
     AppMethodBeat.o(93351);
   }
   
-  public final void hp(int paramInt)
+  public final void gY(int paramInt)
   {
     try
     {
       AppMethodBeat.i(93338);
       setVar(1, paramInt);
-      this.cHa = paramInt;
+      this.cEi = paramInt;
       AppMethodBeat.o(93338);
       return;
     }
@@ -464,13 +464,13 @@ public final class d
     }
   }
   
-  public final void hq(int paramInt)
+  public final void gZ(int paramInt)
   {
     try
     {
       AppMethodBeat.i(93339);
       setVar(2, paramInt);
-      this.cHb = paramInt;
+      this.cEj = paramInt;
       AppMethodBeat.o(93339);
       return;
     }

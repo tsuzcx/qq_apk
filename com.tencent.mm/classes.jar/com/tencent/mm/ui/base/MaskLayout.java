@@ -10,14 +10,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ae.a.a;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class MaskLayout
   extends RelativeLayout
 {
-  private Drawable Gbr;
-  private ImageView qkS;
+  private Drawable HBg;
+  private ImageView qTu;
   private View view;
   
   public MaskLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,7 +30,7 @@ public class MaskLayout
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142330);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MaskLayout, paramInt, 0);
-    this.Gbr = paramContext.getDrawable(5);
+    this.HBg = paramContext.getDrawable(5);
     paramContext.recycle();
     AppMethodBeat.o(142330);
   }
@@ -38,17 +38,17 @@ public class MaskLayout
   private void a(a parama)
   {
     AppMethodBeat.i(142335);
-    removeView(this.qkS);
+    removeView(this.qTu);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
     RelativeLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
-    switch (1.Gbs[parama.ordinal()])
+    switch (1.HBh[parama.ordinal()])
     {
     default: 
       localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
     }
     for (;;)
     {
-      addView(this.qkS, localLayoutParams1);
+      addView(this.qTu, localLayoutParams1);
       AppMethodBeat.o(142335);
       return;
       localLayoutParams2.addRule(12);
@@ -68,7 +68,7 @@ public class MaskLayout
   {
     AppMethodBeat.i(142334);
     a(parama);
-    this.qkS.setImageBitmap(paramBitmap);
+    this.qTu.setImageBitmap(paramBitmap);
     AppMethodBeat.o(142334);
   }
   
@@ -84,33 +84,33 @@ public class MaskLayout
     this.view = findViewById(2131298739);
     if (this.view == null)
     {
-      ad.d("MicroMsg.MaskLayout", "%s", new Object[] { "not found view by id, new one" });
+      ac.d("MicroMsg.MaskLayout", "%s", new Object[] { "not found view by id, new one" });
       this.view = new View(getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       localLayoutParams.addRule(13);
       this.view.setLayoutParams(localLayoutParams);
       addView(this.view);
     }
-    this.qkS = new ImageView(getContext());
-    this.qkS.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.qkS.setImageDrawable(this.Gbr);
-    addView(this.qkS);
+    this.qTu = new ImageView(getContext());
+    this.qTu.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.qTu.setImageDrawable(this.HBg);
+    addView(this.qTu);
     AppMethodBeat.o(142331);
   }
   
   public void setMaskBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(142332);
-    a(a.Gbx);
-    this.qkS.setImageBitmap(paramBitmap);
+    a(a.HBm);
+    this.qTu.setImageBitmap(paramBitmap);
     AppMethodBeat.o(142332);
   }
   
   public void setMaskDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(142333);
-    a(a.Gbx);
-    this.qkS.setImageDrawable(paramDrawable);
+    a(a.HBm);
+    this.qTu.setImageDrawable(paramDrawable);
     AppMethodBeat.o(142333);
   }
   
@@ -119,12 +119,12 @@ public class MaskLayout
     static
     {
       AppMethodBeat.i(142329);
-      Gbt = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_RIGHT", 0);
-      Gbu = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_LEFT", 1);
-      Gbv = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_RIGHT", 2);
-      Gbw = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_LEFT", 3);
-      Gbx = new a("SUBSCRIPT_DRAWABLE_DIRECTION_ALL", 4);
-      Gby = new a[] { Gbt, Gbu, Gbv, Gbw, Gbx };
+      HBi = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_RIGHT", 0);
+      HBj = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_LEFT", 1);
+      HBk = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_RIGHT", 2);
+      HBl = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_LEFT", 3);
+      HBm = new a("SUBSCRIPT_DRAWABLE_DIRECTION_ALL", 4);
+      HBn = new a[] { HBi, HBj, HBk, HBl, HBm };
       AppMethodBeat.o(142329);
     }
     
@@ -133,7 +133,7 @@ public class MaskLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MaskLayout
  * JD-Core Version:    0.7.0.1
  */

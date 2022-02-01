@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 
 public final class a<Type>
 {
-  private Class<?> cFP;
-  private String cFQ;
+  private Class<?> cCX;
+  private String cCY;
   private Field mField;
   private boolean mInit;
   
@@ -19,8 +19,8 @@ public final class a<Type>
       AppMethodBeat.o(183484);
       throw paramClass;
     }
-    this.cFP = paramClass;
-    this.cFQ = paramString;
+    this.cCX = paramClass;
+    this.cCY = paramString;
     AppMethodBeat.o(183484);
   }
   
@@ -32,7 +32,7 @@ public final class a<Type>
       prepare();
       if (this.mField == null)
       {
-        paramObject = new NoSuchFieldException("Method " + this.cFQ + " is not exists.");
+        paramObject = new NoSuchFieldException("Method " + this.cCY + " is not exists.");
         AppMethodBeat.o(183489);
         throw paramObject;
       }
@@ -43,7 +43,7 @@ public final class a<Type>
     return true;
   }
   
-  private Type adE()
+  private Type aeU()
   {
     try
     {
@@ -83,7 +83,7 @@ public final class a<Type>
           AppMethodBeat.o(183485);
           return;
         }
-        localClass1 = this.cFP;
+        localClass1 = this.cCX;
         if (localClass1 == null) {}
       }
       finally
@@ -91,7 +91,7 @@ public final class a<Type>
         try
         {
           Class localClass1;
-          Field localField = localClass1.getDeclaredField(this.cFQ);
+          Field localField = localClass1.getDeclaredField(this.cCY);
           localField.setAccessible(true);
           this.mField = localField;
           this.mInit = true;
@@ -106,7 +106,7 @@ public final class a<Type>
     }
   }
   
-  public final boolean et(Object paramObject)
+  public final boolean eu(Object paramObject)
   {
     try
     {
@@ -122,7 +122,7 @@ public final class a<Type>
     }
   }
   
-  public final boolean eu(Type paramType)
+  public final boolean ev(Type paramType)
   {
     try
     {
@@ -143,7 +143,7 @@ public final class a<Type>
     try
     {
       AppMethodBeat.i(183486);
-      Object localObject1 = adE();
+      Object localObject1 = aeU();
       AppMethodBeat.o(183486);
       return localObject1;
     }

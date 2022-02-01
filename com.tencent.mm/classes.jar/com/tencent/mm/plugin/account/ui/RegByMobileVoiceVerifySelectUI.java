@@ -7,10 +7,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.ax.b;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.aw.b;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
@@ -20,23 +20,23 @@ public class RegByMobileVoiceVerifySelectUI
   extends MMPreference
   implements g
 {
-  private LanguagePreference.a[] iwx;
+  private LanguagePreference.a[] iWB;
   private String languageCode;
   private f screen;
   
-  public static String CI(String paramString)
+  public static String GL(String paramString)
   {
     AppMethodBeat.i(128622);
-    LanguagePreference.a[] arrayOfa = aKu();
-    paramString = b.yK(paramString);
+    LanguagePreference.a[] arrayOfa = aRl();
+    paramString = b.CP(paramString);
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       LanguagePreference.a locala = arrayOfa[i];
-      if (locala.iqZ.equalsIgnoreCase(paramString))
+      if (locala.iRg.equalsIgnoreCase(paramString))
       {
-        paramString = locala.iqX;
+        paramString = locala.iRe;
         AppMethodBeat.o(128622);
         return paramString;
       }
@@ -46,10 +46,10 @@ public class RegByMobileVoiceVerifySelectUI
     return "English";
   }
   
-  private static LanguagePreference.a[] aKu()
+  private static LanguagePreference.a[] aRl()
   {
     AppMethodBeat.i(128623);
-    String[] arrayOfString1 = aj.getContext().getString(2131756516).trim().split(",");
+    String[] arrayOfString1 = ai.getContext().getString(2131756516).trim().split(",");
     LanguagePreference.a[] arrayOfa = new LanguagePreference.a[arrayOfString1.length];
     int i = 0;
     while (i < arrayOfString1.length)
@@ -84,8 +84,8 @@ public class RegByMobileVoiceVerifySelectUI
         return true;
       }
     });
-    this.iwx = aKu();
-    if ((this.iwx == null) || (this.iwx.length <= 0))
+    this.iWB = aRl();
+    if ((this.iWB == null) || (this.iWB.length <= 0))
     {
       AppMethodBeat.o(128621);
       return;
@@ -93,18 +93,18 @@ public class RegByMobileVoiceVerifySelectUI
     this.screen.removeAll();
     Object localObject = new PreferenceCategory(this);
     this.screen.b((Preference)localObject);
-    localObject = this.iwx;
+    localObject = this.iWB;
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
       LanguagePreference.a locala = localObject[i];
-      if (locala.iqZ.equalsIgnoreCase(this.languageCode)) {
-        locala.ira = true;
+      if (locala.iRg.equalsIgnoreCase(this.languageCode)) {
+        locala.isSelected = true;
       }
       LanguagePreference localLanguagePreference = new LanguagePreference(this);
       localLanguagePreference.a(locala);
-      localLanguagePreference.setKey(locala.iqZ);
+      localLanguagePreference.setKey(locala.iRg);
       this.screen.b(localLanguagePreference);
       i += 1;
     }
@@ -132,7 +132,7 @@ public class RegByMobileVoiceVerifySelectUI
     AppMethodBeat.i(128620);
     if ((paramPreference instanceof LanguagePreference))
     {
-      paramf = ((LanguagePreference)paramPreference).iqW;
+      paramf = ((LanguagePreference)paramPreference).iRd;
       if (paramf == null)
       {
         AppMethodBeat.o(128620);
@@ -140,8 +140,8 @@ public class RegByMobileVoiceVerifySelectUI
       }
       paramPreference = new Intent();
       Bundle localBundle = new Bundle();
-      localBundle.putString("voice_verify_language", paramf.iqX);
-      localBundle.putString("voice_verify_code", paramf.iqZ);
+      localBundle.putString("voice_verify_language", paramf.iRe);
+      localBundle.putString("voice_verify_code", paramf.iRg);
       paramPreference.putExtras(localBundle);
       setResult(0, paramPreference);
       finish();
@@ -162,7 +162,7 @@ public class RegByMobileVoiceVerifySelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileVoiceVerifySelectUI
  * JD-Core Version:    0.7.0.1
  */

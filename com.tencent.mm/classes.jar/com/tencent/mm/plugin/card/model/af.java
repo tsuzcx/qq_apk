@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bed;
-import com.tencent.mm.protocal.protobuf.bee;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bhv;
+import com.tencent.mm.protocal.protobuf.bhw;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class af
   extends n
   implements k
 {
   private g callback;
-  public String dyd;
-  public int ntx;
-  public String nty;
+  public String dvP;
+  public int nWx;
+  public String nWy;
   private final b rr;
   
   public af(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(112852);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bed();
-    ((b.a)localObject).gUV = new bee();
+    ((b.a)localObject).hvt = new bhv();
+    ((b.a)localObject).hvu = new bhw();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/giftcarditem";
     ((b.a)localObject).funcId = 1045;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (bed)this.rr.gUS.gUX;
-    ((bed)localObject).dyc = paramString1;
-    ((bed)localObject).DBL = paramString2;
-    ((bed)localObject).DBM = paramInt;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bhv)this.rr.hvr.hvw;
+    ((bhv)localObject).dvO = paramString1;
+    ((bhv)localObject).EXh = paramString2;
+    ((bhv)localObject).EXi = paramInt;
     AppMethodBeat.o(112852);
   }
   
@@ -59,15 +59,15 @@ public final class af
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112854);
-    ad.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    ac.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bee)this.rr.gUT.gUX;
+      paramq = (bhw)this.rr.hvs.hvw;
       if (paramq != null)
       {
-        this.dyd = paramq.dyd;
-        this.nty = paramq.nty;
-        this.ntx = paramq.ntx;
+        this.dvP = paramq.dvP;
+        this.nWy = paramq.nWy;
+        this.nWx = paramq.nWx;
       }
     }
     for (;;)
@@ -75,12 +75,12 @@ public final class af
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(112854);
       return;
-      paramq = (bee)this.rr.gUT.gUX;
+      paramq = (bhw)this.rr.hvs.hvw;
       if (paramq != null)
       {
-        this.dyd = paramq.dyd;
-        this.nty = paramq.nty;
-        this.ntx = paramq.ntx;
+        this.dvP = paramq.dvP;
+        this.nWy = paramq.nWy;
+        this.nWx = paramq.nWx;
       }
     }
   }

@@ -10,12 +10,12 @@ public final class b
     super(paramMMActivity);
   }
   
-  public final boolean bLO()
+  public final boolean bTb()
   {
     return true;
   }
   
-  public final boolean bLP()
+  public final boolean bTc()
   {
     return false;
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.model.app;
 
 public abstract interface am
 {
-  public abstract void u(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void v(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

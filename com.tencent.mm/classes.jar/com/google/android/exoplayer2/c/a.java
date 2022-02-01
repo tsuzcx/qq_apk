@@ -1,58 +1,49 @@
 package com.google.android.exoplayer2.c;
 
-import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   implements l
 {
-  private final long aSz;
-  public final int[] aWC;
-  public final long[] aWD;
-  public final long[] aWE;
+  private final long aTs;
+  public final int[] aXo;
+  public final long[] aXp;
+  public final long[] aXq;
   public final int length;
   public final long[] offsets;
   
   public a(int[] paramArrayOfInt, long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
     AppMethodBeat.i(91954);
-    this.aWC = paramArrayOfInt;
+    this.aXo = paramArrayOfInt;
     this.offsets = paramArrayOfLong1;
-    this.aWD = paramArrayOfLong2;
-    this.aWE = paramArrayOfLong3;
+    this.aXp = paramArrayOfLong2;
+    this.aXq = paramArrayOfLong3;
     this.length = paramArrayOfInt.length;
     if (this.length > 0)
     {
-      this.aSz = (paramArrayOfLong2[(this.length - 1)] + paramArrayOfLong3[(this.length - 1)]);
+      this.aTs = (paramArrayOfLong2[(this.length - 1)] + paramArrayOfLong3[(this.length - 1)]);
       AppMethodBeat.o(91954);
       return;
     }
-    this.aSz = 0L;
+    this.aTs = 0L;
     AppMethodBeat.o(91954);
   }
   
-  public final int J(long paramLong)
-  {
-    AppMethodBeat.i(91955);
-    int i = x.a(this.aWE, paramLong, true);
-    AppMethodBeat.o(91955);
-    return i;
-  }
-  
-  public final long K(long paramLong)
+  public final long L(long paramLong)
   {
     AppMethodBeat.i(91956);
-    paramLong = this.offsets[J(paramLong)];
+    paramLong = this.offsets[com.google.android.exoplayer2.i.x.a(this.aXq, paramLong, true)];
     AppMethodBeat.o(91956);
     return paramLong;
   }
   
   public final long getDurationUs()
   {
-    return this.aSz;
+    return this.aTs;
   }
   
-  public final boolean sH()
+  public final boolean sQ()
   {
     return true;
   }

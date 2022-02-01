@@ -11,20 +11,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/item/BitmapArrayEditorItem;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "bitmapArray", "", "Landroid/graphics/Bitmap;", "animInterval", "", "matrix", "Landroid/graphics/Matrix;", "([Landroid/graphics/Bitmap;JLandroid/graphics/Matrix;)V", "bitmaps", "", "currIndex", "", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/editor/item/BitmapArrayEditorItem;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "bitmapArray", "", "Landroid/graphics/Bitmap;", "animInterval", "", "matrix", "Landroid/graphics/Matrix;", "([Landroid/graphics/Bitmap;JLandroid/graphics/Matrix;)V", "bitmaps", "", "currIndex", "", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "plugin-mediaeditor_release"})
 public final class c
   extends b
 {
-  private int goD;
-  private final List<Bitmap> goE;
-  private final long goF;
+  private int gPl;
+  private final List<Bitmap> gPm;
+  private final long gPn;
   
   public c(Bitmap[] paramArrayOfBitmap, Matrix paramMatrix)
   {
     super(paramMatrix);
     AppMethodBeat.i(93561);
-    this.goF = 100L;
-    this.goE = ((List)new ArrayList());
+    this.gPn = 100L;
+    this.gPm = ((List)new ArrayList());
     if (paramArrayOfBitmap != null)
     {
       int j = paramArrayOfBitmap.length;
@@ -33,7 +33,7 @@ public final class c
       {
         paramMatrix = paramArrayOfBitmap[i];
         if (paramMatrix != null) {
-          this.goE.add(paramMatrix);
+          this.gPm.add(paramMatrix);
         }
         i += 1;
       }
@@ -41,17 +41,17 @@ public final class c
     AppMethodBeat.o(93561);
   }
   
-  public final long ajy()
+  public final long aqx()
   {
     AppMethodBeat.i(93560);
-    if (this.goE.isEmpty())
+    if (this.gPm.isEmpty())
     {
       AppMethodBeat.o(93560);
       return 9223372036854775807L;
     }
-    this.goD += 1;
-    this.goD %= ((Collection)this.goE).size();
-    long l = this.goF;
+    this.gPl += 1;
+    this.gPl %= ((Collection)this.gPm).size();
+    long l = this.gPn;
     AppMethodBeat.o(93560);
     return l;
   }
@@ -63,14 +63,14 @@ public final class c
     AppMethodBeat.i(93559);
     k.h(paramCanvas, "canvas");
     k.h(paramPaint, "paint");
-    if (this.goE.isEmpty())
+    if (this.gPm.isEmpty())
     {
       AppMethodBeat.o(93559);
       return;
     }
-    Bitmap localBitmap = (Bitmap)this.goE.get(this.goD);
+    Bitmap localBitmap = (Bitmap)this.gPm.get(this.gPl);
     paramCanvas.save();
-    paramCanvas.concat(this.dY);
+    paramCanvas.concat(this.eY);
     paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
     paramCanvas.restore();
     AppMethodBeat.o(93559);
@@ -80,7 +80,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.editor.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,79 +3,94 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dvc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String EJi;
-  public int EJj;
-  public int scene;
+  public String nWj;
+  public String oGN;
+  public int type;
+  public String vxw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123704);
+    AppMethodBeat.i(209576);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.EJi != null) {
-        paramVarArgs.d(1, this.EJi);
+      paramVarArgs.aR(1, this.type);
+      if (this.vxw != null) {
+        paramVarArgs.d(2, this.vxw);
       }
-      paramVarArgs.aR(2, this.scene);
-      paramVarArgs.aR(3, this.EJj);
-      AppMethodBeat.o(123704);
+      if (this.oGN != null) {
+        paramVarArgs.d(3, this.oGN);
+      }
+      if (this.nWj != null) {
+        paramVarArgs.d(4, this.nWj);
+      }
+      AppMethodBeat.o(209576);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.EJi == null) {
-        break label306;
-      }
-    }
-    label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.EJi) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(2, this.scene);
-      int j = f.a.a.b.b.a.bA(3, this.EJj);
-      AppMethodBeat.o(123704);
-      return paramInt + i + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(123704);
-        return 0;
+      int i = f.a.a.b.b.a.bx(1, this.type) + 0;
+      paramInt = i;
+      if (this.vxw != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.vxw);
       }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        dvc localdvc = (dvc)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(123704);
-          return -1;
-        case 1: 
-          localdvc.EJi = locala.KhF.readString();
-          AppMethodBeat.o(123704);
-          return 0;
-        case 2: 
-          localdvc.scene = locala.KhF.xS();
-          AppMethodBeat.o(123704);
-          return 0;
-        }
-        localdvc.EJj = locala.KhF.xS();
-        AppMethodBeat.o(123704);
-        return 0;
+      i = paramInt;
+      if (this.oGN != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.oGN);
       }
-      AppMethodBeat.o(123704);
-      return -1;
+      paramInt = i;
+      if (this.nWj != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.nWj);
+      }
+      AppMethodBeat.o(209576);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      AppMethodBeat.o(209576);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      dvc localdvc = (dvc)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(209576);
+        return -1;
+      case 1: 
+        localdvc.type = locala.LVo.xF();
+        AppMethodBeat.o(209576);
+        return 0;
+      case 2: 
+        localdvc.vxw = locala.LVo.readString();
+        AppMethodBeat.o(209576);
+        return 0;
+      case 3: 
+        localdvc.oGN = locala.LVo.readString();
+        AppMethodBeat.o(209576);
+        return 0;
+      }
+      localdvc.nWj = locala.LVo.readString();
+      AppMethodBeat.o(209576);
+      return 0;
+    }
+    AppMethodBeat.o(209576);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvc
  * JD-Core Version:    0.7.0.1
  */

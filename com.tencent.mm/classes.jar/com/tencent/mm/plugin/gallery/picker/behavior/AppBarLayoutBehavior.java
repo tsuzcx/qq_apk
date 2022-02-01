@@ -13,30 +13,30 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.picker.view.TouchCoordinatorLayout;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class AppBarLayoutBehavior
   extends AppBarLayout.Behavior
   implements View.OnTouchListener
 {
-  private AppBarLayout rCC;
-  private boolean rDj;
-  private View rDk;
-  private int rDl;
-  private boolean rDm;
-  private boolean rDn;
-  private boolean rDo;
   private Rect rect;
+  private AppBarLayout sLw;
+  private boolean sMb;
+  private View sMc;
+  private int sMd;
+  private boolean sMe;
+  private boolean sMf;
+  private boolean sMg;
   
   public AppBarLayoutBehavior()
   {
     AppMethodBeat.i(164777);
-    this.rDj = false;
-    this.rDl = ((int)aj.getContext().getResources().getDimension(2131165298));
+    this.sMb = false;
+    this.sMd = ((int)ai.getContext().getResources().getDimension(2131165298));
     this.rect = new Rect();
-    this.rDm = true;
-    this.rDn = false;
-    this.rDo = false;
+    this.sMe = true;
+    this.sMf = false;
+    this.sMg = false;
     init();
     AppMethodBeat.o(164777);
   }
@@ -45,12 +45,12 @@ public class AppBarLayoutBehavior
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164778);
-    this.rDj = false;
-    this.rDl = ((int)aj.getContext().getResources().getDimension(2131165298));
+    this.sMb = false;
+    this.sMd = ((int)ai.getContext().getResources().getDimension(2131165298));
     this.rect = new Rect();
-    this.rDm = true;
-    this.rDn = false;
-    this.rDo = false;
+    this.sMe = true;
+    this.sMf = false;
+    this.sMg = false;
     init();
     AppMethodBeat.o(164778);
   }
@@ -60,7 +60,7 @@ public class AppBarLayoutBehavior
     AppMethodBeat.i(164779);
     a(new AppBarLayout.Behavior.a()
     {
-      public final boolean bu()
+      public final boolean bB()
       {
         AppMethodBeat.i(164776);
         if ((AppBarLayoutBehavior.a(AppBarLayoutBehavior.this)) || (AppBarLayoutBehavior.b(AppBarLayoutBehavior.this)))
@@ -78,12 +78,12 @@ public class AppBarLayoutBehavior
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(164783);
-    if ((paramInt5 == 1) && (this.rDn))
+    if ((paramInt5 == 1) && (this.sMf))
     {
       AppMethodBeat.o(164783);
       return;
     }
-    if (this.rDj) {
+    if (this.sMb) {
       super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
     AppMethodBeat.o(164783);
@@ -92,15 +92,15 @@ public class AppBarLayoutBehavior
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
     AppMethodBeat.i(164782);
-    if ((paramInt3 == 1) && (this.rDn))
+    if ((paramInt3 == 1) && (this.sMf))
     {
       AppMethodBeat.o(164782);
       return;
     }
-    if (this.rDj)
+    if (this.sMb)
     {
       super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-      if (this.rDm)
+      if (this.sMe)
       {
         if (paramArrayOfInt[1] == 0) {
           super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, 0, 0, 0, paramInt2, paramInt3);
@@ -122,8 +122,8 @@ public class AppBarLayoutBehavior
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, int paramInt)
   {
     AppMethodBeat.i(164780);
-    this.rCC = paramAppBarLayout;
-    this.rDk = paramAppBarLayout.findViewById(2131300185);
+    this.sLw = paramAppBarLayout;
+    this.sMc = paramAppBarLayout.findViewById(2131300185);
     if ((paramCoordinatorLayout instanceof TouchCoordinatorLayout)) {
       ((TouchCoordinatorLayout)paramCoordinatorLayout).setTouchListener(this);
     }
@@ -137,15 +137,15 @@ public class AppBarLayoutBehavior
     AppMethodBeat.i(164784);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.rDj = false;
-      this.rDo = false;
-      if (Math.abs(bv()) > 0) {
+      this.sMb = false;
+      this.sMg = false;
+      if (Math.abs(bC()) > 0) {
         break label228;
       }
       bool = true;
-      this.rDm = bool;
-      int i = bv();
-      if (this.rCC.getTotalScrollRange() != Math.abs(i)) {
+      this.sMe = bool;
+      int i = bC();
+      if (this.sLw.getTotalScrollRange() != Math.abs(i)) {
         break label234;
       }
     }
@@ -153,27 +153,27 @@ public class AppBarLayoutBehavior
     label234:
     for (boolean bool = true;; bool = false)
     {
-      this.rDn = bool;
-      new StringBuilder("isFromSnapOfBottom=").append(this.rDm).append(" isFromSnapOfTop=").append(this.rDn);
-      if (this.rDm)
+      this.sMf = bool;
+      new StringBuilder("isFromSnapOfBottom=").append(this.sMe).append(" isFromSnapOfTop=").append(this.sMf);
+      if (this.sMe)
       {
-        this.rDk.getGlobalVisibleRect(this.rect);
+        this.sMc.getGlobalVisibleRect(this.rect);
         if (this.rect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()))
         {
-          this.rDj = true;
-          this.rDo = true;
+          this.sMb = true;
+          this.sMg = true;
         }
       }
-      if (this.rDn) {
-        this.rDj = true;
+      if (this.sMf) {
+        this.sMb = true;
       }
-      if (!this.rDj)
+      if (!this.sMb)
       {
-        this.rCC.getGlobalVisibleRect(this.rect);
+        this.sLw.getGlobalVisibleRect(this.rect);
         paramView = this.rect;
-        paramView.bottom -= this.rDl;
+        paramView.bottom -= this.sMd;
         if (this.rect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-          this.rDj = true;
+          this.sMb = true;
         }
       }
       AppMethodBeat.o(164784);

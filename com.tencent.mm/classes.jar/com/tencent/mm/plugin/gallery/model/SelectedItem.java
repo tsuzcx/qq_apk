@@ -10,9 +10,9 @@ public class SelectedItem
   implements Parcelable
 {
   public static final Parcelable.Creator<SelectedItem> CREATOR;
-  public Matrix dY;
+  public Matrix eY;
   public String path;
-  public long rBW;
+  public long sKP;
   public int type;
   
   static
@@ -28,8 +28,8 @@ public class SelectedItem
   {
     AppMethodBeat.i(164772);
     this.path = paramParcel.readString();
-    this.rBW = paramParcel.readLong();
-    this.dY.setValues(paramParcel.createFloatArray());
+    this.sKP = paramParcel.readLong();
+    this.eY.setValues(paramParcel.createFloatArray());
     this.type = paramParcel.readInt();
     AppMethodBeat.o(164772);
   }
@@ -44,7 +44,7 @@ public class SelectedItem
     AppMethodBeat.i(164770);
     if ((paramObject instanceof SelectedItem))
     {
-      if (((SelectedItem)paramObject).rBW == this.rBW)
+      if (((SelectedItem)paramObject).sKP == this.sKP)
       {
         AppMethodBeat.o(164770);
         return true;
@@ -66,9 +66,9 @@ public class SelectedItem
   {
     AppMethodBeat.i(164771);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.rBW);
+    paramParcel.writeLong(this.sKP);
     float[] arrayOfFloat = new float[9];
-    this.dY.getValues(arrayOfFloat);
+    this.eY.getValues(arrayOfFloat);
     paramParcel.writeFloatArray(arrayOfFloat);
     paramParcel.writeInt(this.type);
     AppMethodBeat.o(164771);

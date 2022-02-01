@@ -2,71 +2,71 @@ package com.tencent.mm.plugin.webview.j;
 
 import android.arch.lifecycle.MutableLiveData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.ao.b;
-import com.tencent.mm.ao.f;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.an.b;
+import com.tencent.mm.an.f;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.i.a;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.webview.model.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
 {
-  private a BwT;
-  Map<String, String> BwU;
-  public MutableLiveData<String> BwV;
-  public b BwW;
+  private a CPb;
+  Map<String, String> CPc;
+  public MutableLiveData<String> CPd;
+  public b CPe;
   String appId;
-  public String kkH;
+  public String kLZ;
   
   public c()
   {
     AppMethodBeat.i(82376);
-    this.BwT = new a((byte)0);
-    this.BwU = new HashMap();
-    this.BwV = new MutableLiveData();
-    this.BwW = b.BwY;
+    this.CPb = new a((byte)0);
+    this.CPc = new HashMap();
+    this.CPd = new MutableLiveData();
+    this.CPe = b.CPg;
     AppMethodBeat.o(82376);
   }
   
-  private void ko(String paramString1, String paramString2)
+  private void kK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(82378);
     com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-    localg.fnH = this.BwT;
+    localg.frb = this.CPb;
     localg.field_mediaId = paramString2;
     localg.field_fullpath = paramString1;
-    localg.field_fileType = a.fnh;
-    localg.field_priority = a.fmU;
+    localg.field_fileType = a.fqB;
+    localg.field_priority = a.fqo;
     localg.field_needStorage = true;
     localg.field_isStreamMedia = false;
     localg.field_appType = 200;
     localg.field_bzScene = 2;
-    if (!f.awL().e(localg))
+    if (!f.aDD().f(localg))
     {
-      ad.e("MicroMsg.VestImgUploadEngine", "hy: cdntra addSendTask failed. clientid:%s", new Object[] { paramString2 });
-      this.BwW = b.Bxb;
+      ac.e("MicroMsg.VestImgUploadEngine", "hy: cdntra addSendTask failed. clientid:%s", new Object[] { paramString2 });
+      this.CPe = b.CPj;
     }
     AppMethodBeat.o(82378);
   }
   
-  public final void kn(String paramString1, String paramString2)
+  public final void kJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(82377);
     this.appId = paramString2;
-    this.kkH = paramString1;
-    this.BwW = b.BwZ;
+    this.kLZ = paramString1;
+    this.CPe = b.CPh;
     long l = System.currentTimeMillis();
-    paramString2 = com.tencent.mm.ao.c.a("vestacountavatar", l, u.arm().field_username, String.valueOf(l));
-    this.BwU.put(bt.nullAsNil(paramString2), paramString1);
-    ko(paramString1, paramString2);
+    paramString2 = com.tencent.mm.an.c.a("vestacountavatar", l, u.ayc().field_username, String.valueOf(l));
+    this.CPc.put(bs.nullAsNil(paramString2), paramString1);
+    kK(paramString1, paramString2);
     AppMethodBeat.o(82377);
   }
   
@@ -78,7 +78,7 @@ public final class c
     public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, d paramd, boolean paramBoolean)
     {
       AppMethodBeat.i(82372);
-      ad.d("MicroMsg.VestImgUploadEngine", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+      ac.d("MicroMsg.VestImgUploadEngine", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
       paramc = c.this;
       if (paramd != null) {}
       try
@@ -86,15 +86,15 @@ public final class c
         if ((paramd.field_retCode != 0) || (paramInt != 0)) {
           return 0;
         }
-        paramString = (String)c.this.BwU.get(paramString);
-        if (!c.this.kkH.equals(paramString))
+        paramString = (String)c.this.CPc.get(paramString);
+        if (!c.this.kLZ.equals(paramString))
         {
-          ad.i("MicroMsg.VestImgUploadEngine", "currentPath=%s,callbackPath=%s, path updated after CDNTaskCallback", new Object[] { c.this.kkH, paramString });
+          ac.i("MicroMsg.VestImgUploadEngine", "currentPath=%s,callbackPath=%s, path updated after CDNTaskCallback", new Object[] { c.this.kLZ, paramString });
           return 0;
         }
-        ad.i("MicroMsg.VestImgUploadEngine", "CDN upload success, file url = %s", new Object[] { paramd.field_fileUrl });
+        ac.i("MicroMsg.VestImgUploadEngine", "CDN upload success, file url = %s", new Object[] { paramd.field_fileUrl });
         paramString = new k(paramd.field_fileUrl, c.this.appId, paramString);
-        com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+        com.tencent.mm.kernel.g.agi().a(paramString, 0);
         return 0;
       }
       finally
@@ -116,11 +116,11 @@ public final class c
     static
     {
       AppMethodBeat.i(82375);
-      BwY = new b("NONE", 0);
-      BwZ = new b("LOADING", 1);
-      Bxa = new b("SUCCESS", 2);
-      Bxb = new b("FAIL", 3);
-      Bxc = new b[] { BwY, BwZ, Bxa, Bxb };
+      CPg = new b("NONE", 0);
+      CPh = new b("LOADING", 1);
+      CPi = new b("SUCCESS", 2);
+      CPj = new b("FAIL", 3);
+      CPk = new b[] { CPg, CPh, CPi, CPj };
       AppMethodBeat.o(82375);
     }
     
@@ -129,7 +129,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.j.c
  * JD-Core Version:    0.7.0.1
  */

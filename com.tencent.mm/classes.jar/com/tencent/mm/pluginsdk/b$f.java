@@ -1,20 +1,20 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.au;
 import d.g.a.a;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "invoke"})
 final class b$f
   extends d.g.b.l
-  implements a<av>
+  implements a<au>
 {
-  public static final f BNd;
+  public static final f Dfn;
   
   static
   {
     AppMethodBeat.i(124774);
-    BNd = new f();
+    Dfn = new f();
     AppMethodBeat.o(124774);
   }
   

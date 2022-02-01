@@ -1,7 +1,7 @@
 package com.tencent.mm.kernel.b;
 
 import android.content.Context;
-import com.tencent.mm.co.a.a;
+import com.tencent.mm.cn.a.a;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 
 public final class h$6
@@ -11,7 +11,7 @@ public final class h$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.kernel.b.h.6
  * JD-Core Version:    0.7.0.1
  */

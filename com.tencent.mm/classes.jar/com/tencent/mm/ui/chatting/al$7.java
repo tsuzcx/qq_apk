@@ -3,10 +3,10 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelmulti.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.n.d;
 
 final class al$7
@@ -18,11 +18,11 @@ final class al$7
   {
     AppMethodBeat.i(34902);
     paramMenuItem = paramMenuItem.getTitle();
-    ad.i("MicroMsg.LongClickBrandServiceHelper", "connector click[location]: to[%s] content[%s]", new Object[] { paramMenuItem, this.GqK });
-    i locali = new i(paramMenuItem, this.GqK, 48, 0);
-    az.aeS().a(locali, 0);
-    com.tencent.mm.plugin.report.service.h.vKh.f(10424, new Object[] { Integer.valueOf(48), Integer.valueOf(16), paramMenuItem });
-    com.tencent.mm.ui.base.h.cf(this.val$context, this.val$context.getString(2131755881));
+    ac.i("MicroMsg.LongClickBrandServiceHelper", "connector click[location]: to[%s] content[%s]", new Object[] { paramMenuItem, this.HQC });
+    i locali = new i(paramMenuItem, this.HQC, 48, 0);
+    az.agi().a(locali, 0);
+    com.tencent.mm.plugin.report.service.h.wUl.f(10424, new Object[] { Integer.valueOf(48), Integer.valueOf(16), paramMenuItem });
+    com.tencent.mm.ui.base.h.cg(this.val$context, this.val$context.getString(2131755881));
     AppMethodBeat.o(34902);
   }
 }

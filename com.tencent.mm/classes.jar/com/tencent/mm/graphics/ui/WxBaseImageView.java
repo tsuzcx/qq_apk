@@ -11,8 +11,6 @@ import android.util.AttributeSet;
 import android.view.Choreographer;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
@@ -25,34 +23,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.b.d;
 import com.tencent.mm.graphics.b.d.1;
 import com.tencent.mm.graphics.c.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public class WxBaseImageView
   extends FrameLayout
 {
-  private long aLL;
-  private boolean cel;
-  private ViewStub fWP;
-  private ViewStub fWQ;
-  private ImageView fWR;
-  private SubsamplingScaleImageView fWS;
-  private com.tencent.mm.graphics.a.b fWT;
-  private a fWU;
-  private com.tencent.mm.graphics.a.c fWV;
-  private boolean fWW;
-  private a.a fWX;
-  private a.a fWY;
-  private boolean fWZ;
-  private boolean fXa;
-  private boolean fXb;
-  private boolean fXc;
-  private boolean fXd;
-  private boolean fXe;
-  private ap fXf;
+  private long aMB;
+  private boolean cbi;
+  private com.tencent.mm.graphics.a.b gbA;
+  private a gbB;
+  private com.tencent.mm.graphics.a.c gbC;
+  private boolean gbD;
+  private a.a gbE;
+  private a.a gbF;
+  private boolean gbG;
+  private boolean gbH;
+  private boolean gbI;
+  private boolean gbJ;
+  private boolean gbK;
+  private boolean gbL;
+  private ao gbM;
+  private ViewStub gbw;
+  private ViewStub gbx;
+  private ImageView gby;
+  private SubsamplingScaleImageView gbz;
   protected int imageHeight;
   protected int imageWidth;
   private Context mContext;
@@ -67,77 +65,66 @@ public class WxBaseImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(136229);
-    this.fWP = null;
-    this.fWQ = null;
-    this.fWR = null;
-    this.fWS = null;
-    this.fWT = null;
-    this.fWU = null;
-    this.fWV = com.tencent.mm.graphics.a.c.fWh;
-    this.fWW = false;
+    this.gbw = null;
+    this.gbx = null;
+    this.gby = null;
+    this.gbz = null;
+    this.gbA = null;
+    this.gbB = null;
+    this.gbC = com.tencent.mm.graphics.a.c.gaO;
+    this.gbD = false;
     this.mRect = new Rect();
-    this.fXd = false;
-    this.fXe = false;
-    this.fXf = null;
+    this.gbK = false;
+    this.gbL = false;
+    this.gbM = null;
     this.mContext = paramContext;
     LayoutInflater.from(getContext()).inflate(2131495849, this, true);
-    this.fWP = ((ViewStub)findViewById(2131305505));
-    paramContext = this.fWP.inflate();
+    this.gbw = ((ViewStub)findViewById(2131305505));
+    paramContext = this.gbw.inflate();
     if (paramContext != null)
     {
-      this.fWS = ((SubsamplingScaleImageView)paramContext);
-      this.fWS.setVisibility(0);
+      this.gbz = ((SubsamplingScaleImageView)paramContext);
+      this.gbz.setVisibility(0);
     }
-    paramContext = com.tencent.mm.graphics.b.c.fWs;
-    if (!paramContext.fWx)
+    paramContext = com.tencent.mm.graphics.b.c.gaZ;
+    if (!paramContext.gbe)
     {
-      paramContext.fWx = true;
-      ad.i("MicroMsg.Metronome", "[start] stack:%s", new Object[] { bt.eGN() });
-      paramContext.adb().postFrameCallback(paramContext);
+      paramContext.gbe = true;
+      ac.i("MicroMsg.Metronome", "[start] stack:%s", new Object[] { bs.eWi() });
+      paramContext.aes().postFrameCallback(paramContext);
     }
-    d.fWA.fWB = new WeakReference(this.mContext);
-    this.fWS.setOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
-    {
-      public final void onViewAttachedToWindow(View paramAnonymousView) {}
-      
-      public final void onViewDetachedFromWindow(View paramAnonymousView)
-      {
-        AppMethodBeat.i(136221);
-        d.fWA.ade();
-        WxBaseImageView.a(WxBaseImageView.this);
-        AppMethodBeat.o(136221);
-      }
-    });
+    d.gbh.gbi = new WeakReference(this.mContext);
+    this.gbz.setOnAttachStateChangeListener(new WxBaseImageView.1(this));
     AppMethodBeat.o(136229);
   }
   
-  private void adh()
+  private void aex()
   {
     AppMethodBeat.i(136246);
-    if (!this.fWW)
+    if (!this.gbD)
     {
       AppMethodBeat.o(136246);
       return;
     }
-    if (this.cel)
+    if (this.cbi)
     {
       AppMethodBeat.o(136246);
       return;
     }
-    if ((this.fWZ) && (!this.fXb))
+    if ((this.gbG) && (!this.gbI))
     {
       AppMethodBeat.o(136246);
       return;
     }
-    if ((this.fXa) && (!this.fXc))
+    if ((this.gbH) && (!this.gbJ))
     {
       AppMethodBeat.o(136246);
       return;
     }
-    ad.i("MicroMsg.WxBaseImageView", "alvinluo reportImageInfo info ready and report");
-    com.tencent.mm.graphics.c.a locala = com.tencent.mm.graphics.c.a.fWH;
-    com.tencent.mm.graphics.c.a.a(this.fWY, this.fWX);
-    this.cel = true;
+    ac.i("MicroMsg.WxBaseImageView", "alvinluo reportImageInfo info ready and report");
+    com.tencent.mm.graphics.c.a locala = com.tencent.mm.graphics.c.a.gbo;
+    com.tencent.mm.graphics.c.a.a(this.gbF, this.gbE);
+    this.cbi = true;
     AppMethodBeat.o(136246);
   }
   
@@ -154,29 +141,29 @@ public class WxBaseImageView
     return "Default";
   }
   
-  private void lO(int paramInt)
+  private void lN(int paramInt)
   {
     AppMethodBeat.i(136244);
     try
     {
       com.davemorrissey.labs.subscaleview.d.a locala;
-      if ((this.fWS != null) && (this.fWX != null))
+      if ((this.gbz != null) && (this.gbE != null))
       {
-        this.fWX.fWK = ((int)(System.currentTimeMillis() - this.aLL));
-        locala = this.fWS.getImageDecodeRecord();
+        this.gbE.gbr = ((int)(System.currentTimeMillis() - this.aMB));
+        locala = this.gbz.getImageDecodeRecord();
         if (locala == null) {
           break label142;
         }
       }
       label142:
-      for (this.fWX.fWL = locala.aLT;; this.fWX.fWL = 0)
+      for (this.gbE.gbs = locala.aMJ;; this.gbE.gbs = 0)
       {
-        this.fWX.fWJ = paramInt;
-        this.fWX.orientation = this.fWS.getPreviewOrientation();
-        this.fWX.width = this.fWS.getPreviewWidth();
-        this.fWX.height = this.fWS.getPreviewHeight();
-        this.fWX.aMn = 1;
-        this.fWX.fileSize = ((int)com.tencent.mm.vfs.i.aMN(this.fWX.imagePath));
+        this.gbE.gbq = paramInt;
+        this.gbE.orientation = this.gbz.getPreviewOrientation();
+        this.gbE.width = this.gbz.getPreviewWidth();
+        this.gbE.height = this.gbz.getPreviewHeight();
+        this.gbE.aNd = 1;
+        this.gbE.fileSize = ((int)com.tencent.mm.vfs.i.aSp(this.gbE.imagePath));
         AppMethodBeat.o(136244);
         return;
       }
@@ -184,12 +171,12 @@ public class WxBaseImageView
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.WxBaseImageView", localException, "alvinluo fillPreviewInfo exception", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WxBaseImageView", localException, "alvinluo fillPreviewInfo exception", new Object[0]);
       AppMethodBeat.o(136244);
     }
   }
   
-  private void lP(int paramInt)
+  private void lO(int paramInt)
   {
     AppMethodBeat.i(136245);
     try
@@ -197,25 +184,25 @@ public class WxBaseImageView
       com.davemorrissey.labs.subscaleview.d.a locala;
       a.a locala1;
       int i;
-      if ((this.fWS != null) && (this.fWY != null))
+      if ((this.gbz != null) && (this.gbF != null))
       {
-        this.fWY.fWK = ((int)(System.currentTimeMillis() - this.aLL));
-        locala = this.fWS.getImageDecodeRecord();
+        this.gbF.gbr = ((int)(System.currentTimeMillis() - this.aMB));
+        locala = this.gbz.getImageDecodeRecord();
         if (locala == null) {
           break label159;
         }
-        locala1 = this.fWY;
-        i = locala.aLU;
+        locala1 = this.gbF;
+        i = locala.aMK;
       }
       label159:
-      for (locala1.fWL = (locala.aLV + i);; this.fWX.fWL = 0)
+      for (locala1.gbs = (locala.aML + i);; this.gbE.gbs = 0)
       {
-        this.fWY.fWJ = paramInt;
-        this.fWY.orientation = this.fWS.getRequiredRotation();
-        this.fWY.width = this.fWS.getSWidth();
-        this.fWY.height = this.fWS.getSHeight();
-        this.fWY.aMn = this.fWS.getFullImageSampleSize();
-        this.fWY.fileSize = ((int)com.tencent.mm.vfs.i.aMN(this.fWY.imagePath));
+        this.gbF.gbq = paramInt;
+        this.gbF.orientation = this.gbz.getRequiredRotation();
+        this.gbF.width = this.gbz.getSWidth();
+        this.gbF.height = this.gbz.getSHeight();
+        this.gbF.aNd = this.gbz.getFullImageSampleSize();
+        this.gbF.fileSize = ((int)com.tencent.mm.vfs.i.aSp(this.gbF.imagePath));
         AppMethodBeat.o(136245);
         return;
       }
@@ -223,7 +210,7 @@ public class WxBaseImageView
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.WxBaseImageView", localException, "alvinluo fillMainInfo exception", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.WxBaseImageView", localException, "alvinluo fillMainInfo exception", new Object[0]);
       AppMethodBeat.o(136245);
     }
   }
@@ -231,83 +218,83 @@ public class WxBaseImageView
   public final void a(String paramString, com.davemorrissey.labs.subscaleview.view.a parama)
   {
     AppMethodBeat.i(136232);
-    ad.d("MicroMsg.WxBaseImageView", "alvinluo: loading from local file: %s, width: %d, height: %d, %d", new Object[] { paramString, Integer.valueOf(this.imageWidth), Integer.valueOf(this.imageHeight), Integer.valueOf(hashCode()) });
-    if (this.fWV == com.tencent.mm.graphics.a.c.fWh)
+    ac.d("MicroMsg.WxBaseImageView", "alvinluo: loading from local file: %s, width: %d, height: %d, %d", new Object[] { paramString, Integer.valueOf(this.imageWidth), Integer.valueOf(this.imageHeight), Integer.valueOf(hashCode()) });
+    if (this.gbC == com.tencent.mm.graphics.a.c.gaO)
     {
-      if (this.fWS == null)
+      if (this.gbz == null)
       {
-        ad.e("MicroMsg.WxBaseImageView", "alvinluo WxBaseImageView laodFile mTileIv is null");
+        ac.e("MicroMsg.WxBaseImageView", "alvinluo WxBaseImageView laodFile mTileIv is null");
         AppMethodBeat.o(136232);
         return;
       }
       if (paramString == null)
       {
-        ad.i("MicroMsg.WxBaseImageView", "alvinluo WxBaseImageView loadFile path is null");
+        ac.i("MicroMsg.WxBaseImageView", "alvinluo WxBaseImageView loadFile path is null");
         AppMethodBeat.o(136232);
         return;
       }
-      this.fWP.setVisibility(0);
-      com.davemorrissey.labs.subscaleview.view.a locala = com.davemorrissey.labs.subscaleview.view.a.U(paramString);
+      this.gbw.setVisibility(0);
+      com.davemorrissey.labs.subscaleview.view.a locala = com.davemorrissey.labs.subscaleview.view.a.W(paramString);
       int i = this.imageWidth;
       int j = this.imageHeight;
       if (locala.bitmap == null)
       {
-        locala.aLY = i;
-        locala.aLZ = j;
+        locala.aMO = i;
+        locala.aMP = j;
       }
-      if (locala.aMa != null)
+      if (locala.aMQ != null)
       {
-        locala.aLX = true;
-        locala.aLY = locala.aMa.width();
-        locala.aLZ = locala.aMa.height();
+        locala.aMN = true;
+        locala.aMO = locala.aMQ.width();
+        locala.aMP = locala.aMQ.height();
       }
-      this.aLL = System.currentTimeMillis();
-      ad.i("MicroMsg.WxBaseImageView", "alvinluo onStartLoad imagePath: %s, mStartLoadTime: %d", new Object[] { paramString, Long.valueOf(this.aLL) });
-      this.fWY = new a.a();
-      this.fWY.imageType = 22;
-      this.fWY.imagePath = paramString;
-      this.fWY.dvh = getActivityName();
-      this.fXa = true;
+      this.aMB = System.currentTimeMillis();
+      ac.i("MicroMsg.WxBaseImageView", "alvinluo onStartLoad imagePath: %s, mStartLoadTime: %d", new Object[] { paramString, Long.valueOf(this.aMB) });
+      this.gbF = new a.a();
+      this.gbF.imageType = 22;
+      this.gbF.imagePath = paramString;
+      this.gbF.dsT = getActivityName();
+      this.gbH = true;
       if (parama != null)
       {
-        this.fWX = new a.a();
+        this.gbE = new a.a();
         if (parama.uri != null)
         {
-          this.fWX.imagePath = parama.uri.toString();
-          ad.d("MicroMsg.WxBaseImageView", "alvinluo onStartLoad previewImagePath: %s", new Object[] { this.fWX.imagePath });
-          this.fWX.imageType = 21;
-          this.fWX.dvh = getActivityName();
+          this.gbE.imagePath = parama.uri.toString();
+          ac.d("MicroMsg.WxBaseImageView", "alvinluo onStartLoad previewImagePath: %s", new Object[] { this.gbE.imagePath });
+          this.gbE.imageType = 21;
+          this.gbE.dsT = getActivityName();
         }
       }
-      for (this.fWZ = true;; this.fWZ = false)
+      for (this.gbG = true;; this.gbG = false)
       {
         if (parama == null) {
           break label391;
         }
-        this.fWS.a(locala, parama);
+        this.gbz.a(locala, parama);
         AppMethodBeat.o(136232);
         return;
-        this.fWX.imagePath = "";
+        this.gbE.imagePath = "";
         break;
       }
       label391:
-      this.fWS.setImage(locala);
+      this.gbz.setImage(locala);
     }
     AppMethodBeat.o(136232);
   }
   
-  public final void adg()
+  public final void aew()
   {
     AppMethodBeat.i(136242);
-    if (this.fWS != null)
+    if (this.gbz != null)
     {
-      SubsamplingScaleImageView localSubsamplingScaleImageView = this.fWS;
-      localSubsamplingScaleImageView.a(localSubsamplingScaleImageView.aNM, new PointF(0.0F, 0.0F));
+      SubsamplingScaleImageView localSubsamplingScaleImageView = this.gbz;
+      localSubsamplingScaleImageView.a(localSubsamplingScaleImageView.aOC, new PointF(0.0F, 0.0F));
     }
     AppMethodBeat.o(136242);
   }
   
-  public final void cH(int paramInt1, int paramInt2)
+  public final void cF(int paramInt1, int paramInt2)
   {
     this.imageWidth = paramInt1;
     this.imageHeight = paramInt2;
@@ -316,9 +303,9 @@ public class WxBaseImageView
   public Bitmap getFullImageBitmap()
   {
     AppMethodBeat.i(136237);
-    if (this.fWS != null)
+    if (this.gbz != null)
     {
-      Bitmap localBitmap = this.fWS.getFullImageBitmap();
+      Bitmap localBitmap = this.gbz.getFullImageBitmap();
       AppMethodBeat.o(136237);
       return localBitmap;
     }
@@ -329,9 +316,9 @@ public class WxBaseImageView
   public float getScale()
   {
     AppMethodBeat.i(136241);
-    if (this.fWS != null)
+    if (this.gbz != null)
     {
-      float f = this.fWS.getScale();
+      float f = this.gbz.getScale();
       AppMethodBeat.o(136241);
       return f;
     }
@@ -353,38 +340,38 @@ public class WxBaseImageView
     this.mRect.top = getTop();
     this.mRect.bottom = getBottom();
     if (!getGlobalVisibleRect(this.mRect)) {
-      this.fWW = false;
+      this.gbD = false;
     }
     for (;;)
     {
-      adh();
+      aex();
       AppMethodBeat.o(136230);
       return;
-      ad.d("MicroMsg.WxBaseImageView", "alvinluo ImageView visible, can report");
-      this.fWW = true;
-      if (this.fXe) {
+      ac.d("MicroMsg.WxBaseImageView", "alvinluo ImageView visible, can report");
+      this.gbD = true;
+      if (this.gbL) {
         continue;
       }
-      this.fXe = true;
-      d locald = d.fWA;
-      synchronized (locald.fWE)
+      this.gbL = true;
+      d locald = d.gbh;
+      synchronized (locald.gbl)
       {
         if (locald.isRunning)
         {
-          ad.w("MicroMsg.PerformanceMonitor", "hy: already running. stop last and run new");
+          ac.w("MicroMsg.PerformanceMonitor", "hy: already running. stop last and run new");
           locald.isRunning = false;
         }
-        if (locald.fWD != null) {
-          locald.fWD.cancel();
+        if (locald.gbk != null) {
+          locald.gbk.cancel();
         }
         System.gc();
-        locald.fWC.clear();
-        if ((locald.fWB != null) && (locald.fWB.get() != null)) {
-          locald.fWC.put(Integer.valueOf(2), new com.tencent.mm.graphics.b.b((Context)locald.fWB.get()));
+        locald.gbj.clear();
+        if ((locald.gbi != null) && (locald.gbi.get() != null)) {
+          locald.gbj.put(Integer.valueOf(2), new com.tencent.mm.graphics.b.b((Context)locald.gbi.get()));
         }
-        com.tencent.e.i locali = h.Iye;
+        com.tencent.e.i locali = h.JZN;
         d.1 local1 = new d.1(locald);
-        locald.fWD = local1;
+        locald.gbk = local1;
         locali.r(local1, 5L);
         locald.isRunning = true;
       }
@@ -394,37 +381,37 @@ public class WxBaseImageView
   public void setAnimateMode(com.tencent.mm.graphics.a.a parama)
   {
     AppMethodBeat.i(136235);
-    ad.d("MicroMsg.WxBaseImageView", "hy: set current animation mode: %s", new Object[] { parama });
+    ac.d("MicroMsg.WxBaseImageView", "hy: set current animation mode: %s", new Object[] { parama });
     AppMethodBeat.o(136235);
   }
   
   public void setEdgeSwipeListener(SubsamplingScaleImageView.c paramc)
   {
     AppMethodBeat.i(136234);
-    this.fWS.setEdgeSwipeListener(paramc);
+    this.gbz.setEdgeSwipeListener(paramc);
     AppMethodBeat.o(136234);
   }
   
   public void setFitType(ImageView.ScaleType paramScaleType)
   {
     AppMethodBeat.i(136236);
-    ad.d("MicroMsg.WxBaseImageView", "hy: set fit type: %s", new Object[] { paramScaleType });
+    ac.d("MicroMsg.WxBaseImageView", "hy: set fit type: %s", new Object[] { paramScaleType });
     AppMethodBeat.o(136236);
   }
   
   public void setForceTileFlag(com.tencent.mm.graphics.a.c paramc)
   {
     AppMethodBeat.i(136231);
-    ad.d("MicroMsg.WxBaseImageView", "hy: setting force tile flag; %s", new Object[] { paramc });
-    this.fWV = paramc;
+    ac.d("MicroMsg.WxBaseImageView", "hy: setting force tile flag; %s", new Object[] { paramc });
+    this.gbC = paramc;
     AppMethodBeat.o(136231);
   }
   
   public void setGestureDetectorListener(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener)
   {
     AppMethodBeat.i(136238);
-    if (this.fWS != null) {
-      this.fWS.setGestureDetectorListener(paramSimpleOnGestureListener);
+    if (this.gbz != null) {
+      this.gbz.setGestureDetectorListener(paramSimpleOnGestureListener);
     }
     AppMethodBeat.o(136238);
   }
@@ -434,9 +421,9 @@ public class WxBaseImageView
   public void setOnImageLoadEventListener(final com.tencent.mm.graphics.a.b paramb)
   {
     AppMethodBeat.i(136240);
-    if (this.fWS != null)
+    if (this.gbz != null)
     {
-      this.fWT = new com.tencent.mm.graphics.a.b()
+      this.gbA = new com.tencent.mm.graphics.a.b()
       {
         public final void a(com.davemorrissey.labs.subscaleview.a.c paramAnonymousc)
         {
@@ -478,27 +465,27 @@ public class WxBaseImageView
           AppMethodBeat.o(136224);
         }
         
-        public final void qq()
+        public final void qA()
         {
           AppMethodBeat.i(136223);
           WxBaseImageView.d(WxBaseImageView.this);
           if (paramb != null) {
-            paramb.qq();
+            paramb.qA();
           }
           AppMethodBeat.o(136223);
         }
         
-        public final void qr()
+        public final void qB()
         {
           AppMethodBeat.i(136228);
-          ad.i("MicroMsg.WxBaseImageView", "alvinluo onPreviewReleased");
+          ac.i("MicroMsg.WxBaseImageView", "alvinluo onPreviewReleased");
           if (paramb != null) {
-            paramb.qr();
+            paramb.qB();
           }
           AppMethodBeat.o(136228);
         }
       };
-      this.fWS.setOnImageEventListener(this.fWT);
+      this.gbz.setOnImageEventListener(this.gbA);
     }
     AppMethodBeat.o(136240);
   }
@@ -506,8 +493,8 @@ public class WxBaseImageView
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
     AppMethodBeat.i(136239);
-    if (this.fWS != null) {
-      this.fWS.setOnLongClickListener(paramOnLongClickListener);
+    if (this.gbz != null) {
+      this.gbz.setOnLongClickListener(paramOnLongClickListener);
     }
     AppMethodBeat.o(136239);
   }
@@ -515,8 +502,8 @@ public class WxBaseImageView
   public void setScaleRate(float paramFloat)
   {
     AppMethodBeat.i(136233);
-    if (this.fWS != null) {
-      this.fWS.setScaleRate(paramFloat);
+    if (this.gbz != null) {
+      this.gbz.setScaleRate(paramFloat);
     }
     AppMethodBeat.o(136233);
   }

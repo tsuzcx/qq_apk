@@ -18,28 +18,28 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchResultItemView;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class WalletLqtSaveFetchFinishProgressUI
   extends WalletBaseUI
 {
-  private LinearLayout ljn;
-  private ImageView vvP;
-  private ImageView vvQ;
-  private ImageView vvR;
-  private TextView vvS;
-  private TextView vvT;
-  private TextView vvU;
-  private TextView vvV;
-  private TextView vvW;
-  private TextView vvX;
-  private cie zLg;
+  private cni Bdt;
+  private LinearLayout lJf;
+  private ImageView wFU;
+  private ImageView wFV;
+  private ImageView wFW;
+  private TextView wFX;
+  private TextView wFY;
+  private TextView wFZ;
+  private TextView wGa;
+  private TextView wGb;
+  private TextView wGc;
   
   public int getLayoutId()
   {
@@ -49,48 +49,48 @@ public class WalletLqtSaveFetchFinishProgressUI
   public void initView()
   {
     AppMethodBeat.i(68960);
-    this.vvP = ((ImageView)findViewById(2131297529));
-    this.vvQ = ((ImageView)findViewById(2131297530));
-    this.vvR = ((ImageView)findViewById(2131297531));
-    this.vvP.setImageResource(2131231118);
-    this.vvQ.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.vvQ.setImageResource(2131691098);
-    this.vvR.setImageResource(2131231119);
-    this.vvS = ((TextView)findViewById(2131297537));
-    this.vvT = ((TextView)findViewById(2131297538));
-    this.vvU = ((TextView)findViewById(2131297539));
-    this.vvS.setText(2131765419);
-    this.vvT.setText(this.zLg.EdC);
-    this.vvT.setTextColor(getResources().getColor(2131100711));
-    this.vvU.setText(2131764993);
-    this.vvV = ((TextView)findViewById(2131297526));
-    this.vvW = ((TextView)findViewById(2131297527));
-    this.vvX = ((TextView)findViewById(2131297528));
-    this.vvV.setVisibility(8);
-    this.vvW.setText(this.zLg.EdD);
-    this.vvW.setVisibility(0);
-    this.vvX.setVisibility(8);
-    this.ljn = ((LinearLayout)findViewById(2131297520));
-    this.ljn.setBackgroundResource(2131231117);
+    this.wFU = ((ImageView)findViewById(2131297529));
+    this.wFV = ((ImageView)findViewById(2131297530));
+    this.wFW = ((ImageView)findViewById(2131297531));
+    this.wFU.setImageResource(2131231118);
+    this.wFV.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.wFV.setImageResource(2131691098);
+    this.wFW.setImageResource(2131231119);
+    this.wFX = ((TextView)findViewById(2131297537));
+    this.wFY = ((TextView)findViewById(2131297538));
+    this.wFZ = ((TextView)findViewById(2131297539));
+    this.wFX.setText(2131765419);
+    this.wFY.setText(this.Bdt.FAz);
+    this.wFY.setTextColor(getResources().getColor(2131100711));
+    this.wFZ.setText(2131764993);
+    this.wGa = ((TextView)findViewById(2131297526));
+    this.wGb = ((TextView)findViewById(2131297527));
+    this.wGc = ((TextView)findViewById(2131297528));
+    this.wGa.setVisibility(8);
+    this.wGb.setText(this.Bdt.FAA);
+    this.wGb.setVisibility(0);
+    this.wGc.setVisibility(8);
+    this.lJf = ((LinearLayout)findViewById(2131297520));
+    this.lJf.setBackgroundResource(2131231117);
     Object localObject1 = new WalletBalanceFetchResultItemView(this, true);
-    ((WalletBalanceFetchResultItemView)localObject1).b(2131765486, e.E(this.zLg.DXY / 100.0F));
-    this.ljn.addView((View)localObject1);
-    if (!bt.isNullOrNil(this.zLg.szi))
+    ((WalletBalanceFetchResultItemView)localObject1).b(2131765486, e.D(this.Bdt.FuS / 100.0F));
+    this.lJf.addView((View)localObject1);
+    if (!bs.isNullOrNil(this.Bdt.tGS))
     {
-      Object localObject2 = this.zLg.szi;
+      Object localObject2 = this.Bdt.tGS;
       localObject1 = localObject2;
-      if (!bt.isNullOrNil(this.zLg.uoo)) {
-        localObject1 = (String)localObject2 + " " + getString(2131765680) + this.zLg.uoo;
+      if (!bs.isNullOrNil(this.Bdt.vxk)) {
+        localObject1 = (String)localObject2 + " " + getString(2131765680) + this.Bdt.vxk;
       }
       localObject2 = new WalletBalanceFetchResultItemView(this);
       ((WalletBalanceFetchResultItemView)localObject2).b(2131765405, (CharSequence)localObject1);
-      this.ljn.addView((View)localObject2);
+      this.lJf.addView((View)localObject2);
     }
-    if (!bt.isNullOrNil(this.zLg.EdE))
+    if (!bs.isNullOrNil(this.Bdt.FAB))
     {
       localObject1 = new WalletBalanceFetchResultItemView(this);
-      ((WalletBalanceFetchResultItemView)localObject1).b(2131765401, this.zLg.EdE);
-      this.ljn.addView((View)localObject1);
+      ((WalletBalanceFetchResultItemView)localObject1).b(2131765401, this.Bdt.FAB);
+      this.lJf.addView((View)localObject1);
     }
     ((Button)findViewById(2131297523)).setOnClickListener(new View.OnClickListener()
     {
@@ -111,15 +111,15 @@ public class WalletLqtSaveFetchFinishProgressUI
     AppMethodBeat.i(68959);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getByteArrayExtra("key_redeem_res");
-    this.zLg = new cie();
+    this.Bdt = new cni();
     try
     {
-      this.zLg.parseFrom(paramBundle);
-      paramBundle = this.zLg;
+      this.Bdt.parseFrom(paramBundle);
+      paramBundle = this.Bdt;
       if (paramBundle != null)
       {
-        paramBundle = String.format("status:%s, wording_for_status2:%s, pre_arrive_time_wording:%s, redeem_fee:%s, bank_name:%s, card_tail:%s, failure_wording:%s", new Object[] { Integer.valueOf(paramBundle.status), paramBundle.EdC, paramBundle.EdD, Integer.valueOf(paramBundle.DXY), paramBundle.szi, paramBundle.uoo, paramBundle.EdE });
-        ad.i("MicroMsg.WalletLqtSaveFetchFinishProgressUI", "onCreate, redeemRes: %s", new Object[] { paramBundle });
+        paramBundle = String.format("status:%s, wording_for_status2:%s, pre_arrive_time_wording:%s, redeem_fee:%s, bank_name:%s, card_tail:%s, failure_wording:%s", new Object[] { Integer.valueOf(paramBundle.status), paramBundle.FAz, paramBundle.FAA, Integer.valueOf(paramBundle.FuS), paramBundle.tGS, paramBundle.vxk, paramBundle.FAB });
+        ac.i("MicroMsg.WalletLqtSaveFetchFinishProgressUI", "onCreate, redeemRes: %s", new Object[] { paramBundle });
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(2131101179)));
         paramBundle = getSupportActionBar().getCustomView();
         if (paramBundle != null)
@@ -166,7 +166,7 @@ public class WalletLqtSaveFetchFinishProgressUI
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.WalletLqtSaveFetchFinishProgressUI", paramBundle, "parse redeemFundRes error!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WalletLqtSaveFetchFinishProgressUI", paramBundle, "parse redeemFundRes error!", new Object[0]);
         finish();
         continue;
         paramBundle = "";
@@ -187,7 +187,7 @@ public class WalletLqtSaveFetchFinishProgressUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishProgressUI
  * JD-Core Version:    0.7.0.1
  */

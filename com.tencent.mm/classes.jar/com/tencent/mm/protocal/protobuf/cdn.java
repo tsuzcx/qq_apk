@@ -1,93 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cdn
-  extends com.tencent.mm.bx.a
+  extends cpx
 {
-  public String CVu;
-  public int DZN;
-  public int DaA;
-  public String mAQ;
+  public int ErL;
+  public String Fsn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32393);
+    AppMethodBeat.i(91573);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.mAQ != null) {
-        paramVarArgs.d(1, this.mAQ);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.CVu != null) {
-        paramVarArgs.d(2, this.CVu);
+      paramVarArgs.aR(2, this.ErL);
+      if (this.Fsn != null) {
+        paramVarArgs.d(3, this.Fsn);
       }
-      paramVarArgs.aR(3, this.DZN);
-      paramVarArgs.aR(4, this.DaA);
-      AppMethodBeat.o(32393);
+      AppMethodBeat.o(91573);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.mAQ == null) {
-        break label376;
+      if (this.BaseRequest == null) {
+        break label414;
       }
     }
-    label376:
-    for (paramInt = f.a.a.b.b.a.e(1, this.mAQ) + 0;; paramInt = 0)
+    label414:
+    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.CVu != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.CVu);
+      int i = paramInt + f.a.a.b.b.a.bx(2, this.ErL);
+      paramInt = i;
+      if (this.Fsn != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Fsn);
       }
-      paramInt = f.a.a.b.b.a.bA(3, this.DZN);
-      int j = f.a.a.b.b.a.bA(4, this.DaA);
-      AppMethodBeat.o(32393);
-      return i + paramInt + j;
+      AppMethodBeat.o(91573);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(32393);
+        AppMethodBeat.o(91573);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         cdn localcdn = (cdn)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32393);
+          AppMethodBeat.o(91573);
           return -1;
         case 1: 
-          localcdn.mAQ = locala.KhF.readString();
-          AppMethodBeat.o(32393);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iv();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcdn.BaseRequest = ((iv)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91573);
           return 0;
         case 2: 
-          localcdn.CVu = locala.KhF.readString();
-          AppMethodBeat.o(32393);
-          return 0;
-        case 3: 
-          localcdn.DZN = locala.KhF.xS();
-          AppMethodBeat.o(32393);
+          localcdn.ErL = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(91573);
           return 0;
         }
-        localcdn.DaA = locala.KhF.xS();
-        AppMethodBeat.o(32393);
+        localcdn.Fsn = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(91573);
         return 0;
       }
-      AppMethodBeat.o(32393);
+      AppMethodBeat.o(91573);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cdn
  * JD-Core Version:    0.7.0.1
  */

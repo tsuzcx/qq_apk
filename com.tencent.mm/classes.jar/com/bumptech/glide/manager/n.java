@@ -10,15 +10,15 @@ import java.util.WeakHashMap;
 
 public final class n
 {
-  public final Set<b> aKi;
-  public final List<b> aKj;
+  public final Set<b> aKY;
+  public final List<b> aKZ;
   public boolean isPaused;
   
   public n()
   {
     AppMethodBeat.i(77577);
-    this.aKi = Collections.newSetFromMap(new WeakHashMap());
-    this.aKj = new ArrayList();
+    this.aKY = Collections.newSetFromMap(new WeakHashMap());
+    this.aKZ = new ArrayList();
     AppMethodBeat.o(77577);
   }
   
@@ -31,9 +31,9 @@ public final class n
       AppMethodBeat.o(77578);
       return true;
     }
-    boolean bool3 = this.aKi.remove(paramb);
+    boolean bool3 = this.aKY.remove(paramb);
     boolean bool1 = bool2;
-    if (!this.aKj.remove(paramb)) {
+    if (!this.aKZ.remove(paramb)) {
       if (!bool3) {
         break label82;
       }
@@ -56,14 +56,14 @@ public final class n
   public final String toString()
   {
     AppMethodBeat.i(77579);
-    String str = super.toString() + "{numRequests=" + this.aKi.size() + ", isPaused=" + this.isPaused + "}";
+    String str = super.toString() + "{numRequests=" + this.aKY.size() + ", isPaused=" + this.isPaused + "}";
     AppMethodBeat.o(77579);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.manager.n
  * JD-Core Version:    0.7.0.1
  */

@@ -4,68 +4,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.model.e;
 import com.tencent.mm.plugin.gif.g;
 import com.tencent.mm.plugin.gif.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "", "outputPath", "", "width", "", "height", "frameDurationMs", "", "outputGif", "", "(Ljava/lang/String;IIJZ)V", "TAG", "encoder", "Lcom/tencent/mm/plugin/gif/IAnimFileEncoder;", "gifEncoderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "saveRgbFrameCount", "startEncodeTick", "encodeFrame", "", "data", "", "finishEncode", "callback", "Lkotlin/Function0;", "Companion", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder;", "", "outputPath", "", "width", "", "height", "frameDurationMs", "", "outputGif", "", "(Ljava/lang/String;IIJZ)V", "TAG", "encoder", "Lcom/tencent/mm/plugin/gif/IAnimFileEncoder;", "gifEncoderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "saveRgbFrameCount", "startEncodeTick", "encodeFrame", "", "data", "", "finishEncode", "callback", "Lkotlin/Function0;", "Companion", "plugin-emojicapture_release"})
 public final class c
 {
-  public static final a oLi;
+  public static final c.a poC;
   private final String TAG;
   private final int height;
-  ap oLd;
-  private com.tencent.mm.plugin.gif.a oLe;
-  private long oLf;
-  private int oLg;
-  private final String oLh;
+  private int poA;
+  private final String poB;
+  ao pox;
+  private com.tencent.mm.plugin.gif.a poy;
+  private long poz;
   private final int width;
   
   static
   {
     AppMethodBeat.i(269);
-    oLi = new a((byte)0);
+    poC = new c.a((byte)0);
     AppMethodBeat.o(269);
   }
   
   public c(String paramString, int paramInt1, int paramInt2, long paramLong, final boolean paramBoolean)
   {
     AppMethodBeat.i(268);
-    this.oLh = paramString;
+    this.poB = paramString;
     this.width = paramInt1;
     this.height = paramInt2;
     this.TAG = "MicroMsg.EmojiMixGifEncoder";
-    this.oLg = 30;
-    this.oLd = new ap("EmojiMixer_gifEncode");
+    this.poA = 30;
+    this.pox = new ao("EmojiMixer_gifEncode");
     if (paramBoolean) {}
-    for (paramString = (com.tencent.mm.plugin.gif.a)new g(this.oLh, this.width, this.height, paramLong);; paramString = (com.tencent.mm.plugin.gif.a)new j(this.oLh, this.width, this.height, paramLong))
+    for (paramString = (com.tencent.mm.plugin.gif.a)new g(this.poB, this.width, this.height, paramLong);; paramString = (com.tencent.mm.plugin.gif.a)new j(this.poB, this.width, this.height, paramLong))
     {
-      this.oLe = paramString;
-      this.oLd.post((Runnable)new Runnable()
+      this.poy = paramString;
+      this.pox.post((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(264);
-          boolean bool = c.a(this.oLj).init();
-          ad.i(c.b(this.oLj), "init encoder, outputGif: " + paramBoolean + " ret: " + bool);
+          boolean bool = c.a(this.poD).init();
+          ac.i(c.b(this.poD), "init encoder, outputGif: " + paramBoolean + " ret: " + bool);
           e locale;
           if (!bool)
           {
             if (!paramBoolean) {
               break label92;
             }
-            locale = e.oKa;
-            e.bXW();
+            locale = e.pny;
+            e.cfj();
           }
           for (;;)
           {
-            c.a(this.oLj, bt.GC());
+            c.a(this.poD, bs.Gn());
             AppMethodBeat.o(264);
             return;
             label92:
-            locale = e.oKa;
-            e.bXV();
+            locale = e.pny;
+            e.cfi();
           }
         }
       });
@@ -74,10 +74,7 @@ public final class c
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixGifEncoder$Companion;", "", "()V", "EMOJI_MIX_WXAM_QP", "", "plugin-emojicapture_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -86,14 +83,14 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(265);
-      long l = bt.GC();
-      boolean bool = c.a(this.oLj).c(this.gsJ, this.oLl);
-      ad.i(c.b(this.oLj), "encodeRgbaFrame used " + bt.aS(l) + ", ret:" + bool);
+      long l = bs.Gn();
+      boolean bool = c.a(this.poD).c(this.gTq, this.poF);
+      ac.i(c.b(this.poD), "encodeRgbaFrame used " + bs.aO(l) + ", ret:" + bool);
       AppMethodBeat.o(265);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -102,11 +99,11 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(266);
-      long l = bt.GC();
-      boolean bool = c.a(this.oLj).cEG();
-      ad.i(c.b(this.oLj), "finishEncode used " + bt.aS(l) + ", ret:" + bool + ", totally used " + bt.aS(c.c(this.oLj)) + "ms");
-      c.d(this.oLj).quit();
-      d.g.a.a locala = this.jQC;
+      long l = bs.Gn();
+      boolean bool = c.a(this.poD).cRQ();
+      ac.i(c.b(this.poD), "finishEncode used " + bs.aO(l) + ", ret:" + bool + ", totally used " + bs.aO(c.c(this.poD)) + "ms");
+      c.d(this.poD).quit();
+      d.g.a.a locala = this.gTu;
       if (locala != null)
       {
         locala.invoke();
@@ -119,7 +116,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.c
  * JD-Core Version:    0.7.0.1
  */

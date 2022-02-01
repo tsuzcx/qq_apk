@@ -1,101 +1,65 @@
 package com.tencent.mm.plugin.finder.report;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.d;
-import com.tencent.mm.plugin.finder.event.base.e;
-import com.tencent.mm.plugin.finder.utils.i;
-import d.g.b.k;
+import com.tencent.mm.plugin.report.e;
 import d.l;
-import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/IDKey1298;", "", "()V", "Companion", "plugin-finder_release"})
 public final class n
-  extends e
 {
-  private final String TAG = "Finder.FinderTwoFeedFlowEventSubscriber";
+  private static final int ID = 1298;
+  private static final int rAa = 3;
+  private static final int rAb = 4;
+  private static final int rAc = 5;
+  private static final int rAd = 6;
+  private static final int rAe = 7;
+  private static final int rAf = 8;
+  private static final int rAg = 9;
+  private static final int rAh = 10;
+  private static final int rAi = 11;
+  private static final int rAj = 12;
+  private static final int rAk = 13;
+  private static final int rAl = 14;
+  private static final int rAm = 15;
+  private static final int rAn = 16;
+  private static final int rAo = 255;
+  public static final a rAp;
+  private static final int rzY = 1;
+  private static final int rzZ = 2;
   
-  public n(d paramd)
+  static
   {
-    super(paramd);
+    AppMethodBeat.i(166708);
+    rAp = new a((byte)0);
+    ID = 1298;
+    rzY = 1;
+    rzZ = 2;
+    rAa = 3;
+    rAb = 4;
+    rAc = 5;
+    rAd = 6;
+    rAe = 7;
+    rAf = 8;
+    rAg = 9;
+    rAh = 10;
+    rAi = 11;
+    rAj = 12;
+    rAk = 13;
+    rAl = 14;
+    rAm = 15;
+    rAn = 16;
+    rAo = 255;
+    AppMethodBeat.o(166708);
   }
   
-  public final c h(RecyclerView paramRecyclerView, int paramInt)
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/IDKey1298$Companion;", "", "()V", "ID", "", "getID", "()I", "PlayerError_403", "getPlayerError_403", "PlayerError_404", "getPlayerError_404", "PlayerError_405", "getPlayerError_405", "PlayerError_416", "getPlayerError_416", "PlayerError_502", "getPlayerError_502", "PlayerError_503", "getPlayerError_503", "PlayerError_CDNCOM_TIMEOUT_TRANSFOR", "getPlayerError_CDNCOM_TIMEOUT_TRANSFOR", "PlayerError_CNDCOM_MEDIA_OPEN_FAILED", "getPlayerError_CNDCOM_MEDIA_OPEN_FAILED", "PlayerError_CNDCOM_NET_ERROR", "getPlayerError_CNDCOM_NET_ERROR", "PlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "getPlayerError_CNDCOM_WRITE_MEDIA_FILE_FAILED", "PlayerError_IO", "getPlayerError_IO", "PlayerError_MALFORMED", "getPlayerError_MALFORMED", "PlayerError_Other", "getPlayerError_Other", "PlayerError_PREPARE", "getPlayerError_PREPARE", "PlayerError_READ", "getPlayerError_READ", "PlayerError_REQ_ALL", "getPlayerError_REQ_ALL", "PlayerError_UNSUPPORT", "getPlayerError_UNSUPPORT", "report", "", "errorCode", "plugin-finder_release"})
+  public static final class a
   {
-    AppMethodBeat.i(198846);
-    k.h(paramRecyclerView, "recyclerView");
-    Object localObject1 = super.h(paramRecyclerView, paramInt);
-    if (localObject1 == null)
+    public static void lA(int paramInt)
     {
-      paramRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.TwoFeedFlowScrollEvent");
-      AppMethodBeat.o(198846);
-      throw paramRecyclerView;
-    }
-    localObject1 = (com.tencent.mm.plugin.finder.event.base.n)localObject1;
-    Object localObject2 = paramRecyclerView.getLayoutManager();
-    if (localObject2 == null)
-    {
-      paramRecyclerView = new v("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager");
-      AppMethodBeat.o(198846);
-      throw paramRecyclerView;
-    }
-    Object localObject3 = (StaggeredGridLayoutManager)localObject2;
-    localObject2 = ((StaggeredGridLayoutManager)localObject3).x(null);
-    localObject3 = ((StaggeredGridLayoutManager)localObject3).ma();
-    int i;
-    if (localObject2 != null)
-    {
-      paramInt = localObject2[0];
-      if (localObject2 == null) {
-        break label274;
-      }
-      i = localObject2[1];
-      label118:
-      ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi = Math.min(paramInt, i);
-      ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj = Math.max(localObject3[0], localObject3[1]);
-      localObject2 = i.qTa;
-      ((com.tencent.mm.plugin.finder.event.base.n)localObject1).KMm = i.a(((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi, ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj, paramRecyclerView);
-      if ((this.mYh != ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi) || (this.mYi != ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj))
-      {
-        if ((this.mYh != 2147483647) && (this.mYi != 2147483647)) {
-          break label279;
-        }
-        i = ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi;
-        paramInt = ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = i.qTa;
-      ((com.tencent.mm.plugin.finder.event.base.n)localObject1).KMl = i.a(i, paramInt, paramRecyclerView);
-      this.mYh = ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi;
-      this.mYi = ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj;
-      paramRecyclerView = (c)localObject1;
-      AppMethodBeat.o(198846);
-      return paramRecyclerView;
-      paramInt = 0;
-      break;
-      label274:
-      i = 0;
-      break label118;
-      label279:
-      if (((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi < this.mYh) {}
-      for (paramInt = ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsi;; paramInt = this.mYh)
-      {
-        if (((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj <= this.mYi) {
-          break label332;
-        }
-        j = ((com.tencent.mm.plugin.finder.event.base.n)localObject1).qsj;
-        i = paramInt;
-        paramInt = j;
-        break;
-      }
-      label332:
-      int j = this.mYi;
-      i = paramInt;
-      paramInt = j;
+      AppMethodBeat.i(166707);
+      e.wTc.idkeyStat(n.cxp(), paramInt, 1L, false);
+      AppMethodBeat.o(166707);
     }
   }
 }

@@ -10,34 +10,34 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
 
 public final class b
   implements m
 {
-  public static l hYt;
-  public static k hYu;
+  public static l iyx;
+  public static k iyy;
   
   public static void a(String paramString, Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(5534);
     if (paramLong > 0L)
     {
-      h.Iye.a(paramRunnable, paramLong, paramString);
+      h.JZN.a(paramRunnable, paramLong, paramString);
       AppMethodBeat.o(5534);
       return;
     }
-    h.Iye.f(paramRunnable, paramString);
+    h.JZN.f(paramRunnable, paramString);
     AppMethodBeat.o(5534);
   }
   
   public static void d(Intent paramIntent, Context paramContext)
   {
-    AppMethodBeat.i(192933);
-    ad.i("MicroMsg.BrandService.BrandServiceApplication", "startChattingUI");
-    hYt.d(paramIntent, paramContext);
-    AppMethodBeat.o(192933);
+    AppMethodBeat.i(198629);
+    ac.i("MicroMsg.BrandService.BrandServiceApplication", "startChattingUI");
+    iyx.d(paramIntent, paramContext);
+    AppMethodBeat.o(198629);
   }
   
   public static void j(int paramInt, Object paramObject)
@@ -46,9 +46,9 @@ public final class b
     if (paramObject == null) {}
     for (String str = "null";; str = paramObject.toString())
     {
-      ad.i("MicroMsg.BrandService.BrandServiceApplication", "set config, key[%d], value[%s]", new Object[] { Integer.valueOf(paramInt), str });
-      g.afC();
-      g.afB().afk().set(paramInt, paramObject);
+      ac.i("MicroMsg.BrandService.BrandServiceApplication", "set config, key[%d], value[%s]", new Object[] { Integer.valueOf(paramInt), str });
+      g.agS();
+      g.agR().agA().set(paramInt, paramObject);
       AppMethodBeat.o(5533);
       return;
     }
@@ -56,17 +56,17 @@ public final class b
   
   public final void a(k paramk)
   {
-    hYu = paramk;
+    iyy = paramk;
   }
   
   public final void a(l paraml)
   {
-    hYt = paraml;
+    iyx = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b
  * JD-Core Version:    0.7.0.1
  */

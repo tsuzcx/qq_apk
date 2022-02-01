@@ -10,7 +10,7 @@ public abstract interface a
   
   public abstract void a(g paramg);
   
-  public abstract long aB(String paramString);
+  public abstract long aw(String paramString);
   
   public abstract void b(g paramg);
   
@@ -18,13 +18,13 @@ public abstract interface a
   
   public abstract g e(String paramString, long paramLong);
   
-  public abstract File f(String paramString, long paramLong1, long paramLong2);
+  public abstract File e(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract long f(String paramString, long paramLong1, long paramLong2);
   
   public abstract void f(String paramString, long paramLong);
   
-  public abstract long g(String paramString, long paramLong1, long paramLong2);
-  
-  public abstract long vr();
+  public abstract long vi();
   
   public abstract void w(File paramFile);
   

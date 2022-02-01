@@ -15,32 +15,32 @@ public final class a$t
   extends i.c<t>
   implements w
 {
-  public static s<t> JFJ;
-  private static final t JJa;
-  private final d JFI;
-  private int JFK;
-  private byte JFN = -1;
-  private int JFO = -1;
-  public int JGd;
-  public int JHm;
-  public a.p JIA;
-  public int JIB;
-  public a.p JJb;
-  public int JJc;
+  public static s<t> Ltc;
+  private static final t Lwt;
+  private final d Ltb;
+  private int Ltd;
+  private byte Ltg = -1;
+  private int Lth = -1;
+  public int Ltw;
+  public int LuF;
+  public a.p LvT;
+  public int LvU;
+  public a.p Lwu;
+  public int Lwv;
   
   static
   {
     AppMethodBeat.i(58986);
-    JFJ = new b() {};
+    Ltc = new b() {};
     t localt = new t();
-    JJa = localt;
-    localt.fCn();
+    Lwt = localt;
+    localt.fUR();
     AppMethodBeat.o(58986);
   }
   
   private a$t()
   {
-    this.JFI = d.JMs;
+    this.Ltb = d.LzL;
   }
   
   /* Error */
@@ -53,13 +53,13 @@ public final class a$t
     //   6: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 61	d/l/b/a/b/e/a$t:JFN	B
+    //   11: putfield 61	d/l/b/a/b/e/a$t:Ltg	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 63	d/l/b/a/b/e/a$t:JFO	I
+    //   16: putfield 63	d/l/b/a/b/e/a$t:Lth	I
     //   19: aload_0
-    //   20: invokespecial 54	d/l/b/a/b/e/a$t:fCn	()V
-    //   23: invokestatic 80	d/l/b/a/b/h/d:fHp	()Ld/l/b/a/b/h/d$b;
+    //   20: invokespecial 54	d/l/b/a/b/e/a$t:fUR	()V
+    //   23: invokestatic 80	d/l/b/a/b/h/d:fZS	()Ld/l/b/a/b/h/d$b;
     //   26: astore 6
     //   28: aload 6
     //   30: iconst_1
@@ -70,7 +70,7 @@ public final class a$t
     //   38: iload_3
     //   39: ifne +393 -> 432
     //   42: aload_1
-    //   43: invokevirtual 92	d/l/b/a/b/h/e:xR	()I
+    //   43: invokevirtual 92	d/l/b/a/b/h/e:xE	()I
     //   46: istore 4
     //   48: iload 4
     //   50: lookupswitch	default:+481->531, 0:+484->534, 8:+84->134, 16:+147->197, 26:+193->243, 34:+264->314, 40:+338->388, 48:+360->410
@@ -85,19 +85,19 @@ public final class a$t
     //   131: goto -93 -> 38
     //   134: aload_0
     //   135: aload_0
-    //   136: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   136: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   139: iconst_1
     //   140: ior
-    //   141: putfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   141: putfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   144: aload_0
     //   145: aload_1
-    //   146: invokevirtual 100	d/l/b/a/b/h/e:xS	()I
-    //   149: putfield 102	d/l/b/a/b/e/a$t:JGd	I
+    //   146: invokevirtual 100	d/l/b/a/b/h/e:xF	()I
+    //   149: putfield 102	d/l/b/a/b/e/a$t:Ltw	I
     //   152: goto -114 -> 38
     //   155: astore_1
     //   156: aload_1
     //   157: aload_0
-    //   158: putfield 106	d/l/b/a/b/h/k:JNa	Ld/l/b/a/b/h/q;
+    //   158: putfield 106	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
     //   161: ldc 76
     //   163: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   166: aload_1
@@ -107,25 +107,25 @@ public final class a$t
     //   171: invokevirtual 109	d/l/b/a/b/h/f:flush	()V
     //   174: aload_0
     //   175: aload 6
-    //   177: invokevirtual 115	d/l/b/a/b/h/d$b:fHt	()Ld/l/b/a/b/h/d;
-    //   180: putfield 70	d/l/b/a/b/e/a$t:JFI	Ld/l/b/a/b/h/d;
+    //   177: invokevirtual 115	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
+    //   180: putfield 70	d/l/b/a/b/e/a$t:Ltb	Ld/l/b/a/b/h/d;
     //   183: aload_0
-    //   184: getfield 119	d/l/b/a/b/h/i$c:JMK	Ld/l/b/a/b/h/h;
-    //   187: invokevirtual 124	d/l/b/a/b/h/h:fHF	()V
+    //   184: getfield 119	d/l/b/a/b/h/i$c:LAd	Ld/l/b/a/b/h/h;
+    //   187: invokevirtual 124	d/l/b/a/b/h/h:gai	()V
     //   190: ldc 76
     //   192: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   195: aload_1
     //   196: athrow
     //   197: aload_0
     //   198: aload_0
-    //   199: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   199: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   202: iconst_2
     //   203: ior
-    //   204: putfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   204: putfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   207: aload_0
     //   208: aload_1
-    //   209: invokevirtual 100	d/l/b/a/b/h/e:xS	()I
-    //   212: putfield 126	d/l/b/a/b/e/a$t:JHm	I
+    //   209: invokevirtual 100	d/l/b/a/b/h/e:xF	()I
+    //   212: putfield 126	d/l/b/a/b/e/a$t:LuF	I
     //   215: goto -177 -> 38
     //   218: astore_1
     //   219: new 73	d/l/b/a/b/h/k
@@ -136,126 +136,126 @@ public final class a$t
     //   230: astore_1
     //   231: aload_1
     //   232: aload_0
-    //   233: putfield 106	d/l/b/a/b/h/k:JNa	Ld/l/b/a/b/h/q;
+    //   233: putfield 106	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
     //   236: ldc 76
     //   238: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   241: aload_1
     //   242: athrow
     //   243: aload_0
-    //   244: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   244: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   247: iconst_4
     //   248: iand
     //   249: iconst_4
     //   250: if_icmpne +275 -> 525
     //   253: aload_0
-    //   254: getfield 135	d/l/b/a/b/e/a$t:JIA	Ld/l/b/a/b/e/a$p;
-    //   257: invokevirtual 141	d/l/b/a/b/e/a$p:fFd	()Ld/l/b/a/b/e/a$p$b;
+    //   254: getfield 135	d/l/b/a/b/e/a$t:LvT	Ld/l/b/a/b/e/a$p;
+    //   257: invokevirtual 141	d/l/b/a/b/e/a$p:fXH	()Ld/l/b/a/b/e/a$p$b;
     //   260: astore 5
     //   262: aload_0
     //   263: aload_1
-    //   264: getstatic 142	d/l/b/a/b/e/a$p:JFJ	Ld/l/b/a/b/h/s;
+    //   264: getstatic 142	d/l/b/a/b/e/a$p:Ltc	Ld/l/b/a/b/h/s;
     //   267: aload_2
     //   268: invokevirtual 145	d/l/b/a/b/h/e:a	(Ld/l/b/a/b/h/s;Ld/l/b/a/b/h/g;)Ld/l/b/a/b/h/q;
     //   271: checkcast 137	d/l/b/a/b/e/a$p
-    //   274: putfield 135	d/l/b/a/b/e/a$t:JIA	Ld/l/b/a/b/e/a$p;
+    //   274: putfield 135	d/l/b/a/b/e/a$t:LvT	Ld/l/b/a/b/e/a$p;
     //   277: aload 5
     //   279: ifnull +22 -> 301
     //   282: aload 5
     //   284: aload_0
-    //   285: getfield 135	d/l/b/a/b/e/a$t:JIA	Ld/l/b/a/b/e/a$p;
+    //   285: getfield 135	d/l/b/a/b/e/a$t:LvT	Ld/l/b/a/b/e/a$p;
     //   288: invokevirtual 151	d/l/b/a/b/e/a$p$b:j	(Ld/l/b/a/b/e/a$p;)Ld/l/b/a/b/e/a$p$b;
     //   291: pop
     //   292: aload_0
     //   293: aload 5
-    //   295: invokevirtual 155	d/l/b/a/b/e/a$p$b:fFm	()Ld/l/b/a/b/e/a$p;
-    //   298: putfield 135	d/l/b/a/b/e/a$t:JIA	Ld/l/b/a/b/e/a$p;
+    //   295: invokevirtual 155	d/l/b/a/b/e/a$p$b:fXQ	()Ld/l/b/a/b/e/a$p;
+    //   298: putfield 135	d/l/b/a/b/e/a$t:LvT	Ld/l/b/a/b/e/a$p;
     //   301: aload_0
     //   302: aload_0
-    //   303: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   303: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   306: iconst_4
     //   307: ior
-    //   308: putfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   308: putfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   311: goto -273 -> 38
     //   314: aload_0
-    //   315: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   315: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   318: bipush 16
     //   320: iand
     //   321: bipush 16
     //   323: if_icmpne +196 -> 519
     //   326: aload_0
-    //   327: getfield 157	d/l/b/a/b/e/a$t:JJb	Ld/l/b/a/b/e/a$p;
-    //   330: invokevirtual 141	d/l/b/a/b/e/a$p:fFd	()Ld/l/b/a/b/e/a$p$b;
+    //   327: getfield 157	d/l/b/a/b/e/a$t:Lwu	Ld/l/b/a/b/e/a$p;
+    //   330: invokevirtual 141	d/l/b/a/b/e/a$p:fXH	()Ld/l/b/a/b/e/a$p$b;
     //   333: astore 5
     //   335: aload_0
     //   336: aload_1
-    //   337: getstatic 142	d/l/b/a/b/e/a$p:JFJ	Ld/l/b/a/b/h/s;
+    //   337: getstatic 142	d/l/b/a/b/e/a$p:Ltc	Ld/l/b/a/b/h/s;
     //   340: aload_2
     //   341: invokevirtual 145	d/l/b/a/b/h/e:a	(Ld/l/b/a/b/h/s;Ld/l/b/a/b/h/g;)Ld/l/b/a/b/h/q;
     //   344: checkcast 137	d/l/b/a/b/e/a$p
-    //   347: putfield 157	d/l/b/a/b/e/a$t:JJb	Ld/l/b/a/b/e/a$p;
+    //   347: putfield 157	d/l/b/a/b/e/a$t:Lwu	Ld/l/b/a/b/e/a$p;
     //   350: aload 5
     //   352: ifnull +22 -> 374
     //   355: aload 5
     //   357: aload_0
-    //   358: getfield 157	d/l/b/a/b/e/a$t:JJb	Ld/l/b/a/b/e/a$p;
+    //   358: getfield 157	d/l/b/a/b/e/a$t:Lwu	Ld/l/b/a/b/e/a$p;
     //   361: invokevirtual 151	d/l/b/a/b/e/a$p$b:j	(Ld/l/b/a/b/e/a$p;)Ld/l/b/a/b/e/a$p$b;
     //   364: pop
     //   365: aload_0
     //   366: aload 5
-    //   368: invokevirtual 155	d/l/b/a/b/e/a$p$b:fFm	()Ld/l/b/a/b/e/a$p;
-    //   371: putfield 157	d/l/b/a/b/e/a$t:JJb	Ld/l/b/a/b/e/a$p;
+    //   368: invokevirtual 155	d/l/b/a/b/e/a$p$b:fXQ	()Ld/l/b/a/b/e/a$p;
+    //   371: putfield 157	d/l/b/a/b/e/a$t:Lwu	Ld/l/b/a/b/e/a$p;
     //   374: aload_0
     //   375: aload_0
-    //   376: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   376: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   379: bipush 16
     //   381: ior
-    //   382: putfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   382: putfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   385: goto -347 -> 38
     //   388: aload_0
     //   389: aload_0
-    //   390: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   390: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   393: bipush 8
     //   395: ior
-    //   396: putfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   396: putfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   399: aload_0
     //   400: aload_1
-    //   401: invokevirtual 100	d/l/b/a/b/h/e:xS	()I
-    //   404: putfield 159	d/l/b/a/b/e/a$t:JIB	I
+    //   401: invokevirtual 100	d/l/b/a/b/h/e:xF	()I
+    //   404: putfield 159	d/l/b/a/b/e/a$t:LvU	I
     //   407: goto -369 -> 38
     //   410: aload_0
     //   411: aload_0
-    //   412: getfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   412: getfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   415: bipush 32
     //   417: ior
-    //   418: putfield 97	d/l/b/a/b/e/a$t:JFK	I
+    //   418: putfield 97	d/l/b/a/b/e/a$t:Ltd	I
     //   421: aload_0
     //   422: aload_1
-    //   423: invokevirtual 100	d/l/b/a/b/h/e:xS	()I
-    //   426: putfield 161	d/l/b/a/b/e/a$t:JJc	I
+    //   423: invokevirtual 100	d/l/b/a/b/h/e:xF	()I
+    //   426: putfield 161	d/l/b/a/b/e/a$t:Lwv	I
     //   429: goto -391 -> 38
     //   432: aload 7
     //   434: invokevirtual 109	d/l/b/a/b/h/f:flush	()V
     //   437: aload_0
     //   438: aload 6
-    //   440: invokevirtual 115	d/l/b/a/b/h/d$b:fHt	()Ld/l/b/a/b/h/d;
-    //   443: putfield 70	d/l/b/a/b/e/a$t:JFI	Ld/l/b/a/b/h/d;
+    //   440: invokevirtual 115	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
+    //   443: putfield 70	d/l/b/a/b/e/a$t:Ltb	Ld/l/b/a/b/h/d;
     //   446: aload_0
-    //   447: getfield 119	d/l/b/a/b/h/i$c:JMK	Ld/l/b/a/b/h/h;
-    //   450: invokevirtual 124	d/l/b/a/b/h/h:fHF	()V
+    //   447: getfield 119	d/l/b/a/b/h/i$c:LAd	Ld/l/b/a/b/h/h;
+    //   450: invokevirtual 124	d/l/b/a/b/h/h:gai	()V
     //   453: ldc 76
     //   455: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   458: return
     //   459: astore_1
     //   460: aload_0
     //   461: aload 6
-    //   463: invokevirtual 115	d/l/b/a/b/h/d$b:fHt	()Ld/l/b/a/b/h/d;
-    //   466: putfield 70	d/l/b/a/b/e/a$t:JFI	Ld/l/b/a/b/h/d;
+    //   463: invokevirtual 115	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
+    //   466: putfield 70	d/l/b/a/b/e/a$t:Ltb	Ld/l/b/a/b/h/d;
     //   469: goto -23 -> 446
     //   472: astore_1
     //   473: aload_0
     //   474: aload 6
-    //   476: invokevirtual 115	d/l/b/a/b/h/d$b:fHt	()Ld/l/b/a/b/h/d;
-    //   479: putfield 70	d/l/b/a/b/e/a$t:JFI	Ld/l/b/a/b/h/d;
+    //   476: invokevirtual 115	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
+    //   479: putfield 70	d/l/b/a/b/e/a$t:Ltb	Ld/l/b/a/b/h/d;
     //   482: ldc 76
     //   484: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   487: aload_1
@@ -263,14 +263,14 @@ public final class a$t
     //   489: astore_2
     //   490: aload_0
     //   491: aload 6
-    //   493: invokevirtual 115	d/l/b/a/b/h/d$b:fHt	()Ld/l/b/a/b/h/d;
-    //   496: putfield 70	d/l/b/a/b/e/a$t:JFI	Ld/l/b/a/b/h/d;
+    //   493: invokevirtual 115	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
+    //   496: putfield 70	d/l/b/a/b/e/a$t:Ltb	Ld/l/b/a/b/h/d;
     //   499: goto -316 -> 183
     //   502: astore_1
     //   503: aload_0
     //   504: aload 6
-    //   506: invokevirtual 115	d/l/b/a/b/h/d$b:fHt	()Ld/l/b/a/b/h/d;
-    //   509: putfield 70	d/l/b/a/b/e/a$t:JFI	Ld/l/b/a/b/h/d;
+    //   506: invokevirtual 115	d/l/b/a/b/h/d$b:fZW	()Ld/l/b/a/b/h/d;
+    //   509: putfield 70	d/l/b/a/b/e/a$t:Ltb	Ld/l/b/a/b/h/d;
     //   512: ldc 76
     //   514: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   517: aload_1
@@ -350,101 +350,101 @@ public final class a$t
   private a$t(i.b<t, ?> paramb)
   {
     super(paramb);
-    this.JFI = paramb.JFI;
+    this.Ltb = paramb.Ltb;
   }
   
   public static a b(t paramt)
   {
     AppMethodBeat.i(58983);
-    paramt = a.fFQ().d(paramt);
+    paramt = a.fYu().d(paramt);
     AppMethodBeat.o(58983);
     return paramt;
   }
   
-  private void fCn()
+  private void fUR()
   {
     AppMethodBeat.i(58979);
-    this.JGd = 0;
-    this.JHm = 0;
-    this.JIA = a.p.fEQ();
-    this.JIB = 0;
-    this.JJb = a.p.fEQ();
-    this.JJc = 0;
+    this.Ltw = 0;
+    this.LuF = 0;
+    this.LvT = a.p.fXu();
+    this.LvU = 0;
+    this.Lwu = a.p.fXu();
+    this.Lwv = 0;
     AppMethodBeat.o(58979);
   }
   
-  public static t fFL()
+  public static t fYp()
   {
-    return JJa;
+    return Lwt;
   }
   
   public final void a(f paramf)
   {
     AppMethodBeat.i(58981);
-    yf();
-    i.c.a locala = fHM();
-    if ((this.JFK & 0x1) == 1) {
-      paramf.by(1, this.JGd);
+    xS();
+    i.c.a locala = gap();
+    if ((this.Ltd & 0x1) == 1) {
+      paramf.bv(1, this.Ltw);
     }
-    if ((this.JFK & 0x2) == 2) {
-      paramf.by(2, this.JHm);
+    if ((this.Ltd & 0x2) == 2) {
+      paramf.bv(2, this.LuF);
     }
-    if ((this.JFK & 0x4) == 4) {
-      paramf.a(3, this.JIA);
+    if ((this.Ltd & 0x4) == 4) {
+      paramf.a(3, this.LvT);
     }
-    if ((this.JFK & 0x10) == 16) {
-      paramf.a(4, this.JJb);
+    if ((this.Ltd & 0x10) == 16) {
+      paramf.a(4, this.Lwu);
     }
-    if ((this.JFK & 0x8) == 8) {
-      paramf.by(5, this.JIB);
+    if ((this.Ltd & 0x8) == 8) {
+      paramf.bv(5, this.LvU);
     }
-    if ((this.JFK & 0x20) == 32) {
-      paramf.by(6, this.JJc);
+    if ((this.Ltd & 0x20) == 32) {
+      paramf.bv(6, this.Lwv);
     }
     locala.b(200, paramf);
-    paramf.e(this.JFI);
+    paramf.e(this.Ltb);
     AppMethodBeat.o(58981);
   }
   
-  public final boolean fCC()
+  public final s<t> fUP()
   {
-    return (this.JFK & 0x4) == 4;
+    return Ltc;
   }
   
-  public final boolean fCL()
+  public final boolean fVg()
   {
-    return (this.JFK & 0x1) == 1;
+    return (this.Ltd & 0x4) == 4;
   }
   
-  public final s<t> fCl()
+  public final boolean fVp()
   {
-    return JFJ;
+    return (this.Ltd & 0x1) == 1;
   }
   
-  public final boolean fDI()
+  public final boolean fWm()
   {
-    return (this.JFK & 0x2) == 2;
+    return (this.Ltd & 0x2) == 2;
   }
   
-  public final boolean fFM()
+  public final boolean fXK()
   {
-    return (this.JFK & 0x10) == 16;
+    return (this.Ltd & 0x8) == 8;
   }
   
-  public final boolean fFN()
+  public final boolean fYq()
   {
-    return (this.JFK & 0x20) == 32;
+    return (this.Ltd & 0x10) == 16;
   }
   
-  public final boolean fFg()
+  public final boolean fYr()
   {
-    return (this.JFK & 0x8) == 8;
+    return (this.Ltd & 0x20) == 32;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58980);
-    int i = this.JFN;
+    int i = this.Ltg;
     if (i == 1)
     {
       AppMethodBeat.o(58980);
@@ -455,70 +455,70 @@ public final class a$t
       AppMethodBeat.o(58980);
       return false;
     }
-    if (!fDI())
+    if (!fWm())
     {
-      this.JFN = 0;
+      this.Ltg = 0;
       AppMethodBeat.o(58980);
       return false;
     }
-    if ((fCC()) && (!this.JIA.isInitialized()))
+    if ((fVg()) && (!this.LvT.isInitialized()))
     {
-      this.JFN = 0;
+      this.Ltg = 0;
       AppMethodBeat.o(58980);
       return false;
     }
-    if ((fFM()) && (!this.JJb.isInitialized()))
+    if ((fYq()) && (!this.Lwu.isInitialized()))
     {
-      this.JFN = 0;
+      this.Ltg = 0;
       AppMethodBeat.o(58980);
       return false;
     }
-    if (!this.JMK.isInitialized())
+    if (!this.LAd.isInitialized())
     {
-      this.JFN = 0;
+      this.Ltg = 0;
       AppMethodBeat.o(58980);
       return false;
     }
-    this.JFN = 1;
+    this.Ltg = 1;
     AppMethodBeat.o(58980);
     return true;
   }
   
-  public final int yf()
+  public final int xS()
   {
     AppMethodBeat.i(58982);
-    int i = this.JFO;
+    int i = this.Lth;
     if (i != -1)
     {
       AppMethodBeat.o(58982);
       return i;
     }
     int j = 0;
-    if ((this.JFK & 0x1) == 1) {
-      j = f.bA(1, this.JGd) + 0;
+    if ((this.Ltd & 0x1) == 1) {
+      j = f.bx(1, this.Ltw) + 0;
     }
     i = j;
-    if ((this.JFK & 0x2) == 2) {
-      i = j + f.bA(2, this.JHm);
+    if ((this.Ltd & 0x2) == 2) {
+      i = j + f.bx(2, this.LuF);
     }
     j = i;
-    if ((this.JFK & 0x4) == 4) {
-      j = i + f.c(3, this.JIA);
+    if ((this.Ltd & 0x4) == 4) {
+      j = i + f.c(3, this.LvT);
     }
     i = j;
-    if ((this.JFK & 0x10) == 16) {
-      i = j + f.c(4, this.JJb);
+    if ((this.Ltd & 0x10) == 16) {
+      i = j + f.c(4, this.Lwu);
     }
     j = i;
-    if ((this.JFK & 0x8) == 8) {
-      j = i + f.bA(5, this.JIB);
+    if ((this.Ltd & 0x8) == 8) {
+      j = i + f.bx(5, this.LvU);
     }
     i = j;
-    if ((this.JFK & 0x20) == 32) {
-      i = j + f.bA(6, this.JJc);
+    if ((this.Ltd & 0x20) == 32) {
+      i = j + f.bx(6, this.Lwv);
     }
-    i = i + this.JMK.yf() + this.JFI.size();
-    this.JFO = i;
+    i = i + this.LAd.xS() + this.Ltb.size();
+    this.Lth = i;
     AppMethodBeat.o(58982);
     return i;
   }
@@ -527,54 +527,54 @@ public final class a$t
     extends i.b<a.t, a>
     implements w
   {
-    private int JFK;
-    private int JGd;
-    private int JHm;
-    private a.p JIA;
-    private int JIB;
-    private a.p JJb;
-    private int JJc;
+    private int Ltd;
+    private int Ltw;
+    private int LuF;
+    private a.p LvT;
+    private int LvU;
+    private a.p Lwu;
+    private int Lwv;
     
     private a()
     {
       AppMethodBeat.i(58959);
-      this.JIA = a.p.fEQ();
-      this.JJb = a.p.fEQ();
+      this.LvT = a.p.fXu();
+      this.Lwu = a.p.fXu();
       AppMethodBeat.o(58959);
     }
     
-    private a afc(int paramInt)
+    private a ahY(int paramInt)
     {
-      this.JFK |= 0x1;
-      this.JGd = paramInt;
+      this.Ltd |= 0x1;
+      this.Ltw = paramInt;
       return this;
     }
     
-    private a afd(int paramInt)
+    private a ahZ(int paramInt)
     {
-      this.JFK |= 0x2;
-      this.JHm = paramInt;
+      this.Ltd |= 0x2;
+      this.LuF = paramInt;
       return this;
     }
     
-    private a afe(int paramInt)
+    private a aia(int paramInt)
     {
-      this.JFK |= 0x8;
-      this.JIB = paramInt;
+      this.Ltd |= 0x8;
+      this.LvU = paramInt;
       return this;
     }
     
-    private a aff(int paramInt)
+    private a aib(int paramInt)
     {
-      this.JFK |= 0x20;
-      this.JJc = paramInt;
+      this.Ltd |= 0x20;
+      this.Lwv = paramInt;
       return this;
     }
     
-    private a fFO()
+    private a fYs()
     {
       AppMethodBeat.i(58960);
-      a locala = new a().d(fFP());
+      a locala = new a().d(fYt());
       AppMethodBeat.o(58960);
       return locala;
     }
@@ -582,10 +582,10 @@ public final class a$t
     private a p(a.p paramp)
     {
       AppMethodBeat.i(58965);
-      if (((this.JFK & 0x4) == 4) && (this.JIA != a.p.fEQ())) {}
-      for (this.JIA = a.p.f(this.JIA).j(paramp).fFm();; this.JIA = paramp)
+      if (((this.Ltd & 0x4) == 4) && (this.LvT != a.p.fXu())) {}
+      for (this.LvT = a.p.f(this.LvT).j(paramp).fXQ();; this.LvT = paramp)
       {
-        this.JFK |= 0x4;
+        this.Ltd |= 0x4;
         AppMethodBeat.o(58965);
         return this;
       }
@@ -594,10 +594,10 @@ public final class a$t
     private a q(a.p paramp)
     {
       AppMethodBeat.i(58966);
-      if (((this.JFK & 0x10) == 16) && (this.JJb != a.p.fEQ())) {}
-      for (this.JJb = a.p.f(this.JJb).j(paramp).fFm();; this.JJb = paramp)
+      if (((this.Ltd & 0x10) == 16) && (this.Lwu != a.p.fXu())) {}
+      for (this.Lwu = a.p.f(this.Lwu).j(paramp).fXQ();; this.Lwu = paramp)
       {
-        this.JFK |= 0x10;
+        this.Ltd |= 0x10;
         AppMethodBeat.o(58966);
         return this;
       }
@@ -611,7 +611,7 @@ public final class a$t
       //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 102	d/l/b/a/b/e/a$t:JFJ	Ld/l/b/a/b/h/s;
+      //   7: getstatic 102	d/l/b/a/b/e/a$t:Ltc	Ld/l/b/a/b/h/s;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 107 3 0
@@ -627,7 +627,7 @@ public final class a$t
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 111	d/l/b/a/b/h/k:JNa	Ld/l/b/a/b/h/q;
+      //   36: getfield 111	d/l/b/a/b/h/k:LAt	Ld/l/b/a/b/h/q;
       //   39: checkcast 9	d/l/b/a/b/e/a$t
       //   42: astore_2
       //   43: ldc 98
@@ -666,70 +666,70 @@ public final class a$t
     public final a d(a.t paramt)
     {
       AppMethodBeat.i(58962);
-      if (paramt == a.t.fFL())
+      if (paramt == a.t.fYp())
       {
         AppMethodBeat.o(58962);
         return this;
       }
-      if (paramt.fCL()) {
-        afc(paramt.JGd);
+      if (paramt.fVp()) {
+        ahY(paramt.Ltw);
       }
-      if (paramt.fDI()) {
-        afd(paramt.JHm);
+      if (paramt.fWm()) {
+        ahZ(paramt.LuF);
       }
-      if (paramt.fCC()) {
-        p(paramt.JIA);
+      if (paramt.fVg()) {
+        p(paramt.LvT);
       }
-      if (paramt.fFg()) {
-        afe(paramt.JIB);
+      if (paramt.fXK()) {
+        aia(paramt.LvU);
       }
-      if (paramt.fFM()) {
-        q(paramt.JJb);
+      if (paramt.fYq()) {
+        q(paramt.Lwu);
       }
-      if (paramt.fFN()) {
-        aff(paramt.JJc);
+      if (paramt.fYr()) {
+        aib(paramt.Lwv);
       }
       a(paramt);
-      this.JFI = this.JFI.a(a.t.c(paramt));
+      this.Ltb = this.Ltb.a(a.t.c(paramt));
       AppMethodBeat.o(58962);
       return this;
     }
     
-    public final a.t fFP()
+    public final a.t fYt()
     {
       int j = 1;
       AppMethodBeat.i(58961);
       a.t localt = new a.t(this, (byte)0);
-      int k = this.JFK;
+      int k = this.Ltd;
       if ((k & 0x1) == 1) {}
       for (;;)
       {
-        a.t.a(localt, this.JGd);
+        a.t.a(localt, this.Ltw);
         int i = j;
         if ((k & 0x2) == 2) {
           i = j | 0x2;
         }
-        a.t.b(localt, this.JHm);
+        a.t.b(localt, this.LuF);
         j = i;
         if ((k & 0x4) == 4) {
           j = i | 0x4;
         }
-        a.t.a(localt, this.JIA);
+        a.t.a(localt, this.LvT);
         i = j;
         if ((k & 0x8) == 8) {
           i = j | 0x8;
         }
-        a.t.c(localt, this.JIB);
+        a.t.c(localt, this.LvU);
         j = i;
         if ((k & 0x10) == 16) {
           j = i | 0x10;
         }
-        a.t.b(localt, this.JJb);
+        a.t.b(localt, this.Lwu);
         i = j;
         if ((k & 0x20) == 32) {
           i = j | 0x20;
         }
-        a.t.d(localt, this.JJc);
+        a.t.d(localt, this.Lwv);
         a.t.e(localt, i);
         AppMethodBeat.o(58961);
         return localt;
@@ -740,25 +740,25 @@ public final class a$t
     public final boolean isInitialized()
     {
       AppMethodBeat.i(58963);
-      if ((this.JFK & 0x2) == 2) {}
+      if ((this.Ltd & 0x2) == 2) {}
       for (int i = 1; i == 0; i = 0)
       {
         AppMethodBeat.o(58963);
         return false;
       }
-      if ((this.JFK & 0x4) == 4) {}
-      for (i = 1; (i != 0) && (!this.JIA.isInitialized()); i = 0)
+      if ((this.Ltd & 0x4) == 4) {}
+      for (i = 1; (i != 0) && (!this.LvT.isInitialized()); i = 0)
       {
         AppMethodBeat.o(58963);
         return false;
       }
-      if ((this.JFK & 0x10) == 16) {}
-      for (i = 1; (i != 0) && (!this.JJb.isInitialized()); i = 0)
+      if ((this.Ltd & 0x10) == 16) {}
+      for (i = 1; (i != 0) && (!this.Lwu.isInitialized()); i = 0)
       {
         AppMethodBeat.o(58963);
         return false;
       }
-      if (!this.JMK.isInitialized())
+      if (!this.LAd.isInitialized())
       {
         AppMethodBeat.o(58963);
         return false;

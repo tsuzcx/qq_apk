@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
 final class RefreshLoadMoreLayout$e
   extends d.g.b.l
   implements a<y>
 {
-  public static final e HXw;
+  public static final e Jyk;
   
   static
   {
     AppMethodBeat.i(164577);
-    HXw = new e();
+    Jyk = new e();
     AppMethodBeat.o(164577);
   }
   

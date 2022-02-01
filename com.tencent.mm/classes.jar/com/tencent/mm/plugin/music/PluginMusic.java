@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.music;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lm;
+import com.tencent.mm.g.a.lv;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.music.e.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class PluginMusic
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.plugin.music.a.a
 {
-  private com.tencent.mm.sdk.b.c tTG;
+  private com.tencent.mm.sdk.b.c vco;
   
   public PluginMusic()
   {
     AppMethodBeat.i(178787);
-    this.tTG = new com.tencent.mm.sdk.b.c() {};
+    this.vco = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(178787);
   }
   
   public void configure(g paramg)
   {
     AppMethodBeat.i(62936);
-    com.tencent.mm.plugin.music.f.c.b.init(aj.getContext());
+    com.tencent.mm.plugin.music.f.c.b.init(ai.getContext());
     com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.cache.c.class, new com.tencent.mm.plugin.music.model.a.c());
     com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.b.a.d.class, new com.tencent.mm.plugin.music.b.a.c());
     com.tencent.mm.plugin.music.f.c.b.a(com.tencent.mm.plugin.music.e.b.class, new l());
     com.tencent.mm.plugin.music.b.d.init();
     com.tencent.mm.plugin.music.f.a.a.a(new com.tencent.mm.plugin.music.model.c.b());
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      ad.i("MicroMsg.Music.PluginMusic", "PluginMusic configure SubCoreMusic");
+      ac.i("MicroMsg.Music.PluginMusic", "PluginMusic configure SubCoreMusic");
       pin(new t(com.tencent.mm.plugin.music.model.f.class));
     }
-    this.tTG.alive();
+    this.vco.alive();
     AppMethodBeat.o(62936);
   }
   
   public void execute(g paramg)
   {
     AppMethodBeat.i(62937);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
-      ad.i("MicroMsg.Music.PluginMusic", "PluginMusic execute");
-      com.tencent.mm.bs.c.aCW("music");
+      ac.i("MicroMsg.Music.PluginMusic", "PluginMusic execute");
+      com.tencent.mm.br.c.aIn("music");
     }
     AppMethodBeat.o(62937);
   }
@@ -71,13 +71,13 @@ public class PluginMusic
     com.tencent.mm.plugin.music.f.c.b.ac(com.tencent.mm.plugin.music.b.a.d.class);
     com.tencent.mm.plugin.music.f.c.b.ac(com.tencent.mm.plugin.music.e.b.class);
     com.tencent.mm.plugin.music.f.c.b.release();
-    this.tTG.dead();
+    this.vco.dead();
     AppMethodBeat.o(62938);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.PluginMusic
  * JD-Core Version:    0.7.0.1
  */

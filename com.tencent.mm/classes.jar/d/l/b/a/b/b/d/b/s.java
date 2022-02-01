@@ -16,46 +16,19 @@ public final class s
   extends r
   implements q
 {
-  public final Method Jwp;
+  public final Method LjI;
   
   public s(Method paramMethod)
   {
     AppMethodBeat.i(57490);
-    this.Jwp = paramMethod;
+    this.LjI = paramMethod;
     AppMethodBeat.o(57490);
   }
   
-  public final b fAX()
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(57488);
-    Object localObject2 = this.Jwp.getDefaultValue();
-    if (localObject2 != null)
-    {
-      localObject1 = d.Jwa;
-      localObject1 = d.a.a(localObject2, null);
-    }
-    localObject1 = (b)localObject1;
-    AppMethodBeat.o(57488);
-    return localObject1;
-  }
-  
-  public final boolean fAY()
-  {
-    AppMethodBeat.i(57491);
-    if (fAX() != null)
-    {
-      AppMethodBeat.o(57491);
-      return true;
-    }
-    AppMethodBeat.o(57491);
-    return false;
-  }
-  
-  public final List<x> fyn()
+  public final List<x> fQR()
   {
     AppMethodBeat.i(57489);
-    Object localObject = this.Jwp.getTypeParameters();
+    Object localObject = this.LjI.getTypeParameters();
     k.g(localObject, "member.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
@@ -70,21 +43,48 @@ public final class s
     return localObject;
   }
   
-  public final List<y> fyq()
+  public final List<y> fQU()
   {
     AppMethodBeat.i(57486);
-    Object localObject = this.Jwp.getGenericParameterTypes();
+    Object localObject = this.LjI.getGenericParameterTypes();
     k.g(localObject, "member.genericParameterTypes");
-    Annotation[][] arrayOfAnnotation = this.Jwp.getParameterAnnotations();
+    Annotation[][] arrayOfAnnotation = this.LjI.getParameterAnnotations();
     k.g(arrayOfAnnotation, "member.parameterAnnotations");
-    localObject = a((Type[])localObject, arrayOfAnnotation, this.Jwp.isVarArgs());
+    localObject = a((Type[])localObject, arrayOfAnnotation, this.LjI.isVarArgs());
     AppMethodBeat.o(57486);
     return localObject;
+  }
+  
+  public final b fTB()
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(57488);
+    Object localObject2 = this.LjI.getDefaultValue();
+    if (localObject2 != null)
+    {
+      localObject1 = d.Ljt;
+      localObject1 = d.a.a(localObject2, null);
+    }
+    localObject1 = (b)localObject1;
+    AppMethodBeat.o(57488);
+    return localObject1;
+  }
+  
+  public final boolean fTC()
+  {
+    AppMethodBeat.i(57491);
+    if (fTB() != null)
+    {
+      AppMethodBeat.o(57491);
+      return true;
+    }
+    AppMethodBeat.o(57491);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.s
  * JD-Core Version:    0.7.0.1
  */

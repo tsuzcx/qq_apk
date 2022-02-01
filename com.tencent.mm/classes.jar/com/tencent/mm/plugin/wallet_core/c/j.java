@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ayc;
-import com.tencent.mm.protocal.protobuf.ayd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bbu;
+import com.tencent.mm.protocal.protobuf.bbv;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class j
   extends n
   implements k
 {
+  public String Bou;
+  public boolean Bov;
   private g callback;
   private b rr;
-  public String zWa;
-  public boolean zWb;
   
   public j()
   {
     AppMethodBeat.i(69908);
-    this.zWa = "";
-    this.zWb = false;
+    this.Bou = "";
+    this.Bov = false;
     b.a locala = new b.a();
-    locala.gUU = new ayc();
-    locala.gUV = new ayd();
+    locala.hvt = new bbu();
+    locala.hvu = new bbv();
     locala.uri = "/cgi-bin/mmpay-bin/getpayuserduty";
     locala.funcId = 2541;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     AppMethodBeat.o(69908);
   }
   
@@ -55,17 +55,17 @@ public final class j
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69910);
-    ad.d("MircoMsg.NetSceneGetPayUserDuty", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    ac.d("MircoMsg.NetSceneGetPayUserDuty", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(69910);
       return;
     }
-    paramq = (ayd)((b)paramq).gUT.gUX;
-    this.zWa = paramq.zWa;
-    this.zWb = paramq.zWb;
-    ad.i("MircoMsg.NetSceneGetPayUserDuty", "duty_info %s need_agree_duty %s", new Object[] { this.zWa, Boolean.valueOf(this.zWb) });
+    paramq = (bbv)((b)paramq).hvs.hvw;
+    this.Bou = paramq.Bou;
+    this.Bov = paramq.Bov;
+    ac.i("MircoMsg.NetSceneGetPayUserDuty", "duty_info %s need_agree_duty %s", new Object[] { this.Bou, Boolean.valueOf(this.Bov) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69910);
   }

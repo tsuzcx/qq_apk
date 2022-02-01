@@ -10,73 +10,73 @@ public class u
   extends h
   implements SubMenu
 {
-  public h aeq;
-  private j aer;
+  public h afk;
+  private j afl;
   
   public u(Context paramContext, h paramh, j paramj)
   {
     super(paramContext);
-    this.aeq = paramh;
-    this.aer = paramj;
+    this.afk = paramh;
+    this.afl = paramj;
   }
   
   public final void a(h.a parama)
   {
-    this.aeq.a(parama);
+    this.afk.a(parama);
   }
   
   final boolean d(h paramh, MenuItem paramMenuItem)
   {
-    return (super.d(paramh, paramMenuItem)) || (this.aeq.d(paramh, paramMenuItem));
+    return (super.d(paramh, paramMenuItem)) || (this.afk.d(paramh, paramMenuItem));
   }
   
   public final boolean g(j paramj)
   {
-    return this.aeq.g(paramj);
+    return this.afk.g(paramj);
   }
   
   public MenuItem getItem()
   {
-    return this.aer;
+    return this.afl;
   }
   
   public final boolean h(j paramj)
   {
-    return this.aeq.h(paramj);
+    return this.afk.h(paramj);
   }
   
-  public final h hA()
+  public final boolean hA()
   {
-    return this.aeq.hA();
+    return this.afk.hA();
   }
   
-  public final String hp()
+  public final h hI()
   {
-    if (this.aer != null) {}
-    for (int i = this.aer.getItemId(); i == 0; i = 0) {
+    return this.afk.hI();
+  }
+  
+  public final String hx()
+  {
+    if (this.afl != null) {}
+    for (int i = this.afl.getItemId(); i == 0; i = 0) {
       return null;
     }
-    return super.hp() + ":" + i;
+    return super.hx() + ":" + i;
   }
   
-  public final boolean hq()
+  public final boolean hy()
   {
-    return this.aeq.hq();
+    return this.afk.hy();
   }
   
-  public final boolean hr()
+  public final boolean hz()
   {
-    return this.aeq.hr();
-  }
-  
-  public final boolean hs()
-  {
-    return this.aeq.hs();
+    return this.afk.hz();
   }
   
   public void setGroupDividerEnabled(boolean paramBoolean)
   {
-    this.aeq.setGroupDividerEnabled(paramBoolean);
+    this.afk.setGroupDividerEnabled(paramBoolean);
   }
   
   public SubMenu setHeaderIcon(int paramInt)
@@ -111,19 +111,19 @@ public class u
   
   public SubMenu setIcon(int paramInt)
   {
-    this.aer.setIcon(paramInt);
+    this.afl.setIcon(paramInt);
     return this;
   }
   
   public SubMenu setIcon(Drawable paramDrawable)
   {
-    this.aer.setIcon(paramDrawable);
+    this.afl.setIcon(paramDrawable);
     return this;
   }
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.aeq.setQwertyMode(paramBoolean);
+    this.afk.setQwertyMode(paramBoolean);
   }
 }
 

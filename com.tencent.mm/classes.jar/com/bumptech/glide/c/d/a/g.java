@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class g
 {
-  public static final g aIs = new e();
-  public static final g aIt = new d();
-  public static final g aIu = new a();
-  public static final g aIv = new b();
-  public static final g aIw = new c();
-  public static final g aIx = new f();
-  public static final g aIy = aIt;
-  public static final i<g> aIz = i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.DownsampleStrategy", aIy);
+  public static final g aJi = new e();
+  public static final g aJj = new d();
+  public static final g aJk = new a();
+  public static final g aJl = new b();
+  public static final g aJm = new c();
+  public static final g aJn = new f();
+  public static final g aJo = aJj;
+  public static final i<g> aJp = i.b("com.bumptech.glide.load.resource.bitmap.Downsampler.DownsampleStrategy", aJo);
   
   public abstract float l(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public abstract g.g oU();
+  public abstract g pe();
   
   static final class a
     extends g
@@ -35,9 +35,9 @@ public abstract class g
       return f;
     }
     
-    public final g.g oU()
+    public final g.g pe()
     {
-      return g.g.aIB;
+      return g.g.aJr;
     }
   }
   
@@ -59,9 +59,9 @@ public abstract class g
       }
     }
     
-    public final g.g oU()
+    public final g.g pe()
     {
-      return g.g.aIA;
+      return g.g.aJq;
     }
   }
   
@@ -71,14 +71,14 @@ public abstract class g
     public final float l(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(77386);
-      float f = Math.min(1.0F, aIs.l(paramInt1, paramInt2, paramInt3, paramInt4));
+      float f = Math.min(1.0F, aJi.l(paramInt1, paramInt2, paramInt3, paramInt4));
       AppMethodBeat.o(77386);
       return f;
     }
     
-    public final g.g oU()
+    public final g.g pe()
     {
-      return g.g.aIB;
+      return g.g.aJr;
     }
   }
   
@@ -93,9 +93,9 @@ public abstract class g
       return f;
     }
     
-    public final g.g oU()
+    public final g.g pe()
     {
-      return g.g.aIB;
+      return g.g.aJr;
     }
   }
   
@@ -110,9 +110,9 @@ public abstract class g
       return f;
     }
     
-    public final g.g oU()
+    public final g.g pe()
     {
-      return g.g.aIB;
+      return g.g.aJr;
     }
   }
   
@@ -124,15 +124,29 @@ public abstract class g
       return 1.0F;
     }
     
-    public final g.g oU()
+    public final g.g pe()
     {
-      return g.g.aIB;
+      return g.g.aJr;
     }
+  }
+  
+  public static enum g
+  {
+    static
+    {
+      AppMethodBeat.i(77391);
+      aJq = new g("MEMORY", 0);
+      aJr = new g("QUALITY", 1);
+      aJs = new g[] { aJq, aJr };
+      AppMethodBeat.o(77391);
+    }
+    
+    private g() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.g
  * JD-Core Version:    0.7.0.1
  */

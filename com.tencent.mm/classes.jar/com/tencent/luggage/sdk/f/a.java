@@ -4,25 +4,25 @@ import android.graphics.Bitmap;
 import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public abstract interface a
   extends b
 {
-  public abstract String Ek();
+  public abstract String DN();
   
   public abstract void a(b paramb);
   
   public static final class a
   {
-    private static final a civ;
+    private static final a cfr;
     
     static
     {
       AppMethodBeat.i(169461);
-      civ = new a()
+      cfr = new a()
       {
-        public final String Ek()
+        public final String DN()
         {
           return null;
         }
@@ -30,7 +30,7 @@ public abstract interface a
         public final void a(final a.b paramAnonymousb)
         {
           AppMethodBeat.i(169459);
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
@@ -51,7 +51,7 @@ public abstract interface a
       a locala = (a)paramc.K(a.class);
       paramc = locala;
       if (locala == null) {
-        paramc = civ;
+        paramc = cfr;
       }
       AppMethodBeat.o(169460);
       return paramc;
@@ -65,7 +65,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.f.a
  * JD-Core Version:    0.7.0.1
  */

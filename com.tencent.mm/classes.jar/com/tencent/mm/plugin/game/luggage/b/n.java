@@ -1,69 +1,51 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.content.Intent;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader_app.api.a.c;
-import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
+import com.tencent.mm.plugin.game.luggage.d.f.9;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.ui.ao;
 import org.json.JSONObject;
 
 public class n
-  extends bn<f>
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, final bn.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  
+  public final void b(a<f>.a parama)
   {
-    AppMethodBeat.i(83076);
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        paramString = paramString.optString("appId");
-        Intent localIntent = new Intent();
-        localIntent.putExtra("appId", paramString);
-        localIntent.putExtra("view_task", true);
-        localIntent.addFlags(268435456);
-        ((c)g.ab(c.class)).a(paramContext, localIntent, new a.c()
-        {
-          public final void aYa()
-          {
-            AppMethodBeat.i(83075);
-            parama.f(null, null);
-            AppMethodBeat.o(83075);
-          }
-        });
-        AppMethodBeat.o(83076);
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        ad.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
-        paramString = null;
-        continue;
-        paramString = "";
-      }
-    }
+    AppMethodBeat.i(83074);
+    Object localObject = parama.bWS.bVY;
+    String str1 = ((JSONObject)localObject).optString("url");
+    String str2 = ((JSONObject)localObject).optString("viewId");
+    int i = ((JSONObject)localObject).optInt("left");
+    i = ao.fromDPToPix(ai.getContext(), i);
+    int j = ((JSONObject)localObject).optInt("top");
+    j = ao.fromDPToPix(ai.getContext(), j);
+    int k = ((JSONObject)localObject).optInt("width");
+    k = ao.fromDPToPix(ai.getContext(), k);
+    int m = ((JSONObject)localObject).optInt("height");
+    m = ao.fromDPToPix(ai.getContext(), m);
+    localObject = (f)parama.bWR;
+    ((f)localObject).av(new f.9((f)localObject, str1, str2, k, m, i, j));
+    parama.a("", null);
+    AppMethodBeat.o(83074);
   }
   
-  public final void b(a<f>.a parama) {}
-  
-  public final int bQV()
+  public final int bYk()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "jumpDownloaderWidget";
+    return "insertWebView";
   }
 }
 

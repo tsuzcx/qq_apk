@@ -6,13 +6,13 @@ import java.security.NoSuchAlgorithmException;
 
 public final class a
 {
-  public static byte[] cG(byte[] paramArrayOfByte)
+  public static byte[] cF(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138448);
     Object localObject = null;
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance(new String(b.Rd("4D4435")));
+      MessageDigest localMessageDigest = MessageDigest.getInstance(new String(b.Vp("4D4435")));
       localMessageDigest.update(paramArrayOfByte);
       paramArrayOfByte = localMessageDigest.digest();
       AppMethodBeat.o(138448);
@@ -29,7 +29,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.e.b.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

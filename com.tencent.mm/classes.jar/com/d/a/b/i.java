@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 public abstract class i
 {
-  protected final long JV;
-  protected final n bWA;
-  long bWB;
-  g bWC;
-  int bWD = 2147483647;
-  boolean bWE = false;
-  i bWF = null;
-  private final ArrayList<i> bWG = new ArrayList();
-  private ArrayList<i> bWH = null;
+  protected final long KQ;
+  protected final n bUi;
+  long bUj;
+  g bUk;
+  int bUl = 2147483647;
+  boolean bUm = false;
+  i bUn = null;
+  private final ArrayList<i> bUo = new ArrayList();
+  private ArrayList<i> bUp = null;
   int mSize;
   
   static
@@ -28,73 +28,43 @@ public abstract class i
   
   i(long paramLong, n paramn)
   {
-    this.JV = paramLong;
-    this.bWA = paramn;
-  }
-  
-  protected final long Ae()
-  {
-    switch (this.bWC.bWt.b(p.bXr))
-    {
-    case 3: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return 0L;
-    case 1: 
-      return Ai().readByte();
-    case 2: 
-      return Ai().readShort();
-    case 4: 
-      return Ai().readInt();
-    }
-    return Ai().readLong();
-  }
-  
-  public final long Ah()
-  {
-    return this.JV & this.bWC.bWt.bXj;
-  }
-  
-  protected final a Ai()
-  {
-    return this.bWC.bWt.bXe;
+    this.KQ = paramLong;
+    this.bUi = paramn;
   }
   
   protected final Object a(p paramp)
   {
-    switch (1.bWI[paramp.ordinal()])
+    switch (1.bUq[paramp.ordinal()])
     {
     default: 
       return null;
     case 1: 
-      long l = Ae();
-      return this.bWC.bWt.aI(l);
+      long l = zR();
+      return this.bUk.bUb.aE(l);
     case 2: 
-      if (Ai().readByte() != 0) {}
+      if (zV().readByte() != 0) {}
       for (boolean bool = true;; bool = false) {
         return Boolean.valueOf(bool);
       }
     case 3: 
-      return Character.valueOf(Ai().readChar());
+      return Character.valueOf(zV().readChar());
     case 4: 
-      return Float.valueOf(Ai().readFloat());
+      return Float.valueOf(zV().readFloat());
     case 5: 
-      return Double.valueOf(Ai().readDouble());
+      return Double.valueOf(zV().readDouble());
     case 6: 
-      return Byte.valueOf(Ai().readByte());
+      return Byte.valueOf(zV().readByte());
     case 7: 
-      return Short.valueOf(Ai().readShort());
+      return Short.valueOf(zV().readShort());
     case 8: 
-      return Integer.valueOf(Ai().readInt());
+      return Integer.valueOf(zV().readInt());
     }
-    return Long.valueOf(Ai().readLong());
+    return Long.valueOf(zV().readLong());
   }
   
   public final long getId()
   {
-    return this.JV;
+    return this.KQ;
   }
   
   public int getSize()
@@ -104,17 +74,47 @@ public abstract class i
   
   protected final int readUnsignedByte()
   {
-    return Ai().readByte() & 0xFF;
+    return zV().readByte() & 0xFF;
   }
   
   protected final int readUnsignedShort()
   {
-    return Ai().readShort() & 0xFFFF;
+    return zV().readShort() & 0xFFFF;
   }
   
-  public c zW()
+  public c zJ()
   {
-    return this.bWC.bWt.aJ(this.bWB);
+    return this.bUk.bUb.aF(this.bUj);
+  }
+  
+  protected final long zR()
+  {
+    switch (this.bUk.bUb.b(p.bUZ))
+    {
+    case 3: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return 0L;
+    case 1: 
+      return zV().readByte();
+    case 2: 
+      return zV().readShort();
+    case 4: 
+      return zV().readInt();
+    }
+    return zV().readLong();
+  }
+  
+  public final long zU()
+  {
+    return this.KQ & this.bUk.bUb.bUR;
+  }
+  
+  protected final a zV()
+  {
+    return this.bUk.bUb.bUM;
   }
 }
 

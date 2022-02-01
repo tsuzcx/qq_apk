@@ -13,7 +13,7 @@ public final class g
     AppMethodBeat.i(76846);
     if (paramInputStream == null)
     {
-      paramList = f.a.aCt;
+      paramList = f.a.aDl;
       AppMethodBeat.o(76846);
       return paramList;
     }
@@ -32,7 +32,7 @@ public final class g
       try
       {
         paramInputStream = paramInputStream.c((InputStream)localObject);
-        paramb = f.a.aCt;
+        paramb = f.a.aDl;
         if (paramInputStream != paramb) {
           return paramInputStream;
         }
@@ -88,7 +88,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.g
  * JD-Core Version:    0.7.0.1
  */

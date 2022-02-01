@@ -5,12 +5,12 @@ import com.tencent.mm.pluginsdk.r;
 
 public final class f
 {
-  private static double jVG = -85.0D;
-  private static double jVH = -1000.0D;
-  private static double jVI = -85.0D;
-  private static double jVJ = -1000.0D;
+  private static double kws = -85.0D;
+  private static double kwt = -1000.0D;
+  private static double kwu = -85.0D;
+  private static double kwv = -1000.0D;
   
-  public static double C(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static double E(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(55690);
     double d = Math.sqrt((paramInt1 - paramInt3) * (paramInt1 - paramInt3) + (paramInt2 - paramInt4) * (paramInt2 - paramInt4));
@@ -65,19 +65,19 @@ public final class f
   public static double h(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(55688);
-    jVI = paramDouble1;
-    jVJ = paramDouble2;
-    if ((jVG == -85.0D) || (jVH == -1000.0D)) {}
-    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(jVJ - jVH, jVI - jVG) * 180.0D / 3.141592D)
+    kwu = paramDouble1;
+    kwv = paramDouble2;
+    if ((kws == -85.0D) || (kwt == -1000.0D)) {}
+    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(kwv - kwt, kwu - kws) * 180.0D / 3.141592D)
     {
-      jVG = jVI;
-      jVH = jVJ;
+      kws = kwu;
+      kwt = kwv;
       AppMethodBeat.o(55688);
       return paramDouble1;
     }
   }
   
-  public static boolean w(double paramDouble)
+  public static boolean v(double paramDouble)
   {
     return paramDouble >= 4.0D;
   }

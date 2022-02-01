@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
 
 public abstract interface l
   extends a
 {
-  public abstract com.tencent.mm.plugin.messenger.foundation.a.a.h a(com.tencent.mm.storagebase.h paramh, bg parambg, bh parambh);
+  public abstract com.tencent.mm.plugin.messenger.foundation.a.a.h a(com.tencent.mm.storagebase.h paramh, bj parambj, bk parambk);
   
-  public abstract bg d(com.tencent.mm.storagebase.h paramh);
+  public abstract bj d(com.tencent.mm.storagebase.h paramh);
   
-  public abstract bh e(com.tencent.mm.storagebase.h paramh);
+  public abstract bk e(com.tencent.mm.storagebase.h paramh);
   
   public abstract k f(com.tencent.mm.storagebase.h paramh);
 }

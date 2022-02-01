@@ -8,48 +8,48 @@ import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.g.a.b;
 import com.tencent.mm.plugin.appbrand.g.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.q;
 
 public final class h
   extends com.tencent.luggage.bridge.impl.a.a
   implements com.tencent.mm.plugin.appbrand.g.b
 {
-  public final String AL()
+  public final String Ap()
   {
     return "WxFileAdImageReader";
   }
   
   public final void a(String paramString, a.c paramc)
   {
-    AppMethodBeat.i(194468);
+    AppMethodBeat.i(193384);
     if (!match(paramString))
     {
-      ad.w("MicroMsg.WxFileAdImageReader", "openRead, not match, url:%s", new Object[] { paramString });
-      AppMethodBeat.o(194468);
+      ac.w("MicroMsg.WxFileAdImageReader", "openRead, not match, url:%s", new Object[] { paramString });
+      AppMethodBeat.o(193384);
       return;
     }
     if (paramc == null)
     {
-      AppMethodBeat.o(194468);
+      AppMethodBeat.o(193384);
       return;
     }
     Object localObject = (g)com.tencent.luggage.a.e.K(g.class);
     if (localObject == null)
     {
-      ad.i("MicroMsg.WxFileAdImageReader", "openRead, no ad service");
-      AppMethodBeat.o(194468);
+      ac.i("MicroMsg.WxFileAdImageReader", "openRead, no ad service");
+      AppMethodBeat.o(193384);
       return;
     }
-    localObject = ((g)localObject).aNY();
+    localObject = ((g)localObject).aUO();
     if (localObject == null)
     {
-      ad.i("MicroMsg.WxFileAdImageReader", "openRead, no ad file system");
-      AppMethodBeat.o(194468);
+      ac.i("MicroMsg.WxFileAdImageReader", "openRead, no ad file system");
+      AppMethodBeat.o(193384);
       return;
     }
-    paramc.A(((p)localObject).ET(paramString));
-    AppMethodBeat.o(194468);
+    paramc.z(((p)localObject).IW(paramString));
+    AppMethodBeat.o(193384);
   }
   
   public final boolean a(c paramc, String paramString)
@@ -71,42 +71,42 @@ public final class h
     AppMethodBeat.i(162081);
     if (!match(paramString))
     {
-      ad.w("MicroMsg.WxFileAdImageReader", "read, not match, url:%s", new Object[] { paramString });
+      ac.w("MicroMsg.WxFileAdImageReader", "read, not match, url:%s", new Object[] { paramString });
       AppMethodBeat.o(162081);
       return null;
     }
     paramb = (g)com.tencent.luggage.a.e.K(g.class);
     if (paramb == null)
     {
-      ad.i("MicroMsg.WxFileAdImageReader", "read, no ad service");
+      ac.i("MicroMsg.WxFileAdImageReader", "read, no ad service");
       AppMethodBeat.o(162081);
       return null;
     }
-    paramb = paramb.aNY();
+    paramb = paramb.aUO();
     if (paramb == null)
     {
-      ad.i("MicroMsg.WxFileAdImageReader", "read, no ad file system");
+      ac.i("MicroMsg.WxFileAdImageReader", "read, no ad file system");
       AppMethodBeat.o(162081);
       return null;
     }
-    paramb = paramb.EP(paramString);
+    paramb = paramb.IS(paramString);
     if ((paramb == null) || (!paramb.exists()))
     {
-      ad.w("MicroMsg.WxFileAdImageReader", "read, file not exist, url:%s", new Object[] { paramString });
+      ac.w("MicroMsg.WxFileAdImageReader", "read, file not exist, url:%s", new Object[] { paramString });
       AppMethodBeat.o(162081);
       return null;
     }
-    String str = q.B(paramb.fhU());
+    String str = q.B(paramb.fxV());
     paramb = str;
     if (!str.startsWith("file://")) {
       paramb = "file://".concat(String.valueOf(str));
     }
-    ad.w("MicroMsg.WxFileAdImageReader", "read, url:%s, path:%s", new Object[] { paramString, paramb });
+    ac.w("MicroMsg.WxFileAdImageReader", "read, url:%s, path:%s", new Object[] { paramString, paramb });
     paramString = localObject;
     if (paramRect != null) {
       paramString = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());
     }
-    paramString = com.tencent.mm.modelappbrand.a.b.aub().a(paramb, paramString);
+    paramString = com.tencent.mm.modelappbrand.a.b.aAS().a(paramb, paramString);
     AppMethodBeat.o(162081);
     return paramString;
   }
@@ -137,7 +137,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.h
  * JD-Core Version:    0.7.0.1
  */

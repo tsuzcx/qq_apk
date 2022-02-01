@@ -11,32 +11,32 @@ import java.util.Map;
 
 public final class b
 {
-  private final String cvM;
-  private final b cvN;
-  private IBinder cvO;
+  private final String csU;
+  private final b csV;
+  private IBinder csW;
   private final String mServiceName;
   
   public b(String paramString1, String paramString2, b paramb)
   {
     this.mServiceName = paramString1;
-    this.cvM = paramString2;
-    this.cvN = paramb;
+    this.csU = paramString2;
+    this.csV = paramb;
   }
   
-  private Object Hh()
+  private Object GS()
   {
     try
     {
-      Object localObject1 = Class.forName(this.cvM);
-      Object localObject3 = Class.forName(String.format("%s$Stub", new Object[] { this.cvM }));
-      Object localObject2 = ((Class)localObject3).getDeclaredMethod("asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.cvO });
+      Object localObject1 = Class.forName(this.csU);
+      Object localObject3 = Class.forName(String.format("%s$Stub", new Object[] { this.csU }));
+      Object localObject2 = ((Class)localObject3).getDeclaredMethod("asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.csW });
       localObject3 = ((Class)localObject3).getClassLoader();
       if (localObject3 == null)
       {
         c.e("Matrix.SystemServiceBinderHooker", "doHook exp classLoader null ", new Object[0]);
         return Boolean.FALSE;
       }
-      localObject2 = new c(localObject2, this.cvN);
+      localObject2 = new c(localObject2, this.csV);
       localObject1 = Proxy.newProxyInstance((ClassLoader)localObject3, new Class[] { IBinder.class, IInterface.class, localObject1 }, (InvocationHandler)localObject2);
       return localObject1;
     }
@@ -49,18 +49,18 @@ public final class b
   
   public final boolean doHook()
   {
-    c.i("Matrix.SystemServiceBinderHooker", "doHook: serviceName:%s, serviceClsName:%s", new Object[] { this.mServiceName, this.cvM });
+    c.i("Matrix.SystemServiceBinderHooker", "doHook: serviceName:%s, serviceClsName:%s", new Object[] { this.mServiceName, this.csU });
     try
     {
       Object localObject1 = Class.forName("android.os.ServiceManager");
-      this.cvO = ((IBinder)((Class)localObject1).getDeclaredMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { this.mServiceName }));
+      this.csW = ((IBinder)((Class)localObject1).getDeclaredMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { this.mServiceName }));
       Object localObject2 = ((Class)localObject1).getClassLoader();
       if (localObject2 == null)
       {
         c.e("Matrix.SystemServiceBinderHooker", "doHook exp classLoader null ", new Object[0]);
         return false;
       }
-      b.a locala = new b.a(this.cvO, Hh());
+      b.a locala = new b.a(this.csW, GS());
       localObject2 = (IBinder)Proxy.newProxyInstance((ClassLoader)localObject2, new Class[] { IBinder.class }, locala);
       localObject1 = ((Class)localObject1).getDeclaredField("sCache");
       ((Field)localObject1).setAccessible(true);
@@ -76,7 +76,7 @@ public final class b
   
   public final boolean doUnHook()
   {
-    if (this.cvO == null)
+    if (this.csW == null)
     {
       c.i("Matrix.SystemServiceBinderHooker", "doUnHook sOriginPowerManagerService null", new Object[0]);
       return false;
@@ -85,7 +85,7 @@ public final class b
     {
       Field localField = Class.forName("android.os.ServiceManager").getDeclaredField("sCache");
       localField.setAccessible(true);
-      ((Map)localField.get(null)).put(this.mServiceName, this.cvO);
+      ((Map)localField.get(null)).put(this.mServiceName, this.csW);
       return true;
     }
     catch (Throwable localThrowable)
@@ -103,27 +103,27 @@ public final class b
   static final class c
     implements InvocationHandler
   {
-    final Object cvR;
-    final b.b cvS;
+    final Object csZ;
+    final b.b cta;
     
     c(Object paramObject, b.b paramb)
     {
-      this.cvR = paramObject;
-      this.cvS = paramb;
+      this.csZ = paramObject;
+      this.cta = paramb;
     }
     
     public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
-      if (this.cvS != null) {
-        this.cvS.b(paramMethod, paramArrayOfObject);
+      if (this.cta != null) {
+        this.cta.b(paramMethod, paramArrayOfObject);
       }
-      return paramMethod.invoke(this.cvR, paramArrayOfObject);
+      return paramMethod.invoke(this.csZ, paramArrayOfObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.d.b
  * JD-Core Version:    0.7.0.1
  */

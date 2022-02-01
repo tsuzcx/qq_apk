@@ -9,37 +9,37 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public class MoreFooter
   extends LinearLayout
 {
   private Context context;
-  private TextView fQp;
-  private View frN;
+  private TextView fUk;
+  private View fvu;
   
   public MoreFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116759);
     this.context = paramContext;
-    paramContext = (ViewGroup)y.js(this.context).inflate(2131496108, this);
-    this.fQp = ((TextView)paramContext.findViewById(2131305880));
-    this.frN = paramContext.findViewById(2131304239);
+    paramContext = (ViewGroup)z.jD(this.context).inflate(2131496108, this);
+    this.fUk = ((TextView)paramContext.findViewById(2131305880));
+    this.fvu = paramContext.findViewById(2131304239);
     AppMethodBeat.o(116759);
   }
   
   public void setOnClickLsn(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116761);
-    this.frN.setOnClickListener(paramOnClickListener);
+    this.fvu.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116761);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116760);
-    this.fQp.setText(paramString);
+    this.fUk.setText(paramString);
     AppMethodBeat.o(116760);
   }
 }

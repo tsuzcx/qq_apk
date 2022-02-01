@@ -7,8 +7,8 @@ import java.util.Locale;
 
 public final class b
 {
-  private static Method Lg;
-  private static Method Lh;
+  private static Method Mb;
+  private static Method Mc;
   
   static
   {
@@ -17,7 +17,7 @@ public final class b
     {
       try
       {
-        Lh = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
+        Mc = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
         return;
       }
       catch (Exception localException1)
@@ -29,15 +29,15 @@ public final class b
         Class localClass = Class.forName("libcore.icu.ICU");
         if (localClass != null)
         {
-          Lg = localClass.getMethod("getScript", new Class[] { String.class });
-          Lh = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
+          Mb = localClass.getMethod("getScript", new Class[] { String.class });
+          Mc = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
           return;
         }
       }
       catch (Exception localException2)
       {
-        Lg = null;
-        Lh = null;
+        Mb = null;
+        Mc = null;
       }
     }
   }
@@ -48,7 +48,7 @@ public final class b
     if (Build.VERSION.SDK_INT >= 21) {}
     try
     {
-      str1 = ((Locale)Lh.invoke(null, new Object[] { paramLocale })).getScript();
+      str1 = ((Locale)Mc.invoke(null, new Object[] { paramLocale })).getScript();
       paramLocale = str1;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -74,9 +74,9 @@ public final class b
     paramLocale = paramLocale.toString();
     try
     {
-      if (Lh != null)
+      if (Mc != null)
       {
-        String str = (String)Lh.invoke(null, new Object[] { paramLocale });
+        String str = (String)Mc.invoke(null, new Object[] { paramLocale });
         return str;
       }
     }
@@ -95,9 +95,9 @@ public final class b
   {
     try
     {
-      if (Lg != null)
+      if (Mb != null)
       {
-        paramString = (String)Lg.invoke(null, new Object[] { paramString });
+        paramString = (String)Mb.invoke(null, new Object[] { paramString });
         return paramString;
       }
     }
@@ -114,7 +114,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.d.b
  * JD-Core Version:    0.7.0.1
  */

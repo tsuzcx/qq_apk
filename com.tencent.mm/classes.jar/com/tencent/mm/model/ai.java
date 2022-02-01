@@ -2,13 +2,13 @@ package com.tencent.mm.model;
 
 public abstract interface ai
 {
-  public abstract void arC();
+  public abstract void ayt();
   
-  public abstract void arD();
+  public abstract void ayu();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.model.ai
  * JD-Core Version:    0.7.0.1
  */

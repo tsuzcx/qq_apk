@@ -18,7 +18,7 @@ public final class a
     AppMethodBeat.o(163871);
   }
   
-  public final com.tencent.mm.pluginsdk.b.a gt(Context paramContext)
+  public final com.tencent.mm.pluginsdk.b.a gF(Context paramContext)
   {
     AppMethodBeat.i(69863);
     paramContext = new b(paramContext);
@@ -26,17 +26,17 @@ public final class a
     return paramContext;
   }
   
-  public final com.tencent.mm.pluginsdk.b.a gu(Context paramContext)
+  public final com.tencent.mm.pluginsdk.b.a gG(Context paramContext)
   {
-    AppMethodBeat.i(187145);
+    AppMethodBeat.i(207266);
     paramContext = new com.tencent.mm.plugin.wallet_core.ui.a(paramContext);
-    AppMethodBeat.o(187145);
+    AppMethodBeat.o(207266);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.a
  * JD-Core Version:    0.7.0.1
  */

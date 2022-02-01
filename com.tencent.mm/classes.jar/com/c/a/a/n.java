@@ -10,38 +10,38 @@ import java.util.List;
 class n
   extends b
 {
-  private final e bQV;
-  final j bQW;
-  private final n.d bQX;
-  private final i bQY;
-  final s bQZ;
-  private long bRa;
-  private long bRb;
-  private long bRc;
-  private int bRd;
-  private long bRe;
-  private boolean bRf;
-  private Location bRg;
-  private int bRh;
-  private float bRi;
-  private float bRj;
-  private float bRk;
-  private int bRl;
-  private int bRm;
-  private long bRn;
+  private final e bOD;
+  final j bOE;
+  private final d bOF;
+  private final i bOG;
+  final s bOH;
+  private long bOI;
+  private long bOJ;
+  private long bOK;
+  private int bOL;
+  private long bOM;
+  private boolean bON;
+  private Location bOO;
+  private int bOP;
+  private float bOQ;
+  private float bOR;
+  private float bOS;
+  private int bOT;
+  private int bOU;
+  private long bOV;
   
   n()
   {
     AppMethodBeat.i(88030);
-    this.bQV = new e((byte)0);
-    this.bQW = new j();
-    this.bQX = new n.d((byte)0);
-    if (i.bPw == null) {
-      i.bPw = new i();
+    this.bOD = new e((byte)0);
+    this.bOE = new j();
+    this.bOF = new d((byte)0);
+    if (i.bNe == null) {
+      i.bNe = new i();
     }
-    this.bQY = i.bPw;
-    this.bRf = true;
-    this.bQZ = new s(this);
+    this.bOG = i.bNe;
+    this.bON = true;
+    this.bOH = new s(this);
     AppMethodBeat.o(88030);
   }
   
@@ -51,39 +51,39 @@ class n
     paramLong /= 1000L;
     paramDouble1 = Math.toRadians(paramDouble1);
     paramDouble2 = Math.toRadians(paramDouble2);
-    if (this.bRf)
+    if (this.bON)
     {
-      this.bQW.a(paramLong, paramDouble1, paramDouble2, paramFloat1, this.bQV.bRx, y.bUS);
-      this.bRf = false;
+      this.bOE.a(paramLong, paramDouble1, paramDouble2, paramFloat1, this.bOD.bPf, y.bSA);
+      this.bON = false;
     }
     for (boolean bool = true;; bool = false)
     {
       j.a locala = new j.a(paramInt1, paramLong, paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramInt2, paramFloat2, 0, 0.0D, 0.0D);
-      this.bQW.a(locala);
-      if (y.bUM) {
-        o.s("filter_input_log_" + y.bUT, locala.toString());
+      this.bOE.a(locala);
+      if (y.bSu) {
+        o.t("filter_input_log_" + y.bSB, locala.toString());
       }
       AppMethodBeat.o(88031);
       return bool;
     }
   }
   
-  private void za()
+  private void yN()
   {
     AppMethodBeat.i(88039);
-    this.bQY.bPD = false;
-    this.bQZ.zm();
-    this.bQX.reset();
-    e.a(this.bQV);
-    yZ();
-    this.bRb = 0L;
-    this.bRc = SystemClock.elapsedRealtime();
-    this.bRi = 0.0F;
-    this.bRj = 0.0F;
-    this.bRk = 0.0F;
-    this.bRl = 0;
-    this.bRm = 0;
-    this.bRd = 0;
+    this.bOG.bNl = false;
+    this.bOH.yZ();
+    this.bOF.reset();
+    e.a(this.bOD);
+    yM();
+    this.bOJ = 0L;
+    this.bOK = SystemClock.elapsedRealtime();
+    this.bOQ = 0.0F;
+    this.bOR = 0.0F;
+    this.bOS = 0.0F;
+    this.bOT = 0;
+    this.bOU = 0;
+    this.bOL = 0;
     AppMethodBeat.o(88039);
   }
   
@@ -103,27 +103,27 @@ class n
       AppMethodBeat.o(88035);
       return;
     }
-    Object localObject = this.bQV;
+    Object localObject = this.bOD;
     if (paramInt3 >= 3)
     {
-      if (paramLong2 - ((e)localObject).bRw <= 5000L) {
-        ((e)localObject).bk(true);
+      if (paramLong2 - ((e)localObject).bPe <= 5000L) {
+        ((e)localObject).bj(true);
       }
-      ((e)localObject).bRw = paramLong2;
+      ((e)localObject).bPe = paramLong2;
     }
     int i = Math.round(paramFloat);
     if (!v.b(paramDouble1, paramDouble2)) {}
     for (localObject = "";; localObject = "&GD=" + paramDouble1 + ',' + paramDouble2 + ',' + paramInt1 + ',' + paramInt3 + ',' + paramInt5 + ',' + paramInt2 + ',' + i + ',' + paramLong1 + ',')
     {
-      this.bQX.l((String)localObject, paramLong2);
+      this.bOF.l((String)localObject, paramLong2);
       if (a(paramLong2, 1, paramDouble1, paramDouble2, paramInt1, paramInt2, paramInt5, paramInt3)) {
-        this.bQY.a(paramDouble1, paramDouble2, paramInt2, this.bRi, this.bRj, this.bRk);
+        this.bOG.a(paramDouble1, paramDouble2, paramInt2, this.bOQ, this.bOR, this.bOS);
       }
-      if (n.d.r(paramLong2, this.bRc)) {
-        this.bQZ.a(paramDouble1, paramDouble2, paramInt2, paramFloat, this.bRi, this.bRj, this.bRk, paramLong2);
+      if (d.o(paramLong2, this.bOK)) {
+        this.bOH.a(paramDouble1, paramDouble2, paramInt2, paramFloat, this.bOQ, this.bOR, this.bOS, paramLong2);
       }
-      if (y.bUM) {
-        o.s("gps_log_" + y.bUT, String.valueOf(paramDouble1) + ',' + paramDouble2 + ',' + paramInt1 + ',' + paramInt2 + ',' + paramInt3 + ',' + paramInt4 + ',' + paramInt5 + ',' + paramFloat + ',' + paramLong1);
+      if (y.bSu) {
+        o.t("gps_log_" + y.bSB, String.valueOf(paramDouble1) + ',' + paramDouble2 + ',' + paramInt1 + ',' + paramInt2 + ',' + paramInt3 + ',' + paramInt4 + ',' + paramInt5 + ',' + paramFloat + ',' + paramLong1);
       }
       AppMethodBeat.o(88035);
       return;
@@ -133,48 +133,48 @@ class n
   final void a(float paramFloat1, float paramFloat2, int paramInt, float paramFloat3, float paramFloat4, float paramFloat5, long paramLong)
   {
     AppMethodBeat.i(88034);
-    Object localObject1 = this.bQV;
-    if (paramLong - ((e)localObject1).bRw > 5000L) {
-      ((e)localObject1).bk(false);
+    Object localObject1 = this.bOD;
+    if (paramLong - ((e)localObject1).bPe > 5000L) {
+      ((e)localObject1).bj(false);
     }
-    if (paramLong - this.bRc > 5000L) {
-      za();
+    if (paramLong - this.bOK > 5000L) {
+      yN();
     }
-    this.bRi = paramFloat1;
-    this.bRj = paramFloat2;
-    this.bRk = paramFloat4;
-    this.bRl = paramInt;
-    this.bRc = paramLong;
+    this.bOQ = paramFloat1;
+    this.bOR = paramFloat2;
+    this.bOS = paramFloat4;
+    this.bOT = paramInt;
+    this.bOK = paramLong;
     boolean bool;
     if (paramFloat5 > 0.0F)
     {
       i = 1;
-      this.bRm = i;
-      if ((this.bRb != 0L) || (paramLong - this.bRn >= 30000L))
+      this.bOU = i;
+      if ((this.bOJ != 0L) || (paramLong - this.bOV >= 30000L))
       {
         if (i != 0) {
           break label339;
         }
         bool = true;
         label125:
-        if ((!bool) || (!this.bQV.bRx))
+        if ((!bool) || (!this.bOD.bPf))
         {
-          ab.zz().bj(bool);
-          k.yY().bj(bool);
+          ab.zm().bi(bool);
+          k.yL().bi(bool);
         }
       }
       localObject1 = new double[2];
-      localObject2 = this.bQY;
+      localObject2 = this.bOG;
       arrayOfDouble1 = new double[2];
       arrayOfDouble1[0] = paramFloat1;
       arrayOfDouble1[1] = paramFloat2;
-      if (!((i)localObject2).bPD) {
+      if (!((i)localObject2).bNl) {
         break label397;
       }
-      localObject1[0] = ((i)localObject2).bPx;
-      localObject1[1] = ((i)localObject2).bPy;
-      localObject1[0] += 1.E-005D * (arrayOfDouble1[1] - ((i)localObject2).anchorY) / ((i)localObject2).bPB;
-      localObject1[1] += 1.E-005D * (arrayOfDouble1[0] - ((i)localObject2).anchorX) / ((i)localObject2).bPC;
+      localObject1[0] = ((i)localObject2).bNf;
+      localObject1[1] = ((i)localObject2).bNg;
+      localObject1[0] += 1.E-005D * (arrayOfDouble1[1] - ((i)localObject2).anchorY) / ((i)localObject2).bNj;
+      localObject1[1] += 1.E-005D * (arrayOfDouble1[0] - ((i)localObject2).anchorX) / ((i)localObject2).bNk;
       if (localObject1[0] <= 90.0D) {
         break label345;
       }
@@ -215,27 +215,27 @@ class n
     label403:
     double d1 = localObject1[0];
     double d2 = localObject1[1];
-    localObject1 = this.bQY;
-    paramFloat2 = (paramFloat4 - ((i)localObject1).bPz) / 10.0F;
-    paramFloat4 = ((i)localObject1).bPA;
+    localObject1 = this.bOG;
+    paramFloat2 = (paramFloat4 - ((i)localObject1).bNh) / 10.0F;
+    paramFloat4 = ((i)localObject1).bNi;
     paramFloat1 = 0.0F;
     localObject1 = new Location("S");
     ((Location)localObject1).setLatitude(d1);
     ((Location)localObject1).setLongitude(d2);
-    if (this.bRg != null) {
-      paramFloat1 = this.bRg.bearingTo((Location)localObject1);
+    if (this.bOO != null) {
+      paramFloat1 = this.bOO.bearingTo((Location)localObject1);
     }
-    this.bRg = ((Location)localObject1);
-    i = Math.max(0, paramInt - this.bRh);
-    this.bRh = paramInt;
+    this.bOO = ((Location)localObject1);
+    i = Math.max(0, paramInt - this.bOP);
+    this.bOP = paramInt;
     long l = paramLong / 1000L;
     d1 = Math.toRadians(d1);
     d2 = Math.toRadians(d2);
     double d3 = Math.toRadians(paramFloat1);
     localObject1 = new j.a(3, l, d1, d2, 0.0D, paramFloat2 + paramFloat4, 0, paramFloat5, i, paramFloat3, d3);
-    this.bQW.a((j.a)localObject1);
-    if (y.bUM) {
-      o.s("filter_input_log_" + y.bUT, ((j.a)localObject1).toString());
+    this.bOE.a((j.a)localObject1);
+    if (y.bSu) {
+      o.t("filter_input_log_" + y.bSB, ((j.a)localObject1).toString());
     }
     localObject1 = new double[4];
     l = paramLong / 1000L;
@@ -244,32 +244,32 @@ class n
     double[] arrayOfDouble2 = new double[2];
     double[][] arrayOfDouble3 = (double[][])Array.newInstance(Double.TYPE, new int[] { 2, 2 });
     double[][] arrayOfDouble4 = (double[][])Array.newInstance(Double.TYPE, new int[] { 2, 2 });
-    j localj = this.bQW;
-    d1 = l - localj.bPF.bPH;
+    j localj = this.bOE;
+    d1 = l - localj.bNn.bNp;
     d2 = d1 * d1;
     double[] arrayOfDouble5 = new double[2];
-    localObject2[0] = (localj.bPF.bQq[0] + localj.bPF.bQq[2] * d1);
-    d3 = localj.bPF.bQq[1];
-    localObject2[1] = (d1 * localj.bPF.bQq[3] + d3);
-    arrayOfDouble2[0] = localj.bPF.bQq[2];
-    arrayOfDouble2[1] = localj.bPF.bQq[3];
+    localObject2[0] = (localj.bNn.bNY[0] + localj.bNn.bNY[2] * d1);
+    d3 = localj.bNn.bNY[1];
+    localObject2[1] = (d1 * localj.bNn.bNY[3] + d3);
+    arrayOfDouble2[0] = localj.bNn.bNY[2];
+    arrayOfDouble2[1] = localj.bNn.bNY[3];
     int j;
-    if (localj.bPF.bPY)
+    if (localj.bNn.bNG)
     {
-      localObject2[0] -= localj.bPF.bPZ[0];
-      localObject2[1] -= localj.bPF.bPZ[1];
+      localObject2[0] -= localj.bNn.bNH[0];
+      localObject2[1] -= localj.bNn.bNH[1];
       d1 = Math.sqrt(arrayOfDouble5[0] * arrayOfDouble5[0] + arrayOfDouble5[1] * arrayOfDouble5[1]);
-      d1 = d1 * d1 * localj.bPF.bQt;
-      arrayOfDouble3[0][0] = (localj.bPF.bQr[0][0] + localj.bPF.bQr[2][2] * d2 + d1);
-      arrayOfDouble3[0][1] = (localj.bPF.bQr[0][1] + localj.bPF.bQr[2][3] * d2);
-      arrayOfDouble3[1][0] = (localj.bPF.bQr[1][0] + localj.bPF.bQr[3][2] * d2);
+      d1 = d1 * d1 * localj.bNn.bOb;
+      arrayOfDouble3[0][0] = (localj.bNn.bNZ[0][0] + localj.bNn.bNZ[2][2] * d2 + d1);
+      arrayOfDouble3[0][1] = (localj.bNn.bNZ[0][1] + localj.bNn.bNZ[2][3] * d2);
+      arrayOfDouble3[1][0] = (localj.bNn.bNZ[1][0] + localj.bNn.bNZ[3][2] * d2);
       arrayOfDouble5 = arrayOfDouble3[1];
-      d3 = localj.bPF.bQr[1][1];
-      arrayOfDouble5[1] = (d1 + (d2 * localj.bPF.bQr[3][3] + d3));
-      arrayOfDouble4[0][0] = localj.bPF.bQr[2][2];
-      arrayOfDouble4[0][1] = localj.bPF.bQr[2][3];
-      arrayOfDouble4[1][0] = localj.bPF.bQr[3][2];
-      arrayOfDouble4[1][1] = localj.bPF.bQr[3][3];
+      d3 = localj.bNn.bNZ[1][1];
+      arrayOfDouble5[1] = (d1 + (d2 * localj.bNn.bNZ[3][3] + d3));
+      arrayOfDouble4[0][0] = localj.bNn.bNZ[2][2];
+      arrayOfDouble4[0][1] = localj.bNn.bNZ[2][3];
+      arrayOfDouble4[1][0] = localj.bNn.bNZ[3][2];
+      arrayOfDouble4[1][1] = localj.bNn.bNZ[3][3];
       localj.a(1, (double[])localObject2, arrayOfDouble1);
       localObject1[0] = Math.toDegrees(arrayOfDouble1[0]);
       localObject1[1] = Math.toDegrees(arrayOfDouble1[1]);
@@ -278,14 +278,14 @@ class n
       d2 = arrayOfDouble2[0];
       d3 = arrayOfDouble2[1];
       localObject1[3] = Math.sqrt(d1 * d2 + arrayOfDouble2[1] * d3);
-      if (y.bUM) {
-        o.s("filter_output_log_" + y.bUT, String.valueOf(l) + ',' + localObject1[0] + ',' + localObject1[1] + ',' + localObject1[2] + ',' + localObject1[3]);
+      if (y.bSu) {
+        o.t("filter_output_log_" + y.bSB, String.valueOf(l) + ',' + localObject1[0] + ',' + localObject1[1] + ',' + localObject1[2] + ',' + localObject1[3]);
       }
       d1 = localObject1[0];
       d2 = localObject1[1];
       paramInt = Double.valueOf(localObject1[2]).intValue();
       i = Double.valueOf(localObject1[3]).intValue();
-      j = this.bRd;
+      j = this.bOL;
       if (v.b(d1, d2)) {
         break label1409;
       }
@@ -293,8 +293,8 @@ class n
     label1409:
     for (localObject1 = "";; localObject1 = "&SD=" + d1 + ',' + d2 + ',' + 0 + ',' + paramInt + ',' + j + ',' + 0 + ',' + i + ',' + 0 + ',' + 0 + ',' + 0)
     {
-      this.bQX.m((String)localObject1, paramLong);
-      c(new a(d1, d2, paramInt, this.bRd, this.bRe));
+      this.bOF.m((String)localObject1, paramLong);
+      c(new a(d1, d2, paramInt, this.bOL, this.bOM));
       AppMethodBeat.o(88034);
       return;
       d1 = 0.0D;
@@ -319,7 +319,7 @@ class n
     //   0: aload_0
     //   1: monitorenter
     //   2: ldc_w 435
-    //   5: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
     //   9: instanceof 12
     //   12: ifeq +50 -> 62
@@ -328,30 +328,30 @@ class n
     //   19: astore_2
     //   20: aload_0
     //   21: aload_2
-    //   22: getfield 438	com/c/a/a/n$c:bRr	J
-    //   25: putfield 440	com/c/a/a/n:bRa	J
+    //   22: getfield 438	com/c/a/a/n$c:bOZ	J
+    //   25: putfield 440	com/c/a/a/n:bOI	J
     //   28: aload_0
-    //   29: invokespecial 268	com/c/a/a/n:za	()V
+    //   29: invokespecial 268	com/c/a/a/n:yN	()V
     //   32: aload_0
-    //   33: getfield 90	com/c/a/a/n:bQZ	Lcom/c/a/a/s;
+    //   33: getfield 91	com/c/a/a/n:bOH	Lcom/c/a/a/s;
     //   36: aload_1
-    //   37: putfield 444	com/c/a/a/s:bSi	Landroid/os/Handler;
+    //   37: putfield 444	com/c/a/a/s:bPQ	Landroid/os/Handler;
     //   40: aload_0
-    //   41: invokestatic 177	android/os/SystemClock:elapsedRealtime	()J
-    //   44: putfield 270	com/c/a/a/n:bRn	J
+    //   41: invokestatic 178	android/os/SystemClock:elapsedRealtime	()J
+    //   44: putfield 270	com/c/a/a/n:bOV	J
     //   47: aload_0
     //   48: aload_1
     //   49: aload_2
     //   50: invokespecial 446	com/c/a/a/b:a	(Landroid/os/Handler;Lcom/c/a/a/d$a;)V
     //   53: ldc_w 435
-    //   56: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: aload_0
     //   60: monitorexit
     //   61: return
     //   62: aload_2
     //   63: ifnull +23 -> 86
     //   66: aload_2
-    //   67: getfield 451	com/c/a/a/d$a:bOU	J
+    //   67: getfield 451	com/c/a/a/d$a:bMC	J
     //   70: lstore_3
     //   71: new 12	com/c/a/a/n$c
     //   74: dup
@@ -360,7 +360,7 @@ class n
     //   79: invokespecial 456	com/c/a/a/n$c:<init>	(JJ)V
     //   82: astore_2
     //   83: goto -63 -> 20
-    //   86: ldc2_w 204
+    //   86: ldc2_w 205
     //   89: lstore_3
     //   90: goto -19 -> 71
     //   93: astore_1
@@ -385,14 +385,14 @@ class n
   void a(x paramx, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(88033);
-    this.bRb = paramx.bRX;
-    this.bRd = paramx.level;
-    this.bRe = paramx.bRq;
-    if ((paramx.provider.equals("W")) && (a(paramLong2, 2, paramx.latitude, paramx.longitude, paramx.altitude, paramx.bQL, paramx.bUD, paramx.aSD))) {
-      this.bQY.a(paramx.latitude, paramx.longitude, paramx.bQL, this.bRi, this.bRj, this.bRk);
+    this.bOJ = paramx.bPF;
+    this.bOL = paramx.level;
+    this.bOM = paramx.bOY;
+    if ((paramx.provider.equals("W")) && (a(paramLong2, 2, paramx.latitude, paramx.longitude, paramx.altitude, paramx.bOt, paramx.bSl, paramx.aTw))) {
+      this.bOG.a(paramx.latitude, paramx.longitude, paramx.bOt, this.bOQ, this.bOR, this.bOS);
     }
-    if (!u.zt().bSW) {
-      c(new a(paramx.latitude, paramx.longitude, Float.valueOf(paramx.bQL).intValue(), this.bRd, this.bRe));
+    if (!u.zg().bQE) {
+      c(new a(paramx.latitude, paramx.longitude, Float.valueOf(paramx.bOt).intValue(), this.bOL, this.bOM));
     }
     AppMethodBeat.o(88033);
   }
@@ -400,39 +400,39 @@ class n
   final void a(List<ScanResult> paramList, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(88032);
-    paramLong1 = aa.aD(paramLong1);
+    paramLong1 = aa.az(paramLong1);
     boolean bool;
     Object localObject1;
     Object localObject2;
     r localr;
     int i;
     long l1;
-    if ((this.bRb != 0L) && (paramLong2 - this.bRb < this.bRa))
+    if ((this.bOJ != 0L) && (paramLong2 - this.bOJ < this.bOI))
     {
       bool = false;
       localObject1 = v.a(paramList, bool);
-      localObject2 = this.bQX.a((String)localObject1, paramLong2, bool);
+      localObject2 = this.bOF.a((String)localObject1, paramLong2, bool);
       if (!bool) {
         break label320;
       }
-      localr = r.zc();
-      i = this.bRm;
+      localr = r.yP();
+      i = this.bOU;
       if (localObject2 != null)
       {
         if (!localr.isRunning) {
           break label278;
         }
-        if (!localr.ze()) {
+        if (!localr.yR()) {
           break label273;
         }
         l1 = System.currentTimeMillis();
         long l2 = SystemClock.elapsedRealtime();
-        if (localr.bRL != null) {
-          localr.bRL.execute(new r.e(localr, (String)localObject2, l1, l2, i, (byte)0));
+        if (localr.bPt != null) {
+          localr.bPt.execute(new r.e(localr, (String)localObject2, l1, l2, i, (byte)0));
         }
       }
       label142:
-      if (n.d.r(paramLong2, this.bRc)) {
+      if (d.o(paramLong2, this.bOK)) {
         if (bool) {
           break label338;
         }
@@ -445,13 +445,13 @@ class n
         localObject2 = v.a(paramList, false);
       }
       paramList = v.b((String)localObject2, paramLong1, "2");
-      localObject1 = this.bQZ;
-      float f1 = this.bRi;
-      float f2 = this.bRj;
-      float f3 = this.bRk;
-      float f4 = this.bRl;
-      i = this.bRd;
-      if (((s)localObject1).bSd != 0.0F) {
+      localObject1 = this.bOH;
+      float f1 = this.bOQ;
+      float f2 = this.bOR;
+      float f3 = this.bOS;
+      float f4 = this.bOT;
+      i = this.bOL;
+      if (((s)localObject1).bPL != 0.0F) {
         z.b(null).execute(new s.a((s)localObject1, f1, f2, f3, f4, i, paramList, (byte)0));
       }
       AppMethodBeat.o(88032);
@@ -459,16 +459,16 @@ class n
       bool = true;
       break;
       label273:
-      localr.zd();
+      localr.yQ();
       label278:
-      l1 = aa.aD(System.currentTimeMillis());
-      if (localr.bRL == null) {
+      l1 = aa.az(System.currentTimeMillis());
+      if (localr.bPt == null) {
         break label142;
       }
-      localr.bRL.execute(new r.c(localr, (String)localObject2, l1, 0, (byte)0));
+      localr.bPt.execute(new r.c(localr, (String)localObject2, l1, 0, (byte)0));
       break label142;
       label320:
-      r.zc().bB(v.b((String)localObject2, paramLong1, "0"));
+      r.yP().bs(v.b((String)localObject2, paramLong1, "0"));
       break label142;
       label338:
       localObject1 = null;
@@ -480,7 +480,7 @@ class n
     try
     {
       AppMethodBeat.i(88038);
-      this.bQZ.zk();
+      this.bOH.yX();
       super.stop();
       AppMethodBeat.o(88038);
       return;
@@ -492,19 +492,19 @@ class n
     }
   }
   
-  final void yZ()
+  final void yM()
   {
-    this.bRf = true;
-    this.bRg = null;
-    this.bRh = 0;
+    this.bON = true;
+    this.bOO = null;
+    this.bOP = 0;
   }
   
   static final class a
     extends p
   {
-    final int bRo;
-    final int bRp;
-    final long bRq;
+    final int bOW;
+    final int bOX;
+    final long bOY;
     final double lat;
     final double lng;
     
@@ -513,9 +513,9 @@ class n
       super();
       this.lat = paramDouble1;
       this.lng = paramDouble2;
-      this.bRo = paramInt1;
-      this.bRp = paramInt2;
-      this.bRq = paramLong;
+      this.bOW = paramInt1;
+      this.bOX = paramInt2;
+      this.bOY = paramLong;
     }
   }
   
@@ -543,49 +543,261 @@ class n
   static final class c
     extends d.a
   {
-    final long bRr;
+    final long bOZ;
     
     c(long paramLong1, long paramLong2)
     {
       super();
       AppMethodBeat.i(88025);
-      this.bRr = paramLong2;
+      this.bOZ = paramLong2;
       AppMethodBeat.o(88025);
+    }
+  }
+  
+  static final class d
+  {
+    private String bPa;
+    private long bPb;
+    private String bPc;
+    private long bPd;
+    
+    static boolean o(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(88027);
+      if (Math.abs(paramLong1 - paramLong2) <= 10000L)
+      {
+        AppMethodBeat.o(88027);
+        return true;
+      }
+      AppMethodBeat.o(88027);
+      return false;
+    }
+    
+    /* Error */
+    final String a(String paramString, long paramLong, boolean paramBoolean)
+    {
+      // Byte code:
+      //   0: aload_0
+      //   1: monitorenter
+      //   2: ldc 42
+      //   4: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   7: iload 4
+      //   9: ifeq +116 -> 125
+      //   12: aload_1
+      //   13: astore 5
+      //   15: aload_0
+      //   16: getfield 44	com/c/a/a/n$d:bPa	Ljava/lang/String;
+      //   19: ifnull +45 -> 64
+      //   22: aload_1
+      //   23: astore 5
+      //   25: lload_2
+      //   26: aload_0
+      //   27: getfield 46	com/c/a/a/n$d:bPb	J
+      //   30: invokestatic 48	com/c/a/a/n$d:o	(JJ)Z
+      //   33: ifeq +31 -> 64
+      //   36: new 50	java/lang/StringBuilder
+      //   39: dup
+      //   40: aload_1
+      //   41: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   44: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   47: aload_0
+      //   48: getfield 44	com/c/a/a/n$d:bPa	Ljava/lang/String;
+      //   51: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   54: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   57: astore 5
+      //   59: aload_0
+      //   60: aconst_null
+      //   61: putfield 44	com/c/a/a/n$d:bPa	Ljava/lang/String;
+      //   64: aload 5
+      //   66: astore_1
+      //   67: aload_0
+      //   68: getfield 69	com/c/a/a/n$d:bPc	Ljava/lang/String;
+      //   71: ifnull +45 -> 116
+      //   74: aload 5
+      //   76: astore_1
+      //   77: lload_2
+      //   78: aload_0
+      //   79: getfield 71	com/c/a/a/n$d:bPd	J
+      //   82: invokestatic 48	com/c/a/a/n$d:o	(JJ)Z
+      //   85: ifeq +31 -> 116
+      //   88: new 50	java/lang/StringBuilder
+      //   91: dup
+      //   92: aload 5
+      //   94: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   97: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   100: aload_0
+      //   101: getfield 69	com/c/a/a/n$d:bPc	Ljava/lang/String;
+      //   104: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   107: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   110: astore_1
+      //   111: aload_0
+      //   112: aconst_null
+      //   113: putfield 69	com/c/a/a/n$d:bPc	Ljava/lang/String;
+      //   116: ldc 42
+      //   118: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   121: aload_0
+      //   122: monitorexit
+      //   123: aload_1
+      //   124: areturn
+      //   125: aload_1
+      //   126: astore 5
+      //   128: aload_0
+      //   129: getfield 44	com/c/a/a/n$d:bPa	Ljava/lang/String;
+      //   132: ifnull +48 -> 180
+      //   135: aload_1
+      //   136: astore 5
+      //   138: lload_2
+      //   139: aload_0
+      //   140: getfield 46	com/c/a/a/n$d:bPb	J
+      //   143: invokestatic 48	com/c/a/a/n$d:o	(JJ)Z
+      //   146: ifeq +34 -> 180
+      //   149: new 50	java/lang/StringBuilder
+      //   152: dup
+      //   153: aload_1
+      //   154: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   157: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   160: aload_0
+      //   161: getfield 44	com/c/a/a/n$d:bPa	Ljava/lang/String;
+      //   164: invokestatic 77	com/c/a/a/v:bx	(Ljava/lang/String;)Ljava/lang/String;
+      //   167: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   170: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   173: astore 5
+      //   175: aload_0
+      //   176: aconst_null
+      //   177: putfield 44	com/c/a/a/n$d:bPa	Ljava/lang/String;
+      //   180: aload 5
+      //   182: astore_1
+      //   183: aload_0
+      //   184: getfield 69	com/c/a/a/n$d:bPc	Ljava/lang/String;
+      //   187: ifnull -71 -> 116
+      //   190: aload 5
+      //   192: astore_1
+      //   193: lload_2
+      //   194: aload_0
+      //   195: getfield 71	com/c/a/a/n$d:bPd	J
+      //   198: invokestatic 48	com/c/a/a/n$d:o	(JJ)Z
+      //   201: ifeq -85 -> 116
+      //   204: new 50	java/lang/StringBuilder
+      //   207: dup
+      //   208: aload 5
+      //   210: invokestatic 56	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   213: invokespecial 59	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   216: aload_0
+      //   217: getfield 69	com/c/a/a/n$d:bPc	Ljava/lang/String;
+      //   220: invokestatic 80	com/c/a/a/v:bw	(Ljava/lang/String;)Ljava/lang/String;
+      //   223: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   226: invokevirtual 67	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   229: astore_1
+      //   230: aload_0
+      //   231: aconst_null
+      //   232: putfield 69	com/c/a/a/n$d:bPc	Ljava/lang/String;
+      //   235: goto -119 -> 116
+      //   238: astore_1
+      //   239: aload_0
+      //   240: monitorexit
+      //   241: aload_1
+      //   242: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	243	0	this	d
+      //   0	243	1	paramString	String
+      //   0	243	2	paramLong	long
+      //   0	243	4	paramBoolean	boolean
+      //   13	196	5	str	String
+      // Exception table:
+      //   from	to	target	type
+      //   2	7	238	finally
+      //   15	22	238	finally
+      //   25	64	238	finally
+      //   67	74	238	finally
+      //   77	116	238	finally
+      //   116	121	238	finally
+      //   128	135	238	finally
+      //   138	180	238	finally
+      //   183	190	238	finally
+      //   193	235	238	finally
+    }
+    
+    final void l(String paramString, long paramLong)
+    {
+      try
+      {
+        this.bPa = paramString;
+        this.bPb = paramLong;
+        return;
+      }
+      finally
+      {
+        paramString = finally;
+        throw paramString;
+      }
+    }
+    
+    final void m(String paramString, long paramLong)
+    {
+      try
+      {
+        this.bPc = paramString;
+        this.bPd = paramLong;
+        return;
+      }
+      finally
+      {
+        paramString = finally;
+        throw paramString;
+      }
+    }
+    
+    final void reset()
+    {
+      try
+      {
+        this.bPa = null;
+        this.bPc = null;
+        this.bPb = 0L;
+        this.bPd = 0L;
+        return;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
     }
   }
   
   final class e
   {
-    long bRw;
-    boolean bRx = y.bUR;
+    long bPe;
+    boolean bPf = y.bSz;
     
     private e() {}
     
     private void reset()
     {
-      this.bRw = 0L;
-      this.bRx = y.bUR;
+      this.bPe = 0L;
+      this.bPf = y.bSz;
     }
     
-    final void bk(boolean paramBoolean)
+    final void bj(boolean paramBoolean)
     {
       AppMethodBeat.i(88028);
       StringBuilder localStringBuilder;
-      if ((this.bRx ^ paramBoolean))
+      if ((this.bPf ^ paramBoolean))
       {
-        if (!this.bRx) {
+        if (!this.bPf) {
           break label156;
         }
         paramBoolean = false;
-        this.bRx = paramBoolean;
-        n.this.bQZ.zk();
-        n.this.bQZ.zm();
-        n.this.bQW.bk(this.bRx);
-        n.this.yZ();
-        if (y.bUM)
+        this.bPf = paramBoolean;
+        n.this.bOH.yX();
+        n.this.bOH.yZ();
+        n.this.bOE.bj(this.bPf);
+        n.this.yM();
+        if (y.bSu)
         {
           localStringBuilder = new StringBuilder("vehicle mode: ");
-          if (!this.bRx) {
+          if (!this.bPf) {
             break label161;
           }
         }
@@ -595,8 +807,8 @@ class n
       for (String str = "enable";; str = "disable")
       {
         str = str;
-        o.s("filter_input_log_" + y.bUT, str);
-        o.s("filter_output_log_" + y.bUT, str);
+        o.t("filter_input_log_" + y.bSB, str);
+        o.t("filter_output_log_" + y.bSB, str);
         AppMethodBeat.o(88028);
         return;
         paramBoolean = true;

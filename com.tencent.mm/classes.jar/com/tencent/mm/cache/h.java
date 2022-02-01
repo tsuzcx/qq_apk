@@ -14,9 +14,9 @@ public abstract interface h
   
   public abstract Bitmap getBitmap(String paramString);
   
-  public abstract MCacheItem os(String paramString);
+  public abstract MCacheItem ry(String paramString);
   
-  public abstract void ot(String paramString);
+  public abstract void rz(String paramString);
   
   public static abstract class a
     extends Binder
@@ -43,7 +43,7 @@ public abstract interface h
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.cache.IMMCache_AIDL");
-        os(paramParcel1.readString());
+        ry(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(0);
         return true;
@@ -53,7 +53,7 @@ public abstract interface h
         if (paramParcel1.readInt() != 0) {
           MCacheItem.CREATOR.createFromParcel(paramParcel1);
         }
-        ot(str);
+        rz(str);
         paramParcel2.writeNoException();
         return true;
       case 3: 
@@ -85,7 +85,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.cache.h
  * JD-Core Version:    0.7.0.1
  */

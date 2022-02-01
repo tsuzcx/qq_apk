@@ -6,29 +6,29 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.a.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nm;
-import com.tencent.mm.g.a.nm.a;
-import com.tencent.mm.g.a.nm.b;
+import com.tencent.mm.g.a.nv;
+import com.tencent.mm.g.a.nv.a;
+import com.tencent.mm.g.a.nv.b;
 import com.tencent.mm.plugin.fingerprint.b.a.b;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.Map;
 
 public final class c
   extends a
 {
-  private String dlK;
-  private String rbE;
-  private a rbF;
-  private com.tencent.mm.plugin.fingerprint.d.c rbG;
+  private String djs;
+  private String sjY;
+  private a sjZ;
+  private com.tencent.mm.plugin.fingerprint.d.c ska;
   
   public c()
   {
     AppMethodBeat.i(64295);
-    this.rbF = new a((byte)0);
-    this.rbG = null;
+    this.sjZ = new a((byte)0);
+    this.ska = null;
     AppMethodBeat.o(64295);
   }
   
@@ -40,8 +40,8 @@ public final class c
   public final int a(final com.tencent.mm.plugin.fingerprint.d.c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(64301);
-    f localf = new f(p.rcp.rcq, (byte)0);
-    this.rbB.a(aj.getContext(), localf, new b()
+    f localf = new f(p.skJ.skK, (byte)0);
+    this.sjV.a(ai.getContext(), localf, new b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
@@ -51,10 +51,10 @@ public final class c
         {
           if (i != 0)
           {
-            c.a(c.this, paramAnonymousc.dlK);
-            c.b(c.this, paramAnonymousc.dlL);
+            c.a(c.this, paramAnonymousc.djs);
+            c.b(c.this, paramAnonymousc.djt);
           }
-          paramc.fE(paramAnonymousc.errCode, paramAnonymousc.dlI);
+          paramc.fL(paramAnonymousc.errCode, paramAnonymousc.djq);
           AppMethodBeat.o(64292);
           return;
         }
@@ -64,39 +64,39 @@ public final class c
     return 0;
   }
   
-  public final void a(nm paramnm, int paramInt)
+  public final void a(nv paramnv, int paramInt)
   {
     AppMethodBeat.i(64302);
-    if (!TextUtils.isEmpty(this.dlK))
+    if (!TextUtils.isEmpty(this.djs))
     {
-      ad.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
-      if (TextUtils.isEmpty(this.rbE)) {
+      ac.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_info!");
+      if (TextUtils.isEmpty(this.sjY)) {
         break label147;
       }
-      ad.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
+      ac.i("MicroMsg.FingerPrintMgrImpl", "success gen encrypted_pay_sign!");
     }
     for (;;)
     {
-      ad.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
-      if ((paramnm != null) && (paramnm.dsz.dsD != null))
+      ac.i("MicroMsg.FingerPrintMgrImpl", "callback FingerPrintAuthEvent onSuccess()");
+      if ((paramnv != null) && (paramnv.dqj.dqn != null))
       {
-        nm.b localb = new nm.b();
-        localb.dsF = type();
+        nv.b localb = new nv.b();
+        localb.dqp = type();
         localb.errCode = 0;
-        localb.dlK = this.dlK;
-        localb.dlL = this.rbE;
-        localb.dlI = paramInt;
-        paramnm.dsA = localb;
-        paramnm.dsz.dsD.run();
+        localb.djs = this.djs;
+        localb.djt = this.sjY;
+        localb.djq = paramInt;
+        paramnv.dqk = localb;
+        paramnv.dqj.dqn.run();
       }
-      this.dlK = "";
-      this.rbE = "";
+      this.djs = "";
+      this.sjY = "";
       AppMethodBeat.o(64302);
       return;
-      ad.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
+      ac.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_info!");
       break;
       label147:
-      ad.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
+      ac.i("MicroMsg.FingerPrintMgrImpl", "fail gen encrypted_pay_sign!");
     }
   }
   
@@ -105,69 +105,69 @@ public final class c
     return false;
   }
   
-  public final boolean ctS()
+  public final boolean cHe()
   {
     AppMethodBeat.i(64296);
-    boolean bool = this.rbB.eO(aj.getContext());
+    boolean bool = this.sjV.fb(ai.getContext());
     AppMethodBeat.o(64296);
     return bool;
   }
   
-  public final boolean ctT()
+  public final boolean cHf()
   {
     AppMethodBeat.i(64297);
-    boolean bool = this.rbB.cuq();
+    boolean bool = this.sjV.cHC();
     AppMethodBeat.o(64297);
     return bool;
   }
   
-  public final void ctU()
+  public final void cHg()
   {
     AppMethodBeat.i(64299);
-    ad.i("MicroMsg.FingerPrintMgrImpl", "initFP");
-    this.rbB.prepare();
+    ac.i("MicroMsg.FingerPrintMgrImpl", "initFP");
+    this.sjV.prepare();
     AppMethodBeat.o(64299);
   }
   
-  public final boolean ctV()
+  public final boolean cHh()
   {
     return true;
   }
   
-  public final boolean ctW()
+  public final boolean cHi()
   {
     AppMethodBeat.i(64300);
-    boolean bool = d.ctW();
+    boolean bool = d.cHi();
     AppMethodBeat.o(64300);
     return bool;
   }
   
-  public final Map<String, String> ctX()
+  public final Map<String, String> cHj()
   {
     return null;
   }
   
-  public final Map<String, String> ctY()
+  public final Map<String, String> cHk()
   {
     return null;
   }
   
-  public final boolean ctZ()
+  public final boolean cHl()
   {
     return true;
   }
   
-  public final boolean cua()
+  public final boolean cHm()
   {
     return false;
   }
   
-  public final boolean cub()
+  public final boolean cHn()
   {
     return false;
   }
   
-  public final void eL(Context paramContext)
+  public final void eY(Context paramContext)
   {
     AppMethodBeat.i(64298);
     if (paramContext != null)
@@ -176,9 +176,9 @@ public final class c
       ((Intent)localObject).setAction("com.android.settings.fingerprint.FingerprintSettings");
       ((Intent)localObject).addCategory("android.intent.category.DEFAULT");
       ((Intent)localObject).setFlags(268435456);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/huawei/securitymgr/HwFingerprintAuth", "startRigesterFinger", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(64298);
@@ -187,7 +187,7 @@ public final class c
   public final int type()
   {
     AppMethodBeat.i(64304);
-    int i = this.rbB.cut();
+    int i = this.sjV.cHF();
     AppMethodBeat.o(64304);
     return i;
   }
@@ -195,7 +195,7 @@ public final class c
   public final void userCancel()
   {
     AppMethodBeat.i(64303);
-    this.rbB.cancel();
+    this.sjV.cancel();
     AppMethodBeat.o(64303);
   }
   
@@ -208,12 +208,12 @@ public final class c
     {
       AppMethodBeat.i(64294);
       if (c.a(c.this) != null) {
-        c.a(c.this).fE(paramInt1, paramInt2);
+        c.a(c.this).fL(paramInt1, paramInt2);
       }
       AppMethodBeat.o(64294);
     }
     
-    public final void bR(int paramInt1, int paramInt2)
+    public final void bO(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(64293);
       if (c.a(c.this) != null) {

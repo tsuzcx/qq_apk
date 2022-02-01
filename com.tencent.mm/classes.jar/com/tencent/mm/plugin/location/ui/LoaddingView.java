@@ -11,25 +11,25 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class LoaddingView
   extends LinearLayout
   implements c
 {
-  private Animation CN;
-  private TextView sQu;
-  private ProgressBar sQv;
-  private View sQw;
-  private boolean sQx;
-  private String sQy;
+  private Animation DM;
+  private TextView tYH;
+  private ProgressBar tYI;
+  private View tYJ;
+  private boolean tYK;
+  private String tYL;
   
   public LoaddingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55802);
-    this.sQx = false;
-    this.sQy = "";
+    this.tYK = false;
+    this.tYL = "";
     init(paramContext);
     AppMethodBeat.o(55802);
   }
@@ -39,8 +39,8 @@ public class LoaddingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55801);
-    this.sQx = false;
-    this.sQy = "";
+    this.tYK = false;
+    this.tYL = "";
     init(paramContext);
     AppMethodBeat.o(55801);
   }
@@ -48,62 +48,62 @@ public class LoaddingView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(55803);
-    this.CN = AnimationUtils.loadAnimation(paramContext, 2130772163);
+    this.DM = AnimationUtils.loadAnimation(paramContext, 2130772163);
     paramContext = LayoutInflater.from(paramContext).inflate(2131494600, this, true);
-    this.sQv = ((ProgressBar)paramContext.findViewById(2131301532));
-    this.sQu = ((TextView)paramContext.findViewById(2131301545));
-    this.sQw = paramContext.findViewById(2131301523);
-    this.sQu.setText("");
-    this.sQu.setVisibility(0);
-    this.sQv.setVisibility(0);
+    this.tYI = ((ProgressBar)paramContext.findViewById(2131301532));
+    this.tYH = ((TextView)paramContext.findViewById(2131301545));
+    this.tYJ = paramContext.findViewById(2131301523);
+    this.tYH.setText("");
+    this.tYH.setVisibility(0);
+    this.tYI.setVisibility(0);
     AppMethodBeat.o(55803);
   }
   
   public String getPreText()
   {
-    return this.sQy;
+    return this.tYL;
   }
   
   public void setPreText(String paramString)
   {
     AppMethodBeat.i(55806);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(55806);
       return;
     }
-    this.sQy = (paramString + "\n");
+    this.tYL = (paramString + "\n");
     AppMethodBeat.o(55806);
   }
   
   public void setProgressAlwaysGone(boolean paramBoolean)
   {
     AppMethodBeat.i(55804);
-    this.sQx = paramBoolean;
-    this.sQv.setVisibility(8);
-    this.sQu.setVisibility(8);
+    this.tYK = paramBoolean;
+    this.tYI.setVisibility(8);
+    this.tYH.setVisibility(8);
     AppMethodBeat.o(55804);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(55805);
-    if ((this.sQu == null) || (this.sQv == null) || (this.sQx))
+    if ((this.tYH == null) || (this.tYI == null) || (this.tYK))
     {
       AppMethodBeat.o(55805);
       return;
     }
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
-      this.sQu.setText(String.valueOf(paramString));
-      this.sQv.setVisibility(8);
-      this.sQu.setVisibility(0);
+      this.tYH.setText(String.valueOf(paramString));
+      this.tYI.setVisibility(8);
+      this.tYH.setVisibility(0);
       AppMethodBeat.o(55805);
       return;
     }
-    this.sQu.setText("");
-    this.sQu.setVisibility(0);
-    this.sQv.setVisibility(0);
+    this.tYH.setText("");
+    this.tYH.setVisibility(0);
+    this.tYI.setVisibility(0);
     AppMethodBeat.o(55805);
   }
 }

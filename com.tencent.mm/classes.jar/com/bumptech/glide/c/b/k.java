@@ -19,100 +19,100 @@ import java.util.List;
 public final class k<R>
   implements g.a<R>, a.c
 {
-  private static final a aEX;
-  private static final Handler aEY;
-  public final b aDI;
-  private final l.a<k<?>> aDJ;
-  boolean aDR;
-  public h aDh;
-  boolean aDi;
-  u<?> aDj;
-  private final com.bumptech.glide.c.b.c.a aEQ;
-  public final l aER;
-  public final List<f> aEZ;
-  com.bumptech.glide.c.a aEd;
-  private final a aFa;
-  boolean aFb;
-  boolean aFc;
-  public boolean aFd;
-  private p aFe;
-  public boolean aFf;
-  public List<f> aFg;
-  o<?> aFh;
-  public g<R> aFi;
-  private final com.bumptech.glide.c.b.c.a azK;
-  final com.bumptech.glide.c.b.c.a azL;
-  private final com.bumptech.glide.c.b.c.a azR;
+  private static final a aFN;
+  private static final Handler aFO;
+  private final com.bumptech.glide.c.b.c.a aAE;
+  final com.bumptech.glide.c.b.c.a aAF;
+  private final com.bumptech.glide.c.b.c.a aAL;
+  public h aDY;
+  boolean aDZ;
+  private final l.a<k<?>> aEA;
+  boolean aEI;
+  com.bumptech.glide.c.a aEU;
+  u<?> aEa;
+  public final b aEz;
+  private final com.bumptech.glide.c.b.c.a aFG;
+  public final l aFH;
+  public final List<f> aFP;
+  private final a aFQ;
+  boolean aFR;
+  boolean aFS;
+  public boolean aFT;
+  private p aFU;
+  public boolean aFV;
+  public List<f> aFW;
+  o<?> aFX;
+  public g<R> aFY;
   public volatile boolean isCancelled;
   
   static
   {
     AppMethodBeat.i(77000);
-    aEX = new a();
-    aEY = new Handler(Looper.getMainLooper(), new b());
+    aFN = new a();
+    aFO = new Handler(Looper.getMainLooper(), new b());
     AppMethodBeat.o(77000);
   }
   
   k(com.bumptech.glide.c.b.c.a parama1, com.bumptech.glide.c.b.c.a parama2, com.bumptech.glide.c.b.c.a parama3, com.bumptech.glide.c.b.c.a parama4, l paraml, l.a<k<?>> parama)
   {
-    this(parama1, parama2, parama3, parama4, paraml, parama, aEX);
+    this(parama1, parama2, parama3, parama4, paraml, parama, aFN);
   }
   
   private k(com.bumptech.glide.c.b.c.a parama1, com.bumptech.glide.c.b.c.a parama2, com.bumptech.glide.c.b.c.a parama3, com.bumptech.glide.c.b.c.a parama4, l paraml, l.a<k<?>> parama, a parama5)
   {
     AppMethodBeat.i(76992);
-    this.aEZ = new ArrayList(2);
-    this.aDI = new b.a();
-    this.azL = parama1;
-    this.azK = parama2;
-    this.aEQ = parama3;
-    this.azR = parama4;
-    this.aER = paraml;
-    this.aDJ = parama;
-    this.aFa = parama5;
+    this.aFP = new ArrayList(2);
+    this.aEz = new b.a();
+    this.aAF = parama1;
+    this.aAE = parama2;
+    this.aFG = parama3;
+    this.aAL = parama4;
+    this.aFH = paraml;
+    this.aEA = parama;
+    this.aFQ = parama5;
     AppMethodBeat.o(76992);
   }
   
   public final void a(g<?> paramg)
   {
     AppMethodBeat.i(76998);
-    ol().execute(paramg);
+    ov().execute(paramg);
     AppMethodBeat.o(76998);
   }
   
   public final void a(p paramp)
   {
     AppMethodBeat.i(76997);
-    this.aFe = paramp;
-    aEY.obtainMessage(2, this).sendToTarget();
+    this.aFU = paramp;
+    aFO.obtainMessage(2, this).sendToTarget();
     AppMethodBeat.o(76997);
   }
   
   final void a(f paramf)
   {
     AppMethodBeat.i(76993);
-    j.pQ();
-    this.aDI.pU();
-    if (this.aFd)
+    j.qa();
+    this.aEz.qe();
+    if (this.aFT)
     {
-      paramf.c(this.aFh, this.aEd);
+      paramf.c(this.aFX, this.aEU);
       AppMethodBeat.o(76993);
       return;
     }
-    if (this.aFf)
+    if (this.aFV)
     {
-      paramf.a(this.aFe);
+      paramf.a(this.aFU);
       AppMethodBeat.o(76993);
       return;
     }
-    this.aEZ.add(paramf);
+    this.aFP.add(paramf);
     AppMethodBeat.o(76993);
   }
   
   final boolean b(f paramf)
   {
     AppMethodBeat.i(76994);
-    if ((this.aFg != null) && (this.aFg.contains(paramf)))
+    if ((this.aFW != null) && (this.aFW.contains(paramf)))
     {
       AppMethodBeat.o(76994);
       return true;
@@ -124,86 +124,86 @@ public final class k<R>
   public final void c(u<R> paramu, com.bumptech.glide.c.a parama)
   {
     AppMethodBeat.i(76996);
-    this.aDj = paramu;
-    this.aEd = parama;
-    aEY.obtainMessage(1, this).sendToTarget();
+    this.aEa = paramu;
+    this.aEU = parama;
+    aFO.obtainMessage(1, this).sendToTarget();
     AppMethodBeat.o(76996);
   }
   
-  public final b oc()
+  public final b om()
   {
-    return this.aDI;
+    return this.aEz;
   }
   
-  final com.bumptech.glide.c.b.c.a ol()
+  final com.bumptech.glide.c.b.c.a ov()
   {
-    if (this.aFb) {
-      return this.aEQ;
+    if (this.aFR) {
+      return this.aFG;
     }
-    if (this.aFc) {
-      return this.azR;
+    if (this.aFS) {
+      return this.aAL;
     }
-    return this.azK;
+    return this.aAE;
   }
   
-  final void om()
+  final void ow()
   {
     AppMethodBeat.i(76995);
-    j.pQ();
-    this.aEZ.clear();
-    this.aDh = null;
-    this.aFh = null;
-    this.aDj = null;
-    if (this.aFg != null) {
-      this.aFg.clear();
+    j.qa();
+    this.aFP.clear();
+    this.aDY = null;
+    this.aFX = null;
+    this.aEa = null;
+    if (this.aFW != null) {
+      this.aFW.clear();
     }
-    this.aFf = false;
+    this.aFV = false;
     this.isCancelled = false;
-    this.aFd = false;
-    g localg = this.aFi;
-    if (localg.aDL.oe()) {
-      localg.nW();
+    this.aFT = false;
+    g localg = this.aFY;
+    if (localg.aEC.oo()) {
+      localg.og();
     }
-    this.aFi = null;
-    this.aFe = null;
-    this.aEd = null;
-    this.aDJ.release(this);
+    this.aFY = null;
+    this.aFU = null;
+    this.aEU = null;
+    this.aEA.release(this);
     AppMethodBeat.o(76995);
   }
   
-  final void on()
+  final void ox()
   {
     AppMethodBeat.i(76999);
-    this.aDI.pU();
+    this.aEz.qe();
     if (this.isCancelled)
     {
-      om();
+      ow();
       AppMethodBeat.o(76999);
       return;
     }
-    if (this.aEZ.isEmpty())
+    if (this.aFP.isEmpty())
     {
       localObject = new IllegalStateException("Received an exception without any callbacks to notify");
       AppMethodBeat.o(76999);
       throw ((Throwable)localObject);
     }
-    if (this.aFf)
+    if (this.aFV)
     {
       localObject = new IllegalStateException("Already failed once");
       AppMethodBeat.o(76999);
       throw ((Throwable)localObject);
     }
-    this.aFf = true;
-    this.aER.a(this, this.aDh, null);
-    Object localObject = this.aEZ.iterator();
+    this.aFV = true;
+    this.aFH.a(this, this.aDY, null);
+    Object localObject = this.aFP.iterator();
     while (((Iterator)localObject).hasNext())
     {
       f localf = (f)((Iterator)localObject).next();
       if (!b(localf)) {
-        localf.a(this.aFe);
+        localf.a(this.aFU);
       }
     }
-    om();
+    ow();
     AppMethodBeat.o(76999);
   }
   
@@ -223,11 +223,11 @@ public final class k<R>
         AppMethodBeat.o(76991);
         throw paramMessage;
       case 1: 
-        localk.aDI.pU();
+        localk.aEz.qe();
         if (localk.isCancelled)
         {
-          localk.aDj.recycle();
-          localk.om();
+          localk.aEa.recycle();
+          localk.ow();
         }
         break;
       }
@@ -235,55 +235,55 @@ public final class k<R>
       {
         AppMethodBeat.o(76991);
         return true;
-        if (localk.aEZ.isEmpty())
+        if (localk.aFP.isEmpty())
         {
           paramMessage = new IllegalStateException("Received a resource without any callbacks to notify");
           AppMethodBeat.o(76991);
           throw paramMessage;
         }
-        if (localk.aFd)
+        if (localk.aFT)
         {
           paramMessage = new IllegalStateException("Already have resource");
           AppMethodBeat.o(76991);
           throw paramMessage;
         }
-        localk.aFh = new o(localk.aDj, localk.aDi, true);
-        localk.aFd = true;
-        localk.aFh.acquire();
-        localk.aER.a(localk, localk.aDh, localk.aFh);
-        int j = localk.aEZ.size();
+        localk.aFX = new o(localk.aEa, localk.aDZ, true);
+        localk.aFT = true;
+        localk.aFX.acquire();
+        localk.aFH.a(localk, localk.aDY, localk.aFX);
+        int j = localk.aFP.size();
         int i = 0;
         while (i < j)
         {
-          paramMessage = (f)localk.aEZ.get(i);
+          paramMessage = (f)localk.aFP.get(i);
           if (!localk.b(paramMessage))
           {
-            localk.aFh.acquire();
-            paramMessage.c(localk.aFh, localk.aEd);
+            localk.aFX.acquire();
+            paramMessage.c(localk.aFX, localk.aEU);
           }
           i += 1;
         }
-        localk.aFh.release();
-        localk.om();
+        localk.aFX.release();
+        localk.ow();
         continue;
-        localk.on();
+        localk.ox();
         continue;
-        localk.aDI.pU();
+        localk.aEz.qe();
         if (!localk.isCancelled)
         {
           paramMessage = new IllegalStateException("Not cancelled");
           AppMethodBeat.o(76991);
           throw paramMessage;
         }
-        localk.aER.a(localk, localk.aDh);
-        localk.om();
+        localk.aFH.a(localk, localk.aDY);
+        localk.ow();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.k
  * JD-Core Version:    0.7.0.1
  */

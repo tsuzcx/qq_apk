@@ -7,22 +7,26 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.br.d;
 import com.tencent.mm.choosemsgfile.compat.a.a;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.aj;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.choosemsgfile.b.b.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.af;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -33,21 +37,21 @@ import java.util.List;
 
 public final class c
 {
-  private static ag<Integer, com.tencent.mm.aw.a.a.c> nMT;
+  private static af<Integer, com.tencent.mm.av.a.a.c> opT;
   
   static
   {
     AppMethodBeat.i(123381);
-    nMT = new ag(3);
+    opT = new af(3);
     AppMethodBeat.o(123381);
   }
   
-  public static void L(Context paramContext, int paramInt)
+  public static void P(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(123380);
     String str = String.format(paramContext.getString(2131757349), new Object[] { Integer.valueOf(paramInt) });
     paramContext = new f.a(paramContext);
-    paramContext.aMo(str).wZ(false);
+    paramContext.aRQ(str).yi(false);
     paramContext.b(new f.c()
     {
       public final void d(boolean paramAnonymousBoolean, String paramAnonymousString) {}
@@ -55,48 +59,48 @@ public final class c
     AppMethodBeat.o(123380);
   }
   
-  public static List<String> RH(String paramString)
+  public static List<String> VT(String paramString)
   {
     AppMethodBeat.i(123364);
     localArrayList = new ArrayList();
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123364);
       return localArrayList;
     }
     try
     {
-      paramString = new com.tencent.mm.ac.f(paramString);
+      paramString = new com.tencent.mm.ab.f(paramString);
       int i = 0;
       while (i < paramString.length())
       {
         String str = paramString.optString(i, "");
-        if (!bt.isNullOrNil(str)) {
+        if (!bs.isNullOrNil(str)) {
           localArrayList.add(str);
         }
         i += 1;
       }
       return localArrayList;
     }
-    catch (com.tencent.mm.ac.g paramString)
+    catch (com.tencent.mm.ab.g paramString)
     {
-      ad.printErrStackTrace("MicroMsg.MsgFileUtils", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MsgFileUtils", paramString, "", new Object[0]);
       AppMethodBeat.o(123364);
     }
   }
   
-  public static String RI(String paramString)
+  public static String VU(String paramString)
   {
     AppMethodBeat.i(123373);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.i("MicroMsg.MsgFileUtils", "type is null, use default type");
+      ac.i("MicroMsg.MsgFileUtils", "type is null, use default type");
       AppMethodBeat.o(123373);
       return "all";
     }
     if (("all".equals(paramString)) || ("image".equals(paramString)) || ("video".equals(paramString)) || ("file".equals(paramString)))
     {
-      ad.i("MicroMsg.MsgFileUtils", "type is invalid, use default type");
+      ac.i("MicroMsg.MsgFileUtils", "type is invalid, use default type");
       AppMethodBeat.o(123373);
       return paramString;
     }
@@ -104,7 +108,7 @@ public final class c
     return "all";
   }
   
-  public static String RJ(String paramString)
+  public static String VV(String paramString)
   {
     AppMethodBeat.i(123376);
     int i = -1;
@@ -445,10 +449,10 @@ public final class c
     return "#6781F0";
   }
   
-  public static String RK(String paramString)
+  public static String VW(String paramString)
   {
     AppMethodBeat.i(123379);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123379);
       return "";
@@ -464,18 +468,18 @@ public final class c
     return paramString;
   }
   
-  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bl parambl)
+  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bo parambo)
   {
     AppMethodBeat.i(123366);
-    if (parambl.eMb())
+    if (parambo.fbG())
     {
-      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.b(paramc, parambl);
+      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.b(paramc, parambo);
       AppMethodBeat.o(123366);
       return paramc;
     }
-    if (parambl.eJO())
+    if (parambo.eZm())
     {
-      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.g(paramc, parambl);
+      paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.g(paramc, parambo);
       AppMethodBeat.o(123366);
       return paramc;
     }
@@ -483,14 +487,14 @@ public final class c
     return null;
   }
   
-  public static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bl parambl, String paramString1, String paramString2, String paramString3)
+  public static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bo parambo, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(123363);
     String str = paramString2;
-    if (bt.isNullOrNil(paramString2)) {
+    if (bs.isNullOrNil(paramString2)) {
       str = "all";
     }
-    paramString2 = RH(paramString3);
+    paramString2 = VT(paramString3);
     paramString3 = str.toLowerCase();
     int i = -1;
     switch (paramString3.hashCode())
@@ -524,50 +528,50 @@ public final class c
         break;
       }
     }
-    paramString2 = a(paramc, parambl, paramString1, paramString2);
+    paramString2 = a(paramc, parambo, paramString1, paramString2);
     paramString1 = paramString2;
     if (paramString2 == null)
     {
-      paramString2 = b(paramc, parambl);
+      paramString2 = b(paramc, parambo);
       paramString1 = paramString2;
       if (paramString2 == null) {
-        paramString1 = a(paramc, parambl);
+        paramString1 = a(paramc, parambo);
       }
     }
     AppMethodBeat.o(123363);
     return paramString1;
-    paramc = a(paramc, parambl);
+    paramc = a(paramc, parambo);
     AppMethodBeat.o(123363);
     return paramc;
-    paramc = b(paramc, parambl);
+    paramc = b(paramc, parambo);
     AppMethodBeat.o(123363);
     return paramc;
-    paramc = a(paramc, parambl, paramString1, paramString2);
+    paramc = a(paramc, parambo, paramString1, paramString2);
     AppMethodBeat.o(123363);
     return paramc;
   }
   
-  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bl parambl, String paramString, List<String> paramList)
+  private static com.tencent.mm.plugin.choosemsgfile.b.b.a a(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bo parambo, String paramString, List<String> paramList)
   {
     AppMethodBeat.i(123365);
-    if (parambl.cxB())
+    if (parambo.cKN())
     {
-      Object localObject = parambl.field_content;
+      Object localObject = parambo.field_content;
       if (localObject != null)
       {
-        localObject = k.b.rx((String)localObject);
+        localObject = k.b.vA((String)localObject);
         if ((localObject != null) && (((k.b)localObject).type == 6))
         {
-          paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.f(paramc, parambl, paramString);
+          paramc = new com.tencent.mm.plugin.choosemsgfile.b.b.f(paramc, parambo, paramString);
           if ((paramList == null) || (paramList.size() == 0))
           {
             AppMethodBeat.o(123365);
             return paramc;
           }
-          parambl = paramList.iterator();
-          while (parambl.hasNext())
+          parambo = paramList.iterator();
+          while (parambo.hasNext())
           {
-            paramString = (String)parambl.next();
+            paramString = (String)parambo.next();
             if (paramc.getFileName().endsWith(paramString))
             {
               AppMethodBeat.o(123365);
@@ -584,7 +588,7 @@ public final class c
   public static void a(int paramInt1, int paramInt2, Intent paramIntent, a.a parama)
   {
     AppMethodBeat.i(123377);
-    if (paramInt1 == b.nMS) {
+    if (paramInt1 == b.opS) {
       switch (paramInt2)
       {
       }
@@ -595,7 +599,7 @@ public final class c
       return;
       if (paramIntent == null)
       {
-        ad.e("MicroMsg.MsgFileUtils", "data is null");
+        ac.e("MicroMsg.MsgFileUtils", "data is null");
         a(parama, "data is null");
         AppMethodBeat.o(123377);
         return;
@@ -603,7 +607,7 @@ public final class c
       paramIntent = paramIntent.getParcelableArrayListExtra("FILEPATHS");
       if (paramIntent == null)
       {
-        ad.e("MicroMsg.MsgFileUtils", "msgFiles is null");
+        ac.e("MicroMsg.MsgFileUtils", "msgFiles is null");
         a(parama, "msgFiles is null");
         AppMethodBeat.o(123377);
         return;
@@ -615,7 +619,7 @@ public final class c
       return;
       if (paramIntent == null)
       {
-        ad.e("MicroMsg.MsgFileUtils", "data is null");
+        ac.e("MicroMsg.MsgFileUtils", "data is null");
         a(parama, "data is null");
         AppMethodBeat.o(123377);
         return;
@@ -635,14 +639,14 @@ public final class c
     Intent localIntent = new Intent();
     if (parama == null)
     {
-      ad.e("MicroMsg.MsgFileUtils", "[enterGallery] item == null");
+      ac.e("MicroMsg.MsgFileUtils", "[enterGallery] item == null");
       AppMethodBeat.o(123372);
       return;
     }
-    parama = parama.nLz;
+    parama = parama.ooz;
     if (parama == null)
     {
-      ad.e("MicroMsg.MsgFileUtils", "[enterGallery] msg == null");
+      ac.e("MicroMsg.MsgFileUtils", "[enterGallery] msg == null");
       AppMethodBeat.o(123372);
       return;
     }
@@ -680,12 +684,12 @@ public final class c
     AppMethodBeat.o(123378);
   }
   
-  private static com.tencent.mm.plugin.choosemsgfile.b.b.a b(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bl parambl)
+  private static com.tencent.mm.plugin.choosemsgfile.b.b.a b(com.tencent.mm.plugin.choosemsgfile.b.c.c paramc, bo parambo)
   {
     AppMethodBeat.i(123367);
-    if ((parambl.cjM()) || (parambl.cjO()))
+    if ((parambo.crt()) || (parambo.crv()))
     {
-      paramc = new h(paramc, parambl);
+      paramc = new h(paramc, parambo);
       AppMethodBeat.o(123367);
       return paramc;
     }
@@ -693,47 +697,47 @@ public final class c
     return null;
   }
   
-  public static String b(bl parambl, boolean paramBoolean)
+  public static String b(bo parambo, boolean paramBoolean)
   {
     String str1 = null;
     AppMethodBeat.i(123368);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(123368);
       return null;
     }
-    if (parambl.field_isSend == 1)
+    if (parambo.field_isSend == 1)
     {
-      parambl = u.aqG();
+      parambo = u.axw();
       AppMethodBeat.o(123368);
-      return parambl;
+      return parambo;
     }
     if (paramBoolean) {
-      str1 = bi.uf(parambl.field_content);
+      str1 = bi.yl(parambo.field_content);
     }
     String str2 = str1;
-    if (bt.isNullOrNil(str1)) {
-      str2 = parambl.field_talker;
+    if (bs.isNullOrNil(str1)) {
+      str2 = parambo.field_talker;
     }
     AppMethodBeat.o(123368);
     return str2;
   }
   
-  public static final com.tencent.mm.aw.a.a.c el(Context paramContext)
+  public static final com.tencent.mm.av.a.a.c et(Context paramContext)
   {
     AppMethodBeat.i(123371);
-    com.tencent.mm.aw.a.a.c localc = (com.tencent.mm.aw.a.a.c)nMT.get(Integer.valueOf(4));
+    com.tencent.mm.av.a.a.c localc = (com.tencent.mm.av.a.a.c)opT.get(Integer.valueOf(4));
     Object localObject = localc;
     if (localc == null)
     {
       localObject = new c.a();
-      ((c.a)localObject).hjX = 1;
-      ((c.a)localObject).hkn = true;
-      ((c.a)localObject).gjw = (com.tencent.mm.cd.a.hV(paramContext) / 4);
-      ((c.a)localObject).gjv = (com.tencent.mm.cd.a.hV(paramContext) / 4);
-      ((c.a)localObject).hki = 2131100734;
-      localObject = ((c.a)localObject).azc();
-      nMT.put(Integer.valueOf(4), localObject);
+      ((c.a)localObject).hKA = 1;
+      ((c.a)localObject).hKQ = true;
+      ((c.a)localObject).gKh = (com.tencent.mm.cc.a.ig(paramContext) / 4);
+      ((c.a)localObject).gKg = (com.tencent.mm.cc.a.ig(paramContext) / 4);
+      ((c.a)localObject).hKL = 2131100734;
+      localObject = ((c.a)localObject).aFT();
+      opT.put(Integer.valueOf(4), localObject);
     }
     AppMethodBeat.o(123371);
     return localObject;
@@ -742,7 +746,7 @@ public final class c
   public static void g(Context paramContext, long paramLong)
   {
     AppMethodBeat.i(123375);
-    if (!com.tencent.mm.kernel.g.afB().isSDCardAvailable())
+    if (!com.tencent.mm.kernel.g.agR().isSDCardAvailable())
     {
       t.g(paramContext, null);
       AppMethodBeat.o(123375);
@@ -752,69 +756,69 @@ public final class c
     ((Intent)localObject).setClassName(paramContext, "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
     ((Intent)localObject).putExtra("app_msg_id", paramLong);
     ((Intent)localObject).putExtra("scene", 1);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/choosemsgfile/logic/util/MsgFileUtils", "enterFileProfile", "(Landroid/content/Context;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(123375);
   }
   
-  public static String nV(long paramLong)
+  public static String rH(long paramLong)
   {
     AppMethodBeat.i(123369);
     Object localObject = new Date(paramLong);
-    localObject = com.tencent.mm.ui.gridviewheaders.a.fcX().a((Date)localObject, com.tencent.mm.sdk.platformtools.aj.getContext());
+    localObject = com.tencent.mm.ui.gridviewheaders.a.fsS().a((Date)localObject, ai.getContext());
     AppMethodBeat.o(123369);
     return localObject;
   }
   
-  public static long nW(long paramLong)
+  public static long rI(long paramLong)
   {
     AppMethodBeat.i(123370);
     Date localDate = new Date(paramLong);
-    paramLong = com.tencent.mm.ui.gridviewheaders.a.fcX().b(localDate);
+    paramLong = com.tencent.mm.ui.gridviewheaders.a.fsS().b(localDate);
     AppMethodBeat.o(123370);
     return paramLong;
   }
   
-  public static String sg(String paramString)
+  public static String wj(String paramString)
   {
     AppMethodBeat.i(123374);
-    if (com.tencent.mm.model.w.pF(paramString))
+    if (w.sQ(paramString))
     {
-      localObject = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(paramString);
-      if ((localObject != null) && (!bt.isNullOrNil(((au)localObject).field_nickname)))
+      localObject = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramString);
+      if ((localObject != null) && (!bs.isNullOrNil(((av)localObject).field_nickname)))
       {
-        paramString = ((au)localObject).field_nickname;
+        paramString = ((av)localObject).field_nickname;
         AppMethodBeat.o(123374);
         return paramString;
       }
-      localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(paramString);
+      localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(paramString);
       if (localObject == null)
       {
-        ad.e("MicroMsg.MsgFileUtils", "%s chatRoomMember is null", new Object[] { paramString });
+        ac.e("MicroMsg.MsgFileUtils", "%s chatRoomMember is null", new Object[] { paramString });
         AppMethodBeat.o(123374);
         return "";
       }
-      paramString = ((com.tencent.mm.storage.w)localObject).field_displayname;
+      paramString = ((x)localObject).field_displayname;
       AppMethodBeat.o(123374);
       return paramString;
     }
-    Object localObject = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(paramString);
+    Object localObject = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt(paramString);
     if (localObject == null)
     {
-      ad.e("MicroMsg.MsgFileUtils", "%s, contact is null", new Object[] { paramString });
+      ac.e("MicroMsg.MsgFileUtils", "%s, contact is null", new Object[] { paramString });
       AppMethodBeat.o(123374);
       return "";
     }
-    paramString = ((au)localObject).field_nickname;
+    paramString = ((av)localObject).field_nickname;
     AppMethodBeat.o(123374);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.d.c
  * JD-Core Version:    0.7.0.1
  */

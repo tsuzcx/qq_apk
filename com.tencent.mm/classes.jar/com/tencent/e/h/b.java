@@ -23,27 +23,27 @@ public final class b
   extends a
   implements Handler.Callback
 {
-  private final a Izs;
-  private final Handler Izt;
+  private final a Kbb;
+  private final Handler Kbc;
   
   public b(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(183349);
-    this.Izt = com.tencent.e.e.d.a("ColdPoolLeader", this);
-    this.Izs = new a(paramInt1, paramInt2);
+    this.Kbc = com.tencent.e.e.d.a("ColdPoolLeader", this);
+    this.Kbb = new a(paramInt1, paramInt2);
     AppMethodBeat.o(183349);
   }
   
-  protected final a.a foe()
+  protected final a.a fEu()
   {
-    return this.Izs;
+    return this.Kbb;
   }
   
-  public final List<String> fof()
+  public final List<String> fEv()
   {
     AppMethodBeat.i(183352);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.Izs.getQueue().iterator();
+    Iterator localIterator = this.Kbb.getQueue().iterator();
     while (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)localIterator.next();
@@ -64,30 +64,30 @@ public final class b
   
   public final boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(186957);
+    AppMethodBeat.i(191085);
     paramMessage = paramMessage.obj;
     if ((paramMessage instanceof k))
     {
-      this.Izs.execute((k)paramMessage);
-      AppMethodBeat.o(186957);
+      this.Kbb.execute((k)paramMessage);
+      AppMethodBeat.o(191085);
       return true;
     }
-    AppMethodBeat.o(186957);
+    AppMethodBeat.o(191085);
     return false;
   }
   
   public final void j(k<?> paramk)
   {
     AppMethodBeat.i(183350);
-    this.Izt.removeCallbacksAndMessages(paramk);
-    this.Izs.remove(paramk);
+    this.Kbc.removeCallbacksAndMessages(paramk);
+    this.Kbb.remove(paramk);
     AppMethodBeat.o(183350);
   }
   
   protected final void onShutdown()
   {
     AppMethodBeat.i(183351);
-    this.Izs.shutdown();
+    this.Kbb.shutdown();
     AppMethodBeat.o(183351);
   }
   
@@ -95,20 +95,20 @@ public final class b
     extends ThreadPoolExecutor
     implements a.a
   {
-    private int Izu;
-    private int Izv;
-    private int cUZ;
+    private int Kbd;
+    private int Kbe;
+    private int cSv;
     
     a(int paramInt1, int paramInt2)
     {
       super(paramInt2, 10L, TimeUnit.MINUTES, new LinkedBlockingQueue(), new ThreadFactory()new RejectedExecutionHandler
       {
-        AtomicInteger Izx;
+        AtomicInteger Kbg;
         
         public final Thread newThread(Runnable paramAnonymousRunnable)
         {
           AppMethodBeat.i(183342);
-          paramAnonymousRunnable = c.a("ColdPool#" + this.Izx.getAndIncrement(), paramAnonymousRunnable, 5);
+          paramAnonymousRunnable = c.a("ColdPool#" + this.Kbg.getAndIncrement(), paramAnonymousRunnable, 5);
           AppMethodBeat.o(183342);
           return paramAnonymousRunnable;
         }
@@ -117,9 +117,9 @@ public final class b
         public final void rejectedExecution(Runnable paramAnonymousRunnable, ThreadPoolExecutor paramAnonymousThreadPoolExecutor) {}
       });
       AppMethodBeat.i(183345);
-      this.Izv = 1;
-      this.cUZ = paramInt1;
-      this.Izu = paramInt2;
+      this.Kbe = 1;
+      this.cSv = paramInt1;
+      this.Kbd = paramInt2;
       AppMethodBeat.o(183345);
     }
     
@@ -127,27 +127,27 @@ public final class b
     {
       AppMethodBeat.i(183348);
       super.afterExecute(paramRunnable, paramThrowable);
-      if ((getQueue().isEmpty()) && (getCorePoolSize() > this.cUZ))
+      if ((getQueue().isEmpty()) && (getCorePoolSize() > this.cSv))
       {
-        setCorePoolSize(this.cUZ);
-        this.Izv = 1;
-        com.tencent.e.d.IxU.w("ColdPool", "reset to corePoolSize(%s)", new Object[] { Integer.valueOf(this.cUZ) });
+        setCorePoolSize(this.cSv);
+        this.Kbe = 1;
+        com.tencent.e.d.JZD.w("ColdPool", "reset to corePoolSize(%s)", new Object[] { Integer.valueOf(this.cSv) });
       }
       AppMethodBeat.o(183348);
     }
     
     public final void execute(Runnable paramRunnable)
     {
-      AppMethodBeat.i(186956);
+      AppMethodBeat.i(191084);
       int i = getCorePoolSize();
-      if ((getQueue().size() >= this.Izv * 10) && (i + 1 <= this.Izu))
+      if ((getQueue().size() >= this.Kbe * 10) && (i + 1 <= this.Kbd))
       {
         setCorePoolSize(i + 1);
-        com.tencent.e.d.IxU.w("ColdPool", "increment to expand cold pool; queue size=%s currentCoreSize=%s bufferSizeFactor=%s", new Object[] { Integer.valueOf(getQueue().size()), Integer.valueOf(i), Integer.valueOf(this.Izv) });
-        this.Izv += 1;
+        com.tencent.e.d.JZD.w("ColdPool", "increment to expand cold pool; queue size=%s currentCoreSize=%s bufferSizeFactor=%s", new Object[] { Integer.valueOf(getQueue().size()), Integer.valueOf(i), Integer.valueOf(this.Kbe) });
+        this.Kbe += 1;
       }
       super.execute(paramRunnable);
-      AppMethodBeat.o(186956);
+      AppMethodBeat.o(191084);
     }
     
     public final void i(k<?> paramk)

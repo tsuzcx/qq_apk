@@ -1,36 +1,63 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.v;
-import android.view.ViewGroup;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.k;
 import d.l;
+import java.util.Iterator;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "", "getIfReachBottom", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "viewParent", "Landroid/view/ViewGroup;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
-public abstract interface v
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/StgUtil;", "", "()V", "Companion", "plugin-finder_release"})
+public final class v
 {
-  public abstract boolean A(RecyclerView paramRecyclerView);
+  public static final a rEz;
   
-  public abstract RecyclerView.v B(ViewGroup paramViewGroup);
+  static
+  {
+    AppMethodBeat.i(167041);
+    rEz = new a((byte)0);
+    AppMethodBeat.o(167041);
+  }
   
-  public abstract c H(d.g.a.b<? super Integer, ? extends com.tencent.mm.view.recyclerview.b<?>> paramb);
-  
-  public abstract RecyclerView.n f(MMActivity paramMMActivity);
-  
-  public abstract c fTj();
-  
-  public abstract RecyclerView.h getItemDecoration();
-  
-  public abstract RecyclerView.i lw(Context paramContext);
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/StgUtil$Companion;", "", "()V", "buildLimitString", "", "data", "", "", "col", "reverse", "", "createLocalMediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "feedMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "getORIntRange", "Ljava/util/ArrayList;", "plugin-finder_release"})
+  public static final class a
+  {
+    public static String j(List<Integer> paramList, String paramString)
+    {
+      AppMethodBeat.i(167039);
+      k.h(paramList, "data");
+      k.h(paramString, "col");
+      paramList = k(paramList, paramString);
+      AppMethodBeat.o(167039);
+      return paramList;
+    }
+    
+    private static String k(List<Integer> paramList, String paramString)
+    {
+      AppMethodBeat.i(167040);
+      k.h(paramList, "data");
+      k.h(paramString, "col");
+      StringBuilder localStringBuilder = new StringBuilder("(");
+      localStringBuilder.append(paramString + " in (");
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localStringBuilder.append(((Number)paramList.next()).intValue());
+        if (paramList.hasNext()) {
+          localStringBuilder.append(",");
+        }
+      }
+      localStringBuilder.append(")");
+      localStringBuilder.append(")");
+      paramList = localStringBuilder.toString();
+      k.g(paramList, "sb.toString()");
+      AppMethodBeat.o(167040);
+      return paramList;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.v
  * JD-Core Version:    0.7.0.1
  */

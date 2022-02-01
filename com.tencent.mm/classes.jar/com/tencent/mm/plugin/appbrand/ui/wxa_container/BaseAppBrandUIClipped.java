@@ -9,25 +9,27 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import com.tencent.luggage.sdk.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.appbrand.widget.input.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import com.tencent.mm.ui.am;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 
 public abstract class BaseAppBrandUIClipped
   extends MMFragmentActivity
-  implements com.tencent.mm.plugin.appbrand.widget.input.ad
+  implements ad
 {
-  protected a lLE = new a();
   public View mContentView;
+  protected a mnB = new a();
   
   static
   {
-    r.initLanguage(aj.getContext());
+    s.initLanguage(ai.getContext());
   }
   
-  private boolean cP(View paramView)
+  private boolean cR(View paramView)
   {
     if (paramView == null) {}
     InputMethodManager localInputMethodManager;
@@ -49,7 +51,7 @@ public abstract class BaseAppBrandUIClipped
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.BaseAppBrandUIClipped", "hide VKB(View) exception %s", new Object[] { paramView });
+        ac.e("MicroMsg.AppBrand.BaseAppBrandUIClipped", "hide VKB(View) exception %s", new Object[] { paramView });
         boolean bool = false;
       }
     }
@@ -58,11 +60,11 @@ public abstract class BaseAppBrandUIClipped
   public static void d(Activity paramActivity, int paramInt)
   {
     if ((paramActivity.isFinishing()) || (paramActivity.isDestroyed()) || (paramActivity.getWindow() == null)) {}
-    while ((Build.VERSION.SDK_INT < 26) || (r.eRb())) {
+    while ((Build.VERSION.SDK_INT < 26) || (s.fgK())) {
       return;
     }
     paramActivity.getWindow().setNavigationBarColor(paramInt);
-    boolean bool = am.XC(paramInt);
+    boolean bool = am.ZN(paramInt);
     paramActivity = paramActivity.getWindow().getDecorView();
     paramInt = paramActivity.getSystemUiVisibility();
     if (bool) {
@@ -83,16 +85,16 @@ public abstract class BaseAppBrandUIClipped
   
   public final void hideVKB(View paramView)
   {
-    cP(paramView);
+    cR(paramView);
   }
   
   public final boolean hideVKBHavingResult()
   {
     View localView = getCurrentFocus();
     if (localView == null) {
-      return cP(this.mContentView);
+      return cR(this.mContentView);
     }
-    return cP(localView);
+    return cR(localView);
   }
   
   public final boolean initNavigationSwipeBack()
@@ -139,20 +141,20 @@ public abstract class BaseAppBrandUIClipped
   
   public final void showVKB()
   {
-    r.showVKB(this);
+    s.showVKB(this);
   }
   
   public static final class a
   {
-    public int lLF = MMFragmentActivity.a.lLF;
-    public int lLG = MMFragmentActivity.a.lLG;
-    public int lLH = MMFragmentActivity.a.lLH;
-    public int lLI = MMFragmentActivity.a.lLI;
+    public int mnC = MMFragmentActivity.a.mnC;
+    public int mnD = MMFragmentActivity.a.mnD;
+    public int mnE = MMFragmentActivity.a.mnE;
+    public int mnF = MMFragmentActivity.a.mnF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.wxa_container.BaseAppBrandUIClipped
  * JD-Core Version:    0.7.0.1
  */

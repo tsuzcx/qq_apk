@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public static void dW(View paramView)
+  public static void ed(View paramView)
   {
     AppMethodBeat.i(168682);
     t.f(paramView, 1.0F);
@@ -20,13 +20,13 @@ public final class d
     t.aj(paramView);
     t.j(paramView, paramView.getMeasuredHeight() / 2);
     t.i(paramView, paramView.getMeasuredWidth() / 2);
-    t.ag(paramView).a(null).i(0L);
+    t.ag(paramView).a(null).k(0L);
     AppMethodBeat.o(168682);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.animation.d
  * JD-Core Version:    0.7.0.1
  */

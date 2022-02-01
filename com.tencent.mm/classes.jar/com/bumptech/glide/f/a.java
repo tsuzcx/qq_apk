@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements b, c
 {
-  private final c aKw;
-  private b aKx;
-  private b aKy;
+  private final c aLm;
+  private b aLn;
+  private b aLo;
   
   public a(c paramc)
   {
-    this.aKw = paramc;
+    this.aLm = paramc;
   }
   
   private boolean e(b paramb)
   {
     AppMethodBeat.i(77632);
-    if ((paramb.equals(this.aKx)) || ((this.aKx.isFailed()) && (paramb.equals(this.aKy))))
+    if ((paramb.equals(this.aLn)) || ((this.aLn.isFailed()) && (paramb.equals(this.aLo))))
     {
       AppMethodBeat.o(77632);
       return true;
@@ -28,8 +28,8 @@ public final class a
   
   public final void a(b paramb1, b paramb2)
   {
-    this.aKx = paramb1;
-    this.aKy = paramb2;
+    this.aLn = paramb1;
+    this.aLo = paramb2;
   }
   
   public final boolean a(b paramb)
@@ -38,7 +38,7 @@ public final class a
     if ((paramb instanceof a))
     {
       paramb = (a)paramb;
-      if ((this.aKx.a(paramb.aKx)) && (this.aKy.a(paramb.aKy)))
+      if ((this.aLn.a(paramb.aLn)) && (this.aLo.a(paramb.aLo)))
       {
         AppMethodBeat.o(77628);
         return true;
@@ -53,7 +53,7 @@ public final class a
   public final boolean b(b paramb)
   {
     AppMethodBeat.i(77629);
-    if ((this.aKw == null) || (this.aKw.b(this))) {}
+    if ((this.aLm == null) || (this.aLm.b(this))) {}
     for (int i = 1; (i != 0) && (e(paramb)); i = 0)
     {
       AppMethodBeat.o(77629);
@@ -66,8 +66,8 @@ public final class a
   public final void begin()
   {
     AppMethodBeat.i(77619);
-    if (!this.aKx.isRunning()) {
-      this.aKx.begin();
+    if (!this.aLn.isRunning()) {
+      this.aLn.begin();
     }
     AppMethodBeat.o(77619);
   }
@@ -75,7 +75,7 @@ public final class a
   public final boolean c(b paramb)
   {
     AppMethodBeat.i(77630);
-    if ((this.aKw == null) || (this.aKw.c(this))) {}
+    if ((this.aLm == null) || (this.aLm.c(this))) {}
     for (int i = 1; (i != 0) && (e(paramb)); i = 0)
     {
       AppMethodBeat.o(77630);
@@ -88,9 +88,9 @@ public final class a
   public final void clear()
   {
     AppMethodBeat.i(77621);
-    this.aKx.clear();
-    if (this.aKy.isRunning()) {
-      this.aKy.clear();
+    this.aLn.clear();
+    if (this.aLo.isRunning()) {
+      this.aLo.clear();
     }
     AppMethodBeat.o(77621);
   }
@@ -98,7 +98,7 @@ public final class a
   public final boolean d(b paramb)
   {
     AppMethodBeat.i(77631);
-    if ((this.aKw == null) || (this.aKw.d(this))) {}
+    if ((this.aLm == null) || (this.aLm.d(this))) {}
     for (int i = 1; (i != 0) && (e(paramb)); i = 0)
     {
       AppMethodBeat.o(77631);
@@ -111,8 +111,8 @@ public final class a
   public final void f(b paramb)
   {
     AppMethodBeat.i(77634);
-    if (this.aKw != null) {
-      this.aKw.f(this);
+    if (this.aLm != null) {
+      this.aLm.f(this);
     }
     AppMethodBeat.o(77634);
   }
@@ -120,16 +120,16 @@ public final class a
   public final void g(b paramb)
   {
     AppMethodBeat.i(77635);
-    if (!paramb.equals(this.aKy))
+    if (!paramb.equals(this.aLo))
     {
-      if (!this.aKy.isRunning()) {
-        this.aKy.begin();
+      if (!this.aLo.isRunning()) {
+        this.aLo.begin();
       }
       AppMethodBeat.o(77635);
       return;
     }
-    if (this.aKw != null) {
-      this.aKw.g(this);
+    if (this.aLm != null) {
+      this.aLm.g(this);
     }
     AppMethodBeat.o(77635);
   }
@@ -137,13 +137,13 @@ public final class a
   public final boolean isCancelled()
   {
     AppMethodBeat.i(77625);
-    if (this.aKx.isFailed())
+    if (this.aLn.isFailed())
     {
-      bool = this.aKy.isCancelled();
+      bool = this.aLo.isCancelled();
       AppMethodBeat.o(77625);
       return bool;
     }
-    boolean bool = this.aKx.isCancelled();
+    boolean bool = this.aLn.isCancelled();
     AppMethodBeat.o(77625);
     return bool;
   }
@@ -151,13 +151,13 @@ public final class a
   public final boolean isComplete()
   {
     AppMethodBeat.i(77623);
-    if (this.aKx.isFailed())
+    if (this.aLn.isFailed())
     {
-      bool = this.aKy.isComplete();
+      bool = this.aLo.isComplete();
       AppMethodBeat.o(77623);
       return bool;
     }
-    boolean bool = this.aKx.isComplete();
+    boolean bool = this.aLn.isComplete();
     AppMethodBeat.o(77623);
     return bool;
   }
@@ -165,7 +165,7 @@ public final class a
   public final boolean isFailed()
   {
     AppMethodBeat.i(77626);
-    if ((this.aKx.isFailed()) && (this.aKy.isFailed()))
+    if ((this.aLn.isFailed()) && (this.aLo.isFailed()))
     {
       AppMethodBeat.o(77626);
       return true;
@@ -177,48 +177,22 @@ public final class a
   public final boolean isRunning()
   {
     AppMethodBeat.i(77622);
-    if (this.aKx.isFailed())
+    if (this.aLn.isFailed())
     {
-      bool = this.aKy.isRunning();
+      bool = this.aLo.isRunning();
       AppMethodBeat.o(77622);
       return bool;
     }
-    boolean bool = this.aKx.isRunning();
+    boolean bool = this.aLn.isRunning();
     AppMethodBeat.o(77622);
     return bool;
   }
   
-  public final void pause()
-  {
-    AppMethodBeat.i(77620);
-    if (!this.aKx.isFailed()) {
-      this.aKx.pause();
-    }
-    if (this.aKy.isRunning()) {
-      this.aKy.pause();
-    }
-    AppMethodBeat.o(77620);
-  }
-  
-  public final boolean pp()
-  {
-    AppMethodBeat.i(77624);
-    if (this.aKx.isFailed())
-    {
-      bool = this.aKy.pp();
-      AppMethodBeat.o(77624);
-      return bool;
-    }
-    boolean bool = this.aKx.pp();
-    AppMethodBeat.o(77624);
-    return bool;
-  }
-  
-  public final boolean pq()
+  public final boolean pA()
   {
     AppMethodBeat.i(77633);
-    if ((this.aKw != null) && (this.aKw.pq())) {}
-    for (int i = 1; (i != 0) || (pp()); i = 0)
+    if ((this.aLm != null) && (this.aLm.pA())) {}
+    for (int i = 1; (i != 0) || (pz()); i = 0)
     {
       AppMethodBeat.o(77633);
       return true;
@@ -227,17 +201,43 @@ public final class a
     return false;
   }
   
+  public final void pause()
+  {
+    AppMethodBeat.i(77620);
+    if (!this.aLn.isFailed()) {
+      this.aLn.pause();
+    }
+    if (this.aLo.isRunning()) {
+      this.aLo.pause();
+    }
+    AppMethodBeat.o(77620);
+  }
+  
+  public final boolean pz()
+  {
+    AppMethodBeat.i(77624);
+    if (this.aLn.isFailed())
+    {
+      bool = this.aLo.pz();
+      AppMethodBeat.o(77624);
+      return bool;
+    }
+    boolean bool = this.aLn.pz();
+    AppMethodBeat.o(77624);
+    return bool;
+  }
+  
   public final void recycle()
   {
     AppMethodBeat.i(77627);
-    this.aKx.recycle();
-    this.aKy.recycle();
+    this.aLn.recycle();
+    this.aLo.recycle();
     AppMethodBeat.o(77627);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,62 @@
 package com.tencent.magicbrush;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.n;
+import d.g.b.w;
 import d.l;
+import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 13})
 final class j
   extends n
 {
-  public static final h cpY;
+  public static final h cnf;
   
-  public final String Gn() {}
+  static
+  {
+    AppMethodBeat.i(140108);
+    cnf = new j();
+    AppMethodBeat.o(140108);
+  }
   
-  public final d Go() {}
+  public final String FZ()
+  {
+    return "getScreen_height_()I";
+  }
   
-  public final Object get(Object arg1) {}
+  public final d Ga()
+  {
+    AppMethodBeat.i(140109);
+    b localb = w.bn(MBRuntime.MBParams.class);
+    AppMethodBeat.o(140109);
+    return localb;
+  }
   
-  public final String getName() {}
+  public final Object get(Object paramObject)
+  {
+    AppMethodBeat.i(140110);
+    int i = ((MBRuntime.MBParams)paramObject).screen_height_;
+    AppMethodBeat.o(140110);
+    return Integer.valueOf(i);
+  }
   
-  public final void set(Object arg1, Object arg2) {}
+  public final String getName()
+  {
+    return "screen_height_";
+  }
+  
+  public final void set(Object paramObject1, Object paramObject2)
+  {
+    AppMethodBeat.i(140111);
+    ((MBRuntime.MBParams)paramObject1).screen_height_ = ((Number)paramObject2).intValue();
+    AppMethodBeat.o(140111);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.j
  * JD-Core Version:    0.7.0.1
  */

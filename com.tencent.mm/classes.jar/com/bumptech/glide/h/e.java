@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static final double aLs;
+  private static final double aMi;
   
   static
   {
@@ -16,21 +16,21 @@ public final class e
     if (Build.VERSION.SDK_INT >= 17) {
       d = 1.0D / Math.pow(10.0D, 6.0D);
     }
-    aLs = d;
+    aMi = d;
     AppMethodBeat.o(77748);
   }
   
-  public static double n(long paramLong)
+  public static double p(long paramLong)
   {
     AppMethodBeat.i(77747);
-    double d1 = pO() - paramLong;
-    double d2 = aLs;
+    double d1 = pY() - paramLong;
+    double d2 = aMi;
     AppMethodBeat.o(77747);
     return d1 * d2;
   }
   
   @TargetApi(17)
-  public static long pO()
+  public static long pY()
   {
     AppMethodBeat.i(77746);
     if (Build.VERSION.SDK_INT >= 17)
@@ -46,7 +46,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.h.e
  * JD-Core Version:    0.7.0.1
  */

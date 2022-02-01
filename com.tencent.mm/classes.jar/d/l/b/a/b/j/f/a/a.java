@@ -5,33 +5,33 @@ import d.l.b.a.b.m.ab;
 public abstract class a
   implements e
 {
-  private final e JTS;
-  protected final ab Jzo;
+  private final e LHl;
+  protected final ab LmH;
   
   public a(ab paramab, e parame)
   {
-    this.Jzo = paramab;
+    this.LmH = paramab;
     if (parame != null) {}
     for (;;)
     {
-      this.JTS = parame;
+      this.LHl = parame;
       return;
       parame = this;
     }
   }
   
-  public final ab fzr()
+  public final ab fRV()
   {
-    ab localab = this.Jzo;
+    ab localab = this.LmH;
     if (localab == null) {
-      adP(1);
+      agL(1);
     }
     return localab;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.a.a
  * JD-Core Version:    0.7.0.1
  */

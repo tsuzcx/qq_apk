@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class PLSysTextView
   extends SysTextView
@@ -27,7 +27,7 @@ public class PLSysTextView
     AppMethodBeat.i(141021);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().ggU = false;
+      getLayoutWrapper().glA = false;
     }
     AppMethodBeat.o(141021);
   }
@@ -54,10 +54,10 @@ public class PLSysTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     AppMethodBeat.i(141018);
-    if (bt.ai(paramCharSequence))
+    if (bs.aj(paramCharSequence))
     {
       if (h.DEBUG) {
-        ad.d("MicroMsg.PLSysTextView", "set null text");
+        ac.d("MicroMsg.PLSysTextView", "set null text");
       }
       AppMethodBeat.o(141018);
       return;
@@ -66,17 +66,17 @@ public class PLSysTextView
     if (h.DEBUG) {
       l = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().ggU)) {
-      c.ggt.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().glA)) {
+      c.gkZ.a(getConfig(), getLayoutWrapper());
     }
-    paramBufferType = c.ggt.a(getConfig(), paramCharSequence);
+    paramBufferType = c.gkZ.a(getConfig(), paramCharSequence);
     if (paramBufferType != null) {
       setTextLayout(paramBufferType);
     }
     for (boolean bool = true;; bool = false)
     {
       if (h.DEBUG) {
-        ad.d("MicroMsg.PLSysTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s", new Object[] { Double.valueOf((System.currentTimeMillis() - l) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence });
+        ac.d("MicroMsg.PLSysTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s", new Object[] { Double.valueOf((System.currentTimeMillis() - l) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence });
       }
       AppMethodBeat.o(141018);
       return;

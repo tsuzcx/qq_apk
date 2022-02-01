@@ -15,34 +15,34 @@ public final class i
   extends AtomicReference<Thread>
   implements Runnable, j
 {
-  final rx.internal.util.i KqR;
-  final a KqS;
+  final rx.internal.util.i MeA;
+  final a MeB;
   
   public i(a parama)
   {
     AppMethodBeat.i(90341);
-    this.KqS = parama;
-    this.KqR = new rx.internal.util.i();
+    this.MeB = parama;
+    this.MeA = new rx.internal.util.i();
     AppMethodBeat.o(90341);
   }
   
   public i(a parama, b paramb)
   {
     AppMethodBeat.i(90342);
-    this.KqS = parama;
-    this.KqR = new rx.internal.util.i(new b(this, paramb));
+    this.MeB = parama;
+    this.MeA = new rx.internal.util.i(new b(this, paramb));
     AppMethodBeat.o(90342);
   }
   
   public i(a parama, rx.internal.util.i parami)
   {
     AppMethodBeat.i(90343);
-    this.KqS = parama;
-    this.KqR = new rx.internal.util.i(new c(this, parami));
+    this.MeB = parama;
+    this.MeA = new rx.internal.util.i(new c(this, parami));
     AppMethodBeat.o(90343);
   }
   
-  private static void M(Throwable paramThrowable)
+  private static void N(Throwable paramThrowable)
   {
     AppMethodBeat.i(90345);
     c.onError(paramThrowable);
@@ -54,22 +54,22 @@ public final class i
   public final void b(Future<?> paramFuture)
   {
     AppMethodBeat.i(90347);
-    this.KqR.b(new a(paramFuture));
+    this.MeA.b(new a(paramFuture));
     AppMethodBeat.o(90347);
   }
   
-  public final void fNw()
+  public final void ggm()
   {
     AppMethodBeat.i(90346);
-    if (!this.KqR.KrX) {
-      this.KqR.fNw();
+    if (!this.MeA.MfG) {
+      this.MeA.ggm();
     }
     AppMethodBeat.o(90346);
   }
   
-  public final boolean fNx()
+  public final boolean ggn()
   {
-    return this.KqR.KrX;
+    return this.MeA.MfG;
   }
   
   public final void run()
@@ -78,22 +78,22 @@ public final class i
     try
     {
       lazySet(Thread.currentThread());
-      this.KqS.call();
+      this.MeB.call();
       return;
     }
     catch (f localf)
     {
-      M(new IllegalStateException("Exception thrown on Scheduler.Worker thread. Add `onError` handling.", localf));
+      N(new IllegalStateException("Exception thrown on Scheduler.Worker thread. Add `onError` handling.", localf));
       return;
     }
     catch (Throwable localThrowable)
     {
-      M(new IllegalStateException("Fatal Exception thrown on Scheduler.Worker thread.", localThrowable));
+      N(new IllegalStateException("Fatal Exception thrown on Scheduler.Worker thread.", localThrowable));
       return;
     }
     finally
     {
-      fNw();
+      ggm();
       AppMethodBeat.o(90344);
     }
   }
@@ -101,31 +101,31 @@ public final class i
   final class a
     implements j
   {
-    private final Future<?> KqT;
+    private final Future<?> MeC;
     
     a()
     {
       Object localObject;
-      this.KqT = localObject;
+      this.MeC = localObject;
     }
     
-    public final void fNw()
+    public final void ggm()
     {
       AppMethodBeat.i(90337);
       if (i.this.get() != Thread.currentThread())
       {
-        this.KqT.cancel(true);
+        this.MeC.cancel(true);
         AppMethodBeat.o(90337);
         return;
       }
-      this.KqT.cancel(false);
+      this.MeC.cancel(false);
       AppMethodBeat.o(90337);
     }
     
-    public final boolean fNx()
+    public final boolean ggn()
     {
       AppMethodBeat.i(90338);
-      boolean bool = this.KqT.isCancelled();
+      boolean bool = this.MeC.isCancelled();
       AppMethodBeat.o(90338);
       return bool;
     }
@@ -135,27 +135,27 @@ public final class i
     extends AtomicBoolean
     implements j
   {
-    final i KqV;
-    final b KqW;
+    final i MeE;
+    final b MeF;
     
     public b(i parami, b paramb)
     {
-      this.KqV = parami;
-      this.KqW = paramb;
+      this.MeE = parami;
+      this.MeF = paramb;
     }
     
-    public final void fNw()
+    public final void ggm()
     {
       AppMethodBeat.i(90339);
       if (compareAndSet(false, true)) {
-        this.KqW.e(this.KqV);
+        this.MeF.e(this.MeE);
       }
       AppMethodBeat.o(90339);
     }
     
-    public final boolean fNx()
+    public final boolean ggn()
     {
-      return this.KqV.KqR.KrX;
+      return this.MeE.MeA.MfG;
     }
   }
   
@@ -163,35 +163,35 @@ public final class i
     extends AtomicBoolean
     implements j
   {
-    final i KqV;
-    final rx.internal.util.i KqX;
+    final i MeE;
+    final rx.internal.util.i MeG;
     
     public c(i parami, rx.internal.util.i parami1)
     {
-      this.KqV = parami;
-      this.KqX = parami1;
+      this.MeE = parami;
+      this.MeG = parami1;
     }
     
-    public final void fNw()
+    public final void ggm()
     {
       AppMethodBeat.i(90340);
       rx.internal.util.i locali;
       i locali1;
       if (compareAndSet(false, true))
       {
-        locali = this.KqX;
-        locali1 = this.KqV;
-        if (locali.KrX) {}
+        locali = this.MeG;
+        locali1 = this.MeE;
+        if (locali.MfG) {}
       }
       try
       {
-        List localList = locali.KrW;
-        if ((locali.KrX) || (localList == null)) {
+        List localList = locali.MfF;
+        if ((locali.MfG) || (localList == null)) {
           return;
         }
         boolean bool = localList.remove(locali1);
         if (bool) {
-          locali1.fNw();
+          locali1.ggm();
         }
         AppMethodBeat.o(90340);
         return;
@@ -202,15 +202,15 @@ public final class i
       }
     }
     
-    public final boolean fNx()
+    public final boolean ggn()
     {
-      return this.KqV.KqR.KrX;
+      return this.MeE.MeA.MfG;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.c.i
  * JD-Core Version:    0.7.0.1
  */

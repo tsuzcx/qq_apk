@@ -12,7 +12,7 @@ final class h$2
   public final void run()
   {
     AppMethodBeat.i(151680);
-    h.cf(this.val$context, this.val$context.getString(2131757304));
+    h.cg(this.val$context, this.val$context.getString(2131757304));
     AppMethodBeat.o(151680);
   }
 }

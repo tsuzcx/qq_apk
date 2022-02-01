@@ -1,66 +1,48 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.plugin.finder.event.base.b;
+import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.event.base.e;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.protocal.protobuf.bqs;
 import d.g.b.k;
 import d.l;
-import org.json.JSONObject;
+import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "", "feedId", "", "startTime", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(JJLcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "endTime", "getEndTime", "()J", "setEndTime", "(J)V", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedDataPos", "", "getFeedDataPos", "()I", "setFeedDataPos", "(I)V", "getFeedId", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "getStartTime", "onRelease", "", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "getBehavior", "PageChangeBehavior", "PageChangeEvent", "plugin-finder_release"})
 public final class p
+  extends e<p.a>
 {
-  public static final a KVv;
-  private static final String TAG = "Finder.FinderTwoFeedRecord";
-  f KMj;
-  int KUQ;
-  long endTime;
-  final FinderItem feed;
-  final long feedId;
-  final long startTime;
-  
-  static
+  public p(c paramc)
   {
-    AppMethodBeat.i(198856);
-    KVv = new a((byte)0);
-    TAG = "Finder.FinderTwoFeedRecord";
-    AppMethodBeat.o(198856);
+    super(paramc);
+    AppMethodBeat.i(166715);
+    AppMethodBeat.o(166715);
   }
   
-  public p(long paramLong1, long paramLong2, FinderItem paramFinderItem)
+  public final p.a cxE()
   {
-    this.feedId = paramLong1;
-    this.startTime = paramLong2;
-    this.feed = paramFinderItem;
+    AppMethodBeat.i(166714);
+    p.a locala = (p.a)new c(this);
+    AppMethodBeat.o(166714);
+    return locala;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "printStats", "", "stats", "Lcom/tencent/mm/protocal/protobuf/Stats;", "tag", "toIndexInfo", "record", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "trans2Stats", "fastSlip", "", "plugin-finder_release"})
-  public static final class a
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/report/PageChangeSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/report/PageChangeSubscriber$PageChangeBehavior;", "onPageChange", "", "feedId", "", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "objectNonceId", "", "index", "", "mediaList", "Ljava/util/LinkedList;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "plugin-finder_release"})
+  public static final class c
+    implements p.a
   {
-    public static String a(p paramp)
+    public final void a(long paramLong, bqs parambqs, String paramString, int paramInt, LinkedList<bqs> paramLinkedList, BaseFinderFeed paramBaseFinderFeed)
     {
-      AppMethodBeat.i(198855);
-      k.h(paramp, "record");
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        paramp = paramp.KMj;
-        if (paramp != null)
-        {
-          localJSONObject.put("x", paramp.LDP + 1);
-          localJSONObject.put("width", paramp.width);
-          localJSONObject.put("height", paramp.height);
-        }
-      }
-      catch (Exception paramp)
-      {
-        label63:
-        break label63;
-      }
-      paramp = localJSONObject.toString();
-      k.g(paramp, "jsonObj.toString()");
-      AppMethodBeat.o(198855);
-      return paramp;
+      AppMethodBeat.i(166713);
+      k.h(parambqs, "media");
+      k.h(paramString, "objectNonceId");
+      k.h(paramLinkedList, "mediaList");
+      k.h(paramBaseFinderFeed, "feed");
+      parambqs = new p.b(paramLong, parambqs, paramString, paramInt, paramLinkedList, paramBaseFinderFeed);
+      this.rAs.c((b)parambqs);
+      AppMethodBeat.o(166713);
     }
   }
 }

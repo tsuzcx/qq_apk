@@ -14,7 +14,7 @@ public class SetStrokeStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetStrokeStyleActionArg> CREATOR;
-  public RealSetStrokeStyleActionArg iZt;
+  public RealSetStrokeStyleActionArg jzI;
   
   static
   {
@@ -33,12 +33,12 @@ public class SetStrokeStyleActionArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145233);
-    if (this.iZt == null)
+    if (this.jzI == null)
     {
       AppMethodBeat.o(145233);
       return false;
     }
-    boolean bool = this.iZt.a(paramd, paramCanvas);
+    boolean bool = this.jzI.a(paramd, paramCanvas);
     AppMethodBeat.o(145233);
     return bool;
   }
@@ -67,7 +67,7 @@ public class SetStrokeStyleActionArg
       return false;
     }
     paramObject = (SetStrokeStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.iZt, paramObject.iZt);
+    boolean bool = Objects.equals(this.jzI, paramObject.jzI);
     AppMethodBeat.o(145237);
     return bool;
   }
@@ -76,14 +76,14 @@ public class SetStrokeStyleActionArg
   {
     AppMethodBeat.i(145234);
     super.h(paramParcel);
-    this.iZt = ((RealSetStrokeStyleActionArg)paramParcel.readParcelable(SetStrokeStyleActionArg.class.getClassLoader()));
+    this.jzI = ((RealSetStrokeStyleActionArg)paramParcel.readParcelable(SetStrokeStyleActionArg.class.getClassLoader()));
     AppMethodBeat.o(145234);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145238);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.iZt });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzI });
     AppMethodBeat.o(145238);
     return i;
   }
@@ -99,8 +99,8 @@ public class SetStrokeStyleActionArg
       return;
     }
     String str = paramJSONObject.optString(0);
-    this.iZt = ((RealSetStrokeStyleActionArg)h.aSY().Fq(str));
-    this.iZt.f(paramJSONObject);
+    this.jzI = ((RealSetStrokeStyleActionArg)h.aZX().Ju(str));
+    this.jzI.f(paramJSONObject);
     AppMethodBeat.o(145236);
   }
   
@@ -108,8 +108,8 @@ public class SetStrokeStyleActionArg
   {
     AppMethodBeat.i(145232);
     super.reset();
-    h.aSY().a(this.iZt);
-    this.iZt = null;
+    h.aZX().a(this.jzI);
+    this.jzI = null;
     AppMethodBeat.o(145232);
   }
   
@@ -117,13 +117,13 @@ public class SetStrokeStyleActionArg
   {
     AppMethodBeat.i(145235);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.iZt, paramInt);
+    paramParcel.writeParcelable(this.jzI, paramInt);
     AppMethodBeat.o(145235);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetStrokeStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

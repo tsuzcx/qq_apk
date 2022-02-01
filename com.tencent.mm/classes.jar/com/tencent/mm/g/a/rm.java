@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.sdk.b.b;
 
 public final class rm
   extends b
 {
-  public a dwZ;
+  public a duw;
   
   public rm()
   {
@@ -16,23 +16,21 @@ public final class rm
   
   private rm(byte paramByte)
   {
-    AppMethodBeat.i(146075);
-    this.dwZ = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125630);
+    this.duw = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(146075);
+    AppMethodBeat.o(125630);
   }
   
   public static final class a
   {
-    public int action = 0;
-    public String cardNum;
-    public Bitmap dxa;
+    public SnsObject dkD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rm
  * JD-Core Version:    0.7.0.1
  */

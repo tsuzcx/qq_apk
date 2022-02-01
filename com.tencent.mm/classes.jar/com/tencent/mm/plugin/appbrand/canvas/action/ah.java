@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTextBaseLineActionArg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONArray;
 
 public final class ah
@@ -15,11 +15,11 @@ public final class ah
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
     AppMethodBeat.i(144979);
-    ad.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
+    ac.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
     if ("top".equalsIgnoreCase(paramString))
     {
-      paramd.iYL.iZN = a.a.iZU;
-      paramd.iYM.iZN = a.a.iZU;
+      paramd.jzb.jAa = a.a.jAh;
+      paramd.jzc.jAa = a.a.jAh;
     }
     for (;;)
     {
@@ -27,18 +27,18 @@ public final class ah
       return true;
       if ("middle".equalsIgnoreCase(paramString))
       {
-        paramd.iYL.iZN = a.a.iZW;
-        paramd.iYM.iZN = a.a.iZW;
+        paramd.jzb.jAa = a.a.jAj;
+        paramd.jzc.jAa = a.a.jAj;
       }
       else if ("bottom".equalsIgnoreCase(paramString))
       {
-        paramd.iYL.iZN = a.a.iZV;
-        paramd.iYM.iZN = a.a.iZV;
+        paramd.jzb.jAa = a.a.jAi;
+        paramd.jzc.jAa = a.a.jAi;
       }
       else if ("normal".equalsIgnoreCase(paramString))
       {
-        paramd.iYL.iZN = a.a.iZT;
-        paramd.iYM.iZN = a.a.iZT;
+        paramd.jzb.jAa = a.a.jAg;
+        paramd.jzc.jAa = a.a.jAg;
       }
     }
   }
@@ -52,7 +52,7 @@ public final class ah
       AppMethodBeat.o(144980);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.iZu);
+    boolean bool = b(paramd, paramCanvas.jzJ);
     AppMethodBeat.o(144980);
     return bool;
   }
@@ -70,7 +70,7 @@ public final class ah
     return bool;
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144977);
     SetTextBaseLineActionArg localSetTextBaseLineActionArg = new SetTextBaseLineActionArg();
@@ -85,7 +85,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ah
  * JD-Core Version:    0.7.0.1
  */

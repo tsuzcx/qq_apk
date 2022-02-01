@@ -10,7 +10,7 @@ public final class zzi$a
     AppMethodBeat.i(4220);
     if ("com.google.android.gms.iid.MessengerCompat".equals(paramString))
     {
-      FirebaseInstanceId.wO();
+      FirebaseInstanceId.wB();
       AppMethodBeat.o(4220);
       return zzi.class;
     }

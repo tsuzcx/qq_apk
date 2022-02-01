@@ -18,14 +18,14 @@ import android.view.ViewGroup;
 abstract class a
   extends ViewGroup
 {
-  protected final a aes = new a();
-  protected final Context aet;
-  protected ActionMenuView aeu;
-  protected ActionMenuPresenter aev;
-  protected int aew;
-  protected x aex;
-  private boolean aey;
-  private boolean aez;
+  protected final a afm = new a();
+  protected final Context afn;
+  protected ActionMenuView afo;
+  protected ActionMenuPresenter afp;
+  protected int afq;
+  protected x afr;
+  private boolean afs;
+  private boolean aft;
   
   a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
@@ -33,10 +33,10 @@ abstract class a
     paramAttributeSet = new TypedValue();
     if ((paramContext.getTheme().resolveAttribute(2130968599, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
-      this.aet = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
+      this.afn = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
       return;
     }
-    this.aet = paramContext;
+    this.afn = paramContext;
   }
   
   protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -74,36 +74,36 @@ abstract class a
   
   public x c(int paramInt, long paramLong)
   {
-    if (this.aex != null) {
-      this.aex.cancel();
+    if (this.afr != null) {
+      this.afr.cancel();
     }
     if (paramInt == 0)
     {
       if (getVisibility() != 0) {
         setAlpha(0.0F);
       }
-      localx = t.ag(this).w(1.0F);
-      localx.h(paramLong);
-      localx.a(this.aes.a(localx, paramInt));
+      localx = t.ag(this).A(1.0F);
+      localx.j(paramLong);
+      localx.a(this.afm.a(localx, paramInt));
       return localx;
     }
-    x localx = t.ag(this).w(0.0F);
-    localx.h(paramLong);
-    localx.a(this.aes.a(localx, paramInt));
+    x localx = t.ag(this).A(0.0F);
+    localx.j(paramLong);
+    localx.a(this.afm.a(localx, paramInt));
     return localx;
   }
   
   public int getAnimatedVisibility()
   {
-    if (this.aex != null) {
-      return this.aes.Be;
+    if (this.afr != null) {
+      return this.afm.Cc;
     }
     return getVisibility();
   }
   
   public int getContentHeight()
   {
-    return this.aew;
+    return this.afq;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
@@ -112,8 +112,8 @@ abstract class a
     paramConfiguration = getContext().obtainStyledAttributes(null, android.support.v7.a.a.a.ActionBar, 2130968602, 0);
     setContentHeight(paramConfiguration.getLayoutDimension(13, 0));
     paramConfiguration.recycle();
-    if (this.aev != null) {
-      this.aev.hV();
+    if (this.afp != null) {
+      this.afp.ie();
     }
   }
   
@@ -121,17 +121,17 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 9) {
-      this.aez = false;
+      this.aft = false;
     }
-    if (!this.aez)
+    if (!this.aft)
     {
       boolean bool = super.onHoverEvent(paramMotionEvent);
       if ((i == 9) && (!bool)) {
-        this.aez = true;
+        this.aft = true;
       }
     }
     if ((i == 10) || (i == 3)) {
-      this.aez = false;
+      this.aft = false;
     }
     return true;
   }
@@ -140,24 +140,24 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.aey = false;
+      this.afs = false;
     }
-    if (!this.aey)
+    if (!this.afs)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       if ((i == 0) && (!bool)) {
-        this.aey = true;
+        this.afs = true;
       }
     }
     if ((i == 1) || (i == 3)) {
-      this.aey = false;
+      this.afs = false;
     }
     return true;
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.aew = paramInt;
+    this.afq = paramInt;
     requestLayout();
   }
   
@@ -165,8 +165,8 @@ abstract class a
   {
     if (paramInt != getVisibility())
     {
-      if (this.aex != null) {
-        this.aex.cancel();
+      if (this.afr != null) {
+        this.afr.cancel();
       }
       super.setVisibility(paramInt);
     }
@@ -174,8 +174,8 @@ abstract class a
   
   public boolean showOverflowMenu()
   {
-    if (this.aev != null) {
-      return this.aev.showOverflowMenu();
+    if (this.afp != null) {
+      return this.afp.showOverflowMenu();
     }
     return false;
   }
@@ -183,15 +183,15 @@ abstract class a
   protected final class a
     implements y
   {
-    int Be;
+    int Cc;
     private boolean mCanceled = false;
     
     protected a() {}
     
     public final a a(x paramx, int paramInt)
     {
-      a.this.aex = paramx;
-      this.Be = paramInt;
+      a.this.afr = paramx;
+      this.Cc = paramInt;
       return this;
     }
     
@@ -206,8 +206,8 @@ abstract class a
       if (this.mCanceled) {
         return;
       }
-      a.this.aex = null;
-      a.a(a.this, this.Be);
+      a.this.afr = null;
+      a.a(a.this, this.Cc);
     }
     
     public final void aJ(View paramView)

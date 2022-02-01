@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.talkroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kr;
-import com.tencent.mm.g.a.vi;
-import com.tencent.mm.g.a.vj;
-import com.tencent.mm.g.a.vl;
+import com.tencent.mm.g.a.la;
+import com.tencent.mm.g.a.vs;
+import com.tencent.mm.g.a.vt;
+import com.tencent.mm.g.a.vv;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.talkroom.model.b;
 import com.tencent.mm.pluginsdk.b.d;
@@ -16,10 +16,10 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(29370);
-    com.tencent.mm.sdk.b.a.ESL.c(new com.tencent.mm.sdk.b.c() {});
-    com.tencent.mm.sdk.b.a.ESL.c(new b((byte)0));
-    com.tencent.mm.sdk.b.a.ESL.c(new a((byte)0));
-    com.tencent.mm.sdk.b.a.ESL.c(new c((byte)0));
+    com.tencent.mm.sdk.b.a.GpY.c(new com.tencent.mm.sdk.b.c() {});
+    com.tencent.mm.sdk.b.a.GpY.c(new b((byte)0));
+    com.tencent.mm.sdk.b.a.GpY.c(new a((byte)0));
+    com.tencent.mm.sdk.b.a.GpY.c(new c((byte)0));
     AppMethodBeat.o(29370);
   }
   
@@ -45,41 +45,41 @@ public class Plugin
   }
   
   final class a
-    extends com.tencent.mm.sdk.b.c<vi>
+    extends com.tencent.mm.sdk.b.c<vs>
   {
     private a()
     {
       AppMethodBeat.i(161452);
-      this.__eventId = vi.class.getName().hashCode();
+      this.__eventId = vs.class.getName().hashCode();
       AppMethodBeat.o(161452);
     }
   }
   
   static final class b
-    extends com.tencent.mm.sdk.b.c<vj>
+    extends com.tencent.mm.sdk.b.c<vt>
   {
     private b()
     {
       AppMethodBeat.i(161454);
-      this.__eventId = vj.class.getName().hashCode();
+      this.__eventId = vt.class.getName().hashCode();
       AppMethodBeat.o(161454);
     }
   }
   
   final class c
-    extends com.tencent.mm.sdk.b.c<vl>
+    extends com.tencent.mm.sdk.b.c<vv>
   {
     private c()
     {
       AppMethodBeat.i(161456);
-      this.__eventId = vl.class.getName().hashCode();
+      this.__eventId = vv.class.getName().hashCode();
       AppMethodBeat.o(161456);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cty;
-import com.tencent.mm.protocal.protobuf.czp;
-import com.tencent.mm.protocal.protobuf.czq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.czk;
+import com.tencent.mm.protocal.protobuf.dfb;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class l
@@ -21,22 +21,22 @@ public final class l
 {
   private g callback;
   private b rr;
-  public String uwh;
+  public String vFa;
   
-  public l(cty paramcty, String paramString)
+  public l(czk paramczk, String paramString)
   {
     AppMethodBeat.i(66906);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new czp();
-    ((b.a)localObject).gUV = new czq();
+    ((b.a)localObject).hvt = new dfb();
+    ((b.a)localObject).hvu = new dfc();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/submitmallorder";
     ((b.a)localObject).funcId = 556;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (czp)this.rr.gUS.gUX;
-    ((czp)localObject).Erp = paramcty;
-    ((czp)localObject).Err = paramString;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dfb)this.rr.hvr.hvw;
+    ((dfb)localObject).FOr = paramczk;
+    ((dfb)localObject).FOt = paramString;
     AppMethodBeat.o(66906);
   }
   
@@ -57,20 +57,20 @@ public final class l
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(66908);
-    paramq = (czq)((b)paramq).gUT.gUX;
+    paramq = (dfc)((b)paramq).hvs.hvw;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.d("MicroMsg.NetSceneMallSubmitMallOrder", "resp.ReqKey " + paramq.Erq);
-      this.uwh = paramq.Erq;
+      ac.d("MicroMsg.NetSceneMallSubmitMallOrder", "resp.ReqKey " + paramq.FOs);
+      this.vFa = paramq.FOs;
     }
-    ad.d("MicroMsg.NetSceneMallSubmitMallOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
+    ac.d("MicroMsg.NetSceneMallSubmitMallOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(66908);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.l
  * JD-Core Version:    0.7.0.1
  */

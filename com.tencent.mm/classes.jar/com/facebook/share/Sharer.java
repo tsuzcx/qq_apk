@@ -5,6 +5,21 @@ public abstract interface Sharer
   public abstract boolean getShouldFailOnDataError();
   
   public abstract void setShouldFailOnDataError(boolean paramBoolean);
+  
+  public static class Result
+  {
+    final String postId;
+    
+    public Result(String paramString)
+    {
+      this.postId = paramString;
+    }
+    
+    public String getPostId()
+    {
+      return this.postId;
+    }
+  }
 }
 
 

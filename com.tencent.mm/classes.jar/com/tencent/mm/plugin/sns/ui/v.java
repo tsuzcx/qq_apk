@@ -4,9 +4,9 @@ import android.view.View;
 
 public abstract interface v
 {
-  public abstract boolean dzb();
+  public abstract boolean dNy();
   
-  public abstract boolean eF(View paramView);
+  public abstract boolean eS(View paramView);
 }
 
 

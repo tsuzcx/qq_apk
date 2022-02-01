@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="148.0dip" android:layout_height="wrap_content" app:cornerRadius="@dimen/bq"
+<android.support.constraint.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="148.0dip" android:layout_height="wrap_content">
-        <include layout="@layout/bpe" />
-        <include layout="@layout/bpc" />
-    </LinearLayout>
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <ImageView android:id="@id/bzm" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/c0v" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/bq" android:layout_marginRight="@dimen/ci" android:maxWidth="100.0dip" android:maxLines="1" app:layout_constraintBottom_toBottomOf="@id/bzm" app:layout_constraintLeft_toRightOf="@id/bzm" app:layout_constraintTop_toTopOf="@id/bzm" />
+    <ImageView android:id="@id/ss" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" app:layout_constraintBottom_toBottomOf="@id/bzm" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/c0v" app:layout_constraintTop_toTopOf="@id/bzm" />
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/fd" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/c03" android:layout_width="0.0dip" android:layout_height="36.0dip" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试" android:maxLines="1" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/bzm" />
+</android.support.constraint.ConstraintLayout>

@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static boolean aB(Context paramContext)
+  public static boolean aC(Context paramContext)
   {
     AppMethodBeat.i(140517);
     if (paramContext == null)
@@ -57,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.h.f
  * JD-Core Version:    0.7.0.1
  */

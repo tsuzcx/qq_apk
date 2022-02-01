@@ -9,15 +9,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.remittance.bankcard.a.h;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
 import com.tencent.mm.plugin.remittance.bankcard.model.a;
 import com.tencent.mm.plugin.remittance.bankcard.model.b;
-import com.tencent.mm.protocal.protobuf.apy;
-import com.tencent.mm.protocal.protobuf.ig;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.atc;
+import com.tencent.mm.protocal.protobuf.im;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.sortview.d;
 import com.tencent.mm.wallet_core.c.r;
 import com.tencent.mm.wallet_core.c.r.a;
@@ -30,7 +30,7 @@ import java.util.List;
 public class BankRemitSelectBankUI
   extends BankRemitBaseUI
 {
-  private BankRemitSortView vwQ;
+  private BankRemitSortView wGV;
   
   public int getLayoutId()
   {
@@ -40,13 +40,13 @@ public class BankRemitSelectBankUI
   public void initView()
   {
     AppMethodBeat.i(67581);
-    this.vwQ = ((BankRemitSortView)findViewById(2131297565));
-    this.vwQ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.wGV = ((BankRemitSortView)findViewById(2131297565));
+    this.wGV.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(67576);
-        paramAnonymousAdapterView = (ig)((d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).data;
+        paramAnonymousAdapterView = (im)((d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).data;
         if (paramAnonymousAdapterView != null)
         {
           paramAnonymousAdapterView = new BankcardElemParcel(paramAnonymousAdapterView);
@@ -57,7 +57,7 @@ public class BankRemitSelectBankUI
           AppMethodBeat.o(67576);
           return;
         }
-        ad.w("MicroMsg.BankRemitSelectBankUI", "bankcardelem is null, : %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ac.w("MicroMsg.BankRemitSelectBankUI", "bankcardelem is null, : %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(67576);
       }
     });
@@ -71,9 +71,9 @@ public class BankRemitSelectBankUI
     setMMTitle(2131756397);
     addSceneEndListener(1399);
     initView();
-    ad.i("MicroMsg.BankRemitSelectBankUI", "do fetch data");
+    ac.i("MicroMsg.BankRemitSelectBankUI", "do fetch data");
     paramBundle = new h();
-    paramBundle.q(this);
+    paramBundle.r(this);
     doSceneProgress(paramBundle);
     AppMethodBeat.o(67580);
   }
@@ -98,40 +98,40 @@ public class BankRemitSelectBankUI
         {
           AppMethodBeat.i(67579);
           paramAnonymousn = new ArrayList();
-          Object localObject2 = paramString.vuj.Drf;
-          paramAnonymousString = paramString.vuj.Dre;
+          Object localObject2 = paramString.wEo.EMh;
+          paramAnonymousString = paramString.wEo.EMg;
           Object localObject1 = new b();
           Object localObject3;
           if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
           {
-            ad.i("MicroMsg.BankRemitSelectBankUI", "freq card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
+            ac.i("MicroMsg.BankRemitSelectBankUI", "freq card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
             localObject2 = ((List)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
-              localObject3 = (ig)((Iterator)localObject2).next();
+              localObject3 = (im)((Iterator)localObject2).next();
               d locald = new d();
-              locald.GgC = "☆";
+              locald.HGs = "☆";
               locald.data = localObject3;
               paramAnonymousn.add(locald);
             }
           }
           if ((paramAnonymousString != null) && (!paramAnonymousString.isEmpty()))
           {
-            ad.i("MicroMsg.BankRemitSelectBankUI", "card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
+            ac.i("MicroMsg.BankRemitSelectBankUI", "card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
             Collections.sort(paramAnonymousString, (Comparator)localObject1);
             localObject1 = paramAnonymousString.iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (ig)((Iterator)localObject1).next();
-              if (!bt.isNullOrNil(((ig)localObject2).szi))
+              localObject2 = (im)((Iterator)localObject1).next();
+              if (!bs.isNullOrNil(((im)localObject2).tGS))
               {
-                if (!bt.isNullOrNil(((ig)localObject2).CDP)) {
-                  ad.i("MicroMsg.BankRemitSelectBankUI", "use sort pingyin: %s", new Object[] { ((ig)localObject2).CDP });
+                if (!bs.isNullOrNil(((im)localObject2).DWp)) {
+                  ac.i("MicroMsg.BankRemitSelectBankUI", "use sort pingyin: %s", new Object[] { ((im)localObject2).DWp });
                 }
-                for (paramAnonymousString = ((ig)localObject2).CDP.toUpperCase().charAt(0);; paramAnonymousString = a.ama(((ig)localObject2).szi))
+                for (paramAnonymousString = ((im)localObject2).DWp.toUpperCase().charAt(0);; paramAnonymousString = a.arf(((im)localObject2).tGS))
                 {
                   localObject3 = new d();
-                  ((d)localObject3).GgC = paramAnonymousString;
+                  ((d)localObject3).HGs = paramAnonymousString;
                   ((d)localObject3).data = localObject2;
                   paramAnonymousn.add(localObject3);
                   break;
@@ -139,7 +139,7 @@ public class BankRemitSelectBankUI
               }
             }
           }
-          BankRemitSelectBankUI.a(BankRemitSelectBankUI.this).ga(paramAnonymousn);
+          BankRemitSelectBankUI.a(BankRemitSelectBankUI.this).gh(paramAnonymousn);
           AppMethodBeat.o(67579);
         }
       }).b(new r.a()
@@ -147,9 +147,9 @@ public class BankRemitSelectBankUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67578);
-          ad.e("MicroMsg.BankRemitSelectBankUI", "response error: %s, %s", new Object[] { Integer.valueOf(paramString.vuj.dcG), paramString.vuj.nTK });
-          if (!bt.isNullOrNil(paramString.vuj.nTK)) {
-            Toast.makeText(BankRemitSelectBankUI.this, paramString.vuj.nTK, 1).show();
+          ac.e("MicroMsg.BankRemitSelectBankUI", "response error: %s, %s", new Object[] { Integer.valueOf(paramString.wEo.dae), paramString.wEo.oxf });
+          if (!bs.isNullOrNil(paramString.wEo.oxf)) {
+            Toast.makeText(BankRemitSelectBankUI.this, paramString.wEo.oxf, 1).show();
           }
           AppMethodBeat.o(67578);
         }
@@ -158,7 +158,7 @@ public class BankRemitSelectBankUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67577);
-          ad.e("MicroMsg.BankRemitSelectBankUI", "net error: %s", new Object[] { paramString });
+          ac.e("MicroMsg.BankRemitSelectBankUI", "net error: %s", new Object[] { paramString });
           AppMethodBeat.o(67577);
         }
       });

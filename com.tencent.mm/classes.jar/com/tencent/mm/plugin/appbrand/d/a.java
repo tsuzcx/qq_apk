@@ -10,8 +10,8 @@ import com.tencent.mm.modelappbrand.b;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandSearchUI;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.util.Map;
 
 public enum a
@@ -19,19 +19,19 @@ public enum a
   static
   {
     AppMethodBeat.i(174716);
-    jaU = new a("INSTANCE");
-    jaV = new a[] { jaU };
+    jBh = new a("INSTANCE");
+    jBi = new a[] { jBh };
     AppMethodBeat.o(174716);
   }
   
   private a() {}
   
-  public static Intent E(Context paramContext, int paramInt)
+  public static Intent H(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(21061);
     Intent localIntent = new Intent();
-    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Cqe);
-    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Cqa);
+    localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
+    localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
     localIntent.putExtra("neverGetA8Key", true);
     localIntent.setClass(paramContext, AppBrandSearchUI.class);
     localIntent.putExtra("key_trust_url", true);
@@ -41,21 +41,21 @@ public enum a
     localIntent.putExtra("ftsneedkeyboard", true);
     localIntent.putExtra("ftsType", 64);
     localIntent.putExtra("ftsbizscene", paramInt);
-    Object localObject = com.tencent.mm.plugin.websearch.b.a.aH(paramInt, true);
-    String str = b.atH();
+    Object localObject = com.tencent.mm.plugin.websearch.b.a.aL(paramInt, true);
+    String str = b.aAy();
     ((Map)localObject).put("WASessionId", str);
     ((Map)localObject).put("sessionId", str);
     ((Map)localObject).put("subSessionId", str);
-    localIntent.putExtra("rawUrl", com.tencent.mm.plugin.websearch.b.a.aR((Map)localObject));
+    localIntent.putExtra("rawUrl", com.tencent.mm.plugin.websearch.b.a.aV((Map)localObject));
     localIntent.putExtra("key_load_js_without_delay", true);
     localIntent.addFlags(67108864);
     localIntent.putExtra("key_session_id", str);
     localIntent.putExtra("sessionId", str);
     localIntent.putExtra("subSessionId", str);
-    localObject = g.afB().afk();
+    localObject = g.agR().agA();
     if (paramInt == 52)
     {
-      localObject = ((ab)localObject).get(ae.a.FnE, null);
+      localObject = ((ae)localObject).get(ah.a.GLt, null);
       if (!(localObject instanceof String)) {
         break label339;
       }
@@ -73,7 +73,7 @@ public enum a
       localIntent.putExtra("key_preload_biz", 5);
       AppMethodBeat.o(21061);
       return localIntent;
-      localObject = ((ab)localObject).get(ae.a.FnC, null);
+      localObject = ((ae)localObject).get(ah.a.GLr, null);
       if ((localObject != null) && ((localObject instanceof String)))
       {
         localObject = (String)localObject;

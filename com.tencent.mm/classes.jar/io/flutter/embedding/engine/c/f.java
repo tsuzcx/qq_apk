@@ -1,41 +1,46 @@
 package io.flutter.embedding.engine.c;
 
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.a.a.g;
-import io.flutter.a.a.k;
-import io.flutter.a.a.k.c;
 import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.plugin.a.g;
+import io.flutter.plugin.a.k;
+import io.flutter.plugin.a.k.c;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class f
 {
-  public f IZD;
-  private final k.c IZE;
-  public final k sNT;
+  public f KNg;
+  protected final k.c KNh;
+  public final k uzK;
   
   public f(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10242);
-    this.IZE = new k.c()
+    this.KNh = new k.c()
     {
       /* Error */
-      public final void a(io.flutter.a.a.j paramAnonymousj, io.flutter.a.a.k.d paramAnonymousd)
+      public final void a(io.flutter.plugin.a.j paramAnonymousj, io.flutter.plugin.a.k.d paramAnonymousd)
       {
         // Byte code:
         //   0: sipush 10217
         //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   6: aload_0
-        //   7: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   10: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
+        //   7: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   10: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
         //   13: ifnonnull +10 -> 23
         //   16: sipush 10217
         //   19: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   22: return
         //   23: aload_1
-        //   24: getfield 43	io/flutter/a/a/j:method	Ljava/lang/String;
+        //   24: getfield 43	io/flutter/plugin/a/j:method	Ljava/lang/String;
         //   27: astore 6
         //   29: aload_1
-        //   30: getfield 47	io/flutter/a/a/j:fTP	Ljava/lang/Object;
+        //   30: getfield 47	io/flutter/plugin/a/j:fXJ	Ljava/lang/Object;
         //   33: astore_1
         //   34: new 49	java/lang/StringBuilder
         //   37: dup
@@ -46,515 +51,612 @@ public final class f
         //   48: ldc 60
         //   50: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   53: pop
-        //   54: invokestatic 65	io/flutter/a:ftS	()V
+        //   54: invokestatic 65	io/flutter/a:fMD	()V
         //   57: iconst_m1
         //   58: istore_3
         //   59: aload 6
         //   61: invokevirtual 71	java/lang/String:hashCode	()I
-        //   64: lookupswitch	default:+1025->1089, -766342101:+211->275, -720677196:+243->307, -548468504:+150->214, -247230243:+120->184, -215273374:+105->169, 241845679:+180->244, 1390477857:+195->259, 1514180520:+227->291, 1674312266:+165->229, 2119655719:+135->199
-        //   157: invokeinterface 76 1 0
-        //   162: sipush 10217
-        //   165: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   168: return
-        //   169: aload 6
-        //   171: ldc 78
-        //   173: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   176: ifeq +913 -> 1089
-        //   179: iconst_0
-        //   180: istore_3
-        //   181: goto +908 -> 1089
-        //   184: aload 6
-        //   186: ldc 84
-        //   188: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   191: ifeq +898 -> 1089
-        //   194: iconst_1
-        //   195: istore_3
-        //   196: goto +893 -> 1089
-        //   199: aload 6
-        //   201: ldc 86
-        //   203: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   206: ifeq +883 -> 1089
-        //   209: iconst_2
-        //   210: istore_3
-        //   211: goto +878 -> 1089
-        //   214: aload 6
-        //   216: ldc 88
-        //   218: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   221: ifeq +868 -> 1089
-        //   224: iconst_3
-        //   225: istore_3
-        //   226: goto +863 -> 1089
-        //   229: aload 6
-        //   231: ldc 90
-        //   233: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   236: ifeq +853 -> 1089
-        //   239: iconst_4
-        //   240: istore_3
-        //   241: goto +848 -> 1089
-        //   244: aload 6
-        //   246: ldc 92
-        //   248: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   251: ifeq +838 -> 1089
-        //   254: iconst_5
-        //   255: istore_3
-        //   256: goto +833 -> 1089
-        //   259: aload 6
-        //   261: ldc 94
-        //   263: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   266: ifeq +823 -> 1089
-        //   269: bipush 6
+        //   64: lookupswitch	default:+1188->1252, -766342101:+227->291, -720677196:+291->355, -548468504:+166->230, -247230243:+136->200, -215273374:+121->185, 96412730:+243->307, 232206254:+259->323, 241845679:+196->260, 1390477857:+211->275, 1514180520:+275->339, 1674312266:+181->245, 2119655719:+151->215
+        //   173: invokeinterface 76 1 0
+        //   178: sipush 10217
+        //   181: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   184: return
+        //   185: aload 6
+        //   187: ldc 78
+        //   189: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   192: ifeq +1060 -> 1252
+        //   195: iconst_0
+        //   196: istore_3
+        //   197: goto +1055 -> 1252
+        //   200: aload 6
+        //   202: ldc 84
+        //   204: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   207: ifeq +1045 -> 1252
+        //   210: iconst_1
+        //   211: istore_3
+        //   212: goto +1040 -> 1252
+        //   215: aload 6
+        //   217: ldc 86
+        //   219: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   222: ifeq +1030 -> 1252
+        //   225: iconst_2
+        //   226: istore_3
+        //   227: goto +1025 -> 1252
+        //   230: aload 6
+        //   232: ldc 88
+        //   234: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   237: ifeq +1015 -> 1252
+        //   240: iconst_3
+        //   241: istore_3
+        //   242: goto +1010 -> 1252
+        //   245: aload 6
+        //   247: ldc 90
+        //   249: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   252: ifeq +1000 -> 1252
+        //   255: iconst_4
+        //   256: istore_3
+        //   257: goto +995 -> 1252
+        //   260: aload 6
+        //   262: ldc 92
+        //   264: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   267: ifeq +985 -> 1252
+        //   270: iconst_5
         //   271: istore_3
-        //   272: goto +817 -> 1089
+        //   272: goto +980 -> 1252
         //   275: aload 6
-        //   277: ldc 96
+        //   277: ldc 94
         //   279: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   282: ifeq +807 -> 1089
-        //   285: bipush 7
+        //   282: ifeq +970 -> 1252
+        //   285: bipush 6
         //   287: istore_3
-        //   288: goto +801 -> 1089
+        //   288: goto +964 -> 1252
         //   291: aload 6
-        //   293: ldc 98
+        //   293: ldc 96
         //   295: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   298: ifeq +791 -> 1089
-        //   301: bipush 8
+        //   298: ifeq +954 -> 1252
+        //   301: bipush 7
         //   303: istore_3
-        //   304: goto +785 -> 1089
+        //   304: goto +948 -> 1252
         //   307: aload 6
-        //   309: ldc 100
+        //   309: ldc 98
         //   311: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
-        //   314: istore 5
-        //   316: iload 5
-        //   318: ifeq +771 -> 1089
-        //   321: bipush 9
-        //   323: istore_3
-        //   324: goto +765 -> 1089
-        //   327: aload_1
-        //   328: checkcast 67	java/lang/String
-        //   331: invokestatic 106	io/flutter/embedding/engine/c/f$g:aPT	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$g;
-        //   334: astore_1
-        //   335: aload_0
-        //   336: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   339: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   342: aload_1
-        //   343: invokeinterface 111 2 0
-        //   348: aload_2
-        //   349: aconst_null
-        //   350: invokeinterface 115 2 0
-        //   355: sipush 10217
-        //   358: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   361: return
-        //   362: astore_1
-        //   363: aload_2
-        //   364: ldc 117
-        //   366: new 49	java/lang/StringBuilder
-        //   369: dup
-        //   370: ldc 119
-        //   372: invokespecial 54	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   314: ifeq +938 -> 1252
+        //   317: bipush 8
+        //   319: istore_3
+        //   320: goto +932 -> 1252
+        //   323: aload 6
+        //   325: ldc 100
+        //   327: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   330: ifeq +922 -> 1252
+        //   333: bipush 9
+        //   335: istore_3
+        //   336: goto +916 -> 1252
+        //   339: aload 6
+        //   341: ldc 102
+        //   343: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   346: ifeq +906 -> 1252
+        //   349: bipush 10
+        //   351: istore_3
+        //   352: goto +900 -> 1252
+        //   355: aload 6
+        //   357: ldc 104
+        //   359: invokevirtual 82	java/lang/String:equals	(Ljava/lang/Object;)Z
+        //   362: istore 5
+        //   364: iload 5
+        //   366: ifeq +886 -> 1252
+        //   369: bipush 11
+        //   371: istore_3
+        //   372: goto +880 -> 1252
         //   375: aload_1
-        //   376: invokevirtual 123	org/json/JSONException:getMessage	()Ljava/lang/String;
-        //   379: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   382: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   385: aconst_null
-        //   386: invokeinterface 129 4 0
-        //   391: sipush 10217
-        //   394: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   397: return
-        //   398: astore_1
-        //   399: aload_2
-        //   400: ldc 117
-        //   402: aload_1
-        //   403: invokevirtual 130	java/lang/NoSuchFieldException:getMessage	()Ljava/lang/String;
-        //   406: aconst_null
-        //   407: invokeinterface 129 4 0
-        //   412: sipush 10217
-        //   415: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   418: return
-        //   419: aload_1
-        //   420: checkcast 67	java/lang/String
-        //   423: invokestatic 136	io/flutter/embedding/engine/c/f$e:aPR	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$e;
-        //   426: astore_1
-        //   427: aload_0
-        //   428: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   431: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   434: aload_1
-        //   435: invokeinterface 139 2 0
-        //   440: aload_2
-        //   441: aconst_null
-        //   442: invokeinterface 115 2 0
-        //   447: sipush 10217
-        //   450: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   453: return
-        //   454: astore_1
-        //   455: aload_2
-        //   456: ldc 117
-        //   458: aload_1
-        //   459: invokevirtual 130	java/lang/NoSuchFieldException:getMessage	()Ljava/lang/String;
-        //   462: aconst_null
-        //   463: invokeinterface 129 4 0
-        //   468: sipush 10217
-        //   471: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   474: return
-        //   475: aload_1
-        //   476: checkcast 141	org/json/JSONArray
-        //   479: invokestatic 145	io/flutter/embedding/engine/c/f:Q	(Lorg/json/JSONArray;)I
-        //   482: istore_3
-        //   483: aload_0
-        //   484: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   487: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   490: iload_3
-        //   491: invokeinterface 148 2 0
-        //   496: aload_2
-        //   497: aconst_null
-        //   498: invokeinterface 115 2 0
-        //   503: sipush 10217
-        //   506: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   509: return
-        //   510: aload_2
-        //   511: ldc 117
-        //   513: aload_1
-        //   514: invokevirtual 151	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   517: aconst_null
-        //   518: invokeinterface 129 4 0
-        //   523: sipush 10217
-        //   526: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   529: return
-        //   530: aload_1
-        //   531: checkcast 153	org/json/JSONObject
-        //   534: astore_1
-        //   535: aload_1
-        //   536: ldc 155
-        //   538: invokevirtual 159	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-        //   541: istore 4
-        //   543: iload 4
-        //   545: istore_3
-        //   546: iload 4
-        //   548: ifeq +9 -> 557
-        //   551: iload 4
-        //   553: ldc 160
-        //   555: ior
-        //   556: istore_3
-        //   557: new 162	io/flutter/embedding/engine/c/f$a
-        //   560: dup
-        //   561: iload_3
-        //   562: aload_1
-        //   563: ldc 164
-        //   565: invokevirtual 168	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-        //   568: invokespecial 171	io/flutter/embedding/engine/c/f$a:<init>	(ILjava/lang/String;)V
-        //   571: astore_1
-        //   572: aload_0
-        //   573: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   576: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   579: aload_1
-        //   580: invokeinterface 174 2 0
-        //   585: aload_2
-        //   586: aconst_null
-        //   587: invokeinterface 115 2 0
-        //   592: sipush 10217
-        //   595: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   598: return
-        //   599: astore_1
-        //   600: aload_2
-        //   601: ldc 117
-        //   603: aload_1
-        //   604: invokevirtual 123	org/json/JSONException:getMessage	()Ljava/lang/String;
-        //   607: aconst_null
-        //   608: invokeinterface 129 4 0
-        //   613: sipush 10217
-        //   616: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   619: return
-        //   620: aload_1
-        //   621: checkcast 141	org/json/JSONArray
-        //   624: invokestatic 178	io/flutter/embedding/engine/c/f:R	(Lorg/json/JSONArray;)Ljava/util/List;
-        //   627: astore_1
-        //   628: aload_0
-        //   629: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   632: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   635: aload_1
-        //   636: invokeinterface 182 2 0
-        //   641: aload_2
-        //   642: aconst_null
-        //   643: invokeinterface 115 2 0
-        //   648: sipush 10217
-        //   651: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   654: return
-        //   655: aload_2
-        //   656: ldc 117
-        //   658: aload_1
-        //   659: invokevirtual 151	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   662: aconst_null
-        //   663: invokeinterface 129 4 0
-        //   668: sipush 10217
-        //   671: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   674: return
-        //   675: aload_0
-        //   676: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   679: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   682: invokeinterface 185 1 0
-        //   687: aload_2
-        //   688: aconst_null
-        //   689: invokeinterface 115 2 0
-        //   694: sipush 10217
-        //   697: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   700: return
-        //   701: aload_1
-        //   702: checkcast 153	org/json/JSONObject
-        //   705: astore 9
-        //   707: aload 9
-        //   709: ldc 187
-        //   711: invokevirtual 191	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
-        //   714: ifne +370 -> 1084
-        //   717: aload 9
-        //   719: ldc 187
-        //   721: invokevirtual 168	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-        //   724: invokestatic 197	io/flutter/embedding/engine/c/f$b:aPO	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$b;
-        //   727: astore_1
-        //   728: aload 9
-        //   730: ldc 199
-        //   732: invokevirtual 191	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
-        //   735: ifne +343 -> 1078
-        //   738: aload 9
-        //   740: ldc 199
-        //   742: invokevirtual 159	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-        //   745: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-        //   748: astore 6
-        //   750: aload 9
-        //   752: ldc 207
-        //   754: invokevirtual 191	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
-        //   757: ifne +315 -> 1072
-        //   760: aload 9
-        //   762: ldc 207
-        //   764: invokevirtual 168	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-        //   767: invokestatic 197	io/flutter/embedding/engine/c/f$b:aPO	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$b;
-        //   770: astore 7
-        //   772: aload 9
-        //   774: ldc 209
-        //   776: invokevirtual 191	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
-        //   779: ifne +287 -> 1066
-        //   782: aload 9
-        //   784: ldc 209
-        //   786: invokevirtual 159	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-        //   789: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-        //   792: astore 8
-        //   794: aload 9
-        //   796: ldc 211
-        //   798: invokevirtual 191	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
-        //   801: ifne +259 -> 1060
-        //   804: aload 9
-        //   806: ldc 211
-        //   808: invokevirtual 159	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-        //   811: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-        //   814: astore 9
-        //   816: new 213	io/flutter/embedding/engine/c/f$h
-        //   819: dup
-        //   820: aload 8
-        //   822: aload 7
-        //   824: aload 6
-        //   826: aload_1
-        //   827: aload 9
-        //   829: invokespecial 216	io/flutter/embedding/engine/c/f$h:<init>	(Ljava/lang/Integer;Lio/flutter/embedding/engine/c/f$b;Ljava/lang/Integer;Lio/flutter/embedding/engine/c/f$b;Ljava/lang/Integer;)V
-        //   832: astore_1
-        //   833: aload_0
-        //   834: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   837: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   840: aload_1
-        //   841: invokeinterface 219 2 0
-        //   846: aload_2
-        //   847: aconst_null
-        //   848: invokeinterface 115 2 0
-        //   853: sipush 10217
-        //   856: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   859: return
-        //   860: aload_2
-        //   861: ldc 117
-        //   863: aload_1
-        //   864: invokevirtual 151	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   867: aconst_null
-        //   868: invokeinterface 129 4 0
-        //   873: sipush 10217
-        //   876: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   879: return
-        //   880: aload_0
-        //   881: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   884: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   887: invokeinterface 222 1 0
-        //   892: aload_2
-        //   893: aconst_null
-        //   894: invokeinterface 115 2 0
-        //   899: sipush 10217
-        //   902: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   905: return
-        //   906: aload_1
-        //   907: checkcast 67	java/lang/String
-        //   910: astore 6
-        //   912: aload 6
-        //   914: ifnull +245 -> 1159
-        //   917: aload 6
-        //   919: invokestatic 228	io/flutter/embedding/engine/c/f$c:aPP	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$c;
-        //   922: astore_1
-        //   923: aload_0
-        //   924: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   927: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   930: aload_1
-        //   931: invokeinterface 231 2 0
-        //   936: astore_1
-        //   937: aload_1
-        //   938: ifnull +59 -> 997
-        //   941: new 153	org/json/JSONObject
-        //   944: dup
-        //   945: invokespecial 232	org/json/JSONObject:<init>	()V
-        //   948: astore 6
-        //   950: aload 6
-        //   952: ldc 234
-        //   954: aload_1
-        //   955: invokevirtual 238	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-        //   958: pop
-        //   959: aload_2
-        //   960: aload 6
-        //   962: invokeinterface 115 2 0
-        //   967: sipush 10217
-        //   970: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   973: return
-        //   974: astore_1
-        //   975: aload_2
-        //   976: ldc 117
-        //   978: ldc 240
-        //   980: aload 6
-        //   982: invokestatic 243	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-        //   985: invokevirtual 246	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   988: aconst_null
-        //   989: invokeinterface 129 4 0
-        //   994: goto +165 -> 1159
-        //   997: aload_2
-        //   998: aconst_null
-        //   999: invokeinterface 115 2 0
-        //   1004: sipush 10217
-        //   1007: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   1010: return
-        //   1011: aload_1
-        //   1012: checkcast 153	org/json/JSONObject
-        //   1015: ldc 234
-        //   1017: invokevirtual 168	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-        //   1020: astore_1
-        //   1021: aload_0
-        //   1022: getfield 14	io/flutter/embedding/engine/c/f$1:IZF	Lio/flutter/embedding/engine/c/f;
-        //   1025: getfield 34	io/flutter/embedding/engine/c/f:IZD	Lio/flutter/embedding/engine/c/f$f;
-        //   1028: aload_1
-        //   1029: invokeinterface 249 2 0
-        //   1034: aload_2
-        //   1035: aconst_null
-        //   1036: invokeinterface 115 2 0
-        //   1041: sipush 10217
-        //   1044: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   1047: return
-        //   1048: astore_1
-        //   1049: goto -189 -> 860
-        //   1052: astore_1
-        //   1053: goto -398 -> 655
-        //   1056: astore_1
-        //   1057: goto -547 -> 510
-        //   1060: aconst_null
-        //   1061: astore 9
-        //   1063: goto -247 -> 816
-        //   1066: aconst_null
-        //   1067: astore 8
-        //   1069: goto -275 -> 794
-        //   1072: aconst_null
-        //   1073: astore 7
-        //   1075: goto -303 -> 772
-        //   1078: aconst_null
-        //   1079: astore 6
-        //   1081: goto -331 -> 750
-        //   1084: aconst_null
-        //   1085: astore_1
-        //   1086: goto -358 -> 728
-        //   1089: iload_3
-        //   1090: tableswitch	default:+54 -> 1144, 0:+-763->327, 1:+-671->419, 2:+-615->475, 3:+-560->530, 4:+-470->620, 5:+-415->675, 6:+-389->701, 7:+-210->880, 8:+-184->906, 9:+-79->1011
-        //   1145: <illegal opcode>
-        //   1146: fload_2
-        //   1147: astore_1
-        //   1148: goto -638 -> 510
-        //   1151: astore_1
-        //   1152: goto -497 -> 655
-        //   1155: astore_1
-        //   1156: goto -296 -> 860
-        //   1159: aconst_null
-        //   1160: astore_1
-        //   1161: goto -238 -> 923
+        //   376: checkcast 67	java/lang/String
+        //   379: invokestatic 110	io/flutter/embedding/engine/c/f$g:aVR	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$g;
+        //   382: astore_1
+        //   383: aload_0
+        //   384: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   387: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   390: aload_1
+        //   391: invokeinterface 115 2 0
+        //   396: aload_2
+        //   397: aconst_null
+        //   398: invokeinterface 119 2 0
+        //   403: sipush 10217
+        //   406: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   409: return
+        //   410: astore_1
+        //   411: aload_2
+        //   412: ldc 121
+        //   414: new 49	java/lang/StringBuilder
+        //   417: dup
+        //   418: ldc 123
+        //   420: invokespecial 54	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   423: aload_1
+        //   424: invokevirtual 127	org/json/JSONException:getMessage	()Ljava/lang/String;
+        //   427: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   430: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   433: aconst_null
+        //   434: invokeinterface 134 4 0
+        //   439: sipush 10217
+        //   442: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   445: return
+        //   446: astore_1
+        //   447: aload_2
+        //   448: ldc 121
+        //   450: aload_1
+        //   451: invokevirtual 135	java/lang/NoSuchFieldException:getMessage	()Ljava/lang/String;
+        //   454: aconst_null
+        //   455: invokeinterface 134 4 0
+        //   460: sipush 10217
+        //   463: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   466: return
+        //   467: aload_1
+        //   468: checkcast 67	java/lang/String
+        //   471: invokestatic 141	io/flutter/embedding/engine/c/f$e:aVP	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$e;
+        //   474: astore_1
+        //   475: aload_0
+        //   476: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   479: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   482: aload_1
+        //   483: invokeinterface 144 2 0
+        //   488: aload_2
+        //   489: aconst_null
+        //   490: invokeinterface 119 2 0
+        //   495: sipush 10217
+        //   498: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   501: return
+        //   502: astore_1
+        //   503: aload_2
+        //   504: ldc 121
+        //   506: aload_1
+        //   507: invokevirtual 135	java/lang/NoSuchFieldException:getMessage	()Ljava/lang/String;
+        //   510: aconst_null
+        //   511: invokeinterface 134 4 0
+        //   516: sipush 10217
+        //   519: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   522: return
+        //   523: aload_1
+        //   524: checkcast 146	org/json/JSONArray
+        //   527: invokestatic 150	io/flutter/embedding/engine/c/f:R	(Lorg/json/JSONArray;)I
+        //   530: istore_3
+        //   531: aload_0
+        //   532: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   535: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   538: iload_3
+        //   539: invokeinterface 153 2 0
+        //   544: aload_2
+        //   545: aconst_null
+        //   546: invokeinterface 119 2 0
+        //   551: sipush 10217
+        //   554: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   557: return
+        //   558: aload_2
+        //   559: ldc 121
+        //   561: aload_1
+        //   562: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   565: aconst_null
+        //   566: invokeinterface 134 4 0
+        //   571: sipush 10217
+        //   574: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   577: return
+        //   578: aload_1
+        //   579: checkcast 158	org/json/JSONObject
+        //   582: astore_1
+        //   583: aload_1
+        //   584: ldc 160
+        //   586: invokevirtual 164	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+        //   589: istore 4
+        //   591: iload 4
+        //   593: istore_3
+        //   594: iload 4
+        //   596: ifeq +9 -> 605
+        //   599: iload 4
+        //   601: ldc 165
+        //   603: ior
+        //   604: istore_3
+        //   605: new 167	io/flutter/embedding/engine/c/f$a
+        //   608: dup
+        //   609: iload_3
+        //   610: aload_1
+        //   611: ldc 169
+        //   613: invokevirtual 173	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+        //   616: invokespecial 176	io/flutter/embedding/engine/c/f$a:<init>	(ILjava/lang/String;)V
+        //   619: astore_1
+        //   620: aload_0
+        //   621: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   624: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   627: aload_1
+        //   628: invokeinterface 179 2 0
+        //   633: aload_2
+        //   634: aconst_null
+        //   635: invokeinterface 119 2 0
+        //   640: sipush 10217
+        //   643: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   646: return
+        //   647: astore_1
+        //   648: aload_2
+        //   649: ldc 121
+        //   651: aload_1
+        //   652: invokevirtual 127	org/json/JSONException:getMessage	()Ljava/lang/String;
+        //   655: aconst_null
+        //   656: invokeinterface 134 4 0
+        //   661: sipush 10217
+        //   664: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   667: return
+        //   668: aload_1
+        //   669: checkcast 146	org/json/JSONArray
+        //   672: invokestatic 183	io/flutter/embedding/engine/c/f:S	(Lorg/json/JSONArray;)Ljava/util/List;
+        //   675: astore_1
+        //   676: aload_0
+        //   677: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   680: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   683: aload_1
+        //   684: invokeinterface 187 2 0
+        //   689: aload_2
+        //   690: aconst_null
+        //   691: invokeinterface 119 2 0
+        //   696: sipush 10217
+        //   699: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   702: return
+        //   703: aload_2
+        //   704: ldc 121
+        //   706: aload_1
+        //   707: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   710: aconst_null
+        //   711: invokeinterface 134 4 0
+        //   716: sipush 10217
+        //   719: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   722: return
+        //   723: aload_0
+        //   724: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   727: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   730: invokeinterface 190 1 0
+        //   735: aload_2
+        //   736: aconst_null
+        //   737: invokeinterface 119 2 0
+        //   742: sipush 10217
+        //   745: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   748: return
+        //   749: aload_1
+        //   750: checkcast 158	org/json/JSONObject
+        //   753: astore 9
+        //   755: aload 9
+        //   757: ldc 192
+        //   759: invokevirtual 196	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
+        //   762: ifne +485 -> 1247
+        //   765: aload 9
+        //   767: ldc 192
+        //   769: invokevirtual 173	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+        //   772: invokestatic 202	io/flutter/embedding/engine/c/f$b:aVM	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$b;
+        //   775: astore_1
+        //   776: aload 9
+        //   778: ldc 204
+        //   780: invokevirtual 196	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
+        //   783: ifne +458 -> 1241
+        //   786: aload 9
+        //   788: ldc 204
+        //   790: invokevirtual 164	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+        //   793: invokestatic 210	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+        //   796: astore 6
+        //   798: aload 9
+        //   800: ldc 212
+        //   802: invokevirtual 196	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
+        //   805: ifne +430 -> 1235
+        //   808: aload 9
+        //   810: ldc 212
+        //   812: invokevirtual 173	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+        //   815: invokestatic 202	io/flutter/embedding/engine/c/f$b:aVM	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$b;
+        //   818: astore 7
+        //   820: aload 9
+        //   822: ldc 214
+        //   824: invokevirtual 196	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
+        //   827: ifne +402 -> 1229
+        //   830: aload 9
+        //   832: ldc 214
+        //   834: invokevirtual 164	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+        //   837: invokestatic 210	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+        //   840: astore 8
+        //   842: aload 9
+        //   844: ldc 216
+        //   846: invokevirtual 196	org/json/JSONObject:isNull	(Ljava/lang/String;)Z
+        //   849: ifne +374 -> 1223
+        //   852: aload 9
+        //   854: ldc 216
+        //   856: invokevirtual 164	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+        //   859: invokestatic 210	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+        //   862: astore 9
+        //   864: new 218	io/flutter/embedding/engine/c/f$h
+        //   867: dup
+        //   868: aload 8
+        //   870: aload 7
+        //   872: aload 6
+        //   874: aload_1
+        //   875: aload 9
+        //   877: invokespecial 221	io/flutter/embedding/engine/c/f$h:<init>	(Ljava/lang/Integer;Lio/flutter/embedding/engine/c/f$b;Ljava/lang/Integer;Lio/flutter/embedding/engine/c/f$b;Ljava/lang/Integer;)V
+        //   880: astore_1
+        //   881: aload_0
+        //   882: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   885: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   888: aload_1
+        //   889: invokeinterface 224 2 0
+        //   894: aload_2
+        //   895: aconst_null
+        //   896: invokeinterface 119 2 0
+        //   901: sipush 10217
+        //   904: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   907: return
+        //   908: aload_2
+        //   909: ldc 121
+        //   911: aload_1
+        //   912: invokevirtual 156	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   915: aconst_null
+        //   916: invokeinterface 134 4 0
+        //   921: sipush 10217
+        //   924: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   927: return
+        //   928: aload_0
+        //   929: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   932: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   935: invokeinterface 227 1 0
+        //   940: aload_2
+        //   941: aconst_null
+        //   942: invokeinterface 119 2 0
+        //   947: sipush 10217
+        //   950: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   953: return
+        //   954: aload_0
+        //   955: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   958: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   961: invokeinterface 231 1 0
+        //   966: astore_1
+        //   967: aload_1
+        //   968: ifnonnull +21 -> 989
+        //   971: aload_2
+        //   972: ldc 121
+        //   974: ldc 233
+        //   976: aconst_null
+        //   977: invokeinterface 134 4 0
+        //   982: sipush 10217
+        //   985: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   988: return
+        //   989: aload_2
+        //   990: aload_1
+        //   991: invokestatic 237	io/flutter/embedding/engine/c/f:iJ	(Ljava/util/List;)Ljava/util/ArrayList;
+        //   994: invokeinterface 119 2 0
+        //   999: sipush 10217
+        //   1002: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1005: return
+        //   1006: aload_1
+        //   1007: instanceof 146
+        //   1010: ifne +21 -> 1031
+        //   1013: aload_2
+        //   1014: ldc 239
+        //   1016: ldc 241
+        //   1018: aconst_null
+        //   1019: invokeinterface 134 4 0
+        //   1024: sipush 10217
+        //   1027: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1030: return
+        //   1031: aload_1
+        //   1032: checkcast 146	org/json/JSONArray
+        //   1035: invokestatic 245	io/flutter/embedding/engine/c/f:Q	(Lorg/json/JSONArray;)Ljava/util/ArrayList;
+        //   1038: astore_1
+        //   1039: aload_0
+        //   1040: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   1043: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   1046: aload_1
+        //   1047: invokeinterface 249 2 0
+        //   1052: aload_2
+        //   1053: aconst_null
+        //   1054: invokeinterface 119 2 0
+        //   1059: sipush 10217
+        //   1062: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1065: return
+        //   1066: aload_1
+        //   1067: checkcast 67	java/lang/String
+        //   1070: astore 6
+        //   1072: aload 6
+        //   1074: ifnull +257 -> 1331
+        //   1077: aload 6
+        //   1079: invokestatic 255	io/flutter/embedding/engine/c/f$c:aVN	(Ljava/lang/String;)Lio/flutter/embedding/engine/c/f$c;
+        //   1082: astore_1
+        //   1083: aload_0
+        //   1084: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   1087: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   1090: aload_1
+        //   1091: invokeinterface 258 2 0
+        //   1096: astore_1
+        //   1097: aload_1
+        //   1098: ifnull +61 -> 1159
+        //   1101: new 158	org/json/JSONObject
+        //   1104: dup
+        //   1105: invokespecial 259	org/json/JSONObject:<init>	()V
+        //   1108: astore 6
+        //   1110: aload 6
+        //   1112: ldc_w 261
+        //   1115: aload_1
+        //   1116: invokevirtual 265	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+        //   1119: pop
+        //   1120: aload_2
+        //   1121: aload 6
+        //   1123: invokeinterface 119 2 0
+        //   1128: sipush 10217
+        //   1131: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1134: return
+        //   1135: astore_1
+        //   1136: aload_2
+        //   1137: ldc 121
+        //   1139: ldc_w 267
+        //   1142: aload 6
+        //   1144: invokestatic 270	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+        //   1147: invokevirtual 273	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+        //   1150: aconst_null
+        //   1151: invokeinterface 134 4 0
+        //   1156: goto +175 -> 1331
+        //   1159: aload_2
+        //   1160: aconst_null
+        //   1161: invokeinterface 119 2 0
+        //   1166: sipush 10217
+        //   1169: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1172: return
+        //   1173: aload_1
+        //   1174: checkcast 158	org/json/JSONObject
+        //   1177: ldc_w 261
+        //   1180: invokevirtual 173	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+        //   1183: astore_1
+        //   1184: aload_0
+        //   1185: getfield 14	io/flutter/embedding/engine/c/f$1:KNi	Lio/flutter/embedding/engine/c/f;
+        //   1188: getfield 34	io/flutter/embedding/engine/c/f:KNg	Lio/flutter/embedding/engine/c/f$f;
+        //   1191: aload_1
+        //   1192: invokeinterface 276 2 0
+        //   1197: aload_2
+        //   1198: aconst_null
+        //   1199: invokeinterface 119 2 0
+        //   1204: sipush 10217
+        //   1207: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1210: return
+        //   1211: astore_1
+        //   1212: goto -304 -> 908
+        //   1215: astore_1
+        //   1216: goto -513 -> 703
+        //   1219: astore_1
+        //   1220: goto -662 -> 558
+        //   1223: aconst_null
+        //   1224: astore 9
+        //   1226: goto -362 -> 864
+        //   1229: aconst_null
+        //   1230: astore 8
+        //   1232: goto -390 -> 842
+        //   1235: aconst_null
+        //   1236: astore 7
+        //   1238: goto -418 -> 820
+        //   1241: aconst_null
+        //   1242: astore 6
+        //   1244: goto -446 -> 798
+        //   1247: aconst_null
+        //   1248: astore_1
+        //   1249: goto -473 -> 776
+        //   1252: iload_3
+        //   1253: tableswitch	default:+63 -> 1316, 0:+-878->375, 1:+-786->467, 2:+-730->523, 3:+-675->578, 4:+-585->668, 5:+-530->723, 6:+-504->749, 7:+-325->928, 8:+-299->954, 9:+-247->1006, 10:+-187->1066, 11:+-80->1173
+        //   1317: <illegal opcode>
+        //   1318: l2i
+        //   1319: astore_1
+        //   1320: goto -762 -> 558
+        //   1323: astore_1
+        //   1324: goto -621 -> 703
+        //   1327: astore_1
+        //   1328: goto -420 -> 908
+        //   1331: aconst_null
+        //   1332: astore_1
+        //   1333: goto -250 -> 1083
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	1164	0	this	1
-        //   0	1164	1	paramAnonymousj	io.flutter.a.a.j
-        //   0	1164	2	paramAnonymousd	io.flutter.a.a.k.d
-        //   58	1032	3	i	int
-        //   541	15	4	j	int
-        //   314	3	5	bool	boolean
-        //   27	1053	6	localObject1	Object
-        //   770	304	7	localb	f.b
-        //   792	276	8	localInteger	Integer
-        //   705	357	9	localObject2	Object
+        //   0	1336	0	this	1
+        //   0	1336	1	paramAnonymousj	io.flutter.plugin.a.j
+        //   0	1336	2	paramAnonymousd	io.flutter.plugin.a.k.d
+        //   58	1195	3	i	int
+        //   589	15	4	j	int
+        //   362	3	5	bool	boolean
+        //   27	1216	6	localObject1	Object
+        //   818	419	7	localb	f.b
+        //   840	391	8	localInteger	Integer
+        //   753	472	9	localObject2	Object
         // Exception table:
         //   from	to	target	type
-        //   59	156	362	org/json/JSONException
-        //   156	162	362	org/json/JSONException
-        //   169	179	362	org/json/JSONException
-        //   184	194	362	org/json/JSONException
-        //   199	209	362	org/json/JSONException
-        //   214	224	362	org/json/JSONException
-        //   229	239	362	org/json/JSONException
-        //   244	254	362	org/json/JSONException
-        //   259	269	362	org/json/JSONException
-        //   275	285	362	org/json/JSONException
-        //   291	301	362	org/json/JSONException
-        //   307	316	362	org/json/JSONException
-        //   327	355	362	org/json/JSONException
-        //   355	361	362	org/json/JSONException
-        //   399	418	362	org/json/JSONException
-        //   419	447	362	org/json/JSONException
-        //   447	453	362	org/json/JSONException
-        //   455	474	362	org/json/JSONException
-        //   503	509	362	org/json/JSONException
-        //   510	529	362	org/json/JSONException
-        //   592	598	362	org/json/JSONException
-        //   600	619	362	org/json/JSONException
-        //   648	654	362	org/json/JSONException
-        //   655	674	362	org/json/JSONException
-        //   675	700	362	org/json/JSONException
-        //   853	859	362	org/json/JSONException
-        //   860	879	362	org/json/JSONException
-        //   880	905	362	org/json/JSONException
-        //   906	912	362	org/json/JSONException
-        //   917	923	362	org/json/JSONException
-        //   923	937	362	org/json/JSONException
-        //   941	973	362	org/json/JSONException
-        //   975	994	362	org/json/JSONException
-        //   997	1010	362	org/json/JSONException
-        //   1011	1047	362	org/json/JSONException
-        //   327	355	398	java/lang/NoSuchFieldException
-        //   419	447	454	java/lang/NoSuchFieldException
-        //   530	543	599	org/json/JSONException
-        //   557	592	599	org/json/JSONException
-        //   917	923	974	java/lang/NoSuchFieldException
-        //   701	728	1048	org/json/JSONException
-        //   728	750	1048	org/json/JSONException
-        //   750	772	1048	org/json/JSONException
-        //   772	794	1048	org/json/JSONException
-        //   794	816	1048	org/json/JSONException
-        //   816	853	1048	org/json/JSONException
-        //   620	648	1052	org/json/JSONException
-        //   475	503	1056	org/json/JSONException
-        //   475	503	1147	java/lang/NoSuchFieldException
-        //   620	648	1151	java/lang/NoSuchFieldException
-        //   701	728	1155	java/lang/NoSuchFieldException
-        //   728	750	1155	java/lang/NoSuchFieldException
-        //   750	772	1155	java/lang/NoSuchFieldException
-        //   772	794	1155	java/lang/NoSuchFieldException
-        //   794	816	1155	java/lang/NoSuchFieldException
-        //   816	853	1155	java/lang/NoSuchFieldException
+        //   59	172	410	org/json/JSONException
+        //   172	178	410	org/json/JSONException
+        //   185	195	410	org/json/JSONException
+        //   200	210	410	org/json/JSONException
+        //   215	225	410	org/json/JSONException
+        //   230	240	410	org/json/JSONException
+        //   245	255	410	org/json/JSONException
+        //   260	270	410	org/json/JSONException
+        //   275	285	410	org/json/JSONException
+        //   291	301	410	org/json/JSONException
+        //   307	317	410	org/json/JSONException
+        //   323	333	410	org/json/JSONException
+        //   339	349	410	org/json/JSONException
+        //   355	364	410	org/json/JSONException
+        //   375	403	410	org/json/JSONException
+        //   403	409	410	org/json/JSONException
+        //   447	466	410	org/json/JSONException
+        //   467	495	410	org/json/JSONException
+        //   495	501	410	org/json/JSONException
+        //   503	522	410	org/json/JSONException
+        //   551	557	410	org/json/JSONException
+        //   558	577	410	org/json/JSONException
+        //   640	646	410	org/json/JSONException
+        //   648	667	410	org/json/JSONException
+        //   696	702	410	org/json/JSONException
+        //   703	722	410	org/json/JSONException
+        //   723	748	410	org/json/JSONException
+        //   901	907	410	org/json/JSONException
+        //   908	927	410	org/json/JSONException
+        //   928	953	410	org/json/JSONException
+        //   954	967	410	org/json/JSONException
+        //   971	988	410	org/json/JSONException
+        //   989	1005	410	org/json/JSONException
+        //   1006	1030	410	org/json/JSONException
+        //   1031	1065	410	org/json/JSONException
+        //   1066	1072	410	org/json/JSONException
+        //   1077	1083	410	org/json/JSONException
+        //   1083	1097	410	org/json/JSONException
+        //   1101	1134	410	org/json/JSONException
+        //   1136	1156	410	org/json/JSONException
+        //   1159	1172	410	org/json/JSONException
+        //   1173	1210	410	org/json/JSONException
+        //   375	403	446	java/lang/NoSuchFieldException
+        //   467	495	502	java/lang/NoSuchFieldException
+        //   578	591	647	org/json/JSONException
+        //   605	640	647	org/json/JSONException
+        //   1077	1083	1135	java/lang/NoSuchFieldException
+        //   749	776	1211	org/json/JSONException
+        //   776	798	1211	org/json/JSONException
+        //   798	820	1211	org/json/JSONException
+        //   820	842	1211	org/json/JSONException
+        //   842	864	1211	org/json/JSONException
+        //   864	901	1211	org/json/JSONException
+        //   668	696	1215	org/json/JSONException
+        //   523	551	1219	org/json/JSONException
+        //   523	551	1319	java/lang/NoSuchFieldException
+        //   668	696	1323	java/lang/NoSuchFieldException
+        //   749	776	1327	java/lang/NoSuchFieldException
+        //   776	798	1327	java/lang/NoSuchFieldException
+        //   798	820	1327	java/lang/NoSuchFieldException
+        //   820	842	1327	java/lang/NoSuchFieldException
+        //   842	864	1327	java/lang/NoSuchFieldException
+        //   864	901	1327	java/lang/NoSuchFieldException
       }
     };
-    this.sNT = new k(paramDartExecutor, "flutter/platform", g.Jbt);
-    this.sNT.a(this.IZE);
+    this.uzK = new k(paramDartExecutor, "flutter/platform", g.KOX);
+    this.uzK.a(this.KNh);
     AppMethodBeat.o(10242);
+  }
+  
+  static ArrayList<Rect> Q(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(192820);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+      try
+      {
+        int j = localJSONObject.getInt("top");
+        int k = localJSONObject.getInt("right");
+        int m = localJSONObject.getInt("bottom");
+        int n = localJSONObject.getInt("left");
+        localArrayList.add(new Rect(n, j, k, m));
+        i += 1;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        paramJSONArray = new JSONException("Incorrect JSON data shape. To set system gesture exclusion rects, \na JSONObject with top, right, bottom and left values need to be set to int values.");
+        AppMethodBeat.o(192820);
+        throw paramJSONArray;
+      }
+    }
+    AppMethodBeat.o(192820);
+    return localArrayList;
   }
   
   public static final class a
@@ -569,67 +671,27 @@ public final class f
     }
   }
   
-  public static enum b
-  {
-    private String IZK;
-    
-    static
-    {
-      AppMethodBeat.i(10228);
-      IZI = new b("LIGHT", 0, "Brightness.light");
-      IZJ = new b("DARK", 1, "Brightness.dark");
-      IZL = new b[] { IZI, IZJ };
-      AppMethodBeat.o(10228);
-    }
-    
-    private b(String paramString)
-    {
-      this.IZK = paramString;
-    }
-    
-    static b aPO(String paramString)
-    {
-      AppMethodBeat.i(10227);
-      b[] arrayOfb = values();
-      int j = arrayOfb.length;
-      int i = 0;
-      while (i < j)
-      {
-        b localb = arrayOfb[i];
-        if (localb.IZK.equals(paramString))
-        {
-          AppMethodBeat.o(10227);
-          return localb;
-        }
-        i += 1;
-      }
-      paramString = new NoSuchFieldException("No such Brightness: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(10227);
-      throw paramString;
-    }
-  }
-  
   public static enum d
   {
-    private String IZK;
+    private String KNn;
     
     static
     {
       AppMethodBeat.i(10279);
-      IZO = new d("PORTRAIT_UP", 0, "DeviceOrientation.portraitUp");
-      IZP = new d("PORTRAIT_DOWN", 1, "DeviceOrientation.portraitDown");
-      IZQ = new d("LANDSCAPE_LEFT", 2, "DeviceOrientation.landscapeLeft");
-      IZR = new d("LANDSCAPE_RIGHT", 3, "DeviceOrientation.landscapeRight");
-      IZS = new d[] { IZO, IZP, IZQ, IZR };
+      KNr = new d("PORTRAIT_UP", 0, "DeviceOrientation.portraitUp");
+      KNs = new d("PORTRAIT_DOWN", 1, "DeviceOrientation.portraitDown");
+      KNt = new d("LANDSCAPE_LEFT", 2, "DeviceOrientation.landscapeLeft");
+      KNu = new d("LANDSCAPE_RIGHT", 3, "DeviceOrientation.landscapeRight");
+      KNv = new d[] { KNr, KNs, KNt, KNu };
       AppMethodBeat.o(10279);
     }
     
     private d(String paramString)
     {
-      this.IZK = paramString;
+      this.KNn = paramString;
     }
     
-    static d aPQ(String paramString)
+    static d aVO(String paramString)
     {
       AppMethodBeat.i(10278);
       d[] arrayOfd = values();
@@ -638,7 +700,7 @@ public final class f
       while (i < j)
       {
         d locald = arrayOfd[i];
-        if (locald.IZK.equals(paramString))
+        if (locald.KNn.equals(paramString))
         {
           AppMethodBeat.o(10278);
           return locald;
@@ -653,26 +715,26 @@ public final class f
   
   public static enum e
   {
-    private final String IZK;
+    private final String KNn;
     
     static
     {
       AppMethodBeat.i(10252);
-      IZT = new e("STANDARD", 0, null);
-      IZU = new e("LIGHT_IMPACT", 1, "HapticFeedbackType.lightImpact");
-      IZV = new e("MEDIUM_IMPACT", 2, "HapticFeedbackType.mediumImpact");
-      IZW = new e("HEAVY_IMPACT", 3, "HapticFeedbackType.heavyImpact");
-      IZX = new e("SELECTION_CLICK", 4, "HapticFeedbackType.selectionClick");
-      IZY = new e[] { IZT, IZU, IZV, IZW, IZX };
+      KNw = new e("STANDARD", 0, null);
+      KNx = new e("LIGHT_IMPACT", 1, "HapticFeedbackType.lightImpact");
+      KNy = new e("MEDIUM_IMPACT", 2, "HapticFeedbackType.mediumImpact");
+      KNz = new e("HEAVY_IMPACT", 3, "HapticFeedbackType.heavyImpact");
+      KNA = new e("SELECTION_CLICK", 4, "HapticFeedbackType.selectionClick");
+      KNB = new e[] { KNw, KNx, KNy, KNz, KNA };
       AppMethodBeat.o(10252);
     }
     
     private e(String paramString)
     {
-      this.IZK = paramString;
+      this.KNn = paramString;
     }
     
-    static e aPR(String paramString)
+    static e aVP(String paramString)
     {
       AppMethodBeat.i(10251);
       e[] arrayOfe = values();
@@ -681,7 +743,7 @@ public final class f
       while (i < j)
       {
         e locale = arrayOfe[i];
-        if (((locale.IZK == null) && (paramString == null)) || ((locale.IZK != null) && (locale.IZK.equals(paramString))))
+        if (((locale.KNn == null) && (paramString == null)) || ((locale.KNn != null) && (locale.KNn.equals(paramString))))
         {
           AppMethodBeat.o(10251);
           return locale;
@@ -706,94 +768,58 @@ public final class f
     
     public abstract void a(f.h paramh);
     
-    public abstract void aPS(String paramString);
+    public abstract void aVQ(String paramString);
     
-    public abstract void adD(int paramInt);
+    public abstract void agy(int paramInt);
     
-    public abstract void fuY();
+    public abstract void be(ArrayList<Rect> paramArrayList);
     
-    public abstract void fuZ();
+    public abstract void fND();
     
-    public abstract void iu(List<f.i> paramList);
-  }
-  
-  public static enum g
-  {
-    private final String IZK;
+    public abstract void fNE();
     
-    static
-    {
-      AppMethodBeat.i(10289);
-      IZZ = new g("CLICK", "SystemSoundType.click");
-      Jaa = new g[] { IZZ };
-      AppMethodBeat.o(10289);
-    }
+    public abstract List<Rect> fNF();
     
-    private g(String paramString)
-    {
-      Object localObject;
-      this.IZK = localObject;
-    }
-    
-    static g aPT(String paramString)
-    {
-      AppMethodBeat.i(10288);
-      g[] arrayOfg = values();
-      int j = arrayOfg.length;
-      int i = 0;
-      while (i < j)
-      {
-        g localg = arrayOfg[i];
-        if (localg.IZK.equals(paramString))
-        {
-          AppMethodBeat.o(10288);
-          return localg;
-        }
-        i += 1;
-      }
-      paramString = new NoSuchFieldException("No such SoundType: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(10288);
-      throw paramString;
-    }
+    public abstract void iK(List<f.i> paramList);
   }
   
   public static final class h
   {
-    public final Integer Jab;
-    public final f.b Jac;
-    public final Integer Jad;
-    public final f.b Jae;
-    public final Integer Jaf;
+    public final Integer KNE;
+    public final f.b KNF;
+    public final Integer KNG;
+    public final f.b KNH;
+    public final Integer KNI;
     
     public h(Integer paramInteger1, f.b paramb1, Integer paramInteger2, f.b paramb2, Integer paramInteger3)
     {
-      this.Jab = paramInteger1;
-      this.Jac = paramb1;
-      this.Jad = paramInteger2;
-      this.Jae = paramb2;
-      this.Jaf = paramInteger3;
+      this.KNE = paramInteger1;
+      this.KNF = paramb1;
+      this.KNG = paramInteger2;
+      this.KNH = paramb2;
+      this.KNI = paramInteger3;
     }
   }
   
   public static enum i
   {
-    private String IZK;
+    private String KNn;
     
     static
     {
       AppMethodBeat.i(10232);
-      Jag = new i("TOP_OVERLAYS", 0, "SystemUiOverlay.top");
-      Jah = new i("BOTTOM_OVERLAYS", 1, "SystemUiOverlay.bottom");
-      Jai = new i[] { Jag, Jah };
+      KNJ = new i("TOP_OVERLAYS", 0, "SystemUiOverlay.top");
+      KNK = new i("BOTTOM_OVERLAYS", 1, "SystemUiOverlay.bottom");
+      KNL = new i[] { KNJ, KNK };
       AppMethodBeat.o(10232);
     }
     
     private i(String paramString)
     {
-      this.IZK = paramString;
+      this.KNn = paramString;
     }
     
-    static i aPU(String paramString)
+    static i aVS(String paramString)
     {
       AppMethodBeat.i(10231);
       i[] arrayOfi = values();
@@ -802,7 +828,7 @@ public final class f
       while (i < j)
       {
         i locali = arrayOfi[i];
-        if (locali.IZK.equals(paramString))
+        if (locali.KNn.equals(paramString))
         {
           AppMethodBeat.o(10231);
           return locali;
@@ -817,7 +843,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.embedding.engine.c.f
  * JD-Core Version:    0.7.0.1
  */

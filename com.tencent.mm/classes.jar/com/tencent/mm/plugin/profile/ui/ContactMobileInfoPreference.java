@@ -12,10 +12,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ContactMobileInfoPreference
   extends Preference
 {
-  private String ity;
-  private TextView kEu;
+  private String iTD;
+  private TextView lfN;
   private String mTitle;
-  private TextView uAv;
+  private TextView vJo;
   
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public class ContactMobileInfoPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27017);
-    this.kEu = ((TextView)paramView.findViewById(2131305902));
-    this.uAv = ((TextView)paramView.findViewById(2131302344));
-    if (this.kEu != null) {
-      this.kEu.setText(this.mTitle);
+    this.lfN = ((TextView)paramView.findViewById(2131305902));
+    this.vJo = ((TextView)paramView.findViewById(2131302344));
+    if (this.lfN != null) {
+      this.lfN.setText(this.mTitle);
     }
-    if (this.uAv != null) {
-      this.uAv.setText(this.ity);
+    if (this.vJo != null) {
+      this.vJo.setText(this.iTD);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27017);

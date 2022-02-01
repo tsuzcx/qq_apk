@@ -28,8 +28,8 @@ import java.util.Set;
 final class v$d
   implements ServiceConnection, Handler.Callback
 {
-  private final Map<ComponentName, a> FB = new HashMap();
-  private Set<String> FC = new HashSet();
+  private Set<String> GA = new HashSet();
+  private final Map<ComponentName, a> Gz = new HashMap();
   private final Context mContext;
   private final Handler mHandler;
   private final HandlerThread mHandlerThread;
@@ -44,12 +44,12 @@ final class v$d
   
   private void a(a parama)
   {
-    if (parama.FD)
+    if (parama.GB)
     {
       this.mContext.unbindService(this);
-      parama.FD = false;
+      parama.GB = false;
     }
-    parama.FE = null;
+    parama.GC = null;
   }
   
   private void b(a parama)
@@ -60,8 +60,8 @@ final class v$d
     parama.retryCount += 1;
     if (parama.retryCount > 6)
     {
-      new StringBuilder("Giving up on delivering ").append(parama.FF.size()).append(" tasks to ").append(parama.componentName).append(" after ").append(parama.retryCount).append(" retries");
-      parama.FF.clear();
+      new StringBuilder("Giving up on delivering ").append(parama.GD.size()).append(" tasks to ").append(parama.componentName).append(" after ").append(parama.retryCount).append(" retries");
+      parama.GD.clear();
       return;
     }
     int i = (1 << parama.retryCount - 1) * 1000;
@@ -75,51 +75,51 @@ final class v$d
   private void c(a parama)
   {
     if (Log.isLoggable("NotifManCompat", 3)) {
-      new StringBuilder("Processing component ").append(parama.componentName).append(", ").append(parama.FF.size()).append(" queued tasks");
+      new StringBuilder("Processing component ").append(parama.componentName).append(", ").append(parama.GD.size()).append(" queued tasks");
     }
-    if (parama.FF.isEmpty()) {}
+    if (parama.GD.isEmpty()) {}
     for (;;)
     {
       return;
       boolean bool;
-      if (parama.FD)
+      if (parama.GB)
       {
         bool = true;
-        if ((!bool) || (parama.FE == null)) {
+        if ((!bool) || (parama.GC == null)) {
           b(parama);
         }
       }
       else
       {
         localObject = new Intent("android.support.BIND_NOTIFICATION_SIDE_CHANNEL").setComponent(parama.componentName);
-        parama.FD = this.mContext.bindService((Intent)localObject, this, 33);
-        if (parama.FD) {
+        parama.GB = this.mContext.bindService((Intent)localObject, this, 33);
+        if (parama.GB) {
           parama.retryCount = 0;
         }
         for (;;)
         {
-          bool = parama.FD;
+          bool = parama.GB;
           break;
           new StringBuilder("Unable to bind to listener ").append(parama.componentName);
           this.mContext.unbindService(this);
         }
       }
-      Object localObject = (v.e)parama.FF.peek();
+      Object localObject = (v.e)parama.GD.peek();
       if (localObject != null) {}
       try
       {
         if (Log.isLoggable("NotifManCompat", 3)) {
           new StringBuilder("Sending task ").append(localObject);
         }
-        ((v.e)localObject).a(parama.FE);
-        parama.FF.remove();
+        ((v.e)localObject).a(parama.GC);
+        parama.GD.remove();
       }
       catch (DeadObjectException localDeadObjectException)
       {
         if (Log.isLoggable("NotifManCompat", 3)) {
           new StringBuilder("Remote service has died: ").append(parama.componentName);
         }
-        if (parama.FF.isEmpty()) {
+        if (parama.GD.isEmpty()) {
           continue;
         }
         b(parama);
@@ -149,10 +149,10 @@ final class v$d
       return false;
     case 0: 
       paramMessage = (v.e)paramMessage.obj;
-      Object localObject2 = v.N(this.mContext);
-      if (!((Set)localObject2).equals(this.FC))
+      Object localObject2 = v.O(this.mContext);
+      if (!((Set)localObject2).equals(this.GA))
       {
-        this.FC = ((Set)localObject2);
+        this.GA = ((Set)localObject2);
         Object localObject3 = this.mContext.getPackageManager().queryIntentServices(new Intent().setAction("android.support.BIND_NOTIFICATION_SIDE_CHANNEL"), 0);
         localObject1 = new HashSet();
         localObject3 = ((List)localObject3).iterator();
@@ -173,15 +173,15 @@ final class v$d
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (ComponentName)((Iterator)localObject2).next();
-          if (!this.FB.containsKey(localObject3))
+          if (!this.Gz.containsKey(localObject3))
           {
             if (Log.isLoggable("NotifManCompat", 3)) {
               new StringBuilder("Adding listener record for ").append(localObject3);
             }
-            this.FB.put(localObject3, new a((ComponentName)localObject3));
+            this.Gz.put(localObject3, new a((ComponentName)localObject3));
           }
         }
-        localObject2 = this.FB.entrySet().iterator();
+        localObject2 = this.Gz.entrySet().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -195,36 +195,36 @@ final class v$d
           }
         }
       }
-      localObject1 = this.FB.values().iterator();
+      localObject1 = this.Gz.values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (a)((Iterator)localObject1).next();
-        ((a)localObject2).FF.add(paramMessage);
+        ((a)localObject2).GD.add(paramMessage);
         c((a)localObject2);
       }
       return true;
     case 1: 
       localObject1 = (v.c)paramMessage.obj;
       paramMessage = ((v.c)localObject1).componentName;
-      localObject1 = ((v.c)localObject1).FA;
-      paramMessage = (a)this.FB.get(paramMessage);
+      localObject1 = ((v.c)localObject1).Gy;
+      paramMessage = (a)this.Gz.get(paramMessage);
       if (paramMessage != null)
       {
-        paramMessage.FE = o.a.b((IBinder)localObject1);
+        paramMessage.GC = o.a.b((IBinder)localObject1);
         paramMessage.retryCount = 0;
         c(paramMessage);
       }
       return true;
     case 2: 
       paramMessage = (ComponentName)paramMessage.obj;
-      paramMessage = (a)this.FB.get(paramMessage);
+      paramMessage = (a)this.Gz.get(paramMessage);
       if (paramMessage != null) {
         a(paramMessage);
       }
       return true;
     }
     paramMessage = (ComponentName)paramMessage.obj;
-    paramMessage = (a)this.FB.get(paramMessage);
+    paramMessage = (a)this.Gz.get(paramMessage);
     if (paramMessage != null) {
       c(paramMessage);
     }
@@ -249,9 +249,9 @@ final class v$d
   
   static final class a
   {
-    boolean FD = false;
-    o FE;
-    ArrayDeque<v.e> FF = new ArrayDeque();
+    boolean GB = false;
+    o GC;
+    ArrayDeque<v.e> GD = new ArrayDeque();
     final ComponentName componentName;
     int retryCount = 0;
     

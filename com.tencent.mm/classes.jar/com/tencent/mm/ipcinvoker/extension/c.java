@@ -10,21 +10,21 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> fZJ;
-  private static Map<String, a> fZK;
+  private static List<a> gep;
+  private static Map<String, a> geq;
   
   static
   {
     AppMethodBeat.i(158796);
-    fZJ = new LinkedList();
-    fZK = new HashMap();
+    gep = new LinkedList();
+    geq = new HashMap();
     AppMethodBeat.o(158796);
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
     AppMethodBeat.i(158794);
-    paramString = (a)fZK.get(paramString);
+    paramString = (a)geq.get(paramString);
     if (paramString != null)
     {
       paramString = paramString.c(paramParcel);
@@ -38,34 +38,34 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(158795);
-    if ((parama == null) || (fZJ.contains(parama)))
+    if ((parama == null) || (gep.contains(parama)))
     {
       AppMethodBeat.o(158795);
       return;
     }
-    fZK.put(parama.getClass().getName(), parama);
-    fZJ.add(parama);
+    geq.put(parama.getClass().getName(), parama);
+    gep.add(parama);
     AppMethodBeat.o(158795);
   }
   
   public static void a(Object paramObject, Parcel paramParcel)
   {
     AppMethodBeat.i(158793);
-    a locala = bi(paramObject);
+    a locala = bf(paramObject);
     if (locala != null) {
       locala.a(paramObject, paramParcel);
     }
     AppMethodBeat.o(158793);
   }
   
-  public static a bi(Object paramObject)
+  public static a bf(Object paramObject)
   {
     AppMethodBeat.i(158792);
-    Iterator localIterator = fZJ.iterator();
+    Iterator localIterator = gep.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.bh(paramObject))
+      if (locala.be(paramObject))
       {
         AppMethodBeat.o(158792);
         return locala;
@@ -77,7 +77,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.c
  * JD-Core Version:    0.7.0.1
  */

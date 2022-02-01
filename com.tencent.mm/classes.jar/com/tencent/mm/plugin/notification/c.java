@@ -4,11 +4,11 @@ import com.tencent.mm.model.as;
 
 public final class c
 {
-  public static as ugT;
+  public static as vpR;
   
-  public static as cXx()
+  public static as dlf()
   {
-    return ugT;
+    return vpR;
   }
 }
 

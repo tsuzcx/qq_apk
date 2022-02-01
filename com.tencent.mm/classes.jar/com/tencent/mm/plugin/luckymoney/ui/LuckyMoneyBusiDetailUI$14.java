@@ -12,7 +12,7 @@ final class LuckyMoneyBusiDetailUI$14
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(65463);
-    this.tkt.finish();
+    this.usM.finish();
     AppMethodBeat.o(65463);
   }
 }

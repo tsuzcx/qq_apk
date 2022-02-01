@@ -10,9 +10,9 @@ import java.util.Map;
 public final class m
   implements b<l>
 {
-  protected l hZW;
-  public final a hZX;
-  public final b hZY;
+  protected l iAa;
+  public final a iAb;
+  public final b iAc;
   
   public m()
   {
@@ -24,15 +24,15 @@ public final class m
   private m(l paraml)
   {
     AppMethodBeat.i(63369);
-    this.hZX = new a();
-    this.hZY = new b();
-    this.hZW = paraml;
+    this.iAb = new a();
+    this.iAc = new b();
+    this.iAa = paraml;
     AppMethodBeat.o(63369);
   }
   
-  public final l aHj()
+  public final l aNX()
   {
-    return this.hZW;
+    return this.iAa;
   }
   
   public final class a
@@ -40,7 +40,7 @@ public final class m
   {
     public a() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
@@ -51,7 +51,7 @@ public final class m
   {
     public b() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
@@ -59,7 +59,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.m
  * JD-Core Version:    0.7.0.1
  */

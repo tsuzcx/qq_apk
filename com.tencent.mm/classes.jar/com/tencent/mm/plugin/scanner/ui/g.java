@@ -13,15 +13,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.br.d;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.model.a.a;
 import com.tencent.mm.plugin.scanner.model.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public final class g
 {
   private Context mContext;
   private View mView;
-  List<a.a> uxc;
+  List<a.a> vFV;
   
   public g(Context paramContext)
   {
@@ -42,7 +42,7 @@ public final class g
     AppMethodBeat.i(51840);
     this.mView = null;
     this.mContext = null;
-    this.uxc = null;
+    this.vFV = null;
     this.mContext = paramContext;
     setLayoutResource(2131495116);
     AppMethodBeat.o(51840);
@@ -67,8 +67,8 @@ public final class g
     paramView = (GridView)this.mView.findViewById(2131301987);
     b localb = new b();
     paramView.setAdapter(localb);
-    if (this.uxc != null) {
-      localb.setItemList(this.uxc);
+    if (this.vFV != null) {
+      localb.fk(this.vFV);
     }
     AppMethodBeat.o(51842);
   }
@@ -78,26 +78,36 @@ public final class g
     implements u.a
   {
     private LayoutInflater mInflater;
-    private Map<String, WeakReference<ImageView>> vSp;
-    private int vSs;
-    private List<a.a> vSt;
+    private Map<String, WeakReference<ImageView>> xda;
+    private int xdd;
+    private List<a.a> xde;
     
     public b()
     {
       AppMethodBeat.i(51834);
-      this.vSt = new ArrayList();
-      this.vSp = new HashMap();
+      this.xde = new ArrayList();
+      this.xda = new HashMap();
       this.mInflater = null;
       this.mInflater = LayoutInflater.from(g.a(g.this));
       u.a(this);
-      this.vSs = g.a(g.this).getResources().getColor(2131100481);
+      this.xdd = g.a(g.this).getResources().getColor(2131100481);
       AppMethodBeat.o(51834);
+    }
+    
+    public final void fk(List<a.a> paramList)
+    {
+      AppMethodBeat.i(51835);
+      this.xda.clear();
+      this.xde.clear();
+      this.xde = paramList;
+      notifyDataSetChanged();
+      AppMethodBeat.o(51835);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(51836);
-      int i = this.vSt.size();
+      int i = this.xde.size();
       AppMethodBeat.o(51836);
       return i;
     }
@@ -105,7 +115,7 @@ public final class g
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(51837);
-      Object localObject = this.vSt.get(paramInt);
+      Object localObject = this.xde.get(paramInt);
       AppMethodBeat.o(51837);
       return localObject;
     }
@@ -124,60 +134,60 @@ public final class g
       {
         paramView = this.mInflater.inflate(2131495117, paramViewGroup, false);
         paramViewGroup = new a();
-        paramViewGroup.vQE = ((ImageView)paramView.findViewById(2131300614));
-        paramViewGroup.kFd = ((TextView)paramView.findViewById(2131300613));
+        paramViewGroup.xbm = ((ImageView)paramView.findViewById(2131300614));
+        paramViewGroup.lgw = ((TextView)paramView.findViewById(2131300613));
         paramView.setTag(paramViewGroup);
-        locala = (a.a)this.vSt.get(paramInt);
+        locala = (a.a)this.xde.get(paramInt);
         localObject = u.a(new g.a(locala.iconUrl));
         if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
           break label217;
         }
-        paramViewGroup.vQE.setImageBitmap((Bitmap)localObject);
-        paramViewGroup.vQE.setBackgroundColor(0);
+        paramViewGroup.xbm.setImageBitmap((Bitmap)localObject);
+        paramViewGroup.xbm.setBackgroundColor(0);
       }
       for (;;)
       {
-        localObject = locala.vOa;
-        paramViewGroup.vQE.setOnClickListener(new View.OnClickListener()
+        localObject = locala.wYw;
+        paramViewGroup.xbm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(51832);
-            paramAnonymousView = new k(this.owo, locala.vNZ, locala.type, this.owo, g.b.this.getCount(), locala.dcz);
-            com.tencent.mm.kernel.g.aeS().a(paramAnonymousView, 0);
-            if (!bt.isNullOrNil(this.owo))
+            paramAnonymousView = new k(this.oZO, locala.wYv, locala.type, this.oZO, g.b.this.getCount(), locala.cZX);
+            com.tencent.mm.kernel.g.agi().a(paramAnonymousView, 0);
+            if (!bs.isNullOrNil(this.oZO))
             {
               paramAnonymousView = new Intent();
-              paramAnonymousView.putExtra("key_Product_ID", this.owo);
+              paramAnonymousView.putExtra("key_Product_ID", this.oZO);
               d.b(g.this.mContext, "scanner", ".ui.ProductUI", paramAnonymousView);
             }
             AppMethodBeat.o(51832);
           }
         });
-        paramViewGroup.vQE.setTag(locala.iconUrl);
-        this.vSp.put(locala.iconUrl, new WeakReference(paramViewGroup.vQE));
-        paramViewGroup.kFd.setText(locala.name);
+        paramViewGroup.xbm.setTag(locala.iconUrl);
+        this.xda.put(locala.iconUrl, new WeakReference(paramViewGroup.xbm));
+        paramViewGroup.lgw.setText(locala.name);
         AppMethodBeat.o(51838);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
         label217:
-        paramViewGroup.vQE.setBackgroundColor(this.vSs);
-        paramViewGroup.vQE.setImageBitmap(null);
+        paramViewGroup.xbm.setBackgroundColor(this.xdd);
+        paramViewGroup.xbm.setImageBitmap(null);
       }
     }
     
-    public final void l(String paramString, final Bitmap paramBitmap)
+    public final void k(String paramString, final Bitmap paramBitmap)
     {
       AppMethodBeat.i(51839);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bt.isNullOrNil(paramString)))
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bs.isNullOrNil(paramString)))
       {
-        ad.v("MicroMsg.ProductGridPreference", "On get pic, notifyKey=".concat(String.valueOf(paramString)));
-        if ((WeakReference)this.vSp.get(paramString) != null)
+        ac.v("MicroMsg.ProductGridPreference", "On get pic, notifyKey=".concat(String.valueOf(paramString)));
+        if ((WeakReference)this.xda.get(paramString) != null)
         {
-          final ImageView localImageView = (ImageView)((WeakReference)this.vSp.get(paramString)).get();
+          final ImageView localImageView = (ImageView)((WeakReference)this.xda.get(paramString)).get();
           if ((localImageView != null) && (paramString.equals((String)localImageView.getTag()))) {
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
@@ -193,20 +203,10 @@ public final class g
       AppMethodBeat.o(51839);
     }
     
-    public final void setItemList(List<a.a> paramList)
-    {
-      AppMethodBeat.i(51835);
-      this.vSp.clear();
-      this.vSt.clear();
-      this.vSt = paramList;
-      notifyDataSetChanged();
-      AppMethodBeat.o(51835);
-    }
-    
     final class a
     {
-      TextView kFd;
-      ImageView vQE;
+      TextView lgw;
+      ImageView xbm;
       
       a() {}
     }
@@ -214,7 +214,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.g
  * JD-Core Version:    0.7.0.1
  */

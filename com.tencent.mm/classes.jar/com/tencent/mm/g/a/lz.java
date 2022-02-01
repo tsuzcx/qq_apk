@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lz
   extends b
 {
-  public a drc;
-  public b drd;
+  public a doc;
   
   public lz()
   {
@@ -16,23 +15,17 @@ public final class lz
   
   private lz(byte paramByte)
   {
-    AppMethodBeat.i(116462);
-    this.drc = new a();
-    this.drd = new b();
-    this.ESR = false;
+    AppMethodBeat.i(43442);
+    this.doc = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116462);
+    AppMethodBeat.o(43442);
   }
   
   public static final class a
   {
-    public String chatroomName;
-    public boolean dqx = false;
-    public String dre;
-  }
-  
-  public static final class b
-  {
+    public String businessType;
+    public String dob;
     public int errCode;
   }
 }

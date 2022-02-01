@@ -12,16 +12,16 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bc.l;
-import com.tencent.mm.g.a.of;
-import com.tencent.mm.g.a.of.a;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bb.l;
+import com.tencent.mm.g.a.oo;
+import com.tencent.mm.g.a.oo.a;
 import com.tencent.mm.model.az;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ah;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
@@ -33,30 +33,30 @@ import java.util.List;
 public class SelectPoiCategoryUI
   extends MMActivity
 {
-  static final String udo;
+  static final String vmn;
   private ListView mListView;
-  private MenuItem.OnMenuItemClickListener udj;
-  private a udp;
-  private ArrayAdapter<String> udq;
-  private List<String> udr;
-  private AdapterView.OnItemClickListener uds;
+  private MenuItem.OnMenuItemClickListener vmi;
+  private a vmo;
+  private ArrayAdapter<String> vmp;
+  private List<String> vmq;
+  private AdapterView.OnItemClickListener vmr;
   
   static
   {
     AppMethodBeat.i(26638);
-    udo = ae.FfH + "poi_categories";
+    vmn = ah.GDu + "poi_categories";
     AppMethodBeat.o(26638);
   }
   
   public SelectPoiCategoryUI()
   {
     AppMethodBeat.i(26630);
-    this.uds = new AdapterView.OnItemClickListener()
+    this.vmr = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(26626);
-        ad.d("MicroMsg.SelectPoiCategoryUI", "item click on pos:%d, len:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(SelectPoiCategoryUI.a(SelectPoiCategoryUI.this).size()) });
+        ac.d("MicroMsg.SelectPoiCategoryUI", "item click on pos:%d, len:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(SelectPoiCategoryUI.a(SelectPoiCategoryUI.this).size()) });
         paramAnonymousAdapterView = new Intent();
         paramAnonymousAdapterView.putExtra("poi_category", (String)SelectPoiCategoryUI.a(SelectPoiCategoryUI.this).get(paramAnonymousInt));
         SelectPoiCategoryUI.this.setResult(-1, paramAnonymousAdapterView);
@@ -64,7 +64,7 @@ public class SelectPoiCategoryUI
         AppMethodBeat.o(26626);
       }
     };
-    this.udj = new MenuItem.OnMenuItemClickListener()
+    this.vmi = new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -79,7 +79,7 @@ public class SelectPoiCategoryUI
   }
   
   /* Error */
-  private boolean I(java.io.InputStream paramInputStream)
+  private boolean H(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: sipush 26633
@@ -91,7 +91,7 @@ public class SelectPoiCategoryUI
     //   16: iconst_0
     //   17: ireturn
     //   18: aload_0
-    //   19: getfield 78	com/tencent/mm/plugin/nearlife/ui/SelectPoiCategoryUI:udr	Ljava/util/List;
+    //   19: getfield 78	com/tencent/mm/plugin/nearlife/ui/SelectPoiCategoryUI:vmq	Ljava/util/List;
     //   22: invokeinterface 83 1 0
     //   27: new 85	java/io/BufferedReader
     //   30: dup
@@ -112,7 +112,7 @@ public class SelectPoiCategoryUI
     //   58: aload_3
     //   59: astore_2
     //   60: aload_0
-    //   61: getfield 78	com/tencent/mm/plugin/nearlife/ui/SelectPoiCategoryUI:udr	Ljava/util/List;
+    //   61: getfield 78	com/tencent/mm/plugin/nearlife/ui/SelectPoiCategoryUI:vmq	Ljava/util/List;
     //   64: aload 4
     //   66: invokeinterface 102 2 0
     //   71: pop
@@ -129,7 +129,7 @@ public class SelectPoiCategoryUI
     //   92: invokevirtual 112	java/io/IOException:getMessage	()Ljava/lang/String;
     //   95: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: aload_3
     //   105: ifnull +7 -> 112
     //   108: aload_3
@@ -155,7 +155,7 @@ public class SelectPoiCategoryUI
     //   148: invokevirtual 127	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   151: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   157: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   160: goto -44 -> 116
     //   163: astore_1
     //   164: ldc 104
@@ -167,7 +167,7 @@ public class SelectPoiCategoryUI
     //   176: invokevirtual 127	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   179: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   188: goto -72 -> 116
     //   191: astore_3
     //   192: aconst_null
@@ -192,7 +192,7 @@ public class SelectPoiCategoryUI
     //   227: invokevirtual 127	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   230: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   236: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   239: goto -33 -> 206
     //   242: astore_3
     //   243: goto -49 -> 194
@@ -228,10 +228,10 @@ public class SelectPoiCategoryUI
     //   27	45	246	java/io/IOException
   }
   
-  private boolean ajf(String paramString)
+  private boolean aod(String paramString)
   {
     AppMethodBeat.i(26634);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(26634);
       return false;
@@ -244,43 +244,43 @@ public class SelectPoiCategoryUI
     }
     try
     {
-      boolean bool = I(i.ah(locale));
+      boolean bool = H(i.ag(locale));
       AppMethodBeat.o(26634);
       return bool;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      ad.d("MicroMsg.SelectPoiCategoryUI", "update poi categories failed, path:%s, msg:%s", new Object[] { paramString, localFileNotFoundException.getMessage() });
+      ac.d("MicroMsg.SelectPoiCategoryUI", "update poi categories failed, path:%s, msg:%s", new Object[] { paramString, localFileNotFoundException.getMessage() });
       AppMethodBeat.o(26634);
     }
     return false;
   }
   
-  final void bt(byte[] paramArrayOfByte)
+  final void bs(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26636);
     paramArrayOfByte = new String(paramArrayOfByte).split("\n");
-    this.udr.clear();
+    this.vmq.clear();
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
-      this.udr.add(paramArrayOfByte[i].trim());
+      this.vmq.add(paramArrayOfByte[i].trim());
       i += 1;
     }
     AppMethodBeat.o(26636);
   }
   
-  final void cWq()
+  final void djY()
   {
     AppMethodBeat.i(26637);
-    this.udq.clear();
+    this.vmp.clear();
     int i = 0;
-    while (i < this.udr.size())
+    while (i < this.vmq.size())
     {
-      this.udq.add(this.udr.get(i));
+      this.vmp.add(this.vmq.get(i));
       i += 1;
     }
-    this.udq.notifyDataSetChanged();
+    this.vmp.notifyDataSetChanged();
     AppMethodBeat.o(26637);
   }
   
@@ -293,19 +293,19 @@ public class SelectPoiCategoryUI
   {
     AppMethodBeat.i(26632);
     setMMTitle(2131761616);
-    setBackBtn(this.udj);
-    this.udq = new ArrayAdapter(this, 2131495096);
+    setBackBtn(this.vmi);
+    this.vmp = new ArrayAdapter(this, 2131495096);
     this.mListView = ((ListView)findViewById(2131297926));
-    this.mListView.setAdapter(this.udq);
-    this.mListView.setOnItemClickListener(this.uds);
+    this.mListView.setAdapter(this.vmp);
+    this.mListView.setOnItemClickListener(this.vmr);
     AssetManager localAssetManager;
-    if (!ajf(udo + "/lastest_poi_categories.dat")) {
+    if (!aod(vmn + "/lastest_poi_categories.dat")) {
       localAssetManager = getAssets();
     }
     try
     {
-      I(localAssetManager.open("default_poi_categories.dat"));
-      cWq();
+      H(localAssetManager.open("default_poi_categories.dat"));
+      djY();
       AppMethodBeat.o(26632);
       return;
     }
@@ -313,7 +313,7 @@ public class SelectPoiCategoryUI
     {
       for (;;)
       {
-        ad.d("MicroMsg.SelectPoiCategoryUI", "open file from assets failed: " + localIOException.getMessage());
+        ac.d("MicroMsg.SelectPoiCategoryUI", "open file from assets failed: " + localIOException.getMessage());
       }
     }
   }
@@ -322,14 +322,14 @@ public class SelectPoiCategoryUI
   {
     AppMethodBeat.i(26631);
     super.onCreate(paramBundle);
-    this.udr = new ArrayList();
+    this.vmq = new ArrayList();
     initView();
-    this.udp = new a();
-    paramBundle = this.udp;
-    a.ESL.c(paramBundle);
-    this.udp.udu = this;
+    this.vmo = new a();
+    paramBundle = this.vmo;
+    a.GpY.c(paramBundle);
+    this.vmo.vmt = this;
     paramBundle = new l(17);
-    az.aeS().a(paramBundle, 0);
+    az.agi().a(paramBundle, 0);
     AppMethodBeat.o(26631);
   }
   
@@ -337,8 +337,8 @@ public class SelectPoiCategoryUI
   {
     AppMethodBeat.i(26635);
     super.onDestroy();
-    a locala = this.udp;
-    a.ESL.d(locala);
+    a locala = this.vmo;
+    a.GpY.d(locala);
     AppMethodBeat.o(26635);
   }
   
@@ -349,50 +349,50 @@ public class SelectPoiCategoryUI
   }
   
   final class a
-    extends c<of>
+    extends c<oo>
   {
-    SelectPoiCategoryUI udu;
+    SelectPoiCategoryUI vmt;
     
     public a()
     {
       super();
       AppMethodBeat.i(161394);
-      this.__eventId = of.class.getName().hashCode();
+      this.__eventId = oo.class.getName().hashCode();
       AppMethodBeat.o(161394);
     }
     
-    private boolean a(of paramof)
+    private boolean a(oo paramoo)
     {
       AppMethodBeat.i(26628);
       SelectPoiCategoryUI localSelectPoiCategoryUI;
       Object localObject;
-      if ((paramof instanceof of))
+      if ((paramoo instanceof oo))
       {
-        localSelectPoiCategoryUI = this.udu;
-        paramof = paramof.dtm.content;
-        localObject = new e(SelectPoiCategoryUI.udo);
+        localSelectPoiCategoryUI = this.vmt;
+        paramoo = paramoo.dqW.content;
+        localObject = new e(SelectPoiCategoryUI.vmn);
         if (!((e)localObject).exists()) {
           ((e)localObject).mkdirs();
         }
       }
       try
       {
-        localObject = SelectPoiCategoryUI.udo + "/lastest_poi_categories.dat";
+        localObject = SelectPoiCategoryUI.vmn + "/lastest_poi_categories.dat";
         e locale = new e((String)localObject);
         if (!locale.exists()) {
           locale.createNewFile();
         }
-        i.f((String)localObject, paramof, paramof.length);
+        i.f((String)localObject, paramoo, paramoo.length);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.SelectPoiCategoryUI", "write file failed: " + localException.getMessage());
+          ac.e("MicroMsg.SelectPoiCategoryUI", "write file failed: " + localException.getMessage());
         }
       }
-      localSelectPoiCategoryUI.bt(paramof);
-      localSelectPoiCategoryUI.cWq();
+      localSelectPoiCategoryUI.bs(paramoo);
+      localSelectPoiCategoryUI.djY();
       AppMethodBeat.o(26628);
       return false;
     }
@@ -400,7 +400,7 @@ public class SelectPoiCategoryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.SelectPoiCategoryUI
  * JD-Core Version:    0.7.0.1
  */

@@ -16,45 +16,45 @@ public abstract class a
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    return fJf().a(paramf, parama);
+    return gbI().a(paramf, parama);
   }
   
   public Collection<l> a(d paramd, b<? super f, Boolean> paramb)
   {
     k.h(paramd, "kindFilter");
     k.h(paramb, "nameFilter");
-    return fJf().a(paramd, paramb);
+    return gbI().a(paramd, paramb);
   }
   
   public Collection<am> b(f paramf, d.l.b.a.b.c.a.a parama)
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    return fJf().b(paramf, parama);
+    return gbI().b(paramf, parama);
   }
   
   public final d.l.b.a.b.b.h c(f paramf, d.l.b.a.b.c.a.a parama)
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    return fJf().c(paramf, parama);
+    return gbI().c(paramf, parama);
   }
   
-  protected abstract h fJf();
-  
-  public final Set<f> fzU()
+  public final Set<f> fSy()
   {
-    return fJf().fzU();
+    return gbI().fSy();
   }
   
-  public final Set<f> fzV()
+  public final Set<f> fSz()
   {
-    return fJf().fzV();
+    return gbI().fSz();
   }
+  
+  protected abstract h gbI();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.f.a
  * JD-Core Version:    0.7.0.1
  */

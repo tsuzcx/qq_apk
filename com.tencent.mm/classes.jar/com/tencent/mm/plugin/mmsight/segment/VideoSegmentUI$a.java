@@ -7,36 +7,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.MMTextureView;
 
 final class VideoSegmentUI$a
   implements Runnable
 {
   private Context context;
-  private ViewGroup pTc;
-  private int tHV;
-  private int tHW;
-  private int tHX;
-  private VideoSegmentUI.b tHY;
+  private ViewGroup gnb;
+  private int uQr;
+  private int uQs;
+  private int uQt;
+  private VideoSegmentUI.b uQu;
   
   private VideoSegmentUI$a(VideoSegmentUI paramVideoSegmentUI, ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3, VideoSegmentUI.b paramb)
   {
     AppMethodBeat.i(94480);
-    this.tHV = paramInt1;
-    this.tHW = paramInt2;
-    this.tHX = paramInt3;
+    this.uQr = paramInt1;
+    this.uQs = paramInt2;
+    this.uQt = paramInt3;
     this.context = paramViewGroup.getContext();
-    this.pTc = paramViewGroup;
-    this.tHY = paramb;
+    this.gnb = paramViewGroup;
+    this.uQu = paramb;
     AppMethodBeat.o(94480);
   }
   
   public final void run()
   {
     AppMethodBeat.i(94481);
-    if (this.tHP.isFinishing())
+    if (this.uQl.isFinishing())
     {
       AppMethodBeat.o(94481);
       return;
@@ -46,7 +46,7 @@ final class VideoSegmentUI$a
       protected final void onMeasure(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(94479);
-        ad.d("MicroMsg.VideoSegmentUI", "onMeasure video size[%d, %d, %d] spec[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.a(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.b(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt1)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt2)) });
+        ac.d("MicroMsg.VideoSegmentUI", "onMeasure video size[%d, %d, %d] spec[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.a(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.b(VideoSegmentUI.a.this)), Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt1)), Integer.valueOf(View.getDefaultSize(1, paramAnonymousInt2)) });
         if ((VideoSegmentUI.a.c(VideoSegmentUI.a.this) == 90) || (VideoSegmentUI.a.c(VideoSegmentUI.a.this) == 270))
         {
           Matrix localMatrix = new Matrix();
@@ -59,35 +59,35 @@ final class VideoSegmentUI$a
           localMatrix.postRotate(VideoSegmentUI.a.c(VideoSegmentUI.a.this), f1, f2);
           localMatrix.postScale(1.0F / f3, f3, f1, f2);
           setTransform(localMatrix);
-          ad.i("MicroMsg.VideoSegmentUI", "rotate transform mDegrees[%d] screenSize[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(i), Integer.valueOf(j) });
+          ac.i("MicroMsg.VideoSegmentUI", "rotate transform mDegrees[%d] screenSize[%d, %d]", new Object[] { Integer.valueOf(VideoSegmentUI.a.c(VideoSegmentUI.a.this)), Integer.valueOf(i), Integer.valueOf(j) });
         }
         super.onMeasure(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(94479);
       }
     };
-    int i = this.pTc.getWidth();
-    int j = a.ao(this.context, 2131166957);
-    int k = ((View)VideoSegmentUI.j(this.tHP)).getTop() - j * 2;
-    int m = this.tHW;
-    int n = this.tHV;
+    int i = this.gnb.getWidth();
+    int j = a.au(this.context, 2131166957);
+    int k = ((View)VideoSegmentUI.j(this.uQl)).getTop() - j * 2;
+    int m = this.uQs;
+    int n = this.uQr;
     Point localPoint = new Point();
     if (n / m > k / i) {}
     for (float f = k / n;; f = i / m)
     {
       localPoint.x = ((int)(m * f));
       localPoint.y = ((int)(f * n));
-      ad.i("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d  rawDegress %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.tHW), Integer.valueOf(this.tHV), Integer.valueOf(this.tHX), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
+      ac.i("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d  rawDegress %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.uQs), Integer.valueOf(this.uQr), Integer.valueOf(this.uQt), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
       if ((localPoint.x > 0) && (localPoint.y > 0)) {
         break;
       }
-      ad.e("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.tHW), Integer.valueOf(this.tHV), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
-      if (this.tHY != null)
+      ac.e("MicroMsg.VideoSegmentUI", "rawWidth %d rawHeight %d padding %d validWidth %d validHeight %d scaled %s", new Object[] { Integer.valueOf(this.uQs), Integer.valueOf(this.uQr), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), localPoint.toString() });
+      if (this.uQu != null)
       {
-        localObject = this.tHY;
-        ad.e("MicroMsg.VideoSegmentUI", "TextureViewCallback error");
-        VideoSegmentUI.m(((VideoSegmentUI.b)localObject).tHP);
-        ((VideoSegmentUI.b)localObject).tHP.finish();
-        VideoSegmentUI.b(((VideoSegmentUI.b)localObject).tHP);
+        localObject = this.uQu;
+        ac.e("MicroMsg.VideoSegmentUI", "TextureViewCallback error");
+        VideoSegmentUI.m(((VideoSegmentUI.b)localObject).uQl);
+        ((VideoSegmentUI.b)localObject).uQl.finish();
+        VideoSegmentUI.b(((VideoSegmentUI.b)localObject).uQl);
       }
       AppMethodBeat.o(94481);
       return;
@@ -99,14 +99,14 @@ final class VideoSegmentUI$a
     i = (int)((i - localPoint.x) / 2.0F);
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    ((MMTextureView)localObject).setSurfaceTextureListener(this.tHY);
-    this.pTc.addView((View)localObject, 0, localLayoutParams);
+    ((MMTextureView)localObject).setSurfaceTextureListener(this.uQu);
+    this.gnb.addView((View)localObject, 0, localLayoutParams);
     AppMethodBeat.o(94481);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoSegmentUI.a
  * JD-Core Version:    0.7.0.1
  */

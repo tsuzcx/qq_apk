@@ -19,13 +19,15 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.s.a.a.c;
-import com.tencent.mm.plugin.appbrand.s.a.a.o;
-import com.tencent.mm.plugin.appbrand.s.a.d.b;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.r.a.a.c;
+import com.tencent.mm.plugin.appbrand.r.a.a.o;
+import com.tencent.mm.plugin.appbrand.r.a.d.b;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.am;
 import d.g.b.k;
 import java.util.HashMap;
@@ -37,76 +39,76 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   extends o
   implements ai
 {
-  private Application.ActivityLifecycleCallbacks cww;
-  public final LinkedList<RUNTIME> iEY;
-  public final HashMap<String, RUNTIME> iEZ;
-  public final com.tencent.mm.plugin.appbrand.task.g iFa;
-  private Class<? extends RUNTIME> iFb;
-  private boolean iFc;
-  protected boolean iFd;
-  public n iFe;
-  private v iFf;
-  protected boolean iFg;
+  private Application.ActivityLifecycleCallbacks ctF;
+  public final LinkedList<RUNTIME> jfa;
+  public final HashMap<String, RUNTIME> jfb;
+  public final com.tencent.mm.plugin.appbrand.task.g jfc;
+  private Class<? extends RUNTIME> jfd;
+  private boolean jfe;
+  protected boolean jff;
+  public n jfg;
+  private v jfh;
+  protected boolean jfi;
   public FrameLayout mContentView;
   
   public AppBrandRuntimeContainer(final com.tencent.mm.plugin.appbrand.task.g paramg, Class<? extends RUNTIME> paramClass)
   {
     AppMethodBeat.i(134545);
-    this.iFc = false;
-    this.iFd = false;
-    this.iFg = false;
-    super.av(paramg.getContext());
-    this.iEY = new LinkedList();
-    this.iEZ = new HashMap();
-    this.mContentView = paramg.bnJ();
-    this.iFa = paramg;
-    this.iFb = paramClass;
-    this.iFf = new v(paramg.getContext())
+    this.jfe = false;
+    this.jff = false;
+    this.jfi = false;
+    super.aw(paramg.getContext());
+    this.jfa = new LinkedList();
+    this.jfb = new HashMap();
+    this.mContentView = paramg.buF();
+    this.jfc = paramg;
+    this.jfd = paramClass;
+    this.jfh = new v(paramg.getContext())
     {
-      public final boolean aMJ()
+      public final void aTA()
       {
-        AppMethodBeat.i(194398);
-        boolean bool = AppBrandRuntimeContainer.this.aMH();
-        AppMethodBeat.o(194398);
-        return bool;
-      }
-      
-      public final void aMK()
-      {
-        AppMethodBeat.i(194399);
+        AppMethodBeat.i(193313);
         AppBrandRuntimeContainer.a(AppBrandRuntimeContainer.this);
-        AppMethodBeat.o(194399);
+        AppMethodBeat.o(193313);
       }
       
-      public final ViewGroup aML()
+      public final ViewGroup aTB()
       {
-        AppMethodBeat.i(194403);
+        AppMethodBeat.i(193317);
         ViewGroup localViewGroup = AppBrandRuntimeContainer.H(AppBrandRuntimeContainer.this.getActiveRuntime());
-        AppMethodBeat.o(194403);
+        AppMethodBeat.o(193317);
         return localViewGroup;
+      }
+      
+      public final boolean aTz()
+      {
+        AppMethodBeat.i(193312);
+        boolean bool = AppBrandRuntimeContainer.this.aTx();
+        AppMethodBeat.o(193312);
+        return bool;
       }
       
       public final Activity getActivity()
       {
-        AppMethodBeat.i(194401);
+        AppMethodBeat.i(193315);
         Activity localActivity = paramg.getActivity();
-        AppMethodBeat.o(194401);
+        AppMethodBeat.o(193315);
         return localActivity;
       }
       
       public final int getBgColor()
       {
-        AppMethodBeat.i(194400);
+        AppMethodBeat.i(193314);
         int i = AppBrandRuntimeContainer.this.getWindowColor();
-        AppMethodBeat.o(194400);
+        AppMethodBeat.o(193314);
         return i;
       }
       
       public final AppBrandRuntime getRuntime()
       {
-        AppMethodBeat.i(194402);
+        AppMethodBeat.i(193316);
         AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.this.getActiveRuntime();
-        AppMethodBeat.o(194402);
+        AppMethodBeat.o(193316);
         return localAppBrandRuntime;
       }
     };
@@ -114,20 +116,20 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     {
       public final void onSystemUiVisibilityChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(194404);
+        AppMethodBeat.i(193318);
         Object localObject;
         int i;
         if ((AppBrandRuntimeContainer.b(AppBrandRuntimeContainer.this).isShown()) && (t.aC(AppBrandRuntimeContainer.b(AppBrandRuntimeContainer.this))) && (Build.VERSION.SDK_INT >= 26) && ((AppBrandRuntimeContainer.b(AppBrandRuntimeContainer.this).getWindowSystemUiVisibility() & 0x2) == 0))
         {
-          localObject = com.tencent.mm.sdk.f.a.iV(AppBrandRuntimeContainer.this.getContext());
+          localObject = com.tencent.mm.sdk.f.a.jg(AppBrandRuntimeContainer.this.getContext());
           if ((localObject != null) && (((Activity)localObject).getWindow() != null))
           {
-            boolean bool = am.XC(((Activity)localObject).getWindow().getNavigationBarColor());
+            boolean bool = am.ZN(((Activity)localObject).getWindow().getNavigationBarColor());
             localObject = ((Activity)localObject).getWindow();
             if (!bool) {}
             for (paramAnonymousInt = 1; (localObject == null) || (((Window)localObject).getDecorView() == null); paramAnonymousInt = 0)
             {
-              AppMethodBeat.o(194404);
+              AppMethodBeat.o(193318);
               return;
             }
             if (Build.VERSION.SDK_INT >= 26)
@@ -144,57 +146,57 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
         for (paramAnonymousInt = i | 0x10;; paramAnonymousInt = i & 0xFFFFFFEF)
         {
           ((View)localObject).setSystemUiVisibility(paramAnonymousInt);
-          AppMethodBeat.o(194404);
+          AppMethodBeat.o(193318);
           return;
         }
       }
     });
-    paramg = com.tencent.mm.plugin.appbrand.s.a.a.g.C(com.tencent.mm.sdk.f.a.iV(this.mContext));
-    ad.i("MicroMsg.AppBrandDeviceOrientationHandler", "init");
+    paramg = com.tencent.mm.plugin.appbrand.r.a.a.g.C(com.tencent.mm.sdk.f.a.jg(this.mContext));
+    ac.i("MicroMsg.AppBrandDeviceOrientationHandler", "init");
     try
     {
       paramg.mFinished = false;
       paramg = (Application)getContext().getApplicationContext();
-      paramClass = new com.tencent.mm.plugin.appbrand.aa.a()
+      paramClass = new com.tencent.mm.plugin.appbrand.z.a()
       {
         public final void onActivityDestroyed(Activity paramAnonymousActivity)
         {
-          AppMethodBeat.i(194407);
-          if (com.tencent.mm.sdk.f.a.iV(AppBrandRuntimeContainer.this.mContext) == paramAnonymousActivity)
+          AppMethodBeat.i(193321);
+          if (com.tencent.mm.sdk.f.a.jg(AppBrandRuntimeContainer.this.mContext) == paramAnonymousActivity)
           {
-            ad.i("MicroMsg.AppBrandRuntimeContainer", "onActivityDestroyed %s", new Object[] { paramAnonymousActivity.getLocalClassName() });
+            ac.i("MicroMsg.AppBrandRuntimeContainer", "onActivityDestroyed %s", new Object[] { paramAnonymousActivity.getLocalClassName() });
             AppBrandRuntimeContainer.c(AppBrandRuntimeContainer.this);
           }
-          AppMethodBeat.o(194407);
+          AppMethodBeat.o(193321);
         }
         
         public final void onActivityPaused(Activity paramAnonymousActivity)
         {
-          AppMethodBeat.i(194406);
-          if (com.tencent.mm.sdk.f.a.iV(AppBrandRuntimeContainer.this.mContext) == paramAnonymousActivity)
+          AppMethodBeat.i(193320);
+          if (com.tencent.mm.sdk.f.a.jg(AppBrandRuntimeContainer.this.mContext) == paramAnonymousActivity)
           {
-            ad.i("MicroMsg.AppBrandRuntimeContainer", "onActivityPaused %s", new Object[] { paramAnonymousActivity.getLocalClassName() });
+            ac.i("MicroMsg.AppBrandRuntimeContainer", "onActivityPaused %s", new Object[] { paramAnonymousActivity.getLocalClassName() });
             AppBrandRuntimeContainer.a(AppBrandRuntimeContainer.this, false);
             AppBrandRuntimeContainer.b(AppBrandRuntimeContainer.this, true);
-            AppBrandRuntimeContainer.this.aMI().onPause();
+            AppBrandRuntimeContainer.this.aTy().onPause();
           }
-          AppMethodBeat.o(194406);
+          AppMethodBeat.o(193320);
         }
         
         public final void onActivityResumed(Activity paramAnonymousActivity)
         {
-          AppMethodBeat.i(194405);
-          if (com.tencent.mm.sdk.f.a.iV(AppBrandRuntimeContainer.this.mContext) == paramAnonymousActivity)
+          AppMethodBeat.i(193319);
+          if (com.tencent.mm.sdk.f.a.jg(AppBrandRuntimeContainer.this.mContext) == paramAnonymousActivity)
           {
-            ad.i("MicroMsg.AppBrandRuntimeContainer", "onActivityResumed %s", new Object[] { paramAnonymousActivity.getLocalClassName() });
+            ac.i("MicroMsg.AppBrandRuntimeContainer", "onActivityResumed %s", new Object[] { paramAnonymousActivity.getLocalClassName() });
             AppBrandRuntimeContainer.a(AppBrandRuntimeContainer.this, true);
             AppBrandRuntimeContainer.b(AppBrandRuntimeContainer.this, false);
-            AppBrandRuntimeContainer.this.aMI().onResume();
+            AppBrandRuntimeContainer.this.aTy().onResume();
           }
-          AppMethodBeat.o(194405);
+          AppMethodBeat.o(193319);
         }
       };
-      this.cww = paramClass;
+      this.ctF = paramClass;
       paramg.registerActivityLifecycleCallbacks(paramClass);
       AppMethodBeat.o(134545);
       return;
@@ -208,9 +210,9 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   private void D(RUNTIME paramRUNTIME)
   {
     AppMethodBeat.i(134561);
-    this.iEY.remove(paramRUNTIME);
-    this.iEY.push(paramRUNTIME);
-    paramRUNTIME.iDA.setVisibility(0);
+    this.jfa.remove(paramRUNTIME);
+    this.jfa.push(paramRUNTIME);
+    paramRUNTIME.jdA.setVisibility(0);
     f(G(paramRUNTIME));
     AppMethodBeat.o(134561);
   }
@@ -218,29 +220,29 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   private void E(RUNTIME paramRUNTIME)
   {
     AppMethodBeat.i(134562);
-    if (this.iEY.contains(paramRUNTIME))
+    if (this.jfa.contains(paramRUNTIME))
     {
       AppMethodBeat.o(134562);
       return;
     }
-    this.iEY.push(paramRUNTIME);
-    if (this.mContentView.indexOfChild(paramRUNTIME.iDA) == -1) {
-      a(paramRUNTIME.iDA);
+    this.jfa.push(paramRUNTIME);
+    if (this.mContentView.indexOfChild(paramRUNTIME.jdA) == -1) {
+      a(paramRUNTIME.jdA);
     }
-    this.iEZ.remove(paramRUNTIME.mAppId);
+    this.jfb.remove(paramRUNTIME.mAppId);
     AppMethodBeat.o(134562);
   }
   
   private static ViewGroup G(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(194411);
+    AppMethodBeat.i(193325);
     if (paramAppBrandRuntime == null)
     {
-      AppMethodBeat.o(194411);
+      AppMethodBeat.o(193325);
       return null;
     }
-    paramAppBrandRuntime = (ViewGroup)paramAppBrandRuntime.iDA.getParent();
-    AppMethodBeat.o(194411);
+    paramAppBrandRuntime = (ViewGroup)paramAppBrandRuntime.jdA.getParent();
+    AppMethodBeat.o(193325);
     return paramAppBrandRuntime;
   }
   
@@ -248,12 +250,12 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   {
     AppMethodBeat.i(178511);
     int i = this.mContentView.getChildCount();
-    if ((aMG()) && (aMF())) {
+    if ((aTw()) && (aTv())) {
       i -= 1;
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandRuntimeContainer", "loadNewRtContentView: name = [%s], index = [%d]", new Object[] { paramd.getTag(), Integer.valueOf(i) });
+      ac.i("MicroMsg.AppBrandRuntimeContainer", "loadNewRtContentView: name = [%s], index = [%d]", new Object[] { paramd.getTag(), Integer.valueOf(i) });
       if (paramd.getParent() != null) {
         ((ViewGroup)paramd.getParent()).removeAllViews();
       }
@@ -261,7 +263,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
       localFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
       localFrameLayout.addView(paramd);
       this.mContentView.addView(localFrameLayout, i);
-      this.iFf.aMN();
+      this.jfh.aTD();
       getActiveRuntime().a(4, 1, new aj()
       {
         public final boolean c(KeyEvent paramAnonymousKeyEvent)
@@ -281,23 +283,23 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     }
   }
   
-  private void aMB()
+  private void aTr()
   {
     AppMethodBeat.i(177591);
-    if (this.cww != null)
+    if (this.ctF != null)
     {
-      ((Application)getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(this.cww);
-      this.cww = null;
+      ((Application)getContext().getApplicationContext()).unregisterActivityLifecycleCallbacks(this.ctF);
+      this.ctF = null;
     }
-    aMI().release();
+    aTy().release();
     AppMethodBeat.o(177591);
   }
   
-  private boolean aMF()
+  private boolean aTv()
   {
     AppMethodBeat.i(178513);
     int i = this.mContentView.getChildCount();
-    if ((i > 1) || ((i == 1) && (this.iFe != null)))
+    if ((i > 1) || ((i == 1) && (this.jfg != null)))
     {
       AppMethodBeat.o(178513);
       return true;
@@ -306,52 +308,52 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     return false;
   }
   
-  private boolean aMG()
+  private boolean aTw()
   {
-    return this.iFe != null;
+    return this.jfg != null;
   }
   
   private void f(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(194412);
+    AppMethodBeat.i(193326);
     if (this.mContentView.indexOfChild(paramViewGroup) == -1)
     {
-      ad.w("MicroMsg.AppBrandRuntimeContainer", "bringRtViewToTop: such runtime view does not exist");
-      AppMethodBeat.o(194412);
+      ac.w("MicroMsg.AppBrandRuntimeContainer", "bringRtViewToTop: such runtime view does not exist");
+      AppMethodBeat.o(193326);
       return;
     }
     this.mContentView.bringChildToFront(paramViewGroup);
-    if (aMG()) {
-      this.mContentView.bringChildToFront(this.iFe);
+    if (aTw()) {
+      this.mContentView.bringChildToFront(this.jfg);
     }
-    this.iFf.aMN();
-    AppMethodBeat.o(194412);
+    this.jfh.aTD();
+    AppMethodBeat.o(193326);
   }
   
-  private void fb(boolean paramBoolean)
+  private void fv(boolean paramBoolean)
   {
-    AppMethodBeat.i(194416);
+    AppMethodBeat.i(193330);
     if (paramBoolean)
     {
-      if ((this.lnW != null) && (!(this.lnW instanceof com.tencent.mm.plugin.appbrand.s.a.b.a.a)))
+      if ((this.lPX != null) && (!(this.lPX instanceof com.tencent.mm.plugin.appbrand.r.a.b.a.a)))
       {
-        this.lnW.release();
-        this.lnW = null;
-        AppMethodBeat.o(194416);
+        this.lPX.release();
+        this.lPX = null;
+        AppMethodBeat.o(193330);
       }
     }
-    else if ((this.lnW != null) && ((this.lnW instanceof com.tencent.mm.plugin.appbrand.s.a.b.a.a)))
+    else if ((this.lPX != null) && ((this.lPX instanceof com.tencent.mm.plugin.appbrand.r.a.b.a.a)))
     {
-      this.lnW.release();
-      this.lnW = null;
+      this.lPX.release();
+      this.lPX = null;
     }
-    AppMethodBeat.o(194416);
+    AppMethodBeat.o(193330);
   }
   
   public final boolean A(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(134554);
-    boolean bool = this.iEY.contains(paramAppBrandRuntime);
+    boolean bool = this.jfa.contains(paramAppBrandRuntime);
     AppMethodBeat.o(134554);
     return bool;
   }
@@ -376,44 +378,26 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     if (Looper.getMainLooper() == Looper.myLooper()) {
       paramAppBrandRuntime.run();
     }
-    if (com.tencent.mm.sdk.f.a.iV(this.mContext) != null)
+    if (com.tencent.mm.sdk.f.a.jg(this.mContext) != null)
     {
-      com.tencent.mm.sdk.f.a.iV(this.mContext).runOnUiThread(paramAppBrandRuntime);
+      com.tencent.mm.sdk.f.a.jg(this.mContext).runOnUiThread(paramAppBrandRuntime);
       AppMethodBeat.o(134558);
       return;
     }
-    new ap(Looper.getMainLooper()).post(paramAppBrandRuntime);
+    new ao(Looper.getMainLooper()).post(paramAppBrandRuntime);
     AppMethodBeat.o(134558);
   }
   
   protected final boolean C(RUNTIME paramRUNTIME)
   {
     AppMethodBeat.i(134560);
-    if (this.iEY.peekFirst() == paramRUNTIME)
+    if (this.jfa.peekFirst() == paramRUNTIME)
     {
       AppMethodBeat.o(134560);
       return true;
     }
     AppMethodBeat.o(134560);
     return false;
-  }
-  
-  public final RUNTIME Dk(String paramString)
-  {
-    AppMethodBeat.i(194410);
-    Iterator localIterator = this.iEY.iterator();
-    while (localIterator.hasNext())
-    {
-      AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)localIterator.next();
-      if (localAppBrandRuntime.mAppId.equals(paramString))
-      {
-        AppMethodBeat.o(194410);
-        return localAppBrandRuntime;
-      }
-    }
-    paramString = (AppBrandRuntime)this.iEZ.get(paramString);
-    AppMethodBeat.o(194410);
-    return paramString;
   }
   
   public final void F(AppBrandRuntime paramAppBrandRuntime)
@@ -424,56 +408,74 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
       AppMethodBeat.o(134564);
       return;
     }
-    this.iEY.remove(paramAppBrandRuntime);
+    this.jfa.remove(paramAppBrandRuntime);
     AppMethodBeat.o(134564);
   }
   
-  public final com.tencent.mm.plugin.appbrand.s.a.d a(d.b paramb)
+  public final RUNTIME Hn(String paramString)
   {
-    AppMethodBeat.i(194414);
-    if (aMH())
+    AppMethodBeat.i(193324);
+    Iterator localIterator = this.jfa.iterator();
+    while (localIterator.hasNext())
     {
-      paramb = new ar(this, paramb);
-      AppMethodBeat.o(194414);
+      AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)localIterator.next();
+      if (localAppBrandRuntime.mAppId.equals(paramString))
+      {
+        AppMethodBeat.o(193324);
+        return localAppBrandRuntime;
+      }
+    }
+    paramString = (AppBrandRuntime)this.jfb.get(paramString);
+    AppMethodBeat.o(193324);
+    return paramString;
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.r.a.d a(d.b paramb)
+  {
+    AppMethodBeat.i(193328);
+    if (aTx())
+    {
+      paramb = new ar(this, paramb, com.tencent.mm.sdk.f.a.jg(this.mContext));
+      AppMethodBeat.o(193328);
       return paramb;
     }
     paramb = super.a(paramb);
-    AppMethodBeat.o(194414);
+    AppMethodBeat.o(193328);
     return paramb;
   }
   
   public void a(RUNTIME paramRUNTIME1, RUNTIME paramRUNTIME2, AppBrandInitConfig paramAppBrandInitConfig)
   {
     AppMethodBeat.i(134546);
-    paramRUNTIME2.iDw = paramRUNTIME1;
+    paramRUNTIME2.jdw = paramRUNTIME1;
     paramRUNTIME2.c(paramAppBrandInitConfig);
-    this.iEY.push(paramRUNTIME2);
-    a(paramRUNTIME2.iDA);
+    this.jfa.push(paramRUNTIME2);
+    a(paramRUNTIME2.jdA);
     if (paramRUNTIME1 != null) {
       paramRUNTIME1.dispatchPause();
     }
-    paramRUNTIME2.aLH();
+    paramRUNTIME2.aSx();
     AppMethodBeat.o(134546);
   }
   
   public final void a(final AppBrandRuntime paramAppBrandRuntime, final AppBrandInitConfig paramAppBrandInitConfig)
   {
-    AppMethodBeat.i(194409);
+    AppMethodBeat.i(193323);
     if (paramAppBrandInitConfig == null)
     {
-      AppMethodBeat.o(194409);
+      AppMethodBeat.o(193323);
       return;
     }
-    com.tencent.mm.sdk.f.a.iV(this.mContext).runOnUiThread(new Runnable()
+    com.tencent.mm.sdk.f.a.jg(this.mContext).runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(134539);
-        n.I(com.tencent.mm.sdk.f.a.iV(AppBrandRuntimeContainer.this.mContext));
+        n.I(com.tencent.mm.sdk.f.a.jg(AppBrandRuntimeContainer.this.mContext));
         if (paramAppBrandRuntime == null) {
-          AppBrandRuntimeContainer.this.aMD();
+          AppBrandRuntimeContainer.this.aTt();
         }
-        AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.this.Dk(paramAppBrandInitConfig.appId);
+        AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.this.Hn(paramAppBrandInitConfig.appId);
         if (localAppBrandRuntime == null)
         {
           localAppBrandRuntime = AppBrandRuntimeContainer.this.f(paramAppBrandInitConfig);
@@ -485,7 +487,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
         AppMethodBeat.o(134539);
       }
     });
-    AppMethodBeat.o(194409);
+    AppMethodBeat.o(193323);
   }
   
   public final void a(final AppBrandRuntime paramAppBrandRuntime, final Object paramObject)
@@ -496,7 +498,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
       AppMethodBeat.o(176531);
       return;
     }
-    Activity localActivity = com.tencent.mm.sdk.f.a.iV(this.mContext);
+    Activity localActivity = com.tencent.mm.sdk.f.a.jg(this.mContext);
     if (localActivity == null)
     {
       AppMethodBeat.o(176531);
@@ -509,42 +511,42 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
         AppMethodBeat.i(134540);
         if (!AppBrandRuntimeContainer.this.C(paramAppBrandRuntime))
         {
-          ad.e("MicroMsg.AppBrandRuntimeContainer", "close with appId(%s), not top of stack, ignore", new Object[] { paramAppBrandRuntime.mAppId });
+          ac.e("MicroMsg.AppBrandRuntimeContainer", "close with appId(%s), not top of stack, ignore", new Object[] { paramAppBrandRuntime.mAppId });
           AppMethodBeat.o(134540);
           return;
         }
         final AppBrandRuntime localAppBrandRuntime = AppBrandRuntimeContainer.this.z(paramAppBrandRuntime);
         if (localAppBrandRuntime != null) {
-          localAppBrandRuntime.b(paramAppBrandRuntime.Eg(), paramObject);
+          localAppBrandRuntime.b(paramAppBrandRuntime.DJ(), paramObject);
         }
         String str2 = paramAppBrandRuntime.mAppId;
         if (localAppBrandRuntime == null) {}
         for (String str1 = "null";; str1 = localAppBrandRuntime.mAppId)
         {
-          ad.i("MicroMsg.AppBrandRuntimeContainer", "close before run(), out.appId[%s], willAppear.appId[%s], mIsActivityResumed[%b]", new Object[] { str2, str1, Boolean.valueOf(AppBrandRuntimeContainer.d(AppBrandRuntimeContainer.this)) });
+          ac.i("MicroMsg.AppBrandRuntimeContainer", "close before run(), out.appId[%s], willAppear.appId[%s], mIsActivityResumed[%b]", new Object[] { str2, str1, Boolean.valueOf(AppBrandRuntimeContainer.d(AppBrandRuntimeContainer.this)) });
           AppBrandRuntimeContainer.this.b(localAppBrandRuntime, paramAppBrandRuntime, new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(194408);
-              AppBrandRuntimeContainer.8.this.iFn.iDA.setVisibility(8);
-              AppBrandRuntimeContainer.e(AppBrandRuntimeContainer.this).remove(AppBrandRuntimeContainer.8.this.iFn);
-              AppBrandRuntimeContainer.f(AppBrandRuntimeContainer.this).put(AppBrandRuntimeContainer.8.this.iFn.mAppId, AppBrandRuntimeContainer.8.this.iFn);
+              AppMethodBeat.i(193322);
+              AppBrandRuntimeContainer.8.this.jfp.jdA.setVisibility(8);
+              AppBrandRuntimeContainer.e(AppBrandRuntimeContainer.this).remove(AppBrandRuntimeContainer.8.this.jfp);
+              AppBrandRuntimeContainer.f(AppBrandRuntimeContainer.this).put(AppBrandRuntimeContainer.8.this.jfp.mAppId, AppBrandRuntimeContainer.8.this.jfp);
               if (localAppBrandRuntime != null)
               {
                 AppBrandRuntimeContainer.a(AppBrandRuntimeContainer.this, localAppBrandRuntime);
                 AppBrandRuntimeContainer.b(AppBrandRuntimeContainer.this, localAppBrandRuntime);
               }
-              AppBrandRuntimeContainer.8.this.iFn.dispatchPause();
+              AppBrandRuntimeContainer.8.this.jfp.dispatchPause();
               if ((AppBrandRuntimeContainer.d(AppBrandRuntimeContainer.this)) && (localAppBrandRuntime != null)) {
                 localAppBrandRuntime.dispatchResume();
               }
-              String str2 = AppBrandRuntimeContainer.8.this.iFn.mAppId;
+              String str2 = AppBrandRuntimeContainer.8.this.jfp.mAppId;
               if (localAppBrandRuntime == null) {}
               for (String str1 = "null";; str1 = localAppBrandRuntime.mAppId)
               {
-                ad.i("MicroMsg.AppBrandRuntimeContainer", "close run(), out.appId[%s], willAppear.appId[%s], mIsActivityResumed[%b]", new Object[] { str2, str1, Boolean.valueOf(AppBrandRuntimeContainer.d(AppBrandRuntimeContainer.this)) });
-                AppMethodBeat.o(194408);
+                ac.i("MicroMsg.AppBrandRuntimeContainer", "close run(), out.appId[%s], willAppear.appId[%s], mIsActivityResumed[%b]", new Object[] { str2, str1, Boolean.valueOf(AppBrandRuntimeContainer.d(AppBrandRuntimeContainer.this)) });
+                AppMethodBeat.o(193322);
                 return;
               }
             }
@@ -557,44 +559,44 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     AppMethodBeat.o(176531);
   }
   
-  public final boolean aMC()
+  public final boolean aTs()
   {
     AppMethodBeat.i(176530);
-    boolean bool = this.iFa.aMC();
+    boolean bool = this.jfc.aTs();
     AppMethodBeat.o(176530);
     return bool;
   }
   
-  public final void aMD()
+  public final void aTt()
   {
     AppMethodBeat.i(134563);
-    Iterator localIterator = this.iEY.iterator();
+    Iterator localIterator = this.jfa.iterator();
     while (localIterator.hasNext())
     {
       AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)localIterator.next();
-      localAppBrandRuntime.iDA.setVisibility(8);
-      this.iEZ.put(localAppBrandRuntime.mAppId, localAppBrandRuntime);
-      localAppBrandRuntime.aMf();
+      localAppBrandRuntime.jdA.setVisibility(8);
+      this.jfb.put(localAppBrandRuntime.mAppId, localAppBrandRuntime);
+      localAppBrandRuntime.aSV();
     }
-    this.iEY.clear();
+    this.jfa.clear();
     AppMethodBeat.o(134563);
   }
   
-  protected final LinkedList<RUNTIME> aME()
+  protected final LinkedList<RUNTIME> aTu()
   {
     AppMethodBeat.i(134565);
-    LinkedList localLinkedList = new LinkedList(this.iEY);
+    LinkedList localLinkedList = new LinkedList(this.jfa);
     AppMethodBeat.o(134565);
     return localLinkedList;
   }
   
-  public final boolean aMH()
+  public final boolean aTx()
   {
     boolean bool1 = false;
     AppMethodBeat.i(185548);
-    boolean bool2 = super.aMH();
-    ad.i("MicroMsg.AppBrandRuntimeContainer", "shouldInLargeScreenCompatMode: shouldInLargeScreenCompatMode = [%b], forceDisableCompatMode = [%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(this.iFg) });
-    if (this.iFg) {}
+    boolean bool2 = super.aTx();
+    ac.i("MicroMsg.AppBrandRuntimeContainer", "shouldInLargeScreenCompatMode: shouldInLargeScreenCompatMode = [%b], forceDisableCompatMode = [%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(this.jfi) });
+    if (this.jfi) {}
     for (;;)
     {
       AppMethodBeat.o(185548);
@@ -603,22 +605,22 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     }
   }
   
-  public final c aMI()
+  public final c aTy()
   {
-    AppMethodBeat.i(194415);
-    if (aMH())
+    AppMethodBeat.i(193329);
+    if (aTx())
     {
-      fb(true);
-      if (this.lnW != null) {}
+      fv(true);
+      if (this.lPX != null) {}
     }
-    for (this.lnW = new com.tencent.mm.plugin.appbrand.s.a.b.a.a(this);; this.lnW = new com.tencent.mm.plugin.appbrand.s.a.a.d(this))
+    for (this.lPX = new com.tencent.mm.plugin.appbrand.r.a.b.a.a(this);; this.lPX = new com.tencent.mm.plugin.appbrand.r.a.a.d(this))
     {
-      c localc = this.lnW;
-      AppMethodBeat.o(194415);
+      c localc = this.lPX;
+      AppMethodBeat.o(193329);
       return localc;
-      fb(false);
-      if ((this.lnW != null) && ((this.lnW instanceof com.tencent.mm.plugin.appbrand.s.a.a.d)) && (((com.tencent.mm.plugin.appbrand.s.a.a.d)this.lnW).activity != com.tencent.mm.sdk.f.a.iV(this.mContext))) {
-        this.lnW.release();
+      fv(false);
+      if ((this.lPX != null) && ((this.lPX instanceof com.tencent.mm.plugin.appbrand.r.a.a.d)) && (((com.tencent.mm.plugin.appbrand.r.a.a.d)this.lPX).activity != com.tencent.mm.sdk.f.a.jg(this.mContext))) {
+        this.lPX.release();
       }
     }
   }
@@ -628,7 +630,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     AppMethodBeat.i(134548);
     E(paramRUNTIME2);
     D(paramRUNTIME2);
-    paramRUNTIME2.iDw = paramRUNTIME1;
+    paramRUNTIME2.jdw = paramRUNTIME1;
     paramRUNTIME2.d(paramAppBrandInitConfig);
     if (paramRUNTIME1 != null)
     {
@@ -644,7 +646,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     if (paramAppBrandRuntime1 == null) {}
     for (paramAppBrandRuntime1 = "null";; paramAppBrandRuntime1 = paramAppBrandRuntime1.mAppId)
     {
-      ad.i("MicroMsg.AppBrandRuntimeContainer", "onRuntimeClose entered, in.appId[%s], out.appId[%s]", new Object[] { paramAppBrandRuntime1, paramAppBrandRuntime2.mAppId });
+      ac.i("MicroMsg.AppBrandRuntimeContainer", "onRuntimeClose entered, in.appId[%s], out.appId[%s]", new Object[] { paramAppBrandRuntime1, paramAppBrandRuntime2.mAppId });
       paramRunnable.run();
       AppMethodBeat.o(134550);
       return;
@@ -655,25 +657,25 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   {
     AppMethodBeat.i(134559);
     Object localObject = new LinkedList();
-    ((LinkedList)localObject).addAll(this.iEY);
-    ((LinkedList)localObject).addAll(this.iEZ.values());
-    aMD();
+    ((LinkedList)localObject).addAll(this.jfa);
+    ((LinkedList)localObject).addAll(this.jfb.values());
+    aTt();
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)((Iterator)localObject).next();
-      localAppBrandRuntime.iDR = false;
+      localAppBrandRuntime.jdR = false;
       B(localAppBrandRuntime);
     }
-    ad.i("MicroMsg.AppBrandRuntimeContainer", "cleanup");
-    aMB();
+    ac.i("MicroMsg.AppBrandRuntimeContainer", "cleanup");
+    aTr();
     AppMethodBeat.o(134559);
   }
   
   public RUNTIME f(AppBrandInitConfig paramAppBrandInitConfig)
   {
     AppMethodBeat.i(134547);
-    paramAppBrandInitConfig = (AppBrandRuntime)org.a.a.bA(this.iFb).ag(new Object[] { this }).object;
+    paramAppBrandInitConfig = (AppBrandRuntime)org.a.a.bD(this.jfd).ai(new Object[] { this }).object;
     AppMethodBeat.o(134547);
     return paramAppBrandInitConfig;
   }
@@ -681,7 +683,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   public RUNTIME getActiveRuntime()
   {
     AppMethodBeat.i(134551);
-    AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)this.iEY.peek();
+    AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)this.jfa.peek();
     AppMethodBeat.o(134551);
     return localAppBrandRuntime;
   }
@@ -689,7 +691,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   public int getStackSize()
   {
     AppMethodBeat.i(185921);
-    int i = this.iEY.size();
+    int i = this.jfa.size();
     AppMethodBeat.o(185921);
     return i;
   }
@@ -699,14 +701,14 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
     AppMethodBeat.i(178516);
     DisplayMetrics localDisplayMetrics2 = super.getVDisplayMetrics();
     DisplayMetrics localDisplayMetrics1;
-    if ((aMH()) || (this.iFf.iHr)) {
-      localDisplayMetrics1 = this.iFf.getVDisplayMetrics();
+    if ((aTx()) || (this.jfh.jht)) {
+      localDisplayMetrics1 = this.jfh.getVDisplayMetrics();
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandRuntimeContainer", "getVDisplayMetrics: [%d,%d, %b]", new Object[] { Integer.valueOf(localDisplayMetrics1.widthPixels), Integer.valueOf(localDisplayMetrics1.heightPixels), Boolean.valueOf(aMH()) });
-      this.iFf.iHq = localDisplayMetrics1.heightPixels;
-      this.iFf.iHp = localDisplayMetrics1.widthPixels;
+      ac.i("MicroMsg.AppBrandRuntimeContainer", "getVDisplayMetrics: [%d,%d, %b]", new Object[] { Integer.valueOf(localDisplayMetrics1.widthPixels), Integer.valueOf(localDisplayMetrics1.heightPixels), Boolean.valueOf(aTx()) });
+      this.jfh.jhs = localDisplayMetrics1.heightPixels;
+      this.jfh.jhr = localDisplayMetrics1.widthPixels;
       AppMethodBeat.o(178516);
       return localDisplayMetrics1;
       localDisplayMetrics1 = localDisplayMetrics2;
@@ -732,8 +734,8 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.AppBrandRuntimeContainer", "onBackPressed e = %s", new Object[] { localException });
-        aq.f(new Runnable()
+        ac.e("MicroMsg.AppBrandRuntimeContainer", "onBackPressed e = %s", new Object[] { localException });
+        ap.f(new Runnable()
         {
           public final void run()
           {
@@ -751,42 +753,42 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(134557);
-    Object localObject = this.iFf;
+    Object localObject = this.jfh;
     k.h(paramConfiguration, "newConfig");
-    if ((((v)localObject).iHo != paramConfiguration.orientation) || (paramConfiguration.screenHeightDp != ((v)localObject).iHm) || (paramConfiguration.screenWidthDp != ((v)localObject).iHn)) {
-      if (((paramConfiguration.screenHeightDp == ((v)localObject).iHm) && (paramConfiguration.screenWidthDp == ((v)localObject).iHn)) || (((v)localObject).iHo != paramConfiguration.orientation)) {
+    if ((((v)localObject).gud != paramConfiguration.orientation) || (paramConfiguration.screenHeightDp != ((v)localObject).jhp) || (paramConfiguration.screenWidthDp != ((v)localObject).jhq)) {
+      if (((paramConfiguration.screenHeightDp == ((v)localObject).jhp) && (paramConfiguration.screenWidthDp == ((v)localObject).jhq)) || (((v)localObject).gud != paramConfiguration.orientation)) {
         break label267;
       }
     }
     label267:
     for (boolean bool = true;; bool = false)
     {
-      ((v)localObject).iHr = bool;
+      ((v)localObject).jht = bool;
       if (Build.VERSION.SDK_INT >= 24)
       {
-        if ((((v)localObject).getActivity().isInMultiWindowMode()) || (((v)localObject).iHs)) {
-          ((v)localObject).iHr = false;
+        if ((((v)localObject).getActivity().isInMultiWindowMode()) || (((v)localObject).jhu)) {
+          ((v)localObject).jht = false;
         }
-        ((v)localObject).iHs = ((v)localObject).getActivity().isInMultiWindowMode();
+        ((v)localObject).jhu = ((v)localObject).getActivity().isInMultiWindowMode();
       }
-      ((v)localObject).aNF();
+      ((v)localObject).aUv();
       if (((v)localObject).getRuntime() != null)
       {
-        if ((((v)localObject).iHr) && ((paramConfiguration.screenHeightDp != ((v)localObject).iHm) || (paramConfiguration.screenWidthDp != ((v)localObject).iHn))) {
-          ((v)localObject).aMK();
+        if ((((v)localObject).jht) && ((paramConfiguration.screenHeightDp != ((v)localObject).jhp) || (paramConfiguration.screenWidthDp != ((v)localObject).jhq))) {
+          ((v)localObject).aTA();
         }
-        ViewGroup localViewGroup = ((v)localObject).aML();
+        ViewGroup localViewGroup = ((v)localObject).aTB();
         if (localViewGroup != null) {
           localViewGroup.addOnLayoutChangeListener((View.OnLayoutChangeListener)new v.c((v)localObject));
         }
       }
-      ((v)localObject).iHo = paramConfiguration.orientation;
-      ((v)localObject).iHm = paramConfiguration.screenHeightDp;
-      ((v)localObject).iHn = paramConfiguration.screenWidthDp;
-      if (this.iEY == null) {
+      ((v)localObject).gud = paramConfiguration.orientation;
+      ((v)localObject).jhp = paramConfiguration.screenHeightDp;
+      ((v)localObject).jhq = paramConfiguration.screenWidthDp;
+      if (this.jfa == null) {
         break;
       }
-      localObject = this.iEY.iterator();
+      localObject = this.jfa.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((AppBrandRuntime)((Iterator)localObject).next()).onConfigurationChanged(paramConfiguration);
       }
@@ -797,8 +799,8 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   public final void onResume()
   {
     AppMethodBeat.i(134555);
-    ad.i("MicroMsg.AppBrandRuntimeContainer", "onResume tid = %d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
-    com.tencent.mm.sdk.f.a.iV(this.mContext).runOnUiThread(new Runnable()
+    ac.i("MicroMsg.AppBrandRuntimeContainer", "onResume tid = %d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+    com.tencent.mm.sdk.f.a.jg(this.mContext).runOnUiThread(new Runnable()
     {
       public final void run()
       {
@@ -817,29 +819,46 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
   {
     AppMethodBeat.i(178515);
     super.setResizeable(paramBoolean);
-    this.iFf.ff(true);
-    this.iFf.aMN();
+    this.jfh.fA(true);
+    this.jfh.aTD();
     AppMethodBeat.o(178515);
   }
   
   public void setSoftOrientation(String paramString)
   {
-    AppMethodBeat.i(194413);
+    AppMethodBeat.i(193327);
     super.setSoftOrientation(paramString);
-    v localv = this.iFf;
-    localv.iHu = paramString;
-    if (localv.aMJ())
+    v localv = this.jfh;
+    Object localObject = localv.getRuntime();
+    if (localObject != null)
     {
-      paramString = localv.aML();
-      if (paramString != null) {
-        paramString.addOnLayoutChangeListener((View.OnLayoutChangeListener)new v.f(localv));
-      }
-      int i = localv.getActivity().getRequestedOrientation();
-      if ((i != 14) && (i != -1)) {
-        localv.getActivity().setRequestedOrientation(-1);
+      localObject = ((AppBrandRuntime)localObject).aSA();
+      if (localObject != null)
+      {
+        localObject = ((u)localObject).getPageView();
+        if (localObject == null) {}
       }
     }
-    AppMethodBeat.o(194413);
+    for (localObject = ((aa)localObject).getFullscreenImpl();; localObject = null)
+    {
+      if ((localObject == null) || (!(localObject instanceof ar)) || (!((ar)localObject).jim))
+      {
+        localv.jhw = paramString;
+        if (localv.aTz())
+        {
+          paramString = localv.aTB();
+          if (paramString != null) {
+            paramString.addOnLayoutChangeListener((View.OnLayoutChangeListener)new v.f(localv));
+          }
+          int i = localv.getActivity().getRequestedOrientation();
+          if ((i != 14) && (i != -1)) {
+            localv.getActivity().setRequestedOrientation(-1);
+          }
+        }
+      }
+      AppMethodBeat.o(193327);
+      return;
+    }
   }
   
   public final RUNTIME z(AppBrandRuntime paramAppBrandRuntime)
@@ -851,7 +870,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
       AppMethodBeat.o(134552);
       throw paramAppBrandRuntime;
     }
-    ListIterator localListIterator = this.iEY.listIterator();
+    ListIterator localListIterator = this.jfa.listIterator();
     int i = 0;
     while (localListIterator.hasNext())
     {
@@ -878,7 +897,7 @@ public class AppBrandRuntimeContainer<RUNTIME extends AppBrandRuntime>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,181 @@
 package com.tencent.mm.plugin.appbrand.p;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dqe;
-import com.tencent.mm.protocal.protobuf.dqf;
-import com.tencent.mm.protocal.protobuf.dqg;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import javax.net.ssl.SSLContext;
+import org.json.JSONObject;
 
 public final class b
-  extends n
-  implements k
 {
-  private com.tencent.mm.al.b gRE;
-  private com.tencent.mm.al.g gbr;
-  private dqf kUh;
+  public static int FAILED = -1;
+  public static int SUCCESS = 0;
+  public c jOV;
+  public boolean kBv;
+  public final String kXC;
+  public int lwk;
+  public String lwl;
+  public SSLContext lwm;
+  protected final ArrayList<String> lwn;
+  public final Map<String, ConcurrentLinkedQueue<Runnable>> lwo;
+  public final ArrayList<com.tencent.mm.plugin.appbrand.p.a.b> lwp;
   
-  public b()
+  public b(c paramc, boolean paramBoolean)
   {
-    AppMethodBeat.i(47749);
-    b.a locala = new b.a();
-    locala.gUU = new dqe();
-    locala.gUV = new dqf();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearchtitle";
-    locala.funcId = getType();
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.gRE = locala.atI();
-    AppMethodBeat.o(47749);
+    AppMethodBeat.i(144302);
+    this.lwl = (com.tencent.mm.loader.j.b.apj() + "appbrand/");
+    this.kBv = false;
+    this.lwn = new ArrayList();
+    this.lwp = new ArrayList();
+    this.jOV = paramc;
+    paramc = (a)paramc.ar(a.class);
+    this.lwk = paramc.ccx;
+    this.kXC = paramc.lwh;
+    this.lwm = j.a(paramc);
+    this.lwo = new Hashtable(10);
+    this.kBv = paramBoolean;
+    AppMethodBeat.o(144302);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  private void tc(String paramString)
   {
-    AppMethodBeat.i(47750);
-    ad.i("MicroMsg.NetSceneGetWeAppSearchTitle", "doScene");
-    this.gbr = paramg;
-    int i = dispatch(parame, this.gRE, this);
-    AppMethodBeat.o(47750);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 1170;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(47751);
-    ad.i("MicroMsg.NetSceneGetWeAppSearchTitle", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.kUh = ((dqf)this.gRE.gUT.gUX);
-    if (this.gbr != null) {
-      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    if (this.kUh.EFY == null)
+    AppMethodBeat.i(144304);
+    if (paramString == null)
     {
-      AppMethodBeat.o(47751);
+      AppMethodBeat.o(144304);
       return;
     }
-    paramString = com.tencent.mm.kernel.g.afB().afk();
-    paramString.set(ae.a.FnB, Locale.getDefault().getLanguage());
-    paramString.set(ae.a.FnC, this.kUh.EFY.sDZ);
-    paramString.set(ae.a.FnF, this.kUh.EFY.EGb);
-    paramString.set(ae.a.FnG, Long.valueOf(System.currentTimeMillis()));
-    paramString.set(ae.a.FnD, this.kUh.EFZ.sDZ);
-    paramString.set(ae.a.FnE, this.kUh.EGa.sDZ);
-    AppMethodBeat.o(47751);
+    synchronized (this.lwp)
+    {
+      Iterator localIterator = this.lwp.iterator();
+      while (localIterator.hasNext())
+      {
+        com.tencent.mm.plugin.appbrand.p.a.b localb = (com.tencent.mm.plugin.appbrand.p.a.b)localIterator.next();
+        if (paramString.equals(localb.imk)) {
+          this.lwp.remove(localb);
+        }
+      }
+      AppMethodBeat.o(144304);
+      return;
+    }
+  }
+  
+  public final void Pc(final String paramString)
+  {
+    AppMethodBeat.i(144303);
+    com.tencent.mm.sdk.g.b.c(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(144301);
+        synchronized (b.a(b.this))
+        {
+          ConcurrentLinkedQueue localConcurrentLinkedQueue = (ConcurrentLinkedQueue)b.a(b.this).get(paramString);
+          ac.d("MicroMsg.AppBrandNetworkDownload", "hy: url %s queue size %d", new Object[] { paramString, Integer.valueOf(localConcurrentLinkedQueue.size()) });
+          Runnable localRunnable = (Runnable)localConcurrentLinkedQueue.peek();
+          if (localRunnable != null)
+          {
+            localRunnable.run();
+            localConcurrentLinkedQueue.poll();
+            if (localConcurrentLinkedQueue.size() > 0)
+            {
+              ac.i("MicroMsg.AppBrandNetworkDownload", "hy: need execute more");
+              b.b(b.this, paramString);
+            }
+          }
+          AppMethodBeat.o(144301);
+          return;
+        }
+      }
+    }, "appbrand_download_thread");
+    AppMethodBeat.o(144303);
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.p.a.b Pd(String paramString)
+  {
+    AppMethodBeat.i(144305);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(144305);
+      return null;
+    }
+    synchronized (this.lwp)
+    {
+      Iterator localIterator = this.lwp.iterator();
+      while (localIterator.hasNext())
+      {
+        com.tencent.mm.plugin.appbrand.p.a.b localb = (com.tencent.mm.plugin.appbrand.p.a.b)localIterator.next();
+        if (paramString.equals(localb.imk))
+        {
+          AppMethodBeat.o(144305);
+          return localb;
+        }
+      }
+      AppMethodBeat.o(144305);
+      return null;
+    }
+  }
+  
+  public final boolean Pe(String paramString)
+  {
+    AppMethodBeat.i(144307);
+    boolean bool = this.lwn.contains(paramString);
+    AppMethodBeat.o(144307);
+    return bool;
+  }
+  
+  public final void a(com.tencent.mm.plugin.appbrand.p.a.b paramb)
+  {
+    AppMethodBeat.i(144306);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(144306);
+      return;
+    }
+    this.lwn.add(paramb.imk);
+    tc(paramb.imk);
+    paramb.bpw();
+    AppMethodBeat.o(144306);
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(199908);
+    synchronized (this.lwp)
+    {
+      Iterator localIterator = this.lwp.iterator();
+      if (localIterator.hasNext()) {
+        ((com.tencent.mm.plugin.appbrand.p.a.b)localIterator.next()).isRunning = false;
+      }
+    }
+    this.lwp.clear();
+    AppMethodBeat.o(199908);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void C(JSONObject paramJSONObject);
+    
+    public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, long paramLong, Map paramMap);
+    
+    public abstract void ac(int paramInt, String paramString);
+    
+    public abstract void g(int paramInt, long paramLong1, long paramLong2);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract boolean aUI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.p.b
  * JD-Core Version:    0.7.0.1
  */

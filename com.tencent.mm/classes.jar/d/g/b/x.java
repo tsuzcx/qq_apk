@@ -50,7 +50,7 @@ public class x
     return paraml;
   }
   
-  public b bk(Class paramClass)
+  public b bn(Class paramClass)
   {
     AppMethodBeat.i(128959);
     paramClass = new e(paramClass);

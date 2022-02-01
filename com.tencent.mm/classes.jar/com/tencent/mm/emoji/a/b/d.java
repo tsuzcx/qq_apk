@@ -1,49 +1,121 @@
 package com.tencent.mm.emoji.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.a.a;
-import d.y;
-import java.util.Comparator;
+import com.tencent.mm.plugin.report.service.h;
+import d.g.b.k;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestLocal;", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest;", "()V", "LAST_USE_EMOJI_COMPARE", "Ljava/util/Comparator;", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "TAG", "", "getEmojiList", "", "md5List", "searchSuggest", "", "content", "callback", "Lcom/tencent/mm/emoji/model/search/IEmojiSuggest$SuggestCallback;", "plugin-emojisdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestIDKey;", "", "()V", "id", "", "getRemoteStart", "", "getRemoteSuccess", "hasPersonalWords", "hasRemoteCache", "hasRemoteShuffle", "config", "", "localResultTooMuch", "report", "key", "", "reportMatch", "local", "remote", "reportResult", "emojiList", "", "Lcom/tencent/mm/emoji/model/search/SuggestEmojiItem;", "reportSearchSlow", "reportStart", "resultTooMuch", "plugin-emojisdk_release"})
 public final class d
-  implements f
 {
-  private final String TAG;
-  private final Comparator<EmojiInfo> fOV;
+  public static final d fSH;
   
-  public d()
+  static
   {
-    AppMethodBeat.i(193406);
-    this.TAG = "MicroMsg.EmojiSuggestLocal";
-    this.fOV = ((Comparator)a.fOW);
-    AppMethodBeat.o(193406);
+    AppMethodBeat.i(209840);
+    fSH = new d();
+    AppMethodBeat.o(209840);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "lhs", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "rhs", "compare"})
-  static final class a<T>
-    implements Comparator<EmojiInfo>
+  public static void T(List<l> paramList)
   {
-    public static final a fOW;
-    
-    static
+    AppMethodBeat.i(209838);
+    k.h(paramList, "emojiList");
+    int i;
+    int j;
+    Object localObject1;
+    if (!((Collection)paramList).isEmpty())
     {
-      AppMethodBeat.i(193404);
-      fOW = new a();
-      AppMethodBeat.o(193404);
+      i = 1;
+      if (i != 0)
+      {
+        j = paramList.size();
+        localObject1 = (Iterable)paramList;
+        paramList = (Collection)new ArrayList();
+        localObject1 = ((Iterable)localObject1).iterator();
+      }
     }
+    else
+    {
+      label59:
+      label113:
+      for (;;)
+      {
+        if (!((Iterator)localObject1).hasNext()) {
+          break label115;
+        }
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (((l)localObject2).type == 0) {}
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label113;
+          }
+          paramList.add(localObject2);
+          break label59;
+          i = 0;
+          break;
+        }
+      }
+      label115:
+      i = ((List)paramList).size();
+      lA(1);
+      if (j <= 2) {
+        lA(2);
+      }
+      while (i > 0)
+      {
+        lA(11);
+        if (i <= 2)
+        {
+          lA(12);
+          AppMethodBeat.o(209838);
+          return;
+          if (j <= 5) {
+            lA(3);
+          } else if (j <= 10) {
+            lA(4);
+          } else if (j <= 50) {
+            lA(5);
+          } else {
+            lA(9);
+          }
+        }
+        else
+        {
+          if (i <= 5)
+          {
+            lA(13);
+            AppMethodBeat.o(209838);
+            return;
+          }
+          if (i <= 10)
+          {
+            lA(14);
+            AppMethodBeat.o(209838);
+            return;
+          }
+          if (i <= 50)
+          {
+            lA(15);
+            AppMethodBeat.o(209838);
+            return;
+          }
+          lA(19);
+        }
+      }
+    }
+    AppMethodBeat.o(209838);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  public static final class b
-    extends d.g.b.l
-    implements a<y>
+  public static void lA(int paramInt)
   {
-    public b(d paramd, String paramString, f.b paramb)
-    {
-      super();
-    }
+    AppMethodBeat.i(209839);
+    h.wUl.n(1418L, paramInt, 1L);
+    AppMethodBeat.o(209839);
   }
 }
 

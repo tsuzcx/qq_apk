@@ -2,7 +2,7 @@ package com.google.b.a;
 
 public final class c
 {
-  public static final Object bIR = new Object();
+  public static final Object bGz = new Object();
 }
 
 

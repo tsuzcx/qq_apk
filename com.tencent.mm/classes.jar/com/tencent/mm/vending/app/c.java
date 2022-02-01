@@ -14,18 +14,18 @@ import junit.framework.Assert;
 public final class c
   implements com.tencent.mm.vending.e.b
 {
-  private b HPh;
-  private a HPi;
-  private com.tencent.mm.vending.c.b<? extends a> HPj;
-  private int HPk;
-  private com.tencent.mm.vending.e.c oBq;
+  private b JpC;
+  private a JpD;
+  private com.tencent.mm.vending.c.b<? extends a> JpE;
+  private int JpF;
+  private com.tencent.mm.vending.e.c peQ;
   
   public c()
   {
     AppMethodBeat.i(74876);
-    this.HPh = b.fhb();
-    this.HPk = 0;
-    this.oBq = new com.tencent.mm.vending.e.c();
+    this.JpC = b.fxd();
+    this.JpF = 0;
+    this.peQ = new com.tencent.mm.vending.e.c();
     AppMethodBeat.o(74876);
   }
   
@@ -34,9 +34,9 @@ public final class c
     try
     {
       AppMethodBeat.i(177469);
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.HPi);
-      this.HPi.mContext = paramContext;
-      this.HPi.HOX = new com.tencent.mm.vending.d.a(paramIntent);
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.JpD);
+      this.JpD.mContext = paramContext;
+      this.JpD.Jps = new com.tencent.mm.vending.d.a(paramIntent);
       AppMethodBeat.o(177469);
       return;
     }
@@ -47,15 +47,15 @@ public final class c
     }
   }
   
-  private <T extends com.tencent.mm.vending.c.b<? extends a>> T bh(Class<? extends com.tencent.mm.vending.c.b<? extends a>> paramClass)
+  private <T extends com.tencent.mm.vending.c.b<? extends a>> T bk(Class<? extends com.tencent.mm.vending.c.b<? extends a>> paramClass)
   {
     try
     {
       AppMethodBeat.i(74877);
-      if (this.HPj == null) {
+      if (this.JpE == null) {
         break label78;
       }
-      if (!paramClass.isInstance(this.HPj))
+      if (!paramClass.isInstance(this.JpE))
       {
         paramClass = new IllegalAccessError("Only one interactor pair with one presenter! duplicate pairWith : " + paramClass.toString());
         AppMethodBeat.o(74877);
@@ -63,7 +63,7 @@ public final class c
       }
     }
     finally {}
-    paramClass = this.HPj;
+    paramClass = this.JpE;
     AppMethodBeat.o(74877);
     for (;;)
     {
@@ -71,12 +71,12 @@ public final class c
       try
       {
         label78:
-        this.HPj = ((com.tencent.mm.vending.c.b)paramClass.newInstance());
-        if (this.HPi == null) {
-          this.HPi = ((a)this.HPj.aGZ());
+        this.JpE = ((com.tencent.mm.vending.c.b)paramClass.newInstance());
+        if (this.JpD == null) {
+          this.JpD = ((a)this.JpE.aNN());
         }
-        fhc();
-        com.tencent.mm.vending.c.b localb = this.HPj;
+        fxe();
+        com.tencent.mm.vending.c.b localb = this.JpE;
         AppMethodBeat.o(74877);
         paramClass = localb;
       }
@@ -95,23 +95,23 @@ public final class c
     throw paramClass;
   }
   
-  private <T extends a> T bi(Class<? extends a> paramClass)
+  private <T extends a> T bl(Class<? extends a> paramClass)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(74878);
-        if (this.HPj != null)
+        if (this.JpE != null)
         {
-          paramClass = (a)this.HPj.aGZ();
+          paramClass = (a)this.JpE.aNN();
           AppMethodBeat.o(74878);
           return paramClass;
         }
-        if (this.HPi == null) {
+        if (this.JpD == null) {
           break label106;
         }
-        if (!paramClass.isInstance(this.HPi))
+        if (!paramClass.isInstance(this.JpD))
         {
           paramClass = new IllegalAccessError("Only one interactor pair with one presenter! duplicate pairWith : " + paramClass.toString());
           AppMethodBeat.o(74878);
@@ -119,15 +119,15 @@ public final class c
         }
       }
       finally {}
-      paramClass = this.HPi;
+      paramClass = this.JpD;
       AppMethodBeat.o(74878);
       continue;
       try
       {
         label106:
-        this.HPi = ((a)paramClass.newInstance());
-        fhc();
-        a locala = this.HPi;
+        this.JpD = ((a)paramClass.newInstance());
+        fxe();
+        a locala = this.JpD;
         AppMethodBeat.o(74878);
         paramClass = locala;
       }
@@ -146,11 +146,11 @@ public final class c
     throw paramClass;
   }
   
-  private void fhc()
+  private void fxe()
   {
     AppMethodBeat.i(177468);
-    if (this.HPh != null) {
-      this.HPh.a(this, this.HPi);
+    if (this.JpC != null) {
+      this.JpC.a(this, this.JpD);
     }
     AppMethodBeat.o(177468);
   }
@@ -159,7 +159,7 @@ public final class c
   {
     AppMethodBeat.i(74885);
     A(paramIntent, paramContext);
-    abd(1);
+    adp(1);
     AppMethodBeat.o(74885);
   }
   
@@ -172,17 +172,17 @@ public final class c
       AppMethodBeat.o(74882);
       return null;
     }
-    paramActivity = bh(paramClass);
+    paramActivity = bk(paramClass);
     AppMethodBeat.o(74882);
     return paramActivity;
   }
   
-  public final void abd(int paramInt)
+  public final void adp(int paramInt)
   {
     AppMethodBeat.i(177470);
-    this.HPk = paramInt;
-    b localb = this.HPh;
-    a locala = (a)localb.HPd.get(this);
+    this.JpF = paramInt;
+    b localb = this.JpC;
+    a locala = (a)localb.Jpy.get(this);
     if (locala != null) {
       switch (paramInt)
       {
@@ -196,25 +196,25 @@ public final class c
     }
     for (;;)
     {
-      localb.HPf.sendMessage(localb.HPf.obtainMessage(paramInt, locala));
-      localb.HPe.put(hashCode(), paramInt);
+      localb.JpA.sendMessage(localb.JpA.obtainMessage(paramInt, locala));
+      localb.Jpz.put(hashCode(), paramInt);
       AppMethodBeat.o(177470);
       return;
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "onDestroy interactor %s activity %s %s %s", new Object[] { locala, this, Integer.valueOf(hashCode()), Looper.myLooper() });
-      localb.HPd.remove(this);
+      localb.Jpy.remove(this);
     }
   }
   
-  public final a agy()
+  public final a ahP()
   {
     try
     {
       AppMethodBeat.i(74881);
-      if ((this.HPi == null) && (this.HPh != null)) {
-        this.HPi = ((a)this.HPh.HPd.get(this));
+      if ((this.JpD == null) && (this.JpC != null)) {
+        this.JpD = ((a)this.JpC.Jpy.get(this));
       }
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.HPi);
-      a locala = this.HPi;
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.JpD);
+      a locala = this.JpD;
       AppMethodBeat.o(74881);
       return locala;
     }
@@ -230,7 +230,7 @@ public final class c
       AppMethodBeat.o(74883);
       return null;
     }
-    paramActivity = bi(paramClass);
+    paramActivity = bl(paramClass);
     AppMethodBeat.o(74883);
     return paramActivity;
   }
@@ -239,15 +239,15 @@ public final class c
   {
     AppMethodBeat.i(74886);
     Assert.assertTrue("target must be a ILifeCycle", parama instanceof com.tencent.mm.vending.e.a);
-    this.oBq.keep(parama);
+    this.peQ.keep(parama);
     AppMethodBeat.o(74886);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(74887);
-    this.oBq.dead();
-    abd(4);
+    this.peQ.dead();
+    adp(4);
     AppMethodBeat.o(74887);
   }
 }

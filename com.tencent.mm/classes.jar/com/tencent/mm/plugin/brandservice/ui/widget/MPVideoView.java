@@ -17,80 +17,81 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.x;
+import com.tencent.mm.ah.x;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.d;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.e;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.f;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.i;
+import com.tencent.mm.plugin.appbrand.jsapi.video.r;
 import com.tencent.mm.plugin.appbrand.jsapi.video.ui.AppBrandDotPercentIndicator;
 import com.tencent.mm.plugin.appbrand.jsapi.video.ui.a.b;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.m;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.m.a;
 import com.tencent.mm.pluginsdk.ui.g;
 import com.tencent.mm.pluginsdk.ui.h.b;
-import com.tencent.mm.protocal.protobuf.fn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.fp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.n.n;
 import d.v;
 import java.util.LinkedList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backgroudContainerLayout", "Landroid/widget/FrameLayout;", "getBackgroudContainerLayout", "()Landroid/widget/FrameLayout;", "setBackgroudContainerLayout", "(Landroid/widget/FrameLayout;)V", "cacheTimeSec", "getCacheTimeSec", "()I", "currPosMs", "getCurrPosMs", "currPosSec", "getCurrPosSec", "dotContainerLayout", "getDotContainerLayout", "setDotContainerLayout", "duration", "getDuration", "setDuration", "(I)V", "endPlayTime", "getEndPlayTime", "hasDownInTouchEvent", "", "hasRealPlayTime", "isCoverVisible", "()Z", "isInFullScreen", "isLive", "mAdjustContentTv", "Landroid/widget/TextView;", "mAdjustIconIv", "Landroid/widget/ImageView;", "mAdjustInfoLayout", "Landroid/widget/LinearLayout;", "mAdjustPercentIndicator", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/ui/AppBrandDotPercentIndicator;", "mAutoPlay", "mBottomProgressBackBar", "mBottomProgressFrontBar", "mBottomProgressLayout", "mConsumeTouchEvent", "mControlBar", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar;", "mCoverArea", "Landroid/view/View;", "mCoverPlayBtnArea", "mCoverTotalTimeTv", "mCoverUrl", "", "mDirection", "mDuration", "mEnablePlayGesture", "mEnableProgressGesture", "mFullScreenDelegate", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$FullScreenDelegate;", "mGestureController", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/ui/VideoPlayerGestureController;", "mInitialTime", "mIsAlive", "mIsLoading", "mIsMute", "mIsShowBasicControls", "mLoop", "mMPVideoViewCallBack", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$MPVideoViewCallBack;", "mPageGesture", "mPageGestureInFullscreen", "mPlayStart", "mPlayStarted", "mProgressTv", "mRealPlayTime", "", "mSetIsShowCoverPlayBtn", "mSetIsShowProgressBar", "mSkipAutoPause", "mStartPlayTime", "mVideoSource", "mVideoView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper;", "needHandleTouchEvent", "getNeedHandleTouchEvent", "setNeedHandleTouchEvent", "(Z)V", "playStatus", "getPlayStatus", "setPlayStatus", "playerAdContainerLayout", "getPlayerAdContainerLayout", "setPlayerAdContainerLayout", "realPlayTime", "getRealPlayTime", "()J", "videoHeight", "getVideoHeight", "setVideoHeight", "<set-?>", "videoPath", "getVideoPath", "()Ljava/lang/String;", "videoWidth", "getVideoWidth", "setVideoWidth", "canAdjustBrightnessVolume", "canDragProgress", "clean", "", "doOnTouchEvent", "event", "Landroid/view/MotionEvent;", "downloadVideo", "videoUrl", "enableProgressGesture", "enable", "getAutoPlay", "getPlayStart", "getPlayStarted", "getTimeShowString", "time", "hideCenterPlayBtnIfNeed", "hideCover", "init", "initControlBar", "initGestureController", "initParam", "initVideoViewCallback", "isControlBarShow", "isPlaying", "makeTimeString", "d", "onExitFullScreen", "onTouchEvent", "onUIDestroy", "onUIPause", "onUIResume", "operateFullScreen", "toFullScreen", "direction", "pause", "seekTo", "position", "afterPlay", "setAutoPlay", "autoPlay", "setBizInfo", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "iconUrl", "setConsumeTouchEvent", "value", "setCoverByUrl", "cover", "coverUrl", "width", "height", "setEnablePlayGesture", "enablePlayGesture", "setExoPlayerParam", "maxInitialBitrate", "bandwidthFraction", "", "minDurForQualityMs", "maxDurForQualityMs", "minBufferMs", "maxBufferMs", "setFullScreenDelegate", "delegate", "setFullScreenDirection", "setInitialTime", "initialTime", "setIsShowBasicControls", "isShowBasicControls", "setLoop", "loop", "setMPVideoViewCallBack", "setMute", "isMute", "setObjectFit", "setPageGesture", "pageGesture", "setPageGestureInFullscreen", "pageGestureInFullscreen", "setPlayBtnOnClickListener", "click", "Landroid/view/View$OnClickListener;", "setPlayBtnPosition", "playBtnPosition", "setPreLoadVidePath", "setShowCenterPlayBtn", "showCenterPlayBtn", "setShowControlProgress", "showControlProgress", "setShowFullScreenBtn", "showFullScreenBtn", "setShowMuteBtn", "showMuteBtn", "setShowPlayBtn", "showPlayBtn", "setShowProgress", "showProgress", "setTitle", "title", "setVideoPath", "durationSec", "setVideoSource", "videoSource", "setVideoUrlInfo", "urlInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "currentInfo", "shouldDispatchEventToGestureController", "shouldHandleTouchEvent", "v", "e", "showCenterPlayBtnIfNeed", "showControlBar", "showCover", "start", "startWhenNetWorkConnect", "stop", "updateBottomProgressLayout", "updateControlBarDotPos", "list", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "updateLiveUI", "updateRealPlayTime", "updateStartTime", "Companion", "FullScreenDelegate", "MPVideoViewCallBack", "plugin-brandservice_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backgroudContainerLayout", "Landroid/widget/FrameLayout;", "getBackgroudContainerLayout", "()Landroid/widget/FrameLayout;", "setBackgroudContainerLayout", "(Landroid/widget/FrameLayout;)V", "cacheTimeSec", "getCacheTimeSec", "()I", "currPosMs", "getCurrPosMs", "currPosSec", "getCurrPosSec", "dotContainerLayout", "getDotContainerLayout", "setDotContainerLayout", "duration", "getDuration", "setDuration", "(I)V", "endPlayTime", "getEndPlayTime", "hasDownInTouchEvent", "", "hasRealPlayTime", "isCoverVisible", "()Z", "isInFullScreen", "isLive", "mAdjustContentTv", "Landroid/widget/TextView;", "mAdjustIconIv", "Landroid/widget/ImageView;", "mAdjustInfoLayout", "Landroid/widget/LinearLayout;", "mAdjustPercentIndicator", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/ui/AppBrandDotPercentIndicator;", "mAutoPlay", "mBottomProgressBackBar", "mBottomProgressFrontBar", "mBottomProgressLayout", "mConsumeTouchEvent", "mControlBar", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar;", "mCoverArea", "Landroid/view/View;", "mCoverPlayBtnArea", "mCoverTotalTimeTv", "mCoverUrl", "", "mDirection", "mDuration", "mEnablePlayGesture", "mEnableProgressGesture", "mFullScreenDelegate", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$FullScreenDelegate;", "mGestureController", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/ui/VideoPlayerGestureController;", "mInitialTime", "mIsAlive", "mIsLoading", "mIsMute", "mIsShowBasicControls", "mLoop", "mMPVideoViewCallBack", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$MPVideoViewCallBack;", "mPageGesture", "mPageGestureInFullscreen", "mPlayStart", "mPlayStarted", "mProgressTv", "mRealPlayTime", "", "mSetIsShowCoverPlayBtn", "mSetIsShowProgressBar", "mSkipAutoPause", "mStartPlayTime", "mVideoSource", "mVideoView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPExoVideoWrapper;", "needHandleTouchEvent", "getNeedHandleTouchEvent", "setNeedHandleTouchEvent", "(Z)V", "playStatus", "getPlayStatus", "setPlayStatus", "playerAdContainerLayout", "getPlayerAdContainerLayout", "setPlayerAdContainerLayout", "realPlayTime", "getRealPlayTime", "()J", "videoHeight", "getVideoHeight", "setVideoHeight", "<set-?>", "videoPath", "getVideoPath", "()Ljava/lang/String;", "videoWidth", "getVideoWidth", "setVideoWidth", "canAdjustBrightnessVolume", "canDragProgress", "clean", "", "doOnTouchEvent", "event", "Landroid/view/MotionEvent;", "downloadVideo", "videoUrl", "enableProgressGesture", "enable", "getAutoPlay", "getPlayStart", "getPlayStarted", "getTimeShowString", "time", "hideCenterPlayBtnIfNeed", "hideCover", "init", "initControlBar", "initGestureController", "initParam", "initVideoViewCallback", "isControlBarShow", "isPlaying", "makeTimeString", "d", "onExitFullScreen", "onTouchEvent", "onUIDestroy", "onUIPause", "onUIResume", "operateFullScreen", "toFullScreen", "direction", "pause", "seekTo", "position", "afterPlay", "setAutoPlay", "autoPlay", "setBizInfo", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "iconUrl", "setConsumeTouchEvent", "value", "setCoverByUrl", "cover", "coverUrl", "width", "height", "setEnablePlayGesture", "enablePlayGesture", "setExoPlayerParam", "maxInitialBitrate", "bandwidthFraction", "", "minDurForQualityMs", "maxDurForQualityMs", "minBufferMs", "maxBufferMs", "setFullScreenDelegate", "delegate", "setFullScreenDirection", "setInitialTime", "initialTime", "setIsShowBasicControls", "isShowBasicControls", "setLoop", "loop", "setMPVideoViewCallBack", "setMute", "isMute", "setObjectFit", "setPageGesture", "pageGesture", "setPageGestureInFullscreen", "pageGestureInFullscreen", "setPlayBtnOnClickListener", "click", "Landroid/view/View$OnClickListener;", "setPlayBtnPosition", "playBtnPosition", "setPreLoadVidePath", "setShowCenterPlayBtn", "showCenterPlayBtn", "setShowControlProgress", "showControlProgress", "setShowFullScreenBtn", "showFullScreenBtn", "setShowMuteBtn", "showMuteBtn", "setShowPlayBtn", "showPlayBtn", "setShowProgress", "showProgress", "setTitle", "title", "setVideoPath", "durationSec", "setVideoSource", "videoSource", "setVideoUrlInfo", "urlInfoList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "currentInfo", "shouldDispatchEventToGestureController", "shouldHandleTouchEvent", "v", "e", "showCenterPlayBtnIfNeed", "showControlBar", "showCover", "start", "startWhenNetWorkConnect", "stop", "updateBottomProgressLayout", "updateControlBarDotPos", "list", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "updateLiveUI", "updateRealPlayTime", "updateStartTime", "Companion", "FullScreenDelegate", "MPVideoViewCallBack", "plugin-brandservice_release"})
 public final class MPVideoView
   extends RelativeLayout
 {
   public static final String TAG = "MicroMsg.MPVideoView";
-  private static final int nov = -1;
-  private static final int now = 8;
-  public static final MPVideoView.a nox;
-  private int aag;
-  private int ark;
-  private boolean ckP;
-  private int hxT;
-  private TextView kmL;
-  private View kmO;
-  private View kmP;
-  private TextView kmQ;
-  private LinearLayout kmR;
-  private AppBrandDotPercentIndicator kmS;
-  private TextView kmT;
-  private ImageView kmU;
-  private ImageView kmW;
-  private ImageView kmX;
-  private FrameLayout kmY;
-  private boolean knc;
-  private boolean kne;
-  private boolean knf;
-  private com.tencent.mm.plugin.appbrand.jsapi.video.ui.a kng;
-  private boolean kni;
-  private boolean knj;
-  private String knl;
-  private boolean knm;
-  private boolean knn;
-  private boolean kno;
-  private boolean knq;
-  private int knr;
-  private boolean knt;
-  private boolean knu;
-  public boolean knv;
+  private static final int nRv = -1;
+  private static final int nRw = 8;
+  public static final MPVideoView.a nRx;
+  private int abb;
+  private int asf;
+  private boolean chR;
+  private int hYu;
+  private boolean kOA;
+  private boolean kOB;
+  private String kOD;
+  private boolean kOE;
+  private boolean kOF;
+  private boolean kOG;
+  private boolean kOI;
+  private int kOJ;
+  private boolean kOL;
+  private boolean kOM;
+  public boolean kON;
+  private TextView kOd;
+  private View kOg;
+  private View kOh;
+  private TextView kOi;
+  private LinearLayout kOj;
+  private AppBrandDotPercentIndicator kOk;
+  private TextView kOl;
+  private ImageView kOm;
+  private ImageView kOo;
+  private ImageView kOp;
+  private FrameLayout kOq;
+  private boolean kOu;
+  private boolean kOw;
+  private boolean kOx;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.ui.a kOy;
   private boolean mIsMute;
-  public MPExoVideoWrapper nog;
-  public MPVideoViewControlBar noh;
-  private FrameLayout noi;
-  private FrameLayout noj;
-  private FrameLayout nok;
-  private boolean nol;
-  private boolean nom;
-  private b non;
-  private c noo;
-  private int nop;
-  private long noq;
-  private long nor;
-  private boolean nos;
-  public boolean not;
-  public boolean nou;
+  public MPExoVideoWrapper nRg;
+  public MPVideoViewControlBar nRh;
+  private FrameLayout nRi;
+  private FrameLayout nRj;
+  private FrameLayout nRk;
+  private boolean nRl;
+  private boolean nRm;
+  private b nRn;
+  private c nRo;
+  private int nRp;
+  private long nRq;
+  private long nRr;
+  private boolean nRs;
+  public boolean nRt;
+  public boolean nRu;
   private int videoHeight;
   private String videoPath;
   private int videoWidth;
@@ -98,10 +99,10 @@ public final class MPVideoView
   static
   {
     AppMethodBeat.i(7587);
-    nox = new MPVideoView.a((byte)0);
+    nRx = new MPVideoView.a((byte)0);
     TAG = "MicroMsg.MPVideoView";
-    nov = -1;
-    now = 8;
+    nRv = -1;
+    nRw = 8;
     AppMethodBeat.o(7587);
   }
   
@@ -109,7 +110,7 @@ public final class MPVideoView
   {
     super(paramContext);
     AppMethodBeat.i(7584);
-    this.aag = nov;
+    this.abb = nRv;
     init(paramContext);
     AppMethodBeat.o(7584);
   }
@@ -118,7 +119,7 @@ public final class MPVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(7585);
-    this.aag = nov;
+    this.abb = nRv;
     init(paramContext);
     AppMethodBeat.o(7585);
   }
@@ -127,28 +128,46 @@ public final class MPVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(7586);
-    this.aag = nov;
+    this.abb = nRv;
     init(paramContext);
     AppMethodBeat.o(7586);
   }
   
-  private final boolean aXf()
+  private final boolean bOa()
+  {
+    AppMethodBeat.i(175553);
+    if (this.kOM)
+    {
+      AppMethodBeat.o(175553);
+      return true;
+    }
+    boolean bool = bjd();
+    if (!bje())
+    {
+      AppMethodBeat.o(175553);
+      return false;
+    }
+    AppMethodBeat.o(175553);
+    return bool;
+  }
+  
+  private final boolean bed()
   {
     AppMethodBeat.i(7537);
     Object localObject = TAG;
-    boolean bool = this.kni;
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    boolean bool = this.kOA;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
-    ad.i((String)localObject, "isLive %b %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localMPExoVideoWrapper.bqS) });
-    if (!this.kni)
+    ac.i((String)localObject, "isLive %b %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localMPExoVideoWrapper.bps) });
+    if (!this.kOA)
     {
-      localObject = this.nog;
+      localObject = this.nRg;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      if (!((MPExoVideoWrapper)localObject).bqS) {}
+      if (!((MPExoVideoWrapper)localObject).bps) {}
     }
     else
     {
@@ -159,45 +178,27 @@ public final class MPVideoView
     return false;
   }
   
-  private final boolean bGN()
-  {
-    AppMethodBeat.i(175553);
-    if (this.knu)
-    {
-      AppMethodBeat.o(175553);
-      return true;
-    }
-    boolean bool = bci();
-    if (!bcj())
-    {
-      AppMethodBeat.o(175553);
-      return false;
-    }
-    AppMethodBeat.o(175553);
-    return bool;
-  }
-  
-  private final void bce()
+  private final void biZ()
   {
     AppMethodBeat.i(7574);
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
-    localMPVideoViewControlBar.bce();
+    localMPVideoViewControlBar.biZ();
     AppMethodBeat.o(7574);
   }
   
-  private final boolean bci()
+  private final boolean bjd()
   {
     AppMethodBeat.i(7582);
-    if (this.knn)
+    if (this.kOF)
     {
-      MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+      MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
       if (localMPExoVideoWrapper == null) {
-        k.fvU();
+        k.fOy();
       }
-      if ((!localMPExoVideoWrapper.bqS) && (!bck()))
+      if ((!localMPExoVideoWrapper.bps) && (!bjf()))
       {
         AppMethodBeat.o(7582);
         return true;
@@ -207,10 +208,10 @@ public final class MPVideoView
     return false;
   }
   
-  private final boolean bcj()
+  private final boolean bje()
   {
     AppMethodBeat.i(7583);
-    if ((!bck()) && (((!bcg()) && (this.kne)) || ((bcg()) && (this.knf))))
+    if ((!bjf()) && (((!bjb()) && (this.kOw)) || ((bjb()) && (this.kOx))))
     {
       AppMethodBeat.o(7583);
       return true;
@@ -219,12 +220,12 @@ public final class MPVideoView
     return false;
   }
   
-  private final boolean bck()
+  private final boolean bjf()
   {
     AppMethodBeat.i(7538);
-    View localView = this.kmO;
+    View localView = this.kOg;
     if (localView == null) {
-      k.fvU();
+      k.fOy();
     }
     if (localView.getVisibility() == 0)
     {
@@ -238,16 +239,16 @@ public final class MPVideoView
   private void clean()
   {
     AppMethodBeat.i(7555);
-    ad.i(TAG, "clean");
+    ac.i(TAG, "clean");
     stop();
-    Object localObject = this.nog;
+    Object localObject = this.nRg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((MPExoVideoWrapper)localObject).onUIDestroy();
-    localObject = this.noh;
+    localObject = this.nRh;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((MPVideoViewControlBar)localObject).onDestroy();
     AppMethodBeat.o(7555);
@@ -257,7 +258,7 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7539);
     LayoutInflater.from(paramContext).inflate(2131494957, (ViewGroup)this);
-    this.nog = ((MPExoVideoWrapper)findViewById(2131306410));
+    this.nRg = ((MPExoVideoWrapper)findViewById(2131306410));
     paramContext = findViewById(2131303515);
     if (paramContext == null)
     {
@@ -265,9 +266,9 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmL = ((TextView)paramContext);
-    this.kmO = findViewById(2131298814);
-    this.kmP = findViewById(2131298828);
+    this.kOd = ((TextView)paramContext);
+    this.kOg = findViewById(2131298814);
+    this.kOh = findViewById(2131298828);
     paramContext = findViewById(2131298832);
     if (paramContext == null)
     {
@@ -275,7 +276,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmQ = ((TextView)paramContext);
+    this.kOi = ((TextView)paramContext);
     paramContext = findViewById(2131296505);
     if (paramContext == null)
     {
@@ -283,7 +284,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmR = ((LinearLayout)paramContext);
+    this.kOj = ((LinearLayout)paramContext);
     paramContext = findViewById(2131296506);
     if (paramContext == null)
     {
@@ -291,7 +292,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmS = ((AppBrandDotPercentIndicator)paramContext);
+    this.kOk = ((AppBrandDotPercentIndicator)paramContext);
     paramContext = findViewById(2131296502);
     if (paramContext == null)
     {
@@ -299,7 +300,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmT = ((TextView)paramContext);
+    this.kOl = ((TextView)paramContext);
     paramContext = findViewById(2131296504);
     if (paramContext == null)
     {
@@ -307,7 +308,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmU = ((ImageView)paramContext);
+    this.kOm = ((ImageView)paramContext);
     paramContext = findViewById(2131303297);
     if (paramContext == null)
     {
@@ -315,7 +316,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmW = ((ImageView)paramContext);
+    this.kOo = ((ImageView)paramContext);
     paramContext = findViewById(2131303296);
     if (paramContext == null)
     {
@@ -323,7 +324,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmX = ((ImageView)paramContext);
+    this.kOp = ((ImageView)paramContext);
     paramContext = findViewById(2131303298);
     if (paramContext == null)
     {
@@ -331,7 +332,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.kmY = ((FrameLayout)paramContext);
+    this.kOq = ((FrameLayout)paramContext);
     paramContext = findViewById(2131303293);
     if (paramContext == null)
     {
@@ -339,7 +340,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.noi = ((FrameLayout)paramContext);
+    this.nRi = ((FrameLayout)paramContext);
     paramContext = findViewById(2131303299);
     if (paramContext == null)
     {
@@ -347,7 +348,7 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.noj = ((FrameLayout)paramContext);
+    this.nRj = ((FrameLayout)paramContext);
     paramContext = findViewById(2131303294);
     if (paramContext == null)
     {
@@ -355,12 +356,12 @@ public final class MPVideoView
       AppMethodBeat.o(7539);
       throw paramContext;
     }
-    this.nok = ((FrameLayout)paramContext);
-    paramContext = this.kmS;
+    this.nRk = ((FrameLayout)paramContext);
+    paramContext = this.kOk;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramContext.setDotsNum(now);
+    paramContext.setDotsNum(nRw);
     paramContext = findViewById(2131298827);
     if (paramContext == null)
     {
@@ -369,84 +370,84 @@ public final class MPVideoView
       throw paramContext;
     }
     ((ImageView)paramContext).setOnClickListener((View.OnClickListener)new MPVideoView.d(this));
-    this.kng = new com.tencent.mm.plugin.appbrand.jsapi.video.ui.a(getContext(), (View)this, (a.b)new o(this));
-    paramContext = this.nog;
+    this.kOy = new com.tencent.mm.plugin.appbrand.jsapi.video.ui.a(getContext(), (View)this, (a.b)new o(this));
+    paramContext = this.nRg;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setIMMVideoViewCallback((h.b)new p(this));
-    this.noh = new MPVideoViewControlBar(getContext());
-    paramContext = this.nog;
+    this.nRh = new MPVideoViewControlBar(getContext());
+    paramContext = this.nRg;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setVideoFooterView((g)localMPVideoViewControlBar);
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.hide();
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setFullScreenBtnOnClickListener((View.OnClickListener)new MPVideoView.e(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setIplaySeekCallback((e.d)new g(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setOnPlayButtonClickListener((View.OnClickListener)new MPVideoView.h(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramContext.setStatePorter((e.i)new MPVideoView.i(this));
-    paramContext = this.noh;
+    paramContext.setStatePorter((e.i)new i(this));
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setMuteBtnOnClickListener((View.OnClickListener)new MPVideoView.j(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setExitFullScreenBtnOnClickListener((View.OnClickListener)new MPVideoView.k(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
-    paramContext.a((e.f)new MPVideoView.l(this));
-    paramContext = this.noh;
+    paramContext.a((e.f)new l(this));
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setOnUpdateProgressLenListener((e.e)new m(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setSwitchResolutionListener((MPVideoViewControlBar.a)new n(this));
-    paramContext = this.noh;
+    paramContext = this.nRh;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setSwitchSpeedListener((MPVideoViewControlBar.b)new f(this));
-    paramContext = this.nog;
+    paramContext = this.nRg;
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext = paramContext.getCoverIv();
     if (paramContext == null) {
-      k.fvU();
+      k.fOy();
     }
     paramContext.setScaleType(ImageView.ScaleType.FIT_CENTER);
     setShowProgress(true);
@@ -458,23 +459,23 @@ public final class MPVideoView
     setShowFullScreenBtn(true);
     setShowPlayBtn(true);
     setShowCenterPlayBtn(false);
-    ad.i(TAG, "enableProgressGesture %b", new Object[] { Boolean.TRUE });
-    this.knn = true;
+    ac.i(TAG, "enableProgressGesture %b", new Object[] { Boolean.TRUE });
+    this.kOF = true;
     setVideoSource(0);
     setConsumeTouchEvent(false);
     setIsShowBasicControls(true);
     AppMethodBeat.o(7539);
   }
   
-  private static String rW(int paramInt)
+  private static String sN(int paramInt)
   {
     AppMethodBeat.i(7580);
-    String str = rX(paramInt / 60) + ":" + rX(paramInt % 60);
+    String str = sO(paramInt / 60) + ":" + sO(paramInt % 60);
     AppMethodBeat.o(7580);
     return str;
   }
   
-  private static String rX(int paramInt)
+  private static String sO(int paramInt)
   {
     AppMethodBeat.i(7581);
     if (paramInt < 10)
@@ -488,38 +489,38 @@ public final class MPVideoView
     return str;
   }
   
-  public final boolean S(MotionEvent paramMotionEvent)
+  public final boolean Q(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(175552);
     k.h(paramMotionEvent, "event");
-    if (bGN())
+    if (bOa())
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.ui.a locala = this.kng;
+      com.tencent.mm.plugin.appbrand.jsapi.video.ui.a locala = this.kOy;
       if (locala != null) {
-        locala.A(paramMotionEvent);
+        locala.y(paramMotionEvent);
       }
       AppMethodBeat.o(175552);
       return true;
     }
     if (paramMotionEvent.getAction() == 0)
     {
-      if ((this.knc) && (!this.knq))
+      if ((this.kOu) && (!this.kOI))
       {
-        paramMotionEvent = this.noh;
+        paramMotionEvent = this.nRh;
         if (paramMotionEvent == null) {
-          k.fvU();
+          k.fOy();
         }
-        paramMotionEvent.bcz();
+        paramMotionEvent.bju();
       }
-      paramMotionEvent = this.kmO;
+      paramMotionEvent = this.kOg;
       if (paramMotionEvent == null) {
-        k.fvU();
+        k.fOy();
       }
-      if ((paramMotionEvent.getVisibility() != 0) && (this.knt)) {
-        bce();
+      if ((paramMotionEvent.getVisibility() != 0) && (this.kOL)) {
+        biZ();
       }
     }
-    boolean bool = this.knm;
+    boolean bool = this.kOE;
     AppMethodBeat.o(175552);
     return bool;
   }
@@ -527,9 +528,9 @@ public final class MPVideoView
   public final void a(int paramInt1, float paramFloat, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(175550);
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     localMPExoVideoWrapper.a(paramInt1, paramFloat, paramInt2, paramInt3, paramInt4, paramInt5);
     AppMethodBeat.o(175550);
@@ -539,79 +540,79 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7559);
     k.h(paramx, "msgInfo");
-    ad.i(TAG, "setCover coverUrl=%s", new Object[] { paramString });
-    if (bt.isNullOrNil(paramString))
+    ac.i(TAG, "setCover coverUrl=%s", new Object[] { paramString });
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(7559);
       return;
     }
-    this.knl = paramString;
-    com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l locall = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l.nlS;
+    this.kOD = paramString;
+    com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l locall = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l.nOS;
     if (paramString == null) {
-      k.fvU();
+      k.fOy();
     }
     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l.a(paramImageView, paramString, paramInt1, paramInt2, paramx);
     AppMethodBeat.o(7559);
   }
   
-  public final void a(LinkedList<fn> paramLinkedList, fn paramfn)
+  public final void a(LinkedList<fp> paramLinkedList, fp paramfp)
   {
     AppMethodBeat.i(175551);
     k.h(paramLinkedList, "urlInfoList");
-    k.h(paramfn, "currentInfo");
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    k.h(paramfp, "currentInfo");
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
-    localMPVideoViewControlBar.a(paramLinkedList, paramfn);
+    localMPVideoViewControlBar.a(paramLinkedList, paramfp);
     AppMethodBeat.o(175551);
   }
   
-  public final void bGE()
+  public final void bNR()
   {
     AppMethodBeat.i(7561);
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
-    localMPExoVideoWrapper.bGE();
+    localMPExoVideoWrapper.bNR();
     AppMethodBeat.o(7561);
   }
   
-  public final void bGF()
+  public final void bNS()
   {
     AppMethodBeat.i(7562);
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
-    localMPExoVideoWrapper.bGF();
+    localMPExoVideoWrapper.bNS();
     AppMethodBeat.o(7562);
   }
   
-  public final void bGM()
+  public final void bNZ()
   {
     long l1 = 0L;
-    AppMethodBeat.i(193382);
+    AppMethodBeat.i(199196);
     long l2 = System.currentTimeMillis();
-    long l3 = this.noq;
-    if (this.nor != 0L) {
-      l1 = l2 - this.nor;
+    long l3 = this.nRq;
+    if (this.nRr != 0L) {
+      l1 = l2 - this.nRr;
     }
-    this.noq = (l1 + l3);
-    this.nor = l2;
-    this.nos = true;
-    AppMethodBeat.o(193382);
+    this.nRq = (l1 + l3);
+    this.nRr = l2;
+    this.nRs = true;
+    AppMethodBeat.o(199196);
   }
   
-  public final void bGO()
+  public final void bOb()
   {
     AppMethodBeat.i(7578);
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar != null) {
-      localMPVideoViewControlBar.bGT();
+      localMPVideoViewControlBar.bOg();
     }
-    localMPVideoViewControlBar = this.noh;
+    localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar != null)
     {
       localMPVideoViewControlBar.show();
@@ -621,13 +622,13 @@ public final class MPVideoView
     AppMethodBeat.o(7578);
   }
   
-  public final boolean bGP()
+  public final boolean bOc()
   {
     AppMethodBeat.i(7579);
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar != null)
     {
-      boolean bool = localMPVideoViewControlBar.bcB();
+      boolean bool = localMPVideoViewControlBar.bjw();
       AppMethodBeat.o(7579);
       return bool;
     }
@@ -635,59 +636,59 @@ public final class MPVideoView
     return false;
   }
   
-  public final boolean bcg()
+  public final boolean bjb()
   {
     AppMethodBeat.i(7536);
-    if (this.non == null)
+    if (this.nRn == null)
     {
-      ad.w(TAG, "isInFullScreen mFullScreenDelegate null");
+      ac.w(TAG, "isInFullScreen mFullScreenDelegate null");
       AppMethodBeat.o(7536);
       return false;
     }
-    b localb = this.non;
+    b localb = this.nRn;
     if (localb == null) {
-      k.fvU();
+      k.fOy();
     }
     boolean bool = localb.isFullScreen();
     AppMethodBeat.o(7536);
     return bool;
   }
   
-  public final void cv(String paramString, int paramInt)
+  public final void cA(String paramString, int paramInt)
   {
     AppMethodBeat.i(7556);
     k.h(paramString, "videoPath");
-    ad.i(TAG, "setVideoPath path=%s isLive=%s", new Object[] { paramString, Boolean.FALSE });
-    if (bt.isNullOrNil(paramString))
+    ac.i(TAG, "setVideoPath path=%s isLive=%s", new Object[] { paramString, Boolean.FALSE });
+    if (bs.isNullOrNil(paramString))
     {
-      ad.v(TAG, "setVideoPath videoPath empty");
+      ac.v(TAG, "setVideoPath videoPath empty");
       AppMethodBeat.o(7556);
       return;
     }
     this.videoPath = paramString;
     stop();
-    this.kni = false;
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    this.kOA = false;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
-    localMPExoVideoWrapper.setVideoSource(this.knr);
-    localMPExoVideoWrapper = this.nog;
+    localMPExoVideoWrapper.setVideoSource(this.kOJ);
+    localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
-    localMPExoVideoWrapper.cu(paramString, paramInt);
-    if (this.nop > 0)
+    localMPExoVideoWrapper.cz(paramString, paramInt);
+    if (this.nRp > 0)
     {
-      paramString = this.nog;
+      paramString = this.nRg;
       if (paramString == null) {
-        k.fvU();
+        k.fOy();
       }
-      paramString.U(this.nop, this.ckP);
+      paramString.U(this.nRp, this.chR);
     }
-    if (this.ckP)
+    if (this.chR)
     {
-      ad.i(TAG, "setVideoPath autoPlay");
+      ac.i(TAG, "setVideoPath autoPlay");
       start();
     }
     setMute(this.mIsMute);
@@ -696,22 +697,22 @@ public final class MPVideoView
   
   public final boolean getAutoPlay()
   {
-    return this.ckP;
+    return this.chR;
   }
   
   public final FrameLayout getBackgroudContainerLayout()
   {
-    return this.nok;
+    return this.nRk;
   }
   
   public final int getCacheTimeSec()
   {
     AppMethodBeat.i(7535);
-    if (this.nog != null)
+    if (this.nRg != null)
     {
-      MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+      MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
       if (localMPExoVideoWrapper == null) {
-        k.fvU();
+        k.fOy();
       }
       int i = localMPExoVideoWrapper.getCacheTimeSec();
       AppMethodBeat.o(7535);
@@ -724,9 +725,9 @@ public final class MPVideoView
   public final int getCurrPosMs()
   {
     AppMethodBeat.i(7534);
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     int i = localMPExoVideoWrapper.getCurrPosMs();
     AppMethodBeat.o(7534);
@@ -736,9 +737,9 @@ public final class MPVideoView
   public final int getCurrPosSec()
   {
     AppMethodBeat.i(7533);
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     int i = localMPExoVideoWrapper.getCurrPosSec();
     AppMethodBeat.o(7533);
@@ -747,21 +748,21 @@ public final class MPVideoView
   
   public final FrameLayout getDotContainerLayout()
   {
-    return this.noj;
+    return this.nRj;
   }
   
   public final int getDuration()
   {
     AppMethodBeat.i(7531);
-    if (this.ark > 0)
+    if (this.asf > 0)
     {
-      i = this.ark;
+      i = this.asf;
       AppMethodBeat.o(7531);
       return i;
     }
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     int i = localMPExoVideoWrapper.getVideoDurationSec();
     AppMethodBeat.o(7531);
@@ -771,7 +772,7 @@ public final class MPVideoView
   public final int getEndPlayTime()
   {
     AppMethodBeat.i(7530);
-    if ((getCurrPosMs() == 0) && (this.hxT != 0))
+    if ((getCurrPosMs() == 0) && (this.hYu != 0))
     {
       i = getDuration();
       AppMethodBeat.o(7530);
@@ -784,41 +785,42 @@ public final class MPVideoView
   
   public final boolean getNeedHandleTouchEvent()
   {
-    return this.not;
+    return this.nRt;
   }
   
   public final boolean getPlayStart()
   {
-    return this.nol;
+    return this.nRl;
   }
   
   public final boolean getPlayStarted()
   {
-    return this.nom;
+    return this.nRm;
   }
   
   public final int getPlayStatus()
   {
-    return this.hxT;
+    return this.hYu;
   }
   
   public final FrameLayout getPlayerAdContainerLayout()
   {
-    return this.noi;
+    return this.nRi;
   }
   
   public final long getRealPlayTime()
   {
     AppMethodBeat.i(7529);
-    if ((!this.nos) && (this.nor != 0L) && (isPlaying()))
+    if ((!this.nRs) && (this.nRr != 0L) && (isPlaying()))
     {
-      l = (System.currentTimeMillis() - this.nor) / 1000L;
+      l1 = System.currentTimeMillis();
+      long l2 = this.nRr;
       AppMethodBeat.o(7529);
-      return l;
+      return l1 - l2;
     }
-    long l = this.noq / 1000L;
+    long l1 = this.nRq;
     AppMethodBeat.o(7529);
-    return l;
+    return l1;
   }
   
   public final int getVideoHeight()
@@ -839,9 +841,9 @@ public final class MPVideoView
   public final boolean isPlaying()
   {
     AppMethodBeat.i(7550);
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     boolean bool = localMPExoVideoWrapper.isPlaying();
     AppMethodBeat.o(7550);
@@ -852,12 +854,12 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7575);
     k.h(paramMotionEvent, "event");
-    if (!bcg())
+    if (!bjb())
     {
       AppMethodBeat.o(7575);
       return false;
     }
-    boolean bool = S(paramMotionEvent);
+    boolean bool = Q(paramMotionEvent);
     AppMethodBeat.o(7575);
     return bool;
   }
@@ -865,131 +867,131 @@ public final class MPVideoView
   public final void onUIDestroy()
   {
     AppMethodBeat.i(7554);
-    ad.i(TAG, "onUIDestroy");
+    ac.i(TAG, "onUIDestroy");
     clean();
     AppMethodBeat.o(7554);
-  }
-  
-  public final void p(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(7576);
-    ad.i(TAG, "operateFullScreen toFullScreen:%b direction:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (this.non == null)
-    {
-      ad.w(TAG, "operateFullScreen mFullScreenDelegate null");
-      AppMethodBeat.o(7576);
-      return;
-    }
-    if (paramBoolean == bcg())
-    {
-      ad.i(TAG, "operateFullScreen current same");
-      AppMethodBeat.o(7576);
-      return;
-    }
-    if (paramInt == nov) {
-      if (this.aag == nov)
-      {
-        paramInt = 90;
-        ad.i(TAG, "operateFullScreen target direction:%d", new Object[] { Integer.valueOf(paramInt) });
-      }
-    }
-    for (;;)
-    {
-      if (paramBoolean)
-      {
-        localObject = this.non;
-        if (localObject == null) {
-          k.fvU();
-        }
-        ((b)localObject).rM(paramInt);
-        localObject = this.noh;
-        if (localObject != null) {
-          ((MPVideoViewControlBar)localObject).setDirection(paramInt);
-        }
-        localObject = this.noh;
-        if (localObject != null) {
-          ((MPVideoViewControlBar)localObject).bcC();
-        }
-        localObject = this.nog;
-        if (localObject != null)
-        {
-          ((MPExoVideoWrapper)localObject).lpO = true;
-          AppMethodBeat.o(7576);
-          return;
-          paramInt = this.aag;
-          break;
-        }
-        AppMethodBeat.o(7576);
-        return;
-      }
-      Object localObject = this.non;
-      if (localObject != null) {
-        ((b)localObject).bah();
-      }
-      localObject = this.noh;
-      if (localObject != null) {
-        ((MPVideoViewControlBar)localObject).bah();
-      }
-      localObject = this.nog;
-      if (localObject != null)
-      {
-        ((MPExoVideoWrapper)localObject).lpO = false;
-        AppMethodBeat.o(7576);
-        return;
-      }
-      AppMethodBeat.o(7576);
-      return;
-    }
   }
   
   public final void pause()
   {
     AppMethodBeat.i(7552);
-    ad.i(TAG, "pause");
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    ac.i(TAG, "pause");
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     if (!localMPExoVideoWrapper.isPlaying())
     {
       AppMethodBeat.o(7552);
       return;
     }
-    localMPExoVideoWrapper = this.nog;
+    localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
     localMPExoVideoWrapper.pause();
     AppMethodBeat.o(7552);
   }
   
+  public final void q(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(7576);
+    ac.i(TAG, "operateFullScreen toFullScreen:%b direction:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (this.nRn == null)
+    {
+      ac.w(TAG, "operateFullScreen mFullScreenDelegate null");
+      AppMethodBeat.o(7576);
+      return;
+    }
+    if (paramBoolean == bjb())
+    {
+      ac.i(TAG, "operateFullScreen current same");
+      AppMethodBeat.o(7576);
+      return;
+    }
+    if (paramInt == nRv) {
+      if (this.abb == nRv)
+      {
+        paramInt = 90;
+        ac.i(TAG, "operateFullScreen target direction:%d", new Object[] { Integer.valueOf(paramInt) });
+      }
+    }
+    for (;;)
+    {
+      if (paramBoolean)
+      {
+        localObject = this.nRn;
+        if (localObject == null) {
+          k.fOy();
+        }
+        ((b)localObject).sC(paramInt);
+        localObject = this.nRh;
+        if (localObject != null) {
+          ((MPVideoViewControlBar)localObject).setDirection(paramInt);
+        }
+        localObject = this.nRh;
+        if (localObject != null) {
+          ((MPVideoViewControlBar)localObject).bjx();
+        }
+        localObject = this.nRg;
+        if (localObject != null)
+        {
+          ((MPExoVideoWrapper)localObject).jim = true;
+          AppMethodBeat.o(7576);
+          return;
+          paramInt = this.abb;
+          break;
+        }
+        AppMethodBeat.o(7576);
+        return;
+      }
+      Object localObject = this.nRn;
+      if (localObject != null) {
+        ((b)localObject).bha();
+      }
+      localObject = this.nRh;
+      if (localObject != null) {
+        ((MPVideoViewControlBar)localObject).bha();
+      }
+      localObject = this.nRg;
+      if (localObject != null)
+      {
+        ((MPExoVideoWrapper)localObject).jim = false;
+        AppMethodBeat.o(7576);
+        return;
+      }
+      AppMethodBeat.o(7576);
+      return;
+    }
+  }
+  
   public final void setAutoPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(7547);
-    ad.i(TAG, "setAutoPlay =%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.ckP = paramBoolean;
-    if ((this.ckP) && (this.hxT == 0)) {
-      this.hxT = 1;
+    ac.i(TAG, "setAutoPlay =%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.chR = paramBoolean;
+    if ((this.chR) && (this.hYu == 0)) {
+      this.hYu = 1;
     }
     AppMethodBeat.o(7547);
   }
   
   public final void setBackgroudContainerLayout(FrameLayout paramFrameLayout)
   {
-    this.nok = paramFrameLayout;
+    this.nRk = paramFrameLayout;
   }
   
   public final void setConsumeTouchEvent(boolean paramBoolean)
   {
     AppMethodBeat.i(7540);
-    ad.i(TAG, "setConsumeTouchEvent value=%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.knm = paramBoolean;
+    ac.i(TAG, "setConsumeTouchEvent value=%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOE = paramBoolean;
     AppMethodBeat.o(7540);
   }
   
   public final void setDotContainerLayout(FrameLayout paramFrameLayout)
   {
-    this.noj = paramFrameLayout;
+    this.nRj = paramFrameLayout;
   }
   
   public final void setDuration(int paramInt)
@@ -997,24 +999,24 @@ public final class MPVideoView
     AppMethodBeat.i(7532);
     if (paramInt <= 0)
     {
-      ad.i(TAG, "setDuration error duration=%d", new Object[] { Integer.valueOf(paramInt) });
+      ac.i(TAG, "setDuration error duration=%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(7532);
       return;
     }
-    TextView localTextView = this.kmQ;
+    TextView localTextView = this.kOi;
     if (localTextView == null) {
-      k.fvU();
+      k.fOy();
     }
-    localTextView.setText((CharSequence)rW(paramInt));
-    this.ark = paramInt;
+    localTextView.setText((CharSequence)sN(paramInt));
+    this.asf = paramInt;
     AppMethodBeat.o(7532);
   }
   
   public final void setEnablePlayGesture(boolean paramBoolean)
   {
     AppMethodBeat.i(7546);
-    ad.i(TAG, "setEnablePlayGesture: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.knu = paramBoolean;
+    ac.i(TAG, "setEnablePlayGesture: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOM = paramBoolean;
     AppMethodBeat.o(7546);
   }
   
@@ -1022,46 +1024,46 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7572);
     k.h(paramb, "delegate");
-    this.non = paramb;
+    this.nRn = paramb;
     AppMethodBeat.o(7572);
   }
   
   public final void setFullScreenDirection(int paramInt)
   {
     AppMethodBeat.i(7568);
-    ad.i(TAG, "setFullScreenDirection %d", new Object[] { Integer.valueOf(paramInt) });
-    this.aag = paramInt;
+    ac.i(TAG, "setFullScreenDirection %d", new Object[] { Integer.valueOf(paramInt) });
+    this.abb = paramInt;
     AppMethodBeat.o(7568);
   }
   
   public final void setInitialTime(int paramInt)
   {
     AppMethodBeat.i(7571);
-    ad.i(TAG, "setInitialTime initialTime=%s", new Object[] { Integer.valueOf(paramInt) });
-    this.nop = paramInt;
+    ac.i(TAG, "setInitialTime initialTime=%s", new Object[] { Integer.valueOf(paramInt) });
+    this.nRp = paramInt;
     AppMethodBeat.o(7571);
   }
   
   public final void setIsShowBasicControls(boolean paramBoolean)
   {
     AppMethodBeat.i(7558);
-    ad.i(TAG, "setIsShowBasicControls isShowBasicControls=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.knc = paramBoolean;
-    if (this.noh != null)
+    ac.i(TAG, "setIsShowBasicControls isShowBasicControls=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOu = paramBoolean;
+    if (this.nRh != null)
     {
-      if (this.knc)
+      if (this.kOu)
       {
-        localMPVideoViewControlBar = this.noh;
+        localMPVideoViewControlBar = this.nRh;
         if (localMPVideoViewControlBar == null) {
-          k.fvU();
+          k.fOy();
         }
-        localMPVideoViewControlBar.bcA();
+        localMPVideoViewControlBar.bjv();
         AppMethodBeat.o(7558);
         return;
       }
-      MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+      MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
       if (localMPVideoViewControlBar == null) {
-        k.fvU();
+        k.fOy();
       }
       localMPVideoViewControlBar.hide();
     }
@@ -1071,8 +1073,8 @@ public final class MPVideoView
   public final void setLoop(boolean paramBoolean)
   {
     AppMethodBeat.i(7549);
-    ad.i(TAG, "setLoop loop=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.knj = paramBoolean;
+    ac.i(TAG, "setLoop loop=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOB = paramBoolean;
     AppMethodBeat.o(7549);
   }
   
@@ -1080,23 +1082,23 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7573);
     k.h(paramc, "delegate");
-    this.noo = paramc;
+    this.nRo = paramc;
     AppMethodBeat.o(7573);
   }
   
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(7567);
-    ad.i(TAG, "setMute isMute=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i(TAG, "setMute isMute=%b", new Object[] { Boolean.valueOf(paramBoolean) });
     this.mIsMute = paramBoolean;
-    Object localObject = this.nog;
+    Object localObject = this.nRg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((MPExoVideoWrapper)localObject).setMute(paramBoolean);
-    localObject = this.noh;
+    localObject = this.nRh;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((MPVideoViewControlBar)localObject).setMuteBtnState(paramBoolean);
     AppMethodBeat.o(7567);
@@ -1104,22 +1106,22 @@ public final class MPVideoView
   
   public final void setNeedHandleTouchEvent(boolean paramBoolean)
   {
-    this.not = paramBoolean;
+    this.nRt = paramBoolean;
   }
   
   public final void setPageGesture(boolean paramBoolean)
   {
     AppMethodBeat.i(7569);
-    ad.i(TAG, "setPageGesture pageGesture=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.kne = paramBoolean;
+    ac.i(TAG, "setPageGesture pageGesture=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOw = paramBoolean;
     AppMethodBeat.o(7569);
   }
   
   public final void setPageGestureInFullscreen(boolean paramBoolean)
   {
     AppMethodBeat.i(7570);
-    ad.i(TAG, "setPageGestureInFullscreen pageGestureInFullscreen=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.knf = paramBoolean;
+    ac.i(TAG, "setPageGestureInFullscreen pageGestureInFullscreen=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOx = paramBoolean;
     AppMethodBeat.o(7570);
   }
   
@@ -1127,7 +1129,7 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7577);
     k.h(paramOnClickListener, "click");
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar != null)
     {
       localMPVideoViewControlBar.setPlayBtnOnClickListener(paramOnClickListener);
@@ -1141,20 +1143,20 @@ public final class MPVideoView
   {
     AppMethodBeat.i(7545);
     k.h(paramString, "playBtnPosition");
-    ad.i(TAG, "setPlayBtnPosition: %s", new Object[] { paramString });
-    if ((!bt.isNullOrNil(paramString)) && (n.I(paramString, "center", true)))
+    ac.i(TAG, "setPlayBtnPosition: %s", new Object[] { paramString });
+    if ((!bs.isNullOrNil(paramString)) && (n.I(paramString, "center", true)))
     {
-      paramString = this.noh;
+      paramString = this.nRh;
       if (paramString == null) {
-        k.fvU();
+        k.fOy();
       }
       paramString.setPlayBtnInCenterPosition(true);
       AppMethodBeat.o(7545);
       return;
     }
-    paramString = this.noh;
+    paramString = this.nRh;
     if (paramString == null) {
-      k.fvU();
+      k.fOy();
     }
     paramString.setPlayBtnInCenterPosition(false);
     AppMethodBeat.o(7545);
@@ -1162,31 +1164,31 @@ public final class MPVideoView
   
   public final void setPlayStatus(int paramInt)
   {
-    this.hxT = paramInt;
+    this.hYu = paramInt;
   }
   
   public final void setPlayerAdContainerLayout(FrameLayout paramFrameLayout)
   {
-    this.noi = paramFrameLayout;
+    this.nRi = paramFrameLayout;
   }
   
   public final void setShowCenterPlayBtn(boolean paramBoolean)
   {
     int j = 0;
     AppMethodBeat.i(7566);
-    ad.i(TAG, "setPlayBtnInCenterPosition %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.knq = paramBoolean;
-    Object localObject = this.kmO;
+    ac.i(TAG, "setPlayBtnInCenterPosition %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOI = paramBoolean;
+    Object localObject = this.kOg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     if (paramBoolean)
     {
       i = 0;
       ((View)localObject).setVisibility(i);
-      localObject = this.kmP;
+      localObject = this.kOh;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       if (!paramBoolean) {
         break label131;
@@ -1196,11 +1198,11 @@ public final class MPVideoView
     for (int i = j;; i = 8)
     {
       ((View)localObject).setVisibility(i);
-      if ((this.knq) && (this.noh != null))
+      if ((this.kOI) && (this.nRh != null))
       {
-        localObject = this.noh;
+        localObject = this.nRh;
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         ((MPVideoViewControlBar)localObject).hide();
       }
@@ -1215,12 +1217,12 @@ public final class MPVideoView
   {
     boolean bool = true;
     AppMethodBeat.i(7543);
-    ad.i(TAG, "setShowControlProgress %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    ac.i(TAG, "setShowControlProgress %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
-    if ((paramBoolean) && (!aXf())) {}
+    if ((paramBoolean) && (!bed())) {}
     for (paramBoolean = bool;; paramBoolean = false)
     {
       localMPVideoViewControlBar.setShowControlProgress(paramBoolean);
@@ -1232,10 +1234,10 @@ public final class MPVideoView
   public final void setShowFullScreenBtn(boolean paramBoolean)
   {
     AppMethodBeat.i(7564);
-    ad.i(TAG, "setShowFullScreenBtn %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    ac.i(TAG, "setShowFullScreenBtn %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
     localMPVideoViewControlBar.setShowFullScreenBtn(paramBoolean);
     AppMethodBeat.o(7564);
@@ -1244,10 +1246,10 @@ public final class MPVideoView
   public final void setShowMuteBtn(boolean paramBoolean)
   {
     AppMethodBeat.i(7541);
-    ad.i(TAG, "showMuteBtn %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    ac.i(TAG, "showMuteBtn %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
     localMPVideoViewControlBar.setShowMuteBtn(paramBoolean);
     AppMethodBeat.o(7541);
@@ -1256,10 +1258,10 @@ public final class MPVideoView
   public final void setShowPlayBtn(boolean paramBoolean)
   {
     AppMethodBeat.i(7565);
-    ad.i(TAG, "setShowPlayBtn %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    ac.i(TAG, "setShowPlayBtn %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
     localMPVideoViewControlBar.setShowPlayBtn(paramBoolean);
     AppMethodBeat.o(7565);
@@ -1269,13 +1271,13 @@ public final class MPVideoView
   {
     boolean bool = true;
     AppMethodBeat.i(7563);
-    ad.i(TAG, "setShowProgress %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.kno = paramBoolean;
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    ac.i(TAG, "setShowProgress %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.kOG = paramBoolean;
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
-    if ((paramBoolean) && (!aXf())) {}
+    if ((paramBoolean) && (!bed())) {}
     for (paramBoolean = bool;; paramBoolean = false)
     {
       localMPVideoViewControlBar.setShowProgress(paramBoolean);
@@ -1287,10 +1289,10 @@ public final class MPVideoView
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(7542);
-    ad.i(TAG, "setTitle %s", new Object[] { paramString });
-    MPVideoViewControlBar localMPVideoViewControlBar = this.noh;
+    ac.i(TAG, "setTitle %s", new Object[] { paramString });
+    MPVideoViewControlBar localMPVideoViewControlBar = this.nRh;
     if (localMPVideoViewControlBar == null) {
-      k.fvU();
+      k.fOy();
     }
     localMPVideoViewControlBar.setTitle(paramString);
     AppMethodBeat.o(7542);
@@ -1304,8 +1306,8 @@ public final class MPVideoView
   public final void setVideoSource(int paramInt)
   {
     AppMethodBeat.i(7548);
-    ad.i(TAG, "setVideoSource =%d", new Object[] { Integer.valueOf(paramInt) });
-    this.knr = paramInt;
+    ac.i(TAG, "setVideoSource =%d", new Object[] { Integer.valueOf(paramInt) });
+    this.kOJ = paramInt;
     AppMethodBeat.o(7548);
   }
   
@@ -1319,110 +1321,108 @@ public final class MPVideoView
     AppMethodBeat.i(7551);
     Object localObject = TAG;
     StringBuilder localStringBuilder = new StringBuilder("start isPlaying=");
-    MPExoVideoWrapper localMPExoVideoWrapper = this.nog;
+    MPExoVideoWrapper localMPExoVideoWrapper = this.nRg;
     if (localMPExoVideoWrapper == null) {
-      k.fvU();
+      k.fOy();
     }
-    ad.i((String)localObject, localMPExoVideoWrapper.isPlaying());
-    localObject = this.nog;
+    ac.i((String)localObject, localMPExoVideoWrapper.isPlaying());
+    localObject = this.nRg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     if (((MPExoVideoWrapper)localObject).isPlaying())
     {
       AppMethodBeat.o(7551);
       return;
     }
-    this.nol = true;
-    if (this.knc)
+    this.nRl = true;
+    if (this.kOu)
     {
-      localObject = this.noh;
+      localObject = this.nRh;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      ((MPVideoViewControlBar)localObject).bcF();
+      ((MPVideoViewControlBar)localObject).bjA();
     }
-    localObject = this.kmO;
+    localObject = this.kOg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((View)localObject).setVisibility(8);
-    localObject = this.nog;
+    localObject = this.nRg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     ((MPExoVideoWrapper)localObject).start();
-    bGF();
+    bNS();
     AppMethodBeat.o(7551);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(7553);
-    ad.i(TAG, "stop");
-    Object localObject = this.nog;
+    ac.i(TAG, "stop");
+    Object localObject = this.nRg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     if (!((MPExoVideoWrapper)localObject).isPlaying())
     {
       AppMethodBeat.o(7553);
       return;
     }
-    localObject = this.nog;
+    localObject = this.nRg;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
-    ((MPExoVideoWrapper)localObject).Ft();
-    localObject = this.noh;
+    ((MPExoVideoWrapper)localObject).Fb();
+    localObject = this.nRh;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
-    ((MPVideoViewControlBar)localObject).bcG();
-    bGE();
+    ((MPVideoViewControlBar)localObject).bjB();
+    bNR();
     AppMethodBeat.o(7553);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$FullScreenDelegate;", "", "isFullScreen", "", "()Z", "setFullScreen", "(Z)V", "enterFullScreen", "", "direction", "", "quitFullScreen", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$FullScreenDelegate;", "", "isFullScreen", "", "()Z", "setFullScreen", "(Z)V", "enterFullScreen", "", "direction", "", "quitFullScreen", "plugin-brandservice_release"})
   public static abstract interface b
   {
-    public abstract void bah();
+    public abstract void bha();
     
     public abstract boolean isFullScreen();
     
-    public abstract void rM(int paramInt);
+    public abstract void sC(int paramInt);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$MPVideoViewCallBack;", "", "onControlbarVisible", "", "visible", "", "onEndDragProgress", "onGetVideoSize", "width", "", "height", "onHideSwitchResolutionLayout", "onHideSwitchSpeedLayout", "onPlayError", "errorMsg", "", "errorCode", "onSeekPre", "onSeekTo", "time", "onStartDragProgress", "onUpdateProgress", "progressLen", "totalLen", "onVideoEnded", "onVideoPause", "onVideoPlay", "onVideoPrepare", "firstRenderTime", "", "onVideoWaiting", "onVideoWaitingEnd", "resolutionBtnClick", "speedBtnClick", "switchResolution", "beforeType", "afterType", "info", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "switchSpeed", "before", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "after", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$MPVideoViewCallBack;", "", "onControlbarVisible", "", "visible", "", "onEndDragProgress", "onGetVideoSize", "width", "", "height", "onHideSwitchResolutionLayout", "onHideSwitchSpeedLayout", "onPlayError", "errorMsg", "", "errorCode", "onSeekPre", "onSeekTo", "time", "onStartDragProgress", "onUpdateProgress", "progressLen", "totalLen", "onVideoEnded", "onVideoPause", "onVideoPlay", "onVideoPrepare", "firstRenderTime", "", "onVideoWaiting", "onVideoWaitingEnd", "resolutionBtnClick", "speedBtnClick", "switchResolution", "beforeType", "afterType", "info", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "switchSpeed", "before", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "after", "plugin-brandservice_release"})
   public static abstract interface c
   {
-    public abstract void PZ(String paramString);
+    public abstract void Ul(String paramString);
     
-    public abstract void a(int paramInt1, int paramInt2, fn paramfn);
+    public abstract void a(int paramInt1, int paramInt2, fp paramfp);
     
     public abstract void a(c.a parama1, c.a parama2);
     
-    public abstract void bGe();
+    public abstract void anR();
     
-    public abstract void bGf();
+    public abstract void bNr();
     
-    public abstract void bGg();
+    public abstract void bNs();
     
-    public abstract void bGh();
+    public abstract void bNt();
     
-    public abstract void bGi();
+    public abstract void bNu();
     
-    public abstract void bGj();
+    public abstract void bNv();
     
-    public abstract void bGk();
+    public abstract void bNw();
     
-    public abstract void bcp();
+    public abstract void bNx();
     
-    public abstract void bcv();
+    public abstract void bjl();
     
-    public abstract void iC(boolean paramBoolean);
-    
-    public abstract void nI(long paramLong);
+    public abstract void je(boolean paramBoolean);
     
     public abstract void onVideoEnded();
     
@@ -1431,134 +1431,136 @@ public final class MPVideoView
     public abstract void onVideoPlay();
     
     public abstract void onVideoWaiting();
+    
+    public abstract void ru(long paramLong);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$10", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$SwitchSpeedListener;", "onHideSwitchSpeedLayout", "", "speedBtnClick", "switchSpeed", "info", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "before", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "after", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$10", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$SwitchSpeedListener;", "onHideSwitchSpeedLayout", "", "speedBtnClick", "switchSpeed", "info", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "before", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "after", "plugin-brandservice_release"})
   public static final class f
     implements MPVideoViewControlBar.b
   {
-    public final void a(fn paramfn, c.a parama1, c.a parama2)
+    public final void a(fp paramfp, c.a parama1, c.a parama2)
     {
-      AppMethodBeat.i(193379);
-      Object localObject = MPVideoView.k(this.noy);
+      AppMethodBeat.i(199192);
+      Object localObject = MPVideoView.k(this.nRy);
       if (localObject != null) {
         ((MPVideoView.c)localObject).a(parama1, parama2);
       }
-      this.noy.setAutoPlay(this.noy.isPlaying());
-      int j = this.noy.getCurrPosMs();
-      parama2 = MPVideoView.h(this.noy);
+      this.nRy.setAutoPlay(this.nRy.isPlaying());
+      int j = this.nRy.getCurrPosMs();
+      parama2 = MPVideoView.h(this.nRy);
       if (parama2 == null) {
-        k.fvU();
+        k.fOy();
       }
-      parama1 = parama2.nnq;
+      parama1 = parama2.nQq;
       if (parama1 != null)
       {
         parama1 = parama1.getBitmap();
         if ((parama1 == null) || (parama1.isRecycled())) {
           break label261;
         }
-        localObject = parama2.nnm;
+        localObject = parama2.nQm;
         if (localObject != null) {
           ((ImageView)localObject).setImageBitmap(parama1);
         }
       }
       for (;;)
       {
-        parama1 = parama2.nnm;
+        parama1 = parama2.nQm;
         if (parama1 != null) {
           parama1.setVisibility(0);
         }
-        parama2.nM(0L);
-        parama1 = MPVideoView.h(this.noy);
+        parama2.ry(0L);
+        parama1 = MPVideoView.h(this.nRy);
         if (parama1 == null) {
-          k.fvU();
+          k.fOy();
         }
-        parama1.bGG();
-        parama1 = this.noy;
+        parama1.bNT();
+        parama1 = this.nRy;
         int i = j;
         if (j == 0) {
           i = 1;
         }
         parama1.setInitialTime(i);
-        parama1 = this.noy;
-        if (paramfn == null) {
-          k.fvU();
+        parama1 = this.nRy;
+        if (paramfp == null) {
+          k.fOy();
         }
-        paramfn = paramfn.url;
-        k.g(paramfn, "info!!.url");
-        parama1.cv(paramfn, this.noy.getDuration());
-        if (!MPVideoView.E(this.noy))
+        paramfp = paramfp.url;
+        k.g(paramfp, "info!!.url");
+        parama1.cA(paramfp, this.nRy.getDuration());
+        if (!MPVideoView.E(this.nRy))
         {
-          paramfn = MPVideoView.h(this.noy);
-          if (paramfn == null) {
-            k.fvU();
+          paramfp = MPVideoView.h(this.nRy);
+          if (paramfp == null) {
+            k.fOy();
           }
-          paramfn.pause();
+          paramfp.pause();
         }
-        paramfn = MPVideoView.c(this.noy);
-        if (paramfn == null) {
+        paramfp = MPVideoView.c(this.nRy);
+        if (paramfp == null) {
           break label279;
         }
-        paramfn.hide();
-        AppMethodBeat.o(193379);
+        paramfp.hide();
+        AppMethodBeat.o(199192);
         return;
         parama1 = null;
         break;
         label261:
-        parama1 = parama2.nnm;
+        parama1 = parama2.nQm;
         if (parama1 != null) {
           parama1.setImageResource(2131233299);
         }
       }
       label279:
-      AppMethodBeat.o(193379);
+      AppMethodBeat.o(199192);
     }
     
-    public final void bGR()
+    public final void bOe()
     {
       AppMethodBeat.i(179030);
-      MPVideoView.k(this.noy);
+      MPVideoView.k(this.nRy);
       AppMethodBeat.o(179030);
     }
     
-    public final void bGS()
+    public final void bOf()
     {
       AppMethodBeat.i(179031);
-      MPVideoView.k(this.noy);
+      MPVideoView.k(this.nRy);
       AppMethodBeat.o(179031);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$2", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/IMMVideoView$IVideoPlaySeekCallback;", "onSeekPre", "", "onSeekTo", "time", "", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$2", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/IMMVideoView$IVideoPlaySeekCallback;", "onSeekPre", "", "onSeekTo", "time", "", "plugin-brandservice_release"})
   public static final class g
     implements e.d
   {
-    public final void bcv()
+    public final void anR()
     {
       AppMethodBeat.i(7488);
-      ad.i(MPVideoView.access$getTAG$cp(), "onSeekPre");
-      if (this.noy.isPlaying()) {
-        this.noy.bGM();
+      ac.i(MPVideoView.access$getTAG$cp(), "onSeekPre");
+      if (this.nRy.isPlaying()) {
+        this.nRy.bNZ();
       }
-      MPVideoView.c localc = MPVideoView.k(this.noy);
+      MPVideoView.c localc = MPVideoView.k(this.nRy);
       if (localc != null)
       {
-        localc.bcv();
+        localc.anR();
         AppMethodBeat.o(7488);
         return;
       }
       AppMethodBeat.o(7488);
     }
     
-    public final void rZ(int paramInt)
+    public final void nn(int paramInt)
     {
       AppMethodBeat.i(7489);
-      MPVideoView.a(this.noy, paramInt * 1000);
-      MPVideoView.m(this.noy);
-      MPVideoView.c localc = MPVideoView.k(this.noy);
+      MPVideoView.a(this.nRy, paramInt * 1000);
+      MPVideoView.m(this.nRy);
+      MPVideoView.c localc = MPVideoView.k(this.nRy);
       if (localc != null)
       {
-        localc.bGg();
+        localc.bNt();
         AppMethodBeat.o(7489);
         return;
       }
@@ -1566,7 +1568,126 @@ public final class MPVideoView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "progressLen", "", "totalLen", "onProgressChanged"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$4", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/IMMVideoView$StatePorter;", "getCacheTime", "", "getTotalTime", "plugin-brandservice_release"})
+  public static final class i
+    implements e.i
+  {
+    public final int bjh()
+    {
+      AppMethodBeat.i(7491);
+      MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.nRy);
+      if (localMPExoVideoWrapper == null) {
+        k.fOy();
+      }
+      int i = localMPExoVideoWrapper.getCacheTimeSec();
+      AppMethodBeat.o(7491);
+      return i;
+    }
+    
+    public final int bji()
+    {
+      AppMethodBeat.i(7492);
+      MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.nRy);
+      if (localMPExoVideoWrapper == null) {
+        k.fOy();
+      }
+      int i = localMPExoVideoWrapper.getVideoDurationSec();
+      AppMethodBeat.o(7492);
+      return i;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "visible", "", "onVisibilityChanged"})
+  static final class l
+    implements e.f
+  {
+    l(MPVideoView paramMPVideoView) {}
+    
+    public final void onVisibilityChanged(boolean paramBoolean)
+    {
+      AppMethodBeat.i(7495);
+      MPVideoView.A(this.nRy);
+      Object localObject1 = MPVideoView.k(this.nRy);
+      if (localObject1 != null) {
+        ((MPVideoView.c)localObject1).je(paramBoolean);
+      }
+      localObject1 = MPVideoView.h(this.nRy);
+      if (localObject1 != null)
+      {
+        Object localObject2;
+        if (paramBoolean)
+        {
+          ((MPExoVideoWrapper)localObject1).nQF = true;
+          localObject2 = ((MPExoVideoWrapper)localObject1).nQm;
+          if ((localObject2 == null) || (((ImageView)localObject2).getVisibility() != 0))
+          {
+            localObject2 = ((MPExoVideoWrapper)localObject1).nQn;
+            if (localObject2 != null) {
+              if (((TextView)localObject2).getVisibility() != 0) {
+                break label265;
+              }
+            }
+          }
+          else
+          {
+            ac.i(MPExoVideoWrapper.TAG, "hide switchingResolution onControllerBarVisible");
+            if (((MPExoVideoWrapper)localObject1).nQE)
+            {
+              localObject2 = ((MPExoVideoWrapper)localObject1).nQm;
+              if ((localObject2 != null) && (((ImageView)localObject2).getVisibility() == 0)) {
+                ((MPExoVideoWrapper)localObject1).nQD = true;
+              }
+            }
+            localObject2 = ((MPExoVideoWrapper)localObject1).nQm;
+            if (localObject2 != null) {
+              ((ImageView)localObject2).setVisibility(8);
+            }
+            localObject1 = ((MPExoVideoWrapper)localObject1).nQn;
+            if (localObject1 == null) {
+              break label165;
+            }
+            ((TextView)localObject1).setVisibility(8);
+            AppMethodBeat.o(7495);
+            return;
+          }
+          AppMethodBeat.o(7495);
+          return;
+          label165:
+          AppMethodBeat.o(7495);
+        }
+        else
+        {
+          ((MPExoVideoWrapper)localObject1).nQF = false;
+          if (((MPExoVideoWrapper)localObject1).nQD)
+          {
+            ac.i(MPExoVideoWrapper.TAG, "show switchingResolution onControllerBarVisible isSwitchingResolution = " + ((MPExoVideoWrapper)localObject1).nQE);
+            ((MPExoVideoWrapper)localObject1).nQD = false;
+            if (((MPExoVideoWrapper)localObject1).nQE)
+            {
+              ((MPExoVideoWrapper)localObject1).bNP();
+              AppMethodBeat.o(7495);
+              return;
+            }
+            localObject2 = ((MPExoVideoWrapper)localObject1).nQm;
+            if (localObject2 != null) {
+              ((ImageView)localObject2).setVisibility(8);
+            }
+            localObject2 = ((MPExoVideoWrapper)localObject1).nQn;
+            if (localObject2 != null) {
+              ((TextView)localObject2).setVisibility(0);
+            }
+            ((MPExoVideoWrapper)localObject1).bNQ();
+          }
+        }
+        label265:
+        AppMethodBeat.o(7495);
+        return;
+      }
+      AppMethodBeat.o(7495);
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "progressLen", "", "totalLen", "onProgressChanged"})
   static final class m
     implements e.e
   {
@@ -1589,14 +1710,14 @@ public final class MPVideoView
         if (paramInt1 > paramInt2) {
           i = paramInt2;
         }
-        Object localObject = MPVideoView.C(this.noy);
+        Object localObject = MPVideoView.C(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         paramInt1 = i * ((ImageView)localObject).getWidth() / paramInt2;
-        localObject = MPVideoView.D(this.noy);
+        localObject = MPVideoView.D(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         localObject = ((ImageView)localObject).getLayoutParams();
         if (localObject == null)
@@ -1607,20 +1728,20 @@ public final class MPVideoView
         }
         localObject = (FrameLayout.LayoutParams)localObject;
         ((FrameLayout.LayoutParams)localObject).width = paramInt1;
-        ImageView localImageView = MPVideoView.D(this.noy);
+        ImageView localImageView = MPVideoView.D(this.nRy);
         if (localImageView == null) {
-          k.fvU();
+          k.fOy();
         }
         localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = MPVideoView.D(this.noy);
+        localObject = MPVideoView.D(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         ((ImageView)localObject).requestLayout();
-        localObject = MPVideoView.k(this.noy);
+        localObject = MPVideoView.k(this.nRy);
         if (localObject != null)
         {
-          ((MPVideoView.c)localObject).bGi();
+          ((MPVideoView.c)localObject).bNv();
           AppMethodBeat.o(7496);
           return;
         }
@@ -1630,54 +1751,54 @@ public final class MPVideoView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$9", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$SwitchResolutionListener;", "onHideSwitchResolutionLayout", "", "resolutionBtnClick", "switchResolution", "info", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "beforeType", "", "afterType", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initControlBar$9", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$SwitchResolutionListener;", "onHideSwitchResolutionLayout", "", "resolutionBtnClick", "switchResolution", "info", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "beforeType", "", "afterType", "plugin-brandservice_release"})
   public static final class n
     implements MPVideoViewControlBar.a
   {
-    public final void a(fn paramfn, int paramInt1, int paramInt2)
+    public final void a(fp paramfp, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(7498);
-      Object localObject = MPVideoView.k(this.noy);
+      Object localObject = MPVideoView.k(this.nRy);
       if (localObject != null) {
-        ((MPVideoView.c)localObject).a(paramInt1, paramInt2, paramfn);
+        ((MPVideoView.c)localObject).a(paramInt1, paramInt2, paramfp);
       }
-      this.noy.setAutoPlay(this.noy.isPlaying());
-      paramInt1 = this.noy.getCurrPosMs();
-      MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.noy);
+      this.nRy.setAutoPlay(this.nRy.isPlaying());
+      paramInt1 = this.nRy.getCurrPosMs();
+      MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.nRy);
       if (localMPExoVideoWrapper == null) {
-        k.fvU();
+        k.fOy();
       }
-      if (paramfn == null) {
-        k.fvU();
+      if (paramfp == null) {
+        k.fOy();
       }
-      String str = paramfn.CAn;
-      ad.i(MPExoVideoWrapper.TAG, "onSetResolution %b", new Object[] { Boolean.valueOf(localMPExoVideoWrapper.nnF) });
-      localMPExoVideoWrapper.nnE = true;
-      localMPExoVideoWrapper.nnp = str;
-      localObject = localMPExoVideoWrapper.nnq;
+      String str = paramfp.DSJ;
+      ac.i(MPExoVideoWrapper.TAG, "onSetResolution %b", new Object[] { Boolean.valueOf(localMPExoVideoWrapper.nQF) });
+      localMPExoVideoWrapper.nQE = true;
+      localMPExoVideoWrapper.nQp = str;
+      localObject = localMPExoVideoWrapper.nQq;
       if (localObject != null)
       {
         localObject = ((MPExoVideoTextureView)localObject).getBitmap();
         if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
           break label348;
         }
-        ImageView localImageView = localMPExoVideoWrapper.nnm;
+        ImageView localImageView = localMPExoVideoWrapper.nQm;
         if (localImageView != null) {
           localImageView.setImageBitmap((Bitmap)localObject);
         }
         label169:
-        localObject = localMPExoVideoWrapper.nnn;
+        localObject = localMPExoVideoWrapper.nQn;
         if (localObject != null) {
           ((TextView)localObject).setText((CharSequence)localMPExoVideoWrapper.getContext().getString(2131761350, new Object[] { str }));
         }
-        localMPExoVideoWrapper.bGC();
-        localMPExoVideoWrapper.nM(0L);
-        localObject = MPVideoView.h(this.noy);
+        localMPExoVideoWrapper.bNP();
+        localMPExoVideoWrapper.ry(0L);
+        localObject = MPVideoView.h(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((MPExoVideoWrapper)localObject).bGG();
-        localObject = this.noy;
+        ((MPExoVideoWrapper)localObject).bNT();
+        localObject = this.nRy;
         if (paramInt1 != 0) {
           break label370;
         }
@@ -1688,28 +1809,28 @@ public final class MPVideoView
       for (;;)
       {
         ((MPVideoView)localObject).setInitialTime(paramInt1);
-        localObject = this.noy;
-        paramfn = paramfn.url;
-        k.g(paramfn, "info!!.url");
-        ((MPVideoView)localObject).cv(paramfn, this.noy.getDuration());
-        if (!MPVideoView.E(this.noy))
+        localObject = this.nRy;
+        paramfp = paramfp.url;
+        k.g(paramfp, "info!!.url");
+        ((MPVideoView)localObject).cA(paramfp, this.nRy.getDuration());
+        if (!MPVideoView.E(this.nRy))
         {
-          paramfn = MPVideoView.h(this.noy);
-          if (paramfn == null) {
-            k.fvU();
+          paramfp = MPVideoView.h(this.nRy);
+          if (paramfp == null) {
+            k.fOy();
           }
-          paramfn.pause();
+          paramfp.pause();
         }
-        paramfn = MPVideoView.c(this.noy);
-        if (paramfn == null) {
+        paramfp = MPVideoView.c(this.nRy);
+        if (paramfp == null) {
           break label373;
         }
-        paramfn.hide();
+        paramfp.hide();
         AppMethodBeat.o(7498);
         return;
         localObject = null;
         break;
-        localObject = localMPExoVideoWrapper.nnm;
+        localObject = localMPExoVideoWrapper.nQm;
         if (localObject == null) {
           break label169;
         }
@@ -1720,26 +1841,26 @@ public final class MPVideoView
       AppMethodBeat.o(7498);
     }
     
-    public final void bGj()
+    public final void bNw()
     {
       AppMethodBeat.i(7499);
-      MPVideoView.c localc = MPVideoView.k(this.noy);
+      MPVideoView.c localc = MPVideoView.k(this.nRy);
       if (localc != null)
       {
-        localc.bGj();
+        localc.bNw();
         AppMethodBeat.o(7499);
         return;
       }
       AppMethodBeat.o(7499);
     }
     
-    public final void bGk()
+    public final void bNx()
     {
       AppMethodBeat.i(7497);
-      MPVideoView.c localc = MPVideoView.k(this.noy);
+      MPVideoView.c localc = MPVideoView.k(this.nRy);
       if (localc != null)
       {
-        localc.bGk();
+        localc.bNx();
         AppMethodBeat.o(7497);
         return;
       }
@@ -1747,208 +1868,208 @@ public final class MPVideoView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initGestureController$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/ui/VideoPlayerGestureController$GestureOperationHelper;", "canAdjustBrightness", "", "canAdjustProgress", "canAdjustVolume", "getCurrentPosition", "", "onAdjustBrightness", "", "brightness", "", "onAdjustVolume", "volumePercent", "onCanHandleGesture", "onDoubleTap", "onDragProgress", "startDragPos", "distanceX", "onEndAdjustBrightness", "onEndAdjustVolume", "onEndDragProgress", "dragPosition", "totalDistanceX", "onSingleTap", "onStartDragProgress", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initGestureController$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/ui/VideoPlayerGestureController$GestureOperationHelper;", "canAdjustBrightness", "", "canAdjustProgress", "canAdjustVolume", "getCurrentPosition", "", "onAdjustBrightness", "", "brightness", "", "onAdjustVolume", "volumePercent", "onCanHandleGesture", "onDoubleTap", "onDragProgress", "startDragPos", "distanceX", "onEndAdjustBrightness", "onEndAdjustVolume", "onEndDragProgress", "dragPosition", "totalDistanceX", "onSingleTap", "onStartDragProgress", "plugin-brandservice_release"})
   public static final class o
     implements a.b
   {
-    public final void av(float paramFloat)
-    {
-      AppMethodBeat.i(7506);
-      if (!MPVideoView.r(this.noy))
-      {
-        AppMethodBeat.o(7506);
-        return;
-      }
-      ad.d(MPVideoView.access$getTAG$cp(), "onAdjustVolume:".concat(String.valueOf(paramFloat)));
-      Object localObject = MPVideoView.n(this.noy);
-      if (localObject == null) {
-        k.fvU();
-      }
-      ((AppBrandDotPercentIndicator)localObject).setPercent(paramFloat);
-      localObject = MPVideoView.o(this.noy);
-      if (localObject == null) {
-        k.fvU();
-      }
-      ((TextView)localObject).setText(2131760999);
-      localObject = MPVideoView.p(this.noy);
-      if (localObject == null) {
-        k.fvU();
-      }
-      ((ImageView)localObject).setImageResource(2131231041);
-      localObject = MPVideoView.q(this.noy);
-      if (localObject == null) {
-        k.fvU();
-      }
-      ((LinearLayout)localObject).setVisibility(0);
-      MPVideoView.f(this.noy);
-      AppMethodBeat.o(7506);
-    }
-    
-    public final void aw(float paramFloat)
+    public final void aA(float paramFloat)
     {
       AppMethodBeat.i(7507);
-      if (!MPVideoView.r(this.noy))
+      if (!MPVideoView.r(this.nRy))
       {
         AppMethodBeat.o(7507);
         return;
       }
-      ad.d(MPVideoView.access$getTAG$cp(), "onAdjustBrightness:".concat(String.valueOf(paramFloat)));
-      Object localObject = MPVideoView.n(this.noy);
+      ac.d(MPVideoView.access$getTAG$cp(), "onAdjustBrightness:".concat(String.valueOf(paramFloat)));
+      Object localObject = MPVideoView.n(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((AppBrandDotPercentIndicator)localObject).setPercent(paramFloat);
-      localObject = MPVideoView.o(this.noy);
+      localObject = MPVideoView.o(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((TextView)localObject).setText(2131760998);
-      localObject = MPVideoView.p(this.noy);
+      localObject = MPVideoView.p(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((ImageView)localObject).setImageResource(2131231033);
-      localObject = MPVideoView.q(this.noy);
+      localObject = MPVideoView.q(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((LinearLayout)localObject).setVisibility(0);
-      MPVideoView.f(this.noy);
+      MPVideoView.f(this.nRy);
       AppMethodBeat.o(7507);
     }
     
-    public final void bcn()
+    public final void az(float paramFloat)
+    {
+      AppMethodBeat.i(7506);
+      if (!MPVideoView.r(this.nRy))
+      {
+        AppMethodBeat.o(7506);
+        return;
+      }
+      ac.d(MPVideoView.access$getTAG$cp(), "onAdjustVolume:".concat(String.valueOf(paramFloat)));
+      Object localObject = MPVideoView.n(this.nRy);
+      if (localObject == null) {
+        k.fOy();
+      }
+      ((AppBrandDotPercentIndicator)localObject).setPercent(paramFloat);
+      localObject = MPVideoView.o(this.nRy);
+      if (localObject == null) {
+        k.fOy();
+      }
+      ((TextView)localObject).setText(2131760999);
+      localObject = MPVideoView.p(this.nRy);
+      if (localObject == null) {
+        k.fOy();
+      }
+      ((ImageView)localObject).setImageResource(2131231041);
+      localObject = MPVideoView.q(this.nRy);
+      if (localObject == null) {
+        k.fOy();
+      }
+      ((LinearLayout)localObject).setVisibility(0);
+      MPVideoView.f(this.nRy);
+      AppMethodBeat.o(7506);
+    }
+    
+    public final void bjj()
     {
       AppMethodBeat.i(7500);
-      ad.d(MPVideoView.access$getTAG$cp(), "onSingleTap");
-      if ((MPVideoView.a(this.noy)) && (!MPVideoView.b(this.noy)))
+      ac.d(MPVideoView.access$getTAG$cp(), "onSingleTap");
+      if ((MPVideoView.a(this.nRy)) && (!MPVideoView.b(this.nRy)))
       {
-        localObject = MPVideoView.c(this.noy);
+        localObject = MPVideoView.c(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((MPVideoViewControlBar)localObject).bcz();
+        ((MPVideoViewControlBar)localObject).bju();
       }
-      Object localObject = MPVideoView.d(this.noy);
+      Object localObject = MPVideoView.d(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      if ((((View)localObject).getVisibility() != 0) && (MPVideoView.e(this.noy))) {
-        MPVideoView.f(this.noy);
+      if ((((View)localObject).getVisibility() != 0) && (MPVideoView.e(this.nRy))) {
+        MPVideoView.f(this.nRy);
       }
       AppMethodBeat.o(7500);
     }
     
-    public final void bco()
+    public final void bjk()
     {
       AppMethodBeat.i(7501);
-      ad.d(MPVideoView.access$getTAG$cp(), "onDoubleTap");
-      if (MPVideoView.g(this.noy))
+      ac.d(MPVideoView.access$getTAG$cp(), "onDoubleTap");
+      if (MPVideoView.g(this.nRy))
       {
-        Object localObject = MPVideoView.h(this.noy);
+        Object localObject = MPVideoView.h(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         if (((MPExoVideoWrapper)localObject).isPlaying())
         {
-          this.noy.pause();
-          localObject = m.nmf;
-          m.a.yC(35);
+          this.nRy.pause();
+          localObject = m.nPf;
+          m.a.zt(35);
           AppMethodBeat.o(7501);
           return;
         }
-        this.noy.start();
-        localObject = m.nmf;
-        m.a.yC(36);
+        this.nRy.start();
+        localObject = m.nPf;
+        m.a.zt(36);
       }
       AppMethodBeat.o(7501);
     }
     
-    public final void bcp()
+    public final void bjl()
     {
       AppMethodBeat.i(7502);
-      if (!MPVideoView.i(this.noy))
+      if (!MPVideoView.i(this.nRy))
       {
         AppMethodBeat.o(7502);
         return;
       }
-      Object localObject = MPVideoView.j(this.noy);
+      Object localObject = MPVideoView.j(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((TextView)localObject).setVisibility(0);
-      MPVideoView.f(this.noy);
-      if (this.noy.isPlaying()) {
-        this.noy.bGM();
+      MPVideoView.f(this.nRy);
+      if (this.nRy.isPlaying()) {
+        this.nRy.bNZ();
       }
-      localObject = MPVideoView.k(this.noy);
+      localObject = MPVideoView.k(this.nRy);
       if (localObject != null)
       {
-        ((MPVideoView.c)localObject).bcp();
+        ((MPVideoView.c)localObject).bjl();
         AppMethodBeat.o(7502);
         return;
       }
       AppMethodBeat.o(7502);
     }
     
-    public final void bcq()
+    public final void bjm()
     {
       AppMethodBeat.i(7508);
-      if (!MPVideoView.r(this.noy))
+      if (!MPVideoView.r(this.nRy))
       {
         AppMethodBeat.o(7508);
         return;
       }
-      Object localObject = MPVideoView.q(this.noy);
+      Object localObject = MPVideoView.q(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((LinearLayout)localObject).setVisibility(8);
-      MPVideoView.l(this.noy);
-      localObject = m.nmf;
-      m.a.yC(41);
+      MPVideoView.l(this.nRy);
+      localObject = m.nPf;
+      m.a.zt(41);
       AppMethodBeat.o(7508);
     }
     
-    public final void bcr()
+    public final void bjn()
     {
       AppMethodBeat.i(7509);
-      if (!MPVideoView.r(this.noy))
+      if (!MPVideoView.r(this.nRy))
       {
         AppMethodBeat.o(7509);
         return;
       }
-      Object localObject = MPVideoView.q(this.noy);
+      Object localObject = MPVideoView.q(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((LinearLayout)localObject).setVisibility(8);
-      MPVideoView.l(this.noy);
-      localObject = m.nmf;
-      m.a.yC(39);
+      MPVideoView.l(this.nRy);
+      localObject = m.nPf;
+      m.a.zt(39);
       AppMethodBeat.o(7509);
     }
     
-    public final boolean bcs()
+    public final boolean bjo()
     {
-      AppMethodBeat.i(205026);
-      boolean bool = MPVideoView.r(this.noy);
-      AppMethodBeat.o(205026);
+      AppMethodBeat.i(210010);
+      boolean bool = MPVideoView.r(this.nRy);
+      AppMethodBeat.o(210010);
       return bool;
     }
     
-    public final boolean bct()
+    public final boolean bjp()
     {
-      AppMethodBeat.i(205027);
-      boolean bool = MPVideoView.r(this.noy);
-      AppMethodBeat.o(205027);
+      AppMethodBeat.i(210011);
+      boolean bool = MPVideoView.r(this.nRy);
+      AppMethodBeat.o(210011);
       return bool;
     }
     
-    public final boolean bcu()
+    public final boolean bjq()
     {
       AppMethodBeat.i(7512);
-      boolean bool = MPVideoView.i(this.noy);
+      boolean bool = MPVideoView.i(this.nRy);
       AppMethodBeat.o(7512);
       return bool;
     }
@@ -1956,9 +2077,9 @@ public final class MPVideoView
     public final int getCurrentPosition()
     {
       AppMethodBeat.i(7505);
-      MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.noy);
+      MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.nRy);
       if (localMPExoVideoWrapper == null) {
-        k.fvU();
+        k.fOy();
       }
       int i = localMPExoVideoWrapper.getCurrPosSec();
       AppMethodBeat.o(7505);
@@ -1968,40 +2089,40 @@ public final class MPVideoView
     public final int j(int paramInt, float paramFloat)
     {
       AppMethodBeat.i(7503);
-      if (!MPVideoView.i(this.noy))
+      if (!MPVideoView.i(this.nRy))
       {
         AppMethodBeat.o(7503);
         return 0;
       }
-      ad.i(MPVideoView.access$getTAG$cp(), "onDragProgress:" + paramInt + '/' + paramFloat);
-      Object localObject = MPVideoView.h(this.noy);
+      ac.i(MPVideoView.access$getTAG$cp(), "onDragProgress:" + paramInt + '/' + paramFloat);
+      Object localObject = MPVideoView.h(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       paramInt = ((MPExoVideoWrapper)localObject).getVideoDurationSec();
-      int i = com.tencent.mm.plugin.appbrand.jsapi.video.progressbar.a.c(paramFloat, this.noy.getMeasuredWidth(), getCurrentPosition(), paramInt);
-      localObject = com.tencent.mm.plugin.appbrand.jsapi.video.l.mz(paramInt * 1000L);
-      TextView localTextView = MPVideoView.j(this.noy);
+      int i = com.tencent.mm.plugin.appbrand.jsapi.video.progressbar.a.c(paramFloat, this.nRy.getMeasuredWidth(), getCurrentPosition(), paramInt);
+      localObject = r.qn(paramInt * 1000L);
+      TextView localTextView = MPVideoView.j(this.nRy);
       if (localTextView == null) {
-        k.fvU();
+        k.fOy();
       }
-      localTextView.setText((CharSequence)(com.tencent.mm.plugin.appbrand.jsapi.video.l.mz(i * 1000L) + "/" + (String)localObject));
-      localObject = MPVideoView.c(this.noy);
+      localTextView.setText((CharSequence)(r.qn(i * 1000L) + "/" + (String)localObject));
+      localObject = MPVideoView.c(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((MPVideoViewControlBar)localObject).seek(i);
-      localObject = MPVideoView.c(this.noy);
+      localObject = MPVideoView.c(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      if (((MPVideoViewControlBar)localObject).bcB())
+      if (((MPVideoViewControlBar)localObject).bjw())
       {
-        localObject = MPVideoView.c(this.noy);
+        localObject = MPVideoView.c(this.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        ((MPVideoViewControlBar)localObject).bcH();
+        ((MPVideoViewControlBar)localObject).bjC();
       }
       AppMethodBeat.o(7503);
       return i;
@@ -2010,29 +2131,29 @@ public final class MPVideoView
     public final void k(int paramInt, float paramFloat)
     {
       AppMethodBeat.i(7504);
-      if (!MPVideoView.i(this.noy))
+      if (!MPVideoView.i(this.nRy))
       {
         AppMethodBeat.o(7504);
         return;
       }
-      Object localObject = MPVideoView.j(this.noy);
+      Object localObject = MPVideoView.j(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       ((TextView)localObject).setVisibility(8);
-      MPVideoView.l(this.noy);
-      localObject = MPVideoView.h(this.noy);
+      MPVideoView.l(this.nRy);
+      localObject = MPVideoView.h(this.nRy);
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       int i = ((MPExoVideoWrapper)localObject).getCurrPosSec();
-      ad.i(MPVideoView.access$getTAG$cp(), "onEndDragProgress: dragPosition=%d currentPositon=%d totalDistanceX=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Float.valueOf(paramFloat) });
-      MPVideoView.a(this.noy, paramInt * 1000);
-      MPVideoView.m(this.noy);
-      localObject = MPVideoView.k(this.noy);
+      ac.i(MPVideoView.access$getTAG$cp(), "onEndDragProgress: dragPosition=%d currentPositon=%d totalDistanceX=%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Float.valueOf(paramFloat) });
+      MPVideoView.a(this.nRy, paramInt * 1000);
+      MPVideoView.m(this.nRy);
+      localObject = MPVideoView.k(this.nRy);
       if (localObject != null)
       {
-        ((MPVideoView.c)localObject).bGf();
+        ((MPVideoView.c)localObject).bNs();
         AppMethodBeat.o(7504);
         return;
       }
@@ -2040,7 +2161,7 @@ public final class MPVideoView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initVideoViewCallback$1", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "onError", "", "sessionId", "", "mediaId", "errorMsg", "what", "", "extra", "onGetVideoSize", "width", "height", "onPrepared", "onVideoEnded", "onVideoFirstFrameDraw", "onVideoPause", "onVideoPlay", "onVideoWaiting", "onVideoWaitingEnd", "plugin-brandservice_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/widget/MPVideoView$initVideoViewCallback$1", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "onError", "", "sessionId", "", "mediaId", "errorMsg", "what", "", "extra", "onGetVideoSize", "width", "height", "onPrepared", "onVideoEnded", "onVideoFirstFrameDraw", "onVideoPause", "onVideoPlay", "onVideoWaiting", "onVideoWaitingEnd", "plugin-brandservice_release"})
   public static final class p
     implements h.b
   {
@@ -2050,8 +2171,8 @@ public final class MPVideoView
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
       k.h(paramString3, "errorMsg");
-      ad.i(MPVideoView.access$getTAG$cp(), "onError errorMsg=%s what=%d extra=%d", new Object[] { paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      aq.f((Runnable)new a(this, paramString3, paramInt1));
+      ac.i(MPVideoView.access$getTAG$cp(), "onError errorMsg=%s what=%d extra=%d", new Object[] { paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ap.f((Runnable)new a(this, paramString3, paramInt1));
       AppMethodBeat.o(7521);
     }
     
@@ -2060,106 +2181,106 @@ public final class MPVideoView
       AppMethodBeat.i(7524);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      this.noy.setVideoWidth(paramInt1);
-      this.noy.setVideoHeight(paramInt2);
-      paramString1 = MPVideoView.k(this.noy);
+      this.nRy.setVideoWidth(paramInt1);
+      this.nRy.setVideoHeight(paramInt2);
+      paramString1 = MPVideoView.k(this.nRy);
       if (paramString1 != null) {
-        paramString1.bGe();
+        paramString1.bNr();
       }
-      aq.f((Runnable)new b(this, paramInt1, paramInt2));
+      ap.f((Runnable)new b(this, paramInt1, paramInt2));
       AppMethodBeat.o(7524);
     }
     
-    public final void db(String paramString1, String paramString2)
+    public final void jdMethod_do(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7522);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      ad.i(MPVideoView.access$getTAG$cp(), "onPrepared");
-      aq.f((Runnable)new c(this));
+      ac.i(MPVideoView.access$getTAG$cp(), "onPrepared");
+      ap.f((Runnable)new c(this));
       AppMethodBeat.o(7522);
     }
     
-    public final void dc(String paramString1, String paramString2)
+    public final void dp(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7523);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      ad.i(MPVideoView.access$getTAG$cp(), "onVideoEnded");
-      aq.f((Runnable)new d(this));
+      ac.i(MPVideoView.access$getTAG$cp(), "onVideoEnded");
+      ap.f((Runnable)new d(this));
       AppMethodBeat.o(7523);
     }
     
-    public final void dd(String paramString1, String paramString2)
+    public final void dq(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7525);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      ad.i(MPVideoView.access$getTAG$cp(), "onVideoPause");
-      this.noy.bGM();
-      paramString1 = MPVideoView.k(this.noy);
+      ac.i(MPVideoView.access$getTAG$cp(), "onVideoPause");
+      this.nRy.bNZ();
+      paramString1 = MPVideoView.k(this.nRy);
       if (paramString1 != null) {
         paramString1.onVideoPause();
       }
-      if (this.noy.getPlayStatus() != 4) {
-        this.noy.setPlayStatus(3);
+      if (this.nRy.getPlayStatus() != 4) {
+        this.nRy.setPlayStatus(3);
       }
-      paramString1 = MPVideoView.h(this.noy);
+      paramString1 = MPVideoView.h(this.nRy);
       if (paramString1 == null) {
-        k.fvU();
+        k.fOy();
       }
-      paramString1 = paramString1.nnn;
+      paramString1 = paramString1.nQn;
       if (paramString1 == null) {
-        k.fvU();
+        k.fOy();
       }
       if (paramString1.getVisibility() == 0) {}
       for (int i = 1; i != 0; i = 0)
       {
-        aq.n((Runnable)new e(this), 1000L);
+        ap.n((Runnable)new e(this), 1000L);
         AppMethodBeat.o(7525);
         return;
       }
-      this.noy.bGO();
+      this.nRy.bOb();
       AppMethodBeat.o(7525);
     }
     
-    public final void de(String paramString1, String paramString2)
+    public final void dr(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7526);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      aq.f((Runnable)new f(this));
+      ap.f((Runnable)new f(this));
       AppMethodBeat.o(7526);
     }
     
-    public final void dg(String paramString1, String paramString2)
+    public final void ds(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7527);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      ad.i(MPVideoView.access$getTAG$cp(), "onVideoWaiting");
-      aq.f((Runnable)new g(this));
+      ac.i(MPVideoView.access$getTAG$cp(), "onVideoWaiting");
+      ap.f((Runnable)new g(this));
       AppMethodBeat.o(7527);
     }
     
-    public final void dh(String paramString1, String paramString2)
+    public final void dt(String paramString1, String paramString2)
     {
       AppMethodBeat.i(7528);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      aq.f((Runnable)new h(this));
+      ap.f((Runnable)new h(this));
       AppMethodBeat.o(7528);
     }
     
-    public final void jw(String paramString1, String paramString2)
+    public final void eJ(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(205028);
+      AppMethodBeat.i(199195);
       k.h(paramString1, "sessionId");
       k.h(paramString2, "mediaId");
-      AppMethodBeat.o(205028);
+      AppMethodBeat.o(199195);
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -2168,17 +2289,17 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7513);
-        this.noz.noy.bGM();
-        MPVideoView.c localc = MPVideoView.k(this.noz.noy);
+        this.nRz.nRy.bNZ();
+        MPVideoView.c localc = MPVideoView.k(this.nRz.nRy);
         if (localc != null) {
-          localc.PZ(paramString3);
+          localc.Ul(paramString3);
         }
-        this.noz.noy.setPlayStatus(4);
+        this.nRz.nRy.setPlayStatus(4);
         AppMethodBeat.o(7513);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
@@ -2187,11 +2308,11 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7514);
-        int i = MPVideoView.y(this.noz.noy);
-        Object localObject = MPVideoView.nox;
-        if (i == MPVideoView.bGQ())
+        int i = MPVideoView.y(this.nRz.nRy);
+        Object localObject = MPVideoView.nRx;
+        if (i == MPVideoView.bOd())
         {
-          localObject = this.noz.noy;
+          localObject = this.nRz.nRy;
           if (paramInt1 >= paramInt2) {
             break label89;
           }
@@ -2200,14 +2321,14 @@ public final class MPVideoView
         for (i = 0;; i = 90)
         {
           MPVideoView.b((MPVideoView)localObject, i);
-          ad.i(MPVideoView.access$getTAG$cp(), "onGetVideoSize adjust direction from AUTO to %s", new Object[] { Integer.valueOf(MPVideoView.y(this.noz.noy)) });
+          ac.i(MPVideoView.access$getTAG$cp(), "onGetVideoSize adjust direction from AUTO to %s", new Object[] { Integer.valueOf(MPVideoView.y(this.nRz.nRy)) });
           AppMethodBeat.o(7514);
           return;
         }
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class c
       implements Runnable
     {
@@ -2216,11 +2337,11 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7515);
-        Object localObject = MPVideoView.k(this.noz.noy);
+        Object localObject = MPVideoView.k(this.nRz.nRy);
         MPExoVideoWrapper localMPExoVideoWrapper;
         if (localObject != null)
         {
-          localMPExoVideoWrapper = MPVideoView.h(this.noz.noy);
+          localMPExoVideoWrapper = MPVideoView.h(this.nRz.nRy);
           if (localMPExoVideoWrapper == null) {
             break label80;
           }
@@ -2228,19 +2349,19 @@ public final class MPVideoView
         label80:
         for (long l = localMPExoVideoWrapper.getFirstRenderTime();; l = 0L)
         {
-          ((MPVideoView.c)localObject).nI(l);
-          localObject = MPVideoView.s(this.noz.noy);
+          ((MPVideoView.c)localObject).ru(l);
+          localObject = MPVideoView.s(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          ((com.tencent.mm.plugin.appbrand.jsapi.video.ui.a)localObject).bee();
+          ((com.tencent.mm.plugin.appbrand.jsapi.video.ui.a)localObject).bkY();
           AppMethodBeat.o(7515);
           return;
         }
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class d
       implements Runnable
     {
@@ -2249,90 +2370,90 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7516);
-        this.noz.noy.bGM();
-        Object localObject = MPVideoView.j(this.noz.noy);
+        this.nRz.nRy.bNZ();
+        Object localObject = MPVideoView.j(this.nRz.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
         ((TextView)localObject).setVisibility(8);
-        if (MPVideoView.b(this.noz.noy))
+        if (MPVideoView.b(this.nRz.nRy))
         {
-          localObject = MPVideoView.d(this.noz.noy);
+          localObject = MPVideoView.d(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
           ((View)localObject).setVisibility(0);
-          localObject = MPVideoView.c(this.noz.noy);
+          localObject = MPVideoView.c(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          if (((MPVideoViewControlBar)localObject).bcB())
+          if (((MPVideoViewControlBar)localObject).bjw())
           {
-            localObject = MPVideoView.c(this.noz.noy);
+            localObject = MPVideoView.c(this.nRz.nRy);
             if (localObject == null) {
-              k.fvU();
+              k.fOy();
             }
             ((MPVideoViewControlBar)localObject).hide();
           }
-          localObject = MPVideoView.t(this.noz.noy);
+          localObject = MPVideoView.t(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
           if (((FrameLayout)localObject).getVisibility() == 0)
           {
-            localObject = MPVideoView.t(this.noz.noy);
+            localObject = MPVideoView.t(this.nRz.nRy);
             if (localObject == null) {
-              k.fvU();
+              k.fOy();
             }
             ((FrameLayout)localObject).setVisibility(8);
           }
-          if ((!MPVideoView.u(this.noz.noy)) && (MPVideoView.b(this.noz.noy))) {
+          if ((!MPVideoView.u(this.nRz.nRy)) && (MPVideoView.b(this.nRz.nRy))) {
             break label318;
           }
-          localObject = MPVideoView.v(this.noz.noy);
+          localObject = MPVideoView.v(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
           ((View)localObject).setVisibility(8);
         }
         for (;;)
         {
-          this.noz.noy.bGE();
-          this.noz.noy.setPlayStatus(4);
-          localObject = MPVideoView.k(this.noz.noy);
+          this.nRz.nRy.bNR();
+          this.nRz.nRy.setPlayStatus(4);
+          localObject = MPVideoView.k(this.nRz.nRy);
           if (localObject == null) {
             break label407;
           }
           ((MPVideoView.c)localObject).onVideoEnded();
           AppMethodBeat.o(7516);
           return;
-          localObject = MPVideoView.c(this.noz.noy);
+          localObject = MPVideoView.c(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          ((MPVideoViewControlBar)localObject).bGT();
-          localObject = MPVideoView.c(this.noz.noy);
+          ((MPVideoViewControlBar)localObject).bOg();
+          localObject = MPVideoView.c(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
           ((MPVideoViewControlBar)localObject).show();
           break;
           label318:
-          if (MPVideoView.w(this.noz.noy) <= 0)
+          if (MPVideoView.w(this.nRz.nRy) <= 0)
           {
-            localObject = MPVideoView.x(this.noz.noy);
+            localObject = MPVideoView.x(this.nRz.nRy);
             if (localObject == null) {
-              k.fvU();
+              k.fOy();
             }
-            MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.noz.noy);
+            MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.nRz.nRy);
             if (localMPExoVideoWrapper == null) {
-              k.fvU();
+              k.fOy();
             }
-            ((TextView)localObject).setText((CharSequence)MPVideoView.yJ(localMPExoVideoWrapper.getVideoDurationSec()));
+            ((TextView)localObject).setText((CharSequence)MPVideoView.zz(localMPExoVideoWrapper.getVideoDurationSec()));
           }
-          localObject = MPVideoView.v(this.noz.noy);
+          localObject = MPVideoView.v(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
           ((View)localObject).setVisibility(0);
         }
@@ -2341,7 +2462,7 @@ public final class MPVideoView
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class e
       implements Runnable
     {
@@ -2350,12 +2471,12 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7517);
-        this.noz.noy.bGO();
+        this.nRz.nRy.bOb();
         AppMethodBeat.o(7517);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class f
       implements Runnable
     {
@@ -2364,48 +2485,48 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7518);
-        ad.i(MPVideoView.access$getTAG$cp(), "onVideoPlay, isLive:%b", new Object[] { Boolean.valueOf(MPVideoView.u(this.noz.noy)) });
-        MPVideoView.z(this.noz.noy);
-        this.noz.noy.bGF();
-        Object localObject = MPVideoView.k(this.noz.noy);
+        ac.i(MPVideoView.access$getTAG$cp(), "onVideoPlay, isLive:%b", new Object[] { Boolean.valueOf(MPVideoView.u(this.nRz.nRy)) });
+        MPVideoView.z(this.nRz.nRy);
+        this.nRz.nRy.bNS();
+        Object localObject = MPVideoView.k(this.nRz.nRy);
         if (localObject != null) {
           ((MPVideoView.c)localObject).onVideoPlay();
         }
-        if ((MPVideoView.w(this.noz.noy) <= 0) && (!MPVideoView.u(this.noz.noy)))
+        if ((MPVideoView.w(this.nRz.nRy) <= 0) && (!MPVideoView.u(this.nRz.nRy)))
         {
-          localObject = MPVideoView.x(this.noz.noy);
+          localObject = MPVideoView.x(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.noz.noy);
+          MPExoVideoWrapper localMPExoVideoWrapper = MPVideoView.h(this.nRz.nRy);
           if (localMPExoVideoWrapper == null) {
-            k.fvU();
+            k.fOy();
           }
-          ((TextView)localObject).setText((CharSequence)MPVideoView.yJ(localMPExoVideoWrapper.getVideoDurationSec()));
+          ((TextView)localObject).setText((CharSequence)MPVideoView.zz(localMPExoVideoWrapper.getVideoDurationSec()));
         }
-        MPVideoView.b(this.noz.noy, MPVideoView.u(this.noz.noy));
-        if (MPVideoView.a(this.noz.noy)) {
-          MPVideoView.A(this.noz.noy);
+        MPVideoView.b(this.nRz.nRy, MPVideoView.u(this.nRz.nRy));
+        if (MPVideoView.a(this.nRz.nRy)) {
+          MPVideoView.A(this.nRz.nRy);
         }
-        MPVideoView.m(this.noz.noy);
-        this.noz.noy.setPlayStatus(2);
-        localObject = MPVideoView.c(this.noz.noy);
+        MPVideoView.m(this.nRz.nRy);
+        this.nRz.nRy.setPlayStatus(2);
+        localObject = MPVideoView.c(this.nRz.nRy);
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        if (((MPVideoViewControlBar)localObject).bcB())
+        if (((MPVideoViewControlBar)localObject).bjw())
         {
-          localObject = MPVideoView.c(this.noz.noy);
+          localObject = MPVideoView.c(this.nRz.nRy);
           if (localObject == null) {
-            k.fvU();
+            k.fOy();
           }
-          ((MPVideoViewControlBar)localObject).bcH();
+          ((MPVideoViewControlBar)localObject).bjC();
         }
         AppMethodBeat.o(7518);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class g
       implements Runnable
     {
@@ -2414,9 +2535,9 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7519);
-        MPVideoView.a(this.noz.noy, true);
-        MPVideoView.f(this.noz.noy);
-        MPVideoView.c localc = MPVideoView.k(this.noz.noy);
+        MPVideoView.a(this.nRz.nRy, true);
+        MPVideoView.f(this.nRz.nRy);
+        MPVideoView.c localc = MPVideoView.k(this.nRz.nRy);
         if (localc != null)
         {
           localc.onVideoWaiting();
@@ -2427,7 +2548,7 @@ public final class MPVideoView
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class h
       implements Runnable
     {
@@ -2436,12 +2557,12 @@ public final class MPVideoView
       public final void run()
       {
         AppMethodBeat.i(7520);
-        MPVideoView.a(this.noz.noy, false);
-        MPVideoView.l(this.noz.noy);
-        MPVideoView.c localc = MPVideoView.k(this.noz.noy);
+        MPVideoView.a(this.nRz.nRy, false);
+        MPVideoView.l(this.nRz.nRy);
+        MPVideoView.c localc = MPVideoView.k(this.nRz.nRy);
         if (localc != null)
         {
-          localc.bGh();
+          localc.bNu();
           AppMethodBeat.o(7520);
           return;
         }

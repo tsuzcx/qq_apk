@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.appbrand.game.g.b.d;
 import com.tencent.mm.plugin.appbrand.game.g.d;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.game.api.GameShareOption;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class c
       }
       catch (JSONException paramJSONArray)
       {
-        ad.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEdit", paramJSONArray, "hy: json exception!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEdit", paramJSONArray, "hy: json exception!", new Object[0]);
         localArrayList.clear();
         localArrayList.add(new GameShareOption(0, paramq.getContext().getString(2131755974), false));
         AppMethodBeat.o(45139);
@@ -57,7 +57,7 @@ public class c
   protected final void a(q paramq, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(45141);
-    ad.w("MicroMsg.WAGameJsApiScreenRecorderEdit", "hy: fail errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.w("MicroMsg.WAGameJsApiScreenRecorderEdit", "hy: fail errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("errCode", Integer.valueOf(paramInt3));
     paramq.h(paramInt1, k(String.format("fail: errType: %d, errCode: %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }), localHashMap));
@@ -67,8 +67,8 @@ public class c
   protected void a(com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt, b.a parama, String paramString, ArrayList<GameShareOption> paramArrayList, b.d paramd)
   {
     AppMethodBeat.i(45140);
-    parama = parama.jqX;
-    if (bt.isNullOrNil(parama))
+    parama = parama.jRp;
+    if (bs.isNullOrNil(parama))
     {
       a(paramc, paramInt, 1, 802, "clipped file lost");
       AppMethodBeat.o(45140);
@@ -83,7 +83,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.a.c
  * JD-Core Version:    0.7.0.1
  */

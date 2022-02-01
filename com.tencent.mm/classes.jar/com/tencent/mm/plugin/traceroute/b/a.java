@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -23,29 +23,29 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  public static String yTA;
-  public static c yTB;
+  public static String Ahp;
+  public static c Ahq;
+  private final int Ahr;
+  private boolean Ahs;
+  f Aht;
+  public Map<String, Set<Integer>> Ahu;
+  public e Ahv;
+  public d Ahw;
+  public c Ahx;
+  public b Ahy;
   private final String TAG;
   String userName;
-  private final int yTC;
-  private boolean yTD;
-  f yTE;
-  public Map<String, Set<Integer>> yTF;
-  public e yTG;
-  public d yTH;
-  public c yTI;
-  public b yTJ;
   
   public a(String paramString)
   {
     AppMethodBeat.i(29663);
     this.TAG = "MicroMsg.MMTraceRoute";
-    this.yTC = 64;
-    this.yTD = false;
-    this.yTE = new f((byte)0);
-    this.yTF = new HashMap();
+    this.Ahr = 64;
+    this.Ahs = false;
+    this.Aht = new f((byte)0);
+    this.Ahu = new HashMap();
     this.userName = paramString;
-    yTA = g.getExternalStorageDirectory().getAbsolutePath() + "/tencent/traceroute_log_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date()).toString() + ".log";
+    Ahp = g.getExternalStorageDirectory().getAbsolutePath() + "/tencent/traceroute_log_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date()).toString() + ".log";
     AppMethodBeat.o(29663);
   }
   
@@ -61,25 +61,25 @@ public final class a
           AppMethodBeat.o(29666);
           return;
         }
-        if (!this.yTE.containsKey(paramString1))
+        if (!this.Aht.containsKey(paramString1))
         {
           ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
           localConcurrentHashMap.put(paramInteger, new StringBuilder(paramString2));
-          this.yTE.put(paramString1, (ConcurrentHashMap)localConcurrentHashMap);
+          this.Aht.put(paramString1, (ConcurrentHashMap)localConcurrentHashMap);
           AppMethodBeat.o(29666);
           continue;
         }
-        if (!((ConcurrentHashMap)this.yTE.get(paramString1)).containsKey(paramInteger)) {
+        if (!((ConcurrentHashMap)this.Aht.get(paramString1)).containsKey(paramInteger)) {
           break label147;
         }
       }
       finally {}
-      ((StringBuilder)((ConcurrentHashMap)this.yTE.get(paramString1)).get(paramInteger)).append(paramString2);
+      ((StringBuilder)((ConcurrentHashMap)this.Aht.get(paramString1)).get(paramInteger)).append(paramString2);
       AppMethodBeat.o(29666);
       continue;
       label147:
       new ConcurrentHashMap().put(paramInteger, new StringBuilder(paramString2));
-      ((ConcurrentHashMap)this.yTE.get(paramString1)).put(paramInteger, new StringBuilder(paramString2));
+      ((ConcurrentHashMap)this.Aht.get(paramString1)).put(paramInteger, new StringBuilder(paramString2));
       AppMethodBeat.o(29666);
     }
   }
@@ -89,7 +89,7 @@ public final class a
     AppMethodBeat.i(29665);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      ad.e("MicroMsg.MMTraceRoute", "no ip contains");
+      ac.e("MicroMsg.MMTraceRoute", "no ip contains");
       AppMethodBeat.o(29665);
       return;
     }
@@ -110,7 +110,7 @@ public final class a
       if ((arrayOfString != null) && (arrayOfString.length == 3)) {
         break label140;
       }
-      ad.e("MicroMsg.MMTraceRoute", "err ip ".concat(String.valueOf(localObject2)));
+      ac.e("MicroMsg.MMTraceRoute", "err ip ".concat(String.valueOf(localObject2)));
     }
     for (;;)
     {
@@ -119,31 +119,31 @@ public final class a
       localObject1 = "" + "short: ";
       break;
       label140:
-      if (!this.yTF.containsKey(arrayOfString[0]))
+      if (!this.Ahu.containsKey(arrayOfString[0]))
       {
         localObject2 = new HashSet();
-        ((Set)localObject2).add(Integer.valueOf(bt.getInt(arrayOfString[1], 0)));
-        this.yTF.put(arrayOfString[0], localObject2);
+        ((Set)localObject2).add(Integer.valueOf(bs.getInt(arrayOfString[1], 0)));
+        this.Ahu.put(arrayOfString[0], localObject2);
         localObject1 = (String)localObject1 + arrayOfString[0] + " ";
       }
       else
       {
-        ((Set)this.yTF.get(arrayOfString[0])).add(Integer.valueOf(bt.getInt(arrayOfString[1], 0)));
+        ((Set)this.Ahu.get(arrayOfString[0])).add(Integer.valueOf(bs.getInt(arrayOfString[1], 0)));
       }
     }
     label268:
     Object localObject1 = (String)localObject1 + "\n";
-    paramArrayOfString = yTA;
+    paramArrayOfString = Ahp;
     localObject1 = ((String)localObject1).getBytes();
     i.e(paramArrayOfString, (byte[])localObject1, localObject1.length);
     AppMethodBeat.o(29665);
   }
   
-  final boolean dQk()
+  final boolean eeJ()
   {
     try
     {
-      boolean bool = this.yTD;
+      boolean bool = this.Ahs;
       return bool;
     }
     finally
@@ -154,7 +154,7 @@ public final class a
   }
   
   /* Error */
-  public final void dQl()
+  public final void eeK()
   {
     // Byte code:
     //   0: aload_0
@@ -162,14 +162,14 @@ public final class a
     //   2: sipush 29667
     //   5: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 82	com/tencent/mm/plugin/traceroute/b/a:yTE	Lcom/tencent/mm/plugin/traceroute/b/a$f;
+    //   9: getfield 82	com/tencent/mm/plugin/traceroute/b/a:Aht	Lcom/tencent/mm/plugin/traceroute/b/a$f;
     //   12: ifnull +616 -> 628
     //   15: aload_0
-    //   16: getfield 82	com/tencent/mm/plugin/traceroute/b/a:yTE	Lcom/tencent/mm/plugin/traceroute/b/a$f;
+    //   16: getfield 82	com/tencent/mm/plugin/traceroute/b/a:Aht	Lcom/tencent/mm/plugin/traceroute/b/a$f;
     //   19: astore 6
     //   21: new 235	com/tencent/mm/vfs/e
     //   24: dup
-    //   25: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:yTA	Ljava/lang/String;
+    //   25: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:Ahp	Ljava/lang/String;
     //   28: invokespecial 236	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   31: astore 4
     //   33: aload 4
@@ -180,13 +180,13 @@ public final class a
     //   43: aload 4
     //   45: invokevirtual 242	com/tencent/mm/vfs/e:createNewFile	()Z
     //   48: pop
-    //   49: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:yTA	Ljava/lang/String;
+    //   49: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:Ahp	Ljava/lang/String;
     //   52: astore 4
     //   54: new 91	java/lang/StringBuilder
     //   57: dup
     //   58: invokespecial 92	java/lang/StringBuilder:<init>	()V
     //   61: aload 6
-    //   63: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
+    //   63: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
     //   66: getfield 89	com/tencent/mm/plugin/traceroute/b/a:userName	Ljava/lang/String;
     //   69: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: ldc 219
@@ -201,8 +201,8 @@ public final class a
     //   92: invokestatic 228	com/tencent/mm/vfs/i:e	(Ljava/lang/String;[BI)I
     //   95: pop
     //   96: aload 6
-    //   98: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
-    //   101: getfield 82	com/tencent/mm/plugin/traceroute/b/a:yTE	Lcom/tencent/mm/plugin/traceroute/b/a$f;
+    //   98: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
+    //   101: getfield 82	com/tencent/mm/plugin/traceroute/b/a:Aht	Lcom/tencent/mm/plugin/traceroute/b/a$f;
     //   104: invokevirtual 250	com/tencent/mm/plugin/traceroute/b/a$f:entrySet	()Ljava/util/Set;
     //   107: invokeinterface 254 1 0
     //   112: astore 7
@@ -216,17 +216,17 @@ public final class a
     //   139: checkcast 125	java/lang/String
     //   142: astore 8
     //   144: aload 8
-    //   146: invokestatic 272	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   146: invokestatic 272	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   149: ifne -35 -> 114
     //   152: aload 6
-    //   154: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
-    //   157: getfield 82	com/tencent/mm/plugin/traceroute/b/a:yTE	Lcom/tencent/mm/plugin/traceroute/b/a$f;
+    //   154: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
+    //   157: getfield 82	com/tencent/mm/plugin/traceroute/b/a:Aht	Lcom/tencent/mm/plugin/traceroute/b/a$f;
     //   160: aload 8
     //   162: invokevirtual 148	com/tencent/mm/plugin/traceroute/b/a$f:containsKey	(Ljava/lang/Object;)Z
     //   165: ifeq -51 -> 114
     //   168: aload 6
-    //   170: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
-    //   173: getfield 82	com/tencent/mm/plugin/traceroute/b/a:yTE	Lcom/tencent/mm/plugin/traceroute/b/a$f;
+    //   170: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
+    //   173: getfield 82	com/tencent/mm/plugin/traceroute/b/a:Aht	Lcom/tencent/mm/plugin/traceroute/b/a$f;
     //   176: aload 8
     //   178: invokevirtual 163	com/tencent/mm/plugin/traceroute/b/a$f:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   181: checkcast 154	java/util/Map
@@ -270,8 +270,8 @@ public final class a
     //   279: aload 5
     //   281: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   284: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   287: invokestatic 280	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   290: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:yTA	Ljava/lang/String;
+    //   287: invokestatic 280	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   290: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:Ahp	Ljava/lang/String;
     //   293: astore 4
     //   295: aload 5
     //   297: invokevirtual 223	java/lang/String:getBytes	()[B
@@ -298,16 +298,16 @@ public final class a
     //   339: invokevirtual 285	java/io/IOException:getMessage	()Ljava/lang/String;
     //   342: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   348: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   348: invokestatic 174	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   351: ldc 71
     //   353: aload 4
     //   355: ldc 176
     //   357: iconst_0
     //   358: anewarray 4	java/lang/Object
-    //   361: invokestatic 289	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   361: invokestatic 289	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   364: aload 6
-    //   366: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
-    //   369: invokevirtual 292	com/tencent/mm/plugin/traceroute/b/a:dQm	()V
+    //   366: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
+    //   369: invokevirtual 292	com/tencent/mm/plugin/traceroute/b/a:eeL	()V
     //   372: sipush 29667
     //   375: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   378: aload_0
@@ -340,7 +340,7 @@ public final class a
     //   436: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   439: astore 10
     //   441: aload 10
-    //   443: invokestatic 272	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   443: invokestatic 272	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   446: ifne +191 -> 637
     //   449: new 91	java/lang/StringBuilder
     //   452: dup
@@ -362,20 +362,20 @@ public final class a
     //   488: aload 5
     //   490: astore 4
     //   492: goto +145 -> 637
-    //   495: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:yTA	Ljava/lang/String;
+    //   495: getstatic 133	com/tencent/mm/plugin/traceroute/b/a:Ahp	Ljava/lang/String;
     //   498: iconst_0
     //   499: iconst_m1
-    //   500: invokestatic 302	com/tencent/mm/vfs/i:aR	(Ljava/lang/String;II)[B
+    //   500: invokestatic 302	com/tencent/mm/vfs/i:aU	(Ljava/lang/String;II)[B
     //   503: astore 5
     //   505: aload 5
-    //   507: invokestatic 306	com/tencent/mm/sdk/platformtools/bt:cw	([B)Z
+    //   507: invokestatic 306	com/tencent/mm/sdk/platformtools/bs:cv	([B)Z
     //   510: ifeq +28 -> 538
     //   513: ldc 71
     //   515: ldc_w 308
-    //   518: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   518: invokestatic 174	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   521: aload 6
-    //   523: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
-    //   526: invokevirtual 292	com/tencent/mm/plugin/traceroute/b/a:dQm	()V
+    //   523: getfield 246	com/tencent/mm/plugin/traceroute/b/a$f:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
+    //   526: invokevirtual 292	com/tencent/mm/plugin/traceroute/b/a:eeL	()V
     //   529: sipush 29667
     //   532: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   535: goto -157 -> 378
@@ -387,7 +387,7 @@ public final class a
     //   546: anewarray 4	java/lang/Object
     //   549: dup
     //   550: iconst_0
-    //   551: getstatic 315	com/tencent/mm/protocal/d:CpK	I
+    //   551: getstatic 315	com/tencent/mm/protocal/d:DIc	I
     //   554: invokestatic 209	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   557: aastore
     //   558: dup
@@ -464,20 +464,20 @@ public final class a
     //   43	96	323	java/io/IOException
   }
   
-  final void dQm()
+  final void eeL()
   {
     AppMethodBeat.i(29668);
-    if (this.yTJ != null) {
-      this.yTJ.dQn();
+    if (this.Ahy != null) {
+      this.Ahy.eeM();
     }
     AppMethodBeat.o(29668);
   }
   
-  final void ri(boolean paramBoolean)
+  final void sg(boolean paramBoolean)
   {
     try
     {
-      this.yTD = paramBoolean;
+      this.Ahs = paramBoolean;
       return;
     }
     finally
@@ -490,17 +490,17 @@ public final class a
   public final void stop()
   {
     AppMethodBeat.i(29664);
-    ri(true);
-    if (yTB != null) {
+    sg(true);
+    if (Ahq != null) {
       try
       {
-        yTB.shutdownNow();
+        Ahq.shutdownNow();
         AppMethodBeat.o(29664);
         return;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.MMTraceRoute", "failed to shutdown threadpool: " + localException.getMessage());
+        ac.e("MicroMsg.MMTraceRoute", "failed to shutdown threadpool: " + localException.getMessage());
       }
     }
     AppMethodBeat.o(29664);
@@ -509,14 +509,14 @@ public final class a
   final class a
     implements Runnable
   {
+    private Set<Integer> Ahz;
     private String ip;
-    private Set<Integer> yTK;
     
     public a(Set<Integer> paramSet)
     {
       this.ip = paramSet;
       Object localObject;
-      this.yTK = localObject;
+      this.Ahz = localObject;
     }
     
     /* Error */
@@ -536,7 +536,7 @@ public final class a
       //   19: invokestatic 51	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
       //   22: astore 6
       //   24: aload_0
-      //   25: getfield 20	com/tencent/mm/plugin/traceroute/b/a$a:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
+      //   25: getfield 20	com/tencent/mm/plugin/traceroute/b/a$a:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
       //   28: aload_0
       //   29: getfield 25	com/tencent/mm/plugin/traceroute/b/a$a:ip	Ljava/lang/String;
       //   32: aload 6
@@ -544,7 +544,7 @@ public final class a
       //   35: invokestatic 57	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   38: invokevirtual 60	com/tencent/mm/plugin/traceroute/b/a:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)V
       //   41: aload_0
-      //   42: getfield 27	com/tencent/mm/plugin/traceroute/b/a$a:yTK	Ljava/util/Set;
+      //   42: getfield 27	com/tencent/mm/plugin/traceroute/b/a$a:Ahz	Ljava/util/Set;
       //   45: invokeinterface 66 1 0
       //   50: astore 9
       //   52: aload 9
@@ -555,7 +555,7 @@ public final class a
       //   69: checkcast 53	java/lang/Integer
       //   72: astore 6
       //   74: aload_0
-      //   75: getfield 20	com/tencent/mm/plugin/traceroute/b/a$a:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
+      //   75: getfield 20	com/tencent/mm/plugin/traceroute/b/a$a:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
       //   78: astore 10
       //   80: aload_0
       //   81: getfield 25	com/tencent/mm/plugin/traceroute/b/a$a:ip	Ljava/lang/String;
@@ -574,7 +574,7 @@ public final class a
       //   110: invokevirtual 86	java/net/Socket:setSoTimeout	(I)V
       //   113: aload 7
       //   115: astore 6
-      //   117: invokestatic 92	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+      //   117: invokestatic 92	com/tencent/mm/sdk/platformtools/bs:eWj	()J
       //   120: lstore_2
       //   121: aload 7
       //   123: astore 6
@@ -587,7 +587,7 @@ public final class a
       //   137: invokevirtual 101	java/net/Socket:connect	(Ljava/net/SocketAddress;)V
       //   140: aload 7
       //   142: astore 6
-      //   144: invokestatic 92	com/tencent/mm/sdk/platformtools/bt:eGO	()J
+      //   144: invokestatic 92	com/tencent/mm/sdk/platformtools/bs:eWj	()J
       //   147: lstore 4
       //   149: aload 7
       //   151: astore 6
@@ -603,7 +603,7 @@ public final class a
       //   174: iload_1
       //   175: invokevirtual 119	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
       //   178: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   181: invokestatic 128	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   181: invokestatic 128	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   184: aload 7
       //   186: astore 6
       //   188: aload 10
@@ -640,13 +640,13 @@ public final class a
       //   248: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
       //   251: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   254: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   257: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   257: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   260: ldc 103
       //   262: aload 6
       //   264: ldc 148
       //   266: iconst_0
       //   267: anewarray 4	java/lang/Object
-      //   270: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   270: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   273: goto -221 -> 52
       //   276: astore 8
       //   278: aconst_null
@@ -683,7 +683,7 @@ public final class a
       //   337: invokevirtual 158	java/net/UnknownHostException:getMessage	()Ljava/lang/String;
       //   340: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   343: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   346: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   346: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   349: aload 7
       //   351: astore 6
       //   353: ldc 103
@@ -691,7 +691,7 @@ public final class a
       //   357: ldc 148
       //   359: iconst_0
       //   360: anewarray 4	java/lang/Object
-      //   363: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   363: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   366: aload 7
       //   368: ifnull -316 -> 52
       //   371: aload 7
@@ -707,13 +707,13 @@ public final class a
       //   394: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
       //   397: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   400: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   403: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   403: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   406: ldc 103
       //   408: aload 6
       //   410: ldc 148
       //   412: iconst_0
       //   413: anewarray 4	java/lang/Object
-      //   416: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   416: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   419: goto -367 -> 52
       //   422: astore 8
       //   424: aconst_null
@@ -750,7 +750,7 @@ public final class a
       //   483: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
       //   486: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   489: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   492: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   492: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   495: aload 7
       //   497: astore 6
       //   499: ldc 103
@@ -758,7 +758,7 @@ public final class a
       //   503: ldc 148
       //   505: iconst_0
       //   506: anewarray 4	java/lang/Object
-      //   509: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   509: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   512: aload 7
       //   514: ifnull -462 -> 52
       //   517: aload 7
@@ -774,13 +774,13 @@ public final class a
       //   540: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
       //   543: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   546: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   549: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   549: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   552: ldc 103
       //   554: aload 6
       //   556: ldc 148
       //   558: iconst_0
       //   559: anewarray 4	java/lang/Object
-      //   562: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   562: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   565: goto -513 -> 52
       //   568: astore 8
       //   570: aconst_null
@@ -817,7 +817,7 @@ public final class a
       //   629: invokevirtual 166	java/lang/Exception:toString	()Ljava/lang/String;
       //   632: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   635: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   638: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   638: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   641: aload 7
       //   643: astore 6
       //   645: ldc 103
@@ -825,7 +825,7 @@ public final class a
       //   649: ldc 148
       //   651: iconst_0
       //   652: anewarray 4	java/lang/Object
-      //   655: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   655: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   658: aload 7
       //   660: ifnull -608 -> 52
       //   663: aload 7
@@ -841,13 +841,13 @@ public final class a
       //   686: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
       //   689: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   692: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   695: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   695: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   698: ldc 103
       //   700: aload 6
       //   702: ldc 148
       //   704: iconst_0
       //   705: anewarray 4	java/lang/Object
-      //   708: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   708: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   711: goto -659 -> 52
       //   714: astore 7
       //   716: aconst_null
@@ -870,16 +870,16 @@ public final class a
       //   753: invokevirtual 143	java/io/IOException:getMessage	()Ljava/lang/String;
       //   756: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   759: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   762: invokestatic 146	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   762: invokestatic 146	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   765: ldc 103
       //   767: aload 6
       //   769: ldc 148
       //   771: iconst_0
       //   772: anewarray 4	java/lang/Object
-      //   775: invokestatic 152	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   775: invokestatic 152	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   778: goto -49 -> 729
       //   781: aload_0
-      //   782: getfield 20	com/tencent/mm/plugin/traceroute/b/a$a:yTL	Lcom/tencent/mm/plugin/traceroute/b/a;
+      //   782: getfield 20	com/tencent/mm/plugin/traceroute/b/a$a:AhA	Lcom/tencent/mm/plugin/traceroute/b/a;
       //   785: aload_0
       //   786: getfield 25	com/tencent/mm/plugin/traceroute/b/a$a:ip	Ljava/lang/String;
       //   789: ldc 171
@@ -974,22 +974,22 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract void dQn();
+    public abstract void eeM();
   }
   
   public static abstract interface c
   {
-    public abstract void dQo();
+    public abstract void eeN();
   }
   
   public static abstract interface d
   {
-    public abstract void aKJ();
+    public abstract void aRA();
   }
   
   public static abstract interface e
   {
-    public abstract void dQp();
+    public abstract void eeO();
   }
   
   final class f
@@ -1001,26 +1001,26 @@ public final class a
   final class g
     implements Runnable
   {
+    private String AhF;
+    private boolean AhG;
+    private Integer AhH;
     private String serverIP;
-    private String yTQ;
-    private boolean yTR;
-    private Integer yTS;
     
     public g(String paramString1, String paramString2, boolean paramBoolean, Integer paramInteger)
     {
-      this.yTQ = paramString1;
+      this.AhF = paramString1;
       this.serverIP = paramString2;
-      this.yTR = paramBoolean;
-      this.yTS = paramInteger;
+      this.AhG = paramBoolean;
+      this.AhH = paramInteger;
     }
     
     public final void run()
     {
       AppMethodBeat.i(29659);
       a locala = a.this;
-      String str2 = this.yTQ;
+      String str2 = this.AhF;
       String str3 = this.serverIP;
-      Integer localInteger = this.yTS;
+      Integer localInteger = this.AhH;
       int i = 1;
       if (i <= 3)
       {
@@ -1038,18 +1038,18 @@ public final class a
           locala.a(str3, " router no response", localInteger);
           continue;
           str1 = (String)((List)localObject).get(0);
-          if (!bt.isNullOrNil(str1)) {
+          if (!bs.isNullOrNil(str1)) {
             break label159;
           }
-          ad.e("MicroMsg.MMTraceRoute", "runcommand err ".concat(String.valueOf(str2)));
+          ac.e("MicroMsg.MMTraceRoute", "runcommand err ".concat(String.valueOf(str2)));
           locala.a(str3, "run command err ", localInteger);
         }
         label159:
         localObject = ((List)localObject).get(1).toString();
-        if (b.asO(str1) > 0)
+        if (b.axX(str1) > 0)
         {
-          str1 = b.asN(str1);
-          if (!bt.isNullOrNil(str1)) {
+          str1 = b.axW(str1);
+          if (!bs.isNullOrNil(str1)) {
             str1 = String.format(" %sms ", new Object[] { str1 });
           }
         }
@@ -1061,7 +1061,7 @@ public final class a
           }
           locala.a(str3, (String)localObject, localInteger);
           break;
-          if (!bt.isNullOrNil((String)localObject))
+          if (!bs.isNullOrNil((String)localObject))
           {
             str1 = String.format(" %sms ", new Object[] { localObject });
           }
@@ -1080,23 +1080,23 @@ public final class a
   final class h
     implements Runnable
   {
+    private int AhI;
     private String ip;
-    private int yTT;
     
     public h(String paramString, int paramInt)
     {
       this.ip = paramString;
-      this.yTT = paramInt;
+      this.AhI = paramInt;
     }
     
     public final void run()
     {
       int j = 1;
       AppMethodBeat.i(29660);
-      ad.i("MicroMsg.MMTraceRoute", "ttl= " + this.yTT);
+      ac.i("MicroMsg.MMTraceRoute", "ttl= " + this.AhI);
       a locala = a.this;
       String str1 = this.ip;
-      int m = this.yTT;
+      int m = this.AhI;
       Object localObject = b.N(new String[] { "ping", "-c 1", "-t " + String.valueOf(m), str1 });
       if (((List)localObject).size() != 2) {
         locala.a(str1, String.format("%d : can not get roupter ip\n", new Object[] { Integer.valueOf(m) }), Integer.valueOf(m + 1));
@@ -1115,7 +1115,7 @@ public final class a
           String str2 = (String)((List)localObject).get(0);
           if (str2.length() == 0)
           {
-            ad.e("MicroMsg.MMTraceRoute", "runcommand err");
+            ac.e("MicroMsg.MMTraceRoute", "runcommand err");
             break;
           }
           int k = str2.indexOf("From ");
@@ -1130,15 +1130,15 @@ public final class a
           }
           for (;;)
           {
-            if (!bt.isNullOrNil((String)localObject)) {
+            if (!bs.isNullOrNil((String)localObject)) {
               break label363;
             }
             i = j;
-            if (b.asO(str2) > 0) {
+            if (b.axX(str2) > 0) {
               break label141;
             }
             localObject = String.format("%d : can not get roupter ip\n", new Object[] { Integer.valueOf(m) });
-            ad.e("MicroMsg.MMTraceRoute", "can not get setData ip and ttl".concat(String.valueOf(str1)));
+            ac.e("MicroMsg.MMTraceRoute", "can not get setData ip and ttl".concat(String.valueOf(str1)));
             locala.a(str1, (String)localObject, Integer.valueOf(m + 1));
             break;
             k = str2.indexOf(" ", i);
@@ -1170,22 +1170,22 @@ public final class a
           }
           else
           {
-            if (b.asO(str2) <= 0) {
+            if (b.axX(str2) <= 0) {
               break label498;
             }
             locala.a(str1, String.format("%d : FIN %s\n\n ", new Object[] { Integer.valueOf(m), localObject }), Integer.valueOf(m + 1));
             i = j;
-            if (a.yTB != null)
+            if (a.Ahq != null)
             {
-              a.yTB.execute(new a.g(locala, (String)localObject, str1, true, Integer.valueOf(m + 1)));
+              a.Ahq.execute(new a.g(locala, (String)localObject, str1, true, Integer.valueOf(m + 1)));
               i = j;
             }
           }
         }
         label498:
         locala.a(str1, String.format("%d : %s", new Object[] { Integer.valueOf(m), localObject }), Integer.valueOf(m + 1));
-        if (a.yTB != null) {
-          a.yTB.execute(new a.g(locala, (String)localObject, str1, false, Integer.valueOf(m + 1)));
+        if (a.Ahq != null) {
+          a.Ahq.execute(new a.g(locala, (String)localObject, str1, false, Integer.valueOf(m + 1)));
         }
       }
       label570:
@@ -1215,24 +1215,24 @@ public final class a
         return;
       }
       Object localObject1 = (String)((List)localObject2).get(0);
-      if (bt.isNullOrNil((String)localObject1))
+      if (bs.isNullOrNil((String)localObject1))
       {
         a.this.a(this.ip, "failed to ping: \n" + this.ip, Integer.valueOf(0));
-        ad.e("MicroMsg.MMTraceRoute", "runcommand err");
+        ac.e("MicroMsg.MMTraceRoute", "runcommand err");
         AppMethodBeat.o(29661);
         return;
       }
-      int i = b.asO((String)localObject1);
+      int i = b.axX((String)localObject1);
       if (i <= 0)
       {
-        ad.e("MicroMsg.MMTraceRoute", "failed to touch server:" + this.ip);
+        ac.e("MicroMsg.MMTraceRoute", "failed to touch server:" + this.ip);
         a.this.a(this.ip, "failed to touch server: " + this.ip + "\n", Integer.valueOf(0));
         AppMethodBeat.o(29661);
         return;
       }
       localObject2 = ((List)localObject2).get(1).toString();
-      localObject1 = b.asN((String)localObject1);
-      if (!bt.isNullOrNil((String)localObject1)) {
+      localObject1 = b.axW((String)localObject1);
+      if (!bs.isNullOrNil((String)localObject1)) {
         localObject1 = String.format("server: %s, TTL: %d, Time = %sms", new Object[] { this.ip, Integer.valueOf(i), localObject1 });
       }
       for (;;)
@@ -1246,15 +1246,15 @@ public final class a
           i = 64;
           j = k;
         }
-        while ((j < i) && (!a.this.dQk()))
+        while ((j < i) && (!a.this.eeJ()))
         {
           localObject1 = new a.h(a.this, this.ip, j);
-          if (a.yTB != null) {
-            a.yTB.execute((Runnable)localObject1);
+          if (a.Ahq != null) {
+            a.Ahq.execute((Runnable)localObject1);
           }
           j += 1;
         }
-        if (!bt.isNullOrNil((String)localObject2)) {
+        if (!bs.isNullOrNil((String)localObject2)) {
           localObject1 = String.format("server: %s, TTL: %d, Time = %sms", new Object[] { this.ip, Integer.valueOf(i), localObject2 });
         } else {
           localObject1 = String.format("server: %s, TTL: %d, Time = %sms", new Object[] { this.ip, Integer.valueOf(i), "unknown" });
@@ -1272,22 +1272,22 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(29662);
-      a.this.ri(false);
+      a.this.sg(false);
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      long l1 = bt.eGO();
+      long l1 = bs.eWj();
       Object localObject1 = new java.sql.Date(l1);
-      ad.i("MicroMsg.MMTraceRoute", "mmtraceroute start time " + localSimpleDateFormat.format((java.util.Date)localObject1));
-      localObject1 = a.this.yTF.entrySet().iterator();
+      ac.i("MicroMsg.MMTraceRoute", "mmtraceroute start time " + localSimpleDateFormat.format((java.util.Date)localObject1));
+      localObject1 = a.this.Ahu.entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
         a.i locali = new a.i(a.this, (String)((Map.Entry)localObject2).getKey());
-        if (a.yTB != null) {
-          a.yTB.execute(locali);
+        if (a.Ahq != null) {
+          a.Ahq.execute(locali);
         }
         localObject2 = new a.a(a.this, (String)((Map.Entry)localObject2).getKey(), (Set)((Map.Entry)localObject2).getValue());
-        if (a.yTB != null) {
-          a.yTB.execute((Runnable)localObject2);
+        if (a.Ahq != null) {
+          a.Ahq.execute((Runnable)localObject2);
         }
       }
       try
@@ -1295,17 +1295,17 @@ public final class a
         do
         {
           Thread.sleep(500L);
-          if ((a.this.dQk()) || (a.yTB.getActiveCount() <= 0)) {
+          if ((a.this.eeJ()) || (a.Ahq.getActiveCount() <= 0)) {
             break;
           }
-          ad.d("MicroMsg.MMTraceRoute", "task count: " + String.valueOf(a.yTB.getActiveCount()));
-          l2 = bt.eGO();
+          ac.d("MicroMsg.MMTraceRoute", "task count: " + String.valueOf(a.Ahq.getActiveCount()));
+          l2 = bs.eWj();
         } while (l2 - l1 < 120000L);
-        ad.i("MicroMsg.MMTraceRoute", "traceroute timeout: " + (l2 - l1) / 1000L);
-        a.this.ri(true);
+        ac.i("MicroMsg.MMTraceRoute", "traceroute timeout: " + (l2 - l1) / 1000L);
+        a.this.sg(true);
         a.this.stop();
-        if (a.this.yTG != null) {
-          a.this.yTG.dQp();
+        if (a.this.Ahv != null) {
+          a.this.Ahv.eeO();
         }
         AppMethodBeat.o(29662);
         return;
@@ -1314,14 +1314,14 @@ public final class a
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMTraceRoute", "wait for command end err: " + localException.getMessage());
-          ad.printErrStackTrace("MicroMsg.MMTraceRoute", localException, "", new Object[0]);
+          ac.e("MicroMsg.MMTraceRoute", "wait for command end err: " + localException.getMessage());
+          ac.printErrStackTrace("MicroMsg.MMTraceRoute", localException, "", new Object[0]);
         }
-        long l2 = bt.eGO();
-        ad.i("MicroMsg.MMTraceRoute", "mmtraceroute end time " + localSimpleDateFormat.format(new java.util.Date(l2)));
-        ad.i("MicroMsg.MMTraceRoute", "mmtraceroute total time " + (l2 - l1) / 1000L);
-        if ((a.this.yTH != null) && (!a.this.dQk())) {
-          a.this.yTH.aKJ();
+        long l2 = bs.eWj();
+        ac.i("MicroMsg.MMTraceRoute", "mmtraceroute end time " + localSimpleDateFormat.format(new java.util.Date(l2)));
+        ac.i("MicroMsg.MMTraceRoute", "mmtraceroute total time " + (l2 - l1) / 1000L);
+        if ((a.this.Ahw != null) && (!a.this.eeJ())) {
+          a.this.Ahw.aRA();
         }
         AppMethodBeat.o(29662);
       }
@@ -1330,7 +1330,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,59 +2,59 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class p
   implements f
 {
   public volatile int frameCount;
-  private boolean gDs;
-  public boolean gDt;
-  private int gnh;
-  private int gni;
-  private long omi;
-  private long tDI;
-  public int tER;
-  private int tES;
-  private int tET;
-  private int tEU;
-  private int tEV;
+  private int gNU;
+  private int gNV;
+  private boolean hdT;
+  public boolean hdU;
+  private long oPI;
+  private long uMd;
+  public int uNm;
+  private int uNn;
+  private int uNo;
+  private int uNp;
+  private int uNq;
   
   public p(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
     AppMethodBeat.i(89576);
-    this.tER = -1;
+    this.uNm = -1;
     this.frameCount = 0;
-    this.omi = 0L;
-    this.tDI = 0L;
-    this.tES = -1;
-    this.tET = -1;
-    this.tEU = -1;
-    this.tEV = -1;
-    this.gDs = paramBoolean1;
-    this.tES = paramInt1;
-    this.gnh = paramInt2;
-    this.gni = paramInt3;
-    this.gDt = paramBoolean2;
-    ad.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.tES), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.oPI = 0L;
+    this.uMd = 0L;
+    this.uNn = -1;
+    this.uNo = -1;
+    this.uNp = -1;
+    this.uNq = -1;
+    this.hdT = paramBoolean1;
+    this.uNn = paramInt1;
+    this.gNU = paramInt2;
+    this.gNV = paramInt3;
+    this.hdU = paramBoolean2;
+    ac.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.uNn), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(89576);
   }
   
-  public final int GU(int paramInt)
+  public final int IQ(int paramInt)
   {
     AppMethodBeat.i(89577);
     if (paramInt < 0)
     {
-      ad.e("MicroMsg.MMSightX264YUVRecorder", "init error, yuv buffer id error");
+      ac.e("MicroMsg.MMSightX264YUVRecorder", "init error, yuv buffer id error");
       AppMethodBeat.o(89577);
       return -1;
     }
-    this.tER = paramInt;
+    this.uNm = paramInt;
     try
     {
       this.frameCount = 0;
-      this.omi = 0L;
+      this.oPI = 0L;
       AppMethodBeat.o(89577);
       return 0;
     }
@@ -64,27 +64,27 @@ public class p
     }
   }
   
-  public final void J(int paramInt1, int paramInt2, int paramInt3)
+  public final void K(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89581);
-    ad.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.tET = paramInt1;
-    this.tEU = paramInt2;
-    this.tEV = paramInt3;
+    ac.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.uNo = paramInt1;
+    this.uNp = paramInt2;
+    this.uNq = paramInt3;
     AppMethodBeat.o(89581);
   }
   
-  public final long ajJ()
+  public final long aqI()
   {
     AppMethodBeat.i(89580);
-    if (0L == this.omi)
+    if (0L == this.oPI)
     {
-      ad.w("MicroMsg.MMSightX264YUVRecorder", "do not start record");
+      ac.w("MicroMsg.MMSightX264YUVRecorder", "do not start record");
       AppMethodBeat.o(89580);
       return 0L;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.omi;
+    long l2 = this.oPI;
     AppMethodBeat.o(89580);
     return l1 - l2;
   }
@@ -92,12 +92,12 @@ public class p
   public final void clear()
   {
     AppMethodBeat.i(89582);
-    SightVideoJNI.releaseBigSightDataBufferLock(this.tER);
-    this.tER = -1;
+    SightVideoJNI.releaseBigSightDataBufferLock(this.uNm);
+    this.uNm = -1;
     try
     {
       this.frameCount = 0;
-      this.omi = 0L;
+      this.oPI = 0L;
       AppMethodBeat.o(89582);
       return;
     }
@@ -107,13 +107,13 @@ public class p
     }
   }
   
-  public final void e(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89579);
-    this.tDI = bt.GC();
-    if (this.tER < 0)
+    this.uMd = bs.Gn();
+    if (this.uNm < 0)
     {
-      ad.e("MicroMsg.MMSightX264YUVRecorder", "write data error, yuv buffer id error");
+      ac.e("MicroMsg.MMSightX264YUVRecorder", "write data error, yuv buffer id error");
       AppMethodBeat.o(89579);
       return;
     }
@@ -131,40 +131,40 @@ public class p
       try
       {
         this.frameCount += 1;
-        m = this.tES;
-        bool1 = this.gDs;
+        m = this.uNn;
+        bool1 = this.hdT;
         if (bool1) {
           break label348;
         }
-        if ((this.tET == -1) || (this.tET == this.tES)) {
+        if ((this.uNo == -1) || (this.uNo == this.uNn)) {
           break label342;
         }
         bool1 = true;
-        i = this.tET;
-        if (this.tES <= 180)
+        i = this.uNo;
+        if (this.uNn <= 180)
         {
-          i -= this.tES;
+          i -= this.uNn;
           m = Math.max(0, i);
           if (m < 360) {
             break label518;
           }
           i = 0;
           m = i;
-          SightVideoJNI.setRotateForBufId(this.tER, m);
+          SightVideoJNI.setRotateForBufId(this.uNm, m);
           if (!bool1) {
             break label383;
           }
           if ((m != 0) && (m != 180)) {
             break label374;
           }
-          i = this.gnh;
+          i = this.gNU;
           if (!bool1) {
             break label423;
           }
           if ((m != 0) && (m != 180)) {
             break label414;
           }
-          j = this.gni;
+          j = this.gNV;
           if (!bool1) {
             break label461;
           }
@@ -183,11 +183,11 @@ public class p
             break label512;
           }
           bool2 = false;
-          if (this.gDt) {
+          if (this.hdU) {
             SightVideoJNI.mirrorCameraData(paramArrayOfByte, k, paramInt2, true);
           }
-          SightVideoJNI.writeYuvDataForMMSight(this.tER, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
-          ad.d("MicroMsg.MMSightX264YUVRecorder", "write data use %dms", new Object[] { Long.valueOf(bt.aS(this.tDI)) });
+          SightVideoJNI.writeYuvDataForMMSight(this.uNm, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
+          ac.d("MicroMsg.MMSightX264YUVRecorder", "write data use %dms", new Object[] { Long.valueOf(bs.aO(this.uMd)) });
           AppMethodBeat.o(89579);
           return;
         }
@@ -196,7 +196,7 @@ public class p
       {
         AppMethodBeat.o(89579);
       }
-      i += 360 - this.tES;
+      i += 360 - this.uNn;
       continue;
       label342:
       boolean bool1 = false;
@@ -204,35 +204,35 @@ public class p
       label348:
       label487:
       label490:
-      if (this.tET == -1)
+      if (this.uNo == -1)
       {
-        i = this.tES;
+        i = this.uNn;
       }
       else
       {
-        i = this.tET;
+        i = this.uNo;
         continue;
         label374:
-        i = this.gni;
+        i = this.gNV;
         continue;
         label383:
         if ((m == 0) || (m == 180))
         {
-          i = this.gni;
+          i = this.gNV;
         }
         else
         {
-          i = this.gnh;
+          i = this.gNU;
           continue;
-          j = this.gnh;
+          j = this.gNU;
           continue;
           if ((m == 0) || (m == 180))
           {
-            j = this.gnh;
+            j = this.gNU;
           }
           else
           {
-            j = this.gni;
+            j = this.gNV;
             continue;
             k = paramInt3;
             continue;
@@ -263,8 +263,8 @@ public class p
   public final void start()
   {
     AppMethodBeat.i(89578);
-    if (0L == this.omi) {
-      this.omi = System.currentTimeMillis();
+    if (0L == this.oPI) {
+      this.oPI = System.currentTimeMillis();
     }
     AppMethodBeat.o(89578);
   }
@@ -274,7 +274,7 @@ public class p
     try
     {
       this.frameCount = 0;
-      this.omi = 0L;
+      this.oPI = 0L;
       return;
     }
     finally {}

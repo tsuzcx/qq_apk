@@ -7,24 +7,24 @@ import com.google.b.a.g;
 public final class a$e
   extends e
 {
-  public a.aw IkD = null;
-  public a.bd IkF = null;
-  public int IkH = 0;
-  public String[] IkK = g.EMPTY_STRING_ARRAY;
-  public a.n[] IkL = a.n.flq();
-  public int IkM = 0;
-  public a.t IkN = null;
-  public int IkO = 0;
-  public int Ikz = 0;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JMk = 0;
+  public a.aw JMo = null;
+  public a.bd JMq = null;
+  public int JMs = 0;
+  public String[] JMv = g.EMPTY_STRING_ARRAY;
+  public a.n[] JMw = a.n.fBH();
+  public int JMx = 0;
+  public a.t JMy = null;
+  public int JMz = 0;
   public String groupId = "";
   public int netType = 0;
-  public int tjk = 0;
-  public int zkT = 0;
-  public long zkU = 0L;
+  public int urD = 0;
   
   public a$e()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -33,127 +33,127 @@ public final class a$e
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if (this.IkF != null) {
-      paramb.a(4, this.IkF);
+    if (this.JMq != null) {
+      paramb.a(4, this.JMq);
     }
-    if (this.tjk != 0) {
-      paramb.by(5, this.tjk);
+    if (this.urD != 0) {
+      paramb.bv(5, this.urD);
     }
-    if (this.IkH != 0) {
-      paramb.bz(6, this.IkH);
+    if (this.JMs != 0) {
+      paramb.bw(6, this.JMs);
     }
-    if (this.Ikz != 0) {
-      paramb.by(7, this.Ikz);
+    if (this.JMk != 0) {
+      paramb.bv(7, this.JMk);
     }
     if (this.netType != 0) {
-      paramb.bz(8, this.netType);
+      paramb.bw(8, this.netType);
     }
-    if (this.IkD != null) {
-      paramb.a(200, this.IkD);
+    if (this.JMo != null) {
+      paramb.a(200, this.JMo);
     }
     int i;
     Object localObject;
-    if ((this.IkK != null) && (this.IkK.length > 0))
+    if ((this.JMv != null) && (this.JMv.length > 0))
     {
       i = 0;
-      while (i < this.IkK.length)
+      while (i < this.JMv.length)
       {
-        localObject = this.IkK[i];
+        localObject = this.JMv[i];
         if (localObject != null) {
           paramb.d(201, (String)localObject);
         }
         i += 1;
       }
     }
-    if ((this.IkL != null) && (this.IkL.length > 0))
+    if ((this.JMw != null) && (this.JMw.length > 0))
     {
       i = j;
-      while (i < this.IkL.length)
+      while (i < this.JMw.length)
       {
-        localObject = this.IkL[i];
+        localObject = this.JMw[i];
         if (localObject != null) {
           paramb.a(202, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.IkN != null) {
-      paramb.a(203, this.IkN);
+    if (this.JMy != null) {
+      paramb.a(203, this.JMy);
     }
-    if (this.IkO != 0) {
-      paramb.bz(204, this.IkO);
+    if (this.JMz != 0) {
+      paramb.bw(204, this.JMz);
     }
-    if (this.IkM != 0) {
-      paramb.bz(240, this.IkM);
+    if (this.JMx != 0) {
+      paramb.bw(240, this.JMx);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
     int i2 = 0;
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.IkF != null) {
-      j = i + b.b(4, this.IkF);
+    if (this.JMq != null) {
+      j = i + b.b(4, this.JMq);
     }
     i = j;
-    if (this.tjk != 0) {
-      i = j + b.bA(5, this.tjk);
+    if (this.urD != 0) {
+      i = j + b.bx(5, this.urD);
     }
     j = i;
-    if (this.IkH != 0) {
-      j = i + b.bB(6, this.IkH);
+    if (this.JMs != 0) {
+      j = i + b.by(6, this.JMs);
     }
     i = j;
-    if (this.Ikz != 0) {
-      i = j + b.bA(7, this.Ikz);
+    if (this.JMk != 0) {
+      i = j + b.bx(7, this.JMk);
     }
     int k = i;
     if (this.netType != 0) {
-      k = i + b.bB(8, this.netType);
+      k = i + b.by(8, this.netType);
     }
     j = k;
-    if (this.IkD != null) {
-      j = k + b.b(200, this.IkD);
+    if (this.JMo != null) {
+      j = k + b.b(200, this.JMo);
     }
     i = j;
     Object localObject;
-    if (this.IkK != null)
+    if (this.JMv != null)
     {
       i = j;
-      if (this.IkK.length > 0)
+      if (this.JMv.length > 0)
       {
         i = 0;
         k = 0;
         int n;
-        for (int m = 0; i < this.IkK.length; m = n)
+        for (int m = 0; i < this.JMv.length; m = n)
         {
-          localObject = this.IkK[i];
+          localObject = this.JMv[i];
           int i1 = k;
           n = m;
           if (localObject != null)
           {
             n = m + 1;
-            i1 = k + b.bs((String)localObject);
+            i1 = k + b.bj((String)localObject);
           }
           i += 1;
           k = i1;
@@ -162,19 +162,19 @@ public final class a$e
       }
     }
     j = i;
-    if (this.IkL != null)
+    if (this.JMw != null)
     {
       j = i;
-      if (this.IkL.length > 0)
+      if (this.JMw.length > 0)
       {
         k = i2;
         for (;;)
         {
           j = i;
-          if (k >= this.IkL.length) {
+          if (k >= this.JMw.length) {
             break;
           }
-          localObject = this.IkL[k];
+          localObject = this.JMw[k];
           j = i;
           if (localObject != null) {
             j = i + b.b(202, (e)localObject);
@@ -185,16 +185,16 @@ public final class a$e
       }
     }
     i = j;
-    if (this.IkN != null) {
-      i = j + b.b(203, this.IkN);
+    if (this.JMy != null) {
+      i = j + b.b(203, this.JMy);
     }
     j = i;
-    if (this.IkO != 0) {
-      j = i + b.bB(204, this.IkO);
+    if (this.JMz != 0) {
+      j = i + b.by(204, this.JMz);
     }
     i = j;
-    if (this.IkM != 0) {
-      i = j + b.bB(240, this.IkM);
+    if (this.JMx != 0) {
+      i = j + b.by(240, this.JMx);
     }
     return i;
   }

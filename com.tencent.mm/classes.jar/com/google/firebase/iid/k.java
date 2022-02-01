@@ -6,10 +6,10 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 final class k
   implements l
 {
-  private final i bDp;
-  private final l bDq;
-  private final TaskCompletionSource bDr;
-  private final Pair bDs;
+  private final i bAX;
+  private final l bAY;
+  private final TaskCompletionSource bAZ;
+  private final Pair bBa;
   
   k(i arg1, l arg2, TaskCompletionSource arg3, Pair arg4) {}
   

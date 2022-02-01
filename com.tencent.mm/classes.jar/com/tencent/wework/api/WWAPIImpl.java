@@ -23,16 +23,16 @@ import java.util.Map;
 public final class WWAPIImpl
   implements IWWAPI
 {
-  private static final ArrayList<String> ILS;
-  private String ILR;
-  private BroadcastReceiver ILT;
+  private static final ArrayList<String> Kyk;
+  private String Kyj;
+  private BroadcastReceiver Kyl;
   private Map<String, Object> callbacks;
   private Context context;
   
   static
   {
     AppMethodBeat.i(106537);
-    ILS = new ArrayList() {};
+    Kyk = new ArrayList() {};
     AppMethodBeat.o(106537);
   }
   
@@ -40,7 +40,7 @@ public final class WWAPIImpl
   {
     AppMethodBeat.i(106530);
     this.callbacks = new HashMap();
-    this.ILT = new BroadcastReceiver()
+    this.Kyl = new BroadcastReceiver()
     {
       public void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -87,7 +87,7 @@ public final class WWAPIImpl
     AppMethodBeat.o(106530);
   }
   
-  private int aOE(String paramString)
+  private int aUq(String paramString)
   {
     AppMethodBeat.i(106533);
     try
@@ -109,7 +109,7 @@ public final class WWAPIImpl
     return 0;
   }
   
-  private String aOF(String paramString)
+  private String aUr(String paramString)
   {
     AppMethodBeat.i(106535);
     try
@@ -158,7 +158,7 @@ public final class WWAPIImpl
   public final boolean a(BaseMessage paramBaseMessage)
   {
     AppMethodBeat.i(106534);
-    Iterator localIterator = ILS.iterator();
+    Iterator localIterator = Kyk.iterator();
     for (;;)
     {
       Object localObject2;
@@ -166,7 +166,7 @@ public final class WWAPIImpl
       if (localIterator.hasNext())
       {
         localObject2 = (String)localIterator.next();
-        if ("011A40266C8C75D181DDD8E4DDC50075".equals(aOF((String)localObject2)))
+        if ("011A40266C8C75D181DDD8E4DDC50075".equals(aUr((String)localObject2)))
         {
           localObject1 = new Intent("com.tencent.wework.apihost");
           ((Intent)localObject1).setClassName((String)localObject2, "com.tencent.wework.apihost.WWAPIActivity");
@@ -179,11 +179,11 @@ public final class WWAPIImpl
         {
           paramBaseMessage.setContext(this.context);
           ((Intent)localObject1).putExtras(BaseMessage.b(paramBaseMessage));
-          ((Intent)localObject1).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.ILT.getClass()), 134217728));
+          ((Intent)localObject1).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.Kyl.getClass()), 134217728));
           localObject2 = this.context;
-          localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/wework/api/WWAPIImpl", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+          localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/wework/api/WWAPIImpl", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/wework/api/WWAPIImpl", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(106534);
           return true;
@@ -195,17 +195,17 @@ public final class WWAPIImpl
     }
   }
   
-  public final boolean fqp()
+  public final boolean fIK()
   {
     AppMethodBeat.i(106531);
-    Iterator localIterator = ILS.iterator();
+    Iterator localIterator = Kyk.iterator();
     int i;
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      i = aOE((String)localIterator.next());
+      i = aUq((String)localIterator.next());
     } while (i == 0);
     while (i >= 100)
     {
@@ -217,10 +217,10 @@ public final class WWAPIImpl
     return false;
   }
   
-  public final String fqq()
+  public final String fIL()
   {
     AppMethodBeat.i(106532);
-    Object localObject = ILS.iterator();
+    Object localObject = Kyk.iterator();
     if (((Iterator)localObject).hasNext())
     {
       localObject = (String)((Iterator)localObject).next();

@@ -46,42 +46,42 @@ import java.util.List;
 public class a
   implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private static boolean EMN = false;
-  private static int uCK;
-  private static int uCL;
-  private l BoA;
-  private View GIf;
-  private MMListPopupWindow GlI;
-  private a HIp;
-  private o HIq;
-  private int HIr;
-  private boolean HIs;
-  public View HIt;
-  public View.OnCreateContextMenuListener HIu;
-  public boolean HIv;
-  public boolean HIw;
-  public boolean HIx;
-  public boolean HIy;
-  public boolean HIz;
-  public n.d HrY;
-  public PopupWindow.OnDismissListener Hua;
-  private DisplayMetrics cGd;
+  private static boolean GjZ = false;
+  private static int rTn;
+  private static int rTo;
+  private l CGH;
+  private MMListPopupWindow HLx;
+  public n.d ISv;
+  public PopupWindow.OnDismissListener IUx;
+  private View Iic;
+  private a JiM;
+  private o JiN;
+  private int JiO;
+  private boolean JiP;
+  public View JiQ;
+  public View.OnCreateContextMenuListener JiR;
+  public boolean JiS;
+  public boolean JiT;
+  public boolean JiU;
+  public boolean JiV;
+  public boolean JiW;
+  private DisplayMetrics cDl;
   private Context mContext;
   private LayoutInflater mInflater;
-  private View tct;
+  private View ukI;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(159475);
     this.mContext = null;
-    this.GIf = null;
-    this.HIp = null;
-    this.HIs = false;
-    this.HIv = false;
-    this.HIw = false;
-    this.HIx = false;
-    this.HIy = true;
-    this.HIz = false;
+    this.Iic = null;
+    this.JiM = null;
+    this.JiP = false;
+    this.JiS = false;
+    this.JiT = false;
+    this.JiU = false;
+    this.JiV = true;
+    this.JiW = false;
     this.mContext = paramContext;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     initView();
@@ -92,19 +92,19 @@ public class a
   {
     AppMethodBeat.i(159474);
     this.mContext = null;
-    this.GIf = null;
-    this.HIp = null;
-    this.HIs = false;
-    this.HIv = false;
-    this.HIw = false;
-    this.HIx = false;
-    this.HIy = true;
-    this.HIz = false;
+    this.Iic = null;
+    this.JiM = null;
+    this.JiP = false;
+    this.JiS = false;
+    this.JiT = false;
+    this.JiU = false;
+    this.JiV = true;
+    this.JiW = false;
     this.mContext = paramContext;
-    this.GIf = paramView;
+    this.Iic = paramView;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     initView();
-    ffV();
+    fvU();
     AppMethodBeat.o(159474);
   }
   
@@ -146,10 +146,10 @@ public class a
     }
   }
   
-  private boolean ffT()
+  private boolean fvS()
   {
     AppMethodBeat.i(159482);
-    if ((this.HIq != null) && (this.HIq.isShowing()))
+    if ((this.JiN != null) && (this.JiN.isShowing()))
     {
       AppMethodBeat.o(159482);
       return true;
@@ -158,10 +158,10 @@ public class a
     return false;
   }
   
-  private void ffV()
+  private void fvU()
   {
     AppMethodBeat.i(159486);
-    this.GIf.setOnTouchListener(new View.OnTouchListener()
+    this.Iic.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -173,11 +173,11 @@ public class a
         {
           AppMethodBeat.o(159469);
           return false;
-          a.aaP((int)paramAnonymousMotionEvent.getRawX());
-          a.xS((int)paramAnonymousMotionEvent.getRawY());
+          a.ada((int)paramAnonymousMotionEvent.getRawX());
+          a.yJ((int)paramAnonymousMotionEvent.getRawY());
           a.b(a.this, a.e(a.this));
-          a.eQx();
-          an.i("MicroMsg.MMPopupMenu", "popmenu view set , x_down=" + a.bQS() + "y_down=" + a.dYQ(), new Object[0]);
+          a.fgd();
+          an.i("MicroMsg.MMPopupMenu", "popmenu view set , x_down=" + a.bYi() + "y_down=" + a.eom(), new Object[0]);
         }
       }
     });
@@ -187,17 +187,17 @@ public class a
   private void initView()
   {
     AppMethodBeat.i(159485);
-    eVf();
-    this.BoA = new l(this.mContext);
-    this.HIp = new a((byte)0);
-    this.cGd = this.mContext.getResources().getDisplayMetrics();
+    fkR();
+    this.CGH = new l(this.mContext);
+    this.JiM = new a((byte)0);
+    this.cDl = this.mContext.getResources().getDisplayMetrics();
     AppMethodBeat.o(159485);
   }
   
   private boolean isShowing()
   {
     AppMethodBeat.i(159481);
-    if ((this.GlI != null) && (this.GlI.iAs.isShowing()))
+    if ((this.HLx != null) && (this.HLx.jat.isShowing()))
     {
       AppMethodBeat.o(159481);
       return true;
@@ -206,10 +206,10 @@ public class a
     return false;
   }
   
-  private boolean jJ(int paramInt1, int paramInt2)
+  private boolean jV(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159479);
-    if ((isShowing()) || (ffT()))
+    if ((isShowing()) || (fvS()))
     {
       AppMethodBeat.o(159479);
       return false;
@@ -231,22 +231,22 @@ public class a
       AppMethodBeat.o(159479);
       return false;
     }
-    if (this.HIu != null) {
-      this.HIu.onCreateContextMenu(this.BoA, this.GIf, null);
+    if (this.JiR != null) {
+      this.JiR.onCreateContextMenu(this.CGH, this.Iic, null);
     }
-    int k = this.HIp.getCount() * this.mContext.getResources().getDimensionPixelSize(2131165567);
-    if ((k == 0) && (!this.HIv))
+    int k = this.JiM.getCount() * this.mContext.getResources().getDimensionPixelSize(2131165567);
+    if ((k == 0) && (!this.JiS))
     {
       AppMethodBeat.o(159479);
       return false;
     }
     int m = this.mContext.getResources().getDimensionPixelSize(2131166166);
-    i = b(this.HIp);
-    int j = ao.ap(this.mContext, 2131166572);
+    i = b(this.JiM);
+    int j = ao.av(this.mContext, 2131166572);
     if (i < j)
     {
       i = j;
-      if (this.BoA.size() < 3) {
+      if (this.CGH.size() < 3) {
         break label671;
       }
     }
@@ -255,33 +255,33 @@ public class a
     label671:
     for (boolean bool = false;; bool = true)
     {
-      if (!this.HIs)
+      if (!this.JiP)
       {
-        if (this.HIt != null) {
-          this.HIt.setSelected(true);
+        if (this.JiQ != null) {
+          this.JiQ.setSelected(true);
         }
       }
       else
       {
-        if (!this.HIv) {
+        if (!this.JiS) {
           break label302;
         }
-        jK(paramInt1, paramInt2);
+        jW(paramInt1, paramInt2);
       }
       for (;;)
       {
         AppMethodBeat.o(159479);
         return true;
         break;
-        this.GIf.setSelected(true);
+        this.Iic.setSelected(true);
         break label268;
         label302:
         localObject = b.a(this.mContext, i, paramInt1, paramInt2, k, m, bool);
-        this.HIr = (paramInt2 - this.mContext.getResources().getDimensionPixelSize(2131166166));
-        an.d("MicroMsg.MMPopupMenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.HIr, new Object[0]);
-        this.GlI = new MMListPopupWindow(this.mContext, null, 0);
-        this.GlI.setOnDismissListener(this);
-        this.GlI.aos = new AdapterView.OnItemClickListener()
+        this.JiO = (paramInt2 - this.mContext.getResources().getDimensionPixelSize(2131166166));
+        an.d("MicroMsg.MMPopupMenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.JiO, new Object[0]);
+        this.HLx = new MMListPopupWindow(this.mContext, null, 0);
+        this.HLx.setOnDismissListener(this);
+        this.HLx.apn = new AdapterView.OnItemClickListener()
         {
           public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
@@ -289,56 +289,56 @@ public class a
             if (a.b(a.this) != null) {
               a.b(a.this).onMMMenuItemSelected(a.a(a.this).getItem(paramAnonymousInt), paramAnonymousInt);
             }
-            if ((a.c(a.this) != null) && (a.c(a.this).iAs.isShowing())) {
+            if ((a.c(a.this) != null) && (a.c(a.this).jat.isShowing())) {
               a.c(a.this).dismiss();
             }
             AppMethodBeat.o(159467);
           }
         };
-        this.GlI.setAdapter(this.HIp);
-        this.GlI.setModal(this.HIy);
-        this.GlI.aom = this.HIz;
-        this.GlI.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
-        this.GlI.setAnimationStyle(((b.a)localObject).HIC);
-        this.GlI.aof = ((b.a)localObject).mgg;
-        this.GlI.setVerticalOffset(((b.a)localObject).xLU);
-        this.GlI.aoq = this.GIf;
-        this.GlI.setContentWidth(i);
-        this.GlI.jY();
+        this.HLx.setAdapter(this.JiM);
+        this.HLx.setModal(this.JiV);
+        this.HLx.aph = this.JiW;
+        this.HLx.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
+        this.HLx.setAnimationStyle(((b.a)localObject).JiZ);
+        this.HLx.apa = ((b.a)localObject).mIg;
+        this.HLx.setVerticalOffset(((b.a)localObject).yYJ);
+        this.HLx.apl = this.Iic;
+        this.HLx.setContentWidth(i);
+        this.HLx.kg();
         if ((!(this.mContext instanceof Activity)) || (((Activity)this.mContext).isFinishing())) {
           break label664;
         }
-        this.GlI.show();
-        this.GlI.FYm.setOnKeyListener(this);
-        this.GlI.FYm.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131100886)));
-        this.GlI.FYm.setSelector(this.mContext.getResources().getDrawable(2131233634));
-        this.GlI.FYm.setDividerHeight(0);
-        this.GlI.FYm.setVerticalScrollBarEnabled(false);
-        this.GlI.FYm.setHorizontalScrollBarEnabled(false);
+        this.HLx.show();
+        this.HLx.Hyb.setOnKeyListener(this);
+        this.HLx.Hyb.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131100886)));
+        this.HLx.Hyb.setSelector(this.mContext.getResources().getDrawable(2131233634));
+        this.HLx.Hyb.setDividerHeight(0);
+        this.HLx.Hyb.setVerticalScrollBarEnabled(false);
+        this.HLx.Hyb.setHorizontalScrollBarEnabled(false);
       }
       AppMethodBeat.o(159479);
       return false;
     }
   }
   
-  private void jK(int paramInt1, int paramInt2)
+  private void jW(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159480);
     int j = this.mContext.getResources().getDimensionPixelOffset(2131165516);
     int k = this.mContext.getResources().getDimensionPixelOffset(2131165480);
-    this.HIq = new o(this.mContext);
-    this.HIq.setOnDismissListener(this);
-    this.HIq.setWidth(-2);
-    this.HIq.setHeight(-2);
-    this.HIq.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
-    this.HIq.setFocusable(this.HIw);
-    this.HIq.setOutsideTouchable(this.HIx);
+    this.JiN = new o(this.mContext);
+    this.JiN.setOnDismissListener(this);
+    this.JiN.setWidth(-2);
+    this.JiN.setHeight(-2);
+    this.JiN.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
+    this.JiN.setFocusable(this.JiT);
+    this.JiN.setOutsideTouchable(this.JiU);
     LinearLayout localLinearLayout = new LinearLayout(this.mContext);
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     localLinearLayout.setOrientation(0);
-    localLinearLayout.setBackgroundColor(ao.aD(this.mContext, 2130968582));
+    localLinearLayout.setBackgroundColor(ao.aJ(this.mContext, 2130968582));
     final int i = 0;
-    if (i < this.BoA.size())
+    if (i < this.CGH.size())
     {
       TextView localTextView = (TextView)this.mInflater.inflate(2131494456, null, false);
       localTextView.setBackgroundResource(2131233634);
@@ -347,7 +347,7 @@ public class a
       }
       for (;;)
       {
-        localTextView.setText(((MenuItem)this.BoA.FYt.get(i)).getTitle());
+        localTextView.setText(((MenuItem)this.CGH.Hyi.get(i)).getTitle());
         localTextView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
@@ -363,79 +363,80 @@ public class a
         localLinearLayout.addView(localTextView);
         i += 1;
         break;
-        if (i == this.BoA.size() - 1) {
+        if (i == this.CGH.size() - 1) {
           localTextView.setPadding(j, 0, k, 0);
         }
       }
     }
     localLinearLayout.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     i = localLinearLayout.getMeasuredHeight();
-    this.HIq.setContentView(localLinearLayout);
+    this.JiN.setWidth(localLinearLayout.getMeasuredWidth() + ao.fromDPToPix(this.mContext, 24));
+    this.JiN.setContentView(localLinearLayout);
     if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-      this.HIq.showAtLocation(this.GIf, 0, paramInt1, paramInt2 - i);
+      this.JiN.showAtLocation(this.Iic, 0, paramInt1, paramInt2 - i);
     }
     AppMethodBeat.o(159480);
   }
   
   public final void a(View.OnCreateContextMenuListener paramOnCreateContextMenuListener)
   {
-    this.HIu = paramOnCreateContextMenuListener;
+    this.JiR = paramOnCreateContextMenuListener;
   }
   
   public final void a(View paramView, int paramInt1, long paramLong, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159477);
-    this.HrY = paramd;
-    this.GIf = paramView;
-    ffV();
-    this.BoA.clear();
+    this.ISv = paramd;
+    this.Iic = paramView;
+    fvU();
+    this.CGH.clear();
     paramd = new AdapterView.AdapterContextMenuInfo(paramView, paramInt1, paramLong);
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.BoA, paramView, paramd);
-    paramView = this.BoA.FYt.iterator();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.CGH, paramView, paramd);
+    paramView = this.CGH.Hyi.iterator();
     while (paramView.hasNext()) {
-      ((m)paramView.next()).FYy = paramd;
+      ((m)paramView.next()).Hyn = paramd;
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      eh(0, 0);
+      ej(0, 0);
       AppMethodBeat.o(159477);
       return;
     }
-    eh(paramInt2, paramInt3);
+    ej(paramInt2, paramInt3);
     AppMethodBeat.o(159477);
   }
   
   public final void a(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159478);
-    this.HrY = paramd;
-    this.GIf = paramView;
+    this.ISv = paramd;
+    this.Iic = paramView;
     if ((!(paramView instanceof TextView)) && ((paramInt1 == 0) || (paramInt2 == 0))) {
-      ffV();
+      fvU();
     }
-    this.BoA.clear();
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.BoA, paramView, null);
+    this.CGH.clear();
+    paramOnCreateContextMenuListener.onCreateContextMenu(this.CGH, paramView, null);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      eh(0, 0);
+      ej(0, 0);
       AppMethodBeat.o(159478);
       return;
     }
-    eh(paramInt1, paramInt2);
+    ej(paramInt1, paramInt2);
     AppMethodBeat.o(159478);
   }
   
   public final void a(n.d paramd)
   {
-    this.HrY = paramd;
+    this.ISv = paramd;
   }
   
   public final void c(View paramView, final View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd)
   {
     AppMethodBeat.i(159476);
-    this.GIf = paramView;
-    ffV();
-    this.HrY = paramd;
+    this.Iic = paramView;
+    fvU();
+    this.ISv = paramd;
     if ((paramView instanceof AbsListView))
     {
       an.v("MicroMsg.MMPopupMenu", "registerForPopupMenu AbsListView", new Object[0]);
@@ -448,11 +449,11 @@ public class a
           an.v("MicroMsg.MMPopupMenu", "registerForPopupMenu AbsListView long click", new Object[0]);
           paramAnonymousAdapterView = new AdapterView.AdapterContextMenuInfo(paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
           paramOnCreateContextMenuListener.onCreateContextMenu(a.a(a.this), paramAnonymousView, paramAnonymousAdapterView);
-          paramAnonymousView = a.a(a.this).FYt.iterator();
+          paramAnonymousView = a.a(a.this).Hyi.iterator();
           while (paramAnonymousView.hasNext()) {
-            ((m)paramAnonymousView.next()).FYy = paramAnonymousAdapterView;
+            ((m)paramAnonymousView.next()).Hyn = paramAnonymousAdapterView;
           }
-          a.this.eh(0, 0);
+          a.this.ej(0, 0);
           AppMethodBeat.o(159465);
           return true;
         }
@@ -474,37 +475,94 @@ public class a
         {
           paramAnonymousView = (int[])paramAnonymousView.getTag(2131306044);
           if (paramAnonymousView == null) {
-            a.this.eh(0, 0);
+            a.this.ej(0, 0);
           }
         }
         for (;;)
         {
           AppMethodBeat.o(159466);
           return true;
-          a.this.eh(paramAnonymousView[0], paramAnonymousView[1]);
+          a.this.ej(paramAnonymousView[0], paramAnonymousView[1]);
           continue;
-          a.this.eh(0, 0);
+          a.this.ej(0, 0);
         }
       }
     });
     AppMethodBeat.o(159476);
   }
   
-  public final boolean eVf()
+  public boolean ej(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159484);
+    if (((this.Iic != null) && (!this.Iic.equals(this.ukI))) || ((!GjZ) && ((paramInt1 != 0) || (paramInt2 != 0))))
+    {
+      rTn = paramInt1;
+      rTo = paramInt2;
+    }
+    this.ukI = null;
+    int k = rTn;
+    int n = rTo;
+    GjZ = false;
+    if (this.cDl == null) {
+      this.cDl = this.mContext.getResources().getDisplayMetrics();
+    }
+    int j = k;
+    int i;
+    int m;
+    if (this.Iic != null)
+    {
+      int[] arrayOfInt = new int[2];
+      this.Iic.getLocationOnScreen(arrayOfInt);
+      i = k;
+      if (k == 0) {
+        i = arrayOfInt[0] + this.Iic.getWidth() / 2;
+      }
+      m = arrayOfInt[1];
+      j = arrayOfInt[1] + this.Iic.getHeight();
+      k = m;
+      if (m < 0) {
+        k = 0;
+      }
+      m = j;
+      if (j > this.cDl.heightPixels) {
+        m = this.cDl.heightPixels;
+      }
+      j = i;
+      if (n != 0) {}
+    }
+    for (j = (k + m) / 2;; j = k)
+    {
+      an.i("MicroMsg.MMPopupMenu", "show popMenu , xDown:%s, yDown:%s, showPointX:%s, showPointY:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(j) });
+      if ((!isShowing()) || (!fvS()))
+      {
+        bool1 = jV(i, j);
+        AppMethodBeat.o(159484);
+        return bool1;
+      }
+      boolean bool1 = fkR();
+      boolean bool2 = jV(i, j);
+      AppMethodBeat.o(159484);
+      return bool2 & bool1;
+      k = n;
+      i = j;
+    }
+  }
+  
+  public final boolean fkR()
   {
     AppMethodBeat.i(159483);
     if (isShowing())
     {
-      if (this.GlI != null) {
-        this.GlI.dismiss();
+      if (this.HLx != null) {
+        this.HLx.dismiss();
       }
       AppMethodBeat.o(159483);
       return true;
     }
-    if (ffT())
+    if (fvS())
     {
-      if (this.HIq != null) {
-        this.HIq.dismiss();
+      if (this.JiN != null) {
+        this.JiN.dismiss();
       }
       AppMethodBeat.o(159483);
       return true;
@@ -513,90 +571,33 @@ public class a
     return false;
   }
   
-  public boolean eh(int paramInt1, int paramInt2)
+  public final boolean fvT()
   {
-    AppMethodBeat.i(159484);
-    if (((this.GIf != null) && (!this.GIf.equals(this.tct))) || ((!EMN) && ((paramInt1 != 0) || (paramInt2 != 0))))
-    {
-      uCK = paramInt1;
-      uCL = paramInt2;
-    }
-    this.tct = null;
-    int k = uCK;
-    int n = uCL;
-    EMN = false;
-    if (this.cGd == null) {
-      this.cGd = this.mContext.getResources().getDisplayMetrics();
-    }
-    int j = k;
-    int i;
-    int m;
-    if (this.GIf != null)
-    {
-      int[] arrayOfInt = new int[2];
-      this.GIf.getLocationOnScreen(arrayOfInt);
-      i = k;
-      if (k == 0) {
-        i = arrayOfInt[0] + this.GIf.getWidth() / 2;
-      }
-      m = arrayOfInt[1];
-      j = arrayOfInt[1] + this.GIf.getHeight();
-      k = m;
-      if (m < 0) {
-        k = 0;
-      }
-      m = j;
-      if (j > this.cGd.heightPixels) {
-        m = this.cGd.heightPixels;
-      }
-      j = i;
-      if (n != 0) {}
-    }
-    for (j = (k + m) / 2;; j = k)
-    {
-      an.i("MicroMsg.MMPopupMenu", "show popMenu , xDown:%s, yDown:%s, showPointX:%s, showPointY:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(j) });
-      if ((!isShowing()) || (!ffT()))
-      {
-        bool1 = jJ(i, j);
-        AppMethodBeat.o(159484);
-        return bool1;
-      }
-      boolean bool1 = eVf();
-      boolean bool2 = jJ(i, j);
-      AppMethodBeat.o(159484);
-      return bool2 & bool1;
-      k = n;
-      i = j;
-    }
-  }
-  
-  public final boolean ffU()
-  {
-    AppMethodBeat.i(202396);
-    boolean bool = eh(0, 0);
-    AppMethodBeat.o(202396);
+    AppMethodBeat.i(210316);
+    boolean bool = ej(0, 0);
+    AppMethodBeat.o(210316);
     return bool;
   }
   
   public void onDismiss()
   {
     AppMethodBeat.i(159488);
-    if (!this.HIs)
+    if (!this.JiP)
     {
-      if (this.HIt == null) {
+      if (this.JiQ == null) {
         break label51;
       }
-      this.HIt.setSelected(false);
+      this.JiQ.setSelected(false);
     }
     for (;;)
     {
-      if (this.Hua != null) {
-        this.Hua.onDismiss();
+      if (this.IUx != null) {
+        this.IUx.onDismiss();
       }
       AppMethodBeat.o(159488);
       return;
       label51:
-      this.GIf.setSelected(false);
+      this.Iic.setSelected(false);
     }
   }
   
@@ -609,7 +610,7 @@ public class a
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.Hua = paramOnDismissListener;
+    this.IUx = paramOnDismissListener;
   }
   
   final class a
@@ -620,7 +621,7 @@ public class a
     private String getItem(int paramInt)
     {
       AppMethodBeat.i(159471);
-      String str = (String)((MenuItem)a.a(a.this).FYt.get(paramInt)).getTitle();
+      String str = (String)((MenuItem)a.a(a.this).Hyi.get(paramInt)).getTitle();
       AppMethodBeat.o(159471);
       return str;
     }
@@ -666,7 +667,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.b.a
  * JD-Core Version:    0.7.0.1
  */

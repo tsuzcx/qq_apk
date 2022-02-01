@@ -43,12 +43,12 @@ public final class JsApiJumpDownloaderWidgetForNative
       AppMethodBeat.o(45828);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> aWl()
+    public final Class<? extends AppBrandProxyUIProcessTask> bdj()
     {
       return JsApiJumpDownloaderWidgetForNative.a.class;
     }
     
-    public final boolean aXq()
+    public final boolean ben()
     {
       return true;
     }
@@ -85,9 +85,9 @@ public final class JsApiJumpDownloaderWidgetForNative
         Intent localIntent = new Intent();
         localIntent.putExtra("appId", paramProcessRequest);
         localIntent.putExtra("view_task", true);
-        ((c)g.ab(c.class)).a(aXi(), localIntent, new a.c()
+        ((c)g.ab(c.class)).a(bef(), localIntent, new a.c()
         {
-          public final void aYa()
+          public final void beX()
           {
             AppMethodBeat.i(45830);
             JsApiJumpDownloaderWidgetForNative.a.a(JsApiJumpDownloaderWidgetForNative.a.this);

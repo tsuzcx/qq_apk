@@ -12,13 +12,13 @@ import com.tencent.mm.ui.base.CustomViewPager;
 public class MusicViewPager
   extends CustomViewPager
 {
-  private GestureDetector hRv;
+  private GestureDetector irA;
   
   public MusicViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(63269);
-    this.hRv = new GestureDetector(getContext(), new b((byte)0));
+    this.irA = new GestureDetector(getContext(), new b((byte)0));
     setScroller(new a(getContext()));
     AppMethodBeat.o(63269);
   }
@@ -26,7 +26,7 @@ public class MusicViewPager
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(63270);
-    if ((super.onInterceptTouchEvent(paramMotionEvent)) && (this.hRv.onTouchEvent(paramMotionEvent)))
+    if ((super.onInterceptTouchEvent(paramMotionEvent)) && (this.irA.onTouchEvent(paramMotionEvent)))
     {
       AppMethodBeat.o(63270);
       return true;
@@ -80,7 +80,7 @@ public class MusicViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicViewPager
  * JD-Core Version:    0.7.0.1
  */

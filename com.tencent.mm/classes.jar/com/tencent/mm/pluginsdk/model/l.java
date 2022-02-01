@@ -9,7 +9,7 @@ import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.h.a.a;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.modelcontrol.VideoTransPara;
@@ -25,17 +25,17 @@ import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bd.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bn;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
@@ -46,83 +46,382 @@ import java.util.concurrent.LinkedBlockingQueue;
 public final class l
   extends Thread
 {
-  private static int foV;
-  private static HashMap<String, b> onD;
-  private static Object onE;
-  private static be onF;
-  private int BOQ;
-  private a BOR;
+  private static int fsu;
+  private static HashMap<String, b> oRd;
+  private static Object oRe;
+  private static bd oRf;
+  private int Dhe;
+  private l.a Dhf;
   private Context context;
   private Intent intent;
   private boolean isStop;
-  private List<String> ont;
-  private List<Integer> onu;
-  private List<String> onv;
-  private List<String> onw;
-  private List<Integer> onx;
-  private int[] qQH;
+  private List<String> oQT;
+  private List<Integer> oQU;
+  private List<String> oQV;
+  private List<String> oQW;
+  private List<Integer> oQX;
+  private int[] rMF;
   private String talker;
   
   static
   {
     AppMethodBeat.i(127169);
-    onD = new HashMap();
-    onE = new byte[0];
+    oRd = new HashMap();
+    oRe = new byte[0];
     AppMethodBeat.o(127169);
   }
   
-  public l(Context paramContext, List<String> paramList, Intent paramIntent, String paramString, int paramInt, a parama)
+  public l(Context paramContext, List<String> paramList, Intent paramIntent, String paramString, int paramInt, l.a parama)
   {
     AppMethodBeat.i(127144);
-    this.qQH = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    this.rMF = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     this.context = paramContext;
-    this.ont = paramList;
+    this.oQT = paramList;
     this.intent = paramIntent;
-    this.onu = new ArrayList();
-    this.onv = new ArrayList();
-    this.onw = new ArrayList();
-    this.onx = new ArrayList();
-    this.BOR = parama;
+    this.oQU = new ArrayList();
+    this.oQV = new ArrayList();
+    this.oQW = new ArrayList();
+    this.oQX = new ArrayList();
+    this.Dhf = parama;
     this.talker = paramString;
-    this.BOQ = paramInt;
+    this.Dhe = paramInt;
     AppMethodBeat.o(127144);
   }
   
-  private void Q(Context paramContext, Intent paramIntent)
+  private VideoTransPara a(String paramString, PInt paramPInt)
+  {
+    AppMethodBeat.i(127157);
+    if (com.tencent.mm.modelcontrol.d.aDL().BW(paramString))
+    {
+      ac.i("MicroMsg.ImportMultiVideo", "check remuxing, this video had wx meta do not remuxing. %s ", new Object[] { paramString });
+      paramPInt.value = 1;
+      eKH();
+      AppMethodBeat.o(127157);
+      return null;
+    }
+    VideoTransPara localVideoTransPara1 = com.tencent.mm.bk.e.Eu(paramString);
+    Boolean localBoolean = Boolean.valueOf(com.tencent.mm.bk.e.Et(paramString));
+    ac.d("MicroMsg.ImportMultiVideo", "check remuxing old para %s", new Object[] { localVideoTransPara1 });
+    VideoTransPara localVideoTransPara2 = com.tencent.mm.modelcontrol.d.aDL().c(localVideoTransPara1);
+    if (localVideoTransPara2 == null)
+    {
+      ac.i("MicroMsg.ImportMultiVideo", "get C2C album video para is null. old para %s", new Object[] { localVideoTransPara1 });
+      paramPInt.value = -5;
+      AppMethodBeat.o(127157);
+      return null;
+    }
+    ac.d("MicroMsg.ImportMultiVideo", "check remuxing new para %s", new Object[] { localVideoTransPara2 });
+    int[] arrayOfInt = a(paramString, localVideoTransPara2);
+    localVideoTransPara2.videoBitrate = arrayOfInt[0];
+    localVideoTransPara2.width = arrayOfInt[1];
+    localVideoTransPara2.height = arrayOfInt[2];
+    if ((localVideoTransPara1.videoBitrate <= 640000) || (localVideoTransPara2.videoBitrate > localVideoTransPara1.videoBitrate))
+    {
+      ac.i("MicroMsg.ImportMultiVideo", "new bitrate is bigger than old bitrate %s %s", new Object[] { localVideoTransPara2, localVideoTransPara1 });
+      if (localBoolean.booleanValue())
+      {
+        paramPInt.value = 0;
+        AppMethodBeat.o(127157);
+        return localVideoTransPara1;
+      }
+      paramPInt.value = 1;
+      AppMethodBeat.o(127157);
+      return null;
+    }
+    if ((localVideoTransPara1.fps >= 45) && (localVideoTransPara1.duration * 1000 >= 180000))
+    {
+      paramPInt.value = -6;
+      AppMethodBeat.o(127157);
+      return null;
+    }
+    if (localBoolean.booleanValue())
+    {
+      paramPInt.value = 0;
+      AppMethodBeat.o(127157);
+      return localVideoTransPara2;
+    }
+    boolean bool = ax.is2G(ai.getContext());
+    int j = localVideoTransPara2.width;
+    int k = localVideoTransPara2.height;
+    int i;
+    if (bool)
+    {
+      i = 10485760;
+      label338:
+      if (!bool) {
+        break label374;
+      }
+    }
+    label374:
+    for (double d = 60000.0D;; d = 300000.0D)
+    {
+      paramPInt.value = SightVideoJNI.shouldRemuxingVFS(paramString, j, k, i, d, 1000000);
+      break;
+      i = 26214400;
+      break label338;
+    }
+  }
+  
+  private void a(int paramInt1, String paramString1, String arg3, int paramInt2, VideoTransPara paramVideoTransPara, Intent paramIntent)
+  {
+    AppMethodBeat.i(127148);
+    ac.i("MicroMsg.ImportMultiVideo", "finish to import %s to %s | ret %d | duration %d", new Object[] { ???, paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    d(paramInt1, paramString1, ???, paramInt2);
+    if (paramInt1 == -50002)
+    {
+      eKE();
+      a(this.talker, paramString1, ???, paramIntent, paramInt2, 141);
+      AppMethodBeat.o(127148);
+      return;
+    }
+    if (paramInt1 == -50008)
+    {
+      eKG();
+      a(this.talker, paramString1, ???, paramIntent, paramInt2, 140);
+      AppMethodBeat.o(127148);
+      return;
+    }
+    if (paramInt1 == -50006)
+    {
+      b localb = new b((byte)0);
+      synchronized (oRe)
+      {
+        oRd.put(paramString1, localb);
+        if (u.s(paramString1, this.talker, ???) >= 0L) {
+          break label231;
+        }
+        a(this.talker, paramString1, ???, paramIntent, paramInt2, 142);
+        ac.e("MicroMsg.ImportMultiVideo", "prepare");
+      }
+      synchronized (oRe)
+      {
+        oRd.remove(paramString1);
+        AppMethodBeat.o(127148);
+        return;
+        paramString1 = finally;
+        AppMethodBeat.o(127148);
+        throw paramString1;
+      }
+      label231:
+      if (oRf == null) {
+        oRf = new bd(5, "remuxing-thread-" + System.currentTimeMillis(), 1, Looper.getMainLooper());
+      }
+      localb.fileName = paramString1;
+      localb.hYm = ???;
+      o.aJy();
+      localb.jtV = t.DV(paramString1);
+      localb.Dhe = this.Dhe;
+      localb.toUser = this.talker;
+      localb.iay = paramVideoTransPara;
+      localb.rMF = this.rMF;
+      localb.uPV = com.tencent.mm.bk.e.Et(???);
+      localb.Dhh = new com.tencent.mm.bk.g();
+      oRf.c(localb);
+      AppMethodBeat.o(127148);
+      return;
+    }
+    if (paramInt1 < 0)
+    {
+      eKF();
+      a(this.talker, paramString1, ???, paramIntent, paramInt2, 142);
+      AppMethodBeat.o(127148);
+      return;
+    }
+    u.c(paramString1, paramInt2, this.talker, ???);
+    u.Ec(paramString1);
+    if (this.Dhe == 1) {}
+    for (paramInt1 = 8;; paramInt1 = 1)
+    {
+      o.aJy();
+      paramString1 = t.DV(paramString1);
+      n.aJw().a(???, paramString1, this.talker, "", "", paramInt1, 2);
+      AppMethodBeat.o(127148);
+      return;
+    }
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, Intent paramIntent, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(127149);
+    Object localObject = new bo();
+    ((bo)localObject).setStatus(5);
+    ((bo)localObject).re(paramString1);
+    ((bo)localObject).oA(bi.yp(paramString1));
+    ((bo)localObject).jT(1);
+    ((bo)localObject).rf(paramString2);
+    ((bo)localObject).setType(43);
+    long l = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().ap((bo)localObject);
+    ac.i("MicroMsg.ImportMultiVideo", "after update msgInfo, localId[%d] svrId[%d] talker[%s] type[%d] isSend[%d] imgPath[%s], status[%d] createTime[%d]", new Object[] { Long.valueOf(((dy)localObject).field_msgId), Long.valueOf(((dy)localObject).field_msgSvrId), ((dy)localObject).field_talker, Integer.valueOf(((bo)localObject).getType()), Integer.valueOf(((dy)localObject).field_isSend), ((dy)localObject).field_imgPath, Integer.valueOf(((dy)localObject).field_status), Long.valueOf(((dy)localObject).field_createTime) });
+    if (-1L == l)
+    {
+      ac.e("MicroMsg.ImportMultiVideo", "[insertErrMsg] :%s", new Object[] { paramString1 });
+      AppMethodBeat.o(127149);
+      return;
+    }
+    if (u.Ej(paramString2) == null)
+    {
+      o.aJy();
+      localObject = t.DW(paramString2);
+      i = paramInt1;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramIntent = com.tencent.mm.compatible.h.a.j(this.context, paramIntent);
+        if (paramIntent == null) {
+          continue;
+        }
+        i = paramInt1;
+        if (paramIntent.bitmap == null) {
+          continue;
+        }
+        i = paramInt1;
+        paramInt1 = bs.Aq(paramIntent.duration);
+        i = paramInt1;
+        f.a(paramIntent.bitmap, 60, Bitmap.CompressFormat.JPEG, (String)localObject, true);
+      }
+      catch (Exception paramIntent)
+      {
+        int j;
+        ac.printErrStackTrace("MicroMsg.ImportMultiVideo", paramIntent, "", new Object[0]);
+        paramInt1 = i;
+        continue;
+        i = 0;
+        continue;
+      }
+      j = t.DX((String)localObject);
+      o.aJy();
+      i = t.DX(t.DV(paramString2));
+      paramIntent = new s();
+      paramIntent.fileName = paramString2;
+      if (i <= 0) {
+        continue;
+      }
+      paramIntent.hux = i;
+      paramIntent.iaG = j;
+      paramIntent.hpy = paramInt1;
+      paramIntent.drG = paramString1;
+      paramIntent.iaC = ((String)com.tencent.mm.kernel.g.agR().agA().get(2, ""));
+      paramIntent.createTime = bs.aNx();
+      paramIntent.iaH = bs.aNx();
+      paramIntent.iaO = null;
+      paramIntent.hYm = paramString3;
+      if (!bs.isNullOrNil(paramString3)) {
+        paramIntent.iaM = 1;
+      }
+      paramIntent.iaP = -1;
+      paramIntent.status = paramInt2;
+      paramIntent.iaJ = ((int)l);
+      if (!o.aJy().b(paramIntent)) {
+        ac.e("MicroMsg.ImportMultiVideo", "[insertErrMsg] localMsgId:%s", new Object[] { Long.valueOf(l) });
+      }
+      AppMethodBeat.o(127149);
+      return;
+      i = paramInt1;
+      f.a(f.aH(-16777216, 320, 480), 60, Bitmap.CompressFormat.JPEG, (String)localObject, true);
+    }
+  }
+  
+  private int[] a(String paramString, VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(209969);
+    int[] arrayOfInt = new int[3];
+    int[] tmp11_10 = arrayOfInt;
+    tmp11_10[0] = 0;
+    int[] tmp15_11 = tmp11_10;
+    tmp15_11[1] = 0;
+    int[] tmp19_15 = tmp15_11;
+    tmp19_15[2] = 0;
+    tmp19_15;
+    arrayOfInt[0] = paramVideoTransPara.videoBitrate;
+    arrayOfInt[1] = paramVideoTransPara.width;
+    arrayOfInt[2] = paramVideoTransPara.height;
+    if (((paramVideoTransPara.hCL == 1) || (paramVideoTransPara.hCL == 2)) && ((paramVideoTransPara.hCV == 2) || (paramVideoTransPara.hCV == 4) || (paramVideoTransPara.hCV == 1)))
+    {
+      this.rMF = AdaptiveAdjustBitrate.a(paramString, paramVideoTransPara.height, paramVideoTransPara.width, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, 10.0F, 0.0F, paramVideoTransPara.hCV, paramVideoTransPara.hCN, paramVideoTransPara.hCO, paramVideoTransPara.hCP, paramVideoTransPara.hCQ, paramVideoTransPara.hCR, paramVideoTransPara.hCS, paramVideoTransPara.hCT);
+      if ((this.rMF[3] > 0) || (this.rMF[4] > 0)) {
+        arrayOfInt[0] = (this.rMF[0] * 1000);
+      }
+      if (this.rMF[5] > 0)
+      {
+        arrayOfInt[1] = this.rMF[1];
+        arrayOfInt[2] = this.rMF[2];
+      }
+      ac.i("MicroMsg.ImportMultiVideo", "ABA: Adaptive Bitrate Methods:videoBitrate [%d]  targetWidth [%d]  targetHeight [%d]", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]), Integer.valueOf(arrayOfInt[2]) });
+      o.aJz();
+      com.tencent.mm.an.e.q(this.rMF);
+      AppMethodBeat.o(209969);
+      return arrayOfInt;
+    }
+    ac.i("MicroMsg.ImportMultiVideo", "c2c ABA: No use ABA algorithm");
+    AppMethodBeat.o(209969);
+    return arrayOfInt;
+  }
+  
+  public static boolean aFZ(String paramString)
+  {
+    AppMethodBeat.i(127155);
+    synchronized (oRe)
+    {
+      boolean bool = oRd.containsKey(paramString);
+      ac.i("MicroMsg.ImportMultiVideo", "check %s is remuxing, ret %B", new Object[] { paramString, Boolean.valueOf(bool) });
+      AppMethodBeat.o(127155);
+      return bool;
+    }
+  }
+  
+  public static void aGa(String paramString)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(127156);
+    synchronized (oRe)
+    {
+      if (oRd.remove(paramString) != null)
+      {
+        ac.i("MicroMsg.ImportMultiVideo", "remove remuxing job, filename %s, ret %B", new Object[] { paramString, Boolean.valueOf(bool) });
+        AppMethodBeat.o(127156);
+        return;
+      }
+      bool = false;
+    }
+  }
+  
+  private void ae(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(127146);
-    String str1 = t.zP((String)com.tencent.mm.kernel.g.afB().afk().get(2, ""));
-    o.aCI();
-    String str2 = t.zR(str1);
-    o.aCI();
-    String str3 = t.zQ(str1);
-    boolean bool1 = ay.is2G(aj.getContext());
+    String str1 = t.DU((String)com.tencent.mm.kernel.g.agR().agA().get(2, ""));
+    o.aJy();
+    String str2 = t.DW(str1);
+    o.aJy();
+    String str3 = t.DV(str1);
+    boolean bool1 = ax.is2G(ai.getContext());
     String str4 = com.tencent.mm.compatible.h.a.i(paramContext, paramIntent);
-    if (bt.isNullOrNil(str4))
+    if (bs.isNullOrNil(str4))
     {
-      ad.e("MicroMsg.ImportMultiVideo", "GetVideoMetadata filed.");
+      ac.e("MicroMsg.ImportMultiVideo", "GetVideoMetadata filed.");
       a(-50005, str1, str4, 0, null, paramIntent);
       AppMethodBeat.o(127146);
       return;
     }
-    boolean bool2 = com.tencent.mm.plugin.a.c.BH(str4);
-    int j = (int)i.aMN(str4);
+    boolean bool2 = com.tencent.mm.plugin.a.c.FL(str4);
+    int j = (int)i.aSp(str4);
     VideoTransPara localVideoTransPara;
     int i;
     if (bool2)
     {
-      ad.i("MicroMsg.ImportMultiVideo", "mp4 format: %s", new Object[] { Boolean.valueOf(bool2) });
+      ac.i("MicroMsg.ImportMultiVideo", "mp4 format: %s", new Object[] { Boolean.valueOf(bool2) });
       PInt localPInt = new PInt();
       localVideoTransPara = a(str4, localPInt);
       i = localPInt.value;
     }
     for (;;)
     {
-      ad.i("MicroMsg.ImportMultiVideo", "check remuxing, ret %d isMp4 %b length %d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Integer.valueOf(j) });
+      ac.i("MicroMsg.ImportMultiVideo", "check remuxing, ret %d isMp4 %b length %d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2), Integer.valueOf(j) });
       switch (i)
       {
       default: 
-        ad.e("MicroMsg.ImportMultiVideo", "unknown check type");
+        ac.e("MicroMsg.ImportMultiVideo", "unknown check type");
         a(-50001, str1, str4, 0, null, paramIntent);
         AppMethodBeat.o(127146);
         return;
@@ -130,14 +429,14 @@ public final class l
         for (i = 10485760;; i = 26214400)
         {
           if (j <= i) {
-            break label311;
+            break label322;
           }
           i = -5;
           localVideoTransPara = null;
           break;
         }
-        label311:
-        ad.i("MicroMsg.ImportMultiVideo", "mp4 format: %s", new Object[] { Boolean.valueOf(bool2) });
+        label322:
+        ac.i("MicroMsg.ImportMultiVideo", "mp4 format: %s", new Object[] { Boolean.valueOf(bool2) });
         i = 1;
         localVideoTransPara = null;
       }
@@ -156,7 +455,7 @@ public final class l
         if (paramContext != null) {
           break;
         }
-        ad.e("MicroMsg.ImportMultiVideo", "GetVideoMetadata filed.");
+        ac.e("MicroMsg.ImportMultiVideo", "GetVideoMetadata filed.");
         a(-50005, str1, str4, 0, null, paramIntent);
         AppMethodBeat.o(127146);
         return;
@@ -180,19 +479,19 @@ public final class l
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.ImportMultiVideo", paramContext, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ImportMultiVideo", paramContext, "", new Object[0]);
         paramContext = null;
       }
     }
     if (j == 0)
     {
-      i.lC(str4, str3);
-      fr(str3, this.BOQ);
+      i.lZ(str4, str3);
+      fw(str3, this.Dhe);
       e(false, str4, str3);
     }
     for (;;)
     {
-      int n = bt.vN(paramContext.duration);
+      int n = bs.Aq(paramContext.duration);
       int m = 1;
       int k = 1;
       if (paramContext.bitmap != null) {
@@ -203,7 +502,7 @@ public final class l
         f.a(paramContext.bitmap, 60, Bitmap.CompressFormat.JPEG, str2, true);
         k = 0;
         m = 0;
-        tR(true);
+        uS(true);
         k = m;
         if (k == 0) {}
       }
@@ -211,17 +510,17 @@ public final class l
       {
         try
         {
-          tR(false);
-          f.a(f.aG(-16777216, 320, 480), 60, Bitmap.CompressFormat.JPEG, str2, true);
+          uS(false);
+          f.a(f.aH(-16777216, 320, 480), 60, Bitmap.CompressFormat.JPEG, str2, true);
           k = i;
           if (j == 0)
           {
             k = i;
-            if (!i.eK(str3)) {
+            if (!i.eA(str3)) {
               k = -50003;
             }
           }
-          if (!i.eK(str2)) {
+          if (!i.eA(str2)) {
             k = -50004;
           }
           a(k, str1, str4, n, localVideoTransPara, paramIntent);
@@ -230,307 +529,16 @@ public final class l
           i = -50006;
           continue;
           paramContext = paramContext;
-          ad.printErrStackTrace("MicroMsg.ImportMultiVideo", paramContext, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.ImportMultiVideo", paramContext, "", new Object[0]);
         }
         catch (Exception paramContext)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.ImportMultiVideo", paramContext, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.ImportMultiVideo", paramContext, "", new Object[0]);
           }
         }
       }
-    }
-  }
-  
-  private VideoTransPara a(String paramString, PInt paramPInt)
-  {
-    AppMethodBeat.i(127157);
-    if (com.tencent.mm.modelcontrol.d.awT().xQ(paramString))
-    {
-      ad.i("MicroMsg.ImportMultiVideo", "check remuxing, this video had wx meta do not remuxing. %s ", new Object[] { paramString });
-      paramPInt.value = 1;
-      evn();
-      AppMethodBeat.o(127157);
-      return null;
-    }
-    VideoTransPara localVideoTransPara1 = com.tencent.mm.bl.e.Ap(paramString);
-    Boolean localBoolean = Boolean.valueOf(com.tencent.mm.bl.e.Ao(paramString));
-    ad.d("MicroMsg.ImportMultiVideo", "check remuxing old para %s", new Object[] { localVideoTransPara1 });
-    VideoTransPara localVideoTransPara2 = com.tencent.mm.modelcontrol.d.awT().c(localVideoTransPara1);
-    if (localVideoTransPara2 == null)
-    {
-      ad.i("MicroMsg.ImportMultiVideo", "get C2C album video para is null. old para %s", new Object[] { localVideoTransPara1 });
-      paramPInt.value = -5;
-      AppMethodBeat.o(127157);
-      return null;
-    }
-    ad.d("MicroMsg.ImportMultiVideo", "check remuxing new para %s", new Object[] { localVideoTransPara2 });
-    int[] arrayOfInt = a(paramString, localVideoTransPara2);
-    localVideoTransPara2.videoBitrate = arrayOfInt[0];
-    localVideoTransPara2.width = arrayOfInt[1];
-    localVideoTransPara2.height = arrayOfInt[2];
-    if ((localVideoTransPara1.videoBitrate <= 640000) || (localVideoTransPara2.videoBitrate > localVideoTransPara1.videoBitrate))
-    {
-      ad.i("MicroMsg.ImportMultiVideo", "new bitrate is bigger than old bitrate %s %s", new Object[] { localVideoTransPara2, localVideoTransPara1 });
-      if (localBoolean.booleanValue())
-      {
-        paramPInt.value = 0;
-        AppMethodBeat.o(127157);
-        return localVideoTransPara1;
-      }
-      paramPInt.value = 1;
-      AppMethodBeat.o(127157);
-      return null;
-    }
-    if ((localVideoTransPara1.fps >= 45) && (localVideoTransPara1.duration * 1000 >= 180000))
-    {
-      paramPInt.value = -6;
-      AppMethodBeat.o(127157);
-      return null;
-    }
-    if (localBoolean.booleanValue())
-    {
-      paramPInt.value = 0;
-      AppMethodBeat.o(127157);
-      return localVideoTransPara2;
-    }
-    boolean bool = ay.is2G(aj.getContext());
-    int j = localVideoTransPara2.width;
-    int k = localVideoTransPara2.height;
-    int i;
-    if (bool)
-    {
-      i = 10485760;
-      label352:
-      if (!bool) {
-        break label389;
-      }
-    }
-    label389:
-    for (double d = 60000.0D;; d = 300000.0D)
-    {
-      paramPInt.value = SightVideoJNI.shouldRemuxingVFS(paramString, j, k, i, d, 1000000);
-      break;
-      i = 26214400;
-      break label352;
-    }
-  }
-  
-  private void a(int paramInt1, String paramString1, String paramString2, int paramInt2, VideoTransPara paramVideoTransPara, Intent arg6)
-  {
-    AppMethodBeat.i(127148);
-    ad.i("MicroMsg.ImportMultiVideo", "finish to import %s to %s | ret %d | duration %d", new Object[] { paramString2, paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    d(paramInt1, paramString1, paramString2, paramInt2);
-    if (paramInt1 == -50002)
-    {
-      evk();
-      a(this.talker, paramString1, paramString2, ???, paramInt2, 141);
-      AppMethodBeat.o(127148);
-      return;
-    }
-    if (paramInt1 == -50008)
-    {
-      evm();
-      a(this.talker, paramString1, paramString2, ???, paramInt2, 140);
-      AppMethodBeat.o(127148);
-      return;
-    }
-    if (paramInt1 == -50006)
-    {
-      if (u.s(paramString1, this.talker, paramString2) < 0L)
-      {
-        a(this.talker, paramString1, paramString2, ???, paramInt2, 142);
-        ad.e("MicroMsg.ImportMultiVideo", "prepare");
-        AppMethodBeat.o(127148);
-        return;
-      }
-      if (onF == null) {
-        onF = new be(5, "remuxing-thread-" + System.currentTimeMillis(), 1, Looper.getMainLooper());
-      }
-      b localb = new b((byte)0);
-      synchronized (onE)
-      {
-        onD.put(paramString1, localb);
-        localb.fileName = paramString1;
-        localb.hxL = paramString2;
-        o.aCI();
-        localb.iTJ = t.zQ(paramString1);
-        localb.BOQ = this.BOQ;
-        localb.toUser = this.talker;
-        localb.hzX = paramVideoTransPara;
-        localb.qQH = this.qQH;
-        localb.tHz = com.tencent.mm.bl.e.Ao(paramString2);
-        localb.BOT = new com.tencent.mm.bl.g();
-        onF.c(localb);
-        AppMethodBeat.o(127148);
-        return;
-      }
-    }
-    if (paramInt1 < 0)
-    {
-      evl();
-      a(this.talker, paramString1, paramString2, ???, paramInt2, 142);
-      AppMethodBeat.o(127148);
-      return;
-    }
-    u.c(paramString1, paramInt2, this.talker, paramString2);
-    u.zX(paramString1);
-    if (this.BOQ == 1) {}
-    for (paramInt1 = 8;; paramInt1 = 1)
-    {
-      o.aCI();
-      paramString1 = t.zQ(paramString1);
-      n.aCG().a(paramString2, paramString1, this.talker, "", "", paramInt1, 2);
-      AppMethodBeat.o(127148);
-      return;
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, String paramString3, Intent paramIntent, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(127149);
-    Object localObject = new bl();
-    ((bl)localObject).setStatus(5);
-    ((bl)localObject).nY(paramString1);
-    ((bl)localObject).kY(bi.uj(paramString1));
-    ((bl)localObject).jV(1);
-    ((bl)localObject).nZ(paramString2);
-    ((bl)localObject).setType(43);
-    long l = ((k)com.tencent.mm.kernel.g.ab(k.class)).cOI().an((bl)localObject);
-    ad.i("MicroMsg.ImportMultiVideo", "after update msgInfo, localId[%d] svrId[%d] talker[%s] type[%d] isSend[%d] imgPath[%s], status[%d] createTime[%d]", new Object[] { Long.valueOf(((du)localObject).field_msgId), Long.valueOf(((du)localObject).field_msgSvrId), ((du)localObject).field_talker, Integer.valueOf(((bl)localObject).getType()), Integer.valueOf(((du)localObject).field_isSend), ((du)localObject).field_imgPath, Integer.valueOf(((du)localObject).field_status), Long.valueOf(((du)localObject).field_createTime) });
-    if (-1L == l)
-    {
-      ad.e("MicroMsg.ImportMultiVideo", "[insertErrMsg] :%s", new Object[] { paramString1 });
-      AppMethodBeat.o(127149);
-      return;
-    }
-    if (u.Ae(paramString2) == null)
-    {
-      o.aCI();
-      localObject = t.zR(paramString2);
-      i = paramInt1;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramIntent = com.tencent.mm.compatible.h.a.j(this.context, paramIntent);
-        if (paramIntent == null) {
-          continue;
-        }
-        i = paramInt1;
-        if (paramIntent.bitmap == null) {
-          continue;
-        }
-        i = paramInt1;
-        paramInt1 = bt.vN(paramIntent.duration);
-        i = paramInt1;
-        f.a(paramIntent.bitmap, 60, Bitmap.CompressFormat.JPEG, (String)localObject, true);
-      }
-      catch (Exception paramIntent)
-      {
-        int j;
-        ad.printErrStackTrace("MicroMsg.ImportMultiVideo", paramIntent, "", new Object[0]);
-        paramInt1 = i;
-        continue;
-        i = 0;
-        continue;
-      }
-      j = t.zS((String)localObject);
-      o.aCI();
-      i = t.zS(t.zQ(paramString2));
-      paramIntent = new s();
-      paramIntent.fileName = paramString2;
-      if (i <= 0) {
-        continue;
-      }
-      paramIntent.gTY = i;
-      paramIntent.hAf = j;
-      paramIntent.gOY = paramInt1;
-      paramIntent.dtV = paramString1;
-      paramIntent.hAb = ((String)com.tencent.mm.kernel.g.afB().afk().get(2, ""));
-      paramIntent.createTime = bt.aGK();
-      paramIntent.hAg = bt.aGK();
-      paramIntent.hAn = null;
-      paramIntent.hxL = paramString3;
-      if (!bt.isNullOrNil(paramString3)) {
-        paramIntent.hAl = 1;
-      }
-      paramIntent.hAo = -1;
-      paramIntent.status = paramInt2;
-      paramIntent.hAi = ((int)l);
-      if (!o.aCI().b(paramIntent)) {
-        ad.e("MicroMsg.ImportMultiVideo", "[insertErrMsg] localMsgId:%s", new Object[] { Long.valueOf(l) });
-      }
-      AppMethodBeat.o(127149);
-      return;
-      i = paramInt1;
-      f.a(f.aG(-16777216, 320, 480), 60, Bitmap.CompressFormat.JPEG, (String)localObject, true);
-    }
-  }
-  
-  private int[] a(String paramString, VideoTransPara paramVideoTransPara)
-  {
-    AppMethodBeat.i(195143);
-    int[] arrayOfInt = new int[3];
-    int[] tmp11_10 = arrayOfInt;
-    tmp11_10[0] = 0;
-    int[] tmp15_11 = tmp11_10;
-    tmp15_11[1] = 0;
-    int[] tmp19_15 = tmp15_11;
-    tmp19_15[2] = 0;
-    tmp19_15;
-    arrayOfInt[0] = paramVideoTransPara.videoBitrate;
-    arrayOfInt[1] = paramVideoTransPara.width;
-    arrayOfInt[2] = paramVideoTransPara.height;
-    if (((paramVideoTransPara.hcj == 1) || (paramVideoTransPara.hcj == 2)) && ((paramVideoTransPara.hcs == 2) || (paramVideoTransPara.hcs == 4) || (paramVideoTransPara.hcs == 1)))
-    {
-      this.qQH = AdaptiveAdjustBitrate.a(paramString, paramVideoTransPara.height, paramVideoTransPara.width, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, 10.0F, 0.0F, paramVideoTransPara.hcs, paramVideoTransPara.hcl, paramVideoTransPara.hcm, paramVideoTransPara.hcn, paramVideoTransPara.hco, paramVideoTransPara.hcp, paramVideoTransPara.hcq);
-      if ((this.qQH[3] > 0) || (this.qQH[4] > 0)) {
-        arrayOfInt[0] = (this.qQH[0] * 1000);
-      }
-      if (this.qQH[5] > 0)
-      {
-        arrayOfInt[1] = this.qQH[1];
-        arrayOfInt[2] = this.qQH[2];
-      }
-      ad.i("MicroMsg.ImportMultiVideo", "ABA: Adaptive Bitrate Methods:videoBitrate [%d]  targetWidth [%d]  targetHeight [%d]", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]), Integer.valueOf(arrayOfInt[2]) });
-      o.aCJ();
-      com.tencent.mm.ao.e.p(this.qQH);
-      AppMethodBeat.o(195143);
-      return arrayOfInt;
-    }
-    ad.i("MicroMsg.ImportMultiVideo", "c2c ABA: No use ABA algorithm");
-    AppMethodBeat.o(195143);
-    return arrayOfInt;
-  }
-  
-  public static boolean aAH(String paramString)
-  {
-    AppMethodBeat.i(127155);
-    synchronized (onE)
-    {
-      boolean bool = onD.containsKey(paramString);
-      ad.i("MicroMsg.ImportMultiVideo", "check %s is remuxing, ret %B", new Object[] { paramString, Boolean.valueOf(bool) });
-      AppMethodBeat.o(127155);
-      return bool;
-    }
-  }
-  
-  public static void aAI(String paramString)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(127156);
-    synchronized (onE)
-    {
-      if (onD.remove(paramString) != null)
-      {
-        ad.i("MicroMsg.ImportMultiVideo", "remove remuxing job, filename %s, ret %B", new Object[] { paramString, Boolean.valueOf(bool) });
-        AppMethodBeat.o(127156);
-        return;
-      }
-      bool = false;
     }
   }
   
@@ -538,26 +546,26 @@ public final class l
   public static void b(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: ldc_w 702
-    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 704	com/tencent/mm/compatible/h/d
+    //   0: ldc_w 705
+    //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 707	com/tencent/mm/compatible/h/d
     //   9: dup
-    //   10: invokespecial 705	com/tencent/mm/compatible/h/d:<init>	()V
+    //   10: invokespecial 708	com/tencent/mm/compatible/h/d:<init>	()V
     //   13: astore 7
     //   15: aload 7
     //   17: aload_0
-    //   18: invokevirtual 710	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   18: invokevirtual 713	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   21: aload 7
     //   23: bipush 18
-    //   25: invokevirtual 714	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   25: invokevirtual 717	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   28: iconst_0
-    //   29: invokestatic 718	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   29: invokestatic 721	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
     //   32: istore 6
     //   34: aload 7
     //   36: bipush 19
-    //   38: invokevirtual 714	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   38: invokevirtual 717	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   41: iconst_0
-    //   42: invokestatic 718	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   42: invokestatic 721	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
     //   45: istore 5
     //   47: aload_1
     //   48: iconst_0
@@ -581,7 +589,7 @@ public final class l
     //   76: irem
     //   77: ifeq +47 -> 124
     //   80: aload 7
-    //   82: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
+    //   82: invokevirtual 724	android/media/MediaMetadataRetriever:release	()V
     //   85: aload_1
     //   86: iconst_0
     //   87: iaload
@@ -610,8 +618,8 @@ public final class l
     //   114: iconst_1
     //   115: iadd
     //   116: iastore
-    //   117: ldc_w 702
-    //   120: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: ldc_w 705
+    //   120: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: return
     //   124: iload 6
     //   126: iload 5
@@ -640,7 +648,7 @@ public final class l
     //   169: iload 5
     //   171: iastore
     //   172: aload 7
-    //   174: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
+    //   174: invokevirtual 724	android/media/MediaMetadataRetriever:release	()V
     //   177: aload_1
     //   178: iconst_0
     //   179: iaload
@@ -669,8 +677,8 @@ public final class l
     //   206: iconst_1
     //   207: iadd
     //   208: iastore
-    //   209: ldc_w 702
-    //   212: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   209: ldc_w 705
+    //   212: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   215: return
     //   216: iload 6
     //   218: iconst_2
@@ -691,7 +699,7 @@ public final class l
     //   241: aload 7
     //   243: ifnull +8 -> 251
     //   246: aload 7
-    //   248: invokevirtual 721	android/media/MediaMetadataRetriever:release	()V
+    //   248: invokevirtual 724	android/media/MediaMetadataRetriever:release	()V
     //   251: aload_1
     //   252: iconst_0
     //   253: iaload
@@ -720,12 +728,12 @@ public final class l
     //   280: iconst_1
     //   281: iadd
     //   282: iastore
-    //   283: ldc_w 702
-    //   286: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   283: ldc_w 705
+    //   286: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   289: aload_0
     //   290: athrow
-    //   291: ldc_w 702
-    //   294: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   291: ldc_w 705
+    //   294: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   297: return
     //   298: astore_0
     //   299: goto -58 -> 241
@@ -751,10 +759,10 @@ public final class l
     try
     {
       AppMethodBeat.i(127153);
-      this.onu.add(Integer.valueOf(paramInt1));
-      this.onv.add(paramString1);
-      this.onw.add(paramString2);
-      this.onx.add(Integer.valueOf(paramInt2));
+      this.oQU.add(Integer.valueOf(paramInt1));
+      this.oQV.add(paramString1);
+      this.oQW.add(paramString2);
+      this.oQX.add(Integer.valueOf(paramInt2));
       AppMethodBeat.o(127153);
       return;
     }
@@ -778,70 +786,70 @@ public final class l
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.modelvideo.a.k(i, paramString1, paramString2);
+      com.tencent.mm.modelvideo.a.j(i, paramString1, paramString2);
       AppMethodBeat.o(127164);
       return;
     }
   }
   
-  public static void evj()
+  public static void eKD()
   {
     AppMethodBeat.i(127154);
     int i;
-    synchronized (onE)
+    synchronized (oRe)
     {
-      i = onD.size();
-      onD.clear();
-      if (onF == null)
+      i = oRd.size();
+      oRd.clear();
+      if (oRf == null)
       {
-        ad.i("MicroMsg.ImportMultiVideo", "do clear remuxing job, worker is null, setCount %d", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.ImportMultiVideo", "do clear remuxing job, worker is null, setCount %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(127154);
         return;
       }
     }
-    ad.i("MicroMsg.ImportMultiVideo", "do clear remuxing job, setCount %d, workerJobCount %d", new Object[] { Integer.valueOf(i), Integer.valueOf(onF.EWq.size()) });
-    onF.EWq.clear();
-    onF = null;
+    ac.i("MicroMsg.ImportMultiVideo", "do clear remuxing job, setCount %d, workerJobCount %d", new Object[] { Integer.valueOf(i), Integer.valueOf(oRf.GtC.size()) });
+    oRf.GtC.clear();
+    oRf = null;
     AppMethodBeat.o(127154);
   }
   
-  private void evk()
+  private void eKE()
   {
     AppMethodBeat.i(127159);
-    if (this.BOQ == 1) {}
+    if (this.Dhe == 1) {}
     for (int i = 230;; i = 245)
     {
-      ad.d("MicroMsg.ImportMultiVideo", "report video too big reportId : " + i + " importType : " + this.BOQ);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, i, 1L, false);
+      ac.d("MicroMsg.ImportMultiVideo", "report video too big reportId : " + i + " importType : " + this.Dhe);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, i, 1L, false);
       AppMethodBeat.o(127159);
       return;
     }
   }
   
-  private void evl()
+  private void eKF()
   {
     AppMethodBeat.i(127160);
-    if (this.BOQ == 1) {}
+    if (this.Dhe == 1) {}
     for (int i = 229;; i = 244)
     {
-      ad.d("MicroMsg.ImportMultiVideo", "report video file error reportId : " + i + " importType : " + this.BOQ);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, i, 1L, false);
+      ac.d("MicroMsg.ImportMultiVideo", "report video file error reportId : " + i + " importType : " + this.Dhe);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, i, 1L, false);
       AppMethodBeat.o(127160);
       return;
     }
   }
   
-  private static void evm()
+  private static void eKG()
   {
     AppMethodBeat.i(127162);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, 210L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, 210L, 1L, false);
     AppMethodBeat.o(127162);
   }
   
-  private static void evn()
+  private static void eKH()
   {
     AppMethodBeat.i(127163);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(422L, 51L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(422L, 51L, 1L, false);
     AppMethodBeat.o(127163);
   }
   
@@ -854,8 +862,8 @@ public final class l
       try
       {
         locald.setDataSource(paramString);
-        int i = bt.getInt(locald.extractMetadata(18), 0);
-        int j = bt.getInt(locald.extractMetadata(19), 0);
+        int i = bs.getInt(locald.extractMetadata(18), 0);
+        int j = bs.getInt(locald.extractMetadata(19), 0);
         if (i > j) {
           if (i > 720)
           {
@@ -872,7 +880,7 @@ public final class l
           if (paramArrayOfInt[1] % 2 != 0) {
             paramArrayOfInt[1] += 1;
           }
-          ad.i("MicroMsg.ImportMultiVideo", "getImportProperRemuxingResolutionForC2C Width:%d Height:%d", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Integer.valueOf(paramArrayOfInt[1]) });
+          ac.i("MicroMsg.ImportMultiVideo", "getImportProperRemuxingResolutionForC2C Width:%d Height:%d", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Integer.valueOf(paramArrayOfInt[1]) });
           AppMethodBeat.o(127151);
           return;
           if (j > 720)
@@ -899,12 +907,12 @@ public final class l
     if (paramArrayOfInt[1] % 2 != 0) {
       paramArrayOfInt[1] += 1;
     }
-    ad.i("MicroMsg.ImportMultiVideo", "getImportProperRemuxingResolutionForC2C Width:%d Height:%d", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Integer.valueOf(paramArrayOfInt[1]) });
+    ac.i("MicroMsg.ImportMultiVideo", "getImportProperRemuxingResolutionForC2C Width:%d Height:%d", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Integer.valueOf(paramArrayOfInt[1]) });
     AppMethodBeat.o(127151);
     throw paramString;
   }
   
-  private static void fr(String paramString, int paramInt)
+  private static void fw(String paramString, int paramInt)
   {
     AppMethodBeat.i(127161);
     int j;
@@ -916,11 +924,11 @@ public final class l
     }
     for (paramInt = 219;; paramInt = 233)
     {
-      long l = i.aMN(paramString);
-      i = bt.l((Integer)com.tencent.mm.plugin.report.service.h.a((int)(l / 1024L), new int[] { 512, 1024, 2048, 5120, 8192, 10240, 15360, 20480 }, j, i));
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, i, 1L, false);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, paramInt, 1L, false);
-      ad.d("MicroMsg.ImportMultiVideo", "report no compress video report id : " + i + " file len : " + l / 1024L + "K");
+      long l = i.aSp(paramString);
+      i = bs.m((Integer)com.tencent.mm.plugin.report.service.h.a((int)(l / 1024L), new int[] { 512, 1024, 2048, 5120, 8192, 10240, 15360, 20480 }, j, i));
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, i, 1L, false);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, paramInt, 1L, false);
+      ac.d("MicroMsg.ImportMultiVideo", "report no compress video report id : " + i + " file len : " + l / 1024L + "K");
       AppMethodBeat.o(127161);
       return;
       j = 234;
@@ -928,19 +936,19 @@ public final class l
     }
   }
   
-  private void tR(boolean paramBoolean)
+  private void uS(boolean paramBoolean)
   {
     AppMethodBeat.i(127158);
     int i;
-    if (this.BOQ == 1) {
+    if (this.Dhe == 1) {
       if (paramBoolean) {
         i = 217;
       }
     }
     for (;;)
     {
-      ad.d("MicroMsg.ImportMultiVideo", "report video thumb reportId : " + i + " had Thumb : " + paramBoolean + " importType : " + this.BOQ);
-      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(106L, i, 1L, false);
+      ac.d("MicroMsg.ImportMultiVideo", "report video thumb reportId : " + i + " had Thumb : " + paramBoolean + " importType : " + this.Dhe);
+      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(106L, i, 1L, false);
       AppMethodBeat.o(127158);
       return;
       i = 218;
@@ -953,7 +961,7 @@ public final class l
     }
   }
   
-  public final void evi()
+  public final void eKC()
   {
     AppMethodBeat.i(127147);
     this.isStop = true;
@@ -965,21 +973,21 @@ public final class l
   {
     AppMethodBeat.i(127145);
     int i;
-    if ((this.ont != null) && (this.ont.size() > 0)) {
+    if ((this.oQT != null) && (this.oQT.size() > 0)) {
       i = 0;
     }
-    while ((i < this.ont.size()) && (!this.isStop))
+    while ((i < this.oQT.size()) && (!this.isStop))
     {
-      ad.i("MicroMsg.ImportMultiVideo", "start to import %s", new Object[] { this.ont.get(i) });
+      ac.i("MicroMsg.ImportMultiVideo", "start to import %s", new Object[] { this.oQT.get(i) });
       Intent localIntent = new Intent();
-      localIntent.setData(Uri.parse("file://" + (String)this.ont.get(i)));
-      Q(this.context, localIntent);
+      localIntent.setData(Uri.parse("file://" + (String)this.oQT.get(i)));
+      ae(this.context, localIntent);
       i += 1;
       continue;
-      Q(this.context, this.intent);
+      ae(this.context, this.intent);
     }
-    if ((this.BOR != null) && (!this.isStop)) {
-      aq.f(new Runnable()
+    if ((this.Dhf != null) && (!this.isStop)) {
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -989,7 +997,7 @@ public final class l
           l.b(l.this);
           l.c(l.this);
           l.d(l.this);
-          locala.evo();
+          locala.eKI();
           AppMethodBeat.o(127141);
         }
       });
@@ -997,44 +1005,39 @@ public final class l
     AppMethodBeat.o(127145);
   }
   
-  public static abstract interface a
-  {
-    public abstract void evo();
-  }
-  
   static final class b
-    implements be.a
+    implements bd.a
   {
-    int BOQ;
-    com.tencent.mm.bl.g BOT;
+    int Dhe;
+    com.tencent.mm.bk.g Dhh;
     String fileName;
-    private int gtF;
-    private int gtG;
-    String hxL;
-    VideoTransPara hzX;
-    String iTJ;
-    int onJ;
-    private boolean onK;
-    private int onL = 0;
-    int[] qQH;
-    boolean tHz = false;
+    private int grA;
+    private int grB;
+    String hYm;
+    VideoTransPara iay;
+    String jtV;
+    int oRj;
+    private boolean oRk;
+    private int oRl = 0;
+    int[] rMF;
     String toUser;
+    boolean uPV = false;
     
-    public final boolean aus()
+    public final boolean aBj()
     {
       AppMethodBeat.i(127142);
       int i;
       for (;;)
       {
-        synchronized (l.onE)
+        synchronized (l.oRe)
         {
-          if (!l.cUq().containsKey(this.fileName))
+          if (!l.dhW().containsKey(this.fileName))
           {
             i = 1;
             j = i;
             if (i == 0)
             {
-              if (u.Ae(this.fileName) == null) {
+              if (u.Ej(this.fileName) == null) {
                 j = 1;
               }
             }
@@ -1043,7 +1046,7 @@ public final class l
               if (j == 0) {
                 break;
               }
-              ad.w("MicroMsg.ImportMultiVideo", "remuxing job has been removed, filename %s", new Object[] { this.fileName });
+              ac.w("MicroMsg.ImportMultiVideo", "remuxing job has been removed, filename %s", new Object[] { this.fileName });
               AppMethodBeat.o(127142);
               return true;
             }
@@ -1062,44 +1065,44 @@ public final class l
       if (WXHardCoderJNI.hcEncodeVideoThr)
       {
         i = Process.myTid();
-        l.Hx(WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcEncodeVideoTimeout, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.ImportMultiVideo"));
-        ad.i("MicroMsg.ImportMultiVideo", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(l.aDt()) });
-        if ((this.hzX == null) || (this.hzX.isDefault)) {
+        l.Jw(WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcEncodeVideoTimeout, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.ImportMultiVideo"));
+        ac.i("MicroMsg.ImportMultiVideo", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(l.aKk()) });
+        if ((this.iay == null) || (this.iay.isDefault)) {
           break label308;
         }
-        this.gtF = this.hzX.width;
+        this.grA = this.iay.width;
       }
       Object localObject3;
-      for (this.gtG = this.hzX.height;; this.gtG = ???[1])
+      for (this.grB = this.iay.height;; this.grB = ???[1])
       {
         ??? = new PString();
         localObject3 = new PInt();
-        if ((!((com.tencent.mm.plugin.n.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.n.a.a.class)).apT().a(this.hxL, (PString)???, (PInt)localObject3)) || (i.lC(((PString)???).value, this.iTJ) < 0L)) {
+        if ((!((com.tencent.mm.plugin.n.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.n.a.a.class)).awI().a(this.hYm, (PString)???, (PInt)localObject3)) || (i.lZ(((PString)???).value, this.jtV) < 0L)) {
           break label341;
         }
-        ad.i("MicroMsg.ImportMultiVideo", "copy remuxing file success, do not remuxing again.");
-        this.onJ = ((PInt)localObject3).value;
-        this.onK = true;
+        ac.i("MicroMsg.ImportMultiVideo", "copy remuxing file success, do not remuxing again.");
+        this.oRj = ((PInt)localObject3).value;
+        this.oRk = true;
         AppMethodBeat.o(127142);
         return true;
         i = 0;
         break;
         label308:
         ??? = new int[2];
-        l.f(this.hxL, (int[])???);
-        this.gtF = ???[0];
+        l.f(this.hYm, (int[])???);
+        this.grA = ???[0];
       }
       label341:
-      long l = bt.GC();
+      long l = bs.Gn();
       try
       {
         ??? = new com.tencent.mm.compatible.h.d();
-        ((com.tencent.mm.compatible.h.d)???).setDataSource(this.hxL);
-        j = bt.getInt(((com.tencent.mm.compatible.h.d)???).extractMetadata(18), 0);
-        k = bt.getInt(((com.tencent.mm.compatible.h.d)???).extractMetadata(19), 0);
-        this.onJ = Math.round(bt.getInt(((com.tencent.mm.compatible.h.d)???).extractMetadata(9), 0) / 1000.0F);
-        i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.pqt, 3000);
-        ad.i("MicroMsg.ImportMultiVideo", "rawWidth %d rawHeight:%d limit:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+        ((com.tencent.mm.compatible.h.d)???).setDataSource(this.hYm);
+        j = bs.getInt(((com.tencent.mm.compatible.h.d)???).extractMetadata(18), 0);
+        k = bs.getInt(((com.tencent.mm.compatible.h.d)???).extractMetadata(19), 0);
+        this.oRj = Math.round(bs.getInt(((com.tencent.mm.compatible.h.d)???).extractMetadata(9), 0) / 1000.0F);
+        i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.pUg, 3000);
+        ac.i("MicroMsg.ImportMultiVideo", "rawWidth %d rawHeight:%d limit:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
         j = Math.max(k, j);
         if (j < i) {
           break label915;
@@ -1110,71 +1113,71 @@ public final class l
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.ImportMultiVideo", localException1, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.ImportMultiVideo", localException1, "", new Object[0]);
           i = 0;
           continue;
-          this.onJ = SightVideoJNI.remuxingVFS(this.hxL, this.iTJ, this.gtF, this.gtG, this.hzX.videoBitrate, this.hzX.hbY, 8, this.hzX.hbX, 25.0F, this.hzX.fps, null, 0, com.tencent.mm.plugin.sight.base.c.wqZ, 0, 51);
+          this.oRj = SightVideoJNI.remuxingVFS(this.hYm, this.jtV, this.grA, this.grB, this.iay.videoBitrate, this.iay.hCA, 8, this.iay.hCz, 25.0F, this.iay.fps, null, 0, com.tencent.mm.plugin.sight.base.c.xCq, 0, 51);
           continue;
-          ad.w("MicroMsg.ImportMultiVideo", "remuxing but new para is null. %s", new Object[] { this.fileName });
-          if (com.tencent.mm.plugin.sight.base.c.wqZ) {
-            com.tencent.mm.plugin.sight.base.c.wrb = (int)(com.tencent.mm.plugin.sight.base.c.wrb * 0.915D);
+          ac.w("MicroMsg.ImportMultiVideo", "remuxing but new para is null. %s", new Object[] { this.fileName });
+          if (com.tencent.mm.plugin.sight.base.c.xCq) {
+            com.tencent.mm.plugin.sight.base.c.xCs = (int)(com.tencent.mm.plugin.sight.base.c.xCs * 0.915D);
           }
-          if ((this.tHz) || (i != 0))
+          if ((this.uPV) || (i != 0))
           {
-            this.hzX = new VideoTransPara();
-            this.hzX.width = this.gtF;
-            this.hzX.height = this.gtG;
-            this.hzX.videoBitrate = com.tencent.mm.plugin.sight.base.c.wrb;
-            this.hzX.hbY = com.tencent.mm.plugin.sight.base.c.wra;
-            this.hzX.hbX = 2;
-            this.hzX.fps = ((int)com.tencent.mm.plugin.sight.base.c.wrc);
-            this.hzX.duration = com.tencent.mm.bl.e.fD(this.hxL);
-            com.tencent.mm.bl.e.a(this.hxL, this.iTJ, this.hzX);
+            this.iay = new VideoTransPara();
+            this.iay.width = this.grA;
+            this.iay.height = this.grB;
+            this.iay.videoBitrate = com.tencent.mm.plugin.sight.base.c.xCs;
+            this.iay.hCA = com.tencent.mm.plugin.sight.base.c.xCr;
+            this.iay.hCz = 2;
+            this.iay.fps = ((int)com.tencent.mm.plugin.sight.base.c.xCt);
+            this.iay.duration = com.tencent.mm.bk.e.ft(this.hYm);
+            com.tencent.mm.bk.e.a(this.hYm, this.jtV, this.iay);
           }
           else
           {
-            this.onJ = SightVideoJNI.remuxingVFS(this.hxL, this.iTJ, this.gtF, this.gtG, com.tencent.mm.plugin.sight.base.c.wrb, com.tencent.mm.plugin.sight.base.c.wra, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.c.wrc, null, 0, com.tencent.mm.plugin.sight.base.c.wqZ, 0, 51);
+            this.oRj = SightVideoJNI.remuxingVFS(this.hYm, this.jtV, this.grA, this.grB, com.tencent.mm.plugin.sight.base.c.xCs, com.tencent.mm.plugin.sight.base.c.xCr, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.c.xCt, null, 0, com.tencent.mm.plugin.sight.base.c.xCq, 0, 51);
             continue;
             bool = false;
           }
         }
-        ad.i("MicroMsg.ImportMultiVideo", "remuxing video sucess,insert to media duplication storage");
+        ac.i("MicroMsg.ImportMultiVideo", "remuxing video sucess,insert to media duplication storage");
       }
-      if (this.hzX != null)
+      if (this.iay != null)
       {
-        ad.i("MicroMsg.ImportMultiVideo", "remuxing new para %s", new Object[] { this.hzX });
-        if (com.tencent.mm.plugin.sight.base.c.wqZ) {
-          this.hzX.videoBitrate = ((int)(this.hzX.videoBitrate * 0.915D));
+        ac.i("MicroMsg.ImportMultiVideo", "remuxing new para %s", new Object[] { this.iay });
+        if (com.tencent.mm.plugin.sight.base.c.xCq) {
+          this.iay.videoBitrate = ((int)(this.iay.videoBitrate * 0.915D));
         }
-        if ((this.tHz) || (i != 0))
+        if ((this.uPV) || (i != 0))
         {
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 245L, 1L, false);
-          if (com.tencent.mm.bl.e.a(this.hxL, this.iTJ, this.hzX) < 0) {
-            com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 246L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 245L, 1L, false);
+          if (com.tencent.mm.bk.e.a(this.hYm, this.jtV, this.iay) < 0) {
+            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 246L, 1L, false);
           }
-          this.onL = ((int)bt.aS(l));
-          ad.i("MicroMsg.ImportMultiVideo", "remuxing [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { this.hxL, this.iTJ, Integer.valueOf(this.onJ), Integer.valueOf(this.gtF), Integer.valueOf(this.gtG) });
-          if (this.onJ < 0) {
+          this.oRl = ((int)bs.aO(l));
+          ac.i("MicroMsg.ImportMultiVideo", "remuxing [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { this.hYm, this.jtV, Integer.valueOf(this.oRj), Integer.valueOf(this.grA), Integer.valueOf(this.grB) });
+          if (this.oRj < 0) {
             break label1190;
           }
           bool = true;
-          this.onK = bool;
+          this.oRk = bool;
           ??? = new PInt();
           localObject3 = new PInt();
-          if ((this.onJ <= 0) && (u.a(this.iTJ, (PInt)???, (PInt)localObject3))) {
-            this.onJ = ((PInt)???).value;
+          if ((this.oRj <= 0) && (u.a(this.jtV, (PInt)???, (PInt)localObject3))) {
+            this.oRj = ((PInt)???).value;
           }
-          if ((this.onK) && ((((this.hzX.hck & 0x1) != 0) && (!this.tHz)) || (((this.hzX.hck & 0x2) != 0) && (this.tHz)) || (this.hzX.hcj == 1)))
+          if ((this.oRk) && ((((this.iay.hCM & 0x1) != 0) && (!this.uPV)) || (((this.iay.hCM & 0x2) != 0) && (this.uPV)) || (this.iay.hCL == 1)))
           {
-            ad.i("MicroMsg.ImportMultiVideo", "hseasun:[hardcoder] hwenc qp add metadata flag", new Object[] { Integer.valueOf(l.aDt()) });
-            SightVideoJNI.addReportMetadata(this.iTJ, this.qQH, this.hzX.hcj, this.hzX.hck);
+            ac.i("MicroMsg.ImportMultiVideo", "hseasun:[hardcoder] hwenc qp add metadata flag", new Object[] { Integer.valueOf(l.aKk()) });
+            SightVideoJNI.addReportMetadata(this.jtV, this.rMF, this.iay.hCL, this.iay.hCM);
           }
-          if (this.onK) {
+          if (this.oRk) {
             break label1196;
           }
-          ad.w("MicroMsg.ImportMultiVideo", "remuxing video error, copy source video to send.");
-          i.deleteFile(this.iTJ);
-          i.lC(this.hxL, this.iTJ);
+          ac.w("MicroMsg.ImportMultiVideo", "remuxing video error, copy source video to send.");
+          i.deleteFile(this.jtV);
+          i.lZ(this.hYm, this.jtV);
         }
       }
       label915:
@@ -1183,80 +1186,80 @@ public final class l
       PInt localPInt;
       for (;;)
       {
-        if (l.aDt() != 0)
+        if (l.aKk() != 0)
         {
-          WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEncodeVideoEnable, l.aDt());
-          ad.i("MicroMsg.ImportMultiVideo", "hardcoder summerPerformance stopPerformance %s", new Object[] { Integer.valueOf(l.aDt()) });
-          l.Hx(0);
+          WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEncodeVideoEnable, l.aKk());
+          ac.i("MicroMsg.ImportMultiVideo", "hardcoder summerPerformance stopPerformance %s", new Object[] { Integer.valueOf(l.aKk()) });
+          l.Jw(0);
         }
         AppMethodBeat.o(127142);
         return true;
         try
         {
-          String str = new com.tencent.mm.vfs.e(this.iTJ).getName();
-          localObject3 = this.iTJ + ".tmp";
+          String str = new com.tencent.mm.vfs.e(this.jtV).getName();
+          localObject3 = this.jtV + ".tmp";
           localPInt = new PInt(0);
-          if (!com.tencent.mm.plugin.a.e.b(this.iTJ, (String)localObject3, localPInt)) {
+          if (!com.tencent.mm.plugin.a.e.b(this.jtV, (String)localObject3, localPInt)) {
             break;
           }
-          bool = i.deleteFile(this.iTJ);
+          bool = i.deleteFile(this.jtV);
           localObject3 = new com.tencent.mm.vfs.e((String)localObject3);
-          ad.i("MicroMsg.ImportMultiVideo", "fast start success. delOld[%b] rename[%b] path[%s] target[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(i.aQ(((com.tencent.mm.vfs.e)localObject3).getParent() + "/", ((com.tencent.mm.vfs.e)localObject3).getName(), str)), q.B(((com.tencent.mm.vfs.e)localObject3).fhU()), this.iTJ });
-          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 30L, 1L, false);
-          ((com.tencent.mm.plugin.n.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.n.a.a.class)).apT().ag(this.hxL, this.iTJ, this.onJ);
+          ac.i("MicroMsg.ImportMultiVideo", "fast start success. delOld[%b] rename[%b] path[%s] target[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(i.aT(((com.tencent.mm.vfs.e)localObject3).getParent() + "/", ((com.tencent.mm.vfs.e)localObject3).getName(), str)), q.B(((com.tencent.mm.vfs.e)localObject3).fxV()), this.jtV });
+          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 30L, 1L, false);
+          ((com.tencent.mm.plugin.n.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.n.a.a.class)).awI().ah(this.hYm, this.jtV, this.oRj);
         }
         catch (Exception localException2)
         {
-          ad.e("MicroMsg.ImportMultiVideo", "fast start exception e[%s]", new Object[] { localException2.toString() });
+          ac.e("MicroMsg.ImportMultiVideo", "fast start exception e[%s]", new Object[] { localException2.toString() });
         }
       }
       if (localPInt.value != 1) {
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 31L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 31L, 1L, false);
       }
       for (;;)
       {
-        ad.i("MicroMsg.ImportMultiVideo", "fast start fail. msg[%d] importpath[%s] targetPath[%s]", new Object[] { Integer.valueOf(localPInt.value), this.hxL, this.iTJ });
+        ac.i("MicroMsg.ImportMultiVideo", "fast start fail. msg[%d] importpath[%s] targetPath[%s]", new Object[] { Integer.valueOf(localPInt.value), this.hYm, this.jtV });
         break;
-        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(354L, 32L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.vKh.f(13836, new Object[] { Integer.valueOf(600), Long.valueOf(bt.aGK()), this.iTJ });
+        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(354L, 32L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.wUl.f(13836, new Object[] { Integer.valueOf(600), Long.valueOf(bs.aNx()), this.jtV });
       }
     }
     
-    public final boolean aut()
+    public final boolean aBk()
     {
       AppMethodBeat.i(127143);
-      ad.i("MicroMsg.ImportMultiVideo", "onPostExecute");
+      ac.i("MicroMsg.ImportMultiVideo", "onPostExecute");
       for (;;)
       {
-        synchronized (l.onE)
+        synchronized (l.oRe)
         {
-          l.cUq().remove(this.fileName);
-          if (this.onK)
+          l.dhW().remove(this.fileName);
+          if (this.oRk)
           {
-            l.fs(this.iTJ, this.BOQ);
-            l.f(this.onK, this.hxL, this.iTJ);
-            if (!com.tencent.mm.plugin.sight.base.c.wqZ) {
+            l.fx(this.jtV, this.Dhe);
+            l.f(this.oRk, this.hYm, this.jtV);
+            if (!com.tencent.mm.plugin.sight.base.c.xCq) {
               break label204;
             }
             i = 1;
-            l.a(i, this.onL, this.hxL, this.iTJ, this.onJ);
-            if (this.BOQ != 1) {
+            l.b(i, this.oRl, this.hYm, this.jtV, this.oRj);
+            if (this.Dhe != 1) {
               break label209;
             }
             i = 8;
-            if (!this.onK) {
+            if (!this.oRk) {
               break label214;
             }
             j = 1;
-            n.aCG().a(this.hxL, this.iTJ, this.toUser, "", "", i, j);
-            ad.i("MicroMsg.ImportMultiVideo", "updateVideo");
-            u.t(this.fileName, this.onJ, 43);
-            u.zX(this.fileName);
+            n.aJw().a(this.hYm, this.jtV, this.toUser, "", "", i, j);
+            ac.i("MicroMsg.ImportMultiVideo", "updateVideo");
+            u.s(this.fileName, this.oRj, 43);
+            u.Ec(this.fileName);
             AppMethodBeat.o(127143);
             return false;
           }
         }
-        l.ft(this.iTJ, this.BOQ);
+        l.fy(this.jtV, this.Dhe);
         continue;
         label204:
         int i = 0;
@@ -1272,7 +1275,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.l
  * JD-Core Version:    0.7.0.1
  */

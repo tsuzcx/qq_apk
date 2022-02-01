@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class oj
   extends b
 {
-  public a dtv;
+  public a dqS;
+  public b dqT;
   
   public oj()
   {
@@ -15,28 +16,27 @@ public final class oj
   
   private oj(byte paramByte)
   {
-    AppMethodBeat.i(117614);
-    this.dtv = new a();
-    this.ESR = false;
+    AppMethodBeat.i(130032);
+    this.dqS = new a();
+    this.dqT = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(117614);
+    AppMethodBeat.o(130032);
   }
   
   public static final class a
   {
-    public int dtA;
-    public String dtw;
-    public String dtx;
-    public String dty;
-    public String dtz;
-    public String query;
-    public int scene;
-    public String sessionId;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public boolean dqR = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.oj
  * JD-Core Version:    0.7.0.1
  */

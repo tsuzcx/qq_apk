@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public final class d
   extends b
@@ -14,40 +14,42 @@ public final class d
   private final String fileName;
   private final String filePath;
   private final int fileType;
-  private final String xhv;
-  private final a xhw;
+  private final String yuj;
+  private final a yuk;
   
   public d(String paramString1, String paramString2, String paramString3, int paramInt, a parama)
   {
-    AppMethodBeat.i(187507);
-    com.tencent.mm.vfs.i.aMF(paramString2);
+    AppMethodBeat.i(200312);
+    com.tencent.mm.vfs.i.aSh(paramString2);
     this.url = paramString1;
-    this.xhv = paramString2;
+    this.yuj = paramString2;
     this.fileName = paramString3;
     this.filePath = (paramString2 + paramString3);
     this.fileType = paramInt;
-    this.xhw = parama;
-    AppMethodBeat.o(187507);
+    this.yuk = parama;
+    AppMethodBeat.o(200312);
   }
   
-  private String dxl()
+  private String dLK()
   {
     AppMethodBeat.i(97289);
     try
     {
-      AdLandingPagesProxy.getInstance().downloadLandingPagesCDNFile(this.xhv, this.fileName, this.url, this.fileType, new AdLandingPagesProxy.g()
+      AdLandingPagesProxy.getInstance().downloadLandingPagesCDNFile(this.yuj, this.fileName, this.url, this.fileType, new AdLandingPagesProxy.g()
       {
-        public final void dsA()
+        public final void dFD()
         {
           AppMethodBeat.i(97285);
-          d.this.apD(d.a(d.this));
+          String str = ax.iH(ai.getContext());
+          ac.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "onDownloadError, netType=" + str + ", url=" + d.this.url);
+          d.this.auG(d.a(d.this));
           if (d.b(d.this) != null) {
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97283);
-                d.b(d.this).dsA();
+                d.b(d.this).dFD();
                 AppMethodBeat.o(97283);
               }
             });
@@ -55,16 +57,16 @@ public final class d
           AppMethodBeat.o(97285);
         }
         
-        public final void dsB()
+        public final void dGZ()
         {
           AppMethodBeat.i(97286);
           if (d.b(d.this) != null) {
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(97284);
-                d.b(d.this).apm(d.a(d.this));
+                d.b(d.this).asD(d.a(d.this));
                 AppMethodBeat.o(97284);
               }
             });
@@ -79,14 +81,15 @@ public final class d
     {
       for (;;)
       {
-        ad.i("MicroMsg.AdLandingPageDownloadCDNFileTask", "maybe wrong download scene, res[%s], stack[%s]", new Object[] { this.url, bt.m(localException) });
-        apD(this.filePath);
-        aq.f(new Runnable()
+        String str = ax.iH(ai.getContext());
+        ac.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "doInBackground exp, netType=" + str + ", exp=" + localException.toString() + ", url=" + this.url);
+        auG(this.filePath);
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97287);
-            d.b(d.this).dsA();
+            d.b(d.this).dFD();
             AppMethodBeat.o(97287);
           }
         });
@@ -94,36 +97,38 @@ public final class d
     }
   }
   
-  protected final void apD(String paramString)
+  protected final void auG(String paramString)
   {
-    AppMethodBeat.i(187508);
+    AppMethodBeat.i(200313);
     int i = 0;
     String str = "0";
     for (;;)
     {
       try
       {
-        File localFile = new File(paramString);
-        if ((localFile.isFile()) && (localFile.exists()))
+        if (com.tencent.mm.vfs.i.eA(paramString))
         {
-          paramString = "1";
-          if (localFile.delete())
+          str = "1";
+          if (com.tencent.mm.vfs.i.deleteFile(paramString))
           {
             i = 1;
-            ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, succ");
-            com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.wAN, paramString, this.fileType, i, "cdn");
-            AppMethodBeat.o(187508);
+            ac.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, succ");
+            paramString = str;
+            str = ax.iH(ai.getContext());
+            com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.xNh, paramString, this.fileType, i, "cdn|".concat(String.valueOf(str)));
+            AppMethodBeat.o(200313);
             return;
           }
-          ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, failed");
+          ac.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, failed");
+          paramString = str;
           continue;
         }
-        ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, file not exists");
+        ac.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, file not exists");
       }
       catch (Throwable paramString)
       {
-        ad.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, exp=" + paramString.toString());
-        AppMethodBeat.o(187508);
+        ac.e("MicroMsg.AdLandingPageDownloadCDNFileTask", "delErrFile, exp=" + paramString.toString());
+        AppMethodBeat.o(200313);
         return;
       }
       paramString = str;
@@ -132,14 +137,14 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void apm(String paramString);
+    public abstract void asD(String paramString);
     
-    public abstract void dsA();
+    public abstract void dFD();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.d
  * JD-Core Version:    0.7.0.1
  */

@@ -54,7 +54,7 @@ public class EncoderWriter
   private int outHeight;
   private int outWidth;
   private volatile int outputAudioTrack;
-  private OutputConfig outputConfig;
+  private EncoderWriter.OutputConfig outputConfig;
   private volatile int outputVideoTrack;
   private boolean released;
   private volatile MediaCodec.BufferInfo videoBufferInfo;
@@ -66,14 +66,14 @@ public class EncoderWriter
   
   public EncoderWriter(String paramString)
   {
-    AppMethodBeat.i(201747);
+    AppMethodBeat.i(197808);
     this.hasVideoTrack = false;
     this.hasAudioTrack = false;
     this.enOfVideoInputStream = false;
     this.enOfAudioInputStream = false;
     this.videoEncoderLock = new ReentrantLock();
     this.audioEncoderLock = new ReentrantLock();
-    this.outputConfig = new OutputConfig();
+    this.outputConfig = new EncoderWriter.OutputConfig();
     this.lock = new ReentrantReadWriteLock();
     this._inputSurface = null;
     this.baselineLevel = 0;
@@ -88,19 +88,19 @@ public class EncoderWriter
     this.audioEncoderStarted = false;
     this.released = false;
     this.muxer = new MediaMuxer(paramString, 0);
-    AppMethodBeat.o(201747);
+    AppMethodBeat.o(197808);
   }
   
   private void configureQualityEncoder(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(201753);
+    AppMethodBeat.i(197814);
     paramMediaFormat.setInteger("frame-rate", 30);
     paramMediaFormat.setInteger("i-frame-interval", 1);
     selectProfileAndLevel(paramMediaFormat);
     try
     {
       paramMediaCodec.configure(paramMediaFormat, null, null, 1);
-      AppMethodBeat.o(201753);
+      AppMethodBeat.o(197814);
       return;
     }
     catch (Exception paramMediaCodec)
@@ -116,13 +116,13 @@ public class EncoderWriter
         try
         {
           MediaCodec.createEncoderByType("video/avc").configure(paramMediaFormat, null, null, 1);
-          AppMethodBeat.o(201753);
+          AppMethodBeat.o(197814);
           return;
         }
         catch (Exception paramMediaCodec)
         {
           Logger.e("AssetWriter", "configureQualityEncoder: ", paramMediaCodec);
-          AppMethodBeat.o(201753);
+          AppMethodBeat.o(197814);
         }
         paramMediaFormat.setInteger("profile", 0);
         paramMediaFormat.setInteger("level", 0);
@@ -132,11 +132,11 @@ public class EncoderWriter
   
   private int dequeueInputBuffer(MediaCodec paramMediaCodec)
   {
-    AppMethodBeat.i(201766);
+    AppMethodBeat.i(197827);
     try
     {
       int i = paramMediaCodec.dequeueInputBuffer(1000L);
-      AppMethodBeat.o(201766);
+      AppMethodBeat.o(197827);
       return i;
     }
     catch (Exception localException)
@@ -155,7 +155,7 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(201766);
+      AppMethodBeat.o(197827);
       throw localException;
     }
     catch (Error localError)
@@ -167,11 +167,11 @@ public class EncoderWriter
   
   private int dequeueOutputBuffer(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(201765);
+    AppMethodBeat.i(197826);
     try
     {
       int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 1000L);
-      AppMethodBeat.o(201765);
+      AppMethodBeat.o(197826);
       return i;
     }
     catch (Exception localException)
@@ -190,14 +190,14 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(201765);
+      AppMethodBeat.o(197826);
       throw localException;
     }
   }
   
   private void drainEncoder(boolean paramBoolean)
   {
-    AppMethodBeat.i(201763);
+    AppMethodBeat.i(197824);
     int i = 0;
     int j = 0;
     boolean bool2 = false;
@@ -313,7 +313,7 @@ public class EncoderWriter
             }
             finally
             {
-              AppMethodBeat.o(201763);
+              AppMethodBeat.o(197824);
             }
           }
           signalEndOfVideoStream();
@@ -327,7 +327,7 @@ public class EncoderWriter
           break label146;
           bool1 = false;
           break label207;
-          AppMethodBeat.o(201763);
+          AppMethodBeat.o(197824);
           return;
           bool4 = bool3;
           i = j;
@@ -339,11 +339,11 @@ public class EncoderWriter
   
   private ByteBuffer getInputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(201767);
+    AppMethodBeat.i(197828);
     try
     {
       ByteBuffer localByteBuffer = DecoderUtils.getInputBuffer(paramMediaCodec, paramInt);
-      AppMethodBeat.o(201767);
+      AppMethodBeat.o(197828);
       return localByteBuffer;
     }
     catch (Exception localException)
@@ -362,7 +362,7 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(201767);
+      AppMethodBeat.o(197828);
       throw localException;
     }
     catch (Error localError)
@@ -374,11 +374,11 @@ public class EncoderWriter
   
   private ByteBuffer getOutputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(201768);
+    AppMethodBeat.i(197829);
     try
     {
       ByteBuffer localByteBuffer = DecoderUtils.getOutputBuffer(paramMediaCodec, paramInt);
-      AppMethodBeat.o(201768);
+      AppMethodBeat.o(197829);
       return localByteBuffer;
     }
     catch (Exception localException)
@@ -397,7 +397,7 @@ public class EncoderWriter
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(201768);
+      AppMethodBeat.o(197829);
       throw localException;
     }
     catch (Error localError)
@@ -407,9 +407,9 @@ public class EncoderWriter
     }
   }
   
-  private void prepareAudioEncoder(OutputConfig paramOutputConfig)
+  private void prepareAudioEncoder(EncoderWriter.OutputConfig paramOutputConfig)
   {
-    AppMethodBeat.i(201752);
+    AppMethodBeat.i(197813);
     Logger.d("AssetWriter", "AssetWriter prepareAudioEncoder ".concat(String.valueOf(this)));
     MediaFormat localMediaFormat = MediaFormat.createAudioFormat(paramOutputConfig.AUDIO_MIME_TYPE, paramOutputConfig.AUDIO_SAMPLE_RATE_HZ, paramOutputConfig.AUDIO_CHANNEL_COUNT);
     localMediaFormat.setInteger("bitrate", paramOutputConfig.AUDIO_BIT_RATE);
@@ -417,12 +417,12 @@ public class EncoderWriter
     localMediaFormat.setByteBuffer("csd-0", ByteBuffer.wrap(new byte[] { 0, 0 }));
     this.audioEncoder = MediaCodec.createEncoderByType(paramOutputConfig.AUDIO_MIME_TYPE);
     this.audioEncoder.configure(localMediaFormat, null, null, 1);
-    AppMethodBeat.o(201752);
+    AppMethodBeat.o(197813);
   }
   
-  private void prepareVideoEncoder(OutputConfig paramOutputConfig)
+  private void prepareVideoEncoder(EncoderWriter.OutputConfig paramOutputConfig)
   {
-    AppMethodBeat.i(201751);
+    AppMethodBeat.i(197812);
     Logger.d("AssetWriter", "AssetWriter prepareVideoEncoder " + this + "  " + paramOutputConfig.VIDEO_TARGET_WIDTH + " x " + paramOutputConfig.VIDEO_TARGET_HEIGHT);
     int i;
     int j;
@@ -456,7 +456,7 @@ public class EncoderWriter
         break label253;
       }
       configureQualityEncoder(this.videoEncoder, (MediaFormat)localObject);
-      AppMethodBeat.o(201751);
+      AppMethodBeat.o(197812);
       return;
       i = paramOutputConfig.VIDEO_BIT_RATE;
       break;
@@ -465,16 +465,16 @@ public class EncoderWriter
     }
     label253:
     this.videoEncoder.configure((MediaFormat)localObject, null, null, 1);
-    AppMethodBeat.o(201751);
+    AppMethodBeat.o(197812);
   }
   
   private void queueInputBuffer(MediaCodec paramMediaCodec, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    AppMethodBeat.i(201770);
+    AppMethodBeat.i(197831);
     try
     {
       paramMediaCodec.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
-      AppMethodBeat.o(201770);
+      AppMethodBeat.o(197831);
       return;
     }
     catch (Exception localException)
@@ -491,7 +491,7 @@ public class EncoderWriter
           queueInputBuffer(paramMediaCodec, paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
         }
       }
-      AppMethodBeat.o(201770);
+      AppMethodBeat.o(197831);
       throw localException;
     }
     catch (Error localError)
@@ -505,119 +505,119 @@ public class EncoderWriter
   private void release()
   {
     // Byte code:
-    //   0: ldc_w 445
-    //   3: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 444
+    //   3: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: iconst_1
-    //   8: putfield 138	com/tencent/tav/decoder/EncoderWriter:released	Z
-    //   11: new 209	java/lang/StringBuilder
+    //   8: putfield 137	com/tencent/tav/decoder/EncoderWriter:released	Z
+    //   11: new 208	java/lang/StringBuilder
     //   14: dup
-    //   15: ldc_w 447
-    //   18: invokespecial 213	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   15: ldc_w 446
+    //   18: invokespecial 212	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   21: aload_0
-    //   22: invokevirtual 370	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 369	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload_0
-    //   27: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   30: invokeinterface 453 1 0
-    //   35: invokeinterface 457 1 0
-    //   40: ldc 33
-    //   42: ldc_w 459
+    //   27: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   30: invokeinterface 452 1 0
+    //   35: invokeinterface 456 1 0
+    //   40: ldc 32
+    //   42: ldc_w 458
     //   45: aload_0
-    //   46: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   49: invokevirtual 322	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   52: invokestatic 325	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: invokestatic 317	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   49: invokevirtual 321	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   52: invokestatic 324	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: aload_0
-    //   56: getfield 418	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
+    //   56: getfield 417	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
     //   59: astore_1
     //   60: aload_1
     //   61: ifnull +22 -> 83
     //   64: aload_0
-    //   65: getfield 418	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
-    //   68: invokevirtual 462	android/media/MediaCodec:stop	()V
+    //   65: getfield 417	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
+    //   68: invokevirtual 461	android/media/MediaCodec:stop	()V
     //   71: aload_0
-    //   72: getfield 418	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
-    //   75: invokevirtual 464	android/media/MediaCodec:release	()V
+    //   72: getfield 417	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
+    //   75: invokevirtual 463	android/media/MediaCodec:release	()V
     //   78: aload_0
     //   79: aconst_null
-    //   80: putfield 418	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
+    //   80: putfield 417	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
     //   83: aload_0
-    //   84: getfield 363	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
+    //   84: getfield 362	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
     //   87: astore_1
     //   88: aload_1
     //   89: ifnull +22 -> 111
     //   92: aload_0
-    //   93: getfield 363	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
-    //   96: invokevirtual 462	android/media/MediaCodec:stop	()V
+    //   93: getfield 362	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
+    //   96: invokevirtual 461	android/media/MediaCodec:stop	()V
     //   99: aload_0
-    //   100: getfield 363	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
-    //   103: invokevirtual 464	android/media/MediaCodec:release	()V
+    //   100: getfield 362	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
+    //   103: invokevirtual 463	android/media/MediaCodec:release	()V
     //   106: aload_0
     //   107: aconst_null
-    //   108: putfield 363	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
+    //   108: putfield 362	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
     //   111: aload_0
-    //   112: getfield 145	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
+    //   112: getfield 144	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
     //   115: ifnull +34 -> 149
     //   118: aload_0
-    //   119: getfield 132	com/tencent/tav/decoder/EncoderWriter:muxerStarted	Z
+    //   119: getfield 131	com/tencent/tav/decoder/EncoderWriter:muxerStarted	Z
     //   122: ifeq +15 -> 137
     //   125: aload_0
     //   126: iconst_0
-    //   127: putfield 132	com/tencent/tav/decoder/EncoderWriter:muxerStarted	Z
+    //   127: putfield 131	com/tencent/tav/decoder/EncoderWriter:muxerStarted	Z
     //   130: aload_0
-    //   131: getfield 145	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
-    //   134: invokevirtual 465	android/media/MediaMuxer:stop	()V
+    //   131: getfield 144	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
+    //   134: invokevirtual 464	android/media/MediaMuxer:stop	()V
     //   137: aload_0
-    //   138: getfield 145	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
-    //   141: invokevirtual 466	android/media/MediaMuxer:release	()V
+    //   138: getfield 144	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
+    //   141: invokevirtual 465	android/media/MediaMuxer:release	()V
     //   144: aload_0
     //   145: aconst_null
-    //   146: putfield 145	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
+    //   146: putfield 144	com/tencent/tav/decoder/EncoderWriter:muxer	Landroid/media/MediaMuxer;
     //   149: aload_0
-    //   150: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   153: invokeinterface 453 1 0
-    //   158: invokeinterface 469 1 0
-    //   163: ldc_w 445
-    //   166: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   153: invokeinterface 452 1 0
+    //   158: invokeinterface 468 1 0
+    //   163: ldc_w 444
+    //   166: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   169: return
     //   170: astore_1
-    //   171: ldc 33
+    //   171: ldc 32
     //   173: aload_1
-    //   174: invokestatic 472	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   174: invokestatic 471	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   177: goto -106 -> 71
     //   180: astore_1
     //   181: aload_0
-    //   182: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   185: invokeinterface 453 1 0
-    //   190: invokeinterface 469 1 0
-    //   195: ldc_w 445
-    //   198: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   182: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   185: invokeinterface 452 1 0
+    //   190: invokeinterface 468 1 0
+    //   195: ldc_w 444
+    //   198: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   201: aload_1
     //   202: athrow
     //   203: astore_1
-    //   204: ldc 33
+    //   204: ldc 32
     //   206: aload_1
-    //   207: invokestatic 472	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   207: invokestatic 471	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   210: goto -132 -> 78
     //   213: astore_1
-    //   214: ldc 33
+    //   214: ldc 32
     //   216: aload_1
-    //   217: invokestatic 472	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   217: invokestatic 471	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   220: goto -121 -> 99
     //   223: astore_1
-    //   224: ldc 33
+    //   224: ldc 32
     //   226: aload_1
-    //   227: invokestatic 472	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   227: invokestatic 471	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   230: goto -124 -> 106
     //   233: astore_1
-    //   234: ldc 33
+    //   234: ldc 32
     //   236: aload_1
-    //   237: invokestatic 472	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   237: invokestatic 471	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   240: goto -103 -> 137
     //   243: astore_1
-    //   244: ldc 33
+    //   244: ldc 32
     //   246: aload_1
-    //   247: invokestatic 472	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   247: invokestatic 471	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   250: goto -106 -> 144
     // Local variable table:
     //   start	length	slot	name	signature
@@ -660,11 +660,11 @@ public class EncoderWriter
   
   private void releaseOutputBuffer(MediaCodec paramMediaCodec, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(201769);
+    AppMethodBeat.i(197830);
     try
     {
       paramMediaCodec.releaseOutputBuffer(paramInt, paramBoolean);
-      AppMethodBeat.o(201769);
+      AppMethodBeat.o(197830);
       return;
     }
     catch (Exception localException)
@@ -681,7 +681,7 @@ public class EncoderWriter
           releaseOutputBuffer(paramMediaCodec, paramInt, paramBoolean);
         }
       }
-      AppMethodBeat.o(201769);
+      AppMethodBeat.o(197830);
       throw localException;
     }
     catch (Error localError)
@@ -693,7 +693,7 @@ public class EncoderWriter
   
   private static MediaCodecInfo selectCodec(String paramString)
   {
-    AppMethodBeat.i(201755);
+    AppMethodBeat.i(197816);
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     while (i < k)
@@ -707,7 +707,7 @@ public class EncoderWriter
         {
           if (arrayOfString[j].equalsIgnoreCase(paramString))
           {
-            AppMethodBeat.o(201755);
+            AppMethodBeat.o(197816);
             return localMediaCodecInfo;
           }
           j += 1;
@@ -715,13 +715,13 @@ public class EncoderWriter
       }
       i += 1;
     }
-    AppMethodBeat.o(201755);
+    AppMethodBeat.o(197816);
     return null;
   }
   
   private void selectProfileAndLevel(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(201754);
+    AppMethodBeat.i(197815);
     Object localObject = selectCodec("video/avc");
     int k;
     int j;
@@ -772,7 +772,7 @@ public class EncoderWriter
           paramMediaFormat.setInteger("level", n);
           Logger.d("AssetWriter", String.format("selectProfileAndLevel: 0x%x, 0x%x", new Object[] { Integer.valueOf(m), Integer.valueOf(n) }));
         }
-        AppMethodBeat.o(201754);
+        AppMethodBeat.o(197815);
         return;
       }
     }
@@ -780,13 +780,13 @@ public class EncoderWriter
   
   private void signalEndOfAudioStream()
   {
-    AppMethodBeat.i(201760);
+    AppMethodBeat.i(197821);
     try
     {
       boolean bool = this.enOfAudioInputStream;
       if (bool)
       {
-        AppMethodBeat.o(201760);
+        AppMethodBeat.o(197821);
         return;
       }
       Logger.e("AssetWriter", "signalEndOfAudioStream: ");
@@ -796,36 +796,36 @@ public class EncoderWriter
         queueInputBuffer(this.audioEncoder, i, 0, 0, 0L, 4);
         this.enOfAudioInputStream = true;
       }
-      AppMethodBeat.o(201760);
+      AppMethodBeat.o(197821);
       return;
     }
     catch (Throwable localThrowable)
     {
       Logger.e("AssetWriter", "signalEndOfAudioStream failed", localThrowable);
-      AppMethodBeat.o(201760);
+      AppMethodBeat.o(197821);
     }
   }
   
   private void signalEndOfVideoStream()
   {
-    AppMethodBeat.i(201758);
+    AppMethodBeat.i(197819);
     Logger.e("AssetWriter", "signalEndOfVideoStream: ");
     if ((this._inputSurface == null) || (this.enOfVideoInputStream))
     {
-      AppMethodBeat.o(201758);
+      AppMethodBeat.o(197819);
       return;
     }
     try
     {
       this.videoEncoder.signalEndOfInputStream();
       this.enOfVideoInputStream = true;
-      AppMethodBeat.o(201758);
+      AppMethodBeat.o(197819);
       return;
     }
     catch (Throwable localThrowable)
     {
       Logger.e("AssetWriter", "signalEndOfVideoStream failed", localThrowable);
-      AppMethodBeat.o(201758);
+      AppMethodBeat.o(197819);
     }
   }
   
@@ -841,23 +841,23 @@ public class EncoderWriter
   
   private void waitTime(long paramLong)
   {
-    AppMethodBeat.i(201771);
+    AppMethodBeat.i(197832);
     try
     {
       wait(paramLong);
-      AppMethodBeat.o(201771);
+      AppMethodBeat.o(197832);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(201771);
+      AppMethodBeat.o(197832);
     }
   }
   
   private boolean writeAudioFrame(boolean paramBoolean)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(201772);
+    AppMethodBeat.i(197833);
     for (;;)
     {
       int i;
@@ -888,7 +888,7 @@ public class EncoderWriter
       finally
       {
         this.audioEncoderLock.unlock();
-        AppMethodBeat.o(201772);
+        AppMethodBeat.o(197833);
       }
       if (i >= 0)
       {
@@ -942,7 +942,7 @@ public class EncoderWriter
   private boolean writeVideoFrame(boolean paramBoolean)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(201764);
+    AppMethodBeat.i(197825);
     for (;;)
     {
       int i;
@@ -973,7 +973,7 @@ public class EncoderWriter
       finally
       {
         this.videoEncoderLock.unlock();
-        AppMethodBeat.o(201764);
+        AppMethodBeat.o(197825);
       }
       if (i >= 0)
       {
@@ -1051,12 +1051,12 @@ public class EncoderWriter
   {
     try
     {
-      AppMethodBeat.i(201748);
+      AppMethodBeat.i(197809);
       if ((this._inputSurface == null) && (this.hasVideoTrack)) {
         this._inputSurface = this.videoEncoder.createInputSurface();
       }
       Surface localSurface = this._inputSurface;
-      AppMethodBeat.o(201748);
+      AppMethodBeat.o(197809);
       return localSurface;
     }
     finally {}
@@ -1064,7 +1064,7 @@ public class EncoderWriter
   
   public void endWriteAudioSample()
   {
-    AppMethodBeat.i(201759);
+    AppMethodBeat.i(197820);
     Logger.e("AssetWriter", "endWriteAudioSample:".concat(String.valueOf(this)));
     try
     {
@@ -1101,7 +1101,7 @@ public class EncoderWriter
     finally
     {
       this.lock.readLock().unlock();
-      AppMethodBeat.o(201759);
+      AppMethodBeat.o(197820);
     }
   }
   
@@ -1109,71 +1109,71 @@ public class EncoderWriter
   public void endWriteVideoSample()
   {
     // Byte code:
-    //   0: ldc_w 633
-    //   3: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 33
-    //   8: ldc_w 635
-    //   11: invokestatic 245	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   0: ldc_w 632
+    //   3: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 32
+    //   8: ldc_w 634
+    //   11: invokestatic 244	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   18: invokeinterface 625 1 0
-    //   23: invokeinterface 457 1 0
+    //   15: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   18: invokeinterface 624 1 0
+    //   23: invokeinterface 456 1 0
     //   28: aload_0
-    //   29: getfield 138	com/tencent/tav/decoder/EncoderWriter:released	Z
+    //   29: getfield 137	com/tencent/tav/decoder/EncoderWriter:released	Z
     //   32: istore_1
     //   33: iload_1
     //   34: ifeq +24 -> 58
     //   37: aload_0
-    //   38: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   41: invokeinterface 625 1 0
-    //   46: invokeinterface 469 1 0
-    //   51: ldc_w 633
-    //   54: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   41: invokeinterface 624 1 0
+    //   46: invokeinterface 468 1 0
+    //   51: ldc_w 632
+    //   54: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: return
     //   58: aload_0
-    //   59: getfield 113	com/tencent/tav/decoder/EncoderWriter:_inputSurface	Landroid/view/Surface;
+    //   59: getfield 112	com/tencent/tav/decoder/EncoderWriter:_inputSurface	Landroid/view/Surface;
     //   62: ifnull +12 -> 74
     //   65: aload_0
-    //   66: getfield 94	com/tencent/tav/decoder/EncoderWriter:enOfVideoInputStream	Z
+    //   66: getfield 93	com/tencent/tav/decoder/EncoderWriter:enOfVideoInputStream	Z
     //   69: istore_1
     //   70: iload_1
     //   71: ifeq +24 -> 95
     //   74: aload_0
-    //   75: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   78: invokeinterface 625 1 0
-    //   83: invokeinterface 469 1 0
-    //   88: ldc_w 633
-    //   91: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   78: invokeinterface 624 1 0
+    //   83: invokeinterface 468 1 0
+    //   88: ldc_w 632
+    //   91: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   94: return
     //   95: aload_0
-    //   96: getfield 418	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
-    //   99: invokevirtual 551	android/media/MediaCodec:signalEndOfInputStream	()V
+    //   96: getfield 417	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
+    //   99: invokevirtual 550	android/media/MediaCodec:signalEndOfInputStream	()V
     //   102: aload_0
     //   103: iconst_1
-    //   104: putfield 94	com/tencent/tav/decoder/EncoderWriter:enOfVideoInputStream	Z
+    //   104: putfield 93	com/tencent/tav/decoder/EncoderWriter:enOfVideoInputStream	Z
     //   107: aload_0
     //   108: iconst_0
-    //   109: invokespecial 629	com/tencent/tav/decoder/EncoderWriter:drainEncoder	(Z)V
+    //   109: invokespecial 628	com/tencent/tav/decoder/EncoderWriter:drainEncoder	(Z)V
     //   112: aload_0
-    //   113: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   116: invokeinterface 625 1 0
-    //   121: invokeinterface 469 1 0
-    //   126: ldc_w 633
-    //   129: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   116: invokeinterface 624 1 0
+    //   121: invokeinterface 468 1 0
+    //   126: ldc_w 632
+    //   129: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   132: return
     //   133: astore_2
-    //   134: ldc 33
-    //   136: ldc_w 637
+    //   134: ldc 32
+    //   136: ldc_w 636
     //   139: aload_2
-    //   140: invokestatic 181	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   140: invokestatic 180	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   143: goto -36 -> 107
     //   146: astore_2
     //   147: aload_0
-    //   148: getfield 111	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
-    //   151: invokeinterface 625 1 0
-    //   156: invokeinterface 469 1 0
-    //   161: ldc_w 633
-    //   164: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   148: getfield 110	com/tencent/tav/decoder/EncoderWriter:lock	Ljava/util/concurrent/locks/ReadWriteLock;
+    //   151: invokeinterface 624 1 0
+    //   156: invokeinterface 468 1 0
+    //   161: ldc_w 632
+    //   164: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   167: aload_2
     //   168: athrow
     // Local variable table:
@@ -1212,7 +1212,7 @@ public class EncoderWriter
     return this.videoPresentationTimeUs;
   }
   
-  public void outputAudioEncoderConfig(OutputConfig paramOutputConfig)
+  public void outputAudioEncoderConfig(EncoderWriter.OutputConfig paramOutputConfig)
   {
     try
     {
@@ -1230,7 +1230,7 @@ public class EncoderWriter
     }
   }
   
-  public void outputVideoEncoderConfig(OutputConfig paramOutputConfig)
+  public void outputVideoEncoderConfig(EncoderWriter.OutputConfig paramOutputConfig)
   {
     try
     {
@@ -1255,44 +1255,44 @@ public class EncoderWriter
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 645
-    //   5: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 644
+    //   5: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 103	com/tencent/tav/decoder/EncoderWriter:audioEncoderLock	Ljava/util/concurrent/locks/Lock;
-    //   12: invokeinterface 457 1 0
-    //   17: ldc 33
-    //   19: ldc_w 647
+    //   9: getfield 102	com/tencent/tav/decoder/EncoderWriter:audioEncoderLock	Ljava/util/concurrent/locks/Lock;
+    //   12: invokeinterface 456 1 0
+    //   17: ldc 32
+    //   19: ldc_w 646
     //   22: aload_0
-    //   23: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   26: invokevirtual 322	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   29: invokestatic 325	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: invokestatic 317	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   26: invokevirtual 321	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   29: invokestatic 324	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: aload_0
     //   33: aload_0
-    //   34: getfield 106	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
-    //   37: invokespecial 649	com/tencent/tav/decoder/EncoderWriter:prepareAudioEncoder	(Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;)V
+    //   34: getfield 105	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
+    //   37: invokespecial 648	com/tencent/tav/decoder/EncoderWriter:prepareAudioEncoder	(Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;)V
     //   40: aload_0
     //   41: iconst_1
-    //   42: putfield 92	com/tencent/tav/decoder/EncoderWriter:hasAudioTrack	Z
+    //   42: putfield 91	com/tencent/tav/decoder/EncoderWriter:hasAudioTrack	Z
     //   45: aload_0
-    //   46: getfield 363	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
-    //   49: invokevirtual 650	android/media/MediaCodec:start	()V
+    //   46: getfield 362	com/tencent/tav/decoder/EncoderWriter:audioEncoder	Landroid/media/MediaCodec;
+    //   49: invokevirtual 649	android/media/MediaCodec:start	()V
     //   52: aload_0
     //   53: iconst_1
-    //   54: putfield 136	com/tencent/tav/decoder/EncoderWriter:audioEncoderStarted	Z
+    //   54: putfield 135	com/tencent/tav/decoder/EncoderWriter:audioEncoderStarted	Z
     //   57: aload_0
-    //   58: getfield 103	com/tencent/tav/decoder/EncoderWriter:audioEncoderLock	Ljava/util/concurrent/locks/Lock;
-    //   61: invokeinterface 469 1 0
-    //   66: ldc_w 645
-    //   69: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   58: getfield 102	com/tencent/tav/decoder/EncoderWriter:audioEncoderLock	Ljava/util/concurrent/locks/Lock;
+    //   61: invokeinterface 468 1 0
+    //   66: ldc_w 644
+    //   69: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aload_0
     //   73: monitorexit
     //   74: return
     //   75: astore_1
     //   76: aload_0
-    //   77: getfield 103	com/tencent/tav/decoder/EncoderWriter:audioEncoderLock	Ljava/util/concurrent/locks/Lock;
-    //   80: invokeinterface 469 1 0
-    //   85: ldc_w 645
-    //   88: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: getfield 102	com/tencent/tav/decoder/EncoderWriter:audioEncoderLock	Ljava/util/concurrent/locks/Lock;
+    //   80: invokeinterface 468 1 0
+    //   85: ldc_w 644
+    //   88: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_1
     //   92: athrow
     //   93: astore_1
@@ -1319,64 +1319,64 @@ public class EncoderWriter
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 652
-    //   5: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 651
+    //   5: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 101	com/tencent/tav/decoder/EncoderWriter:videoEncoderLock	Ljava/util/concurrent/locks/Lock;
-    //   12: invokeinterface 457 1 0
-    //   17: ldc 33
-    //   19: ldc_w 654
+    //   9: getfield 100	com/tencent/tav/decoder/EncoderWriter:videoEncoderLock	Ljava/util/concurrent/locks/Lock;
+    //   12: invokeinterface 456 1 0
+    //   17: ldc 32
+    //   19: ldc_w 653
     //   22: aload_0
-    //   23: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   26: invokevirtual 322	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   29: invokestatic 325	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: invokestatic 317	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   26: invokevirtual 321	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   29: invokestatic 324	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   32: aload_0
-    //   33: getfield 106	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
-    //   36: getfield 375	com/tencent/tav/decoder/EncoderWriter$OutputConfig:VIDEO_TARGET_WIDTH	I
+    //   33: getfield 105	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
+    //   36: getfield 374	com/tencent/tav/decoder/EncoderWriter$OutputConfig:VIDEO_TARGET_WIDTH	I
     //   39: ifle +61 -> 100
     //   42: aload_0
-    //   43: getfield 106	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
-    //   46: getfield 380	com/tencent/tav/decoder/EncoderWriter$OutputConfig:VIDEO_TARGET_HEIGHT	I
+    //   43: getfield 105	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
+    //   46: getfield 379	com/tencent/tav/decoder/EncoderWriter$OutputConfig:VIDEO_TARGET_HEIGHT	I
     //   49: ifle +51 -> 100
     //   52: aload_0
     //   53: aload_0
-    //   54: getfield 106	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
-    //   57: invokespecial 656	com/tencent/tav/decoder/EncoderWriter:prepareVideoEncoder	(Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;)V
+    //   54: getfield 105	com/tencent/tav/decoder/EncoderWriter:outputConfig	Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;
+    //   57: invokespecial 655	com/tencent/tav/decoder/EncoderWriter:prepareVideoEncoder	(Lcom/tencent/tav/decoder/EncoderWriter$OutputConfig;)V
     //   60: aload_0
     //   61: iconst_1
-    //   62: putfield 90	com/tencent/tav/decoder/EncoderWriter:hasVideoTrack	Z
+    //   62: putfield 89	com/tencent/tav/decoder/EncoderWriter:hasVideoTrack	Z
     //   65: aload_0
-    //   66: invokevirtual 657	com/tencent/tav/decoder/EncoderWriter:createInputSurface	()Landroid/view/Surface;
+    //   66: invokevirtual 656	com/tencent/tav/decoder/EncoderWriter:createInputSurface	()Landroid/view/Surface;
     //   69: pop
     //   70: aload_0
-    //   71: getfield 418	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
-    //   74: invokevirtual 650	android/media/MediaCodec:start	()V
+    //   71: getfield 417	com/tencent/tav/decoder/EncoderWriter:videoEncoder	Landroid/media/MediaCodec;
+    //   74: invokevirtual 649	android/media/MediaCodec:start	()V
     //   77: aload_0
     //   78: iconst_1
-    //   79: putfield 134	com/tencent/tav/decoder/EncoderWriter:videoEncoderStarted	Z
+    //   79: putfield 133	com/tencent/tav/decoder/EncoderWriter:videoEncoderStarted	Z
     //   82: aload_0
-    //   83: getfield 101	com/tencent/tav/decoder/EncoderWriter:videoEncoderLock	Ljava/util/concurrent/locks/Lock;
-    //   86: invokeinterface 469 1 0
-    //   91: ldc_w 652
-    //   94: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: getfield 100	com/tencent/tav/decoder/EncoderWriter:videoEncoderLock	Ljava/util/concurrent/locks/Lock;
+    //   86: invokeinterface 468 1 0
+    //   91: ldc_w 651
+    //   94: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: aload_0
     //   98: monitorexit
     //   99: return
-    //   100: new 659	java/lang/IllegalArgumentException
+    //   100: new 658	java/lang/IllegalArgumentException
     //   103: dup
-    //   104: ldc_w 661
-    //   107: invokespecial 662	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   104: ldc_w 660
+    //   107: invokespecial 661	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   110: astore_1
-    //   111: ldc_w 652
-    //   114: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: ldc_w 651
+    //   114: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: aload_1
     //   118: athrow
     //   119: astore_1
     //   120: aload_0
-    //   121: getfield 101	com/tencent/tav/decoder/EncoderWriter:videoEncoderLock	Ljava/util/concurrent/locks/Lock;
-    //   124: invokeinterface 469 1 0
-    //   129: ldc_w 652
-    //   132: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: getfield 100	com/tencent/tav/decoder/EncoderWriter:videoEncoderLock	Ljava/util/concurrent/locks/Lock;
+    //   124: invokeinterface 468 1 0
+    //   129: ldc_w 651
+    //   132: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: aload_1
     //   136: athrow
     //   137: astore_1
@@ -1401,23 +1401,23 @@ public class EncoderWriter
   
   public void stop()
   {
-    AppMethodBeat.i(201773);
+    AppMethodBeat.i(197834);
     Logger.e("AssetWriter", "AssetWriter stop ".concat(String.valueOf(this)));
     if (this.released)
     {
-      AppMethodBeat.o(201773);
+      AppMethodBeat.o(197834);
       return;
     }
     if ((!this.videoEncoderStarted) && (!this.audioEncoderStarted))
     {
-      AppMethodBeat.o(201773);
+      AppMethodBeat.o(197834);
       return;
     }
     this.videoEncoderStarted = false;
     this.audioEncoderStarted = false;
     drainEncoder(true);
     release();
-    AppMethodBeat.o(201773);
+    AppMethodBeat.o(197834);
   }
   
   public boolean videoTrackWritable()
@@ -1451,15 +1451,16 @@ public class EncoderWriter
   
   public void writeAudioSample(long paramLong, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(201762);
-    label327:
+    AppMethodBeat.i(197823);
+    Logger.e("AssetWriter", "writeAudioSample: " + paramLong + "  " + paramByteBuffer.limit());
+    long l2 = System.currentTimeMillis();
+    label420:
     for (;;)
     {
       int j;
       try
       {
         this.lock.readLock().lock();
-        new StringBuilder("writeAudioSample: ").append(paramLong).append("  ").append(paramByteBuffer.limit());
         boolean bool;
         if (paramByteBuffer != null)
         {
@@ -1482,7 +1483,7 @@ public class EncoderWriter
               this.audioEncoderLock.lock();
               int m = dequeueInputBuffer(this.audioEncoder);
               if (m < 0) {
-                break label327;
+                break label420;
               }
               ByteBuffer localByteBuffer = getInputBuffer(this.audioEncoder, m);
               int k = Math.min(j - i, localByteBuffer.capacity());
@@ -1491,8 +1492,8 @@ public class EncoderWriter
               localByteBuffer.put(paramByteBuffer);
               queueInputBuffer(this.audioEncoder, m, 0, k, paramLong + l1, 0);
               i += k;
-              long l2 = DecoderUtils.getAudioDuration(k, 1, 44100);
-              l1 = l2 + l1;
+              long l3 = DecoderUtils.getAudioDuration(k, 1, 44100);
+              l1 = l3 + l1;
               this.audioEncoderLock.unlock();
               drainEncoder(false);
               continue;
@@ -1500,7 +1501,7 @@ public class EncoderWriter
             finally
             {
               this.audioEncoderLock.unlock();
-              AppMethodBeat.o(201762);
+              AppMethodBeat.o(197823);
             }
           }
         }
@@ -1509,18 +1510,22 @@ public class EncoderWriter
       finally
       {
         this.lock.readLock().unlock();
-        AppMethodBeat.o(201762);
+        Logger.e("AssetWriter", "writeAudioSample finish cost " + (System.currentTimeMillis() - l2));
+        AppMethodBeat.o(197823);
       }
       paramByteBuffer.limit(j);
       this.lock.readLock().unlock();
-      AppMethodBeat.o(201762);
+      Logger.e("AssetWriter", "writeAudioSample finish cost " + (System.currentTimeMillis() - l2));
+      AppMethodBeat.o(197823);
       return;
     }
   }
   
   public void writeVideoSample()
   {
-    AppMethodBeat.i(201756);
+    AppMethodBeat.i(197817);
+    Logger.i("AssetWriter", "writeVideoSample", new Object[0]);
+    long l = System.currentTimeMillis();
     try
     {
       this.lock.readLock().lock();
@@ -1534,16 +1539,17 @@ public class EncoderWriter
     finally
     {
       this.lock.readLock().unlock();
-      AppMethodBeat.o(201756);
+      Logger.i("AssetWriter", "writeVideoSample finish cost " + (System.currentTimeMillis() - l), new Object[0]);
+      AppMethodBeat.o(197817);
     }
   }
   
   public void writeVideoSample(long paramLong, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(201761);
+    AppMethodBeat.i(197822);
     if (this._inputSurface != null)
     {
-      AppMethodBeat.o(201761);
+      AppMethodBeat.o(197822);
       return;
     }
     int i = 1;
@@ -1567,30 +1573,15 @@ public class EncoderWriter
       finally
       {
         this.videoEncoderLock.unlock();
-        AppMethodBeat.o(201761);
+        AppMethodBeat.o(197822);
       }
     }
-    AppMethodBeat.o(201761);
-  }
-  
-  public static final class OutputConfig
-  {
-    public int AUDIO_AAC_PROFILE = 2;
-    public int AUDIO_BIT_RATE = 128000;
-    public int AUDIO_CHANNEL_COUNT = 1;
-    public String AUDIO_MIME_TYPE = "audio/mp4a-latm";
-    public int AUDIO_SAMPLE_RATE_HZ = 44100;
-    public int VIDEO_BIT_RATE = 8000000;
-    public int VIDEO_FRAME_RATE = 30;
-    public int VIDEO_IFRAME_INTERVAL = 1;
-    public boolean VIDEO_QUALITY = false;
-    public int VIDEO_TARGET_HEIGHT = 0;
-    public int VIDEO_TARGET_WIDTH = 0;
+    AppMethodBeat.o(197822);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.EncoderWriter
  * JD-Core Version:    0.7.0.1
  */

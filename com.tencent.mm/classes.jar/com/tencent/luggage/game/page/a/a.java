@@ -14,18 +14,18 @@ import com.tencent.mm.plugin.appbrand.ui.r;
 final class a
   implements c
 {
-  private final aa cec;
-  private c.b ced = null;
+  private final aa caZ;
+  private c.b cba = null;
   
   public a(aa paramaa)
   {
-    this.cec = paramaa;
+    this.caZ = paramaa;
   }
   
-  private void br(boolean paramBoolean)
+  private void bq(boolean paramBoolean)
   {
     AppMethodBeat.i(130679);
-    Object localObject = com.tencent.mm.sdk.f.a.iV(this.cec.getContext());
+    Object localObject = com.tencent.mm.sdk.f.a.jg(this.caZ.getContext());
     if (localObject == null)
     {
       AppMethodBeat.o(130679);
@@ -42,14 +42,40 @@ final class a
     AppMethodBeat.o(130679);
   }
   
-  public final void CH()
+  public final void BW()
+  {
+    AppMethodBeat.i(130678);
+    if (this.cba == null) {
+      if (!this.caZ.getRuntime().getAppConfig().jBB.jBQ) {
+        break label78;
+      }
+    }
+    label78:
+    for (c.b localb = c.b.lGP;; localb = c.b.lGQ)
+    {
+      this.cba = localb;
+      switch (1.cbb[this.cba.ordinal()])
+      {
+      default: 
+        AppMethodBeat.o(130678);
+        return;
+      }
+    }
+    Cl();
+    AppMethodBeat.o(130678);
+    return;
+    Cm();
+    AppMethodBeat.o(130678);
+  }
+  
+  public final void Cl()
   {
     AppMethodBeat.i(130676);
-    this.ced = c.b.lgW;
-    br(false);
-    if ((Build.VERSION.SDK_INT >= 21) && ((this.cec.getContext() instanceof Activity)))
+    this.cba = c.b.lGP;
+    bq(false);
+    if ((Build.VERSION.SDK_INT >= 21) && ((this.caZ.getContext() instanceof Activity)))
     {
-      Window localWindow = ((Activity)this.cec.getContext()).getWindow();
+      Window localWindow = ((Activity)this.caZ.getContext()).getWindow();
       if (localWindow != null)
       {
         localWindow.addFlags(-2147483648);
@@ -59,48 +85,22 @@ final class a
     AppMethodBeat.o(130676);
   }
   
-  public final void CI()
+  public final void Cm()
   {
     AppMethodBeat.i(130677);
-    this.ced = c.b.lgX;
-    br(true);
+    this.cba = c.b.lGQ;
+    bq(true);
     AppMethodBeat.o(130677);
   }
   
-  public final c.b CJ()
+  public final c.b Cn()
   {
-    return this.ced;
-  }
-  
-  public final void Cs()
-  {
-    AppMethodBeat.i(130678);
-    if (this.ced == null) {
-      if (!this.cec.getRuntime().getAppConfig().jbo.jbD) {
-        break label78;
-      }
-    }
-    label78:
-    for (c.b localb = c.b.lgW;; localb = c.b.lgX)
-    {
-      this.ced = localb;
-      switch (1.cee[this.ced.ordinal()])
-      {
-      default: 
-        AppMethodBeat.o(130678);
-        return;
-      }
-    }
-    CH();
-    AppMethodBeat.o(130678);
-    return;
-    CI();
-    AppMethodBeat.o(130678);
+    return this.cba;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.page.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package org.xwalk.core;
 
 import android.graphics.Bitmap;
-import com.tencent.xweb.p;
+import com.tencent.xweb.q;
 import java.io.File;
 
 public abstract class XWalkLongScreenshotCallback
-  implements p
+  implements q
 {
   private Object bridge;
   private XWalkCoreWrapper coreWrapper;

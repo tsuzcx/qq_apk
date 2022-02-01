@@ -8,44 +8,44 @@ import d.l.b.a.b.l.i;
 public abstract class g
   extends a
 {
-  private final an Jrj;
-  private final l Jtl;
-  private final boolean Jtm;
+  private final an LeC;
+  private final l LgE;
+  private final boolean LgF;
   
   protected g(i parami, l paraml, f paramf, an paraman)
   {
     super(parami, paramf);
-    this.Jtl = paraml;
-    this.Jrj = paraman;
-    this.Jtm = false;
+    this.LgE = paraml;
+    this.LeC = paraman;
+    this.LgF = false;
   }
   
-  public boolean fxE()
+  public final l fPU()
   {
-    return this.Jtm;
-  }
-  
-  public final an fxG()
-  {
-    an localan = this.Jrj;
-    if (localan == null) {
-      adP(5);
-    }
-    return localan;
-  }
-  
-  public final l fxq()
-  {
-    l locall = this.Jtl;
+    l locall = this.LgE;
     if (locall == null) {
-      adP(4);
+      agL(4);
     }
     return locall;
+  }
+  
+  public boolean fQi()
+  {
+    return this.LgF;
+  }
+  
+  public final an fQk()
+  {
+    an localan = this.LeC;
+    if (localan == null) {
+      agL(5);
+    }
+    return localan;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.g
  * JD-Core Version:    0.7.0.1
  */

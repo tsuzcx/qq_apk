@@ -6,7 +6,7 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface c
   extends ab
 {
-  public abstract e eXd();
+  public abstract e fmP();
 }
 
 

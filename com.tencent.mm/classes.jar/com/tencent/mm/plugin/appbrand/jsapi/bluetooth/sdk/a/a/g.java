@@ -15,65 +15,65 @@ import java.util.UUID;
 public final class g
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  private final String jJz;
-  private final String jiP;
+  private final String jJc;
+  private final String kjZ;
   
   public g(String paramString1, String paramString2)
   {
-    this.jiP = paramString1;
-    this.jJz = paramString2;
+    this.jJc = paramString1;
+    this.kjZ = paramString2;
   }
   
-  public final void aYR()
+  public final void bfM()
   {
     AppMethodBeat.i(144582);
-    BluetoothGatt localBluetoothGatt = this.jJH.jJp;
+    BluetoothGatt localBluetoothGatt = this.kkh.kjP;
     if (localBluetoothGatt == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, bluetoothGatt is null", new Object[] { this });
-      a(j.jKh);
+      a(j.kkI);
       done();
       AppMethodBeat.o(144582);
       return;
     }
-    if (!c.HX(this.jiP))
+    if (!c.Mc(this.jJc))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, serviceId is illegal", new Object[] { this });
-      a(j.jKf);
+      a(j.kkG);
       done();
       AppMethodBeat.o(144582);
       return;
     }
-    Object localObject = localBluetoothGatt.getService(UUID.fromString(this.jiP));
+    Object localObject = localBluetoothGatt.getService(UUID.fromString(this.jJc));
     if (localObject == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, gattService is null", new Object[] { this });
-      a(j.jKf);
+      a(j.kkG);
       done();
       AppMethodBeat.o(144582);
       return;
     }
-    if (!c.HX(this.jJz))
+    if (!c.Mc(this.kjZ))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, characteristicId is illegal", new Object[] { this });
-      a(j.jKg);
+      a(j.kkH);
       done();
       AppMethodBeat.o(144582);
       return;
     }
-    localObject = ((BluetoothGattService)localObject).getCharacteristic(UUID.fromString(this.jJz));
+    localObject = ((BluetoothGattService)localObject).getCharacteristic(UUID.fromString(this.kjZ));
     if (localObject == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, gattCharacteristic is null", new Object[] { this });
-      a(j.jKg);
+      a(j.kkH);
       done();
       AppMethodBeat.o(144582);
       return;
     }
-    if (!c.rE(((BluetoothGattCharacteristic)localObject).getProperties()))
+    if (!c.st(((BluetoothGattCharacteristic)localObject).getProperties()))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, not support read", new Object[] { this });
-      a(j.jKi);
+      a(j.kkJ);
       done();
       AppMethodBeat.o(144582);
       return;
@@ -81,12 +81,12 @@ public final class g
     if (!localBluetoothGatt.readCharacteristic((BluetoothGattCharacteristic)localObject))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s bluetoothGatt.readCharacteristic fail", new Object[] { this });
-      a(j.jKj);
+      a(j.kkK);
       done();
       AppMethodBeat.o(144582);
       return;
     }
-    a(j.jJZ);
+    a(j.kkA);
     AppMethodBeat.o(144582);
   }
   
@@ -98,7 +98,7 @@ public final class g
   public final void onCharacteristicRead(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
     AppMethodBeat.i(144583);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.Action", "action:%s onCharacteristicRead status:%s", new Object[] { this, f.rB(paramInt) });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.Action", "action:%s onCharacteristicRead status:%s", new Object[] { this, f.sq(paramInt) });
     done();
     AppMethodBeat.o(144583);
   }
@@ -106,7 +106,7 @@ public final class g
   public final String toString()
   {
     AppMethodBeat.i(144584);
-    String str = "ReadCharacteristicAction#" + this.jJO + "{serviceId='" + this.jiP + '\'' + ", characteristicId='" + this.jJz + '\'' + ", debug=" + this.aMt + ", mainThread=" + this.jIS + ", serial=" + this.jIU + '}';
+    String str = "ReadCharacteristicAction#" + this.kko + "{serviceId='" + this.jJc + '\'' + ", characteristicId='" + this.kjZ + '\'' + ", debug=" + this.aNj + ", mainThread=" + this.kjt + ", serial=" + this.kjv + '}';
     AppMethodBeat.o(144584);
     return str;
   }

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class tf
   extends b
 {
-  public a dyH;
+  public a dwf;
+  public b dwg;
   
   public tf()
   {
@@ -15,17 +16,27 @@ public final class tf
   
   private tf(byte paramByte)
   {
-    AppMethodBeat.i(125634);
-    this.dyH = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125631);
+    this.dwf = new a();
+    this.dwg = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125634);
+    AppMethodBeat.o(125631);
   }
   
   public static final class a
   {
-    public String dgg;
-    public String dpC;
+    public boolean dwh;
+    public String dwi;
+    public boolean dwj = false;
+    public int type;
+    public String videoPath;
+  }
+  
+  public static final class b
+  {
+    public String dwi;
+    public String dwk;
   }
 }
 

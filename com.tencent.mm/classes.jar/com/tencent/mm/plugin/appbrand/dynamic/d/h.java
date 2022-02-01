@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 import android.os.Bundle;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b.b.a;
+import com.tencent.mm.aa.b.b.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.extension.f;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.modelappbrand.t;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import org.json.JSONObject;
 
 public final class h
@@ -21,16 +21,16 @@ public final class h
     super("onTapCallback", 327);
   }
   
-  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121324);
-    parama = parama.aej();
+    parama = parama.afz();
     b localb = new b();
     localb.id = parama.getString("__page_view_id", "");
-    localb.dAA = paramJSONObject.optString("eventId", "");
-    localb.jmb = paramJSONObject.optBoolean("hasHandler");
-    localb.jmc = paramJSONObject.optBoolean("res");
-    XIPCInvoker.a(parama.getString("__process_name", aj.getProcessName()), localb, a.class, new d() {});
+    localb.dym = paramJSONObject.optString("eventId", "");
+    localb.jMo = paramJSONObject.optBoolean("hasHandler");
+    localb.jMp = paramJSONObject.optBoolean("res");
+    XIPCInvoker.a(parama.getString("__process_name", ai.getProcessName()), localb, a.class, new d() {});
     AppMethodBeat.o(121324);
   }
   
@@ -41,22 +41,22 @@ public final class h
   public static final class b
     implements f
   {
-    String dAA;
+    String dym;
     String id;
-    boolean jmb;
-    boolean jmc;
+    boolean jMo;
+    boolean jMp;
     
     public final void d(Parcel paramParcel)
     {
       int j = 1;
       AppMethodBeat.i(121322);
       paramParcel.writeString(this.id);
-      if (this.jmb)
+      if (this.jMo)
       {
         i = 1;
         paramParcel.writeInt(i);
-        paramParcel.writeString(this.dAA);
-        if (!this.jmc) {
+        paramParcel.writeString(this.dym);
+        if (!this.jMp) {
           break label62;
         }
       }
@@ -79,8 +79,8 @@ public final class h
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.jmb = bool1;
-        this.dAA = paramParcel.readString();
+        this.jMo = bool1;
+        this.dym = paramParcel.readString();
         if (paramParcel.readInt() != 1) {
           break label64;
         }
@@ -88,7 +88,7 @@ public final class h
       label64:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.jmc = bool1;
+        this.jMp = bool1;
         AppMethodBeat.o(121323);
         return;
         bool1 = false;
@@ -99,7 +99,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.h
  * JD-Core Version:    0.7.0.1
  */

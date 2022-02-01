@@ -6,11 +6,11 @@ import com.tencent.mm.toolkit.a.a.a;
 public final class f
   implements com.tencent.mm.toolkit.a.a.f
 {
-  private String FEP;
+  private String HdS;
   
   public f(String paramString)
   {
-    this.FEP = paramString;
+    this.HdS = paramString;
   }
   
   /* Error */
@@ -65,7 +65,7 @@ public final class f
     //   84: aload_3
     //   85: invokevirtual 66	java/security/DigestInputStream:getMessageDigest	()Ljava/security/MessageDigest;
     //   88: invokevirtual 70	java/security/MessageDigest:digest	()[B
-    //   91: invokestatic 76	com/tencent/mm/toolkit/a/d$a:aa	([B)Ljava/lang/String;
+    //   91: invokestatic 76	com/tencent/mm/toolkit/a/d$a:Z	([B)Ljava/lang/String;
     //   94: aload_1
     //   95: invokevirtual 82	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   98: ifeq +58 -> 156
@@ -73,75 +73,75 @@ public final class f
     //   102: astore 4
     //   104: aload_3
     //   105: astore 5
-    //   107: getstatic 88	com/tencent/mm/toolkit/a/e:DEBUG	Z
+    //   107: getstatic 87	com/tencent/mm/toolkit/a/e:DEBUG	Z
     //   110: ifeq +35 -> 145
     //   113: aload_3
     //   114: astore 4
     //   116: aload_3
     //   117: astore 5
-    //   119: new 90	java/lang/StringBuilder
+    //   119: new 89	java/lang/StringBuilder
     //   122: dup
-    //   123: ldc 92
-    //   125: invokespecial 94	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   123: ldc 91
+    //   125: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   128: aload_0
-    //   129: invokevirtual 98	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   132: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokevirtual 97	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   132: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: pop
     //   136: aload_3
     //   137: astore 4
     //   139: aload_3
     //   140: astore 5
-    //   142: invokestatic 105	com/tencent/mm/toolkit/a/e:eOC	()V
+    //   142: invokestatic 104	com/tencent/mm/toolkit/a/e:feg	()V
     //   145: aload_3
-    //   146: invokestatic 111	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
+    //   146: invokestatic 110	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
     //   149: ldc 23
-    //   151: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: iconst_1
     //   155: ireturn
     //   156: aload_3
-    //   157: invokestatic 111	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
-    //   160: getstatic 88	com/tencent/mm/toolkit/a/e:DEBUG	Z
+    //   157: invokestatic 110	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
+    //   160: getstatic 87	com/tencent/mm/toolkit/a/e:DEBUG	Z
     //   163: ifeq +43 -> 206
-    //   166: new 90	java/lang/StringBuilder
+    //   166: new 89	java/lang/StringBuilder
     //   169: dup
-    //   170: ldc 116
-    //   172: invokespecial 94	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   170: ldc 115
+    //   172: invokespecial 93	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   175: astore_2
     //   176: aload_0
     //   177: ifnull +61 -> 238
     //   180: aload_0
-    //   181: invokevirtual 98	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   181: invokevirtual 97	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   184: astore_0
     //   185: aload_2
     //   186: aload_0
-    //   187: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: ldc 118
-    //   192: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: ldc 117
+    //   192: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: aload_1
-    //   196: invokestatic 122	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   199: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: invokestatic 121	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   199: invokevirtual 101	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: pop
-    //   203: invokestatic 125	com/tencent/mm/toolkit/a/e:eOD	()V
+    //   203: invokestatic 124	com/tencent/mm/toolkit/a/e:feh	()V
     //   206: ldc 23
-    //   208: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   211: iconst_0
     //   212: ireturn
     //   213: astore_2
     //   214: aload 4
     //   216: astore_2
     //   217: aload_2
-    //   218: invokestatic 111	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
+    //   218: invokestatic 110	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
     //   221: goto -61 -> 160
     //   224: astore_0
     //   225: aconst_null
     //   226: astore_1
     //   227: aload_1
-    //   228: invokestatic 111	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
+    //   228: invokestatic 110	com/tencent/mm/toolkit/a/d$c:closeQuietly	(Ljava/io/Closeable;)V
     //   231: ldc 23
-    //   233: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   233: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   236: aload_0
     //   237: athrow
-    //   238: ldc 127
+    //   238: ldc 126
     //   240: astore_0
     //   241: goto -56 -> 185
     //   244: astore_0
@@ -204,19 +204,19 @@ public final class f
   
   public final void d(c paramc)
   {
-    AppMethodBeat.i(189813);
-    if (!h(paramc.FEx, this.FEP))
+    AppMethodBeat.i(193034);
+    if (!h(paramc.HdA, this.HdS))
     {
       paramc = new a(1202, "File MD5 is invalid.");
-      AppMethodBeat.o(189813);
+      AppMethodBeat.o(193034);
       throw paramc;
     }
-    AppMethodBeat.o(189813);
+    AppMethodBeat.o(193034);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.f
  * JD-Core Version:    0.7.0.1
  */

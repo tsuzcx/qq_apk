@@ -71,7 +71,7 @@ public final class w
     return paramStringBuilder;
   }
   
-  private static int[] aR(String paramString)
+  private static int[] aK(String paramString)
   {
     AppMethodBeat.i(93215);
     int[] arrayOfInt = new int[4];
@@ -143,15 +143,15 @@ public final class w
     }
   }
   
-  public static Uri l(String paramString1, String paramString2)
+  public static Uri m(String paramString1, String paramString2)
   {
     AppMethodBeat.i(93212);
-    paramString1 = Uri.parse(m(paramString1, paramString2));
+    paramString1 = Uri.parse(n(paramString1, paramString2));
     AppMethodBeat.o(93212);
     return paramString1;
   }
   
-  public static String m(String paramString1, String paramString2)
+  private static String n(String paramString1, String paramString2)
   {
     AppMethodBeat.i(93213);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -163,7 +163,7 @@ public final class w
     if (paramString2 == null) {
       paramString1 = "";
     }
-    paramString2 = aR(paramString1);
+    paramString2 = aK(paramString1);
     if (paramString2[0] != -1)
     {
       localStringBuilder.append(paramString1);
@@ -172,7 +172,7 @@ public final class w
       AppMethodBeat.o(93213);
       return paramString1;
     }
-    int[] arrayOfInt = aR(str);
+    int[] arrayOfInt = aK(str);
     if (paramString2[3] == 0)
     {
       paramString1 = paramString1;
@@ -228,7 +228,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.i.w
  * JD-Core Version:    0.7.0.1
  */

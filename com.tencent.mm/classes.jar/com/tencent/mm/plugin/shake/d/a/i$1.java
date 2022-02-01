@@ -8,7 +8,7 @@ public final class i$1
   public final void run()
   {
     AppMethodBeat.i(28304);
-    com.tencent.mm.vfs.i.cO(i.dpF(), true);
+    com.tencent.mm.vfs.i.cU(i.dDP(), true);
     AppMethodBeat.o(28304);
   }
   
@@ -22,7 +22,7 @@ public final class i$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.i.1
  * JD-Core Version:    0.7.0.1
  */

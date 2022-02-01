@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.freewifi.d;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.model.az;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public abstract class c
   extends n
@@ -17,10 +17,10 @@ public abstract class c
 {
   protected Activity activity;
   protected g callback;
-  protected g ria;
   protected b rr;
+  protected g sqT;
   
-  public final c am(Activity paramActivity)
+  public final c aq(Activity paramActivity)
   {
     this.activity = paramActivity;
     return this;
@@ -31,29 +31,29 @@ public abstract class c
   public final void c(g paramg)
   {
     this.callback = paramg;
-    m.aax("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    az.aeS().a(this, 0);
+    m.afp("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
+    az.agi().a(this, 0);
   }
   
-  protected abstract void cwf();
+  protected abstract void cJr();
   
   public int doScene(e parame, g paramg)
   {
-    this.ria = paramg;
+    this.sqT = paramg;
     return dispatch(parame, this.rr, this);
   }
   
   public void onGYNetEnd(final int paramInt1, final int paramInt2, final int paramInt3, final String paramString, final com.tencent.mm.network.q paramq, final byte[] paramArrayOfByte)
   {
-    m.aax("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " returns [" + paramInt2 + "," + paramInt3 + "]");
-    if (this.ria != null) {
-      this.ria.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    m.afp("netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " returns [" + paramInt2 + "," + paramInt3 + "]");
+    if (this.sqT != null) {
+      this.sqT.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if ((this.activity != null) && (this.activity.isFinishing())) {}
     while (this.callback == null) {
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
@@ -69,7 +69,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,62 +2,62 @@ package com.tencent.mm.plugin.location.ui.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.protocal.protobuf.bxg;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ccb;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class f
 {
-  public double bPI;
-  public double bPJ;
-  public String dnB;
+  public double bNq;
+  public double bNr;
+  public String dlj;
   public String mName;
-  public String sVX;
-  public String sVY;
-  public String sVZ;
-  public String sWa;
-  public String sWb;
-  public String sWc;
-  public String sWd;
-  public String sWe;
-  public String sWf;
-  public String sWg;
-  public Addr sWh;
-  public String sWi;
-  public int sWj;
   public int type;
+  public String uek;
+  public String uel;
+  public String uem;
+  public String uen;
+  public String ueo;
+  public String uep;
+  public String ueq;
+  public String uer;
+  public String ues;
+  public String uet;
+  public Addr ueu;
+  public String uev;
+  public int uew;
   
   public f()
   {
-    this.sWj = -1;
+    this.uew = -1;
   }
   
-  public f(bxg parambxg, String paramString)
+  public f(ccb paramccb, String paramString)
   {
     AppMethodBeat.i(56098);
-    this.sWj = -1;
-    this.mName = parambxg.Name;
-    this.sVX = parambxg.DTI;
-    this.bPJ = parambxg.CJD;
-    this.bPI = parambxg.CJE;
-    this.sVY = parambxg.DTJ;
-    this.sVZ = parambxg.ubD;
-    this.sWa = parambxg.DTK;
-    this.sWb = parambxg.ijN;
-    this.sWc = parambxg.ijO;
-    this.sWd = parambxg.Dbi;
-    this.sWe = parambxg.Dbj;
-    this.sWf = parambxg.DTL;
-    this.sWi = paramString;
-    this.sWh = new Addr();
-    this.sWh.hdQ = this.sVX;
-    this.sWh.hdS = this.sWc;
-    this.sWh.hdT = this.sWc;
-    this.sWh.hdU = this.sWd;
-    this.sWh.hdW = this.sWf;
-    this.sWh.hdZ = this.mName;
-    this.sWh.hdR = this.sWb;
-    this.sWh.hec = ((float)parambxg.CJD);
-    this.sWh.heb = ((float)parambxg.CJE);
+    this.uew = -1;
+    this.mName = paramccb.Name;
+    this.uek = paramccb.Fqw;
+    this.bNr = paramccb.Ecf;
+    this.bNq = paramccb.Ecg;
+    this.uel = paramccb.Fqx;
+    this.uem = paramccb.vkB;
+    this.uen = paramccb.Fqy;
+    this.ueo = paramccb.iJU;
+    this.uep = paramccb.iJV;
+    this.ueq = paramccb.Euh;
+    this.uer = paramccb.Eui;
+    this.ues = paramccb.Fqz;
+    this.uev = paramString;
+    this.ueu = new Addr();
+    this.ueu.hEt = this.uek;
+    this.ueu.hEv = this.uep;
+    this.ueu.hEw = this.uep;
+    this.ueu.hEx = this.ueq;
+    this.ueu.hEz = this.ues;
+    this.ueu.hEC = this.mName;
+    this.ueu.hEu = this.ueo;
+    this.ueu.hEF = ((float)paramccb.Ecf);
+    this.ueu.hEE = ((float)paramccb.Ecg);
     this.type = 0;
     AppMethodBeat.o(56098);
   }
@@ -65,32 +65,32 @@ public final class f
   public final boolean c(Addr paramAddr)
   {
     AppMethodBeat.i(56099);
-    this.sWh = paramAddr;
-    if (!bt.isNullOrNil(paramAddr.hdQ)) {
-      this.mName = paramAddr.hdQ;
+    this.ueu = paramAddr;
+    if (!bs.isNullOrNil(paramAddr.hEt)) {
+      this.mName = paramAddr.hEt;
     }
-    if (!bt.isNullOrNil(paramAddr.hdU)) {
-      this.sVX = paramAddr.hdU;
+    if (!bs.isNullOrNil(paramAddr.hEx)) {
+      this.uek = paramAddr.hEx;
     }
-    if (!bt.isNullOrNil(paramAddr.hdV)) {
-      this.sVX += paramAddr.hdV;
+    if (!bs.isNullOrNil(paramAddr.hEy)) {
+      this.uek += paramAddr.hEy;
     }
-    if (!bt.isNullOrNil(paramAddr.hdW)) {
-      this.sVX += paramAddr.hdW;
+    if (!bs.isNullOrNil(paramAddr.hEz)) {
+      this.uek += paramAddr.hEz;
     }
-    if (!bt.isNullOrNil(paramAddr.hdX)) {
-      this.sVX += paramAddr.hdX;
+    if (!bs.isNullOrNil(paramAddr.hEA)) {
+      this.uek += paramAddr.hEA;
     }
-    this.bPI = paramAddr.heb;
-    this.bPJ = paramAddr.hec;
-    this.sWb = paramAddr.hdR;
-    this.sWc = paramAddr.hdS;
-    this.sWd = paramAddr.hdU;
-    this.sWe = paramAddr.hdW;
-    this.sWg = paramAddr.hdY;
-    this.sWf = paramAddr.hdX;
-    this.dnB = paramAddr.hea;
-    if ((bt.isNullOrNil(this.mName)) && (bt.isNullOrNil(this.sVX)))
+    this.bNq = paramAddr.hEE;
+    this.bNr = paramAddr.hEF;
+    this.ueo = paramAddr.hEu;
+    this.uep = paramAddr.hEv;
+    this.ueq = paramAddr.hEx;
+    this.uer = paramAddr.hEz;
+    this.uet = paramAddr.hEB;
+    this.ues = paramAddr.hEA;
+    this.dlj = paramAddr.hED;
+    if ((bs.isNullOrNil(this.mName)) && (bs.isNullOrNil(this.uek)))
     {
       AppMethodBeat.o(56099);
       return false;

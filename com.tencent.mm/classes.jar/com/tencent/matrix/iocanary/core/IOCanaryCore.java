@@ -31,18 +31,18 @@ public class IOCanaryCore
   private void initDetectorsAndHookers(com.tencent.matrix.iocanary.a.a parama)
   {
     assert (parama != null);
-    if ((parama.Hi()) || (parama.Hk()) || (parama.Hj())) {
+    if ((parama.GT()) || (parama.GV()) || (parama.GU())) {
       IOCanaryJniBridge.install(parama, this);
     }
-    if (parama.Hl())
+    if (parama.GW())
     {
       this.mCloseGuardHooker = new com.tencent.matrix.iocanary.b.a(this);
       parama = this.mCloseGuardHooker;
-      com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(parama.cvU) });
-      if (!parama.cvU)
+      com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(parama.ctc) });
+      if (!parama.ctc)
       {
-        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(parama.Hm()) });
-        parama.cvU = true;
+        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(parama.GX()) });
+        parama.ctc = true;
       }
     }
   }
@@ -100,8 +100,8 @@ public class IOCanaryCore
       if (this.mCloseGuardHooker != null)
       {
         com.tencent.matrix.iocanary.b.a locala = this.mCloseGuardHooker;
-        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.Hn()) });
-        locala.cvU = false;
+        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.GY()) });
+        locala.ctc = false;
       }
       IOCanaryJniBridge.uninstall();
       return;

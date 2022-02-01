@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import d.l.h;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/utils/Alias;", "R", "T", "", "receiver", "backingProperty", "Lkotlin/reflect/KMutableProperty1;", "(Ljava/lang/Object;Lkotlin/reflect/KMutableProperty1;)V", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;Lkotlin/reflect/KMutableProperty1;)V", "receiver_field", "receiver_getter", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/reflect/KMutableProperty1;)V", "getReceiver", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getValue", "thisRef", "property", "Lkotlin/reflect/KProperty;", "(Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;", "setReceiver", "", "(Ljava/lang/Object;)V", "setValue", "value", "(Ljava/lang/Object;Lkotlin/reflect/KProperty;Ljava/lang/Object;)V", "lib-magicbrush-nano_release"})
+@l(fNY={1, 1, 13}, fNZ={""}, fOa={"Lcom/tencent/magicbrush/utils/Alias;", "R", "T", "", "receiver", "backingProperty", "Lkotlin/reflect/KMutableProperty1;", "(Ljava/lang/Object;Lkotlin/reflect/KMutableProperty1;)V", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;Lkotlin/reflect/KMutableProperty1;)V", "receiver_field", "receiver_getter", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function0;Lkotlin/reflect/KMutableProperty1;)V", "getReceiver", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getValue", "thisRef", "property", "Lkotlin/reflect/KProperty;", "(Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;", "setReceiver", "", "(Ljava/lang/Object;)V", "setValue", "value", "(Ljava/lang/Object;Lkotlin/reflect/KProperty;Ljava/lang/Object;)V", "lib-magicbrush-nano_release"})
 public class a<R, T>
 {
-  private R csD;
-  private d.g.a.a<? extends R> csE;
-  private final h<R, T> csF;
+  private R cpL;
+  private d.g.a.a<? extends R> cpM;
+  private final h<R, T> cpN;
   
   private a(d.g.a.a<? extends R> parama, h<R, T> paramh)
   {
     AppMethodBeat.i(140286);
-    this.csD = null;
-    this.csE = parama;
-    this.csF = paramh;
+    this.cpL = null;
+    this.cpM = parama;
+    this.cpN = paramh;
     AppMethodBeat.o(140286);
   }
   
@@ -27,18 +27,18 @@ public class a<R, T>
     AppMethodBeat.o(140287);
   }
   
-  private R Gz()
+  private R Gl()
   {
     AppMethodBeat.i(140283);
-    Object localObject = this.csD;
+    Object localObject = this.cpL;
     if (localObject != null)
     {
       AppMethodBeat.o(140283);
       return localObject;
     }
-    localObject = this.csE;
+    localObject = this.cpM;
     if (localObject == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     localObject = ((d.g.a.a)localObject).invoke();
     AppMethodBeat.o(140283);
@@ -49,7 +49,7 @@ public class a<R, T>
   {
     AppMethodBeat.i(140284);
     d.g.b.k.h(paramk, "property");
-    paramk = this.csF.get(Gz());
+    paramk = this.cpN.get(Gl());
     AppMethodBeat.o(140284);
     return paramk;
   }
@@ -58,13 +58,13 @@ public class a<R, T>
   {
     AppMethodBeat.i(140285);
     d.g.b.k.h(paramk, "property");
-    this.csF.set(Gz(), paramT);
+    this.cpN.set(Gl(), paramT);
     AppMethodBeat.o(140285);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.utils.a
  * JD-Core Version:    0.7.0.1
  */

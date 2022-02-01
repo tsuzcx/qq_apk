@@ -2,7 +2,7 @@ package d.n;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"toRegex", "Lkotlin/text/Regex;", "", "options", "", "Lkotlin/text/RegexOption;", "option", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"toRegex", "Lkotlin/text/Regex;", "", "options", "", "Lkotlin/text/RegexOption;", "option", "kotlin-stdlib"}, fOb=1)
 class r
   extends q
 {}

@@ -13,16 +13,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AlbumChooserView
   extends LinearLayout
 {
-  public TextView Hys;
-  public ImageView Hyt;
-  public boolean Hyu;
-  private a Hyv;
+  public TextView IYP;
+  public ImageView IYQ;
+  public boolean IYR;
+  private a IYS;
   
   public AlbumChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159261);
-    this.Hyu = false;
+    this.IYR = false;
     init(paramContext);
     AppMethodBeat.o(159261);
   }
@@ -31,7 +31,7 @@ public class AlbumChooserView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159262);
-    this.Hyu = false;
+    this.IYR = false;
     init(paramContext);
     AppMethodBeat.o(159262);
   }
@@ -40,16 +40,16 @@ public class AlbumChooserView
   {
     AppMethodBeat.i(159263);
     paramContext = LayoutInflater.from(paramContext).inflate(2131492954, this, true);
-    this.Hys = ((TextView)paramContext.findViewById(2131296544));
-    this.Hyt = ((ImageView)paramContext.findViewById(2131296543));
-    this.Hyt.setRotation(90.0F);
+    this.IYP = ((TextView)paramContext.findViewById(2131296544));
+    this.IYQ = ((ImageView)paramContext.findViewById(2131296543));
+    this.IYQ.setRotation(90.0F);
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159258);
         if (AlbumChooserView.a(AlbumChooserView.this) != null) {
-          AlbumChooserView.a(AlbumChooserView.this).cAz();
+          AlbumChooserView.a(AlbumChooserView.this).cNJ();
         }
         AppMethodBeat.o(159258);
       }
@@ -59,12 +59,12 @@ public class AlbumChooserView
   
   public void setOnAlbumChooserViewClick(a parama)
   {
-    this.Hyv = parama;
+    this.IYS = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cAz();
+    public abstract void cNJ();
   }
 }
 

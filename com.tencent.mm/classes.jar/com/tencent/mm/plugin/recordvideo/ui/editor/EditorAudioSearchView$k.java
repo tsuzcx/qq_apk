@@ -5,16 +5,16 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class EditorAudioSearchView$k
   implements View.OnClickListener
 {
-  public static final k vqF;
+  public static final k wAD;
   
   static
   {
     AppMethodBeat.i(75914);
-    vqF = new k();
+    wAD = new k();
     AppMethodBeat.o(75914);
   }
   

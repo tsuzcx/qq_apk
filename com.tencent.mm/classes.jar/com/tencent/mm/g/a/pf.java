@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class pf
   extends b
 {
-  public a duM;
+  public a drW;
+  public b drX;
   
   public pf()
   {
@@ -16,21 +16,27 @@ public final class pf
   
   private pf(byte paramByte)
   {
-    AppMethodBeat.i(118413);
-    this.duM = new a();
-    this.ESR = false;
+    AppMethodBeat.i(149881);
+    this.drW = new a();
+    this.drX = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(118413);
+    AppMethodBeat.o(149881);
   }
   
   public static final class a
   {
-    public List duN;
+    public String drY;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.pf
  * JD-Core Version:    0.7.0.1
  */

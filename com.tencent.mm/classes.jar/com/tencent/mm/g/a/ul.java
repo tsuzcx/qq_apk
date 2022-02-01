@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ul
   extends b
 {
-  public a dAb;
+  public a dxe;
   
   public ul()
   {
@@ -15,24 +15,24 @@ public final class ul
   
   private ul(byte paramByte)
   {
-    AppMethodBeat.i(19837);
-    this.dAb = new a();
-    this.ESR = false;
+    AppMethodBeat.i(125647);
+    this.dxe = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19837);
+    AppMethodBeat.o(125647);
   }
   
   public static final class a
   {
-    public String bNK;
-    public String dAc;
-    public int dAd;
-    public String dyq;
+    public String dxf;
+    public String id;
+    public String result;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ul
  * JD-Core Version:    0.7.0.1
  */

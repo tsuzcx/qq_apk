@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.subapp.d;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gb;
+import com.tencent.mm.g.c.gf;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -17,28 +17,28 @@ public final class k
   extends j<g>
 {
   public static final String[] SQL_CREATE;
-  private static long hAw;
+  private static long iaX;
   e db;
-  private Map<String, c> yDr;
+  private Map<String, c> zQF;
   
   static
   {
     AppMethodBeat.i(29002);
     SQL_CREATE = new String[] { j.getCreateSQLs(g.info, "VoiceRemindInfo") };
-    hAw = 0L;
+    iaX = 0L;
     AppMethodBeat.o(29002);
   }
   
   public k(e parame)
   {
-    super(parame, g.info, "VoiceRemindInfo", gb.INDEX_CREATE);
+    super(parame, g.info, "VoiceRemindInfo", gf.INDEX_CREATE);
     AppMethodBeat.i(28995);
-    this.yDr = new HashMap();
+    this.zQF = new HashMap();
     this.db = parame;
     AppMethodBeat.o(28995);
   }
   
-  public static String zP(String paramString)
+  public static String DU(String paramString)
   {
     AppMethodBeat.i(28996);
     long l = System.currentTimeMillis();
@@ -53,21 +53,21 @@ public final class k
     }
     paramString = str1 + l % 10000L;
     paramString = new StringBuilder().append(paramString);
-    l = hAw;
-    hAw = 1L + l;
+    l = iaX;
+    iaX = 1L + l;
     paramString = l;
     AppMethodBeat.o(28996);
     return paramString;
   }
   
-  public final void Ay(String paramString)
+  public final void ED(String paramString)
   {
     AppMethodBeat.i(28999);
-    c localc = (c)this.yDr.get(paramString);
+    c localc = (c)this.zQF.get(paramString);
     if (localc != null)
     {
-      localc.aDm();
-      this.yDr.remove(paramString);
+      localc.aKd();
+      this.zQF.remove(paramString);
     }
     AppMethodBeat.o(28999);
   }
@@ -90,7 +90,7 @@ public final class k
       if (paramg.size() > 0) {
         break label66;
       }
-      ad.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
+      ac.e("MicroMsg.VoiceRemindStorage", "update failed, no values set");
     }
     label61:
     label66:
@@ -108,18 +108,18 @@ public final class k
     return true;
   }
   
-  public final c asn(String paramString)
+  public final c axw(String paramString)
   {
     AppMethodBeat.i(28998);
-    if (this.yDr.get(paramString) == null) {
-      this.yDr.put(paramString, new c(paramString));
+    if (this.zQF.get(paramString) == null) {
+      this.zQF.put(paramString, new c(paramString));
     }
-    paramString = (c)this.yDr.get(paramString);
+    paramString = (c)this.zQF.get(paramString);
     AppMethodBeat.o(28998);
     return paramString;
   }
   
-  public final g aso(String paramString)
+  public final g axx(String paramString)
   {
     AppMethodBeat.i(29000);
     Object localObject1 = null;
@@ -136,7 +136,7 @@ public final class k
     return paramString;
   }
   
-  public final boolean vv(String paramString)
+  public final boolean zB(String paramString)
   {
     AppMethodBeat.i(28997);
     if (paramString.length() > 0) {}
@@ -144,7 +144,7 @@ public final class k
     {
       Assert.assertTrue(bool);
       if (this.db.delete("VoiceRemindInfo", "filename= ?", new String[] { paramString }) <= 0) {
-        ad.w("MicroMsg.VoiceRemindStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
+        ac.w("MicroMsg.VoiceRemindStorage", "delete failed, no such file:".concat(String.valueOf(paramString)));
       }
       AppMethodBeat.o(28997);
       return true;
@@ -153,7 +153,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.k
  * JD-Core Version:    0.7.0.1
  */

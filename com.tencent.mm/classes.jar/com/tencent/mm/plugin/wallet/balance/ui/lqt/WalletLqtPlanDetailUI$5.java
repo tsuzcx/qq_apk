@@ -16,7 +16,7 @@ final class WalletLqtPlanDetailUI$5
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(68907);
-    Iterator localIterator = this.zKz.iterator();
+    Iterator localIterator = this.BcL.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
@@ -25,16 +25,16 @@ final class WalletLqtPlanDetailUI$5
       default: 
         break;
       case 1: 
-        paraml.jj(i, 2131765470);
+        paraml.jw(i, 2131765470);
         break;
       case 2: 
-        paraml.c(i, this.zKw.getString(2131765471));
+        paraml.c(i, this.BcI.getString(2131765471));
         break;
       case 3: 
-        paraml.a(i, this.zKw.getContext().getResources().getColor(2131099803), this.zKw.getString(2131765468));
+        paraml.a(i, this.BcI.getContext().getResources().getColor(2131099803), this.BcI.getString(2131765468));
         break;
       case 4: 
-        paraml.jj(i, 2131765469);
+        paraml.jw(i, 2131765469);
       }
     }
     AppMethodBeat.o(68907);

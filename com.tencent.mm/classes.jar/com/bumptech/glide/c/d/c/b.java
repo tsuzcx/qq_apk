@@ -26,12 +26,12 @@ public abstract class b<T extends Drawable>
     while (!(this.drawable instanceof c)) {
       return;
     }
-    ((c)this.drawable).pc().prepareToDraw();
+    ((c)this.drawable).pm().prepareToDraw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.c.b
  * JD-Core Version:    0.7.0.1
  */

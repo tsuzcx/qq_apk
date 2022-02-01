@@ -11,10 +11,10 @@ public final class ParcelableMMKV
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelableMMKV> CREATOR;
-  String IgT;
-  int IgU;
-  int IgV;
-  String IgW;
+  String JIB;
+  int JIC;
+  int JID;
+  String JIE;
   
   static
   {
@@ -26,25 +26,25 @@ public final class ParcelableMMKV
   public ParcelableMMKV(MMKV paramMMKV)
   {
     AppMethodBeat.i(13544);
-    this.IgU = -1;
-    this.IgV = -1;
-    this.IgW = null;
-    this.IgT = paramMMKV.mmapID();
-    this.IgU = paramMMKV.ashmemFD();
-    this.IgV = paramMMKV.ashmemMetaFD();
-    this.IgW = paramMMKV.cryptKey();
+    this.JIC = -1;
+    this.JID = -1;
+    this.JIE = null;
+    this.JIB = paramMMKV.mmapID();
+    this.JIC = paramMMKV.ashmemFD();
+    this.JID = paramMMKV.ashmemMetaFD();
+    this.JIE = paramMMKV.cryptKey();
     AppMethodBeat.o(13544);
   }
   
   private ParcelableMMKV(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.IgU = -1;
-    this.IgV = -1;
-    this.IgW = null;
-    this.IgT = paramString1;
-    this.IgU = paramInt1;
-    this.IgV = paramInt2;
-    this.IgW = paramString2;
+    this.JIC = -1;
+    this.JID = -1;
+    this.JIE = null;
+    this.JIB = paramString1;
+    this.JIC = paramInt1;
+    this.JID = paramInt2;
+    this.JIE = paramString2;
   }
   
   public final int describeContents()
@@ -57,14 +57,14 @@ public final class ParcelableMMKV
     AppMethodBeat.i(13545);
     try
     {
-      paramParcel.writeString(this.IgT);
-      ParcelFileDescriptor localParcelFileDescriptor1 = ParcelFileDescriptor.fromFd(this.IgU);
-      ParcelFileDescriptor localParcelFileDescriptor2 = ParcelFileDescriptor.fromFd(this.IgV);
+      paramParcel.writeString(this.JIB);
+      ParcelFileDescriptor localParcelFileDescriptor1 = ParcelFileDescriptor.fromFd(this.JIC);
+      ParcelFileDescriptor localParcelFileDescriptor2 = ParcelFileDescriptor.fromFd(this.JID);
       paramInt |= 0x1;
       localParcelFileDescriptor1.writeToParcel(paramParcel, paramInt);
       localParcelFileDescriptor2.writeToParcel(paramParcel, paramInt);
-      if (this.IgW != null) {
-        paramParcel.writeString(this.IgW);
+      if (this.JIE != null) {
+        paramParcel.writeString(this.JIE);
       }
       AppMethodBeat.o(13545);
       return;

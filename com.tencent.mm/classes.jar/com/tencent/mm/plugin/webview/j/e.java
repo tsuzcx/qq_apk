@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.webview.j;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class e
 {
-  private static int TW(int paramInt)
+  private static int We(int paramInt)
   {
     if (paramInt == 1) {
       return 1;
@@ -34,19 +34,19 @@ public final class e
     AppMethodBeat.i(82379);
     try
     {
-      localax = ax.fF("WebViewFontUtil", 2);
-      bool = localax.getBoolean("webview_key_font_use_system", false);
-      ad.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
+      localaw = aw.fK("WebViewFontUtil", 2);
+      bool = localaw.getBoolean("webview_key_font_use_system", false);
+      ac.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        i = gN(paramContext);
+        i = gY(paramContext);
         AppMethodBeat.o(82379);
         return i;
       }
-      bool = localax.getBoolean("webview_key_font_has_set", false);
-      if ((!bt.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.AKj.matcher(paramString).matches()))
+      bool = localaw.getBoolean("webview_key_font_has_set", false);
+      if ((!bs.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.CcA.matcher(paramString).matches()))
       {
-        j = parame.iz(16388, 2);
+        j = parame.iN(16388, 2);
         if ((j == 2) && (!bool)) {
           i = j;
         }
@@ -54,7 +54,7 @@ public final class e
     }
     catch (Exception paramContext)
     {
-      ax localax;
+      aw localaw;
       boolean bool;
       int j;
       int k;
@@ -62,7 +62,7 @@ public final class e
     }
     try
     {
-      j = gN(paramContext);
+      j = gY(paramContext);
       AppMethodBeat.o(82379);
       return j;
     }
@@ -71,89 +71,89 @@ public final class e
       break label312;
     }
     int i = j;
-    bool = localax.getBoolean("webview_key_has_transfer_mp", false);
+    bool = localaw.getBoolean("webview_key_has_transfer_mp", false);
     if (bool)
     {
       AppMethodBeat.o(82379);
       return j;
     }
     i = j;
-    k = TW(j);
+    k = We(j);
     i = j;
-    localax.putBoolean("webview_key_has_transfer_mp", true);
+    localaw.putBoolean("webview_key_has_transfer_mp", true);
     i = j;
-    parame.iA(16388, k);
+    parame.iO(16388, k);
     AppMethodBeat.o(82379);
     return k;
-    j = parame.iz(16384, 2);
+    j = parame.iN(16384, 2);
     if ((j == 2) && (!bool))
     {
       i = j;
-      j = gN(paramContext);
+      j = gY(paramContext);
       AppMethodBeat.o(82379);
       return j;
     }
     i = j;
-    bool = localax.getBoolean("webview_key_has_transfer_reader", false);
+    bool = localaw.getBoolean("webview_key_has_transfer_reader", false);
     if (bool)
     {
       AppMethodBeat.o(82379);
       return j;
     }
     i = j;
-    k = TW(j);
+    k = We(j);
     i = j;
-    localax.putBoolean("webview_key_has_transfer_reader", true);
+    localaw.putBoolean("webview_key_has_transfer_reader", true);
     i = j;
-    parame.iA(16384, k);
+    parame.iO(16384, k);
     AppMethodBeat.o(82379);
     return k;
     label312:
-    ad.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
+    ac.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
     AppMethodBeat.o(82379);
     return i;
   }
   
-  public static int gN(Context paramContext)
+  public static int gY(Context paramContext)
   {
     AppMethodBeat.i(82380);
-    float f = paramContext.getSharedPreferences(aj.eFD(), 0).getFloat("current_text_size_scale_key", 1.0F);
-    if (f == com.tencent.mm.cd.a.hE(paramContext))
+    float f = paramContext.getSharedPreferences(ai.eUX(), 0).getFloat("current_text_size_scale_key", 1.0F);
+    if (f == com.tencent.mm.cc.a.hP(paramContext))
     {
       AppMethodBeat.o(82380);
       return 1;
     }
-    if (f == com.tencent.mm.cd.a.hF(paramContext))
+    if (f == com.tencent.mm.cc.a.hQ(paramContext))
     {
       AppMethodBeat.o(82380);
       return 2;
     }
-    if (f == com.tencent.mm.cd.a.hG(paramContext))
+    if (f == com.tencent.mm.cc.a.hR(paramContext))
     {
       AppMethodBeat.o(82380);
       return 3;
     }
-    if (f == com.tencent.mm.cd.a.hH(paramContext))
+    if (f == com.tencent.mm.cc.a.hS(paramContext))
     {
       AppMethodBeat.o(82380);
       return 4;
     }
-    if (f == com.tencent.mm.cd.a.hI(paramContext))
+    if (f == com.tencent.mm.cc.a.hT(paramContext))
     {
       AppMethodBeat.o(82380);
       return 5;
     }
-    if (f == com.tencent.mm.cd.a.hJ(paramContext))
+    if (f == com.tencent.mm.cc.a.hU(paramContext))
     {
       AppMethodBeat.o(82380);
       return 6;
     }
-    if (f == com.tencent.mm.cd.a.hK(paramContext))
+    if (f == com.tencent.mm.cc.a.hV(paramContext))
     {
       AppMethodBeat.o(82380);
       return 7;
     }
-    if (f == com.tencent.mm.cd.a.hL(paramContext))
+    if (f == com.tencent.mm.cc.a.hW(paramContext))
     {
       AppMethodBeat.o(82380);
       return 8;
@@ -162,12 +162,12 @@ public final class e
     return 2;
   }
   
-  public static void tH(boolean paramBoolean)
+  public static void uJ(boolean paramBoolean)
   {
     AppMethodBeat.i(160473);
-    ax localax = ax.fF("WebViewFontUtil", 2);
-    localax.putBoolean("webview_key_font_use_system", paramBoolean);
-    localax.apply();
+    aw localaw = aw.fK("WebViewFontUtil", 2);
+    localaw.putBoolean("webview_key_font_use_system", paramBoolean);
+    localaw.apply();
     AppMethodBeat.o(160473);
   }
 }

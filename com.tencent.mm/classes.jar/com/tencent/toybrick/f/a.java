@@ -1,13 +1,13 @@
 package com.tencent.toybrick.f;
 
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import com.tencent.toybrick.c.f;
 
 public class a
-  extends RecyclerView.v
+  extends RecyclerView.w
 {
-  public f IHw;
+  public f KtH;
   
   public a(View paramView)
   {

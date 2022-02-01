@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class u
 {
-  public static boolean aPD()
+  public static boolean aWv()
   {
     AppMethodBeat.i(44269);
-    if (!g.afw())
+    if (!g.agM())
     {
       AppMethodBeat.o(44269);
       return false;
@@ -20,10 +20,10 @@ public final class u
     return true;
   }
   
-  public static boolean aPE()
+  public static boolean aWw()
   {
     AppMethodBeat.i(44270);
-    if (!g.afw())
+    if (!g.agM())
     {
       AppMethodBeat.o(44270);
       return false;
@@ -32,10 +32,10 @@ public final class u
     return true;
   }
   
-  public static boolean aPF()
+  public static boolean aWx()
   {
     AppMethodBeat.i(44271);
-    if (!g.afw())
+    if (!g.agM())
     {
       AppMethodBeat.o(44271);
       return false;
@@ -44,35 +44,35 @@ public final class u
     return true;
   }
   
-  public static boolean aPG()
+  public static boolean aWy()
   {
     AppMethodBeat.i(44273);
-    boolean bool = ((b)g.ab(b.class)).a(b.a.pkW, false);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.pOn, false);
     if (bool) {}
     for (int i = 1;; i = 0)
     {
-      ad.i("MicroMsg.PkgABTest", "openSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.PkgABTest", "openSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(44273);
       return bool;
     }
   }
   
-  public static boolean aPH()
+  public static boolean aWz()
   {
-    AppMethodBeat.i(195618);
-    boolean bool = ((b)g.ab(b.class)).a(b.a.pkX, false);
+    AppMethodBeat.i(186322);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.pOo, false);
     if (bool) {}
     for (int i = 1;; i = 0)
     {
-      ad.i("MicroMsg.PkgABTest", "openMultiSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(195618);
+      ac.i("MicroMsg.PkgABTest", "openMultiSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(186322);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.u
  * JD-Core Version:    0.7.0.1
  */

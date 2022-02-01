@@ -15,9 +15,9 @@ import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader_app.a.h.a;
 import com.tencent.mm.plugin.downloader_app.a.j;
 import com.tencent.mm.plugin.downloader_app.search.DownloadSearchUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -28,35 +28,35 @@ import org.json.JSONObject;
 public class DownloadMainUI
   extends MMActivity
 {
-  private int fsv;
-  private View fwo;
+  private int fwc;
+  private View fzV;
   private String mAppId;
-  private com.tencent.mm.plugin.downloader.c.a.a.f ohW;
-  TaskListView ojb;
-  private DeleteTaskFooterView ojc;
-  private TaskManagerHeaderView ojd;
-  private View oje;
-  private boolean ojf;
-  private boolean ojg;
-  private com.tencent.mm.plugin.downloader_app.a.g ojh;
-  private boolean oji = false;
-  private com.tencent.mm.plugin.downloader_app.a.f ojj;
+  private com.tencent.mm.plugin.downloader.c.a.a.f oLw;
+  TaskListView oMB;
+  private DeleteTaskFooterView oMC;
+  private TaskManagerHeaderView oMD;
+  private View oME;
+  private boolean oMF;
+  private boolean oMG;
+  private com.tencent.mm.plugin.downloader_app.a.g oMH;
+  private boolean oMI = false;
+  private com.tencent.mm.plugin.downloader_app.a.f oMJ;
   
-  private void VL()
+  private void WJ()
   {
     AppMethodBeat.i(9007);
     this.mAppId = getIntent().getStringExtra("appId");
-    this.oji = getIntent().getBooleanExtra("view_task", false);
-    ad.i("MicroMsg.DownloadMainUI", "initData, appId : %s, viewTask : %b", new Object[] { this.mAppId, Boolean.valueOf(this.oji) });
-    com.tencent.mm.pluginsdk.model.app.h.j(this.mAppId, true, false);
-    bRm();
-    com.tencent.e.h.Iye.aP(new Runnable()
+    this.oMI = getIntent().getBooleanExtra("view_task", false);
+    ac.i("MicroMsg.DownloadMainUI", "initData, appId : %s, viewTask : %b", new Object[] { this.mAppId, Boolean.valueOf(this.oMI) });
+    com.tencent.mm.pluginsdk.model.app.h.k(this.mAppId, true, false);
+    bYB();
+    com.tencent.e.h.JZN.aS(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(8993);
-        DownloadMainUI.a(DownloadMainUI.this, com.tencent.mm.plugin.downloader_app.a.h.bRe());
-        aq.f(new Runnable()
+        DownloadMainUI.a(DownloadMainUI.this, com.tencent.mm.plugin.downloader_app.a.h.bYt());
+        ap.f(new Runnable()
         {
           public final void run()
           {
@@ -67,16 +67,16 @@ public class DownloadMainUI
         });
         if (DownloadMainUI.a(DownloadMainUI.this, DownloadMainUI.f(DownloadMainUI.this)))
         {
-          DownloadMainUI.this.c(j.bRi(), null);
+          DownloadMainUI.this.d(j.bYx(), null);
           AppMethodBeat.o(8993);
           return;
         }
-        LinkedList localLinkedList = j.bRi();
+        LinkedList localLinkedList = j.bYx();
         if (!localLinkedList.contains(DownloadMainUI.f(DownloadMainUI.this))) {
           localLinkedList.add(DownloadMainUI.f(DownloadMainUI.this));
         }
-        DownloadMainUI.this.c(localLinkedList, DownloadMainUI.f(DownloadMainUI.this));
-        p.y(new Runnable()
+        DownloadMainUI.this.d(localLinkedList, DownloadMainUI.f(DownloadMainUI.this));
+        p.z(new Runnable()
         {
           public final void run()
           {
@@ -95,54 +95,54 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(9010);
     if (paramg != null) {}
-    for (com.tencent.mm.plugin.downloader.c.a.a.f localf = paramg.ohW;; localf = null)
+    for (com.tencent.mm.plugin.downloader.c.a.a.f localf = paramg.oLw;; localf = null)
     {
-      this.ohW = localf;
-      if ((paramg != null) && (!paramg.bRd())) {
+      this.oLw = localf;
+      if ((paramg != null) && (!paramg.bYs())) {
         break;
       }
       if (paramBoolean) {
-        jo(true);
+        jR(true);
       }
       AppMethodBeat.o(9010);
       return;
     }
-    paramg = paramg.U(j.bRi());
-    if (bt.gL(paramg))
+    paramg = paramg.U(j.bYx());
+    if (bs.gY(paramg))
     {
-      jo(true);
+      jR(true);
       AppMethodBeat.o(9010);
       return;
     }
-    jo(false);
-    this.ojb.setData(paramg);
+    jR(false);
+    this.oMB.setData(paramg);
     AppMethodBeat.o(9010);
   }
   
-  private void bRm()
+  private void bYB()
   {
     AppMethodBeat.i(9008);
-    if (this.fsv == 1)
+    if (this.fwc == 1)
     {
-      com.tencent.mm.plugin.downloader.g.a locala = d.Sk(this.mAppId);
+      com.tencent.mm.plugin.downloader.g.a locala = d.Ww(this.mAppId);
       if (locala != null)
       {
         com.tencent.mm.plugin.downloader.f.b localb = new com.tencent.mm.plugin.downloader.f.b();
         localb.k(locala);
-        localb.lrf = 0L;
+        localb.lTa = 0L;
         com.tencent.mm.plugin.downloader.f.a.a(19, localb);
       }
     }
     AppMethodBeat.o(9008);
   }
   
-  private String bRn()
+  private String bYC()
   {
     AppMethodBeat.i(175277);
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("source", this.fsv);
+      ((JSONObject)localObject).put("source", this.fwc);
       try
       {
         label26:
@@ -162,20 +162,20 @@ public class DownloadMainUI
     }
   }
   
-  private boolean bRo()
+  private boolean bYD()
   {
-    return this.fsv == 2;
+    return this.fwc == 2;
   }
   
-  public final void c(LinkedList<String> paramLinkedList, final String paramString)
+  public final void d(LinkedList<String> paramLinkedList, final String paramString)
   {
     AppMethodBeat.i(9009);
     com.tencent.mm.plugin.downloader_app.a.h.a(paramLinkedList, new h.a()
     {
-      public final void jg(boolean paramAnonymousBoolean)
+      public final void jJ(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(9000);
-        p.y(new Runnable()
+        p.z(new Runnable()
         {
           public final void run()
           {
@@ -186,19 +186,19 @@ public class DownloadMainUI
         });
         if (paramAnonymousBoolean)
         {
-          DownloadMainUI.a(DownloadMainUI.this, com.tencent.mm.plugin.downloader_app.a.h.bRe());
-          aq.f(new Runnable()
+          DownloadMainUI.a(DownloadMainUI.this, com.tencent.mm.plugin.downloader_app.a.h.bYt());
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(8999);
-              if (!bt.isNullOrNil(DownloadMainUI.8.this.ojm))
+              if (!bs.isNullOrNil(DownloadMainUI.8.this.oMM))
               {
-                final com.tencent.mm.plugin.downloader_app.a.i locali = DownloadMainUI.e(DownloadMainUI.this).SJ(DownloadMainUI.8.this.ojm);
+                final com.tencent.mm.plugin.downloader_app.a.i locali = DownloadMainUI.e(DownloadMainUI.this).WV(DownloadMainUI.8.this.oMM);
                 if (locali == null) {
                   break label98;
                 }
-                j.SL(DownloadMainUI.8.this.ojm);
+                j.WX(DownloadMainUI.8.this.oMM);
                 p.postDelayed(new Runnable()
                 {
                   public final void run()
@@ -222,7 +222,7 @@ public class DownloadMainUI
           AppMethodBeat.o(9000);
           return;
         }
-        if (!bt.isNullOrNil(paramString)) {
+        if (!bs.isNullOrNil(paramString)) {
           com.tencent.mm.ui.base.h.c(DownloadMainUI.this, "", DownloadMainUI.this.getResources().getString(2131757033), true);
         }
         AppMethodBeat.o(9000);
@@ -235,7 +235,7 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(175276);
     super.finish();
-    if (this.fsv == 3) {
+    if (this.fwc == 3) {
       overridePendingTransition(2130772001, 2130772012);
     }
     AppMethodBeat.o(175276);
@@ -246,42 +246,42 @@ public class DownloadMainUI
     return 2131493722;
   }
   
-  public final void jn(boolean paramBoolean)
+  public final void jQ(boolean paramBoolean)
   {
     AppMethodBeat.i(9011);
-    DeleteTaskFooterView localDeleteTaskFooterView = this.ojc;
-    localDeleteTaskFooterView.oiY = paramBoolean;
-    if (localDeleteTaskFooterView.oiY)
+    DeleteTaskFooterView localDeleteTaskFooterView = this.oMC;
+    localDeleteTaskFooterView.oMy = paramBoolean;
+    if (localDeleteTaskFooterView.oMy)
     {
-      com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.oiU, "checkbox_cell_on");
+      com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.oMu, "checkbox_cell_on");
       AppMethodBeat.o(9011);
       return;
     }
-    com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.oiU, "checkbox_cell_off");
+    com.tencent.mm.plugin.downloader_app.b.e(localDeleteTaskFooterView.oMu, "checkbox_cell_off");
     AppMethodBeat.o(9011);
   }
   
-  final void jo(boolean paramBoolean)
+  final void jR(boolean paramBoolean)
   {
     AppMethodBeat.i(9012);
     if (paramBoolean) {
-      if ((this.oje instanceof ViewStub))
+      if ((this.oME instanceof ViewStub))
       {
-        this.oje = ((ViewStub)this.oje).inflate();
-        this.oje.setVisibility(0);
+        this.oME = ((ViewStub)this.oME).inflate();
+        this.oME.setVisibility(0);
       }
     }
     for (;;)
     {
       if (paramBoolean)
       {
-        this.oje.setVisibility(0);
-        ((NoTaskLayout)this.oje).setData(this.ohW);
+        this.oME.setVisibility(0);
+        ((NoTaskLayout)this.oME).setData(this.oLw);
       }
       AppMethodBeat.o(9012);
       return;
-      if (!(this.oje instanceof ViewStub)) {
-        this.oje.setVisibility(8);
+      if (!(this.oME instanceof ViewStub)) {
+        this.oME.setVisibility(8);
       }
     }
   }
@@ -289,11 +289,11 @@ public class DownloadMainUI
   public void onBackPressed()
   {
     AppMethodBeat.i(9006);
-    if (this.ojb != null)
+    if (this.oMB != null)
     {
-      TaskListView localTaskListView = this.ojb;
-      if (localTaskListView.okc) {
-        localTaskListView.bRt();
+      TaskListView localTaskListView = this.oMB;
+      if (localTaskListView.oNC) {
+        localTaskListView.bYI();
       }
       for (int i = 1; i != 0; i = 0)
       {
@@ -301,7 +301,7 @@ public class DownloadMainUI
         return;
       }
     }
-    if ((bRo()) && (this.ojj != null) && (this.ojj.rg(2)))
+    if ((bYD()) && (this.oMJ != null) && (this.oMJ.rT(2)))
     {
       AppMethodBeat.o(9006);
       return;
@@ -314,12 +314,12 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(9001);
     super.onCreate(paramBundle);
-    this.fsv = getIntent().getIntExtra("from_scene", 0);
-    if (this.fsv == 3) {
+    this.fwc = getIntent().getIntExtra("from_scene", 0);
+    if (this.fwc == 3) {
       overridePendingTransition(2130772161, 2130772003);
     }
-    ad.i("MicroMsg.DownloadMainUI", "onCreate: " + System.currentTimeMillis());
-    this.ojg = true;
+    ac.i("MicroMsg.DownloadMainUI", "onCreate: " + System.currentTimeMillis());
+    this.oMG = true;
     setActionbarColor(getResources().getColor(2131100260));
     showActionbarLine();
     setMMTitle(2131766183);
@@ -328,7 +328,7 @@ public class DownloadMainUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(8988);
-        if ((DownloadMainUI.a(DownloadMainUI.this)) && (DownloadMainUI.b(DownloadMainUI.this) != null) && (DownloadMainUI.b(DownloadMainUI.this).rg(1)))
+        if ((DownloadMainUI.a(DownloadMainUI.this)) && (DownloadMainUI.b(DownloadMainUI.this) != null) && (DownloadMainUI.b(DownloadMainUI.this).rT(1)))
         {
           AppMethodBeat.o(8988);
           return true;
@@ -345,20 +345,20 @@ public class DownloadMainUI
         AppMethodBeat.i(8989);
         paramAnonymousMenuItem = DownloadMainUI.this;
         Object localObject = new Intent(DownloadMainUI.this, DownloadSearchUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/downloader_app/ui/DownloadMainUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/downloader_app/ui/DownloadMainUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/downloader_app/ui/DownloadMainUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.plugin.downloader_app.b.a.a(10, 1001, 1, 2, "", "", "");
         AppMethodBeat.o(8989);
         return true;
       }
     });
-    this.ojb = ((TaskListView)findViewById(2131301443));
-    this.ojc = ((DeleteTaskFooterView)findViewById(2131298989));
-    this.ojb.okb = new a()
+    this.oMB = ((TaskListView)findViewById(2131301443));
+    this.oMC = ((DeleteTaskFooterView)findViewById(2131298989));
+    this.oMB.oNB = new a()
     {
-      public final void jp(boolean paramAnonymousBoolean)
+      public final void jS(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(8990);
         if (paramAnonymousBoolean)
@@ -377,14 +377,14 @@ public class DownloadMainUI
         AppMethodBeat.o(8990);
       }
     };
-    this.ojd = ((TaskManagerHeaderView)findViewById(2131300735));
-    this.oje = findViewById(2131302888);
-    VL();
-    com.tencent.mm.plugin.downloader_app.b.a.a(10, 0, 0, 1, "", "", bRn());
-    this.ojj = new com.tencent.mm.plugin.downloader_app.a.f(new com.tencent.mm.plugin.ball.a.e(this));
-    this.ojj.Z(16, "GameDownloadFloatBall");
-    com.tencent.mm.plugin.downloader_app.a.e.bQZ();
-    com.tencent.mm.plugin.downloader_app.a.e.jl(false);
+    this.oMD = ((TaskManagerHeaderView)findViewById(2131300735));
+    this.oME = findViewById(2131302888);
+    WJ();
+    com.tencent.mm.plugin.downloader_app.b.a.a(10, 0, 0, 1, "", "", bYC());
+    this.oMJ = new com.tencent.mm.plugin.downloader_app.a.f(new com.tencent.mm.plugin.ball.a.e(this));
+    this.oMJ.aa(16, "GameDownloadFloatBall");
+    com.tencent.mm.plugin.downloader_app.a.e.bYo();
+    com.tencent.mm.plugin.downloader_app.a.e.jO(false);
     AppMethodBeat.o(9001);
   }
   
@@ -392,9 +392,9 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(9005);
     super.onDestroy();
-    com.tencent.mm.plugin.downloader_app.a.h.ohY = null;
-    if (this.ojj != null) {
-      this.ojj.onDestroy();
+    com.tencent.mm.plugin.downloader_app.a.h.oLy = null;
+    if (this.oMJ != null) {
+      this.oMJ.onDestroy();
     }
     AppMethodBeat.o(9005);
   }
@@ -403,8 +403,8 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(9004);
     setIntent(paramIntent);
-    this.ojb.bRt();
-    VL();
+    this.oMB.bYI();
+    WJ();
     AppMethodBeat.o(9004);
   }
   
@@ -412,14 +412,14 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(9003);
     super.onPause();
-    if (this.ojh != null)
+    if (this.oMH != null)
     {
-      com.tencent.mm.plugin.downloader_app.a.g localg = this.ojh;
-      ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).a("pb_appinfo", localg.ohT);
+      com.tencent.mm.plugin.downloader_app.a.g localg = this.oMH;
+      ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).a("pb_appinfo", localg.oLt);
     }
-    this.ojf = false;
-    if (this.ojj != null) {
-      this.ojj.aWa();
+    this.oMF = false;
+    if (this.oMJ != null) {
+      this.oMJ.bcY();
     }
     AppMethodBeat.o(9003);
   }
@@ -428,15 +428,15 @@ public class DownloadMainUI
   {
     AppMethodBeat.i(9002);
     super.onResume();
-    this.ojf = true;
-    if (!this.ojg)
+    this.oMF = true;
+    if (!this.oMG)
     {
-      this.ojh = com.tencent.mm.plugin.downloader_app.a.h.bRe();
-      a(this.ojh, true);
+      this.oMH = com.tencent.mm.plugin.downloader_app.a.h.bYt();
+      a(this.oMH, true);
     }
-    this.ojg = false;
-    if (this.ojj != null) {
-      this.ojj.aVZ();
+    this.oMG = false;
+    if (this.oMJ != null) {
+      this.oMJ.bcX();
     }
     AppMethodBeat.o(9002);
   }
@@ -449,7 +449,7 @@ public class DownloadMainUI
   
   public static abstract interface a
   {
-    public abstract void jp(boolean paramBoolean);
+    public abstract void jS(boolean paramBoolean);
   }
 }
 

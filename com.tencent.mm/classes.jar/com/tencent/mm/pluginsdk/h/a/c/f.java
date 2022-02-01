@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.h.a.c;
 import android.os.Process;
 import com.tencent.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,12 +13,12 @@ import java.util.concurrent.RunnableFuture;
 
 public abstract class f<T extends b>
 {
-  final Map<String, Future<?>> BTg = new ConcurrentHashMap();
+  final Map<String, Future<?>> Dlw = new ConcurrentHashMap();
   final Map<String, b> pendingRequests = new ConcurrentHashMap();
   
-  protected final void HF(String paramString)
+  protected final void LJ(String paramString)
   {
-    Future localFuture = (Future)this.BTg.remove(paramString);
+    Future localFuture = (Future)this.Dlw.remove(paramString);
     if (localFuture != null) {
       localFuture.cancel(true);
     }
@@ -27,19 +27,19 @@ public abstract class f<T extends b>
   
   protected abstract d a(T paramT);
   
-  public final boolean aBm(String paramString)
+  public final boolean aGE(String paramString)
   {
-    return this.BTg.containsKey(paramString);
+    return this.Dlw.containsKey(paramString);
   }
   
   /* Error */
-  public final boolean aBn(String paramString)
+  public final boolean aGF(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 33	com/tencent/mm/pluginsdk/h/a/c/f:BTg	Ljava/util/Map;
+    //   3: getfield 33	com/tencent/mm/pluginsdk/h/a/c/f:Dlw	Ljava/util/Map;
     //   6: aload_1
     //   7: invokeinterface 55 2 0
     //   12: ifne +18 -> 30
@@ -76,11 +76,11 @@ public abstract class f<T extends b>
   
   protected final void b(T paramT)
   {
-    this.pendingRequests.put(paramT.ewl(), paramT);
-    ewx().submit(a(paramT));
+    this.pendingRequests.put(paramT.eLF(), paramT);
+    eLR().submit(a(paramT));
   }
   
-  protected abstract b ewx();
+  protected abstract b eLR();
   
   public final class a
     extends b
@@ -96,15 +96,15 @@ public abstract class f<T extends b>
       if ((paramRunnable instanceof f.c))
       {
         f.c localc = (f.c)paramRunnable;
-        f.this.BTg.remove(localc.BTi.ewl());
-        f.this.pendingRequests.remove(localc.BTi.ewl());
+        f.this.Dlw.remove(localc.Dly.eLF());
+        f.this.pendingRequests.remove(localc.Dly.eLF());
       }
       for (;;)
       {
         super.afterExecute(paramRunnable, paramThrowable);
         AppMethodBeat.o(152014);
         return;
-        ad.i("MicroMsg.ResDownloader.IOWorker", "r = %s is not RequestFutureTask<?>", new Object[] { paramRunnable.getClass().getSimpleName() });
+        ac.i("MicroMsg.ResDownloader.IOWorker", "r = %s is not RequestFutureTask<?>", new Object[] { paramRunnable.getClass().getSimpleName() });
       }
     }
     
@@ -115,7 +115,7 @@ public abstract class f<T extends b>
       if ((paramRunnable instanceof f.c))
       {
         localc = (f.c)paramRunnable;
-        if (f.this.BTg.containsKey(localc.BTi.ewl())) {
+        if (f.this.Dlw.containsKey(localc.Dly.eLF())) {
           localc.cancel(false);
         }
       }
@@ -124,10 +124,10 @@ public abstract class f<T extends b>
         super.beforeExecute(paramThread, paramRunnable);
         AppMethodBeat.o(152013);
         return;
-        f.this.BTg.put(localc.BTi.ewl(), localc);
-        f.this.pendingRequests.remove(localc.BTi.ewl());
+        f.this.Dlw.put(localc.Dly.eLF(), localc);
+        f.this.pendingRequests.remove(localc.Dly.eLF());
         continue;
-        ad.i("MicroMsg.ResDownloader.IOWorker", "r = %s is not RequestFutureTask<?>", new Object[] { paramRunnable.getClass().getSimpleName() });
+        ac.i("MicroMsg.ResDownloader.IOWorker", "r = %s is not RequestFutureTask<?>", new Object[] { paramRunnable.getClass().getSimpleName() });
       }
     }
     
@@ -148,7 +148,7 @@ public abstract class f<T extends b>
     public final void terminated()
     {
       AppMethodBeat.i(152012);
-      f.this.BTg.clear();
+      f.this.Dlw.clear();
       super.terminated();
       AppMethodBeat.o(152012);
     }
@@ -156,34 +156,34 @@ public abstract class f<T extends b>
   
   public static abstract interface b
   {
-    public abstract String ewl();
+    public abstract String eLF();
   }
   
   protected static final class c<V>
     extends FutureTask<V>
   {
-    protected final f.b BTi;
+    protected final f.b Dly;
     
     public c(Runnable paramRunnable, V paramV, f.b paramb)
     {
       super(paramV);
-      this.BTi = paramb;
+      this.Dly = paramb;
     }
   }
   
   public static abstract class d<Req extends f.b>
     implements Runnable
   {
-    private final Req BTi;
+    private final Req Dly;
     
     protected d(Req paramReq)
     {
-      this.BTi = paramReq;
+      this.Dly = paramReq;
     }
     
-    protected Req aQq()
+    protected Req aXi()
     {
-      return this.BTi;
+      return this.Dly;
     }
     
     public void run()
@@ -196,7 +196,7 @@ public abstract class f<T extends b>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.c.f
  * JD-Core Version:    0.7.0.1
  */

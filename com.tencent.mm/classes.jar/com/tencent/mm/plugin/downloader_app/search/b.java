@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,24 +14,24 @@ public final class b
   String appId;
   String iconUrl;
   String jumpUrl;
-  String oiJ;
-  String oiK;
-  List<String> oiL;
+  String oMj;
+  String oMk;
+  List<String> oMl;
   int position;
   long size;
   int state;
   int type;
   
-  public static void aj(Context paramContext, String paramString)
+  public static void ak(Context paramContext, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(8956);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8956);
       return;
     }
-    ak(paramContext, paramString);
+    al(paramContext, paramString);
     paramContext = paramContext.getSharedPreferences("search_history_href", 0);
     String str = paramContext.getString("search_history_list", "");
     StringBuffer localStringBuffer = new StringBuffer();
@@ -50,10 +50,10 @@ public final class b
     AppMethodBeat.o(8956);
   }
   
-  public static void ak(Context paramContext, String paramString)
+  public static void al(Context paramContext, String paramString)
   {
     AppMethodBeat.i(8957);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(8957);
       return;
@@ -64,12 +64,12 @@ public final class b
     AppMethodBeat.o(8957);
   }
   
-  public static List<b> eq(Context paramContext)
+  public static List<b> ey(Context paramContext)
   {
     AppMethodBeat.i(8955);
     ArrayList localArrayList = new ArrayList();
     paramContext = paramContext.getSharedPreferences("search_history_href", 0).getString("search_history_list", "");
-    if (bt.isNullOrNil(paramContext))
+    if (bs.isNullOrNil(paramContext))
     {
       AppMethodBeat.o(8955);
       return localArrayList;
@@ -82,18 +82,18 @@ public final class b
     {
       String str = paramContext[i];
       k = j;
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
         b localb = new b();
         localb.type = 2;
-        localb.oiJ = new String(Base64.decode(str, 0));
+        localb.oMj = new String(Base64.decode(str, 0));
         k = j + 1;
         localb.position = k;
         localArrayList.add(localb);
       }
       i += 1;
     }
-    if (!bt.gL(localArrayList))
+    if (!bs.gY(localArrayList))
     {
       paramContext = new b();
       paramContext.type = 1;
@@ -106,9 +106,9 @@ public final class b
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(8954);
-    if (((paramObject instanceof b)) && (((b)paramObject).oiJ != null))
+    if (((paramObject instanceof b)) && (((b)paramObject).oMj != null))
     {
-      bool = ((b)paramObject).oiJ.equals(this.oiJ);
+      bool = ((b)paramObject).oMj.equals(this.oMj);
       AppMethodBeat.o(8954);
       return bool;
     }
@@ -119,7 +119,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.b
  * JD-Core Version:    0.7.0.1
  */

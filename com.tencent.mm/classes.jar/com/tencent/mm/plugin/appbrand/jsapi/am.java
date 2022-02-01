@@ -5,8 +5,8 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bn;
 
 public class am<S extends q>
   extends a<S>
@@ -23,14 +23,14 @@ public class am<S extends q>
       AppMethodBeat.o(139839);
       return null;
     }
-    paramS = (Bitmap)new bo()new ap {}.b(new ap(Looper.getMainLooper()));
+    paramS = (Bitmap)new bn()new ao {}.b(new ao(Looper.getMainLooper()));
     AppMethodBeat.o(139839);
     return paramS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.am
  * JD-Core Version:    0.7.0.1
  */

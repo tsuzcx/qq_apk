@@ -14,12 +14,12 @@ public final class a
   public static void a(l paraml)
   {
     final d locald = new d();
-    paraml = paraml.Ak();
+    paraml = paraml.zX();
     Iterator localIterator = paraml.iterator();
     while (localIterator.hasNext())
     {
       j localj = (j)localIterator.next();
-      String str = String.format("%s@0x%08x", new Object[] { localj.bWJ.mName, Long.valueOf(localj.getId()) });
+      String str = String.format("%s@0x%08x", new Object[] { localj.bUr.mName, Long.valueOf(localj.getId()) });
       if (!locald.containsKey(str)) {
         locald.put(str, localj);
       }
@@ -28,7 +28,7 @@ public final class a
     locald.b(new s() {});
   }
   
-  public static long aV(long paramLong)
+  public static long aR(long paramLong)
   {
     return TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - paramLong);
   }

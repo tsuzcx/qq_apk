@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.os.SystemClock;
 import androidx.annotation.Keep;
+import com.tencent.tinker.loader.AppInfoChangedBlocker;
 import com.tencent.tinker.loader.TinkerLoader;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.TinkerUncaughtHandler;
@@ -53,6 +54,20 @@ public abstract class TinkerApplication
   protected TinkerApplication(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, String paramString3)
   {
     this(paramInt1, paramString1, paramString2, paramBoolean);
+  }
+  
+  private void bailLoaded()
+  {
+    try
+    {
+      if ((this.tinkerResultIntent != null) && (ShareIntentUtil.getIntentReturnCode(this.tinkerResultIntent) == 0) && (!AppInfoChangedBlocker.tryStart(this))) {
+        throw new IllegalStateException("AppInfoChangedBlocker.tryStart return false.");
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      throw new TinkerRuntimeException("Fail to do bail logic for load ensuring.", localThrowable);
+    }
   }
   
   private Handler createInlineFence(Application paramApplication, int paramInt, String paramString, boolean paramBoolean, long paramLong1, long paramLong2, Intent paramIntent)

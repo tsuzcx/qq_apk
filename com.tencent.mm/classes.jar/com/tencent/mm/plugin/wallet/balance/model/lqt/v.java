@@ -4,72 +4,72 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.bzf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.c.aa;
 import d.n.d;
 import java.io.IOException;
 
 public final class v
 {
-  private static v zFh;
-  private buo zFi;
+  private static v AXu;
+  private bzf AXv;
   
-  public static v dYO()
+  public static v eok()
   {
     AppMethodBeat.i(68491);
-    if (zFh == null) {
-      zFh = new v();
+    if (AXu == null) {
+      AXu = new v();
     }
-    v localv = zFh;
+    v localv = AXu;
     AppMethodBeat.o(68491);
     return localv;
   }
   
-  public final void a(buo parambuo)
+  public final void a(bzf parambzf)
   {
     AppMethodBeat.i(68492);
-    ad.i("MicroMsg.LqtOnClickRedeemCache", "setCache OnClickRedeemRes balance %s, bank_balance %s, lq_balance %s", new Object[] { Integer.valueOf(parambuo.DRI), Integer.valueOf(parambuo.DRK), Integer.valueOf(parambuo.DRJ) });
-    this.zFi = parambuo;
-    if (parambuo != null) {}
+    ac.i("MicroMsg.LqtOnClickRedeemCache", "setCache OnClickRedeemRes balance %s, bank_balance %s, lq_balance %s", new Object[] { Integer.valueOf(parambzf.Foc), Integer.valueOf(parambzf.Foe), Integer.valueOf(parambzf.Fod) });
+    this.AXv = parambzf;
+    if (parambzf != null) {}
     try
     {
-      parambuo = new String(parambuo.toByteArray(), d.ISO_8859_1);
-      ((a)g.ad(a.class)).getWalletCacheStg().set(ae.a.FsB, parambuo);
-      if (ab.hWE)
+      parambzf = new String(parambzf.toByteArray(), d.ISO_8859_1);
+      ((a)g.ad(a.class)).getWalletCacheStg().set(ah.a.GQs, parambzf);
+      if (ab.iwI)
       {
-        this.zFi.DRI = 100000000;
-        this.zFi.DRK = 50000000;
-        this.zFi.DRJ = 50000000;
+        this.AXv.Foc = 100000000;
+        this.AXv.Foe = 50000000;
+        this.AXv.Fod = 50000000;
       }
       AppMethodBeat.o(68492);
       return;
     }
-    catch (IOException parambuo)
+    catch (IOException parambzf)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", parambuo, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", parambzf, "", new Object[0]);
       }
     }
   }
   
-  public final buo dYP()
+  public final bzf eol()
   {
     AppMethodBeat.i(182502);
     Object localObject;
-    if (this.zFi == null)
+    if (this.AXv == null)
     {
-      ad.d("MicroMsg.LqtOnClickRedeemCache", "cache is null");
-      localObject = (String)((a)g.ad(a.class)).getWalletCacheStg().get(ae.a.FsB, "");
-      if (bt.isNullOrNil((String)localObject)) {}
+      ac.d("MicroMsg.LqtOnClickRedeemCache", "cache is null");
+      localObject = (String)((a)g.ad(a.class)).getWalletCacheStg().get(ah.a.GQs, "");
+      if (bs.isNullOrNil((String)localObject)) {}
     }
     try
     {
-      this.zFi = ((buo)new buo().parseFrom(((String)localObject).getBytes(d.ISO_8859_1)));
-      localObject = this.zFi;
+      this.AXv = ((bzf)new bzf().parseFrom(((String)localObject).getBytes(d.ISO_8859_1)));
+      localObject = this.AXv;
       AppMethodBeat.o(182502);
       return localObject;
     }
@@ -77,14 +77,14 @@ public final class v
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", localIOException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", localIOException, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.v
  * JD-Core Version:    0.7.0.1
  */

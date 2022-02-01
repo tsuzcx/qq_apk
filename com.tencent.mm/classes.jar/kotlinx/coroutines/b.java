@@ -3,17 +3,17 @@ package kotlinx.coroutines;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/Active;", "Lkotlinx/coroutines/NotCompleted;", "()V", "toString", "", "kotlinx-coroutines-core"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/Active;", "Lkotlinx/coroutines/NotCompleted;", "()V", "toString", "", "kotlinx-coroutines-core"})
 final class b
-  implements bu
+  implements bz
 {
-  public static final b Kdf;
+  public static final b LQA;
   
   static
   {
-    AppMethodBeat.i(189982);
-    Kdf = new b();
-    AppMethodBeat.o(189982);
+    AppMethodBeat.i(191090);
+    LQA = new b();
+    AppMethodBeat.o(191090);
   }
   
   public final String toString()

@@ -2,13 +2,13 @@ package com.tencent.liteav.beauty.b;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.i;
+import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.d.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.FloatBuffer;
 
 public class m
-  extends g
+  extends h
 {
   private int A;
   private float[] B;
@@ -75,12 +75,12 @@ public class m
         m.b(m.this, paramBitmap2);
         if (paramBitmap1 != null)
         {
-          m.a(m.this, i.a(paramBitmap1, m.a(m.this), false));
+          m.a(m.this, j.a(paramBitmap1, m.a(m.this), false));
           m.b(m.this)[0] = 1.0F;
         }
         while (paramBitmap2 != null)
         {
-          m.b(m.this, i.a(paramBitmap2, m.c(m.this), false));
+          m.b(m.this, j.a(paramBitmap2, m.c(m.this), false));
           m.b(m.this)[1] = 1.0F;
           AppMethodBeat.o(15024);
           return;

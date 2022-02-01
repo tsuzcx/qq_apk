@@ -14,14 +14,14 @@ final class b$11
   {
     AppMethodBeat.i(125941);
     long l = System.currentTimeMillis();
-    if (l - this.yNd.yMQ < 300L) {}
+    if (l - this.AaU.AaH < 300L) {}
     try
     {
-      if ((this.yNd.yMJ != null) && (this.yNd.yMJ.getView() != null)) {
-        this.yNd.yMJ.getView().scrollTo(this.yNd.yMJ.getView().getScrollX(), 0);
+      if ((this.AaU.AaA != null) && (this.AaU.AaA.getView() != null)) {
+        this.AaU.AaA.getView().scrollTo(this.AaU.AaA.getView().getScrollX(), 0);
       }
       label75:
-      this.yNd.yMQ = l;
+      this.AaU.AaH = l;
       AppMethodBeat.o(125941);
       return;
     }

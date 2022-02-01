@@ -18,7 +18,7 @@ public final class b
     AppMethodBeat.i(147231);
     JsApiClearStorageTask localJsApiClearStorageTask = new JsApiClearStorageTask();
     localJsApiClearStorageTask.appId = paramh.getAppId();
-    localJsApiClearStorageTask.kkZ = paramInt;
+    localJsApiClearStorageTask.kMr = paramInt;
     AppBrandMainProcessService.b(localJsApiClearStorageTask);
     paramh = e("ok", null);
     AppMethodBeat.o(147231);
@@ -28,7 +28,7 @@ public final class b
   private String c(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt)
   {
     AppMethodBeat.i(147232);
-    ((a)e.K(a.class)).cs(paramh.getAppId()).R(paramInt, paramh.getAppId());
+    ((a)e.K(a.class)).ch(paramh.getAppId()).S(paramInt, paramh.getAppId());
     paramh = e("ok", null);
     AppMethodBeat.o(147232);
     return paramh;
@@ -36,7 +36,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.b
  * JD-Core Version:    0.7.0.1
  */

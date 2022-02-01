@@ -3,41 +3,54 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ahi
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int DjY = 0;
-  public long endTime = 0L;
-  public long startTime = 0L;
+  public int DPH;
+  public int DPI;
+  public int DPJ;
+  public int DPK;
+  public String DPN;
+  public int ndj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122489);
+    AppMethodBeat.i(127470);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.startTime);
-      paramVarArgs.aG(2, this.endTime);
-      paramVarArgs.aR(3, this.DjY);
-      AppMethodBeat.o(122489);
+      paramVarArgs.aR(1, this.DPH);
+      paramVarArgs.aR(2, this.ndj);
+      if (this.DPN != null) {
+        paramVarArgs.d(3, this.DPN);
+      }
+      paramVarArgs.aR(4, this.DPI);
+      paramVarArgs.aR(5, this.DPJ);
+      paramVarArgs.aR(6, this.DPK);
+      AppMethodBeat.o(127470);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.q(1, this.startTime);
-      int i = f.a.a.b.b.a.q(2, this.endTime);
-      int j = f.a.a.b.b.a.bA(3, this.DjY);
-      AppMethodBeat.o(122489);
-      return paramInt + 0 + i + j;
+      int i = f.a.a.b.b.a.bx(1, this.DPH) + 0 + f.a.a.b.b.a.bx(2, this.ndj);
+      paramInt = i;
+      if (this.DPN != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.DPN);
+      }
+      i = f.a.a.b.b.a.bx(4, this.DPI);
+      int j = f.a.a.b.b.a.bx(5, this.DPJ);
+      int k = f.a.a.b.b.a.bx(6, this.DPK);
+      AppMethodBeat.o(127470);
+      return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(122489);
+      AppMethodBeat.o(127470);
       return 0;
     }
     if (paramInt == 3)
@@ -47,28 +60,40 @@ public final class ahi
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(122489);
+        AppMethodBeat.o(127470);
         return -1;
       case 1: 
-        localahi.startTime = locala.KhF.xT();
-        AppMethodBeat.o(122489);
+        localahi.DPH = locala.LVo.xF();
+        AppMethodBeat.o(127470);
         return 0;
       case 2: 
-        localahi.endTime = locala.KhF.xT();
-        AppMethodBeat.o(122489);
+        localahi.ndj = locala.LVo.xF();
+        AppMethodBeat.o(127470);
+        return 0;
+      case 3: 
+        localahi.DPN = locala.LVo.readString();
+        AppMethodBeat.o(127470);
+        return 0;
+      case 4: 
+        localahi.DPI = locala.LVo.xF();
+        AppMethodBeat.o(127470);
+        return 0;
+      case 5: 
+        localahi.DPJ = locala.LVo.xF();
+        AppMethodBeat.o(127470);
         return 0;
       }
-      localahi.DjY = locala.KhF.xS();
-      AppMethodBeat.o(122489);
+      localahi.DPK = locala.LVo.xF();
+      AppMethodBeat.o(127470);
       return 0;
     }
-    AppMethodBeat.o(122489);
+    AppMethodBeat.o(127470);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ahi
  * JD-Core Version:    0.7.0.1
  */

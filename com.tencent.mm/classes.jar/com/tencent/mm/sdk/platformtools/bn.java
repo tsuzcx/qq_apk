@@ -1,54 +1,201 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.c;
 
-final class bn
+public abstract class bn<R>
 {
-  @TargetApi(8)
-  public static void c(ListView paramListView)
+  private final long cpQ;
+  long cpR;
+  long cpS;
+  boolean cpT = false;
+  private Runnable cpU = new Runnable()
   {
-    AppMethodBeat.i(156352);
-    if (paramListView.getFirstVisiblePosition() > 10) {
-      paramListView.setSelection(10);
-    }
-    if (Build.VERSION.SDK_INT >= 8)
+    public final void run()
     {
-      com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(paramListView, locala.adn(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      paramListView.smoothScrollToPosition(((Integer)locala.lS(0)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(paramListView, "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      AppMethodBeat.i(157837);
+      ac.i("MicroMsg.SDK.SyncTask", "task run manualFinish = " + bn.this.cpT);
+      if (bn.this.cpT) {
+        bn.this.run();
+      }
+      for (;;)
+      {
+        bn.this.cpS = bs.aO(bn.this.cpR);
+        AppMethodBeat.o(157837);
+        return;
+        bn.this.aE(bn.this.run());
+      }
     }
-    AppMethodBeat.o(156352);
+  };
+  private Object lock = new Object();
+  private R result;
+  
+  public bn()
+  {
+    this(0L, null, (byte)0);
   }
   
-  @TargetApi(8)
-  public static void d(ListView paramListView, int paramInt)
+  public bn(long paramLong, R paramR)
   {
-    AppMethodBeat.i(156353);
-    int i = paramListView.getFirstVisiblePosition();
-    if ((i > paramInt) && (i - paramInt > 10)) {
-      paramListView.setSelection(paramInt + 10);
-    }
-    for (;;)
+    this.cpQ = paramLong;
+    this.result = paramR;
+    this.cpT = true;
+  }
+  
+  public bn(long paramLong, R paramR, byte paramByte)
+  {
+    this.cpQ = paramLong;
+    this.result = paramR;
+  }
+  
+  public final void aE(R arg1)
+  {
+    ac.i("MicroMsg.SDK.SyncTask", "setResultFinish ");
+    this.result = ???;
+    synchronized (this.lock)
     {
-      if (Build.VERSION.SDK_INT >= 8)
-      {
-        com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(paramListView, locala.adn(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-        paramListView.smoothScrollToPosition(((Integer)locala.lS(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(paramListView, "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      }
-      AppMethodBeat.o(156353);
+      ac.i("MicroMsg.SDK.SyncTask", "setResultFinish synchronized");
+      this.lock.notify();
       return;
-      if ((i < paramInt) && (paramInt - i > 10)) {
-        paramListView.setSelection(paramInt - 10);
-      }
     }
   }
+  
+  /* Error */
+  public final R b(ao paramao)
+  {
+    // Byte code:
+    //   0: aload_1
+    //   1: ifnonnull +15 -> 16
+    //   4: ldc 48
+    //   6: ldc 68
+    //   8: invokestatic 71	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   11: aload_0
+    //   12: invokevirtual 75	com/tencent/mm/sdk/platformtools/bn:run	()Ljava/lang/Object;
+    //   15: areturn
+    //   16: ldc 48
+    //   18: ldc 77
+    //   20: invokestatic 56	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: aload_1
+    //   24: invokevirtual 83	com/tencent/mm/sdk/platformtools/ao:getLooper	()Landroid/os/Looper;
+    //   27: ifnull +46 -> 73
+    //   30: invokestatic 89	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   33: invokevirtual 93	java/lang/Thread:getId	()J
+    //   36: aload_1
+    //   37: invokevirtual 83	com/tencent/mm/sdk/platformtools/ao:getLooper	()Landroid/os/Looper;
+    //   40: invokevirtual 98	android/os/Looper:getThread	()Ljava/lang/Thread;
+    //   43: invokevirtual 93	java/lang/Thread:getId	()J
+    //   46: lcmp
+    //   47: ifne +21 -> 68
+    //   50: iconst_1
+    //   51: istore_2
+    //   52: iload_2
+    //   53: ifeq +34 -> 87
+    //   56: ldc 48
+    //   58: ldc 100
+    //   60: invokestatic 56	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: aload_0
+    //   64: invokevirtual 75	com/tencent/mm/sdk/platformtools/bn:run	()Ljava/lang/Object;
+    //   67: areturn
+    //   68: iconst_0
+    //   69: istore_2
+    //   70: goto -18 -> 52
+    //   73: aload_1
+    //   74: invokevirtual 104	com/tencent/mm/sdk/platformtools/ao:getSerialTag	()Ljava/lang/String;
+    //   77: invokestatic 109	com/tencent/e/j/a:fED	()Ljava/lang/String;
+    //   80: invokevirtual 115	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   83: istore_2
+    //   84: goto -32 -> 52
+    //   87: aload_0
+    //   88: invokestatic 120	com/tencent/mm/sdk/platformtools/bs:Gn	()J
+    //   91: putfield 122	com/tencent/mm/sdk/platformtools/bn:cpR	J
+    //   94: aload_0
+    //   95: getfield 30	com/tencent/mm/sdk/platformtools/bn:lock	Ljava/lang/Object;
+    //   98: astore 5
+    //   100: aload 5
+    //   102: monitorenter
+    //   103: ldc 48
+    //   105: ldc 124
+    //   107: invokestatic 56	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: aload_1
+    //   111: aload_0
+    //   112: getfield 37	com/tencent/mm/sdk/platformtools/bn:cpU	Ljava/lang/Runnable;
+    //   115: invokevirtual 128	com/tencent/mm/sdk/platformtools/ao:post	(Ljava/lang/Runnable;)Z
+    //   118: pop
+    //   119: aload_0
+    //   120: getfield 30	com/tencent/mm/sdk/platformtools/bn:lock	Ljava/lang/Object;
+    //   123: aload_0
+    //   124: getfield 39	com/tencent/mm/sdk/platformtools/bn:cpQ	J
+    //   127: invokevirtual 132	java/lang/Object:wait	(J)V
+    //   130: aload 5
+    //   132: monitorexit
+    //   133: aload_0
+    //   134: getfield 122	com/tencent/mm/sdk/platformtools/bn:cpR	J
+    //   137: invokestatic 136	com/tencent/mm/sdk/platformtools/bs:aO	(J)J
+    //   140: lstore_3
+    //   141: ldc 48
+    //   143: ldc 138
+    //   145: iconst_4
+    //   146: anewarray 5	java/lang/Object
+    //   149: dup
+    //   150: iconst_0
+    //   151: new 140	java/lang/StringBuilder
+    //   154: dup
+    //   155: invokespecial 141	java/lang/StringBuilder:<init>	()V
+    //   158: aload_0
+    //   159: getfield 41	com/tencent/mm/sdk/platformtools/bn:result	Ljava/lang/Object;
+    //   162: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   165: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   168: aastore
+    //   169: dup
+    //   170: iconst_1
+    //   171: lload_3
+    //   172: invokestatic 154	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   175: aastore
+    //   176: dup
+    //   177: iconst_2
+    //   178: aload_0
+    //   179: getfield 156	com/tencent/mm/sdk/platformtools/bn:cpS	J
+    //   182: invokestatic 154	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   185: aastore
+    //   186: dup
+    //   187: iconst_3
+    //   188: lload_3
+    //   189: aload_0
+    //   190: getfield 156	com/tencent/mm/sdk/platformtools/bn:cpS	J
+    //   193: lsub
+    //   194: invokestatic 154	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   197: aastore
+    //   198: invokestatic 159	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: aload_0
+    //   202: getfield 41	com/tencent/mm/sdk/platformtools/bn:result	Ljava/lang/Object;
+    //   205: areturn
+    //   206: astore_1
+    //   207: aload 5
+    //   209: monitorexit
+    //   210: aload_1
+    //   211: athrow
+    //   212: astore_1
+    //   213: ldc 48
+    //   215: aload_1
+    //   216: ldc 161
+    //   218: iconst_0
+    //   219: anewarray 5	java/lang/Object
+    //   222: invokestatic 165	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   225: goto -92 -> 133
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	228	0	this	bn
+    //   0	228	1	paramao	ao
+    //   51	33	2	bool	boolean
+    //   140	49	3	l	long
+    // Exception table:
+    //   from	to	target	type
+    //   103	133	206	finally
+    //   207	210	206	finally
+    //   94	103	212	java/lang/InterruptedException
+    //   210	212	212	java/lang/InterruptedException
+  }
+  
+  protected abstract R run();
 }
 
 

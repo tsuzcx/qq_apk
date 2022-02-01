@@ -38,49 +38,49 @@ public class NeatTextView
   extends View
   implements a
 {
-  private static final LruCache<String, e> IiY;
-  private static final HandlerThread IiZ;
-  private static Handler Ija;
-  private int GbX;
-  private Spannable.Factory GbZ;
-  private TextUtils.TruncateAt Gca;
-  private float Gcg;
-  private com.tencent.neattextview.textview.layout.c IiF;
-  private int Iin;
-  private TextView Ijb;
-  private a Ijc;
-  private ColorStateList Ijd;
-  private ColorStateList Ije;
-  private int Ijf;
-  private TextView.BufferType Ijg;
-  private CharSequence Ijh;
-  private b Iji;
-  private boolean Ijj;
-  private b Ijk;
-  private float Ijl;
-  private boolean Ijm;
-  private d Ijn;
-  private com.tencent.neattextview.textview.layout.a Ijo;
-  private TextPaint avD;
+  private static final LruCache<String, e> JKJ;
+  private static final HandlerThread JKK;
+  private static Handler JKL;
+  private int HBM;
+  private Spannable.Factory HBO;
+  private TextUtils.TruncateAt HBP;
+  private float HBV;
+  private int JJY;
+  private TextView JKM;
+  private a JKN;
+  private ColorStateList JKO;
+  private ColorStateList JKP;
+  private int JKQ;
+  private TextView.BufferType JKR;
+  private CharSequence JKS;
+  private b JKT;
+  private boolean JKU;
+  private b JKV;
+  private float JKW;
+  private boolean JKX;
+  private d JKY;
+  private com.tencent.neattextview.textview.layout.a JKZ;
+  private com.tencent.neattextview.textview.layout.c JKq;
+  private TextPaint awy;
   private int mMaxHeight;
   private int mMaxWidth;
   private int mMinHeight;
   private int mMinWidth;
   private CharSequence mText;
-  private int nmN;
-  public boolean nmV;
-  private ColorStateList uJF;
+  private int nPN;
+  public boolean nPV;
+  private ColorStateList vSw;
   
   static
   {
     AppMethodBeat.i(39829);
-    IiY = new LruCache(800);
+    JKJ = new LruCache(800);
     Object localObject = new HandlerThread("PreMeasuredThread", -8);
-    IiZ = (HandlerThread)localObject;
+    JKK = (HandlerThread)localObject;
     ((HandlerThread)localObject).start();
-    localObject = IiZ.getLooper();
+    localObject = JKK.getLooper();
     if (localObject != null) {
-      Ija = new Handler((Looper)localObject);
+      JKL = new Handler((Looper)localObject);
     }
     AppMethodBeat.o(39829);
   }
@@ -89,19 +89,19 @@ public class NeatTextView
   {
     super(paramContext);
     AppMethodBeat.i(163503);
-    this.Ijc = new a((byte)0);
-    this.nmN = 2147483647;
+    this.JKN = new a((byte)0);
+    this.nPN = 2147483647;
     this.mMaxWidth = 2147483647;
     this.mMaxHeight = 2147483647;
     this.mMinWidth = 0;
     this.mMinHeight = 0;
-    this.Gcg = 0.0F;
+    this.HBV = 0.0F;
     this.mText = "";
-    this.Ijg = TextView.BufferType.NORMAL;
-    this.GbZ = Spannable.Factory.getInstance();
-    this.Ijj = true;
-    this.Iin = 8388659;
-    this.Ijm = true;
+    this.JKR = TextView.BufferType.NORMAL;
+    this.HBO = Spannable.Factory.getInstance();
+    this.JKU = true;
+    this.JJY = 8388659;
+    this.JKX = true;
     e(paramContext, null, 0);
     AppMethodBeat.o(163503);
   }
@@ -110,19 +110,19 @@ public class NeatTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(39785);
-    this.Ijc = new a((byte)0);
-    this.nmN = 2147483647;
+    this.JKN = new a((byte)0);
+    this.nPN = 2147483647;
     this.mMaxWidth = 2147483647;
     this.mMaxHeight = 2147483647;
     this.mMinWidth = 0;
     this.mMinHeight = 0;
-    this.Gcg = 0.0F;
+    this.HBV = 0.0F;
     this.mText = "";
-    this.Ijg = TextView.BufferType.NORMAL;
-    this.GbZ = Spannable.Factory.getInstance();
-    this.Ijj = true;
-    this.Iin = 8388659;
-    this.Ijm = true;
+    this.JKR = TextView.BufferType.NORMAL;
+    this.HBO = Spannable.Factory.getInstance();
+    this.JKU = true;
+    this.JJY = 8388659;
+    this.JKX = true;
     e(paramContext, paramAttributeSet, 0);
     AppMethodBeat.o(39785);
   }
@@ -131,27 +131,27 @@ public class NeatTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(39786);
-    this.Ijc = new a((byte)0);
-    this.nmN = 2147483647;
+    this.JKN = new a((byte)0);
+    this.nPN = 2147483647;
     this.mMaxWidth = 2147483647;
     this.mMaxHeight = 2147483647;
     this.mMinWidth = 0;
     this.mMinHeight = 0;
-    this.Gcg = 0.0F;
+    this.HBV = 0.0F;
     this.mText = "";
-    this.Ijg = TextView.BufferType.NORMAL;
-    this.GbZ = Spannable.Factory.getInstance();
-    this.Ijj = true;
-    this.Iin = 8388659;
-    this.Ijm = true;
+    this.JKR = TextView.BufferType.NORMAL;
+    this.HBO = Spannable.Factory.getInstance();
+    this.JKU = true;
+    this.JJY = 8388659;
+    this.JKX = true;
     e(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(39786);
   }
   
-  private String aNv(String paramString)
+  private String aSY(String paramString)
   {
     AppMethodBeat.i(39816);
-    paramString = paramString + "#" + this.avD.getTextSize();
+    paramString = paramString + "#" + this.awy.getTextSize();
     AppMethodBeat.o(39816);
     return paramString;
   }
@@ -159,11 +159,11 @@ public class NeatTextView
   private void e(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(39787);
-    this.Iji = new b(getContext(), this);
+    this.JKT = new b(getContext(), this);
     Object localObject = new AdaptedTextView(paramContext);
     ((AdaptedTextView)localObject).setClickable(true);
     ((AdaptedTextView)localObject).setFocusable(true);
-    ((AdaptedTextView)localObject).Ijq = new NeatTextView.AdaptedTextView.a()
+    ((AdaptedTextView)localObject).JLb = new NeatTextView.AdaptedTextView.a()
     {
       public final void invalidate()
       {
@@ -179,8 +179,8 @@ public class NeatTextView
         AppMethodBeat.o(39762);
       }
     };
-    this.Ijb = ((TextView)localObject);
-    this.avD = getWrappedTextView().getPaint();
+    this.JKM = ((TextView)localObject);
+    this.awy = getWrappedTextView().getPaint();
     localObject = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.NeatTextView, paramInt, 0);
     int i = 15;
     int j = -16777216;
@@ -241,7 +241,7 @@ public class NeatTextView
         ((TypedArray)localObject).recycle();
         AppMethodBeat.o(39787);
       }
-      int i1 = this.nmN;
+      int i1 = this.nPN;
       continue;
       if (i7 == 20)
       {
@@ -275,7 +275,7 @@ public class NeatTextView
       }
       else if (i7 == 24)
       {
-        setSpacingAdd(((TypedArray)localObject).getDimensionPixelSize(i7, (int)this.Gcg));
+        setSpacingAdd(((TypedArray)localObject).getDimensionPixelSize(i7, (int)this.HBV));
         paramAttributeSet = paramContext;
         i1 = n;
         i2 = m;
@@ -399,7 +399,7 @@ public class NeatTextView
         i5 = i;
         if (i7 == 26)
         {
-          this.Ijm = ((TypedArray)localObject).getBoolean(i7, true);
+          this.JKX = ((TypedArray)localObject).getBoolean(i7, true);
           paramAttributeSet = paramContext;
           i1 = n;
           i2 = m;
@@ -419,7 +419,7 @@ public class NeatTextView
           for (;;)
           {
             if (!TextUtils.isEmpty(paramContext)) {
-              aq(paramContext);
+              ar(paramContext);
             }
             getWrappedTextView().setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
             AppMethodBeat.o(39787);
@@ -443,10 +443,10 @@ public class NeatTextView
     }
   }
   
-  private void flj()
+  private void fBA()
   {
     AppMethodBeat.i(39798);
-    getWrappedTextView().setEllipsize(this.Gca);
+    getWrappedTextView().setEllipsize(this.HBP);
     AppMethodBeat.o(39798);
   }
   
@@ -467,12 +467,12 @@ public class NeatTextView
   private void setRawTextSize(float paramFloat)
   {
     AppMethodBeat.i(39822);
-    if (paramFloat != this.avD.getTextSize())
+    if (paramFloat != this.awy.getTextSize())
     {
-      this.avD.setTextSize(paramFloat);
-      if (this.IiF != null)
+      this.awy.setTextSize(paramFloat);
+      if (this.JKq != null)
       {
-        yN();
+        yA();
         requestLayout();
         invalidate();
       }
@@ -483,32 +483,32 @@ public class NeatTextView
   private void updateTextColors()
   {
     AppMethodBeat.i(39818);
-    int i = this.uJF.getColorForState(getDrawableState(), 0);
-    if (i != this.GbX) {
-      this.GbX = i;
+    int i = this.vSw.getColorForState(getDrawableState(), 0);
+    if (i != this.HBM) {
+      this.HBM = i;
     }
     for (int j = 1;; j = 0)
     {
       i = j;
       int k;
-      if (this.Ije != null)
+      if (this.JKP != null)
       {
-        k = this.Ije.getColorForState(getDrawableState(), 0);
+        k = this.JKP.getColorForState(getDrawableState(), 0);
         i = j;
-        if (k != this.avD.linkColor)
+        if (k != this.awy.linkColor)
         {
-          this.avD.linkColor = k;
+          this.awy.linkColor = k;
           i = 1;
         }
       }
       j = i;
-      if (this.Ijd != null)
+      if (this.JKO != null)
       {
-        k = this.Ijd.getColorForState(getDrawableState(), 0);
+        k = this.JKO.getColorForState(getDrawableState(), 0);
         j = i;
-        if (k != this.Ijf)
+        if (k != this.JKQ)
         {
-          this.Ijf = k;
+          this.JKQ = k;
           if (this.mText != null)
           {
             j = i;
@@ -528,20 +528,20 @@ public class NeatTextView
     }
   }
   
-  private void yN()
+  private void yA()
   {
     AppMethodBeat.i(39817);
-    this.IiF = null;
+    this.JKq = null;
     Handler localHandler;
     d locald;
-    if (Ija != null)
+    if (JKL != null)
     {
-      if ((this.mText != null) || (this.Ijh == null)) {
+      if ((this.mText != null) || (this.JKS == null)) {
         break label82;
       }
-      localHandler = Ija;
-      locald = new d(this.Ijh.toString(), this.avD);
-      this.Ijn = locald;
+      localHandler = JKL;
+      locald = new d(this.JKS.toString(), this.awy);
+      this.JKY = locald;
       localHandler.post(locald);
     }
     for (;;)
@@ -554,9 +554,9 @@ public class NeatTextView
       if (this.mText == null) {
         break;
       }
-      localHandler = Ija;
-      locald = new d(this.mText.toString(), this.avD);
-      this.Ijn = locald;
+      localHandler = JKL;
+      locald = new d(this.mText.toString(), this.awy);
+      this.JKY = locald;
       localHandler.post(locald);
     }
     AppMethodBeat.o(39817);
@@ -565,12 +565,12 @@ public class NeatTextView
   public final void a(TextUtils.TruncateAt paramTruncateAt, float paramFloat)
   {
     AppMethodBeat.i(39797);
-    this.Ijl = paramFloat;
-    this.Gca = paramTruncateAt;
-    flj();
-    if (this.IiF != null)
+    this.JKW = paramFloat;
+    this.HBP = paramTruncateAt;
+    fBA();
+    if (this.JKq != null)
     {
-      this.IiF = null;
+      this.JKq = null;
       requestLayout();
       invalidate();
     }
@@ -581,7 +581,7 @@ public class NeatTextView
   {
     boolean bool2 = true;
     AppMethodBeat.i(39793);
-    this.Ijg = paramBufferType;
+    this.JKR = paramBufferType;
     Object localObject = paramCharSequence;
     if (paramCharSequence == null) {
       localObject = "";
@@ -593,10 +593,10 @@ public class NeatTextView
       paramCharSequence = TextUtils.stringOrSpannedString((CharSequence)localObject);
       this.mText = paramCharSequence;
       bool1 = bool2;
-      if (feI())
+      if (fuD())
       {
         localObject = paramCharSequence.toString();
-        locale = (e)IiY.get(aNv((String)localObject));
+        locale = (e)JKJ.get(aSY((String)localObject));
         if (locale != null) {
           break label253;
         }
@@ -605,7 +605,7 @@ public class NeatTextView
         }
         bool1 = true;
         label96:
-        IiY.put(aNv((String)localObject), new e(bool1, null));
+        JKJ.put(aSY((String)localObject), new e(bool1, null));
         label118:
         if (!bool1) {
           break label262;
@@ -613,8 +613,8 @@ public class NeatTextView
         bool1 = bool2;
       }
       label125:
-      this.nmV = bool1;
-      if (!this.nmV) {
+      this.nPV = bool1;
+      if (!this.nPV) {
         break label267;
       }
       if (getLayoutParams() != null) {
@@ -628,7 +628,7 @@ public class NeatTextView
     for (;;)
     {
       if ((this.mText instanceof Spannable)) {
-        ((Spannable)this.mText).setSpan(this.Ijc, 0, paramCharSequence.length(), 18);
+        ((Spannable)this.mText).setSpan(this.JKN, 0, paramCharSequence.length(), 18);
       }
       AppMethodBeat.o(39793);
       return;
@@ -636,40 +636,35 @@ public class NeatTextView
       if (paramBufferType != TextView.BufferType.SPANNABLE) {
         break;
       }
-      paramCharSequence = this.GbZ.newSpannable((CharSequence)localObject);
+      paramCharSequence = this.HBO.newSpannable((CharSequence)localObject);
       break;
       label248:
       bool1 = false;
       break label96;
       label253:
-      bool1 = locale.nmV;
+      bool1 = locale.nPV;
       break label118;
       label262:
       bool1 = false;
       break label125;
       label267:
-      yN();
+      yA();
     }
   }
   
-  public void aq(CharSequence paramCharSequence)
+  public void ar(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(39792);
     a(paramCharSequence, TextView.BufferType.NORMAL);
     AppMethodBeat.o(39792);
   }
   
-  public boolean feI()
+  public final boolean fBy()
   {
-    return this.Ijj;
+    return this.nPV;
   }
   
-  public final boolean flh()
-  {
-    return this.nmV;
-  }
-  
-  public final CharSequence fli()
+  public final CharSequence fBz()
   {
     if (this.mText == null) {
       return "";
@@ -677,30 +672,35 @@ public class NeatTextView
     return this.mText;
   }
   
+  public boolean fuD()
+  {
+    return this.JKU;
+  }
+  
   public final int getCurrentHintTextColor()
   {
-    if (this.Ijd != null) {
-      return this.Ijf;
+    if (this.JKO != null) {
+      return this.JKQ;
     }
-    return this.GbX;
+    return this.HBM;
   }
   
   public final int getCurrentTextColor()
   {
-    return this.GbX;
+    return this.HBM;
   }
   
   public CharSequence getHint()
   {
-    return this.Ijh;
+    return this.JKS;
   }
   
   public float getHorizontalOffset()
   {
     AppMethodBeat.i(39795);
-    if (((this.Iin & 0x7) != 3) && (this.IiF != null))
+    if (((this.JJY & 0x7) != 3) && (this.JKq != null))
     {
-      f = (getMeasuredWidth() - this.IiF.flf()[0]) / 2.0F;
+      f = (getMeasuredWidth() - this.JKq.fBw()[0]) / 2.0F;
       AppMethodBeat.o(39795);
       return f;
     }
@@ -712,15 +712,15 @@ public class NeatTextView
   public com.tencent.neattextview.textview.layout.a getLayout()
   {
     AppMethodBeat.i(39825);
-    if (this.Ijo != null)
+    if (this.JKZ != null)
     {
-      localObject = this.Ijo;
+      localObject = this.JKZ;
       AppMethodBeat.o(39825);
       return localObject;
     }
     Object localObject = new com.tencent.neattextview.textview.layout.a()
     {
-      public final int fkV()
+      public final int fBm()
       {
         AppMethodBeat.i(39773);
         if (NeatTextView.a(NeatTextView.this))
@@ -741,12 +741,12 @@ public class NeatTextView
           AppMethodBeat.o(39773);
           return -1;
         }
-        int i = NeatTextView.c(NeatTextView.this).Iii.size();
+        int i = NeatTextView.c(NeatTextView.this).JJR.size();
         AppMethodBeat.o(39773);
         return i;
       }
       
-      public final List<com.tencent.neattextview.textview.b.c> fkW()
+      public final List<com.tencent.neattextview.textview.b.c> fBn()
       {
         AppMethodBeat.i(39775);
         if (NeatTextView.a(NeatTextView.this))
@@ -759,7 +759,7 @@ public class NeatTextView
           AppMethodBeat.o(39775);
           return null;
         }
-        List localList = NeatTextView.c(NeatTextView.this).fkW();
+        List localList = NeatTextView.c(NeatTextView.this).fBn();
         AppMethodBeat.o(39775);
         return localList;
       }
@@ -1049,7 +1049,7 @@ public class NeatTextView
         return f;
       }
       
-      public final int kf(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final int ks(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(39774);
         if (NeatTextView.a(NeatTextView.this))
@@ -1077,12 +1077,12 @@ public class NeatTextView
           AppMethodBeat.o(39774);
           return -1;
         }
-        paramAnonymousInt1 = NeatTextView.c(NeatTextView.this).kf(paramAnonymousInt1, paramAnonymousInt2);
+        paramAnonymousInt1 = NeatTextView.c(NeatTextView.this).ks(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(39774);
         return paramAnonymousInt1;
       }
     };
-    this.Ijo = ((com.tencent.neattextview.textview.layout.a)localObject);
+    this.JKZ = ((com.tencent.neattextview.textview.layout.a)localObject);
     AppMethodBeat.o(39825);
     return localObject;
   }
@@ -1090,9 +1090,9 @@ public class NeatTextView
   public int getLineCount()
   {
     AppMethodBeat.i(39801);
-    if (this.IiF != null)
+    if (this.JKq != null)
     {
-      int i = this.IiF.Iii.size();
+      int i = this.JKq.JJR.size();
       AppMethodBeat.o(39801);
       return i;
     }
@@ -1103,7 +1103,7 @@ public class NeatTextView
   public int getLineHeight()
   {
     AppMethodBeat.i(39826);
-    int i = Math.round(this.avD.getFontMetricsInt(null) + this.Gcg);
+    int i = Math.round(this.awy.getFontMetricsInt(null) + this.HBV);
     AppMethodBeat.o(39826);
     return i;
   }
@@ -1115,7 +1115,7 @@ public class NeatTextView
   
   public int getMaxLines()
   {
-    return this.nmN;
+    return this.nPN;
   }
   
   public int getMaxWidth()
@@ -1125,17 +1125,17 @@ public class NeatTextView
   
   public b getOnDoubleClickListener()
   {
-    return this.Ijk;
+    return this.JKV;
   }
   
   public TextPaint getPaint()
   {
-    return this.avD;
+    return this.awy;
   }
   
   public int getTextGravity()
   {
-    return this.Iin;
+    return this.JJY;
   }
   
   public float getTextSize()
@@ -1149,9 +1149,9 @@ public class NeatTextView
   public float getVerticalOffset()
   {
     AppMethodBeat.i(39794);
-    if (((this.Iin & 0x70) != 48) && (this.IiF != null))
+    if (((this.JJY & 0x70) != 48) && (this.JKq != null))
     {
-      f = (getMeasuredHeight() - this.IiF.flf()[1]) / 2.0F;
+      f = (getMeasuredHeight() - this.JKq.fBw()[1]) / 2.0F;
       AppMethodBeat.o(39794);
       return f;
     }
@@ -1162,7 +1162,7 @@ public class NeatTextView
   
   public TextView getWrappedTextView()
   {
-    return this.Ijb;
+    return this.JKM;
   }
   
   public void invalidate()
@@ -1172,14 +1172,14 @@ public class NeatTextView
     AppMethodBeat.o(39823);
   }
   
-  public final com.tencent.neattextview.textview.layout.a ki(int paramInt1, int paramInt2)
+  public final com.tencent.neattextview.textview.layout.a kv(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(163504);
     NeatLayout localNeatLayout;
     if (!TextUtils.isEmpty(this.mText))
     {
       localNeatLayout = new NeatLayout(this.mText, null);
-      localNeatLayout.a(getPaint(), paramInt1, paramInt2, getPaddingLeft(), getPaddingTop(), this.Gcg, this.nmN, this.Gca, this.Ijl, this.Ijm, this.Iin);
+      localNeatLayout.a(getPaint(), paramInt1, paramInt2, getPaddingLeft(), getPaddingTop(), this.HBV, this.nPN, this.HBP, this.JKW, this.JKX, this.JJY);
     }
     for (;;)
     {
@@ -1193,22 +1193,22 @@ public class NeatTextView
   {
     AppMethodBeat.i(39791);
     super.onDraw(paramCanvas);
-    int j = this.GbX;
+    int j = this.HBM;
     int i = j;
-    if (!TextUtils.isEmpty(this.Ijh))
+    if (!TextUtils.isEmpty(this.JKS))
     {
       i = j;
       if (TextUtils.isEmpty(this.mText))
       {
         i = j;
-        if (this.Ijd != null) {
-          i = this.Ijf;
+        if (this.JKO != null) {
+          i = this.JKQ;
         }
       }
     }
-    this.avD.setColor(i);
-    this.avD.drawableState = getDrawableState();
-    if (this.nmV)
+    this.awy.setColor(i);
+    this.awy.drawableState = getDrawableState();
+    if (this.nPV)
     {
       paramCanvas.save();
       paramCanvas.translate(getPaddingLeft(), getPaddingTop());
@@ -1220,12 +1220,12 @@ public class NeatTextView
       AppMethodBeat.o(39791);
       return;
     }
-    if (this.IiF != null)
+    if (this.JKq != null)
     {
-      if (this.IiF.getTextPaint() != null) {
-        this.IiF.getTextPaint().set(this.avD);
+      if (this.JKq.getTextPaint() != null) {
+        this.JKq.getTextPaint().set(this.awy);
       }
-      this.IiF.a(paramCanvas, getPaddingLeft(), getVerticalOffset());
+      this.JKq.a(paramCanvas, getPaddingLeft(), getVerticalOffset());
     }
     AppMethodBeat.o(39791);
   }
@@ -1233,7 +1233,7 @@ public class NeatTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(39789);
-    if (this.nmV)
+    if (this.nPV)
     {
       getWrappedTextView().measure(paramInt1, paramInt2);
       setMeasuredDimension(getWrappedTextView().getMeasuredWidth(), getWrappedTextView().getMeasuredHeight());
@@ -1278,25 +1278,25 @@ public class NeatTextView
         float f2 = paramInt2 - n - i1;
         Object localObject1;
         if (TextUtils.isEmpty(this.mText)) {
-          localObject1 = this.Ijh;
+          localObject1 = this.JKS;
         }
         Object localObject2;
         for (;;)
         {
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = (e)IiY.get(aNv(((CharSequence)localObject1).toString()));
+            localObject2 = (e)JKJ.get(aSY(((CharSequence)localObject1).toString()));
             if (localObject2 != null)
             {
-              localObject2 = ((e)localObject2).Ijs;
+              localObject2 = ((e)localObject2).JLd;
               i = 0;
-              this.IiF = new NeatLayout((CharSequence)localObject1, (float[])localObject2);
-              this.IiF.a(getPaint(), f1, f2, getPaddingLeft(), getPaddingTop(), this.Gcg, this.nmN, this.Gca, this.Ijl, this.Ijm, this.Iin);
+              this.JKq = new NeatLayout((CharSequence)localObject1, (float[])localObject2);
+              this.JKq.a(getPaint(), f1, f2, getPaddingLeft(), getPaddingTop(), this.HBV, this.nPN, this.HBP, this.JKW, this.JKX, this.JJY);
               if (i != 0) {
-                IiY.put(aNv(this.IiF.fle()), new e(this.nmV, this.IiF.fkX()));
+                JKJ.put(aSY(this.JKq.fBv()), new e(this.nPV, this.JKq.fBo()));
               }
-              this.Ijc.Ijr = new WeakReference(this.IiF);
-              localObject1 = this.IiF.flf();
+              this.JKN.JLc = new WeakReference(this.JKq);
+              localObject1 = this.JKq.fBw();
               if (m != 1073741824) {
                 paramInt1 = (int)Math.min(localObject1[0] + getPaddingLeft() + getPaddingRight(), this.mMaxWidth);
               }
@@ -1310,12 +1310,12 @@ public class NeatTextView
             }
             else
             {
-              if (this.Ijn == null) {
+              if (this.JKY == null) {
                 break label568;
               }
-              localObject2 = this.Ijn;
-              if ((this.avD.getTextSize() == ((d)localObject2).ggK.getTextSize()) && (((d)localObject2).gPQ)) {
-                localObject2 = ((d)localObject2).Ijs;
+              localObject2 = this.JKY;
+              if ((this.awy.getTextSize() == ((d)localObject2).glq.getTextSize()) && (((d)localObject2).hqq)) {
+                localObject2 = ((d)localObject2).JLd;
               }
             }
           }
@@ -1340,7 +1340,7 @@ public class NeatTextView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39788);
-    if ((this.Iji != null) && (this.Iji.onTouch(this, paramMotionEvent)))
+    if ((this.JKT != null) && (this.JKT.onTouch(this, paramMotionEvent)))
     {
       AppMethodBeat.o(39788);
       return true;
@@ -1360,13 +1360,13 @@ public class NeatTextView
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
     AppMethodBeat.i(39796);
-    if (this.Gca != paramTruncateAt)
+    if (this.HBP != paramTruncateAt)
     {
-      this.Gca = paramTruncateAt;
-      flj();
-      if (this.IiF != null)
+      this.HBP = paramTruncateAt;
+      fBA();
+      if (this.JKq != null)
       {
-        this.IiF = null;
+        this.JKq = null;
         requestLayout();
         invalidate();
       }
@@ -1394,10 +1394,10 @@ public class NeatTextView
   public final void setHint(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(39803);
-    this.Ijh = TextUtils.stringOrSpannedString(paramCharSequence);
-    getWrappedTextView().setHint(this.Ijh);
+    this.JKS = TextUtils.stringOrSpannedString(paramCharSequence);
+    getWrappedTextView().setHint(this.JKS);
     if (TextUtils.isEmpty(this.mText)) {
-      yN();
+      yA();
     }
     AppMethodBeat.o(39803);
   }
@@ -1405,7 +1405,7 @@ public class NeatTextView
   public final void setHintTextColor(int paramInt)
   {
     AppMethodBeat.i(39815);
-    this.Ijd = ColorStateList.valueOf(paramInt);
+    this.JKO = ColorStateList.valueOf(paramInt);
     getWrappedTextView().setHintTextColor(paramInt);
     updateTextColors();
     AppMethodBeat.o(39815);
@@ -1414,7 +1414,7 @@ public class NeatTextView
   public void setLines(int paramInt)
   {
     AppMethodBeat.i(39812);
-    this.nmN = paramInt;
+    this.nPN = paramInt;
     getWrappedTextView().setLines(paramInt);
     requestLayout();
     invalidate();
@@ -1424,7 +1424,7 @@ public class NeatTextView
   public final void setLinkTextColor(int paramInt)
   {
     AppMethodBeat.i(39814);
-    this.Ije = ColorStateList.valueOf(paramInt);
+    this.JKP = ColorStateList.valueOf(paramInt);
     updateTextColors();
     AppMethodBeat.o(39814);
   }
@@ -1442,7 +1442,7 @@ public class NeatTextView
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(39811);
-    this.nmN = paramInt;
+    this.nPN = paramInt;
     getWrappedTextView().setMaxLines(paramInt);
     requestLayout();
     invalidate();
@@ -1481,19 +1481,19 @@ public class NeatTextView
   
   public void setNeatEnable(boolean paramBoolean)
   {
-    this.Ijj = paramBoolean;
+    this.JKU = paramBoolean;
   }
   
   public void setOnDoubleClickListener(b paramb)
   {
-    this.Ijk = paramb;
+    this.JKV = paramb;
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(39800);
     if ((paramInt1 != getPaddingLeft()) || (paramInt3 != getPaddingRight()) || (paramInt2 != getPaddingTop()) || (paramInt4 != getPaddingBottom())) {
-      this.IiF = null;
+      this.JKq = null;
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     getWrappedTextView().setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -1503,13 +1503,13 @@ public class NeatTextView
   
   public void setSmartLetterEnable(boolean paramBoolean)
   {
-    this.Ijm = paramBoolean;
+    this.JKX = paramBoolean;
   }
   
   public void setSpacingAdd(int paramInt)
   {
     AppMethodBeat.i(39809);
-    this.Gcg = paramInt;
+    this.HBV = paramInt;
     getWrappedTextView().setLineSpacing(paramInt, 1.0F);
     requestLayout();
     invalidate();
@@ -1519,7 +1519,7 @@ public class NeatTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(39813);
-    this.uJF = ColorStateList.valueOf(paramInt);
+    this.vSw = ColorStateList.valueOf(paramInt);
     getWrappedTextView().setTextColor(paramInt);
     updateTextColors();
     AppMethodBeat.o(39813);
@@ -1538,8 +1538,8 @@ public class NeatTextView
       if ((paramInt & 0x70) == 0) {
         i = paramInt | 0x30;
       }
-      this.Iin = i;
-      if (i != this.Iin) {
+      this.JJY = i;
+      if (i != this.JJY) {
         invalidate();
       }
       AppMethodBeat.o(39799);
@@ -1580,7 +1580,7 @@ public class NeatTextView
   static class AdaptedTextView
     extends AppCompatTextView
   {
-    a Ijq;
+    a JLb;
     
     public AdaptedTextView(Context paramContext)
     {
@@ -1601,8 +1601,8 @@ public class NeatTextView
     {
       AppMethodBeat.i(39777);
       super.invalidate();
-      if (this.Ijq != null) {
-        this.Ijq.invalidate();
+      if (this.JLb != null) {
+        this.JLb.invalidate();
       }
       AppMethodBeat.o(39777);
     }
@@ -1611,8 +1611,8 @@ public class NeatTextView
     {
       AppMethodBeat.i(39778);
       super.postInvalidate();
-      if (this.Ijq != null) {
-        this.Ijq.postInvalidate();
+      if (this.JLb != null) {
+        this.JLb.postInvalidate();
       }
       AppMethodBeat.o(39778);
     }
@@ -1628,11 +1628,11 @@ public class NeatTextView
   final class a
     implements SpanWatcher
   {
-    WeakReference<com.tencent.neattextview.textview.layout.c> Ijr;
+    WeakReference<com.tencent.neattextview.textview.layout.c> JLc;
     
     private a() {}
     
-    private void g(Spannable paramSpannable)
+    private void h(Spannable paramSpannable)
     {
       AppMethodBeat.i(39782);
       if (NeatTextView.a(NeatTextView.this))
@@ -1641,15 +1641,15 @@ public class NeatTextView
         AppMethodBeat.o(39782);
         return;
       }
-      if (this.Ijr == null)
+      if (this.JLc == null)
       {
         AppMethodBeat.o(39782);
         return;
       }
-      com.tencent.neattextview.textview.layout.c localc = (com.tencent.neattextview.textview.layout.c)this.Ijr.get();
+      com.tencent.neattextview.textview.layout.c localc = (com.tencent.neattextview.textview.layout.c)this.JLc.get();
       if ((localc != null) && (localc.getText() == paramSpannable))
       {
-        localc.ax(paramSpannable);
+        localc.ay(paramSpannable);
         NeatTextView.this.postInvalidate();
       }
       AppMethodBeat.o(39782);
@@ -1658,28 +1658,28 @@ public class NeatTextView
     public final void onSpanAdded(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(39779);
-      g(paramSpannable);
+      h(paramSpannable);
       AppMethodBeat.o(39779);
     }
     
     public final void onSpanChanged(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(39781);
-      g(paramSpannable);
+      h(paramSpannable);
       AppMethodBeat.o(39781);
     }
     
     public final void onSpanRemoved(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(39780);
-      g(paramSpannable);
+      h(paramSpannable);
       AppMethodBeat.o(39780);
     }
   }
   
   public static abstract interface b
   {
-    public abstract boolean fT(View paramView);
+    public abstract boolean gg(View paramView);
   }
   
   public static abstract interface c
@@ -1689,17 +1689,17 @@ public class NeatTextView
   static final class d
     implements Runnable
   {
-    float[] Ijs;
-    volatile boolean gPQ;
-    TextPaint ggK;
+    float[] JLd;
+    TextPaint glq;
+    volatile boolean hqq;
     String text;
     
     d(String paramString, TextPaint paramTextPaint)
     {
       AppMethodBeat.i(39783);
-      this.ggK = new TextPaint();
-      this.gPQ = false;
-      this.ggK.set(paramTextPaint);
+      this.glq = new TextPaint();
+      this.hqq = false;
+      this.glq.set(paramTextPaint);
       this.text = paramString;
       AppMethodBeat.o(39783);
     }
@@ -1707,22 +1707,22 @@ public class NeatTextView
     public final void run()
     {
       AppMethodBeat.i(39784);
-      this.Ijs = new float[this.text.length()];
-      this.ggK.getTextWidths(this.text, this.Ijs);
-      this.gPQ = true;
+      this.JLd = new float[this.text.length()];
+      this.glq.getTextWidths(this.text, this.JLd);
+      this.hqq = true;
       AppMethodBeat.o(39784);
     }
   }
   
   static final class e
   {
-    public float[] Ijs;
-    public boolean nmV;
+    public float[] JLd;
+    public boolean nPV;
     
     public e(boolean paramBoolean, float[] paramArrayOfFloat)
     {
-      this.nmV = paramBoolean;
-      this.Ijs = paramArrayOfFloat;
+      this.nPV = paramBoolean;
+      this.JLd = paramArrayOfFloat;
     }
   }
 }

@@ -1,148 +1,165 @@
 package com.tencent.mm.plugin.recordvideo.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dc;
-import com.tencent.mm.g.b.a.dn;
-import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
-import com.tencent.mm.plugin.recordvideo.jumper.VideoCaptureReportInfo;
+import com.tencent.mm.g.b.a.cq;
+import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
+import com.tencent.mm.sdk.platformtools.bs;
+import d.a.j;
 import d.g.b.k;
 import d.l;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/report/RecordMediaReporter;", "", "()V", "info", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "lastTrace", "", "getLastTrace", "()I", "setLastTrace", "(I)V", "storyDoPublishStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDoPublishStruct;", "storyFailTraceStruct", "Lcom/tencent/mm/plugin/recordvideo/report/BehaviorTraceData;", "storyQuitPublishStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryQuitPublishStruct;", "storyTraceStruct", "traceStruct", "addReportTrace", "", "aid", "addReportValue", "key", "", "step", "addStoryTrace", "doBehaviorReport", "scene", "doCommonReport", "doFailBehaviorReport", "getBehaviorReporter", "getFailBehaviorReporter", "getRecordMediaReportInfo", "prepareNewReport", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/VideoCaptureReportInfo;", "resetBehaviorReporter", "resetFailBehaviorReporter", "setReportValue", "value", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  private static RecordMediaReportInfo vpi;
-  public static a vpj;
-  private static dc vpk;
-  private static a vpl;
-  private static int vpm;
-  private static dn vpn;
-  private static a vpo;
-  public static final b vpp;
+  public static final b.a wxY;
+  public cq wxX;
   
   static
   {
-    AppMethodBeat.i(75839);
-    vpp = new b();
-    vpi = new RecordMediaReportInfo();
-    vpj = new a();
-    vpk = new dc();
-    vpl = new a();
-    vpm = -1;
-    vpn = new dn();
-    vpo = new a();
-    AppMethodBeat.o(75839);
+    AppMethodBeat.i(199359);
+    wxY = new b.a((byte)0);
+    AppMethodBeat.o(199359);
   }
   
-  public static void Ko(int paramInt)
+  public b()
   {
-    AppMethodBeat.i(75834);
-    vpj.Kn(paramInt);
-    AppMethodBeat.o(75834);
+    AppMethodBeat.i(199358);
+    this.wxX = new cq();
+    reset();
+    AppMethodBeat.o(199358);
   }
   
-  public static void Kp(int paramInt)
+  public final void g(List<? extends MediaEditReportInfo.EditItem> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(75836);
-    if ((paramInt == 15) && ((vpm == 4) || (vpm == 10)))
+    AppMethodBeat.i(199356);
+    k.h(paramList, "editList");
+    Object localObject2 = (Iterable)paramList;
+    Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    int i;
+    if (((Iterator)localObject2).hasNext())
     {
-      vpm = paramInt;
-      AppMethodBeat.o(75836);
-      return;
+      if (((MediaEditReportInfo.EditItem)((Iterator)localObject2).next()).isBeauty) {}
+      for (i = 1;; i = 0)
+      {
+        ((Collection)localObject1).add(Integer.valueOf(i));
+        break;
+      }
     }
-    vpm = paramInt;
-    vpl.Kn(paramInt);
-    vpo.Kn(paramInt);
-    AppMethodBeat.o(75836);
-  }
-  
-  public static void Kq(int paramInt)
-  {
-    AppMethodBeat.i(75837);
-    if (paramInt == 3)
+    localObject1 = j.a((Iterable)localObject1, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject3 = (Iterable)paramList;
+    localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    if (((Iterator)localObject3).hasNext())
     {
-      Object localObject1 = dix();
-      vpk.jw(String.valueOf(((Number)((RecordMediaReportInfo)localObject1).w("KEY_MUSIC_ID_INT", Integer.valueOf(0))).intValue()));
-      dc localdc = vpk;
-      Object localObject2 = ((RecordMediaReportInfo)localObject1).w("KEY_MUSIC_INDEX_INT", Long.valueOf(0L));
-      k.g(localObject2, "commonRecordInfo.getRepo…e(KEY_MUSIC_INDEX_INT, 0)");
-      localdc.fr(((Number)localObject2).longValue());
-      localdc = vpk;
-      localObject2 = ((RecordMediaReportInfo)localObject1).w("KEY_MUSIC_REQ_ID_INT", Long.valueOf(0L));
-      k.g(localObject2, "commonRecordInfo.getRepo…(KEY_MUSIC_REQ_ID_INT, 0)");
-      localdc.fs(((Number)localObject2).longValue());
-      localdc = vpk;
-      localObject1 = ((RecordMediaReportInfo)localObject1).w("KEY_SEARCH_MUSIC_INT", Long.valueOf(0L));
-      k.g(localObject1, "commonRecordInfo.getRepo…(KEY_SEARCH_MUSIC_INT, 0)");
-      localdc.fu(((Number)localObject1).longValue());
-      vpk.jA(vpl.diw());
-      vpk.aBj();
-      vpm = -1;
+      localObject4 = (MediaEditReportInfo.EditItem)((Iterator)localObject3).next();
+      if (paramBoolean) {}
+      for (i = 0;; i = bs.Aq(((MediaEditReportInfo.EditItem)localObject4).targetDuration))
+      {
+        ((Collection)localObject2).add(Integer.valueOf(i));
+        break;
+      }
     }
-    vpk = new dc();
-    vpl = new a();
-    AppMethodBeat.o(75837);
-  }
-  
-  public static void Kr(int paramInt)
-  {
-    AppMethodBeat.i(75838);
-    if (paramInt == 3)
+    localObject2 = j.a((Iterable)localObject2, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject4 = (Iterable)paramList;
+    localObject3 = (Collection)new ArrayList(j.a((Iterable)localObject4, 10));
+    localObject4 = ((Iterable)localObject4).iterator();
+    if (((Iterator)localObject4).hasNext())
     {
-      vpn.gs(System.currentTimeMillis());
-      vpn.jP(vpo.diw());
-      vpn.aBj();
+      localObject5 = (MediaEditReportInfo.EditItem)((Iterator)localObject4).next();
+      if (paramBoolean) {}
+      for (i = 0;; i = bs.Aq(((MediaEditReportInfo.EditItem)localObject5).originDuration))
+      {
+        ((Collection)localObject3).add(Integer.valueOf(i));
+        break;
+      }
     }
-    vpn = new dn();
-    vpo = new a();
-    AppMethodBeat.o(75838);
-  }
-  
-  public static void a(VideoCaptureReportInfo paramVideoCaptureReportInfo)
-  {
-    AppMethodBeat.i(75831);
-    vpi = new RecordMediaReportInfo();
-    vpj = new a();
-    if (paramVideoCaptureReportInfo != null) {}
-    for (paramVideoCaptureReportInfo = Integer.valueOf(paramVideoCaptureReportInfo.pOf);; paramVideoCaptureReportInfo = Integer.valueOf(-1))
+    localObject3 = j.a((Iterable)localObject3, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject5 = (Iterable)paramList;
+    localObject4 = (Collection)new ArrayList(j.a((Iterable)localObject5, 10));
+    localObject5 = ((Iterable)localObject5).iterator();
+    while (((Iterator)localObject5).hasNext()) {
+      ((Collection)localObject4).add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject5).next()).dragCount));
+    }
+    localObject4 = j.a((Iterable)localObject4, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject6 = (Iterable)paramList;
+    localObject5 = (Collection)new ArrayList(j.a((Iterable)localObject6, 10));
+    localObject6 = ((Iterable)localObject6).iterator();
+    while (((Iterator)localObject6).hasNext()) {
+      ((Collection)localObject5).add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject6).next()).scaleCount));
+    }
+    localObject5 = j.a((Iterable)localObject5, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject7 = (Iterable)paramList;
+    localObject6 = (Collection)new ArrayList(j.a((Iterable)localObject7, 10));
+    localObject7 = ((Iterable)localObject7).iterator();
+    while (((Iterator)localObject7).hasNext()) {
+      ((Collection)localObject6).add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject7).next()).clickEditCount));
+    }
+    localObject6 = j.a((Iterable)localObject6, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject8 = (Iterable)paramList;
+    localObject7 = (Collection)new ArrayList(j.a((Iterable)localObject8, 10));
+    localObject8 = ((Iterable)localObject8).iterator();
+    while (((Iterator)localObject8).hasNext()) {
+      ((Collection)localObject7).add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject8).next()).durationCutCount));
+    }
+    localObject7 = j.a((Iterable)localObject7, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject9 = (Iterable)paramList;
+    localObject8 = (Collection)new ArrayList(j.a((Iterable)localObject9, 10));
+    localObject9 = ((Iterable)localObject9).iterator();
+    while (((Iterator)localObject9).hasNext()) {
+      ((Collection)localObject8).add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject9).next()).durationScrollCount));
+    }
+    localObject8 = j.a((Iterable)localObject8, (CharSequence)"#", null, null, 0, null, null, 62);
+    Object localObject10 = (Iterable)paramList;
+    localObject9 = (Collection)new ArrayList(j.a((Iterable)localObject10, 10));
+    localObject10 = ((Iterable)localObject10).iterator();
+    if (((Iterator)localObject10).hasNext())
     {
-      v("KEY_FROM_SCENE_INT", paramVideoCaptureReportInfo);
-      AppMethodBeat.o(75831);
-      return;
+      MediaEditReportInfo.EditItem localEditItem = (MediaEditReportInfo.EditItem)((Iterator)localObject10).next();
+      if (localEditItem.targetDuration < localEditItem.originDuration) {}
+      for (i = 1;; i = 0)
+      {
+        ((Collection)localObject9).add(Integer.valueOf(i));
+        break;
+      }
     }
+    localObject9 = j.a((Iterable)localObject9, (CharSequence)"#", null, null, 0, null, null, 62);
+    localObject10 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList(j.a((Iterable)localObject10, 10));
+    localObject10 = ((Iterable)localObject10).iterator();
+    while (((Iterator)localObject10).hasNext()) {
+      paramList.add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject10).next()).type));
+    }
+    paramList = j.a((Iterable)paramList, (CharSequence)"#", null, null, 0, null, null, 62);
+    this.wxX.kE((String)localObject1);
+    this.wxX.kF((String)localObject2);
+    this.wxX.kG((String)localObject3);
+    this.wxX.kI((String)localObject4);
+    this.wxX.kJ((String)localObject5);
+    this.wxX.kK((String)localObject6);
+    this.wxX.kL((String)localObject7);
+    this.wxX.kM((String)localObject8);
+    this.wxX.kN((String)localObject9);
+    this.wxX.kO(paramList);
+    AppMethodBeat.o(199356);
   }
   
-  public static RecordMediaReportInfo dix()
+  public final void reset()
   {
-    AppMethodBeat.i(75835);
-    vpi.v("KEY_ACTION_TRACE_STRING", vpj.diw());
-    RecordMediaReportInfo localRecordMediaReportInfo = vpi;
-    AppMethodBeat.o(75835);
-    return localRecordMediaReportInfo;
-  }
-  
-  public static dc diy()
-  {
-    return vpk;
-  }
-  
-  public static dn diz()
-  {
-    return vpn;
-  }
-  
-  public static void v(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(75832);
-    k.h(paramString, "key");
-    k.h(paramObject, "value");
-    vpi.v(paramString, paramObject);
-    AppMethodBeat.o(75832);
+    AppMethodBeat.i(199357);
+    this.wxX = new cq();
+    this.wxX.kH("");
+    this.wxX.kD("");
+    AppMethodBeat.o(199357);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ public class h
 {
   private static final String TAG;
   private boolean enabled;
-  private rx.f.b jjB;
-  private ReentrantReadWriteLock jjC;
-  private Lock jjD;
-  private e jjE;
-  private Pattern jjF;
-  private Set<String> jjG;
+  private rx.f.b jJO;
+  private ReentrantReadWriteLock jJP;
+  private Lock jJQ;
+  private e jJR;
+  private Pattern jJS;
+  private Set<String> jJT;
   private int port;
   
   static
@@ -34,13 +34,13 @@ public class h
   private h()
   {
     AppMethodBeat.i(158998);
-    this.jjB = new rx.f.b();
-    this.jjC = new ReentrantReadWriteLock(true);
-    this.jjD = this.jjC.writeLock();
+    this.jJO = new rx.f.b();
+    this.jJP = new ReentrantReadWriteLock(true);
+    this.jJQ = this.jJP.writeLock();
     this.enabled = false;
     this.port = -1;
-    this.jjG = new HashSet();
-    this.jjF = Pattern.compile("uuid:([a-fA-F\\d]{8}(-[a-fA-F\\d]{4}){3}-[a-fA-F\\d]{12})");
+    this.jJT = new HashSet();
+    this.jJS = Pattern.compile("uuid:([a-fA-F\\d]{8}(-[a-fA-F\\d]{4}){3}-[a-fA-F\\d]{12})");
     AppMethodBeat.o(158998);
   }
   
@@ -65,14 +65,6 @@ public class h
     AppMethodBeat.o(159007);
   }
   
-  public static h aUY()
-  {
-    AppMethodBeat.i(158999);
-    h localh = a.aUZ();
-    AppMethodBeat.o(158999);
-    return localh;
-  }
-  
   private boolean b(com.tencent.mm.plugin.appbrand.h.c.b.b paramb)
   {
     AppMethodBeat.i(159005);
@@ -86,27 +78,27 @@ public class h
       AppMethodBeat.o(159005);
       return false;
     }
-    if ((this.jjG.size() > 0) && (this.jjG.contains(paramb)))
+    if ((this.jJT.size() > 0) && (this.jJT.contains(paramb)))
     {
       AppMethodBeat.o(159005);
       return false;
     }
-    str1 = uo(str2);
+    str1 = yu(str2);
     if (TextUtils.isEmpty(str1))
     {
       AppMethodBeat.o(159005);
       return false;
     }
-    localObject2 = com.tencent.mm.plugin.appbrand.h.b.a.aUI();
+    localObject2 = com.tencent.mm.plugin.appbrand.h.b.a.bbG();
     if ("ssdp:alive".equals(localObject1))
     {
-      localObject1 = ((com.tencent.mm.plugin.appbrand.h.b.a)localObject2).GL(str1);
+      localObject1 = ((com.tencent.mm.plugin.appbrand.h.b.a)localObject2).KP(str1);
       if (localObject1 != null)
       {
-        if (!((c)localObject1).aUL().jio.equals(paramb))
+        if (!((c)localObject1).bbJ().jIC.equals(paramb))
         {
           ((com.tencent.mm.plugin.appbrand.h.b.a)localObject2).remove(str1);
-          this.jjG.add(paramb);
+          this.jJT.add(paramb);
           AppMethodBeat.o(159005);
           return true;
         }
@@ -115,7 +107,7 @@ public class h
       }
       if (!TextUtils.isEmpty(paramb))
       {
-        this.jjG.add(paramb);
+        this.jJT.add(paramb);
         AppMethodBeat.o(159005);
         return true;
       }
@@ -145,7 +137,15 @@ public class h
     return false;
   }
   
-  private String uo(String paramString)
+  public static h bbW()
+  {
+    AppMethodBeat.i(158999);
+    h localh = a.bbX();
+    AppMethodBeat.o(158999);
+    return localh;
+  }
+  
+  private String yu(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(159006);
@@ -154,7 +154,7 @@ public class h
       AppMethodBeat.o(159006);
       return null;
     }
-    Matcher localMatcher = this.jjF.matcher(paramString);
+    Matcher localMatcher = this.jJS.matcher(paramString);
     paramString = localObject;
     if (localMatcher.find()) {
       paramString = localMatcher.group(1);
@@ -172,7 +172,7 @@ public class h
       AppMethodBeat.o(159003);
       return;
     }
-    this.jjB.b(new b.b(parame).aUS().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
+    this.jJO.b(new b.b(parame).bbQ().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
     AppMethodBeat.o(159003);
   }
   
@@ -181,13 +181,13 @@ public class h
     AppMethodBeat.i(159004);
     try
     {
-      a(this.jjD);
+      a(this.jJQ);
       boolean bool = this.enabled;
       if (!bool) {
         return;
       }
       if (b(paramb)) {
-        this.jjB.b(new b.a(paramb).aUS().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
+        this.jJO.b(new b.a(paramb).bbQ().a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
       }
       return;
     }
@@ -198,7 +198,7 @@ public class h
     }
     finally
     {
-      this.jjD.unlock();
+      this.jJQ.unlock();
       AppMethodBeat.o(159004);
     }
   }
@@ -209,9 +209,9 @@ public class h
     com.tencent.mm.plugin.appbrand.h.a.i(TAG, "mRouter is shutting down...");
     if (this.enabled)
     {
-      this.jjG.clear();
-      this.jjE.close();
-      this.jjB.clear();
+      this.jJT.clear();
+      this.jJR.close();
+      this.jJO.clear();
       this.enabled = false;
       AppMethodBeat.o(159001);
       return true;
@@ -224,14 +224,14 @@ public class h
   {
     AppMethodBeat.i(159000);
     com.tencent.mm.plugin.appbrand.h.a.i(TAG, "mRouter is starting ...");
-    this.port = i.aVa().port;
+    this.port = i.bbY().port;
     try
     {
       if (!this.enabled)
       {
-        List localList = g.aUW();
-        this.jjE = new e(new f("239.255.255.250"), localList, this, this.port);
-        this.jjE.start();
+        List localList = g.bbU();
+        this.jJR = new e(new f("239.255.255.250"), localList, this, this.port);
+        this.jJR.start();
         this.enabled = true;
         AppMethodBeat.o(159000);
         return true;
@@ -247,30 +247,30 @@ public class h
     return false;
   }
   
-  public final void fC(boolean paramBoolean)
+  public final void fY(boolean paramBoolean)
   {
-    AppMethodBeat.i(195137);
+    AppMethodBeat.i(200800);
     Object localObject = new com.tencent.mm.plugin.appbrand.h.a.h(paramBoolean);
     if (!this.enabled)
     {
       com.tencent.mm.plugin.appbrand.h.a.e(TAG, "DLNA Router is not enable");
-      AppMethodBeat.o(195137);
+      AppMethodBeat.o(200800);
       return;
     }
-    rx.f.b localb = this.jjB;
+    rx.f.b localb = this.jJO;
     localObject = new b.c((com.tencent.mm.plugin.appbrand.h.a.d)localObject);
-    localb.b(rx.d.a(new a.2(((b.c)localObject).jjc, ((b.c)localObject).jjb)).a(((com.tencent.mm.plugin.appbrand.h.d.b)localObject).jjV).a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
-    AppMethodBeat.o(195137);
+    localb.b(rx.d.a(new a.2(((b.c)localObject).jJp, ((b.c)localObject).jJo)).a(((com.tencent.mm.plugin.appbrand.h.d.b)localObject).jKi).a(new rx.b.b()new rx.b.b {}, new rx.b.b() {}));
+    AppMethodBeat.o(200800);
   }
   
   static final class a
   {
-    private static h jjI;
+    private static h jJV;
     
     static
     {
       AppMethodBeat.i(158997);
-      jjI = new h((byte)0);
+      jJV = new h((byte)0);
       AppMethodBeat.o(158997);
     }
   }

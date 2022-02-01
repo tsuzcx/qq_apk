@@ -6,21 +6,21 @@ import com.tencent.mm.pluginsdk.model.j;
 import com.tencent.mm.pluginsdk.model.j.a;
 import com.tencent.mm.pluginsdk.model.p;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.au;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ax;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class b
 {
-  private static boolean Av(int paramInt)
+  private static boolean Bn(int paramInt)
   {
     return paramInt == 7;
   }
   
-  private static boolean Aw(int paramInt)
+  private static boolean Bo(int paramInt)
   {
     return paramInt == 6;
   }
@@ -28,7 +28,7 @@ public final class b
   public static void a(c paramc, j.a parama)
   {
     AppMethodBeat.i(108350);
-    if (!u.aqU())
+    if (!u.axK())
     {
       AppMethodBeat.o(108350);
       return;
@@ -43,22 +43,22 @@ public final class b
     while (localIterator.hasNext())
     {
       Object localObject = (f)localIterator.next();
-      if ((localObject != null) && (((f)localObject).ouK != f.a.ouT))
+      if ((localObject != null) && (((f)localObject).oYk != f.a.oYt))
       {
-        localObject = ((f)localObject).ouL;
+        localObject = ((f)localObject).oYl;
         boolean bool1 = e.b((EmotionSummary)localObject);
         boolean bool2 = e.a((EmotionSummary)localObject);
         if ((!bool1) && (!bool2))
         {
           localArrayList.add(((EmotionSummary)localObject).ProductID);
-          localObject = paramc.Ts(((EmotionSummary)localObject).ProductID);
+          localObject = paramc.XE(((EmotionSummary)localObject).ProductID);
           if (localObject != null) {
-            ((au)localObject).FyI = 11;
+            ((ax)localObject).GXJ = 11;
           }
         }
       }
     }
-    paramc = aj.getContext();
+    paramc = ai.getContext();
     if (localArrayList.size() > 0) {
       j.a(paramc, (String[])localArrayList.toArray(new String[localArrayList.size()]), parama);
     }
@@ -68,7 +68,7 @@ public final class b
   public static void a(ArrayList<p> paramArrayList, c paramc)
   {
     AppMethodBeat.i(108351);
-    if (!u.aqU())
+    if (!u.axK())
     {
       AppMethodBeat.o(108351);
       return;
@@ -85,28 +85,28 @@ public final class b
       p localp = (p)paramArrayList.next();
       if (localp != null)
       {
-        ad.i("MicroMsg.EmojiGoogleMarketTool", "endSeachGoogleMarket: %s", new Object[] { localp });
-        au localau = paramc.Ts(localp.dft);
-        if (localau != null)
+        ac.i("MicroMsg.EmojiGoogleMarketTool", "endSeachGoogleMarket: %s", new Object[] { localp });
+        ax localax = paramc.XE(localp.dcO);
+        if (localax != null)
         {
           int i;
-          if (localp.BPd == 10232)
+          if (localp.Dhr == 10232)
           {
-            localau.FyM = localp.BPa;
-            localau.FyK = localp.BPb;
-            localau.FyL = new BigDecimal(localp.BPc).divide(new BigDecimal(1000000)).toString();
-            localau.FyI = 12;
-            i = localau.FyG;
-            if ((!Av(i)) && (!Aw(i))) {
-              localau.WA(4);
+            localax.GXN = localp.Dho;
+            localax.GXL = localp.Dhp;
+            localax.GXM = new BigDecimal(localp.Dhq).divide(new BigDecimal(1000000)).toString();
+            localax.GXJ = 12;
+            i = localax.GXH;
+            if ((!Bn(i)) && (!Bo(i))) {
+              localax.YK(4);
             }
           }
           else
           {
-            localau.FyI = 10;
-            localau.FyJ = localp.BPd;
-            i = localau.FyG;
-            if ((!Av(i)) && (!Aw(i)))
+            localax.GXJ = 10;
+            localax.GXK = localp.Dhr;
+            i = localax.GXH;
+            if ((!Bn(i)) && (!Bo(i)))
             {
               if (i == 3) {}
               for (i = 1;; i = 0)
@@ -114,7 +114,7 @@ public final class b
                 if (i != 0) {
                   break label251;
                 }
-                localau.WA(10);
+                localax.YK(10);
                 break;
               }
             }
@@ -127,7 +127,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.b
  * JD-Core Version:    0.7.0.1
  */

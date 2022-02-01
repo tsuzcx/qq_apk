@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.scanner.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.na;
-import com.tencent.mm.protocal.protobuf.nb;
+import com.tencent.mm.protocal.protobuf.nh;
+import com.tencent.mm.protocal.protobuf.ni;
 
 public final class a
   extends n
   implements k
 {
   private g callback;
-  public String dpw;
-  public com.tencent.mm.al.b rr;
+  public String dnh;
+  public com.tencent.mm.ak.b rr;
   
   public a(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(118333);
-    this.dpw = paramString;
+    this.dnh = paramString;
     b.a locala = new b.a();
     locala.funcId = getType();
-    na localna = new na();
-    localna.CGV = new com.tencent.mm.bx.b(paramArrayOfByte);
-    localna.CGY = paramString;
-    localna.CKK = 3;
-    localna.dep = 101;
-    localna.CDE = paramInt;
-    locala.gUU = localna;
+    nh localnh = new nh();
+    localnh.DZw = new com.tencent.mm.bw.b(paramArrayOfByte);
+    localnh.DZz = paramString;
+    localnh.Edm = 3;
+    localnh.dbL = 101;
+    localnh.DWd = paramInt;
+    locala.hvt = localnh;
     locala.uri = "/cgi-bin/mmpay-bin/ocrgetbankcardinfo";
-    locala.gUV = new nb();
-    this.rr = locala.atI();
+    locala.hvu = new ni();
+    this.rr = locala.aAz();
     AppMethodBeat.o(118333);
   }
   
@@ -60,7 +60,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.b.b.a
  * JD-Core Version:    0.7.0.1
  */

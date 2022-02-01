@@ -6,14 +6,14 @@ import java.util.List;
 
 final class d
 {
-  List<b> fYa;
+  List<b> gcH;
   List<c> listeners;
   
   d()
   {
     AppMethodBeat.i(177079);
     this.listeners = new ArrayList();
-    this.fYa = new ArrayList();
+    this.gcH = new ArrayList();
     AppMethodBeat.o(177079);
   }
 }

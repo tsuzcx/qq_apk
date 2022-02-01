@@ -6,92 +6,163 @@ import com.tencent.mm.plugin.report.a;
 public final class dx
   extends a
 {
-  public String dHr;
-  public long dPH;
-  public long dQP;
-  public long dQQ;
-  public long dWh;
-  public long dWi;
-  public long dWj;
-  public long dWk;
-  public String dWl;
-  public long dWm;
-  public String dWn;
-  public long dWo;
-  public long dWp;
+  private long dFd;
+  private String dFe;
+  private long dHY = 0L;
+  private long dIt = 0L;
+  private String dOH;
+  private String dSQ;
+  private String dSR;
+  private long dSS = 0L;
+  private long dST = 0L;
+  private long dSU;
+  private String dSV;
+  private long dSW = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(179059);
+    AppMethodBeat.i(188269);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHr);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWh);
+    ((StringBuffer)localObject).append(this.dOH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWi);
+    ((StringBuffer)localObject).append(this.dHY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWj);
+    ((StringBuffer)localObject).append(this.dSQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWk);
+    ((StringBuffer)localObject).append(this.dSR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWl);
+    ((StringBuffer)localObject).append(this.dSS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWm);
+    ((StringBuffer)localObject).append(this.dST);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWn);
+    ((StringBuffer)localObject).append(this.dSU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWo);
+    ((StringBuffer)localObject).append(this.dSV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWp);
+    ((StringBuffer)localObject).append(this.dFd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPH);
+    ((StringBuffer)localObject).append(this.dSW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQQ);
+    ((StringBuffer)localObject).append(this.dIt);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(179059);
+    arz((String)localObject);
+    AppMethodBeat.o(188269);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(179060);
+    AppMethodBeat.i(188270);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MissReadJumpBtnId:").append(this.dWh);
+    ((StringBuffer)localObject).append("SearchId:").append(this.dOH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MissReadJumpBreakLayerId:").append(this.dWi);
+    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsJumpToNearestBreakLayer:").append(this.dWj);
+    ((StringBuffer)localObject).append("ClickMD5:").append(this.dSQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpSkipFeedsCount:").append(this.dWk);
+    ((StringBuffer)localObject).append("QueryMD5:").append(this.dSR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpBreakLayerFeeds:").append(this.dWl);
+    ((StringBuffer)localObject).append("Offset:").append(this.dSS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpBreakLayerFeedsCount:").append(this.dWm);
+    ((StringBuffer)localObject).append("Pos:").append(this.dST);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpBreakLayerExposureFeeds:").append(this.dWn);
+    ((StringBuffer)localObject).append("ClientTimestamp:").append(this.dSU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpBreakLayerExposureFeedsCount:").append(this.dWo);
+    ((StringBuffer)localObject).append("RequestId:").append(this.dSV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BreakLayerFirstFeedFromNow:").append(this.dWp);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dFd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Seq:").append(this.dPH);
+    ((StringBuffer)localObject).append("Tab:").append(this.dSW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeq:").append(this.dQP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeqSum:").append(this.dQQ);
+    ((StringBuffer)localObject).append("IsSelf:").append(this.dIt);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(179060);
+    AppMethodBeat.o(188270);
     return localObject;
+  }
+  
+  public final dx Rd()
+  {
+    this.dHY = 59L;
+    return this;
   }
   
   public final int getId()
   {
-    return 19056;
+    return 19651;
+  }
+  
+  public final dx in(long paramLong)
+  {
+    this.dSS = paramLong;
+    return this;
+  }
+  
+  public final dx io(long paramLong)
+  {
+    this.dST = paramLong;
+    return this;
+  }
+  
+  public final dx ip(long paramLong)
+  {
+    this.dSU = paramLong;
+    return this;
+  }
+  
+  public final dx iq(long paramLong)
+  {
+    this.dFd = paramLong;
+    return this;
+  }
+  
+  public final dx ir(long paramLong)
+  {
+    this.dIt = paramLong;
+    return this;
+  }
+  
+  public final dx lO(String paramString)
+  {
+    AppMethodBeat.i(188264);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(188264);
+    return this;
+  }
+  
+  public final dx lP(String paramString)
+  {
+    AppMethodBeat.i(188265);
+    this.dOH = t("SearchId", paramString, true);
+    AppMethodBeat.o(188265);
+    return this;
+  }
+  
+  public final dx lQ(String paramString)
+  {
+    AppMethodBeat.i(188266);
+    this.dSQ = t("ClickMD5", paramString, true);
+    AppMethodBeat.o(188266);
+    return this;
+  }
+  
+  public final dx lR(String paramString)
+  {
+    AppMethodBeat.i(188267);
+    this.dSR = t("QueryMD5", paramString, true);
+    AppMethodBeat.o(188267);
+    return this;
+  }
+  
+  public final dx lS(String paramString)
+  {
+    AppMethodBeat.i(188268);
+    this.dSV = t("RequestId", paramString, true);
+    AppMethodBeat.o(188268);
+    return this;
   }
 }
 

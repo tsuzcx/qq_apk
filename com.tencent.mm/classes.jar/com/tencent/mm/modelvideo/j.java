@@ -1,13 +1,13 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fg;
+import com.tencent.mm.g.c.fk;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends fg
+  extends fk
 {
   protected static c.a info;
   
@@ -15,40 +15,40 @@ public final class j
   {
     AppMethodBeat.i(126888);
     c.a locala = new c.a();
-    locala.EYt = new Field[8];
+    locala.GvF = new Field[8];
     locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.EYv.put("localId", "INTEGER PRIMARY KEY ");
+    locala.GvH.put("localId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" localId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "localId";
+    locala.GvG = "localId";
     locala.columns[1] = "fileName";
-    locala.EYv.put("fileName", "TEXT");
+    locala.GvH.put("fileName", "TEXT");
     localStringBuilder.append(" fileName TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "fileNameHash";
-    locala.EYv.put("fileNameHash", "INTEGER");
+    locala.GvH.put("fileNameHash", "INTEGER");
     localStringBuilder.append(" fileNameHash INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "fileMd5";
-    locala.EYv.put("fileMd5", "TEXT default '' ");
+    locala.GvH.put("fileMd5", "TEXT default '' ");
     localStringBuilder.append(" fileMd5 TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "fileLength";
-    locala.EYv.put("fileLength", "LONG default '0' ");
+    locala.GvH.put("fileLength", "LONG default '0' ");
     localStringBuilder.append(" fileLength LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "fileStatus";
-    locala.EYv.put("fileStatus", "INTEGER default '0' ");
+    locala.GvH.put("fileStatus", "INTEGER default '0' ");
     localStringBuilder.append(" fileStatus INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "fileDuration";
-    locala.EYv.put("fileDuration", "INTEGER default '0' ");
+    locala.GvH.put("fileDuration", "INTEGER default '0' ");
     localStringBuilder.append(" fileDuration INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "createTime";
-    locala.EYv.put("createTime", "LONG default '0' ");
+    locala.GvH.put("createTime", "LONG default '0' ");
     localStringBuilder.append(" createTime LONG default '0' ");
     locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();

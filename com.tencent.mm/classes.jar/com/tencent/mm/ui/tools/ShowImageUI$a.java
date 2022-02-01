@@ -12,8 +12,8 @@ import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.plugin.gif.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.s;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 
 final class ShowImageUI$a
@@ -41,7 +41,7 @@ final class ShowImageUI$a
   public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(39191);
-    if (t.aFm(this.imagePath))
+    if (s.aKD(this.imagePath))
     {
       localObject = paramViewGroup.getContext();
       paramViewGroup = this.imagePath;
@@ -49,7 +49,7 @@ final class ShowImageUI$a
       if ((paramView == null) || (!(paramView instanceof MMAnimateView))) {}
       for (paramView = new MMAnimateView((Context)localObject);; paramView = (MMAnimateView)paramView)
       {
-        paramView.gD(paramViewGroup, paramViewGroup);
+        paramView.gU(paramViewGroup, paramViewGroup);
         paramView.a(paramViewGroup, new k()
         {
           public final void invalidate()
@@ -65,13 +65,13 @@ final class ShowImageUI$a
         return paramView;
       }
     }
-    Object localObject = u.BA(this.imagePath);
+    Object localObject = u.FE(this.imagePath);
     paramInt = Exif.fromFile(this.imagePath).getOrientationInDegree();
-    ad.d("MicroMsg.ShowImageUI", "imagePath : %s degree : %d", new Object[] { this.imagePath, Integer.valueOf(paramInt) });
+    ac.d("MicroMsg.ShowImageUI", "imagePath : %s degree : %d", new Object[] { this.imagePath, Integer.valueOf(paramInt) });
     localObject = com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject, paramInt);
     if (localObject == null)
     {
-      ad.w("MicroMsg.ShowImageUI", "get image fail");
+      ac.w("MicroMsg.ShowImageUI", "get image fail");
       if (paramView != null)
       {
         localObject = paramView;
@@ -98,13 +98,13 @@ final class ShowImageUI$a
       AppMethodBeat.o(39191);
       return paramView;
       paramView = (MultiTouchImageView)paramView;
-      paramView.cH(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      paramView.cF(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShowImageUI.a
  * JD-Core Version:    0.7.0.1
  */

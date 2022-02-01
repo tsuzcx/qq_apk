@@ -1,50 +1,52 @@
 package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.g.b.a.gb;
-import com.tencent.mm.g.b.a.gb.b;
-import com.tencent.mm.plugin.appbrand.aa.l.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.g.b.a.ht;
+import com.tencent.mm.g.b.a.ht.b;
 import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appcache.ad;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
 import com.tencent.mm.plugin.appbrand.launching.au;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.bkw;
-import com.tencent.mm.protocal.protobuf.bkx;
-import com.tencent.mm.protocal.protobuf.dty;
-import com.tencent.mm.protocal.protobuf.dux;
-import com.tencent.mm.protocal.protobuf.dvo;
-import com.tencent.mm.protocal.protobuf.dvx;
-import com.tencent.mm.protocal.protobuf.dws;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.l.a;
+import com.tencent.mm.protocal.protobuf.bos;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.dzp;
+import com.tencent.mm.protocal.protobuf.eao;
+import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.protocal.protobuf.ebo;
+import com.tencent.mm.protocal.protobuf.ecj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
-  extends com.tencent.mm.al.c<bkx>
+  extends com.tencent.mm.ak.c<bot>
 {
-  final String cfb;
-  private String kGa;
-  public volatile boolean kLF;
-  public volatile au kNi;
-  private final gb kNj;
-  final com.tencent.mm.al.b rr;
+  final String cbY;
+  private String lht;
+  public volatile boolean lnb;
+  public volatile au loH;
+  private final ht loI;
+  final com.tencent.mm.ak.b rr;
   
-  public b(String paramString1, boolean paramBoolean, dty paramdty, dws paramdws, dvo paramdvo, String paramString2, int paramInt, QualitySession paramQualitySession, String paramString3, AppBrandLaunchFromNotifyReferrer paramAppBrandLaunchFromNotifyReferrer)
+  public b(String paramString1, boolean paramBoolean, dzp paramdzp, ecj paramecj, ebf paramebf, String paramString2, int paramInt, QualitySession paramQualitySession, String paramString3, AppBrandLaunchFromNotifyReferrer paramAppBrandLaunchFromNotifyReferrer)
   {
-    AppMethodBeat.i(196032);
-    this.kLF = false;
-    this.cfb = paramString2;
-    this.kNj = com.tencent.mm.plugin.appbrand.report.quality.f.f(paramQualitySession);
-    gb localgb = this.kNj;
+    AppMethodBeat.i(186856);
+    this.lnb = false;
+    this.cbY = paramString2;
+    this.loI = com.tencent.mm.plugin.appbrand.report.quality.f.f(paramQualitySession);
+    ht localht = this.loI;
     if (paramBoolean)
     {
-      paramString2 = gb.b.efF;
-      localgb.efz = paramString2;
-      this.kNj.dON = com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType();
-      this.kGa = paramQualitySession.kGa;
-      paramString2 = new bkw();
-      paramString2.hnC = paramString1;
-      paramString2.DIA = paramdty;
+      paramString2 = ht.b.ehM;
+      localht.ehG = paramString2;
+      this.loI.dQE = com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType();
+      this.lht = paramQualitySession.lht;
+      paramString2 = new bos();
+      paramString2.hOf = paramString1;
+      paramString2.FdV = paramdzp;
       if (!paramBoolean) {
         break label256;
       }
@@ -52,148 +54,148 @@ public final class b
     label256:
     for (int i = 1;; i = 2)
     {
-      paramString2.Dym = i;
-      paramString2.DID = paramdws;
-      paramString2.DIE = paramdvo;
-      paramString2.DII = paramString3;
-      paramString1 = new dux();
-      paramString1.DKZ = paramInt;
-      paramString2.DIC = paramString1;
-      if ((paramString2.DIA.Scene == 1162) && (paramAppBrandLaunchFromNotifyReferrer != null))
+      paramString2.ETI = i;
+      paramString2.FdY = paramecj;
+      paramString2.FdZ = paramebf;
+      paramString2.Fed = paramString3;
+      paramString1 = new eao();
+      paramString1.Fho = paramInt;
+      paramString2.FdX = paramString1;
+      if ((paramString2.FdV.Scene == 1162) && (paramAppBrandLaunchFromNotifyReferrer != null))
       {
-        paramString1 = new dvx();
-        paramString1.EJL = paramAppBrandLaunchFromNotifyReferrer.jdA;
-        paramString2.DIJ = paramString1;
+        paramString1 = new ebo();
+        paramString1.GgX = paramAppBrandLaunchFromNotifyReferrer.jDN;
+        paramString2.Fee = paramString1;
       }
       paramString1 = new b.a();
       paramString1.funcId = 1122;
       paramString1.uri = "/cgi-bin/mmbiz-bin/wxaattr/launchwxaapp";
-      paramString1.gUU = paramString2;
-      paramString1.gUV = new bkx();
-      paramString1 = paramString1.atI();
+      paramString1.hvt = paramString2;
+      paramString1.hvu = new bot();
+      paramString1 = paramString1.aAz();
       this.rr = paramString1;
       this.rr = paramString1;
-      AppMethodBeat.o(196032);
+      AppMethodBeat.o(186856);
       return;
-      paramString2 = gb.b.efG;
+      paramString2 = ht.b.ehN;
       break;
     }
   }
   
-  public static void a(bkw parambkw)
+  public static void a(bos parambos)
   {
     AppMethodBeat.i(47398);
     try
     {
-      if (com.tencent.mm.compatible.deviceinfo.ae.fFF.fzk)
+      if (com.tencent.mm.compatible.deviceinfo.ae.fJm.fCR)
       {
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrand.CgiLaunchWxaApp|func:1122", "SrvDeviceInfo isLimit benchmarkLevel");
-        parambkw.DIG = -1;
+        ac.i("MicroMsg.AppBrand.CgiLaunchWxaApp|func:1122", "SrvDeviceInfo isLimit benchmarkLevel");
+        parambos.Feb = -1;
         AppMethodBeat.o(47398);
         return;
       }
-      parambkw.DIG = com.tencent.mm.m.g.Zd().getInt("ClientBenchmarkLevel", -1);
-      if (parambkw.DIG == 0) {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrand.CgiLaunchWxaApp|func:1122", "DynamicConfig performanceLevel 0 illegal");
+      parambos.Feb = com.tencent.mm.m.g.ZY().getInt("ClientBenchmarkLevel", -1);
+      if (parambos.Feb == 0) {
+        ac.e("MicroMsg.AppBrand.CgiLaunchWxaApp|func:1122", "DynamicConfig performanceLevel 0 illegal");
       }
       AppMethodBeat.o(47398);
       return;
     }
-    catch (Exception parambkw)
+    catch (Exception parambos)
     {
-      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.AppBrand.CgiLaunchWxaApp|func:1122", parambkw, "read performanceLevel", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrand.CgiLaunchWxaApp|func:1122", parambos, "read performanceLevel", new Object[0]);
       AppMethodBeat.o(47398);
     }
   }
   
-  public static void b(bkw parambkw)
+  public static void b(bos parambos)
   {
     AppMethodBeat.i(47399);
-    int i = parambkw.DIC.DKZ;
+    int i = parambos.FdX.Fho;
     if (i > 0)
     {
-      com.tencent.mm.plugin.appbrand.appcache.ae localae = j.aOP();
+      com.tencent.mm.plugin.appbrand.appcache.ae localae = j.aVH();
       if (localae != null)
       {
-        com.tencent.mm.plugin.appbrand.appcache.ad localad = new com.tencent.mm.plugin.appbrand.appcache.ad();
+        ad localad = new ad();
         localad.field_key = "@LibraryAppId";
         localad.field_version = i;
         if (localae.get(localad, new String[] { "key", "version" }))
         {
-          parambkw.DIC.Cxn = ((int)localad.field_updateTime);
-          parambkw.DIC.EJd = localad.field_scene;
+          parambos.FdX.DPJ = ((int)localad.field_updateTime);
+          parambos.FdX.Ggp = localad.field_scene;
         }
       }
     }
     AppMethodBeat.o(47399);
   }
   
-  final int aLI()
-  {
-    return ((bkw)this.rr.gUS.gUX).DIA.DGx;
-  }
-  
-  public final com.tencent.mm.co.f<com.tencent.mm.al.c.a<bkx>> auK()
+  public final com.tencent.mm.cn.f<com.tencent.mm.ak.c.a<bot>> aBB()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(47397);
-        Object localObject1 = new a().a((bkw)this.rr.gUS.gUX, this.kLF, this);
+        Object localObject1 = new a().a((bos)this.rr.hvr.hvw, this.lnb, this);
         if (localObject1 != null)
         {
           AppMethodBeat.o(47397);
           return localObject1;
         }
-        localObject1 = com.tencent.luggage.sdk.e.c.ciu;
-        localObject1 = com.tencent.luggage.sdk.e.c.cx(this.kGa);
+        localObject1 = com.tencent.luggage.sdk.e.c.cfq;
+        localObject1 = com.tencent.luggage.sdk.e.c.cm(this.lht);
         if (localObject1 != null)
         {
           localObject1 = com.tencent.mm.plugin.appbrand.launching.d.c.a((com.tencent.luggage.sdk.e.b)localObject1);
           if (localObject1 != null)
           {
-            final com.tencent.mm.al.c.a locala = ((com.tencent.mm.plugin.appbrand.launching.d.g)localObject1).sT(100);
-            ((com.tencent.mm.plugin.appbrand.launching.d.g)localObject1).iwh = this.kLF;
-            if ((locala != null) && (locala.gUK != null) && (locala.errType == 0) && (locala.errCode == 0))
+            final com.tencent.mm.ak.c.a locala = ((com.tencent.mm.plugin.appbrand.launching.d.g)localObject1).tK(100);
+            ((com.tencent.mm.plugin.appbrand.launching.d.g)localObject1).iWl = this.lnb;
+            if ((locala != null) && (locala.hvj != null) && (locala.errType == 0) && (locala.errCode == 0))
             {
-              localObject1 = com.tencent.mm.co.g.c(new com.tencent.mm.vending.g.c.a() {});
+              localObject1 = com.tencent.mm.cn.g.c(new com.tencent.mm.vending.g.c.a() {});
               AppMethodBeat.o(47397);
               continue;
             }
           }
         }
-        b(bhb());
+        b(bnV());
       }
       finally {}
-      a(bhb());
-      long l = bt.eGO();
-      this.kNj.jH(l);
-      com.tencent.mm.co.f localf = super.auK();
+      a(bnV());
+      long l = bs.eWj();
+      this.loI.nj(l);
+      com.tencent.mm.cn.f localf = super.aBB();
       AppMethodBeat.o(47397);
     }
   }
   
-  final boolean bha()
+  final int aSy()
   {
-    return ((bkw)this.rr.gUS.gUX).DIA.DKX > 0;
+    return ((bos)this.rr.hvr.hvw).FdV.FbR;
   }
   
-  protected final bkw bhb()
+  final boolean bnU()
   {
-    return (bkw)this.rr.gUS.gUX;
+    return ((bos)this.rr.hvr.hvw).FdV.Fhm > 0;
   }
   
-  public final void bhc()
+  protected final bos bnV()
+  {
+    return (bos)this.rr.hvr.hvw;
+  }
+  
+  public final void bnW()
   {
     AppMethodBeat.i(47396);
-    com.tencent.mm.plugin.appbrand.utils.e.bqm().postToWorker(new Runnable()
+    com.tencent.mm.plugin.appbrand.utils.e.bxj().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47391);
-        b.this.kLF = false;
-        b.this.auK();
+        b.this.lnb = false;
+        b.this.aBB();
         AppMethodBeat.o(47391);
       }
     });
@@ -202,12 +204,12 @@ public final class b
   
   final String getAppId()
   {
-    return ((bkw)this.rr.gUS.gUX).hnC;
+    return ((bos)this.rr.hvr.hvw).hOf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.b
  * JD-Core Version:    0.7.0.1
  */

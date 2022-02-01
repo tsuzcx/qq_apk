@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.downloader_app.b.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class f
@@ -19,7 +19,7 @@ public class f
   public final void b(a.a parama)
   {
     AppMethodBeat.i(8833);
-    Object localObject = parama.bZV.bZb;
+    Object localObject = parama.bWS.bVY;
     if (localObject == null)
     {
       parama.a("invalid_data", null);
@@ -28,7 +28,7 @@ public class f
     }
     int i = ((JSONObject)localObject).optInt("logId");
     String str = ((JSONObject)localObject).optString("values");
-    if ((i <= 0) || (bt.isNullOrNil(str)))
+    if ((i <= 0) || (bs.isNullOrNil(str)))
     {
       parama.a("invalid_data", null);
       AppMethodBeat.o(8833);
@@ -36,14 +36,14 @@ public class f
     }
     localObject = str;
     if (i == 16099) {
-      localObject = a.aUu() + "," + str;
+      localObject = a.bbs() + "," + str;
     }
-    h.vKh.kvStat(i, (String)localObject);
+    h.wUl.kvStat(i, (String)localObject);
     parama.a("", null);
     AppMethodBeat.o(8833);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

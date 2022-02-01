@@ -13,23 +13,23 @@ public abstract interface y
     static
     {
       AppMethodBeat.i(44458);
-      iTB = new a("INSTANCE");
-      iTC = new a[] { iTB };
+      jtM = new a("INSTANCE");
+      jtN = new a[] { jtM };
       AppMethodBeat.o(44458);
     }
     
     private a() {}
     
-    public final int Ff(String paramString)
+    public final int Ji(String paramString)
     {
       AppMethodBeat.i(44457);
-      paramString = com.tencent.mm.plugin.appbrand.a.CR(paramString);
-      if ((paramString == null) || (paramString.aNc() == null))
+      paramString = com.tencent.mm.plugin.appbrand.a.GU(paramString);
+      if ((paramString == null) || (paramString.aTS() == null))
       {
         AppMethodBeat.o(44457);
         return 0;
       }
-      int i = paramString.aNc().uin;
+      int i = paramString.aTS().uin;
       AppMethodBeat.o(44457);
       return i;
     }
@@ -41,17 +41,17 @@ public abstract interface y
     static
     {
       AppMethodBeat.i(44462);
-      iTD = new b("INSTANCE");
-      iTE = new b[] { iTD };
+      jtO = new b("INSTANCE");
+      jtP = new b[] { jtO };
       AppMethodBeat.o(44462);
     }
     
     private b() {}
     
-    public final int Ff(String paramString)
+    public final int Ji(String paramString)
     {
       AppMethodBeat.i(44461);
-      g.afz();
+      g.agP();
       int i = com.tencent.mm.kernel.a.getUin();
       AppMethodBeat.o(44461);
       return i;

@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface c
 {
-  public static final a JAf = a.JAg;
+  public static final a Lny = a.Lnz;
   
   public static final class a
   {
     static
     {
       AppMethodBeat.i(57743);
-      JAg = new a();
+      Lnz = new a();
       AppMethodBeat.o(57743);
     }
   }
@@ -19,12 +19,12 @@ public abstract interface c
   public static final class b
     implements c
   {
-    public static final b JAh;
+    public static final b LnA;
     
     static
     {
       AppMethodBeat.i(57744);
-      JAh = new b();
+      LnA = new b();
       AppMethodBeat.o(57744);
     }
   }

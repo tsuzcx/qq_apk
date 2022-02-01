@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.tm;
-import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.protocal.protobuf.tw;
+import com.tencent.mm.protocal.protobuf.tx;
 import com.tencent.mm.sdk.platformtools.i;
 
 public final class a
@@ -24,19 +24,19 @@ public final class a
   {
     AppMethodBeat.i(97129);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new tm();
-    ((b.a)localObject).gUV = new tn();
+    ((b.a)localObject).hvt = new tw();
+    ((b.a)localObject).hvu = new tx();
     ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/channelpkginfo";
     ((b.a)localObject).funcId = 1210;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (tm)this.rr.gUS.gUX;
-    ((tm)localObject).CVl = paramString2;
-    ((tm)localObject).Cwo = paramString1;
-    ((tm)localObject).CVm = i.eFb();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (tw)this.rr.hvr.hvw;
+    ((tw)localObject).EnV = paramString2;
+    ((tw)localObject).DOK = paramString1;
+    ((tw)localObject).EnW = i.eUv();
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ((tm)localObject).CVn = i;
+      ((tw)localObject).EnX = i;
       AppMethodBeat.o(97129);
       return;
     }
@@ -70,7 +70,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a
  * JD-Core Version:    0.7.0.1
  */

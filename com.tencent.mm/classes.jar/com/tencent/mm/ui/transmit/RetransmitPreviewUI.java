@@ -7,13 +7,13 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
+import com.tencent.mm.cf.g;
 import com.tencent.mm.ui.MMActivity;
 
 public class RetransmitPreviewUI
   extends MMActivity
 {
-  private TextView Tu = null;
+  private TextView Up = null;
   private String text = null;
   
   public int getLayoutId()
@@ -34,11 +34,11 @@ public class RetransmitPreviewUI
     super.onCreate(paramBundle);
     setMMTitle("");
     this.text = getIntent().getStringExtra("Retr_Msg_content");
-    this.Tu = ((TextView)findViewById(2131300329));
-    paramBundle = this.Tu;
-    g localg = g.eIa();
+    this.Up = ((TextView)findViewById(2131300329));
+    paramBundle = this.Up;
+    g localg = g.eXw();
     getContext();
-    paramBundle.setText(localg.b(this.text, this.Tu.getTextSize()));
+    paramBundle.setText(localg.b(this.text, this.Up.getTextSize()));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

@@ -9,104 +9,104 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bc.b;
-import com.tencent.mm.bc.p;
-import com.tencent.mm.bc.t;
+import com.tencent.mm.bb.b;
+import com.tencent.mm.bb.p;
+import com.tencent.mm.bb.t;
 import com.tencent.mm.model.az;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.pluginsdk.ui.e;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import java.util.HashMap;
 
-@com.tencent.mm.ui.chatting.c.a.a(eYT=com.tencent.mm.ui.chatting.c.b.c.class)
+@com.tencent.mm.ui.chatting.c.a.a(foJ=com.tencent.mm.ui.chatting.c.b.c.class)
 public class g
   extends a
   implements com.tencent.mm.ui.chatting.c.b.c
 {
-  private static HashMap<String, e> Gtl;
-  private Bitmap Gti;
-  private ImageView Gtj;
-  private final k.a Gtk;
-  private ImageView qkS;
-  private e uVX;
+  private static HashMap<String, e> HTe;
+  private Bitmap HTb;
+  private ImageView HTc;
+  private final k.a HTd;
+  private ImageView qTu;
+  private e weM;
   
   static
   {
     AppMethodBeat.i(35176);
-    Gtl = new HashMap();
+    HTe = new HashMap();
     AppMethodBeat.o(35176);
   }
   
   public g()
   {
     AppMethodBeat.i(35167);
-    this.Gtk = new k.a()
+    this.HTd = new k.a()
     {
       public final void a(String paramAnonymousString, m paramAnonymousm)
       {
         AppMethodBeat.i(35166);
-        ad.d("MicroMsg.ChattingUI.ChattingBackgroundComponent", "onBGChange event:%s", new Object[] { paramAnonymousString });
-        if ((paramAnonymousString != null) && ((paramAnonymousString.equals(g.this.cOd.getTalkerUserName())) || (paramAnonymousString.equals("*")))) {
-          g.this.enK();
+        ac.d("MicroMsg.ChattingUI.ChattingBackgroundComponent", "onBGChange event:%s", new Object[] { paramAnonymousString });
+        if ((paramAnonymousString != null) && ((paramAnonymousString.equals(g.this.cLy.getTalkerUserName())) || (paramAnonymousString.equals("*")))) {
+          g.this.eDd();
         }
         AppMethodBeat.o(35166);
       }
     };
-    this.uVX = null;
+    this.weM = null;
     AppMethodBeat.o(35167);
   }
   
   private boolean ck(Context paramContext, String paramString)
   {
     AppMethodBeat.i(35172);
-    if (Gtl.containsKey(paramString))
+    if (HTe.containsKey(paramString))
     {
-      this.uVX = ((e)Gtl.get(paramString));
+      this.weM = ((e)HTe.get(paramString));
       AppMethodBeat.o(35172);
       return true;
     }
     try
     {
-      this.uVX = new e(bt.convertStreamToString(paramContext.getAssets().open(paramString)), this.cOd.GzJ.getContext());
-      Gtl.put(paramString, this.uVX);
+      this.weM = new e(bs.convertStreamToString(paramContext.getAssets().open(paramString)), this.cLy.HZF.getContext());
+      HTe.put(paramString, this.weM);
       AppMethodBeat.o(35172);
       return true;
     }
     catch (Exception paramContext)
     {
-      ad.printErrStackTrace("MicroMsg.ChattingUI.ChattingBackgroundComponent", paramContext, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.ChattingUI.ChattingBackgroundComponent", paramContext, "", new Object[0]);
       AppMethodBeat.o(35172);
     }
     return false;
   }
   
-  private void eXb()
+  private void fmN()
   {
     AppMethodBeat.i(35169);
-    if ((this.Gti != null) && (!this.Gti.isRecycled()))
+    if ((this.HTb != null) && (!this.HTb.isRecycled()))
     {
-      ad.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "recycle bitmap:%s", new Object[] { this.Gti.toString() });
-      this.Gti.recycle();
+      ac.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "recycle bitmap:%s", new Object[] { this.HTb.toString() });
+      this.HTb.recycle();
     }
-    if (this.Gtj != null) {
-      this.Gtj.setImageBitmap(null);
+    if (this.HTc != null) {
+      this.HTc.setImageBitmap(null);
     }
-    if (this.qkS != null) {
-      this.qkS.setVisibility(8);
+    if (this.qTu != null) {
+      this.qTu.setVisibility(8);
     }
     AppMethodBeat.o(35169);
   }
   
-  private int eXc()
+  private int fmO()
   {
     AppMethodBeat.i(35170);
-    int i = this.cOd.GzJ.getMMResources().getColor(2131100207);
+    int i = this.cLy.HZF.getMMResources().getColor(2131100207);
     AppMethodBeat.o(35170);
     return i;
   }
@@ -114,77 +114,37 @@ public class g
   private void setBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(35171);
-    eXb();
-    if (this.Gtj == null)
+    fmN();
+    if (this.HTc == null)
     {
-      View localView = this.cOd.findViewById(2131298066);
+      View localView = this.cLy.findViewById(2131298066);
       if (localView != null) {
         localView.setBackgroundColor(paramInt);
       }
       AppMethodBeat.o(35171);
       return;
     }
-    this.Gtj.setImageDrawable(new ColorDrawable(paramInt));
+    this.HTc.setImageDrawable(new ColorDrawable(paramInt));
     AppMethodBeat.o(35171);
   }
   
-  public final void eQA() {}
-  
-  public final void eQB()
-  {
-    AppMethodBeat.i(35173);
-    ad.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingEnterAnimStart]");
-    enK();
-    AppMethodBeat.o(35173);
-  }
-  
-  public final void eQC()
-  {
-    AppMethodBeat.i(35174);
-    t.azZ().add(this.Gtk);
-    t.azY().add(this.Gtk);
-    AppMethodBeat.o(35174);
-  }
-  
-  public final void eQD() {}
-  
-  public final void eQE() {}
-  
-  public final void eQG()
-  {
-    AppMethodBeat.i(35175);
-    ad.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingExitAnimEnd]");
-    if (az.afw())
-    {
-      t.azZ().remove(this.Gtk);
-      t.azY().remove(this.Gtk);
-    }
-    eXb();
-    AppMethodBeat.o(35175);
-  }
-  
-  public final e eXd()
-  {
-    return this.uVX;
-  }
-  
-  public final void enK()
+  public final void eDd()
   {
     int j = 0;
     AppMethodBeat.i(35168);
-    com.tencent.mm.bc.a locala = t.azZ().yR(this.cOd.getTalkerUserName());
+    com.tencent.mm.bb.a locala = t.aGP().CW(this.cLy.getTalkerUserName());
     if (locala == null) {
-      az.arV();
+      az.ayM();
     }
-    for (int i = ((Integer)com.tencent.mm.model.c.afk().get(12311, Integer.valueOf(-2))).intValue(); i == -2; i = locala.hoW)
+    for (int i = ((Integer)com.tencent.mm.model.c.agA().get(12311, Integer.valueOf(-2))).intValue(); i == -2; i = locala.hPy)
     {
-      setBackgroundColor(eXc());
-      ck(this.cOd.GzJ.getContext(), "chatting/purecolor_chat.xml");
+      setBackgroundColor(fmO());
+      ck(this.cLy.HZF.getContext(), "chatting/purecolor_chat.xml");
       AppMethodBeat.o(35168);
       return;
     }
-    t.azY();
-    int k = p.cz(this.cOd.GzJ.getContext());
+    t.aGO();
+    int k = p.cI(this.cLy.HZF.getContext());
     if (i == 0) {
       switch (k)
       {
@@ -195,17 +155,17 @@ public class g
     for (;;)
     {
       if (i != -1) {
-        eXb();
+        fmN();
       }
       try
       {
-        this.Gti = BitmapFactory.decodeResource(this.cOd.GzJ.getMMResources(), 2131231650);
+        this.HTb = BitmapFactory.decodeResource(this.cLy.HZF.getMMResources(), 2131231650);
         label183:
-        if (this.Gti == null)
+        if (this.HTb == null)
         {
-          ad.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, resId = 2131231650");
-          setBackgroundColor(this.cOd.GzJ.getMMResources().getColor(2131100140));
-          ck(this.cOd.GzJ.getContext(), "chatting/reserved_chat.xml");
+          ac.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, resId = 2131231650");
+          setBackgroundColor(this.cLy.HZF.getMMResources().getColor(2131100140));
+          ck(this.cLy.HZF.getContext(), "chatting/reserved_chat.xml");
           AppMethodBeat.o(35168);
           return;
           i = 2131231650;
@@ -215,31 +175,31 @@ public class g
       {
         do
         {
-          ad.printErrStackTrace("MicroMsg.Crash", localIncompatibleClassChangeError, "May cause dvmFindCatchBlock crash!", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.Crash", localIncompatibleClassChangeError, "May cause dvmFindCatchBlock crash!", new Object[0]);
           localObject = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(localIncompatibleClassChangeError);
           AppMethodBeat.o(35168);
           throw ((Throwable)localObject);
-          if (this.Gtj == null) {
-            this.Gtj = ((ImageView)this.cOd.findViewById(2131298065));
+          if (this.HTc == null) {
+            this.HTc = ((ImageView)this.cLy.findViewById(2131298065));
           }
-          if (this.qkS == null) {
-            this.qkS = ((ImageView)this.cOd.findViewById(2131297208));
+          if (this.qTu == null) {
+            this.qTu = ((ImageView)this.cLy.findViewById(2131297208));
           }
-          if (this.Gtj != null) {
-            this.Gtj.setImageBitmap(this.Gti);
+          if (this.HTc != null) {
+            this.HTc.setImageBitmap(this.HTb);
           }
-        } while (this.qkS == null);
-        Object localObject = this.qkS;
-        if (ai.Eq()) {}
+        } while (this.qTu == null);
+        Object localObject = this.qTu;
+        if (aj.DT()) {}
         for (i = 0;; i = 8)
         {
           ((ImageView)localObject).setVisibility(i);
           break;
         }
-        p localp = t.azY();
+        p localp = t.aGO();
         if (i > 0)
         {
-          ck(this.cOd.GzJ.getContext(), "chatting/default_chat.xml");
+          ck(this.cLy.HZF.getContext(), "chatting/default_chat.xml");
           switch (k)
           {
           default: 
@@ -248,13 +208,13 @@ public class g
         }
         for (;;)
         {
-          eXb();
-          this.Gti = u.BA((String)localObject);
-          if (this.Gti != null) {
+          fmN();
+          this.HTb = u.FE((String)localObject);
+          if (this.HTb != null) {
             break;
           }
-          ad.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, path = ".concat(String.valueOf(localObject)));
-          setBackgroundColor(eXc());
+          ac.e("MicroMsg.ChattingUI.ChattingBackgroundComponent", "setBackground decodeFile fail, bm is null, path = ".concat(String.valueOf(localObject)));
+          setBackgroundColor(fmO());
           AppMethodBeat.o(35168);
           return;
           localObject = localp.dj(i, 1) + "horizontal_hdpi.jpg";
@@ -265,26 +225,26 @@ public class g
           continue;
           localObject = localp.dj(i, 1) + "vertical_ldpi.jpg";
           continue;
-          ck(this.cOd.GzJ.getContext(), "chatting/default_chat.xml");
+          ck(this.cLy.HZF.getContext(), "chatting/default_chat.xml");
           if (localObject == null) {
-            localObject = p.ah("default", k);
+            localObject = p.al("default", k);
           } else {
-            localObject = p.ah(this.cOd.getTalkerUserName(), k);
+            localObject = p.al(this.cLy.getTalkerUserName(), k);
           }
         }
-        if (this.Gtj == null) {
-          this.Gtj = ((ImageView)this.cOd.findViewById(2131298065));
+        if (this.HTc == null) {
+          this.HTc = ((ImageView)this.cLy.findViewById(2131298065));
         }
-        if (this.qkS == null) {
-          this.qkS = ((ImageView)this.cOd.findViewById(2131297208));
+        if (this.qTu == null) {
+          this.qTu = ((ImageView)this.cLy.findViewById(2131297208));
         }
-        if (this.Gtj != null) {
-          this.Gtj.setImageBitmap(this.Gti);
+        if (this.HTc != null) {
+          this.HTc.setImageBitmap(this.HTb);
         }
-        if (this.qkS != null)
+        if (this.qTu != null)
         {
-          localObject = this.qkS;
-          if (!ai.Eq()) {
+          localObject = this.qTu;
+          if (!aj.DT()) {
             break label783;
           }
         }
@@ -302,10 +262,50 @@ public class g
       }
     }
   }
+  
+  public final void fgg() {}
+  
+  public final void fgh()
+  {
+    AppMethodBeat.i(35173);
+    ac.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingEnterAnimStart]");
+    eDd();
+    AppMethodBeat.o(35173);
+  }
+  
+  public final void fgi()
+  {
+    AppMethodBeat.i(35174);
+    t.aGP().add(this.HTd);
+    t.aGO().add(this.HTd);
+    AppMethodBeat.o(35174);
+  }
+  
+  public final void fgj() {}
+  
+  public final void fgk() {}
+  
+  public final void fgm()
+  {
+    AppMethodBeat.i(35175);
+    ac.i("MicroMsg.ChattingUI.ChattingBackgroundComponent", "[onChattingExitAnimEnd]");
+    if (az.agM())
+    {
+      t.aGP().remove(this.HTd);
+      t.aGO().remove(this.HTd);
+    }
+    fmN();
+    AppMethodBeat.o(35175);
+  }
+  
+  public final e fmP()
+  {
+    return this.weM;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.g
  * JD-Core Version:    0.7.0.1
  */

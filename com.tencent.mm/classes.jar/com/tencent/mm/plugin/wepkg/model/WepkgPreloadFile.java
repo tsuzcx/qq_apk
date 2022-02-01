@@ -12,12 +12,12 @@ public class WepkgPreloadFile
   implements Parcelable
 {
   public static final Parcelable.Creator<WepkgPreloadFile> CREATOR;
-  public int BID;
-  public String BIR;
-  public boolean BJe;
+  public int DaM;
+  public String Dba;
+  public boolean Dbn;
   public long createTime;
   public String downloadUrl;
-  public String fUW;
+  public String fYR;
   public String filePath;
   public String key;
   public String md5;
@@ -38,19 +38,19 @@ public class WepkgPreloadFile
   {
     AppMethodBeat.i(110720);
     this.key = paramParcel.readString();
-    this.fUW = paramParcel.readString();
+    this.fYR = paramParcel.readString();
     this.version = paramParcel.readString();
     this.filePath = paramParcel.readString();
-    this.BIR = paramParcel.readString();
+    this.Dba = paramParcel.readString();
     this.mimeType = paramParcel.readString();
     this.md5 = paramParcel.readString();
     this.downloadUrl = paramParcel.readString();
     this.size = paramParcel.readInt();
-    this.BID = paramParcel.readInt();
+    this.DaM = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.BJe = bool;
+      this.Dbn = bool;
       this.createTime = paramParcel.readLong();
       AppMethodBeat.o(110720);
       return;
@@ -62,16 +62,16 @@ public class WepkgPreloadFile
     if (paramc != null)
     {
       this.key = paramc.field_key;
-      this.fUW = paramc.field_pkgId;
+      this.fYR = paramc.field_pkgId;
       this.version = paramc.field_version;
       this.filePath = paramc.field_filePath;
-      this.BIR = paramc.field_rid;
+      this.Dba = paramc.field_rid;
       this.mimeType = paramc.field_mimeType;
       this.md5 = paramc.field_md5;
       this.downloadUrl = paramc.field_downloadUrl;
       this.size = paramc.field_size;
-      this.BID = paramc.field_downloadNetType;
-      this.BJe = paramc.field_completeDownload;
+      this.DaM = paramc.field_downloadNetType;
+      this.Dbn = paramc.field_completeDownload;
       this.createTime = paramc.field_createTime;
     }
   }
@@ -81,23 +81,23 @@ public class WepkgPreloadFile
     return 0;
   }
   
-  public final JSONObject etO()
+  public final JSONObject eJh()
   {
     AppMethodBeat.i(110721);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("key", this.key);
-      localJSONObject.put("pkgId", this.fUW);
+      localJSONObject.put("pkgId", this.fYR);
       localJSONObject.put("version", this.version);
       localJSONObject.put("filePath", this.filePath);
-      localJSONObject.put("rid", this.BIR);
+      localJSONObject.put("rid", this.Dba);
       localJSONObject.put("mimeType", this.mimeType);
       localJSONObject.put("md5", this.md5);
       localJSONObject.put("downloadUrl", this.downloadUrl);
       localJSONObject.put("size", this.size);
-      localJSONObject.put("downloadNetType", this.BID);
-      localJSONObject.put("completeDownload", this.BJe);
+      localJSONObject.put("downloadNetType", this.DaM);
+      localJSONObject.put("completeDownload", this.Dbn);
       localJSONObject.put("createTime", this.createTime);
       label145:
       AppMethodBeat.o(110721);
@@ -113,16 +113,16 @@ public class WepkgPreloadFile
   {
     AppMethodBeat.i(110722);
     paramParcel.writeString(this.key);
-    paramParcel.writeString(this.fUW);
+    paramParcel.writeString(this.fYR);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.filePath);
-    paramParcel.writeString(this.BIR);
+    paramParcel.writeString(this.Dba);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.downloadUrl);
     paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.BID);
-    if (this.BJe) {}
+    paramParcel.writeInt(this.DaM);
+    if (this.Dbn) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);

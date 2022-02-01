@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b
   extends g
 {
-  private final short bJN;
-  private final short bJO;
+  private final short bHv;
+  private final short bHw;
   
   b(g paramg, int paramInt1, int paramInt2)
   {
     super(paramg);
     AppMethodBeat.i(12257);
-    this.bJN = ((short)paramInt1);
-    this.bJO = ((short)paramInt2);
+    this.bHv = ((short)paramInt1);
+    this.bHw = ((short)paramInt2);
     AppMethodBeat.o(12257);
   }
   
@@ -22,26 +22,26 @@ final class b
   {
     AppMethodBeat.i(12258);
     int i = 0;
-    if (i < this.bJO)
+    if (i < this.bHw)
     {
-      if ((i == 0) || ((i == 31) && (this.bJO <= 62)))
+      if ((i == 0) || ((i == 31) && (this.bHw <= 62)))
       {
-        parama.bI(31, 5);
-        if (this.bJO <= 62) {
+        parama.bF(31, 5);
+        if (this.bHw <= 62) {
           break label85;
         }
-        parama.bI(this.bJO - 31, 16);
+        parama.bF(this.bHw - 31, 16);
       }
       for (;;)
       {
-        parama.bI(paramArrayOfByte[(this.bJN + i)], 8);
+        parama.bF(paramArrayOfByte[(this.bHv + i)], 8);
         i += 1;
         break;
         label85:
         if (i == 0) {
-          parama.bI(Math.min(this.bJO, 31), 5);
+          parama.bF(Math.min(this.bHw, 31), 5);
         } else {
-          parama.bI(this.bJO - 31, 5);
+          parama.bF(this.bHw - 31, 5);
         }
       }
     }
@@ -51,14 +51,14 @@ final class b
   public final String toString()
   {
     AppMethodBeat.i(12259);
-    String str = "<" + this.bJN + "::" + (this.bJN + this.bJO - 1) + '>';
+    String str = "<" + this.bHv + "::" + (this.bHv + this.bHw - 1) + '>';
     AppMethodBeat.o(12259);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.a.a.b
  * JD-Core Version:    0.7.0.1
  */

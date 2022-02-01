@@ -1,59 +1,188 @@
 package com.tencent.mm.storage.emotion;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cp;
 import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
 
 public final class q
-  extends cp
+  extends j<p>
+  implements g.a
 {
-  public static c.a info;
+  public static final String[] SQL_CREATE;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(105127);
-    c.a locala = new c.a();
-    locala.EYt = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "reqType";
-    locala.EYv.put("reqType", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" reqType TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "reqType";
-    locala.columns[1] = "cache";
-    locala.EYv.put("cache", "BLOB default '' ");
-    localStringBuilder.append(" cache BLOB default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(105127);
+    AppMethodBeat.i(105125);
+    SQL_CREATE = new String[] { j.getCreateSQLs(p.info, "EmotionRewardTipInfo") };
+    AppMethodBeat.o(105125);
   }
   
-  public q(Cursor paramCursor)
+  public q(e parame)
   {
-    AppMethodBeat.i(105126);
-    if (paramCursor == null)
+    this(parame, p.info, "EmotionRewardTipInfo");
+  }
+  
+  private q(e parame, c.a parama, String paramString)
+  {
+    super(parame, parama, paramString, null);
+    this.db = parame;
+  }
+  
+  public final int a(g paramg)
+  {
+    this.db = paramg;
+    return 0;
+  }
+  
+  public final boolean a(p paramp)
+  {
+    AppMethodBeat.i(105124);
+    if (paramp == null)
     {
-      AppMethodBeat.o(105126);
-      return;
+      ac.w("MicroMsg.emoji.EmotionRewardTipStorage", "save failed info is null");
+      AppMethodBeat.o(105124);
+      return false;
     }
-    convertFrom(paramCursor);
-    AppMethodBeat.o(105126);
+    long l = this.db.replace("EmotionRewardTipInfo", "prodcutID", paramp.convertTo());
+    if (l > 0L) {
+      ac.i("MicroMsg.emoji.EmotionRewardTipStorage", "save success");
+    }
+    while (l > 0L)
+    {
+      AppMethodBeat.o(105124);
+      return true;
+      ac.i("MicroMsg.emoji.EmotionRewardTipStorage", "save failed");
+    }
+    AppMethodBeat.o(105124);
+    return false;
   }
   
-  public q(String paramString, byte[] paramArrayOfByte)
+  public final boolean fV(String paramString, int paramInt)
   {
-    this.field_reqType = paramString;
-    this.field_cache = paramArrayOfByte;
+    AppMethodBeat.i(105123);
+    if (bs.isNullOrNil(paramString))
+    {
+      ac.w("MicroMsg.emoji.EmotionRewardTipStorage", "product id is null.");
+      AppMethodBeat.o(105123);
+      return false;
+    }
+    paramString = "UPDATE EmotionRewardTipInfo SET flag=" + paramInt + ",setFlagTime=" + System.currentTimeMillis() + " WHERE prodcutID='" + paramString + "'";
+    boolean bool = this.db.execSQL("EmotionRewardTipInfo", paramString);
+    ac.i("MicroMsg.emoji.EmotionRewardTipStorage", "updateFlag result:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(105123);
+    return bool;
   }
   
-  public final c.a getDBInfo()
+  /* Error */
+  public final p fdu()
   {
-    return null;
+    // Byte code:
+    //   0: ldc 148
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 50	com/tencent/mm/storage/emotion/q:db	Lcom/tencent/mm/sdk/e/e;
+    //   9: ldc 150
+    //   11: iconst_0
+    //   12: anewarray 22	java/lang/String
+    //   15: iconst_2
+    //   16: invokeinterface 153 4 0
+    //   21: astore_2
+    //   22: aload_2
+    //   23: ifnull +48 -> 71
+    //   26: aload_2
+    //   27: astore_1
+    //   28: aload_2
+    //   29: invokeinterface 159 1 0
+    //   34: ifeq +37 -> 71
+    //   37: aload_2
+    //   38: astore_1
+    //   39: new 24	com/tencent/mm/storage/emotion/p
+    //   42: dup
+    //   43: invokespecial 161	com/tencent/mm/storage/emotion/p:<init>	()V
+    //   46: astore_3
+    //   47: aload_2
+    //   48: astore_1
+    //   49: aload_3
+    //   50: aload_2
+    //   51: invokevirtual 165	com/tencent/mm/storage/emotion/p:convertFrom	(Landroid/database/Cursor;)V
+    //   54: aload_2
+    //   55: ifnull +9 -> 64
+    //   58: aload_2
+    //   59: invokeinterface 168 1 0
+    //   64: ldc 148
+    //   66: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: aload_3
+    //   70: areturn
+    //   71: aload_2
+    //   72: ifnull +9 -> 81
+    //   75: aload_2
+    //   76: invokeinterface 168 1 0
+    //   81: ldc 148
+    //   83: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: aconst_null
+    //   87: areturn
+    //   88: astore_3
+    //   89: aconst_null
+    //   90: astore_2
+    //   91: aload_2
+    //   92: astore_1
+    //   93: ldc 56
+    //   95: ldc 170
+    //   97: iconst_1
+    //   98: anewarray 134	java/lang/Object
+    //   101: dup
+    //   102: iconst_0
+    //   103: aload_3
+    //   104: invokestatic 174	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   107: aastore
+    //   108: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: aload_2
+    //   112: ifnull -31 -> 81
+    //   115: aload_2
+    //   116: invokeinterface 168 1 0
+    //   121: goto -40 -> 81
+    //   124: astore_2
+    //   125: aconst_null
+    //   126: astore_1
+    //   127: aload_1
+    //   128: ifnull +9 -> 137
+    //   131: aload_1
+    //   132: invokeinterface 168 1 0
+    //   137: ldc 148
+    //   139: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   142: aload_2
+    //   143: athrow
+    //   144: astore_2
+    //   145: goto -18 -> 127
+    //   148: astore_3
+    //   149: goto -58 -> 91
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	152	0	this	q
+    //   27	105	1	localCursor1	android.database.Cursor
+    //   21	95	2	localCursor2	android.database.Cursor
+    //   124	19	2	localObject1	Object
+    //   144	1	2	localObject2	Object
+    //   46	24	3	localp	p
+    //   88	16	3	localException1	java.lang.Exception
+    //   148	1	3	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   5	22	88	java/lang/Exception
+    //   5	22	124	finally
+    //   28	37	144	finally
+    //   39	47	144	finally
+    //   49	54	144	finally
+    //   93	111	144	finally
+    //   28	37	148	java/lang/Exception
+    //   39	47	148	java/lang/Exception
+    //   49	54	148	java/lang/Exception
   }
 }
 

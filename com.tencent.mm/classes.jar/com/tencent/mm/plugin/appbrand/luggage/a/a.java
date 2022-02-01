@@ -19,7 +19,7 @@ public final class a
     this.height = paramInt4;
   }
   
-  public final String AL()
+  public final String Ap()
   {
     AppMethodBeat.i(134892);
     String str = String.format("Decoder_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.left), Integer.valueOf(this.top), Integer.valueOf(this.width), Integer.valueOf(this.height) });
@@ -28,7 +28,7 @@ public final class a
   }
   
   /* Error */
-  public final android.graphics.Bitmap u(java.io.InputStream paramInputStream)
+  public final android.graphics.Bitmap t(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 60
@@ -224,7 +224,7 @@ public final class a
     //   326: aload_1
     //   327: invokestatic 115	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   330: aastore
-    //   331: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   331: invokestatic 121	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   334: aload 5
     //   336: ifnull +8 -> 344
     //   339: aload 5
@@ -245,7 +245,7 @@ public final class a
     //   366: aload_1
     //   367: invokestatic 115	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   370: aastore
-    //   371: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   371: invokestatic 121	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   374: aload 6
     //   376: ifnull -32 -> 344
     //   379: aload 6
@@ -265,7 +265,7 @@ public final class a
     //   406: aload_1
     //   407: invokestatic 115	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   410: aastore
-    //   411: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   411: invokestatic 121	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   414: aload 7
     //   416: ifnull -72 -> 344
     //   419: aload 7

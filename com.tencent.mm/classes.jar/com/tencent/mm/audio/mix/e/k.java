@@ -7,21 +7,21 @@ public final class k
 {
   private float A;
   private float B;
-  private float cVX;
-  private float cVY;
-  private float cVZ;
-  private int cWa;
-  private int cWb;
+  private float cTt;
+  private float cTu;
+  private float cTv;
+  private int cTw;
+  private int cTx;
   
   public k()
   {
     AppMethodBeat.i(136878);
-    this.cVX = 128.0F;
-    this.cVY = 128.0F;
-    this.cVZ = 128.0F;
-    this.cWa = 44100;
-    this.cWb = ((int)(0.02F * this.cWa * 2.0F * 16.0F / 8.0F));
-    this.A = (this.cWa / this.cWb);
+    this.cTt = 128.0F;
+    this.cTu = 128.0F;
+    this.cTv = 128.0F;
+    this.cTw = 44100;
+    this.cTx = ((int)(0.02F * this.cTw * 2.0F * 16.0F / 8.0F));
+    this.A = (this.cTw / this.cTx);
     this.B = 1.0F;
     AppMethodBeat.o(136878);
   }
@@ -36,33 +36,33 @@ public final class k
       int k = 0;
       if (k < paramInt1)
       {
-        i += this.cVN[k][j];
+        i += this.cTj[k][j];
         if (i > this.MAX_VALUE) {
-          this.cVX *= 32768.0F / i;
+          this.cTt *= 32768.0F / i;
         }
         for (;;)
         {
           k += 1;
           break;
           if (i < this.MIN_VALUE) {
-            this.cVX *= 32768.0F / i;
+            this.cTt *= 32768.0F / i;
           }
         }
       }
-      if (this.cVX >= this.cVY) {}
-      for (this.cVX = ((this.A * (this.cVY + 1.0F) + this.B * this.cVX) / (this.A + this.B));; this.cVX = ((this.cVY + this.cVX) / 2.0F))
+      if (this.cTt >= this.cTu) {}
+      for (this.cTt = ((this.A * (this.cTu + 1.0F) + this.B * this.cTt) / (this.A + this.B));; this.cTt = ((this.cTu + this.cTt) / 2.0F))
       {
-        this.cVY = this.cVX;
+        this.cTu = this.cTt;
         k = i;
-        if ((int)(this.cVX * 128.0F) >> 7 != 128) {
-          k = (int)(this.cVZ * this.cVX / 128.0F * i) / 128;
+        if ((int)(this.cTt * 128.0F) >> 7 != 128) {
+          k = (int)(this.cTv * this.cTt / 128.0F * i) / 128;
         }
-        this.cVQ[j] = hS(k);
+        this.cTm[j] = hC(k);
         j += 1;
         break;
       }
     }
-    byte[] arrayOfByte = cg(paramInt3, paramInt2);
+    byte[] arrayOfByte = ce(paramInt3, paramInt2);
     AppMethodBeat.o(136879);
     return arrayOfByte;
   }

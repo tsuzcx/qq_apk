@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.support.v4.app.s.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class x
   extends b
 {
-  public a dbP;
+  public a cZn;
   
   public x()
   {
@@ -16,23 +15,21 @@ public final class x
   
   private x(byte paramByte)
   {
-    AppMethodBeat.i(19788);
-    this.dbP = new a();
-    this.ESR = false;
+    AppMethodBeat.i(149849);
+    this.cZn = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19788);
+    AppMethodBeat.o(149849);
   }
   
   public static final class a
   {
-    public s.e dbQ;
-    public String title;
-    public String username;
+    public int mode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.x
  * JD-Core Version:    0.7.0.1
  */

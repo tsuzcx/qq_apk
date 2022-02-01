@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WWAPIFactory
 {
-  public static IWWAPI kS(Context paramContext)
+  public static IWWAPI lg(Context paramContext)
   {
     AppMethodBeat.i(106526);
     paramContext = new WWAPIImpl(paramContext);

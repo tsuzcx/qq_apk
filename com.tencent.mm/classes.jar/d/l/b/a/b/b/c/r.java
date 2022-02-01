@@ -18,26 +18,26 @@ public final class r
   extends j
   implements ad
 {
-  final b JrG;
-  private final f Juu;
-  private final d.l.b.a.b.j.f.h Juv;
-  final w Juw;
+  final b LeZ;
+  private final f LhN;
+  private final d.l.b.a.b.j.f.h LhO;
+  final w LhP;
   
   static
   {
     AppMethodBeat.i(57124);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)d.g.b.w.a(new u(d.g.b.w.bk(r.class), "fragments", "getFragments()Ljava/util/List;")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)d.g.b.w.a(new u(d.g.b.w.bn(r.class), "fragments", "getFragments()Ljava/util/List;")) };
     AppMethodBeat.o(57124);
   }
   
   public r(w paramw, b paramb, i parami)
   {
-    super(g.a.fzI(), paramb.fHf());
+    super(g.a.fSm(), paramb.fZJ());
     AppMethodBeat.i(57130);
-    this.Juw = paramw;
-    this.JrG = paramb;
-    this.Juu = parami.H((a)new a(this));
-    this.Juv = ((d.l.b.a.b.j.f.h)new g(parami.H((a)new b(this))));
+    this.LhP = paramw;
+    this.LeZ = paramb;
+    this.LhN = parami.O((a)new a(this));
+    this.LhO = ((d.l.b.a.b.j.f.h)new g(parami.O((a)new b(this))));
     AppMethodBeat.o(57130);
   }
   
@@ -64,7 +64,7 @@ public final class r
         AppMethodBeat.o(57127);
         return false;
       }
-      if ((d.g.b.k.g(this.JrG, paramObject.fzd())) && (d.g.b.k.g(this.Juw, paramObject.fze())))
+      if ((d.g.b.k.g(this.LeZ, paramObject.fRH())) && (d.g.b.k.g(this.LhP, paramObject.fRI())))
       {
         AppMethodBeat.o(57127);
         return true;
@@ -74,20 +74,20 @@ public final class r
     }
   }
   
-  public final d.l.b.a.b.j.f.h fyj()
+  public final d.l.b.a.b.j.f.h fQN()
   {
-    return this.Juv;
+    return this.LhO;
   }
   
-  public final b fzd()
+  public final b fRH()
   {
-    return this.JrG;
+    return this.LeZ;
   }
   
   public final List<ab> getFragments()
   {
     AppMethodBeat.i(57125);
-    List localList = (List)d.l.b.a.b.l.h.a(this.Juu, $$delegatedProperties[0]);
+    List localList = (List)d.l.b.a.b.l.h.a(this.LhN, $$delegatedProperties[0]);
     AppMethodBeat.o(57125);
     return localList;
   }
@@ -95,8 +95,8 @@ public final class r
   public final int hashCode()
   {
     AppMethodBeat.i(57128);
-    int i = this.Juw.hashCode();
-    int j = this.JrG.hashCode();
+    int i = this.LhP.hashCode();
+    int j = this.LeZ.hashCode();
     AppMethodBeat.o(57128);
     return i * 31 + j;
   }
@@ -131,7 +131,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.r
  * JD-Core Version:    0.7.0.1
  */

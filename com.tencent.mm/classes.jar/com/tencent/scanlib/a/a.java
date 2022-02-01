@@ -14,28 +14,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.stubs.logger.Log;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
 public class a
   implements f
 {
-  protected Point Iti = null;
-  protected float Itj = 1.0F;
-  protected int Itk = -1;
-  protected int Itl;
-  protected int Itm;
-  protected int Itn;
-  protected volatile boolean SE = false;
-  protected Camera fDV;
-  protected volatile boolean pPF = false;
-  protected Point pPG = null;
-  protected Point pPH = null;
-  protected boolean pPI;
-  protected int pPJ;
-  protected boolean pPK = false;
-  protected boolean tCn = false;
+  protected Point JUS = null;
+  protected float JUT = 1.0F;
+  protected int JUU = -1;
+  protected int JUV;
+  protected int JUW;
+  protected volatile boolean Tz = false;
+  protected Camera fHC;
+  protected int mMaxZoom;
+  protected volatile boolean qyn = false;
+  protected Point qyo = null;
+  protected Point qyp = null;
+  protected boolean qyq;
+  protected int qyr;
+  protected boolean qys = false;
+  protected boolean uKK = false;
   
   public static int A(List<Integer> paramList, int paramInt)
   {
@@ -78,7 +77,7 @@ public class a
   {
     AppMethodBeat.i(3520);
     Object localObject = new ArrayList(paramParameters.getSupportedPreviewSizes());
-    Collections.sort((List)localObject, new a((byte)0));
+    Collections.sort((List)localObject, new a.a((byte)0));
     ((List)localObject).remove(0);
     Point localPoint = null;
     float f3 = paramPoint.x / paramPoint.y;
@@ -98,10 +97,10 @@ public class a
       m = localSize.height;
       Log.i("BaseScanCamera", String.format("realWidth: %d, realHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) }));
       int i;
-      if (!this.pPI)
+      if (!this.qyq)
       {
         i = k;
-        if (this.pPI) {
+        if (this.qyq) {
           break label322;
         }
       }
@@ -146,13 +145,13 @@ public class a
     }
   }
   
-  private void fmG()
+  private void fCW()
   {
     AppMethodBeat.i(3530);
     try
     {
       Log.i("BaseScanCamera", "set scan focus");
-      List localList = this.fDV.getParameters().getSupportedFocusModes();
+      List localList = this.fHC.getParameters().getSupportedFocusModes();
       if (localList == null) {
         break label188;
       }
@@ -185,29 +184,29 @@ public class a
     AppMethodBeat.o(3530);
   }
   
-  private Point i(Point paramPoint)
+  private Point k(Point paramPoint)
   {
     AppMethodBeat.i(3515);
-    int j = (this.Iti.x - this.pPH.x) / 2;
-    int i = (this.Iti.y - this.pPH.y) / 2;
+    int j = (this.JUS.x - this.qyp.x) / 2;
+    int i = (this.JUS.y - this.qyp.y) / 2;
     Point localPoint1 = new Point(paramPoint.x + j, paramPoint.y + i);
-    if (this.pPI)
+    if (this.qyq)
     {
-      j = (this.Iti.y - this.pPH.x) / 2;
-      i = (this.Iti.x - this.pPH.y) / 2;
-      localPoint1 = new Point(paramPoint.y + i, this.pPH.x - paramPoint.x + j);
+      j = (this.JUS.y - this.qyp.x) / 2;
+      i = (this.JUS.x - this.qyp.y) / 2;
+      localPoint1 = new Point(paramPoint.y + i, this.qyp.x - paramPoint.x + j);
     }
     Log.d("BaseScanCamera", String.format("dx %d, dy %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
-    Point localPoint2 = new Point((int)(localPoint1.x / this.Itj), (int)(localPoint1.y / this.Itj));
+    Point localPoint2 = new Point((int)(localPoint1.x / this.JUT), (int)(localPoint1.y / this.JUT));
     Log.i("BaseScanCamera", "viewPoint " + paramPoint + ", previewPoint " + localPoint1 + ", scanPoint " + localPoint2);
     AppMethodBeat.o(3515);
     return localPoint2;
   }
   
-  private Point k(Point paramPoint)
+  private Point m(Point paramPoint)
   {
     AppMethodBeat.i(3518);
-    Camera.Parameters localParameters = this.fDV.getParameters();
+    Camera.Parameters localParameters = this.fHC.getParameters();
     Object localObject = localParameters.get("preview-size-values");
     if (localObject == null) {
       localObject = localParameters.get("preview-size-value");
@@ -229,30 +228,30 @@ public class a
     }
   }
   
-  private Point l(Point paramPoint)
+  private Point n(Point paramPoint)
   {
     AppMethodBeat.i(3519);
     float f2;
-    if (this.pPI) {
-      f2 = this.pPH.x * 1.0F / paramPoint.y;
+    if (this.qyq) {
+      f2 = this.qyp.x * 1.0F / paramPoint.y;
     }
-    for (float f1 = this.pPH.y * 1.0F / paramPoint.x;; f1 = this.pPH.y * 1.0F / paramPoint.y)
+    for (float f1 = this.qyp.y * 1.0F / paramPoint.x;; f1 = this.qyp.y * 1.0F / paramPoint.y)
     {
-      this.Itj = Math.max(f2, f1);
-      paramPoint = new Point((int)(paramPoint.x * this.Itj), (int)(paramPoint.y * this.Itj));
+      this.JUT = Math.max(f2, f1);
+      paramPoint = new Point((int)(paramPoint.x * this.JUT), (int)(paramPoint.y * this.JUT));
       AppMethodBeat.o(3519);
       return paramPoint;
-      f2 = this.pPH.x * 1.0F / paramPoint.x;
+      f2 = this.qyp.x * 1.0F / paramPoint.x;
     }
   }
   
   public final void a(Camera.PreviewCallback paramPreviewCallback)
   {
     AppMethodBeat.i(3512);
-    if (this.fDV != null) {
+    if (this.fHC != null) {
       try
       {
-        this.fDV.setOneShotPreviewCallback(paramPreviewCallback);
+        this.fHC.setOneShotPreviewCallback(paramPreviewCallback);
         AppMethodBeat.o(3512);
         return;
       }
@@ -264,10 +263,10 @@ public class a
     AppMethodBeat.o(3512);
   }
   
-  public final void abO(int paramInt)
+  public final void aeh(int paramInt)
   {
     AppMethodBeat.i(3513);
-    if (this.SE)
+    if (this.Tz)
     {
       Log.w("BaseScanCamera", "in open(), is open already");
       AppMethodBeat.o(3513);
@@ -290,7 +289,7 @@ public class a
       if (Build.MODEL.equals("M9")) {
         new e();
       }
-      for (localObject1 = e.fmI();; localObject1 = d.km(i, paramInt))
+      for (localObject1 = e.fCY();; localObject1 = d.kz(i, paramInt))
       {
         if (localObject1 != null) {
           break label199;
@@ -304,29 +303,29 @@ public class a
         new d();
       }
       label199:
-      this.tCn = false;
-      this.Itk = -1;
-      this.pPJ = ((g.a.a)localObject1).dwp;
-      if (((g.a.a)localObject1).dwp % 180 != 0) {}
+      this.uKK = false;
+      this.JUU = -1;
+      this.qyr = ((g.a.a)localObject1).duc;
+      if (((g.a.a)localObject1).duc % 180 != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.pPI = bool;
-        Log.d("BaseScanCamera", String.format("openCamera done, cameraId=[%s] costTime=[%s] rotation[%d]", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(this.pPJ) }));
-        this.fDV = ((g.a.a)localObject1).fDV;
-        if (this.fDV != null) {
+        this.qyq = bool;
+        Log.d("BaseScanCamera", String.format("openCamera done, cameraId=[%s] costTime=[%s] rotation[%d]", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(this.qyr) }));
+        this.fHC = ((g.a.a)localObject1).fHC;
+        if (this.fHC != null) {
           break;
         }
-        Log.e("BaseScanCamera", "in open(), camera == null, bNeedRotate " + this.pPI);
+        Log.e("BaseScanCamera", "in open(), camera == null, bNeedRotate " + this.qyq);
         AppMethodBeat.o(3513);
         return;
       }
-      this.SE = true;
-      localObject1 = this.fDV.getParameters();
+      this.Tz = true;
+      localObject1 = this.fHC.getParameters();
       for (;;)
       {
         try
         {
-          if (this.fDV != null)
+          if (this.fHC != null)
           {
             localObject2 = ((Camera.Parameters)localObject1).get("zoom-supported");
             if ((!com.tencent.scanlib.a.isNullOrNil((String)localObject2)) && (Boolean.parseBoolean((String)localObject2))) {
@@ -340,10 +339,10 @@ public class a
           Object localObject2;
           Log.e("BaseScanCamera", "init zoom exception! " + localException2.getMessage());
           continue;
-          if (((Integer)localException2.get(this.Itn)).intValue() <= 400) {
+          if (((Integer)localException2.get(this.mMaxZoom)).intValue() <= 400) {
             continue;
           }
-          this.Itn = A(localException2, 400);
+          this.mMaxZoom = A(localException2, 400);
           continue;
           paramInt = j;
           if (!localException2.contains(Integer.valueOf(842094169))) {
@@ -375,10 +374,10 @@ public class a
         }
         Log.i("BaseScanCamera", "Preview support NV21");
         ((Camera.Parameters)localObject1).setPreviewFormat(17);
-        this.fDV.setParameters((Camera.Parameters)localObject1);
+        this.fHC.setParameters((Camera.Parameters)localObject1);
         try
         {
-          fmG();
+          fCW();
           AppMethodBeat.o(3513);
           return;
         }
@@ -391,27 +390,27 @@ public class a
         localObject2 = ((Camera.Parameters)localObject1).getZoomRatios();
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
-          this.Itm = 0;
-          this.Itn = ((int)(((List)localObject2).size() / 1.5D));
-          Log.d("BaseScanCamera", String.format("divideRatio: %f,max zoom: %d", new Object[] { Double.valueOf(1.5D), Integer.valueOf(this.Itn) }));
-          if (this.Itn >= this.Itm) {
+          this.JUW = 0;
+          this.mMaxZoom = ((int)(((List)localObject2).size() / 1.5D));
+          Log.d("BaseScanCamera", String.format("divideRatio: %f,max zoom: %d", new Object[] { Double.valueOf(1.5D), Integer.valueOf(this.mMaxZoom) }));
+          if (this.mMaxZoom >= this.JUW) {
             continue;
           }
-          this.Itn = this.Itm;
-          Log.i("BaseScanCamera", String.format("default zoom:%d,default ratio:%d,max zoom:%d,max ratio:%d", new Object[] { Integer.valueOf(this.Itm), ((List)localObject2).get(this.Itm), Integer.valueOf(this.Itn), ((List)localObject2).get(this.Itn) }));
+          this.mMaxZoom = this.JUW;
+          Log.i("BaseScanCamera", String.format("default zoom:%d,default ratio:%d,max zoom:%d,max ratio:%d", new Object[] { Integer.valueOf(this.JUW), ((List)localObject2).get(this.JUW), Integer.valueOf(this.mMaxZoom), ((List)localObject2).get(this.mMaxZoom) }));
         }
       }
       i = 0;
     }
   }
   
-  public final void abP(int paramInt)
+  public final void aei(int paramInt)
   {
     AppMethodBeat.i(3522);
-    if ((this.fDV != null) && (this.pPF) && (paramInt > 0)) {
+    if ((this.fHC != null) && (this.qyn) && (paramInt > 0)) {
       try
       {
-        Camera.Parameters localParameters = this.fDV.getParameters();
+        Camera.Parameters localParameters = this.fHC.getParameters();
         List localList = localParameters.getZoomRatios();
         int i;
         if (localList != null)
@@ -425,28 +424,28 @@ public class a
           return;
         }
         Log.d("BaseScanCamera", String.format("zoom to ratio:%d", new Object[] { Integer.valueOf(paramInt) }));
-        if ((paramInt >= ((Integer)localList.get(this.Itm)).intValue()) && (paramInt <= ((Integer)localList.get(this.Itn)).intValue())) {
+        if ((paramInt >= ((Integer)localList.get(this.JUW)).intValue()) && (paramInt <= ((Integer)localList.get(this.mMaxZoom)).intValue())) {
           paramInt = A(localList, paramInt);
         }
         for (;;)
         {
           Log.i("BaseScanCamera", String.format("zoom:%d,ratio:%d", new Object[] { Integer.valueOf(paramInt), localList.get(paramInt) }));
-          this.Itl = paramInt;
+          this.JUV = paramInt;
           localParameters.setZoom(paramInt);
-          this.fDV.setParameters(localParameters);
+          this.fHC.setParameters(localParameters);
           AppMethodBeat.o(3522);
           return;
-          if (paramInt < ((Integer)localList.get(this.Itm)).intValue())
+          if (paramInt < ((Integer)localList.get(this.JUW)).intValue())
           {
-            paramInt = this.Itm;
+            paramInt = this.JUW;
           }
           else
           {
             Log.i("BaseScanCamera", "exceed max zoom");
-            i = this.Itl + (this.Itn - this.Itl) / 5;
+            i = this.JUV + (this.mMaxZoom - this.JUV) / 5;
             paramInt = i;
-            if (i > this.Itn) {
-              paramInt = this.Itn;
+            if (i > this.mMaxZoom) {
+              paramInt = this.mMaxZoom;
             }
           }
         }
@@ -459,16 +458,16 @@ public class a
     }
   }
   
-  public final void abQ(int paramInt)
+  public final void aej(int paramInt)
   {
     AppMethodBeat.i(3523);
-    if ((this.fDV != null) && (this.pPF)) {}
+    if ((this.fHC != null) && (this.qyn)) {}
     for (;;)
     {
       int i;
       try
       {
-        Camera.Parameters localParameters = this.fDV.getParameters();
+        Camera.Parameters localParameters = this.fHC.getParameters();
         List localList = localParameters.getZoomRatios();
         if (localList != null)
         {
@@ -484,8 +483,8 @@ public class a
         switch (paramInt)
         {
         case 0: 
-          localParameters.setZoom(this.Itl);
-          this.fDV.setParameters(localParameters);
+          localParameters.setZoom(this.JUV);
+          this.fHC.setParameters(localParameters);
           Log.i("BaseScanCamera", String.format("zoom action:%d,afterZoom:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localParameters.getZoom()) }));
           AppMethodBeat.o(3523);
           return;
@@ -495,36 +494,36 @@ public class a
       {
         Log.e("BaseScanCamera", "zoom action exception:" + localException.getMessage());
       }
-      this.Itl = 0;
+      this.JUV = 0;
       continue;
       AppMethodBeat.o(3523);
       return;
-      this.Itl = this.Itm;
+      this.JUV = this.JUW;
       continue;
-      if (this.Itl < this.Itn)
+      if (this.JUV < this.mMaxZoom)
       {
-        this.Itl += 1;
-        if (this.Itl > this.Itn) {}
-        for (i = this.Itn;; i = this.Itl)
+        this.JUV += 1;
+        if (this.JUV > this.mMaxZoom) {}
+        for (i = this.mMaxZoom;; i = this.JUV)
         {
-          this.Itl = i;
+          this.JUV = i;
           break;
         }
-        if (this.Itl > this.Itm)
+        if (this.JUV > this.JUW)
         {
-          this.Itl -= 1;
-          if (this.Itl < this.Itm) {}
-          for (i = this.Itm;; i = this.Itl)
+          this.JUV -= 1;
+          if (this.JUV < this.JUW) {}
+          for (i = this.JUW;; i = this.JUV)
           {
-            this.Itl = i;
+            this.JUV = i;
             break;
           }
-          this.Itl = this.Itn;
+          this.JUV = this.mMaxZoom;
           continue;
-          if (this.Itl != this.Itm) {
-            this.Itl = this.Itm;
+          if (this.JUV != this.JUW) {
+            this.JUV = this.JUW;
           } else {
-            this.Itl = this.Itn;
+            this.JUV = this.mMaxZoom;
           }
         }
       }
@@ -534,10 +533,10 @@ public class a
   public final void autoFocus(Camera.AutoFocusCallback paramAutoFocusCallback)
   {
     AppMethodBeat.i(3525);
-    if ((this.fDV != null) && (this.pPF)) {
+    if ((this.fHC != null) && (this.qyn)) {
       try
       {
-        this.fDV.autoFocus(paramAutoFocusCallback);
+        this.fHC.autoFocus(paramAutoFocusCallback);
         AppMethodBeat.o(3525);
         return;
       }
@@ -549,9 +548,9 @@ public class a
     AppMethodBeat.o(3525);
   }
   
-  public final boolean cPP()
+  public final boolean cDz()
   {
-    return this.pPF;
+    return this.qyn;
   }
   
   public final void cancelAutoFocus()
@@ -559,8 +558,8 @@ public class a
     AppMethodBeat.i(3526);
     try
     {
-      if (this.fDV != null) {
-        this.fDV.cancelAutoFocus();
+      if (this.fHC != null) {
+        this.fHC.cancelAutoFocus();
       }
       AppMethodBeat.o(3526);
       return;
@@ -575,28 +574,28 @@ public class a
   public final void close()
   {
     AppMethodBeat.i(3514);
-    Log.i("BaseScanCamera", "close(), previewing " + this.pPF);
-    if (this.fDV != null)
+    Log.i("BaseScanCamera", "close(), previewing " + this.qyn);
+    if (this.fHC != null)
     {
-      this.SE = false;
+      this.Tz = false;
       long l = System.currentTimeMillis();
-      this.fDV.setPreviewCallback(null);
-      this.fDV.stopPreview();
-      this.pPF = false;
+      this.fHC.setPreviewCallback(null);
+      this.fHC.stopPreview();
+      this.qyn = false;
       Log.i("BaseScanCamera", "stopPreview costTime " + (System.currentTimeMillis() - l));
       l = System.currentTimeMillis();
-      this.fDV.release();
-      this.fDV = null;
+      this.fHC.release();
+      this.fHC = null;
       Log.i("BaseScanCamera", "camera.close() costTime " + (System.currentTimeMillis() - l));
     }
-    this.tCn = false;
-    this.pPK = false;
-    this.Itk = -1;
-    this.pPI = false;
+    this.uKK = false;
+    this.qys = false;
+    this.JUU = -1;
+    this.qyq = false;
     AppMethodBeat.o(3514);
   }
   
-  public final boolean dms()
+  public final boolean dAy()
   {
     AppMethodBeat.i(3527);
     boolean bool = "auto".equals(getFocusMode());
@@ -604,32 +603,32 @@ public class a
     return bool;
   }
   
-  public final boolean fmB()
+  public final boolean fCR()
   {
-    return this.pPI;
+    return this.qyq;
   }
   
-  public final Point fmC()
+  public final Point fCS()
   {
-    return this.pPG;
+    return this.qyo;
   }
   
-  public final Point fmD()
+  public final Point fCT()
   {
-    return this.Iti;
+    return this.JUS;
   }
   
-  public final float fmE()
+  public final float fCU()
   {
-    return this.Itj;
+    return this.JUT;
   }
   
-  public final int fmF()
+  public final int fCV()
   {
     AppMethodBeat.i(3524);
-    if ((this.fDV != null) && (this.fDV.getParameters() != null) && (this.fDV.getParameters().getZoomRatios() != null) && (this.fDV.getParameters().getZoomRatios().size() > 0))
+    if ((this.fHC != null) && (this.fHC.getParameters() != null) && (this.fHC.getParameters().getZoomRatios() != null) && (this.fHC.getParameters().getZoomRatios().size() > 0))
     {
-      int i = ((Integer)this.fDV.getParameters().getZoomRatios().get(this.Itl)).intValue();
+      int i = ((Integer)this.fHC.getParameters().getZoomRatios().get(this.JUV)).intValue();
       AppMethodBeat.o(3524);
       return i;
     }
@@ -639,7 +638,7 @@ public class a
   
   public final int getCameraRotation()
   {
-    return this.pPJ;
+    return this.qyr;
   }
   
   public final String getFocusMode()
@@ -647,9 +646,9 @@ public class a
     AppMethodBeat.i(3528);
     try
     {
-      if (this.fDV != null)
+      if (this.fHC != null)
       {
-        String str = this.fDV.getParameters().getFocusMode();
+        String str = this.fHC.getParameters().getFocusMode();
         AppMethodBeat.o(3528);
         return str;
       }
@@ -664,18 +663,18 @@ public class a
   
   public final boolean isOpen()
   {
-    return this.SE;
+    return this.Tz;
   }
   
-  public final void j(Point paramPoint)
+  public final void l(Point paramPoint)
   {
     AppMethodBeat.i(3517);
-    this.pPH = new Point(paramPoint);
-    Log.d("BaseScanCamera", "set visible resolution: " + this.pPH);
+    this.qyp = new Point(paramPoint);
+    Log.d("BaseScanCamera", "set visible resolution: " + this.qyp);
     try
     {
-      this.pPG = k(this.pPH);
-      this.Iti = l(this.pPG);
+      this.qyo = m(this.qyp);
+      this.JUS = n(this.qyo);
       AppMethodBeat.o(3517);
       return;
     }
@@ -690,24 +689,51 @@ public class a
   {
     AppMethodBeat.i(3510);
     long l = System.currentTimeMillis();
-    if ((this.fDV != null) && (!this.pPF))
+    if ((this.fHC != null) && (!this.qyn))
     {
       if (paramSurfaceTexture != null) {
-        this.fDV.setPreviewTexture(paramSurfaceTexture);
+        this.fHC.setPreviewTexture(paramSurfaceTexture);
       }
-      if (this.pPG == null)
+      if (this.qyo == null)
       {
-        this.pPG = k(this.pPH);
-        this.Iti = l(this.pPG);
+        this.qyo = m(this.qyp);
+        this.JUS = n(this.qyo);
       }
-      paramSurfaceTexture = this.fDV.getParameters();
-      paramSurfaceTexture.setPreviewSize(this.pPG.x, this.pPG.y);
-      this.fDV.setParameters(paramSurfaceTexture);
-      this.fDV.startPreview();
-      this.pPF = true;
+      paramSurfaceTexture = this.fHC.getParameters();
+      paramSurfaceTexture.setPreviewSize(this.qyo.x, this.qyo.y);
+      this.fHC.setParameters(paramSurfaceTexture);
+      this.fHC.startPreview();
+      this.qyn = true;
       Log.d("BaseScanCamera", String.format("startPreview done costTime=[%s]", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) }));
     }
     AppMethodBeat.o(3510);
+  }
+  
+  public final Rect s(Rect paramRect)
+  {
+    AppMethodBeat.i(3516);
+    Rect localRect = new Rect();
+    Log.i("BaseScanCamera", String.format("visibleResolution:%s, previewResolution:%s", new Object[] { this.qyp, this.JUS }));
+    Point localPoint2;
+    if (this.qyq)
+    {
+      localPoint1 = new Point(paramRect.right, paramRect.top);
+      localPoint2 = k(localPoint1);
+      if (!this.qyq) {
+        break label174;
+      }
+    }
+    label174:
+    for (Point localPoint1 = new Point(paramRect.left, paramRect.bottom);; localPoint1 = new Point(paramRect.right, paramRect.bottom))
+    {
+      localPoint1 = k(localPoint1);
+      localRect.set(localPoint2.x, localPoint2.y, localPoint1.x, localPoint1.y);
+      Log.i("BaseScanCamera", String.format("uiRect %s, scanRect %s", new Object[] { paramRect, localRect }));
+      AppMethodBeat.o(3516);
+      return localRect;
+      localPoint1 = new Point(paramRect.left, paramRect.top);
+      break;
+    }
   }
   
   public final void setFocusMode(String paramString)
@@ -715,14 +741,14 @@ public class a
     AppMethodBeat.i(3529);
     try
     {
-      if (this.fDV != null)
+      if (this.fHC != null)
       {
-        Camera.Parameters localParameters = this.fDV.getParameters();
+        Camera.Parameters localParameters = this.fHC.getParameters();
         List localList = localParameters.getSupportedFocusModes();
         if ((localList != null) && (localList.contains(paramString)))
         {
           localParameters.setFocusMode(paramString);
-          this.fDV.setParameters(localParameters);
+          this.fHC.setParameters(localParameters);
         }
       }
       AppMethodBeat.o(3529);
@@ -738,48 +764,17 @@ public class a
   public final void stopPreview()
   {
     AppMethodBeat.i(3511);
-    if (this.fDV != null)
+    if (this.fHC != null)
     {
-      this.fDV.stopPreview();
-      this.pPF = false;
+      this.fHC.stopPreview();
+      this.qyn = false;
     }
     AppMethodBeat.o(3511);
   }
-  
-  public final Rect t(Rect paramRect)
-  {
-    AppMethodBeat.i(3516);
-    Rect localRect = new Rect();
-    Log.i("BaseScanCamera", String.format("visibleResolution:%s, previewResolution:%s", new Object[] { this.pPH, this.Iti }));
-    Point localPoint2;
-    if (this.pPI)
-    {
-      localPoint1 = new Point(paramRect.right, paramRect.top);
-      localPoint2 = i(localPoint1);
-      if (!this.pPI) {
-        break label174;
-      }
-    }
-    label174:
-    for (Point localPoint1 = new Point(paramRect.left, paramRect.bottom);; localPoint1 = new Point(paramRect.right, paramRect.bottom))
-    {
-      localPoint1 = i(localPoint1);
-      localRect.set(localPoint2.x, localPoint2.y, localPoint1.x, localPoint1.y);
-      Log.i("BaseScanCamera", String.format("uiRect %s, scanRect %s", new Object[] { paramRect, localRect }));
-      AppMethodBeat.o(3516);
-      return localRect;
-      localPoint1 = new Point(paramRect.left, paramRect.top);
-      break;
-    }
-  }
-  
-  static final class a
-    implements Comparator<Camera.Size>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.scanlib.a.a
  * JD-Core Version:    0.7.0.1
  */

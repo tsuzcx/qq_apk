@@ -19,102 +19,102 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.a;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.dur;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ba;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
 {
-  String gOh;
-  TextView icz;
-  MMActivity imP;
-  private ba iwa;
-  String sEA;
-  String sEB;
-  String sEC;
-  LinkedList<dpa> sED;
-  long sEE;
-  boolean sEF;
-  private Runnable sEG;
-  private ap sEH;
-  boolean sEI;
-  private TextWatcher sEJ;
-  String sEK;
-  a sEq;
-  private DialPad sEr;
-  TextView sEs;
-  EditText sEt;
-  View sEu;
-  private ImageButton sEv;
-  View sEw;
-  TextView sEx;
-  TextView sEy;
-  String sEz;
+  TextView gIk;
+  String hoH;
+  MMActivity iMV;
+  private az iWe;
+  a tLX;
+  private DialPad tLY;
+  TextView tLZ;
+  EditText tMa;
+  View tMb;
+  private ImageButton tMc;
+  View tMd;
+  TextView tMe;
+  TextView tMf;
+  String tMg;
+  String tMh;
+  String tMi;
+  String tMj;
+  LinkedList<dur> tMk;
+  long tMl;
+  boolean tMm;
+  private Runnable tMn;
+  private ao tMo;
+  boolean tMp;
+  private TextWatcher tMq;
+  String tMr;
   
   public b(MMActivity paramMMActivity, EditText paramEditText, TextView paramTextView1, View paramView1, DialPad paramDialPad, ImageButton paramImageButton, TextView paramTextView2, View paramView2, TextView paramTextView3, TextView paramTextView4)
   {
     AppMethodBeat.i(25597);
-    this.sEB = "";
-    this.sEE = 0L;
-    this.sEF = false;
-    this.sEG = new Runnable()
+    this.tMi = "";
+    this.tMl = 0L;
+    this.tMm = false;
+    this.tMn = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25586);
-        if (System.currentTimeMillis() - b.this.sEE >= 500L)
+        if (System.currentTimeMillis() - b.this.tMl >= 500L)
         {
-          b.this.sEC = a.aH(b.this.imP, b.this.sEA + b.this.sEB);
-          aq.f(new Runnable()
+          b.this.tMj = a.aI(b.this.iMV, b.this.tMh + b.this.tMi);
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(25584);
-              if ((this.sEM != null) && (this.sEM.systemRowid != -1L))
+              if ((this.tMt != null) && (this.tMt.systemRowid != -1L))
               {
-                b.this.icz.setText(this.sEM.field_systemAddressBookUsername);
+                b.this.gIk.setText(this.tMt.field_systemAddressBookUsername);
                 AppMethodBeat.o(25584);
                 return;
               }
-              b.this.icz.setText("");
+              b.this.gIk.setText("");
               AppMethodBeat.o(25584);
             }
           });
           AppMethodBeat.o(25586);
           return;
         }
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(25585);
-            b.this.icz.setText("");
-            b.this.sEC = null;
-            b.this.gOh = null;
+            b.this.gIk.setText("");
+            b.this.tMj = null;
+            b.this.hoH = null;
             AppMethodBeat.o(25585);
           }
         });
         AppMethodBeat.o(25586);
       }
     };
-    this.sEH = new ap("IPCallDialQueryPhoneNumber");
-    this.sEI = false;
-    this.sEJ = new TextWatcher()
+    this.tMo = new ao("IPCallDialQueryPhoneNumber");
+    this.tMp = false;
+    this.tMq = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(25588);
-        paramAnonymousEditable = b.this.sEs.getText().toString().replace("+", "");
+        paramAnonymousEditable = b.this.tLZ.getText().toString().replace("+", "");
         if ((paramAnonymousEditable.startsWith("0")) || (paramAnonymousEditable.startsWith("*")) || (paramAnonymousEditable.startsWith("#")))
         {
-          b.this.sEs.setText("+");
-          b.this.sEA = "+";
+          b.this.tLZ.setText("+");
+          b.this.tMh = "+";
         }
         AppMethodBeat.o(25588);
       }
@@ -124,343 +124,343 @@ public final class b
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(25587);
-        if (b.this.sEw.getLayoutParams() != null)
+        if (b.this.tMd.getLayoutParams() != null)
         {
-          paramAnonymousCharSequence = b.this.sEs.getPaint();
-          if ("+".equals(b.this.sEs.getText().toString()))
+          paramAnonymousCharSequence = b.this.tLZ.getPaint();
+          if ("+".equals(b.this.tLZ.getText().toString()))
           {
-            paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.sEs.getText().toString());
-            b.this.sEu.setVisibility(8);
-            b.this.sEx.setVisibility(8);
-            paramAnonymousCharSequence = (RelativeLayout.LayoutParams)b.this.sEw.getLayoutParams();
+            paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.tLZ.getText().toString());
+            b.this.tMb.setVisibility(8);
+            b.this.tMe.setVisibility(8);
+            paramAnonymousCharSequence = (RelativeLayout.LayoutParams)b.this.tMd.getLayoutParams();
             paramAnonymousCharSequence.width = paramAnonymousInt1;
-            b.this.sEw.setLayoutParams(paramAnonymousCharSequence);
+            b.this.tMd.setLayoutParams(paramAnonymousCharSequence);
           }
         }
         else
         {
-          paramAnonymousCharSequence = b.this.sEs.getText().toString().replace("+", "");
-          if (!a.aex(paramAnonymousCharSequence)) {
+          paramAnonymousCharSequence = b.this.tLZ.getText().toString().replace("+", "");
+          if (!a.ajp(paramAnonymousCharSequence)) {
             break label364;
           }
-          b.this.sEx.setText(a.aeu(paramAnonymousCharSequence));
-          if ((b.this.sED == null) || (b.this.sED.size() <= 0)) {
+          b.this.tMe.setText(a.ajm(paramAnonymousCharSequence));
+          if ((b.this.tMk == null) || (b.this.tMk.size() <= 0)) {
             break label386;
           }
-          String str = a.aev(paramAnonymousCharSequence);
-          Iterator localIterator = b.this.sED.iterator();
+          String str = a.ajn(paramAnonymousCharSequence);
+          Iterator localIterator = b.this.tMk.iterator();
           while (localIterator.hasNext())
           {
-            dpa localdpa = (dpa)localIterator.next();
-            if ((localdpa != null) && (localdpa.ijV.equals(str)))
+            dur localdur = (dur)localIterator.next();
+            if ((localdur != null) && (localdur.iKc.equals(str)))
             {
               paramAnonymousInt1 = 1;
               label255:
               if (paramAnonymousInt1 == 0) {
                 break label391;
               }
-              b.this.sEy.setVisibility(0);
+              b.this.tMf.setVisibility(0);
             }
           }
         }
         for (;;)
         {
-          if (b.this.sEq != null) {
-            b.this.sEq.aee(paramAnonymousCharSequence);
+          if (b.this.tLX != null) {
+            b.this.tLX.aiW(paramAnonymousCharSequence);
           }
           AppMethodBeat.o(25587);
           return;
-          paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.sEs.getText() + "+");
-          b.this.sEu.setVisibility(0);
-          b.this.sEx.setVisibility(0);
+          paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.tLZ.getText() + "+");
+          b.this.tMb.setVisibility(0);
+          b.this.tMe.setVisibility(0);
           break;
           paramAnonymousInt1 = 0;
           break label255;
           label364:
-          b.this.sEx.setText(b.this.imP.getString(2131760439));
+          b.this.tMe.setText(b.this.iMV.getString(2131760439));
           label386:
           paramAnonymousInt1 = 0;
           break label255;
           label391:
-          b.this.sEy.setVisibility(8);
+          b.this.tMf.setVisibility(8);
         }
       }
     };
-    this.sEK = "";
-    this.imP = paramMMActivity;
-    this.sEt = paramEditText;
-    this.sEs = paramTextView1;
-    this.sEu = paramView1;
-    this.sEr = paramDialPad;
-    this.sEv = paramImageButton;
-    this.icz = paramTextView2;
-    this.sEw = paramView2;
-    this.sEx = paramTextView3;
-    this.sEy = paramTextView4;
-    this.iwa = new ba();
-    this.sEA = com.tencent.mm.plugin.ipcall.a.c.cIJ();
-    paramMMActivity = aj.getContext().getSharedPreferences("IPCall_LastInputPref", 0).getString("IPCall_LastInputCountryName", "");
-    if (!bt.isNullOrNil(paramMMActivity)) {}
+    this.tMr = "";
+    this.iMV = paramMMActivity;
+    this.tMa = paramEditText;
+    this.tLZ = paramTextView1;
+    this.tMb = paramView1;
+    this.tLY = paramDialPad;
+    this.tMc = paramImageButton;
+    this.gIk = paramTextView2;
+    this.tMd = paramView2;
+    this.tMe = paramTextView3;
+    this.tMf = paramTextView4;
+    this.iWe = new az();
+    this.tMh = com.tencent.mm.plugin.ipcall.a.c.cVU();
+    paramMMActivity = ai.getContext().getSharedPreferences("IPCall_LastInputPref", 0).getString("IPCall_LastInputCountryName", "");
+    if (!bs.isNullOrNil(paramMMActivity)) {}
     for (;;)
     {
-      this.sEz = paramMMActivity;
-      this.sEs.addTextChangedListener(this.sEJ);
-      this.sEs.setText("+" + this.sEA);
-      this.sEr.setDialButtonClickListener(new DialPad.a()
+      this.tMg = paramMMActivity;
+      this.tLZ.addTextChangedListener(this.tMq);
+      this.tLZ.setText("+" + this.tMh);
+      this.tLY.setDialButtonClickListener(new DialPad.a()
       {
-        public final void aeb(String paramAnonymousString)
+        public final void aiT(String paramAnonymousString)
         {
           AppMethodBeat.i(25589);
-          b.this.sEB = b.this.sEt.getText().toString();
-          if (b.this.sEF)
+          b.this.tMi = b.this.tMa.getText().toString();
+          if (b.this.tMm)
           {
-            b.this.sEA += paramAnonymousString;
-            b.this.sEs.setText(b.this.sEA);
-            if ((a.aex(b.this.sEA.replace("+", ""))) || (b.this.sEA.replace("+", "").length() >= 4))
+            b.this.tMh += paramAnonymousString;
+            b.this.tLZ.setText(b.this.tMh);
+            if ((a.ajp(b.this.tMh.replace("+", ""))) || (b.this.tMh.replace("+", "").length() >= 4))
             {
-              h.vKh.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
-              b.this.sEF = false;
-              b.this.sEz = a.aeu(b.this.sEA.replace("+", ""));
-              b.this.sEB = b.gU(b.this.sEA.replace("+", ""), b.this.sEB);
-              b.this.dA(b.this.sEB, -1);
+              h.wUl.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+              b.this.tMm = false;
+              b.this.tMg = a.ajm(b.this.tMh.replace("+", ""));
+              b.this.tMi = b.hl(b.this.tMh.replace("+", ""), b.this.tMi);
+              b.this.dG(b.this.tMi, -1);
               AppMethodBeat.o(25589);
             }
           }
           else
           {
-            String str = b.this.sEs.getText().toString().replace("+", "");
-            if (!b.this.sEI) {
+            String str = b.this.tLZ.getText().toString().replace("+", "");
+            if (!b.this.tMp) {
               break label726;
             }
-            StringBuffer localStringBuffer = new StringBuffer(b.this.sEB);
-            localStringBuffer.insert(b.this.sEt.getSelectionStart(), paramAnonymousString);
-            b.this.sEB = localStringBuffer.toString();
-            if (b.this.sEB.equals("00"))
+            StringBuffer localStringBuffer = new StringBuffer(b.this.tMi);
+            localStringBuffer.insert(b.this.tMa.getSelectionStart(), paramAnonymousString);
+            b.this.tMi = localStringBuffer.toString();
+            if (b.this.tMi.equals("00"))
             {
-              b.this.sEs.setText("+");
-              b.this.sEF = true;
-              b.this.sEA = "+";
-              b.this.sEB = "";
+              b.this.tLZ.setText("+");
+              b.this.tMm = true;
+              b.this.tMh = "+";
+              b.this.tMi = "";
             }
-            if (a.aex(b.this.sEA.replace("+", "") + b.this.sEB))
+            if (a.ajp(b.this.tMh.replace("+", "") + b.this.tMi))
             {
-              b.this.sEs.setText("+" + b.this.sEA.replace("+", "") + b.this.sEB);
-              b.this.sEz = a.aeu(b.this.sEA.replace("+", ""));
-              b.this.sEF = false;
-              b.this.sEA = (b.this.sEA.replace("+", "") + b.this.sEB);
-              b.this.sEB = "";
+              b.this.tLZ.setText("+" + b.this.tMh.replace("+", "") + b.this.tMi);
+              b.this.tMg = a.ajm(b.this.tMh.replace("+", ""));
+              b.this.tMm = false;
+              b.this.tMh = (b.this.tMh.replace("+", "") + b.this.tMi);
+              b.this.tMi = "";
             }
-            paramAnonymousString = b.this.sEB;
-            b.this.sEB = b.gU(str, b.this.sEB);
-            if (!b.this.sEI) {
+            paramAnonymousString = b.this.tMi;
+            b.this.tMi = b.hl(str, b.this.tMi);
+            if (!b.this.tMp) {
               break label868;
             }
-            if (paramAnonymousString.length() >= b.this.sEB.length()) {
+            if (paramAnonymousString.length() >= b.this.tMi.length()) {
               break label760;
             }
-            b.this.dA(b.this.sEB, b.this.sEt.getSelectionEnd() + 2);
+            b.this.dG(b.this.tMi, b.this.tMa.getSelectionEnd() + 2);
           }
           label726:
           label868:
           for (;;)
           {
-            b.this.sEE = System.currentTimeMillis();
-            if ((b.this.sEB.length() > a.sLq) && (!bt.isNullOrNil(b.this.sEA + b.this.sEB))) {
-              b.this.cHV();
+            b.this.tMl = System.currentTimeMillis();
+            if ((b.this.tMi.length() > a.tSV) && (!bs.isNullOrNil(b.this.tMh + b.this.tMi))) {
+              b.this.cVg();
             }
             AppMethodBeat.o(25589);
             return;
-            b.this.sEB += paramAnonymousString;
+            b.this.tMi += paramAnonymousString;
             break;
             label760:
-            if (paramAnonymousString.length() == b.this.sEB.length())
+            if (paramAnonymousString.length() == b.this.tMi.length())
             {
-              b.this.dA(b.this.sEB, b.this.sEt.getSelectionEnd() + 1);
+              b.this.dG(b.this.tMi, b.this.tMa.getSelectionEnd() + 1);
             }
-            else if (paramAnonymousString.length() > b.this.sEB.length())
+            else if (paramAnonymousString.length() > b.this.tMi.length())
             {
-              b.this.dA(b.this.sEB, b.this.sEt.getSelectionEnd() + 1 - (paramAnonymousString.length() - b.this.sEB.length()));
+              b.this.dG(b.this.tMi, b.this.tMa.getSelectionEnd() + 1 - (paramAnonymousString.length() - b.this.tMi.length()));
               continue;
-              b.this.dA(b.this.sEB, -1);
+              b.this.dG(b.this.tMi, -1);
             }
           }
         }
         
-        public final void aec(String paramAnonymousString)
+        public final void aiU(String paramAnonymousString)
         {
           AppMethodBeat.i(25590);
           if (paramAnonymousString.equals("0"))
           {
-            b.this.sEs.setText("+");
-            b.this.sEF = true;
-            b.this.sEA = "+";
+            b.this.tLZ.setText("+");
+            b.this.tMm = true;
+            b.this.tMh = "+";
           }
           AppMethodBeat.o(25590);
         }
       });
-      this.sEu.setOnClickListener(new View.OnClickListener()
+      this.tMb.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25591);
-          paramAnonymousView = b.this.sEt.getText().toString();
-          if (bt.isNullOrNil(paramAnonymousView))
+          paramAnonymousView = b.this.tMa.getText().toString();
+          if (bs.isNullOrNil(paramAnonymousView))
           {
-            paramAnonymousView = b.this.sEs.getText().toString();
-            if (!bt.isNullOrNil(paramAnonymousView))
+            paramAnonymousView = b.this.tLZ.getText().toString();
+            if (!bs.isNullOrNil(paramAnonymousView))
             {
               paramAnonymousView = paramAnonymousView.substring(0, paramAnonymousView.length() - 1);
-              if ((!bt.isNullOrNil(paramAnonymousView)) && (!paramAnonymousView.equals("+")))
+              if ((!bs.isNullOrNil(paramAnonymousView)) && (!paramAnonymousView.equals("+")))
               {
-                b.this.sEs.setText(paramAnonymousView);
-                b.this.sEA = paramAnonymousView;
+                b.this.tLZ.setText(paramAnonymousView);
+                b.this.tMh = paramAnonymousView;
                 AppMethodBeat.o(25591);
                 return;
               }
-              b.this.sEs.setText("+");
-              b.this.sEA = "+";
-              b.this.sEF = true;
+              b.this.tLZ.setText("+");
+              b.this.tMh = "+";
+              b.this.tMm = true;
             }
             AppMethodBeat.o(25591);
             return;
           }
-          int i = b.this.sEt.getSelectionStart();
+          int i = b.this.tMa.getSelectionStart();
           String str;
-          if ((b.this.sEI) && (i - 1 >= 0))
+          if ((b.this.tMp) && (i - 1 >= 0))
           {
-            paramAnonymousView = b.this.sEt.getText();
+            paramAnonymousView = b.this.tMa.getText();
             paramAnonymousView.delete(i - 1, i);
             paramAnonymousView = paramAnonymousView.toString();
-            if (bt.isNullOrNil(paramAnonymousView)) {
+            if (bs.isNullOrNil(paramAnonymousView)) {
               break label368;
             }
-            str = b.this.sEs.getText().toString().replace("+", "");
-            if (!b.this.sEI) {
+            str = b.this.tLZ.getText().toString().replace("+", "");
+            if (!b.this.tMp) {
               break label337;
             }
-            b.this.sEB = b.gU(str, paramAnonymousView);
-            int j = b.this.sEB.length();
+            b.this.tMi = b.hl(str, paramAnonymousView);
+            int j = b.this.tMi.length();
             int k = paramAnonymousView.length();
-            b.this.dA(b.this.sEB, j - k + (i - 1));
+            b.this.dG(b.this.tMi, j - k + (i - 1));
             label287:
-            b.this.cHV();
+            b.this.cVg();
           }
           for (;;)
           {
-            b.this.sEC = "";
-            b.this.icz.setText("");
+            b.this.tMj = "";
+            b.this.gIk.setText("");
             AppMethodBeat.o(25591);
             return;
             paramAnonymousView = paramAnonymousView.substring(0, paramAnonymousView.length() - 1);
             break;
             label337:
-            b.this.sEB = b.gU(str, paramAnonymousView);
-            b.this.dA(b.this.sEB, -1);
+            b.this.tMi = b.hl(str, paramAnonymousView);
+            b.this.dG(b.this.tMi, -1);
             break label287;
             label368:
-            b.this.sEB = "";
-            b.this.dA("", -1);
+            b.this.tMi = "";
+            b.this.dG("", -1);
           }
         }
       });
-      this.sEu.setOnLongClickListener(new View.OnLongClickListener()
+      this.tMb.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25592);
-          if (b.this.sEF)
+          if (b.this.tMm)
           {
-            b.this.sEA = "+";
-            b.this.sEs.setText(b.this.sEA);
+            b.this.tMh = "+";
+            b.this.tLZ.setText(b.this.tMh);
           }
           for (;;)
           {
             AppMethodBeat.o(25592);
             return true;
-            b.this.icz.setText("");
-            b.this.sEB = "";
-            b.this.dA("", -1);
+            b.this.gIk.setText("");
+            b.this.tMi = "";
+            b.this.dG("", -1);
           }
         }
       });
-      this.sEs.setOnClickListener(new View.OnClickListener()
+      this.tLZ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25593);
-          h.vKh.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
-          paramAnonymousView = b.this.sEs.getText().toString().replace("+", "");
-          Intent localIntent = new Intent(b.this.imP, IPCallCountryCodeSelectUI.class);
+          h.wUl.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+          paramAnonymousView = b.this.tLZ.getText().toString().replace("+", "");
+          Intent localIntent = new Intent(b.this.iMV, IPCallCountryCodeSelectUI.class);
           localIntent.putExtra("couttry_code", paramAnonymousView);
           localIntent.putExtra("CountryCodeUI_isShowCountryCode", true);
-          b.this.imP.startActivityForResult(localIntent, 100);
-          b.this.imP.overridePendingTransition(2130772108, -1);
+          b.this.iMV.startActivityForResult(localIntent, 100);
+          b.this.iMV.overridePendingTransition(2130772108, -1);
           AppMethodBeat.o(25593);
         }
       });
-      this.sEv.setOnClickListener(new View.OnClickListener()
+      this.tMc.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25594);
           b localb = b.this;
-          localb.sEA = localb.sEs.getText().toString();
-          localb.sEB = localb.sEt.getText().toString();
-          if ((!bt.isNullOrNil(localb.sEA)) && (!bt.isNullOrNil(localb.sEB)))
+          localb.tMh = localb.tLZ.getText().toString();
+          localb.tMi = localb.tMa.getText().toString();
+          if ((!bs.isNullOrNil(localb.tMh)) && (!bs.isNullOrNil(localb.tMi)))
           {
-            localb.sEA = localb.sEs.getText().toString().replace("+", "");
-            localb.sEC = a.aH(localb.imP, localb.sEA + localb.sEB);
-            localb.gOh = a.aJ(localb.imP, localb.sEC);
-            paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.aeE(localb.sEB);
-            Object localObject = aj.getContext().getSharedPreferences("IPCall_LastInputPref", 0).edit();
+            localb.tMh = localb.tLZ.getText().toString().replace("+", "");
+            localb.tMj = a.aI(localb.iMV, localb.tMh + localb.tMi);
+            localb.hoH = a.aK(localb.iMV, localb.tMj);
+            paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.ajw(localb.tMi);
+            Object localObject = ai.getContext().getSharedPreferences("IPCall_LastInputPref", 0).edit();
             ((SharedPreferences.Editor)localObject).putString("IPCall_LastInputPhoneNumber", paramAnonymousView);
             ((SharedPreferences.Editor)localObject).apply();
-            String str = localb.sEs.getText().toString();
-            localObject = localb.sEz;
-            if (!bt.isNullOrNil(str))
+            String str = localb.tLZ.getText().toString();
+            localObject = localb.tMg;
+            if (!bs.isNullOrNil(str))
             {
               paramAnonymousView = (View)localObject;
-              if (bt.isNullOrNil((String)localObject)) {
+              if (bs.isNullOrNil((String)localObject)) {
                 paramAnonymousView = "";
               }
-              localObject = aj.getContext().getSharedPreferences("IPCall_LastInputPref", 0).edit();
+              localObject = ai.getContext().getSharedPreferences("IPCall_LastInputPref", 0).edit();
               ((SharedPreferences.Editor)localObject).putString("IPCall_LastInputCountryCode", str.replace("+", ""));
               ((SharedPreferences.Editor)localObject).putString("IPCall_LastInputCountryName", paramAnonymousView);
               ((SharedPreferences.Editor)localObject).apply();
             }
-            if (localb.sEq != null)
+            if (localb.tLX != null)
             {
-              localb.sEq.o(localb.sEA, com.tencent.mm.plugin.ipcall.a.c.aeE(localb.sEB), localb.sEC, localb.gOh);
+              localb.tLX.q(localb.tMh, com.tencent.mm.plugin.ipcall.a.c.ajw(localb.tMi), localb.tMj, localb.hoH);
               AppMethodBeat.o(25594);
             }
           }
           else
           {
-            paramAnonymousView = aj.getContext().getSharedPreferences("IPCall_LastInputPref", 0).getString("IPCall_LastInputPhoneNumber", "");
-            if (!bt.isNullOrNil(paramAnonymousView))
+            paramAnonymousView = ai.getContext().getSharedPreferences("IPCall_LastInputPref", 0).getString("IPCall_LastInputPhoneNumber", "");
+            if (!bs.isNullOrNil(paramAnonymousView))
             {
-              paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.aeE(paramAnonymousView);
-              localb.sEB = b.gU(localb.sEs.getText().toString().replace("+", ""), paramAnonymousView);
-              localb.dA(localb.sEB, -1);
-              localb.cHV();
+              paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.ajw(paramAnonymousView);
+              localb.tMi = b.hl(localb.tLZ.getText().toString().replace("+", ""), paramAnonymousView);
+              localb.dG(localb.tMi, -1);
+              localb.cVg();
             }
           }
           AppMethodBeat.o(25594);
         }
       });
-      this.sEt.setHorizontallyScrolling(true);
-      this.sEt.setOnClickListener(new View.OnClickListener()
+      this.tMa.setHorizontallyScrolling(true);
+      this.tMa.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25595);
-          b.this.sEt.setCursorVisible(true);
-          b.this.imP.hideVKB();
-          b.this.sEI = true;
+          b.this.tMa.setCursorVisible(true);
+          b.this.iMV.hideVKB();
+          b.this.tMp = true;
           AppMethodBeat.o(25595);
         }
       });
-      this.sEt.addTextChangedListener(new TextWatcher()
+      this.tMa.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable) {}
         
@@ -469,29 +469,29 @@ public final class b
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(25596);
-          String str = bt.aeE(paramAnonymousCharSequence.toString());
+          String str = bs.ajw(paramAnonymousCharSequence.toString());
           if (str.contains(" "))
           {
             paramAnonymousCharSequence = str.replace(" ", "");
-            b.this.sEt.setText(bt.aj(paramAnonymousCharSequence));
-            if (!a.aey(paramAnonymousCharSequence)) {
+            b.this.tMa.setText(bs.ak(paramAnonymousCharSequence));
+            if (!a.ajq(paramAnonymousCharSequence)) {
               break label209;
             }
-            str = a.aew(paramAnonymousCharSequence);
-            if (!bt.isNullOrNil(str))
+            str = a.ajo(paramAnonymousCharSequence);
+            if (!bs.isNullOrNil(str))
             {
-              b.this.sEs.setText("+".concat(String.valueOf(str)));
-              b.this.sEt.setText(a.aeB(paramAnonymousCharSequence));
+              b.this.tLZ.setText("+".concat(String.valueOf(str)));
+              b.this.tMa.setText(a.ajt(paramAnonymousCharSequence));
             }
           }
           for (;;)
           {
-            if (b.this.sEq != null) {
-              b.this.sEq.aef(b.this.sEt.getText().toString());
+            if (b.this.tLX != null) {
+              b.this.tLX.aiX(b.this.tMa.getText().toString());
             }
             AppMethodBeat.o(25596);
             return;
-            if (b.this.sEK.equals(str))
+            if (b.this.tMr.equals(str))
             {
               paramAnonymousCharSequence = str;
               if (paramAnonymousInt3 <= 0) {
@@ -499,42 +499,42 @@ public final class b
               }
             }
             paramAnonymousCharSequence = str;
-            if (!bt.isNullOrNil(str)) {
+            if (!bs.isNullOrNil(str)) {
               break;
             }
-            b.this.sEK = str;
-            b.this.sEt.setText("");
+            b.this.tMr = str;
+            b.this.tMa.setText("");
             paramAnonymousCharSequence = str;
             break;
             label209:
-            if (!paramAnonymousCharSequence.equals(b.this.sEK))
+            if (!paramAnonymousCharSequence.equals(b.this.tMr))
             {
-              b.this.sEK = paramAnonymousCharSequence;
-              b.this.sEt.setText(paramAnonymousCharSequence);
-              if (bt.isNullOrNil(b.this.sEs.getText().toString())) {
-                b.this.sEs.setText("+" + a.cIF());
+              b.this.tMr = paramAnonymousCharSequence;
+              b.this.tMa.setText(paramAnonymousCharSequence);
+              if (bs.isNullOrNil(b.this.tLZ.getText().toString())) {
+                b.this.tLZ.setText("+" + a.cVQ());
               }
             }
           }
         }
       });
-      if (com.tencent.mm.compatible.util.d.lf(16))
+      if (com.tencent.mm.compatible.util.d.kZ(16))
       {
-        this.sEs.setTypeface(Typeface.create("sans-serif-light", 0));
-        this.sEt.setTypeface(Typeface.create("sans-serif-light", 0));
-        this.icz.setTypeface(Typeface.create("sans-serif-light", 0));
+        this.tLZ.setTypeface(Typeface.create("sans-serif-light", 0));
+        this.tMa.setTypeface(Typeface.create("sans-serif-light", 0));
+        this.gIk.setTypeface(Typeface.create("sans-serif-light", 0));
       }
       AppMethodBeat.o(25597);
       return;
-      paramMMActivity = a.aeu(a.cIF());
+      paramMMActivity = a.ajm(a.cVQ());
     }
   }
   
-  static String gU(String paramString1, String paramString2)
+  static String hl(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25600);
-    paramString1 = ba.formatNumber(paramString1, com.tencent.mm.plugin.ipcall.a.c.aeE(paramString2));
-    if (bt.isNullOrNil(paramString1))
+    paramString1 = az.formatNumber(paramString1, com.tencent.mm.plugin.ipcall.a.c.ajw(paramString2));
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(25600);
       return paramString2;
@@ -543,95 +543,95 @@ public final class b
     return paramString1;
   }
   
-  public final void aed(String paramString)
-  {
-    AppMethodBeat.i(25598);
-    this.sEA = paramString;
-    if (this.sEs != null) {
-      this.sEs.setText("+".concat(String.valueOf(paramString)));
-    }
-    AppMethodBeat.o(25598);
-  }
-  
-  public final void ax(LinkedList<dpa> paramLinkedList)
+  public final void aE(LinkedList<dur> paramLinkedList)
   {
     AppMethodBeat.i(25599);
-    this.sED = paramLinkedList;
-    paramLinkedList = this.sEs.getText().toString().replace("+", "");
-    if ((a.aex(paramLinkedList)) && (this.sED != null) && (this.sED.size() > 0))
+    this.tMk = paramLinkedList;
+    paramLinkedList = this.tLZ.getText().toString().replace("+", "");
+    if ((a.ajp(paramLinkedList)) && (this.tMk != null) && (this.tMk.size() > 0))
     {
-      paramLinkedList = a.aev(paramLinkedList);
-      Iterator localIterator = this.sED.iterator();
-      dpa localdpa;
+      paramLinkedList = a.ajn(paramLinkedList);
+      Iterator localIterator = this.tMk.iterator();
+      dur localdur;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localdpa = (dpa)localIterator.next();
-      } while ((localdpa == null) || (!localdpa.ijV.equals(paramLinkedList)));
+        localdur = (dur)localIterator.next();
+      } while ((localdur == null) || (!localdur.iKc.equals(paramLinkedList)));
     }
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.sEy.setVisibility(0);
+        this.tMf.setVisibility(0);
         AppMethodBeat.o(25599);
         return;
       }
-      this.sEy.setVisibility(8);
+      this.tMf.setVisibility(8);
       AppMethodBeat.o(25599);
       return;
     }
   }
   
-  public final void cHV()
+  public final void aiV(String paramString)
+  {
+    AppMethodBeat.i(25598);
+    this.tMh = paramString;
+    if (this.tLZ != null) {
+      this.tLZ.setText("+".concat(String.valueOf(paramString)));
+    }
+    AppMethodBeat.o(25598);
+  }
+  
+  public final void cVg()
   {
     AppMethodBeat.i(25602);
-    this.sEH.removeCallbacks(this.sEG);
-    this.sEH.postDelayed(this.sEG, 500L);
+    this.tMo.removeCallbacks(this.tMn);
+    this.tMo.postDelayed(this.tMn, 500L);
     AppMethodBeat.o(25602);
   }
   
-  public final void dA(String paramString, int paramInt)
+  public final void dG(String paramString, int paramInt)
   {
     AppMethodBeat.i(25601);
-    this.sEt.setText(paramString);
-    if (!bt.isNullOrNil(paramString))
+    this.tMa.setText(paramString);
+    if (!bs.isNullOrNil(paramString))
     {
       if (paramInt == -1) {
         break label73;
       }
-      if (this.sEI)
+      if (this.tMp)
       {
-        if ((paramInt <= 0) || (paramInt > this.sEt.getText().length())) {
+        if ((paramInt <= 0) || (paramInt > this.tMa.getText().length())) {
           break label73;
         }
-        this.sEt.setSelection(paramInt);
+        this.tMa.setSelection(paramInt);
       }
     }
     for (;;)
     {
-      this.sEB = paramString;
+      this.tMi = paramString;
       AppMethodBeat.o(25601);
       return;
       label73:
-      this.sEt.setSelection(this.sEt.getText().length());
+      this.tMa.setSelection(this.tMa.getText().length());
     }
   }
   
   public static abstract interface a
   {
-    public abstract void aee(String paramString);
+    public abstract void aiW(String paramString);
     
-    public abstract void aef(String paramString);
+    public abstract void aiX(String paramString);
     
-    public abstract void o(String paramString1, String paramString2, String paramString3, String paramString4);
+    public abstract void q(String paramString1, String paramString2, String paramString3, String paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.b
  * JD-Core Version:    0.7.0.1
  */

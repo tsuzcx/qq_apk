@@ -6,48 +6,48 @@ import oicq.wlogin_sdk.tools.util;
 public final class ai
   extends a
 {
-  public int KjC = 0;
-  public int KjD = 0;
-  public int KjE = 0;
+  public int LXl = 0;
+  public int LXm = 0;
+  public int LXn = 0;
   
   public ai()
   {
-    this.Kik = 326;
+    this.LVT = 326;
   }
   
-  public final Boolean fMI()
+  public final Boolean gfy()
   {
     AppMethodBeat.i(88111);
-    if (this.KiU < 12)
+    if (this.LWD < 12)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    int i = util.ai(this.Kie, this.KiT + 4);
-    if (this.KiU < i + 12)
+    int i = util.ah(this.LVN, this.LWC + 4);
+    if (this.LWD < i + 12)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.KjC = i;
-    i = util.ai(this.Kie, this.KiT + 6 + this.KjC);
-    if (this.KiU < this.KjC + 12 + i)
+    this.LXl = i;
+    i = util.ah(this.LVN, this.LWC + 6 + this.LXl);
+    if (this.LWD < this.LXl + 12 + i)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.KjD = i;
-    i = util.ai(this.Kie, this.KiT + 10 + this.KjC + this.KjD);
-    if (this.KiU < this.KjC + 12 + this.KjD + i)
+    this.LXm = i;
+    i = util.ah(this.LVN, this.LWC + 10 + this.LXl + this.LXm);
+    if (this.LWD < this.LXl + 12 + this.LXm + i)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88111);
       return localBoolean;
     }
-    this.KjE = i;
+    this.LXn = i;
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88111);
     return localBoolean;

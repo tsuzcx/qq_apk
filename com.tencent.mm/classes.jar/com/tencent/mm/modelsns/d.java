@@ -3,84 +3,84 @@ package com.tencent.mm.modelsns;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cxf;
+import com.tencent.mm.protocal.protobuf.dcr;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class d
 {
-  private static boolean hqZ;
-  private static AtomicInteger htr;
-  public Object hti;
-  public int htj;
-  public int htk;
-  public int htl;
-  public int htm;
-  public StringBuffer htn;
-  public StringBuffer hto;
-  public StringBuffer htp;
-  public StringBuffer htq;
+  private static boolean hRB;
+  private static AtomicInteger hTT;
+  public Object hTK;
+  public int hTL;
+  public int hTM;
+  public int hTN;
+  public int hTO;
+  public StringBuffer hTP;
+  public StringBuffer hTQ;
+  public StringBuffer hTR;
+  public StringBuffer hTS;
   public int opType;
   public long timeStamp;
   
   static
   {
     AppMethodBeat.i(125679);
-    hqZ = false;
-    htr = new AtomicInteger(0);
+    hRB = false;
+    hTT = new AtomicInteger(0);
     AppMethodBeat.o(125679);
   }
   
   public d(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(125659);
-    this.hti = null;
-    this.htj = 1;
+    this.hTK = null;
+    this.hTL = 1;
     this.opType = 0;
-    this.htn = new StringBuffer();
-    this.hto = new StringBuffer();
-    this.htp = new StringBuffer();
-    this.htq = new StringBuffer();
+    this.hTP = new StringBuffer();
+    this.hTQ = new StringBuffer();
+    this.hTR = new StringBuffer();
+    this.hTS = new StringBuffer();
     this.opType = paramInt1;
-    this.htm = paramInt2;
-    if (!aBf())
+    this.hTO = paramInt2;
+    if (!aHV())
     {
       AppMethodBeat.o(125659);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    if (ay.isWifi(aj.getContext())) {
-      this.htl = 4;
+    if (ax.isWifi(ai.getContext())) {
+      this.hTN = 4;
     }
     for (;;)
     {
-      this.htk = htr.incrementAndGet();
+      this.hTM = hTT.incrementAndGet();
       AppMethodBeat.o(125659);
       return;
-      if (ay.is4G(aj.getContext())) {
-        this.htl = 3;
-      } else if (ay.is3G(aj.getContext())) {
-        this.htl = 2;
-      } else if (ay.is2G(aj.getContext())) {
-        this.htl = 1;
+      if (ax.is4G(ai.getContext())) {
+        this.hTN = 3;
+      } else if (ax.is3G(ai.getContext())) {
+        this.hTN = 2;
+      } else if (ax.is2G(ai.getContext())) {
+        this.hTN = 1;
       } else {
-        this.htl = 0;
+        this.hTN = 0;
       }
     }
   }
   
-  public static void aBi()
+  public static void aHY()
   {
     AppMethodBeat.i(125670);
-    ad.i("MicroMsg.StatisticsOplog", "wait op");
+    ac.i("MicroMsg.StatisticsOplog", "wait op");
     AppMethodBeat.o(125670);
   }
   
-  private static d ad(byte[] paramArrayOfByte)
+  private static d ac(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(125677);
     if (paramArrayOfByte == null)
@@ -88,25 +88,25 @@ public final class d
       AppMethodBeat.o(125677);
       return null;
     }
-    cxf localcxf = new cxf();
+    dcr localdcr = new dcr();
     try
     {
-      localcxf.parseFrom(paramArrayOfByte);
-      paramArrayOfByte = new d(localcxf.opType, localcxf.htm);
-      paramArrayOfByte.htj = localcxf.htj;
-      paramArrayOfByte.timeStamp = localcxf.timeStamp;
-      paramArrayOfByte.htk = localcxf.htk;
-      paramArrayOfByte.htl = localcxf.htl;
-      paramArrayOfByte.htn = new StringBuffer(localcxf.Epo);
-      paramArrayOfByte.htq = new StringBuffer(localcxf.Epp);
-      paramArrayOfByte.hto = new StringBuffer(localcxf.Epq);
-      paramArrayOfByte.htp = new StringBuffer(localcxf.Epr);
+      localdcr.parseFrom(paramArrayOfByte);
+      paramArrayOfByte = new d(localdcr.opType, localdcr.hTO);
+      paramArrayOfByte.hTL = localdcr.hTL;
+      paramArrayOfByte.timeStamp = localdcr.timeStamp;
+      paramArrayOfByte.hTM = localdcr.hTM;
+      paramArrayOfByte.hTN = localdcr.hTN;
+      paramArrayOfByte.hTP = new StringBuffer(localdcr.FMn);
+      paramArrayOfByte.hTS = new StringBuffer(localdcr.FMo);
+      paramArrayOfByte.hTQ = new StringBuffer(localdcr.FMp);
+      paramArrayOfByte.hTR = new StringBuffer(localdcr.FMq);
       AppMethodBeat.o(125677);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.e("MicroMsg.StatisticsOplog", "putIntent " + paramArrayOfByte.getMessage());
+      ac.e("MicroMsg.StatisticsOplog", "putIntent " + paramArrayOfByte.getMessage());
       AppMethodBeat.o(125677);
     }
     return null;
@@ -121,12 +121,12 @@ public final class d
       AppMethodBeat.o(125676);
       return null;
     }
-    paramIntent = ad(paramIntent);
+    paramIntent = ac(paramIntent);
     AppMethodBeat.o(125676);
     return paramIntent;
   }
   
-  public static d oE(int paramInt)
+  public static d ps(int paramInt)
   {
     AppMethodBeat.i(125657);
     d locald = new d(paramInt, 1);
@@ -134,7 +134,7 @@ public final class d
     return locald;
   }
   
-  public static d oF(int paramInt)
+  public static d pt(int paramInt)
   {
     AppMethodBeat.i(125658);
     d locald = new d(paramInt, 4);
@@ -151,7 +151,7 @@ public final class d
       AppMethodBeat.o(125674);
       return null;
     }
-    paramBundle = ad(paramBundle);
+    paramBundle = ac(paramBundle);
     AppMethodBeat.o(125674);
     return paramBundle;
   }
@@ -164,10 +164,99 @@ public final class d
     return paramIntent;
   }
   
-  public final boolean aBf()
+  public final d Dn(String paramString)
+  {
+    AppMethodBeat.i(125662);
+    if (!aHV())
+    {
+      AppMethodBeat.o(125662);
+      return this;
+    }
+    if (this.hTP.length() == 0) {
+      if (bs.isNullOrNil(paramString)) {
+        this.hTP.append(" ");
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(125662);
+      return this;
+      this.hTP.append(paramString);
+      continue;
+      this.hTP.append("||".concat(String.valueOf(paramString)));
+    }
+  }
+  
+  public final d Do(String paramString)
+  {
+    AppMethodBeat.i(125664);
+    if (!aHV())
+    {
+      AppMethodBeat.o(125664);
+      return this;
+    }
+    if (this.hTQ.length() == 0) {
+      this.hTQ.append(paramString);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(125664);
+      return this;
+      this.hTQ.append("||".concat(String.valueOf(paramString)));
+    }
+  }
+  
+  public final d Dp(String paramString)
+  {
+    AppMethodBeat.i(125667);
+    if (!aHV())
+    {
+      AppMethodBeat.o(125667);
+      return this;
+    }
+    if (this.hTR.length() == 0) {
+      this.hTR.append(paramString);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(125667);
+      return this;
+      this.hTR.append("||".concat(String.valueOf(paramString)));
+    }
+  }
+  
+  public final byte[] aCd()
+  {
+    AppMethodBeat.i(125672);
+    Object localObject = new dcr();
+    ((dcr)localObject).opType = this.opType;
+    ((dcr)localObject).hTO = this.hTO;
+    ((dcr)localObject).hTL = this.hTL;
+    ((dcr)localObject).timeStamp = this.timeStamp;
+    ((dcr)localObject).hTM = this.hTM;
+    ((dcr)localObject).hTN = this.hTN;
+    ((dcr)localObject).FMn = this.hTP.toString();
+    ((dcr)localObject).FMo = this.hTS.toString();
+    ((dcr)localObject).FMp = this.hTQ.toString();
+    ((dcr)localObject).FMq = this.hTR.toString();
+    try
+    {
+      localObject = ((dcr)localObject).toByteArray();
+      AppMethodBeat.o(125672);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      ac.e("MicroMsg.StatisticsOplog", "putIntent " + localException.getMessage());
+      AppMethodBeat.o(125672);
+    }
+    return null;
+  }
+  
+  public final boolean aHV()
   {
     boolean bool2 = true;
-    int i = e.htt;
+    int i = e.hTV;
     boolean bool1;
     if (i == 0) {
       bool1 = false;
@@ -226,26 +315,26 @@ public final class d
     return false;
   }
   
-  public final d aBg()
+  public final d aHW()
   {
     AppMethodBeat.i(125665);
-    this.hto = new StringBuffer();
+    this.hTQ = new StringBuffer();
     AppMethodBeat.o(125665);
     return this;
   }
   
-  public final d aBh()
+  public final d aHX()
   {
     AppMethodBeat.i(125666);
-    this.htn = new StringBuffer();
+    this.hTP = new StringBuffer();
     AppMethodBeat.o(125666);
     return this;
   }
   
-  public final boolean aBj()
+  public final boolean aHZ()
   {
     AppMethodBeat.i(125671);
-    if (!aBf())
+    if (!aHV())
     {
       AppMethodBeat.o(125671);
       return false;
@@ -263,38 +352,10 @@ public final class d
     return true;
   }
   
-  public final byte[] avk()
-  {
-    AppMethodBeat.i(125672);
-    Object localObject = new cxf();
-    ((cxf)localObject).opType = this.opType;
-    ((cxf)localObject).htm = this.htm;
-    ((cxf)localObject).htj = this.htj;
-    ((cxf)localObject).timeStamp = this.timeStamp;
-    ((cxf)localObject).htk = this.htk;
-    ((cxf)localObject).htl = this.htl;
-    ((cxf)localObject).Epo = this.htn.toString();
-    ((cxf)localObject).Epp = this.htq.toString();
-    ((cxf)localObject).Epq = this.hto.toString();
-    ((cxf)localObject).Epr = this.htp.toString();
-    try
-    {
-      localObject = ((cxf)localObject).toByteArray();
-      AppMethodBeat.o(125672);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ad.e("MicroMsg.StatisticsOplog", "putIntent " + localException.getMessage());
-      AppMethodBeat.o(125672);
-    }
-    return null;
-  }
-  
   public final void b(Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(125673);
-    byte[] arrayOfByte = avk();
+    byte[] arrayOfByte = aCd();
     if (arrayOfByte == null)
     {
       AppMethodBeat.o(125673);
@@ -304,125 +365,64 @@ public final class d
     AppMethodBeat.o(125673);
   }
   
-  public final d ew(boolean paramBoolean)
+  public final d eQ(boolean paramBoolean)
   {
     AppMethodBeat.i(125668);
     if (paramBoolean) {}
     for (Object localObject = "1";; localObject = "0")
     {
-      localObject = zi((String)localObject);
+      localObject = Dn((String)localObject);
       AppMethodBeat.o(125668);
       return localObject;
     }
   }
   
-  public final boolean oG(int paramInt)
+  public final boolean pu(int paramInt)
   {
     AppMethodBeat.i(125660);
-    this.hti = Integer.valueOf(paramInt);
+    this.hTK = Integer.valueOf(paramInt);
     AppMethodBeat.o(125660);
     return true;
   }
   
-  public final d oH(int paramInt)
+  public final d pv(int paramInt)
   {
     AppMethodBeat.i(125663);
-    d locald = zi(String.valueOf(paramInt));
+    d locald = Dn(String.valueOf(paramInt));
     AppMethodBeat.o(125663);
     return locald;
   }
   
-  public final d oI(int paramInt)
+  public final d pw(int paramInt)
   {
     AppMethodBeat.i(125669);
-    if (!aBf())
+    if (!aHV())
     {
       AppMethodBeat.o(125669);
       return this;
     }
-    if (this.hto.length() == 0) {
-      this.hto.append(paramInt);
+    if (this.hTQ.length() == 0) {
+      this.hTQ.append(paramInt);
     }
     for (;;)
     {
       AppMethodBeat.o(125669);
       return this;
-      this.hto.append("||".concat(String.valueOf(paramInt)));
+      this.hTQ.append("||".concat(String.valueOf(paramInt)));
     }
   }
   
   public final void update()
   {
     AppMethodBeat.i(125661);
-    if (!aBf())
+    if (!aHV())
     {
       AppMethodBeat.o(125661);
       return;
     }
     this.timeStamp = System.currentTimeMillis();
-    this.htk = htr.incrementAndGet();
+    this.hTM = hTT.incrementAndGet();
     AppMethodBeat.o(125661);
-  }
-  
-  public final d zi(String paramString)
-  {
-    AppMethodBeat.i(125662);
-    if (!aBf())
-    {
-      AppMethodBeat.o(125662);
-      return this;
-    }
-    if (this.htn.length() == 0) {
-      if (bt.isNullOrNil(paramString)) {
-        this.htn.append(" ");
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125662);
-      return this;
-      this.htn.append(paramString);
-      continue;
-      this.htn.append("||".concat(String.valueOf(paramString)));
-    }
-  }
-  
-  public final d zj(String paramString)
-  {
-    AppMethodBeat.i(125664);
-    if (!aBf())
-    {
-      AppMethodBeat.o(125664);
-      return this;
-    }
-    if (this.hto.length() == 0) {
-      this.hto.append(paramString);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125664);
-      return this;
-      this.hto.append("||".concat(String.valueOf(paramString)));
-    }
-  }
-  
-  public final d zk(String paramString)
-  {
-    AppMethodBeat.i(125667);
-    if (!aBf())
-    {
-      AppMethodBeat.o(125667);
-      return this;
-    }
-    if (this.htp.length() == 0) {
-      this.htp.append(paramString);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(125667);
-      return this;
-      this.htp.append("||".concat(String.valueOf(paramString)));
-    }
   }
 }
 

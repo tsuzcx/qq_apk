@@ -14,7 +14,7 @@ class DefaultWebCore$6
   public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
     AppMethodBeat.i(140542);
-    paramWebView = this.cjr.bX(paramString2);
+    paramWebView = this.cgn.bN(paramString2);
     if (paramWebView == null)
     {
       AppMethodBeat.o(140542);

@@ -8,64 +8,64 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.view.InsectFrameLayout;
+import com.tencent.mm.ui.widget.InsectFrameLayout;
 import d.g.a.b;
 import d.g.b.k;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/sticker/EditorPanelHolder;", "Lcom/tencent/mm/emoji/view/InsectFrameLayout;", "Lcom/tencent/mm/media/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "panelView", "Landroid/view/View;", "visibleCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "visible", "", "dispatchKeyEvent", "event", "Landroid/view/KeyEvent;", "insectBottom", "bottom", "isShow", "setOnVisibleChangeCallback", "callback", "setPanelView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "setShow", "show", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/sticker/EditorPanelHolder;", "Lcom/tencent/mm/ui/widget/InsectFrameLayout;", "Lcom/tencent/mm/media/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "panelView", "Landroid/view/View;", "visibleCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "visible", "", "dispatchKeyEvent", "event", "Landroid/view/KeyEvent;", "insectBottom", "bottom", "isShow", "setOnVisibleChangeCallback", "callback", "setPanelView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "setShow", "show", "plugin-finder_release"})
 public final class EditorPanelHolder
   extends InsectFrameLayout
 {
-  View LdD;
-  private b<? super Boolean, y> gpp;
+  private b<? super Boolean, y> gPX;
+  View rUv;
   
   public EditorPanelHolder(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(199955);
-    AppMethodBeat.o(199955);
+    AppMethodBeat.i(204023);
+    AppMethodBeat.o(204023);
   }
   
   public EditorPanelHolder(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(199954);
-    AppMethodBeat.o(199954);
+    AppMethodBeat.i(204022);
+    AppMethodBeat.o(204022);
   }
   
   public EditorPanelHolder(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(199953);
+    AppMethodBeat.i(204021);
     setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(199948);
-        this.LdE.setShow(false);
-        AppMethodBeat.o(199948);
+        AppMethodBeat.i(204016);
+        this.rUw.setShow(false);
+        AppMethodBeat.o(204016);
       }
     });
-    AppMethodBeat.o(199953);
+    AppMethodBeat.o(204021);
   }
   
-  public final boolean cco()
+  public final boolean cEv()
   {
     return true;
   }
   
   public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(199952);
+    AppMethodBeat.i(204020);
     k.h(paramKeyEvent, "event");
     if (paramKeyEvent.getKeyCode() == 4)
     {
       if (getKeyDispatcherState() == null)
       {
         bool = super.dispatchKeyEvent(paramKeyEvent);
-        AppMethodBeat.o(199952);
+        AppMethodBeat.o(204020);
         return bool;
       }
       KeyEvent.DispatcherState localDispatcherState;
@@ -75,7 +75,7 @@ public final class EditorPanelHolder
         if (localDispatcherState != null) {
           localDispatcherState.startTracking(paramKeyEvent, this);
         }
-        AppMethodBeat.o(199952);
+        AppMethodBeat.o(204020);
         return true;
       }
       if (paramKeyEvent.getAction() == 1)
@@ -84,35 +84,35 @@ public final class EditorPanelHolder
         if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
         {
           setShow(false);
-          AppMethodBeat.o(199952);
+          AppMethodBeat.o(204020);
           return true;
         }
       }
       bool = super.dispatchKeyEvent(paramKeyEvent);
-      AppMethodBeat.o(199952);
+      AppMethodBeat.o(204020);
       return bool;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(199952);
+    AppMethodBeat.o(204020);
     return bool;
   }
   
   public final void setOnVisibleChangeCallback(b<? super Boolean, y> paramb)
   {
-    this.gpp = paramb;
+    this.gPX = paramb;
   }
   
   public final void setShow(boolean paramBoolean)
   {
-    AppMethodBeat.i(199951);
+    AppMethodBeat.i(204019);
     if (paramBoolean)
     {
       setVisibility(0);
-      localObject = this.gpp;
+      localObject = this.gPX;
       if (localObject != null) {
-        ((b)localObject).aA(Boolean.TRUE);
+        ((b)localObject).ay(Boolean.TRUE);
       }
-      localObject = this.LdD;
+      localObject = this.rUv;
       if (localObject != null)
       {
         ((View)localObject).animate().cancel();
@@ -120,32 +120,32 @@ public final class EditorPanelHolder
         {
           ((View)localObject).setVisibility(4);
           ((View)localObject).post((Runnable)new b((View)localObject));
-          AppMethodBeat.o(199951);
+          AppMethodBeat.o(204019);
           return;
         }
         ((View)localObject).animate().translationY(0.0F).start();
-        AppMethodBeat.o(199951);
+        AppMethodBeat.o(204019);
         return;
       }
-      AppMethodBeat.o(199951);
+      AppMethodBeat.o(204019);
       return;
     }
-    Object localObject = this.gpp;
+    Object localObject = this.gPX;
     if (localObject != null) {
-      ((b)localObject).aA(Boolean.FALSE);
+      ((b)localObject).ay(Boolean.FALSE);
     }
-    localObject = this.LdD;
+    localObject = this.rUv;
     if (localObject != null)
     {
       ((View)localObject).animate().cancel();
       ((View)localObject).animate().translationY(((View)localObject).getHeight()).withEndAction((Runnable)new a(this)).start();
-      AppMethodBeat.o(199951);
+      AppMethodBeat.o(204019);
       return;
     }
-    AppMethodBeat.o(199951);
+    AppMethodBeat.o(204019);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/video/sticker/EditorPanelHolder$setShow$2$1"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/video/sticker/EditorPanelHolder$setShow$2$1"})
   static final class a
     implements Runnable
   {
@@ -153,13 +153,13 @@ public final class EditorPanelHolder
     
     public final void run()
     {
-      AppMethodBeat.i(199949);
-      this.LdE.setVisibility(8);
-      AppMethodBeat.o(199949);
+      AppMethodBeat.i(204017);
+      this.rUw.setVisibility(8);
+      AppMethodBeat.o(204017);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -167,17 +167,17 @@ public final class EditorPanelHolder
     
     public final void run()
     {
-      AppMethodBeat.i(199950);
-      this.LdF.setVisibility(0);
-      this.LdF.setTranslationY(this.LdF.getHeight());
-      this.LdF.animate().translationY(0.0F).start();
-      AppMethodBeat.o(199950);
+      AppMethodBeat.i(204018);
+      this.rUx.setVisibility(0);
+      this.rUx.setTranslationY(this.rUx.getHeight());
+      this.rUx.animate().translationY(0.0F).start();
+      AppMethodBeat.o(204018);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.sticker.EditorPanelHolder
  * JD-Core Version:    0.7.0.1
  */

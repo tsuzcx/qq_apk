@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.record.ui;
 
 import com.tencent.mm.plugin.record.b.v;
-import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.agx;
 import java.util.List;
 
 public class a
 {
-  List<afy> vaT;
-  v vaU;
+  List<agx> wjH;
+  v wjI;
 }
 
 

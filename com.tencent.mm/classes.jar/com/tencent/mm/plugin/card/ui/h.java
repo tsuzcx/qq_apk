@@ -8,32 +8,32 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g nBP;
+  private g oeP;
   
   public h(g paramg)
   {
-    this.nBP = paramg;
+    this.oeP = paramg;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113478);
-    this.nBP.notifyDataSetChanged();
+    this.oeP.notifyDataSetChanged();
     AppMethodBeat.o(113478);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113479);
-    if (this.nBP != null)
+    if (this.oeP != null)
     {
-      g localg = this.nBP;
-      localg.nwE.release();
-      localg.nwE = null;
-      localg.nwP.clear();
+      g localg = this.oeP;
+      localg.nZE.release();
+      localg.nZE = null;
+      localg.nZP.clear();
       localg.mContext = null;
-      localg.nBN = null;
-      this.nBP = null;
+      localg.oeN = null;
+      this.oeP = null;
     }
     AppMethodBeat.o(113479);
   }
@@ -41,8 +41,8 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113480);
-    if (this.nBP != null) {
-      this.nBP.notifyDataSetChanged();
+    if (this.oeP != null) {
+      this.oeP.notifyDataSetChanged();
     }
     AppMethodBeat.o(113480);
   }

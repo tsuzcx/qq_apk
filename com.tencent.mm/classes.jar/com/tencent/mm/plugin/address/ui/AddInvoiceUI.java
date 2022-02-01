@@ -18,64 +18,71 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.address.model.i;
-import com.tencent.mm.protocal.protobuf.bes;
-import com.tencent.mm.protocal.protobuf.cmm;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bik;
+import com.tencent.mm.protocal.protobuf.crt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.LinkedList;
 
 public class AddInvoiceUI
   extends MMActivity
   implements g, InvoiceEditView.c
 {
-  private int aaU;
-  private String dur;
-  private int iyW;
-  private Button iyX;
-  private Button iyY;
-  private TextView iyZ;
-  private TextView iza;
-  private TextView izb;
-  private InvoiceEditView izc;
-  private InvoiceEditView izd;
-  private InvoiceEditView ize;
-  private InvoiceEditView izf;
-  private InvoiceEditView izg;
-  private InvoiceEditView izh;
-  private InvoiceEditView izi;
-  private InvoiceEditView izj;
-  private com.tencent.mm.plugin.j.a.b izk;
-  private com.tencent.mm.plugin.j.a.b izl;
-  private boolean izm;
-  private boolean izn;
-  private TextView ss;
+  private int abP;
+  private String dsc;
+  private int iYZ;
+  private Button iZa;
+  private Button iZb;
+  private TextView iZc;
+  private TextView iZd;
+  private TextView iZe;
+  private InvoiceEditView iZf;
+  private InvoiceEditView iZg;
+  private InvoiceEditView iZh;
+  private InvoiceEditView iZi;
+  private InvoiceEditView iZj;
+  private InvoiceEditView iZk;
+  private InvoiceEditView iZl;
+  private InvoiceEditView iZm;
+  private com.tencent.mm.plugin.j.a.b iZn;
+  private com.tencent.mm.plugin.j.a.b iZo;
+  private boolean iZp;
+  private boolean iZq;
   private Dialog tipDialog;
+  private TextView tr;
   
   public AddInvoiceUI()
   {
     AppMethodBeat.i(20833);
-    this.iyW = 0;
-    this.iyX = null;
-    this.iyY = null;
-    this.izb = null;
-    this.izk = null;
-    this.izl = new com.tencent.mm.plugin.j.a.b();
+    this.iYZ = 0;
+    this.iZa = null;
+    this.iZb = null;
+    this.iZe = null;
+    this.iZn = null;
+    this.iZo = new com.tencent.mm.plugin.j.a.b();
     this.tipDialog = null;
-    this.izm = false;
-    this.izn = false;
-    this.dur = "";
-    this.aaU = 0;
+    this.iZp = false;
+    this.iZq = false;
+    this.dsc = "";
+    this.abP = 0;
     AppMethodBeat.o(20833);
   }
   
-  private boolean aKT()
+  private void aC(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(20843);
+    com.tencent.mm.ui.base.h.a(this, getString(2131760391, new Object[] { paramString, Integer.valueOf(paramInt) }), getString(2131755906), false, null);
+    AppMethodBeat.o(20843);
+  }
+  
+  private boolean aRK()
   {
     boolean bool3 = false;
     AppMethodBeat.i(20839);
@@ -83,31 +90,31 @@ public class AddInvoiceUI
     boolean bool5 = true;
     boolean bool2 = true;
     boolean bool1;
-    if (((this.iyY != null) && (this.iyY.isActivated())) || ((this.izk != null) && (this.izk.type != null) && (this.izk.type.equals("0"))))
+    if (((this.iZb != null) && (this.iZb.isActivated())) || ((this.iZn != null) && (this.iZn.type != null) && (this.iZn.type.equals("0"))))
     {
-      this.izf.setVisibility(0);
-      this.izg.setVisibility(0);
-      this.izh.setVisibility(0);
-      this.izi.setVisibility(0);
-      this.izj.setVisibility(0);
-      this.izd.setVisibility(0);
-      this.ize.setVisibility(8);
+      this.iZi.setVisibility(0);
+      this.iZj.setVisibility(0);
+      this.iZk.setVisibility(0);
+      this.iZl.setVisibility(0);
+      this.iZm.setVisibility(0);
+      this.iZg.setVisibility(0);
+      this.iZh.setVisibility(8);
       bool1 = bool2;
-      if (!this.iyY.isActivated())
+      if (!this.iZb.isActivated())
       {
         bool1 = bool2;
-        if (!this.izk.type.equals("0")) {
+        if (!this.iZn.type.equals("0")) {
           bool1 = false;
         }
       }
-      if (!this.izd.aKX())
+      if (!this.iZg.aRO())
       {
-        if (this.izd.getText().length() > 100) {
-          ay(getString(2131760414), 100);
+        if (this.iZg.getText().length() > 100) {
+          aC(getString(2131760414), 100);
         }
         bool1 = false;
       }
-      if ((this.iyY == null) || (!this.iyY.isActivated()) || (this.izd.getText().length() != 0)) {
+      if ((this.iZb == null) || (!this.iZb.isActivated()) || (this.iZg.getText().length() != 0)) {
         break label914;
       }
       bool1 = false;
@@ -117,48 +124,48 @@ public class AddInvoiceUI
     for (;;)
     {
       enableOptionMenu(bool1);
-      if (!this.izf.aKX())
+      if (!this.iZi.aRO())
       {
-        if (this.izf.getText().length() > 0)
+        if (this.iZi.getText().length() > 0)
         {
           ViewStub localViewStub = (ViewStub)findViewById(2131306448);
           if (localViewStub != null)
           {
             localViewStub.inflate();
-            this.iyZ = ((TextView)findViewById(2131306447));
+            this.iZc = ((TextView)findViewById(2131306447));
           }
-          if (this.iyZ != null) {
-            this.iyZ.setVisibility(0);
+          if (this.iZc != null) {
+            this.iZc.setVisibility(0);
           }
         }
-        if (!this.izg.aKX())
+        if (!this.iZj.aRO())
         {
-          if (this.izg.getText().length() > 100) {
-            ay(getString(2131760393), 100);
+          if (this.iZj.getText().length() > 100) {
+            aC(getString(2131760393), 100);
           }
           bool1 = false;
         }
-        if (!this.izh.aKX())
+        if (!this.iZk.aRO())
         {
-          if (this.izh.getText().length() > 100) {
-            ay(getString(2131760404), 100);
+          if (this.iZk.getText().length() > 100) {
+            aC(getString(2131760404), 100);
           }
           bool1 = false;
         }
-        if (!this.izi.aKX())
+        if (!this.iZl.aRO())
         {
-          if (this.izi.getText().length() > 100) {
-            ay(getString(2131760386), 100);
+          if (this.iZl.getText().length() > 100) {
+            aC(getString(2131760386), 100);
           }
           bool1 = false;
         }
-        if (this.izj.aKX()) {
+        if (this.iZm.aRO()) {
           break label911;
         }
         bool1 = bool3;
-        if (this.izj.getText().length() > 48)
+        if (this.iZm.getText().length() > 48)
         {
-          ay(getString(2131760388), 39);
+          aC(getString(2131760388), 39);
           bool1 = bool3;
         }
       }
@@ -166,43 +173,43 @@ public class AddInvoiceUI
       {
         AppMethodBeat.o(20839);
         return bool1;
-        if (this.iyZ == null) {
+        if (this.iZc == null) {
           break;
         }
-        this.iyZ.setVisibility(8);
+        this.iZc.setVisibility(8);
         break;
-        if (((this.iyX != null) && (this.iyX.isActivated())) || ((this.izk != null) && (this.izk.type != null) && (this.izk.type.equals("1"))))
+        if (((this.iZa != null) && (this.iZa.isActivated())) || ((this.iZn != null) && (this.iZn.type != null) && (this.iZn.type.equals("1"))))
         {
-          this.izf.setVisibility(8);
-          this.izg.setVisibility(8);
-          this.izh.setVisibility(8);
-          this.izi.setVisibility(8);
-          this.izj.setVisibility(8);
-          this.izd.setVisibility(8);
-          this.ize.setVisibility(0);
+          this.iZi.setVisibility(8);
+          this.iZj.setVisibility(8);
+          this.iZk.setVisibility(8);
+          this.iZl.setVisibility(8);
+          this.iZm.setVisibility(8);
+          this.iZg.setVisibility(8);
+          this.iZh.setVisibility(0);
           bool1 = bool4;
-          if (!this.iyX.isActivated())
+          if (!this.iZa.isActivated())
           {
             bool1 = bool4;
-            if (!this.izk.type.equals("1")) {
+            if (!this.iZn.type.equals("1")) {
               bool1 = false;
             }
           }
-          if (!this.ize.aKX())
+          if (!this.iZh.aRO())
           {
-            if (this.ize.getText().length() > 100) {
-              ay(getString(2131760414), 100);
+            if (this.iZh.getText().length() > 100) {
+              aC(getString(2131760414), 100);
             }
             bool1 = false;
           }
           bool2 = bool1;
-          if (this.iyX != null)
+          if (this.iZa != null)
           {
             bool2 = bool1;
-            if (this.iyX.isActivated())
+            if (this.iZa.isActivated())
             {
               bool2 = bool1;
-              if (this.ize.getText().length() == 0) {
+              if (this.iZh.getText().length() == 0) {
                 bool2 = false;
               }
             }
@@ -212,48 +219,48 @@ public class AddInvoiceUI
         }
         else
         {
-          this.izf.setVisibility(0);
-          this.izg.setVisibility(0);
-          this.izh.setVisibility(0);
-          this.izi.setVisibility(0);
-          this.izj.setVisibility(0);
-          this.ize.setVisibility(8);
-          this.izd.setVisibility(0);
-          this.ize.setVisibility(8);
+          this.iZi.setVisibility(0);
+          this.iZj.setVisibility(0);
+          this.iZk.setVisibility(0);
+          this.iZl.setVisibility(0);
+          this.iZm.setVisibility(0);
+          this.iZh.setVisibility(8);
+          this.iZg.setVisibility(0);
+          this.iZh.setVisibility(8);
           bool1 = bool5;
-          if (this.iyX != null)
+          if (this.iZa != null)
           {
             bool1 = bool5;
-            if (!this.iyX.isActivated())
+            if (!this.iZa.isActivated())
             {
               bool1 = bool5;
-              if (this.iyY != null)
+              if (this.iZb != null)
               {
                 bool1 = bool5;
-                if (!this.iyY.isActivated()) {
+                if (!this.iZb.isActivated()) {
                   bool1 = false;
                 }
               }
             }
           }
-          if (!this.izd.aKX()) {
+          if (!this.iZg.aRO()) {
             bool1 = false;
           }
-          if (!this.izf.aKX()) {
+          if (!this.iZi.aRO()) {
             bool1 = false;
           }
-          if (!this.izg.aKX()) {
+          if (!this.iZj.aRO()) {
             bool1 = false;
           }
-          if (!this.izh.aKX()) {
+          if (!this.iZk.aRO()) {
             bool1 = false;
           }
           bool2 = bool1;
-          if (!this.izi.aKX()) {
+          if (!this.iZl.aRO()) {
             bool2 = false;
           }
           bool1 = bool3;
-          if (this.izj.aKX()) {
+          if (this.iZm.aRO()) {
             bool1 = bool2;
           }
         }
@@ -261,52 +268,52 @@ public class AddInvoiceUI
     }
   }
   
-  private void aKV()
+  private void aRM()
   {
     int k = 1;
     AppMethodBeat.i(20842);
-    if (((this.iyW != 0) && (this.izk != null) && (this.izl.type != null) && (!this.izl.type.equals("")) && (!this.izl.type.equals(this.izk.type))) || ((this.iyW == 0) && (this.izl.type != null) && (!this.izl.type.equals("")))) {}
+    if (((this.iYZ != 0) && (this.iZn != null) && (this.iZo.type != null) && (!this.iZo.type.equals("")) && (!this.iZo.type.equals(this.iZn.type))) || ((this.iYZ == 0) && (this.iZo.type != null) && (!this.iZo.type.equals("")))) {}
     for (int i = 1;; i = 0)
     {
       int j = i;
-      if (this.iyX != null)
+      if (this.iZa != null)
       {
         j = i;
-        if (this.iyY != null)
+        if (this.iZb != null)
         {
           j = i;
-          if (!this.iyX.isActivated())
+          if (!this.iZa.isActivated())
           {
             j = i;
-            if (!this.iyY.isActivated())
+            if (!this.iZb.isActivated())
             {
               j = i;
-              if (this.izk == null) {
+              if (this.iZn == null) {
                 j = 1;
               }
             }
           }
         }
       }
-      if (this.izd.aKY()) {
+      if (this.iZg.aRP()) {
         j = 1;
       }
-      if (this.ize.aKY()) {
+      if (this.iZh.aRP()) {
         j = 1;
       }
-      if (this.izf.aKY()) {
+      if (this.iZi.aRP()) {
         j = 1;
       }
-      if (this.izg.aKY()) {
+      if (this.iZj.aRP()) {
         j = 1;
       }
-      if (this.izh.aKY()) {
+      if (this.iZk.aRP()) {
         j = 1;
       }
-      if (this.izi.aKY()) {
+      if (this.iZl.aRP()) {
         j = 1;
       }
-      if (this.izj.aKY()) {}
+      if (this.iZm.aRP()) {}
       for (i = k;; i = j)
       {
         if (i != 0)
@@ -332,21 +339,14 @@ public class AddInvoiceUI
     }
   }
   
-  private void ay(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(20843);
-    com.tencent.mm.ui.base.h.a(this, getString(2131760391, new Object[] { paramString, Integer.valueOf(paramInt) }), getString(2131755906), false, null);
-    AppMethodBeat.o(20843);
-  }
-  
-  public final void aKU()
+  public final void aRL()
   {
     AppMethodBeat.i(20840);
-    aKT();
+    aRK();
     AppMethodBeat.o(20840);
   }
   
-  public final void aKW()
+  public final void aRN()
   {
     AppMethodBeat.i(20844);
     com.tencent.mm.ui.base.h.a(this, getString(2131760415), getString(2131755906), false, null);
@@ -361,24 +361,24 @@ public class AddInvoiceUI
   public void initView()
   {
     AppMethodBeat.i(20835);
-    this.aaU = 0;
+    this.abP = 0;
     MMScrollView localMMScrollView = (MMScrollView)findViewById(2131301095);
     if (localMMScrollView != null) {
       localMMScrollView.a(localMMScrollView, localMMScrollView);
     }
-    this.iyX = ((Button)findViewById(2131301086));
-    if (this.iyX != null) {
-      this.iyX.setVisibility(0);
+    this.iZa = ((Button)findViewById(2131301086));
+    if (this.iZa != null) {
+      this.iZa.setVisibility(0);
     }
-    this.iyY = ((Button)findViewById(2131301084));
-    if (this.iyY != null) {
-      this.iyY.setVisibility(0);
+    this.iZb = ((Button)findViewById(2131301084));
+    if (this.iZb != null) {
+      this.iZb.setVisibility(0);
     }
-    if ((this.iyW == 0) && (this.iyY != null)) {
-      this.iyY.setActivated(true);
+    if ((this.iYZ == 0) && (this.iZb != null)) {
+      this.iZb.setActivated(true);
     }
-    if (this.iyY != null) {
-      this.iyY.setOnTouchListener(new View.OnTouchListener()
+    if (this.iZb != null) {
+      this.iZb.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -407,8 +407,8 @@ public class AddInvoiceUI
         }
       });
     }
-    if (this.iyX != null) {
-      this.iyX.setOnTouchListener(new View.OnTouchListener()
+    if (this.iZa != null) {
+      this.iZa.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -437,54 +437,54 @@ public class AddInvoiceUI
         }
       });
     }
-    this.izc = ((InvoiceEditView)findViewById(2131301098));
-    this.izd = ((InvoiceEditView)findViewById(2131301097));
-    this.ize = ((InvoiceEditView)findViewById(2131301087));
-    this.izf = ((InvoiceEditView)findViewById(2131301096));
-    this.izg = ((InvoiceEditView)findViewById(2131301083));
-    this.izh = ((InvoiceEditView)findViewById(2131301088));
-    this.izi = ((InvoiceEditView)findViewById(2131301080));
-    this.izj = ((InvoiceEditView)findViewById(2131301081));
-    this.izf.izG = true;
-    this.izf.izA = true;
-    this.izf.setOnInputValidChangeListener(this);
-    this.izc.setOnInputValidChangeListener(this);
-    this.izd.setOnInputValidChangeListener(this);
-    this.ize.setOnInputValidChangeListener(this);
-    this.izg.setOnInputValidChangeListener(this);
-    this.izh.setOnInputValidChangeListener(this);
-    this.izi.setOnInputValidChangeListener(this);
-    this.izj.setOnInputValidChangeListener(this);
-    if (this.iyW != 0)
+    this.iZf = ((InvoiceEditView)findViewById(2131301098));
+    this.iZg = ((InvoiceEditView)findViewById(2131301097));
+    this.iZh = ((InvoiceEditView)findViewById(2131301087));
+    this.iZi = ((InvoiceEditView)findViewById(2131301096));
+    this.iZj = ((InvoiceEditView)findViewById(2131301083));
+    this.iZk = ((InvoiceEditView)findViewById(2131301088));
+    this.iZl = ((InvoiceEditView)findViewById(2131301080));
+    this.iZm = ((InvoiceEditView)findViewById(2131301081));
+    this.iZi.iZJ = true;
+    this.iZi.iZD = true;
+    this.iZi.setOnInputValidChangeListener(this);
+    this.iZf.setOnInputValidChangeListener(this);
+    this.iZg.setOnInputValidChangeListener(this);
+    this.iZh.setOnInputValidChangeListener(this);
+    this.iZj.setOnInputValidChangeListener(this);
+    this.iZk.setOnInputValidChangeListener(this);
+    this.iZl.setOnInputValidChangeListener(this);
+    this.iZm.setOnInputValidChangeListener(this);
+    if (this.iYZ != 0)
     {
-      this.ss = ((TextView)findViewById(2131305880));
-      this.ss.setVisibility(8);
-      this.iza = ((TextView)findViewById(2131306179));
-      this.izk = com.tencent.mm.plugin.address.a.a.aKP().qi(this.iyW);
-      if ((this.izk == null) || (this.izk.type == null) || (!this.izk.type.equals("0"))) {
+      this.tr = ((TextView)findViewById(2131305880));
+      this.tr.setVisibility(8);
+      this.iZd = ((TextView)findViewById(2131306179));
+      this.iZn = com.tencent.mm.plugin.address.a.a.aRG().qV(this.iYZ);
+      if ((this.iZn == null) || (this.iZn.type == null) || (!this.iZn.type.equals("0"))) {
         break label693;
       }
-      this.iza.setText(getString(2131760396));
-      this.iza.setVisibility(0);
-      this.iyY.setVisibility(8);
-      this.iyX.setVisibility(8);
-      if (this.izk != null)
+      this.iZd.setText(getString(2131760396));
+      this.iZd.setVisibility(0);
+      this.iZb.setVisibility(8);
+      this.iZa.setVisibility(8);
+      if (this.iZn != null)
       {
-        this.izc.setValStr(this.izk.type);
-        this.izd.setValStr(this.izk.title);
-        this.ize.setValStr(this.izk.szf);
-        this.izf.setValStr(this.izk.szg);
-        this.izg.setValStr(this.izk.szm);
-        this.izh.setValStr(this.izk.szk);
-        this.izi.setValStr(this.izk.szi);
-        this.izj.setValStr(this.izk.szh);
+        this.iZf.setValStr(this.iZn.type);
+        this.iZg.setValStr(this.iZn.title);
+        this.iZh.setValStr(this.iZn.tGP);
+        this.iZi.setValStr(this.iZn.tGQ);
+        this.iZj.setValStr(this.iZn.tGW);
+        this.iZk.setValStr(this.iZn.tGU);
+        this.iZl.setValStr(this.iZn.tGS);
+        this.iZm.setValStr(this.iZn.tGR);
       }
     }
-    if ((this.izn) || (this.izm))
+    if ((this.iZq) || (this.iZp))
     {
-      this.izb = ((TextView)findViewById(2131301231));
-      if (this.izb != null) {
-        this.izb.setVisibility(0);
+      this.iZe = ((TextView)findViewById(2131301231));
+      if (this.iZe != null) {
+        this.iZe.setVisibility(0);
       }
     }
     for (;;)
@@ -505,24 +505,24 @@ public class AddInvoiceUI
         {
           AppMethodBeat.i(20831);
           if (AddInvoiceUI.f(AddInvoiceUI.this) == 0) {
-            com.tencent.mm.plugin.report.service.h.vKh.f(14199, new Object[] { Integer.valueOf(3) });
+            com.tencent.mm.plugin.report.service.h.wUl.f(14199, new Object[] { Integer.valueOf(3) });
           }
           while ((AddInvoiceUI.a(AddInvoiceUI.this) != null) && (AddInvoiceUI.a(AddInvoiceUI.this).isActivated()) && (AddInvoiceUI.g(AddInvoiceUI.this).getText().length() == 0))
           {
-            AddInvoiceUI.this.aKW();
+            AddInvoiceUI.this.aRN();
             AppMethodBeat.o(20831);
             return false;
-            com.tencent.mm.plugin.report.service.h.vKh.f(14199, new Object[] { Integer.valueOf(4) });
+            com.tencent.mm.plugin.report.service.h.wUl.f(14199, new Object[] { Integer.valueOf(4) });
           }
           if ((AddInvoiceUI.b(AddInvoiceUI.this) != null) && (AddInvoiceUI.b(AddInvoiceUI.this).isActivated()) && (AddInvoiceUI.h(AddInvoiceUI.this).getText().length() == 0))
           {
-            AddInvoiceUI.this.aKW();
+            AddInvoiceUI.this.aRN();
             AppMethodBeat.o(20831);
             return false;
           }
           if ((AddInvoiceUI.f(AddInvoiceUI.this) != 0) && (AddInvoiceUI.h(AddInvoiceUI.this).getText().length() == 0) && (AddInvoiceUI.g(AddInvoiceUI.this).getText().length() == 0))
           {
-            AddInvoiceUI.this.aKW();
+            AddInvoiceUI.this.aRN();
             AppMethodBeat.o(20831);
             return false;
           }
@@ -537,12 +537,12 @@ public class AddInvoiceUI
           {
             if (((AddInvoiceUI.a(AddInvoiceUI.this) != null) && (AddInvoiceUI.a(AddInvoiceUI.this).isActivated())) || ((AddInvoiceUI.j(AddInvoiceUI.this) != null) && (AddInvoiceUI.j(AddInvoiceUI.this).type != null) && (AddInvoiceUI.j(AddInvoiceUI.this).type.equals("0"))))
             {
-              if (!AddInvoiceUI.k(AddInvoiceUI.this).aKX())
+              if (!AddInvoiceUI.k(AddInvoiceUI.this).aRO())
               {
                 paramAnonymousMenuItem = AddInvoiceUI.this;
                 com.tencent.mm.ui.base.h.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131760403), paramAnonymousMenuItem.getString(2131755906), false, null);
               }
-              if (!AddInvoiceUI.l(AddInvoiceUI.this).aKX())
+              if (!AddInvoiceUI.l(AddInvoiceUI.this).aRO())
               {
                 paramAnonymousMenuItem = AddInvoiceUI.this;
                 com.tencent.mm.ui.base.h.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131760389), paramAnonymousMenuItem.getString(2131755906), false, null);
@@ -560,13 +560,13 @@ public class AddInvoiceUI
               AddInvoiceUI.c(AddInvoiceUI.this).type = AddInvoiceUI.j(AddInvoiceUI.this).type;
             }
             AddInvoiceUI.c(AddInvoiceUI.this).title = AddInvoiceUI.g(AddInvoiceUI.this).getText();
-            AddInvoiceUI.c(AddInvoiceUI.this).szf = AddInvoiceUI.h(AddInvoiceUI.this).getText();
-            AddInvoiceUI.c(AddInvoiceUI.this).szg = AddInvoiceUI.i(AddInvoiceUI.this).getText();
-            AddInvoiceUI.c(AddInvoiceUI.this).sze = AddInvoiceUI.f(AddInvoiceUI.this);
-            AddInvoiceUI.c(AddInvoiceUI.this).szk = AddInvoiceUI.k(AddInvoiceUI.this).getText();
-            AddInvoiceUI.c(AddInvoiceUI.this).szi = AddInvoiceUI.m(AddInvoiceUI.this).getText();
-            AddInvoiceUI.c(AddInvoiceUI.this).szh = AddInvoiceUI.l(AddInvoiceUI.this).getText();
-            AddInvoiceUI.c(AddInvoiceUI.this).szm = AddInvoiceUI.n(AddInvoiceUI.this).getText();
+            AddInvoiceUI.c(AddInvoiceUI.this).tGP = AddInvoiceUI.h(AddInvoiceUI.this).getText();
+            AddInvoiceUI.c(AddInvoiceUI.this).tGQ = AddInvoiceUI.i(AddInvoiceUI.this).getText();
+            AddInvoiceUI.c(AddInvoiceUI.this).tGO = AddInvoiceUI.f(AddInvoiceUI.this);
+            AddInvoiceUI.c(AddInvoiceUI.this).tGU = AddInvoiceUI.k(AddInvoiceUI.this).getText();
+            AddInvoiceUI.c(AddInvoiceUI.this).tGS = AddInvoiceUI.m(AddInvoiceUI.this).getText();
+            AddInvoiceUI.c(AddInvoiceUI.this).tGR = AddInvoiceUI.l(AddInvoiceUI.this).getText();
+            AddInvoiceUI.c(AddInvoiceUI.this).tGW = AddInvoiceUI.n(AddInvoiceUI.this).getText();
             AddInvoiceUI.o(AddInvoiceUI.this);
             AppMethodBeat.o(20831);
             return true;
@@ -575,20 +575,20 @@ public class AddInvoiceUI
             }
           }
         }
-      }, null, r.b.FOB);
+      }, null, s.b.Hom);
       enableOptionMenu(false);
-      aKT();
+      aRK();
       AppMethodBeat.o(20835);
       return;
       label693:
-      if ((this.izk == null) || (this.izk.type == null) || (!this.izk.type.equals("1"))) {
+      if ((this.iZn == null) || (this.iZn.type == null) || (!this.iZn.type.equals("1"))) {
         break;
       }
-      this.iza.setText(getString(2131760402));
+      this.iZd.setText(getString(2131760402));
       break;
-      this.izb = ((TextView)findViewById(2131301231));
-      if (this.izb != null) {
-        this.izb.setVisibility(8);
+      this.iZe = ((TextView)findViewById(2131301231));
+      if (this.iZe != null) {
+        this.iZe.setVisibility(8);
       }
     }
   }
@@ -606,22 +606,22 @@ public class AddInvoiceUI
       if (paramInt2 == -1)
       {
         String str = paramIntent.getStringExtra("karea_result");
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
-          ad.d("MicroMsg.AddInvoiceUI", "AREA_RESULT:".concat(String.valueOf(str)));
-          this.izh.setValStr(str);
+          ac.d("MicroMsg.AddInvoiceUI", "AREA_RESULT:".concat(String.valueOf(str)));
+          this.iZk.setValStr(str);
         }
         str = paramIntent.getStringExtra("kpost_code");
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
-          ad.d("MicroMsg.AddInvoiceUI", "post:".concat(String.valueOf(str)));
-          this.izh.setValStr(str);
+          ac.d("MicroMsg.AddInvoiceUI", "post:".concat(String.valueOf(str)));
+          this.iZk.setValStr(str);
         }
-        this.dur = paramIntent.getStringExtra("kwcode");
+        this.dsc = paramIntent.getStringExtra("kwcode");
         AppMethodBeat.o(20837);
         return;
         if (paramInt2 != -1) {
-          ad.i("MicroMsg.AddInvoiceUI", "MallRecharge pay result : cancel");
+          ac.i("MicroMsg.AddInvoiceUI", "MallRecharge pay result : cancel");
         }
       }
     }
@@ -632,13 +632,13 @@ public class AddInvoiceUI
     AppMethodBeat.i(20834);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.izm = paramBundle.getBooleanExtra("launch_from_webview", false);
-    this.izn = paramBundle.getBooleanExtra("launch_from_invoicelist_webview", false);
-    az.aeS().a(1191, this);
-    ad.d("MicroMsg.AddInvoiceUI", "index Oncreate");
-    this.izl = new com.tencent.mm.plugin.j.a.b();
-    this.iyW = getIntent().getIntExtra("invoice_id", 0);
-    if (this.iyW == 0) {
+    this.iZp = paramBundle.getBooleanExtra("launch_from_webview", false);
+    this.iZq = paramBundle.getBooleanExtra("launch_from_invoicelist_webview", false);
+    az.agi().a(1191, this);
+    ac.d("MicroMsg.AddInvoiceUI", "index Oncreate");
+    this.iZo = new com.tencent.mm.plugin.j.a.b();
+    this.iYZ = getIntent().getIntExtra("invoice_id", 0);
+    if (this.iYZ == 0) {
       setMMTitle(2131763167);
     }
     for (;;)
@@ -653,8 +653,8 @@ public class AddInvoiceUI
   public void onDestroy()
   {
     AppMethodBeat.i(20836);
-    az.aeS().b(1180, this);
-    az.aeS().b(1191, this);
+    az.agi().b(1180, this);
+    az.agi().b(1191, this);
     getWindow().setSoftInputMode(3);
     super.onDestroy();
     AppMethodBeat.o(20836);
@@ -665,7 +665,7 @@ public class AddInvoiceUI
     AppMethodBeat.i(20841);
     if (paramInt == 4)
     {
-      aKV();
+      aRM();
       AppMethodBeat.o(20841);
       return true;
     }
@@ -678,7 +678,7 @@ public class AddInvoiceUI
   {
     Object localObject = null;
     AppMethodBeat.i(20838);
-    ad.i("MicroMsg.AddInvoiceUI", "errType " + paramInt1 + ",errCode " + paramInt2 + ",errMsg " + paramString);
+    ac.i("MicroMsg.AddInvoiceUI", "errType " + paramInt1 + ",errCode " + paramInt2 + ",errMsg " + paramString);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
@@ -686,26 +686,26 @@ public class AddInvoiceUI
     {
       if (paramn.getType() == 1180)
       {
-        paramString = ((i)paramn).iyy;
-        if ((paramString != null) && (paramString.Ehx != null) && (paramString.Ehx.size() > 0) && (paramString.Ehx.get(0) != null)) {
-          this.aaU = ((bes)paramString.Ehx.get(0)).DbN;
+        paramString = ((i)paramn).iYB;
+        if ((paramString != null) && (paramString.FEw != null) && (paramString.FEw.size() > 0) && (paramString.FEw.get(0) != null)) {
+          this.abP = ((bik)paramString.FEw.get(0)).EuT;
         }
-        az.aeS().b(1180, this);
+        az.agi().b(1180, this);
         paramString = new com.tencent.mm.plugin.address.model.b();
-        az.aeS().a(paramString, 0);
+        az.agi().a(paramString, 0);
         AppMethodBeat.o(20838);
         return;
       }
       if (paramn.getType() == 1191)
       {
-        az.aeS().b(1191, this);
-        if (this.izm)
+        az.agi().b(1191, this);
+        if (this.iZp)
         {
-          ad.i("MicroMsg.AddInvoiceUI", "isLaunchFromWebview true...");
-          paramn = this.izl;
+          ac.i("MicroMsg.AddInvoiceUI", "isLaunchFromWebview true...");
+          paramn = this.iZo;
           if (paramn == null)
           {
-            ad.e("MicroMsg.InvoiceUtil", "invoiceObj == null");
+            ac.e("MicroMsg.InvoiceUtil", "invoiceObj == null");
             paramString = localObject;
           }
           for (;;)
@@ -718,29 +718,29 @@ public class AddInvoiceUI
             paramString.putExtra("type", paramn.type);
             if ((paramn.type != null) && (paramn.type.equals("1")))
             {
-              paramString.putExtra("title", paramn.szf);
+              paramString.putExtra("title", paramn.tGP);
             }
             else
             {
               paramString.putExtra("title", paramn.title);
-              paramString.putExtra("tax_number", paramn.szg);
-              paramString.putExtra("company_address", paramn.szm);
-              paramString.putExtra("telephone", paramn.szk);
-              paramString.putExtra("bank_name", paramn.szi);
-              paramString.putExtra("bank_account", paramn.szh);
+              paramString.putExtra("tax_number", paramn.tGQ);
+              paramString.putExtra("company_address", paramn.tGW);
+              paramString.putExtra("telephone", paramn.tGU);
+              paramString.putExtra("bank_name", paramn.tGS);
+              paramString.putExtra("bank_account", paramn.tGR);
             }
           }
         }
-        if ((this.iyW == 0) && (this.aaU != 0))
+        if ((this.iYZ == 0) && (this.abP != 0))
         {
           paramString = new Intent();
           paramString.setClass(this, QrcodeInvoiceUI.class);
-          paramString.putExtra("invoice_id", this.aaU);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/plugin/address/ui/AddInvoiceUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramString.lS(0));
+          paramString.putExtra("invoice_id", this.abP);
+          paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/address/ui/AddInvoiceUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramString.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/address/ui/AddInvoiceUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          this.aaU = 0;
+          this.abP = 0;
         }
         finish();
         AppMethodBeat.o(20838);

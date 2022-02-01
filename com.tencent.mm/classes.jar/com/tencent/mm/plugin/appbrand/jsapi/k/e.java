@@ -1,58 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import android.view.View;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.sdk.platformtools.ad;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class e
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.c
+  extends a<q>
 {
-  private static final int CTRL_INDEX = 624;
-  public static final String NAME = "updateVoIPView";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "hideTabBar";
   
-  public e()
+  public final boolean bex()
   {
-    AppMethodBeat.i(174847);
-    com.tencent.mm.plugin.appbrand.permission.c.Me("updateVoIPView");
-    AppMethodBeat.o(174847);
-  }
-  
-  public final int A(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(46686);
-    int i = paramJSONObject.optInt("viewId");
-    AppMethodBeat.o(46686);
-    return i;
-  }
-  
-  public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(46687);
-    ad.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateView", "onUpdateView," + paramJSONObject.toString());
-    if (!(paramView instanceof CoverViewContainer))
-    {
-      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(46687);
-      return false;
-    }
-    parame = (View)((CoverViewContainer)paramView).ax(View.class);
-    if ((parame == null) || (!(parame instanceof com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)))
-    {
-      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateView", "the camera view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(46687);
-      return false;
-    }
-    ad.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateView", "onUpdateView,viewId:[" + paramInt + "," + A(paramJSONObject) + "],data:" + paramJSONObject.toString());
-    ((com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)parame).am(paramJSONObject);
-    AppMethodBeat.o(46687);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.e
  * JD-Core Version:    0.7.0.1
  */

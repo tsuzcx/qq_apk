@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.sns.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.btz;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class m
 {
-  public String dnB;
-  public List<bpi> list;
-  public int wBd;
+  public String dlj;
+  public List<btz> list;
+  public int xNy;
   
   public m()
   {
@@ -18,15 +18,15 @@ public final class m
     AppMethodBeat.o(95086);
   }
   
-  public m(bpi parambpi)
+  public m(btz parambtz)
   {
     AppMethodBeat.i(95087);
     this.list = new LinkedList();
-    this.list.add(parambpi);
+    this.list.add(parambtz);
     AppMethodBeat.o(95087);
   }
   
-  public m(List<bpi> paramList)
+  public m(List<btz> paramList)
   {
     AppMethodBeat.i(95088);
     this.list = new LinkedList();

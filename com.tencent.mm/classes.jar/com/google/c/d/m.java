@@ -9,13 +9,13 @@ import java.util.Map;
 public final class m
   extends o
 {
-  private static final int[] bLW = { 1, 1, 1, 1 };
-  private static final int[] bLZ = { 3, 1, 1 };
+  private static final int[] bJE = { 1, 1, 1, 1 };
+  private static final int[] bJH = { 3, 1, 1 };
   
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12382);
-    if (parama != a.bJi)
+    if (parama != a.bGQ)
     {
       paramString = new IllegalArgumentException("Can only encode ITF, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12382);
@@ -26,7 +26,7 @@ public final class m
     return paramString;
   }
   
-  public final boolean[] bw(String paramString)
+  public final boolean[] bn(String paramString)
   {
     AppMethodBeat.i(12383);
     int m = paramString.length();
@@ -43,7 +43,7 @@ public final class m
       throw paramString;
     }
     boolean[] arrayOfBoolean = new boolean[m * 9 + 9];
-    int j = a(arrayOfBoolean, 0, bLW, true);
+    int j = a(arrayOfBoolean, 0, bJE, true);
     int i = 0;
     while (i < m)
     {
@@ -53,21 +53,21 @@ public final class m
       int k = 0;
       while (k < 5)
       {
-        arrayOfInt[(k * 2)] = l.bLY[n][k];
-        arrayOfInt[(k * 2 + 1)] = l.bLY[i1][k];
+        arrayOfInt[(k * 2)] = l.bJG[n][k];
+        arrayOfInt[(k * 2 + 1)] = l.bJG[i1][k];
         k += 1;
       }
       j += a(arrayOfBoolean, j, arrayOfInt, true);
       i += 2;
     }
-    a(arrayOfBoolean, j, bLZ, true);
+    a(arrayOfBoolean, j, bJH, true);
     AppMethodBeat.o(12383);
     return arrayOfBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.d.m
  * JD-Core Version:    0.7.0.1
  */

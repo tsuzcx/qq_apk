@@ -7,24 +7,24 @@ import rx.g.a;
 public final class g
   extends rx.g
 {
-  private final ThreadFactory IxJ;
+  private final ThreadFactory JZs;
   
   public g(ThreadFactory paramThreadFactory)
   {
-    this.IxJ = paramThreadFactory;
+    this.JZs = paramThreadFactory;
   }
   
   public final g.a createWorker()
   {
     AppMethodBeat.i(90385);
-    h localh = new h(this.IxJ);
+    h localh = new h(this.JZs);
     AppMethodBeat.o(90385);
     return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,201 +1,297 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.Map;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.c;
+import com.tencent.mm.storage.emotion.e;
+import com.tencent.mm.ui.tools.f;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public final class av
 {
-  public int FyN;
-  public int FyO;
-  public int FyP;
-  public int FyQ;
-  public String FyR = "";
-  public String FyS;
-  public String FyT;
-  public String FyU;
-  public boolean FyV = true;
-  public String FyW;
-  public String FyX;
-  public String aeskey;
-  public long createTime;
-  public String dft;
-  public String djC;
-  public long drA;
-  public int esg;
-  public String esh = "";
-  public String fNa;
-  public String gHk;
-  public String gHq;
-  public String hAb;
-  public int hDq;
-  public int height;
-  public String id;
-  public String md5;
-  public String oJp;
-  public String syH;
-  public String talker;
-  public String thumbUrl;
-  public int width;
+  private static final av GXB;
+  public Comparator<a> GXA;
+  public String GXt;
+  private int GXu;
+  public int GXv;
+  HashMap<String, String> GXw;
+  public HashMap<String, ArrayList<String>> GXx;
+  public HashMap<String, String> GXy;
+  public HashMap<String, ArrayList<a>> GXz;
+  public boolean mInit;
   
-  public static av I(EmojiInfo paramEmojiInfo)
+  static
   {
-    AppMethodBeat.i(104962);
-    if (paramEmojiInfo == null)
-    {
-      ad.i("MicroMsg.emoji.EmojiMsgInfo", "parserEmojiInfo failed. emojiinfo is null.");
-      AppMethodBeat.o(104962);
-      return null;
-    }
-    av localav = new av();
-    localav.md5 = paramEmojiInfo.field_md5;
-    localav.FyN = paramEmojiInfo.field_type;
-    localav.FyO = paramEmojiInfo.field_size;
-    localav.dft = paramEmojiInfo.field_groupId;
-    localav.FyS = paramEmojiInfo.field_designerID;
-    localav.thumbUrl = paramEmojiInfo.field_thumbUrl;
-    localav.djC = paramEmojiInfo.field_encrypturl;
-    localav.aeskey = paramEmojiInfo.field_aeskey;
-    localav.width = paramEmojiInfo.field_width;
-    localav.height = paramEmojiInfo.field_height;
-    localav.syH = paramEmojiInfo.field_cdnUrl;
-    localav.FyT = paramEmojiInfo.field_externUrl;
-    localav.FyU = paramEmojiInfo.field_externMd5;
-    localav.FyW = paramEmojiInfo.field_activityid;
-    localav.gHk = paramEmojiInfo.field_tpurl;
-    localav.gHq = paramEmojiInfo.field_tpauthkey;
-    localav.fNa = paramEmojiInfo.field_attachedText;
-    localav.oJp = paramEmojiInfo.field_lensId;
-    localav.FyX = paramEmojiInfo.field_attachTextColor;
-    AppMethodBeat.o(104962);
-    return localav;
+    AppMethodBeat.i(209800);
+    GXB = new av();
+    AppMethodBeat.o(209800);
   }
   
-  public static av a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3)
+  public av()
   {
-    AppMethodBeat.i(104965);
-    if (paramMap == null)
+    AppMethodBeat.i(104958);
+    this.mInit = false;
+    this.GXu = 2;
+    this.GXv = 32;
+    this.GXw = new HashMap();
+    this.GXx = new HashMap();
+    this.GXy = new HashMap();
+    this.GXz = new HashMap();
+    this.GXA = new Comparator() {};
+    AppMethodBeat.o(104958);
+  }
+  
+  public static av faV()
+  {
+    return GXB;
+  }
+  
+  public final String XP(String paramString)
+  {
+    AppMethodBeat.i(104961);
+    if ((this.GXw != null) && (this.GXw.containsKey(paramString)))
     {
-      AppMethodBeat.o(104965);
-      return null;
+      ac.i("MicroMsg.emoji.EmojiDescNewMgr", "getCurLangDesc: from map");
+      paramString = (String)this.GXw.get(paramString);
+      AppMethodBeat.o(104961);
+      return paramString;
     }
-    av localav = new av();
-    localav.FyR = paramString2;
-    localav.talker = paramString1;
-    localav.id = ((String)paramMap.get(".msg.emoji.$idbuffer"));
-    localav.hAb = ((String)paramMap.get(".msg.emoji.$fromusername"));
-    paramString1 = (String)paramMap.get(".msg.emoji.$androidmd5");
-    localav.md5 = paramString1;
-    if (paramString1 == null) {
-      localav.md5 = ((String)paramMap.get(".msg.emoji.$md5"));
+    ac.i("MicroMsg.emoji.EmojiDescNewMgr", "getCurLangDesc: from db");
+    paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().GYb.XP(paramString);
+    AppMethodBeat.o(104961);
+    return paramString;
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(104959);
+    if (this.GXw != null) {
+      this.GXw.clear();
     }
-    if (!bt.isNullOrNil(localav.md5)) {
-      localav.md5 = localav.md5.toLowerCase();
+    if (this.GXx != null) {
+      this.GXx.clear();
     }
-    try
+    if (this.GXy != null) {
+      this.GXy.clear();
+    }
+    if (this.GXz != null) {
+      this.GXz.clear();
+    }
+    AppMethodBeat.o(104959);
+  }
+  
+  public final void faW()
+  {
+    AppMethodBeat.i(104960);
+    com.tencent.e.h.JZN.f(new Runnable()
     {
-      localav.FyN = Integer.valueOf((String)paramMap.get(".msg.emoji.$type")).intValue();
-      if (paramMap.get(".msg.emoji.$androidlen") != null) {
-        localav.FyO = Integer.valueOf((String)paramMap.get(".msg.emoji.$androidlen")).intValue();
-      }
-      for (;;)
+      public final void run()
       {
-        if (paramMap.get(".msg.gameext.$type") != null) {
-          localav.FyP = Integer.valueOf((String)paramMap.get(".msg.gameext.$type")).intValue();
+        AppMethodBeat.i(104956);
+        long l = System.currentTimeMillis();
+        av localav = av.this;
+        localav.clear();
+        Object localObject3 = null;
+        Object localObject1 = null;
+        int i;
+        try
+        {
+          localObject4 = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().GYj.getAll();
+          if (localObject4 != null)
+          {
+            localObject1 = localObject4;
+            localObject3 = localObject4;
+            if (((Cursor)localObject4).moveToFirst())
+            {
+              localObject1 = localObject4;
+              localObject3 = localObject4;
+              int j = ((Cursor)localObject4).getCount();
+              i = 0;
+              while (i < j)
+              {
+                localObject1 = localObject4;
+                localObject3 = localObject4;
+                localObject7 = new com.tencent.mm.storage.emotion.h();
+                localObject1 = localObject4;
+                localObject3 = localObject4;
+                ((com.tencent.mm.storage.emotion.h)localObject7).convertFrom((Cursor)localObject4);
+                localObject1 = localObject4;
+                localObject3 = localObject4;
+                localObject5 = ((com.tencent.mm.storage.emotion.h)localObject7).field_desc;
+                localObject1 = localObject4;
+                localObject3 = localObject4;
+                if (!bs.isNullOrNil((String)localObject5))
+                {
+                  localObject1 = localObject4;
+                  localObject3 = localObject4;
+                  localObject5 = ((String)localObject5).toLowerCase();
+                  localObject1 = localObject4;
+                  localObject3 = localObject4;
+                  localav.GXy.put(localObject5, ((com.tencent.mm.storage.emotion.h)localObject7).field_groupID);
+                  localObject1 = localObject4;
+                  localObject3 = localObject4;
+                  localObject6 = (ArrayList)localav.GXx.get(((com.tencent.mm.storage.emotion.h)localObject7).field_groupID);
+                  localObject5 = localObject6;
+                  if (localObject6 == null)
+                  {
+                    localObject1 = localObject4;
+                    localObject3 = localObject4;
+                    localObject5 = new ArrayList();
+                  }
+                  localObject1 = localObject4;
+                  localObject3 = localObject4;
+                  ((ArrayList)localObject5).add(((com.tencent.mm.storage.emotion.h)localObject7).field_desc);
+                  localObject1 = localObject4;
+                  localObject3 = localObject4;
+                  localav.GXx.put(((com.tencent.mm.storage.emotion.h)localObject7).field_groupID, localObject5);
+                }
+                localObject1 = localObject4;
+                localObject3 = localObject4;
+                ((Cursor)localObject4).moveToNext();
+                i += 1;
+              }
+            }
+          }
+          if (localObject4 != null) {
+            ((Cursor)localObject4).close();
+          }
         }
-        if (paramMap.get(".msg.gameext.$content") != null) {
-          localav.FyQ = Integer.valueOf((String)paramMap.get(".msg.gameext.$content")).intValue();
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            Object localObject4;
+            Object localObject7;
+            Object localObject5;
+            Object localObject6;
+            localObject3 = localObject1;
+            ac.e("MicroMsg.emoji.EmojiDescNewMgr", bs.m(localException));
+            if (localObject1 != null) {
+              ((Cursor)localObject1).close();
+            }
+          }
         }
-        if (paramMap.get(".msg.emoji.$productid") != null) {
-          localav.dft = ((String)paramMap.get(".msg.emoji.$productid"));
+        finally
+        {
+          if (localObject3 == null) {
+            break label602;
+          }
+          ((Cursor)localObject3).close();
+          AppMethodBeat.o(104956);
         }
-        if (paramMap.get(".msg.emoji.$cdnurl") != null) {
-          localav.syH = ((String)paramMap.get(".msg.emoji.$cdnurl"));
+        localObject4 = ab.eUO().toLowerCase();
+        localav.GXt = ((String)localObject4);
+        localObject5 = az.faZ().GYa.fcM().iterator();
+        while (((Iterator)localObject5).hasNext())
+        {
+          localObject6 = (EmojiGroupInfo)((Iterator)localObject5).next();
+          localObject7 = az.faZ().GYb.aOS(((EmojiGroupInfo)localObject6).field_productID).iterator();
+          while (((Iterator)localObject7).hasNext())
+          {
+            localObject3 = (com.tencent.mm.storage.emotion.d)((Iterator)localObject7).next();
+            localObject1 = ((com.tencent.mm.storage.emotion.d)localObject3).field_desc;
+            String str1 = ((com.tencent.mm.storage.emotion.d)localObject3).field_md5;
+            String str2 = ((com.tencent.mm.storage.emotion.d)localObject3).field_lang;
+            i = ((EmojiGroupInfo)localObject6).field_idx;
+            if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil(str2)))
+            {
+              String str3 = ((String)localObject1).toLowerCase();
+              if (localav.GXz.containsKey(str3))
+              {
+                localObject3 = (ArrayList)localav.GXz.get(str3);
+                localObject1 = localObject3;
+                if (localObject3 == null) {
+                  localObject1 = new ArrayList();
+                }
+                ((ArrayList)localObject1).add(new av.a(localav, str1, i));
+              }
+              for (;;)
+              {
+                if (!str2.equals(localObject4)) {
+                  break label653;
+                }
+                localav.GXw.put(str1, str3);
+                break;
+                label602:
+                ArrayList localArrayList = new ArrayList();
+                localArrayList.add(new av.a(localav, str1, i));
+                localav.GXz.put(str3, localArrayList);
+              }
+              label653:
+              if ((str2.equals("default")) && (!localav.GXw.containsKey(str1))) {
+                localav.GXw.put(str1, str3);
+              }
+            }
+          }
         }
-        if (paramMap.get(".msg.emoji.$tpurl") != null) {
-          localav.gHk = ((String)paramMap.get(".msg.emoji.$tpurl"));
-        }
-        if (paramMap.get(".msg.emoji.$tpauthkey") != null) {
-          localav.gHq = ((String)paramMap.get(".msg.emoji.$tpauthkey"));
-        }
-        if (paramMap.get(".msg.emoji.$designerid") != null) {
-          localav.FyS = ((String)paramMap.get(".msg.emoji.$designerid"));
-        }
-        if (paramMap.get(".msg.emoji.$thumburl") != null) {
-          localav.thumbUrl = ((String)paramMap.get(".msg.emoji.$thumburl"));
-        }
-        if (paramMap.get(".msg.emoji.$encrypturl") != null) {
-          localav.djC = ((String)paramMap.get(".msg.emoji.$encrypturl"));
-        }
-        if (paramMap.get(".msg.emoji.$aeskey") != null) {
-          localav.aeskey = ((String)paramMap.get(".msg.emoji.$aeskey"));
-        }
-        if (paramMap.get(".msg.emoji.$width") != null) {
-          localav.width = Integer.valueOf((String)paramMap.get(".msg.emoji.$width")).intValue();
-        }
-        if (paramMap.get(".msg.emoji.$height") != null) {
-          localav.height = Integer.valueOf((String)paramMap.get(".msg.emoji.$height")).intValue();
-        }
-        if (paramMap.get(".msg.emoji.$externurl") != null) {
-          localav.FyT = ((String)paramMap.get(".msg.emoji.$externurl"));
-        }
-        if (paramMap.get(".msg.emoji.$externmd5") != null) {
-          localav.FyU = ((String)paramMap.get(".msg.emoji.$externmd5"));
-        }
-        if (paramMap.get(".msg.emoji.$activityid") != null) {
-          localav.FyW = ((String)paramMap.get(".msg.emoji.$activityid"));
-        }
-        if (paramMap.get(".msg.emoji.$attachedtext") != null) {
-          localav.fNa = ((String)paramMap.get(".msg.emoji.$attachedtext"));
-        }
-        if (paramMap.get(".msg.emoji.$attachedtextcolor") != null) {
-          localav.FyX = ((String)paramMap.get(".msg.emoji.$attachedtextcolor"));
-        }
-        if (paramMap.get(".msg.emoji.$lensid") != null) {
-          localav.oJp = ((String)paramMap.get(".msg.emoji.$lensid"));
-        }
-        if (!bt.isNullOrNil(paramString3)) {
-          localav.esh = paramString3;
-        }
-        ad.d("MicroMsg.emoji.EmojiMsgInfo", "parserEmojiXml id:%s  md5:%s  type:%d  len:%d  gameType:%d  gameContent:%d  productId:%s  cdnUrl:%s tpUrl:%s designerid:%s thumburl:%s encryptrul:%s width:%d height:%d externUrl:%s externMd5:%s", new Object[] { localav.id, localav.md5, Integer.valueOf(localav.FyN), Integer.valueOf(localav.FyO), Integer.valueOf(localav.FyP), Integer.valueOf(localav.FyQ), localav.dft, localav.syH, localav.gHk, localav.FyS, localav.thumbUrl, localav.djC, Integer.valueOf(localav.width), Integer.valueOf(localav.height), localav.FyT, localav.FyU });
-        AppMethodBeat.o(104965);
-        return localav;
-        if (paramMap.get(".msg.emoji.$len") != null) {
-          localav.FyO = Integer.valueOf((String)paramMap.get(".msg.emoji.$len")).intValue();
-        }
+        ac.i("MicroMsg.emoji.EmojiDescNewMgr", "tryInit: %s, %s", new Object[] { Integer.valueOf(localav.GXz.size()), Integer.valueOf(localav.GXw.size()) });
+        av.a(av.this);
+        ac.i("MicroMsg.emoji.EmojiDescNewMgr", "cpan[newinit] all use time:%s", new Object[] { System.currentTimeMillis() - l });
+        AppMethodBeat.o(104956);
       }
-      return null;
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(104957);
+        String str = super.toString() + "|newinit";
+        AppMethodBeat.o(104957);
+        return str;
+      }
+    }, "MicroMsg.emoji.EmojiDescNewMgr|newinit");
+    AppMethodBeat.o(104960);
+  }
+  
+  public final boolean tj(String paramString)
+  {
+    AppMethodBeat.i(209799);
+    if (!this.mInit) {
+      faW();
     }
-    catch (Exception paramMap)
+    if (f.aRl(paramString) > this.GXv)
     {
-      ad.e("MicroMsg.emoji.EmojiMsgInfo", "exception:%s", new Object[] { bt.m(paramMap) });
-      AppMethodBeat.o(104965);
+      ac.i("MicroMsg.emoji.EmojiDescNewMgr", "input text over checkout limit.");
+      AppMethodBeat.o(209799);
+      return false;
     }
+    if ((!bs.isNullOrNil(paramString)) && (this.GXz != null))
+    {
+      paramString = paramString.toLowerCase();
+      paramString = (ArrayList)this.GXz.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0))
+      {
+        AppMethodBeat.o(209799);
+        return true;
+      }
+      AppMethodBeat.o(209799);
+      return false;
+    }
+    AppMethodBeat.o(209799);
+    return false;
   }
   
-  public static av e(Map<String, String> paramMap, String paramString1, String paramString2)
+  public final class a
   {
-    AppMethodBeat.i(104964);
-    paramMap = a(paramMap, paramString1, paramString2, "");
-    AppMethodBeat.o(104964);
-    return paramMap;
-  }
-  
-  public static av le(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(104963);
-    ad.d("MicroMsg.emoji.EmojiMsgInfo", "parserEmojiXml ".concat(String.valueOf(paramString2)));
-    paramString1 = e(bw.K(paramString2, "msg"), paramString1, paramString2);
-    AppMethodBeat.o(104963);
-    return paramString1;
+    int index;
+    public String md5;
+    
+    a(String paramString, int paramInt)
+    {
+      this.md5 = paramString;
+      this.index = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.av
  * JD-Core Version:    0.7.0.1
  */

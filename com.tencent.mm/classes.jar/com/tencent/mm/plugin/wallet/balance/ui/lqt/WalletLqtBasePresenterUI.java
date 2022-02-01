@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.vending.app.a;
 import com.tencent.mm.vending.app.c;
 import com.tencent.mm.vending.c.b;
@@ -12,16 +12,16 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public abstract class WalletLqtBasePresenterUI
   extends WalletBaseUI
 {
-  private c gfW = new c();
+  private c gkC = new c();
   
   public final <T extends b<? extends a>> T am(Class<? extends b<? extends a>> paramClass)
   {
-    return this.gfW.a(this, paramClass);
+    return this.gkC.a(this, paramClass);
   }
   
   public final <T extends a> T aq(Class<? extends a> paramClass)
   {
-    return this.gfW.b(this, paramClass);
+    return this.gkC.b(this, paramClass);
   }
   
   public int getForceOrientation()
@@ -37,26 +37,26 @@ public abstract class WalletLqtBasePresenterUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gfW.B(getIntent(), this);
+    this.gkC.B(getIntent(), this);
     this.isVKBFirstTimeShown = true;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.gfW.onDestroy();
+    this.gkC.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.gfW.abd(3);
+    this.gkC.adp(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gfW.abd(2);
+    this.gkC.adp(2);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)

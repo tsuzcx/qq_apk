@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private int IpU;
-  private int IpV;
-  private String IpW;
-  private com.tencent.d.c.a.c IpX;
-  private com.tencent.d.c.a.a IpY;
+  private int JRE;
+  private int JRF;
+  private String JRG;
+  private com.tencent.d.c.a.c JRH;
+  private com.tencent.d.c.a.a JRI;
   private String mChannelId;
   private Context mContext;
   private String mVersionName;
@@ -22,24 +22,24 @@ public final class b
   {
     AppMethodBeat.i(138313);
     this.mContext = null;
-    this.IpU = -1;
-    this.IpV = -1;
+    this.JRE = -1;
+    this.JRF = -1;
     this.mVersionName = null;
     this.mChannelId = null;
-    this.IpW = null;
-    this.IpX = null;
-    this.IpY = null;
+    this.JRG = null;
+    this.JRH = null;
+    this.JRI = null;
     this.mContext = paramContext;
     paramContext = com.tencent.d.f.a.ct(paramContext, paramContext.getPackageName());
     this.mVersionName = paramContext.versionName;
-    this.IpV = paramContext.versionCode;
-    this.IpU = 82;
+    this.JRF = paramContext.versionCode;
+    this.JRE = 82;
     this.mChannelId = "105901";
-    this.IpW = "7AD75E27CD5842F6";
+    this.JRG = "7AD75E27CD5842F6";
     AppMethodBeat.o(138313);
   }
   
-  private static String aND(String paramString)
+  private static String aTg(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -48,17 +48,17 @@ public final class b
     return str;
   }
   
-  private com.tencent.d.c.a.c fmc()
+  private com.tencent.d.c.a.c fCt()
   {
     int m = 2;
     AppMethodBeat.i(138315);
-    if (this.IpX == null)
+    if (this.JRH == null)
     {
-      this.IpX = new com.tencent.d.c.a.c();
-      this.IpX.Iqi = this.IpU;
-      this.IpX.Iqn = this.IpV;
-      this.IpX.Iqf = this.mChannelId;
-      this.IpX.Iqe = this.IpW;
+      this.JRH = new com.tencent.d.c.a.c();
+      this.JRH.JRS = this.JRE;
+      this.JRH.JRX = this.JRF;
+      this.JRH.JRP = this.mChannelId;
+      this.JRH.JRO = this.JRG;
     }
     try
     {
@@ -81,26 +81,26 @@ public final class b
         int k = 0;
       }
     }
-    this.IpX.Iqj = new com.tencent.d.c.a.b();
-    this.IpX.Iqj.Iqb = k;
-    this.IpX.Iqj.Iqc = j;
-    this.IpX.Iqj.Iqd = i;
-    this.IpX.Iqk = 0;
-    this.IpX.Iqm = d.fmv();
-    this.IpX.imei = aND(d.getIMEI(this.mContext));
-    this.IpX.imsi = aND(d.kx(this.mContext));
-    this.IpX.Iqg = aND(Build.MODEL);
-    this.IpX.wSi = aND(d.ky(this.mContext));
-    this.IpX.Iqs = aND(d.xt(true));
-    this.IpX.Iqt = aND(d.xt(false));
-    this.IpX.guid = null;
-    this.IpX.Iql = 0;
-    localObject = this.IpX;
-    if (d.kz(this.mContext) == d.a.IsW) {}
+    this.JRH.JRT = new com.tencent.d.c.a.b();
+    this.JRH.JRT.JRL = k;
+    this.JRH.JRT.JRM = j;
+    this.JRH.JRT.JRN = i;
+    this.JRH.JRU = 0;
+    this.JRH.JRW = d.getSDKVersion();
+    this.JRH.imei = aTg(d.getIMEI(this.mContext));
+    this.JRH.imsi = aTg(d.kJ(this.mContext));
+    this.JRH.JRQ = aTg(Build.MODEL);
+    this.JRH.yeO = aTg(d.kK(this.mContext));
+    this.JRH.JSc = aTg(d.yD(true));
+    this.JRH.JSd = aTg(d.yD(false));
+    this.JRH.guid = null;
+    this.JRH.JRV = 0;
+    localObject = this.JRH;
+    if (d.kL(this.mContext) == d.a.JUG) {}
     for (i = m;; i = 1)
     {
-      ((com.tencent.d.c.a.c)localObject).Iqh = i;
-      localObject = this.IpX;
+      ((com.tencent.d.c.a.c)localObject).JRR = i;
+      localObject = this.JRH;
       AppMethodBeat.o(138315);
       return localObject;
     }
@@ -113,20 +113,20 @@ public final class b
     try
     {
       l locall = new l();
-      locall.fmA();
-      locall.aNM("viruscheck");
-      locall.aNN("RiskCheck");
-      locall.aNL("UTF-8");
-      if (this.IpY == null)
+      locall.fCQ();
+      locall.aTp("viruscheck");
+      locall.aTq("RiskCheck");
+      locall.aTo("UTF-8");
+      if (this.JRI == null)
       {
-        this.IpY = new com.tencent.d.c.a.a();
-        this.IpY.IpZ = 2;
-        this.IpY.Iqa = 201;
+        this.JRI = new com.tencent.d.c.a.a();
+        this.JRI.JRJ = 2;
+        this.JRI.JRK = 201;
       }
-      locall.put("phonetype", this.IpY);
-      locall.put("userinfo", fmc());
+      locall.put("phonetype", this.JRI);
+      locall.put("userinfo", fCt());
       locall.put("req", parama);
-      parama = com.tencent.d.f.b.compress(locall.Kj());
+      parama = com.tencent.d.f.b.compress(locall.JT());
       if (parama == null)
       {
         parama = new RuntimeException("compress data fail");
@@ -142,13 +142,13 @@ public final class b
     {
       AppMethodBeat.o(138314);
       return parama;
-      parama = com.tencent.d.f.c.n(parama, com.tencent.d.f.c.fmu());
+      parama = com.tencent.d.f.c.n(parama, com.tencent.d.f.c.fCL());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,21 +5,21 @@ import com.tencent.mm.model.y.b;
 
 public final class o
 {
-  boolean AWv;
-  boolean AWw;
+  boolean CoI;
+  boolean CoJ;
   int id;
-  private final y.b jBF;
-  boolean mku;
+  private final y.b kcb;
+  boolean mMv;
   String name;
   
   public o(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(78722);
-    this.jBF = new y.b();
+    this.kcb = new y.b();
     this.id = paramInt;
     this.name = paramString;
-    this.AWv = paramBoolean1;
-    this.AWw = paramBoolean2;
+    this.CoI = paramBoolean1;
+    this.CoJ = paramBoolean2;
     AppMethodBeat.o(78722);
   }
 }

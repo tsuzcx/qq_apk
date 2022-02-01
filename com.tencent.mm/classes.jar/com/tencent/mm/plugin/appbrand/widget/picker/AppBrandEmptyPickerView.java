@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandEmptyPickerView
   extends View
-  implements com.tencent.mm.plugin.appbrand.jsapi.n.c<Object>
+  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<Object>
 {
   @Keep
   AppBrandEmptyPickerView(Context paramContext)
@@ -44,7 +44,7 @@ public class AppBrandEmptyPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandEmptyPickerView
  * JD-Core Version:    0.7.0.1
  */

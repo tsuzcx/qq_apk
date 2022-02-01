@@ -17,10 +17,10 @@ import com.tencent.mm.plugin.game.model.s;
 public class TabItemView
   extends LinearLayout
 {
-  private int dcz;
-  private TextView snS;
-  private TextView snT;
-  private View snU;
+  private int cZX;
+  private TextView tvL;
+  private TextView tvM;
+  private View tvN;
   
   public TabItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -45,10 +45,10 @@ public class TabItemView
     String str = paramAttributeSet.getString(0);
     paramAttributeSet.recycle();
     LayoutInflater.from(paramContext).inflate(2131494353, this, true);
-    this.snS = ((TextView)findViewById(2131305601));
-    this.snT = ((TextView)findViewById(2131305600));
-    this.snU = findViewById(2131305599);
-    this.snS.setText(str);
+    this.tvL = ((TextView)findViewById(2131305601));
+    this.tvM = ((TextView)findViewById(2131305600));
+    this.tvN = findViewById(2131305599);
+    this.tvL.setText(str);
     AppMethodBeat.o(183910);
   }
   
@@ -57,21 +57,21 @@ public class TabItemView
     AppMethodBeat.i(183909);
     if (paramBoolean)
     {
-      this.snS.setTextColor(getResources().getColor(2131100711));
-      this.snU.setVisibility(0);
-      this.snT.setVisibility(8);
-      ((e)g.ab(e.class)).cBd().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where showType=".concat(String.valueOf(this.dcz)));
+      this.tvL.setTextColor(getResources().getColor(2131100711));
+      this.tvN.setVisibility(0);
+      this.tvM.setVisibility(8);
+      ((e)g.ab(e.class)).cOm().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where showType=".concat(String.valueOf(this.cZX)));
       AppMethodBeat.o(183909);
       return;
     }
-    this.snS.setTextColor(getResources().getColor(2131100212));
-    this.snU.setVisibility(8);
+    this.tvL.setTextColor(getResources().getColor(2131100212));
+    this.tvN.setVisibility(8);
     AppMethodBeat.o(183909);
   }
   
   public void setShowType(int paramInt)
   {
-    this.dcz = paramInt;
+    this.cZX = paramInt;
   }
   
   public void setUnreadCount(int paramInt)
@@ -79,18 +79,18 @@ public class TabItemView
     AppMethodBeat.i(183908);
     if (paramInt > 0)
     {
-      this.snT.setVisibility(0);
+      this.tvM.setVisibility(0);
       if (paramInt < 100)
       {
-        this.snT.setText(String.valueOf(paramInt));
+        this.tvM.setText(String.valueOf(paramInt));
         AppMethodBeat.o(183908);
         return;
       }
-      this.snT.setText(2131759956);
+      this.tvM.setText(2131759956);
       AppMethodBeat.o(183908);
       return;
     }
-    this.snT.setVisibility(8);
+    this.tvM.setVisibility(8);
     AppMethodBeat.o(183908);
   }
 }

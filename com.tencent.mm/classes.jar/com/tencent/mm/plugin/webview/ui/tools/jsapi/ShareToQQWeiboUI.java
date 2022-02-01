@@ -13,21 +13,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.modelsimple.x;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMEditText.c;
 
 public class ShareToQQWeiboUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private ProgressDialog fpP = null;
-  private EditText lmq;
-  private TextView wdU;
+  private ProgressDialog fts = null;
+  private EditText lMg;
+  private TextView xpi;
   
   public int getLayoutId()
   {
@@ -38,13 +38,13 @@ public class ShareToQQWeiboUI
   {
     AppMethodBeat.i(82053);
     setMMTitle(2131763651);
-    this.lmq = ((EditText)findViewById(2131298739));
-    this.wdU = ((TextView)findViewById(2131307005));
+    this.lMg = ((EditText)findViewById(2131298739));
+    this.xpi = ((TextView)findViewById(2131307005));
     String str1 = getIntent().getStringExtra("content");
     String str2 = getIntent().getStringExtra("shortUrl");
-    this.lmq.addTextChangedListener(new MMEditText.c(this.lmq, this.wdU, 280));
+    this.lMg.addTextChangedListener(new MMEditText.c(this.lMg, this.xpi, 280));
     if (str1.contains(str2)) {
-      this.lmq.setText(str1.trim());
+      this.lMg.setText(str1.trim());
     }
     for (;;)
     {
@@ -65,7 +65,7 @@ public class ShareToQQWeiboUI
         {
           AppMethodBeat.i(82050);
           paramAnonymousMenuItem = new x(ShareToQQWeiboUI.this.getIntent().getIntExtra("type", 0), ShareToQQWeiboUI.this.getIntent().getStringExtra("shortUrl"), ShareToQQWeiboUI.a(ShareToQQWeiboUI.this).getText().toString());
-          com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem, 0);
+          com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem, 0);
           ShareToQQWeiboUI localShareToQQWeiboUI = ShareToQQWeiboUI.this;
           AppCompatActivity localAppCompatActivity = ShareToQQWeiboUI.this.getContext();
           ShareToQQWeiboUI.this.getString(2131755906);
@@ -74,7 +74,7 @@ public class ShareToQQWeiboUI
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(82049);
-              com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem);
+              com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem);
               AppMethodBeat.o(82049);
             }
           }));
@@ -84,7 +84,7 @@ public class ShareToQQWeiboUI
       });
       AppMethodBeat.o(82053);
       return;
-      this.lmq.setText(str1 + " " + str2);
+      this.lMg.setText(str1 + " " + str2);
     }
   }
   
@@ -92,7 +92,7 @@ public class ShareToQQWeiboUI
   {
     AppMethodBeat.i(82051);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(26, this);
+    com.tencent.mm.kernel.g.agi().a(26, this);
     initView();
     AppMethodBeat.o(82051);
   }
@@ -100,7 +100,7 @@ public class ShareToQQWeiboUI
   public void onDestroy()
   {
     AppMethodBeat.i(82052);
-    com.tencent.mm.kernel.g.aeS().b(26, this);
+    com.tencent.mm.kernel.g.agi().b(26, this);
     super.onDestroy();
     AppMethodBeat.o(82052);
   }
@@ -108,16 +108,16 @@ public class ShareToQQWeiboUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(82054);
-    ad.i("MicroMsg.ShareToQQWeiboUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.ShareToQQWeiboUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (paramn.getType() != 26)
     {
       AppMethodBeat.o(82054);
       return;
     }
-    if (this.fpP != null)
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
@@ -140,7 +140,7 @@ public class ShareToQQWeiboUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.ShareToQQWeiboUI
  * JD-Core Version:    0.7.0.1
  */

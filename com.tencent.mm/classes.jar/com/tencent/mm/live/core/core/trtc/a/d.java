@@ -19,9 +19,9 @@ public abstract interface d
   
   public abstract void onFirstVideoFrame(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void onUserAudioAvailable(String paramString, boolean paramBoolean);
+  public abstract void onRemoteUserLeaveRoom(String paramString, int paramInt);
   
-  public abstract void onUserExit(String paramString, int paramInt);
+  public abstract void onUserAudioAvailable(String paramString, boolean paramBoolean);
   
   public abstract void onUserSubStreamAvailable(String paramString, boolean paramBoolean);
   
@@ -29,7 +29,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.d
  * JD-Core Version:    0.7.0.1
  */

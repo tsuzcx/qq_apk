@@ -20,20 +20,20 @@ import com.tencent.mm.plugin.voip.b.a;
 public class VoipSmallIconButton
   extends FrameLayout
 {
-  private TextView Tu;
-  private ImageView kPl;
+  private Drawable AKu;
+  private Drawable AKv;
+  private View.OnTouchListener AKw;
+  private TextView Up;
+  private ImageView lqK;
   private Context mContext;
-  private Drawable zrJ;
-  private Drawable zrK;
-  private View.OnTouchListener zrL;
   
   public VoipSmallIconButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115391);
-    this.zrJ = null;
-    this.zrK = null;
-    this.zrL = new View.OnTouchListener()
+    this.AKu = null;
+    this.AKv = null;
+    this.AKw = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -58,18 +58,18 @@ public class VoipSmallIconButton
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, b.a.VoipButton, 0, 0);
     try
     {
-      this.zrJ = paramContext.getDrawable(2);
-      this.zrK = paramContext.getDrawable(3);
+      this.AKu = paramContext.getDrawable(2);
+      this.AKv = paramContext.getDrawable(3);
       paramAttributeSet = paramContext.getString(4);
       int i = paramContext.getResourceId(4, -1);
       paramContext.recycle();
-      this.kPl = ((ImageView)findViewById(2131304850));
-      this.kPl.setImageDrawable(this.zrJ);
-      this.kPl.setOnTouchListener(this.zrL);
-      this.kPl.setContentDescription(paramAttributeSet);
-      this.Tu = ((TextView)findViewById(2131304852));
+      this.lqK = ((ImageView)findViewById(2131304850));
+      this.lqK.setImageDrawable(this.AKu);
+      this.lqK.setOnTouchListener(this.AKw);
+      this.lqK.setContentDescription(paramAttributeSet);
+      this.Up = ((TextView)findViewById(2131304852));
       if (i != -1) {
-        this.Tu.setText(getContext().getString(i));
+        this.Up.setText(getContext().getString(i));
       }
       AppMethodBeat.o(115391);
       return;
@@ -84,21 +84,21 @@ public class VoipSmallIconButton
   public void setEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(115392);
-    this.kPl.setEnabled(paramBoolean);
-    this.Tu.setEnabled(paramBoolean);
+    this.lqK.setEnabled(paramBoolean);
+    this.Up.setEnabled(paramBoolean);
     AppMethodBeat.o(115392);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(115390);
-    this.kPl.setOnClickListener(paramOnClickListener);
+    this.lqK.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(115390);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipSmallIconButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mm.wallet_core.tenpay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
+import com.tencent.mm.ak.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.dpt;
-import com.tencent.mm.protocal.protobuf.qb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dvk;
+import com.tencent.mm.protocal.protobuf.ql;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storage.c;
 import com.tencent.mm.wallet_core.c.j;
 import java.net.URI;
@@ -20,20 +20,20 @@ public class o
   extends m
   implements j
 {
-  public String Axg;
-  public dpt Axh;
-  public String IeM;
+  public String BPA;
+  public dvk BPB;
+  public String JGo;
   public String appId;
   public int channel;
-  public String dcE;
-  public String dft;
-  public String jwH;
+  public String dac;
+  public String dcO;
+  public String jXd;
   public int scene;
   
   public o(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
     AppMethodBeat.i(72894);
-    this.Axh = new dpt();
+    this.BPB = new dvk();
     this.scene = paramInt1;
     this.channel = paramInt3;
     HashMap localHashMap = new HashMap();
@@ -41,36 +41,36 @@ public class o
     localHashMap.put("scene", String.valueOf(paramInt2));
     localHashMap.put("a8key_scene", String.valueOf(paramInt1));
     localHashMap.put("channel", String.valueOf(paramInt3));
-    ad.d("MicroMsg.NetSceneTenpayNativeAuthen", "sourceType: %d, source: %s", new Object[] { Integer.valueOf(paramInt4), paramString2 });
+    ac.d("MicroMsg.NetSceneTenpayNativeAuthen", "sourceType: %d, source: %s", new Object[] { Integer.valueOf(paramInt4), paramString2 });
     if (paramInt4 < 0)
     {
-      ad.e("MicroMsg.NetSceneTenpayNativeAuthen", "illegal sourceType: %d, source: %s", new Object[] { Integer.valueOf(paramInt4), paramString2 });
+      ac.e("MicroMsg.NetSceneTenpayNativeAuthen", "illegal sourceType: %d, source: %s", new Object[] { Integer.valueOf(paramInt4), paramString2 });
       localHashMap.put("source_type", "0");
       localHashMap.put("source", "");
     }
     for (;;)
     {
       setRequestData(localHashMap);
-      paramString2 = com.tencent.mm.model.c.d.aty().qu("100456");
+      paramString2 = com.tencent.mm.model.c.d.aAp().tJ("100456");
       if (paramString2.isValid()) {
         break;
       }
-      ad.w("MicroMsg.NetSceneTenpayNativeAuthen", "invalid abtest value");
+      ac.w("MicroMsg.NetSceneTenpayNativeAuthen", "invalid abtest value");
       AppMethodBeat.o(72894);
       return;
       localHashMap.put("source_type", String.valueOf(paramInt4));
       localHashMap.put("source", paramString2);
     }
-    if (bt.getInt((String)paramString2.eJy().get("open"), 0) == 0)
+    if (bs.getInt((String)paramString2.eYV().get("open"), 0) == 0)
     {
-      ad.i("MicroMsg.NetSceneTenpayNativeAuthen", "abtest unopened");
+      ac.i("MicroMsg.NetSceneTenpayNativeAuthen", "abtest unopened");
       AppMethodBeat.o(72894);
       return;
     }
     try
     {
       paramString1 = new URI(paramString1).getQuery();
-      if (!bt.isNullOrNil(paramString1))
+      if (!bs.isNullOrNil(paramString1))
       {
         paramString1 = paramString1.split("&");
         paramInt2 = paramString1.length;
@@ -82,8 +82,8 @@ public class o
             paramString2 = paramString1[paramInt1].split("=");
             if (paramString2.length == 2)
             {
-              paramInt3 = bt.getInt(paramString2[1], 0);
-              ad.d("MicroMsg.NetSceneTenpayNativeAuthen", "groupid: %s", new Object[] { Integer.valueOf(paramInt3) });
+              paramInt3 = bs.getInt(paramString2[1], 0);
+              ac.d("MicroMsg.NetSceneTenpayNativeAuthen", "groupid: %s", new Object[] { Integer.valueOf(paramInt3) });
               getCommReqResp().getReqObj().setRouteInfo(paramInt3);
             }
           }
@@ -95,7 +95,7 @@ public class o
     }
     catch (URISyntaxException paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.NetSceneTenpayNativeAuthen", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.NetSceneTenpayNativeAuthen", paramString1, "", new Object[0]);
       AppMethodBeat.o(72894);
     }
   }
@@ -118,36 +118,36 @@ public class o
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72895);
-    ad.i("MicroMsg.NetSceneTenpayNativeAuthen", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    ad.d("MicroMsg.NetSceneTenpayNativeAuthen", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.dcE = paramJSONObject.optString("reqkey");
+    ac.i("MicroMsg.NetSceneTenpayNativeAuthen", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ac.d("MicroMsg.NetSceneTenpayNativeAuthen", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.dac = paramJSONObject.optString("reqkey");
     this.appId = paramJSONObject.optString("appid");
-    this.Axg = paramJSONObject.optString("appsource");
-    this.dft = paramJSONObject.optString("productid");
-    this.IeM = paramJSONObject.optString("retcode");
-    this.jwH = paramJSONObject.optString("retmsg");
+    this.BPA = paramJSONObject.optString("appsource");
+    this.dcO = paramJSONObject.optString("productid");
+    this.JGo = paramJSONObject.optString("retcode");
+    this.jXd = paramJSONObject.optString("retmsg");
     paramString = paramJSONObject.optJSONObject("wallet_mix_sp_genprepay_resp");
     if (paramString != null)
     {
-      this.Axh.EFF = paramString.optString("pay_gate_url");
-      this.Axh.EFH = paramString.optBoolean("need_dialog");
-      this.Axh.EFI = paramString.optString("dialog_text");
+      this.BPB.GcR = paramString.optString("pay_gate_url");
+      this.BPB.GcT = paramString.optBoolean("need_dialog");
+      this.BPB.GcU = paramString.optString("dialog_text");
       paramString = paramString.optJSONObject("callback_retry_conf");
       if (paramString != null)
       {
-        this.Axh.EFG = new qb();
-        this.Axh.EFG.COY = paramString.optInt("inteval_time");
-        this.Axh.EFG.COZ = paramString.optInt("max_count");
-        this.Axh.EFG.CPa = paramString.optString("default_wording");
+        this.BPB.GcS = new ql();
+        this.BPB.GcS.EhJ = paramString.optInt("inteval_time");
+        this.BPB.GcS.EhK = paramString.optInt("max_count");
+        this.BPB.GcS.EhL = paramString.optString("default_wording");
       }
-      ad.d("MicroMsg.NetSceneTenpayNativeAuthen", "pay_gate_url: %s, dialog_text: %s", new Object[] { this.Axh.EFF, this.Axh.EFI });
+      ac.d("MicroMsg.NetSceneTenpayNativeAuthen", "pay_gate_url: %s, dialog_text: %s", new Object[] { this.BPB.GcR, this.BPB.GcU });
     }
     AppMethodBeat.o(72895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.o
  * JD-Core Version:    0.7.0.1
  */

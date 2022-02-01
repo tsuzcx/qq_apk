@@ -6,14 +6,14 @@ import d.l.b.a.b.f.a;
 
 public final class f
 {
-  public final int JSa;
-  public final a Joh;
+  public final int LFt;
+  public final a LbB;
   
   public f(a parama, int paramInt)
   {
     AppMethodBeat.i(60051);
-    this.Joh = parama;
-    this.JSa = paramInt;
+    this.LbB = parama;
+    this.LFt = paramInt;
     AppMethodBeat.o(60051);
   }
   
@@ -26,10 +26,10 @@ public final class f
         break label65;
       }
       paramObject = (f)paramObject;
-      if (!k.g(this.Joh, paramObject.Joh)) {
+      if (!k.g(this.LbB, paramObject.LbB)) {
         break label65;
       }
-      if (this.JSa != paramObject.JSa) {
+      if (this.LFt != paramObject.LFt) {
         break label60;
       }
     }
@@ -47,11 +47,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(60052);
-    a locala = this.Joh;
+    a locala = this.LbB;
     if (locala != null) {}
     for (int i = locala.hashCode();; i = 0)
     {
-      int j = this.JSa;
+      int j = this.LFt;
       AppMethodBeat.o(60052);
       return i * 31 + j;
     }
@@ -62,15 +62,15 @@ public final class f
     int j = 0;
     AppMethodBeat.i(60050);
     Object localObject = new StringBuilder();
-    int k = this.JSa;
+    int k = this.LFt;
     int i = 0;
     while (i < k)
     {
       ((StringBuilder)localObject).append("kotlin/Array<");
       i += 1;
     }
-    ((StringBuilder)localObject).append(this.Joh);
-    k = this.JSa;
+    ((StringBuilder)localObject).append(this.LbB);
+    k = this.LFt;
     i = j;
     while (i < k)
     {
@@ -85,7 +85,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.b.f
  * JD-Core Version:    0.7.0.1
  */

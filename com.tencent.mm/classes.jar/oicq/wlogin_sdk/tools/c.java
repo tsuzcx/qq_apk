@@ -98,7 +98,7 @@ public final class c
     }
   }
   
-  public static byte[] aRi(String paramString)
+  public static byte[] aXi(String paramString)
   {
     AppMethodBeat.i(88151);
     try

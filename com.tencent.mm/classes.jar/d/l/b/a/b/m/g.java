@@ -14,10 +14,10 @@ import java.util.Set;
 public abstract class g
   implements p
 {
-  int JWV;
-  private boolean JWW;
-  ArrayDeque<d.l.b.a.b.m.c.i> JWX;
-  Set<d.l.b.a.b.m.c.i> JWY;
+  int LKo;
+  private boolean LKp;
+  ArrayDeque<d.l.b.a.b.m.c.i> LKq;
+  Set<d.l.b.a.b.m.c.i> LKr;
   
   public static Boolean a(d.l.b.a.b.m.c.g paramg1, d.l.b.a.b.m.c.g paramg2)
   {
@@ -94,17 +94,17 @@ public abstract class g
   
   public final void clear()
   {
-    Object localObject = this.JWX;
+    Object localObject = this.LKq;
     if (localObject == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     ((ArrayDeque)localObject).clear();
-    localObject = this.JWY;
+    localObject = this.LKr;
     if (localObject == null) {
-      d.g.b.k.fvU();
+      d.g.b.k.fOy();
     }
     ((Set)localObject).clear();
-    this.JWW = false;
+    this.LKp = false;
   }
   
   public m d(d.l.b.a.b.m.c.g paramg)
@@ -125,13 +125,13 @@ public abstract class g
     return p.a.b(this, paramg);
   }
   
-  public abstract boolean fJO();
-  
   public boolean g(d.l.b.a.b.m.c.g paramg)
   {
     d.g.b.k.h(paramg, "$this$isDynamic");
     return p.a.c(this, paramg);
   }
+  
+  public abstract boolean gcr();
   
   public boolean h(d.l.b.a.b.m.c.g paramg)
   {
@@ -147,18 +147,18 @@ public abstract class g
   
   public final void initialize()
   {
-    if (!this.JWW) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0) {
+    if (!this.LKp) {}
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0) {
       throw ((Throwable)new AssertionError("Assertion failed"));
     }
-    this.JWW = true;
-    if (this.JWX == null) {
-      this.JWX = new ArrayDeque(4);
+    this.LKp = true;
+    if (this.LKq == null) {
+      this.LKq = new ArrayDeque(4);
     }
-    if (this.JWY == null)
+    if (this.LKr == null)
     {
-      i.b localb = d.l.b.a.b.o.i.KbP;
-      this.JWY = ((Set)i.b.fKq());
+      i.b localb = d.l.b.a.b.o.i.LPk;
+      this.LKr = ((Set)i.b.gcT());
     }
   }
   
@@ -174,12 +174,12 @@ public abstract class g
     {
       AppMethodBeat.i(60590);
       a locala1 = new a("CHECK_ONLY_LOWER", 0);
-      JWZ = locala1;
+      LKs = locala1;
       a locala2 = new a("CHECK_SUBTYPE_AND_LOWER", 1);
-      JXa = locala2;
+      LKt = locala2;
       a locala3 = new a("SKIP_LOWER", 2);
-      JXb = locala3;
-      JXc = new a[] { locala1, locala2, locala3 };
+      LKu = locala3;
+      LKv = new a[] { locala1, locala2, locala3 };
       AppMethodBeat.o(60590);
     }
     
@@ -192,14 +192,14 @@ public abstract class g
     {
       AppMethodBeat.i(60593);
       b localb1 = new b("TAKE_FIRST_FOR_SUBTYPING", 0);
-      JXd = localb1;
+      LKw = localb1;
       b localb2 = new b("FORCE_NOT_SUBTYPE", 1);
-      JXe = localb2;
+      LKx = localb2;
       b localb3 = new b("CHECK_ANY_OF_THEM", 2);
-      JXf = localb3;
+      LKy = localb3;
       b localb4 = new b("INTERSECT_ARGUMENTS_AND_CHECK_AGAIN", 3);
-      JXg = localb4;
-      JXh = new b[] { localb1, localb2, localb3, localb4 };
+      LKz = localb4;
+      LKA = new b[] { localb1, localb2, localb3, localb4 };
       AppMethodBeat.o(60593);
     }
     
@@ -222,12 +222,12 @@ public abstract class g
     public static final class b
       extends g.c
     {
-      public static final b JXi;
+      public static final b LKB;
       
       static
       {
         AppMethodBeat.i(60597);
-        JXi = new b();
+        LKB = new b();
         AppMethodBeat.o(60597);
       }
       
@@ -250,12 +250,12 @@ public abstract class g
     public static final class c
       extends g.c
     {
-      public static final c JXj;
+      public static final c LKC;
       
       static
       {
         AppMethodBeat.i(60599);
-        JXj = new c();
+        LKC = new c();
         AppMethodBeat.o(60599);
       }
       
@@ -268,12 +268,12 @@ public abstract class g
     public static final class d
       extends g.c
     {
-      public static final d JXk;
+      public static final d LKD;
       
       static
       {
         AppMethodBeat.i(60601);
-        JXk = new d();
+        LKD = new d();
         AppMethodBeat.o(60601);
       }
       
@@ -296,7 +296,7 @@ public abstract class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.g
  * JD-Core Version:    0.7.0.1
  */

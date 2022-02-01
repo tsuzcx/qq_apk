@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AdlandingRemoteServiceConnectedReceiver
   extends BroadcastReceiver
 {
-  private Runnable cvK;
+  private Runnable csS;
   
   public static void a(d paramd)
   {
@@ -21,8 +21,8 @@ public class AdlandingRemoteServiceConnectedReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(95411);
-    if ((paramIntent != null) && ("com.tencnet.mm.action.adlanding.connected".equals(paramIntent.getAction())) && (this.cvK != null)) {
-      this.cvK.run();
+    if ((paramIntent != null) && ("com.tencnet.mm.action.adlanding.connected".equals(paramIntent.getAction())) && (this.csS != null)) {
+      this.csS.run();
     }
     AppMethodBeat.o(95411);
   }

@@ -16,17 +16,17 @@ import java.lang.ref.WeakReference;
 public final class f
   extends b
 {
-  String Gku;
-  String HgM;
+  String HKj;
+  String IHf;
   
   public f(Context paramContext, String paramString1, String paramString2)
   {
     super(paramContext);
     AppMethodBeat.i(38778);
-    this.Gku = null;
-    this.HgM = null;
-    this.Gku = paramString1;
-    this.HgM = paramString2;
+    this.HKj = null;
+    this.IHf = null;
+    this.HKj = paramString1;
+    this.IHf = paramString2;
     if (this.view != null)
     {
       paramContext = (ImageView)this.view.findViewById(2131298064);
@@ -35,24 +35,24 @@ public final class f
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(38777);
-          Object localObject = new Intent((Context)f.this.BZM.get(), SelectContactUI.class);
-          ((Intent)localObject).putExtra("list_attr", u.jw(u.GWA, 256));
+          Object localObject = new Intent((Context)f.this.Dsc.get(), SelectContactUI.class);
+          ((Intent)localObject).putExtra("list_attr", u.jI(u.IwO, 256));
           ((Intent)localObject).putExtra("list_type", 10);
-          ((Intent)localObject).putExtra("received_card_name", f.this.Gku);
+          ((Intent)localObject).putExtra("received_card_name", f.this.HKj);
           ((Intent)localObject).putExtra("recommend_friends", true);
-          ((Intent)localObject).putExtra("titile", ((Context)f.this.BZM.get()).getString(2131755234));
-          paramAnonymousView = (Context)f.this.BZM.get();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          ((Intent)localObject).putExtra("titile", ((Context)f.this.Dsc.get()).getString(2131755234));
+          paramAnonymousView = (Context)f.this.Dsc.get();
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/ui/conversation/banner/ChattingRecommendBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          az.arV().aqk().uG(f.this.Gku);
-          az.arV().aqk().uG(f.this.HgM);
-          h.vKh.f(11003, new Object[] { f.this.Gku, Integer.valueOf(2), Integer.valueOf(0) });
+          az.ayM().awZ().yM(f.this.HKj);
+          az.ayM().awZ().yM(f.this.IHf);
+          h.wUl.f(11003, new Object[] { f.this.HKj, Integer.valueOf(2), Integer.valueOf(0) });
           AppMethodBeat.o(38777);
         }
       });
-      paramContext.setImageBitmap(com.tencent.mm.ak.c.a(this.Gku, true, -1, null));
+      paramContext.setImageBitmap(com.tencent.mm.aj.c.a(this.HKj, true, -1, null));
     }
     AppMethodBeat.o(38778);
   }
@@ -66,7 +66,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.f
  * JD-Core Version:    0.7.0.1
  */

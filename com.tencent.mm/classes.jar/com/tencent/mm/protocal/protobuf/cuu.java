@@ -1,120 +1,174 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class cuu
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Desc;
-  public SKBuiltinBuffer_t Emy;
-  public int Height;
-  public String Md5;
-  public int Width;
-  public int mBC;
+  public LinkedList<dhx> FFY;
+  public int FFZ;
+  public String fQi;
+  public int hZq;
+  public int hpy;
+  public String md5;
+  public int thumbHeight;
+  public int thumbWidth;
+  public String url;
+  public String yaF;
+  
+  public cuu()
+  {
+    AppMethodBeat.i(127174);
+    this.FFY = new LinkedList();
+    AppMethodBeat.o(127174);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125784);
+    AppMethodBeat.i(127175);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Md5 != null) {
-        paramVarArgs.d(1, this.Md5);
-      }
-      if (this.Emy != null)
+      if (this.yaF == null)
       {
-        paramVarArgs.kX(2, this.Emy.computeSize());
-        this.Emy.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: clientID");
+        AppMethodBeat.o(127175);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(3, this.Width);
-      paramVarArgs.aR(4, this.Height);
-      paramVarArgs.aR(5, this.mBC);
-      if (this.Desc != null) {
-        paramVarArgs.d(6, this.Desc);
+      paramVarArgs.e(1, 8, this.FFY);
+      if (this.yaF != null) {
+        paramVarArgs.d(2, this.yaF);
       }
-      AppMethodBeat.o(125784);
+      if (this.md5 != null) {
+        paramVarArgs.d(3, this.md5);
+      }
+      if (this.fQi != null) {
+        paramVarArgs.d(4, this.fQi);
+      }
+      if (this.url != null) {
+        paramVarArgs.d(5, this.url);
+      }
+      paramVarArgs.aR(6, this.hpy);
+      paramVarArgs.aR(7, this.hZq);
+      paramVarArgs.aR(8, this.FFZ);
+      paramVarArgs.aR(9, this.thumbHeight);
+      paramVarArgs.aR(10, this.thumbWidth);
+      AppMethodBeat.o(127175);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Md5 == null) {
-        break label562;
-      }
-    }
-    label562:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Md5) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.Emy != null) {
-        i = paramInt + f.a.a.a.kW(2, this.Emy.computeSize());
-      }
-      i = i + f.a.a.b.b.a.bA(3, this.Width) + f.a.a.b.b.a.bA(4, this.Height) + f.a.a.b.b.a.bA(5, this.mBC);
+      i = f.a.a.a.c(1, 8, this.FFY) + 0;
       paramInt = i;
-      if (this.Desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.Desc);
+      if (this.yaF != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.yaF);
       }
-      AppMethodBeat.o(125784);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(125784);
-        return 0;
+      i = paramInt;
+      if (this.md5 != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.md5);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        cuu localcuu = (cuu)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(125784);
-          return -1;
-        case 1: 
-          localcuu.Md5 = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(125784);
-          return 0;
-        case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new SKBuiltinBuffer_t();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcuu.Emy = ((SKBuiltinBuffer_t)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125784);
-          return 0;
-        case 3: 
-          localcuu.Width = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(125784);
-          return 0;
-        case 4: 
-          localcuu.Height = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(125784);
-          return 0;
-        case 5: 
-          localcuu.mBC = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(125784);
-          return 0;
-        }
-        localcuu.Desc = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(125784);
-        return 0;
+      paramInt = i;
+      if (this.fQi != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.fQi);
       }
-      AppMethodBeat.o(125784);
-      return -1;
+      i = paramInt;
+      if (this.url != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.url);
+      }
+      paramInt = f.a.a.b.b.a.bx(6, this.hpy);
+      int j = f.a.a.b.b.a.bx(7, this.hZq);
+      int k = f.a.a.b.b.a.bx(8, this.FFZ);
+      int m = f.a.a.b.b.a.bx(9, this.thumbHeight);
+      int n = f.a.a.b.b.a.bx(10, this.thumbWidth);
+      AppMethodBeat.o(127175);
+      return i + paramInt + j + k + m + n;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.FFY.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      if (this.yaF == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: clientID");
+        AppMethodBeat.o(127175);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(127175);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      cuu localcuu = (cuu)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(127175);
+        return -1;
+      case 1: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new dhx();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((dhx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcuu.FFY.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(127175);
+        return 0;
+      case 2: 
+        localcuu.yaF = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 3: 
+        localcuu.md5 = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 4: 
+        localcuu.fQi = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 5: 
+        localcuu.url = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 6: 
+        localcuu.hpy = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 7: 
+        localcuu.hZq = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 8: 
+        localcuu.FFZ = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127175);
+        return 0;
+      case 9: 
+        localcuu.thumbHeight = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127175);
+        return 0;
+      }
+      localcuu.thumbWidth = ((f.a.a.a.a)localObject1).LVo.xF();
+      AppMethodBeat.o(127175);
+      return 0;
+    }
+    AppMethodBeat.o(127175);
+    return -1;
   }
 }
 

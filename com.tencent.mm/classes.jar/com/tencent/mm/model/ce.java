@@ -5,54 +5,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class ce
 {
-  private static boolean gPB = false;
-  private static long gPC = 0L;
+  private static boolean hqb = false;
+  private static long hqc = 0L;
   
-  public static long asQ()
+  public static long azH()
   {
     AppMethodBeat.i(132281);
-    if (aj.cbv())
+    if (ai.ciE())
     {
-      g.afC();
-      if (g.afz().aeI()) {}
+      g.agS();
+      if (g.agP().afY()) {}
     }
     else
     {
-      ad.i("MicroMsg.TimeHelper", "account error");
+      ac.i("MicroMsg.TimeHelper", "account error");
       AppMethodBeat.o(132281);
       return 0L;
     }
     try
     {
-      long l = asR();
+      long l = azI();
       AppMethodBeat.o(132281);
       return l;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("MicroMsg.TimeHelper", localThrowable.getMessage());
+      ac.e("MicroMsg.TimeHelper", localThrowable.getMessage());
       AppMethodBeat.o(132281);
     }
     return 0L;
   }
   
-  public static long asR()
+  public static long azI()
   {
     AppMethodBeat.i(132283);
     long l2 = SystemClock.elapsedRealtime();
-    g.afC();
-    long l3 = g.afB().afk().a(ae.a.FoY, l2);
-    g.afC();
-    long l1 = g.afB().afk().a(ae.a.FoX, 0L);
+    g.agS();
+    long l3 = g.agR().agA().a(ah.a.GMN, l2);
+    g.agS();
+    long l1 = g.agR().agA().a(ah.a.GMM, 0L);
     l2 = Math.max(0L, l2 - l3);
-    ad.d("MicroMsg.TimeHelper", "[getSyncServerTimeMs] SyncServerTime:" + gPC + " offset:" + l2);
+    ac.d("MicroMsg.TimeHelper", "[getSyncServerTimeMs] SyncServerTime:" + hqc + " offset:" + l2);
     if (0L < l1)
     {
       AppMethodBeat.o(132283);
@@ -63,12 +63,12 @@ public final class ce
     return l1;
   }
   
-  public static long asS()
+  public static long azJ()
   {
     AppMethodBeat.i(162133);
-    if (gPB)
+    if (hqb)
     {
-      l = asR();
+      l = azI();
       AppMethodBeat.o(162133);
       return l;
     }
@@ -77,32 +77,32 @@ public final class ce
     return l;
   }
   
-  public static int asT()
+  public static int azK()
   {
     AppMethodBeat.i(132284);
-    int i = (int)(asR() / 1000L);
+    int i = (int)(azI() / 1000L);
     AppMethodBeat.o(132284);
     return i;
   }
   
-  public static void lY(long paramLong)
+  public static void pM(long paramLong)
   {
     AppMethodBeat.i(132282);
     long l = SystemClock.elapsedRealtime();
-    gPC = Math.max(paramLong, gPC);
-    g.afC();
-    g.afB().afk().set(ae.a.FoX, Long.valueOf(gPC));
-    g.afC();
-    g.afB().afk().set(ae.a.FoY, Long.valueOf(l));
-    ad.d("MicroMsg.TimeHelper", "[updateSyncServerTime] elapsedTime:%s SLastSyncServerTimeMs:%s", new Object[] { Long.valueOf(l), Long.valueOf(gPC) });
-    gPB = true;
+    hqc = Math.max(paramLong, hqc);
+    g.agS();
+    g.agR().agA().set(ah.a.GMM, Long.valueOf(hqc));
+    g.agS();
+    g.agR().agA().set(ah.a.GMN, Long.valueOf(l));
+    ac.d("MicroMsg.TimeHelper", "[updateSyncServerTime] elapsedTime:%s SLastSyncServerTimeMs:%s", new Object[] { Long.valueOf(l), Long.valueOf(hqc) });
+    hqb = true;
     AppMethodBeat.o(132282);
   }
   
-  public static long lZ(long paramLong)
+  public static long pN(long paramLong)
   {
     AppMethodBeat.i(132285);
-    long l = asR() / 1000L;
+    long l = azI() / 1000L;
     AppMethodBeat.o(132285);
     return l - paramLong;
   }

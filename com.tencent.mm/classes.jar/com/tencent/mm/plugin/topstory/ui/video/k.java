@@ -12,48 +12,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  int JT;
-  float klO;
-  View ktX;
-  private GestureDetector ktZ;
-  private float kub;
-  int kuc;
-  int kud;
-  Runnable kue;
+  a Adv;
+  c Adw;
+  boolean Adx;
+  boolean Ady;
+  int KO;
+  float kNg;
+  View kVm;
+  private GestureDetector kVo;
+  private float kVq;
+  int kVr;
+  int kVs;
+  Runnable kVt;
   Context mContext;
-  a yPE;
-  c yPF;
-  boolean yPG;
-  boolean yPH;
   
   public k(Context paramContext, View paramView, c paramc)
   {
     AppMethodBeat.i(126104);
-    this.yPE = a.yPJ;
-    this.klO = 0.0F;
-    this.JT = 0;
-    this.kub = 0.0F;
-    this.kuc = -1;
-    this.kud = 0;
-    this.kue = new Runnable()
+    this.Adv = a.AdA;
+    this.kNg = 0.0F;
+    this.KO = 0;
+    this.kVq = 0.0F;
+    this.kVr = -1;
+    this.kVs = 0;
+    this.kVt = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126097);
-        k.this.yPF.bcn();
+        k.this.Adw.bjj();
         AppMethodBeat.o(126097);
       }
     };
     this.mContext = paramContext;
-    this.yPF = paramc;
-    this.ktX = paramView;
-    this.ktZ = new GestureDetector(this.mContext, new GestureDetector.SimpleOnGestureListener()
+    this.Adw = paramc;
+    this.kVm = paramView;
+    this.kVo = new GestureDetector(this.mContext, new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(126099);
-        k.this.ktX.removeCallbacks(k.this.kue);
-        k.this.yPF.bco();
+        k.this.kVm.removeCallbacks(k.this.kVt);
+        k.this.Adw.bjk();
         AppMethodBeat.o(126099);
         return true;
       }
@@ -68,12 +68,12 @@ public final class k
           AppMethodBeat.o(126100);
           return true;
         }
-        if (k.this.yPE == k.a.yPJ)
+        if (k.this.Adv == k.a.AdA)
         {
           if (Math.abs(paramAnonymousFloat1) <= Math.abs(paramAnonymousFloat2)) {
             break label153;
           }
-          k.this.yPE = k.a.yPM;
+          k.this.Adv = k.a.AdD;
         }
         float f3;
         for (;;)
@@ -82,27 +82,27 @@ public final class k
           paramAnonymousFloat2 = paramAnonymousMotionEvent1.getX();
           f3 = paramAnonymousMotionEvent2.getY() - paramAnonymousMotionEvent1.getY();
           paramAnonymousMotionEvent1 = k.this;
-          if (paramAnonymousMotionEvent1.yPE != k.a.yPM) {
+          if (paramAnonymousMotionEvent1.Adv != k.a.AdD) {
             break;
           }
-          if (paramAnonymousMotionEvent1.kuc == -1)
+          if (paramAnonymousMotionEvent1.kVr == -1)
           {
-            paramAnonymousMotionEvent1.yPF.bcp();
-            paramAnonymousMotionEvent1.kuc = paramAnonymousMotionEvent1.yPF.getCurrentPosition();
+            paramAnonymousMotionEvent1.Adw.bjl();
+            paramAnonymousMotionEvent1.kVr = paramAnonymousMotionEvent1.Adw.getCurrentPosition();
           }
-          paramAnonymousMotionEvent1.kud = paramAnonymousMotionEvent1.yPF.by(paramAnonymousFloat1 - paramAnonymousFloat2);
+          paramAnonymousMotionEvent1.kVs = paramAnonymousMotionEvent1.Adw.bG(paramAnonymousFloat1 - paramAnonymousFloat2);
           AppMethodBeat.o(126100);
           return true;
           label153:
-          if (paramAnonymousMotionEvent1.getX() < k.this.ktX.getMeasuredWidth() / 2) {
-            k.this.yPE = k.a.yPL;
+          if (paramAnonymousMotionEvent1.getX() < k.this.kVm.getMeasuredWidth() / 2) {
+            k.this.Adv = k.a.AdC;
           } else {
-            k.this.yPE = k.a.yPK;
+            k.this.Adv = k.a.AdB;
           }
         }
-        if ((paramAnonymousMotionEvent1.yPE == k.a.yPL) && (paramAnonymousMotionEvent1.yPH))
+        if ((paramAnonymousMotionEvent1.Adv == k.a.AdC) && (paramAnonymousMotionEvent1.Ady))
         {
-          paramAnonymousFloat1 = f3 * -1.0F / paramAnonymousMotionEvent1.ktX.getMeasuredHeight() * 1.2F + paramAnonymousMotionEvent1.klO;
+          paramAnonymousFloat1 = f3 * -1.0F / paramAnonymousMotionEvent1.kVm.getMeasuredHeight() * 1.2F + paramAnonymousMotionEvent1.kNg;
           if (paramAnonymousFloat1 < 0.0F) {
             paramAnonymousFloat1 = f2;
           }
@@ -138,11 +138,11 @@ public final class k
               paramAnonymousFloat2 = paramAnonymousFloat1;
             }
           }
-          if ((paramAnonymousMotionEvent1.yPE != k.a.yPK) || (!paramAnonymousMotionEvent1.yPG)) {
+          if ((paramAnonymousMotionEvent1.Adv != k.a.AdB) || (!paramAnonymousMotionEvent1.Adx)) {
             break;
           }
           paramAnonymousFloat1 = f3 * -1.0F;
-          paramAnonymousFloat2 = paramAnonymousFloat1 / paramAnonymousMotionEvent1.ktX.getMeasuredHeight();
+          paramAnonymousFloat2 = paramAnonymousFloat1 / paramAnonymousMotionEvent1.kVm.getMeasuredHeight();
           paramAnonymousMotionEvent2 = (AudioManager)paramAnonymousMotionEvent1.mContext.getSystemService("audio");
           int j = paramAnonymousMotionEvent2.getStreamMaxVolume(3);
           paramAnonymousFloat2 = 1.2F * (paramAnonymousFloat2 * j);
@@ -154,7 +154,7 @@ public final class k
           }
           for (;;)
           {
-            int k = i + paramAnonymousMotionEvent1.JT;
+            int k = i + paramAnonymousMotionEvent1.KO;
             if (k < 0) {
               i = 0;
             }
@@ -179,64 +179,64 @@ public final class k
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(126098);
-        k.this.ktX.postDelayed(k.this.kue, 200L);
+        k.this.kVm.postDelayed(k.this.kVt, 200L);
         AppMethodBeat.o(126098);
         return true;
       }
     });
-    this.klO = com.tencent.mm.plugin.websearch.ui.a.dp(paramContext);
+    this.kNg = com.tencent.mm.plugin.websearch.ui.a.dy(paramContext);
     AppMethodBeat.o(126104);
   }
   
-  public final void A(MotionEvent paramMotionEvent)
+  public final void bkY()
+  {
+    this.kVr = -1;
+    this.kVs = 0;
+    this.kVq = 0.0F;
+  }
+  
+  public final void y(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(126105);
-    if (!this.yPF.dOY())
+    if (!this.Adw.edy())
     {
-      this.yPE = a.yPJ;
+      this.Adv = a.AdA;
       AppMethodBeat.o(126105);
       return;
     }
     int i = paramMotionEvent.getActionMasked();
     if (i == 0)
     {
-      this.kub = paramMotionEvent.getRawX();
-      this.JT = ((AudioManager)this.mContext.getSystemService("audio")).getStreamVolume(3);
-      this.klO = com.tencent.mm.plugin.websearch.ui.a.dp(this.mContext);
+      this.kVq = paramMotionEvent.getRawX();
+      this.KO = ((AudioManager)this.mContext.getSystemService("audio")).getStreamVolume(3);
+      this.kNg = com.tencent.mm.plugin.websearch.ui.a.dy(this.mContext);
     }
-    this.ktZ.onTouchEvent(paramMotionEvent);
+    this.kVo.onTouchEvent(paramMotionEvent);
     if ((i == 1) || (i == 3))
     {
-      if (this.yPE != a.yPM) {
+      if (this.Adv != a.AdD) {
         break label157;
       }
-      c localc = this.yPF;
-      i = this.kud;
+      c localc = this.Adw;
+      i = this.kVs;
       paramMotionEvent.getRawX();
-      localc.Pk(i);
-      this.kuc = -1;
-      this.kud = 0;
-      this.kub = 0.0F;
+      localc.Rq(i);
+      this.kVr = -1;
+      this.kVs = 0;
+      this.kVq = 0.0F;
     }
     for (;;)
     {
-      this.yPE = a.yPJ;
+      this.Adv = a.AdA;
       AppMethodBeat.o(126105);
       return;
       label157:
-      if (this.yPE == a.yPK) {
+      if (this.Adv == a.AdB) {
         ((AudioManager)this.mContext.getSystemService("audio")).getStreamMaxVolume(3);
       } else {
-        paramMotionEvent = a.yPL;
+        paramMotionEvent = a.AdC;
       }
     }
-  }
-  
-  public final void bee()
-  {
-    this.kuc = -1;
-    this.kud = 0;
-    this.kub = 0.0F;
   }
   
   static enum a
@@ -244,11 +244,11 @@ public final class k
     static
     {
       AppMethodBeat.i(126103);
-      yPJ = new a("None", 0);
-      yPK = new a("Volume", 1);
-      yPL = new a("Brightness", 2);
-      yPM = new a("FastBackwardOrForward", 3);
-      yPN = new a[] { yPJ, yPK, yPL, yPM };
+      AdA = new a("None", 0);
+      AdB = new a("Volume", 1);
+      AdC = new a("Brightness", 2);
+      AdD = new a("FastBackwardOrForward", 3);
+      AdE = new a[] { AdA, AdB, AdC, AdD };
       AppMethodBeat.o(126103);
     }
     

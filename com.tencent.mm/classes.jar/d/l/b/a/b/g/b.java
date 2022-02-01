@@ -11,7 +11,7 @@ import java.util.Set;
 public final class b
   implements d.g.b.a.a, Collection<a>
 {
-  final Set<a> JMm;
+  final Set<a> LzF;
   
   public final boolean addAll(Collection<? extends a> paramCollection)
   {
@@ -39,7 +39,7 @@ public final class b
     }
     paramObject = (a)paramObject;
     k.h(paramObject, "element");
-    boolean bool = this.JMm.contains(paramObject);
+    boolean bool = this.LzF.contains(paramObject);
     AppMethodBeat.o(59345);
     return bool;
   }
@@ -48,7 +48,7 @@ public final class b
   {
     AppMethodBeat.i(59346);
     k.h(paramCollection, "elements");
-    boolean bool = this.JMm.containsAll(paramCollection);
+    boolean bool = this.LzF.containsAll(paramCollection);
     AppMethodBeat.o(59346);
     return bool;
   }
@@ -66,7 +66,7 @@ public final class b
       AppMethodBeat.o(59342);
       return false;
     }
-    if ((k.g(this.JMm, ((b)paramObject).JMm) ^ true))
+    if ((k.g(this.LzF, ((b)paramObject).LzF) ^ true))
     {
       AppMethodBeat.o(59342);
       return false;
@@ -78,7 +78,7 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(59343);
-    int i = this.JMm.hashCode();
+    int i = this.LzF.hashCode();
     AppMethodBeat.o(59343);
     return i;
   }
@@ -86,7 +86,7 @@ public final class b
   public final boolean isEmpty()
   {
     AppMethodBeat.i(59347);
-    boolean bool = this.JMm.isEmpty();
+    boolean bool = this.LzF.isEmpty();
     AppMethodBeat.o(59347);
     return bool;
   }
@@ -94,7 +94,7 @@ public final class b
   public final Iterator<a> iterator()
   {
     AppMethodBeat.i(59348);
-    Iterator localIterator = this.JMm.iterator();
+    Iterator localIterator = this.LzF.iterator();
     AppMethodBeat.o(59348);
     return localIterator;
   }
@@ -126,7 +126,7 @@ public final class b
   public final Object[] toArray()
   {
     AppMethodBeat.i(59355);
-    Object[] arrayOfObject = f.r(this);
+    Object[] arrayOfObject = f.s(this);
     AppMethodBeat.o(59355);
     return arrayOfObject;
   }
@@ -143,14 +143,14 @@ public final class b
   {
     AppMethodBeat.i(59341);
     k.h(this, "$this$presentableDescription");
-    String str = j.a((Iterable)this.JMm, (CharSequence)"/", null, null, 0, null, null, 62);
+    String str = j.a((Iterable)this.LzF, (CharSequence)"/", null, null, 0, null, null, 62);
     AppMethodBeat.o(59341);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.g.b
  * JD-Core Version:    0.7.0.1
  */

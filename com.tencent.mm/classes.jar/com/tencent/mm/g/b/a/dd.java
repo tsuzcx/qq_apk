@@ -6,89 +6,32 @@ import com.tencent.mm.plugin.report.a;
 public final class dd
   extends a
 {
-  private long dFO = 0L;
-  private String dTG = "";
-  public long dTH = 0L;
-  private long dTI = 0L;
-  private long dTd = 0L;
-  private long dTe = 0L;
+  public long dNx = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(118486);
+    AppMethodBeat.i(149922);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTI);
+    ((StringBuffer)localObject).append(this.dNx);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(118486);
+    arz((String)localObject);
+    AppMethodBeat.o(149922);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(118487);
+    AppMethodBeat.i(149923);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("NetType:").append(this.dFO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dTd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceUserName:").append(this.dTG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceContactType:").append(this.dTH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.dTe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasEnterPreview:").append(this.dTI);
+    ((StringBuffer)localObject).append("ClickScene:").append(this.dNx);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118487);
+    AppMethodBeat.o(149923);
     return localObject;
-  }
-  
-  public final dd QJ()
-  {
-    this.dTe = 1L;
-    return this;
-  }
-  
-  public final dd QK()
-  {
-    this.dTI = 1L;
-    return this;
-  }
-  
-  public final dd fA(long paramLong)
-  {
-    this.dTd = paramLong;
-    return this;
-  }
-  
-  public final dd fz(long paramLong)
-  {
-    this.dFO = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16659;
-  }
-  
-  public final dd jC(String paramString)
-  {
-    AppMethodBeat.i(118485);
-    this.dTG = t("SourceUserName", paramString, true);
-    AppMethodBeat.o(118485);
-    return this;
+    return 16871;
   }
 }
 

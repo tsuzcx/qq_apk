@@ -6,7 +6,7 @@ import com.tencent.kinda.gen.IUIPagePlatformDelegate;
 import com.tencent.kinda.gen.KindaModalManager;
 import com.tencent.kinda.gen.Platform;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class KindaModalManagerImpl
   implements KindaModalManager
@@ -16,7 +16,7 @@ public class KindaModalManagerImpl
   public void addModalView(IUIModal paramIUIModal)
   {
     AppMethodBeat.i(18642);
-    ad.i("MicroMsg.KindaModalManagerImpl", "kinda call addModalView, modal: ".concat(String.valueOf(paramIUIModal)));
+    ac.i("MicroMsg.KindaModalManagerImpl", "kinda call addModalView, modal: ".concat(String.valueOf(paramIUIModal)));
     ActivityController.startNewUIModal(paramIUIModal);
     AppMethodBeat.o(18642);
   }
@@ -45,7 +45,7 @@ public class KindaModalManagerImpl
   public void removeModalView(IUIModal paramIUIModal)
   {
     AppMethodBeat.i(18643);
-    ad.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: ".concat(String.valueOf(paramIUIModal)));
+    ac.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: ".concat(String.valueOf(paramIUIModal)));
     ActivityController.remove(paramIUIModal);
     AppMethodBeat.o(18643);
   }

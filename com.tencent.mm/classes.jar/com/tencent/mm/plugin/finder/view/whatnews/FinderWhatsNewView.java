@@ -14,25 +14,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.b.k;
 import d.l;
 import d.v;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "detachFinish", "Lkotlin/Function0;", "", "getDetachFinish", "()Lkotlin/jvm/functions/Function0;", "setDetachFinish", "(Lkotlin/jvm/functions/Function0;)V", "withEnterAnim", "", "getWithEnterAnim", "()Z", "setWithEnterAnim", "(Z)V", "onAttachedToWindow", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "startAnimation", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "detachFinish", "Lkotlin/Function0;", "", "getDetachFinish", "()Lkotlin/jvm/functions/Function0;", "setDetachFinish", "(Lkotlin/jvm/functions/Function0;)V", "withEnterAnim", "", "getWithEnterAnim", "()Z", "setWithEnterAnim", "(Z)V", "onAttachedToWindow", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "startAnimation", "Companion", "plugin-finder_release"})
 public final class FinderWhatsNewView
   extends FrameLayout
 {
-  public static final a qZB;
-  private boolean qZA;
-  private d.g.a.a<y> qZz;
+  public static final FinderWhatsNewView.a sbE;
+  private d.g.a.a<y> sbC;
+  private boolean sbD;
   
   static
   {
     AppMethodBeat.i(168565);
-    qZB = new a((byte)0);
+    sbE = new FinderWhatsNewView.a((byte)0);
     AppMethodBeat.o(168565);
   }
   
@@ -41,10 +41,10 @@ public final class FinderWhatsNewView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168563);
     setId(2131300080);
-    paramContext = a.qZx;
-    paramContext = a.qZx;
+    paramContext = a.sbA;
+    paramContext = a.sbA;
     LayoutInflater.from(getContext()).inflate(2131494127, (ViewGroup)this, true);
-    this.qZz = ((d.g.a.a)FinderWhatsNewView.b.qZC);
+    this.sbC = ((d.g.a.a)FinderWhatsNewView.b.sbF);
     AppMethodBeat.o(168563);
   }
   
@@ -53,21 +53,21 @@ public final class FinderWhatsNewView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168564);
     setId(2131300080);
-    paramContext = a.qZx;
-    paramContext = a.qZx;
+    paramContext = a.sbA;
+    paramContext = a.sbA;
     LayoutInflater.from(getContext()).inflate(2131494127, (ViewGroup)this, true);
-    this.qZz = ((d.g.a.a)FinderWhatsNewView.b.qZC);
+    this.sbC = ((d.g.a.a)FinderWhatsNewView.b.sbF);
     AppMethodBeat.o(168564);
   }
   
   public final d.g.a.a<y> getDetachFinish()
   {
-    return this.qZz;
+    return this.sbC;
   }
   
   public final boolean getWithEnterAnim()
   {
-    return this.qZA;
+    return this.sbD;
   }
   
   protected final void onAttachedToWindow()
@@ -75,8 +75,8 @@ public final class FinderWhatsNewView
     AppMethodBeat.i(168562);
     super.onAttachedToWindow();
     Button localButton = (Button)findViewById(2131299497);
-    Object localObject = a.qZx;
-    localObject = a.qZx;
+    Object localObject = a.sbA;
+    localObject = a.sbA;
     k.g(localButton, "it");
     localObject = getContext();
     k.g(localObject, "context");
@@ -98,19 +98,16 @@ public final class FinderWhatsNewView
   {
     AppMethodBeat.i(168561);
     k.h(parama, "<set-?>");
-    this.qZz = parama;
+    this.sbC = parama;
     AppMethodBeat.o(168561);
   }
   
   public final void setWithEnterAnim(boolean paramBoolean)
   {
-    this.qZA = paramBoolean;
+    this.sbD = paramBoolean;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewView$Companion;", "", "()V", "attachToWindow", "Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewView;", "window", "Landroid/view/Window;", "withEnterAnim", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewView$onAttachedToWindow$1$1"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewView$onAttachedToWindow$1$1"})
   static final class c
     implements View.OnClickListener
   {
@@ -119,20 +116,20 @@ public final class FinderWhatsNewView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168557);
-      this.qZD.animate().alpha(0.0F).setDuration(300L).withEndAction((Runnable)new Runnable()
+      this.sbG.animate().alpha(0.0F).setDuration(300L).withEndAction((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(168556);
-          Object localObject = this.qZE.qZD.getParent();
+          Object localObject = this.sbH.sbG.getParent();
           if (localObject == null)
           {
             localObject = new v("null cannot be cast to non-null type android.view.ViewGroup");
             AppMethodBeat.o(168556);
             throw ((Throwable)localObject);
           }
-          ((ViewGroup)localObject).removeView((View)this.qZE.qZD);
-          this.qZE.qZD.getDetachFinish().invoke();
+          ((ViewGroup)localObject).removeView((View)this.sbH.sbG);
+          this.sbH.sbG.getDetachFinish().invoke();
           AppMethodBeat.o(168556);
         }
       }).start();
@@ -140,7 +137,7 @@ public final class FinderWhatsNewView
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -149,17 +146,17 @@ public final class FinderWhatsNewView
     public final void run()
     {
       AppMethodBeat.i(168558);
-      Object localObject = a.qZx;
-      localObject = g.afB();
+      Object localObject = a.sbA;
+      localObject = g.agR();
       k.g(localObject, "MMKernel.storage()");
-      ((e)localObject).afk().set(ae.a.FwR, Boolean.TRUE);
-      h.vKh.m(1305L, 0L, 1L);
-      FinderWhatsNewView.a(this.qZD);
+      ((e)localObject).agA().set(ah.a.GVh, Boolean.TRUE);
+      h.wUl.n(1305L, 0L, 1L);
+      FinderWhatsNewView.a(this.sbG);
       AppMethodBeat.o(168558);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -168,7 +165,7 @@ public final class FinderWhatsNewView
     public final void run()
     {
       AppMethodBeat.i(168559);
-      this.qZD.setTranslationX(0.0F);
+      this.sbG.setTranslationX(0.0F);
       AppMethodBeat.o(168559);
     }
   }

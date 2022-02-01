@@ -11,8 +11,8 @@ import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,44 +27,44 @@ import java.util.Set;
 public final class a
   implements Application.ActivityLifecycleCallbacks, Runnable
 {
-  private static final a hQu;
-  public final ActivityManager aGF;
+  private static final a iqA;
+  public final ActivityManager aHv;
   private volatile String activity;
-  public boolean ctF;
-  public int hQv;
-  public int hQw;
-  private int hQx;
-  private boolean hQy;
-  private long hQz;
+  public boolean cqM;
+  private long gat;
+  public int iqB;
+  public int iqC;
+  private int iqD;
+  private boolean iqE;
   public String mProcessName;
   
   static
   {
     AppMethodBeat.i(145574);
-    hQu = new a();
+    iqA = new a();
     AppMethodBeat.o(145574);
   }
   
   public a()
   {
     AppMethodBeat.i(145561);
-    this.hQx = 0;
-    this.hQy = true;
-    this.ctF = true;
-    this.aGF = ((ActivityManager)aj.getContext().getSystemService("activity"));
-    this.hQz = 0L;
+    this.iqD = 0;
+    this.iqE = true;
+    this.cqM = true;
+    this.aHv = ((ActivityManager)ai.getContext().getSystemService("activity"));
+    this.gat = 0L;
     AppMethodBeat.o(145561);
   }
   
-  public static a aFM()
+  public static a aMA()
   {
-    return hQu;
+    return iqA;
   }
   
-  private int[] aFN()
+  private int[] aMB()
   {
     AppMethodBeat.i(170135);
-    List localList = this.aGF.getRunningAppProcesses();
+    List localList = this.aHv.getRunningAppProcesses();
     int[] arrayOfInt = new int[localList.size()];
     int i = 0;
     while (i < localList.size())
@@ -72,54 +72,54 @@ public final class a
       arrayOfInt[i] = ((ActivityManager.RunningAppProcessInfo)localList.get(i)).pid;
       i += 1;
     }
-    ad.d("MicroMsg.MemoryWatchDog", "pids = %s", new Object[] { Arrays.toString(arrayOfInt) });
+    ac.d("MicroMsg.MemoryWatchDog", "pids = %s", new Object[] { Arrays.toString(arrayOfInt) });
     AppMethodBeat.o(170135);
     return arrayOfInt;
   }
   
-  private boolean aFO()
-  {
-    AppMethodBeat.i(145569);
-    long l = SystemClock.uptimeMillis();
-    if (l - this.hQz > 2000L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.hQz = l;
-      AppMethodBeat.o(145569);
-      return bool;
-    }
-  }
-  
-  private static int aFP()
+  private static int aMC()
   {
     AppMethodBeat.i(145573);
-    if (aj.cbe())
+    if (ai.cin())
     {
       AppMethodBeat.o(145573);
       return 1161;
     }
-    if (aj.isAppBrandProcess())
+    if (ai.isAppBrandProcess())
     {
       AppMethodBeat.o(145573);
       return 1162;
     }
-    if (aj.eFJ())
+    if (ai.eVd())
     {
       AppMethodBeat.o(145573);
       return 1163;
     }
-    if (aj.eFH())
+    if (ai.eVb())
     {
       AppMethodBeat.o(145573);
       return 1164;
     }
-    if (aj.eFK())
+    if (ai.eVe())
     {
       AppMethodBeat.o(145573);
       return 1165;
     }
     AppMethodBeat.o(145573);
     return -1;
+  }
+  
+  private boolean aej()
+  {
+    AppMethodBeat.i(145569);
+    long l = SystemClock.uptimeMillis();
+    if (l - this.gat > 2000L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.gat = l;
+      AppMethodBeat.o(145569);
+      return bool;
+    }
   }
   
   private static String convertStreamToString(InputStream paramInputStream)
@@ -169,7 +169,7 @@ public final class a
     paramString = null;
     try
     {
-      localObject1 = com.tencent.mm.vfs.i.ah((com.tencent.mm.vfs.e)localObject1);
+      localObject1 = com.tencent.mm.vfs.i.ag((com.tencent.mm.vfs.e)localObject1);
       paramString = (String)localObject1;
       String str = convertStreamToString((InputStream)localObject1);
       if (localObject1 != null) {
@@ -207,7 +207,7 @@ public final class a
         }
         i += 1;
       }
-      ad.w("MicroMsg.MemoryWatchDog", "[getVmSize] Wrong!", new Object[] { localObject[12] });
+      ac.w("MicroMsg.MemoryWatchDog", "[getVmSize] Wrong!", new Object[] { localObject[12] });
       localObject = localObject[12];
       AppMethodBeat.o(145564);
       return localObject;
@@ -219,22 +219,30 @@ public final class a
     return "";
   }
   
-  private void pu(int paramInt)
+  private void qi(final int paramInt)
   {
     AppMethodBeat.i(145563);
-    com.tencent.e.h.Iye.aP(new a.1(this, paramInt));
+    com.tencent.e.h.JZN.aS(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(145557);
+        ac.i("MicroMsg.MemoryWatchDog", "[dumpMemoryAsync] %s", new Object[] { a.this.m(true, paramInt) });
+        AppMethodBeat.o(145557);
+      }
+    });
     AppMethodBeat.o(145563);
   }
   
   /* Error */
-  public final a l(boolean paramBoolean, int paramInt)
+  public final a m(boolean paramBoolean, int paramInt)
   {
     // Byte code:
     //   0: ldc_w 260
-    //   3: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: invokestatic 265	java/lang/System:currentTimeMillis	()J
     //   9: lstore 5
-    //   11: new 10	com/tencent/mm/performance/a/a$a
+    //   11: new 12	com/tencent/mm/performance/a/a$a
     //   14: dup
     //   15: invokespecial 266	com/tencent/mm/performance/a/a$a:<init>	()V
     //   18: astore 9
@@ -247,41 +255,41 @@ public final class a
     //   33: putfield 269	com/tencent/mm/performance/a/a$a:activity	Ljava/lang/String;
     //   36: aload 9
     //   38: iload_2
-    //   39: putfield 272	com/tencent/mm/performance/a/a$a:dep	I
+    //   39: putfield 272	com/tencent/mm/performance/a/a$a:dbL	I
     //   42: aload 9
     //   44: aload_0
-    //   45: getfield 274	com/tencent/mm/performance/a/a:hQv	I
+    //   45: getfield 274	com/tencent/mm/performance/a/a:iqB	I
     //   48: i2l
-    //   49: putfield 277	com/tencent/mm/performance/a/a$a:hQJ	J
+    //   49: putfield 277	com/tencent/mm/performance/a/a$a:iqO	J
     //   52: aload 9
     //   54: aload_0
-    //   55: getfield 279	com/tencent/mm/performance/a/a:hQw	I
+    //   55: getfield 279	com/tencent/mm/performance/a/a:iqC	I
     //   58: i2l
-    //   59: putfield 282	com/tencent/mm/performance/a/a$a:hQK	J
+    //   59: putfield 282	com/tencent/mm/performance/a/a$a:iqP	J
     //   62: iload_1
     //   63: ifeq +620 -> 683
     //   66: invokestatic 265	java/lang/System:currentTimeMillis	()J
     //   69: lstore 7
     //   71: aload_0
-    //   72: getfield 70	com/tencent/mm/performance/a/a:aGF	Landroid/app/ActivityManager;
+    //   72: getfield 72	com/tencent/mm/performance/a/a:aHv	Landroid/app/ActivityManager;
     //   75: iconst_1
     //   76: newarray int
     //   78: dup
     //   79: iconst_0
-    //   80: invokestatic 202	android/os/Process:myPid	()I
+    //   80: invokestatic 204	android/os/Process:myPid	()I
     //   83: iastore
     //   84: invokevirtual 286	android/app/ActivityManager:getProcessMemoryInfo	([I)[Landroid/os/Debug$MemoryInfo;
     //   87: astore 10
-    //   89: ldc 98
-    //   91: new 145	java/lang/StringBuilder
+    //   89: ldc 100
+    //   91: new 147	java/lang/StringBuilder
     //   94: dup
     //   95: ldc_w 288
     //   98: invokespecial 289	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   101: aload 10
     //   103: arraylength
     //   104: invokevirtual 292	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   107: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   110: invokestatic 295	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   107: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   110: invokestatic 295	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   113: aload 10
     //   115: ifnull +44 -> 159
     //   118: aload 10
@@ -295,7 +303,7 @@ public final class a
     //   131: aload 9
     //   133: aload 10
     //   135: invokevirtual 300	android/os/Debug$MemoryInfo:getTotalPss	()I
-    //   138: putfield 303	com/tencent/mm/performance/a/a$a:hQO	I
+    //   138: putfield 303	com/tencent/mm/performance/a/a$a:iqS	I
     //   141: getstatic 308	android/os/Build$VERSION:SDK_INT	I
     //   144: bipush 23
     //   146: if_icmplt +149 -> 295
@@ -303,7 +311,7 @@ public final class a
     //   151: aload 10
     //   153: invokevirtual 312	android/os/Debug$MemoryInfo:getMemoryStats	()Ljava/util/Map;
     //   156: putfield 316	com/tencent/mm/performance/a/a$a:map	Ljava/util/Map;
-    //   159: ldc 98
+    //   159: ldc 100
     //   161: ldc_w 318
     //   164: iconst_1
     //   165: anewarray 4	java/lang/Object
@@ -314,29 +322,29 @@ public final class a
     //   175: lsub
     //   176: invokestatic 323	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   179: aastore
-    //   180: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   183: invokestatic 128	com/tencent/mm/sdk/platformtools/aj:cbe	()Z
+    //   180: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   183: invokestatic 120	com/tencent/mm/sdk/platformtools/ai:cin	()Z
     //   186: ifeq +497 -> 683
     //   189: invokestatic 265	java/lang/System:currentTimeMillis	()J
     //   192: lstore 7
     //   194: aload_0
-    //   195: getfield 70	com/tencent/mm/performance/a/a:aGF	Landroid/app/ActivityManager;
+    //   195: getfield 72	com/tencent/mm/performance/a/a:aHv	Landroid/app/ActivityManager;
     //   198: aload_0
-    //   199: invokespecial 325	com/tencent/mm/performance/a/a:aFN	()[I
+    //   199: invokespecial 325	com/tencent/mm/performance/a/a:aMB	()[I
     //   202: invokevirtual 286	android/app/ActivityManager:getProcessMemoryInfo	([I)[Landroid/os/Debug$MemoryInfo;
     //   205: astore 10
     //   207: aload 10
     //   209: ifnull +700 -> 909
-    //   212: ldc 98
-    //   214: new 145	java/lang/StringBuilder
+    //   212: ldc 100
+    //   214: new 147	java/lang/StringBuilder
     //   217: dup
     //   218: ldc_w 288
     //   221: invokespecial 289	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   224: aload 10
     //   226: arraylength
     //   227: invokevirtual 292	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: invokestatic 295	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   230: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: invokestatic 295	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   236: iconst_0
     //   237: istore_3
     //   238: aload 10
@@ -351,7 +359,7 @@ public final class a
     //   253: iload_2
     //   254: aaload
     //   255: astore 11
-    //   257: ldc 98
+    //   257: ldc 100
     //   259: ldc_w 327
     //   262: iconst_1
     //   263: anewarray 4	java/lang/Object
@@ -359,9 +367,9 @@ public final class a
     //   267: iconst_0
     //   268: aload 11
     //   270: invokevirtual 300	android/os/Debug$MemoryInfo:getTotalPss	()I
-    //   273: invokestatic 208	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   273: invokestatic 210	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   276: aastore
-    //   277: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   277: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   280: iload_3
     //   281: aload 11
     //   283: invokevirtual 300	android/os/Debug$MemoryInfo:getTotalPss	()I
@@ -372,9 +380,9 @@ public final class a
     //   290: iadd
     //   291: istore_2
     //   292: goto -47 -> 245
-    //   295: ldc 98
+    //   295: ldc 100
     //   297: ldc_w 329
-    //   300: invokestatic 295	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   300: invokestatic 295	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   303: aload 9
     //   305: new 331	java/util/HashMap
     //   308: dup
@@ -448,7 +456,7 @@ public final class a
     //   491: ldc_w 355
     //   494: invokeinterface 346 3 0
     //   499: pop
-    //   500: ldc 98
+    //   500: ldc 100
     //   502: ldc_w 375
     //   505: iconst_1
     //   506: anewarray 4	java/lang/Object
@@ -457,20 +465,20 @@ public final class a
     //   511: aload 9
     //   513: getfield 316	com/tencent/mm/performance/a/a$a:map	Ljava/util/Map;
     //   516: aastore
-    //   517: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   517: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   520: goto -361 -> 159
     //   523: astore 10
-    //   525: ldc 98
+    //   525: ldc 100
     //   527: aload 10
-    //   529: ldc 238
+    //   529: ldc 240
     //   531: iconst_0
     //   532: anewarray 4	java/lang/Object
-    //   535: invokestatic 379	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   535: invokestatic 379	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   538: aload 9
     //   540: invokestatic 265	java/lang/System:currentTimeMillis	()J
     //   543: lload 5
     //   545: lsub
-    //   546: putfield 382	com/tencent/mm/performance/a/a$a:hQL	J
+    //   546: putfield 382	com/tencent/mm/performance/a/a$a:gaA	J
     //   549: getstatic 387	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_RED	Z
     //   552: ifne +64 -> 616
     //   555: getstatic 390	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_PURPLE	Z
@@ -478,48 +486,48 @@ public final class a
     //   561: iload_1
     //   562: ifne +54 -> 616
     //   565: aload 9
-    //   567: getfield 382	com/tencent/mm/performance/a/a$a:hQL	J
+    //   567: getfield 382	com/tencent/mm/performance/a/a$a:gaA	J
     //   570: ldc2_w 391
     //   573: lcmp
     //   574: ifle +42 -> 616
     //   577: aload_0
-    //   578: getfield 51	com/tencent/mm/performance/a/a:hQy	Z
+    //   578: getfield 53	com/tencent/mm/performance/a/a:iqE	Z
     //   581: ifeq +35 -> 616
     //   584: aload_0
     //   585: aload_0
-    //   586: getfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   586: getfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   589: iconst_1
     //   590: iadd
-    //   591: putfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   591: putfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   594: aload_0
-    //   595: getfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   595: getfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   598: bipush 10
     //   600: if_icmple +16 -> 616
-    //   603: ldc 98
+    //   603: ldc 100
     //   605: ldc_w 394
-    //   608: invokestatic 396	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   608: invokestatic 396	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   611: aload_0
     //   612: iconst_0
-    //   613: putfield 51	com/tencent/mm/performance/a/a:hQy	Z
+    //   613: putfield 53	com/tencent/mm/performance/a/a:iqE	Z
     //   616: aload 9
-    //   618: getfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   618: getfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   621: ifnonnull +23 -> 644
-    //   624: ldc 98
+    //   624: ldc 100
     //   626: ldc_w 402
-    //   629: invokestatic 405	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   629: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   632: aload 9
     //   634: new 407	android/app/ActivityManager$MemoryInfo
     //   637: dup
     //   638: invokespecial 408	android/app/ActivityManager$MemoryInfo:<init>	()V
-    //   641: putfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   641: putfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   644: ldc_w 260
-    //   647: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   647: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   650: aload 9
     //   652: areturn
     //   653: aload 9
     //   655: iload_3
-    //   656: putfield 411	com/tencent/mm/performance/a/a$a:hQP	I
-    //   659: ldc 98
+    //   656: putfield 411	com/tencent/mm/performance/a/a$a:iqT	I
+    //   659: ldc 100
     //   661: ldc_w 318
     //   664: iconst_1
     //   665: anewarray 4	java/lang/Object
@@ -530,7 +538,7 @@ public final class a
     //   675: lsub
     //   676: invokestatic 323	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   679: aastore
-    //   680: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   680: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   683: ldc_w 413
     //   686: invokestatic 419	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   689: invokestatic 421	com/tencent/mm/performance/a/a:getVmSize	()Ljava/lang/String;
@@ -542,45 +550,45 @@ public final class a
     //   705: aload 9
     //   707: aload 10
     //   709: invokevirtual 433	java/util/regex/Matcher:group	()Ljava/lang/String;
-    //   712: invokestatic 439	com/tencent/mm/sdk/platformtools/bt:aGh	(Ljava/lang/String;)I
-    //   715: putfield 442	com/tencent/mm/performance/a/a$a:hQC	I
+    //   712: invokestatic 439	com/tencent/mm/sdk/platformtools/bs:aLy	(Ljava/lang/String;)I
+    //   715: putfield 442	com/tencent/mm/performance/a/a$a:iqH	I
     //   718: aload 9
     //   720: invokestatic 447	android/os/Debug:getNativeHeapSize	()J
-    //   723: putfield 450	com/tencent/mm/performance/a/a$a:hQD	J
+    //   723: putfield 450	com/tencent/mm/performance/a/a$a:iqI	J
     //   726: aload 9
     //   728: invokestatic 453	android/os/Debug:getNativeHeapAllocatedSize	()J
-    //   731: putfield 456	com/tencent/mm/performance/a/a$a:hQE	J
+    //   731: putfield 456	com/tencent/mm/performance/a/a$a:iqJ	J
     //   734: aload 9
     //   736: invokestatic 459	android/os/Debug:getNativeHeapFreeSize	()J
-    //   739: putfield 462	com/tencent/mm/performance/a/a$a:hQF	J
+    //   739: putfield 462	com/tencent/mm/performance/a/a$a:iqK	J
     //   742: aload 9
     //   744: invokestatic 468	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   747: invokevirtual 471	java/lang/Runtime:totalMemory	()J
-    //   750: putfield 474	com/tencent/mm/performance/a/a$a:hQG	J
+    //   750: putfield 474	com/tencent/mm/performance/a/a$a:iqL	J
     //   753: aload 9
     //   755: invokestatic 468	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   758: invokevirtual 477	java/lang/Runtime:freeMemory	()J
-    //   761: putfield 480	com/tencent/mm/performance/a/a$a:hQH	J
+    //   761: putfield 480	com/tencent/mm/performance/a/a$a:iqM	J
     //   764: aload 9
     //   766: invokestatic 468	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   769: invokevirtual 483	java/lang/Runtime:maxMemory	()J
-    //   772: putfield 486	com/tencent/mm/performance/a/a$a:hQI	J
+    //   772: putfield 486	com/tencent/mm/performance/a/a$a:iqN	J
     //   775: new 407	android/app/ActivityManager$MemoryInfo
     //   778: dup
     //   779: invokespecial 408	android/app/ActivityManager$MemoryInfo:<init>	()V
     //   782: astore 10
     //   784: aload_0
-    //   785: getfield 70	com/tencent/mm/performance/a/a:aGF	Landroid/app/ActivityManager;
+    //   785: getfield 72	com/tencent/mm/performance/a/a:aHv	Landroid/app/ActivityManager;
     //   788: aload 10
     //   790: invokevirtual 490	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
     //   793: aload 9
     //   795: aload 10
-    //   797: putfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   797: putfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   800: aload 9
     //   802: invokestatic 265	java/lang/System:currentTimeMillis	()J
     //   805: lload 5
     //   807: lsub
-    //   808: putfield 382	com/tencent/mm/performance/a/a$a:hQL	J
+    //   808: putfield 382	com/tencent/mm/performance/a/a$a:gaA	J
     //   811: getstatic 387	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_RED	Z
     //   814: ifne +64 -> 878
     //   817: getstatic 390	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_PURPLE	Z
@@ -588,51 +596,51 @@ public final class a
     //   823: iload_1
     //   824: ifne +54 -> 878
     //   827: aload 9
-    //   829: getfield 382	com/tencent/mm/performance/a/a$a:hQL	J
+    //   829: getfield 382	com/tencent/mm/performance/a/a$a:gaA	J
     //   832: ldc2_w 391
     //   835: lcmp
     //   836: ifle +42 -> 878
     //   839: aload_0
-    //   840: getfield 51	com/tencent/mm/performance/a/a:hQy	Z
+    //   840: getfield 53	com/tencent/mm/performance/a/a:iqE	Z
     //   843: ifeq +35 -> 878
     //   846: aload_0
     //   847: aload_0
-    //   848: getfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   848: getfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   851: iconst_1
     //   852: iadd
-    //   853: putfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   853: putfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   856: aload_0
-    //   857: getfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   857: getfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   860: bipush 10
     //   862: if_icmple +16 -> 878
-    //   865: ldc 98
+    //   865: ldc 100
     //   867: ldc_w 394
-    //   870: invokestatic 396	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   870: invokestatic 396	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   873: aload_0
     //   874: iconst_0
-    //   875: putfield 51	com/tencent/mm/performance/a/a:hQy	Z
+    //   875: putfield 53	com/tencent/mm/performance/a/a:iqE	Z
     //   878: aload 9
-    //   880: getfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   880: getfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   883: ifnonnull -239 -> 644
-    //   886: ldc 98
+    //   886: ldc 100
     //   888: ldc_w 402
-    //   891: invokestatic 405	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   891: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   894: aload 9
     //   896: new 407	android/app/ActivityManager$MemoryInfo
     //   899: dup
     //   900: invokespecial 408	android/app/ActivityManager$MemoryInfo:<init>	()V
-    //   903: putfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   903: putfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   906: goto -262 -> 644
-    //   909: ldc 98
+    //   909: ldc 100
     //   911: ldc_w 492
-    //   914: invokestatic 405	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   914: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   917: goto -258 -> 659
     //   920: astore 10
     //   922: aload 9
     //   924: invokestatic 265	java/lang/System:currentTimeMillis	()J
     //   927: lload 5
     //   929: lsub
-    //   930: putfield 382	com/tencent/mm/performance/a/a$a:hQL	J
+    //   930: putfield 382	com/tencent/mm/performance/a/a$a:gaA	J
     //   933: getstatic 387	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_RED	Z
     //   936: ifne +64 -> 1000
     //   939: getstatic 390	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_PURPLE	Z
@@ -640,42 +648,42 @@ public final class a
     //   945: iload_1
     //   946: ifne +54 -> 1000
     //   949: aload 9
-    //   951: getfield 382	com/tencent/mm/performance/a/a$a:hQL	J
+    //   951: getfield 382	com/tencent/mm/performance/a/a$a:gaA	J
     //   954: ldc2_w 391
     //   957: lcmp
     //   958: ifle +42 -> 1000
     //   961: aload_0
-    //   962: getfield 51	com/tencent/mm/performance/a/a:hQy	Z
+    //   962: getfield 53	com/tencent/mm/performance/a/a:iqE	Z
     //   965: ifeq +35 -> 1000
     //   968: aload_0
     //   969: aload_0
-    //   970: getfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   970: getfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   973: iconst_1
     //   974: iadd
-    //   975: putfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   975: putfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   978: aload_0
-    //   979: getfield 49	com/tencent/mm/performance/a/a:hQx	I
+    //   979: getfield 51	com/tencent/mm/performance/a/a:iqD	I
     //   982: bipush 10
     //   984: if_icmple +16 -> 1000
-    //   987: ldc 98
+    //   987: ldc 100
     //   989: ldc_w 394
-    //   992: invokestatic 396	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   992: invokestatic 396	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   995: aload_0
     //   996: iconst_0
-    //   997: putfield 51	com/tencent/mm/performance/a/a:hQy	Z
+    //   997: putfield 53	com/tencent/mm/performance/a/a:iqE	Z
     //   1000: aload 9
-    //   1002: getfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   1002: getfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   1005: ifnonnull +23 -> 1028
-    //   1008: ldc 98
+    //   1008: ldc 100
     //   1010: ldc_w 402
-    //   1013: invokestatic 405	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1013: invokestatic 405	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1016: aload 9
     //   1018: new 407	android/app/ActivityManager$MemoryInfo
     //   1021: dup
     //   1022: invokespecial 408	android/app/ActivityManager$MemoryInfo:<init>	()V
-    //   1025: putfield 400	com/tencent/mm/performance/a/a$a:hQN	Landroid/app/ActivityManager$MemoryInfo;
+    //   1025: putfield 400	com/tencent/mm/performance/a/a$a:iqR	Landroid/app/ActivityManager$MemoryInfo;
     //   1028: ldc_w 260
-    //   1031: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1031: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1034: aload 10
     //   1036: athrow
     // Local variable table:
@@ -738,15 +746,15 @@ public final class a
   {
     AppMethodBeat.i(145570);
     this.activity = paramActivity.getClass().getSimpleName();
-    if (aFO())
+    if (aej())
     {
-      if (this.hQy)
+      if (this.iqE)
       {
-        ad.i("MicroMsg.MemoryWatchDog", "[onActivityResumed] activity:%s %s", new Object[] { this.activity, l(false, 1) });
+        ac.i("MicroMsg.MemoryWatchDog", "[onActivityResumed] activity:%s %s", new Object[] { this.activity, m(false, 1) });
         AppMethodBeat.o(145570);
         return;
       }
-      pu(1);
+      qi(1);
     }
     AppMethodBeat.o(145570);
   }
@@ -754,15 +762,15 @@ public final class a
   public final void onActivityStopped(Activity paramActivity)
   {
     AppMethodBeat.i(145571);
-    if (aFO())
+    if (aej())
     {
-      if (this.hQy)
+      if (this.iqE)
       {
-        ad.i("MicroMsg.MemoryWatchDog", "[onActivityStopped] activity:%s %s", new Object[] { paramActivity.getClass().getSimpleName(), l(false, 2) });
+        ac.i("MicroMsg.MemoryWatchDog", "[onActivityStopped] activity:%s %s", new Object[] { paramActivity.getClass().getSimpleName(), m(false, 2) });
         AppMethodBeat.o(145571);
         return;
       }
-      pu(2);
+      qi(2);
     }
     AppMethodBeat.o(145571);
   }
@@ -770,9 +778,9 @@ public final class a
   public final void run()
   {
     AppMethodBeat.i(145572);
-    Object localObject = l(true, 3);
+    Object localObject = m(true, 3);
     new StringBuilder("[AutoCheck] ").append(localObject);
-    ad.i("MicroMsg.MemoryWatchDog", "[AutoCheck] %s", new Object[] { localObject });
+    ac.i("MicroMsg.MemoryWatchDog", "[AutoCheck] %s", new Object[] { localObject });
     ArrayList localArrayList = new ArrayList();
     IDKey localIDKey1 = new IDKey();
     localIDKey1.SetID(959);
@@ -780,14 +788,14 @@ public final class a
     label155:
     label205:
     int i;
-    if (((a)localObject).hQG - ((a)localObject).hQH < 104857600L)
+    if (((a)localObject).iqL - ((a)localObject).iqM < 104857600L)
     {
       localIDKey1.SetKey(120);
       localArrayList.add(localIDKey1);
       localIDKey1 = new IDKey();
       localIDKey1.SetID(959);
       localIDKey1.SetValue(1L);
-      if (((a)localObject).hQE >= 104857600L) {
+      if (((a)localObject).iqJ >= 104857600L) {
         break label1270;
       }
       localIDKey1.SetKey(131);
@@ -795,11 +803,11 @@ public final class a
       localIDKey1 = new IDKey();
       localIDKey1.SetID(959);
       localIDKey1.SetValue(1L);
-      if (((a)localObject).hQC >= 2097152) {
+      if (((a)localObject).iqH >= 2097152) {
         break label1442;
       }
       localIDKey1.SetKey(142);
-      if (((a)localObject).hQC >= 3858759.8F)
+      if (((a)localObject).iqH >= 3858759.8F)
       {
         IDKey localIDKey2 = new IDKey();
         localIDKey2.SetID(959);
@@ -813,28 +821,28 @@ public final class a
       localIDKey1.SetValue(1L);
       localIDKey1.SetKey(151);
       localArrayList.add(localIDKey1);
-      com.tencent.mm.plugin.report.e.vIY.b(localArrayList, false);
-      if (aFP() > 0)
+      com.tencent.mm.plugin.report.e.wTc.b(localArrayList, false);
+      if (aMC() > 0)
       {
         localArrayList = new ArrayList();
         localIDKey1 = new IDKey();
-        localIDKey1.SetID(aFP());
+        localIDKey1.SetID(aMC());
         localIDKey1.SetValue(1L);
         localIDKey1.SetKey(0);
         localArrayList.add(localIDKey1);
         localIDKey1 = new IDKey();
-        localIDKey1.SetID(aFP());
+        localIDKey1.SetID(aMC());
         localIDKey1.SetValue(1L);
-        if (!com.tencent.mm.sdk.platformtools.h.glZ) {
+        if (!com.tencent.mm.sdk.platformtools.h.gMM) {
           break label1573;
         }
         i = 254;
         label398:
         localIDKey1.SetKey(i);
         localArrayList.add(localIDKey1);
-        l = ((a)localObject).hQG - ((a)localObject).hQH;
+        l = ((a)localObject).iqL - ((a)localObject).iqM;
         localIDKey1 = new IDKey();
-        localIDKey1.SetID(aFP());
+        localIDKey1.SetID(aMC());
         localIDKey1.SetValue(1L);
         if (l >= 104857600L) {
           break label1580;
@@ -842,9 +850,9 @@ public final class a
         localIDKey1.SetKey(1);
         label461:
         localArrayList.add(localIDKey1);
-        l = ((a)localObject).hQE;
+        l = ((a)localObject).iqJ;
         localIDKey1 = new IDKey();
-        localIDKey1.SetID(aFP());
+        localIDKey1.SetID(aMC());
         localIDKey1.SetValue(1L);
         if (l >= 104857600L) {
           break label1748;
@@ -853,9 +861,9 @@ public final class a
         label513:
         localArrayList.add(localIDKey1);
         localIDKey1 = new IDKey();
-        localIDKey1.SetID(aFP());
+        localIDKey1.SetID(aMC());
         localIDKey1.SetValue(1L);
-        l = ((a)localObject).hQC;
+        l = ((a)localObject).iqH;
         if (l >= 1572864.0D) {
           break label1920;
         }
@@ -863,25 +871,25 @@ public final class a
         label567:
         localArrayList.add(localIDKey1);
         localIDKey1 = new IDKey();
-        localIDKey1.SetID(aFP());
+        localIDKey1.SetID(aMC());
         localIDKey1.SetValue(1L);
-        i = ((a)localObject).hQO;
+        i = ((a)localObject).iqS;
         if (i >= 102400) {
           break label2254;
         }
-        if (!com.tencent.mm.sdk.platformtools.h.glZ) {
+        if (!com.tencent.mm.sdk.platformtools.h.gMM) {
           break label2248;
         }
         i = 154;
         label621:
         localIDKey1.SetKey(i);
         localArrayList.add(localIDKey1);
-        if (aj.cbe())
+        if (ai.cin())
         {
           localIDKey1 = new IDKey();
           localIDKey1.SetID(1308);
           localIDKey1.SetValue(1L);
-          if (!com.tencent.mm.sdk.platformtools.h.glZ) {
+          if (!com.tencent.mm.sdk.platformtools.h.gMM) {
             break label2572;
           }
           i = 1;
@@ -891,11 +899,11 @@ public final class a
           localIDKey1 = new IDKey();
           localIDKey1.SetID(1308);
           localIDKey1.SetValue(1L);
-          i = ((a)localObject).hQP;
+          i = ((a)localObject).iqT;
           if (i >= 102400) {
             break label2582;
           }
-          if (!com.tencent.mm.sdk.platformtools.h.glZ) {
+          if (!com.tencent.mm.sdk.platformtools.h.gMM) {
             break label2577;
           }
           i = 42;
@@ -905,11 +913,11 @@ public final class a
           localIDKey1 = new IDKey();
           localIDKey1.SetID(1308);
           localIDKey1.SetValue(1L);
-          l = ((a)localObject).hQN.availMem;
+          l = ((a)localObject).iqR.availMem;
           if (l >= 104857600L) {
             break label3012;
           }
-          if (!com.tencent.mm.sdk.platformtools.h.glZ) {
+          if (!com.tencent.mm.sdk.platformtools.h.gMM) {
             break label3006;
           }
           i = 113;
@@ -917,7 +925,7 @@ public final class a
           localIDKey1.SetKey(i);
           localArrayList.add(localIDKey1);
         }
-        com.tencent.mm.plugin.report.e.vIY.b(localArrayList, false);
+        com.tencent.mm.plugin.report.e.wTc.b(localArrayList, false);
       }
       localArrayList = new ArrayList();
       i = 0;
@@ -926,28 +934,28 @@ public final class a
         if (!this.mProcessName.equals("com.tencent.mm")) {
           break label3356;
         }
-        ad.d("MicroMsg.MemoryWatchDog", "main: " + this.mProcessName);
+        ac.d("MicroMsg.MemoryWatchDog", "main: " + this.mProcessName);
         i = 10;
         label876:
         localIDKey1 = new IDKey();
         localIDKey1.SetID(1031);
         localIDKey1.SetKey(i);
-        localIDKey1.SetValue((((a)localObject).hQG - ((a)localObject).hQH) / 1024L / 1024L);
+        localIDKey1.SetValue((((a)localObject).iqL - ((a)localObject).iqM) / 1024L / 1024L);
         localArrayList.add(localIDKey1);
         localIDKey1 = new IDKey();
         localIDKey1.SetID(1031);
         localIDKey1.SetKey(i + 1);
-        localIDKey1.SetValue(((a)localObject).hQE / 1024L / 1024L);
+        localIDKey1.SetValue(((a)localObject).iqJ / 1024L / 1024L);
         localArrayList.add(localIDKey1);
         localObject = new IDKey();
         ((IDKey)localObject).SetID(1031);
         ((IDKey)localObject).SetKey(i + 2);
         ((IDKey)localObject).SetValue(1L);
         localArrayList.add(localObject);
-        com.tencent.mm.plugin.report.e.vIY.b(localArrayList, false);
+        com.tencent.mm.plugin.report.e.wTc.b(localArrayList, false);
       }
-      localObject = com.tencent.e.h.Iye;
-      if (!this.ctF) {
+      localObject = com.tencent.e.h.JZN;
+      if (!this.cqM) {
         break label3444;
       }
     }
@@ -961,37 +969,37 @@ public final class a
       ((com.tencent.e.i)localObject).q(this, l);
       AppMethodBeat.o(145572);
       return;
-      if (((a)localObject).hQG - ((a)localObject).hQH < 209715200L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 209715200L)
       {
         localIDKey1.SetKey(121);
         break;
       }
-      if (((a)localObject).hQG - ((a)localObject).hQH < 314572800L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 314572800L)
       {
         localIDKey1.SetKey(122);
         break;
       }
-      if (((a)localObject).hQG - ((a)localObject).hQH < 419430400L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 419430400L)
       {
         localIDKey1.SetKey(123);
         break;
       }
-      if (((a)localObject).hQG - ((a)localObject).hQH < 524288000L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 524288000L)
       {
         localIDKey1.SetKey(124);
         break;
       }
-      if (((a)localObject).hQG - ((a)localObject).hQH < 629145600L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 629145600L)
       {
         localIDKey1.SetKey(125);
         break;
       }
-      if (((a)localObject).hQG - ((a)localObject).hQH < 734003200L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 734003200L)
       {
         localIDKey1.SetKey(126);
         break;
       }
-      if (((a)localObject).hQG - ((a)localObject).hQH < 838860800L)
+      if (((a)localObject).iqL - ((a)localObject).iqM < 838860800L)
       {
         localIDKey1.SetKey(127);
         break;
@@ -999,64 +1007,64 @@ public final class a
       localIDKey1.SetKey(128);
       break;
       label1270:
-      if (((a)localObject).hQE < 209715200L)
+      if (((a)localObject).iqJ < 209715200L)
       {
         localIDKey1.SetKey(132);
         break label155;
       }
-      if (((a)localObject).hQE < 314572800L)
+      if (((a)localObject).iqJ < 314572800L)
       {
         localIDKey1.SetKey(133);
         break label155;
       }
-      if (((a)localObject).hQE < 419430400L)
+      if (((a)localObject).iqJ < 419430400L)
       {
         localIDKey1.SetKey(134);
         break label155;
       }
-      if (((a)localObject).hQE < 524288000L)
+      if (((a)localObject).iqJ < 524288000L)
       {
         localIDKey1.SetKey(135);
         break label155;
       }
-      if (((a)localObject).hQE < 629145600L)
+      if (((a)localObject).iqJ < 629145600L)
       {
         localIDKey1.SetKey(136);
         break label155;
       }
-      if (((a)localObject).hQE < 734003200L)
+      if (((a)localObject).iqJ < 734003200L)
       {
         localIDKey1.SetKey(137);
         break label155;
       }
-      if (((a)localObject).hQE < 838860800L)
+      if (((a)localObject).iqJ < 838860800L)
       {
         localIDKey1.SetKey(138);
         break label155;
       }
       localIDKey1.SetKey(139);
       break label155;
-      if (((a)localObject).hQC < 2516582.5F)
+      if (((a)localObject).iqH < 2516582.5F)
       {
         localIDKey1.SetKey(143);
         break label205;
       }
-      if (((a)localObject).hQC < 2936012.8F)
+      if (((a)localObject).iqH < 2936012.8F)
       {
         localIDKey1.SetKey(144);
         break label205;
       }
-      if (((a)localObject).hQC < 3145728.0F)
+      if (((a)localObject).iqH < 3145728.0F)
       {
         localIDKey1.SetKey(145);
         break label205;
       }
-      if (((a)localObject).hQC < 3565158.5F)
+      if (((a)localObject).iqH < 3565158.5F)
       {
         localIDKey1.SetKey(146);
         break label205;
       }
-      if (((a)localObject).hQC < 3984588.8F)
+      if (((a)localObject).iqH < 3984588.8F)
       {
         localIDKey1.SetKey(147);
         break label205;
@@ -1250,7 +1258,7 @@ public final class a
       break label621;
       if (i < 204800)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 155;; i = 123)
         {
           localIDKey1.SetKey(i);
@@ -1259,7 +1267,7 @@ public final class a
       }
       if (i < 307200)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 156;; i = 124)
         {
           localIDKey1.SetKey(i);
@@ -1268,7 +1276,7 @@ public final class a
       }
       if (i < 409600)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 157;; i = 125)
         {
           localIDKey1.SetKey(i);
@@ -1277,7 +1285,7 @@ public final class a
       }
       if (i < 512000)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 158;; i = 126)
         {
           localIDKey1.SetKey(i);
@@ -1286,7 +1294,7 @@ public final class a
       }
       if (i < 614400)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 159;; i = 127)
         {
           localIDKey1.SetKey(i);
@@ -1295,7 +1303,7 @@ public final class a
       }
       if (i < 716800)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 160;; i = 128)
         {
           localIDKey1.SetKey(i);
@@ -1304,7 +1312,7 @@ public final class a
       }
       if (i < 819200)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 161;; i = 129)
         {
           localIDKey1.SetKey(i);
@@ -1313,7 +1321,7 @@ public final class a
       }
       if (i < 921600)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 162;; i = 130)
         {
           localIDKey1.SetKey(i);
@@ -1322,14 +1330,14 @@ public final class a
       }
       if (i < 1024000)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 163;; i = 131)
         {
           localIDKey1.SetKey(i);
           break;
         }
       }
-      if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+      if (com.tencent.mm.sdk.platformtools.h.gMM) {}
       for (i = 164;; i = 132)
       {
         localIDKey1.SetKey(i);
@@ -1341,7 +1349,7 @@ public final class a
       break label731;
       if (i < 204800)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 43;; i = 3)
         {
           localIDKey1.SetKey(i);
@@ -1350,7 +1358,7 @@ public final class a
       }
       if (i < 307200)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 44;; i = 4)
         {
           localIDKey1.SetKey(i);
@@ -1359,7 +1367,7 @@ public final class a
       }
       if (i < 409600)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 45;; i = 5)
         {
           localIDKey1.SetKey(i);
@@ -1368,7 +1376,7 @@ public final class a
       }
       if (i < 512000)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 46;; i = 6)
         {
           localIDKey1.SetKey(i);
@@ -1377,7 +1385,7 @@ public final class a
       }
       if (i < 614400)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 47;; i = 7)
         {
           localIDKey1.SetKey(i);
@@ -1386,7 +1394,7 @@ public final class a
       }
       if (i < 716800)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 48;; i = 8)
         {
           localIDKey1.SetKey(i);
@@ -1395,7 +1403,7 @@ public final class a
       }
       if (i < 819200)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 49;; i = 9)
         {
           localIDKey1.SetKey(i);
@@ -1404,7 +1412,7 @@ public final class a
       }
       if (i < 921600)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 50;; i = 10)
         {
           localIDKey1.SetKey(i);
@@ -1413,7 +1421,7 @@ public final class a
       }
       if (i < 1024000)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 51;; i = 11)
         {
           localIDKey1.SetKey(i);
@@ -1422,7 +1430,7 @@ public final class a
       }
       if (i < 1126400)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 52;; i = 12)
         {
           localIDKey1.SetKey(i);
@@ -1431,7 +1439,7 @@ public final class a
       }
       if (i < 1228800)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 53;; i = 13)
         {
           localIDKey1.SetKey(i);
@@ -1440,7 +1448,7 @@ public final class a
       }
       if (i < 1331200)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 54;; i = 14)
         {
           localIDKey1.SetKey(i);
@@ -1449,14 +1457,14 @@ public final class a
       }
       if (i < 1433600)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 55;; i = 15)
         {
           localIDKey1.SetKey(i);
           break;
         }
       }
-      if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+      if (com.tencent.mm.sdk.platformtools.h.gMM) {}
       for (i = 56;; i = 16)
       {
         localIDKey1.SetKey(i);
@@ -1466,7 +1474,7 @@ public final class a
       break label794;
       if (l < 209715200L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 114;; i = 83)
         {
           localIDKey1.SetKey(i);
@@ -1475,7 +1483,7 @@ public final class a
       }
       if (l < 314572800L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 115;; i = 84)
         {
           localIDKey1.SetKey(i);
@@ -1484,7 +1492,7 @@ public final class a
       }
       if (l < 419430400L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 116;; i = 85)
         {
           localIDKey1.SetKey(i);
@@ -1493,7 +1501,7 @@ public final class a
       }
       if (l < 524288000L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 117;; i = 86)
         {
           localIDKey1.SetKey(i);
@@ -1502,7 +1510,7 @@ public final class a
       }
       if (l < 629145600L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 118;; i = 87)
         {
           localIDKey1.SetKey(i);
@@ -1511,7 +1519,7 @@ public final class a
       }
       if (l < 734003200L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 119;; i = 88)
         {
           localIDKey1.SetKey(i);
@@ -1520,7 +1528,7 @@ public final class a
       }
       if (l < 838860800L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 120;; i = 89)
         {
           localIDKey1.SetKey(i);
@@ -1529,7 +1537,7 @@ public final class a
       }
       if (l < 943718400L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 121;; i = 90)
         {
           localIDKey1.SetKey(i);
@@ -1538,7 +1546,7 @@ public final class a
       }
       if (l < 1048576000L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 122;; i = 91)
         {
           localIDKey1.SetKey(i);
@@ -1547,14 +1555,14 @@ public final class a
       }
       if (l < 1572864000L)
       {
-        if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+        if (com.tencent.mm.sdk.platformtools.h.gMM) {}
         for (i = 123;; i = 92)
         {
           localIDKey1.SetKey(i);
           break;
         }
       }
-      if (com.tencent.mm.sdk.platformtools.h.glZ) {}
+      if (com.tencent.mm.sdk.platformtools.h.gMM) {}
       for (i = 124;; i = 93)
       {
         localIDKey1.SetKey(i);
@@ -1562,14 +1570,14 @@ public final class a
       }
       if (this.mProcessName.contains(":tools"))
       {
-        ad.d("MicroMsg.MemoryWatchDog", "tools: " + this.mProcessName);
+        ac.d("MicroMsg.MemoryWatchDog", "tools: " + this.mProcessName);
         i = 20;
         break label876;
       }
       if (!this.mProcessName.contains(":appbrand")) {
         break label876;
       }
-      ad.d("MicroMsg.MemoryWatchDog", "appbrand: " + this.mProcessName);
+      ac.d("MicroMsg.MemoryWatchDog", "appbrand: " + this.mProcessName);
       i = 30;
       break label876;
     }
@@ -1578,33 +1586,33 @@ public final class a
   public static final class a
   {
     String activity;
-    int dep;
-    int hQC;
-    long hQD;
-    long hQE;
-    long hQF;
-    long hQG;
-    long hQH;
-    long hQI;
-    long hQJ;
-    long hQK;
-    long hQL;
-    long hQM;
-    ActivityManager.MemoryInfo hQN;
-    int hQO;
-    int hQP;
+    int dbL;
+    long gaA;
+    int iqH;
+    long iqI;
+    long iqJ;
+    long iqK;
+    long iqL;
+    long iqM;
+    long iqN;
+    long iqO;
+    long iqP;
+    long iqQ;
+    ActivityManager.MemoryInfo iqR;
+    int iqS;
+    int iqT;
     Map<String, String> map;
     
     public a()
     {
       AppMethodBeat.i(145558);
-      this.dep = 0;
+      this.dbL = 0;
       this.activity = "default";
-      this.hQM = Thread.currentThread().getId();
+      this.iqQ = Thread.currentThread().getId();
       AppMethodBeat.o(145558);
     }
     
-    private static String w(Map<String, String> paramMap)
+    private static String v(Map<String, String> paramMap)
     {
       AppMethodBeat.i(145560);
       if (paramMap == null)
@@ -1631,7 +1639,7 @@ public final class a
     {
       AppMethodBeat.i(145559);
       Object localObject = new StringBuilder(" \n");
-      ((StringBuilder)localObject).append(String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MemoryInfo(pid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { Long.valueOf(this.hQM) })).append("\n| Activity:\t ").append(this.activity).append("\n| Source:\t ").append(this.dep).append("\n| VmSize:\t ").append(this.hQC).append("kB\n| SystemMemoryInfo:\t totalMem=").append(this.hQN.totalMem).append(", availMem=").append(this.hQN.availMem).append(", lowMemory=").append(this.hQN.lowMemory).append(", threshold=").append(this.hQN.threshold).append("\n| Dalvik:\t memClass=").append(this.hQJ).append(", memLargeClass=").append(this.hQK).append(" B, TalMemory=").append(this.hQG).append(" B, FreeMemory=").append(this.hQH).append(" B, MaxMemory=").append(this.hQI).append(" B\n| NATIVE:\t HeapSize=").append(this.hQD).append(" B, AllocatedSize=").append(this.hQE).append(" B, FreeSize=").append(this.hQF).append(" B\n| Stats:\t pss-sum:").append(this.hQP).append(" KB, ").append(w(this.map)).append("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:").append(this.hQL).append("ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+      ((StringBuilder)localObject).append(String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MemoryInfo(pid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { Long.valueOf(this.iqQ) })).append("\n| Activity:\t ").append(this.activity).append("\n| Source:\t ").append(this.dbL).append("\n| VmSize:\t ").append(this.iqH).append("kB\n| SystemMemoryInfo:\t totalMem=").append(this.iqR.totalMem).append(", availMem=").append(this.iqR.availMem).append(", lowMemory=").append(this.iqR.lowMemory).append(", threshold=").append(this.iqR.threshold).append("\n| Dalvik:\t memClass=").append(this.iqO).append(", memLargeClass=").append(this.iqP).append(" B, TalMemory=").append(this.iqL).append(" B, FreeMemory=").append(this.iqM).append(" B, MaxMemory=").append(this.iqN).append(" B\n| NATIVE:\t HeapSize=").append(this.iqI).append(" B, AllocatedSize=").append(this.iqJ).append(" B, FreeSize=").append(this.iqK).append(" B\n| Stats:\t pss-sum:").append(this.iqT).append(" KB, ").append(v(this.map)).append("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:").append(this.gaA).append("ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(145559);
       return localObject;

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,10 +20,10 @@ public final class g
   extends q
 {
   Context mContext;
-  private ArrayList<b> uxF;
-  private boolean uxG;
-  a uxH;
-  private List<String> uxl;
+  a vGA;
+  private List<String> vGe;
+  private ArrayList<b> vGy;
+  private boolean vGz;
   
   public g(Context paramContext)
   {
@@ -33,29 +33,29 @@ public final class g
   private g(Context paramContext, byte paramByte)
   {
     AppMethodBeat.i(66978);
-    this.uxG = false;
-    this.uxH = null;
+    this.vGz = false;
+    this.vGA = null;
     this.mContext = paramContext;
-    this.uxl = null;
-    setData(this.uxl);
+    this.vGe = null;
+    setData(this.vGe);
     AppMethodBeat.o(66978);
   }
   
-  private void dbK()
+  private void dps()
   {
     AppMethodBeat.i(66979);
-    if (this.uxF == null) {
-      this.uxF = new ArrayList();
+    if (this.vGy == null) {
+      this.vGy = new ArrayList();
     }
     for (;;)
     {
-      Iterator localIterator = this.uxl.iterator();
+      Iterator localIterator = this.vGe.iterator();
       while (localIterator.hasNext())
       {
         b localb = new b((String)localIterator.next());
-        this.uxF.add(localb);
+        this.vGy.add(localb);
       }
-      this.uxF.clear();
+      this.vGy.clear();
     }
     AppMethodBeat.o(66979);
   }
@@ -63,9 +63,9 @@ public final class g
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     AppMethodBeat.i(66982);
-    ad.d("MicroMsg.MallProductImageAdapter", "destroy item");
-    if (this.uxF != null) {
-      paramViewGroup.removeView(((b)this.uxF.get(paramInt)).dnd);
+    ac.d("MicroMsg.MallProductImageAdapter", "destroy item");
+    if (this.vGy != null) {
+      paramViewGroup.removeView(((b)this.vGy.get(paramInt)).dkL);
     }
     AppMethodBeat.o(66982);
   }
@@ -73,17 +73,17 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(66981);
-    if (this.uxl == null)
+    if (this.vGe == null)
     {
       AppMethodBeat.o(66981);
       return 0;
     }
-    if (this.uxG)
+    if (this.vGz)
     {
       AppMethodBeat.o(66981);
       return 2147483647;
     }
-    int i = this.uxl.size();
+    int i = this.vGe.size();
     AppMethodBeat.o(66981);
     return i;
   }
@@ -96,11 +96,11 @@ public final class g
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(66983);
-    if (this.uxF != null)
+    if (this.vGy != null)
     {
-      ad.d("MicroMsg.MallProductImageAdapter", "data valid");
-      paramViewGroup.addView(((b)this.uxF.get(paramInt)).dnd, 0);
-      paramViewGroup = ((b)this.uxF.get(paramInt)).dnd;
+      ac.d("MicroMsg.MallProductImageAdapter", "data valid");
+      paramViewGroup.addView(((b)this.vGy.get(paramInt)).dkL, 0);
+      paramViewGroup = ((b)this.vGy.get(paramInt)).dkL;
       AppMethodBeat.o(66983);
       return paramViewGroup;
     }
@@ -120,40 +120,40 @@ public final class g
     if (paramList != null)
     {
       if (paramList.size() > 0) {
-        this.uxl = paramList;
+        this.vGe = paramList;
       }
-      dbK();
+      dps();
     }
     AppMethodBeat.o(66980);
   }
   
   public static abstract interface a
   {
-    public abstract void dbG();
+    public abstract void dpo();
   }
   
   final class b
     implements u.a
   {
-    public ImageView dnd;
+    public ImageView dkL;
     public String url;
     
     public b(String paramString)
     {
       AppMethodBeat.i(66976);
-      this.dnd = null;
+      this.dkL = null;
       this.url = paramString;
-      this.dnd = ((ImageView)((LayoutInflater)g.this.mContext.getSystemService("layout_inflater")).inflate(2131495119, null));
+      this.dkL = ((ImageView)((LayoutInflater)g.this.mContext.getSystemService("layout_inflater")).inflate(2131495119, null));
       paramString = u.a(new c(paramString));
-      this.dnd.setImageBitmap(paramString);
-      this.dnd.setOnClickListener(new View.OnClickListener()
+      this.dkL.setImageBitmap(paramString);
+      this.dkL.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(66974);
-          ad.i("MicroMsg.MallProductImageAdapter", "henryyr user: clicked the ImageView");
-          if (g.this.uxH != null) {
-            g.this.uxH.dbG();
+          ac.i("MicroMsg.MallProductImageAdapter", "henryyr user: clicked the ImageView");
+          if (g.this.vGA != null) {
+            g.this.vGA.dpo();
           }
           AppMethodBeat.o(66974);
         }
@@ -162,14 +162,14 @@ public final class g
       AppMethodBeat.o(66976);
     }
     
-    public final void l(String paramString, final Bitmap paramBitmap)
+    public final void k(String paramString, final Bitmap paramBitmap)
     {
       AppMethodBeat.i(66977);
       StringBuilder localStringBuilder = new StringBuilder().append(paramString).append(", bitmap = ");
       if (paramBitmap == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.d("MicroMsg.MallProductImageAdapter", bool);
+        ac.d("MicroMsg.MallProductImageAdapter", bool);
         if (this.url != null) {
           break;
         }
@@ -177,12 +177,12 @@ public final class g
         return;
       }
       if (paramString.equals(this.url)) {
-        this.dnd.post(new Runnable()
+        this.dkL.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66975);
-            g.b.this.dnd.setImageBitmap(paramBitmap);
+            g.b.this.dkL.setImageBitmap(paramBitmap);
             AppMethodBeat.o(66975);
           }
         });
@@ -193,7 +193,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.g
  * JD-Core Version:    0.7.0.1
  */

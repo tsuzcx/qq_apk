@@ -5,15 +5,15 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class at
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String saB;
-  public LinkedList<String> sbu;
+  public String tiv;
+  public LinkedList<String> tjo;
   
   public at()
   {
     AppMethodBeat.i(41750);
-    this.sbu = new LinkedList();
+    this.tjo = new LinkedList();
     AppMethodBeat.o(41750);
   }
   
@@ -23,41 +23,41 @@ public final class at
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.saB == null)
+      if (this.tiv == null)
       {
         paramVarArgs = new b("Not all required fields were included: Detail");
         AppMethodBeat.o(41751);
         throw paramVarArgs;
       }
-      if (this.saB != null) {
-        paramVarArgs.d(2, this.saB);
+      if (this.tiv != null) {
+        paramVarArgs.d(2, this.tiv);
       }
-      paramVarArgs.e(3, 1, this.sbu);
+      paramVarArgs.e(3, 1, this.tjo);
       AppMethodBeat.o(41751);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.saB == null) {
+      if (this.tiv == null) {
         break label322;
       }
     }
     label322:
-    for (paramInt = f.a.a.b.b.a.e(2, this.saB) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(2, this.tiv) + 0;; paramInt = 0)
     {
-      int i = f.a.a.a.c(3, 1, this.sbu);
+      int i = f.a.a.a.c(3, 1, this.tjo);
       AppMethodBeat.o(41751);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.sbu.clear();
+        this.tjo.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.saB == null)
+        if (this.tiv == null)
         {
           paramVarArgs = new b("Not all required fields were included: Detail");
           AppMethodBeat.o(41751);
@@ -76,11 +76,11 @@ public final class at
           AppMethodBeat.o(41751);
           return -1;
         case 2: 
-          localat.saB = locala.KhF.readString();
+          localat.tiv = locala.LVo.readString();
           AppMethodBeat.o(41751);
           return 0;
         }
-        localat.sbu.add(locala.KhF.readString());
+        localat.tjo.add(locala.LVo.readString());
         AppMethodBeat.o(41751);
         return 0;
       }
@@ -91,7 +91,7 @@ public final class at
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.at
  * JD-Core Version:    0.7.0.1
  */

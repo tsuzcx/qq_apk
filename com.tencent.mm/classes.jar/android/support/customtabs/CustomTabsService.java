@@ -12,8 +12,8 @@ import java.util.NoSuchElementException;
 public abstract class CustomTabsService
   extends Service
 {
-  private final Map<IBinder, IBinder.DeathRecipient> dF = new a();
-  private e.a dG = new e.a()
+  private final Map<IBinder, IBinder.DeathRecipient> eF = new a();
+  private e.a eG = new e.a()
   {
     public final boolean a(d paramAnonymousd)
     {
@@ -24,14 +24,14 @@ public abstract class CustomTabsService
         {
           public final void binderDied()
           {
-            CustomTabsService.this.a(this.dI);
+            CustomTabsService.this.a(this.eI);
           }
         };
         synchronized (CustomTabsService.a(CustomTabsService.this))
         {
           paramAnonymousd.asBinder().linkToDeath(local1, 0);
           CustomTabsService.a(CustomTabsService.this).put(paramAnonymousd.asBinder(), local1);
-          boolean bool = CustomTabsService.this.am();
+          boolean bool = CustomTabsService.this.at();
           return bool;
         }
         return false;
@@ -39,49 +39,49 @@ public abstract class CustomTabsService
       catch (RemoteException paramAnonymousd) {}
     }
     
-    public final boolean af()
+    public final boolean as()
     {
-      return CustomTabsService.this.af();
+      return CustomTabsService.this.as();
     }
     
-    public final Bundle ao()
+    public final Bundle av()
     {
-      return CustomTabsService.this.ao();
+      return CustomTabsService.this.av();
     }
     
     public final boolean b(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.an();
+      return localCustomTabsService.au();
     }
     
     public final boolean c(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.ap();
+      return localCustomTabsService.aw();
     }
     
     public final boolean d(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.aq();
+      return localCustomTabsService.ax();
     }
     
     public final int e(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.ar();
+      return localCustomTabsService.ay();
     }
     
     public final boolean f(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.as();
+      return localCustomTabsService.az();
     }
   };
   
@@ -89,11 +89,11 @@ public abstract class CustomTabsService
   {
     try
     {
-      synchronized (this.dF)
+      synchronized (this.eF)
       {
-        paramc = paramc.at();
-        paramc.unlinkToDeath((IBinder.DeathRecipient)this.dF.get(paramc), 0);
-        this.dF.remove(paramc);
+        paramc = paramc.aA();
+        paramc.unlinkToDeath((IBinder.DeathRecipient)this.eF.get(paramc), 0);
+        this.eF.remove(paramc);
         return true;
       }
       return false;
@@ -101,21 +101,21 @@ public abstract class CustomTabsService
     catch (NoSuchElementException paramc) {}
   }
   
-  protected abstract boolean af();
-  
-  protected abstract boolean am();
-  
-  protected abstract boolean an();
-  
-  protected abstract Bundle ao();
-  
-  protected abstract boolean ap();
-  
-  protected abstract boolean aq();
-  
-  protected abstract int ar();
-  
   protected abstract boolean as();
+  
+  protected abstract boolean at();
+  
+  protected abstract boolean au();
+  
+  protected abstract Bundle av();
+  
+  protected abstract boolean aw();
+  
+  protected abstract boolean ax();
+  
+  protected abstract int ay();
+  
+  protected abstract boolean az();
 }
 
 

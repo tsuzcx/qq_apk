@@ -10,7 +10,6 @@ import android.net.http.SslError;
 import android.os.Build.VERSION;
 import android.os.Message;
 import android.view.KeyEvent;
-import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.utils.TbsLog;
@@ -176,11 +175,11 @@ class SystemWebViewClient
     }
   }
   
-  public void onReceivedHttpAuthRequest(android.webkit.WebView paramWebView, HttpAuthHandler paramHttpAuthHandler, String paramString1, String paramString2)
+  public void onReceivedHttpAuthRequest(android.webkit.WebView paramWebView, android.webkit.HttpAuthHandler paramHttpAuthHandler, String paramString1, String paramString2)
   {
     AppMethodBeat.i(54705);
     this.b.a(paramWebView);
-    this.a.onReceivedHttpAuthRequest(this.b, new SystemWebViewClient.b(paramHttpAuthHandler), paramString1, paramString2);
+    this.a.onReceivedHttpAuthRequest(this.b, new b(paramHttpAuthHandler), paramString1, paramString2);
     AppMethodBeat.o(54705);
   }
   
@@ -421,6 +420,39 @@ class SystemWebViewClient
       AppMethodBeat.i(55059);
       this.a.proceed(paramPrivateKey, paramArrayOfX509Certificate);
       AppMethodBeat.o(55059);
+    }
+  }
+  
+  static class b
+    implements com.tencent.smtt.export.external.interfaces.HttpAuthHandler
+  {
+    private android.webkit.HttpAuthHandler a;
+    
+    b(android.webkit.HttpAuthHandler paramHttpAuthHandler)
+    {
+      this.a = paramHttpAuthHandler;
+    }
+    
+    public void cancel()
+    {
+      AppMethodBeat.i(54323);
+      this.a.cancel();
+      AppMethodBeat.o(54323);
+    }
+    
+    public void proceed(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(54322);
+      this.a.proceed(paramString1, paramString2);
+      AppMethodBeat.o(54322);
+    }
+    
+    public boolean useHttpAuthUsernamePassword()
+    {
+      AppMethodBeat.i(54324);
+      boolean bool = this.a.useHttpAuthUsernamePassword();
+      AppMethodBeat.o(54324);
+      return bool;
     }
   }
   

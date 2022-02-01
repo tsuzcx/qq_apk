@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.appbrand.aa.l;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.appbrand.widget.b;
+import com.tencent.mm.plugin.appbrand.z.l;
 import com.tencent.mm.ui.statusbar.c.a;
 
 @SuppressLint({"ViewConstructor"})
@@ -24,20 +24,20 @@ public final class o
   extends LinearLayout
   implements c.a
 {
-  public final com.tencent.luggage.sdk.d.c chU;
-  private final a[] lDh;
-  private final SparseArray<b> lDi;
-  private final SparseArray<b> lDj;
-  private int lDk;
+  public final com.tencent.luggage.sdk.d.c ceP;
+  private final a[] mfb;
+  private final SparseArray<b> mfc;
+  private final SparseArray<b> mfd;
+  private int mfe;
   
   public o(Context paramContext, com.tencent.luggage.sdk.d.c paramc)
   {
     super(paramContext);
     AppMethodBeat.i(147701);
-    this.chU = paramc;
-    this.lDi = new SparseArray();
-    this.lDj = new SparseArray();
-    this.lDh = new a[4];
+    this.ceP = paramc;
+    this.mfc = new SparseArray();
+    this.mfd = new SparseArray();
+    this.mfb = new a[4];
     setClickable(false);
     int i = getContext().getResources().getDisplayMetrics().widthPixels;
     int j = a.fromDPToPix(getContext(), 10);
@@ -45,7 +45,7 @@ public final class o
     paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
     paramContext.gravity = 53;
     setLayoutParams(paramContext);
-    boD();
+    bvy();
     setPadding(j, j, j, j);
     setOrientation(1);
     paramContext = new GradientDrawable();
@@ -65,38 +65,38 @@ public final class o
     localView.setLayoutParams(paramc);
     localView.setBackgroundColor(1728053247);
     addView(localView);
-    boE();
-    com.tencent.mm.ui.statusbar.c.bj((Activity)getContext()).a(this);
+    bvz();
+    com.tencent.mm.ui.statusbar.c.bm((Activity)getContext()).a(this);
     AppMethodBeat.o(147701);
   }
   
-  private void boD()
+  private void bvy()
   {
     AppMethodBeat.i(147702);
     if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.dL(getContext()) + this.lDk);
+      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.dT(getContext()) + this.mfe);
       requestLayout();
     }
     AppMethodBeat.o(147702);
   }
   
-  private void boE()
+  private void bvz()
   {
     AppMethodBeat.i(147703);
     int i = 0;
     while (i < 4)
     {
       a locala = new a(getContext());
-      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.lhN[i]));
-      this.lDh[i] = locala;
+      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.lHG[i]));
+      this.mfb[i] = locala;
       addView(locala);
       i += 1;
     }
     AppMethodBeat.o(147703);
   }
   
-  public final void ar(final int paramInt, final String paramString)
+  public final void as(final int paramInt, final String paramString)
   {
     AppMethodBeat.i(147704);
     l.runOnUiThread(new Runnable()
@@ -111,7 +111,7 @@ public final class o
     AppMethodBeat.o(147704);
   }
   
-  public final void dV(final String paramString1, final String paramString2)
+  public final void eh(final String paramString1, final String paramString2)
   {
     AppMethodBeat.i(147705);
     l.runOnUiThread(new Runnable()
@@ -126,11 +126,11 @@ public final class o
     AppMethodBeat.o(147705);
   }
   
-  public final void sG(int paramInt)
+  public final void tx(int paramInt)
   {
     AppMethodBeat.i(147706);
-    this.lDk = paramInt;
-    boD();
+    this.mfe = paramInt;
+    bvy();
     AppMethodBeat.o(147706);
   }
   
@@ -179,7 +179,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.o
  * JD-Core Version:    0.7.0.1
  */

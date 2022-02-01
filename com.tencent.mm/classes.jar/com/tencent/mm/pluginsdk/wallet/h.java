@@ -5,12 +5,12 @@ public final class h
   private static int mPayChannel = -1;
   private static int mPayScene = -1;
   
-  public static void Vs(int paramInt)
+  public static void XB(int paramInt)
   {
     mPayChannel = paramInt;
   }
   
-  public static int enx()
+  public static int eCQ()
   {
     return mPayChannel;
   }

@@ -6,9 +6,9 @@ import com.tencent.mars.xlog.LogLogic;
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class XLogSetup
 {
@@ -33,10 +33,11 @@ public class XLogSetup
   
   public static void keep_setupXLog(boolean paramBoolean, String paramString1, String paramString2, Integer paramInteger, Boolean paramBoolean1, Boolean paramBoolean2, String paramString3)
   {
+    int i = 1;
     AppMethodBeat.i(133557);
     if (!hasInit)
     {
-      PlatformComm.init(aj.getContext(), new ap(Looper.getMainLooper()));
+      PlatformComm.init(ai.getContext(), new ao(Looper.getMainLooper()));
       hasInit = true;
     }
     cachePath = paramString1;
@@ -56,11 +57,10 @@ public class XLogSetup
       return;
     }
     setup = true;
-    paramString1 = a.Igx;
+    paramString1 = a.JIc;
     XLogSetup.class.getClassLoader();
-    j.pq(paramString1);
-    ad.a(xlog);
-    appendIsSync.booleanValue();
+    j.sC(paramString1);
+    ac.a(xlog);
     Xlog.setConsoleLogOpen(isLogcatOpen.booleanValue());
     if (toolsLevel == null)
     {
@@ -69,8 +69,14 @@ public class XLogSetup
       AppMethodBeat.o(133557);
       return;
     }
-    Xlog.AppenderOpen(toolsLevel.intValue(), 1, cachePath, logPath, nameprefix, 0);
-    AppMethodBeat.o(133557);
+    if (paramBoolean1.booleanValue()) {}
+    for (;;)
+    {
+      Xlog.AppenderOpen(toolsLevel.intValue(), i, cachePath, logPath, nameprefix, 0);
+      AppMethodBeat.o(133557);
+      return;
+      i = 0;
+    }
   }
   
   public static void realSetupXlog()

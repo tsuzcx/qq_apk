@@ -11,9 +11,9 @@ import com.tencent.luggage.d.h;
 import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public class ak
@@ -25,47 +25,47 @@ public class ak
   {
     int i = 1;
     AppMethodBeat.i(78588);
-    ad.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
-    final String str1 = parama.bZV.bZb.optString("url");
-    if (bt.isNullOrNil(str1))
+    ac.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
+    final String str1 = parama.bWS.bVY.optString("url");
+    if (bs.isNullOrNil(str1))
     {
       parama.a("invalid_url", null);
       AppMethodBeat.o(78588);
       return;
     }
-    ad.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
-    String str2 = parama.bZV.bZb.optString("orientation");
-    if (!bt.isNullOrNil(str2)) {
+    ac.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
+    String str2 = parama.bWS.bVY.optString("orientation");
+    if (!bs.isNullOrNil(str2)) {
       if (str2.equals("horizontal")) {
         i = 0;
       }
     }
     for (;;)
     {
-      boolean bool1 = parama.bZV.bZb.optBoolean("fullscreen");
-      final boolean bool2 = parama.bZV.bZb.optString("finish_recent_webview").equals("1");
-      boolean bool3 = parama.bZV.bZb.optString("disable_swipe_back").equals("1");
-      str2 = parama.bZV.bZb.optString("username");
+      boolean bool1 = parama.bWS.bVY.optBoolean("fullscreen");
+      final boolean bool2 = parama.bWS.bVY.optString("finish_recent_webview").equals("1");
+      boolean bool3 = parama.bWS.bVY.optString("disable_swipe_back").equals("1");
+      str2 = parama.bWS.bVY.optString("username");
       final Bundle localBundle = new Bundle();
       localBundle.putString("rawUrl", str1);
       localBundle.putInt("screen_orientation", i);
       localBundle.putBoolean("show_full_screen", bool1);
       localBundle.putBoolean("disable_swipe_back", bool3);
       localBundle.putString("shortcut_user_name", str2);
-      localBundle.putString("game_hv_menu_appid", bt.nullAsNil(parama.bZV.bZb.optString("gameAppid")));
-      localBundle.putBoolean("from_find_more_friend", ((f)parama.bZU).mParams.getBoolean("from_find_more_friend", false));
-      aq.f(new Runnable()
+      localBundle.putString("game_hv_menu_appid", bs.nullAsNil(parama.bWS.bVY.optString("gameAppid")));
+      localBundle.putBoolean("from_find_more_friend", ((f)parama.bWR).mParams.getBoolean("from_find_more_friend", false));
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78587);
           if (bool2)
           {
-            ((f)parama.bZU).bZZ.Bb().i(str1, localBundle);
+            ((f)parama.bWR).bWW.AF().i(str1, localBundle);
             AppMethodBeat.o(78587);
             return;
           }
-          ((f)parama.bZU).bZZ.Bb().h(str1, localBundle);
+          ((f)parama.bWR).bWW.AF().h(str1, localBundle);
           AppMethodBeat.o(78587);
         }
       });
@@ -78,7 +78,7 @@ public class ak
     }
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

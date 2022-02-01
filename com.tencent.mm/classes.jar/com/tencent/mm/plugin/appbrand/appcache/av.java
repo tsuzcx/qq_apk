@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsruntime.ac;
-import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.m;
@@ -15,7 +13,7 @@ public final class av
     AppMethodBeat.i(44352);
     paramString = new m()
     {
-      public final boolean qT(String paramAnonymousString)
+      public final boolean ui(String paramAnonymousString)
       {
         AppMethodBeat.i(174708);
         boolean bool = paramAnonymousString.endsWith("_" + paramString);
@@ -23,7 +21,7 @@ public final class av
         return bool;
       }
     };
-    e locale = new e(ac.bfJ());
+    e locale = new e(com.tencent.mm.plugin.appbrand.jsruntime.ac.bmD());
     if ((locale.exists()) && (locale.isDirectory()))
     {
       paramString = locale.b(paramString);
@@ -34,8 +32,8 @@ public final class av
         while (i < j)
         {
           locale = paramString[i];
-          i.cO(q.B(locale.mUri), true);
-          ad.i("WxaJsCacheStorage", "clear file:%s", new Object[] { locale.getName() });
+          i.cU(q.B(locale.mUri), true);
+          com.tencent.mm.sdk.platformtools.ac.i("WxaJsCacheStorage", "clear file:%s", new Object[] { locale.getName() });
           i += 1;
         }
       }

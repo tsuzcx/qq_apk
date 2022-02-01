@@ -7,24 +7,26 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.p.a.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.storage.ah;
 import com.tencent.mm.xlog.app.XLogSetup;
 import java.util.HashMap;
 
 public final class d
 {
-  private static d fiD;
+  private static d flX;
   private final String[] columns;
   private Context ctx;
-  public int fiC;
+  public int flW;
   private final HashMap<String, Object> values;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(131871);
-    this.fiC = -1;
+    this.flW = -1;
     this.columns = new String[] { "_id", "key", "type", "value" };
     this.values = new HashMap();
     this.ctx = paramContext;
@@ -51,13 +53,13 @@ public final class d
         AppMethodBeat.o(131871);
         return;
       }
-      if (!"18c867f0717aa67b2ab7347505ba07ed".equals(bt.n("com.tencent.mm.coolassist", paramContext)))
+      if (!"18c867f0717aa67b2ab7347505ba07ed".equals(bs.n("com.tencent.mm.coolassist", paramContext)))
       {
         localObject2.close();
         AppMethodBeat.o(131871);
         return;
       }
-      com.tencent.mm.sdk.a.b.eEP();
+      com.tencent.mm.sdk.a.b.eUj();
       int i = localObject2.getColumnIndex("key");
       int j = localObject2.getColumnIndex("type");
       int k = localObject2.getColumnIndex("value");
@@ -71,13 +73,13 @@ public final class d
     }
   }
   
-  public static d bH(Context paramContext)
+  public static d bK(Context paramContext)
   {
     AppMethodBeat.i(131870);
-    if (fiD == null) {
-      fiD = new d(paramContext);
+    if (flX == null) {
+      flX = new d(paramContext);
     }
-    paramContext = fiD;
+    paramContext = flX;
     AppMethodBeat.o(131870);
     return paramContext;
   }
@@ -88,7 +90,7 @@ public final class d
     Object localObject = this.values.get(paramString);
     if ((localObject instanceof Integer))
     {
-      ad.d("MicroMsg.Debugger", "getInteger(): key=" + paramString + ", value=" + localObject.toString());
+      ac.d("MicroMsg.Debugger", "getInteger(): key=" + paramString + ", value=" + localObject.toString());
       paramString = (Integer)localObject;
       AppMethodBeat.o(131874);
       return paramString;
@@ -103,7 +105,7 @@ public final class d
     Object localObject = this.values.get(paramString);
     if ((localObject instanceof String))
     {
-      ad.d("MicroMsg.Debugger", "getString(): key=" + paramString + ", value=" + localObject.toString());
+      ac.d("MicroMsg.Debugger", "getString(): key=" + paramString + ", value=" + localObject.toString());
       paramString = (String)localObject;
       AppMethodBeat.o(131873);
       return paramString;
@@ -112,24 +114,24 @@ public final class d
     return null;
   }
   
-  public final void ok(String paramString)
+  public final void rq(String paramString)
   {
     boolean bool3 = false;
     AppMethodBeat.i(131872);
     Integer localInteger = getInteger(".com.tencent.mm.debug.log.level");
-    boolean bool4 = bt.a(ol(".com.tencent.mm.debug.log.append_mode"), false);
+    boolean bool4 = bs.a(rr(".com.tencent.mm.debug.log.append_mode"), true);
     boolean bool2;
-    if ((bt.isNullOrNil(getString(".com.tencent.mm.debug.log.mmlog"))) && (bt.a(ol(".com.tencent.mm.debug.test.uploadLog"), false)))
+    if ((bs.isNullOrNil(getString(".com.tencent.mm.debug.log.mmlog"))) && (bs.a(rr(".com.tencent.mm.debug.test.uploadLog"), false)))
     {
       bool1 = true;
       if (bool1)
       {
         String str = getString(".com.tencent.mm.debug.log.tag.skey");
         if ((str != null) && (str.length() > 0)) {
-          com.tencent.mars.xlog.Xlog.logDecryptor = new com.tencent.mm.sdk.platformtools.ae(str);
+          com.tencent.mars.xlog.Xlog.logDecryptor = new ad(str);
         }
       }
-      bool2 = this.ctx.getSharedPreferences("system_config_prefs", g.XN()).getBoolean("first_launch_weixin", true);
+      bool2 = this.ctx.getSharedPreferences("system_config_prefs", g.YK()).getBoolean("first_launch_weixin", true);
       if (!"MM".equalsIgnoreCase(paramString)) {
         bool2 = false;
       }
@@ -138,15 +140,15 @@ public final class d
       }
       bool2 = true;
       label130:
-      XLogSetup.keep_setupXLog(bool2, com.tencent.mm.storage.ae.FfI, com.tencent.mm.loader.j.b.ain(), localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
-      ad.Wj(ad.getLogLevel());
-      if (bt.getInt(bt.by(getString(".com.tencent.mm.debug.monkeyEnv"), "0"), 0) != 1) {
+      XLogSetup.keep_setupXLog(bool2, ah.GDv, com.tencent.mm.loader.j.b.apn(), localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
+      ac.Ys(ac.getLogLevel());
+      if (bs.getInt(bs.bG(getString(".com.tencent.mm.debug.monkeyEnv"), "0"), 0) != 1) {
         break label249;
       }
       bool1 = true;
       label181:
-      bu.uW(bool1);
-      bu.eEO();
+      bt.vY(bool1);
+      bt.eUi();
       if (getInteger(".com.tencent.mm.debug.log.level") == null) {
         break label254;
       }
@@ -156,17 +158,17 @@ public final class d
     label254:
     for (boolean bool1 = true;; bool1 = false)
     {
-      bu.uX(bool1);
-      if (!bu.eEO())
+      bt.vZ(bool1);
+      if (!bt.eUi())
       {
         bool1 = bool3;
-        if (!bt.a(ol(".com.tencent.mm.debug.blockReleasedPatch"), false)) {}
+        if (!bs.a(rr(".com.tencent.mm.debug.blockReleasedPatch"), false)) {}
       }
       else
       {
         bool1 = true;
       }
-      com.tencent.mm.sdk.a.b.uN(bool1);
+      com.tencent.mm.sdk.a.b.vP(bool1);
       AppMethodBeat.o(131872);
       return;
       bool1 = false;
@@ -178,7 +180,7 @@ public final class d
     }
   }
   
-  public final Boolean ol(String paramString)
+  public final Boolean rr(String paramString)
   {
     AppMethodBeat.i(131875);
     Object localObject = this.values.get(paramString);
@@ -189,7 +191,7 @@ public final class d
     }
     if ((localObject instanceof Boolean))
     {
-      ad.d("MicroMsg.Debugger", "getBoolean(): key=" + paramString + ", value=" + localObject.toString());
+      ac.d("MicroMsg.Debugger", "getBoolean(): key=" + paramString + ", value=" + localObject.toString());
       paramString = (Boolean)localObject;
       AppMethodBeat.o(131875);
       return paramString;
@@ -208,7 +210,7 @@ public final class d
       }
       try
       {
-        ad.e("MicroMsg.Debugger.Resolver", "unknown type");
+        ac.e("MicroMsg.Debugger.Resolver", "unknown type");
         label51:
         AppMethodBeat.o(131869);
         return null;

@@ -14,39 +14,39 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.a.a;
 import d.g.b.k;
-import d.g.b.v.b;
+import d.g.b.v.c;
 import d.v;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "errIconLocation", "", "errorIcon", "Landroid/view/View;", "hasGetErrIconLocation", "", "hasGetLoadingIconLocation", "isLoadingShow", "isNoNetworkShowing", "loadingAnimation", "Landroid/view/animation/Animation;", "loadingIcon", "loadingIconLocation", "loadingLayout", "needAnimateWeakNetworkView", "noNetworkLayout", "pendingShowLoading", "pendingShowNoNetwork", "root", "successMark", "init", "", "isShowLoadingView", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setSuccessMarkView", "showBadNetworkViewInternal", "withAnimation", "showBadNetworkViewWithAnimation", "showLoadingView", "show", "showLoadingViewInternal", "showNoNetworkView", "showWeakNetworkView", "Companion", "plugin-scan_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "errIconLocation", "", "errorIcon", "Landroid/view/View;", "hasGetErrIconLocation", "", "hasGetLoadingIconLocation", "isLoadingShow", "isNoNetworkShowing", "loadingAnimation", "Landroid/view/animation/Animation;", "loadingIcon", "loadingIconLocation", "loadingLayout", "needAnimateWeakNetworkView", "noNetworkLayout", "pendingShowLoading", "pendingShowNoNetwork", "root", "successMark", "init", "", "isShowLoadingView", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setSuccessMarkView", "showBadNetworkViewInternal", "withAnimation", "showBadNetworkViewWithAnimation", "showLoadingView", "show", "showLoadingViewInternal", "showNoNetworkView", "showWeakNetworkView", "Companion", "plugin-scan_release"})
 public final class ScanNetworkMaskView
   extends LinearLayout
 {
-  public static final a vZh;
-  private View frN;
-  public View ruE;
-  public boolean vPm;
-  public View vYU;
-  private View vYV;
-  public int[] vYW;
-  public Animation vYX;
-  private boolean vYY;
-  public View vYZ;
-  private View vZa;
-  public int[] vZb;
-  private boolean vZc;
-  public boolean vZd;
-  private boolean vZe;
-  public boolean vZf;
-  public boolean vZg;
+  public static final ScanNetworkMaskView.a xkn;
+  private View fvu;
+  public View sDw;
+  public boolean wZS;
+  public View xka;
+  private View xkb;
+  public int[] xkc;
+  public Animation xkd;
+  private boolean xke;
+  public View xkf;
+  private View xkg;
+  public int[] xkh;
+  private boolean xki;
+  public boolean xkj;
+  private boolean xkk;
+  public boolean xkl;
+  public boolean xkm;
   
   static
   {
     AppMethodBeat.i(52422);
-    vZh = new a((byte)0);
+    xkn = new ScanNetworkMaskView.a((byte)0);
     AppMethodBeat.o(52422);
   }
   
@@ -61,65 +61,65 @@ public final class ScanNetworkMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52421);
-    this.vYW = new int[2];
-    this.vZb = new int[2];
-    this.vZg = true;
+    this.xkc = new int[2];
+    this.xkh = new int[2];
+    this.xkm = true;
     paramContext = LayoutInflater.from(paramContext).inflate(2131494568, (ViewGroup)this);
     paramAttributeSet = paramContext.findViewById(2131304241);
     k.g(paramAttributeSet, "view.findViewById(R.id.root_container)");
-    this.frN = paramAttributeSet;
+    this.fvu = paramAttributeSet;
     paramAttributeSet = paramContext.findViewById(2131304316);
     k.g(paramAttributeSet, "view.findViewById(R.id.scan_loading_layout)");
-    this.ruE = paramAttributeSet;
+    this.sDw = paramAttributeSet;
     paramAttributeSet = paramContext.findViewById(2131304315);
     k.g(paramAttributeSet, "view.findViewById(R.id.scan_loading_icon)");
-    this.vYV = paramAttributeSet;
+    this.xkb = paramAttributeSet;
     paramAttributeSet = paramContext.findViewById(2131304325);
     k.g(paramAttributeSet, "view.findViewById(R.id.scan_no_network_layout)");
-    this.vYZ = paramAttributeSet;
+    this.xkf = paramAttributeSet;
     paramContext = paramContext.findViewById(2131304324);
     k.g(paramContext, "view.findViewById(R.id.scan_no_network_error_icon)");
-    this.vZa = paramContext;
-    paramContext = this.frN;
+    this.xkg = paramContext;
+    paramContext = this.fvu;
     if (paramContext == null) {
-      k.aPZ("root");
+      k.aVY("root");
     }
-    paramContext.setOnTouchListener((View.OnTouchListener)ScanNetworkMaskView.b.vZi);
+    paramContext.setOnTouchListener((View.OnTouchListener)ScanNetworkMaskView.b.xko);
     AppMethodBeat.o(52421);
   }
   
-  private final void dmT()
+  private final void dBb()
   {
     AppMethodBeat.i(52417);
-    ad.i("MicroMsg.ScanNetworkMaskView", "alvinluo showBadNetworkViewWithAnimation");
-    Object localObject = this.vYU;
+    ac.i("MicroMsg.ScanNetworkMaskView", "alvinluo showBadNetworkViewWithAnimation");
+    Object localObject = this.xka;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
-    final float f1 = ((View)localObject).getTranslationX() - this.vZb[0];
-    localObject = this.vYU;
+    final float f1 = ((View)localObject).getTranslationX() - this.xkh[0];
+    localObject = this.xka;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
-    final float f2 = ((View)localObject).getTranslationY() - this.vZb[1];
-    localObject = this.vZa;
+    final float f2 = ((View)localObject).getTranslationY() - this.xkh[1];
+    localObject = this.xkg;
     if (localObject == null) {
-      k.aPZ("errorIcon");
+      k.aVY("errorIcon");
     }
     ((View)localObject).setTranslationX(f1);
-    localObject = this.vZa;
+    localObject = this.xkg;
     if (localObject == null) {
-      k.aPZ("errorIcon");
+      k.aVY("errorIcon");
     }
     ((View)localObject).setTranslationY(f2);
-    localObject = this.vYZ;
+    localObject = this.xkf;
     if (localObject == null) {
-      k.aPZ("noNetworkLayout");
+      k.aVY("noNetworkLayout");
     }
     ((View)localObject).setAlpha(0.0F);
-    localObject = this.vYU;
+    localObject = this.xka;
     if (localObject == null) {
-      k.fvU();
+      k.fOy();
     }
     localObject = ((View)localObject).animate();
     if (localObject != null)
@@ -127,10 +127,10 @@ public final class ScanNetworkMaskView
       localObject = ((ViewPropertyAnimator)localObject).alpha(0.0F);
       if (localObject != null)
       {
-        localObject = ((ViewPropertyAnimator)localObject).translationY(this.vZb[1]);
+        localObject = ((ViewPropertyAnimator)localObject).translationY(this.xkh[1]);
         if (localObject != null)
         {
-          localObject = ((ViewPropertyAnimator)localObject).translationX(this.vZb[0]);
+          localObject = ((ViewPropertyAnimator)localObject).translationX(this.xkh[0]);
           if (localObject != null)
           {
             localObject = ((ViewPropertyAnimator)localObject).setDuration(300L);
@@ -160,54 +160,54 @@ public final class ScanNetworkMaskView
     AppMethodBeat.i(52415);
     super.onMeasure(paramInt1, paramInt2);
     View localView;
-    if (!this.vZc)
+    if (!this.xki)
     {
-      localView = this.vZa;
+      localView = this.xkg;
       if (localView == null) {
-        k.aPZ("errorIcon");
+        k.aVY("errorIcon");
       }
-      localView.getLocationInWindow(this.vZb);
+      localView.getLocationInWindow(this.xkh);
     }
-    if (!this.vYY)
+    if (!this.xke)
     {
-      localView = this.vYV;
+      localView = this.xkb;
       if (localView == null) {
-        k.aPZ("loadingIcon");
+        k.aVY("loadingIcon");
       }
-      localView.getLocationInWindow(this.vYW);
+      localView.getLocationInWindow(this.xkc);
     }
-    ad.d("MicroMsg.ScanNetworkMaskView", "alvinluo onMeasure errorIcon location: %d, %d, loadingIcon location: %d, %d, pendingShowNoNetwork: %b, pendingShowLoading: %b", new Object[] { Integer.valueOf(this.vZb[0]), Integer.valueOf(this.vZb[1]), Integer.valueOf(this.vYW[0]), Integer.valueOf(this.vYW[1]), Boolean.valueOf(this.vZd), Boolean.valueOf(this.vZf) });
-    if ((this.vZb[0] != 0) || (this.vZb[1] != 0))
+    ac.d("MicroMsg.ScanNetworkMaskView", "alvinluo onMeasure errorIcon location: %d, %d, loadingIcon location: %d, %d, pendingShowNoNetwork: %b, pendingShowLoading: %b", new Object[] { Integer.valueOf(this.xkh[0]), Integer.valueOf(this.xkh[1]), Integer.valueOf(this.xkc[0]), Integer.valueOf(this.xkc[1]), Boolean.valueOf(this.xkj), Boolean.valueOf(this.xkl) });
+    if ((this.xkh[0] != 0) || (this.xkh[1] != 0))
     {
-      this.vZc = true;
-      if (!this.vZd) {
+      this.xki = true;
+      if (!this.xkj) {
         break label228;
       }
-      pg(true);
+      qe(true);
     }
-    while ((this.vYW[0] != 0) || (this.vYW[1] != 0))
+    while ((this.xkc[0] != 0) || (this.xkc[1] != 0))
     {
-      this.vYY = true;
-      if (this.vZf)
+      this.xke = true;
+      if (this.xkl)
       {
-        ph(true);
+        qf(true);
         AppMethodBeat.o(52415);
         return;
         label228:
-        if (!this.vZe)
+        if (!this.xkk)
         {
-          localView = this.vYZ;
+          localView = this.xkf;
           if (localView == null) {
-            k.aPZ("noNetworkLayout");
+            k.aVY("noNetworkLayout");
           }
           localView.setVisibility(8);
         }
       }
-      else if (!this.vPm)
+      else if (!this.wZS)
       {
-        localView = this.ruE;
+        localView = this.sDw;
         if (localView == null) {
-          k.aPZ("loadingLayout");
+          k.aVY("loadingLayout");
         }
         localView.setVisibility(8);
       }
@@ -215,119 +215,119 @@ public final class ScanNetworkMaskView
     AppMethodBeat.o(52415);
   }
   
-  public final void pg(boolean paramBoolean)
+  public final void qe(boolean paramBoolean)
   {
     AppMethodBeat.i(52416);
-    this.vZd = false;
-    this.vZe = true;
+    this.xkj = false;
+    this.xkk = true;
     setVisibility(0);
-    View localView = this.vYZ;
+    View localView = this.xkf;
     if (localView == null) {
-      k.aPZ("noNetworkLayout");
+      k.aVY("noNetworkLayout");
     }
     localView.setVisibility(0);
-    localView = this.ruE;
+    localView = this.sDw;
     if (localView == null) {
-      k.aPZ("loadingLayout");
+      k.aVY("loadingLayout");
     }
     localView.setVisibility(8);
     if (!paramBoolean)
     {
       setVisibility(0);
-      localView = this.vYZ;
+      localView = this.xkf;
       if (localView == null) {
-        k.aPZ("noNetworkLayout");
+        k.aVY("noNetworkLayout");
       }
       localView.setAlpha(1.0F);
       AppMethodBeat.o(52416);
       return;
     }
-    dmT();
+    dBb();
     AppMethodBeat.o(52416);
   }
   
-  public final void ph(final boolean paramBoolean)
+  public final void qf(final boolean paramBoolean)
   {
     AppMethodBeat.i(52419);
-    ad.d("MicroMsg.ScanNetworkMaskView", "alvinluo showLoadingViewInternal withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.vZf = false;
-    this.vPm = true;
-    this.vZg = false;
+    ac.d("MicroMsg.ScanNetworkMaskView", "alvinluo showLoadingViewInternal withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.xkl = false;
+    this.wZS = true;
+    this.xkm = false;
     Object localObject1 = (a)new f(this);
     setVisibility(0);
-    Object localObject2 = this.vYZ;
+    Object localObject2 = this.xkf;
     if (localObject2 == null) {
-      k.aPZ("noNetworkLayout");
+      k.aVY("noNetworkLayout");
     }
     ((View)localObject2).setVisibility(8);
-    localObject2 = this.ruE;
+    localObject2 = this.sDw;
     if (localObject2 == null) {
-      k.aPZ("loadingLayout");
+      k.aVY("loadingLayout");
     }
     ((View)localObject2).setVisibility(0);
-    localObject2 = this.vYX;
+    localObject2 = this.xkd;
     if (localObject2 != null) {
       ((Animation)localObject2).cancel();
     }
     if (!paramBoolean)
     {
-      localObject2 = this.ruE;
+      localObject2 = this.sDw;
       if (localObject2 == null) {
-        k.aPZ("loadingLayout");
+        k.aVY("loadingLayout");
       }
       ((View)localObject2).setAlpha(1.0F);
       ((a)localObject1).invoke();
       AppMethodBeat.o(52419);
       return;
     }
-    localObject2 = this.ruE;
+    localObject2 = this.sDw;
     if (localObject2 == null) {
-      k.aPZ("loadingLayout");
+      k.aVY("loadingLayout");
     }
     ((View)localObject2).setAlpha(0.0F);
-    localObject2 = this.vYU;
+    localObject2 = this.xka;
     if (localObject2 == null) {
-      k.fvU();
+      k.fOy();
     }
-    final v.b localb;
+    final v.c localc;
     Object localObject3;
     if (((View)localObject2).getVisibility() == 0)
     {
       paramBoolean = true;
-      localObject2 = new v.b();
-      ((v.b)localObject2).Jht = 0.0F;
-      localb = new v.b();
-      localb.Jht = 0.0F;
+      localObject2 = new v.c();
+      ((v.c)localObject2).KUN = 0.0F;
+      localc = new v.c();
+      localc.KUN = 0.0F;
       if (!paramBoolean) {
         break label532;
       }
-      localObject3 = this.vYU;
+      localObject3 = this.xka;
       if (localObject3 == null) {
-        k.fvU();
+        k.fOy();
       }
-      ((v.b)localObject2).Jht = (((View)localObject3).getTranslationX() - this.vYW[0]);
-      localObject3 = this.vYU;
+      ((v.c)localObject2).KUN = (((View)localObject3).getTranslationX() - this.xkc[0]);
+      localObject3 = this.xka;
       if (localObject3 == null) {
-        k.fvU();
+        k.fOy();
       }
-      localb.Jht = (((View)localObject3).getTranslationY() - this.vYW[1]);
-      localObject3 = this.vYV;
+      localc.KUN = (((View)localObject3).getTranslationY() - this.xkc[1]);
+      localObject3 = this.xkb;
       if (localObject3 == null) {
-        k.aPZ("loadingIcon");
+        k.aVY("loadingIcon");
       }
-      ((View)localObject3).setTranslationX(((v.b)localObject2).Jht);
-      localObject3 = this.vYV;
+      ((View)localObject3).setTranslationX(((v.c)localObject2).KUN);
+      localObject3 = this.xkb;
       if (localObject3 == null) {
-        k.aPZ("loadingIcon");
+        k.aVY("loadingIcon");
       }
-      ((View)localObject3).setTranslationY(localb.Jht);
+      ((View)localObject3).setTranslationY(localc.KUN);
     }
     for (;;)
     {
-      ad.d("MicroMsg.ScanNetworkMaskView", "alvinluo showLoadingViewInternal needDoTranslation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-      localObject3 = this.vYU;
+      ac.d("MicroMsg.ScanNetworkMaskView", "alvinluo showLoadingViewInternal needDoTranslation: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      localObject3 = this.xka;
       if (localObject3 == null) {
-        k.fvU();
+        k.fOy();
       }
       localObject3 = ((View)localObject3).animate();
       if (localObject3 == null) {
@@ -335,14 +335,14 @@ public final class ScanNetworkMaskView
       }
       if (paramBoolean)
       {
-        Object localObject4 = this.vYU;
+        Object localObject4 = this.xka;
         if (localObject4 == null) {
-          k.fvU();
+          k.fOy();
         }
         ((View)localObject4).setVisibility(0);
-        localObject4 = ((ViewPropertyAnimator)localObject3).translationY(this.vZb[1]);
+        localObject4 = ((ViewPropertyAnimator)localObject3).translationY(this.xkh[1]);
         if (localObject4 != null) {
-          ((ViewPropertyAnimator)localObject4).translationX(this.vZb[0]);
+          ((ViewPropertyAnimator)localObject4).translationX(this.xkh[0]);
         }
       }
       if (localObject3 == null) {
@@ -360,7 +360,7 @@ public final class ScanNetworkMaskView
       if (localObject1 == null) {
         break label542;
       }
-      localObject1 = ((ViewPropertyAnimator)localObject1).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new e(this, paramBoolean, (v.b)localObject2, localb));
+      localObject1 = ((ViewPropertyAnimator)localObject1).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new e(this, paramBoolean, (v.c)localObject2, localc));
       if (localObject1 == null) {
         break label542;
       }
@@ -378,13 +378,10 @@ public final class ScanNetworkMaskView
   
   public final void setSuccessMarkView(View paramView)
   {
-    this.vYU = paramView;
+    this.xka = paramView;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class c
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -402,18 +399,18 @@ public final class ScanNetworkMaskView
         throw paramValueAnimator;
       }
       float f1 = ((Float)paramValueAnimator).floatValue();
-      ScanNetworkMaskView.a(this.vZj).setAlpha(f1);
+      ScanNetworkMaskView.a(this.xkp).setAlpha(f1);
       float f2 = f1;
       float f3 = f1;
       float f4 = f2;
       float f5 = f2;
-      ScanNetworkMaskView.b(this.vZj).setTranslationX(f2 + (0.0F - f3) * f1);
-      ScanNetworkMaskView.b(this.vZj).setTranslationY(f1 * (0.0F - f5) + f4);
+      ScanNetworkMaskView.b(this.xkp).setTranslationX(f2 + (0.0F - f3) * f1);
+      ScanNetworkMaskView.b(this.xkp).setTranslationY(f1 * (0.0F - f5) + f4);
       AppMethodBeat.o(52411);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView$showLoadingViewInternal$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView$showLoadingViewInternal$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
@@ -424,13 +421,13 @@ public final class ScanNetworkMaskView
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(52412);
-      paramAnimator = ScanNetworkMaskView.e(this.vZj);
+      paramAnimator = ScanNetworkMaskView.e(this.xkp);
       if (paramAnimator == null) {
-        k.fvU();
+        k.fOy();
       }
       paramAnimator.setVisibility(8);
       if (paramBoolean) {
-        this.vZn.invoke();
+        this.xkt.invoke();
       }
       AppMethodBeat.o(52412);
     }
@@ -440,11 +437,11 @@ public final class ScanNetworkMaskView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class e
     implements ValueAnimator.AnimatorUpdateListener
   {
-    e(ScanNetworkMaskView paramScanNetworkMaskView, boolean paramBoolean, v.b paramb1, v.b paramb2) {}
+    e(ScanNetworkMaskView paramScanNetworkMaskView, boolean paramBoolean, v.c paramc1, v.c paramc2) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
@@ -458,21 +455,21 @@ public final class ScanNetworkMaskView
         throw paramValueAnimator;
       }
       float f1 = ((Float)paramValueAnimator).floatValue();
-      ScanNetworkMaskView.f(this.vZj).setAlpha(f1);
+      ScanNetworkMaskView.f(this.xkp).setAlpha(f1);
       if (paramBoolean)
       {
-        float f2 = this.vZo.Jht;
-        float f3 = this.vZo.Jht;
-        float f4 = localb.Jht;
-        float f5 = localb.Jht;
-        ScanNetworkMaskView.d(this.vZj).setTranslationX(f2 + (0.0F - f3) * f1);
-        ScanNetworkMaskView.d(this.vZj).setTranslationY(f1 * (0.0F - f5) + f4);
+        float f2 = this.xku.KUN;
+        float f3 = this.xku.KUN;
+        float f4 = localc.KUN;
+        float f5 = localc.KUN;
+        ScanNetworkMaskView.d(this.xkp).setTranslationX(f2 + (0.0F - f3) * f1);
+        ScanNetworkMaskView.d(this.xkp).setTranslationY(f1 * (0.0F - f5) + f4);
       }
       AppMethodBeat.o(52413);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class f
     extends d.g.b.l
     implements a<y>

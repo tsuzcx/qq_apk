@@ -15,15 +15,15 @@ final class a$5
     AppMethodBeat.i(29061);
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     if (f <= 0.1F) {
-      this.yDV.qgw.setAlpha(f * 10.0F);
+      this.zRj.qOY.setAlpha(f * 10.0F);
     }
     for (;;)
     {
-      this.yDV.qgw.setTranslationY(f * (this.pVd - this.yDV.qgw.getHeight()));
+      this.zRj.qOY.setTranslationY(f * (this.qDI - this.zRj.qOY.getHeight()));
       AppMethodBeat.o(29061);
       return;
       if (f >= 0.9F) {
-        this.yDV.qgw.setAlpha((1.0F - f) * 10.0F);
+        this.zRj.qOY.setAlpha((1.0F - f) * 10.0F);
       }
     }
   }

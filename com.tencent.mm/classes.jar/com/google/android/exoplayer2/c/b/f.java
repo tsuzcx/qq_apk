@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f
 {
-  private static final long[] aZp = { 128L, 64L, 32L, 16L, 8L, 4L, 2L, 1L };
-  private final byte[] aXA;
+  private static final long[] bab = { 128L, 64L, 32L, 16L, 8L, 4L, 2L, 1L };
+  private final byte[] aYm;
   int length;
   private int state;
   
   public f()
   {
     AppMethodBeat.i(92032);
-    this.aXA = new byte[8];
+    this.aYm = new byte[8];
     AppMethodBeat.o(92032);
   }
   
@@ -21,7 +21,7 @@ final class f
     long l2 = paramArrayOfByte[0] & 0xFF;
     long l1 = l2;
     if (paramBoolean) {
-      l1 = l2 & (aZp[(paramInt - 1)] ^ 0xFFFFFFFF);
+      l1 = l2 & (bab[(paramInt - 1)] ^ 0xFFFFFFFF);
     }
     int i = 1;
     while (i < paramInt)
@@ -35,9 +35,9 @@ final class f
   public static int ec(int paramInt)
   {
     int i = 0;
-    while (i < aZp.length)
+    while (i < bab.length)
     {
-      if ((aZp[i] & paramInt) != 0L) {
+      if ((bab[i] & paramInt) != 0L) {
         return i + 1;
       }
       i += 1;
@@ -50,12 +50,12 @@ final class f
     AppMethodBeat.i(92033);
     if (this.state == 0)
     {
-      if (!paramf.a(this.aXA, 0, 1, paramBoolean1))
+      if (!paramf.a(this.aYm, 0, 1, paramBoolean1))
       {
         AppMethodBeat.o(92033);
         return -1L;
       }
-      this.length = ec(this.aXA[0] & 0xFF);
+      this.length = ec(this.aYm[0] & 0xFF);
       if (this.length == -1)
       {
         paramf = new IllegalStateException("No valid varint length mask found");
@@ -71,10 +71,10 @@ final class f
       return -2L;
     }
     if (this.length != 1) {
-      paramf.readFully(this.aXA, 1, this.length - 1);
+      paramf.readFully(this.aYm, 1, this.length - 1);
     }
     this.state = 0;
-    long l = a(this.aXA, this.length, paramBoolean2);
+    long l = a(this.aYm, this.length, paramBoolean2);
     AppMethodBeat.o(92033);
     return l;
   }

@@ -6,21 +6,21 @@ import d.aa;
 import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkRecord;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "clearMark", "", "appId", "", "getMark", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK;", "appVersion", "", "insertOrUpdate", "record", "block", "Lkotlin/Function1;", "", "setMark", "mark", "MARK", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage;", "Lcom/tencent/mm/plugin/appbrand/storage/MAutoStorageWithMultiKey;", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkRecord;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "clearMark", "", "appId", "", "getMark", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK;", "appVersion", "", "insertOrUpdate", "record", "block", "Lkotlin/Function1;", "", "setMark", "mark", "MARK", "plugin-appbrand-integration_release"})
 public final class b
-  extends com.tencent.mm.plugin.appbrand.z.c<a>
+  extends com.tencent.mm.plugin.appbrand.y.c<a>
 {
   private final e db;
   
   public b(e parame)
   {
-    super(parame, a.gLr, "AppBrandSeparatedPluginsCompatMarkTable", a.INDEX_CREATE);
+    super(parame, a.hlR, "AppBrandSeparatedPluginsCompatMarkTable", a.INDEX_CREATE);
     AppMethodBeat.i(180424);
     this.db = parame;
     AppMethodBeat.o(180424);
   }
   
-  public final boolean DJ(String paramString)
+  public final boolean HN(String paramString)
   {
     AppMethodBeat.i(180421);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -44,8 +44,8 @@ public final class b
     AppMethodBeat.i(180422);
     k.h(paramString, "appId");
     k.h(parama, "mark");
-    if (a.iLe != parama) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+    if (a.jll != parama) {}
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
     {
       paramString = (Throwable)new AssertionError("Only NOT_USED(0) and USED(1) are acceptable.");
       AppMethodBeat.o(180422);
@@ -57,18 +57,18 @@ public final class b
     paramString = (d.g.a.b)new b(locala, parama);
     if (super.get((com.tencent.mm.sdk.e.c)locala, new String[0]))
     {
-      paramString.aA(locala);
+      paramString.ay(locala);
       bool = super.update((com.tencent.mm.sdk.e.c)locala, new String[0]);
       AppMethodBeat.o(180422);
       return bool;
     }
-    paramString.aA(locala);
+    paramString.ay(locala);
     boolean bool = super.insert((com.tencent.mm.sdk.e.c)locala);
     AppMethodBeat.o(180422);
     return bool;
   }
   
-  public final a aA(String paramString, int paramInt)
+  public final a aE(String paramString, int paramInt)
   {
     AppMethodBeat.i(180423);
     k.h(paramString, "appId");
@@ -76,9 +76,9 @@ public final class b
     ((a)localObject).field_appId = paramString;
     ((a)localObject).field_appVersion = paramInt;
     if (!super.get((com.tencent.mm.sdk.e.c)localObject, new String[0])) {
-      ((a)localObject).field_isSeparatedPluginsUsed = a.iLe.intValue;
+      ((a)localObject).field_isSeparatedPluginsUsed = a.jll.intValue;
     }
-    paramString = a.iLi;
+    paramString = a.jlp;
     int j = ((a)localObject).field_isSeparatedPluginsUsed;
     localObject = a.values();
     int k = localObject.length;
@@ -100,7 +100,7 @@ public final class b
     {
       localObject = paramString;
       if (paramString == null) {
-        localObject = a.iLe;
+        localObject = a.jll;
       }
       AppMethodBeat.o(180423);
       return localObject;
@@ -113,23 +113,23 @@ public final class b
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK;", "", "intValue", "", "(Ljava/lang/String;II)V", "toInt", "NONE", "NOT_USED", "USED", "Companion", "plugin-appbrand-integration_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK;", "", "intValue", "", "(Ljava/lang/String;II)V", "toInt", "NONE", "NOT_USED", "USED", "Companion", "plugin-appbrand-integration_release"})
   public static enum a
   {
-    public static final a iLi;
+    public static final a jlp;
     final int intValue;
     
     static
     {
       AppMethodBeat.i(180417);
       a locala1 = new a("NONE", 0, -1);
-      iLe = locala1;
+      jll = locala1;
       a locala2 = new a("NOT_USED", 1, 0);
-      iLf = locala2;
+      jlm = locala2;
       a locala3 = new a("USED", 2, 1);
-      iLg = locala3;
-      iLh = new a[] { locala1, locala2, locala3 };
-      iLi = new a((byte)0);
+      jln = locala3;
+      jlo = new a[] { locala1, locala2, locala3 };
+      jlp = new a((byte)0);
       AppMethodBeat.o(180417);
     }
     
@@ -138,11 +138,11 @@ public final class b
       this.intValue = paramInt;
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK$Companion;", "", "()V", "valueOfInt", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK;", "intValue", "", "plugin-appbrand-integration_release"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK$Companion;", "", "()V", "valueOfInt", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkStorage$MARK;", "intValue", "", "plugin-appbrand-integration_release"})
     public static final class a {}
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkRecord;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appcache/AppBrandSeparatedPluginsCompatMarkRecord;", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.b<a, y>
@@ -155,7 +155,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b
  * JD-Core Version:    0.7.0.1
  */

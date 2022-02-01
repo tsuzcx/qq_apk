@@ -5,7 +5,7 @@ import com.tencent.mm.g.a.bm;
 import com.tencent.mm.g.a.bm.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.e.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 
@@ -23,20 +23,20 @@ public final class c
   {
     AppMethodBeat.i(108389);
     h localh;
-    if (parambm.ddO.ddH == 37) {
-      if ((parambm.ddO.subType == 5) && (parambm.ddO.dbV == 2))
+    if (parambm.dbk.dbd == 37) {
+      if ((parambm.dbk.subType == 5) && (parambm.dbk.cZu == 2))
       {
-        localh = h.bUO();
-        ad.i("MicroMsg.emoji.EmojiResUpdateMgr", "delete emoji egg!");
+        localh = h.ccb();
+        ac.i("MicroMsg.emoji.EmojiResUpdateMgr", "delete emoji egg!");
       }
     }
     try
     {
-      i.deleteFile(g.afB().cachePath + "eggingfo.ini");
-      i.cO(q.B(new com.tencent.mm.vfs.e(h.getDataEmojiPath(), h.ovD).mUri), true);
-      localh.ovY = null;
-      if (parambm.ddO.dbV == 0) {
-        ad.i("MicroMsg.emoji.EmojiResUpdateOperationListener", "cache res type:%d subType:%d", new Object[] { Integer.valueOf(parambm.ddO.ddH), Integer.valueOf(parambm.ddO.subType) });
+      i.deleteFile(g.agR().cachePath + "eggingfo.ini");
+      i.cU(q.B(new com.tencent.mm.vfs.e(h.getDataEmojiPath(), h.oZd).mUri), true);
+      localh.oZy = null;
+      if (parambm.dbk.cZu == 0) {
+        ac.i("MicroMsg.emoji.EmojiResUpdateOperationListener", "cache res type:%d subType:%d", new Object[] { Integer.valueOf(parambm.dbk.dbd), Integer.valueOf(parambm.dbk.subType) });
       }
       AppMethodBeat.o(108389);
       return false;
@@ -45,7 +45,7 @@ public final class c
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.emoji.EmojiResUpdateMgr", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.emoji.EmojiResUpdateMgr", localException, "", new Object[0]);
       }
     }
   }

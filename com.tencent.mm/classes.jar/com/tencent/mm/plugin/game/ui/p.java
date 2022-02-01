@@ -7,8 +7,8 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.o;
 import com.tencent.mm.plugin.game.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class p
   extends b
@@ -16,7 +16,7 @@ public final class p
   public p(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.rXI = paramInt;
+    this.tfA = paramInt;
   }
   
   public final void onClick(View paramView)
@@ -25,28 +25,28 @@ public final class p
     paramView = paramView.getTag();
     if (paramView == null)
     {
-      ad.e("MicroMsg.GameMessageOnClickListener", "Tag is null.");
+      ac.e("MicroMsg.GameMessageOnClickListener", "Tag is null.");
       paramView = null;
     }
     while (paramView == null)
     {
-      ad.e("MicroMsg.GameMessageContentClickListener", "The game message is null.");
+      ac.e("MicroMsg.GameMessageContentClickListener", "The game message is null.");
       AppMethodBeat.o(42282);
       return;
       if (!(paramView instanceof Long))
       {
-        ad.e("MicroMsg.GameMessageOnClickListener", "The tag of action listener is not instance of Long");
+        ac.e("MicroMsg.GameMessageOnClickListener", "The tag of action listener is not instance of Long");
         paramView = null;
       }
       else
       {
-        paramView = ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().qV(((Long)paramView).longValue());
+        paramView = ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().vy(((Long)paramView).longValue());
         if (paramView != null) {
-          paramView.cDf();
+          paramView.cQp();
         }
       }
     }
-    String str = com.tencent.mm.game.report.e.a(null, null, paramView.rWS, null);
+    String str = com.tencent.mm.game.report.e.a(null, null, paramView.teK, null);
     switch (paramView.field_msgType)
     {
     case 7: 
@@ -54,7 +54,7 @@ public final class p
     case 9: 
     default: 
       i = a(this.mContext, paramView);
-      com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+      com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, str);
     }
     do
     {
@@ -62,25 +62,25 @@ public final class p
       {
         AppMethodBeat.o(42282);
         return;
-        if (!bt.isNullOrNil(paramView.rVU))
+        if (!bs.isNullOrNil(paramView.tdM))
         {
-          i = c.ax(this.mContext, paramView.rVU);
-          com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+          i = c.ay(this.mContext, paramView.tdM);
+          com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, str);
           AppMethodBeat.o(42282);
           return;
         }
         i = a(this.mContext, paramView);
-        com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+        com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, str);
         AppMethodBeat.o(42282);
         return;
-      } while (bt.isNullOrNil(paramView.rWx));
-      i = c.ax(this.mContext, paramView.rWx);
-      com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+      } while (bs.isNullOrNil(paramView.tep));
+      i = c.ay(this.mContext, paramView.tep);
+      com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, str);
       AppMethodBeat.o(42282);
       return;
-    } while (bt.isNullOrNil(paramView.rWA));
-    int i = c.ax(this.mContext, paramView.rWA);
-    com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+    } while (bs.isNullOrNil(paramView.tes));
+    int i = c.ay(this.mContext, paramView.tes);
+    com.tencent.mm.game.report.e.a(this.mContext, 13, 1301, 3, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, str);
     AppMethodBeat.o(42282);
   }
 }

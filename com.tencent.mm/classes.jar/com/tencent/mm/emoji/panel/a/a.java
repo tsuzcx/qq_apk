@@ -8,39 +8,39 @@ import com.tencent.mm.emoji.a.a.p;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/view/View;", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/CaptureEmptyViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "kotlin.jvm.PlatformType", "getIcon", "()Landroid/view/View;", "plugin-emojisdk_release"})
 public final class a
   extends q<p>
 {
-  private final View fPJ;
+  private final View fTE;
   
   public a(View paramView, n paramn)
   {
     super(paramView, paramn);
     AppMethodBeat.i(105627);
-    this.fPJ = paramView.findViewById(2131297704);
+    this.fTE = paramView.findViewById(2131297704);
     paramView.setOnClickListener(null);
-    this.fPJ.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.fTE.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(105626);
-        n localn = this.fPK.fQw;
+        n localn = this.fTF.fUr;
         if (localn != null)
         {
           k.g(paramAnonymousView, "it");
           paramAnonymousView = paramAnonymousView.getContext();
           k.g(paramAnonymousView, "it.context");
-          localn.a(paramAnonymousView, this.fPK.ln(), this.fPK.fQv);
+          localn.a(paramAnonymousView, this.fTF.lv(), this.fTF.fUq);
           AppMethodBeat.o(105626);
           return;
         }
         AppMethodBeat.o(105626);
       }
     });
-    paramView = this.fPJ;
+    paramView = this.fTE;
     k.g(paramView, "icon");
-    paramn = this.fPJ;
+    paramn = this.fTE;
     k.g(paramn, "icon");
     paramView.setContentDescription((CharSequence)paramn.getContext().getString(2131756781));
     AppMethodBeat.o(105627);
@@ -48,7 +48,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.a
  * JD-Core Version:    0.7.0.1
  */

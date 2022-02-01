@@ -6,7 +6,7 @@ import java.util.List;
 
 public final class b
 {
-  public static <T> List<T> L(List<T> paramList)
+  public static <T> List<T> C(List<T> paramList)
   {
     AppMethodBeat.i(140483);
     if (paramList == null)
@@ -31,7 +31,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.h.b
  * JD-Core Version:    0.7.0.1
  */

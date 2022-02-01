@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jg;
+import com.tencent.mm.g.a.jn;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -90,7 +90,7 @@ public final class d
       {
         AppMethodBeat.i(113757);
         paramAnonymousDialogInterface.dismiss();
-        this.nJg.bLf();
+        this.omg.bSs();
         AppMethodBeat.o(113757);
       }
     }, new DialogInterface.OnClickListener()
@@ -119,7 +119,7 @@ public final class d
         {
           AppMethodBeat.i(113754);
           paramAnonymousDialogInterface.dismiss();
-          this.nJg.bHz();
+          this.omg.bOM();
           AppMethodBeat.o(113754);
         }
       }, new DialogInterface.OnClickListener()
@@ -149,13 +149,20 @@ public final class d
       {
         AppMethodBeat.i(113759);
         paramAnonymousDialogInterface.dismiss();
-        if (this.nJh) {
+        if (this.omh) {
           paramMMActivity.finish();
         }
         AppMethodBeat.o(113759);
       }
     });
     AppMethodBeat.o(113767);
+  }
+  
+  public static void b(MMActivity paramMMActivity)
+  {
+    AppMethodBeat.i(113768);
+    h.a(paramMMActivity, paramMMActivity.getString(2131756957, new Object[] { paramMMActivity.getString(2131756800) }), paramMMActivity.getString(2131755906), new d.7(paramMMActivity), new d.8());
+    AppMethodBeat.o(113768);
   }
   
   public static void b(MMActivity paramMMActivity, String paramString, int paramInt)
@@ -192,10 +199,10 @@ public final class d
           {
             AppMethodBeat.i(113762);
             paramAnonymousDialogInterface.dismiss();
-            paramAnonymousDialogInterface = new jg();
-            paramAnonymousDialogInterface.dnt.context = this.val$context;
-            a.ESL.l(paramAnonymousDialogInterface);
-            ad.i("MicroMsg.CardDialogHelper", "enter to cardhome");
+            paramAnonymousDialogInterface = new jn();
+            paramAnonymousDialogInterface.dlb.context = this.val$context;
+            a.GpY.l(paramAnonymousDialogInterface);
+            ac.i("MicroMsg.CardDialogHelper", "enter to cardhome");
             AppMethodBeat.o(113762);
           }
         }, new DialogInterface.OnClickListener()
@@ -216,13 +223,6 @@ public final class d
     }
   }
   
-  public static void c(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(113768);
-    h.a(paramMMActivity, paramMMActivity.getString(2131756957, new Object[] { paramMMActivity.getString(2131756800) }), paramMMActivity.getString(2131755906), new d.7(paramMMActivity), new d.8());
-    AppMethodBeat.o(113768);
-  }
-  
   public static void c(MMActivity paramMMActivity, String paramString)
   {
     AppMethodBeat.i(113765);
@@ -236,14 +236,14 @@ public final class d
   
   public static abstract interface b
   {
-    public abstract void bHz();
+    public abstract void bOM();
     
-    public abstract void bLf();
+    public abstract void bSs();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d
  * JD-Core Version:    0.7.0.1
  */

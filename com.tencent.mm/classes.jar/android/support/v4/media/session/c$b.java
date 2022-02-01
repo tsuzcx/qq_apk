@@ -12,16 +12,16 @@ import java.util.List;
 final class c$b<T extends c.a>
   extends MediaController.Callback
 {
-  protected final T JU;
+  protected final T KP;
   
   public c$b(T paramT)
   {
-    this.JU = paramT;
+    this.KP = paramT;
   }
   
   public final void onAudioInfoChanged(MediaController.PlaybackInfo paramPlaybackInfo)
   {
-    c.a locala = this.JU;
+    c.a locala = this.KP;
     int j = paramPlaybackInfo.getPlaybackType();
     AudioAttributes localAudioAttributes = ((MediaController.PlaybackInfo)paramPlaybackInfo).getAudioAttributes();
     int i;
@@ -75,43 +75,43 @@ final class c$b<T extends c.a>
   public final void onExtrasChanged(Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    this.JU.eB();
+    this.KP.eJ();
   }
   
   public final void onMetadataChanged(MediaMetadata paramMediaMetadata)
   {
-    this.JU.v(paramMediaMetadata);
+    this.KP.x(paramMediaMetadata);
   }
   
   public final void onPlaybackStateChanged(PlaybackState paramPlaybackState)
   {
-    this.JU.u(paramPlaybackState);
+    this.KP.w(paramPlaybackState);
   }
   
   public final void onQueueChanged(List<MediaSession.QueueItem> paramList)
   {
-    this.JU.onQueueChanged(paramList);
+    this.KP.onQueueChanged(paramList);
   }
   
   public final void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    this.JU.eA();
+    this.KP.eI();
   }
   
   public final void onSessionDestroyed()
   {
-    this.JU.onSessionDestroyed();
+    this.KP.onSessionDestroyed();
   }
   
   public final void onSessionEvent(String paramString, Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    this.JU.ez();
+    this.KP.eH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.session.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,40 +7,40 @@ import com.google.b.a.e;
 public final class a$ao
   extends e
 {
-  private static volatile ao[] Ims;
-  public int nPB = 0;
+  private static volatile ao[] JOd;
+  public int osF = 0;
   
   public a$ao()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static ao[] flu()
+  public static ao[] fBL()
   {
-    if (Ims == null) {}
-    synchronized (c.bIR)
+    if (JOd == null) {}
+    synchronized (c.bGz)
     {
-      if (Ims == null) {
-        Ims = new ao[0];
+      if (JOd == null) {
+        JOd = new ao[0];
       }
-      return Ims;
+      return JOd;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.nPB != 0) {
-      paramb.bz(1, this.nPB);
+    if (this.osF != 0) {
+      paramb.bw(1, this.osF);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (this.nPB != 0) {
-      i = j + b.bB(1, this.nPB);
+    if (this.osF != 0) {
+      i = j + b.by(1, this.osF);
     }
     return i;
   }

@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public final class l
-  implements d, x<Object>
+  implements d, w<Object>
 {
-  private final d.a bwH;
-  private final r bwI;
-  private final c bwJ;
-  private int bwK;
-  private long bwL;
-  private long bwM;
-  private long bwN;
-  private long bwO;
-  private long bwP;
+  private final d.a buD;
+  private final r buE;
+  private final c buF;
+  private int buG;
+  private long buH;
+  private long buI;
+  private long buJ;
+  private long buK;
+  private long buL;
   private final Handler eventHandler;
   
   public l()
@@ -35,25 +35,25 @@ public final class l
   
   private l(Handler paramHandler, d.a parama, byte paramByte)
   {
-    this(paramHandler, parama, c.byF);
+    this(paramHandler, parama, c.bwn);
   }
   
   private l(Handler paramHandler, d.a parama, c paramc)
   {
     AppMethodBeat.i(93056);
     this.eventHandler = paramHandler;
-    this.bwH = parama;
-    this.bwI = new r();
-    this.bwJ = paramc;
-    this.bwP = -1L;
+    this.buD = parama;
+    this.buE = new r();
+    this.buF = paramc;
+    this.buL = -1L;
     AppMethodBeat.o(93056);
   }
   
-  public final void fj(int paramInt)
+  public final void eV(int paramInt)
   {
     try
     {
-      this.bwM += paramInt;
+      this.buI += paramInt;
       return;
     }
     finally
@@ -63,11 +63,11 @@ public final class l
     }
   }
   
-  public final long vg()
+  public final long va()
   {
     try
     {
-      long l = this.bwP;
+      long l = this.buL;
       return l;
     }
     finally
@@ -77,22 +77,22 @@ public final class l
     }
   }
   
-  public final void vl()
+  public final void ve()
   {
     try
     {
       AppMethodBeat.i(93057);
-      if (this.bwK == 0) {
-        this.bwL = this.bwJ.elapsedRealtime();
+      if (this.buG == 0) {
+        this.buH = this.buF.elapsedRealtime();
       }
-      this.bwK += 1;
+      this.buG += 1;
       AppMethodBeat.o(93057);
       return;
     }
     finally {}
   }
   
-  public final void vm()
+  public final void vf()
   {
     long l2;
     final int k;
@@ -107,55 +107,55 @@ public final class l
       try
       {
         AppMethodBeat.i(93058);
-        if (this.bwK > 0)
+        if (this.buG > 0)
         {
           bool = true;
           a.checkState(bool);
-          l2 = this.bwJ.elapsedRealtime();
-          k = (int)(l2 - this.bwL);
-          this.bwN += k;
-          this.bwO += this.bwM;
+          l2 = this.buF.elapsedRealtime();
+          k = (int)(l2 - this.buH);
+          this.buJ += k;
+          this.buK += this.buI;
           if (k <= 0) {
             break label517;
           }
-          f = (float)(this.bwM * 8000L / k);
-          localObject4 = this.bwI;
-          i = (int)Math.sqrt(this.bwM);
-          if (((r)localObject4).bzm != 1)
+          f = (float)(this.buI * 8000L / k);
+          localObject4 = this.buE;
+          i = (int)Math.sqrt(this.buI);
+          if (((r)localObject4).bwU != 1)
           {
-            Collections.sort(((r)localObject4).bzk, r.bzh);
-            ((r)localObject4).bzm = 1;
+            Collections.sort(((r)localObject4).bwS, r.bwP);
+            ((r)localObject4).bwU = 1;
           }
-          if (((r)localObject4).bzp <= 0) {
+          if (((r)localObject4).bwX <= 0) {
             break label345;
           }
-          Object localObject1 = ((r)localObject4).bzl;
-          j = ((r)localObject4).bzp - 1;
-          ((r)localObject4).bzp = j;
+          Object localObject1 = ((r)localObject4).bwT;
+          j = ((r)localObject4).bwX - 1;
+          ((r)localObject4).bwX = j;
           localObject1 = localObject1[j];
-          j = ((r)localObject4).bzn;
-          ((r)localObject4).bzn = (j + 1);
+          j = ((r)localObject4).bwV;
+          ((r)localObject4).bwV = (j + 1);
           ((r.a)localObject1).index = j;
           ((r.a)localObject1).weight = i;
           ((r.a)localObject1).value = f;
-          ((r)localObject4).bzk.add(localObject1);
-          ((r)localObject4).bzo += i;
-          if (((r)localObject4).bzo <= ((r)localObject4).bzj) {
+          ((r)localObject4).bwS.add(localObject1);
+          ((r)localObject4).bwW += i;
+          if (((r)localObject4).bwW <= ((r)localObject4).bwR) {
             break;
           }
-          i = ((r)localObject4).bzo - ((r)localObject4).bzj;
-          localObject1 = (r.a)((r)localObject4).bzk.get(0);
+          i = ((r)localObject4).bwW - ((r)localObject4).bwR;
+          localObject1 = (r.a)((r)localObject4).bwS.get(0);
           if (((r.a)localObject1).weight > i) {
             break label358;
           }
-          ((r)localObject4).bzo -= ((r.a)localObject1).weight;
-          ((r)localObject4).bzk.remove(0);
-          if (((r)localObject4).bzp >= 5) {
+          ((r)localObject4).bwW -= ((r.a)localObject1).weight;
+          ((r)localObject4).bwS.remove(0);
+          if (((r)localObject4).bwX >= 5) {
             continue;
           }
-          r.a[] arrayOfa = ((r)localObject4).bzl;
-          i = ((r)localObject4).bzp;
-          ((r)localObject4).bzp = (i + 1);
+          r.a[] arrayOfa = ((r)localObject4).bwT;
+          i = ((r)localObject4).bwX;
+          ((r)localObject4).bwX = (i + 1);
           arrayOfa[i] = localObject1;
           continue;
         }
@@ -167,23 +167,23 @@ public final class l
       continue;
       label358:
       ((r.a)localObject3).weight -= i;
-      ((r)localObject4).bzo -= i;
+      ((r)localObject4).bwW -= i;
     }
-    if ((this.bwN >= 2000L) || (this.bwO >= 524288L))
+    if ((this.buJ >= 2000L) || (this.buK >= 524288L))
     {
-      localObject3 = this.bwI;
-      if (((r)localObject3).bzm != 0)
+      localObject3 = this.buE;
+      if (((r)localObject3).bwU != 0)
       {
-        Collections.sort(((r)localObject3).bzk, r.bzi);
-        ((r)localObject3).bzm = 0;
+        Collections.sort(((r)localObject3).bwS, r.bwQ);
+        ((r)localObject3).bwU = 0;
       }
-      f = ((r)localObject3).bzo;
+      f = ((r)localObject3).bwW;
       i = 0;
       j = 0;
-      if (i >= ((r)localObject3).bzk.size()) {
+      if (i >= ((r)localObject3).bwS.size()) {
         break label607;
       }
-      localObject4 = (r.a)((r)localObject3).bzk.get(i);
+      localObject4 = (r.a)((r)localObject3).bwS.get(i);
       j = ((r.a)localObject4).weight + j;
       if (j < 0.5F * f) {
         break label600;
@@ -198,33 +198,33 @@ public final class l
     label652:
     for (final long l1 = -1L;; l1 = f)
     {
-      this.bwP = l1;
-      l1 = this.bwM;
-      long l3 = this.bwP;
-      if ((this.eventHandler != null) && (this.bwH != null)) {
+      this.buL = l1;
+      l1 = this.buI;
+      long l3 = this.buL;
+      if ((this.eventHandler != null) && (this.buD != null)) {
         this.eventHandler.post(new Runnable()
         {
           public final void run() {}
         });
       }
-      i = this.bwK - 1;
-      this.bwK = i;
+      i = this.buG - 1;
+      this.buG = i;
       if (i > 0) {
-        this.bwL = l2;
+        this.buH = l2;
       }
-      this.bwM = 0L;
+      this.buI = 0L;
       AppMethodBeat.o(93058);
       return;
       label600:
       i += 1;
       break;
       label607:
-      if (((r)localObject3).bzk.isEmpty())
+      if (((r)localObject3).bwS.isEmpty())
       {
         f = (0.0F / 0.0F);
         break label499;
       }
-      f = ((r.a)((r)localObject3).bzk.get(((r)localObject3).bzk.size() - 1)).value;
+      f = ((r.a)((r)localObject3).bwS.get(((r)localObject3).bwS.size() - 1)).value;
       break label499;
     }
   }

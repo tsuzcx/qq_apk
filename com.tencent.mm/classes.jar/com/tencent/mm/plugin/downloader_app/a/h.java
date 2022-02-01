@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.downloader_app.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class h
 {
-  public static a ohY;
-  static g ohZ;
+  public static a oLy;
+  static g oLz;
   
   public static void a(LinkedList<String> paramLinkedList, a parama)
   {
     AppMethodBeat.i(8904);
     b.a locala = new b.a();
     com.tencent.mm.plugin.downloader.c.a.a.a locala1 = new com.tencent.mm.plugin.downloader.c.a.a.a();
-    locala1.ocv = paramLinkedList;
-    locala1.ocx = true;
-    locala.gUU = locala1;
-    locala.gUV = new com.tencent.mm.plugin.downloader.c.a.a.b();
+    locala1.oFU = paramLinkedList;
+    locala1.oFW = true;
+    locala.hvt = locala1;
+    locala.hvu = new com.tencent.mm.plugin.downloader.c.a.a.b();
     locala.uri = "/cgi-bin/mmgame-bin/batchgetappdownloadinfo";
     locala.funcId = 2560;
-    ohY = parama;
-    x.a(locala.atI(), new x.a()
+    oLy = parama;
+    x.a(locala.aAz(), new x.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
       {
         AppMethodBeat.i(8902);
-        ad.i("MicroMsg.PbAppInfoManager", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ac.i("MicroMsg.PbAppInfoManager", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          h.ohZ = new g((com.tencent.mm.plugin.downloader.c.a.a.b)paramAnonymousb.gUT.gUX);
-          if (h.ohY != null) {
-            h.ohY.jg(true);
+          h.oLz = new g((com.tencent.mm.plugin.downloader.c.a.a.b)paramAnonymousb.hvs.hvw);
+          if (h.oLy != null) {
+            h.oLy.jJ(true);
           }
         }
         for (;;)
         {
           AppMethodBeat.o(8902);
           return 0;
-          if (h.ohY != null) {
-            h.ohY.jg(false);
+          if (h.oLy != null) {
+            h.oLy.jJ(false);
           }
         }
       }
@@ -52,24 +52,24 @@ public final class h
     AppMethodBeat.o(8904);
   }
   
-  public static g bRe()
+  public static g bYt()
   {
     AppMethodBeat.i(8903);
-    if (ohZ == null)
+    if (oLz == null)
     {
-      localObject = ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).abW("pb_appinfo");
+      localObject = ((com.tencent.mm.plugin.game.commlib.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.commlib.a.a.class)).agO("pb_appinfo");
       if (localObject != null) {
-        ohZ = new g((byte[])localObject);
+        oLz = new g((byte[])localObject);
       }
     }
-    Object localObject = ohZ;
+    Object localObject = oLz;
     AppMethodBeat.o(8903);
     return localObject;
   }
   
   public static abstract interface a
   {
-    public abstract void jg(boolean paramBoolean);
+    public abstract void jJ(boolean paramBoolean);
   }
 }
 

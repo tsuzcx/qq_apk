@@ -4,28 +4,28 @@ import com.tencent.tinker.a.a.j;
 
 public final class d
 {
-  private final g ICh;
+  private final g Koq;
   
   public d(g paramg)
   {
-    this.ICh = paramg;
+    this.Koq = paramg;
   }
   
   public final void a(e parame)
   {
-    Object localObject = this.ICh;
-    ((a)localObject).ICe.mSize = 0;
-    ((a)localObject).amn = 0;
+    Object localObject = this.Koq;
+    ((a)localObject).Kon.mSize = 0;
+    ((a)localObject).anh = 0;
     for (;;)
     {
-      localObject = this.ICh;
-      if (((a)localObject).amn < ((g)localObject).ICm.length) {}
+      localObject = this.Koq;
+      if (((a)localObject).anh < ((g)localObject).Kov.length) {}
       int i1;
       int n;
       for (int i = 1; i != 0; i = 0)
       {
-        i1 = this.ICh.amn;
-        n = this.ICh.read();
+        i1 = this.Koq.anh;
+        n = this.Koq.read();
         j = n & 0xFF;
         if (j != 0)
         {
@@ -39,73 +39,73 @@ public final class d
         switch (i)
         {
         default: 
-          throw new IllegalStateException("Unknown opcode: " + com.tencent.tinker.a.b.b.a.acu(i));
+          throw new IllegalStateException("Unknown opcode: " + com.tencent.tinker.a.b.b.a.afq(i));
         }
       }
       parame.a(i1, n, 0, 1, 0, 0L);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (byte)b.aco(n), 0L);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (byte)b.afk(n), 0L);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, b.aco(n));
+      parame.a(i1, n & 0xFF, 0, 1, 0, b.afk(n));
       continue;
       parame.a(i1, n & 0xFF, 0, 1, 0, (n >> 12 & 0xF) << 28 >> 28, n >> 8 & 0xF);
       continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.aco(n));
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.afk(n));
       continue;
       parame.a(i1, n & 0xFF, 0, 1, 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
       continue;
-      i = b.aco(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.ICh.read(), i);
+      i = b.afk(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Koq.read(), i);
       continue;
       i = n & 0xFF;
-      int j = b.aco(n);
-      parame.a(i1, i, this.ICh.read(), b.acr(i), 0, 0L, j);
+      int j = b.afk(n);
+      parame.a(i1, i, this.Koq.read(), b.afn(i), 0, 0L, j);
       continue;
       j = n & 0xFF;
-      int k = b.aco(n);
-      long l = (short)this.ICh.read();
+      int k = b.afk(n);
+      long l = (short)this.Koq.read();
       if (j == 21) {}
       for (i = 16;; i = 48)
       {
         parame.a(i1, j, 0, 1, 0, l << i, k);
         break;
       }
-      i = b.aco(n);
-      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.ICh.read(), i);
+      i = b.afk(n);
+      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.Koq.read(), i);
       continue;
-      i = b.aco(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.ICh.read(), 0L, i);
+      i = b.afk(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Koq.read(), 0L, i);
       continue;
-      i = b.aco(n);
-      j = this.ICh.read();
-      parame.a(i1, n & 0xFF, 0, 1, 0, (byte)b.aco(j), i, j & 0xFF);
-      continue;
-      i = n & 0xFF;
-      parame.a(i1, i, this.ICh.read(), b.acr(i), 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.ICh.read(), n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.ICh.read(), 0L, n >> 8 & 0xF, n >> 12 & 0xF);
-      continue;
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.aco(n), this.ICh.read());
-      continue;
-      i = b.aco(n);
-      j = this.ICh.read();
-      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, i, j & 0xFF, b.aco(j));
-      continue;
-      i = b.aco(n);
-      parame.a(i1, n & 0xFF, 0, 1, i1 + this.ICh.readInt(), i);
+      i = b.afk(n);
+      j = this.Koq.read();
+      parame.a(i1, n & 0xFF, 0, 1, 0, (byte)b.afk(j), i, j & 0xFF);
       continue;
       i = n & 0xFF;
-      j = b.aco(n);
-      parame.a(i1, i, this.ICh.readInt(), b.acr(i), 0, 0L, j);
+      parame.a(i1, i, this.Koq.read(), b.afn(i), 0, 0L, n >> 8 & 0xF, n >> 12 & 0xF);
       continue;
-      i = b.aco(n);
-      parame.a(i1, n & 0xFF, 0, 1, 0, this.ICh.readInt(), i);
+      parame.a(i1, n & 0xFF, 0, 1, 0, (short)this.Koq.read(), n >> 8 & 0xF, n >> 12 & 0xF);
+      continue;
+      parame.a(i1, n & 0xFF, 0, 1, i1 + (short)this.Koq.read(), 0L, n >> 8 & 0xF, n >> 12 & 0xF);
+      continue;
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, b.afk(n), this.Koq.read());
+      continue;
+      i = b.afk(n);
+      j = this.Koq.read();
+      parame.a(i1, n & 0xFF, 0, 1, 0, 0L, i, j & 0xFF, b.afk(j));
+      continue;
+      i = b.afk(n);
+      parame.a(i1, n & 0xFF, 0, 1, i1 + this.Koq.readInt(), i);
       continue;
       i = n & 0xFF;
-      j = b.aco(n);
-      k = i1 + this.ICh.readInt();
+      j = b.afk(n);
+      parame.a(i1, i, this.Koq.readInt(), b.afn(i), 0, 0L, j);
+      continue;
+      i = b.afk(n);
+      parame.a(i1, n & 0xFF, 0, 1, 0, this.Koq.readInt(), i);
+      continue;
+      i = n & 0xFF;
+      j = b.afk(n);
+      k = i1 + this.Koq.readInt();
       switch (i)
       {
       }
@@ -113,22 +113,22 @@ public final class d
       {
         parame.a(i1, i, 0, 1, k, 0L, j);
         break;
-        this.ICh.ku(k + 1, i1);
+        this.Koq.kL(k + 1, i1);
       }
-      i = b.aco(n);
-      j = this.ICh.read();
-      k = this.ICh.read();
+      i = b.afk(n);
+      j = this.Koq.read();
+      k = this.Koq.read();
       parame.a(i1, n & 0xFF, 0, 1, 0, i, j, k);
       continue;
       i = n & 0xFF;
       j = n >> 12 & 0xF;
-      k = this.ICh.read();
-      int i4 = this.ICh.read();
+      k = this.Koq.read();
+      int i4 = this.Koq.read();
       int m = i4 & 0xF;
       int i2 = i4 >> 4 & 0xF;
       int i3 = i4 >> 8 & 0xF;
       i4 = i4 >> 12 & 0xF;
-      int i5 = b.acr(i);
+      int i5 = b.afn(i);
       switch (j)
       {
       default: 
@@ -152,16 +152,16 @@ public final class d
         parame.a(i1, i, k, i5, 0, 0L, m, i2, i3, i4, n >> 8 & 0xF);
         continue;
         i = n & 0xFF;
-        j = b.aco(n);
-        k = this.ICh.read();
-        m = this.ICh.read();
-        parame.b(i1, i, k, b.acr(i), 0, 0L, m, j);
+        j = b.afk(n);
+        k = this.Koq.read();
+        m = this.Koq.read();
+        parame.b(i1, i, k, b.afn(i), 0, 0L, m, j);
         continue;
-        i = b.aco(n);
-        parame.a(i1, n & 0xFF, 0, 1, 0, this.ICh.readLong(), i);
+        i = b.afk(n);
+        parame.a(i1, n & 0xFF, 0, 1, 0, this.Koq.readLong(), i);
         continue;
-        i = this.ICh.read();
-        i2 = this.ICh.readInt();
+        i = this.Koq.read();
+        i2 = this.Koq.readInt();
         switch (i)
         {
         case 3: 
@@ -169,7 +169,7 @@ public final class d
         case 6: 
         case 7: 
         default: 
-          throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.acv(i));
+          throw new j("bogus element_width: " + com.tencent.tinker.a.b.b.a.afr(i));
         case 1: 
           localObject = new byte[i2];
           i = 0;
@@ -179,7 +179,7 @@ public final class d
           {
             m = i;
             if (j != 0) {
-              m = this.ICh.read();
+              m = this.Koq.read();
             }
             localObject[k] = ((byte)(m & 0xFF));
             k += 1;
@@ -199,7 +199,7 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = ((short)this.ICh.read());
+            localObject[i] = ((short)this.Koq.read());
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 2);
@@ -209,7 +209,7 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = this.ICh.readInt();
+            localObject[i] = this.Koq.readInt();
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 4);
@@ -219,37 +219,37 @@ public final class d
           i = 0;
           while (i < i2)
           {
-            localObject[i] = this.ICh.readLong();
+            localObject[i] = this.Koq.readLong();
             i += 1;
           }
           parame.a(i1, n, localObject, localObject.length, 8);
           continue;
-          j = this.ICh.foW();
-          k = this.ICh.read();
-          m = this.ICh.readInt();
+          j = this.Koq.fHe();
+          k = this.Koq.read();
+          m = this.Koq.readInt();
           localObject = new int[k];
           i = 0;
           while (i < k)
           {
-            localObject[i] = (this.ICh.readInt() + j);
+            localObject[i] = (this.Koq.readInt() + j);
             i += 1;
           }
           parame.a(i1, n, m, (int[])localObject);
           continue;
-          j = this.ICh.foW();
-          k = this.ICh.read();
+          j = this.Koq.fHe();
+          k = this.Koq.read();
           localObject = new int[k];
           int[] arrayOfInt = new int[k];
           i = 0;
           while (i < k)
           {
-            localObject[i] = this.ICh.readInt();
+            localObject[i] = this.Koq.readInt();
             i += 1;
           }
           i = 0;
           while (i < k)
           {
-            arrayOfInt[i] = (this.ICh.readInt() + j);
+            arrayOfInt[i] = (this.Koq.readInt() + j);
             i += 1;
           }
           parame.a(i1, n, (int[])localObject, arrayOfInt);

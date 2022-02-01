@@ -100,7 +100,7 @@ public final class g
             paramCharSequence = DateUtils.getAMPMString(k);
             break;
           }
-          paramCharSequence = iM(paramTime.monthDay, j);
+          paramCharSequence = iZ(paramTime.monthDay, j);
           continue;
           int n = paramTime.weekDay;
           if (j < 4) {}
@@ -120,9 +120,9 @@ public final class g
           }
           paramCharSequence = String.valueOf(n);
           continue;
-          paramCharSequence = iM(paramTime.hour, j);
+          paramCharSequence = iZ(paramTime.hour, j);
           continue;
-          paramCharSequence = iM(paramTime.minute, j);
+          paramCharSequence = iZ(paramTime.minute, j);
           continue;
           k = paramTime.month;
           if (j >= 4)
@@ -135,9 +135,9 @@ public final class g
           }
           else
           {
-            paramCharSequence = iM(k + 1, j);
+            paramCharSequence = iZ(k + 1, j);
             continue;
-            paramCharSequence = iM(paramTime.second, j);
+            paramCharSequence = iZ(paramTime.second, j);
             continue;
             paramCharSequence = TimeZone.getDefault();
             paramCharSequence.inDaylightTime(new Date(paramTime.toMillis(false)));
@@ -154,8 +154,8 @@ public final class g
               {
                 k = (int)(l / 3600L);
                 n = (int)(l % 3600L / 60L);
-                paramCharSequence.append(iM(k, 2));
-                paramCharSequence.append(iM(n, 2));
+                paramCharSequence.append(iZ(k, 2));
+                paramCharSequence.append(iZ(n, 2));
                 paramCharSequence = paramCharSequence.toString();
                 break;
                 paramCharSequence.insert(0, "+");
@@ -170,7 +170,7 @@ public final class g
             k = paramTime.year;
             if (j <= 2)
             {
-              paramCharSequence = iM(k % 100, 2);
+              paramCharSequence = iZ(k % 100, 2);
             }
             else
             {
@@ -186,7 +186,7 @@ public final class g
     }
   }
   
-  private static String iM(int paramInt1, int paramInt2)
+  private static String iZ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(151898);
     if (paramInt2 == 2)
@@ -207,7 +207,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.g
  * JD-Core Version:    0.7.0.1
  */

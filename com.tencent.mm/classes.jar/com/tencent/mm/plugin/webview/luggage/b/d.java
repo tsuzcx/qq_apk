@@ -23,7 +23,7 @@ public final class d
     AppMethodBeat.i(78687);
     com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131755709), null, null, paramContext.getString(2131755707), new h.d()
     {
-      public final void cv(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ct(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(78685);
         switch (paramAnonymousInt2)
@@ -37,15 +37,15 @@ public final class d
           localBundle.putLong("fav_local_id", paramf.mParams.getLong("fav_local_id", -1L));
           FavUrlTask localFavUrlTask = new FavUrlTask();
           localFavUrlTask.actionType = 4;
-          localFavUrlTask.dow = localBundle;
+          localFavUrlTask.dmf = localBundle;
           AppBrandMainProcessService.b(localFavUrlTask);
           if (localFavUrlTask.result) {
-            paramf.fF(true);
+            paramf.gb(true);
           }
         }
       }
     });
-    com.tencent.mm.plugin.report.service.h.vKh.dB(982, 3);
+    com.tencent.mm.plugin.report.service.h.wUl.dB(982, 3);
     AppMethodBeat.o(78687);
   }
   

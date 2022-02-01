@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 import android.app.Activity;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.a.a.d;
+import com.tencent.mm.plugin.expt.hellhound.a.a.e;
 import com.tencent.mm.plugin.expt.hellhound.core.a.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 
 final class n
   implements o
 {
-  private a KFM;
-  private final p KFb;
   WeakReference<Activity> mActivityRef;
-  private final d pGj;
-  com.tencent.mm.plugin.expt.hellhound.a.a.a pGv;
+  com.tencent.mm.plugin.expt.hellhound.a.a.a qlE;
+  private final e qlm;
+  private final p qlo;
+  private a qma;
   
   n()
   {
-    AppMethodBeat.i(205450);
-    this.pGj = new d()
+    AppMethodBeat.i(195283);
+    this.qlm = new e()
     {
       public final void a(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(205448);
+        AppMethodBeat.i(195281);
         if (n.this.mActivityRef == null)
         {
-          AppMethodBeat.o(205448);
+          AppMethodBeat.o(195281);
           return;
         }
         Activity localActivity = (Activity)n.this.mActivityRef.get();
         if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
         {
-          ad.m("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, onScroll, is NULL or finishing", new Object[0]);
-          AppMethodBeat.o(205448);
+          ac.m("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, onScroll, is NULL or finishing", new Object[0]);
+          AppMethodBeat.o(195281);
           return;
         }
-        n.this.pGv.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
-        AppMethodBeat.o(205448);
+        n.this.qlE.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
+        AppMethodBeat.o(195281);
       }
       
       public final void k(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
-        AppMethodBeat.i(205447);
-        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = n.this.pGv;
+        AppMethodBeat.i(195280);
+        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = n.this.qlE;
         switch (paramAnonymousInt)
         {
         default: 
@@ -53,7 +53,7 @@ final class n
         for (;;)
         {
           locala.g(paramAnonymousViewGroup, paramAnonymousInt);
-          AppMethodBeat.o(205447);
+          AppMethodBeat.o(195280);
           return;
           paramAnonymousInt = 0;
           continue;
@@ -63,94 +63,94 @@ final class n
         }
       }
     };
-    this.KFb = new p()
+    this.qlo = new p()
     {
-      public final void yx(boolean paramAnonymousBoolean)
+      public final void kH(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(205449);
-        if (n.this.pGv != null) {
-          n.this.pGv.kc(paramAnonymousBoolean);
+        AppMethodBeat.i(195282);
+        if (n.this.qlE != null) {
+          n.this.qlE.kG(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(205449);
+        AppMethodBeat.o(195282);
       }
     };
-    this.KFM = new a();
-    this.pGv = new com.tencent.mm.plugin.expt.hellhound.a.a.a(3, "18260", "1003");
-    AppMethodBeat.o(205450);
+    this.qma = new a();
+    this.qlE = new com.tencent.mm.plugin.expt.hellhound.a.a.a(3, "18260", "1003");
+    AppMethodBeat.o(195283);
   }
   
   final void a(int paramInt, String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(205451);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.cbn()) || (!com.tencent.mm.plugin.expt.hellhound.a.cbq())) {}
+    AppMethodBeat.i(195284);
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (!com.tencent.mm.plugin.expt.hellhound.a.ciz())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.e("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor, dontNeedMonitorFinder true !!");
-      AppMethodBeat.o(205451);
+      ac.e("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor, dontNeedMonitorFinder true !!");
+      AppMethodBeat.o(195284);
       return;
     }
-    ad.i("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ac.i("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(205451);
+      AppMethodBeat.o(195284);
       return;
       this.mActivityRef = new WeakReference(paramActivity);
-      c.cbD().l(712, paramString);
-      AppMethodBeat.o(205451);
+      c.ciO().l(712, paramString);
+      AppMethodBeat.o(195284);
       return;
-      c.cbD().l(713, paramString);
-      AppMethodBeat.o(205451);
+      c.ciO().l(713, paramString);
+      AppMethodBeat.o(195284);
       return;
-      c.cbD().l(714, paramString);
-      AppMethodBeat.o(205451);
+      c.ciO().l(714, paramString);
+      AppMethodBeat.o(195284);
       return;
-      c.cbD().l(715, paramString);
+      c.ciO().l(715, paramString);
     }
   }
   
-  public final void ccd()
+  public final void cjq()
   {
-    AppMethodBeat.i(205453);
-    this.KFM.ccd();
-    this.pGv.a(1, null);
-    AppMethodBeat.o(205453);
+    AppMethodBeat.i(195286);
+    this.qma.cjq();
+    this.qlE.a(1, null);
+    AppMethodBeat.o(195286);
   }
   
-  public final void cdL()
+  public final void cjz()
   {
-    AppMethodBeat.i(205452);
+    AppMethodBeat.i(195285);
     if (this.mActivityRef != null) {
-      this.pGv.a(0, (Activity)this.mActivityRef.get());
+      this.qlE.a(0, (Activity)this.mActivityRef.get());
     }
-    this.KFM.a(this.pGj, this.KFb);
-    AppMethodBeat.o(205452);
+    this.qma.a(this.qlm, this.qlo);
+    AppMethodBeat.o(195285);
   }
   
   public final void free()
   {
-    AppMethodBeat.i(205454);
-    this.pGv.a(2, null);
+    AppMethodBeat.i(195287);
+    this.qlE.a(2, null);
     if (this.mActivityRef != null)
     {
       this.mActivityRef.clear();
       this.mActivityRef = null;
     }
-    AppMethodBeat.o(205454);
+    AppMethodBeat.o(195287);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(205455);
-    this.pGv.a(3, null);
-    AppMethodBeat.o(205455);
+    AppMethodBeat.i(195288);
+    this.qlE.a(3, null);
+    AppMethodBeat.o(195288);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,165 +1,172 @@
 package com.tencent.mm.sdk.a;
 
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  public static String ESD = "unknow";
-  private static c ESE = null;
-  private static boolean ESF = false;
-  private static boolean ESG = false;
-  private static boolean ESH = false;
-  private static boolean ESI = false;
-  private static boolean ESJ = false;
+  public static String GpQ = "unknow";
+  private static c GpR = null;
+  private static boolean GpS = false;
+  private static boolean GpT = false;
+  private static boolean GpU = false;
+  private static boolean GpV = false;
+  private static boolean GpW = false;
   public static boolean foreground = false;
-  
-  public static void M(String paramString1, String paramString2)
-  {
-    if (ESE != null) {
-      ESE.M(paramString1, paramString2);
-    }
-  }
   
   public static void N(String paramString1, String paramString2)
   {
-    if (ESE != null) {
-      ESE.N(paramString1, paramString2);
+    if (GpR != null) {
+      GpR.N(paramString1, paramString2);
+    }
+  }
+  
+  public static void O(String paramString1, String paramString2)
+  {
+    if (GpR != null) {
+      GpR.O(paramString1, paramString2);
     }
   }
   
   public static void a(a parama)
   {
-    if (ESE != null) {
-      ESE.a(parama);
+    if (GpR != null) {
+      GpR.a(parama);
     }
   }
   
   public static void a(c paramc)
   {
-    ESE = paramc;
+    GpR = paramc;
   }
   
-  public static void aEZ(String paramString)
+  public static void aKq(String paramString)
   {
-    ESD = paramString;
+    GpQ = paramString;
   }
   
   @Deprecated
-  public static void aFa(String paramString)
+  public static void aKr(String paramString)
   {
-    bu.aGz(paramString);
+    bt.aLQ(paramString);
   }
   
   public static void b(c.a parama)
   {
-    c localc = ESE;
+    c localc = GpR;
     if (localc != null) {
       localc.a(parama);
     }
   }
   
-  public static boolean cWR()
-  {
-    try
-    {
-      boolean bool = ESJ;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static boolean cWS()
-  {
-    try
-    {
-      boolean bool = ESH;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static boolean cWT()
-  {
-    try
-    {
-      boolean bool = ESI;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public static void d(int paramInt, String paramString1, String paramString2)
   {
-    if (ESE != null) {
-      ESE.d(paramInt, paramString1, paramString2);
+    if (GpR != null) {
+      GpR.d(paramInt, paramString1, paramString2);
     }
   }
   
-  public static void eEN() {}
-  
-  @Deprecated
-  public static boolean eEO()
+  public static boolean dkA()
   {
-    return bu.eEO();
+    try
+    {
+      boolean bool = GpU;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  @Deprecated
-  public static void eEP() {}
-  
-  @Deprecated
-  public static boolean eEQ()
+  public static boolean dkB()
   {
-    return bu.eGT();
+    try
+    {
+      boolean bool = GpV;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  @Deprecated
-  public static String eER()
+  public static boolean dkz()
   {
-    return bu.eGU();
+    try
+    {
+      boolean bool = GpW;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public static boolean eES()
-  {
-    return ESF;
-  }
-  
-  public static boolean eET()
-  {
-    return ESG;
-  }
-  
-  public static void eh(boolean paramBoolean)
+  public static void eC(boolean paramBoolean)
   {
     foreground = paramBoolean;
   }
   
-  public static void uM(boolean paramBoolean)
+  public static void eUh() {}
+  
+  @Deprecated
+  public static boolean eUi()
   {
-    ESF = paramBoolean;
+    return bt.eUi();
   }
   
-  public static void uN(boolean paramBoolean)
+  @Deprecated
+  public static void eUj() {}
+  
+  @Deprecated
+  public static boolean eUk()
   {
-    ESG = paramBoolean;
+    return bt.eWo();
   }
   
-  public static void uO(boolean paramBoolean)
+  @Deprecated
+  public static String eUl()
+  {
+    return bt.eWp();
+  }
+  
+  public static boolean eUm()
+  {
+    return GpS;
+  }
+  
+  public static boolean eUn()
+  {
+    return GpT;
+  }
+  
+  public static void er(String paramString)
+  {
+    if (GpR != null) {
+      GpR.er(paramString);
+    }
+  }
+  
+  public static void vO(boolean paramBoolean)
+  {
+    GpS = paramBoolean;
+  }
+  
+  public static void vP(boolean paramBoolean)
+  {
+    GpT = paramBoolean;
+  }
+  
+  public static void vQ(boolean paramBoolean)
   {
     try
     {
-      ESH = paramBoolean;
+      GpU = paramBoolean;
       return;
     }
     finally
@@ -169,11 +176,11 @@ public final class b
     }
   }
   
-  public static void uP(boolean paramBoolean)
+  public static void vR(boolean paramBoolean)
   {
     try
     {
-      ESI = paramBoolean;
+      GpV = paramBoolean;
       return;
     }
     finally
@@ -183,11 +190,11 @@ public final class b
     }
   }
   
-  public static void uQ(boolean paramBoolean)
+  public static void vS(boolean paramBoolean)
   {
     try
     {
-      ESJ = paramBoolean;
+      GpW = paramBoolean;
       return;
     }
     finally

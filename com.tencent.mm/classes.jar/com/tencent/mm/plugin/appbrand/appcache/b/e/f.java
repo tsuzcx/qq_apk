@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.er;
-import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.g.c.ev;
+import com.tencent.mm.plugin.appbrand.y.b;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class f
-  extends er
+  extends ev
   implements b
 {
-  static final c.a gLr;
-  static final String[] iLd;
+  static final c.a hlR;
+  static final String[] jlk;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44443);
-    iLd = new String[] { "appId", "scene" };
+    jlk = new String[] { "appId", "scene" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).EYt = new Field[6];
+    ((c.a)localObject1).GvF = new Field[6];
     ((c.a)localObject1).columns = new String[7];
     Object localObject2 = new StringBuilder();
     ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).EYv.put("appId", "TEXT");
+    ((c.a)localObject1).GvH.put("appId", "TEXT");
     ((StringBuilder)localObject2).append(" appId TEXT");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[1] = "scene";
-    ((c.a)localObject1).EYv.put("scene", "INTEGER");
+    ((c.a)localObject1).GvH.put("scene", "INTEGER");
     ((StringBuilder)localObject2).append(" scene INTEGER");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[2] = "launchProtoBlob";
-    ((c.a)localObject1).EYv.put("launchProtoBlob", "BLOB");
+    ((c.a)localObject1).GvH.put("launchProtoBlob", "BLOB");
     ((StringBuilder)localObject2).append(" launchProtoBlob BLOB");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[3] = "startTime";
-    ((c.a)localObject1).EYv.put("startTime", "LONG");
+    ((c.a)localObject1).GvH.put("startTime", "LONG");
     ((StringBuilder)localObject2).append(" startTime LONG");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[4] = "endTime";
-    ((c.a)localObject1).EYv.put("endTime", "LONG");
+    ((c.a)localObject1).GvH.put("endTime", "LONG");
     ((StringBuilder)localObject2).append(" endTime LONG");
     ((StringBuilder)localObject2).append(", ");
     ((c.a)localObject1).columns[5] = "reportId";
-    ((c.a)localObject1).EYv.put("reportId", "LONG");
+    ((c.a)localObject1).GvH.put("reportId", "LONG");
     ((StringBuilder)localObject2).append(" reportId LONG");
     ((c.a)localObject1).columns[6] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    gLr = (c.a)localObject1;
+    hlR = (c.a)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = iLd;
+    localObject2 = jlk;
     int j = localObject2.length;
     while (i < j)
     {
@@ -61,19 +61,19 @@ public final class f
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = gLr;
+    Object localObject3 = hlR;
     ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44443);
   }
   
   public final c.a getDBInfo()
   {
-    return gLr;
+    return hlR;
   }
   
   public final String[] getKeys()
   {
-    return iLd;
+    return jlk;
   }
 }
 

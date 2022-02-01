@@ -6,50 +6,56 @@ import com.tencent.mm.plugin.report.a;
 public final class bg
   extends a
 {
-  public long dKc = 0L;
-  private String dPr = "";
+  private String dFe;
+  private long dLQ;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(149913);
+    AppMethodBeat.i(195026);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dPr);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKc);
+    ((StringBuffer)localObject).append(this.dLQ);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(149913);
+    arz((String)localObject);
+    AppMethodBeat.o(195026);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(149914);
+    AppMethodBeat.i(195027);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("chatRoomUserName:").append(this.dPr);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scene:").append(this.dKc);
+    ((StringBuffer)localObject).append("RedDotCount:").append(this.dLQ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149914);
+    AppMethodBeat.o(195027);
     return localObject;
+  }
+  
+  public final bg fr(long paramLong)
+  {
+    this.dLQ = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 15848;
+    return 19947;
   }
   
-  public final bg hZ(String paramString)
+  public final bg jb(String paramString)
   {
-    AppMethodBeat.i(149912);
-    this.dPr = t("chatRoomUserName", paramString, true);
-    AppMethodBeat.o(149912);
+    AppMethodBeat.i(195025);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(195025);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bg
  * JD-Core Version:    0.7.0.1
  */

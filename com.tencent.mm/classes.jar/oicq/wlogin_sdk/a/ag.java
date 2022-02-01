@@ -7,11 +7,11 @@ import oicq.wlogin_sdk.tools.util;
 public final class ag
   extends a
 {
-  public int KjA = 0;
+  public int LXj = 0;
   
   public ag()
   {
-    this.Kik = 324;
+    this.LVT = 324;
   }
   
   public final byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
@@ -48,7 +48,7 @@ public final class ag
         j = k + 1;
       }
       byte[] arrayOfByte = new byte[i + 2];
-      util.W(arrayOfByte, 0, j);
+      util.V(arrayOfByte, 0, j);
       if (paramArrayOfByte1 != null) {
         System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, paramArrayOfByte1.length);
       }
@@ -70,11 +70,11 @@ public final class ag
           System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, j, paramArrayOfByte4.length);
         }
         paramArrayOfByte1 = d.a(arrayOfByte, arrayOfByte.length, paramArrayOfByte5);
-        this.KjA = paramArrayOfByte1.length;
-        super.agp(this.Kik);
-        super.af(paramArrayOfByte1, paramArrayOfByte1.length);
-        super.fMH();
-        paramArrayOfByte1 = super.fMD();
+        this.LXj = paramArrayOfByte1.length;
+        super.ajl(this.LVT);
+        super.ae(paramArrayOfByte1, paramArrayOfByte1.length);
+        super.gfx();
+        paramArrayOfByte1 = super.gft();
         AppMethodBeat.o(88113);
         return paramArrayOfByte1;
       }

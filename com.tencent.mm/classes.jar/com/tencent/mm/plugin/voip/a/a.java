@@ -10,25 +10,25 @@ import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.model.v;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.plugin.voip.widget.BaseSmallView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
   extends com.tencent.mm.plugin.ball.service.a
 {
-  private long zfr;
+  private long AxY;
   
   private a()
   {
     AppMethodBeat.i(184042);
-    this.zfr = 0L;
-    Z(9, "VOIPFloatBall");
-    bzz().mDz = 10;
-    if (c.dRQ() != null) {
-      bzz().dnC = String.valueOf(c.dRQ().zlR.zfA.ziZ.sAY);
+    this.AxY = 0L;
+    aa(9, "VOIPFloatBall");
+    bGv().nfG = 10;
+    if (c.ehb() != null) {
+      bGv().dlk = String.valueOf(c.ehb().AEF.Ayh.ABJ.tIG);
     }
-    bzv();
+    bGr();
     AppMethodBeat.o(184042);
   }
   
@@ -37,21 +37,21 @@ public final class a
     AppMethodBeat.i(184043);
     if ((paramView != null) && ((paramInt == 4) || (paramInt == 8)))
     {
-      if (bzs())
+      if (bGo())
       {
-        if (this.mDH.sk != paramView)
+        if (this.nfN.tk != paramView)
         {
-          ad.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, but view is different, state:%s, view:%s, ballInfo.customView:%s", new Object[] { Integer.valueOf(paramInt), paramView, this.mDH.sk });
-          this.mDH.mDu = true;
-          this.mDH.state = paramInt;
-          this.mDH.sk = paramView;
-          this.mDH.mDv = false;
-          this.mDH.mDt = true;
-          bzu();
+          ac.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, but view is different, state:%s, view:%s, ballInfo.customView:%s", new Object[] { Integer.valueOf(paramInt), paramView, this.nfN.tk });
+          this.nfN.nfB = true;
+          this.nfN.state = paramInt;
+          this.nfN.tk = paramView;
+          this.nfN.nfC = false;
+          this.nfN.nfA = true;
+          bGq();
           AppMethodBeat.o(184043);
           return;
         }
-        ad.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
+        ac.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
         AppMethodBeat.o(184043);
         return;
       }
@@ -60,36 +60,36 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(184040);
-          ad.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
-          a.this.mDH.mDu = true;
-          a.this.mDH.mDv = false;
-          a.this.mDH.state = paramInt;
-          a.this.mDH.sk = paramView;
-          a.this.mDH.fnG = c.dRQ().zlV;
-          a.this.mDH.mDt = true;
-          if (!c.dRQ().zlV) {
-            c.dRQ().zlV = true;
+          ac.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
+          a.this.nfN.nfB = true;
+          a.this.nfN.nfC = false;
+          a.this.nfN.state = paramInt;
+          a.this.nfN.tk = paramView;
+          a.this.nfN.fra = c.ehb().AEJ;
+          a.this.nfN.nfA = true;
+          if (!c.ehb().AEJ) {
+            c.ehb().AEJ = true;
           }
           a locala = a.this;
           int i = paramInt;
           boolean bool = paramBoolean;
-          BallReportInfo localBallReportInfo = locala.bzz();
+          BallReportInfo localBallReportInfo = locala.bGv();
           if (bool)
           {
             str = "3";
-            localBallReportInfo.mDA = str;
-            localBallReportInfo = locala.bzz();
+            localBallReportInfo.nfH = str;
+            localBallReportInfo = locala.bGv();
             if (!bool) {
               break label225;
             }
           }
           label225:
-          for (String str = null;; str = String.valueOf(c.dRQ().zlR.zfA.ziZ.sAY))
+          for (String str = null;; str = String.valueOf(c.ehb().AEF.Ayh.ABJ.tIG))
           {
-            localBallReportInfo.gWU = str;
-            locala.bzz().mDx = 2;
-            locala.bzv();
-            a.this.bzu();
+            localBallReportInfo.hxt = str;
+            locala.bGv().nfE = 2;
+            locala.bGr();
+            a.this.bGq();
             AppMethodBeat.o(184040);
             return;
             if (i == 4)
@@ -102,15 +102,15 @@ public final class a
           }
         }
       };
-      long l = 200L + this.zfr - bt.eGO();
+      long l = 200L + this.AxY - bs.eWj();
       if (l <= 0L)
       {
         paramView.run();
         AppMethodBeat.o(184043);
         return;
       }
-      ad.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, add delayed:%s", new Object[] { Long.valueOf(l) });
-      aq.n(paramView, l);
+      ac.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, add delayed:%s", new Object[] { Long.valueOf(l) });
+      ap.n(paramView, l);
     }
     AppMethodBeat.o(184043);
   }
@@ -118,33 +118,33 @@ public final class a
   public final void a(BaseSmallView paramBaseSmallView)
   {
     AppMethodBeat.i(184044);
-    if (bzs())
+    if (bGo())
     {
-      ad.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, has ball, view:%s", new Object[] { paramBaseSmallView });
-      this.zfr = bt.eGO();
-      bzt();
+      ac.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, has ball, view:%s", new Object[] { paramBaseSmallView });
+      this.AxY = bs.eWj();
+      bGp();
       AppMethodBeat.o(184044);
       return;
     }
-    ad.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, no ball, view:%s", new Object[] { paramBaseSmallView });
+    ac.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, no ball, view:%s", new Object[] { paramBaseSmallView });
     AppMethodBeat.o(184044);
   }
   
   public static final class a
   {
-    public static a zfu;
+    public static a Ayb;
     
     static
     {
       AppMethodBeat.i(184041);
-      zfu = new a((byte)0);
+      Ayb = new a((byte)0);
       AppMethodBeat.o(184041);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.a.a
  * JD-Core Version:    0.7.0.1
  */

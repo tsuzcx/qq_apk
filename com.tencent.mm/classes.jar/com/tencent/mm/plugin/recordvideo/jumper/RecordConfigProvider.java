@@ -18,41 +18,41 @@ public class RecordConfigProvider
   implements Parcelable
 {
   public static final Parcelable.Creator<RecordConfigProvider> CREATOR;
-  public int gwG;
-  public Bundle hsl;
-  public ArrayList<String> qMA;
+  public int gXd;
+  public HashMap gmS;
+  public Bundle hSN;
+  public ArrayList<String> rHT;
+  public int remuxType;
   public int scene;
   public String thumbPath;
-  public int vhB;
-  public Boolean vhC;
-  public int vhD;
-  public int vhE;
-  public Boolean vhF;
-  public Boolean vhG;
-  public VideoTransPara vhH;
-  public UICustomParam vhI;
-  public h.e vhJ;
-  public int vhK;
-  public Boolean vhL;
-  public Boolean vhM;
-  public Boolean vhN;
-  public Boolean vhO;
-  public Boolean vhP;
-  public int vhQ;
-  public boolean vhR;
-  public boolean vhS;
-  public String vhT;
-  public String vhU;
-  public String vhV;
-  public String vhW;
-  public ArrayList<String> vhX;
-  public VideoCaptureReportInfo vhY;
-  public long vhZ;
-  public boolean vib;
-  public boolean vic;
-  public boolean vid;
-  public HashMap vie;
-  public XEffectConfig vif;
+  public Boolean wqA;
+  public Boolean wqB;
+  public int wqC;
+  public boolean wqD;
+  public boolean wqE;
+  public String wqF;
+  public String wqG;
+  public String wqH;
+  public String wqI;
+  public ArrayList<String> wqJ;
+  public VideoCaptureReportInfo wqK;
+  public long wqL;
+  public boolean wqM;
+  public boolean wqN;
+  public boolean wqO;
+  public XEffectConfig wqP;
+  public Boolean wqo;
+  public int wqp;
+  public int wqq;
+  public Boolean wqr;
+  public Boolean wqs;
+  public VideoTransPara wqt;
+  public UICustomParam wqu;
+  public h.e wqv;
+  public int wqw;
+  public Boolean wqx;
+  public Boolean wqy;
+  public Boolean wqz;
   
   static
   {
@@ -64,119 +64,119 @@ public class RecordConfigProvider
   private RecordConfigProvider()
   {
     AppMethodBeat.i(101502);
-    this.vhB = 1;
-    this.vhC = Boolean.FALSE;
-    this.gwG = 1080;
-    this.vhD = 2;
-    this.vhE = 1;
-    this.vhF = Boolean.FALSE;
-    this.vhG = Boolean.FALSE;
+    this.remuxType = 1;
+    this.wqo = Boolean.FALSE;
+    this.gXd = 1080;
+    this.wqp = 2;
+    this.wqq = 1;
+    this.wqr = Boolean.FALSE;
+    this.wqs = Boolean.FALSE;
     new UICustomParam.a();
-    this.vhI = UICustomParam.a.XV().fHa;
-    this.vhJ = h.e.BVq;
-    this.vhK = 1;
-    this.vhL = Boolean.FALSE;
-    this.vhM = Boolean.TRUE;
-    this.vhN = Boolean.TRUE;
-    this.vhO = Boolean.TRUE;
-    this.vhP = Boolean.TRUE;
-    this.vhQ = 10000;
-    this.vhR = false;
-    this.vhS = true;
-    this.vhZ = 259200000L;
-    this.vib = true;
-    this.vic = false;
-    this.vid = false;
-    this.vie = new HashMap();
-    this.vif = new XEffectConfig();
+    this.wqu = UICustomParam.a.YS().fKH;
+    this.wqv = h.e.DnH;
+    this.wqw = 1;
+    this.wqx = Boolean.FALSE;
+    this.wqy = Boolean.TRUE;
+    this.wqz = Boolean.TRUE;
+    this.wqA = Boolean.TRUE;
+    this.wqB = Boolean.TRUE;
+    this.wqC = 10000;
+    this.wqD = false;
+    this.wqE = true;
+    this.wqL = 259200000L;
+    this.wqM = true;
+    this.wqN = false;
+    this.wqO = false;
+    this.gmS = new HashMap();
+    this.wqP = new XEffectConfig();
     AppMethodBeat.o(101502);
   }
   
   protected RecordConfigProvider(Parcel paramParcel)
   {
     AppMethodBeat.i(101505);
-    this.vhB = 1;
-    this.vhC = Boolean.FALSE;
-    this.gwG = 1080;
-    this.vhD = 2;
-    this.vhE = 1;
-    this.vhF = Boolean.FALSE;
-    this.vhG = Boolean.FALSE;
+    this.remuxType = 1;
+    this.wqo = Boolean.FALSE;
+    this.gXd = 1080;
+    this.wqp = 2;
+    this.wqq = 1;
+    this.wqr = Boolean.FALSE;
+    this.wqs = Boolean.FALSE;
     new UICustomParam.a();
-    this.vhI = UICustomParam.a.XV().fHa;
-    this.vhJ = h.e.BVq;
-    this.vhK = 1;
-    this.vhL = Boolean.FALSE;
-    this.vhM = Boolean.TRUE;
-    this.vhN = Boolean.TRUE;
-    this.vhO = Boolean.TRUE;
-    this.vhP = Boolean.TRUE;
-    this.vhQ = 10000;
-    this.vhR = false;
-    this.vhS = true;
-    this.vhZ = 259200000L;
-    this.vib = true;
-    this.vic = false;
-    this.vid = false;
-    this.vie = new HashMap();
-    this.vif = new XEffectConfig();
-    this.vhB = paramParcel.readInt();
-    this.vhC = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-    this.gwG = paramParcel.readInt();
-    this.vhD = paramParcel.readInt();
-    this.vhE = paramParcel.readInt();
-    this.vhF = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-    this.vhG = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-    this.vhH = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
-    this.vhI = ((UICustomParam)paramParcel.readParcelable(UICustomParam.class.getClassLoader()));
+    this.wqu = UICustomParam.a.YS().fKH;
+    this.wqv = h.e.DnH;
+    this.wqw = 1;
+    this.wqx = Boolean.FALSE;
+    this.wqy = Boolean.TRUE;
+    this.wqz = Boolean.TRUE;
+    this.wqA = Boolean.TRUE;
+    this.wqB = Boolean.TRUE;
+    this.wqC = 10000;
+    this.wqD = false;
+    this.wqE = true;
+    this.wqL = 259200000L;
+    this.wqM = true;
+    this.wqN = false;
+    this.wqO = false;
+    this.gmS = new HashMap();
+    this.wqP = new XEffectConfig();
+    this.remuxType = paramParcel.readInt();
+    this.wqo = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+    this.gXd = paramParcel.readInt();
+    this.wqp = paramParcel.readInt();
+    this.wqq = paramParcel.readInt();
+    this.wqr = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+    this.wqs = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+    this.wqt = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
+    this.wqu = ((UICustomParam)paramParcel.readParcelable(UICustomParam.class.getClassLoader()));
     int i = paramParcel.readInt();
     h.e locale;
     if (i == -1)
     {
       locale = null;
-      this.vhJ = locale;
-      this.vhK = paramParcel.readInt();
-      this.vhL = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.vhM = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.vhN = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.vhO = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.vhP = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
-      this.vhQ = paramParcel.readInt();
+      this.wqv = locale;
+      this.wqw = paramParcel.readInt();
+      this.wqx = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqy = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqz = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqA = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqB = ((Boolean)paramParcel.readValue(Boolean.class.getClassLoader()));
+      this.wqC = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label618;
       }
       bool1 = true;
       label417:
-      this.vhR = bool1;
+      this.wqD = bool1;
       if (paramParcel.readByte() == 0) {
         break label623;
       }
       bool1 = true;
       label431:
-      this.vhS = bool1;
-      this.vhT = paramParcel.readString();
-      this.vhU = paramParcel.readString();
+      this.wqE = bool1;
+      this.wqF = paramParcel.readString();
+      this.wqG = paramParcel.readString();
       this.thumbPath = paramParcel.readString();
-      this.vhV = paramParcel.readString();
-      this.vhW = paramParcel.readString();
+      this.wqH = paramParcel.readString();
+      this.wqI = paramParcel.readString();
       this.scene = paramParcel.readInt();
-      this.qMA = paramParcel.createStringArrayList();
-      this.vhX = paramParcel.createStringArrayList();
-      this.vhY = ((VideoCaptureReportInfo)paramParcel.readParcelable(VideoCaptureReportInfo.class.getClassLoader()));
-      this.vhZ = paramParcel.readLong();
+      this.rHT = paramParcel.createStringArrayList();
+      this.wqJ = paramParcel.createStringArrayList();
+      this.wqK = ((VideoCaptureReportInfo)paramParcel.readParcelable(VideoCaptureReportInfo.class.getClassLoader()));
+      this.wqL = paramParcel.readLong();
       if (paramParcel.readByte() == 0) {
         break label628;
       }
       bool1 = true;
       label533:
-      this.vib = bool1;
+      this.wqM = bool1;
       if (paramParcel.readByte() == 0) {
         break label633;
       }
       bool1 = true;
       label547:
-      this.vic = bool1;
-      this.hsl = paramParcel.readBundle();
+      this.wqN = bool1;
+      this.hSN = paramParcel.readBundle();
       if (paramParcel.readByte() == 0) {
         break label638;
       }
@@ -188,9 +188,9 @@ public class RecordConfigProvider
     label638:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.vid = bool1;
-      this.vie = ((HashMap)paramParcel.readSerializable());
-      this.vif = ((XEffectConfig)paramParcel.readParcelable(XEffectConfig.class.getClassLoader()));
+      this.wqO = bool1;
+      this.gmS = ((HashMap)paramParcel.readSerializable());
+      this.wqP = ((XEffectConfig)paramParcel.readParcelable(XEffectConfig.class.getClassLoader()));
       AppMethodBeat.o(101505);
       return;
       locale = h.e.values()[i];
@@ -210,12 +210,12 @@ public class RecordConfigProvider
   {
     AppMethodBeat.i(101501);
     RecordConfigProvider localRecordConfigProvider = new RecordConfigProvider();
-    localRecordConfigProvider.vhH = paramVideoTransPara;
-    localRecordConfigProvider.vhM = Boolean.TRUE;
-    localRecordConfigProvider.vhO = Boolean.TRUE;
-    localRecordConfigProvider.vhP = Boolean.FALSE;
-    localRecordConfigProvider.vhQ = paramInt1;
-    localRecordConfigProvider.vhU = i.k(paramString1, true);
+    localRecordConfigProvider.wqt = paramVideoTransPara;
+    localRecordConfigProvider.wqy = Boolean.TRUE;
+    localRecordConfigProvider.wqA = Boolean.TRUE;
+    localRecordConfigProvider.wqB = Boolean.FALSE;
+    localRecordConfigProvider.wqC = paramInt1;
+    localRecordConfigProvider.wqG = i.k(paramString1, true);
     localRecordConfigProvider.thumbPath = paramString2;
     if (!TextUtils.isEmpty(paramString2)) {
       localRecordConfigProvider.thumbPath = i.k(paramString2, true);
@@ -225,65 +225,65 @@ public class RecordConfigProvider
     return localRecordConfigProvider;
   }
   
-  public static RecordConfigProvider aj(String paramString1, String paramString2, String paramString3)
+  public static RecordConfigProvider ak(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(101498);
     RecordConfigProvider localRecordConfigProvider = new RecordConfigProvider();
-    localRecordConfigProvider.vhT = i.k(paramString1, true);
-    localRecordConfigProvider.vhU = i.k(paramString2, true);
+    localRecordConfigProvider.wqF = i.k(paramString1, true);
+    localRecordConfigProvider.wqG = i.k(paramString2, true);
     localRecordConfigProvider.thumbPath = paramString3;
     if (!TextUtils.isEmpty(paramString3)) {
       localRecordConfigProvider.thumbPath = i.k(paramString3, true);
     }
-    localRecordConfigProvider.vhR = true;
-    localRecordConfigProvider.vhK = 4;
+    localRecordConfigProvider.wqD = true;
+    localRecordConfigProvider.wqw = 4;
     AppMethodBeat.o(101498);
     return localRecordConfigProvider;
   }
   
-  public static RecordConfigProvider dhF()
+  public static RecordConfigProvider dvn()
   {
     AppMethodBeat.i(101500);
     RecordConfigProvider localRecordConfigProvider = new RecordConfigProvider();
-    localRecordConfigProvider.vhM = Boolean.TRUE;
-    localRecordConfigProvider.vhO = Boolean.TRUE;
-    localRecordConfigProvider.vhP = Boolean.FALSE;
+    localRecordConfigProvider.wqy = Boolean.TRUE;
+    localRecordConfigProvider.wqA = Boolean.TRUE;
+    localRecordConfigProvider.wqB = Boolean.FALSE;
     localRecordConfigProvider.scene = 4;
     AppMethodBeat.o(101500);
     return localRecordConfigProvider;
   }
   
-  public static RecordConfigProvider ic(String paramString1, String paramString2)
+  public static RecordConfigProvider iv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(101497);
     RecordConfigProvider localRecordConfigProvider = new RecordConfigProvider();
-    localRecordConfigProvider.vhV = i.k(paramString1, true);
-    localRecordConfigProvider.vhW = i.k(paramString2, true);
-    localRecordConfigProvider.vhR = true;
-    localRecordConfigProvider.vhK = 3;
+    localRecordConfigProvider.wqH = i.k(paramString1, true);
+    localRecordConfigProvider.wqI = i.k(paramString2, true);
+    localRecordConfigProvider.wqD = true;
+    localRecordConfigProvider.wqw = 3;
     AppMethodBeat.o(101497);
     return localRecordConfigProvider;
   }
   
-  public static RecordConfigProvider id(String paramString1, String paramString2)
+  public static RecordConfigProvider iw(String paramString1, String paramString2)
   {
     AppMethodBeat.i(101499);
     RecordConfigProvider localRecordConfigProvider = new RecordConfigProvider();
-    localRecordConfigProvider.vhU = i.k(paramString1, true);
+    localRecordConfigProvider.wqG = i.k(paramString1, true);
     localRecordConfigProvider.thumbPath = paramString2;
     if (!TextUtils.isEmpty(paramString2)) {
       localRecordConfigProvider.thumbPath = i.k(paramString2, true);
     }
-    localRecordConfigProvider.vhR = true;
-    localRecordConfigProvider.vhK = 4;
+    localRecordConfigProvider.wqD = true;
+    localRecordConfigProvider.wqw = 4;
     AppMethodBeat.o(101499);
     return localRecordConfigProvider;
   }
   
-  public final void bx(int paramInt, String paramString)
+  public final void D(int paramInt, String paramString)
   {
     AppMethodBeat.i(101503);
-    this.vie.put(Integer.valueOf(paramInt), paramString);
+    this.gmS.put(Integer.valueOf(paramInt), paramString);
     AppMethodBeat.o(101503);
   }
   
@@ -295,7 +295,7 @@ public class RecordConfigProvider
   public String toString()
   {
     AppMethodBeat.i(101496);
-    String str = "RecordConfigProvider{remuxType=" + this.vhB + ", useCPUCrop=" + this.vhC + ", resolutionLimit=" + this.gwG + ", recordType=" + this.vhD + ", recordLevel=" + this.vhE + ", useCameraApi2=" + this.vhF + ", useImageStream=" + this.vhG + ", videoParam=" + this.vhH + ", uiParam=" + this.vhI + ", outputType=" + this.vhK + ", previewForceFullScreen=" + this.vhL + ", enablePicture=" + this.vhM + ", enableVideo=" + this.vhN + ", forceForegroundMix=" + this.vhO + ", enableAlbum=" + this.vhP + ", maxRecordTimeMs=" + this.vhQ + ", saveSourceMedia=" + this.vhR + ", savaToSysAlbumIfMediaEdited=" + this.vhS + ", inputVideoPath='" + this.vhT + '\'' + ", outputVideoPath='" + this.vhU + '\'' + ", thumbPath='" + this.thumbPath + '\'' + ", inputPhotoPath='" + this.vhV + '\'' + ", outputPhotoPath='" + this.vhW + '\'' + ", scene=" + this.scene + ", images=" + this.qMA + ", videos=" + this.vhX + ", reportInfo=" + this.vhY + ", expiredTimeMsIfMixInBackground=" + this.vhZ + ", supportCaptureLandscape=" + this.vib + ", forcePortrait=" + this.vic + ", autoAdjustFoldingScreen=" + this.vid + ", router=" + this.vie + '}';
+    String str = "RecordConfigProvider{remuxType=" + this.remuxType + ", useCPUCrop=" + this.wqo + ", resolutionLimit=" + this.gXd + ", recordType=" + this.wqp + ", recordLevel=" + this.wqq + ", useCameraApi2=" + this.wqr + ", useImageStream=" + this.wqs + ", videoParam=" + this.wqt + ", uiParam=" + this.wqu + ", outputType=" + this.wqw + ", previewForceFullScreen=" + this.wqx + ", enablePicture=" + this.wqy + ", enableVideo=" + this.wqz + ", forceForegroundMix=" + this.wqA + ", enableAlbum=" + this.wqB + ", maxRecordTimeMs=" + this.wqC + ", saveSourceMedia=" + this.wqD + ", savaToSysAlbumIfMediaEdited=" + this.wqE + ", inputVideoPath='" + this.wqF + '\'' + ", outputVideoPath='" + this.wqG + '\'' + ", thumbPath='" + this.thumbPath + '\'' + ", inputPhotoPath='" + this.wqH + '\'' + ", outputPhotoPath='" + this.wqI + '\'' + ", scene=" + this.scene + ", images=" + this.rHT + ", videos=" + this.wqJ + ", reportInfo=" + this.wqK + ", expiredTimeMsIfMixInBackground=" + this.wqL + ", supportCaptureLandscape=" + this.wqM + ", forcePortrait=" + this.wqN + ", autoAdjustFoldingScreen=" + this.wqO + ", router=" + this.gmS + '}';
     AppMethodBeat.o(101496);
     return str;
   }
@@ -304,63 +304,63 @@ public class RecordConfigProvider
   {
     byte b2 = 1;
     AppMethodBeat.i(101504);
-    paramParcel.writeInt(this.vhB);
-    paramParcel.writeValue(this.vhC);
-    paramParcel.writeInt(this.gwG);
-    paramParcel.writeInt(this.vhD);
-    paramParcel.writeInt(this.vhE);
-    paramParcel.writeValue(this.vhF);
-    paramParcel.writeValue(this.vhG);
-    paramParcel.writeParcelable(this.vhH, paramInt);
-    paramParcel.writeParcelable(this.vhI, paramInt);
+    paramParcel.writeInt(this.remuxType);
+    paramParcel.writeValue(this.wqo);
+    paramParcel.writeInt(this.gXd);
+    paramParcel.writeInt(this.wqp);
+    paramParcel.writeInt(this.wqq);
+    paramParcel.writeValue(this.wqr);
+    paramParcel.writeValue(this.wqs);
+    paramParcel.writeParcelable(this.wqt, paramInt);
+    paramParcel.writeParcelable(this.wqu, paramInt);
     int i;
-    if (this.vhJ == null)
+    if (this.wqv == null)
     {
       i = -1;
       paramParcel.writeInt(i);
-      paramParcel.writeInt(this.vhK);
-      paramParcel.writeValue(this.vhL);
-      paramParcel.writeValue(this.vhM);
-      paramParcel.writeValue(this.vhN);
-      paramParcel.writeValue(this.vhO);
-      paramParcel.writeValue(this.vhP);
-      paramParcel.writeInt(this.vhQ);
-      if (!this.vhR) {
+      paramParcel.writeInt(this.wqw);
+      paramParcel.writeValue(this.wqx);
+      paramParcel.writeValue(this.wqy);
+      paramParcel.writeValue(this.wqz);
+      paramParcel.writeValue(this.wqA);
+      paramParcel.writeValue(this.wqB);
+      paramParcel.writeInt(this.wqC);
+      if (!this.wqD) {
         break label351;
       }
       b1 = 1;
       label164:
       paramParcel.writeByte(b1);
-      if (!this.vhS) {
+      if (!this.wqE) {
         break label356;
       }
       b1 = 1;
       label178:
       paramParcel.writeByte(b1);
-      paramParcel.writeString(this.vhT);
-      paramParcel.writeString(this.vhU);
+      paramParcel.writeString(this.wqF);
+      paramParcel.writeString(this.wqG);
       paramParcel.writeString(this.thumbPath);
-      paramParcel.writeString(this.vhV);
-      paramParcel.writeString(this.vhW);
+      paramParcel.writeString(this.wqH);
+      paramParcel.writeString(this.wqI);
       paramParcel.writeInt(this.scene);
-      paramParcel.writeStringList(this.qMA);
-      paramParcel.writeStringList(this.vhX);
-      paramParcel.writeParcelable(this.vhY, paramInt);
-      paramParcel.writeLong(this.vhZ);
-      if (!this.vib) {
+      paramParcel.writeStringList(this.rHT);
+      paramParcel.writeStringList(this.wqJ);
+      paramParcel.writeParcelable(this.wqK, paramInt);
+      paramParcel.writeLong(this.wqL);
+      if (!this.wqM) {
         break label361;
       }
       b1 = 1;
       label273:
       paramParcel.writeByte(b1);
-      if (!this.vic) {
+      if (!this.wqN) {
         break label366;
       }
       b1 = 1;
       label287:
       paramParcel.writeByte(b1);
-      paramParcel.writeBundle(this.hsl);
-      if (!this.vid) {
+      paramParcel.writeBundle(this.hSN);
+      if (!this.wqO) {
         break label371;
       }
     }
@@ -372,11 +372,11 @@ public class RecordConfigProvider
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      paramParcel.writeSerializable(this.vie);
-      paramParcel.writeParcelable(this.vif, paramInt);
+      paramParcel.writeSerializable(this.gmS);
+      paramParcel.writeParcelable(this.wqP, paramInt);
       AppMethodBeat.o(101504);
       return;
-      i = this.vhJ.ordinal();
+      i = this.wqv.ordinal();
       break;
       b1 = 0;
       break label164;
@@ -391,7 +391,7 @@ public class RecordConfigProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider
  * JD-Core Version:    0.7.0.1
  */

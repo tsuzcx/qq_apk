@@ -9,12 +9,12 @@ import java.util.List;
 public final class h
   implements g
 {
-  private final List<c> JrE;
+  private final List<c> LeX;
   
   public h(List<? extends c> paramList)
   {
     AppMethodBeat.i(56952);
-    this.JrE = paramList;
+    this.LeX = paramList;
     AppMethodBeat.o(56952);
   }
   
@@ -39,7 +39,7 @@ public final class h
   public final boolean isEmpty()
   {
     AppMethodBeat.i(56949);
-    boolean bool = this.JrE.isEmpty();
+    boolean bool = this.LeX.isEmpty();
     AppMethodBeat.o(56949);
     return bool;
   }
@@ -47,7 +47,7 @@ public final class h
   public final Iterator<c> iterator()
   {
     AppMethodBeat.i(56950);
-    Iterator localIterator = this.JrE.iterator();
+    Iterator localIterator = this.LeX.iterator();
     AppMethodBeat.o(56950);
     return localIterator;
   }
@@ -55,14 +55,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(56951);
-    String str = this.JrE.toString();
+    String str = this.LeX.toString();
     AppMethodBeat.o(56951);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.a.h
  * JD-Core Version:    0.7.0.1
  */

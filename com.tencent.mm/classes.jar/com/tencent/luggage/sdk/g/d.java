@@ -10,32 +10,32 @@ import d.l;
 import d.y;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wechat-full-sdk_release"})
 public final class d
   implements c.a
 {
-  private final ArrayMap<b, a<y>> ciC;
+  private final ArrayMap<b, a<y>> cfy;
   
   public d()
   {
     AppMethodBeat.i(147859);
-    this.ciC = new ArrayMap();
+    this.cfy = new ArrayMap();
     AppMethodBeat.o(147859);
   }
   
   public final void a(b paramb, a<y> parama)
   {
     AppMethodBeat.i(147857);
-    ((Map)this.ciC).put(paramb, parama);
+    ((Map)this.cfy).put(paramb, parama);
     AppMethodBeat.o(147857);
   }
   
   public final void a(a<y> parama)
   {
-    AppMethodBeat.i(186851);
+    AppMethodBeat.i(206205);
     k.h(parama, "callback");
-    a(b.iQL, parama);
-    AppMethodBeat.o(186851);
+    a(b.jqV, parama);
+    AppMethodBeat.o(206205);
   }
   
   public final void a(String paramString, b paramb)
@@ -53,7 +53,7 @@ public final class d
       AppMethodBeat.o(147856);
       return;
     }
-    paramString = (a)this.ciC.get(paramb);
+    paramString = (a)this.cfy.get(paramb);
     if (paramString != null)
     {
       paramString.invoke();
@@ -67,13 +67,13 @@ public final class d
   {
     AppMethodBeat.i(147858);
     k.h(parama, "callback");
-    a(b.iQN, parama);
+    a(b.jqX, parama);
     AppMethodBeat.o(147858);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.g.d
  * JD-Core Version:    0.7.0.1
  */

@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/collections/EmptyList;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "get", "index", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "readResolve", "subList", "fromIndex", "toIndex", "toString", "", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/EmptyList;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "get", "index", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "readResolve", "subList", "fromIndex", "toIndex", "toString", "", "kotlin-stdlib"})
 public final class v
   implements a, Serializable, List, RandomAccess
 {
-  public static final v Jgl;
+  public static final v KTF;
   
   static
   {
     AppMethodBeat.i(129160);
-    Jgl = new v();
+    KTF = new v();
     AppMethodBeat.o(129160);
   }
   
   private final Object readResolve()
   {
-    return Jgl;
+    return KTF;
   }
   
   public final boolean addAll(int paramInt, Collection paramCollection)
@@ -113,7 +113,7 @@ public final class v
   
   public final Iterator iterator()
   {
-    return (Iterator)u.Jgk;
+    return (Iterator)u.KTE;
   }
   
   public final int lastIndexOf(Object paramObject)
@@ -131,7 +131,7 @@ public final class v
   
   public final ListIterator listIterator()
   {
-    return (ListIterator)u.Jgk;
+    return (ListIterator)u.KTE;
   }
   
   public final ListIterator listIterator(int paramInt)
@@ -143,7 +143,7 @@ public final class v
       AppMethodBeat.o(129158);
       throw ((Throwable)localObject);
     }
-    Object localObject = (ListIterator)u.Jgk;
+    Object localObject = (ListIterator)u.KTE;
     AppMethodBeat.o(129158);
     return localObject;
   }
@@ -189,7 +189,7 @@ public final class v
   public final Object[] toArray()
   {
     AppMethodBeat.i(129171);
-    Object[] arrayOfObject = f.r(this);
+    Object[] arrayOfObject = f.s(this);
     AppMethodBeat.o(129171);
     return arrayOfObject;
   }

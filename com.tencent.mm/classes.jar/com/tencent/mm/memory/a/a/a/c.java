@@ -2,9 +2,9 @@ package com.tencent.mm.memory.a.a.a;
 
 public abstract interface c<T>
 {
-  public abstract T apj();
+  public abstract T awa();
   
-  public abstract T apk();
+  public abstract T awb();
 }
 
 

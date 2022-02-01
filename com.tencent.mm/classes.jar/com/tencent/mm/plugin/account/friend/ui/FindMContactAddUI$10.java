@@ -12,7 +12,7 @@ final class FindMContactAddUI$10
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(131184);
-    FindMContactAddUI.i(this.imm);
+    FindMContactAddUI.i(this.iMs);
     AppMethodBeat.o(131184);
     return true;
   }

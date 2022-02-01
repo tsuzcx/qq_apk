@@ -3,10 +3,10 @@ package com.tencent.mm.kernel.a.b;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.b;
+import com.tencent.mm.cn.b;
 import com.tencent.mm.kernel.a.a.a.a;
 import com.tencent.mm.kernel.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.h.h;
 import java.util.LinkedList;
@@ -16,47 +16,47 @@ import junit.framework.Assert;
 
 public final class e<T>
 {
-  private static e gfd = null;
-  private Queue<c> geW;
-  private int geX;
-  private volatile a geY;
-  private volatile boolean geZ;
-  private final byte[] gfa;
-  private volatile a<Void, f.a> gfb;
-  private volatile c<T> gfc;
+  private static e gjJ = null;
+  private Queue<c> gjC;
+  private int gjD;
+  private volatile a gjE;
+  private volatile boolean gjF;
+  private final byte[] gjG;
+  private volatile a<Void, f.a> gjH;
+  private volatile c<T> gjI;
   
   private e()
   {
     AppMethodBeat.i(158364);
-    this.geW = new LinkedList();
-    this.geZ = false;
-    this.gfa = new byte[0];
+    this.gjC = new LinkedList();
+    this.gjF = false;
+    this.gjG = new byte[0];
     AppMethodBeat.o(158364);
   }
   
   private void a(final c paramc, final f.a<T> parama)
   {
     AppMethodBeat.i(158376);
-    paramc.gfh.v(new Runnable()
+    paramc.gjN.w(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(158359);
         f.a locala = parama;
         a locala1 = e.a(e.this);
-        if (!locala.geR)
+        if (!locala.gjx)
         {
-          locala.gfs.gft.fkL();
-          if (!locala.geR)
+          locala.gjY.gjZ.fBb();
+          if (!locala.gjx)
           {
             locala1.call(locala);
-            ad.d("MMSkeleton.ParallelsDependencies", "consume call functional %s, node %s", new Object[] { locala1, locala });
-            locala.geR = true;
+            ac.d("MMSkeleton.ParallelsDependencies", "consume call functional %s, node %s", new Object[] { locala1, locala });
+            locala.gjx = true;
           }
-          locala.gfs.gft.done();
+          locala.gjY.gjZ.done();
         }
         e.b(e.this).a(parama);
-        locala = e.b(e.this).agd();
+        locala = e.b(e.this).aht();
         if (locala == null)
         {
           e.a(e.this, paramc);
@@ -82,7 +82,7 @@ public final class e<T>
     //   4: ldc 93
     //   6: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 55	com/tencent/mm/kernel/a/b/e:geW	Ljava/util/Queue;
+    //   10: getfield 55	com/tencent/mm/kernel/a/b/e:gjC	Ljava/util/Queue;
     //   13: aload_1
     //   14: invokeinterface 99 2 0
     //   19: pop
@@ -93,22 +93,22 @@ public final class e<T>
     //   28: dup
     //   29: iconst_0
     //   30: aload_0
-    //   31: getfield 55	com/tencent/mm/kernel/a/b/e:geW	Ljava/util/Queue;
+    //   31: getfield 55	com/tencent/mm/kernel/a/b/e:gjC	Ljava/util/Queue;
     //   34: invokeinterface 107 1 0
     //   39: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   42: aastore
     //   43: dup
     //   44: iconst_1
     //   45: aload_0
-    //   46: getfield 115	com/tencent/mm/kernel/a/b/e:geX	I
+    //   46: getfield 115	com/tencent/mm/kernel/a/b/e:gjD	I
     //   49: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   52: aastore
     //   53: invokestatic 121	com/tencent/mm/kernel/j:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   56: aload_0
-    //   57: getfield 55	com/tencent/mm/kernel/a/b/e:geW	Ljava/util/Queue;
+    //   57: getfield 55	com/tencent/mm/kernel/a/b/e:gjC	Ljava/util/Queue;
     //   60: invokeinterface 107 1 0
     //   65: aload_0
-    //   66: getfield 115	com/tencent/mm/kernel/a/b/e:geX	I
+    //   66: getfield 115	com/tencent/mm/kernel/a/b/e:gjD	I
     //   69: if_icmpne +12 -> 81
     //   72: ldc 93
     //   74: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -143,11 +143,11 @@ public final class e<T>
     c localc;
     for (;;)
     {
-      localc = agi();
+      localc = ahy();
       if (localc == null) {
         break label48;
       }
-      f.a locala = this.gfc.agd();
+      f.a locala = this.gjI.aht();
       if (locala == null) {
         break;
       }
@@ -160,28 +160,28 @@ public final class e<T>
     AppMethodBeat.o(158375);
   }
   
-  public static e age()
+  public static e ahu()
   {
-    return gfd;
+    return gjJ;
   }
   
-  public static e agf()
+  public static e ahv()
   {
     AppMethodBeat.i(158363);
-    if (gfd == null) {
-      gfd = new e();
+    if (gjJ == null) {
+      gjJ = new e();
     }
-    e locale = gfd;
+    e locale = gjJ;
     AppMethodBeat.o(158363);
     return locale;
   }
   
-  private c agi()
+  private c ahy()
   {
     try
     {
       AppMethodBeat.i(158372);
-      c localc = (c)this.geW.poll();
+      c localc = (c)this.gjC.poll();
       AppMethodBeat.o(158372);
       return localc;
     }
@@ -196,13 +196,13 @@ public final class e<T>
   {
     AppMethodBeat.i(158374);
     if (a(???)) {
-      synchronized (this.gfa)
+      synchronized (this.gjG)
       {
-        if (this.geZ) {
+        if (this.gjF) {
           j.i("MMSkeleton.Parallels", "Parallels notify done", new Object[0]);
         }
-        this.geZ = false;
-        this.geY.agj();
+        this.gjF = false;
+        this.gjE.ahz();
         AppMethodBeat.o(158374);
         return;
       }
@@ -217,7 +217,7 @@ public final class e<T>
     {
       paramc.prepare();
       start(paramString);
-      agg();
+      ahw();
     }
     AppMethodBeat.o(158368);
   }
@@ -225,36 +225,36 @@ public final class e<T>
   public final boolean a(a parama, a<Void, f.a> parama1, c<T> paramc)
   {
     AppMethodBeat.i(158367);
-    synchronized (this.gfa)
+    synchronized (this.gjG)
     {
-      if (this.geZ)
+      if (this.gjF)
       {
-        ad.w("MMSkeleton.Parallels", "Arrange parallels task failed. It's busy on working.");
+        ac.w("MMSkeleton.Parallels", "Arrange parallels task failed. It's busy on working.");
         Assert.assertTrue(false);
         AppMethodBeat.o(158367);
         return false;
       }
-      this.geY = parama;
-      this.gfb = parama1;
-      this.gfc = paramc;
+      this.gjE = parama;
+      this.gjH = parama1;
+      this.gjI = paramc;
       AppMethodBeat.o(158367);
       return true;
     }
   }
   
-  public final void agg()
+  public final void ahw()
   {
     AppMethodBeat.i(158369);
-    this.geY.agg();
+    this.gjE.ahw();
     AppMethodBeat.o(158369);
   }
   
-  public final List<c> agh()
+  public final List<c> ahx()
   {
     try
     {
       AppMethodBeat.i(158371);
-      LinkedList localLinkedList = new LinkedList(this.geW);
+      LinkedList localLinkedList = new LinkedList(this.gjC);
       AppMethodBeat.o(158371);
       return localLinkedList;
     }
@@ -273,15 +273,15 @@ public final class e<T>
       int i = 0;
       while (i < paramInt)
       {
-        Queue localQueue = this.geW;
+        Queue localQueue = this.gjC;
         HandlerThread localHandlerThread = new HandlerThread("parallels-".concat(String.valueOf(i)), -8);
         localHandlerThread.start();
         c localc = new c();
-        localc.cLz = localHandlerThread;
+        localc.cIH = localHandlerThread;
         localQueue.add(localc);
         i += 1;
       }
-      this.geX = paramInt;
+      this.gjD = paramInt;
       AppMethodBeat.o(158365);
       return;
     }
@@ -294,13 +294,13 @@ public final class e<T>
     {
       AppMethodBeat.i(158366);
       int i = 0;
-      while (i < this.geX)
+      while (i < this.gjD)
       {
-        c localc = (c)((LinkedList)this.geW).get(i);
-        Handler localHandler = new Handler(localc.cLz.getLooper());
-        h localh = new h(localHandler, localc.cLz.getName());
+        c localc = (c)((LinkedList)this.gjC).get(i);
+        Handler localHandler = new Handler(localc.cIH.getLooper());
+        h localh = new h(localHandler, localc.cIH.getName());
         localc.handler = localHandler;
-        localc.gfh = localh;
+        localc.gjN = localh;
         i += 1;
       }
       AppMethodBeat.o(158366);
@@ -313,9 +313,9 @@ public final class e<T>
   {
     AppMethodBeat.i(158370);
     j.i("MMSkeleton.Parallels", "Start working. For %s", new Object[] { ??? });
-    synchronized (this.gfa)
+    synchronized (this.gjG)
     {
-      this.geZ = true;
+      this.gjF = true;
       active();
       AppMethodBeat.o(158370);
       return;
@@ -324,9 +324,9 @@ public final class e<T>
   
   public static abstract interface a
   {
-    public abstract void agg();
+    public abstract void ahw();
     
-    public abstract void agj();
+    public abstract void ahz();
   }
   
   public static final class b
@@ -341,7 +341,7 @@ public final class e<T>
       AppMethodBeat.o(158360);
     }
     
-    public final void agg()
+    public final void ahw()
     {
       AppMethodBeat.i(158361);
       try
@@ -361,12 +361,12 @@ public final class e<T>
       }
       catch (InterruptedException localInterruptedException)
       {
-        ad.printErrStackTrace("MMSkeleton.Parallels", localInterruptedException, "", new Object[0]);
+        ac.printErrStackTrace("MMSkeleton.Parallels", localInterruptedException, "", new Object[0]);
         AppMethodBeat.o(158361);
       }
     }
     
-    public final void agj()
+    public final void ahz()
     {
       AppMethodBeat.i(158362);
       synchronized (this.mLock)
@@ -382,8 +382,8 @@ public final class e<T>
   
   public static final class c
   {
-    public HandlerThread cLz;
-    h gfh;
+    public HandlerThread cIH;
+    h gjN;
     Handler handler;
   }
 }

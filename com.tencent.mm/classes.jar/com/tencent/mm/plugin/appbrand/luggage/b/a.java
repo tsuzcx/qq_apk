@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.appbrand.luggage.b;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
 import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.protocal.protobuf.ctr;
+import com.tencent.mm.protocal.protobuf.czc;
 
 public final class a
   implements ac
 {
-  public final void a(Context paramContext, String paramString, ctr paramctr)
+  public final void a(Context paramContext, String paramString, czc paramczc)
   {
     AppMethodBeat.i(47476);
-    Intent localIntent = new Intent().putExtra("rawUrl", paramString).putExtra(AppBrandProcessProxyUI.juv, paramString);
+    Intent localIntent = new Intent().putExtra("rawUrl", paramString).putExtra(AppBrandProcessProxyUI.jUQ, paramString);
     localIntent.putExtra("rawUrl", paramString);
-    if (paramctr != null)
+    if (paramczc != null)
     {
-      localIntent.putExtra("show_native_web_view", paramctr.Elk);
-      localIntent.putExtra("KRightBtn", paramctr.Ell);
+      localIntent.putExtra("show_native_web_view", paramczc.FIi);
+      localIntent.putExtra("KRightBtn", paramczc.FIj);
     }
     d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(47476);

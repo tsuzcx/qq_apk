@@ -6,12 +6,10 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.al;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.jsruntime.ac;
 import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
@@ -26,26 +24,26 @@ public final class r
     return "AppBrandPluginCodeCodeCacheTransfer";
   }
   
-  public final boolean nb(int paramInt)
+  public final boolean nP(int paramInt)
   {
-    AppMethodBeat.i(195627);
-    boolean bool = g.afB().afk().getBoolean(ae.a.FlG, false);
-    ad.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(186341);
+    boolean bool = g.agR().agA().getBoolean(ah.a.GJv, false);
+    com.tencent.mm.sdk.platformtools.ac.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      AppMethodBeat.o(195627);
+      AppMethodBeat.o(186341);
       return true;
     }
-    AppMethodBeat.o(195627);
+    AppMethodBeat.o(186341);
     return false;
   }
   
   public final void transfer(int paramInt)
   {
-    AppMethodBeat.i(195626);
+    AppMethodBeat.i(186340);
     try
     {
-      localObject1 = j.aOK().iOE.a(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
+      localObject1 = j.aVC().joN.a(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
       ArrayList localArrayList = new ArrayList();
       while (((Cursor)localObject1).moveToNext()) {
         localArrayList.add(((Cursor)localObject1).getString(0));
@@ -54,18 +52,18 @@ public final class r
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
-      AppMethodBeat.o(195626);
+      com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
+      AppMethodBeat.o(186340);
       return;
     }
-    if ((bt.gL(localException)) || (localException.size() <= 0))
+    if ((bs.gY(localException)) || (localException.size() <= 0))
     {
-      ad.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
-      g.afB().afk().set(ae.a.FlG, Boolean.TRUE);
-      AppMethodBeat.o(195626);
+      com.tencent.mm.sdk.platformtools.ac.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
+      g.agR().agA().set(ah.a.GJv, Boolean.TRUE);
+      AppMethodBeat.o(186340);
       return;
     }
-    Object localObject1 = new com.tencent.mm.vfs.e(ac.aWU()).fhW();
+    Object localObject1 = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.appbrand.jsruntime.ac.bdS()).fxX();
     int i = localObject1.length;
     paramInt = 0;
     for (;;)
@@ -76,8 +74,8 @@ public final class r
         if (localObject2.isDirectory())
         {
           String str1 = localObject2.getName();
-          ad.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
-          if (!bt.isNullOrNil(str1))
+          com.tencent.mm.sdk.platformtools.ac.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
+          if (!bs.isNullOrNil(str1))
           {
             Iterator localIterator = localException.iterator();
             String str2;
@@ -90,11 +88,11 @@ public final class r
             } while (!str1.startsWith(str2.substring(0, str2.indexOf("$"))));
             boolean bool = localObject2.delete();
             if (localObject2.isDirectory()) {
-              bool = i.cO(q.B(localObject2.mUri), true);
+              bool = i.cU(q.B(localObject2.mUri), true);
             }
             for (;;)
             {
-              ad.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
+              com.tencent.mm.sdk.platformtools.ac.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
               break;
               if (localObject2.isFile()) {
                 bool = localObject2.delete();
@@ -105,8 +103,8 @@ public final class r
       }
       else
       {
-        g.afB().afk().set(ae.a.FlG, Boolean.TRUE);
-        AppMethodBeat.o(195626);
+        g.agR().agA().set(ah.a.GJv, Boolean.TRUE);
+        AppMethodBeat.o(186340);
         return;
       }
       paramInt += 1;
@@ -115,7 +113,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.r
  * JD-Core Version:    0.7.0.1
  */

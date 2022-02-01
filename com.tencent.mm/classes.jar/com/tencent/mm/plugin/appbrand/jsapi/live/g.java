@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.rtmp.WXLivePlayer;
 import org.json.JSONObject;
 
@@ -27,59 +27,59 @@ public final class g
   public final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145896);
-    ad.i("MicroMsg.JsApiUpdateLivePlayer", "onUpdateView : livePlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.JsApiUpdateLivePlayer", "onUpdateView : livePlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ad.w("MicroMsg.JsApiUpdateLivePlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      ac.w("MicroMsg.JsApiUpdateLivePlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(145896);
       return false;
     }
     parame = (View)((CoverViewContainer)paramView).ax(View.class);
     if (!(parame instanceof AppBrandLivePlayerView))
     {
-      ad.e("MicroMsg.JsApiUpdateLivePlayer", "targetView not AppBrandLivePlayerView");
+      ac.e("MicroMsg.JsApiUpdateLivePlayer", "targetView not AppBrandLivePlayerView");
       AppMethodBeat.o(145896);
       return false;
     }
     paramView = (AppBrandLivePlayerView)parame;
     parame = k.O(paramJSONObject);
-    paramView.clr = parame.getBoolean("needEvent", paramView.clr);
-    paramView = paramView.jSG;
+    paramView.cit = parame.getBoolean("needEvent", paramView.cit);
+    paramView = paramView.kts;
     if (!paramView.mInited) {}
     for (parame = new i(-3, "uninited livePlayer");; parame = new i())
     {
-      ad.i("MicroMsg.AppBrandLivePlayerView", "onUpdate code:%d info:%s", new Object[] { Integer.valueOf(parame.errorCode), parame.cko });
+      ac.i("MicroMsg.AppBrandLivePlayerView", "onUpdate code:%d info:%s", new Object[] { Integer.valueOf(parame.errorCode), parame.chn });
       AppMethodBeat.o(145896);
       return true;
       l.l("updateLivePlayer", parame);
       paramView.a(parame, false);
-      boolean bool = paramView.clh.isPlaying();
-      paramJSONObject = parame.getString("playUrl", paramView.ckM);
-      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty()) && (paramView.ckM != null) && (!paramView.ckM.equalsIgnoreCase(paramJSONObject)) && (paramView.clh.isPlaying()))
+      boolean bool = paramView.cij.isPlaying();
+      paramJSONObject = parame.getString("playUrl", paramView.chO);
+      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty()) && (paramView.chO != null) && (!paramView.chO.equalsIgnoreCase(paramJSONObject)) && (paramView.cij.isPlaying()))
       {
-        ad.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay playUrl-old = " + paramView.ckM + " playUrl-new = " + paramJSONObject);
-        paramView.clh.stopPlay(true);
+        ac.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay playUrl-old = " + paramView.chO + " playUrl-new = " + paramJSONObject);
+        paramView.cij.stopPlay(true);
       }
-      paramView.ckM = paramJSONObject;
+      paramView.chO = paramJSONObject;
       paramInt = paramView.n(parame);
-      if ((paramInt != paramView.clk) && (paramView.clh.isPlaying()))
+      if ((paramInt != paramView.cim) && (paramView.cij.isPlaying()))
       {
-        ad.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay  playType-old = " + paramView.clk + " playType-new = " + paramInt);
-        paramView.clh.stopPlay(true);
+        ac.i("TXLivePlayerJSAdapter", "updateLivePlayer: stopPlay  playType-old = " + paramView.cim + " playType-new = " + paramInt);
+        paramView.cij.stopPlay(true);
       }
-      paramView.clk = paramInt;
-      paramView.ckP = parame.getBoolean("autoplay", paramView.ckP);
-      if (((paramView.ckP) || (bool)) && (paramView.ckM != null) && (!paramView.ckM.isEmpty()) && (!paramView.clh.isPlaying()))
+      paramView.cim = paramInt;
+      paramView.chR = parame.getBoolean("autoplay", paramView.chR);
+      if (((paramView.chR) || (bool)) && (paramView.chO != null) && (!paramView.chO.isEmpty()) && (!paramView.cij.isPlaying()))
       {
-        ad.i("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
-        paramView.clh.startPlay(paramView.ckM, paramView.clk);
+        ac.i("TXLivePlayerJSAdapter", "updateLivePlayer: startPlay");
+        paramView.cij.startPlay(paramView.chO, paramView.cim);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.g
  * JD-Core Version:    0.7.0.1
  */

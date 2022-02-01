@@ -3,7 +3,22 @@ package com.tencent.mm.pluginsdk;
 @Deprecated
 public abstract interface n
 {
-  public static abstract interface c {}
+  public static abstract interface c
+  {
+    public static abstract interface a
+    {
+      public abstract String eww();
+      
+      public abstract void ewx();
+      
+      public abstract boolean ewy();
+    }
+  }
+  
+  public static final class e
+  {
+    public static n.c.a DfF;
+  }
 }
 
 

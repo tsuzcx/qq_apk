@@ -13,7 +13,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMDotView;
 
@@ -21,23 +21,23 @@ public class WebViewSmileyPanel
   extends LinearLayout
   implements ViewPager.OnPageChangeListener, WebViewSmileyViewPager.a
 {
-  c BwH;
-  private a BwK;
-  private WebViewSmileyViewPager BwL;
+  c COP;
+  private a COS;
+  private WebViewSmileyViewPager COT;
   View mContentView;
-  private boolean mdi;
-  private MMDotView mfR;
-  private boolean mfS;
-  MMActivity nqt;
+  private boolean mFh;
+  private MMDotView mHQ;
+  private boolean mHR;
+  MMActivity nTt;
   
   public WebViewSmileyPanel(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(82349);
-    this.mdi = false;
+    this.mFh = false;
     this.mContentView = null;
-    this.BwL = null;
-    this.mfS = true;
+    this.COT = null;
+    this.mHR = true;
     init();
     AppMethodBeat.o(82349);
   }
@@ -46,76 +46,76 @@ public class WebViewSmileyPanel
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(82350);
-    this.mdi = false;
+    this.mFh = false;
     this.mContentView = null;
-    this.BwL = null;
-    this.mfS = true;
+    this.COT = null;
+    this.mHR = true;
     init();
     AppMethodBeat.o(82350);
   }
   
-  private void bue()
+  private void bBd()
   {
     AppMethodBeat.i(82353);
-    if (this.mfR == null)
+    if (this.mHQ == null)
     {
       AppMethodBeat.o(82353);
       return;
     }
-    boolean bool = i.ip(getContext());
+    boolean bool = i.iA(getContext());
     RelativeLayout.LayoutParams localLayoutParams;
-    if (bool != this.mfS)
+    if (bool != this.mHR)
     {
       if (!bool) {
         break label106;
       }
-      this.mfR.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131165500));
-      localLayoutParams = (RelativeLayout.LayoutParams)this.mfR.getLayoutParams();
+      this.mHQ.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131165500));
+      localLayoutParams = (RelativeLayout.LayoutParams)this.mHQ.getLayoutParams();
       localLayoutParams.bottomMargin = getContext().getResources().getDimensionPixelSize(2131166250);
-      this.mfR.setLayoutParams(localLayoutParams);
+      this.mHQ.setLayoutParams(localLayoutParams);
     }
     for (;;)
     {
-      this.mfS = bool;
+      this.mHR = bool;
       AppMethodBeat.o(82353);
       return;
       label106:
-      this.mfR.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131165490));
-      localLayoutParams = (RelativeLayout.LayoutParams)this.mfR.getLayoutParams();
+      this.mHQ.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131165490));
+      localLayoutParams = (RelativeLayout.LayoutParams)this.mHQ.getLayoutParams();
       localLayoutParams.bottomMargin = 0;
-      this.mfR.setLayoutParams(localLayoutParams);
+      this.mHQ.setLayoutParams(localLayoutParams);
     }
   }
   
   private void init()
   {
     AppMethodBeat.i(82351);
-    this.nqt = ((MMActivity)getContext());
-    this.BwH = new c();
-    this.BwH.mfC = getContext();
-    this.BwH.BwO = this.BwK;
+    this.nTt = ((MMActivity)getContext());
+    this.COP = new c();
+    this.COP.mHB = getContext();
+    this.COP.COW = this.COS;
     AppMethodBeat.o(82351);
   }
   
-  public final void bua()
+  public final void bAZ()
   {
     AppMethodBeat.i(82346);
-    if (this.BwL == null)
+    if (this.COT == null)
     {
       AppMethodBeat.o(82346);
       return;
     }
-    this.BwH.mfS = i.ip(getContext());
-    WebViewSmileyViewPager.b localb = (WebViewSmileyViewPager.b)this.BwL.getAdapter();
+    this.COP.mHR = i.iA(getContext());
+    WebViewSmileyViewPager.b localb = (WebViewSmileyViewPager.b)this.COT.getAdapter();
     if (localb != null)
     {
-      localb.mgc.clear();
-      localb.BwH = this.BwH;
+      localb.mIb.clear();
+      localb.COP = this.COP;
       localb.notifyDataSetChanged();
     }
     for (;;)
     {
-      this.BwL.post(new Runnable()
+      this.COT.post(new Runnable()
       {
         public final void run()
         {
@@ -127,26 +127,26 @@ public class WebViewSmileyPanel
       AppMethodBeat.o(82346);
       return;
       localb = new WebViewSmileyViewPager.b();
-      localb.BwH = this.BwH;
-      this.BwL.setAdapter(localb);
+      localb.COP = this.COP;
+      this.COT.setAdapter(localb);
     }
   }
   
   protected final c getManager()
   {
-    return this.BwH;
+    return this.COP;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(82348);
-    if (this.mdi)
+    if (this.mFh)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, -2147483648));
       AppMethodBeat.o(82348);
       return;
     }
-    i.ip(getContext());
+    i.iA(getContext());
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(82348);
   }
@@ -158,18 +158,18 @@ public class WebViewSmileyPanel
   public void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(82345);
-    a locala = this.BwH.eru();
+    a locala = this.COP.eGO();
     int i = locala.getPageCount();
-    int j = locala.mfE;
+    int j = locala.mHD;
     if (i <= 1)
     {
-      this.mfR.setVisibility(4);
+      this.mHQ.setVisibility(4);
       AppMethodBeat.o(82345);
       return;
     }
-    this.mfR.setVisibility(0);
-    this.mfR.setDotCount(i);
-    this.mfR.setSelectedDot(paramInt - j);
+    this.mHQ.setVisibility(0);
+    this.mHQ.setDotCount(i);
+    this.mHQ.setSelectedDot(paramInt - j);
     AppMethodBeat.o(82345);
   }
   
@@ -177,27 +177,27 @@ public class WebViewSmileyPanel
   {
     AppMethodBeat.i(82347);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    bue();
+    bBd();
     AppMethodBeat.o(82347);
   }
   
   public void setOnTextOperationListener(a parama)
   {
-    this.BwK = parama;
-    this.BwH.BwO = this.BwK;
+    this.COS = parama;
+    this.COP.COW = this.COS;
   }
   
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(82352);
     if (paramInt == 0) {}
-    for (this.mdi = false;; this.mdi = true)
+    for (this.mFh = false;; this.mFh = true)
     {
       super.setVisibility(paramInt);
-      if (this.mdi) {
+      if (this.mFh) {
         break label177;
       }
-      this.nqt.hideVKB();
+      this.nTt.hideVKB();
       if ((this.mContentView == null) || (getChildCount() <= 0)) {
         break;
       }
@@ -206,17 +206,17 @@ public class WebViewSmileyPanel
       return;
     }
     if (this.mContentView == null) {
-      this.mContentView = View.inflate(aj.getContext(), 2131496090, null);
+      this.mContentView = View.inflate(ai.getContext(), 2131496090, null);
     }
     for (;;)
     {
-      this.BwL = ((WebViewSmileyViewPager)this.mContentView.findViewById(2131304873));
-      this.BwL.setOnPageChangeListener(this);
-      this.BwL.setPanelManager(this.BwH);
-      this.BwL.setOnSizeChangedListener(this);
-      this.mfR = ((MMDotView)this.mContentView.findViewById(2131304870));
-      this.mfR.setDotCount(1);
-      bue();
+      this.COT = ((WebViewSmileyViewPager)this.mContentView.findViewById(2131304873));
+      this.COT.setOnPageChangeListener(this);
+      this.COT.setPanelManager(this.COP);
+      this.COT.setOnSizeChangedListener(this);
+      this.mHQ = ((MMDotView)this.mContentView.findViewById(2131304870));
+      this.mHQ.setDotCount(1);
+      bBd();
       addView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
       label177:
       AppMethodBeat.o(82352);
@@ -229,14 +229,14 @@ public class WebViewSmileyPanel
   
   public static abstract interface a
   {
-    public abstract void append(String paramString);
+    public abstract void amb();
     
-    public abstract void btF();
+    public abstract void append(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyPanel
  * JD-Core Version:    0.7.0.1
  */

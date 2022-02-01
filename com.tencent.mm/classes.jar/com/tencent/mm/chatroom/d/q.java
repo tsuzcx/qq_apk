@@ -1,16 +1,16 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.cli;
-import com.tencent.mm.protocal.protobuf.clj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cqp;
+import com.tencent.mm.protocal.protobuf.cqq;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class q
   extends n
@@ -23,16 +23,16 @@ public final class q
   {
     AppMethodBeat.i(12489);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cli();
-    ((b.a)localObject).gUV = new clj();
+    ((b.a)localObject).hvt = new cqp();
+    ((b.a)localObject).hvu = new cqq();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/revokechatroomqrcode";
     ((b.a)localObject).funcId = 700;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (cli)this.rr.gUS.gUX;
-    ((cli)localObject).EgH = paramString1;
-    ((cli)localObject).EgI = paramString2;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (cqp)this.rr.hvr.hvw;
+    ((cqp)localObject).FDG = paramString1;
+    ((cqp)localObject).FDH = paramString2;
     AppMethodBeat.o(12489);
   }
   
@@ -53,7 +53,7 @@ public final class q
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12491);
-    ad.d("MicroMsg.RevokeChatRoomQRCodeRequest", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ac.d("MicroMsg.RevokeChatRoomQRCodeRequest", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12491);
   }

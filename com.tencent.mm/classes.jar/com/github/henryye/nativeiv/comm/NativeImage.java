@@ -46,7 +46,7 @@ class NativeImage
     //   33: aload_2
     //   34: monitorenter
     //   35: aload_2
-    //   36: getfield 48	com/github/henryye/nativeiv/comm/a:aQj	Ljava/util/HashMap;
+    //   36: getfield 48	com/github/henryye/nativeiv/comm/a:aQZ	Ljava/util/HashMap;
     //   39: aload_0
     //   40: invokevirtual 52	java/lang/Object:hashCode	()I
     //   43: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -268,9 +268,9 @@ class NativeImage
       {
         locala.width = this.mNativeBitmapStruct.width;
         locala.height = this.mNativeBitmapStruct.height;
-        locala.aPW = true;
-        locala.aPX = Integer.valueOf(this.mNativeBitmapStruct.glFormat);
-        locala.aPY = this.lastDecodeUsing;
+        locala.aQM = true;
+        locala.aQN = Integer.valueOf(this.mNativeBitmapStruct.glFormat);
+        locala.aQO = this.lastDecodeUsing;
       }
       AppMethodBeat.o(127369);
       return locala;
@@ -347,7 +347,7 @@ class NativeImage
     //   76: aload_3
     //   77: monitorenter
     //   78: aload_3
-    //   79: getfield 48	com/github/henryye/nativeiv/comm/a:aQj	Ljava/util/HashMap;
+    //   79: getfield 48	com/github/henryye/nativeiv/comm/a:aQZ	Ljava/util/HashMap;
     //   82: aload_0
     //   83: invokevirtual 52	java/lang/Object:hashCode	()I
     //   86: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -395,7 +395,7 @@ class NativeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.NativeImage
  * JD-Core Version:    0.7.0.1
  */

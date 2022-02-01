@@ -10,45 +10,45 @@ import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.ui.editor.StoryFakeVideoPlayView;
 import com.tencent.mm.plugin.recordvideo.ui.editor.StoryFakeVideoPlayView.a;
 import com.tencent.mm.plugin.recordvideo.ui.editor.StoryFakeVideoPlayView.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 import java.util.ArrayList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "videoPlayView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "endTime", "", "getEndTime", "()I", "setEndTime", "(I)V", "fakeVideoPlayViewCallback", "com/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$fakeVideoPlayViewCallback$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$fakeVideoPlayViewCallback$1;", "startTime", "getStartTime", "setStartTime", "getVideoPlayView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "setVideoPlayView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;)V", "onBackPress", "", "onPause", "", "onResume", "release", "reset", "setVisibility", "visibility", "start", "info", "Companion", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "videoPlayView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "endTime", "", "getEndTime", "()I", "setEndTime", "(I)V", "fakeVideoPlayViewCallback", "com/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$fakeVideoPlayViewCallback$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$fakeVideoPlayViewCallback$1;", "startTime", "getStartTime", "setStartTime", "getVideoPlayView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "setVideoPlayView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;)V", "onBackPress", "", "onPause", "", "onResume", "release", "reset", "setVisibility", "visibility", "start", "info", "Companion", "plugin-recordvideo_release"})
 public final class o
   implements t
 {
-  public static final a vku;
-  public int cUL;
-  public int gBm;
-  public b vjS;
-  public final b vks;
-  public StoryFakeVideoPlayView vkt;
+  public static final o.a wsW;
+  public int cSh;
+  public int hbI;
+  public b sgm;
+  public final b wsU;
+  public StoryFakeVideoPlayView wsV;
   
   static
   {
     AppMethodBeat.i(75573);
-    vku = new a((byte)0);
+    wsW = new o.a((byte)0);
     AppMethodBeat.o(75573);
   }
   
   public o(StoryFakeVideoPlayView paramStoryFakeVideoPlayView, final d paramd)
   {
     AppMethodBeat.i(75572);
-    this.vkt = paramStoryFakeVideoPlayView;
-    this.vks = new b(this, paramd);
+    this.wsV = paramStoryFakeVideoPlayView;
+    this.wsU = new b(this, paramd);
     AppMethodBeat.o(75572);
   }
   
-  public final void apt() {}
-  
-  public final boolean dia()
+  public final boolean alO()
   {
     AppMethodBeat.i(75569);
-    this.vkt.stop();
+    this.wsV.stop();
     AppMethodBeat.o(75569);
     return false;
   }
+  
+  public final void awk() {}
   
   public final String name()
   {
@@ -62,25 +62,25 @@ public final class o
   public final void onPause()
   {
     AppMethodBeat.i(75568);
-    ad.i("MicroMsg.EditPhotoToVideoPlugin", "onPause");
-    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.vkt;
-    ad.i(StoryFakeVideoPlayView.TAG, "pause");
-    localStoryFakeVideoPlayView.vsn = StoryFakeVideoPlayView.c.vsw;
+    ac.i("MicroMsg.EditPhotoToVideoPlugin", "onPause");
+    StoryFakeVideoPlayView localStoryFakeVideoPlayView = this.wsV;
+    ac.i(StoryFakeVideoPlayView.TAG, "pause");
+    localStoryFakeVideoPlayView.wCn = StoryFakeVideoPlayView.c.wCw;
     AppMethodBeat.o(75568);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(75567);
-    ad.i("MicroMsg.EditPhotoToVideoPlugin", "onResume");
-    Object localObject = this.vjS;
+    ac.i("MicroMsg.EditPhotoToVideoPlugin", "onResume");
+    Object localObject = this.sgm;
     if (localObject != null)
     {
-      localObject = ((b)localObject).gBs;
+      localObject = ((b)localObject).hbO;
       if (localObject != null)
       {
         if (!((ArrayList)localObject).isEmpty()) {
-          this.vkt.resume();
+          this.wsV.resume();
         }
         AppMethodBeat.o(75567);
         return;
@@ -92,44 +92,41 @@ public final class o
   public final void release()
   {
     AppMethodBeat.i(75570);
-    ad.i("MicroMsg.EditPhotoToVideoPlugin", "release");
-    this.vkt.stop();
-    this.vjS = null;
+    ac.i("MicroMsg.EditPhotoToVideoPlugin", "release");
+    this.wsV.stop();
+    this.sgm = null;
     AppMethodBeat.o(75570);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(75571);
-    this.vkt.stop();
-    this.vjS = null;
+    this.wsV.stop();
+    this.sgm = null;
     AppMethodBeat.o(75571);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75566);
-    this.vkt.setVisibility(paramInt);
+    this.wsV.setVisibility(paramInt);
     AppMethodBeat.o(75566);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$fakeVideoPlayViewCallback$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "onPrepared", "", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/plugin/EditPhotoToVideoPlugin$fakeVideoPlayViewCallback$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "onPrepared", "", "plugin-recordvideo_release"})
   public static final class b
     implements StoryFakeVideoPlayView.a
   {
     b(d paramd) {}
     
-    public final void rq()
+    public final void rB()
     {
       AppMethodBeat.i(75565);
-      this.vkv.vkt.post((Runnable)new a(this));
+      this.wsX.wsV.post((Runnable)new a(this));
       AppMethodBeat.o(75565);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -140,10 +137,10 @@ public final class o
         AppMethodBeat.i(75564);
         Bundle localBundle = new Bundle();
         localBundle.putBoolean("PARAM_VIDEO_NEED_CROP", false);
-        this.vkx.vkv.vkt.setAlpha(0.99F);
-        d.b.a(this.vkx.vkw, d.c.vnG);
-        this.vkx.vkw.a(d.c.voh, localBundle);
-        ad.i("MicroMsg.EditPhotoToVideoPlugin", "setup fakeVideoPlayView onPrepared");
+        this.wsZ.wsX.wsV.setAlpha(0.99F);
+        d.b.a(this.wsZ.wsY, d.c.wwm);
+        this.wsZ.wsY.a(d.c.wwO, localBundle);
+        ac.i("MicroMsg.EditPhotoToVideoPlugin", "setup fakeVideoPlayView onPrepared");
         AppMethodBeat.o(75564);
       }
     }
@@ -151,7 +148,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.o
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ import java.util.List;
 
 public final class ac
 {
-  private static final b<d.l.b.a.b.m.a.i, aj> JXT;
-  public static final ac JXU;
+  private static final b<d.l.b.a.b.m.a.i, aj> LLm;
+  public static final ac LLn;
   
   static
   {
     AppMethodBeat.i(60771);
-    JXU = new ac();
-    JXT = (b)ac.a.JXV;
+    LLn = new ac();
+    LLm = (b)a.LLo;
     AppMethodBeat.o(60771);
   }
   
@@ -30,7 +30,7 @@ public final class ac
     k.h(paramg, "annotations");
     k.h(parame, "descriptor");
     k.h(paramList, "arguments");
-    parame = parame.fxs();
+    parame = parame.fPW();
     k.g(parame, "descriptor.typeConstructor");
     paramg = c(paramg, parame, paramList, false);
     AppMethodBeat.o(60768);
@@ -43,8 +43,8 @@ public final class ac
     k.h(paramg, "annotations");
     k.h(paramn, "constructor");
     paramn = (at)paramn;
-    List localList = (List)v.Jgl;
-    h localh = u.dl("Scope for integer literal type", true);
+    List localList = (List)v.KTF;
+    h localh = u.dq("Scope for integer literal type", true);
     k.g(localh, "ErrorUtils.createErrorSc…eger literal type\", true)");
     paramg = a(paramg, paramn, localList, localh);
     AppMethodBeat.o(60770);
@@ -106,6 +106,25 @@ public final class ac
     return paramaj1;
   }
   
+  static final class a
+    extends l
+    implements b
+  {
+    public static final a LLo;
+    
+    static
+    {
+      AppMethodBeat.i(60762);
+      LLo = new a();
+      AppMethodBeat.o(60762);
+    }
+    
+    a()
+    {
+      super();
+    }
+  }
+  
   static final class b {}
   
   static final class c
@@ -130,7 +149,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.ac
  * JD-Core Version:    0.7.0.1
  */

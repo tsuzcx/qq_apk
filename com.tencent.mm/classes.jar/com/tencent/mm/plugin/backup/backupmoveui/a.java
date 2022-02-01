@@ -22,21 +22,21 @@ import java.util.LinkedList;
 public final class a
   extends BaseAdapter
 {
-  BackupMoveChooseUI mtM;
-  HashSet<Integer> mtN;
+  BackupMoveChooseUI mVO;
+  HashSet<Integer> mVP;
   
   public a(BackupMoveChooseUI paramBackupMoveChooseUI)
   {
     AppMethodBeat.i(21377);
-    this.mtM = paramBackupMoveChooseUI;
-    this.mtN = new HashSet();
+    this.mVO = paramBackupMoveChooseUI;
+    this.mVP = new HashSet();
     AppMethodBeat.o(21377);
   }
   
-  private static f.b vZ(int paramInt)
+  private static f.b wQ(int paramInt)
   {
     AppMethodBeat.i(21379);
-    f.b localb = (f.b)b.bwC().bwG().bwy().get(paramInt);
+    f.b localb = (f.b)b.bDy().bDC().bDu().get(paramInt);
     AppMethodBeat.o(21379);
     return localb;
   }
@@ -44,7 +44,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(21378);
-    LinkedList localLinkedList = b.bwC().bwG().bwy();
+    LinkedList localLinkedList = b.bDy().bDC().bDu();
     if (localLinkedList != null)
     {
       int i = localLinkedList.size();
@@ -66,14 +66,14 @@ public final class a
     f.b localb;
     if (paramView == null)
     {
-      paramView = this.mtM.getLayoutInflater().inflate(2131493137, paramViewGroup, false);
+      paramView = this.mVO.getLayoutInflater().inflate(2131493137, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.frr = ((ImageView)paramView.findViewById(2131297008));
-      paramViewGroup.ica = ((TextView)paramView.findViewById(2131305948));
-      paramViewGroup.icb = ((CheckBox)paramView.findViewById(2131304502));
-      paramViewGroup.mtP = ((RelativeLayout)paramView.findViewById(2131304503));
+      paramViewGroup.fuY = ((ImageView)paramView.findViewById(2131297008));
+      paramViewGroup.iCg = ((TextView)paramView.findViewById(2131305948));
+      paramViewGroup.iCi = ((CheckBox)paramView.findViewById(2131304502));
+      paramViewGroup.mVR = ((RelativeLayout)paramView.findViewById(2131304503));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.mtP.setOnClickListener(new View.OnClickListener()
+      paramViewGroup.mVR.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -84,24 +84,24 @@ public final class a
           for (;;)
           {
             a.this.notifyDataSetChanged();
-            a.b(a.this).b(a.a(a.this));
+            a.b(a.this).a(a.a(a.this));
             AppMethodBeat.o(21376);
             return;
             a.a(a.this).add(Integer.valueOf(paramInt));
           }
         }
       });
-      localb = vZ(paramInt);
-      a.b.c(paramViewGroup.frr, localb.mqx);
-      if (!w.pF(localb.mqx)) {
+      localb = wQ(paramInt);
+      a.b.c(paramViewGroup.fuY, localb.mSz);
+      if (!w.sQ(localb.mSz)) {
         break label211;
       }
-      paramViewGroup.ica.setText(k.b(this.mtM, v.getDisplayName(localb.mqx, localb.mqx), paramViewGroup.ica.getTextSize()));
+      paramViewGroup.iCg.setText(k.b(this.mVO, v.getDisplayName(localb.mSz, localb.mSz), paramViewGroup.iCg.getTextSize()));
       label170:
-      if (!this.mtN.contains(Integer.valueOf(paramInt))) {
+      if (!this.mVP.contains(Integer.valueOf(paramInt))) {
         break label243;
       }
-      paramViewGroup.icb.setChecked(true);
+      paramViewGroup.iCi.setChecked(true);
     }
     for (;;)
     {
@@ -110,19 +110,19 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label211:
-      paramViewGroup.ica.setText(k.b(this.mtM, v.sh(localb.mqx), paramViewGroup.ica.getTextSize()));
+      paramViewGroup.iCg.setText(k.b(this.mVO, v.wk(localb.mSz), paramViewGroup.iCg.getTextSize()));
       break label170;
       label243:
-      paramViewGroup.icb.setChecked(false);
+      paramViewGroup.iCi.setChecked(false);
     }
   }
   
   final class a
   {
-    ImageView frr;
-    TextView ica;
-    CheckBox icb;
-    RelativeLayout mtP;
+    ImageView fuY;
+    TextView iCg;
+    CheckBox iCi;
+    RelativeLayout mVR;
     
     a() {}
   }

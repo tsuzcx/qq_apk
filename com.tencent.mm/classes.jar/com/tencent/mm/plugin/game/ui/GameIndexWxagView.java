@@ -13,7 +13,7 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.game.d.ds;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class GameIndexWxagView
   extends LinearLayout
@@ -21,7 +21,7 @@ public class GameIndexWxagView
 {
   ViewGroup mContainer;
   LayoutInflater mInflater;
-  int rXI;
+  int tfA;
   
   public GameIndexWxagView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,15 +42,15 @@ public class GameIndexWxagView
       return;
     }
     paramView = (a)paramView.getTag();
-    if (paramView.sju == null)
+    if (paramView.trn == null)
     {
       AppMethodBeat.o(42176);
       return;
     }
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = 1079;
-    ((n)g.ab(n.class)).a(getContext(), paramView.sju.mAQ, paramView.sju.hnC, paramView.sju.sea, 0, paramView.sju.sdZ, localAppBrandStatObject);
-    e.a(getContext(), 10, 1025, paramView.rYB, 30, paramView.sju.hnC, this.rXI, null);
+    ((n)g.ab(n.class)).a(getContext(), paramView.trn.ncR, paramView.trn.hOf, paramView.trn.tlU, 0, paramView.trn.tlT, localAppBrandStatObject);
+    e.a(getContext(), 10, 1025, paramView.tgt, 30, paramView.trn.hOf, this.tfA, null);
     AppMethodBeat.o(42176);
   }
   
@@ -58,19 +58,19 @@ public class GameIndexWxagView
   {
     AppMethodBeat.i(42175);
     super.onFinishInflate();
-    ad.i("MicroMsg.GameIndexWxagView", "initView finished");
+    ac.i("MicroMsg.GameIndexWxagView", "initView finished");
     AppMethodBeat.o(42175);
   }
   
   static final class a
   {
-    public int rYB;
-    public ds sju;
+    public int tgt;
+    public ds trn;
     
     public a(int paramInt, ds paramds)
     {
-      this.rYB = paramInt;
-      this.sju = paramds;
+      this.tgt = paramInt;
+      this.trn = paramds;
     }
   }
 }

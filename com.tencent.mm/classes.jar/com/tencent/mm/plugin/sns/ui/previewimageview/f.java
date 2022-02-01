@@ -35,7 +35,7 @@ public final class f
     return false;
   }
   
-  public static float eN(View paramView)
+  public static float fa(View paramView)
   {
     AppMethodBeat.i(100301);
     float f = Math.abs((paramView.getRight() - paramView.getLeft()) / 2);
@@ -43,7 +43,7 @@ public final class f
     return f;
   }
   
-  public static float eO(View paramView)
+  public static float fb(View paramView)
   {
     AppMethodBeat.i(100302);
     float f = Math.abs((paramView.getBottom() - paramView.getTop()) / 2);
@@ -53,7 +53,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.f
  * JD-Core Version:    0.7.0.1
  */

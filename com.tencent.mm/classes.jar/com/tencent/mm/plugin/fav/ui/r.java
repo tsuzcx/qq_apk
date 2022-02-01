@@ -9,62 +9,64 @@ import android.view.WindowManager;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.at;
-import com.tencent.mm.g.a.ru;
-import com.tencent.mm.g.a.rv;
-import com.tencent.mm.g.a.rv.a;
-import com.tencent.mm.g.b.a.ao;
-import com.tencent.mm.g.c.fb;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.au;
+import com.tencent.mm.g.a.sd;
+import com.tencent.mm.g.a.se;
+import com.tencent.mm.g.a.se.a;
+import com.tencent.mm.g.b.a.bo;
+import com.tencent.mm.g.c.ff;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.n;
 import com.tencent.mm.network.n.a;
+import com.tencent.mm.plugin.scanner.d;
 import com.tencent.mm.plugin.scanner.ui.TranslationResultUI;
-import com.tencent.mm.plugin.scanner.word.ImageWordScanEngineImpl;
+import com.tencent.mm.plugin.scanner.word.ImageWordScanDetailEngine;
 import com.tencent.mm.plugin.scanner.word.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.i;
 
 public final class r
 {
   MMActivity activity;
-  private com.tencent.mm.sdk.b.c<rv> qgA;
-  private n qgB;
-  private a.a qgr;
-  private com.tencent.mm.plugin.scanner.word.a<String, Integer> qgs;
-  volatile int qgt;
-  public int qgu;
-  a qgv;
-  ImageView qgw;
-  private ImageView qgx;
-  private ImageView qgy;
-  private ValueAnimator qgz;
+  private a.a qOT;
+  private com.tencent.mm.plugin.scanner.word.a qOU;
+  volatile int qOV;
+  public int qOW;
+  a qOX;
+  ImageView qOY;
+  private ImageView qOZ;
+  private ImageView qPa;
+  private ValueAnimator qPb;
+  private c<se> qPc;
+  private n qPd;
   
   public r(MMActivity paramMMActivity, a parama, a.a parama1)
   {
     AppMethodBeat.i(107073);
-    this.qgu = 0;
-    this.qgA = new com.tencent.mm.sdk.b.c() {};
-    this.qgB = new n.a()
+    this.qOW = 0;
+    this.qPc = new c() {};
+    this.qPd = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(107068);
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107067);
-            if ((g.aeS().auR() != 6) && (g.aeS().auR() != 4) && (r.this.qgu == 1))
+            if ((g.agi().aBK() != 6) && (g.agi().aBK() != 4) && (r.this.qOW == 1))
             {
               h.c(r.this.activity, r.this.activity.getString(2131755828), "", true);
-              r.this.cjl();
+              r.this.cqS();
             }
             AppMethodBeat.o(107067);
           }
@@ -72,138 +74,139 @@ public final class r
         AppMethodBeat.o(107068);
       }
     };
-    this.qgr = parama1;
+    this.qOT = parama1;
     this.activity = paramMMActivity;
-    this.qgv = parama;
-    this.qgx = ((ImageView)this.activity.findViewById(2131304342));
-    this.qgy = ((ImageView)this.activity.findViewById(2131304340));
-    this.qgw = ((ImageView)this.activity.findViewById(2131304343));
-    paramMMActivity = (FrameLayout.LayoutParams)this.qgy.getLayoutParams();
-    paramMMActivity.bottomMargin += ai.eb(this.activity);
-    this.qgy.setLayoutParams(paramMMActivity);
-    this.qgy.setOnClickListener(new View.OnClickListener()
+    this.qOX = parama;
+    this.qOZ = ((ImageView)this.activity.findViewById(2131304342));
+    this.qPa = ((ImageView)this.activity.findViewById(2131304340));
+    this.qOY = ((ImageView)this.activity.findViewById(2131304343));
+    paramMMActivity = (FrameLayout.LayoutParams)this.qPa.getLayoutParams();
+    paramMMActivity.bottomMargin += aj.ej(this.activity);
+    this.qPa.setLayoutParams(paramMMActivity);
+    this.qPa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107069);
-        paramAnonymousView = new at();
-        paramAnonymousView.dcR.scene = 1;
-        paramAnonymousView.dcR.dcS = r.this.qgt;
-        com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
-        r.this.cjl();
-        r.this.qgt = 0;
+        paramAnonymousView = new au();
+        paramAnonymousView.dap.scene = 1;
+        paramAnonymousView.dap.daq = r.this.qOV;
+        com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
+        r.this.cqS();
+        r.this.qOV = 0;
         AppMethodBeat.o(107069);
       }
     });
-    this.qgz = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.qgz.setDuration(5000L);
-    this.qgz.addListener(new r.4(this));
+    this.qPb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.qPb.setDuration(5000L);
+    this.qPb.addListener(new r.4(this));
     int i = this.activity.getWindowManager().getDefaultDisplay().getHeight();
-    this.qgz.addUpdateListener(new r.5(this, i));
-    this.qgA.alive();
+    this.qPb.addUpdateListener(new r.5(this, i));
+    this.qPc.alive();
     AppMethodBeat.o(107073);
   }
   
-  private void cjk()
+  private void cqR()
   {
     AppMethodBeat.i(107077);
-    if ((g.aeS().auR() != 6) && (g.aeS().auR() != 4))
+    if ((g.agi().aBK() != 6) && (g.agi().aBK() != 4))
     {
       h.c(this.activity, this.activity.getString(2131755828), "", true);
-      cjl();
+      cqS();
       AppMethodBeat.o(107077);
       return;
     }
-    this.qgu = 1;
-    this.qgw.setVisibility(0);
-    this.qgx.setVisibility(0);
-    this.qgy.setVisibility(0);
-    cjm();
+    this.qOW = 1;
+    this.qOY.setVisibility(0);
+    this.qOZ.setVisibility(0);
+    this.qPa.setVisibility(0);
+    cqT();
     AppMethodBeat.o(107077);
   }
   
-  private void cjm()
+  private void cqT()
   {
     AppMethodBeat.i(107079);
-    this.qgz.setRepeatMode(1);
-    this.qgz.setRepeatCount(-1);
-    this.qgz.start();
+    this.qPb.setRepeatMode(1);
+    this.qPb.setRepeatCount(-1);
+    this.qPb.start();
     AppMethodBeat.o(107079);
   }
   
-  private void cjn()
+  private void cqU()
   {
     AppMethodBeat.i(107080);
-    this.qgz.setRepeatMode(1);
-    this.qgz.setRepeatCount(0);
-    this.qgz.end();
+    this.qPb.setRepeatMode(1);
+    this.qPb.setRepeatCount(0);
+    this.qPb.end();
     AppMethodBeat.o(107080);
   }
   
-  public final void cjj()
+  public final void cqQ()
   {
     AppMethodBeat.i(107075);
-    Object localObject1 = this.qgv.ciZ();
-    if (((this.qgu == 0) || (this.qgu == 2)) && (!bt.isNullOrNil((String)localObject1)))
+    Object localObject1 = this.qOX.cqG();
+    if (((this.qOW == 0) || (this.qOW == 2)) && (!bs.isNullOrNil((String)localObject1)))
     {
-      Object localObject2 = new ao();
-      ((ao)localObject2).dMB = 5L;
-      if (this.qgu == 2) {}
+      Object localObject2 = new bo();
+      ((bo)localObject2).dNc = 5L;
+      if (this.qOW == 2) {}
       for (long l = 1L;; l = 0L)
       {
-        ((ao)localObject2).dKe = l;
-        ((ao)localObject2).dFd = 3L;
-        ((ao)localObject2).aBj();
-        this.qgt = ((int)(u.aqG().hashCode() + System.currentTimeMillis()));
-        localObject2 = ((com.tencent.mm.plugin.scanner.c)g.ad(com.tencent.mm.plugin.scanner.c.class)).getTranslationResult((String)localObject1);
-        if ((localObject2 == null) || (!i.eK(((fb)localObject2).field_resultFile))) {
+        ((bo)localObject2).dHY = l;
+        ((bo)localObject2).dCQ = 3L;
+        ((bo)localObject2).aHZ();
+        this.qOV = ((int)(u.axw().hashCode() + System.currentTimeMillis()));
+        localObject2 = ((d)g.ad(d.class)).getTranslationResult((String)localObject1);
+        if ((localObject2 == null) || (!i.eA(((ff)localObject2).field_resultFile))) {
           break;
         }
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("original_file_path", (String)localObject1);
+        ((Intent)localObject2).putExtra("translate_source", 5);
         ((Intent)localObject2).setClass(this.activity, TranslationResultUI.class);
         localObject1 = this.activity;
-        localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/mm/plugin/fav/ui/PhotoTransControl", "doTransPhoto", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((MMActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+        localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/fav/ui/PhotoTransControl", "doTransPhoto", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MMActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/fav/ui/PhotoTransControl", "doTransPhoto", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         this.activity.finish();
         this.activity.overridePendingTransition(2130771986, 2130771986);
         AppMethodBeat.o(107075);
         return;
       }
-      cjk();
-      ad.i("MicroMsg.PhotoTransControl", "try to translate img %s, sessionId %d", new Object[] { localObject1, Integer.valueOf(this.qgt) });
-      localObject2 = new ru();
-      ((ru)localObject2).dxr.scene = 2;
-      ((ru)localObject2).dxr.filePath = ((String)localObject1);
-      ((ru)localObject2).dxr.dcS = this.qgt;
-      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
+      cqR();
+      ac.i("MicroMsg.PhotoTransControl", "try to translate img %s, sessionId %d", new Object[] { localObject1, Integer.valueOf(this.qOV) });
+      localObject2 = new sd();
+      ((sd)localObject2).dve.scene = 2;
+      ((sd)localObject2).dve.filePath = ((String)localObject1);
+      ((sd)localObject2).dve.daq = this.qOV;
+      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
     }
     AppMethodBeat.o(107075);
   }
   
-  public final void cjl()
+  public final void cqS()
   {
     AppMethodBeat.i(107078);
-    this.qgu = 0;
-    this.qgw.setVisibility(8);
-    this.qgx.setVisibility(8);
-    this.qgy.setVisibility(8);
-    cjn();
+    this.qOW = 0;
+    this.qOY.setVisibility(8);
+    this.qOZ.setVisibility(8);
+    this.qPa.setVisibility(8);
+    cqU();
     AppMethodBeat.o(107078);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(107074);
-    cjn();
-    this.qgz.removeAllUpdateListeners();
-    this.qgA.dead();
-    g.afA().b(this.qgB);
-    this.qgr = null;
+    cqU();
+    this.qPb.removeAllUpdateListeners();
+    this.qPc.dead();
+    g.agQ().b(this.qPd);
+    this.qOT = null;
     this.activity = null;
-    this.qgv = null;
+    this.qOX = null;
     AppMethodBeat.o(107074);
   }
   
@@ -215,21 +218,21 @@ public final class r
       AppMethodBeat.o(107076);
       return;
     }
-    if (this.qgs == null) {
-      this.qgs = new ImageWordScanEngineImpl(this.activity);
+    if (this.qOU == null) {
+      this.qOU = new ImageWordScanDetailEngine(this.activity);
     }
-    this.qgs.a(paramString, this.qgr);
+    this.qOU.a(paramString, this.qOT);
     AppMethodBeat.o(107076);
   }
   
   public static abstract interface a
   {
-    public abstract String ciZ();
+    public abstract String cqG();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.r
  * JD-Core Version:    0.7.0.1
  */

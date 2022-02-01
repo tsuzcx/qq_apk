@@ -8,15 +8,15 @@ import com.tencent.mm.plugin.appbrand.appcache.bf;
 public final class l
   implements e
 {
-  public final bf aOk()
+  public final bf aVa()
   {
     AppMethodBeat.i(44229);
-    bf localbf = j.aOK();
+    bf localbf = j.aVC();
     AppMethodBeat.o(44229);
     return localbf;
   }
   
-  public final al aOl()
+  public final al aVb()
   {
     AppMethodBeat.i(44230);
     al localal = (al)j.T(al.class);
@@ -26,7 +26,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.l
  * JD-Core Version:    0.7.0.1
  */

@@ -4,52 +4,51 @@ import android.content.SharedPreferences;
 import android.os.Build.VERSION;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.g.d.b;
-import com.tencent.soter.core.d.e;
 
 public final class b
 {
-  public static boolean yaR;
-  public static int yaS;
-  private static e yaT;
+  public static boolean znR;
+  public static int znS;
+  private static com.tencent.soter.core.d.e znT;
   
   static
   {
     AppMethodBeat.i(130879);
-    yaR = false;
-    yaT = new b.1();
+    znR = false;
+    znT = new b.1();
     AppMethodBeat.o(130879);
   }
   
   public static void a(boolean paramBoolean, com.tencent.mm.plugin.soter.d.g paramg)
   {
     AppMethodBeat.i(130877);
-    ad.i("MicroMsg.SoterInitManager", "alvinluo isNeedPrepareAsk: %b, isNeedSaveDeviceInfo: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.TRUE });
+    ac.i("MicroMsg.SoterInitManager", "alvinluo isNeedPrepareAsk: %b, isNeedSaveDeviceInfo: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.TRUE });
     try
     {
       long l = System.currentTimeMillis();
       com.tencent.soter.core.d.d.uid = Process.myUid();
-      com.tencent.soter.core.a.a(yaT);
-      com.tencent.mm.vending.g.g.J(Boolean.valueOf(paramBoolean), Boolean.TRUE).e(new a()).e(new c()).e(new d()).a(new d.a() {}).a(new d.b() {});
+      com.tencent.soter.core.a.a(znT);
+      com.tencent.mm.vending.g.g.J(Boolean.valueOf(paramBoolean), Boolean.TRUE).e(new a()).e(new d()).e(new c()).e(new e()).a(new d.a() {}).a(new d.b() {});
       AppMethodBeat.o(130877);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SoterInitManager", localException, "alvinluo exception when init soter: %s", new Object[] { localException.getMessage() });
+      ac.printErrStackTrace("MicroMsg.SoterInitManager", localException, "alvinluo exception when init soter: %s", new Object[] { localException.getMessage() });
       com.tencent.mm.plugin.soter.d.a.m(4, 1001, 1L);
-      paramg.aU(-1, "system error");
+      paramg.aZ(-1, "system error");
       AppMethodBeat.o(130877);
     }
   }
   
-  public static boolean dEZ()
+  public static boolean dTA()
   {
     AppMethodBeat.i(130878);
-    SharedPreferences localSharedPreferences = aj.eFE();
+    SharedPreferences localSharedPreferences = ai.eUY();
     if (localSharedPreferences == null)
     {
       AppMethodBeat.o(130878);
@@ -60,9 +59,9 @@ public final class b
     return bool;
   }
   
-  public static boolean dFa()
+  public static boolean dTB()
   {
-    return (Build.VERSION.SDK_INT >= 28) && (!yaR) && (yaS == 2);
+    return (Build.VERSION.SDK_INT >= 28) && (!znR) && (znS == 2);
   }
 }
 

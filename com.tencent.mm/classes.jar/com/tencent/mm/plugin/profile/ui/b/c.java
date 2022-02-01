@@ -13,8 +13,8 @@ import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.f;
 import java.io.IOException;
 
@@ -31,16 +31,14 @@ public final class c
     AppMethodBeat.i(27609);
     Object localObject2 = u.a(new s()
     {
-      public final void Z(String paramAnonymousString, boolean paramAnonymousBoolean) {}
-      
       public final Bitmap a(Bitmap paramAnonymousBitmap, s.a paramAnonymousa, String paramAnonymousString)
       {
         AppMethodBeat.i(27603);
-        if (s.a.hUk == paramAnonymousa) {}
+        if (s.a.iuo == paramAnonymousa) {}
         try
         {
-          f.a(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
-          ad.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
+          f.a(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, aNl(), false);
+          ac.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
           AppMethodBeat.o(27603);
           return paramAnonymousBitmap;
         }
@@ -48,15 +46,38 @@ public final class c
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.UrlDrawable", paramAnonymousString, "", new Object[0]);
-            ad.w("MicroMsg.UrlDrawable", "save bitmap fail");
+            ac.printErrStackTrace("MicroMsg.UrlDrawable", paramAnonymousString, "", new Object[0]);
+            ac.w("MicroMsg.UrlDrawable", "save bitmap fail");
           }
         }
       }
       
       public final void a(s.a paramAnonymousa, String paramAnonymousString) {}
       
-      public final String aGA()
+      public final s.b aNk()
+      {
+        return null;
+      }
+      
+      public final String aNl()
+      {
+        AppMethodBeat.i(27604);
+        Object localObject = new StringBuilder();
+        az.ayM();
+        localObject = com.tencent.mm.model.c.awU() + ah.dg(c.a(c.this));
+        AppMethodBeat.o(27604);
+        return localObject;
+      }
+      
+      public final String aNm()
+      {
+        AppMethodBeat.i(27606);
+        String str = c.a(c.this);
+        AppMethodBeat.o(27606);
+        return str;
+      }
+      
+      public final String aNn()
       {
         AppMethodBeat.i(27605);
         String str = c.a(c.this);
@@ -64,45 +85,24 @@ public final class c
         return str;
       }
       
-      public final boolean aGB()
+      public final boolean aNo()
       {
         return false;
       }
       
-      public final boolean aGC()
+      public final boolean aNp()
       {
         return false;
       }
       
-      public final Bitmap aGD()
+      public final Bitmap aNq()
       {
         return null;
       }
       
-      public final void aGE() {}
+      public final void aNr() {}
       
-      public final s.b aGx()
-      {
-        return null;
-      }
-      
-      public final String aGy()
-      {
-        AppMethodBeat.i(27604);
-        Object localObject = new StringBuilder();
-        az.arV();
-        localObject = com.tencent.mm.model.c.aqf() + ai.du(c.a(c.this));
-        AppMethodBeat.o(27604);
-        return localObject;
-      }
-      
-      public final String aGz()
-      {
-        AppMethodBeat.i(27606);
-        String str = c.a(c.this);
-        AppMethodBeat.o(27606);
-        return str;
-      }
+      public final void aa(String paramAnonymousString, boolean paramAnonymousBoolean) {}
       
       public final String getCacheKey()
       {
@@ -129,7 +129,7 @@ public final class c
     AppMethodBeat.o(27609);
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(27610);
     if (this.url.equals(paramString)) {
@@ -140,7 +140,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

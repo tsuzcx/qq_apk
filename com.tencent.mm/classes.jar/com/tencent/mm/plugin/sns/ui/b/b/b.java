@@ -5,14 +5,14 @@ import com.tencent.mm.ui.MMActivity;
 public abstract class b
 {
   protected MMActivity activity;
-  protected a xOe;
+  protected a zaU;
   
   public final void a(a parama)
   {
-    this.xOe = parama;
+    this.zaU = parama;
   }
   
-  public abstract void ts(long paramLong);
+  public abstract void xV(long paramLong);
   
   public static abstract interface a
   {

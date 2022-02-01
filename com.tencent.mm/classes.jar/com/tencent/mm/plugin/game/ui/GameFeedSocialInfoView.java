@@ -7,16 +7,16 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.aa;
 import com.tencent.mm.plugin.game.widget.GameSmallAvatarList;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GameFeedSocialInfoView
   extends LinearLayout
 {
-  private TextView kFd;
-  private LinearLayout siQ;
-  private GameSmallAvatarList siR;
-  private TextView siS;
-  private LinearLayout siT;
+  private TextView lgw;
+  private LinearLayout tqJ;
+  private GameSmallAvatarList tqK;
+  private TextView tqL;
+  private LinearLayout tqM;
   
   public GameFeedSocialInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,38 +27,38 @@ public class GameFeedSocialInfoView
   {
     AppMethodBeat.i(42128);
     super.onFinishInflate();
-    this.siQ = ((LinearLayout)findViewById(2131297011));
-    this.siR = ((GameSmallAvatarList)findViewById(2131297012));
-    this.siS = ((TextView)findViewById(2131297003));
-    this.siT = ((LinearLayout)findViewById(2131298996));
-    this.kFd = ((TextView)findViewById(2131299007));
+    this.tqJ = ((LinearLayout)findViewById(2131297011));
+    this.tqK = ((GameSmallAvatarList)findViewById(2131297012));
+    this.tqL = ((TextView)findViewById(2131297003));
+    this.tqM = ((LinearLayout)findViewById(2131298996));
+    this.lgw = ((TextView)findViewById(2131299007));
     AppMethodBeat.o(42128);
   }
   
   public void setData(aa paramaa)
   {
     AppMethodBeat.i(42129);
-    if ((!bt.gL(paramaa.saC)) || (paramaa.saD != null))
+    if ((!bs.gY(paramaa.tiw)) || (paramaa.tix != null))
     {
-      this.siQ.setVisibility(0);
-      this.siR.setData(paramaa.saC);
-      if (paramaa.saD != null)
+      this.tqJ.setVisibility(0);
+      this.tqK.setData(paramaa.tiw);
+      if (paramaa.tix != null)
       {
-        this.siS.setText(paramaa.saD);
-        this.siS.setVisibility(0);
+        this.tqL.setText(paramaa.tix);
+        this.tqL.setVisibility(0);
       }
     }
     while (paramaa.Desc != null)
     {
-      this.siT.setVisibility(0);
-      this.kFd.setText(paramaa.Desc);
+      this.tqM.setVisibility(0);
+      this.lgw.setText(paramaa.Desc);
       AppMethodBeat.o(42129);
       return;
-      this.siS.setVisibility(8);
+      this.tqL.setVisibility(8);
       continue;
-      this.siQ.setVisibility(8);
+      this.tqJ.setVisibility(8);
     }
-    this.siT.setVisibility(8);
+    this.tqM.setVisibility(8);
     AppMethodBeat.o(42129);
   }
 }

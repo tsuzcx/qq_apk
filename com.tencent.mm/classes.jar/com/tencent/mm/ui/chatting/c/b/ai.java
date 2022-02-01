@@ -5,9 +5,9 @@ import com.tencent.mm.ui.chatting.c.ab;
 public abstract interface ai
   extends ab
 {
-  public abstract boolean aKM(String paramString);
+  public abstract boolean aQp(String paramString);
   
-  public abstract void adu(String paramString);
+  public abstract void aim(String paramString);
 }
 
 

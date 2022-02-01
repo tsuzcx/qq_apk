@@ -8,20 +8,20 @@ import d.l;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/sequences/FlatteningSequence;", "T", "R", "E", "Lkotlin/sequences/Sequence;", "sequence", "transformer", "Lkotlin/Function1;", "iterator", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/FlatteningSequence;", "T", "R", "E", "Lkotlin/sequences/Sequence;", "sequence", "transformer", "Lkotlin/Function1;", "iterator", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V", "kotlin-stdlib"})
 public final class f<T, R, E>
   implements h<E>
 {
-  final h<T> Kcd;
-  final b<T, R> Kcl;
-  final b<R, Iterator<E>> Kcm;
+  final b<T, R> LPG;
+  final b<R, Iterator<E>> LPH;
+  final h<T> LPy;
   
   public f(h<? extends T> paramh, b<? super T, ? extends R> paramb, b<? super R, ? extends Iterator<? extends E>> paramb1)
   {
     AppMethodBeat.i(129490);
-    this.Kcd = paramh;
-    this.Kcl = paramb;
-    this.Kcm = paramb1;
+    this.LPy = paramh;
+    this.LPG = paramb;
+    this.LPH = paramb1;
     AppMethodBeat.o(129490);
   }
   
@@ -33,39 +33,39 @@ public final class f<T, R, E>
     return localIterator;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"kotlin/sequences/FlatteningSequence$iterator$1", "", "itemIterator", "getItemIterator", "()Ljava/util/Iterator;", "setItemIterator", "(Ljava/util/Iterator;)V", "iterator", "getIterator", "ensureItemIterator", "", "hasNext", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/sequences/FlatteningSequence$iterator$1", "", "itemIterator", "getItemIterator", "()Ljava/util/Iterator;", "setItemIterator", "(Ljava/util/Iterator;)V", "iterator", "getIterator", "ensureItemIterator", "", "hasNext", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<E>
   {
-    private final Iterator<T> Jgp;
-    private Iterator<? extends E> Kcn;
+    private final Iterator<T> KTJ;
+    private Iterator<? extends E> LPI;
     
     a()
     {
       AppMethodBeat.i(129499);
-      this.Jgp = localObject.Kcd.iterator();
+      this.KTJ = localObject.LPy.iterator();
       AppMethodBeat.o(129499);
     }
     
-    private final boolean fKx()
+    private final boolean gda()
     {
       AppMethodBeat.i(129498);
-      Object localObject = this.Kcn;
+      Object localObject = this.LPI;
       if ((localObject != null) && (!((Iterator)localObject).hasNext())) {
-        this.Kcn = null;
+        this.LPI = null;
       }
-      while (this.Kcn == null)
+      while (this.LPI == null)
       {
-        if (!this.Jgp.hasNext())
+        if (!this.KTJ.hasNext())
         {
           AppMethodBeat.o(129498);
           return false;
         }
-        localObject = this.Jgp.next();
-        localObject = (Iterator)this.Kco.Kcm.aA(this.Kco.Kcl.aA(localObject));
+        localObject = this.KTJ.next();
+        localObject = (Iterator)this.LPJ.LPH.ay(this.LPJ.LPG.ay(localObject));
         if (((Iterator)localObject).hasNext())
         {
-          this.Kcn = ((Iterator)localObject);
+          this.LPI = ((Iterator)localObject);
           AppMethodBeat.o(129498);
           return true;
         }
@@ -77,7 +77,7 @@ public final class f<T, R, E>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129497);
-      boolean bool = fKx();
+      boolean bool = gda();
       AppMethodBeat.o(129497);
       return bool;
     }
@@ -85,15 +85,15 @@ public final class f<T, R, E>
     public final E next()
     {
       AppMethodBeat.i(129496);
-      if (!fKx())
+      if (!gda())
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129496);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.Kcn;
+      Object localObject = this.LPI;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
       localObject = ((Iterator)localObject).next();
       AppMethodBeat.o(129496);

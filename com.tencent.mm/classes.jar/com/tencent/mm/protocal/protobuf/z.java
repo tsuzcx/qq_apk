@@ -3,13 +3,13 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class z
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int Cta;
-  public String tfG;
-  public String tfH;
-  public String tfI;
-  public String tfJ;
+  public int DLr;
+  public String unV;
+  public String unW;
+  public String unX;
+  public String unY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,40 +17,40 @@ public final class z
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.Cta);
-      if (this.tfG != null) {
-        paramVarArgs.d(2, this.tfG);
+      paramVarArgs.aR(1, this.DLr);
+      if (this.unV != null) {
+        paramVarArgs.d(2, this.unV);
       }
-      if (this.tfH != null) {
-        paramVarArgs.d(3, this.tfH);
+      if (this.unW != null) {
+        paramVarArgs.d(3, this.unW);
       }
-      if (this.tfI != null) {
-        paramVarArgs.d(4, this.tfI);
+      if (this.unX != null) {
+        paramVarArgs.d(4, this.unX);
       }
-      if (this.tfJ != null) {
-        paramVarArgs.d(5, this.tfJ);
+      if (this.unY != null) {
+        paramVarArgs.d(5, this.unY);
       }
       AppMethodBeat.o(91339);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.Cta) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.DLr) + 0;
       paramInt = i;
-      if (this.tfG != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.tfG);
+      if (this.unV != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.unV);
       }
       i = paramInt;
-      if (this.tfH != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.tfH);
+      if (this.unW != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.unW);
       }
       paramInt = i;
-      if (this.tfI != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.tfI);
+      if (this.unX != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.unX);
       }
       i = paramInt;
-      if (this.tfJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.tfJ);
+      if (this.unY != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.unY);
       }
       AppMethodBeat.o(91339);
       return i;
@@ -58,9 +58,9 @@ public final class z
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(91339);
@@ -76,23 +76,23 @@ public final class z
         AppMethodBeat.o(91339);
         return -1;
       case 1: 
-        localz.Cta = locala.KhF.xS();
+        localz.DLr = locala.LVo.xF();
         AppMethodBeat.o(91339);
         return 0;
       case 2: 
-        localz.tfG = locala.KhF.readString();
+        localz.unV = locala.LVo.readString();
         AppMethodBeat.o(91339);
         return 0;
       case 3: 
-        localz.tfH = locala.KhF.readString();
+        localz.unW = locala.LVo.readString();
         AppMethodBeat.o(91339);
         return 0;
       case 4: 
-        localz.tfI = locala.KhF.readString();
+        localz.unX = locala.LVo.readString();
         AppMethodBeat.o(91339);
         return 0;
       }
-      localz.tfJ = locala.KhF.readString();
+      localz.unY = locala.LVo.readString();
       AppMethodBeat.o(91339);
       return 0;
     }
@@ -102,7 +102,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.z
  * JD-Core Version:    0.7.0.1
  */

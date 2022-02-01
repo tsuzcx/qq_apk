@@ -30,10 +30,10 @@ public final class h
           AppMethodBeat.o(966);
           return -1;
         }
-        paramString1 = a.el(paramString1);
-        if ((paramString1 != null) && (paramString1.cJN != null))
+        paramString1 = a.ea(paramString1);
+        if ((paramString1 != null) && (paramString1.cGU != null))
         {
-          i = paramString1.cJN.cJQ + 8;
+          i = paramString1.cGU.cGX + 8;
           System.out.println("MicroMsg.MergePatchApk:extLen = ".concat(String.valueOf(i)));
           if (d.a(localRandomAccessFile, localFile1, paramString2, i) != 1)
           {
@@ -68,7 +68,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.h
  * JD-Core Version:    0.7.0.1
  */

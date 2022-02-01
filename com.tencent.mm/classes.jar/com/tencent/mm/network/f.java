@@ -8,6 +8,12 @@ import java.util.List;
 public abstract interface f
   extends IInterface
 {
+  public abstract void As(String paramString);
+  
+  public abstract void At(String paramString);
+  
+  public abstract void Au(String paramString);
+  
   public abstract int a(r paramr, l paraml);
   
   public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
@@ -30,33 +36,33 @@ public abstract interface f
   
   public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
   
-  public abstract d aEG();
+  public abstract boolean aBL();
   
-  public abstract void aEH();
+  public abstract void aCb();
   
-  public abstract i aEI();
+  public abstract void aCc();
+  
+  public abstract d aLx();
+  
+  public abstract void aLy();
+  
+  public abstract i aLz();
   
   public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
   
-  public abstract boolean auS();
-  
-  public abstract void avi();
-  
-  public abstract void avj();
-  
-  public abstract void c(String paramString1, long paramLong, String paramString2);
-  
   public abstract void cancel(int paramInt);
   
-  public abstract void d(String paramString1, String paramString2, String paramString3, String paramString4);
+  public abstract void d(String paramString1, long paramLong, String paramString2);
   
-  public abstract void ei(boolean paramBoolean);
+  public abstract void eD(boolean paramBoolean);
   
-  public abstract void ej(boolean paramBoolean);
+  public abstract void eE(boolean paramBoolean);
   
-  public abstract void ek(boolean paramBoolean);
+  public abstract void eF(boolean paramBoolean);
   
-  public abstract void el(boolean paramBoolean);
+  public abstract void eG(boolean paramBoolean);
+  
+  public abstract void f(String paramString1, String paramString2, String paramString3, String paramString4);
   
   public abstract void forceUseV6(boolean paramBoolean);
   
@@ -87,12 +93,6 @@ public abstract interface f
   public abstract void stopSignalling();
   
   public abstract void switchProcessActiveState(boolean paramBoolean);
-  
-  public abstract void wm(String paramString);
-  
-  public abstract void wn(String paramString);
-  
-  public abstract void wo(String paramString);
 }
 
 

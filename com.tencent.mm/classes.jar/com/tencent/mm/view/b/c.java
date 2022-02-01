@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bu.b;
+import com.tencent.mm.bt.b;
 
 public final class c
   extends a
@@ -14,12 +14,12 @@ public final class c
     super(paramContext, paramb);
   }
   
-  protected final boolean fiM()
+  protected final boolean fza()
   {
     return false;
   }
   
-  public final boolean fiN()
+  public final boolean fzb()
   {
     return false;
   }
@@ -42,14 +42,14 @@ public final class c
   {
     AppMethodBeat.i(9400);
     paramCanvas.drawColor(0);
-    paramCanvas.setMatrix(this.cRA);
+    paramCanvas.setMatrix(this.cOV);
     getPresenter().onDraw(paramCanvas);
     AppMethodBeat.o(9400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.b.c
  * JD-Core Version:    0.7.0.1
  */

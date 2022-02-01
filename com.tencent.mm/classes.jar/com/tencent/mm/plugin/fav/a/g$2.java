@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class g$2
   implements g.a
@@ -9,7 +9,7 @@ final class g$2
   public final void log(String paramString)
   {
     AppMethodBeat.i(103371);
-    ad.e("MicroMsg.FavItemInfo", paramString);
+    ac.e("MicroMsg.FavItemInfo", paramString);
     AppMethodBeat.o(103371);
   }
 }

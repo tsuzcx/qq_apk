@@ -14,28 +14,28 @@ import com.tencent.wecall.talkroom.model.k;
 public final class e
   extends d
 {
-  public String IJx;
-  public int ILK;
-  public int sHe;
-  public String seB;
-  public long ztl;
+  public long AMc;
+  public String KvP;
+  public int Kyc;
+  public int tOL;
+  public String tmu;
   
   public e(e parame)
   {
     AppMethodBeat.i(62542);
-    this.seB = null;
-    this.sHe = 0;
-    this.ztl = 0L;
-    this.ILK = 0;
-    this.IJx = null;
-    this.seB = parame.seB;
-    this.sHe = parame.sHe;
-    this.ztl = parame.ztl;
-    this.ILK = parame.ILK;
-    this.IJx = parame.IJx;
-    this.IjT = parame.IjT;
-    this.IjV = parame.IjV;
-    this.IjW = parame.IjW;
+    this.tmu = null;
+    this.tOL = 0;
+    this.AMc = 0L;
+    this.Kyc = 0;
+    this.KvP = null;
+    this.tmu = parame.tmu;
+    this.tOL = parame.tOL;
+    this.AMc = parame.AMc;
+    this.Kyc = parame.Kyc;
+    this.KvP = parame.KvP;
+    this.JLE = parame.JLE;
+    this.JLG = parame.JLG;
+    this.JLH = parame.JLH;
     this.mNetType = 1;
     AppMethodBeat.o(62542);
   }
@@ -43,11 +43,11 @@ public final class e
   public e(String paramString1, int paramInt1, long paramLong, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString2)
   {
     AppMethodBeat.i(62543);
-    this.seB = null;
-    this.sHe = 0;
-    this.ztl = 0L;
-    this.ILK = 0;
-    this.IJx = null;
+    this.tmu = null;
+    this.tOL = 0;
+    this.AMc = 0L;
+    this.Kyc = 0;
+    this.KvP = null;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "enter2", paramString1, Integer.valueOf(paramInt1), Long.valueOf(paramLong), paramString2 });
     a.e locale = new a.e();
     for (;;)
@@ -55,18 +55,18 @@ public final class e
       try
       {
         locale.groupId = paramString1;
-        this.seB = paramString1;
-        locale.zkT = paramInt1;
-        this.sHe = paramInt1;
-        locale.zkU = paramLong;
-        this.ztl = paramLong;
-        locale.tjk = paramInt3;
-        this.ILK = paramInt3;
+        this.tmu = paramString1;
+        locale.ADE = paramInt1;
+        this.tOL = paramInt1;
+        locale.ADF = paramLong;
+        this.AMc = paramLong;
+        locale.urD = paramInt3;
+        this.Kyc = paramInt3;
         paramString1 = new a.aw();
-        paramString1.ImY = paramString2;
-        locale.IkD = paramString1;
-        this.IJx = paramString2;
-        b.d("MicroMsg.Voip", new Object[] { this.TAG2, "wXgroupId", locale.IkD.ImY });
+        paramString1.JOI = paramString2;
+        locale.JMo = paramString1;
+        this.KvP = paramString2;
+        b.d("MicroMsg.Voip", new Object[] { this.TAG2, "wXgroupId", locale.JMo.JOI });
         paramString1 = new a.an();
         if (paramArrayOfByte == null) {
           continue;
@@ -75,12 +75,12 @@ public final class e
         paramString1.iLen = paramArrayOfByte.length;
         paramArrayOfByte = new a.bd();
         paramArrayOfByte.type = 3;
-        paramArrayOfByte.InR = paramString1;
-        locale.IkF = paramArrayOfByte;
+        paramArrayOfByte.JPB = paramString1;
+        locale.JMq = paramArrayOfByte;
         this.mNetType = 2;
-        this.IjW = paramInt2;
-        locale.IkH = 2;
-        locale.netType = k.kR(c.ztG);
+        this.JLH = paramInt2;
+        locale.JMs = 2;
+        locale.netType = k.lf(c.AMx);
       }
       catch (Exception paramString1)
       {
@@ -94,7 +94,7 @@ public final class e
     }
   }
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62544);
     if (paramArrayOfByte != null) {}
@@ -116,7 +116,7 @@ public final class e
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSEnterVoiceRoomReq";
   }

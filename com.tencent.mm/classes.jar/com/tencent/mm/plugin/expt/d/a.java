@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.expt.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.expt.f.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
 {
   public static int b(b.a parama)
   {
     AppMethodBeat.i(122357);
-    c.ceF();
-    int i = bt.getInt(c.b(parama, ""), 0);
+    c.cmm();
+    int i = bs.getInt(c.b(parama, ""), 0);
     AppMethodBeat.o(122357);
     return i;
   }
   
-  public static boolean ced()
+  public static boolean clK()
   {
     AppMethodBeat.i(122354);
-    c.ceF();
-    if (bt.getInt(c.b(b.a.pmS, ""), 0) > 0)
+    c.cmm();
+    if (bs.getInt(c.b(b.a.pQs, ""), 0) > 0)
     {
       AppMethodBeat.o(122354);
       return true;
@@ -29,11 +29,11 @@ public final class a
     return false;
   }
   
-  public static boolean cee()
+  public static boolean clL()
   {
     AppMethodBeat.i(122355);
-    c.ceF();
-    if (bt.getInt(c.b(b.a.pmT, ""), 0) > 0)
+    c.cmm();
+    if (bs.getInt(c.b(b.a.pQt, ""), 0) > 0)
     {
       AppMethodBeat.o(122355);
       return true;
@@ -42,11 +42,11 @@ public final class a
     return false;
   }
   
-  public static boolean cef()
+  public static boolean clM()
   {
     AppMethodBeat.i(122356);
-    c.ceF();
-    if (bt.getInt(c.b(b.a.pmU, ""), 0) > 0)
+    c.cmm();
+    if (bs.getInt(c.b(b.a.pQu, ""), 0) > 0)
     {
       AppMethodBeat.o(122356);
       return true;
@@ -57,7 +57,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.a
  * JD-Core Version:    0.7.0.1
  */

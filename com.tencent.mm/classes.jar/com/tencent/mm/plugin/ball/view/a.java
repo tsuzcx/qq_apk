@@ -8,16 +8,16 @@ import com.tencent.mm.sdk.platformtools.f;
 public final class a
   implements b.h
 {
-  public static final a mGe;
+  public static final a nij;
   
   static
   {
     AppMethodBeat.i(106375);
-    mGe = new a();
+    nij = new a();
     AppMethodBeat.o(106375);
   }
   
-  public final String AL()
+  public final String Ap()
   {
     return "FloatBallIcon";
   }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class ai
@@ -13,11 +13,11 @@ public final class ai
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(45450);
-    ad.d("MicroMsg.JsApiAddWeRunData", "JsApiAddWeRunData!");
+    ac.d("MicroMsg.JsApiAddWeRunData", "JsApiAddWeRunData!");
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ad.e("MicroMsg.JsApiAddWeRunData", "data is null");
+      ac.e("MicroMsg.JsApiAddWeRunData", "data is null");
       AppMethodBeat.o(45450);
       return;
     }
@@ -27,7 +27,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ai
  * JD-Core Version:    0.7.0.1
  */

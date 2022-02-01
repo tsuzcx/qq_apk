@@ -19,22 +19,22 @@ import java.util.Collections;
 public class WalletChangeLoanRepayBankcardUI
   extends WalletChangeBankcardUI
 {
-  protected final void Rn(int paramInt)
+  protected final void Tw(int paramInt)
   {
     AppMethodBeat.i(69339);
     int i;
     Object localObject;
-    if (this.zGg != null)
+    if (this.AYt != null)
     {
-      i = this.zGg.size();
-      if ((this.zGg == null) || (paramInt >= i)) {
+      i = this.AYt.size();
+      if ((this.AYt == null) || (paramInt >= i)) {
         break label127;
       }
-      localObject = (Bankcard)this.zGg.get(paramInt);
-      this.zGh = ((Bankcard)localObject);
-      this.zQb.Amu = ((Bankcard)localObject).field_bindSerial;
-      this.vHH.setEnabled(true);
-      this.zQb.notifyDataSetChanged();
+      localObject = (Bankcard)this.AYt.get(paramInt);
+      this.AYu = ((Bankcard)localObject);
+      this.Biv.BEP = ((Bankcard)localObject).field_bindSerial;
+      this.wRL.setEnabled(true);
+      this.Biv.notifyDataSetChanged();
       Intent localIntent = new Intent();
       localIntent.putExtra("bindSerial", ((Bankcard)localObject).field_bindSerial);
       localIntent.putExtra("ret", 0);
@@ -57,14 +57,14 @@ public class WalletChangeLoanRepayBankcardUI
     }
   }
   
-  protected final k eae()
+  protected final k epA()
   {
     AppMethodBeat.i(69338);
-    this.zGg = s.ecd().Aib;
-    if (this.zGg != null) {
-      Collections.sort(this.zGg, new WalletChangeBankcardUI.2(this));
+    this.AYt = s.erz().BAv;
+    if (this.AYt != null) {
+      Collections.sort(this.AYt, new WalletChangeBankcardUI.2(this));
     }
-    k localk = new k(this, this.zGg, this.zQa, this.vIq);
+    k localk = new k(this, this.AYt, this.Biu, this.wSu);
     AppMethodBeat.o(69338);
     return localk;
   }

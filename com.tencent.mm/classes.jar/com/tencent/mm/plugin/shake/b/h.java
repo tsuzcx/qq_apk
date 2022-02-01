@@ -8,54 +8,54 @@ import com.tencent.mm.pluginsdk.n.b;
 public final class h
   implements n.b
 {
-  public final int doU()
+  public final int dDe()
   {
     AppMethodBeat.i(28136);
-    int i = m.dpc().bIR();
+    int i = m.dDm().bQe();
     AppMethodBeat.o(28136);
     return i;
   }
   
-  public final void doV()
+  public final void dDf()
   {
     AppMethodBeat.i(28137);
-    a.doV();
+    a.dDf();
     AppMethodBeat.o(28137);
   }
   
-  public final boolean doW()
+  public final boolean dDg()
   {
     AppMethodBeat.i(28138);
-    boolean bool = a.doW();
+    boolean bool = a.dDg();
     AppMethodBeat.o(28138);
     return bool;
   }
   
-  public final void doX()
+  public final void dDh()
   {
     AppMethodBeat.i(28139);
-    a.doX();
+    a.dDh();
     AppMethodBeat.o(28139);
   }
   
-  public final void doY()
+  public final void dDi()
   {
     AppMethodBeat.i(28140);
-    a.doY();
+    a.dDi();
     AppMethodBeat.o(28140);
   }
   
-  public final boolean doZ()
+  public final boolean dDj()
   {
     AppMethodBeat.i(28141);
-    boolean bool = k.doZ();
+    boolean bool = k.dDj();
     AppMethodBeat.o(28141);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.h
  * JD-Core Version:    0.7.0.1
  */

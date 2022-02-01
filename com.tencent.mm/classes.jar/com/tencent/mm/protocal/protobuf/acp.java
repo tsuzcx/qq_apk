@@ -1,101 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
-import java.util.LinkedList;
 
 public final class acp
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public SKBuiltinBuffer_t CBW;
-  public int DcY;
+  public String Evg;
+  public String deviceBrand;
+  public String deviceModel;
+  public String osName;
+  public String osVersion;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(133169);
+    AppMethodBeat.i(32189);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CBW == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Key");
-        AppMethodBeat.o(133169);
-        throw paramVarArgs;
+      if (this.deviceModel != null) {
+        paramVarArgs.d(1, this.deviceModel);
       }
-      paramVarArgs.aR(1, this.DcY);
-      if (this.CBW != null)
-      {
-        paramVarArgs.kX(2, this.CBW.computeSize());
-        this.CBW.writeFields(paramVarArgs);
+      if (this.deviceBrand != null) {
+        paramVarArgs.d(2, this.deviceBrand);
       }
-      AppMethodBeat.o(133169);
+      if (this.osName != null) {
+        paramVarArgs.d(3, this.osName);
+      }
+      if (this.osVersion != null) {
+        paramVarArgs.d(4, this.osVersion);
+      }
+      if (this.Evg != null) {
+        paramVarArgs.d(5, this.Evg);
+      }
+      AppMethodBeat.o(32189);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.deviceModel == null) {
+        break label465;
+      }
+    }
+    label465:
+    for (int i = f.a.a.b.b.a.e(1, this.deviceModel) + 0;; i = 0)
     {
-      i = f.a.a.b.b.a.bA(1, this.DcY) + 0;
       paramInt = i;
-      if (this.CBW != null) {
-        paramInt = i + f.a.a.a.kW(2, this.CBW.computeSize());
+      if (this.deviceBrand != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.deviceBrand);
       }
-      AppMethodBeat.o(133169);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+      i = paramInt;
+      if (this.osName != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.osName);
+      }
+      paramInt = i;
+      if (this.osVersion != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.osVersion);
+      }
+      i = paramInt;
+      if (this.Evg != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.Evg);
+      }
+      AppMethodBeat.o(32189);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
         }
-      }
-      if (this.CBW == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Key");
-        AppMethodBeat.o(133169);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(133169);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      acp localacp = (acp)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(133169);
-        return -1;
-      case 1: 
-        localacp.DcY = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(133169);
+        AppMethodBeat.o(32189);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new SKBuiltinBuffer_t();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localacp.CBW = ((SKBuiltinBuffer_t)localObject1);
-        paramInt += 1;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        acp localacp = (acp)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32189);
+          return -1;
+        case 1: 
+          localacp.deviceModel = locala.LVo.readString();
+          AppMethodBeat.o(32189);
+          return 0;
+        case 2: 
+          localacp.deviceBrand = locala.LVo.readString();
+          AppMethodBeat.o(32189);
+          return 0;
+        case 3: 
+          localacp.osName = locala.LVo.readString();
+          AppMethodBeat.o(32189);
+          return 0;
+        case 4: 
+          localacp.osVersion = locala.LVo.readString();
+          AppMethodBeat.o(32189);
+          return 0;
+        }
+        localacp.Evg = locala.LVo.readString();
+        AppMethodBeat.o(32189);
+        return 0;
       }
-      AppMethodBeat.o(133169);
-      return 0;
+      AppMethodBeat.o(32189);
+      return -1;
     }
-    AppMethodBeat.o(133169);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.acp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,8 @@ package com.tencent.mm.platformtools;
 import android.app.Activity;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class o
   extends c
@@ -16,7 +17,7 @@ public final class o
   public final boolean b(ad paramad)
   {
     AppMethodBeat.i(127719);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleOpenUrl");
+    ac.d("MicroMsg.ErrorYesNoProcessor", "handleOpenUrl");
     Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127719);
     return true;
@@ -25,7 +26,7 @@ public final class o
   public final boolean c(ad paramad)
   {
     AppMethodBeat.i(127720);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleIgnore");
+    ac.d("MicroMsg.ErrorYesNoProcessor", "handleIgnore");
     Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127720);
     return true;
@@ -34,7 +35,7 @@ public final class o
   public final boolean d(ad paramad)
   {
     AppMethodBeat.i(127721);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleFalseLast");
+    ac.d("MicroMsg.ErrorYesNoProcessor", "handleFalseLast");
     Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127721);
     return true;
@@ -43,7 +44,7 @@ public final class o
   public final boolean e(ad paramad)
   {
     AppMethodBeat.i(127722);
-    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleFalseCancel");
+    ac.d("MicroMsg.ErrorYesNoProcessor", "handleFalseCancel");
     Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127722);
     return true;
@@ -52,13 +53,13 @@ public final class o
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(127718);
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ErrorYesNoProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MicroMsg.ErrorYesNoProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     AppMethodBeat.o(127718);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.platformtools.o
  * JD-Core Version:    0.7.0.1
  */

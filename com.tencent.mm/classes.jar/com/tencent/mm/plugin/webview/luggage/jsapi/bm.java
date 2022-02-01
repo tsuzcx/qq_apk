@@ -10,8 +10,8 @@ import com.tencent.mm.network.ae;
 import com.tencent.mm.plugin.webview.luggage.c.b;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.vfs.i;
@@ -26,86 +26,86 @@ public class bm
   public final void b(final a<f>.a parama)
   {
     AppMethodBeat.i(78640);
-    ad.i("MicroMsg.JsApiUploadMediaFile", "invokeInOwn");
-    String str1 = parama.bZV.bZb.optString("appId");
-    String str2 = parama.bZV.bZb.optString("localId");
-    if (parama.bZV.bZb.optInt("isShowProgressTips", 0) == 1) {}
+    ac.i("MicroMsg.JsApiUploadMediaFile", "invokeInOwn");
+    String str1 = parama.bWS.bVY.optString("appId");
+    String str2 = parama.bWS.bVY.optString("localId");
+    if (parama.bWS.bVY.optInt("isShowProgressTips", 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.JsApiUploadMediaFile", "uploadMediaFile, appid = %s, localid = %s, isShowProgressTips = %b", new Object[] { str1, str2, Boolean.valueOf(bool) });
-      if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(str2))) {
+      ac.i("MicroMsg.JsApiUploadMediaFile", "uploadMediaFile, appid = %s, localid = %s, isShowProgressTips = %b", new Object[] { str1, str2, Boolean.valueOf(bool) });
+      if ((!bs.isNullOrNil(str1)) && (!bs.isNullOrNil(str2))) {
         break;
       }
-      ad.e("MicroMsg.JsApiUploadMediaFile", "appId or localid is null or nil.");
+      ac.e("MicroMsg.JsApiUploadMediaFile", "appId or localid is null or nil.");
       parama.a("missing arguments", null);
       AppMethodBeat.o(78640);
       return;
     }
     final LuggageUploadMediaFileManager localLuggageUploadMediaFileManager = new LuggageUploadMediaFileManager();
-    MMActivity localMMActivity = (MMActivity)((f)parama.bZU).mContext;
-    f localf = (f)parama.bZU;
+    MMActivity localMMActivity = (MMActivity)((f)parama.bWR).mContext;
+    f localf = (f)parama.bWR;
     parama = new LuggageUploadMediaFileManager.b()
     {
       public final void a(boolean paramAnonymousBoolean, HashMap<String, Object> paramAnonymousHashMap)
       {
         AppMethodBeat.i(78639);
-        ad.i("MicroMsg.JsApiUploadMediaFile", "sucess = %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        ac.i("MicroMsg.JsApiUploadMediaFile", "sucess = %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (paramAnonymousBoolean) {
           parama.c("", paramAnonymousHashMap);
         }
         for (;;)
         {
           paramAnonymousHashMap = localLuggageUploadMediaFileManager;
-          paramAnonymousHashMap.nCW = null;
-          paramAnonymousHashMap.ASM = null;
+          paramAnonymousHashMap.ofX = null;
+          paramAnonymousHashMap.CkZ = null;
           paramAnonymousHashMap.mAppId = null;
-          paramAnonymousHashMap.AVW = null;
-          paramAnonymousHashMap.AVY = null;
+          paramAnonymousHashMap.Coj = null;
+          paramAnonymousHashMap.Col = null;
           AppMethodBeat.o(78639);
           return;
           parama.a("fail", null);
         }
       }
     };
-    localLuggageUploadMediaFileManager.nCW = localMMActivity;
-    localLuggageUploadMediaFileManager.ASM = localf;
+    localLuggageUploadMediaFileManager.ofX = localMMActivity;
+    localLuggageUploadMediaFileManager.CkZ = localf;
     localLuggageUploadMediaFileManager.mAppId = str1;
-    localLuggageUploadMediaFileManager.AVW = str2;
-    localLuggageUploadMediaFileManager.AVX = bool;
-    localLuggageUploadMediaFileManager.AVY = parama;
-    parama = b.awq(localLuggageUploadMediaFileManager.AVW);
+    localLuggageUploadMediaFileManager.Coj = str2;
+    localLuggageUploadMediaFileManager.Cok = bool;
+    localLuggageUploadMediaFileManager.Col = parama;
+    parama = b.aBI(localLuggageUploadMediaFileManager.Coj);
     if (parama == null)
     {
-      ad.e("MicroMsg.UploadMediaFileHelp", "item is null");
-      localLuggageUploadMediaFileManager.AVY.a(false, null);
+      ac.e("MicroMsg.UploadMediaFileHelp", "item is null");
+      localLuggageUploadMediaFileManager.Col.a(false, null);
       AppMethodBeat.o(78640);
       return;
     }
     if (parama.mediaType != 1)
     {
-      if ((bt.isNullOrNil(parama.jau)) || (!i.eK(parama.jau)))
+      if ((bs.isNullOrNil(parama.jAH)) || (!i.eA(parama.jAH)))
       {
-        ad.e("MicroMsg.UploadMediaFileHelp", "origFilePath is not exist");
-        localLuggageUploadMediaFileManager.AVY.a(false, null);
+        ac.e("MicroMsg.UploadMediaFileHelp", "origFilePath is not exist");
+        localLuggageUploadMediaFileManager.Col.a(false, null);
         AppMethodBeat.o(78640);
         return;
       }
-      if (!ae.cJ(localLuggageUploadMediaFileManager.nCW))
+      if (!ae.cS(localLuggageUploadMediaFileManager.ofX))
       {
-        parama = bt.vK((int)i.aMN(parama.jau));
-        h.a(localLuggageUploadMediaFileManager.nCW, localLuggageUploadMediaFileManager.nCW.getString(2131766113, new Object[] { parama }), localLuggageUploadMediaFileManager.nCW.getString(2131755906), false, new LuggageUploadMediaFileManager.1(localLuggageUploadMediaFileManager), new LuggageUploadMediaFileManager.2(localLuggageUploadMediaFileManager));
+        parama = bs.An((int)i.aSp(parama.jAH));
+        h.a(localLuggageUploadMediaFileManager.ofX, localLuggageUploadMediaFileManager.ofX.getString(2131766113, new Object[] { parama }), localLuggageUploadMediaFileManager.ofX.getString(2131755906), false, new LuggageUploadMediaFileManager.1(localLuggageUploadMediaFileManager), new LuggageUploadMediaFileManager.2(localLuggageUploadMediaFileManager));
         AppMethodBeat.o(78640);
         return;
       }
-      localLuggageUploadMediaFileManager.elC();
+      localLuggageUploadMediaFileManager.eAY();
       AppMethodBeat.o(78640);
       return;
     }
-    localLuggageUploadMediaFileManager.elD();
+    localLuggageUploadMediaFileManager.eAZ();
     AppMethodBeat.o(78640);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

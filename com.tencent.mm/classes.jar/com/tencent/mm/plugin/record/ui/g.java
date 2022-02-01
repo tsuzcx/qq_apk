@@ -10,19 +10,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.record.b.l;
 import com.tencent.mm.plugin.record.b.n;
-import com.tencent.mm.protocal.protobuf.afw;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.afz;
-import com.tencent.mm.protocal.protobuf.agg;
-import com.tencent.mm.protocal.protobuf.agn;
+import com.tencent.mm.protocal.protobuf.agv;
 import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahd;
-import com.tencent.mm.protocal.protobuf.alc;
-import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.agy;
+import com.tencent.mm.protocal.protobuf.ahf;
+import com.tencent.mm.protocal.protobuf.ahm;
+import com.tencent.mm.protocal.protobuf.ahw;
+import com.tencent.mm.protocal.protobuf.aic;
+import com.tencent.mm.protocal.protobuf.anw;
+import com.tencent.mm.protocal.protobuf.anx;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.am;
 import java.util.LinkedList;
 
@@ -33,38 +33,38 @@ public final class g
   public final Bitmap a(h.a.b paramb)
   {
     AppMethodBeat.i(27867);
-    afy localafy = paramb.djJ;
-    long l = paramb.vbr;
-    boolean bool = paramb.djM;
+    agx localagx = paramb.dhe;
+    long l = paramb.wkf;
+    boolean bool = paramb.dhh;
     int j = paramb.maxWidth;
-    if (!e.XG()) {
-      paramb = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
+    if (!e.YD()) {
+      paramb = BitmapFactory.decodeResource(ai.getContext().getResources(), 2131233476);
     }
     String str;
     for (;;)
     {
       if ((paramb == null) && (!bool))
       {
-        bool = super.a(localafy, l);
-        ad.d("MicroMsg.RecordMsgImgService", "get image fail, try download, can retry:%B", new Object[] { Boolean.valueOf(bool) });
+        bool = super.a(localagx, l);
+        ac.d("MicroMsg.RecordMsgImgService", "get image fail, try download, can retry:%B", new Object[] { Boolean.valueOf(bool) });
         if (bool) {
-          n.b(localafy, l, bool);
+          n.b(localagx, l, bool);
         }
       }
       AppMethodBeat.o(27867);
       return paramb;
-      str = n.c(localafy, l);
-      if ((bt.isNullOrNil(str)) || (!com.tencent.mm.vfs.i.eK(str)))
+      str = n.c(localagx, l);
+      if ((bs.isNullOrNil(str)) || (!com.tencent.mm.vfs.i.eA(str)))
       {
-        ad.d("MicroMsg.RecordMsgImgService", "getBitmap file not exist, thumb[%B] path[%s]", new Object[] { Boolean.FALSE, str });
+        ac.d("MicroMsg.RecordMsgImgService", "getBitmap file not exist, thumb[%B] path[%s]", new Object[] { Boolean.FALSE, str });
         paramb = null;
       }
       else
       {
-        paramb = (Bitmap)this.qfR.get(str);
+        paramb = (Bitmap)this.qOt.get(str);
         if (paramb != null)
         {
-          ad.d("MicroMsg.RecordMsgImgService", "get bm from cache %s", new Object[] { str });
+          ac.d("MicroMsg.RecordMsgImgService", "get bm from cache %s", new Object[] { str });
         }
         else
         {
@@ -75,18 +75,18 @@ public final class g
         }
       }
     }
-    ad.d("MicroMsg.RecordMsgImgService", "get from cache fail, try to decode from file, path %s", new Object[] { str });
+    ac.d("MicroMsg.RecordMsgImgService", "get from cache fail, try to decode from file, path %s", new Object[] { str });
     paramb = new BitmapFactory.Options();
     paramb.inJustDecodeBounds = true;
     Bitmap localBitmap = BitmapFactory.decodeFile(str, paramb);
     if (localBitmap != null)
     {
-      ad.i("MicroMsg.RecordMsgImgService", "bitmap recycle %s", new Object[] { localBitmap });
+      ac.i("MicroMsg.RecordMsgImgService", "bitmap recycle %s", new Object[] { localBitmap });
       localBitmap.recycle();
     }
     int i = paramb.outHeight;
     int m = paramb.outWidth;
-    ad.d("MicroMsg.RecordMsgImgService", "width: %s, height: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
+    ac.d("MicroMsg.RecordMsgImgService", "width: %s, height: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
     int k = m;
     if (m > j)
     {
@@ -100,19 +100,19 @@ public final class g
     }
     for (;;)
     {
-      m = BackwardSupportUtil.ExifHelper.co(str);
+      m = BackwardSupportUtil.ExifHelper.ce(str);
       if ((m == 90) || (m == 270)) {}
       for (;;)
       {
         paramb = com.tencent.mm.sdk.platformtools.f.e(str, j, i, false);
         if (paramb == null)
         {
-          ad.e("MicroMsg.RecordMsgImgService", "extractThumbNail fail, temBmp is null, filePath = ".concat(String.valueOf(str)));
+          ac.e("MicroMsg.RecordMsgImgService", "extractThumbNail fail, temBmp is null, filePath = ".concat(String.valueOf(str)));
           paramb = null;
           break;
         }
         paramb = com.tencent.mm.sdk.platformtools.f.a(paramb, m);
-        this.qfR.put(str, paramb);
+        this.qOt.put(str, paramb);
         break;
         k = j;
         j = i;
@@ -125,7 +125,7 @@ public final class g
   public final Bitmap a(h.a.c paramc)
   {
     AppMethodBeat.i(27866);
-    paramc = super.b(paramc.djJ, paramc.vbr);
+    paramc = super.b(paramc.dhe, paramc.wkf);
     AppMethodBeat.o(27866);
     return paramc;
   }
@@ -134,10 +134,10 @@ public final class g
   {
     Object localObject = null;
     AppMethodBeat.i(27865);
-    ImageView localImageView = parama.djK;
-    afy localafy = parama.djJ;
-    long l = parama.vbr;
-    int j = parama.djL;
+    ImageView localImageView = parama.dhf;
+    agx localagx = parama.dhe;
+    long l = parama.wkf;
+    int j = parama.dhg;
     int k = parama.width;
     int m = parama.height;
     if (localImageView == null)
@@ -145,20 +145,20 @@ public final class g
       AppMethodBeat.o(27865);
       return;
     }
-    if (!e.XG())
+    if (!e.YD())
     {
       localImageView.setImageResource(2131233476);
       AppMethodBeat.o(27865);
       return;
     }
-    if (localafy == null)
+    if (localagx == null)
     {
       localImageView.setImageResource(j);
       AppMethodBeat.o(27865);
       return;
     }
     int i;
-    switch (localafy.dataType)
+    switch (localagx.dataType)
     {
     case 6: 
     case 8: 
@@ -171,24 +171,24 @@ public final class g
     case 20: 
     case 21: 
     default: 
-      ad.w("MicroMsg.RecordMsgImgService", "attach thumb, pass data type is %d", new Object[] { Integer.valueOf(localafy.dataType) });
+      ac.w("MicroMsg.RecordMsgImgService", "attach thumb, pass data type is %d", new Object[] { Integer.valueOf(localagx.dataType) });
       AppMethodBeat.o(27865);
       return;
     case 7: 
-      super.a(localImageView, localafy, l, localafy.deE, j, k, m);
+      super.a(localImageView, localagx, l, localagx.dbZ, j, k, m);
       AppMethodBeat.o(27865);
       return;
     case 4: 
     case 15: 
-      super.a(localImageView, localafy, l, localafy.deE, j, k, m);
+      super.a(localImageView, localagx, l, localagx.dbZ, j, k, m);
       AppMethodBeat.o(27865);
       return;
     case 5: 
-      if (localafy.DgT != null)
+      if (localagx.EzZ != null)
       {
-        parama = localafy.DgT.DhE;
-        localObject = localafy.DgT.AWL;
-        if ((localObject != null) && (((agg)localObject).gGx == 5) && (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).bBR()))
+        parama = localagx.EzZ.EAK;
+        localObject = localagx.EzZ.CoY;
+        if ((localObject != null) && (((ahf)localObject).hgY == 5) && (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).bIP()))
         {
           i = 1;
           label331:
@@ -197,10 +197,10 @@ public final class g
           }
           parama = null;
           label337:
-          if (!bt.isNullOrNil(parama)) {
+          if (!bs.isNullOrNil(parama)) {
             break label887;
           }
-          parama = localafy.deE;
+          parama = localagx.dbZ;
         }
       }
       break;
@@ -216,83 +216,83 @@ public final class g
       if (i != 0) {
         localObject = com.tencent.mm.api.b.q(parama, 4);
       }
-      super.a(localImageView, localafy, l, (String)localObject, j, k, m);
+      super.a(localImageView, localagx, l, (String)localObject, j, k, m);
       AppMethodBeat.o(27865);
       return;
       i = 0;
       break label331;
-      ad.w("MicroMsg.RecordMsgImgService", "webpage: get data proto item null, dataid[%s]", new Object[] { localafy.dkb });
+      ac.w("MicroMsg.RecordMsgImgService", "webpage: get data proto item null, dataid[%s]", new Object[] { localagx.dhw });
       i = 0;
       parama = null;
       break label331;
       parama = parama.thumbUrl;
       break label337;
-      if ((localafy.DgT != null) && (localafy.DgT.DhW != null) && (!bt.gL(localafy.DgT.DhW.mediaList)) && (!bt.isNullOrNil(((alc)localafy.DgT.DhW.mediaList.getFirst()).thumbUrl)))
+      if ((localagx.EzZ != null) && (localagx.EzZ.EBc != null) && (!bs.gY(localagx.EzZ.EBc.mediaList)) && (!bs.isNullOrNil(((anw)localagx.EzZ.EBc.mediaList.getFirst()).thumbUrl)))
       {
-        this.vaD.a(localImageView, null, ((alc)localafy.DgT.DhW.mediaList.getFirst()).thumbUrl, j, k, m);
+        this.wjr.a(localImageView, null, ((anw)localagx.EzZ.EBc.mediaList.getFirst()).thumbUrl, j, k, m);
         AppMethodBeat.o(27865);
         return;
       }
-      localImageView.setImageDrawable(am.i(localImageView.getContext(), 2131690572, localImageView.getContext().getResources().getColor(2131099777)));
+      localImageView.setImageDrawable(am.k(localImageView.getContext(), 2131690572, localImageView.getContext().getResources().getColor(2131099777)));
       AppMethodBeat.o(27865);
       return;
-      if (localafy.DgT == null)
+      if (localagx.EzZ == null)
       {
-        ad.w("MicroMsg.RecordMsgImgService", "good: get data proto item null, dataid[%s]", new Object[] { localafy.dkb });
+        ac.w("MicroMsg.RecordMsgImgService", "good: get data proto item null, dataid[%s]", new Object[] { localagx.dhw });
         AppMethodBeat.o(27865);
         return;
       }
-      parama = localafy.DgT.DhG;
+      parama = localagx.EzZ.EAM;
       if (parama == null) {
         break;
       }
-      this.vaD.a(localImageView, null, parama.thumbUrl, j, k, m);
+      this.wjr.a(localImageView, null, parama.thumbUrl, j, k, m);
       AppMethodBeat.o(27865);
       return;
-      if (localafy.DgT == null)
+      if (localagx.EzZ == null)
       {
-        ad.w("MicroMsg.RecordMsgImgService", "tv: get data proto item null, dataid[%s]", new Object[] { localafy.dkb });
+        ac.w("MicroMsg.RecordMsgImgService", "tv: get data proto item null, dataid[%s]", new Object[] { localagx.dhw });
         AppMethodBeat.o(27865);
         return;
       }
-      parama = localafy.DgT.DhI;
+      parama = localagx.EzZ.EAO;
       if (parama == null) {
         break;
       }
-      this.vaD.a(localImageView, null, parama.thumbUrl, j, k, m);
+      this.wjr.a(localImageView, null, parama.thumbUrl, j, k, m);
       AppMethodBeat.o(27865);
       return;
-      if (localafy.DgT == null)
+      if (localagx.EzZ == null)
       {
-        ad.w("MicroMsg.RecordMsgImgService", "product: get data proto item null, dataid[%s]", new Object[] { localafy.dkb });
+        ac.w("MicroMsg.RecordMsgImgService", "product: get data proto item null, dataid[%s]", new Object[] { localagx.dhw });
         AppMethodBeat.o(27865);
         return;
       }
-      parama = localafy.DgT.DhG;
+      parama = localagx.EzZ.EAM;
       if (parama == null) {
         break;
       }
-      this.vaD.a(localImageView, null, parama.thumbUrl, j, k, m);
+      this.wjr.a(localImageView, null, parama.thumbUrl, j, k, m);
       AppMethodBeat.o(27865);
       return;
-      if (localafy.DgT != null)
+      if (localagx.EzZ != null)
       {
-        parama = localafy.DgT.DhR;
+        parama = localagx.EzZ.EAX;
         if (parama != null) {
           break label876;
         }
         parama = (h.a.a)localObject;
-        if (!bt.isNullOrNil(parama)) {
+        if (!bs.isNullOrNil(parama)) {
           break label884;
         }
-        parama = localafy.deE;
+        parama = localagx.dbZ;
       }
       for (;;)
       {
-        super.a(localImageView, localafy, l, parama, j, k, m);
+        super.a(localImageView, localagx, l, parama, j, k, m);
         AppMethodBeat.o(27865);
         return;
-        ad.w("MicroMsg.RecordMsgImgService", "appbrand: get data proto item null, dataid[%s]", new Object[] { localafy.dkb });
+        ac.w("MicroMsg.RecordMsgImgService", "appbrand: get data proto item null, dataid[%s]", new Object[] { localagx.dhw });
         parama = null;
         break;
         parama = parama.iconUrl;
@@ -301,7 +301,7 @@ public final class g
     }
   }
   
-  public final void dgj()
+  public final void dtQ()
   {
     AppMethodBeat.i(27868);
     super.destory();
@@ -310,7 +310,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.g
  * JD-Core Version:    0.7.0.1
  */

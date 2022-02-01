@@ -10,27 +10,27 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.sport.PluginSport;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public class SportForegroundService
   extends Service
 {
-  private static boolean yco;
-  private ap kQO;
+  private static boolean zpo;
+  private ao lso;
   
-  public static void dFH()
+  public static void dUi()
   {
     AppMethodBeat.i(149339);
-    if ((d.lf(26)) && (!yco))
+    if ((d.kZ(26)) && (!zpo))
     {
-      ad.i("MicroMsg.Sport.SportForegroundService", "startSportForegroundService");
-      yco = true;
-      Intent localIntent = new Intent(aj.getContext(), SportForegroundService.class);
+      ac.i("MicroMsg.Sport.SportForegroundService", "startSportForegroundService");
+      zpo = true;
+      Intent localIntent = new Intent(ai.getContext(), SportForegroundService.class);
       try
       {
-        aj.getContext().startForegroundService(localIntent);
+        ai.getContext().startForegroundService(localIntent);
         AppMethodBeat.o(149339);
         return;
       }
@@ -39,17 +39,17 @@ public class SportForegroundService
     AppMethodBeat.o(149339);
   }
   
-  public static void dFI()
+  public static void dUj()
   {
     AppMethodBeat.i(149340);
-    if (d.lf(26))
+    if (d.kZ(26))
     {
-      ad.i("MicroMsg.Sport.SportForegroundService", "stopSportForegroundService");
-      yco = false;
-      Intent localIntent = new Intent(aj.getContext(), SportForegroundService.class);
+      ac.i("MicroMsg.Sport.SportForegroundService", "stopSportForegroundService");
+      zpo = false;
+      Intent localIntent = new Intent(ai.getContext(), SportForegroundService.class);
       try
       {
-        aj.getContext().stopService(localIntent);
+        ai.getContext().stopService(localIntent);
         AppMethodBeat.o(149340);
         return;
       }
@@ -58,9 +58,9 @@ public class SportForegroundService
     AppMethodBeat.o(149340);
   }
   
-  public static boolean dFJ()
+  public static boolean dUk()
   {
-    return yco;
+    return zpo;
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -71,9 +71,9 @@ public class SportForegroundService
   public void onDestroy()
   {
     AppMethodBeat.i(149338);
-    ad.i("MicroMsg.Sport.SportForegroundService", "onDestroy");
-    if (this.kQO != null) {
-      this.kQO.removeCallbacksAndMessages(null);
+    ac.i("MicroMsg.Sport.SportForegroundService", "onDestroy");
+    if (this.lso != null) {
+      this.lso.removeCallbacksAndMessages(null);
     }
     stopForeground(true);
     super.onDestroy();
@@ -83,21 +83,21 @@ public class SportForegroundService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(149337);
-    ad.i("MicroMsg.Sport.SportForegroundService", "onStartCommand %d", new Object[] { Integer.valueOf(paramInt2) });
-    if (d.lf(26))
+    ac.i("MicroMsg.Sport.SportForegroundService", "onStartCommand %d", new Object[] { Integer.valueOf(paramInt2) });
+    if (d.kZ(26))
     {
       Notification.Builder localBuilder = new Notification.Builder(getApplicationContext(), "reminder_channel_id");
-      localBuilder.setContentTitle(aj.getResources().getString(2131764117)).setWhen(System.currentTimeMillis());
+      localBuilder.setContentTitle(ai.getResources().getString(2131764117)).setWhen(System.currentTimeMillis());
       startForeground(419430, localBuilder.build());
-      ad.i("MicroMsg.Sport.SportForegroundService", "onStartCommand startForeground");
-      ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().dFs();
-      this.kQO = new ap(Looper.getMainLooper());
-      this.kQO.postDelayed(new Runnable()
+      ac.i("MicroMsg.Sport.SportForegroundService", "onStartCommand startForeground");
+      ((PluginSport)com.tencent.mm.kernel.g.ad(PluginSport.class)).getPushSportStepDetector().dTT();
+      this.lso = new ao(Looper.getMainLooper());
+      this.lso.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149336);
-          SportForegroundService.dFI();
+          SportForegroundService.dUj();
           AppMethodBeat.o(149336);
         }
       }, 6000L);
@@ -109,7 +109,7 @@ public class SportForegroundService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.SportForegroundService
  * JD-Core Version:    0.7.0.1
  */

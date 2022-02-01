@@ -12,9 +12,9 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.d.b;
 import com.tencent.mm.kernel.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.chatting.c.c;
 
@@ -24,21 +24,21 @@ import com.tencent.mm.ui.chatting.c.c;
 public class ChattingUI
   extends MMFragmentActivity
 {
-  public ChattingUIFragment GpA;
-  public ap GpB;
+  public ChattingUIFragment HPr;
+  public ao HPs;
   
   public ChattingUI()
   {
     AppMethodBeat.i(34694);
-    this.GpB = new ap();
+    this.HPs = new ao();
     AppMethodBeat.o(34694);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34697);
-    ad.d("MicroMsg.ChattingUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
-    if ((this.GpA != null) && (this.GpA.onKeyDown(paramKeyEvent.getKeyCode(), paramKeyEvent)))
+    ac.d("MicroMsg.ChattingUI", "chatting ui dispatch key event %s", new Object[] { paramKeyEvent });
+    if ((this.HPr != null) && (this.HPr.onKeyDown(paramKeyEvent.getKeyCode(), paramKeyEvent)))
     {
       AppMethodBeat.o(34697);
       return true;
@@ -48,7 +48,7 @@ public class ChattingUI
     return bool;
   }
   
-  protected ChattingUIFragment eUw()
+  protected ChattingUIFragment fkj()
   {
     AppMethodBeat.i(34696);
     ChattingUIFragment localChattingUIFragment = new ChattingUIFragment((byte)0);
@@ -60,7 +60,7 @@ public class ChattingUI
   {
     AppMethodBeat.i(34701);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.GpA.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.HPr.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(34701);
   }
   
@@ -68,36 +68,36 @@ public class ChattingUI
   {
     AppMethodBeat.i(34695);
     getWindow().setFormat(-2);
-    com.tencent.mm.pluginsdk.g.aJ(this);
+    com.tencent.mm.pluginsdk.g.aN(this);
     super.onCreate(null);
-    if (c.bl(getIntent()))
+    if (c.bm(getIntent()))
     {
       finish();
       AppMethodBeat.o(34695);
       return;
     }
     setContentView(2131493526);
-    this.GpA = eUw();
+    this.HPr = fkj();
     paramBundle = getIntent().getExtras();
     paramBundle.putBoolean("FROM_CHATTING_ACTIVITY", true);
-    this.GpA.setArguments(paramBundle);
-    getSupportFragmentManager().beginTransaction().a(2131302341, this.GpA).commit();
+    this.HPr.setArguments(paramBundle);
+    getSupportFragmentManager().beginTransaction().a(2131302341, this.HPr).commit();
     getSupportActionBar().show();
     if (getIntent().getBooleanExtra("resend_fail_messages", false))
     {
-      aq.n(new ChattingUI.1(this), 500L);
+      ap.n(new ChattingUI.1(this), 500L);
       getIntent().putExtra("is_need_resend_sns", false);
     }
     initNavigationSwipeBack();
-    this.GpB.post(new Runnable()
+    this.HPs.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34693);
-        if (ChattingUI.this.GpA != null) {
-          com.tencent.mm.pluginsdk.g.a(ChattingUI.this, ChattingUI.this.GpA.getBodyView());
+        if (ChattingUI.this.HPr != null) {
+          com.tencent.mm.pluginsdk.g.a(ChattingUI.this, ChattingUI.this.HPr.getBodyView());
         }
-        b.bY(ChattingUI.this.GpA.getContext());
+        b.cb(ChattingUI.this.HPr.getContext());
         AppMethodBeat.o(34693);
       }
     });
@@ -107,7 +107,7 @@ public class ChattingUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34699);
-    ad.d("MicroMsg.ChattingUI", "chatting ui on key down, %d, %s", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
+    ac.d("MicroMsg.ChattingUI", "chatting ui on key down, %d, %s", new Object[] { Integer.valueOf(paramInt), paramKeyEvent });
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(34699);
     return bool;
@@ -116,7 +116,7 @@ public class ChattingUI
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(34698);
-    ad.d("MicroMsg.ChattingUI", "chatting ui on key up");
+    ac.d("MicroMsg.ChattingUI", "chatting ui on key up");
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(34698);
     return bool;
@@ -125,8 +125,8 @@ public class ChattingUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(34700);
-    ad.i("MicroMsg.ChattingUI", "chatting onRequestPermissionsResult");
-    this.GpA.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    ac.i("MicroMsg.ChattingUI", "chatting onRequestPermissionsResult");
+    this.HPr.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(34700);
   }
   
@@ -138,7 +138,7 @@ public class ChattingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingUI
  * JD-Core Version:    0.7.0.1
  */

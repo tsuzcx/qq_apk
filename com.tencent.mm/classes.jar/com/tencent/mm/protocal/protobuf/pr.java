@@ -1,146 +1,166 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class pr
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Afa;
-  public String Aox;
-  public String COa;
-  public String COb;
-  public int Cwa;
-  public String dub;
-  public String title;
-  public int type;
-  public String url;
+  public String Egf;
+  public String Egg;
+  public String Egh;
+  public int Egi;
+  public String Egj;
+  public String vyA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91383);
+    AppMethodBeat.i(117847);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.type);
-      if (this.Aox != null) {
-        paramVarArgs.d(2, this.Aox);
-      }
-      if (this.dub != null) {
-        paramVarArgs.d(3, this.dub);
-      }
-      if (this.title != null) {
-        paramVarArgs.d(4, this.title);
-      }
-      if (this.Afa != null) {
-        paramVarArgs.d(5, this.Afa);
-      }
-      if (this.url != null) {
-        paramVarArgs.d(6, this.url);
-      }
-      if (this.COa != null) {
-        paramVarArgs.d(7, this.COa);
-      }
-      if (this.COb != null) {
-        paramVarArgs.d(8, this.COb);
-      }
-      paramVarArgs.aR(9, this.Cwa);
-      AppMethodBeat.o(91383);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bA(1, this.type) + 0;
-      paramInt = i;
-      if (this.Aox != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Aox);
-      }
-      i = paramInt;
-      if (this.dub != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dub);
-      }
-      paramInt = i;
-      if (this.title != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.title);
-      }
-      i = paramInt;
-      if (this.Afa != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Afa);
-      }
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.url);
-      }
-      i = paramInt;
-      if (this.COa != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.COa);
-      }
-      paramInt = i;
-      if (this.COb != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.COb);
-      }
-      i = f.a.a.b.b.a.bA(9, this.Cwa);
-      AppMethodBeat.o(91383);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
-      }
-      AppMethodBeat.o(91383);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      pr localpr = (pr)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.Egf == null)
       {
-      default: 
-        AppMethodBeat.o(91383);
-        return -1;
-      case 1: 
-        localpr.type = locala.KhF.xS();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 2: 
-        localpr.Aox = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 3: 
-        localpr.dub = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 4: 
-        localpr.title = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 5: 
-        localpr.Afa = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 6: 
-        localpr.url = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 7: 
-        localpr.COa = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
-      case 8: 
-        localpr.COb = locala.KhF.readString();
-        AppMethodBeat.o(91383);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: ProductId");
+        AppMethodBeat.o(117847);
+        throw paramVarArgs;
       }
-      localpr.Cwa = locala.KhF.xS();
-      AppMethodBeat.o(91383);
+      if (this.vyA == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ProductName");
+        AppMethodBeat.o(117847);
+        throw paramVarArgs;
+      }
+      if (this.Egg == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: SellerName");
+        AppMethodBeat.o(117847);
+        throw paramVarArgs;
+      }
+      if (this.Egh == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: SellerUserName");
+        AppMethodBeat.o(117847);
+        throw paramVarArgs;
+      }
+      if (this.Egf != null) {
+        paramVarArgs.d(1, this.Egf);
+      }
+      if (this.vyA != null) {
+        paramVarArgs.d(2, this.vyA);
+      }
+      if (this.Egg != null) {
+        paramVarArgs.d(3, this.Egg);
+      }
+      if (this.Egh != null) {
+        paramVarArgs.d(4, this.Egh);
+      }
+      paramVarArgs.aR(5, this.Egi);
+      if (this.Egj != null) {
+        paramVarArgs.d(6, this.Egj);
+      }
+      AppMethodBeat.o(117847);
       return 0;
     }
-    AppMethodBeat.o(91383);
-    return -1;
+    if (paramInt == 1) {
+      if (this.Egf == null) {
+        break label694;
+      }
+    }
+    label694:
+    for (int i = f.a.a.b.b.a.e(1, this.Egf) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.vyA != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.vyA);
+      }
+      i = paramInt;
+      if (this.Egg != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Egg);
+      }
+      paramInt = i;
+      if (this.Egh != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Egh);
+      }
+      i = paramInt + f.a.a.b.b.a.bx(5, this.Egi);
+      paramInt = i;
+      if (this.Egj != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.Egj);
+      }
+      AppMethodBeat.o(117847);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        if (this.Egf == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ProductId");
+          AppMethodBeat.o(117847);
+          throw paramVarArgs;
+        }
+        if (this.vyA == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ProductName");
+          AppMethodBeat.o(117847);
+          throw paramVarArgs;
+        }
+        if (this.Egg == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: SellerName");
+          AppMethodBeat.o(117847);
+          throw paramVarArgs;
+        }
+        if (this.Egh == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: SellerUserName");
+          AppMethodBeat.o(117847);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(117847);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        pr localpr = (pr)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(117847);
+          return -1;
+        case 1: 
+          localpr.Egf = locala.LVo.readString();
+          AppMethodBeat.o(117847);
+          return 0;
+        case 2: 
+          localpr.vyA = locala.LVo.readString();
+          AppMethodBeat.o(117847);
+          return 0;
+        case 3: 
+          localpr.Egg = locala.LVo.readString();
+          AppMethodBeat.o(117847);
+          return 0;
+        case 4: 
+          localpr.Egh = locala.LVo.readString();
+          AppMethodBeat.o(117847);
+          return 0;
+        case 5: 
+          localpr.Egi = locala.LVo.xF();
+          AppMethodBeat.o(117847);
+          return 0;
+        }
+        localpr.Egj = locala.LVo.readString();
+        AppMethodBeat.o(117847);
+        return 0;
+      }
+      AppMethodBeat.o(117847);
+      return -1;
+    }
   }
 }
 

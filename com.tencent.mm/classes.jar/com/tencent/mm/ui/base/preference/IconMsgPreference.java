@@ -10,25 +10,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class IconMsgPreference
   extends Preference
 {
-  private String GeA;
-  private int Geu;
-  private int Gev;
-  private int Gew;
-  private ImageView Gex;
-  private ViewGroup Gey;
-  private TextView Gez;
+  private int HEj;
+  private int HEk;
+  private int HEl;
+  private ImageView HEm;
+  private ViewGroup HEn;
+  private TextView HEo;
+  private String HEp;
   private Context context;
   private Drawable drawable;
   private int height;
-  private String uCA;
-  private int wey;
-  private int wez;
+  private String vLt;
+  private int xpM;
+  private int xpN;
   
   public IconMsgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,16 +39,16 @@ public class IconMsgPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142540);
-    this.uCA = "";
-    this.wey = -1;
-    this.wez = 8;
-    this.Geu = 8;
-    this.Gev = 0;
-    this.Gew = 8;
-    this.Gex = null;
-    this.Gey = null;
+    this.vLt = "";
+    this.xpM = -1;
+    this.xpN = 8;
+    this.HEj = 8;
+    this.HEk = 0;
+    this.HEl = 8;
+    this.HEm = null;
+    this.HEn = null;
     this.height = -1;
-    this.GeA = "";
+    this.HEp = "";
     this.context = paramContext;
     setLayoutResource(2131494804);
     AppMethodBeat.o(142540);
@@ -76,28 +76,28 @@ public class IconMsgPreference
       localObject = (TextView)paramView.findViewById(2131305745);
       if (localObject != null)
       {
-        ((TextView)localObject).setVisibility(this.wez);
-        ((TextView)localObject).setText(this.uCA);
-        if (this.wey != -1) {
-          ((TextView)localObject).setBackgroundDrawable(a.l(this.context, this.wey));
+        ((TextView)localObject).setVisibility(this.xpN);
+        ((TextView)localObject).setText(this.vLt);
+        if (this.xpM != -1) {
+          ((TextView)localObject).setBackgroundDrawable(a.l(this.context, this.xpM));
         }
       }
-      this.Gex = ((ImageView)paramView.findViewById(2131305740));
-      this.Gex.setVisibility(this.Geu);
-      this.Gey = ((ViewGroup)paramView.findViewById(2131304191));
-      this.Gey.setVisibility(this.Gev);
-      this.Gez = ((TextView)paramView.findViewById(16908310));
+      this.HEm = ((ImageView)paramView.findViewById(2131305740));
+      this.HEm.setVisibility(this.HEj);
+      this.HEn = ((ViewGroup)paramView.findViewById(2131304191));
+      this.HEn.setVisibility(this.HEk);
+      this.HEo = ((TextView)paramView.findViewById(16908310));
       paramView = (TextView)paramView.findViewById(2131305746);
-      if (!bt.isNullOrNil(this.GeA)) {
+      if (!bs.isNullOrNil(this.HEp)) {
         break;
       }
       paramView.setVisibility(8);
       AppMethodBeat.o(142542);
       return;
       label216:
-      if (this.abP != 0)
+      if (this.acJ != 0)
       {
-        ((ImageView)localObject).setImageResource(this.abP);
+        ((ImageView)localObject).setImageResource(this.acJ);
         ((ImageView)localObject).setVisibility(0);
       }
       else
@@ -106,7 +106,7 @@ public class IconMsgPreference
       }
     }
     paramView.setVisibility(0);
-    paramView.setText(this.GeA);
+    paramView.setText(this.HEp);
     AppMethodBeat.o(142542);
   }
   
@@ -124,7 +124,7 @@ public class IconMsgPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconMsgPreference
  * JD-Core Version:    0.7.0.1
  */

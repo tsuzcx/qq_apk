@@ -1,15 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bsb;
 import com.tencent.mm.sdk.b.b;
+import java.util.LinkedList;
 
 public final class su
   extends b
 {
-  public a dyp;
+  public a dvK;
   
   public su()
   {
@@ -18,19 +17,17 @@ public final class su
   
   private su(byte paramByte)
   {
-    AppMethodBeat.i(77798);
-    this.dyp = new a();
-    this.ESR = false;
+    AppMethodBeat.i(5532);
+    this.dvK = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(77798);
+    AppMethodBeat.o(5532);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dyq;
-    public DialogInterface.OnDismissListener dyr;
-    public Bundle dys;
+    public String dtD;
+    public LinkedList<bsb> dvL;
   }
 }
 

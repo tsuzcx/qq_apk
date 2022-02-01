@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ public final class f
   static void a(c paramc, int paramInt, String paramString)
   {
     AppMethodBeat.i(136120);
-    ad.i("MicroMsg.JsApiNFCStartHCE", "alvinluo stopHCE callback result: %s", new Object[] { paramString });
+    ac.i("MicroMsg.JsApiNFCStartHCE", "alvinluo stopHCE callback result: %s", new Object[] { paramString });
     if (paramc != null) {
       paramc.h(paramInt, paramString);
     }
@@ -38,7 +38,7 @@ public final class f
           paramAnonymousString = f.this;
           localObject = paramc;
           paramAnonymousInt = paramInt;
-          HCEEventLogic.IN(((c)localObject).getAppId());
+          HCEEventLogic.MO(((c)localObject).getAppId());
           HCEEventLogic.a(((c)localObject).getAppId(), 13, null);
           HashMap localHashMap = new HashMap(2);
           localHashMap.put("errCode", Integer.valueOf(0));
@@ -55,7 +55,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.f
  * JD-Core Version:    0.7.0.1
  */

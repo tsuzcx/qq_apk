@@ -7,7 +7,7 @@ import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.wallet_core.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -15,15 +15,15 @@ import java.io.IOException;
 public final class c
   implements s
 {
-  private s.b nSZ;
+  private s.b owu;
   private String url;
   
   public c(String paramString)
   {
     AppMethodBeat.i(71512);
-    this.nSZ = new s.b()
+    this.owu = new s.b()
     {
-      public final Bitmap By(String paramAnonymousString)
+      public final Bitmap FC(String paramAnonymousString)
       {
         AppMethodBeat.i(71511);
         paramAnonymousString = f.decodeFile(paramAnonymousString, null);
@@ -35,24 +35,22 @@ public final class c
     AppMethodBeat.o(71512);
   }
   
-  public final void Z(String paramString, boolean paramBoolean) {}
-  
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(71514);
-    if (s.a.hUk == parama) {
+    if (s.a.iuo == parama) {
       if ((paramBitmap != null) && (paramBitmap.getNinePatchChunk() != null))
       {
-        ad.v("MicroMsg.WalletGetPicStrategy", " get the ninePathchChunk");
-        i.lC(paramString, b.akx(this.url));
+        ac.v("MicroMsg.WalletGetPicStrategy", " get the ninePathchChunk");
+        i.lZ(paramString, b.apw(this.url));
         AppMethodBeat.o(71514);
         return paramBitmap;
       }
     }
     try
     {
-      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.akx(this.url), false);
-      ad.d("MicroMsg.WalletGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
+      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.apw(this.url), false);
+      ac.d("MicroMsg.WalletGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
       AppMethodBeat.o(71514);
       return paramBitmap;
     }
@@ -62,14 +60,14 @@ public final class c
       {
         try
         {
-          i.aMF(b.edz());
-          ad.w("MicroMsg.WalletGetPicStrategy", " retry saving bitmap");
-          f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.akx(this.url), false);
+          i.aSh(b.esU());
+          ac.w("MicroMsg.WalletGetPicStrategy", " retry saving bitmap");
+          f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.apw(this.url), false);
         }
         catch (IOException paramString)
         {
-          ad.printErrStackTrace("MicroMsg.WalletGetPicStrategy", paramString, "", new Object[0]);
-          ad.w("MicroMsg.WalletGetPicStrategy", "save bitmap fail");
+          ac.printErrStackTrace("MicroMsg.WalletGetPicStrategy", paramString, "", new Object[0]);
+          ac.w("MicroMsg.WalletGetPicStrategy", "save bitmap fail");
         }
       }
     }
@@ -77,45 +75,47 @@ public final class c
   
   public final void a(s.a parama, String paramString) {}
   
-  public final String aGA()
+  public final s.b aNk()
   {
-    return this.url;
+    return this.owu;
   }
   
-  public final boolean aGB()
-  {
-    return true;
-  }
-  
-  public final boolean aGC()
-  {
-    return false;
-  }
-  
-  public final Bitmap aGD()
-  {
-    return null;
-  }
-  
-  public final void aGE() {}
-  
-  public final s.b aGx()
-  {
-    return this.nSZ;
-  }
-  
-  public final String aGy()
+  public final String aNl()
   {
     AppMethodBeat.i(71513);
-    String str = b.akx(this.url);
+    String str = b.apw(this.url);
     AppMethodBeat.o(71513);
     return str;
   }
   
-  public final String aGz()
+  public final String aNm()
   {
     return this.url;
   }
+  
+  public final String aNn()
+  {
+    return this.url;
+  }
+  
+  public final boolean aNo()
+  {
+    return true;
+  }
+  
+  public final boolean aNp()
+  {
+    return false;
+  }
+  
+  public final Bitmap aNq()
+  {
+    return null;
+  }
+  
+  public final void aNr() {}
+  
+  public final void aa(String paramString, boolean paramBoolean) {}
   
   public final String getCacheKey()
   {
@@ -124,7 +124,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.c
  * JD-Core Version:    0.7.0.1
  */

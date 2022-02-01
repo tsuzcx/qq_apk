@@ -11,23 +11,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends a
 {
-  private a GZV;
-  b GZW;
+  private a IAn;
+  b IAo;
   
   public k(int paramInt)
   {
     super(7, paramInt);
     AppMethodBeat.i(102970);
-    this.GZV = new a();
-    this.GZW = new b();
+    this.IAn = new a();
+    this.IAo = new b();
     AppMethodBeat.o(102970);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aHr()
+  public final a.b aOg()
   {
-    return this.GZV;
+    return this.IAn;
   }
   
   public final class a
@@ -42,10 +42,10 @@ public final class k
     {
       AppMethodBeat.i(102968);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495365, paramViewGroup, false);
-      paramViewGroup = (k.b)k.this.GZW;
-      paramViewGroup.ica = ((TextView)paramContext.findViewById(2131305948));
+      paramViewGroup = (k.b)k.this.IAo;
+      paramViewGroup.iCg = ((TextView)paramContext.findViewById(2131305948));
       paramViewGroup.contentView = paramContext.findViewById(2131304518);
-      paramViewGroup.GZY = ((ImageView)paramContext.findViewById(2131304538));
+      paramViewGroup.IAq = ((ImageView)paramContext.findViewById(2131304538));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102968);
       return paramContext;
@@ -55,20 +55,20 @@ public final class k
     {
       AppMethodBeat.i(102969);
       paramContext = (k.b)parama;
-      paramContext.ica.setText(2131762992);
+      paramContext.iCg.setText(2131762992);
       if (paramBoolean2) {
-        paramContext.GZY.setVisibility(0);
+        paramContext.IAq.setVisibility(0);
       }
       for (;;)
       {
         paramContext.contentView.setBackgroundResource(2131231820);
         AppMethodBeat.o(102969);
         return;
-        paramContext.GZY.setVisibility(8);
+        paramContext.IAq.setVisibility(8);
       }
     }
     
-    public final boolean aHs()
+    public final boolean aOh()
     {
       return false;
     }
@@ -77,9 +77,9 @@ public final class k
   public final class b
     extends a.a
   {
-    public ImageView GZY;
+    public ImageView IAq;
     public View contentView;
-    public TextView ica;
+    public TextView iCg;
     
     public b()
     {
@@ -89,7 +89,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.k
  * JD-Core Version:    0.7.0.1
  */

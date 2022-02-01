@@ -13,7 +13,7 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 public class MusicItemLayout
   extends LinearLayout
 {
-  private GestureDetector hRv;
+  private GestureDetector irA;
   
   public MusicItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class MusicItemLayout
   private void initView()
   {
     AppMethodBeat.i(63207);
-    this.hRv = new GestureDetector(getContext(), new a((byte)0));
+    this.irA = new GestureDetector(getContext(), new a((byte)0));
     AppMethodBeat.o(63207);
   }
   
@@ -42,14 +42,14 @@ public class MusicItemLayout
   {
     AppMethodBeat.i(63208);
     b.a locala = (b.a)getTag();
-    if (!locala.cVQ())
+    if (!locala.djy())
     {
-      if ((locala.tYY.getX() > paramMotionEvent.getX()) || (paramMotionEvent.getX() > locala.tYY.getX() + locala.tYY.getMeasuredWidth()) || (locala.tYY.getY() > paramMotionEvent.getY())) {
+      if ((locala.vhQ.getX() > paramMotionEvent.getX()) || (paramMotionEvent.getX() > locala.vhQ.getX() + locala.vhQ.getMeasuredWidth()) || (locala.vhQ.getY() > paramMotionEvent.getY())) {
         break label125;
       }
       float f1 = paramMotionEvent.getY();
-      float f2 = locala.tYY.getY();
-      if (f1 > locala.tYY.getMeasuredHeight() + f2) {
+      float f2 = locala.vhQ.getY();
+      if (f1 > locala.vhQ.getMeasuredHeight() + f2) {
         break label125;
       }
     }
@@ -66,7 +66,7 @@ public class MusicItemLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(63209);
-    this.hRv.onTouchEvent(paramMotionEvent);
+    this.irA.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(63209);
     return true;
   }
@@ -85,14 +85,14 @@ public class MusicItemLayout
         if (paramFloat2 <= 0.0F) {
           break label47;
         }
-        paramMotionEvent1.cVS();
+        paramMotionEvent1.djA();
       }
       for (;;)
       {
         AppMethodBeat.o(63203);
         return false;
         label47:
-        paramMotionEvent1.cVR();
+        paramMotionEvent1.djz();
       }
     }
     
@@ -100,17 +100,17 @@ public class MusicItemLayout
     {
       AppMethodBeat.i(63204);
       b.a locala = (b.a)MusicItemLayout.this.getTag();
-      if (locala.cVQ()) {
-        if ((paramMotionEvent.getY() <= locala.tYX.getMeasuredHeight()) && (paramMotionEvent.getY() > 100.0F)) {
-          locala.cVT();
+      if (locala.djy()) {
+        if ((paramMotionEvent.getY() <= locala.vhP.getMeasuredHeight()) && (paramMotionEvent.getY() > 100.0F)) {
+          locala.djB();
         }
       }
       for (;;)
       {
         AppMethodBeat.o(63204);
         return false;
-        if ((paramMotionEvent.getY() >= locala.tZa.getY() - 100.0F) && (paramMotionEvent.getY() < locala.tZa.getMeasuredHeight() + locala.tZa.getY())) {
-          locala.cVT();
+        if ((paramMotionEvent.getY() >= locala.vhS.getY() - 100.0F) && (paramMotionEvent.getY() < locala.vhS.getMeasuredHeight() + locala.vhS.getY())) {
+          locala.djB();
         }
       }
     }
@@ -118,7 +118,7 @@ public class MusicItemLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicItemLayout
  * JD-Core Version:    0.7.0.1
  */

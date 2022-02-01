@@ -5,8 +5,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class FileDownloadPendingReceive
   extends BroadcastReceiver
@@ -14,9 +14,9 @@ public class FileDownloadPendingReceive
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(89005);
-    ad.i("MicroMsg.FileDownloadPendingReceive", "onReceive()");
+    ac.i("MicroMsg.FileDownloadPendingReceive", "onReceive()");
     paramIntent.setComponent(new ComponentName(paramIntent.getComponent().getPackageName(), FileDownloadService.class.getName()));
-    d.aY(paramIntent);
+    d.aZ(paramIntent);
     AppMethodBeat.o(89005);
   }
 }

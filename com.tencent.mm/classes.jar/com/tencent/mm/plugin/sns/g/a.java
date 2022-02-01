@@ -1,135 +1,51 @@
 package com.tencent.mm.plugin.sns.g;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ts;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.g.a.tw;
+import com.tencent.mm.plugin.sns.data.q;
 import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.plugin.sns.storage.w;
+import com.tencent.mm.plugin.sns.model.an;
+import com.tencent.mm.plugin.sns.model.b;
+import com.tencent.mm.plugin.sns.model.b.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
+  implements b.b
 {
-  private static boolean csX;
-  private static c<ts> fjL;
-  private static final List<String> wBU;
+  public c xOq;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(95170);
-    wBU = Collections.synchronizedList(new LinkedList());
-    csX = false;
-    fjL = new c() {};
-    AppMethodBeat.o(95170);
+    AppMethodBeat.i(95172);
+    this.xOq = new c() {};
+    com.tencent.mm.sdk.b.a.GpY.c(this.xOq);
+    af.dHM().a(this);
+    AppMethodBeat.o(95172);
   }
   
-  public static boolean anY(String paramString)
+  public final void atn(String paramString)
   {
-    AppMethodBeat.i(95166);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(95166);
-      return false;
-    }
-    if (paramString.equals(g.afB().afk().get(2, null)))
-    {
-      AppMethodBeat.o(95166);
-      return false;
-    }
-    if (aoa(paramString))
-    {
-      AppMethodBeat.o(95166);
-      return false;
-    }
-    boolean bool = ((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString);
-    AppMethodBeat.o(95166);
-    return bool;
+    AppMethodBeat.i(95173);
+    ac.i("MicroMsg.FTS.FTSSnsImageDownloadLogic", "onThumbFinish mediaId=%s", new Object[] { paramString });
+    tw localtw = new tw();
+    localtw.dwD.cZu = 2;
+    localtw.dwD.mediaId = paramString;
+    String str = an.jc(af.getAccSnsPath(), paramString);
+    localtw.dwD.path = (str + q.asM(paramString));
+    com.tencent.mm.sdk.b.a.GpY.l(localtw);
+    AppMethodBeat.o(95173);
   }
   
-  public static boolean anZ(String paramString)
-  {
-    AppMethodBeat.i(95167);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(95167);
-      return false;
-    }
-    if (aoa(paramString))
-    {
-      AppMethodBeat.o(95167);
-      return false;
-    }
-    if ((((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).isStoryExist(paramString)) || (((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).isStoryUnread(paramString)))
-    {
-      AppMethodBeat.o(95167);
-      return true;
-    }
-    AppMethodBeat.o(95167);
-    return false;
-  }
+  public final void bF(String paramString, boolean paramBoolean) {}
   
-  public static boolean aoa(String paramString)
-  {
-    AppMethodBeat.i(95168);
-    boolean bool = dso().contains(paramString);
-    AppMethodBeat.o(95168);
-    return bool;
-  }
+  public final void bG(String paramString, boolean paramBoolean) {}
   
-  public static void destroy()
-  {
-    AppMethodBeat.i(95165);
-    fjL.dead();
-    AppMethodBeat.o(95165);
-  }
-  
-  public static List<String> dso()
-  {
-    AppMethodBeat.i(95169);
-    if (csX)
-    {
-      localObject = wBU;
-      AppMethodBeat.o(95169);
-      return localObject;
-    }
-    Object localObject = af.dtA().tj(5L);
-    if (bt.isNullOrNil(((v)localObject).field_memberList))
-    {
-      localObject = new LinkedList();
-      AppMethodBeat.o(95169);
-      return localObject;
-    }
-    localObject = bt.S(((v)localObject).field_memberList.split(","));
-    if (localObject == null)
-    {
-      localObject = new LinkedList();
-      AppMethodBeat.o(95169);
-      return localObject;
-    }
-    wBU.addAll((Collection)localObject);
-    csX = true;
-    localObject = wBU;
-    AppMethodBeat.o(95169);
-    return localObject;
-  }
-  
-  public static void init()
-  {
-    AppMethodBeat.i(95164);
-    fjL.alive();
-    AppMethodBeat.o(95164);
-  }
+  public final void dGO() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.g.a
  * JD-Core Version:    0.7.0.1
  */

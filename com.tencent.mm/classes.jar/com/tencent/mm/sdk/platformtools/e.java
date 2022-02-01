@@ -18,52 +18,52 @@ import java.util.WeakHashMap;
 
 public final class e
 {
-  private static final WeakHashMap<Bitmap, a> ETj;
-  private static boolean ETk;
-  private static final ap handler;
+  private static final WeakHashMap<Bitmap, a> Gqw;
+  private static boolean Gqx;
+  private static final ao handler;
   
   static
   {
     AppMethodBeat.i(156097);
-    ETj = new WeakHashMap();
-    if (!bu.eEO())
+    Gqw = new WeakHashMap();
+    if (!bt.eUi())
     {
       handler = null;
-      av localav = new av("BitmapBriefTracer", new av.a()
+      au localau = new au("BitmapBriefTracer", new au.a()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(156078);
-          e.eEY();
+          e.eUs();
           AppMethodBeat.o(156078);
           return true;
         }
       }, true);
-      localav.av(120000L, 120000L);
-      localav.setLogging(false);
+      localau.au(120000L, 120000L);
+      localau.setLogging(false);
     }
     for (;;)
     {
-      au.a(new au.c()
+      at.a(new at.c()
       {
-        public final void b(String paramAnonymousString, Throwable paramAnonymousThrowable)
+        public final void a(at paramAnonymousat, String paramAnonymousString, Throwable paramAnonymousThrowable)
         {
-          AppMethodBeat.i(156080);
+          AppMethodBeat.i(193561);
           if (!(paramAnonymousThrowable instanceof OutOfMemoryError))
           {
-            AppMethodBeat.o(156080);
+            AppMethodBeat.o(193561);
             return;
           }
-          e.eEZ();
-          AppMethodBeat.o(156080);
+          e.eUt();
+          AppMethodBeat.o(193561);
         }
       });
       AppMethodBeat.o(156097);
       return;
-      handler = new ap("BitmapTracer", new ap.a()
+      handler = new ao("BitmapTracer", new ao.a()
       {
-        boolean ETl = false;
-        long ETm = 0L;
+        boolean Gqy = false;
+        long Gqz = 0L;
         
         /* Error */
         public final boolean handleMessage(android.os.Message paramAnonymousMessage)
@@ -71,7 +71,7 @@ public final class e
           // Byte code:
           //   0: ldc 26
           //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-          //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/e:acT	()Z
+          //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/e:adZ	()Z
           //   8: pop
           //   9: invokestatic 42	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
           //   12: astore_1
@@ -93,21 +93,21 @@ public final class e
           //   40: lload_2
           //   41: lload 4
           //   43: lsub
-          //   44: invokestatic 60	com/tencent/mm/sdk/platformtools/e:vA	(J)Ljava/lang/String;
+          //   44: invokestatic 60	com/tencent/mm/sdk/platformtools/e:Ad	(J)Ljava/lang/String;
           //   47: aastore
           //   48: dup
           //   49: iconst_1
           //   50: lload 4
-          //   52: invokestatic 60	com/tencent/mm/sdk/platformtools/e:vA	(J)Ljava/lang/String;
+          //   52: invokestatic 60	com/tencent/mm/sdk/platformtools/e:Ad	(J)Ljava/lang/String;
           //   55: aastore
           //   56: dup
           //   57: iconst_2
           //   58: lload 6
-          //   60: invokestatic 60	com/tencent/mm/sdk/platformtools/e:vA	(J)Ljava/lang/String;
+          //   60: invokestatic 60	com/tencent/mm/sdk/platformtools/e:Ad	(J)Ljava/lang/String;
           //   63: aastore
-          //   64: invokestatic 65	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   64: invokestatic 65	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   67: aload_0
-          //   68: getfield 18	com/tencent/mm/sdk/platformtools/e$2:ETl	Z
+          //   68: getfield 18	com/tencent/mm/sdk/platformtools/e$2:Gqy	Z
           //   71: ifne +131 -> 202
           //   74: lload_2
           //   75: lload 4
@@ -119,7 +119,7 @@ public final class e
           //   88: lstore_2
           //   89: lload_2
           //   90: aload_0
-          //   91: getfield 20	com/tencent/mm/sdk/platformtools/e$2:ETm	J
+          //   91: getfield 20	com/tencent/mm/sdk/platformtools/e$2:Gqz	J
           //   94: lsub
           //   95: ldc2_w 73
           //   98: lcmp
@@ -127,7 +127,7 @@ public final class e
           //   102: invokestatic 77	java/lang/System:gc	()V
           //   105: aload_0
           //   106: lload_2
-          //   107: putfield 20	com/tencent/mm/sdk/platformtools/e$2:ETm	J
+          //   107: putfield 20	com/tencent/mm/sdk/platformtools/e$2:Gqz	J
           //   110: ldc 26
           //   112: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   115: iconst_1
@@ -141,13 +141,13 @@ public final class e
           //   127: new 86	java/lang/StringBuilder
           //   130: dup
           //   131: invokespecial 87	java/lang/StringBuilder:<init>	()V
-          //   134: invokestatic 93	com/tencent/mm/loader/j/b:aih	()Ljava/lang/String;
+          //   134: invokestatic 93	com/tencent/mm/loader/j/b:aph	()Ljava/lang/String;
           //   137: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   140: ldc 99
           //   142: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   145: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
           //   148: iconst_0
-          //   149: invokestatic 108	com/tencent/mm/vfs/i:cM	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+          //   149: invokestatic 108	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
           //   152: invokespecial 111	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
           //   155: invokespecial 112	java/io/PrintWriter:<init>	(Ljava/io/OutputStream;)V
           //   158: astore 8
@@ -156,11 +156,11 @@ public final class e
           //   163: aload 8
           //   165: invokestatic 116	com/tencent/mm/sdk/platformtools/e:a	(Ljava/io/PrintWriter;)V
           //   168: aload 8
-          //   170: invokestatic 122	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+          //   170: invokestatic 122	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
           //   173: new 86	java/lang/StringBuilder
           //   176: dup
           //   177: invokespecial 87	java/lang/StringBuilder:<init>	()V
-          //   180: invokestatic 93	com/tencent/mm/loader/j/b:aih	()Ljava/lang/String;
+          //   180: invokestatic 93	com/tencent/mm/loader/j/b:aph	()Ljava/lang/String;
           //   183: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   186: ldc 124
           //   188: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -168,7 +168,7 @@ public final class e
           //   194: invokestatic 130	android/os/Debug:dumpHprofData	(Ljava/lang/String;)V
           //   197: aload_0
           //   198: iconst_1
-          //   199: putfield 18	com/tencent/mm/sdk/platformtools/e$2:ETl	Z
+          //   199: putfield 18	com/tencent/mm/sdk/platformtools/e$2:Gqy	Z
           //   202: ldc 26
           //   204: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   207: iconst_1
@@ -183,9 +183,9 @@ public final class e
           //   221: ldc 132
           //   223: iconst_0
           //   224: anewarray 4	java/lang/Object
-          //   227: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   227: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
           //   230: aload 8
-          //   232: invokestatic 122	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+          //   232: invokestatic 122	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
           //   235: goto -62 -> 173
           //   238: astore 9
           //   240: aload_1
@@ -193,7 +193,7 @@ public final class e
           //   243: aload 9
           //   245: astore_1
           //   246: aload 8
-          //   248: invokestatic 122	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+          //   248: invokestatic 122	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
           //   251: ldc 26
           //   253: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   256: aload_1
@@ -204,7 +204,7 @@ public final class e
           //   262: ldc 132
           //   264: iconst_0
           //   265: anewarray 4	java/lang/Object
-          //   268: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   268: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
           //   271: goto -74 -> 197
           //   274: astore 9
           //   276: aload_1
@@ -239,6 +239,33 @@ public final class e
     }
   }
   
+  @SuppressLint({"DefaultLocale"})
+  private static String Ac(long paramLong)
+  {
+    AppMethodBeat.i(156090);
+    if (paramLong >= 1073741824L)
+    {
+      str = String.format("%.2f GB", new Object[] { Double.valueOf(paramLong / 1073741824.0D) });
+      AppMethodBeat.o(156090);
+      return str;
+    }
+    if (paramLong >= 1048576L)
+    {
+      str = String.format("%.2f MB", new Object[] { Double.valueOf(paramLong / 1048576.0D) });
+      AppMethodBeat.o(156090);
+      return str;
+    }
+    if (paramLong >= 1024L)
+    {
+      str = String.format("%.2f kB", new Object[] { Double.valueOf(paramLong / 1024.0D) });
+      AppMethodBeat.o(156090);
+      return str;
+    }
+    String str = String.format("%d bytes", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(156090);
+    return str;
+  }
+  
   private static void a(PrintWriter paramPrintWriter, long paramLong, int paramInt)
   {
     AppMethodBeat.i(156092);
@@ -262,14 +289,14 @@ public final class e
       Bitmap localBitmap;
       a locala;
       long l5;
-      synchronized (ETj)
+      synchronized (Gqw)
       {
         for (;;)
         {
           Object localObject1 = new ArrayList();
           try
           {
-            ((List)localObject1).addAll(ETj.entrySet());
+            ((List)localObject1).addAll(Gqw.entrySet());
             Iterator localIterator = ((List)localObject1).iterator();
             localObject4 = null;
             localObject1 = null;
@@ -326,7 +353,7 @@ public final class e
           paramPrintWriter.append("# Biggest Bitmap");
           a(paramPrintWriter, localConcurrentModificationException, (a)localObject4, l4);
         }
-        paramPrintWriter.format("\n\nLiving Bitmaps: %d, %s\n", new Object[] { Integer.valueOf(i), vz(l2) });
+        paramPrintWriter.format("\n\nLiving Bitmaps: %d, %s\n", new Object[] { Integer.valueOf(i), Ac(l2) });
         paramPrintWriter.append("Recycled Bitmaps: ").println(j);
         paramPrintWriter.flush();
         paramPrintWriter.close();
@@ -353,7 +380,7 @@ public final class e
   {
     AppMethodBeat.i(156093);
     Bitmap.Config localConfig = paramBitmap.getConfig();
-    String str = vz(paramBitmap.getAllocationByteCount());
+    String str = Ac(paramBitmap.getAllocationByteCount());
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
     if (localConfig == null) {}
@@ -361,9 +388,9 @@ public final class e
     {
       paramPrintWriter.format("\nSize: %s (%d x %d, %s)\n", new Object[] { str, Integer.valueOf(i), Integer.valueOf(j), paramBitmap });
       paramPrintWriter.append("Source: ").println(parama.source);
-      paramPrintWriter.format("Acquired: %d seconds ago\n", new Object[] { Long.valueOf((paramLong - parama.ETq) / 1000L) });
+      paramPrintWriter.format("Acquired: %d seconds ago\n", new Object[] { Long.valueOf((paramLong - parama.GqD) / 1000L) });
       paramPrintWriter.print("Stack:\n");
-      a(parama.ETo, paramPrintWriter);
+      a(parama.GqB, paramPrintWriter);
       paramPrintWriter.print("=======================================================\n");
       paramPrintWriter.flush();
       AppMethodBeat.o(156093);
@@ -385,12 +412,12 @@ public final class e
     AppMethodBeat.o(156091);
   }
   
-  private static void ac(long paramLong, int paramInt)
+  private static void af(long paramLong, int paramInt)
   {
     AppMethodBeat.i(156086);
     a(new PrintWriter(new Writer()
     {
-      private StringWriter ETn;
+      private StringWriter GqA;
       
       public final void close()
       {
@@ -402,31 +429,31 @@ public final class e
       public final void flush()
       {
         AppMethodBeat.i(156082);
-        if (this.ETn == null)
+        if (this.GqA == null)
         {
           AppMethodBeat.o(156082);
           return;
         }
-        String str = this.ETn.toString();
-        this.ETn = null;
-        ad.w("MicroMsg.BitmapTracer", str);
+        String str = this.GqA.toString();
+        this.GqA = null;
+        ac.w("MicroMsg.BitmapTracer", str);
         AppMethodBeat.o(156082);
       }
       
       public final void write(char[] paramAnonymousArrayOfChar, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(156081);
-        if (this.ETn == null) {
-          this.ETn = new StringWriter();
+        if (this.GqA == null) {
+          this.GqA = new StringWriter();
         }
-        this.ETn.write(paramAnonymousArrayOfChar, paramAnonymousInt1, paramAnonymousInt2);
+        this.GqA.write(paramAnonymousArrayOfChar, paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(156081);
       }
     }, false), paramLong, paramInt);
     AppMethodBeat.o(156086);
   }
   
-  public static Bitmap au(Bitmap paramBitmap)
+  public static Bitmap aw(Bitmap paramBitmap)
   {
     AppMethodBeat.i(156087);
     paramBitmap = j(paramBitmap, null);
@@ -434,10 +461,10 @@ public final class e
     return paramBitmap;
   }
   
-  public static void eEY()
+  public static void eUs()
   {
     AppMethodBeat.i(156085);
-    ac(2097152L, 3);
+    af(2097152L, 3);
     AppMethodBeat.o(156085);
   }
   
@@ -457,67 +484,40 @@ public final class e
       AppMethodBeat.o(156089);
       return null;
     }
-    if ((paramBitmap.getAllocationByteCount() < 1048576) && (!bu.eEO()))
+    if ((paramBitmap.getAllocationByteCount() < 1048576) && (!bt.eUi()))
     {
       AppMethodBeat.o(156089);
       return paramBitmap;
     }
     a locala = new a(???);
-    synchronized (ETj)
+    synchronized (Gqw)
     {
-      ETj.put(paramBitmap, locala);
-      if ((handler != null) && (!ETk))
+      Gqw.put(paramBitmap, locala);
+      if ((handler != null) && (!Gqx))
       {
         handler.sendEmptyMessageDelayed(0, 5000L);
-        ETk = true;
+        Gqx = true;
       }
       AppMethodBeat.o(156089);
       return paramBitmap;
     }
   }
   
-  @SuppressLint({"DefaultLocale"})
-  private static String vz(long paramLong)
-  {
-    AppMethodBeat.i(156090);
-    if (paramLong >= 1073741824L)
-    {
-      str = String.format("%.2f GB", new Object[] { Double.valueOf(paramLong / 1073741824.0D) });
-      AppMethodBeat.o(156090);
-      return str;
-    }
-    if (paramLong >= 1048576L)
-    {
-      str = String.format("%.2f MB", new Object[] { Double.valueOf(paramLong / 1048576.0D) });
-      AppMethodBeat.o(156090);
-      return str;
-    }
-    if (paramLong >= 1024L)
-    {
-      str = String.format("%.2f kB", new Object[] { Double.valueOf(paramLong / 1024.0D) });
-      AppMethodBeat.o(156090);
-      return str;
-    }
-    String str = String.format("%d bytes", new Object[] { Long.valueOf(paramLong) });
-    AppMethodBeat.o(156090);
-    return str;
-  }
-  
   static final class a
   {
-    final StackTraceElement[] ETo;
-    final BitmapFactory.Options ETp;
-    final long ETq;
+    final StackTraceElement[] GqB;
+    final BitmapFactory.Options GqC;
+    final long GqD;
     final String source;
     
     a(String paramString)
     {
       AppMethodBeat.i(156084);
       StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-      this.ETo = ((StackTraceElement[])Arrays.copyOfRange(arrayOfStackTraceElement, 4, arrayOfStackTraceElement.length));
+      this.GqB = ((StackTraceElement[])Arrays.copyOfRange(arrayOfStackTraceElement, 4, arrayOfStackTraceElement.length));
       this.source = paramString;
-      this.ETp = null;
-      this.ETq = System.currentTimeMillis();
+      this.GqC = null;
+      this.GqD = System.currentTimeMillis();
       AppMethodBeat.o(156084);
     }
   }

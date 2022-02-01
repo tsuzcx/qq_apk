@@ -15,19 +15,19 @@ public final class o
   {
     AppMethodBeat.i(31043);
     c.a locala = new c.a();
-    locala.EYt = new Field[3];
+    locala.GvF = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "flag";
-    locala.EYv.put("flag", "LONG default '0' ");
+    locala.GvH.put("flag", "LONG default '0' ");
     localStringBuilder.append(" flag LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "appId";
-    locala.EYv.put("appId", "TEXT default '' ");
+    locala.GvH.put("appId", "TEXT default '' ");
     localStringBuilder.append(" appId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "sortId";
-    locala.EYv.put("sortId", "INTEGER default '0' ");
+    locala.GvH.put("sortId", "INTEGER default '0' ");
     localStringBuilder.append(" sortId INTEGER default '0' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.story.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "i", "", "j", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "i", "", "j", "invoke"})
 final class l$b
   extends d.g.b.l
   implements m<Long, Long, Boolean>
 {
-  public static final b yps;
+  public static final b zCR;
   
   static
   {
     AppMethodBeat.i(119592);
-    yps = new b();
+    zCR = new b();
     AppMethodBeat.o(119592);
   }
   

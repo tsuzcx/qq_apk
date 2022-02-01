@@ -8,26 +8,26 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class b
   implements Runnable
 {
-  private Queue<Object> fXE;
-  private boolean fXF;
+  private Queue<Object> gcl;
+  private boolean gcm;
   private Thread thread;
   
   public b()
   {
     AppMethodBeat.i(62452);
-    this.fXE = new ConcurrentLinkedQueue();
+    this.gcl = new ConcurrentLinkedQueue();
     this.thread = null;
-    this.fXF = false;
+    this.gcm = false;
     AppMethodBeat.o(62452);
   }
   
-  public final void aU(Object paramObject)
+  public final void aR(Object paramObject)
   {
     AppMethodBeat.i(62455);
-    if (this.fXE != null) {
+    if (this.gcl != null) {
       try
       {
-        this.fXE.add(paramObject);
+        this.gcl.add(paramObject);
         notify();
         return;
       }
@@ -43,7 +43,7 @@ public final class b
   {
     AppMethodBeat.i(62456);
     super.finalize();
-    this.fXE.clear();
+    this.gcl.clear();
     AppMethodBeat.o(62456);
   }
   
@@ -67,25 +67,25 @@ public final class b
           e.a((a.b)localObject1);
         }
         if ((Thread.currentThread() != null) && (!Thread.currentThread().isInterrupted())) {
-          if (!this.fXE.isEmpty())
+          if (!this.gcl.isEmpty())
           {
-            localObject1 = this.fXE.poll();
+            localObject1 = this.gcl.poll();
             if (!(localObject1 instanceof a)) {
               continue;
             }
             Object localObject3 = (a)localObject1;
             long l1 = ((a)localObject3).time;
-            localObject1 = ((a)localObject3).fXG;
-            int k = ((a)localObject3).fXH;
-            m = ((a)localObject3).fXJ;
-            localObject3 = ((a)localObject3).fXC;
+            localObject1 = ((a)localObject3).gcn;
+            int k = ((a)localObject3).gco;
+            m = ((a)localObject3).gcq;
+            localObject3 = ((a)localObject3).gcj;
             d.d("Hardcoder.HardCoderReporter", String.format("forgives, time:%s, size:%s, cpu:%s, io:%s", new Object[] { Long.valueOf(l1), Integer.valueOf(((List)localObject1).size()), Integer.valueOf(k), Integer.valueOf(m) }));
             i = 0;
             if (i >= ((List)localObject1).size()) {
               continue;
             }
             localb = (a.b)((List)localObject1).get(i);
-            if (!localb.adj()) {
+            if (!localb.aez()) {
               break label654;
             }
             l2 = l1 - localb.lastUpdateTime;
@@ -94,8 +94,8 @@ public final class b
             {
               if (k == -2)
               {
-                arrayOfInt = localb.fXA;
-                j = localb.fXy;
+                arrayOfInt = localb.gch;
+                j = localb.gcf;
                 arrayOfInt[j] = ((int)(arrayOfInt[j] + l2));
                 if (m == -1) {
                   continue;
@@ -103,25 +103,25 @@ public final class b
                 if (m != -2) {
                   continue;
                 }
-                arrayOfInt = localb.fXB;
-                j = localb.fXz;
+                arrayOfInt = localb.gci;
+                j = localb.gcg;
                 arrayOfInt[j] = ((int)(l2 + arrayOfInt[j]));
                 if ((localObject3 != null) && (localObject3.length > 0)) {
-                  localb.fXC = ((int[])localObject3);
+                  localb.gcj = ((int[])localObject3);
                 }
-                if (!localb.adj()) {
+                if (!localb.aez()) {
                   break label661;
                 }
-                j = localb.fXt[0];
-                l2 = f.lR(f.lQ(j));
-                if (localb.fXD == 0L) {
-                  localb.fXD = l2;
+                j = localb.gca[0];
+                l2 = f.lQ(f.lP(j));
+                if (localb.gck == 0L) {
+                  localb.gck = l2;
                 }
-                localb.fXD = ((l2 + localb.fXD) / 2L);
+                localb.gck = ((l2 + localb.gck) / 2L);
                 break label654;
               }
-              localb.fXy = k;
-              arrayOfInt = localb.fXA;
+              localb.gcf = k;
+              arrayOfInt = localb.gch;
               arrayOfInt[k] = ((int)(arrayOfInt[k] + l2));
               continue;
             }
@@ -134,9 +134,9 @@ public final class b
         Thread.currentThread().interrupt();
         AppMethodBeat.o(62454);
         return;
-        localb.fXy = 0;
-        arrayOfInt = localb.fXA;
-        j = localb.fXy;
+        localb.gcf = 0;
+        arrayOfInt = localb.gch;
+        j = localb.gcf;
         arrayOfInt[j] = ((int)(arrayOfInt[j] + l2));
         continue;
       }
@@ -147,24 +147,24 @@ public final class b
         long l2;
         d.printErrStackTrace("Hardcoder.HCPerfStatThread", localException, "run exception:", new Object[0]);
         continue;
-        localb.fXz = m;
-        int[] arrayOfInt = localb.fXB;
+        localb.gcg = m;
+        int[] arrayOfInt = localb.gci;
         arrayOfInt[m] = ((int)(l2 + arrayOfInt[m]));
         continue;
-        localb.fXz = 0;
-        arrayOfInt = localb.fXB;
-        j = localb.fXz;
+        localb.gcg = 0;
+        arrayOfInt = localb.gci;
+        j = localb.gcg;
         arrayOfInt[j] = ((int)(l2 + arrayOfInt[j]));
         continue;
         try
         {
-          if ((this.fXF) && (this.thread != null))
+          if ((this.gcm) && (this.thread != null))
           {
             this.thread.interrupt();
             this.thread = null;
-            this.fXF = false;
+            this.gcm = false;
           }
-          if (this.fXE.isEmpty())
+          if (this.gcl.isEmpty())
           {
             wait();
             continue;
@@ -205,21 +205,21 @@ public final class b
   
   public static final class a
   {
-    public final int[] fXC;
-    public final List<a.b> fXG;
-    public final int fXH;
-    public final int fXI;
-    public final int fXJ;
+    public final int[] gcj;
+    public final List<a.b> gcn;
+    public final int gco;
+    public final int gcp;
+    public final int gcq;
     public final long time;
     
     public a(long paramLong, List<a.b> paramList, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
     {
       this.time = paramLong;
-      this.fXG = paramList;
-      this.fXH = paramInt1;
-      this.fXI = paramInt2;
-      this.fXJ = paramInt3;
-      this.fXC = paramArrayOfInt;
+      this.gcn = paramList;
+      this.gco = paramInt1;
+      this.gcp = paramInt2;
+      this.gcq = paramInt3;
+      this.gcj = paramArrayOfInt;
     }
   }
 }

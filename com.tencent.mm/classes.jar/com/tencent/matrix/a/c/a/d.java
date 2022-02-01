@@ -19,37 +19,37 @@ import java.util.concurrent.ConcurrentHashMap;
 public class d
   implements e.b, a
 {
-  private ConcurrentHashMap<Object, a> cvE = new ConcurrentHashMap(2);
-  private long cvF = 0L;
-  private int cvG = 0;
-  private int cvH = 0;
-  private com.tencent.matrix.a.c.a cvk;
+  private ConcurrentHashMap<Object, a> csM = new ConcurrentHashMap(2);
+  private long csN = 0L;
+  private int csO = 0;
+  private int csP = 0;
+  private com.tencent.matrix.a.c.a css;
   private Handler handler = null;
   
-  public final void Hc()
+  public final void GN()
   {
-    Objects.requireNonNull(this.cvk);
+    Objects.requireNonNull(this.css);
     e.a(this);
   }
   
-  public final void Hd()
+  public final void GO()
   {
-    Objects.requireNonNull(this.cvk);
+    Objects.requireNonNull(this.css);
     e.b(this);
     this.handler.removeCallbacksAndMessages(null);
   }
   
-  public final int He()
+  public final int GP()
   {
     return -2147483648;
   }
   
-  public final b Hg()
+  public final b GR()
   {
-    long l1 = this.cvF;
-    if (this.cvG > 0)
+    long l1 = this.csN;
+    if (this.csO > 0)
     {
-      Iterator localIterator = this.cvE.values().iterator();
+      Iterator localIterator = this.csM.values().iterator();
       for (;;)
       {
         l2 = l1;
@@ -61,17 +61,17 @@ public class d
       }
     }
     long l2 = l1;
-    return new b(l2, this.cvG, this.cvH);
+    return new b(l2, this.csO, this.csP);
   }
   
   public final void a(IBinder paramIBinder, int paramInt)
   {
     c.i("Matrix.WakeLockMonitorPlugin", "[onReleaseWakeLock] token=%s flags=%s", new Object[] { Integer.valueOf(paramIBinder.hashCode()), Integer.valueOf(paramInt) });
-    paramIBinder = (a)this.cvE.get(paramIBinder);
-    this.handler.removeCallbacks(paramIBinder.cvK);
-    long l = this.cvF;
-    this.cvF = (SystemClock.uptimeMillis() - paramIBinder.time + l);
-    this.cvG -= 1;
+    paramIBinder = (a)this.csM.get(paramIBinder);
+    this.handler.removeCallbacks(paramIBinder.csS);
+    long l = this.csN;
+    this.csN = (SystemClock.uptimeMillis() - paramIBinder.time + l);
+    this.csO -= 1;
   }
   
   public final void a(IBinder paramIBinder, int paramInt, final String paramString1, final String paramString2, WorkSource paramWorkSource, String paramString3)
@@ -79,35 +79,35 @@ public class d
     c.i("Matrix.WakeLockMonitorPlugin", "[onAcquireWakeLock] token=%s flags=%s tag=%s historyTag=%s packageName=%s workSource=%s stack=%s", new Object[] { Integer.valueOf(paramIBinder.hashCode()), Integer.valueOf(paramInt), paramString1, paramString3, paramString2, paramWorkSource, com.tencent.matrix.a.d.a.stackTraceToString(new Throwable().getStackTrace()) });
     paramString1 = new Runnable()
     {
-      int cvI = 1;
+      int csQ = 1;
       
       public final void run()
       {
-        if (d.a(d.this).cuU.cuW != null)
+        if (d.a(d.this).csc.cse != null)
         {
-          d.a(d.this).cuU.cuW.e(paramString1, paramString2, this.cvI);
-          this.cvI += 1;
-          d.b(d.this).postDelayed(this, d.a(d.this).cuU.cuX);
+          d.a(d.this).csc.cse.e(paramString1, paramString2, this.csQ);
+          this.csQ += 1;
+          d.b(d.this).postDelayed(this, d.a(d.this).csc.csf);
         }
       }
     };
-    this.cvE.put(paramIBinder, new a(paramIBinder, SystemClock.uptimeMillis(), paramString1));
-    this.handler.postDelayed(paramString1, this.cvk.cuU.cuX);
-    this.cvG += 1;
-    this.cvH += 1;
+    this.csM.put(paramIBinder, new a(paramIBinder, SystemClock.uptimeMillis(), paramString1));
+    this.handler.postDelayed(paramString1, this.css.csc.csf);
+    this.csO += 1;
+    this.csP += 1;
   }
   
   public final void a(com.tencent.matrix.a.c.a parama)
   {
-    this.cvk = parama;
-    this.handler = new Handler(b.Ip().getLooper());
+    this.css = parama;
+    this.handler = new Handler(b.HY().getLooper());
   }
   
-  public final void bS(boolean paramBoolean) {}
+  public final void bT(boolean paramBoolean) {}
   
   public static final class a
   {
-    Runnable cvK;
+    Runnable csS;
     long time;
     IBinder token;
     
@@ -115,7 +115,7 @@ public class d
     {
       this.token = paramIBinder;
       this.time = paramLong;
-      this.cvK = paramRunnable;
+      this.csS = paramRunnable;
     }
     
     public final boolean equals(Object paramObject)
@@ -131,15 +131,15 @@ public class d
   
   public static final class b
   {
-    public long cvF;
-    public int cvG;
-    public int cvH;
+    public long csN;
+    public int csO;
+    public int csP;
     
     public b(long paramLong, int paramInt1, int paramInt2)
     {
-      this.cvF = paramLong;
-      this.cvG = paramInt1;
-      this.cvH = paramInt2;
+      this.csN = paramLong;
+      this.csO = paramInt1;
+      this.csP = paramInt2;
     }
   }
 }

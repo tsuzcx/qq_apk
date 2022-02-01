@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.scanner.box;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.am;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getBoxTemplateHtmlFile", "plugin-scan_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getBoxTemplateHtmlFile", "plugin-scan_release"})
 public final class g
 {
-  public static final g vNb;
+  public static final g wXt;
   
   static
   {
     AppMethodBeat.i(52135);
-    vNb = new g();
+    wXt = new g();
     AppMethodBeat.o(52135);
   }
   
-  public static String dlf()
+  public static String dzh()
   {
     AppMethodBeat.i(52134);
-    Object localObject = aa.RZ(4);
+    Object localObject = z.Uj(4);
     k.g(localObject, "WebSearchApiLogic.getSea…TEMPLATE_TYPE_SCAN_GOODS)");
-    localObject = ((am)localObject).eio();
-    ad.v("MicroMsg.ScanBoxTemplateManager", "alvinluo ScanBox templateHtmlPath: %s", new Object[] { localObject });
+    localObject = ((ak)localObject).exI();
+    ac.v("MicroMsg.ScanBoxTemplateManager", "alvinluo ScanBox templateHtmlPath: %s", new Object[] { localObject });
     k.g(localObject, "htmlPath");
     AppMethodBeat.o(52134);
     return localObject;

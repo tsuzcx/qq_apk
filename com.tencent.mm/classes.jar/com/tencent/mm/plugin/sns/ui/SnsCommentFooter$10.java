@@ -4,7 +4,7 @@ import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class SnsCommentFooter$10
@@ -12,44 +12,44 @@ final class SnsCommentFooter$10
 {
   SnsCommentFooter$10(SnsCommentFooter paramSnsCommentFooter) {}
   
+  public final void amb()
+  {
+    AppMethodBeat.i(98647);
+    if (SnsCommentFooter.b(this.yLl) != null)
+    {
+      if (SnsCommentFooter.b(this.yLl).getInputConnection() == null)
+      {
+        AppMethodBeat.o(98647);
+        return;
+      }
+      SnsCommentFooter.b(this.yLl).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
+      SnsCommentFooter.b(this.yLl).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+    }
+    AppMethodBeat.o(98647);
+  }
+  
+  public final void amc() {}
+  
   public final void append(String paramString)
   {
     AppMethodBeat.i(98648);
     try
     {
-      SnsCommentFooter.b(this.xyx).aMd(paramString);
+      SnsCommentFooter.b(this.yLl).aRF(paramString);
       AppMethodBeat.o(98648);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.SnsCommentFooter", paramString, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SnsCommentFooter", paramString, "", new Object[0]);
       AppMethodBeat.o(98648);
     }
   }
   
-  public final void btF()
-  {
-    AppMethodBeat.i(98647);
-    if (SnsCommentFooter.b(this.xyx) != null)
-    {
-      if (SnsCommentFooter.b(this.xyx).getInputConnection() == null)
-      {
-        AppMethodBeat.o(98647);
-        return;
-      }
-      SnsCommentFooter.b(this.xyx).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
-      SnsCommentFooter.b(this.xyx).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
-    }
-    AppMethodBeat.o(98647);
-  }
-  
-  public final void cqY() {}
-  
-  public final void lf(boolean paramBoolean)
+  public final void dS(boolean paramBoolean)
   {
     AppMethodBeat.i(98646);
-    this.xyx.setToSendTextColor(paramBoolean);
+    this.yLl.setToSendTextColor(paramBoolean);
     AppMethodBeat.o(98646);
   }
 }

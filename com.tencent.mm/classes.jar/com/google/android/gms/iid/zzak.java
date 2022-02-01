@@ -36,7 +36,7 @@ public final class zzak
     this.zzk = paramContext;
     this.zzcz = paramContext.getSharedPreferences("com.google.android.gms.appid", 0);
     this.zzda = paramzzn;
-    paramContext = new File(b.R(this.zzk), "com.google.android.gms.appid-no-backup");
+    paramContext = new File(b.S(this.zzk), "com.google.android.gms.appid-no-backup");
     if (!paramContext.exists()) {
       try
       {

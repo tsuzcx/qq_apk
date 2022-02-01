@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ber;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class ls
   extends b
 {
-  public a dqv;
+  public a dnG;
   
   public ls()
   {
@@ -17,22 +15,23 @@ public final class ls
   
   private ls(byte paramByte)
   {
-    AppMethodBeat.i(101728);
-    this.dqv = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19821);
+    this.dnG = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(101728);
+    AppMethodBeat.o(19821);
   }
   
   public static final class a
   {
-    public LinkedList<ber> dqw;
-    public boolean dqx = false;
+    public byte[] dnH;
+    public int dnI;
+    public boolean dnJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ls
  * JD-Core Version:    0.7.0.1
  */

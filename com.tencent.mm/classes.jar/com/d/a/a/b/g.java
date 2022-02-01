@@ -7,19 +7,19 @@ final class g<K, V>
   extends c<K, V>
   implements Serializable
 {
-  private K aFP;
+  private K aGF;
   private V value;
   
   g(@Nullable K paramK, @Nullable V paramV)
   {
-    this.aFP = paramK;
+    this.aGF = paramK;
     this.value = paramV;
   }
   
   @Nullable
   public final K getKey()
   {
-    return this.aFP;
+    return this.aGF;
   }
   
   @Nullable
@@ -35,7 +35,7 @@ final class g<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.d.a.a.b.g
  * JD-Core Version:    0.7.0.1
  */

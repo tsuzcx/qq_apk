@@ -30,7 +30,7 @@ final class m$1
     label96:
     for (;;)
     {
-      h.a(m.a(this.nDL), true, paramView, "", m.a(this.nDL).getString(2131756823), m.a(this.nDL).getString(2131757558), new DialogInterface.OnClickListener()
+      h.a(m.a(this.ogM), true, paramView, "", m.a(this.ogM).getString(2131756823), m.a(this.ogM).getString(2131757558), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -38,10 +38,10 @@ final class m$1
           Object localObject = new Intent("android.intent.action.DIAL");
           ((Intent)localObject).setFlags(268435456);
           ((Intent)localObject).setData(Uri.parse("tel:" + paramView));
-          paramAnonymousDialogInterface = m.a(m.1.this.nDL);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/card/ui/CellAdapter$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          paramAnonymousDialogInterface = m.a(m.1.this.ogM);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/card/ui/CellAdapter$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/card/ui/CellAdapter$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(113609);
         }

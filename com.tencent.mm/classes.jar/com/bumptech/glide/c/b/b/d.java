@@ -6,18 +6,18 @@ import java.io.File;
 public class d
   implements a.a
 {
-  private final long aGu = 262144000L;
-  private final a aGv;
+  private final long aHk = 262144000L;
+  private final a aHl;
   
   public d(a parama)
   {
-    this.aGv = parama;
+    this.aHl = parama;
   }
   
-  public final a oy()
+  public final a oI()
   {
     AppMethodBeat.i(77149);
-    Object localObject = this.aGv.oA();
+    Object localObject = this.aHl.oK();
     if (localObject == null)
     {
       AppMethodBeat.o(77149);
@@ -28,19 +28,19 @@ public class d
       AppMethodBeat.o(77149);
       return null;
     }
-    localObject = new e((File)localObject, this.aGu);
+    localObject = new e((File)localObject, this.aHk);
     AppMethodBeat.o(77149);
     return localObject;
   }
   
   public static abstract interface a
   {
-    public abstract File oA();
+    public abstract File oK();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.d
  * JD-Core Version:    0.7.0.1
  */

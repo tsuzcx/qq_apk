@@ -11,8 +11,8 @@ public class ScaleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<ScaleActionArg> CREATOR;
-  public float iZa;
-  public float iZb;
+  public float jzq;
+  public float jzr;
   
   static
   {
@@ -52,7 +52,7 @@ public class ScaleActionArg
       return false;
     }
     paramObject = (ScaleActionArg)paramObject;
-    if ((Float.compare(paramObject.iZa, this.iZa) == 0) && (Float.compare(paramObject.iZb, this.iZb) == 0))
+    if ((Float.compare(paramObject.jzq, this.jzq) == 0) && (Float.compare(paramObject.jzr, this.jzr) == 0))
     {
       AppMethodBeat.o(145120);
       return true;
@@ -65,15 +65,15 @@ public class ScaleActionArg
   {
     AppMethodBeat.i(145118);
     super.h(paramParcel);
-    this.iZa = paramParcel.readFloat();
-    this.iZb = paramParcel.readFloat();
+    this.jzq = paramParcel.readFloat();
+    this.jzr = paramParcel.readFloat();
     AppMethodBeat.o(145118);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145121);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.iZa), Float.valueOf(this.iZb) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzq), Float.valueOf(this.jzr) });
     AppMethodBeat.o(145121);
     return i;
   }
@@ -83,8 +83,8 @@ public class ScaleActionArg
     AppMethodBeat.i(145119);
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.iZa = ((float)paramJSONObject.optDouble(0));
-    this.iZb = ((float)paramJSONObject.optDouble(1));
+    this.jzq = ((float)paramJSONObject.optDouble(0));
+    this.jzr = ((float)paramJSONObject.optDouble(1));
     AppMethodBeat.o(145119);
   }
   
@@ -92,14 +92,14 @@ public class ScaleActionArg
   {
     AppMethodBeat.i(145122);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.iZa);
-    paramParcel.writeFloat(this.iZb);
+    paramParcel.writeFloat(this.jzq);
+    paramParcel.writeFloat(this.jzr);
     AppMethodBeat.o(145122);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.ScaleActionArg
  * JD-Core Version:    0.7.0.1
  */

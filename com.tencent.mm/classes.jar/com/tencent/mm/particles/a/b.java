@@ -10,39 +10,39 @@ import android.view.animation.Interpolator;
 public abstract class b
 {
   public int alpha;
-  private final Matrix dY = new Matrix();
-  public Interpolator hOZ;
-  private final Paint hPJ = new Paint(1);
-  public long hPK;
-  public float hPL;
-  public float hPM;
-  public float hPN;
-  public float hPO;
-  public Long hPP;
-  public Long hPQ;
-  public float hPR;
-  public float hPS;
-  public Long hPT;
-  public float hPU;
-  public float hPV;
-  public float hPW;
-  public float hPX;
-  public float hPY;
-  public boolean hPZ;
-  public Rect hPa;
-  public float hPf;
-  public float hPh;
-  public Float hPj;
-  public Float hPl;
-  public float hPr;
-  public Float hPt;
-  public long hPv;
-  public boolean hQa;
-  public float hQb;
-  public float hQc;
-  public float hQd;
-  public float hQe;
-  public VelocityTracker lr;
+  private final Matrix eY = new Matrix();
+  public float ipA;
+  public float ipC;
+  public Float ipE;
+  public Float ipG;
+  public float ipM;
+  public Float ipO;
+  public long ipQ;
+  public Interpolator ipu;
+  public Rect ipv;
+  private final Paint iqe = new Paint(1);
+  public long iqf;
+  public float iqg;
+  public float iqh;
+  public float iqi;
+  public float iqj;
+  public Long iqk;
+  public Long iql;
+  public float iqm;
+  public float iqn;
+  public Long iqo;
+  public float iqp;
+  public float iqq;
+  public float iqr;
+  public float iqs;
+  public float iqt;
+  public boolean iqu;
+  public boolean iqv;
+  public float iqw;
+  public float iqx;
+  public float iqy;
+  public float iqz;
+  public VelocityTracker mq;
   public boolean terminated;
   
   public static float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, Long paramLong1, Float paramFloat)
@@ -139,10 +139,10 @@ public abstract class b
   public final void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramCanvas.save();
-    paramCanvas.clipRect(this.hPa);
-    this.dY.reset();
-    this.hPJ.setAlpha(this.alpha);
-    a(paramCanvas, this.dY, this.hPJ, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    paramCanvas.clipRect(this.ipv);
+    this.eY.reset();
+    this.iqe.setAlpha(this.alpha);
+    a(paramCanvas, this.eY, this.iqe, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     paramCanvas.restore();
   }
   
@@ -152,55 +152,55 @@ public abstract class b
   
   public abstract int getWidth();
   
-  public final void k(Rect paramRect)
+  public final void j(Rect paramRect)
   {
-    this.hPa = paramRect;
-    this.hPP = a(this.hPj, this.hPN, this.hPf);
-    this.hPQ = a(this.hPl, this.hPO, this.hPh);
-    this.hPT = a(this.hPt, this.hPS, this.hPr);
-    if (this.hPU == 0.0F) {
-      if (this.hPv < 0L) {
+    this.ipv = paramRect;
+    this.iqk = a(this.ipE, this.iqi, this.ipA);
+    this.iql = a(this.ipG, this.iqj, this.ipC);
+    this.iqo = a(this.ipO, this.iqn, this.ipM);
+    if (this.iqp == 0.0F) {
+      if (this.ipQ < 0L) {
         break label199;
       }
     }
     label199:
-    for (float f = (float)this.hPv;; f = 9.223372E+018F)
+    for (float f = (float)this.ipQ;; f = 9.223372E+018F)
     {
-      this.hPU = f;
-      this.hPU = Math.min((float)a(this.hPL, this.hPN, this.hPf, this.hPP, this.hPj, paramRect.left - getWidth(), paramRect.right), this.hPU);
-      this.hPU = Math.min((float)a(this.hPM, this.hPO, this.hPh, this.hPQ, this.hPl, paramRect.top - getHeight(), paramRect.bottom), this.hPU);
-      this.hPJ.setAlpha(this.alpha);
+      this.iqp = f;
+      this.iqp = Math.min((float)a(this.iqg, this.iqi, this.ipA, this.iqk, this.ipE, paramRect.left - getWidth(), paramRect.right), this.iqp);
+      this.iqp = Math.min((float)a(this.iqh, this.iqj, this.ipC, this.iql, this.ipG, paramRect.top - getHeight(), paramRect.bottom), this.iqp);
+      this.iqe.setAlpha(this.alpha);
       return;
     }
   }
   
   public void reset()
   {
-    this.hPK = 0L;
-    this.hPM = 0.0F;
-    this.hPL = 0.0F;
-    this.hPO = 0.0F;
-    this.hPN = 0.0F;
-    this.hPh = 0.0F;
-    this.hPf = 0.0F;
-    this.hPl = null;
-    this.hPj = null;
-    this.hPQ = null;
-    this.hPP = null;
-    this.hPR = 0.0F;
-    this.hPS = 0.0F;
-    this.hPr = 0.0F;
-    this.hPt = null;
-    this.hPT = null;
-    this.hPv = 0L;
-    this.hPU = 0.0F;
-    this.hPV = 0.0F;
-    this.hOZ = null;
-    this.hPX = 0.0F;
-    this.hPW = 0.0F;
-    this.hPY = 0.0F;
+    this.iqf = 0L;
+    this.iqh = 0.0F;
+    this.iqg = 0.0F;
+    this.iqj = 0.0F;
+    this.iqi = 0.0F;
+    this.ipC = 0.0F;
+    this.ipA = 0.0F;
+    this.ipG = null;
+    this.ipE = null;
+    this.iql = null;
+    this.iqk = null;
+    this.iqm = 0.0F;
+    this.iqn = 0.0F;
+    this.ipM = 0.0F;
+    this.ipO = null;
+    this.iqo = null;
+    this.ipQ = 0L;
+    this.iqp = 0.0F;
+    this.iqq = 0.0F;
+    this.ipu = null;
+    this.iqs = 0.0F;
+    this.iqr = 0.0F;
+    this.iqt = 0.0F;
     this.alpha = 255;
-    this.hPZ = false;
+    this.iqu = false;
     this.terminated = false;
   }
 }

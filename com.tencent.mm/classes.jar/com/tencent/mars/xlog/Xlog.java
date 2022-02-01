@@ -1,15 +1,15 @@
 package com.tencent.mars.xlog;
 
-import com.tencent.mm.sdk.platformtools.ad.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bq;
+import com.tencent.mm.sdk.platformtools.ac.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bp;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.g;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 
 public class Xlog
-  implements ad.a
+  implements ac.a
 {
   public static final int AppednerModeAsync = 0;
   public static final int AppednerModeSync = 1;
@@ -21,7 +21,7 @@ public class Xlog
   public static final int LEVEL_NONE = 6;
   public static final int LEVEL_VERBOSE = 0;
   public static final int LEVEL_WARNING = 3;
-  public static ae logDecryptor;
+  public static ad logDecryptor;
   private static String mCacheDir = null;
   private static String mLogDir = null;
   
@@ -36,10 +36,10 @@ public class Xlog
   
   private static String decryptTag(String paramString)
   {
-    ae localae;
+    ad localad;
     if (logDecryptor != null)
     {
-      localae = logDecryptor;
+      localad = logDecryptor;
       if ((paramString != null) && (paramString.length() != 0)) {}
     }
     else
@@ -51,9 +51,9 @@ public class Xlog
     default: 
       return paramString;
     case '⍆': 
-      return localae.fE(paramString, paramString.length());
+      return localad.fJ(paramString, paramString.length());
     }
-    return localae.EUq.decryptTag(paramString);
+    return localad.GrC.decryptTag(paramString);
   }
   
   public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
@@ -138,7 +138,7 @@ public class Xlog
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            i.lD(q.B(localObject2.mUri), mLogDir + "/" + localObject2.getName());
+            i.ma(q.B(localObject2.mUri), mLogDir + "/" + localObject2.getName());
             i += 1;
           }
         }

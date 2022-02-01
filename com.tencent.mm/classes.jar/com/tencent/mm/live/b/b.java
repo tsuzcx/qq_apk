@@ -2,229 +2,273 @@ package com.tencent.mm.live.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.live.b.a.o;
 import com.tencent.mm.live.core.core.b.c;
+import com.tencent.mm.live.core.core.b.d;
 import com.tencent.mm.live.core.core.c.a;
 import com.tencent.mm.live.core.debug.a;
-import com.tencent.mm.protocal.protobuf.dxz;
-import com.tencent.mm.protocal.protobuf.eal;
-import com.tencent.mm.protocal.protobuf.eas;
-import com.tencent.mm.protocal.protobuf.eaw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.protocal.protobuf.bnf;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.protocal.protobuf.bqj;
+import com.tencent.mm.protocal.protobuf.zx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bu;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
-import d.g.a.r;
-import d.l;
+import d.g.a.s;
+import d.g.b.k;
+import d.k.h;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LaunchLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "name", "", "roomId", "context", "Landroid/content/Context;", "(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "createCallback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "success", "needFaceVerify", "verifyUrl", "", "errCode", "", "joinCallback", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "getName", "()Ljava/lang/String;", "getRoomId", "createLive", "callback", "joinLive", "launch", "Lkotlin/Function6;", "onSceneEnd", "errType", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "processCreateLiveResponse", "response", "Lcom/tencent/mm/protocal/protobuf/CreateLiveResponse;", "processJoinLiveResponse", "Lcom/tencent/mm/protocal/protobuf/JoinLiveResponse;", "Companion", "plugin-logic_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LaunchLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "name", "", "roomId", "context", "Landroid/content/Context;", "(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "createCallback", "Lkotlin/Function5;", "", "Lkotlin/ParameterName;", "success", "needFaceVerify", "verifyUrl", "", "errCode", "errMsg", "", "joinCallback", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "getName", "()Ljava/lang/String;", "getRoomId", "createLive", "callback", "joinLive", "launch", "Lkotlin/Function6;", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "processCreateLiveResponse", "response", "Lcom/tencent/mm/protocal/protobuf/CreateLiveResponse;", "processJoinLiveResponse", "Lcom/tencent/mm/protocal/protobuf/JoinLiveResponse;", "Companion", "plugin-logic_release"})
 public final class b
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  public static final a qXz;
+  public static final b.a gsX;
   private final Context context;
+  public s<? super Boolean, ? super Boolean, ? super String, ? super Integer, ? super String, y> gsV;
+  public s<? super Boolean, ? super Integer, ? super String, ? super c, ? super TRTCCloudDef.TRTCParams, y> gsW;
   public final String name;
-  public r<? super Boolean, ? super Boolean, ? super String, ? super Integer, y> qWR;
-  public r<? super Boolean, ? super Integer, ? super c, ? super TRTCCloudDef.TRTCParams, y> qWS;
   public final String roomId;
   
   static
   {
-    AppMethodBeat.i(202565);
-    qXz = new a((byte)0);
-    AppMethodBeat.o(202565);
+    AppMethodBeat.i(189737);
+    gsX = new b.a((byte)0);
+    AppMethodBeat.o(189737);
   }
   
   public b(String paramString1, String paramString2, Context paramContext)
   {
-    AppMethodBeat.i(202564);
+    AppMethodBeat.i(189736);
     this.name = paramString1;
     this.roomId = paramString2;
     this.context = paramContext;
-    AppMethodBeat.o(202564);
+    AppMethodBeat.o(189736);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(202563);
+    AppMethodBeat.i(189735);
     Object localObject1;
-    label280:
-    Object localObject2;
-    if ((paramn instanceof com.tencent.mm.live.b.a.k))
+    if ((paramn instanceof com.tencent.mm.live.b.a.l))
     {
-      localObject1 = a.qOL;
-      a.aUc("anchor create live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
+      localObject1 = a.gqF;
+      a.uG("anchor create live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
-        paramString = this.qWR;
-        if (paramString != null)
+        ac.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
+        paramn = this.gsV;
+        if (paramn != null)
         {
-          paramn = Boolean.FALSE;
-          paramString.a(paramn, paramn, "", Integer.valueOf(paramInt2));
+          localObject1 = Boolean.FALSE;
+          if (paramString != null) {
+            break label944;
+          }
+          paramString = "";
         }
+      }
+    }
+    label929:
+    label938:
+    label944:
+    for (;;)
+    {
+      paramn.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
+      Object localObject3;
+      label195:
+      do
+      {
+        paramString = com.tencent.mm.kernel.g.agQ();
+        k.g(paramString, "MMKernel.network()");
+        paramString.agi().b(3501, (com.tencent.mm.ak.g)this);
+        AppMethodBeat.o(189735);
+        return;
+        localObject3 = ((com.tencent.mm.live.b.a.l)paramn).gwp;
+        if (localObject3 == null) {
+          break label440;
+        }
+        if (!bt.eWo()) {
+          break;
+        }
+        paramn = f.e.gtA;
+        paramn = aw.aKU(f.e.akp());
+        localObject1 = f.g.gtG;
+        if (!paramn.getBoolean(f.g.akt(), false)) {
+          break;
+        }
+        paramInt1 = 1;
+        if ((paramInt1 != 0) || (!((zx)localObject3).DTg)) {
+          break label319;
+        }
+        paramn = ((zx)localObject3).Eue;
+        if (paramn != null)
+        {
+          localObject1 = g.guG;
+          g.a(paramn);
+          paramn = new StringBuilder("processCreateLiveResponse live_id:");
+          localObject1 = g.guG;
+          ac.i("MicroMsg.LaunchLiveRoom", g.akF().DMV);
+        }
+        paramn = this.gsV;
+      } while (paramn == null);
+      localObject1 = Boolean.TRUE;
+      Object localObject2 = Boolean.FALSE;
+      if (paramString == null) {
+        paramString = "";
       }
       for (;;)
       {
-        paramString = com.tencent.mm.kernel.g.afA();
-        d.g.b.k.g(paramString, "MMKernel.network()");
-        paramString.aeS().b(3501, (com.tencent.mm.al.g)this);
-        AppMethodBeat.o(202563);
-        return;
-        paramString = ((com.tencent.mm.live.b.a.k)paramn).zbO;
-        if (paramString != null)
+        paramn.a(localObject1, localObject2, "", Integer.valueOf(paramInt2), paramString);
+        break;
+        paramInt1 = 0;
+        break label195;
+        label319:
+        if (bs.isNullOrNil(((zx)localObject3).DTh))
         {
-          if (bu.eGT())
-          {
-            paramn = e.e.rBl;
-            paramn = ax.aFD(e.e.equ());
-            localObject1 = e.g.rFz;
-            if (!paramn.getBoolean(e.g.eNc(), false)) {}
-          }
-          for (paramInt1 = 1;; paramInt1 = 0)
-          {
-            if ((paramInt1 != 0) || (!paramString.LwD)) {
-              break label280;
-            }
-            paramString = paramString.Lxa;
-            if (paramString != null)
-            {
-              paramn = f.rGw;
-              f.a(paramString);
-              paramString = new StringBuilder("processCreateLiveResponse live_id:");
-              paramn = f.rGw;
-              ad.i("MicroMsg.LaunchLiveRoom", f.eNG().LwA);
-            }
-            paramString = this.qWR;
-            if (paramString == null) {
-              break;
-            }
-            paramString.a(Boolean.TRUE, Boolean.FALSE, "", Integer.valueOf(paramInt2));
-            break;
-          }
-          if (bt.isNullOrNil(paramString.LwE))
-          {
-            paramString = this.qWR;
-            if (paramString != null)
-            {
-              paramn = Boolean.FALSE;
-              paramString.a(paramn, paramn, "", Integer.valueOf(paramInt2));
-            }
-          }
-          else
-          {
-            paramn = this.qWR;
-            if (paramn != null)
-            {
-              localObject1 = Boolean.FALSE;
-              localObject2 = Boolean.TRUE;
-              paramString = paramString.LwE;
-              d.g.b.k.g(paramString, "response.verify_url");
-              paramn.a(localObject1, localObject2, paramString, Integer.valueOf(paramInt2));
-            }
-          }
-        }
-        else
-        {
-          paramString = this.qWR;
-          if (paramString != null)
-          {
-            paramn = Boolean.FALSE;
-            paramString.a(paramn, paramn, "", Integer.valueOf(paramInt2));
-          }
-        }
-      }
-    }
-    if ((paramn instanceof com.tencent.mm.live.b.a.n))
-    {
-      localObject1 = a.qOL;
-      a.aUc("visitor join live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        break label554;
-      }
-      ad.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
-      paramString = this.qWS;
-      if (paramString != null)
-      {
-        paramn = Boolean.FALSE;
-        localObject1 = com.tencent.mm.live.core.core.b.d.qzw;
-        localObject1 = com.tencent.mm.live.core.core.b.d.cnt();
-        localObject2 = com.tencent.mm.live.core.core.b.d.qzw;
-        paramString.a(paramn, Integer.valueOf(paramInt2), localObject1, com.tencent.mm.live.core.core.b.d.cns());
-      }
-    }
-    for (;;)
-    {
-      paramString = com.tencent.mm.kernel.g.afA();
-      d.g.b.k.g(paramString, "MMKernel.network()");
-      paramString.aeS().b(3797, (com.tencent.mm.al.g)this);
-      AppMethodBeat.o(202563);
-      return;
-      label554:
-      paramString = ((com.tencent.mm.live.b.a.n)paramn).zcc;
-      if (paramString != null)
-      {
-        paramString = paramString.LyW;
-        if (paramString != null)
-        {
-          paramn = f.rGw;
-          f.a(paramString);
-          localObject1 = new TRTCCloudDef.TRTCParams();
-          paramString = this.name;
-          paramn = f.rGw;
-          localObject2 = new c(paramString, f.eNG().LwA, null, 0, null, 0L, 0L, 124);
-          paramString = d.qYj;
-          String str = this.name;
-          paramString = f.rGw;
-          eas localeas = f.eNG();
-          paramString = f.rGw;
-          paramn = f.eNH();
-          paramString = paramn;
+          paramn = this.gsV;
           if (paramn == null) {
-            paramString = new eaw();
-          }
-          d.a(str, paramString, localeas, (TRTCCloudDef.TRTCParams)localObject1, (c)localObject2);
-          paramString = c.a.qxl;
-          ((c)localObject2).qzb = c.a.clK();
-          paramString = f.rGw;
-          paramString = f.eNH();
-          if (paramString != null) {}
-          for (long l = paramString.Lzy;; l = 0L)
-          {
-            l = d.k.h.aH((l - 60L) * 1000L, 60000L);
-            h.xfu.Bh(l);
-            paramString = this.qWS;
-            if (paramString == null) {
-              break;
-            }
-            paramString.a(Boolean.TRUE, Integer.valueOf(0), localObject2, localObject1);
             break;
           }
+          localObject1 = Boolean.FALSE;
+          if (paramString != null) {
+            break label938;
+          }
+          paramString = "";
         }
-      }
-      else
-      {
-        paramString = this.qWS;
-        if (paramString != null)
+        for (;;)
         {
-          paramn = Boolean.FALSE;
-          localObject1 = com.tencent.mm.live.core.core.b.d.qzw;
-          localObject1 = com.tencent.mm.live.core.core.b.d.cnt();
-          localObject2 = com.tencent.mm.live.core.core.b.d.qzw;
-          paramString.a(paramn, Integer.valueOf(paramInt2), localObject1, com.tencent.mm.live.core.core.b.d.cns());
+          paramn.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
+          break;
+          paramn = this.gsV;
+          if (paramn == null) {
+            break;
+          }
+          localObject1 = Boolean.FALSE;
+          localObject2 = Boolean.TRUE;
+          localObject3 = ((zx)localObject3).DTh;
+          k.g(localObject3, "response.verify_url");
+          if (paramString == null) {
+            paramString = "";
+          }
+          for (;;)
+          {
+            paramn.a(localObject1, localObject2, localObject3, Integer.valueOf(paramInt2), paramString);
+            break;
+            label440:
+            paramn = this.gsV;
+            if (paramn == null) {
+              break;
+            }
+            localObject1 = Boolean.FALSE;
+            if (paramString == null) {
+              paramString = "";
+            }
+            for (;;)
+            {
+              paramn.a(localObject1, localObject1, "", Integer.valueOf(paramInt2), paramString);
+              break;
+              if ((paramn instanceof o))
+              {
+                localObject1 = a.gqF;
+                a.uG("visitor join live error:" + paramInt1 + " code:" + paramInt2 + " msg:" + paramString);
+                if ((paramInt1 == 0) && (paramInt2 == 0)) {
+                  break label639;
+                }
+                ac.i("MicroMsg.LaunchLiveRoom", "launch live room failed");
+                paramn = this.gsW;
+                if (paramn != null)
+                {
+                  localObject1 = Boolean.FALSE;
+                  if (paramString != null) {
+                    break label929;
+                  }
+                  paramString = "";
+                }
+              }
+              for (;;)
+              {
+                localObject2 = d.gnY;
+                localObject2 = d.aiP();
+                localObject3 = d.gnY;
+                paramn.a(localObject1, Integer.valueOf(paramInt2), paramString, localObject2, d.aiO());
+                label639:
+                do
+                {
+                  do
+                  {
+                    paramString = com.tencent.mm.kernel.g.agQ();
+                    k.g(paramString, "MMKernel.network()");
+                    paramString.agi().b(3797, (com.tencent.mm.ak.g)this);
+                    AppMethodBeat.o(189735);
+                    return;
+                    paramn = ((o)paramn).gwy;
+                    if (paramn == null) {
+                      break;
+                    }
+                    paramString = paramn.Fdh;
+                  } while (paramString == null);
+                  paramn = g.guG;
+                  g.a(paramString);
+                  localObject1 = new TRTCCloudDef.TRTCParams();
+                  paramString = this.name;
+                  paramn = g.guG;
+                  localObject2 = new c(paramString, g.akF().DMV, null, 0, null, 0L, 0L, 124);
+                  paramString = e.gtg;
+                  localObject3 = this.name;
+                  paramString = g.guG;
+                  bqd localbqd = g.akF();
+                  paramString = g.guG;
+                  paramn = g.akG();
+                  paramString = paramn;
+                  if (paramn == null) {
+                    paramString = new bqj();
+                  }
+                  e.a((String)localObject3, paramString, localbqd, (TRTCCloudDef.TRTCParams)localObject1, (c)localObject2);
+                  paramString = c.a.gnl;
+                  ((c)localObject2).gnP = c.a.aiy();
+                  paramString = g.guG;
+                  paramString = g.akG();
+                  if (paramString != null) {}
+                  for (long l = paramString.Ffy;; l = 0L)
+                  {
+                    l = h.aC((l - 60L) * 1000L, 60000L);
+                    i.gvw.pj(l);
+                    paramString = this.gsW;
+                    if (paramString == null) {
+                      break;
+                    }
+                    paramString.a(Boolean.TRUE, Integer.valueOf(0), "", localObject2, localObject1);
+                    break;
+                  }
+                  paramn = this.gsW;
+                } while (paramn == null);
+                localObject1 = Boolean.FALSE;
+                if (paramString == null) {
+                  paramString = "";
+                }
+                for (;;)
+                {
+                  localObject2 = d.gnY;
+                  localObject2 = d.aiP();
+                  localObject3 = d.gnY;
+                  paramn.a(localObject1, Integer.valueOf(paramInt2), paramString, localObject2, d.aiO());
+                  break;
+                }
+              }
+            }
+          }
         }
       }
     }
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/LaunchLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.b
  * JD-Core Version:    0.7.0.1
  */

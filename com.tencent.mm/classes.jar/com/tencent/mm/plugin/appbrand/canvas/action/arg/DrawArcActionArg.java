@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
+import com.tencent.mm.plugin.appbrand.z.g;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,8 +12,8 @@ public class DrawArcActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<DrawArcActionArg> CREATOR;
-  public float js;
-  public float jt;
+  public float kr;
+  public float ks;
   public float radius;
   public float x;
   public float y;
@@ -56,7 +56,7 @@ public class DrawArcActionArg
       return false;
     }
     paramObject = (DrawArcActionArg)paramObject;
-    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.radius, this.radius) == 0) && (Float.compare(paramObject.js, this.js) == 0) && (Float.compare(paramObject.jt, this.jt) == 0))
+    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.radius, this.radius) == 0) && (Float.compare(paramObject.kr, this.kr) == 0) && (Float.compare(paramObject.ks, this.ks) == 0))
     {
       AppMethodBeat.o(145012);
       return true;
@@ -72,15 +72,15 @@ public class DrawArcActionArg
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     this.radius = paramParcel.readFloat();
-    this.js = paramParcel.readFloat();
-    this.jt = paramParcel.readFloat();
+    this.kr = paramParcel.readFloat();
+    this.ks = paramParcel.readFloat();
     AppMethodBeat.o(145009);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145013);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.radius), Float.valueOf(this.js), Float.valueOf(this.jt) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.radius), Float.valueOf(this.kr), Float.valueOf(this.ks) });
     AppMethodBeat.o(145013);
     return i;
   }
@@ -93,8 +93,8 @@ public class DrawArcActionArg
     this.x = g.f(paramJSONObject, 0);
     this.y = g.f(paramJSONObject, 1);
     this.radius = g.f(paramJSONObject, 2);
-    this.js = ((float)paramJSONObject.optDouble(3));
-    this.jt = ((float)paramJSONObject.optDouble(4));
+    this.kr = ((float)paramJSONObject.optDouble(3));
+    this.ks = ((float)paramJSONObject.optDouble(4));
     AppMethodBeat.o(145010);
   }
   
@@ -105,14 +105,14 @@ public class DrawArcActionArg
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
     paramParcel.writeFloat(this.radius);
-    paramParcel.writeFloat(this.js);
-    paramParcel.writeFloat(this.jt);
+    paramParcel.writeFloat(this.kr);
+    paramParcel.writeFloat(this.ks);
     AppMethodBeat.o(145011);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawArcActionArg
  * JD-Core Version:    0.7.0.1
  */

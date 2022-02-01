@@ -2,68 +2,68 @@ package com.tencent.mm.compatible.b;
 
 import com.jg.JgMethodChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lc;
-import com.tencent.mm.g.a.lc.a;
+import com.tencent.mm.g.a.ll;
+import com.tencent.mm.g.a.ll.a;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class g
 {
-  private static volatile g fyM;
-  private static boolean fyO;
-  private static boolean fyP;
-  private static boolean fyQ;
-  private static boolean fyR;
-  private static int fyT;
-  private static int fyU;
-  private static HashMap<Integer, String> fyV;
-  private static int fyW;
-  private static int fyX;
-  private static HashMap<Integer, String> fyY;
-  private static int fyZ;
-  private static int fza;
-  private static HashMap<Integer, String> fzb;
-  private int fyN = -1;
-  private int fyS = 0;
+  private static int fCA;
+  private static int fCB;
+  private static HashMap<Integer, String> fCC;
+  private static int fCD;
+  private static int fCE;
+  private static HashMap<Integer, String> fCF;
+  private static int fCG;
+  private static int fCH;
+  private static HashMap<Integer, String> fCI;
+  private static volatile g fCt;
+  private static boolean fCv;
+  private static boolean fCw;
+  private static boolean fCx;
+  private static boolean fCy;
+  private int fCu = -1;
+  private int fCz = 0;
   
   static
   {
     AppMethodBeat.i(155610);
-    fyM = null;
-    fyO = false;
-    fyP = false;
-    fyQ = false;
-    fyR = false;
-    fyT = 0;
-    fyU = 0;
-    fyV = new HashMap();
-    fyW = 0;
-    fyX = 0;
-    fyY = new HashMap();
-    fyZ = 0;
-    fza = 0;
-    fzb = new HashMap();
+    fCt = null;
+    fCv = false;
+    fCw = false;
+    fCx = false;
+    fCy = false;
+    fCA = 0;
+    fCB = 0;
+    fCC = new HashMap();
+    fCD = 0;
+    fCE = 0;
+    fCF = new HashMap();
+    fCG = 0;
+    fCH = 0;
+    fCI = new HashMap();
     AppMethodBeat.o(155610);
   }
   
-  public static g Wk()
+  public static g Xi()
   {
     AppMethodBeat.i(155571);
-    if (fyM == null) {}
+    if (fCt == null) {}
     try
     {
-      if (fyM == null)
+      if (fCt == null)
       {
-        aj.getContext();
-        fyM = new g();
+        ai.getContext();
+        fCt = new g();
       }
-      g localg = fyM;
+      g localg = fCt;
       AppMethodBeat.o(155571);
       return localg;
     }
@@ -73,136 +73,136 @@ public class g
     }
   }
   
-  public static boolean Wl()
+  public static boolean Xj()
   {
     return false;
   }
   
-  private static void Wm()
+  private static void Xk()
   {
     AppMethodBeat.i(155608);
-    lc locallc = new lc();
-    if (fyT - fyU > 1)
+    ll localll = new ll();
+    if (fCA - fCB > 1)
     {
-      locallc.dpD.dpE = true;
-      locallc.dpD.dpF = fyV.size();
+      localll.dno.dnp = true;
+      localll.dno.dnq = fCC.size();
     }
-    if (fyZ - fza > 1)
+    if (fCG - fCH > 1)
     {
-      locallc.dpD.dpG = true;
-      locallc.dpD.dpH = fzb.size();
+      localll.dno.dnr = true;
+      localll.dno.dns = fCI.size();
     }
-    if (fyW - fyX > 1)
+    if (fCD - fCE > 1)
     {
-      locallc.dpD.dpI = true;
-      locallc.dpD.dpJ = fyY.size();
+      localll.dno.dnt = true;
+      localll.dno.dnu = fCF.size();
     }
-    if ((locallc.dpD.dpG) || (locallc.dpD.dpE) || (locallc.dpD.dpI))
+    if ((localll.dno.dnr) || (localll.dno.dnp) || (localll.dno.dnt))
     {
-      ad.e("MicroMsg.MMAudioManager", "check media leak audio[%b %d] mediaplayer[%b %d] audioRecordLeak [%b %d]", new Object[] { Boolean.valueOf(locallc.dpD.dpE), Integer.valueOf(locallc.dpD.dpF), Boolean.valueOf(locallc.dpD.dpG), Integer.valueOf(locallc.dpD.dpH), Boolean.valueOf(locallc.dpD.dpI), Integer.valueOf(locallc.dpD.dpJ) });
-      a.ESL.l(locallc);
+      ac.e("MicroMsg.MMAudioManager", "check media leak audio[%b %d] mediaplayer[%b %d] audioRecordLeak [%b %d]", new Object[] { Boolean.valueOf(localll.dno.dnp), Integer.valueOf(localll.dno.dnq), Boolean.valueOf(localll.dno.dnr), Integer.valueOf(localll.dno.dns), Boolean.valueOf(localll.dno.dnt), Integer.valueOf(localll.dno.dnu) });
+      a.GpY.l(localll);
     }
     AppMethodBeat.o(155608);
   }
   
-  public static String Wn()
+  public static String Xl()
   {
     AppMethodBeat.i(155609);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("AudioTrack: \r\n");
-    ((StringBuffer)localObject).append("leak: ").append(fyV.size()).append("init: ").append(fyT).append("release: ").append(fyU).append("\r\n");
+    ((StringBuffer)localObject).append("leak: ").append(fCC.size()).append("init: ").append(fCA).append("release: ").append(fCB).append("\r\n");
     ((StringBuffer)localObject).append("--------leak map-----------\r\n");
     Iterator localIterator;
-    if (!fyV.isEmpty())
+    if (!fCC.isEmpty())
     {
-      localIterator = fyV.values().iterator();
+      localIterator = fCC.values().iterator();
       while (localIterator.hasNext()) {
         ((StringBuffer)localObject).append((String)localIterator.next()).append("\r\n");
       }
     }
     ((StringBuffer)localObject).append("MediaPlayer: \r\n");
-    ((StringBuffer)localObject).append("leak: ").append(fzb.size()).append("init: ").append(fyZ).append("release: ").append(fza).append("\r\n");
+    ((StringBuffer)localObject).append("leak: ").append(fCI.size()).append("init: ").append(fCG).append("release: ").append(fCH).append("\r\n");
     ((StringBuffer)localObject).append("--------leak map-----------\r\n");
-    if (!fzb.isEmpty())
+    if (!fCI.isEmpty())
     {
-      localIterator = fzb.values().iterator();
+      localIterator = fCI.values().iterator();
       while (localIterator.hasNext()) {
         ((StringBuffer)localObject).append((String)localIterator.next()).append("\r\n");
       }
     }
     ((StringBuffer)localObject).append("AudioRecord: \r\n");
-    ((StringBuffer)localObject).append("leak: ").append(fyY.size()).append("init: ").append(fyW).append("release: ").append(fyW).append("\r\n");
+    ((StringBuffer)localObject).append("leak: ").append(fCF.size()).append("init: ").append(fCD).append("release: ").append(fCD).append("\r\n");
     ((StringBuffer)localObject).append("--------leak map-----------\r\n");
-    if (!fyY.isEmpty())
+    if (!fCF.isEmpty())
     {
-      localIterator = fyY.values().iterator();
+      localIterator = fCF.values().iterator();
       while (localIterator.hasNext()) {
         ((StringBuffer)localObject).append((String)localIterator.next()).append("\r\n");
       }
     }
     localObject = ((StringBuffer)localObject).toString();
-    ad.e("MicroMsg.MMAudioManager", "leak? %s", new Object[] { localObject });
+    ac.e("MicroMsg.MMAudioManager", "leak? %s", new Object[] { localObject });
     AppMethodBeat.o(155609);
     return localObject;
   }
   
-  public static void kR(int paramInt)
+  public static void kL(int paramInt)
   {
     AppMethodBeat.i(155602);
-    fyT += 1;
-    ad.e("MicroMsg.MMAudioManager", "mm audio track init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fyT), Integer.valueOf(fyU) });
-    fyV.put(Integer.valueOf(paramInt), bt.eGN().toString());
-    Wm();
+    fCA += 1;
+    ac.e("MicroMsg.MMAudioManager", "mm audio track init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fCA), Integer.valueOf(fCB) });
+    fCC.put(Integer.valueOf(paramInt), bs.eWi().toString());
+    Xk();
     AppMethodBeat.o(155602);
   }
   
-  public static void kS(int paramInt)
+  public static void kM(int paramInt)
   {
     AppMethodBeat.i(155603);
-    fyU += 1;
-    ad.e("MicroMsg.MMAudioManager", "mm audio track release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fyT), Integer.valueOf(fyU) });
-    fyV.remove(Integer.valueOf(paramInt));
+    fCB += 1;
+    ac.e("MicroMsg.MMAudioManager", "mm audio track release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fCA), Integer.valueOf(fCB) });
+    fCC.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(155603);
   }
   
-  public static void kT(int paramInt)
+  public static void kN(int paramInt)
   {
     AppMethodBeat.i(155604);
-    fyW += 1;
-    ad.m("MicroMsg.MMAudioManager", "mm audio record init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fyW), Integer.valueOf(fyX) });
-    fyY.put(Integer.valueOf(paramInt), bt.eGN().toString());
-    Wm();
+    fCD += 1;
+    ac.m("MicroMsg.MMAudioManager", "mm audio record init [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fCD), Integer.valueOf(fCE) });
+    fCF.put(Integer.valueOf(paramInt), bs.eWi().toString());
+    Xk();
     AppMethodBeat.o(155604);
   }
   
-  public static void kU(int paramInt)
+  public static void kO(int paramInt)
   {
     AppMethodBeat.i(155605);
-    if (fyY.containsKey(Integer.valueOf(paramInt)))
+    if (fCF.containsKey(Integer.valueOf(paramInt)))
     {
-      fyX += 1;
-      ad.m("MicroMsg.MMAudioManager", "mm audio record release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fyW), Integer.valueOf(fyX) });
-      fyY.remove(Integer.valueOf(paramInt));
+      fCE += 1;
+      ac.m("MicroMsg.MMAudioManager", "mm audio record release [%d] mmInitCount[%d] mmReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fCD), Integer.valueOf(fCE) });
+      fCF.remove(Integer.valueOf(paramInt));
     }
     AppMethodBeat.o(155605);
   }
   
-  public static void kV(int paramInt)
+  public static void kP(int paramInt)
   {
     AppMethodBeat.i(155606);
-    fyZ += 1;
-    ad.e("MicroMsg.MMAudioManager", "mm media player init [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fyZ), Integer.valueOf(fza) });
-    fzb.put(Integer.valueOf(paramInt), bt.eGN().toString());
-    Wm();
+    fCG += 1;
+    ac.e("MicroMsg.MMAudioManager", "mm media player init [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fCG), Integer.valueOf(fCH) });
+    fCI.put(Integer.valueOf(paramInt), bs.eWi().toString());
+    Xk();
     AppMethodBeat.o(155606);
   }
   
-  public static void kW(int paramInt)
+  public static void kQ(int paramInt)
   {
     AppMethodBeat.i(155607);
-    fza += 1;
-    ad.e("MicroMsg.MMAudioManager", "mm media player release [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fyZ), Integer.valueOf(fza) });
-    fzb.remove(Integer.valueOf(paramInt));
+    fCH += 1;
+    ac.e("MicroMsg.MMAudioManager", "mm media player release [%d] mmMpInitCount[%d] mmMpReleaseCount[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fCG), Integer.valueOf(fCH) });
+    fCI.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(155607);
   }
 }

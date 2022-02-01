@@ -10,66 +10,66 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.ui.aj;
 
 public class f
   extends a
 {
-  public CharSequence GZF;
-  public int GZG;
-  private b GZH;
-  a GZI;
-  public CharSequence ibW;
+  a IAa;
+  public CharSequence IzX;
+  public int IzY;
+  private b IzZ;
+  public CharSequence iCd;
   public String username;
   
   public f(int paramInt)
   {
     super(4, paramInt);
     AppMethodBeat.i(102952);
-    this.GZG = 0;
-    this.GZH = new b();
-    this.GZI = new a();
+    this.IzY = 0;
+    this.IzZ = new b();
+    this.IAa = new a();
     AppMethodBeat.o(102952);
   }
   
   public void a(Context paramContext, a.a parama)
   {
     AppMethodBeat.i(102953);
-    if ((this.GZG != 0) && (this.GZF != null))
+    if ((this.IzY != 0) && (this.IzX != null))
     {
       AppMethodBeat.o(102953);
       return;
     }
     if (this.contact == null)
     {
-      this.ibW = "";
+      this.iCd = "";
       this.username = "";
       AppMethodBeat.o(102953);
       return;
     }
-    this.ibW = com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).b(this.contact), com.tencent.mm.cd.a.ao(paramContext, 2131165517));
+    this.iCd = com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).b(this.contact), com.tencent.mm.cc.a.au(paramContext, 2131165517));
     this.username = this.contact.field_username;
     AppMethodBeat.o(102953);
   }
   
-  public a.b aHr()
+  public a.b aOg()
   {
-    return this.GZH;
+    return this.IzZ;
   }
   
   public final class a
     extends a.a
   {
-    public ImageView frr;
-    public TextView frs;
-    public TextView hJe;
-    public CheckBox icb;
+    public ImageView fuY;
+    public TextView fuZ;
+    public CheckBox iCi;
+    public TextView ijE;
     
     public a()
     {
@@ -88,15 +88,15 @@ public class f
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102950);
-      if (com.tencent.mm.cd.a.hS(paramContext)) {}
+      if (com.tencent.mm.cc.a.id(paramContext)) {}
       for (paramContext = LayoutInflater.from(paramContext).inflate(2131495360, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(2131495359, paramViewGroup, false))
       {
-        paramViewGroup = (f.a)f.this.GZI;
-        paramViewGroup.frr = ((ImageView)paramContext.findViewById(2131297008));
-        paramViewGroup.frs = ((TextView)paramContext.findViewById(2131305948));
-        paramViewGroup.hJe = ((TextView)paramContext.findViewById(2131299008));
-        paramViewGroup.hJe.setVisibility(8);
-        paramViewGroup.icb = ((CheckBox)paramContext.findViewById(2131304502));
+        paramViewGroup = (f.a)f.this.IAa;
+        paramViewGroup.fuY = ((ImageView)paramContext.findViewById(2131297008));
+        paramViewGroup.fuZ = ((TextView)paramContext.findViewById(2131305948));
+        paramViewGroup.ijE = ((TextView)paramContext.findViewById(2131299008));
+        paramViewGroup.ijE.setVisibility(8);
+        paramViewGroup.iCi = ((CheckBox)paramContext.findViewById(2131304502));
         paramContext.setTag(paramViewGroup);
         AppMethodBeat.o(102950);
         return paramContext;
@@ -108,38 +108,38 @@ public class f
       AppMethodBeat.i(102951);
       parama1 = (f)parama1;
       parama = (f.a)parama;
-      parama.frs.setCompoundDrawables(null, null, null, null);
-      if ((f.this.GZG != 0) && (f.this.GZF != null))
+      parama.fuZ.setCompoundDrawables(null, null, null, null);
+      if ((f.this.IzY != 0) && (f.this.IzX != null))
       {
-        parama.frr.setImageResource(f.this.GZG);
-        parama.frs.setText(f.this.GZF);
+        parama.fuY.setImageResource(f.this.IzY);
+        parama.fuZ.setText(f.this.IzX);
         AppMethodBeat.o(102951);
         return;
       }
-      m.a(parama1.ibW, parama.frs);
-      if (af.aHH(parama1.username))
+      m.a(parama1.iCd, parama.fuZ);
+      if (ai.aNc(parama1.username))
       {
-        g.afC();
-        af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(parama1.username);
-        ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).a(paramContext, parama.frs, parama1.ibW, localaf.field_openImAppid, localaf.field_descWordingId, (int)parama.frs.getTextSize());
+        g.agS();
+        ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(parama1.username);
+        ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).a(paramContext, parama.fuZ, parama1.iCd, localai.field_openImAppid, localai.field_descWordingId, (int)parama.fuZ.getTextSize());
       }
-      com.tencent.mm.pluginsdk.ui.a.b.c(parama.frr, parama1.username);
+      com.tencent.mm.pluginsdk.ui.a.b.c(parama.fuY, parama1.username);
       int i;
-      if (w.so(parama1.username))
+      if (w.wr(parama1.username))
       {
         paramContext = paramContext.getResources().getDrawable(2131691000);
         paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth(), paramContext.getIntrinsicHeight());
-        parama.frs.setCompoundDrawablesWithIntrinsicBounds(null, null, paramContext, null);
-        if (!f.this.GVT) {
+        parama.fuZ.setCompoundDrawablesWithIntrinsicBounds(null, null, paramContext, null);
+        if (!f.this.Iwh) {
           break label333;
         }
         if (!paramBoolean1) {
           break label313;
         }
-        parama.icb.setChecked(true);
-        parama.icb.setEnabled(false);
-        paramContext = parama.icb;
-        if (!ai.Eq()) {
+        parama.iCi.setChecked(true);
+        parama.iCi.setEnabled(false);
+        paramContext = parama.iCi;
+        if (!aj.DT()) {
           break label306;
         }
         i = 2131689939;
@@ -148,24 +148,24 @@ public class f
       }
       for (;;)
       {
-        parama.icb.setVisibility(0);
+        parama.iCi.setVisibility(0);
         AppMethodBeat.o(102951);
         return;
-        parama.frs.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        parama.fuZ.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         break;
         label306:
         i = 2131689938;
         break label272;
         label313:
-        parama.icb.setChecked(paramBoolean2);
-        parama.icb.setEnabled(true);
+        parama.iCi.setChecked(paramBoolean2);
+        parama.iCi.setEnabled(true);
       }
       label333:
-      parama.icb.setVisibility(8);
+      parama.iCi.setVisibility(8);
       AppMethodBeat.o(102951);
     }
     
-    public final boolean aHs()
+    public final boolean aOh()
     {
       return false;
     }
@@ -173,7 +173,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.f
  * JD-Core Version:    0.7.0.1
  */

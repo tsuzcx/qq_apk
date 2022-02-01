@@ -14,19 +14,19 @@ public class g
   extends i
   implements k, k.a
 {
-  private DialogInterface.OnShowListener KCx;
   private View contentView;
-  private m hJu;
-  private DialogInterface.OnCancelListener ipN;
-  private boolean lA;
-  private boolean lB;
-  private DialogInterface.OnDismissListener lYl;
+  private DialogInterface.OnCancelListener iPU;
+  private m ijS;
+  private boolean mA;
+  private DialogInterface.OnDismissListener mAn;
+  private DialogInterface.OnShowListener mAq;
+  private boolean mz;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(147741);
-    this.lA = true;
+    this.mz = true;
     try
     {
       onCreate(null);
@@ -42,31 +42,31 @@ public class g
   public final void a(m paramm)
   {
     AppMethodBeat.i(147742);
-    if (this.KCx != null) {
-      this.KCx.onShow(this);
+    if (this.mAq != null) {
+      this.mAq.onShow(this);
     }
-    this.hJu = paramm;
+    this.ijS = paramm;
     AppMethodBeat.o(147742);
   }
   
-  public final boolean aEu()
+  public final boolean aLl()
   {
     return false;
   }
   
-  public final boolean aEv()
+  public final boolean aLm()
   {
-    return this.lB;
+    return this.mA;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(147747);
-    if (this.hJu != null)
+    if (this.ijS != null)
     {
-      this.hJu.c(this);
-      if (this.lYl != null) {
-        this.lYl.onDismiss(this);
+      this.ijS.c(this);
+      if (this.mAn != null) {
+        this.mAn.onDismiss(this);
       }
     }
     AppMethodBeat.o(147747);
@@ -84,25 +84,25 @@ public class g
   
   public final boolean isCancelable()
   {
-    return this.lA;
+    return this.mz;
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(147746);
-    if (this.ipN != null) {
-      this.ipN.onCancel(this);
+    if (this.iPU != null) {
+      this.iPU.onCancel(this);
     }
     AppMethodBeat.o(147746);
   }
   
-  public final void pi(int paramInt) {}
+  public final void pW(int paramInt) {}
   
   public void setCancelable(boolean paramBoolean)
   {
     AppMethodBeat.i(147750);
     super.setCancelable(paramBoolean);
-    this.lA = paramBoolean;
+    this.mz = paramBoolean;
     AppMethodBeat.o(147750);
   }
   
@@ -110,7 +110,7 @@ public class g
   {
     AppMethodBeat.i(147749);
     super.setCanceledOnTouchOutside(paramBoolean);
-    this.lB = paramBoolean;
+    this.mA = paramBoolean;
     AppMethodBeat.o(147749);
   }
   
@@ -140,7 +140,7 @@ public class g
   {
     AppMethodBeat.i(147751);
     super.setOnCancelListener(paramOnCancelListener);
-    this.ipN = paramOnCancelListener;
+    this.iPU = paramOnCancelListener;
     AppMethodBeat.o(147751);
   }
   
@@ -148,7 +148,7 @@ public class g
   {
     AppMethodBeat.i(147748);
     super.setOnDismissListener(paramOnDismissListener);
-    this.lYl = paramOnDismissListener;
+    this.mAn = paramOnDismissListener;
     AppMethodBeat.o(147748);
   }
   
@@ -156,7 +156,7 @@ public class g
   {
     AppMethodBeat.i(147745);
     super.setOnShowListener(paramOnShowListener);
-    this.KCx = paramOnShowListener;
+    this.mAq = paramOnShowListener;
     AppMethodBeat.o(147745);
   }
   
@@ -164,7 +164,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.g
  * JD-Core Version:    0.7.0.1
  */

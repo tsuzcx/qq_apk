@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.ao;
-import com.tencent.mm.protocal.protobuf.axk;
-import com.tencent.mm.protocal.protobuf.axl;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bbc;
+import com.tencent.mm.protocal.protobuf.bbd;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
   extends n
@@ -22,26 +22,26 @@ public final class a
   private g callback;
   public String errMsg;
   public final b rr;
-  public axl uzx;
+  public bbd vIq;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(26901);
-    ad.i("MicroMsg.NetSceneGetOpenUrl", "NetSceneGetOpenUrl username:%s ticket:%s climsgid:%s content:%s ", new Object[] { paramString1, paramString2, paramString3, bt.aGs(paramString4) });
+    ac.i("MicroMsg.NetSceneGetOpenUrl", "NetSceneGetOpenUrl username:%s ticket:%s climsgid:%s content:%s ", new Object[] { paramString1, paramString2, paramString3, bs.aLJ(paramString4) });
     Object localObject = new b.a();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getopenurl";
     ((b.a)localObject).funcId = 913;
-    ((b.a)localObject).gUU = new axk();
-    ((b.a)localObject).gUV = new axl();
-    this.rr = ((b.a)localObject).atI();
-    localObject = (axk)this.rr.gUS.gUX;
-    ((axk)localObject).scene = 1;
+    ((b.a)localObject).hvt = new bbc();
+    ((b.a)localObject).hvu = new bbd();
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bbc)this.rr.hvr.hvw;
+    ((bbc)localObject).scene = 1;
     ao localao = new ao();
     localao.username = paramString1;
-    localao.dgo = paramString2;
-    localao.uzz = paramString3;
+    localao.ddJ = paramString2;
+    localao.vIs = paramString3;
     localao.content = paramString4;
-    ((axk)localObject).Dws = localao;
+    ((bbc)localObject).ERN = localao;
     AppMethodBeat.o(26901);
   }
   
@@ -62,7 +62,7 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26903);
-    ad.d("MicroMsg.NetSceneGetOpenUrl", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.d("MicroMsg.NetSceneGetOpenUrl", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     this.errMsg = paramString;
     AppMethodBeat.o(26903);
@@ -70,7 +70,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.b.a
  * JD-Core Version:    0.7.0.1
  */

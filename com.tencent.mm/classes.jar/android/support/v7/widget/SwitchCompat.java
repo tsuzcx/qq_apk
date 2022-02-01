@@ -37,43 +37,43 @@ import java.util.List;
 public class SwitchCompat
   extends CompoundButton
 {
-  private static final Property<SwitchCompat, Float> auZ = new Property(Float.class, "thumbPos") {};
-  private static final int[] gZ = { 16842912 };
-  private int apL;
-  private int avA;
-  private int avB;
-  private int avC;
-  private final TextPaint avD = new TextPaint(1);
-  private ColorStateList avE;
-  private Layout avF;
-  private Layout avG;
-  private TransformationMethod avH;
-  ObjectAnimator avI;
-  private Drawable ava;
-  private ColorStateList avb = null;
-  private PorterDuff.Mode avc = null;
-  private boolean avd = false;
-  private boolean ave = false;
-  private Drawable avf;
-  private ColorStateList avh = null;
-  private PorterDuff.Mode avi = null;
-  private boolean avj = false;
-  private boolean avk = false;
-  private int avl;
-  private int avm;
-  private int avn;
-  private boolean avo;
-  private CharSequence avp;
-  private CharSequence avq;
-  private boolean avr;
-  private int avs;
-  private float avt;
-  private float avu;
-  float avv;
-  private int avw;
-  private int avx;
-  private int avy;
-  private int avz;
+  private static final Property<SwitchCompat, Float> avV = new Property(Float.class, "thumbPos") {};
+  private static final int[] hY = { 16842912 };
+  private int aqG;
+  private Drawable avW;
+  private ColorStateList avX = null;
+  private PorterDuff.Mode avY = null;
+  private boolean avZ = false;
+  private Layout awA;
+  private Layout awB;
+  private TransformationMethod awC;
+  ObjectAnimator awD;
+  private boolean awa = false;
+  private Drawable awb;
+  private ColorStateList awc = null;
+  private PorterDuff.Mode awd = null;
+  private boolean awe = false;
+  private boolean awf = false;
+  private int awg;
+  private int awh;
+  private int awi;
+  private boolean awj;
+  private CharSequence awk;
+  private CharSequence awl;
+  private boolean awm;
+  private int awn;
+  private float awo;
+  private float awp;
+  float awq;
+  private int awr;
+  private int aws;
+  private int awt;
+  private int awu;
+  private int awv;
+  private int aww;
+  private int awx;
+  private final TextPaint awy = new TextPaint(1);
+  private ColorStateList awz;
   private final Rect mTempRect = new Rect();
   private int mTouchSlop;
   private VelocityTracker mVelocityTracker = VelocityTracker.obtain();
@@ -87,52 +87,52 @@ public class SwitchCompat
   {
     super(paramContext, paramAttributeSet, paramInt);
     Object localObject = getResources();
-    this.avD.density = ((Resources)localObject).getDisplayMetrics().density;
+    this.awy.density = ((Resources)localObject).getDisplayMetrics().density;
     localObject = az.a(paramContext, paramAttributeSet, a.a.SwitchCompat, paramInt, 0);
-    this.ava = ((az)localObject).getDrawable(2);
-    if (this.ava != null) {
-      this.ava.setCallback(this);
+    this.avW = ((az)localObject).getDrawable(2);
+    if (this.avW != null) {
+      this.avW.setCallback(this);
     }
-    this.avf = ((az)localObject).getDrawable(11);
-    if (this.avf != null) {
-      this.avf.setCallback(this);
+    this.awb = ((az)localObject).getDrawable(11);
+    if (this.awb != null) {
+      this.awb.setCallback(this);
     }
-    this.avp = ((az)localObject).getText(0);
-    this.avq = ((az)localObject).getText(1);
-    this.avr = ((az)localObject).getBoolean(3, true);
-    this.avl = ((az)localObject).getDimensionPixelSize(8, 0);
-    this.avm = ((az)localObject).getDimensionPixelSize(5, 0);
-    this.avn = ((az)localObject).getDimensionPixelSize(6, 0);
-    this.avo = ((az)localObject).getBoolean(4, false);
+    this.awk = ((az)localObject).getText(0);
+    this.awl = ((az)localObject).getText(1);
+    this.awm = ((az)localObject).getBoolean(3, true);
+    this.awg = ((az)localObject).getDimensionPixelSize(8, 0);
+    this.awh = ((az)localObject).getDimensionPixelSize(5, 0);
+    this.awi = ((az)localObject).getDimensionPixelSize(6, 0);
+    this.awj = ((az)localObject).getBoolean(4, false);
     paramAttributeSet = ((az)localObject).getColorStateList(9);
     if (paramAttributeSet != null)
     {
-      this.avb = paramAttributeSet;
-      this.avd = true;
+      this.avX = paramAttributeSet;
+      this.avZ = true;
     }
     paramAttributeSet = x.a(((az)localObject).getInt(10, -1), null);
-    if (this.avc != paramAttributeSet)
+    if (this.avY != paramAttributeSet)
     {
-      this.avc = paramAttributeSet;
-      this.ave = true;
+      this.avY = paramAttributeSet;
+      this.awa = true;
     }
-    if ((this.avd) || (this.ave)) {
-      mq();
+    if ((this.avZ) || (this.awa)) {
+      mA();
     }
     paramAttributeSet = ((az)localObject).getColorStateList(12);
     if (paramAttributeSet != null)
     {
-      this.avh = paramAttributeSet;
-      this.avj = true;
+      this.awc = paramAttributeSet;
+      this.awe = true;
     }
     paramAttributeSet = x.a(((az)localObject).getInt(13, -1), null);
-    if (this.avi != paramAttributeSet)
+    if (this.awd != paramAttributeSet)
     {
-      this.avi = paramAttributeSet;
-      this.avk = true;
+      this.awd = paramAttributeSet;
+      this.awf = true;
     }
-    if ((this.avj) || (this.avk)) {
-      mp();
+    if ((this.awe) || (this.awf)) {
+      mz();
     }
     paramInt = ((az)localObject).getResourceId(7, 0);
     az localaz;
@@ -150,11 +150,11 @@ public class SwitchCompat
       if (paramAttributeSet == null) {
         break label655;
       }
-      this.avE = paramAttributeSet;
+      this.awz = paramAttributeSet;
       paramInt = localaz.getDimensionPixelSize(0, 0);
-      if ((paramInt != 0) && (paramInt != this.avD.getTextSize()))
+      if ((paramInt != 0) && (paramInt != this.awy.getTextSize()))
       {
-        this.avD.setTextSize(paramInt);
+        this.awy.setTextSize(paramInt);
         requestLayout();
       }
       paramInt = localaz.getInt(1, -1);
@@ -173,13 +173,13 @@ public class SwitchCompat
             }
             paramInt = paramAttributeSet.getStyle();
             paramInt = i & (paramInt ^ 0xFFFFFFFF);
-            paramAttributeSet = this.avD;
+            paramAttributeSet = this.awy;
             if ((paramInt & 0x1) == 0) {
               break label702;
             }
             bool = true;
             paramAttributeSet.setFakeBoldText(bool);
-            paramAttributeSet = this.avD;
+            paramAttributeSet = this.awy;
             if ((paramInt & 0x2) == 0) {
               break label708;
             }
@@ -200,17 +200,17 @@ public class SwitchCompat
     label702:
     label708:
     label738:
-    for (this.avH = new android.support.v7.g.a(getContext());; this.avH = null)
+    for (this.awC = new android.support.v7.g.a(getContext());; this.awC = null)
     {
-      localaz.avP.recycle();
-      ((az)localObject).avP.recycle();
+      localaz.awJ.recycle();
+      ((az)localObject).awJ.recycle();
       paramContext = ViewConfiguration.get(paramContext);
       this.mTouchSlop = paramContext.getScaledTouchSlop();
-      this.apL = paramContext.getScaledMinimumFlingVelocity();
+      this.aqG = paramContext.getScaledMinimumFlingVelocity();
       refreshDrawableState();
       setChecked(isChecked());
       return;
-      this.avE = getTextColors();
+      this.awz = getTextColors();
       break;
       paramAttributeSet = Typeface.SANS_SERIF;
       break label502;
@@ -226,8 +226,8 @@ public class SwitchCompat
       break label552;
       f = 0.0F;
       break label573;
-      this.avD.setFakeBoldText(false);
-      this.avD.setTextSkewX(0.0F);
+      this.awy.setFakeBoldText(false);
+      this.awy.setTextSkewX(0.0F);
       setSwitchTypeface(paramAttributeSet);
       break label579;
     }
@@ -235,61 +235,61 @@ public class SwitchCompat
   
   private boolean getTargetCheckedState()
   {
-    return this.avv > 0.5F;
+    return this.awq > 0.5F;
   }
   
   private int getThumbOffset()
   {
     if (bh.d(this)) {}
-    for (float f = 1.0F - this.avv;; f = this.avv) {
+    for (float f = 1.0F - this.awq;; f = this.awq) {
       return (int)(f * getThumbScrollRange() + 0.5F);
     }
   }
   
   private int getThumbScrollRange()
   {
-    if (this.avf != null)
+    if (this.awb != null)
     {
       Rect localRect2 = this.mTempRect;
-      this.avf.getPadding(localRect2);
-      if (this.ava != null) {}
-      for (Rect localRect1 = x.r(this.ava);; localRect1 = x.ajS) {
-        return this.avw - this.avy - localRect2.left - localRect2.right - localRect1.left - localRect1.right;
+      this.awb.getPadding(localRect2);
+      if (this.avW != null) {}
+      for (Rect localRect1 = x.r(this.avW);; localRect1 = x.akM) {
+        return this.awr - this.awt - localRect2.left - localRect2.right - localRect1.left - localRect1.right;
       }
     }
     return 0;
   }
   
-  private void mp()
+  private void mA()
   {
-    if ((this.avf != null) && ((this.avj) || (this.avk)))
+    if ((this.avW != null) && ((this.avZ) || (this.awa)))
     {
-      this.avf = this.avf.mutate();
-      if (this.avj) {
-        android.support.v4.graphics.drawable.a.a(this.avf, this.avh);
+      this.avW = this.avW.mutate();
+      if (this.avZ) {
+        android.support.v4.graphics.drawable.a.a(this.avW, this.avX);
       }
-      if (this.avk) {
-        android.support.v4.graphics.drawable.a.a(this.avf, this.avi);
+      if (this.awa) {
+        android.support.v4.graphics.drawable.a.a(this.avW, this.avY);
       }
-      if (this.avf.isStateful()) {
-        this.avf.setState(getDrawableState());
+      if (this.avW.isStateful()) {
+        this.avW.setState(getDrawableState());
       }
     }
   }
   
-  private void mq()
+  private void mz()
   {
-    if ((this.ava != null) && ((this.avd) || (this.ave)))
+    if ((this.awb != null) && ((this.awe) || (this.awf)))
     {
-      this.ava = this.ava.mutate();
-      if (this.avd) {
-        android.support.v4.graphics.drawable.a.a(this.ava, this.avb);
+      this.awb = this.awb.mutate();
+      if (this.awe) {
+        android.support.v4.graphics.drawable.a.a(this.awb, this.awc);
       }
-      if (this.ave) {
-        android.support.v4.graphics.drawable.a.a(this.ava, this.avc);
+      if (this.awf) {
+        android.support.v4.graphics.drawable.a.a(this.awb, this.awd);
       }
-      if (this.ava.isStateful()) {
-        this.ava.setState(getDrawableState());
+      if (this.awb.isStateful()) {
+        this.awb.setState(getDrawableState());
       }
     }
   }
@@ -297,16 +297,16 @@ public class SwitchCompat
   private Layout q(CharSequence paramCharSequence)
   {
     TextPaint localTextPaint;
-    if (this.avH != null)
+    if (this.awC != null)
     {
-      paramCharSequence = this.avH.getTransformation(paramCharSequence, this);
-      localTextPaint = this.avD;
+      paramCharSequence = this.awC.getTransformation(paramCharSequence, this);
+      localTextPaint = this.awy;
       if (paramCharSequence == null) {
         break label62;
       }
     }
     label62:
-    for (int i = (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, this.avD));; i = 0)
+    for (int i = (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, this.awy));; i = 0)
     {
       return new StaticLayout(paramCharSequence, localTextPaint, i, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
       break;
@@ -316,23 +316,23 @@ public class SwitchCompat
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = this.mTempRect;
-    int j = this.avz;
-    int n = this.avA;
-    int i2 = this.avB;
-    int i1 = this.avC;
+    int j = this.awu;
+    int n = this.awv;
+    int i2 = this.aww;
+    int i1 = this.awx;
     int i3 = j + getThumbOffset();
     Object localObject;
     int i4;
     label139:
     int m;
     int k;
-    if (this.ava != null)
+    if (this.avW != null)
     {
-      localObject = x.r(this.ava);
-      if (this.avf == null) {
+      localObject = x.r(this.avW);
+      if (this.awb == null) {
         break label340;
       }
-      this.avf.getPadding(localRect);
+      this.awb.getPadding(localRect);
       i4 = localRect.left;
       if (localObject == null) {
         break label320;
@@ -354,7 +354,7 @@ public class SwitchCompat
       }
       k = i1 - (((Rect)localObject).bottom - localRect.bottom);
       label201:
-      this.avf.setBounds(i, j, m, k);
+      this.awb.setBounds(i, j, m, k);
     }
     label307:
     label314:
@@ -362,12 +362,12 @@ public class SwitchCompat
     label340:
     for (int i = i4 + i3;; i = i3)
     {
-      if (this.ava != null)
+      if (this.avW != null)
       {
-        this.ava.getPadding(localRect);
+        this.avW.getPadding(localRect);
         j = i - localRect.left;
-        i = i + this.avy + localRect.right;
-        this.ava.setBounds(j, n, i, i1);
+        i = i + this.awt + localRect.right;
+        this.avW.setBounds(j, n, i, i1);
         localObject = getBackground();
         if (localObject != null) {
           android.support.v4.graphics.drawable.a.a((Drawable)localObject, j, n, i, i1);
@@ -375,7 +375,7 @@ public class SwitchCompat
       }
       super.draw(paramCanvas);
       return;
-      localObject = x.ajS;
+      localObject = x.akM;
       break;
       k = i1;
       break label201;
@@ -395,11 +395,11 @@ public class SwitchCompat
     if (Build.VERSION.SDK_INT >= 21) {
       super.drawableHotspotChanged(paramFloat1, paramFloat2);
     }
-    if (this.ava != null) {
-      android.support.v4.graphics.drawable.a.a(this.ava, paramFloat1, paramFloat2);
+    if (this.avW != null) {
+      android.support.v4.graphics.drawable.a.a(this.avW, paramFloat1, paramFloat2);
     }
-    if (this.avf != null) {
-      android.support.v4.graphics.drawable.a.a(this.avf, paramFloat1, paramFloat2);
+    if (this.awb != null) {
+      android.support.v4.graphics.drawable.a.a(this.awb, paramFloat1, paramFloat2);
     }
   }
   
@@ -408,7 +408,7 @@ public class SwitchCompat
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
     boolean bool2 = false;
-    Drawable localDrawable = this.ava;
+    Drawable localDrawable = this.avW;
     boolean bool1 = bool2;
     if (localDrawable != null)
     {
@@ -417,7 +417,7 @@ public class SwitchCompat
         bool1 = localDrawable.setState(arrayOfInt) | false;
       }
     }
-    localDrawable = this.avf;
+    localDrawable = this.awb;
     bool2 = bool1;
     if (localDrawable != null)
     {
@@ -441,10 +441,10 @@ public class SwitchCompat
     do
     {
       return i;
-      j = super.getCompoundPaddingLeft() + this.avw;
+      j = super.getCompoundPaddingLeft() + this.awr;
       i = j;
     } while (TextUtils.isEmpty(getText()));
-    return j + this.avn;
+    return j + this.awi;
   }
   
   public int getCompoundPaddingRight()
@@ -457,90 +457,90 @@ public class SwitchCompat
     do
     {
       return i;
-      j = super.getCompoundPaddingRight() + this.avw;
+      j = super.getCompoundPaddingRight() + this.awr;
       i = j;
     } while (TextUtils.isEmpty(getText()));
-    return j + this.avn;
+    return j + this.awi;
   }
   
   public boolean getShowText()
   {
-    return this.avr;
+    return this.awm;
   }
   
   public boolean getSplitTrack()
   {
-    return this.avo;
+    return this.awj;
   }
   
   public int getSwitchMinWidth()
   {
-    return this.avm;
+    return this.awh;
   }
   
   public int getSwitchPadding()
   {
-    return this.avn;
+    return this.awi;
   }
   
   public CharSequence getTextOff()
   {
-    return this.avq;
+    return this.awl;
   }
   
   public CharSequence getTextOn()
   {
-    return this.avp;
+    return this.awk;
   }
   
   public Drawable getThumbDrawable()
   {
-    return this.ava;
+    return this.avW;
   }
   
   public int getThumbTextPadding()
   {
-    return this.avl;
+    return this.awg;
   }
   
   public ColorStateList getThumbTintList()
   {
-    return this.avb;
+    return this.avX;
   }
   
   public PorterDuff.Mode getThumbTintMode()
   {
-    return this.avc;
+    return this.avY;
   }
   
   public Drawable getTrackDrawable()
   {
-    return this.avf;
+    return this.awb;
   }
   
   public ColorStateList getTrackTintList()
   {
-    return this.avh;
+    return this.awc;
   }
   
   public PorterDuff.Mode getTrackTintMode()
   {
-    return this.avi;
+    return this.awd;
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.ava != null) {
-      this.ava.jumpToCurrentState();
+    if (this.avW != null) {
+      this.avW.jumpToCurrentState();
     }
-    if (this.avf != null) {
-      this.avf.jumpToCurrentState();
+    if (this.awb != null) {
+      this.awb.jumpToCurrentState();
     }
-    if ((this.avI != null) && (this.avI.isStarted()))
+    if ((this.awD != null) && (this.awD.isStarted()))
     {
-      this.avI.end();
-      this.avI = null;
+      this.awD.end();
+      this.awD = null;
     }
   }
   
@@ -548,7 +548,7 @@ public class SwitchCompat
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
     if (isChecked()) {
-      mergeDrawableStates(arrayOfInt, gZ);
+      mergeDrawableStates(arrayOfInt, hY);
     }
     return arrayOfInt;
   }
@@ -557,7 +557,7 @@ public class SwitchCompat
   {
     super.onDraw(paramCanvas);
     Object localObject1 = this.mTempRect;
-    Object localObject3 = this.avf;
+    Object localObject3 = this.awb;
     int k;
     int m;
     int n;
@@ -568,14 +568,14 @@ public class SwitchCompat
     if (localObject3 != null)
     {
       ((Drawable)localObject3).getPadding((Rect)localObject1);
-      k = this.avA;
-      m = this.avC;
+      k = this.awv;
+      m = this.awx;
       n = ((Rect)localObject1).top;
       i1 = ((Rect)localObject1).bottom;
-      localObject2 = this.ava;
+      localObject2 = this.avW;
       if (localObject3 != null)
       {
-        if ((!this.avo) || (localObject2 == null)) {
+        if ((!this.awj) || (localObject2 == null)) {
           break label322;
         }
         Rect localRect = x.r((Drawable)localObject2);
@@ -594,15 +594,15 @@ public class SwitchCompat
       if (!getTargetCheckedState()) {
         break label331;
       }
-      localObject1 = this.avF;
+      localObject1 = this.awA;
       label180:
       if (localObject1 != null)
       {
         localObject3 = getDrawableState();
-        if (this.avE != null) {
-          this.avD.setColor(this.avE.getColorForState((int[])localObject3, 0));
+        if (this.awz != null) {
+          this.awy.setColor(this.awz.getColorForState((int[])localObject3, 0));
         }
-        this.avD.drawableState = ((int[])localObject3);
+        this.awy.drawableState = ((int[])localObject3);
         if (localObject2 == null) {
           break label340;
         }
@@ -627,7 +627,7 @@ public class SwitchCompat
       break;
       ((Drawable)localObject3).draw(paramCanvas);
       break label151;
-      localObject1 = this.avG;
+      localObject1 = this.awB;
       break label180;
     }
   }
@@ -644,7 +644,7 @@ public class SwitchCompat
     paramAccessibilityNodeInfo.setClassName("android.widget.Switch");
     if (isChecked()) {}
     CharSequence localCharSequence2;
-    for (CharSequence localCharSequence1 = this.avp;; localCharSequence1 = this.avq)
+    for (CharSequence localCharSequence1 = this.awk;; localCharSequence1 = this.awl)
     {
       if (!TextUtils.isEmpty(localCharSequence1))
       {
@@ -665,13 +665,13 @@ public class SwitchCompat
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     Rect localRect1;
-    if (this.ava != null)
+    if (this.avW != null)
     {
       localRect1 = this.mTempRect;
-      if (this.avf != null)
+      if (this.awb != null)
       {
-        this.avf.getPadding(localRect1);
-        Rect localRect2 = x.r(this.ava);
+        this.awb.getPadding(localRect1);
+        Rect localRect2 = x.r(this.avW);
         paramInt2 = Math.max(0, localRect2.left - localRect1.left);
         paramInt1 = Math.max(0, localRect2.right - localRect1.right);
       }
@@ -681,32 +681,32 @@ public class SwitchCompat
       if (bh.d(this))
       {
         paramInt3 = getPaddingLeft() + paramInt2;
-        paramInt4 = this.avw + paramInt3 - paramInt2 - paramInt1;
+        paramInt4 = this.awr + paramInt3 - paramInt2 - paramInt1;
         label110:
         switch (getGravity() & 0x70)
         {
         default: 
           paramInt2 = getPaddingTop();
-          paramInt1 = this.avx + paramInt2;
+          paramInt1 = this.aws + paramInt2;
         }
       }
       for (;;)
       {
-        this.avz = paramInt3;
-        this.avA = paramInt2;
-        this.avC = paramInt1;
-        this.avB = paramInt4;
+        this.awu = paramInt3;
+        this.awv = paramInt2;
+        this.awx = paramInt1;
+        this.aww = paramInt4;
         return;
         localRect1.setEmpty();
         break;
         paramInt4 = getWidth() - getPaddingRight() - paramInt1;
-        paramInt3 = paramInt1 + (paramInt2 + (paramInt4 - this.avw));
+        paramInt3 = paramInt1 + (paramInt2 + (paramInt4 - this.awr));
         break label110;
-        paramInt2 = (getPaddingTop() + getHeight() - getPaddingBottom()) / 2 - this.avx / 2;
-        paramInt1 = this.avx + paramInt2;
+        paramInt2 = (getPaddingTop() + getHeight() - getPaddingBottom()) / 2 - this.aws / 2;
+        paramInt1 = this.aws + paramInt2;
         continue;
         paramInt1 = getHeight() - getPaddingBottom();
-        paramInt2 = paramInt1 - this.avx;
+        paramInt2 = paramInt1 - this.aws;
       }
       paramInt1 = 0;
       paramInt2 = 0;
@@ -716,50 +716,50 @@ public class SwitchCompat
   public void onMeasure(int paramInt1, int paramInt2)
   {
     int m = 0;
-    if (this.avr)
+    if (this.awm)
     {
-      if (this.avF == null) {
-        this.avF = q(this.avp);
+      if (this.awA == null) {
+        this.awA = q(this.awk);
       }
-      if (this.avG == null) {
-        this.avG = q(this.avq);
+      if (this.awB == null) {
+        this.awB = q(this.awl);
       }
     }
     Rect localRect = this.mTempRect;
     int i;
     int k;
-    if (this.ava != null)
+    if (this.avW != null)
     {
-      this.ava.getPadding(localRect);
-      j = this.ava.getIntrinsicWidth() - localRect.left - localRect.right;
-      i = this.ava.getIntrinsicHeight();
-      if (!this.avr) {
+      this.avW.getPadding(localRect);
+      j = this.avW.getIntrinsicWidth() - localRect.left - localRect.right;
+      i = this.avW.getIntrinsicHeight();
+      if (!this.awm) {
         break label303;
       }
-      k = Math.max(this.avF.getWidth(), this.avG.getWidth()) + this.avl * 2;
+      k = Math.max(this.awA.getWidth(), this.awB.getWidth()) + this.awg * 2;
       label133:
-      this.avy = Math.max(k, j);
-      if (this.avf == null) {
+      this.awt = Math.max(k, j);
+      if (this.awb == null) {
         break label309;
       }
-      this.avf.getPadding(localRect);
+      this.awb.getPadding(localRect);
     }
-    for (int j = this.avf.getIntrinsicHeight();; j = m)
+    for (int j = this.awb.getIntrinsicHeight();; j = m)
     {
       int i1 = localRect.left;
       int n = localRect.right;
       m = i1;
       k = n;
-      if (this.ava != null)
+      if (this.avW != null)
       {
-        localRect = x.r(this.ava);
+        localRect = x.r(this.avW);
         m = Math.max(i1, localRect.left);
         k = Math.max(n, localRect.right);
       }
-      k = Math.max(this.avm, m + this.avy * 2 + k);
+      k = Math.max(this.awh, m + this.awt * 2 + k);
       i = Math.max(j, i);
-      this.avw = k;
-      this.avx = i;
+      this.awr = k;
+      this.aws = i;
       super.onMeasure(paramInt1, paramInt2);
       if (getMeasuredHeight() < i) {
         setMeasuredDimension(getMeasuredWidthAndState(), i);
@@ -780,7 +780,7 @@ public class SwitchCompat
   {
     super.onPopulateAccessibilityEvent(paramAccessibilityEvent);
     if (isChecked()) {}
-    for (CharSequence localCharSequence = this.avp;; localCharSequence = this.avq)
+    for (CharSequence localCharSequence = this.awk;; localCharSequence = this.awl)
     {
       if (localCharSequence != null) {
         paramAccessibilityEvent.getText().add(localCharSequence);
@@ -814,18 +814,18 @@ public class SwitchCompat
           break;
         }
         i = j;
-        if (this.ava != null)
+        if (this.avW != null)
         {
           i = getThumbOffset();
-          this.ava.getPadding(this.mTempRect);
-          int k = this.avA;
+          this.avW.getPadding(this.mTempRect);
+          int k = this.awv;
           int m = this.mTouchSlop;
-          int n = i + this.avz - this.mTouchSlop;
-          int i1 = this.avy;
+          int n = i + this.awu - this.mTouchSlop;
+          int i1 = this.awt;
           int i2 = this.mTempRect.left;
           int i3 = this.mTempRect.right;
           int i4 = this.mTouchSlop;
-          int i5 = this.avC;
+          int i5 = this.awx;
           int i6 = this.mTouchSlop;
           i = j;
           if (f1 > n)
@@ -847,11 +847,11 @@ public class SwitchCompat
         if (i == 0) {
           break;
         }
-        this.avs = 1;
-        this.avt = f1;
-        this.avu = f2;
+        this.awn = 1;
+        this.awo = f1;
+        this.awp = f2;
         break;
-        switch (this.avs)
+        switch (this.awn)
         {
         case 0: 
         default: 
@@ -859,18 +859,18 @@ public class SwitchCompat
         case 1: 
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if ((Math.abs(f1 - this.avt) <= this.mTouchSlop) && (Math.abs(f2 - this.avu) <= this.mTouchSlop)) {
+          if ((Math.abs(f1 - this.awo) <= this.mTouchSlop) && (Math.abs(f2 - this.awp) <= this.mTouchSlop)) {
             break;
           }
-          this.avs = 2;
+          this.awn = 2;
           getParent().requestDisallowInterceptTouchEvent(true);
-          this.avt = f1;
-          this.avu = f2;
+          this.awo = f1;
+          this.awp = f2;
           return true;
         case 2: 
           float f4 = paramMotionEvent.getX();
           i = getThumbScrollRange();
-          f1 = f4 - this.avt;
+          f1 = f4 - this.awo;
           if (i != 0)
           {
             f1 /= i;
@@ -878,7 +878,7 @@ public class SwitchCompat
             if (bh.d(this)) {
               f2 = -f1;
             }
-            f2 += this.avv;
+            f2 += this.awq;
             if (f2 >= 0.0F) {
               break label474;
             }
@@ -886,10 +886,10 @@ public class SwitchCompat
           }
           for (;;)
           {
-            if (f1 == this.avv) {
+            if (f1 == this.awq) {
               break label486;
             }
-            this.avt = f4;
+            this.awo = f4;
             setThumbPosition(f1);
             return true;
             if (f1 > 0.0F)
@@ -906,9 +906,9 @@ public class SwitchCompat
           }
         }
       }
-      if (this.avs == 2)
+      if (this.awn == 2)
       {
-        this.avs = 0;
+        this.awn = 0;
         boolean bool2;
         if ((paramMotionEvent.getAction() == 1) && (isEnabled()))
         {
@@ -919,7 +919,7 @@ public class SwitchCompat
           }
           this.mVelocityTracker.computeCurrentVelocity(1000);
           f1 = this.mVelocityTracker.getXVelocity();
-          if (Math.abs(f1) <= this.apL) {
+          if (Math.abs(f1) <= this.aqG) {
             break label657;
           }
           if (!bh.d(this)) {
@@ -964,7 +964,7 @@ public class SwitchCompat
           }
         }
       }
-      this.avs = 0;
+      this.awn = 0;
       this.mVelocityTracker.clear();
     }
   }
@@ -979,18 +979,18 @@ public class SwitchCompat
       if (paramBoolean) {}
       for (;;)
       {
-        this.avI = ObjectAnimator.ofFloat(this, auZ, new float[] { f });
-        this.avI.setDuration(250L);
+        this.awD = ObjectAnimator.ofFloat(this, avV, new float[] { f });
+        this.awD.setDuration(250L);
         if (Build.VERSION.SDK_INT >= 18) {
-          this.avI.setAutoCancel(true);
+          this.awD.setAutoCancel(true);
         }
-        this.avI.start();
+        this.awD.start();
         return;
         f = 0.0F;
       }
     }
-    if (this.avI != null) {
-      this.avI.cancel();
+    if (this.awD != null) {
+      this.awD.cancel();
     }
     if (paramBoolean) {}
     for (;;)
@@ -1008,36 +1008,36 @@ public class SwitchCompat
   
   public void setShowText(boolean paramBoolean)
   {
-    if (this.avr != paramBoolean)
+    if (this.awm != paramBoolean)
     {
-      this.avr = paramBoolean;
+      this.awm = paramBoolean;
       requestLayout();
     }
   }
   
   public void setSplitTrack(boolean paramBoolean)
   {
-    this.avo = paramBoolean;
+    this.awj = paramBoolean;
     invalidate();
   }
   
   public void setSwitchMinWidth(int paramInt)
   {
-    this.avm = paramInt;
+    this.awh = paramInt;
     requestLayout();
   }
   
   public void setSwitchPadding(int paramInt)
   {
-    this.avn = paramInt;
+    this.awi = paramInt;
     requestLayout();
   }
   
   public void setSwitchTypeface(Typeface paramTypeface)
   {
-    if (((this.avD.getTypeface() != null) && (!this.avD.getTypeface().equals(paramTypeface))) || ((this.avD.getTypeface() == null) && (paramTypeface != null)))
+    if (((this.awy.getTypeface() != null) && (!this.awy.getTypeface().equals(paramTypeface))) || ((this.awy.getTypeface() == null) && (paramTypeface != null)))
     {
-      this.avD.setTypeface(paramTypeface);
+      this.awy.setTypeface(paramTypeface);
       requestLayout();
       invalidate();
     }
@@ -1045,22 +1045,22 @@ public class SwitchCompat
   
   public void setTextOff(CharSequence paramCharSequence)
   {
-    this.avq = paramCharSequence;
+    this.awl = paramCharSequence;
     requestLayout();
   }
   
   public void setTextOn(CharSequence paramCharSequence)
   {
-    this.avp = paramCharSequence;
+    this.awk = paramCharSequence;
     requestLayout();
   }
   
   public void setThumbDrawable(Drawable paramDrawable)
   {
-    if (this.ava != null) {
-      this.ava.setCallback(null);
+    if (this.avW != null) {
+      this.avW.setCallback(null);
     }
-    this.ava = paramDrawable;
+    this.avW = paramDrawable;
     if (paramDrawable != null) {
       paramDrawable.setCallback(this);
     }
@@ -1069,7 +1069,7 @@ public class SwitchCompat
   
   void setThumbPosition(float paramFloat)
   {
-    this.avv = paramFloat;
+    this.awq = paramFloat;
     invalidate();
   }
   
@@ -1080,30 +1080,30 @@ public class SwitchCompat
   
   public void setThumbTextPadding(int paramInt)
   {
-    this.avl = paramInt;
+    this.awg = paramInt;
     requestLayout();
   }
   
   public void setThumbTintList(ColorStateList paramColorStateList)
   {
-    this.avb = paramColorStateList;
-    this.avd = true;
-    mq();
+    this.avX = paramColorStateList;
+    this.avZ = true;
+    mA();
   }
   
   public void setThumbTintMode(PorterDuff.Mode paramMode)
   {
-    this.avc = paramMode;
-    this.ave = true;
-    mq();
+    this.avY = paramMode;
+    this.awa = true;
+    mA();
   }
   
   public void setTrackDrawable(Drawable paramDrawable)
   {
-    if (this.avf != null) {
-      this.avf.setCallback(null);
+    if (this.awb != null) {
+      this.awb.setCallback(null);
     }
-    this.avf = paramDrawable;
+    this.awb = paramDrawable;
     if (paramDrawable != null) {
       paramDrawable.setCallback(this);
     }
@@ -1117,16 +1117,16 @@ public class SwitchCompat
   
   public void setTrackTintList(ColorStateList paramColorStateList)
   {
-    this.avh = paramColorStateList;
-    this.avj = true;
-    mp();
+    this.awc = paramColorStateList;
+    this.awe = true;
+    mz();
   }
   
   public void setTrackTintMode(PorterDuff.Mode paramMode)
   {
-    this.avi = paramMode;
-    this.avk = true;
-    mp();
+    this.awd = paramMode;
+    this.awf = true;
+    mz();
   }
   
   public void toggle()
@@ -1141,12 +1141,12 @@ public class SwitchCompat
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.ava) || (paramDrawable == this.avf);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.avW) || (paramDrawable == this.awb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.SwitchCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -12,28 +12,28 @@ public final class a
   private static final int[] FOCUSED_STATE_SET;
   private static final int[] PRESSED_STATE_SET;
   private static final int[] SELECTED_STATE_SET;
-  public static final boolean iQ;
-  private static final int[] iR;
-  private static final int[] iS;
-  private static final int[] iT;
-  private static final int[] iU;
-  private static final int[] iV;
-  private static final int[] iW;
+  public static final boolean jP;
+  private static final int[] jQ;
+  private static final int[] jR;
+  private static final int[] jS;
+  private static final int[] jT;
+  private static final int[] jU;
+  private static final int[] jV;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21) {}
     for (boolean bool = true;; bool = false)
     {
-      iQ = bool;
+      jP = bool;
       PRESSED_STATE_SET = new int[] { 16842919 };
-      iR = new int[] { 16843623, 16842908 };
+      jQ = new int[] { 16843623, 16842908 };
       FOCUSED_STATE_SET = new int[] { 16842908 };
-      iS = new int[] { 16843623 };
-      iT = new int[] { 16842913, 16842919 };
-      iU = new int[] { 16842913, 16843623, 16842908 };
-      iV = new int[] { 16842913, 16842908 };
-      iW = new int[] { 16842913, 16843623 };
+      jR = new int[] { 16843623 };
+      jS = new int[] { 16842913, 16842919 };
+      jT = new int[] { 16842913, 16843623, 16842908 };
+      jU = new int[] { 16842913, 16842908 };
+      jV = new int[] { 16842913, 16843623 };
       SELECTED_STATE_SET = new int[] { 16842913 };
       return;
     }
@@ -51,7 +51,7 @@ public final class a
     for (int i = paramColorStateList.getColorForState(paramArrayOfInt, paramColorStateList.getDefaultColor());; i = 0)
     {
       int j = i;
-      if (iQ) {
+      if (jP) {
         j = E(i);
       }
       return j;
@@ -60,31 +60,31 @@ public final class a
   
   public static ColorStateList b(ColorStateList paramColorStateList)
   {
-    if (iQ)
+    if (jP)
     {
       arrayOfInt1 = SELECTED_STATE_SET;
-      i = a(paramColorStateList, iT);
+      i = a(paramColorStateList, jS);
       arrayOfInt2 = StateSet.NOTHING;
       j = a(paramColorStateList, PRESSED_STATE_SET);
       return new ColorStateList(new int[][] { arrayOfInt1, arrayOfInt2 }, new int[] { i, j });
     }
-    int[] arrayOfInt1 = iT;
-    int i = a(paramColorStateList, iT);
-    int[] arrayOfInt2 = iU;
-    int j = a(paramColorStateList, iU);
-    int[] arrayOfInt3 = iV;
-    int k = a(paramColorStateList, iV);
-    int[] arrayOfInt4 = iW;
-    int m = a(paramColorStateList, iW);
+    int[] arrayOfInt1 = jS;
+    int i = a(paramColorStateList, jS);
+    int[] arrayOfInt2 = jT;
+    int j = a(paramColorStateList, jT);
+    int[] arrayOfInt3 = jU;
+    int k = a(paramColorStateList, jU);
+    int[] arrayOfInt4 = jV;
+    int m = a(paramColorStateList, jV);
     int[] arrayOfInt5 = SELECTED_STATE_SET;
     int[] arrayOfInt6 = PRESSED_STATE_SET;
     int n = a(paramColorStateList, PRESSED_STATE_SET);
-    int[] arrayOfInt7 = iR;
-    int i1 = a(paramColorStateList, iR);
+    int[] arrayOfInt7 = jQ;
+    int i1 = a(paramColorStateList, jQ);
     int[] arrayOfInt8 = FOCUSED_STATE_SET;
     int i2 = a(paramColorStateList, FOCUSED_STATE_SET);
-    int[] arrayOfInt9 = iS;
-    int i3 = a(paramColorStateList, iS);
+    int[] arrayOfInt9 = jR;
+    int i3 = a(paramColorStateList, jR);
     return new ColorStateList(new int[][] { arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, arrayOfInt8, arrayOfInt9, StateSet.NOTHING }, new int[] { i, j, k, m, 0, n, i1, i2, i3, 0 });
   }
 }

@@ -9,19 +9,19 @@ import com.tencent.mm.plugin.appbrand.o;
 public final class c
   implements g
 {
-  public static final c iIA;
+  public static final c jiE;
   
   static
   {
     AppMethodBeat.i(44024);
-    iIA = new c();
+    jiE = new c();
     AppMethodBeat.o(44024);
   }
   
-  public final boolean Dy(String paramString)
+  public final boolean HB(String paramString)
   {
     AppMethodBeat.i(44021);
-    boolean bool = d.Dy(paramString);
+    boolean bool = d.HB(paramString);
     AppMethodBeat.o(44021);
     return bool;
   }
@@ -29,9 +29,9 @@ public final class c
   public final int M(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(163910);
-    if (((paramAppBrandRuntime instanceof o)) && (paramAppBrandRuntime.Eg() != null))
+    if (((paramAppBrandRuntime instanceof o)) && (paramAppBrandRuntime.DJ() != null))
     {
-      int i = a.qA(((o)paramAppBrandRuntime).aNc().jdx);
+      int i = a.rn(((o)paramAppBrandRuntime).aTS().jDK);
       AppMethodBeat.o(163910);
       return i;
     }
@@ -63,17 +63,17 @@ public final class c
     return bool;
   }
   
-  public final p aNY()
+  public final p aUO()
   {
     AppMethodBeat.i(174692);
-    p localp = d.aNY();
+    p localp = d.aUO();
     AppMethodBeat.o(174692);
     return localp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.c
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ import java.nio.ByteBuffer;
 public final class b<Data>
   implements n<byte[], Data>
 {
-  private final b<Data> aHg;
+  private final b<Data> aHW;
   
   public b(b<Data> paramb)
   {
-    this.aHg = paramb;
+    this.aHW = paramb;
   }
   
   public static final class a
@@ -26,7 +26,7 @@ public final class b<Data>
       AppMethodBeat.i(77206);
       paramr = new b(new b.b()
       {
-        public final Class<ByteBuffer> nK()
+        public final Class<ByteBuffer> nU()
         {
           return ByteBuffer.class;
         }
@@ -40,25 +40,25 @@ public final class b<Data>
   {
     public abstract Data l(byte[] paramArrayOfByte);
     
-    public abstract Class<Data> nK();
+    public abstract Class<Data> nU();
   }
   
   static final class c<Data>
     implements d<Data>
   {
-    private final b.b<Data> aHg;
-    private final byte[] aHi;
+    private final b.b<Data> aHW;
+    private final byte[] aHY;
     
     c(byte[] paramArrayOfByte, b.b<Data> paramb)
     {
-      this.aHi = paramArrayOfByte;
-      this.aHg = paramb;
+      this.aHY = paramArrayOfByte;
+      this.aHW = paramb;
     }
     
     public final void a(g paramg, d.a<? super Data> parama)
     {
       AppMethodBeat.i(77207);
-      parama.P(this.aHg.l(this.aHi));
+      parama.R(this.aHW.l(this.aHY));
       AppMethodBeat.o(77207);
     }
     
@@ -66,17 +66,17 @@ public final class b<Data>
     
     public final void cleanup() {}
     
-    public final Class<Data> nK()
+    public final Class<Data> nU()
     {
       AppMethodBeat.i(77208);
-      Class localClass = this.aHg.nK();
+      Class localClass = this.aHW.nU();
       AppMethodBeat.o(77208);
       return localClass;
     }
     
-    public final a nL()
+    public final a nV()
     {
-      return a.aBX;
+      return a.aCP;
     }
   }
   
@@ -88,7 +88,7 @@ public final class b<Data>
       AppMethodBeat.i(77210);
       paramr = new b(new b.b()
       {
-        public final Class<InputStream> nK()
+        public final Class<InputStream> nU()
         {
           return InputStream.class;
         }
@@ -100,7 +100,7 @@ public final class b<Data>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.b
  * JD-Core Version:    0.7.0.1
  */

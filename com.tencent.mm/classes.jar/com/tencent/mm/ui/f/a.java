@@ -2,7 +2,7 @@ package com.tencent.mm.ui.f;
 
 public abstract interface a
 {
-  public abstract void aB(String paramString, int paramInt1, int paramInt2);
+  public abstract void aE(String paramString, int paramInt1, int paramInt2);
 }
 
 

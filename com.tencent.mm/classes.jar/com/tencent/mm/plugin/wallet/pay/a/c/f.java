@@ -9,9 +9,9 @@ import com.tencent.mm.plugin.wallet_core.model.ah;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.e;
 import com.tencent.mm.wallet_core.c.y;
 import com.tencent.mm.wallet_core.tenpay.model.m;
@@ -22,33 +22,33 @@ import org.json.JSONObject;
 public class f
   extends m
 {
-  public String dCT;
-  public String dCU;
-  public String dCV;
-  public String dCW;
-  public String dCX;
-  private int dtb;
+  public int Bik;
+  public d Bil;
+  public String dAF;
+  public String dAG;
+  public String dAH;
+  public String dAI;
+  public String dAJ;
+  private int dqL;
   public String errMsg;
   private String mReqKey;
   private int scene;
-  public Orders vIq;
-  public int zPQ;
-  public d zPR;
+  public Orders wSu;
   
   public f(PayInfo paramPayInfo, int paramInt)
   {
     AppMethodBeat.i(69281);
-    this.vIq = null;
+    this.wSu = null;
     this.mReqKey = null;
-    this.zPQ = 0;
-    this.zPR = null;
+    this.Bik = 0;
+    this.Bil = null;
     this.scene = 0;
-    this.dtb = 0;
+    this.dqL = 0;
     HashMap localHashMap1;
     HashMap localHashMap2;
     if (paramPayInfo == null)
     {
-      ad.e("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "error payinfo is null %s", new Object[] { bt.eGN().toString() });
+      ac.e("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "error payinfo is null %s", new Object[] { bs.eWi().toString() });
       this.mReqKey = "";
       this.scene = paramInt;
       localHashMap1 = new HashMap();
@@ -59,31 +59,31 @@ public class f
       localHashMap1.put("is_merge", "1");
       Object localObject = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
       localHashMap1.put("is_root", "0");
-      if ((localObject == null) || ((!((com.tencent.mm.plugin.fingerprint.d.a)localObject).ctT()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).cub()))) {
+      if ((localObject == null) || ((!((com.tencent.mm.plugin.fingerprint.d.a)localObject).cHf()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).cHn()))) {
         break label273;
       }
       localHashMap1.put("is_device_open_touch", "1");
-      localObject = ((com.tencent.mm.plugin.fingerprint.d.a)localObject).ctX();
+      localObject = ((com.tencent.mm.plugin.fingerprint.d.a)localObject).cHj();
       if (localObject != null) {
         localHashMap1.putAll((Map)localObject);
       }
-      ad.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "is_device_open_touch is true");
+      ac.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "is_device_open_touch is true");
     }
     for (;;)
     {
       if (paramPayInfo != null) {
-        this.dtb = paramPayInfo.dtb;
+        this.dqL = paramPayInfo.dqL;
       }
       setPayInfo(paramPayInfo, localHashMap1, localHashMap2);
       setRequestData(localHashMap1);
       setWXRequestData(localHashMap2);
       AppMethodBeat.o(69281);
       return;
-      this.mReqKey = paramPayInfo.dcE;
+      this.mReqKey = paramPayInfo.dac;
       break;
       label273:
       localHashMap1.put("is_device_open_touch", "0");
-      ad.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "is_device_open_touch is false");
+      ac.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "is_device_open_touch is false");
     }
   }
   
@@ -110,9 +110,9 @@ public class f
       try
       {
         this.errMsg = paramString;
-        this.vIq = Orders.aP(paramJSONObject);
-        if (this.vIq != null) {
-          this.vIq.dcE = this.mReqKey;
+        this.wSu = Orders.aQ(paramJSONObject);
+        if (this.wSu != null) {
+          this.wSu.dac = this.mReqKey;
         }
         long l = paramJSONObject.optJSONObject("bindqueryresp").optLong("time_stamp");
         if (l > 0L)
@@ -121,37 +121,37 @@ public class f
           paramString = paramJSONObject.optJSONObject("query_order_info");
           if (paramString != null)
           {
-            ad.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "get query_order_info");
-            s.ecc().Ait = (paramString.optInt("query_order_time", 5) * 1000);
-            s.ecc().mRetryCount = paramString.optInt("query_order_count", 0);
-            s.ecc().Aiu = paramString.optString("default_query_order_wording", "");
+            ac.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "get query_order_info");
+            s.ery().BAO = (paramString.optInt("query_order_time", 5) * 1000);
+            s.ery().mRetryCount = paramString.optInt("query_order_count", 0);
+            s.ery().BAP = paramString.optString("default_query_order_wording", "");
           }
           paramString = paramJSONObject.optString("pay_remind_wording");
-          s.ecc().Aiv = paramString;
-          ah.a(paramJSONObject.optJSONObject("bindqueryresp"), this.dtb, false, false);
+          s.ery().BAQ = paramString;
+          ah.a(paramJSONObject.optJSONObject("bindqueryresp"), this.dqL, false, false);
           paramString = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
           if (paramString == null) {
             break label864;
           }
-          ad.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "IFingerPrintMgr is not null");
-          paramString.ctU();
-          paramInt = s.ecc().ecL();
+          ac.i("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "IFingerPrintMgr is not null");
+          paramString.cHg();
+          paramInt = s.ery().esg();
           if (paramInt != 0) {
             break label792;
           }
-          if (paramString.ctS())
+          if (paramString.cHe())
           {
-            paramString.lp(s.ecc().ecJ());
-            paramString.lq(false);
+            paramString.mh(s.ery().ese());
+            paramString.mi(false);
             if (paramJSONObject.has("real_name_info"))
             {
               paramString = paramJSONObject.optJSONObject("real_name_info");
-              this.dCT = paramString.optString("guide_flag");
-              this.dCU = paramString.optString("guide_wording");
-              this.dCV = paramString.optString("left_button_wording");
-              this.dCW = paramString.optString("right_button_wording");
-              this.dCX = paramString.optString("upload_credit_url");
-              this.zPQ = paramString.optInt("guide_type", 0);
+              this.dAF = paramString.optString("guide_flag");
+              this.dAG = paramString.optString("guide_wording");
+              this.dAH = paramString.optString("left_button_wording");
+              this.dAI = paramString.optString("right_button_wording");
+              this.dAJ = paramString.optString("upload_credit_url");
+              this.Bik = paramString.optInt("guide_type", 0);
             }
             if (paramJSONObject.has("user_notify_info"))
             {
@@ -160,7 +160,7 @@ public class f
                 break label875;
               }
               paramString = null;
-              this.zPR = paramString;
+              this.Bil = paramString;
             }
             if (paramJSONObject.has("cashier_switch_info"))
             {
@@ -186,35 +186,35 @@ public class f
         }
         else
         {
-          ad.w("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "no time_stamp in qrcodeusebindquery.");
+          ac.w("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "no time_stamp in qrcodeusebindquery.");
           continue;
         }
-        if (!paramString.cua()) {
+        if (!paramString.cHm()) {
           continue;
         }
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "hy: " + paramString.toString());
+        ac.e("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "hy: " + paramString.toString());
         AppMethodBeat.o(69283);
         return;
       }
-      paramString.lq(s.ecc().ecJ());
-      paramString.lp(false);
+      paramString.mi(s.ery().ese());
+      paramString.mh(false);
       continue;
       label792:
-      if ((paramInt == 1) && (paramString.ctS()))
+      if ((paramInt == 1) && (paramString.cHe()))
       {
-        paramString.lp(s.ecc().ecJ());
-        paramString.lq(false);
+        paramString.mh(s.ery().ese());
+        paramString.mi(false);
       }
-      else if ((paramInt == 2) && (paramString.cua()))
+      else if ((paramInt == 2) && (paramString.cHm()))
       {
-        paramString.lq(s.ecc().ecJ());
-        paramString.lp(false);
+        paramString.mi(s.ery().ese());
+        paramString.mh(false);
         continue;
         label864:
-        ad.e("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "IFingerPrintMgr is null");
+        ac.e("MicroMsg.NetSceneTenpayQueryOrderInfoByQRCode", "IFingerPrintMgr is null");
         continue;
         label875:
         paramInt = paramString.optInt("notify_flag", 0);
@@ -229,11 +229,11 @@ public class f
         else
         {
           paramString = new d();
-          paramString.zPz = paramInt;
-          paramString.zPA = str1;
-          paramString.tfH = str2;
-          paramString.tfI = str3;
-          paramString.zPB = str4;
+          paramString.BhT = paramInt;
+          paramString.BhU = str1;
+          paramString.unW = str2;
+          paramString.unX = str3;
+          paramString.BhV = str4;
         }
       }
     }
@@ -243,11 +243,11 @@ public class f
   {
     AppMethodBeat.i(69282);
     super.onGYNetEnd2(parame, paramJSONObject);
-    int i = this.dtb;
+    int i = this.dqL;
     paramJSONObject = this.mReqKey;
     int j = parame.errCode;
-    ad.v("Micromsg.WalletPayLinkReport", "kvQrcode scene %s reqKey %s errcode %s", new Object[] { Integer.valueOf(i), paramJSONObject, Integer.valueOf(j) });
-    h.vKh.f(15000, new Object[] { Integer.valueOf(i), paramJSONObject, Integer.valueOf(j) });
+    ac.v("Micromsg.WalletPayLinkReport", "kvQrcode scene %s reqKey %s errcode %s", new Object[] { Integer.valueOf(i), paramJSONObject, Integer.valueOf(j) });
+    h.wUl.f(15000, new Object[] { Integer.valueOf(i), paramJSONObject, Integer.valueOf(j) });
     AppMethodBeat.o(69282);
   }
 }

@@ -1,76 +1,51 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class ml
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String gPh;
-  public String key;
+  public String Ebl;
+  public String Ebs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(191087);
+    AppMethodBeat.i(124417);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.key == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: key");
-        AppMethodBeat.o(191087);
-        throw paramVarArgs;
+      if (this.Ebs != null) {
+        paramVarArgs.d(2, this.Ebs);
       }
-      if (this.gPh == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: val");
-        AppMethodBeat.o(191087);
-        throw paramVarArgs;
+      if (this.Ebl != null) {
+        paramVarArgs.d(3, this.Ebl);
       }
-      if (this.key != null) {
-        paramVarArgs.d(1, this.key);
-      }
-      if (this.gPh != null) {
-        paramVarArgs.d(2, this.gPh);
-      }
-      AppMethodBeat.o(191087);
+      AppMethodBeat.o(124417);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.key == null) {
-        break label370;
+      if (this.Ebs == null) {
+        break label274;
       }
     }
-    label370:
-    for (paramInt = f.a.a.b.b.a.e(1, this.key) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(2, this.Ebs) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.gPh != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.gPh);
+      if (this.Ebl != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Ebl);
       }
-      AppMethodBeat.o(191087);
+      AppMethodBeat.o(124417);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.key == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: key");
-          AppMethodBeat.o(191087);
-          throw paramVarArgs;
-        }
-        if (this.gPh == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: val");
-          AppMethodBeat.o(191087);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(191087);
+        AppMethodBeat.o(124417);
         return 0;
       }
       if (paramInt == 3)
@@ -80,25 +55,25 @@ public final class ml
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(191087);
+          AppMethodBeat.o(124417);
           return -1;
-        case 1: 
-          localml.key = locala.KhF.readString();
-          AppMethodBeat.o(191087);
+        case 2: 
+          localml.Ebs = locala.LVo.readString();
+          AppMethodBeat.o(124417);
           return 0;
         }
-        localml.gPh = locala.KhF.readString();
-        AppMethodBeat.o(191087);
+        localml.Ebl = locala.LVo.readString();
+        AppMethodBeat.o(124417);
         return 0;
       }
-      AppMethodBeat.o(191087);
+      AppMethodBeat.o(124417);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ml
  * JD-Core Version:    0.7.0.1
  */

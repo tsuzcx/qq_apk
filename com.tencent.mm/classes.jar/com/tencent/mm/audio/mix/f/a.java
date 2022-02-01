@@ -8,17 +8,17 @@ public final class a
   public static boolean H(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136884);
-    if (!hT(paramInt1))
+    if (!hD(paramInt1))
     {
       AppMethodBeat.o(136884);
       return false;
     }
-    if (!hU(paramInt2))
+    if (!hE(paramInt2))
     {
       AppMethodBeat.o(136884);
       return false;
     }
-    if (!hV(paramInt3))
+    if (!hF(paramInt3))
     {
       AppMethodBeat.o(136884);
       return false;
@@ -27,7 +27,7 @@ public final class a
     return true;
   }
   
-  private static boolean hT(int paramInt)
+  private static boolean hD(int paramInt)
   {
     AppMethodBeat.i(136885);
     if (paramInt <= 0)
@@ -45,7 +45,7 @@ public final class a
     return false;
   }
   
-  private static boolean hU(int paramInt)
+  private static boolean hE(int paramInt)
   {
     AppMethodBeat.i(136886);
     if (paramInt <= 0)
@@ -63,7 +63,7 @@ public final class a
     return false;
   }
   
-  private static boolean hV(int paramInt)
+  private static boolean hF(int paramInt)
   {
     AppMethodBeat.i(136887);
     if (paramInt <= 0) {
@@ -80,7 +80,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.a
  * JD-Core Version:    0.7.0.1
  */

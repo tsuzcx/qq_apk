@@ -10,9 +10,9 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.setting.model.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -23,35 +23,35 @@ public class SettingsPluginsNotifyUI
   private f screen;
   private int state;
   
-  private void LE(int paramInt)
+  private void NE(int paramInt)
   {
     AppMethodBeat.i(74332);
     this.state = paramInt;
     if ((this.state == 1) || (this.state == 0))
     {
-      g.afB().afk().set(8200, Boolean.TRUE);
+      g.agR().agA().set(8200, Boolean.TRUE);
       if (this.state == 1)
       {
-        g.afB().afk().set(8201, Integer.valueOf(22));
-        g.afB().afk().set(8208, Integer.valueOf(8));
-        ((k)g.ab(k.class)).apL().c(new l(true, 22, 8));
+        g.agR().agA().set(8201, Integer.valueOf(22));
+        g.agR().agA().set(8208, Integer.valueOf(8));
+        ((k)g.ab(k.class)).awA().c(new l(true, 22, 8));
       }
     }
     for (;;)
     {
-      doh();
+      dCr();
       AppMethodBeat.o(74332);
       return;
-      g.afB().afk().set(8201, Integer.valueOf(0));
-      g.afB().afk().set(8208, Integer.valueOf(0));
-      ((k)g.ab(k.class)).apL().c(new l(true, 0, 0));
+      g.agR().agA().set(8201, Integer.valueOf(0));
+      g.agR().agA().set(8208, Integer.valueOf(0));
+      ((k)g.ab(k.class)).awA().c(new l(true, 0, 0));
       continue;
-      g.afB().afk().set(8200, Boolean.FALSE);
-      ((k)g.ab(k.class)).apL().c(new l());
+      g.agR().agA().set(8200, Boolean.FALSE);
+      ((k)g.ab(k.class)).awA().c(new l());
     }
   }
   
-  private void doh()
+  private void dCr()
   {
     AppMethodBeat.i(74331);
     this.screen.removeAll();
@@ -110,12 +110,12 @@ public class SettingsPluginsNotifyUI
   public void initView()
   {
     AppMethodBeat.i(74333);
-    g.afC();
-    Boolean localBoolean = Boolean.valueOf(bt.l((Boolean)g.afB().afk().get(8200, null)));
-    g.afC();
-    int j = bt.a((Integer)g.afB().afk().get(8201, null), 22);
-    g.afC();
-    int k = bt.a((Integer)g.afB().afk().get(8208, null), 8);
+    g.agS();
+    Boolean localBoolean = Boolean.valueOf(bs.l((Boolean)g.agR().agA().get(8200, null)));
+    g.agS();
+    int j = bs.a((Integer)g.agR().agA().get(8201, null), 22);
+    g.agS();
+    int k = bs.a((Integer)g.agR().agA().get(8208, null), 8);
     int i;
     if (localBoolean.booleanValue()) {
       if (j == k) {
@@ -124,7 +124,7 @@ public class SettingsPluginsNotifyUI
     }
     for (this.state = i;; this.state = 2)
     {
-      ad.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
+      ac.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
       this.state = this.state;
       this.screen = getPreferenceScreen();
       setMMTitle(2131763353);
@@ -159,13 +159,13 @@ public class SettingsPluginsNotifyUI
     AppMethodBeat.i(74330);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_plugings_disturb_on")) {
-      LE(0);
+      NE(0);
     }
     if (paramf.equals("settings_plugings_disturb_on_night")) {
-      LE(1);
+      NE(1);
     }
     if (paramf.equals("settings_plugings_disturb_off")) {
-      LE(2);
+      NE(2);
     }
     AppMethodBeat.o(74330);
     return false;
@@ -175,7 +175,7 @@ public class SettingsPluginsNotifyUI
   {
     AppMethodBeat.i(74329);
     super.onResume();
-    doh();
+    dCr();
     AppMethodBeat.o(74329);
   }
   
@@ -187,7 +187,7 @@ public class SettingsPluginsNotifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsPluginsNotifyUI
  * JD-Core Version:    0.7.0.1
  */

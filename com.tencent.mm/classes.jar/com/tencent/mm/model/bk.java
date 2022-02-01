@@ -1,90 +1,74 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bo;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class bk
 {
-  public static int gOC;
-  private static ConcurrentHashMap<Long, String> gOD;
+  public static int hpc;
+  private static ConcurrentHashMap<Long, String> hpd;
   
   static
   {
     AppMethodBeat.i(150189);
-    gOC = 0;
-    gOD = new ConcurrentHashMap();
+    hpc = 0;
+    hpd = new ConcurrentHashMap();
     AppMethodBeat.o(150189);
   }
   
-  public static void A(bl parambl)
+  public static void A(bo parambo)
   {
     AppMethodBeat.i(150177);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
     {
-      Object localObject = bw.K(parambl.esh, "msgsource");
-      if ((localObject != null) && (bt.aGh((String)((Map)localObject).get(".msgsource.sec_msg_node.sfn")) == 1)) {
+      Object localObject = bv.L(parambo.eul, "msgsource");
+      if ((localObject != null) && (bs.aLy((String)((Map)localObject).get(".msgsource.sec_msg_node.sfn")) == 1)) {
         try
         {
-          localObject = parambl.esh.substring(parambl.esh.indexOf("<sec_msg_node"), parambl.esh.indexOf("</sec_msg_node") + 12 + 2);
-          ad.i("MicroMsg.MsgSourceHelper", (String)localObject);
-          if (!bt.isNullOrNil((String)localObject))
+          localObject = parambo.eul.substring(parambo.eul.indexOf("<sec_msg_node"), parambo.eul.indexOf("</sec_msg_node") + 12 + 2);
+          ac.i("MicroMsg.MsgSourceHelper", (String)localObject);
+          if (!bs.isNullOrNil((String)localObject))
           {
             String str = ((String)localObject).substring(((String)localObject).indexOf("<sfn"), ((String)localObject).indexOf("</sfn") + 3 + 2);
-            parambl.mZ(parambl.esh.replace((CharSequence)localObject, ((String)localObject).replace(str, "<sfn>0<sfn/>")));
+            parambo.qf(parambo.eul.replace((CharSequence)localObject, ((String)localObject).replace(str, "<sfn>0<sfn/>")));
           }
           AppMethodBeat.o(150177);
           return;
         }
-        catch (Exception parambl)
+        catch (Exception parambo)
         {
-          ad.printErrStackTrace("MicroMsg.MsgSourceHelper", parambl, "resetShareForbidden msg exception", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.MsgSourceHelper", parambo, "resetShareForbidden msg exception", new Object[0]);
         }
       }
     }
     AppMethodBeat.o(150177);
   }
   
-  public static void A(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(150184);
-    if ((!bt.isNullOrNil(paramString)) && (paramLong > 0L) && (gOD.containsKey(Long.valueOf(paramLong))))
-    {
-      paramString = ((k)g.ab(k.class)).cOI().aD(paramString, paramLong);
-      if ((!bt.isNullOrNil(paramString.field_talker)) && (paramString.field_msgSvrId > 0L))
-      {
-        ad.i("MicroMsg.MsgSourceHelper", "found sec msg of %s", new Object[] { Long.valueOf(paramLong) });
-        a(paramString, (String)gOD.get(Long.valueOf(paramLong)));
-        gOD.remove(Long.valueOf(paramLong));
-      }
-    }
-    AppMethodBeat.o(150184);
-  }
-  
   @Deprecated
-  public static String B(bl parambl)
+  public static String B(bo parambo)
   {
     AppMethodBeat.i(150178);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
     {
-      parambl = bw.K(parambl.esh, "msgsource");
-      if (parambl != null)
+      parambo = bv.L(parambo.eul, "msgsource");
+      if (parambo != null)
       {
-        parambl = (String)parambl.get(".msgsource.sec_msg_node.show-h5");
-        if (!bt.isNullOrNil(parambl))
+        parambo = (String)parambo.get(".msgsource.sec_msg_node.show-h5");
+        if (!bs.isNullOrNil(parambo))
         {
           AppMethodBeat.o(150178);
-          return parambl;
+          return parambo;
         }
       }
     }
@@ -92,19 +76,35 @@ public final class bk
     return "";
   }
   
-  public static String C(bl parambl)
+  public static void B(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(150184);
+    if ((!bs.isNullOrNil(paramString)) && (paramLong > 0L) && (hpd.containsKey(Long.valueOf(paramLong))))
+    {
+      paramString = ((k)g.ab(k.class)).dcr().aF(paramString, paramLong);
+      if ((!bs.isNullOrNil(paramString.field_talker)) && (paramString.field_msgSvrId > 0L))
+      {
+        ac.i("MicroMsg.MsgSourceHelper", "found sec msg of %s", new Object[] { Long.valueOf(paramLong) });
+        a(paramString, (String)hpd.get(Long.valueOf(paramLong)));
+        hpd.remove(Long.valueOf(paramLong));
+      }
+    }
+    AppMethodBeat.o(150184);
+  }
+  
+  public static String C(bo parambo)
   {
     AppMethodBeat.i(150179);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
     {
-      parambl = bw.K(parambl.esh, "msgsource");
-      if (parambl != null)
+      parambo = bv.L(parambo.eul, "msgsource");
+      if (parambo != null)
       {
-        parambl = (String)parambl.get(".msgsource.sec_msg_node.share-tip-url");
-        if (!bt.isNullOrNil(parambl))
+        parambo = (String)parambo.get(".msgsource.sec_msg_node.share-tip-url");
+        if (!bs.isNullOrNil(parambo))
         {
           AppMethodBeat.o(150179);
-          return parambl;
+          return parambo;
         }
       }
     }
@@ -112,15 +112,15 @@ public final class bk
     return "";
   }
   
-  public static int D(bl parambl)
+  public static int D(bo parambo)
   {
     AppMethodBeat.i(150180);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
     {
-      parambl = bw.K(parambl.esh, "msgsource");
-      if (parambl != null)
+      parambo = bv.L(parambo.eul, "msgsource");
+      if (parambo != null)
       {
-        int i = bt.aGh((String)parambl.get(".msgsource.sec_msg_node.clip-len"));
+        int i = bs.aLy((String)parambo.get(".msgsource.sec_msg_node.clip-len"));
         AppMethodBeat.o(150180);
         return i;
       }
@@ -129,15 +129,15 @@ public final class bk
     return 0;
   }
   
-  public static int E(bl parambl)
+  public static int E(bo parambo)
   {
     AppMethodBeat.i(150182);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
     {
-      parambl = bw.K(parambl.esh, "msgsource");
-      if (parambl != null)
+      parambo = bv.L(parambo.eul, "msgsource");
+      if (parambo != null)
       {
-        int i = bt.aGh((String)parambl.get(".msgsource.sec_msg_node.fold-reduce"));
+        int i = bs.aLy((String)parambo.get(".msgsource.sec_msg_node.fold-reduce"));
         AppMethodBeat.o(150182);
         return i;
       }
@@ -146,27 +146,27 @@ public final class bk
     return 0;
   }
   
-  public static void G(String paramString, boolean paramBoolean)
+  public static void H(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(150170);
     if ("bizflag".equals(paramString))
     {
       if (paramBoolean)
       {
-        gOC |= 0x1;
+        hpc |= 0x1;
         AppMethodBeat.o(150170);
         return;
       }
-      gOC &= 0xFFFFFFFE;
+      hpc &= 0xFFFFFFFE;
     }
     AppMethodBeat.o(150170);
   }
   
-  public static String SM()
+  public static String TG()
   {
     AppMethodBeat.i(150173);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(bt.nullAsNil(asm()));
+    ((StringBuilder)localObject).append(bs.nullAsNil(azd()));
     if (((StringBuilder)localObject).length() > 0)
     {
       ((StringBuilder)localObject).insert(0, "<msgsource>");
@@ -179,29 +179,29 @@ public final class bk
     return null;
   }
   
-  public static void a(bl parambl, int paramInt)
+  public static void a(bo parambo, int paramInt)
   {
     AppMethodBeat.i(163510);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
     {
-      Map localMap = bw.K(parambl.esh, "msgsource");
+      Map localMap = bv.L(parambo.eul, "msgsource");
       if (localMap != null)
       {
         localMap.put(".msgsource.sec_msg_node.clip-len", String.valueOf(paramInt));
-        a(parambl, r(localMap));
+        a(parambo, q(localMap));
       }
     }
     AppMethodBeat.o(163510);
   }
   
-  public static void a(bl parambl, String paramString)
+  public static void a(bo parambo, String paramString)
   {
     AppMethodBeat.i(163511);
-    if (parambl != null)
+    if (parambo != null)
     {
-      String str2 = parambl.esh;
+      String str2 = parambo.eul;
       String str1;
-      if (!bt.isNullOrNil(str2))
+      if (!bs.isNullOrNil(str2))
       {
         str1 = str2;
         if (str2.trim().startsWith("<msgsource>")) {}
@@ -210,22 +210,22 @@ public final class bk
       {
         str1 = "<msgsource></msgsource>";
       }
-      parambl.mZ(str1.replaceAll("(?s)<sec_msg_node[^>]*>.*?</sec_msg_node>", "").replace("</msgsource>", paramString + "</msgsource>"));
-      ((k)g.ab(k.class)).cOI().b(parambl.field_msgSvrId, parambl);
+      parambo.qf(str1.replaceAll("(?s)<sec_msg_node[^>]*>.*?</sec_msg_node>", "").replace("</msgsource>", paramString + "</msgsource>"));
+      ((k)g.ab(k.class)).dcr().b(parambo.field_msgSvrId, parambo);
     }
     AppMethodBeat.o(163511);
   }
   
-  public static String asm()
+  public static String azd()
   {
     AppMethodBeat.i(150171);
     Object localObject = new StringBuilder();
-    if (gOC != 0)
+    if (hpc != 0)
     {
       ((StringBuilder)localObject).append("<");
       ((StringBuilder)localObject).append("bizflag");
       ((StringBuilder)localObject).append(">");
-      ((StringBuilder)localObject).append(gOC);
+      ((StringBuilder)localObject).append(hpc);
       ((StringBuilder)localObject).append("</");
       ((StringBuilder)localObject).append("bizflag");
       ((StringBuilder)localObject).append(">");
@@ -235,23 +235,23 @@ public final class bk
     return localObject;
   }
   
-  public static String asn()
+  public static String aze()
   {
     AppMethodBeat.i(150187);
-    String str = (String)g.afB().afk().get(70, null);
-    if (!bt.isNullOrNil(str)) {
-      g.afB().afk().set(70, "");
+    String str = (String)g.agR().agA().get(70, null);
+    if (!bs.isNullOrNil(str)) {
+      g.agR().agA().set(70, "");
     }
-    ad.d("MicroMsg.MsgSourceHelper", "getMsg ccr[%s]", new Object[] { str });
+    ac.d("MicroMsg.MsgSourceHelper", "getMsg ccr[%s]", new Object[] { str });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<msgsource>");
-    localStringBuilder.append(bt.nullAsNil(str));
-    if (gOC != 0)
+    localStringBuilder.append(bs.nullAsNil(str));
+    if (hpc != 0)
     {
       localStringBuilder.append("<");
       localStringBuilder.append("bizflag");
       localStringBuilder.append(">");
-      localStringBuilder.append(gOC);
+      localStringBuilder.append(hpc);
       localStringBuilder.append("</");
       localStringBuilder.append("bizflag");
       localStringBuilder.append(">");
@@ -263,17 +263,17 @@ public final class bk
       AppMethodBeat.o(150187);
       return "";
     }
-    ad.d("MicroMsg.MsgSourceHelper", "getAndResetMsgSrcIn msgsource[%s]", new Object[] { str });
+    ac.d("MicroMsg.MsgSourceHelper", "getAndResetMsgSrcIn msgsource[%s]", new Object[] { str });
     AppMethodBeat.o(150187);
     return str;
   }
   
-  public static void b(bl parambl, String paramString)
+  public static void b(bo parambo, String paramString)
   {
     AppMethodBeat.i(163512);
-    String str2 = parambl.esh;
+    String str2 = parambo.eul;
     String str1;
-    if (!bt.isNullOrNil(str2))
+    if (!bs.isNullOrNil(str2))
     {
       str1 = str2;
       if (str2.trim().startsWith("<msgsource>")) {}
@@ -282,27 +282,27 @@ public final class bk
     {
       str1 = "<msgsource></msgsource>";
     }
-    parambl.mZ(str1.replaceAll("(?s)<alnode[^>]*>.*?</alnode>", "").replace("</msgsource>", paramString + "</msgsource>"));
+    parambo.qf(str1.replaceAll("(?s)<alnode[^>]*>.*?</alnode>", "").replace("</msgsource>", paramString + "</msgsource>"));
     AppMethodBeat.o(163512);
   }
   
   public static void d(long paramLong, String paramString)
   {
     AppMethodBeat.i(150183);
-    if ((paramLong > 0L) && (!bt.isNullOrNil(paramString))) {
-      gOD.put(Long.valueOf(paramLong), paramString);
+    if ((paramLong > 0L) && (!bs.isNullOrNil(paramString))) {
+      hpd.put(Long.valueOf(paramLong), paramString);
     }
     AppMethodBeat.o(150183);
   }
   
-  public static String r(Map<String, String> paramMap)
+  public static String q(Map<String, String> paramMap)
   {
     AppMethodBeat.i(150185);
-    int i = bt.aGh((String)paramMap.get(".msgsource.sec_msg_node.sfn"));
-    String str1 = bt.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.show-h5"));
-    int j = bt.aGh((String)paramMap.get(".msgsource.sec_msg_node.clip-len"));
-    String str2 = bt.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.share-tip-url"));
-    int k = bt.aGh((String)paramMap.get(".msgsource.sec_msg_node.fold-reduce"));
+    int i = bs.aLy((String)paramMap.get(".msgsource.sec_msg_node.sfn"));
+    String str1 = bs.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.show-h5"));
+    int j = bs.aLy((String)paramMap.get(".msgsource.sec_msg_node.clip-len"));
+    String str2 = bs.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.share-tip-url"));
+    int k = bs.aLy((String)paramMap.get(".msgsource.sec_msg_node.fold-reduce"));
     paramMap = new StringBuilder();
     paramMap.append("<sec_msg_node>");
     paramMap.append("<sfn>").append(i).append("</sfn>");
@@ -316,10 +316,10 @@ public final class bk
     return paramMap;
   }
   
-  public static String s(Map<String, String> paramMap)
+  public static String r(Map<String, String> paramMap)
   {
     AppMethodBeat.i(163513);
-    int i = bt.aGh((String)paramMap.get(".msgsource.alnode.cf"));
+    int i = bs.aLy((String)paramMap.get(".msgsource.alnode.cf"));
     paramMap = new StringBuilder();
     paramMap.append("<alnode>");
     paramMap.append("<cf>").append(i).append("</cf>");
@@ -329,22 +329,80 @@ public final class bk
     return paramMap;
   }
   
-  public static void un(String paramString)
+  public static int w(bo parambo)
+  {
+    AppMethodBeat.i(150172);
+    if (parambo == null)
+    {
+      AppMethodBeat.o(150172);
+      return 0;
+    }
+    parambo = bv.L(parambo.eul, "msgsource");
+    if (parambo != null)
+    {
+      parambo = (String)parambo.get(".msgsource.bizflag");
+      if (bs.isNullOrNil(parambo)) {}
+    }
+    for (int i = bs.getInt(parambo, 0);; i = 0)
+    {
+      AppMethodBeat.o(150172);
+      return i;
+    }
+  }
+  
+  public static boolean x(bo parambo)
+  {
+    AppMethodBeat.i(150174);
+    if ((parambo != null) && (!bs.isNullOrNil(parambo.eul)))
+    {
+      parambo = bv.L(parambo.eul, "msgsource");
+      if ((parambo != null) && (bs.aLy((String)parambo.get(".msgsource.sec_msg_node.sfn")) == 1))
+      {
+        AppMethodBeat.o(150174);
+        return true;
+      }
+    }
+    AppMethodBeat.o(150174);
+    return false;
+  }
+  
+  public static boolean y(bo parambo)
+  {
+    AppMethodBeat.i(150175);
+    if (parambo != null)
+    {
+      int i = E(parambo);
+      if ((parambo.isText()) && (i >= 3))
+      {
+        AppMethodBeat.o(150175);
+        return true;
+      }
+      if ((parambo.eZm()) && (i >= 2))
+      {
+        AppMethodBeat.o(150175);
+        return true;
+      }
+    }
+    AppMethodBeat.o(150175);
+    return false;
+  }
+  
+  public static void yt(String paramString)
   {
     AppMethodBeat.i(150188);
-    ad.i("MicroMsg.MsgSourceHelper", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { paramString, "" });
+    ac.i("MicroMsg.MsgSourceHelper", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { paramString, "" });
     AppMethodBeat.o(150188);
   }
   
-  public static String uo(String paramString)
+  public static String yu(String paramString)
   {
     AppMethodBeat.i(163514);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(163514);
       return null;
     }
-    paramString = bw.K(paramString, "msgsource");
+    paramString = bv.L(paramString, "msgsource");
     if (paramString != null)
     {
       paramString = (String)paramString.get(".msgsource.sec_msg_node.uuid");
@@ -355,10 +413,10 @@ public final class bk
     return null;
   }
   
-  public static String up(String paramString)
+  public static String yv(String paramString)
   {
     AppMethodBeat.i(163515);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(163515);
       return null;
@@ -370,76 +428,18 @@ public final class bk
     return paramString;
   }
   
-  public static int w(bl parambl)
-  {
-    AppMethodBeat.i(150172);
-    if (parambl == null)
-    {
-      AppMethodBeat.o(150172);
-      return 0;
-    }
-    parambl = bw.K(parambl.esh, "msgsource");
-    if (parambl != null)
-    {
-      parambl = (String)parambl.get(".msgsource.bizflag");
-      if (bt.isNullOrNil(parambl)) {}
-    }
-    for (int i = bt.getInt(parambl, 0);; i = 0)
-    {
-      AppMethodBeat.o(150172);
-      return i;
-    }
-  }
-  
-  public static boolean x(bl parambl)
-  {
-    AppMethodBeat.i(150174);
-    if ((parambl != null) && (!bt.isNullOrNil(parambl.esh)))
-    {
-      parambl = bw.K(parambl.esh, "msgsource");
-      if ((parambl != null) && (bt.aGh((String)parambl.get(".msgsource.sec_msg_node.sfn")) == 1))
-      {
-        AppMethodBeat.o(150174);
-        return true;
-      }
-    }
-    AppMethodBeat.o(150174);
-    return false;
-  }
-  
-  public static boolean y(bl parambl)
-  {
-    AppMethodBeat.i(150175);
-    if (parambl != null)
-    {
-      int i = E(parambl);
-      if ((parambl.isText()) && (i >= 3))
-      {
-        AppMethodBeat.o(150175);
-        return true;
-      }
-      if ((parambl.eJO()) && (i >= 2))
-      {
-        AppMethodBeat.o(150175);
-        return true;
-      }
-    }
-    AppMethodBeat.o(150175);
-    return false;
-  }
-  
-  public static boolean z(bl parambl)
+  public static boolean z(bo parambo)
   {
     AppMethodBeat.i(150176);
-    if (parambl != null)
+    if (parambo != null)
     {
-      int i = E(parambl);
-      if ((parambl.isText()) && (i > 3))
+      int i = E(parambo);
+      if ((parambo.isText()) && (i > 3))
       {
         AppMethodBeat.o(150176);
         return true;
       }
-      if ((parambl.eJO()) && (i > 2))
+      if ((parambo.eZm()) && (i > 2))
       {
         AppMethodBeat.o(150176);
         return true;
@@ -451,7 +451,7 @@ public final class bk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.bk
  * JD-Core Version:    0.7.0.1
  */

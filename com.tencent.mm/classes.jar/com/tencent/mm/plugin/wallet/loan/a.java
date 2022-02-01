@@ -15,7 +15,7 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(69177);
-    if (s.ecc().ecF()) {
+    if (s.ery().esa()) {
       b(paramActivity, WalletLoanCheckPwdUI.class, paramBundle);
     }
     for (;;)
@@ -40,7 +40,7 @@ public class a
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69178);
-    b(paramActivity, this.dow);
+    b(paramActivity, this.dmf);
     AppMethodBeat.o(69178);
   }
 }

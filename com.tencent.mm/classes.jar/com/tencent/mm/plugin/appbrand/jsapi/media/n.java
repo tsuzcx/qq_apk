@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class n
   extends a
@@ -15,35 +15,35 @@ public final class n
   public static final int CTRL_INDEX = 216;
   public static final String NAME = "saveVideoToPhotosAlbum";
   
-  final boolean In(String paramString)
+  final boolean Ms(String paramString)
   {
     AppMethodBeat.i(139885);
-    boolean bool = bt.nullAsNil(paramString).toLowerCase().contains("video");
+    boolean bool = bs.nullAsNil(paramString).toLowerCase().contains("video");
     AppMethodBeat.o(139885);
     return bool;
   }
   
-  final String Io(String paramString)
+  final String Mt(String paramString)
   {
     AppMethodBeat.i(139886);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "mp4";
     }
-    paramString = b.ahd(str);
+    paramString = b.alY(str);
     AppMethodBeat.o(139886);
     return paramString;
   }
   
-  final void Ip(final String paramString)
+  final void Mu(final String paramString)
   {
     AppMethodBeat.i(139887);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(139884);
-        Toast.makeText(aj.getContext(), aj.getContext().getString(2131764683, new Object[] { paramString }), 1).show();
+        Toast.makeText(ai.getContext(), ai.getContext().getString(2131764683, new Object[] { b.aLU(paramString) }), 1).show();
         AppMethodBeat.o(139884);
       }
     });
@@ -52,7 +52,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.n
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ public class PreferenceFooterCategory
   public PreferenceFooterCategory(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(190987);
+    AppMethodBeat.i(197198);
     setLayoutResource(2131494866);
-    AppMethodBeat.o(190987);
+    AppMethodBeat.o(197198);
   }
   
   public PreferenceFooterCategory(Context paramContext, AttributeSet paramAttributeSet)

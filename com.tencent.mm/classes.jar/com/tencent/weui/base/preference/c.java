@@ -14,16 +14,16 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class c
 {
-  private static HashMap<String, Constructor<?>> GfK;
-  private static final Class<?>[] GfL;
+  private static final Class<?>[] HFA;
+  private static HashMap<String, Constructor<?>> HFz;
   private final Object[] mConstructorArgs;
   final Context mContext;
   
   static
   {
     AppMethodBeat.i(160018);
-    GfL = new Class[] { Context.class, AttributeSet.class };
-    GfK = new HashMap();
+    HFA = new Class[] { Context.class, AttributeSet.class };
+    HFz = new HashMap();
     AppMethodBeat.o(160018);
   }
   
@@ -57,7 +57,7 @@ public final class c
   private Preference b(String paramString1, String paramString2, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(160015);
-    Object localObject1 = (Constructor)GfK.get(paramString1);
+    Object localObject1 = (Constructor)HFz.get(paramString1);
     if (localObject1 == null) {}
     for (;;)
     {
@@ -67,7 +67,7 @@ public final class c
         if (paramString2 != null)
         {
           localObject2 = paramString2 + paramString1;
-          localObject2 = ((ClassLoader)localObject3).loadClass((String)localObject2).getConstructor(GfL);
+          localObject2 = ((ClassLoader)localObject3).loadClass((String)localObject2).getConstructor(HFA);
           localObject1 = localObject2;
         }
       }
@@ -92,7 +92,7 @@ public final class c
       catch (Exception paramString2) {}
       try
       {
-        GfK.put(paramString1, localObject2);
+        HFz.put(paramString1, localObject2);
         localObject1 = localObject2;
         localObject3 = this.mConstructorArgs;
         localObject3[1] = paramAttributeSet;

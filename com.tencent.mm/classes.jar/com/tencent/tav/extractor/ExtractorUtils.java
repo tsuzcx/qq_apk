@@ -17,10 +17,10 @@ public class ExtractorUtils
   
   public static void applyMirror(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(202055);
+    AppMethodBeat.i(198116);
     if (paramMatrix == null)
     {
-      AppMethodBeat.o(202055);
+      AppMethodBeat.o(198116);
       return;
     }
     Matrix localMatrix = new Matrix();
@@ -30,7 +30,7 @@ public class ExtractorUtils
     for (;;)
     {
       paramMatrix.postConcat(localMatrix);
-      AppMethodBeat.o(202055);
+      AppMethodBeat.o(198116);
       return;
       localMatrix.postScale(-1.0F, 1.0F);
       localMatrix.postTranslate(paramInt2, 0.0F);
@@ -113,7 +113,7 @@ public class ExtractorUtils
   
   public static long getDuration(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(202048);
+    AppMethodBeat.i(198109);
     try
     {
       j = paramAssetExtractor.getTrackCount();
@@ -126,7 +126,7 @@ public class ExtractorUtils
       int j;
       MediaFormat localMediaFormat;
       String str;
-      AppMethodBeat.o(202048);
+      AppMethodBeat.o(198109);
       return 0L;
     }
     catch (Error paramAssetExtractor)
@@ -176,10 +176,10 @@ public class ExtractorUtils
     {
       if (l1 > 0L)
       {
-        AppMethodBeat.o(202048);
+        AppMethodBeat.o(198109);
         return l1;
       }
-      AppMethodBeat.o(202048);
+      AppMethodBeat.o(198109);
       return l2;
     }
   }
@@ -345,20 +345,20 @@ public class ExtractorUtils
   
   public static int getFrameRate(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(202059);
+    AppMethodBeat.i(198120);
     if (paramMediaFormat != null) {}
     try
     {
       if (paramMediaFormat.containsKey("frame-rate"))
       {
         int i = paramMediaFormat.getInteger("frame-rate");
-        AppMethodBeat.o(202059);
+        AppMethodBeat.o(198120);
         return i;
       }
     }
     catch (Exception paramMediaFormat)
     {
-      AppMethodBeat.o(202059);
+      AppMethodBeat.o(198120);
       return 0;
     }
     catch (Error paramMediaFormat)
@@ -370,48 +370,48 @@ public class ExtractorUtils
   
   public static ByteBuffer getInputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(202058);
+    AppMethodBeat.i(198119);
     if (Build.VERSION.SDK_INT < 21)
     {
       paramMediaCodec = paramMediaCodec.getInputBuffers()[paramInt];
-      AppMethodBeat.o(202058);
+      AppMethodBeat.o(198119);
       return paramMediaCodec;
     }
     paramMediaCodec = paramMediaCodec.getInputBuffer(paramInt);
-    AppMethodBeat.o(202058);
+    AppMethodBeat.o(198119);
     return paramMediaCodec;
   }
   
   public static ByteBuffer getOutputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(202057);
+    AppMethodBeat.i(198118);
     if (Build.VERSION.SDK_INT < 21)
     {
       paramMediaCodec = paramMediaCodec.getOutputBuffers()[paramInt];
-      AppMethodBeat.o(202057);
+      AppMethodBeat.o(198118);
       return paramMediaCodec;
     }
     paramMediaCodec = paramMediaCodec.getOutputBuffer(paramInt);
-    AppMethodBeat.o(202057);
+    AppMethodBeat.o(198118);
     return paramMediaCodec;
   }
   
   public static int getPreferRotation(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(202052);
+    AppMethodBeat.i(198113);
     try
     {
       paramAssetExtractor = getFirstFormat(paramAssetExtractor, "video/");
       if ((paramAssetExtractor != null) && (paramAssetExtractor.containsKey("rotation-degrees")))
       {
         int i = paramAssetExtractor.getInteger("rotation-degrees") / 90;
-        AppMethodBeat.o(202052);
+        AppMethodBeat.o(198113);
         return i;
       }
     }
     catch (Exception paramAssetExtractor)
     {
-      AppMethodBeat.o(202052);
+      AppMethodBeat.o(198113);
       return 0;
     }
     catch (Error paramAssetExtractor)
@@ -423,7 +423,7 @@ public class ExtractorUtils
   
   public static void getRotationMatrix(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(202053);
+    AppMethodBeat.i(198114);
     int i = paramInt1 % 4;
     paramInt1 = i;
     if (i < 0) {
@@ -448,7 +448,7 @@ public class ExtractorUtils
     for (;;)
     {
       paramMatrix.setValues(new float[] { f6, f4, f2, f5, f3, f1, 0.0F, 0.0F, 1.0F });
-      AppMethodBeat.o(202053);
+      AppMethodBeat.o(198114);
       return;
       f2 = paramInt3;
       f1 = 0.0F;
@@ -475,7 +475,7 @@ public class ExtractorUtils
   
   public static CGSize getTransformedSize(CGSize paramCGSize, int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(202054);
+    AppMethodBeat.i(198115);
     paramCGSize = paramCGSize.clone();
     if (Math.abs(paramInt) % 2 == 1)
     {
@@ -492,7 +492,7 @@ public class ExtractorUtils
     }
     for (;;)
     {
-      AppMethodBeat.o(202054);
+      AppMethodBeat.o(198115);
       return paramCGSize;
       label83:
       paramCGSize.height = ((int)Math.ceil(paramCGSize.width * 1.0F / paramFloat));
@@ -501,7 +501,7 @@ public class ExtractorUtils
   
   public static CGSize getVideoSize(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(202051);
+    AppMethodBeat.i(198112);
     for (;;)
     {
       try
@@ -524,7 +524,7 @@ public class ExtractorUtils
       {
         CGSize localCGSize;
         paramAssetExtractor = new CGSize();
-        AppMethodBeat.o(202051);
+        AppMethodBeat.o(198112);
         return paramAssetExtractor;
         localCGSize.height = paramAssetExtractor.getInteger("height");
         continue;
@@ -533,7 +533,7 @@ public class ExtractorUtils
       {
         continue;
       }
-      AppMethodBeat.o(202051);
+      AppMethodBeat.o(198112);
       return localCGSize;
       localCGSize.width = paramAssetExtractor.getInteger("width");
     }
@@ -541,14 +541,14 @@ public class ExtractorUtils
   
   public static boolean isSameExtractor(DecoderAssetTrack paramDecoderAssetTrack1, DecoderAssetTrack paramDecoderAssetTrack2)
   {
-    AppMethodBeat.i(202060);
+    AppMethodBeat.i(198121);
     if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null)) {}
     for (int i = 1; (i != 0) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath)); i = 0)
     {
-      AppMethodBeat.o(202060);
+      AppMethodBeat.o(198121);
       return true;
     }
-    AppMethodBeat.o(202060);
+    AppMethodBeat.o(198121);
     return false;
   }
   
@@ -561,7 +561,7 @@ public class ExtractorUtils
   
   public static float[] toOpenGL2DMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(202056);
+    AppMethodBeat.i(198117);
     float[] arrayOfFloat = new float[9];
     if (paramMatrix == null)
     {
@@ -584,13 +584,13 @@ public class ExtractorUtils
       swap(arrayOfFloat, 2, 6);
       swap(arrayOfFloat, 5, 7);
     }
-    AppMethodBeat.o(202056);
+    AppMethodBeat.o(198117);
     return arrayOfFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.extractor.ExtractorUtils
  * JD-Core Version:    0.7.0.1
  */

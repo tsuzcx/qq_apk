@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -24,13 +24,13 @@ public final class z
       localHashMap.put("package", URLEncoder.encode(paramString4, "UTF-8"));
       localHashMap.put("sign", URLEncoder.encode(paramString5, "UTF-8"));
       setRequestData(localHashMap);
-      ad.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "package: %s, sign: %s", new Object[] { paramString4, paramString5 });
+      ac.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "package: %s, sign: %s", new Object[] { paramString4, paramString5 });
       AppMethodBeat.o(69945);
       return;
     }
     catch (UnsupportedEncodingException paramString1)
     {
-      ad.printErrStackTrace("MicroMsg.NetSceneTenpayF2fJsapiCheck", paramString1, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.NetSceneTenpayF2fJsapiCheck", paramString1, "", new Object[0]);
       AppMethodBeat.o(69945);
     }
   }
@@ -53,7 +53,7 @@ public final class z
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69946);
-    ad.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ac.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     AppMethodBeat.o(69946);
   }
 }

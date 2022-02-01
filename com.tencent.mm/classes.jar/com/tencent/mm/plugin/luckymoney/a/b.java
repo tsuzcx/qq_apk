@@ -2,90 +2,90 @@ package com.tencent.mm.plugin.luckymoney.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.model.l;
-import com.tencent.mm.protocal.protobuf.cib;
-import com.tencent.mm.protocal.protobuf.cic;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cnf;
+import com.tencent.mm.protocal.protobuf.cng;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class b
 {
-  private static Map<String, l> sXH;
-  private static Map<String, cic> sXI;
-  private static Map<Long, cib> sXJ;
+  private static Map<String, l> ufU;
+  private static Map<String, cng> ufV;
+  private static Map<Long, cnf> ufW;
   
   static
   {
     AppMethodBeat.i(168789);
-    sXH = new HashMap();
-    sXI = new HashMap();
-    sXJ = new HashMap();
+    ufU = new HashMap();
+    ufV = new HashMap();
+    ufW = new HashMap();
     AppMethodBeat.o(168789);
   }
   
-  public static void a(Long paramLong, cib paramcib)
+  public static void a(Long paramLong, cnf paramcnf)
   {
     AppMethodBeat.i(168785);
-    sXJ.put(paramLong, paramcib);
+    ufW.put(paramLong, paramcnf);
     AppMethodBeat.o(168785);
   }
   
   public static void a(String paramString, l paraml)
   {
     AppMethodBeat.i(168781);
-    sXH.put(paramString, paraml);
+    ufU.put(paramString, paraml);
     AppMethodBeat.o(168781);
   }
   
-  public static void a(String paramString, cic paramcic)
+  public static void a(String paramString, cng paramcng)
   {
     AppMethodBeat.i(168783);
-    sXI.put(paramString, paramcic);
+    ufV.put(paramString, paramcng);
     AppMethodBeat.o(168783);
   }
   
-  public static l afi(String paramString)
+  public static l akc(String paramString)
   {
     AppMethodBeat.i(168782);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(168782);
       return null;
     }
-    paramString = (l)sXH.get(paramString);
+    paramString = (l)ufU.get(paramString);
     AppMethodBeat.o(168782);
     return paramString;
   }
   
-  public static cic afj(String paramString)
+  public static cng akd(String paramString)
   {
     AppMethodBeat.i(168784);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(168784);
       return null;
     }
-    paramString = (cic)sXI.get(paramString);
+    paramString = (cng)ufV.get(paramString);
     AppMethodBeat.o(168784);
     return paramString;
   }
   
-  public static void cKL()
+  public static void cYq()
   {
     AppMethodBeat.i(168788);
-    sXJ.clear();
+    ufW.clear();
     AppMethodBeat.o(168788);
   }
   
   public static void clear()
   {
     AppMethodBeat.i(168787);
-    sXH.clear();
-    sXI.clear();
+    ufU.clear();
+    ufV.clear();
     AppMethodBeat.o(168787);
   }
   
-  public static cib d(Long paramLong)
+  public static cnf e(Long paramLong)
   {
     AppMethodBeat.i(168786);
     if (paramLong == null)
@@ -93,14 +93,14 @@ public final class b
       AppMethodBeat.o(168786);
       return null;
     }
-    paramLong = (cib)sXJ.get(paramLong);
+    paramLong = (cnf)ufW.get(paramLong);
     AppMethodBeat.o(168786);
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.b
  * JD-Core Version:    0.7.0.1
  */

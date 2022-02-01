@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.b;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import com.tencent.mm.plugin.appbrand.canvas.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -21,16 +21,16 @@ public class MCanvasView
   extends View
   implements a
 {
-  public final b jal;
-  private final Set<View.OnAttachStateChangeListener> jam;
+  public final b jAy;
+  private final Set<View.OnAttachStateChangeListener> jAz;
   private Bitmap mBitmap;
   
   public MCanvasView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145395);
-    this.jal = new b(this);
-    this.jam = new LinkedHashSet();
+    this.jAy = new b(this);
+    this.jAz = new LinkedHashSet();
     init();
     AppMethodBeat.o(145395);
   }
@@ -39,8 +39,8 @@ public class MCanvasView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145396);
-    this.jal = new b(this);
-    this.jam = new LinkedHashSet();
+    this.jAy = new b(this);
+    this.jAz = new LinkedHashSet();
     init();
     AppMethodBeat.o(145396);
   }
@@ -49,8 +49,8 @@ public class MCanvasView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145397);
-    this.jal = new b(this);
-    this.jam = new LinkedHashSet();
+    this.jAy = new b(this);
+    this.jAz = new LinkedHashSet();
     init();
     AppMethodBeat.o(145397);
   }
@@ -58,11 +58,11 @@ public class MCanvasView
   private void init()
   {
     AppMethodBeat.i(161173);
-    ad.v("MicroMsg.MCanvasView", "init %s", new Object[] { Integer.valueOf(hashCode()) });
+    ac.v("MicroMsg.MCanvasView", "init %s", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(161173);
   }
   
-  public final void Q(Runnable paramRunnable)
+  public final void S(Runnable paramRunnable)
   {
     AppMethodBeat.i(145407);
     post(paramRunnable);
@@ -72,18 +72,18 @@ public class MCanvasView
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145404);
-    this.jal.a(paramDrawCanvasArg, parama);
+    this.jAy.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145404);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145402);
-    this.jal.a(paramJSONArray, parama);
+    this.jAy.a(paramJSONArray, parama);
     AppMethodBeat.o(145402);
   }
   
-  public final void aSM()
+  public final void aZL()
   {
     AppMethodBeat.i(145401);
     if (!t.ay(this))
@@ -96,40 +96,29 @@ public class MCanvasView
     AppMethodBeat.o(145401);
   }
   
-  public final void aSN()
+  public final void aZM()
   {
     AppMethodBeat.i(145406);
-    this.jal.aSN();
+    this.jAy.aZM();
     AppMethodBeat.o(145406);
   }
   
-  public final void aSO()
+  public final void aZN()
   {
     AppMethodBeat.i(145418);
-    this.jal.aSO();
+    this.jAy.aZN();
     AppMethodBeat.o(145418);
-  }
-  
-  public final void aTd()
-  {
-    AppMethodBeat.i(161175);
-    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()))
-    {
-      ad.i("MicroMsg.MCanvasView", "bitmap recycle %s %s", new Object[] { Integer.valueOf(hashCode()), this.mBitmap });
-      this.mBitmap.recycle();
-    }
-    AppMethodBeat.o(161175);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145412);
-    if (this.jam.contains(paramOnAttachStateChangeListener))
+    if (this.jAz.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145412);
       return;
     }
-    this.jam.add(paramOnAttachStateChangeListener);
+    this.jAz.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145412);
   }
@@ -137,21 +126,32 @@ public class MCanvasView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145405);
-    this.jal.b(paramDrawCanvasArg, parama);
+    this.jAy.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145405);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145403);
-    this.jal.b(paramJSONArray, parama);
+    this.jAy.b(paramJSONArray, parama);
     AppMethodBeat.o(145403);
+  }
+  
+  public final void bac()
+  {
+    AppMethodBeat.i(161175);
+    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()))
+    {
+      ac.i("MicroMsg.MCanvasView", "bitmap recycle %s %s", new Object[] { Integer.valueOf(hashCode()), this.mBitmap });
+      this.mBitmap.recycle();
+    }
+    AppMethodBeat.o(161175);
   }
   
   public d getDrawContext()
   {
     AppMethodBeat.i(145408);
-    d locald = this.jal.getDrawContext();
+    d locald = this.jAy.getDrawContext();
     AppMethodBeat.o(145408);
     return locald;
   }
@@ -159,7 +159,7 @@ public class MCanvasView
   public String getSessionId()
   {
     AppMethodBeat.i(145415);
-    String str = this.jal.getSessionId();
+    String str = this.jAy.getSessionId();
     AppMethodBeat.o(145415);
     return str;
   }
@@ -167,7 +167,7 @@ public class MCanvasView
   public String getTraceId()
   {
     AppMethodBeat.i(145411);
-    String str = this.jal.getTraceId();
+    String str = this.jAy.getTraceId();
     AppMethodBeat.o(145411);
     return str;
   }
@@ -175,21 +175,21 @@ public class MCanvasView
   public final boolean h(Canvas paramCanvas)
   {
     AppMethodBeat.i(145400);
-    boolean bool = this.jal.h(paramCanvas);
+    boolean bool = this.jAy.h(paramCanvas);
     AppMethodBeat.o(145400);
     return bool;
   }
   
   public final boolean isPaused()
   {
-    return this.jal.mPause;
+    return this.jAy.mPause;
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(161174);
     super.onDetachedFromWindow();
-    aTd();
+    bac();
     AppMethodBeat.o(161174);
   }
   
@@ -204,15 +204,15 @@ public class MCanvasView
       return;
     }
     if ((this.mBitmap == null) || (this.mBitmap.isRecycled()) || (this.mBitmap.getWidth() != i) || (this.mBitmap.getHeight() != j)) {
-      aTd();
+      bac();
     }
     try
     {
       this.mBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      ad.v("MicroMsg.MCanvasView", "create a new bitmap(id : %s, w : %s, h : %s)", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i), Integer.valueOf(j) });
+      ac.v("MicroMsg.MCanvasView", "create a new bitmap(id : %s, w : %s, h : %s)", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i), Integer.valueOf(j) });
       if (this.mBitmap == null)
       {
-        ad.d("MicroMsg.MCanvasView", "bitmap is null.");
+        ac.d("MicroMsg.MCanvasView", "bitmap is null.");
         AppMethodBeat.o(145398);
         return;
       }
@@ -221,7 +221,7 @@ public class MCanvasView
     {
       for (;;)
       {
-        ad.e("MicroMsg.MCanvasView", "onDraw oom w:%d h:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+        ac.e("MicroMsg.MCanvasView", "onDraw oom w:%d h:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
         this.mBitmap = null;
       }
       this.mBitmap.eraseColor(0);
@@ -235,7 +235,7 @@ public class MCanvasView
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.MCanvasView", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.MCanvasView", localException, "", new Object[0]);
         h(paramCanvas);
         AppMethodBeat.o(145398);
       }
@@ -245,8 +245,8 @@ public class MCanvasView
   public final void onResume()
   {
     AppMethodBeat.i(145414);
-    ad.v("MicroMsg.MCanvasView", "onResume :%s", new Object[] { Integer.valueOf(hashCode()) });
-    this.jal.onResume();
+    ac.v("MicroMsg.MCanvasView", "onResume :%s", new Object[] { Integer.valueOf(hashCode()) });
+    this.jAy.onResume();
     AppMethodBeat.o(145414);
   }
   
@@ -254,20 +254,20 @@ public class MCanvasView
   {
     AppMethodBeat.i(145399);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    aTd();
+    bac();
     paramInt3 = getMeasuredWidth();
     paramInt4 = getMeasuredHeight();
     if ((paramInt3 > 0) && (paramInt4 > 0)) {}
     try
     {
       this.mBitmap = Bitmap.createBitmap(paramInt3, paramInt4, Bitmap.Config.ARGB_8888);
-      ad.v("MicroMsg.MCanvasView", "onSizeChanged, create a new bitmap(id : %s, w : %s, h : %s)", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      ac.v("MicroMsg.MCanvasView", "onSizeChanged, create a new bitmap(id : %s, w : %s, h : %s)", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
       AppMethodBeat.o(145399);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      ad.e("MicroMsg.MCanvasView", "onSizeChanged oom w:%d h:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ac.e("MicroMsg.MCanvasView", "onSizeChanged oom w:%d h:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       this.mBitmap = null;
       AppMethodBeat.o(145399);
     }
@@ -276,7 +276,7 @@ public class MCanvasView
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145413);
-    this.jam.remove(paramOnAttachStateChangeListener);
+    this.jAz.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145413);
   }
@@ -284,28 +284,28 @@ public class MCanvasView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145409);
-    this.jal.setDrawActionReportable(parama);
+    this.jAy.setDrawActionReportable(parama);
     AppMethodBeat.o(145409);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145416);
-    this.jal.setSessionId(paramString);
+    this.jAy.setSessionId(paramString);
     AppMethodBeat.o(145416);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145417);
-    this.jal.setStartTime(paramLong);
+    this.jAy.setStartTime(paramLong);
     AppMethodBeat.o(145417);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145410);
-    this.jal.setTraceId(paramString);
+    this.jAy.setTraceId(paramString);
     AppMethodBeat.o(145410);
   }
 }

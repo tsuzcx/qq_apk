@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask;
 import com.tencent.mm.plugin.webview.luggage.ipc.b;
 import com.tencent.mm.plugin.webview.luggage.ipc.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONObject;
 
@@ -24,29 +24,29 @@ public abstract class bn<T extends n>
   public void a(final com.tencent.luggage.d.a<T>.a parama)
   {
     Object localObject;
-    if (bQV() == 1)
+    if (bYk() == 1)
     {
       localObject = new JsApiMMTask();
-      ((JsApiMMTask)localObject).AUT = parama;
-      ((JsApiMMTask)localObject).AUU = getClass().getName();
-      ((JsApiMMTask)localObject).jBX = parama.bZV.bZb.toString();
-      ((JsApiMMTask)localObject).aXm();
+      ((JsApiMMTask)localObject).Cng = parama;
+      ((JsApiMMTask)localObject).Cnh = getClass().getName();
+      ((JsApiMMTask)localObject).kct = parama.bWS.bVY.toString();
+      ((JsApiMMTask)localObject).bej();
       AppBrandMainProcessService.a((MainProcessTask)localObject);
       return;
     }
-    if (bQV() == 2)
+    if (bYk() == 2)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("jsapi_name", getClass().getName());
-      ((Bundle)localObject).putString("data", parama.bZV.bZb.toString());
-      b.a((MMActivity)((n)parama.bZU).mContext, (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
+      ((Bundle)localObject).putString("data", parama.bWS.bVY.toString());
+      b.a((MMActivity)((n)parama.bWR).mContext, (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
       {
         public final void q(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(78641);
           String str = paramAnonymousBundle.getString("err_msg");
           paramAnonymousBundle = paramAnonymousBundle.getString("data");
-          if (!bt.isNullOrNil(str))
+          if (!bs.isNullOrNil(str))
           {
             parama.a(str, null);
             AppMethodBeat.o(78641);
@@ -73,7 +73,7 @@ public abstract class bn<T extends n>
   
   public abstract void b(com.tencent.luggage.d.a<T>.a parama);
   
-  public abstract int bQV();
+  public abstract int bYk();
   
   public static abstract class a
   {

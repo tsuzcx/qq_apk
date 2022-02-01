@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class vq
   extends b
 {
-  public a dBh;
+  public a dyu;
+  public b dyv;
   
   public vq()
   {
@@ -15,21 +17,31 @@ public final class vq
   
   private vq(byte paramByte)
   {
-    AppMethodBeat.i(19842);
-    this.dBh = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116051);
+    this.dyu = new a();
+    this.dyv = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19842);
+    AppMethodBeat.o(116051);
   }
   
   public static final class a
   {
-    public String userName;
+    public Context context;
+    public String dyw;
+    public int opType = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean dbS = false;
+    public String drr;
+    public String thumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.vq
  * JD-Core Version:    0.7.0.1
  */

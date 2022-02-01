@@ -13,7 +13,7 @@ public class AppCompatCheckBox
   extends CheckBox
   implements r
 {
-  private final f ahl = new f(this);
+  private final f aif = new f(this);
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,32 +22,32 @@ public class AppCompatCheckBox
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ab(paramContext), paramAttributeSet, paramInt);
-    this.ahl.a(paramAttributeSet, paramInt);
+    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    this.aif.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
     int i = j;
-    if (this.ahl != null) {
-      i = this.ahl.bH(j);
+    if (this.aif != null) {
+      i = this.aif.bH(j);
     }
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.ahl != null) {
-      return this.ahl.ahn;
+    if (this.aif != null) {
+      return this.aif.aih;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.ahl != null) {
-      return this.ahl.aho;
+    if (this.aif != null) {
+      return this.aif.aii;
     }
     return null;
   }
@@ -60,22 +60,22 @@ public class AppCompatCheckBox
   public void setButtonDrawable(Drawable paramDrawable)
   {
     super.setButtonDrawable(paramDrawable);
-    if (this.ahl != null) {
-      this.ahl.iB();
+    if (this.aif != null) {
+      this.aif.iJ();
     }
   }
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    if (this.ahl != null) {
-      this.ahl.setSupportButtonTintList(paramColorStateList);
+    if (this.aif != null) {
+      this.aif.setSupportButtonTintList(paramColorStateList);
     }
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ahl != null) {
-      this.ahl.setSupportButtonTintMode(paramMode);
+    if (this.aif != null) {
+      this.aif.setSupportButtonTintMode(paramMode);
     }
   }
 }

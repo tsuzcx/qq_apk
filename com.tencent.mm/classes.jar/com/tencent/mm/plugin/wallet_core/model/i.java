@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.c.d;
 
 public final class i
 {
-  public d Adi;
+  public d BvC;
   public String crt_token;
   public String crt_wording;
   public int is_gen_cert;
@@ -22,7 +22,7 @@ public final class i
     this.is_hint_cert = 0;
     this.crt_wording = "";
     this.is_ignore_cert = 0;
-    this.Adi = new d();
+    this.BvC = new d();
     AppMethodBeat.o(70256);
   }
   
@@ -34,20 +34,20 @@ public final class i
     this.is_hint_cert = 0;
     this.crt_wording = "";
     this.is_ignore_cert = 0;
-    this.Adi = new d();
+    this.BvC = new d();
     this.is_gen_cert = paramBundle.getInt("key_is_gen_cert", 0);
     this.is_hint_cert = paramBundle.getInt("key_is_hint_crt", 0);
     this.is_ignore_cert = paramBundle.getInt("key_is_ignore_cert", 0);
     this.crt_token = paramBundle.getString("key_crt_token", "");
     this.crt_wording = paramBundle.getString("key_crt_wording", "");
-    this.Adi = new d(this.crt_wording);
+    this.BvC = new d(this.crt_wording);
     AppMethodBeat.o(70257);
   }
   
-  public final boolean ebG()
+  public final boolean erc()
   {
     AppMethodBeat.i(70258);
-    if ((this.is_hint_cert != 0) && (!bt.isNullOrNil(this.crt_wording)))
+    if ((this.is_hint_cert != 0) && (!bs.isNullOrNil(this.crt_wording)))
     {
       AppMethodBeat.o(70258);
       return true;
@@ -56,15 +56,15 @@ public final class i
     return false;
   }
   
-  public final boolean ebH()
+  public final boolean erd()
   {
     return this.is_gen_cert == 1;
   }
   
-  public final boolean ebI()
+  public final boolean ere()
   {
     AppMethodBeat.i(70259);
-    if ((ebH()) && (this.is_ignore_cert == 0))
+    if ((erd()) && (this.is_ignore_cert == 0))
     {
       AppMethodBeat.o(70259);
       return true;

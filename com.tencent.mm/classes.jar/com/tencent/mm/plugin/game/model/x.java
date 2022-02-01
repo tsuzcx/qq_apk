@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.d.dt;
 import com.tencent.mm.plugin.game.d.f;
 import com.tencent.mm.plugin.game.d.s;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class x
 {
@@ -14,59 +14,59 @@ public class x
     AppMethodBeat.i(41523);
     if (paramf == null)
     {
-      ad.e("MicroMsg.GamePBData", "Invalid pb object");
+      ac.e("MicroMsg.GamePBData", "Invalid pb object");
       AppMethodBeat.o(41523);
       return null;
     }
-    if (bt.isNullOrNil(paramf.fVC))
+    if (bs.isNullOrNil(paramf.fZx))
     {
-      ad.e("MicroMsg.GamePBData", "No AppID field, abort");
+      ac.e("MicroMsg.GamePBData", "No AppID field, abort");
       AppMethodBeat.o(41523);
       return null;
     }
-    ad.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { paramf.fVC });
+    ac.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { paramf.fZx });
     c localc = new c();
-    localc.field_appId = paramf.fVC;
+    localc.field_appId = paramf.fZx;
     localc.field_appName = paramf.Name;
-    localc.field_appIconUrl = paramf.rZw;
+    localc.field_appIconUrl = paramf.thp;
     localc.field_appType = ",1,";
-    localc.field_packageName = paramf.rZy;
+    localc.field_packageName = paramf.thr;
     localc.field_appVersion = paramf.Version;
-    localc.field_appInfoFlag = paramf.rZB;
-    if (paramf.rZA != null)
+    localc.field_appInfoFlag = paramf.thu;
+    if (paramf.tht != null)
     {
-      localc.mJ(paramf.rZA.san);
-      localc.mM(paramf.rZA.sao);
-      localc.jz(paramf.rZA.sar);
-      localc.mN(paramf.rZA.sap);
-      localc.rVl = paramf.rZA.sat;
-      localc.lrU = paramf.rZA.sas;
-      localc.dlp = paramf.rZA.sau;
+      localc.pP(paramf.tht.tih);
+      localc.pS(paramf.tht.tii);
+      localc.jx(paramf.tht.til);
+      localc.pT(paramf.tht.tij);
+      localc.tdd = paramf.tht.tin;
+      localc.lTP = paramf.tht.tim;
+      localc.diX = paramf.tht.tio;
     }
-    if ((paramf.rZA != null) && (paramf.rZA.saq != null))
+    if ((paramf.tht != null) && (paramf.tht.tik != null))
     {
-      localc.mS(paramf.rZA.saq.san);
-      localc.mT(paramf.rZA.saq.seb);
-      localc.mQ(paramf.rZA.saq.sec);
-      localc.mR(paramf.rZA.saq.sed);
-      localc.jA(paramf.rZA.saq.sef);
+      localc.pY(paramf.tht.tik.tih);
+      localc.pZ(paramf.tht.tik.tlV);
+      localc.pW(paramf.tht.tik.tlW);
+      localc.pX(paramf.tht.tik.tlX);
+      localc.jy(paramf.tht.tik.tlZ);
     }
-    localc.rUT = paramf.Desc;
-    localc.rUS = paramf.rZx;
-    localc.status = paramf.mBi;
-    localc.rUV = paramf.rZr;
-    localc.versionCode = paramf.rZz;
-    localc.dcC = paramf.rZt;
-    localc.hHQ = paramf.rZC;
-    localc.rVe = paramf.rZH;
-    if ((paramf.rZA != null) && (paramf.rZA.saq != null))
+    localc.tcL = paramf.Desc;
+    localc.tcK = paramf.thq;
+    localc.status = paramf.ndj;
+    localc.tcN = paramf.thk;
+    localc.versionCode = paramf.ths;
+    localc.daa = paramf.thm;
+    localc.iis = paramf.thv;
+    localc.tcW = paramf.thA;
+    if ((paramf.tht != null) && (paramf.tht.tik != null))
     {
-      localc.rUX = paramf.rZA.saq.see;
-      localc.rUY = paramf.rZA.saq.seg;
-      localc.rUZ = paramf.rZA.saq.seh;
+      localc.tcP = paramf.tht.tik.tlY;
+      localc.tcQ = paramf.tht.tik.tma;
+      localc.tcR = paramf.tht.tik.tmb;
     }
-    localc.appType = paramf.rZJ;
-    localc.rVm = paramf.rZK;
+    localc.appType = paramf.thC;
+    localc.tde = paramf.thD;
     AppMethodBeat.o(41523);
     return localc;
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.freewifi.f;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.plugin.freewifi.d.e;
 import com.tencent.mm.plugin.freewifi.g.f;
 import com.tencent.mm.plugin.freewifi.i;
@@ -10,9 +10,9 @@ import com.tencent.mm.plugin.freewifi.i.a;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.c;
-import com.tencent.mm.protocal.protobuf.amp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.aps;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -20,20 +20,20 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  private static volatile boolean rjk;
-  static Pattern rjl;
-  static Pattern rjm;
+  private static volatile boolean ssd;
+  static Pattern sse;
+  static Pattern ssf;
   
   static
   {
     AppMethodBeat.i(24942);
-    rjk = true;
-    rjl = Pattern.compile("\"result\":(-?[0-9]+)");
-    rjm = Pattern.compile("\"stageName\":\"(.+?)\"");
+    ssd = true;
+    sse = Pattern.compile("\"result\":(-?[0-9]+)");
+    ssf = Pattern.compile("\"stageName\":\"(.+?)\"");
     AppMethodBeat.o(24942);
   }
   
-  static String af(LinkedList<amp> paramLinkedList)
+  static String am(LinkedList<aps> paramLinkedList)
   {
     AppMethodBeat.i(24941);
     if (paramLinkedList.size() == 0)
@@ -45,25 +45,25 @@ public final class b
     Iterator localIterator = paramLinkedList.iterator();
     while (localIterator.hasNext())
     {
-      paramLinkedList = (amp)localIterator.next();
-      localStringBuilder.append("|id=").append(m.aat(paramLinkedList.id)).append("|");
-      String[] arrayOfString = m.aat(paramLinkedList.DnJ).split("\\},");
+      paramLinkedList = (aps)localIterator.next();
+      localStringBuilder.append("|id=").append(m.afl(paramLinkedList.id)).append("|");
+      String[] arrayOfString = m.afl(paramLinkedList.EIJ).split("\\},");
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
         String str = arrayOfString[i];
-        Matcher localMatcher = rjm.matcher(str);
+        Matcher localMatcher = ssf.matcher(str);
         paramLinkedList = "";
         if (localMatcher.find()) {
           paramLinkedList = localMatcher.group(1);
         }
-        localMatcher = rjl.matcher(str);
+        localMatcher = sse.matcher(str);
         str = "0";
         if (localMatcher.find()) {
           str = localMatcher.group(1);
         }
-        localStringBuilder.append(k.aar(paramLinkedList) + "=" + str).append("|");
+        localStringBuilder.append(k.afj(paramLinkedList) + "=" + str).append("|");
         i += 1;
       }
     }
@@ -72,57 +72,57 @@ public final class b
     return paramLinkedList;
   }
   
-  public static void lI(int paramInt)
+  public static void lA(int paramInt)
   {
     AppMethodBeat.i(24940);
-    com.tencent.mm.plugin.freewifi.model.j.cwc().cvK().post(new Runnable()
+    com.tencent.mm.plugin.freewifi.model.j.cJo().cIW().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24939);
-        if (!b.rjk)
+        if (!b.ssd)
         {
           AppMethodBeat.o(24939);
           return;
         }
-        if (this.rjn == 0)
+        if (this.ssg == 0)
         {
-          long l = System.currentTimeMillis() - i.a.cvp().aa("LOCAL_CONFIG_LAST_MOBILE_NETWORK_REPORT_TIMEMILLIS");
-          ad.v("MicroMsg.FreeWifi.FreeWifiServerReporter", "mobile netowrk report interval between last time is : ".concat(String.valueOf(l)));
+          long l = System.currentTimeMillis() - i.a.cIB().tx("LOCAL_CONFIG_LAST_MOBILE_NETWORK_REPORT_TIMEMILLIS");
+          ac.v("MicroMsg.FreeWifi.FreeWifiServerReporter", "mobile netowrk report interval between last time is : ".concat(String.valueOf(l)));
           if ((l >= 0L) && (l <= 86400000L))
           {
-            ad.v("MicroMsg.FreeWifi.FreeWifiServerReporter", "interval less than 24 hours. return.");
+            ac.v("MicroMsg.FreeWifi.FreeWifiServerReporter", "interval less than 24 hours. return.");
             AppMethodBeat.o(24939);
             return;
           }
-          i.a.cvp().ao("LOCAL_CONFIG_LAST_MOBILE_NETWORK_REPORT_TIMEMILLIS", System.currentTimeMillis());
+          i.a.cIB().aq("LOCAL_CONFIG_LAST_MOBILE_NETWORK_REPORT_TIMEMILLIS", System.currentTimeMillis());
         }
-        b.cz(false);
-        Object localObject1 = com.tencent.mm.plugin.freewifi.model.j.cwa();
-        m.a("FreeWifiLog", f.rjq, (com.tencent.mm.sdk.e.j)localObject1, "MicroMsg.FreeWifi.FreeWifiLogStorage");
+        b.access$002(false);
+        Object localObject1 = com.tencent.mm.plugin.freewifi.model.j.cJm();
+        m.a("FreeWifiLog", f.ssj, (com.tencent.mm.sdk.e.j)localObject1, "MicroMsg.FreeWifi.FreeWifiLogStorage");
         Object localObject2 = ((f)localObject1).rawQuery("select id, protocolNumber, logContent, createTime from FreeWifiLog", new String[0]);
         localObject1 = new LinkedList();
         while ((localObject2 != null) && (((Cursor)localObject2).moveToNext()))
         {
-          amp localamp = new amp();
-          localamp.id = ((Cursor)localObject2).getString(0);
-          localamp.rik = ((Cursor)localObject2).getInt(1);
-          localamp.DnJ = ((Cursor)localObject2).getString(2);
-          localamp.DnK = ((Cursor)localObject2).getLong(3);
-          ((LinkedList)localObject1).add(localamp);
+          aps localaps = new aps();
+          localaps.id = ((Cursor)localObject2).getString(0);
+          localaps.srd = ((Cursor)localObject2).getInt(1);
+          localaps.EIJ = ((Cursor)localObject2).getString(2);
+          localaps.EIK = ((Cursor)localObject2).getLong(3);
+          ((LinkedList)localObject1).add(localaps);
         }
         if (localObject2 != null) {
           ((Cursor)localObject2).close();
         }
-        localObject2 = "ServerReportSimpleLog:" + b.af((LinkedList)localObject1);
-        m.aax((String)localObject2);
-        ad.i("MicroMsg.FreeWifi.FreeWifiServerReporter", (String)localObject2);
+        localObject2 = "ServerReportSimpleLog:" + b.am((LinkedList)localObject1);
+        m.afp((String)localObject2);
+        ac.i("MicroMsg.FreeWifi.FreeWifiServerReporter", (String)localObject2);
         if (((LinkedList)localObject1).size() > 0)
         {
           new e((LinkedList)localObject1).c(new g()
           {
             /* Error */
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.al.n paramAnonymous2n)
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.n paramAnonymous2n)
             {
               // Byte code:
               //   0: sipush 24938
@@ -145,21 +145,21 @@ public final class b
               //   29: iconst_2
               //   30: aload_3
               //   31: aastore
-              //   32: invokestatic 45	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+              //   32: invokestatic 45	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
               //   35: iload_1
               //   36: iload_2
-              //   37: invokestatic 51	com/tencent/mm/plugin/freewifi/m:fF	(II)Z
+              //   37: invokestatic 51	com/tencent/mm/plugin/freewifi/m:fM	(II)Z
               //   40: ifeq +187 -> 227
               //   43: aload 4
               //   45: checkcast 53	com/tencent/mm/plugin/freewifi/d/e
-              //   48: invokevirtual 57	com/tencent/mm/plugin/freewifi/d/e:cwm	()Ljava/util/LinkedList;
+              //   48: invokevirtual 57	com/tencent/mm/plugin/freewifi/d/e:cJy	()Ljava/util/LinkedList;
               //   51: astore 4
               //   53: aload 4
               //   55: ifnull +172 -> 227
               //   58: aload 4
               //   60: invokevirtual 63	java/util/LinkedList:size	()I
               //   63: ifle +164 -> 227
-              //   66: invokestatic 69	com/tencent/mm/plugin/freewifi/model/j:cwa	()Lcom/tencent/mm/plugin/freewifi/g/f;
+              //   66: invokestatic 69	com/tencent/mm/plugin/freewifi/model/j:cJm	()Lcom/tencent/mm/plugin/freewifi/g/f;
               //   69: astore_3
               //   70: aload 4
               //   72: invokevirtual 73	java/util/LinkedList:iterator	()Ljava/util/Iterator;
@@ -169,13 +169,13 @@ public final class b
               //   84: ifeq +143 -> 227
               //   87: aload 4
               //   89: invokeinterface 83 1 0
-              //   94: checkcast 85	com/tencent/mm/protocal/protobuf/amp
+              //   94: checkcast 85	com/tencent/mm/protocal/protobuf/aps
               //   97: astore 6
               //   99: aload 6
-              //   101: getfield 89	com/tencent/mm/protocal/protobuf/amp:id	Ljava/lang/String;
+              //   101: getfield 89	com/tencent/mm/protocal/protobuf/aps:id	Ljava/lang/String;
               //   104: astore 5
               //   106: aload 6
-              //   108: getfield 93	com/tencent/mm/protocal/protobuf/amp:dhR	I
+              //   108: getfield 93	com/tencent/mm/protocal/protobuf/aps:dfm	I
               //   111: istore_1
               //   112: ldc 32
               //   114: ldc 95
@@ -190,9 +190,9 @@ public final class b
               //   127: iload_1
               //   128: invokestatic 40	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
               //   131: aastore
-              //   132: invokestatic 45	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+              //   132: invokestatic 45	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
               //   135: aload 5
-              //   137: invokestatic 99	com/tencent/mm/plugin/freewifi/m:dq	(Ljava/lang/String;)Z
+              //   137: invokestatic 99	com/tencent/mm/plugin/freewifi/m:cX	(Ljava/lang/String;)Z
               //   140: ifne -63 -> 77
               //   143: iload_1
               //   144: ifne -67 -> 77
@@ -204,7 +204,7 @@ public final class b
               //   156: iconst_0
               //   157: aload 5
               //   159: aastore
-              //   160: invokestatic 45	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+              //   160: invokestatic 45	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
               //   163: new 105	com/tencent/mm/plugin/freewifi/g/e
               //   166: dup
               //   167: invokespecial 106	com/tencent/mm/plugin/freewifi/g/e:<init>	()V
@@ -221,28 +221,28 @@ public final class b
               //   190: invokevirtual 119	com/tencent/mm/plugin/freewifi/g/f:delete	(Lcom/tencent/mm/sdk/e/c;[Ljava/lang/String;)Z
               //   193: invokestatic 122	java/lang/String:valueOf	(Z)Ljava/lang/String;
               //   196: invokevirtual 126	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-              //   199: invokestatic 129	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+              //   199: invokestatic 129	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
               //   202: goto -125 -> 77
               //   205: astore_3
               //   206: ldc 32
               //   208: aload_3
               //   209: invokestatic 133	com/tencent/mm/plugin/freewifi/m:m	(Ljava/lang/Exception;)Ljava/lang/String;
-              //   212: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+              //   212: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
               //   215: iconst_1
-              //   216: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:cz	(Z)Z
+              //   216: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:access$002	(Z)Z
               //   219: pop
               //   220: sipush 24938
               //   223: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
               //   226: return
               //   227: iconst_1
-              //   228: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:cz	(Z)Z
+              //   228: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:access$002	(Z)Z
               //   231: pop
               //   232: sipush 24938
               //   235: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
               //   238: return
               //   239: astore_3
               //   240: iconst_1
-              //   241: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:cz	(Z)Z
+              //   241: invokestatic 142	com/tencent/mm/plugin/freewifi/f/b:access$002	(Z)Z
               //   244: pop
               //   245: sipush 24938
               //   248: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -254,7 +254,7 @@ public final class b
               //   0	253	1	paramAnonymous2Int1	int
               //   0	253	2	paramAnonymous2Int2	int
               //   0	253	3	paramAnonymous2String	String
-              //   0	253	4	paramAnonymous2n	com.tencent.mm.al.n
+              //   0	253	4	paramAnonymous2n	com.tencent.mm.ak.n
               //   104	71	5	str	String
               //   97	88	6	localObject	Object
               // Exception table:
@@ -273,7 +273,7 @@ public final class b
           AppMethodBeat.o(24939);
           return;
         }
-        b.cz(true);
+        b.access$002(true);
         AppMethodBeat.o(24939);
       }
     });
@@ -282,7 +282,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.deq;
-import com.tencent.mm.protocal.protobuf.der;
-import com.tencent.mm.protocal.protobuf.dr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dkf;
+import com.tencent.mm.protocal.protobuf.dkg;
+import com.tencent.mm.protocal.protobuf.dt;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class ab
@@ -23,38 +23,38 @@ public final class ab
   private g callback;
   private final b rr;
   
-  public ab(String paramString, int paramInt, LinkedList<dr> paramLinkedList)
+  public ab(String paramString, int paramInt, LinkedList<dt> paramLinkedList)
   {
     AppMethodBeat.i(150960);
-    ad.i("MicroMsg.NetSceneTranslateLink", "ticket link = " + paramString + "; scene = " + paramInt);
+    ac.i("MicroMsg.NetSceneTranslateLink", "ticket link = " + paramString + "; scene = " + paramInt);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new deq();
-    ((b.a)localObject).gUV = new der();
+    ((b.a)localObject).hvt = new dkf();
+    ((b.a)localObject).hvu = new dkg();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/translatelink";
     ((b.a)localObject).funcId = 1200;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (deq)this.rr.gUS.gUX;
-    ((deq)localObject).link = paramString;
-    ((deq)localObject).scene = paramInt;
-    ((deq)localObject).Ewh = paramLinkedList;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dkf)this.rr.hvr.hvw;
+    ((dkf)localObject).link = paramString;
+    ((dkf)localObject).scene = paramInt;
+    ((dkf)localObject).FTk = paramLinkedList;
     AppMethodBeat.o(150960);
   }
   
-  public final String aBb()
+  public final String aHR()
   {
-    der localder = (der)this.rr.gUT.gUX;
-    if (localder == null) {
+    dkg localdkg = (dkg)this.rr.hvs.hvw;
+    if (localdkg == null) {
       return null;
     }
-    return localder.Ewi;
+    return localdkg.FTl;
   }
   
-  public final der aBc()
+  public final dkg aHS()
   {
-    if ((this.rr != null) && (this.rr.gUT.gUX != null)) {
-      return (der)this.rr.gUT.gUX;
+    if ((this.rr != null) && (this.rr.hvs.hvw != null)) {
+      return (dkg)this.rr.hvs.hvw;
     }
     return null;
   }
@@ -76,14 +76,14 @@ public final class ab
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150962);
-    ad.d("MicroMsg.NetSceneTranslateLink", "swap deep link with ticket onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.d("MicroMsg.NetSceneTranslateLink", "swap deep link with ticket onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(150962);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelsimple.ab
  * JD-Core Version:    0.7.0.1
  */

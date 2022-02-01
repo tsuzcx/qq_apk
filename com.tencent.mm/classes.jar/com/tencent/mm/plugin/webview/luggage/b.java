@@ -11,7 +11,7 @@ public final class b
     super(paramContext);
   }
   
-  public final void sG(int paramInt)
+  public final void tx(int paramInt)
   {
     AppMethodBeat.i(78193);
     if (paramInt == 0)
@@ -19,7 +19,7 @@ public final class b
       AppMethodBeat.o(78193);
       return;
     }
-    super.sG(paramInt);
+    super.tx(paramInt);
     AppMethodBeat.o(78193);
   }
 }

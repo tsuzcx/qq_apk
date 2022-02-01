@@ -12,8 +12,8 @@ public final class e
   extends AbstractCursor
   implements d
 {
-  private d FDb;
-  public d[] FDc;
+  private d Hce;
+  public d[] Hcf;
   private DataSetObserver mObserver;
   
   public e(d[] paramArrayOfd)
@@ -35,31 +35,31 @@ public final class e
         AppMethodBeat.o(133445);
       }
     };
-    this.FDc = paramArrayOfd;
-    this.FDb = paramArrayOfd[0];
-    while (i < this.FDc.length)
+    this.Hcf = paramArrayOfd;
+    this.Hce = paramArrayOfd[0];
+    while (i < this.Hcf.length)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].registerDataSetObserver(this.mObserver);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].registerDataSetObserver(this.mObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133446);
   }
   
-  public final boolean WP(int paramInt)
+  public final boolean YZ(int paramInt)
   {
     AppMethodBeat.i(133471);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.FDc[i] != null)
+      if (this.Hcf[i] != null)
       {
         bool2 = bool1;
-        if (!this.FDc[i].WP(paramInt)) {
+        if (!this.Hcf[i].YZ(paramInt)) {
           bool2 = false;
         }
       }
@@ -70,19 +70,19 @@ public final class e
     return bool1;
   }
   
-  public final a WQ(int paramInt)
+  public final a Za(int paramInt)
   {
     AppMethodBeat.i(133468);
-    int k = this.FDc.length;
+    int k = this.Hcf.length;
     int j = 0;
     int i = paramInt;
     paramInt = j;
     while (paramInt < k)
     {
-      j = this.FDc[paramInt].getCount();
+      j = this.Hcf[paramInt].getCount();
       if (i < j)
       {
-        a locala = this.FDc[paramInt].WQ(i);
+        a locala = this.Hcf[paramInt].Za(i);
         AppMethodBeat.o(133468);
         return locala;
       }
@@ -93,15 +93,15 @@ public final class e
     return null;
   }
   
-  public final void WR(int paramInt)
+  public final void Zb(int paramInt)
   {
     AppMethodBeat.i(133474);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].WR(paramInt);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].Zb(paramInt);
       }
       i += 1;
     }
@@ -111,12 +111,12 @@ public final class e
   public final void a(f.a parama)
   {
     AppMethodBeat.i(133465);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].a(parama);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].a(parama);
       }
       i += 1;
     }
@@ -126,16 +126,16 @@ public final class e
   public final boolean a(Object paramObject, a parama)
   {
     AppMethodBeat.i(133469);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.FDc[i] != null)
+      if (this.Hcf[i] != null)
       {
         bool2 = bool1;
-        if (this.FDc[i].a(paramObject, parama)) {
+        if (this.Hcf[i].a(paramObject, parama)) {
           bool2 = true;
         }
       }
@@ -148,12 +148,12 @@ public final class e
   public final void close()
   {
     AppMethodBeat.i(133459);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].close();
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].close();
       }
       i += 1;
     }
@@ -163,19 +163,19 @@ public final class e
   
   public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
   
-  public final boolean dT(Object paramObject)
+  public final boolean dU(Object paramObject)
   {
     AppMethodBeat.i(133472);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.FDc[i] != null)
+      if (this.Hcf[i] != null)
       {
         bool2 = bool1;
-        if (this.FDc[i].dT(paramObject)) {
+        if (this.Hcf[i].dU(paramObject)) {
           bool2 = true;
         }
       }
@@ -185,10 +185,10 @@ public final class e
     return bool1;
   }
   
-  public final a dU(Object paramObject)
+  public final a dV(Object paramObject)
   {
     AppMethodBeat.i(133473);
-    paramObject = this.FDb.dU(paramObject);
+    paramObject = this.Hce.dV(paramObject);
     AppMethodBeat.o(133473);
     return paramObject;
   }
@@ -196,12 +196,12 @@ public final class e
   public final void deactivate()
   {
     AppMethodBeat.i(133458);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].deactivate();
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].deactivate();
       }
       i += 1;
     }
@@ -209,15 +209,43 @@ public final class e
     AppMethodBeat.o(133458);
   }
   
-  public final SparseArray<Object>[] eNV()
+  public final HashMap fdA()
+  {
+    return null;
+  }
+  
+  public final boolean fdB()
+  {
+    AppMethodBeat.i(133467);
+    int j = this.Hcf.length;
+    boolean bool1 = true;
+    int i = 0;
+    while (i < j)
+    {
+      boolean bool2 = bool1;
+      if (this.Hcf[i] != null)
+      {
+        bool2 = bool1;
+        if (!this.Hcf[i].fdB()) {
+          bool2 = false;
+        }
+      }
+      i += 1;
+      bool1 = bool2;
+    }
+    AppMethodBeat.o(133467);
+    return bool1;
+  }
+  
+  public final SparseArray<Object>[] fdz()
   {
     AppMethodBeat.i(133470);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     SparseArray[] arrayOfSparseArray = new SparseArray[j];
     int i = 0;
     if (i < j)
     {
-      Object localObject = this.FDc[i].eNV();
+      Object localObject = this.Hcf[i].fdz();
       if (localObject != null) {}
       for (localObject = localObject[0];; localObject = null)
       {
@@ -230,38 +258,10 @@ public final class e
     return arrayOfSparseArray;
   }
   
-  public final HashMap eNW()
-  {
-    return null;
-  }
-  
-  public final boolean eNX()
-  {
-    AppMethodBeat.i(133467);
-    int j = this.FDc.length;
-    boolean bool1 = true;
-    int i = 0;
-    while (i < j)
-    {
-      boolean bool2 = bool1;
-      if (this.FDc[i] != null)
-      {
-        bool2 = bool1;
-        if (!this.FDc[i].eNX()) {
-          bool2 = false;
-        }
-      }
-      i += 1;
-      bool1 = bool2;
-    }
-    AppMethodBeat.o(133467);
-    return bool1;
-  }
-  
   public final byte[] getBlob(int paramInt)
   {
     AppMethodBeat.i(133456);
-    byte[] arrayOfByte = this.FDb.getBlob(paramInt);
+    byte[] arrayOfByte = this.Hce.getBlob(paramInt);
     AppMethodBeat.o(133456);
     return arrayOfByte;
   }
@@ -269,9 +269,9 @@ public final class e
   public final String[] getColumnNames()
   {
     AppMethodBeat.i(133457);
-    if (this.FDb != null)
+    if (this.Hce != null)
     {
-      String[] arrayOfString = this.FDb.getColumnNames();
+      String[] arrayOfString = this.Hce.getColumnNames();
       AppMethodBeat.o(133457);
       return arrayOfString;
     }
@@ -282,14 +282,14 @@ public final class e
   public final int getCount()
   {
     AppMethodBeat.i(133447);
-    int m = this.FDc.length;
+    int m = this.Hcf.length;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       k = j;
-      if (this.FDc[i] != null) {
-        k = j + this.FDc[i].getCount();
+      if (this.Hcf[i] != null) {
+        k = j + this.Hcf[i].getCount();
       }
       i += 1;
     }
@@ -300,7 +300,7 @@ public final class e
   public final double getDouble(int paramInt)
   {
     AppMethodBeat.i(133454);
-    double d = this.FDb.getDouble(paramInt);
+    double d = this.Hce.getDouble(paramInt);
     AppMethodBeat.o(133454);
     return d;
   }
@@ -308,7 +308,7 @@ public final class e
   public final float getFloat(int paramInt)
   {
     AppMethodBeat.i(133453);
-    float f = this.FDb.getFloat(paramInt);
+    float f = this.Hce.getFloat(paramInt);
     AppMethodBeat.o(133453);
     return f;
   }
@@ -316,7 +316,7 @@ public final class e
   public final int getInt(int paramInt)
   {
     AppMethodBeat.i(133451);
-    paramInt = this.FDb.getInt(paramInt);
+    paramInt = this.Hce.getInt(paramInt);
     AppMethodBeat.o(133451);
     return paramInt;
   }
@@ -324,7 +324,7 @@ public final class e
   public final long getLong(int paramInt)
   {
     AppMethodBeat.i(133452);
-    long l = this.FDb.getLong(paramInt);
+    long l = this.Hce.getLong(paramInt);
     AppMethodBeat.o(133452);
     return l;
   }
@@ -332,7 +332,7 @@ public final class e
   public final short getShort(int paramInt)
   {
     AppMethodBeat.i(133450);
-    short s = this.FDb.getShort(paramInt);
+    short s = this.Hce.getShort(paramInt);
     AppMethodBeat.o(133450);
     return s;
   }
@@ -340,7 +340,7 @@ public final class e
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(133449);
-    String str = this.FDb.getString(paramInt);
+    String str = this.Hce.getString(paramInt);
     AppMethodBeat.o(133449);
     return str;
   }
@@ -348,7 +348,7 @@ public final class e
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(133455);
-    boolean bool = this.FDb.isNull(paramInt);
+    boolean bool = this.Hce.isNull(paramInt);
     AppMethodBeat.o(133455);
     return bool;
   }
@@ -356,8 +356,8 @@ public final class e
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133448);
-    this.FDb = null;
-    int k = this.FDc.length;
+    this.Hce = null;
+    int k = this.Hcf.length;
     paramInt1 = 0;
     int j;
     for (int i = 0;; i = j)
@@ -365,23 +365,23 @@ public final class e
       if (paramInt1 < k)
       {
         j = i;
-        if (this.FDc[paramInt1] == null) {
+        if (this.Hcf[paramInt1] == null) {
           break label110;
         }
-        if (paramInt2 < this.FDc[paramInt1].getCount() + i) {
-          this.FDb = this.FDc[paramInt1];
+        if (paramInt2 < this.Hcf[paramInt1].getCount() + i) {
+          this.Hce = this.Hcf[paramInt1];
         }
       }
       else
       {
-        if (this.FDb == null) {
+        if (this.Hce == null) {
           break;
         }
-        boolean bool = this.FDb.moveToPosition(paramInt2 - i);
+        boolean bool = this.Hce.moveToPosition(paramInt2 - i);
         AppMethodBeat.o(133448);
         return bool;
       }
-      j = i + this.FDc[paramInt1].getCount();
+      j = i + this.Hcf[paramInt1].getCount();
       label110:
       paramInt1 += 1;
     }
@@ -392,12 +392,12 @@ public final class e
   public final void registerContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133460);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].registerContentObserver(paramContentObserver);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -407,12 +407,12 @@ public final class e
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133462);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].registerDataSetObserver(paramDataSetObserver);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -422,11 +422,11 @@ public final class e
   public final boolean requery()
   {
     AppMethodBeat.i(133464);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if ((this.FDc[i] != null) && (!this.FDc[i].requery()))
+      if ((this.Hcf[i] != null) && (!this.Hcf[i].requery()))
       {
         AppMethodBeat.o(133464);
         return false;
@@ -440,12 +440,12 @@ public final class e
   public final void unregisterContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133461);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].unregisterContentObserver(paramContentObserver);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -455,27 +455,27 @@ public final class e
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133463);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].unregisterDataSetObserver(paramDataSetObserver);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133463);
   }
   
-  public final void ve(boolean paramBoolean)
+  public final void wg(boolean paramBoolean)
   {
     AppMethodBeat.i(133466);
-    int j = this.FDc.length;
+    int j = this.Hcf.length;
     int i = 0;
     while (i < j)
     {
-      if (this.FDc[i] != null) {
-        this.FDc[i].ve(paramBoolean);
+      if (this.Hcf[i] != null) {
+        this.Hcf[i].wg(paramBoolean);
       }
       i += 1;
     }
@@ -484,7 +484,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.e
  * JD-Core Version:    0.7.0.1
  */

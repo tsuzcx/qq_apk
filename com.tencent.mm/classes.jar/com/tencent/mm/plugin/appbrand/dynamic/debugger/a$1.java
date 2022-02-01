@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.debugger;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.c.e.a;
+import com.tencent.mm.aa.c.e.a;
 import com.tencent.mm.ipcinvoker.h;
 
 final class a$1

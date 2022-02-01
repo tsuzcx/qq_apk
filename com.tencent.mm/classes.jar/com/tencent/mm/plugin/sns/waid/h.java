@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.sns.waid;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ce;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class h
 {
-  public String dvP;
+  public String dtC;
   public int type;
-  public String xZu;
-  public int xZv;
-  public int xZw;
+  public String zmu;
+  public int zmv;
+  public int zmw;
   
-  public static h aH(JSONObject paramJSONObject)
+  public static h aI(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(100592);
     try
     {
       h localh = new h();
-      localh.xZu = paramJSONObject.getString("waid");
-      localh.xZw = paramJSONObject.optInt("expire");
-      localh.xZv = paramJSONObject.optInt("timeStamp");
-      localh.dvP = paramJSONObject.optString("pkg");
+      localh.zmu = paramJSONObject.getString("waid");
+      localh.zmw = paramJSONObject.optInt("expire");
+      localh.zmv = paramJSONObject.optInt("timeStamp");
+      localh.dtC = paramJSONObject.optString("pkg");
       localh.type = paramJSONObject.optInt("type");
       AppMethodBeat.o(100592);
       return localh;
     }
     catch (Exception paramJSONObject)
     {
-      ad.e("ad.waid.WaidItem", "parseFromJson exp=" + paramJSONObject.toString());
+      ac.e("ad.waid.WaidItem", "parseFromJson exp=" + paramJSONObject.toString());
       AppMethodBeat.o(100592);
     }
     return null;
@@ -44,7 +44,7 @@ public final class h
       paramObject = (h)paramObject;
       if (this.type == 2)
       {
-        if ((paramObject.xZu != null) && (paramObject.xZu.equals(this.xZu)))
+        if ((paramObject.zmu != null) && (paramObject.zmu.equals(this.zmu)))
         {
           AppMethodBeat.o(100596);
           return true;
@@ -54,7 +54,7 @@ public final class h
       }
       if (this.type == 1)
       {
-        if ((paramObject.dvP != null) && (paramObject.dvP.equals(this.dvP)))
+        if ((paramObject.dtC != null) && (paramObject.dtC.equals(this.dtC)))
         {
           AppMethodBeat.o(100596);
           return true;
@@ -73,18 +73,18 @@ public final class h
     long l = System.currentTimeMillis() / 1000L;
     try
     {
-      int i = ce.asT();
+      int i = ce.azK();
       l = i;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ad.e("ad.waid.WaidItem", "isExpired exp=" + localThrowable.toString());
+        ac.e("ad.waid.WaidItem", "isExpired exp=" + localThrowable.toString());
       }
       AppMethodBeat.o(100595);
     }
-    if (this.xZv + this.xZw <= l)
+    if (this.zmv + this.zmw <= l)
     {
       AppMethodBeat.o(100595);
       return true;
@@ -97,7 +97,7 @@ public final class h
     AppMethodBeat.i(100593);
     if (this.type == 2)
     {
-      if ((!TextUtils.isEmpty(this.xZu)) && (this.xZw > 0))
+      if ((!TextUtils.isEmpty(this.zmu)) && (this.zmw > 0))
       {
         AppMethodBeat.o(100593);
         return true;
@@ -107,7 +107,7 @@ public final class h
     }
     if (this.type == 1)
     {
-      if ((!TextUtils.isEmpty(this.xZu)) && (!TextUtils.isEmpty(this.dvP)) && (this.xZw > 0))
+      if ((!TextUtils.isEmpty(this.zmu)) && (!TextUtils.isEmpty(this.dtC)) && (this.zmw > 0))
       {
         AppMethodBeat.o(100593);
         return true;
@@ -125,17 +125,17 @@ public final class h
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("waid", this.xZu);
-      localJSONObject.put("expire", this.xZw);
-      localJSONObject.put("timeStamp", this.xZv);
-      localJSONObject.put("pkg", this.dvP);
+      localJSONObject.put("waid", this.zmu);
+      localJSONObject.put("expire", this.zmw);
+      localJSONObject.put("timeStamp", this.zmv);
+      localJSONObject.put("pkg", this.dtC);
       localJSONObject.put("type", this.type);
       AppMethodBeat.o(100594);
       return localJSONObject;
     }
     catch (Exception localException)
     {
-      ad.e("ad.waid.WaidItem", "toJson exp=" + localException.toString());
+      ac.e("ad.waid.WaidItem", "toJson exp=" + localException.toString());
       AppMethodBeat.o(100594);
     }
     return null;

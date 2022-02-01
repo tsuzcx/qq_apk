@@ -18,10 +18,10 @@ import com.tencent.mm.plugin.location.ui.impl.TrackPoint;
 import com.tencent.mm.plugin.location.ui.impl.TrackPointAnimAvatar;
 import com.tencent.mm.plugin.location_soso.ViewManager;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.cbf;
-import com.tencent.mm.protocal.protobuf.ddj;
-import com.tencent.mm.protocal.protobuf.div;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cgf;
+import com.tencent.mm.protocal.protobuf.diy;
+import com.tencent.mm.protocal.protobuf.dok;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -32,60 +32,60 @@ import java.util.Set;
 
 public final class k
 {
-  private static Object sTc;
-  private b.a fjJ;
-  private boolean jVE;
+  private static Object ubo;
+  private b.a fnd;
+  private boolean kwq;
   Context mContext;
-  protected float qXK;
-  public div sPK;
-  private com.tencent.mm.plugin.location.model.k.a sPW;
-  public com.tencent.mm.plugin.k.d sQI;
-  boolean sQJ;
-  public List<div> sTb;
-  public TrackPoint sTd;
-  TrackPointAnimAvatar sTe;
-  boolean sTf;
-  public boolean sTg;
-  public boolean sTh;
-  public boolean sTi;
-  public boolean sTj;
-  public boolean sTk;
-  public ddj sTl;
-  public boolean sTm;
-  public boolean sTn;
-  private boolean sTo;
-  private long sTp;
-  private View.OnTouchListener sTq;
-  View.OnClickListener sTr;
-  View.OnClickListener sTs;
-  public a sTt;
-  protected float seQ;
+  protected float rYu;
+  public dok tXX;
+  public com.tencent.mm.plugin.k.d tYV;
+  boolean tYW;
+  private com.tencent.mm.plugin.location.model.k.a tYj;
+  protected float tmJ;
+  private boolean ubA;
+  private long ubB;
+  private View.OnTouchListener ubC;
+  View.OnClickListener ubD;
+  View.OnClickListener ubE;
+  public a ubF;
+  public List<dok> ubn;
+  public TrackPoint ubp;
+  TrackPointAnimAvatar ubq;
+  boolean ubr;
+  public boolean ubs;
+  public boolean ubt;
+  public boolean ubu;
+  public boolean ubv;
+  public boolean ubw;
+  public diy ubx;
+  public boolean uby;
+  public boolean ubz;
   
   static
   {
     AppMethodBeat.i(55980);
-    sTc = new Object();
+    ubo = new Object();
     AppMethodBeat.o(55980);
   }
   
   public k(Context paramContext, com.tencent.mm.plugin.k.d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(55968);
-    this.sTf = false;
-    this.sTg = false;
-    this.sTh = true;
-    this.sTi = false;
-    this.sTj = false;
-    this.sTk = false;
-    this.sQJ = false;
-    this.sTm = true;
-    this.sTn = true;
-    this.sTo = false;
-    this.qXK = 0.0F;
-    this.seQ = 0.0F;
-    this.jVE = false;
-    this.sTp = 0L;
-    this.sTq = new View.OnTouchListener()
+    this.ubr = false;
+    this.ubs = false;
+    this.ubt = true;
+    this.ubu = false;
+    this.ubv = false;
+    this.ubw = false;
+    this.tYW = false;
+    this.uby = true;
+    this.ubz = true;
+    this.ubA = false;
+    this.rYu = 0.0F;
+    this.tmJ = 0.0F;
+    this.kwq = false;
+    this.ubB = 0L;
+    this.ubC = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -97,12 +97,12 @@ public final class k
         {
           AppMethodBeat.o(55963);
           return false;
-          if ((Math.abs(paramAnonymousMotionEvent.getX() - k.this.qXK) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - k.this.seQ) > 10.0F))
+          if ((Math.abs(paramAnonymousMotionEvent.getX() - k.this.rYu) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - k.this.tmJ) > 10.0F))
           {
             k.a(k.this, true);
             continue;
-            k.this.qXK = paramAnonymousMotionEvent.getX();
-            k.this.seQ = paramAnonymousMotionEvent.getY();
+            k.this.rYu = paramAnonymousMotionEvent.getX();
+            k.this.tmJ = paramAnonymousMotionEvent.getY();
             k.a(k.this, System.currentTimeMillis());
             k.a(k.this, false);
             continue;
@@ -113,10 +113,10 @@ public final class k
         }
       }
     };
-    this.sTr = new k.2(this);
-    this.sTs = new k.3(this);
-    this.sTt = null;
-    this.fjJ = new b.a()
+    this.ubD = new k.2(this);
+    this.ubE = new k.3(this);
+    this.ubF = null;
+    this.fnd = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -132,117 +132,117 @@ public final class k
         StringBuffer localStringBuffer = new StringBuffer();
         localStringBuffer.append("[refreshMyLocation] ");
         localStringBuffer.append(String.format("latitude = %f, longtitude = %f", new Object[] { Double.valueOf(paramAnonymousDouble1), Double.valueOf(paramAnonymousDouble2) }));
-        if (localk.sPK == null)
+        if (localk.tXX == null)
         {
-          localk.sPK = new div();
-          localObject = new cbf();
-          localk.sPK.Eze = ((cbf)localObject);
-          localObject = u.aqG();
-          localk.sPK.Username = ((String)localObject);
-          localk.sPK.Eze.CJE = paramAnonymousDouble1;
-          localk.sPK.Eze.CJD = paramAnonymousDouble2;
-          if ((localk.sQJ) && (localk.sTf)) {
-            localk.cJY();
+          localk.tXX = new dok();
+          localObject = new cgf();
+          localk.tXX.FWg = ((cgf)localObject);
+          localObject = u.axw();
+          localk.tXX.Username = ((String)localObject);
+          localk.tXX.FWg.Ecg = paramAnonymousDouble1;
+          localk.tXX.FWg.Ecf = paramAnonymousDouble2;
+          if ((localk.tYW) && (localk.ubr)) {
+            localk.cXD();
           }
         }
-        localk.sPK.Eze.CJE = paramAnonymousDouble1;
-        localk.sPK.Eze.CJD = paramAnonymousDouble2;
-        Object localObject = localk.sQI.getViewByItag(localk.sPK.Username);
+        localk.tXX.FWg.Ecg = paramAnonymousDouble1;
+        localk.tXX.FWg.Ecf = paramAnonymousDouble2;
+        Object localObject = localk.tYV.getViewByItag(localk.tXX.Username);
         if (localObject != null)
         {
           localStringBuffer.append("[ view is not null hasCode: " + localObject.hashCode() + " ] ");
-          ad.d("MicroMsg.TrackPointViewMgrImpl", localStringBuffer.toString());
+          ac.d("MicroMsg.TrackPointViewMgrImpl", localStringBuffer.toString());
           if ((localObject instanceof TrackPoint))
           {
-            localk.sTd = ((TrackPoint)localObject);
-            ad.d("MicroMsg.TrackPointViewMgrImpl", "udpate view layout");
-            localk.sTd.n(paramAnonymousDouble1, paramAnonymousDouble2);
+            localk.ubp = ((TrackPoint)localObject);
+            ac.d("MicroMsg.TrackPointViewMgrImpl", "udpate view layout");
+            localk.ubp.n(paramAnonymousDouble1, paramAnonymousDouble2);
           }
-          if (localk.sTm) {
-            localk.sQI.getIController().setCenter(localk.sPK.Eze.CJE, localk.sPK.Eze.CJD);
+          if (localk.uby) {
+            localk.tYV.getIController().setCenter(localk.tXX.FWg.Ecg, localk.tXX.FWg.Ecf);
           }
           AppMethodBeat.o(55966);
           return true;
         }
-        localObject = new TrackPoint(localk.mContext, (ViewManager)localk.sQI.getViewManager(), (byte)0);
-        localk.sQI.addView(localObject, 0.0D, 0.0D, localk.sPK.Username);
+        localObject = new TrackPoint(localk.mContext, (ViewManager)localk.tYV.getViewManager(), (byte)0);
+        localk.tYV.addView(localObject, 0.0D, 0.0D, localk.tXX.Username);
         ((TrackPoint)localObject).o(paramAnonymousDouble1, paramAnonymousDouble2);
-        if (localk.sTk)
+        if (localk.ubw)
         {
           ((TrackPoint)localObject).setOnAvatarOnClickListener(null);
           ((TrackPoint)localObject).setOnLocationOnClickListener(null);
-          ((TrackPoint)localObject).cKC();
+          ((TrackPoint)localObject).cYh();
         }
         for (;;)
         {
-          ((TrackPoint)localObject).setAvatar(localk.sPK.Username);
+          ((TrackPoint)localObject).setAvatar(localk.tXX.Username);
           localStringBuffer.append("[view is null new one: " + localObject.hashCode() + " ] ");
-          localk.sTe = new TrackPointAnimAvatar(localk.mContext);
+          localk.ubq = new TrackPointAnimAvatar(localk.mContext);
           break;
-          ((TrackPoint)localObject).setOnAvatarOnClickListener(localk.sTs);
-          ((TrackPoint)localObject).setOnLocationOnClickListener(localk.sTr);
+          ((TrackPoint)localObject).setOnAvatarOnClickListener(localk.ubE);
+          ((TrackPoint)localObject).setOnLocationOnClickListener(localk.ubD);
         }
       }
     };
-    this.sPW = new com.tencent.mm.plugin.location.model.k.a()
+    this.tYj = new com.tencent.mm.plugin.location.model.k.a()
     {
-      public final void x(double paramAnonymousDouble)
+      public final void w(double paramAnonymousDouble)
       {
         AppMethodBeat.i(55967);
         if (k.d(k.this) != null)
         {
-          ad.d("MicroMsg.TrackPointViewMgrImpl", "updateMyTrackPointDegree, degree = %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
-          k.d(k.this).y(paramAnonymousDouble);
+          ac.d("MicroMsg.TrackPointViewMgrImpl", "updateMyTrackPointDegree, degree = %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
+          k.d(k.this).x(paramAnonymousDouble);
         }
         AppMethodBeat.o(55967);
       }
     };
     this.mContext = paramContext;
-    this.sQJ = paramBoolean;
-    this.sQI = paramd;
-    this.sTb = new ArrayList();
-    paramd.setMapViewOnTouchListener(this.sTq);
+    this.tYW = paramBoolean;
+    this.tYV = paramd;
+    this.ubn = new ArrayList();
+    paramd.setMapViewOnTouchListener(this.ubC);
     AppMethodBeat.o(55968);
   }
   
-  private void cJZ()
+  private void cXE()
   {
     AppMethodBeat.i(55974);
     double d3 = 0.0D;
     double d4 = 0.0D;
-    if (this.sPK == null)
+    if (this.tXX == null)
     {
       AppMethodBeat.o(55974);
       return;
     }
-    LocationInfo localLocationInfo = n.cJq().sPL;
+    LocationInfo localLocationInfo = n.cWV().tXY;
     double d2 = d4;
     double d1 = d3;
-    if (this.sPK != null)
+    if (this.tXX != null)
     {
       d2 = d4;
       d1 = d3;
-      if (e.j(localLocationInfo.sOv, localLocationInfo.sOw))
+      if (e.j(localLocationInfo.tWI, localLocationInfo.tWJ))
       {
-        d1 = 2.0D * Math.abs(this.sPK.Eze.CJE - localLocationInfo.sOv);
-        d2 = Math.abs(this.sPK.Eze.CJD - localLocationInfo.sOw) * 2.0D;
+        d1 = 2.0D * Math.abs(this.tXX.FWg.Ecg - localLocationInfo.tWI);
+        d2 = Math.abs(this.tXX.FWg.Ecf - localLocationInfo.tWJ) * 2.0D;
       }
     }
     int i = 0;
     d3 = d1;
-    for (d1 = d2; i < this.sTb.size(); d1 = d4)
+    for (d1 = d2; i < this.ubn.size(); d1 = d4)
     {
-      div localdiv = (div)this.sTb.get(i);
+      dok localdok = (dok)this.ubn.get(i);
       d2 = d3;
       d4 = d1;
-      if (localdiv != null)
+      if (localdok != null)
       {
         d2 = d3;
         d4 = d1;
-        if (e.j(localdiv.Eze.CJE, localdiv.Eze.CJD))
+        if (e.j(localdok.FWg.Ecg, localdok.FWg.Ecf))
         {
-          double d5 = 2.0D * Math.abs(localdiv.Eze.CJE - this.sPK.Eze.CJE);
-          d4 = Math.abs(localdiv.Eze.CJD - this.sPK.Eze.CJD) * 2.0D;
+          double d5 = 2.0D * Math.abs(localdok.FWg.Ecg - this.tXX.FWg.Ecg);
+          d4 = Math.abs(localdok.FWg.Ecf - this.tXX.FWg.Ecf) * 2.0D;
           d2 = d3;
           if (d5 > d3) {
             d2 = d5;
@@ -251,7 +251,7 @@ public final class k
           if (d4 > d1) {
             d3 = d4;
           }
-          ad.d("MicroMsg.TrackPointViewMgrImpl", "update %s %f %f", new Object[] { localdiv.Username, Double.valueOf(localdiv.Eze.CJE), Double.valueOf(localdiv.Eze.CJD) });
+          ac.d("MicroMsg.TrackPointViewMgrImpl", "update %s %f %f", new Object[] { localdok.Username, Double.valueOf(localdok.FWg.Ecg), Double.valueOf(localdok.FWg.Ecf) });
           d4 = d3;
         }
       }
@@ -263,16 +263,16 @@ public final class k
       AppMethodBeat.o(55974);
       return;
     }
-    ad.d("MicroMsg.TrackPointViewMgrImpl", "zoomToSpan maxlat " + 1000000.0D * d3 + " maxlng " + 1000000.0D * d1 + " poi " + localLocationInfo.sOv + " " + localLocationInfo.sOw);
-    if (this.sPK != null)
+    ac.d("MicroMsg.TrackPointViewMgrImpl", "zoomToSpan maxlat " + 1000000.0D * d3 + " maxlng " + 1000000.0D * d1 + " poi " + localLocationInfo.tWI + " " + localLocationInfo.tWJ);
+    if (this.tXX != null)
     {
-      ad.d("MicroMsg.TrackPointViewMgrImpl", "mPosition item %f %f", new Object[] { Double.valueOf(this.sPK.Eze.CJE), Double.valueOf(this.sPK.Eze.CJD) });
-      this.sQI.zoomToSpan(this.sPK.Eze.CJE, this.sPK.Eze.CJD, d3, d1);
+      ac.d("MicroMsg.TrackPointViewMgrImpl", "mPosition item %f %f", new Object[] { Double.valueOf(this.tXX.FWg.Ecg), Double.valueOf(this.tXX.FWg.Ecf) });
+      this.tYV.zoomToSpan(this.tXX.FWg.Ecg, this.tXX.FWg.Ecf, d3, d1);
       AppMethodBeat.o(55974);
       return;
     }
-    if (e.j(localLocationInfo.sOv, localLocationInfo.sOw)) {
-      this.sQI.zoomToSpan(localLocationInfo.sOv, localLocationInfo.sOw, d3, d1);
+    if (e.j(localLocationInfo.tWI, localLocationInfo.tWJ)) {
+      this.tYV.zoomToSpan(localLocationInfo.tWI, localLocationInfo.tWJ, d3, d1);
     }
     AppMethodBeat.o(55974);
   }
@@ -280,67 +280,81 @@ public final class k
   public final void a(com.tencent.mm.plugin.k.d paramd)
   {
     AppMethodBeat.i(55975);
-    if (this.sPK == null)
+    if (this.tXX == null)
     {
       AppMethodBeat.o(55975);
       return;
     }
     if (paramd.getZoomLevel() < 15)
     {
-      paramd.getIController().animateTo(this.sPK.Eze.CJE, this.sPK.Eze.CJD, 15);
+      paramd.getIController().animateTo(this.tXX.FWg.Ecg, this.tXX.FWg.Ecf, 15);
       AppMethodBeat.o(55975);
       return;
     }
-    paramd.getIController().animateTo(this.sPK.Eze.CJE, this.sPK.Eze.CJD);
+    paramd.getIController().animateTo(this.tXX.FWg.Ecg, this.tXX.FWg.Ecf);
     AppMethodBeat.o(55975);
   }
   
-  final void cJY()
+  final void cXD()
   {
     AppMethodBeat.i(55973);
-    if (this.sTg)
+    if (this.ubs)
     {
       AppMethodBeat.o(55973);
       return;
     }
-    if (this.sPK == null)
+    if (this.tXX == null)
     {
       AppMethodBeat.o(55973);
       return;
     }
-    cJZ();
-    this.sTg = true;
+    cXE();
+    this.ubs = true;
     AppMethodBeat.o(55973);
   }
   
-  public final void dX(List<div> paramList)
+  public final void destroy()
+  {
+    AppMethodBeat.i(55970);
+    synchronized (ubo)
+    {
+      if (this.ubn != null) {
+        this.ubn.clear();
+      }
+      this.tYV.clean();
+      AppMethodBeat.o(55970);
+      return;
+    }
+  }
+  
+  public final void eb(List<dok> paramList)
   {
     AppMethodBeat.i(55972);
-    this.sTf = true;
-    int j = this.sTb.size() + 1;
+    this.ubr = true;
+    int j = this.ubn.size() + 1;
     int i;
     int k;
-    synchronized (sTc)
+    synchronized (ubo)
     {
-      this.sTb.clear();
+      this.ubn.clear();
       i = 0;
       while (i < paramList.size())
       {
-        this.sTb.add(paramList.get(i));
+        this.ubn.add(paramList.get(i));
         i += 1;
       }
-      k = this.sTb.size() + 1;
+      k = this.ubn.size() + 1;
     }
     Object localObject3;
     Object localObject2;
-    synchronized (sTc)
+    synchronized (ubo)
     {
-      localObject3 = this.sQI.getTags();
+      localObject3 = this.tYV.getTags();
       paramList = new HashSet();
       i = 0;
-      while (i < this.sTb.size())
+      while (i < this.ubn.size())
       {
-        paramList.add(((div)this.sTb.get(i)).Username);
+        paramList.add(((dok)this.ubn.get(i)).Username);
         i += 1;
         continue;
         paramList = finally;
@@ -352,7 +366,7 @@ public final class k
       while (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
-        if ((!paramList.contains(str)) && (!str.endsWith("myAnim")) && ((this.sTd == null) || (!this.sTd.equals(this.sQI.getViewByItag(str))))) {
+        if ((!paramList.contains(str)) && (!str.endsWith("myAnim")) && ((this.ubp == null) || (!this.ubp.equals(this.tYV.getViewByItag(str))))) {
           ((List)localObject2).add(str);
         }
       }
@@ -361,31 +375,31 @@ public final class k
     while (paramList.hasNext())
     {
       localObject2 = (String)paramList.next();
-      localObject3 = this.sQI.getViewByItag((String)localObject2);
+      localObject3 = this.tYV.getViewByItag((String)localObject2);
       if ((localObject3 instanceof TrackPoint))
       {
         localObject3 = (TrackPoint)localObject3;
         if (((TrackPoint)localObject3).mViewManager != null)
         {
-          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).sXm);
-          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).sXn);
+          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).ufz);
+          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).ufA);
         }
       }
-      this.sQI.removeViewByTag((String)localObject2);
+      this.tYV.removeViewByTag((String)localObject2);
     }
     for (;;)
     {
-      if (i < this.sTb.size())
+      if (i < this.ubn.size())
       {
-        localObject2 = (div)this.sTb.get(i);
-        paramList = this.sQI.getViewByItag(((div)localObject2).Username);
-        ad.d("MicroMsg.TrackPointViewMgrImpl", "position %d %s %f %f %f", new Object[] { Integer.valueOf(i), ((div)localObject2).Username, Double.valueOf(((div)localObject2).Eze.CJE), Double.valueOf(((div)localObject2).Eze.CJD), Double.valueOf(((div)localObject2).Eze.DXx) });
+        localObject2 = (dok)this.ubn.get(i);
+        paramList = this.tYV.getViewByItag(((dok)localObject2).Username);
+        ac.d("MicroMsg.TrackPointViewMgrImpl", "position %d %s %f %f %f", new Object[] { Integer.valueOf(i), ((dok)localObject2).Username, Double.valueOf(((dok)localObject2).FWg.Ecg), Double.valueOf(((dok)localObject2).FWg.Ecf), Double.valueOf(((dok)localObject2).FWg.Fur) });
         if (paramList != null)
         {
           if (!(paramList instanceof TrackPoint)) {
             break label875;
           }
-          ((TrackPoint)paramList).n(((div)localObject2).Eze.CJE, ((div)localObject2).Eze.CJD);
+          ((TrackPoint)paramList).n(((dok)localObject2).FWg.Ecg, ((dok)localObject2).FWg.Ecf);
         }
       }
       for (;;)
@@ -393,48 +407,48 @@ public final class k
         if ((paramList instanceof TrackPoint))
         {
           paramList = (TrackPoint)paramList;
-          paramList.setAvatar(((div)localObject2).Username);
-          paramList.y(((div)localObject2).Eze.DXx);
-          if (!this.sTi)
+          paramList.setAvatar(((dok)localObject2).Username);
+          paramList.x(((dok)localObject2).FWg.Fur);
+          if (!this.ubu)
           {
-            paramList.cKC();
+            paramList.cYh();
             break label883;
-            paramList = new TrackPoint(this.mContext, (ViewManager)this.sQI.getViewManager());
-            this.sQI.addView(paramList, ((div)localObject2).Eze.CJE, ((div)localObject2).Eze.CJD, ((div)localObject2).Username);
-            ((TrackPoint)paramList).o(((div)localObject2).Eze.CJE, ((div)localObject2).Eze.CJD);
-            ((TrackPoint)paramList).setOnAvatarOnClickListener(this.sTs);
-            ((TrackPoint)paramList).setOnLocationOnClickListener(this.sTr);
+            paramList = new TrackPoint(this.mContext, (ViewManager)this.tYV.getViewManager());
+            this.tYV.addView(paramList, ((dok)localObject2).FWg.Ecg, ((dok)localObject2).FWg.Ecf, ((dok)localObject2).Username);
+            ((TrackPoint)paramList).o(((dok)localObject2).FWg.Ecg, ((dok)localObject2).FWg.Ecf);
+            ((TrackPoint)paramList).setOnAvatarOnClickListener(this.ubE);
+            ((TrackPoint)paramList).setOnLocationOnClickListener(this.ubD);
             continue;
-            if ((this.sQJ) && (this.sTf))
+            if ((this.tYW) && (this.ubr))
             {
-              if (!w.pF(n.cJq().sPP)) {
+              if (!w.sQ(n.cWV().tYc)) {
                 break label782;
               }
-              cJY();
+              cXD();
             }
             while ((j < 10) && (k >= 10))
             {
-              paramList = this.sQI.getChilds().iterator();
+              paramList = this.tYV.getChilds().iterator();
               while (paramList.hasNext())
               {
                 localObject2 = paramList.next();
                 if ((localObject2 instanceof TrackPoint)) {
-                  ((TrackPoint)localObject2).cKC();
+                  ((TrackPoint)localObject2).cYh();
                 }
               }
               label782:
-              if (this.sTb.size() > 0) {
-                cJY();
+              if (this.ubn.size() > 0) {
+                cXD();
               }
             }
             if ((j >= 10) && (k < 10))
             {
-              paramList = this.sQI.getChilds().iterator();
+              paramList = this.tYV.getChilds().iterator();
               while (paramList.hasNext())
               {
                 localObject2 = paramList.next();
                 if ((localObject2 instanceof TrackPoint)) {
-                  ((TrackPoint)localObject2).cKD();
+                  ((TrackPoint)localObject2).cYi();
                 }
               }
             }
@@ -452,25 +466,11 @@ public final class k
     }
   }
   
-  public final void destroy()
-  {
-    AppMethodBeat.i(55970);
-    synchronized (sTc)
-    {
-      if (this.sTb != null) {
-        this.sTb.clear();
-      }
-      this.sQI.clean();
-      AppMethodBeat.o(55970);
-      return;
-    }
-  }
-  
-  public final void mJ(boolean paramBoolean)
+  public final void nB(boolean paramBoolean)
   {
     AppMethodBeat.i(55969);
     if (paramBoolean) {
-      if (this.sTd == null) {
+      if (this.ubp == null) {
         break label75;
       }
     }
@@ -479,45 +479,45 @@ public final class k
     {
       if (i != 0)
       {
-        h.vKh.f(10997, new Object[] { "20", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-        this.sTj = paramBoolean;
+        h.wUl.f(10997, new Object[] { "20", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        this.ubv = paramBoolean;
       }
       AppMethodBeat.o(55969);
       return;
     }
   }
   
-  public final void mK(boolean paramBoolean)
+  public final void nC(boolean paramBoolean)
   {
     AppMethodBeat.i(55971);
-    if ((paramBoolean) && (!this.sTi) && (this.sQI != null))
+    if ((paramBoolean) && (!this.ubu) && (this.tYV != null))
     {
-      Iterator localIterator = this.sQI.getChilds().iterator();
+      Iterator localIterator = this.tYV.getChilds().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = localIterator.next();
         if ((localObject instanceof TrackPoint)) {
-          ((TrackPoint)localObject).cKD();
+          ((TrackPoint)localObject).cYi();
         }
       }
     }
-    this.sTi = paramBoolean;
+    this.ubu = paramBoolean;
     AppMethodBeat.o(55971);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(55977);
-    com.tencent.mm.modelgeo.d.axT().c(this.fjJ);
-    n.cJs().b(this.sPW);
+    com.tencent.mm.modelgeo.d.aEL().c(this.fnd);
+    n.cWX().b(this.tYj);
     AppMethodBeat.o(55977);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(55976);
-    com.tencent.mm.modelgeo.d.axT().b(this.fjJ, true);
-    n.cJs().a(this.sPW);
+    com.tencent.mm.modelgeo.d.aEL().b(this.fnd, true);
+    n.cWX().a(this.tYj);
     AppMethodBeat.o(55976);
   }
   

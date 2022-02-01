@@ -12,7 +12,7 @@ final class BaseVoicePrintUI$2
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(29812);
-    this.zei.finish();
+    this.AwO.finish();
     AppMethodBeat.o(29812);
   }
 }

@@ -6,29 +6,29 @@ import com.tencent.tinker.a.a.b.e;
 public final class g
   extends s.a.a<g>
 {
-  public int IAN;
-  public int IAO;
-  public int IAP;
-  public int IAQ;
-  public short[] IAR;
-  public b[] IAS;
-  public a[] IAT;
+  public int KmW;
+  public int KmX;
+  public int KmY;
+  public int KmZ;
+  public short[] Kna;
+  public b[] Knb;
+  public a[] Knc;
   
   public g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, short[] paramArrayOfShort, b[] paramArrayOfb, a[] paramArrayOfa)
   {
     super(paramInt1);
-    this.IAN = paramInt2;
-    this.IAO = paramInt3;
-    this.IAP = paramInt4;
-    this.IAQ = paramInt5;
-    this.IAR = paramArrayOfShort;
-    this.IAS = paramArrayOfb;
-    this.IAT = paramArrayOfa;
+    this.KmW = paramInt2;
+    this.KmX = paramInt3;
+    this.KmY = paramInt4;
+    this.KmZ = paramInt5;
+    this.Kna = paramArrayOfShort;
+    this.Knb = paramArrayOfb;
+    this.Knc = paramArrayOfa;
   }
   
   private int a(g paramg)
   {
-    int i = c.kt(this.IAN, paramg.IAN);
+    int i = c.kK(this.KmW, paramg.KmW);
     if (i != 0) {}
     int j;
     do
@@ -42,22 +42,22 @@ public final class g
             do
             {
               return i;
-              j = c.kt(this.IAO, paramg.IAO);
+              j = c.kK(this.KmX, paramg.KmX);
               i = j;
             } while (j != 0);
-            j = c.kt(this.IAP, paramg.IAP);
+            j = c.kK(this.KmY, paramg.KmY);
             i = j;
           } while (j != 0);
-          j = c.kt(this.IAQ, paramg.IAQ);
+          j = c.kK(this.KmZ, paramg.KmZ);
           i = j;
         } while (j != 0);
-        j = c.a(this.IAR, paramg.IAR);
+        j = c.a(this.Kna, paramg.Kna);
         i = j;
       } while (j != 0);
-      j = c.a(this.IAS, paramg.IAS);
+      j = c.a(this.Knb, paramg.Knb);
       i = j;
     } while (j != 0);
-    return c.a(this.IAT, paramg.IAT);
+    return c.a(this.Knc, paramg.Knc);
   }
   
   public final boolean equals(Object paramObject)
@@ -71,22 +71,22 @@ public final class g
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.IAN), Integer.valueOf(this.IAO), Integer.valueOf(this.IAP), Integer.valueOf(this.IAQ), this.IAR, this.IAS, this.IAT });
+    return e.hash(new Object[] { Integer.valueOf(this.KmW), Integer.valueOf(this.KmX), Integer.valueOf(this.KmY), Integer.valueOf(this.KmZ), this.Kna, this.Knb, this.Knc });
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public int[] IAU;
-    public int[] IAV;
-    public int IAW;
+    public int[] Knd;
+    public int[] Kne;
+    public int Knf;
     public int offset;
     
     public a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2)
     {
-      this.IAU = paramArrayOfInt1;
-      this.IAV = paramArrayOfInt2;
-      this.IAW = paramInt1;
+      this.Knd = paramArrayOfInt1;
+      this.Kne = paramArrayOfInt2;
+      this.Knf = paramInt1;
       this.offset = paramInt2;
     }
   }
@@ -94,15 +94,15 @@ public final class g
   public static final class b
     implements Comparable<b>
   {
-    public int IAX;
-    public int IAY;
-    public int IAZ;
+    public int Kng;
+    public int Knh;
+    public int Kni;
     
     public b(int paramInt1, int paramInt2, int paramInt3)
     {
-      this.IAX = paramInt1;
-      this.IAY = paramInt2;
-      this.IAZ = paramInt3;
+      this.Kng = paramInt1;
+      this.Knh = paramInt2;
+      this.Kni = paramInt3;
     }
   }
 }

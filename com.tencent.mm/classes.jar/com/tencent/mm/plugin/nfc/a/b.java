@@ -4,11 +4,11 @@ import com.tencent.mm.plugin.nfc.c.a;
 
 public abstract interface b
 {
-  public static final byte[] ueL = a.hexStringToByteArray("FF010000");
-  public static final byte[] ueM = a.hexStringToByteArray("FF020000");
-  public static final byte[] ueN = a.hexStringToByteArray("FF030000");
-  public static final byte[] ueO = a.hexStringToByteArray("FF040000");
-  public static final byte[] ueP = a.hexStringToByteArray("006C0000");
+  public static final byte[] vnK = a.hexStringToByteArray("FF010000");
+  public static final byte[] vnL = a.hexStringToByteArray("FF020000");
+  public static final byte[] vnM = a.hexStringToByteArray("FF030000");
+  public static final byte[] vnN = a.hexStringToByteArray("FF040000");
+  public static final byte[] vnO = a.hexStringToByteArray("006C0000");
 }
 
 

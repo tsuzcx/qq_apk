@@ -13,36 +13,36 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.performance.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import com.tencent.mm.ui.MMActivity;
 
 public class DiagnosticSettingsUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private ax urA;
-  private CheckBox urm;
-  private CheckBox urn;
-  private CheckBox uro;
-  private CheckBox urp;
-  private CheckBox urq;
-  private CheckBox urr;
-  private EditText urs;
-  private EditText urt;
-  private EditText uru;
-  private EditText urv;
-  private EditText urw;
-  private EditText urx;
-  private Button ury;
-  private Button urz;
+  private CheckBox vAg;
+  private CheckBox vAh;
+  private CheckBox vAi;
+  private CheckBox vAj;
+  private CheckBox vAk;
+  private CheckBox vAl;
+  private EditText vAm;
+  private EditText vAn;
+  private EditText vAo;
+  private EditText vAp;
+  private EditText vAq;
+  private EditText vAr;
+  private Button vAs;
+  private Button vAt;
+  private aw vAu;
   
   public DiagnosticSettingsUI()
   {
     AppMethodBeat.i(124910);
-    this.urA = ax.aFC("diagnostic_memory_hook_stg");
+    this.vAu = aw.aKT("diagnostic_memory_hook_stg");
     AppMethodBeat.o(124910);
   }
   
@@ -58,35 +58,35 @@ public class DiagnosticSettingsUI
     if (2131299073 == i)
     {
       paramView = new StringBuilder("<cmd><diagnostic><MemoryHook enable='");
-      if (this.urm.isChecked())
+      if (this.vAg.isChecked())
       {
         i = 1;
         paramView = paramView.append(i).append("' multiprocess='");
-        if (!this.urp.isChecked()) {
+        if (!this.vAj.isChecked()) {
           break label339;
         }
         i = 1;
         label61:
-        paramView = paramView.append(i).append("' duration='").append(bt.getInt(this.uru.getText().toString(), 1)).append("' hook='").append(this.urs.getText().toString()).append("' ignore='").append(this.urt.getText().toString()).append("' stack='");
-        if (!this.urn.isChecked()) {
+        paramView = paramView.append(i).append("' duration='").append(bs.getInt(this.vAo.getText().toString(), 1)).append("' hook='").append(this.vAm.getText().toString()).append("' ignore='").append(this.vAn.getText().toString()).append("' stack='");
+        if (!this.vAh.isChecked()) {
           break label344;
         }
         i = 1;
         label142:
-        paramView = paramView.append(i).append("' min='").append(bt.getInt(this.urv.getText().toString(), 0)).append("' max='").append(bt.getInt(this.urw.getText().toString(), 0)).append("' force='");
-        if (!this.uro.isChecked()) {
+        paramView = paramView.append(i).append("' min='").append(bs.getInt(this.vAp.getText().toString(), 0)).append("' max='").append(bs.getInt(this.vAq.getText().toString(), 0)).append("' force='");
+        if (!this.vAi.isChecked()) {
           break label349;
         }
         i = 1;
         label209:
-        paramView = paramView.append(i).append("' sampling='").append(bt.getDouble(this.urx.getText().toString(), 1.0D)).append("' extreme='");
-        if (!this.urq.isChecked()) {
+        paramView = paramView.append(i).append("' sampling='").append(bs.getDouble(this.vAr.getText().toString(), 1.0D)).append("' extreme='");
+        if (!this.vAk.isChecked()) {
           break label354;
         }
         i = 1;
         label254:
         paramView = paramView.append(i).append("' mmap='");
-        if (!this.urr.isChecked()) {
+        if (!this.vAl.isChecked()) {
           break label359;
         }
       }
@@ -98,8 +98,8 @@ public class DiagnosticSettingsUI
       for (i = 1;; i = 0)
       {
         paramView = i + "'/></diagnostic></cmd>";
-        ad.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
-        a.urg.an(bw.K(paramView, "cmd"));
+        ac.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
+        a.vAc.ap(bv.L(paramView, "cmd"));
         Toast.makeText(this, "MemoryHook:Confirmed, pls restart process", 0).show();
         AppMethodBeat.o(124912);
         return;
@@ -117,7 +117,7 @@ public class DiagnosticSettingsUI
     }
     if (2131299074 == i)
     {
-      a.urg.an(bw.K("<cmd><diagnostic><report><memory/></report></diagnostic></cmd>", "cmd"));
+      a.vAc.ap(bv.L("<cmd><diagnostic><report><memory/></report></diagnostic></cmd>", "cmd"));
       Toast.makeText(this, "MemoryHook:Reported, pls run `logcat |grep MemoryHookLogic` for result", 0).show();
     }
     AppMethodBeat.o(124912);
@@ -139,34 +139,34 @@ public class DiagnosticSettingsUI
       }
     });
     setMMTitle("诊断模式");
-    this.urm = ((CheckBox)findViewById(2131299075));
-    this.urn = ((CheckBox)findViewById(2131299080));
-    this.uro = ((CheckBox)findViewById(2131299077));
-    this.urp = ((CheckBox)findViewById(2131299079));
-    this.urq = ((CheckBox)findViewById(2131299076));
-    this.urr = ((CheckBox)findViewById(2131299078));
-    this.urs = ((EditText)findViewById(2131299082));
-    this.urt = ((EditText)findViewById(2131299083));
-    this.uru = ((EditText)findViewById(2131299081));
-    this.urv = ((EditText)findViewById(2131299085));
-    this.urw = ((EditText)findViewById(2131299084));
-    this.urx = ((EditText)findViewById(2131299086));
-    this.ury = ((Button)findViewById(2131299073));
-    this.urz = ((Button)findViewById(2131299074));
-    this.ury.setOnClickListener(this);
-    this.urz.setOnClickListener(this);
-    this.urm.setChecked(this.urA.decodeBool("MH_KEY_ENABLE_BOOLEAN", false));
-    this.urn.setChecked(this.urA.decodeBool("MH_KEY_ENABLE_STACKTRACE_BOOLEAN", false));
-    this.uro.setChecked(false);
-    this.urp.setChecked(this.urA.decodeBool("MH_KEY_MULTI_PROCESS_BOOLEAN", false));
-    this.urq.setChecked(this.urA.decodeBool("MH_KEY_EXTREME_BOOLEAN", false));
-    this.urr.setChecked(this.urA.decodeBool("MH_KEY_ENABLE_MMAP_BOOLEAN", false));
-    this.urs.setText(this.urA.decodeString("MH_KEY_HOOK_SO_STRING", ".*com\\.tencent\\.mm.*\\.so$"));
-    this.urt.setText(this.urA.decodeString("MH_KEY_IGNORE_SO_STRING", null));
-    this.uru.setText(Long.toString(this.urA.decodeLong("MH_KEY_DURATION_MILLIS_LONG", 3600000L) / 3600000L));
-    this.urv.setText(Integer.toString(this.urA.decodeInt("MH_KEY_MIN_TRACE_SIZE_INT", 0)));
-    this.urw.setText(Integer.toString(this.urA.decodeInt("MH_KEY_MAX_TRACE_SIZE_INT", 0)));
-    this.urx.setText(Double.toString(this.urA.aFF("MH_KEY_SAMPLING_DOUBLE")));
+    this.vAg = ((CheckBox)findViewById(2131299075));
+    this.vAh = ((CheckBox)findViewById(2131299080));
+    this.vAi = ((CheckBox)findViewById(2131299077));
+    this.vAj = ((CheckBox)findViewById(2131299079));
+    this.vAk = ((CheckBox)findViewById(2131299076));
+    this.vAl = ((CheckBox)findViewById(2131299078));
+    this.vAm = ((EditText)findViewById(2131299082));
+    this.vAn = ((EditText)findViewById(2131299083));
+    this.vAo = ((EditText)findViewById(2131299081));
+    this.vAp = ((EditText)findViewById(2131299085));
+    this.vAq = ((EditText)findViewById(2131299084));
+    this.vAr = ((EditText)findViewById(2131299086));
+    this.vAs = ((Button)findViewById(2131299073));
+    this.vAt = ((Button)findViewById(2131299074));
+    this.vAs.setOnClickListener(this);
+    this.vAt.setOnClickListener(this);
+    this.vAg.setChecked(this.vAu.decodeBool("MH_KEY_ENABLE_BOOLEAN", false));
+    this.vAh.setChecked(this.vAu.decodeBool("MH_KEY_ENABLE_STACKTRACE_BOOLEAN", false));
+    this.vAi.setChecked(false);
+    this.vAj.setChecked(this.vAu.decodeBool("MH_KEY_MULTI_PROCESS_BOOLEAN", false));
+    this.vAk.setChecked(this.vAu.decodeBool("MH_KEY_EXTREME_BOOLEAN", false));
+    this.vAl.setChecked(this.vAu.decodeBool("MH_KEY_ENABLE_MMAP_BOOLEAN", false));
+    this.vAm.setText(this.vAu.decodeString("MH_KEY_HOOK_SO_STRING", ".*com\\.tencent\\.mm.*\\.so$"));
+    this.vAn.setText(this.vAu.decodeString("MH_KEY_IGNORE_SO_STRING", null));
+    this.vAo.setText(Long.toString(this.vAu.decodeLong("MH_KEY_DURATION_MILLIS_LONG", 3600000L) / 3600000L));
+    this.vAp.setText(Integer.toString(this.vAu.decodeInt("MH_KEY_MIN_TRACE_SIZE_INT", 0)));
+    this.vAq.setText(Integer.toString(this.vAu.decodeInt("MH_KEY_MAX_TRACE_SIZE_INT", 0)));
+    this.vAr.setText(Double.toString(this.vAu.aKW("MH_KEY_SAMPLING_DOUBLE")));
     AppMethodBeat.o(124911);
   }
   

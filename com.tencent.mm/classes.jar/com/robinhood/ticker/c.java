@@ -6,9 +6,9 @@ import java.util.Map;
 
 final class c
 {
-  final int bNV;
-  final char[] bNW;
-  final Map<Character, Integer> bNX;
+  final int bLD;
+  final char[] bLE;
+  final Map<Character, Integer> bLF;
   
   c(String paramString)
   {
@@ -21,21 +21,21 @@ final class c
     }
     paramString = paramString.toCharArray();
     int k = paramString.length;
-    this.bNV = k;
-    this.bNX = new HashMap(k);
+    this.bLD = k;
+    this.bLF = new HashMap(k);
     int i = 0;
     while (i < k)
     {
-      this.bNX.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      this.bLF.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
       i += 1;
     }
-    this.bNW = new char[k * 2 + 1];
-    this.bNW[0] = '\000';
+    this.bLE = new char[k * 2 + 1];
+    this.bLE[0] = '\000';
     i = j;
     while (i < k)
     {
-      this.bNW[(i + 1)] = paramString[i];
-      this.bNW[(k + 1 + i)] = paramString[i];
+      this.bLE[(i + 1)] = paramString[i];
+      this.bLE[(k + 1 + i)] = paramString[i];
       i += 1;
     }
     AppMethodBeat.o(39843);
@@ -49,9 +49,9 @@ final class c
       AppMethodBeat.o(39844);
       return 0;
     }
-    if (this.bNX.containsKey(Character.valueOf(paramChar)))
+    if (this.bLF.containsKey(Character.valueOf(paramChar)))
     {
-      int i = ((Integer)this.bNX.get(Character.valueOf(paramChar))).intValue();
+      int i = ((Integer)this.bLF.get(Character.valueOf(paramChar))).intValue();
       AppMethodBeat.o(39844);
       return i + 1;
     }
@@ -61,7 +61,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.robinhood.ticker.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,28 +14,28 @@ public final class c
   {
     AppMethodBeat.i(40510);
     d.j(paramc, "Cannot extract base string from null object");
-    if ((paramc.Knx == null) || (paramc.Knx.size() <= 0))
+    if ((paramc.Mbg == null) || (paramc.Mbg.size() <= 0))
     {
       paramc = new org.b.b.c(paramc);
       AppMethodBeat.o(40510);
       throw paramc;
     }
-    String str1 = org.b.g.c.encode(paramc.fNc().name());
-    String str2 = org.b.g.c.encode(paramc.fNh());
+    String str1 = org.b.g.c.encode(paramc.gfS().name());
+    String str2 = org.b.g.c.encode(paramc.gfX());
     e locale = new e();
-    locale.a(paramc.fNb());
-    locale.a(paramc.fNg());
-    locale.a(new e(paramc.Knx));
-    paramc = new e(locale.Kny);
-    Collections.sort(paramc.Kny);
-    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.encode(paramc.fNj()) });
+    locale.a(paramc.gfR());
+    locale.a(paramc.gfW());
+    locale.a(new e(paramc.Mbg));
+    paramc = new e(locale.Mbh);
+    Collections.sort(paramc.Mbh);
+    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.encode(paramc.gfZ()) });
     AppMethodBeat.o(40510);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.c.c
  * JD-Core Version:    0.7.0.1
  */

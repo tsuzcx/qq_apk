@@ -12,11 +12,12 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.f.f;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.game.b.b.e;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -25,17 +26,17 @@ import org.json.JSONException;
 public class GamePublishGalleryUI
   extends MMActivity
 {
-  private ViewPager oEa;
-  private TextViewWithBottomLine rSi;
-  private TextViewWithBottomLine rSj;
-  private TextView rSk;
-  private GameLocalGalleryView rSl;
-  private k rSm;
+  private ViewPager phA;
+  private TextViewWithBottomLine sZY;
+  private TextViewWithBottomLine sZZ;
+  private TextView taa;
+  private GameLocalGalleryView tab;
+  private k tac;
   
-  public final void cCk()
+  public final void cPv()
   {
     AppMethodBeat.i(41044);
-    if ((a.cBV() == 0) && (this.oEa.getCurrentItem() % 2 == 0)) {
+    if ((a.cPg() == 0) && (this.phA.getCurrentItem() % 2 == 0)) {
       setCurrentItem(1, false);
     }
     AppMethodBeat.o(41044);
@@ -58,14 +59,14 @@ public class GamePublishGalleryUI
     int i;
     label104:
     Object localObject;
-    if (this.rSl != null)
+    if (this.tab != null)
     {
-      localGameLocalGalleryView = this.rSl;
-      if (paramInt1 == GameLocalGalleryView.rRU)
+      localGameLocalGalleryView = this.tab;
+      if (paramInt1 == GameLocalGalleryView.sZK)
       {
         if (paramInt2 == -1)
         {
-          GameLocalGalleryView.cCf();
+          GameLocalGalleryView.cPq();
           ((Activity)localGameLocalGalleryView.getContext()).setResult(-1, paramIntent);
           ((Activity)localGameLocalGalleryView.getContext()).finish();
         }
@@ -77,19 +78,19 @@ public class GamePublishGalleryUI
         {
           AppMethodBeat.o(41042);
           return;
-          if (paramInt1 == GameLocalGalleryView.rRV) {
+          if (paramInt1 == GameLocalGalleryView.sZL) {
             switch (paramInt2)
             {
             default: 
               i = 1;
               break;
             case -1: 
-              GameLocalGalleryView.cCf();
+              GameLocalGalleryView.cPq();
               if (paramIntent != null) {
-                break label322;
+                break label399;
               }
               localObject = new Intent();
-              ((Intent)localObject).putStringArrayListExtra("CropImage_OutputPath_List", localGameLocalGalleryView.rRX.cAm());
+              ((Intent)localObject).putStringArrayListExtra("CropImage_OutputPath_List", localGameLocalGalleryView.sZN.cNv());
             }
           }
         }
@@ -97,7 +98,7 @@ public class GamePublishGalleryUI
     }
     for (;;)
     {
-      ad.i("MicroMsg.GameLocalMediaView", "onActivity Result ok");
+      ac.i("MicroMsg.GameLocalMediaView", "onActivity Result ok");
       ((Activity)localGameLocalGalleryView.getContext()).setResult(-1, (Intent)localObject);
       ((Activity)localGameLocalGalleryView.getContext()).finish();
       break label104;
@@ -105,26 +106,38 @@ public class GamePublishGalleryUI
         break label104;
       }
       localObject = paramIntent.getStringArrayListExtra("preview_image_list");
-      if ((localObject == null) || (localGameLocalGalleryView.rRX == null)) {
+      if ((localObject == null) || (localGameLocalGalleryView.sZN == null)) {
         break label104;
       }
-      localGameLocalGalleryView.rRX.S((ArrayList)localObject);
+      localGameLocalGalleryView.sZN.ad((ArrayList)localObject);
       break label104;
-      ad.e("MicroMsg.GameLocalMediaView", "WTF!!!");
+      ac.e("MicroMsg.GameLocalMediaView", "WTF!!!");
       ((Activity)localGameLocalGalleryView.getContext()).finish();
       break label104;
       i = 0;
       break;
-      if (this.rSm != null)
+      if (this.tac != null)
       {
-        localObject = this.rSm;
-        if (paramInt1 == (localObject.hashCode() & 0xFFFF)) {
+        localObject = this.tac;
+        if (paramInt1 == (localObject.hashCode() & 0xFFFF))
+        {
           if (paramInt2 == -1)
           {
-            k.cCf();
+            k.cPq();
+            if (((k)localObject).tak != null)
+            {
+              if (paramIntent.hasExtra("key_game_video_appid")) {
+                paramIntent.putExtra("key_game_video_appid", ((k)localObject).tak.appId);
+              }
+              if (paramIntent.hasExtra("key_game_video_appname")) {
+                paramIntent.putExtra("key_game_video_appid", ((k)localObject).tak.appName);
+              }
+              paramIntent.putExtra("key_game_trans_info", ((k)localObject).tak.sVG);
+            }
             ((Activity)((k)localObject).getContext()).setResult(-1, paramIntent);
             ((Activity)((k)localObject).getContext()).finish();
           }
+          ((k)localObject).tak = null;
         }
         for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
         {
@@ -134,7 +147,7 @@ public class GamePublishGalleryUI
       }
       AppMethodBeat.o(41042);
       return;
-      label322:
+      label399:
       localObject = paramIntent;
     }
   }
@@ -145,8 +158,8 @@ public class GamePublishGalleryUI
     AppMethodBeat.i(41038);
     super.onCreate(paramBundle);
     getController().q(this, getResources().getColor(2131101179));
-    this.rSi = ((TextViewWithBottomLine)findViewById(2131300523));
-    this.rSi.setOnClickListener(new View.OnClickListener()
+    this.sZY = ((TextViewWithBottomLine)findViewById(2131300523));
+    this.sZY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -154,12 +167,12 @@ public class GamePublishGalleryUI
         GamePublishGalleryUI.a(GamePublishGalleryUI.this).setSelected(true);
         GamePublishGalleryUI.b(GamePublishGalleryUI.this).setSelected(false);
         GamePublishGalleryUI.this.setCurrentItem(0, false);
-        GamePublishGalleryUI.c(GamePublishGalleryUI.this).cCe();
+        GamePublishGalleryUI.c(GamePublishGalleryUI.this).cPp();
         AppMethodBeat.o(41034);
       }
     });
-    this.rSj = ((TextViewWithBottomLine)findViewById(2131300505));
-    this.rSj.setOnClickListener(new View.OnClickListener()
+    this.sZZ = ((TextViewWithBottomLine)findViewById(2131300505));
+    this.sZZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -170,28 +183,37 @@ public class GamePublishGalleryUI
         AppMethodBeat.o(41035);
       }
     });
-    this.rSi.setSelected(true);
-    this.rSj.setSelected(false);
-    this.rSk = ((TextView)findViewById(2131300452));
-    this.rSk.setOnClickListener(new GamePublishGalleryUI.3(this));
-    this.oEa = ((ViewPager)findViewById(2131300566));
+    this.sZY.setSelected(true);
+    this.sZZ.setSelected(false);
+    this.taa = ((TextView)findViewById(2131300452));
+    this.taa.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(41036);
+        GamePublishGalleryUI.this.setResult(0);
+        GamePublishGalleryUI.this.finish();
+        AppMethodBeat.o(41036);
+      }
+    });
+    this.phA = ((ViewPager)findViewById(2131300566));
     ArrayList localArrayList = new ArrayList();
     int j = getIntent().getIntExtra("query_media_type", 3);
     GameGalleryFragment localGameGalleryFragment = new GameGalleryFragment();
-    int k = a.cBV();
+    int k = a.cPg();
     if (j == 1)
     {
       localGameGalleryFragment.mView = new FrameLayout(this);
       localArrayList.add(localGameGalleryFragment);
       paramBundle = new GameGalleryFragment();
-      this.rSl = new GameLocalGalleryView(this);
-      this.rSl.setQueryType(j);
-      this.rSl.setSelectLimitCount(getIntent().getIntExtra("max_select_count", 9));
-      paramBundle.mView = this.rSl;
+      this.tab = new GameLocalGalleryView(this);
+      this.tab.setQueryType(j);
+      this.tab.setSelectLimitCount(getIntent().getIntExtra("max_select_count", 9));
+      paramBundle.mView = this.tab;
       localArrayList.add(paramBundle);
       paramBundle = new i(getSupportFragmentManager(), localArrayList);
-      this.oEa.setAdapter(paramBundle);
-      this.oEa.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+      this.phA.setAdapter(paramBundle);
+      this.phA.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
       {
         public final void onPageScrollStateChanged(int paramAnonymousInt) {}
         
@@ -204,7 +226,7 @@ public class GamePublishGalleryUI
           {
             GamePublishGalleryUI.a(GamePublishGalleryUI.this).setSelected(true);
             GamePublishGalleryUI.b(GamePublishGalleryUI.this).setSelected(false);
-            GamePublishGalleryUI.c(GamePublishGalleryUI.this).cCe();
+            GamePublishGalleryUI.c(GamePublishGalleryUI.this).cPp();
           }
           for (;;)
           {
@@ -225,31 +247,31 @@ public class GamePublishGalleryUI
     }
     for (;;)
     {
-      label320:
-      this.rSm = new k(this);
+      label321:
+      this.tac = new k(this);
       boolean bool = getIntent().getBooleanExtra("game_haowan_ignore_video_preview", true);
-      this.rSm.setIgnoreVideoPreview(bool);
+      this.tac.setIgnoreVideoPreview(bool);
       Object localObject = getIntent().getStringExtra("game_haowan_local_albums_info");
       paramBundle = new JSONArray();
-      if (!bt.isNullOrNil((String)localObject)) {}
+      if (!bs.isNullOrNil((String)localObject)) {}
       for (;;)
       {
         try
         {
           localObject = new JSONArray((String)localObject);
           paramBundle = (Bundle)localObject;
-          this.rSm.setLocalAlbumInfos(paramBundle);
-          this.rSm.setBackgroundColor(getResources().getColor(2131101179));
-          localGameGalleryFragment.mView = this.rSm;
+          this.tac.setLocalAlbumInfos(paramBundle);
+          this.tac.setBackgroundColor(getResources().getColor(2131101179));
+          localGameGalleryFragment.mView = this.tac;
         }
         catch (JSONException localJSONException) {}
         if (k != 2) {
-          break label448;
+          break label449;
         }
         i = 1;
-        break label320;
+        break label321;
       }
-      label448:
+      label449:
       i = 0;
     }
   }
@@ -267,7 +289,7 @@ public class GamePublishGalleryUI
   {
     AppMethodBeat.i(41040);
     super.onPause();
-    f.d(false, true, true);
+    f.e(false, true, true);
     AppMethodBeat.o(41040);
   }
   
@@ -275,7 +297,7 @@ public class GamePublishGalleryUI
   {
     AppMethodBeat.i(41039);
     super.onResume();
-    f.d(true, true, true);
+    f.e(true, true, true);
     AppMethodBeat.o(41039);
   }
   
@@ -288,10 +310,10 @@ public class GamePublishGalleryUI
   public final void setCurrentItem(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(41043);
-    if ((paramInt % 2 == 0) && (this.rSm != null))
+    if ((paramInt % 2 == 0) && (this.tac != null))
     {
-      this.rSm.cCd();
-      this.oEa.setCurrentItem(paramInt);
+      this.tac.cPo();
+      this.phA.setCurrentItem(paramInt);
       if (paramBoolean) {
         if (paramInt % 2 != 0) {
           break label86;
@@ -301,10 +323,10 @@ public class GamePublishGalleryUI
     label86:
     for (paramInt = 8762;; paramInt = 8767)
     {
-      com.tencent.mm.game.report.b.a.a(aj.getContext(), paramInt, 0, 2, com.tencent.mm.game.report.b.a.a(7, new HashMap()));
+      com.tencent.mm.game.report.b.a.a(ai.getContext(), paramInt, 0, 2, com.tencent.mm.game.report.b.a.a(7, new HashMap()));
       AppMethodBeat.o(41043);
       return;
-      this.rSl.cCd();
+      this.tab.cPo();
       break;
     }
   }

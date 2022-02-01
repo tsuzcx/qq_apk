@@ -2,13 +2,13 @@ package com.tencent.mm.platformtools;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.crm;
 
 public final class z
 {
-  public static cmf BE(String paramString)
+  public static crm FI(String paramString)
   {
     AppMethodBeat.i(132979);
     if (paramString == null)
@@ -16,13 +16,13 @@ public final class z
       AppMethodBeat.o(132979);
       return null;
     }
-    cmf localcmf = new cmf();
-    localcmf.aEE(paramString);
+    crm localcrm = new crm();
+    localcrm.aJV(paramString);
     AppMethodBeat.o(132979);
-    return localcmf;
+    return localcrm;
   }
   
-  public static SKBuiltinBuffer_t BF(String paramString)
+  public static SKBuiltinBuffer_t FJ(String paramString)
   {
     AppMethodBeat.i(132982);
     if (paramString == null)
@@ -50,25 +50,25 @@ public final class z
       AppMethodBeat.o(132980);
       return null;
     }
-    paramb = paramb.eBA();
+    paramb = paramb.eQU();
     AppMethodBeat.o(132980);
     return paramb;
   }
   
-  public static String a(cmf paramcmf)
+  public static String a(crm paramcrm)
   {
-    if (paramcmf == null) {
+    if (paramcrm == null) {
       return null;
     }
-    return paramcmf.Ehn;
+    return paramcrm.FEm;
   }
   
-  public static String a(cmf paramcmf, String paramString)
+  public static String a(crm paramcrm, String paramString)
   {
-    if (paramcmf == null) {
+    if (paramcrm == null) {
       return paramString;
     }
-    return paramcmf.Ehn;
+    return paramcrm.FEm;
   }
   
   public static byte[] a(SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
@@ -97,7 +97,7 @@ public final class z
     return paramSKBuiltinBuffer_t;
   }
   
-  public static SKBuiltinBuffer_t am(byte[] paramArrayOfByte)
+  public static SKBuiltinBuffer_t al(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132976);
     if (paramArrayOfByte == null)
@@ -119,7 +119,7 @@ public final class z
       AppMethodBeat.o(132981);
       return null;
     }
-    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().eBA();
+    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().eQU();
     AppMethodBeat.o(132981);
     return paramSKBuiltinBuffer_t;
   }

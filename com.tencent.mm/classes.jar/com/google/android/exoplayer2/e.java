@@ -6,14 +6,14 @@ import java.io.IOException;
 public final class e
   extends Exception
 {
-  public final int aQL;
+  public final int aRG;
   public final int type;
   
   private e(int paramInt1, Throwable paramThrowable, int paramInt2)
   {
     super(null, paramThrowable);
     this.type = paramInt1;
-    this.aQL = paramInt2;
+    this.aRG = paramInt2;
   }
   
   public static e a(IOException paramIOException)

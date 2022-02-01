@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.j;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -23,7 +23,7 @@ public final class f
     String str = null;
     try
     {
-      paramString = i.cM(paramString, false);
+      paramString = i.cS(paramString, false);
       str = paramString;
       localObject = paramString;
       paramBitmap.compress(paramCompressFormat, 60, paramString);
@@ -36,7 +36,7 @@ public final class f
         paramString.close();
         if (paramBoolean)
         {
-          ad.i("MicroMsg.VideoUtil", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
+          ac.i("MicroMsg.VideoUtil", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
           paramBitmap.recycle();
           AppMethodBeat.o(31184);
           return;
@@ -46,7 +46,7 @@ public final class f
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.VideoUtil", paramCompressFormat, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VideoUtil", paramCompressFormat, "", new Object[0]);
         }
       }
       return;
@@ -54,14 +54,14 @@ public final class f
     catch (Exception paramCompressFormat)
     {
       localObject = str;
-      ad.printErrStackTrace("MicroMsg.VideoUtil", paramCompressFormat, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.VideoUtil", paramCompressFormat, "", new Object[0]);
       if (str != null) {}
       try
       {
         str.close();
         if (paramBoolean)
         {
-          ad.i("MicroMsg.VideoUtil", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
+          ac.i("MicroMsg.VideoUtil", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
           paramBitmap.recycle();
           AppMethodBeat.o(31184);
           return;
@@ -71,7 +71,7 @@ public final class f
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.VideoUtil", paramCompressFormat, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VideoUtil", paramCompressFormat, "", new Object[0]);
         }
       }
     }
@@ -83,7 +83,7 @@ public final class f
         ((OutputStream)localObject).close();
         if (paramBoolean)
         {
-          ad.i("MicroMsg.VideoUtil", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
+          ac.i("MicroMsg.VideoUtil", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
           paramBitmap.recycle();
         }
         AppMethodBeat.o(31184);
@@ -93,7 +93,7 @@ public final class f
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.VideoUtil", paramString, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.VideoUtil", paramString, "", new Object[0]);
         }
       }
       AppMethodBeat.o(31184);
@@ -112,7 +112,7 @@ public final class f
     return false;
   }
   
-  public static String pL(int paramInt)
+  public static String qy(int paramInt)
   {
     AppMethodBeat.i(31182);
     String str = String.format("%d:%02d", new Object[] { Long.valueOf(paramInt / 60L), Long.valueOf(paramInt % 60L) });

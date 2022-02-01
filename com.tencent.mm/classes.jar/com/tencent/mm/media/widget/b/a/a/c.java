@@ -6,17 +6,17 @@ import d.g.b.k;
 import d.l;
 import java.lang.reflect.Constructor;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyCreator;", "", "()V", "TAG", "", "requestConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultConstructor", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "name", "klass", "Ljava/lang/Class;", "resultKey", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyCreator;", "", "()V", "TAG", "", "requestConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultConstructor", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "name", "klass", "Ljava/lang/Class;", "resultKey", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.WCRequestKeyCreator";
-  private static Constructor<CaptureRequest.Key<?>> gAj;
-  public static final c gAk;
+  private static Constructor<CaptureRequest.Key<?>> haG;
+  public static final c haH;
   
   static
   {
     AppMethodBeat.i(94202);
-    gAk = new c();
+    haH = new c();
     TAG = "MicroMsg.WCRequestKeyCreator";
     AppMethodBeat.o(94202);
   }
@@ -29,20 +29,20 @@ public final class c
     try
     {
       Constructor localConstructor;
-      if (gAj == null)
+      if (haG == null)
       {
         localConstructor = CaptureRequest.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        gAj = localConstructor;
+        haG = localConstructor;
         if (localConstructor == null) {
-          k.fvU();
+          k.fOy();
         }
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = gAj;
+        localConstructor = haG;
         if (localConstructor == null) {
-          k.fvU();
+          k.fOy();
         }
         paramString = (CaptureRequest.Key)localConstructor.newInstance(new Object[] { paramString, paramClass });
         AppMethodBeat.o(94201);
@@ -66,7 +66,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

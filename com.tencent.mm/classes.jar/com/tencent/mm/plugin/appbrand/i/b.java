@@ -17,43 +17,43 @@ import org.json.JSONObject;
 public final class b
   implements a
 {
-  public JSONObject jmy;
-  public int joH;
-  public m joI;
-  public c joJ;
-  private f.d joK;
-  private f.b joL;
-  private f.c joM;
+  public JSONObject jML;
+  public int jOT;
+  public m jOU;
+  public c jOV;
+  private f.d jOW;
+  private f.b jOX;
+  private f.c jOY;
   
   public b(int paramInt, JSONObject paramJSONObject, c paramc, m paramm)
   {
-    this.joH = paramInt;
-    this.jmy = paramJSONObject;
-    this.joJ = paramc;
-    this.joI = paramm;
+    this.jOT = paramInt;
+    this.jML = paramJSONObject;
+    this.jOV = paramc;
+    this.jOU = paramm;
   }
   
-  public final JSONObject AG()
+  public final JSONObject Ak()
   {
-    return this.jmy;
+    return this.jML;
   }
   
-  public final c Dj()
+  public final c CM()
   {
-    return this.joJ;
+    return this.jOV;
   }
   
-  public final boolean EA()
+  public final boolean Ed()
   {
-    return this.joI instanceof y;
+    return this.jOU instanceof y;
   }
   
-  public final JSONObject EB()
+  public final JSONObject Ee()
   {
     AppMethodBeat.i(139387);
-    if (this.jmy != null)
+    if (this.jML != null)
     {
-      localJSONObject = this.jmy;
+      localJSONObject = this.jML;
       AppMethodBeat.o(139387);
       return localJSONObject;
     }
@@ -62,12 +62,12 @@ public final class b
     return localJSONObject;
   }
   
-  public final String EC()
+  public final String Ef()
   {
     AppMethodBeat.i(139388);
-    if (this.joI != null)
+    if (this.jOU != null)
     {
-      String str = this.joI.getName();
+      String str = this.jOU.getName();
       AppMethodBeat.o(139388);
       return str;
     }
@@ -75,26 +75,26 @@ public final class b
     return null;
   }
   
-  public final void ED()
+  public final void Eg()
   {
     AppMethodBeat.i(139392);
-    if ((this.joJ instanceof e))
+    if ((this.jOV instanceof e))
     {
-      e locale = (e)this.joJ;
-      if (this.joK != null)
+      e locale = (e)this.jOV;
+      if (this.jOW != null)
       {
-        locale.b(this.joK);
-        this.joK = null;
+        locale.b(this.jOW);
+        this.jOW = null;
       }
-      if (this.joL != null)
+      if (this.jOX != null)
       {
-        locale.b(this.joL);
-        this.joL = null;
+        locale.b(this.jOX);
+        this.jOX = null;
       }
-      if (this.joM != null)
+      if (this.jOY != null)
       {
-        locale.b(this.joM);
-        this.joM = null;
+        locale.b(this.jOY);
+        this.jOY = null;
       }
     }
     AppMethodBeat.o(139392);
@@ -103,10 +103,10 @@ public final class b
   public final void a(final a.a parama)
   {
     AppMethodBeat.i(139391);
-    if ((this.joJ instanceof e))
+    if ((this.jOV instanceof e))
     {
-      e locale = (e)this.joJ;
-      this.joK = new f.d()
+      e locale = (e)this.jOV;
+      this.jOW = new f.d()
       {
         public final void onForeground()
         {
@@ -117,18 +117,18 @@ public final class b
           AppMethodBeat.o(139382);
         }
       };
-      this.joL = new f.b()
+      this.jOX = new f.b()
       {
         public final void onBackground()
         {
           AppMethodBeat.i(139383);
           if (parama != null) {
-            parama.gP(com.tencent.mm.plugin.appbrand.jsapi.aa.b.JR(b.this.joJ.getAppId()));
+            parama.gz(com.tencent.mm.plugin.appbrand.jsapi.z.b.NY(b.this.jOV.getAppId()));
           }
           AppMethodBeat.o(139383);
         }
       };
-      this.joM = new f.c()
+      this.jOY = new f.c()
       {
         public final void onDestroy()
         {
@@ -139,30 +139,30 @@ public final class b
           AppMethodBeat.o(139384);
         }
       };
-      locale.a(this.joK);
-      locale.a(this.joL);
-      locale.a(this.joM);
+      locale.a(this.jOW);
+      locale.a(this.jOX);
+      locale.a(this.jOY);
     }
     AppMethodBeat.o(139391);
   }
   
-  public final int aVT()
-  {
-    return this.joH;
-  }
-  
-  public final m aVU()
-  {
-    return this.joI;
-  }
-  
   public final void b(a.a parama) {}
   
-  public final String cD(String paramString)
+  public final int bcR()
+  {
+    return this.jOT;
+  }
+  
+  public final m bcS()
+  {
+    return this.jOU;
+  }
+  
+  public final String cs(String paramString)
   {
     AppMethodBeat.i(139389);
-    if ((this.joJ != null) && (this.joI != null)) {
-      this.joJ.h(this.joH, this.joI.e(paramString, null));
+    if ((this.jOV != null) && (this.jOU != null)) {
+      this.jOV.h(this.jOT, this.jOU.e(paramString, null));
     }
     AppMethodBeat.o(139389);
     return null;
@@ -171,8 +171,8 @@ public final class b
   public final String d(String paramString, Map<String, ? extends Object> paramMap)
   {
     AppMethodBeat.i(139390);
-    if ((this.joJ != null) && (this.joI != null)) {
-      this.joJ.h(this.joH, this.joI.k(paramString, paramMap));
+    if ((this.jOV != null) && (this.jOU != null)) {
+      this.jOV.h(this.jOT, this.jOU.k(paramString, paramMap));
     }
     AppMethodBeat.o(139390);
     return null;
@@ -181,9 +181,9 @@ public final class b
   public final String getAppId()
   {
     AppMethodBeat.i(139385);
-    if (this.joJ != null)
+    if (this.jOV != null)
     {
-      String str = this.joJ.getAppId();
+      String str = this.jOV.getAppId();
       AppMethodBeat.o(139385);
       return str;
     }
@@ -194,9 +194,9 @@ public final class b
   public final Context getContext()
   {
     AppMethodBeat.i(139386);
-    if (this.joJ != null)
+    if (this.jOV != null)
     {
-      Context localContext = this.joJ.getContext();
+      Context localContext = this.jOV.getContext();
       AppMethodBeat.o(139386);
       return localContext;
     }
@@ -206,7 +206,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.b
  * JD-Core Version:    0.7.0.1
  */

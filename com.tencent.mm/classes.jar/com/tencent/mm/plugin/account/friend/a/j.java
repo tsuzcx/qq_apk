@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  int dtM;
-  public String evA;
-  public int evp;
-  public int evy;
-  public String evz;
+  int drx;
+  public int exL;
+  public int exU;
+  public String exV;
+  public String exW;
   public String signature;
   public String username;
   
   public j()
   {
     AppMethodBeat.i(131017);
-    this.dtM = -1;
+    this.drx = -1;
     this.username = "";
-    this.evp = 0;
-    this.evy = 0;
-    this.evz = "";
-    this.evA = "";
+    this.exL = 0;
+    this.exU = 0;
+    this.exV = "";
+    this.exW = "";
     this.signature = "";
     AppMethodBeat.o(131017);
   }
@@ -30,18 +30,18 @@ public final class j
   {
     AppMethodBeat.i(131018);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dtM & 0x1) != 0) {
+    if ((this.drx & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.dtM & 0x2) != 0) {
-      localContentValues.put("sex", Integer.valueOf(this.evp));
+    if ((this.drx & 0x2) != 0) {
+      localContentValues.put("sex", Integer.valueOf(this.exL));
     }
-    if ((this.dtM & 0x4) != 0) {
-      localContentValues.put("personalcard", Integer.valueOf(this.evy));
+    if ((this.drx & 0x4) != 0) {
+      localContentValues.put("personalcard", Integer.valueOf(this.exU));
     }
-    if ((this.dtM & 0x8) != 0)
+    if ((this.drx & 0x8) != 0)
     {
-      if (this.evz == null)
+      if (this.exV == null)
       {
         str = "";
         localContentValues.put("province", str);
@@ -49,16 +49,16 @@ public final class j
     }
     else
     {
-      if ((this.dtM & 0x10) != 0)
+      if ((this.drx & 0x10) != 0)
       {
-        if (this.evA != null) {
+        if (this.exW != null) {
           break label172;
         }
         str = "";
         label123:
         localContentValues.put("city", str);
       }
-      if ((this.dtM & 0x20) != 0) {
+      if ((this.drx & 0x20) != 0) {
         if (this.signature != null) {
           break label180;
         }
@@ -71,9 +71,9 @@ public final class j
       localContentValues.put("signature", str);
       AppMethodBeat.o(131018);
       return localContentValues;
-      str = this.evz;
+      str = this.exV;
       break;
-      str = this.evA;
+      str = this.exW;
       break label123;
     }
   }
@@ -88,7 +88,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.j
  * JD-Core Version:    0.7.0.1
  */

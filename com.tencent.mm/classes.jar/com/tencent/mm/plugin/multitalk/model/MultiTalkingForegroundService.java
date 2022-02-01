@@ -12,9 +12,9 @@ import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aq;
 import com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI;
-import com.tencent.mm.plugin.voip.b.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.voip.b.l;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public class MultiTalkingForegroundService
   extends Service
@@ -22,22 +22,22 @@ public class MultiTalkingForegroundService
   public IBinder onBind(Intent paramIntent)
   {
     AppMethodBeat.i(114608);
-    ad.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onBind");
-    if (d.lf(26))
+    ac.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onBind");
+    if (d.kZ(26))
     {
-      ad.i("MicroMsg.MultiTalkingForegroundService", "foreground service is on bind MicroMsg.MultiTalkingForegroundService");
-      paramIntent = aj.getContext().getString(2131761388);
-      String str = aj.getContext().getString(2131761434);
+      ac.i("MicroMsg.MultiTalkingForegroundService", "foreground service is on bind MicroMsg.MultiTalkingForegroundService");
+      paramIntent = ai.getContext().getString(2131761388);
+      String str = ai.getContext().getString(2131761434);
       Object localObject = new Intent();
-      ((Intent)localObject).setClass(aj.getContext(), MultiTalkMainUI.class);
-      localObject = PendingIntent.getActivity(aj.getContext(), 43, (Intent)localObject, 134217728);
+      ((Intent)localObject).setClass(ai.getContext(), MultiTalkMainUI.class);
+      localObject = PendingIntent.getActivity(ai.getContext(), 43, (Intent)localObject, 134217728);
       int i = 2131233502;
-      if (d.lg(19)) {
+      if (d.la(19)) {
         i = 2131233500;
       }
-      paramIntent = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").i(str).g(System.currentTimeMillis()).f(paramIntent).g(str);
-      paramIntent.Ew = ((PendingIntent)localObject);
-      paramIntent = k.c(paramIntent);
+      paramIntent = com.tencent.mm.bq.a.bE(ai.getContext(), "reminder_channel_id").i(str).i(System.currentTimeMillis()).f(paramIntent).g(str);
+      paramIntent.Fu = ((PendingIntent)localObject);
+      paramIntent = l.e(paramIntent);
       paramIntent.icon = i;
       paramIntent.flags |= 0x20;
       ((com.tencent.mm.plugin.notification.b.a)g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().a(43, paramIntent, false);
@@ -50,21 +50,21 @@ public class MultiTalkingForegroundService
   public void onCreate()
   {
     AppMethodBeat.i(114610);
-    ad.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onCreate");
+    ac.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onCreate");
     AppMethodBeat.o(114610);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(114611);
-    ad.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onDestroy");
+    ac.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onDestroy");
     AppMethodBeat.o(114611);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(114609);
-    ad.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onUnbind");
+    ac.i("MicroMsg.MultiTalkingForegroundService", "MultiTalkingForegroundService onUnbind");
     stopSelf();
     boolean bool = super.onUnbind(paramIntent);
     AppMethodBeat.o(114609);
@@ -73,7 +73,7 @@ public class MultiTalkingForegroundService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.MultiTalkingForegroundService
  * JD-Core Version:    0.7.0.1
  */

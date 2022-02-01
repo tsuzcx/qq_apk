@@ -6,7 +6,7 @@ public abstract interface s
   
   public abstract int getTrackType();
   
-  public abstract int ro();
+  public abstract int rz();
 }
 
 

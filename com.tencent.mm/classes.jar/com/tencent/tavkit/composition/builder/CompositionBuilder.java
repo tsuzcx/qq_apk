@@ -22,37 +22,37 @@ class CompositionBuilder
   
   public CompositionBuilder(BuilderModel paramBuilderModel, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(204655);
+    AppMethodBeat.i(192027);
     this.builderModel = paramBuilderModel;
     this.isVideoTracksMerge = paramBoolean1;
     this.isAudioTracksMerge = paramBoolean2;
     this.composition = new MutableComposition();
-    AppMethodBeat.o(204655);
+    AppMethodBeat.o(192027);
   }
   
   private AudioTransitionInfo getAudioTransitionInfo(List<? extends TAVTransitionableAudio> paramList, TAVAudioTransition paramTAVAudioTransition, TAVTransitionableAudio paramTAVTransitionableAudio, int paramInt)
   {
-    AppMethodBeat.i(204659);
+    AppMethodBeat.i(192031);
     if ((paramInt == 0) && (paramList.size() > 1))
     {
       paramList = new AudioTransitionInfo(null, paramTAVTransitionableAudio.getAudioTransition());
-      AppMethodBeat.o(204659);
+      AppMethodBeat.o(192031);
       return paramList;
     }
     if (paramInt == paramList.size() - 1)
     {
       paramList = new AudioTransitionInfo(paramTAVAudioTransition, null);
-      AppMethodBeat.o(204659);
+      AppMethodBeat.o(192031);
       return paramList;
     }
     paramList = new AudioTransitionInfo(paramTAVAudioTransition, paramTAVTransitionableAudio.getAudioTransition());
-    AppMethodBeat.o(204659);
+    AppMethodBeat.o(192031);
     return paramList;
   }
   
   private void initCompositionWithAudioChannels()
   {
-    AppMethodBeat.i(204658);
+    AppMethodBeat.i(192030);
     Iterator localIterator = this.builderModel.getAudioChannels().iterator();
     while (localIterator.hasNext())
     {
@@ -79,15 +79,15 @@ class CompositionBuilder
       }
       this.builderModel.addMainAudioTrackInfo(new AudioParamsInfo(localArrayList, localHashMap));
     }
-    AppMethodBeat.o(204658);
+    AppMethodBeat.o(192030);
   }
   
   private void initCompositionWithMixAudios(List<? extends TAVAudio> paramList)
   {
-    AppMethodBeat.i(204661);
+    AppMethodBeat.i(192033);
     if (paramList == null)
     {
-      AppMethodBeat.o(204661);
+      AppMethodBeat.o(192033);
       return;
     }
     paramList = paramList.iterator();
@@ -104,15 +104,15 @@ class CompositionBuilder
         i += 1;
       }
     }
-    AppMethodBeat.o(204661);
+    AppMethodBeat.o(192033);
   }
   
   private void initCompositionWithOverlays(List<? extends TAVVideo> paramList)
   {
-    AppMethodBeat.i(204660);
+    AppMethodBeat.i(192032);
     if (paramList == null)
     {
-      AppMethodBeat.o(204660);
+      AppMethodBeat.o(192032);
       return;
     }
     paramList = paramList.iterator();
@@ -129,12 +129,12 @@ class CompositionBuilder
         i += 1;
       }
     }
-    AppMethodBeat.o(204660);
+    AppMethodBeat.o(192032);
   }
   
   private void initCompositionWithVideoChannels()
   {
-    AppMethodBeat.i(204657);
+    AppMethodBeat.i(192029);
     Iterator localIterator = this.builderModel.getVideoChannels().iterator();
     while (localIterator.hasNext())
     {
@@ -156,24 +156,24 @@ class CompositionBuilder
       }
       this.builderModel.addMainVideoTrackInfo(localArrayList);
     }
-    AppMethodBeat.o(204657);
+    AppMethodBeat.o(192029);
   }
   
   MutableComposition build()
   {
-    AppMethodBeat.i(204656);
+    AppMethodBeat.i(192028);
     initCompositionWithVideoChannels();
     initCompositionWithAudioChannels();
     initCompositionWithOverlays(this.builderModel.getOverlays());
     initCompositionWithMixAudios(this.builderModel.getMixAudios());
     MutableComposition localMutableComposition = this.composition;
-    AppMethodBeat.o(204656);
+    AppMethodBeat.o(192028);
     return localMutableComposition;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.CompositionBuilder
  * JD-Core Version:    0.7.0.1
  */

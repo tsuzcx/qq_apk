@@ -6,13 +6,17 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.l.a;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
 import java.util.LinkedList;
@@ -21,25 +25,25 @@ import java.util.List;
 public class SnsLuckyMoneyDetailUI
   extends LuckyMoneyBaseUI
 {
-  private ListView sZb;
-  AbsListView.OnScrollListener sZi;
-  private final int tmc;
-  private final int tmd;
-  private b wCO;
+  private ListView uhp;
+  AbsListView.OnScrollListener uhw;
+  private final int uuv;
+  private final int uuw;
+  private b xPj;
   
   public SnsLuckyMoneyDetailUI()
   {
     AppMethodBeat.i(68357);
-    this.sZi = new AbsListView.OnScrollListener()
+    this.uhw = new AbsListView.OnScrollListener()
     {
-      private boolean sZj = false;
-      private boolean sZk;
+      private boolean uhx = false;
+      private boolean uhy;
       
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         boolean bool = true;
         AppMethodBeat.i(68355);
-        if ((paramAnonymousInt3 == 0) || (!this.sZj))
+        if ((paramAnonymousInt3 == 0) || (!this.uhx))
         {
           AppMethodBeat.o(68355);
           return;
@@ -50,13 +54,13 @@ public class SnsLuckyMoneyDetailUI
         label110:
         for (;;)
         {
-          if (this.sZk != bool)
+          if (this.uhy != bool)
           {
             if (bool)
             {
               SnsLuckyMoneyDetailUI.this.getResources().getDrawable(2131100918);
-              SnsLuckyMoneyDetailUI.dst();
-              this.sZk = bool;
+              SnsLuckyMoneyDetailUI.dGS();
+              this.uhy = bool;
             }
           }
           else
@@ -75,7 +79,7 @@ public class SnsLuckyMoneyDetailUI
             }
             bool = false;
             break;
-            SnsLuckyMoneyDetailUI.dsu();
+            SnsLuckyMoneyDetailUI.dGT();
             break label60;
           }
         }
@@ -96,15 +100,15 @@ public class SnsLuckyMoneyDetailUI
         {
           AppMethodBeat.o(68354);
           return;
-          this.sZj = false;
+          this.uhx = false;
           AppMethodBeat.o(68354);
           return;
-          this.sZj = true;
+          this.uhx = true;
         }
       }
     };
-    this.tmc = 750;
-    this.tmd = 240;
+    this.uuv = 750;
+    this.uuw = 240;
     AppMethodBeat.o(68357);
   }
   
@@ -126,12 +130,24 @@ public class SnsLuckyMoneyDetailUI
     AppMethodBeat.i(68359);
     getResources().getDrawable(2131232950);
     setMMTitle(2131763892);
-    setBackBtn(new SnsLuckyMoneyDetailUI.2(this));
-    this.sZb = ((ListView)findViewById(2131301770));
-    this.wCO = new b(getContext());
-    this.sZb.setAdapter(this.wCO);
-    this.sZb.setOnScrollListener(this.sZi);
-    this.sZb.setOnItemClickListener(new SnsLuckyMoneyDetailUI.3(this));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(68356);
+        SnsLuckyMoneyDetailUI.this.finish();
+        AppMethodBeat.o(68356);
+        return true;
+      }
+    });
+    this.uhp = ((ListView)findViewById(2131301770));
+    this.xPj = new b(getContext());
+    this.uhp.setAdapter(this.xPj);
+    this.uhp.setOnScrollListener(this.uhw);
+    this.uhp.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong) {}
+    });
     AppMethodBeat.o(68359);
   }
   
@@ -140,7 +156,7 @@ public class SnsLuckyMoneyDetailUI
     AppMethodBeat.i(68358);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = a.afh(getIntent().getStringExtra("key_feedid"));
+    paramBundle = a.akb(getIntent().getStringExtra("key_feedid"));
     if ((paramBundle == null) || (paramBundle.size() == 0))
     {
       if (Build.VERSION.SDK_INT >= 21)
@@ -152,7 +168,7 @@ public class SnsLuckyMoneyDetailUI
       AppMethodBeat.o(68358);
       return;
     }
-    b localb = this.wCO;
+    b localb = this.xPj;
     if (paramBundle == null) {
       new LinkedList();
     }
@@ -160,7 +176,7 @@ public class SnsLuckyMoneyDetailUI
     {
       localb.notifyDataSetChanged();
       break;
-      localb.sYN = paramBundle;
+      localb.uhb = paramBundle;
     }
   }
   
@@ -184,7 +200,7 @@ public class SnsLuckyMoneyDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.ui.SnsLuckyMoneyDetailUI
  * JD-Core Version:    0.7.0.1
  */

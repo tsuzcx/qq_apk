@@ -6,62 +6,62 @@ import android.support.v7.d.a.d;
 public final class a
   implements DrawerLayout.c
 {
-  private final a.a TU;
-  private d TV;
-  private boolean TW;
-  boolean TX;
-  private final int TY;
-  private final int TZ;
+  private final a.a UQ;
+  private d UR;
+  private boolean US;
+  boolean UT;
+  private final int UU;
+  private final int UV;
   
-  private void L(float paramFloat)
+  private void P(float paramFloat)
   {
     if (paramFloat == 1.0F) {
-      this.TV.aa(true);
+      this.UR.aa(true);
     }
     for (;;)
     {
-      this.TV.setProgress(paramFloat);
+      this.UR.setProgress(paramFloat);
       return;
       if (paramFloat == 0.0F) {
-        this.TV.aa(false);
+        this.UR.aa(false);
       }
     }
   }
   
   private void bg(int paramInt)
   {
-    this.TU.bg(paramInt);
+    this.UQ.bg(paramInt);
   }
   
-  public final void D(float paramFloat)
+  public final void H(float paramFloat)
   {
-    if (this.TW)
+    if (this.US)
     {
-      L(Math.min(1.0F, Math.max(0.0F, paramFloat)));
+      P(Math.min(1.0F, Math.max(0.0F, paramFloat)));
       return;
     }
-    L(0.0F);
+    P(0.0F);
   }
   
-  public final void fq()
+  public final void fy()
   {
-    L(1.0F);
-    if (this.TX) {
-      bg(this.TZ);
+    P(1.0F);
+    if (this.UT) {
+      bg(this.UV);
     }
   }
   
-  public final void fr()
+  public final void fz()
   {
-    L(0.0F);
-    if (this.TX) {
-      bg(this.TY);
+    P(0.0F);
+    if (this.UT) {
+      bg(this.UU);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.app.a
  * JD-Core Version:    0.7.0.1
  */

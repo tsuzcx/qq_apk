@@ -3,55 +3,73 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bqg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Cxb;
-  public int DOl;
-  public String mAQ;
-  public int vJA;
+  public String DMY;
+  public String Ffe;
+  public String Ffi;
+  public String nickname;
+  public String oGh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101826);
+    AppMethodBeat.i(190890);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Cxb != null) {
-        paramVarArgs.d(1, this.Cxb);
+      if (this.Ffi != null) {
+        paramVarArgs.d(1, this.Ffi);
       }
-      if (this.mAQ != null) {
-        paramVarArgs.d(2, this.mAQ);
+      if (this.nickname != null) {
+        paramVarArgs.d(2, this.nickname);
       }
-      paramVarArgs.aR(3, this.DOl);
-      paramVarArgs.aR(4, this.vJA);
-      AppMethodBeat.o(101826);
+      if (this.oGh != null) {
+        paramVarArgs.d(3, this.oGh);
+      }
+      if (this.Ffe != null) {
+        paramVarArgs.d(4, this.Ffe);
+      }
+      if (this.DMY != null) {
+        paramVarArgs.d(5, this.DMY);
+      }
+      AppMethodBeat.o(190890);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Cxb == null) {
-        break label366;
+      if (this.Ffi == null) {
+        break label454;
       }
     }
-    label366:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Cxb) + 0;; paramInt = 0)
+    label454:
+    for (int i = f.a.a.b.b.a.e(1, this.Ffi) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.mAQ != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.mAQ);
+      paramInt = i;
+      if (this.nickname != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.nickname);
       }
-      paramInt = f.a.a.b.b.a.bA(3, this.DOl);
-      int j = f.a.a.b.b.a.bA(4, this.vJA);
-      AppMethodBeat.o(101826);
-      return i + paramInt + j;
+      i = paramInt;
+      if (this.oGh != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.oGh);
+      }
+      paramInt = i;
+      if (this.Ffe != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Ffe);
+      }
+      i = paramInt;
+      if (this.DMY != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.DMY);
+      }
+      AppMethodBeat.o(190890);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(101826);
+        AppMethodBeat.o(190890);
         return 0;
       }
       if (paramInt == 3)
@@ -61,33 +79,37 @@ public final class bqg
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(101826);
+          AppMethodBeat.o(190890);
           return -1;
         case 1: 
-          localbqg.Cxb = locala.KhF.readString();
-          AppMethodBeat.o(101826);
+          localbqg.Ffi = locala.LVo.readString();
+          AppMethodBeat.o(190890);
           return 0;
         case 2: 
-          localbqg.mAQ = locala.KhF.readString();
-          AppMethodBeat.o(101826);
+          localbqg.nickname = locala.LVo.readString();
+          AppMethodBeat.o(190890);
           return 0;
         case 3: 
-          localbqg.DOl = locala.KhF.xS();
-          AppMethodBeat.o(101826);
+          localbqg.oGh = locala.LVo.readString();
+          AppMethodBeat.o(190890);
+          return 0;
+        case 4: 
+          localbqg.Ffe = locala.LVo.readString();
+          AppMethodBeat.o(190890);
           return 0;
         }
-        localbqg.vJA = locala.KhF.xS();
-        AppMethodBeat.o(101826);
+        localbqg.DMY = locala.LVo.readString();
+        AppMethodBeat.o(190890);
         return 0;
       }
-      AppMethodBeat.o(101826);
+      AppMethodBeat.o(190890);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bqg
  * JD-Core Version:    0.7.0.1
  */

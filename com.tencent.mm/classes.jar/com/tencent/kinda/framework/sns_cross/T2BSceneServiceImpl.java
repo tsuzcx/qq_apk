@@ -13,12 +13,12 @@ public class T2BSceneServiceImpl
   {
     AppMethodBeat.i(18719);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().Cos == null))
+    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().hbR == null))
     {
       AppMethodBeat.o(18719);
       return localITransmitKvData;
     }
-    Object localObject = this.mBean.getPayInfo().Cos;
+    Object localObject = this.mBean.getPayInfo().hbR;
     String str = ((Bundle)localObject).getString("extinfo_key_3");
     localObject = ((Bundle)localObject).getString("extinfo_key_4");
     str = this.mBean.getContext().getString(2131756399, new Object[] { str, localObject }) + this.mBean.getTrueName();

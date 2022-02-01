@@ -1,65 +1,65 @@
 package com.tencent.mm.ui.chatting.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.g.c.dy;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.b.t;
 import java.util.ArrayList;
 import java.util.List;
 
-@com.tencent.mm.ui.chatting.c.a.a(eYT=t.class)
+@com.tencent.mm.ui.chatting.c.a.a(foJ=t.class)
 public class w
   extends a
   implements t
 {
-  private List<Long> Gvj;
+  private List<Long> HVa;
   
   public w()
   {
-    AppMethodBeat.i(191518);
-    this.Gvj = new ArrayList();
-    AppMethodBeat.o(191518);
+    AppMethodBeat.i(196475);
+    this.HVa = new ArrayList();
+    AppMethodBeat.o(196475);
   }
   
-  public final boolean bG(bl parambl)
+  public final void Bg(long paramLong)
   {
-    AppMethodBeat.i(191521);
-    if ((parambl != null) && (parambl.field_solitaireFoldInfo != null))
+    AppMethodBeat.i(196477);
+    if (!this.HVa.contains(Long.valueOf(paramLong))) {
+      this.HVa.add(Long.valueOf(paramLong));
+    }
+    AppMethodBeat.o(196477);
+  }
+  
+  public final boolean bI(bo parambo)
+  {
+    AppMethodBeat.i(196478);
+    if ((parambo != null) && (parambo.field_solitaireFoldInfo != null))
     {
-      if (this.Gvj.contains(Long.valueOf(parambl.field_msgId)))
+      if (this.HVa.contains(Long.valueOf(parambo.field_msgId)))
       {
-        AppMethodBeat.o(191521);
+        AppMethodBeat.o(196478);
         return false;
       }
-      AppMethodBeat.o(191521);
+      AppMethodBeat.o(196478);
       return true;
     }
-    AppMethodBeat.o(191521);
+    AppMethodBeat.o(196478);
     return false;
   }
   
-  public final void eQF()
+  public final void fgl()
   {
-    AppMethodBeat.i(191519);
-    super.eQF();
-    ad.i("MicroMsg.groupsolitaire.GroupSolitaireComponent", "onChattingExitAnimStart");
-    this.Gvj.clear();
-    AppMethodBeat.o(191519);
-  }
-  
-  public final void wD(long paramLong)
-  {
-    AppMethodBeat.i(191520);
-    if (!this.Gvj.contains(Long.valueOf(paramLong))) {
-      this.Gvj.add(Long.valueOf(paramLong));
-    }
-    AppMethodBeat.o(191520);
+    AppMethodBeat.i(196476);
+    super.fgl();
+    ac.i("MicroMsg.groupsolitaire.GroupSolitaireComponent", "onChattingExitAnimStart");
+    this.HVa.clear();
+    AppMethodBeat.o(196476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.w
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import d.g.b.k;
 
 public final class h
 {
-  public final g JCV;
-  public final boolean JCW;
+  public final g Lqo;
+  public final boolean Lqp;
   
   public h(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(58040);
-    this.JCV = paramg;
-    this.JCW = paramBoolean;
+    this.Lqo = paramg;
+    this.Lqp = paramBoolean;
     AppMethodBeat.o(58040);
   }
   
@@ -34,10 +34,10 @@ public final class h
         break label65;
       }
       paramObject = (h)paramObject;
-      if (!k.g(this.JCV, paramObject.JCV)) {
+      if (!k.g(this.Lqo, paramObject.Lqo)) {
         break label65;
       }
-      if (this.JCW != paramObject.JCW) {
+      if (this.Lqp != paramObject.Lqp) {
         break label60;
       }
     }
@@ -60,14 +60,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(58043);
-    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.JCV + ", isForWarningOnly=" + this.JCW + ")";
+    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.Lqo + ", isForWarningOnly=" + this.Lqp + ")";
     AppMethodBeat.o(58043);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.h
  * JD-Core Version:    0.7.0.1
  */

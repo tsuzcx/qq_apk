@@ -7,7 +7,7 @@ import android.text.SpannableString;
 import com.tencent.luggage.h.e;
 import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.BaseActivity;
 import d.g.a.a;
 import d.g.a.b;
@@ -17,17 +17,17 @@ import d.g.b.z;
 import java.util.Arrays;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "()V", "addPhoneNumber", "", "context", "Landroid/content/Context;", "appId", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "resultCode", "Landroid/content/Intent;", "data", "bindWxPhone", "Lkotlin/Function1;", "createPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onDone", "Lkotlin/Function0;", "createPhoneNumberManageLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "pagePath", "getExposeSpan", "Landroid/text/SpannableString;", "hideVKB", "managePhoneNumber", "report", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "showEditEntry", "", "showVKB", "verifyPhoneNumber", "extDesc", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "isSuccess", "", "result", "Companion", "luggage-wechat-full-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberLogic;", "()V", "addPhoneNumber", "", "context", "Landroid/content/Context;", "appId", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "resultCode", "Landroid/content/Intent;", "data", "bindWxPhone", "Lkotlin/Function1;", "createPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onDone", "Lkotlin/Function0;", "createPhoneNumberManageLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "pagePath", "getExposeSpan", "Landroid/text/SpannableString;", "hideVKB", "managePhoneNumber", "report", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "showEditEntry", "", "showVKB", "verifyPhoneNumber", "extDesc", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "isSuccess", "", "result", "Companion", "luggage-wechat-full-sdk_release"})
 public class i
   implements n
 {
   @Deprecated
-  public static final i.a ljO;
+  public static final a lJG;
   
   static
   {
     AppMethodBeat.i(183076);
-    ljO = new i.a((byte)0);
+    lJG = new a((byte)0);
     AppMethodBeat.o(183076);
   }
   
@@ -47,7 +47,7 @@ public class i
     AppMethodBeat.i(148053);
     k.h(paramContext, "context");
     k.h(paramb, "callback");
-    paramb.aA(Integer.valueOf(0));
+    paramb.ay(Integer.valueOf(0));
     AppMethodBeat.o(148053);
   }
   
@@ -57,7 +57,7 @@ public class i
     k.h(paramContext, "context");
     k.h(paramString, "appId");
     k.h(paramm, "callback");
-    e locale = e.az(paramContext);
+    e locale = e.aA(paramContext);
     paramContext = new Intent(paramContext, PhoneNumberAddUI.class);
     paramContext.putExtra("APPID", paramString);
     locale.a(paramContext, (e.a)new i.b(paramm));
@@ -66,14 +66,14 @@ public class i
   
   public final void a(Context paramContext, String paramString1, String paramString2, y paramy, PhoneItem paramPhoneItem, m<? super Boolean, ? super Map<String, String>, d.y> paramm)
   {
-    AppMethodBeat.i(186864);
+    AppMethodBeat.i(206226);
     k.h(paramContext, "context");
     k.h(paramString1, "appId");
     k.h(paramString2, "extDesc");
     k.h(paramPhoneItem, "phoneItem");
     k.h(paramm, "callback");
-    new aa(paramContext, paramString1, paramy, paramString2, paramPhoneItem, (aa.b)new i.d(paramm)).gS(true);
-    AppMethodBeat.o(186864);
+    new aa(paramContext, paramString1, paramy, paramString2, paramPhoneItem, (aa.b)new d(paramm)).hm(true);
+    AppMethodBeat.o(206226);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, m<? super Integer, ? super Intent, d.y> paramm)
@@ -83,7 +83,7 @@ public class i
     k.h(paramString1, "appId");
     k.h(paramString2, "pagePath");
     k.h(paramm, "callback");
-    e locale = e.az(paramContext);
+    e locale = e.aA(paramContext);
     paramContext = new Intent(paramContext, PhoneNumberManagerUI.class);
     paramContext.putExtra("APPID", paramString1);
     paramContext.putExtra("PAGEPATH", paramString2);
@@ -95,11 +95,11 @@ public class i
   {
     AppMethodBeat.i(169644);
     k.h(paramy, "report");
-    ad.i("Luggage.FULL.DefaultPhoneNumberLogic", "report:".concat(String.valueOf(paramy)));
+    ac.i("Luggage.FULL.DefaultPhoneNumberLogic", "report:".concat(String.valueOf(paramy)));
     AppMethodBeat.o(169644);
   }
   
-  public void dh(Context paramContext)
+  public void dq(Context paramContext)
   {
     AppMethodBeat.i(148047);
     k.h(paramContext, "context");
@@ -111,7 +111,7 @@ public class i
     AppMethodBeat.o(148047);
   }
   
-  public void di(Context paramContext)
+  public void dr(Context paramContext)
   {
     AppMethodBeat.i(148048);
     k.h(paramContext, "context");
@@ -131,7 +131,7 @@ public class i
     k.h(paramString1, "appId");
     k.h(paramString2, "pagePath");
     paramString1 = paramContext.getString(2131756017);
-    paramString2 = z.Jhz;
+    paramString2 = z.KUT;
     paramContext = paramContext.getString(2131756018);
     k.g(paramContext, "context.getString(R.stri…mber_expose_slogan_start)");
     paramContext = String.format(paramContext, Arrays.copyOf(new Object[] { paramString1 }, 1));
@@ -151,10 +151,28 @@ public class i
     AppMethodBeat.o(148050);
     return paramContext;
   }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
+  static final class a {}
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$verifyPhoneNumber$1", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberVerifyCodeDialog$OnVerifyCallback;", "onVerifyCallback", "", "isSuccess", "", "result", "", "", "luggage-wechat-full-sdk_release"})
+  public static final class d
+    implements aa.b
+  {
+    d(m paramm) {}
+    
+    public final void a(boolean paramBoolean, Map<String, String> paramMap)
+    {
+      AppMethodBeat.i(206225);
+      k.h(paramMap, "result");
+      this.lJH.n(Boolean.valueOf(paramBoolean), paramMap);
+      AppMethodBeat.o(206225);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.i
  * JD-Core Version:    0.7.0.1
  */

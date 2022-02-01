@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 import com.tencent.kinda.gen.ClearButtonMode;
 import com.tencent.kinda.gen.KPhoneEditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.ui.formview.b;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
@@ -47,7 +47,7 @@ public class KindaPhoneEditTextImpl
   public String getText()
   {
     AppMethodBeat.i(18917);
-    ad.d("base_MMKView", "KindaPhoneEditTextImpl getText ");
+    ac.d("base_MMKView", "KindaPhoneEditTextImpl getText ");
     Object localObject = this.editText.getText();
     if (localObject != null)
     {
@@ -75,7 +75,7 @@ public class KindaPhoneEditTextImpl
   public void setText(String paramString)
   {
     AppMethodBeat.i(18916);
-    ad.d("base_MMKView", "KindaPhoneEditTextImpl setText ".concat(String.valueOf(paramString)));
+    ac.d("base_MMKView", "KindaPhoneEditTextImpl setText ".concat(String.valueOf(paramString)));
     if ((paramString != null) && (!getText().equals(paramString)))
     {
       this.editText.setText(paramString);

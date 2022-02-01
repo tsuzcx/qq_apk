@@ -1,17 +1,17 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bib;
-import com.tencent.mm.protocal.protobuf.bic;
-import com.tencent.mm.protocal.protobuf.bvj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.blt;
+import com.tencent.mm.protocal.protobuf.blu;
+import com.tencent.mm.protocal.protobuf.cab;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class k
@@ -19,23 +19,23 @@ public final class k
   implements com.tencent.mm.network.k
 {
   private g callback;
-  private String dlX;
+  private String djF;
   private final b rr;
   
-  public k(String paramString, LinkedList<bvj> paramLinkedList)
+  public k(String paramString, LinkedList<cab> paramLinkedList)
   {
     AppMethodBeat.i(151209);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new bib();
-    ((b.a)localObject).gUV = new bic();
+    ((b.a)localObject).hvt = new blt();
+    ((b.a)localObject).hvu = new blu();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/inviteopenimchatroommember";
     ((b.a)localObject).funcId = 887;
-    this.rr = ((b.a)localObject).atI();
-    this.dlX = paramString;
-    localObject = (bib)this.rr.gUS.gUX;
-    ((bib)localObject).hNI = paramString;
-    ((bib)localObject).CxK = paramLinkedList;
-    ad.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "roomname: %s, size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()) });
+    this.rr = ((b.a)localObject).aAz();
+    this.djF = paramString;
+    localObject = (blt)this.rr.hvr.hvw;
+    ((blt)localObject).ioe = paramString;
+    ((blt)localObject).DQg = paramLinkedList;
+    ac.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "roomname: %s, size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()) });
     AppMethodBeat.o(151209);
   }
   
@@ -56,7 +56,7 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151210);
-    ad.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dlX });
+    ac.i("MicroMsg.Openim.NetSceneInviteOpenIMChatRoomMember", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.djF });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -65,7 +65,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.b.k
  * JD-Core Version:    0.7.0.1
  */

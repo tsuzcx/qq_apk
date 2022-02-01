@@ -18,7 +18,7 @@ public class c
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28914);
-    com.tencent.mm.model.ar.a.gMY = new b();
+    com.tencent.mm.model.ar.a.hny = new b();
     AppMethodBeat.o(28914);
   }
   

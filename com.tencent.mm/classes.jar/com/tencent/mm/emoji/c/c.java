@@ -1,44 +1,46 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.k.b;
+import com.tencent.mm.emoji.a.l.b;
+import com.tencent.mm.emoji.a.m;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
 import com.tencent.mm.storage.emotion.EmojiInfo.b;
 import com.tencent.mm.storage.emotion.f;
+import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/upload/EmojiCaptureUploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isWxam", "", "()Z", "timeEnter", "", "getTimeEnter", "()J", "uploadCost", "getUploadCost", "setUploadCost", "(J)V", "call", "", "handleFail", "errorCode", "", "handleSuccess", "gifMd5", "uniqueId", "plugin-emojisdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/upload/EmojiCaptureUploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isWxam", "", "()Z", "timeEnter", "", "getTimeEnter", "()J", "uploadCost", "getUploadCost", "setUploadCost", "(J)V", "call", "", "handleFail", "errorCode", "", "handleSuccess", "gifMd5", "uniqueId", "plugin-emojisdk_release"})
 public final class c
   extends com.tencent.mm.loader.g.c
 {
   final String TAG;
-  final EmojiInfo fLP;
-  final long fSw;
-  long fSx;
-  final boolean fSy;
+  final EmojiInfo fPB;
+  final long fWr;
+  long fWs;
+  final boolean fWt;
   
   public c(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105776);
-    this.fLP = paramEmojiInfo;
+    this.fPB = paramEmojiInfo;
     this.TAG = "MicroMsg.EmojiCaptureUploadTask";
-    this.fSw = this.fLP.field_captureEnterTime;
-    this.fSy = this.fLP.fZS();
+    this.fWr = this.fPB.field_captureEnterTime;
+    this.fWt = this.fPB.fxK();
     AppMethodBeat.o(105776);
   }
   
-  public final String abi()
+  public final String acg()
   {
     AppMethodBeat.i(105775);
-    long l = this.fSw;
+    long l = this.fWr;
     AppMethodBeat.o(105775);
     return String.valueOf(l);
   }
@@ -46,98 +48,98 @@ public final class c
   public final void call()
   {
     AppMethodBeat.i(105774);
-    final long l = bt.eGO();
-    new com.tencent.mm.emoji.a.k(this.fLP, (k.b)new a(this, l));
+    final long l = bs.eWj();
+    new com.tencent.mm.emoji.a.l(this.fPB, (l.b)new a(this, l));
     AppMethodBeat.o(105774);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/emoji/upload/EmojiCaptureUploadTask$call$1", "Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;", "uploadCallback", "", "errorCode", "", "gifMd5", "", "activityId", "plugin-emojisdk_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/emoji/upload/EmojiCaptureUploadTask$call$1", "Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;", "uploadCallback", "", "errorCode", "", "gifMd5", "", "activityId", "plugin-emojisdk_release"})
   public static final class a
-    implements k.b
+    implements l.b
   {
     a(long paramLong) {}
     
     public final void x(int paramInt, String paramString)
     {
       AppMethodBeat.i(105772);
-      ad.i(this.fSz.TAG, "uploadCallback: " + paramInt + ", " + paramString);
-      this.fSz.fSx = bt.vM(l);
+      ac.i(this.fWu.TAG, "uploadCallback: " + paramInt + ", " + paramString);
+      this.fWu.fWs = bs.Ap(l);
       Object localObject1;
       if (paramInt == 0)
       {
-        localObject1 = this.fSz;
-        paramInt = ((c)localObject1).fLP.field_captureScene;
-        EmojiCaptureReporter.f(((c)localObject1).fSw, ((c)localObject1).fSx, paramInt);
-        com.tencent.mm.plugin.report.service.h.vKh.f(10431, new Object[] { Integer.valueOf(7), ((c)localObject1).fLP.JS(), ((c)localObject1).fLP.field_designerID, ((c)localObject1).fLP.asy(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(((c)localObject1).fLP.getSize()), u.aqG(), ((c)localObject1).fLP.field_activityid });
-        if ((((c)localObject1).fSy) && (!com.tencent.mm.emoji.a.l.aby()))
+        localObject1 = this.fWu;
+        paramInt = ((c)localObject1).fPB.field_captureScene;
+        EmojiCaptureReporter.f(((c)localObject1).fWr, ((c)localObject1).fWs, paramInt);
+        com.tencent.mm.plugin.report.service.h.wUl.f(10431, new Object[] { Integer.valueOf(7), ((c)localObject1).fPB.JC(), ((c)localObject1).fPB.field_designerID, ((c)localObject1).fPB.azp(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(((c)localObject1).fPB.getSize()), u.axw(), ((c)localObject1).fPB.field_activityid });
+        if ((((c)localObject1).fWt) && (!m.acx()))
         {
-          ad.w(((c)localObject1).TAG, "upload wxam but not decode, load gif");
-          localObject2 = com.tencent.mm.emoji.loader.c.h.fLW;
-          com.tencent.mm.emoji.loader.c.h.d(((c)localObject1).fLP, (d.g.a.b)new c.b((c)localObject1, paramString));
+          ac.w(((c)localObject1).TAG, "upload wxam but not decode, load gif");
+          localObject2 = com.tencent.mm.emoji.loader.c.h.fPI;
+          com.tencent.mm.emoji.loader.c.h.d(((c)localObject1).fPB, (d.g.a.b)new c.b((c)localObject1, paramString));
           AppMethodBeat.o(105772);
           return;
         }
-        ((c)localObject1).a(com.tencent.mm.loader.g.h.gla);
-        Object localObject2 = b.fSs;
-        b.b(((c)localObject1).fSw, true, paramString);
+        ((c)localObject1).a(com.tencent.mm.loader.g.h.gLN);
+        Object localObject2 = b.fWn;
+        b.b(((c)localObject1).fWr, true, paramString);
         AppMethodBeat.o(105772);
         return;
       }
-      paramString = this.fSz;
-      paramString.fLP.a(EmojiInfo.a.FBz);
-      int i = paramString.fLP.field_captureScene;
+      paramString = this.fWu;
+      paramString.fPB.a(EmojiInfo.a.Haz);
+      int i = paramString.fPB.field_captureScene;
       switch (paramInt)
       {
       default: 
-        EmojiCaptureReporter.f(paramString.fSw, 3, i);
-        paramString.fLP.a(EmojiInfo.b.FBH);
+        EmojiCaptureReporter.f(paramString.fWr, 3, i);
+        paramString.fPB.a(EmojiInfo.b.HaH);
       }
       for (;;)
       {
         localObject1 = g.ad(d.class);
-        d.g.b.k.g(localObject1, "MMKernel.plugin(IPluginEmoji::class.java)");
+        k.g(localObject1, "MMKernel.plugin(IPluginEmoji::class.java)");
         localObject1 = ((d)localObject1).getEmojiStorageMgr();
-        d.g.b.k.g(localObject1, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
-        ((aw)localObject1).bxR().L(paramString.fLP);
-        localObject1 = b.fSs;
-        b.b(paramString.fSw, false, null);
-        paramString.a(com.tencent.mm.loader.g.h.glb);
+        k.g(localObject1, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
+        ((az)localObject1).bEN().L(paramString.fPB);
+        localObject1 = b.fWn;
+        b.b(paramString.fWr, false, null);
+        paramString.a(com.tencent.mm.loader.g.h.gLO);
         AppMethodBeat.o(105772);
         return;
-        EmojiCaptureReporter.f(paramString.fSw, 7, i);
-        paramString.fLP.a(EmojiInfo.b.FBC);
+        EmojiCaptureReporter.f(paramString.fWr, 7, i);
+        paramString.fPB.a(EmojiInfo.b.HaC);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 8, i);
-        paramString.fLP.a(EmojiInfo.b.FBD);
+        EmojiCaptureReporter.f(paramString.fWr, 8, i);
+        paramString.fPB.a(EmojiInfo.b.HaD);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 9, i);
-        paramString.fLP.a(EmojiInfo.b.FBE);
+        EmojiCaptureReporter.f(paramString.fWr, 9, i);
+        paramString.fPB.a(EmojiInfo.b.HaE);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 5, i);
-        paramString.fLP.a(EmojiInfo.b.FBF);
+        EmojiCaptureReporter.f(paramString.fWr, 5, i);
+        paramString.fPB.a(EmojiInfo.b.HaF);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 1, i);
-        paramString.fLP.a(EmojiInfo.b.FBG);
+        EmojiCaptureReporter.f(paramString.fWr, 1, i);
+        paramString.fPB.a(EmojiInfo.b.HaG);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 4, i);
-        paramString.fLP.a(EmojiInfo.b.FBI);
+        EmojiCaptureReporter.f(paramString.fWr, 4, i);
+        paramString.fPB.a(EmojiInfo.b.HaI);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 2, i);
-        paramString.fLP.a(EmojiInfo.b.FBJ);
+        EmojiCaptureReporter.f(paramString.fWr, 2, i);
+        paramString.fPB.a(EmojiInfo.b.HaJ);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 6, i);
-        paramString.fLP.a(EmojiInfo.b.FBK);
+        EmojiCaptureReporter.f(paramString.fWr, 6, i);
+        paramString.fPB.a(EmojiInfo.b.HaK);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 10, i);
-        paramString.fLP.a(EmojiInfo.b.FBL);
+        EmojiCaptureReporter.f(paramString.fWr, 10, i);
+        paramString.fPB.a(EmojiInfo.b.HaL);
         continue;
-        EmojiCaptureReporter.f(paramString.fSw, 3, i);
-        paramString.fLP.a(EmojiInfo.b.FBL);
+        EmojiCaptureReporter.f(paramString.fWr, 3, i);
+        paramString.fPB.a(EmojiInfo.b.HaL);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.b<Boolean, y>
@@ -150,7 +152,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.modelappbrand.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSMoreWebViewUI;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
 import java.lang.reflect.Field;
@@ -29,12 +29,12 @@ import java.util.List;
 public class AppBrandSOSUI
   extends FTSSOSMoreWebViewUI
 {
-  private View lCf;
-  private String lCg;
-  private String lCh;
+  private View meb;
+  private String mec;
+  private String med;
   private int scene;
   
-  private int box()
+  private int bvt()
   {
     int i = 0;
     AppMethodBeat.i(21130);
@@ -42,7 +42,7 @@ public class AppBrandSOSUI
     {
       Class localClass = Class.forName("com.android.internal.R$dimen");
       Object localObject = localClass.newInstance();
-      int j = bt.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
+      int j = bs.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
       j = getResources().getDimensionPixelSize(j);
       i = j;
     }
@@ -59,11 +59,11 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(163179);
     if (!TextUtils.isEmpty(paramString2)) {
-      this.lCf.setVisibility(8);
+      this.meb.setVisibility(8);
     }
     try
     {
-      this.kxf.j(10001, null);
+      this.kYt.k(10001, null);
       super.a(paramString1, paramString2, paramList, paramb);
       AppMethodBeat.o(163179);
       return;
@@ -72,16 +72,16 @@ public class AppBrandSOSUI
     {
       for (;;)
       {
-        ad.e("MicroMsg.AppBrandSOSUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
+        ac.e("MicroMsg.AppBrandSOSUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
       }
     }
   }
   
-  public final boolean bow()
+  public final boolean bvs()
   {
     AppMethodBeat.i(21127);
-    this.lCf.setVisibility(8);
-    boolean bool = super.bow();
+    this.meb.setVisibility(8);
+    boolean bool = super.bvs();
     AppMethodBeat.o(21127);
     return bool;
   }
@@ -90,10 +90,10 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21129);
     super.dealContentView(paramView);
-    this.lCg = getIntent().getStringExtra("key_nearby_url");
+    this.mec = getIntent().getStringExtra("key_nearby_url");
     getIntent().getStringExtra("key_nearby_list_id");
-    this.lCf = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
-    View localView1 = this.lCf.findViewById(2131302682);
+    this.meb = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
+    View localView1 = this.meb.findViewById(2131302682);
     localView1.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -113,18 +113,18 @@ public class AppBrandSOSUI
         AppMethodBeat.o(21124);
       }
     });
-    if (TextUtils.isEmpty(this.lCg))
+    if (TextUtils.isEmpty(this.mec))
     {
       localView1.setVisibility(8);
-      this.lCf.setVisibility(8);
+      this.meb.setVisibility(8);
     }
     while ((paramView instanceof FrameLayout))
     {
-      ((FrameLayout)paramView).addView(this.lCf);
+      ((FrameLayout)paramView).addView(this.meb);
       AppMethodBeat.o(21129);
       return;
       localView1.setVisibility(0);
-      this.lCf.setVisibility(0);
+      this.meb.setVisibility(0);
     }
     paramView = paramView.getLayoutParams();
     int k;
@@ -132,8 +132,8 @@ public class AppBrandSOSUI
     int i;
     if (getWindow().hasFeature(9))
     {
-      localView1 = this.lCf;
-      k = this.lCf.getPaddingLeft();
+      localView1 = this.meb;
+      k = this.meb.getPaddingLeft();
       localRect = new Rect();
       int j = getActionBarHeight();
       View localView2 = getWindow().getDecorView();
@@ -143,7 +143,7 @@ public class AppBrandSOSUI
       localView2.getLocationOnScreen(arrayOfInt);
       i = j;
       if (m == 0) {
-        i = j + box();
+        i = j + bvt();
       }
       if ((m - localRect.height() < 0) || (arrayOfInt[1] <= 200)) {
         break label317;
@@ -152,8 +152,8 @@ public class AppBrandSOSUI
     }
     for (;;)
     {
-      localView1.setPadding(k, i + this.lCf.getPaddingTop(), this.lCf.getPaddingRight(), this.lCf.getPaddingBottom());
-      addContentView(this.lCf, paramView);
+      localView1.setPadding(k, i + this.meb.getPaddingTop(), this.meb.getPaddingRight(), this.meb.getPaddingBottom());
+      addContentView(this.meb, paramView);
       AppMethodBeat.o(21129);
       return;
       label317:
@@ -180,12 +180,12 @@ public class AppBrandSOSUI
     AppMethodBeat.i(21125);
     super.onCreate(paramBundle);
     overridePendingTransition(2130772095, 0);
-    this.lCh = getIntent().getStringExtra("key_session_id");
+    this.med = getIntent().getStringExtra("key_session_id");
     this.scene = getIntent().getIntExtra("ftsbizscene", 0);
-    ad.i("MicroMsg.AppBrandSOSUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.lCh });
-    h.vKh.f(13929, new Object[] { this.lCh, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
+    ac.i("MicroMsg.AppBrandSOSUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.med });
+    h.wUl.f(13929, new Object[] { this.med, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
     paramBundle = new Intent();
-    paramBundle.putExtra("key_session_id", this.lCh);
+    paramBundle.putExtra("key_session_id", this.med);
     paramBundle.putExtra("ftsbizscene", this.scene);
     setResult(-1, paramBundle);
     AppMethodBeat.o(21125);
@@ -195,7 +195,7 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21126);
     if ((this.scene == 3) || (this.scene == 16)) {
-      h.vKh.f(13929, new Object[] { this.lCh, b.gRw, Integer.valueOf(2), Integer.valueOf(this.scene) });
+      h.wUl.f(13929, new Object[] { this.med, b.hrW, Integer.valueOf(2), Integer.valueOf(this.scene) });
     }
     super.onDestroy();
     AppMethodBeat.o(21126);

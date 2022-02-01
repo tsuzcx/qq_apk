@@ -4,11 +4,11 @@ import com.google.android.exoplayer2.c.l;
 
 abstract interface f
 {
-  public abstract long Q(long paramLong);
+  public abstract long R(long paramLong);
   
   public abstract long i(com.google.android.exoplayer2.c.f paramf);
   
-  public abstract l sU();
+  public abstract l td();
 }
 
 

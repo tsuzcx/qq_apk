@@ -15,16 +15,16 @@ public abstract class bg
   
   public abstract bg e(i parami);
   
-  public final bg fJW()
+  public final bg gcz()
   {
     return this;
   }
   
-  public abstract bg xV(boolean paramBoolean);
+  public abstract bg zn(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.bg
  * JD-Core Version:    0.7.0.1
  */

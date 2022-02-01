@@ -1,69 +1,69 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public abstract class n<REQ, RESP>
-  extends com.tencent.mm.al.n
+  extends com.tencent.mm.ak.n
   implements k
 {
-  com.tencent.mm.al.g callback;
-  private com.tencent.mm.al.g ria;
+  protected l ACr = m.eiE();
+  com.tencent.mm.ak.g callback;
   protected b rr;
-  protected l zjH = m.dTs();
+  private com.tencent.mm.ak.g sqT;
   
-  public abstract com.tencent.mm.al.g dVg();
+  public int doScene(e parame, com.tencent.mm.ak.g paramg)
+  {
+    int i = ekt();
+    if (i != 0) {
+      return i;
+    }
+    this.sqT = paramg;
+    this.callback = eks();
+    return dispatch(parame, this.rr, this);
+  }
   
-  public int dVh()
+  public abstract com.tencent.mm.ak.g eks();
+  
+  public int ekt()
   {
     return 0;
   }
   
-  public final void dVj()
+  public final void ekv()
   {
-    ad.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    com.tencent.mm.kernel.g.aeS().a(this, 0);
+    ac.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
+    com.tencent.mm.kernel.g.agi().a(this, 0);
   }
   
-  public final <RESP> RESP dVk()
+  public final <RESP> RESP ekw()
   {
-    return this.rr.gUT.gUX;
+    return this.rr.hvs.hvw;
   }
   
-  public final <REQ> REQ dVl()
+  public final <REQ> REQ ekx()
   {
-    return this.rr.gUS.gUX;
+    return this.rr.hvr.hvw;
   }
   
-  public int doScene(e parame, com.tencent.mm.al.g paramg)
-  {
-    int i = dVh();
-    if (i != 0) {
-      return i;
-    }
-    this.ria = paramg;
-    this.callback = dVg();
-    return dispatch(parame, this.rr, this);
-  }
-  
-  public void hR(int paramInt1, int paramInt2) {}
+  public void ig(int paramInt1, int paramInt2) {}
   
   public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, final String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    hR(paramInt2, paramInt3);
-    if (this.ria != null) {
-      this.ria.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ig(paramInt2, paramInt3);
+    if (this.sqT != null) {
+      this.sqT.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if (this.callback != null) {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -79,7 +79,7 @@ public abstract class n<REQ, RESP>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.n
  * JD-Core Version:    0.7.0.1
  */

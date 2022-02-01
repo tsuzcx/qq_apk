@@ -20,12 +20,12 @@ import com.facebook.yoga.android.YogaLayout;
 import com.tencent.kinda.framework.widget.tools.ActivityController;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.a.c;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -37,7 +37,7 @@ import java.util.List;
 public abstract class BaseFrActivity
   extends MMActivity
 {
-  public static final int HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 270);
+  public static final int HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 270);
   public static final String TAG = "MicroMsg.BaseFrActivity";
   private final int PWD_INPUT_VIEW_AND_KEYBOARD_GAP_PX = 26;
   private boolean isDestroyByThisFinish = false;
@@ -56,7 +56,7 @@ public abstract class BaseFrActivity
     super.finish();
     this.isDestroyByThisFinish = true;
     ActivityController.detach(this);
-    ad.i("MicroMsg.BaseFrActivity", "BaseFrActivity finish exec! " + Log.getStackTraceString(new Throwable("the stack of finish: ")));
+    ac.i("MicroMsg.BaseFrActivity", "BaseFrActivity finish exec! " + Log.getStackTraceString(new Throwable("the stack of finish: ")));
   }
   
   protected View getKBLayout()
@@ -108,14 +108,14 @@ public abstract class BaseFrActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    ad.i("MicroMsg.BaseFrActivity", "onCreate");
+    ac.i("MicroMsg.BaseFrActivity", "onCreate");
     super.onCreate(paramBundle);
     ActivityController.attach(this);
   }
   
   public void onDestroy()
   {
-    ad.i("MicroMsg.BaseFrActivity", "onDestroy");
+    ac.i("MicroMsg.BaseFrActivity", "onDestroy");
     if (!this.isDestroyByThisFinish) {
       ActivityController.detach(this);
     }
@@ -143,7 +143,7 @@ public abstract class BaseFrActivity
         i = (int)(getResources().getDisplayMetrics().density * 270.0F + 0.5F);
       }
       paramInt = paramView.getHeight();
-      int k = getController().FNv.getHeight();
+      int k = getController().Hng.getHeight();
       Object localObject1 = new int[2];
       paramView.getLocationOnScreen((int[])localObject1);
       int j = localObject1[1];
@@ -205,13 +205,13 @@ public abstract class BaseFrActivity
       int[] arrayOfInt = new int[2];
       paramView2.getLocationInWindow(arrayOfInt);
       int i = arrayOfInt[1] + paramView2.getHeight();
-      int j = com.tencent.mm.cd.a.hW(getContext());
-      paramInt = j - i - com.tencent.mm.cd.a.fromDPToPix(getContext(), paramInt);
-      ad.d("MicroMsg.BaseFrActivity", "scrollToFormEditPosAfterShowTenPay, editText locationY: %s, height: %s, diff: %s, hardcodeKeyboardHeight: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(HARDCODE_TENPAY_KEYBOARD_HEIGHT) });
+      int j = com.tencent.mm.cc.a.ih(getContext());
+      paramInt = j - i - com.tencent.mm.cc.a.fromDPToPix(getContext(), paramInt);
+      ac.d("MicroMsg.BaseFrActivity", "scrollToFormEditPosAfterShowTenPay, editText locationY: %s, height: %s, diff: %s, hardcodeKeyboardHeight: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(HARDCODE_TENPAY_KEYBOARD_HEIGHT) });
       if ((paramInt > 0) && (paramInt < HARDCODE_TENPAY_KEYBOARD_HEIGHT))
       {
         paramInt = HARDCODE_TENPAY_KEYBOARD_HEIGHT - paramInt;
-        ad.d("MicroMsg.BaseFrActivity", "scrollToFormEditPosAfterShowTenPay, scrollDistance: %s", new Object[] { Integer.valueOf(paramInt) });
+        ac.d("MicroMsg.BaseFrActivity", "scrollToFormEditPosAfterShowTenPay, scrollDistance: %s", new Object[] { Integer.valueOf(paramInt) });
         paramView1.post(new Runnable()
         {
           public void run()
@@ -252,7 +252,7 @@ public abstract class BaseFrActivity
             if ((paramAnonymousView.isFocused()) && (!paramBoolean1))
             {
               ((InputMethodManager)BaseFrActivity.this.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
-              new ap().postDelayed(new Runnable()
+              new ao().postDelayed(new Runnable()
               {
                 public void run()
                 {
@@ -272,7 +272,7 @@ public abstract class BaseFrActivity
                   if (((BaseFrActivity.1.this.val$parent instanceof WalletFormView)) && (Build.VERSION.SDK_INT >= 14))
                   {
                     localObject = (WalletFormView)BaseFrActivity.1.this.val$parent;
-                    if (((u.aqV()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!u.aqV()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
+                    if (((u.axL()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!u.axL()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
                       break label325;
                     }
                     localObject = new c();
@@ -311,7 +311,7 @@ public abstract class BaseFrActivity
                   localMMKEditText.callBackKindaTextEndEditing();
                   AppMethodBeat.o(18758);
                   return;
-                  new ap().postDelayed(new Runnable()
+                  new ao().postDelayed(new Runnable()
                   {
                     public void run()
                     {

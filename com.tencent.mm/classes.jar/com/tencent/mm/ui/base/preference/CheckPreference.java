@@ -13,13 +13,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CheckPreference
   extends Preference
 {
-  private CheckBox GdZ;
-  public int Gea;
-  public boolean lG;
-  private TextView zVJ;
-  private int zVK;
-  private String zVL;
-  private int zVM;
+  private TextView Bod;
+  private int Boe;
+  private String Bof;
+  private int Bog;
+  private CheckBox HDO;
+  public int HDP;
+  public boolean mF;
   
   public CheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,11 +30,11 @@ public class CheckPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142518);
-    this.lG = false;
-    this.zVK = -1;
-    this.zVL = "";
-    this.zVM = 8;
-    this.Gea = -1;
+    this.mF = false;
+    this.Boe = -1;
+    this.Bof = "";
+    this.Bog = 8;
+    this.HDP = -1;
     setLayoutResource(2131494888);
     AppMethodBeat.o(142518);
   }
@@ -43,29 +43,29 @@ public class CheckPreference
   {
     AppMethodBeat.i(142520);
     super.onBindView(paramView);
-    this.GdZ = ((CheckBox)paramView.findViewById(2131298255));
-    this.GdZ.setChecked(this.lG);
-    this.zVJ = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.zVL;
-    int i = this.zVK;
-    this.zVK = i;
-    this.zVL = paramView;
-    if (this.zVJ != null)
+    this.HDO = ((CheckBox)paramView.findViewById(2131298255));
+    this.HDO.setChecked(this.mF);
+    this.Bod = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.Bof;
+    int i = this.Boe;
+    this.Boe = i;
+    this.Bof = paramView;
+    if (this.Bod != null)
     {
       if (i > 0) {
-        this.zVJ.setBackgroundResource(this.zVK);
+        this.Bod.setBackgroundResource(this.Boe);
       }
-      if (!TextUtils.isEmpty(this.zVL)) {
-        this.zVJ.setText(this.zVL);
+      if (!TextUtils.isEmpty(this.Bof)) {
+        this.Bod.setText(this.Bof);
       }
     }
-    this.zVM = this.zVM;
-    if (this.zVJ != null) {
-      this.zVJ.setVisibility(this.zVM);
+    this.Bog = this.Bog;
+    if (this.Bod != null) {
+      this.Bod.setVisibility(this.Bog);
     }
-    paramView = (LinearLayout.LayoutParams)this.GdZ.getLayoutParams();
-    if (-1 != this.Gea) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.Gea, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.HDO.getLayoutParams();
+    if (-1 != this.HDP) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.HDP, paramView.bottomMargin);
     }
     AppMethodBeat.o(142520);
   }

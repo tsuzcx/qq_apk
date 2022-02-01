@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
 {
-  private int beF;
-  private int beG;
-  private int beH;
+  private int bfr;
+  private int bft;
+  private int bfu;
   private byte[] data;
   
   public n(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93182);
-    m(paramArrayOfByte, paramInt1, paramInt2);
+    l(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(93182);
   }
   
-  private boolean fo(int paramInt)
+  private boolean fa(int paramInt)
   {
-    return (2 <= paramInt) && (paramInt < this.beF) && (this.data[paramInt] == 3) && (this.data[(paramInt - 2)] == 0) && (this.data[(paramInt - 1)] == 0);
+    return (2 <= paramInt) && (paramInt < this.bfr) && (this.data[paramInt] == 3) && (this.data[(paramInt - 2)] == 0) && (this.data[(paramInt - 1)] == 0);
   }
   
-  private void sW()
+  private void tf()
   {
     AppMethodBeat.i(93192);
-    if ((this.beG >= 0) && ((this.beG < this.beF) || ((this.beG == this.beF) && (this.beH == 0)))) {}
+    if ((this.bft >= 0) && ((this.bft < this.bfr) || ((this.bft == this.bfr) && (this.bfu == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
@@ -33,40 +33,76 @@ public final class n
     }
   }
   
+  public final boolean eZ(int paramInt)
+  {
+    AppMethodBeat.i(93186);
+    int m = this.bft;
+    int j = paramInt / 8;
+    int i = this.bft + j;
+    int k = this.bfu + paramInt - j * 8;
+    paramInt = i;
+    j = k;
+    if (k > 7)
+    {
+      paramInt = i + 1;
+      j = k - 8;
+    }
+    i = m + 1;
+    while ((i <= paramInt) && (paramInt < this.bfr))
+    {
+      k = paramInt;
+      m = i;
+      if (fa(i))
+      {
+        k = paramInt + 1;
+        m = i + 2;
+      }
+      i = m + 1;
+      paramInt = k;
+    }
+    if ((paramInt < this.bfr) || ((paramInt == this.bfr) && (j == 0)))
+    {
+      AppMethodBeat.o(93186);
+      return true;
+    }
+    AppMethodBeat.o(93186);
+    return false;
+  }
+  
   public final int eo(int paramInt)
   {
     int j = 2;
     AppMethodBeat.i(93188);
-    this.beH += paramInt;
+    this.bfu += paramInt;
     int i = 0;
-    if (this.beH > 8)
+    if (this.bfu > 8)
     {
-      this.beH -= 8;
-      k = i | (this.data[this.beG] & 0xFF) << this.beH;
-      m = this.beG;
-      if (fo(this.beG + 1)) {}
+      this.bfu -= 8;
+      k = i | (this.data[this.bft] & 0xFF) << this.bfu;
+      m = this.bft;
+      if (fa(this.bft + 1)) {}
       for (i = 2;; i = 1)
       {
-        this.beG = (i + m);
+        this.bft = (i + m);
         i = k;
         break;
       }
     }
-    int k = this.data[this.beG];
-    int m = this.beH;
+    int k = this.data[this.bft];
+    int m = this.bfu;
     int n;
-    if (this.beH == 8)
+    if (this.bfu == 8)
     {
-      this.beH = 0;
-      n = this.beG;
-      if (!fo(this.beG + 1)) {
+      this.bfu = 0;
+      n = this.bft;
+      if (!fa(this.bft + 1)) {
         break label190;
       }
     }
     for (;;)
     {
-      this.beG = (n + j);
-      sW();
+      this.bft = (n + j);
+      tf();
       AppMethodBeat.o(93188);
       return (i | (k & 0xFF) >> 8 - m) & -1 >>> 32 - paramInt;
       label190:
@@ -77,126 +113,66 @@ public final class n
   public final void ep(int paramInt)
   {
     AppMethodBeat.i(93185);
-    int i = this.beG;
+    int i = this.bft;
     int j = paramInt / 8;
-    this.beG += j;
-    this.beH = (paramInt - j * 8 + this.beH);
-    if (this.beH > 7)
+    this.bft += j;
+    this.bfu = (paramInt - j * 8 + this.bfu);
+    if (this.bfu > 7)
     {
-      this.beG += 1;
-      this.beH -= 8;
+      this.bft += 1;
+      this.bfu -= 8;
     }
-    for (paramInt = i + 1; paramInt <= this.beG; paramInt = i + 1)
+    for (paramInt = i + 1; paramInt <= this.bft; paramInt = i + 1)
     {
       i = paramInt;
-      if (fo(paramInt))
+      if (fa(paramInt))
       {
-        this.beG += 1;
+        this.bft += 1;
         i = paramInt + 2;
       }
     }
-    sW();
+    tf();
     AppMethodBeat.o(93185);
   }
   
-  public final boolean fn(int paramInt)
-  {
-    AppMethodBeat.i(93186);
-    int m = this.beG;
-    int j = paramInt / 8;
-    int i = this.beG + j;
-    int k = this.beH + paramInt - j * 8;
-    paramInt = i;
-    j = k;
-    if (k > 7)
-    {
-      paramInt = i + 1;
-      j = k - 8;
-    }
-    i = m + 1;
-    while ((i <= paramInt) && (paramInt < this.beF))
-    {
-      k = paramInt;
-      m = i;
-      if (fo(i))
-      {
-        k = paramInt + 1;
-        m = i + 2;
-      }
-      i = m + 1;
-      paramInt = k;
-    }
-    if ((paramInt < this.beF) || ((paramInt == this.beF) && (j == 0)))
-    {
-      AppMethodBeat.o(93186);
-      return true;
-    }
-    AppMethodBeat.o(93186);
-    return false;
-  }
-  
-  public final void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void l(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93183);
     this.data = paramArrayOfByte;
-    this.beG = paramInt1;
-    this.beF = paramInt2;
-    this.beH = 0;
-    sW();
+    this.bft = paramInt1;
+    this.bfr = paramInt2;
+    this.bfu = 0;
+    tf();
     AppMethodBeat.o(93183);
   }
   
-  public final boolean sV()
+  public final boolean te()
   {
     AppMethodBeat.i(93187);
-    if ((this.data[this.beG] & 128 >> this.beH) != 0) {}
+    if ((this.data[this.bft] & 128 >> this.bfu) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      vH();
+      vw();
       AppMethodBeat.o(93187);
       return bool;
     }
   }
   
-  public final void vH()
-  {
-    AppMethodBeat.i(93184);
-    int i = this.beH + 1;
-    this.beH = i;
-    int j;
-    if (i == 8)
-    {
-      this.beH = 0;
-      j = this.beG;
-      if (!fo(this.beG + 1)) {
-        break label65;
-      }
-    }
-    label65:
-    for (i = 2;; i = 1)
-    {
-      this.beG = (i + j);
-      sW();
-      AppMethodBeat.o(93184);
-      return;
-    }
-  }
-  
-  public final boolean vU()
+  public final boolean vJ()
   {
     AppMethodBeat.i(93189);
-    int k = this.beG;
-    int m = this.beH;
+    int k = this.bft;
+    int m = this.bfu;
     int i = 0;
-    while ((this.beG < this.beF) && (!sV())) {
+    while ((this.bft < this.bfr) && (!te())) {
       i += 1;
     }
-    if (this.beG == this.beF) {}
+    if (this.bft == this.bfr) {}
     for (int j = 1;; j = 0)
     {
-      this.beG = k;
-      this.beH = m;
-      if ((j != 0) || (!fn(i * 2 + 1))) {
+      this.bft = k;
+      this.bfu = m;
+      if ((j != 0) || (!eZ(i * 2 + 1))) {
         break;
       }
       AppMethodBeat.o(93189);
@@ -206,10 +182,10 @@ public final class n
     return false;
   }
   
-  public final int vV()
+  public final int vK()
   {
     AppMethodBeat.i(93190);
-    int j = vW();
+    int j = vL();
     if (j % 2 == 0) {}
     for (int i = -1;; i = 1)
     {
@@ -219,12 +195,12 @@ public final class n
     }
   }
   
-  public final int vW()
+  public final int vL()
   {
     int j = 0;
     AppMethodBeat.i(93191);
     int i = 0;
-    while (!sV()) {
+    while (!te()) {
       i += 1;
     }
     if (i > 0) {
@@ -232,6 +208,30 @@ public final class n
     }
     AppMethodBeat.o(93191);
     return (1 << i) - 1 + j;
+  }
+  
+  public final void vw()
+  {
+    AppMethodBeat.i(93184);
+    int i = this.bfu + 1;
+    this.bfu = i;
+    int j;
+    if (i == 8)
+    {
+      this.bfu = 0;
+      j = this.bft;
+      if (!fa(this.bft + 1)) {
+        break label65;
+      }
+    }
+    label65:
+    for (i = 2;; i = 1)
+    {
+      this.bft = (i + j);
+      tf();
+      AppMethodBeat.o(93184);
+      return;
+    }
   }
 }
 

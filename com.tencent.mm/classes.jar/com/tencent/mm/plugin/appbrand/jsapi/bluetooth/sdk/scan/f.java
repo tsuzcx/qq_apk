@@ -16,40 +16,40 @@ import java.util.Set;
 
 public final class f
 {
-  private final int jLk;
-  public final List<ParcelUuid> jLl;
-  public final SparseArray<byte[]> jLm;
-  public final Map<ParcelUuid, byte[]> jLn;
-  private final int jLo;
-  final byte[] jLp;
+  private final int klL;
+  public final List<ParcelUuid> klM;
+  public final SparseArray<byte[]> klN;
+  public final Map<ParcelUuid, byte[]> klO;
+  private final int klP;
+  final byte[] klQ;
   public final String mDeviceName;
   
   @TargetApi(21)
   f(ScanRecord paramScanRecord)
   {
     AppMethodBeat.i(144632);
-    this.jLl = paramScanRecord.getServiceUuids();
-    this.jLm = paramScanRecord.getManufacturerSpecificData();
-    this.jLn = paramScanRecord.getServiceData();
+    this.klM = paramScanRecord.getServiceUuids();
+    this.klN = paramScanRecord.getManufacturerSpecificData();
+    this.klO = paramScanRecord.getServiceData();
     this.mDeviceName = paramScanRecord.getDeviceName();
-    this.jLk = paramScanRecord.getAdvertiseFlags();
-    this.jLo = paramScanRecord.getTxPowerLevel();
-    this.jLp = paramScanRecord.getBytes();
+    this.klL = paramScanRecord.getAdvertiseFlags();
+    this.klP = paramScanRecord.getTxPowerLevel();
+    this.klQ = paramScanRecord.getBytes();
     AppMethodBeat.o(144632);
   }
   
   private f(List<ParcelUuid> paramList, SparseArray<byte[]> paramSparseArray, Map<ParcelUuid, byte[]> paramMap, int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
-    this.jLl = paramList;
-    this.jLm = paramSparseArray;
-    this.jLn = paramMap;
+    this.klM = paramList;
+    this.klN = paramSparseArray;
+    this.klO = paramMap;
     this.mDeviceName = paramString;
-    this.jLk = paramInt1;
-    this.jLo = paramInt2;
-    this.jLp = paramArrayOfByte;
+    this.klL = paramInt1;
+    this.klP = paramInt2;
+    this.klQ = paramArrayOfByte;
   }
   
-  private static <T> String D(Map<T, byte[]> paramMap)
+  private static <T> String C(Map<T, byte[]> paramMap)
   {
     AppMethodBeat.i(144638);
     if (paramMap == null)
@@ -84,7 +84,7 @@ public final class f
     AppMethodBeat.i(144635);
     while (paramInt2 > 0)
     {
-      paramList.add(c.as(s(paramArrayOfByte, paramInt1, paramInt3)));
+      paramList.add(c.ar(r(paramArrayOfByte, paramInt1, paramInt3)));
       paramInt2 -= paramInt3;
       paramInt1 += paramInt3;
     }
@@ -92,7 +92,7 @@ public final class f
     return paramInt1;
   }
   
-  public static f at(byte[] paramArrayOfByte)
+  public static f as(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(144633);
     if (paramArrayOfByte == null)
@@ -138,11 +138,11 @@ public final class f
     break label422;
     a(paramArrayOfByte, m, k, 16, localArrayList2);
     break label422;
-    Object localObject2 = new String(s(paramArrayOfByte, m, k));
+    Object localObject2 = new String(r(paramArrayOfByte, m, k));
     break label422;
-    locala.put(c.as(s(paramArrayOfByte, m, 2)), s(paramArrayOfByte, m + 2, k - 2));
+    locala.put(c.ar(r(paramArrayOfByte, m, 2)), r(paramArrayOfByte, m + 2, k - 2));
     break label422;
-    localSparseArray.put(((paramArrayOfByte[(m + 1)] & 0xFF) << 8) + (paramArrayOfByte[m] & 0xFF), s(paramArrayOfByte, m + 2, k - 2));
+    localSparseArray.put(((paramArrayOfByte[(m + 1)] & 0xFF) << 8) + (paramArrayOfByte[m] & 0xFF), r(paramArrayOfByte, m + 2, k - 2));
     break label422;
     label377:
     ArrayList localArrayList1 = localArrayList2;
@@ -190,7 +190,7 @@ public final class f
     return paramSparseArray;
   }
   
-  private static byte[] s(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static byte[] r(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(144636);
     byte[] arrayOfByte = new byte[paramInt2];
@@ -202,7 +202,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(144634);
-    String str = "ScanRecord [mAdvertiseFlags=" + this.jLk + ", mServiceUuids=" + this.jLl + ", mManufacturerSpecificData=" + c(this.jLm) + ", mServiceData=" + D(this.jLn) + ", mTxPowerLevel=" + this.jLo + ", mDeviceName=" + this.mDeviceName + "]";
+    String str = "ScanRecord [mAdvertiseFlags=" + this.klL + ", mServiceUuids=" + this.klM + ", mManufacturerSpecificData=" + c(this.klN) + ", mServiceData=" + C(this.klO) + ", mTxPowerLevel=" + this.klP + ", mDeviceName=" + this.mDeviceName + "]";
     AppMethodBeat.o(144634);
     return str;
   }

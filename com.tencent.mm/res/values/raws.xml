@@ -1988,6 +1988,7 @@
     <item type="raw" name="spinner_16_outer_holo">false</item>
     <item type="raw" name="background_tipsbar">false</item>
     <item type="raw" name="background_tipsbar_dark">false</item>
+    <item type="raw" name="checkbox_selected_orange">false</item>
     <item type="raw" name="finder_down_arrow">false</item>
     <item type="raw" name="finder_filled_delete_sub_video">false</item>
     <item type="raw" name="finder_filled_fav">false</item>
@@ -2007,10 +2008,20 @@
     <item type="raw" name="finder_outlined_tag">false</item>
     <item type="raw" name="finder_self_feed_like_arrow">false</item>
     <item type="raw" name="finder_video_cover_icon">false</item>
+    <item type="raw" name="icon_close">false</item>
+    <item type="raw" name="icon_dot">false</item>
+    <item type="raw" name="icon_fill_thumb">false</item>
     <item type="raw" name="icon_filled_live_top_arrow">false</item>
     <item type="raw" name="icon_filled_live_top_like">false</item>
     <item type="raw" name="icon_filled_live_top_member">false</item>
     <item type="raw" name="icon_filled_mic_dialog_close">false</item>
+    <item type="raw" name="icon_full_screen">false</item>
+    <item type="raw" name="icon_line_comment">false</item>
+    <item type="raw" name="icon_line_share">false</item>
+    <item type="raw" name="icon_line_thumb">false</item>
+    <item type="raw" name="icon_more">false</item>
+    <item type="raw" name="icon_pause">false</item>
+    <item type="raw" name="icon_play">false</item>
     <item type="raw" name="icons_dark_help">false</item>
     <item type="raw" name="icons_dark_help2">false</item>
     <item type="raw" name="icons_filled_ban_chat">false</item>
@@ -2029,7 +2040,11 @@
     <item type="raw" name="icons_filled_live_screen">false</item>
     <item type="raw" name="icons_filled_mic_close">false</item>
     <item type="raw" name="icons_filled_mic_disable">false</item>
+    <item type="raw" name="icons_filled_mic_visitor_disable">false</item>
     <item type="raw" name="icons_filled_minimize">false</item>
+    <item type="raw" name="icons_filled_multi_talk">false</item>
+    <item type="raw" name="icons_filled_photowall">false</item>
+    <item type="raw" name="icons_filled_stranger">false</item>
     <item type="raw" name="icons_live_logo">false</item>
     <item type="raw" name="icons_mic_close">false</item>
     <item type="raw" name="icons_mic_open">false</item>
@@ -2049,7 +2064,14 @@
     <item type="raw" name="live_visitor_guide_mask_normal">false</item>
     <item type="raw" name="panel_icon_live">false</item>
     <item type="raw" name="popvideo_post_selected_origin">false</item>
+    <item type="raw" name="scan_custom_tips_bg">false</item>
+    <item type="raw" name="scan_custom_tips_image_bg">false</item>
+    <item type="raw" name="scan_custom_tips_image_bubble">false</item>
     <item type="raw" name="shadow_down">false</item>
     <item type="raw" name="shadow_up">false</item>
+    <item type="raw" name="sns_ad_feedback_approve">false</item>
+    <item type="raw" name="sns_ad_feedback_no_interesting">false</item>
+    <item type="raw" name="sns_ad_feedback_right_arrow">false</item>
+    <item type="raw" name="sns_ad_feedback_trangle">false</item>
     <item type="raw" name="APKTOOL_DUMMY_2d8" />
 </resources>

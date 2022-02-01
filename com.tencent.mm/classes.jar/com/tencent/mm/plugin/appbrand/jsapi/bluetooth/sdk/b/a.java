@@ -5,12 +5,12 @@ import java.util.UUID;
 
 public final class a
 {
-  public static final UUID jJG;
+  public static final UUID kkg;
   
   static
   {
     AppMethodBeat.i(144588);
-    jJG = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
+    kkg = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
     AppMethodBeat.o(144588);
   }
 }

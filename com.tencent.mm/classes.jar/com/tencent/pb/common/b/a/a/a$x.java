@@ -7,48 +7,48 @@ import com.google.b.a.e;
 public final class a$x
   extends e
 {
-  private static volatile x[] IlS;
-  public String IlT = "";
-  public String IlU = "";
+  private static volatile x[] JND;
+  public String JNE = "";
+  public String JNF = "";
   
   public a$x()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
-  public static x[] flt()
+  public static x[] fBK()
   {
-    if (IlS == null) {}
-    synchronized (c.bIR)
+    if (JND == null) {}
+    synchronized (c.bGz)
     {
-      if (IlS == null) {
-        IlS = new x[0];
+      if (JND == null) {
+        JND = new x[0];
       }
-      return IlS;
+      return JND;
     }
   }
   
   public final void a(b paramb)
   {
-    if (!this.IlT.equals("")) {
-      paramb.d(1, this.IlT);
+    if (!this.JNE.equals("")) {
+      paramb.d(1, this.JNE);
     }
-    if (!this.IlU.equals("")) {
-      paramb.d(2, this.IlU);
+    if (!this.JNF.equals("")) {
+      paramb.d(2, this.JNF);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
-    if (!this.IlT.equals("")) {
-      i = j + b.e(1, this.IlT);
+    if (!this.JNE.equals("")) {
+      i = j + b.e(1, this.JNE);
     }
     j = i;
-    if (!this.IlU.equals("")) {
-      j = i + b.e(2, this.IlU);
+    if (!this.JNF.equals("")) {
+      j = i + b.e(2, this.JNF);
     }
     return j;
   }

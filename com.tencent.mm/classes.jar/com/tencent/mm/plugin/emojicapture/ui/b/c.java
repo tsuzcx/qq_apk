@@ -7,9 +7,11 @@ import android.opengl.GLUtils;
 import android.os.HandlerThread;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.model.e;
 import com.tencent.mm.plugin.xlabeffect.XLabEffect;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sticker.f;
 import d.g.a.a;
 import d.g.b.k;
 import d.v;
@@ -22,126 +24,126 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.egl.EGLSurface;
 import javax.microedition.khronos.opengles.GL10;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixEGLPixelBuffer;", "", "width", "", "height", "enableAlpha", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "(IIZLcom/tencent/mm/sticker/StickerPack;)V", "TAG", "", "eGL", "Ljavax/microedition/khronos/egl/EGL10;", "eGLConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "eGLContext", "Ljavax/microedition/khronos/egl/EGLContext;", "kotlin.jvm.PlatformType", "eGLDisplay", "Ljavax/microedition/khronos/egl/EGLDisplay;", "eGLSurface", "Ljavax/microedition/khronos/egl/EGLSurface;", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "glThread", "Landroid/os/HandlerThread;", "glThreadHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onPrepareDrawFrame", "Lkotlin/Function0;", "", "getOnPrepareDrawFrame", "()Lkotlin/jvm/functions/Function0;", "setOnPrepareDrawFrame", "(Lkotlin/jvm/functions/Function0;)V", "renderer", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixRenderer;", "videoDecodeSurface", "Landroid/view/Surface;", "createEGLContext", "config", "destroyGL", "getRenderContent", "callback", "Lkotlin/Function1;", "", "getVideoDecodeSurface", "init", "removeBackground", "afterInitCallback", "initPixelBuffer", "mixVideoAndEmojiFrame", "nextFrameInfo", "Lcom/tencent/mm/media/mix/MixFrameSyncMgr$NextFrameInfo;", "onVideoSurfaceFrameAvailable", "queue", "plugin-emojicapture_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixEGLPixelBuffer;", "", "width", "", "height", "enableAlpha", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "(IIZLcom/tencent/mm/sticker/StickerPack;)V", "TAG", "", "eGL", "Ljavax/microedition/khronos/egl/EGL10;", "eGLConfig", "Ljavax/microedition/khronos/egl/EGLConfig;", "eGLContext", "Ljavax/microedition/khronos/egl/EGLContext;", "kotlin.jvm.PlatformType", "eGLDisplay", "Ljavax/microedition/khronos/egl/EGLDisplay;", "eGLSurface", "Ljavax/microedition/khronos/egl/EGLSurface;", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "glThread", "Landroid/os/HandlerThread;", "glThreadHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "onPrepareDrawFrame", "Lkotlin/Function0;", "", "getOnPrepareDrawFrame", "()Lkotlin/jvm/functions/Function0;", "setOnPrepareDrawFrame", "(Lkotlin/jvm/functions/Function0;)V", "renderer", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixRenderer;", "videoDecodeSurface", "Landroid/view/Surface;", "createEGLContext", "config", "destroyGL", "getRenderContent", "callback", "Lkotlin/Function1;", "", "getVideoDecodeSurface", "init", "removeBackground", "afterInitCallback", "initPixelBuffer", "mixVideoAndEmojiFrame", "nextFrameInfo", "Lcom/tencent/mm/media/mix/MixFrameSyncMgr$NextFrameInfo;", "onVideoSurfaceFrameAvailable", "queue", "plugin-emojicapture_release"})
 public final class c
 {
   public final String TAG;
   final int height;
-  final com.tencent.mm.sticker.e oLp;
-  EGLDisplay oRA;
-  EGLContext oRB;
-  EGLSurface oRC;
-  EGLConfig oRD;
-  public GL10 oRE;
-  public d oRF;
-  Surface oRG;
-  public ap oRH;
-  HandlerThread oRI;
-  public a<y> oRJ;
-  final boolean oRK;
-  final EGL10 oRz;
+  final f poJ;
+  final EGL10 puL;
+  EGLDisplay puM;
+  EGLContext puN;
+  EGLSurface puO;
+  EGLConfig puP;
+  public GL10 puQ;
+  public d puR;
+  Surface puS;
+  public ao puT;
+  HandlerThread puU;
+  public a<y> puV;
+  final boolean puW;
   final int width;
   
-  public c(int paramInt1, int paramInt2, boolean paramBoolean, com.tencent.mm.sticker.e parame)
+  public c(int paramInt1, int paramInt2, boolean paramBoolean, f paramf)
   {
     AppMethodBeat.i(845);
     this.width = paramInt1;
     this.height = paramInt2;
-    this.oRK = paramBoolean;
-    this.oLp = parame;
+    this.puW = paramBoolean;
+    this.poJ = paramf;
     this.TAG = "MicroMsg.EmojiCaptureEGLPixelBuffer";
-    parame = EGLContext.getEGL();
-    if (parame == null)
+    paramf = EGLContext.getEGL();
+    if (paramf == null)
     {
-      parame = new v("null cannot be cast to non-null type javax.microedition.khronos.egl.EGL10");
+      paramf = new v("null cannot be cast to non-null type javax.microedition.khronos.egl.EGL10");
       AppMethodBeat.o(845);
-      throw parame;
+      throw paramf;
     }
-    this.oRz = ((EGL10)parame);
-    this.oRA = EGL10.EGL_NO_DISPLAY;
-    this.oRB = EGL10.EGL_NO_CONTEXT;
-    this.oRC = EGL10.EGL_NO_SURFACE;
-    parame = com.tencent.e.c.d.gu("EmojiCaptureMixEGLPixelBuffer_GLThread", 5);
-    k.g(parame, "SpecialThreadFactory.cre…ad\",Thread.NORM_PRIORITY)");
-    this.oRI = parame;
-    this.oRI.start();
-    this.oRH = new ap(this.oRI.getLooper());
-    this.oRH.post((Runnable)new Runnable()
+    this.puL = ((EGL10)paramf);
+    this.puM = EGL10.EGL_NO_DISPLAY;
+    this.puN = EGL10.EGL_NO_CONTEXT;
+    this.puO = EGL10.EGL_NO_SURFACE;
+    paramf = com.tencent.e.c.d.gy("EmojiCaptureMixEGLPixelBuffer_GLThread", 5);
+    k.g(paramf, "SpecialThreadFactory.cre…ad\",Thread.NORM_PRIORITY)");
+    this.puU = paramf;
+    this.puU.start();
+    this.puT = new ao(this.puU.getLooper());
+    this.puT.post((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(837);
-        c localc = this.oRL;
-        localc.oRA = localc.oRz.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-        if (localc.oRA == EGL10.EGL_NO_DISPLAY) {
-          ad.e(localc.TAG, "egl get display error: %s", new Object[] { GLUtils.getEGLErrorString(localc.oRz.eglGetError()) });
+        c localc = this.puX;
+        localc.puM = localc.puL.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+        if (localc.puM == EGL10.EGL_NO_DISPLAY) {
+          ac.e(localc.TAG, "egl get display error: %s", new Object[] { GLUtils.getEGLErrorString(localc.puL.eglGetError()) });
         }
         Object localObject1 = new int[2];
-        if (!localc.oRz.eglInitialize(localc.oRA, (int[])localObject1))
+        if (!localc.puL.eglInitialize(localc.puM, (int[])localObject1))
         {
-          ad.e(localc.TAG, "egl init error: %s", new Object[] { GLUtils.getEGLErrorString(localc.oRz.eglGetError()) });
-          localObject1 = com.tencent.mm.plugin.emojicapture.model.e.oKa;
-          com.tencent.mm.plugin.emojicapture.model.e.bXQ();
+          ac.e(localc.TAG, "egl init error: %s", new Object[] { GLUtils.getEGLErrorString(localc.puL.eglGetError()) });
+          localObject1 = e.pny;
+          e.cfd();
         }
         for (;;)
         {
-          localc.oRF = new d(localc.oRK, localc.oLp);
-          localObject1 = localc.oRF;
+          localc.puR = new d(localc.puW, localc.poJ);
+          localObject1 = localc.puR;
           if (localObject1 == null) {
-            k.aPZ("renderer");
+            k.aVY("renderer");
           }
-          if (!((d)localObject1).csX)
+          if (!((d)localObject1).cqf)
           {
-            ad.i(((d)localObject1).TAG, "init: ");
-            localObject2 = b.oRy;
-            localObject2 = com.tencent.mm.media.f.c.dF(false);
-            ((d)localObject1).oRP = new SurfaceTexture(((com.tencent.mm.media.f.d)localObject2).gro);
-            ((d)localObject1).oRO = ((com.tencent.mm.media.f.d)localObject2);
-            localObject2 = b.oRy;
-            ((d)localObject1).oRQ = com.tencent.mm.media.f.c.dF(true);
-            localObject2 = b.oRy;
-            ((d)localObject1).gvs = b.a.ap("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        uniform mat4 uMatrix;\n        void main() {\n            gl_Position = uMatrix * a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #extension GL_OES_EGL_image_external : require\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform samplerExternalOES videoExternalTexture;\n        uniform sampler2D videoNormalTexture;\n        uniform sampler2D emojiTexture;\n        uniform vec2 size;\n        uniform float radius;\n        uniform int hasEmojiTexture;\n        uniform int useNormalVideoTexture;\n        uniform int enableAlpha;\n\n        vec4 blendTexture(vec4 source, vec4 blend) {\n            if (blend.a <= 0.0) {\n                return source;\n            }\n            float sourceAlpha = 1.0 - blend.a;\n            float alpha = max(source.a, blend.a);\n            float r = max(0.0, min(sourceAlpha * source.r + blend.r, 1.0));\n            float g = max(0.0, min(sourceAlpha * source.g + blend.g, 1.0));\n            float b = max(0.0, min(sourceAlpha * source.b + blend.b, 1.0));\n            vec4 result = vec4(r, g, b, alpha);\n            if (alpha != 1.0) {\n                r = r + (1.0 - alpha) * 0.95;\n                g = g + (1.0 - alpha) * 0.95;\n                b = b + (1.0 - alpha) * 0.95;\n                r = max(0.0, min(r, 1.0));\n                g = max(0.0, min(g, 1.0));\n                b = max(0.0, min(b, 1.0));\n                return vec4(r, g, b, 1.0);\n            } else {\n                return vec4(r, g, b, alpha);\n            }\n        }\n\n        void main () {\n            vec2 bottomLeftCenter = vec2(radius, radius);\n            vec2 bottomRightCenter = vec2(size.x - radius, radius);\n            vec2 topLeftCenter = vec2(radius, size.y - radius);\n            vec2 topRightCenter = vec2(size.x - radius, size.y - radius);\n            if ((gl_FragCoord.x < bottomLeftCenter.x && gl_FragCoord.y < bottomLeftCenter.y && distance(gl_FragCoord.xy, bottomLeftCenter) > radius) ||\n                    (gl_FragCoord.x > bottomRightCenter.x && gl_FragCoord.y < bottomRightCenter.y && distance(gl_FragCoord.xy, bottomRightCenter) > radius) ||\n                    (gl_FragCoord.x < topLeftCenter.x && gl_FragCoord.y > topLeftCenter.y && distance(gl_FragCoord.xy, topLeftCenter) > radius) ||\n                    (gl_FragCoord.x > topRightCenter.x && gl_FragCoord.y > topRightCenter.y && distance(gl_FragCoord.xy, topRightCenter) > radius))  {\n                gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n                return;\n            } else {\n                vec4 videoColor;\n                if (useNormalVideoTexture == 1) {\n                    videoColor = texture2D(videoNormalTexture, v_texCoord);\n                } else {\n                    videoColor = texture2D(videoExternalTexture, v_texCoord);\n                }\n                if (enableAlpha == 0) {\n                    if (videoColor.a < 0.3) {\n                        videoColor = vec4(0.0, 0.0, 0.0, 0.0);\n                    } else {\n                        videoColor.a = 1.0;\n                    }\n                } else {\n                    if (videoColor.a == 0.0) {\n                        videoColor = vec4(0.0, 0.0, 0.0, 0.0);\n                    }\n                }\n                if (hasEmojiTexture == 1) {\n                    gl_FragColor = blendTexture(videoColor, texture2D(emojiTexture, v_texCoord));\n                } else {\n                    gl_FragColor = videoColor;\n                }\n            }\n        }\n        ");
-            ((d)localObject1).gvt = GLES20.glGetAttribLocation(((d)localObject1).gvs, "a_position");
-            ((d)localObject1).gvu = GLES20.glGetAttribLocation(((d)localObject1).gvs, "a_texCoord");
-            ((d)localObject1).gvw = GLES20.glGetUniformLocation(((d)localObject1).gvs, "videoExternalTexture");
-            ((d)localObject1).gvx = GLES20.glGetUniformLocation(((d)localObject1).gvs, "videoNormalTexture");
-            ((d)localObject1).gvy = GLES20.glGetUniformLocation(((d)localObject1).gvs, "emojiTexture");
-            ((d)localObject1).oRR = GLES20.glGetUniformLocation(((d)localObject1).gvs, "size");
-            ((d)localObject1).oRS = GLES20.glGetUniformLocation(((d)localObject1).gvs, "radius");
-            ((d)localObject1).gvz = GLES20.glGetUniformLocation(((d)localObject1).gvs, "hasEmojiTexture");
-            ((d)localObject1).gvB = GLES20.glGetUniformLocation(((d)localObject1).gvs, "uMatrix");
-            ((d)localObject1).gvA = GLES20.glGetUniformLocation(((d)localObject1).gvs, "useNormalVideoTexture");
-            ((d)localObject1).oRT = GLES20.glGetUniformLocation(((d)localObject1).gvs, "enableAlpha");
-            localObject2 = b.oRy;
-            ((d)localObject1).oRU = b.a.ap("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        void main() {\n            gl_Position = a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #extension GL_OES_EGL_image_external : require\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform samplerExternalOES texture;\n\n        void main () {\n            gl_FragColor = texture2D(texture, v_texCoord);\n        }\n        ");
-            ((d)localObject1).oRV = GLES20.glGetAttribLocation(((d)localObject1).oRU, "a_position");
-            ((d)localObject1).oRW = GLES20.glGetAttribLocation(((d)localObject1).oRU, "a_texCoord");
-            ((d)localObject1).oRX = GLES20.glGetUniformLocation(((d)localObject1).oRU, "texture");
-            ((d)localObject1).guT.put(b.gwe);
-            ((d)localObject1).oSc.put(b.gwf);
-            localObject2 = b.oRy;
-            ((d)localObject1).oRZ = b.a.bYN();
-            localObject2 = b.oRy;
-            ((d)localObject1).oSa = com.tencent.mm.media.f.c.dF(true);
-            localObject2 = b.oRy;
-            ((d)localObject1).oSb = com.tencent.mm.media.f.c.dF(true);
-            ((d)localObject1).csX = true;
+            ac.i(((d)localObject1).TAG, "init: ");
+            localObject2 = b.puK;
+            localObject2 = com.tencent.mm.media.f.c.ea(false);
+            ((d)localObject1).pvb = new SurfaceTexture(((com.tencent.mm.media.f.d)localObject2).gRW);
+            ((d)localObject1).pva = ((com.tencent.mm.media.f.d)localObject2);
+            localObject2 = b.puK;
+            ((d)localObject1).pvc = com.tencent.mm.media.f.c.ea(true);
+            localObject2 = b.puK;
+            ((d)localObject1).gVP = b.a.ax("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        uniform mat4 uMatrix;\n        void main() {\n            gl_Position = uMatrix * a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #extension GL_OES_EGL_image_external : require\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform samplerExternalOES videoExternalTexture;\n        uniform sampler2D videoNormalTexture;\n        uniform sampler2D emojiTexture;\n        uniform vec2 size;\n        uniform float radius;\n        uniform int hasEmojiTexture;\n        uniform int useNormalVideoTexture;\n        uniform int enableAlpha;\n\n        vec4 blendTexture(vec4 source, vec4 blend) {\n            if (blend.a <= 0.0) {\n                return source;\n            }\n            float sourceAlpha = 1.0 - blend.a;\n            float alpha = max(source.a, blend.a);\n            float r = max(0.0, min(sourceAlpha * source.r + blend.r, 1.0));\n            float g = max(0.0, min(sourceAlpha * source.g + blend.g, 1.0));\n            float b = max(0.0, min(sourceAlpha * source.b + blend.b, 1.0));\n            vec4 result = vec4(r, g, b, alpha);\n            if (alpha != 1.0) {\n                r = r + (1.0 - alpha) * 0.95;\n                g = g + (1.0 - alpha) * 0.95;\n                b = b + (1.0 - alpha) * 0.95;\n                r = max(0.0, min(r, 1.0));\n                g = max(0.0, min(g, 1.0));\n                b = max(0.0, min(b, 1.0));\n                return vec4(r, g, b, 1.0);\n            } else {\n                return vec4(r, g, b, alpha);\n            }\n        }\n\n        void main () {\n            vec2 bottomLeftCenter = vec2(radius, radius);\n            vec2 bottomRightCenter = vec2(size.x - radius, radius);\n            vec2 topLeftCenter = vec2(radius, size.y - radius);\n            vec2 topRightCenter = vec2(size.x - radius, size.y - radius);\n            if ((gl_FragCoord.x < bottomLeftCenter.x && gl_FragCoord.y < bottomLeftCenter.y && distance(gl_FragCoord.xy, bottomLeftCenter) > radius) ||\n                    (gl_FragCoord.x > bottomRightCenter.x && gl_FragCoord.y < bottomRightCenter.y && distance(gl_FragCoord.xy, bottomRightCenter) > radius) ||\n                    (gl_FragCoord.x < topLeftCenter.x && gl_FragCoord.y > topLeftCenter.y && distance(gl_FragCoord.xy, topLeftCenter) > radius) ||\n                    (gl_FragCoord.x > topRightCenter.x && gl_FragCoord.y > topRightCenter.y && distance(gl_FragCoord.xy, topRightCenter) > radius))  {\n                gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n                return;\n            } else {\n                vec4 videoColor;\n                if (useNormalVideoTexture == 1) {\n                    videoColor = texture2D(videoNormalTexture, v_texCoord);\n                } else {\n                    videoColor = texture2D(videoExternalTexture, v_texCoord);\n                }\n                if (enableAlpha == 0) {\n                    if (videoColor.a < 0.3) {\n                        videoColor = vec4(0.0, 0.0, 0.0, 0.0);\n                    } else {\n                        videoColor.a = 1.0;\n                    }\n                } else {\n                    if (videoColor.a == 0.0) {\n                        videoColor = vec4(0.0, 0.0, 0.0, 0.0);\n                    }\n                }\n                if (hasEmojiTexture == 1) {\n                    gl_FragColor = blendTexture(videoColor, texture2D(emojiTexture, v_texCoord));\n                } else {\n                    gl_FragColor = videoColor;\n                }\n            }\n        }\n        ");
+            ((d)localObject1).gVQ = GLES20.glGetAttribLocation(((d)localObject1).gVP, "a_position");
+            ((d)localObject1).gVR = GLES20.glGetAttribLocation(((d)localObject1).gVP, "a_texCoord");
+            ((d)localObject1).gVT = GLES20.glGetUniformLocation(((d)localObject1).gVP, "videoExternalTexture");
+            ((d)localObject1).gVU = GLES20.glGetUniformLocation(((d)localObject1).gVP, "videoNormalTexture");
+            ((d)localObject1).gVV = GLES20.glGetUniformLocation(((d)localObject1).gVP, "emojiTexture");
+            ((d)localObject1).pvd = GLES20.glGetUniformLocation(((d)localObject1).gVP, "size");
+            ((d)localObject1).pve = GLES20.glGetUniformLocation(((d)localObject1).gVP, "radius");
+            ((d)localObject1).gVW = GLES20.glGetUniformLocation(((d)localObject1).gVP, "hasEmojiTexture");
+            ((d)localObject1).gVY = GLES20.glGetUniformLocation(((d)localObject1).gVP, "uMatrix");
+            ((d)localObject1).gVX = GLES20.glGetUniformLocation(((d)localObject1).gVP, "useNormalVideoTexture");
+            ((d)localObject1).pvf = GLES20.glGetUniformLocation(((d)localObject1).gVP, "enableAlpha");
+            localObject2 = b.puK;
+            ((d)localObject1).pvg = b.a.ax("\n        attribute vec4 a_position;\n        attribute vec2 a_texCoord;\n        varying vec2 v_texCoord;\n        void main() {\n            gl_Position = a_position;\n            v_texCoord = a_texCoord;\n        }\n        ", "\n        #extension GL_OES_EGL_image_external : require\n        #ifdef GL_ES\n        precision highp float;\n        #endif\n\n        varying vec2 v_texCoord;\n        uniform samplerExternalOES texture;\n\n        void main () {\n            gl_FragColor = texture2D(texture, v_texCoord);\n        }\n        ");
+            ((d)localObject1).pvh = GLES20.glGetAttribLocation(((d)localObject1).pvg, "a_position");
+            ((d)localObject1).pvi = GLES20.glGetAttribLocation(((d)localObject1).pvg, "a_texCoord");
+            ((d)localObject1).pvj = GLES20.glGetUniformLocation(((d)localObject1).pvg, "texture");
+            ((d)localObject1).grE.put(b.gWC);
+            ((d)localObject1).pvo.put(b.gWD);
+            localObject2 = b.puK;
+            ((d)localObject1).pvl = b.a.cfY();
+            localObject2 = b.puK;
+            ((d)localObject1).pvm = com.tencent.mm.media.f.c.ea(true);
+            localObject2 = b.puK;
+            ((d)localObject1).pvn = com.tencent.mm.media.f.c.ea(true);
+            ((d)localObject1).cqf = true;
           }
-          localObject1 = localc.oRF;
+          localObject1 = localc.puR;
           if (localObject1 == null) {
-            k.aPZ("renderer");
+            k.aVY("renderer");
           }
-          ((d)localObject1).bYP().setOnFrameAvailableListener((SurfaceTexture.OnFrameAvailableListener)new c.c(localc));
-          localObject1 = localc.oRF;
+          ((d)localObject1).cga().setOnFrameAvailableListener((SurfaceTexture.OnFrameAvailableListener)new c.c(localc));
+          localObject1 = localc.puR;
           if (localObject1 == null) {
-            k.aPZ("renderer");
+            k.aVY("renderer");
           }
-          localc.oRG = new Surface(((d)localObject1).bYP());
+          localc.puS = new Surface(((d)localObject1).cga());
           AppMethodBeat.o(837);
           return;
-          localObject1 = b.oRy;
-          localObject1 = localc.oRz;
-          Object localObject2 = localc.oRA;
+          localObject1 = b.puK;
+          localObject1 = localc.puL;
+          Object localObject2 = localc.puM;
           k.g(localObject2, "eGLDisplay");
           k.h(localObject1, "eGL");
           k.h(localObject2, "eGLDisplay");
@@ -183,25 +185,25 @@ public final class c
           EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
           if (!((EGL10)localObject1).eglChooseConfig((EGLDisplay)localObject2, arrayOfInt1, arrayOfEGLConfig, i, arrayOfInt2))
           {
-            ad.e("MicroMsg.EmojiCaptureGLUtil", "egl choose config failed: %s", new Object[] { GLUtils.getEGLErrorString(((EGL10)localObject1).eglGetError()) });
+            ac.e("MicroMsg.EmojiCaptureGLUtil", "egl choose config failed: %s", new Object[] { GLUtils.getEGLErrorString(((EGL10)localObject1).eglGetError()) });
             localObject1 = null;
             label795:
-            localc.oRD = ((EGLConfig)localObject1);
-            localObject1 = localc.oRD;
+            localc.puP = ((EGLConfig)localObject1);
+            localObject1 = localc.puP;
             if (localObject1 == null) {
               continue;
             }
-            localc.oRB = localc.oRz.eglCreateContext(localc.oRA, (EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+            localc.puN = localc.puL.eglCreateContext(localc.puM, (EGLConfig)localObject1, EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
             i = localc.width;
             int j = localc.height;
-            localc.oRC = localc.oRz.eglCreatePbufferSurface(localc.oRA, (EGLConfig)localObject1, new int[] { 12375, i, 12374, j, 12344 });
-            if ((localc.oRC != EGL10.EGL_NO_SURFACE) && (localc.oRB != EGL10.EGL_NO_CONTEXT)) {
+            localc.puO = localc.puL.eglCreatePbufferSurface(localc.puM, (EGLConfig)localObject1, new int[] { 12375, i, 12374, j, 12344 });
+            if ((localc.puO != EGL10.EGL_NO_SURFACE) && (localc.puN != EGL10.EGL_NO_CONTEXT)) {
               break label1036;
             }
-            if (localc.oRz.eglGetError() != 12299) {
+            if (localc.puL.eglGetError() != 12299) {
               break label1000;
             }
-            ad.e(localc.TAG, "eglCreateWindowSurface returned EGL_BAD_NATIVE_WINDOW. ");
+            ac.e(localc.TAG, "eglCreateWindowSurface returned EGL_BAD_NATIVE_WINDOW. ");
             i = -1;
           }
           for (;;)
@@ -209,27 +211,27 @@ public final class c
             if (i >= 0) {
               break label1041;
             }
-            ad.e(localc.TAG, "createEGLContext failed -1");
-            localObject1 = com.tencent.mm.plugin.emojicapture.model.e.oKa;
-            com.tencent.mm.plugin.emojicapture.model.e.bXQ();
+            ac.e(localc.TAG, "createEGLContext failed -1");
+            localObject1 = e.pny;
+            e.cfd();
             break;
             localObject1 = arrayOfEGLConfig[0];
             break label795;
             label1000:
-            ad.e(localc.TAG, "eglCreateWindowSurface failed : %s", new Object[] { GLUtils.getEGLErrorString(localc.oRz.eglGetError()) });
+            ac.e(localc.TAG, "eglCreateWindowSurface failed : %s", new Object[] { GLUtils.getEGLErrorString(localc.puL.eglGetError()) });
             i = -1;
             continue;
             label1036:
             i = 0;
           }
           label1041:
-          if (!localc.oRz.eglMakeCurrent(localc.oRA, localc.oRC, localc.oRC, localc.oRB))
+          if (!localc.puL.eglMakeCurrent(localc.puM, localc.puO, localc.puO, localc.puN))
           {
-            ad.e(localc.TAG, "eglMakeCurrent failed : " + GLUtils.getEGLErrorString(localc.oRz.eglGetError()));
-            localObject1 = com.tencent.mm.plugin.emojicapture.model.e.oKa;
-            com.tencent.mm.plugin.emojicapture.model.e.bXQ();
+            ac.e(localc.TAG, "eglMakeCurrent failed : " + GLUtils.getEGLErrorString(localc.puL.eglGetError()));
+            localObject1 = e.pny;
+            e.cfd();
           }
-          localObject1 = localc.oRB;
+          localObject1 = localc.puN;
           k.g(localObject1, "eGLContext");
           localObject1 = ((EGLContext)localObject1).getGL();
           if (localObject1 == null)
@@ -238,19 +240,19 @@ public final class c
             AppMethodBeat.o(837);
             throw ((Throwable)localObject1);
           }
-          localc.oRE = ((GL10)localObject1);
+          localc.puQ = ((GL10)localObject1);
         }
       }
     });
     AppMethodBeat.o(845);
   }
   
-  public final Surface bYO()
+  public final Surface cfZ()
   {
     AppMethodBeat.i(844);
-    Surface localSurface = this.oRG;
+    Surface localSurface = this.puS;
     if (localSurface == null) {
-      k.aPZ("videoDecodeSurface");
+      k.aVY("videoDecodeSurface");
     }
     AppMethodBeat.o(844);
     return localSurface;
@@ -260,11 +262,11 @@ public final class c
   {
     AppMethodBeat.i(843);
     k.h(parama, "callback");
-    this.oRH.post((Runnable)new c.e(parama));
+    this.puT.post((Runnable)new c.e(parama));
     AppMethodBeat.o(843);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   public static final class a
     extends d.g.b.l
     implements a<y>
@@ -275,7 +277,7 @@ public final class c
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   public static final class b
     implements Runnable
   {
@@ -284,36 +286,36 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(839);
-      c.a(this.oRL).onSurfaceCreated(c.b(this.oRL), this.oRL.oRD);
-      c.a(this.oRL).onSurfaceChanged(c.b(this.oRL), this.oRL.width, this.oRL.height);
-      Object localObject = c.a(this.oRL);
-      ((d)localObject).oLS = this.oRM;
+      c.a(this.puX).onSurfaceCreated(c.b(this.puX), this.puX.puP);
+      c.a(this.puX).onSurfaceChanged(c.b(this.puX), this.puX.width, this.puX.height);
+      Object localObject = c.a(this.puX);
+      ((d)localObject).ppm = this.puY;
       try
       {
-        ((d)localObject).fVU = new XLabEffect(0, 0, 0, false, 15);
-        XLabEffect localXLabEffect = ((d)localObject).fVU;
+        ((d)localObject).fZP = new XLabEffect(0, 0, 0, false, 15);
+        XLabEffect localXLabEffect = ((d)localObject).fZP;
         if (localXLabEffect != null) {
-          localXLabEffect.setSize(((d)localObject).oRY, ((d)localObject).oRY);
+          localXLabEffect.setSize(((d)localObject).pvk, ((d)localObject).pvk);
         }
-        localXLabEffect = ((d)localObject).fVU;
+        localXLabEffect = ((d)localObject).fZP;
         if (localXLabEffect != null) {
-          localXLabEffect.tP(((d)localObject).oLS);
+          localXLabEffect.uQ(((d)localObject).ppm);
         }
-        localXLabEffect = ((d)localObject).fVU;
+        localXLabEffect = ((d)localObject).fZP;
         if (localXLabEffect != null) {
-          localXLabEffect.a(((d)localObject).oLp);
+          localXLabEffect.a(((d)localObject).poJ);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          com.tencent.mm.plugin.emojicapture.model.e locale = com.tencent.mm.plugin.emojicapture.model.e.oKa;
-          com.tencent.mm.plugin.emojicapture.model.e.bXX();
+          e locale = e.pny;
+          e.cfk();
         }
         AppMethodBeat.o(839);
       }
-      localObject = this.oRN;
+      localObject = this.puZ;
       if (localObject != null)
       {
         ((a)localObject).invoke();

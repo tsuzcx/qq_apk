@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class e
 {
-  ArrayList<d> qjT;
-  boolean qjU;
-  ArrayList<b> qjV;
+  ArrayList<d> qSv;
+  boolean qSw;
+  ArrayList<b> qSx;
   
   private e()
   {
     AppMethodBeat.i(107392);
-    this.qjT = new ArrayList();
-    this.qjU = false;
-    this.qjV = new ArrayList();
+    this.qSv = new ArrayList();
+    this.qSw = false;
+    this.qSx = new ArrayList();
     AppMethodBeat.o(107392);
   }
   
-  public final d YF(String paramString)
+  public final d adb(String paramString)
   {
     AppMethodBeat.i(107393);
-    Iterator localIterator = this.qjT.iterator();
+    Iterator localIterator = this.qSv.iterator();
     while (localIterator.hasNext())
     {
       d locald = (d)localIterator.next();
-      if (locald.dke.dkb.equals(paramString))
+      if (locald.dhz.dhw.equals(paramString))
       {
         AppMethodBeat.o(107393);
         return locald;
@@ -38,48 +38,48 @@ public final class e
     return null;
   }
   
-  public final void cjP()
-  {
-    AppMethodBeat.i(107395);
-    Iterator localIterator = this.qjV.iterator();
-    while (localIterator.hasNext()) {
-      ((b)localIterator.next()).cjR();
-    }
-    AppMethodBeat.o(107395);
-  }
-  
   public final void clear()
   {
     AppMethodBeat.i(107394);
-    ad.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.qjT.clear();
-    Iterator localIterator = this.qjV.iterator();
+    ac.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.qSv.clear();
+    Iterator localIterator = this.qSx.iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
     AppMethodBeat.o(107394);
   }
   
+  public final void crw()
+  {
+    AppMethodBeat.i(107395);
+    Iterator localIterator = this.qSx.iterator();
+    while (localIterator.hasNext()) {
+      ((b)localIterator.next()).cry();
+    }
+    AppMethodBeat.o(107395);
+  }
+  
   static final class a
   {
-    private static final e qjW;
+    private static final e qSy;
     
     static
     {
       AppMethodBeat.i(107391);
-      qjW = new e((byte)0);
+      qSy = new e((byte)0);
       AppMethodBeat.o(107391);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void cjR();
+    public abstract void cry();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.e
  * JD-Core Version:    0.7.0.1
  */

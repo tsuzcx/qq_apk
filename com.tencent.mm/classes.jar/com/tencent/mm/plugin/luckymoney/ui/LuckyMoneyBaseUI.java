@@ -8,7 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.luckymoney.model.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -24,15 +24,15 @@ public abstract class LuckyMoneyBaseUI
   implements i, f
 {
   private LinkedList<k> callbacks = new LinkedList();
-  public u tjY = null;
-  protected boolean tjZ = true;
+  public u usr = null;
+  protected boolean uss = true;
   
   public final void addSceneEndListener(int paramInt)
   {
-    this.tjY.addSceneEndListener(paramInt);
+    this.usr.addSceneEndListener(paramInt);
   }
   
-  public final void cMl()
+  public final void cZR()
   {
     if (getSupportActionBar() != null)
     {
@@ -41,7 +41,7 @@ public abstract class LuckyMoneyBaseUI
     }
   }
   
-  protected final void cMm()
+  protected final void cZS()
   {
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
@@ -50,12 +50,12 @@ public abstract class LuckyMoneyBaseUI
   
   public final void doSceneProgress(n paramn)
   {
-    this.tjY.doSceneProgress(paramn, true);
+    this.usr.doSceneProgress(paramn, true);
   }
   
   public final void doSceneProgress(n paramn, boolean paramBoolean)
   {
-    this.tjY.doSceneProgress(paramn, paramBoolean);
+    this.usr.doSceneProgress(paramn, paramBoolean);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -63,7 +63,7 @@ public abstract class LuckyMoneyBaseUI
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     paramIntent = ((List)this.callbacks.clone()).iterator();
     while (paramIntent.hasNext()) {
-      ((k)paramIntent.next()).fjT();
+      ((k)paramIntent.next()).fAi();
     }
   }
   
@@ -71,21 +71,21 @@ public abstract class LuckyMoneyBaseUI
   {
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    this.tjY = new u(this, this);
-    this.tjY.addSceneEndListener(1554);
-    this.tjY.addSceneEndListener(1575);
-    this.tjY.addSceneEndListener(1668);
-    this.tjY.addSceneEndListener(1581);
-    this.tjY.addSceneEndListener(1685);
-    this.tjY.addSceneEndListener(1585);
-    this.tjY.addSceneEndListener(1514);
-    this.tjY.addSceneEndListener(1682);
-    this.tjY.addSceneEndListener(1612);
-    this.tjY.addSceneEndListener(1643);
-    this.tjY.addSceneEndListener(1558);
-    this.tjY.addSceneEndListener(2715);
+    this.usr = new u(this, this);
+    this.usr.addSceneEndListener(1554);
+    this.usr.addSceneEndListener(1575);
+    this.usr.addSceneEndListener(1668);
+    this.usr.addSceneEndListener(1581);
+    this.usr.addSceneEndListener(1685);
+    this.usr.addSceneEndListener(1585);
+    this.usr.addSceneEndListener(1514);
+    this.usr.addSceneEndListener(1682);
+    this.usr.addSceneEndListener(1612);
+    this.usr.addSceneEndListener(1643);
+    this.usr.addSceneEndListener(1558);
+    this.usr.addSceneEndListener(2715);
     setActionbarColor(getResources().getColor(2131100568));
-    if (this.tjZ) {
+    if (this.uss) {
       setActionbarElementColor(getResources().getColor(2131100576));
     }
     getLayoutId();
@@ -97,18 +97,18 @@ public abstract class LuckyMoneyBaseUI
   
   public void onDestroy()
   {
-    this.tjY.removeSceneEndListener(1554);
-    this.tjY.removeSceneEndListener(1575);
-    this.tjY.removeSceneEndListener(1668);
-    this.tjY.removeSceneEndListener(1581);
-    this.tjY.removeSceneEndListener(1685);
-    this.tjY.removeSceneEndListener(1585);
-    this.tjY.removeSceneEndListener(1514);
-    this.tjY.removeSceneEndListener(1682);
-    this.tjY.removeSceneEndListener(1612);
-    this.tjY.removeSceneEndListener(1643);
-    this.tjY.removeSceneEndListener(1558);
-    this.tjY.removeSceneEndListener(2715);
+    this.usr.removeSceneEndListener(1554);
+    this.usr.removeSceneEndListener(1575);
+    this.usr.removeSceneEndListener(1668);
+    this.usr.removeSceneEndListener(1581);
+    this.usr.removeSceneEndListener(1685);
+    this.usr.removeSceneEndListener(1585);
+    this.usr.removeSceneEndListener(1514);
+    this.usr.removeSceneEndListener(1682);
+    this.usr.removeSceneEndListener(1612);
+    this.usr.removeSceneEndListener(1643);
+    this.usr.removeSceneEndListener(1558);
+    this.usr.removeSceneEndListener(2715);
     Iterator localIterator = ((List)this.callbacks.clone()).iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onDestroy();
@@ -121,8 +121,8 @@ public abstract class LuckyMoneyBaseUI
   {
     if (paramInt == 4)
     {
-      if ((this.tjY != null) && (this.tjY.isProcessing())) {
-        this.tjY.forceCancel();
+      if ((this.usr != null) && (this.usr.isProcessing())) {
+        this.usr.forceCancel();
       }
       if ((getContentView().getVisibility() == 8) || (getContentView().getVisibility() == 4)) {
         finish();
@@ -135,7 +135,7 @@ public abstract class LuckyMoneyBaseUI
   {
     if ((!onSceneEnd(paramInt1, paramInt2, paramString, paramn)) && ((paramInt1 != 0) || (paramInt2 != 0)))
     {
-      h.cf(this, paramString);
+      h.cg(this, paramString);
       finish();
     }
   }
@@ -157,7 +157,7 @@ public abstract class LuckyMoneyBaseUI
   
   public final void removeSceneEndListener(int paramInt)
   {
-    this.tjY.removeSceneEndListener(paramInt);
+    this.usr.removeSceneEndListener(paramInt);
   }
 }
 

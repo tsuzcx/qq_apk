@@ -5,34 +5,34 @@ import com.tencent.mm.plugin.sight.base.a;
 
 public final class b
 {
-  public String gKw = "";
+  public String hkW = "";
   public long position = 0L;
-  public long yLA = 0L;
-  public long yLB = 0L;
-  public long yLC = 0L;
-  public long yLD = 0L;
-  public long yLE = 0L;
-  public long yLF = 0L;
-  public long yLG = 0L;
-  public long yLH = 0L;
-  public long yLI = 0L;
-  public long yLJ = 0L;
-  public long yLK = 0L;
-  public long yLL = 0L;
-  public long yLM = 0L;
-  public long yLN = 0L;
-  public long yLO = 0L;
-  public long yLP = 0L;
-  public long yLQ = 0L;
-  public long yLR = 0L;
-  public a yLS;
-  public long yLT = 0L;
-  public long yLz = 0L;
+  public long zZA = 0L;
+  public long zZB = 0L;
+  public long zZC = 0L;
+  public long zZD = 0L;
+  public long zZE = 0L;
+  public long zZF = 0L;
+  public long zZG = 0L;
+  public long zZH = 0L;
+  public long zZI = 0L;
+  public long zZJ = 0L;
+  public long zZK = 0L;
+  public a zZL;
+  public long zZM = 0L;
+  public long zZs = 0L;
+  public long zZt = 0L;
+  public long zZu = 0L;
+  public long zZv = 0L;
+  public long zZw = 0L;
+  public long zZx = 0L;
+  public long zZy = 0L;
+  public long zZz = 0L;
   
   public final String toString()
   {
     AppMethodBeat.i(91002);
-    String str = String.format("{PlayTime: %s AutoPlay: %s}", new Object[] { Long.valueOf(this.yLB), Long.valueOf(this.yLG) });
+    String str = String.format("{PlayTime: %s AutoPlay: %s}", new Object[] { Long.valueOf(this.zZu), Long.valueOf(this.zZz) });
     AppMethodBeat.o(91002);
     return str;
   }

@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.protocal.protobuf.amp;
-import com.tencent.mm.protocal.protobuf.amq;
-import com.tencent.mm.protocal.protobuf.amr;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.aps;
+import com.tencent.mm.protocal.protobuf.apt;
+import com.tencent.mm.protocal.protobuf.apu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.LinkedList;
 
 public final class e
   extends c
 {
-  public e(LinkedList<amp> paramLinkedList)
+  public e(LinkedList<aps> paramLinkedList)
   {
     AppMethodBeat.i(24852);
-    cwf();
+    cJr();
     if (paramLinkedList.size() > 0) {
-      ((amq)this.rr.gUS.gUX).DnL = paramLinkedList;
+      ((apt)this.rr.hvr.hvw).EIL = paramLinkedList;
     }
     AppMethodBeat.o(24852);
   }
@@ -30,14 +30,14 @@ public final class e
   protected final void b(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(24853);
-    ad.i("MicroMsg.FreeWifi.NetSceneFreeWifiReport", "doBeforeCallback. netId=%d, errType=%d, errCode=%d, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (m.fF(paramInt2, paramInt3)) {
-      j.cwc().cvK().post(new Runnable()
+    ac.i("MicroMsg.FreeWifi.NetSceneFreeWifiReport", "doBeforeCallback. netId=%d, errType=%d, errCode=%d, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (m.fM(paramInt2, paramInt3)) {
+      j.cJo().cIW().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(24850);
-          if ((amr)e.this.rr.gUT.gUX == null)
+          if ((apu)e.this.rr.hvs.hvw == null)
           {
             AppMethodBeat.o(24850);
             return;
@@ -49,27 +49,27 @@ public final class e
     AppMethodBeat.o(24853);
   }
   
-  protected final void cwf()
+  protected final void cJr()
   {
     AppMethodBeat.i(24851);
     b.a locala = new b.a();
-    locala.gUU = new amq();
-    locala.gUV = new amr();
+    locala.hvt = new apt();
+    locala.hvu = new apu();
     locala.uri = "/cgi-bin/mmo2o-bin/freewifireport";
     locala.funcId = getType();
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     AppMethodBeat.o(24851);
   }
   
-  public final LinkedList<amp> cwm()
+  public final LinkedList<aps> cJy()
   {
-    amr localamr = (amr)this.rr.gUT.gUX;
-    if (localamr == null) {
+    apu localapu = (apu)this.rr.hvs.hvw;
+    if (localapu == null) {
       return null;
     }
-    return localamr.DnL;
+    return localapu.EIL;
   }
   
   public final int getType()
@@ -79,7 +79,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.d.e
  * JD-Core Version:    0.7.0.1
  */

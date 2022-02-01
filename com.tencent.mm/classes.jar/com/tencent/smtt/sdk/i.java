@@ -56,9 +56,9 @@ class i
       if (this.b.getContext() != null)
       {
         paramString = this.b.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/smtt/sdk/i", "a", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/smtt/sdk/i", "a", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/smtt/sdk/i", "a", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(55445);
@@ -341,9 +341,9 @@ class i
         {
           paramWebResourceRequest = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + str.substring(13)));
           paramIX5WebViewBase = this.b.getContext();
-          paramWebResourceRequest = new com.tencent.mm.hellhoundlib.b.a().bd(paramWebResourceRequest);
-          com.tencent.mm.hellhoundlib.a.a.a(paramIX5WebViewBase, paramWebResourceRequest.adn(), "com/tencent/smtt/sdk/i", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/export/external/interfaces/IX5WebViewBase;Lcom/tencent/smtt/export/external/interfaces/WebResourceRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramIX5WebViewBase.startActivity((Intent)paramWebResourceRequest.lS(0));
+          paramWebResourceRequest = new com.tencent.mm.hellhoundlib.b.a().ba(paramWebResourceRequest);
+          com.tencent.mm.hellhoundlib.a.a.a(paramIX5WebViewBase, paramWebResourceRequest.aeD(), "com/tencent/smtt/sdk/i", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/export/external/interfaces/IX5WebViewBase;Lcom/tencent/smtt/export/external/interfaces/WebResourceRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramIX5WebViewBase.startActivity((Intent)paramWebResourceRequest.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramIX5WebViewBase, "com/tencent/smtt/sdk/i", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/export/external/interfaces/IX5WebViewBase;Lcom/tencent/smtt/export/external/interfaces/WebResourceRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(55448);
           return true;
@@ -376,9 +376,9 @@ class i
       {
         paramString = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + paramString.substring(13)));
         paramIX5WebViewBase = this.b.getContext();
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramIX5WebViewBase, paramString.adn(), "com/tencent/smtt/sdk/i", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/export/external/interfaces/IX5WebViewBase;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramIX5WebViewBase.startActivity((Intent)paramString.lS(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramIX5WebViewBase, paramString.aeD(), "com/tencent/smtt/sdk/i", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/export/external/interfaces/IX5WebViewBase;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramIX5WebViewBase.startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramIX5WebViewBase, "com/tencent/smtt/sdk/i", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/export/external/interfaces/IX5WebViewBase;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(55446);
         return true;

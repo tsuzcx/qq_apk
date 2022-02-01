@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -12,64 +12,64 @@ import java.util.TreeMap;
 
 public final class e
 {
-  private static final Map<String, Map<Integer, Object>> BmU;
+  private static final Map<String, Map<Integer, Object>> CFb;
   
   static
   {
     AppMethodBeat.i(80872);
-    BmU = new HashMap();
+    CFb = new HashMap();
     AppMethodBeat.o(80872);
   }
   
-  public static void J(String paramString, Map<Integer, Object> paramMap)
+  public static void K(String paramString, Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80869);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(80869);
       return;
     }
-    Map localMap = (Map)BmU.get(paramString);
+    Map localMap = (Map)CFb.get(paramString);
     if (localMap != null)
     {
       localMap.putAll(paramMap);
       AppMethodBeat.o(80869);
       return;
     }
-    BmU.put(paramString, paramMap);
+    CFb.put(paramString, paramMap);
     AppMethodBeat.o(80869);
   }
   
   public static void a(String paramString, f paramf)
   {
-    AppMethodBeat.i(188110);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(188554);
+    if (bs.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(188110);
+      AppMethodBeat.o(188554);
       return;
     }
     TreeMap localTreeMap = new TreeMap(new Comparator() {});
-    localTreeMap.putAll(paramf.cBK());
-    localTreeMap.putAll(paramf.cBL());
-    paramf = (Map)BmU.remove(paramString);
+    localTreeMap.putAll(paramf.cOV());
+    localTreeMap.putAll(paramf.cOW());
+    paramf = (Map)CFb.remove(paramString);
     paramString = localTreeMap;
     if (paramf != null)
     {
       paramf.putAll(localTreeMap);
       paramString = paramf;
     }
-    if (paramString.containsKey(Integer.valueOf(b.Bnf))) {}
-    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.Bnf))).booleanValue();; bool = true)
+    if (paramString.containsKey(Integer.valueOf(b.CFm))) {}
+    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.CFm))).booleanValue();; bool = true)
     {
-      paramString = bw(paramString);
-      ad.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
-      h.vKh.a(16142, paramString, bool, false);
-      AppMethodBeat.o(188110);
+      paramString = bB(paramString);
+      ac.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
+      h.wUl.a(16142, paramString, bool, false);
+      AppMethodBeat.o(188554);
       return;
     }
   }
   
-  public static String bw(Map<Integer, Object> paramMap)
+  public static String bB(Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80871);
     if ((paramMap == null) || (paramMap.isEmpty()))
@@ -100,36 +100,36 @@ public final class e
   
   public static enum a
   {
-    public static int BmV = 21;
-    public static int BmW = 22;
-    public static int BmX = 23;
-    public static int BmY = 24;
-    public static int BmZ = 25;
-    public static int Bna = 26;
-    public static int Bnb = 27;
-    public static int Bnc = 28;
-    public static int Bnd = 29;
+    public static int CFc = 21;
+    public static int CFd = 22;
+    public static int CFe = 23;
+    public static int CFf = 24;
+    public static int CFg = 25;
+    public static int CFh = 26;
+    public static int CFi = 27;
+    public static int CFj = 28;
+    public static int CFk = 29;
   }
   
   public static enum b
   {
-    public static int Bnf = 1000;
-    public static int Bng = 30;
-    public static int Bnh = 31;
-    public static int Bni = 32;
-    public static int Bnj = 33;
-    public static int Bnk = 34;
-    public static int Bnl = 38;
-    public static int Bnm = 39;
-    public static int Bnn = 40;
-    public static int Bno = 41;
-    public static int Bnp = 42;
-    public static int Bnq = 43;
-    public static int Bnr = 44;
-    public static int Bns = 45;
-    public static int Bnt = 49;
-    public static int Bnu = 50;
-    public static int Bnv = 51;
+    public static int CFA = 49;
+    public static int CFB = 50;
+    public static int CFC = 51;
+    public static int CFm = 1000;
+    public static int CFn = 30;
+    public static int CFo = 31;
+    public static int CFp = 32;
+    public static int CFq = 33;
+    public static int CFr = 34;
+    public static int CFs = 38;
+    public static int CFt = 39;
+    public static int CFu = 40;
+    public static int CFv = 41;
+    public static int CFw = 42;
+    public static int CFx = 43;
+    public static int CFy = 44;
+    public static int CFz = 45;
   }
 }
 

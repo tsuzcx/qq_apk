@@ -16,23 +16,23 @@ public abstract interface c
   
   public abstract boolean a(long paramLong, boolean paramBoolean, a.b paramb);
   
-  public abstract void ai(Context paramContext, String paramString);
+  public abstract void aj(Context paramContext, String paramString);
   
   public abstract void b(e parame);
   
-  public abstract boolean bQK();
+  public abstract boolean bYa();
   
-  public abstract void bQL();
+  public abstract void bYb();
   
-  public abstract LinkedList<DownloadWidgetTaskInfo> bQM();
+  public abstract LinkedList<DownloadWidgetTaskInfo> bYc();
   
-  public abstract void bQN();
+  public abstract void bYd();
   
-  public abstract boolean bQO();
+  public abstract boolean bYe();
   
   public abstract void e(Context paramContext, Bundle paramBundle);
   
-  public abstract void pR(String paramString);
+  public abstract void tc(String paramString);
 }
 
 

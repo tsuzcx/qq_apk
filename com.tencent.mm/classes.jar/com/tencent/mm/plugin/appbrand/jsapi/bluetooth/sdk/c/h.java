@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c;
 
 public abstract interface h
 {
-  public abstract void al(String paramString, boolean paramBoolean);
+  public abstract void am(String paramString, boolean paramBoolean);
 }
 
 

@@ -17,26 +17,26 @@ public final class a
   {
     AppMethodBeat.i(28080);
     paramVarArgs = (j)paramVarArgs;
-    ((n)g.ad(n.class)).updateTopHitsRank(paramVarArgs.roS.rpq, paramVarArgs.jpy, 0);
-    if (((o)g.ab(o.class)).Kr(paramVarArgs.rvK.field_url))
+    ((n)g.ad(n.class)).updateTopHitsRank(paramVarArgs.sxM.syk, paramVarArgs.jPN, 0);
+    if (((o)g.ab(o.class)).Oy(paramVarArgs.sEC.field_url))
     {
       AppMethodBeat.o(28080);
       return true;
     }
     Intent localIntent;
-    if (paramVarArgs.rvK.field_actionType == 2)
+    if (paramVarArgs.sEC.field_actionType == 2)
     {
       localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramVarArgs.rvK.field_url);
-      com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("rawUrl", paramVarArgs.sEC.field_url);
+      com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
       AppMethodBeat.o(28080);
       return true;
     }
-    if (!com.tencent.mm.plugin.search.a.a.Y(paramContext, paramVarArgs.rvK.field_featureId))
+    if (!com.tencent.mm.plugin.search.a.a.ae(paramContext, paramVarArgs.sEC.field_featureId))
     {
       localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramVarArgs.rvK.field_updateUrl);
-      com.tencent.mm.bs.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("rawUrl", paramVarArgs.sEC.field_updateUrl);
+      com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
     }
     AppMethodBeat.o(28080);
     return true;
@@ -44,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.search.ui.a.a.a
  * JD-Core Version:    0.7.0.1
  */

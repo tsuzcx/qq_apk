@@ -18,104 +18,101 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.hf;
-import com.tencent.mm.g.a.yq;
-import com.tencent.mm.plugin.finder.cgi.aq;
-import com.tencent.mm.plugin.finder.cgi.at;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.gy;
+import com.tencent.mm.g.a.hl;
+import com.tencent.mm.plugin.finder.cgi.ae;
+import com.tencent.mm.plugin.finder.cgi.x;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.ui.h;
-import com.tencent.mm.plugin.i.a.i;
-import com.tencent.mm.protocal.protobuf.ajw;
-import com.tencent.mm.protocal.protobuf.dys;
-import com.tencent.mm.protocal.protobuf.dzd;
-import com.tencent.mm.protocal.protobuf.dzz;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ako;
+import com.tencent.mm.protocal.protobuf.alo;
+import com.tencent.mm.protocal.protobuf.amf;
+import com.tencent.mm.protocal.protobuf.apw;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.widget.MMProcessBar;
-import d.g.b.k;
 import d.v;
 import d.y;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "MENU_BLACK_LIST", "", "actionInfo", "Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "Lkotlin/collections/ArrayList;", "emptyTip", "Landroid/widget/TextView;", "eventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedLikeEvent;", "getEventListener", "()Lcom/tencent/mm/sdk/event/IListener;", "setEventListener", "(Lcom/tencent/mm/sdk/event/IListener;)V", "feedId", "", "hasMore", "", "isPosterView", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter;", "listView", "Landroid/widget/ListView;", "loadingBar", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "retryTips", "totalCount", "addNoMoreView", "", "checkFinish", "doGetFriendRecommednScene", "getLayoutId", "initView", "merge", "contacts", "", "isFirstPage", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showEmptyView", "showErrorView", "showListView", "showLoadingView", "updateTitle", "Companion", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "MENU_BLACK_LIST", "", "actionInfo", "Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "Lkotlin/collections/ArrayList;", "emptyTip", "Landroid/widget/TextView;", "eventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedLikeEvent;", "getEventListener", "()Lcom/tencent/mm/sdk/event/IListener;", "setEventListener", "(Lcom/tencent/mm/sdk/event/IListener;)V", "feedId", "", "hasMore", "", "isPosterView", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FinderFriendRecommendAdapter;", "listView", "Landroid/widget/ListView;", "loadingBar", "Lcom/tencent/mm/ui/widget/MMProcessBar;", "retryTips", "totalCount", "addNoMoreView", "", "checkFinish", "doGetFriendRecommednScene", "getLayoutId", "initView", "merge", "contacts", "", "isFirstPage", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showEmptyView", "showErrorView", "showListView", "showLoadingView", "updateTitle", "Companion", "plugin-finder_release"})
 public final class FinderFriendRecommendUI
   extends MMFinderUI
-  implements com.tencent.mm.al.g, i<ajw>
+  implements com.tencent.mm.ak.g, com.tencent.mm.plugin.i.a.k<amf>
 {
-  public static final a KSn;
   private static final String TAG = "Finder.FinderFriendRecommendUI";
-  private MMProcessBar KSh;
-  private TextView KSi;
-  private final h KSj;
-  private dzz KSk;
-  private boolean KSl;
-  private final int KSm;
+  public static final FinderFriendRecommendUI.a rqb;
   private HashMap _$_findViewCache;
-  private long feedId;
-  private int fwP;
+  private long dig;
+  private int fAw;
+  private TextView gCu;
   private boolean hasMore;
-  private ListView iwH;
-  private final ArrayList<dzd> qHA;
-  private TextView qKU;
-  private com.tencent.mm.bx.b qKW;
-  private com.tencent.mm.sdk.b.c<hf> xpb;
+  private ListView iWK;
+  private com.tencent.mm.sdk.b.c<gy> rhM;
+  private MMProcessBar rpU;
+  private TextView rpV;
+  private final com.tencent.mm.plugin.finder.ui.g rpW;
+  private com.tencent.mm.bw.b rpX;
+  private apw rpY;
+  private boolean rpZ;
+  private final ArrayList<alo> rpr;
+  private final int rqa;
   
   static
   {
-    AppMethodBeat.i(198495);
-    KSn = new a((byte)0);
+    AppMethodBeat.i(202408);
+    rqb = new FinderFriendRecommendUI.a((byte)0);
     TAG = "Finder.FinderFriendRecommendUI";
-    AppMethodBeat.o(198495);
+    AppMethodBeat.o(202408);
   }
   
   public FinderFriendRecommendUI()
   {
-    AppMethodBeat.i(198494);
-    this.KSj = new h((Activity)this);
-    this.qHA = new ArrayList();
-    this.KSm = 2;
-    AppMethodBeat.o(198494);
+    AppMethodBeat.i(202407);
+    this.rpW = new com.tencent.mm.plugin.finder.ui.g((Activity)this);
+    this.rpr = new ArrayList();
+    this.rqa = 2;
+    AppMethodBeat.o(202407);
   }
   
-  private final void fTI()
+  private final void cvV()
   {
-    AppMethodBeat.i(198487);
-    if ((this.fwP == 1) && (this.qHA.size() == 1))
+    AppMethodBeat.i(202400);
+    if ((this.fAw == 1) && (this.rpr.size() == 1))
     {
-      Object localObject = this.qHA.get(0);
-      k.g(localObject, "contactList[0]");
-      localObject = (dzd)localObject;
-      if (((dzd)localObject).LxF == 1)
+      Object localObject = this.rpr.get(0);
+      d.g.b.k.g(localObject, "contactList[0]");
+      localObject = (alo)localObject;
+      if (((alo)localObject).EFh == 1)
       {
-        yq localyq = new yq();
-        localyq.aUI.hKD = ((dzd)localObject).hKD;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localyq);
+        hl localhl = new hl();
+        localhl.diz.diA = ((alo)localObject).diA;
+        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localhl);
       }
     }
-    AppMethodBeat.o(198487);
+    AppMethodBeat.o(202400);
   }
   
-  private final void fTJ()
+  private final void cvW()
   {
-    AppMethodBeat.i(198490);
-    at localat = new at(this.qKW, this.feedId, this.KSl);
-    com.tencent.mm.kernel.g.aeS().b((n)localat);
-    AppMethodBeat.o(198490);
+    AppMethodBeat.i(202403);
+    ae localae = new ae(this.rpX, this.dig, this.rpZ);
+    com.tencent.mm.kernel.g.agi().b((n)localae);
+    AppMethodBeat.o(202403);
   }
   
   private final void updateTitle()
   {
-    AppMethodBeat.i(198488);
-    setMMTitle(getString(2131766427, new Object[] { Integer.valueOf(this.fwP) }));
-    AppMethodBeat.o(198488);
+    AppMethodBeat.i(202401);
+    setMMTitle(getString(2131766440, new Object[] { Integer.valueOf(this.fAw) }));
+    AppMethodBeat.o(202401);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(198500);
+    AppMethodBeat.i(202413);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -126,225 +123,225 @@ public final class FinderFriendRecommendUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(198500);
+    AppMethodBeat.o(202413);
     return localView1;
   }
   
-  public final void fTK()
+  public final void cvX()
   {
-    AppMethodBeat.i(198493);
-    ListView localListView = this.iwH;
+    AppMethodBeat.i(202406);
+    ListView localListView = this.iWK;
     if (localListView == null) {
-      k.aPZ("listView");
+      d.g.b.k.aVY("listView");
     }
     if (localListView.getFooterViewsCount() == 0)
     {
-      localListView = this.iwH;
+      localListView = this.iWK;
       if (localListView == null) {
-        k.aPZ("listView");
+        d.g.b.k.aVY("listView");
       }
       localListView.addFooterView(View.inflate((Context)this, 2131494060, null));
     }
-    AppMethodBeat.o(198493);
+    AppMethodBeat.o(202406);
   }
   
   public final int getLayoutId()
   {
-    return 2131496223;
+    return 2131496224;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(198485);
-    Object localObject = findViewById(2131307336);
-    k.g(localObject, "findViewById(R.id.finder_liked_list)");
-    this.iwH = ((ListView)localObject);
+    AppMethodBeat.i(202398);
+    Object localObject = findViewById(2131307405);
+    d.g.b.k.g(localObject, "findViewById(R.id.finder_liked_list)");
+    this.iWK = ((ListView)localObject);
     localObject = findViewById(2131299472);
-    k.g(localObject, "findViewById(R.id.empty_tip)");
-    this.qKU = ((TextView)localObject);
-    localObject = findViewById(2131307774);
-    k.g(localObject, "findViewById(R.id.loading_bar)");
-    this.KSh = ((MMProcessBar)localObject);
-    localObject = findViewById(2131307836);
-    k.g(localObject, "findViewById(R.id.retry_tips)");
-    this.KSi = ((TextView)localObject);
+    d.g.b.k.g(localObject, "findViewById(R.id.empty_tip)");
+    this.gCu = ((TextView)localObject);
+    localObject = findViewById(2131307853);
+    d.g.b.k.g(localObject, "findViewById(R.id.loading_bar)");
+    this.rpU = ((MMProcessBar)localObject);
+    localObject = findViewById(2131307943);
+    d.g.b.k.g(localObject, "findViewById(R.id.retry_tips)");
+    this.rpV = ((TextView)localObject);
     updateTitle();
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    localObject = this.iwH;
+    localObject = this.iWK;
     if (localObject == null) {
-      k.aPZ("listView");
+      d.g.b.k.aVY("listView");
     }
-    ((ListView)localObject).setAdapter((ListAdapter)this.KSj);
-    localObject = this.iwH;
+    ((ListView)localObject).setAdapter((ListAdapter)this.rpW);
+    localObject = this.iWK;
     if (localObject == null) {
-      k.aPZ("listView");
+      d.g.b.k.aVY("listView");
     }
     ((ListView)localObject).setSelector((Drawable)new ColorDrawable(0));
-    localObject = this.iwH;
+    localObject = this.iWK;
     if (localObject == null) {
-      k.aPZ("listView");
+      d.g.b.k.aVY("listView");
     }
     ((ListView)localObject).setOnScrollListener((AbsListView.OnScrollListener)new c(this));
-    localObject = this.KSi;
+    localObject = this.rpV;
     if (localObject == null) {
-      k.aPZ("retryTips");
+      d.g.b.k.aVY("retryTips");
     }
     ((TextView)localObject).setOnClickListener((View.OnClickListener)new d(this));
-    this.KSj.KKO = ((d.g.a.b)new e(this));
-    this.KSj.KKP = ((d.g.a.b)new f(this));
-    addIconOptionMenu(this.KSm, -1, 2131689493, (MenuItem.OnMenuItemClickListener)new g(this));
-    this.xpb = ((com.tencent.mm.sdk.b.c)new h(this));
-    com.tencent.mm.sdk.b.a.ESL.b(this.xpb);
-    localObject = this.qKU;
+    this.rpW.rbj = ((d.g.a.b)new e(this));
+    this.rpW.rbk = ((d.g.a.b)new f(this));
+    addIconOptionMenu(this.rqa, -1, 2131689493, (MenuItem.OnMenuItemClickListener)new g(this));
+    this.rhM = ((com.tencent.mm.sdk.b.c)new h(this));
+    com.tencent.mm.sdk.b.a.GpY.b(this.rhM);
+    localObject = this.gCu;
     if (localObject == null) {
-      k.aPZ("emptyTip");
+      d.g.b.k.aVY("emptyTip");
     }
     ((TextView)localObject).setVisibility(8);
-    localObject = this.iwH;
+    localObject = this.iWK;
     if (localObject == null) {
-      k.aPZ("listView");
+      d.g.b.k.aVY("listView");
     }
     ((ListView)localObject).setVisibility(8);
-    localObject = this.KSh;
+    localObject = this.rpU;
     if (localObject == null) {
-      k.aPZ("loadingBar");
+      d.g.b.k.aVY("loadingBar");
     }
     ((MMProcessBar)localObject).setVisibility(0);
-    localObject = this.KSi;
+    localObject = this.rpV;
     if (localObject == null) {
-      k.aPZ("retryTips");
+      d.g.b.k.aVY("retryTips");
     }
     ((TextView)localObject).setVisibility(8);
-    AppMethodBeat.o(198485);
+    AppMethodBeat.o(202398);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(198486);
-    fTI();
+    AppMethodBeat.i(202399);
+    cvV();
     super.onBackPressed();
-    AppMethodBeat.o(198486);
+    AppMethodBeat.o(202399);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(198484);
+    AppMethodBeat.i(202397);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(3593, (com.tencent.mm.al.g)this);
-    com.tencent.mm.kernel.g.aeS().a(3638, (com.tencent.mm.al.g)this);
+    com.tencent.mm.kernel.g.agi().a(3593, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.kernel.g.agi().a(3638, (com.tencent.mm.ak.g)this);
     try
     {
-      paramBundle = new dzz().parseFrom(getIntent().getByteArrayExtra("ACTION_INFO"));
+      paramBundle = new apw().parseFrom(getIntent().getByteArrayExtra("ACTION_INFO"));
       if (paramBundle == null)
       {
         paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FriendLikeFinderObject");
-        AppMethodBeat.o(198484);
+        AppMethodBeat.o(202397);
         throw paramBundle;
       }
     }
     catch (Throwable paramBundle)
     {
       finish();
-      ad.w(TAG, "actionInfo invalid!");
-      AppMethodBeat.o(198484);
+      ac.w(TAG, "actionInfo invalid!");
+      AppMethodBeat.o(202397);
       return;
     }
-    this.KSk = ((dzz)paramBundle);
-    this.feedId = getIntent().getLongExtra("FEED_ID", 0L);
-    if (this.feedId == 0L)
+    this.rpY = ((apw)paramBundle);
+    this.dig = getIntent().getLongExtra("FEED_ID", 0L);
+    if (this.dig == 0L)
     {
       finish();
-      ad.w(TAG, "feedId is 0, invalid!");
-      AppMethodBeat.o(198484);
+      ac.w(TAG, "feedId is 0, invalid!");
+      AppMethodBeat.o(202397);
       return;
     }
-    this.fwP = getIntent().getIntExtra("INIT_TOTAL_COUNT", 0);
-    this.KSl = getIntent().getBooleanExtra("VIEW_BY_POSTER", false);
+    this.fAw = getIntent().getIntExtra("INIT_TOTAL_COUNT", 0);
+    this.rpZ = getIntent().getBooleanExtra("VIEW_BY_POSTER", false);
     initView();
-    fTJ();
-    AppMethodBeat.o(198484);
+    cvW();
+    AppMethodBeat.o(202397);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(198491);
+    AppMethodBeat.i(202404);
     super.onDestroy();
-    com.tencent.mm.kernel.g.aeS().b(3593, (com.tencent.mm.al.g)this);
-    com.tencent.mm.kernel.g.aeS().b(3638, (com.tencent.mm.al.g)this);
-    com.tencent.mm.sdk.b.a.ESL.d(this.xpb);
-    AppMethodBeat.o(198491);
+    com.tencent.mm.kernel.g.agi().b(3593, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.kernel.g.agi().b(3638, (com.tencent.mm.ak.g)this);
+    com.tencent.mm.sdk.b.a.GpY.d(this.rhM);
+    AppMethodBeat.o(202404);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
   {
     final boolean bool = false;
-    AppMethodBeat.i(198492);
-    if ((paramn instanceof at))
+    AppMethodBeat.i(202405);
+    if ((paramn instanceof ae))
     {
-      ad.i(TAG, "NetSceneFinderGetFriendRecommendList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+      ac.i(TAG, "NetSceneFinderGetFriendRecommendList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if (paramn == null)
         {
           paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetFriendRecommendList");
-          AppMethodBeat.o(198492);
+          AppMethodBeat.o(202405);
           throw paramString;
         }
-        paramString = ((at)paramn).fRY();
-        if ((k.g(this.qKW, paramString) ^ true))
+        paramString = ((ae)paramn).csv();
+        if ((d.g.b.k.g(this.rpX, paramString) ^ true))
         {
-          ad.i(TAG, "not my buf, ignore!");
-          AppMethodBeat.o(198492);
+          ac.i(TAG, "not my buf, ignore!");
+          AppMethodBeat.o(202405);
           return;
         }
-        if (this.qKW == null) {
+        if (this.rpX == null) {
           bool = true;
         }
         if (bool)
         {
-          this.fwP = ((at)paramn).fSa().fwP;
+          this.fAw = ((ae)paramn).csx().fAw;
           updateTitle();
         }
-        this.hasMore = ((at)paramn).fRW();
-        this.qKW = ((at)paramn).ckJ();
-        com.tencent.mm.ad.c.g((d.g.a.a)new i(this, paramn, bool));
-        AppMethodBeat.o(198492);
+        this.hasMore = ((ae)paramn).css();
+        this.rpX = ((ae)paramn).csq();
+        com.tencent.mm.ac.c.g((d.g.a.a)new i(this, paramn, bool));
+        AppMethodBeat.o(202405);
         return;
       }
-      if (this.qKW == null)
+      if (this.rpX == null)
       {
-        paramString = this.qKU;
+        paramString = this.gCu;
         if (paramString == null) {
-          k.aPZ("emptyTip");
+          d.g.b.k.aVY("emptyTip");
         }
         paramString.setVisibility(8);
-        paramString = this.iwH;
+        paramString = this.iWK;
         if (paramString == null) {
-          k.aPZ("listView");
+          d.g.b.k.aVY("listView");
         }
         paramString.setVisibility(8);
-        paramString = this.KSh;
+        paramString = this.rpU;
         if (paramString == null) {
-          k.aPZ("loadingBar");
+          d.g.b.k.aVY("loadingBar");
         }
         paramString.setVisibility(8);
-        paramString = this.KSi;
+        paramString = this.rpV;
         if (paramString == null) {
-          k.aPZ("retryTips");
+          d.g.b.k.aVY("retryTips");
         }
         paramString.setVisibility(0);
       }
-      AppMethodBeat.o(198492);
+      AppMethodBeat.o(202405);
       return;
     }
-    if ((paramn instanceof aq))
+    if ((paramn instanceof x))
     {
-      ad.i(TAG, "NetSceneFinderContactTag errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
+      ac.i(TAG, "NetSceneFinderContactTag errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         t.makeText((Context)this, 2131755732, 0).show();
       }
     }
-    AppMethodBeat.o(198492);
+    AppMethodBeat.o(202405);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -353,10 +350,7 @@ public final class FinderFriendRecommendUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -364,15 +358,15 @@ public final class FinderFriendRecommendUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(198475);
-      FinderFriendRecommendUI.a(this.KSo);
-      this.KSo.finish();
-      AppMethodBeat.o(198475);
+      AppMethodBeat.i(202388);
+      FinderFriendRecommendUI.a(this.rqc);
+      this.rqc.finish();
+      AppMethodBeat.o(202388);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"})
   public static final class c
     implements AbsListView.OnScrollListener
   {
@@ -380,22 +374,22 @@ public final class FinderFriendRecommendUI
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
     {
-      AppMethodBeat.i(198476);
+      AppMethodBeat.i(202389);
       if ((paramInt == 0) && (paramAbsListView != null) && (!paramAbsListView.canScrollVertically(1)))
       {
-        if (FinderFriendRecommendUI.b(this.KSo))
+        if (FinderFriendRecommendUI.b(this.rqc))
         {
-          FinderFriendRecommendUI.c(this.KSo);
-          AppMethodBeat.o(198476);
+          FinderFriendRecommendUI.c(this.rqc);
+          AppMethodBeat.o(202389);
           return;
         }
-        this.KSo.fTK();
+        this.rqc.cvX();
       }
-      AppMethodBeat.o(198476);
+      AppMethodBeat.o(202389);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -403,16 +397,16 @@ public final class FinderFriendRecommendUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(198477);
-      FinderFriendRecommendUI.c(this.KSo);
-      AppMethodBeat.o(198477);
+      AppMethodBeat.i(202390);
+      FinderFriendRecommendUI.c(this.rqc);
+      AppMethodBeat.o(202390);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "likeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "likeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "invoke"})
   static final class e
     extends d.g.b.l
-    implements d.g.a.b<dzd, y>
+    implements d.g.a.b<alo, y>
   {
     e(FinderFriendRecommendUI paramFinderFriendRecommendUI)
     {
@@ -420,10 +414,10 @@ public final class FinderFriendRecommendUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "likeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "likeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "invoke"})
   static final class f
     extends d.g.b.l
-    implements d.g.a.b<dzd, y>
+    implements d.g.a.b<alo, y>
   {
     f(FinderFriendRecommendUI paramFinderFriendRecommendUI)
     {
@@ -431,7 +425,7 @@ public final class FinderFriendRecommendUI
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class g
     implements MenuItem.OnMenuItemClickListener
   {
@@ -439,33 +433,33 @@ public final class FinderFriendRecommendUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(198480);
-      paramMenuItem = com.tencent.mm.plugin.finder.utils.a.qSb;
-      paramMenuItem = this.KSo.getContext();
-      k.g(paramMenuItem, "context");
-      com.tencent.mm.plugin.finder.utils.a.ah((Context)paramMenuItem, null);
-      AppMethodBeat.o(198480);
+      AppMethodBeat.i(202393);
+      paramMenuItem = com.tencent.mm.plugin.finder.utils.a.rOv;
+      paramMenuItem = this.rqc.getContext();
+      d.g.b.k.g(paramMenuItem, "context");
+      com.tencent.mm.plugin.finder.utils.a.Q((Context)paramMenuItem, null);
+      AppMethodBeat.o(202393);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$initView$7", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedLikeEvent;", "callback", "", "event", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$initView$7", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedLikeEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class h
-    extends com.tencent.mm.sdk.b.c<hf>
+    extends com.tencent.mm.sdk.b.c<gy>
   {
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$initView$7$callback$1$1"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFriendRecommendUI$initView$7$callback$1$1"})
     static final class a
       extends d.g.b.l
       implements d.g.a.a<y>
     {
-      a(FinderFriendRecommendUI.h paramh, hf paramhf)
+      a(FinderFriendRecommendUI.h paramh, gy paramgy)
       {
         super();
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class i
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -478,7 +472,7 @@ public final class FinderFriendRecommendUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderFriendRecommendUI
  * JD-Core Version:    0.7.0.1
  */

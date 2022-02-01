@@ -10,9 +10,9 @@ import java.util.concurrent.ScheduledFuture;
 public final class e
   implements Closeable
 {
-  final List<d> aza;
-  private ScheduledFuture<?> azb;
-  private boolean azc;
+  final List<d> azU;
+  private ScheduledFuture<?> azV;
+  private boolean azW;
   private boolean closed;
   final Object lock;
   
@@ -26,17 +26,17 @@ public final class e
         AppMethodBeat.o(52985);
         return;
       }
-      if (this.azb != null)
+      if (this.azV != null)
       {
-        this.azb.cancel(true);
-        this.azb = null;
+        this.azV.cancel(true);
+        this.azV = null;
       }
-      Iterator localIterator = this.aza.iterator();
+      Iterator localIterator = this.azU.iterator();
       if (localIterator.hasNext()) {
         ((d)localIterator.next()).close();
       }
     }
-    this.aza.clear();
+    this.azU.clear();
     this.closed = true;
     AppMethodBeat.o(52985);
   }
@@ -46,14 +46,14 @@ public final class e
     AppMethodBeat.i(52984);
     synchronized (this.lock)
     {
-      nb();
-      boolean bool = this.azc;
+      nl();
+      boolean bool = this.azW;
       AppMethodBeat.o(52984);
       return bool;
     }
   }
   
-  final void nb()
+  final void nl()
   {
     AppMethodBeat.i(52987);
     if (this.closed)
@@ -75,7 +75,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     a.e
  * JD-Core Version:    0.7.0.1
  */

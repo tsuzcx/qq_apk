@@ -7,6 +7,14 @@ import java.util.Date;
 
 public final class e
 {
+  public static String Ay(int paramInt)
+  {
+    AppMethodBeat.i(63781);
+    String str = String.format("%.2f", new Object[] { Double.valueOf(paramInt / 100.0D) });
+    AppMethodBeat.o(63781);
+    return str;
+  }
+  
   public static String a(Context paramContext, long paramLong, int paramInt)
   {
     AppMethodBeat.i(63780);
@@ -27,18 +35,10 @@ public final class e
     AppMethodBeat.o(63780);
     return paramContext;
   }
-  
-  public static String zG(int paramInt)
-  {
-    AppMethodBeat.i(63781);
-    String str = String.format("%.2f", new Object[] { Double.valueOf(paramInt / 100.0D) });
-    AppMethodBeat.o(63781);
-    return str;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.e
  * JD-Core Version:    0.7.0.1
  */

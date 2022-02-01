@@ -9,11 +9,11 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.q;
 
 public final class r
-  extends p
+  extends q
 {
   static int a(Window paramWindow, boolean paramBoolean)
   {
@@ -35,7 +35,7 @@ public final class r
     }
     for (;;)
     {
-      ad.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
+      ac.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(135330);
       return i;
       j = i & 0xFFFFFBFF & 0xFFFFFEFF;
@@ -63,9 +63,9 @@ public final class r
         public final void onSystemUiVisibilityChange(int paramAnonymousInt)
         {
           AppMethodBeat.i(176773);
-          ad.d("MicroMsg.AppBrandUIUtil", "visibility = ".concat(String.valueOf(paramAnonymousInt)));
+          ac.d("MicroMsg.AppBrandUIUtil", "visibility = ".concat(String.valueOf(paramAnonymousInt)));
           if ((paramAnonymousInt & 0x4) == 0) {
-            this.klX.getDecorView().setSystemUiVisibility(r.a(this.klX, true));
+            this.kNp.getDecorView().setSystemUiVisibility(r.a(this.kNp, true));
           }
           AppMethodBeat.o(176773);
         }
@@ -90,12 +90,12 @@ public final class r
     }
     catch (Exception paramWindow)
     {
-      ad.printErrStackTrace("MicroMsg.AppBrandUIUtil", paramWindow, "[CAUGHT CRASH]", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AppBrandUIUtil", paramWindow, "[CAUGHT CRASH]", new Object[0]);
       AppMethodBeat.o(176775);
     }
   }
   
-  public static boolean cK(View paramView)
+  public static boolean cM(View paramView)
   {
     AppMethodBeat.i(135329);
     if (Build.VERSION.SDK_INT < 24)
@@ -108,7 +108,7 @@ public final class r
       AppMethodBeat.o(135329);
       return false;
     }
-    paramView = a.iV(paramView.getContext());
+    paramView = a.jg(paramView.getContext());
     if ((paramView != null) && (paramView.isInMultiWindowMode()))
     {
       AppMethodBeat.o(135329);
@@ -118,7 +118,7 @@ public final class r
     return false;
   }
   
-  public static boolean dI(Context paramContext)
+  public static boolean dQ(Context paramContext)
   {
     AppMethodBeat.i(178640);
     if (!(paramContext instanceof Activity))
@@ -146,14 +146,14 @@ public final class r
   public static void s(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(176774);
-    Activity localActivity = a.iV(paramContext);
+    Activity localActivity = a.jg(paramContext);
     if ((localActivity != null) && (localActivity.getWindow() != null))
     {
       a(localActivity.getWindow(), paramBoolean, false);
       AppMethodBeat.o(176774);
       return;
     }
-    ad.w("MicroMsg.AppBrandUIUtil", "configFullScreen with context(%s), get NULL activity", new Object[] { paramContext });
+    ac.w("MicroMsg.AppBrandUIUtil", "configFullScreen with context(%s), get NULL activity", new Object[] { paramContext });
     AppMethodBeat.o(176774);
   }
 }

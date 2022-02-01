@@ -10,7 +10,7 @@ final class MMKeyBoardView$1
   public final void run()
   {
     AppMethodBeat.i(27685);
-    this.uJN.requestLayout();
+    this.vSE.requestLayout();
     AppMethodBeat.o(27685);
   }
 }

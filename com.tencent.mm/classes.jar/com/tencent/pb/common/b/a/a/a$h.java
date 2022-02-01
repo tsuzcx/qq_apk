@@ -6,41 +6,41 @@ import com.google.b.a.e;
 public final class a$h
   extends e
 {
-  public String fvS = "";
+  public String fzz = "";
   public String groupId = "";
   public int roomId = 0;
-  public long sAY = 0L;
+  public long tIG = 0L;
   public long timestamp = 0L;
   
   public a$h()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.by(1, this.roomId);
-    paramb.o(2, this.sAY);
-    paramb.d(3, this.fvS);
+    paramb.bv(1, this.roomId);
+    paramb.n(2, this.tIG);
+    paramb.d(3, this.fzz);
     if (!this.groupId.equals("")) {
       paramb.d(4, this.groupId);
     }
     if (this.timestamp != 0L) {
-      paramb.n(5, this.timestamp);
+      paramb.m(5, this.timestamp);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg() + b.bA(1, this.roomId) + b.q(2, this.sAY) + b.e(3, this.fvS);
+    int j = super.xT() + b.bx(1, this.roomId) + b.p(2, this.tIG) + b.e(3, this.fzz);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(4, this.groupId);
     }
     j = i;
     if (this.timestamp != 0L) {
-      j = i + b.p(5, this.timestamp);
+      j = i + b.o(5, this.timestamp);
     }
     return j;
   }

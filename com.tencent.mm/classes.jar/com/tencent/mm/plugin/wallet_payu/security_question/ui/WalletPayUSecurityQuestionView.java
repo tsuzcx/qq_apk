@@ -11,15 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.tools.CustomFitTextView;
 
 public class WalletPayUSecurityQuestionView
   extends LinearLayout
 {
-  private TextView ABk;
-  private CustomFitTextView ABl;
-  private String ABm;
+  private TextView BTF;
+  private CustomFitTextView BTG;
+  private String BTH;
   private Context mContext;
   
   public WalletPayUSecurityQuestionView(Context paramContext, AttributeSet paramAttributeSet)
@@ -53,26 +53,26 @@ public class WalletPayUSecurityQuestionView
     for (;;)
     {
       localObject = LayoutInflater.from(this.mContext).inflate(2131495079, this, true);
-      this.ABk = ((TextView)((View)localObject).findViewById(2131305880));
-      this.ABl = ((CustomFitTextView)((View)localObject).findViewById(2131303372));
-      this.ABk.setText(paramContext);
-      paramContext = this.ABl;
-      paramContext.a(paramAttributeSet, paramContext.maxLines, paramContext.Hny, paramContext.Hnw, paramContext.getResources().getColor(2131100490));
+      this.BTF = ((TextView)((View)localObject).findViewById(2131305880));
+      this.BTG = ((CustomFitTextView)((View)localObject).findViewById(2131303372));
+      this.BTF.setText(paramContext);
+      paramContext = this.BTG;
+      paramContext.a(paramAttributeSet, paramContext.maxLines, paramContext.INU, paramContext.INR, paramContext.getResources().getColor(2131100490));
       if (!bool)
       {
-        this.ABl.setEnabled(false);
-        this.ABl.setFocusable(false);
-        this.ABl.setClickable(false);
-        this.ABl.setBackgroundResource(2131234429);
+        this.BTG.setEnabled(false);
+        this.BTG.setFocusable(false);
+        this.BTG.setClickable(false);
+        this.BTG.setBackgroundResource(2131234429);
         setBackgroundResource(2131232867);
         AppMethodBeat.o(72235);
         return;
       }
-      this.ABl.setEnabled(false);
-      this.ABl.setTextColor(getResources().getColor(2131101104));
-      this.ABl.setFocusable(false);
-      this.ABl.setClickable(false);
-      this.ABl.setBackgroundResource(2131234429);
+      this.BTG.setEnabled(false);
+      this.BTG.setTextColor(getResources().getColor(2131101104));
+      this.BTG.setFocusable(false);
+      this.BTG.setClickable(false);
+      this.BTG.setBackgroundResource(2131234429);
       setBackgroundResource(2131231818);
       AppMethodBeat.o(72235);
       return;
@@ -82,10 +82,10 @@ public class WalletPayUSecurityQuestionView
     }
   }
   
-  public final boolean aKX()
+  public final boolean aRO()
   {
     AppMethodBeat.i(72238);
-    if (!bt.isNullOrNil(this.ABm))
+    if (!bs.isNullOrNil(this.BTH))
     {
       AppMethodBeat.o(72238);
       return true;
@@ -96,32 +96,32 @@ public class WalletPayUSecurityQuestionView
   
   public String getCurrentQuestion()
   {
-    return this.ABm;
+    return this.BTH;
   }
   
   public void setQuestionText(String paramString)
   {
     AppMethodBeat.i(72236);
-    this.ABm = paramString;
-    KeyListener localKeyListener = this.ABl.getKeyListener();
-    this.ABl.setInputType(1);
-    this.ABl.setKeyListener(null);
+    this.BTH = paramString;
+    KeyListener localKeyListener = this.BTG.getKeyListener();
+    this.BTG.setInputType(1);
+    this.BTG.setKeyListener(null);
     setValStr(paramString);
-    this.ABl.setKeyListener(localKeyListener);
+    this.BTG.setKeyListener(localKeyListener);
     AppMethodBeat.o(72236);
   }
   
   public void setValStr(String paramString)
   {
     AppMethodBeat.i(72237);
-    CustomFitTextView localCustomFitTextView = this.ABl;
+    CustomFitTextView localCustomFitTextView = this.BTG;
     localCustomFitTextView.a(paramString, 3, false, -1, localCustomFitTextView.getCurrentTextColor());
     AppMethodBeat.o(72237);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView
  * JD-Core Version:    0.7.0.1
  */

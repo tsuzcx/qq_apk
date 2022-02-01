@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.wear.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.i;
 import com.tencent.mm.pluginsdk.n.c.a;
-import com.tencent.mm.protocal.protobuf.drc;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dwt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
   implements n.c.a
 {
-  public final String ehc()
+  public final String eww()
   {
     AppMethodBeat.i(29977);
-    Object localObject = a.egV().ADZ.AEM;
+    Object localObject = a.ewp().BWt.BXg;
     if (localObject != null)
     {
-      localObject = ((drc)localObject).EGp + "\n" + ((drc)localObject).EGq + "\n" + ((drc)localObject).EGr;
+      localObject = ((dwt)localObject).GdB + "\n" + ((dwt)localObject).GdC + "\n" + ((dwt)localObject).GdD;
       AppMethodBeat.o(29977);
       return localObject;
     }
@@ -23,18 +23,18 @@ public final class c
     return "Not Connect";
   }
   
-  public final void ehd()
+  public final void ewx()
   {
     AppMethodBeat.i(29978);
-    a.egW().a(new com.tencent.mm.plugin.wear.model.f.a());
+    a.ewq().a(new com.tencent.mm.plugin.wear.model.f.a());
     AppMethodBeat.o(29978);
   }
   
-  public final boolean ehe()
+  public final boolean ewy()
   {
     AppMethodBeat.i(29979);
-    Object localObject = a.egV().ADZ.AEM;
-    if ((bt.isNullOrNil(null)) && (bt.isNullOrNil(null)))
+    Object localObject = a.ewp().BWt.BXg;
+    if ((bs.isNullOrNil(null)) && (bs.isNullOrNil(null)))
     {
       if (localObject != null)
       {
@@ -44,7 +44,7 @@ public final class c
       AppMethodBeat.o(29979);
       return false;
     }
-    if (bt.isNullOrNil(null))
+    if (bs.isNullOrNil(null))
     {
       if (localObject != null) {
         throw new NullPointerException();
@@ -52,11 +52,11 @@ public final class c
       AppMethodBeat.o(29979);
       return false;
     }
-    if (bt.isNullOrNil(null))
+    if (bs.isNullOrNil(null))
     {
       if (localObject != null)
       {
-        localObject = ((drc)localObject).EGm;
+        localObject = ((dwt)localObject).Gdy;
         throw new NullPointerException();
       }
       AppMethodBeat.o(29979);
@@ -71,7 +71,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.c
  * JD-Core Version:    0.7.0.1
  */

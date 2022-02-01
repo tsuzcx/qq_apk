@@ -100,10 +100,18 @@ public class MyLocationStyle
     this.strokeWidth = paramInt;
     return this;
   }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(191296);
+    String str = "{anchorU=" + this.anchorU + ", anchorV=" + this.anchorV + ", fillColor=" + this.fillColor + ", strokeColor=" + this.strokeColor + ", strokeWidth=" + this.strokeWidth + ", myLocationType=" + this.myLocationType + ", mIcon=" + this.mIcon + '}';
+    AppMethodBeat.o(191296);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MyLocationStyle
  * JD-Core Version:    0.7.0.1
  */

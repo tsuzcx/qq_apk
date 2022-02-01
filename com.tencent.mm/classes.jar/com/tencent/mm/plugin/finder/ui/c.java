@@ -1,222 +1,60 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.view.View;
+import android.content.Context;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.g;
-import com.tencent.mm.plugin.finder.convert.o;
-import com.tencent.mm.plugin.finder.convert.r;
-import com.tencent.mm.plugin.finder.feed.a.a;
-import com.tencent.mm.plugin.finder.feed.d.a;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.j;
-import com.tencent.mm.plugin.finder.model.n;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.b;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ui.base.preference.CheckBoxPreference;
+import com.tencent.mm.ui.base.preference.MMPreference;
+import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.t;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailUIContract$Presenter;", "scene", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "safeMode", "", "(ILcom/tencent/mm/ui/MMActivity;Z)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "checkExposeCommentStrategy", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/DebugBoxPref;", "Lcom/tencent/mm/ui/base/preference/CheckBoxPreference;", "Lcom/tencent/mm/plugin/finder/ui/IPreferenceEvent;", "activity", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "title", "", "operation", "Lcom/tencent/mm/plugin/finder/ui/IAutoValue;", "(Lcom/tencent/mm/ui/base/preference/MMPreference;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/ui/IAutoValue;)V", "getActivity", "()Lcom/tencent/mm/ui/base/preference/MMPreference;", "getOperation", "()Lcom/tencent/mm/plugin/finder/ui/IAutoValue;", "getTitle", "()Ljava/lang/String;", "doSomething", "", "refresh", "plugin-finder_release"})
 public final class c
-  extends d.a
+  extends CheckBoxPreference
+  implements k
 {
-  private String TAG;
+  private final MMPreference rFu;
+  private final i rFv;
+  private final String title;
   
-  public c(int paramInt, MMActivity paramMMActivity, boolean paramBoolean)
+  public c(MMPreference paramMMPreference, String paramString, i parami)
   {
-    super(paramInt, paramMMActivity, paramBoolean, false, 8);
-    AppMethodBeat.i(199475);
-    this.TAG = "Finder.FinderShareFeedDetailUI";
-    AppMethodBeat.o(199475);
+    super((Context)paramMMPreference);
+    AppMethodBeat.i(203077);
+    this.rFu = paramMMPreference;
+    this.title = paramString;
+    this.rFv = parami;
+    setTitle((CharSequence)this.title);
+    setKey(this.title);
+    setChecked(this.rFv.cCl());
+    this.rFu.getPreferenceScreen().b((Preference)this);
+    AppMethodBeat.o(203077);
   }
   
-  public final com.tencent.mm.view.recyclerview.c clL()
+  public final void cBs()
   {
-    AppMethodBeat.i(167708);
-    com.tencent.mm.view.recyclerview.c localc = (com.tencent.mm.view.recyclerview.c)new a(this);
-    AppMethodBeat.o(167708);
-    return localc;
+    AppMethodBeat.i(203076);
+    String str = "doSomething " + this.title + " isChecked: " + isChecked();
+    ac.i(m.getTAG(), str);
+    t.makeText((Context)this.rFu, (CharSequence)str, 1).show();
+    this.rFv.lM(isChecked());
+    refresh();
+    AppMethodBeat.o(203076);
   }
   
-  public final String getTAG()
+  public final void refresh()
   {
-    return this.TAG;
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.c
-  {
-    public final b<?> zm(int paramInt)
-    {
-      AppMethodBeat.i(167707);
-      switch (paramInt)
-      {
-      case 3: 
-      case 5: 
-      case 6: 
-      default: 
-        localb = (b)new f(this, (com.tencent.mm.plugin.finder.feed.c)this.qQv, this.qQv.qqF);
-        AppMethodBeat.o(167707);
-        return localb;
-      case 4: 
-        localb = (b)new a(this, this.qQv.qrq, (com.tencent.mm.plugin.finder.feed.c)this.qQv, this.qQv.qqF);
-        AppMethodBeat.o(167707);
-        return localb;
-      case 2: 
-        localb = (b)new b(this, (com.tencent.mm.plugin.finder.feed.c)this.qQv, this.qQv.qqF);
-        AppMethodBeat.o(167707);
-        return localb;
-      case 7: 
-        localb = (b)new c(this, (com.tencent.mm.plugin.finder.feed.c)this.qQv, this.qQv.qqF);
-        AppMethodBeat.o(167707);
-        return localb;
-      case 8: 
-        localb = (b)new d(this, this.qQv.qrq, (com.tencent.mm.plugin.finder.feed.c)this.qQv, this.qQv.qqF);
-        AppMethodBeat.o(167707);
-        return localb;
-      }
-      b localb = (b)new e(this, (com.tencent.mm.plugin.finder.feed.c)this.qQv, this.qQv.qqF);
-      AppMethodBeat.o(167707);
-      return localb;
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedVideo;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class a
-      extends r
-    {
-      a(com.tencent.mm.plugin.finder.video.c paramc, com.tencent.mm.plugin.finder.feed.c paramc1, boolean paramBoolean)
-      {
-        super(paramBoolean, bool, 0, 8);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, n paramn, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(167689);
-        d.g.b.k.h(parame, "holder");
-        d.g.b.k.h(paramn, "item");
-        super.a(parame, (BaseFinderFeed)paramn, paramInt1, paramInt2, paramBoolean, paramList);
-        c.a(parame, this.qqF);
-        parame = parame.abq(2131307380);
-        if (parame != null)
-        {
-          parame.setVisibility(8);
-          AppMethodBeat.o(167689);
-          return;
-        }
-        AppMethodBeat.o(167689);
-      }
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class b
-      extends g
-    {
-      b(com.tencent.mm.plugin.finder.feed.c paramc, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, com.tencent.mm.plugin.finder.model.i parami, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(167692);
-        d.g.b.k.h(parame, "holder");
-        d.g.b.k.h(parami, "item");
-        super.a(parame, (BaseFinderFeed)parami, paramInt1, paramInt2, paramBoolean, paramList);
-        c.a(parame, this.qqF);
-        parame = parame.abq(2131307380);
-        if (parame != null)
-        {
-          parame.setVisibility(8);
-          AppMethodBeat.o(167692);
-          return;
-        }
-        AppMethodBeat.o(167692);
-      }
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1$getItemConvert$3", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedTextCardConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class c
-      extends o
-    {
-      c(com.tencent.mm.plugin.finder.feed.c paramc, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      public final void a(com.tencent.mm.view.recyclerview.e parame, com.tencent.mm.plugin.finder.model.i parami, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(167695);
-        d.g.b.k.h(parame, "holder");
-        d.g.b.k.h(parami, "item");
-        super.a(parame, parami, paramInt1, paramInt2, paramBoolean, paramList);
-        c.a(parame, this.qqF);
-        AppMethodBeat.o(167695);
-      }
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1$getItemConvert$4", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedMixConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedMix;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class d
-      extends com.tencent.mm.plugin.finder.convert.i
-    {
-      d(com.tencent.mm.plugin.finder.video.c paramc, com.tencent.mm.plugin.finder.feed.c paramc1, boolean paramBoolean)
-      {
-        super(paramBoolean, bool, 0, 8);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, j paramj, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(167698);
-        d.g.b.k.h(parame, "holder");
-        d.g.b.k.h(paramj, "item");
-        super.a(parame, (BaseFinderFeed)paramj, paramInt1, paramInt2, paramBoolean, paramList);
-        c.a(parame, this.qqF);
-        AppMethodBeat.o(167698);
-      }
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1$getItemConvert$5", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedPlainTextConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedPlainText;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class e
-      extends com.tencent.mm.plugin.finder.convert.l
-    {
-      e(com.tencent.mm.plugin.finder.feed.c paramc, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, com.tencent.mm.plugin.finder.model.k paramk, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(167701);
-        d.g.b.k.h(parame, "holder");
-        d.g.b.k.h(paramk, "item");
-        super.a(parame, (BaseFinderFeed)paramk, paramInt1, paramInt2, paramBoolean, paramList);
-        c.a(parame, this.qqF);
-        AppMethodBeat.o(167701);
-      }
-    }
-    
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/Presenter$buildItemCoverts$1$getItemConvert$6", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class f
-      extends g
-    {
-      f(com.tencent.mm.plugin.finder.feed.c paramc, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, com.tencent.mm.plugin.finder.model.i parami, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(167704);
-        d.g.b.k.h(parame, "holder");
-        d.g.b.k.h(parami, "item");
-        super.a(parame, (BaseFinderFeed)parami, paramInt1, paramInt2, paramBoolean, paramList);
-        c.a(parame, this.qqF);
-        AppMethodBeat.o(167704);
-      }
-    }
+    AppMethodBeat.i(203075);
+    setChecked(this.rFv.cCl());
+    AppMethodBeat.o(203075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.c
  * JD-Core Version:    0.7.0.1
  */

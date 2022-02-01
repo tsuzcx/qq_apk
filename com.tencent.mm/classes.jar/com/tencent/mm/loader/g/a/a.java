@@ -1,18 +1,18 @@
 package com.tencent.mm.loader.g.a;
 
 import com.tencent.mm.loader.h.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
 public final class a
   implements c
 {
-  private final d<String, a> gkb;
-  private final int gli;
-  private final int glj;
+  private final d<String, a> gKO;
+  private final int gLV;
+  private final int gLW;
   private final int retryCount;
   
   public a()
@@ -28,57 +28,57 @@ public final class a
   public a(int paramInt)
   {
     this.retryCount = paramInt;
-    this.glj = 2147483647;
-    this.gli = 100;
-    this.gkb = new d(this.gli);
+    this.gLW = 2147483647;
+    this.gLV = 100;
+    this.gKO = new d(this.gLV);
   }
   
   public final boolean a(com.tencent.mm.loader.g.c paramc)
   {
     k.h(paramc, "task");
-    if (this.gkb.aN(paramc.abi()))
+    if (this.gKO.aK(paramc.acg()))
     {
-      long l = bt.aGK();
-      a locala2 = (a)this.gkb.aM(paramc.abi());
-      if ((locala2.gll >= this.retryCount) && (l - locala2.glk < this.glj))
+      long l = bs.aNx();
+      a locala2 = (a)this.gKO.aJ(paramc.acg());
+      if ((locala2.gLY >= this.retryCount) && (l - locala2.gLX < this.gLW))
       {
-        ad.w("DefaultRetrySg", "check block by recentdown: " + paramc.abi() + " count " + locala2.gll + "  time: " + (l - locala2.glk));
+        ac.w("DefaultRetrySg", "check block by recentdown: " + paramc.acg() + " count " + locala2.gLY + "  time: " + (l - locala2.gLX));
         return false;
       }
       a locala1 = locala2;
-      if (l - locala2.glk > this.glj)
+      if (l - locala2.gLX > this.gLW)
       {
-        ad.v("DefaultRetrySg", "reset: " + paramc.abi());
+        ac.v("DefaultRetrySg", "reset: " + paramc.acg());
         locala1 = new a(l, 0);
       }
-      locala1.gll += 1;
-      locala1.glk = l;
-      this.gkb.put(paramc.abi(), locala1);
+      locala1.gLY += 1;
+      locala1.gLX = l;
+      this.gKO.put(paramc.acg(), locala1);
     }
     for (;;)
     {
       return true;
-      this.gkb.put(paramc.abi(), new a(bt.aGK(), 1));
+      this.gKO.put(paramc.acg(), new a(bs.aNx(), 1));
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "", "lastTime", "", "tryCount", "", "(Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;JI)V", "getLastTime", "()J", "setLastTime", "(J)V", "getTryCount", "()I", "setTryCount", "(I)V", "libimageloader_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "", "lastTime", "", "tryCount", "", "(Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;JI)V", "getLastTime", "()J", "setLastTime", "(J)V", "getTryCount", "()I", "setTryCount", "(I)V", "libimageloader_release"})
   public final class a
   {
-    long glk;
-    int gll;
+    long gLX;
+    int gLY;
     
     public a(int paramInt)
     {
-      this.glk = ???;
+      this.gLX = ???;
       int i;
-      this.gll = i;
+      this.gLY = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.g.a.a
  * JD-Core Version:    0.7.0.1
  */

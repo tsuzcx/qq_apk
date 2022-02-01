@@ -22,14 +22,14 @@ public class AppPreference
   extends Preference
 {
   private Context context;
-  private boolean toE;
-  int yFl;
-  a yFn;
-  AdapterView.OnItemClickListener yFo;
-  AdapterView.OnItemClickListener yFp;
-  private View.OnClickListener yFq;
-  private int yFr;
-  private int yFs;
+  private boolean uwW;
+  a zSB;
+  AdapterView.OnItemClickListener zSC;
+  AdapterView.OnItemClickListener zSD;
+  private View.OnClickListener zSE;
+  private int zSF;
+  private int zSG;
+  int zSz;
   
   public AppPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,30 +40,30 @@ public class AppPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29137);
-    this.yFo = null;
-    this.yFp = null;
-    this.yFq = null;
-    this.yFl = 0;
-    this.toE = false;
-    this.yFs = 0;
+    this.zSC = null;
+    this.zSD = null;
+    this.zSE = null;
+    this.zSz = 0;
+    this.uwW = false;
+    this.zSG = 0;
     this.context = paramContext;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
-    this.yFr = paramContext.getInt(0, 8);
-    this.toE = paramContext.getBoolean(1, false);
-    this.yFs = paramContext.getResourceId(2, 0);
+    this.zSF = paramContext.getInt(0, 8);
+    this.uwW = paramContext.getBoolean(1, false);
+    this.zSG = paramContext.getResourceId(2, 0);
     paramContext.recycle();
     AppMethodBeat.o(29137);
   }
   
-  public final g OU(int paramInt)
+  public final g Ra(int paramInt)
   {
     AppMethodBeat.i(29139);
-    if ((paramInt < 0) || (paramInt >= this.yFn.getCount()))
+    if ((paramInt < 0) || (paramInt >= this.zSB.getCount()))
     {
       AppMethodBeat.o(29139);
       return null;
     }
-    g localg = (g)this.yFn.getItem(paramInt);
+    g localg = (g)this.zSB.getItem(paramInt);
     AppMethodBeat.o(29139);
     return localg;
   }
@@ -73,20 +73,20 @@ public class AppPreference
     AppMethodBeat.i(29138);
     super.onBindView(paramView);
     MMGridView localMMGridView = (MMGridView)paramView.findViewById(2131300620);
-    this.yFn = new a(this.context, this.yFl);
-    localMMGridView.setAdapter(this.yFn);
+    this.zSB = new a(this.context, this.zSz);
+    localMMGridView.setAdapter(this.zSB);
     localMMGridView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29135);
-        if (AppPreference.a(AppPreference.this).EJ(paramAnonymousInt))
+        if (AppPreference.a(AppPreference.this).GF(paramAnonymousInt))
         {
-          AppPreference.a(AppPreference.this).qZ(false);
+          AppPreference.a(AppPreference.this).rX(false);
           AppMethodBeat.o(29135);
           return;
         }
-        if (AppPreference.a(AppPreference.this).yFk)
+        if (AppPreference.a(AppPreference.this).zSy)
         {
           if (AppPreference.b(AppPreference.this) != null)
           {
@@ -100,24 +100,24 @@ public class AppPreference
         AppMethodBeat.o(29135);
       }
     });
-    if (this.toE) {
+    if (this.uwW) {
       localMMGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(29136);
           paramAnonymousAdapterView = AppPreference.this;
-          if (paramAnonymousAdapterView.yFn != null)
+          if (paramAnonymousAdapterView.zSB != null)
           {
-            paramAnonymousView = paramAnonymousAdapterView.yFn;
-            if (paramAnonymousAdapterView.yFn.yFk) {
+            paramAnonymousView = paramAnonymousAdapterView.zSB;
+            if (paramAnonymousAdapterView.zSB.zSy) {
               break label50;
             }
           }
           label50:
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.qZ(bool);
+            paramAnonymousView.rX(bool);
             AppMethodBeat.o(29136);
             return true;
           }
@@ -125,17 +125,17 @@ public class AppPreference
       });
     }
     TextView localTextView = (TextView)paramView.findViewById(2131299477);
-    if (this.yFn.getCount() == 0)
+    if (this.zSB.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.yFs);
+      localTextView.setText(this.zSG);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
       paramView = (Button)paramView.findViewById(2131297574);
-      paramView.setVisibility(this.yFr);
-      paramView.setOnClickListener(this.yFq);
+      paramView.setVisibility(this.zSF);
+      paramView.setOnClickListener(this.zSE);
       AppMethodBeat.o(29138);
       return;
       localTextView.setVisibility(8);
@@ -146,8 +146,8 @@ public class AppPreference
   public final void onPause()
   {
     AppMethodBeat.i(29141);
-    if (this.yFn != null) {
-      ap.cZQ().remove(this.yFn);
+    if (this.zSB != null) {
+      ap.dny().remove(this.zSB);
     }
     AppMethodBeat.o(29141);
   }
@@ -155,15 +155,15 @@ public class AppPreference
   public final void onResume()
   {
     AppMethodBeat.i(29140);
-    if (this.yFn != null) {
-      ap.cZQ().add(this.yFn);
+    if (this.zSB != null) {
+      ap.dny().add(this.zSB);
     }
     AppMethodBeat.o(29140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.AppPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,30 @@ import java.lang.ref.WeakReference;
 public final class be
   extends Resources
 {
-  private static boolean axd = false;
-  private final WeakReference<Context> avO;
+  private static boolean axX = false;
+  private final WeakReference<Context> mContextRef;
   
   public be(Context paramContext, Resources paramResources)
   {
     super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
-    this.avO = new WeakReference(paramContext);
+    this.mContextRef = new WeakReference(paramContext);
   }
   
-  public static boolean mG()
+  public static boolean mQ()
   {
-    return (axd) && (Build.VERSION.SDK_INT <= 20);
+    return (axX) && (Build.VERSION.SDK_INT <= 20);
   }
   
-  final Drawable df(int paramInt)
+  final Drawable de(int paramInt)
   {
     return super.getDrawable(paramInt);
   }
   
   public final Drawable getDrawable(int paramInt)
   {
-    Context localContext = (Context)this.avO.get();
+    Context localContext = (Context)this.mContextRef.get();
     if (localContext != null) {
-      return g.iD().a(localContext, this, paramInt);
+      return g.iL().a(localContext, this, paramInt);
     }
     return super.getDrawable(paramInt);
   }

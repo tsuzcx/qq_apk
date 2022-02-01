@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.logreport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.protocol.jce.TipsInfoLog;
 import com.tencent.tmassistantsdk.storage.table.BaseLogTable;
@@ -42,7 +42,7 @@ public class TipsInfoReportManager
     localTipsInfoLog.userId = paramTMOpenSDKAuthorizedInfo.userId;
     localTipsInfoLog.userIdType = paramTMOpenSDKAuthorizedInfo.userIdType;
     localTipsInfoLog.gamePackageName = paramTMOpenSDKAuthorizedInfo.gamePackageName;
-    localTipsInfoLog.gameVersionCode = bt.getInt(paramTMOpenSDKAuthorizedInfo.gameVersionCode, 0);
+    localTipsInfoLog.gameVersionCode = bs.getInt(paramTMOpenSDKAuthorizedInfo.gameVersionCode, 0);
     localTipsInfoLog.gameChannelId = paramTMOpenSDKAuthorizedInfo.gameChannelId;
     AppMethodBeat.o(102070);
     return localTipsInfoLog;
@@ -63,7 +63,7 @@ public class TipsInfoReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.TipsInfoReportManager
  * JD-Core Version:    0.7.0.1
  */

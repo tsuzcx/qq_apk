@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class xg
   extends b
 {
-  public a dDo;
-  public xg.b dDp;
+  public a dzZ;
   
   public xg()
   {
@@ -17,23 +15,24 @@ public final class xg
   
   private xg(byte paramByte)
   {
-    AppMethodBeat.i(153020);
-    this.dDo = new a();
-    this.dDp = new xg.b();
-    this.ESR = false;
+    AppMethodBeat.i(149894);
+    this.dzZ = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(153020);
+    AppMethodBeat.o(149894);
   }
   
   public static final class a
   {
-    public Activity activity;
-    public int dDq;
+    public boolean cYX = false;
+    public boolean cYY = false;
+    public boolean dAa = false;
+    public String talker;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.xg
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import java.util.Map;
 
 public final class a
 {
-  public static final <K> Map<K, Integer> B(Iterable<? extends K> paramIterable)
+  public static final <K> Map<K, Integer> A(Iterable<? extends K> paramIterable)
   {
     AppMethodBeat.i(61342);
     k.h(paramIterable, "$this$mapToIndex");
@@ -33,7 +33,23 @@ public final class a
     return paramIterable;
   }
   
-  public static final <T> List<T> aT(ArrayList<T> paramArrayList)
+  public static final <K, V> HashMap<K, V> aiR(int paramInt)
+  {
+    AppMethodBeat.i(61344);
+    HashMap localHashMap = new HashMap(gb(paramInt));
+    AppMethodBeat.o(61344);
+    return localHashMap;
+  }
+  
+  public static final <E> HashSet<E> aiS(int paramInt)
+  {
+    AppMethodBeat.i(61345);
+    HashSet localHashSet = new HashSet(gb(paramInt));
+    AppMethodBeat.o(61345);
+    return localHashSet;
+  }
+  
+  public static final <T> List<T> bf(ArrayList<T> paramArrayList)
   {
     AppMethodBeat.i(61346);
     k.h(paramArrayList, "$this$compact");
@@ -45,29 +61,13 @@ public final class a
       AppMethodBeat.o(61346);
       return paramArrayList;
     case 0: 
-      paramArrayList = (List)v.Jgl;
+      paramArrayList = (List)v.KTF;
       AppMethodBeat.o(61346);
       return paramArrayList;
     }
-    paramArrayList = j.listOf(j.iy((List)paramArrayList));
+    paramArrayList = j.listOf(j.iO((List)paramArrayList));
     AppMethodBeat.o(61346);
     return paramArrayList;
-  }
-  
-  public static final <K, V> HashMap<K, V> afV(int paramInt)
-  {
-    AppMethodBeat.i(61344);
-    HashMap localHashMap = new HashMap(gq(paramInt));
-    AppMethodBeat.o(61344);
-    return localHashMap;
-  }
-  
-  public static final <E> HashSet<E> afW(int paramInt)
-  {
-    AppMethodBeat.i(61345);
-    HashSet localHashSet = new HashSet(gq(paramInt));
-    AppMethodBeat.o(61345);
-    return localHashSet;
   }
   
   public static final <T> void c(Collection<T> paramCollection, T paramT)
@@ -80,7 +80,7 @@ public final class a
     AppMethodBeat.o(61343);
   }
   
-  public static final int gq(int paramInt)
+  public static final int gb(int paramInt)
   {
     if (paramInt < 3) {
       return 3;
@@ -90,7 +90,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.o.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class n$1
   implements View.OnClickListener
 {
@@ -14,7 +14,7 @@ final class n$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(82691);
-    n.g(this.Bvo);
+    n.g(this.CNx);
     AppMethodBeat.o(82691);
   }
 }

@@ -8,25 +8,16 @@ public abstract class gg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fcG = "wallet_region".hashCode();
-  private static final int fcH = "function_list".hashCode();
-  private static final int fcI = "new_list".hashCode();
-  private static final int fcJ = "banner_list".hashCode();
-  private static final int fcK = "type_name_list".hashCode();
-  private static final int fcL = "isShowSetting".hashCode();
+  private static final int elP = "msgId".hashCode();
+  private static final int eng = "content".hashCode();
+  private static final int fef = "cmsgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fcA = true;
-  private boolean fcB = true;
-  private boolean fcC = true;
-  private boolean fcD = true;
-  private boolean fcE = true;
-  private boolean fcF = true;
-  public String field_banner_list;
-  public String field_function_list;
-  public int field_isShowSetting;
-  public String field_new_list;
-  public String field_type_name_list;
-  public int field_wallet_region;
+  private boolean elL = true;
+  private boolean emI = true;
+  private boolean fee = true;
+  public String field_cmsgId;
+  public String field_content;
+  public long field_msgId;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +32,11 @@ public abstract class gg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fcG != k) {
+      if (elP != k) {
         break label65;
       }
-      this.field_wallet_region = paramCursor.getInt(i);
-      this.fcA = true;
+      this.field_msgId = paramCursor.getLong(i);
+      this.elL = true;
     }
     for (;;)
     {
@@ -53,16 +44,10 @@ public abstract class gg
       break label20;
       break;
       label65:
-      if (fcH == k) {
-        this.field_function_list = paramCursor.getString(i);
-      } else if (fcI == k) {
-        this.field_new_list = paramCursor.getString(i);
-      } else if (fcJ == k) {
-        this.field_banner_list = paramCursor.getString(i);
-      } else if (fcK == k) {
-        this.field_type_name_list = paramCursor.getString(i);
-      } else if (fcL == k) {
-        this.field_isShowSetting = paramCursor.getInt(i);
+      if (fef == k) {
+        this.field_cmsgId = paramCursor.getString(i);
+      } else if (eng == k) {
+        this.field_content = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +57,17 @@ public abstract class gg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fcA) {
-      localContentValues.put("wallet_region", Integer.valueOf(this.field_wallet_region));
+    if (this.elL) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.fcB) {
-      localContentValues.put("function_list", this.field_function_list);
+    if (this.fee) {
+      localContentValues.put("cmsgId", this.field_cmsgId);
     }
-    if (this.fcC) {
-      localContentValues.put("new_list", this.field_new_list);
+    if (this.field_content == null) {
+      this.field_content = "";
     }
-    if (this.fcD) {
-      localContentValues.put("banner_list", this.field_banner_list);
-    }
-    if (this.fcE) {
-      localContentValues.put("type_name_list", this.field_type_name_list);
-    }
-    if (this.fcF) {
-      localContentValues.put("isShowSetting", Integer.valueOf(this.field_isShowSetting));
+    if (this.emI) {
+      localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +77,7 @@ public abstract class gg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.gg
  * JD-Core Version:    0.7.0.1
  */

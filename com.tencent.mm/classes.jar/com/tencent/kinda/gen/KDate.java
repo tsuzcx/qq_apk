@@ -34,9 +34,9 @@ public final class KDate
   
   public final String toString()
   {
-    AppMethodBeat.i(190579);
+    AppMethodBeat.i(192962);
     String str = "KDate{mYear=" + this.mYear + ",mMonth=" + this.mMonth + ",mDay=" + this.mDay + "}";
-    AppMethodBeat.o(190579);
+    AppMethodBeat.o(192962);
     return str;
   }
 }

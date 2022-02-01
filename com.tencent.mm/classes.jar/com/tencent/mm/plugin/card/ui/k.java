@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.plugin.card.ui.view.aa;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 
 public final class k
@@ -17,36 +17,36 @@ public final class k
 {
   private final String TAG;
   private int count;
-  private final String nDu;
-  private final String nDv;
-  private ArrayList<CardInfo> nDw;
-  private ArrayList<CardInfo> nDx;
-  private ArrayList<CardInfo> nDy;
-  private com.tencent.mm.plugin.card.base.c nwE;
-  private n.a nyh;
+  private com.tencent.mm.plugin.card.base.c nZE;
+  private n.a obh;
+  private final String ogv;
+  private final String ogw;
+  private ArrayList<CardInfo> ogx;
+  private ArrayList<CardInfo> ogy;
+  private ArrayList<CardInfo> ogz;
   
   public k(Context paramContext, n.a parama)
   {
     super(paramContext, parama);
     AppMethodBeat.i(113581);
     this.TAG = "MicroMsg.CardTicketAdapter";
-    this.nDu = "PRIVATE_TICKET_TITLE";
-    this.nDv = "PRIVATE_INVOICE_TITLE";
+    this.ogv = "PRIVATE_TICKET_TITLE";
+    this.ogw = "PRIVATE_INVOICE_TITLE";
     this.count = 0;
-    this.nyh = parama;
-    this.nwE = new aa(paramContext, this);
-    this.nDw = new ArrayList();
-    this.nDx = new ArrayList();
-    this.nDy = new ArrayList();
+    this.obh = parama;
+    this.nZE = new aa(paramContext, this);
+    this.ogx = new ArrayList();
+    this.ogy = new ArrayList();
+    this.ogz = new ArrayList();
     AppMethodBeat.o(113581);
   }
   
-  private void bLr()
+  private void bSE()
   {
     AppMethodBeat.i(113582);
-    this.nDw.clear();
-    this.nDx.clear();
-    this.nDy.clear();
+    this.ogx.clear();
+    this.ogy.clear();
+    this.ogz.clear();
     int i = 0;
     CardInfo localCardInfo;
     if (i < this.count)
@@ -54,80 +54,80 @@ public final class k
       localCardInfo = (CardInfo)super.getItem(i);
       if (localCardInfo != null)
       {
-        if (!localCardInfo.bHG()) {
+        if (!localCardInfo.bOT()) {
           break label72;
         }
-        this.nDy.add(localCardInfo);
+        this.ogz.add(localCardInfo);
       }
       for (;;)
       {
         i += 1;
         break;
         label72:
-        this.nDx.add(localCardInfo);
+        this.ogy.add(localCardInfo);
       }
     }
-    if (!this.nDx.isEmpty())
+    if (!this.ogy.isEmpty())
     {
       localCardInfo = new CardInfo();
       localCardInfo.field_card_id = "PRIVATE_TICKET_TITLE";
-      this.nDw.add(localCardInfo);
-      this.nDw.addAll(this.nDx);
+      this.ogx.add(localCardInfo);
+      this.ogx.addAll(this.ogy);
     }
-    if (!this.nDy.isEmpty())
+    if (!this.ogz.isEmpty())
     {
       localCardInfo = new CardInfo();
       localCardInfo.field_card_id = "PRIVATE_INVOICE_TITLE";
-      this.nDw.add(localCardInfo);
-      this.nDw.addAll(this.nDy);
+      this.ogx.add(localCardInfo);
+      this.ogx.addAll(this.ogz);
     }
-    this.count = this.nDw.size();
+    this.count = this.ogx.size();
     AppMethodBeat.o(113582);
   }
   
-  private CardInfo yZ(int paramInt)
+  private CardInfo zP(int paramInt)
   {
     AppMethodBeat.i(113585);
-    CardInfo localCardInfo = (CardInfo)this.nDw.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.ogx.get(paramInt);
     AppMethodBeat.o(113585);
     return localCardInfo;
   }
   
-  public final void Wd()
+  public final void Xb()
   {
     AppMethodBeat.i(113583);
-    ad.v("MicroMsg.CardTicketAdapter", "resetCursor");
-    cHX();
-    Cursor localCursor = am.bIV().a(this.nyh);
+    ac.v("MicroMsg.CardTicketAdapter", "resetCursor");
+    cVi();
+    Cursor localCursor = am.bQi().a(this.obh);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
-      ad.v("MicroMsg.CardTicketAdapter", "card count:" + this.count);
+      ac.v("MicroMsg.CardTicketAdapter", "card count:" + this.count);
     }
     setCursor(localCursor);
-    bLr();
+    bSE();
     notifyDataSetChanged();
     AppMethodBeat.o(113583);
   }
   
-  public final void We()
+  public final void Xc()
   {
     AppMethodBeat.i(113584);
-    cHX();
-    Wd();
+    cVi();
+    Xb();
     AppMethodBeat.o(113584);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(113587);
-    if (this.nDw.isEmpty())
+    if (this.ogx.isEmpty())
     {
       i = super.getCount();
       AppMethodBeat.o(113587);
       return i;
     }
-    int i = this.nDw.size();
+    int i = this.ogx.size();
     AppMethodBeat.o(113587);
     return i;
   }
@@ -135,13 +135,13 @@ public final class k
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(113586);
-    CardInfo localCardInfo = yZ(paramInt);
+    CardInfo localCardInfo = zP(paramInt);
     if ((localCardInfo.field_card_id.equals("PRIVATE_TICKET_TITLE")) || (localCardInfo.field_card_id.equals("PRIVATE_INVOICE_TITLE")))
     {
       AppMethodBeat.o(113586);
       return 0;
     }
-    if (localCardInfo.bHG())
+    if (localCardInfo.bOT())
     {
       AppMethodBeat.o(113586);
       return 2;
@@ -153,8 +153,8 @@ public final class k
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113588);
-    paramViewGroup = yZ(paramInt);
-    paramView = this.nwE.a(paramInt, paramView, paramViewGroup);
+    paramViewGroup = zP(paramInt);
+    paramView = this.nZE.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113588);
     return paramView;
   }
@@ -167,9 +167,9 @@ public final class k
   public final void release()
   {
     AppMethodBeat.i(113589);
-    cHX();
-    this.nwE.release();
-    this.nwE = null;
+    cVi();
+    this.nZE.release();
+    this.nZE = null;
     AppMethodBeat.o(113589);
   }
 }

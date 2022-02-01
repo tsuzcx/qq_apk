@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.content.Context;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.by;
 import com.tencent.mm.model.w;
@@ -11,14 +11,14 @@ import com.tencent.mm.plugin.account.a.a.a;
 import com.tencent.mm.plugin.account.friend.a.as;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.ui.r;
 
 public abstract class d
-  extends q<as>
+  extends r<as>
   implements e.a
 {
   public d(Context paramContext, as paramas)
@@ -26,60 +26,60 @@ public abstract class d
     super(paramContext, paramas);
   }
   
-  public static void Cv(String paramString)
+  public static void Gy(String paramString)
   {
-    if (bt.isNullOrNil(paramString)) {
-      ad.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
+    if (bs.isNullOrNil(paramString)) {
+      ac.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
     }
     Object localObject;
     do
     {
       return;
-      localObject = ((at)((a)g.ad(a.class)).getQQListStg()).Cr(paramString);
+      localObject = ((at)((a)g.ad(a.class)).getQQListStg()).Gu(paramString);
       if (localObject != null)
       {
-        ((as)localObject).ilC = 2;
-        ((at)((a)g.ad(a.class)).getQQListStg()).a(((as)localObject).ilB, (as)localObject);
+        ((as)localObject).iLJ = 2;
+        ((at)((a)g.ad(a.class)).getQQListStg()).a(((as)localObject).iLI, (as)localObject);
       }
-      localObject = ((k)g.ab(k.class)).apM().aHY(paramString);
+      localObject = ((k)g.ab(k.class)).awB().aNt(paramString);
       if (localObject == null)
       {
-        ad.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
+        ac.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
         return;
       }
-      if (bt.isNullOrNil(((au)localObject).field_username)) {
-        ((af)localObject).setUsername(paramString);
+      if (bs.isNullOrNil(((av)localObject).field_username)) {
+        ((ai)localObject).setUsername(paramString);
       }
-      if ((int)((b)localObject).fId != 0) {
+      if ((int)((b)localObject).fLJ != 0) {
         break;
       }
-      ((k)g.ab(k.class)).apM().ag((af)localObject);
-    } while (bt.isNullOrNil(((au)localObject).field_username));
-    for (paramString = ((k)g.ab(k.class)).apM().aHY(((au)localObject).field_username);; paramString = (String)localObject)
+      ((k)g.ab(k.class)).awB().ah((ai)localObject);
+    } while (bs.isNullOrNil(((av)localObject).field_username));
+    for (paramString = ((k)g.ab(k.class)).awB().aNt(((av)localObject).field_username);; paramString = (String)localObject)
     {
-      if ((int)paramString.fId <= 0)
+      if ((int)paramString.fLJ <= 0)
       {
-        ad.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
+        ac.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
         return;
       }
       w.u(paramString);
-      by.asD().d(26, new Object[0]);
+      by.azu().d(26, new Object[0]);
       return;
     }
   }
   
-  public void BW(String paramString) {}
+  public void FZ(String paramString) {}
   
   public void a(a parama) {}
   
   public static abstract interface a
   {
-    public abstract void pY(int paramInt);
+    public abstract void qL(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.d
  * JD-Core Version:    0.7.0.1
  */

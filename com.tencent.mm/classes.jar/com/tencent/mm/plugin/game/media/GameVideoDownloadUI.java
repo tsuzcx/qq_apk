@@ -16,17 +16,17 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.i.h.a;
 import com.tencent.mm.plugin.game.api.f.a;
 import com.tencent.mm.plugin.game.commlib.e.b.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.vfs.i;
@@ -37,30 +37,30 @@ import java.util.Map;
 public class GameVideoDownloadUI
   extends MMActivity
 {
-  private static final String rTc;
-  private String Jh;
-  private long kVZ = 0L;
+  private static final String taU;
+  private String Kc;
+  private long lxJ = 0L;
   private String mAppId;
   private Context mContext;
   private String mFilePath;
   private int mFrom;
-  private String rTd;
-  private CycleProgressView rTe;
-  private GameVideoDownloadUI.a rTf;
+  private String taV;
+  private CycleProgressView taW;
+  private a taX;
   
   static
   {
     AppMethodBeat.i(41142);
-    rTc = com.tencent.mm.plugin.game.commlib.e.b.b(b.a.rOF) + "haowan/";
+    taU = com.tencent.mm.plugin.game.commlib.e.b.b(b.a.sWv) + "haowan/";
     AppMethodBeat.o(41142);
   }
   
-  private Map Eu(int paramInt)
+  private Map Gq(int paramInt)
   {
     long l = 0L;
     AppMethodBeat.i(41138);
-    if (this.kVZ != 0L) {
-      l = System.currentTimeMillis() - this.kVZ;
+    if (this.lxJ != 0L) {
+      l = System.currentTimeMillis() - this.lxJ;
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("costtime", Long.valueOf(l));
@@ -74,24 +74,24 @@ public class GameVideoDownloadUI
     AppMethodBeat.i(41137);
     final long l = System.currentTimeMillis();
     com.tencent.mm.i.h localh = new com.tencent.mm.i.h();
-    localh.field_mediaId = this.Jh;
+    localh.field_mediaId = this.Kc;
     localh.url = paramString;
-    localh.foc = 0;
-    localh.fnX = 3;
+    localh.frw = 0;
+    localh.frr = 3;
     localh.concurrentCount = 4;
-    i.aMF(i.aMQ(this.mFilePath));
+    i.aSh(i.aSs(this.mFilePath));
     localh.field_fullpath = this.mFilePath;
-    localh.foj = new h.a()
+    localh.frE = new h.a()
     {
       public final void a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.d paramAnonymousd)
       {
         AppMethodBeat.i(41129);
-        ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video mediaId:%s, rawMediaId:%s", new Object[] { paramAnonymousString, GameVideoDownloadUI.f(GameVideoDownloadUI.this) });
+        ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video mediaId:%s, rawMediaId:%s", new Object[] { paramAnonymousString, GameVideoDownloadUI.f(GameVideoDownloadUI.this) });
         if (GameVideoDownloadUI.f(GameVideoDownloadUI.this).equals(paramAnonymousString))
         {
-          ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video cost time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video cost time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           if (paramAnonymousInt == 0) {
-            ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video[%s] success", new Object[] { parama });
+            ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video[%s] success", new Object[] { parama });
           }
           while ((paramAnonymousInt == 0) && (!TextUtils.isEmpty(GameVideoDownloadUI.h(GameVideoDownloadUI.this))))
           {
@@ -99,15 +99,15 @@ public class GameVideoDownloadUI
             if (!paramAnonymousString.exists()) {
               break;
             }
-            ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "download file size:%d", new Object[] { Long.valueOf(paramAnonymousString.length()) });
-            this.rTm.ah(GameVideoDownloadUI.h(GameVideoDownloadUI.this), 0, 0);
+            ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "download file size:%d", new Object[] { Long.valueOf(paramAnonymousString.length()) });
+            this.tbe.ag(GameVideoDownloadUI.h(GameVideoDownloadUI.this), 0, 0);
             AppMethodBeat.o(41129);
             return;
-            ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video[%s] fail, ret:%d", new Object[] { parama, Integer.valueOf(paramAnonymousInt) });
+            ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "download video[%s] fail, ret:%d", new Object[] { parama, Integer.valueOf(paramAnonymousInt) });
           }
           t.makeText(GameVideoDownloadUI.e(GameVideoDownloadUI.this), 2131759999, 1).show();
-          if (this.rTm != null) {
-            this.rTm.ah(GameVideoDownloadUI.h(GameVideoDownloadUI.this), 2, paramAnonymousInt);
+          if (this.tbe != null) {
+            this.tbe.ag(GameVideoDownloadUI.h(GameVideoDownloadUI.this), 2, paramAnonymousInt);
           }
         }
         AppMethodBeat.o(41129);
@@ -115,17 +115,17 @@ public class GameVideoDownloadUI
       
       public final void a(String paramAnonymousString1, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString2) {}
       
-      public final void k(String paramAnonymousString, final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void i(String paramAnonymousString, final long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(41128);
-        ad.d("MicroMsg.Haowan.GameVideoDownloadUI", "download video offset:%d, total:%d", new Object[] { Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
+        ac.d("MicroMsg.Haowan.GameVideoDownloadUI", "download video offset:%d, total:%d", new Object[] { Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
         if ((GameVideoDownloadUI.f(GameVideoDownloadUI.this).equals(paramAnonymousString)) && (paramAnonymousLong2 != 0L)) {
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(41127);
-              GameVideoDownloadUI.g(GameVideoDownloadUI.this).setProgress((int)(paramAnonymousLong1 * 100L / this.rTo));
+              GameVideoDownloadUI.g(GameVideoDownloadUI.this).setProgress((int)(paramAnonymousLong1 * 100L / this.tbg));
               AppMethodBeat.o(41127);
             }
           });
@@ -135,18 +135,18 @@ public class GameVideoDownloadUI
       
       public final void onDataAvailable(String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2) {}
     };
-    this.kVZ = System.currentTimeMillis();
-    this.rTf = new GameVideoDownloadUI.a(this, localh);
-    aq.n(this.rTf, 500L);
+    this.lxJ = System.currentTimeMillis();
+    this.taX = new a(localh);
+    ap.n(this.taX, 500L);
     AppMethodBeat.o(41137);
   }
   
-  private void acq(String paramString)
+  private void ahi(String paramString)
   {
     AppMethodBeat.i(41132);
     a(paramString, new f.a()
     {
-      public final void ah(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ag(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(41126);
         String str = paramAnonymousString;
@@ -156,8 +156,8 @@ public class GameVideoDownloadUI
           if (paramAnonymousString.endsWith(".temp"))
           {
             str = paramAnonymousString.replace(".temp", "");
-            i.lD(paramAnonymousString, str);
-            ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "download videoPath:%s", new Object[] { str });
+            i.ma(paramAnonymousString, str);
+            ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "download videoPath:%s", new Object[] { str });
           }
         }
         switch (paramAnonymousInt1)
@@ -168,17 +168,25 @@ public class GameVideoDownloadUI
           return;
         case 0: 
           com.tencent.mm.game.report.b.a.a(GameVideoDownloadUI.e(GameVideoDownloadUI.this), 8760, 0, 48, GameVideoDownloadUI.d(GameVideoDownloadUI.this), com.tencent.mm.game.report.b.a.a(GameVideoDownloadUI.b(GameVideoDownloadUI.this), GameVideoDownloadUI.a(GameVideoDownloadUI.this, 0)));
-          aq.f(new GameVideoDownloadUI.5.1(this));
+          ap.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(41125);
+              GameVideoDownloadUI.5.this.tbc.setVisibility(8);
+              AppMethodBeat.o(41125);
+            }
+          });
           paramAnonymousString = new Intent();
           paramAnonymousString.putExtras(GameVideoDownloadUI.this.getIntent().getExtras());
           paramAnonymousString.putExtra("video_path", str);
-          com.tencent.mm.bs.d.b(GameVideoDownloadUI.e(GameVideoDownloadUI.this), "game", ".media.GameVideoEditorProxyUI", paramAnonymousString, 223);
+          com.tencent.mm.br.d.b(GameVideoDownloadUI.e(GameVideoDownloadUI.this), "game", ".media.GameVideoEditorProxyUI", paramAnonymousString, 223);
           AppMethodBeat.o(41126);
           return;
         }
         com.tencent.mm.game.report.b.a.a(GameVideoDownloadUI.e(GameVideoDownloadUI.this), 8760, 0, 56, GameVideoDownloadUI.d(GameVideoDownloadUI.this), com.tencent.mm.game.report.b.a.a(GameVideoDownloadUI.b(GameVideoDownloadUI.this), GameVideoDownloadUI.a(GameVideoDownloadUI.this, paramAnonymousInt2)));
         if (GameVideoDownloadUI.b(GameVideoDownloadUI.this) == 3) {
-          l.c(GameVideoDownloadUI.c(GameVideoDownloadUI.this), "video download err:".concat(String.valueOf(paramAnonymousInt2)), GameVideoDownloadUI.d(GameVideoDownloadUI.this), -3, "video download err:".concat(String.valueOf(paramAnonymousInt2)));
+          l.d(GameVideoDownloadUI.c(GameVideoDownloadUI.this), "video download err:".concat(String.valueOf(paramAnonymousInt2)), GameVideoDownloadUI.d(GameVideoDownloadUI.this), -3, "video download err:".concat(String.valueOf(paramAnonymousInt2)));
         }
         for (;;)
         {
@@ -193,13 +201,13 @@ public class GameVideoDownloadUI
     AppMethodBeat.o(41132);
   }
   
-  private void cCt()
+  private void cPE()
   {
     AppMethodBeat.i(41136);
-    ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "cancel video download!");
-    com.tencent.mm.game.report.b.a.a(this.mContext, 8760, 1, 2, this.mAppId, com.tencent.mm.game.report.b.a.a(this.mFrom, Eu(0)));
+    ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "cancel video download!");
+    com.tencent.mm.game.report.b.a.a(this.mContext, 8760, 1, 2, this.mAppId, com.tencent.mm.game.report.b.a.a(this.mFrom, Gq(0)));
     if (this.mFrom == 3) {
-      l.c(this.rTd, "video download cancel", this.mAppId, -2, "video download cancel");
+      l.d(this.taV, "video download cancel", this.mAppId, -2, "video download cancel");
     }
     for (;;)
     {
@@ -221,7 +229,7 @@ public class GameVideoDownloadUI
   {
     AppMethodBeat.i(41133);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 223)
     {
       setResult(paramInt2, paramIntent);
@@ -234,7 +242,7 @@ public class GameVideoDownloadUI
   {
     AppMethodBeat.i(41135);
     super.onBackPressed();
-    cCt();
+    cPE();
     AppMethodBeat.o(41135);
   }
   
@@ -248,11 +256,11 @@ public class GameVideoDownloadUI
     getWindow().setFlags(201327616, 201327616);
     this.mContext = this;
     this.mFrom = getIntent().getIntExtra("from", -1);
-    this.rTd = getIntent().getStringExtra("business_type");
+    this.taV = getIntent().getStringExtra("business_type");
     this.mAppId = getIntent().getStringExtra("appid");
     paramBundle = getIntent().getStringExtra("video_url");
     Object localObject1 = getIntent().getStringExtra("thumb_url");
-    this.rTe = ((CycleProgressView)findViewById(2131298917));
+    this.taW = ((CycleProgressView)findViewById(2131298917));
     findViewById(2131299198).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -272,28 +280,28 @@ public class GameVideoDownloadUI
     localImageView2.setLayoutParams((ViewGroup.LayoutParams)localObject2);
     localImageView1.setVisibility(8);
     localImageView2.setVisibility(0);
-    localObject2 = com.tencent.mm.aw.o.ayJ();
+    localObject2 = com.tencent.mm.av.o.aFB();
     c.a locala = new c.a();
-    locala.hjU = true;
-    ((com.tencent.mm.aw.a.a)localObject2).a((String)localObject1, localImageView1, locala.azc(), new com.tencent.mm.aw.a.c.h()
+    locala.hKx = true;
+    ((com.tencent.mm.av.a.a)localObject2).a((String)localObject1, localImageView1, locala.aFT(), new com.tencent.mm.av.a.c.h()
     {
-      public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+      public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
       {
         return null;
       }
       
       public final void b(String paramAnonymousString, View paramAnonymousView) {}
       
-      public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.aw.a.d.b paramAnonymousb)
+      public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
       {
         AppMethodBeat.i(41122);
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(41121);
-            GameVideoDownloadUI.2.this.rTh.setVisibility(0);
-            GameVideoDownloadUI.2.this.rTi.setVisibility(8);
+            GameVideoDownloadUI.2.this.taZ.setVisibility(0);
+            GameVideoDownloadUI.2.this.tba.setVisibility(8);
             AppMethodBeat.o(41121);
           }
         });
@@ -304,16 +312,16 @@ public class GameVideoDownloadUI
     if (localObject1 != null)
     {
       this.mFilePath = ((Bundle)localObject1).getString("key_video_cache_path");
-      this.Jh = ((Bundle)localObject1).getString("key_video_media_id");
+      this.Kc = ((Bundle)localObject1).getString("key_video_media_id");
     }
-    ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "video cache path:%s", new Object[] { this.mFilePath });
-    if (!i.eK(this.mFilePath)) {
-      this.mFilePath = (rTc + "MMVideo_" + ai.du(paramBundle) + ".mp4");
+    ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "video cache path:%s", new Object[] { this.mFilePath });
+    if (!i.eA(this.mFilePath)) {
+      this.mFilePath = (taU + "MMVideo_" + ah.dg(paramBundle) + ".mp4");
     }
-    if (bt.isNullOrNil(this.Jh)) {
-      this.Jh = ("MMVideo_" + ai.du(paramBundle));
+    if (bs.isNullOrNil(this.Kc)) {
+      this.Kc = ("MMVideo_" + ah.dg(paramBundle));
     }
-    if ((!ay.isWifi(this)) && (this.mFrom == 3)) {
+    if ((!ax.isWifi(this)) && (this.mFrom == 3)) {
       com.tencent.mm.ui.base.h.a(this, getString(2131760000), "", getString(2131759998), getString(2131759997), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -328,7 +336,7 @@ public class GameVideoDownloadUI
         {
           AppMethodBeat.i(41124);
           if (GameVideoDownloadUI.b(GameVideoDownloadUI.this) == 3) {
-            l.c(GameVideoDownloadUI.c(GameVideoDownloadUI.this), "video download cancel", GameVideoDownloadUI.d(GameVideoDownloadUI.this), -2, "video download cancel");
+            l.d(GameVideoDownloadUI.c(GameVideoDownloadUI.this), "video download cancel", GameVideoDownloadUI.d(GameVideoDownloadUI.this), -2, "video download cancel");
           }
           for (;;)
           {
@@ -344,11 +352,11 @@ public class GameVideoDownloadUI
     }
     for (;;)
     {
-      ad.i("MicroMsg.Haowan.GameVideoDownloadUI", "onCreate");
+      ac.i("MicroMsg.Haowan.GameVideoDownloadUI", "onCreate");
       com.tencent.mm.game.report.b.a.a(this, 8760, 0, 1, this.mAppId, com.tencent.mm.game.report.b.a.a(this.mFrom, null));
       AppMethodBeat.o(41131);
       return;
-      acq(paramBundle);
+      ahi(paramBundle);
     }
   }
   
@@ -356,10 +364,10 @@ public class GameVideoDownloadUI
   {
     AppMethodBeat.i(41134);
     super.onDestroy();
-    if (this.rTf != null) {
-      aq.az(this.rTf);
+    if (this.taX != null) {
+      ap.aB(this.taX);
     }
-    com.tencent.mm.modelvideo.o.aCJ().k(this.Jh, null);
+    com.tencent.mm.modelvideo.o.aJz().k(this.Kc, null);
     AppMethodBeat.o(41134);
   }
   
@@ -368,10 +376,30 @@ public class GameVideoDownloadUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    implements Runnable
+  {
+    private com.tencent.mm.i.h tbi;
+    
+    public a(com.tencent.mm.i.h paramh)
+    {
+      this.tbi = paramh;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(41130);
+      if (this.tbi != null) {
+        com.tencent.mm.modelvideo.o.aJz().a(this.tbi, false);
+      }
+      AppMethodBeat.o(41130);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameVideoDownloadUI
  * JD-Core Version:    0.7.0.1
  */

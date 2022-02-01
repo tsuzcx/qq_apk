@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 public final class a
@@ -25,18 +25,18 @@ public final class a
     String str = paramo.mAppId;
     MMToClientEvent.c local1 = new MMToClientEvent.c()
     {
-      public final void ch(Object paramAnonymousObject)
+      public final void cf(Object paramAnonymousObject)
       {
         AppMethodBeat.i(46350);
         if ((paramAnonymousObject instanceof SendDataToMiniProgramFromH5Event))
         {
           Object localObject1 = (SendDataToMiniProgramFromH5Event)paramAnonymousObject;
-          Object localObject2 = ((SendDataToMiniProgramFromH5Event)localObject1).jRv;
+          Object localObject2 = ((SendDataToMiniProgramFromH5Event)localObject1).ksh;
           paramAnonymousObject = ((SendDataToMiniProgramFromH5Event)localObject1).data;
-          int i = ((SendDataToMiniProgramFromH5Event)localObject1).jRw;
-          if (!bt.isNullOrNil((String)localObject2))
+          int i = ((SendDataToMiniProgramFromH5Event)localObject1).ksi;
+          if (!bs.isNullOrNil((String)localObject2))
           {
-            localObject1 = com.tencent.mm.plugin.appbrand.a.CR((String)localObject2);
+            localObject1 = com.tencent.mm.plugin.appbrand.a.GU((String)localObject2);
             if ((localObject1 == null) || (!((AppBrandRuntime)localObject1).mInitialized))
             {
               AppMethodBeat.o(46350);
@@ -46,14 +46,14 @@ public final class a
             {
               paramAnonymousObject = new JSONObject().put("data", paramAnonymousObject).put("webviewId", String.valueOf(i));
               localObject2 = new a();
-              ((a)localObject2).g(((o)localObject1).aNe()).HJ(paramAnonymousObject.toString());
-              ((a)localObject2).aXQ();
+              ((a)localObject2).g(((o)localObject1).aTU()).LN(paramAnonymousObject.toString());
+              ((a)localObject2).beN();
               AppMethodBeat.o(46350);
               return;
             }
             catch (Exception paramAnonymousObject)
             {
-              ad.e("MicroMsg.AppBrand.EventOnH5Data", "dispatch ex = %s", new Object[] { paramAnonymousObject });
+              ac.e("MicroMsg.AppBrand.EventOnH5Data", "dispatch ex = %s", new Object[] { paramAnonymousObject });
             }
           }
         }
@@ -61,13 +61,13 @@ public final class a
       }
     };
     MMToClientEvent.a(str, local1);
-    paramo.iDK.a(new c.a()
+    paramo.jdK.a(new c.a()
     {
       public final void a(String paramAnonymousString, b paramAnonymousb)
       {
         AppMethodBeat.i(46351);
-        if (paramAnonymousb == b.iQN) {
-          MMToClientEvent.b(paramAnonymousString, this.iXu);
+        if (paramAnonymousb == b.jqX) {
+          MMToClientEvent.b(paramAnonymousString, this.jxK);
         }
         AppMethodBeat.o(46351);
       }
@@ -77,7 +77,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.h5_interact.a
  * JD-Core Version:    0.7.0.1
  */

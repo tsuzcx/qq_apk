@@ -9,31 +9,31 @@ import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.fts.d;
 import com.tencent.mm.pluginsdk.g.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
   implements an
 {
-  public final void arE()
+  public final void ayv()
   {
     AppMethodBeat.i(176905);
-    ad.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete all msg");
-    if (!g.afw())
+    ac.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete all msg");
+    if (!g.agM())
     {
       b localb = new b();
       AppMethodBeat.o(176905);
       throw localb;
     }
     ((PluginFTS)g.ad(PluginFTS.class)).getFTSTaskDaemon().a(-131072, new a((byte)0));
-    ad.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteAllMsg post task to fts task daemon");
+    ac.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteAllMsg post task to fts task daemon");
     AppMethodBeat.o(176905);
   }
   
-  public final void lU(long paramLong)
+  public final void pI(long paramLong)
   {
     AppMethodBeat.i(52764);
     Object localObject;
-    if (!g.afw())
+    if (!g.agM())
     {
       localObject = new b();
       AppMethodBeat.o(52764);
@@ -49,22 +49,22 @@ public final class f
         return;
       }
       ((PluginFTS)g.ad(PluginFTS.class)).getFTSTaskDaemon().a(65536, new b(paramLong));
-      ad.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteSingleMsg post task to fts task daemon %d", new Object[] { Long.valueOf(paramLong) });
+      ac.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteSingleMsg post task to fts task daemon %d", new Object[] { Long.valueOf(paramLong) });
       AppMethodBeat.o(52764);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", localException, "syncDeleteSingleMsg", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", localException, "syncDeleteSingleMsg", new Object[0]);
       AppMethodBeat.o(52764);
     }
   }
   
-  public final void w(String paramString, long paramLong)
+  public final void x(String paramString, long paramLong)
   {
     AppMethodBeat.i(52765);
-    ad.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete fts talker msg %s %s", new Object[] { paramString, h.formatTime("yyyy-MM-dd HH:mm:ss", paramLong / 1000L) });
-    if (!g.afw())
+    ac.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete fts talker msg %s %s", new Object[] { paramString, h.formatTime("yyyy-MM-dd HH:mm:ss", paramLong / 1000L) });
+    if (!g.agM())
     {
       paramString = new b();
       AppMethodBeat.o(52765);
@@ -75,18 +75,18 @@ public final class f
       d locald = ((PluginFTS)g.ad(PluginFTS.class)).getFTSIndexDB();
       if (locald != null)
       {
-        locald.ap(paramString, paramLong);
+        locald.ar(paramString, paramLong);
         AppMethodBeat.o(52765);
         return;
       }
       ((PluginFTS)g.ad(PluginFTS.class)).getFTSTaskDaemon().a(65536, new c(paramString, paramLong));
-      ad.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteTalkerMsg post task to fts task daemon %s %s", new Object[] { paramString, Long.valueOf(paramLong) });
+      ac.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteTalkerMsg post task to fts task daemon %s %s", new Object[] { paramString, Long.valueOf(paramLong) });
       AppMethodBeat.o(52765);
       return;
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", paramString, "syncDeleteTalkerMsg", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", paramString, "syncDeleteTalkerMsg", new Object[0]);
       AppMethodBeat.o(52765);
     }
   }
@@ -105,7 +105,7 @@ public final class f
         long l = System.currentTimeMillis();
         locald.execSQL(String.format("Delete From %s;", new Object[] { "FTS5MetaMessage" }));
         locald.execSQL(String.format("Delete From %s;", new Object[] { "FTS5IndexMessage" }));
-        ad.i("MicroMsg.FTS.FTSIndexDB", "deleteAllMsg use time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        ac.i("MicroMsg.FTS.FTSIndexDB", "deleteAllMsg use time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       }
       AppMethodBeat.o(176904);
       return true;
@@ -147,13 +147,13 @@ public final class f
   final class c
     extends a
   {
-    private long rsj;
+    private long sBd;
     private String talker;
     
     c(String paramString, long paramLong)
     {
       this.talker = paramString;
-      this.rsj = paramLong;
+      this.sBd = paramLong;
     }
     
     public final boolean execute()
@@ -161,7 +161,7 @@ public final class f
       AppMethodBeat.i(52763);
       d locald = ((PluginFTS)g.ad(PluginFTS.class)).getFTSIndexDB();
       if (locald != null) {
-        locald.ap(this.talker, this.rsj);
+        locald.ar(this.talker, this.sBd);
       }
       AppMethodBeat.o(52763);
       return true;
@@ -175,7 +175,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.picker.b.a;
@@ -20,9 +20,9 @@ import java.util.Calendar;
 
 public final class b
 {
-  private static final int IfP = 2131306731;
-  private static int Ifa = 0;
-  private static int Ifb = 0;
+  private static int JGC = 0;
+  private static int JGD = 0;
+  private static final int JHr = 2131306731;
   
   public static void a(MMActivity paramMMActivity, int paramInt1, int paramInt2)
   {
@@ -45,63 +45,63 @@ public final class b
   
   static void a(TenpaySecureEditText paramTenpaySecureEditText, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(187200);
+    AppMethodBeat.i(207329);
     if (paramTenpaySecureEditText != null)
     {
       if (paramInt == 1)
       {
         paramTenpaySecureEditText.setIsPasswordFormat(true, paramBoolean);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 2)
       {
         paramTenpaySecureEditText.setIsSecurityAnswerFormat(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 3)
       {
         paramTenpaySecureEditText.setIsCvvPaymentFormat(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 4)
       {
         paramTenpaySecureEditText.setIsCvv4PaymentFormat(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 5)
       {
         paramTenpaySecureEditText.setIsValidThru(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 6)
       {
         paramTenpaySecureEditText.setIsBankcardFormat(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 7)
       {
         paramTenpaySecureEditText.setIsMoneyAmountFormat(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       if (paramInt == 8)
       {
         paramTenpaySecureEditText.setIsIdCardTailFormat(true);
-        AppMethodBeat.o(187200);
+        AppMethodBeat.o(207329);
         return;
       }
       paramTenpaySecureEditText.setIsCvv4PaymentFormat(false);
-      AppMethodBeat.o(187200);
+      AppMethodBeat.o(207329);
       return;
     }
-    ad.e("MicroMsg.FormatViewUtil", "hy: param error: no edit text view");
-    AppMethodBeat.o(187200);
+    ac.e("MicroMsg.FormatViewUtil", "hy: param error: no edit text view");
+    AppMethodBeat.o(207329);
   }
   
   public static void e(MMActivity paramMMActivity, String paramString)
@@ -123,19 +123,19 @@ public final class b
     AppMethodBeat.i(73136);
     paramWalletFormView.setOnClickListener(new View.OnClickListener()
     {
-      int IfQ = -1;
+      int JHs = -1;
       int year = -1;
       
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(73132);
-        this.oXW.hideVKB();
-        if ((this.oXW instanceof WalletBaseUI)) {
-          ((WalletBaseUI)this.oXW).hideTenpayKB();
+        this.pBh.hideVKB();
+        if ((this.pBh instanceof WalletBaseUI)) {
+          ((WalletBaseUI)this.pBh).hideTenpayKB();
         }
-        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(this.oXW);
-        paramAnonymousView.aL(true, false);
-        paramAnonymousView.HIQ = new b.a()
+        paramAnonymousView = new com.tencent.mm.ui.widget.picker.b(this.pBh);
+        paramAnonymousView.aP(true, false);
+        paramAnonymousView.Jjn = new b.a()
         {
           public final void onResult(boolean paramAnonymous2Boolean, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3)
           {
@@ -143,8 +143,8 @@ public final class b
             paramAnonymousView.hide();
             if (paramAnonymous2Boolean)
             {
-              localObject = paramAnonymousView.ffY();
-              if (bt.isNullOrNil((String)localObject))
+              localObject = paramAnonymousView.fvX();
+              if (bs.isNullOrNil((String)localObject))
               {
                 AppMethodBeat.o(73131);
                 return;
@@ -155,35 +155,35 @@ public final class b
                 AppMethodBeat.o(73131);
                 return;
               }
-              ad.d("MicroMsg.FormatViewUtil", "result: %s", new Object[] { localObject });
-              paramAnonymous2Int1 = bt.aGh(arrayOfString[0]);
-              b.1.this.IfQ = (bt.aGh(arrayOfString[1]) - 1);
-              ad.d("MicroMsg.FormatViewUtil", "year: %s, month: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(b.1.this.IfQ) });
-              if ((paramAnonymous2Int1 >= b.Ifa) || (b.1.this.IfQ >= b.Ifb)) {
+              ac.d("MicroMsg.FormatViewUtil", "result: %s", new Object[] { localObject });
+              paramAnonymous2Int1 = bs.aLy(arrayOfString[0]);
+              b.1.this.JHs = (bs.aLy(arrayOfString[1]) - 1);
+              ac.d("MicroMsg.FormatViewUtil", "year: %s, month: %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(b.1.this.JHs) });
+              if ((paramAnonymous2Int1 >= b.JGC) || (b.1.this.JHs >= b.JGD)) {
                 break label221;
               }
-              h.c(b.1.this.oXW, b.1.this.oXW.getString(2131765250), null, true);
-              if (b.1.this.IfC.getInputValidChangeListener() != null) {
-                b.1.this.IfC.getInputValidChangeListener().onInputValidChange(b.1.this.IfC.aKX());
+              h.c(b.1.this.pBh, b.1.this.pBh.getString(2131765250), null, true);
+              if (b.1.this.JHe.getInputValidChangeListener() != null) {
+                b.1.this.JHe.getInputValidChangeListener().onInputValidChange(b.1.this.JHe.aRO());
               }
             }
             AppMethodBeat.o(73131);
             return;
             label221:
             Object localObject = new DecimalFormat("00");
-            if (u.aqV()) {
-              b.1.this.IfC.setTag(((DecimalFormat)localObject).format(b.1.this.IfQ + 1) + paramAnonymous2Int1);
+            if (u.axL()) {
+              b.1.this.JHe.setTag(((DecimalFormat)localObject).format(b.1.this.JHs + 1) + paramAnonymous2Int1);
             }
             for (;;)
             {
-              b.1.this.IfC.setText(((DecimalFormat)localObject).format(b.1.this.IfQ + 1) + ((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2));
+              b.1.this.JHe.setText(((DecimalFormat)localObject).format(b.1.this.JHs + 1) + ((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2));
               break;
-              b.1.this.IfC.setTag(((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2) + ((DecimalFormat)localObject).format(b.1.this.IfQ + 1));
+              b.1.this.JHe.setTag(((DecimalFormat)localObject).format(paramAnonymous2Int1).substring(2) + ((DecimalFormat)localObject).format(b.1.this.JHs + 1));
             }
           }
         };
-        if ((this.year >= b.Ifa) && (this.IfQ >= b.Ifb)) {
-          paramAnonymousView.aM(this.year, this.IfQ + 1, 1);
+        if ((this.year >= b.JGC) && (this.JHs >= b.JGD)) {
+          paramAnonymousView.aO(this.year, this.JHs + 1, 1);
         }
         for (;;)
         {
@@ -191,7 +191,7 @@ public final class b
           AppMethodBeat.o(73132);
           return;
           Calendar localCalendar = Calendar.getInstance();
-          paramAnonymousView.aM(localCalendar.get(1), localCalendar.get(2) + 1, localCalendar.get(5));
+          paramAnonymousView.aO(localCalendar.get(1), localCalendar.get(2) + 1, localCalendar.get(5));
         }
       }
     });

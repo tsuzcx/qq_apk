@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.model.ax;
 import com.tencent.mm.plugin.webview.model.ax.h;
 import com.tencent.mm.plugin.webview.model.ax.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.qqvideo.proxy.api.IUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,48 +23,48 @@ public final class f
   public final void httpproxyReport(String... paramVarArgs)
   {
     AppMethodBeat.i(79800);
-    Object localObject = enA().AMJ.ems();
+    Object localObject = eCT().Cfc.eBN();
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
-      paramVarArgs = enA().AMJ.ems();
-      if ((paramVarArgs.AZs == null) || (paramVarArgs.AZs.size() == 0)) {
+      paramVarArgs = eCT().Cfc.eBN();
+      if ((paramVarArgs.CrF == null) || (paramVarArgs.CrF.size() == 0)) {
         AppMethodBeat.o(79800);
       }
     }
     else
     {
-      if (((ax.i)localObject).AZs == null) {
-        ((ax.i)localObject).AZs = new ArrayList();
+      if (((ax.i)localObject).CrF == null) {
+        ((ax.i)localObject).CrF = new ArrayList();
       }
       for (;;)
       {
         int i = 0;
         while (i < paramVarArgs.length)
         {
-          ad.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((ax.i)localObject).AZs.add(paramVarArgs[i]);
+          ac.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
+          ((ax.i)localObject).CrF.add(paramVarArgs[i]);
           i += 1;
         }
         break;
-        ((ax.i)localObject).AZs.clear();
+        ((ax.i)localObject).CrF.clear();
       }
     }
-    localObject = h.vKh;
-    h.h(12033, paramVarArgs.AZs);
-    paramVarArgs.AZs.clear();
+    localObject = h.wUl;
+    h.k(12033, paramVarArgs.CrF);
+    paramVarArgs.CrF.clear();
     AppMethodBeat.o(79800);
   }
   
   public final void idKeyReport(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(79801);
-    ad.i("MicroMsg.WebViewUI.UtilsImpl", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
-    if ((!bt.isNullOrNil(paramString1)) && (!bt.isNullOrNil(paramString2)) && (!bt.isNullOrNil(paramString3)))
+    ac.i("MicroMsg.WebViewUI.UtilsImpl", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
+    if ((!bs.isNullOrNil(paramString1)) && (!bs.isNullOrNil(paramString2)) && (!bs.isNullOrNil(paramString3)))
     {
-      int i = bt.getInt(paramString1, 0);
-      int j = bt.getInt(paramString2, 0);
-      int k = bt.getInt(paramString3, 0);
-      h.vKh.idkeyStat(i, j, k, false);
+      int i = bs.getInt(paramString1, 0);
+      int j = bs.getInt(paramString2, 0);
+      int k = bs.getInt(paramString3, 0);
+      h.wUl.idkeyStat(i, j, k, false);
     }
     AppMethodBeat.o(79801);
   }
@@ -79,54 +79,54 @@ public final class f
     {
       AppMethodBeat.o(79799);
       return;
-      ad.d(paramString1, paramString2);
+      ac.d(paramString1, paramString2);
       AppMethodBeat.o(79799);
       return;
-      ad.e(paramString1, paramString2);
+      ac.e(paramString1, paramString2);
       AppMethodBeat.o(79799);
       return;
-      ad.i(paramString1, paramString2);
+      ac.i(paramString1, paramString2);
       AppMethodBeat.o(79799);
       return;
-      ad.v(paramString1, paramString2);
+      ac.v(paramString1, paramString2);
       AppMethodBeat.o(79799);
       return;
-      ad.w(paramString1, paramString2);
+      ac.w(paramString1, paramString2);
     }
   }
   
   public final void kvReport(String... paramVarArgs)
   {
     AppMethodBeat.i(79802);
-    Object localObject = enA().AMJ.emt();
+    Object localObject = eCT().Cfc.eBO();
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
-      paramVarArgs = enA().AMJ.emt();
-      if ((paramVarArgs.AZs == null) || (paramVarArgs.AZs.size() == 0)) {
+      paramVarArgs = eCT().Cfc.eBO();
+      if ((paramVarArgs.CrF == null) || (paramVarArgs.CrF.size() == 0)) {
         AppMethodBeat.o(79802);
       }
     }
     else
     {
-      if (((ax.h)localObject).AZs == null) {
-        ((ax.h)localObject).AZs = new ArrayList();
+      if (((ax.h)localObject).CrF == null) {
+        ((ax.h)localObject).CrF = new ArrayList();
       }
       for (;;)
       {
         int i = 0;
         while (i < paramVarArgs.length)
         {
-          ad.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((ax.h)localObject).AZs.add(paramVarArgs[i]);
+          ac.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
+          ((ax.h)localObject).CrF.add(paramVarArgs[i]);
           i += 1;
         }
         break;
-        ((ax.h)localObject).AZs.clear();
+        ((ax.h)localObject).CrF.clear();
       }
     }
-    localObject = h.vKh;
-    h.h(12666, paramVarArgs.AZs);
-    paramVarArgs.AZs.clear();
+    localObject = h.wUl;
+    h.k(12666, paramVarArgs.CrF);
+    paramVarArgs.CrF.clear();
     AppMethodBeat.o(79802);
   }
 }

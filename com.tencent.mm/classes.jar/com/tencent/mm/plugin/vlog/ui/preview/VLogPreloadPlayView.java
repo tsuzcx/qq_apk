@@ -11,37 +11,38 @@ import android.view.Surface;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.j.c.b;
-import com.tencent.mm.plugin.vlog.model.z;
-import com.tencent.mm.plugin.vlog.player.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.plugin.vlog.model.v;
+import com.tencent.mm.plugin.vlog.player.h;
+import com.tencent.mm.plugin.vlog.ui.manager.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.base.MMTextureView;
 import d.g.a.b;
+import d.g.a.m;
 import d.g.b.k;
-import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView;", "Lcom/tencent/mm/ui/base/MMTextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "cropRect", "Landroid/graphics/Rect;", "isRendering", "", "model", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "onProgress", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "now", "total", "", "onSizeChanged", "width", "height", "previewPlayer", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "previewPlayerThread", "Landroid/os/HandlerThread;", "texture", "Landroid/graphics/SurfaceTexture;", "vLogDirector", "Lcom/tencent/mm/plugin/vlog/player/VLogDirector;", "vLogManager", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "vLogSurface", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "bindPreloadManager", "surfaceTexture", "clearCurrentScript", "detachPreloadManager", "getSize", "Landroid/util/Size;", "onSurfaceTextureAvailable", "onSurfaceTextureDestroyed", "surface", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "pause", "release", "renderScript", "resume", "setCropRect", "rect", "setMute", "mute", "setOnProgressListener", "setOnSizeChangedListener", "updateFrameOnTime", "Companion", "plugin-vlog_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView;", "Lcom/tencent/mm/ui/base/MMTextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "cropRect", "Landroid/graphics/Rect;", "isRendering", "", "model", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "onProgress", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "now", "total", "", "onSizeChanged", "width", "height", "previewPlayer", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "previewPlayerThread", "Landroid/os/HandlerThread;", "texture", "Landroid/graphics/SurfaceTexture;", "vLogDirector", "Lcom/tencent/mm/plugin/vlog/player/VLogDirector;", "vLogManager", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "vLogSurface", "Lcom/tencent/mm/plugin/vlog/player/VLogSurface;", "bindPreloadManager", "surfaceTexture", "clearCurrentScript", "detachPreloadManager", "getSize", "Landroid/util/Size;", "onSurfaceTextureAvailable", "onSurfaceTextureDestroyed", "surface", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "pause", "release", "renderScript", "resume", "setCropRect", "rect", "setMute", "mute", "setOnProgressListener", "setOnSizeChangedListener", "updateFrameOnTime", "Companion", "plugin-vlog_release"})
 public final class VLogPreloadPlayView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  public static final a zcY;
-  public com.tencent.mm.plugin.vlog.player.m LrT;
-  public com.tencent.mm.plugin.vlog.player.h Lti;
-  private z Lvb;
-  public SurfaceTexture gAZ;
-  private Rect gtE;
-  private d.g.a.m<? super Long, ? super Long, y> zaT;
-  public HandlerThread zcO;
-  public ap zcP;
-  private d.g.a.m<? super Integer, ? super Integer, y> zcQ;
-  public volatile boolean zcR;
-  public com.tencent.mm.plugin.vlog.model.h zcs;
+  public static final VLogPreloadPlayView.a AuK;
+  public com.tencent.mm.plugin.vlog.player.l ApF;
+  private m<? super Long, ? super Long, d.y> ApG;
+  private m<? super Integer, ? super Integer, d.y> Apv;
+  public com.tencent.mm.plugin.vlog.player.d ArL;
+  public com.tencent.mm.plugin.vlog.model.y Asu;
+  public HandlerThread AuA;
+  public ao AuB;
+  public volatile boolean AuC;
+  private v AuJ;
+  private Rect gUl;
+  public SurfaceTexture hbv;
   
   static
   {
     AppMethodBeat.i(111223);
-    zcY = new a((byte)0);
+    AuK = new VLogPreloadPlayView.a((byte)0);
     AppMethodBeat.o(111223);
   }
   
@@ -49,12 +50,12 @@ public final class VLogPreloadPlayView
   {
     super(paramContext);
     AppMethodBeat.i(111222);
-    paramContext = com.tencent.e.c.d.gv("VLogPlayView_PreviewPlayer", -4);
+    paramContext = com.tencent.e.c.d.gz("VLogPlayView_PreviewPlayer", -4);
     k.g(paramContext, "SpecialThreadFactory.cre….THREAD_PRIORITY_DISPLAY)");
-    this.zcO = paramContext;
+    this.AuA = paramContext;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    paramContext = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-    this.Lvb = com.tencent.mm.plugin.vlog.ui.manager.d.fZa();
+    paramContext = c.AsH;
+    this.AuJ = c.ega();
     AppMethodBeat.o(111222);
   }
   
@@ -62,12 +63,12 @@ public final class VLogPreloadPlayView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(111221);
-    paramContext = com.tencent.e.c.d.gv("VLogPlayView_PreviewPlayer", -4);
+    paramContext = com.tencent.e.c.d.gz("VLogPlayView_PreviewPlayer", -4);
     k.g(paramContext, "SpecialThreadFactory.cre….THREAD_PRIORITY_DISPLAY)");
-    this.zcO = paramContext;
+    this.AuA = paramContext;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    paramContext = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-    this.Lvb = com.tencent.mm.plugin.vlog.ui.manager.d.fZa();
+    paramContext = c.AsH;
+    this.AuJ = c.ega();
     AppMethodBeat.o(111221);
   }
   
@@ -75,44 +76,44 @@ public final class VLogPreloadPlayView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(111220);
-    paramContext = com.tencent.e.c.d.gv("VLogPlayView_PreviewPlayer", -4);
+    paramContext = com.tencent.e.c.d.gz("VLogPlayView_PreviewPlayer", -4);
     k.g(paramContext, "SpecialThreadFactory.cre….THREAD_PRIORITY_DISPLAY)");
-    this.zcO = paramContext;
+    this.AuA = paramContext;
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    paramContext = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-    this.Lvb = com.tencent.mm.plugin.vlog.ui.manager.d.fZa();
+    paramContext = c.AsH;
+    this.AuJ = c.ega();
     AppMethodBeat.o(111220);
   }
   
   public final Size getSize()
   {
-    AppMethodBeat.i(201213);
-    Object localObject = this.Lti;
+    AppMethodBeat.i(207898);
+    Object localObject = this.ArL;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.vlog.player.h)localObject).getSize();
-      AppMethodBeat.o(201213);
+      localObject = ((com.tencent.mm.plugin.vlog.player.d)localObject).getSize();
+      AppMethodBeat.o(207898);
       return localObject;
     }
-    AppMethodBeat.o(201213);
+    AppMethodBeat.o(207898);
     return null;
   }
   
   public final void l(final SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(111219);
-    ad.i("MicroMsg.VLogPreloadPlayView", "bindPreloadManager surfaceTexture:".concat(String.valueOf(paramSurfaceTexture)));
+    ac.i("MicroMsg.VLogPreloadPlayView", "bindPreloadManager surfaceTexture:".concat(String.valueOf(paramSurfaceTexture)));
     if (paramSurfaceTexture != null)
     {
       Object localObject1 = new StringBuilder("vLogDirector init : ");
-      Object localObject2 = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-      localObject2 = com.tencent.mm.plugin.vlog.ui.manager.d.fZc();
+      Object localObject2 = c.AsH;
+      localObject2 = c.egc();
       if (localObject2 != null)
       {
         i = localObject2.hashCode();
         localObject1 = ((StringBuilder)localObject1).append(i).append(", vLogSurface : ");
-        localObject2 = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-        localObject2 = com.tencent.mm.plugin.vlog.ui.manager.d.fZb();
+        localObject2 = c.AsH;
+        localObject2 = c.egb();
         if (localObject2 == null) {
           break label410;
         }
@@ -120,66 +121,66 @@ public final class VLogPreloadPlayView
       label410:
       for (int i = localObject2.hashCode();; i = 0)
       {
-        ad.i("MicroMsg.VLogPreloadPlayView", i);
-        localObject1 = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-        this.Lti = com.tencent.mm.plugin.vlog.ui.manager.d.fZc();
-        localObject1 = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-        this.LrT = ((com.tencent.mm.plugin.vlog.player.m)com.tencent.mm.plugin.vlog.ui.manager.d.fZb());
-        localObject1 = this.LrT;
+        ac.i("MicroMsg.VLogPreloadPlayView", i);
+        localObject1 = c.AsH;
+        this.ArL = c.egc();
+        localObject1 = c.AsH;
+        this.ApF = ((com.tencent.mm.plugin.vlog.player.l)c.egb());
+        localObject1 = this.ApF;
         if (localObject1 != null)
         {
-          localObject2 = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-          localObject2 = com.tencent.mm.plugin.vlog.ui.manager.d.fZb();
+          localObject2 = c.AsH;
+          localObject2 = c.egb();
           if (localObject2 == null) {
-            k.fvU();
+            k.fOy();
           }
-          localObject2 = ((i)localObject2).gsl;
+          localObject2 = ((h)localObject2).gre;
           if (localObject2 == null) {
-            k.fvU();
+            k.fOy();
           }
-          localObject2 = ((c.b)localObject2).gwo;
-          Object localObject3 = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-          localObject3 = com.tencent.mm.plugin.vlog.ui.manager.d.fZb();
+          localObject2 = ((c.b)localObject2).gWL;
+          Object localObject3 = c.AsH;
+          localObject3 = c.egb();
           if (localObject3 == null) {
-            k.fvU();
+            k.fOy();
           }
-          localObject3 = ((i)localObject3).gsl;
+          localObject3 = ((h)localObject3).gre;
           if (localObject3 == null) {
-            k.fvU();
+            k.fOy();
           }
-          ((com.tencent.mm.plugin.vlog.player.m)localObject1).a((EGLContext)localObject2, ((c.b)localObject3).gwm, new Surface(paramSurfaceTexture), getWidth(), getHeight());
+          ((com.tencent.mm.plugin.vlog.player.l)localObject1).a((EGLContext)localObject2, ((c.b)localObject3).gWK, new Surface(paramSurfaceTexture), getWidth(), getHeight());
         }
-        localObject1 = this.zcs;
+        localObject1 = this.Asu;
         if (localObject1 != null)
         {
-          ad.i("MicroMsg.VLogPreloadPlayView", "later set model: " + this.zcs);
-          localObject2 = this.Lti;
+          ac.i("MicroMsg.VLogPreloadPlayView", "later set model: " + this.Asu);
+          localObject2 = this.ArL;
           if (localObject2 != null) {
-            ((com.tencent.mm.plugin.vlog.player.h)localObject2).a((com.tencent.mm.plugin.vlog.model.h)localObject1, ((com.tencent.mm.plugin.vlog.model.h)localObject1).getVideoDurationMs(), ((com.tencent.mm.plugin.vlog.model.h)localObject1).yZt);
+            ((com.tencent.mm.plugin.vlog.player.d)localObject2).a((com.tencent.mm.plugin.vlog.model.y)localObject1, ((com.tencent.mm.plugin.vlog.model.y)localObject1).getVideoDurationMs(), ((com.tencent.mm.plugin.vlog.model.y)localObject1).AoW);
           }
         }
-        localObject1 = this.Lti;
+        localObject1 = this.ArL;
         if (localObject1 != null) {
-          ((com.tencent.mm.plugin.vlog.player.h)localObject1).fYW();
+          ((com.tencent.mm.plugin.vlog.player.d)localObject1).efT();
         }
-        localObject1 = this.Lti;
+        localObject1 = this.ArL;
         if (localObject1 != null)
         {
-          ((com.tencent.mm.plugin.vlog.player.h)localObject1).zaT = ((d.g.a.m)new b(this, paramSurfaceTexture));
-          ((com.tencent.mm.plugin.vlog.player.h)localObject1).LrU = ((b)new c(this, paramSurfaceTexture));
-          if (this.gtE != null) {
-            ((com.tencent.mm.plugin.vlog.player.h)localObject1).setCropRect(this.gtE);
+          ((com.tencent.mm.plugin.vlog.player.d)localObject1).ApG = ((m)new b(this, paramSurfaceTexture));
+          ((com.tencent.mm.plugin.vlog.player.d)localObject1).ApH = ((b)new c(this, paramSurfaceTexture));
+          if (this.gUl != null) {
+            ((com.tencent.mm.plugin.vlog.player.d)localObject1).setCropRect(this.gUl);
           }
         }
-        paramSurfaceTexture = this.Lti;
+        paramSurfaceTexture = this.ArL;
         if (paramSurfaceTexture != null) {
-          paramSurfaceTexture.cR(getWidth(), getHeight());
+          paramSurfaceTexture.cQ(getWidth(), getHeight());
         }
-        paramSurfaceTexture = this.Lti;
+        paramSurfaceTexture = this.ArL;
         if (paramSurfaceTexture == null) {
           break label415;
         }
-        com.tencent.mm.plugin.vlog.player.h.a(paramSurfaceTexture, null, false, 7);
+        com.tencent.mm.plugin.vlog.player.d.a(paramSurfaceTexture, null, false, 7);
         AppMethodBeat.o(111219);
         return;
         i = 0;
@@ -193,25 +194,25 @@ public final class VLogPreloadPlayView
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(111217);
-    ad.i("MicroMsg.VLogPreloadPlayView", "surfaceAvailable, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
-    this.gAZ = paramSurfaceTexture;
-    if (!this.zcO.isAlive())
+    ac.i("MicroMsg.VLogPreloadPlayView", "surfaceAvailable, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
+    this.hbv = paramSurfaceTexture;
+    if (!this.AuA.isAlive())
     {
-      this.zcO.start();
-      ad.i("MicroMsg.VLogPreloadPlayView", "previewPlayerThread is not alive, start");
+      this.AuA.start();
+      ac.i("MicroMsg.VLogPreloadPlayView", "previewPlayerThread is not alive, start");
     }
     for (;;)
     {
-      this.zcP = new ap(this.zcO.getLooper());
+      this.AuB = new ao(this.AuA.getLooper());
       l(paramSurfaceTexture);
-      paramSurfaceTexture = this.zcQ;
+      paramSurfaceTexture = this.Apv;
       if (paramSurfaceTexture == null) {
         break;
       }
       paramSurfaceTexture.n(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
       AppMethodBeat.o(111217);
       return;
-      ad.i("MicroMsg.VLogPreloadPlayView", "previewPlayerThread is alive");
+      ac.i("MicroMsg.VLogPreloadPlayView", "previewPlayerThread is alive");
     }
     AppMethodBeat.o(111217);
   }
@@ -219,7 +220,7 @@ public final class VLogPreloadPlayView
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(111216);
-    ad.i("MicroMsg.VLogPreloadPlayView", "surfaceDestroy");
+    ac.i("MicroMsg.VLogPreloadPlayView", "surfaceDestroy");
     if (paramSurfaceTexture != null) {
       paramSurfaceTexture.release();
     }
@@ -230,7 +231,7 @@ public final class VLogPreloadPlayView
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(111215);
-    ad.i("MicroMsg.VLogPreloadPlayView", "surfaceSizeChanged, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
+    ac.i("MicroMsg.VLogPreloadPlayView", "surfaceSizeChanged, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
     AppMethodBeat.o(111215);
   }
   
@@ -238,53 +239,50 @@ public final class VLogPreloadPlayView
   
   public final void setCropRect(Rect paramRect)
   {
-    AppMethodBeat.i(201212);
-    if (this.Lti == null)
+    AppMethodBeat.i(207897);
+    if (this.ArL == null)
     {
-      this.gtE = paramRect;
-      AppMethodBeat.o(201212);
+      this.gUl = paramRect;
+      AppMethodBeat.o(207897);
       return;
     }
-    com.tencent.mm.plugin.vlog.player.h localh = this.Lti;
-    if (localh != null)
+    com.tencent.mm.plugin.vlog.player.d locald = this.ArL;
+    if (locald != null)
     {
-      localh.setCropRect(paramRect);
-      AppMethodBeat.o(201212);
+      locald.setCropRect(paramRect);
+      AppMethodBeat.o(207897);
       return;
     }
-    AppMethodBeat.o(201212);
+    AppMethodBeat.o(207897);
   }
   
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(111218);
-    com.tencent.mm.plugin.vlog.player.h localh = this.Lti;
-    if (localh != null)
+    com.tencent.mm.plugin.vlog.player.d locald = this.ArL;
+    if (locald != null)
     {
-      localh.setMute(paramBoolean);
+      locald.setMute(paramBoolean);
       AppMethodBeat.o(111218);
       return;
     }
     AppMethodBeat.o(111218);
   }
   
-  public final void setOnProgressListener(d.g.a.m<? super Long, ? super Long, y> paramm)
+  public final void setOnProgressListener(m<? super Long, ? super Long, d.y> paramm)
   {
-    this.zaT = paramm;
+    this.ApG = paramm;
   }
   
-  public final void setOnSizeChangedListener(d.g.a.m<? super Integer, ? super Integer, y> paramm)
+  public final void setOnSizeChangedListener(m<? super Integer, ? super Integer, d.y> paramm)
   {
-    this.zcQ = paramm;
+    this.Apv = paramm;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "pts", "", "duration", "invoke", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$bindPreloadManager$1$2$1", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$$special$$inlined$apply$lambda$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "pts", "", "duration", "invoke", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$bindPreloadManager$1$2$1", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$$special$$inlined$apply$lambda$1"})
   static final class b
     extends d.g.b.l
-    implements d.g.a.m<Long, Long, y>
+    implements m<Long, Long, d.y>
   {
     b(VLogPreloadPlayView paramVLogPreloadPlayView, SurfaceTexture paramSurfaceTexture)
     {
@@ -292,10 +290,10 @@ public final class VLogPreloadPlayView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$bindPreloadManager$1$2$2", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$$special$$inlined$apply$lambda$2"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$bindPreloadManager$1$2$2", "com/tencent/mm/plugin/vlog/ui/preview/VLogPreloadPlayView$$special$$inlined$apply$lambda$2"})
   static final class c
     extends d.g.b.l
-    implements b<Long, y>
+    implements b<Long, d.y>
   {
     c(VLogPreloadPlayView paramVLogPreloadPlayView, SurfaceTexture paramSurfaceTexture)
     {
@@ -303,23 +301,23 @@ public final class VLogPreloadPlayView
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    d(com.tencent.mm.plugin.vlog.player.h paramh) {}
+    d(com.tencent.mm.plugin.vlog.player.d paramd) {}
     
     public final void run()
     {
       AppMethodBeat.i(111214);
-      com.tencent.mm.plugin.vlog.player.h.a(this.Lva, null, false, 7);
+      com.tencent.mm.plugin.vlog.player.d.a(this.AuI, null, false, 7);
       AppMethodBeat.o(111214);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.preview.VLogPreloadPlayView
  * JD-Core Version:    0.7.0.1
  */

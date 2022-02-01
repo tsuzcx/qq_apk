@@ -6,29 +6,29 @@ import com.tencent.mm.ui.chatting.view.a;
 public abstract interface a$b
   extends a<a.a>
 {
-  public abstract void A(boolean paramBoolean, int paramInt);
+  public abstract void B(boolean paramBoolean, int paramInt);
   
-  public abstract void Cs(int paramInt);
+  public abstract void Dn(int paramInt);
   
-  public abstract void YV(int paramInt);
+  public abstract void abh(int paramInt);
   
-  public abstract void cjL();
+  public abstract void crs();
   
-  public abstract void eZf();
+  public abstract void foU();
   
-  public abstract void eZg();
+  public abstract void foV();
   
-  public abstract void eZh();
+  public abstract void foW();
   
-  public abstract boolean eZi();
+  public abstract boolean foX();
   
   public abstract View getChildAt(int paramInt);
   
-  public abstract void iP(boolean paramBoolean);
+  public abstract void js(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e.a.b
  * JD-Core Version:    0.7.0.1
  */

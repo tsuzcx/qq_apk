@@ -1,45 +1,45 @@
 package com.tencent.mm.kernel.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Modifier;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class d
 {
-  private static final d gfU;
-  private ConcurrentHashMap<Class<? extends a>, c> gfS;
-  private a gfT;
+  private static final d gkA;
+  private ConcurrentHashMap<Class<? extends a>, c> gky;
+  private a gkz;
   
   static
   {
     AppMethodBeat.i(157489);
-    gfU = new d();
+    gkA = new d();
     AppMethodBeat.o(157489);
   }
   
   public d()
   {
     AppMethodBeat.i(157484);
-    this.gfS = new ConcurrentHashMap();
-    this.gfT = null;
+    this.gky = new ConcurrentHashMap();
+    this.gkz = null;
     AppMethodBeat.o(157484);
   }
   
   public void a(a parama)
   {
-    this.gfT = parama;
+    this.gkz = parama;
   }
   
   public final void ac(Class<? extends a> paramClass)
   {
     AppMethodBeat.i(157488);
-    c localc = (c)this.gfS.remove(paramClass);
+    c localc = (c)this.gky.remove(paramClass);
     if ((localc instanceof b)) {
-      ((b)localc).agw();
+      ((b)localc).ahN();
     }
-    if (this.gfT != null) {
-      this.gfT.b(paramClass, localc);
+    if (this.gkz != null) {
+      this.gkz.b(paramClass, localc);
     }
     AppMethodBeat.o(157488);
   }
@@ -47,23 +47,23 @@ public class d
   public final <T extends a> T al(Class<T> paramClass)
   {
     AppMethodBeat.i(157485);
-    Object localObject = (c)this.gfS.get(paramClass);
+    Object localObject = (c)this.gky.get(paramClass);
     if ((!paramClass.isInterface()) && (Modifier.isAbstract(paramClass.getModifiers()))) {
-      ad.w("MicroMsg.ServiceHub", "Did you call service by using the service implementation class ?? Use interface class instead!! Carl is warning u!");
+      ac.w("MicroMsg.ServiceHub", "Did you call service by using the service implementation class ?? Use interface class instead!! Carl is warning u!");
     }
     for (int i = 1;; i = 0)
     {
       if (localObject != null) {}
-      for (localObject = ((c)localObject).agx();; localObject = null)
+      for (localObject = ((c)localObject).ahO();; localObject = null)
       {
-        if (this.gfT != null) {
-          this.gfT.a(paramClass, (a)localObject);
+        if (this.gkz != null) {
+          this.gkz.a(paramClass, (a)localObject);
         }
         AppMethodBeat.o(157485);
         return localObject;
-        ad.e("MicroMsg.ServiceHub", "Service(%s) not found!!! ", new Object[] { paramClass });
+        ac.e("MicroMsg.ServiceHub", "Service(%s) not found!!! ", new Object[] { paramClass });
         if (i != 0) {
-          ad.e("MicroMsg.ServiceHub", "This error must cause by using implementation class to call service! Use interface instead! Understand?");
+          ac.e("MicroMsg.ServiceHub", "This error must cause by using implementation class to call service! Use interface instead! Understand?");
         }
       }
     }
@@ -79,14 +79,14 @@ public class d
   public final <T extends a, N extends T> void c(Class<T> paramClass, c<N> paramc)
   {
     AppMethodBeat.i(157487);
-    this.gfS.put(paramClass, paramc);
+    this.gky.put(paramClass, paramc);
     if ((paramc instanceof b)) {
-      ((b)paramc).agv();
+      ((b)paramc).ahM();
     }
-    if (this.gfT != null) {
-      this.gfT.a(paramClass, paramc);
+    if (this.gkz != null) {
+      this.gkz.a(paramClass, paramc);
     }
-    ad.i("MicroMsg.ServiceHub", "register service %s %s", new Object[] { paramClass, paramc });
+    ac.i("MicroMsg.ServiceHub", "register service %s %s", new Object[] { paramClass, paramc });
     AppMethodBeat.o(157487);
   }
   

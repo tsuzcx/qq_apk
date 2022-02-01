@@ -15,25 +15,25 @@ public class AudioMixInputParameters
   
   public AudioMixInputParameters(int paramInt, String paramString)
   {
-    AppMethodBeat.i(201540);
+    AppMethodBeat.i(197601);
     this.volumeRanges = new ArrayList();
     this.trackID = paramInt;
     this.audioTimePitchAlgorithm = paramString;
-    AppMethodBeat.o(201540);
+    AppMethodBeat.o(197601);
   }
   
   public boolean containsTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(201543);
+    AppMethodBeat.i(197604);
     Iterator localIterator = this.volumeRanges.iterator();
     while (localIterator.hasNext()) {
       if (((VolumeRange)localIterator.next()).timeRange.containsTime(paramCMTime))
       {
-        AppMethodBeat.o(201543);
+        AppMethodBeat.o(197604);
         return true;
       }
     }
-    AppMethodBeat.o(201543);
+    AppMethodBeat.o(197604);
     return false;
   }
   
@@ -54,7 +54,7 @@ public class AudioMixInputParameters
   
   public float getVolumeAtTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(201542);
+    AppMethodBeat.i(197603);
     long l1 = paramCMTime.getTimeUs();
     Iterator localIterator = this.volumeRanges.iterator();
     do
@@ -68,7 +68,7 @@ public class AudioMixInputParameters
     {
       if (paramCMTime == null)
       {
-        AppMethodBeat.o(201542);
+        AppMethodBeat.o(197603);
         return 1.0F;
       }
       long l2 = paramCMTime.timeRange.getStart().getTimeUs();
@@ -76,7 +76,7 @@ public class AudioMixInputParameters
       float f2 = paramCMTime.endVolume;
       float f3 = paramCMTime.startVolume;
       float f4 = 1.0F * (float)(l1 - l2) / (float)paramCMTime.timeRange.getDuration().getTimeUs();
-      AppMethodBeat.o(201542);
+      AppMethodBeat.o(197603);
       return f4 * (f2 - f3) + f1;
       paramCMTime = null;
     }
@@ -84,26 +84,26 @@ public class AudioMixInputParameters
   
   public VolumeRange getVolumeRampAtTimeRange(CMTime paramCMTime)
   {
-    AppMethodBeat.i(201541);
+    AppMethodBeat.i(197602);
     Iterator localIterator = this.volumeRanges.iterator();
     while (localIterator.hasNext())
     {
       VolumeRange localVolumeRange = (VolumeRange)localIterator.next();
       if (localVolumeRange.timeRange.containsTime(paramCMTime))
       {
-        AppMethodBeat.o(201541);
+        AppMethodBeat.o(197602);
         return localVolumeRange;
       }
     }
-    AppMethodBeat.o(201541);
+    AppMethodBeat.o(197602);
     return null;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(201544);
+    AppMethodBeat.i(197605);
     String str = "AudioMixInputParameters{trackID=" + this.trackID + ", audioTimePitchAlgorithm='" + this.audioTimePitchAlgorithm + '\'' + ", audioTapProcessor=" + this.audioTapProcessor + ", volumeRanges=" + this.volumeRanges + '}';
-    AppMethodBeat.o(201544);
+    AppMethodBeat.o(197605);
     return str;
   }
   
@@ -118,7 +118,7 @@ public class AudioMixInputParameters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.core.AudioMixInputParameters
  * JD-Core Version:    0.7.0.1
  */

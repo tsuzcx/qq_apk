@@ -4,9 +4,9 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,47 +15,23 @@ import org.json.JSONObject;
 
 public final class g
 {
-  public static void H(String paramString, Map<Integer, Object> paramMap)
+  public static void I(String paramString, Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80874);
-    if ((aj.eFJ()) || (aj.eFK()))
+    if ((ai.eVd()) || (ai.eVe()))
     {
-      e.J(paramString, paramMap);
+      e.K(paramString, paramMap);
       AppMethodBeat.o(80874);
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putString("report_data", bx(paramMap).toString());
+    localBundle.putString("report_data", bC(paramMap).toString());
     localBundle.putString("page_key", paramString);
     ToolsProcessIPCService.a(localBundle, a.class, null);
     AppMethodBeat.o(80874);
   }
   
-  public static Map<Integer, Object> bu(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(80876);
-    HashMap localHashMap = new HashMap();
-    if (paramJSONObject == null)
-    {
-      AppMethodBeat.o(80876);
-      return localHashMap;
-    }
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      int i = bt.getInt(str, -1);
-      if (i == -1) {
-        ad.i("MicroMsg.GameWebReportUtil", "reportData key error");
-      } else {
-        localHashMap.put(Integer.valueOf(i), paramJSONObject.opt(str));
-      }
-    }
-    AppMethodBeat.o(80876);
-    return localHashMap;
-  }
-  
-  private static JSONObject bx(Map<Integer, Object> paramMap)
+  private static JSONObject bC(Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80875);
     localJSONObject = new JSONObject();
@@ -78,6 +54,30 @@ public final class g
     {
       AppMethodBeat.o(80875);
     }
+  }
+  
+  public static Map<Integer, Object> bu(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(80876);
+    HashMap localHashMap = new HashMap();
+    if (paramJSONObject == null)
+    {
+      AppMethodBeat.o(80876);
+      return localHashMap;
+    }
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      int i = bs.getInt(str, -1);
+      if (i == -1) {
+        ac.i("MicroMsg.GameWebReportUtil", "reportData key error");
+      } else {
+        localHashMap.put(Integer.valueOf(i), paramJSONObject.opt(str));
+      }
+    }
+    AppMethodBeat.o(80876);
+    return localHashMap;
   }
   
   public static class a

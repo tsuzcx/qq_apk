@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bi.b;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bl;
 
 public final class kl
   extends b
 {
-  public a doR;
+  public a dmd;
+  public b dme;
   
   public kl()
   {
@@ -17,22 +17,30 @@ public final class kl
   
   private kl(byte paramByte)
   {
-    AppMethodBeat.i(123464);
-    this.doR = new a();
-    this.ESR = false;
+    AppMethodBeat.i(205764);
+    this.dmd = new a();
+    this.dme = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(123464);
+    AppMethodBeat.o(205764);
   }
   
   public static final class a
   {
-    public bl dbD;
-    public bi.b doS;
+    public Runnable csS;
+    public Bundle dmf;
+    public String dmg;
+    public int type = 0;
+  }
+  
+  public static final class b
+  {
+    public Bundle dmh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.kl
  * JD-Core Version:    0.7.0.1
  */

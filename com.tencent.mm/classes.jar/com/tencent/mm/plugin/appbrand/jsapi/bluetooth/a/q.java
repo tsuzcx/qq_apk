@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.i;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -20,20 +20,20 @@ public final class q
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(144527);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(56);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(56);
     if (paramJSONObject == null)
     {
-      ad.e("MicroMsg.JsApiWriteBLECharacteristicValue", "JsApiWriteBLECharacteristicValue data is null");
+      ac.e("MicroMsg.JsApiWriteBLECharacteristicValue", "JsApiWriteBLECharacteristicValue data is null");
       paramc.h(paramInt, e("fail:invalid data", null));
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(58, 59);
       AppMethodBeat.o(144527);
       return;
     }
-    ad.i("MicroMsg.JsApiWriteBLECharacteristicValue", "appId:%s writeBLECharacteristicValue data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.HS(paramc.getAppId());
+    ac.i("MicroMsg.JsApiWriteBLECharacteristicValue", "appId:%s writeBLECharacteristicValue data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.LX(paramc.getAppId());
     if (localb == null)
     {
-      ad.e("MicroMsg.JsApiWriteBLECharacteristicValue", "bleWorker is null, may not open ble");
+      ac.e("MicroMsg.JsApiWriteBLECharacteristicValue", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
       paramc.h(paramInt, k("fail:not init", paramJSONObject));
@@ -41,9 +41,9 @@ public final class q
       AppMethodBeat.o(144527);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aZd())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV())
     {
-      ad.e("MicroMsg.JsApiWriteBLECharacteristicValue", "adapter is null or not enabled!");
+      ac.e("MicroMsg.JsApiWriteBLECharacteristicValue", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
       paramc.h(paramInt, k("fail:not available", paramJSONObject));
@@ -58,9 +58,9 @@ public final class q
     boolean bool1 = paramJSONObject.optBoolean("debug", false);
     boolean bool2 = paramJSONObject.optBoolean("serial", true);
     paramJSONObject = new i(str2, str3, str4);
-    paramJSONObject.aMt = bool1;
-    paramJSONObject.jIS = false;
-    paramJSONObject.jIU = bool2;
+    paramJSONObject.aNj = bool1;
+    paramJSONObject.kjt = false;
+    paramJSONObject.kjv = bool2;
     localb.a(str1, paramJSONObject, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b()
     {
       public final void a(j paramAnonymousj)
@@ -72,14 +72,14 @@ public final class q
           HashMap localHashMap = new HashMap();
           localHashMap.put("errCode", Integer.valueOf(paramAnonymousj.errCode));
           paramc.h(paramInt, q.this.k(paramAnonymousj.errMsg, localHashMap));
-          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(58);
+          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(58);
           AppMethodBeat.o(144526);
           return;
         }
         paramAnonymousj = new HashMap();
         paramAnonymousj.put("errCode", Integer.valueOf(0));
         paramc.h(paramInt, q.this.k("ok", paramAnonymousj));
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lI(58);
+        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(58);
         AppMethodBeat.o(144526);
       }
     });

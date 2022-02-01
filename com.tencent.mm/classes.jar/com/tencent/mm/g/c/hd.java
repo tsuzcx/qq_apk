@@ -8,16 +8,13 @@ public abstract class hd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNn = "appIdHash".hashCode();
-  private static final int elJ = "appId".hashCode();
-  private static final int fgZ = "openDebug".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int fke = "permissionProtoBlob".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNh = true;
-  private boolean els = true;
-  private boolean fgY = true;
+  private boolean enx = true;
   public String field_appId;
-  public int field_appIdHash;
-  public boolean field_openDebug;
+  public byte[] field_permissionProtoBlob;
+  private boolean fkd = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -25,18 +22,18 @@ public abstract class hd
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eNn != k) {
+      if (enO != k) {
         break label65;
       }
-      this.field_appIdHash = paramCursor.getInt(i);
-      this.eNh = true;
+      this.field_appId = paramCursor.getString(i);
+      this.enx = true;
     }
     for (;;)
     {
@@ -44,24 +41,10 @@ public abstract class hd
       break label20;
       break;
       label65:
-      if (elJ == k)
-      {
-        this.field_appId = paramCursor.getString(i);
-      }
-      else
-      {
-        if (fgZ == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_openDebug = bool;
-            break;
-          }
-        }
-        if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (fke == k) {
+        this.field_permissionProtoBlob = paramCursor.getBlob(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -69,14 +52,11 @@ public abstract class hd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eNh) {
-      localContentValues.put("appIdHash", Integer.valueOf(this.field_appIdHash));
-    }
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.fgY) {
-      localContentValues.put("openDebug", Boolean.valueOf(this.field_openDebug));
+    if (this.fkd) {
+      localContentValues.put("permissionProtoBlob", this.field_permissionProtoBlob);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -15,9 +15,9 @@ public class WalletPayUBankcardDetailUI
   {
     AppMethodBeat.i(71993);
     super.onCreate(paramBundle);
-    if (1 == this.zMX.field_bankcardState)
+    if (1 == this.Bfr.field_bankcardState)
     {
-      dZK();
+      epg();
       findViewById(2131306672).setVisibility(8);
       findViewById(2131306671).setVisibility(8);
     }
@@ -27,7 +27,7 @@ public class WalletPayUBankcardDetailUI
       ((TextView)findViewById(2131306676)).setText(2131765048);
       AppMethodBeat.o(71993);
       return;
-      so(false);
+      tp(false);
     }
   }
   

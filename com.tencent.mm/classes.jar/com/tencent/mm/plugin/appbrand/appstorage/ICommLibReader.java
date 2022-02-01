@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.appcache.o;
 public abstract interface ICommLibReader
   extends Parcelable, b, o, Comparable<ICommLibReader>
 {
-  public abstract String DI(String paramString);
+  public abstract String HM(String paramString);
   
   public static final class a
     extends RuntimeException
@@ -15,7 +15,7 @@ public abstract interface ICommLibReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader
  * JD-Core Version:    0.7.0.1
  */

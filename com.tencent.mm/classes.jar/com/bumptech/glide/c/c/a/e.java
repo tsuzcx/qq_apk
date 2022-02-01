@@ -11,11 +11,11 @@ import java.net.URL;
 public final class e
   implements n<URL, InputStream>
 {
-  private final n<g, InputStream> aIi;
+  private final n<g, InputStream> aIY;
   
   public e(n<g, InputStream> paramn)
   {
-    this.aIi = paramn;
+    this.aIY = paramn;
   }
   
   public static final class a
@@ -32,7 +32,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.a.e
  * JD-Core Version:    0.7.0.1
  */

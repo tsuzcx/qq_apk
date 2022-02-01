@@ -18,13 +18,13 @@ public final class k
   public final void a(Context paramContext, f paramf)
   {
     AppMethodBeat.i(78704);
-    if (!paramf.ATa.isShown())
+    if (!paramf.Cln.isShown())
     {
-      paramf.ATa.reset();
-      paramf.ATa.erq();
-      paramf.ATa.show();
+      paramf.Cln.reset();
+      paramf.Cln.eGK();
+      paramf.Cln.show();
     }
-    h.vKh.dB(982, 8);
+    h.wUl.dB(982, 8);
     AppMethodBeat.o(78704);
   }
   

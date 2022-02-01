@@ -3,41 +3,41 @@ package com.tencent.mm.plugin.qqmail.b;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class r
 {
-  String dpv;
-  private String[] uLJ;
-  private String[] uLK;
-  private String[] uLL;
-  String uLM;
-  a[] uLN;
-  a[] uLO;
-  String uLh;
+  String dng;
+  String vTY;
+  private String[] vUA;
+  private String[] vUB;
+  String vUC;
+  a[] vUD;
+  a[] vUE;
+  private String[] vUz;
   
   public r(String paramString1, String[] paramArrayOfString1, String[] paramArrayOfString2, String[] paramArrayOfString3, String paramString2)
   {
     AppMethodBeat.i(122707);
-    this.dpv = null;
-    this.uLJ = null;
-    this.uLK = null;
-    this.uLL = null;
-    this.uLh = null;
-    this.uLM = null;
-    this.uLN = null;
-    this.uLO = null;
-    if (!bt.isNullOrNil(paramString1)) {
-      this.dpv = paramString1;
+    this.dng = null;
+    this.vUz = null;
+    this.vUA = null;
+    this.vUB = null;
+    this.vTY = null;
+    this.vUC = null;
+    this.vUD = null;
+    this.vUE = null;
+    if (!bs.isNullOrNil(paramString1)) {
+      this.dng = paramString1;
     }
     if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
     {
-      this.uLJ = paramArrayOfString1;
+      this.vUz = paramArrayOfString1;
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0)) {
         break label134;
       }
-      this.uLK = paramArrayOfString2;
+      this.vUA = paramArrayOfString2;
       label89:
       if ((paramArrayOfString3 == null) || (paramArrayOfString3.length <= 0)) {
         break label142;
@@ -45,25 +45,25 @@ public final class r
     }
     label134:
     label142:
-    for (this.uLL = paramArrayOfString3;; this.uLL = null)
+    for (this.vUB = paramArrayOfString3;; this.vUB = null)
     {
-      if (bt.isNullOrNil(paramString2)) {
+      if (bs.isNullOrNil(paramString2)) {
         break label150;
       }
-      this.uLh = paramString2;
+      this.vTY = paramString2;
       AppMethodBeat.o(122707);
       return;
-      this.uLJ = null;
+      this.vUz = null;
       break;
-      this.uLK = null;
+      this.vUA = null;
       break label89;
     }
     label150:
-    this.uLh = null;
+    this.vTY = null;
     AppMethodBeat.o(122707);
   }
   
-  public static String akX(String paramString)
+  public static String apW(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(122711);
@@ -91,8 +91,8 @@ public final class r
       char[] arrayOfChar;
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
-        ad.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        ac.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
+        ac.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
         paramString = null;
       }
       paramString = new String(arrayOfChar);
@@ -107,21 +107,21 @@ public final class r
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
-        ad.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        ac.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
+        ac.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
         paramString = localObject;
       }
     }
   }
   
-  final String ddX()
+  final String drF()
   {
     AppMethodBeat.i(122708);
-    if (this.uLJ != null)
+    if (this.vUz != null)
     {
       Object localObject1 = new StringBuilder("");
       ((StringBuilder)localObject1).append("To: ");
-      Object localObject2 = this.uLJ;
+      Object localObject2 = this.vUz;
       int j = localObject2.length;
       int i = 0;
       while (i < j)
@@ -152,14 +152,14 @@ public final class r
     return null;
   }
   
-  final String ddY()
+  final String drG()
   {
     AppMethodBeat.i(122709);
-    if (this.uLK != null)
+    if (this.vUA != null)
     {
       Object localObject1 = new StringBuilder("");
       ((StringBuilder)localObject1).append("Cc: ");
-      Object localObject2 = this.uLK;
+      Object localObject2 = this.vUA;
       int j = localObject2.length;
       int i = 0;
       while (i < j)
@@ -190,14 +190,14 @@ public final class r
     return null;
   }
   
-  final String ddZ()
+  final String drH()
   {
     AppMethodBeat.i(122710);
-    if (this.uLL != null)
+    if (this.vUB != null)
     {
       Object localObject1 = new StringBuilder("");
       ((StringBuilder)localObject1).append("Bcc: ");
-      Object localObject2 = this.uLK;
+      Object localObject2 = this.vUA;
       int j = localObject2.length;
       int i = 0;
       while (i < j)
@@ -233,7 +233,7 @@ public final class r
     String fileName;
     int fileSize;
     String name;
-    String uLP;
+    String vUF;
   }
 }
 

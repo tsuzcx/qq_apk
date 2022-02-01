@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.z.g;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,7 +68,7 @@ public abstract class d<CONTEXT extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.d
  * JD-Core Version:    0.7.0.1
  */

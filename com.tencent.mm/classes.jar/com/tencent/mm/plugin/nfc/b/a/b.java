@@ -5,33 +5,33 @@ import android.nfc.tech.IsoDep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.a.a;
 import com.tencent.mm.plugin.nfc.a.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   implements d
 {
-  private IsoDep ueX;
+  private IsoDep vnW;
   
   public b(Tag paramTag)
   {
     AppMethodBeat.i(26665);
     if (paramTag == null)
     {
-      ad.e("MicroMsg.ApduEngineIsoDep", "[NFC]tag is null");
+      ac.e("MicroMsg.ApduEngineIsoDep", "[NFC]tag is null");
       paramTag = new IllegalStateException("tag is null");
       AppMethodBeat.o(26665);
       throw paramTag;
     }
-    this.ueX = IsoDep.get(paramTag);
+    this.vnW = IsoDep.get(paramTag);
     AppMethodBeat.o(26665);
   }
   
   public final c a(a parama)
   {
     AppMethodBeat.i(26670);
-    if (this.ueX == null)
+    if (this.vnW == null)
     {
-      ad.e("MicroMsg.ApduEngineIsoDep", "[NFC]IsoDep is null");
+      ac.e("MicroMsg.ApduEngineIsoDep", "[NFC]IsoDep is null");
       parama = new IllegalStateException("IsoDep is null");
       AppMethodBeat.o(26670);
       throw parama;
@@ -43,11 +43,11 @@ public final class b
     c localc;
     for (;;)
     {
-      localc = new c(this.ueX.transceive(locala.getBytes()));
+      localc = new c(this.vnW.transceive(locala.getBytes()));
       localObject = parama;
-      if (localc.ueH.length != 0)
+      if (localc.vnG.length != 0)
       {
-        if (localc.ueH.length - 2 <= 0) {
+        if (localc.vnG.length - 2 <= 0) {
           localObject = localc;
         }
       }
@@ -57,10 +57,10 @@ public final class b
         AppMethodBeat.o(26670);
         return localObject;
       }
-      if (localc.cWB() != 108) {
+      if (localc.dkj() != 108) {
         break;
       }
-      locala.Iu(localc.cWC());
+      locala.Kt(localc.dkk());
     }
     if (parama == null) {
       parama = localc;
@@ -68,16 +68,35 @@ public final class b
     for (;;)
     {
       localObject = parama;
-      if (localc.cWB() != 97) {
+      if (localc.dkj() != 97) {
         break label92;
       }
-      locala = new a((byte[])com.tencent.mm.plugin.nfc.a.b.ueP.clone());
+      locala = new a((byte[])com.tencent.mm.plugin.nfc.a.b.vnO.clone());
       break;
       parama.a(localc);
     }
   }
   
-  public final boolean cWF()
+  public final void close()
+  {
+    AppMethodBeat.i(26667);
+    if (this.vnW.isConnected()) {
+      this.vnW.close();
+    }
+    AppMethodBeat.o(26667);
+  }
+  
+  public final boolean connect()
+  {
+    AppMethodBeat.i(26666);
+    if (!this.vnW.isConnected()) {
+      this.vnW.connect();
+    }
+    AppMethodBeat.o(26666);
+    return true;
+  }
+  
+  public final boolean dkn()
   {
     AppMethodBeat.i(26669);
     close();
@@ -86,29 +105,10 @@ public final class b
     return true;
   }
   
-  public final void close()
-  {
-    AppMethodBeat.i(26667);
-    if (this.ueX.isConnected()) {
-      this.ueX.close();
-    }
-    AppMethodBeat.o(26667);
-  }
-  
-  public final boolean connect()
-  {
-    AppMethodBeat.i(26666);
-    if (!this.ueX.isConnected()) {
-      this.ueX.connect();
-    }
-    AppMethodBeat.o(26666);
-    return true;
-  }
-  
   public final boolean isConnected()
   {
     AppMethodBeat.i(26668);
-    boolean bool = this.ueX.isConnected();
+    boolean bool = this.vnW.isConnected();
     AppMethodBeat.o(26668);
     return bool;
   }

@@ -1,6 +1,6 @@
 package d;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 16})
 public final class h {}
 
 

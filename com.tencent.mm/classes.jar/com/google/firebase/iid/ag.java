@@ -10,14 +10,14 @@ import java.security.PublicKey;
 
 final class ag
 {
-  final KeyPair bEq;
-  final long bEr;
+  final KeyPair bBY;
+  final long bBZ;
   
   @VisibleForTesting
   ag(KeyPair paramKeyPair, long paramLong)
   {
-    this.bEq = paramKeyPair;
-    this.bEr = paramLong;
+    this.bBY = paramKeyPair;
+    this.bBZ = paramLong;
   }
   
   public final boolean equals(Object paramObject)
@@ -29,7 +29,7 @@ final class ag
       return false;
     }
     paramObject = (ag)paramObject;
-    if ((this.bEr == paramObject.bEr) && (this.bEq.getPublic().equals(paramObject.bEq.getPublic())) && (this.bEq.getPrivate().equals(paramObject.bEq.getPrivate())))
+    if ((this.bBZ == paramObject.bBZ) && (this.bBY.getPublic().equals(paramObject.bBY.getPublic())) && (this.bBY.getPrivate().equals(paramObject.bBY.getPrivate())))
     {
       AppMethodBeat.o(4249);
       return true;
@@ -41,15 +41,15 @@ final class ag
   public final int hashCode()
   {
     AppMethodBeat.i(4250);
-    int i = Objects.hashCode(new Object[] { this.bEq.getPublic(), this.bEq.getPrivate(), Long.valueOf(this.bEr) });
+    int i = Objects.hashCode(new Object[] { this.bBY.getPublic(), this.bBY.getPrivate(), Long.valueOf(this.bBZ) });
     AppMethodBeat.o(4250);
     return i;
   }
   
-  final String xd()
+  final String wQ()
   {
     AppMethodBeat.i(4252);
-    String str = Base64.encodeToString(this.bEq.getPrivate().getEncoded(), 11);
+    String str = Base64.encodeToString(this.bBY.getPrivate().getEncoded(), 11);
     AppMethodBeat.o(4252);
     return str;
   }
@@ -57,7 +57,7 @@ final class ag
   final String zzq()
   {
     AppMethodBeat.i(4251);
-    String str = Base64.encodeToString(this.bEq.getPublic().getEncoded(), 11);
+    String str = Base64.encodeToString(this.bBY.getPublic().getEncoded(), 11);
     AppMethodBeat.o(4251);
     return str;
   }

@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.appbrand.launching;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.bh.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 abstract class al
   implements bh.a
 {
-  final boolean fQA;
-  final int gXn;
+  final boolean fUv;
+  final int hxM;
   
   al(int paramInt)
   {
@@ -18,29 +18,29 @@ abstract class al
   
   al(int paramInt, boolean paramBoolean)
   {
-    this.gXn = paramInt;
-    this.fQA = paramBoolean;
+    this.hxM = paramInt;
+    this.fUv = paramBoolean;
   }
   
-  private void Kj(String paramString)
+  private void Oq(String paramString)
   {
-    if (this.fQA)
+    if (this.fUv)
     {
-      bc.Kj(paramString);
+      bc.Oq(paramString);
       return;
     }
-    ad.e("MicroMsg.AppBrand.LaunchCommonDownloadCallback", "silent toast: %s", new Object[] { paramString });
+    ac.e("MicroMsg.AppBrand.LaunchCommonDownloadCallback", "silent toast: %s", new Object[] { paramString });
   }
   
-  abstract String bgJ();
+  protected void b(WxaPkgLoadProgress paramWxaPkgLoadProgress) {}
   
-  protected void c(WxaPkgLoadProgress paramWxaPkgLoadProgress) {}
+  abstract String bnD();
   
   abstract void e(WxaPkgWrappingInfo paramWxaPkgWrappingInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.al
  * JD-Core Version:    0.7.0.1
  */

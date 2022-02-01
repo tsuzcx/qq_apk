@@ -1,18 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
-import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ac;
+import org.json.JSONObject;
 
-public final class f
-  extends y<aa>
+public class f
+  extends d<q>
 {
-  private static final int CTRL_INDEX = -2;
-  private static final String NAME = "restoreWebviewFocus";
+  private static final int CTRL_INDEX = 587;
+  private static final String NAME = "disableLocationUpdate";
+  
+  public void a(q paramq, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(138192);
+    super.a(paramq, paramJSONObject, paramInt);
+    if (!(this.ksX instanceof r))
+    {
+      ac.w("MicroMsg.AppBrand.JsApiDisableLocationUpdateWxa", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      paramq.h(paramInt, e("fail:system error", null));
+      AppMethodBeat.o(138192);
+      return;
+    }
+    ((r)this.ksX).ad(paramq.getRuntime());
+    AppMethodBeat.o(138192);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.d.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.w;
@@ -10,65 +10,65 @@ import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bl.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bo.b;
 import java.util.Set;
 
 public final class a$a
 {
-  Set<Long> sOD;
-  private c.a sOE;
+  Set<Long> tWQ;
+  private c.a tWR;
   
   public a$a()
   {
     AppMethodBeat.i(55679);
-    this.sOE = new c.a()
+    this.tWR = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
         AppMethodBeat.i(55678);
         a.a locala = a.a.this;
-        bl localbl;
+        bo localbo;
         int i;
         boolean bool;
         Object localObject;
         if ((paramAnonymousAddr.tag != null) && ((paramAnonymousAddr.tag instanceof Long)))
         {
           long l = ((Long)paramAnonymousAddr.tag).longValue();
-          localbl = ((k)g.ab(k.class)).cOI().rm(l);
-          if (!bt.isNullOrNil(paramAnonymousAddr.hdQ))
+          localbo = ((k)g.ab(k.class)).dcr().vP(l);
+          if (!bs.isNullOrNil(paramAnonymousAddr.hEt))
           {
-            String str = localbl.field_content;
-            if (localbl.field_isSend != 0) {
+            String str = localbo.field_content;
+            if (localbo.field_isSend != 0) {
               break label573;
             }
             i = 1;
-            bool = w.pF(localbl.field_talker);
+            bool = w.sQ(localbo.field_talker);
             localObject = str;
             if (bool)
             {
               localObject = str;
               if (i != 0)
               {
-                int j = bi.uc(str);
+                int j = bi.yi(str);
                 localObject = str;
                 if (j != -1) {
                   localObject = str.substring(j + 1).trim();
                 }
               }
             }
-            localObject = bl.b.aIP((String)localObject);
-            ((bl.b)localObject).label = paramAnonymousAddr.axP();
+            localObject = bo.b.aOl((String)localObject);
+            ((bo.b)localObject).label = paramAnonymousAddr.aEH();
             if ((!bool) || (i == 0)) {
               break label584;
             }
-            i = bi.uc(localbl.field_content);
+            i = bi.yi(localbo.field_content);
             if (i == -1) {
               break label584;
             }
-            paramAnonymousAddr = localbl.field_content.substring(0, i).trim();
+            paramAnonymousAddr = localbo.field_content.substring(0, i).trim();
             if (paramAnonymousAddr.length() <= 0) {
               break label584;
             }
@@ -76,32 +76,32 @@ public final class a$a
         }
         for (;;)
         {
-          if ((((bl.b)localObject).FAg == null) || (((bl.b)localObject).FAg.equals(""))) {
-            ((bl.b)localObject).FAg = "";
+          if ((((bo.b)localObject).GZi == null) || (((bo.b)localObject).GZi.equals(""))) {
+            ((bo.b)localObject).GZi = "";
           }
-          if ((((bl.b)localObject).FAf == null) || (((bl.b)localObject).FAf.equals(""))) {
-            ((bl.b)localObject).FAg = "";
+          if ((((bo.b)localObject).GZh == null) || (((bo.b)localObject).GZh.equals(""))) {
+            ((bo.b)localObject).GZi = "";
           }
-          if ((((bl.b)localObject).FAe == null) || (((bl.b)localObject).FAe.equals(""))) {
-            ((bl.b)localObject).FAe = "";
+          if ((((bo.b)localObject).GZg == null) || (((bo.b)localObject).GZg.equals(""))) {
+            ((bo.b)localObject).GZg = "";
           }
-          if ((((bl.b)localObject).yGA == null) || (((bl.b)localObject).yGA.equals(""))) {
-            ((bl.b)localObject).yGA = "";
+          if ((((bo.b)localObject).zTO == null) || (((bo.b)localObject).zTO.equals(""))) {
+            ((bo.b)localObject).zTO = "";
           }
-          if ((((bl.b)localObject).label == null) || (((bl.b)localObject).label.equals(""))) {
-            ((bl.b)localObject).label = "";
+          if ((((bo.b)localObject).label == null) || (((bo.b)localObject).label.equals(""))) {
+            ((bo.b)localObject).label = "";
           }
-          if ((((bl.b)localObject).FAd == null) || (((bl.b)localObject).FAd.equals(""))) {
-            ((bl.b)localObject).FAd = "";
+          if ((((bo.b)localObject).GZf == null) || (((bo.b)localObject).GZf.equals(""))) {
+            ((bo.b)localObject).GZf = "";
           }
-          localObject = "<msg><location x=\"" + ((bl.b)localObject).sOv + "\" y=\"" + ((bl.b)localObject).sOw + "\" scale=\"" + ((bl.b)localObject).dpd + "\" label=\"" + ((bl.b)localObject).label + "\" maptype=\"" + ((bl.b)localObject).FAd + "\"  fromusername=\"" + ((bl.b)localObject).yGA + "\" /></msg>";
+          localObject = "<msg><location x=\"" + ((bo.b)localObject).tWI + "\" y=\"" + ((bo.b)localObject).tWJ + "\" scale=\"" + ((bo.b)localObject).dmN + "\" label=\"" + ((bo.b)localObject).label + "\" maptype=\"" + ((bo.b)localObject).GZf + "\"  fromusername=\"" + ((bo.b)localObject).zTO + "\" /></msg>";
           if ((bool) && (!paramAnonymousAddr.equals(""))) {}
           for (paramAnonymousAddr = paramAnonymousAddr + ":\n" + (String)localObject;; paramAnonymousAddr = (Addr)localObject)
           {
-            ad.d("MicroMsg.LocationServer", "xml: ".concat(String.valueOf(paramAnonymousAddr)));
-            localbl.setContent(paramAnonymousAddr);
-            ((k)g.ab(k.class)).cOI().a(localbl.field_msgId, localbl);
-            locala.sOD.remove(Long.valueOf(localbl.field_msgId));
+            ac.d("MicroMsg.LocationServer", "xml: ".concat(String.valueOf(paramAnonymousAddr)));
+            localbo.setContent(paramAnonymousAddr);
+            ((k)g.ab(k.class)).dcr().a(localbo.field_msgId, localbo);
+            locala.tWQ.remove(Long.valueOf(localbo.field_msgId));
             AppMethodBeat.o(55678);
             return;
             label573:
@@ -116,13 +116,13 @@ public final class a$a
     AppMethodBeat.o(55679);
   }
   
-  public final String[] ak(bl parambl)
+  public final String[] am(bo parambo)
   {
     int j = 1;
     AppMethodBeat.i(55681);
     String[] arrayOfString = new String[2];
-    Object localObject2 = parambl.field_content;
-    if (bt.isNullOrNil((String)localObject2))
+    Object localObject2 = parambo.field_content;
+    if (bs.isNullOrNil((String)localObject2))
     {
       arrayOfString[0] = "";
       arrayOfString[1] = "";
@@ -132,38 +132,38 @@ public final class a$a
     Object localObject1;
     label162:
     long l;
-    if (parambl.field_isSend == 0)
+    if (parambo.field_isSend == 0)
     {
       i = 1;
       localObject1 = localObject2;
-      if (w.pF(parambl.field_talker))
+      if (w.sQ(parambo.field_talker))
       {
         localObject1 = localObject2;
         if (i != 0)
         {
-          i = bi.uc((String)localObject2);
+          i = bi.yi((String)localObject2);
           localObject1 = localObject2;
           if (i != -1) {
             localObject1 = ((String)localObject2).substring(i + 1).trim();
           }
         }
       }
-      localObject2 = ((k)g.ab(k.class)).cOI().agD((String)localObject1);
-      if (!((bl.b)localObject2).eMH()) {
+      localObject2 = ((k)g.ab(k.class)).dcr().alx((String)localObject1);
+      if (!((bo.b)localObject2).fcm()) {
         break label347;
       }
-      localObject1 = ((bl.b)localObject2).label;
-      localObject2 = ((bl.b)localObject2).goQ;
+      localObject1 = ((bo.b)localObject2).label;
+      localObject2 = ((bo.b)localObject2).gPy;
       arrayOfString[0] = localObject1;
       arrayOfString[1] = localObject2;
-      if ((bt.isNullOrNil(arrayOfString[0])) && (bt.isNullOrNil(arrayOfString[1])))
+      if ((bs.isNullOrNil(arrayOfString[0])) && (bs.isNullOrNil(arrayOfString[1])))
       {
-        ad.i("MicroMsg.LocationServer", "pull from sever");
-        l = parambl.field_msgId;
-        if ((this.sOD != null) && (!this.sOD.contains(Long.valueOf(l))))
+        ac.i("MicroMsg.LocationServer", "pull from sever");
+        l = parambo.field_msgId;
+        if ((this.tWQ != null) && (!this.tWQ.contains(Long.valueOf(l))))
         {
-          localObject2 = parambl.field_content;
-          if (parambl.field_isSend != 0) {
+          localObject2 = parambo.field_content;
+          if (parambo.field_isSend != 0) {
             break label365;
           }
         }
@@ -174,44 +174,44 @@ public final class a$a
     for (int i = j;; i = 0)
     {
       localObject1 = localObject2;
-      if (w.pF(parambl.field_talker))
+      if (w.sQ(parambo.field_talker))
       {
         localObject1 = localObject2;
         if (i != 0)
         {
-          i = bi.uc((String)localObject2);
+          i = bi.yi((String)localObject2);
           localObject1 = localObject2;
           if (i != -1) {
             localObject1 = ((String)localObject2).substring(i + 1).trim();
           }
         }
       }
-      localObject1 = bl.b.aIP((String)localObject1);
-      this.sOD.add(Long.valueOf(l));
-      c.axQ().a(((bl.b)localObject1).sOv, ((bl.b)localObject1).sOw, this.sOE, Long.valueOf(parambl.field_msgId));
+      localObject1 = bo.b.aOl((String)localObject1);
+      this.tWQ.add(Long.valueOf(l));
+      c.aEI().a(((bo.b)localObject1).tWI, ((bo.b)localObject1).tWJ, this.tWR, Long.valueOf(parambo.field_msgId));
       AppMethodBeat.o(55681);
       return arrayOfString;
       i = 0;
       break;
-      arrayOfString[0] = ((bl.b)localObject2).label;
+      arrayOfString[0] = ((bo.b)localObject2).label;
       arrayOfString[1] = "";
       break label162;
     }
   }
   
-  public final void cJi()
+  public final void cWN()
   {
     AppMethodBeat.i(55680);
-    if (this.sOD != null) {
-      this.sOD.clear();
+    if (this.tWQ != null) {
+      this.tWQ.clear();
     }
-    c.axQ().a(this.sOE);
+    c.aEI().a(this.tWR);
     AppMethodBeat.o(55680);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.a.a
  * JD-Core Version:    0.7.0.1
  */

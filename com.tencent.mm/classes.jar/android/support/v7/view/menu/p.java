@@ -8,7 +8,7 @@ public abstract interface p
   {
     public abstract void a(j paramj);
     
-    public abstract boolean be();
+    public abstract boolean bl();
     
     public abstract j getItemData();
   }

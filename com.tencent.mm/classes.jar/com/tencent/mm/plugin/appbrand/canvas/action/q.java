@@ -10,14 +10,14 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFillStyleActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONArray;
 
 public final class q
@@ -46,7 +46,7 @@ public final class q
       return false;
     }
     Object localObject = paramJSONArray.optString(0);
-    paramCanvas = paramd.iYM;
+    paramCanvas = paramd.jzc;
     float f1;
     float f2;
     float f3;
@@ -115,7 +115,7 @@ public final class q
             f3 = g.f(paramd, 2);
             if (f3 <= 0.0F)
             {
-              ad.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
+              ac.i("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle(radial) failed, sr(%s) <= 0.", new Object[] { Float.valueOf(f3) });
               AppMethodBeat.o(144915);
               return false;
             }
@@ -153,16 +153,16 @@ public final class q
       } while (!"pattern".equalsIgnoreCase((String)localObject));
       localObject = paramJSONArray.optString(1);
       paramJSONArray = paramJSONArray.optString(2);
-      if (bt.isNullOrNil((String)localObject))
+      if (bs.isNullOrNil((String)localObject))
       {
-        ad.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
+        ac.w("MicroMsg.Canvas.SetFillStyleAction", "setFillStyle failed, type is pattern but image path is null or nil.");
         AppMethodBeat.o(144915);
         return false;
       }
-      paramd = paramd.iYR.a(paramd, (String)localObject);
+      paramd = paramd.jzh.a(paramd, (String)localObject);
     } while ((paramd == null) || (paramd.isRecycled()));
-    int j = g.um(paramd.getWidth());
-    int k = g.um(paramd.getHeight());
+    int j = g.ve(paramd.getWidth());
+    int k = g.ve(paramd.getHeight());
     int i = -1;
     switch (paramJSONArray.hashCode())
     {
@@ -218,7 +218,7 @@ public final class q
     }
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144914);
     SetFillStyleActionArg localSetFillStyleActionArg = new SetFillStyleActionArg();
@@ -233,7 +233,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.q
  * JD-Core Version:    0.7.0.1
  */

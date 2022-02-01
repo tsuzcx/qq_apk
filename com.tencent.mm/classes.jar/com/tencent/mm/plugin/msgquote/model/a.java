@@ -4,29 +4,33 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.kp;
-import com.tencent.mm.g.a.kp.b;
-import com.tencent.mm.g.a.pn;
-import com.tencent.mm.g.a.pn.b;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.ky;
+import com.tencent.mm.g.a.ky.b;
+import com.tencent.mm.g.a.pw;
+import com.tencent.mm.g.a.pw.b;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aj;
 import com.tencent.mm.model.bi;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.x;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public static Pair<Boolean, CharSequence> a(Context paramContext, float paramFloat, bl parambl, MsgQuoteItem paramMsgQuoteItem)
+  public static Pair<Boolean, CharSequence> a(Context paramContext, float paramFloat, bo parambo, MsgQuoteItem paramMsgQuoteItem)
   {
     AppMethodBeat.i(88796);
     if (paramMsgQuoteItem == null)
@@ -35,7 +39,7 @@ public final class a
       AppMethodBeat.o(88796);
       return paramContext;
     }
-    com.tencent.mm.plugin.msgquote.a.b localb = ((com.tencent.mm.plugin.msgquote.a)g.ad(com.tencent.mm.plugin.msgquote.a.class)).getMsgQuoteStorage().rv(paramMsgQuoteItem.tNr);
+    com.tencent.mm.plugin.msgquote.a.b localb = ((com.tencent.mm.plugin.msgquote.a)g.ad(com.tencent.mm.plugin.msgquote.a.class)).getMsgQuoteStorage().vY(paramMsgQuoteItem.uVU);
     if ((localb != null) && (localb.field_status == 1))
     {
       paramContext = new Pair(Boolean.FALSE, paramContext.getString(2131761368));
@@ -43,21 +47,21 @@ public final class a
       return paramContext;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, bt.by(paramMsgQuoteItem.tNu, "null"), paramFloat));
+    localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, bs.bG(paramMsgQuoteItem.uVX, "null"), paramFloat));
     localStringBuilder.append("：");
-    bl localbl = new bl();
-    localbl.setType(paramMsgQuoteItem.type);
-    localbl.setContent(paramMsgQuoteItem.content);
-    localbl.setMsgId(parambl.field_msgId);
-    localbl.nY(paramMsgQuoteItem.tNs);
-    parambl = a(paramContext, localbl, false);
-    if (!bt.isNullOrNil(parambl)) {
-      localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, parambl, paramFloat));
+    bo localbo = new bo();
+    localbo.setType(paramMsgQuoteItem.type);
+    localbo.setContent(paramMsgQuoteItem.content);
+    localbo.setMsgId(parambo.field_msgId);
+    localbo.re(paramMsgQuoteItem.uVV);
+    parambo = a(paramContext, localbo, false);
+    if (!bs.isNullOrNil(parambo)) {
+      localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, parambo, paramFloat));
     }
     if (localb == null)
     {
-      ad.e("MicroMsg.msgquote.MsgQuoteHelp", "getShowSummary() msgQute is null");
-      if (bt.isNullOrNil(localStringBuilder.toString()))
+      ac.e("MicroMsg.msgquote.MsgQuoteHelp", "getShowSummary() msgQute is null");
+      if (bs.isNullOrNil(localStringBuilder.toString()))
       {
         paramContext = new Pair(Boolean.FALSE, "");
         AppMethodBeat.o(88796);
@@ -69,11 +73,11 @@ public final class a
     return paramContext;
   }
   
-  public static CharSequence a(Context paramContext, float paramFloat, bl parambl)
+  public static CharSequence a(Context paramContext, float paramFloat, bo parambo)
   {
     AppMethodBeat.i(88795);
     StringBuilder localStringBuilder = new StringBuilder();
-    String str2 = as(parambl);
+    String str2 = au(parambo);
     String str1;
     if (str2 != null)
     {
@@ -86,28 +90,28 @@ public final class a
     }
     localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, str1, paramFloat));
     localStringBuilder.append("：");
-    parambl = a(paramContext, parambl, com.tencent.mm.model.w.pF(parambl.field_talker));
-    if (!bt.isNullOrNil(parambl)) {
-      localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, parambl, paramFloat));
+    parambo = a(paramContext, parambo, w.sQ(parambo.field_talker));
+    if (!bs.isNullOrNil(parambo)) {
+      localStringBuilder.append(com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, parambo, paramFloat));
     }
     AppMethodBeat.o(88795);
     return localStringBuilder;
   }
   
-  private static String a(Context paramContext, bl parambl, boolean paramBoolean)
+  private static String a(Context paramContext, bo parambo, boolean paramBoolean)
   {
     AppMethodBeat.i(88797);
     Object localObject = paramContext;
     if (paramContext == null) {
-      localObject = com.tencent.mm.sdk.platformtools.aj.getContext();
+      localObject = ai.getContext();
     }
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(88797);
       return "";
     }
     String str = "";
-    switch (parambl.getType())
+    switch (parambo.getType())
     {
     default: 
       paramContext = ((Context)localObject).getString(2131761361);
@@ -116,14 +120,14 @@ public final class a
     {
       AppMethodBeat.o(88797);
       return paramContext;
-      paramContext = parambl.field_content;
+      paramContext = parambo.field_content;
       localObject = paramContext;
       if (paramBoolean)
       {
         localObject = paramContext;
-        if (!at(parambl))
+        if (!av(parambo))
         {
-          int i = bi.uc(paramContext);
+          int i = bi.yi(paramContext);
           localObject = paramContext;
           if (i != -1) {
             localObject = paramContext.substring(i + 1);
@@ -141,14 +145,14 @@ public final class a
         continue;
         str = ((Context)localObject).getString(2131761364);
         paramContext = str;
-        if (com.tencent.mm.bs.d.axB("location"))
+        if (com.tencent.mm.br.d.aCT("location"))
         {
-          kp localkp = new kp();
-          localkp.dpf.doZ = 1;
-          localkp.dpf.dbD = parambl;
-          com.tencent.mm.sdk.b.a.ESL.l(localkp);
-          paramContext = localkp.dpg.dpi;
-          parambl = localkp.dpg.dld;
+          ky localky = new ky();
+          localky.dmP.dmJ = 1;
+          localky.dmP.cZc = parambo;
+          com.tencent.mm.sdk.b.a.GpY.l(localky);
+          paramContext = localky.dmQ.dmS;
+          parambo = localky.dmQ.diM;
           if (e(paramContext, (Context)localObject))
           {
             paramContext = str + paramContext;
@@ -156,16 +160,16 @@ public final class a
           else
           {
             paramContext = str;
-            if (ahk(localkp.dpg.dld))
+            if (amf(localky.dmQ.diM))
             {
-              paramContext = str + parambl;
+              paramContext = str + parambo;
               continue;
               paramContext = ((Context)localObject).getString(2131761362);
               continue;
-              parambl = k.b.rx(parambl.field_content);
+              parambo = k.b.vA(parambo.field_content);
               paramContext = str;
-              if (parambl != null) {
-                switch (parambl.type)
+              if (parambo != null) {
+                switch (parambo.type)
                 {
                 default: 
                   paramContext = str;
@@ -174,24 +178,24 @@ public final class a
                 case 53: 
                 case 57: 
                   paramContext = str;
-                  if (parambl.title != null)
+                  if (parambo.title != null)
                   {
                     paramContext = str;
-                    if (parambl.title.length() > 0) {
-                      paramContext = parambl.title;
+                    if (parambo.title.length() > 0) {
+                      paramContext = parambo.title;
                     }
                   }
                   break;
                 case 6: 
-                  if ((parambl.title != null) && (parambl.title.length() > 0)) {
-                    paramContext = ((Context)localObject).getString(2131761363, new Object[] { parambl.title });
+                  if ((parambo.title != null) && (parambo.title.length() > 0)) {
+                    paramContext = ((Context)localObject).getString(2131761363, new Object[] { parambo.title });
                   } else {
                     paramContext = ((Context)localObject).getString(2131761363, new Object[] { "" });
                   }
                   break;
                 case 5: 
-                  if ((parambl.title != null) && (parambl.title.length() > 0)) {
-                    paramContext = ((Context)localObject).getString(2131761370, new Object[] { parambl.title });
+                  if ((parambo.title != null) && (parambo.title.length() > 0)) {
+                    paramContext = ((Context)localObject).getString(2131761370, new Object[] { parambo.title });
                   } else {
                     paramContext = ((Context)localObject).getString(2131761370, new Object[] { "" });
                   }
@@ -200,18 +204,18 @@ public final class a
                 case 36: 
                 case 44: 
                 case 48: 
-                  if ((parambl.title != null) && (parambl.title.length() > 0)) {
-                    paramContext = ((Context)localObject).getString(2131761360, new Object[] { parambl.title });
+                  if ((parambo.title != null) && (parambo.title.length() > 0)) {
+                    paramContext = ((Context)localObject).getString(2131761360, new Object[] { parambo.title });
                   } else {
                     paramContext = ((Context)localObject).getString(2131761360, new Object[] { "" });
                   }
                   break;
                 case 24: 
-                  paramContext = ((Context)localObject).getString(2131761366, new Object[] { e(parambl) });
+                  paramContext = ((Context)localObject).getString(2131761366, new Object[] { e(parambo) });
                   break;
                 case 3: 
-                  if ((parambl.title != null) && (parambl.title.length() > 0)) {
-                    paramContext = ((Context)localObject).getString(2131761365, new Object[] { parambl.title });
+                  if ((parambo.title != null) && (parambo.title.length() > 0)) {
+                    paramContext = ((Context)localObject).getString(2131761365, new Object[] { parambo.title });
                   } else {
                     paramContext = ((Context)localObject).getString(2131761365, new Object[] { "" });
                   }
@@ -227,7 +231,7 @@ public final class a
     }
   }
   
-  private static boolean ahk(String paramString)
+  private static boolean amf(String paramString)
   {
     AppMethodBeat.i(88799);
     if ((paramString != null) && (!paramString.equals("")) && (!paramString.equals("err_not_started")))
@@ -239,56 +243,56 @@ public final class a
     return false;
   }
   
-  public static String as(bl parambl)
+  public static String au(bo parambo)
   {
     AppMethodBeat.i(88794);
-    if (parambl == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(88794);
       return "";
     }
-    String str = com.tencent.mm.util.d.cs(parambl);
+    String str = com.tencent.mm.util.d.cv(parambo);
     Object localObject2 = "";
     Object localObject1 = localObject2;
-    if (com.tencent.mm.model.w.pF(parambl.field_talker))
+    if (w.sQ(parambo.field_talker))
     {
-      parambl = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tH(parambl.field_talker);
+      parambo = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(parambo.field_talker);
       localObject1 = localObject2;
-      if (parambl != null)
+      if (parambo != null)
       {
-        parambl = parambl.sh(str);
+        parambo = parambo.wk(str);
         localObject1 = localObject2;
-        if (!bt.isNullOrNil(parambl)) {
-          localObject1 = parambl;
+        if (!bs.isNullOrNil(parambo)) {
+          localObject1 = parambo;
         }
       }
     }
-    parambl = (bl)localObject1;
-    if (bt.isNullOrNil((String)localObject1))
+    parambo = (bo)localObject1;
+    if (bs.isNullOrNil((String)localObject1))
     {
-      localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(str);
-      parambl = (bl)localObject1;
+      localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(str);
+      parambo = (bo)localObject1;
       if (localObject2 != null) {
-        parambl = ((au)localObject2).field_nickname;
+        parambo = ((av)localObject2).field_nickname;
       }
     }
-    localObject1 = parambl;
-    if (bt.isNullOrNil(parambl)) {
+    localObject1 = parambo;
+    if (bs.isNullOrNil(parambo)) {
       localObject1 = str;
     }
     AppMethodBeat.o(88794);
     return localObject1;
   }
   
-  private static boolean at(bl parambl)
+  private static boolean av(bo parambo)
   {
-    return parambl.field_isSend == 1;
+    return parambo.field_isSend == 1;
   }
   
-  public static boolean cRr()
+  public static boolean dfb()
   {
     AppMethodBeat.i(88801);
-    if (((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pvb, 0) == 1)
+    if (((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pZp, 0) == 1)
     {
       AppMethodBeat.o(88801);
       return true;
@@ -300,33 +304,33 @@ public final class a
   private static String e(k.b paramb)
   {
     AppMethodBeat.i(88800);
-    Object localObject1 = new pn();
-    ((pn)localObject1).dvb.type = 0;
-    ((pn)localObject1).dvb.dvd = paramb.gHI;
-    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
-    localObject1 = ((pn)localObject1).dvc.dvl;
+    Object localObject1 = new pw();
+    ((pw)localObject1).dsN.type = 0;
+    ((pw)localObject1).dsN.dsP = paramb.hij;
+    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+    localObject1 = ((pw)localObject1).dsO.dsX;
     paramb = null;
-    Object localObject2 = ((com.tencent.mm.protocal.b.a.c)localObject1).gKs.iterator();
+    Object localObject2 = ((com.tencent.mm.protocal.b.a.c)localObject1).hkS.iterator();
     int i = 0;
-    afy localafy;
+    agx localagx;
     while (((Iterator)localObject2).hasNext())
     {
-      localafy = (afy)((Iterator)localObject2).next();
-      if ((!l.j(localafy)) || (bt.isNullOrNil(localafy.Dhb)) || (!localafy.Dhb.equals("WeNoteHtmlFile"))) {
-        switch (localafy.dataType)
+      localagx = (agx)((Iterator)localObject2).next();
+      if ((!l.j(localagx)) || (bs.isNullOrNil(localagx.EAh)) || (!localagx.EAh.equals("WeNoteHtmlFile"))) {
+        switch (localagx.dataType)
         {
         default: 
           break;
         case 1: 
           if (i == 0)
           {
-            String str = localafy.desc;
-            if (!bt.isNullOrNil(str))
+            String str = localagx.desc;
+            if (!bs.isNullOrNil(str))
             {
-              if (bt.isNullOrNil(str.replaceAll("\n", "").trim())) {
+              if (bs.isNullOrNil(str.replaceAll("\n", "").trim())) {
                 break label356;
               }
-              paramb = localafy.desc.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+              paramb = localagx.desc.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
             }
           }
           break;
@@ -348,14 +352,14 @@ public final class a
           i = 0;
           while (i < j)
           {
-            localafy = paramb[i];
-            if (localafy.length() > 0) {
-              ((ArrayList)localObject2).add(localafy);
+            localagx = paramb[i];
+            if (localagx.length() > 0) {
+              ((ArrayList)localObject2).add(localagx);
             }
             i += 1;
           }
         }
-        if ((((ArrayList)localObject2).size() == 1) && (((com.tencent.mm.protocal.b.a.c)localObject1).gKs.size() == 2)) {
+        if ((((ArrayList)localObject2).size() == 1) && (((com.tencent.mm.protocal.b.a.c)localObject1).hkS.size() == 2)) {
           paramb = "";
         }
       }
@@ -387,7 +391,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.model.a
  * JD-Core Version:    0.7.0.1
  */

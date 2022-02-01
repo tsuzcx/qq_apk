@@ -8,23 +8,23 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public final class y
   extends i
 {
-  private View nIP;
-  private b nqp;
-  private MMActivity nqt;
+  private b nTp;
+  private MMActivity nTt;
+  private View olP;
   
-  public final void bMB()
+  public final void bTM()
   {
     AppMethodBeat.i(113718);
-    if (this.nIP != null) {
-      this.nIP.setVisibility(8);
+    if (this.olP != null) {
+      this.olP.setVisibility(8);
     }
     AppMethodBeat.o(113718);
   }
@@ -32,37 +32,37 @@ public final class y
   public final void initView()
   {
     AppMethodBeat.i(113716);
-    this.nqt = this.nIg.bKw();
+    this.nTt = this.olg.bRJ();
     AppMethodBeat.o(113716);
   }
   
   public final void update()
   {
     AppMethodBeat.i(113717);
-    this.nqp = this.nIg.bKt();
-    if (this.nIP == null) {
-      this.nIP = ((ViewStub)findViewById(2131297900)).inflate();
+    this.nTp = this.olg.bRG();
+    if (this.olP == null) {
+      this.olP = ((ViewStub)findViewById(2131297900)).inflate();
     }
-    if (this.nqp.bHE()) {
-      this.nIP.setBackgroundDrawable(l.K(this.nqt, this.nqt.getResources().getColor(2131100086)));
+    if (this.nTp.bOR()) {
+      this.olP.setBackgroundDrawable(l.O(this.nTt, this.nTt.getResources().getColor(2131100086)));
     }
-    TextView localTextView = (TextView)this.nIP.findViewById(2131297901);
-    if (this.nqp.bHW() == null)
+    TextView localTextView = (TextView)this.olP.findViewById(2131297901);
+    if (this.nTp.bPj() == null)
     {
-      ad.e("MicroMsg.CardStatusView", "updateState() mCardInfo.getDataInfo() == null");
+      ac.e("MicroMsg.CardStatusView", "updateState() mCardInfo.getDataInfo() == null");
       localTextView.setVisibility(8);
       AppMethodBeat.o(113717);
       return;
     }
     localTextView.setVisibility(0);
-    localTextView.setTextColor(this.nqt.getResources().getColor(2131100469));
-    if (!TextUtils.isEmpty(this.nqp.bHV().CSc))
+    localTextView.setTextColor(this.nTt.getResources().getColor(2131100469));
+    if (!TextUtils.isEmpty(this.nTp.bPi().EkN))
     {
-      localTextView.setText(this.nqp.bHV().CSc);
+      localTextView.setText(this.nTp.bPi().EkN);
       AppMethodBeat.o(113717);
       return;
     }
-    com.tencent.mm.plugin.card.d.n.h(localTextView, this.nqp.bHW().status);
+    com.tencent.mm.plugin.card.d.n.h(localTextView, this.nTp.bPj().status);
     AppMethodBeat.o(113717);
   }
 }

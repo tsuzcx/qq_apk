@@ -7,9 +7,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 import android.media.MediaRecorder;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.view.SurfaceHolder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a.a;
@@ -17,25 +15,25 @@ import com.tencent.mm.compatible.deviceinfo.v;
 
 public final class b
 {
-  public g BUa;
-  public int BUb;
-  private final int BUc;
-  private a BUd;
+  public g Dmq;
+  public int Dmr;
+  private final int Dms;
+  private b.a Dmt;
   public Context context;
   public int fileSize;
   public String filename;
-  private boolean gwS;
-  public int hyp;
-  public MediaRecorder tEx;
-  public a wvh;
+  private boolean gXp;
+  public int hYQ;
+  public MediaRecorder uMS;
+  public a xGx;
   
   public b()
   {
     AppMethodBeat.i(31167);
-    this.BUb = 0;
-    this.BUc = 5;
-    this.gwS = false;
-    this.BUd = new a(Looper.getMainLooper());
+    this.Dmr = 0;
+    this.Dms = 5;
+    this.gXp = false;
+    this.Dmt = new b.a(Looper.getMainLooper());
     AppMethodBeat.o(31167);
   }
   
@@ -43,7 +41,7 @@ public final class b
   {
     AppMethodBeat.i(31169);
     this.context = paramActivity;
-    int i = this.BUa.a(paramActivity, this.wvh, paramBoolean);
+    int i = this.Dmq.a(paramActivity, this.xGx, paramBoolean);
     if (i != 0)
     {
       AppMethodBeat.o(31169);
@@ -56,15 +54,15 @@ public final class b
   public final int b(SurfaceHolder paramSurfaceHolder)
   {
     AppMethodBeat.i(31171);
-    int i = this.BUa.b(paramSurfaceHolder);
+    int i = this.Dmq.b(paramSurfaceHolder);
     AppMethodBeat.o(31171);
     return i;
   }
   
-  public final int ewT()
+  public final int eMn()
   {
     AppMethodBeat.i(31170);
-    this.BUa.cPF();
+    this.Dmq.ddo();
     AppMethodBeat.o(31170);
     return 0;
   }
@@ -72,12 +70,12 @@ public final class b
   public final int getPreviewHeight()
   {
     AppMethodBeat.i(31173);
-    if (this.BUa.fBM.fDV == null)
+    if (this.Dmq.fFt.fHC == null)
     {
       AppMethodBeat.o(31173);
       return 0;
     }
-    int i = this.BUa.fBM.fDV.getParameters().getPreviewSize().height;
+    int i = this.Dmq.fFt.fHC.getParameters().getPreviewSize().height;
     AppMethodBeat.o(31173);
     return i;
   }
@@ -85,12 +83,12 @@ public final class b
   public final int getPreviewWidth()
   {
     AppMethodBeat.i(31172);
-    if (this.BUa.fBM.fDV == null)
+    if (this.Dmq.fFt.fHC == null)
     {
       AppMethodBeat.o(31172);
       return 0;
     }
-    int i = this.BUa.fBM.fDV.getParameters().getPreviewSize().width;
+    int i = this.Dmq.fFt.fHC.getParameters().getPreviewSize().width;
     AppMethodBeat.o(31172);
     return i;
   }
@@ -104,58 +102,18 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(31165);
-        if (b.this.tEx != null) {
-          b.this.tEx.setOrientationHint(paramInt);
+        if (b.this.uMS != null) {
+          b.this.uMS.setOrientationHint(paramInt);
         }
         AppMethodBeat.o(31165);
       }
     });
     AppMethodBeat.o(31168);
   }
-  
-  static final class a
-    extends Handler
-  {
-    boolean gwS = false;
-    int jzV = 0;
-    
-    public a(Looper paramLooper)
-    {
-      super();
-    }
-    
-    @TargetApi(8)
-    public final void handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(31166);
-      Camera localCamera = (Camera)paramMessage.obj;
-      Camera.Parameters localParameters = localCamera.getParameters();
-      int i = localParameters.getZoom() + this.jzV;
-      if (this.gwS) {
-        if (i >= localParameters.getMaxZoom() / 2) {
-          i = localParameters.getMaxZoom() / 2;
-        }
-      }
-      for (;;)
-      {
-        localParameters.setZoom(i);
-        localCamera.setParameters(localParameters);
-        AppMethodBeat.o(31166);
-        return;
-        sendMessageDelayed(Message.obtain(this, 4353, 0, 0, paramMessage.obj), 20L);
-        continue;
-        if (i <= 0) {
-          i = 0;
-        } else {
-          sendMessageDelayed(Message.obtain(this, 4353, 0, 0, paramMessage.obj), 20L);
-        }
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.b
  * JD-Core Version:    0.7.0.1
  */

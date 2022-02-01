@@ -12,8 +12,8 @@ import org.b.g.e;
 
 public final class g
 {
-  private String KnG;
-  private InputStream aCO;
+  private String Mbp;
+  private InputStream aDF;
   public int code;
   private Map<String, String> headers;
   
@@ -52,7 +52,7 @@ public final class g
     //   59: astore_1
     //   60: aload_0
     //   61: aload_1
-    //   62: putfield 50	org/b/d/g:aCO	Ljava/io/InputStream;
+    //   62: putfield 50	org/b/d/g:aDF	Ljava/io/InputStream;
     //   65: ldc 21
     //   67: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: return
@@ -107,21 +107,21 @@ public final class g
   public final String getBody()
   {
     AppMethodBeat.i(40513);
-    if (this.KnG != null)
+    if (this.Mbp != null)
     {
-      str = this.KnG;
+      str = this.Mbp;
       AppMethodBeat.o(40513);
       return str;
     }
-    this.KnG = e.Y(this.aCO);
-    String str = this.KnG;
+    this.Mbp = e.X(this.aDF);
+    String str = this.Mbp;
     AppMethodBeat.o(40513);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.d.g
  * JD-Core Version:    0.7.0.1
  */

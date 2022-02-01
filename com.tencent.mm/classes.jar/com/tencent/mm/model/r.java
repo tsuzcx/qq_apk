@@ -2,25 +2,25 @@ package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.j.a.a.a;
-import com.tencent.mm.protocal.protobuf.tq;
+import com.tencent.mm.protocal.protobuf.ua;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class r
   implements com.tencent.mm.plugin.chatroom.a.b
 {
-  public final boolean U(String paramString, int paramInt)
+  public final boolean GN(String paramString)
   {
-    AppMethodBeat.i(101780);
-    boolean bool = q.U(paramString, paramInt);
-    AppMethodBeat.o(101780);
+    AppMethodBeat.i(210532);
+    boolean bool = q.GN(paramString);
+    AppMethodBeat.o(210532);
     return bool;
   }
   
-  public final boolean a(String paramString1, String paramString2, tq paramtq, String paramString3, a parama, com.tencent.mm.sdk.b.b paramb)
+  public final boolean a(String paramString1, String paramString2, ua paramua, String paramString3, a parama, com.tencent.mm.sdk.b.b paramb)
   {
     AppMethodBeat.i(101781);
-    boolean bool = q.a(paramString1, paramString2, paramtq, 0, paramString3, parama, paramb);
+    boolean bool = q.a(paramString1, paramString2, paramua, 0, -1, paramString3, parama, paramb);
     AppMethodBeat.o(101781);
     return bool;
   }
@@ -33,7 +33,7 @@ public final class r
     return bool;
   }
   
-  public final String ah(List<String> paramList)
+  public final String ae(List<String> paramList)
   {
     AppMethodBeat.i(101779);
     paramList = q.e(paramList, -1);
@@ -41,25 +41,25 @@ public final class r
     return paramList;
   }
   
-  public final List<String> rW(String paramString)
+  public final List<String> vZ(String paramString)
   {
     AppMethodBeat.i(101776);
-    paramString = q.rW(paramString);
+    paramString = q.vZ(paramString);
     AppMethodBeat.o(101776);
     return paramString;
   }
   
-  public final int rY(String paramString)
+  public final int wb(String paramString)
   {
     AppMethodBeat.i(101777);
-    int i = q.rY(paramString);
+    int i = q.wb(paramString);
     AppMethodBeat.o(101777);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.r
  * JD-Core Version:    0.7.0.1
  */

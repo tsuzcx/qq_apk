@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,33 +12,33 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<String, com.tencent.mm.sdk.b.c> kQC;
-  private static ArrayList<String> kQD;
-  private static boolean kQE;
+  private static Map<String, com.tencent.mm.sdk.b.c> lsb;
+  private static ArrayList<String> lsc;
+  private static boolean lsd;
   
   static
   {
     AppMethodBeat.i(146148);
-    kQC = new HashMap();
-    kQD = new ArrayList();
-    kQE = false;
+    lsb = new HashMap();
+    lsc = new ArrayList();
+    lsd = false;
     AppMethodBeat.o(146148);
   }
   
-  public static void KI(String paramString)
+  public static void OP(String paramString)
   {
     AppMethodBeat.i(146145);
-    if (!kQC.containsKey(paramString))
+    if (!lsb.containsKey(paramString))
     {
-      ad.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
+      ac.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
       AppMethodBeat.o(146145);
       return;
     }
-    ad.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
-    kQD.remove(paramString);
-    paramString = (com.tencent.mm.sdk.b.c)kQC.remove(paramString);
+    ac.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
+    lsc.remove(paramString);
+    paramString = (com.tencent.mm.sdk.b.c)lsb.remove(paramString);
     if (paramString != null) {
-      a.ESL.d(paramString);
+      a.GpY.d(paramString);
     }
     AppMethodBeat.o(146145);
   }
@@ -46,33 +46,33 @@ public final class c
   public static void b(String paramString, com.tencent.mm.sdk.b.c paramc)
   {
     AppMethodBeat.i(146144);
-    if (kQC.containsKey(paramString))
+    if (lsb.containsKey(paramString))
     {
-      ad.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
+      ac.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
       AppMethodBeat.o(146144);
       return;
     }
     if (paramc == null)
     {
-      ad.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
+      ac.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
       AppMethodBeat.o(146144);
       return;
     }
-    ad.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
-    kQC.put(paramString, paramc);
-    if (!kQD.contains(paramString)) {
-      kQD.add(paramString);
+    ac.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
+    lsb.put(paramString, paramc);
+    if (!lsc.contains(paramString)) {
+      lsc.add(paramString);
     }
-    a.ESL.b(paramc);
+    a.GpY.b(paramc);
     AppMethodBeat.o(146144);
   }
   
-  public static void bhL()
+  public static void boF()
   {
     AppMethodBeat.i(146146);
-    if (kQE)
+    if (lsd)
     {
-      ad.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
+      ac.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
       AppMethodBeat.o(146146);
       return;
     }
@@ -93,38 +93,38 @@ public final class c
   public static void onDestroy()
   {
     AppMethodBeat.i(146143);
-    ad.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
-    Object localObject1 = kQD.iterator();
+    ac.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
+    Object localObject1 = lsc.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (com.tencent.mm.sdk.b.c)kQC.remove(localObject2);
+      localObject2 = (com.tencent.mm.sdk.b.c)lsb.remove(localObject2);
       if (localObject2 != null) {
-        a.ESL.d((com.tencent.mm.sdk.b.c)localObject2);
+        a.GpY.d((com.tencent.mm.sdk.b.c)localObject2);
       }
     }
-    kQC.clear();
-    kQD.clear();
-    localObject1 = g.bhT();
-    ad.i("MicroMsg.Record.AudioRecordMgr", "destroy");
-    if ((((g)localObject1).kQJ == g.a.kQY) || (((g)localObject1).kQJ == g.a.kQZ) || (((g)localObject1).kQJ == g.a.kRc)) {
-      ((g)localObject1).Ob();
+    lsb.clear();
+    lsc.clear();
+    localObject1 = g.boN();
+    ac.i("MicroMsg.Record.AudioRecordMgr", "destroy");
+    if ((((g)localObject1).lsj == g.a.lsy) || (((g)localObject1).lsj == g.a.lsz) || (((g)localObject1).lsj == g.a.lsC)) {
+      ((g)localObject1).NX();
     }
-    if (((g)localObject1).kQP)
+    if (((g)localObject1).lsp)
     {
-      if ((((g)localObject1).kQI != null) && (((g)localObject1).kQI.kRI != null))
+      if ((((g)localObject1).lsi != null) && (((g)localObject1).lsi.lti != null))
       {
-        ((g)localObject1).kQI.kRI.a(null);
-        ((g)localObject1).kQI.kRI.bhS();
+        ((g)localObject1).lsi.lti.a(null);
+        ((g)localObject1).lsi.lti.boM();
       }
-      ((g)localObject1).kQP = false;
+      ((g)localObject1).lsp = false;
     }
     AppMethodBeat.o(146143);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.c
  * JD-Core Version:    0.7.0.1
  */

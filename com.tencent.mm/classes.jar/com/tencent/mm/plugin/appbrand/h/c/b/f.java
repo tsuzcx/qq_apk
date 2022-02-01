@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class f
 {
-  public b jjR;
-  public Map<String, a> jjS;
+  public b jKe;
+  public Map<String, a> jKf;
   
   public String toString()
   {
     AppMethodBeat.i(159029);
-    String str = "UPnPMessage{headers=" + this.jjR + ", bodes=" + this.jjS + '}';
+    String str = "UPnPMessage{headers=" + this.jKe + ", bodes=" + this.jKf + '}';
     AppMethodBeat.o(159029);
     return str;
   }

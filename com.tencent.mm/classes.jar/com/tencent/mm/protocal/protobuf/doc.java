@@ -3,44 +3,44 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class doc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int EEz;
-  public String dld;
+  public String scope;
+  public int state;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147795);
+    AppMethodBeat.i(82482);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dld != null) {
-        paramVarArgs.d(1, this.dld);
+      if (this.scope != null) {
+        paramVarArgs.d(1, this.scope);
       }
-      paramVarArgs.aR(2, this.EEz);
-      AppMethodBeat.o(147795);
+      paramVarArgs.aR(2, this.state);
+      AppMethodBeat.o(82482);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dld == null) {
+      if (this.scope == null) {
         break label258;
       }
     }
     label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dld) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.scope) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.EEz);
-      AppMethodBeat.o(147795);
+      int i = f.a.a.b.b.a.bx(2, this.state);
+      AppMethodBeat.o(82482);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(147795);
+        AppMethodBeat.o(82482);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +50,18 @@ public final class doc
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(147795);
+          AppMethodBeat.o(82482);
           return -1;
         case 1: 
-          localdoc.dld = locala.KhF.readString();
-          AppMethodBeat.o(147795);
+          localdoc.scope = locala.LVo.readString();
+          AppMethodBeat.o(82482);
           return 0;
         }
-        localdoc.EEz = locala.KhF.xS();
-        AppMethodBeat.o(147795);
+        localdoc.state = locala.LVo.xF();
+        AppMethodBeat.o(82482);
         return 0;
       }
-      AppMethodBeat.o(147795);
+      AppMethodBeat.o(82482);
       return -1;
     }
   }

@@ -28,7 +28,7 @@ public class ImageDecodeConfig
   @Keep
   public static Object createConfig(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    AppMethodBeat.i(192612);
+    AppMethodBeat.i(191262);
     ImageDecodeConfig localImageDecodeConfig = new ImageDecodeConfig();
     localImageDecodeConfig.mPremultiplyAlpha = paramBoolean;
     if (paramInt1 == 8)
@@ -41,7 +41,7 @@ public class ImageDecodeConfig
     }
     for (;;)
     {
-      AppMethodBeat.o(192612);
+      AppMethodBeat.o(191262);
       return localImageDecodeConfig;
       if (paramInt1 == 4)
       {
@@ -90,17 +90,17 @@ public class ImageDecodeConfig
   @Keep
   public int getNativeReferrerPolicy()
   {
-    AppMethodBeat.i(192611);
-    switch (1.aPv[this.mReferrerPolicy.ordinal()])
+    AppMethodBeat.i(191261);
+    switch (1.aQl[this.mReferrerPolicy.ordinal()])
     {
     default: 
-      AppMethodBeat.o(192611);
+      AppMethodBeat.o(191261);
       return 0;
     case 1: 
-      AppMethodBeat.o(192611);
+      AppMethodBeat.o(191261);
       return 1;
     }
-    AppMethodBeat.o(192611);
+    AppMethodBeat.o(191261);
     return 2;
   }
   
@@ -109,12 +109,12 @@ public class ImageDecodeConfig
   {
     static
     {
-      AppMethodBeat.i(192610);
+      AppMethodBeat.i(191260);
       NOT_SET = new ReferrerPolicy("NOT_SET", 0);
       NO_REFERRER = new ReferrerPolicy("NO_REFERRER", 1);
       ORIGIN = new ReferrerPolicy("ORIGIN", 2);
       $VALUES = new ReferrerPolicy[] { NOT_SET, NO_REFERRER, ORIGIN };
-      AppMethodBeat.o(192610);
+      AppMethodBeat.o(191260);
     }
     
     private ReferrerPolicy() {}
@@ -122,7 +122,7 @@ public class ImageDecodeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.github.henryye.nativeiv.ImageDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

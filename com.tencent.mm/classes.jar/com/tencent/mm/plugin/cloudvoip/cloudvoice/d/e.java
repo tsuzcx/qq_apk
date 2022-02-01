@@ -5,49 +5,51 @@ import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.b.a;
 import com.tencent.mm.plugin.voip.model.b;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
 {
-  static int nPI = 3;
+  static int osM = 3;
   int mChannels;
   boolean mIsPlayMute;
   int mSampleRate;
-  f nPE;
-  volatile com.tencent.mm.audio.b.c nPF;
-  private d nPG;
-  private j nPH;
-  int nPJ;
-  int nPK;
-  private int nPL;
-  private final Object nPM;
-  int nPN;
-  private int nPO;
-  private int nPP;
-  private long nPQ;
-  int nPR;
-  c.a nPS;
+  f osI;
+  volatile com.tencent.mm.audio.b.c osJ;
+  private d osK;
+  private j osL;
+  int osN;
+  int osO;
+  private int osP;
+  private final Object osQ;
+  int osR;
+  private int osS;
+  private int osT;
+  private long osU;
+  boolean osV;
+  int osW;
+  c.a osX;
   
   public e(j paramj)
   {
     AppMethodBeat.i(90791);
-    this.nPJ = 1;
-    this.nPK = 92;
-    this.nPL = 1;
-    this.nPM = new Object();
-    this.nPN = 0;
-    this.nPO = 0;
-    this.nPP = 1;
-    this.nPQ = 0L;
+    this.osN = 1;
+    this.osO = 92;
+    this.osP = 1;
+    this.osQ = new Object();
+    this.osR = 0;
+    this.osS = 0;
+    this.osT = 1;
+    this.osU = 0L;
     this.mIsPlayMute = false;
+    this.osV = false;
     this.mSampleRate = v2protocal.VOICE_SAMPLERATE;
     this.mChannels = 1;
-    this.nPR = 20;
-    this.nPS = new c.a()
+    this.osW = 20;
+    this.osX = new c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cf(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final void w(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
+      public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         int i = -1;
         int j = 0;
@@ -59,12 +61,12 @@ public final class e
             if (e.a(e.this) % 50 == 0)
             {
               e.b(e.this);
-              ad.v("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: syncOnRecPcmDataReady pcm raw length: %d, given len; %d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
+              ac.v("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: syncOnRecPcmDataReady pcm raw length: %d, given len; %d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
             }
             if (e.c(e.this) == 2)
             {
               paramAnonymousInt = j;
-              if (e.d(e.this).nPV.nPx == null) {
+              if (e.d(e.this).ota.osB == null) {
                 break label404;
               }
               paramAnonymousInt = 1;
@@ -75,18 +77,18 @@ public final class e
             if (e.e(e.this) <= 10) {
               e.a(e.this, 92);
             }
-            Object localObject2 = e.d(e.this).nPV.nPx;
+            Object localObject2 = e.d(e.this).ota.osB;
             if (localObject2 != null)
             {
-              paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).dRV();
+              paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).ehh();
               e.a(e.this, (paramAnonymousInt + 24 + e.e(e.this) * 3) / 4);
               if (e.f(e.this) != 1) {
                 break label338;
               }
-              localObject2 = e.d(e.this).nPV.nPx;
+              localObject2 = e.d(e.this).ota.osB;
               paramAnonymousInt = i;
               if (localObject2 != null) {
-                paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).dRS();
+                paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).ehe();
               }
               i = paramAnonymousInt;
               if (paramAnonymousInt >= e.e(e.this)) {
@@ -99,9 +101,9 @@ public final class e
               }
               e.i(e.this);
               e.a(e.this, System.currentTimeMillis());
-              ad.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,first record");
-              localObject2 = o.nQO;
-              o.x(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length, e.e(e.this));
+              ac.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,first record");
+              localObject2 = p.otZ;
+              p.w(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length, e.e(e.this));
             }
           }
           paramAnonymousInt = -1;
@@ -113,7 +115,7 @@ public final class e
           long l1 = System.currentTimeMillis();
           long l2 = l1 - e.j(e.this);
           if (l2 > 1000L) {
-            ad.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,error,deltaTime:".concat(String.valueOf(l2)));
+            ac.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,error,deltaTime:".concat(String.valueOf(l2)));
           }
           e.a(e.this, l1);
           continue;
@@ -122,38 +124,47 @@ public final class e
         }
       }
     };
-    this.nPG = new d();
-    this.nPH = paramj;
-    this.nPE = new f();
+    this.osK = new d();
+    this.osL = paramj;
+    this.osI = new f();
     AppMethodBeat.o(90791);
   }
   
-  public final boolean Ok()
+  public final boolean Og()
   {
     AppMethodBeat.i(90792);
-    ad.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: trigger start play");
-    if (this.nPJ != 2) {
-      ad.e("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: not init when start listen!");
+    ac.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: trigger start play");
+    if (this.osN != 2) {
+      ac.e("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: not init when start listen!");
     }
-    synchronized (this.nPM)
+    synchronized (this.osQ)
     {
-      if (!this.nPF.Ok())
+      if (!this.osJ.Og())
       {
-        if (this.nPF.cXZ != 13) {
-          this.nPN = 1;
+        if (this.osJ.cVv != 13) {
+          this.osR = 1;
         }
         AppMethodBeat.o(90792);
         return false;
       }
-      ad.d("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "VoipDeivceHandler.m_iAudioDevErr:" + this.nPN);
+      p.otZ.jz(true);
+      ac.d("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "VoipDeivceHandler.m_iAudioDevErr:" + this.osR);
       AppMethodBeat.o(90792);
       return true;
     }
   }
+  
+  public final boolean bVp()
+  {
+    if (this.osJ == null) {
+      return false;
+    }
+    return this.osV;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.e
  * JD-Core Version:    0.7.0.1
  */

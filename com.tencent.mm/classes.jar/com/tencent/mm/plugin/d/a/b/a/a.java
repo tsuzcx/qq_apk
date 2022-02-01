@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.d.a.b.a;
 
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.Serializable;
 
 public abstract class a
   implements Serializable
 {
   private static final String TAG = a.class.getName();
-  public long mNN;
-  public String mOt;
-  public int mOu;
+  public long npZ;
+  public String nqF;
+  public int nqG;
   
-  public static a aH(byte[] paramArrayOfByte)
+  public static a aG(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      ad.e(TAG, "data input error");
+      ac.e(TAG, "data input error");
       return null;
     }
-    paramArrayOfByte = b.bh(paramArrayOfByte);
+    paramArrayOfByte = b.bg(paramArrayOfByte);
     if ((paramArrayOfByte != null) && ((paramArrayOfByte instanceof a))) {
       return (a)paramArrayOfByte;
     }
-    ad.e(TAG, "bytes2object is not instanceof BaseProfileParser");
+    ac.e(TAG, "bytes2object is not instanceof BaseProfileParser");
     return null;
   }
   
-  public abstract byte[] bBD();
+  public abstract byte[] bIB();
 }
 
 

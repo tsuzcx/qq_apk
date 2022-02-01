@@ -12,7 +12,7 @@ import java.util.List;
 
 public final class h
 {
-  private final n<String, i> ec = new n();
+  private final n<String, i> fc = new n();
   
   public static h a(Context paramContext, TypedArray paramTypedArray, int paramInt)
   {
@@ -39,10 +39,10 @@ public final class h
   
   private void a(String paramString, i parami)
   {
-    this.ec.put(paramString, parami);
+    this.fc.put(paramString, parami);
   }
   
-  private static h d(List<Animator> paramList)
+  private static h c(List<Animator> paramList)
   {
     h localh = new h();
     int j = paramList.size();
@@ -61,13 +61,13 @@ public final class h
     {
       paramContext = AnimatorInflater.loadAnimator(paramContext, paramInt);
       if ((paramContext instanceof AnimatorSet)) {
-        return d(((AnimatorSet)paramContext).getChildAnimations());
+        return c(((AnimatorSet)paramContext).getChildAnimations());
       }
       if (paramContext != null)
       {
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(paramContext);
-        paramContext = d(localArrayList);
+        paramContext = c(localArrayList);
         return paramContext;
       }
       return null;
@@ -88,18 +88,18 @@ public final class h
       return false;
     }
     paramObject = (h)paramObject;
-    return this.ec.equals(paramObject.ec);
+    return this.fc.equals(paramObject.fc);
   }
   
   public final long getTotalDuration()
   {
     long l = 0L;
-    int j = this.ec.size();
+    int j = this.fc.size();
     int i = 0;
     while (i < j)
     {
-      i locali = (i)this.ec.valueAt(i);
-      l = Math.max(l, locali.ed + locali.duration);
+      i locali = (i)this.fc.valueAt(i);
+      l = Math.max(l, locali.fe + locali.duration);
       i += 1;
     }
     return l;
@@ -107,16 +107,16 @@ public final class h
   
   public final int hashCode()
   {
-    return this.ec.hashCode();
+    return this.fc.hashCode();
   }
   
-  public final i j(String paramString)
+  public final i k(String paramString)
   {
-    if (this.ec.get(paramString) != null) {}
+    if (this.fc.get(paramString) != null) {}
     for (int i = 1; i == 0; i = 0) {
       throw new IllegalArgumentException();
     }
-    return (i)this.ec.get(paramString);
+    return (i)this.fc.get(paramString);
   }
   
   public final String toString()
@@ -127,7 +127,7 @@ public final class h
     localStringBuilder.append('{');
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" timings: ");
-    localStringBuilder.append(this.ec);
+    localStringBuilder.append(this.fc);
     localStringBuilder.append("}\n");
     return localStringBuilder.toString();
   }

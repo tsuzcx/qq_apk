@@ -16,7 +16,7 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderCollectionEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "getTitle", "", "onClick", "", "v", "Landroid/view/View;", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderCollectionEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "getTitle", "", "onClick", "", "v", "Landroid/view/View;", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "plugin-appbrand-integration_release"})
 public final class b
   extends f
 {
@@ -55,7 +55,7 @@ public final class b
     if ((paramView != null) && (paramView.getIntExtra("extra_get_usage_reason", 3) == 9)) {}
     for (int i = 2;; i = 0)
     {
-      paramView = AppBrandLauncherFolderUI.lzA;
+      paramView = AppBrandLauncherFolderUI.mbw;
       paramView = getActivity();
       k.g(paramView, "activity");
       paramView = (Context)paramView;
@@ -64,11 +64,11 @@ public final class b
       localIntent.putExtra("extra_get_usage_prescene", i);
       localIntent.putExtra("extra_enter_scene", 1);
       AppBrandLauncherFolderUI.a.n(paramView, localIntent);
-      paramView = d.lpj;
+      paramView = d.lRj;
       paramView = getActivity();
       k.g(paramView, "activity");
       paramView = d.b(paramView);
-      h.vKh.f(19468, new Object[] { Integer.valueOf(5), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
+      h.wUl.f(19468, new Object[] { Integer.valueOf(5), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
       AppMethodBeat.o(51292);
       return;
     }
@@ -76,7 +76,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.b
  * JD-Core Version:    0.7.0.1
  */

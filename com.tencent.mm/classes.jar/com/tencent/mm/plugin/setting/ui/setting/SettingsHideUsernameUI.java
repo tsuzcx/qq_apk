@@ -11,10 +11,10 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.amy;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.aqc;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -23,29 +23,29 @@ import com.tencent.mm.ui.base.preference.f;
 public class SettingsHideUsernameUI
   extends MMPreference
 {
-  private boolean mku;
-  private long nXu;
+  private boolean mMv;
+  private long oAP;
   private f screen;
   private String username;
-  private int wgm;
-  private CheckBoxPreference whd;
+  private int xrC;
+  private CheckBoxPreference xst;
   
-  private void dnW()
+  private void dCe()
   {
     AppMethodBeat.i(74172);
-    if (this.mku)
+    if (this.mMv)
     {
-      this.whd.setSummary(getString(2131763405));
+      this.xst.setSummary(getString(2131763405));
       AppMethodBeat.o(74172);
       return;
     }
-    if (this.whd.isEnabled())
+    if (this.xst.isEnabled())
     {
-      this.whd.setSummary(getString(2131763403));
+      this.xst.setSummary(getString(2131763403));
       AppMethodBeat.o(74172);
       return;
     }
-    this.whd.setSummary(getString(2131763404));
+    this.xst.setSummary(getString(2131763404));
     AppMethodBeat.o(74172);
   }
   
@@ -59,16 +59,16 @@ public class SettingsHideUsernameUI
     boolean bool2 = true;
     AppMethodBeat.i(74170);
     setMMTitle(2131763490);
-    this.screen.aKk("settings_my_username").setSummary(this.username);
+    this.screen.aPN("settings_my_username").setSummary(this.username);
     CheckBoxPreference localCheckBoxPreference;
-    if ((this.nXu & 0x4000) != 0L)
+    if ((this.oAP & 0x4000) != 0L)
     {
       bool1 = true;
-      this.mku = bool1;
-      ad.d("MicroMsg.SettingsHideUsernameUI", "is hide: %s", new Object[] { Boolean.valueOf(bool1) });
-      this.whd = ((CheckBoxPreference)this.screen.aKk("settings_show_username"));
-      this.whd.GfV = false;
-      localCheckBoxPreference = this.whd;
+      this.mMv = bool1;
+      ac.d("MicroMsg.SettingsHideUsernameUI", "is hide: %s", new Object[] { Boolean.valueOf(bool1) });
+      this.xst = ((CheckBoxPreference)this.screen.aPN("settings_show_username"));
+      this.xst.HFK = false;
+      localCheckBoxPreference = this.xst;
       if (bool1) {
         break label148;
       }
@@ -76,9 +76,9 @@ public class SettingsHideUsernameUI
     label148:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localCheckBoxPreference.lG = bool1;
-      if (bt.isNullOrNil(u.aqI())) {
-        this.whd.setEnabled(false);
+      localCheckBoxPreference.mF = bool1;
+      if (bs.isNullOrNil(u.axy())) {
+        this.xst.setEnabled(false);
       }
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74170);
@@ -92,13 +92,13 @@ public class SettingsHideUsernameUI
   {
     AppMethodBeat.i(74169);
     super.onCreate(paramBundle);
-    this.username = u.aqH();
-    if (bt.isNullOrNil(this.username)) {
-      this.username = u.aqG();
+    this.username = u.axx();
+    if (bs.isNullOrNil(this.username)) {
+      this.username = u.axw();
     }
     this.screen = getPreferenceScreen();
-    this.nXu = u.aqL();
-    this.wgm = u.aqM();
+    this.oAP = u.axB();
+    this.xrC = u.axC();
     initView();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -119,34 +119,34 @@ public class SettingsHideUsernameUI
     int i = 1;
     AppMethodBeat.i(74174);
     super.onPause();
-    ad.d("MicroMsg.SettingsHideUsernameUI", "hide: %s", new Object[] { Boolean.valueOf(this.mku) });
-    if ((this.nXu & 0x4000) != 0L) {
+    ac.d("MicroMsg.SettingsHideUsernameUI", "hide: %s", new Object[] { Boolean.valueOf(this.mMv) });
+    if ((this.oAP & 0x4000) != 0L) {
       j = 1;
     }
-    if (j != this.mku)
+    if (j != this.mMv)
     {
-      if (!this.mku) {
+      if (!this.mMv) {
         break label194;
       }
-      this.nXu |= 0x4000;
+      this.oAP |= 0x4000;
     }
-    for (this.wgm |= 0x200;; this.wgm &= 0xFFFFFDFF)
+    for (this.xrC |= 0x200;; this.xrC &= 0xFFFFFDFF)
     {
-      g.afC();
-      g.afB().afk().set(147457, Long.valueOf(this.nXu));
-      g.afC();
-      g.afB().afk().set(40, Integer.valueOf(this.wgm));
-      amy localamy = new amy();
-      localamy.DnY = 46;
-      if (this.mku) {
+      g.agS();
+      g.agR().agA().set(147457, Long.valueOf(this.oAP));
+      g.agS();
+      g.agR().agA().set(40, Integer.valueOf(this.xrC));
+      aqc localaqc = new aqc();
+      localaqc.EIY = 46;
+      if (this.mMv) {
         i = 2;
       }
-      localamy.uMR = i;
-      ((k)g.ab(k.class)).apL().c(new j.a(23, localamy));
+      localaqc.vVH = i;
+      ((k)g.ab(k.class)).awA().c(new j.a(23, localaqc));
       AppMethodBeat.o(74174);
       return;
       label194:
-      this.nXu &= 0xFFFFBFFF;
+      this.oAP &= 0xFFFFBFFF;
     }
   }
   
@@ -159,8 +159,8 @@ public class SettingsHideUsernameUI
       if (!((CheckBoxPreference)paramPreference).isChecked()) {
         bool = true;
       }
-      this.mku = bool;
-      dnW();
+      this.mMv = bool;
+      dCe();
       AppMethodBeat.o(74171);
       return true;
     }
@@ -172,7 +172,7 @@ public class SettingsHideUsernameUI
   {
     AppMethodBeat.i(74173);
     super.onResume();
-    dnW();
+    dCe();
     AppMethodBeat.o(74173);
   }
   
@@ -184,7 +184,7 @@ public class SettingsHideUsernameUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsHideUsernameUI
  * JD-Core Version:    0.7.0.1
  */

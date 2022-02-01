@@ -8,55 +8,55 @@ import java.util.List;
 public final class a
   implements b
 {
-  public double gnA;
-  public double gnz;
-  private List<Double> lYc;
-  public double lYd;
+  public double gOl;
+  public double gOm;
+  private List<Double> mAe;
+  public double mAf;
   
   public a()
   {
     AppMethodBeat.i(49848);
-    this.lYc = new ArrayList(100);
-    this.lYd = 0.0D;
-    this.gnz = 1.7976931348623157E+308D;
-    this.gnA = 4.9E-324D;
+    this.mAe = new ArrayList(100);
+    this.mAf = 0.0D;
+    this.gOl = 1.7976931348623157E+308D;
+    this.gOm = 4.9E-324D;
     AppMethodBeat.o(49848);
   }
   
-  public final void acZ()
+  public final void aeq()
   {
     AppMethodBeat.i(49849);
-    if (this.lYc == null)
+    if (this.mAe == null)
     {
       AppMethodBeat.o(49849);
       return;
     }
-    if (this.lYc.size() > 10000)
+    if (this.mAe.size() > 10000)
     {
       AppMethodBeat.o(49849);
       return;
     }
-    if (this.lYc.size() != 0)
+    if (this.mAe.size() != 0)
     {
-      Iterator localIterator = this.lYc.iterator();
+      Iterator localIterator = this.mAe.iterator();
       double d2;
       for (double d1 = 0.0D; localIterator.hasNext(); d1 += d2)
       {
         d2 = ((Double)localIterator.next()).doubleValue();
-        this.gnz = Math.min(this.gnz, d2);
-        this.gnA = Math.max(this.gnA, d2);
+        this.gOl = Math.min(this.gOl, d2);
+        this.gOm = Math.max(this.gOm, d2);
       }
-      this.lYd = (d1 / this.lYc.size());
+      this.mAf = (d1 / this.mAe.size());
     }
     AppMethodBeat.o(49849);
   }
   
-  public final void ada()
+  public final void aer()
   {
     double d1 = 60.0D;
     double d2 = 0.0D;
     AppMethodBeat.i(49850);
-    double d3 = c.lYe.fWv;
+    double d3 = c.mAg.gbc;
     if (d3 > 60.0D) {}
     for (;;)
     {
@@ -65,7 +65,7 @@ public final class a
       }
       for (;;)
       {
-        this.lYc.add(Double.valueOf(d1));
+        this.mAe.add(Double.valueOf(d1));
         AppMethodBeat.o(49850);
         return;
       }
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.c.a
  * JD-Core Version:    0.7.0.1
  */

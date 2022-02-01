@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpl;
-import com.tencent.mm.protocal.protobuf.cpm;
+import com.tencent.mm.protocal.protobuf.cus;
+import com.tencent.mm.protocal.protobuf.cut;
 
 public final class h
   extends n
@@ -18,18 +18,18 @@ public final class h
   private g callback;
   private final b rr;
   
-  public h(cpl paramcpl)
+  public h(cus paramcus)
   {
     AppMethodBeat.i(127835);
     this.callback = null;
     b.a locala = new b.a();
-    locala.gUU = paramcpl;
-    locala.gUV = new cpm();
+    locala.hvt = paramcus;
+    locala.hvu = new cut();
     locala.uri = "/cgi-bin/micromsg-bin/sendphoto2fbwall";
     locala.funcId = 433;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     AppMethodBeat.o(127835);
   }
   

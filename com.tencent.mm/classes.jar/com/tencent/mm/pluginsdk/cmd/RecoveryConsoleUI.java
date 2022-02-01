@@ -19,10 +19,10 @@ public class RecoveryConsoleUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  List<b.a> BND;
-  SimpleAdapter BNE;
-  ListView DQ;
-  List<Map<String, String>> otO;
+  List<b.a> DfN;
+  SimpleAdapter DfO;
+  ListView EO;
+  List<Map<String, String>> oXp;
   
   public int getLayoutId()
   {
@@ -34,34 +34,34 @@ public class RecoveryConsoleUI
     AppMethodBeat.i(151618);
     super.onCreate(paramBundle);
     setTitle("Recovery Console");
-    this.BND = b.euU();
-    this.otO = new ArrayList(this.BND.size());
-    paramBundle = this.BND.iterator();
+    this.DfN = b.eKn();
+    this.oXp = new ArrayList(this.DfN.size());
+    paramBundle = this.DfN.iterator();
     while (paramBundle.hasNext())
     {
       b.a locala = (b.a)paramBundle.next();
       HashMap localHashMap = new HashMap();
-      localHashMap.put("title", getString(locala.lms));
-      this.otO.add(localHashMap);
+      localHashMap.put("title", getString(locala.lMi));
+      this.oXp.add(localHashMap);
     }
-    this.BNE = new SimpleAdapter(this, this.otO, 2131494804, new String[] { "title" }, new int[] { 16908310 });
-    this.DQ = ((ListView)findViewById(16908298));
-    this.DQ.setAdapter(this.BNE);
-    this.DQ.setOnItemClickListener(this);
+    this.DfO = new SimpleAdapter(this, this.oXp, 2131494804, new String[] { "title" }, new int[] { 16908310 });
+    this.EO = ((ListView)findViewById(16908298));
+    this.EO.setAdapter(this.DfO);
+    this.EO.setOnItemClickListener(this);
     AppMethodBeat.o(151618);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(151619);
-    paramAdapterView = (b.a)this.BND.get(paramInt);
-    if (paramAdapterView.BNI != null)
+    paramAdapterView = (b.a)this.DfN.get(paramInt);
+    if (paramAdapterView.DfS != null)
     {
-      paramAdapterView.BNI.a(this, paramAdapterView.dEs.split(" +"), "");
+      paramAdapterView.DfS.a(this, paramAdapterView.dCe.split(" +"), "");
       AppMethodBeat.o(151619);
       return;
     }
-    b.J(this, paramAdapterView.dEs, "");
+    b.I(this, paramAdapterView.dCe, "");
     AppMethodBeat.o(151619);
   }
   

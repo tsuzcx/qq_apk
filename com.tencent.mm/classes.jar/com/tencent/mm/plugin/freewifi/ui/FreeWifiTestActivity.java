@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.base.h;
 
 public class FreeWifiTestActivity
@@ -25,7 +25,7 @@ public class FreeWifiTestActivity
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(25168);
-        Toast.makeText(aj.getContext(), "test message", 0).show();
+        Toast.makeText(ai.getContext(), "test message", 0).show();
         AppMethodBeat.o(25168);
       }
     });
@@ -52,7 +52,7 @@ public class FreeWifiTestActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiTestActivity
  * JD-Core Version:    0.7.0.1
  */

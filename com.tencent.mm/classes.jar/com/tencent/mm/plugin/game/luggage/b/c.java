@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yh;
+import com.tencent.mm.g.a.ys;
 import com.tencent.mm.plugin.game.luggage.d.f;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -21,13 +21,13 @@ public class c
   {
     int i = 0;
     AppMethodBeat.i(83053);
-    ad.i("MicroMsg.JsApiBatchUpdateWepkg", "invokeInMM");
+    ac.i("MicroMsg.JsApiBatchUpdateWepkg", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
       if (paramContext == null)
       {
-        ad.e("MicroMsg.JsApiBatchUpdateWepkg", "data is null");
+        ac.e("MicroMsg.JsApiBatchUpdateWepkg", "data is null");
         parama.f("fail", null);
         AppMethodBeat.o(83053);
         return;
@@ -40,7 +40,7 @@ public class c
         paramContext = null;
       }
       paramContext = paramContext.optString("pkgIdList");
-      if (!bt.isNullOrNil(paramContext)) {
+      if (!bs.isNullOrNil(paramContext)) {
         try
         {
           paramString = new JSONArray(paramContext);
@@ -52,13 +52,13 @@ public class c
               paramContext.add(paramString.optString(i));
               i += 1;
             }
-            if (!bt.gL(paramContext))
+            if (!bs.gY(paramContext))
             {
-              paramString = new yh();
-              paramString.dEN.dbV = 8;
-              paramString.dEN.scene = 0;
-              paramString.dEN.dET = paramContext;
-              com.tencent.mm.sdk.b.a.ESL.l(paramString);
+              paramString = new ys();
+              paramString.dCz.cZu = 8;
+              paramString.dCz.scene = 0;
+              paramString.dCz.dCF = paramContext;
+              com.tencent.mm.sdk.b.a.GpY.l(paramString);
               parama.f(null, null);
               AppMethodBeat.o(83053);
               return;
@@ -67,7 +67,7 @@ public class c
         }
         catch (JSONException paramContext)
         {
-          ad.e("MicroMsg.JsApiBatchUpdateWepkg", "data is not json");
+          ac.e("MicroMsg.JsApiBatchUpdateWepkg", "data is not json");
         }
       }
       parama.f("fail", null);
@@ -77,7 +77,7 @@ public class c
   
   public final void b(com.tencent.luggage.d.a<f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

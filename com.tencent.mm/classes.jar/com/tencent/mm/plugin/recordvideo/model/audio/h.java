@@ -5,22 +5,22 @@ import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.d;
 import com.tencent.mm.plugin.mmsight.segment.d.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vending.e.b;
 import d.g.b.k;
 import d.l;
 import java.util.concurrent.Callable;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/model/audio/GetVideoRecommendAudioTask;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AbsGetRecommendAudioTask;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "videoPath", "", "startTime", "", "endTime", "scene", "", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;Ljava/lang/String;JJI)V", "getEndTime", "()J", "fetcher", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentThumbFetcher;", "frameInterval", "getStartTime", "thumbFetcherPool", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentThumbFetcher$FetcherPool;", "getVideoPath", "()Ljava/lang/String;", "nextBitmap", "Landroid/graphics/Bitmap;", "index", "onFinishImageData", "", "onPrepareImageData", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/model/audio/GetVideoRecommendAudioTask;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AbsGetRecommendAudioTask;", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "videoPath", "", "startTime", "", "endTime", "scene", "", "(Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;Ljava/lang/String;JJI)V", "getEndTime", "()J", "fetcher", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentThumbFetcher;", "frameInterval", "getStartTime", "thumbFetcherPool", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentThumbFetcher$FetcherPool;", "getVideoPath", "()Ljava/lang/String;", "nextBitmap", "Landroid/graphics/Bitmap;", "index", "onFinishImageData", "", "onPrepareImageData", "plugin-recordvideo_release"})
 public final class h
   extends a
 {
   private final long endTime;
   private final long startTime;
   final String videoPath;
-  int vjc;
-  private d.a vjd;
-  private d vje;
+  int wrO;
+  private d.a wrP;
+  private d wrQ;
   
   public h(b<com.tencent.mm.vending.e.a> paramb, String paramString, long paramLong1, long paramLong2, int paramInt)
   {
@@ -29,18 +29,18 @@ public final class h
     this.videoPath = paramString;
     this.startTime = paramLong1;
     this.endTime = paramLong2;
-    this.vjc = 1000;
+    this.wrO = 1000;
     this.scene = paramInt;
     AppMethodBeat.o(75431);
   }
   
-  public final Bitmap Kj(int paramInt)
+  public final Bitmap Mh(int paramInt)
   {
     AppMethodBeat.i(75428);
-    ad.i(this.TAG, "nextBitmap:" + this.viu[paramInt]);
-    Object localObject = this.vje;
+    ac.i(this.TAG, "nextBitmap:" + this.wre[paramInt]);
+    Object localObject = this.wrQ;
     if (localObject != null) {}
-    for (localObject = ((d)localObject).getFrameAtTime(this.viu[paramInt]); localObject == null; localObject = null)
+    for (localObject = ((d)localObject).getFrameAtTime(this.wre[paramInt]); localObject == null; localObject = null)
     {
       localObject = Bitmap.createBitmap(this.thumbWidth, this.thumbHeight, Bitmap.Config.ARGB_8888);
       k.g(localObject, "Bitmap.createBitmap(thum… Bitmap.Config.ARGB_8888)");
@@ -52,14 +52,14 @@ public final class h
   }
   
   /* Error */
-  public final void dhJ()
+  public final void dvr()
   {
     // Byte code:
     //   0: ldc 149
     //   2: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 70	com/tencent/mm/plugin/recordvideo/model/audio/h:videoPath	Ljava/lang/String;
-    //   9: invokestatic 155	com/tencent/mm/plugin/sight/base/e:ano	(Ljava/lang/String;)Lcom/tencent/mm/plugin/sight/base/a;
+    //   9: invokestatic 155	com/tencent/mm/plugin/sight/base/e:asx	(Ljava/lang/String;)Lcom/tencent/mm/plugin/sight/base/a;
     //   12: astore 7
     //   14: aload 7
     //   16: ifnull +304 -> 320
@@ -80,7 +80,7 @@ public final class h
     //   49: bipush 9
     //   51: invokevirtual 171	com/tencent/mm/compatible/h/d:extractMetadata	(I)Ljava/lang/String;
     //   54: iconst_0
-    //   55: invokestatic 177	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   55: invokestatic 177	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
     //   58: istore_2
     //   59: iload_2
     //   60: istore_1
@@ -94,10 +94,10 @@ public final class h
     //   75: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   78: aload_0
     //   79: getfield 70	com/tencent/mm/plugin/recordvideo/model/audio/h:videoPath	Ljava/lang/String;
-    //   82: invokestatic 185	com/tencent/mm/vfs/i:eK	(Ljava/lang/String;)Z
+    //   82: invokestatic 185	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
     //   85: invokevirtual 188	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   88: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 191	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: invokestatic 191	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   94: aload_0
     //   95: new 193	com/tencent/mm/plugin/mmsight/segment/d$a
     //   98: dup
@@ -108,7 +108,7 @@ public final class h
     //   105: invokespecial 196	com/tencent/mm/plugin/recordvideo/model/audio/h$a:<init>	(Lcom/tencent/mm/plugin/recordvideo/model/audio/h;)V
     //   108: checkcast 198	java/util/concurrent/Callable
     //   111: invokespecial 201	com/tencent/mm/plugin/mmsight/segment/d$a:<init>	(ILjava/util/concurrent/Callable;)V
-    //   114: putfield 203	com/tencent/mm/plugin/recordvideo/model/audio/h:vjd	Lcom/tencent/mm/plugin/mmsight/segment/d$a;
+    //   114: putfield 203	com/tencent/mm/plugin/recordvideo/model/audio/h:wrP	Lcom/tencent/mm/plugin/mmsight/segment/d$a;
     //   117: aload_0
     //   118: getfield 72	com/tencent/mm/plugin/recordvideo/model/audio/h:startTime	J
     //   121: lconst_0
@@ -160,12 +160,12 @@ public final class h
     //   190: invokevirtual 211	com/tencent/mm/plugin/recordvideo/model/audio/h:D	([I)V
     //   193: aload_0
     //   194: getfield 78	com/tencent/mm/plugin/recordvideo/model/audio/a:scene	I
-    //   197: getstatic 217	com/tencent/mm/plugin/recordvideo/b/i:vhd	Lcom/tencent/mm/plugin/recordvideo/b/i;
+    //   197: getstatic 217	com/tencent/mm/plugin/recordvideo/b/i:wpP	Lcom/tencent/mm/plugin/recordvideo/b/i;
     //   200: invokevirtual 221	com/tencent/mm/plugin/recordvideo/b/i:ordinal	()I
     //   203: if_icmpne +174 -> 377
     //   206: aload_0
     //   207: lload 5
-    //   209: putfield 224	com/tencent/mm/plugin/recordvideo/model/audio/a:tiV	J
+    //   209: putfield 224	com/tencent/mm/plugin/recordvideo/model/audio/a:urm	J
     //   212: aload_0
     //   213: getfield 90	com/tencent/mm/plugin/recordvideo/model/audio/a:TAG	Ljava/lang/String;
     //   216: new 92	java/lang/StringBuilder
@@ -183,7 +183,7 @@ public final class h
     //   243: lload 5
     //   245: invokevirtual 234	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   248: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   251: invokestatic 113	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   254: aload_0
     //   255: getfield 124	com/tencent/mm/plugin/recordvideo/model/audio/a:thumbWidth	I
     //   258: aload_0
@@ -192,18 +192,18 @@ public final class h
     //   265: invokestatic 139	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   268: astore 8
     //   270: aload_0
-    //   271: getfield 203	com/tencent/mm/plugin/recordvideo/model/audio/h:vjd	Lcom/tencent/mm/plugin/mmsight/segment/d$a;
+    //   271: getfield 203	com/tencent/mm/plugin/recordvideo/model/audio/h:wrP	Lcom/tencent/mm/plugin/mmsight/segment/d$a;
     //   274: astore 7
     //   276: aload 7
     //   278: ifnull +108 -> 386
     //   281: aload 7
-    //   283: invokevirtual 240	com/tencent/mm/plugin/mmsight/segment/d$a:cQv	()Lcom/tencent/mm/plugin/mmsight/segment/d;
+    //   283: invokevirtual 240	com/tencent/mm/plugin/mmsight/segment/d$a:ded	()Lcom/tencent/mm/plugin/mmsight/segment/d;
     //   286: astore 7
     //   288: aload_0
     //   289: aload 7
-    //   291: putfield 115	com/tencent/mm/plugin/recordvideo/model/audio/h:vje	Lcom/tencent/mm/plugin/mmsight/segment/d;
+    //   291: putfield 115	com/tencent/mm/plugin/recordvideo/model/audio/h:wrQ	Lcom/tencent/mm/plugin/mmsight/segment/d;
     //   294: aload_0
-    //   295: getfield 115	com/tencent/mm/plugin/recordvideo/model/audio/h:vje	Lcom/tencent/mm/plugin/mmsight/segment/d;
+    //   295: getfield 115	com/tencent/mm/plugin/recordvideo/model/audio/h:wrQ	Lcom/tencent/mm/plugin/mmsight/segment/d;
     //   298: astore 7
     //   300: aload 7
     //   302: ifnull +90 -> 392
@@ -252,7 +252,7 @@ public final class h
     //   377: aload_0
     //   378: iload_1
     //   379: i2l
-    //   380: putfield 224	com/tencent/mm/plugin/recordvideo/model/audio/a:tiV	J
+    //   380: putfield 224	com/tencent/mm/plugin/recordvideo/model/audio/a:urm	J
     //   383: goto -171 -> 212
     //   386: aconst_null
     //   387: astore 7
@@ -268,7 +268,7 @@ public final class h
     //   409: ldc 248
     //   411: iconst_0
     //   412: anewarray 250	java/lang/Object
-    //   415: invokestatic 254	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   415: invokestatic 254	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   418: ldc 149
     //   420: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   423: return
@@ -293,14 +293,14 @@ public final class h
     //   305	319	398	java/lang/Exception
   }
   
-  public final void dhK()
+  public final void dvs()
   {
     AppMethodBeat.i(75430);
-    d.a locala = this.vjd;
+    d.a locala = this.wrP;
     if (locala != null) {
-      locala.a(this.vje);
+      locala.a(this.wrQ);
     }
-    locala = this.vjd;
+    locala = this.wrP;
     if (locala != null)
     {
       locala.destroy();
@@ -310,7 +310,7 @@ public final class h
     AppMethodBeat.o(75430);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentThumbFetcher;", "kotlin.jvm.PlatformType", "call"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/mmsight/segment/ISegmentThumbFetcher;", "kotlin.jvm.PlatformType", "call"})
   static final class a<V>
     implements Callable<d>
   {
@@ -319,7 +319,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.model.audio.h
  * JD-Core Version:    0.7.0.1
  */

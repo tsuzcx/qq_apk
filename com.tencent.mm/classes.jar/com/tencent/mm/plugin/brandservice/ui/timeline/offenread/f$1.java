@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.x.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f$1
   implements x.a
@@ -14,7 +14,7 @@ public final class f$1
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
   {
     AppMethodBeat.i(6136);
-    ad.i("MicroMsg.BizTimeLineOftenReadReport", "often_read_bar_report CGI return, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.BizTimeLineOftenReadReport", "often_read_bar_report CGI return, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(6136);
     return 0;
   }

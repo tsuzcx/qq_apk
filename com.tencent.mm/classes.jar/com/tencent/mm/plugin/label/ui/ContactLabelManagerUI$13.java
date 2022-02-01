@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.label.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.label.b.c;
 
@@ -13,7 +13,7 @@ final class ContactLabelManagerUI$13
   public final void run()
   {
     AppMethodBeat.i(26220);
-    az.aeS().a(new c(), 0);
+    az.agi().a(new c(), 0);
     AppMethodBeat.o(26220);
   }
 }

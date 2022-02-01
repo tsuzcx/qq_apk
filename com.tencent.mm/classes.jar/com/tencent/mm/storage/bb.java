@@ -1,167 +1,105 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.g.c.br;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bb
-  extends j<ba>
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.e
+  extends br
 {
-  private static final String[] Ffk;
-  public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(117170);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ba.info, "fmessage_msginfo") };
-    Ffk = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageTalkerIndex ON fmessage_msginfo ( talker )" };
-    AppMethodBeat.o(117170);
+    AppMethodBeat.i(43197);
+    c.a locala = new c.a();
+    locala.GvF = new Field[17];
+    locala.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "talker";
+    locala.GvH.put("talker", "TEXT default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" talker TEXT default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "talker";
+    locala.columns[1] = "encryptTalker";
+    locala.GvH.put("encryptTalker", "TEXT default '' ");
+    localStringBuilder.append(" encryptTalker TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "displayName";
+    locala.GvH.put("displayName", "TEXT default '' ");
+    localStringBuilder.append(" displayName TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "state";
+    locala.GvH.put("state", "INTEGER default '0' ");
+    localStringBuilder.append(" state INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "lastModifiedTime";
+    locala.GvH.put("lastModifiedTime", "LONG default '0' ");
+    localStringBuilder.append(" lastModifiedTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "isNew";
+    locala.GvH.put("isNew", "INTEGER default '0' ");
+    localStringBuilder.append(" isNew INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "addScene";
+    locala.GvH.put("addScene", "INTEGER default '0' ");
+    localStringBuilder.append(" addScene INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "fmsgSysRowId";
+    locala.GvH.put("fmsgSysRowId", "LONG default '0' ");
+    localStringBuilder.append(" fmsgSysRowId LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "fmsgIsSend";
+    locala.GvH.put("fmsgIsSend", "INTEGER default '0' ");
+    localStringBuilder.append(" fmsgIsSend INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "fmsgType";
+    locala.GvH.put("fmsgType", "INTEGER default '0' ");
+    localStringBuilder.append(" fmsgType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "fmsgContent";
+    locala.GvH.put("fmsgContent", "TEXT default '' ");
+    localStringBuilder.append(" fmsgContent TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "recvFmsgType";
+    locala.GvH.put("recvFmsgType", "INTEGER default '0' ");
+    localStringBuilder.append(" recvFmsgType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "contentFromUsername";
+    locala.GvH.put("contentFromUsername", "TEXT default '' ");
+    localStringBuilder.append(" contentFromUsername TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "contentNickname";
+    locala.GvH.put("contentNickname", "TEXT default '' ");
+    localStringBuilder.append(" contentNickname TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "contentPhoneNumMD5";
+    locala.GvH.put("contentPhoneNumMD5", "TEXT default '' ");
+    localStringBuilder.append(" contentPhoneNumMD5 TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "contentFullPhoneNumMD5";
+    locala.GvH.put("contentFullPhoneNumMD5", "TEXT default '' ");
+    localStringBuilder.append(" contentFullPhoneNumMD5 TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "contentVerifyContent";
+    locala.GvH.put("contentVerifyContent", "TEXT default '' ");
+    localStringBuilder.append(" contentVerifyContent TEXT default '' ");
+    locala.columns[17] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(43197);
   }
   
-  public bb(com.tencent.mm.sdk.e.e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, ba.info, "fmessage_msginfo", Ffk);
-    this.db = parame;
-  }
-  
-  public final ba[] aII(String paramString)
-  {
-    AppMethodBeat.i(117162);
-    ad.d("MicroMsg.FMessageMsgInfoStorage", "getLastFMessageMsgInfo");
-    paramString = "select *, rowid from fmessage_msginfo  where talker = '" + bt.aFQ(paramString) + "' order by createTime DESC limit 3";
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      ba localba = new ba();
-      localba.convertFrom(paramString);
-      localArrayList.add(localba);
-    }
-    paramString.close();
-    paramString = (ba[])localArrayList.toArray(new ba[localArrayList.size()]);
-    AppMethodBeat.o(117162);
-    return paramString;
-  }
-  
-  public final ba aIJ(String paramString)
-  {
-    AppMethodBeat.i(117164);
-    paramString = fN(paramString, 1);
-    if ((paramString != null) && (paramString.length > 0))
-    {
-      paramString = paramString[0];
-      AppMethodBeat.o(117164);
-      return paramString;
-    }
-    AppMethodBeat.o(117164);
-    return null;
-  }
-  
-  public final ba agg(String paramString)
-  {
-    AppMethodBeat.i(117163);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("MicroMsg.FMessageMsgInfoStorage", "getLastFMsg fail, talker is null");
-      AppMethodBeat.o(117163);
-      return null;
-    }
-    paramString = "select * from fmessage_msginfo where talker = '" + bt.aFQ(paramString) + "' order by createTime DESC limit 1";
-    paramString = this.db.a(paramString, null, 2);
-    ba localba = new ba();
-    if (paramString.moveToFirst()) {
-      localba.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(117163);
-    return localba;
-  }
-  
-  public final boolean agh(String paramString)
-  {
-    AppMethodBeat.i(117168);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("MicroMsg.FMessageMsgInfoStorage", "deleteByTalker fail, talker is null");
-      AppMethodBeat.o(117168);
-      return false;
-    }
-    paramString = "delete from fmessage_msginfo where talker = '" + bt.aFQ(paramString) + "'";
-    boolean bool = this.db.execSQL("fmessage_msginfo", paramString);
-    AppMethodBeat.o(117168);
-    return bool;
-  }
-  
-  public final boolean b(ba paramba)
-  {
-    AppMethodBeat.i(117166);
-    if (paramba == null)
-    {
-      ad.e("MicroMsg.FMessageMsgInfoStorage", "insert fail, fmsgInfo is null");
-      AppMethodBeat.o(117166);
-      return false;
-    }
-    if (super.insert(paramba))
-    {
-      doNotify(paramba.systemRowid);
-      AppMethodBeat.o(117166);
-      return true;
-    }
-    AppMethodBeat.o(117166);
-    return false;
-  }
-  
-  public final List<ba> cOO()
-  {
-    AppMethodBeat.i(117167);
-    ad.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, type = 0");
-    ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = this.db.a("select *, rowid from fmessage_msginfo where type = 0", null, 2);
-    while (localCursor.moveToNext())
-    {
-      ba localba = new ba();
-      localba.convertFrom(localCursor);
-      localArrayList.add(localba);
-    }
-    localCursor.close();
-    ad.d("MicroMsg.FMessageMsgInfoStorage", "getFMsgByType, size = " + localArrayList.size());
-    AppMethodBeat.o(117167);
-    return localArrayList;
-  }
-  
-  public final ba[] fN(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(117165);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      ad.e("MicroMsg.FMessageMsgInfoStorage", "getLastRecvFMsg fail, talker is null");
-      AppMethodBeat.o(117165);
-      return null;
-    }
-    paramString = "select * from fmessage_msginfo where isSend != 1 and talker = '" + bt.aFQ(paramString) + "' order by createTime DESC limit " + paramInt;
-    paramString = this.db.a(paramString, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (paramString.moveToNext())
-    {
-      ba localba = new ba();
-      localba.convertFrom(paramString);
-      localArrayList.add(localba);
-    }
-    paramString.close();
-    paramString = (ba[])localArrayList.toArray(new ba[localArrayList.size()]);
-    AppMethodBeat.o(117165);
-    return paramString;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bb
  * JD-Core Version:    0.7.0.1
  */

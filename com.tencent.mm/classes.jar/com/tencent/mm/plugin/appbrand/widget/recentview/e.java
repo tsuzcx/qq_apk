@@ -7,69 +7,118 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.r;
+import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class e
   extends RecyclerView.m
 {
-  RecyclerView.r aqy;
-  private int ard;
-  private float kvF;
-  private int lVi;
+  private int arZ;
+  RecyclerView.s aru;
+  private float kWT;
   Context mContext;
+  private int mHD;
+  public int mHJ;
+  public BaseAppBrandRecentView mOd;
+  public int mOe;
+  public int mOf;
   public int mOffsetX;
-  private int mfE;
-  public int mfK;
-  public BaseAppBrandRecentView mmc;
-  public int mmd;
-  public int mme;
-  RecyclerView.r mmf;
-  public int mmg;
-  private b mmh;
-  private boolean mmi;
-  LinearLayoutManager mmj;
-  public boolean mmk;
-  a mml;
-  private boolean mmm;
-  private boolean mmn;
-  private boolean mmo;
+  RecyclerView.s mOg;
+  public int mOh;
+  private b mOi;
+  private boolean mOj;
+  LinearLayoutManager mOk;
+  public boolean mOl;
+  a mOm;
+  private boolean mOn;
+  private boolean mOo;
+  private boolean mOp;
+  private int mxk;
   
   public e(int paramInt)
   {
     AppMethodBeat.i(50012);
-    this.mme = 0;
-    this.mfK = 0;
-    this.kvF = ViewConfiguration.get(aj.getContext()).getScaledTouchSlop();
-    this.mmh = null;
-    this.ard = -1;
-    this.mmi = false;
-    this.mmk = false;
-    this.mfE = 0;
-    this.mml = null;
-    this.lVi = 0;
-    this.mmm = false;
-    this.mmn = false;
-    this.mmo = false;
-    this.mfE = paramInt;
+    this.mOf = 0;
+    this.mHJ = 0;
+    this.kWT = ViewConfiguration.get(ai.getContext()).getScaledTouchSlop();
+    this.mOi = null;
+    this.arZ = -1;
+    this.mOj = false;
+    this.mOl = false;
+    this.mHD = 0;
+    this.mOm = null;
+    this.mxk = 0;
+    this.mOn = false;
+    this.mOo = false;
+    this.mOp = false;
+    this.mHD = paramInt;
     AppMethodBeat.o(50012);
   }
   
-  private void buF()
+  private void bBC()
   {
-    this.mmi = false;
-    this.mmk = false;
-    this.mmh = null;
-    this.ard = -1;
+    this.mOj = false;
+    this.mOl = false;
+    this.mOi = null;
+    this.arZ = -1;
   }
   
-  public static int vA(int paramInt)
+  private int wn(int paramInt)
+  {
+    if (paramInt == 0) {
+      return 0;
+    }
+    return this.mOh * paramInt + this.mHD;
+  }
+  
+  private int wo(int paramInt)
+  {
+    if (this.mHD != 0)
+    {
+      int j = paramInt / this.mOh;
+      int i = j;
+      if (paramInt % this.mOh == 0)
+      {
+        i = j;
+        if (paramInt != 0) {
+          i = j - 1;
+        }
+      }
+      return i;
+    }
+    return paramInt / this.mOh;
+  }
+  
+  public static int wp(int paramInt)
+  {
+    AppMethodBeat.i(50019);
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(50019);
+      return 0;
+    }
+    int i = com.tencent.mm.plugin.appbrand.widget.desktop.b.getCompletelyCountPerPage();
+    com.tencent.mm.plugin.appbrand.widget.desktop.b.byD();
+    AppMethodBeat.o(50019);
+    return i * paramInt + 1;
+  }
+  
+  public static int wq(int paramInt)
+  {
+    AppMethodBeat.i(50020);
+    int i = com.tencent.mm.plugin.appbrand.widget.desktop.b.getCompletelyCountPerPage();
+    com.tencent.mm.plugin.appbrand.widget.desktop.b.byD();
+    AppMethodBeat.o(50020);
+    return (paramInt + 1) * i + 1;
+  }
+  
+  public static int wr(int paramInt)
   {
     AppMethodBeat.i(50021);
     int j = paramInt / com.tencent.mm.plugin.appbrand.widget.desktop.b.getCompletelyCountPerPage();
@@ -85,63 +134,14 @@ public final class e
     return i;
   }
   
-  private int vw(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 0;
-    }
-    return this.mmg * paramInt + this.mfE;
-  }
-  
-  private int vx(int paramInt)
-  {
-    if (this.mfE != 0)
-    {
-      int j = paramInt / this.mmg;
-      int i = j;
-      if (paramInt % this.mmg == 0)
-      {
-        i = j;
-        if (paramInt != 0) {
-          i = j - 1;
-        }
-      }
-      return i;
-    }
-    return paramInt / this.mmg;
-  }
-  
-  public static int vy(int paramInt)
-  {
-    AppMethodBeat.i(50019);
-    if (paramInt == 0)
-    {
-      AppMethodBeat.o(50019);
-      return 0;
-    }
-    int i = com.tencent.mm.plugin.appbrand.widget.desktop.b.getCompletelyCountPerPage();
-    com.tencent.mm.plugin.appbrand.widget.desktop.b.brD();
-    AppMethodBeat.o(50019);
-    return i * paramInt + 1;
-  }
-  
-  public static int vz(int paramInt)
-  {
-    AppMethodBeat.i(50020);
-    int i = com.tencent.mm.plugin.appbrand.widget.desktop.b.getCompletelyCountPerPage();
-    com.tencent.mm.plugin.appbrand.widget.desktop.b.brD();
-    AppMethodBeat.o(50020);
-    return (paramInt + 1) * i + 1;
-  }
-  
   final void O(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(50018);
-    if ((this.mmc != null) && ((this.mmn) || (paramBoolean)))
+    if ((this.mOd != null) && ((this.mOo) || (paramBoolean)))
     {
-      this.mmf.ard = paramInt;
-      this.mmo = true;
-      this.mmc.getLayoutManager().a(this.mmf);
+      this.mOg.arZ = paramInt;
+      this.mOp = true;
+      this.mOd.getLayoutManager().a(this.mOg);
     }
     AppMethodBeat.o(50018);
   }
@@ -149,19 +149,19 @@ public final class e
   public final void a(int paramInt, b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(50017);
-    this.mmh = paramb;
-    this.mmi = true;
-    int i = vx(paramInt);
-    this.ard = vy(i);
-    this.mfK = vx(this.mmj.jP());
-    ad.i("ViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.mfK), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.ard) });
-    if ((i == this.mfK) && (!paramBoolean))
+    this.mOi = paramb;
+    this.mOj = true;
+    int i = wo(paramInt);
+    this.arZ = wp(i);
+    this.mHJ = wo(this.mOk.jX());
+    ac.i("ViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.mHJ), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.arZ) });
+    if ((i == this.mHJ) && (!paramBoolean))
     {
-      buG();
+      bBD();
       AppMethodBeat.o(50017);
       return;
     }
-    O(this.ard, true);
+    O(this.arZ, true);
     AppMethodBeat.o(50017);
   }
   
@@ -169,14 +169,14 @@ public final class e
   {
     AppMethodBeat.i(50013);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.be(paramRecyclerView);
-    localb.lT(paramInt1);
-    localb.lT(paramInt2);
-    a.b("com/tencent/mm/plugin/appbrand/widget/recentview/ViewPagerHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ado());
+    localb.bb(paramRecyclerView);
+    localb.lS(paramInt1);
+    localb.lS(paramInt2);
+    a.b("com/tencent/mm/plugin/appbrand/widget/recentview/ViewPagerHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
     super.a(paramRecyclerView, paramInt1, paramInt2);
-    this.mme += paramInt1;
-    if (this.mml != null) {
-      this.mml.d(paramRecyclerView, this.mme);
+    this.mOf += paramInt1;
+    if (this.mOm != null) {
+      this.mOm.d(paramRecyclerView, this.mOf);
     }
     this.mOffsetX += paramInt1;
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/recentview/ViewPagerHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
@@ -187,53 +187,53 @@ public final class e
   {
     AppMethodBeat.i(50014);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.be(paramRecyclerView);
-    localb.lT(paramInt);
-    a.b("com/tencent/mm/plugin/appbrand/widget/recentview/ViewPagerHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+    localb.bb(paramRecyclerView);
+    localb.lS(paramInt);
+    a.b("com/tencent/mm/plugin/appbrand/widget/recentview/ViewPagerHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
     super.b(paramRecyclerView, paramInt);
-    ad.i("ViewPagerHelper", "alvinluo onScrollStateChanged newState: %d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.mml != null) {
-      this.mml.h(paramRecyclerView, paramInt, this.mme);
+    ac.i("ViewPagerHelper", "alvinluo onScrollStateChanged newState: %d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.mOm != null) {
+      this.mOm.h(paramRecyclerView, paramInt, this.mOf);
     }
     int i;
-    if ((paramInt == 0) && (this.lVi != 2))
+    if ((paramInt == 0) && (this.mxk != 2))
     {
-      i = vv(this.mOffsetX);
-      if ((this.mmc != null) && (this.mmn))
+      i = wm(this.mOffsetX);
+      if ((this.mOd != null) && (this.mOo))
       {
-        this.aqy.ard = i;
-        this.mmo = true;
-        this.mmc.getLayoutManager().a(this.aqy);
+        this.aru.arZ = i;
+        this.mOp = true;
+        this.mOd.getLayoutManager().a(this.aru);
       }
-      this.mmm = true;
+      this.mOn = true;
     }
     for (;;)
     {
-      this.lVi = paramInt;
+      this.mxk = paramInt;
       a.a(this, "com/tencent/mm/plugin/appbrand/widget/recentview/ViewPagerHelper", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
       AppMethodBeat.o(50014);
       return;
-      if ((!this.mmm) && (paramInt == 2))
+      if ((!this.mOn) && (paramInt == 2))
       {
-        this.mmm = true;
+        this.mOn = true;
       }
       else if (paramInt == 0)
       {
-        this.mmd = this.mOffsetX;
-        this.mmm = false;
-        i = this.mfK;
-        int j = this.mmj.jO();
-        ad.i("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos: %d", new Object[] { Integer.valueOf(j) });
+        this.mOe = this.mOffsetX;
+        this.mOn = false;
+        i = this.mHJ;
+        int j = this.mOk.jW();
+        ac.i("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos: %d", new Object[] { Integer.valueOf(j) });
         boolean bool;
         if (j != -1)
         {
-          this.mfK = (j / this.mmg);
-          ad.i("ViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.mfK), Integer.valueOf(j) });
-          if ((i != this.mfK) && (this.mml != null))
+          this.mHJ = (j / this.mOh);
+          ac.i("ViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.mHJ), Integer.valueOf(j) });
+          if ((i != this.mHJ) && (this.mOm != null))
           {
-            paramRecyclerView = this.mml;
-            i = this.mfK;
-            if (!this.mmn)
+            paramRecyclerView = this.mOm;
+            i = this.mHJ;
+            if (!this.mOo)
             {
               bool = true;
               label330:
@@ -243,33 +243,33 @@ public final class e
           else
           {
             label339:
-            this.mmn = false;
-            this.mme = 0;
-            if (!this.mmk) {
+            this.mOo = false;
+            this.mOf = 0;
+            if (!this.mOl) {
               break label448;
             }
-            ad.d("ViewPagerHelper", "alvinluo scrollMore");
-            com.tencent.mm.plugin.appbrand.widget.desktop.b.brD();
-            this.mmk = false;
-            a(0, this.mmh, true);
-            buG();
+            ac.d("ViewPagerHelper", "alvinluo scrollMore");
+            com.tencent.mm.plugin.appbrand.widget.desktop.b.byD();
+            this.mOl = false;
+            a(0, this.mOi, true);
+            bBD();
           }
         }
         for (;;)
         {
-          if (!this.mmo) {
+          if (!this.mOp) {
             break label453;
           }
-          ad.i("ViewPagerHelper", "alvinluo scrollBy x: -1, y: 0");
-          this.mmo = false;
-          this.mmc.scrollBy(-1, 0);
+          ac.i("ViewPagerHelper", "alvinluo scrollBy x: -1, y: 0");
+          this.mOp = false;
+          this.mOd.scrollBy(-1, 0);
           break;
           bool = false;
           break label330;
-          ad.e("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.mfK) });
+          ac.e("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.mHJ) });
           break label339;
           label448:
-          buG();
+          bBD();
         }
       }
       else
@@ -277,41 +277,41 @@ public final class e
         label453:
         if (paramInt == 1)
         {
-          ad.i("ViewPagerHelper", "SCROLL_STATE_DRAGGING");
-          this.mmn = true;
+          ac.i("ViewPagerHelper", "SCROLL_STATE_DRAGGING");
+          this.mOo = true;
         }
       }
     }
   }
   
-  final void buG()
+  final void bBD()
   {
     AppMethodBeat.i(50015);
-    if (this.mmi)
+    if (this.mOj)
     {
-      ad.i("ViewPagerHelper", "alvinluo onScrollAnimationEnd");
-      if (this.mmh != null) {
-        this.mmh.bss();
+      ac.i("ViewPagerHelper", "alvinluo onScrollAnimationEnd");
+      if (this.mOi != null) {
+        this.mOi.bzs();
       }
-      buF();
+      bBC();
     }
     AppMethodBeat.o(50015);
   }
   
-  final int vv(int paramInt)
+  final int wm(int paramInt)
   {
     AppMethodBeat.i(50016);
-    int i = this.mfK;
-    float f = this.mmc.getWidth();
-    int k = this.mfK;
-    ad.d("ViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mmd), Integer.valueOf(paramInt - this.mmd), Float.valueOf(f), Float.valueOf(this.kvF), Integer.valueOf(this.mfK) });
-    if (paramInt - this.mmd >= f / 2.0F)
+    int i = this.mHJ;
+    float f = this.mOd.getWidth();
+    int k = this.mHJ;
+    ac.d("ViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mOe), Integer.valueOf(paramInt - this.mOe), Float.valueOf(f), Float.valueOf(this.kWT), Integer.valueOf(this.mHJ) });
+    if (paramInt - this.mOe >= f / 2.0F)
     {
-      i = vx(this.mmj.jQ());
-      int m = this.mmc.getAdapter().getItemCount();
-      int j = m / this.mmg;
+      i = wo(this.mOk.jY());
+      int m = this.mOd.getAdapter().getItemCount();
+      int j = m / this.mOh;
       paramInt = j;
-      if (m % this.mmg != 0) {
+      if (m % this.mOh != 0) {
         paramInt = j + 1;
       }
       i = Math.max(Math.min(i, paramInt - 1), -1);
@@ -322,21 +322,21 @@ public final class e
     }
     for (;;)
     {
-      ad.i("ViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(vy(paramInt)) });
-      paramInt = vw(paramInt);
+      ac.i("ViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(wp(paramInt)) });
+      paramInt = wn(paramInt);
       AppMethodBeat.o(50016);
       return paramInt;
-      if ((paramInt - this.mmd >= 0) && (paramInt - this.mmd < this.kvF))
+      if ((paramInt - this.mOe >= 0) && (paramInt - this.mOe < this.kWT))
       {
-        ad.i("ViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(vw(i)) });
-        paramInt = vw(i);
+        ac.i("ViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(wn(i)) });
+        paramInt = wn(i);
         AppMethodBeat.o(50016);
         return paramInt;
       }
-      if (paramInt - this.mmd > -f / 2.0F) {
+      if (paramInt - this.mOe > -f / 2.0F) {
         break;
       }
-      i = vx(this.mmj.jO());
+      i = wo(this.mOk.jW());
       break;
       label334:
       paramInt = i;
@@ -357,7 +357,7 @@ public final class e
   
   public static abstract interface b
   {
-    public abstract void bss();
+    public abstract void bzs();
   }
 }
 

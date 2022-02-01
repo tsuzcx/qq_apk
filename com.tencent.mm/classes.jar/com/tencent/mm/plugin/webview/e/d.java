@@ -4,207 +4,207 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.ant;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aqx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class d
 {
-  Map<String, a> Bbe;
-  private JsapiPermissionWrapper Bbf;
-  private GeneralControlWrapper Bbg;
-  final JsapiPermissionWrapper Bbh;
-  final GeneralControlWrapper Bbi;
+  Map<String, a> Ctq;
+  private JsapiPermissionWrapper Ctr;
+  private GeneralControlWrapper Cts;
+  final JsapiPermissionWrapper Ctt;
+  final GeneralControlWrapper Ctu;
   
   public d()
   {
-    AppMethodBeat.i(189741);
-    this.Bbe = new HashMap();
-    this.Bbh = new JsapiPermissionWrapper(2);
-    this.Bbi = GeneralControlWrapper.Cqb;
-    this.Bbf = null;
-    if ((ab.hVx == null) || (ab.hVx.length() == 0))
+    AppMethodBeat.i(205370);
+    this.Ctq = new HashMap();
+    this.Ctt = new JsapiPermissionWrapper(2);
+    this.Ctu = GeneralControlWrapper.DIt;
+    this.Ctr = null;
+    if ((ab.ivB == null) || (ab.ivB.length() == 0))
     {
-      ad.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, Test.jsapiPermission is null");
-      this.Bbg = null;
-      if ((ab.hVy != null) && (ab.hVy.length() != 0)) {
+      ac.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, Test.jsapiPermission is null");
+      this.Cts = null;
+      if ((ab.ivC != null) && (ab.ivC.length() != 0)) {
         break label223;
       }
-      ad.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, Test.generalCtrl is null");
+      ac.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, Test.generalCtrl is null");
     }
     for (;;)
     {
       int i;
       for (;;)
       {
-        ad.i("MicroMsg.LuggageGetA8KeyPermission", "hardcodeJsPerm = " + null + ", hardcodeGenCtrl = " + null);
-        AppMethodBeat.o(189741);
+        ac.i("MicroMsg.LuggageGetA8KeyPermission", "hardcodeJsPerm = " + null + ", hardcodeGenCtrl = " + null);
+        AppMethodBeat.o(205370);
         return;
         try
         {
-          i = bt.getInt(ab.hVx, 0);
+          i = bs.getInt(ab.ivB, 0);
           if (i < 0) {
-            ad.w("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, Test.jsapiPermission wrong");
+            ac.w("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, Test.jsapiPermission wrong");
           }
         }
         catch (Exception localException1)
         {
-          ad.e("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, parse jsapi fail, ex = " + localException1.getMessage());
-          this.Bbf = null;
+          ac.e("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, parse jsapi fail, ex = " + localException1.getMessage());
+          this.Ctr = null;
         }
       }
       for (;;)
       {
-        ad.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, hardcodeJsPerm = " + this.Bbf);
+        ac.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeJsPermission, hardcodeJsPerm = " + this.Ctr);
         break;
-        this.Bbf = new JsapiPermissionWrapper(i);
+        this.Ctr = new JsapiPermissionWrapper(i);
       }
       try
       {
         label223:
-        i = bt.getInt(ab.hVy, 0);
-        ad.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, permission = %d", new Object[] { Integer.valueOf(i) });
-        ant localant = new ant();
-        localant.DoW = i;
-        this.Bbg = new GeneralControlWrapper(localant);
-        ad.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, hardcodeGenCtrl = " + this.Bbg);
+        i = bs.getInt(ab.ivC, 0);
+        ac.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, permission = %d", new Object[] { Integer.valueOf(i) });
+        aqx localaqx = new aqx();
+        localaqx.EJW = i;
+        this.Cts = new GeneralControlWrapper(localaqx);
+        ac.i("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl, hardcodeGenCtrl = " + this.Cts);
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ad.e("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl fail, ex = %s", new Object[] { localException2.getMessage() });
-          this.Bbg = null;
+          ac.e("MicroMsg.LuggageGetA8KeyPermission", "setHardcodeGeneralCtrl fail, ex = %s", new Object[] { localException2.getMessage() });
+          this.Cts = null;
         }
       }
     }
   }
   
-  static String awm(String paramString)
+  static String aBE(String paramString)
   {
-    AppMethodBeat.i(189745);
+    AppMethodBeat.i(205374);
     int i = paramString.indexOf("#");
     if (i < 0)
     {
-      AppMethodBeat.o(189745);
+      AppMethodBeat.o(205374);
       return paramString;
     }
     paramString = paramString.substring(0, i);
-    AppMethodBeat.o(189745);
+    AppMethodBeat.o(205374);
     return paramString;
   }
   
   public final void a(String paramString, JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
   {
-    AppMethodBeat.i(189742);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(205371);
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.LuggageGetA8KeyPermission", "update fail, url is null");
-      AppMethodBeat.o(189742);
+      ac.e("MicroMsg.LuggageGetA8KeyPermission", "update fail, url is null");
+      AppMethodBeat.o(205371);
       return;
     }
-    paramString = awm(paramString);
-    ad.i("MicroMsg.LuggageGetA8KeyPermission", "edw update, jsPerm = " + paramJsapiPermissionWrapper + ", genCtrl = " + paramGeneralControlWrapper + ", url = " + paramString);
-    this.Bbe.put(paramString, new a(paramJsapiPermissionWrapper, paramGeneralControlWrapper));
-    AppMethodBeat.o(189742);
+    paramString = aBE(paramString);
+    ac.i("MicroMsg.LuggageGetA8KeyPermission", "edw update, jsPerm = " + paramJsapiPermissionWrapper + ", genCtrl = " + paramGeneralControlWrapper + ", url = " + paramString);
+    this.Ctq.put(paramString, new a(paramJsapiPermissionWrapper, paramGeneralControlWrapper));
+    AppMethodBeat.o(205371);
   }
   
-  public final JsapiPermissionWrapper axk(String paramString)
+  public final JsapiPermissionWrapper aCC(String paramString)
   {
-    AppMethodBeat.i(189743);
-    if (this.Bbf != null)
+    AppMethodBeat.i(205372);
+    if (this.Ctr != null)
     {
-      ad.i("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm, return hardcodeJsPerm = " + this.Bbf);
-      paramString = this.Bbf;
-      AppMethodBeat.o(189743);
+      ac.i("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm, return hardcodeJsPerm = " + this.Ctr);
+      paramString = this.Ctr;
+      AppMethodBeat.o(205372);
       return paramString;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, url = ".concat(String.valueOf(paramString)));
-      paramString = this.Bbh;
-      AppMethodBeat.o(189743);
+      ac.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, url = ".concat(String.valueOf(paramString)));
+      paramString = this.Ctt;
+      AppMethodBeat.o(205372);
       return paramString;
     }
-    paramString = awm(paramString);
-    if (this.Bbe == null)
+    paramString = aBE(paramString);
+    if (this.Ctq == null)
     {
-      ad.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, permMap is null");
-      paramString = this.Bbh;
-      AppMethodBeat.o(189743);
+      ac.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, permMap is null");
+      paramString = this.Ctt;
+      AppMethodBeat.o(205372);
       return paramString;
     }
-    paramString = (a)this.Bbe.get(paramString);
+    paramString = (a)this.Ctq.get(paramString);
     if (paramString == null)
     {
-      paramString = this.Bbh;
-      AppMethodBeat.o(189743);
+      paramString = this.Ctt;
+      AppMethodBeat.o(205372);
       return paramString;
     }
-    paramString = paramString.ARc;
-    AppMethodBeat.o(189743);
+    paramString = paramString.Cjp;
+    AppMethodBeat.o(205372);
     return paramString;
   }
   
-  public final GeneralControlWrapper axl(String paramString)
+  public final GeneralControlWrapper aCD(String paramString)
   {
-    AppMethodBeat.i(189744);
-    if (this.Bbg != null)
+    AppMethodBeat.i(205373);
+    if (this.Cts != null)
     {
-      ad.i("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl, return hardcodeGenCtrl = " + this.Bbg);
-      paramString = this.Bbg;
-      AppMethodBeat.o(189744);
+      ac.i("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl, return hardcodeGenCtrl = " + this.Cts);
+      paramString = this.Cts;
+      AppMethodBeat.o(205373);
       return paramString;
     }
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl fail, url = ".concat(String.valueOf(paramString)));
-      paramString = this.Bbi;
-      AppMethodBeat.o(189744);
+      ac.e("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl fail, url = ".concat(String.valueOf(paramString)));
+      paramString = this.Ctu;
+      AppMethodBeat.o(205373);
       return paramString;
     }
-    String str = awm(paramString);
-    a locala = (a)this.Bbe.get(str);
+    String str = aBE(paramString);
+    a locala = (a)this.Ctq.get(str);
     StringBuilder localStringBuilder = new StringBuilder("edw getGenCtrl, genCtrl = ");
     if (locala == null) {}
-    for (paramString = null;; paramString = locala.Bbj)
+    for (paramString = null;; paramString = locala.Ctv)
     {
-      ad.i("MicroMsg.LuggageGetA8KeyPermission", paramString + ", url = " + str);
+      ac.i("MicroMsg.LuggageGetA8KeyPermission", paramString + ", url = " + str);
       if (locala != null) {
         break;
       }
-      paramString = this.Bbi;
-      AppMethodBeat.o(189744);
+      paramString = this.Ctu;
+      AppMethodBeat.o(205373);
       return paramString;
     }
-    paramString = locala.Bbj;
-    AppMethodBeat.o(189744);
+    paramString = locala.Ctv;
+    AppMethodBeat.o(205373);
     return paramString;
   }
   
   static final class a
   {
-    public JsapiPermissionWrapper ARc;
-    public GeneralControlWrapper Bbj;
+    public JsapiPermissionWrapper Cjp;
+    public GeneralControlWrapper Ctv;
     
     public a(JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
     {
-      this.ARc = paramJsapiPermissionWrapper;
-      this.Bbj = paramGeneralControlWrapper;
+      this.Cjp = paramJsapiPermissionWrapper;
+      this.Ctv = paramGeneralControlWrapper;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(189740);
+      AppMethodBeat.i(205369);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Permission: jsPerm = ");
-      ((StringBuilder)localObject).append(this.ARc);
+      ((StringBuilder)localObject).append(this.Cjp);
       ((StringBuilder)localObject).append(", genCtrl = ");
-      ((StringBuilder)localObject).append(this.Bbj);
+      ((StringBuilder)localObject).append(this.Ctv);
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(189740);
+      AppMethodBeat.o(205369);
       return localObject;
     }
   }

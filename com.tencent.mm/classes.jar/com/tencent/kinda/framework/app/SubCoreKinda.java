@@ -36,9 +36,9 @@ public class SubCoreKinda
   
   public SubCoreKinda()
   {
-    AppMethodBeat.i(186416);
+    AppMethodBeat.i(207378);
     this.jsInvokeListener = new KindaJSInvokeListener();
-    AppMethodBeat.o(186416);
+    AppMethodBeat.o(207378);
   }
   
   public static SubCoreKinda getCore()
@@ -59,14 +59,14 @@ public class SubCoreKinda
   public KindaCacheStg getCacheStg()
   {
     AppMethodBeat.i(18565);
-    if (!g.afw())
+    if (!g.agM())
     {
       localObject = new b();
       AppMethodBeat.o(18565);
       throw ((Throwable)localObject);
     }
     if (getCore().cacheStg == null) {
-      getCore().cacheStg = new KindaCacheStg(g.afB().gda);
+      getCore().cacheStg = new KindaCacheStg(g.agR().ghG);
     }
     Object localObject = getCore().cacheStg;
     AppMethodBeat.o(18565);
@@ -76,14 +76,14 @@ public class SubCoreKinda
   public KindaConfigCacheStg getConfigCacheStg()
   {
     AppMethodBeat.i(18564);
-    if (!g.afw())
+    if (!g.agM())
     {
       localObject = new b();
       AppMethodBeat.o(18564);
       throw ((Throwable)localObject);
     }
     if (getCore().configCacheStg == null) {
-      getCore().configCacheStg = new KindaConfigCacheStg(g.afB().gda);
+      getCore().configCacheStg = new KindaConfigCacheStg(g.agR().ghG);
     }
     Object localObject = getCore().configCacheStg;
     AppMethodBeat.o(18564);
@@ -92,18 +92,18 @@ public class SubCoreKinda
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(186417);
+    AppMethodBeat.i(207379);
     this.jsInvokeListener.alive();
-    AppMethodBeat.o(186417);
+    AppMethodBeat.o(207379);
   }
   
   public void onAccountRelease() {}
   
   public void onSdcardMount(boolean paramBoolean)
   {
-    AppMethodBeat.i(186418);
+    AppMethodBeat.i(207380);
     this.jsInvokeListener.dead();
-    AppMethodBeat.o(186418);
+    AppMethodBeat.o(207380);
   }
 }
 

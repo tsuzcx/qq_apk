@@ -1,24 +1,32 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.f;
 import d.l;
-import java.util.concurrent.CancellationException;
+import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/TimeoutCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "(Ljava/lang/String;)V", "coroutine", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Lkotlinx/coroutines/Job;)V", "createCopy", "kotlinx-coroutines-core"})
-public final class cc
-  extends CancellationException
-  implements w<cc>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/StandaloneCoroutine;", "Lkotlinx/coroutines/AbstractCoroutine;", "", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "handleJobException", "exception", "", "kotlinx-coroutines-core"})
+class cc
+  extends a<y>
 {
-  public final bj KeN;
-  
-  private cc(String paramString, bj parambj)
+  public cc(f paramf, boolean paramBoolean)
   {
-    super(paramString);
-    this.KeN = parambj;
+    super(paramf, paramBoolean);
+    AppMethodBeat.i(118146);
+    AppMethodBeat.o(118146);
+  }
+  
+  protected final boolean A(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(191089);
+    ad.b(this.LQy, paramThrowable);
+    AppMethodBeat.o(191089);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.cc
  * JD-Core Version:    0.7.0.1
  */

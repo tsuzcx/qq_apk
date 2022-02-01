@@ -1,60 +1,39 @@
 package com.tencent.mm.be;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aax;
-import com.tencent.mm.protocal.protobuf.aay;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.g.a.cj;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.b.c;
 
 public final class a
-  extends n
-  implements k
 {
-  private g callback;
-  private final b rr;
+  private static final a hQU;
+  public long hQT;
   
-  public a(String paramString)
+  static
   {
-    AppMethodBeat.i(90685);
-    b.a locala = new b.a();
-    locala.gUU = new aax();
-    locala.gUV = new aay();
-    locala.uri = "/cgi-bin/micromsg-bin/deletecardimg";
-    locala.funcId = 576;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.atI();
-    ((aax)this.rr.gUS.gUX).DbL = paramString;
-    AppMethodBeat.o(90685);
+    AppMethodBeat.i(116858);
+    hQU = new a();
+    AppMethodBeat.o(116858);
   }
   
-  public final int doScene(e parame, g paramg)
+  public a()
   {
-    AppMethodBeat.i(90686);
-    this.callback = paramg;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(90686);
-    return i;
+    AppMethodBeat.i(116857);
+    if (g.agM())
+    {
+      this.hQT = u.axB();
+      AppMethodBeat.o(116857);
+      return;
+    }
+    com.tencent.mm.sdk.b.a.GpY.b(new c() {});
+    AppMethodBeat.o(116857);
   }
   
-  public final int getType()
+  public static a aGT()
   {
-    return 576;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(90687);
-    ad.d("MicroMsg.NetSceneDeleteCardImg", "onGYNetEnd:%s, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(90687);
+    return hQU;
   }
 }
 

@@ -16,7 +16,7 @@ public class e
   extends Dialog
   implements c
 {
-  private final e.a WJ = new e.a()
+  private final e.a XE = new e.a()
   {
     public final boolean superDispatchKeyEvent(KeyEvent paramAnonymousKeyEvent)
     {
@@ -29,7 +29,7 @@ public class e
   {
     super(paramContext, i);
     getDelegate().onCreate(null);
-    getDelegate().fV();
+    getDelegate().ge();
   }
   
   private d getDelegate()
@@ -48,7 +48,7 @@ public class e
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     View localView = getWindow().getDecorView();
-    return android.support.v4.view.e.a(this.WJ, localView, this, paramKeyEvent);
+    return android.support.v4.view.e.a(this.XE, localView, this, paramKeyEvent);
   }
   
   public <T extends View> T findViewById(int paramInt)
@@ -56,7 +56,7 @@ public class e
     return getDelegate().findViewById(paramInt);
   }
   
-  public final boolean gl()
+  public final boolean gt()
   {
     return getDelegate().requestWindowFeature(1);
   }
@@ -68,7 +68,7 @@ public class e
   
   protected void onCreate(Bundle paramBundle)
   {
-    getDelegate().fU();
+    getDelegate().gd();
     super.onCreate(paramBundle);
     getDelegate().onCreate(paramBundle);
   }

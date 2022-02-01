@@ -15,15 +15,15 @@ public final class a
   {
     AppMethodBeat.i(44446);
     c.a locala = new c.a();
-    locala.EYt = new Field[2];
+    locala.GvF = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.EYv.put("username", "TEXT");
+    locala.GvH.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "appId";
-    locala.EYv.put("appId", "TEXT");
+    locala.GvH.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

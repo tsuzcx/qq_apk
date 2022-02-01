@@ -11,91 +11,69 @@ import android.net.Uri;
 import android.support.v4.app.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.network.ad;
 import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class a
 {
-  private static int fHb = -1;
-  public static final String fHc = null;
-  private static String fHd = "";
-  private static SharedPreferences fHe = null;
-  private static NotificationChannel fHf;
-  private static String fHg = fHc;
-  private static boolean fHh = false;
-  private static boolean fHi = false;
+  private static int fKI = -1;
+  public static final String fKJ = null;
+  private static String fKK = "";
+  private static SharedPreferences fKL = null;
+  private static NotificationChannel fKM;
+  private static String fKN = fKJ;
+  private static boolean fKO = false;
+  private static boolean fKP = false;
   
-  public static int YA()
-  {
-    AppMethodBeat.i(149986);
-    int i = Yf().getInt("settings_active_begin_time_hour", 8);
-    AppMethodBeat.o(149986);
-    return i;
-  }
-  
-  public static int YB()
-  {
-    AppMethodBeat.i(149987);
-    int i = Yf().getInt("settings_active_end_time_hour", 23);
-    AppMethodBeat.o(149987);
-    return i;
-  }
-  
-  public static int YC()
-  {
-    AppMethodBeat.i(149988);
-    int i = Yf().getInt("settings_active_begin_time_min", 0);
-    AppMethodBeat.o(149988);
-    return i;
-  }
-  
-  public static int YD()
+  public static int ZA()
   {
     AppMethodBeat.i(149989);
-    int i = Yf().getInt("settings_active_end_time_min", 0);
+    int i = Zc().getInt("settings_active_end_time_min", 0);
     AppMethodBeat.o(149989);
     return i;
   }
   
-  public static String Ye()
+  public static String Zb()
   {
     AppMethodBeat.i(149964);
-    if (bt.isNullOrNil(fHd)) {
-      fHd = com.tencent.mm.kernel.a.Yf().getString("message_channel_id", "message_channel_new_id");
+    if (bs.isNullOrNil(fKK)) {
+      fKK = com.tencent.mm.kernel.a.Zc().getString("message_channel_id", "message_channel_new_id");
     }
-    String str = fHd;
+    String str = fKK;
     AppMethodBeat.o(149964);
     return str;
   }
   
-  protected static SharedPreferences Yf()
+  protected static SharedPreferences Zc()
   {
     AppMethodBeat.i(149965);
-    if (fHe != null)
+    if (fKL != null)
     {
-      localSharedPreferences = fHe;
+      localSharedPreferences = fKL;
       AppMethodBeat.o(149965);
       return localSharedPreferences;
     }
-    SharedPreferences localSharedPreferences = com.tencent.mm.kernel.a.Yf();
-    fHe = localSharedPreferences;
+    SharedPreferences localSharedPreferences = com.tencent.mm.kernel.a.Zc();
+    fKL = localSharedPreferences;
     AppMethodBeat.o(149965);
     return localSharedPreferences;
   }
   
-  public static SharedPreferences Yg()
+  public static SharedPreferences Zd()
   {
     AppMethodBeat.i(149966);
-    SharedPreferences localSharedPreferences = com.tencent.mm.network.ad.aFh();
+    SharedPreferences localSharedPreferences = ad.aLY();
     AppMethodBeat.o(149966);
     return localSharedPreferences;
   }
   
-  public static boolean Yh()
+  public static boolean Ze()
   {
     AppMethodBeat.i(149967);
-    if (d.lf(26))
+    if (d.kZ(26))
     {
       AppMethodBeat.o(149967);
       return true;
@@ -104,28 +82,28 @@ public class a
     return false;
   }
   
-  public static boolean Yi()
+  public static boolean Zf()
   {
     AppMethodBeat.i(149968);
-    boolean bool = Yf().getBoolean("settings_new_msg_notification", true);
+    boolean bool = Zc().getBoolean("settings_new_msg_notification", true);
     AppMethodBeat.o(149968);
     return bool;
   }
   
-  public static boolean Yj()
+  public static boolean Zg()
   {
     AppMethodBeat.i(149969);
-    if (!v.M(aj.getContext()).areNotificationsEnabled())
+    if (!v.N(ai.getContext()).areNotificationsEnabled())
     {
       AppMethodBeat.o(149969);
       return false;
     }
-    if (d.lf(26))
+    if (d.kZ(26))
     {
-      if (fHf == null) {
-        fHf = ((NotificationManager)aj.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Ye());
+      if (fKM == null) {
+        fKM = ((NotificationManager)ai.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Zb());
       }
-      if ((fHf != null) && (fHf.getImportance() <= 0))
+      if ((fKM != null) && (fKM.getImportance() <= 0))
       {
         AppMethodBeat.o(149969);
         return false;
@@ -135,35 +113,35 @@ public class a
     return true;
   }
   
-  public static boolean Yk()
+  public static boolean Zh()
   {
     AppMethodBeat.i(149970);
-    boolean bool = Yf().getBoolean("settings_new_voip_msg_notification", true);
+    boolean bool = Zc().getBoolean("settings_new_voip_msg_notification", true);
     AppMethodBeat.o(149970);
     return bool;
   }
   
-  public static boolean Yl()
+  public static boolean Zi()
   {
     AppMethodBeat.i(149971);
-    boolean bool = Yf().getBoolean("settings_show_detail", true);
+    boolean bool = Zc().getBoolean("settings_show_detail", true);
     AppMethodBeat.o(149971);
     return bool;
   }
   
-  public static boolean Ym()
+  public static boolean Zj()
   {
     AppMethodBeat.i(149972);
-    boolean bool2 = Yf().getBoolean("settings_sound", true);
+    boolean bool2 = Zc().getBoolean("settings_sound", true);
     boolean bool1;
-    if (d.lf(26)) {
-      if (fHb == 0)
+    if (d.kZ(26)) {
+      if (fKI == 0)
       {
-        boolean bool3 = Yn();
+        boolean bool3 = Zk();
         bool1 = bool3;
         if (bool2 != bool3)
         {
-          f.cS(bool3);
+          f.cR(bool3);
           bool1 = bool3;
         }
       }
@@ -172,18 +150,18 @@ public class a
     {
       AppMethodBeat.o(149972);
       return bool1;
-      bool1 = Yt();
+      bool1 = Zq();
       continue;
       bool1 = bool2;
     }
   }
   
-  public static boolean Yn()
+  public static boolean Zk()
   {
     AppMethodBeat.i(149973);
-    if (d.lf(26))
+    if (d.kZ(26))
     {
-      NotificationChannel localNotificationChannel = ((NotificationManager)aj.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Ye());
+      NotificationChannel localNotificationChannel = ((NotificationManager)ai.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Zb());
       if ((localNotificationChannel != null) && (localNotificationChannel.getImportance() < 3))
       {
         AppMethodBeat.o(149973);
@@ -197,7 +175,7 @@ public class a
     }
     else
     {
-      int i = v.M(aj.getContext()).getImportance();
+      int i = v.N(ai.getContext()).getImportance();
       if ((i < 3) && (i != -1000))
       {
         AppMethodBeat.o(149973);
@@ -208,12 +186,12 @@ public class a
     return true;
   }
   
-  public static boolean Yo()
+  public static boolean Zl()
   {
     AppMethodBeat.i(149974);
-    if (d.lh(28))
+    if (d.lb(28))
     {
-      NotificationChannel localNotificationChannel = ((NotificationManager)aj.getContext().getSystemService(NotificationManager.class)).getNotificationChannel("voip_notify_channel_new_id");
+      NotificationChannel localNotificationChannel = ((NotificationManager)ai.getContext().getSystemService(NotificationManager.class)).getNotificationChannel("voip_notify_channel_new_id");
       if ((localNotificationChannel != null) && (localNotificationChannel.getImportance() < 3))
       {
         AppMethodBeat.o(149974);
@@ -231,12 +209,12 @@ public class a
     return true;
   }
   
-  public static boolean Yp()
+  public static boolean Zm()
   {
     AppMethodBeat.i(149975);
-    if (d.lh(28))
+    if (d.lb(28))
     {
-      NotificationChannel localNotificationChannel = ((NotificationManager)aj.getContext().getSystemService(NotificationManager.class)).getNotificationChannel("voip_notify_channel_new_id");
+      NotificationChannel localNotificationChannel = ((NotificationManager)ai.getContext().getSystemService(NotificationManager.class)).getNotificationChannel("voip_notify_channel_new_id");
       if ((localNotificationChannel == null) || ((localNotificationChannel.getImportance() >= 3) && (localNotificationChannel.shouldVibrate())))
       {
         AppMethodBeat.o(149975);
@@ -249,19 +227,19 @@ public class a
     return true;
   }
   
-  public static boolean Yq()
+  public static boolean Zn()
   {
     AppMethodBeat.i(149976);
-    boolean bool2 = Yf().getBoolean("settings_shake", true);
+    boolean bool2 = Zc().getBoolean("settings_shake", true);
     boolean bool1;
-    if (d.lf(26)) {
-      if (fHb == 0)
+    if (d.kZ(26)) {
+      if (fKI == 0)
       {
-        boolean bool3 = Yr();
+        boolean bool3 = Zo();
         bool1 = bool3;
         if (bool3 != bool2)
         {
-          f.cT(bool3);
+          f.cS(bool3);
           bool1 = bool3;
         }
       }
@@ -270,18 +248,18 @@ public class a
     {
       AppMethodBeat.o(149976);
       return bool1;
-      bool1 = Yu();
+      bool1 = Zr();
       continue;
       bool1 = bool2;
     }
   }
   
-  public static boolean Yr()
+  public static boolean Zo()
   {
     AppMethodBeat.i(149977);
-    if (d.lf(26))
+    if (d.kZ(26))
     {
-      NotificationChannel localNotificationChannel = ((NotificationManager)aj.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Ye());
+      NotificationChannel localNotificationChannel = ((NotificationManager)ai.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Zb());
       if ((localNotificationChannel != null) && ((localNotificationChannel.getImportance() < 3) || (!localNotificationChannel.shouldVibrate())))
       {
         AppMethodBeat.o(149977);
@@ -290,7 +268,7 @@ public class a
     }
     else
     {
-      int i = v.M(aj.getContext()).getImportance();
+      int i = v.N(ai.getContext()).getImportance();
       if ((i < 3) && (i != -1000))
       {
         AppMethodBeat.o(149977);
@@ -301,22 +279,22 @@ public class a
     return true;
   }
   
-  public static String Ys()
+  public static String Zp()
   {
     AppMethodBeat.i(149978);
     Object localObject1;
     RingtoneManager localRingtoneManager;
-    if (!d.lf(26))
+    if (!d.kZ(26))
     {
-      Object localObject4 = Yf().getString("settings.ringtone", fHc);
+      Object localObject4 = Zc().getString("settings.ringtone", fKJ);
       localObject1 = localObject4;
       Object localObject6;
-      if (localObject4 != fHc)
+      if (localObject4 != fKJ)
       {
         localObject1 = localObject4;
-        if (!((String)localObject4).equals(fHg))
+        if (!((String)localObject4).equals(fKN))
         {
-          localRingtoneManager = new RingtoneManager(aj.getContext());
+          localRingtoneManager = new RingtoneManager(ai.getContext());
           localRingtoneManager.setType(2);
           localObject6 = localObject4;
           localObject1 = localObject4;
@@ -327,11 +305,11 @@ public class a
         if (localRingtoneManager.getRingtonePosition(Uri.parse((String)localObject4)) < 0)
         {
           localObject1 = localObject4;
-          localObject6 = fHc;
+          localObject6 = fKJ;
           localObject1 = localObject6;
-          py((String)localObject6);
+          sJ((String)localObject6);
           localObject1 = localObject6;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BaseNotificationConfig", "reset ringTone");
+          ac.i("MicroMsg.BaseNotificationConfig", "reset ringTone");
         }
         localObject4 = localObject6;
         if (localRingtoneManager.getCursor() != null)
@@ -344,7 +322,7 @@ public class a
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.BaseNotificationConfig", localException, "ringTone() Exception:%s", new Object[] { localException.getMessage() });
+          ac.printErrStackTrace("MicroMsg.BaseNotificationConfig", localException, "ringTone() Exception:%s", new Object[] { localException.getMessage() });
           Object localObject5 = localObject1;
           if (localRingtoneManager.getCursor() != null)
           {
@@ -356,18 +334,18 @@ public class a
       finally
       {
         if (localRingtoneManager.getCursor() == null) {
-          break label194;
+          break label193;
         }
         localRingtoneManager.getCursor().close();
         AppMethodBeat.o(149978);
       }
-      fHg = (String)localObject4;
+      fKN = (String)localObject4;
       localObject1 = localObject4;
       AppMethodBeat.o(149978);
       return localObject1;
     }
-    label194:
-    Object localObject3 = ((NotificationManager)aj.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Ye());
+    label193:
+    Object localObject3 = ((NotificationManager)ai.getContext().getSystemService(NotificationManager.class)).getNotificationChannel(Zb());
     if ((localObject3 != null) && (((NotificationChannel)localObject3).getSound() != null))
     {
       localObject3 = ((NotificationChannel)localObject3).getSound().toString();
@@ -378,97 +356,121 @@ public class a
     return "";
   }
   
-  public static boolean Yt()
+  public static boolean Zq()
   {
     AppMethodBeat.i(149980);
-    SharedPreferences localSharedPreferences = Yf();
+    SharedPreferences localSharedPreferences = Zc();
     boolean bool = localSharedPreferences.getBoolean("settings_special_scene_sound", localSharedPreferences.getBoolean("settings_sound", true));
     AppMethodBeat.o(149980);
     return bool;
   }
   
-  public static boolean Yu()
+  public static boolean Zr()
   {
     AppMethodBeat.i(149981);
-    SharedPreferences localSharedPreferences = Yf();
+    SharedPreferences localSharedPreferences = Zc();
     boolean bool = localSharedPreferences.getBoolean("settings_special_scene_shake", localSharedPreferences.getBoolean("settings_shake", true));
     AppMethodBeat.o(149981);
     return bool;
   }
   
-  public static boolean Yv()
+  public static boolean Zs()
   {
     AppMethodBeat.i(149982);
-    SharedPreferences localSharedPreferences = Yf();
-    boolean bool = localSharedPreferences.getBoolean("settings_voip_scene_sound", Ym());
-    if (!fHh)
+    SharedPreferences localSharedPreferences = Zc();
+    boolean bool = localSharedPreferences.getBoolean("settings_voip_scene_sound", Zj());
+    if (!fKO)
     {
-      fHh = true;
+      fKO = true;
       localSharedPreferences.edit().putBoolean("settings_voip_scene_sound", bool).commit();
     }
     AppMethodBeat.o(149982);
     return bool;
   }
   
-  public static boolean Yw()
+  public static boolean Zt()
   {
     AppMethodBeat.i(149983);
-    SharedPreferences localSharedPreferences = Yf();
-    boolean bool = localSharedPreferences.getBoolean("settings_voip_scene_shake", Yq());
-    if (!fHi)
+    SharedPreferences localSharedPreferences = Zc();
+    boolean bool = localSharedPreferences.getBoolean("settings_voip_scene_shake", Zn());
+    if (!fKP)
     {
-      fHi = true;
+      fKP = true;
       localSharedPreferences.edit().putBoolean("settings_voip_scene_shake", bool).commit();
     }
     AppMethodBeat.o(149983);
     return bool;
   }
   
-  public static int Yx()
+  public static int Zu()
   {
-    return fHb;
+    return fKI;
   }
   
-  public static void Yy()
+  public static void Zv()
   {
     AppMethodBeat.i(149984);
-    if (b.eHp())
+    if (b.eWK())
     {
-      fHb = 1;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BaseNotificationConfig", "iniSpecialSceneSwitchEnable() mSpecialSceneSwitchEnable:%s", new Object[] { Integer.valueOf(fHb) });
+      fKI = 1;
+      ac.i("MicroMsg.BaseNotificationConfig", "iniSpecialSceneSwitchEnable() mSpecialSceneSwitchEnable:%s", new Object[] { Integer.valueOf(fKI) });
       AppMethodBeat.o(149984);
       return;
     }
-    int i = Yf().getInt("special_scene_enable", -1);
-    if (bt.iY(i, -1)) {}
-    for (fHb = 0;; fHb = i)
+    int i = Zc().getInt("special_scene_enable", -1);
+    if (bs.jl(i, -1)) {}
+    for (fKI = 0;; fKI = i)
     {
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BaseNotificationConfig", "iniSpecialSceneSwitchEnable() sceneEnable:%s mSpecialSceneSwitchEnable:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(fHb) });
+      ac.i("MicroMsg.BaseNotificationConfig", "iniSpecialSceneSwitchEnable() sceneEnable:%s mSpecialSceneSwitchEnable:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(fKI) });
       AppMethodBeat.o(149984);
       return;
     }
   }
   
-  public static boolean Yz()
+  public static boolean Zw()
   {
     AppMethodBeat.i(149985);
-    boolean bool = Yf().getBoolean("settings_active_time_full", true);
+    boolean bool = Zc().getBoolean("settings_active_time_full", true);
     AppMethodBeat.o(149985);
     return bool;
   }
   
-  public static boolean cr(int paramInt1, int paramInt2)
+  public static int Zx()
+  {
+    AppMethodBeat.i(149986);
+    int i = Zc().getInt("settings_active_begin_time_hour", 8);
+    AppMethodBeat.o(149986);
+    return i;
+  }
+  
+  public static int Zy()
+  {
+    AppMethodBeat.i(149987);
+    int i = Zc().getInt("settings_active_end_time_hour", 23);
+    AppMethodBeat.o(149987);
+    return i;
+  }
+  
+  public static int Zz()
+  {
+    AppMethodBeat.i(149988);
+    int i = Zc().getInt("settings_active_begin_time_min", 0);
+    AppMethodBeat.o(149988);
+    return i;
+  }
+  
+  public static boolean cp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(149990);
-    if (Yz())
+    if (Zw())
     {
       AppMethodBeat.o(149990);
       return true;
     }
-    int i = YA();
-    int j = YC();
-    int k = YB();
-    int m = YD();
+    int i = Zx();
+    int j = Zz();
+    int k = Zy();
+    int m = ZA();
     if ((i == k) && (j == m))
     {
       AppMethodBeat.o(149990);
@@ -508,16 +510,16 @@ public class a
     return true;
   }
   
-  static void py(String paramString)
+  static void sJ(String paramString)
   {
     AppMethodBeat.i(149979);
-    Yf().edit().putString("settings.ringtone", paramString).commit();
+    Zc().edit().putString("settings.ringtone", paramString).commit();
     AppMethodBeat.o(149979);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.m.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,39 +10,39 @@ import java.util.Set;
 
 public final class l
 {
-  static HashMap<String, byte[]> Ith = null;
-  protected String Itd;
-  protected RequestPacket Ite;
-  protected HashMap<String, byte[]> Itf;
-  private HashMap<String, Object> Itg;
+  static HashMap<String, byte[]> JUR = null;
+  protected String JUN;
+  protected RequestPacket JUO;
+  protected HashMap<String, byte[]> JUP;
+  private HashMap<String, Object> JUQ;
   
   public l()
   {
     AppMethodBeat.i(138485);
-    this.Itd = "UTF-8";
-    this.Ite = new RequestPacket();
-    this.Itf = new HashMap();
-    this.Itg = new HashMap();
-    this.Ite.iVersion = 3;
+    this.JUN = "UTF-8";
+    this.JUO = new RequestPacket();
+    this.JUP = new HashMap();
+    this.JUQ = new HashMap();
+    this.JUO.iVersion = 3;
     AppMethodBeat.o(138485);
   }
   
-  public final byte[] Kj()
+  public final byte[] JT()
   {
     AppMethodBeat.i(138487);
-    if (this.Ite.sServantName == null) {
-      this.Ite.sServantName = "";
+    if (this.JUO.sServantName == null) {
+      this.JUO.sServantName = "";
     }
-    if (this.Ite.sFuncName == null) {
-      this.Ite.sFuncName = "";
+    if (this.JUO.sFuncName == null) {
+      this.JUO.sFuncName = "";
     }
     Object localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.Itd);
-    ((JceOutputStream)localObject).write(this.Itf, 0);
-    this.Ite.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    ((JceOutputStream)localObject).setServerEncoding(this.JUN);
+    ((JceOutputStream)localObject).write(this.JUP, 0);
+    this.JUO.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.Itd);
-    this.Ite.writeTo((JceOutputStream)localObject);
+    ((JceOutputStream)localObject).setServerEncoding(this.JUN);
+    this.JUO.writeTo((JceOutputStream)localObject);
     localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     int i = localObject.length;
     ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
@@ -52,24 +52,24 @@ public final class l
     return localObject;
   }
   
-  public final void aNL(String paramString)
+  public final void aTo(String paramString)
   {
-    this.Itd = paramString;
+    this.JUN = paramString;
   }
   
-  public final void aNM(String paramString)
+  public final void aTp(String paramString)
   {
-    this.Ite.sServantName = paramString;
+    this.JUO.sServantName = paramString;
   }
   
-  public final void aNN(String paramString)
+  public final void aTq(String paramString)
   {
-    this.Ite.sFuncName = paramString;
+    this.JUO.sFuncName = paramString;
   }
   
-  public final void fmA()
+  public final void fCQ()
   {
-    this.Ite.iRequestId = 3;
+    this.JUO.iRequestId = 3;
   }
   
   public final <T> void put(String paramString, T paramT)
@@ -82,16 +82,16 @@ public final class l
       throw paramString;
     }
     JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding(this.Itd);
+    localJceOutputStream.setServerEncoding(this.JUN);
     localJceOutputStream.write(paramT, 0);
     paramT = JceUtil.getJceBufArray(localJceOutputStream.getByteBuffer());
-    this.Itf.put(paramString, paramT);
+    this.JUP.put(paramString, paramT);
     AppMethodBeat.o(138486);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.f.l
  * JD-Core Version:    0.7.0.1
  */

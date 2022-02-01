@@ -19,7 +19,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.data.q;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -34,26 +34,26 @@ public class PreviewImageView
 {
   private final Context context;
   private List<String> list;
-  private TableLayout xqO;
-  private final Map<Integer, View> xqP;
-  private final Map<Integer, TableRow> xqQ;
-  private final int xqR;
-  private HashMap<String, Bitmap> xqS;
-  private x.a xqT;
-  private boolean xqU;
-  private boolean xqV;
+  private TableLayout yDE;
+  private final Map<Integer, View> yDF;
+  private final Map<Integer, TableRow> yDG;
+  private final int yDH;
+  private HashMap<String, Bitmap> yDI;
+  private x.a yDJ;
+  private boolean yDK;
+  private boolean yDL;
   
   public PreviewImageView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(98198);
     this.list = new ArrayList();
-    this.xqP = new HashMap();
-    this.xqQ = new HashMap();
-    this.xqS = new HashMap();
-    this.xqR = 4;
-    this.xqU = true;
-    this.xqV = false;
+    this.yDF = new HashMap();
+    this.yDG = new HashMap();
+    this.yDI = new HashMap();
+    this.yDH = 4;
+    this.yDK = true;
+    this.yDL = false;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98198);
@@ -64,18 +64,18 @@ public class PreviewImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98197);
     this.list = new ArrayList();
-    this.xqP = new HashMap();
-    this.xqQ = new HashMap();
-    this.xqS = new HashMap();
-    this.xqR = 4;
-    this.xqU = true;
-    this.xqV = false;
+    this.yDF = new HashMap();
+    this.yDG = new HashMap();
+    this.yDI = new HashMap();
+    this.yDH = 4;
+    this.yDK = true;
+    this.yDL = false;
     this.context = paramContext;
     init();
     AppMethodBeat.o(98197);
   }
   
-  private void dAb()
+  private void dOy()
   {
     AppMethodBeat.i(98200);
     if ((this.context instanceof Activity))
@@ -85,7 +85,7 @@ public class PreviewImageView
       Point localPoint = new Point();
       localPoint.x = localDisplayMetrics.widthPixels;
       localPoint.y = localDisplayMetrics.heightPixels;
-      af.f(localPoint);
+      af.h(localPoint);
     }
     AppMethodBeat.o(98200);
   }
@@ -93,16 +93,16 @@ public class PreviewImageView
   private void init()
   {
     AppMethodBeat.i(98199);
-    this.xqO = ((TableLayout)LayoutInflater.from(this.context).inflate(2131495580, this, true).findViewById(2131298739));
-    dAb();
+    this.yDE = ((TableLayout)LayoutInflater.from(this.context).inflate(2131495580, this, true).findViewById(2131298739));
+    dOy();
     AppMethodBeat.o(98199);
   }
   
   public final void clean()
   {
     AppMethodBeat.i(98202);
-    this.xqV = true;
-    Iterator localIterator = this.xqS.values().iterator();
+    this.yDL = true;
+    Iterator localIterator = this.yDI.values().iterator();
     while (localIterator.hasNext())
     {
       Bitmap localBitmap = (Bitmap)localIterator.next();
@@ -116,7 +116,7 @@ public class PreviewImageView
   public int getCount()
   {
     AppMethodBeat.i(98201);
-    int i = this.xqP.size();
+    int i = this.yDF.size();
     AppMethodBeat.o(98201);
     return i;
   }
@@ -128,12 +128,12 @@ public class PreviewImageView
   
   public void setImageClick(x.a parama)
   {
-    this.xqT = parama;
+    this.yDJ = parama;
   }
   
   public void setIsShowAddImage(boolean paramBoolean)
   {
-    this.xqU = paramBoolean;
+    this.yDK = paramBoolean;
   }
   
   public final void setList$22875ea3(List<String> paramList)
@@ -147,18 +147,18 @@ public class PreviewImageView
     }
     this.list = paramList;
     int i = 0;
-    this.xqO.removeAllViews();
+    this.yDE.removeAllViews();
     int m = paramList.size() + 1;
     int j = 0;
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.xqQ.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.yDG.get(Integer.valueOf(j));
       if (localTableRow != null) {
         break label539;
       }
       localTableRow = new TableRow(this.context);
-      this.xqQ.put(Integer.valueOf(j), localTableRow);
+      this.yDG.put(Integer.valueOf(j), localTableRow);
     }
     label403:
     label539:
@@ -174,17 +174,17 @@ public class PreviewImageView
       for (;;)
       {
         if (localTableRow.getChildCount() > 0) {
-          this.xqO.addView(localTableRow);
+          this.yDE.addView(localTableRow);
         }
-        ad.d("MicroMsg.PreviewImageView", "initlist time : " + (System.currentTimeMillis() - l));
+        ac.d("MicroMsg.PreviewImageView", "initlist time : " + (System.currentTimeMillis() - l));
         j += 1;
         break;
-        Object localObject2 = (View)this.xqP.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.yDF.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = View.inflate(this.context, 2131495581, null);
-          this.xqP.put(Integer.valueOf(i), localObject1);
+          this.yDF.put(Integer.valueOf(i), localObject1);
         }
         label253:
         ImageView localImageView;
@@ -195,19 +195,19 @@ public class PreviewImageView
           if (i != m - 1) {
             break label403;
           }
-          if (this.xqU)
+          if (this.yDK)
           {
             localImageView.setBackgroundResource(2131234098);
             localImageView.setContentDescription(getContext().getString(2131763773));
             localImageView.setImageDrawable(null);
             label310:
-            if (this.xqT != null)
+            if (this.yDJ != null)
             {
               if (i != m - 1) {
                 break label500;
               }
               ((View)localObject1).setTag(Integer.valueOf(-1));
-              ((View)localObject1).setOnClickListener(this.xqT.xno);
+              ((View)localObject1).setOnClickListener(this.yDJ.yAf);
               ((View)localObject1).setClickable(true);
             }
           }
@@ -224,18 +224,18 @@ public class PreviewImageView
           localImageView.setBackgroundDrawable(null);
           localImageView.setTag(localObject2);
           localImageView.setContentDescription(getContext().getString(2131763849));
-          Bitmap localBitmap = (Bitmap)this.xqS.get(localObject2);
+          Bitmap localBitmap = (Bitmap)this.yDI.get(localObject2);
           if (!q.I(localBitmap))
           {
-            ad.d("MicroMsg.PreviewImageView", "bm is null");
-            new a(localImageView, (String)localObject2).v(new String[] { "" });
+            ac.d("MicroMsg.PreviewImageView", "bm is null");
+            new a(localImageView, (String)localObject2).x(new String[] { "" });
             break label310;
           }
           localImageView.setImageBitmap(localBitmap);
           break label310;
           label500:
           ((View)localObject1).setTag(Integer.valueOf(i));
-          ((View)localObject1).setOnClickListener(this.xqT.xno);
+          ((View)localObject1).setOnClickListener(this.yDJ.yAf);
           ((View)localObject1).setClickable(true);
         }
         AppMethodBeat.o(98203);
@@ -247,20 +247,20 @@ public class PreviewImageView
   final class a
     extends g<String, Integer, Boolean>
   {
-    private ImageView dnd;
-    private Bitmap gTB;
+    private ImageView dkL;
+    private Bitmap hua;
     private String path;
     
     public a(ImageView paramImageView, String paramString)
     {
-      this.dnd = paramImageView;
+      this.dkL = paramImageView;
       this.path = paramString;
     }
     
-    public final ExecutorService dnm()
+    public final ExecutorService dBu()
     {
       AppMethodBeat.i(179158);
-      ExecutorService localExecutorService = af.dte();
+      ExecutorService localExecutorService = af.dHB();
       AppMethodBeat.o(179158);
       return localExecutorService;
     }

@@ -9,9 +9,9 @@ public enum c
   static
   {
     AppMethodBeat.i(131528);
-    mgq = new c("NORMAL", 0, 0);
-    mgs = new c("BOLD", 1, 1);
-    mgt = new c[] { mgq, mgs };
+    mIr = new c("NORMAL", 0, 0);
+    mIs = new c("BOLD", 1, 1);
+    mIt = new c[] { mIr, mIs };
     AppMethodBeat.o(131528);
   }
   
@@ -20,11 +20,11 @@ public enum c
     this.style = paramInt;
   }
   
-  public static c NN(String paramString)
+  public static c RW(String paramString)
   {
     AppMethodBeat.i(131527);
     paramString = d.h(paramString, c.class);
-    c localc = mgq;
+    c localc = mIr;
     if (paramString == null) {
       paramString = localc;
     }
@@ -38,7 +38,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.c
  * JD-Core Version:    0.7.0.1
  */

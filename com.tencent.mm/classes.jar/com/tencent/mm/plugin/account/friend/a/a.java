@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.account.friend.a;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.z;
 
 public final class a
 {
-  String bNK;
-  public int dtM;
-  public String evs;
-  public String gUa;
-  public int gUd;
+  String bLs;
+  public int drx;
+  public String exO;
+  public int huC;
+  public String huz;
+  public String iJI;
+  long iJJ;
+  public String iJK;
+  public String iJL;
+  String iJM;
+  String iJN;
+  public String iJO;
+  public int iJP;
+  public byte[] iJQ;
+  public int iJR;
+  public String iJS;
+  public int iJT;
+  public String iJU;
+  public String iJV;
+  public String iJW;
+  int iJX;
+  public String iJY;
+  int iJZ;
+  int iKa;
+  String iKb;
+  public String iKc;
+  String iKd;
+  int iKe;
+  String iKf;
+  long iKg;
+  int iKh;
+  String iKi;
+  String iKj;
+  String iKk;
+  public long iKl;
   private int id;
-  public String ijB;
-  long ijC;
-  public String ijD;
-  public String ijE;
-  String ijF;
-  String ijG;
-  public String ijH;
-  public int ijI;
-  public byte[] ijJ;
-  public int ijK;
-  public String ijL;
-  public int ijM;
-  public String ijN;
-  public String ijO;
-  public String ijP;
-  int ijQ;
-  public String ijR;
-  int ijS;
-  int ijT;
-  String ijU;
-  public String ijV;
-  String ijW;
-  int ijX;
-  String ijY;
-  long ijZ;
-  int ika;
-  String ikb;
-  String ikc;
-  String ikd;
-  public long ike;
   private String md5;
   public String realName;
   public int status;
@@ -54,159 +54,159 @@ public final class a
   public a()
   {
     AppMethodBeat.i(130966);
-    this.dtM = -1;
+    this.drx = -1;
     this.id = 0;
     this.md5 = "";
-    this.ijB = "";
-    this.ijC = 0L;
+    this.iJI = "";
+    this.iJJ = 0L;
     this.realName = "";
-    this.ijD = "";
-    this.ijE = "";
+    this.iJK = "";
+    this.iJL = "";
     this.username = "";
-    this.bNK = "";
-    this.ijF = "";
-    this.ijG = "";
+    this.bLs = "";
+    this.iJM = "";
+    this.iJN = "";
     this.type = 0;
-    this.ijH = "";
-    this.evs = "";
+    this.iJO = "";
+    this.exO = "";
     this.status = 0;
-    this.gUa = "";
-    this.gUd = 0;
-    this.ijI = 0;
-    this.ijL = "";
-    this.ijM = 0;
-    this.ijN = "";
-    this.ijO = "";
-    this.ijP = "";
-    this.ijQ = 0;
-    this.ijR = "";
-    this.ijS = 0;
-    this.ijT = 0;
-    this.ijU = "";
-    this.ijV = "";
-    this.ijW = "";
-    this.ijX = -1;
-    this.ijY = "";
-    this.ijZ = -1L;
-    this.ika = -1;
-    this.ikb = "";
-    this.ikc = "";
-    this.ikd = "";
-    this.ike = 0L;
+    this.huz = "";
+    this.huC = 0;
+    this.iJP = 0;
+    this.iJS = "";
+    this.iJT = 0;
+    this.iJU = "";
+    this.iJV = "";
+    this.iJW = "";
+    this.iJX = 0;
+    this.iJY = "";
+    this.iJZ = 0;
+    this.iKa = 0;
+    this.iKb = "";
+    this.iKc = "";
+    this.iKd = "";
+    this.iKe = -1;
+    this.iKf = "";
+    this.iKg = -1L;
+    this.iKh = -1;
+    this.iKi = "";
+    this.iKj = "";
+    this.iKk = "";
+    this.iKl = 0L;
     AppMethodBeat.o(130966);
   }
   
-  public static int Ca(String paramString)
+  public static int Gd(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(130971);
     try
     {
-      int j = bt.fH("0x" + paramString.substring(0, 8), 0);
+      int j = bs.fM("0x" + paramString.substring(0, 8), 0);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AddrUpload", localException, "md5: %s", new Object[] { paramString });
+        ac.printErrStackTrace("MicroMsg.AddrUpload", localException, "md5: %s", new Object[] { paramString });
       }
     }
     AppMethodBeat.o(130971);
     return i;
   }
   
-  private byte[] aIt()
+  private byte[] aPk()
   {
     AppMethodBeat.i(130970);
     try
     {
-      Object localObject = new aa();
-      ((aa)localObject).eFl();
-      ((aa)localObject).aFs(this.ijL);
-      ((aa)localObject).Wi(this.ijM);
-      ((aa)localObject).aFs(this.ijN);
-      ((aa)localObject).aFs(this.ijO);
-      ((aa)localObject).aFs(this.ijP);
-      ((aa)localObject).Wi(this.ijQ);
-      ((aa)localObject).aFs(this.ijR);
-      ((aa)localObject).Wi(this.ijS);
-      ((aa)localObject).Wi(this.ijT);
-      ((aa)localObject).aFs(this.ijU);
-      ((aa)localObject).aFs(this.ijV);
-      ((aa)localObject).aFs(this.ijW);
-      ((aa)localObject).Wi(this.ijX);
-      ((aa)localObject).aFs(this.ijY);
-      ((aa)localObject).vC(this.ijZ);
-      ((aa)localObject).Wi(this.ika);
-      ((aa)localObject).aFs(this.ikb);
-      ((aa)localObject).aFs(this.ikc);
-      ((aa)localObject).aFs(this.ikd);
-      ((aa)localObject).vC(this.ike);
-      localObject = ((aa)localObject).eFm();
+      Object localObject = new z();
+      ((z)localObject).eUF();
+      ((z)localObject).aKJ(this.iJS);
+      ((z)localObject).Yr(this.iJT);
+      ((z)localObject).aKJ(this.iJU);
+      ((z)localObject).aKJ(this.iJV);
+      ((z)localObject).aKJ(this.iJW);
+      ((z)localObject).Yr(this.iJX);
+      ((z)localObject).aKJ(this.iJY);
+      ((z)localObject).Yr(this.iJZ);
+      ((z)localObject).Yr(this.iKa);
+      ((z)localObject).aKJ(this.iKb);
+      ((z)localObject).aKJ(this.iKc);
+      ((z)localObject).aKJ(this.iKd);
+      ((z)localObject).Yr(this.iKe);
+      ((z)localObject).aKJ(this.iKf);
+      ((z)localObject).Af(this.iKg);
+      ((z)localObject).Yr(this.iKh);
+      ((z)localObject).aKJ(this.iKi);
+      ((z)localObject).aKJ(this.iKj);
+      ((z)localObject).aKJ(this.iKk);
+      ((z)localObject).Af(this.iKl);
+      localObject = ((z)localObject).eUG();
       AppMethodBeat.o(130970);
       return localObject;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
       AppMethodBeat.o(130970);
     }
     return null;
   }
   
-  private void aq(byte[] paramArrayOfByte)
+  private void ap(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130968);
     try
     {
-      aa localaa = new aa();
-      int i = localaa.cs(paramArrayOfByte);
+      z localz = new z();
+      int i = localz.cr(paramArrayOfByte);
       if (i != 0)
       {
-        ad.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
+        ac.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
         AppMethodBeat.o(130968);
         return;
       }
-      this.ijL = localaa.getString();
-      this.ijM = localaa.getInt();
-      this.ijN = localaa.getString();
-      this.ijO = localaa.getString();
-      this.ijP = localaa.getString();
-      this.ijQ = localaa.getInt();
-      this.ijR = localaa.getString();
-      this.ijS = localaa.getInt();
-      this.ijT = localaa.getInt();
-      this.ijU = localaa.getString();
-      this.ijV = localaa.getString();
-      this.ijW = localaa.getString();
-      this.ijX = localaa.getInt();
-      this.ijY = localaa.getString();
-      this.ijZ = localaa.getLong();
-      this.ika = localaa.getInt();
-      this.ikb = localaa.getString();
-      this.ikc = localaa.getString();
-      this.ikd = localaa.getString();
-      this.ike = localaa.getLong();
+      this.iJS = localz.getString();
+      this.iJT = localz.getInt();
+      this.iJU = localz.getString();
+      this.iJV = localz.getString();
+      this.iJW = localz.getString();
+      this.iJX = localz.getInt();
+      this.iJY = localz.getString();
+      this.iJZ = localz.getInt();
+      this.iKa = localz.getInt();
+      this.iKb = localz.getString();
+      this.iKc = localz.getString();
+      this.iKd = localz.getString();
+      this.iKe = localz.getInt();
+      this.iKf = localz.getString();
+      this.iKg = localz.getLong();
+      this.iKh = localz.getInt();
+      this.iKi = localz.getString();
+      this.iKj = localz.getString();
+      this.iKk = localz.getString();
+      this.iKl = localz.getLong();
       AppMethodBeat.o(130968);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ad.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(130968);
     }
   }
   
-  public final void Cb(String paramString)
+  public final void Ge(String paramString)
   {
     AppMethodBeat.i(130972);
     this.md5 = paramString;
-    this.id = Ca(paramString);
+    this.id = Gd(paramString);
     AppMethodBeat.o(130972);
   }
   
-  public final String JS()
+  public final String JC()
   {
     if (this.md5 == null) {
       return "";
@@ -214,16 +214,82 @@ public final class a
     return this.md5;
   }
   
-  public final int Zh()
+  public final String aPl()
+  {
+    if (this.iJI == null) {
+      return "";
+    }
+    return this.iJI;
+  }
+  
+  public final String aPm()
+  {
+    if (this.realName == null) {
+      return "";
+    }
+    return this.realName;
+  }
+  
+  public final String aPn()
+  {
+    if (this.iJK == null) {
+      return "";
+    }
+    return this.iJK;
+  }
+  
+  public final String aPo()
+  {
+    if (this.iJL == null) {
+      return "";
+    }
+    return this.iJL;
+  }
+  
+  public final String aPp()
+  {
+    if (this.iJM == null) {
+      return "";
+    }
+    return this.iJM;
+  }
+  
+  public final String aPq()
+  {
+    if (this.iJN == null) {
+      return "";
+    }
+    return this.iJN;
+  }
+  
+  public final String aPr()
+  {
+    if (this.iJO == null) {
+      return "";
+    }
+    return this.iJO;
+  }
+  
+  public final void aPs()
+  {
+    this.iJP |= 0x1;
+  }
+  
+  public final boolean aPt()
+  {
+    return (this.iJP & 0x1) == 0;
+  }
+  
+  public final int aac()
   {
     AppMethodBeat.i(130973);
     int i = 32;
     int j;
-    if (!bt.isNullOrNil(aIw()))
+    if (!bs.isNullOrNil(aPn()))
     {
-      i = aIw().charAt(0);
+      i = aPn().charAt(0);
       if ((i < 97) || (i > 122)) {
-        break label74;
+        break label76;
       }
       j = (char)(i - 32);
     }
@@ -231,12 +297,12 @@ public final class a
     {
       AppMethodBeat.o(130973);
       return j;
-      if (bt.isNullOrNil(aIx())) {
+      if (bs.isNullOrNil(aPo())) {
         break;
       }
-      i = aIx().charAt(0);
+      i = aPo().charAt(0);
       break;
-      label74:
+      label76:
       if (i >= 65)
       {
         j = i;
@@ -249,100 +315,34 @@ public final class a
     }
   }
   
-  public final String aIA()
-  {
-    if (this.ijH == null) {
-      return "";
-    }
-    return this.ijH;
-  }
-  
-  public final void aIB()
-  {
-    this.ijI |= 0x1;
-  }
-  
-  public final boolean aIC()
-  {
-    return (this.ijI & 0x1) == 0;
-  }
-  
-  public final String aIu()
-  {
-    if (this.ijB == null) {
-      return "";
-    }
-    return this.ijB;
-  }
-  
-  public final String aIv()
-  {
-    if (this.realName == null) {
-      return "";
-    }
-    return this.realName;
-  }
-  
-  public final String aIw()
-  {
-    if (this.ijD == null) {
-      return "";
-    }
-    return this.ijD;
-  }
-  
-  public final String aIx()
-  {
-    if (this.ijE == null) {
-      return "";
-    }
-    return this.ijE;
-  }
-  
-  public final String aIy()
-  {
-    if (this.ijF == null) {
-      return "";
-    }
-    return this.ijF;
-  }
-  
-  public final String aIz()
-  {
-    if (this.ijG == null) {
-      return "";
-    }
-    return this.ijG;
-  }
-  
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(130967);
-    Cb(paramCursor.getString(1));
-    this.ijB = paramCursor.getString(2);
-    this.ijC = paramCursor.getLong(3);
+    Ge(paramCursor.getString(1));
+    this.iJI = paramCursor.getString(2);
+    this.iJJ = paramCursor.getLong(3);
     this.realName = paramCursor.getString(4);
-    this.ijD = paramCursor.getString(5);
-    this.ijE = paramCursor.getString(6);
+    this.iJK = paramCursor.getString(5);
+    this.iJL = paramCursor.getString(6);
     this.username = paramCursor.getString(7);
-    this.bNK = paramCursor.getString(8);
-    this.ijF = paramCursor.getString(9);
-    this.ijG = paramCursor.getString(10);
+    this.bLs = paramCursor.getString(8);
+    this.iJM = paramCursor.getString(9);
+    this.iJN = paramCursor.getString(10);
     this.type = paramCursor.getInt(11);
-    this.ijH = paramCursor.getString(12);
-    this.evs = paramCursor.getString(13);
+    this.iJO = paramCursor.getString(12);
+    this.exO = paramCursor.getString(13);
     int i = paramCursor.getInt(14);
     if (i == 65536) {}
     for (this.status = 0;; this.status = i)
     {
-      this.ijI = paramCursor.getInt(17);
-      this.gUa = paramCursor.getString(15);
-      this.gUd = paramCursor.getInt(18);
-      this.ijJ = paramCursor.getBlob(19);
-      if (!bt.cw(this.ijJ)) {
-        aq(this.ijJ);
+      this.iJP = paramCursor.getInt(17);
+      this.huz = paramCursor.getString(15);
+      this.huC = paramCursor.getInt(18);
+      this.iJQ = paramCursor.getBlob(19);
+      if (!bs.cv(this.iJQ)) {
+        ap(this.iJQ);
       }
-      this.ijK = paramCursor.getInt(20);
+      this.iJR = paramCursor.getInt(20);
       AppMethodBeat.o(130967);
       return;
     }
@@ -352,50 +352,50 @@ public final class a
   {
     AppMethodBeat.i(130969);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dtM & 0x1) != 0) {
+    if ((this.drx & 0x1) != 0) {
       localContentValues.put("id", Integer.valueOf(this.id));
     }
-    if ((this.dtM & 0x2) != 0) {
-      localContentValues.put("md5", JS());
+    if ((this.drx & 0x2) != 0) {
+      localContentValues.put("md5", JC());
     }
-    if ((this.dtM & 0x4) != 0) {
-      localContentValues.put("peopleid", aIu());
+    if ((this.drx & 0x4) != 0) {
+      localContentValues.put("peopleid", aPl());
     }
-    if ((this.dtM & 0x8) != 0) {
-      localContentValues.put("uploadtime", Long.valueOf(this.ijC));
+    if ((this.drx & 0x8) != 0) {
+      localContentValues.put("uploadtime", Long.valueOf(this.iJJ));
     }
-    if ((this.dtM & 0x10) != 0) {
-      localContentValues.put("realname", aIv());
+    if ((this.drx & 0x10) != 0) {
+      localContentValues.put("realname", aPm());
     }
-    if ((this.dtM & 0x20) != 0) {
-      localContentValues.put("realnamepyinitial", aIw());
+    if ((this.drx & 0x20) != 0) {
+      localContentValues.put("realnamepyinitial", aPn());
     }
-    if ((this.dtM & 0x40) != 0) {
-      localContentValues.put("realnamequanpin", aIx());
+    if ((this.drx & 0x40) != 0) {
+      localContentValues.put("realnamequanpin", aPo());
     }
-    if ((this.dtM & 0x80) != 0) {
+    if ((this.drx & 0x80) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.dtM & 0x100) != 0) {
+    if ((this.drx & 0x100) != 0) {
       localContentValues.put("nickname", getNickName());
     }
-    if ((this.dtM & 0x200) != 0) {
-      localContentValues.put("nicknamepyinitial", aIy());
+    if ((this.drx & 0x200) != 0) {
+      localContentValues.put("nicknamepyinitial", aPp());
     }
-    if ((this.dtM & 0x400) != 0) {
-      localContentValues.put("nicknamequanpin", aIz());
+    if ((this.drx & 0x400) != 0) {
+      localContentValues.put("nicknamequanpin", aPq());
     }
-    if ((this.dtM & 0x800) != 0) {
+    if ((this.drx & 0x800) != 0) {
       localContentValues.put("type", Integer.valueOf(this.type));
     }
-    if ((this.dtM & 0x1000) != 0) {
-      localContentValues.put("moblie", aIA());
+    if ((this.drx & 0x1000) != 0) {
+      localContentValues.put("moblie", aPr());
     }
-    if ((this.dtM & 0x2000) != 0) {
+    if ((this.drx & 0x2000) != 0) {
       localContentValues.put("email", getEmail());
     }
     int i;
-    if ((this.dtM & 0x4000) != 0)
+    if ((this.drx & 0x4000) != 0)
     {
       i = this.status;
       if (i != 0) {
@@ -405,22 +405,22 @@ public final class a
     }
     for (;;)
     {
-      if ((this.dtM & 0x8000) != 0) {
-        localContentValues.put("reserved1", this.gUa);
+      if ((this.drx & 0x8000) != 0) {
+        localContentValues.put("reserved1", this.huz);
       }
-      if ((this.dtM & 0x20000) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.ijI));
+      if ((this.drx & 0x20000) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.iJP));
       }
-      if ((this.dtM & 0x40000) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.gUd));
+      if ((this.drx & 0x40000) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.huC));
       }
-      if ((this.dtM & 0x80000) != 0)
+      if ((this.drx & 0x80000) != 0)
       {
-        this.ijJ = aIt();
-        localContentValues.put("lvbuf", this.ijJ);
+        this.iJQ = aPk();
+        localContentValues.put("lvbuf", this.iJQ);
       }
-      if ((this.dtM & 0x100000) != 0) {
-        localContentValues.put("showhead", Integer.valueOf(this.ijK));
+      if ((this.drx & 0x100000) != 0) {
+        localContentValues.put("showhead", Integer.valueOf(this.iJR));
       }
       AppMethodBeat.o(130969);
       return localContentValues;
@@ -431,18 +431,18 @@ public final class a
   
   public final String getEmail()
   {
-    if (this.evs == null) {
+    if (this.exO == null) {
       return "";
     }
-    return this.evs;
+    return this.exO;
   }
   
   public final String getNickName()
   {
-    if (this.bNK == null) {
+    if (this.bLs == null) {
       return "";
     }
-    return this.bNK;
+    return this.bLs;
   }
   
   public final String getUsername()
@@ -455,7 +455,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.a
  * JD-Core Version:    0.7.0.1
  */

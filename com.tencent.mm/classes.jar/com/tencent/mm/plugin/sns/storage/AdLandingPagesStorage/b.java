@@ -8,12 +8,12 @@ public abstract class b
   protected String filePath;
   protected int scene;
   protected String url;
-  protected boolean xhp;
-  protected int xhq;
+  protected boolean yud;
+  protected int yue;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.b
  * JD-Core Version:    0.7.0.1
  */

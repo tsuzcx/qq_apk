@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
@@ -14,11 +14,11 @@ import com.tencent.mm.model.q;
 import com.tencent.mm.n.b;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.x;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
 import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
@@ -28,56 +28,56 @@ import junit.framework.Assert;
 public final class h
   implements com.tencent.mm.pluginsdk.b.a
 {
-  private af contact;
+  private ai contact;
   Context context;
-  w fql;
-  private int ima;
+  x ftP;
+  private int iMg;
   private String roomId;
   private f screen;
-  private boolean uAa;
-  private int uBM;
-  ContactListExpandPreference uBN;
-  private boolean uzZ;
+  private boolean vIS;
+  private boolean vIT;
+  private int vKF;
+  ContactListExpandPreference vKG;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(27148);
     this.context = paramContext;
-    this.uBN = new ContactListExpandPreference(paramContext, 0);
+    this.vKG = new ContactListExpandPreference(paramContext, 0);
     AppMethodBeat.o(27148);
   }
   
-  public final boolean SN(String paramString)
+  public final boolean WZ(String paramString)
   {
     AppMethodBeat.i(27149);
-    ad.d("MicroMsg.ContactWidgetGroupCard", "handleEvent ".concat(String.valueOf(paramString)));
-    az.arV();
-    Object localObject = c.apM().aHY(paramString);
-    if ((localObject == null) || ((int)((b)localObject).fId <= 0))
+    ac.d("MicroMsg.ContactWidgetGroupCard", "handleEvent ".concat(String.valueOf(paramString)));
+    az.ayM();
+    Object localObject = c.awB().aNt(paramString);
+    if ((localObject == null) || ((int)((b)localObject).fLJ <= 0))
     {
       AppMethodBeat.o(27149);
       return true;
     }
     paramString = new Intent();
     paramString.setClass(this.context, ContactInfoUI.class);
-    paramString.putExtra("Contact_User", ((au)localObject).field_username);
+    paramString.putExtra("Contact_User", ((av)localObject).field_username);
     localObject = this.context;
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramString.adn(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Context)localObject).startActivity((Intent)paramString.lS(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramString.aeD(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Context)localObject).startActivity((Intent)paramString.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(27149);
     return true;
   }
   
-  public final boolean a(f paramf, af paramaf, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, ai paramai, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(27150);
-    if (paramaf != null)
+    if (paramai != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (bt.nullAsNil(paramaf.field_username).length() <= 0) {
+      if (bs.nullAsNil(paramai.field_username).length() <= 0) {
         break label364;
       }
       bool = true;
@@ -93,62 +93,62 @@ public final class h
     {
       Assert.assertTrue(bool);
       this.screen = paramf;
-      this.contact = paramaf;
-      this.uzZ = paramBoolean;
-      this.ima = paramInt;
-      this.uAa = ((Activity)this.context).getIntent().getBooleanExtra("User_Verify", false);
-      this.uBM = ((Activity)this.context).getIntent().getIntExtra("Kdel_from", -1);
-      this.roomId = paramaf.field_username;
-      az.arV();
-      this.fql = c.apV().tI(this.roomId);
+      this.contact = paramai;
+      this.vIS = paramBoolean;
+      this.iMg = paramInt;
+      this.vIT = ((Activity)this.context).getIntent().getBooleanExtra("User_Verify", false);
+      this.vKF = ((Activity)this.context).getIntent().getIntExtra("Kdel_from", -1);
+      this.roomId = paramai.field_username;
+      az.ayM();
+      this.ftP = c.awK().xO(this.roomId);
       this.screen.removeAll();
       paramf = new PreferenceSmallCategory(this.context);
       this.screen.b(paramf);
-      this.uBN.setKey("roominfo_contact_anchor");
-      this.screen.b(this.uBN);
+      this.vKG.setKey("roominfo_contact_anchor");
+      this.screen.b(this.vKG);
       paramf = new PreferenceCategory(this.context);
       this.screen.b(paramf);
       paramf = new NormalUserFooterPreference(this.context);
       paramf.setLayoutResource(2131493625);
       paramf.setKey("contact_info_footer_normal");
-      if (paramf.a(this.contact, "", this.uzZ, this.uAa, false, this.ima, this.uBM, false, false, 0L, "")) {
+      if (paramf.a(this.contact, "", this.vIS, this.vIT, false, this.iMg, this.vKF, false, false, 0L, "")) {
         this.screen.b(paramf);
       }
-      this.uBN.a(this.screen, this.uBN.mKey);
-      paramf = q.rW(this.roomId);
-      this.uBN.ub(false).uc(false);
-      this.uBN.B(this.roomId, paramf);
-      this.uBN.a(new ContactListExpandPreference.a()
+      this.vKG.a(this.screen, this.vKG.mKey);
+      paramf = q.vZ(this.roomId);
+      this.vKG.vc(false).vd(false);
+      this.vKG.y(this.roomId, paramf);
+      this.vKG.a(new ContactListExpandPreference.a()
       {
-        public final void b(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt) {}
+        public final void a(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt) {}
         
-        public final void c(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt)
+        public final void b(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt)
         {
-          AppMethodBeat.i(204852);
-          if (h.this.uBN.UR(paramAnonymousInt))
+          AppMethodBeat.i(196011);
+          if (h.this.vKG.Xa(paramAnonymousInt))
           {
-            paramAnonymousView = h.this.uBN.US(paramAnonymousInt);
-            if (bt.isNullOrNil(paramAnonymousView))
+            paramAnonymousView = h.this.vKG.Xb(paramAnonymousInt);
+            if (bs.isNullOrNil(paramAnonymousView))
             {
-              AppMethodBeat.o(204852);
+              AppMethodBeat.o(196011);
               return;
             }
             paramAnonymousViewGroup = new Intent();
             paramAnonymousViewGroup.setClass(h.this.context, ContactInfoUI.class);
             paramAnonymousViewGroup.putExtra("Contact_User", paramAnonymousView);
-            paramAnonymousViewGroup.putExtra("Contact_RoomNickname", h.this.fql.sh(paramAnonymousView));
+            paramAnonymousViewGroup.putExtra("Contact_RoomNickname", h.this.ftP.wk(paramAnonymousView));
             paramAnonymousView = h.this.context;
-            paramAnonymousViewGroup = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousViewGroup);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousViewGroup.adn(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)paramAnonymousViewGroup.lS(0));
+            paramAnonymousViewGroup = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousViewGroup);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousViewGroup.aeD(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)paramAnonymousViewGroup.lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
-          AppMethodBeat.o(204852);
+          AppMethodBeat.o(196011);
         }
         
-        public final void d(ViewGroup paramAnonymousViewGroup, View paramAnonymousView) {}
+        public final void c(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt) {}
         
-        public final void d(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt) {}
+        public final void d(ViewGroup paramAnonymousViewGroup, View paramAnonymousView) {}
         
         public final void e(ViewGroup paramAnonymousViewGroup, View paramAnonymousView) {}
       });
@@ -161,12 +161,12 @@ public final class h
     }
   }
   
-  public final boolean bRu()
+  public final boolean bYJ()
   {
     AppMethodBeat.i(27151);
-    NormalUserFooterPreference localNormalUserFooterPreference = (NormalUserFooterPreference)this.screen.aKk("contact_info_footer_normal");
+    NormalUserFooterPreference localNormalUserFooterPreference = (NormalUserFooterPreference)this.screen.aPN("contact_info_footer_normal");
     if (localNormalUserFooterPreference != null) {
-      localNormalUserFooterPreference.bRu();
+      localNormalUserFooterPreference.bYJ();
     }
     AppMethodBeat.o(27151);
     return true;
@@ -176,7 +176,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.h
  * JD-Core Version:    0.7.0.1
  */

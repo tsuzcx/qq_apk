@@ -2,53 +2,63 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.ahb;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class bv
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eCa;
-  private static final int eCb;
-  private static final int eCc;
-  private static final int eCd = "failNum".hashCode();
-  private static final int eCe = "isReport".hashCode();
-  private static final int ejR;
-  private static final int emB;
-  private static final int emf;
-  private static final int eml;
-  private static final int eoZ = "url".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavModInfo_LocalId_Index ON FavEditInfo(localId)" };
+  private static final int eDL = "localId".hashCode();
+  private static final int eDM = "modItem".hashCode();
+  private static final int env = "scene".hashCode();
+  private static final int euN = "time".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eBV = true;
-  private boolean eBW = true;
-  private boolean eBX = true;
-  private boolean eBY = true;
-  private boolean eBZ = true;
-  private boolean ejO = true;
-  private boolean emc = true;
-  private boolean emh = true;
-  private boolean emz = true;
-  private boolean eoV = true;
-  public int field_failNum;
-  public long field_favTime;
-  public String field_imgDirPath;
-  public String field_imgPaths;
-  public int field_isReport;
-  public String field_path;
-  public long field_size;
-  public int field_status;
-  public long field_updateTime;
-  public String field_url;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eDJ = true;
+  private boolean eDK = true;
+  private boolean ent = true;
+  private boolean euu = true;
+  public long field_localId;
+  public ahb field_modItem;
+  public int field_scene;
+  public long field_time;
+  public int field_type;
   
-  static
+  public static c.a Th()
   {
-    emB = "size".hashCode();
-    eml = "path".hashCode();
-    eCa = "imgDirPath".hashCode();
-    eCb = "imgPaths".hashCode();
-    eCc = "favTime".hashCode();
-    emf = "updateTime".hashCode();
-    ejR = "status".hashCode();
+    c.a locala = new c.a();
+    locala.GvF = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "localId";
+    locala.GvH.put("localId", "LONG");
+    localStringBuilder.append(" localId LONG");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "modItem";
+    locala.GvH.put("modItem", "BLOB");
+    localStringBuilder.append(" modItem BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "time";
+    locala.GvH.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "type";
+    locala.GvH.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "scene";
+    locala.GvH.put("scene", "INTEGER default '1' ");
+    localStringBuilder.append(" scene INTEGER default '1' ");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -57,17 +67,17 @@ public abstract class bv
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoZ != k) {
+      if (eDL != k) {
         break label60;
       }
-      this.field_url = paramCursor.getString(i);
+      this.field_localId = paramCursor.getLong(i);
     }
     for (;;)
     {
@@ -75,24 +85,25 @@ public abstract class bv
       break label20;
       break;
       label60:
-      if (emB == k) {
-        this.field_size = paramCursor.getLong(i);
-      } else if (eml == k) {
-        this.field_path = paramCursor.getString(i);
-      } else if (eCa == k) {
-        this.field_imgDirPath = paramCursor.getString(i);
-      } else if (eCb == k) {
-        this.field_imgPaths = paramCursor.getString(i);
-      } else if (eCc == k) {
-        this.field_favTime = paramCursor.getLong(i);
-      } else if (emf == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (ejR == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eCd == k) {
-        this.field_failNum = paramCursor.getInt(i);
-      } else if (eCe == k) {
-        this.field_isReport = paramCursor.getInt(i);
+      if (eDM == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_modItem = ((ahb)new ahb().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          ac.e("MicroMsg.SDK.BaseFavEditInfo", localIOException.getMessage());
+        }
+      } else if (euN == k) {
+        this.field_time = paramCursor.getLong(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (env == k) {
+        this.field_scene = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -102,40 +113,34 @@ public abstract class bv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoV) {
-      localContentValues.put("url", this.field_url);
+    if (this.eDJ) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.emz) {
-      localContentValues.put("size", Long.valueOf(this.field_size));
+    if ((this.eDK) && (this.field_modItem != null)) {}
+    try
+    {
+      localContentValues.put("modItem", this.field_modItem.toByteArray());
+      if (this.euu) {
+        localContentValues.put("time", Long.valueOf(this.field_time));
+      }
+      if (this.__hadSettype) {
+        localContentValues.put("type", Integer.valueOf(this.field_type));
+      }
+      if (this.ent) {
+        localContentValues.put("scene", Integer.valueOf(this.field_scene));
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.emh) {
-      localContentValues.put("path", this.field_path);
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.SDK.BaseFavEditInfo", localIOException.getMessage());
+      }
     }
-    if (this.eBV) {
-      localContentValues.put("imgDirPath", this.field_imgDirPath);
-    }
-    if (this.eBW) {
-      localContentValues.put("imgPaths", this.field_imgPaths);
-    }
-    if (this.eBX) {
-      localContentValues.put("favTime", Long.valueOf(this.field_favTime));
-    }
-    if (this.emc) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
-    }
-    if (this.ejO) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
-    }
-    if (this.eBY) {
-      localContentValues.put("failNum", Integer.valueOf(this.field_failNum));
-    }
-    if (this.eBZ) {
-      localContentValues.put("isReport", Integer.valueOf(this.field_isReport));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 

@@ -1,0 +1,178 @@
+package android.support.d.a;
+
+import android.content.res.Resources.Theme;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.v4.graphics.drawable.a;
+import android.support.v4.graphics.drawable.e;
+
+abstract class h
+  extends Drawable
+  implements e
+{
+  Drawable vk;
+  
+  public void applyTheme(Resources.Theme paramTheme)
+  {
+    if (this.vk != null) {
+      a.a(this.vk, paramTheme);
+    }
+  }
+  
+  public void clearColorFilter()
+  {
+    if (this.vk != null)
+    {
+      this.vk.clearColorFilter();
+      return;
+    }
+    super.clearColorFilter();
+  }
+  
+  public ColorFilter getColorFilter()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.vk != null)
+    {
+      Drawable localDrawable = this.vk;
+      localObject1 = localObject2;
+      if (Build.VERSION.SDK_INT >= 21) {
+        localObject1 = localDrawable.getColorFilter();
+      }
+    }
+    return localObject1;
+  }
+  
+  public Drawable getCurrent()
+  {
+    if (this.vk != null) {
+      return this.vk.getCurrent();
+    }
+    return super.getCurrent();
+  }
+  
+  public int getMinimumHeight()
+  {
+    if (this.vk != null) {
+      return this.vk.getMinimumHeight();
+    }
+    return super.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    if (this.vk != null) {
+      return this.vk.getMinimumWidth();
+    }
+    return super.getMinimumWidth();
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    if (this.vk != null) {
+      return this.vk.getPadding(paramRect);
+    }
+    return super.getPadding(paramRect);
+  }
+  
+  public int[] getState()
+  {
+    if (this.vk != null) {
+      return this.vk.getState();
+    }
+    return super.getState();
+  }
+  
+  public Region getTransparentRegion()
+  {
+    if (this.vk != null) {
+      return this.vk.getTransparentRegion();
+    }
+    return super.getTransparentRegion();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    if (this.vk != null) {
+      this.vk.jumpToCurrentState();
+    }
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    if (this.vk != null)
+    {
+      this.vk.setBounds(paramRect);
+      return;
+    }
+    super.onBoundsChange(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    if (this.vk != null) {
+      return this.vk.setLevel(paramInt);
+    }
+    return super.onLevelChange(paramInt);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    if (this.vk != null)
+    {
+      this.vk.setChangingConfigurations(paramInt);
+      return;
+    }
+    super.setChangingConfigurations(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
+  {
+    if (this.vk != null)
+    {
+      this.vk.setColorFilter(paramInt, paramMode);
+      return;
+    }
+    super.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    if (this.vk != null) {
+      this.vk.setFilterBitmap(paramBoolean);
+    }
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    if (this.vk != null) {
+      a.a(this.vk, paramFloat1, paramFloat2);
+    }
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (this.vk != null) {
+      a.a(this.vk, paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    if (this.vk != null) {
+      return this.vk.setState(paramArrayOfInt);
+    }
+    return super.setState(paramArrayOfInt);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     android.support.d.a.h
+ * JD-Core Version:    0.7.0.1
+ */

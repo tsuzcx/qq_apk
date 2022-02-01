@@ -14,29 +14,29 @@ import com.tencent.mm.pluginsdk.ui.chat.j;
 public class SmileyGrid
   extends GridView
 {
-  public static int HXI = 1;
-  private j CgB;
-  public ListAdapter DP;
-  private int HXJ;
-  public int HXK;
-  private int HXL;
-  private ChatFooterPanel.a HXM;
+  public static int Jyx = 1;
+  private j DyS;
+  public ListAdapter EN;
+  private int JyA;
+  private ChatFooterPanel.a JyB;
+  private int Jyy;
+  public int Jyz;
   private int mScene;
   
   public SmileyGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(105175);
-    this.HXJ = 20;
-    this.HXK = 0;
-    this.HXL = 0;
-    this.mScene = ChatFooterPanel.BUT;
+    this.Jyy = 20;
+    this.Jyz = 0;
+    this.JyA = 0;
+    this.mScene = ChatFooterPanel.Dnj;
     AppMethodBeat.o(105175);
   }
   
   public int getSmileyType()
   {
-    return this.HXJ;
+    return this.Jyy;
   }
   
   @TargetApi(8)
@@ -56,26 +56,26 @@ public class SmileyGrid
   
   public void release()
   {
-    this.HXM = null;
-    this.CgB = null;
+    this.JyB = null;
+    this.DyS = null;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(105180);
     super.setAdapter(paramListAdapter);
-    this.DP = paramListAdapter;
+    this.EN = paramListAdapter;
     AppMethodBeat.o(105180);
   }
   
   public void setCallback(j paramj)
   {
-    this.CgB = paramj;
+    this.DyS = paramj;
   }
   
   public void setOnTextOperationListener(ChatFooterPanel.a parama)
   {
-    this.HXM = parama;
+    this.JyB = parama;
   }
   
   public void setScene(int paramInt)

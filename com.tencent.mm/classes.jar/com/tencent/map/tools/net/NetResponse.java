@@ -37,6 +37,19 @@ public class NetResponse
     return ((this.errorCode == 0) && (this.statusCode == 200)) || ((this.data != null) && (this.data.length > 0));
   }
   
+  public void clone(NetResponse paramNetResponse)
+  {
+    if (paramNetResponse != null)
+    {
+      this.errorCode = paramNetResponse.errorCode;
+      this.statusCode = paramNetResponse.statusCode;
+      this.data = paramNetResponse.data;
+      this.charset = paramNetResponse.charset;
+      this.exception = paramNetResponse.exception;
+      this.errorData = paramNetResponse.errorData;
+    }
+  }
+  
   public String toHumanString()
   {
     AppMethodBeat.i(180922);
@@ -78,7 +91,7 @@ public class NetResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.net.NetResponse
  * JD-Core Version:    0.7.0.1
  */

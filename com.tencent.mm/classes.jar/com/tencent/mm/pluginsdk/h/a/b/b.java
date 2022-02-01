@@ -6,8 +6,8 @@ import java.io.IOException;
 public final class b
   extends IOException
 {
-  private final long BTb;
-  private final long aLn;
+  private final long Dlr;
+  private final long aMd;
   
   public b()
   {
@@ -18,15 +18,15 @@ public final class b
   {
     super(String.format("contentLength: %d, requestRange:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
     AppMethodBeat.i(152008);
-    this.aLn = paramLong1;
-    this.BTb = paramLong2;
+    this.aMd = paramLong1;
+    this.Dlr = paramLong2;
     AppMethodBeat.o(152008);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(152009);
-    String str = "FileSizeOutOfRangeException{contentLength=" + this.aLn + ", requestRange=" + this.BTb + '}';
+    String str = "FileSizeOutOfRangeException{contentLength=" + this.aMd + ", requestRange=" + this.Dlr + '}';
     AppMethodBeat.o(152009);
     return str;
   }

@@ -1,506 +1,560 @@
 package com.tencent.mm.aq;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Process;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.Future;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import org.json.JSONObject;
 
 public final class a
 {
-  private static boolean active;
-  private static Future daz;
-  private static final c hcv;
-  private static boolean hcw;
-  private static long hcx;
-  private static long hcy;
+  public static int hDT = 1;
+  private static String hDU = "";
   
-  static
+  /* Error */
+  private static boolean BX(String paramString)
   {
-    AppMethodBeat.i(132522);
-    active = false;
-    hcv = new c();
-    hcw = true;
-    hcx = 0L;
-    hcy = 0L;
-    AppMethodBeat.o(132522);
+    // Byte code:
+    //   0: ldc 24
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   8: invokevirtual 42	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   11: astore_2
+    //   12: aload_2
+    //   13: ldc 44
+    //   15: invokevirtual 50	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   18: astore_2
+    //   19: aload_2
+    //   20: ifnonnull +35 -> 55
+    //   23: ldc 52
+    //   25: ldc 54
+    //   27: invokestatic 60	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: ldc 24
+    //   32: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: iconst_0
+    //   36: ireturn
+    //   37: astore_2
+    //   38: ldc 52
+    //   40: aload_2
+    //   41: ldc 14
+    //   43: iconst_0
+    //   44: anewarray 4	java/lang/Object
+    //   47: invokestatic 67	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   50: aconst_null
+    //   51: astore_2
+    //   52: goto -33 -> 19
+    //   55: new 69	com/tencent/mm/vfs/e
+    //   58: dup
+    //   59: aload_0
+    //   60: invokespecial 73	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   63: astore_0
+    //   64: aload_0
+    //   65: invokevirtual 77	com/tencent/mm/vfs/e:exists	()Z
+    //   68: ifeq +8 -> 76
+    //   71: aload_0
+    //   72: invokevirtual 80	com/tencent/mm/vfs/e:delete	()Z
+    //   75: pop
+    //   76: aload_0
+    //   77: invokevirtual 84	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
+    //   80: invokevirtual 87	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   83: pop
+    //   84: aload_0
+    //   85: invokestatic 93	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   88: astore_0
+    //   89: aload_0
+    //   90: ifnull +107 -> 197
+    //   93: sipush 1024
+    //   96: newarray byte
+    //   98: astore_3
+    //   99: aload_2
+    //   100: aload_3
+    //   101: invokevirtual 99	java/io/InputStream:read	([B)I
+    //   104: istore_1
+    //   105: iload_1
+    //   106: iconst_m1
+    //   107: if_icmpeq +59 -> 166
+    //   110: aload_0
+    //   111: aload_3
+    //   112: iconst_0
+    //   113: iload_1
+    //   114: invokevirtual 105	java/io/OutputStream:write	([BII)V
+    //   117: goto -18 -> 99
+    //   120: astore_3
+    //   121: ldc 52
+    //   123: aload_3
+    //   124: ldc 14
+    //   126: iconst_0
+    //   127: anewarray 4	java/lang/Object
+    //   130: invokestatic 67	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   133: aload_2
+    //   134: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   137: aload_0
+    //   138: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   141: ldc 24
+    //   143: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: iconst_0
+    //   147: ireturn
+    //   148: astore_0
+    //   149: ldc 52
+    //   151: aload_0
+    //   152: ldc 14
+    //   154: iconst_0
+    //   155: anewarray 4	java/lang/Object
+    //   158: invokestatic 67	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   161: aconst_null
+    //   162: astore_0
+    //   163: goto -74 -> 89
+    //   166: aload_2
+    //   167: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   170: aload_0
+    //   171: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   174: ldc 24
+    //   176: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: iconst_1
+    //   180: ireturn
+    //   181: astore_3
+    //   182: aload_2
+    //   183: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   186: aload_0
+    //   187: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   190: ldc 24
+    //   192: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   195: aload_3
+    //   196: athrow
+    //   197: aload_2
+    //   198: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   201: ldc 24
+    //   203: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   206: iconst_0
+    //   207: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	208	0	paramString	String
+    //   104	10	1	i	int
+    //   11	9	2	localObject1	Object
+    //   37	4	2	localIOException1	IOException
+    //   51	147	2	localCloseable	java.io.Closeable
+    //   98	14	3	arrayOfByte	byte[]
+    //   120	4	3	localIOException2	IOException
+    //   181	15	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	19	37	java/io/IOException
+    //   93	99	120	java/io/IOException
+    //   99	105	120	java/io/IOException
+    //   110	117	120	java/io/IOException
+    //   84	89	148	java/io/FileNotFoundException
+    //   93	99	181	finally
+    //   99	105	181	finally
+    //   110	117	181	finally
+    //   121	133	181	finally
   }
   
-  private static a a(c.c paramc, int paramInt)
+  private static String aEe()
   {
-    AppMethodBeat.i(132521);
-    if (paramc == null)
-    {
-      AppMethodBeat.o(132521);
-      return null;
+    AppMethodBeat.i(104501);
+    if (bs.isNullOrNil(hDU)) {
+      hDU = b.apa().replace("/data/user/0", "/data/data");
     }
-    a locala = new a();
-    locala.hcz = paramc.hcz;
-    locala.startTime = paramc.time;
-    locala.endTime = paramc.time;
-    locala.type = paramInt;
-    locala.hcC = paramc.type;
-    AppMethodBeat.o(132521);
-    return locala;
+    String str = hDU;
+    AppMethodBeat.o(104501);
+    return str;
   }
   
-  private static a a(c.d paramd, int paramInt)
+  public static String aEf()
   {
-    AppMethodBeat.i(132520);
-    if (paramd == null)
-    {
-      AppMethodBeat.o(132520);
-      return null;
+    AppMethodBeat.i(104502);
+    Object localObject = new e(aEe(), "emoji/res");
+    if (!((e)localObject).exists()) {
+      ((e)localObject).mkdirs();
     }
-    a locala = new a();
-    locala.hcz = paramd.hdp;
-    locala.startTime = paramd.startTime;
-    locala.endTime = paramd.endTime;
-    locala.type = paramInt;
-    locala.pid = paramd.pid;
-    locala.hcA = paramd.hcA;
-    if (paramInt == 1)
-    {
-      locala.networkStatus = paramd.networkStatus;
-      locala.hcB = paramd.hcB;
-    }
-    AppMethodBeat.o(132520);
-    return locala;
-  }
-  
-  public static void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(132515);
-    if (!hcw)
-    {
-      AppMethodBeat.o(132515);
-      return;
-    }
-    c localc = hcv;
-    paramString = new c.b(Process.myPid(), paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString, paramInt2);
-    ad.i("MicroMsg.ActiveDetector.ProcessDetector", "addDelayedMsgInBackground() delayed msg[%s]", new Object[] { paramString.toString() });
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(132515);
-      return;
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdd.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hde.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdf.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdg.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdh.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdi.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdj.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdk.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdl.add(paramString);
-      AppMethodBeat.o(132515);
-      return;
-      localc.hcJ.hdm.add(paramString);
-    }
-  }
-  
-  private static void a(List<a> paramList, List<c.b> paramList1, boolean paramBoolean)
-  {
-    AppMethodBeat.i(132518);
-    if (paramList1 == null)
-    {
-      AppMethodBeat.o(132518);
-      return;
-    }
-    Iterator localIterator = paramList1.iterator();
-    label146:
-    while (localIterator.hasNext())
-    {
-      c.b localb = (c.b)localIterator.next();
-      if (localb == null) {
-        paramList1 = null;
-      }
-      for (;;)
-      {
-        if (paramList1 == null) {
-          break label146;
-        }
-        paramList.add(paramList1);
-        break;
-        paramList1 = new a();
-        paramList1.pid = localb.pid;
-        paramList1.hcz = localb.hcz;
-        paramList1.startTime = localb.hdn;
-        paramList1.endTime = localb.hdn;
-        paramList1.type = 4;
-        paramList1.hcD = localb.hcD;
-        paramList1.hcE = localb.hcE;
-        paramList1.hcF = localb.hcF;
-        paramList1.ctF = paramBoolean;
-      }
-    }
-    AppMethodBeat.o(132518);
-  }
-  
-  public static List<a> axk()
-  {
-    localObject2 = null;
-    AppMethodBeat.i(132517);
-    if (!aj.cbv())
-    {
-      AppMethodBeat.o(132517);
-      return null;
-    }
-    Object localObject1 = hcv.hcN;
-    Object localObject3 = (String)localObject1 + "/mm";
-    localObject4 = (String)localObject1 + "/push";
-    try
-    {
-      localObject1 = (c.a)b.w(com.tencent.mm.vfs.i.openRead((String)localObject3));
-      try
-      {
-        localObject3 = (c.a)b.w(com.tencent.mm.vfs.i.openRead((String)localObject4));
-        localObject2 = localObject3;
-      }
-      catch (Exception localException2)
-      {
-        a locala;
-        for (;;)
-        {
-          ad.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException2.getMessage(), new Object[] { localObject4 });
-        }
-        localObject4 = localIterator.hcS.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          locala = a((c.c)((Iterator)localObject4).next(), 3);
-          if (locala != null) {
-            localException2.add(locala);
-          }
-        }
-        a(localException2, localIterator.hcT, true);
-        a(localException2, localIterator.hcU, true);
-        a(localException2, localIterator.hcV, true);
-        a(localException2, localIterator.hcW, true);
-        a(localException2, localIterator.hcX, true);
-        a(localException2, localIterator.hcY, true);
-        a(localException2, localIterator.hcZ, true);
-        a(localException2, localIterator.hda, true);
-        a(localException2, localIterator.hdb, true);
-        a(localException2, localIterator.hdc, true);
-        a(localException2, localIterator.hdd, false);
-        a(localException2, localIterator.hde, false);
-        a(localException2, localIterator.hdf, false);
-        a(localException2, localIterator.hdg, false);
-        a(localException2, localIterator.hdh, false);
-        a(localException2, localIterator.hdi, false);
-        a(localException2, localIterator.hdj, false);
-        a(localException2, localIterator.hdk, false);
-        a(localException2, localIterator.hdl, false);
-        a(localException2, localIterator.hdm, false);
-        if (localObject2 == null) {
-          break label559;
-        }
-        Iterator localIterator = ((c.a)localObject2).hcQ.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject4 = a((c.d)localIterator.next(), 1);
-          if (localObject4 != null) {
-            localException2.add(localObject4);
-          }
-        }
-        localIterator = ((c.a)localObject2).hcR.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = a((c.c)localIterator.next(), 2);
-          if (localObject2 != null) {
-            localException2.add(localObject2);
-          }
-        }
-        Collections.sort(localException2);
-        AppMethodBeat.o(132517);
-        return localException2;
-      }
-      localObject3 = new ArrayList();
-      if (localObject1 != null)
-      {
-        localObject4 = ((c.a)localObject1).hcQ.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          locala = a((c.d)((Iterator)localObject4).next(), 0);
-          if (locala != null) {
-            ((List)localObject3).add(locala);
-          }
-        }
-      }
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        ad.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException1.getMessage(), new Object[] { localObject3 });
-        localIterator = null;
-      }
-    }
-  }
-  
-  public static void b(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(132516);
-    if (!hcw)
-    {
-      AppMethodBeat.o(132516);
-      return;
-    }
-    c localc = hcv;
-    paramString = new c.b(Process.myPid(), paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString, paramInt2);
-    ad.i("MicroMsg.ActiveDetector.ProcessDetector", "addDelayedMsgInForeground() delayed msg[%s]", new Object[] { paramString.toString() });
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(132516);
-      return;
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcT.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcU.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcV.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcW.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcX.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcY.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hcZ.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hda.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hdb.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hcJ.hdc.add(paramString);
-    }
-  }
-  
-  public static final void ep(boolean paramBoolean)
-  {
-    AppMethodBeat.i(132512);
-    ad.i("MicroMsg.ActiveDetector", "onActive() active:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!aj.getContext().getSharedPreferences("system_config_prefs", g.XN()).getBoolean("msg_delay_close_detect", false)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      hcw = bool;
-      if (bool) {
-        break;
-      }
-      AppMethodBeat.o(132512);
-      return;
-    }
-    active = paramBoolean;
-    if (paramBoolean)
-    {
-      ad.i("MicroMsg.ActiveDetector", "[oneliang]active, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
-      ad.i("MicroMsg.ActiveDetector", "active, interrupt end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      if (daz != null) {
-        daz.cancel(true);
-      }
-      daz = null;
-      c localc = hcv;
-      localc.hcP = false;
-      localc.hcL = 0L;
-      localc.hcM = 0L;
-      ad.i("MicroMsg.ActiveDetector", "active, processDetector.clear end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      hcx = ce.asQ();
-      AppMethodBeat.o(132512);
-      return;
-    }
-    ad.i("MicroMsg.ActiveDetector", "[oneliang]unactive, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
-    if (daz == null)
-    {
-      daz = h.Iye.aS(hcv);
-      hcv.hcP = true;
-    }
-    hcy = ce.asQ();
-    AppMethodBeat.o(132512);
-  }
-  
-  public static boolean isActive()
-  {
-    return active;
-  }
-  
-  public static boolean mo(long paramLong)
-  {
-    boolean bool = true;
-    if ((hcx <= 0L) || (hcy <= 0L) || (paramLong <= 0L)) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (hcx < hcy) {
-          break;
-        }
-      } while (paramLong >= hcx);
-      return false;
-    } while (paramLong < hcy);
-    return false;
-  }
-  
-  static String mp(long paramLong)
-  {
-    AppMethodBeat.i(132519);
-    Object localObject = new Date(paramLong);
-    localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format((Date)localObject);
-    AppMethodBeat.o(132519);
+    localObject = q.B(((e)localObject).fxV());
+    AppMethodBeat.o(104502);
     return localObject;
   }
   
-  public static void nR(int paramInt)
+  public static String aEg()
   {
-    hcv.hcG = paramInt;
+    AppMethodBeat.i(104503);
+    String str = aEe() + "emoji/newemoji/";
+    AppMethodBeat.o(104503);
+    return str;
   }
   
-  public static void y(int paramInt, long paramLong)
+  public static int aEh()
   {
-    AppMethodBeat.i(132513);
-    if (!hcw)
+    AppMethodBeat.i(104504);
+    Object localObject3 = null;
+    Object localObject1 = null;
+    try
     {
-      AppMethodBeat.o(132513);
-      return;
-    }
-    if (active)
-    {
-      AppMethodBeat.o(132513);
-      return;
-    }
-    c localc = hcv;
-    c.c localc1 = new c.c(ce.asQ(), System.currentTimeMillis(), paramInt, paramLong);
-    localc.hcJ.hcR.add(localc1);
-    AppMethodBeat.o(132513);
-  }
-  
-  public static void z(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(132514);
-    if (!hcw)
-    {
-      AppMethodBeat.o(132514);
-      return;
-    }
-    if (active)
-    {
-      AppMethodBeat.o(132514);
-      return;
-    }
-    c localc = hcv;
-    c.c localc1 = new c.c(ce.asQ(), System.currentTimeMillis(), paramInt, paramLong);
-    localc.hcJ.hcS.add(localc1);
-    AppMethodBeat.o(132514);
-  }
-  
-  public static final class a
-    implements Comparable<a>
-  {
-    public boolean ctF = false;
-    public long endTime = 0L;
-    public boolean hcA = true;
-    public boolean hcB = false;
-    public int hcC = 0;
-    public long hcD = 0L;
-    public long hcE = 0L;
-    public long hcF = 0L;
-    public long hcz = 0L;
-    public int networkStatus = 0;
-    public int pid = 0;
-    public long startTime = 0L;
-    public int type = 0;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(132511);
-      StringBuilder localStringBuilder = new StringBuilder();
-      switch (this.type)
+      InputStream localInputStream = i.ag(new e(aEf(), "config.conf"));
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localInputStream));
+      String str2;
+      for (String str1 = "";; str1 = str1 + str2)
       {
-      default: 
-      case 0: 
-      case 1: 
-      case 2: 
-      case 3: 
-        for (;;)
+        localObject1 = localInputStream;
+        localObject3 = localInputStream;
+        str2 = localBufferedReader.readLine();
+        if (str2 == null) {
+          break;
+        }
+        localObject1 = localInputStream;
+        localObject3 = localInputStream;
+      }
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      int i = new JSONObject(str1).getInt("version");
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      ac.d("MicroMsg.emoji.EmojiStoreExportLogic", "config file content:%s version:%d", new Object[] { str1, Integer.valueOf(i) });
+      return i;
+    }
+    catch (Exception localException)
+    {
+      localObject3 = localObject1;
+      ac.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localException, localException.getMessage(), new Object[0]);
+      return 1;
+    }
+    finally
+    {
+      bs.d(localObject3);
+      AppMethodBeat.o(104504);
+    }
+  }
+  
+  /* Error */
+  private static int aEi()
+  {
+    // Byte code:
+    //   0: ldc 216
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   8: invokevirtual 42	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   11: astore_1
+    //   12: aload_1
+    //   13: ldc 218
+    //   15: invokevirtual 50	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   18: astore_2
+    //   19: new 182	java/io/InputStreamReader
+    //   22: dup
+    //   23: aload_2
+    //   24: invokespecial 185	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   27: astore 4
+    //   29: new 180	java/io/BufferedReader
+    //   32: dup
+    //   33: aload 4
+    //   35: invokespecial 188	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   38: astore_1
+    //   39: ldc 14
+    //   41: astore_3
+    //   42: aload_1
+    //   43: astore 7
+    //   45: aload 4
+    //   47: astore 6
+    //   49: aload_2
+    //   50: astore 5
+    //   52: aload_1
+    //   53: invokevirtual 191	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   56: astore 8
+    //   58: aload 8
+    //   60: ifnull +36 -> 96
+    //   63: aload_1
+    //   64: astore 7
+    //   66: aload 4
+    //   68: astore 6
+    //   70: aload_2
+    //   71: astore 5
+    //   73: new 154	java/lang/StringBuilder
+    //   76: dup
+    //   77: invokespecial 156	java/lang/StringBuilder:<init>	()V
+    //   80: aload_3
+    //   81: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: aload 8
+    //   86: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   92: astore_3
+    //   93: goto -51 -> 42
+    //   96: aload_1
+    //   97: astore 7
+    //   99: aload 4
+    //   101: astore 6
+    //   103: aload_2
+    //   104: astore 5
+    //   106: new 193	org/json/JSONObject
+    //   109: dup
+    //   110: aload_3
+    //   111: invokespecial 194	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   114: ldc 196
+    //   116: invokevirtual 200	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   119: istore_0
+    //   120: aload_1
+    //   121: astore 7
+    //   123: aload 4
+    //   125: astore 6
+    //   127: aload_2
+    //   128: astore 5
+    //   130: ldc 52
+    //   132: ldc 202
+    //   134: iconst_2
+    //   135: anewarray 4	java/lang/Object
+    //   138: dup
+    //   139: iconst_0
+    //   140: aload_3
+    //   141: aastore
+    //   142: dup
+    //   143: iconst_1
+    //   144: iload_0
+    //   145: invokestatic 208	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   148: aastore
+    //   149: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   152: aload_2
+    //   153: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   156: aload 4
+    //   158: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   161: aload_1
+    //   162: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   165: ldc 216
+    //   167: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: iload_0
+    //   171: ireturn
+    //   172: astore_3
+    //   173: aconst_null
+    //   174: astore_1
+    //   175: aconst_null
+    //   176: astore 4
+    //   178: aconst_null
+    //   179: astore_2
+    //   180: aload_1
+    //   181: astore 7
+    //   183: aload 4
+    //   185: astore 6
+    //   187: aload_2
+    //   188: astore 5
+    //   190: ldc 52
+    //   192: aload_3
+    //   193: aload_3
+    //   194: invokevirtual 214	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   197: iconst_0
+    //   198: anewarray 4	java/lang/Object
+    //   201: invokestatic 67	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   204: aload_2
+    //   205: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   208: aload 4
+    //   210: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   213: aload_1
+    //   214: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   217: ldc 216
+    //   219: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   222: iconst_1
+    //   223: ireturn
+    //   224: astore_1
+    //   225: aconst_null
+    //   226: astore_3
+    //   227: aconst_null
+    //   228: astore 4
+    //   230: aconst_null
+    //   231: astore_2
+    //   232: aload_2
+    //   233: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   236: aload 4
+    //   238: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   241: aload_3
+    //   242: invokestatic 111	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   245: ldc 216
+    //   247: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   250: aload_1
+    //   251: athrow
+    //   252: astore_1
+    //   253: aconst_null
+    //   254: astore_3
+    //   255: aconst_null
+    //   256: astore 4
+    //   258: goto -26 -> 232
+    //   261: astore_1
+    //   262: aconst_null
+    //   263: astore_3
+    //   264: goto -32 -> 232
+    //   267: astore_1
+    //   268: aload 7
+    //   270: astore_3
+    //   271: aload 6
+    //   273: astore 4
+    //   275: aload 5
+    //   277: astore_2
+    //   278: goto -46 -> 232
+    //   281: astore_3
+    //   282: aconst_null
+    //   283: astore_1
+    //   284: aconst_null
+    //   285: astore 4
+    //   287: goto -107 -> 180
+    //   290: astore_3
+    //   291: aconst_null
+    //   292: astore_1
+    //   293: goto -113 -> 180
+    //   296: astore_3
+    //   297: goto -117 -> 180
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   119	52	0	i	int
+    //   11	203	1	localObject1	Object
+    //   224	27	1	localObject2	Object
+    //   252	1	1	localObject3	Object
+    //   261	1	1	localObject4	Object
+    //   267	1	1	localObject5	Object
+    //   283	10	1	localObject6	Object
+    //   18	260	2	localObject7	Object
+    //   41	100	3	str1	String
+    //   172	22	3	localException1	Exception
+    //   226	45	3	localObject8	Object
+    //   281	1	3	localException2	Exception
+    //   290	1	3	localException3	Exception
+    //   296	1	3	localException4	Exception
+    //   27	259	4	localObject9	Object
+    //   50	226	5	localObject10	Object
+    //   47	225	6	localObject11	Object
+    //   43	226	7	localObject12	Object
+    //   56	29	8	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   12	19	172	java/lang/Exception
+    //   12	19	224	finally
+    //   19	29	252	finally
+    //   29	39	261	finally
+    //   52	58	267	finally
+    //   73	93	267	finally
+    //   106	120	267	finally
+    //   130	152	267	finally
+    //   190	204	267	finally
+    //   19	29	281	java/lang/Exception
+    //   29	39	290	java/lang/Exception
+    //   52	58	296	java/lang/Exception
+    //   73	93	296	java/lang/Exception
+    //   106	120	296	java/lang/Exception
+    //   130	152	296	java/lang/Exception
+  }
+  
+  public static void eL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(104507);
+    e locale = new e(aEf());
+    ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy search template file to path: %s", new Object[] { locale.fxW() });
+    if (d.DIf)
+    {
+      ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "need to init search template folder %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      i.cU(q.B(locale.mUri), true);
+      k(locale);
+    }
+    for (;;)
+    {
+      i.cU(b.aph() + "emoji", true);
+      AppMethodBeat.o(104507);
+      return;
+      hDT = aEh();
+      if (paramBoolean)
+      {
+        int i = aEi();
+        ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(hDT) });
+        if (hDT < i)
         {
-          localStringBuilder.append("\n");
-          str1 = localStringBuilder.toString();
-          AppMethodBeat.o(132511);
-          return str1;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,[mm] pid:%s,normal execute:%s", new Object[] { a.mp(this.hcz), a.mp(this.startTime), a.mp(this.endTime), Integer.valueOf(this.pid), Boolean.valueOf(this.hcA) }));
-          continue;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,[push] pid:%s,network:%s,normal execute:%s", new Object[] { a.mp(this.hcz), a.mp(this.startTime), a.mp(this.endTime), Integer.valueOf(this.pid), Integer.valueOf(this.networkStatus), Boolean.valueOf(this.hcA) }));
-          continue;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,send broadcast type(push):%s", new Object[] { a.mp(this.hcz), a.mp(this.startTime), a.mp(this.endTime), Integer.valueOf(this.hcC) }));
-          continue;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,receive broadcast type(mm):%s", new Object[] { a.mp(this.hcz), a.mp(this.startTime), a.mp(this.endTime), Integer.valueOf(this.hcC) }));
+          i.cU(q.B(locale.mUri), true);
+          k(locale);
         }
       }
-      String str2 = a.mp(this.hcz);
-      String str3 = a.mp(this.startTime);
-      String str4 = a.mp(this.endTime);
-      int i = this.pid;
-      String str5 = a.mp(this.hcD);
-      long l1 = this.hcE;
-      long l2 = this.hcF;
-      if (this.ctF) {}
-      for (String str1 = "foreground";; str1 = "background")
+      else if (hDT == 1)
       {
-        localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,delayed msg pid:%s, msg server time:%s,interval time:%s, msg server id:%s, %s", new Object[] { str2, str3, str4, Integer.valueOf(i), str5, Long.valueOf(l1), Long.valueOf(l2), str1 }));
-        break;
+        ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "no need update currentVersion=%d", new Object[] { Integer.valueOf(hDT) });
+        i.cU(q.B(locale.mUri), true);
+        k(locale);
       }
+    }
+  }
+  
+  private static void k(e parame)
+  {
+    AppMethodBeat.i(104508);
+    if (!parame.exists()) {
+      parame.mkdirs();
+    }
+    e locale = new e(parame, ".nomedia");
+    if (!locale.exists()) {}
+    try
+    {
+      locale.createNewFile();
+      parame = new e(parame, "emoji_template.zip");
+      if (BX(q.B(parame.fxV())))
+      {
+        int i = i.fp(q.B(parame.fxV()), parame.getParent());
+        if (i < 0)
+        {
+          ac.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + q.B(parame.fxV()) + ", unzipPath = " + parame.getParent());
+          AppMethodBeat.o(104508);
+          return;
+        }
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+      }
+      hDT = aEh();
+      ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { parame.getParent(), Integer.valueOf(hDT) });
+      AppMethodBeat.o(104508);
+      return;
+    }
+    ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy template file from asset fail %s", new Object[] { q.B(parame.fxV()) });
+    AppMethodBeat.o(104508);
+  }
+  
+  public static void l(e parame)
+  {
+    AppMethodBeat.i(104509);
+    e locale1 = new e(aEf());
+    i.cU(q.B(locale1.mUri), true);
+    locale1.mkdirs();
+    e locale2 = new e(locale1, ".nomedia");
+    if (!locale2.exists()) {}
+    try
+    {
+      locale2.createNewFile();
+      locale1 = new e(locale1, "emoji_template.zip");
+      i.lZ(q.B(parame.mUri), q.B(locale1.mUri));
+      int i = bs.lq(q.B(locale1.mUri), locale1.getParent());
+      if (i < 0)
+      {
+        ac.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + q.B(locale1.fxV()) + ", unzipPath = " + locale1.getParent());
+        AppMethodBeat.o(104509);
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+      }
+      hDT = aEh();
+      ac.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { locale1.getParent(), Integer.valueOf(hDT) });
+      AppMethodBeat.o(104509);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aq.a
  * JD-Core Version:    0.7.0.1
  */

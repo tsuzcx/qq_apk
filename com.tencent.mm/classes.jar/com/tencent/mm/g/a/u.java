@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.a;
-import com.tencent.mm.aj.b;
-import com.tencent.mm.aj.d;
+import com.tencent.mm.sdk.b.b;
 
 public final class u
+  extends b
 {
-  public Runnable callback;
-  public a dbH;
-  public b dbI;
+  public a cZe;
   
   public u()
   {
@@ -18,35 +15,22 @@ public final class u
   
   private u(byte paramByte)
   {
-    AppMethodBeat.i(136972);
+    AppMethodBeat.i(149848);
+    this.cZe = new a();
+    this.Gqe = false;
     this.callback = null;
-    this.dbH = new a();
-    this.dbI = new b();
-    this.callback = null;
-    AppMethodBeat.o(136972);
+    AppMethodBeat.o(149848);
   }
   
   public static final class a
   {
-    public int action;
-    public String appId;
-    public String cTr;
-    public int dbJ;
-    public b dbK;
-    public a dbL;
-    public String processName;
-  }
-  
-  public static final class b
-  {
-    public int count;
-    public d dbM;
-    public boolean result;
+    public boolean cZf = false;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.u
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.c;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -13,10 +13,10 @@ import java.util.List;
 public class MRecyclerView
   extends RecyclerView
 {
-  private View DR;
-  protected a mmF;
-  private a mmG;
-  private b mmH;
+  private View EP;
+  protected a mOG;
+  private a mOH;
+  private b mOI;
   
   public MRecyclerView(Context paramContext)
   {
@@ -45,12 +45,12 @@ public class MRecyclerView
   private void init()
   {
     AppMethodBeat.i(131573);
-    this.mmF = new a();
-    if (buJ()) {
-      this.mmF.av(true);
+    this.mOG = new a();
+    if (bBG()) {
+      this.mOG.av(true);
     }
-    super.setAdapter(this.mmF);
-    this.mmF.a(new RecyclerView.c()
+    super.setAdapter(this.mOG);
+    this.mOG.a(new RecyclerView.c()
     {
       public final void onChanged()
       {
@@ -59,7 +59,7 @@ public class MRecyclerView
         if (MRecyclerView.a(MRecyclerView.this) != null)
         {
           localView = MRecyclerView.a(MRecyclerView.this);
-          if (!MRecyclerView.this.buI()) {
+          if (!MRecyclerView.this.bBF()) {
             break label46;
           }
         }
@@ -75,27 +75,27 @@ public class MRecyclerView
     AppMethodBeat.o(131573);
   }
   
-  public final int S(RecyclerView.v paramv)
+  public final int S(RecyclerView.w paramw)
   {
     AppMethodBeat.i(131574);
-    if (this.mmF == null)
+    if (this.mOG == null)
     {
       AppMethodBeat.o(131574);
       return -1;
     }
-    a locala = this.mmF;
-    if (paramv == null)
+    a locala = this.mOG;
+    if (paramw == null)
     {
       AppMethodBeat.o(131574);
       return -1;
     }
-    if (paramv.ln() == -1)
+    if (paramw.lv() == -1)
     {
       AppMethodBeat.o(131574);
       return -1;
     }
-    int j = paramv.ln();
-    if (locala.mmt.isEmpty()) {}
+    int j = paramw.lv();
+    if (locala.mOu.isEmpty()) {}
     for (int i = 0;; i = 1)
     {
       AppMethodBeat.o(131574);
@@ -106,23 +106,23 @@ public class MRecyclerView
   public void addFooterView(View paramView)
   {
     AppMethodBeat.i(131578);
-    this.mmF.addFooterView(paramView);
+    this.mOG.addFooterView(paramView);
     AppMethodBeat.o(131578);
   }
   
   public final void addHeaderView(View paramView)
   {
     AppMethodBeat.i(131577);
-    a locala = this.mmF;
-    locala.mmt.add(paramView);
+    a locala = this.mOG;
+    locala.mOu.add(paramView);
     locala.ao(0, 1);
     AppMethodBeat.o(131577);
   }
   
-  protected boolean buI()
+  protected boolean bBF()
   {
     AppMethodBeat.i(131584);
-    if (this.mmF.getItemCount() == 0)
+    if (this.mOG.getItemCount() == 0)
     {
       AppMethodBeat.o(131584);
       return true;
@@ -131,7 +131,7 @@ public class MRecyclerView
     return false;
   }
   
-  protected boolean buJ()
+  protected boolean bBG()
   {
     return true;
   }
@@ -139,7 +139,7 @@ public class MRecyclerView
   public final void c(int paramInt, View paramView)
   {
     AppMethodBeat.i(131579);
-    this.mmF.c(paramInt, paramView);
+    this.mOG.c(paramInt, paramView);
     AppMethodBeat.o(131579);
   }
   
@@ -150,38 +150,38 @@ public class MRecyclerView
     AppMethodBeat.o(131576);
   }
   
-  public final void dq(View paramView)
+  public final void ds(View paramView)
   {
     AppMethodBeat.i(131580);
-    this.mmF.dq(paramView);
+    this.mOG.ds(paramView);
     AppMethodBeat.o(131580);
   }
   
   public RecyclerView.a getAdapter()
   {
-    return this.mmF;
+    return this.mOG;
   }
   
   public View getEmptyView()
   {
-    return this.DR;
+    return this.EP;
   }
   
   public void setAdapter(RecyclerView.a parama)
   {
     AppMethodBeat.i(131575);
-    a locala = this.mmF;
-    if (locala.aaj != null)
+    a locala = this.mOG;
+    if (locala.abe != null)
     {
-      if (!locala.aaj.equals(parama)) {
-        locala.aaj.b(locala.mmx);
+      if (!locala.abe.equals(parama)) {
+        locala.abe.b(locala.mOy);
       }
     }
     else
     {
-      locala.aaj = parama;
-      if (locala.aaj != null) {
-        locala.aaj.a(locala.mmx);
+      locala.abe = parama;
+      if (locala.abe != null) {
+        locala.abe.a(locala.mOy);
       }
     }
     AppMethodBeat.o(131575);
@@ -190,16 +190,16 @@ public class MRecyclerView
   public void setEmptyView(View paramView)
   {
     AppMethodBeat.i(131581);
-    if (this.DR == paramView)
+    if (this.EP == paramView)
     {
       AppMethodBeat.o(131581);
       return;
     }
-    this.DR = paramView;
-    if (this.DR != null)
+    this.EP = paramView;
+    if (this.EP != null)
     {
-      paramView = this.DR;
-      if (!buI()) {
+      paramView = this.EP;
+      if (!bBF()) {
         break label56;
       }
     }
@@ -215,14 +215,14 @@ public class MRecyclerView
   public void setOnItemClickListener(a parama)
   {
     AppMethodBeat.i(131582);
-    this.mmG = parama;
-    this.mmF.mmv = new b()
+    this.mOH = parama;
+    this.mOG.mOw = new b()
     {
-      public final void Q(View paramAnonymousView, int paramAnonymousInt)
+      public final void R(View paramAnonymousView, int paramAnonymousInt)
       {
         AppMethodBeat.i(131568);
         if (MRecyclerView.b(MRecyclerView.this) != null) {
-          MRecyclerView.b(MRecyclerView.this).S(paramAnonymousView, paramAnonymousInt);
+          MRecyclerView.b(MRecyclerView.this).T(paramAnonymousView, paramAnonymousInt);
         }
         AppMethodBeat.o(131568);
       }
@@ -233,15 +233,15 @@ public class MRecyclerView
   public void setOnItemLongClickListener(b paramb)
   {
     AppMethodBeat.i(131583);
-    this.mmH = paramb;
-    this.mmF.mmw = new c()
+    this.mOI = paramb;
+    this.mOG.mOx = new c()
     {
-      public final boolean R(View paramAnonymousView, int paramAnonymousInt)
+      public final boolean S(View paramAnonymousView, int paramAnonymousInt)
       {
         AppMethodBeat.i(131569);
         if (MRecyclerView.c(MRecyclerView.this) != null)
         {
-          boolean bool = MRecyclerView.c(MRecyclerView.this).T(paramAnonymousView, paramAnonymousInt);
+          boolean bool = MRecyclerView.c(MRecyclerView.this).U(paramAnonymousView, paramAnonymousInt);
           AppMethodBeat.o(131569);
           return bool;
         }
@@ -254,12 +254,12 @@ public class MRecyclerView
   
   public static abstract interface a
   {
-    public abstract void S(View paramView, int paramInt);
+    public abstract void T(View paramView, int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract boolean T(View paramView, int paramInt);
+    public abstract boolean U(View paramView, int paramInt);
   }
 }
 

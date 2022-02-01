@@ -434,9 +434,6 @@ public class TXCAudioEngImplBase
   {
     AppMethodBeat.i(16363);
     this.mDeviceIsPlaying = false;
-    if (!TXCJitter.nativeIsTracksEmpty()) {
-      TXCJitter.nativeStopAllTracks();
-    }
     synchronized (this.mLockObj)
     {
       this.mJitterMap.clear();

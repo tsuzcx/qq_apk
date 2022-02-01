@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.TYPE})
 public @interface a
 {
-  Class<? extends ab> eYT() default a.class;
+  Class<? extends ab> foJ() default a.class;
   
   public static class a
     implements ab

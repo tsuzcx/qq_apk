@@ -7,18 +7,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ac
   extends e
 {
-  private final WifiManager bVj;
+  private final WifiManager bSR;
   
   ac(WifiManager paramWifiManager, Handler paramHandler)
   {
     super(paramHandler);
-    this.bVj = paramWifiManager;
+    this.bSR = paramWifiManager;
   }
   
-  final void yV()
+  final void yI()
   {
     AppMethodBeat.i(87960);
-    this.bVj.startScan();
+    this.bSR.startScan();
     AppMethodBeat.o(87960);
   }
 }

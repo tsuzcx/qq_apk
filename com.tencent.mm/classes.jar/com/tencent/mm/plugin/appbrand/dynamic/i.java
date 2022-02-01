@@ -8,52 +8,52 @@ import java.util.Map;
 
 public final class i
 {
-  private static final i jkK;
-  private Map<String, String> jkJ;
+  private static final i jKX;
+  private Map<String, String> jKW;
   
   static
   {
     AppMethodBeat.i(121183);
-    jkK = new i();
+    jKX = new i();
     AppMethodBeat.o(121183);
   }
   
   public i()
   {
     AppMethodBeat.i(121178);
-    this.jkJ = new HashMap();
+    this.jKW = new HashMap();
     AppMethodBeat.o(121178);
   }
   
-  public static i aVi()
+  public static i bcg()
   {
-    return jkK;
+    return jKX;
   }
   
-  public final String GW(String paramString)
+  public final String La(String paramString)
   {
     AppMethodBeat.i(121180);
-    paramString = (String)this.jkJ.get(paramString);
+    paramString = (String)this.jKW.get(paramString);
     AppMethodBeat.o(121180);
     return paramString;
   }
   
-  public final void GX(String paramString)
+  public final void Lb(String paramString)
   {
     AppMethodBeat.i(121181);
-    this.jkJ.remove(paramString);
+    this.jKW.remove(paramString);
     AppMethodBeat.o(121181);
   }
   
-  public final Collection<String> aVj()
+  public final Collection<String> bch()
   {
     AppMethodBeat.i(121182);
-    Collection localCollection = this.jkJ.values();
+    Collection localCollection = this.jKW.values();
     AppMethodBeat.o(121182);
     return localCollection;
   }
   
-  public final void cw(String paramString1, String paramString2)
+  public final void cG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121179);
     if (TextUtils.isEmpty(paramString2))
@@ -61,13 +61,13 @@ public final class i
       AppMethodBeat.o(121179);
       return;
     }
-    this.jkJ.put(paramString1, paramString2);
+    this.jKW.put(paramString1, paramString2);
     AppMethodBeat.o(121179);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.i
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract Map<String, Integer> fnL();
+  public abstract Map<String, Integer> fEb();
   
-  public abstract Map<String, List<Pair<String, Integer>>> fnM();
+  public abstract Map<String, List<Pair<String, Integer>>> fEc();
 }
 
 

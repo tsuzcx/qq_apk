@@ -14,11 +14,11 @@ final class FindMContactAddUI$11
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(131185);
-    paramView = FindMContactAddUI.j(this.imm);
-    paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
+    paramView = FindMContactAddUI.j(this.iMs);
+    paramView = new com.tencent.mm.hellhoundlib.b.a().ba(paramView);
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.adn(), "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    BackwardSupportUtil.c.b((ListView)paramView.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.aeD(), "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.c.b((ListView)paramView.lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/friend/ui/FindMContactAddUI$7", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
     AppMethodBeat.o(131185);
   }

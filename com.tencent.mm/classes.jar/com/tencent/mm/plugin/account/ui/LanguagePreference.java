@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class LanguagePreference
   extends Preference
 {
-  public a iqW;
+  public a iRd;
   
   public LanguagePreference(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class LanguagePreference
   public final void a(a parama)
   {
     AppMethodBeat.i(128056);
-    if ((parama == null) || (bt.isNullOrNil(parama.iqZ)))
+    if ((parama == null) || (bs.isNullOrNil(parama.iRg)))
     {
-      ad.e("MicroMsg.LanguagePreference", "setInfo info error");
+      ac.e("MicroMsg.LanguagePreference", "setInfo info error");
       AppMethodBeat.o(128056);
       return;
     }
-    this.iqW = parama;
-    setKey(parama.iqZ);
+    this.iRd = parama;
+    setKey(parama.iRg);
     AppMethodBeat.o(128056);
   }
   
@@ -65,8 +65,8 @@ public class LanguagePreference
       label44:
       if ((j & i) != 0)
       {
-        localTextView.setText(this.iqW.iqX);
-        if (!this.iqW.ira) {
+        localTextView.setText(this.iRd.iRe);
+        if (!this.iRd.isSelected) {
           break label101;
         }
       }
@@ -76,7 +76,7 @@ public class LanguagePreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      Yb(8);
+      aam(8);
       AppMethodBeat.o(128058);
       return;
       i = 0;
@@ -100,23 +100,23 @@ public class LanguagePreference
   
   public static final class a
   {
-    String iqX;
-    private String iqY;
-    public String iqZ;
-    public boolean ira;
+    String iRe;
+    private String iRf;
+    public String iRg;
+    public boolean isSelected;
     
     public a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
     {
-      this.iqX = paramString1;
-      this.iqY = paramString2;
-      this.iqZ = paramString3;
-      this.ira = paramBoolean;
+      this.iRe = paramString1;
+      this.iRf = paramString2;
+      this.iRg = paramString3;
+      this.isSelected = paramBoolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LanguagePreference
  * JD-Core Version:    0.7.0.1
  */

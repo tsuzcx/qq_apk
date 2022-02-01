@@ -14,10 +14,10 @@ final class p$1
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(114621);
-    if ((g.afw()) && (g.afz().gcn))
+    if ((g.agM()) && (g.agP().ggT))
     {
-      g.afz();
-      a.aeC();
+      g.agP();
+      a.afS();
     }
     AppMethodBeat.o(114621);
   }
@@ -25,11 +25,11 @@ final class p$1
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(114620);
-    if ((g.afw()) && (g.afz().gcn))
+    if ((g.agM()) && (g.agP().ggT))
     {
-      g.afz();
-      if (!a.aeC()) {
-        b.SX().v(new p.1.1(this));
+      g.agP();
+      if (!a.afS()) {
+        b.TR().w(new p.1.1(this));
       }
     }
     AppMethodBeat.o(114620);
@@ -37,7 +37,7 @@ final class p$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.p.1
  * JD-Core Version:    0.7.0.1
  */

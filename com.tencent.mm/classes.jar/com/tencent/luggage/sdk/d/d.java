@@ -14,41 +14,41 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/runtime/RuntimePkgReaderFactoryInterceptorImpl;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgReaderInternalImplFactory$FactoryInterceptor;", "()V", "forceNewReader", "", "getForceNewReader", "()Z", "setForceNewReader", "(Z)V", "forceNewReaderForGame", "getForceNewReaderForGame", "setForceNewReaderForGame", "createInternalReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "wrapper", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgRuntimeReader;", "isGame", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/runtime/RuntimePkgReaderFactoryInterceptorImpl;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgReaderInternalImplFactory$FactoryInterceptor;", "()V", "forceNewReader", "", "getForceNewReader", "()Z", "setForceNewReader", "(Z)V", "forceNewReaderForGame", "getForceNewReaderForGame", "setForceNewReaderForGame", "createInternalReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "wrapper", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgRuntimeReader;", "isGame", "luggage-wechat-full-sdk_release"})
 public final class d
   implements bm.a
 {
-  private static volatile boolean cig;
-  private static volatile boolean cih;
-  public static final d cii;
+  private static volatile boolean cfb;
+  private static volatile boolean cfc;
+  public static final d cfd;
   
   static
   {
     AppMethodBeat.i(183002);
-    cii = new d();
+    cfd = new d();
     AppMethodBeat.o(183002);
   }
   
-  public static void bA(boolean paramBoolean)
+  public static void by(boolean paramBoolean)
   {
-    cih = paramBoolean;
+    cfb = paramBoolean;
   }
   
   public static void bz(boolean paramBoolean)
   {
-    cig = paramBoolean;
+    cfc = paramBoolean;
   }
   
   private static boolean isGame(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(183001);
-    AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.Eg();
+    AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.DJ();
     paramAppBrandRuntime = localAppBrandInitConfig;
     if (!(localAppBrandInitConfig instanceof AppBrandInitConfigLU)) {
       paramAppBrandRuntime = null;
     }
     paramAppBrandRuntime = (AppBrandInitConfigLU)paramAppBrandRuntime;
-    if ((paramAppBrandRuntime != null) && (paramAppBrandRuntime.cfd == 4))
+    if ((paramAppBrandRuntime != null) && (paramAppBrandRuntime.cca == 4))
     {
       AppMethodBeat.o(183001);
       return true;
@@ -65,18 +65,18 @@ public final class d
     Object localObject = (AppBrandSysConfigLU)paramAppBrandRuntime.c(AppBrandSysConfigLU.class, false);
     if (localObject != null)
     {
-      localObject = ((AppBrandSysConfigLU)localObject).jdS;
+      localObject = ((AppBrandSysConfigLU)localObject).jEg;
       if (localObject != null)
       {
-        localObject = ((WxaPkgWrappingInfo)localObject).iOV;
+        localObject = ((WxaPkgWrappingInfo)localObject).jpf;
         if ((localObject != null) && (!((WxaRuntimeModulePluginListMap)localObject).isEmpty()))
         {
           paramAppBrandRuntime = new bl(paramAppBrandRuntime);
           if (paramAppBrandRuntime == null) {
             break label149;
           }
-          parambe.Ej("__plugin__/");
-          parambe.Ej("__extended__/");
+          parambe.Im("__plugin__/");
+          parambe.Im("__extended__/");
         }
       }
     }
@@ -85,12 +85,12 @@ public final class d
       paramAppBrandRuntime = (q)paramAppBrandRuntime;
       AppMethodBeat.o(183000);
       return paramAppBrandRuntime;
-      if ((cig) && (!isGame(paramAppBrandRuntime)))
+      if ((cfb) && (!isGame(paramAppBrandRuntime)))
       {
         paramAppBrandRuntime = new bl(paramAppBrandRuntime);
         break;
       }
-      if ((cih) && (isGame(paramAppBrandRuntime)))
+      if ((cfc) && (isGame(paramAppBrandRuntime)))
       {
         paramAppBrandRuntime = new bl(paramAppBrandRuntime);
         break;
@@ -104,7 +104,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.d.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ public abstract interface a
     static
     {
       AppMethodBeat.i(153082);
-      ogO = new a("OK", 0);
-      ogP = new a("FAIL", 1);
-      ogQ = new a("WAIT_FOR_WIFI", 2);
-      ogR = new a("CANCEL", 3);
-      ogS = new a[] { ogO, ogP, ogQ, ogR };
+      oKo = new a("OK", 0);
+      oKp = new a("FAIL", 1);
+      oKq = new a("WAIT_FOR_WIFI", 2);
+      oKr = new a("CANCEL", 3);
+      oKs = new a[] { oKo, oKp, oKq, oKr };
       AppMethodBeat.o(153082);
     }
     
@@ -27,7 +27,7 @@ public abstract interface a
   
   public static abstract interface c
   {
-    public abstract void aYa();
+    public abstract void beX();
   }
 }
 

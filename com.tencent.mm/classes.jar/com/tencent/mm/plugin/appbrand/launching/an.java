@@ -12,46 +12,46 @@ import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.bh.a;
 import com.tencent.mm.plugin.appbrand.appcache.bp;
 import com.tencent.mm.plugin.appbrand.appcache.s;
-import com.tencent.mm.protocal.protobuf.ckp;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cpw;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Locale;
 
 public final class an
   extends am
 {
-  int deB;
-  int dkC;
-  ckp kII;
-  int kIK;
-  String kIL;
-  ab kKV;
-  int kKX;
-  String kKY;
-  String kKZ;
-  String kLa;
+  int dbX;
+  int dib;
+  cpw lke;
+  int lkg;
+  String lkh;
+  ab lmr;
+  int lmt;
+  String lmu;
+  String lmv;
+  String lmw;
   
   an(u paramu)
   {
-    super(new ab(paramu.kII.dlB, paramu.kII.DyR, paramu.kII.DyU));
+    super(new ab(paramu.lke.djj, paramu.lke.EUn, paramu.lke.EUq));
     AppMethodBeat.i(174976);
-    this.kII = paramu.kII;
-    this.kIK = paramu.kIK;
-    this.deB = this.kII.CLK;
-    this.kKX = paramu.kIJ;
-    this.kKY = paramu.md5;
-    this.kIL = paramu.kIL;
-    this.kKZ = paramu.kIN;
-    this.kLa = paramu.kIM;
-    this.kKV = new ab(paramu.kII.dlB, paramu.kII.DyR, paramu.kII.DyU);
+    this.lke = paramu.lke;
+    this.lkg = paramu.lkg;
+    this.dbX = this.lke.Een;
+    this.lmt = paramu.lkf;
+    this.lmu = paramu.md5;
+    this.lkh = paramu.lkh;
+    this.lmv = paramu.lkj;
+    this.lmw = paramu.lki;
+    this.lmr = new ab(paramu.lke.djj, paramu.lke.EUn, paramu.lke.EUq);
     AppMethodBeat.o(174976);
   }
   
-  public final String aMu()
+  public final String aTk()
   {
     AppMethodBeat.i(174978);
-    String str = String.format(Locale.US, "pkgQueryKey %s, targetVersion %d, codeType %d, pkgType %d", new Object[] { this.kKV.toString(), Integer.valueOf(this.kIK), Integer.valueOf(this.deB), Integer.valueOf(this.dkC) });
+    String str = String.format(Locale.US, "pkgQueryKey %s, targetVersion %d, codeType %d, pkgType %d", new Object[] { this.lmr.toString(), Integer.valueOf(this.lkg), Integer.valueOf(this.dbX), Integer.valueOf(this.dib) });
     AppMethodBeat.o(174978);
     return str;
   }
@@ -59,52 +59,52 @@ public final class an
   public final void prepare()
   {
     AppMethodBeat.i(174977);
-    Object localObject = this.kKY;
-    final String str1 = this.kIL;
-    String str2 = this.kKZ;
-    String str3 = this.kLa;
-    localObject = new a(this.deB, str1)
+    Object localObject = this.lmu;
+    final String str1 = this.lkh;
+    String str2 = this.lmv;
+    String str3 = this.lmw;
+    localObject = new a(this.dbX, str1)
     {
-      private void Kk(String paramAnonymousString)
+      private void Or(String paramAnonymousString)
       {
         AppMethodBeat.i(174973);
-        long l = bt.GC();
-        duo localduo = new duo();
-        localduo.EIX = str1;
-        localduo.CHC = an.this.kIK;
-        localduo.EIW = this.kLc;
-        j.aOK().a(an.this.kKV.toString(), localduo, 0);
-        ad.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "downloadPkg, %s flush release url key[%s] cost[%d]", new Object[] { paramAnonymousString, an.this.kKV.toString(), Long.valueOf(bt.aS(l)) });
+        long l = bs.Gn();
+        eaf localeaf = new eaf();
+        localeaf.Ggj = str1;
+        localeaf.Eae = an.this.lkg;
+        localeaf.Ggi = this.lmy;
+        j.aVC().a(an.this.lmr.toString(), localeaf, 0);
+        ac.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "downloadPkg, %s flush release url key[%s] cost[%d]", new Object[] { paramAnonymousString, an.this.lmr.toString(), Long.valueOf(bs.aO(l)) });
         AppMethodBeat.o(174973);
       }
       
-      public final void aQB()
+      public final void aXt()
       {
         AppMethodBeat.i(174974);
-        Kk("onPkgIncrementalUpdateFailed");
+        Or("onPkgIncrementalUpdateFailed");
         AppMethodBeat.o(174974);
       }
       
-      public final void aQC()
+      public final void aXu()
       {
         AppMethodBeat.i(174975);
-        Kk("onPkgZstdDownloadFailed");
+        Or("onPkgZstdDownloadFailed");
         AppMethodBeat.o(174975);
       }
       
-      final String bgJ()
-      {
-        AppMethodBeat.i(174970);
-        String str = an.this.aMu();
-        AppMethodBeat.o(174970);
-        return str;
-      }
-      
-      protected final void c(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
+      protected final void b(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
       {
         AppMethodBeat.i(174972);
-        an.this.d(paramAnonymousWxaPkgLoadProgress);
+        an.this.c(paramAnonymousWxaPkgLoadProgress);
         AppMethodBeat.o(174972);
+      }
+      
+      final String bnD()
+      {
+        AppMethodBeat.i(174970);
+        String str = an.this.aTk();
+        AppMethodBeat.o(174970);
+        return str;
       }
       
       final void e(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
@@ -115,29 +115,29 @@ public final class an
         AppMethodBeat.o(174971);
       }
     };
-    ad.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "%s downloadPkg, patch_url(%s), full_url(%s)", new Object[] { aMu(), str2, str1 });
+    ac.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "%s downloadPkg, patch_url(%s), full_url(%s)", new Object[] { aTk(), str2, str1 });
     boolean bool;
-    if (!bt.isNullOrNil(str2))
+    if (!bs.isNullOrNil(str2))
     {
-      bool = s.a(this.kKV.toString(), this.kKX, this.kIK, str2, (bh.a)localObject);
-      bgL();
+      bool = s.a(this.lmr.toString(), this.lmt, this.lkg, str2, (bh.a)localObject);
+      bnF();
     }
     for (;;)
     {
       if (!bool) {
-        ad.e("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "%s start downloadPkg failed", new Object[] { aMu() });
+        ac.e("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "%s start downloadPkg failed", new Object[] { aTk() });
       }
       AppMethodBeat.o(174977);
       return;
-      if (!bt.isNullOrNil(str3))
+      if (!bs.isNullOrNil(str3))
       {
-        bool = bp.a(str3, this.kKV.toString(), this.kIK, this.deB, (bh.a)localObject);
-        bgM();
+        bool = bp.a(str3, this.lmr.toString(), this.lkg, this.dbX, (bh.a)localObject);
+        bnG();
       }
       else
       {
-        bool = bh.b(this.kKV.toString(), this.deB, this.kIK, str1, (bh.a)localObject);
-        bgM();
+        bool = bh.b(this.lmr.toString(), this.dbX, this.lkg, str1, (bh.a)localObject);
+        bnG();
       }
     }
   }
@@ -154,7 +154,7 @@ public final class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.an
  * JD-Core Version:    0.7.0.1
  */

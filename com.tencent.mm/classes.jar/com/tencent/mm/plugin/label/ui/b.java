@@ -12,24 +12,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMTextView;
 import java.util.ArrayList;
 
 public final class b
   extends BaseAdapter
 {
-  String iil;
+  String iIt;
   private Context mContext;
-  ArrayList<String> sNa;
-  SparseArray<SpannableString> sNb;
+  ArrayList<String> tUF;
+  SparseArray<SpannableString> tUG;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(26275);
-    this.sNa = new ArrayList();
-    this.sNb = new SparseArray();
+    this.tUF = new ArrayList();
+    this.tUG = new SparseArray();
     this.mContext = paramContext;
     AppMethodBeat.o(26275);
   }
@@ -37,12 +37,12 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(26276);
-    if (this.sNa == null)
+    if (this.tUF == null)
     {
       AppMethodBeat.o(26276);
       return 0;
     }
-    int i = this.sNa.size();
+    int i = this.tUF.size();
     AppMethodBeat.o(26276);
     return i;
   }
@@ -50,12 +50,12 @@ public final class b
   public final String getItem(int paramInt)
   {
     AppMethodBeat.i(26277);
-    if ((this.sNa == null) || (paramInt >= getCount()))
+    if ((this.tUF == null) || (paramInt >= getCount()))
     {
       AppMethodBeat.o(26277);
       return null;
     }
-    String str = (String)this.sNa.get(paramInt);
+    String str = (String)this.tUF.get(paramInt);
     AppMethodBeat.o(26277);
     return str;
   }
@@ -76,11 +76,11 @@ public final class b
       paramView = LayoutInflater.from(this.mContext).inflate(2131493646, paramViewGroup, false);
       paramViewGroup = new c(paramView);
       paramView.setTag(paramViewGroup);
-      localMMTextView = paramViewGroup.sNB;
-      str = bt.by(getItem(paramInt), "");
-      i = (int)paramViewGroup.sNB.getTextSize();
+      localMMTextView = paramViewGroup.tVg;
+      str = bs.bG(getItem(paramInt), "");
+      i = (int)paramViewGroup.tVg.getTextSize();
       paramInt = str.hashCode();
-      paramViewGroup = (SpannableString)this.sNb.get(paramInt);
+      paramViewGroup = (SpannableString)this.tUG.get(paramInt);
       if (paramViewGroup == null) {
         break label121;
       }
@@ -94,24 +94,24 @@ public final class b
       break;
       label121:
       paramViewGroup = new SpannableString(k.b(this.mContext, str, i));
-      i = str.indexOf(this.iil);
+      i = str.indexOf(this.iIt);
       if (i == -1)
       {
-        ad.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
+        ac.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
       }
       else
       {
-        int j = this.iil.length() + i;
+        int j = this.iIt.length() + i;
         paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131101171)), i, j, 33);
         paramViewGroup.setSpan(new StyleSpan(1), i, j, 33);
-        this.sNb.put(paramInt, paramViewGroup);
+        this.tUG.put(paramInt, paramViewGroup);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.b
  * JD-Core Version:    0.7.0.1
  */

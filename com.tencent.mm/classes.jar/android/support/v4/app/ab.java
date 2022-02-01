@@ -10,26 +10,26 @@ import java.util.Iterator;
 public final class ab
   implements Iterable<Intent>
 {
-  public final ArrayList<Intent> FQ = new ArrayList();
-  public final Context FR;
+  public final ArrayList<Intent> GO = new ArrayList();
+  public final Context GP;
   
   private ab(Context paramContext)
   {
-    this.FR = paramContext;
+    this.GP = paramContext;
   }
   
-  public static ab O(Context paramContext)
+  public static ab P(Context paramContext)
   {
     return new ab(paramContext);
   }
   
   public final ab a(ComponentName paramComponentName)
   {
-    int i = this.FQ.size();
+    int i = this.GO.size();
     try
     {
-      for (paramComponentName = q.a(this.FR, paramComponentName); paramComponentName != null; paramComponentName = q.a(this.FR, paramComponentName.getComponent())) {
-        this.FQ.add(i, paramComponentName);
+      for (paramComponentName = q.a(this.GP, paramComponentName); paramComponentName != null; paramComponentName = q.a(this.GP, paramComponentName.getComponent())) {
+        this.GO.add(i, paramComponentName);
       }
       return this;
     }
@@ -42,7 +42,7 @@ public final class ab
   @Deprecated
   public final Iterator<Intent> iterator()
   {
-    return this.FQ.iterator();
+    return this.GO.iterator();
   }
   
   public static abstract interface a

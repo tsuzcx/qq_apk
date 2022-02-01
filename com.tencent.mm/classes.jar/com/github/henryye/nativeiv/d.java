@@ -9,26 +9,26 @@ import java.util.concurrent.TimeUnit;
 
  enum d
 {
-  private static int aPx;
-  ExecutorService aPy;
-  ExecutorService aPz;
+  private static int aQn;
+  ExecutorService aQo;
+  ExecutorService aQp;
   
   static
   {
     AppMethodBeat.i(127348);
-    aPw = new d("INSTANCE");
-    aPA = new d[] { aPw };
-    aPx = Runtime.getRuntime().availableProcessors() + 1;
+    aQm = new d("INSTANCE");
+    aQq = new d[] { aQm };
+    aQn = Runtime.getRuntime().availableProcessors() + 1;
     AppMethodBeat.o(127348);
   }
   
   private d()
   {
     AppMethodBeat.i(127347);
-    this.aPy = null;
-    this.aPz = null;
-    int i = Math.max(aPx, 5);
-    this.aPy = new ThreadPoolExecutor(1, Math.max(i / 2, 4), 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
+    this.aQo = null;
+    this.aQp = null;
+    int i = Math.max(aQn, 5);
+    this.aQo = new ThreadPoolExecutor(1, Math.max(i / 2, 4), 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
         return paramAnonymousRunnable;
       }
     });
-    this.aPz = new ThreadPoolExecutor(i - 1, i, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
+    this.aQp = new ThreadPoolExecutor(i - 1, i, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -53,7 +53,7 @@ import java.util.concurrent.TimeUnit;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.github.henryye.nativeiv.d
  * JD-Core Version:    0.7.0.1
  */

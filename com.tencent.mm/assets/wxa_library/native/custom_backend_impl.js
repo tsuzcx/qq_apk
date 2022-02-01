@@ -571,6 +571,8 @@ var PROGRESS_ACTIVE_COLOR = '#09BB07'
 
 // 注意: 如果属性包含下划线，请改成驼峰式注册，如小程序官方文档定义了属性：a_b，注册时应该注册 aB
 var elements = [
+    {is: 'wx-listview', properties:{value:{type:Array,value:[],public:true}, switch:{type:String, public:true}}},
+    {is: 'wx-listcell', properties:{case:{type:String, public:true}}},
     {is: 'wx-audio', properties:{action:{type:Object,public:true},name:{type:String,value:'未知歌曲',public:true},
         author:{type:String,value:'未知作者',public:true},loop:{type:Boolean,value:false,public:true},hidden: {type:Boolean,public:true},
         controls:{type:Boolean,value:false,public:true},_srcTimer:{type:Number},_actionTimer:{type:Number},_canSrc:{type:Boolean,value:true},

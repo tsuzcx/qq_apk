@@ -11,13 +11,13 @@ final class FTSMainUI$8
   public final void run()
   {
     AppMethodBeat.i(111971);
-    d.axT().a(this.ruJ, true);
+    d.aEL().a(this.sDB, true);
     AppMethodBeat.o(111971);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSMainUI.8
  * JD-Core Version:    0.7.0.1
  */

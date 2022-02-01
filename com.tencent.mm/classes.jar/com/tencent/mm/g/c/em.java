@@ -8,19 +8,13 @@ public abstract class em
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSI = "hit".hashCode();
-  private static final int eSJ = "hitTimeMS".hashCode();
-  private static final int elJ = "appId".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
-  private boolean __hadSettype = true;
-  private boolean eSG = true;
-  private boolean eSH = true;
-  private boolean els = true;
-  public String field_appId;
-  public int field_hit;
-  public long field_hitTimeMS;
-  public int field_type;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  public String field_key;
+  public byte[] field_value;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,23 +29,20 @@ public abstract class em
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
-        break label60;
+      if (key_HASHCODE != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eSI == k) {
-        this.field_hit = paramCursor.getInt(i);
-      } else if (eSJ == k) {
-        this.field_hitTimeMS = paramCursor.getLong(i);
+      label65:
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,17 +52,11 @@ public abstract class em
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.eSG) {
-      localContentValues.put("hit", Integer.valueOf(this.field_hit));
-    }
-    if (this.eSH) {
-      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

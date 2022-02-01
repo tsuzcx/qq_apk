@@ -3,49 +3,50 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bks
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Desc;
-  public String sbA;
+  public double hRA;
+  public int major;
+  public int minor;
+  public String uuid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104815);
+    AppMethodBeat.i(82426);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.sbA != null) {
-        paramVarArgs.d(1, this.sbA);
+      if (this.uuid != null) {
+        paramVarArgs.d(1, this.uuid);
       }
-      if (this.Desc != null) {
-        paramVarArgs.d(2, this.Desc);
-      }
-      AppMethodBeat.o(104815);
+      paramVarArgs.aR(2, this.major);
+      paramVarArgs.aR(3, this.minor);
+      paramVarArgs.e(4, this.hRA);
+      AppMethodBeat.o(82426);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sbA == null) {
-        break label274;
+      if (this.uuid == null) {
+        break label353;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.sbA) + 0;; paramInt = 0)
+    label353:
+    for (paramInt = f.a.a.b.b.a.e(1, this.uuid) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.Desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Desc);
-      }
-      AppMethodBeat.o(104815);
-      return i;
+      int i = f.a.a.b.b.a.bx(2, this.major);
+      int j = f.a.a.b.b.a.bx(3, this.minor);
+      int k = f.a.a.b.b.a.fK(4);
+      AppMethodBeat.o(82426);
+      return paramInt + i + j + (k + 8);
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(104815);
+        AppMethodBeat.o(82426);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +56,26 @@ public final class bks
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(104815);
+          AppMethodBeat.o(82426);
           return -1;
         case 1: 
-          localbks.sbA = locala.KhF.readString();
-          AppMethodBeat.o(104815);
+          localbks.uuid = locala.LVo.readString();
+          AppMethodBeat.o(82426);
+          return 0;
+        case 2: 
+          localbks.major = locala.LVo.xF();
+          AppMethodBeat.o(82426);
+          return 0;
+        case 3: 
+          localbks.minor = locala.LVo.xF();
+          AppMethodBeat.o(82426);
           return 0;
         }
-        localbks.Desc = locala.KhF.readString();
-        AppMethodBeat.o(104815);
+        localbks.hRA = Double.longBitsToDouble(locala.LVo.gab());
+        AppMethodBeat.o(82426);
         return 0;
       }
-      AppMethodBeat.o(104815);
+      AppMethodBeat.o(82426);
       return -1;
     }
   }

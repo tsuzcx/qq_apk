@@ -9,33 +9,33 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader_app.api.e;
 import com.tencent.mm.plugin.webview.luggage.RedDotView;
 import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public final class d
   extends l
 {
-  private f rPG;
-  private com.tencent.mm.plugin.game.luggage.c.a.b rPT;
-  private com.tencent.mm.plugin.game.luggage.c.b rPU;
-  private com.tencent.mm.plugin.game.luggage.c.a.c rPV;
-  private RedDotView rPW;
-  private e rPX;
+  private com.tencent.mm.plugin.game.luggage.c.a.b sXK;
+  private com.tencent.mm.plugin.game.luggage.c.b sXL;
+  private com.tencent.mm.plugin.game.luggage.c.a.c sXM;
+  private RedDotView sXN;
+  private e sXO;
+  private f sXx;
   
   public d(f paramf)
   {
     super(paramf);
     AppMethodBeat.i(180138);
-    this.rPG = paramf;
-    if (this.rPG.mParams.getBoolean("from_find_more_friend", false))
+    this.sXx = paramf;
+    if (this.sXx.mParams.getBoolean("from_find_more_friend", false))
     {
-      paramf = y.js(getContext()).inflate(2131494234, this.ATU, false);
-      this.rPW = ((RedDotView)paramf.findViewById(2131299218));
-      this.ATU.addView(paramf, 0);
-      cBD();
-      this.rPX = new e()
+      paramf = z.jD(getContext()).inflate(2131494234, this.Cmh, false);
+      this.sXN = ((RedDotView)paramf.findViewById(2131299218));
+      this.Cmh.addView(paramf, 0);
+      cOO();
+      this.sXO = new e()
       {
         public final void onChange(final boolean paramAnonymousBoolean)
         {
@@ -58,53 +58,53 @@ public final class d
           AppMethodBeat.o(180137);
         }
       };
-      ((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(this.rPX);
+      ((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(this.sXO);
     }
     AppMethodBeat.o(180138);
   }
   
-  private void cBD()
+  private void cOO()
   {
     AppMethodBeat.i(180141);
-    if (this.rPW == null)
+    if (this.sXN == null)
     {
       AppMethodBeat.o(180141);
       return;
     }
-    if (((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).bQO())
+    if (((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).bYe())
     {
-      this.rPW.setVisibility(0);
+      this.sXN.setVisibility(0);
       AppMethodBeat.o(180141);
       return;
     }
-    this.rPW.setVisibility(8);
+    this.sXN.setVisibility(8);
     AppMethodBeat.o(180141);
   }
   
   private com.tencent.mm.plugin.game.luggage.c.a.b getH5GameMenuHelp()
   {
     AppMethodBeat.i(83129);
-    if (this.rPT == null) {
-      this.rPT = new com.tencent.mm.plugin.game.luggage.c.a.b(this.rPG.mParams.getString("game_hv_menu_appid"));
+    if (this.sXK == null) {
+      this.sXK = new com.tencent.mm.plugin.game.luggage.c.a.b(this.sXx.mParams.getString("game_hv_menu_appid"));
     }
-    com.tencent.mm.plugin.game.luggage.c.a.b localb = this.rPT;
+    com.tencent.mm.plugin.game.luggage.c.a.b localb = this.sXK;
     AppMethodBeat.o(83129);
     return localb;
   }
   
-  public final void cBA()
+  public final void cOL()
   {
     AppMethodBeat.i(83130);
-    if (!(this.rPG instanceof a)) {}
+    if (!(this.sXx instanceof a)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.rPG.fF(bool);
+      this.sXx.gb(bool);
       AppMethodBeat.o(83130);
       return;
     }
   }
   
-  public final void cBB()
+  public final void cOM()
   {
     AppMethodBeat.i(83131);
     boolean bool = false;
@@ -116,7 +116,7 @@ public final class d
       public final void run()
       {
         AppMethodBeat.i(83127);
-        if (bt.isNullOrNil(d.a(d.this).mParams.getString("game_hv_menu_appid")))
+        if (bs.isNullOrNil(d.a(d.this).mParams.getString("game_hv_menu_appid")))
         {
           d.a(d.this, new com.tencent.mm.plugin.game.luggage.c.b(d.a(d.this), d.this.getMenuHelp()));
           AppMethodBeat.o(83127);
@@ -129,23 +129,23 @@ public final class d
     if (bool) {}
     for (long l = 100L;; l = 0L)
     {
-      aq.n(local1, l);
+      ap.n(local1, l);
       AppMethodBeat.o(83131);
       return;
     }
   }
   
-  public final void cBC()
+  public final void cON()
   {
     AppMethodBeat.i(83132);
-    if (this.rPU != null) {
-      this.rPU.eln();
+    if (this.sXL != null) {
+      this.sXL.eAJ();
     }
-    if (this.rPV != null)
+    if (this.sXM != null)
     {
-      com.tencent.mm.plugin.game.luggage.c.a.c localc = this.rPV;
-      if (localc.rPI != null) {
-        localc.rPI.bfo();
+      com.tencent.mm.plugin.game.luggage.c.a.c localc = this.sXM;
+      if (localc.sXz != null) {
+        localc.sXz.bmi();
       }
     }
     AppMethodBeat.o(83132);
@@ -154,10 +154,10 @@ public final class d
   public final com.tencent.mm.plugin.webview.luggage.b.n getMenuHelp()
   {
     AppMethodBeat.i(83128);
-    if (this.ATY == null) {
-      this.ATY = new com.tencent.mm.plugin.game.luggage.c.a();
+    if (this.Cml == null) {
+      this.Cml = new com.tencent.mm.plugin.game.luggage.c.a();
     }
-    com.tencent.mm.plugin.webview.luggage.b.n localn = this.ATY;
+    com.tencent.mm.plugin.webview.luggage.b.n localn = this.Cml;
     AppMethodBeat.o(83128);
     return localn;
   }
@@ -166,7 +166,7 @@ public final class d
   {
     AppMethodBeat.i(180139);
     super.onDestroy();
-    ((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).b(this.rPX);
+    ((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).b(this.sXO);
     AppMethodBeat.o(180139);
   }
   
@@ -174,8 +174,8 @@ public final class d
   {
     AppMethodBeat.i(180140);
     super.onForeground();
-    cBD();
-    if (this.rPG.mParams.getInt("share_report_from_scene", -1) >= 0) {}
+    cOO();
+    if (this.sXx.mParams.getInt("share_report_from_scene", -1) >= 0) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0) {

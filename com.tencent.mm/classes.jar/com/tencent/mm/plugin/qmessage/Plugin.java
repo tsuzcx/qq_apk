@@ -12,14 +12,14 @@ import com.tencent.mm.pluginsdk.m;
 public class Plugin
   implements d
 {
-  private c mQZ;
+  private c ntp;
   
   public Plugin()
   {
     AppMethodBeat.i(27706);
-    this.mQZ = new c()
+    this.ntp = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(27705);
         if ("widget_type_contact".equals(paramAnonymousString))
@@ -54,12 +54,12 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.mQZ;
+    return this.ntp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.Plugin
  * JD-Core Version:    0.7.0.1
  */

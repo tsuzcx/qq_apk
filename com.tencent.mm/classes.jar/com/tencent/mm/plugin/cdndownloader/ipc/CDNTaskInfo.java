@@ -11,15 +11,15 @@ public class CDNTaskInfo
   public static final Parcelable.Creator<CDNTaskInfo> CREATOR;
   public String downloadUrl;
   public String filePath;
-  public boolean fnQ;
+  public boolean frk;
   public String mediaId;
-  public String nKN;
-  public String nKO;
-  public int nKP;
-  public int nKQ;
-  public boolean nKR;
-  public boolean nKS;
-  public boolean nKT;
+  public String onN;
+  public String onO;
+  public int onP;
+  public int onQ;
+  public boolean onR;
+  public boolean onS;
+  public boolean onT;
   
   static
   {
@@ -36,20 +36,20 @@ public class CDNTaskInfo
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.fnQ = bool1;
+      this.frk = bool1;
       this.downloadUrl = paramParcel.readString();
       this.mediaId = paramParcel.readString();
       this.filePath = paramParcel.readString();
-      this.nKN = paramParcel.readString();
-      this.nKO = paramParcel.readString();
-      this.nKP = paramParcel.readInt();
-      this.nKQ = paramParcel.readInt();
+      this.onN = paramParcel.readString();
+      this.onO = paramParcel.readString();
+      this.onP = paramParcel.readInt();
+      this.onQ = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
         break label123;
       }
       bool1 = true;
       label92:
-      this.nKR = bool1;
+      this.onR = bool1;
       if (paramParcel.readByte() != 1) {
         break label128;
       }
@@ -57,7 +57,7 @@ public class CDNTaskInfo
     label128:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.nKT = bool1;
+      this.onT = bool1;
       AppMethodBeat.o(120757);
       return;
       bool1 = false;
@@ -102,24 +102,24 @@ public class CDNTaskInfo
   {
     byte b2 = 1;
     AppMethodBeat.i(120756);
-    if (this.fnQ)
+    if (this.frk)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
       paramParcel.writeString(this.downloadUrl);
       paramParcel.writeString(this.mediaId);
       paramParcel.writeString(this.filePath);
-      paramParcel.writeString(this.nKN);
-      paramParcel.writeString(this.nKO);
-      paramParcel.writeInt(this.nKP);
-      paramParcel.writeInt(this.nKQ);
-      if (!this.nKR) {
+      paramParcel.writeString(this.onN);
+      paramParcel.writeString(this.onO);
+      paramParcel.writeInt(this.onP);
+      paramParcel.writeInt(this.onQ);
+      if (!this.onR) {
         break label118;
       }
       b1 = 1;
       label87:
       paramParcel.writeByte(b1);
-      if (!this.nKT) {
+      if (!this.onT) {
         break label123;
       }
     }

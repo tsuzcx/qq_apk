@@ -7,6 +7,7 @@ import com.tencent.tinker.lib.e.b;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -21,7 +22,7 @@ public class a
   {
     if ((paramFile == null) || (!paramFile.exists()))
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "installNativeLibraryPath, folder %s is illegal", new Object[] { paramFile });
+      ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, folder %s is illegal", new Object[] { paramFile });
       return;
     }
     if (((Build.VERSION.SDK_INT == 25) && (Build.VERSION.PREVIEW_SDK_INT != 0)) || (Build.VERSION.SDK_INT > 25)) {}
@@ -59,7 +60,7 @@ public class a
       }
       catch (Throwable localThrowable1)
       {
-        com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "installNativeLibraryPath, v25 fail, sdk: %d, error: %s, try to fallback to V23", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localThrowable1.getMessage() });
+        ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, v25 fail, sdk: %d, error: %s, try to fallback to V23", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localThrowable1.getMessage() });
         b.d(paramClassLoader, paramFile);
         return;
       }
@@ -71,7 +72,7 @@ public class a
         }
         catch (Throwable localThrowable2)
         {
-          com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "installNativeLibraryPath, v23 fail, sdk: %d, error: %s, try to fallback to V14", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localThrowable2.getMessage() });
+          ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, v23 fail, sdk: %d, error: %s, try to fallback to V14", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localThrowable2.getMessage() });
           a.c(paramClassLoader, paramFile);
           return;
         }
@@ -91,29 +92,29 @@ public class a
     Object localObject = b.d(paramApplicationLike);
     if (ShareTinkerInternals.isNullOrNil((String)localObject))
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "failed to get current patch version.", new Object[0]);
+      ShareTinkerLog.e("Tinker.LoadLibrary", "failed to get current patch version.", new Object[0]);
       return false;
     }
     File localFile = SharePatchFileUtil.getPatchDirectory(paramApplicationLike.getApplication());
     if (localFile == null)
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "failed to get current patch directory.", new Object[0]);
+      ShareTinkerLog.e("Tinker.LoadLibrary", "failed to get current patch directory.", new Object[0]);
       return false;
     }
     localObject = new File(localFile.getAbsolutePath() + "/" + SharePatchFileUtil.getPatchVersionDirectory((String)localObject));
     paramString = new File(((File)localObject).getAbsolutePath() + "/lib/lib/" + paramString);
     if (!paramString.exists())
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "tinker lib path [%s] is not exists.", new Object[] { paramString });
+      ShareTinkerLog.e("Tinker.LoadLibrary", "tinker lib path [%s] is not exists.", new Object[] { paramString });
       return false;
     }
     paramApplicationLike = paramApplicationLike.getApplication().getClassLoader();
     if (paramApplicationLike == null)
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "classloader is null", new Object[0]);
+      ShareTinkerLog.e("Tinker.LoadLibrary", "classloader is null", new Object[0]);
       return false;
     }
-    com.tencent.tinker.lib.f.a.i("Tinker.LoadLibrary", "before hack classloader:" + paramApplicationLike.toString(), new Object[0]);
+    ShareTinkerLog.i("Tinker.LoadLibrary", "before hack classloader:" + paramApplicationLike.toString(), new Object[0]);
     try
     {
       localObject = a.class.getDeclaredMethod("a", new Class[] { ClassLoader.class, File.class });
@@ -123,12 +124,12 @@ public class a
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "installNativeLibraryPath fail:" + paramString + ", thr: " + localThrowable, new Object[0]);
+      ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath fail:" + paramString + ", thr: " + localThrowable, new Object[0]);
       return false;
     }
     finally
     {
-      com.tencent.tinker.lib.f.a.i("Tinker.LoadLibrary", "after hack classloader:" + paramApplicationLike.toString(), new Object[0]);
+      ShareTinkerLog.i("Tinker.LoadLibrary", "after hack classloader:" + paramApplicationLike.toString(), new Object[0]);
     }
   }
   

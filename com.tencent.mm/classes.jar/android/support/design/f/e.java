@@ -2,16 +2,16 @@ package android.support.design.f;
 
 public final class e
 {
-  private static final a ju = new a();
-  private static final b jv = new b();
-  public b jA = jv;
-  b jB = jv;
-  b jC = jv;
-  b jD = jv;
-  a jw = ju;
-  a jx = ju;
-  a jy = ju;
-  a jz = ju;
+  private static final a kt = new a();
+  private static final b ku = new b();
+  b kA = ku;
+  b kB = ku;
+  b kC = ku;
+  a kv = kt;
+  a kw = kt;
+  a kx = kt;
+  a ky = kt;
+  public b kz = ku;
 }
 
 

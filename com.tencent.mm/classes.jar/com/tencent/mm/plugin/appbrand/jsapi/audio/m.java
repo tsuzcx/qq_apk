@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.u;
+import com.tencent.mm.g.a.v;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public final class m
@@ -16,20 +16,20 @@ public final class m
   {
     AppMethodBeat.i(145774);
     boolean bool = paramJSONObject.optBoolean("mixWithOther", true);
-    paramJSONObject = new com.tencent.mm.aj.a();
-    paramJSONObject.gSL = bool;
-    ad.i("MicroMsg.AudioPlayerHelper", "setAudioContextOption, mixWithOther:%b", new Object[] { Boolean.valueOf(paramJSONObject.gSL) });
-    u localu = new u();
-    localu.dbH.action = 19;
-    localu.dbH.dbL = paramJSONObject;
-    com.tencent.mm.plugin.music.b.a.a(localu);
+    paramJSONObject = new com.tencent.mm.ai.a();
+    paramJSONObject.htl = bool;
+    ac.i("MicroMsg.AudioPlayerHelper", "setAudioContextOption, mixWithOther:%b", new Object[] { Boolean.valueOf(paramJSONObject.htl) });
+    v localv = new v();
+    localv.cZg.action = 19;
+    localv.cZg.cZk = paramJSONObject;
+    com.tencent.mm.plugin.music.b.a.a(localv);
     paramc.h(paramInt, e("ok", null));
     AppMethodBeat.o(145774);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.m
  * JD-Core Version:    0.7.0.1
  */

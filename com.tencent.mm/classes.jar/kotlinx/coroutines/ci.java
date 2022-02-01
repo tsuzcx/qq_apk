@@ -1,73 +1,51 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a.b;
-import d.d.d;
 import d.d.f;
+import d.d.f.c;
 import d.l;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import kotlinx.coroutines.a.z;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/DispatchedCoroutine;", "T", "Lkotlin/coroutines/CoroutineContext;", "context", "Lkotlin/coroutines/Continuation;", "uCont", "<init>", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "", "state", "", "afterCompletion", "(Ljava/lang/Object;)V", "afterResume", "getResult", "()Ljava/lang/Object;", "", "tryResume", "()Z", "trySuspend", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/ScopeCoroutine;"})
-final class ci<T>
-  extends z<T>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
+public final class ci
+  extends ab
 {
-  static final AtomicIntegerFieldUpdater Kdg;
-  volatile int _decision = 0;
+  public static final ci LSo;
   
   static
   {
-    AppMethodBeat.i(202345);
-    Kdg = AtomicIntegerFieldUpdater.newUpdater(ci.class, "_decision");
-    AppMethodBeat.o(202345);
+    AppMethodBeat.i(118172);
+    LSo = new ci();
+    AppMethodBeat.o(118172);
   }
   
-  public ci(f paramf, d<? super T> paramd)
+  public final void a(f paramf, Runnable paramRunnable)
   {
-    super(paramf, paramd);
-  }
-  
-  private final boolean fKI()
-  {
-    AppMethodBeat.i(202342);
-    do
+    AppMethodBeat.i(118171);
+    paramf = (ck)paramf.get((f.c)ck.LSq);
+    if (paramf != null)
     {
-      switch (this._decision)
-      {
-      default: 
-        Throwable localThrowable = (Throwable)new IllegalStateException("Already resumed".toString());
-        AppMethodBeat.o(202342);
-        throw localThrowable;
-      }
-    } while (!Kdg.compareAndSet(this, 0, 2));
-    AppMethodBeat.o(202342);
-    return true;
-    AppMethodBeat.o(202342);
+      paramf.LSp = true;
+      AppMethodBeat.o(118171);
+      return;
+    }
+    paramf = (Throwable)new UnsupportedOperationException("Dispatchers.Unconfined.dispatch function can only be used by the yield function. If you wrap Unconfined dispatcher in your code, make sure you properly delegate isDispatchNeeded and dispatch calls.");
+    AppMethodBeat.o(118171);
+    throw paramf;
+  }
+  
+  public final boolean gdB()
+  {
     return false;
   }
   
-  public final void gg(Object paramObject)
+  public final String toString()
   {
-    AppMethodBeat.i(202344);
-    if (fKI())
-    {
-      AppMethodBeat.o(202344);
-      return;
-    }
-    aq.a(b.d(this.LEJ), r.b(paramObject, this.LEJ));
-    AppMethodBeat.o(202344);
-  }
-  
-  public final void gi(Object paramObject)
-  {
-    AppMethodBeat.i(202343);
-    gg(paramObject);
-    AppMethodBeat.o(202343);
+    return "Unconfined";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ci
  * JD-Core Version:    0.7.0.1
  */

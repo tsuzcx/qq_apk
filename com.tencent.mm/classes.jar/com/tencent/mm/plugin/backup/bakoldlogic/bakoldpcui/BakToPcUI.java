@@ -12,57 +12,57 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.c;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakToPcUI
   extends MMWizardActivity
   implements e.a
 {
-  private int BX;
-  private Button hJg;
-  private Button hJh;
-  private ap handler;
-  private TextView mzX;
-  private TextView mzY;
+  private int CW;
+  private Button gAJ;
+  private Button gCY;
+  private ao handler;
+  private TextView nbY;
+  private TextView nbZ;
   
   public BakToPcUI()
   {
     AppMethodBeat.i(22028);
-    this.BX = -1;
-    this.handler = new ap(Looper.getMainLooper());
+    this.CW = -1;
+    this.handler = new ao(Looper.getMainLooper());
     AppMethodBeat.o(22028);
   }
   
-  private void byy()
+  private void bFu()
   {
     AppMethodBeat.i(22033);
-    if (this.BX == 0)
+    if (this.CW == 0)
     {
-      this.hJh.setEnabled(true);
-      this.hJg.setEnabled(true);
+      this.gAJ.setEnabled(true);
+      this.gCY.setEnabled(true);
       AppMethodBeat.o(22033);
       return;
     }
-    this.hJh.setEnabled(false);
-    this.hJg.setEnabled(false);
+    this.gAJ.setEnabled(false);
+    this.gCY.setEnabled(false);
     AppMethodBeat.o(22033);
   }
   
-  public final void byq()
+  public final void bFm()
   {
     AppMethodBeat.i(22032);
-    this.BX = 0;
-    this.hJh.setVisibility(0);
-    this.hJg.setVisibility(0);
-    new ap(Looper.getMainLooper()).post(new Runnable()
+    this.CW = 0;
+    this.gAJ.setVisibility(0);
+    this.gCY.setVisibility(0);
+    new ao(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
@@ -88,48 +88,48 @@ public class BakToPcUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(22023);
-        a.byd().bye().wn(1);
+        a.bEZ().bFa().xe(1);
         BakToPcUI.a(BakToPcUI.this);
         AppMethodBeat.o(22023);
         return true;
       }
     });
-    this.hJh = ((Button)findViewById(2131297075));
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.gAJ = ((Button)findViewById(2131297075));
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(22024);
         if (BakToPcUI.b(BakToPcUI.this) == 0)
         {
-          a.byd().byf().gNs = 1;
-          a.byd().bye().wn(0);
+          a.bEZ().bFb().hnS = 1;
+          a.bEZ().bFa().xe(0);
           paramAnonymousView = new Intent(BakToPcUI.this, BakWaitingUI.class);
-          MMWizardActivity.V(BakToPcUI.this, paramAnonymousView);
+          MMWizardActivity.aj(BakToPcUI.this, paramAnonymousView);
         }
         AppMethodBeat.o(22024);
       }
     });
-    this.hJg = ((Button)findViewById(2131297073));
-    this.hJg.setOnClickListener(new View.OnClickListener()
+    this.gCY = ((Button)findViewById(2131297073));
+    this.gCY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(22025);
         if (BakToPcUI.b(BakToPcUI.this) == 0)
         {
-          a.byd().byf().gNs = 2;
-          a.byd().byf().asE();
-          a.byd().bye().wn(1);
+          a.bEZ().bFb().hnS = 2;
+          a.bEZ().bFb().azv();
+          a.bEZ().bFa().xe(1);
           BakToPcUI.c(BakToPcUI.this);
         }
         AppMethodBeat.o(22025);
       }
     });
-    this.mzX = ((TextView)findViewById(2131297080));
-    this.mzX.setText(a.byd().bye().mza);
-    this.mzY = ((TextView)findViewById(2131297081));
-    this.mzY.setText(a.byd().bye().mzb);
+    this.nbY = ((TextView)findViewById(2131297080));
+    this.nbY.setText(a.bEZ().bFa().nbb);
+    this.nbZ = ((TextView)findViewById(2131297081));
+    this.nbZ.setText(a.bEZ().bFa().nbc);
     AppMethodBeat.o(22030);
   }
   
@@ -143,10 +143,10 @@ public class BakToPcUI
       return;
     }
     initView();
-    this.BX = a.byd().bye().myZ;
-    ad.i("MicroMsg.BakToPcUI", "BakToPcUI auth onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.BX) });
-    a.byd().bye().myT = this;
-    byy();
+    this.CW = a.bEZ().bFa().nba;
+    ac.i("MicroMsg.BakToPcUI", "BakToPcUI auth onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.CW) });
+    a.bEZ().bFa().naU = this;
+    bFu();
     AppMethodBeat.o(22029);
   }
   
@@ -154,8 +154,8 @@ public class BakToPcUI
   {
     AppMethodBeat.i(22031);
     super.onDestroy();
-    ad.i("MicroMsg.BakToPcUI", "BakToPcUI auth onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.BX) });
-    a.byd().bye().myT = null;
+    ac.i("MicroMsg.BakToPcUI", "BakToPcUI auth onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.CW) });
+    a.bEZ().bFa().naU = null;
     AppMethodBeat.o(22031);
   }
   
@@ -167,13 +167,13 @@ public class BakToPcUI
       public final void run()
       {
         AppMethodBeat.i(22027);
-        ad.d("MicroMsg.BakToPcUI", "BakToPcUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
+        ac.d("MicroMsg.BakToPcUI", "BakToPcUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
         if (paramInt == -1)
         {
-          ad.d("MicroMsg.BakToPcUI", "BakToPcUI jump tips");
+          ac.d("MicroMsg.BakToPcUI", "BakToPcUI jump tips");
           Intent localIntent = new Intent();
           localIntent.putExtra("title", BakToPcUI.this.getString(2131756219));
-          localIntent.putExtra("rawUrl", BakToPcUI.this.getString(2131756178, new Object[] { ac.eFu() }));
+          localIntent.putExtra("rawUrl", BakToPcUI.this.getString(2131756178, new Object[] { ab.eUO() }));
           localIntent.putExtra("showShare", false);
           localIntent.putExtra("neverGetA8Key", true);
           d.b(BakToPcUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
@@ -192,10 +192,10 @@ public class BakToPcUI
     AppMethodBeat.i(22035);
     if (paramInt == 4)
     {
-      a.byd().byf().gNs = 3;
-      a.byd().byf().asE();
-      a.byd().bye().wn(1);
-      Xo(1);
+      a.bEZ().bFb().hnS = 3;
+      a.bEZ().bFb().azv();
+      a.bEZ().bFa().xe(1);
+      ZA(1);
       AppMethodBeat.o(22035);
       return true;
     }
@@ -212,7 +212,7 @@ public class BakToPcUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakToPcUI
  * JD-Core Version:    0.7.0.1
  */

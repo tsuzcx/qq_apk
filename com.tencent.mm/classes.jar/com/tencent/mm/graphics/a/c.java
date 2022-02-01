@@ -7,10 +7,10 @@ public enum c
   static
   {
     AppMethodBeat.i(136193);
-    fWg = new c("Normal", 0);
-    fWh = new c("Tile", 1);
-    fWi = new c("Auto", 2);
-    fWj = new c[] { fWg, fWh, fWi };
+    gaN = new c("Normal", 0);
+    gaO = new c("Tile", 1);
+    gaP = new c("Auto", 2);
+    gaQ = new c[] { gaN, gaO, gaP };
     AppMethodBeat.o(136193);
   }
   

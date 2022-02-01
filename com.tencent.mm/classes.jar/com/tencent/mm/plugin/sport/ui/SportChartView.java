@@ -22,7 +22,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sport.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,191 +33,191 @@ import java.util.List;
 public class SportChartView
   extends View
 {
-  private int fIN;
-  private int fIO;
-  private GestureDetector hRv;
-  private int maxPageIndex;
+  private int fMt;
+  private int fMu;
+  private GestureDetector irA;
+  private final int pJI;
+  private final int pJJ;
+  private final int pJK;
+  private final float pJL;
+  private final float pJM;
+  private final float pJN;
+  private final float pJO;
+  private final float pJP;
+  private final int pJQ;
+  private final int pJR;
+  private final int pJS;
+  private final int pJT;
+  private final float pJW;
+  private final int pJX;
+  private final float pJY;
+  private final int pJZ;
+  private final int pKA;
+  private final int pKB;
+  private final float pKC;
+  private final int pKD;
+  private final float pKE;
+  private final int pKF;
+  private final float pKG;
+  private final int pKH;
+  private final float pKI;
+  private final int pKJ;
+  private final float pKK;
+  private final int pKL;
+  private final int pKM;
+  private final int pKN;
+  private final int pKO;
+  private final int pKP;
+  private final int pKQ;
+  private final int pKR;
+  private final int pKS;
+  private final int pKT;
+  private int pKU;
+  private final Typeface pKV;
+  private final Typeface pKW;
+  private int pKX;
+  private int pKY;
+  private final float pKa;
+  private final int pKb;
+  private final float pKc;
+  private final int pKd;
+  private final float pKe;
+  private final int pKf;
+  private final float pKg;
+  private final int pKh;
+  private final float pKi;
+  private final int pKj;
+  private final float pKk;
+  private final int pKl;
+  private final float pKm;
+  private final int pKn;
+  private final float pKo;
+  private final int pKp;
+  private final float pKq;
+  private final int pKr;
+  private final float pKs;
+  private final int pKt;
+  private final float pKu;
+  private final float pKv;
+  private final float pKw;
+  private final float pKx;
+  private final int pKy;
+  private final int pKz;
+  Path pLe;
+  Path pLf;
+  private int pLj;
+  private boolean pLk;
   Paint paint;
-  private final int pgA;
-  private final float pgB;
-  private final float pgC;
-  private final float pgD;
-  private final float pgE;
-  private final float pgF;
-  private final int pgG;
-  private final int pgH;
-  private final int pgI;
-  private final int pgJ;
-  private final float pgM;
-  private final int pgN;
-  private final float pgO;
-  private final int pgP;
-  private final float pgQ;
-  private final int pgR;
-  private final float pgS;
-  private final int pgT;
-  private final float pgU;
-  private final int pgV;
-  private final float pgW;
-  private final int pgX;
-  private final float pgY;
-  private final int pgZ;
-  private final int pgy;
-  private final int pgz;
-  private final float phA;
-  private final int phB;
-  private final int phC;
-  private final int phD;
-  private final int phE;
-  private final int phF;
-  private final int phG;
-  private final int phH;
-  private final int phI;
-  private final int phJ;
-  private int phK;
-  private final Typeface phL;
-  private final Typeface phM;
-  private int phN;
-  private int phO;
-  Path phU;
-  Path phV;
-  private int phZ;
-  private final float pha;
-  private final int phb;
-  private final float phc;
-  private final int phd;
-  private final float phe;
-  private final int phf;
-  private final float phg;
-  private final int phh;
-  private final float phi;
-  private final int phj;
-  private final float phk;
-  private final float phl;
-  private final float phm;
-  private final float phn;
-  private final int pho;
-  private final int php;
-  private final int phq;
-  private final int phr;
-  private final float phs;
-  private final int pht;
-  private final float phu;
-  private final int phv;
-  private final float phw;
-  private final int phx;
-  private final float phy;
-  private final int phz;
-  private boolean pia;
+  private int rxK;
   private int startY;
-  private int tcu;
-  private SportChartView.a ycA;
-  private int ycB;
-  private List<d> ycC;
-  private b[] ycD;
-  private int ycE;
-  private boolean ycF;
-  private GestureDetector.OnGestureListener ycG;
-  private SimpleDateFormat ycw;
-  private SimpleDateFormat ycx;
-  private boolean ycy;
-  private int ycz;
+  private int ukJ;
+  private SportChartView.a zpA;
+  private int zpB;
+  private List<d> zpC;
+  private b[] zpD;
+  private int zpE;
+  private boolean zpF;
+  private GestureDetector.OnGestureListener zpG;
+  private SimpleDateFormat zpw;
+  private SimpleDateFormat zpx;
+  private boolean zpy;
+  private int zpz;
   
   public SportChartView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(103531);
-    this.ycw = new SimpleDateFormat(getResources().getString(2131764119));
-    this.ycx = new SimpleDateFormat("d");
-    this.pgy = -1;
-    this.pgz = -1;
-    this.pgA = getResources().getColor(2131100945);
-    this.pgB = 12.0F;
-    this.pgC = 24.0F;
-    this.pgD = 28.0F;
-    this.pgE = 12.0F;
-    this.pgF = 12.0F;
-    this.pgG = getResources().getColor(2131100946);
-    this.pgH = -1;
-    this.pgI = getResources().getColor(2131100946);
-    this.pgJ = -1;
-    this.tcu = 2147483647;
-    this.fIN = 0;
-    this.fIO = 0;
-    this.pgM = 2.5F;
-    this.pgN = ((int)o(1, 2.5F));
-    this.pgO = 4.0F;
-    this.pgP = ((int)o(1, 4.0F));
-    this.pgQ = 1.8F;
-    this.pgR = ((int)o(1, 1.8F));
-    this.pgS = 1.0F;
-    this.pgT = ((int)o(1, 1.0F));
-    this.pgU = 8.0F;
-    this.pgV = ((int)o(1, 8.0F));
-    this.pgW = 22.0F;
-    this.pgX = ((int)o(1, 22.0F));
-    this.pgY = 67.0F;
-    this.pgZ = ((int)o(1, 67.0F));
-    this.pha = 40.0F;
-    this.phb = ((int)o(1, 40.0F));
-    this.phc = 22.0F;
-    this.phd = ((int)o(1, 22.0F));
-    this.phe = 55.0F;
-    this.phf = ((int)o(1, 55.0F));
-    this.phg = 35.0F;
-    this.phh = ((int)o(1, 35.0F));
-    this.phi = 45.0F;
-    this.phj = ((int)o(1, 45.0F));
-    this.phk = 8.0F;
-    this.phl = ((int)o(1, 8.0F));
-    this.phm = 8.0F;
-    this.phn = ((int)o(1, 8.0F));
-    this.pho = 2;
-    this.php = ((int)o(1, 2.0F));
-    this.phq = 15;
-    this.phr = ((int)o(1, 15.0F));
-    this.phs = 33.0F;
-    this.pht = ((int)o(1, 33.0F));
-    this.phu = 8.0F;
-    this.phv = ((int)o(1, 8.0F));
-    this.phw = 35.0F;
-    this.phx = ((int)o(1, 35.0F));
-    this.phy = 10.0F;
-    this.phz = ((int)o(1, 10.0F));
-    this.phA = 58.0F;
-    this.phB = ((int)o(1, 58.0F));
-    this.phC = ((int)o(1, 1.0F));
-    this.phD = 102;
-    this.phE = 102;
-    this.phF = 153;
-    this.phG = 102;
-    this.phH = 102;
-    this.phI = 102;
-    this.phJ = 204;
-    this.phK = 0;
-    this.phL = Typeface.create(Typeface.DEFAULT_BOLD, 0);
-    this.phM = Typeface.create(Typeface.DEFAULT_BOLD, 1);
-    this.phN = 0;
-    this.phO = 0;
-    this.ycz = -1;
-    this.maxPageIndex = -1;
-    this.ycA = SportChartView.a.ycJ;
-    this.ycB = 7;
-    this.ycD = new b[this.ycB];
-    this.ycG = new GestureDetector.SimpleOnGestureListener()
+    this.zpw = new SimpleDateFormat(getResources().getString(2131764119));
+    this.zpx = new SimpleDateFormat("d");
+    this.pJI = -1;
+    this.pJJ = -1;
+    this.pJK = getResources().getColor(2131100945);
+    this.pJL = 12.0F;
+    this.pJM = 24.0F;
+    this.pJN = 28.0F;
+    this.pJO = 12.0F;
+    this.pJP = 12.0F;
+    this.pJQ = getResources().getColor(2131100946);
+    this.pJR = -1;
+    this.pJS = getResources().getColor(2131100946);
+    this.pJT = -1;
+    this.ukJ = 2147483647;
+    this.fMt = 0;
+    this.fMu = 0;
+    this.pJW = 2.5F;
+    this.pJX = ((int)o(1, 2.5F));
+    this.pJY = 4.0F;
+    this.pJZ = ((int)o(1, 4.0F));
+    this.pKa = 1.8F;
+    this.pKb = ((int)o(1, 1.8F));
+    this.pKc = 1.0F;
+    this.pKd = ((int)o(1, 1.0F));
+    this.pKe = 8.0F;
+    this.pKf = ((int)o(1, 8.0F));
+    this.pKg = 22.0F;
+    this.pKh = ((int)o(1, 22.0F));
+    this.pKi = 67.0F;
+    this.pKj = ((int)o(1, 67.0F));
+    this.pKk = 40.0F;
+    this.pKl = ((int)o(1, 40.0F));
+    this.pKm = 22.0F;
+    this.pKn = ((int)o(1, 22.0F));
+    this.pKo = 55.0F;
+    this.pKp = ((int)o(1, 55.0F));
+    this.pKq = 35.0F;
+    this.pKr = ((int)o(1, 35.0F));
+    this.pKs = 45.0F;
+    this.pKt = ((int)o(1, 45.0F));
+    this.pKu = 8.0F;
+    this.pKv = ((int)o(1, 8.0F));
+    this.pKw = 8.0F;
+    this.pKx = ((int)o(1, 8.0F));
+    this.pKy = 2;
+    this.pKz = ((int)o(1, 2.0F));
+    this.pKA = 15;
+    this.pKB = ((int)o(1, 15.0F));
+    this.pKC = 33.0F;
+    this.pKD = ((int)o(1, 33.0F));
+    this.pKE = 8.0F;
+    this.pKF = ((int)o(1, 8.0F));
+    this.pKG = 35.0F;
+    this.pKH = ((int)o(1, 35.0F));
+    this.pKI = 10.0F;
+    this.pKJ = ((int)o(1, 10.0F));
+    this.pKK = 58.0F;
+    this.pKL = ((int)o(1, 58.0F));
+    this.pKM = ((int)o(1, 1.0F));
+    this.pKN = 102;
+    this.pKO = 102;
+    this.pKP = 153;
+    this.pKQ = 102;
+    this.pKR = 102;
+    this.pKS = 102;
+    this.pKT = 204;
+    this.pKU = 0;
+    this.pKV = Typeface.create(Typeface.DEFAULT_BOLD, 0);
+    this.pKW = Typeface.create(Typeface.DEFAULT_BOLD, 1);
+    this.pKX = 0;
+    this.pKY = 0;
+    this.zpz = -1;
+    this.rxK = -1;
+    this.zpA = SportChartView.a.zpJ;
+    this.zpB = 7;
+    this.zpD = new b[this.zpB];
+    this.zpG = new GestureDetector.SimpleOnGestureListener()
     {
-      private long ycH;
+      private long zpH;
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(103525);
-        ad.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
-        if ((System.currentTimeMillis() - this.ycH < 500L) || (!SportChartView.d(SportChartView.this)))
+        ac.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
+        if ((System.currentTimeMillis() - this.zpH < 500L) || (!SportChartView.d(SportChartView.this)))
         {
           AppMethodBeat.o(103525);
           return false;
         }
-        this.ycH = System.currentTimeMillis();
+        this.zpH = System.currentTimeMillis();
         if (paramAnonymousFloat1 > 0.0F)
         {
           SportChartView.e(SportChartView.this);
@@ -252,13 +252,13 @@ public class SportChartView
         SportChartView.a(SportChartView.this, SportChartView.a(SportChartView.this, f1));
         SportChartView.a(SportChartView.this);
         SportChartView.b(SportChartView.this);
-        ad.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
+        ac.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
         SportChartView.this.invalidate();
         AppMethodBeat.o(103524);
         return true;
       }
     };
-    caP();
+    chY();
     AppMethodBeat.o(103531);
   }
   
@@ -266,97 +266,97 @@ public class SportChartView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(103532);
-    this.ycw = new SimpleDateFormat(getResources().getString(2131764119));
-    this.ycx = new SimpleDateFormat("d");
-    this.pgy = -1;
-    this.pgz = -1;
-    this.pgA = getResources().getColor(2131100945);
-    this.pgB = 12.0F;
-    this.pgC = 24.0F;
-    this.pgD = 28.0F;
-    this.pgE = 12.0F;
-    this.pgF = 12.0F;
-    this.pgG = getResources().getColor(2131100946);
-    this.pgH = -1;
-    this.pgI = getResources().getColor(2131100946);
-    this.pgJ = -1;
-    this.tcu = 2147483647;
-    this.fIN = 0;
-    this.fIO = 0;
-    this.pgM = 2.5F;
-    this.pgN = ((int)o(1, 2.5F));
-    this.pgO = 4.0F;
-    this.pgP = ((int)o(1, 4.0F));
-    this.pgQ = 1.8F;
-    this.pgR = ((int)o(1, 1.8F));
-    this.pgS = 1.0F;
-    this.pgT = ((int)o(1, 1.0F));
-    this.pgU = 8.0F;
-    this.pgV = ((int)o(1, 8.0F));
-    this.pgW = 22.0F;
-    this.pgX = ((int)o(1, 22.0F));
-    this.pgY = 67.0F;
-    this.pgZ = ((int)o(1, 67.0F));
-    this.pha = 40.0F;
-    this.phb = ((int)o(1, 40.0F));
-    this.phc = 22.0F;
-    this.phd = ((int)o(1, 22.0F));
-    this.phe = 55.0F;
-    this.phf = ((int)o(1, 55.0F));
-    this.phg = 35.0F;
-    this.phh = ((int)o(1, 35.0F));
-    this.phi = 45.0F;
-    this.phj = ((int)o(1, 45.0F));
-    this.phk = 8.0F;
-    this.phl = ((int)o(1, 8.0F));
-    this.phm = 8.0F;
-    this.phn = ((int)o(1, 8.0F));
-    this.pho = 2;
-    this.php = ((int)o(1, 2.0F));
-    this.phq = 15;
-    this.phr = ((int)o(1, 15.0F));
-    this.phs = 33.0F;
-    this.pht = ((int)o(1, 33.0F));
-    this.phu = 8.0F;
-    this.phv = ((int)o(1, 8.0F));
-    this.phw = 35.0F;
-    this.phx = ((int)o(1, 35.0F));
-    this.phy = 10.0F;
-    this.phz = ((int)o(1, 10.0F));
-    this.phA = 58.0F;
-    this.phB = ((int)o(1, 58.0F));
-    this.phC = ((int)o(1, 1.0F));
-    this.phD = 102;
-    this.phE = 102;
-    this.phF = 153;
-    this.phG = 102;
-    this.phH = 102;
-    this.phI = 102;
-    this.phJ = 204;
-    this.phK = 0;
-    this.phL = Typeface.create(Typeface.DEFAULT_BOLD, 0);
-    this.phM = Typeface.create(Typeface.DEFAULT_BOLD, 1);
-    this.phN = 0;
-    this.phO = 0;
-    this.ycz = -1;
-    this.maxPageIndex = -1;
-    this.ycA = SportChartView.a.ycJ;
-    this.ycB = 7;
-    this.ycD = new b[this.ycB];
-    this.ycG = new GestureDetector.SimpleOnGestureListener()
+    this.zpw = new SimpleDateFormat(getResources().getString(2131764119));
+    this.zpx = new SimpleDateFormat("d");
+    this.pJI = -1;
+    this.pJJ = -1;
+    this.pJK = getResources().getColor(2131100945);
+    this.pJL = 12.0F;
+    this.pJM = 24.0F;
+    this.pJN = 28.0F;
+    this.pJO = 12.0F;
+    this.pJP = 12.0F;
+    this.pJQ = getResources().getColor(2131100946);
+    this.pJR = -1;
+    this.pJS = getResources().getColor(2131100946);
+    this.pJT = -1;
+    this.ukJ = 2147483647;
+    this.fMt = 0;
+    this.fMu = 0;
+    this.pJW = 2.5F;
+    this.pJX = ((int)o(1, 2.5F));
+    this.pJY = 4.0F;
+    this.pJZ = ((int)o(1, 4.0F));
+    this.pKa = 1.8F;
+    this.pKb = ((int)o(1, 1.8F));
+    this.pKc = 1.0F;
+    this.pKd = ((int)o(1, 1.0F));
+    this.pKe = 8.0F;
+    this.pKf = ((int)o(1, 8.0F));
+    this.pKg = 22.0F;
+    this.pKh = ((int)o(1, 22.0F));
+    this.pKi = 67.0F;
+    this.pKj = ((int)o(1, 67.0F));
+    this.pKk = 40.0F;
+    this.pKl = ((int)o(1, 40.0F));
+    this.pKm = 22.0F;
+    this.pKn = ((int)o(1, 22.0F));
+    this.pKo = 55.0F;
+    this.pKp = ((int)o(1, 55.0F));
+    this.pKq = 35.0F;
+    this.pKr = ((int)o(1, 35.0F));
+    this.pKs = 45.0F;
+    this.pKt = ((int)o(1, 45.0F));
+    this.pKu = 8.0F;
+    this.pKv = ((int)o(1, 8.0F));
+    this.pKw = 8.0F;
+    this.pKx = ((int)o(1, 8.0F));
+    this.pKy = 2;
+    this.pKz = ((int)o(1, 2.0F));
+    this.pKA = 15;
+    this.pKB = ((int)o(1, 15.0F));
+    this.pKC = 33.0F;
+    this.pKD = ((int)o(1, 33.0F));
+    this.pKE = 8.0F;
+    this.pKF = ((int)o(1, 8.0F));
+    this.pKG = 35.0F;
+    this.pKH = ((int)o(1, 35.0F));
+    this.pKI = 10.0F;
+    this.pKJ = ((int)o(1, 10.0F));
+    this.pKK = 58.0F;
+    this.pKL = ((int)o(1, 58.0F));
+    this.pKM = ((int)o(1, 1.0F));
+    this.pKN = 102;
+    this.pKO = 102;
+    this.pKP = 153;
+    this.pKQ = 102;
+    this.pKR = 102;
+    this.pKS = 102;
+    this.pKT = 204;
+    this.pKU = 0;
+    this.pKV = Typeface.create(Typeface.DEFAULT_BOLD, 0);
+    this.pKW = Typeface.create(Typeface.DEFAULT_BOLD, 1);
+    this.pKX = 0;
+    this.pKY = 0;
+    this.zpz = -1;
+    this.rxK = -1;
+    this.zpA = SportChartView.a.zpJ;
+    this.zpB = 7;
+    this.zpD = new b[this.zpB];
+    this.zpG = new GestureDetector.SimpleOnGestureListener()
     {
-      private long ycH;
+      private long zpH;
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(103525);
-        ad.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
-        if ((System.currentTimeMillis() - this.ycH < 500L) || (!SportChartView.d(SportChartView.this)))
+        ac.i("MicroMsg.Sport.SportChartView", "onScroll %.2f", new Object[] { Float.valueOf(paramAnonymousFloat1) });
+        if ((System.currentTimeMillis() - this.zpH < 500L) || (!SportChartView.d(SportChartView.this)))
         {
           AppMethodBeat.o(103525);
           return false;
         }
-        this.ycH = System.currentTimeMillis();
+        this.zpH = System.currentTimeMillis();
         if (paramAnonymousFloat1 > 0.0F)
         {
           SportChartView.e(SportChartView.this);
@@ -391,13 +391,13 @@ public class SportChartView
         SportChartView.a(SportChartView.this, SportChartView.a(SportChartView.this, f1));
         SportChartView.a(SportChartView.this);
         SportChartView.b(SportChartView.this);
-        ad.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
+        ac.i("MicroMsg.Sport.SportChartView", "onSingleTapUp %s %s %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(SportChartView.c(SportChartView.this)) });
         SportChartView.this.invalidate();
         AppMethodBeat.o(103524);
         return true;
       }
     };
-    caP();
+    chY();
     AppMethodBeat.o(103532);
   }
   
@@ -407,96 +407,96 @@ public class SportChartView
     AppMethodBeat.i(103533);
     if (paramBoolean)
     {
-      this.phV.reset();
-      this.phV.moveTo(this.ycD[0].x, this.ycD[0].y);
+      this.pLf.reset();
+      this.pLf.moveTo(this.zpD[0].x, this.zpD[0].y);
       i = 0;
-      while (i < this.ycD.length)
+      while (i < this.zpD.length)
       {
-        this.phV.lineTo(this.ycD[i].x, this.ycD[i].y);
+        this.pLf.lineTo(this.zpD[i].x, this.zpD[i].y);
         i += 1;
       }
-      this.phV.lineTo(this.ycD[(this.ycD.length - 1)].x, this.fIO - this.phh - 1);
-      this.phV.lineTo(this.pgV, this.fIO - this.phh - 1);
-      this.phV.lineTo(this.pgV, this.ycD[0].y);
-      paramCanvas.drawPath(this.phV, this.paint);
+      this.pLf.lineTo(this.zpD[(this.zpD.length - 1)].x, this.fMu - this.pKr - 1);
+      this.pLf.lineTo(this.pKf, this.fMu - this.pKr - 1);
+      this.pLf.lineTo(this.pKf, this.zpD[0].y);
+      paramCanvas.drawPath(this.pLf, this.paint);
       AppMethodBeat.o(103533);
       return;
     }
-    this.phV.reset();
-    this.phV.moveTo(this.ycD[0].x, this.ycD[0].y);
-    if (i < this.ycD.length)
+    this.pLf.reset();
+    this.pLf.moveTo(this.zpD[0].x, this.zpD[0].y);
+    if (i < this.zpD.length)
     {
       if (i > 0) {
-        if (this.ycD[(i - 1)].y == this.fIO - this.phb)
+        if (this.zpD[(i - 1)].y == this.fMu - this.pKl)
         {
           this.paint.reset();
           DashPathEffect localDashPathEffect = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
           this.paint.setPathEffect(localDashPathEffect);
           this.paint.setAntiAlias(true);
-          this.paint.setStrokeWidth(this.pgR);
+          this.paint.setStrokeWidth(this.pKb);
           this.paint.setStyle(Paint.Style.STROKE);
           this.paint.setColor(-1);
         }
       }
       for (;;)
       {
-        this.phV.lineTo(this.ycD[i].x, this.ycD[i].y);
-        paramCanvas.drawPath(this.phV, this.paint);
-        this.phV.reset();
-        this.phV.moveTo(this.ycD[i].x, this.ycD[i].y);
+        this.pLf.lineTo(this.zpD[i].x, this.zpD[i].y);
+        paramCanvas.drawPath(this.pLf, this.paint);
+        this.pLf.reset();
+        this.pLf.moveTo(this.zpD[i].x, this.zpD[i].y);
         i += 1;
         break;
-        caR();
+        cia();
         continue;
-        caR();
+        cia();
       }
     }
     AppMethodBeat.o(103533);
   }
   
-  private void caP()
+  private void chY()
   {
     AppMethodBeat.i(103538);
     this.paint = new Paint();
-    this.phU = new Path();
-    this.phV = new Path();
-    this.ycD = new b[this.ycB];
-    dFP();
-    dFQ();
-    this.hRv = new GestureDetector(getContext(), this.ycG);
+    this.pLe = new Path();
+    this.pLf = new Path();
+    this.zpD = new b[this.zpB];
+    dUq();
+    dUr();
+    this.irA = new GestureDetector(getContext(), this.zpG);
     AppMethodBeat.o(103538);
   }
   
-  private void caR()
+  private void cia()
   {
     AppMethodBeat.i(103539);
     this.paint.reset();
     this.paint.setAntiAlias(true);
-    this.paint.setStrokeWidth(this.pgR);
+    this.paint.setStrokeWidth(this.pKb);
     this.paint.setStyle(Paint.Style.STROKE);
     this.paint.setColor(-1);
     AppMethodBeat.o(103539);
   }
   
-  private void dFP()
+  private void dUq()
   {
     AppMethodBeat.i(103530);
     int i = 0;
-    while (i < this.ycD.length)
+    while (i < this.zpD.length)
     {
-      this.ycD[i] = new b(0);
+      this.zpD[i] = new b(0);
       i += 1;
     }
     AppMethodBeat.o(103530);
   }
   
-  private void dFQ()
+  private void dUr()
   {
     int i = 0;
-    if (i < this.ycB)
+    if (i < this.zpB)
     {
-      if (i == this.ycB - 1) {}
-      for (this.ycD[i].ycM = true;; this.ycD[i].ycM = false)
+      if (i == this.zpB - 1) {}
+      for (this.zpD[i].zpM = true;; this.zpD[i].zpM = false)
       {
         i += 1;
         break;
@@ -513,16 +513,16 @@ public class SportChartView
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
     int i = 0;
-    if (i < this.ycD.length)
+    if (i < this.zpD.length)
     {
-      if (i == this.ycD.length - 1) {
-        paramCanvas.drawCircle(this.ycD[i].x, this.ycD[i].y, this.pgP, this.paint);
+      if (i == this.zpD.length - 1) {
+        paramCanvas.drawCircle(this.zpD[i].x, this.zpD[i].y, this.pJZ, this.paint);
       }
       for (;;)
       {
         i += 1;
         break;
-        paramCanvas.drawCircle(this.ycD[i].x, this.ycD[i].y, this.pgN, this.paint);
+        paramCanvas.drawCircle(this.zpD[i].x, this.zpD[i].y, this.pJX, this.paint);
       }
     }
     AppMethodBeat.o(103534);
@@ -550,86 +550,86 @@ public class SportChartView
     this.paint.setTextSize(o(2, 12.0F));
     this.paint.setAlpha(153);
     int i = 0;
-    if (i < this.ycD.length)
+    if (i < this.zpD.length)
     {
       if (i == 0)
       {
         this.paint.setTextAlign(Paint.Align.LEFT);
         label78:
-        if (!this.ycD[i].ycM) {
+        if (!this.zpD[i].zpM) {
           break label154;
         }
         this.paint.setColor(-1);
       }
       for (;;)
       {
-        paramCanvas.drawText(this.ycD[i].wdN, this.ycD[i].x, this.fIO - this.phr, this.paint);
+        paramCanvas.drawText(this.zpD[i].xpb, this.zpD[i].x, this.fMu - this.pKB, this.paint);
         i += 1;
         break;
         this.paint.setTextAlign(Paint.Align.CENTER);
         break label78;
         label154:
-        this.paint.setColor(this.pgG);
+        this.paint.setColor(this.pJQ);
       }
     }
     AppMethodBeat.o(103537);
   }
   
-  private void qB(boolean paramBoolean)
+  private void rz(boolean paramBoolean)
   {
     int k = 0;
     AppMethodBeat.i(103541);
-    this.tcu = 2147483647;
+    this.ukJ = 2147483647;
     Object localObject1 = Calendar.getInstance();
-    this.ycD = new b[this.ycB];
-    dFP();
+    this.zpD = new b[this.zpB];
+    dUq();
     int i;
-    if ((this.ycC == null) || (this.ycC.size() <= 0))
+    if ((this.zpC == null) || (this.zpC.size() <= 0))
     {
-      this.ycy = true;
-      ((Calendar)localObject1).add(5, -this.ycB);
+      this.zpy = true;
+      ((Calendar)localObject1).add(5, -this.zpB);
       i = 0;
-      while (i < this.ycD.length)
+      while (i < this.zpD.length)
       {
         ((Calendar)localObject1).add(5, 1);
-        this.ycD[i].timestamp = ((Calendar)localObject1).getTimeInMillis();
-        this.ycD[i].jzV = 0;
+        this.zpD[i].timestamp = ((Calendar)localObject1).getTimeInMillis();
+        this.zpD[i].kar = 0;
         i += 1;
       }
       AppMethodBeat.o(103541);
       return;
     }
-    this.ycy = false;
+    this.zpy = false;
     Object localObject2 = new ArrayList();
-    ((List)localObject2).addAll(this.ycC);
+    ((List)localObject2).addAll(this.zpC);
     Collections.sort((List)localObject2);
     int m = ((List)localObject2).size();
-    if ((paramBoolean) || (this.maxPageIndex == -1))
+    if ((paramBoolean) || (this.rxK == -1))
     {
-      i = m / this.ycB;
-      if (m % this.ycB == 0) {
+      i = m / this.zpB;
+      if (m % this.zpB == 0) {
         break label413;
       }
     }
     int j;
     label413:
-    for (this.maxPageIndex = (i + 1);; this.maxPageIndex = i)
+    for (this.rxK = (i + 1);; this.rxK = i)
     {
-      if (this.maxPageIndex > 4) {
-        this.maxPageIndex = 4;
+      if (this.rxK > 4) {
+        this.rxK = 4;
       }
-      this.ycz = this.maxPageIndex;
-      j = m - this.ycB * (this.maxPageIndex - this.ycz + 1);
+      this.zpz = this.rxK;
+      j = m - this.zpB * (this.rxK - this.zpz + 1);
       i = j;
       if (j < 0) {
         i = 0;
       }
-      j = m - this.ycB * (this.maxPageIndex - this.ycz);
-      ad.i("MicroMsg.Sport.SportChartView", "updateViewItems beginIndex:%d endIndex:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      j = m - this.zpB * (this.rxK - this.zpz);
+      ac.i("MicroMsg.Sport.SportChartView", "updateViewItems beginIndex:%d endIndex:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       localObject2 = ((List)localObject2).subList(i, j);
       m = ((List)localObject2).size();
       j = k;
-      if (m >= this.ycB) {
+      if (m >= this.zpB) {
         break;
       }
       ((Calendar)localObject1).setTimeInMillis(((d)((List)localObject2).get(0)).field_timestamp);
@@ -637,7 +637,7 @@ public class SportChartView
       for (;;)
       {
         j = k;
-        if (i >= this.ycB - m) {
+        if (i >= this.zpB - m) {
           break;
         }
         ((Calendar)localObject1).add(5, -1);
@@ -648,11 +648,11 @@ public class SportChartView
         i += 1;
       }
     }
-    while (j < this.ycB)
+    while (j < this.zpB)
     {
       localObject1 = (d)((List)localObject2).get(j);
-      this.ycD[j].jzV = ((d)localObject1).field_step;
-      this.ycD[j].timestamp = ((d)localObject1).field_timestamp;
+      this.zpD[j].kar = ((d)localObject1).field_step;
+      this.zpD[j].timestamp = ((d)localObject1).field_timestamp;
       j += 1;
     }
     AppMethodBeat.o(103541);
@@ -661,22 +661,22 @@ public class SportChartView
   public final void a(SportChartView.a parama)
   {
     AppMethodBeat.i(103529);
-    this.ycA = parama;
-    if (parama == SportChartView.a.ycJ) {}
-    for (this.ycB = 7;; this.ycB = 30)
+    this.zpA = parama;
+    if (parama == SportChartView.a.zpJ) {}
+    for (this.zpB = 7;; this.zpB = 30)
     {
-      this.ycD = new b[this.ycB];
-      dFP();
+      this.zpD = new b[this.zpB];
+      dUq();
       AppMethodBeat.o(103529);
       return;
     }
   }
   
-  public final void fQ(List<d> paramList)
+  public final void fY(List<d> paramList)
   {
     AppMethodBeat.i(103535);
-    this.ycC = paramList;
-    qB(true);
+    this.zpC = paramList;
+    rz(true);
     invalidate();
     AppMethodBeat.o(103535);
   }
@@ -684,34 +684,34 @@ public class SportChartView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(103540);
-    this.fIN = getWidth();
-    this.fIO = getHeight();
-    this.phN = ((this.fIN - this.pgV - this.pgX) / (this.ycB - 1));
-    this.phO = ((this.fIO - this.pgZ - this.phb) / 2);
+    this.fMt = getWidth();
+    this.fMu = getHeight();
+    this.pKX = ((this.fMt - this.pKf - this.pKh) / (this.zpB - 1));
+    this.pKY = ((this.fMu - this.pKj - this.pKl) / 2);
     int i = 0;
-    while (i < this.ycD.length)
+    while (i < this.zpD.length)
     {
-      this.ycD[i].x = (this.pgV + this.phN * i);
+      this.zpD[i].x = (this.pKf + this.pKX * i);
       i += 1;
     }
-    i = this.ycD.length;
+    i = this.zpD.length;
     int k = i;
-    if (i > this.ycB) {
-      k = this.ycB;
+    if (i > this.zpB) {
+      k = this.zpB;
     }
     int j = 0;
     i = 0;
     while (i < k)
     {
-      if (this.ycD[i].jzV > 100000) {
-        this.ycD[i].jzV = 100000;
+      if (this.zpD[i].kar > 100000) {
+        this.zpD[i].kar = 100000;
       }
-      if (this.ycD[i].jzV < 0) {
-        this.ycD[i].jzV = 0;
+      if (this.zpD[i].kar < 0) {
+        this.zpD[i].kar = 0;
       }
       int m = j;
-      if (this.ycD[i].jzV > j) {
-        m = this.ycD[i].jzV;
+      if (this.zpD[i].kar > j) {
+        m = this.zpD[i].kar;
       }
       i += 1;
       j = m;
@@ -721,14 +721,14 @@ public class SportChartView
     }
     for (;;)
     {
-      this.phK = ((this.fIO - this.pgZ - this.phb) * 10000 / i);
-      this.phK = (this.fIO - this.phb - this.phK);
+      this.pKU = ((this.fMu - this.pKj - this.pKl) * 10000 / i);
+      this.pKU = (this.fMu - this.pKl - this.pKU);
       j = 0;
       for (;;)
       {
         if (j < k)
         {
-          this.ycD[j].y = (this.fIO - this.phb - this.ycD[j].jzV / i * (this.fIO - this.pgZ - this.phb));
+          this.zpD[j].y = (this.fMu - this.pKl - this.zpD[j].kar / i * (this.fMu - this.pKj - this.pKl));
           j += 1;
           continue;
           if ((j <= 15000) || (j > 100000)) {
@@ -746,37 +746,37 @@ public class SportChartView
       if (i < k)
       {
         if (i == 0) {
-          this.ycD[i].wdN = this.ycw.format(new Date(this.ycD[i].timestamp));
+          this.zpD[i].xpb = this.zpw.format(new Date(this.zpD[i].timestamp));
         }
         for (;;)
         {
           i += 1;
           break;
-          if (this.ycA == SportChartView.a.ycK)
+          if (this.zpA == SportChartView.a.zpK)
           {
             if (i % 6 == 5) {
-              this.ycD[i].wdN = this.ycx.format(new Date(this.ycD[i].timestamp));
+              this.zpD[i].xpb = this.zpx.format(new Date(this.zpD[i].timestamp));
             } else {
-              this.ycD[i].wdN = "";
+              this.zpD[i].xpb = "";
             }
           }
           else {
-            this.ycD[i].wdN = this.ycx.format(new Date(this.ycD[i].timestamp));
+            this.zpD[i].xpb = this.zpx.format(new Date(this.zpD[i].timestamp));
           }
         }
       }
       super.onDraw(paramCanvas);
       float f;
-      if (!this.ycy)
+      if (!this.zpy)
       {
         n(paramCanvas);
-        if (this.tcu != 2147483647)
+        if (this.ukJ != 2147483647)
         {
-          i = this.tcu;
-          if ((i >= 0) && (i <= this.ycB - 1))
+          i = this.ukJ;
+          if ((i >= 0) && (i <= this.zpB - 1))
           {
             this.paint.reset();
-            this.paint.setColor(this.pgG);
+            this.paint.setColor(this.pJQ);
             this.paint.setAntiAlias(true);
             this.paint.setStrokeWidth(0.0F);
             this.paint.setTextSize(o(2, 12.0F));
@@ -784,120 +784,120 @@ public class SportChartView
             if (i == 0) {
               this.paint.setTextAlign(Paint.Align.LEFT);
             }
-            if (i == this.ycB - 1) {
+            if (i == this.zpB - 1) {
               this.paint.setTextAlign(Paint.Align.RIGHT);
             }
-            if (!this.pia)
+            if (!this.pLk)
             {
-              this.phZ = ((int)this.ycD[i].y - this.phB);
-              this.startY = this.phZ;
-              this.pia = true;
+              this.pLj = ((int)this.zpD[i].y - this.pKL);
+              this.startY = this.pLj;
+              this.pLk = true;
             }
-            if (this.pia)
+            if (this.pLk)
             {
               f = (float)(this.startY / 8.0D);
-              if (this.phZ > 0) {
-                this.paint.setAlpha((this.startY - this.phZ) * 255 / this.startY);
+              if (this.pLj > 0) {
+                this.paint.setAlpha((this.startY - this.pLj) * 255 / this.startY);
               }
-              paramCanvas.drawText(this.ycD[i].jzV, this.ycD[i].x, this.phZ + this.phB, this.paint);
-              if (this.ycA == SportChartView.a.ycK)
+              paramCanvas.drawText(this.zpD[i].kar, this.zpD[i].x, this.pLj + this.pKL, this.paint);
+              if (this.zpA == SportChartView.a.zpK)
               {
                 this.paint.reset();
-                this.phU.reset();
+                this.pLe.reset();
                 localObject = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
                 this.paint.setPathEffect((PathEffect)localObject);
-                this.paint.setColor(this.pgA);
-                this.paint.setStrokeWidth(this.pgT);
+                this.paint.setColor(this.pJK);
+                this.paint.setStrokeWidth(this.pKd);
                 this.paint.setStyle(Paint.Style.STROKE);
                 this.paint.setAlpha(102);
-                this.phU.moveTo(this.ycD[i].x, this.fIO - this.phh);
-                this.phU.lineTo(this.ycD[i].x, this.phZ + this.phB + this.pgP);
-                paramCanvas.drawPath(this.phU, this.paint);
+                this.pLe.moveTo(this.zpD[i].x, this.fMu - this.pKr);
+                this.pLe.lineTo(this.zpD[i].x, this.pLj + this.pKL + this.pJZ);
+                paramCanvas.drawPath(this.pLe, this.paint);
               }
-              if (this.phZ <= 0) {
+              if (this.pLj <= 0) {
                 break label1844;
               }
-              if (this.phZ / this.startY > 1.0F / f) {
+              if (this.pLj / this.startY > 1.0F / f) {
                 break label1817;
               }
-              this.phZ -= 1;
+              this.pLj -= 1;
               invalidate();
             }
           }
           label1050:
-          i = this.tcu;
-          if ((i >= 0) && (i <= this.ycB - 1)) {
-            this.ycD[i].ycM = true;
+          i = this.ukJ;
+          if ((i >= 0) && (i <= this.zpB - 1)) {
+            this.zpD[i].zpM = true;
           }
         }
       }
       this.paint.reset();
-      this.phU.reset();
+      this.pLe.reset();
       Object localObject = new DashPathEffect(new float[] { 5.0F, 5.0F }, 0.0F);
       this.paint.setPathEffect((PathEffect)localObject);
-      this.paint.setColor(this.pgA);
-      this.paint.setStrokeWidth(this.pgT);
+      this.paint.setColor(this.pJK);
+      this.paint.setStrokeWidth(this.pKd);
       this.paint.setAlpha(102);
       this.paint.setStyle(Paint.Style.STROKE);
-      if ((this.phK != 0) && (!this.ycy))
+      if ((this.pKU != 0) && (!this.zpy))
       {
-        this.phU.moveTo(this.pgV, this.phK);
-        this.phU.lineTo(this.fIN - this.phd, this.phK);
-        paramCanvas.drawPath(this.phU, this.paint);
+        this.pLe.moveTo(this.pKf, this.pKU);
+        this.pLe.lineTo(this.fMt - this.pKn, this.pKU);
+        paramCanvas.drawPath(this.pLe, this.paint);
       }
       this.paint.reset();
-      this.phU.reset();
-      this.paint.setColor(this.pgA);
-      this.paint.setStrokeWidth(this.pgT);
+      this.pLe.reset();
+      this.paint.setColor(this.pJK);
+      this.paint.setStrokeWidth(this.pKd);
       this.paint.setStyle(Paint.Style.STROKE);
       this.paint.setAlpha(102);
-      this.phU.reset();
-      this.phU.moveTo(this.phl, this.fIO - this.phh);
-      this.phU.lineTo(this.fIN - this.phn, this.fIO - this.phh);
-      this.phU.moveTo(this.phl, this.phj);
-      this.phU.lineTo(this.fIN - this.phn, this.phj);
-      paramCanvas.drawPath(this.phU, this.paint);
-      if (!this.ycy)
+      this.pLe.reset();
+      this.pLe.moveTo(this.pKv, this.fMu - this.pKr);
+      this.pLe.lineTo(this.fMt - this.pKx, this.fMu - this.pKr);
+      this.pLe.moveTo(this.pKv, this.pKt);
+      this.pLe.lineTo(this.fMt - this.pKx, this.pKt);
+      paramCanvas.drawPath(this.pLe, this.paint);
+      if (!this.zpy)
       {
         this.paint.reset();
-        this.paint.setColor(this.pgI);
+        this.paint.setColor(this.pJS);
         this.paint.setAntiAlias(true);
         this.paint.setAlpha(102);
         this.paint.setStrokeWidth(0.0F);
         this.paint.setTextSize(o(2, 12.0F));
         this.paint.setTextAlign(Paint.Align.RIGHT);
-        paramCanvas.drawText(getResources().getString(2131764118), this.fIN - this.php, (float)(this.phK + this.paint.getTextSize() * 0.34D), this.paint);
+        paramCanvas.drawText(getResources().getString(2131764118), this.fMt - this.pKz, (float)(this.pKU + this.paint.getTextSize() * 0.34D), this.paint);
       }
-      if (this.ycF)
+      if (this.zpF)
       {
         this.paint.reset();
         this.paint.setColor(-1);
         this.paint.setAntiAlias(true);
         this.paint.setStrokeWidth(0.0F);
-        this.paint.setTypeface(this.phL);
+        this.paint.setTypeface(this.pKV);
         this.paint.setTextAlign(Paint.Align.RIGHT);
         this.paint.setTextSize(o(2, 28.0F));
-        localObject = String.valueOf(this.ycE);
-        paramCanvas.drawText((String)localObject, this.fIN - this.phz, this.phx, this.paint);
+        localObject = String.valueOf(this.zpE);
+        paramCanvas.drawText((String)localObject, this.fMt - this.pKJ, this.pKH, this.paint);
         f = this.paint.measureText((String)localObject);
         this.paint.setTextSize(o(2, 24.0F));
-        paramCanvas.drawText(getResources().getString(2131764121), this.fIN - this.phz - f, this.pht, this.paint);
+        paramCanvas.drawText(getResources().getString(2131764121), this.fMt - this.pKJ - f, this.pKD, this.paint);
       }
       for (;;)
       {
-        if (this.ycD.length > 2)
+        if (this.zpD.length > 2)
         {
           this.paint.reset();
           this.paint.setAntiAlias(true);
           this.paint.setStrokeWidth(0.0F);
           this.paint.setAlpha(102);
           this.paint.setStyle(Paint.Style.FILL_AND_STROKE);
-          localObject = new LinearGradient(0.0F, 0.0F, 0.0F, this.fIO - this.phh, -1, 16777215, Shader.TileMode.REPEAT);
+          localObject = new LinearGradient(0.0F, 0.0F, 0.0F, this.fMu - this.pKr, -1, 16777215, Shader.TileMode.REPEAT);
           this.paint.setShader((Shader)localObject);
           this.paint.setColor(-1);
           c(paramCanvas, true);
-          caR();
-          if (!this.ycy) {
+          cia();
+          if (!this.zpy) {
             c(paramCanvas, false);
           }
         }
@@ -905,22 +905,22 @@ public class SportChartView
         AppMethodBeat.o(103540);
         return;
         label1817:
-        this.phZ = ((int)(this.phZ - f * (this.phZ / this.startY)));
+        this.pLj = ((int)(this.pLj - f * (this.pLj / this.startY)));
         break;
         label1844:
-        this.pia = false;
+        this.pLk = false;
         break label1050;
         this.paint.reset();
         this.paint.setColor(-1);
         this.paint.setAntiAlias(true);
         this.paint.setStrokeWidth(0.0F);
-        this.paint.setTypeface(this.phL);
+        this.paint.setTypeface(this.pKV);
         this.paint.setTextSize(o(2, 24.0F));
         this.paint.setTextAlign(Paint.Align.LEFT);
-        paramCanvas.drawText(getResources().getString(2131764120), this.phv, this.pht, this.paint);
+        paramCanvas.drawText(getResources().getString(2131764120), this.pKF, this.pKD, this.paint);
         this.paint.setTextAlign(Paint.Align.RIGHT);
         this.paint.setTextSize(o(2, 28.0F));
-        paramCanvas.drawText(this.ycE, this.fIN - this.phz, this.phx, this.paint);
+        paramCanvas.drawText(this.zpE, this.fMt - this.pKJ, this.pKH, this.paint);
       }
       label2014:
       i = 0;
@@ -930,29 +930,29 @@ public class SportChartView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(103542);
-    this.hRv.onTouchEvent(paramMotionEvent);
+    this.irA.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(103542);
     return true;
   }
   
   public void setHasSwitchBtn(boolean paramBoolean)
   {
-    this.ycF = paramBoolean;
+    this.zpF = paramBoolean;
   }
   
   public void setTodayStep(int paramInt)
   {
-    this.ycE = paramInt;
+    this.zpE = paramInt;
   }
   
   final class b
   {
-    int jzV;
+    int kar;
     long timestamp;
-    String wdN = "";
     float x;
+    String xpb = "";
     float y;
-    boolean ycM;
+    boolean zpM;
     
     private b() {}
   }

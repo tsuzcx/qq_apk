@@ -29,57 +29,55 @@ public abstract interface c
   
   public abstract void b(int paramInt, f paramf);
   
-  public abstract void byP();
+  public abstract void bFL();
   
-  public abstract boolean byQ();
+  public abstract boolean bFM();
   
-  public abstract boolean byR();
+  public abstract boolean bFN();
   
-  public abstract long byS();
+  public abstract long bFO();
   
-  public abstract void byT();
+  public abstract void bFP();
   
-  public abstract void byU();
+  public abstract void bFQ();
   
-  public abstract List<BallInfo> byV();
+  public abstract List<BallInfo> bFR();
   
-  public abstract void byW();
+  public abstract void bFS();
   
-  public abstract boolean byX();
+  public abstract boolean bFT();
   
-  public abstract void byY();
+  public abstract void bFU();
   
-  public abstract void byZ();
+  public abstract void bFV();
   
   public abstract boolean c(AnimatorListenerAdapter paramAnimatorListenerAdapter);
   
-  public abstract void ds(View paramView);
-  
-  public abstract BallInfo g(BallInfo paramBallInfo);
+  public abstract void du(View paramView);
   
   public abstract Point getBallPosition();
   
-  public abstract boolean h(BallInfo paramBallInfo);
+  public abstract BallInfo h(BallInfo paramBallInfo);
   
-  public abstract void i(BallInfo paramBallInfo);
+  public abstract boolean i(BallInfo paramBallInfo);
   
-  public abstract void ie(boolean paramBoolean);
+  public abstract void iE(boolean paramBoolean);
   
-  public abstract void jdMethod_if(boolean paramBoolean);
+  public abstract void iF(boolean paramBoolean);
   
-  public abstract void ig(boolean paramBoolean);
+  public abstract void iG(boolean paramBoolean);
   
-  public abstract void ih(boolean paramBoolean);
+  public abstract void iH(boolean paramBoolean);
   
-  public abstract void ii(boolean paramBoolean);
+  public abstract void iI(boolean paramBoolean);
   
-  public abstract void ij(boolean paramBoolean);
+  public abstract void iJ(boolean paramBoolean);
   
-  public abstract void ik(boolean paramBoolean);
+  public abstract void iK(boolean paramBoolean);
   
-  public abstract void il(boolean paramBoolean);
+  public abstract void iL(boolean paramBoolean);
   
-  public abstract void im(boolean paramBoolean);
+  public abstract void iM(boolean paramBoolean);
   
   public abstract void j(BallInfo paramBallInfo);
   
@@ -91,8 +89,6 @@ public abstract interface c
   
   public abstract void n(BallInfo paramBallInfo);
   
-  public abstract void nt(long paramLong);
-  
   public abstract void o(BallInfo paramBallInfo);
   
   public abstract void onAccountRelease();
@@ -103,22 +99,26 @@ public abstract interface c
   
   public abstract void r(BallInfo paramBallInfo);
   
+  public abstract void rf(long paramLong);
+  
+  public abstract void s(BallInfo paramBallInfo);
+  
   public abstract void setEnableClick(boolean paramBoolean);
   
-  public abstract boolean wu(int paramInt);
+  public abstract boolean xm(int paramInt);
   
-  public abstract void wv(int paramInt);
+  public abstract void xn(int paramInt);
   
-  public abstract void ww(int paramInt);
+  public abstract void xo(int paramInt);
   
   public static abstract interface a
   {
-    public abstract void wx(int paramInt);
+    public abstract void xp(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.c.c
  * JD-Core Version:    0.7.0.1
  */

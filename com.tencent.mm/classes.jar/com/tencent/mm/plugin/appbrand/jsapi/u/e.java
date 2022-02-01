@@ -1,81 +1,69 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
+import android.content.ClipData;
+import android.content.ClipData.Item;
+import android.content.ClipboardManager;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.utils.z;
-import com.tencent.mm.plugin.appbrand.utils.z.a;
-import com.tencent.mm.plugin.appbrand.utils.z.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
-  extends y
+  extends a
 {
-  public static final int CTRL_INDEX = 472;
-  public static final String NAME = "enableDeviceOrientationChangeListening";
-  private boolean kjm;
-  protected z kjn;
-  private z.b kjo;
+  public static final int CTRL_INDEX = 169;
+  public static final String NAME = "getClipboardData";
   
-  public e()
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137634);
-    this.kjm = false;
-    this.kjo = new z.b()
+    AppMethodBeat.i(137660);
+    paramJSONObject = (ClipboardManager)ai.getContext().getSystemService("clipboard");
+    if (paramJSONObject == null)
     {
-      public final void a(z.a paramAnonymousa1, final z.a paramAnonymousa2)
-      {
-        AppMethodBeat.i(137633);
-        ad.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
-        aq.n(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(137632);
-            h.c(paramAnonymousa2);
-            AppMethodBeat.o(137632);
-          }
-        }, 500L);
-        AppMethodBeat.o(137633);
-      }
-    };
-    AppMethodBeat.o(137634);
-  }
-  
-  public final String a(c paramc, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(137635);
-    if (paramJSONObject.optBoolean("enable", false))
-    {
-      h.z(paramc);
-      if (!this.kjm)
-      {
-        this.kjn = new z(paramc.getContext(), this.kjo);
-        this.kjn.enable();
-        this.kjm = true;
-      }
+      ac.i("MicroMsg.JsApiGetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(137660);
+      return;
     }
-    for (;;)
+    try
     {
-      paramc = e("ok", null);
-      AppMethodBeat.o(137635);
-      return paramc;
-      h.A(paramc);
-      if (this.kjm)
+      Object localObject2 = paramJSONObject.getPrimaryClip();
+      Object localObject1 = "";
+      paramJSONObject = (JSONObject)localObject1;
+      if (localObject2 != null)
       {
-        this.kjn.disable();
-        this.kjn = null;
-        this.kjm = false;
+        paramJSONObject = (JSONObject)localObject1;
+        if (((ClipData)localObject2).getItemCount() > 0)
+        {
+          localObject2 = ((ClipData)localObject2).getItemAt(0);
+          paramJSONObject = (JSONObject)localObject1;
+          if (((ClipData.Item)localObject2).getText() != null) {
+            paramJSONObject = ((ClipData.Item)localObject2).getText().toString();
+          }
+        }
       }
+      localObject1 = new HashMap();
+      ((Map)localObject1).put("data", paramJSONObject);
+      paramc.h(paramInt, k("ok", (Map)localObject1));
+      AppMethodBeat.o(137660);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      ac.e("MicroMsg.JsApiGetClipboardData", "invoke with appId:%s, but get Exception:%s", new Object[] { paramc.getAppId(), paramJSONObject });
+      AppMethodBeat.o(137660);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.e
  * JD-Core Version:    0.7.0.1
  */

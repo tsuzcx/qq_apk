@@ -25,53 +25,53 @@ import java.util.List;
 public abstract class c
   implements a
 {
-  public static final char[] IhZ = { '…' };
-  private static final String Iia = new String(IhZ);
-  private int IiA = 0;
-  private int IiB = 0;
-  private int IiC = 0;
-  protected String Iib;
-  protected char[] Iic;
-  protected float[] Iid;
-  protected float[] Iie;
-  protected float[] Iif = new float[com.tencent.neattextview.textview.a.a.IhV.length];
-  protected float[] Iig = new float[com.tencent.neattextview.textview.a.a.IhW.length];
-  protected HashMap<Character, Float> Iih = new HashMap(com.tencent.neattextview.textview.a.a.IhV.length);
-  public ArrayList<b> Iii = new ArrayList();
-  private LinkedList<com.tencent.neattextview.textview.b.b> Iij = new LinkedList();
-  private float Iik;
-  private float Iil;
-  private float Iim;
-  private int Iin;
-  private TextPaint Iio = new TextPaint();
-  private float[] Iip;
-  e<ImageSpan> Iiq = new e(ImageSpan.class);
-  e<AbsoluteSizeSpan> Iir = new e(AbsoluteSizeSpan.class);
-  e<RelativeSizeSpan> Iis = new e(RelativeSizeSpan.class);
-  private e<BackgroundColorSpan> Iit = new e(BackgroundColorSpan.class);
-  e<ForegroundColorSpan> Iiu = new e(ForegroundColorSpan.class);
-  e<ClickableSpan> Iiv = new e(ClickableSpan.class);
-  e<LineBackgroundSpan> Iiw = new e(LineBackgroundSpan.class);
-  private float Iix = 0.0F;
-  private LinkedList<com.tencent.neattextview.textview.b.c> Iiy;
-  protected boolean[] Iiz;
-  protected TextPaint avD;
-  private int bBk = 0;
-  private TextUtils.TruncateAt ggM;
-  private float mPaddingLeft;
-  private float mPaddingTop;
+  public static final char[] JJI = { '…' };
+  private static final String JJJ = new String(JJI);
+  protected String JJK;
+  protected char[] JJL;
+  protected float[] JJM;
+  protected float[] JJN;
+  protected float[] JJO = new float[com.tencent.neattextview.textview.a.a.JJE.length];
+  protected float[] JJP = new float[com.tencent.neattextview.textview.a.a.JJF.length];
+  protected HashMap<Character, Float> JJQ = new HashMap(com.tencent.neattextview.textview.a.a.JJE.length);
+  public ArrayList<b> JJR = new ArrayList();
+  private LinkedList<com.tencent.neattextview.textview.b.b> JJS = new LinkedList();
+  private float JJT;
+  private float JJU;
+  private float JJV;
+  private float JJW;
+  private float JJX;
+  private int JJY;
+  private TextPaint JJZ = new TextPaint();
+  private float[] JKa;
+  e<ImageSpan> JKb = new e(ImageSpan.class);
+  e<AbsoluteSizeSpan> JKc = new e(AbsoluteSizeSpan.class);
+  e<RelativeSizeSpan> JKd = new e(RelativeSizeSpan.class);
+  private e<BackgroundColorSpan> JKe = new e(BackgroundColorSpan.class);
+  e<ForegroundColorSpan> JKf = new e(ForegroundColorSpan.class);
+  e<ClickableSpan> JKg = new e(ClickableSpan.class);
+  e<LineBackgroundSpan> JKh = new e(LineBackgroundSpan.class);
+  private float JKi = 0.0F;
+  private LinkedList<com.tencent.neattextview.textview.b.c> JKj;
+  protected boolean[] JKk;
+  private int JKl = 0;
+  private int JKm = 0;
+  private int JKn = 0;
+  protected TextPaint awy;
+  private int byS = 0;
+  private TextUtils.TruncateAt gls;
   protected CharSequence mText;
-  private float oqd;
+  private float oTD;
   
   public c(CharSequence paramCharSequence, float[] paramArrayOfFloat)
   {
     this.mText = paramCharSequence;
-    this.Iib = paramCharSequence.toString();
-    this.Iic = this.Iib.toCharArray();
+    this.JJK = paramCharSequence.toString();
+    this.JJL = this.JJK.toCharArray();
     if (paramArrayOfFloat != null)
     {
-      this.Iid = new float[paramArrayOfFloat.length];
-      System.arraycopy(paramArrayOfFloat, 0, this.Iid, 0, paramArrayOfFloat.length);
+      this.JJM = new float[paramArrayOfFloat.length];
+      System.arraycopy(paramArrayOfFloat, 0, this.JJM, 0, paramArrayOfFloat.length);
     }
   }
   
@@ -80,8 +80,8 @@ public abstract class c
     int i;
     label129:
     float f;
-    if ((this.ggM != null) && (this.ggM != TextUtils.TruncateAt.MARQUEE)) {
-      if ((this.mText != null) && (this.Iii.size() > 0) && ((this.mText.length() > ((b)this.Iii.get(this.Iii.size() - 1)).getEnd()) || ((this.Iim > 0.0F) && (flf()[0] - ((b)this.Iii.get(this.Iii.size() - 1)).getWidth() < this.Iim))))
+    if ((this.gls != null) && (this.gls != TextUtils.TruncateAt.MARQUEE)) {
+      if ((this.mText != null) && (this.JJR.size() > 0) && ((this.mText.length() > ((b)this.JJR.get(this.JJR.size() - 1)).getEnd()) || ((this.JJX > 0.0F) && (fBw()[0] - ((b)this.JJR.get(this.JJR.size() - 1)).getWidth() < this.JJX))))
       {
         i = 1;
         if (i == 0) {
@@ -91,21 +91,21 @@ public abstract class c
         if (i == 0) {
           break label415;
         }
-        f = paramTextPaint.measureText(Iia) + paramTextPaint.getTextSize() / 6.0F + paramFloat;
-        paramTextPaint = (b)this.Iii.get(this.Iii.size() - 1);
-        this.IiC = (this.Iii.size() - 1);
-        if ((this.bBk != 1) || (paramTruncateAt != TextUtils.TruncateAt.MIDDLE)) {
+        f = paramTextPaint.measureText(JJJ) + paramTextPaint.getTextSize() / 6.0F + paramFloat;
+        paramTextPaint = (b)this.JJR.get(this.JJR.size() - 1);
+        this.JKn = (this.JJR.size() - 1);
+        if ((this.byS != 1) || (paramTruncateAt != TextUtils.TruncateAt.MIDDLE)) {
           break label348;
         }
-        paramTruncateAt = (b)this.Iii.get(0);
+        paramTruncateAt = (b)this.JJR.get(0);
         i = paramTruncateAt.getStart();
         paramFloat = 0.0F;
         label223:
         if (i >= paramTruncateAt.getEnd()) {
           break label342;
         }
-        paramFloat += this.Iid[i];
-        if (paramFloat < this.oqd / 2.0F) {
+        paramFloat += this.JJM[i];
+        if (paramFloat < this.oTD / 2.0F) {
           break label333;
         }
       }
@@ -119,11 +119,11 @@ public abstract class c
       {
         if (i >= j)
         {
-          paramFloat += this.Iid[i];
+          paramFloat += this.JJM[i];
           if ((paramFloat < f) && (i != j))
           {
-            this.Iid[i] = 0.0F;
-            this.Iic[i] = '\000';
+            this.JJM[i] = 0.0F;
+            this.JJL[i] = '\000';
             i -= 1;
             continue;
             i = 0;
@@ -148,10 +148,10 @@ public abstract class c
       }
       if (i >= 0)
       {
-        this.IiB = (this.Iic.length - i);
-        this.Iid[i] = f;
-        this.Iic[i] = IhZ[0];
-        this.IiA = (i - j);
+        this.JKm = (this.JJL.length - i);
+        this.JJM[i] = f;
+        this.JJL[i] = JJI[0];
+        this.JKl = (i - j);
       }
       label415:
       return;
@@ -168,104 +168,104 @@ public abstract class c
     {
       localObject = (Spanned)paramCharSequence;
       i = paramCharSequence.length();
-      this.Iiq.a((Spanned)localObject, i);
-      this.Iir.a((Spanned)localObject, i);
-      this.Iis.a((Spanned)localObject, i);
-      this.Iiu.a((Spanned)localObject, i);
-      this.Iit.a((Spanned)localObject, i);
-      this.Iiv.a((Spanned)localObject, i);
-      this.Iiw.a((Spanned)localObject, i);
+      this.JKb.a((Spanned)localObject, i);
+      this.JKc.a((Spanned)localObject, i);
+      this.JKd.a((Spanned)localObject, i);
+      this.JKf.a((Spanned)localObject, i);
+      this.JKe.a((Spanned)localObject, i);
+      this.JKg.a((Spanned)localObject, i);
+      this.JKh.a((Spanned)localObject, i);
     }
-    this.Iio.set(paramTextPaint);
+    this.JJZ.set(paramTextPaint);
     int i = 0;
     int j;
     int m;
     int n;
-    while (i < this.Iir.IiT)
+    while (i < this.JKc.JKE)
     {
-      ((AbsoluteSizeSpan[])this.Iir.IiU)[i].updateMeasureState(this.Iio);
-      j = this.Iir.IiV[i];
-      m = this.Iir.IiW[i];
+      ((AbsoluteSizeSpan[])this.JKc.JKF)[i].updateMeasureState(this.JJZ);
+      j = this.JKc.JKG[i];
+      m = this.JKc.JKH[i];
       n = m - j;
       paramTextPaint = new float[n];
-      this.Iio.getTextWidths(paramCharSequence, j, m, paramTextPaint);
-      System.arraycopy(paramTextPaint, 0, this.Iid, j, n);
-      if (this.Iie == null) {
-        this.Iie = new float[paramCharSequence.length()];
+      this.JJZ.getTextWidths(paramCharSequence, j, m, paramTextPaint);
+      System.arraycopy(paramTextPaint, 0, this.JJM, j, n);
+      if (this.JJN == null) {
+        this.JJN = new float[paramCharSequence.length()];
       }
-      this.Iie[j] = this.Iio.getTextSize();
+      this.JJN[j] = this.JJZ.getTextSize();
       i += 1;
     }
     i = 0;
-    while (i < this.Iis.IiT)
+    while (i < this.JKd.JKE)
     {
-      ((RelativeSizeSpan[])this.Iis.IiU)[i].updateMeasureState(this.Iio);
-      j = this.Iis.IiV[i];
-      m = this.Iis.IiW[i];
+      ((RelativeSizeSpan[])this.JKd.JKF)[i].updateMeasureState(this.JJZ);
+      j = this.JKd.JKG[i];
+      m = this.JKd.JKH[i];
       n = m - j;
       paramTextPaint = new float[n];
-      this.Iio.getTextWidths(paramCharSequence, j, m, paramTextPaint);
-      System.arraycopy(paramTextPaint, 0, this.Iid, j, n);
-      if (this.Iie == null) {
-        this.Iie = new float[paramCharSequence.length()];
+      this.JJZ.getTextWidths(paramCharSequence, j, m, paramTextPaint);
+      System.arraycopy(paramTextPaint, 0, this.JJM, j, n);
+      if (this.JJN == null) {
+        this.JJN = new float[paramCharSequence.length()];
       }
-      this.Iie[j] = this.Iio.getTextSize();
+      this.JJN[j] = this.JJZ.getTextSize();
       i += 1;
     }
     i = 0;
-    while (i < this.Iiq.IiT)
+    while (i < this.JKb.JKE)
     {
-      paramTextPaint = ((ImageSpan[])this.Iiq.IiU)[i];
-      m = this.Iiq.IiV[i];
-      n = this.Iiq.IiW[i];
+      paramTextPaint = ((ImageSpan[])this.JKb.JKF)[i];
+      m = this.JKb.JKG[i];
+      n = this.JKb.JKH[i];
       paramTextPaint = paramTextPaint.getDrawable();
       localObject = new Rect();
       if (paramTextPaint != null) {
         ((Rect)localObject).set(paramTextPaint.getBounds());
       }
-      this.Iid[m] = ((Rect)localObject).width();
+      this.JJM[m] = ((Rect)localObject).width();
       paramArrayOfBoolean[m] = true;
       j = m + 1;
-      while ((j < m + (n - m)) && (j < this.Iid.length))
+      while ((j < m + (n - m)) && (j < this.JJM.length))
       {
-        this.Iid[j] = 0.0F;
+        this.JJM[j] = 0.0F;
         paramArrayOfBoolean[j] = true;
         j += 1;
       }
-      if (this.Iie == null) {
-        this.Iie = new float[paramCharSequence.length()];
+      if (this.JJN == null) {
+        this.JJN = new float[paramCharSequence.length()];
       }
-      this.Iie[m] = ((Rect)localObject).height();
+      this.JJN[m] = ((Rect)localObject).height();
       i += 1;
     }
     i = 0;
     for (;;)
     {
       j = k;
-      if (i >= this.Iit.IiT) {
+      if (i >= this.JKe.JKE) {
         break;
       }
-      paramCharSequence = ((BackgroundColorSpan[])this.Iit.IiU)[i];
-      j = this.Iit.IiV[i];
-      m = this.Iit.IiW[i];
-      this.Iij.add(new com.tencent.neattextview.textview.b.a(j, m, paramCharSequence));
+      paramCharSequence = ((BackgroundColorSpan[])this.JKe.JKF)[i];
+      j = this.JKe.JKG[i];
+      m = this.JKe.JKH[i];
+      this.JJS.add(new com.tencent.neattextview.textview.b.a(j, m, paramCharSequence));
       i += 1;
     }
-    while (j < this.Iiv.IiT)
+    while (j < this.JKg.JKE)
     {
-      paramCharSequence = ((ClickableSpan[])this.Iiv.IiU)[j];
-      i = this.Iiv.IiV[j];
-      k = this.Iiv.IiW[j];
-      this.Iij.add(new com.tencent.neattextview.textview.b.c(i, k, paramCharSequence));
+      paramCharSequence = ((ClickableSpan[])this.JKg.JKF)[j];
+      i = this.JKg.JKG[j];
+      k = this.JKg.JKH[j];
+      this.JJS.add(new com.tencent.neattextview.textview.b.c(i, k, paramCharSequence));
       j += 1;
     }
   }
   
   private void b(Paint paramPaint)
   {
-    this.Iih.clear();
+    this.JJQ.clear();
     Rect localRect = new Rect();
-    char[] arrayOfChar = com.tencent.neattextview.textview.a.a.IhV;
+    char[] arrayOfChar = com.tencent.neattextview.textview.a.a.JJE;
     int k = arrayOfChar.length;
     int i = 0;
     int j = 0;
@@ -276,11 +276,11 @@ public abstract class c
       f1 = paramPaint.measureText(String.valueOf(c));
       paramPaint.getTextBounds(String.valueOf(c), 0, 1, localRect);
       float f2 = localRect.right;
-      this.Iif[j] = (f1 - f2);
+      this.JJO[j] = (f1 - f2);
       j += 1;
       i += 1;
     }
-    arrayOfChar = com.tencent.neattextview.textview.a.a.IhW;
+    arrayOfChar = com.tencent.neattextview.textview.a.a.JJF;
     k = arrayOfChar.length;
     i = 0;
     j = 0;
@@ -290,8 +290,8 @@ public abstract class c
       if (localRect.left > 0) {}
       for (f1 = localRect.left;; f1 = 0.0F)
       {
-        this.Iig[j] = f1;
-        this.Iih.put(Character.valueOf(com.tencent.neattextview.textview.a.a.IhW[j]), Float.valueOf(f1));
+        this.JJP[j] = f1;
+        this.JJQ.put(Character.valueOf(com.tencent.neattextview.textview.a.a.JJF[j]), Float.valueOf(f1));
         j += 1;
         i += 1;
         break;
@@ -304,15 +304,15 @@ public abstract class c
     paramCanvas.save();
     paramCanvas.translate(paramFloat1, paramFloat2);
     paramFloat1 = 0.0F;
-    Iterator localIterator = this.Iij.iterator();
+    Iterator localIterator = this.JJS.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.neattextview.textview.b.b)localIterator.next()).a(paramCanvas, this.avD, this.Iii);
+      ((com.tencent.neattextview.textview.b.b)localIterator.next()).a(paramCanvas, this.awy, this.JJR);
     }
-    localIterator = this.Iii.iterator();
+    localIterator = this.JJR.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      localb.a(paramCanvas, this.avD, paramFloat1);
+      localb.a(paramCanvas, this.awy, paramFloat1);
       paramFloat1 = localb.getHeight() + paramFloat1;
     }
     paramCanvas.restore();
@@ -320,25 +320,25 @@ public abstract class c
   
   public final void a(TextPaint paramTextPaint, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, int paramInt1, TextUtils.TruncateAt paramTruncateAt, float paramFloat6, boolean paramBoolean, int paramInt2)
   {
-    this.avD = new TextPaint(paramTextPaint);
-    this.Iim = paramFloat6;
-    this.Iik = paramFloat2;
-    this.oqd = paramFloat1;
-    this.mPaddingLeft = paramFloat3;
-    this.mPaddingTop = paramFloat4;
-    this.bBk = paramInt1;
-    this.ggM = paramTruncateAt;
-    this.Iil = paramFloat5;
-    this.Iip = null;
-    this.Iin = paramInt2;
+    this.awy = new TextPaint(paramTextPaint);
+    this.JJX = paramFloat6;
+    this.JJT = paramFloat2;
+    this.oTD = paramFloat1;
+    this.JJU = paramFloat3;
+    this.JJV = paramFloat4;
+    this.byS = paramInt1;
+    this.gls = paramTruncateAt;
+    this.JJW = paramFloat5;
+    this.JKa = null;
+    this.JJY = paramInt2;
     paramInt2 = this.mText.length();
-    if (this.Iid == null)
+    if (this.JJM == null)
     {
-      this.Iid = new float[paramInt2];
-      paramTextPaint.getTextWidths(this.Iib, this.Iid);
+      this.JJM = new float[paramInt2];
+      paramTextPaint.getTextWidths(this.JJK, this.JJM);
     }
-    this.Iiz = new boolean[paramInt2];
-    a(this.mText, paramTextPaint, this.Iiz);
+    this.JKk = new boolean[paramInt2];
+    a(this.mText, paramTextPaint, this.JKk);
     b(paramTextPaint);
     a(paramTextPaint, paramFloat1, paramInt1, paramBoolean);
     a(paramTruncateAt, paramFloat6, paramTextPaint);
@@ -348,10 +348,10 @@ public abstract class c
   
   protected final void a(char[] paramArrayOfChar, int paramInt1, int paramInt2, float paramFloat1, float[] paramArrayOfFloat, int paramInt3, float paramFloat2, boolean paramBoolean, float paramFloat3, float paramFloat4)
   {
-    Paint.FontMetrics localFontMetrics = this.avD.getFontMetrics();
+    Paint.FontMetrics localFontMetrics = this.awy.getFontMetrics();
     float f1 = localFontMetrics.bottom - localFontMetrics.top;
     float f2 = f1;
-    if (this.Iie != null)
+    if (this.JJN != null)
     {
       int i = paramInt1;
       for (;;)
@@ -361,61 +361,61 @@ public abstract class c
           break;
         }
         f2 = f1;
-        if (f1 < this.Iie[i]) {
-          f2 = this.Iie[i];
+        if (f1 < this.JJN[i]) {
+          f2 = this.JJN[i];
         }
         i += 1;
         f1 = f2;
       }
     }
-    f1 = f2 + this.Iil;
-    paramArrayOfChar = new d(this, paramArrayOfChar, paramInt1, paramInt2, this.Iix, paramArrayOfFloat, paramFloat1, f1, paramFloat2, this.avD, paramBoolean, paramFloat3, paramInt3, this.Iin, paramFloat4);
-    this.Iix += f1;
-    this.Iii.add(paramArrayOfChar);
+    f1 = f2 + this.JJW;
+    paramArrayOfChar = new d(this, paramArrayOfChar, paramInt1, paramInt2, this.JKi, paramArrayOfFloat, paramFloat1, f1, paramFloat2, this.awy, paramBoolean, paramFloat3, paramInt3, this.JJY, paramFloat4);
+    this.JKi += f1;
+    this.JJR.add(paramArrayOfChar);
   }
   
-  public final void ax(CharSequence paramCharSequence)
+  public final void ay(CharSequence paramCharSequence)
   {
-    a(paramCharSequence, this.avD, this.Iiz);
+    a(paramCharSequence, this.awy, this.JKk);
   }
   
-  public int fkV()
+  public int fBm()
   {
-    return this.Iii.size();
+    return this.JJR.size();
   }
   
-  public final List<com.tencent.neattextview.textview.b.c> fkW()
+  public final List<com.tencent.neattextview.textview.b.c> fBn()
   {
-    if (this.Iiy == null)
+    if (this.JKj == null)
     {
-      this.Iiy = new LinkedList();
-      Iterator localIterator = this.Iij.iterator();
+      this.JKj = new LinkedList();
+      Iterator localIterator = this.JJS.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.neattextview.textview.b.b localb = (com.tencent.neattextview.textview.b.b)localIterator.next();
         if (localb.getClass() == com.tencent.neattextview.textview.b.c.class) {
-          this.Iiy.add((com.tencent.neattextview.textview.b.c)localb);
+          this.JKj.add((com.tencent.neattextview.textview.b.c)localb);
         }
       }
     }
-    return this.Iiy;
+    return this.JKj;
   }
   
-  public final float[] fkX()
+  public final float[] fBo()
   {
-    return this.Iid;
+    return this.JJM;
   }
   
-  public final String fle()
+  public final String fBv()
   {
-    return this.Iib;
+    return this.JJK;
   }
   
-  public final float[] flf()
+  public final float[] fBw()
   {
-    if (this.Iip == null)
+    if (this.JKa == null)
     {
-      Iterator localIterator = this.Iii.iterator();
+      Iterator localIterator = this.JJR.iterator();
       float f2 = 0.0F;
       float f1 = 0.0F;
       while (localIterator.hasNext())
@@ -428,31 +428,31 @@ public abstract class c
         f1 = localb.getHeight() + f1;
         f2 = f3;
       }
-      this.Iip = new float[] { f2, f1 };
+      this.JKa = new float[] { f2, f1 };
     }
-    return this.Iip;
+    return this.JKa;
   }
   
-  public final HashMap<Character, Float> flg()
+  public final HashMap<Character, Float> fBx()
   {
-    return this.Iih;
+    return this.JJQ;
   }
   
   public final int getEllipsisCount(int paramInt)
   {
-    if (this.IiC == paramInt) {
-      return this.IiB;
+    if (this.JKn == paramInt) {
+      return this.JKm;
     }
     return 0;
   }
   
   public final int getLineBaseline(int paramInt)
   {
-    int i = this.Iii.size();
+    int i = this.JJR.size();
     if (i > paramInt) {}
-    for (b localb = (b)this.Iii.get(paramInt);; localb = (b)this.Iii.get(i - 1))
+    for (b localb = (b)this.JJR.get(paramInt);; localb = (b)this.JJR.get(i - 1))
     {
-      return (int)localb.fld();
+      return (int)localb.fBu();
       if (i <= 0) {
         break;
       }
@@ -462,11 +462,11 @@ public abstract class c
   
   public final int getLineBottom(int paramInt)
   {
-    int i = this.Iii.size();
+    int i = this.JJR.size();
     if (i > paramInt) {}
-    for (b localb = (b)this.Iii.get(paramInt);; localb = (b)this.Iii.get(i - 1))
+    for (b localb = (b)this.JJR.get(paramInt);; localb = (b)this.JJR.get(i - 1))
     {
-      return (int)localb.fkY().bottom;
+      return (int)localb.fBp().bottom;
       if (i <= 0) {
         break;
       }
@@ -476,7 +476,7 @@ public abstract class c
   
   public final int getLineForOffset(int paramInt)
   {
-    Iterator localIterator = this.Iii.iterator();
+    Iterator localIterator = this.JJR.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -491,8 +491,8 @@ public abstract class c
   
   public final int getLineForVertical(int paramInt)
   {
-    int i = (int)(paramInt - this.mPaddingTop);
-    Iterator localIterator = this.Iii.iterator();
+    int i = (int)(paramInt - this.JJV);
+    Iterator localIterator = this.JJR.iterator();
     float f1 = 0.0F;
     paramInt = 0;
     while (localIterator.hasNext())
@@ -500,9 +500,9 @@ public abstract class c
       Object localObject = (b)localIterator.next();
       float f2 = f1;
       if (f1 == 0.0F) {
-        f2 = ((b)localObject).fkZ().top;
+        f2 = ((b)localObject).fBq().top;
       }
-      localObject = ((b)localObject).fkZ();
+      localObject = ((b)localObject).fBq();
       if (((RectF)localObject).contains(((RectF)localObject).centerX(), i)) {
         return paramInt;
       }
@@ -517,27 +517,27 @@ public abstract class c
   
   public final float getLineRight(int paramInt)
   {
-    if (this.Iii.size() > paramInt) {
-      return ((b)this.Iii.get(paramInt)).fkY().right;
+    if (this.JJR.size() > paramInt) {
+      return ((b)this.JJR.get(paramInt)).fBp().right;
     }
     return 0.0F;
   }
   
   public final int getLineStart(int paramInt)
   {
-    if (this.Iii.size() > paramInt) {
-      return ((b)this.Iii.get(paramInt)).getStart();
+    if (this.JJR.size() > paramInt) {
+      return ((b)this.JJR.get(paramInt)).getStart();
     }
-    return this.Iic.length;
+    return this.JJL.length;
   }
   
   public final int getLineTop(int paramInt)
   {
-    int i = this.Iii.size();
+    int i = this.JJR.size();
     if (i > paramInt) {}
-    for (b localb = (b)this.Iii.get(paramInt);; localb = (b)this.Iii.get(i - 1))
+    for (b localb = (b)this.JJR.get(paramInt);; localb = (b)this.JJR.get(i - 1))
     {
-      return (int)localb.fkY().top;
+      return (int)localb.fBp().top;
       if (i <= 0) {
         break;
       }
@@ -547,17 +547,17 @@ public abstract class c
   
   public final float getLineWidth(int paramInt)
   {
-    if (this.Iii.size() > paramInt) {
-      return ((b)this.Iii.get(paramInt)).fkY().width();
+    if (this.JJR.size() > paramInt) {
+      return ((b)this.JJR.get(paramInt)).fBp().width();
     }
     return 0.0F;
   }
   
   public final int getOffsetForHorizontal(int paramInt, float paramFloat)
   {
-    float f = this.mPaddingLeft;
-    if (this.Iii.size() > paramInt) {
-      return ((b)this.Iii.get(paramInt)).abD((int)(paramFloat - f));
+    float f = this.JJU;
+    if (this.JJR.size() > paramInt) {
+      return ((b)this.JJR.get(paramInt)).adW((int)(paramFloat - f));
     }
     return 0;
   }
@@ -568,7 +568,7 @@ public abstract class c
     if (i < 0) {
       return 0.0F;
     }
-    return ((b)this.Iii.get(i)).getPrimaryHorizontal(paramInt);
+    return ((b)this.JJR.get(i)).getPrimaryHorizontal(paramInt);
   }
   
   public final CharSequence getText()
@@ -578,22 +578,22 @@ public abstract class c
   
   public final TextPaint getTextPaint()
   {
-    return this.avD;
+    return this.awy;
   }
   
-  public final int kf(int paramInt1, int paramInt2)
+  public final int ks(int paramInt1, int paramInt2)
   {
-    paramInt1 = (int)(paramInt1 - this.mPaddingLeft);
-    paramInt2 = (int)(paramInt2 - this.mPaddingTop);
-    Iterator localIterator = this.Iii.iterator();
+    paramInt1 = (int)(paramInt1 - this.JJU);
+    paramInt2 = (int)(paramInt2 - this.JJV);
+    Iterator localIterator = this.JJR.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.fkZ().contains(paramInt1, paramInt2)) {
-        return localb.abD(paramInt1);
+      if (localb.fBq().contains(paramInt1, paramInt2)) {
+        return localb.adW(paramInt1);
       }
     }
-    return this.Iic.length;
+    return this.JJL.length;
   }
 }
 

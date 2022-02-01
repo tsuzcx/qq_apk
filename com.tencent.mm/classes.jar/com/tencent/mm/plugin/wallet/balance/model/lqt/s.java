@@ -5,13 +5,13 @@ import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ah;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.d;
-import com.tencent.mm.protocal.protobuf.afu;
-import com.tencent.mm.protocal.protobuf.bmv;
-import com.tencent.mm.protocal.protobuf.bum;
-import com.tencent.mm.protocal.protobuf.rx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agt;
+import com.tencent.mm.protocal.protobuf.brl;
+import com.tencent.mm.protocal.protobuf.bzd;
+import com.tencent.mm.protocal.protobuf.sh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.FileSystem.a;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -24,53 +24,53 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class s
 {
-  public static final s zEV;
-  private static final String zEW;
-  private static final String zEX;
-  public bmv zEF;
-  public bmv zEG;
-  private long zEH;
-  private long zEI;
-  private List<Bankcard> zEJ;
-  private List<Bankcard> zEK;
-  private ReentrantLock zEL;
-  public String zEM;
-  public String zEN;
-  public String zEO;
-  public int zEP;
-  public String zEQ;
-  public String zER;
-  public String zES;
-  public afu zET;
-  public Vector<a> zEU;
+  public static final s AXi;
+  private static final String AXj;
+  private static final String AXk;
+  public brl AWS;
+  public brl AWT;
+  private long AWU;
+  private long AWV;
+  private List<Bankcard> AWW;
+  private List<Bankcard> AWX;
+  private ReentrantLock AWY;
+  public String AWZ;
+  public String AXa;
+  public String AXb;
+  public int AXc;
+  public String AXd;
+  public String AXe;
+  public String AXf;
+  public agt AXg;
+  public Vector<a> AXh;
   
   static
   {
     AppMethodBeat.i(68473);
-    zEV = new s();
-    zEW = dYL() + "/save/";
-    zEX = dYL() + "/fetch/";
+    AXi = new s();
+    AXj = eoh() + "/save/";
+    AXk = eoh() + "/fetch/";
     AppMethodBeat.o(68473);
   }
   
   public s()
   {
     AppMethodBeat.i(68461);
-    this.zEL = new ReentrantLock();
-    this.zEU = new Vector();
+    this.AWY = new ReentrantLock();
+    this.AXh = new Vector();
     AppMethodBeat.o(68461);
   }
   
-  public static List<Bankcard> Re(int paramInt)
+  public static List<Bankcard> Tn(int paramInt)
   {
     AppMethodBeat.i(68468);
-    Object localObject1 = zEV;
+    Object localObject1 = AXi;
     boolean bool;
     Object localObject2;
     if (paramInt == 1)
     {
       bool = true;
-      localObject2 = ((s)localObject1).sf(bool);
+      localObject2 = ((s)localObject1).tg(bool);
       if (localObject2 != null)
       {
         localObject1 = localObject2;
@@ -78,8 +78,8 @@ public final class s
       }
       else
       {
-        com.tencent.mm.plugin.wallet.a.s.dZT();
-        localObject1 = com.tencent.mm.plugin.wallet.a.s.dZU().edd();
+        com.tencent.mm.plugin.wallet.a.s.epp();
+        localObject1 = com.tencent.mm.plugin.wallet.a.s.epq().esy();
       }
       localObject2 = new LinkedList();
       if (localObject1 != null) {
@@ -94,10 +94,10 @@ public final class s
           break label190;
         }
         Bankcard localBankcard = (Bankcard)((Iterator)localObject1).next();
-        if (localBankcard.ebv())
+        if (localBankcard.eqR())
         {
-          com.tencent.mm.plugin.wallet.a.s.dZT();
-          if (!com.tencent.mm.plugin.wallet.a.s.dZU().ecH())
+          com.tencent.mm.plugin.wallet.a.s.epp();
+          if (!com.tencent.mm.plugin.wallet.a.s.epq().esc())
           {
             ((List)localObject2).add(localBankcard);
             continue;
@@ -105,10 +105,10 @@ public final class s
             break;
           }
         }
-        if ((paramInt == 1) && ((localBankcard.field_support_lqt_turn_in == 1) || (localBankcard.ebv()))) {
+        if ((paramInt == 1) && ((localBankcard.field_support_lqt_turn_in == 1) || (localBankcard.eqR()))) {
           ((List)localObject2).add(localBankcard);
         }
-        if ((paramInt == 2) && ((localBankcard.field_support_lqt_turn_out == 1) || (localBankcard.ebv()))) {
+        if ((paramInt == 2) && ((localBankcard.field_support_lqt_turn_out == 1) || (localBankcard.eqR()))) {
           ((List)localObject2).add(localBankcard);
         }
       }
@@ -118,35 +118,35 @@ public final class s
     return localObject2;
   }
   
-  private static String dYL()
+  private static String eoh()
   {
     AppMethodBeat.i(68471);
-    String str = com.tencent.mm.loader.j.b.aih() + "wallet/lqt/";
+    String str = com.tencent.mm.loader.j.b.aph() + "wallet/lqt/";
     AppMethodBeat.o(68471);
     return str;
   }
   
-  private List<Bankcard> sg(boolean paramBoolean)
+  private List<Bankcard> th(boolean paramBoolean)
   {
     AppMethodBeat.i(68469);
-    bmv localbmv;
+    brl localbrl;
     if (paramBoolean) {
-      localbmv = this.zEF;
+      localbrl = this.AWS;
     }
     try
     {
-      this.zEL.lock();
-      if (localbmv == null)
+      this.AWY.lock();
+      if (localbrl == null)
       {
         if (paramBoolean) {
-          this.zEJ = null;
+          this.AWW = null;
         }
         for (;;)
         {
           return null;
-          localbmv = this.zEG;
+          localbrl = this.AWT;
           break;
-          this.zEK = null;
+          this.AWX = null;
         }
       }
       if (!paramBoolean) {
@@ -155,20 +155,20 @@ public final class s
     }
     finally
     {
-      this.zEL.unlock();
+      this.AWY.unlock();
       AppMethodBeat.o(68469);
     }
-    if ((this.zEJ != null) && (this.zEJ.size() > 0))
+    if ((this.AWW != null) && (this.AWW.size() > 0))
     {
-      localObject2 = this.zEJ;
-      this.zEL.unlock();
+      localObject2 = this.AWW;
+      this.AWY.unlock();
       AppMethodBeat.o(68469);
       return localObject2;
       label121:
-      if ((this.zEK != null) && (this.zEK.size() > 0))
+      if ((this.AWX != null) && (this.AWX.size() > 0))
       {
-        localObject2 = this.zEK;
-        this.zEL.unlock();
+        localObject2 = this.AWX;
+        this.AWY.unlock();
         AppMethodBeat.o(68469);
         return localObject2;
       }
@@ -176,98 +176,98 @@ public final class s
     Bankcard localBankcard;
     if (paramBoolean)
     {
-      this.zEJ = new ArrayList();
-      if (this.zEF.DKk != null)
+      this.AWW = new ArrayList();
+      if (this.AWS.Fgz != null)
       {
-        localObject2 = ah.a(this.zEF.DKk);
+        localObject2 = ah.a(this.AWS.Fgz);
         if (localObject2 != null) {
-          this.zEJ.add(localObject2);
+          this.AWW.add(localObject2);
         }
       }
-      if ((this.zEF.Drc != null) && (this.zEF.Drc.size() > 0))
+      if ((this.AWS.EMe != null) && (this.AWS.EMe.size() > 0))
       {
-        localObject2 = this.zEF.Drc.iterator();
+        localObject2 = this.AWS.EMe.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localBankcard = d.a((rx)((Iterator)localObject2).next());
+          localBankcard = d.a((sh)((Iterator)localObject2).next());
           if (localBankcard != null) {
-            this.zEJ.add(localBankcard);
+            this.AWW.add(localBankcard);
           }
         }
       }
-      localObject2 = this.zEJ;
-      this.zEL.unlock();
+      localObject2 = this.AWW;
+      this.AWY.unlock();
       AppMethodBeat.o(68469);
       return localObject2;
     }
-    this.zEK = new ArrayList();
-    if (this.zEG.DKk != null)
+    this.AWX = new ArrayList();
+    if (this.AWT.Fgz != null)
     {
-      localObject2 = ah.a(this.zEG.DKk);
+      localObject2 = ah.a(this.AWT.Fgz);
       if (localObject2 != null) {
-        this.zEK.add(localObject2);
+        this.AWX.add(localObject2);
       }
     }
-    if ((this.zEG.Drc != null) && (this.zEG.Drc.size() > 0))
+    if ((this.AWT.EMe != null) && (this.AWT.EMe.size() > 0))
     {
-      localObject2 = this.zEG.Drc.iterator();
+      localObject2 = this.AWT.EMe.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localBankcard = d.a((rx)((Iterator)localObject2).next());
+        localBankcard = d.a((sh)((Iterator)localObject2).next());
         if (localBankcard != null) {
-          this.zEK.add(localBankcard);
+          this.AWX.add(localBankcard);
         }
       }
     }
-    Object localObject2 = this.zEK;
-    this.zEL.unlock();
+    Object localObject2 = this.AWX;
+    this.AWY.unlock();
     AppMethodBeat.o(68469);
     return localObject2;
   }
   
-  private void si(boolean paramBoolean)
+  private void tj(boolean paramBoolean)
   {
     AppMethodBeat.i(68472);
     if (paramBoolean) {}
     Object localObject1;
-    for (String str = zEW;; str = zEX)
+    for (String str = AXj;; str = AXk)
     {
-      localObject1 = i.cT(str, false);
+      localObject1 = i.cZ(str, false);
       if (localObject1 != null) {
         break;
       }
       AppMethodBeat.o(68472);
       return;
     }
-    ad.i("MicroMsg.LqtBindQueryInfoCache", "tryLoadCacheFromDisk: %s, save: %s", new Object[] { localObject1, Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.LqtBindQueryInfoCache", "tryLoadCacheFromDisk: %s, save: %s", new Object[] { localObject1, Boolean.valueOf(paramBoolean) });
     long l1 = System.currentTimeMillis();
     Iterator localIterator = ((Iterable)localObject1).iterator();
     while (localIterator.hasNext())
     {
       localObject1 = ((FileSystem.a)localIterator.next()).name;
       Object localObject2 = str + (String)localObject1;
-      long l2 = bt.getLong((String)localObject1, 0L);
-      ad.i("MicroMsg.LqtBindQueryInfoCache", "file name: %s", new Object[] { Long.valueOf(l2) });
+      long l2 = bs.getLong((String)localObject1, 0L);
+      ac.i("MicroMsg.LqtBindQueryInfoCache", "file name: %s", new Object[] { Long.valueOf(l2) });
       if (l2 > 0L)
       {
         if (l1 - l2 < 3600000L)
         {
-          localObject2 = i.aR((String)localObject2, 0, -1);
-          localObject1 = new bmv();
+          localObject2 = i.aU((String)localObject2, 0, -1);
+          localObject1 = new brl();
           try
           {
-            ((bmv)localObject1).parseFrom((byte[])localObject2);
+            ((brl)localObject1).parseFrom((byte[])localObject2);
             if (localObject1 == null) {
               continue;
             }
-            this.zEL.lock();
+            this.AWY.lock();
             if (paramBoolean)
             {
-              this.zEF = ((bmv)localObject1);
-              this.zEJ = null;
-              this.zEH = l2;
-              this.zEL.unlock();
-              ad.i("MicroMsg.LqtBindQueryInfoCache", "succ get saveCache: %s %s", new Object[] { localObject1, Long.valueOf(l2) });
+              this.AWS = ((brl)localObject1);
+              this.AWW = null;
+              this.AWU = l2;
+              this.AWY.unlock();
+              ac.i("MicroMsg.LqtBindQueryInfoCache", "succ get saveCache: %s %s", new Object[] { localObject1, Long.valueOf(l2) });
               AppMethodBeat.o(68472);
               return;
             }
@@ -277,11 +277,11 @@ public final class s
             for (;;)
             {
               localObject1 = null;
-              ad.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", localIOException, "parse bindquery from cache error: %s", new Object[] { localIOException.getMessage() });
+              ac.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", localIOException, "parse bindquery from cache error: %s", new Object[] { localIOException.getMessage() });
               continue;
-              this.zEG = ((bmv)localObject1);
-              this.zEK = null;
-              this.zEI = l2;
+              this.AWT = ((brl)localObject1);
+              this.AWX = null;
+              this.AWV = l2;
             }
           }
         }
@@ -297,96 +297,34 @@ public final class s
     AppMethodBeat.o(68472);
   }
   
-  public final void a(bmv parambmv, final boolean paramBoolean)
+  public final void a(brl parambrl, boolean paramBoolean)
   {
     AppMethodBeat.i(68462);
-    if (parambmv != null)
+    if (parambrl != null)
     {
-      this.zEL.lock();
+      this.AWY.lock();
       if (!paramBoolean) {
         break label105;
       }
-      this.zEF = parambmv;
-      this.zEJ = null;
-      this.zEH = System.currentTimeMillis();
+      this.AWS = parambrl;
+      this.AWW = null;
+      this.AWU = System.currentTimeMillis();
     }
     for (;;)
     {
-      this.zEL.unlock();
-      ad.i("MicroMsg.LqtBindQueryInfoCache", "setCache: %s, save: %s", new Object[] { parambmv, Boolean.valueOf(paramBoolean) });
+      this.AWY.unlock();
+      ac.i("MicroMsg.LqtBindQueryInfoCache", "setCache: %s, save: %s", new Object[] { parambrl, Boolean.valueOf(paramBoolean) });
       try
       {
-        com.tencent.mm.sdk.g.b.c(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(68460);
-            if (this.shP != null)
-            {
-              s.b(s.this).lock();
-              if (paramBoolean)
-              {
-                if (i.eK(s.zEW)) {
-                  i.cO(s.zEW, true);
-                }
-                i.aMF(s.zEW);
-                s.c(s.this);
-              }
-              for (;;)
-              {
-                s.b(s.this).unlock();
-                try
-                {
-                  Object localObject = System.currentTimeMillis();
-                  label100:
-                  long l;
-                  StringBuilder localStringBuilder;
-                  if (paramBoolean)
-                  {
-                    str = s.zEW;
-                    ad.i("MicroMsg.LqtBindQueryInfoCache", "saveCacheToDisk, dir: %s, name: %s, save: %s", new Object[] { str, localObject, Boolean.valueOf(paramBoolean) });
-                    l = bt.GC();
-                    localStringBuilder = new StringBuilder();
-                    if (!paramBoolean) {
-                      break label254;
-                    }
-                  }
-                  label254:
-                  for (String str = s.zEW;; str = s.zEX)
-                  {
-                    str = str + (String)localObject;
-                    localObject = this.shP;
-                    i.f(str, (byte[])localObject, localObject.length);
-                    ad.i("MicroMsg.LqtBindQueryInfoCache", "finish saveCacheToDisk, used %sms", new Object[] { Long.valueOf(bt.aS(l)) });
-                    AppMethodBeat.o(68460);
-                    return;
-                    if (i.eK(s.zEX)) {
-                      i.cO(s.zEX, true);
-                    }
-                    i.aMF(s.zEX);
-                    s.d(s.this);
-                    break;
-                    str = s.zEX;
-                    break label100;
-                  }
-                  AppMethodBeat.o(68460);
-                }
-                catch (Exception localException)
-                {
-                  ad.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", localException, "saveCacheToDisk error: %s", new Object[] { localException.getMessage() });
-                }
-              }
-            }
-          }
-        }, "LqtBindQueryInfoCache_saveCacheToDiski");
-        aq.f(new Runnable()
+        com.tencent.mm.sdk.g.b.c(new s.2(this, parambrl.toByteArray(), paramBoolean), "LqtBindQueryInfoCache_saveCacheToDiski");
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(68459);
             Iterator localIterator = s.a(s.this).iterator();
             while (localIterator.hasNext()) {
-              ((s.a)localIterator.next()).dYM();
+              ((s.a)localIterator.next()).eoi();
             }
             AppMethodBeat.o(68459);
           }
@@ -394,39 +332,39 @@ public final class s
         AppMethodBeat.o(68462);
         return;
         label105:
-        this.zEG = parambmv;
-        this.zEK = null;
-        this.zEI = System.currentTimeMillis();
+        this.AWT = parambrl;
+        this.AWX = null;
+        this.AWV = System.currentTimeMillis();
       }
-      catch (Exception parambmv)
+      catch (Exception parambrl)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", parambmv, "saveCacheToDisk error: %s", new Object[] { parambmv.getMessage() });
+          ac.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", parambrl, "saveCacheToDisk error: %s", new Object[] { parambrl.getMessage() });
         }
       }
     }
   }
   
-  public final void a(bum parambum)
+  public final void a(bzd parambzd)
   {
-    this.zEM = parambum.zEM;
-    this.zEN = parambum.zEN;
-    this.zEO = parambum.zEO;
-    this.zEP = parambum.zEP;
-    this.zEQ = parambum.zEQ;
-    this.zER = parambum.DRG;
-    this.zET = parambum.DRH;
+    this.AWZ = parambzd.AWZ;
+    this.AXa = parambzd.AXa;
+    this.AXb = parambzd.AXb;
+    this.AXc = parambzd.AXc;
+    this.AXd = parambzd.AXd;
+    this.AXe = parambzd.Foa;
+    this.AXg = parambzd.Fob;
   }
   
-  public final Bankcard dYI()
+  public final Bankcard eoe()
   {
     AppMethodBeat.i(68464);
-    sh(true);
-    Object localObject = this.zEF;
+    ti(true);
+    Object localObject = this.AWS;
     if (localObject != null)
     {
-      localObject = ah.a(((bmv)localObject).DKk);
+      localObject = ah.a(((brl)localObject).Fgz);
       AppMethodBeat.o(68464);
       return localObject;
     }
@@ -434,14 +372,14 @@ public final class s
     return null;
   }
   
-  public final String dYJ()
+  public final String eof()
   {
     AppMethodBeat.i(68466);
-    sh(true);
-    Object localObject = this.zEF;
+    ti(true);
+    Object localObject = this.AWS;
     if (localObject != null)
     {
-      localObject = ((bmv)localObject).DKo;
+      localObject = ((brl)localObject).FgD;
       AppMethodBeat.o(68466);
       return localObject;
     }
@@ -449,14 +387,14 @@ public final class s
     return "";
   }
   
-  public final int dYK()
+  public final int eog()
   {
     AppMethodBeat.i(68467);
-    sh(true);
-    bmv localbmv = this.zEF;
-    if (localbmv != null)
+    ti(true);
+    brl localbrl = this.AWS;
+    if (localbrl != null)
     {
-      int i = localbmv.DKp;
+      int i = localbrl.FgE;
       AppMethodBeat.o(68467);
       return i;
     }
@@ -464,19 +402,19 @@ public final class s
     return 0;
   }
   
-  public final Bankcard se(boolean paramBoolean)
+  public final Bankcard tf(boolean paramBoolean)
   {
     AppMethodBeat.i(68463);
-    sh(paramBoolean);
+    ti(paramBoolean);
     if (paramBoolean) {}
-    for (Object localObject1 = this.zEF; (localObject1 != null) && (!bt.isNullOrNil(((bmv)localObject1).DKi)); localObject1 = this.zEG)
+    for (Object localObject1 = this.AWS; (localObject1 != null) && (!bs.isNullOrNil(((brl)localObject1).Fgx)); localObject1 = this.AWT)
     {
-      Object localObject2 = sg(paramBoolean);
+      Object localObject2 = th(paramBoolean);
       if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
         break;
       }
-      localObject1 = ((bmv)localObject1).DKi;
-      if (bt.isNullOrNil((String)localObject1)) {
+      localObject1 = ((brl)localObject1).Fgx;
+      if (bs.isNullOrNil((String)localObject1)) {
         break;
       }
       localObject2 = ((List)localObject2).iterator();
@@ -495,14 +433,14 @@ public final class s
     return null;
   }
   
-  public final List<Bankcard> sf(boolean paramBoolean)
+  public final List<Bankcard> tg(boolean paramBoolean)
   {
     AppMethodBeat.i(68465);
-    sh(paramBoolean);
+    ti(paramBoolean);
     if (paramBoolean) {}
-    for (Object localObject = this.zEF; localObject != null; localObject = this.zEG)
+    for (Object localObject = this.AWS; localObject != null; localObject = this.AWT)
     {
-      localObject = sg(paramBoolean);
+      localObject = th(paramBoolean);
       AppMethodBeat.o(68465);
       return localObject;
     }
@@ -510,52 +448,40 @@ public final class s
     return null;
   }
   
-  public final void sh(boolean paramBoolean)
+  public final void ti(boolean paramBoolean)
   {
     AppMethodBeat.i(68470);
     long l2 = System.currentTimeMillis();
-    bmv localbmv;
-    long l1;
+    brl localbrl;
     if (paramBoolean)
     {
-      localbmv = this.zEF;
+      localbrl = this.AWS;
       if (!paramBoolean) {
-        break label89;
-      }
-      l1 = this.zEH;
-      label30:
-      if (localbmv != null)
-      {
-        if (l2 - l1 <= 3600000L) {
-          break label73;
-        }
-        ad.i("MicroMsg.LqtBindQueryInfoCache", "checkCache, saveCache time exceed, try reload from disk");
-        this.zEF = null;
-        if (!paramBoolean) {
-          break label97;
-        }
-        this.zEH = 0L;
+        break label56;
       }
     }
-    for (;;)
+    label56:
+    for (long l1 = this.AWU;; l1 = this.AWV)
     {
-      si(paramBoolean);
-      label73:
+      if (localbrl != null) {
+        break label64;
+      }
+      tj(paramBoolean);
       AppMethodBeat.o(68470);
       return;
-      localbmv = this.zEG;
+      localbrl = this.AWT;
       break;
-      label89:
-      l1 = this.zEI;
-      break label30;
-      label97:
-      this.zEI = 0L;
     }
+    label64:
+    if (l2 - l1 > 3600000L) {
+      ac.i("MicroMsg.LqtBindQueryInfoCache", "checkCache, saveCache time exceed, try reload from disk");
+    }
+    AppMethodBeat.o(68470);
   }
   
   public static abstract interface a
   {
-    public abstract void dYM();
+    public abstract void eoi();
   }
 }
 

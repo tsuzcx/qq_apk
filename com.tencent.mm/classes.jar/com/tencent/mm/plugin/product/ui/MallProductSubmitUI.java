@@ -16,18 +16,18 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.product.b.k;
 import com.tencent.mm.plugin.product.b.l;
 import com.tencent.mm.plugin.product.b.m;
-import com.tencent.mm.protocal.protobuf.aec;
-import com.tencent.mm.protocal.protobuf.chi;
-import com.tencent.mm.protocal.protobuf.df;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.cml;
+import com.tencent.mm.protocal.protobuf.dh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.ListViewInScrollView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,115 +38,115 @@ public class MallProductSubmitUI
   extends MallBaseUI
   implements u.a
 {
-  private Button iwY;
-  private TextView kEu;
-  private com.tencent.mm.plugin.product.b.e uvX;
-  private com.tencent.mm.plugin.product.b.c uxz;
-  private TextView uyA;
-  private MallProductItemView uyB;
-  private MallProductItemView uyC;
-  private TextView uyD;
-  private TextView uyE;
-  private TextView uyF;
-  private TextView uyG;
-  private ListView uyH;
-  private a uyI;
-  private ImageView uyb;
-  private TextView uyc;
-  private f uyi;
-  private RelativeLayout uyy;
-  private TextView uyz;
+  private Button iXb;
+  private TextView lfN;
+  private com.tencent.mm.plugin.product.b.e vEQ;
+  private ImageView vGU;
+  private TextView vGV;
+  private com.tencent.mm.plugin.product.b.c vGs;
+  private ListView vHA;
+  private a vHB;
+  private f vHb;
+  private RelativeLayout vHr;
+  private TextView vHs;
+  private TextView vHt;
+  private MallProductItemView vHu;
+  private MallProductItemView vHv;
+  private TextView vHw;
+  private TextView vHx;
+  private TextView vHy;
+  private TextView vHz;
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(67058);
-    m localm = this.uxz.uvI;
+    m localm = this.vGs.vEB;
     Object localObject1;
     label187:
     String str;
-    if (this.uvX != null)
+    if (this.vEQ != null)
     {
-      this.uyc.setText(com.tencent.mm.plugin.product.b.b.D(this.uvX.uwb, this.uvX.uwb, localm.uwm.uop) + " x " + this.uxz.mCount);
-      if (!bt.isNullOrNil(this.uxz.dbm()))
+      this.vGV.setText(com.tencent.mm.plugin.product.b.b.C(this.vEQ.vEU, this.vEQ.vEU, localm.vFf.vxl) + " x " + this.vGs.mCount);
+      if (!bs.isNullOrNil(this.vGs.doU()))
       {
-        localObject1 = u.a(new c(this.uxz.dbm()));
-        this.uyb.setImageBitmap((Bitmap)localObject1);
+        localObject1 = u.a(new c(this.vGs.doU()));
+        this.vGU.setImageBitmap((Bitmap)localObject1);
         u.a(this);
       }
-      this.kEu.setText(localm.uwm.name);
-      this.uyD.setText(this.uxz.dbn());
-      localObject1 = this.uxz.dbq();
-      if ((localObject1 == null) || (bt.isNullOrNil(((chi)localObject1).saB))) {
+      this.lfN.setText(localm.vFf.name);
+      this.vHw.setText(this.vGs.doV());
+      localObject1 = this.vGs.doY();
+      if ((localObject1 == null) || (bs.isNullOrNil(((cml)localObject1).tiv))) {
         break label593;
       }
-      this.uyC.setSummary(((chi)localObject1).saB);
+      this.vHv.setSummary(((cml)localObject1).tiv);
       str = "";
       localObject1 = str;
-      if (!this.uxz.dbl().dbH())
+      if (!this.vGs.doT().dpp())
       {
-        localObject1 = this.uxz.uvN;
+        localObject1 = this.vGs.vEG;
         if (localObject1 == null) {
           break label605;
         }
-        this.uyB.setEnabled(true);
-        this.uyB.setClickable(true);
-        this.uyB.setSummary(com.tencent.mm.plugin.product.b.b.a(this, (aec)localObject1));
-        localObject1 = getString(2131761145, new Object[] { com.tencent.mm.plugin.product.b.b.c(((aec)localObject1).CNG, ((aec)localObject1).PriceType) });
-        this.uyA.setVisibility(8);
+        this.vHu.setEnabled(true);
+        this.vHu.setClickable(true);
+        this.vHu.setSummary(com.tencent.mm.plugin.product.b.b.a(this, (afb)localObject1));
+        localObject1 = getString(2131761145, new Object[] { com.tencent.mm.plugin.product.b.b.c(((afb)localObject1).Egi, ((afb)localObject1).PriceType) });
+        this.vHt.setVisibility(8);
       }
       label280:
       str = "";
-      int i = this.uxz.dbp();
+      int i = this.vGs.doX();
       if (i > 0)
       {
-        bt.isNullOrNil((String)localObject1);
-        str = getString(2131761144, new Object[] { com.tencent.mm.plugin.product.b.b.c(i, localm.uwm.uop) });
+        bs.isNullOrNil((String)localObject1);
+        str = getString(2131761144, new Object[] { com.tencent.mm.plugin.product.b.b.c(i, localm.vFf.vxl) });
       }
-      Object localObject2 = this.uxz.av(this);
+      Object localObject2 = this.vGs.az(this);
       if (((LinkedList)localObject2).size() <= 0) {
         break label648;
       }
-      this.uyH.setVisibility(0);
-      this.uyI.eu((List)localObject2);
-      this.uyI.notifyDataSetChanged();
+      this.vHA.setVisibility(0);
+      this.vHB.ey((List)localObject2);
+      this.vHB.notifyDataSetChanged();
       label369:
-      localObject2 = this.uxz.uvO;
+      localObject2 = this.vGs.vEH;
       if (localObject2 != null) {
-        this.uyz.setText(Html.fromHtml(String.format("%s %s<br><br>%s %s %s", new Object[] { ((df)localObject2).mAQ, ((df)localObject2).CxQ, ((df)localObject2).ijN, ((df)localObject2).ijO, ((df)localObject2).saB })));
+        this.vHs.setText(Html.fromHtml(String.format("%s %s<br><br>%s %s %s", new Object[] { ((dh)localObject2).ncR, ((dh)localObject2).DQm, ((dh)localObject2).iJU, ((dh)localObject2).iJV, ((dh)localObject2).tiv })));
       }
       localObject1 = (String)localObject1 + str;
-      if (bt.isNullOrNil((String)localObject1)) {
+      if (bs.isNullOrNil((String)localObject1)) {
         break label660;
       }
       localObject1 = getString(2131761143, new Object[] { localObject1 });
-      this.uyE.setText((CharSequence)localObject1);
-      this.uyF.setVisibility(8);
-      this.uyE.setVisibility(0);
+      this.vHx.setText((CharSequence)localObject1);
+      this.vHy.setVisibility(8);
+      this.vHx.setVisibility(0);
     }
     for (;;)
     {
-      this.uyG.setText(com.tencent.mm.plugin.product.b.b.c(this.uxz.dbo(), localm.uwm.uop));
-      this.iwY.setEnabled(this.uxz.dbx());
+      this.vHz.setText(com.tencent.mm.plugin.product.b.b.c(this.vGs.doW(), localm.vFf.vxl));
+      this.iXb.setEnabled(this.vGs.dpf());
       AppMethodBeat.o(67058);
       return;
-      this.uyc.setText(com.tencent.mm.plugin.product.b.b.D(localm.uwm.uwx, localm.uwm.uwy, localm.uwm.uop));
+      this.vGV.setText(com.tencent.mm.plugin.product.b.b.C(localm.vFf.vFq, localm.vFf.vFr, localm.vFf.vxl));
       break;
       label593:
-      this.uyC.setSummary("");
+      this.vHv.setSummary("");
       break label187;
       label605:
-      this.uyB.setEnabled(false);
-      this.uyB.setClickable(false);
-      this.uyB.setSummary(getString(2131761146));
-      this.uyA.setVisibility(0);
+      this.vHu.setEnabled(false);
+      this.vHu.setClickable(false);
+      this.vHu.setSummary(getString(2131761146));
+      this.vHt.setVisibility(0);
       localObject1 = str;
       break label280;
       label648:
-      this.uyH.setVisibility(8);
+      this.vHA.setVisibility(8);
       break label369;
       label660:
-      this.uyF.setVisibility(0);
-      this.uyE.setVisibility(8);
+      this.vHy.setVisibility(0);
+      this.vHx.setVisibility(8);
     }
   }
   
@@ -159,22 +159,22 @@ public class MallProductSubmitUI
   {
     AppMethodBeat.i(67057);
     setMMTitle(2131761149);
-    this.uyy = ((RelativeLayout)findViewById(2131302115));
-    this.uyz = ((TextView)findViewById(2131302117));
-    this.uyA = ((TextView)findViewById(2131302116));
-    this.uyB = ((MallProductItemView)findViewById(2131302119));
-    this.uyC = ((MallProductItemView)findViewById(2131302121));
-    this.uyb = ((ImageView)findViewById(2131302120));
-    this.kEu = ((TextView)findViewById(2131302128));
-    this.uyD = ((TextView)findViewById(2131302122));
-    this.uyc = ((TextView)findViewById(2131302126));
-    this.uyE = ((TextView)findViewById(2131302125));
-    this.uyF = ((TextView)findViewById(2131302124));
-    this.uyG = ((TextView)findViewById(2131302129));
-    this.uyH = ((ListView)findViewById(2131302123));
-    this.uyI = new a(this);
-    this.uyH.setAdapter(this.uyI);
-    this.uyH.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.vHr = ((RelativeLayout)findViewById(2131302115));
+    this.vHs = ((TextView)findViewById(2131302117));
+    this.vHt = ((TextView)findViewById(2131302116));
+    this.vHu = ((MallProductItemView)findViewById(2131302119));
+    this.vHv = ((MallProductItemView)findViewById(2131302121));
+    this.vGU = ((ImageView)findViewById(2131302120));
+    this.lfN = ((TextView)findViewById(2131302128));
+    this.vHw = ((TextView)findViewById(2131302122));
+    this.vGV = ((TextView)findViewById(2131302126));
+    this.vHx = ((TextView)findViewById(2131302125));
+    this.vHy = ((TextView)findViewById(2131302124));
+    this.vHz = ((TextView)findViewById(2131302129));
+    this.vHA = ((ListView)findViewById(2131302123));
+    this.vHB = new a(this);
+    this.vHA.setAdapter(this.vHB);
+    this.vHA.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -188,47 +188,47 @@ public class MallProductSubmitUI
           MallProductSubmitUI.c(MallProductSubmitUI.this).a(MallProductSubmitUI.this, paramAnonymousView, paramAnonymousInt);
           AppMethodBeat.o(67047);
           return;
-          Object localObject = MallProductSubmitUI.b(MallProductSubmitUI.this).uvI;
-          if ((((m)localObject).uwm.uwz != null) && (((m)localObject).uwm.uwz.size() > 0))
+          Object localObject = MallProductSubmitUI.b(MallProductSubmitUI.this).vEB;
+          if ((((m)localObject).vFf.vFs != null) && (((m)localObject).vFf.vFs.size() > 0))
           {
             ArrayList localArrayList = new ArrayList();
-            localObject = ((m)localObject).uwm.uwz.iterator();
+            localObject = ((m)localObject).vFf.vFs.iterator();
             while (((Iterator)localObject).hasNext()) {
               localArrayList.add((String)((Iterator)localObject).next());
             }
-            paramAnonymousAdapterView.uxi = localArrayList;
+            paramAnonymousAdapterView.vGb = localArrayList;
             continue;
-            if ((paramAnonymousAdapterView.uxi instanceof String)) {
-              MallProductSubmitUI.b(MallProductSubmitUI.this).uvR = ((String)paramAnonymousAdapterView.uxi);
+            if ((paramAnonymousAdapterView.vGb instanceof String)) {
+              MallProductSubmitUI.b(MallProductSubmitUI.this).vEK = ((String)paramAnonymousAdapterView.vGb);
             }
           }
         }
       }
     });
-    this.iwY = ((Button)findViewById(2131302127));
-    this.iwY.setOnClickListener(new View.OnClickListener()
+    this.iXb = ((Button)findViewById(2131302127));
+    this.iXb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67048);
         paramAnonymousView = MallProductSubmitUI.d(MallProductSubmitUI.this);
-        if (paramAnonymousView.uxz.dbx())
+        if (paramAnonymousView.vGs.dpf())
         {
-          if (paramAnonymousView.uxz.dbo() == 0) {}
+          if (paramAnonymousView.vGs.doW() == 0) {}
           for (int i = 1; i != 0; i = 0)
           {
-            g.afC();
-            g.afA().gcy.a(new k(paramAnonymousView.uxz.dbz()), 0);
+            g.agS();
+            g.agQ().ghe.a(new k(paramAnonymousView.vGs.dph()), 0);
             AppMethodBeat.o(67048);
             return;
           }
-          g.afC();
-          g.afA().gcy.a(new l(paramAnonymousView.uxz.dbz(), paramAnonymousView.uxz.getAppId()), 0);
+          g.agS();
+          g.agQ().ghe.a(new l(paramAnonymousView.vGs.dph(), paramAnonymousView.vGs.getAppId()), 0);
         }
         AppMethodBeat.o(67048);
       }
     });
-    this.uyy.setOnClickListener(new View.OnClickListener()
+    this.vHr.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -236,11 +236,11 @@ public class MallProductSubmitUI
         paramAnonymousView = MallProductSubmitUI.d(MallProductSubmitUI.this);
         Intent localIntent = new Intent();
         localIntent.putExtra("launch_from_webview", true);
-        com.tencent.mm.bs.d.a(paramAnonymousView.jgS, "address", ".ui.WalletSelectAddrUI", localIntent, 1, false);
+        com.tencent.mm.br.d.a(paramAnonymousView.jHh, "address", ".ui.WalletSelectAddrUI", localIntent, 1, false);
         AppMethodBeat.o(67049);
       }
     });
-    this.uyB.setOnClickListener(new View.OnClickListener()
+    this.vHu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -249,23 +249,23 @@ public class MallProductSubmitUI
         AppMethodBeat.o(67050);
       }
     });
-    this.uyC.setOnClickListener(new View.OnClickListener()
+    this.vHv.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67051);
         paramAnonymousView = MallProductSubmitUI.d(MallProductSubmitUI.this);
-        Intent localIntent = new Intent(paramAnonymousView.jgS, MallProductReceiptUI.class);
-        paramAnonymousView.jgS.startActivityForResult(localIntent, 4);
+        Intent localIntent = new Intent(paramAnonymousView.jHh, MallProductReceiptUI.class);
+        paramAnonymousView.jHh.startActivityForResult(localIntent, 4);
         AppMethodBeat.o(67051);
       }
     });
-    MallProductItemView localMallProductItemView = this.uyC;
+    MallProductItemView localMallProductItemView = this.vHv;
     boolean bool;
-    if ((this.uxz.dbl().uxw & 0x2) > 0)
+    if ((this.vGs.doT().vGp & 0x2) > 0)
     {
       bool = true;
-      ad.d("MicroMsg.MallProductConfig", "hasReceipt, ret = ".concat(String.valueOf(bool)));
+      ac.d("MicroMsg.MallProductConfig", "hasReceipt, ret = ".concat(String.valueOf(bool)));
       if (!bool) {
         break label411;
       }
@@ -274,11 +274,11 @@ public class MallProductSubmitUI
     for (int i = 0;; i = 8)
     {
       localMallProductItemView.setVisibility(i);
-      if (this.uxz.dbl().dbH())
+      if (this.vGs.doT().dpp())
       {
-        this.uyB.setEnabled(false);
-        this.uyB.setClickable(false);
-        this.uyB.setSummary(getString(2131761147));
+        this.vHu.setEnabled(false);
+        this.vHu.setClickable(false);
+        this.vHu.setSummary(getString(2131761147));
       }
       AppMethodBeat.o(67057);
       return;
@@ -287,21 +287,21 @@ public class MallProductSubmitUI
     }
   }
   
-  public final void l(String paramString, final Bitmap paramBitmap)
+  public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(67060);
     paramString = new StringBuilder().append(paramString).append(", bitmap = ");
     if (paramBitmap == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.d("MicroMsg.MallProductSubmitUI", bool);
-      if (!bt.isNullOrNil(this.uxz.dbm())) {
+      ac.d("MicroMsg.MallProductSubmitUI", bool);
+      if (!bs.isNullOrNil(this.vGs.doU())) {
         break;
       }
       AppMethodBeat.o(67060);
       return;
     }
-    this.uyb.post(new Runnable()
+    this.vGU.post(new Runnable()
     {
       public final void run()
       {
@@ -317,7 +317,7 @@ public class MallProductSubmitUI
   {
     AppMethodBeat.i(67059);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.uyi.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.vHb.onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(67059);
   }
   
@@ -325,9 +325,9 @@ public class MallProductSubmitUI
   {
     AppMethodBeat.i(67054);
     super.onCreate(paramBundle);
-    this.uyi = new f(getContext(), new f.a()
+    this.vHb = new f(getContext(), new f.a()
     {
-      public final void E(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+      public final void D(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
       {
         AppMethodBeat.i(67046);
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -336,15 +336,15 @@ public class MallProductSubmitUI
           AppMethodBeat.o(67046);
           return;
         }
-        MallProductSubmitUI.this.akw(paramAnonymousString);
+        MallProductSubmitUI.this.apv(paramAnonymousString);
         AppMethodBeat.o(67046);
       }
     });
-    com.tencent.mm.plugin.product.a.a.dbi();
-    this.uxz = com.tencent.mm.plugin.product.a.a.dbj();
-    this.uvX = this.uxz.uvX;
+    com.tencent.mm.plugin.product.a.a.doQ();
+    this.vGs = com.tencent.mm.plugin.product.a.a.doR();
+    this.vEQ = this.vGs.vEQ;
     initView();
-    cE();
+    cL();
     AppMethodBeat.o(67054);
   }
   
@@ -359,12 +359,12 @@ public class MallProductSubmitUI
       localObject1 = super.onCreateDialog(paramInt);
       AppMethodBeat.o(67061);
       return localObject1;
-      localObject2 = this.uxz.uvV;
+      localObject2 = this.vGs.vEO;
     } while (localObject2 == null);
     Object localObject1 = new ArrayList();
     Object localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((List)localObject1).add(com.tencent.mm.plugin.product.b.b.a(this, (aec)((Iterator)localObject2).next()));
+      ((List)localObject1).add(com.tencent.mm.plugin.product.b.b.a(this, (afb)((Iterator)localObject2).next()));
     }
     localObject2 = getString(2131761138);
     AdapterView.OnItemClickListener local8 = new AdapterView.OnItemClickListener()
@@ -373,7 +373,7 @@ public class MallProductSubmitUI
       {
         AppMethodBeat.i(67053);
         MallProductSubmitUI.this.dismissDialog(1);
-        MallProductSubmitUI.b(MallProductSubmitUI.this).IY(paramAnonymousInt);
+        MallProductSubmitUI.b(MallProductSubmitUI.this).KX(paramAnonymousInt);
         MallProductSubmitUI.a(MallProductSubmitUI.this);
         AppMethodBeat.o(67053);
       }
@@ -381,14 +381,14 @@ public class MallProductSubmitUI
     d.a locala = new d.a(this);
     ListViewInScrollView localListViewInScrollView = (ListViewInScrollView)View.inflate(this, 2131494797, null);
     localListViewInScrollView.setOnItemClickListener(new d.1(local8, locala));
-    locala.aHT = ((List)localObject1);
-    locala.uxs = 0;
+    locala.aIJ = ((List)localObject1);
+    locala.vGl = 0;
     localListViewInScrollView.setAdapter(locala);
     localObject1 = new com.tencent.mm.ui.widget.a.d.a(this);
-    ((com.tencent.mm.ui.widget.a.d.a)localObject1).aMf((String)localObject2);
-    ((com.tencent.mm.ui.widget.a.d.a)localObject1).gs(localListViewInScrollView);
+    ((com.tencent.mm.ui.widget.a.d.a)localObject1).aRH((String)localObject2);
+    ((com.tencent.mm.ui.widget.a.d.a)localObject1).gH(localListViewInScrollView);
     ((com.tencent.mm.ui.widget.a.d.a)localObject1).e(null);
-    localObject1 = ((com.tencent.mm.ui.widget.a.d.a)localObject1).fft();
+    localObject1 = ((com.tencent.mm.ui.widget.a.d.a)localObject1).fvp();
     ((com.tencent.mm.ui.widget.a.d)localObject1).show();
     AppMethodBeat.o(67061);
     return localObject1;
@@ -397,7 +397,7 @@ public class MallProductSubmitUI
   public void onStart()
   {
     AppMethodBeat.i(67055);
-    this.uyi.onStart();
+    this.vHb.onStart();
     super.onStart();
     AppMethodBeat.o(67055);
   }
@@ -405,7 +405,7 @@ public class MallProductSubmitUI
   public void onStop()
   {
     AppMethodBeat.i(67056);
-    this.uyi.onStop();
+    this.vHb.onStop();
     super.onStop();
     AppMethodBeat.o(67056);
   }

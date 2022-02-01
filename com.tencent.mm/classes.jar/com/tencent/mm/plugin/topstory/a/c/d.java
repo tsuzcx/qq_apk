@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bce;
-import com.tencent.mm.protocal.protobuf.bcf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bfw;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
   extends n
   implements k
 {
   private g callback;
-  public b rr;
+  private b rr;
   
   public d(String paramString)
   {
@@ -26,10 +27,10 @@ public final class d
     b.a locala = new b.a();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/mmsearch-bin/getuserattrbyopenid";
-    locala.gUU = new bce();
-    locala.gUV = new bcf();
-    this.rr = locala.atI();
-    ((bce)this.rr.gUS.gUX).CzP = paramString;
+    locala.hvt = new bfw();
+    locala.hvu = new bfx();
+    this.rr = locala.aAz();
+    ((bfw)this.rr.hvr.hvw).DSl = paramString;
     AppMethodBeat.o(88480);
   }
   
@@ -42,6 +43,11 @@ public final class d
     return i;
   }
   
+  public final bfx ecF()
+  {
+    return (bfx)this.rr.hvs.hvw;
+  }
+  
   public final int getType()
   {
     return 2830;
@@ -50,14 +56,14 @@ public final class d
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88482);
-    ad.i("MicroMsg.TopStory.NetSceneTopStoryGetUsername", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ac.i("MicroMsg.TopStory.NetSceneTopStoryGetUsername", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(88482);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.c.d
  * JD-Core Version:    0.7.0.1
  */

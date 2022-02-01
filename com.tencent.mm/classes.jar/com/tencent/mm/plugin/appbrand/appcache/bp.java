@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.c;
 import com.tencent.mm.pluginsdk.h.a.c.l;
 import com.tencent.mm.pluginsdk.h.a.c.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 
 public final class bp
@@ -17,69 +17,69 @@ public final class bp
   {
     AppMethodBeat.i(90671);
     bp.class.getClassLoader();
-    j.pq("wechatzstd");
+    j.sC("wechatzstd");
     AppMethodBeat.o(90671);
   }
   
   public static void a(bo parambo, ac.a parama)
   {
     AppMethodBeat.i(90668);
-    bf localbf = ((e)g.ab(e.class)).aOk();
+    bf localbf = ((e)g.ab(e.class)).aVa();
     if (localbf == null)
     {
-      bh.a(parambo.BRL, parambo.appId, b.a.a.iPA, null);
+      bh.a(parambo.Dkb, parambo.appId, b.a.a.jpJ, null);
       AppMethodBeat.o(90668);
       return;
     }
-    parama.aPo();
+    parama.aWg();
     boolean bool = a(parambo);
-    parama.fk(bool);
-    ad.i("MicroMsg.AppBrand.ZstdLogic", "processZstd suc:%b", new Object[] { Boolean.valueOf(bool) });
+    parama.fG(bool);
+    ac.i("MicroMsg.AppBrand.ZstdLogic", "processZstd suc:%b", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      bh.a(parambo.BRL, parambo.appId, parambo.aQA(), parambo.pkgVersion, parambo.dkC, parama);
+      bh.a(parambo.Dkb, parambo.appId, parambo.aXs(), parambo.pkgVersion, parambo.dib, parama);
       AppMethodBeat.o(90668);
       return;
     }
-    i.deleteFile(parambo.aQA());
-    parama = localbf.a(parambo.appId, parambo.pkgVersion, parambo.dkC, new String[] { "downloadURL" });
+    i.deleteFile(parambo.aXs());
+    parama = localbf.a(parambo.appId, parambo.pkgVersion, parambo.dib, new String[] { "downloadURL" });
     if (parama == null)
     {
-      bh.a(parambo.BRL, parambo.appId, b.a.a.iPA, null);
+      bh.a(parambo.Dkb, parambo.appId, b.a.a.jpJ, null);
       AppMethodBeat.o(90668);
       return;
     }
-    bh.En(parambo.BRL);
-    bh.b(parambo.appId, parambo.dkC, parambo.pkgVersion, parama.field_downloadURL, parambo.iNq);
+    bh.Iq(parambo.Dkb);
+    bh.b(parambo.appId, parambo.dib, parambo.pkgVersion, parama.field_downloadURL, parambo.jny);
     AppMethodBeat.o(90668);
   }
   
   public static void a(bo parambo, m paramm, ac.a parama)
   {
     AppMethodBeat.i(90669);
-    ad.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, request(%s %d)", new Object[] { parambo.appId, Integer.valueOf(parambo.pkgVersion) });
+    ac.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, request(%s %d)", new Object[] { parambo.appId, Integer.valueOf(parambo.pkgVersion) });
     parama.a(paramm);
-    paramm = ((e)g.ab(e.class)).aOk();
+    paramm = ((e)g.ab(e.class)).aVa();
     if (paramm == null)
     {
-      ad.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil storage");
-      bh.a(parambo.BRL, parambo.appId, b.a.a.iPA, null);
+      ac.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil storage");
+      bh.a(parambo.Dkb, parambo.appId, b.a.a.jpJ, null);
       AppMethodBeat.o(90669);
       return;
     }
-    bh.En(parambo.BRL);
-    if ((parambo.iNq instanceof b.c)) {
-      ((b.c)parambo.iNq).aQC();
+    bh.Iq(parambo.Dkb);
+    if ((parambo.jny instanceof b.c)) {
+      ((b.c)parambo.jny).aXu();
     }
-    paramm = paramm.a(parambo.appId, parambo.pkgVersion, parambo.dkC, new String[] { "downloadURL" });
+    paramm = paramm.a(parambo.appId, parambo.pkgVersion, parambo.dib, new String[] { "downloadURL" });
     if (paramm == null)
     {
-      ad.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { parambo.appId, Integer.valueOf(parambo.pkgVersion) });
+      ac.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { parambo.appId, Integer.valueOf(parambo.pkgVersion) });
       AppMethodBeat.o(90669);
       return;
     }
-    if (!bh.b(parambo.appId, parambo.dkC, parambo.pkgVersion, paramm.field_downloadURL, parambo.iNq)) {
-      parambo.iNq.a(parambo.appId, b.a.a.iPA, null);
+    if (!bh.b(parambo.appId, parambo.dib, parambo.pkgVersion, paramm.field_downloadURL, parambo.jny)) {
+      parambo.jny.a(parambo.appId, b.a.a.jpJ, null);
     }
     AppMethodBeat.o(90669);
   }
@@ -103,7 +103,7 @@ public final class bp
     //   25: ifne +17 -> 42
     //   28: ldc 85
     //   30: ldc 194
-    //   32: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 164	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: ldc 181
     //   37: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: iconst_0
@@ -111,7 +111,7 @@ public final class bp
     //   42: new 186	com/tencent/mm/vfs/e
     //   45: dup
     //   46: aload_0
-    //   47: invokevirtual 102	com/tencent/mm/plugin/appbrand/appcache/bo:aQA	()Ljava/lang/String;
+    //   47: invokevirtual 102	com/tencent/mm/plugin/appbrand/appcache/bo:aXs	()Ljava/lang/String;
     //   50: invokespecial 188	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
     //   53: astore_0
     //   54: aload_0
@@ -122,7 +122,7 @@ public final class bp
     //   65: ifne +17 -> 82
     //   68: ldc 85
     //   70: ldc 199
-    //   72: invokestatic 164	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   72: invokestatic 164	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   75: ldc 181
     //   77: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: iconst_0
@@ -136,7 +136,7 @@ public final class bp
     //   96: invokespecial 218	com/tencent/mars/zstd/ZstdInputStream:<init>	(Ljava/io/InputStream;)V
     //   99: astore_2
     //   100: aload_0
-    //   101: invokestatic 222	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   101: invokestatic 222	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   104: astore_0
     //   105: aload_0
     //   106: astore 4
@@ -181,7 +181,7 @@ public final class bp
     //   170: iconst_0
     //   171: aload 5
     //   173: aastore
-    //   174: invokestatic 156	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: invokestatic 156	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   177: aload_0
     //   178: ifnull +7 -> 185
     //   181: aload_0
@@ -314,7 +314,7 @@ public final class bp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bp
  * JD-Core Version:    0.7.0.1
  */

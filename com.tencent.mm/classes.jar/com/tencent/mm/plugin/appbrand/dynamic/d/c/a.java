@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.appbrand.dynamic.d.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class a
-  implements com.tencent.mm.ab.d.a
+  implements com.tencent.mm.aa.d.a
 {
-  private static final int jmZ;
+  private static final int jNm;
   private String id;
-  private byte[] jna;
+  private byte[] jNn;
   
   static
   {
     AppMethodBeat.i(121381);
-    jmZ = -bt.getInt(ab.hVx, 0);
+    jNm = -bs.getInt(ab.ivB, 0);
     AppMethodBeat.o(121381);
   }
   
   public a(String paramString, byte[] paramArrayOfByte)
   {
     this.id = paramString;
-    this.jna = paramArrayOfByte;
+    this.jNn = paramArrayOfByte;
   }
   
-  public final boolean mb(int paramInt)
+  public final boolean ma(int paramInt)
   {
     AppMethodBeat.i(121380);
-    int i = jmZ;
+    int i = jNm;
     if (i == -1)
     {
-      ad.d("MicroMsg.DefaultPermissionFilter", "getCtrlByte, id = %s, ctrlIndex = %d, hard code perm on", new Object[] { this.id, Integer.valueOf(paramInt) });
+      ac.d("MicroMsg.DefaultPermissionFilter", "getCtrlByte, id = %s, ctrlIndex = %d, hard code perm on", new Object[] { this.id, Integer.valueOf(paramInt) });
       paramInt = 1;
     }
     while (paramInt == 1)
@@ -40,7 +40,7 @@ public final class a
       return true;
       if (i == -2)
       {
-        ad.d("MicroMsg.DefaultPermissionFilter", "getCtrlByte, id = %s, ctrlIndex = %d, hard code perm off", new Object[] { this.id, Integer.valueOf(paramInt) });
+        ac.d("MicroMsg.DefaultPermissionFilter", "getCtrlByte, id = %s, ctrlIndex = %d, hard code perm off", new Object[] { this.id, Integer.valueOf(paramInt) });
         paramInt = 0;
       }
       else if (paramInt == -2)
@@ -51,13 +51,13 @@ public final class a
       {
         paramInt = 0;
       }
-      else if ((this.jna == null) || (paramInt < 0) || (paramInt >= this.jna.length))
+      else if ((this.jNn == null) || (paramInt < 0) || (paramInt >= this.jNn.length))
       {
         paramInt = 0;
       }
       else
       {
-        paramInt = this.jna[paramInt];
+        paramInt = this.jNn[paramInt];
       }
     }
     AppMethodBeat.o(121380);

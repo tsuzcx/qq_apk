@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.l;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.menu.a.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class c
   implements b<com.tencent.luggage.sdk.b.a.c>
@@ -16,17 +16,17 @@ public final class c
   public static void a(d paramd, final String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(147336);
-    l.aj(paramString, paramBoolean);
+    l.ak(paramString, paramBoolean);
     if (paramBoolean) {}
     for (paramString = paramd.getContext().getResources().getString(2131755372);; paramString = paramd.getContext().getResources().getString(2131755371))
     {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(147335);
-          Toast.makeText(this.jZx.getContext(), paramString, 0).show();
-          this.jZx.getRuntime().finish();
+          Toast.makeText(this.kAk.getContext(), paramString, 0).show();
+          this.kAk.getRuntime().finish();
           AppMethodBeat.o(147335);
         }
       });
@@ -37,7 +37,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.b.c
  * JD-Core Version:    0.7.0.1
  */

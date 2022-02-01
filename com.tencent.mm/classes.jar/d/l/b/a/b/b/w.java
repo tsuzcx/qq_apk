@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum w
 {
-  public static final a Jqs;
+  public static final a LdL;
   
   static
   {
     AppMethodBeat.i(56860);
     w localw1 = new w("FINAL", 0);
-    Jqn = localw1;
+    LdG = localw1;
     w localw2 = new w("SEALED", 1);
-    Jqo = localw2;
+    LdH = localw2;
     w localw3 = new w("OPEN", 2);
-    Jqp = localw3;
+    LdI = localw3;
     w localw4 = new w("ABSTRACT", 3);
-    Jqq = localw4;
-    Jqr = new w[] { localw1, localw2, localw3, localw4 };
-    Jqs = new a((byte)0);
+    LdJ = localw4;
+    LdK = new w[] { localw1, localw2, localw3, localw4 };
+    LdL = new a((byte)0);
     AppMethodBeat.o(56860);
   }
   
@@ -26,21 +26,21 @@ public enum w
   
   public static final class a
   {
-    public static w aS(boolean paramBoolean1, boolean paramBoolean2)
+    public static w aW(boolean paramBoolean1, boolean paramBoolean2)
     {
       if (paramBoolean1) {
-        return w.Jqq;
+        return w.LdJ;
       }
       if (paramBoolean2) {
-        return w.Jqp;
+        return w.LdI;
       }
-      return w.Jqn;
+      return w.LdG;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.w
  * JD-Core Version:    0.7.0.1
  */

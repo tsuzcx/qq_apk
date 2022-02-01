@@ -4,7 +4,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
 final class c$b
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class c$b
   public final void run()
   {
     AppMethodBeat.i(174569);
-    this.hJZ.requestLayout();
+    this.ikw.requestLayout();
     AppMethodBeat.o(174569);
   }
 }

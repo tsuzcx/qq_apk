@@ -8,13 +8,13 @@ public abstract class t
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elJ = "appId".hashCode();
-  private static final int emL = "isSeparatedPluginsUsed".hashCode();
-  private static final int emv = "appVersion".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eoB = "appVersion".hashCode();
+  private static final int eoR = "isSeparatedPluginsUsed".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean els = true;
-  private boolean emK = true;
-  private boolean emr = true;
+  private boolean enx = true;
+  private boolean eoQ = true;
+  private boolean eox = true;
   public String field_appId;
   public int field_appVersion;
   public int field_isSeparatedPluginsUsed;
@@ -32,7 +32,7 @@ public abstract class t
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class t
       break label20;
       break;
       label60:
-      if (emv == k) {
+      if (eoB == k) {
         this.field_appVersion = paramCursor.getInt(i);
-      } else if (emL == k) {
+      } else if (eoR == k) {
         this.field_isSeparatedPluginsUsed = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,13 +56,13 @@ public abstract class t
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.emr) {
+    if (this.eox) {
       localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
     }
-    if (this.emK) {
+    if (this.eoQ) {
       localContentValues.put("isSeparatedPluginsUsed", Integer.valueOf(this.field_isSeparatedPluginsUsed));
     }
     if (this.systemRowid > 0L) {

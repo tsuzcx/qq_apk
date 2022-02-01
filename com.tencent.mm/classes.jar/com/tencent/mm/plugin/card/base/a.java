@@ -8,7 +8,7 @@ public abstract interface a
   
   public abstract void onNotify();
   
-  public abstract b yN(int paramInt);
+  public abstract b zD(int paramInt);
 }
 
 

@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$a
 {
-  private static final f flM;
+  private static final f fpg;
   
   static
   {
     AppMethodBeat.i(20064);
-    flM = new f((byte)0);
+    fpg = new f((byte)0);
     AppMethodBeat.o(20064);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,39 +4,39 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.performance.a;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.aw;
 
 public final class l
 {
-  private static final ax ctt;
+  private static final aw cqB;
   
   static
   {
     AppMethodBeat.i(146993);
-    ctt = ax.aFC("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper");
+    cqB = aw.aKT("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper");
     AppMethodBeat.o(146993);
   }
   
-  public static void FM(String paramString)
+  public static void JQ(String paramString)
   {
     AppMethodBeat.i(146991);
-    ctt.remove(paramString + "_AppDebugEnabled").commit();
+    cqB.remove(paramString + "_AppDebugEnabled").commit();
     AppMethodBeat.o(146991);
   }
   
-  public static boolean FQ(String paramString)
+  public static boolean JU(String paramString)
   {
     AppMethodBeat.i(146990);
-    boolean bool = ctt.getBoolean(paramString + "_AppDebugEnabled", false);
+    boolean bool = cqB.getBoolean(paramString + "_AppDebugEnabled", false);
     AppMethodBeat.o(146990);
     return bool;
   }
   
-  public static void FR(String paramString)
+  public static void JV(String paramString)
   {
-    AppMethodBeat.i(186878);
-    ctt.putString("V8DebugFlags", paramString);
-    AppMethodBeat.o(186878);
+    AppMethodBeat.i(206130);
+    cqB.putString("V8DebugFlags", paramString);
+    AppMethodBeat.o(206130);
   }
   
   public static boolean a(c paramc)
@@ -48,41 +48,41 @@ public final class l
       AppMethodBeat.o(146992);
       return false;
     }
-    if (paramc.Ec())
+    if (paramc.DF())
     {
       AppMethodBeat.o(146992);
       return false;
     }
-    boolean bool = locala.lhx;
+    boolean bool = locala.lHq;
     AppMethodBeat.o(146992);
     return bool;
   }
   
-  public static String aTH()
+  public static void ak(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(186879);
-    String str = ctt.getString("V8DebugFlags", "");
-    AppMethodBeat.o(186879);
+    AppMethodBeat.i(146989);
+    cqB.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
+    AppMethodBeat.o(146989);
+  }
+  
+  public static String baF()
+  {
+    AppMethodBeat.i(206131);
+    String str = cqB.getString("V8DebugFlags", "");
+    AppMethodBeat.o(206131);
     return str;
   }
   
-  public static void aTI()
+  public static void baG()
   {
-    AppMethodBeat.i(186880);
-    ctt.remove("V8DebugFlags");
-    AppMethodBeat.o(186880);
-  }
-  
-  public static void aj(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(146989);
-    ctt.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
-    AppMethodBeat.o(146989);
+    AppMethodBeat.i(206132);
+    cqB.remove("V8DebugFlags");
+    AppMethodBeat.o(206132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.l
  * JD-Core Version:    0.7.0.1
  */

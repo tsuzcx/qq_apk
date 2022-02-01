@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,53 +11,53 @@ import org.json.JSONObject;
 public final class p
   extends m
 {
+  public boolean BhW;
   private String token;
-  private Map<String, String> ukq;
-  public boolean zPC;
+  private Map<String, String> vtm;
   
   public p(Authen paramAuthen, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(69567);
     this.token = null;
-    this.ukq = new HashMap();
-    this.ukq.put("flag", paramAuthen.dtM);
-    if (!bt.isNullOrNil(paramAuthen.Abn))
+    this.vtm = new HashMap();
+    this.vtm.put("flag", paramAuthen.drx);
+    if (!bs.isNullOrNil(paramAuthen.BtH))
     {
-      this.ukq.put("first_name", paramAuthen.Abn);
-      this.ukq.put("last_name", paramAuthen.Abo);
-      this.ukq.put("country", paramAuthen.country);
-      this.ukq.put("area", paramAuthen.evz);
-      this.ukq.put("city", paramAuthen.evA);
-      this.ukq.put("address", paramAuthen.hdQ);
-      this.ukq.put("phone_number", paramAuthen.szk);
-      this.ukq.put("zip_code", paramAuthen.iyB);
-      this.ukq.put("email", paramAuthen.evs);
+      this.vtm.put("first_name", paramAuthen.BtH);
+      this.vtm.put("last_name", paramAuthen.BtI);
+      this.vtm.put("country", paramAuthen.country);
+      this.vtm.put("area", paramAuthen.exV);
+      this.vtm.put("city", paramAuthen.exW);
+      this.vtm.put("address", paramAuthen.hEt);
+      this.vtm.put("phone_number", paramAuthen.tGU);
+      this.vtm.put("zip_code", paramAuthen.iYE);
+      this.vtm.put("email", paramAuthen.exO);
     }
-    this.ukq.put("business_source", String.valueOf(paramInt));
-    this.ukq.put("bank_type", paramAuthen.dca);
-    if (paramAuthen.Abi > 0) {
-      this.ukq.put("cre_type", paramAuthen.Abi);
+    this.vtm.put("business_source", String.valueOf(paramInt));
+    this.vtm.put("bank_type", paramAuthen.cZz);
+    if (paramAuthen.BtC > 0) {
+      this.vtm.put("cre_type", paramAuthen.BtC);
     }
-    if (!bt.isNullOrNil(paramAuthen.Aar)) {
-      this.ukq.put("true_name", paramAuthen.Aar);
+    if (!bs.isNullOrNil(paramAuthen.BsL)) {
+      this.vtm.put("true_name", paramAuthen.BsL);
     }
-    if (!bt.isNullOrNil(paramAuthen.Abh)) {
-      this.ukq.put("identify_card", paramAuthen.Abh);
+    if (!bs.isNullOrNil(paramAuthen.BtB)) {
+      this.vtm.put("identify_card", paramAuthen.BtB);
     }
-    this.ukq.put("mobile_no", paramAuthen.zWw);
-    this.ukq.put("bank_card_id", paramAuthen.Abj);
-    if (!bt.isNullOrNil(paramAuthen.Abk)) {
-      this.ukq.put("cvv2", paramAuthen.Abk);
+    this.vtm.put("mobile_no", paramAuthen.BoQ);
+    this.vtm.put("bank_card_id", paramAuthen.BtD);
+    if (!bs.isNullOrNil(paramAuthen.BtE)) {
+      this.vtm.put("cvv2", paramAuthen.BtE);
     }
-    if (!bt.isNullOrNil(paramAuthen.Abl)) {
-      this.ukq.put("valid_thru", paramAuthen.Abl);
+    if (!bs.isNullOrNil(paramAuthen.BtF)) {
+      this.vtm.put("valid_thru", paramAuthen.BtF);
     }
-    Map localMap = this.ukq;
+    Map localMap = this.vtm;
     if (paramBoolean) {}
     for (paramAuthen = "1";; paramAuthen = "0")
     {
       localMap.put("new_card_reset_pwd", paramAuthen);
-      setRequestData(this.ukq);
+      setRequestData(this.vtm);
       AppMethodBeat.o(69567);
       return;
     }
@@ -96,9 +96,9 @@ public final class p
   {
     AppMethodBeat.i(69568);
     super.resend();
-    this.ukq.put("is_repeat_send", "1");
-    setRequestData(this.ukq);
-    this.zPC = true;
+    this.vtm.put("is_repeat_send", "1");
+    setRequestData(this.vtm);
+    this.BhW = true;
     AppMethodBeat.o(69568);
     return true;
   }

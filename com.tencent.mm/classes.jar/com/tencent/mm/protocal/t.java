@@ -3,9 +3,9 @@ package com.tencent.mm.protocal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.art;
-import com.tencent.mm.protocal.protobuf.aru;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.aux;
+import com.tencent.mm.protocal.protobuf.auy;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class t
 {
@@ -13,12 +13,12 @@ public final class t
     extends l.d
     implements l.b
   {
-    public art CqU;
+    public aux DJm;
     
     public a()
     {
       AppMethodBeat.i(133107);
-      this.CqU = new art();
+      this.DJm = new aux();
       AppMethodBeat.o(133107);
     }
     
@@ -35,11 +35,11 @@ public final class t
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(133108);
-      setRsaInfo(ac.eCa());
-      this.CqU.CFU = new SKBuiltinBuffer_t().setBuffer(bt.eGG());
-      this.CqU.DrX = ac.eBY().ver;
-      this.CqU.setBaseRequest(l.a(this));
-      byte[] arrayOfByte = this.CqU.toByteArray();
+      setRsaInfo(ac.eRv());
+      this.DJm.DYu = new SKBuiltinBuffer_t().setBuffer(bs.eWb());
+      this.DJm.EMZ = ac.eRt().ver;
+      this.DJm.setBaseRequest(l.a(this));
+      byte[] arrayOfByte = this.DJm.toByteArray();
       AppMethodBeat.o(133108);
       return arrayOfByte;
     }
@@ -49,21 +49,21 @@ public final class t
     extends l.e
     implements l.c
   {
-    public aru CqV;
+    public auy DJn;
     
     public b()
     {
       AppMethodBeat.i(133109);
-      this.CqV = new aru();
+      this.DJn = new auy();
       AppMethodBeat.o(133109);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133110);
-      this.CqV = ((aru)new aru().parseFrom(paramArrayOfByte));
-      l.a(this, this.CqV.getBaseResponse());
-      int i = this.CqV.getBaseResponse().Ret;
+      this.DJn = ((auy)new auy().parseFrom(paramArrayOfByte));
+      l.a(this, this.DJn.getBaseResponse());
+      int i = this.DJn.getBaseResponse().Ret;
       AppMethodBeat.o(133110);
       return i;
     }

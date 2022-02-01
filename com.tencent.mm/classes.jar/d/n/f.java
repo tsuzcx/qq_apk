@@ -5,17 +5,17 @@ import d.g.b.k;
 import d.k.d;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
 public final class f
 {
-  public final d KcJ;
+  public final d LQe;
   public final String value;
   
   public f(String paramString, d paramd)
   {
     AppMethodBeat.i(129350);
     this.value = paramString;
-    this.KcJ = paramd;
+    this.LQe = paramd;
     AppMethodBeat.o(129350);
   }
   
@@ -27,7 +27,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!k.g(this.value, paramObject.value)) || (!k.g(this.KcJ, paramObject.KcJ))) {}
+        if ((!k.g(this.value, paramObject.value)) || (!k.g(this.LQe, paramObject.LQe))) {}
       }
     }
     else
@@ -47,7 +47,7 @@ public final class f
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.KcJ;
+      localObject = this.LQe;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,7 +59,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129351);
-    String str = "MatchGroup(value=" + this.value + ", range=" + this.KcJ + ")";
+    String str = "MatchGroup(value=" + this.value + ", range=" + this.LQe + ")";
     AppMethodBeat.o(129351);
     return str;
   }

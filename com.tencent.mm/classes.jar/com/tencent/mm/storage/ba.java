@@ -1,73 +1,58 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bq;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
+import junit.framework.Assert;
 
 public final class ba
-  extends bq
+  extends e
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bottlemessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  bmessageSvrIdIndex ON bottlemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  bmessageTalkerIndex ON bottlemessage ( talker )", "CREATE INDEX IF NOT EXISTS  bmessageTalerStatusIndex ON bottlemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTimeIndex ON bottlemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTaklerTimeIndex ON bottlemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  bmessageSendCreateTimeIndex ON bottlemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  bottlemessageTalkerTypeIndex ON bottlemessage ( talker,type )", "CREATE TABLE IF NOT EXISTS qmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  qmessageSvrIdIndex ON qmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerIndex ON qmessage ( talker )", "CREATE INDEX IF NOT EXISTS  qmessageTalerStatusIndex ON qmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTimeIndex ON qmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTaklerTimeIndex ON qmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageSendCreateTimeIndex ON qmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerSvrIdIndex ON qmessage ( talker,msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerTypeIndex ON qmessage ( talker,type )", "CREATE TABLE IF NOT EXISTS tmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  tmessageSvrIdIndex ON tmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerIndex ON tmessage ( talker )", "CREATE INDEX IF NOT EXISTS  tmessageTalerStatusIndex ON tmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTimeIndex ON tmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTaklerTimeIndex ON tmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageSendCreateTimeIndex ON tmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerTypeIndex ON tmessage ( talker,type )" };
   
-  static
+  public ba(h paramh)
   {
-    AppMethodBeat.i(43198);
-    c.a locala = new c.a();
-    locala.EYt = new Field[8];
-    locala.columns = new String[9];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgContent";
-    locala.EYv.put("msgContent", "TEXT default '' ");
-    localStringBuilder.append(" msgContent TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "isSend";
-    locala.EYv.put("isSend", "INTEGER default '0' ");
-    localStringBuilder.append(" isSend INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "talker";
-    locala.EYv.put("talker", "TEXT default '' ");
-    localStringBuilder.append(" talker TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "encryptTalker";
-    locala.EYv.put("encryptTalker", "TEXT default '' ");
-    localStringBuilder.append(" encryptTalker TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "svrId";
-    locala.EYv.put("svrId", "LONG default '0' ");
-    localStringBuilder.append(" svrId LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "type";
-    locala.EYv.put("type", "INTEGER default '0' ");
-    localStringBuilder.append(" type INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "createTime";
-    locala.EYv.put("createTime", "LONG default '0' ");
-    localStringBuilder.append(" createTime LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "chatroomName";
-    locala.EYv.put("chatroomName", "TEXT default '' ");
-    localStringBuilder.append(" chatroomName TEXT default '' ");
-    locala.columns[8] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43198);
+    super(paramh);
+    AppMethodBeat.i(32878);
+    c(getDB(), "bottlemessage");
+    c(getDB(), "qmessage");
+    c(getDB(), "tmessage");
+    a(new h.b(8, "bottlemessage", h.b.a(2000001L, 2500000L, 96000001L, 99000000L)));
+    a(new h.b(2, "qmessage", h.b.a(1000001L, 1500000L, 90000001L, 93000000L)));
+    a(new h.b(4, "tmessage", h.b.a(1500001L, 2000000L, 93000001L, 96000000L)));
+    AppMethodBeat.o(32878);
   }
   
-  public final boolean eLF()
+  public final String aME(String paramString)
   {
-    return this.field_isSend % 2 == 0;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
+    AppMethodBeat.i(32879);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      if (!paramString.endsWith("@t.qq.com")) {
+        break;
+      }
+      AppMethodBeat.o(32879);
+      return "tmessage";
+    }
+    if (paramString.endsWith("@qqim"))
+    {
+      AppMethodBeat.o(32879);
+      return "qmessage";
+    }
+    if (ai.ww(paramString))
+    {
+      AppMethodBeat.o(32879);
+      return "bottlemessage";
+    }
+    AppMethodBeat.o(32879);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.ba
  * JD-Core Version:    0.7.0.1
  */

@@ -5,27 +5,27 @@ import d.l.b.a.b.m.ab;
 
 class k
 {
-  final int JDn;
-  final boolean JDo;
-  private final ab Jko;
+  private final ab KXI;
+  final int LqG;
+  final boolean LqH;
   
   public k(ab paramab, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(58077);
-    this.Jko = paramab;
-    this.JDn = paramInt;
-    this.JDo = paramBoolean;
+    this.KXI = paramab;
+    this.LqG = paramInt;
+    this.LqH = paramBoolean;
     AppMethodBeat.o(58077);
   }
   
-  public ab fzr()
+  public ab fRV()
   {
-    return this.Jko;
+    return this.KXI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.k
  * JD-Core Version:    0.7.0.1
  */

@@ -18,8 +18,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.StepLogInfo;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.a;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,36 +29,36 @@ import java.util.regex.Pattern;
 public class KeyStepAnalyserActivity
   extends KeyStepBaseActivity
 {
-  private a kDU;
-  private Pattern kDV;
-  private Class kDW;
+  private a lfn;
+  private Pattern lfo;
+  private Class lfp;
   private int mDay;
   private int mMonth;
   private String mProcessName;
   private int mYear;
   
-  private void ng(long paramLong)
+  private void qS(long paramLong)
   {
-    AppMethodBeat.i(194818);
-    ad.i("MicroMsg.KeyStepBaseActivity", "analyse time:%d", new Object[] { Long.valueOf(paramLong) });
-    this.kDU.a(this.mProcessName, this.kDV, paramLong, new IKeyStepAnalyser.a()
+    AppMethodBeat.i(200973);
+    ac.i("MicroMsg.KeyStepBaseActivity", "analyse time:%d", new Object[] { Long.valueOf(paramLong) });
+    this.lfn.a(this.mProcessName, this.lfo, paramLong, new IKeyStepAnalyser.a()
     {
-      public final void ac(final List<IKeyStepAnalyser.b> paramAnonymousList)
+      public final void bv(final List<IKeyStepAnalyser.b> paramAnonymousList)
       {
-        AppMethodBeat.i(194808);
-        aq.f(new Runnable()
+        AppMethodBeat.i(200963);
+        ap.f(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(194807);
+            AppMethodBeat.i(200962);
             KeyStepAnalyserActivity.a(KeyStepAnalyserActivity.this, paramAnonymousList);
-            AppMethodBeat.o(194807);
+            AppMethodBeat.o(200962);
           }
         });
-        AppMethodBeat.o(194808);
+        AppMethodBeat.o(200963);
       }
     });
-    AppMethodBeat.o(194818);
+    AppMethodBeat.o(200973);
   }
   
   protected final int getLayoutId()
@@ -68,11 +68,11 @@ public class KeyStepAnalyserActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(194817);
+    AppMethodBeat.i(200972);
     super.onCreate(paramBundle);
-    this.kDW = ((Class)getIntent().getSerializableExtra("proces"));
-    this.mProcessName = f.ay(this.kDW);
-    this.kDV = ((Pattern)getIntent().getSerializableExtra("session_id_prefix"));
+    this.lfp = ((Class)getIntent().getSerializableExtra("proces"));
+    this.mProcessName = f.ay(this.lfp);
+    this.lfo = ((Pattern)getIntent().getSerializableExtra("session_id_prefix"));
     setTitle(getString(2131765443));
     paramBundle = Calendar.getInstance();
     this.mYear = paramBundle.get(1);
@@ -82,14 +82,14 @@ public class KeyStepAnalyserActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(194806);
+        AppMethodBeat.i(200961);
         KeyStepAnalyserActivity.a(KeyStepAnalyserActivity.this);
-        AppMethodBeat.o(194806);
+        AppMethodBeat.o(200961);
       }
     });
-    this.kDU = new a();
-    ng(System.currentTimeMillis());
-    AppMethodBeat.o(194817);
+    this.lfn = new a();
+    qS(System.currentTimeMillis());
+    AppMethodBeat.o(200972);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -102,33 +102,33 @@ public class KeyStepAnalyserActivity
     extends BaseAdapter
   {
     private static SimpleDateFormat sDateFormat;
-    List<IKeyStepAnalyser.b> kEb;
+    List<IKeyStepAnalyser.b> lfu;
     private final LayoutInflater mInflater;
     
     static
     {
-      AppMethodBeat.i(194816);
+      AppMethodBeat.i(200971);
       sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      AppMethodBeat.o(194816);
+      AppMethodBeat.o(200971);
     }
     
     a(Context paramContext)
     {
-      AppMethodBeat.i(194811);
+      AppMethodBeat.i(200966);
       this.mInflater = LayoutInflater.from(paramContext);
-      AppMethodBeat.o(194811);
+      AppMethodBeat.o(200966);
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(194812);
-      if (this.kEb == null)
+      AppMethodBeat.i(200967);
+      if (this.lfu == null)
       {
-        AppMethodBeat.o(194812);
+        AppMethodBeat.o(200967);
         return 0;
       }
-      int i = this.kEb.size();
-      AppMethodBeat.o(194812);
+      int i = this.lfu.size();
+      AppMethodBeat.o(200967);
       return i;
     }
     
@@ -139,18 +139,18 @@ public class KeyStepAnalyserActivity
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(194814);
+      AppMethodBeat.i(200969);
       View localView;
       if (paramView == null)
       {
         localView = this.mInflater.inflate(2131496159, paramViewGroup, false);
         paramViewGroup = new KeyStepAnalyserActivity.b();
-        paramViewGroup.ibF = ((TextView)localView.findViewById(2131298928));
+        paramViewGroup.iBM = ((TextView)localView.findViewById(2131298928));
         localView.setTag(paramViewGroup);
-        if (sE(paramInt).kEP.isEmpty()) {
+        if (tv(paramInt).lgi.isEmpty()) {
           break label133;
         }
-        paramView = (IKeyStepAnalyser.StepLogInfo)sE(paramInt).kEP.get(0);
+        paramView = (IKeyStepAnalyser.StepLogInfo)tv(paramInt).lgi.get(0);
         if (paramView != null) {
           break label116;
         }
@@ -158,8 +158,8 @@ public class KeyStepAnalyserActivity
       }
       for (;;)
       {
-        paramViewGroup.ibF.setText(paramView);
-        AppMethodBeat.o(194814);
+        paramViewGroup.iBM.setText(paramView);
+        AppMethodBeat.o(200969);
         return localView;
         paramViewGroup = (KeyStepAnalyserActivity.b)paramView.getTag();
         localView = paramView;
@@ -168,28 +168,28 @@ public class KeyStepAnalyserActivity
         paramView = sDateFormat.format(Long.valueOf(paramView.time));
         continue;
         label133:
-        paramViewGroup.ibF.setText(null);
+        paramViewGroup.iBM.setText(null);
         paramView = null;
       }
     }
     
-    public final IKeyStepAnalyser.b sE(int paramInt)
+    public final IKeyStepAnalyser.b tv(int paramInt)
     {
-      AppMethodBeat.i(194813);
-      IKeyStepAnalyser.b localb = (IKeyStepAnalyser.b)this.kEb.get(paramInt);
-      AppMethodBeat.o(194813);
+      AppMethodBeat.i(200968);
+      IKeyStepAnalyser.b localb = (IKeyStepAnalyser.b)this.lfu.get(paramInt);
+      AppMethodBeat.o(200968);
       return localb;
     }
   }
   
   static final class b
   {
-    public TextView ibF;
+    public TextView iBM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.KeyStepAnalyserActivity
  * JD-Core Version:    0.7.0.1
  */

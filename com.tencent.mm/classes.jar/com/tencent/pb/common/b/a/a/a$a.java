@@ -7,16 +7,16 @@ import com.google.b.a.g;
 public final class a$a
   extends e
 {
-  public String[] IkA = g.EMPTY_STRING_ARRAY;
-  public int[] Iky = g.bIT;
-  public int Ikz = 0;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int[] JMj = g.bGB;
+  public int JMk = 0;
+  public String[] JMl = g.EMPTY_STRING_ARRAY;
   public String groupId = "";
-  public int zkT = 0;
-  public long zkU = 0L;
   
   public a$a()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -25,31 +25,31 @@ public final class a$a
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
     int i;
-    if ((this.Iky != null) && (this.Iky.length > 0))
+    if ((this.JMj != null) && (this.JMj.length > 0))
     {
       i = 0;
-      while (i < this.Iky.length)
+      while (i < this.JMj.length)
       {
-        paramb.bz(4, this.Iky[i]);
+        paramb.bw(4, this.JMj[i]);
         i += 1;
       }
     }
-    if (this.Ikz != 0) {
-      paramb.by(5, this.Ikz);
+    if (this.JMk != 0) {
+      paramb.bv(5, this.JMk);
     }
-    if ((this.IkA != null) && (this.IkA.length > 0))
+    if ((this.JMl != null) && (this.JMl.length > 0))
     {
       i = j;
-      while (i < this.IkA.length)
+      while (i < this.JMl.length)
       {
-        String str = this.IkA[i];
+        String str = this.JMl[i];
         if (str != null) {
           paramb.d(100, str);
         }
@@ -59,60 +59,60 @@ public final class a$a
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
     int k;
-    if (this.Iky != null)
+    if (this.JMj != null)
     {
       j = i;
-      if (this.Iky.length > 0)
+      if (this.JMj.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.Iky.length)
+        while (j < this.JMj.length)
         {
-          k += b.ga(this.Iky[j]);
+          k += b.fM(this.JMj[j]);
           j += 1;
         }
-        j = i + k + this.Iky.length * 1;
+        j = i + k + this.JMj.length * 1;
       }
     }
     i = j;
-    if (this.Ikz != 0) {
-      i = j + b.bA(5, this.Ikz);
+    if (this.JMk != 0) {
+      i = j + b.bx(5, this.JMk);
     }
     j = i;
-    if (this.IkA != null)
+    if (this.JMl != null)
     {
       j = i;
-      if (this.IkA.length > 0)
+      if (this.JMl.length > 0)
       {
         j = 0;
         k = 0;
         int n;
-        for (int m = 0; j < this.IkA.length; m = n)
+        for (int m = 0; j < this.JMl.length; m = n)
         {
-          String str = this.IkA[j];
+          String str = this.JMl[j];
           int i1 = k;
           n = m;
           if (str != null)
           {
             n = m + 1;
-            i1 = k + b.bs(str);
+            i1 = k + b.bj(str);
           }
           j += 1;
           k = i1;

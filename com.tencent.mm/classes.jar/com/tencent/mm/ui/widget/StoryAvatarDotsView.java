@@ -8,20 +8,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 
 public final class StoryAvatarDotsView
   extends FrameLayout
 {
-  private int lPe;
-  private int lPf;
+  private int mrg;
+  private int mrh;
   
   public StoryAvatarDotsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143459);
-    this.lPe = a.fromDPToPix(getContext(), 25);
-    this.lPf = a.fromDPToPix(getContext(), 19);
+    this.mrg = a.fromDPToPix(getContext(), 25);
+    this.mrh = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143459);
   }
   
@@ -29,12 +29,12 @@ public final class StoryAvatarDotsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143460);
-    this.lPe = a.fromDPToPix(getContext(), 25);
-    this.lPf = a.fromDPToPix(getContext(), 19);
+    this.mrg = a.fromDPToPix(getContext(), 25);
+    this.mrh = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143460);
   }
   
-  private void bqQ()
+  private void bxQ()
   {
     AppMethodBeat.i(143463);
     if (getChildCount() > 0)
@@ -45,12 +45,12 @@ public final class StoryAvatarDotsView
         View localView = getChildAt(i);
         Object localObject = localView.getLayoutParams();
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        int j = this.lPe;
+        int j = this.mrg;
         localLayoutParams.height = j;
         ((ViewGroup.LayoutParams)localObject).width = j;
         localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity |= 0x5;
-        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.lPf * i);
+        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.mrh * i);
         i -= 1;
       }
       requestLayout();
@@ -75,10 +75,10 @@ public final class StoryAvatarDotsView
   public final void setIconGap(int paramInt)
   {
     AppMethodBeat.i(143462);
-    if ((paramInt >= 0) && (this.lPf != paramInt))
+    if ((paramInt >= 0) && (this.mrh != paramInt))
     {
-      this.lPf = paramInt;
-      bqQ();
+      this.mrh = paramInt;
+      bxQ();
     }
     AppMethodBeat.o(143462);
   }
@@ -95,7 +95,7 @@ public final class StoryAvatarDotsView
         while (i < paramInt - j)
         {
           ImageView localImageView = new ImageView(getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.lPe, this.lPe);
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.mrg, this.mrg);
           localLayoutParams.gravity = 16;
           addViewInLayout(localImageView, 0, localLayoutParams, true);
           i += 1;
@@ -104,7 +104,7 @@ public final class StoryAvatarDotsView
       if (paramInt < getChildCount()) {
         removeViewsInLayout(0, getChildCount() - paramInt);
       }
-      bqQ();
+      bxQ();
     }
     AppMethodBeat.o(143464);
   }
@@ -112,15 +112,15 @@ public final class StoryAvatarDotsView
   public final void setIconSize(int paramInt)
   {
     AppMethodBeat.i(143461);
-    if ((paramInt > 0) && (paramInt != this.lPe))
+    if ((paramInt > 0) && (paramInt != this.mrg))
     {
-      this.lPe = paramInt;
-      bqQ();
+      this.mrg = paramInt;
+      bxQ();
     }
     AppMethodBeat.o(143461);
   }
   
-  public final ImageView us(int paramInt)
+  public final ImageView vk(int paramInt)
   {
     AppMethodBeat.i(143465);
     ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
@@ -130,7 +130,7 @@ public final class StoryAvatarDotsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.StoryAvatarDotsView
  * JD-Core Version:    0.7.0.1
  */

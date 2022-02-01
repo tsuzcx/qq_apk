@@ -5,15 +5,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements i<String>
 {
-  public final boolean aw(byte[] paramArrayOfByte)
+  public final boolean av(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193994);
-    if (!h.ax(paramArrayOfByte))
+    AppMethodBeat.i(194341);
+    if (!h.aw(paramArrayOfByte))
     {
-      AppMethodBeat.o(193994);
+      AppMethodBeat.o(194341);
       return true;
     }
-    AppMethodBeat.o(193994);
+    AppMethodBeat.o(194341);
     return false;
   }
 }

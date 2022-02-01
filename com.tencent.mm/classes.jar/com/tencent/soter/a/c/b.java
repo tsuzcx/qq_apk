@@ -6,34 +6,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
 {
-  private static volatile b Ivx = null;
-  public SharedPreferences IvA;
-  public int Ivy;
-  public SparseArray<String> Ivz;
-  public boolean csX;
-  public boolean ddz;
+  private static volatile b JXg = null;
+  public int JXh;
+  public SparseArray<String> JXi;
+  public SharedPreferences JXj;
+  public boolean cqf;
+  public boolean daX;
   
   public b()
   {
     AppMethodBeat.i(16);
-    this.csX = false;
-    this.ddz = false;
-    this.Ivy = 0;
-    this.Ivz = new SparseArray(10);
-    this.IvA = null;
+    this.cqf = false;
+    this.daX = false;
+    this.JXh = 0;
+    this.JXi = new SparseArray(10);
+    this.JXj = null;
     AppMethodBeat.o(16);
   }
   
-  public static b fno()
+  public static b fDE()
   {
     AppMethodBeat.i(17);
-    if (Ivx == null) {
+    if (JXg == null) {
       try
       {
-        if (Ivx == null) {
-          Ivx = new b();
+        if (JXg == null) {
+          JXg = new b();
         }
-        b localb1 = Ivx;
+        b localb1 = JXg;
         return localb1;
       }
       finally
@@ -41,46 +41,46 @@ public class b
         AppMethodBeat.o(17);
       }
     }
-    b localb2 = Ivx;
+    b localb2 = JXg;
     AppMethodBeat.o(17);
     return localb2;
   }
   
-  public final boolean fnk()
+  public final boolean fDA()
   {
     try
     {
-      boolean bool = this.ddz;
+      boolean bool = this.daX;
       return bool;
     }
     finally {}
   }
   
-  public final void fnp()
+  public final void fDF()
   {
     try
     {
-      this.csX = true;
+      this.cqf = true;
       return;
     }
     finally {}
   }
   
-  public final SparseArray<String> fnq()
+  public final SparseArray<String> fDG()
   {
     try
     {
-      SparseArray localSparseArray = this.Ivz;
+      SparseArray localSparseArray = this.JXi;
       return localSparseArray;
     }
     finally {}
   }
   
-  public final SharedPreferences fnr()
+  public final SharedPreferences fDH()
   {
     try
     {
-      SharedPreferences localSharedPreferences = this.IvA;
+      SharedPreferences localSharedPreferences = this.JXj;
       return localSharedPreferences;
     }
     finally {}
@@ -90,17 +90,17 @@ public class b
   {
     try
     {
-      boolean bool = this.csX;
+      boolean bool = this.cqf;
       return bool;
     }
     finally {}
   }
   
-  public final void xv(boolean paramBoolean)
+  public final void yF(boolean paramBoolean)
   {
     try
     {
-      this.ddz = paramBoolean;
+      this.daX = paramBoolean;
       return;
     }
     finally {}

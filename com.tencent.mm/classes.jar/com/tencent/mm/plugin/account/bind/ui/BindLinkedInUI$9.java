@@ -12,7 +12,7 @@ final class BindLinkedInUI$9
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(109824);
-    BindLinkedInUI.a(this.igh);
+    BindLinkedInUI.a(this.iGq);
     AppMethodBeat.o(109824);
   }
 }

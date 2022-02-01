@@ -7,12 +7,12 @@ import java.nio.ByteOrder;
 final class j
   implements d
 {
-  private int aVk = -1;
-  private boolean aVn;
-  private ByteBuffer buffer = aTH;
+  private int aVX = -1;
+  private boolean aWa;
+  private ByteBuffer buffer = aUx;
   private int channelCount = -1;
   private int encoding = 0;
-  private ByteBuffer outputBuffer = aTH;
+  private ByteBuffer outputBuffer = aUx;
   
   public final void f(ByteBuffer paramByteBuffer)
   {
@@ -86,8 +86,8 @@ final class j
   
   public final void flush()
   {
-    this.outputBuffer = aTH;
-    this.aVn = false;
+    this.outputBuffer = aUx;
+    this.aWa = false;
   }
   
   public final boolean isActive()
@@ -95,34 +95,17 @@ final class j
     return (this.encoding != 0) && (this.encoding != 2);
   }
   
-  public final boolean rM()
+  public final boolean rX()
   {
-    return (this.aVn) && (this.outputBuffer == aTH);
-  }
-  
-  public final int rU()
-  {
-    return this.channelCount;
-  }
-  
-  public final void rV()
-  {
-    this.aVn = true;
-  }
-  
-  public final ByteBuffer rW()
-  {
-    ByteBuffer localByteBuffer = this.outputBuffer;
-    this.outputBuffer = aTH;
-    return localByteBuffer;
+    return (this.aWa) && (this.outputBuffer == aUx);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(91832);
     flush();
-    this.buffer = aTH;
-    this.aVk = -1;
+    this.buffer = aUx;
+    this.aVX = -1;
     this.channelCount = -1;
     this.encoding = 0;
     AppMethodBeat.o(91832);
@@ -137,24 +120,41 @@ final class j
       AppMethodBeat.o(91830);
       throw locala;
     }
-    if ((this.aVk == paramInt1) && (this.channelCount == paramInt2) && (this.encoding == paramInt3))
+    if ((this.aVX == paramInt1) && (this.channelCount == paramInt2) && (this.encoding == paramInt3))
     {
       AppMethodBeat.o(91830);
       return false;
     }
-    this.aVk = paramInt1;
+    this.aVX = paramInt1;
     this.channelCount = paramInt2;
     this.encoding = paramInt3;
     if (paramInt3 == 2) {
-      this.buffer = aTH;
+      this.buffer = aUx;
     }
     AppMethodBeat.o(91830);
     return true;
   }
+  
+  public final int sd()
+  {
+    return this.channelCount;
+  }
+  
+  public final void se()
+  {
+    this.aWa = true;
+  }
+  
+  public final ByteBuffer sf()
+  {
+    ByteBuffer localByteBuffer = this.outputBuffer;
+    this.outputBuffer = aUx;
+    return localByteBuffer;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.a.j
  * JD-Core Version:    0.7.0.1
  */

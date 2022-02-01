@@ -15,17 +15,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends BaseAdapter
 {
-  private LayoutInflater imq;
-  private Drawable ipA;
-  private View.OnTouchListener ipB;
-  private String[] ipz;
+  private LayoutInflater iMw;
+  private String[] iPG;
+  private Drawable iPH;
+  private View.OnTouchListener iPI;
   private Context mContext;
   
   public a(Context paramContext, String[] paramArrayOfString)
   {
     AppMethodBeat.i(127865);
-    this.ipA = null;
-    this.ipB = new View.OnTouchListener()
+    this.iPH = null;
+    this.iPI = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -46,27 +46,27 @@ public final class a
         return false;
       }
     };
-    this.ipz = paramArrayOfString;
+    this.iPG = paramArrayOfString;
     this.mContext = paramContext;
-    this.imq = LayoutInflater.from(paramContext);
-    this.ipA = paramContext.getResources().getDrawable(2131234063);
-    this.ipA.setBounds(0, 0, this.ipA.getIntrinsicWidth(), this.ipA.getIntrinsicHeight());
+    this.iMw = LayoutInflater.from(paramContext);
+    this.iPH = paramContext.getResources().getDrawable(2131234063);
+    this.iPH.setBounds(0, 0, this.iPH.getIntrinsicWidth(), this.iPH.getIntrinsicHeight());
     AppMethodBeat.o(127865);
   }
   
-  private boolean qh(int paramInt)
+  private boolean qU(int paramInt)
   {
-    return paramInt == this.ipz.length - 1;
+    return paramInt == this.iPG.length - 1;
   }
   
   public final int getCount()
   {
-    return this.ipz.length;
+    return this.iPG.length;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.ipz[paramInt];
+    return this.iPG[paramInt];
   }
   
   public final long getItemId(int paramInt)
@@ -80,15 +80,15 @@ public final class a
     AppMethodBeat.i(127866);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.imq.inflate(2131492956, null);
+      paramViewGroup = this.iMw.inflate(2131492956, null);
     }
     paramView = (TextView)paramViewGroup.findViewById(2131296639);
-    paramViewGroup.setOnTouchListener(this.ipB);
+    paramViewGroup.setOnTouchListener(this.iPI);
     int i;
     if (paramInt == 0)
     {
       i = 1;
-      if ((i == 0) || (!qh(paramInt))) {
+      if ((i == 0) || (!qU(paramInt))) {
         break label110;
       }
       paramView.setPadding(25, 0, 25, 10);
@@ -97,7 +97,7 @@ public final class a
     }
     for (;;)
     {
-      paramView.setText(this.ipz[paramInt]);
+      paramView.setText(this.iPG[paramInt]);
       AppMethodBeat.o(127866);
       return paramViewGroup;
       i = 0;
@@ -111,11 +111,11 @@ public final class a
         }
         paramView.setPadding(25, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.ipA, null);
+        paramView.setCompoundDrawables(null, null, this.iPH, null);
         break;
       }
       label160:
-      if (qh(paramInt))
+      if (qU(paramInt))
       {
         paramView.setPadding(0, 0, 25, 10);
         paramView.setCompoundDrawablePadding(0);
@@ -125,14 +125,14 @@ public final class a
       {
         paramView.setPadding(0, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.ipA, null);
+        paramView.setCompoundDrawables(null, null, this.iPH, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.a
  * JD-Core Version:    0.7.0.1
  */

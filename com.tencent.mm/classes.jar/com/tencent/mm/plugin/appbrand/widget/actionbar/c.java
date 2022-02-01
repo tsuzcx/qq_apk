@@ -8,26 +8,26 @@ import java.util.Iterator;
 
 public final class c
 {
-  HashSet<View.OnClickListener> lRq;
-  HashSet<View.OnClickListener> lRr;
+  HashSet<View.OnClickListener> mtt;
+  HashSet<View.OnClickListener> mtu;
   
   public c()
   {
     AppMethodBeat.i(135442);
-    this.lRq = new HashSet();
-    this.lRr = new HashSet();
+    this.mtt = new HashSet();
+    this.mtu = new HashSet();
     AppMethodBeat.o(135442);
   }
   
-  public final boolean cQ(View paramView)
+  public final boolean cS(View paramView)
   {
     AppMethodBeat.i(135443);
-    if (this.lRr.isEmpty())
+    if (this.mtu.isEmpty())
     {
       AppMethodBeat.o(135443);
       return false;
     }
-    Iterator localIterator = this.lRr.iterator();
+    Iterator localIterator = this.mtu.iterator();
     while (localIterator.hasNext()) {
       ((View.OnClickListener)localIterator.next()).onClick(paramView);
     }
@@ -37,7 +37,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.c
  * JD-Core Version:    0.7.0.1
  */

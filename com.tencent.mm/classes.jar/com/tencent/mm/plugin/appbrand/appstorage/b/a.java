@@ -1,177 +1,139 @@
 package com.tencent.mm.plugin.appbrand.appstorage.b;
 
-import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.plugin.appbrand.appstorage.FileStat;
+import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandScopedStorageTransfer;", "", "()V", "appBrandTargetFolder", "", "appId", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "rootPath", "tasks", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandTransferTask;", "Lkotlin/collections/ArrayList;", "commit", "", "into", "path", "isTransferred", "", "taskPaths", "nonFlattenedFSPath", "nonFlattenedOpenFSPath", "nonFlattenedClientFSPath", "tryTransfer", "Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/TransferTaskResult;", "task", "with", "Companion", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandFileUtilsCompat;", "", "()V", "TAG", "", "cleanDirectory", "", "directory", "Ljava/io/File;", "deleteDirectory", "forceDelete", "file", "isSymlink", "", "moveDirectory", "srcDir", "destDir", "verifiedListFiles", "", "(Ljava/io/File;)[Ljava/io/File;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a iTH;
-  public String appId;
-  public final ax ctt;
-  public final String hxI;
-  public String iTF;
-  public final ArrayList<b> iTG;
+  public static final a jtQ;
   
   static
   {
-    AppMethodBeat.i(175119);
-    iTH = new a((byte)0);
-    AppMethodBeat.o(175119);
+    AppMethodBeat.i(187094);
+    jtQ = new a();
+    AppMethodBeat.o(187094);
   }
   
-  public a()
+  private static boolean F(File paramFile)
   {
-    AppMethodBeat.i(175118);
-    this.ctt = ax.aFC("MicroMsg.AppBrand.AppBrandCompatibilityTransfer");
-    this.iTG = new ArrayList();
-    String str = new File(Environment.getExternalStorageDirectory(), "tencent/MicroMsg").getAbsolutePath();
-    k.g(str, "java.io.File(Environment…t/MicroMsg\").absolutePath");
-    this.hxI = a.Fh(str);
-    AppMethodBeat.o(175118);
-  }
-  
-  private static e a(b paramb)
-  {
-    AppMethodBeat.i(175115);
-    for (;;)
+    AppMethodBeat.i(187093);
+    if (!paramFile.exists())
     {
-      com.tencent.mm.vfs.e locale1;
-      try
-      {
-        locale1 = new com.tencent.mm.vfs.e(paramb.iTI);
-        com.tencent.mm.vfs.e locale2 = new com.tencent.mm.vfs.e(paramb.iTJ);
-        if (c.x(locale1))
-        {
-          ad.d("MicroMsg.AppBrand.AppBrandTransferTask", paramb.iTI + " legacy file not exist, no need to transfer");
-          paramb = new e(false);
-          AppMethodBeat.o(175115);
-          return paramb;
-        }
-        if ((c.x(locale2)) && (!locale2.mkdir()))
-        {
-          ad.d("MicroMsg.AppBrand.AppBrandTransferTask", "mkdir in " + paramb.iTJ + " fail, abort this task");
-          paramb = new e(false, true, "mkdir fail");
-          continue;
-        }
-        if (!i.lE(paramb.iTI, paramb.iTJ)) {
-          break label239;
-        }
-      }
-      catch (Exception paramb)
-      {
-        ad.printErrStackTrace("MicroMsg.AppBrand.AppBrandCompatibilityTransfer", (Throwable)paramb, "tryTransfer", new Object[0]);
-        paramb = new e(false, true, String.valueOf(paramb.getMessage()));
-        AppMethodBeat.o(175115);
-        return paramb;
-      }
-      ad.d("MicroMsg.AppBrand.AppBrandTransferTask", locale1 + " -> " + paramb.iTJ + " successful");
-      paramb = new e(true);
-      continue;
-      label239:
-      ad.d("MicroMsg.AppBrand.AppBrandTransferTask", locale1 + " -> " + paramb.iTJ + " fail");
-      paramb = new e(false, true, "move fail");
+      AppMethodBeat.o(187093);
+      return false;
     }
-  }
-  
-  public final a Fg(String paramString)
-  {
-    AppMethodBeat.i(175117);
-    k.h(paramString, "appId");
-    this.appId = paramString;
-    AppMethodBeat.o(175117);
-    return this;
-  }
-  
-  public final void commit()
-  {
-    AppMethodBeat.i(175116);
-    Object localObject1 = new StringBuilder("commit() with appId:");
-    Object localObject2 = this.appId;
-    if (localObject2 == null) {
-      k.aPZ("appId");
-    }
-    ad.i("MicroMsg.AppBrand.AppBrandCompatibilityTransfer", (String)localObject2);
-    long l1 = System.currentTimeMillis();
-    h.vKh.dB(1323, 3);
-    localObject1 = new ArrayList();
-    localObject2 = ((Iterable)this.iTG).iterator();
-    boolean bool2;
-    for (boolean bool1 = true; ((Iterator)localObject2).hasNext(); bool1 = bool2 & bool1)
+    try
     {
-      e locale = a((b)((Iterator)localObject2).next());
-      bool2 = locale.iTQ;
-      ((ArrayList)localObject1).add(locale.errorMsg);
-    }
-    localObject1 = this.ctt;
-    localObject2 = this.appId;
-    if (localObject2 == null) {
-      k.aPZ("appId");
-    }
-    ((ax)localObject1).putBoolean((String)localObject2, bool1);
-    if (bool1)
-    {
-      localObject1 = ((Iterable)this.iTG).iterator();
-      while (((Iterator)localObject1).hasNext())
+      FileStructStat localFileStructStat = new FileStructStat();
+      if (FileStat.stat(paramFile.getAbsolutePath(), localFileStructStat) == 0)
       {
-        localObject2 = (b)((Iterator)localObject1).next();
-        try
-        {
-          new com.tencent.mm.vfs.e(((b)localObject2).iTI, ".appBrandTransfer.semaphore").createNewFile();
-        }
-        catch (Exception localException)
-        {
-          ad.i("MicroMsg.AppBrand.AppBrandCompatibilityTransfer", "try to create semaphore file for [%s] fail, [%s]", new Object[] { ((b)localObject2).iTI, String.valueOf(localException.getMessage()) });
-        }
+        ac.i("MicroMsg.AppBrandFileUtilsCompat", "constainsSymLink, path %s, stat.st_mode %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(localFileStructStat.st_mode) });
+        boolean bool = localFileStructStat.isSymLink();
+        AppMethodBeat.o(187093);
+        return bool;
       }
     }
-    long l2 = System.currentTimeMillis();
-    localObject1 = new StringBuilder("commit() done with appId:");
-    localObject2 = this.appId;
-    if (localObject2 == null) {
-      k.aPZ("appId");
-    }
-    ad.i("MicroMsg.AppBrand.AppBrandCompatibilityTransfer", (String)localObject2 + " cost:" + (l2 - l1) + "ms");
-    if (bool1)
+    catch (Exception paramFile)
     {
-      h.vKh.dB(1323, 0);
-      AppMethodBeat.o(175116);
+      ac.printErrStackTrace("MicroMsg.AppBrandFileUtilsCompat", (Throwable)paramFile, "", new Object[0]);
+      AppMethodBeat.o(187093);
+    }
+    return false;
+  }
+  
+  public final void deleteDirectory(File paramFile)
+  {
+    AppMethodBeat.i(187092);
+    k.h(paramFile, "directory");
+    if (!paramFile.exists())
+    {
+      AppMethodBeat.o(187092);
       return;
     }
-    h.vKh.dB(1323, 1);
-    AppMethodBeat.o(175116);
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appstorage/compatibility/AppBrandScopedStorageTransfer$Companion;", "", "()V", "ID_KEY", "", "ID_KEY_FAIL", "ID_KEY_NO_NEED", "ID_KEY_START", "ID_KEY_SUCCESS", "TAG", "", "tryHardToGetCanonicalPath", "path", "plugin-appbrand-integration_release"})
-  public static final class a
-  {
-    public static String Fh(String paramString)
+    File[] arrayOfFile;
+    Throwable localThrowable;
+    int j;
+    int i;
+    if (!F(paramFile))
     {
-      AppMethodBeat.i(175114);
-      k.h(paramString, "path");
-      File localFile = new File(paramString);
+      if (!paramFile.exists())
+      {
+        paramFile = (Throwable)new IllegalArgumentException(paramFile + " does not exist");
+        AppMethodBeat.o(187092);
+        throw paramFile;
+      }
+      if (!paramFile.isDirectory())
+      {
+        paramFile = (Throwable)new IllegalArgumentException(paramFile + " is not a directory");
+        AppMethodBeat.o(187092);
+        throw paramFile;
+      }
+      arrayOfFile = paramFile.listFiles();
+      if (arrayOfFile == null)
+      {
+        paramFile = (Throwable)new IOException("Failed to list contents of ".concat(String.valueOf(paramFile)));
+        AppMethodBeat.o(187092);
+        throw paramFile;
+      }
+      localThrowable = null;
+      j = arrayOfFile.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      File localFile;
+      if (i < j) {
+        localFile = arrayOfFile[i];
+      }
       try
       {
-        paramString = localFile.getCanonicalPath();
-        AppMethodBeat.o(175114);
-        return paramString;
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
+        if (localFile.isDirectory())
         {
-          paramString = localFile.getAbsolutePath();
+          deleteDirectory(localFile);
+          break label344;
         }
+        boolean bool = localFile.exists();
+        if (localFile.delete()) {
+          break label344;
+        }
+        if (!bool)
+        {
+          localThrowable = (Throwable)new FileNotFoundException("File does not exist: ".concat(String.valueOf(localFile)));
+          AppMethodBeat.o(187092);
+          throw localThrowable;
+        }
+        localThrowable = (Throwable)new IOException("Unable to delete file: ".concat(String.valueOf(localFile)));
+        AppMethodBeat.o(187092);
+        throw localThrowable;
       }
+      catch (IOException localIOException)
+      {
+        break label344;
+      }
+      if (localThrowable != null)
+      {
+        paramFile = (Throwable)localThrowable;
+        AppMethodBeat.o(187092);
+        throw paramFile;
+      }
+      if (!paramFile.delete())
+      {
+        paramFile = (Throwable)new IOException("Unable to delete directory " + paramFile + '.');
+        AppMethodBeat.o(187092);
+        throw paramFile;
+      }
+      AppMethodBeat.o(187092);
+      return;
+      label344:
+      i += 1;
     }
   }
 }

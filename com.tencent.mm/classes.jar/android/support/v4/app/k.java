@@ -6,6 +6,8 @@ public abstract class k
   
   public abstract k a(int paramInt, Fragment paramFragment, String paramString);
   
+  public abstract k a(Fragment paramFragment);
+  
   public abstract k a(Fragment paramFragment, String paramString);
   
   public abstract k b(int paramInt, Fragment paramFragment);
@@ -24,9 +26,7 @@ public abstract class k
   
   public abstract k d(Fragment paramFragment);
   
-  public abstract k dy();
-  
-  public abstract k e(Fragment paramFragment);
+  public abstract k dF();
   
   public abstract k n(int paramInt1, int paramInt2);
 }

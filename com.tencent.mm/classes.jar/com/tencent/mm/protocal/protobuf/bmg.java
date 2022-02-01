@@ -3,38 +3,44 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bmg
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int CzQ;
-  public long commentId;
+  public int EJW;
+  public int FbB;
+  public int FbC;
+  public int FbD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169084);
+    AppMethodBeat.i(152617);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.CzQ);
-      paramVarArgs.aG(2, this.commentId);
-      AppMethodBeat.o(169084);
+      paramVarArgs.aR(1, this.EJW);
+      paramVarArgs.aR(2, this.FbB);
+      paramVarArgs.aR(3, this.FbC);
+      paramVarArgs.aR(4, this.FbD);
+      AppMethodBeat.o(152617);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bA(1, this.CzQ);
-      int i = f.a.a.b.b.a.q(2, this.commentId);
-      AppMethodBeat.o(169084);
-      return paramInt + 0 + i;
+      paramInt = f.a.a.b.b.a.bx(1, this.EJW);
+      int i = f.a.a.b.b.a.bx(2, this.FbB);
+      int j = f.a.a.b.b.a.bx(3, this.FbC);
+      int k = f.a.a.b.b.a.bx(4, this.FbD);
+      AppMethodBeat.o(152617);
+      return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(169084);
+      AppMethodBeat.o(152617);
       return 0;
     }
     if (paramInt == 3)
@@ -44,18 +50,26 @@ public final class bmg
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(169084);
+        AppMethodBeat.o(152617);
         return -1;
       case 1: 
-        localbmg.CzQ = locala.KhF.xS();
-        AppMethodBeat.o(169084);
+        localbmg.EJW = locala.LVo.xF();
+        AppMethodBeat.o(152617);
+        return 0;
+      case 2: 
+        localbmg.FbB = locala.LVo.xF();
+        AppMethodBeat.o(152617);
+        return 0;
+      case 3: 
+        localbmg.FbC = locala.LVo.xF();
+        AppMethodBeat.o(152617);
         return 0;
       }
-      localbmg.commentId = locala.KhF.xT();
-      AppMethodBeat.o(169084);
+      localbmg.FbD = locala.LVo.xF();
+      AppMethodBeat.o(152617);
       return 0;
     }
-    AppMethodBeat.o(169084);
+    AppMethodBeat.o(152617);
     return -1;
   }
 }

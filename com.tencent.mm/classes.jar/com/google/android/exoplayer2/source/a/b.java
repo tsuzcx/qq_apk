@@ -1,56 +1,27 @@
 package com.google.android.exoplayer2.source.a;
 
-import com.google.android.exoplayer2.c.d;
-import com.google.android.exoplayer2.c.m;
-import com.google.android.exoplayer2.source.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.google.android.exoplayer2.h.s.e;
 
-final class b
-  implements d.b
+public final class b
 {
-  final l[] bkV;
-  private final int[] bmk;
-  
-  public b(int[] paramArrayOfInt, l[] paramArrayOfl)
+  public static boolean f(Exception paramException)
   {
-    this.bmk = paramArrayOfInt;
-    this.bkV = paramArrayOfl;
-  }
-  
-  public final void ae(long paramLong)
-  {
-    l[] arrayOfl = this.bkV;
-    int j = arrayOfl.length;
-    int i = 0;
-    while (i < j)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramException instanceof s.e))
     {
-      l locall = arrayOfl[i];
-      if ((locall != null) && (locall.blV != paramLong))
+      int i = ((s.e)paramException).responseCode;
+      if (i != 404)
       {
-        locall.blV = paramLong;
-        locall.blT = true;
+        bool1 = bool2;
+        if (i != 410) {}
       }
-      i += 1;
-    }
-  }
-  
-  public final m eF(int paramInt)
-  {
-    AppMethodBeat.i(92578);
-    int i = 0;
-    while (i < this.bmk.length)
-    {
-      if (paramInt == this.bmk[i])
+      else
       {
-        localObject = this.bkV[i];
-        AppMethodBeat.o(92578);
-        return localObject;
+        bool1 = true;
       }
-      i += 1;
     }
-    Object localObject = new d();
-    AppMethodBeat.o(92578);
-    return localObject;
+    return bool1;
   }
 }
 

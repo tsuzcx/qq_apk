@@ -29,11 +29,11 @@ abstract class a<K, V>
     return super.h(paramK, paramV);
   }
   
-  abstract List<V> zA();
+  abstract List<V> zn();
   
-  public Map<K, Collection<V>> zB()
+  public Map<K, Collection<V>> zo()
   {
-    return super.zB();
+    return super.zo();
   }
 }
 

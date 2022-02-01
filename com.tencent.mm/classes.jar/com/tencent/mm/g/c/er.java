@@ -7,26 +7,20 @@ import com.tencent.mm.sdk.e.c;
 public abstract class er
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableStartTimeIndex ON PredownloadIssueLaunchWxaAppResponse(startTime)", "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableEndTimeIndex ON PredownloadIssueLaunchWxaAppResponse(endTime)" };
-  private static final int eTh = "launchProtoBlob".hashCode();
-  private static final int ekd = "startTime".hashCode();
-  private static final int eke = "endTime".hashCode();
-  private static final int elJ = "appId".hashCode();
-  private static final int elq = "scene".hashCode();
-  private static final int enk = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eVS = "hit".hashCode();
+  private static final int eVT = "hitTimeMS".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int epb = "version".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eTg = true;
-  private boolean ejW = true;
-  private boolean ejX = true;
-  private boolean elo = true;
-  private boolean els = true;
-  private boolean enf = true;
+  private boolean eVQ = true;
+  private boolean eVR = true;
+  private boolean enx = true;
+  private boolean eoW = true;
   public String field_appId;
-  public long field_endTime;
-  public byte[] field_launchProtoBlob;
-  public long field_reportId;
-  public int field_scene;
-  public long field_startTime;
+  public int field_hit;
+  public long field_hitTimeMS;
+  public int field_version;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,7 +35,7 @@ public abstract class er
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
+      if (enO != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -52,16 +46,12 @@ public abstract class er
       break label20;
       break;
       label60:
-      if (elq == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (eTh == k) {
-        this.field_launchProtoBlob = paramCursor.getBlob(i);
-      } else if (ekd == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (eke == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (enk == k) {
-        this.field_reportId = paramCursor.getLong(i);
+      if (epb == k) {
+        this.field_version = paramCursor.getInt(i);
+      } else if (eVS == k) {
+        this.field_hit = paramCursor.getInt(i);
+      } else if (eVT == k) {
+        this.field_hitTimeMS = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -71,23 +61,17 @@ public abstract class er
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
+    if (this.enx) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.elo) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.eoW) {
+      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.eTg) {
-      localContentValues.put("launchProtoBlob", this.field_launchProtoBlob);
+    if (this.eVQ) {
+      localContentValues.put("hit", Integer.valueOf(this.field_hit));
     }
-    if (this.ejW) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
-    }
-    if (this.ejX) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
-    }
-    if (this.enf) {
-      localContentValues.put("reportId", Long.valueOf(this.field_reportId));
+    if (this.eVR) {
+      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

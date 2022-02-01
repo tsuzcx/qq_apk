@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pq
   extends b
 {
-  public a dvr;
+  public a dsC;
   
   public pq()
   {
@@ -15,21 +15,18 @@ public final class pq
   
   private pq(byte paramByte)
   {
-    AppMethodBeat.i(19826);
-    this.dvr = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19825);
+    this.dsC = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19826);
+    AppMethodBeat.o(19825);
   }
   
-  public static final class a
-  {
-    public int action;
-  }
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.pq
  * JD-Core Version:    0.7.0.1
  */

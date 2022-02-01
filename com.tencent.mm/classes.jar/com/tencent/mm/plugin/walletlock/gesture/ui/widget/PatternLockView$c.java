@@ -7,9 +7,9 @@ public enum PatternLockView$c
   static
   {
     AppMethodBeat.i(129864);
-    ADb = new c("Square", 0);
-    ADc = new c("Rectangle", 1);
-    ADd = new c[] { ADb, ADc };
+    BVw = new c("Square", 0);
+    BVx = new c("Rectangle", 1);
+    BVy = new c[] { BVw, BVx };
     AppMethodBeat.o(129864);
   }
   

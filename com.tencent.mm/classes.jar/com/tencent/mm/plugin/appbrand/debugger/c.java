@@ -4,7 +4,7 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.bc.c;
 import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Map;
 
 public final class c
@@ -13,25 +13,25 @@ public final class c
   public final void A(Intent paramIntent)
   {
     AppMethodBeat.i(44946);
-    f.bQ(paramIntent.getStringExtra("appId"), paramIntent.getIntExtra("versionType", 0));
+    f.bV(paramIntent.getStringExtra("appId"), paramIntent.getIntExtra("versionType", 0));
     AppMethodBeat.o(44946);
   }
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(195705);
-    if (DebuggerShell.aTY())
+    AppMethodBeat.i(186426);
+    if (DebuggerShell.baW())
     {
       paramString = (String)paramMap.get(".sysmsg.AppBrandForceKill.AppId");
-      int i = bt.getInt((String)paramMap.get(".sysmsg.AppBrandForceKill.VersionType"), 0);
-      if (bt.isNullOrNil(paramString))
+      int i = bs.getInt((String)paramMap.get(".sysmsg.AppBrandForceKill.VersionType"), 0);
+      if (bs.isNullOrNil(paramString))
       {
-        AppMethodBeat.o(195705);
+        AppMethodBeat.o(186426);
         return;
       }
-      f.bQ(paramString, i);
+      f.bV(paramString, i);
     }
-    AppMethodBeat.o(195705);
+    AppMethodBeat.o(186426);
   }
   
   public final String name()
@@ -41,7 +41,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.c
  * JD-Core Version:    0.7.0.1
  */

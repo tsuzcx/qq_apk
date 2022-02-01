@@ -26,9 +26,9 @@ public final class aa
       while (i != 0)
       {
         paramc = (q)paramc;
-        if (paramc.iHa != null)
+        if (paramc.jhd != null)
         {
-          paramc = paramc.iHa;
+          paramc = paramc.jhd;
           AppMethodBeat.o(43977);
           return paramc;
           i = 0;
@@ -37,8 +37,8 @@ public final class aa
         }
         else
         {
-          paramc.iHa = new com.tencent.mm.plugin.appbrand.ad.f(paramc);
-          paramc = paramc.iHa;
+          paramc.jhd = new com.tencent.mm.plugin.appbrand.ad.f(paramc);
+          paramc = paramc.jhd;
           AppMethodBeat.o(43977);
           return paramc;
         }
@@ -53,7 +53,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ public abstract interface m
   
   public abstract void onStopped();
   
-  public abstract void rq();
+  public abstract void rB();
   
-  public abstract void rr();
+  public abstract void rC();
   
-  public abstract b rs();
+  public abstract b rD();
   
-  public abstract boolean v(long paramLong);
+  public abstract boolean x(long paramLong);
 }
 
 

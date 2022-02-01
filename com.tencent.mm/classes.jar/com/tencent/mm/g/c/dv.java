@@ -8,22 +8,22 @@ public abstract class dv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ePk = "quotedMsgId".hashCode();
-  private static final int ePl = "quotedMsgSvrId".hashCode();
-  private static final int ejL = "msgId".hashCode();
-  private static final int ejR = "status".hashCode();
-  private static final int erS = "msgSvrId".hashCode();
+  private static final int eEC = "subtype".hashCode();
+  private static final int eRA = "bubbleMd5".hashCode();
+  private static final int eRB = "coverMd5".hashCode();
+  private static final int eRC = "minilogoMd5".hashCode();
+  private static final int epb = "version".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ePi = true;
-  private boolean ePj = true;
-  private boolean ejH = true;
-  private boolean ejO = true;
-  private boolean erE = true;
-  public long field_msgId;
-  public long field_msgSvrId;
-  public long field_quotedMsgId;
-  public long field_quotedMsgSvrId;
-  public int field_status;
+  private boolean eEA = true;
+  private boolean eRx = true;
+  private boolean eRy = true;
+  private boolean eRz = true;
+  private boolean eoW = true;
+  public String field_bubbleMd5;
+  public String field_coverMd5;
+  public String field_minilogoMd5;
+  public int field_subtype;
+  public int field_version;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,25 +38,26 @@ public abstract class dv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ejL != k) {
-        break label60;
+      if (eEC != k) {
+        break label65;
       }
-      this.field_msgId = paramCursor.getLong(i);
+      this.field_subtype = paramCursor.getInt(i);
+      this.eEA = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (erS == k) {
-        this.field_msgSvrId = paramCursor.getLong(i);
-      } else if (ePk == k) {
-        this.field_quotedMsgId = paramCursor.getLong(i);
-      } else if (ePl == k) {
-        this.field_quotedMsgSvrId = paramCursor.getLong(i);
-      } else if (ejR == k) {
-        this.field_status = paramCursor.getInt(i);
+      label65:
+      if (eRA == k) {
+        this.field_bubbleMd5 = paramCursor.getString(i);
+      } else if (eRB == k) {
+        this.field_coverMd5 = paramCursor.getString(i);
+      } else if (eRC == k) {
+        this.field_minilogoMd5 = paramCursor.getString(i);
+      } else if (epb == k) {
+        this.field_version = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,20 +67,20 @@ public abstract class dv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ejH) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.eEA) {
+      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.erE) {
-      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+    if (this.eRx) {
+      localContentValues.put("bubbleMd5", this.field_bubbleMd5);
     }
-    if (this.ePi) {
-      localContentValues.put("quotedMsgId", Long.valueOf(this.field_quotedMsgId));
+    if (this.eRy) {
+      localContentValues.put("coverMd5", this.field_coverMd5);
     }
-    if (this.ePj) {
-      localContentValues.put("quotedMsgSvrId", Long.valueOf(this.field_quotedMsgSvrId));
+    if (this.eRz) {
+      localContentValues.put("minilogoMd5", this.field_minilogoMd5);
     }
-    if (this.ejO) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.eoW) {
+      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

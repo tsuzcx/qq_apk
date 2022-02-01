@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.DataOutputStream;
@@ -11,26 +11,26 @@ import java.io.OutputStream;
 public class f
   extends c
 {
-  protected e fGL;
-  private OutputStream wy;
+  protected e fKs;
+  private OutputStream xw;
   
-  private boolean KP(String paramString)
+  private boolean OW(String paramString)
   {
     AppMethodBeat.i(146353);
     try
     {
-      this.fGL = new e(paramString);
-      if (this.fGL.exists()) {
-        this.fGL.delete();
+      this.fKs = new e(paramString);
+      if (this.fKs.exists()) {
+        this.fKs.delete();
       }
-      this.fGL.createNewFile();
-      this.wy = new DataOutputStream(i.cM(paramString, false));
+      this.fKs.createNewFile();
+      this.xw = new DataOutputStream(i.cS(paramString, false));
       AppMethodBeat.o(146353);
       return true;
     }
     catch (Exception paramString)
     {
-      ad.m("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
+      ac.m("Luggage.PCMAudioEncoder", "", new Object[] { paramString });
       AppMethodBeat.o(146353);
     }
     return false;
@@ -42,8 +42,8 @@ public class f
     d(paramArrayOfByte, paramInt, paramBoolean);
     try
     {
-      if (this.wy != null) {
-        this.wy.write(paramArrayOfByte);
+      if (this.xw != null) {
+        this.xw.write(paramArrayOfByte);
       }
       label27:
       AppMethodBeat.o(146350);
@@ -58,13 +58,13 @@ public class f
   public void close()
   {
     AppMethodBeat.i(146352);
-    if (this.wy != null) {}
+    if (this.xw != null) {}
     try
     {
-      this.wy.flush();
-      this.wy.close();
+      this.xw.flush();
+      this.xw.close();
       label26:
-      this.wy = null;
+      this.xw = null;
       AppMethodBeat.o(146352);
       return;
     }
@@ -84,14 +84,14 @@ public class f
   public boolean i(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(146349);
-    KP(paramString);
+    OW(paramString);
     AppMethodBeat.o(146349);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.f
  * JD-Core Version:    0.7.0.1
  */

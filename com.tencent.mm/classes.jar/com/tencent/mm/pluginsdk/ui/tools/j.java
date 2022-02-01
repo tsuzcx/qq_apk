@@ -9,19 +9,19 @@ import com.tencent.mm.ui.widget.MMEditText.b;
 
 public final class j
 {
-  public static InputFilter[] CmX;
+  public static InputFilter[] DFp;
   
   static
   {
     AppMethodBeat.i(141184);
-    CmX = new InputFilter[] { new InputFilter.LengthFilter(50) };
+    DFp = new InputFilter[] { new InputFilter.LengthFilter(50) };
     AppMethodBeat.o(141184);
   }
   
   public static final class a
     implements TextWatcher
   {
-    public MMEditText.b CmY = null;
+    public MMEditText.b DFq = null;
     
     public final void afterTextChanged(Editable paramEditable) {}
     
@@ -30,8 +30,8 @@ public final class j
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(141183);
-      if (this.CmY != null) {
-        this.CmY.aJE();
+      if (this.DFq != null) {
+        this.DFq.aQv();
       }
       AppMethodBeat.o(141183);
     }
@@ -39,7 +39,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.j
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.modelappbrand;
 
 public abstract interface k$b
 {
-  public abstract void ny(int paramInt);
+  public abstract void om(int paramInt);
 }
 
 

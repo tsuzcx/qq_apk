@@ -22,7 +22,7 @@ public class VerifyCodeEditText
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final InputConnection btt()
+  public final InputConnection bAt()
   {
     AppMethodBeat.i(169541);
     InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());
@@ -37,7 +37,7 @@ public class VerifyCodeEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.sms.VerifyCodeEditText
  * JD-Core Version:    0.7.0.1
  */

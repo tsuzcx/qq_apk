@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.an.f;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g;
@@ -10,30 +10,30 @@ import com.tencent.mm.plugin.facedetect.e.a.b;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayOutputStream;
 
 public final class e
 {
   int orientation;
-  String pXe;
-  float pXf;
-  int pXj;
-  int pXk;
-  a pXo;
-  byte[] pXp;
+  String qFJ;
+  float qFK;
+  int qFO;
+  int qFP;
+  a qFT;
+  byte[] qFU;
   
   public e(String paramString, float paramFloat, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(104227);
-    this.pXe = paramString;
-    this.pXf = paramFloat;
+    this.qFJ = paramString;
+    this.qFK = paramFloat;
     this.orientation = paramInt1;
-    this.pXj = paramInt2;
-    this.pXk = paramInt3;
-    ad.i("MicroMsg.FaceCheckVideoRecordMgr", "create FaceCheckVideoRecordMgr, reductionRatio: %s, orientation: %s, cameraFrameWidth: %s, cameraFrameHeight: %s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.qFO = paramInt2;
+    this.qFP = paramInt3;
+    ac.i("MicroMsg.FaceCheckVideoRecordMgr", "create FaceCheckVideoRecordMgr, reductionRatio: %s, orientation: %s, cameraFrameWidth: %s, cameraFrameHeight: %s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(104227);
   }
   
@@ -60,21 +60,21 @@ public final class e
     //   31: invokevirtual 89	com/tencent/mm/vfs/e:isFile	()Z
     //   34: ifeq +268 -> 302
     //   37: aload_2
-    //   38: invokevirtual 93	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   38: invokevirtual 93	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
     //   41: invokevirtual 86	com/tencent/mm/vfs/e:exists	()Z
     //   44: ifne +11 -> 55
     //   47: aload_2
-    //   48: invokevirtual 93	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   48: invokevirtual 93	com/tencent/mm/vfs/e:fxU	()Lcom/tencent/mm/vfs/e;
     //   51: invokevirtual 96	com/tencent/mm/vfs/e:mkdirs	()Z
     //   54: pop
     //   55: aload_2
     //   56: invokevirtual 99	com/tencent/mm/vfs/e:createNewFile	()Z
     //   59: pop
     //   60: aload_1
-    //   61: invokestatic 105	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   61: invokestatic 105	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   64: astore_1
     //   65: aload_2
-    //   66: invokestatic 109	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   66: invokestatic 109	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   69: astore_2
     //   70: new 111	javax/crypto/spec/SecretKeySpec
     //   73: dup
@@ -293,27 +293,27 @@ public final class e
     implements g.a
   {
     private String fileName;
-    private String pXe;
+    private String qFJ;
     
     private b(String paramString1, String paramString2)
     {
-      this.pXe = paramString2;
+      this.qFJ = paramString2;
       this.fileName = paramString1;
     }
     
     public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
     {
       AppMethodBeat.i(104226);
-      ad.i("MicroMsg.FaceCheckVideoRecordMgr", "hy: sceneResult.field_retCode == 0 cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+      ac.i("MicroMsg.FaceCheckVideoRecordMgr", "hy: sceneResult.field_retCode == 0 cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
       if ((paramd != null) && (paramd.field_retCode == 0))
       {
-        ad.i("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video done. now upload");
+        ac.i("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video done. now upload");
         paramString = e.this;
         paramc = this.fileName;
         String str = paramd.field_fileId;
         paramd = paramd.field_aesKey;
-        if (paramString.pXo != null) {
-          paramString.pXo.a(paramc, str, paramd, paramString.pXp);
+        if (paramString.qFT != null) {
+          paramString.qFT.a(paramc, str, paramd, paramString.qFU);
         }
       }
       do
@@ -322,21 +322,21 @@ public final class e
         return 0;
         if (paramd != null)
         {
-          ad.w("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+          ac.w("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
           i.deleteFile(this.fileName);
-          h.vKh.idkeyStat(917L, 51L, 1L, false);
-          if (e.this.pXo != null) {
-            e.this.pXo.onError();
+          h.wUl.idkeyStat(917L, 51L, 1L, false);
+          if (e.this.qFT != null) {
+            e.this.qFT.onError();
           }
           AppMethodBeat.o(104226);
           return 0;
         }
       } while (paramInt == 0);
-      ad.w("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video start error!; cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-      h.vKh.idkeyStat(917L, 51L, 1L, false);
+      ac.w("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video start error!; cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+      h.wUl.idkeyStat(917L, 51L, 1L, false);
       i.deleteFile(this.fileName);
-      if (e.this.pXo != null) {
-        e.this.pXo.onError();
+      if (e.this.qFT != null) {
+        e.this.qFT.onError();
       }
       AppMethodBeat.o(104226);
       return 0;
@@ -352,7 +352,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.e
  * JD-Core Version:    0.7.0.1
  */

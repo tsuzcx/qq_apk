@@ -9,24 +9,24 @@ import java.util.Calendar;
 
 final class i
 {
-  private static i Xj;
-  private final LocationManager Xk;
-  private final a Xl = new a();
+  private static i Ye;
+  private final LocationManager Yf;
+  private final a Yg = new a();
   private final Context mContext;
   
   private i(Context paramContext, LocationManager paramLocationManager)
   {
     this.mContext = paramContext;
-    this.Xk = paramLocationManager;
+    this.Yf = paramLocationManager;
   }
   
-  private Location A(String paramString)
+  private Location C(String paramString)
   {
     try
     {
-      if (this.Xk.isProviderEnabled(paramString))
+      if (this.Yf.isProviderEnabled(paramString))
       {
-        paramString = this.Xk.getLastKnownLocation(paramString);
+        paramString = this.Yf.getLastKnownLocation(paramString);
         return paramString;
       }
     }
@@ -34,23 +34,23 @@ final class i
     return null;
   }
   
-  static i X(Context paramContext)
+  static i Y(Context paramContext)
   {
-    if (Xj == null)
+    if (Ye == null)
     {
       paramContext = paramContext.getApplicationContext();
-      Xj = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
+      Ye = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
     }
-    return Xj;
+    return Ye;
   }
   
   private void a(Location paramLocation)
   {
-    a locala = this.Xl;
+    a locala = this.Yg;
     long l1 = System.currentTimeMillis();
-    h localh = h.gm();
+    h localh = h.gu();
     localh.b(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
-    long l2 = localh.Xh;
+    long l2 = localh.Yc;
     localh.b(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
     if (localh.state == 1) {}
     long l3;
@@ -58,20 +58,20 @@ final class i
     long l5;
     for (boolean bool = true;; bool = false)
     {
-      l3 = localh.Xi;
-      l4 = localh.Xh;
+      l3 = localh.Yd;
+      l4 = localh.Yc;
       localh.b(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
-      l5 = localh.Xi;
+      l5 = localh.Yd;
       if ((l3 != -1L) && (l4 != -1L)) {
         break;
       }
       l1 = 43200000L + l1;
-      locala.Xm = bool;
-      locala.Xn = l2;
-      locala.Xo = l3;
-      locala.Xp = l4;
-      locala.Xq = l5;
-      locala.Xr = l1;
+      locala.Yh = bool;
+      locala.Yi = l2;
+      locala.Yj = l3;
+      locala.Yk = l4;
+      locala.Yl = l5;
+      locala.Ym = l1;
       return;
     }
     if (l1 > l4) {
@@ -90,14 +90,14 @@ final class i
   }
   
   @SuppressLint({"MissingPermission"})
-  private Location go()
+  private Location gw()
   {
     Location localLocation2 = null;
     if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_COARSE_LOCATION") == 0) {}
-    for (Location localLocation1 = A("network");; localLocation1 = null)
+    for (Location localLocation1 = C("network");; localLocation1 = null)
     {
       if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_FINE_LOCATION") == 0) {
-        localLocation2 = A("gps");
+        localLocation2 = C("gps");
       }
       Location localLocation3;
       if ((localLocation2 != null) && (localLocation1 != null))
@@ -116,22 +116,22 @@ final class i
     }
   }
   
-  private boolean gp()
+  private boolean gx()
   {
-    return this.Xl.Xr > System.currentTimeMillis();
+    return this.Yg.Ym > System.currentTimeMillis();
   }
   
-  final boolean gn()
+  final boolean gv()
   {
-    a locala = this.Xl;
-    if (gp()) {
-      return locala.Xm;
+    a locala = this.Yg;
+    if (gx()) {
+      return locala.Yh;
     }
-    Location localLocation = go();
+    Location localLocation = gw();
     if (localLocation != null)
     {
       a(localLocation);
-      return locala.Xm;
+      return locala.Yh;
     }
     int i = Calendar.getInstance().get(11);
     return (i < 6) || (i >= 22);
@@ -139,12 +139,12 @@ final class i
   
   static final class a
   {
-    boolean Xm;
-    long Xn;
-    long Xo;
-    long Xp;
-    long Xq;
-    long Xr;
+    boolean Yh;
+    long Yi;
+    long Yj;
+    long Yk;
+    long Yl;
+    long Ym;
   }
 }
 

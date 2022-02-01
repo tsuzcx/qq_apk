@@ -12,13 +12,13 @@ import java.util.regex.Pattern;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final Pattern bum;
-  private final StringBuilder bun;
+  private static final Pattern bsk;
+  private final StringBuilder bsl;
   
   static
   {
     AppMethodBeat.i(92818);
-    bum = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))?\\s*");
+    bsk = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))?\\s*");
     AppMethodBeat.o(92818);
   }
   
@@ -26,7 +26,7 @@ public final class a
   {
     super("SubripDecoder");
     AppMethodBeat.i(92814);
-    this.bun = new StringBuilder();
+    this.bsl = new StringBuilder();
     AppMethodBeat.o(92814);
   }
   
@@ -60,7 +60,7 @@ public final class a
         localObject = paramArrayOfByte.readLine();
         if (localObject != null)
         {
-          localObject = bum.matcher((CharSequence)localObject);
+          localObject = bsk.matcher((CharSequence)localObject);
           if (!((Matcher)localObject).matches()) {
             break;
           }
@@ -70,17 +70,17 @@ public final class a
           }
           localh.add(a((Matcher)localObject, 6));
           paramInt = 1;
-          this.bun.setLength(0);
+          this.bsl.setLength(0);
           localObject = paramArrayOfByte.readLine();
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            if (this.bun.length() > 0) {
-              this.bun.append("<br>");
+            if (this.bsl.length() > 0) {
+              this.bsl.append("<br>");
             }
-            this.bun.append(((String)localObject).trim());
+            this.bsl.append(((String)localObject).trim());
             continue;
           }
-          localArrayList.add(new com.google.android.exoplayer2.f.a(Html.fromHtml(this.bun.toString())));
+          localArrayList.add(new com.google.android.exoplayer2.f.a(Html.fromHtml(this.bsl.toString())));
           if (paramInt == 0) {
             break;
           }

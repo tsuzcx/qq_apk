@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.b;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.Map;
 public final class p
   extends com.tencent.mm.model.e
 {
-  private static double aeT(String paramString)
+  private static double ajN(String paramString)
   {
     AppMethodBeat.i(55755);
     if (paramString == null)
@@ -27,15 +27,15 @@ public final class p
       AppMethodBeat.o(55755);
       return 0.0D;
     }
-    double d = bt.getDouble(paramString, 0.0D);
+    double d = bs.getDouble(paramString, 0.0D);
     AppMethodBeat.o(55755);
     return d;
   }
   
-  private static String dV(List<String> paramList)
+  private static String dZ(List<String> paramList)
   {
     AppMethodBeat.i(55756);
-    List localList = n.cJq().cJx();
+    List localList = n.cWV().cXc();
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     label174:
@@ -69,7 +69,7 @@ public final class p
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(u.aqG()))
+          if (!paramList.equals(u.axw()))
           {
             AppMethodBeat.o(55756);
             return paramList;
@@ -82,10 +82,10 @@ public final class p
     }
   }
   
-  private static String dW(List<String> paramList)
+  private static String ea(List<String> paramList)
   {
     AppMethodBeat.i(55757);
-    Object localObject = n.cJq().cJx();
+    Object localObject = n.cWV().cXc();
     LinkedList localLinkedList = new LinkedList();
     localObject = ((List)localObject).iterator();
     label174:
@@ -119,7 +119,7 @@ public final class p
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(u.aqG()))
+          if (!paramList.equals(u.axw()))
           {
             AppMethodBeat.o(55757);
             return paramList;
@@ -135,27 +135,27 @@ public final class p
   public final f.b b(f.a parama)
   {
     AppMethodBeat.i(55754);
-    Object localObject3 = parama.fTo;
+    Object localObject3 = parama.fXi;
     if (localObject3 == null)
     {
-      ad.e("MicroMsg.TrackMsgExtension", "onPreAddMessage cmdAM is null");
+      ac.e("MicroMsg.TrackMsgExtension", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(55754);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = z.a(((cs)localObject3).Cxx);
-    Object localObject2 = z.a(((cs)localObject3).Cxy);
+    Object localObject1 = z.a(((cu)localObject3).DPT);
+    Object localObject2 = z.a(((cu)localObject3).DPU);
     Object localObject4;
     String str;
     double d1;
     double d2;
     int i;
-    if (((String)g.afB().afk().get(2, null)).equals(localObject1))
+    if (((String)g.agR().agA().get(2, null)).equals(localObject1))
     {
       parama = (f.a)localObject2;
-      localObject3 = z.a(((cs)localObject3).Cxz);
-      ad.d("MicroMsg.TrackMsgExtension", "cmd ".concat(String.valueOf(localObject3)));
-      localObject3 = bw.K((String)localObject3, "sysmsg");
+      localObject3 = z.a(((cu)localObject3).DPV);
+      ac.d("MicroMsg.TrackMsgExtension", "cmd ".concat(String.valueOf(localObject3)));
+      localObject3 = bv.L((String)localObject3, "sysmsg");
       if (localObject3 != null) {
         try
         {
@@ -164,11 +164,11 @@ public final class p
           ((StringBuffer)localObject4).append("from fromUser " + (String)localObject1 + "\r\n");
           ((StringBuffer)localObject4).append("from toUser " + (String)localObject2 + "\r\n");
           str = (String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.trackroompoi.addr");
-          d1 = aeT((String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.trackroompoi.latitude"));
+          d1 = ajN((String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.trackroompoi.latitude"));
           ((StringBuffer)localObject4).append("lat " + d1 + "\r\n");
-          d2 = aeT((String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.trackroompoi.longitude"));
+          d2 = ajN((String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.trackroompoi.longitude"));
           ((StringBuffer)localObject4).append("lng " + d2 + "\r\n");
-          i = bt.getInt((String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.timestamp"), 0);
+          i = bs.getInt((String)((Map)localObject3).get(".sysmsg.trackmsg.trackroominfo.timestamp"), 0);
           ((StringBuffer)localObject4).append("times " + i + "\r\n");
           i = 0;
           for (;;)
@@ -181,7 +181,7 @@ public final class p
             label386:
             localObject1 = localObject1;
             localObject1 = (String)((Map)localObject3).get((String)localObject1 + ".username");
-            if (bt.isNullOrNil((String)localObject1)) {
+            if (bs.isNullOrNil((String)localObject1)) {
               break label491;
             }
             i += 1;
@@ -191,7 +191,7 @@ public final class p
         }
         catch (Exception parama)
         {
-          ad.printErrStackTrace("MicroMsg.TrackMsgExtension", parama, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.TrackMsgExtension", parama, "", new Object[0]);
         }
       }
     }
@@ -204,28 +204,28 @@ public final class p
       break label386;
       label491:
       ((StringBuffer)localObject4).append("userNameList size " + localLinkedList.size() + "\r\n");
-      ad.i("MicroMsg.TrackMsgExtension", "xml : " + ((StringBuffer)localObject4).toString());
+      ac.i("MicroMsg.TrackMsgExtension", "xml : " + ((StringBuffer)localObject4).toString());
       localObject1 = null;
       localObject3 = null;
       localObject2 = localObject3;
-      if (parama.equals(n.cJq().sPP))
+      if (parama.equals(n.cWV().tYc))
       {
-        localObject4 = dV(localLinkedList);
+        localObject4 = dZ(localLinkedList);
         localObject1 = localObject4;
         localObject2 = localObject3;
-        if (bt.isNullOrNil((String)localObject4))
+        if (bs.isNullOrNil((String)localObject4))
         {
-          localObject2 = dW(localLinkedList);
+          localObject2 = ea(localLinkedList);
           localObject1 = localObject4;
         }
       }
-      n.cJr().a(parama, localLinkedList, d1, d2, str, (String)localObject1, (String)localObject2);
+      n.cWW().a(parama, localLinkedList, d1, d2, str, (String)localObject1, (String)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,17 +6,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.c.c;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/ui/StorySettingsUI$initOnCreate$8", "Landroid/view/View$OnClickListener;", "onClick", "", "v", "Landroid/view/View;", "plugin-story_release"})
 public final class StorySettingsUI$ah
   implements View.OnClickListener
 {
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(119702);
-    if (!c.vhf) {}
+    if (!c.wpR) {}
     for (boolean bool = true;; bool = false)
     {
-      c.vhf = bool;
+      c.wpR = bool;
       AppMethodBeat.o(119702);
       return;
     }

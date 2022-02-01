@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class yr
   extends b
 {
-  public a aUM;
+  public a dCx;
   
   public yr()
   {
@@ -15,22 +15,21 @@ public final class yr
   
   private yr(byte paramByte)
   {
-    AppMethodBeat.i(203561);
-    this.aUM = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116061);
+    this.dCx = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(203561);
+    AppMethodBeat.o(116061);
   }
   
   public static final class a
   {
-    public boolean aWl;
-    public boolean isStart;
+    public int dCy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.yr
  * JD-Core Version:    0.7.0.1
  */

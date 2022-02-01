@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 public final class b
 {
-  public final byte[] cAf;
+  public final byte[] cxo;
   
   public b(byte[] paramArrayOfByte)
   {
     int i = paramArrayOfByte.length;
-    this.cAf = new byte[i];
-    System.arraycopy(paramArrayOfByte, 0, this.cAf, 0, i);
+    this.cxo = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, this.cxo, 0, i);
   }
   
   public final boolean equals(Object paramObject)
@@ -18,19 +18,19 @@ public final class b
     if (!(paramObject instanceof b)) {
       return false;
     }
-    return Arrays.equals(this.cAf, ((b)paramObject).cAf);
+    return Arrays.equals(this.cxo, ((b)paramObject).cxo);
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.cAf);
+    return Arrays.hashCode(this.cxo);
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("0x");
-    byte[] arrayOfByte = this.cAf;
+    byte[] arrayOfByte = this.cxo;
     int j = arrayOfByte.length;
     int i = 0;
     while (i < j)
@@ -43,7 +43,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.c.a.b
  * JD-Core Version:    0.7.0.1
  */

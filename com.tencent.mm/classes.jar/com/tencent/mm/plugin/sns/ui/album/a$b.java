@@ -9,12 +9,12 @@ import java.util.List;
 public final class a$b
 {
   public String label;
-  public List<p> xNy;
+  public List<p> zao;
   
   public a$b()
   {
     AppMethodBeat.i(99850);
-    this.xNy = new ArrayList();
+    this.zao = new ArrayList();
     this.label = "";
     AppMethodBeat.o(99850);
   }
@@ -23,11 +23,11 @@ public final class a$b
   {
     AppMethodBeat.i(99851);
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.xNy.iterator();
+    Iterator localIterator = this.zao.iterator();
     while (localIterator.hasNext())
     {
       p localp = (p)localIterator.next();
-      ((StringBuilder)localObject).append("\t[localId=").append(localp.xiB).append(", snsId=").append(localp.field_snsId).append("\n");
+      ((StringBuilder)localObject).append("\t[localId=").append(localp.yvp).append(", snsId=").append(localp.field_snsId).append("\n");
     }
     localObject = this.label + "\n" + ((StringBuilder)localObject).toString();
     AppMethodBeat.o(99851);
@@ -36,7 +36,7 @@ public final class a$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.album.a.b
  * JD-Core Version:    0.7.0.1
  */

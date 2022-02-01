@@ -1,11 +1,11 @@
 package com.tencent.mm.pluginsdk.f;
 
-import com.tencent.mm.protocal.protobuf.bwz;
+import com.tencent.mm.protocal.protobuf.cbt;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void Gl(String paramString);
+  public abstract void Kp(String paramString);
   
   public abstract void a(a parama);
   
@@ -13,12 +13,12 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void a(String paramString, int paramInt, bwz parambwz);
+    public abstract void a(String paramString, int paramInt, cbt paramcbt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.a
  * JD-Core Version:    0.7.0.1
  */

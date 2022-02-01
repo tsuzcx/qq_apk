@@ -6,179 +6,57 @@ import com.tencent.mm.plugin.report.a;
 public final class ib
   extends a
 {
-  private String dKR = "";
-  private long dKc;
-  private String dQr;
-  private long ehr;
-  private long maR;
-  private long maS;
-  private long maT;
-  private long maU;
-  private long maV;
-  private long mas;
-  private long mat;
-  private long mau = 0L;
-  private long mav;
-  private long maw;
+  public long eja = 0L;
+  public long ejb = 0L;
+  public String ejc = "";
+  public long ejd = 0L;
+  public String eje = "";
+  public String ejf = "";
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(202435);
+    AppMethodBeat.i(116492);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dKc);
+    ((StringBuffer)localObject).append(this.eja);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQr);
+    ((StringBuffer)localObject).append(this.ejb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.mas);
+    ((StringBuffer)localObject).append(this.ejc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKR);
+    ((StringBuffer)localObject).append(this.ejd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.mat);
+    ((StringBuffer)localObject).append(this.eje);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.mau);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.mav);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.maw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.maR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.maS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.maT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.maU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.maV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehr);
+    ((StringBuffer)localObject).append(this.ejf);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(202435);
+    arz((String)localObject);
+    AppMethodBeat.o(116492);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(202436);
+    AppMethodBeat.i(116493);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.dKc);
+    ((StringBuffer)localObject).append("actionType:").append(this.eja);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomid:").append(this.dQr);
+    ((StringBuffer)localObject).append("clientTimestamp:").append(this.ejb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("liveid:").append(this.mas);
+    ((StringBuffer)localObject).append("appId:").append(this.ejc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("topic:").append(this.dKR);
+    ((StringBuffer)localObject).append("serviceType:").append(this.ejd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomRole:").append(this.mat);
+    ((StringBuffer)localObject).append("statBuffer:").append(this.eje);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("lastTime:").append(this.mau);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("audienceCount:").append(this.mav);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("audienceCountMax:").append(this.maw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("commentCount:").append(this.maR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("heartCount:").append(this.maS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("connectCount:").append(this.maT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("allowReplay:").append(this.maU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomCount:").append(this.maV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("costTime:").append(this.ehr);
+    ((StringBuffer)localObject).append("switchId:").append(this.ejf);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(202436);
+    AppMethodBeat.o(116493);
     return localObject;
-  }
-  
-  public final ib aST(String paramString)
-  {
-    AppMethodBeat.i(202433);
-    this.dQr = t("roomid", paramString, true);
-    AppMethodBeat.o(202433);
-    return this;
-  }
-  
-  public final ib aSU(String paramString)
-  {
-    AppMethodBeat.i(202434);
-    this.dKR = t("topic", paramString, true);
-    AppMethodBeat.o(202434);
-    return this;
-  }
-  
-  public final ib bsY()
-  {
-    this.dKc = 1L;
-    return this;
   }
   
   public final int getId()
   {
-    return 19891;
-  }
-  
-  public final ib zG(long paramLong)
-  {
-    this.mas = paramLong;
-    return this;
-  }
-  
-  public final ib zH(long paramLong)
-  {
-    this.mat = paramLong;
-    return this;
-  }
-  
-  public final ib zI(long paramLong)
-  {
-    this.mav = paramLong;
-    return this;
-  }
-  
-  public final ib zJ(long paramLong)
-  {
-    this.maw = paramLong;
-    return this;
-  }
-  
-  public final ib zK(long paramLong)
-  {
-    this.maR = paramLong;
-    return this;
-  }
-  
-  public final ib zL(long paramLong)
-  {
-    this.maS = paramLong;
-    return this;
-  }
-  
-  public final ib zM(long paramLong)
-  {
-    this.maT = paramLong;
-    return this;
-  }
-  
-  public final ib zN(long paramLong)
-  {
-    this.maU = paramLong;
-    return this;
-  }
-  
-  public final ib zO(long paramLong)
-  {
-    this.maV = paramLong;
-    return this;
-  }
-  
-  public final ib zP(long paramLong)
-  {
-    this.ehr = paramLong;
-    return this;
+    return 14688;
   }
 }
 

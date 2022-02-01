@@ -11,24 +11,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bi;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.record.b.v;
-import com.tencent.mm.pluginsdk.model.app.ap;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.afz;
-import com.tencent.mm.protocal.protobuf.aga;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.agy;
+import com.tencent.mm.protocal.protobuf.agz;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
@@ -41,18 +39,18 @@ import java.util.LinkedList;
 public class RecordMsgDetailUI
   extends RecordMsgBaseUI
 {
-  private bl dbD;
-  private boolean drV = true;
-  private String dvd = null;
-  private p ftP = null;
+  private bo cZc;
+  private boolean dpG = true;
+  private String dsP = null;
+  private p fxw = null;
   private long msgId = -1L;
   private String title = "";
-  private boolean vbA;
-  private i vbd;
-  private com.tencent.mm.protocal.b.a.c vbw = null;
-  private boolean vbx = false;
-  private String vby = "";
-  private String vbz = "";
+  private i wjR;
+  private com.tencent.mm.protocal.b.a.c wkk = null;
+  private boolean wkl = false;
+  private String wkm = "";
+  private String wkn = "";
+  private boolean wko;
   
   private String a(com.tencent.mm.protocal.b.a.c paramc)
   {
@@ -63,34 +61,34 @@ public class RecordMsgDetailUI
     String str1;
     if (paramc != null)
     {
-      Iterator localIterator = paramc.gKs.iterator();
+      Iterator localIterator = paramc.hkS.iterator();
       i = 0;
       localc = null;
       str2 = null;
       str1 = null;
       while (localIterator.hasNext())
       {
-        paramc = (afy)localIterator.next();
-        if (paramc.DgT.DhA.Did != null)
+        paramc = (agx)localIterator.next();
+        if (paramc.EzZ.EAG.EBj != null)
         {
           str1 = getContext().getString(2131762236);
           i = 1;
         }
         else
         {
-          if (paramc.DgT.DhA.dpv == null) {
+          if (paramc.EzZ.EAG.dng == null) {
             break label225;
           }
           if (str2 == null)
           {
-            str2 = paramc.DgV;
+            str2 = paramc.EAb;
           }
           else
           {
-            if (str2 == paramc.DgV) {
+            if (str2 == paramc.EAb) {
               break label225;
             }
-            paramc = paramc.DgV;
+            paramc = paramc.EAb;
             localc = paramc;
           }
         }
@@ -128,23 +126,23 @@ public class RecordMsgDetailUI
     }
   }
   
-  private void cE()
+  private void cL()
   {
     AppMethodBeat.i(27888);
     f localf = new f();
-    localf.vaT = this.vbw.gKs;
+    localf.wjH = this.wkk.hkS;
     localf.msgId = this.msgId;
-    localf.dvd = this.dvd;
-    localf.vaU = new v();
-    if ((this.dbD != null) && (!this.vbA) && (this.dbD.field_transContent != null)) {}
+    localf.dsP = this.dsP;
+    localf.wjI = new v();
+    if ((this.cZc != null) && (!this.wko) && (this.cZc.field_transContent != null)) {}
     try
     {
-      localf.vaU.parseFrom(this.dbD.field_transContent.getBytes(Charset.forName("UTF-8")));
-      super.dgk();
-      this.vbs.a(localf);
-      this.vbd = new i(this, this.vbs, localf);
-      this.vbs.vbd = this.vbd;
-      ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a((e)this.vbs);
+      localf.wjI.parseFrom(this.cZc.field_transContent.getBytes(Charset.forName("UTF-8")));
+      super.dtR();
+      this.wkg.a(localf);
+      this.wjR = new i(this, this.wkg, localf);
+      this.wkg.wjR = this.wjR;
+      ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().a((e)this.wkg);
       AppMethodBeat.o(27888);
       return;
     }
@@ -152,39 +150,39 @@ public class RecordMsgDetailUI
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.RecordMsgDetailUI", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.RecordMsgDetailUI", localException, "", new Object[0]);
       }
     }
   }
   
-  protected final void dgk()
+  protected final void dtR()
   {
     AppMethodBeat.i(27886);
     this.msgId = getIntent().getLongExtra("message_id", -1L);
-    this.dvd = getIntent().getStringExtra("record_xml");
-    this.drV = getIntent().getBooleanExtra("record_show_share", true);
-    this.vbx = getIntent().getBooleanExtra("big_appmsg", false);
-    this.vbA = getIntent().getBooleanExtra("record_nest", false);
-    this.vbw = com.tencent.mm.plugin.record.b.n.alt(this.dvd);
-    az.arV();
-    this.dbD = com.tencent.mm.model.c.apO().rm(this.msgId);
-    if (this.vbw != null) {
-      if (a(this.vbw) != null)
+    this.dsP = getIntent().getStringExtra("record_xml");
+    this.dpG = getIntent().getBooleanExtra("record_show_share", true);
+    this.wkl = getIntent().getBooleanExtra("big_appmsg", false);
+    this.wko = getIntent().getBooleanExtra("record_nest", false);
+    this.wkk = com.tencent.mm.plugin.record.b.n.aqs(this.dsP);
+    az.ayM();
+    this.cZc = com.tencent.mm.model.c.awD().vP(this.msgId);
+    if (this.wkk != null) {
+      if (a(this.wkk) != null)
       {
-        this.title = a(this.vbw);
-        if (!bt.gL(this.vbw.gKs))
+        this.title = a(this.wkk);
+        if (!bs.gY(this.wkk.hkS))
         {
-          this.vby = ((afy)this.vbw.gKs.getFirst()).DgX;
-          this.vbz = ((afy)this.vbw.gKs.getLast()).DgX;
+          this.wkm = ((agx)this.wkk.hkS.getFirst()).EAd;
+          this.wkn = ((agx)this.wkk.hkS.getLast()).EAd;
         }
       }
     }
     for (;;)
     {
-      if ((this.dvd != null) && (this.vbw != null)) {
+      if ((this.dsP != null) && (this.wkk != null)) {
         break label375;
       }
-      dgs();
+      dtZ();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -196,13 +194,13 @@ public class RecordMsgDetailUI
         }
       });
       Object localObject;
-      if ((this.vbx) && (ap.bxS().vj(this.msgId) != null))
+      if ((this.wkl) && (com.tencent.mm.pluginsdk.model.app.ap.bEO().zM(this.msgId) != null))
       {
-        az.arV();
-        localObject = com.tencent.mm.model.c.apO().rm(this.msgId);
-        localObject = new com.tencent.mm.plugin.record.b.e(this.msgId, ((du)localObject).field_msgSvrId, new com.tencent.mm.al.h()
+        az.ayM();
+        localObject = com.tencent.mm.model.c.awD().vP(this.msgId);
+        localObject = new com.tencent.mm.plugin.record.b.e(this.msgId, ((dy)localObject).field_msgSvrId, new com.tencent.mm.ak.h()
         {
-          public final void a(int paramAnonymousInt1, int paramAnonymousInt2, com.tencent.mm.al.n paramAnonymousn)
+          public final void a(int paramAnonymousInt1, int paramAnonymousInt2, com.tencent.mm.ak.n paramAnonymousn)
           {
             AppMethodBeat.i(27877);
             if (paramAnonymousInt1 == paramAnonymousInt2)
@@ -212,17 +210,17 @@ public class RecordMsgDetailUI
                 RecordMsgDetailUI.a(RecordMsgDetailUI.this).dismiss();
                 RecordMsgDetailUI.b(RecordMsgDetailUI.this);
               }
-              az.arV();
-              bl localbl = com.tencent.mm.model.c.apO().rm(RecordMsgDetailUI.c(RecordMsgDetailUI.this));
-              paramAnonymousn = localbl.field_content;
-              if (w.pF(localbl.field_talker)) {
-                paramAnonymousn = bi.ug(localbl.field_content);
+              az.ayM();
+              bo localbo = com.tencent.mm.model.c.awD().vP(RecordMsgDetailUI.c(RecordMsgDetailUI.this));
+              paramAnonymousn = localbo.field_content;
+              if (w.sQ(localbo.field_talker)) {
+                paramAnonymousn = bi.ym(localbo.field_content);
               }
-              paramAnonymousn = k.b.rx(paramAnonymousn);
+              paramAnonymousn = k.b.vA(paramAnonymousn);
               if (paramAnonymousn != null)
               {
-                RecordMsgDetailUI.a(RecordMsgDetailUI.this, paramAnonymousn.gHI);
-                RecordMsgDetailUI.a(RecordMsgDetailUI.this, com.tencent.mm.plugin.record.b.n.alt(RecordMsgDetailUI.d(RecordMsgDetailUI.this)));
+                RecordMsgDetailUI.a(RecordMsgDetailUI.this, paramAnonymousn.hij);
+                RecordMsgDetailUI.a(RecordMsgDetailUI.this, com.tencent.mm.plugin.record.b.n.aqs(RecordMsgDetailUI.d(RecordMsgDetailUI.this)));
                 if (RecordMsgDetailUI.e(RecordMsgDetailUI.this) != null)
                 {
                   if (RecordMsgDetailUI.b(RecordMsgDetailUI.this, RecordMsgDetailUI.e(RecordMsgDetailUI.this)) == null) {
@@ -234,8 +232,8 @@ public class RecordMsgDetailUI
             }
             for (;;)
             {
-              RecordMsgDetailUI.c(RecordMsgDetailUI.this, ((afy)RecordMsgDetailUI.e(RecordMsgDetailUI.this).gKs.getFirst()).DgX);
-              RecordMsgDetailUI.d(RecordMsgDetailUI.this, ((afy)RecordMsgDetailUI.e(RecordMsgDetailUI.this).gKs.getLast()).DgX);
+              RecordMsgDetailUI.c(RecordMsgDetailUI.this, ((agx)RecordMsgDetailUI.e(RecordMsgDetailUI.this).hkS.getFirst()).EAd);
+              RecordMsgDetailUI.d(RecordMsgDetailUI.this, ((agx)RecordMsgDetailUI.e(RecordMsgDetailUI.this).hkS.getLast()).EAd);
               RecordMsgDetailUI.f(RecordMsgDetailUI.this);
               AppMethodBeat.o(27877);
               return;
@@ -244,28 +242,28 @@ public class RecordMsgDetailUI
             }
           }
         });
-        az.aeS().a((com.tencent.mm.al.n)localObject, 0);
+        az.agi().a((com.tencent.mm.ak.n)localObject, 0);
       }
       AppMethodBeat.o(27886);
       return;
-      this.title = this.vbw.title;
+      this.title = this.wkk.title;
       break;
-      if (this.dbD != null)
+      if (this.cZc != null)
       {
-        localObject = k.b.ar(this.dbD.field_content, this.dbD.field_reserved);
+        localObject = k.b.az(this.cZc.field_content, this.cZc.field_reserved);
         if (localObject != null)
         {
           this.title = ((k.b)localObject).title;
-          this.ftP = p.a(this, getString(2131760709), true, 0, null);
+          this.fxw = p.a(this, getString(2131760709), true, 0, null);
         }
       }
     }
     label375:
-    cE();
+    cL();
     AppMethodBeat.o(27886);
   }
   
-  protected final h dgl()
+  protected final h dtS()
   {
     AppMethodBeat.i(27889);
     e locale = new e(this, new g());
@@ -274,25 +272,25 @@ public class RecordMsgDetailUI
     return locale;
   }
   
-  protected final String dgm()
+  protected final String dtT()
   {
     return this.title;
   }
   
-  protected final String dgn()
+  protected final String dtU()
   {
-    return this.vby;
+    return this.wkm;
   }
   
-  protected final String dgo()
+  protected final String dtV()
   {
-    return this.vbz;
+    return this.wkn;
   }
   
-  protected final void dgp()
+  protected final void dtW()
   {
     AppMethodBeat.i(27891);
-    if (!this.drV)
+    if (!this.dpG)
     {
       AppMethodBeat.o(27891);
       return;
@@ -303,7 +301,7 @@ public class RecordMsgDetailUI
       {
         AppMethodBeat.i(27881);
         paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(RecordMsgDetailUI.this.getContext(), 1, false);
-        paramAnonymousMenuItem.HrX = new n.c()
+        paramAnonymousMenuItem.ISu = new n.c()
         {
           public final void onCreateMMMenu(l paramAnonymous2l)
           {
@@ -315,7 +313,7 @@ public class RecordMsgDetailUI
             AppMethodBeat.o(27878);
           }
         };
-        paramAnonymousMenuItem.HrY = new n.d()
+        paramAnonymousMenuItem.ISv = new n.d()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -327,15 +325,15 @@ public class RecordMsgDetailUI
             {
               AppMethodBeat.o(27880);
               return;
-              az.arV();
-              if (!((Boolean)com.tencent.mm.model.c.afk().get(327714, Boolean.FALSE)).booleanValue())
+              az.ayM();
+              if (!((Boolean)com.tencent.mm.model.c.agA().get(327714, Boolean.FALSE)).booleanValue())
               {
-                az.arV();
-                com.tencent.mm.model.c.afk().set(327714, Boolean.TRUE);
+                az.ayM();
+                com.tencent.mm.model.c.agA().set(327714, Boolean.TRUE);
                 paramAnonymous2MenuItem = new d.a(RecordMsgDetailUI.this);
-                paramAnonymous2MenuItem.aMg(RecordMsgDetailUI.this.getResources().getString(2131762247));
-                paramAnonymous2MenuItem.aMf(RecordMsgDetailUI.this.getResources().getString(2131755906));
-                paramAnonymous2MenuItem.aaB(2131760315).b(new DialogInterface.OnClickListener()
+                paramAnonymous2MenuItem.aRI(RecordMsgDetailUI.this.getResources().getString(2131762247));
+                paramAnonymous2MenuItem.aRH(RecordMsgDetailUI.this.getResources().getString(2131755906));
+                paramAnonymous2MenuItem.acM(2131760315).b(new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                   {
@@ -346,12 +344,12 @@ public class RecordMsgDetailUI
                     localIntent.putExtra("mutil_select_is_ret", true);
                     localIntent.putExtra("Retr_Msg_Type", 10);
                     localIntent.putExtra("Retr_Msg_Id", RecordMsgDetailUI.c(RecordMsgDetailUI.this));
-                    com.tencent.mm.bs.d.c(RecordMsgDetailUI.this, ".ui.transmit.SelectConversationUI", localIntent, 1001);
+                    com.tencent.mm.br.d.c(RecordMsgDetailUI.this, ".ui.transmit.SelectConversationUI", localIntent, 1001);
                     paramAnonymous3DialogInterface.dismiss();
                     AppMethodBeat.o(27879);
                   }
                 });
-                paramAnonymous2MenuItem.fft().show();
+                paramAnonymous2MenuItem.fvp().show();
                 AppMethodBeat.o(27880);
                 return;
               }
@@ -361,20 +359,20 @@ public class RecordMsgDetailUI
               paramAnonymous2MenuItem.putExtra("mutil_select_is_ret", true);
               paramAnonymous2MenuItem.putExtra("Retr_Msg_Type", 10);
               paramAnonymous2MenuItem.putExtra("Retr_Msg_Id", RecordMsgDetailUI.c(RecordMsgDetailUI.this));
-              com.tencent.mm.bs.d.c(RecordMsgDetailUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 1001);
+              com.tencent.mm.br.d.c(RecordMsgDetailUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 1001);
               AppMethodBeat.o(27880);
               return;
               AppMethodBeat.o(27880);
               return;
               paramAnonymous2MenuItem = new cs();
               com.tencent.mm.pluginsdk.model.g.a(paramAnonymous2MenuItem, RecordMsgDetailUI.c(RecordMsgDetailUI.this));
-              paramAnonymous2MenuItem.deQ.deW = 9;
-              paramAnonymous2MenuItem.deQ.activity = RecordMsgDetailUI.this;
-              com.tencent.mm.sdk.b.a.ESL.l(paramAnonymous2MenuItem);
+              paramAnonymous2MenuItem.dck.dcq = 9;
+              paramAnonymous2MenuItem.dck.activity = RecordMsgDetailUI.this;
+              com.tencent.mm.sdk.b.a.GpY.l(paramAnonymous2MenuItem);
             }
           }
         };
-        paramAnonymousMenuItem.csG();
+        paramAnonymousMenuItem.cED();
         AppMethodBeat.o(27881);
         return true;
       }
@@ -387,7 +385,7 @@ public class RecordMsgDetailUI
     AppMethodBeat.i(27892);
     if (-1 != paramInt2)
     {
-      ad.e("MicroMsg.RecordMsgDetailUI", "processResult %d", new Object[] { Integer.valueOf(paramInt2) });
+      ac.e("MicroMsg.RecordMsgDetailUI", "processResult %d", new Object[] { Integer.valueOf(paramInt2) });
       AppMethodBeat.o(27892);
       return;
     }
@@ -404,37 +402,37 @@ public class RecordMsgDetailUI
       label92:
       for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
       {
-        if (!bt.isNullOrNil((String)localObject)) {
+        if (!bs.isNullOrNil((String)localObject)) {
           break label103;
         }
-        ad.w("MicroMsg.RecordMsgDetailUI", "want to send record msg, but toUser is null");
+        ac.w("MicroMsg.RecordMsgDetailUI", "want to send record msg, but toUser is null");
         AppMethodBeat.o(27892);
         return;
         localObject = paramIntent.getStringExtra("Select_Conv_User");
         break;
       }
       label103:
-      az.arV();
-      final bl localbl = com.tencent.mm.model.c.apO().rm(this.msgId);
-      if (localbl.field_msgId != this.msgId)
+      az.ayM();
+      final bo localbo = com.tencent.mm.model.c.awD().vP(this.msgId);
+      if (localbo.field_msgId != this.msgId)
       {
-        ad.w("MicroMsg.RecordMsgDetailUI", "want to send record msg, but message info is null");
+        ac.w("MicroMsg.RecordMsgDetailUI", "want to send record msg, but message info is null");
         AppMethodBeat.o(27892);
         return;
       }
       final p localp = com.tencent.mm.ui.base.h.b(getContext(), getString(2131758906), false, null);
-      az.afE().ax(new Runnable()
+      az.agU().az(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27883);
-          com.tencent.mm.plugin.record.b.n.a(this.cND, paramIntent, localbl);
-          aq.f(new Runnable()
+          com.tencent.mm.plugin.record.b.n.a(this.cKY, paramIntent, localbo);
+          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(27882);
-              RecordMsgDetailUI.4.this.qcu.dismiss();
+              RecordMsgDetailUI.4.this.qLa.dismiss();
               AppMethodBeat.o(27882);
             }
           });
@@ -456,9 +454,9 @@ public class RecordMsgDetailUI
     {
       localObject = new cs();
       com.tencent.mm.pluginsdk.model.g.a((cs)localObject, paramIntent);
-      ((cs)localObject).deQ.activity = this;
-      ((cs)localObject).deQ.deW = 8;
-      com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
+      ((cs)localObject).dck.activity = this;
+      ((cs)localObject).dck.dcq = 8;
+      com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
     }
     AppMethodBeat.o(27892);
   }
@@ -474,18 +472,28 @@ public class RecordMsgDetailUI
   {
     AppMethodBeat.i(27890);
     super.onDestroy();
-    ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b((e)this.vbs);
-    if (this.vbd != null)
+    ((com.tencent.mm.plugin.record.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.record.a.a.class)).getRecordMsgCDNStorage().b((e)this.wkg);
+    if (this.wjR != null)
     {
-      byte[] arrayOfByte = this.vbd.dgv();
-      if ((!this.vbA) && (this.dbD != null) && (arrayOfByte != null) && (arrayOfByte.length > 0))
+      byte[] arrayOfByte = this.wjR.duc();
+      if ((!this.wko) && (this.cZc != null) && (arrayOfByte != null) && (arrayOfByte.length > 0))
       {
-        this.dbD.ob(new String(arrayOfByte, Charset.forName("UTF-8")));
-        az.arV();
-        com.tencent.mm.model.c.apO().a(this.msgId, this.dbD);
+        this.cZc.rh(new String(arrayOfByte, Charset.forName("UTF-8")));
+        az.ayM();
+        com.tencent.mm.model.c.awD().a(this.msgId, this.cZc);
       }
     }
     AppMethodBeat.o(27890);
+  }
+  
+  public void onPause()
+  {
+    AppMethodBeat.i(196071);
+    super.onPause();
+    if (this.wjR != null) {
+      this.wjR.wkK = false;
+    }
+    AppMethodBeat.o(196071);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -496,7 +504,7 @@ public class RecordMsgDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.RecordMsgDetailUI
  * JD-Core Version:    0.7.0.1
  */

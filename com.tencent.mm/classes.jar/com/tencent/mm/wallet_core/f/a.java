@@ -8,20 +8,20 @@ import java.util.WeakHashMap;
 
 public final class a
 {
-  private WeakHashMap<Object, Boolean> Ieu;
+  private WeakHashMap<Object, Boolean> JFW;
   
   public a()
   {
     AppMethodBeat.i(72880);
-    this.Ieu = new WeakHashMap();
+    this.JFW = new WeakHashMap();
     AppMethodBeat.o(72880);
   }
   
-  public static a fkn()
+  public static a fAD()
   {
     try
     {
-      a locala = a.Iev;
+      a locala = a.JFX;
       return locala;
     }
     finally
@@ -31,20 +31,20 @@ public final class a
     }
   }
   
-  public final boolean el(Object paramObject)
+  public final boolean em(Object paramObject)
   {
     AppMethodBeat.i(72881);
-    if (com.tencent.mm.plugin.normsg.a.b.ufs.dt(paramObject))
+    if (com.tencent.mm.plugin.normsg.a.b.vor.du(paramObject))
     {
-      if (this.Ieu.containsKey(paramObject))
+      if (this.JFW.containsKey(paramObject))
       {
         AppMethodBeat.o(72881);
         return false;
       }
-      this.Ieu.put(paramObject, Boolean.TRUE);
-      e.vIY.idkeyStat(715L, 0L, 1L, false);
-      if (((b.fkq()) || (g.XL())) && (b.fko())) {
-        d.wcE.Lw(-2147483648);
+      this.JFW.put(paramObject, Boolean.TRUE);
+      e.wTc.idkeyStat(715L, 0L, 1L, false);
+      if (((b.fAG()) || (g.YI())) && (b.fAE())) {
+        d.xnP.Nw(-2147483648);
       }
       AppMethodBeat.o(72881);
       return false;
@@ -55,12 +55,12 @@ public final class a
   
   static final class a
   {
-    static a Iev;
+    static a JFX;
     
     static
     {
       AppMethodBeat.i(72879);
-      Iev = new a();
+      JFX = new a();
       AppMethodBeat.o(72879);
     }
   }

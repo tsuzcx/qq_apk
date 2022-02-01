@@ -1373,7 +1373,7 @@ public class XWalkView
     try
     {
       this.getTranslateSampleStringintMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      g.kC(938, 103);
+      g.kS(938, 103);
       AppMethodBeat.o(155149);
       return;
     }

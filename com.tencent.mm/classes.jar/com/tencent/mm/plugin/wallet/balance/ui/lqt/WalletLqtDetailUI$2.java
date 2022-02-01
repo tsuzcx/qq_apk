@@ -14,14 +14,14 @@ final class WalletLqtDetailUI$2
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(68788);
-    paramView = (String)this.zIU.getTag();
-    e.o(this.zIT, paramView, false);
+    paramView = (String)this.Bbg.getTag();
+    e.n(this.Bbf, paramView, false);
     AppMethodBeat.o(68788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI.2
  * JD-Core Version:    0.7.0.1
  */

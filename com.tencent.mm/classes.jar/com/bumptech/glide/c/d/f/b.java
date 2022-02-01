@@ -12,26 +12,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements e<Bitmap, BitmapDrawable>
 {
-  private final Resources aHZ;
+  private final Resources aIP;
   
   public b(Resources paramResources)
   {
     AppMethodBeat.i(77530);
-    this.aHZ = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
+    this.aIP = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
     AppMethodBeat.o(77530);
   }
   
   public final u<BitmapDrawable> a(u<Bitmap> paramu, j paramj)
   {
     AppMethodBeat.i(77531);
-    paramu = l.a(this.aHZ, paramu);
+    paramu = l.a(this.aIP, paramu);
     AppMethodBeat.o(77531);
     return paramu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.f.b
  * JD-Core Version:    0.7.0.1
  */

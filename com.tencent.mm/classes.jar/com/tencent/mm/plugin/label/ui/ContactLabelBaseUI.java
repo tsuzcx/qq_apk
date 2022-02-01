@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -14,9 +14,9 @@ import com.tencent.mm.ui.base.h;
 public class ContactLabelBaseUI
   extends MMActivity
 {
-  private ProgressDialog ift;
+  private ProgressDialog iFC;
   
-  public final void Ug(String paramString)
+  public final void Ys(String paramString)
   {
     AppMethodBeat.i(26161);
     h.d(this, paramString, "", new DialogInterface.OnClickListener()
@@ -26,16 +26,16 @@ public class ContactLabelBaseUI
     AppMethodBeat.o(26161);
   }
   
-  public final void aeM(String paramString)
+  public final void ajE(String paramString)
   {
     AppMethodBeat.i(26159);
     getString(2131755906);
-    this.ift = h.b(this, paramString, true, new DialogInterface.OnCancelListener()
+    this.iFC = h.b(this, paramString, true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26158);
-        az.aeS().cancel(636);
+        az.agi().cancel(636);
         AppMethodBeat.o(26158);
       }
     });
@@ -50,8 +50,8 @@ public class ContactLabelBaseUI
   public final void hideLoading()
   {
     AppMethodBeat.i(26160);
-    if ((this.ift != null) && (this.ift.isShowing())) {
-      this.ift.dismiss();
+    if ((this.iFC != null) && (this.iFC.isShowing())) {
+      this.iFC.dismiss();
     }
     AppMethodBeat.o(26160);
   }
@@ -64,7 +64,7 @@ public class ContactLabelBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelBaseUI
  * JD-Core Version:    0.7.0.1
  */

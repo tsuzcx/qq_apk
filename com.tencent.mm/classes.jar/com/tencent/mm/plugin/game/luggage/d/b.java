@@ -7,7 +7,7 @@ import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.d.a;
 import com.tencent.mm.plugin.webview.luggage.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class b
   extends f
@@ -16,13 +16,13 @@ public final class b
   {
     super(paramg, null, paramBundle);
     AppMethodBeat.i(83122);
-    cMm();
-    ekT();
-    Bn();
+    cZS();
+    eAp();
+    AR();
     AppMethodBeat.o(83122);
   }
   
-  public final boolean bEZ()
+  public final boolean bMn()
   {
     return false;
   }
@@ -30,24 +30,24 @@ public final class b
   public final void onBackground()
   {
     AppMethodBeat.i(83124);
-    ad.i("MicroMsg.GameInsertWebPage", "onBackground");
-    Sz("onPause");
-    this.ASU.onPause();
+    ac.i("MicroMsg.GameInsertWebPage", "onBackground");
+    WL("onPause");
+    this.Clh.onPause();
     AppMethodBeat.o(83124);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(83125);
-    if (!this.ATv)
+    if (!this.ClI)
     {
-      this.ATv = true;
-      ad.i("MicroMsg.GameInsertWebPage", "onDestroy");
-      Sz("onDestroy");
-      this.ATg.ASM = null;
+      this.ClI = true;
+      ac.i("MicroMsg.GameInsertWebPage", "onDestroy");
+      WL("onDestroy");
+      this.Clt.CkZ = null;
       i.c(this);
-      this.ATm.AKM = true;
-      this.caI.destroy();
+      this.Clz.Cdd = true;
+      this.bXF.destroy();
     }
     AppMethodBeat.o(83125);
   }
@@ -55,9 +55,9 @@ public final class b
   public final void onForeground()
   {
     AppMethodBeat.i(83123);
-    ad.i("MicroMsg.GameInsertWebPage", "onForeground");
-    Sz("onResume");
-    this.ASU.onResume();
+    ac.i("MicroMsg.GameInsertWebPage", "onForeground");
+    WL("onResume");
+    this.Clh.onResume();
     AppMethodBeat.o(83123);
   }
 }

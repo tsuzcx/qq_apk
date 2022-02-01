@@ -9,11 +9,11 @@ public abstract interface d
   
   public abstract void a(FragmentActivity paramFragmentActivity, String paramString, long paramLong, boolean paramBoolean);
   
-  public abstract void ph(long paramLong);
+  public abstract void sT(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.d
  * JD-Core Version:    0.7.0.1
  */

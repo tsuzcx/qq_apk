@@ -8,11 +8,11 @@ public abstract class ad
     return "makePhoneCall";
   }
   
-  public abstract void vj(String paramString);
+  public abstract void zp(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ad
  * JD-Core Version:    0.7.0.1
  */

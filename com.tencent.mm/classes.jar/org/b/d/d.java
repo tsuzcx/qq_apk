@@ -43,7 +43,7 @@ public final class d
     return false;
   }
   
-  public final String fNi()
+  public final String gfY()
   {
     AppMethodBeat.i(40540);
     String str = c.encode(this.key).concat("=").concat(c.encode(this.value));
@@ -62,7 +62,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.d.d
  * JD-Core Version:    0.7.0.1
  */

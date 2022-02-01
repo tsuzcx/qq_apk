@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="400.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextureView android:id="@id/hs1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+<android.support.constraint.ConstraintLayout android:background="@drawable/tz" android:layout_width="fill_parent" android:layout_height="379.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/c5" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/hvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/hld" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:textSize="@dimen/c0" android:textStyle="bold" android:textColor="@color/FG_2" android:id="@id/hvr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/hlc" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/hvt" />
+    <ImageView android:id="@id/hvs" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginTop="@dimen/c8" android:src="@drawable/c7z" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/hvr" />
+    <TextView android:textSize="@dimen/c5" android:textColor="@color/c" android:gravity="center" android:id="@id/hvq" android:background="@drawable/c4m" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/cd" android:text="@string/hlb" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/hvs" />
+</android.support.constraint.ConstraintLayout>

@@ -10,41 +10,41 @@ public abstract interface q
 {
   public static final String[] SQL_CREATE = { j.getCreateSQLs(c.info, "FavCdnInfo") };
   
-  public abstract c Yk(String paramString);
-  
   public abstract void a(p paramp);
   
   public abstract boolean a(c paramc, String... paramVarArgs);
+  
+  public abstract c acG(String paramString);
   
   public abstract void b(p paramp);
   
   public abstract boolean b(c paramc, String... paramVarArgs);
   
-  public abstract LinkedList<c> chT();
+  public abstract LinkedList<c> cpA();
   
-  public abstract Cursor chU();
+  public abstract Cursor cpB();
   
-  public abstract Cursor chV();
+  public abstract Cursor cpC();
   
   public abstract boolean f(c paramc);
   
-  public abstract List<c> pN(long paramLong);
-  
-  public abstract List<c> pO(long paramLong);
-  
-  public abstract void pP(long paramLong);
-  
-  public abstract boolean pQ(long paramLong);
-  
   public abstract void startAll();
   
-  public abstract int x(long paramLong, int paramInt);
+  public abstract List<c> tC(long paramLong);
+  
+  public abstract List<c> tD(long paramLong);
+  
+  public abstract void tE(long paramLong);
+  
+  public abstract boolean tF(long paramLong);
+  
+  public abstract int y(long paramLong, int paramInt);
   
   public abstract void y(g paramg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.q
  * JD-Core Version:    0.7.0.1
  */

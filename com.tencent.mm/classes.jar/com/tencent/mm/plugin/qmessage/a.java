@@ -7,22 +7,22 @@ import com.tencent.mm.pluginsdk.m;
 public final class a
   implements m
 {
-  public static l hYt;
-  public static k uJZ;
+  public static l iyx;
+  public static k vSQ;
   
   public final void a(k paramk)
   {
-    uJZ = paramk;
+    vSQ = paramk;
   }
   
   public final void a(l paraml)
   {
-    hYt = paraml;
+    iyx = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.a
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,13 @@ final class b
     int j = Runtime.getRuntime().availableProcessors();
     int i = j;
     if (Build.VERSION.SDK_INT < 17) {
-      i = Math.max(oK(), j);
+      i = Math.max(oU(), j);
     }
     AppMethodBeat.o(77196);
     return i;
   }
   
-  private static int oK()
+  private static int oU()
   {
     AppMethodBeat.i(77197);
     Object localObject1 = null;
@@ -68,7 +68,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.c.b
  * JD-Core Version:    0.7.0.1
  */

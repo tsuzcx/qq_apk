@@ -16,14 +16,14 @@ public final class u
     AppMethodBeat.i(57642);
     k.h(paramab, "$this$lexicalCastFrom");
     k.h(paramString, "value");
-    Object localObject = paramab.fIW().fxM();
-    if (((localObject instanceof e)) && (((e)localObject).fxu() == d.l.b.a.b.b.f.Jqf))
+    Object localObject = paramab.gbz().fQq();
+    if (((localObject instanceof e)) && (((e)localObject).fPY() == d.l.b.a.b.b.f.Ldy))
     {
-      paramab = ((e)localObject).fyG();
-      paramString = d.l.b.a.b.f.f.aQC(paramString);
+      paramab = ((e)localObject).fRk();
+      paramString = d.l.b.a.b.f.f.aWB(paramString);
       k.g(paramString, "Name.identifier(value)");
-      paramab = paramab.c(paramString, (d.l.b.a.b.c.a.a)c.JwA);
-      if (((paramab instanceof e)) && (((e)paramab).fxu() == d.l.b.a.b.b.f.Jqg))
+      paramab = paramab.c(paramString, (d.l.b.a.b.c.a.a)c.LjT);
+      if (((paramab instanceof e)) && (((e)paramab).fPY() == d.l.b.a.b.b.f.Ldz))
       {
         paramab = (l)new h((e)paramab);
         AppMethodBeat.o(57642);
@@ -36,13 +36,13 @@ public final class u
     k.h(paramString, "value");
     String str;
     int i;
-    if ((n.mA(paramString, "0x")) || (n.mA(paramString, "0X")))
+    if ((n.nb(paramString, "0x")) || (n.nb(paramString, "0X")))
     {
       paramab = paramString.substring(2);
       k.g(paramab, "(this as java.lang.String).substring(startIndex)");
       paramab = new d.l.b.a.b.o.f(paramab, 16);
-      str = paramab.Azr;
-      i = paramab.KbD;
+      str = paramab.BRN;
+      i = paramab.LOY;
     }
     for (;;)
     {
@@ -67,7 +67,7 @@ public final class u
         paramab = (l)new f(paramString);
         AppMethodBeat.o(57642);
         return paramab;
-        if ((n.mA(paramString, "0b")) || (n.mA(paramString, "0B")))
+        if ((n.nb(paramString, "0b")) || (n.nb(paramString, "0B")))
         {
           paramab = paramString.substring(2);
           k.g(paramab, "(this as java.lang.String).substring(startIndex)");
@@ -89,7 +89,7 @@ public final class u
         if (g.s((ab)localObject))
         {
           k.h(str, "$this$toByteOrNull");
-          paramab = n.gJ(str, i);
+          paramab = n.gP(str, i);
           if (paramab != null)
           {
             i = paramab.intValue();
@@ -102,7 +102,7 @@ public final class u
         else if (g.u((ab)localObject))
         {
           k.h(str, "$this$toShortOrNull");
-          paramab = n.gJ(str, i);
+          paramab = n.gP(str, i);
           if (paramab != null)
           {
             i = paramab.intValue();
@@ -116,22 +116,22 @@ public final class u
         {
           if (g.r((ab)localObject))
           {
-            paramString = n.gJ(str, i);
+            paramString = n.gP(str, i);
             continue;
           }
           if (g.t((ab)localObject))
           {
-            paramString = n.gK(str, i);
+            paramString = n.gQ(str, i);
             continue;
           }
           if (g.v((ab)localObject))
           {
-            paramString = n.aRd(paramString);
+            paramString = n.aXc(paramString);
             continue;
           }
           if (g.w((ab)localObject))
           {
-            paramString = n.aRe(paramString);
+            paramString = n.aXd(paramString);
             continue;
           }
           bool = g.D((ab)localObject);
@@ -155,7 +155,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.u
  * JD-Core Version:    0.7.0.1
  */

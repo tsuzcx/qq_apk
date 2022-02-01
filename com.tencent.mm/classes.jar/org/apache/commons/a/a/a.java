@@ -11,11 +11,11 @@ public final class a
   extends OutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private final List<byte[]> Kkt;
-  private int Kku;
-  private int Kkv;
-  private byte[] Kkw;
-  private boolean Kkx;
+  private final List<byte[]> LYc;
+  private int LYd;
+  private int LYe;
+  private byte[] LYf;
+  private boolean LYg;
   private int count;
   
   public a()
@@ -26,11 +26,11 @@ public final class a
   private a(byte paramByte)
   {
     AppMethodBeat.i(10290);
-    this.Kkt = new ArrayList();
-    this.Kkx = true;
+    this.LYc = new ArrayList();
+    this.LYg = true;
     try
     {
-      agr(1024);
+      ajn(1024);
       return;
     }
     finally
@@ -39,26 +39,26 @@ public final class a
     }
   }
   
-  private void agr(int paramInt)
+  private void ajn(int paramInt)
   {
     AppMethodBeat.i(10291);
-    if (this.Kku < this.Kkt.size() - 1)
+    if (this.LYd < this.LYc.size() - 1)
     {
-      this.Kkv += this.Kkw.length;
-      this.Kku += 1;
-      this.Kkw = ((byte[])this.Kkt.get(this.Kku));
+      this.LYe += this.LYf.length;
+      this.LYd += 1;
+      this.LYf = ((byte[])this.LYc.get(this.LYd));
       AppMethodBeat.o(10291);
       return;
     }
-    if (this.Kkw == null) {}
-    for (this.Kkv = 0;; this.Kkv += this.Kkw.length)
+    if (this.LYf == null) {}
+    for (this.LYe = 0;; this.LYe += this.LYf.length)
     {
-      this.Kku += 1;
-      this.Kkw = new byte[paramInt];
-      this.Kkt.add(this.Kkw);
+      this.LYd += 1;
+      this.LYf = new byte[paramInt];
+      this.LYc.add(this.LYf);
       AppMethodBeat.o(10291);
       return;
-      paramInt = Math.max(this.Kkw.length << 1, paramInt - this.Kkv);
+      paramInt = Math.max(this.LYf.length << 1, paramInt - this.LYe);
     }
   }
   
@@ -79,7 +79,7 @@ public final class a
           return arrayOfByte1;
         }
         byte[] arrayOfByte1 = new byte[j];
-        Iterator localIterator = this.Kkt.iterator();
+        Iterator localIterator = this.LYc.iterator();
         int i = 0;
         int k;
         if (localIterator.hasNext())
@@ -115,14 +115,14 @@ public final class a
     try
     {
       AppMethodBeat.i(10293);
-      int j = this.count - this.Kkv;
+      int j = this.count - this.LYe;
       int i = j;
-      if (j == this.Kkw.length)
+      if (j == this.LYf.length)
       {
-        agr(this.count + 1);
+        ajn(this.count + 1);
         i = 0;
       }
-      this.Kkw[i] = ((byte)paramInt);
+      this.LYf[i] = ((byte)paramInt);
       this.count += 1;
       AppMethodBeat.o(10293);
       return;
@@ -147,17 +147,17 @@ public final class a
     try
     {
       int m = this.count + paramInt2;
-      int j = this.count - this.Kkv;
+      int j = this.count - this.LYe;
       int i = paramInt2;
       while (i > 0)
       {
-        int k = Math.min(i, this.Kkw.length - j);
-        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.Kkw, j, k);
+        int k = Math.min(i, this.LYf.length - j);
+        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.LYf, j, k);
         k = i - k;
         i = k;
         if (k > 0)
         {
-          agr(m);
+          ajn(m);
           j = 0;
           i = k;
         }
@@ -173,7 +173,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.apache.commons.a.a.a
  * JD-Core Version:    0.7.0.1
  */

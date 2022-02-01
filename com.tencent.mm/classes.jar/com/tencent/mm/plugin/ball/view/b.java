@@ -18,42 +18,42 @@ import android.graphics.PorterDuffXfermode;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
   extends View
 {
-  private Paint jPl;
-  final List<c> mGf;
-  private float mGg;
-  private float mGh;
-  private float mGi;
-  private int mGj;
-  boolean mGk;
-  private Runnable mGl;
-  private Paint mGm;
-  List<d> mGn;
+  private Paint kpN;
   boolean mInited;
   private Paint mPaint;
+  final List<c> nik;
+  private float nil;
+  private float nim;
+  private float nin;
+  private int nio;
+  boolean nip;
+  private Runnable niq;
+  private Paint nir;
+  List<d> nis;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(106395);
-    this.mGf = new ArrayList();
-    this.mGj = 0;
+    this.nik = new ArrayList();
+    this.nio = 0;
     this.mInited = false;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.mGm = new Paint();
-    this.mGm.setAntiAlias(true);
-    this.jPl = new Paint();
-    this.jPl.setAntiAlias(true);
-    this.jPl.setColor(paramContext.getResources().getColor(2131100377));
-    this.jPl.setStyle(Paint.Style.STROKE);
-    this.jPl.setStrokeWidth(1.0F);
+    this.nir = new Paint();
+    this.nir.setAntiAlias(true);
+    this.kpN = new Paint();
+    this.kpN.setAntiAlias(true);
+    this.kpN.setColor(paramContext.getResources().getColor(2131100377));
+    this.kpN.setStyle(Paint.Style.STROKE);
+    this.kpN.setStrokeWidth(1.0F);
     AppMethodBeat.o(106395);
   }
   
@@ -74,32 +74,32 @@ public final class b
     AppMethodBeat.i(106401);
     if (!paramd.isValid())
     {
-      ad.i("MicroMsg.FloatBallCrescentView", "drawTheIcon, invalid icon info");
+      ac.i("MicroMsg.FloatBallCrescentView", "drawTheIcon, invalid icon info");
       AppMethodBeat.o(106401);
       return;
     }
     if ((paramd.bitmap != null) && (!paramd.bitmap.isRecycled())) {
       a(paramCanvas, paramPaint, paramd.bitmap, paramPointF, paramFloat);
     }
-    if (paramd.mGA != 0) {
-      this.mGm.setARGB(this.mGj, Color.red(paramd.mGA), Color.green(paramd.mGA), Color.blue(paramd.mGA));
+    if (paramd.niF != 0) {
+      this.nir.setARGB(this.nio, Color.red(paramd.niF), Color.green(paramd.niF), Color.blue(paramd.niF));
     }
     for (;;)
     {
-      paramCanvas.drawCircle(paramPointF.x, paramPointF.y, paramFloat, this.mGm);
+      paramCanvas.drawCircle(paramPointF.x, paramPointF.y, paramFloat, this.nir);
       AppMethodBeat.o(106401);
       return;
-      this.mGm.setARGB(0, 0, 0, 0);
+      this.nir.setARGB(0, 0, 0, 0);
     }
   }
   
   private void a(Canvas paramCanvas, c paramc1, c paramc2)
   {
     AppMethodBeat.i(106400);
-    d locald = paramc1.bAt();
-    PointF localPointF1 = paramc1.bAr();
+    d locald = paramc1.bHp();
+    PointF localPointF1 = paramc1.bHn();
     float f1 = paramc1.getRadius();
-    PointF localPointF2 = paramc2.bAr();
+    PointF localPointF2 = paramc2.bHn();
     float f2 = paramc2.getRadius();
     if (f1 <= 0.0F)
     {
@@ -107,13 +107,13 @@ public final class b
       return;
     }
     this.mPaint.setAlpha(paramc1.getAlpha());
-    this.mGm.setAlpha(paramc1.getAlpha());
+    this.nir.setAlpha(paramc1.getAlpha());
     int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
     paramCanvas.drawCircle(localPointF1.x, localPointF1.y, f1, this.mPaint);
     this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
     a(paramCanvas, this.mPaint, locald, localPointF1, f1);
     this.mPaint.setXfermode(null);
-    paramCanvas.drawCircle(localPointF1.x, localPointF1.y, 0.5F + f1, this.jPl);
+    paramCanvas.drawCircle(localPointF1.x, localPointF1.y, 0.5F + f1, this.kpN);
     if (f2 > 0.0F)
     {
       this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
@@ -127,8 +127,8 @@ public final class b
   private void a(Canvas paramCanvas, c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(106399);
-    d locald = paramc.bAt();
-    PointF localPointF = paramc.bAr();
+    d locald = paramc.bHp();
+    PointF localPointF = paramc.bHn();
     float f = paramc.getRadius();
     if (f == 0.0F)
     {
@@ -136,14 +136,14 @@ public final class b
       return;
     }
     this.mPaint.setAlpha(paramc.getAlpha());
-    this.mGm.setAlpha(paramc.getAlpha());
+    this.nir.setAlpha(paramc.getAlpha());
     int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
     paramCanvas.drawCircle(localPointF.x, localPointF.y, f, this.mPaint);
     this.mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
     a(paramCanvas, this.mPaint, locald, localPointF, f);
     this.mPaint.setXfermode(null);
     if (paramBoolean) {
-      paramCanvas.drawCircle(localPointF.x, localPointF.y, 0.5F + f, this.jPl);
+      paramCanvas.drawCircle(localPointF.x, localPointF.y, 0.5F + f, this.kpN);
     }
     paramCanvas.restoreToCount(i);
     AppMethodBeat.o(106399);
@@ -152,7 +152,7 @@ public final class b
   private List<PointF> c(float paramFloat1, float paramFloat2, int paramInt)
   {
     AppMethodBeat.i(106398);
-    float f1 = this.mGg - paramFloat1;
+    float f1 = this.nil - paramFloat1;
     ArrayList localArrayList = new ArrayList();
     if (paramInt == 1)
     {
@@ -182,10 +182,10 @@ public final class b
   public final void a(final List<d> paramList, final int paramInt1, final int paramInt2, final int paramInt3)
   {
     AppMethodBeat.i(106396);
-    ad.i("MicroMsg.FloatBallCrescentView", "setIconInfoList size:%d newChangeIndex:%d", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.FloatBallCrescentView", "setIconInfoList size:%d newChangeIndex:%d", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(paramInt3) });
     this.mInited = false;
-    this.mGn = paramList;
-    this.mGl = new Runnable()
+    this.nis = paramList;
+    this.niq = new Runnable()
     {
       public final void run()
       {
@@ -196,10 +196,10 @@ public final class b
         AppMethodBeat.o(106383);
       }
     };
-    if (this.mGg > 0.0F)
+    if (this.nil > 0.0F)
     {
-      ad.i("MicroMsg.FloatBallCrescentView", "setIconInfoList, run pending init");
-      this.mGl.run();
+      ac.i("MicroMsg.FloatBallCrescentView", "setIconInfoList, run pending init");
+      this.niq.run();
     }
     AppMethodBeat.o(106396);
   }
@@ -208,24 +208,24 @@ public final class b
   {
     AppMethodBeat.i(106397);
     super.onDraw(paramCanvas);
-    int j = this.mGf.size();
+    int j = this.nik.size();
     if (j == 2)
     {
-      a(paramCanvas, (c)this.mGf.get(1), (c)this.mGf.get(0));
-      a(paramCanvas, (c)this.mGf.get(0), true);
+      a(paramCanvas, (c)this.nik.get(1), (c)this.nik.get(0));
+      a(paramCanvas, (c)this.nik.get(0), true);
       AppMethodBeat.o(106397);
       return;
     }
     int i = 0;
     if (i < j)
     {
-      c localc2 = (c)this.mGf.get(i);
+      c localc2 = (c)this.nik.get(i);
       c localc1;
       label128:
       boolean bool;
       if (i - 1 < 0)
       {
-        localc1 = (c)this.mGf.get(j - 1);
+        localc1 = (c)this.nik.get(j - 1);
         if (j >= 3) {
           break label183;
         }
@@ -240,7 +240,7 @@ public final class b
       {
         i += 1;
         break;
-        localc1 = (c)this.mGf.get(i - 1);
+        localc1 = (c)this.nik.get(i - 1);
         break label128;
         label177:
         bool = false;
@@ -256,11 +256,11 @@ public final class b
   {
     AppMethodBeat.i(106403);
     super.onMeasure(paramInt1, paramInt2);
-    this.mGg = (View.MeasureSpec.getSize(paramInt1) / 2.0F);
-    if (this.mGl != null)
+    this.nil = (View.MeasureSpec.getSize(paramInt1) / 2.0F);
+    if (this.niq != null)
     {
-      ad.i("MicroMsg.FloatBallCrescentView", "onMeasure, run pending init");
-      this.mGl.run();
+      ac.i("MicroMsg.FloatBallCrescentView", "onMeasure, run pending init");
+      this.niq.run();
     }
     AppMethodBeat.o(106403);
   }
@@ -268,39 +268,39 @@ public final class b
   static class a
     extends b.b
   {
-    protected float asb;
-    protected final PointF mGt;
-    final String mGu;
-    final String mGv;
-    final String mGw;
-    protected final List<PropertyValuesHolder> mGx;
+    protected float asW;
+    final String niA;
+    final String niB;
+    protected final List<PropertyValuesHolder> niC;
+    protected final PointF niy;
+    final String niz;
     
     private a(b.d paramd, PointF paramPointF1, float paramFloat1, PointF paramPointF2, float paramFloat2)
     {
       super((byte)0);
       AppMethodBeat.i(106389);
-      this.mGx = new ArrayList();
-      this.mGt = paramPointF2;
-      this.mGu = String.format("x#%d", new Object[] { Integer.valueOf(hashCode()) });
-      this.mGv = String.format("y#%d", new Object[] { Integer.valueOf(hashCode()) });
-      this.mGw = String.format("r#%d", new Object[] { Integer.valueOf(hashCode()) });
-      paramd = PropertyValuesHolder.ofFloat(this.mGu, new float[] { paramPointF2.x, paramPointF1.x });
-      paramPointF1 = PropertyValuesHolder.ofFloat(this.mGv, new float[] { paramPointF2.y, paramPointF1.y });
-      paramPointF2 = PropertyValuesHolder.ofFloat(this.mGw, new float[] { paramFloat2, paramFloat1 });
-      this.mGx.add(paramd);
-      this.mGx.add(paramPointF1);
-      this.mGx.add(paramPointF2);
+      this.niC = new ArrayList();
+      this.niy = paramPointF2;
+      this.niz = String.format("x#%d", new Object[] { Integer.valueOf(hashCode()) });
+      this.niA = String.format("y#%d", new Object[] { Integer.valueOf(hashCode()) });
+      this.niB = String.format("r#%d", new Object[] { Integer.valueOf(hashCode()) });
+      paramd = PropertyValuesHolder.ofFloat(this.niz, new float[] { paramPointF2.x, paramPointF1.x });
+      paramPointF1 = PropertyValuesHolder.ofFloat(this.niA, new float[] { paramPointF2.y, paramPointF1.y });
+      paramPointF2 = PropertyValuesHolder.ofFloat(this.niB, new float[] { paramFloat2, paramFloat1 });
+      this.niC.add(paramd);
+      this.niC.add(paramPointF1);
+      this.niC.add(paramPointF2);
       AppMethodBeat.o(106389);
     }
     
-    public final PointF bAr()
+    public final PointF bHn()
     {
-      return this.mGt;
+      return this.niy;
     }
     
-    public final List<PropertyValuesHolder> bAs()
+    public final List<PropertyValuesHolder> bHo()
     {
-      return this.mGx;
+      return this.niC;
     }
     
     public void c(ValueAnimator paramValueAnimator)
@@ -311,9 +311,9 @@ public final class b
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(106388);
-          b.a.this.mGt.x = ((Float)paramAnonymousValueAnimator.getAnimatedValue(b.a.this.mGu)).floatValue();
-          b.a.this.mGt.y = ((Float)paramAnonymousValueAnimator.getAnimatedValue(b.a.this.mGv)).floatValue();
-          b.a.this.asb = ((Float)paramAnonymousValueAnimator.getAnimatedValue(b.a.this.mGw)).floatValue();
+          b.a.this.niy.x = ((Float)paramAnonymousValueAnimator.getAnimatedValue(b.a.this.niz)).floatValue();
+          b.a.this.niy.y = ((Float)paramAnonymousValueAnimator.getAnimatedValue(b.a.this.niA)).floatValue();
+          b.a.this.asW = ((Float)paramAnonymousValueAnimator.getAnimatedValue(b.a.this.niB)).floatValue();
           AppMethodBeat.o(106388);
         }
       });
@@ -327,31 +327,31 @@ public final class b
     
     public final float getRadius()
     {
-      return this.asb;
+      return this.asW;
     }
   }
   
   static abstract class b
     implements b.c
   {
-    private final b.d mGz;
+    private final b.d niE;
     
     private b(b.d paramd)
     {
-      this.mGz = paramd;
+      this.niE = paramd;
     }
     
-    public final b.d bAt()
+    public final b.d bHp()
     {
-      return this.mGz;
+      return this.niE;
     }
   }
   
   static abstract interface c
   {
-    public abstract PointF bAr();
+    public abstract PointF bHn();
     
-    public abstract b.d bAt();
+    public abstract b.d bHp();
     
     public abstract int getAlpha();
     
@@ -361,7 +361,7 @@ public final class b
   static final class d
   {
     Bitmap bitmap;
-    int mGA = 0;
+    int niF = 0;
     
     final boolean isValid()
     {
@@ -379,19 +379,19 @@ public final class b
   static final class e
     extends b.b
   {
-    final float asb;
-    final PointF mGt;
+    final float asW;
+    final PointF niy;
     
     private e(b.d paramd, PointF paramPointF, float paramFloat)
     {
       super((byte)0);
-      this.mGt = paramPointF;
-      this.asb = paramFloat;
+      this.niy = paramPointF;
+      this.asW = paramFloat;
     }
     
-    public final PointF bAr()
+    public final PointF bHn()
     {
-      return this.mGt;
+      return this.niy;
     }
     
     public final int getAlpha()
@@ -401,7 +401,7 @@ public final class b
     
     public final float getRadius()
     {
-      return this.asb;
+      return this.asW;
     }
   }
   
@@ -409,15 +409,15 @@ public final class b
     extends b.a
   {
     int mAlpha;
-    final String mGB;
+    final String niG;
     
     private f(b.d paramd, PointF paramPointF1, float paramFloat, PointF paramPointF2)
     {
       super(paramPointF1, paramFloat, paramPointF2, 0.0F, (byte)0);
       AppMethodBeat.i(106393);
-      this.mGB = String.format("a#%d", new Object[] { Integer.valueOf(hashCode()) });
-      paramd = PropertyValuesHolder.ofInt(this.mGB, new int[] { 0, 255 });
-      this.mGx.add(paramd);
+      this.niG = String.format("a#%d", new Object[] { Integer.valueOf(hashCode()) });
+      paramd = PropertyValuesHolder.ofInt(this.niG, new int[] { 0, 255 });
+      this.niC.add(paramd);
       AppMethodBeat.o(106393);
     }
     
@@ -430,7 +430,7 @@ public final class b
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(106392);
-          b.f.this.mAlpha = ((Integer)paramAnonymousValueAnimator.getAnimatedValue(b.f.this.mGB)).intValue();
+          b.f.this.mAlpha = ((Integer)paramAnonymousValueAnimator.getAnimatedValue(b.f.this.niG)).intValue();
           AppMethodBeat.o(106392);
         }
       });
@@ -445,7 +445,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.b
  * JD-Core Version:    0.7.0.1
  */

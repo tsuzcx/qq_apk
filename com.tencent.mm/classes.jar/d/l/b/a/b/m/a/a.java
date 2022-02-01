@@ -24,24 +24,24 @@ public final class a
   extends d.l.b.a.b.m.g
   implements c
 {
-  public static final a JYL;
-  private final i JRx;
-  private final boolean JYJ;
-  private final boolean JYK;
+  public static final a LMe;
+  private final i LEQ;
+  private final boolean LMc;
+  private final boolean LMd;
   
   static
   {
     AppMethodBeat.i(60923);
-    JYL = new a((byte)0);
+    LMe = new a((byte)0);
     AppMethodBeat.o(60923);
   }
   
   private a(boolean paramBoolean1, boolean paramBoolean2, i parami)
   {
     AppMethodBeat.i(60921);
-    this.JYJ = paramBoolean1;
-    this.JYK = paramBoolean2;
-    this.JRx = parami;
+    this.LMc = paramBoolean1;
+    this.LMd = paramBoolean2;
+    this.LEQ = parami;
     AppMethodBeat.o(60921);
   }
   
@@ -78,13 +78,13 @@ public final class a
     d.g.b.k.h(paramg, "type");
     if (!(paramg instanceof ab))
     {
-      paramg = (Throwable)new IllegalArgumentException(b.fs(paramg).toString());
+      paramg = (Throwable)new IllegalArgumentException(b.fv(paramg).toString());
       AppMethodBeat.o(60916);
       throw paramg;
     }
-    n.a locala = n.JZb;
-    n.a.fKf();
-    paramg = (d.l.b.a.b.m.c.g)o.c(((ab)paramg).fJW());
+    n.a locala = n.LMu;
+    n.a.gcI();
+    paramg = (d.l.b.a.b.m.c.g)o.c(((ab)paramg).gcz());
     AppMethodBeat.o(60916);
     return paramg;
   }
@@ -205,13 +205,13 @@ public final class a
     d.g.b.k.h(paramm2, "b");
     if (!(paramm1 instanceof at))
     {
-      paramm1 = (Throwable)new IllegalArgumentException(b.fs(paramm1).toString());
+      paramm1 = (Throwable)new IllegalArgumentException(b.fv(paramm1).toString());
       AppMethodBeat.o(60918);
       throw paramm1;
     }
     if (!(paramm2 instanceof at))
     {
-      paramm1 = (Throwable)new IllegalArgumentException(b.fs(paramm2).toString());
+      paramm1 = (Throwable)new IllegalArgumentException(b.fv(paramm2).toString());
       AppMethodBeat.o(60918);
       throw paramm1;
     }
@@ -242,11 +242,11 @@ public final class a
     d.g.b.k.h(paramg, "type");
     if (!(paramg instanceof ab))
     {
-      paramg = (Throwable)new IllegalArgumentException(b.fs(paramg).toString());
+      paramg = (Throwable)new IllegalArgumentException(b.fv(paramg).toString());
       AppMethodBeat.o(60917);
       throw paramg;
     }
-    paramg = (d.l.b.a.b.m.c.g)this.JRx.aL((ab)paramg);
+    paramg = (d.l.b.a.b.m.c.g)this.LEQ.aL((ab)paramg);
     AppMethodBeat.o(60917);
     return paramg;
   }
@@ -350,7 +350,7 @@ public final class a
   {
     AppMethodBeat.i(60920);
     d.g.b.k.h(paramg, "$this$isAllowedTypeVariable");
-    if (((paramg instanceof bg)) && (this.JYK) && ((((bg)paramg).fIW() instanceof p)))
+    if (((paramg instanceof bg)) && (this.LMd) && ((((bg)paramg).gbz() instanceof p)))
     {
       AppMethodBeat.o(60920);
       return true;
@@ -452,11 +452,6 @@ public final class a
     return paramg;
   }
   
-  public final boolean fJO()
-  {
-    return this.JYJ;
-  }
-  
   public final d g(d.l.b.a.b.m.c.i parami)
   {
     AppMethodBeat.i(60939);
@@ -485,6 +480,11 @@ public final class a
     boolean bool = c.a.p(paramm);
     AppMethodBeat.o(60924);
     return bool;
+  }
+  
+  public final boolean gcr()
+  {
+    return this.LMc;
   }
   
   public final boolean h(d.l.b.a.b.m.c.g paramg)
@@ -547,15 +547,6 @@ public final class a
     return bool;
   }
   
-  public final d.l.b.a.b.m.c.g iQ(List<? extends d.l.b.a.b.m.c.g> paramList)
-  {
-    AppMethodBeat.i(60962);
-    d.g.b.k.h(paramList, "types");
-    paramList = c.a.iR(paramList);
-    AppMethodBeat.o(60962);
-    return paramList;
-  }
-  
   public final int j(m paramm)
   {
     AppMethodBeat.i(60950);
@@ -584,6 +575,15 @@ public final class a
     boolean bool = p.a.g((d.l.b.a.b.m.c.p)localq, paramg);
     AppMethodBeat.o(60982);
     return bool;
+  }
+  
+  public final d.l.b.a.b.m.c.g jg(List<? extends d.l.b.a.b.m.c.g> paramList)
+  {
+    AppMethodBeat.i(60962);
+    d.g.b.k.h(paramList, "types");
+    paramList = c.a.jh(paramList);
+    AppMethodBeat.o(60962);
+    return paramList;
   }
   
   public final d.l.b.a.b.m.c.g k(d.l.b.a.b.m.c.g paramg)
@@ -742,20 +742,20 @@ public final class a
         AppMethodBeat.i(60915);
         d.g.b.k.h(paramg, "context");
         d.g.b.k.h(paramg1, "type");
-        paramg = this.JYM;
-        ba localba = this.JpR;
-        paramg1 = this.JYM.e(paramg1);
+        paramg = this.LMf;
+        ba localba = this.Ldk;
+        paramg1 = this.LMf.e(paramg1);
         if (paramg1 == null)
         {
           paramg = new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.KotlinType");
           AppMethodBeat.o(60915);
           throw paramg;
         }
-        paramg1 = localba.b((ab)paramg1, bh.JYC);
+        paramg1 = localba.b((ab)paramg1, bh.LLV);
         d.g.b.k.g(paramg1, "substitutor.safeSubstitu…ANT\n                    )");
         paramg = paramg.o((d.l.b.a.b.m.c.g)paramg1);
         if (paramg == null) {
-          d.g.b.k.fvU();
+          d.g.b.k.fOy();
         }
         AppMethodBeat.o(60915);
         return paramg;
@@ -765,7 +765,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.a
  * JD-Core Version:    0.7.0.1
  */

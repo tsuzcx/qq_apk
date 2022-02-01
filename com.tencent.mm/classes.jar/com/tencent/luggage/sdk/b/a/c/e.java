@@ -16,51 +16,51 @@ public abstract class e<Service extends c>
     super(paramService);
   }
   
-  public abstract boolean BH();
+  protected void BD() {}
   
-  protected i BI()
+  protected abstract void BE();
+  
+  protected abstract void BF();
+  
+  public abstract boolean Bl();
+  
+  protected i Bm()
   {
     return null;
   }
   
-  protected void BJ() {}
+  protected void Bn() {}
   
-  protected void BK() {}
+  protected void Bo() {}
   
-  protected void BL() {}
+  protected void Bp() {}
   
-  public void BU() {}
+  public void By() {}
   
-  public void BV() {}
+  public void Bz() {}
   
-  protected void BZ() {}
-  
-  protected Map<String, m> CD()
+  public final com.tencent.luggage.sdk.d.c CO()
   {
-    return null;
-  }
-  
-  protected abstract void Ca();
-  
-  protected abstract void Cb();
-  
-  public final void DG()
-  {
-    ((c)Dj()).DG();
-  }
-  
-  public final com.tencent.luggage.sdk.d.c Dl()
-  {
-    if (Dj() == null) {
+    if (CM() == null) {
       return null;
     }
-    return ((c)Dj()).Dl();
+    return ((c)CM()).CO();
+  }
+  
+  protected Map<String, m> Ch()
+  {
+    return null;
+  }
+  
+  public final void Dj()
+  {
+    ((c)CM()).Dj();
   }
   
   public final <T> T Q(Class<T> paramClass)
   {
     if (ICommLibReader.class.equals(paramClass)) {
-      return paramClass.cast(((c)Dj()).aLC());
+      return paramClass.cast(((c)CM()).aSt());
     }
     if (paramClass.isInstance(this)) {
       return paramClass.cast(this);
@@ -68,13 +68,13 @@ public abstract class e<Service extends c>
     return super.Q(paramClass);
   }
   
+  protected abstract void bY(String paramString);
+  
   protected abstract void c(AppBrandRuntime paramAppBrandRuntime);
   
   public void c(JSONObject paramJSONObject) {}
   
-  protected abstract void ci(String paramString);
-  
-  public String cw(String paramString)
+  public String cl(String paramString)
   {
     return null;
   }
@@ -86,7 +86,7 @@ public abstract class e<Service extends c>
   
   public final String getAppId()
   {
-    return ((c)Dj()).getAppId();
+    return ((c)CM()).getAppId();
   }
   
   public boolean i(int paramInt, String paramString)
@@ -96,7 +96,7 @@ public abstract class e<Service extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.c.e
  * JD-Core Version:    0.7.0.1
  */

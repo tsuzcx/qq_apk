@@ -7,11 +7,11 @@ import java.util.List;
 public abstract interface ad
   extends l
 {
-  public abstract h fyj();
+  public abstract h fQN();
   
-  public abstract b fzd();
+  public abstract b fRH();
   
-  public abstract y fze();
+  public abstract y fRI();
   
   public abstract List<ab> getFragments();
   
@@ -19,7 +19,7 @@ public abstract interface ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.ad
  * JD-Core Version:    0.7.0.1
  */

@@ -13,25 +13,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 class MMAutoSwitchEditText
   extends EditText
 {
-  a FWr;
+  a Hwf;
   
   public MMAutoSwitchEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141864);
-    this.FWr = new a(this);
-    addTextChangedListener(this.FWr);
-    setOnKeyListener(this.FWr);
+    this.Hwf = new a(this);
+    addTextChangedListener(this.Hwf);
+    setOnKeyListener(this.Hwf);
     AppMethodBeat.o(141864);
   }
   
   public static final class a
     implements TextWatcher, View.OnKeyListener
   {
-    MMAutoSwitchEditText.c FWs;
-    MMAutoSwitchEditText.b FWt;
-    MMAutoSwitchEditText.d FWu;
-    int FWv = 4;
+    MMAutoSwitchEditText.c Hwg;
+    MMAutoSwitchEditText.b Hwh;
+    MMAutoSwitchEditText.d Hwi;
+    int Hwj = 4;
     private EditText mEditText;
     int mIndex = 0;
     private String mText;
@@ -46,8 +46,8 @@ class MMAutoSwitchEditText
       AppMethodBeat.i(141862);
       this.mText = paramEditable.toString();
       paramEditable = "";
-      if (this.FWu != null) {
-        this.FWu.bRW();
+      if (this.Hwi != null) {
+        this.Hwi.bZl();
       }
       int j = 0;
       int i = 0;
@@ -60,19 +60,19 @@ class MMAutoSwitchEditText
         }
         i += 1;
         k = i;
-        if (i > this.FWv) {
+        if (i > this.Hwj) {
           break;
         }
         paramEditable = paramEditable + this.mText.charAt(j);
         j += 1;
       }
-      if (k > this.FWv)
+      if (k > this.Hwj)
       {
         this.mEditText.setText(paramEditable);
         this.mEditText.setSelection(paramEditable.length());
       }
-      if ((k >= this.FWv) && (this.FWs != null)) {
-        this.FWs.XK(this.mIndex);
+      if ((k >= this.Hwj) && (this.Hwg != null)) {
+        this.Hwg.ZV(this.mIndex);
       }
       AppMethodBeat.o(141862);
     }
@@ -82,8 +82,8 @@ class MMAutoSwitchEditText
     public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
     {
       AppMethodBeat.i(141863);
-      if ((paramInt == 67) && (this.mEditText.getText().toString().trim().length() == 0) && (this.FWt != null)) {
-        this.FWt.XJ(this.mIndex);
+      if ((paramInt == 67) && (this.mEditText.getText().toString().trim().length() == 0) && (this.Hwh != null)) {
+        this.Hwh.ZU(this.mIndex);
       }
       AppMethodBeat.o(141863);
       return false;
@@ -94,22 +94,22 @@ class MMAutoSwitchEditText
   
   public static abstract interface b
   {
-    public abstract void XJ(int paramInt);
+    public abstract void ZU(int paramInt);
   }
   
   public static abstract interface c
   {
-    public abstract void XK(int paramInt);
+    public abstract void ZV(int paramInt);
   }
   
   public static abstract interface d
   {
-    public abstract void bRW();
+    public abstract void bZl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAutoSwitchEditText
  * JD-Core Version:    0.7.0.1
  */

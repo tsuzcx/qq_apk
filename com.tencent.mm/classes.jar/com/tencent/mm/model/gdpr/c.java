@@ -2,50 +2,44 @@ package com.tencent.mm.model.gdpr;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.co.f;
-import com.tencent.mm.co.g;
+import com.tencent.mm.cn.f;
+import com.tencent.mm.cn.g;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.auj;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.protocal.protobuf.duw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
 {
-  public static void a(Context paramContext, final a parama, final String paramString, final b paramb)
+  public static void a(Context paramContext, final a parama, final String paramString, b paramb)
   {
     AppMethodBeat.i(40088);
     final Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = aj.getContext();
+      localContext = ai.getContext();
     }
-    if (atn())
+    if (aAe())
     {
-      if (bt.isNullOrNil(paramString))
+      if (bs.isNullOrNil(paramString))
       {
-        paramb.ns(1);
+        paramb.og(1);
         AppMethodBeat.o(40088);
         return;
       }
-      g.fkM().h(new com.tencent.mm.vending.c.a() {}).g(new com.tencent.mm.vending.c.a() {});
+      g.fBc().h(new c.2(parama, paramString, paramb)).g(new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(40088);
       return;
     }
-    paramb.ns(0);
+    paramb.og(0);
     AppMethodBeat.o(40088);
   }
   
-  public static boolean atn()
+  public static boolean aAe()
   {
     AppMethodBeat.i(40087);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, a.class);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, a.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
       AppMethodBeat.o(40087);

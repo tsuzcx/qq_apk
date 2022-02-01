@@ -11,26 +11,26 @@ import com.google.android.exoplayer2.metadata.id3.PrivFrame;
 import com.google.android.exoplayer2.metadata.id3.TextInformationFrame;
 import com.google.android.exoplayer2.metadata.id3.UrlLinkFrame;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.text.NumberFormat;
 import java.util.Locale;
 
 public final class a
 {
-  private static final NumberFormat tYp;
+  private static final NumberFormat vhb;
   
   static
   {
     AppMethodBeat.i(137413);
     NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
-    tYp = localNumberFormat;
+    vhb = localNumberFormat;
     localNumberFormat.setMinimumFractionDigits(2);
-    tYp.setMaximumFractionDigits(2);
-    tYp.setGroupingUsed(false);
+    vhb.setMaximumFractionDigits(2);
+    vhb.setGroupingUsed(false);
     AppMethodBeat.o(137413);
   }
   
-  public static String Ia(int paramInt)
+  public static String JZ(int paramInt)
   {
     switch (paramInt)
     {
@@ -50,13 +50,13 @@ public final class a
   {
     AppMethodBeat.i(137412);
     int i = 0;
-    if (i < paramMetadata.bjd.length)
+    if (i < paramMetadata.bjI.length)
     {
-      Object localObject = paramMetadata.bjd[i];
+      Object localObject = paramMetadata.bjI[i];
       if ((localObject instanceof TextInformationFrame))
       {
         localObject = (TextInformationFrame)localObject;
-        ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: value=%s", new Object[] { ((TextInformationFrame)localObject).id, ((TextInformationFrame)localObject).value }));
+        ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s: value=%s", new Object[] { ((TextInformationFrame)localObject).id, ((TextInformationFrame)localObject).value }));
       }
       for (;;)
       {
@@ -65,44 +65,44 @@ public final class a
         if ((localObject instanceof UrlLinkFrame))
         {
           localObject = (UrlLinkFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: url=%s", new Object[] { ((UrlLinkFrame)localObject).id, ((UrlLinkFrame)localObject).url }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s: url=%s", new Object[] { ((UrlLinkFrame)localObject).id, ((UrlLinkFrame)localObject).url }));
         }
         else if ((localObject instanceof PrivFrame))
         {
           localObject = (PrivFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).bjG }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s: owner=%s", new Object[] { ((PrivFrame)localObject).id, ((PrivFrame)localObject).bkl }));
         }
         else if ((localObject instanceof GeobFrame))
         {
           localObject = (GeobFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, filename=%s, description=%s", new Object[] { ((GeobFrame)localObject).id, ((GeobFrame)localObject).mimeType, ((GeobFrame)localObject).filename, ((GeobFrame)localObject).description }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, filename=%s, description=%s", new Object[] { ((GeobFrame)localObject).id, ((GeobFrame)localObject).mimeType, ((GeobFrame)localObject).filename, ((GeobFrame)localObject).description }));
         }
         else if ((localObject instanceof ApicFrame))
         {
           localObject = (ApicFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, description=%s", new Object[] { ((ApicFrame)localObject).id, ((ApicFrame)localObject).mimeType, ((ApicFrame)localObject).description }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s: mimeType=%s, description=%s", new Object[] { ((ApicFrame)localObject).id, ((ApicFrame)localObject).mimeType, ((ApicFrame)localObject).description }));
         }
         else if ((localObject instanceof CommentFrame))
         {
           localObject = (CommentFrame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s: language=%s, description=%s", new Object[] { ((CommentFrame)localObject).id, ((CommentFrame)localObject).aSt, ((CommentFrame)localObject).description }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s: language=%s, description=%s", new Object[] { ((CommentFrame)localObject).id, ((CommentFrame)localObject).aTm, ((CommentFrame)localObject).description }));
         }
         else if ((localObject instanceof Id3Frame))
         {
           localObject = (Id3Frame)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("%s", new Object[] { ((Id3Frame)localObject).id }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("%s", new Object[] { ((Id3Frame)localObject).id }));
         }
         else if ((localObject instanceof EventMessage))
         {
           localObject = (EventMessage)localObject;
-          ad.d("MicroMsg.ExoPlayer", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).bjo, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
+          ac.d("MicroMsg.ExoPlayer", paramString + String.format("EMSG: scheme=%s, id=%d, value=%s", new Object[] { ((EventMessage)localObject).bjT, Long.valueOf(((EventMessage)localObject).id), ((EventMessage)localObject).value }));
         }
       }
     }
     AppMethodBeat.o(137412);
   }
   
-  public static void cVM()
+  public static void djs()
   {
     AppMethodBeat.i(137410);
     b.DEBUG = false;
@@ -110,7 +110,7 @@ public final class a
     AppMethodBeat.o(137410);
   }
   
-  public static String rz(long paramLong)
+  public static String wc(long paramLong)
   {
     AppMethodBeat.i(137411);
     if (paramLong == -9223372036854775807L)
@@ -118,7 +118,7 @@ public final class a
       AppMethodBeat.o(137411);
       return "?";
     }
-    String str = tYp.format((float)paramLong / 1000.0F);
+    String str = vhb.format((float)paramLong / 1000.0F);
     AppMethodBeat.o(137411);
     return str;
   }

@@ -1,148 +1,115 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.plugin.appbrand.jsapi.o.b;
-import com.tencent.mm.plugin.appbrand.jsapi.o.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.o.d;
-import com.tencent.mm.plugin.appbrand.jsapi.o.h;
-import com.tencent.mm.plugin.appbrand.jsapi.o.i.a;
-import com.tencent.mm.plugin.appbrand.jsapi.o.j;
-import com.tencent.mm.plugin.appbrand.jsapi.o.j.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.modelappbrand.a.b.d;
+import com.tencent.mm.modelappbrand.a.b.l;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.be;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.z.h;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.f;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Set;
 
 public final class x
 {
-  final aa cdz;
-  public final String cjP;
-  public j.a kzM;
-  boolean lax;
-  public final LinkedList<String> lay;
-  public final Map<String, a> laz;
+  private static final b.l lCf;
+  private static final h<AppBrandRuntime, String> lCg;
   
-  public x(aa paramaa)
+  static
   {
-    AppMethodBeat.i(176621);
-    this.cjP = ("MicroMsg.AppBrand.AppBrandPageScopedPipInfo#" + hashCode());
-    this.kzM = null;
-    this.lay = new LinkedList();
-    this.laz = new ConcurrentHashMap();
-    this.cdz = paramaa;
-    this.lax = this.cdz.cdK;
-    ad.i(this.cjP, "mIsCurPageForeground: " + this.lax);
-    paramaa.a(new f.d()
-    {
-      public final void onForeground()
-      {
-        AppMethodBeat.i(176617);
-        x localx = x.this;
-        ad.i(localx.cjP, "markCurPageForeground");
-        localx.lax = true;
-        AppMethodBeat.o(176617);
-      }
-    });
-    paramaa.a(new f.b()
-    {
-      public final void onBackground()
-      {
-        AppMethodBeat.i(176618);
-        x localx = x.this;
-        ad.i(localx.cjP, "markCurPageBackground");
-        localx.lax = false;
-        AppMethodBeat.o(176618);
-      }
-    });
-    AppMethodBeat.o(176621);
+    AppMethodBeat.i(135112);
+    lCf = new b.d();
+    lCg = new h();
+    AppMethodBeat.o(135112);
   }
   
-  final void LC(String paramString)
+  public static void al(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(176622);
-    ad.i(this.cjP, "removePipRelatedKey, key: ".concat(String.valueOf(paramString)));
-    synchronized (this.lay)
+    AppMethodBeat.i(193414);
+    paramAppBrandRuntime = lCg.cD(paramAppBrandRuntime);
+    if (paramAppBrandRuntime != null)
     {
-      this.lay.remove(paramString);
-      AppMethodBeat.o(176622);
-      return;
+      paramAppBrandRuntime = paramAppBrandRuntime.iterator();
+      while (paramAppBrandRuntime.hasNext())
+      {
+        String str = (String)paramAppBrandRuntime.next();
+        lCf.remove(str);
+      }
     }
+    AppMethodBeat.o(193414);
   }
   
-  final String bjx()
+  public static Bitmap k(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
-    AppMethodBeat.i(176623);
-    synchronized (this.lay)
+    AppMethodBeat.i(135111);
+    if (paramAppBrandRuntime == null)
     {
-      if (this.lay.isEmpty())
-      {
-        AppMethodBeat.o(176623);
+      AppMethodBeat.o(135111);
+      return null;
+    }
+    Object localObject = m.IX(paramString);
+    if (bs.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(135111);
+      return null;
+    }
+    paramString = paramAppBrandRuntime.hashCode() + 35 + (String)localObject;
+    lCg.h(paramAppBrandRuntime, paramString);
+    Bitmap localBitmap = lCf.te(paramString);
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    {
+      AppMethodBeat.o(135111);
+      return localBitmap;
+    }
+    paramAppBrandRuntime = be.f(paramAppBrandRuntime, (String)localObject);
+    if (paramAppBrandRuntime != null) {}
+    try
+    {
+      int i = paramAppBrandRuntime.available();
+      if (i <= 0) {
         return null;
       }
-      String str = (String)this.lay.getFirst();
-      AppMethodBeat.o(176623);
-      return str;
-    }
-  }
-  
-  final boolean containsKey(String paramString)
-  {
-    AppMethodBeat.i(176624);
-    synchronized (this.lay)
-    {
-      boolean bool = this.lay.contains(paramString);
-      AppMethodBeat.o(176624);
-      return bool;
-    }
-  }
-  
-  public static final class a
-  {
-    public final int id;
-    public b.a laB;
-    public boolean laC;
-    public final i.a laD;
-    public final d laE;
-    public final h laF;
-    public final j laG;
-    public ag laH;
-    
-    public a(int paramInt, b paramb, h paramh, i.a parama, d paramd, ag paramag, j.a parama1)
-    {
-      AppMethodBeat.i(176619);
-      this.laB = b.a.kgX;
-      this.laC = false;
-      this.id = paramInt;
-      this.laF = paramh;
-      this.laD = parama;
-      this.laE = paramd;
-      this.laH = paramag;
-      a(paramb);
-      this.laG = paramh.bbF();
-      this.laG.a(parama1);
-      AppMethodBeat.o(176619);
-    }
-    
-    public final void a(b paramb)
-    {
-      AppMethodBeat.i(176620);
-      b.a locala = paramb.EG();
-      if (locala != null) {
-        this.laB = locala;
+      localObject = f.decodeStream(paramAppBrandRuntime);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+      {
+        lCf.put(paramString, (Bitmap)localObject);
+        return localObject;
       }
-      paramb = paramb.EH();
-      if (paramb != null) {
-        this.laC = paramb.booleanValue();
+      if (paramAppBrandRuntime != null) {
+        bs.d(paramAppBrandRuntime);
       }
-      AppMethodBeat.o(176620);
     }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        ac.e("MicroMsg.AppBrandPageIconCache", "try decode icon e = %s", new Object[] { paramString });
+        if (paramAppBrandRuntime != null) {
+          bs.d(paramAppBrandRuntime);
+        }
+      }
+    }
+    finally
+    {
+      if (paramAppBrandRuntime == null) {
+        break label227;
+      }
+      bs.d(paramAppBrandRuntime);
+      AppMethodBeat.o(135111);
+    }
+    AppMethodBeat.o(135111);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.x
  * JD-Core Version:    0.7.0.1
  */

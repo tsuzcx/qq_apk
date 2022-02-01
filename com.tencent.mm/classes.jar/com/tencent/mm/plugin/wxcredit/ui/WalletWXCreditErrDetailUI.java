@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -15,10 +15,10 @@ import com.tencent.mm.wallet_core.ui.e;
 public class WalletWXCreditErrDetailUI
   extends WalletBaseUI
 {
-  private String BLp;
-  private TextView BLq;
-  private TextView BLr;
-  private Bankcard zMX;
+  private Bankcard Bfr;
+  private String Ddx;
+  private TextView Ddy;
+  private TextView Ddz;
   
   public int getLayoutId()
   {
@@ -28,25 +28,25 @@ public class WalletWXCreditErrDetailUI
   public void initView()
   {
     AppMethodBeat.i(72382);
-    this.zMX = ((Bankcard)getInput().getParcelable("key_bankcard"));
-    this.BLp = getInput().getString("key_repayment_url");
-    if (this.zMX == null)
+    this.Bfr = ((Bankcard)getInput().getParcelable("key_bankcard"));
+    this.Ddx = getInput().getString("key_repayment_url");
+    if (this.Bfr == null)
     {
       AppMethodBeat.o(72382);
       return;
     }
-    this.BLq = ((TextView)findViewById(2131306683));
-    this.BLq.setOnClickListener(new View.OnClickListener()
+    this.Ddy = ((TextView)findViewById(2131306683));
+    this.Ddy.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72379);
-        e.p(WalletWXCreditErrDetailUI.this, WalletWXCreditErrDetailUI.a(WalletWXCreditErrDetailUI.this), false);
+        e.o(WalletWXCreditErrDetailUI.this, WalletWXCreditErrDetailUI.a(WalletWXCreditErrDetailUI.this), false);
         AppMethodBeat.o(72379);
       }
     });
-    this.BLr = ((TextView)findViewById(2131306684));
-    this.BLr.setOnClickListener(new View.OnClickListener()
+    this.Ddz = ((TextView)findViewById(2131306684));
+    this.Ddz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -56,7 +56,7 @@ public class WalletWXCreditErrDetailUI
       }
     });
     boolean bool = getInput().getBoolean("key_can_unbind", true);
-    TextView localTextView = this.BLr;
+    TextView localTextView = this.Ddz;
     if (bool) {}
     for (int i = 0;; i = 8)
     {

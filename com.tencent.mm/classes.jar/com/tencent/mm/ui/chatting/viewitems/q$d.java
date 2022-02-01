@@ -1,30 +1,30 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.textview.a;
 import com.tencent.mm.ui.widget.textview.a.e;
 
 final class q$d
   implements a.e
 {
-  private a GqS;
+  private a HQK;
   
   q$d(a parama)
   {
-    this.GqS = parama;
+    this.HQK = parama;
   }
   
-  public final void faO()
+  public final void fqE()
   {
     AppMethodBeat.i(36963);
-    ad.d("OnTouchOutside", "touchOutside");
-    this.GqS.fgF();
-    this.GqS.HNY = true;
-    this.GqS.fgI();
-    this.GqS.HNX = true;
-    this.GqS.fgJ();
-    this.GqS.fgL();
+    ac.d("OnTouchOutside", "touchOutside");
+    this.HQK.fwF();
+    this.HQK.Jou = true;
+    this.HQK.fwI();
+    this.HQK.Jot = true;
+    this.HQK.fwJ();
+    this.HQK.fwL();
     AppMethodBeat.o(36963);
   }
 }

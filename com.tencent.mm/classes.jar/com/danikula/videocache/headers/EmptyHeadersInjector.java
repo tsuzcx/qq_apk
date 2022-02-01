@@ -9,15 +9,15 @@ public class EmptyHeadersInjector
 {
   public Map<String, String> addHeaders(String paramString)
   {
-    AppMethodBeat.i(190357);
+    AppMethodBeat.i(192557);
     paramString = new HashMap();
-    AppMethodBeat.o(190357);
+    AppMethodBeat.o(192557);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.danikula.videocache.headers.EmptyHeadersInjector
  * JD-Core Version:    0.7.0.1
  */

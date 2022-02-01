@@ -53,9 +53,9 @@ public final class e
   
   public final void disableAutoCreateX5Webview()
   {
-    AppMethodBeat.i(194687);
+    AppMethodBeat.i(208904);
     QbSdk.disableAutoCreateX5Webview();
-    AppMethodBeat.o(194687);
+    AppMethodBeat.o(208904);
   }
   
   public final void forceSysWebView()
@@ -113,18 +113,18 @@ public final class e
   static final class a
     implements TbsListener
   {
-    h ISB;
+    h KEY;
     
     public a(h paramh)
     {
-      this.ISB = paramh;
+      this.KEY = paramh;
     }
     
     public final void onDownloadFinish(int paramInt)
     {
       AppMethodBeat.i(154121);
-      if (this.ISB != null) {
-        this.ISB.onDownloadFinish(paramInt);
+      if (this.KEY != null) {
+        this.KEY.onDownloadFinish(paramInt);
       }
       AppMethodBeat.o(154121);
     }
@@ -132,8 +132,8 @@ public final class e
     public final void onDownloadProgress(int paramInt)
     {
       AppMethodBeat.i(154123);
-      if (this.ISB != null) {
-        this.ISB.onDownloadProgress(paramInt);
+      if (this.KEY != null) {
+        this.KEY.onDownloadProgress(paramInt);
       }
       AppMethodBeat.o(154123);
     }
@@ -141,8 +141,8 @@ public final class e
     public final void onInstallFinish(int paramInt)
     {
       AppMethodBeat.i(154122);
-      if (this.ISB != null) {
-        this.ISB.onInstallFinish(paramInt);
+      if (this.KEY != null) {
+        this.KEY.onInstallFinish(paramInt);
       }
       AppMethodBeat.o(154122);
     }

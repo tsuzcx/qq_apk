@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static boolean lg(Context paramContext)
+  public static boolean lu(Context paramContext)
   {
     AppMethodBeat.i(3461);
     if (Build.VERSION.SDK_INT < 23)
@@ -40,7 +40,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tinkerboots.sdk.b.b
  * JD-Core Version:    0.7.0.1
  */

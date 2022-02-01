@@ -9,12 +9,12 @@ import java.util.Collection;
 public final class x
   implements w<k>
 {
-  public static final x JES;
+  public static final x Lsl;
   
   static
   {
     AppMethodBeat.i(58268);
-    JES = new x();
+    Lsl = new x();
     AppMethodBeat.o(58268);
   }
   
@@ -35,7 +35,7 @@ public final class x
     AppMethodBeat.o(58267);
   }
   
-  public final ab t(Collection<? extends ab> paramCollection)
+  public final ab u(Collection<? extends ab> paramCollection)
   {
     AppMethodBeat.i(58264);
     d.g.b.k.h(paramCollection, "types");
@@ -63,7 +63,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.x
  * JD-Core Version:    0.7.0.1
  */

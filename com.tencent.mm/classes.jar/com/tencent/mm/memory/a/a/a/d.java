@@ -2,9 +2,9 @@ package com.tencent.mm.memory.a.a.a;
 
 public abstract interface d<T, V>
 {
-  public abstract void adg();
+  public abstract void aew();
   
-  public abstract void apr();
+  public abstract void awi();
   
   public abstract void f(T paramT1, T paramT2, V paramV);
   
@@ -26,7 +26,7 @@ public abstract interface d<T, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.d
  * JD-Core Version:    0.7.0.1
  */

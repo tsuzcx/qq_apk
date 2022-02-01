@@ -4,22 +4,22 @@ import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 public final class u
 {
-  public String Abm;
-  public String Abp;
-  public String Abq;
-  public int Abw;
-  public String Ahs;
-  public boolean Aht;
-  public String Ahu;
-  public String Ahv;
-  public String dca;
-  public int dsC = 0;
+  public String Bpa;
+  public String BtG;
+  public String BtJ;
+  public String BtK;
+  public int BtQ;
+  public String BzM;
+  public boolean BzN;
+  public String BzO;
+  public String BzP;
+  public String cZz;
+  public int dqm = 0;
   public String flag;
-  public String ijt;
+  public String iJA;
   public String token;
-  public PayInfo uXi;
-  public String uns;
-  public String zWG;
+  public String vwo;
+  public PayInfo wfX;
 }
 
 

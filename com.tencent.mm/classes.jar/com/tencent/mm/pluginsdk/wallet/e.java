@@ -2,26 +2,26 @@ package com.tencent.mm.pluginsdk.wallet;
 
 public final class e
 {
-  private static String CoC = null;
+  private static String DGU = null;
   
-  public static void aCV(String paramString)
+  public static void aIm(String paramString)
   {
-    CoC = paramString;
+    DGU = paramString;
   }
   
-  public static boolean eBc()
+  public static boolean eQw()
   {
-    return CoC == null;
+    return DGU == null;
   }
   
-  public static String eBd()
+  public static String eQx()
   {
-    return CoC;
+    return DGU;
   }
   
-  public static void eBe()
+  public static void eQy()
   {
-    CoC = null;
+    DGU = null;
   }
 }
 

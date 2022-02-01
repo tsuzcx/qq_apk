@@ -12,13 +12,13 @@ import com.tencent.mm.kiss.widget.textview.a;
 
 public final class b
 {
-  private static b ghr;
-  private static Object ghs;
+  private static b glX;
+  private static Object glY;
   
   static
   {
     AppMethodBeat.i(141143);
-    ghs = new NoCopySpan.Concrete();
+    glY = new NoCopySpan.Concrete();
     AppMethodBeat.o(141143);
   }
   
@@ -26,7 +26,7 @@ public final class b
   {
     AppMethodBeat.i(141141);
     Selection.removeSelection(paramSpannable);
-    paramSpannable.removeSpan(ghs);
+    paramSpannable.removeSpan(glY);
     AppMethodBeat.o(141141);
   }
   
@@ -76,20 +76,20 @@ public final class b
     return false;
   }
   
-  public static b agK()
+  public static b aib()
   {
     AppMethodBeat.i(141142);
-    if (ghr == null) {
-      ghr = new b();
+    if (glX == null) {
+      glX = new b();
     }
-    b localb = ghr;
+    b localb = glX;
     AppMethodBeat.o(141142);
     return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.b.b
  * JD-Core Version:    0.7.0.1
  */

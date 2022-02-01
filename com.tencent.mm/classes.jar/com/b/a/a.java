@@ -2,9 +2,9 @@ package com.b.a;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.a.a.j;
-import io.flutter.a.a.k.c;
-import io.flutter.a.a.k.d;
+import io.flutter.plugin.a.j;
+import io.flutter.plugin.a.k.c;
+import io.flutter.plugin.a.k.d;
 
 public final class a
   implements k.c
@@ -14,17 +14,17 @@ public final class a
     AppMethodBeat.i(130925);
     if (paramj.method.equals("getPlatformVersion"))
     {
-      paramd.ay("Android " + Build.VERSION.RELEASE);
+      paramd.db("Android " + Build.VERSION.RELEASE);
       AppMethodBeat.o(130925);
       return;
     }
-    paramd.Av();
+    paramd.daE();
     AppMethodBeat.o(130925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.b.a.a
  * JD-Core Version:    0.7.0.1
  */

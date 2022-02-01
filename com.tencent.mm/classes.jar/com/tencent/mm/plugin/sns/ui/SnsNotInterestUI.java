@@ -15,76 +15,76 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.hg;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.hm;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class SnsNotInterestUI
   extends MMPreference
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static final String[] xCc = { "sns_expose_reason_not_fav", "sns_expose_reason_too_freq", "sns_expose_reason_too_many_same_content", "sns_expose_reason_marketing", "sns_expose_reason_content_sexy", "sns_expose_reason_rumour", "sns_expose_reason_other" };
-  private static final int[] xCd = { 1, 2, 4, 8, 16, 32, 64 };
-  private static final int[] xCh = { 2131763816, 2131763821, 2131763822, 2131763815, 2131763814, 2131763819, 2131763817 };
-  private com.tencent.mm.ui.base.p ftP;
-  private f lxI;
-  private String uKp;
-  private HashMap<String, Boolean> xCe;
-  private HashMap<Integer, Boolean> xCf;
-  private HashMap<String, Integer> xCg;
-  private TextView xCi;
-  private EditText xCj;
-  private ListView xCk;
-  private LinearLayout xCl;
-  private int xCm;
-  private int xCn;
-  private long xCo;
-  private boolean xCp;
-  private boolean xCq;
-  com.tencent.mm.plugin.sns.model.q xCr;
+  private static final String[] yOQ = { "sns_expose_reason_not_fav", "sns_expose_reason_too_freq", "sns_expose_reason_too_many_same_content", "sns_expose_reason_marketing", "sns_expose_reason_content_sexy", "sns_expose_reason_rumour", "sns_expose_reason_other" };
+  private static final int[] yOR = { 1, 2, 4, 8, 16, 32, 64 };
+  private static final int[] yOV = { 2131763816, 2131763821, 2131763822, 2131763815, 2131763814, 2131763819, 2131763817 };
+  private com.tencent.mm.ui.base.p fxw;
+  private f lZC;
+  private String vTg;
+  private HashMap<String, Boolean> yOS;
+  private HashMap<Integer, Boolean> yOT;
+  private HashMap<String, Integer> yOU;
+  private TextView yOW;
+  private EditText yOX;
+  private ListView yOY;
+  private LinearLayout yOZ;
+  private int yPa;
+  private int yPb;
+  private long yPc;
+  private boolean yPd;
+  private boolean yPe;
+  com.tencent.mm.plugin.sns.model.q yPf;
   
   public SnsNotInterestUI()
   {
     AppMethodBeat.i(98923);
-    this.xCe = new HashMap(xCc.length);
-    this.xCf = new HashMap(xCd.length);
-    this.xCg = new HashMap(xCd.length);
-    this.uKp = null;
-    this.xCp = false;
-    this.xCq = false;
-    this.ftP = null;
-    this.xCr = null;
+    this.yOS = new HashMap(yOQ.length);
+    this.yOT = new HashMap(yOR.length);
+    this.yOU = new HashMap(yOR.length);
+    this.vTg = null;
+    this.yPd = false;
+    this.yPe = false;
+    this.fxw = null;
+    this.yPf = null;
     AppMethodBeat.o(98923);
   }
   
-  private void dBE()
+  private void dQb()
   {
     int k = 0;
     AppMethodBeat.i(98925);
-    Object localObject1 = xCc;
+    Object localObject1 = yOQ;
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      this.xCe.put(localObject2, Boolean.FALSE);
+      this.yOS.put(localObject2, Boolean.FALSE);
       i += 1;
     }
-    localObject1 = xCd;
+    localObject1 = yOR;
     int m = localObject1.length;
     i = 0;
     for (;;)
@@ -94,12 +94,12 @@ public class SnsNotInterestUI
         break;
       }
       j = localObject1[i];
-      this.xCf.put(Integer.valueOf(j), Boolean.FALSE);
+      this.yOT.put(Integer.valueOf(j), Boolean.FALSE);
       i += 1;
     }
-    while (j < xCd.length)
+    while (j < yOR.length)
     {
-      this.xCg.put(xCc[j], Integer.valueOf(xCd[j]));
+      this.yOU.put(yOQ[j], Integer.valueOf(yOR[j]));
       j += 1;
     }
     AppMethodBeat.o(98925);
@@ -130,11 +130,11 @@ public class SnsNotInterestUI
         return true;
       }
     });
-    this.xCi = ((TextView)findViewById(2131304977));
-    this.xCj = ((EditText)findViewById(2131304978));
-    this.xCk = ((ListView)findViewById(16908298));
-    this.xCl = ((LinearLayout)findViewById(2131299605));
-    this.xCl.setOnClickListener(new View.OnClickListener()
+    this.yOW = ((TextView)findViewById(2131304977));
+    this.yOX = ((EditText)findViewById(2131304978));
+    this.yOY = ((ListView)findViewById(16908298));
+    this.yOZ = ((LinearLayout)findViewById(2131299605));
+    this.yOZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -144,11 +144,11 @@ public class SnsNotInterestUI
         AppMethodBeat.o(98920);
       }
     });
-    this.xCj.setVisibility(8);
-    this.xCi.setVisibility(8);
-    this.lxI = getPreferenceScreen();
-    if (this.lxI == null) {
-      ad.e("MicroMsg.SnsNotInterestUI", "initPref error, PreferenceScreen is null!");
+    this.yOX.setVisibility(8);
+    this.yOW.setVisibility(8);
+    this.lZC = getPreferenceScreen();
+    if (this.lZC == null) {
+      ac.e("MicroMsg.SnsNotInterestUI", "initPref error, PreferenceScreen is null!");
     }
     for (;;)
     {
@@ -161,31 +161,31 @@ public class SnsNotInterestUI
           AppMethodBeat.o(98921);
           return true;
         }
-      }, null, r.b.FOB);
+      }, null, s.b.Hom);
       enableOptionMenu(0, false);
       AppMethodBeat.o(98927);
       return;
       Object localObject;
-      if (this.lxI.aKk("sns_expose_desc") == null)
+      if (this.lZC.aPN("sns_expose_desc") == null)
       {
         localObject = new PreferenceTitleCategory(this);
         ((Preference)localObject).setTitle(2131763812);
         ((Preference)localObject).setKey("sns_expose_desc");
-        this.lxI.b((Preference)localObject);
+        this.lZC.b((Preference)localObject);
       }
       int i = 0;
-      while (i < xCc.length)
+      while (i < yOQ.length)
       {
-        localObject = xCc[i];
-        int j = xCh[i];
-        if (this.lxI.aKk((String)localObject) == null)
+        localObject = yOQ[i];
+        int j = yOV[i];
+        if (this.lZC.aPN((String)localObject) == null)
         {
           Preference localPreference = new Preference(this);
           localPreference.setTitle(j);
           localPreference.setKey((String)localObject);
           localPreference.setLayoutResource(2131494804);
           localPreference.setWidgetLayoutResource(2131494814);
-          this.lxI.b(localPreference);
+          this.lZC.b(localPreference);
         }
         i += 1;
       }
@@ -196,32 +196,32 @@ public class SnsNotInterestUI
   {
     AppMethodBeat.i(98924);
     super.onCreate(paramBundle);
-    this.xCm = getIntent().getIntExtra("sns_info_not_interest_scene", 0);
-    this.xCo = getIntent().getLongExtra("sns_info_svr_id", 0L);
-    if (this.xCo != 0L)
+    this.yPa = getIntent().getIntExtra("sns_info_not_interest_scene", 0);
+    this.yPc = getIntent().getLongExtra("sns_info_svr_id", 0L);
+    if (this.yPc != 0L)
     {
-      paramBundle = af.dtu().th(this.xCo).field_userName;
+      paramBundle = af.dHR().xK(this.yPc).field_userName;
       if (paramBundle != null)
       {
-        com.tencent.mm.kernel.g.afC();
-        paramBundle = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHX(paramBundle);
-        if (paramBundle.evp != 2) {
+        com.tencent.mm.kernel.g.agS();
+        paramBundle = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNs(paramBundle);
+        if (paramBundle.exL != 2) {
           break label141;
         }
-        xCh[1] = 2131763820;
+        yOV[1] = 2131763820;
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afA().gcy.a(218, this);
-      dBE();
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agQ().ghe.a(218, this);
+      dQb();
       initView();
       AppMethodBeat.o(98924);
       return;
       label141:
-      if (paramBundle.evp == 1) {
-        xCh[1] = 2131763821;
+      if (paramBundle.exL == 1) {
+        yOV[1] = 2131763821;
       }
     }
   }
@@ -230,13 +230,13 @@ public class SnsNotInterestUI
   {
     AppMethodBeat.i(98926);
     super.onDestroy();
-    dBE();
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afA().gcy.b(218, this);
-    hg localhg = new hg();
-    localhg.dkS.dkT = this.xCp;
-    localhg.dkS.dkU = this.xCo;
-    a.ESL.l(localhg);
+    dQb();
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agQ().ghe.b(218, this);
+    hm localhm = new hm();
+    localhm.diB.diC = this.yPd;
+    localhm.diB.diD = this.yPc;
+    a.GpY.l(localhm);
     AppMethodBeat.o(98926);
   }
   
@@ -249,9 +249,9 @@ public class SnsNotInterestUI
       return false;
     }
     String str = paramPreference.mKey;
-    if (this.xCe.containsKey(str))
+    if (this.yOS.containsKey(str))
     {
-      boolean bool = ((Boolean)this.xCe.get(str)).booleanValue();
+      boolean bool = ((Boolean)this.yOS.get(str)).booleanValue();
       label79:
       int i;
       if (bool)
@@ -262,11 +262,11 @@ public class SnsNotInterestUI
           break label274;
         }
         bool = true;
-        this.xCe.put(str, Boolean.valueOf(bool));
-        i = ((Integer)this.xCg.get(str)).intValue();
-        this.xCf.put(Integer.valueOf(i), Boolean.valueOf(bool));
-        ad.d("MicroMsg.SnsNotInterestUI", "click: %s, notInterestType: %d, isCheck: %b", new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool) });
-        paramf = this.xCe.values().iterator();
+        this.yOS.put(str, Boolean.valueOf(bool));
+        i = ((Integer)this.yOU.get(str)).intValue();
+        this.yOT.put(Integer.valueOf(i), Boolean.valueOf(bool));
+        ac.d("MicroMsg.SnsNotInterestUI", "click: %s, notInterestType: %d, isCheck: %b", new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool) });
+        paramf = this.yOS.values().iterator();
         while (paramf.hasNext()) {
           if (((Boolean)paramf.next()).booleanValue())
           {
@@ -280,10 +280,10 @@ public class SnsNotInterestUI
             if ((!bool) || (!str.equals("sns_expose_reason_other"))) {
               break label294;
             }
-            this.xCj.setVisibility(0);
-            this.xCi.setVisibility(0);
-            this.xCj.requestFocus();
-            this.xCq = true;
+            this.yOX.setVisibility(0);
+            this.yOW.setVisibility(0);
+            this.yOX.requestFocus();
+            this.yPe = true;
             showVKB();
           }
         }
@@ -303,17 +303,17 @@ public class SnsNotInterestUI
         enableOptionMenu(0, false);
         break label208;
         label294:
-        if (!((Boolean)this.xCe.get("sns_expose_reason_other")).booleanValue())
+        if (!((Boolean)this.yOS.get("sns_expose_reason_other")).booleanValue())
         {
-          this.xCj.setVisibility(8);
-          this.xCi.setVisibility(8);
-          this.xCk.requestFocus();
-          this.xCq = false;
+          this.yOX.setVisibility(8);
+          this.yOW.setVisibility(8);
+          this.yOY.requestFocus();
+          this.yPe = false;
           hideVKB();
         }
         else
         {
-          this.xCk.requestFocus();
+          this.yOY.requestFocus();
           hideVKB();
         }
       }
@@ -325,22 +325,22 @@ public class SnsNotInterestUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(98929);
-    ad.d("MicroMsg.SnsNotInterestUI", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.d("MicroMsg.SnsNotInterestUI", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramn.getType() == 218)
     {
-      this.ftP.dismiss();
-      this.ftP = null;
+      this.fxw.dismiss();
+      this.fxw = null;
       if (((com.tencent.mm.plugin.sns.model.q)paramn).type == 9)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          this.xCp = true;
+          this.yPd = true;
           Toast.makeText(this, 2131763824, 1).show();
           finish();
           AppMethodBeat.o(98929);
           return;
         }
-        this.xCp = false;
+        this.yPd = false;
         Toast.makeText(this, 2131763813, 1).show();
       }
     }
@@ -355,7 +355,7 @@ public class SnsNotInterestUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsNotInterestUI
  * JD-Core Version:    0.7.0.1
  */

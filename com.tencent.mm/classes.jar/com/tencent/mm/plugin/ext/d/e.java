@@ -5,53 +5,53 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.qp;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.qy;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.facedetect.model.r;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bn;
 
 public class e
 {
-  public static e pLW = null;
+  public static e quE = null;
   public Context mContext = null;
   
-  public static void X(String paramString, int paramInt1, int paramInt2)
+  public static void W(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(24502);
-    h.vKh.f(14869, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    h.wUl.f(14869, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(24502);
   }
   
-  public static void Y(String paramString, int paramInt1, int paramInt2)
+  public static void X(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(24503);
-    h.vKh.f(14868, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    h.wUl.f(14868, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(24503);
   }
   
-  public static d.b aV(String paramString, boolean paramBoolean)
+  public static d.b aW(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(24505);
-    paramString = d.cfh().aU(paramString, paramBoolean);
+    paramString = d.cmO().aV(paramString, paramBoolean);
     AppMethodBeat.o(24505);
     return paramString;
   }
   
-  public static e cfi()
+  public static e cmP()
   {
     AppMethodBeat.i(24501);
-    if (pLW == null) {
+    if (quE == null) {
       try
       {
-        if (pLW == null) {
-          pLW = new e();
+        if (quE == null) {
+          quE = new e();
         }
-        e locale1 = pLW;
+        e locale1 = quE;
         return locale1;
       }
       finally
@@ -59,74 +59,74 @@ public class e
         AppMethodBeat.o(24501);
       }
     }
-    e locale2 = pLW;
+    e locale2 = quE;
     AppMethodBeat.o(24501);
     return locale2;
   }
   
-  public static Cursor cfj()
+  public static Cursor cmQ()
   {
     AppMethodBeat.i(24504);
-    ad.i("MicroMsg.ExtQrCodeHandler", "hy: release temp mapping");
+    ac.i("MicroMsg.ExtQrCodeHandler", "hy: release temp mapping");
     c.clearCache();
-    MatrixCursor localMatrixCursor = com.tencent.mm.pluginsdk.d.a.a.Ue(1);
+    MatrixCursor localMatrixCursor = com.tencent.mm.pluginsdk.d.a.a.Wo(1);
     AppMethodBeat.o(24504);
     return localMatrixCursor;
   }
   
-  public static ap cfk()
+  public static ao cmR()
   {
     AppMethodBeat.i(24507);
-    ap localap = new ap(Looper.getMainLooper());
+    ao localao = new ao(Looper.getMainLooper());
     AppMethodBeat.o(24507);
-    return localap;
+    return localao;
   }
   
   public final a a(final d.b paramb)
   {
     AppMethodBeat.i(24506);
     long l = System.currentTimeMillis();
-    a locala = (a)new bo(new a(), paramb)
+    a locala = (a)new bn(new a(), paramb)
     {
-      private e.a cfl()
+      private e.a cmS()
       {
         AppMethodBeat.i(24495);
         try
         {
-          ad.d("MicroMsg.ExtQrCodeHandler", "hy: start scan qrcode");
+          ac.d("MicroMsg.ExtQrCodeHandler", "hy: start scan qrcode");
           if (paramb != null)
           {
-            qp localqp = new qp();
-            localqp.dwm.width = paramb.aMk;
-            localqp.dwm.height = paramb.aMl;
-            localqp.dwm.dwo = paramb.pLV;
-            localqp.dwm.dwp = paramb.dwp;
-            localqp.dwm.dwn = paramb.dwn;
-            localqp.dwm.dwq = new r() {};
-            com.tencent.mm.sdk.b.a.ESL.l(localqp);
+            qy localqy = new qy();
+            localqy.dtZ.width = paramb.aNa;
+            localqy.dtZ.height = paramb.aNb;
+            localqy.dtZ.dub = paramb.quD;
+            localqy.dtZ.duc = paramb.duc;
+            localqy.dtZ.dua = paramb.dua;
+            localqy.dtZ.dud = new r() {};
+            com.tencent.mm.sdk.b.a.GpY.l(localqy);
           }
           for (;;)
           {
             AppMethodBeat.o(24495);
             return null;
-            ad.w("MicroMsg.ExtQrCodeHandler", "hy: qrcode data not retrieved");
-            aH(null);
+            ac.w("MicroMsg.ExtQrCodeHandler", "hy: qrcode data not retrieved");
+            aE(null);
           }
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.ExtQrCodeHandler", localException, "hy: error when syncTaskScanQrCode", new Object[0]);
-            aH(null);
+            ac.printErrStackTrace("MicroMsg.ExtQrCodeHandler", localException, "hy: error when syncTaskScanQrCode", new Object[0]);
+            aE(null);
           }
         }
       }
-    }.b(cfk());
+    }.b(cmR());
     if (locala != null) {}
     for (paramb = locala.toString();; paramb = "null")
     {
-      ad.i("MicroMsg.ExtQrCodeHandler", "hy: resolved qrcode: %s, using: %d ms", new Object[] { paramb, Long.valueOf(System.currentTimeMillis() - l) });
+      ac.i("MicroMsg.ExtQrCodeHandler", "hy: resolved qrcode: %s, using: %d ms", new Object[] { paramb, Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(24506);
       return locala;
     }
@@ -134,15 +134,15 @@ public class e
   
   public static final class a
   {
-    public int pMb;
-    private boolean pMc = false;
+    public int quJ;
+    private boolean quK = false;
     public int type;
     public String url;
     
     public final String toString()
     {
       AppMethodBeat.i(24500);
-      String str = "QrCodeModel{type=" + this.type + ", url='" + this.url + '\'' + ", flagTimeout=" + this.pMc + '}';
+      String str = "QrCodeModel{type=" + this.type + ", url='" + this.url + '\'' + ", flagTimeout=" + this.quK + '}';
       AppMethodBeat.o(24500);
       return str;
     }
@@ -150,7 +150,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.d.e
  * JD-Core Version:    0.7.0.1
  */

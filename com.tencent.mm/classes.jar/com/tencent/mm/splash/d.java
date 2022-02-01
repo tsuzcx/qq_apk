@@ -4,7 +4,7 @@ import android.app.Activity;
 
 public abstract interface d
 {
-  public abstract boolean eD(String paramString);
+  public abstract boolean et(String paramString);
   
   public abstract Activity q(Activity paramActivity);
 }

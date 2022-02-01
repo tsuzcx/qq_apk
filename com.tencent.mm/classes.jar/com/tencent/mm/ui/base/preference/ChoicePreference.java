@@ -10,18 +10,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.a;
+import com.tencent.mm.ae.a.a;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public final class ChoicePreference
   extends Preference
 {
-  private RadioGroup Geb;
-  private CharSequence[] Gec;
-  private CharSequence[] Ged;
-  public Preference.a Gee;
-  private int uxs;
+  private RadioGroup HDQ;
+  private CharSequence[] HDR;
+  private CharSequence[] HDS;
+  public Preference.a HDT;
+  private int vGl;
   String value;
   private final HashMap<CharSequence, b> values;
   
@@ -35,34 +35,34 @@ public final class ChoicePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142523);
     this.values = new HashMap();
-    this.uxs = -1;
+    this.vGl = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ChoicePreference, paramInt, 0);
-    this.Gec = paramContext.getTextArray(0);
-    this.Ged = paramContext.getTextArray(1);
+    this.HDR = paramContext.getTextArray(0);
+    this.HDS = paramContext.getTextArray(1);
     paramContext.recycle();
-    eTw();
+    fji();
     AppMethodBeat.o(142523);
   }
   
-  private void eTw()
+  private void fji()
   {
     int i = 0;
     AppMethodBeat.i(142525);
-    if (this.Gec == null) {
-      this.Gec = new CharSequence[0];
+    if (this.HDR == null) {
+      this.HDR = new CharSequence[0];
     }
-    if (this.Ged == null) {
-      this.Ged = new CharSequence[0];
+    if (this.HDS == null) {
+      this.HDS = new CharSequence[0];
     }
-    if (this.Gec.length == this.Ged.length) {}
+    if (this.HDR.length == this.HDS.length) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("entries count different", bool);
       this.values.clear();
-      while (i < this.Ged.length)
+      while (i < this.HDS.length)
       {
-        b localb = new b(this.Gec[i], 1048576 + i);
-        this.values.put(this.Ged[i], localb);
+        b localb = new b(this.HDR[i], 1048576 + i);
+        this.values.put(this.HDS[i], localb);
         i += 1;
       }
     }
@@ -71,15 +71,15 @@ public final class ChoicePreference
   
   public final void a(Preference.a parama)
   {
-    this.Gee = parama;
+    this.HDT = parama;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(142526);
     super.onBindView(paramView);
-    if (this.Geb != null) {
-      this.Geb.check(this.uxs);
+    if (this.HDQ != null) {
+      this.HDQ.check(this.vGl);
     }
     AppMethodBeat.o(142526);
   }
@@ -92,11 +92,11 @@ public final class ChoicePreference
     Object localObject = (ViewGroup)paramViewGroup.findViewById(2131298739);
     ((ViewGroup)localObject).removeAllViews();
     localLayoutInflater.inflate(2131494825, (ViewGroup)localObject);
-    this.Geb = ((RadioGroup)paramViewGroup.findViewById(2131300621));
+    this.HDQ = ((RadioGroup)paramViewGroup.findViewById(2131300621));
     int i = 0;
-    if (i < this.Ged.length)
+    if (i < this.HDS.length)
     {
-      localObject = this.Ged[i];
+      localObject = this.HDS[i];
       localObject = (b)this.values.get(localObject);
       RadioButton localRadioButton;
       if (localObject != null)
@@ -106,28 +106,28 @@ public final class ChoicePreference
         }
         localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494778, null);
         ((b)localObject).a(localRadioButton);
-        this.Geb.addView(localRadioButton);
+        this.HDQ.addView(localRadioButton);
       }
       for (;;)
       {
         i += 1;
         break;
         label139:
-        if (i == this.Ged.length - 1)
+        if (i == this.HDS.length - 1)
         {
           localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494780, null);
           ((b)localObject).a(localRadioButton);
-          this.Geb.addView(localRadioButton);
+          this.HDQ.addView(localRadioButton);
         }
         else
         {
           localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494779, null);
           ((b)localObject).a(localRadioButton);
-          this.Geb.addView(localRadioButton);
+          this.HDQ.addView(localRadioButton);
         }
       }
     }
-    this.Geb.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+    this.HDQ.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(RadioGroup paramAnonymousRadioGroup, int paramAnonymousInt)
       {
@@ -161,11 +161,11 @@ public final class ChoicePreference
     paramString = (b)this.values.get(paramString);
     if (paramString == null)
     {
-      this.uxs = -1;
+      this.vGl = -1;
       AppMethodBeat.o(142527);
       return;
     }
-    this.uxs = paramString.id;
+    this.vGl = paramString.id;
     AppMethodBeat.o(142527);
   }
 }

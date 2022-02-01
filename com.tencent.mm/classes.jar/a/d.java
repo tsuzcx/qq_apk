@@ -7,8 +7,8 @@ import java.util.List;
 public final class d
   implements Closeable
 {
-  private e ayY;
-  private Runnable ayZ;
+  private e azS;
+  private Runnable azT;
   private boolean closed;
   private final Object lock;
   
@@ -23,13 +23,13 @@ public final class d
         return;
       }
       this.closed = true;
-      e locale = this.ayY;
+      e locale = this.azS;
       synchronized (locale.lock)
       {
-        locale.nb();
-        locale.aza.remove(this);
-        this.ayY = null;
-        this.ayZ = null;
+        locale.nl();
+        locale.azU.remove(this);
+        this.azS = null;
+        this.azT = null;
         AppMethodBeat.o(52983);
         return;
       }
@@ -38,7 +38,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     a.d
  * JD-Core Version:    0.7.0.1
  */

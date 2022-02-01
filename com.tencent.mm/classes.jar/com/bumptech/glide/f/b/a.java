@@ -5,34 +5,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a<R>
   implements b<R>
 {
-  static final a<?> aLi;
-  private static final c<?> aLj;
+  static final a<?> aLY;
+  private static final c<?> aLZ;
   
   static
   {
     AppMethodBeat.i(77704);
-    aLi = new a();
-    aLj = new a();
+    aLY = new a();
+    aLZ = new a();
     AppMethodBeat.o(77704);
   }
   
-  public static <R> c<R> pL()
+  public static <R> c<R> pV()
   {
-    return aLj;
+    return aLZ;
   }
   
   public static final class a<R>
     implements c<R>
   {
-    public final b<R> pM()
+    public final b<R> pW()
     {
-      return a.aLi;
+      return a.aLY;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.f.b.a
  * JD-Core Version:    0.7.0.1
  */

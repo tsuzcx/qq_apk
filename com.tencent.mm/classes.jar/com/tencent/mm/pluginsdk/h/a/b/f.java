@@ -6,26 +6,26 @@ import java.io.IOException;
 public final class f
   extends IOException
 {
-  public final IOException BTc;
+  public final IOException Dls;
   public final int httpStatusCode;
   
   public f(int paramInt, IOException paramIOException)
   {
     this.httpStatusCode = paramInt;
-    this.BTc = paramIOException;
+    this.Dls = paramIOException;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(152010);
-    String str = "UnknownConnectionError{httpStatusCode=" + this.httpStatusCode + ", realException=" + this.BTc + '}';
+    String str = "UnknownConnectionError{httpStatusCode=" + this.httpStatusCode + ", realException=" + this.Dls + '}';
     AppMethodBeat.o(152010);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a.b.f
  * JD-Core Version:    0.7.0.1
  */

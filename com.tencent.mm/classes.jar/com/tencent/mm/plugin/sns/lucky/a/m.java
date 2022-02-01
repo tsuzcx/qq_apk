@@ -9,12 +9,12 @@ import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.bft;
-import com.tencent.mm.protocal.protobuf.bpj;
-import com.tencent.mm.protocal.protobuf.cux;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bjl;
+import com.tencent.mm.protocal.protobuf.bua;
+import com.tencent.mm.protocal.protobuf.daj;
+import com.tencent.mm.protocal.protobuf.dbb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,12 +22,12 @@ import java.util.List;
 
 public final class m
 {
-  private static final ThreadLocal<HashMap<String, Long>> wCL;
+  private static final ThreadLocal<HashMap<String, Long>> xPg;
   
   static
   {
     AppMethodBeat.i(95195);
-    wCL = new ThreadLocal();
+    xPg = new ThreadLocal();
     AppMethodBeat.o(95195);
   }
   
@@ -39,34 +39,34 @@ public final class m
       AppMethodBeat.o(95191);
       return true;
     }
-    bpj localbpj = paramp.dxQ();
+    bua localbua = paramp.dMn();
     if (paramp.field_type != 21)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (localbpj.dDO == 1)
+    if (localbua.dBA == 1)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (u.aqG().equals(paramp.field_userName))
+    if (u.axw().equals(paramp.field_userName))
     {
       AppMethodBeat.o(95191);
       return true;
     }
     if (paramSnsObject.SnsRedEnvelops != null)
     {
-      paramSnsObject = paramSnsObject.SnsRedEnvelops.Enk;
+      paramSnsObject = paramSnsObject.SnsRedEnvelops.FKj;
       if ((paramSnsObject == null) || (paramSnsObject.size() == 0))
       {
         AppMethodBeat.o(95191);
         return false;
       }
-      paramp = u.aqG();
+      paramp = u.axw();
       paramSnsObject = paramSnsObject.iterator();
       while (paramSnsObject.hasNext()) {
-        if (paramp.equals(((cux)paramSnsObject.next()).Username))
+        if (paramp.equals(((daj)paramSnsObject.next()).Username))
         {
           AppMethodBeat.o(95191);
           return true;
@@ -77,10 +77,10 @@ public final class m
     return false;
   }
   
-  public static boolean aoc(String paramString)
+  public static boolean ato(String paramString)
   {
     AppMethodBeat.i(95189);
-    paramString = af.dtu().apK(paramString);
+    paramString = af.dHR().auT(paramString);
     boolean bool = a(paramString, aj.t(paramString));
     AppMethodBeat.o(95189);
     return bool;
@@ -110,17 +110,17 @@ public final class m
       AppMethodBeat.o(95194);
       return 0L;
     }
-    Object localObject2 = paramSnsObject.Enk;
+    Object localObject2 = paramSnsObject.FKj;
     if (localObject2 == null)
     {
       AppMethodBeat.o(95194);
       return 0L;
     }
-    paramSnsObject = paramp.xiA;
-    if (bt.isNullOrNil(paramSnsObject)) {}
+    paramSnsObject = paramp.yvo;
+    if (bs.isNullOrNil(paramSnsObject)) {}
     for (paramp = g.getMessageDigest(paramp.field_content) + g.getMessageDigest(paramp.field_attrBuf);; paramp = paramSnsObject)
     {
-      localObject1 = (HashMap)wCL.get();
+      localObject1 = (HashMap)xPg.get();
       if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramp)))
       {
         l = ((Long)((HashMap)localObject1).get(paramp)).longValue();
@@ -132,18 +132,18 @@ public final class m
       {
         if (paramSnsObject.hasNext())
         {
-          cux localcux = (cux)paramSnsObject.next();
-          localObject2 = new bft();
+          daj localdaj = (daj)paramSnsObject.next();
+          localObject2 = new bjl();
           try
           {
-            ((bft)localObject2).parseFrom(z.a(localcux.Emd));
-            l += ((bft)localObject2).dEb;
+            ((bjl)localObject2).parseFrom(z.a(localdaj.FJc));
+            l += ((bjl)localObject2).dBN;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ad.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
+              ac.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
             }
           }
         }
@@ -153,7 +153,7 @@ public final class m
         paramSnsObject = new HashMap();
       }
       paramSnsObject.put(paramp, Long.valueOf(l));
-      wCL.set(paramSnsObject);
+      xPg.set(paramSnsObject);
       AppMethodBeat.o(95194);
       return l;
     }
@@ -182,12 +182,12 @@ public final class m
       return 0;
     }
     paramp = paramp.SnsRedEnvelops;
-    if ((paramp == null) || (paramp.Enk.size() == 0))
+    if ((paramp == null) || (paramp.FKj.size() == 0))
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    int i = paramp.Enk.size();
+    int i = paramp.FKj.size();
     AppMethodBeat.o(95192);
     return i;
   }

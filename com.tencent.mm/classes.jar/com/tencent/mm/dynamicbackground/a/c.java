@@ -5,34 +5,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a fIE;
-  private static a fIF;
+  private static a fMk;
+  private static a fMl;
   
   static
   {
     AppMethodBeat.i(102977);
-    c.1 local1 = new c.1();
-    fIE = local1;
-    fIF = local1;
+    a local1 = new a()
+    {
+      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void v(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
+    };
+    fMk = local1;
+    fMl = local1;
     AppMethodBeat.o(102977);
   }
   
   public static void a(a parama)
   {
-    fIF = parama;
+    fMl = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102972);
-    if (fIF != null)
+    if (fMl != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fIF.d(paramString1, paramString2);
+      fMl.d(paramString1, paramString2);
     }
     AppMethodBeat.o(102972);
   }
@@ -40,14 +51,14 @@ public final class c
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102975);
-    if (fIF != null)
+    if (fMl != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fIF.e(paramString1, paramString2);
+      fMl.e(paramString1, paramString2);
     }
     AppMethodBeat.o(102975);
   }
@@ -55,14 +66,14 @@ public final class c
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102973);
-    if (fIF != null)
+    if (fMl != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fIF.i(paramString1, paramString2);
+      fMl.i(paramString1, paramString2);
     }
     AppMethodBeat.o(102973);
   }
@@ -70,7 +81,7 @@ public final class c
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102976);
-    if (fIF != null)
+    if (fMl != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
@@ -78,7 +89,7 @@ public final class c
         paramString2 = "";
       }
       paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      fIF.e(paramString1, paramThrowable);
+      fMl.e(paramString1, paramThrowable);
     }
     AppMethodBeat.o(102976);
   }
@@ -86,14 +97,14 @@ public final class c
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102971);
-    if (fIF != null)
+    if (fMl != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fIF.v(paramString1, paramString2);
+      fMl.v(paramString1, paramString2);
     }
     AppMethodBeat.o(102971);
   }
@@ -101,14 +112,14 @@ public final class c
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(102974);
-    if (fIF != null)
+    if (fMl != null)
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
       paramString2 = paramVarArgs;
       if (paramVarArgs == null) {
         paramString2 = "";
       }
-      fIF.w(paramString1, paramString2);
+      fMl.w(paramString1, paramString2);
     }
     AppMethodBeat.o(102974);
   }

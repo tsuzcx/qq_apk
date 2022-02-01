@@ -5,13 +5,13 @@ import android.os.Handler;
 abstract class c
   extends d
 {
-  private boolean bOQ;
+  private boolean bMy;
   
   void a(Handler paramHandler, d.a parama)
   {
     try
     {
-      this.bOQ = false;
+      this.bMy = false;
       super.a(paramHandler, parama);
       return;
     }
@@ -23,29 +23,29 @@ abstract class c
   }
   
   /* Error */
-  final void bj(boolean paramBoolean)
+  final void bi(boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 15	com/c/a/a/c:bOQ	Z
+    //   3: getfield 15	com/c/a/a/c:bMy	Z
     //   6: iload_1
     //   7: ixor
     //   8: ifeq +19 -> 27
     //   11: aload_0
     //   12: iload_1
-    //   13: putfield 15	com/c/a/a/c:bOQ	Z
+    //   13: putfield 15	com/c/a/a/c:bMy	Z
     //   16: aload_0
-    //   17: getfield 15	com/c/a/a/c:bOQ	Z
+    //   17: getfield 15	com/c/a/a/c:bMy	Z
     //   20: ifeq +10 -> 30
     //   23: aload_0
-    //   24: invokevirtual 22	com/c/a/a/c:yS	()V
+    //   24: invokevirtual 22	com/c/a/a/c:yF	()V
     //   27: aload_0
     //   28: monitorexit
     //   29: return
     //   30: aload_0
-    //   31: invokevirtual 25	com/c/a/a/c:yT	()V
+    //   31: invokevirtual 25	com/c/a/a/c:yG	()V
     //   34: goto -7 -> 27
     //   37: astore_2
     //   38: aload_0
@@ -63,9 +63,9 @@ abstract class c
     //   30	34	37	finally
   }
   
-  abstract void yS();
+  abstract void yF();
   
-  abstract void yT();
+  abstract void yG();
 }
 
 

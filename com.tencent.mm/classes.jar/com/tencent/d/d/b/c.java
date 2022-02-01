@@ -6,39 +6,39 @@ import java.lang.reflect.Method;
 
 public final class c
 {
-  private static Object Irs;
-  private static Method Irt;
-  private static boolean Iru;
+  private static Object JTc;
+  private static Method JTd;
+  private static boolean JTe;
   
   static
   {
     AppMethodBeat.i(138362);
-    Irs = null;
-    Irt = null;
+    JTc = null;
+    JTd = null;
     if (Build.VERSION.SDK_INT >= 14) {
       try
       {
-        Irs = e.lP("libcore.io.Libcore", "os");
-        Irt = e.a("libcore.io.Os", "stat", new Class[] { String.class });
-        Iru = true;
+        JTc = e.mm("libcore.io.Libcore", "os");
+        JTd = e.a("libcore.io.Os", "stat", new Class[] { String.class });
+        JTe = true;
         AppMethodBeat.o(138362);
         return;
       }
       catch (Throwable localThrowable) {}
     }
-    Iru = false;
+    JTe = false;
     AppMethodBeat.o(138362);
   }
   
-  public static int aNH(String paramString)
+  public static int aTk(String paramString)
   {
     AppMethodBeat.i(138361);
-    if (!Iru)
+    if (!JTe)
     {
       AppMethodBeat.o(138361);
       return 0;
     }
-    paramString = Irt.invoke(Irs, new Object[] { paramString });
+    paramString = JTd.invoke(JTc, new Object[] { paramString });
     if (paramString == null)
     {
       AppMethodBeat.o(138361);
@@ -51,12 +51,12 @@ public final class c
   
   public static boolean isAvailable()
   {
-    return Iru;
+    return JTe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.b.c
  * JD-Core Version:    0.7.0.1
  */

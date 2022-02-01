@@ -4,8 +4,8 @@ import android.database.Cursor;
 import android.database.MergeCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bj;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.List;
 public final class bt
 {
   private e db;
-  private bg gPf;
+  private bj hpF;
   
-  public bt(e parame, bg parambg)
+  public bt(e parame, bj parambj)
   {
     this.db = parame;
-    this.gPf = parambg;
+    this.hpF = parambj;
   }
   
   private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
@@ -81,8 +81,8 @@ public final class bt
     if (paramInt == 2) {
       localObject = "select 2, *,rowid from rcontact ";
     }
-    paramString2 = (String)localObject + this.gPf.f(paramString2, null, paramList1) + this.gPf.aIg(paramString1) + this.gPf.avz();
-    ad.v("Micro.SimpleSearchConversationModel", paramString2);
+    paramString2 = (String)localObject + this.hpF.f(paramString2, null, paramList1) + this.hpF.aNB(paramString1) + this.hpF.aCs();
+    ac.v("Micro.SimpleSearchConversationModel", paramString2);
     paramString2 = this.db.rawQuery(paramString2, null);
     ArrayList localArrayList;
     if (paramBoolean)
@@ -92,7 +92,7 @@ public final class bt
       while (paramString2.moveToNext())
       {
         String str = paramString2.getString(paramString2.getColumnIndex("username"));
-        if (!w.pF(str)) {
+        if (!w.sQ(str)) {
           ((ArrayList)localObject).add(str);
         } else {
           localArrayList.add(str);
@@ -113,8 +113,8 @@ public final class bt
   public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
   {
     AppMethodBeat.i(20389);
-    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid  from rcontact " + this.gPf.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.gPf.avz();
-    ad.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
+    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid  from rcontact " + this.hpF.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.hpF.aCs();
+    ac.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
     paramString = this.db.rawQuery(paramString, null);
     AppMethodBeat.o(20389);
     return paramString;
@@ -130,7 +130,7 @@ public final class bt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.bt
  * JD-Core Version:    0.7.0.1
  */

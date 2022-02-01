@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public final class d
   static void a(c paramc, int paramInt, String paramString)
   {
     AppMethodBeat.i(136106);
-    ad.i("MicroMsg.JsApiNFCSendHCEResponseCommand", "alvinluo sendHCEMessage callback json: %s", new Object[] { paramString });
+    ac.i("MicroMsg.JsApiNFCSendHCEResponseCommand", "alvinluo sendHCEMessage callback json: %s", new Object[] { paramString });
     if (paramc != null) {
       paramc.h(paramInt, paramString);
     }
@@ -43,7 +43,7 @@ public final class d
           Object localObject2 = paramJSONObject;
           HashMap localHashMap = new HashMap();
           localObject2 = ((JSONObject)localObject2).optString("data");
-          if (bt.isNullOrNil((String)localObject2))
+          if (bs.isNullOrNil((String)localObject2))
           {
             localHashMap.put("errCode", Integer.valueOf(13005));
             d.a((c)localObject1, paramAnonymousInt, paramAnonymousString.k("fail", localHashMap));
@@ -67,7 +67,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.d
  * JD-Core Version:    0.7.0.1
  */

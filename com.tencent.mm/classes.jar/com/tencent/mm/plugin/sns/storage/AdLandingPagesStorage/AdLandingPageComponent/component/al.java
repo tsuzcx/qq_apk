@@ -17,14 +17,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cj.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -34,31 +36,14 @@ import java.util.List;
 
 public final class al
 {
-  private static Typeface xdL = null;
-  
-  public static List<ResolveInfo> M(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(187498);
-    try
-    {
-      paramContext = bt.M(paramContext, paramIntent);
-      AppMethodBeat.o(187498);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      ad.e("LandingPageUtil", "queryIntentActivities fail");
-      AppMethodBeat.o(187498);
-    }
-    return null;
-  }
+  private static Typeface yqA = null;
   
   public static boolean a(Context paramContext, final String paramString1, final String paramString2, final Intent paramIntent, final String paramString3, final am paramam)
   {
-    AppMethodBeat.i(187499);
+    AppMethodBeat.i(200303);
     if ((paramContext == null) || ((TextUtils.isEmpty(paramString1)) && (paramIntent == null)))
     {
-      AppMethodBeat.o(187499);
+      AppMethodBeat.o(200303);
       return false;
     }
     if (paramIntent != null) {
@@ -66,65 +51,65 @@ public final class al
       {
         public final void run()
         {
-          AppMethodBeat.i(187492);
-          List localList = al.M(this.val$context, paramIntent);
+          AppMethodBeat.i(200296);
+          List localList = al.aa(this.val$context, paramIntent);
           if ((localList != null) && (!localList.isEmpty())) {
             h.a(this.val$context, paramIntent, paramString3, new am()
             {
-              public final void u(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
+              public final void v(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
               {
-                AppMethodBeat.i(187491);
+                AppMethodBeat.i(200295);
                 if (!paramAnonymous2Boolean1) {
-                  al.fV(al.1.this.val$context);
+                  al.gh(al.1.this.val$context);
                 }
-                if (al.1.this.xdN != null) {
-                  al.1.this.xdN.u(paramAnonymous2Boolean1, paramAnonymous2Boolean2);
+                if (al.1.this.yqC != null) {
+                  al.1.this.yqC.v(paramAnonymous2Boolean1, paramAnonymous2Boolean2);
                 }
-                AppMethodBeat.o(187491);
+                AppMethodBeat.o(200295);
               }
             });
           }
-          AppMethodBeat.o(187492);
+          AppMethodBeat.o(200296);
         }
       });
     }
     for (;;)
     {
-      AppMethodBeat.o(187499);
+      AppMethodBeat.o(200303);
       return true;
       if (!TextUtils.isEmpty(paramString2))
       {
         paramString2 = new Intent("android.intent.action.VIEW", Uri.parse(paramString2));
         paramString2.addFlags(268435456);
-        paramString1 = M(paramContext, paramString2);
+        paramString1 = aa(paramContext, paramString2);
         if ((paramString1 != null) && (!paramString1.isEmpty()))
         {
           if ((TextUtils.isEmpty(paramString2.getPackage())) && (paramString1.size() == 1)) {}
           for (paramString1 = h.b((ResolveInfo)paramString1.get(0));; paramString1 = paramString2.getPackage())
           {
-            if (bt.nullAsNil(aj.getPackageName()).equals(paramString1)) {
+            if (bs.nullAsNil(ai.getPackageName()).equals(paramString1)) {
               break label175;
             }
             a.post(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(187494);
+                AppMethodBeat.i(200298);
                 h.a(this.val$context, paramString2, paramString3, new am()
                 {
-                  public final void u(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
+                  public final void v(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
                   {
-                    AppMethodBeat.i(187493);
+                    AppMethodBeat.i(200297);
                     if (!paramAnonymous2Boolean1) {
-                      al.fV(al.2.this.val$context);
+                      al.gh(al.2.this.val$context);
                     }
-                    if (al.2.this.xdN != null) {
-                      al.2.this.xdN.u(paramAnonymous2Boolean1, paramAnonymous2Boolean2);
+                    if (al.2.this.yqC != null) {
+                      al.2.this.yqC.v(paramAnonymous2Boolean1, paramAnonymous2Boolean2);
                     }
-                    AppMethodBeat.o(187493);
+                    AppMethodBeat.o(200297);
                   }
                 });
-                AppMethodBeat.o(187494);
+                AppMethodBeat.o(200298);
               }
             });
             break;
@@ -138,34 +123,34 @@ public final class al
         {
           public final void run()
           {
-            AppMethodBeat.i(187496);
+            AppMethodBeat.i(200300);
             Intent localIntent = this.val$context.getPackageManager().getLaunchIntentForPackage(paramString1);
             h.a(this.val$context, localIntent, paramString3, new am()
             {
-              public final void u(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
+              public final void v(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
               {
-                AppMethodBeat.i(187495);
+                AppMethodBeat.i(200299);
                 if (!paramAnonymous2Boolean1) {
-                  al.fV(al.3.this.val$context);
+                  al.gh(al.3.this.val$context);
                 }
-                if (al.3.this.xdN != null) {
-                  al.3.this.xdN.u(paramAnonymous2Boolean1, paramAnonymous2Boolean2);
+                if (al.3.this.yqC != null) {
+                  al.3.this.yqC.v(paramAnonymous2Boolean1, paramAnonymous2Boolean2);
                 }
-                AppMethodBeat.o(187495);
+                AppMethodBeat.o(200299);
               }
             });
-            AppMethodBeat.o(187496);
+            AppMethodBeat.o(200300);
           }
         });
       }
     }
   }
   
-  public static void aB(Activity paramActivity)
+  public static void aF(Activity paramActivity)
   {
     AppMethodBeat.i(96821);
-    boolean bool = com.tencent.mm.ui.ai.aF(paramActivity);
-    ad.i("LandingPageUtil", "setFullScreen, hasCut=".concat(String.valueOf(bool)));
+    boolean bool = aj.aG(paramActivity);
+    ac.i("LandingPageUtil", "setFullScreen, hasCut=".concat(String.valueOf(bool)));
     int i = 514;
     if (!bool) {
       i = 1542;
@@ -178,34 +163,63 @@ public final class al
     AppMethodBeat.o(96821);
   }
   
-  public static void aC(Activity paramActivity)
+  public static void aG(Activity paramActivity)
   {
-    AppMethodBeat.i(187497);
-    ad.i("LandingPageUtil", "setFullScreen");
+    AppMethodBeat.i(200301);
+    ac.i("LandingPageUtil", "setFullScreen");
     int i = 1542;
     if (Build.VERSION.SDK_INT >= 19) {
       i = 5638;
     }
     paramActivity.getWindow().getDecorView().setSystemUiVisibility(i);
-    AppMethodBeat.o(187497);
+    AppMethodBeat.o(200301);
   }
   
-  public static String apA(String paramString)
+  public static List<ResolveInfo> aa(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(200302);
+    try
+    {
+      paramContext = bs.aa(paramContext, paramIntent);
+      AppMethodBeat.o(200302);
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      ac.e("LandingPageUtil", "queryIntentActivities fail");
+      AppMethodBeat.o(200302);
+    }
+    return null;
+  }
+  
+  public static boolean auJ(String paramString)
+  {
+    AppMethodBeat.i(96826);
+    if ((paramString != null) && (paramString.length() >= 102400))
+    {
+      AppMethodBeat.o(96826);
+      return true;
+    }
+    AppMethodBeat.o(96826);
+    return false;
+  }
+  
+  public static String auK(String paramString)
   {
     AppMethodBeat.i(96827);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(96827);
       return "";
     }
-    Object localObject = new e(b.aia().replace("/data/user/0", "/data/data"), "tmpLargeCanvasDir");
+    Object localObject = new e(b.apa().replace("/data/user/0", "/data/data"), "tmpLargeCanvasDir");
     if (!((e)localObject).exists()) {
       ((e)localObject).mkdirs();
     }
     try
     {
       paramString = paramString.getBytes("UTF-8");
-      localObject = q.B(new e((e)localObject, System.currentTimeMillis()).fhU());
+      localObject = q.B(new e((e)localObject, System.currentTimeMillis()).fxV());
       int i = i.f((String)localObject, paramString, paramString.length);
       if (i == 0)
       {
@@ -215,16 +229,16 @@ public final class al
     }
     catch (Exception paramString)
     {
-      ad.e("LandingPageUtil", "writeTempCanvasXmlToLocal fail");
+      ac.e("LandingPageUtil", "writeTempCanvasXmlToLocal fail");
       AppMethodBeat.o(96827);
     }
     return "";
   }
   
-  public static String apB(String paramString)
+  public static String auL(String paramString)
   {
     AppMethodBeat.i(96828);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(96828);
       return "";
@@ -237,32 +251,20 @@ public final class al
         AppMethodBeat.o(96828);
         return "";
       }
-      paramString = i.aMP(paramString);
+      paramString = i.aSr(paramString);
       locale.delete();
       AppMethodBeat.o(96828);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ad.e("LandingPageUtil", "readTempCanvasXmlFromLocalAndDeleteIt fail");
+      ac.e("LandingPageUtil", "readTempCanvasXmlFromLocalAndDeleteIt fail");
       AppMethodBeat.o(96828);
     }
     return "";
   }
   
-  public static boolean apz(String paramString)
-  {
-    AppMethodBeat.i(96826);
-    if ((paramString != null) && (paramString.length() >= 102400))
-    {
-      AppMethodBeat.o(96826);
-      return true;
-    }
-    AppMethodBeat.o(96826);
-    return false;
-  }
-  
-  public static int br(float paramFloat)
+  public static int bz(float paramFloat)
   {
     int j = (int)paramFloat;
     int i = j;
@@ -275,11 +277,27 @@ public final class al
   public static void f(String paramString, Context paramContext)
   {
     AppMethodBeat.i(96822);
-    d.T(paramContext).b(new Intent(paramString));
+    d.U(paramContext).b(new Intent(paramString));
     AppMethodBeat.o(96822);
   }
   
-  public static int[] fU(Context paramContext)
+  public static Bitmap getBitmap(String paramString)
+  {
+    AppMethodBeat.i(96819);
+    String str = b.aph() + "/sns_ad_landingpages";
+    paramString = "adId" + "_image_" + ah.dg(paramString);
+    paramString = str + "/" + paramString;
+    if (i.eA(paramString))
+    {
+      paramString = BackwardSupportUtil.b.n(paramString, 1.0F);
+      AppMethodBeat.o(96819);
+      return paramString;
+    }
+    AppMethodBeat.o(96819);
+    return null;
+  }
+  
+  public static int[] gg(Context paramContext)
   {
     AppMethodBeat.i(96820);
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
@@ -299,38 +317,22 @@ public final class al
     }
   }
   
-  public static void fV(Context paramContext)
+  public static void gh(Context paramContext)
   {
     AppMethodBeat.i(96823);
     f("com.tencent.mm.adlanding.set_uioption", paramContext);
     AppMethodBeat.o(96823);
   }
   
-  public static Typeface fW(Context paramContext)
+  public static Typeface gi(Context paramContext)
   {
     AppMethodBeat.i(96825);
-    if (xdL == null) {
-      xdL = Typeface.createFromAsset(paramContext.getAssets(), "fonts/WeChatNum.ttf");
+    if (yqA == null) {
+      yqA = Typeface.createFromAsset(paramContext.getAssets(), "fonts/WeChatNum.ttf");
     }
-    paramContext = xdL;
+    paramContext = yqA;
     AppMethodBeat.o(96825);
     return paramContext;
-  }
-  
-  public static Bitmap getBitmap(String paramString)
-  {
-    AppMethodBeat.i(96819);
-    String str = b.aih() + "/sns_ad_landingpages";
-    paramString = "adId" + "_image_" + com.tencent.mm.sdk.platformtools.ai.du(paramString);
-    paramString = str + "/" + paramString;
-    if (i.eK(paramString))
-    {
-      paramString = BackwardSupportUtil.b.n(paramString, 1.0F);
-      AppMethodBeat.o(96819);
-      return paramString;
-    }
-    AppMethodBeat.o(96819);
-    return null;
   }
   
   public static String n(String paramString, String... paramVarArgs)
@@ -363,14 +365,14 @@ public final class al
     }
     catch (URISyntaxException paramVarArgs)
     {
-      ad.printErrStackTrace("LandingPageUtil", paramVarArgs, "", new Object[0]);
+      ac.printErrStackTrace("LandingPageUtil", paramVarArgs, "", new Object[0]);
       AppMethodBeat.o(96824);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.al
  * JD-Core Version:    0.7.0.1
  */

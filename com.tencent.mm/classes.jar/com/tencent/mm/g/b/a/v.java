@@ -6,68 +6,91 @@ import com.tencent.mm.plugin.report.a;
 public final class v
   extends a
 {
-  public int dHQ;
-  private String dJC;
-  private String dJD;
-  public int dJE = 0;
+  private int dHr;
+  private int dHu;
+  private String dHv;
+  private int dHw;
+  private String dHx;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(163530);
+    AppMethodBeat.i(183918);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHQ);
+    ((StringBuffer)localObject).append(this.dHr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJC);
+    ((StringBuffer)localObject).append(this.dHw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJD);
+    ((StringBuffer)localObject).append(this.dHv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dJE);
+    ((StringBuffer)localObject).append(this.dHx);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHu);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(163530);
+    arz((String)localObject);
+    AppMethodBeat.o(183918);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(163531);
+    AppMethodBeat.i(183919);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ActionType:").append(this.dHQ);
+    ((StringBuffer)localObject).append("Action:").append(this.dHr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("F2FId:").append(this.dJC);
+    ((StringBuffer)localObject).append("Scene:").append(this.dHw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("QrCodeId:").append(this.dJD);
+    ((StringBuffer)localObject).append("Pid:").append(this.dHv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TotalAmount:").append(this.dJE);
+    ((StringBuffer)localObject).append("Md5:").append(this.dHx);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Index:").append(this.dHu);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(163531);
+    AppMethodBeat.o(183919);
     return localObject;
   }
   
-  public final v ge(String paramString)
+  public final v fQ(String paramString)
   {
-    AppMethodBeat.i(163528);
-    this.dJC = t("F2FId", paramString, true);
-    AppMethodBeat.o(163528);
+    AppMethodBeat.i(183916);
+    this.dHv = t("Pid", paramString, true);
+    AppMethodBeat.o(183916);
+    return this;
+  }
+  
+  public final v fR(String paramString)
+  {
+    AppMethodBeat.i(183917);
+    this.dHx = t("Md5", paramString, true);
+    AppMethodBeat.o(183917);
     return this;
   }
   
   public final int getId()
   {
-    return 18885;
+    return 19434;
   }
   
-  public final v gf(String paramString)
+  public final v hZ(int paramInt)
   {
-    AppMethodBeat.i(163529);
-    this.dJD = t("QrCodeId", paramString, true);
-    AppMethodBeat.o(163529);
+    this.dHr = paramInt;
+    return this;
+  }
+  
+  public final v ia(int paramInt)
+  {
+    this.dHw = paramInt;
+    return this;
+  }
+  
+  public final v ib(int paramInt)
+  {
+    this.dHu = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.v
  * JD-Core Version:    0.7.0.1
  */

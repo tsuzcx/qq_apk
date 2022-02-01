@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"EMPTY", "", "", "[Ljava/lang/Object;", "MAX_SIZE", "", "collectionToArray", "collection", "", "toArray", "(Ljava/util/Collection;)[Ljava/lang/Object;", "a", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "toArrayImpl", "empty", "Lkotlin/Function0;", "alloc", "Lkotlin/Function1;", "trim", "Lkotlin/Function2;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)[Ljava/lang/Object;", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"EMPTY", "", "", "[Ljava/lang/Object;", "MAX_SIZE", "", "collectionToArray", "collection", "", "toArray", "(Ljava/util/Collection;)[Ljava/lang/Object;", "a", "(Ljava/util/Collection;[Ljava/lang/Object;)[Ljava/lang/Object;", "toArrayImpl", "empty", "Lkotlin/Function0;", "alloc", "Lkotlin/Function1;", "trim", "Lkotlin/Function2;", "(Ljava/util/Collection;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;)[Ljava/lang/Object;", "kotlin-stdlib"})
 public final class f
 {
-  private static final Object[] fFN = new Object[0];
+  private static final Object[] fJu = new Object[0];
   
   public static final Object[] a(Collection<?> paramCollection, Object[] paramArrayOfObject)
   {
@@ -103,21 +103,21 @@ public final class f
     }
   }
   
-  public static final Object[] r(Collection<?> paramCollection)
+  public static final Object[] s(Collection<?> paramCollection)
   {
     AppMethodBeat.i(129341);
     k.h(paramCollection, "collection");
     int i = paramCollection.size();
     if (i == 0)
     {
-      paramCollection = fFN;
+      paramCollection = fJu;
       AppMethodBeat.o(129341);
       return paramCollection;
     }
     Iterator localIterator = paramCollection.iterator();
     if (!localIterator.hasNext())
     {
-      paramCollection = fFN;
+      paramCollection = fJu;
       AppMethodBeat.o(129341);
       return paramCollection;
     }

@@ -7,14 +7,14 @@ import com.tencent.luggage.h.e;
 import com.tencent.luggage.h.e.b;
 import com.tencent.luggage.h.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.choosemsgfile.compat.a.a;
 import com.tencent.mm.plugin.choosemsgfile.b.d.b;
 import com.tencent.mm.plugin.choosemsgfile.b.d.c;
 import com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileListUI;
 import com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileShowUI;
 import com.tencent.mm.plugin.choosemsgfile.ui.ChooseMsgFileUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMFragmentActivity;
@@ -40,19 +40,19 @@ public final class a
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(123221);
-        ad.i("MicroMsg.ChooseMsgFileService", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        ad.d("MicroMsg.ChooseMsgFileService", "data:%s", new Object[] { paramAnonymousIntent });
+        ac.i("MicroMsg.ChooseMsgFileService", "requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ac.d("MicroMsg.ChooseMsgFileService", "data:%s", new Object[] { paramAnonymousIntent });
         c.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent, parama);
         AppMethodBeat.o(123221);
       }
     };
     if ((paramActivity instanceof e.d)) {
-      e.az(paramActivity).b(new e.b()
+      e.aA(paramActivity).b(new e.b()
       {
         public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
           AppMethodBeat.i(170094);
-          if (b.nMS == paramAnonymousInt1)
+          if (b.opS == paramAnonymousInt1)
           {
             paramString1.c(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
             AppMethodBeat.o(170094);
@@ -65,7 +65,7 @@ public final class a
     }
     for (;;)
     {
-      d.c(paramActivity, ".ui.transmit.SelectConversationUI", localIntent, b.nMS);
+      d.c(paramActivity, ".ui.transmit.SelectConversationUI", localIntent, b.opS);
       AppMethodBeat.o(170096);
       return;
       if ((paramActivity instanceof MMActivity)) {
@@ -100,13 +100,13 @@ public final class a
   public final void g(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(123222);
-    ChooseMsgFileShowUI.u(paramContext, paramString1, paramString2);
+    ChooseMsgFileShowUI.t(paramContext, paramString1, paramString2);
     AppMethodBeat.o(123222);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a
  * JD-Core Version:    0.7.0.1
  */

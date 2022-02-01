@@ -4,21 +4,21 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class b
   extends j<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iaF;
+  private static final String[] iAI;
   private e db;
   
   static
   {
     AppMethodBeat.i(67618);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "DelayTransferRecord") };
-    iaF = new String[] { "*", "rowid" };
+    iAI = new String[] { "*", "rowid" };
     AppMethodBeat.o(67618);
   }
   
@@ -28,16 +28,16 @@ public final class b
     this.db = parame;
   }
   
-  public final a amb(String paramString)
+  public final a arg(String paramString)
   {
     AppMethodBeat.i(67617);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.i("MicroMsg.AARecordStorage", "empty transferId");
+      ac.i("MicroMsg.AARecordStorage", "empty transferId");
       AppMethodBeat.o(67617);
       return null;
     }
-    paramString = this.db.a("DelayTransferRecord", iaF, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("DelayTransferRecord", iAI, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -54,7 +54,7 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.AARecordStorage", localException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.AARecordStorage", localException, "", new Object[0]);
         if (paramString != null) {
           paramString.close();
         }

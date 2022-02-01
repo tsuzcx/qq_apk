@@ -13,19 +13,19 @@ import org.xmlpull.v1.XmlPullParser;
 public class PatternPathMotion
   extends PathMotion
 {
-  private final Matrix xE = new Matrix();
-  private Path yF;
-  private final Path yG = new Path();
+  private final Matrix yC = new Matrix();
+  private Path zF;
+  private final Path zG = new Path();
   
   public PatternPathMotion()
   {
-    this.yG.lineTo(1.0F, 0.0F);
-    this.yF = this.yG;
+    this.zG.lineTo(1.0F, 0.0F);
+    this.zF = this.zG;
   }
   
   public PatternPathMotion(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.zc);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.Ac);
     try
     {
       paramAttributeSet = g.c(paramContext, (XmlPullParser)paramAttributeSet, "patternPathData", 0);
@@ -37,7 +37,7 @@ public class PatternPathMotion
     {
       paramContext.recycle();
     }
-    paramAttributeSet = c.u(paramAttributeSet);
+    paramAttributeSet = c.x(paramAttributeSet);
     PathMeasure localPathMeasure = new PathMeasure(paramAttributeSet, false);
     float f1 = localPathMeasure.getLength();
     float[] arrayOfFloat = new float[2];
@@ -50,15 +50,15 @@ public class PatternPathMotion
     if ((f4 == f3) && (f2 == f1)) {
       throw new IllegalArgumentException("pattern must not end at the starting point");
     }
-    this.xE.setTranslate(-f4, -f2);
+    this.yC.setTranslate(-f4, -f2);
     f3 -= f4;
     f1 -= f2;
     f2 = 1.0F / h(f3, f1);
-    this.xE.postScale(f2, f2);
+    this.yC.postScale(f2, f2);
     double d = Math.atan2(f1, f3);
-    this.xE.postRotate((float)Math.toDegrees(-d));
-    paramAttributeSet.transform(this.xE, this.yG);
-    this.yF = paramAttributeSet;
+    this.yC.postRotate((float)Math.toDegrees(-d));
+    paramAttributeSet.transform(this.yC, this.zG);
+    this.zF = paramAttributeSet;
     paramContext.recycle();
   }
   
@@ -73,11 +73,11 @@ public class PatternPathMotion
     paramFloat4 -= paramFloat2;
     float f = h(paramFloat3, paramFloat4);
     double d = Math.atan2(paramFloat4, paramFloat3);
-    this.xE.setScale(f, f);
-    this.xE.postRotate((float)Math.toDegrees(d));
-    this.xE.postTranslate(paramFloat1, paramFloat2);
+    this.yC.setScale(f, f);
+    this.yC.postRotate((float)Math.toDegrees(d));
+    this.yC.postTranslate(paramFloat1, paramFloat2);
     Path localPath = new Path();
-    this.yG.transform(this.xE, localPath);
+    this.zG.transform(this.yC, localPath);
     return localPath;
   }
 }

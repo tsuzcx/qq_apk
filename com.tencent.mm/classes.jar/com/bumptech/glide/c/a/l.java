@@ -11,17 +11,17 @@ import java.io.IOException;
 public abstract class l<T>
   implements d<T>
 {
-  private final ContentResolver aCR;
+  private final ContentResolver aDI;
   private T data;
   private final Uri uri;
   
   public l(ContentResolver paramContentResolver, Uri paramUri)
   {
-    this.aCR = paramContentResolver;
+    this.aDI = paramContentResolver;
     this.uri = paramUri;
   }
   
-  protected abstract void O(T paramT);
+  protected abstract void Q(T paramT);
   
   protected abstract T a(Uri paramUri, ContentResolver paramContentResolver);
   
@@ -29,8 +29,8 @@ public abstract class l<T>
   {
     try
     {
-      this.data = a(this.uri, this.aCR);
-      parama.P(this.data);
+      this.data = a(this.uri, this.aDI);
+      parama.R(this.data);
       return;
     }
     catch (FileNotFoundException paramg)
@@ -47,20 +47,20 @@ public abstract class l<T>
     if (this.data != null) {}
     try
     {
-      O(this.data);
+      Q(this.data);
       return;
     }
     catch (IOException localIOException) {}
   }
   
-  public final a nL()
+  public final a nV()
   {
-    return a.aBX;
+    return a.aCP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.a.l
  * JD-Core Version:    0.7.0.1
  */

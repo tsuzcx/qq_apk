@@ -7,43 +7,44 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime.b;
 import com.tencent.mm.plugin.appbrand.ad.g;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.utils.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.x.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.a.b;
 import d.y;
 import java.util.LinkedList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimePostResourcePreparedJobsBatchRun;", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "process", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime$PrepareProcess;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime$PrepareProcess;)V", "actions", "Ljava/util/LinkedList;", "Lkotlin/Function1;", "Lkotlin/Function0;", "", "Lcom/tencent/mm/plugin/appbrand/launching/PostPreparedAction;", "addAction", "action", "run", "plugin-appbrand-integration_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimePostResourcePreparedJobsBatchRun;", "", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "process", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime$PrepareProcess;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime$PrepareProcess;)V", "actions", "Ljava/util/LinkedList;", "Lkotlin/Function1;", "Lkotlin/Function0;", "", "Lcom/tencent/mm/plugin/appbrand/launching/PostPreparedAction;", "addAction", "action", "run", "plugin-appbrand-integration_release"})
 public final class h
 {
-  public final LinkedList<b<d.g.a.a<y>, y>> kGU;
-  final o kGV;
-  public final AppBrandRuntime.b kGW;
+  public final LinkedList<b<d.g.a.a<y>, y>> lio;
+  final o lip;
+  public final AppBrandRuntime.b liq;
   
   public h(o paramo, AppBrandRuntime.b paramb)
   {
     AppMethodBeat.i(50755);
-    this.kGV = paramo;
-    this.kGW = paramb;
-    this.kGU = new LinkedList();
-    if ((this.kGV.CZ()) && (((com.tencent.mm.plugin.appbrand.performance.a)this.kGV.ar(com.tencent.mm.plugin.appbrand.performance.a.class)).lhy)) {
-      r((b)1.kGX);
+    this.lip = paramo;
+    this.liq = paramb;
+    this.lio = new LinkedList();
+    if ((this.lip.CC()) && (((com.tencent.mm.plugin.appbrand.performance.a)this.lip.ar(com.tencent.mm.plugin.appbrand.performance.a.class)).lHr)) {
+      v((b)1.lir);
     }
-    if ((!this.kGV.aMk()) || (this.kGV.aNm()) || (e.K(g.class) == null) || (!((g)e.K(g.class)).N((AppBrandRuntime)this.kGV)))
+    if ((!this.lip.aTa()) || (this.lip.aUc()) || (e.K(g.class) == null) || (!((g)e.K(g.class)).N((AppBrandRuntime)this.lip)))
     {
-      ad.i("AppBrandRuntimePostResourcePreparedJobsBatchRun", this.kGV.getAppId() + " add start prepare orientation action");
-      r((b)new h.2(this));
+      ac.i("AppBrandRuntimePostResourcePreparedJobsBatchRun", this.lip.getAppId() + " add start prepare orientation action");
+      v((b)new h.2(this));
     }
     AppMethodBeat.o(50755);
   }
   
-  private final void r(b<? super d.g.a.a<y>, y> paramb)
+  private final void v(b<? super d.g.a.a<y>, y> paramb)
   {
     AppMethodBeat.i(50754);
-    this.kGU.add(paramb);
+    this.lio.add(paramb);
     AppMethodBeat.o(50754);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   public static final class a
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -54,7 +55,7 @@ public final class h
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   public static final class b
     implements Runnable
   {
@@ -63,14 +64,14 @@ public final class h
     public final void run()
     {
       AppMethodBeat.i(50753);
-      this.kGY.kGW.AH();
+      this.lis.liq.Al();
       AppMethodBeat.o(50753);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.h
  * JD-Core Version:    0.7.0.1
  */

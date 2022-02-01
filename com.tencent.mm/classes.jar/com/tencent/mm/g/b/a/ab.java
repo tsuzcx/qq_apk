@@ -6,129 +6,136 @@ import com.tencent.mm.plugin.report.a;
 public final class ab
   extends a
 {
-  public String dKA = "";
-  public int dKB;
-  public int dKC;
-  public int dKD;
-  public int dKE;
-  private String dKF = "";
-  public String dKG;
-  public String dKH;
-  public int dKu;
-  public String dKv;
-  public String dKw;
-  public long dKx;
-  public long dKy;
-  public long dKz;
+  private String dFe;
+  private String dHM;
+  private long dHR;
+  private String dIa;
+  private String dIb;
+  private String dIc;
+  private long dId;
+  private long dIe;
+  private long dIf;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(169253);
+    AppMethodBeat.i(194894);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dKu);
+    ((StringBuffer)localObject).append(this.dHM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKv);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKw);
+    ((StringBuffer)localObject).append(this.dIa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKx);
+    ((StringBuffer)localObject).append(this.dIb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKy);
+    ((StringBuffer)localObject).append(this.dIc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKz);
+    ((StringBuffer)localObject).append(this.dHR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKA);
+    ((StringBuffer)localObject).append(this.dId);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKB);
+    ((StringBuffer)localObject).append(this.dIe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKD);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dKH);
+    ((StringBuffer)localObject).append(this.dIf);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(169253);
+    arz((String)localObject);
+    AppMethodBeat.o(194894);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(169254);
+    AppMethodBeat.i(194895);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PID:").append(this.dKu);
+    ((StringBuffer)localObject).append("FeedId:").append(this.dHM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PName:").append(this.dKv);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sessionId:").append(this.dKw);
+    ((StringBuffer)localObject).append("PosterUsername:").append(this.dIa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("frontTime:").append(this.dKx);
+    ((StringBuffer)localObject).append("ViewerUsername:").append(this.dIb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("stayTotalTime:").append(this.dKy);
+    ((StringBuffer)localObject).append("MentionedUsername:").append(this.dIc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scrollTotalTime:").append(this.dKz);
+    ((StringBuffer)localObject).append("scene:").append(this.dHR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reportFeedList:").append(this.dKA);
+    ((StringBuffer)localObject).append("recommendtype:").append(this.dId);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reportFeedCount:").append(this.dKB);
+    ((StringBuffer)localObject).append("likecnt:").append(this.dIe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Seq:").append(this.dKC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeq:").append(this.dKD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeqSum:").append(this.dKE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Performance:").append(this.dKF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionPageId:").append(this.dKG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionKey:").append(this.dKH);
+    ((StringBuffer)localObject).append("commcnt:").append(this.dIf);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(169254);
+    AppMethodBeat.o(194895);
     return localObject;
   }
   
-  public final ab gA(String paramString)
+  public final ab cp(long paramLong)
   {
-    AppMethodBeat.i(169249);
-    this.dKv = t("PName", paramString, true);
-    AppMethodBeat.o(169249);
+    this.dHR = paramLong;
     return this;
   }
   
-  public final ab gB(String paramString)
+  public final ab cq(long paramLong)
   {
-    AppMethodBeat.i(169250);
-    this.dKw = t("sessionId", paramString, true);
-    AppMethodBeat.o(169250);
+    this.dId = paramLong;
     return this;
   }
   
-  public final ab gC(String paramString)
+  public final ab cr(long paramLong)
   {
-    AppMethodBeat.i(169251);
-    this.dKG = t("SessionPageId", paramString, true);
-    AppMethodBeat.o(169251);
+    this.dIe = paramLong;
     return this;
   }
   
-  public final ab gD(String paramString)
+  public final ab cs(long paramLong)
   {
-    AppMethodBeat.i(169252);
-    this.dKH = t("SessionKey", paramString, true);
-    AppMethodBeat.o(169252);
+    this.dIf = paramLong;
+    return this;
+  }
+  
+  public final ab gd(String paramString)
+  {
+    AppMethodBeat.i(194889);
+    this.dHM = t("FeedId", paramString, true);
+    AppMethodBeat.o(194889);
+    return this;
+  }
+  
+  public final ab ge(String paramString)
+  {
+    AppMethodBeat.i(194890);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(194890);
     return this;
   }
   
   public final int getId()
   {
-    return 18260;
+    return 19793;
+  }
+  
+  public final ab gf(String paramString)
+  {
+    AppMethodBeat.i(194891);
+    this.dIa = t("PosterUsername", paramString, true);
+    AppMethodBeat.o(194891);
+    return this;
+  }
+  
+  public final ab gg(String paramString)
+  {
+    AppMethodBeat.i(194892);
+    this.dIb = t("ViewerUsername", paramString, true);
+    AppMethodBeat.o(194892);
+    return this;
+  }
+  
+  public final ab gh(String paramString)
+  {
+    AppMethodBeat.i(194893);
+    this.dIc = t("MentionedUsername", paramString, true);
+    AppMethodBeat.o(194893);
+    return this;
   }
 }
 

@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.scanner.box;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "", "dismissDialog", "", "exitType", "", "showDialog", "Companion", "plugin-scan_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "", "dismissDialog", "", "exitType", "", "onPause", "onResume", "showDialog", "Companion", "plugin-scan_release"})
 public abstract interface c
 {
-  public static final a vLW = a.vLX;
+  public static final a wWj = a.wWk;
   
   public abstract void dismissDialog(int paramInt);
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel$Companion;", "", "()V", "CLOSE_TYPE_BACK_PRESSED", "", "CLOSE_TYPE_CLICK_CLOSE_BUTTON", "CLOSE_TYPE_DEFAULT", "CLOSE_TYPE_SCROLL_DOWN", "CLOSE_TYPE_SCROLL_LEFT", "CLOSE_TYPE_TOUCH_OUTSIDE", "DIALOG_STATE_DEFAULT", "DIALOG_STATE_FULL_SCREEN", "DIALOG_STATE_HALF_SCREEN", "plugin-scan_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel$Companion;", "", "()V", "CLOSE_TYPE_BACK_PRESSED", "", "CLOSE_TYPE_CLICK_CLOSE_BUTTON", "CLOSE_TYPE_DEFAULT", "CLOSE_TYPE_SCROLL_DOWN", "CLOSE_TYPE_SCROLL_LEFT", "CLOSE_TYPE_TOUCH_OUTSIDE", "DIALOG_STATE_DEFAULT", "DIALOG_STATE_FULL_SCREEN", "DIALOG_STATE_HALF_SCREEN", "plugin-scan_release"})
   public static final class a
   {
     static
     {
       AppMethodBeat.i(52083);
-      vLX = new a();
+      wWk = new a();
       AppMethodBeat.o(52083);
     }
   }

@@ -3,29 +3,29 @@ package com.tencent.mm.modelappbrand;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.uj;
-import com.tencent.mm.g.a.uj.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.ut;
+import com.tencent.mm.g.a.ut.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  private static void a(uj paramuj, k.b paramb)
+  private static void a(ut paramut, k.b paramb)
   {
-    paramuj.dzH.appId = paramb.gJF;
-    paramuj.dzH.userName = paramb.gJE;
-    paramuj.dzH.dzJ = paramb.gJD;
-    paramuj.dzH.dzK = paramb.gJQ;
-    paramuj.dzH.dzM = paramb.gJH;
-    paramuj.dzH.aAS = paramb.gJR;
-    paramuj = paramuj.dzH;
-    if (paramb.gJQ != 0) {}
+    paramut.dxt.appId = paramb.hkf;
+    paramut.dxt.userName = paramb.hke;
+    paramut.dxt.dxv = paramb.hkd;
+    paramut.dxt.dxw = paramb.hkq;
+    paramut.dxt.dxy = paramb.hkh;
+    paramut.dxt.aBM = paramb.hkr;
+    paramut = paramut.dxt;
+    if (paramb.hkq != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramuj.dzN = bool;
+      paramut.dxz = bool;
       return;
     }
   }
@@ -33,32 +33,32 @@ public final class a
   public static void a(String paramString, int paramInt, k.b paramb, Bundle paramBundle)
   {
     AppMethodBeat.i(2620);
-    uj localuj = new uj();
-    a(localuj, paramb);
-    b(localuj, paramb);
-    localuj.dzH.scene = paramInt;
+    ut localut = new ut();
+    a(localut, paramb);
+    b(localut, paramb);
+    localut.dxt.scene = paramInt;
     if ((paramInt == 1074) || (paramInt == 1157)) {
-      localuj.dzH.dbt = paramString;
+      localut.dxt.cYP = paramString;
     }
-    localuj.dzH.deG = paramBundle;
-    com.tencent.mm.sdk.b.a.ESL.l(localuj);
+    localut.dxt.dcb = paramBundle;
+    com.tencent.mm.sdk.b.a.GpY.l(localut);
     AppMethodBeat.o(2620);
   }
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean, k.b paramb, Bundle paramBundle)
   {
     AppMethodBeat.i(2619);
-    uj localuj = new uj();
-    a(localuj, paramb);
-    b(localuj, paramb);
-    uj.a locala = localuj.dzH;
+    ut localut = new ut();
+    a(localut, paramb);
+    b(localut, paramb);
+    ut.a locala = localut.dxt;
     int i;
     StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       i = 1008;
       locala.scene = i;
-      locala = localuj.dzH;
+      locala = localut.dxt;
       localStringBuilder = new StringBuilder().append(paramString1);
       if (!paramBoolean) {
         break label144;
@@ -67,9 +67,9 @@ public final class a
     label144:
     for (paramString1 = ":".concat(String.valueOf(paramString2));; paramString1 = "")
     {
-      locala.dbt = (paramString1 + ":" + paramb.gJJ);
-      localuj.dzH.deG = paramBundle;
-      com.tencent.mm.sdk.b.a.ESL.l(localuj);
+      locala.cYP = (paramString1 + ":" + paramb.hkj);
+      localut.dxt.dcb = paramBundle;
+      com.tencent.mm.sdk.b.a.GpY.l(localut);
       AppMethodBeat.o(2619);
       return;
       i = 1007;
@@ -77,14 +77,14 @@ public final class a
     }
   }
   
-  private static void b(uj paramuj, k.b paramb)
+  private static void b(ut paramut, k.b paramb)
   {
     AppMethodBeat.i(2622);
     if (paramb != null)
     {
-      paramb = (com.tencent.mm.ai.a)paramb.ao(com.tencent.mm.ai.a.class);
-      if ((paramb != null) && (!bt.isNullOrNil(paramb.gFA))) {
-        paramuj.dzH.dzY = paramb.gFA;
+      paramb = (com.tencent.mm.ah.a)paramb.ao(com.tencent.mm.ah.a.class);
+      if ((paramb != null) && (!bs.isNullOrNil(paramb.hgb))) {
+        paramut.dxt.dxK = paramb.hgb;
       }
     }
     AppMethodBeat.o(2622);
@@ -94,32 +94,32 @@ public final class a
   {
     int i = 2;
     AppMethodBeat.i(2621);
-    if (TextUtils.isEmpty(paramb.gJK))
+    if (TextUtils.isEmpty(paramb.hkk))
     {
-      ad.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      ac.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
       a(paramString1, paramString2, paramBoolean, paramb, paramBundle);
       AppMethodBeat.o(2621);
       return;
     }
-    uj localuj = new uj();
-    a(localuj, paramb);
-    b(localuj, paramb);
-    localuj.dzH.scene = 1044;
-    localuj.dzH.dbt = paramb.gJJ;
-    uj.a locala = localuj.dzH;
+    ut localut = new ut();
+    a(localut, paramb);
+    b(localut, paramb);
+    localut.dxt.scene = 1044;
+    localut.dxt.cYP = paramb.hkj;
+    ut.a locala = localut.dxt;
     if (paramBoolean) {}
     for (;;)
     {
-      locala.dzS = i;
-      locala = localuj.dzH;
+      locala.dxE = i;
+      locala = localut.dxt;
       if (paramBoolean) {
         paramString2 = paramString1;
       }
-      locala.dzT = paramString2;
-      localuj.dzH.dzP.cfh = paramb.gJK;
-      localuj.dzH.dzP.cff = paramString1;
-      localuj.dzH.deG = paramBundle;
-      com.tencent.mm.sdk.b.a.ESL.l(localuj);
+      locala.dxF = paramString2;
+      localut.dxt.dxB.ccd = paramb.hkk;
+      localut.dxt.dxB.ccc = paramString1;
+      localut.dxt.dcb = paramBundle;
+      com.tencent.mm.sdk.b.a.GpY.l(localut);
       AppMethodBeat.o(2621);
       return;
       i = 1;
@@ -128,7 +128,7 @@ public final class a
   
   public static boolean b(k.b paramb)
   {
-    return ((paramb.type == 33) && ((paramb.gJG == 2) || (paramb.gJG == 3))) || (paramb.type == 36);
+    return ((paramb.type == 33) && ((paramb.hkg == 2) || (paramb.hkg == 3))) || (paramb.type == 36);
   }
   
   public static boolean c(k.b paramb)
@@ -136,10 +136,10 @@ public final class a
     return paramb.type == 44;
   }
   
-  public static boolean uT(String paramString)
+  public static boolean yZ(String paramString)
   {
     AppMethodBeat.i(2618);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(2618);
       return false;

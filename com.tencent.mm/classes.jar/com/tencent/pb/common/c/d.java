@@ -9,7 +9,7 @@ public abstract class d<T>
     try
     {
       if (this.mInstance == null) {
-        this.mInstance = ok();
+        this.mInstance = ou();
       }
       Object localObject1 = this.mInstance;
       return localObject1;
@@ -17,7 +17,7 @@ public abstract class d<T>
     finally {}
   }
   
-  protected abstract T ok();
+  protected abstract T ou();
 }
 
 

@@ -10,8 +10,8 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.c.a.c;
-import android.support.c.a.i;
+import android.support.d.a.c;
+import android.support.d.a.i;
 import android.support.v4.e.o;
 import android.util.AttributeSet;
 import android.util.StateSet;
@@ -22,11 +22,11 @@ public class a
   extends e
 {
   private static final String LOGTAG = a.class.getSimpleName();
-  private b YW;
-  private f YX;
-  private int YY = -1;
-  private int YZ = -1;
-  private boolean uq;
+  private b ZR;
+  private f ZS;
+  private int ZT = -1;
+  private int ZU = -1;
+  private boolean vp;
   
   public a()
   {
@@ -50,16 +50,16 @@ public class a
     localObject = new a();
     TypedArray localTypedArray = android.support.v4.content.a.g.a(paramResources, paramTheme, paramAttributeSet, android.support.v7.a.a.a.AnimatedStateListDrawableCompat);
     ((a)localObject).setVisible(localTypedArray.getBoolean(1, true), true);
-    b localb = ((a)localObject).YW;
+    b localb = ((a)localObject).ZR;
     if (Build.VERSION.SDK_INT >= 21) {
       localb.mChangingConfigurations |= localTypedArray.getChangingConfigurations();
     }
-    localb.ZC = localTypedArray.getBoolean(2, localb.ZC);
-    localb.ZF = localTypedArray.getBoolean(3, localb.ZF);
-    localb.ZS = localTypedArray.getInt(4, localb.ZS);
-    localb.ZT = localTypedArray.getInt(5, localb.ZT);
-    ((a)localObject).setDither(localTypedArray.getBoolean(0, localb.ZR));
-    ((b)localObject).Zj.e(paramResources);
+    localb.aax = localTypedArray.getBoolean(2, localb.aax);
+    localb.aaA = localTypedArray.getBoolean(3, localb.aaA);
+    localb.aaN = localTypedArray.getInt(4, localb.aaN);
+    localb.aaO = localTypedArray.getInt(5, localb.aaO);
+    ((a)localObject).setDither(localTypedArray.getBoolean(0, localb.aaM));
+    ((b)localObject).aae.e(paramResources);
     localTypedArray.recycle();
     ((a)localObject).c(paramContext, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
     ((a)localObject).onStateChange(((a)localObject).getState());
@@ -142,10 +142,10 @@ public class a
               localObject1 = Drawable.createFromXmlInner(paramResources, paramXmlPullParser, paramAttributeSet);
             }
           }
-          localObject2 = this.YW;
+          localObject2 = this.ZR;
           i = ((e.a)localObject2).addChild((Drawable)localObject1);
-          ((e.a)localObject2).aai[i] = arrayOfInt;
-          ((b)localObject2).Zc.put(i, Integer.valueOf(n));
+          ((e.a)localObject2).abd[i] = arrayOfInt;
+          ((b)localObject2).ZX.put(i, Integer.valueOf(n));
         }
         else if (paramXmlPullParser.getName().equals("transition"))
         {
@@ -195,19 +195,19 @@ public class a
     if ((i == -1) || (j == -1)) {
       throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <transition> tag requires 'fromId' & 'toId' attributes");
     }
-    return this.YW.a(i, j, (Drawable)localObject, bool);
+    return this.ZR.a(i, j, (Drawable)localObject, bool);
   }
   
-  private b gI()
+  private b gQ()
   {
-    return new b(this.YW, this, null);
+    return new b(this.ZR, this, null);
   }
   
   protected final void a(b.b paramb)
   {
     super.a(paramb);
     if ((paramb instanceof b)) {
-      this.YW = ((b)paramb);
+      this.ZR = ((b)paramb);
     }
   }
   
@@ -219,36 +219,36 @@ public class a
   public void jumpToCurrentState()
   {
     super.jumpToCurrentState();
-    if (this.YX != null)
+    if (this.ZS != null)
     {
-      this.YX.stop();
-      this.YX = null;
-      selectDrawable(this.YY);
-      this.YY = -1;
-      this.YZ = -1;
+      this.ZS.stop();
+      this.ZS = null;
+      selectDrawable(this.ZT);
+      this.ZT = -1;
+      this.ZU = -1;
     }
   }
   
   public Drawable mutate()
   {
-    if ((!this.uq) && (super.mutate() == this))
+    if ((!this.vp) && (super.mutate() == this))
     {
-      this.YW.gL();
-      this.uq = true;
+      this.ZR.gT();
+      this.vp = true;
     }
     return this;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    int j = this.YW.g(paramArrayOfInt);
+    int j = this.ZR.g(paramArrayOfInt);
     Object localObject;
     int i;
-    if (j != this.Zo)
+    if (j != this.aaj)
     {
-      localObject = this.YX;
+      localObject = this.ZS;
       if (localObject != null) {
-        if (j == this.YY)
+        if (j == this.ZT)
         {
           i = 1;
           if ((i == 0) && (!selectDrawable(j))) {
@@ -268,24 +268,24 @@ public class a
         bool2 = bool1 | ((Drawable)localObject).setState(paramArrayOfInt);
       }
       return bool2;
-      if ((j == this.YZ) && (((f)localObject).gM()))
+      if ((j == this.ZU) && (((f)localObject).gU()))
       {
         ((f)localObject).reverse();
-        this.YY = this.YZ;
-        this.YZ = j;
+        this.ZT = this.ZU;
+        this.ZU = j;
         i = 1;
         break;
       }
-      i = this.YY;
+      i = this.ZT;
       ((f)localObject).stop();
       int k;
       int m;
       for (;;)
       {
-        this.YX = null;
-        this.YZ = -1;
-        this.YY = -1;
-        localObject = this.YW;
+        this.ZS = null;
+        this.ZU = -1;
+        this.ZT = -1;
+        localObject = this.ZR;
         k = ((b)localObject).bs(i);
         m = ((b)localObject).bs(j);
         if ((m != 0) && (k != 0)) {
@@ -293,10 +293,10 @@ public class a
         }
         i = 0;
         break;
-        i = this.Zo;
+        i = this.aaj;
       }
       long l = b.D(k, m);
-      int n = (int)((Long)((b)localObject).Zb.get(l, Long.valueOf(-1L))).longValue();
+      int n = (int)((Long)((b)localObject).ZW.get(l, Long.valueOf(-1L))).longValue();
       if (n < 0)
       {
         i = 0;
@@ -304,7 +304,7 @@ public class a
       }
       l = b.D(k, m);
       Drawable localDrawable;
-      if ((((Long)((b)localObject).Zb.get(l, Long.valueOf(-1L))).longValue() & 0x0) != 0L)
+      if ((((Long)((b)localObject).ZW.get(l, Long.valueOf(-1L))).longValue() & 0x0) != 0L)
       {
         bool1 = true;
         selectDrawable(n);
@@ -313,7 +313,7 @@ public class a
           break label398;
         }
         l = b.D(k, m);
-        if ((((Long)((b)localObject).Zb.get(l, Long.valueOf(-1L))).longValue() & 0x0) == 0L) {
+        if ((((Long)((b)localObject).ZW.get(l, Long.valueOf(-1L))).longValue() & 0x0) == 0L) {
           break label392;
         }
         bool2 = true;
@@ -323,9 +323,9 @@ public class a
       for (;;)
       {
         ((f)localObject).start();
-        this.YX = ((f)localObject);
-        this.YZ = i;
-        this.YY = j;
+        this.ZS = ((f)localObject);
+        this.ZU = i;
+        this.ZT = j;
         i = 1;
         break;
         bool1 = false;
@@ -352,10 +352,10 @@ public class a
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    if ((this.YX != null) && ((bool) || (paramBoolean2)))
+    if ((this.ZS != null) && ((bool) || (paramBoolean2)))
     {
       if (paramBoolean1) {
-        this.YX.start();
+        this.ZS.start();
       }
     }
     else {
@@ -368,42 +368,42 @@ public class a
   static final class a
     extends a.f
   {
-    private final Animatable Za;
+    private final Animatable ZV;
     
     a(Animatable paramAnimatable)
     {
       super();
-      this.Za = paramAnimatable;
+      this.ZV = paramAnimatable;
     }
     
     public final void start()
     {
-      this.Za.start();
+      this.ZV.start();
     }
     
     public final void stop()
     {
-      this.Za.stop();
+      this.ZV.stop();
     }
   }
   
   static final class b
     extends e.a
   {
-    android.support.v4.e.g<Long> Zb;
-    o<Integer> Zc;
+    android.support.v4.e.g<Long> ZW;
+    o<Integer> ZX;
     
     b(b paramb, a parama, Resources paramResources)
     {
       super(parama, paramResources);
       if (paramb != null)
       {
-        this.Zb = paramb.Zb;
-        this.Zc = paramb.Zc;
+        this.ZW = paramb.ZW;
+        this.ZX = paramb.ZX;
         return;
       }
-      this.Zb = new android.support.v4.e.g();
-      this.Zc = new o();
+      this.ZW = new android.support.v4.e.g();
+      this.ZX = new o();
     }
     
     static long D(int paramInt1, int paramInt2)
@@ -419,11 +419,11 @@ public class a
       if (paramBoolean) {
         l1 = 8589934592L;
       }
-      this.Zb.append(l2, Long.valueOf(i | l1));
+      this.ZW.append(l2, Long.valueOf(i | l1));
       if (paramBoolean)
       {
         l2 = D(paramInt2, paramInt1);
-        this.Zb.append(l2, Long.valueOf(l1 | i | 0x0));
+        this.ZW.append(l2, Long.valueOf(l1 | i | 0x0));
       }
       return i;
     }
@@ -433,7 +433,7 @@ public class a
       if (paramInt < 0) {
         return 0;
       }
-      return ((Integer)this.Zc.get(paramInt, Integer.valueOf(0))).intValue();
+      return ((Integer)this.ZX.get(paramInt, Integer.valueOf(0))).intValue();
     }
     
     final int g(int[] paramArrayOfInt)
@@ -445,10 +445,10 @@ public class a
       return super.h(StateSet.WILD_CARD);
     }
     
-    final void gL()
+    final void gT()
     {
-      this.Zb = this.Zb.eS();
-      this.Zc = this.Zc.eT();
+      this.ZW = this.ZW.fa();
+      this.ZX = this.ZX.fb();
     }
     
     public final Drawable newDrawable()
@@ -465,30 +465,30 @@ public class a
   static final class c
     extends a.f
   {
-    private final c Zd;
+    private final c ZY;
     
     c(c paramc)
     {
       super();
-      this.Zd = paramc;
+      this.ZY = paramc;
     }
     
     public final void start()
     {
-      this.Zd.start();
+      this.ZY.start();
     }
     
     public final void stop()
     {
-      this.Zd.stop();
+      this.ZY.stop();
     }
   }
   
   static final class d
     extends a.f
   {
-    private final ObjectAnimator Ze;
-    private final boolean Zf;
+    private final ObjectAnimator ZZ;
+    private final boolean aaa;
     
     d(AnimationDrawable paramAnimationDrawable, boolean paramBoolean1, boolean paramBoolean2)
     {
@@ -510,10 +510,10 @@ public class a
         if (Build.VERSION.SDK_INT >= 18) {
           paramAnimationDrawable.setAutoCancel(true);
         }
-        paramAnimationDrawable.setDuration(locale.Zi);
+        paramAnimationDrawable.setDuration(locale.aad);
         paramAnimationDrawable.setInterpolator(locale);
-        this.Zf = paramBoolean2;
-        this.Ze = paramAnimationDrawable;
+        this.aaa = paramBoolean2;
+        this.ZZ = paramAnimationDrawable;
         return;
         i = 0;
         break;
@@ -522,33 +522,33 @@ public class a
       }
     }
     
-    public final boolean gM()
+    public final boolean gU()
     {
-      return this.Zf;
+      return this.aaa;
     }
     
     public final void reverse()
     {
-      this.Ze.reverse();
+      this.ZZ.reverse();
     }
     
     public final void start()
     {
-      this.Ze.start();
+      this.ZZ.start();
     }
     
     public final void stop()
     {
-      this.Ze.cancel();
+      this.ZZ.cancel();
     }
   }
   
   static final class e
     implements TimeInterpolator
   {
-    private int[] Zg;
-    private int Zh;
-    int Zi;
+    private int[] aab;
+    private int aac;
+    int aad;
     
     e(AnimationDrawable paramAnimationDrawable, boolean paramBoolean)
     {
@@ -558,11 +558,11 @@ public class a
     private int a(AnimationDrawable paramAnimationDrawable, boolean paramBoolean)
     {
       int m = paramAnimationDrawable.getNumberOfFrames();
-      this.Zh = m;
-      if ((this.Zg == null) || (this.Zg.length < m)) {
-        this.Zg = new int[m];
+      this.aac = m;
+      if ((this.aab == null) || (this.aab.length < m)) {
+        this.aab = new int[m];
       }
-      int[] arrayOfInt = this.Zg;
+      int[] arrayOfInt = this.aab;
       int i = 0;
       int j = 0;
       if (i < m)
@@ -577,15 +577,15 @@ public class a
           break;
         }
       }
-      this.Zi = j;
+      this.aad = j;
       return j;
     }
     
     public final float getInterpolation(float paramFloat)
     {
-      int j = (int)(this.Zi * paramFloat + 0.5F);
-      int k = this.Zh;
-      int[] arrayOfInt = this.Zg;
+      int j = (int)(this.aad * paramFloat + 0.5F);
+      int k = this.aac;
+      int[] arrayOfInt = this.aab;
       int i = 0;
       while ((i < k) && (j >= arrayOfInt[i]))
       {
@@ -593,7 +593,7 @@ public class a
         i += 1;
       }
       if (i < k) {}
-      for (paramFloat = j / this.Zi;; paramFloat = 0.0F) {
+      for (paramFloat = j / this.aad;; paramFloat = 0.0F) {
         return paramFloat + i / k;
       }
     }
@@ -601,7 +601,7 @@ public class a
   
   static abstract class f
   {
-    public boolean gM()
+    public boolean gU()
     {
       return false;
     }

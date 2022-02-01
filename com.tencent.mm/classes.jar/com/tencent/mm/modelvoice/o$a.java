@@ -3,8 +3,8 @@ package com.tencent.mm.modelvoice;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 final class o$a
   implements a
@@ -32,12 +32,12 @@ final class o$a
       i = 0;
       break;
     } while ((paramArrayOfString.length <= 1) || (paramArrayOfString[1] == null));
-    i = bt.getInt(paramArrayOfString[1], 1);
+    i = bs.getInt(paramArrayOfString[1], 1);
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.audio.b.i.cZI = bool;
-      ad.i("MicroMsg.SubCoreVoice", "summervoicetrymore enable[%d]", new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.audio.b.i.cXe = bool;
+      ac.i("MicroMsg.SubCoreVoice", "summervoicetrymore enable[%d]", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(148437);
       return true;
     }

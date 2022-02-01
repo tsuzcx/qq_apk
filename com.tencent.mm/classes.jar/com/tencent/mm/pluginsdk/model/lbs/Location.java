@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class Location
   implements Parcelable
 {
   public static final Parcelable.Creator<Location> CREATOR;
   public int accuracy;
-  public int dqS;
-  public String dqU;
-  public float heb;
-  public float hec;
+  public int doD;
+  public String doF;
+  public float hEE;
+  public float hEF;
   public String mac;
   
   static
@@ -28,12 +28,12 @@ public class Location
   
   public Location(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    this.heb = paramFloat1;
-    this.hec = paramFloat2;
+    this.hEE = paramFloat1;
+    this.hEF = paramFloat2;
     this.accuracy = paramInt1;
-    this.dqS = paramInt2;
+    this.doD = paramInt2;
     this.mac = paramString1;
-    this.dqU = paramString2;
+    this.doF = paramString2;
   }
   
   public int describeContents()
@@ -41,12 +41,12 @@ public class Location
     return 0;
   }
   
-  public final boolean evV()
+  public final boolean eLp()
   {
     AppMethodBeat.i(151845);
-    if ((this.heb == -85.0F) || (this.hec == -1000.0F))
+    if ((this.hEE == -85.0F) || (this.hEF == -1000.0F))
     {
-      ad.d("MicroMsg.Radar.Location", "mac and cellId is null");
+      ac.d("MicroMsg.Radar.Location", "mac and cellId is null");
       AppMethodBeat.o(151845);
       return true;
     }
@@ -57,12 +57,12 @@ public class Location
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(151846);
-    paramParcel.writeFloat(this.heb);
-    paramParcel.writeFloat(this.hec);
+    paramParcel.writeFloat(this.hEE);
+    paramParcel.writeFloat(this.hEF);
     paramParcel.writeInt(this.accuracy);
-    paramParcel.writeInt(this.dqS);
+    paramParcel.writeInt(this.doD);
     paramParcel.writeString(this.mac);
-    paramParcel.writeString(this.dqU);
+    paramParcel.writeString(this.doF);
     AppMethodBeat.o(151846);
   }
 }

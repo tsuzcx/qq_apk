@@ -2,17 +2,17 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class t
 {
-  public int fDR = 0;
-  public int fDS = 0;
+  public int fHy = 0;
+  public int fHz = 0;
   
-  public final void kY(int paramInt)
+  public final void kS(int paramInt)
   {
-    this.fDS = paramInt;
+    this.fHz = paramInt;
   }
   
-  public final void kZ(int paramInt)
+  public final void kT(int paramInt)
   {
-    this.fDR = paramInt;
+    this.fHy = paramInt;
   }
 }
 

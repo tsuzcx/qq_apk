@@ -28,7 +28,7 @@ public final class AppBrandOpReportLogic$AppBrandOnOpReportStartEvent
     AppMethodBeat.o(147201);
   }
   
-  public static void IR(String paramString)
+  public static void MS(String paramString)
   {
     AppMethodBeat.i(147199);
     AppBrandOnOpReportStartEvent localAppBrandOnOpReportStartEvent = new AppBrandOnOpReportStartEvent();
@@ -51,7 +51,7 @@ public final class AppBrandOpReportLogic$AppBrandOnOpReportStartEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.op_report.AppBrandOpReportLogic.AppBrandOnOpReportStartEvent
  * JD-Core Version:    0.7.0.1
  */

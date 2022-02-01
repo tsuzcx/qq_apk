@@ -1,81 +1,77 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class mp
-  extends ckq
+  extends cpx
 {
-  public LinkedList<String> CJB;
-  public String CJC;
-  public double CJD;
-  public double CJE;
-  public String ProductID;
-  public int Scene;
-  
-  public mp()
-  {
-    AppMethodBeat.i(124427);
-    this.CJB = new LinkedList();
-    AppMethodBeat.o(124427);
-  }
+  public String Ebs;
+  public String cZL;
+  public int offset;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124428);
+    AppMethodBeat.i(124422);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Ebs == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: brand_user_name");
+        AppMethodBeat.o(124422);
+        throw paramVarArgs;
+      }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.ProductID != null) {
-        paramVarArgs.d(2, this.ProductID);
+      if (this.Ebs != null) {
+        paramVarArgs.d(2, this.Ebs);
       }
-      paramVarArgs.e(3, 1, this.CJB);
-      paramVarArgs.aR(4, this.Scene);
-      if (this.CJC != null) {
-        paramVarArgs.d(5, this.CJC);
+      if (this.cZL != null) {
+        paramVarArgs.d(3, this.cZL);
       }
-      paramVarArgs.e(6, this.CJD);
-      paramVarArgs.e(7, this.CJE);
-      AppMethodBeat.o(124428);
+      paramVarArgs.aR(4, this.offset);
+      AppMethodBeat.o(124422);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label628;
+        break label522;
       }
     }
-    label628:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label522:
+    for (int i = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.ProductID != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.ProductID);
-      }
-      i = i + f.a.a.a.c(3, 1, this.CJB) + f.a.a.b.b.a.bA(4, this.Scene);
       paramInt = i;
-      if (this.CJC != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.CJC);
+      if (this.Ebs != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Ebs);
       }
-      i = f.a.a.b.b.a.fY(6);
-      int j = f.a.a.b.b.a.fY(7);
-      AppMethodBeat.o(124428);
-      return paramInt + (i + 8) + (j + 8);
+      i = paramInt;
+      if (this.cZL != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.cZL);
+      }
+      paramInt = f.a.a.b.b.a.bx(4, this.offset);
+      AppMethodBeat.o(124422);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.CJB.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(124428);
+        if (this.Ebs == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: brand_user_name");
+          AppMethodBeat.o(124422);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124422);
         return 0;
       }
       if (paramInt == 3)
@@ -86,49 +82,37 @@ public final class mp
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124428);
+          AppMethodBeat.o(124422);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
+            localObject1 = new iv();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localmp.BaseRequest = ((ip)localObject1);
+            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localmp.BaseRequest = ((iv)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(124428);
+          AppMethodBeat.o(124422);
           return 0;
         case 2: 
-          localmp.ProductID = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(124428);
+          localmp.Ebs = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(124422);
           return 0;
         case 3: 
-          localmp.CJB.add(((f.a.a.a.a)localObject1).KhF.readString());
-          AppMethodBeat.o(124428);
-          return 0;
-        case 4: 
-          localmp.Scene = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(124428);
-          return 0;
-        case 5: 
-          localmp.CJC = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(124428);
-          return 0;
-        case 6: 
-          localmp.CJD = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
-          AppMethodBeat.o(124428);
+          localmp.cZL = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(124422);
           return 0;
         }
-        localmp.CJE = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
-        AppMethodBeat.o(124428);
+        localmp.offset = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(124422);
         return 0;
       }
-      AppMethodBeat.o(124428);
+      AppMethodBeat.o(124422);
       return -1;
     }
   }

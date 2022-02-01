@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 abstract class d<K, V>
   implements k<K, V>
 {
-  private transient Collection<Map.Entry<K, V>> bVI;
-  private transient Set<K> bVJ;
-  private transient Collection<V> bVK;
-  private transient Map<K, Collection<V>> bVL;
+  private transient Collection<Map.Entry<K, V>> bTq;
+  private transient Set<K> bTr;
+  private transient Collection<V> bTs;
+  private transient Map<K, Collection<V>> bTt;
   
   public boolean containsValue(@Nullable Object paramObject)
   {
-    Iterator localIterator = zB().values().iterator();
+    Iterator localIterator = zo().values().iterator();
     while (localIterator.hasNext()) {
       if (((Collection)localIterator.next()).contains(paramObject)) {
         return true;
@@ -36,7 +36,7 @@ abstract class d<K, V>
     if ((paramObject instanceof k))
     {
       paramObject = (k)paramObject;
-      return zB().equals(paramObject.zB());
+      return zo().equals(paramObject.zo());
     }
     return false;
   }
@@ -48,75 +48,75 @@ abstract class d<K, V>
   
   public int hashCode()
   {
-    return zB().hashCode();
+    return zo().hashCode();
   }
   
   public boolean j(@Nullable Object paramObject1, @Nullable Object paramObject2)
   {
-    paramObject1 = (Collection)zB().get(paramObject1);
+    paramObject1 = (Collection)zo().get(paramObject1);
     return (paramObject1 != null) && (paramObject1.contains(paramObject2));
   }
   
   public Set<K> keySet()
   {
-    Set localSet2 = this.bVJ;
+    Set localSet2 = this.bTr;
     Set localSet1 = localSet2;
     if (localSet2 == null)
     {
-      localSet1 = zD();
-      this.bVJ = localSet1;
+      localSet1 = zq();
+      this.bTr = localSet1;
     }
     return localSet1;
   }
   
   public boolean remove(@Nullable Object paramObject1, @Nullable Object paramObject2)
   {
-    paramObject1 = (Collection)zB().get(paramObject1);
+    paramObject1 = (Collection)zo().get(paramObject1);
     return (paramObject1 != null) && (paramObject1.remove(paramObject2));
   }
   
   public String toString()
   {
-    return zB().toString();
+    return zo().toString();
   }
   
   public Collection<V> values()
   {
-    Collection localCollection = this.bVK;
+    Collection localCollection = this.bTs;
     Object localObject = localCollection;
     if (localCollection == null)
     {
       localObject = new c();
-      this.bVK = ((Collection)localObject);
+      this.bTs = ((Collection)localObject);
     }
     return localObject;
   }
   
-  public Map<K, Collection<V>> zB()
+  public Map<K, Collection<V>> zo()
   {
-    Map localMap2 = this.bVL;
+    Map localMap2 = this.bTt;
     Map localMap1 = localMap2;
     if (localMap2 == null)
     {
-      localMap1 = zH();
-      this.bVL = localMap1;
+      localMap1 = zu();
+      this.bTt = localMap1;
     }
     return localMap1;
   }
   
-  Set<K> zD()
+  Set<K> zq()
   {
-    return new j.d(zB());
+    return new j.d(zo());
   }
   
-  Iterator<V> zE()
+  Iterator<V> zr()
   {
-    return j.c(zF().iterator());
+    return j.c(zs().iterator());
   }
   
-  public Collection<Map.Entry<K, V>> zF()
+  public Collection<Map.Entry<K, V>> zs()
   {
-    Collection localCollection = this.bVI;
+    Collection localCollection = this.bTq;
     Object localObject = localCollection;
     if (localCollection == null) {
       if (!(this instanceof n)) {
@@ -126,14 +126,14 @@ abstract class d<K, V>
     label35:
     for (localObject = new b((byte)0);; localObject = new a((byte)0))
     {
-      this.bVI = ((Collection)localObject);
+      this.bTq = ((Collection)localObject);
       return localObject;
     }
   }
   
-  abstract Iterator<Map.Entry<K, V>> zG();
+  abstract Iterator<Map.Entry<K, V>> zt();
   
-  abstract Map<K, Collection<V>> zH();
+  abstract Map<K, Collection<V>> zu();
   
   class a
     extends l<K, V>
@@ -142,10 +142,10 @@ abstract class d<K, V>
     
     public Iterator<Map.Entry<K, V>> iterator()
     {
-      return d.this.zG();
+      return d.this.zt();
     }
     
-    final k<K, V> zQ()
+    final k<K, V> zD()
     {
       return d.this;
     }
@@ -200,7 +200,7 @@ abstract class d<K, V>
     
     public final Iterator<V> iterator()
     {
-      return d.this.zE();
+      return d.this.zr();
     }
     
     public final int size()

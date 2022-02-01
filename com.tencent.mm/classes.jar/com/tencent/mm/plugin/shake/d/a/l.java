@@ -7,54 +7,54 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.d;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.protocal.protobuf.csj;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.protocal.protobuf.cxs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class l
   extends l.b
 {
-  private static boolean hBC = false;
+  private static boolean icd = false;
   private static boolean isRunning = false;
   private Context context;
   private boolean isActive;
-  private long lKF;
-  private a wnU;
+  private long mmC;
+  private a xzl;
   
   public l(Context paramContext, l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28327);
     this.isActive = false;
-    this.wnU = new a();
+    this.xzl = new a();
     this.context = paramContext;
     isRunning = false;
     AppMethodBeat.o(28327);
   }
   
-  private void d(List<d> paramList, long paramLong)
+  private void e(List<d> paramList, long paramLong)
   {
     AppMethodBeat.i(28331);
-    if (this.wlU != null) {
-      this.wlU.c(paramList, paramLong);
+    if (this.xxk != null) {
+      this.xxk.d(paramList, paramLong);
     }
     AppMethodBeat.o(28331);
   }
   
-  public final void doF()
+  public final void dCP()
   {
     AppMethodBeat.i(28330);
-    super.doF();
-    this.wnU.Ob();
+    super.dCP();
+    this.xzl.NX();
     if (isRunning)
     {
-      long l = System.currentTimeMillis() - this.lKF;
-      ad.d("Micromsg.ShakeTVService", "a%s, isRunning=%s", new Object[] { Long.valueOf(l), Boolean.valueOf(isRunning) });
-      h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(2), Integer.valueOf((int)l) });
-      h.vKh.m(835L, 1L, 1L);
+      long l = System.currentTimeMillis() - this.mmC;
+      ac.d("Micromsg.ShakeTVService", "a%s, isRunning=%s", new Object[] { Long.valueOf(l), Boolean.valueOf(isRunning) });
+      h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(2), Integer.valueOf((int)l) });
+      h.wUl.n(835L, 1L, 1L);
       isRunning = false;
     }
     AppMethodBeat.o(28330);
@@ -63,15 +63,15 @@ public final class l
   public final void init()
   {
     AppMethodBeat.i(28329);
-    if (!hBC)
+    if (!icd)
     {
-      if (!this.wnU.dpB())
+      if (!this.xzl.dDL())
       {
-        ad.e("Micromsg.ShakeTVService", "init MusicFingerPrintRecorder false");
+        ac.e("Micromsg.ShakeTVService", "init MusicFingerPrintRecorder false");
         AppMethodBeat.o(28329);
         return;
       }
-      hBC = true;
+      icd = true;
     }
     AppMethodBeat.o(28329);
   }
@@ -85,29 +85,29 @@ public final class l
   public final void start()
   {
     AppMethodBeat.i(28328);
-    ad.v("Micromsg.ShakeTVService", "hy: start shake tv!");
-    if (this.wlU == null)
+    ac.v("Micromsg.ShakeTVService", "hy: start shake tv!");
+    if (this.xxk == null)
     {
-      ad.w("Micromsg.ShakeTVService", "shakeGetListener == null");
+      ac.w("Micromsg.ShakeTVService", "shakeGetListener == null");
       AppMethodBeat.o(28328);
       return;
     }
     if (!(this.context instanceof Activity))
     {
-      ad.e("Micromsg.ShakeTVService", "context not an Activity");
-      this.wlU.c(new ArrayList(), 0L);
+      ac.e("Micromsg.ShakeTVService", "context not an Activity");
+      this.xxk.d(new ArrayList(), 0L);
       AppMethodBeat.o(28328);
       return;
     }
     isRunning = true;
-    this.lKF = System.currentTimeMillis();
-    this.wnU.a(408, new a.a()
+    this.mmC = System.currentTimeMillis();
+    this.xzl.a(408, new a.a()
     {
-      public final void b(cld paramAnonymouscld, long paramAnonymousLong, boolean paramAnonymousBoolean)
+      public final void b(cqk paramAnonymouscqk, long paramAnonymousLong, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(28326);
-        ad.i("Micromsg.ShakeTVService", "hy: shake tv call back. isNetworkFail; %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        csj localcsj;
+        ac.i("Micromsg.ShakeTVService", "hy: shake tv call back. isNetworkFail; %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        cxs localcxs;
         Object localObject2;
         Object localObject3;
         Object localObject1;
@@ -115,45 +115,45 @@ public final class l
         if (paramAnonymousLong > l.a(l.this))
         {
           paramAnonymousLong = System.currentTimeMillis() - paramAnonymousLong;
-          if ((paramAnonymouscld == null) || (bt.isNullOrNil(((csj)paramAnonymouscld).DyQ))) {
+          if ((paramAnonymouscqk == null) || (bs.isNullOrNil(((cxs)paramAnonymouscqk).EUm))) {
             break label542;
           }
-          localcsj = (csj)paramAnonymouscld;
-          ad.w("Micromsg.ShakeTVService", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localcsj.mBH), localcsj.DyQ });
+          localcxs = (cxs)paramAnonymouscqk;
+          ac.w("Micromsg.ShakeTVService", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localcxs.ndI), localcxs.EUm });
           localObject2 = null;
           localObject3 = null;
-          paramAnonymouscld = localObject3;
+          paramAnonymouscqk = localObject3;
           localObject1 = localObject2;
-          if (localcsj.DyQ != null)
+          if (localcxs.EUm != null)
           {
-            localcsj.DyQ = localcsj.DyQ.trim();
-            i = localcsj.DyQ.indexOf("<tvinfo>");
+            localcxs.EUm = localcxs.EUm.trim();
+            i = localcxs.EUm.indexOf("<tvinfo>");
             if (i <= 0) {
               break label358;
             }
-            localObject1 = localcsj.DyQ.substring(0, i);
-            paramAnonymouscld = localcsj.DyQ.substring(i);
+            localObject1 = localcxs.EUm.substring(0, i);
+            paramAnonymouscqk = localcxs.EUm.substring(i);
           }
           label171:
-          l.and(paramAnonymouscld);
-          switch (localcsj.mBH)
+          l.asm(paramAnonymouscqk);
+          switch (localcxs.ndI)
           {
           default: 
-            ad.w("Micromsg.ShakeTVService", "parse unknown type:" + localcsj.mBH);
+            ac.w("Micromsg.ShakeTVService", "parse unknown type:" + localcxs.ndI);
             l.a(l.this, new ArrayList());
             paramAnonymousBoolean = false;
             label266:
             if (paramAnonymousBoolean)
             {
-              h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - l.a(l.this))) });
-              h.vKh.m(835L, 0L, 1L);
+              h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - l.a(l.this))) });
+              h.wUl.n(835L, 0L, 1L);
             }
             break;
           }
         }
         for (;;)
         {
-          l.Ox();
+          l.Ot();
           AppMethodBeat.o(28326);
           return;
           paramAnonymousLong = System.currentTimeMillis() - l.a(l.this);
@@ -161,12 +161,12 @@ public final class l
           label358:
           if (i == 0)
           {
-            paramAnonymouscld = localcsj.DyQ;
+            paramAnonymouscqk = localcxs.EUm;
             localObject1 = localObject2;
             break label171;
           }
-          localObject1 = localcsj.DyQ;
-          paramAnonymouscld = localObject3;
+          localObject1 = localcxs.EUm;
+          paramAnonymouscqk = localObject3;
           break label171;
           paramAnonymousBoolean = l.a(l.this, (String)localObject1);
           break label266;
@@ -182,26 +182,26 @@ public final class l
           break label266;
           paramAnonymousBoolean = l.g(l.this, (String)localObject1);
           break label266;
-          h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramAnonymousLong) });
-          h.vKh.m(835L, 4L, 1L);
+          h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramAnonymousLong) });
+          h.wUl.n(835L, 4L, 1L);
           continue;
           label542:
           if (paramAnonymousBoolean)
           {
             l.a(l.this, new ArrayList());
-            h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramAnonymousLong) });
-            h.vKh.m(835L, 3L, 1L);
+            h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramAnonymousLong) });
+            h.wUl.n(835L, 3L, 1L);
           }
           else
           {
             l.a(l.this, new ArrayList());
-            h.vKh.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramAnonymousLong) });
-            h.vKh.m(835L, 2L, 1L);
+            h.wUl.f(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramAnonymousLong) });
+            h.wUl.n(835L, 2L, 1L);
           }
         }
       }
     });
-    h.vKh.m(835L, 5L, 1L);
+    h.wUl.n(835L, 5L, 1L);
     AppMethodBeat.o(28328);
   }
 }

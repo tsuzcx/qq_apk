@@ -2,20 +2,20 @@ package com.tencent.mm.k;
 
 public abstract interface a
 {
-  public abstract boolean KF();
+  public abstract boolean Kq();
   
   public static final class a
   {
-    private static a fyw = null;
+    private static a fCd = null;
     
-    public static a Wg()
+    public static a Xe()
     {
-      return fyw;
+      return fCd;
     }
     
     public static void a(a parama)
     {
-      fyw = parama;
+      fCd = parama;
     }
   }
 }

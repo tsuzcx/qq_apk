@@ -5,30 +5,30 @@ import com.tencent.mm.plugin.record.a.f;
 import com.tencent.mm.pluginsdk.model.app.ao.a;
 import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.protocal.b.a.c;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class k
   implements f
 {
-  public final boolean f(String paramString1, long paramLong, String paramString2)
+  public final boolean g(String paramString1, long paramLong, String paramString2)
   {
     AppMethodBeat.i(27805);
-    Object localObject = n.alt(paramString1);
+    Object localObject = n.aqs(paramString1);
     if (localObject == null)
     {
-      ad.w("MicroMsg.RecordMsgHelpService", "get record msg data error, empty");
+      ac.w("MicroMsg.RecordMsgHelpService", "get record msg data error, empty");
       AppMethodBeat.o(27805);
       return false;
     }
     paramString1 = null;
-    Iterator localIterator = ((c)localObject).gKs.iterator();
+    Iterator localIterator = ((c)localObject).hkS.iterator();
     if (localIterator.hasNext())
     {
-      localObject = (afy)localIterator.next();
-      if (!((afy)localObject).dkb.equals(paramString2)) {
+      localObject = (agx)localIterator.next();
+      if (!((agx)localObject).dhw.equals(paramString2)) {
         break label102;
       }
       paramString1 = (String)localObject;
@@ -43,17 +43,17 @@ public final class k
     }
   }
   
-  public final void rN(long paramLong)
+  public final void wq(long paramLong)
   {
     AppMethodBeat.i(27804);
-    ap.evT();
-    ao.a.rN(paramLong);
+    ap.eLn();
+    ao.a.wq(paramLong);
     AppMethodBeat.o(27804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.k
  * JD-Core Version:    0.7.0.1
  */

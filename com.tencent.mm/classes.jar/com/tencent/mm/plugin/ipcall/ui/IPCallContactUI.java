@@ -24,9 +24,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.model.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
@@ -38,66 +38,66 @@ import java.util.HashMap;
 public class IPCallContactUI
   extends MMActivity
 {
-  private r fvI;
-  private ap gAC;
-  private String iiW;
-  private ListView sFG;
-  private Runnable sFN;
-  private ProgressDialog sFV;
-  private c sFW;
-  private RelativeLayout sFX;
-  private LinearLayout sFY;
-  private IPCallAddressCountView sFZ;
-  private VerticalScrollBar sGa;
-  private LinearLayout sGb;
-  private int sGc;
-  private int sGd;
-  private a.a sGe;
-  private Runnable sGf;
-  private boolean sGg;
+  private r fzp;
+  private ao gox;
+  private String iJd;
+  private ProgressDialog tNC;
+  private c tND;
+  private RelativeLayout tNE;
+  private LinearLayout tNF;
+  private IPCallAddressCountView tNG;
+  private VerticalScrollBar tNH;
+  private LinearLayout tNI;
+  private int tNJ;
+  private int tNK;
+  private a.a tNL;
+  private Runnable tNM;
+  private boolean tNN;
+  private ListView tNn;
+  private Runnable tNu;
   
   public IPCallContactUI()
   {
     AppMethodBeat.i(25704);
-    this.fvI = new r((byte)0);
-    this.sFV = null;
-    this.sFZ = null;
-    this.sGc = -1;
-    this.sGd = -1;
-    this.sGe = new a.a()
+    this.fzp = new r((byte)0);
+    this.tNC = null;
+    this.tNG = null;
+    this.tNJ = -1;
+    this.tNK = -1;
+    this.tNL = new a.a()
     {
-      public final void cGU()
+      public final void cUf()
       {
         AppMethodBeat.i(25697);
         IPCallContactUI.f(IPCallContactUI.this).sendEmptyMessage(1);
         AppMethodBeat.o(25697);
       }
     };
-    this.sFN = new Runnable()
+    this.tNu = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25698);
-        com.tencent.mm.plugin.ipcall.model.a.cGT().a(IPCallContactUI.g(IPCallContactUI.this), false);
+        com.tencent.mm.plugin.ipcall.model.a.cUe().a(IPCallContactUI.g(IPCallContactUI.this), false);
         AppMethodBeat.o(25698);
       }
     };
-    this.sGf = new Runnable()
+    this.tNM = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25700);
-        if ((IPCallContactUI.d(IPCallContactUI.this) != null) && (IPCallContactUI.b(IPCallContactUI.this) != null) && (!IPCallContactUI.d(IPCallContactUI.this).mUj))
+        if ((IPCallContactUI.d(IPCallContactUI.this) != null) && (IPCallContactUI.b(IPCallContactUI.this) != null) && (!IPCallContactUI.d(IPCallContactUI.this).nwB))
         {
-          IPCallContactUI.d(IPCallContactUI.this).BW(IPCallContactUI.h(IPCallContactUI.this));
+          IPCallContactUI.d(IPCallContactUI.this).FZ(IPCallContactUI.h(IPCallContactUI.this));
           IPCallContactUI.f(IPCallContactUI.this).sendEmptyMessage(2);
           IPCallContactUI.b(IPCallContactUI.this).invalidateViews();
         }
         AppMethodBeat.o(25700);
       }
     };
-    this.sGg = true;
-    this.gAC = new ap(Looper.getMainLooper())
+    this.tNN = true;
+    this.gox = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -109,12 +109,12 @@ public class IPCallContactUI
           }
           IPCallContactUI.l(IPCallContactUI.this).setVisibility(0);
           IPCallContactUI.d(IPCallContactUI.this);
-          c.sDW = com.tencent.mm.plugin.ipcall.model.h.b.cHO();
-          IPCallContactUI.d(IPCallContactUI.this).Wd();
+          c.tLD = com.tencent.mm.plugin.ipcall.model.h.b.cUZ();
+          IPCallContactUI.d(IPCallContactUI.this).Xb();
           IPCallContactUI.d(IPCallContactUI.this).notifyDataSetChanged();
           IPCallContactUI.b(IPCallContactUI.this).invalidateViews();
           IPCallContactUI.c(IPCallContactUI.this).setAddressCount(IPCallContactUI.d(IPCallContactUI.this).getCount());
-          com.tencent.mm.plugin.ipcall.a.cGy().cGz();
+          com.tencent.mm.plugin.ipcall.a.cTI().cTJ();
           AppMethodBeat.o(25688);
           return;
         }
@@ -140,12 +140,12 @@ public class IPCallContactUI
     AppMethodBeat.o(25704);
   }
   
-  public final void BW(String paramString)
+  public final void FZ(String paramString)
   {
     AppMethodBeat.i(25706);
-    this.iiW = paramString;
-    this.gAC.removeCallbacks(this.sGf);
-    this.gAC.postDelayed(this.sGf, 200L);
+    this.iJd = paramString;
+    this.gox.removeCallbacks(this.tNM);
+    this.gox.postDelayed(this.tNM, 200L);
     AppMethodBeat.o(25706);
   }
   
@@ -159,12 +159,12 @@ public class IPCallContactUI
     return 2131494501;
   }
   
-  public final void mz(boolean paramBoolean)
+  public final void ns(boolean paramBoolean)
   {
     AppMethodBeat.i(25707);
-    this.sGg = paramBoolean;
-    if (this.sGg) {
-      this.sFW.notifyDataSetChanged();
+    this.tNN = paramBoolean;
+    if (this.tNN) {
+      this.tND.notifyDataSetChanged();
     }
     AppMethodBeat.o(25707);
   }
@@ -192,30 +192,30 @@ public class IPCallContactUI
       }
     });
     boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
-    ad.i("MicroMsg.IPCallContactUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bt.eGN() });
+    ac.i("MicroMsg.IPCallContactUI", "summerper checkPermission checkContacts[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), bs.eWi() });
     if (bool)
     {
-      this.sFX = ((RelativeLayout)findViewById(2131301339));
-      this.sFY = ((LinearLayout)findViewById(2131296497));
-      this.sFG = ((ListView)findViewById(2131296469));
-      this.sGa = ((VerticalScrollBar)findViewById(2131296489));
-      this.sGb = ((LinearLayout)findViewById(2131296496));
-      this.fvI.Htp = new r.b()
+      this.tNE = ((RelativeLayout)findViewById(2131301339));
+      this.tNF = ((LinearLayout)findViewById(2131296497));
+      this.tNn = ((ListView)findViewById(2131296469));
+      this.tNH = ((VerticalScrollBar)findViewById(2131296489));
+      this.tNI = ((LinearLayout)findViewById(2131296496));
+      this.fzp.ITM = new r.b()
       {
-        public final boolean BX(String paramAnonymousString)
+        public final boolean Ga(String paramAnonymousString)
         {
           AppMethodBeat.i(25694);
-          ad.d("MicroMsg.IPCallContactUI", "onSearchKeyDown");
+          ac.d("MicroMsg.IPCallContactUI", "onSearchKeyDown");
           AppMethodBeat.o(25694);
           return false;
         }
         
-        public final void BY(String paramAnonymousString)
+        public final void Gb(String paramAnonymousString)
         {
           AppMethodBeat.i(25693);
-          ad.d("MicroMsg.IPCallContactUI", "onSearchChange");
-          IPCallContactUI.this.BW(paramAnonymousString);
-          if (!bt.isNullOrNil(paramAnonymousString))
+          ac.d("MicroMsg.IPCallContactUI", "onSearchChange");
+          IPCallContactUI.this.FZ(paramAnonymousString);
+          if (!bs.isNullOrNil(paramAnonymousString))
           {
             IPCallContactUI.a(IPCallContactUI.this).setVisibility(8);
             IPCallContactUI.b(IPCallContactUI.this).setVisibility(0);
@@ -224,31 +224,31 @@ public class IPCallContactUI
           AppMethodBeat.o(25693);
         }
         
-        public final void aIj()
+        public final void aPa()
         {
           AppMethodBeat.i(25692);
-          ad.d("MicroMsg.IPCallContactUI", "onQuitSearch");
-          IPCallContactUI.this.BW("");
-          IPCallContactUI.this.mz(true);
+          ac.d("MicroMsg.IPCallContactUI", "onQuitSearch");
+          IPCallContactUI.this.FZ("");
+          IPCallContactUI.this.ns(true);
           IPCallContactUI.a(IPCallContactUI.this).setVisibility(8);
           IPCallContactUI.b(IPCallContactUI.this).setVisibility(0);
           IPCallContactUI.c(IPCallContactUI.this).setVisibility(0);
           AppMethodBeat.o(25692);
         }
         
-        public final void aIk()
+        public final void aPb()
         {
           AppMethodBeat.i(25691);
-          ad.d("MicroMsg.IPCallContactUI", "onEnterSearch");
-          com.tencent.mm.plugin.report.service.h.vKh.f(12767, new Object[] { Integer.valueOf(1) });
+          ac.d("MicroMsg.IPCallContactUI", "onEnterSearch");
+          com.tencent.mm.plugin.report.service.h.wUl.f(12767, new Object[] { Integer.valueOf(1) });
           IPCallContactUI.a(IPCallContactUI.this).setVisibility(0);
           IPCallContactUI.b(IPCallContactUI.this).setVisibility(8);
           IPCallContactUI.c(IPCallContactUI.this).setVisibility(8);
-          IPCallContactUI.this.mz(false);
+          IPCallContactUI.this.ns(false);
           AppMethodBeat.o(25691);
         }
         
-        public final void aIl()
+        public final void aPc()
         {
           AppMethodBeat.i(25695);
           IPCallContactUI.a(IPCallContactUI.this).setVisibility(0);
@@ -257,48 +257,48 @@ public class IPCallContactUI
           AppMethodBeat.o(25695);
         }
         
-        public final void aIm() {}
+        public final void aPd() {}
       };
-      this.fvI.Htu = 2131755882;
-      addSearchMenu(true, this.fvI);
-      this.sFW = new c(getContext());
-      c.sDW = com.tencent.mm.plugin.ipcall.model.h.b.cHO();
-      this.sFZ = new IPCallAddressCountView(getContext(), this.sFW.cHW());
-      this.sFG.addFooterView(this.sFZ, null, false);
-      this.sFG.setAdapter(this.sFW);
-      this.sFG.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.fzp.ITR = 2131755882;
+      addSearchMenu(true, this.fzp);
+      this.tND = new c(getContext());
+      c.tLD = com.tencent.mm.plugin.ipcall.model.h.b.cUZ();
+      this.tNG = new IPCallAddressCountView(getContext(), this.tND.cVh());
+      this.tNn.addFooterView(this.tNG, null, false);
+      this.tNn.setAdapter(this.tND);
+      this.tNn.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(25696);
-          if (IPCallContactUI.d(IPCallContactUI.this).EJ(paramAnonymousInt))
+          if (IPCallContactUI.d(IPCallContactUI.this).GF(paramAnonymousInt))
           {
             AppMethodBeat.o(25696);
             return;
           }
-          paramAnonymousView = IPCallContactUI.d(IPCallContactUI.this).Fo(paramAnonymousInt);
+          paramAnonymousView = IPCallContactUI.d(IPCallContactUI.this).Hj(paramAnonymousInt);
           if (paramAnonymousView != null)
           {
             if (!IPCallContactUI.e(IPCallContactUI.this)) {
-              com.tencent.mm.plugin.report.service.h.vKh.f(12767, new Object[] { Integer.valueOf(2) });
+              com.tencent.mm.plugin.report.service.h.wUl.f(12767, new Object[] { Integer.valueOf(2) });
             }
             paramAnonymousAdapterView = new Intent(IPCallContactUI.this.getContext(), IPCallUserProfileUI.class);
             paramAnonymousAdapterView.putExtra("IPCallProfileUI_contactid", paramAnonymousView.field_contactId);
             paramAnonymousAdapterView.putExtra("IPCallProfileUI_systemUsername", paramAnonymousView.field_systemAddressBookUsername);
             paramAnonymousAdapterView.putExtra("IPCallProfileUI_wechatUsername", paramAnonymousView.field_wechatUsername);
             paramAnonymousView = IPCallContactUI.this.getContext();
-            paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousAdapterView);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallContactUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lS(0));
+            paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallContactUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallContactUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           AppMethodBeat.o(25696);
         }
       });
-      this.sGa.setVisibility(0);
-      this.sFG.setOnScrollListener(new AbsListView.OnScrollListener()
+      this.tNH.setVisibility(0);
+      this.tNn.setOnScrollListener(new AbsListView.OnScrollListener()
       {
-        private int sq = 0;
+        private int tp = 0;
         
         @TargetApi(11)
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -319,14 +319,14 @@ public class IPCallContactUI
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
           AppMethodBeat.i(25701);
-          this.sq = paramAnonymousInt;
+          this.tp = paramAnonymousInt;
           IPCallContactUI.this.hideVKB();
           AppMethodBeat.o(25701);
         }
       });
-      this.sGa.setOnScrollBarTouchListener(new VerticalScrollBar.a()
+      this.tNH.setOnScrollBarTouchListener(new VerticalScrollBar.a()
       {
-        public final void pb(String paramAnonymousString)
+        public final void sn(String paramAnonymousString)
         {
           AppMethodBeat.i(25703);
           if ("↑".equals(paramAnonymousString))
@@ -336,8 +336,8 @@ public class IPCallContactUI
             return;
           }
           c localc = IPCallContactUI.d(IPCallContactUI.this);
-          if (localc.fwy.containsKey(paramAnonymousString)) {}
-          for (int i = ((Integer)localc.fwy.get(paramAnonymousString)).intValue();; i = -1)
+          if (localc.fAf.containsKey(paramAnonymousString)) {}
+          for (int i = ((Integer)localc.fAf.get(paramAnonymousString)).intValue();; i = -1)
           {
             if (i != -1) {
               IPCallContactUI.b(IPCallContactUI.this).setSelection(i);
@@ -347,12 +347,12 @@ public class IPCallContactUI
           }
         }
       });
-      if (this.sFW.cHW() <= 0)
+      if (this.tND.cVh() <= 0)
       {
-        this.sFX.setVisibility(8);
+        this.tNE.setVisibility(8);
         paramBundle = getContext();
         getContext().getString(2131755906);
-        this.sFV = com.tencent.mm.ui.base.h.b(paramBundle, getContext().getString(2131760447), true, new DialogInterface.OnCancelListener()
+        this.tNC = com.tencent.mm.ui.base.h.b(paramBundle, getContext().getString(2131760447), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
@@ -361,11 +361,11 @@ public class IPCallContactUI
             AppMethodBeat.o(25699);
           }
         });
-        com.tencent.mm.sdk.g.b.c(this.sFN, "IPCall_LoadSystemAddressBook");
+        com.tencent.mm.sdk.g.b.c(this.tNu, "IPCall_LoadSystemAddressBook");
         AppMethodBeat.o(25705);
         return;
       }
-      com.tencent.mm.plugin.ipcall.a.cGy().cGz();
+      com.tencent.mm.plugin.ipcall.a.cTI().cTJ();
     }
     AppMethodBeat.o(25705);
   }
@@ -373,7 +373,7 @@ public class IPCallContactUI
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(25710);
-    ad.d("MicroMsg.IPCallContactUI", "onCreateOptionsMenu");
+    ac.d("MicroMsg.IPCallContactUI", "onCreateOptionsMenu");
     boolean bool = super.onCreateOptionsMenu(paramMenu);
     AppMethodBeat.o(25710);
     return bool;
@@ -383,12 +383,12 @@ public class IPCallContactUI
   {
     AppMethodBeat.i(25708);
     super.onDestroy();
-    com.tencent.mm.plugin.ipcall.model.a locala = com.tencent.mm.plugin.ipcall.model.a.cGT();
-    a.a locala1 = this.sGe;
-    if (locala.szH.contains(locala1)) {
-      locala.szH.remove(locala1);
+    com.tencent.mm.plugin.ipcall.model.a locala = com.tencent.mm.plugin.ipcall.model.a.cUe();
+    a.a locala1 = this.tNL;
+    if (locala.tHr.contains(locala1)) {
+      locala.tHr.remove(locala1);
     }
-    this.gAC.removeMessages(1);
+    this.gox.removeMessages(1);
     AppMethodBeat.o(25708);
   }
   
@@ -397,11 +397,11 @@ public class IPCallContactUI
     AppMethodBeat.i(25712);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ad.i("MicroMsg.IPCallContactUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ac.i("MicroMsg.IPCallContactUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(25712);
       return;
     }
-    ad.i("MicroMsg.IPCallContactUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ac.i("MicroMsg.IPCallContactUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -419,9 +419,9 @@ public class IPCallContactUI
             IPCallContactUI.this.finish();
             paramAnonymousDialogInterface = IPCallContactUI.this;
             Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallContactUI$11", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/ipcall/ui/IPCallContactUI$11", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/ipcall/ui/IPCallContactUI$11", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(25689);
           }
@@ -455,7 +455,7 @@ public class IPCallContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallContactUI
  * JD-Core Version:    0.7.0.1
  */

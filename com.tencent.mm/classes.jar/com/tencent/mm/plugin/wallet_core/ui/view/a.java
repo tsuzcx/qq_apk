@@ -16,9 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h.b;
 import com.tencent.mm.ui.tools.b.c;
@@ -45,33 +45,33 @@ public final class a
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.wX(false);
-    locala.wY(true);
-    locala.aaC(2131755691).c(paramOnClickListener);
-    locala.aMf(paramString1);
+    locala.yf(false);
+    locala.yg(true);
+    locala.acN(2131755691).c(paramOnClickListener);
+    locala.aRH(paramString1);
     paramString1 = View.inflate(paramContext, 2131495895, null);
     paramOnClickListener = (EditText)paramString1.findViewById(2131299306);
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bs.isNullOrNil(paramString2)) {
       paramOnClickListener.append(k.b(paramContext, paramString2, paramOnClickListener.getTextSize()));
     }
     ((TextView)paramString1.findViewById(2131305896)).setVisibility(8);
-    if (!bt.isNullOrNil(paramString3)) {
+    if (!bs.isNullOrNil(paramString3)) {
       paramOnClickListener.setHint(paramString3);
     }
-    locala.aaB(2131755835).a(false, new DialogInterface.OnClickListener()
+    locala.acM(2131755835).a(false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(71453);
         boolean bool = true;
-        if (this.AsW != null) {
-          bool = this.AsW.onFinish(paramOnClickListener.getText().toString().trim());
+        if (this.BLq != null) {
+          bool = this.BLq.onFinish(paramOnClickListener.getText().toString().trim());
         }
         if (bool)
         {
           paramAnonymousDialogInterface.dismiss();
           if ((paramContext instanceof MMActivity)) {
-            aq.f(new Runnable()
+            ap.f(new Runnable()
             {
               public final void run()
               {
@@ -86,10 +86,10 @@ public final class a
       }
     });
     if (paramInt > 0) {
-      c.d(paramOnClickListener).aaj(paramInt).a(null);
+      c.d(paramOnClickListener).acw(paramInt).a(null);
     }
-    locala.gs(paramString1);
-    paramString2 = locala.fft();
+    locala.gH(paramString1);
+    paramString2 = locala.fvp();
     paramString2.show();
     a(paramContext, paramString2);
     if ((paramContext instanceof MMActivity)) {
@@ -98,7 +98,7 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(71454);
-          if ((this.AsZ) && (paramOnClickListener != null) && (com.tencent.mm.compatible.util.d.lf(28))) {
+          if ((this.BLt) && (paramOnClickListener != null) && (com.tencent.mm.compatible.util.d.kZ(28))) {
             paramOnClickListener.requestFocus();
           }
           ((MMActivity)paramContext).showVKB();
@@ -127,15 +127,15 @@ public final class a
       return null;
     }
     final f.a locala = new f.a(paramContext);
-    locala.wZ(true);
+    locala.yi(true);
     locala.a(paramc);
-    locala.au(paramString1);
+    locala.av(paramString1);
     paramString1 = View.inflate(paramContext, 2131495896, null);
     paramc = (EditText)paramString1.findViewById(2131299306);
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bs.isNullOrNil(paramString2)) {
       paramc.append(k.b(paramContext, paramString2, paramc.getTextSize()));
     }
-    if (!bt.isNullOrNil(paramString3)) {
+    if (!bs.isNullOrNil(paramString3)) {
       paramc.setHint(paramString3);
     }
     paramString2 = (LinearLayout)paramString1.findViewById(2131296452);
@@ -144,16 +144,16 @@ public final class a
     final TextView localTextView2 = (TextView)paramString1.findViewById(2131296478);
     TextView localTextView3 = (TextView)paramString1.findViewById(2131296481);
     ((ImageView)paramString1.findViewById(2131296451)).getDrawable().setColorFilter(-15970418, PorterDuff.Mode.SRC_ATOP);
-    localTextView3.setText(aj.getContext().getString(2131762416));
+    localTextView3.setText(ai.getContext().getString(2131762416));
     paramString2.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71455);
-        if (this.Ata != null) {
-          this.Ata.a(true, paramc.getText().toString().trim(), null, null, null);
+        if (this.BLu != null) {
+          this.BLu.a(true, paramc.getText().toString().trim(), null, null, null);
         }
-        a.a(paramContext, locala.ijc);
+        a.a(paramContext, locala.iJj);
         AppMethodBeat.o(71455);
       }
     });
@@ -164,14 +164,14 @@ public final class a
     }
     for (;;)
     {
-      locala.aaF(2131755835).b(new f.c()
+      locala.acQ(2131755835).b(new f.c()
       {
         public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
         {
           AppMethodBeat.i(71459);
           if ((this.val$context instanceof MMActivity)) {
             if (parama != null) {
-              if (!bt.isNullOrNil(localTextView1.getText().toString().trim())) {
+              if (!bs.isNullOrNil(localTextView1.getText().toString().trim())) {
                 break label119;
               }
             }
@@ -181,7 +181,7 @@ public final class a
           {
             parama.a(paramAnonymousBoolean, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
             if ((this.val$context instanceof MMActivity)) {
-              aq.f(new Runnable()
+              ap.f(new Runnable()
               {
                 public final void run()
                 {
@@ -196,16 +196,16 @@ public final class a
           }
         }
       });
-      c.d(paramc).aaj(20).a(null);
-      locala.gu(paramString1);
+      c.d(paramc).acw(20).a(null);
+      locala.gK(paramString1);
       locala.show();
       if ((paramContext instanceof MMActivity)) {
-        locala.ijc.getContentView().post(new Runnable()
+        locala.iJj.getContentView().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71460);
-            if ((this.AsZ) && (localTextView2 != null) && (com.tencent.mm.compatible.util.d.lf(28))) {
+            if ((this.BLt) && (localTextView2 != null) && (com.tencent.mm.compatible.util.d.kZ(28))) {
               localTextView2.requestFocus();
             }
             ((MMActivity)paramContext).showVKB();
@@ -213,7 +213,7 @@ public final class a
           }
         });
       }
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -233,10 +233,10 @@ public final class a
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71456);
-          if (this.Ata != null) {
-            this.Ata.a(false, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
+          if (this.BLu != null) {
+            this.BLu.a(false, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
           }
-          a.a(paramContext, locala.ijc);
+          a.a(paramContext, locala.iJj);
           AppMethodBeat.o(71456);
         }
       });
@@ -245,7 +245,7 @@ public final class a
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71457);
-          this.Ate.setVisibility(0);
+          this.BLy.setVisibility(0);
           paramString3.setVisibility(8);
           localTextView1.setText("");
           localTextView2.setText("");
@@ -271,7 +271,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

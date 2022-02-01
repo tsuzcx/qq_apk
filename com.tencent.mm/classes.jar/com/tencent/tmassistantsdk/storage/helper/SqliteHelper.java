@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tmassistantsdk.storage.table.ITableBase;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -49,14 +49,14 @@ public abstract class SqliteHelper
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.SqliteHelper", localInstantiationException, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SqliteHelper", localInstantiationException, "", new Object[0]);
         }
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.SqliteHelper", localIllegalAccessException, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SqliteHelper", localIllegalAccessException, "", new Object[0]);
         }
       }
       i += 1;
@@ -84,14 +84,14 @@ public abstract class SqliteHelper
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.SqliteHelper", localInstantiationException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.SqliteHelper", localInstantiationException, "", new Object[0]);
           }
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.SqliteHelper", localIllegalAccessException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.SqliteHelper", localIllegalAccessException, "", new Object[0]);
           }
         }
       }
@@ -133,7 +133,7 @@ public abstract class SqliteHelper
     //   43: ldc 103
     //   45: iconst_0
     //   46: anewarray 105	java/lang/Object
-    //   49: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   49: invokestatic 111	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   52: goto -41 -> 11
     //   55: aload_0
     //   56: monitorexit
@@ -190,7 +190,7 @@ public abstract class SqliteHelper
     //   43: ldc 103
     //   45: iconst_0
     //   46: anewarray 105	java/lang/Object
-    //   49: invokestatic 111	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   49: invokestatic 111	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   52: goto -41 -> 11
     //   55: aload_0
     //   56: monitorexit
@@ -270,7 +270,7 @@ public abstract class SqliteHelper
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.SqliteHelper", localException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.SqliteHelper", localException, "", new Object[0]);
             i += 1;
           }
         }
@@ -281,7 +281,7 @@ public abstract class SqliteHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.helper.SqliteHelper
  * JD-Core Version:    0.7.0.1
  */

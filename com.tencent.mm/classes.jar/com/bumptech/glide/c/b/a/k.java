@@ -12,16 +12,16 @@ import java.util.Set;
 public final class k
   implements e
 {
-  private static final Bitmap.Config aFY = Bitmap.Config.ARGB_8888;
-  private final l aFZ;
-  private final Set<Bitmap.Config> aGa;
-  private final long aGb;
-  private final a aGc;
-  private long aGd;
-  private int aGe;
-  private int aGf;
-  private int aGg;
-  private int aGh;
+  private static final Bitmap.Config aGO = Bitmap.Config.ARGB_8888;
+  private final l aGP;
+  private final Set<Bitmap.Config> aGQ;
+  private final long aGR;
+  private final a aGS;
+  private long aGT;
+  private int aGU;
+  private int aGV;
+  private int aGW;
+  private int aGX;
   private long maxSize;
   
   public k(long paramLong) {}
@@ -29,11 +29,11 @@ public final class k
   private k(long paramLong, l paraml, Set<Bitmap.Config> paramSet)
   {
     AppMethodBeat.i(77113);
-    this.aGb = paramLong;
+    this.aGR = paramLong;
     this.maxSize = paramLong;
-    this.aFZ = paraml;
-    this.aGa = paramSet;
-    this.aGc = new b();
+    this.aGP = paraml;
+    this.aGQ = paramSet;
+    this.aGS = new b();
     AppMethodBeat.o(77113);
   }
   
@@ -46,7 +46,7 @@ public final class k
       paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
       AppMethodBeat.o(77118);
       return paramConfig;
-      paramConfig = aFY;
+      paramConfig = aGO;
     }
   }
   
@@ -54,7 +54,7 @@ public final class k
   {
     AppMethodBeat.i(77123);
     if (Log.isLoggable("LruBitmapPool", 2)) {
-      ox();
+      oH();
     }
     AppMethodBeat.o(77123);
   }
@@ -72,7 +72,7 @@ public final class k
       }
     }
     finally {}
-    l locall = this.aFZ;
+    l locall = this.aGP;
     Object localObject;
     if (paramConfig != null)
     {
@@ -82,23 +82,23 @@ public final class k
         break label194;
       }
       if (Log.isLoggable("LruBitmapPool", 3)) {
-        new StringBuilder("Missing bitmap=").append(this.aFZ.c(paramInt1, paramInt2, paramConfig));
+        new StringBuilder("Missing bitmap=").append(this.aGP.c(paramInt1, paramInt2, paramConfig));
       }
-      this.aGf += 1;
+      this.aGV += 1;
     }
     for (;;)
     {
       if (Log.isLoggable("LruBitmapPool", 2)) {
-        new StringBuilder("Get bitmap=").append(this.aFZ.c(paramInt1, paramInt2, paramConfig));
+        new StringBuilder("Get bitmap=").append(this.aGP.c(paramInt1, paramInt2, paramConfig));
       }
       dump();
       AppMethodBeat.o(77119);
       return localObject;
-      localObject = aFY;
+      localObject = aGO;
       break;
       label194:
-      this.aGe += 1;
-      this.aGd -= this.aFZ.i((Bitmap)localObject);
+      this.aGU += 1;
+      this.aGT -= this.aGP.i((Bitmap)localObject);
       ((Bitmap)localObject).setHasAlpha(true);
       if (Build.VERSION.SDK_INT >= 19) {
         ((Bitmap)localObject).setPremultiplied(true);
@@ -106,29 +106,29 @@ public final class k
     }
   }
   
-  private void m(long paramLong)
+  private void o(long paramLong)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(77122);
-        if (this.aGd > paramLong)
+        if (this.aGT > paramLong)
         {
-          Bitmap localBitmap = this.aFZ.ot();
+          Bitmap localBitmap = this.aGP.oD();
           if (localBitmap == null)
           {
             if (Log.isLoggable("LruBitmapPool", 5)) {
-              ox();
+              oH();
             }
-            this.aGd = 0L;
+            this.aGT = 0L;
             AppMethodBeat.o(77122);
             return;
           }
-          this.aGd -= this.aFZ.i(localBitmap);
-          this.aGh += 1;
+          this.aGT -= this.aGP.i(localBitmap);
+          this.aGX += 1;
           if (Log.isLoggable("LruBitmapPool", 3)) {
-            new StringBuilder("Evicting bitmap=").append(this.aFZ.h(localBitmap));
+            new StringBuilder("Evicting bitmap=").append(this.aGP.h(localBitmap));
           }
           dump();
           localBitmap.recycle();
@@ -142,10 +142,10 @@ public final class k
     }
   }
   
-  private void ox()
+  private void oH()
   {
     AppMethodBeat.i(77124);
-    new StringBuilder("Hits=").append(this.aGe).append(", misses=").append(this.aGf).append(", puts=").append(this.aGg).append(", evictions=").append(this.aGh).append(", currentSize=").append(this.aGd).append(", maxSize=").append(this.maxSize).append("\nStrategy=").append(this.aFZ);
+    new StringBuilder("Hits=").append(this.aGU).append(", misses=").append(this.aGV).append(", puts=").append(this.aGW).append(", evictions=").append(this.aGX).append(", currentSize=").append(this.aGT).append(", maxSize=").append(this.maxSize).append("\nStrategy=").append(this.aGP);
     AppMethodBeat.o(77124);
   }
   
@@ -194,10 +194,10 @@ public final class k
       AppMethodBeat.o(77115);
       throw paramBitmap;
     }
-    if ((!paramBitmap.isMutable()) || (this.aFZ.i(paramBitmap) > this.maxSize) || (!this.aGa.contains(paramBitmap.getConfig())))
+    if ((!paramBitmap.isMutable()) || (this.aGP.i(paramBitmap) > this.maxSize) || (!this.aGQ.contains(paramBitmap.getConfig())))
     {
       if (Log.isLoggable("LruBitmapPool", 2)) {
-        new StringBuilder("Reject bitmap from pool, bitmap: ").append(this.aFZ.h(paramBitmap)).append(", is mutable: ").append(paramBitmap.isMutable()).append(", is allowed config: ").append(this.aGa.contains(paramBitmap.getConfig()));
+        new StringBuilder("Reject bitmap from pool, bitmap: ").append(this.aGP.h(paramBitmap)).append(", is mutable: ").append(paramBitmap.isMutable()).append(", is allowed config: ").append(this.aGQ.contains(paramBitmap.getConfig()));
       }
       paramBitmap.recycle();
       AppMethodBeat.o(77115);
@@ -205,25 +205,25 @@ public final class k
     for (;;)
     {
       return;
-      int i = this.aFZ.i(paramBitmap);
-      this.aFZ.g(paramBitmap);
-      this.aGg += 1;
-      long l = this.aGd;
-      this.aGd = (i + l);
+      int i = this.aGP.i(paramBitmap);
+      this.aGP.g(paramBitmap);
+      this.aGW += 1;
+      long l = this.aGT;
+      this.aGT = (i + l);
       if (Log.isLoggable("LruBitmapPool", 2)) {
-        new StringBuilder("Put bitmap in pool=").append(this.aFZ.h(paramBitmap));
+        new StringBuilder("Put bitmap in pool=").append(this.aGP.h(paramBitmap));
       }
       dump();
-      m(this.maxSize);
+      o(this.maxSize);
       AppMethodBeat.o(77115);
     }
   }
   
-  public final void os()
+  public final void oC()
   {
     AppMethodBeat.i(77120);
     Log.isLoggable("LruBitmapPool", 3);
-    m(0L);
+    o(0L);
     AppMethodBeat.o(77120);
   }
   
@@ -234,12 +234,12 @@ public final class k
     Log.isLoggable("LruBitmapPool", 3);
     if (paramInt >= 40)
     {
-      os();
+      oC();
       AppMethodBeat.o(77121);
       return;
     }
     if ((paramInt >= 20) || (paramInt == 15)) {
-      m(this.maxSize / 2L);
+      o(this.maxSize / 2L);
     }
     AppMethodBeat.o(77121);
   }
@@ -252,7 +252,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.a.k
  * JD-Core Version:    0.7.0.1
  */

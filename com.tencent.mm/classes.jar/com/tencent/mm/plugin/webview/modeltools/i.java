@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gp;
+import com.tencent.mm.g.c.gt;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends gp
+  extends gt
 {
   public static c.a info;
   
@@ -15,15 +15,15 @@ public final class i
   {
     AppMethodBeat.i(79202);
     c.a locala = new c.a();
-    locala.EYt = new Field[2];
+    locala.GvF = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "host";
-    locala.EYv.put("host", "TEXT");
+    locala.GvH.put("host", "TEXT");
     localStringBuilder.append(" host TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "expireTime";
-    locala.EYv.put("expireTime", "LONG");
+    locala.GvH.put("expireTime", "LONG");
     localStringBuilder.append(" expireTime LONG");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

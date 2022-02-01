@@ -23,22 +23,22 @@ import java.util.zip.ZipOutputStream;
 
 final class b
 {
-  private static Method wI;
+  private static Method xG;
   
   static
   {
     try
     {
-      wI = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
+      xG = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      wI = null;
+      xG = null;
     }
   }
   
-  private static SharedPreferences L(Context paramContext)
+  private static SharedPreferences M(Context paramContext)
   {
     if (Build.VERSION.SDK_INT < 11) {}
     for (int i = 0;; i = 4) {
@@ -58,7 +58,7 @@ final class b
     }
     if (!paramBoolean)
     {
-      paramApplicationInfo = L(paramContext);
+      paramApplicationInfo = M(paramContext);
       if ((paramApplicationInfo.getLong("timestamp", -1L) != k(localFile)) || (paramApplicationInfo.getLong("crc", -1L) != l1)) {
         i = 1;
       }
@@ -77,14 +77,14 @@ final class b
       paramApplicationInfo = d(localFile, paramFile);
       l2 = k(localFile);
       i = paramApplicationInfo.size();
-      paramContext = L(paramContext).edit();
+      paramContext = M(paramContext).edit();
       paramContext.putLong("timestamp", l2);
       paramContext.putLong("crc", l1);
       paramContext.putInt("dex.number", i + 1);
-      if (wI != null) {}
+      if (xG != null) {}
       try
       {
-        wI.invoke(paramContext, new Object[0]);
+        xG.invoke(paramContext, new Object[0]);
         paramContext = paramApplicationInfo;
       }
       catch (InvocationTargetException paramFile)
@@ -103,7 +103,7 @@ final class b
   private static List<File> a(Context paramContext, File paramFile1, File paramFile2)
   {
     paramFile1 = paramFile1.getName() + ".classes";
-    int j = L(paramContext).getInt("dex.number", 1);
+    int j = M(paramContext).getInt("dex.number", 1);
     paramContext = new ArrayList(j);
     int i = 2;
     while (i <= j)
@@ -267,7 +267,7 @@ final class b
     {
       public final boolean accept(File paramAnonymousFile)
       {
-        return !paramAnonymousFile.getName().startsWith(this.wJ);
+        return !paramAnonymousFile.getName().startsWith(this.xH);
       }
     });
     if (paramString == null)
@@ -341,7 +341,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.multidex.b
  * JD-Core Version:    0.7.0.1
  */

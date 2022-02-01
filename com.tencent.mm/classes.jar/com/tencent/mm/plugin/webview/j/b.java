@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.webview.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.ah.m;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public enum b
 {
-  private int dcS = 0;
+  private int daq = 0;
   private String extData = "";
   private int scene = 0;
   
   static
   {
     AppMethodBeat.i(82371);
-    BwR = new b("INSTANCE");
-    BwS = new b[] { BwR };
+    COZ = new b("INSTANCE");
+    CPa = new b[] { COZ };
     AppMethodBeat.o(82371);
   }
   
@@ -41,15 +41,15 @@ public enum b
     localStringBuilder.append(paramInt2).append(",");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append(",").append(paramInt3).append(",").append(paramLong).append(",").append(paramInt4).append(",").append(paramInt5);
-    ad.i("MicroMsg.AuthReport", localStringBuilder.toString());
-    h.vKh.f(16488, new Object[] { paramString, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Long.valueOf(paramLong), Integer.valueOf(paramInt4), Integer.valueOf(0), Integer.valueOf(paramInt5), Integer.valueOf(this.dcS), this.extData });
+    ac.i("MicroMsg.AuthReport", localStringBuilder.toString());
+    h.wUl.f(16488, new Object[] { paramString, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Long.valueOf(paramLong), Integer.valueOf(paramInt4), Integer.valueOf(0), Integer.valueOf(paramInt5), Integer.valueOf(this.daq), this.extData });
     AppMethodBeat.o(82369);
   }
   
-  public final void aC(int paramInt1, int paramInt2, int paramInt3)
+  public final void aD(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82370);
-    int j = m.Xx();
+    int j = m.Yu();
     int i = j;
     if (j == 100) {
       i = 0;
@@ -59,22 +59,22 @@ public enum b
       AppMethodBeat.o(82370);
       return;
     }
-    h.vKh.f(17614, new Object[] { Integer.valueOf(this.dcS), Integer.valueOf(this.scene), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    h.wUl.f(17614, new Object[] { Integer.valueOf(this.daq), Integer.valueOf(this.scene), Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(82370);
   }
   
-  public final void cy(int paramInt, String paramString)
+  public final void cB(int paramInt, String paramString)
   {
-    AppMethodBeat.i(188751);
-    this.dcS = ((int)(System.currentTimeMillis() / 1000L));
+    AppMethodBeat.i(189319);
+    this.daq = ((int)(System.currentTimeMillis() / 1000L));
     this.scene = paramInt;
-    this.extData = x.aCL(paramString);
-    AppMethodBeat.o(188751);
+    this.extData = x.aId(paramString);
+    AppMethodBeat.o(189319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.j.b
  * JD-Core Version:    0.7.0.1
  */

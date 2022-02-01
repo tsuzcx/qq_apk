@@ -6,25 +6,25 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public final class c
 {
-  public static boolean vhf = false;
+  public static boolean wpR = false;
   
-  public static long dGu()
+  public static long dUV()
   {
     long l1 = 0L;
     AppMethodBeat.i(118530);
-    long l2 = g.afB().afk().a(ae.a.Fvt, 0L);
+    long l2 = g.agR().agA().a(ah.a.GTn, 0L);
     if (l2 < 0L) {}
     for (;;)
     {
       l1 += 1L;
-      g.afB().afk().set(ae.a.Fvt, Long.valueOf(l1));
-      ad.i("MicroMsg.X264Config", "updateFailedTimes, cur:%s", new Object[] { Long.valueOf(l1) });
+      g.agR().agA().set(ah.a.GTn, Long.valueOf(l1));
+      ac.i("MicroMsg.X264Config", "updateFailedTimes, cur:%s", new Object[] { Long.valueOf(l1) });
       AppMethodBeat.o(118530);
       return l1;
       l1 = l2;
@@ -34,18 +34,18 @@ public final class c
   public static boolean isEnable()
   {
     AppMethodBeat.i(118528);
-    if (vhf)
+    if (wpR)
     {
       AppMethodBeat.o(118528);
       return true;
     }
-    if (((b)g.ab(b.class)).a(b.a.pnZ, 0L) > 0L)
+    if (((b)g.ab(b.class)).a(b.a.pRz, 0L) > 0L)
     {
       i = 1;
-      if ((i == 0) || (!d.lf(28))) {
+      if ((i == 0) || (!d.kZ(28))) {
         break label97;
       }
-      if (g.afB().afk().a(ae.a.Fvt, 0L) < 3L) {
+      if (g.agR().agA().a(ah.a.GTn, 0L) < 3L) {
         break label92;
       }
     }
@@ -65,23 +65,23 @@ public final class c
     return false;
   }
   
-  public static long tD(long paramLong)
+  public static long yg(long paramLong)
   {
     AppMethodBeat.i(118529);
-    long l = ((b)g.ab(b.class)).a(b.a.pnZ, 40000L);
-    ad.i("MicroMsg.X264Config", "updateByCostTime, costTime:%s, max:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+    long l = ((b)g.ab(b.class)).a(b.a.pRz, 40000L);
+    ac.i("MicroMsg.X264Config", "updateByCostTime, costTime:%s, max:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
     if (paramLong > l)
     {
-      paramLong = dGu();
+      paramLong = dUV();
       AppMethodBeat.o(118529);
       return paramLong;
     }
-    l = g.afB().afk().a(ae.a.Fvt, 0L);
+    l = g.agR().agA().a(ah.a.GTn, 0L);
     if (l <= 0L) {}
     for (l = 0L;; l -= 1L)
     {
-      g.afB().afk().set(ae.a.Fvt, Long.valueOf(l));
-      ad.i("MicroMsg.X264Config", "update succ, costTime:%s, cur:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+      g.agR().agA().set(ah.a.GTn, Long.valueOf(l));
+      ac.i("MicroMsg.X264Config", "update succ, costTime:%s, cur:%s", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
       AppMethodBeat.o(118529);
       return l;
     }

@@ -5,85 +5,85 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.aj;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.ctk;
-import com.tencent.mm.protocal.protobuf.dcy;
-import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.protocal.protobuf.cyv;
+import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.dio;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract boolean Ny();
+  public abstract boolean Nw();
   
-  public abstract boolean Ph(int paramInt);
+  public abstract boolean Rn(int paramInt);
   
-  public abstract void Pi(int paramInt);
+  public abstract void Ro(int paramInt);
   
-  public abstract void Pj(int paramInt);
+  public abstract void Rp(int paramInt);
   
-  public abstract void a(ctk paramctk);
+  public abstract void a(cyv paramcyv);
   
-  public abstract void a(ddb paramddb);
+  public abstract void a(dio paramdio);
   
-  public abstract void a(ddb paramddb, int paramInt1, int paramInt2);
+  public abstract void a(dio paramdio, int paramInt1, int paramInt2);
   
-  public abstract void a(ddb paramddb, View paramView);
+  public abstract void a(dio paramdio, View paramView);
   
-  public abstract void a(ddb paramddb, f paramf, int paramInt);
+  public abstract void a(dio paramdio, f paramf, int paramInt);
   
-  public abstract void aq(View paramView, int paramInt);
+  public abstract void as(View paramView, int paramInt);
   
-  public abstract void asH(String paramString);
+  public abstract void axQ(String paramString);
   
-  public abstract void asI(String paramString);
+  public abstract void axR(String paramString);
   
-  public abstract MMActivity cKW();
+  public abstract void cWw();
   
-  public abstract void cMY();
+  public abstract MMActivity cYC();
   
-  public abstract void dOB();
+  public abstract void edb();
   
-  public abstract void dOC();
+  public abstract void edc();
   
-  public abstract l dOE();
+  public abstract l ede();
   
-  public abstract o dOF();
+  public abstract o edf();
   
-  public abstract String dOG();
+  public abstract String edg();
   
-  public abstract dcy dOH();
+  public abstract dil edh();
   
-  public abstract m dOI();
+  public abstract m edi();
   
-  public abstract r dOJ();
+  public abstract r edj();
   
-  public abstract Point dOK();
+  public abstract Point edk();
   
-  public abstract aj dOL();
+  public abstract aj edl();
   
-  public abstract int dOM();
+  public abstract int edm();
   
-  public abstract boolean dON();
+  public abstract boolean edn();
   
-  public abstract boolean dOO();
+  public abstract boolean edo();
   
-  public abstract e dOP();
+  public abstract e edp();
   
-  public abstract boolean dOQ();
+  public abstract boolean edq();
   
-  public abstract void dOR();
+  public abstract void edr();
   
-  public abstract int dOS();
+  public abstract int eds();
   
-  public abstract n dOT();
+  public abstract n edt();
   
-  public abstract String dOU();
+  public abstract String edu();
   
-  public abstract int dOV();
+  public abstract int edv();
   
-  public abstract void dOW();
+  public abstract void edw();
   
-  public abstract int dOX();
+  public abstract int edx();
   
   public abstract RecyclerView.i getLayoutManager();
   
@@ -95,7 +95,7 @@ public abstract interface b
   
   public abstract boolean isFullscreenMode();
   
-  public abstract void l(List<ddb> paramList, boolean paramBoolean);
+  public abstract void m(List<dio> paramList, boolean paramBoolean);
 }
 
 

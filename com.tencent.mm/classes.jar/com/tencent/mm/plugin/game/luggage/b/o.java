@@ -2,93 +2,68 @@ package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader_app.api.a.c;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.game.luggage.d.f;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public class o
-  extends bo<com.tencent.mm.plugin.game.luggage.d.f>
+  extends bn<f>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(final a<com.tencent.mm.plugin.game.luggage.d.f>.a parama)
+  public final void a(Context paramContext, String paramString, final bn.a parama)
   {
-    AppMethodBeat.i(83078);
-    String str1 = parama.bZV.bZb.optString("videoUrl");
-    String str2 = parama.bZV.bZb.optString("thumbUrl");
-    String str3 = parama.bZV.bZb.optString("appId");
-    if (bt.isNullOrNil(str1))
+    AppMethodBeat.i(83076);
+    try
     {
-      parama.a("invalid_videoUrl", null);
-      AppMethodBeat.o(83078);
-      return;
-    }
-    ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(((com.tencent.mm.plugin.game.luggage.d.f)parama.bZU).mContext, str1, str2, str3, 510);
-    ((MMActivity)((com.tencent.mm.plugin.game.luggage.d.f)parama.bZU).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
-    {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
       {
-        AppMethodBeat.i(83077);
-        if (paramAnonymousInt1 == 510)
+        paramString = paramString.optString("appId");
+        Intent localIntent = new Intent();
+        localIntent.putExtra("appId", paramString);
+        localIntent.putExtra("view_task", true);
+        localIntent.addFlags(268435456);
+        ((c)g.ab(c.class)).a(paramContext, localIntent, new a.c()
         {
-          if (paramAnonymousInt2 != -1) {
-            break label176;
-          }
-          switch (paramAnonymousIntent.getIntExtra("webview_callback_err", 0))
+          public final void beX()
           {
+            AppMethodBeat.i(83075);
+            parama.f(null, null);
+            AppMethodBeat.o(83075);
           }
-        }
-        for (;;)
-        {
-          ((MMActivity)((com.tencent.mm.plugin.game.luggage.d.f)parama.bZU).mContext).mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(83077);
-          return;
-          JSONObject localJSONObject = new JSONObject();
-          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_video_info");
-          try
-          {
-            localJSONObject.put("videoInfo", new JSONArray(paramAnonymousIntent).getJSONObject(0));
-            parama.a("", localJSONObject);
-          }
-          catch (JSONException paramAnonymousIntent)
-          {
-            for (;;)
-            {
-              ad.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
-            }
-          }
-          parama.a("cancel", null);
-          continue;
-          parama.a("download_err", null);
-          continue;
-          label176:
-          parama.a("cancel", null);
-        }
+        });
+        AppMethodBeat.o(83076);
+        return;
       }
-    });
-    AppMethodBeat.o(83078);
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ac.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
+        paramString = "";
+      }
+    }
   }
   
-  public final int bQV()
+  public final void b(a<f>.a parama) {}
+  
+  public final int bYk()
   {
-    return 0;
+    return 2;
   }
   
   public final String name()
   {
-    return "launchGameVideoEditor";
+    return "jumpDownloaderWidget";
   }
 }
 

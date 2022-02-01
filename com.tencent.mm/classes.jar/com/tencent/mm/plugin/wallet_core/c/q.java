@@ -2,10 +2,8 @@ package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.d.g;
-import com.tencent.mm.plugin.wallet_core.model.ac;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -39,13 +37,13 @@ public final class q
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69927);
-    ad.i("MicroMsg.NetSceneQueryUserWallet", "errCode is : ".concat(String.valueOf(paramInt)));
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneQueryUserWallet", "errCode is : ".concat(String.valueOf(paramInt)));
     if (paramInt == 0)
     {
-      s.ecf().db.execSQL("WalletKindInfo", "delete from WalletKindInfo");
+      s.erB().db.execSQL("WalletKindInfo", "delete from WalletKindInfo");
       if (paramJSONObject != null)
       {
-        ad.i("MicroMsg.NetSceneQueryUserWallet", "resp json " + paramJSONObject.toString());
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneQueryUserWallet", "resp json " + paramJSONObject.toString());
         paramString = paramJSONObject.optJSONArray("UserWalletInfoList");
         if (paramString != null)
         {
@@ -53,27 +51,27 @@ public final class q
           paramInt = 0;
           while (paramInt < i)
           {
-            paramJSONObject = ac.be(paramString.optJSONObject(paramInt));
+            paramJSONObject = com.tencent.mm.plugin.wallet_core.model.ac.bf(paramString.optJSONObject(paramInt));
             if (paramJSONObject != null) {
-              s.ecf().insert(paramJSONObject);
+              s.erB().insert(paramJSONObject);
             }
             paramInt += 1;
           }
           AppMethodBeat.o(69927);
           return;
         }
-        ad.e("MicroMsg.NetSceneQueryUserWallet", "wallet array is null");
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.NetSceneQueryUserWallet", "wallet array is null");
         AppMethodBeat.o(69927);
         return;
       }
-      ad.e("MicroMsg.NetSceneQueryUserWallet", "response json is null");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.NetSceneQueryUserWallet", "response json is null");
     }
     AppMethodBeat.o(69927);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.q
  * JD-Core Version:    0.7.0.1
  */

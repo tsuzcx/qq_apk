@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class h
   extends b
 {
-  public a daW;
+  public a cYs;
   
   public h()
   {
@@ -16,16 +16,16 @@ public final class h
   private h(byte paramByte)
   {
     AppMethodBeat.i(149846);
-    this.daW = new a();
-    this.ESR = false;
+    this.cYs = new a();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(149846);
   }
   
   public static final class a
   {
-    public boolean daX = false;
-    public long daY;
+    public boolean cYt = false;
+    public long cYu;
     public int scene;
   }
 }

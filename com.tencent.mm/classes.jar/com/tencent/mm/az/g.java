@@ -1,36 +1,59 @@
 package com.tencent.mm.az;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.b;
+import com.tencent.mm.g.c.dy;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.plugin.messenger.foundation.a.o;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
+import java.util.Map;
 
-public class g
+public final class g
+  implements o
 {
-  public static f a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
+  public final f.b a(String paramString, Map<String, String> paramMap, f.a parama)
   {
-    AppMethodBeat.i(137009);
-    f localf = new f();
-    localf.hnn = paramInt;
-    localf.hnu = paramString1;
-    localf.hnr = paramString2;
-    localf.hns = paramString3;
-    localf.hnx = paramString4;
-    localf.hnw = paramString5;
-    localf.hnv = paramString6;
-    localf.hnA = paramString8;
-    localf.hnC = paramString11;
-    localf.hnz = paramString9;
-    localf.hnp = paramString7;
-    localf.hnq = 0.0F;
-    localf.hnt = paramString10;
-    localf.hno = 1;
-    localf.hny = null;
-    localf.hnF = paramString7;
-    AppMethodBeat.o(137009);
-    return localf;
+    AppMethodBeat.i(184639);
+    ac.d("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "consumeNewXml， subType:%s", new Object[] { bs.bG(paramString, "") });
+    if ((bs.nullAsNil(paramString).equals("NewXmlUpgradeAssociateChatRoom")) && (paramMap != null))
+    {
+      if (!paramMap.containsKey(".sysmsg.NewXmlUpgradeAssociateChatRoom.text")) {
+        break label230;
+      }
+      paramString = bs.nullAsNil((String)paramMap.get(".sysmsg.NewXmlUpgradeAssociateChatRoom.text"));
+      paramMap = bs.nullAsNil((String)paramMap.get(".sysmsg.NewXmlUpgradeAssociateChatRoom.roomname"));
+      if ((bs.isNullOrNil(paramString)) || (bs.isNullOrNil(paramMap))) {
+        break label200;
+      }
+      parama = new bo();
+      parama.jT(0);
+      parama.re(paramMap);
+      parama.setStatus(3);
+      parama.setContent(paramString);
+      parama.oA(bi.z(paramMap, System.currentTimeMillis() / 1000L));
+      parama.setType(10000);
+      parama.setFlag(parama.field_flag | 0x8);
+      long l = bi.u(parama);
+      ac.i("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "chatroom:%s text:%s msgId:%s", new Object[] { paramMap, bs.aLJ(paramString), Long.valueOf(l) });
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(184639);
+      return null;
+      label200:
+      ac.i("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "chatroom:%s text:%s ", new Object[] { bs.bG(paramMap, ""), bs.aLJ(paramString) });
+      continue;
+      label230:
+      ac.i("MicroMsg.UpgradeAssociateChatRoomNewXmlMsg", "no contains text");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.az.g
  * JD-Core Version:    0.7.0.1
  */

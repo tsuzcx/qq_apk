@@ -19,7 +19,7 @@ final class NetworkDiagnoseAllInOneUI$4
     }
     try
     {
-      parame.avj();
+      parame.aCc();
       AppMethodBeat.o(29682);
       return;
     }
@@ -31,7 +31,7 @@ final class NetworkDiagnoseAllInOneUI$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseAllInOneUI.4
  * JD-Core Version:    0.7.0.1
  */

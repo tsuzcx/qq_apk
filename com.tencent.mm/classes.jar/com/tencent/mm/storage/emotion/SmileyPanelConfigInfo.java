@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fi;
+import com.tencent.mm.g.c.fm;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyPanelConfigInfo
-  extends fi
+  extends fm
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyPanelConfigInfo> CREATOR;
@@ -20,16 +20,16 @@ public class SmileyPanelConfigInfo
   {
     AppMethodBeat.i(105150);
     c.a locala = new c.a();
-    locala.EYt = new Field[2];
+    locala.GvF = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.EYv.put("key", "TEXT PRIMARY KEY ");
+    locala.GvH.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "key";
+    locala.GvG = "key";
     locala.columns[1] = "position";
-    locala.EYv.put("position", "INTEGER");
+    locala.GvH.put("position", "INTEGER");
     localStringBuilder.append(" position INTEGER");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();

@@ -16,33 +16,33 @@ import java.util.Map;
 public final class b
   implements p.c
 {
-  private static final Map<a, a.a> JFA;
-  private static final boolean JFz;
-  public int[] JFB = null;
-  public a.a JFC = null;
-  public c JFl = null;
-  public String[] JFm = null;
-  public String[] JFn = null;
-  public String JFo = null;
-  public int JFp = 0;
+  private static final boolean LsS;
+  private static final Map<a, a.a> LsT;
+  public c LsE = null;
+  public String[] LsF = null;
+  public String[] LsG = null;
+  public String LsH = null;
+  public int LsI = 0;
+  public int[] LsU = null;
+  public a.a LsV = null;
   public String packageName = null;
   public String[] strings = null;
   
   static
   {
     AppMethodBeat.i(58301);
-    JFz = "true".equals(System.getProperty("kotlin.ignore.old.metadata"));
+    LsS = "true".equals(System.getProperty("kotlin.ignore.old.metadata"));
     HashMap localHashMap = new HashMap();
-    JFA = localHashMap;
-    localHashMap.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinClass")), a.a.JFr);
-    JFA.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinFileFacade")), a.a.JFs);
-    JFA.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinMultifileClass")), a.a.JFu);
-    JFA.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinMultifileClassPart")), a.a.JFv);
-    JFA.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinSyntheticClass")), a.a.JFt);
+    LsT = localHashMap;
+    localHashMap.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinClass")), a.a.LsK);
+    LsT.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinFileFacade")), a.a.LsL);
+    LsT.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinMultifileClass")), a.a.LsN);
+    LsT.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinMultifileClassPart")), a.a.LsO);
+    LsT.put(a.p(new d.l.b.a.b.f.b("kotlin.jvm.internal.KotlinSyntheticClass")), a.a.LsM);
     AppMethodBeat.o(58301);
   }
   
-  public final void HB() {}
+  public final void Hm() {}
   
   public final p.a a(a parama, an paraman)
   {
@@ -53,26 +53,26 @@ public final class b
       AppMethodBeat.o(58300);
       throw parama;
     }
-    if (parama.fHb().equals(p.Jyg))
+    if (parama.fZF().equals(p.Llz))
     {
       parama = new b((byte)0);
       AppMethodBeat.o(58300);
       return parama;
     }
-    if (JFz)
+    if (LsS)
     {
       AppMethodBeat.o(58300);
       return null;
     }
-    if (this.JFC != null)
+    if (this.LsV != null)
     {
       AppMethodBeat.o(58300);
       return null;
     }
-    parama = (a.a)JFA.get(parama);
+    parama = (a.a)LsT.get(parama);
     if (parama != null)
     {
-      this.JFC = parama;
+      this.LsV = parama;
       parama = new c((byte)0);
       AppMethodBeat.o(58300);
       return parama;
@@ -84,36 +84,36 @@ public final class b
   static abstract class a
     implements p.b
   {
-    private final List<String> JFD = new ArrayList();
+    private final List<String> LsW = new ArrayList();
     
-    public final void HB()
+    public final void Hm()
     {
-      ah((String[])this.JFD.toArray(new String[0]));
+      ah((String[])this.LsW.toArray(new String[0]));
     }
     
     public final void a(a parama, d.l.b.a.b.f.f paramf)
     {
       if (parama == null) {
-        adP(0);
+        agL(0);
       }
       if (paramf == null) {
-        adP(1);
+        agL(1);
       }
     }
     
     public final void a(d.l.b.a.b.j.b.f paramf)
     {
       if (paramf == null) {
-        adP(2);
+        agL(2);
       }
     }
     
     protected abstract void ah(String[] paramArrayOfString);
     
-    public final void fe(Object paramObject)
+    public final void fh(Object paramObject)
     {
       if ((paramObject instanceof String)) {
-        this.JFD.add((String)paramObject);
+        this.LsW.add((String)paramObject);
       }
     }
   }
@@ -123,16 +123,16 @@ public final class b
   {
     private b() {}
     
-    public final void HB() {}
+    public final void Hm() {}
     
     public final p.a a(d.l.b.a.b.f.f paramf, a parama)
     {
       AppMethodBeat.i(58290);
       if (paramf == null) {
-        adP(6);
+        agL(6);
       }
       if (parama == null) {
-        adP(7);
+        agL(7);
       }
       AppMethodBeat.o(58290);
       return null;
@@ -142,13 +142,13 @@ public final class b
     {
       AppMethodBeat.i(58289);
       if (paramf1 == null) {
-        adP(3);
+        agL(3);
       }
       if (parama == null) {
-        adP(4);
+        agL(4);
       }
       if (paramf2 == null) {
-        adP(5);
+        agL(5);
       }
       AppMethodBeat.o(58289);
     }
@@ -157,10 +157,10 @@ public final class b
     {
       AppMethodBeat.i(58287);
       if (paramf == null) {
-        adP(0);
+        agL(0);
       }
       if (paramf1 == null) {
-        adP(1);
+        agL(1);
       }
       AppMethodBeat.o(58287);
     }
@@ -173,12 +173,12 @@ public final class b
         AppMethodBeat.o(58286);
         return;
       }
-      paramf = paramf.qV();
+      paramf = paramf.rf();
       if ("k".equals(paramf))
       {
         if ((paramObject instanceof Integer))
         {
-          b.a(b.this, a.a.adU(((Integer)paramObject).intValue()));
+          b.a(b.this, a.a.agQ(((Integer)paramObject).intValue()));
           AppMethodBeat.o(58286);
         }
       }
@@ -224,9 +224,9 @@ public final class b
     {
       AppMethodBeat.i(58288);
       if (paramf == null) {
-        adP(2);
+        agL(2);
       }
-      paramf = paramf.qV();
+      paramf = paramf.rf();
       if ("d1".equals(paramf))
       {
         paramf = new b.a()
@@ -277,16 +277,16 @@ public final class b
   {
     private c() {}
     
-    public final void HB() {}
+    public final void Hm() {}
     
     public final p.a a(d.l.b.a.b.f.f paramf, a parama)
     {
       AppMethodBeat.i(58298);
       if (paramf == null) {
-        adP(6);
+        agL(6);
       }
       if (parama == null) {
-        adP(7);
+        agL(7);
       }
       AppMethodBeat.o(58298);
       return null;
@@ -296,13 +296,13 @@ public final class b
     {
       AppMethodBeat.i(58297);
       if (paramf1 == null) {
-        adP(3);
+        agL(3);
       }
       if (parama == null) {
-        adP(4);
+        agL(4);
       }
       if (paramf2 == null) {
-        adP(5);
+        agL(5);
       }
       AppMethodBeat.o(58297);
     }
@@ -311,10 +311,10 @@ public final class b
     {
       AppMethodBeat.i(58295);
       if (paramf == null) {
-        adP(0);
+        agL(0);
       }
       if (paramf1 == null) {
-        adP(1);
+        agL(1);
       }
       AppMethodBeat.o(58295);
     }
@@ -327,7 +327,7 @@ public final class b
         AppMethodBeat.o(58294);
         return;
       }
-      paramf = paramf.qV();
+      paramf = paramf.rf();
       b localb;
       if ("version".equals(paramf))
       {
@@ -361,9 +361,9 @@ public final class b
     {
       AppMethodBeat.i(58296);
       if (paramf == null) {
-        adP(2);
+        agL(2);
       }
-      paramf = paramf.qV();
+      paramf = paramf.rf();
       if (("data".equals(paramf)) || ("filePartClassNames".equals(paramf)))
       {
         paramf = new b.a()
@@ -411,7 +411,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.a.b
  * JD-Core Version:    0.7.0.1
  */

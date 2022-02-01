@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.sns.model;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class an
 {
-  private static final Map<String, String> wIX;
+  private static final Map<String, String> xVs;
   
   static
   {
     AppMethodBeat.i(95922);
-    wIX = new HashMap();
+    xVs = new HashMap();
     AppMethodBeat.o(95922);
   }
   
-  public static String iF(String paramString1, String paramString2)
+  public static String jc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(95920);
     if ((paramString1 == null) || (paramString2 == null))
@@ -27,10 +27,10 @@ public final class an
       return "";
     }
     boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
-    if ((bool) && (wIX.containsKey(paramString1 + paramString2)))
+    if ((bool) && (xVs.containsKey(paramString1 + paramString2)))
     {
-      str = (String)wIX.get(paramString1 + paramString2);
-      if (!bt.isNullOrNil(str))
+      str = (String)xVs.get(paramString1 + paramString2);
+      if (!bs.isNullOrNil(str))
       {
         AppMethodBeat.o(95920);
         return str;
@@ -49,7 +49,7 @@ public final class an
       localStringBuffer.append("/");
     }
     if (bool) {
-      wIX.put(paramString1 + paramString2, localStringBuffer.toString());
+      xVs.put(paramString1 + paramString2, localStringBuffer.toString());
     }
     paramString1 = localStringBuffer.toString();
     AppMethodBeat.o(95920);
@@ -61,7 +61,7 @@ public final class an
     try
     {
       AppMethodBeat.i(95921);
-      wIX.clear();
+      xVs.clear();
       AppMethodBeat.o(95921);
       return;
     }

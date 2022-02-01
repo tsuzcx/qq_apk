@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 
 public abstract interface p
 {
-  public abstract String JS();
+  public abstract String JC();
   
   public abstract Bitmap z(Context paramContext, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.p
  * JD-Core Version:    0.7.0.1
  */

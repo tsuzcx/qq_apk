@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.editor.model.nativenote.manager;
 
 public abstract class h
 {
-  public static final a ooA = new a();
-  public static final c ooy = new c();
-  public static final b ooz = new b();
+  public static final c oRY = new c();
+  public static final b oRZ = new b();
+  public static final a oSa = new a();
   
   public static final class a
     extends h

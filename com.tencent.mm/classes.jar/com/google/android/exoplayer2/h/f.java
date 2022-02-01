@@ -10,7 +10,7 @@ public abstract interface f
   
   public static abstract interface a
   {
-    public abstract f vh();
+    public abstract f vb();
   }
 }
 

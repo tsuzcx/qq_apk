@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -23,13 +23,13 @@ public final class s
   {
     AppMethodBeat.i(128879);
     paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bt.isNullOrNil(paramJSONObject))
+    if (bs.isNullOrNil(paramJSONObject))
     {
       paramc.h(paramInt, e("fail:invalid data", null));
       AppMethodBeat.o(128879);
       return;
     }
-    e.jQn.execute(new Runnable()
+    e.kqZ.execute(new Runnable()
     {
       public final void run()
       {
@@ -39,7 +39,7 @@ public final class s
           AppMethodBeat.o(128878);
           return;
         }
-        com.tencent.mm.vfs.e locale = paramc.Ee().EP(paramJSONObject);
+        com.tencent.mm.vfs.e locale = paramc.DH().IS(paramJSONObject);
         if (locale == null)
         {
           paramc.h(paramInt, s.this.e(String.format(Locale.US, "fail no such file \"%s\"", new Object[] { paramJSONObject }), null));
@@ -56,7 +56,7 @@ public final class s
     AppMethodBeat.o(128879);
   }
   
-  public final boolean aXA()
+  public final boolean bex()
   {
     return true;
   }

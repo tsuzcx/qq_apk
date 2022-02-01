@@ -1,122 +1,111 @@
 package com.tencent.xweb.xwalk.a;
 
-import android.app.Activity;
-import android.view.ViewGroup;
-import android.webkit.ValueCallback;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.f;
-import java.lang.reflect.Method;
+import com.tencent.xweb.b;
+import com.tencent.xweb.xwalk.updater.SchedulerConfig;
+import com.tencent.xweb.xwalk.updater.c;
 import java.util.HashMap;
-import org.xwalk.core.Log;
 
 public final class a
-  extends k
 {
-  public final boolean a(HashMap<String, String> paramHashMap, Activity paramActivity, ViewGroup paramViewGroup, final ValueCallback<Integer> paramValueCallback)
+  static HashMap<String, a> KHh;
+  
+  static
   {
-    AppMethodBeat.i(157174);
-    if ((paramActivity == null) || (paramViewGroup == null))
-    {
-      Log.e("XFilesExcelReader", "readFile params is null");
-      b("xls", paramValueCallback, -5);
-      AppMethodBeat.o(157174);
-      return false;
-    }
-    final String str = (String)paramHashMap.get("file_ext");
-    if ((str == null) || (str.isEmpty()))
-    {
-      Log.e("XFilesExcelReader", "readFile fileExt is null");
-      b("xls", paramValueCallback, -5);
-      AppMethodBeat.o(157174);
-      return false;
-    }
-    int i = this.IUH;
-    if (i <= 0)
-    {
-      Log.e("XFilesExcelReader", "readFile plugin not installed");
-      b(str, paramValueCallback, -2);
-      AppMethodBeat.o(157174);
-      return false;
-    }
-    if (i < 100)
-    {
-      Log.e("XFilesExcelReader", "readFile plugin version is too old, require: 100");
-      b(str, paramValueCallback, -11);
-      AppMethodBeat.o(157174);
-      return false;
-    }
-    Log.i("XFilesExcelReader", "readFile by xweb, plugin version ".concat(String.valueOf(i)));
-    ads(1070);
+    AppMethodBeat.i(208946);
+    KHh = new HashMap();
+    AppMethodBeat.o(208946);
+  }
+  
+  public static a aVx(String paramString)
+  {
     try
     {
-      paramHashMap.put("cache_dir", adp(i));
-      paramHashMap.put("res_dir", adq(i));
-      ftr();
-      Method localMethod = this.IVf.getMethod("readFile", new Class[] { Activity.class, ViewGroup.class, ClassLoader.class, HashMap.class, ValueCallback.class, ValueCallback.class, ValueCallback.class });
-      localMethod.setAccessible(true);
-      com.tencent.xweb.e.onStart(str);
-      localMethod.invoke(null, new Object[] { paramActivity, paramViewGroup, this.IVf.getClassLoader(), paramHashMap, this.IVi, this.IVj, new ValueCallback() {} });
-      AppMethodBeat.o(157174);
-      return true;
+      AppMethodBeat.i(208945);
+      if (!KHh.containsKey(paramString)) {
+        KHh.put(paramString, new a(paramString));
+      }
+      paramString = (a)KHh.get(paramString);
+      AppMethodBeat.o(208945);
+      return paramString;
     }
-    catch (Exception paramHashMap)
+    finally {}
+  }
+  
+  public static final class a
+    extends c
+  {
+    String KHi;
+    
+    public a(String paramString)
     {
-      Log.e("XFilesExcelReader", "readFile error: " + paramHashMap.getMessage());
-      f.a("XFilesExcelReader", i, "invoke error ", paramHashMap);
-      b(str, paramValueCallback, -3);
-      AppMethodBeat.o(157174);
+      AppMethodBeat.i(208941);
+      this.KHi = paramString;
+      this.TAG = (fLH() + "Scheduler");
+      AppMethodBeat.o(208941);
     }
-    return false;
-  }
-  
-  public final String adm(int paramInt)
-  {
-    AppMethodBeat.i(157173);
-    String str = cS(paramInt, "excelreader.apk");
-    AppMethodBeat.o(157173);
-    return str;
-  }
-  
-  public final String ftd()
-  {
-    return "com.tencent.xweb.xfiles.excel.ExcelReader";
-  }
-  
-  public final String fte()
-  {
-    return "com.tencent.xweb.xfiles.excel.ExcelReaderEnvironment";
-  }
-  
-  public final int ftf()
-  {
-    return 100;
-  }
-  
-  public final String getPluginName()
-  {
-    return "XFilesExcelReader";
-  }
-  
-  public final void p(HashMap<String, String> paramHashMap)
-  {
-    AppMethodBeat.i(157175);
-    if (this.IVf == null)
+    
+    public final boolean a(SchedulerConfig paramSchedulerConfig1, SchedulerConfig paramSchedulerConfig2)
     {
-      AppMethodBeat.o(157175);
-      return;
+      AppMethodBeat.i(208942);
+      if ((paramSchedulerConfig1.KIx != paramSchedulerConfig2.KIx) || (!mN(paramSchedulerConfig1.path, paramSchedulerConfig2.path)))
+      {
+        AppMethodBeat.o(208942);
+        return false;
+      }
+      boolean bool = super.a(paramSchedulerConfig1, paramSchedulerConfig2);
+      AppMethodBeat.o(208942);
+      return bool;
     }
-    try
+    
+    public final String fLH()
     {
-      Method localMethod = this.IVf.getMethod("finishReadFile", new Class[] { HashMap.class });
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[] { paramHashMap });
-      AppMethodBeat.o(157175);
-      return;
+      return this.KHi;
     }
-    catch (Exception paramHashMap)
+    
+    public final int fLI()
     {
-      Log.e("XFilesExcelReader", "finishReadFile error: " + paramHashMap.getMessage());
-      AppMethodBeat.o(157175);
+      return 15;
+    }
+    
+    public final String fLJ()
+    {
+      AppMethodBeat.i(208944);
+      String str = b.mx("UPDATE_SCHEDULE_TIME_RANGE_BIND", "tools");
+      if (TextUtils.isEmpty(str))
+      {
+        str = super.fLJ();
+        AppMethodBeat.o(208944);
+        return str;
+      }
+      AppMethodBeat.o(208944);
+      return str;
+    }
+    
+    public final String ze(boolean paramBoolean)
+    {
+      AppMethodBeat.i(208943);
+      String str2;
+      String str1;
+      if (!paramBoolean)
+      {
+        str2 = b.mx("UPDATE_SPEED_CONFIG", "tools");
+        str1 = str2;
+        if (TextUtils.isEmpty(str2)) {
+          str1 = com.tencent.xweb.a.mx("UPDATE_SPEED_CONFIG", "tools");
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(208943);
+        return str1;
+        str2 = b.mx("UPDATE_FORWARD_SPEED_CONFIG", "tools");
+        str1 = str2;
+        if (TextUtils.isEmpty(str2)) {
+          str1 = com.tencent.xweb.a.mx("UPDATE_FORWARD_SPEED_CONFIG", "tools");
+        }
+      }
     }
   }
 }

@@ -13,28 +13,28 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import java.lang.ref.WeakReference;
 
 public final class b
   extends a
 {
-  private Button pRD;
-  private TextView pRF;
-  private Button pRz;
-  private ViewGroup pTc;
-  private ImageView pTd;
-  private RelativeLayout pTe;
-  private RelativeLayout pTf;
-  private RelativeLayout pTg;
-  private ImageView pTh;
-  private ImageView pTi;
-  private ImageView pTj;
-  private TextView pTk;
-  private TextView pTl;
-  private TextView pTm;
+  private ViewGroup gnb;
+  private Button qAh;
+  private Button qAl;
+  private TextView qAn;
+  private ImageView qBJ;
+  private RelativeLayout qBK;
+  private RelativeLayout qBL;
+  private RelativeLayout qBM;
+  private ImageView qBN;
+  private ImageView qBO;
+  private ImageView qBP;
+  private TextView qBQ;
+  private TextView qBR;
+  private TextView qBS;
   
   b(FaceDetectPrepareUI paramFaceDetectPrepareUI)
   {
@@ -44,50 +44,50 @@ public final class b
   public final void V(Bitmap paramBitmap)
   {
     AppMethodBeat.i(104030);
-    this.pTd.setImageBitmap(paramBitmap);
+    this.qBJ.setImageBitmap(paramBitmap);
     AppMethodBeat.o(104030);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(104028);
-    ad.i("MicroMsg.FaceReflectJumper", "show config: %s", new Object[] { paramc });
-    this.pTc.setVisibility(0);
-    if (paramc.pTy)
+    ac.i("MicroMsg.FaceReflectJumper", "show config: %s", new Object[] { paramc });
+    this.gnb.setVisibility(0);
+    if (paramc.qCd)
     {
-      if (paramc.pTN != null) {
-        this.pRD.setOnClickListener(paramc.pTN);
+      if (paramc.qCs != null) {
+        this.qAl.setOnClickListener(paramc.qCs);
       }
-      this.pRD.setVisibility(0);
-      if (!bt.isNullOrNil(paramc.hJD)) {
-        this.pRD.setText(paramc.hJD);
+      this.qAl.setVisibility(0);
+      if (!bs.isNullOrNil(paramc.ikb)) {
+        this.qAl.setText(paramc.ikb);
       }
-      if (!paramc.pTv) {
+      if (!paramc.qCa) {
         break label266;
       }
-      if (paramc.pTK != null) {
-        this.pRz.setOnClickListener(paramc.pTK);
+      if (paramc.qCp != null) {
+        this.qAh.setOnClickListener(paramc.qCp);
       }
-      this.pRz.setVisibility(0);
-      if (!bt.isNullOrNil(paramc.pTF)) {
-        this.pRz.setText(paramc.pTF);
+      this.qAh.setVisibility(0);
+      if (!bs.isNullOrNil(paramc.qCk)) {
+        this.qAh.setText(paramc.qCk);
       }
       label136:
-      if (!paramc.pTB) {
+      if (!paramc.qCg) {
         break label278;
       }
-      if (paramc.pTM != null)
+      if (paramc.qCr != null)
       {
-        this.pRF.setClickable(true);
-        this.pRF.setOnClickListener(paramc.pTM);
+        this.qAn.setClickable(true);
+        this.qAn.setOnClickListener(paramc.qCr);
       }
-      this.pRF.setVisibility(0);
-      if (!bt.isNullOrNil(paramc.pTI)) {
-        this.pRF.setText(paramc.pTI);
+      this.qAn.setVisibility(0);
+      if (!bs.isNullOrNil(paramc.qCn)) {
+        this.qAn.setText(paramc.qCn);
       }
       label198:
-      if (paramc.pTD != null) {
-        this.pTd.setImageBitmap(paramc.pTD);
+      if (paramc.qCi != null) {
+        this.qBJ.setImageBitmap(paramc.qCi);
       }
       switch (paramc.status)
       {
@@ -97,22 +97,22 @@ public final class b
     {
       AppMethodBeat.o(104028);
       return;
-      this.pRD.setVisibility(8);
+      this.qAl.setVisibility(8);
       break;
       label266:
-      this.pRz.setVisibility(8);
+      this.qAh.setVisibility(8);
       break label136;
       label278:
-      this.pRF.setVisibility(8);
+      this.qAn.setVisibility(8);
       break label198;
-      if (!bt.isNullOrNil(paramc.pTE)) {
-        this.pTk.setText(paramc.pTE);
+      if (!bs.isNullOrNil(paramc.qCj)) {
+        this.qBQ.setText(paramc.qCj);
       }
-      ad.i("MicroMsg.FaceReflectJumper", "checking animation");
-      this.pTe.setVisibility(0);
-      this.pTf.setVisibility(8);
-      this.pTg.setVisibility(8);
-      this.pTh.post(new Runnable()
+      ac.i("MicroMsg.FaceReflectJumper", "checking animation");
+      this.qBK.setVisibility(0);
+      this.qBL.setVisibility(8);
+      this.qBM.setVisibility(8);
+      this.qBN.post(new Runnable()
       {
         public final void run()
         {
@@ -135,36 +135,36 @@ public final class b
       });
       AppMethodBeat.o(104028);
       return;
-      if (!bt.isNullOrNil(paramc.pTE)) {
-        this.pTl.setText(paramc.pTE);
+      if (!bs.isNullOrNil(paramc.qCj)) {
+        this.qBR.setText(paramc.qCj);
       }
-      ad.i("MicroMsg.FaceReflectJumper", "check success animation");
-      this.pTi.clearAnimation();
-      this.pTe.setVisibility(8);
-      this.pTf.setVisibility(0);
-      this.pTe.setVisibility(8);
-      this.pTg.setVisibility(8);
-      this.pTj.setScaleX(0.0F);
-      this.pTj.setScaleY(0.0F);
-      this.pTj.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
+      ac.i("MicroMsg.FaceReflectJumper", "check success animation");
+      this.qBO.clearAnimation();
+      this.qBK.setVisibility(8);
+      this.qBL.setVisibility(0);
+      this.qBK.setVisibility(8);
+      this.qBM.setVisibility(8);
+      this.qBP.setScaleX(0.0F);
+      this.qBP.setScaleY(0.0F);
+      this.qBP.animate().scaleX(1.0F).scaleY(1.0F).setDuration(800L);
       AppMethodBeat.o(104028);
       return;
-      if (!bt.isNullOrNil(paramc.pTE)) {
-        this.pTm.setText(paramc.pTE);
+      if (!bs.isNullOrNil(paramc.qCj)) {
+        this.qBS.setText(paramc.qCj);
       }
-      ad.i("MicroMsg.FaceReflectJumper", "check failed animation");
-      this.pTf.setVisibility(8);
-      this.pTe.setVisibility(8);
-      this.pTg.setVisibility(0);
-      this.pTi.clearAnimation();
-      this.pTe.setVisibility(8);
+      ac.i("MicroMsg.FaceReflectJumper", "check failed animation");
+      this.qBL.setVisibility(8);
+      this.qBK.setVisibility(8);
+      this.qBM.setVisibility(0);
+      this.qBO.clearAnimation();
+      this.qBK.setVisibility(8);
     }
   }
   
-  public final boolean bcB()
+  public final boolean bjw()
   {
     AppMethodBeat.i(104032);
-    if (this.pTc.getVisibility() == 0)
+    if (this.gnb.getVisibility() == 0)
     {
       AppMethodBeat.o(104032);
       return true;
@@ -173,26 +173,26 @@ public final class b
     return false;
   }
   
-  public final void cgu()
+  public final void cob()
   {
     AppMethodBeat.i(104031);
-    if (this.pTe != null) {
-      this.pTe.setVisibility(8);
+    if (this.qBK != null) {
+      this.qBK.setVisibility(8);
     }
-    if (this.pTf != null) {
-      this.pTf.setVisibility(8);
+    if (this.qBL != null) {
+      this.qBL.setVisibility(8);
     }
-    if (this.pTg != null) {
-      this.pTg.setVisibility(8);
+    if (this.qBM != null) {
+      this.qBM.setVisibility(8);
     }
-    if (this.pRD != null) {
-      this.pRD.setVisibility(8);
+    if (this.qAl != null) {
+      this.qAl.setVisibility(8);
     }
-    if (this.pRF != null) {
-      this.pRF.setVisibility(8);
+    if (this.qAn != null) {
+      this.qAn.setVisibility(8);
     }
-    if (this.pRz != null) {
-      this.pRz.setVisibility(8);
+    if (this.qAh != null) {
+      this.qAh.setVisibility(8);
     }
     AppMethodBeat.o(104031);
   }
@@ -202,31 +202,31 @@ public final class b
     try
     {
       AppMethodBeat.i(104027);
-      FaceDetectPrepareUI localFaceDetectPrepareUI = (FaceDetectPrepareUI)this.pRI.get();
+      FaceDetectPrepareUI localFaceDetectPrepareUI = (FaceDetectPrepareUI)this.qAq.get();
       if (localFaceDetectPrepareUI != null)
       {
-        this.pTc = ((ViewGroup)localFaceDetectPrepareUI.findViewById(2131303923));
-        this.pTd = ((ImageView)localFaceDetectPrepareUI.findViewById(2131301243));
-        this.pTe = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299731));
-        this.pTf = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299732));
-        this.pTg = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299730));
-        this.pTh = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299673));
-        this.pTi = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299670));
-        this.pTj = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299680));
-        this.pRD = ((Button)localFaceDetectPrepareUI.findViewById(2131301245));
-        if (ai.aF(localFaceDetectPrepareUI))
+        this.gnb = ((ViewGroup)localFaceDetectPrepareUI.findViewById(2131303923));
+        this.qBJ = ((ImageView)localFaceDetectPrepareUI.findViewById(2131301243));
+        this.qBK = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299731));
+        this.qBL = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299732));
+        this.qBM = ((RelativeLayout)localFaceDetectPrepareUI.findViewById(2131299730));
+        this.qBN = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299673));
+        this.qBO = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299670));
+        this.qBP = ((ImageView)localFaceDetectPrepareUI.findViewById(2131299680));
+        this.qAl = ((Button)localFaceDetectPrepareUI.findViewById(2131301245));
+        if (aj.aG(localFaceDetectPrepareUI))
         {
-          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.pRD.getLayoutParams();
-          localLayoutParams.topMargin = ai.aE(localFaceDetectPrepareUI);
-          this.pRD.setLayoutParams(localLayoutParams);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.qAl.getLayoutParams();
+          localLayoutParams.topMargin = aj.aF(localFaceDetectPrepareUI);
+          this.qAl.setLayoutParams(localLayoutParams);
         }
-        this.pRz = ((Button)localFaceDetectPrepareUI.findViewById(2131299668));
-        this.pRF = ((TextView)localFaceDetectPrepareUI.findViewById(2131303922));
-        this.pTk = ((TextView)localFaceDetectPrepareUI.findViewById(2131299672));
-        this.pTl = ((TextView)localFaceDetectPrepareUI.findViewById(2131299681));
-        this.pTm = ((TextView)localFaceDetectPrepareUI.findViewById(2131299678));
-        if (this.pTc != null) {
-          this.pTc.setVisibility(8);
+        this.qAh = ((Button)localFaceDetectPrepareUI.findViewById(2131299668));
+        this.qAn = ((TextView)localFaceDetectPrepareUI.findViewById(2131303922));
+        this.qBQ = ((TextView)localFaceDetectPrepareUI.findViewById(2131299672));
+        this.qBR = ((TextView)localFaceDetectPrepareUI.findViewById(2131299681));
+        this.qBS = ((TextView)localFaceDetectPrepareUI.findViewById(2131299678));
+        if (this.gnb != null) {
+          this.gnb.setVisibility(8);
         }
       }
       AppMethodBeat.o(104027);
@@ -238,9 +238,9 @@ public final class b
   public final void dismiss()
   {
     AppMethodBeat.i(104029);
-    ad.m("MicroMsg.FaceReflectJumper", "dismiss jumper", new Object[0]);
-    if (this.pRI.get() != null) {
-      ((FaceDetectPrepareUI)this.pRI.get()).runOnUiThread(new Runnable()
+    ac.m("MicroMsg.FaceReflectJumper", "dismiss jumper", new Object[0]);
+    if (this.qAq.get() != null) {
+      ((FaceDetectPrepareUI)this.qAq.get()).runOnUiThread(new Runnable()
       {
         public final void run()
         {
@@ -257,7 +257,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.b
  * JD-Core Version:    0.7.0.1
  */

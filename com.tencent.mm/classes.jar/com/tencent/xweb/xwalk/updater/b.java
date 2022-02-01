@@ -2,11 +2,11 @@ package com.tencent.xweb.xwalk.updater;
 
 public abstract interface b
 {
-  public abstract void a(f.c paramc);
+  public abstract void a(h.c paramc);
   
-  public abstract void b(f.c paramc);
+  public abstract void b(h.c paramc);
   
-  public abstract void ftq();
+  public abstract void fLX();
 }
 
 

@@ -17,19 +17,19 @@ public final class f
   extends n
   implements ag
 {
-  private final aj JCQ;
+  private final aj Lqj;
   
   public f(aj paramaj)
   {
     AppMethodBeat.i(58036);
-    this.JCQ = paramaj;
+    this.Lqj = paramaj;
     AppMethodBeat.o(58036);
   }
   
   private static aj a(aj paramaj)
   {
     AppMethodBeat.i(58029);
-    aj localaj = paramaj.xW(false);
+    aj localaj = paramaj.zo(false);
     if (!a.aI((ab)paramaj))
     {
       AppMethodBeat.o(58029);
@@ -44,7 +44,7 @@ public final class f
   {
     AppMethodBeat.i(58030);
     k.h(paramg, "newAnnotations");
-    paramg = new f(this.JCQ.d(paramg));
+    paramg = new f(this.Lqj.d(paramg));
     AppMethodBeat.o(58030);
     return paramg;
   }
@@ -53,7 +53,7 @@ public final class f
   {
     AppMethodBeat.i(58028);
     k.h(paramab, "replacement");
-    paramab = paramab.fJW();
+    paramab = paramab.gcz();
     if ((!bc.aF((ab)paramab)) && (!a.aI((ab)paramab)))
     {
       paramab = (ab)paramab;
@@ -68,7 +68,7 @@ public final class f
     }
     if ((paramab instanceof v))
     {
-      paramab = (ab)be.b(ac.a(a(((v)paramab).JXH), a(((v)paramab).JXI)), be.aK((ab)paramab));
+      paramab = (ab)be.b(ac.a(a(((v)paramab).LLa), a(((v)paramab).LLb)), be.aK((ab)paramab));
       AppMethodBeat.o(58028);
       return paramab;
     }
@@ -77,27 +77,27 @@ public final class f
     throw paramab;
   }
   
-  public final aj fBP()
+  public final aj fUt()
   {
-    return this.JCQ;
+    return this.Lqj;
   }
   
-  public final boolean fBS()
+  public final boolean fUw()
   {
     return true;
   }
   
-  public final boolean fBT()
+  public final boolean fUx()
   {
     return false;
   }
   
-  public final aj xW(boolean paramBoolean)
+  public final aj zo(boolean paramBoolean)
   {
     AppMethodBeat.i(58033);
     if (paramBoolean)
     {
-      localaj = this.JCQ.xW(true);
+      localaj = this.Lqj.zo(true);
       AppMethodBeat.o(58033);
       return localaj;
     }
@@ -108,7 +108,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.f
  * JD-Core Version:    0.7.0.1
  */

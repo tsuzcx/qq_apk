@@ -18,7 +18,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MatrixSettingHeaderPreference
   extends Preference
 {
-  a Hkb;
+  a IKu;
   
   public MatrixSettingHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,7 +40,7 @@ public class MatrixSettingHeaderPreference
     paramView.setOnLongClickListener(new View.OnLongClickListener()
     {
       int clickCount = 3;
-      Toast rxU;
+      Toast sGM;
       
       public final boolean onLongClick(View paramAnonymousView)
       {
@@ -51,22 +51,22 @@ public class MatrixSettingHeaderPreference
           return true;
         }
         this.clickCount -= 1;
-        if (this.rxU == null) {
-          this.rxU = Toast.makeText(MatrixSettingHeaderPreference.this.mContext, MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131761190, new Object[] { Integer.valueOf(this.clickCount) }), 1);
+        if (this.sGM == null) {
+          this.sGM = Toast.makeText(MatrixSettingHeaderPreference.this.mContext, MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131761190, new Object[] { Integer.valueOf(this.clickCount) }), 1);
         }
         if (this.clickCount <= 0) {
-          this.rxU.setText(MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131761189));
+          this.sGM.setText(MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131761189));
         }
         for (;;)
         {
           ObjectAnimator.ofPropertyValuesHolder(localImageView, new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe(View.SCALE_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.1F, 0.9F), Keyframe.ofFloat(0.2F, 0.9F), Keyframe.ofFloat(0.3F, 1.1F), Keyframe.ofFloat(0.4F, 1.1F), Keyframe.ofFloat(0.5F, 1.1F), Keyframe.ofFloat(0.6F, 1.1F), Keyframe.ofFloat(0.7F, 1.1F), Keyframe.ofFloat(0.8F, 1.1F), Keyframe.ofFloat(0.9F, 1.1F), Keyframe.ofFloat(1.0F, 1.0F) }), PropertyValuesHolder.ofKeyframe(View.SCALE_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.1F, 0.9F), Keyframe.ofFloat(0.2F, 0.9F), Keyframe.ofFloat(0.3F, 1.1F), Keyframe.ofFloat(0.4F, 1.1F), Keyframe.ofFloat(0.5F, 1.1F), Keyframe.ofFloat(0.6F, 1.1F), Keyframe.ofFloat(0.7F, 1.1F), Keyframe.ofFloat(0.8F, 1.1F), Keyframe.ofFloat(0.9F, 1.1F), Keyframe.ofFloat(1.0F, 1.0F) }), PropertyValuesHolder.ofKeyframe(View.ROTATION, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.1F, -3.0F), Keyframe.ofFloat(0.2F, -3.0F), Keyframe.ofFloat(0.3F, 3.0F), Keyframe.ofFloat(0.4F, -3.0F), Keyframe.ofFloat(0.5F, 3.0F), Keyframe.ofFloat(0.6F, -3.0F), Keyframe.ofFloat(0.7F, 3.0F), Keyframe.ofFloat(0.8F, -3.0F), Keyframe.ofFloat(0.9F, 3.0F), Keyframe.ofFloat(1.0F, 0.0F) }) }).setDuration(1000L).start();
-          this.rxU.show();
+          this.sGM.show();
           if ((this.clickCount == 0) && (MatrixSettingHeaderPreference.a(MatrixSettingHeaderPreference.this) != null)) {
-            MatrixSettingHeaderPreference.a(MatrixSettingHeaderPreference.this).fdd();
+            MatrixSettingHeaderPreference.a(MatrixSettingHeaderPreference.this).fsY();
           }
           AppMethodBeat.o(38881);
           return true;
-          this.rxU.setText(MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131761190, new Object[] { Integer.valueOf(this.clickCount) }));
+          this.sGM.setText(MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131761190, new Object[] { Integer.valueOf(this.clickCount) }));
         }
       }
     });
@@ -75,12 +75,12 @@ public class MatrixSettingHeaderPreference
   
   static abstract interface a
   {
-    public abstract void fdd();
+    public abstract void fsY();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSettingHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

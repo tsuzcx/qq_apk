@@ -6,12 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  final SparseArray<u> bpK;
+  final SparseArray<u> bom;
   
   public k()
   {
     AppMethodBeat.i(62925);
-    this.bpK = new SparseArray();
+    this.bom = new SparseArray();
     AppMethodBeat.o(62925);
   }
 }

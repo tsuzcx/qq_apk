@@ -2,6 +2,7 @@ package com.tencent.kinda.framework.widget.tools;
 
 import com.facebook.yoga.YogaEdge;
 import com.facebook.yoga.YogaNode;
+import com.facebook.yoga.YogaNodeFactory;
 import com.tencent.kinda.framework.widget.base.ViewStyleMapper;
 import com.tencent.kinda.gen.Align;
 import com.tencent.kinda.gen.FlexDirection;
@@ -65,7 +66,7 @@ public class FlexBoxAttr
   public FlexBoxAttr()
   {
     AppMethodBeat.i(19330);
-    this.yogaNode = new YogaNode();
+    this.yogaNode = YogaNodeFactory.create();
     this.width = 1.0E+021F;
     this.height = 1.0E+021F;
     applyNodeDefaultParam();
@@ -75,7 +76,7 @@ public class FlexBoxAttr
   public FlexBoxAttr(IFlexBoxChange paramIFlexBoxChange)
   {
     AppMethodBeat.i(19331);
-    this.yogaNode = new YogaNode();
+    this.yogaNode = YogaNodeFactory.create();
     this.width = 1.0E+021F;
     this.height = 1.0E+021F;
     this.iFlexBoxChange = paramIFlexBoxChange;
@@ -86,7 +87,7 @@ public class FlexBoxAttr
   private void applyNodeDefaultParam()
   {
     AppMethodBeat.i(19332);
-    this.yogaNode = new YogaNode();
+    this.yogaNode = YogaNodeFactory.create();
     this.yogaNode.reset();
     AppMethodBeat.o(19332);
   }
@@ -937,7 +938,7 @@ public class FlexBoxAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.FlexBoxAttr
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.net.http.AndroidHttpClient;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.h.a;
+import com.tencent.mm.plugin.appbrand.h.a.e.a;
 import com.tencent.mm.plugin.appbrand.h.c.b.b;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -15,15 +16,16 @@ import java.util.Set;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 
 public final class i
 {
-  static i jjJ;
-  MulticastSocket jjK;
-  InetAddress jjL;
+  static i jJW;
+  MulticastSocket jJX;
+  InetAddress jJY;
   int port;
   
   i(boolean paramBoolean)
@@ -32,12 +34,12 @@ public final class i
     this.port = -1;
     try
     {
-      this.jjL = InetAddress.getByName("239.255.255.250");
+      this.jJY = InetAddress.getByName("239.255.255.250");
       if (paramBoolean)
       {
-        this.jjK = new MulticastSocket();
-        this.jjK.setBroadcast(true);
-        this.port = this.jjK.getLocalPort();
+        this.jJX = new MulticastSocket();
+        this.jJX.setBroadcast(true);
+        this.port = this.jJX.getLocalPort();
       }
       AppMethodBeat.o(159011);
       return;
@@ -58,8 +60,8 @@ public final class i
       localObject1 = AndroidHttpClient.newInstance("");
       try
       {
-        localObject2 = new i.a(parame.getUrl(), parame.aUG());
-        localObject3 = parame.aUH();
+        localObject2 = new a(parame.getUrl(), parame.bbE());
+        localObject3 = parame.bbF();
         if ((localObject3 == null) || (((Map)localObject3).isEmpty())) {
           break label141;
         }
@@ -67,7 +69,7 @@ public final class i
         while (((Iterator)localObject3).hasNext())
         {
           localEntry = (Map.Entry)((Iterator)localObject3).next();
-          ((i.a)localObject2).addHeader((String)localEntry.getKey(), (String)localEntry.getValue());
+          ((a)localObject2).addHeader((String)localEntry.getKey(), (String)localEntry.getValue());
         }
         if (localObject1 == null) {
           break label125;
@@ -92,43 +94,43 @@ public final class i
     AppMethodBeat.o(159013);
     throw parame;
     label141:
-    parame = parame.aUE();
+    parame = parame.bbC();
     if (!TextUtils.isEmpty(parame))
     {
       parame = new StringEntity(parame, "utf-8");
       parame.setContentType("text/xml; charset=\"utf-8\"");
-      ((i.a)localObject2).setEntity(parame);
+      ((a)localObject2).setEntity(parame);
     }
     parame = ((AndroidHttpClient)localObject1).execute((HttpUriRequest)localObject2);
     ((AndroidHttpClient)localObject1).close();
     localObject2 = new com.tencent.mm.plugin.appbrand.h.c.b.e();
-    ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).jjR = new b();
+    ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).jKe = new b();
     localObject3 = parame.getAllHeaders();
     j = localObject3.length;
     i = 0;
     while (i < j)
     {
       localEntry = localObject3[i];
-      ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).jjR.put(localEntry.getName(), localEntry.getValue());
+      ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).jKe.put(localEntry.getName(), localEntry.getValue());
       i += 1;
     }
     localObject3 = EntityUtils.toString(parame.getEntity(), "utf-8").replaceAll("&(?!amp;)", "&amp;");
-    ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).jjS = j.aVb().GO((String)localObject3);
+    ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).jKf = j.bbZ().KS((String)localObject3);
     ((com.tencent.mm.plugin.appbrand.h.c.b.e)localObject2).responseCode = parame.getStatusLine().getStatusCode();
     AppMethodBeat.o(159013);
     return localObject2;
   }
   
-  public static i aVa()
+  public static i bbY()
   {
     AppMethodBeat.i(159012);
-    if (jjJ == null) {}
+    if (jJW == null) {}
     try
     {
-      if (jjJ == null) {
-        jjJ = new i(true);
+      if (jJW == null) {
+        jJW = new i(true);
       }
-      i locali = jjJ;
+      i locali = jJW;
       AppMethodBeat.o(159012);
       return locali;
     }
@@ -141,11 +143,31 @@ public final class i
   protected final void finalize()
   {
     AppMethodBeat.i(159014);
-    if (this == jjJ) {
-      this.jjK.close();
+    if (this == jJW) {
+      this.jJX.close();
     }
     super.finalize();
     AppMethodBeat.o(159014);
+  }
+  
+  public static final class a
+    extends HttpPost
+  {
+    private e.a jIj;
+    
+    public a(String paramString, e.a parama)
+    {
+      super();
+      this.jIj = parama;
+    }
+    
+    public final String getMethod()
+    {
+      AppMethodBeat.i(159010);
+      String str = this.jIj.name();
+      AppMethodBeat.o(159010);
+      return str;
+    }
   }
 }
 

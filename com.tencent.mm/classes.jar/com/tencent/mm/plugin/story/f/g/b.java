@@ -1,72 +1,72 @@
 package com.tencent.mm.plugin.story.f.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.an.f;
 import com.tencent.mm.model.ce;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.sight.base.e;
 import com.tencent.mm.plugin.story.c.a.c.a;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.i.a.g;
-import com.tencent.mm.protocal.protobuf.boj;
-import com.tencent.mm.protocal.protobuf.cyd;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.protocal.protobuf.cyn;
-import com.tencent.mm.protocal.protobuf.czd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bsz;
+import com.tencent.mm.protocal.protobuf.ddp;
+import com.tencent.mm.protocal.protobuf.ddy;
+import com.tencent.mm.protocal.protobuf.ddz;
+import com.tencent.mm.protocal.protobuf.dep;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import d.l;
 import d.v;
 import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/upload/StorySightCdnUpload;", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "mPath", "", "thumbPath", "callback", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload$ISightCdnUploadCallback;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/story/model/StoryCdnUpload$ISightCdnUploadCallback;)V", "TAG", "cdnCallback", "com/tencent/mm/plugin/story/model/upload/StorySightCdnUpload$cdnCallback$1", "Lcom/tencent/mm/plugin/story/model/upload/StorySightCdnUpload$cdnCallback$1;", "cdnMediaType", "", "clientId", "mMd5", "postinfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "sendScene", "st_new", "", "startTime", "useCdnTransClientId", "checkUpload", "", "doUpload", "extInfo", "Lcom/tencent/mm/protocal/protobuf/MMSightExtInfo;", "onErrorServer", "", "errCode", "onPostScene", "url", "urlType", "thumbUrl", "thumbType", "meidiaId", "updateMd5Info", "updatePostInfo", "isOk", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/upload/StorySightCdnUpload;", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "mPath", "", "thumbPath", "callback", "Lcom/tencent/mm/plugin/story/model/StoryCdnUpload$ISightCdnUploadCallback;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/story/model/StoryCdnUpload$ISightCdnUploadCallback;)V", "TAG", "cdnCallback", "com/tencent/mm/plugin/story/model/upload/StorySightCdnUpload$cdnCallback$1", "Lcom/tencent/mm/plugin/story/model/upload/StorySightCdnUpload$cdnCallback$1;", "cdnMediaType", "", "clientId", "mMd5", "postinfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "sendScene", "st_new", "", "startTime", "useCdnTransClientId", "checkUpload", "", "doUpload", "extInfo", "Lcom/tencent/mm/protocal/protobuf/MMSightExtInfo;", "onErrorServer", "", "errCode", "onPostScene", "url", "urlType", "thumbUrl", "thumbType", "meidiaId", "updateMd5Info", "updatePostInfo", "isOk", "plugin-story_release"})
 public final class b
   implements com.tencent.mm.plugin.story.f.g
 {
   final String TAG;
   private String clientId;
-  private long hZo;
-  String hhN;
-  private int hzJ;
-  private String jya;
+  String hIq;
+  private int iak;
+  private long izs;
+  private String jYv;
   private final String mPath;
   private final String thumbPath;
-  private final com.tencent.mm.plugin.story.i.j yje;
-  private cyn yjj;
-  private final a yjk;
-  final com.tencent.mm.plugin.story.f.g.a yjl;
+  private final com.tencent.mm.plugin.story.i.j zwd;
+  private ddz zwi;
+  private final a zwj;
+  final com.tencent.mm.plugin.story.f.g.a zwk;
   
   public b(com.tencent.mm.plugin.story.i.j paramj, String paramString1, String paramString2, com.tencent.mm.plugin.story.f.g.a parama)
   {
     AppMethodBeat.i(119103);
-    this.yje = paramj;
+    this.zwd = paramj;
     this.mPath = paramString1;
     this.thumbPath = paramString2;
-    this.yjl = parama;
+    this.zwk = parama;
     this.clientId = "";
-    this.jya = "";
-    this.yjj = new cyn();
+    this.jYv = "";
+    this.zwi = new ddz();
     this.TAG = "MicroMsg.StorySightCdnUpload";
-    this.yjk = new a(this);
-    this.hZo = ce.asR();
-    this.yjj = this.yje.dKJ();
-    paramString1 = this.yjj.gKn;
+    this.zwj = new a(this);
+    this.izs = ce.azI();
+    this.zwi = this.zwd.dZk();
+    paramString1 = this.zwi.hkN;
     paramj = paramString1;
     if (paramString1 == null) {
       paramj = "";
     }
     this.clientId = paramj;
-    paramString1 = this.yjj.md5;
+    paramString1 = this.zwi.md5;
     paramj = paramString1;
     if (paramString1 == null) {
       paramj = "";
     }
-    this.jya = paramj;
-    if (bt.isNullOrNil(this.clientId))
+    this.jYv = paramj;
+    if (bs.isNullOrNil(this.clientId))
     {
-      paramj = bt.GC();
+      paramj = bs.Gn();
       paramString1 = d.n.d.UTF_8;
       if (paramj == null)
       {
@@ -77,18 +77,18 @@ public final class b
       paramj = paramj.getBytes(paramString1);
       d.g.b.k.g(paramj, "(this as java.lang.String).getBytes(charset)");
       this.clientId = com.tencent.mm.b.g.getMessageDigest(paramj);
-      this.yjj.gKn = this.clientId;
+      this.zwi.hkN = this.clientId;
     }
     try
     {
-      paramj = this.yje;
-      paramString1 = this.yjj.toByteArray();
+      paramj = this.zwd;
+      paramString1 = this.zwi.toByteArray();
       d.g.b.k.g(paramString1, "postinfo.toByteArray()");
-      paramj.bE(paramString1);
-      paramj = com.tencent.mm.plugin.story.f.j.yfh;
-      j.b.dHd().a((int)this.yje.systemRowid, this.yje);
-      int i = (int)i.aMN(this.mPath);
-      ad.i(this.TAG, "storyUpload  videopath %s sightFileSize %d md5 %s", new Object[] { this.mPath, Integer.valueOf(i), this.jya });
+      paramj.bD(paramString1);
+      paramj = com.tencent.mm.plugin.story.f.j.zsh;
+      j.b.dVE().a((int)this.zwd.systemRowid, this.zwd);
+      int i = (int)i.aSp(this.mPath);
+      ac.i(this.TAG, "storyUpload  videopath %s sightFileSize %d md5 %s", new Object[] { this.mPath, Integer.valueOf(i), this.jYv });
       AppMethodBeat.o(119103);
       return;
     }
@@ -96,7 +96,7 @@ public final class b
     {
       for (;;)
       {
-        ad.printErrStackTrace(this.TAG, (Throwable)paramj, "", new Object[0]);
+        ac.printErrStackTrace(this.TAG, (Throwable)paramj, "", new Object[0]);
       }
     }
   }
@@ -107,120 +107,120 @@ public final class b
     d.g.b.k.h(paramString1, "url");
     d.g.b.k.h(paramString2, "thumbUrl");
     d.g.b.k.h(paramString3, "meidiaId");
-    ad.d(this.TAG, "upload ok " + paramString1 + "  " + paramString3 + "  " + paramInt1);
-    paramString3 = this.yjj;
-    Object localObject = a.g.yoI;
-    paramString3.DJF = a.g.dKt();
-    this.yjj.gll = 0;
-    this.yjj.DNs = ce.asT();
-    paramString3 = this.yje;
-    localObject = this.yjj.toByteArray();
+    ac.d(this.TAG, "upload ok " + paramString1 + "  " + paramString3 + "  " + paramInt1);
+    paramString3 = this.zwi;
+    Object localObject = a.g.zCh;
+    paramString3.FfT = a.g.dYU();
+    this.zwi.gLY = 0;
+    this.zwi.FjJ = ce.azK();
+    paramString3 = this.zwd;
+    localObject = this.zwi.toByteArray();
     d.g.b.k.g(localObject, "postinfo.toByteArray()");
-    paramString3.bE((byte[])localObject);
-    paramString3 = (cym)this.yje.dKH().Era.DaC.get(0);
+    paramString3.bD((byte[])localObject);
+    paramString3 = (ddy)this.zwd.dZi().FOc.Etz.get(0);
     paramString3.Url = paramString1;
-    paramString3.mBH = paramInt1;
-    paramString3.DMQ = paramString2;
-    paramString3.mBH = paramInt2;
-    f.awM();
-    paramString3.DNl = com.tencent.mm.ao.a.xG(this.mPath);
-    ad.i(this.TAG, "mediaObj.videomd5 " + paramString3.DNl);
-    paramString1 = this.yje.dKH();
-    paramString1.Era.DaC.set(0, paramString3);
-    this.yje.b(paramString1);
-    paramString1 = com.tencent.mm.plugin.story.f.j.yfh;
-    j.b.dHd().a((int)this.yje.systemRowid, this.yje);
+    paramString3.ndI = paramInt1;
+    paramString3.Fjh = paramString2;
+    paramString3.ndI = paramInt2;
+    f.aDE();
+    paramString3.FjC = com.tencent.mm.an.a.BM(this.mPath);
+    ac.i(this.TAG, "mediaObj.videomd5 " + paramString3.FjC);
+    paramString1 = this.zwd.dZi();
+    paramString1.FOc.Etz.set(0, paramString3);
+    this.zwd.b(paramString1);
+    paramString1 = com.tencent.mm.plugin.story.f.j.zsh;
+    j.b.dVE().a((int)this.zwd.systemRowid, this.zwd);
     AppMethodBeat.o(119101);
     return true;
   }
   
-  final void dIu()
+  final void dWV()
   {
     AppMethodBeat.i(119100);
-    ad.i(this.TAG, "snsupload sight by cdn error! " + bt.eGN());
+    ac.i(this.TAG, "snsupload sight by cdn error! " + bs.eWi());
     try
     {
-      this.yjj.gll += 1;
-      Object localObject1 = this.yjj;
-      Object localObject2 = a.g.yoI;
-      ((cyn)localObject1).DJF = a.g.dKu();
-      localObject1 = this.yje;
-      localObject2 = this.yjj.toByteArray();
+      this.zwi.gLY += 1;
+      Object localObject1 = this.zwi;
+      Object localObject2 = a.g.zCh;
+      ((ddz)localObject1).FfT = a.g.dYV();
+      localObject1 = this.zwd;
+      localObject2 = this.zwi.toByteArray();
       d.g.b.k.g(localObject2, "postinfo.toByteArray()");
-      ((com.tencent.mm.plugin.story.i.j)localObject1).bE((byte[])localObject2);
-      localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
-      j.b.dHd().a((int)this.yje.systemRowid, this.yje);
+      ((com.tencent.mm.plugin.story.i.j)localObject1).bD((byte[])localObject2);
+      localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
+      j.b.dVE().a((int)this.zwd.systemRowid, this.zwd);
       AppMethodBeat.o(119100);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
+      ac.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
       AppMethodBeat.o(119100);
     }
   }
   
-  public final boolean dIv()
+  public final boolean dWW()
   {
     AppMethodBeat.i(119102);
-    Object localObject1 = i.aEN(this.mPath);
-    if ((!bt.isNullOrNil(this.jya)) && ((d.g.b.k.g(this.jya, localObject1) ^ true)))
+    Object localObject1 = i.aKe(this.mPath);
+    if ((!bs.isNullOrNil(this.jYv)) && ((d.g.b.k.g(this.jYv, localObject1) ^ true)))
     {
-      ad.i(this.TAG, "checkUpload isNotSafeSightVideo old srcmd5 %s newmd5 %s ", new Object[] { this.jya, localObject1 });
-      dIu();
-      this.yjl.a(-2, false, (com.tencent.mm.plugin.story.f.g)this);
+      ac.i(this.TAG, "checkUpload isNotSafeSightVideo old srcmd5 %s newmd5 %s ", new Object[] { this.jYv, localObject1 });
+      dWV();
+      this.zwk.a(-2, false, (com.tencent.mm.plugin.story.f.g)this);
       AppMethodBeat.o(119102);
       return false;
     }
-    localObject1 = new boj();
-    ad.i(this.TAG, "check upload %s %d %s", new Object[] { this.mPath, Integer.valueOf(((boj)localObject1).qRG), Boolean.valueOf(((boj)localObject1).DLK) });
-    Object localObject2 = e.ano(this.mPath);
+    localObject1 = new bsz();
+    ac.i(this.TAG, "check upload %s %d %s", new Object[] { this.mPath, Integer.valueOf(((bsz)localObject1).rNU), Boolean.valueOf(((bsz)localObject1).FhZ) });
+    Object localObject2 = e.asx(this.mPath);
     if (localObject2 != null) {
-      ad.i(this.TAG, "mediaInfo: %s", new Object[] { localObject2 });
+      ac.i(this.TAG, "mediaInfo: %s", new Object[] { localObject2 });
     }
-    if ((this.yjj.EqE & 0x1) == 0) {
+    if ((this.zwi.FNG & 0x1) == 0) {
       SightVideoJNI.optimizeMP4VFS(this.mPath);
     }
     try
     {
-      localObject2 = i.aEN(this.mPath);
+      localObject2 = i.aKe(this.mPath);
       d.g.b.k.g(localObject2, "VFSFileOp.getFileMD5String(mPath)");
-      this.jya = ((String)localObject2);
-      this.yjj.md5 = this.jya;
-      this.yjj.EqE |= 0x1;
-      localObject2 = this.yje;
-      Object localObject3 = this.yjj.toByteArray();
+      this.jYv = ((String)localObject2);
+      this.zwi.md5 = this.jYv;
+      this.zwi.FNG |= 0x1;
+      localObject2 = this.zwd;
+      Object localObject3 = this.zwi.toByteArray();
       d.g.b.k.g(localObject3, "postinfo.toByteArray()");
-      ((com.tencent.mm.plugin.story.i.j)localObject2).bE((byte[])localObject3);
-      ad.i(this.TAG, "new md5 is %s %s", new Object[] { this.mPath, this.jya });
-      localObject2 = com.tencent.mm.plugin.story.f.j.yfh;
-      j.b.dHd().a((int)this.yje.systemRowid, this.yje);
-      this.hhN = this.clientId;
+      ((com.tencent.mm.plugin.story.i.j)localObject2).bD((byte[])localObject3);
+      ac.i(this.TAG, "new md5 is %s %s", new Object[] { this.mPath, this.jYv });
+      localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
+      j.b.dVE().a((int)this.zwd.systemRowid, this.zwd);
+      this.hIq = this.clientId;
       localObject2 = new com.tencent.mm.i.g();
-      ((com.tencent.mm.i.g)localObject2).fnH = ((com.tencent.mm.i.g.a)this.yjk);
-      ((com.tencent.mm.i.g)localObject2).field_mediaId = this.hhN;
+      ((com.tencent.mm.i.g)localObject2).frb = ((com.tencent.mm.i.g.a)this.zwj);
+      ((com.tencent.mm.i.g)localObject2).field_mediaId = this.hIq;
       ((com.tencent.mm.i.g)localObject2).field_fullpath = this.mPath;
       ((com.tencent.mm.i.g)localObject2).field_thumbpath = this.thumbPath;
       ((com.tencent.mm.i.g)localObject2).field_fileType = 20302;
       ((com.tencent.mm.i.g)localObject2).field_talker = "";
-      ((com.tencent.mm.i.g)localObject2).field_priority = com.tencent.mm.i.a.fmV;
+      ((com.tencent.mm.i.g)localObject2).field_priority = com.tencent.mm.i.a.fqp;
       ((com.tencent.mm.i.g)localObject2).field_needStorage = true;
       ((com.tencent.mm.i.g)localObject2).field_isStreamMedia = false;
       ((com.tencent.mm.i.g)localObject2).field_appType = 205;
       ((com.tencent.mm.i.g)localObject2).field_bzScene = 2;
-      localObject3 = (c.a)com.tencent.mm.plugin.story.c.a.c.ydE.ajp();
+      localObject3 = (c.a)com.tencent.mm.plugin.story.c.a.c.zqE.aqp();
       if (localObject3 != null)
       {
-        ad.i(this.TAG, "StoryEncodeElementConfig " + ((c.a)localObject3).duration);
+        ac.i(this.TAG, "StoryEncodeElementConfig " + ((c.a)localObject3).duration);
         ((com.tencent.mm.i.g)localObject2).field_largesvideo = (((c.a)localObject3).duration + 3);
-        ((com.tencent.mm.i.g)localObject2).fnX = 6;
-        localObject3 = i.aEN(this.mPath);
-        if ((bt.isNullOrNil(this.jya)) || (!(d.g.b.k.g(this.jya, localObject3) ^ true))) {
+        ((com.tencent.mm.i.g)localObject2).frr = 6;
+        localObject3 = i.aKe(this.mPath);
+        if ((bs.isNullOrNil(this.jYv)) || (!(d.g.b.k.g(this.jYv, localObject3) ^ true))) {
           break label588;
         }
-        ad.i(this.TAG, "isNotSafeSightVideo old srcmd5 %s newmd5 %s ", new Object[] { this.jya, localObject3 });
-        dIu();
-        this.yjl.a(-2, false, (com.tencent.mm.plugin.story.f.g)this);
+        ac.i(this.TAG, "isNotSafeSightVideo old srcmd5 %s newmd5 %s ", new Object[] { this.jYv, localObject3 });
+        dWV();
+        this.zwk.a(-2, false, (com.tencent.mm.plugin.story.f.g)this);
         AppMethodBeat.o(119102);
         return false;
       }
@@ -229,30 +229,30 @@ public final class b
     {
       for (;;)
       {
-        ad.e(this.TAG, "parseFrom MediaUploadInfo error in updateMd5Info %s", new Object[] { localException.getMessage() });
+        ac.e(this.TAG, "parseFrom MediaUploadInfo error in updateMd5Info %s", new Object[] { localException.getMessage() });
         continue;
         localException.field_largesvideo = 18;
       }
       label588:
-      ad.d(this.TAG, "will addSendTask");
-      if (!f.awL().e(localException))
+      ac.d(this.TAG, "will addSendTask");
+      if (!f.aDD().f(localException))
       {
-        ad.e(this.TAG, "cdntra addSendTask failed. clientid:%s", new Object[] { this.hhN });
-        this.yjl.a(-3, false, (com.tencent.mm.plugin.story.f.g)this);
+        ac.e(this.TAG, "cdntra addSendTask failed. clientid:%s", new Object[] { this.hIq });
+        this.zwk.a(-3, false, (com.tencent.mm.plugin.story.f.g)this);
         AppMethodBeat.o(119102);
         return false;
       }
-      if (!((boj)localObject1).DLK) {}
+      if (!((bsz)localObject1).FhZ) {}
     }
     for (int i = 4;; i = 5)
     {
-      this.hzJ = i;
+      this.iak = i;
       AppMethodBeat.o(119102);
       return true;
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/model/upload/StorySightCdnUpload$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/model/upload/StorySightCdnUpload$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-story_release"})
   public static final class a
     implements com.tencent.mm.i.g.a
   {
@@ -262,51 +262,51 @@ public final class b
       d.g.b.k.h(paramString, "mediaId");
       if (paramInt == -21005)
       {
-        ad.d(this.yjm.TAG, "cdntra cdnCallback1 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.yjm.hhN, Integer.valueOf(paramInt), paramc, paramd });
-        this.yjm.yjl.a(0, true, (com.tencent.mm.plugin.story.f.g)this.yjm);
+        ac.d(this.zwl.TAG, "cdntra cdnCallback1 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.zwl.hIq, Integer.valueOf(paramInt), paramc, paramd });
+        this.zwl.zwk.a(0, true, (com.tencent.mm.plugin.story.f.g)this.zwl);
         AppMethodBeat.o(119097);
         return 0;
       }
       if ((paramd != null) && (paramd.field_retCode == 0))
       {
-        ad.i(this.yjm.TAG, "cdntra cdnCallback2 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.yjm.hhN, Integer.valueOf(paramInt), paramc, paramd });
-        b localb = this.yjm;
+        ac.i(this.zwl.TAG, "cdntra cdnCallback2 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.zwl.hIq, Integer.valueOf(paramInt), paramc, paramd });
+        b localb = this.zwl;
         String str = paramd.field_fileUrl;
         d.g.b.k.g(str, "sceneResult.field_fileUrl");
-        paramString = com.tencent.mm.plugin.story.i.a.yor;
-        paramInt = com.tencent.mm.plugin.story.i.a.dJO();
+        paramString = com.tencent.mm.plugin.story.i.a.zBQ;
+        paramInt = com.tencent.mm.plugin.story.i.a.dYp();
         paramd = paramd.field_thumbUrl;
         d.g.b.k.g(paramd, "sceneResult.field_thumbUrl");
-        paramString = com.tencent.mm.plugin.story.i.a.yor;
-        int i = com.tencent.mm.plugin.story.i.a.dJO();
+        paramString = com.tencent.mm.plugin.story.i.a.zBQ;
+        int i = com.tencent.mm.plugin.story.i.a.dYp();
         StringBuilder localStringBuilder = new StringBuilder("upload_ + ");
-        paramc = this.yjm.hhN;
+        paramc = this.zwl.hIq;
         paramString = paramc;
         if (paramc == null) {
           paramString = "null";
         }
         localb.b(str, paramInt, paramd, i, paramString);
-        this.yjm.yjl.a(0, true, (com.tencent.mm.plugin.story.f.g)this.yjm);
+        this.zwl.zwk.a(0, true, (com.tencent.mm.plugin.story.f.g)this.zwl);
         AppMethodBeat.o(119097);
         return 0;
       }
       if ((paramd != null) && (paramd.field_retCode != 0))
       {
-        ad.i(this.yjm.TAG, "cdntra cdnCallback3 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.yjm.hhN, Integer.valueOf(paramInt), paramc, paramd });
-        this.yjm.dIu();
-        this.yjm.yjl.a(paramd.field_retCode, false, (com.tencent.mm.plugin.story.f.g)this.yjm);
+        ac.i(this.zwl.TAG, "cdntra cdnCallback3 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.zwl.hIq, Integer.valueOf(paramInt), paramc, paramd });
+        this.zwl.dWV();
+        this.zwl.zwk.a(paramd.field_retCode, false, (com.tencent.mm.plugin.story.f.g)this.zwl);
         AppMethodBeat.o(119097);
         return 0;
       }
       if (paramInt != 0)
       {
-        ad.i(this.yjm.TAG, "cdntra cdnCallback4 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.yjm.hhN, Integer.valueOf(paramInt), paramc, paramd });
-        this.yjm.dIu();
-        this.yjm.yjl.a(paramInt, false, (com.tencent.mm.plugin.story.f.g)this.yjm);
+        ac.i(this.zwl.TAG, "cdntra cdnCallback4 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.zwl.hIq, Integer.valueOf(paramInt), paramc, paramd });
+        this.zwl.dWV();
+        this.zwl.zwk.a(paramInt, false, (com.tencent.mm.plugin.story.f.g)this.zwl);
         AppMethodBeat.o(119097);
         return 0;
       }
-      ad.d(this.yjm.TAG, "cdntra cdnCallback5 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.yjm.hhN, Integer.valueOf(paramInt), paramc, paramd });
+      ac.d(this.zwl.TAG, "cdntra cdnCallback5 clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { this.zwl.hIq, Integer.valueOf(paramInt), paramc, paramd });
       AppMethodBeat.o(119097);
       return 0;
     }
@@ -331,7 +331,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.g.b
  * JD-Core Version:    0.7.0.1
  */

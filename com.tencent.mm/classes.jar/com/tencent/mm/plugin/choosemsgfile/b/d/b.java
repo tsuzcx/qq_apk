@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
 {
-  public static final int nMS;
+  public static final int opS;
   
   static
   {
     AppMethodBeat.i(170097);
-    nMS = b.class.hashCode() & 0xFFFF;
+    opS = b.class.hashCode() & 0xFFFF;
     AppMethodBeat.o(170097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.d.b
  * JD-Core Version:    0.7.0.1
  */

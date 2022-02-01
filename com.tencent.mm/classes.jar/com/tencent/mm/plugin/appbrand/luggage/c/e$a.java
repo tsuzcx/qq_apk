@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(47559);
-    kPT = new a("PRE_NONE", 0);
-    kPU = new a("PRE_LOADING", 1);
-    kPV = new a("PRE_LOADED", 2);
-    kPW = new a[] { kPT, kPU, kPV };
+    lrs = new a("PRE_NONE", 0);
+    lrt = new a("PRE_LOADING", 1);
+    lru = new a("PRE_LOADED", 2);
+    lrv = new a[] { lrs, lrt, lru };
     AppMethodBeat.o(47559);
   }
   

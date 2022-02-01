@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "", "scanTabId", "", "scanTabTitle", "", "(ILjava/lang/String;)V", "getScanTabId", "()I", "getScanTabTitle", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-scan_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "", "scanTabId", "", "scanTabTitle", "", "(ILjava/lang/String;)V", "getScanTabId", "()I", "getScanTabTitle", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-scan_release"})
 public final class b$b
 {
-  public final int vZv;
-  final String vZw;
+  public final int xkB;
+  final String xkC;
   
   public b$b(int paramInt, String paramString)
   {
     AppMethodBeat.i(52428);
-    this.vZv = paramInt;
-    this.vZw = paramString;
+    this.xkB = paramInt;
+    this.xkC = paramString;
     AppMethodBeat.o(52428);
   }
   
@@ -26,7 +26,7 @@ public final class b$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.vZv != paramObject.vZv) || (!k.g(this.vZw, paramObject.vZw))) {}
+        if ((this.xkB != paramObject.xkB) || (!k.g(this.xkC, paramObject.xkC))) {}
       }
     }
     else
@@ -41,8 +41,8 @@ public final class b$b
   public final int hashCode()
   {
     AppMethodBeat.i(52430);
-    int j = this.vZv;
-    String str = this.vZw;
+    int j = this.xkB;
+    String str = this.xkC;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
@@ -54,7 +54,7 @@ public final class b$b
   public final String toString()
   {
     AppMethodBeat.i(52429);
-    String str = "ScanTabInfo(scanTabId=" + this.vZv + ", scanTabTitle=" + this.vZw + ")";
+    String str = "ScanTabInfo(scanTabId=" + this.xkB + ", scanTabTitle=" + this.xkC + ")";
     AppMethodBeat.o(52429);
     return str;
   }

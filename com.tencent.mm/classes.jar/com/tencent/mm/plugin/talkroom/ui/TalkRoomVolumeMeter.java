@@ -15,18 +15,18 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 
 public class TalkRoomVolumeMeter
   extends FrameLayout
 {
-  private a yKu;
-  private ImageView yKv;
-  private ImageView yKw;
-  private ImageView yKx;
-  private FrameLayout yKy;
+  private a zXH;
+  private ImageView zXI;
+  private ImageView zXJ;
+  private ImageView zXK;
+  private FrameLayout zXL;
   
   public TalkRoomVolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,35 +47,35 @@ public class TalkRoomVolumeMeter
   private void initView()
   {
     AppMethodBeat.i(29651);
-    this.yKu = new a(getContext());
-    this.yKv = new ImageView(getContext());
-    this.yKv.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.yKv.setImageResource(2131234331);
-    this.yKv.setVisibility(0);
-    this.yKw = new ImageView(getContext());
-    this.yKw.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.yKw.setImageResource(2131234330);
-    this.yKw.setVisibility(8);
-    this.yKx = new ImageView(getContext());
-    this.yKx.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.yKx.setImageResource(2131234327);
-    this.yKx.setVisibility(8);
-    this.yKy = new FrameLayout(getContext());
-    this.yKy.addView(this.yKu);
-    this.yKy.addView(this.yKw);
-    this.yKy.setVisibility(8);
-    addView(this.yKy);
-    addView(this.yKx);
-    addView(this.yKv);
+    this.zXH = new a(getContext());
+    this.zXI = new ImageView(getContext());
+    this.zXI.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.zXI.setImageResource(2131234331);
+    this.zXI.setVisibility(0);
+    this.zXJ = new ImageView(getContext());
+    this.zXJ.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.zXJ.setImageResource(2131234330);
+    this.zXJ.setVisibility(8);
+    this.zXK = new ImageView(getContext());
+    this.zXK.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.zXK.setImageResource(2131234327);
+    this.zXK.setVisibility(8);
+    this.zXL = new FrameLayout(getContext());
+    this.zXL.addView(this.zXH);
+    this.zXL.addView(this.zXJ);
+    this.zXL.setVisibility(8);
+    addView(this.zXL);
+    addView(this.zXK);
+    addView(this.zXI);
     setBackgroundColor(-16777216);
-    bringChildToFront(this.yKv);
+    bringChildToFront(this.zXI);
     AppMethodBeat.o(29651);
   }
   
   private void setShowErr(boolean paramBoolean)
   {
     AppMethodBeat.i(29652);
-    ImageView localImageView = this.yKx;
+    ImageView localImageView = this.zXK;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -87,28 +87,28 @@ public class TalkRoomVolumeMeter
   
   private void setShowRed(boolean paramBoolean)
   {
-    this.yKu.yKK = paramBoolean;
+    this.zXH.zXX = paramBoolean;
   }
   
   public void setMax(int paramInt)
   {
-    this.yKu.max = paramInt;
+    this.zXH.max = paramInt;
   }
   
   public void setMaxPos(int paramInt)
   {
-    this.yKu.yKA = paramInt;
+    this.zXH.zXN = paramInt;
   }
   
   public void setMinPos(int paramInt)
   {
-    this.yKu.yKz = paramInt;
+    this.zXH.zXM = paramInt;
   }
   
   public void setShowFlame(boolean paramBoolean)
   {
     AppMethodBeat.i(29653);
-    Object localObject = this.yKy;
+    Object localObject = this.zXL;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -116,20 +116,20 @@ public class TalkRoomVolumeMeter
       if (!paramBoolean) {
         break;
       }
-      localObject = this.yKu;
+      localObject = this.zXH;
       if (!((a)localObject).started)
       {
         ((a)localObject).started = true;
-        ((a)localObject).yKG.av(100L, 100L);
+        ((a)localObject).zXT.au(100L, 100L);
       }
       AppMethodBeat.o(29653);
       return;
     }
-    a locala = this.yKu;
+    a locala = this.zXH;
     if (locala.started)
     {
       locala.started = false;
-      if ((locala.yKI >= locala.yKz) && (locala.yKI <= locala.yKA)) {
+      if ((locala.zXV >= locala.zXM) && (locala.zXV <= locala.zXN)) {
         break label132;
       }
     }
@@ -139,26 +139,26 @@ public class TalkRoomVolumeMeter
     {
       do
       {
-        locala.yKG.stopTimer();
+        locala.zXT.stopTimer();
         AppMethodBeat.o(29653);
         return;
-      } while ((locala.yKD == null) || (locala.yKC == null));
-      localCanvas = locala.yKB.lockCanvas();
-    } while ((localCanvas == null) || (locala.yKF == null));
-    localCanvas.setDrawFilter(locala.yKJ);
-    locala.yKF.set(0, 0, locala.wbW, locala.wbX + 0);
-    if (locala.yKK) {}
-    for (localObject = locala.yKD;; localObject = locala.yKC)
+      } while ((locala.zXQ == null) || (locala.zXP == null));
+      localCanvas = locala.zXO.lockCanvas();
+    } while ((localCanvas == null) || (locala.zXS == null));
+    localCanvas.setDrawFilter(locala.zXW);
+    locala.zXS.set(0, 0, locala.xnd, locala.xne + 0);
+    if (locala.zXX) {}
+    for (localObject = locala.zXQ;; localObject = locala.zXP)
     {
-      localCanvas.drawBitmap((Bitmap)localObject, null, locala.yKF, locala.paint);
-      locala.yKB.unlockCanvasAndPost(localCanvas);
+      localCanvas.drawBitmap((Bitmap)localObject, null, locala.zXS, locala.paint);
+      locala.zXO.unlockCanvasAndPost(localCanvas);
       break;
     }
   }
   
   public void setValue(int paramInt)
   {
-    a locala = this.yKu;
+    a locala = this.zXH;
     int i;
     if (paramInt < 0) {
       i = 0;
@@ -166,7 +166,7 @@ public class TalkRoomVolumeMeter
     for (;;)
     {
       locala.value = i;
-      locala.yKI = (locala.yKA - (locala.yKA - locala.yKz) * (locala.value * 1.0F / locala.max));
+      locala.zXV = (locala.zXN - (locala.zXN - locala.zXM) * (locala.value * 1.0F / locala.max));
       return;
       i = paramInt;
       if (paramInt > locala.max) {
@@ -179,26 +179,26 @@ public class TalkRoomVolumeMeter
     extends SurfaceView
     implements SurfaceHolder.Callback
   {
-    private float[] iZf;
     private boolean isRefreshing;
+    private float[] jzv;
     int max;
     Paint paint;
     boolean started;
     int value;
-    int wbW;
-    int wbX;
-    float yKA;
-    SurfaceHolder yKB;
-    Bitmap yKC;
-    Bitmap yKD;
-    private Bitmap yKE;
-    Rect yKF;
-    av yKG;
-    private float yKH;
-    float yKI;
-    PaintFlagsDrawFilter yKJ;
-    boolean yKK;
-    float yKz;
+    int xnd;
+    int xne;
+    float zXM;
+    float zXN;
+    SurfaceHolder zXO;
+    Bitmap zXP;
+    Bitmap zXQ;
+    private Bitmap zXR;
+    Rect zXS;
+    au zXT;
+    private float zXU;
+    float zXV;
+    PaintFlagsDrawFilter zXW;
+    boolean zXX;
     
     public a(Context paramContext)
     {
@@ -206,19 +206,19 @@ public class TalkRoomVolumeMeter
       AppMethodBeat.i(29643);
       this.max = 100;
       this.value = 0;
-      this.yKz = 0.0F;
-      this.yKA = 0.0F;
+      this.zXM = 0.0F;
+      this.zXN = 0.0F;
       this.isRefreshing = false;
-      this.yKH = this.yKA;
-      this.yKI = this.yKA;
-      this.yKK = false;
+      this.zXU = this.zXN;
+      this.zXV = this.zXN;
+      this.zXX = false;
       this.started = false;
-      this.yKB = getHolder();
-      this.yKB.addCallback(this);
+      this.zXO = getHolder();
+      this.zXO.addCallback(this);
       this.paint = new Paint();
       this.paint.setAntiAlias(true);
-      this.yKJ = new PaintFlagsDrawFilter(0, 3);
-      this.yKG = new av(new av.a()
+      this.zXW = new PaintFlagsDrawFilter(0, 3);
+      this.zXT = new au(new au.a()
       {
         public final boolean onTimerExpired()
         {
@@ -232,15 +232,15 @@ public class TalkRoomVolumeMeter
       AppMethodBeat.o(29643);
     }
     
-    private int dNp()
+    private int ebP()
     {
       AppMethodBeat.i(29645);
-      if (this.yKC == null)
+      if (this.zXP == null)
       {
         AppMethodBeat.o(29645);
         return 190;
       }
-      int i = this.yKC.getHeight();
+      int i = this.zXP.getHeight();
       AppMethodBeat.o(29645);
       return i;
     }
@@ -248,14 +248,14 @@ public class TalkRoomVolumeMeter
     public final void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(29646);
-      ad.v("MicroMsg.TalkRoomVoiceMeter", "surfaceChanged, width = " + paramInt2 + " height = " + paramInt3);
-      this.yKA = 0.0F;
-      this.yKz = (paramInt3 - dNp());
-      this.yKH = this.yKA;
-      this.yKI = this.yKA;
-      this.wbW = paramInt2;
-      this.wbX = dNp();
-      this.yKF = new Rect(0, (int)this.yKH, this.wbW, (int)this.yKH + this.wbX);
+      ac.v("MicroMsg.TalkRoomVoiceMeter", "surfaceChanged, width = " + paramInt2 + " height = " + paramInt3);
+      this.zXN = 0.0F;
+      this.zXM = (paramInt3 - ebP());
+      this.zXU = this.zXN;
+      this.zXV = this.zXN;
+      this.xnd = paramInt2;
+      this.xne = ebP();
+      this.zXS = new Rect(0, (int)this.zXU, this.xnd, (int)this.zXU + this.xne);
       this.isRefreshing = true;
       AppMethodBeat.o(29646);
     }
@@ -263,36 +263,36 @@ public class TalkRoomVolumeMeter
     public final void surfaceCreated(SurfaceHolder paramSurfaceHolder)
     {
       AppMethodBeat.i(29644);
-      ad.v("MicroMsg.TalkRoomVoiceMeter", "surfaceCreated");
-      this.yKC = BitmapFactory.decodeResource(getResources(), 2131234328);
-      this.yKE = BitmapFactory.decodeResource(getResources(), 2131234327);
-      this.yKD = BitmapFactory.decodeResource(getResources(), 2131234329);
+      ac.v("MicroMsg.TalkRoomVoiceMeter", "surfaceCreated");
+      this.zXP = BitmapFactory.decodeResource(getResources(), 2131234328);
+      this.zXR = BitmapFactory.decodeResource(getResources(), 2131234327);
+      this.zXQ = BitmapFactory.decodeResource(getResources(), 2131234329);
       AppMethodBeat.o(29644);
     }
     
     public final void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
     {
       AppMethodBeat.i(29647);
-      ad.v("MicroMsg.TalkRoomVoiceMeter", "surfaceDestroyed");
+      ac.v("MicroMsg.TalkRoomVoiceMeter", "surfaceDestroyed");
       this.isRefreshing = false;
-      this.yKG.stopTimer();
-      if (this.yKC != null)
+      this.zXT.stopTimer();
+      if (this.zXP != null)
       {
-        ad.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.yKC.toString() });
-        this.yKC.recycle();
-        this.yKC = null;
+        ac.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.zXP.toString() });
+        this.zXP.recycle();
+        this.zXP = null;
       }
-      if (this.yKE != null)
+      if (this.zXR != null)
       {
-        ad.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.yKE.toString() });
-        this.yKE.recycle();
-        this.yKE = null;
+        ac.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.zXR.toString() });
+        this.zXR.recycle();
+        this.zXR = null;
       }
-      if (this.yKD != null)
+      if (this.zXQ != null)
       {
-        ad.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.yKD.toString() });
-        this.yKD.recycle();
-        this.yKD = null;
+        ac.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.zXQ.toString() });
+        this.zXQ.recycle();
+        this.zXQ = null;
       }
       AppMethodBeat.o(29647);
     }
@@ -300,7 +300,7 @@ public class TalkRoomVolumeMeter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomVolumeMeter
  * JD-Core Version:    0.7.0.1
  */

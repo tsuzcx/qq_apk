@@ -2,14 +2,14 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.z.c;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.y.c;
 
 public final class l
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -74,34 +74,34 @@ public final class l
         break;
       }
     }
-    d.O(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
+    d.N(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
     AppMethodBeat.o(20191);
     return true;
-    g.afB().afk().set(ae.a.Fsj, Integer.valueOf(1));
+    g.agR().agA().set(ah.a.GQa, Integer.valueOf(1));
     AppMethodBeat.o(20191);
     return true;
-    c.adr().b(ae.a.FrW, true);
+    c.aeH().b(ah.a.GPM, true);
     AppMethodBeat.o(20191);
     return true;
     if (paramArrayOfString.length >= 3)
     {
-      i = bt.getInt(paramArrayOfString[2], 0);
-      g.afB().afk().set(ae.a.Fsp, Integer.valueOf(i));
+      i = bs.getInt(paramArrayOfString[2], 0);
+      g.agR().agA().set(ah.a.GQg, Integer.valueOf(i));
     }
     AppMethodBeat.o(20191);
     return true;
     ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
     AppMethodBeat.o(20191);
     return true;
-    g.afB().afk().set(ae.a.Fsy, Integer.valueOf(0));
-    g.afB().afk().set(ae.a.Fsz, Integer.valueOf(0));
+    g.agR().agA().set(ah.a.GQp, Integer.valueOf(0));
+    g.agR().agA().set(ah.a.GQq, Integer.valueOf(0));
     AppMethodBeat.o(20191);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.a.l
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.emoji;
 import android.content.Context;
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.b;
-import com.tencent.mm.cg.f;
-import com.tencent.mm.cg.f.a;
-import com.tencent.mm.cg.g;
+import com.tencent.mm.cf.b;
+import com.tencent.mm.cf.f;
+import com.tencent.mm.cf.f.a;
+import com.tencent.mm.cf.g;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class a
   implements com.tencent.mm.plugin.emoji.b.a
@@ -16,7 +16,7 @@ public final class a
   public final boolean J(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(104529);
-    boolean bool = g.eIa().J(paramCharSequence);
+    boolean bool = g.eXw().J(paramCharSequence);
     AppMethodBeat.o(104529);
     return bool;
   }
@@ -24,16 +24,16 @@ public final class a
   public final boolean K(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(104530);
-    boolean bool = g.eIa().K(paramCharSequence);
+    boolean bool = g.eXw().K(paramCharSequence);
     AppMethodBeat.o(104530);
     return bool;
   }
   
-  public final String Tk(String paramString)
+  public final String Xw(String paramString)
   {
     AppMethodBeat.i(104531);
-    b.eHL();
-    paramString = b.Tk(paramString);
+    b.eXh();
+    paramString = b.Xw(paramString);
     AppMethodBeat.o(104531);
     return paramString;
   }
@@ -41,7 +41,7 @@ public final class a
   public final SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
     AppMethodBeat.i(104526);
-    paramContext = g.eIa().b(paramCharSequence, paramFloat);
+    paramContext = g.eXw().b(paramCharSequence, paramFloat);
     AppMethodBeat.o(104526);
     return paramContext;
   }
@@ -54,12 +54,12 @@ public final class a
     return paramContext;
   }
   
-  public final String eU(String paramString1, String paramString2)
+  public final String fh(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104528);
-    g.eIa();
-    f localf = f.eHV();
-    aj.getContext();
+    g.eXw();
+    f localf = f.eXr();
+    ai.getContext();
     int i = 0;
     int j = paramString1.length();
     StringBuilder localStringBuilder = new StringBuilder(j);
@@ -68,7 +68,7 @@ public final class a
       char c = paramString1.charAt(i);
       if ((c == '/') || (c == '['))
       {
-        f.a locala = localf.aGQ(paramString1.substring(i));
+        f.a locala = localf.aMi(paramString1.substring(i));
         if (locala != null)
         {
           localStringBuilder.append(paramString2);
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a
  * JD-Core Version:    0.7.0.1
  */

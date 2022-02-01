@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static String Br(String paramString)
+  public static String Fv(String paramString)
   {
     AppMethodBeat.i(132967);
     if ((paramString == null) || ("".equals(paramString.trim())))
@@ -29,7 +29,7 @@ public final class f
     return paramString;
   }
   
-  public static String Bs(String paramString)
+  public static String Fw(String paramString)
   {
     AppMethodBeat.i(132968);
     if ((paramString == null) || ("".equals(paramString.trim())))

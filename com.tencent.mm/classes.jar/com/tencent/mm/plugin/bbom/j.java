@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.bbom;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.bk;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.protocal.protobuf.bps;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.protocal.protobuf.buj;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 
 public final class j
   implements n
 {
-  private String mLJ = null;
+  private String nnS = null;
   
   public j(String paramString)
   {
-    this.mLJ = paramString;
+    this.nnS = paramString;
   }
   
-  public final void a(bps parambps, bl parambl)
+  public final void a(buj parambuj, bo parambo)
   {
     AppMethodBeat.i(22365);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<msgsource>");
-    localStringBuilder.append("<strangerantispamticket ticket=\"" + this.mLJ + "\"></strangerantispamticket>");
-    localStringBuilder.append(bt.nullAsNil(bk.asm()));
-    if ((bt.isNullOrNil(parambps.CxC)) || (!parambps.CxC.startsWith("<msgsource>"))) {}
-    for (parambl = "<msgsource></msgsource>";; parambl = parambps.CxC)
+    localStringBuilder.append("<strangerantispamticket ticket=\"" + this.nnS + "\"></strangerantispamticket>");
+    localStringBuilder.append(bs.nullAsNil(bk.azd()));
+    if ((bs.isNullOrNil(parambuj.DPY)) || (!parambuj.DPY.startsWith("<msgsource>"))) {}
+    for (parambo = "<msgsource></msgsource>";; parambo = parambuj.DPY)
     {
-      parambps.CxC = parambl;
-      parambps.CxC = parambps.CxC.replace("<msgsource>", localStringBuilder.toString());
+      parambuj.DPY = parambo;
+      parambuj.DPY = parambuj.DPY.replace("<msgsource>", localStringBuilder.toString());
       AppMethodBeat.o(22365);
       return;
     }
@@ -36,7 +36,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.j
  * JD-Core Version:    0.7.0.1
  */

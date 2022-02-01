@@ -7,7 +7,7 @@ import java.util.Date;
 
 public final class s
 {
-  public static String t(String paramString, long paramLong)
+  public static String u(String paramString, long paramLong)
   {
     AppMethodBeat.i(42772);
     String str = new SimpleDateFormat("ssHHmmMMddyy").format(new Date(paramLong));

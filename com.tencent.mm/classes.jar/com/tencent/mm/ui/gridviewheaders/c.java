@@ -17,12 +17,12 @@ import java.util.List;
 public final class c
   extends BaseAdapter
 {
-  private static boolean HiX;
-  final b HiY;
-  private GridHeadersGridView HiZ;
-  private final List<View> Hja;
-  private View[] Hjb;
-  private DataSetObserver Qv;
+  private static boolean IJq;
+  final b IJr;
+  private GridHeadersGridView IJs;
+  private final List<View> IJt;
+  private View[] IJu;
+  private DataSetObserver Rq;
   private final Context mContext;
   int mCount;
   int mNumColumns;
@@ -30,7 +30,7 @@ public final class c
   public c(Context paramContext, GridHeadersGridView paramGridHeadersGridView, b paramb)
   {
     AppMethodBeat.i(142775);
-    this.Qv = new DataSetObserver()
+    this.Rq = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -38,9 +38,9 @@ public final class c
         AppMethodBeat.i(142759);
         c localc = c.this;
         localc.mCount = 0;
-        int j = localc.HiY.fcY();
+        int j = localc.IJr.fsT();
         if (j == 0) {
-          localc.mCount = localc.HiY.getCount();
+          localc.mCount = localc.IJr.getCount();
         }
         for (;;)
         {
@@ -49,7 +49,7 @@ public final class c
           return;
           while (i < j)
           {
-            localc.mCount += localc.HiY.ZX(i) + localc.mNumColumns;
+            localc.mCount += localc.IJr.ack(i) + localc.mNumColumns;
             i += 1;
           }
         }
@@ -63,27 +63,27 @@ public final class c
         AppMethodBeat.o(142760);
       }
     };
-    this.Hja = new ArrayList();
+    this.IJt = new ArrayList();
     this.mNumColumns = 1;
     this.mContext = paramContext;
-    this.HiY = paramb;
-    this.HiZ = paramGridHeadersGridView;
-    paramb.registerDataSetObserver(this.Qv);
+    this.IJr = paramb;
+    this.IJs = paramGridHeadersGridView;
+    paramb.registerDataSetObserver(this.Rq);
     AppMethodBeat.o(142775);
   }
   
-  private void ZY(int paramInt)
+  private void acl(int paramInt)
   {
     AppMethodBeat.i(142788);
-    this.Hjb = new View[paramInt];
-    Arrays.fill(this.Hjb, null);
+    this.IJu = new View[paramInt];
+    Arrays.fill(this.IJu, null);
     AppMethodBeat.o(142788);
   }
   
-  private int ZZ(int paramInt)
+  private int acm(int paramInt)
   {
     AppMethodBeat.i(142789);
-    paramInt = this.HiY.ZX(paramInt) % this.mNumColumns;
+    paramInt = this.IJr.ack(paramInt) % this.mNumColumns;
     if (paramInt == 0)
     {
       AppMethodBeat.o(142789);
@@ -94,27 +94,35 @@ public final class c
     return i - paramInt;
   }
   
+  protected final long An(int paramInt)
+  {
+    AppMethodBeat.i(142790);
+    long l = acn(paramInt).IJy;
+    AppMethodBeat.o(142790);
+    return l;
+  }
+  
   protected final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142791);
-    if (this.HiY.fcY() == 0)
+    if (this.IJr.fsT() == 0)
     {
       AppMethodBeat.o(142791);
       return null;
     }
-    paramView = this.HiY.a(aaa(paramInt).Hjf, paramView, paramViewGroup);
+    paramView = this.IJr.a(acn(paramInt).IJy, paramView, paramViewGroup);
     AppMethodBeat.o(142791);
     return paramView;
   }
   
-  protected final c aaa(int paramInt)
+  protected final c acn(int paramInt)
   {
     int k = 0;
     AppMethodBeat.i(142792);
-    int m = this.HiY.fcY();
+    int m = this.IJr.fsT();
     if (m == 0)
     {
-      if (paramInt >= this.HiY.getCount())
+      if (paramInt >= this.IJr.getCount())
       {
         localc = new c(-1, 0);
         AppMethodBeat.o(142792);
@@ -129,7 +137,7 @@ public final class c
     paramInt = k;
     while (paramInt < m)
     {
-      k = this.HiY.ZX(paramInt);
+      k = this.IJr.ack(paramInt);
       if (j == 0)
       {
         localc = new c(-2, paramInt);
@@ -150,7 +158,7 @@ public final class c
         AppMethodBeat.o(142792);
         return localc;
       }
-      int n = ZZ(paramInt);
+      int n = acm(paramInt);
       j -= k + n;
       paramInt += 1;
       i -= n;
@@ -170,16 +178,16 @@ public final class c
     int i = 0;
     AppMethodBeat.i(142776);
     this.mCount = 0;
-    int j = this.HiY.fcY();
+    int j = this.IJr.fsT();
     if (j == 0)
     {
-      i = this.HiY.getCount();
+      i = this.IJr.getCount();
       AppMethodBeat.o(142776);
       return i;
     }
     while (i < j)
     {
-      this.mCount += this.HiY.ZX(i) + ZZ(i) + this.mNumColumns;
+      this.mCount += this.IJr.ack(i) + acm(i) + this.mNumColumns;
       i += 1;
     }
     i = this.mCount;
@@ -190,13 +198,13 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142777);
-    Object localObject = aaa(paramInt);
+    Object localObject = acn(paramInt);
     if ((((c)localObject).mPosition == -1) || (((c)localObject).mPosition == -2))
     {
       AppMethodBeat.o(142777);
       return null;
     }
-    localObject = this.HiY.getItem(((c)localObject).mPosition);
+    localObject = this.IJr.getItem(((c)localObject).mPosition);
     AppMethodBeat.o(142777);
     return localObject;
   }
@@ -204,7 +212,7 @@ public final class c
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142778);
-    c localc = aaa(paramInt);
+    c localc = acn(paramInt);
     if (localc.mPosition == -2)
     {
       AppMethodBeat.o(142778);
@@ -215,7 +223,7 @@ public final class c
       AppMethodBeat.o(142778);
       return -2L;
     }
-    long l = this.HiY.getItemId(localc.mPosition);
+    long l = this.IJr.getItemId(localc.mPosition);
     AppMethodBeat.o(142778);
     return l;
   }
@@ -223,7 +231,7 @@ public final class c
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(142779);
-    c localc = aaa(paramInt);
+    c localc = acn(paramInt);
     if (localc.mPosition == -2)
     {
       AppMethodBeat.o(142779);
@@ -234,7 +242,7 @@ public final class c
       AppMethodBeat.o(142779);
       return 0;
     }
-    paramInt = this.HiY.getItemViewType(localc.mPosition);
+    paramInt = this.IJr.getItemViewType(localc.mPosition);
     if (paramInt == -1)
     {
       AppMethodBeat.o(142779);
@@ -255,14 +263,14 @@ public final class c
     }
     for (;;)
     {
-      Object localObject2 = aaa(paramInt);
+      Object localObject2 = acn(paramInt);
       if (((c)localObject2).mPosition == -2)
       {
         localObject1 = new b(this.mContext);
-        ((b)localObject1).setHeaderWidth(this.HiZ.getWidth());
-        ((b)localObject1).setHeaderId(((c)localObject2).Hjf);
+        ((b)localObject1).setHeaderWidth(this.IJs.getWidth());
+        ((b)localObject1).setHeaderId(((c)localObject2).IJy);
         View localView = (View)((View)localObject1).getTag();
-        ((View)localObject1).setTag(this.HiY.a(((c)localObject2).Hjf, localView, paramViewGroup));
+        ((View)localObject1).setTag(this.IJr.a(((c)localObject2).IJy, localView, paramViewGroup));
       }
       for (;;)
       {
@@ -274,15 +282,15 @@ public final class c
         ((d)localObject2).addView((View)localObject1);
         ((d)localObject2).setPosition(paramInt);
         ((d)localObject2).setNumColumns(this.mNumColumns);
-        this.Hjb[(paramInt % this.mNumColumns)] = localObject2;
+        this.IJu[(paramInt % this.mNumColumns)] = localObject2;
         if (paramInt % this.mNumColumns != 0) {
           break label293;
         }
-        HiX = true;
+        IJq = true;
         int i = 1;
-        while (i < this.Hjb.length)
+        while (i < this.IJu.length)
         {
-          this.Hjb[i] = getView(paramInt + i, null, paramViewGroup);
+          this.IJu[i] = getView(paramInt + i, null, paramViewGroup);
           i += 1;
         }
         if (((c)localObject2).mPosition == -1)
@@ -295,14 +303,14 @@ public final class c
         }
         else
         {
-          localObject1 = this.HiY.getView(((c)localObject2).mPosition, (View)localObject1, paramViewGroup);
+          localObject1 = this.IJr.getView(((c)localObject2).mPosition, (View)localObject1, paramViewGroup);
         }
       }
-      HiX = false;
+      IJq = false;
       label293:
-      ((d)localObject2).setRowSiblings(this.Hjb);
-      if ((!HiX) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
-        ZY(this.mNumColumns);
+      ((d)localObject2).setRowSiblings(this.IJu);
+      if ((!IJq) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
+        acl(this.mNumColumns);
       }
       AppMethodBeat.o(142780);
       return localObject2;
@@ -315,7 +323,7 @@ public final class c
   public final int getViewTypeCount()
   {
     AppMethodBeat.i(142781);
-    int i = this.HiY.getViewTypeCount();
+    int i = this.IJr.getViewTypeCount();
     AppMethodBeat.o(142781);
     return i + 2;
   }
@@ -323,7 +331,7 @@ public final class c
   public final boolean hasStableIds()
   {
     AppMethodBeat.i(142782);
-    boolean bool = this.HiY.hasStableIds();
+    boolean bool = this.IJr.hasStableIds();
     AppMethodBeat.o(142782);
     return bool;
   }
@@ -331,7 +339,7 @@ public final class c
   public final boolean isEmpty()
   {
     AppMethodBeat.i(142783);
-    boolean bool = this.HiY.isEmpty();
+    boolean bool = this.IJr.isEmpty();
     AppMethodBeat.o(142783);
     return bool;
   }
@@ -339,13 +347,13 @@ public final class c
   public final boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(142784);
-    c localc = aaa(paramInt);
+    c localc = acn(paramInt);
     if ((localc.mPosition == -1) || (localc.mPosition == -2))
     {
       AppMethodBeat.o(142784);
       return false;
     }
-    boolean bool = this.HiY.isEnabled(localc.mPosition);
+    boolean bool = this.IJr.isEnabled(localc.mPosition);
     AppMethodBeat.o(142784);
     return bool;
   }
@@ -353,7 +361,7 @@ public final class c
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(142785);
-    this.HiY.registerDataSetObserver(paramDataSetObserver);
+    this.IJr.registerDataSetObserver(paramDataSetObserver);
     AppMethodBeat.o(142785);
   }
   
@@ -361,23 +369,15 @@ public final class c
   {
     AppMethodBeat.i(142786);
     this.mNumColumns = paramInt;
-    ZY(paramInt);
+    acl(paramInt);
     AppMethodBeat.o(142786);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(142787);
-    this.HiY.unregisterDataSetObserver(paramDataSetObserver);
+    this.IJr.unregisterDataSetObserver(paramDataSetObserver);
     AppMethodBeat.o(142787);
-  }
-  
-  protected final long zw(int paramInt)
-  {
-    AppMethodBeat.i(142790);
-    long l = aaa(paramInt).Hjf;
-    AppMethodBeat.o(142790);
-    return l;
   }
   
   protected final class a
@@ -392,8 +392,8 @@ public final class c
   protected final class b
     extends FrameLayout
   {
-    private int Hjd;
-    private int Hje;
+    private int IJw;
+    private int IJx;
     
     public b(Context paramContext)
     {
@@ -410,7 +410,7 @@ public final class c
     
     public final int getHeaderId()
     {
-      return this.Hjd;
+      return this.IJw;
     }
     
     protected final void onMeasure(int paramInt1, int paramInt2)
@@ -421,7 +421,7 @@ public final class c
         localView.setLayoutParams(generateDefaultLayoutParams());
       }
       if ((localView.getVisibility() != 8) && (localView.getMeasuredHeight() == 0)) {
-        localView.measure(View.MeasureSpec.makeMeasureSpec(this.Hje, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
+        localView.measure(View.MeasureSpec.makeMeasureSpec(this.IJx, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
       }
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), localView.getMeasuredHeight());
       AppMethodBeat.o(142762);
@@ -429,32 +429,32 @@ public final class c
     
     public final void setHeaderId(int paramInt)
     {
-      this.Hjd = paramInt;
+      this.IJw = paramInt;
     }
     
     public final void setHeaderWidth(int paramInt)
     {
-      this.Hje = paramInt;
+      this.IJx = paramInt;
     }
   }
   
   protected final class c
   {
-    protected int Hjf;
+    protected int IJy;
     protected int mPosition;
     
     protected c(int paramInt1, int paramInt2)
     {
       this.mPosition = paramInt1;
-      this.Hjf = paramInt2;
+      this.IJy = paramInt2;
     }
   }
   
   protected final class d
     extends FrameLayout
   {
-    private View[] Hjb;
-    private boolean Hjg;
+    private View[] IJu;
+    private boolean IJz;
     private int mNumColumns;
     private int mPosition;
     
@@ -505,10 +505,10 @@ public final class c
         AppMethodBeat.o(142772);
         return;
       }
-      if ((this.mPosition % this.mNumColumns == 0) && (!this.Hjg))
+      if ((this.mPosition % this.mNumColumns == 0) && (!this.IJz))
       {
-        this.Hjg = true;
-        arrayOfView = this.Hjb;
+        this.IJz = true;
+        arrayOfView = this.IJu;
         k = arrayOfView.length;
         i = 0;
         while (i < k)
@@ -516,10 +516,10 @@ public final class c
           arrayOfView[i].measure(paramInt1, paramInt2);
           i += 1;
         }
-        this.Hjg = false;
+        this.IJz = false;
       }
       int k = getMeasuredHeight();
-      View[] arrayOfView = this.Hjb;
+      View[] arrayOfView = this.IJu;
       int m = arrayOfView.length;
       int i = k;
       paramInt2 = j;
@@ -555,7 +555,7 @@ public final class c
     @SuppressLint({"NewApi"})
     public final void setRowSiblings(View[] paramArrayOfView)
     {
-      this.Hjb = paramArrayOfView;
+      this.IJu = paramArrayOfView;
     }
     
     public final void setTag(int paramInt, Object paramObject)
@@ -575,7 +575,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.c
  * JD-Core Version:    0.7.0.1
  */

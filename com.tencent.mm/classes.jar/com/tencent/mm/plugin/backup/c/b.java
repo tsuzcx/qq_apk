@@ -2,40 +2,36 @@ package com.tencent.mm.plugin.backup.c;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.h.d;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bo;
 import java.util.LinkedList;
 
 public final class b
 {
-  public boolean mqM = false;
+  public boolean mSO = false;
   
   public final void a(final a parama)
   {
     AppMethodBeat.i(21230);
-    ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation start");
-    long l = bt.eGO();
+    ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation start");
+    long l = bs.eWj();
     final LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = d.bxT().bxU().apR().c(w.gMn, g.bwk(), "*");
+    Cursor localCursor = d.bEP().bEQ().awG().c(w.hmN, g.bDg(), "*");
     if (localCursor.getCount() == 0)
     {
       if (parama != null) {
-        aq.f(new Runnable()
+        com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
         {
           public final void run()
           {
@@ -47,65 +43,65 @@ public final class b
           }
         });
       }
-      ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation empty conversation!");
+      ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation empty conversation!");
       localCursor.close();
       AppMethodBeat.o(21230);
       return;
     }
     localCursor.moveToFirst();
-    ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation count[%d]", new Object[] { Integer.valueOf(localCursor.getCount()) });
+    ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation count[%d]", new Object[] { Integer.valueOf(localCursor.getCount()) });
     for (;;)
     {
-      if (this.mqM)
+      if (this.mSO)
       {
-        ad.e("MicroMsg.BackupCalculator", "calculateChooseConversation cancel.");
+        ac.e("MicroMsg.BackupCalculator", "calculateChooseConversation cancel.");
         localCursor.close();
         AppMethodBeat.o(21230);
         return;
       }
-      am localam = new am();
-      localam.convertFrom(localCursor);
+      com.tencent.mm.storage.ap localap = new com.tencent.mm.storage.ap();
+      localap.convertFrom(localCursor);
       int i;
-      if (!bt.isNullOrNil(localam.field_username))
+      if (!bs.isNullOrNil(localap.field_username))
       {
-        i = d.bxT().bxU().apO().agE(localam.field_username);
+        i = d.bEP().bEQ().awD().aly(localap.field_username);
         if (i > 0) {
           break label299;
         }
-        ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation empty conversation:%s", new Object[] { localam.field_username });
+        ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation empty conversation:%s", new Object[] { localap.field_username });
       }
       while (!localCursor.moveToNext())
       {
         localCursor.close();
-        if ((!this.mqM) && (parama != null)) {
-          aq.f(new Runnable()
+        if ((!this.mSO) && (parama != null)) {
+          com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(21226);
-              if ((!b.this.mqM) && (parama != null)) {
+              if ((!b.this.mSO) && (parama != null)) {
                 parama.C(localLinkedList);
               }
               AppMethodBeat.o(21226);
             }
           });
         }
-        ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation finish, use time[%d]", new Object[] { Long.valueOf(bt.vM(l)) });
+        ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation finish, use time[%d]", new Object[] { Long.valueOf(bs.Ap(l)) });
         AppMethodBeat.o(21230);
         return;
         label299:
-        az.arV();
-        if (af.Wy(c.apM().aHY(localam.field_username).field_verifyFlag))
+        com.tencent.mm.model.az.ayM();
+        if (ai.YI(c.awB().aNt(localap.field_username).field_verifyFlag))
         {
-          ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation Biz conv:%s, msgCount[%d]", new Object[] { localam.field_username, Integer.valueOf(i) });
+          ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation Biz conv:%s, msgCount[%d]", new Object[] { localap.field_username, Integer.valueOf(i) });
         }
         else
         {
           f.b localb = new f.b();
-          localb.mqx = localam.field_username;
-          localb.mqy = d.bxT().bxU().apO().agH(localam.field_username);
-          localb.mqz = d.bxT().bxU().apO().agI(localam.field_username);
-          ad.i("MicroMsg.BackupCalculator", "calculateChooseConversation add conv:%s, msgCount[%d], firstMsgTime[%d], lastMsgTime[%d]", new Object[] { localb.mqx, Integer.valueOf(i), Long.valueOf(localb.mqy), Long.valueOf(localb.mqz) });
+          localb.mSz = localap.field_username;
+          localb.mSA = d.bEP().bEQ().awD().alB(localap.field_username);
+          localb.mSB = d.bEP().bEQ().awD().alC(localap.field_username);
+          ac.i("MicroMsg.BackupCalculator", "calculateChooseConversation add conv:%s, msgCount[%d], firstMsgTime[%d], lastMsgTime[%d]", new Object[] { localb.mSz, Integer.valueOf(i), Long.valueOf(localb.mSA), Long.valueOf(localb.mSB) });
           localLinkedList.add(localb);
         }
       }
@@ -120,54 +116,55 @@ public final class b
       AppMethodBeat.o(21231);
       return false;
     }
-    Cursor localCursor = d.bxT().bxU().apO().agy(paramb.mqx);
-    ad.i("MicroMsg.BackupCalculator", "calConversation start convName:%s msgCnt:%d[cu.getCount]", new Object[] { paramb.mqx, Integer.valueOf(localCursor.getCount()) });
+    Cursor localCursor = d.bEP().bEQ().awD().als(paramb.mSz);
+    ac.i("MicroMsg.BackupCalculator", "calConversation start convName:%s msgCnt:%d[cu.getCount]", new Object[] { paramb.mSz, Integer.valueOf(localCursor.getCount()) });
+    PLong localPLong1;
+    PLong localPLong2;
     if (localCursor.moveToFirst())
     {
-      PLong localPLong1 = new PLong();
-      PLong localPLong2 = new PLong();
-      for (;;)
+      localPLong1 = new PLong();
+      localPLong2 = new PLong();
+    }
+    for (;;)
+    {
+      if (this.mSO)
       {
-        if (!localCursor.isAfterLast())
+        ac.i("MicroMsg.BackupCalculator", "calConversation cancel, return");
+        localCursor.close();
+        AppMethodBeat.o(21231);
+        return true;
+      }
+      bo localbo = new bo();
+      localbo.convertFrom(localCursor);
+      try
+      {
+        com.tencent.mm.plugin.backup.f.h.a(localbo, true, paramString, localPLong1, null, null, false, false, paramLong);
+        localPLong2.value += 1L;
+        if (localCursor.moveToNext()) {
+          continue;
+        }
+        paramb.mSC = localPLong1.value;
+        paramb.mSD = localPLong2.value;
+        ac.i("MicroMsg.BackupCalculator", "calConversation convName:%s, convDataSize:%d, convMsgCount:%d", new Object[] { paramb.mSz, Long.valueOf(paramb.mSC), Long.valueOf(paramb.mSD) });
+        localCursor.close();
+        AppMethodBeat.o(21231);
+        return false;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          if (this.mqM)
-          {
-            ad.i("MicroMsg.BackupCalculator", "calConversation cancel, return");
-            localCursor.close();
-            AppMethodBeat.o(21231);
-            return true;
-          }
-          bl localbl = new bl();
-          localbl.convertFrom(localCursor);
-          try
-          {
-            com.tencent.mm.plugin.backup.f.h.a(localbl, true, paramString, localPLong1, null, null, false, false, paramLong);
-            localPLong2.value += 1L;
-            localCursor.moveToNext();
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              ad.printErrStackTrace("MicroMsg.BackupCalculator", localException, "packedMsg", new Object[0]);
-            }
-          }
+          ac.printErrStackTrace("MicroMsg.BackupCalculator", localException, "packedMsg", new Object[0]);
         }
       }
-      paramb.mqA = localPLong1.value;
-      paramb.mqB = localPLong2.value;
-      ad.i("MicroMsg.BackupCalculator", "calConversation convName:%s, convDataSize:%d, convMsgCount:%d", new Object[] { paramb.mqx, Long.valueOf(paramb.mqA), Long.valueOf(paramb.mqB) });
     }
-    localCursor.close();
-    AppMethodBeat.o(21231);
-    return false;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(21229);
-    ad.i("MicroMsg.BackupCalculator", "cancel. stack:%s", new Object[] { bt.eGN() });
-    this.mqM = true;
+    ac.i("MicroMsg.BackupCalculator", "cancel. stack:%s", new Object[] { bs.eWi() });
+    this.mSO = true;
     AppMethodBeat.o(21229);
   }
   

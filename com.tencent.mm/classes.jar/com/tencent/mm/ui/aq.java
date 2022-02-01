@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 public final class aq
 {
-  public static Point cf(Context paramContext)
+  public static Point cl(Context paramContext)
   {
     AppMethodBeat.i(159145);
     Point localPoint = new Point();
@@ -38,24 +38,7 @@ public final class aq
     }
   }
   
-  public static int eb(Context paramContext)
-  {
-    AppMethodBeat.i(168811);
-    if (ju(paramContext))
-    {
-      int i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
-      if (i > 0)
-      {
-        i = Resources.getSystem().getDimensionPixelSize(i);
-        AppMethodBeat.o(168811);
-        return i;
-      }
-    }
-    AppMethodBeat.o(168811);
-    return 0;
-  }
-  
-  public static int ep(String paramString)
+  public static int ee(String paramString)
   {
     AppMethodBeat.i(159147);
     if (paramString != null) {}
@@ -78,14 +61,31 @@ public final class aq
     return 0;
   }
   
+  public static int ej(Context paramContext)
+  {
+    AppMethodBeat.i(168811);
+    if (jF(paramContext))
+    {
+      int i = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
+      if (i > 0)
+      {
+        i = Resources.getSystem().getDimensionPixelSize(i);
+        AppMethodBeat.o(168811);
+        return i;
+      }
+    }
+    AppMethodBeat.o(168811);
+    return 0;
+  }
+  
   @TargetApi(17)
-  public static boolean ju(Context paramContext)
+  public static boolean jF(Context paramContext)
   {
     AppMethodBeat.i(159146);
     Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     Point localPoint = new Point();
     localDisplay.getSize(localPoint);
-    paramContext = cf(paramContext);
+    paramContext = cl(paramContext);
     int i = Math.max(localPoint.y, localPoint.x);
     if (Math.max(paramContext.y, paramContext.x) > i)
     {

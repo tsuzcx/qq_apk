@@ -20,11 +20,11 @@ import android.widget.FrameLayout;
 public class a
   extends e
 {
-  boolean lA;
-  boolean lB;
-  boolean lC;
-  private BottomSheetBehavior.a lD;
-  private BottomSheetBehavior<FrameLayout> lz;
+  boolean mA;
+  boolean mB;
+  private BottomSheetBehavior.a mC;
+  private BottomSheetBehavior<FrameLayout> my;
+  boolean mz;
   
   public a(Context paramContext)
   {
@@ -46,9 +46,9 @@ public class a
       }
     }
     paramView = (FrameLayout)localCoordinatorLayout.findViewById(2131299011);
-    this.lz = BottomSheetBehavior.l(paramView);
-    this.lz.lq = this.lD;
-    this.lz.lh = this.lA;
+    this.my = BottomSheetBehavior.l(paramView);
+    this.my.mp = this.mC;
+    this.my.mg = this.mz;
     if (paramLayoutParams == null) {
       paramView.addView(localView);
     }
@@ -58,17 +58,17 @@ public class a
       {
         public final void onClick(View paramAnonymousView)
         {
-          if ((a.this.lA) && (a.this.isShowing()))
+          if ((a.this.mz) && (a.this.isShowing()))
           {
             paramAnonymousView = a.this;
-            if (!paramAnonymousView.lC)
+            if (!paramAnonymousView.mB)
             {
               TypedArray localTypedArray = paramAnonymousView.getContext().obtainStyledAttributes(new int[] { 16843611 });
-              paramAnonymousView.lB = localTypedArray.getBoolean(0, true);
+              paramAnonymousView.mA = localTypedArray.getBoolean(0, true);
               localTypedArray.recycle();
-              paramAnonymousView.lC = true;
+              paramAnonymousView.mB = true;
             }
-            if (paramAnonymousView.lB) {
+            if (paramAnonymousView.mA) {
               a.this.cancel();
             }
           }
@@ -79,7 +79,7 @@ public class a
         public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, c paramAnonymousc)
         {
           super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
-          if (a.this.lA)
+          if (a.this.mz)
           {
             paramAnonymousc.addAction(1048576);
             paramAnonymousc.setDismissable(true);
@@ -90,7 +90,7 @@ public class a
         
         public final boolean performAccessibilityAction(View paramAnonymousView, int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
-          if ((paramAnonymousInt == 1048576) && (a.this.lA))
+          if ((paramAnonymousInt == 1048576) && (a.this.mz))
           {
             a.this.cancel();
             return true;
@@ -128,19 +128,19 @@ public class a
   protected void onStart()
   {
     super.onStart();
-    if ((this.lz != null) && (this.lz.state == 5)) {
-      this.lz.setState(4);
+    if ((this.my != null) && (this.my.state == 5)) {
+      this.my.setState(4);
     }
   }
   
   public void setCancelable(boolean paramBoolean)
   {
     super.setCancelable(paramBoolean);
-    if (this.lA != paramBoolean)
+    if (this.mz != paramBoolean)
     {
-      this.lA = paramBoolean;
-      if (this.lz != null) {
-        this.lz.lh = paramBoolean;
+      this.mz = paramBoolean;
+      if (this.my != null) {
+        this.my.mg = paramBoolean;
       }
     }
   }
@@ -148,11 +148,11 @@ public class a
   public void setCanceledOnTouchOutside(boolean paramBoolean)
   {
     super.setCanceledOnTouchOutside(paramBoolean);
-    if ((paramBoolean) && (!this.lA)) {
-      this.lA = true;
+    if ((paramBoolean) && (!this.mz)) {
+      this.mz = true;
     }
-    this.lB = paramBoolean;
-    this.lC = true;
+    this.mA = paramBoolean;
+    this.mB = true;
   }
   
   public void setContentView(int paramInt)

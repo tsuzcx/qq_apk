@@ -7,78 +7,78 @@ import com.tencent.mm.live.core.core.trtc.a.a.d;
 
 public final class a
 {
-  private b qEA;
-  private d qEx;
-  private com.tencent.mm.live.core.core.trtc.a.a.a qEy;
-  private c qEz;
+  private d gpc;
+  private com.tencent.mm.live.core.core.trtc.a.a.a gpd;
+  private c gpe;
+  private b gpf;
   
-  public static a cpE()
+  public static a aiX()
   {
-    AppMethodBeat.i(205470);
-    a locala = a.cpW();
-    AppMethodBeat.o(205470);
+    AppMethodBeat.i(209000);
+    a locala = a.ajc();
+    AppMethodBeat.o(209000);
     return locala;
   }
   
-  public final d cpF()
+  public final d aiY()
   {
-    AppMethodBeat.i(205471);
-    if (this.qEx == null) {
-      this.qEx = new d();
+    AppMethodBeat.i(209001);
+    if (this.gpc == null) {
+      this.gpc = new d();
     }
-    d locald = this.qEx;
-    AppMethodBeat.o(205471);
+    d locald = this.gpc;
+    AppMethodBeat.o(209001);
     return locald;
   }
   
-  public final com.tencent.mm.live.core.core.trtc.a.a.a cpP()
+  public final com.tencent.mm.live.core.core.trtc.a.a.a aiZ()
   {
-    AppMethodBeat.i(205472);
-    if (this.qEy == null) {
-      this.qEy = new com.tencent.mm.live.core.core.trtc.a.a.a();
+    AppMethodBeat.i(209002);
+    if (this.gpd == null) {
+      this.gpd = new com.tencent.mm.live.core.core.trtc.a.a.a();
     }
-    com.tencent.mm.live.core.core.trtc.a.a.a locala = this.qEy;
-    AppMethodBeat.o(205472);
+    com.tencent.mm.live.core.core.trtc.a.a.a locala = this.gpd;
+    AppMethodBeat.o(209002);
     return locala;
   }
   
-  public final c cpS()
+  public final c aja()
   {
-    AppMethodBeat.i(205473);
-    if (this.qEz == null) {
-      this.qEz = new c();
+    AppMethodBeat.i(209003);
+    if (this.gpe == null) {
+      this.gpe = new c();
     }
-    c localc = this.qEz;
-    AppMethodBeat.o(205473);
+    c localc = this.gpe;
+    AppMethodBeat.o(209003);
     return localc;
   }
   
-  public final b cpV()
+  public final b ajb()
   {
-    AppMethodBeat.i(205474);
-    if (this.qEA == null) {
-      this.qEA = new b();
+    AppMethodBeat.i(209004);
+    if (this.gpf == null) {
+      this.gpf = new b();
     }
-    b localb = this.qEA;
-    AppMethodBeat.o(205474);
+    b localb = this.gpf;
+    AppMethodBeat.o(209004);
     return localb;
   }
   
   public static final class a
   {
-    private static a qEB;
+    private static a gpg;
     
     static
     {
-      AppMethodBeat.i(205469);
-      qEB = new a((byte)0);
-      AppMethodBeat.o(205469);
+      AppMethodBeat.i(208999);
+      gpg = new a((byte)0);
+      AppMethodBeat.o(208999);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.a
  * JD-Core Version:    0.7.0.1
  */

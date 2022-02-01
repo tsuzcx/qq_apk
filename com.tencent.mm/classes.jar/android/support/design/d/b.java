@@ -14,17 +14,17 @@ import android.util.TypedValue;
 
 public final class b
 {
-  public final ColorStateList iC;
-  public final ColorStateList iD;
-  public final String iE;
-  public final boolean iF;
-  public final ColorStateList iG;
-  public final float iH;
-  public final float iI;
-  private final int iJ;
-  boolean iK = false;
-  Typeface iL;
-  public final ColorStateList ii;
+  public final ColorStateList jB;
+  public final ColorStateList jC;
+  public final String jD;
+  public final boolean jE;
+  public final ColorStateList jF;
+  public final float jG;
+  public final float jH;
+  private final int jI;
+  boolean jJ = false;
+  Typeface jK;
+  public final ColorStateList jk;
   public final float shadowRadius;
   public final float textSize;
   public final int textStyle;
@@ -34,20 +34,20 @@ public final class b
   {
     TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramInt, a.a.TextAppearance);
     this.textSize = localTypedArray.getDimension(0, 0.0F);
-    this.ii = a.b(paramContext, localTypedArray, 3);
-    this.iC = a.b(paramContext, localTypedArray, 4);
-    this.iD = a.b(paramContext, localTypedArray, 5);
+    this.jk = a.b(paramContext, localTypedArray, 3);
+    this.jB = a.b(paramContext, localTypedArray, 4);
+    this.jC = a.b(paramContext, localTypedArray, 5);
     this.textStyle = localTypedArray.getInt(2, 0);
     this.typeface = localTypedArray.getInt(1, 1);
     if (localTypedArray.hasValue(11)) {}
     for (paramInt = i;; paramInt = 10)
     {
-      this.iJ = localTypedArray.getResourceId(paramInt, 0);
-      this.iE = localTypedArray.getString(paramInt);
-      this.iF = localTypedArray.getBoolean(12, false);
-      this.iG = a.b(paramContext, localTypedArray, 6);
-      this.iH = localTypedArray.getFloat(7, 0.0F);
-      this.iI = localTypedArray.getFloat(8, 0.0F);
+      this.jI = localTypedArray.getResourceId(paramInt, 0);
+      this.jD = localTypedArray.getString(paramInt);
+      this.jE = localTypedArray.getBoolean(12, false);
+      this.jF = a.b(paramContext, localTypedArray, 6);
+      this.jG = localTypedArray.getFloat(7, 0.0F);
+      this.jH = localTypedArray.getFloat(8, 0.0F);
       this.shadowRadius = localTypedArray.getFloat(9, 0.0F);
       localTypedArray.recycle();
       return;
@@ -57,28 +57,28 @@ public final class b
   private Typeface H(Context paramContext)
   {
     Object localObject = null;
-    if (this.iK) {
-      return this.iL;
+    if (this.jJ) {
+      return this.jK;
     }
     if (!paramContext.isRestricted()) {}
     for (;;)
     {
       try
       {
-        i = this.iJ;
+        i = this.jI;
         if (!paramContext.isRestricted()) {
           continue;
         }
         paramContext = localObject;
-        this.iL = paramContext;
-        if (this.iL != null) {
-          this.iL = Typeface.create(this.iL, this.textStyle);
+        this.jK = paramContext;
+        if (this.jK != null) {
+          this.jK = Typeface.create(this.jK, this.textStyle);
         }
       }
       catch (Exception paramContext)
       {
         int i;
-        new StringBuilder("Error loading font ").append(this.iE);
+        new StringBuilder("Error loading font ").append(this.jD);
         continue;
       }
       catch (UnsupportedOperationException paramContext)
@@ -89,44 +89,44 @@ public final class b
       {
         continue;
       }
-      bk();
-      this.iK = true;
-      return this.iL;
+      br();
+      this.jJ = true;
+      return this.jK;
       paramContext = f.a(paramContext, i, new TypedValue(), 0, null, false);
     }
   }
   
   private void a(Context paramContext, final TextPaint paramTextPaint, final f.a parama)
   {
-    if (this.iK)
+    if (this.jJ)
     {
-      a(paramTextPaint, this.iL);
+      a(paramTextPaint, this.jK);
       return;
     }
-    bk();
+    br();
     if (paramContext.isRestricted())
     {
-      this.iK = true;
-      a(paramTextPaint, this.iL);
+      this.jJ = true;
+      a(paramTextPaint, this.jK);
       return;
     }
     try
     {
-      int i = this.iJ;
+      int i = this.jI;
       paramTextPaint = new f.a()
       {
         public final void D(int paramAnonymousInt)
         {
-          b.this.bk();
-          b.this.iK = true;
+          b.this.br();
+          b.this.jJ = true;
           parama.D(paramAnonymousInt);
         }
         
         public final void a(Typeface paramAnonymousTypeface)
         {
-          b.this.iL = Typeface.create(paramAnonymousTypeface, b.this.textStyle);
+          b.this.jK = Typeface.create(paramAnonymousTypeface, b.this.textStyle);
           b.this.a(paramTextPaint, paramAnonymousTypeface);
-          b.this.iK = true;
+          b.this.jJ = true;
           parama.a(paramAnonymousTypeface);
         }
       };
@@ -141,7 +141,7 @@ public final class b
     }
     catch (Resources.NotFoundException paramContext) {}catch (Exception paramContext)
     {
-      new StringBuilder("Error loading font ").append(this.iE);
+      new StringBuilder("Error loading font ").append(this.jD);
       return;
     }
     catch (UnsupportedOperationException paramContext) {}
@@ -178,19 +178,19 @@ public final class b
     float f1;
     float f2;
     float f3;
-    if (this.ii != null)
+    if (this.jk != null)
     {
-      i = this.ii.getColorForState(paramTextPaint.drawableState, this.ii.getDefaultColor());
+      i = this.jk.getColorForState(paramTextPaint.drawableState, this.jk.getDefaultColor());
       paramTextPaint.setColor(i);
       f1 = this.shadowRadius;
-      f2 = this.iH;
-      f3 = this.iI;
-      if (this.iG == null) {
+      f2 = this.jG;
+      f3 = this.jH;
+      if (this.jF == null) {
         break label105;
       }
     }
     label105:
-    for (int i = this.iG.getColorForState(paramTextPaint.drawableState, this.iG.getDefaultColor());; i = 0)
+    for (int i = this.jF.getColorForState(paramTextPaint.drawableState, this.jF.getDefaultColor());; i = 0)
     {
       paramTextPaint.setShadowLayer(f1, f2, f3, i);
       return;
@@ -199,48 +199,48 @@ public final class b
     }
   }
   
-  final void bk()
+  final void br()
   {
-    if (this.iL == null) {
-      this.iL = Typeface.create(this.iE, this.textStyle);
+    if (this.jK == null) {
+      this.jK = Typeface.create(this.jD, this.textStyle);
     }
-    if (this.iL == null) {
+    if (this.jK == null) {
       switch (this.typeface)
       {
       default: 
-        this.iL = Typeface.DEFAULT;
+        this.jK = Typeface.DEFAULT;
       }
     }
     for (;;)
     {
-      if (this.iL != null) {
-        this.iL = Typeface.create(this.iL, this.textStyle);
+      if (this.jK != null) {
+        this.jK = Typeface.create(this.jK, this.textStyle);
       }
       return;
-      this.iL = Typeface.SANS_SERIF;
+      this.jK = Typeface.SANS_SERIF;
       continue;
-      this.iL = Typeface.SERIF;
+      this.jK = Typeface.SERIF;
       continue;
-      this.iL = Typeface.MONOSPACE;
+      this.jK = Typeface.MONOSPACE;
     }
   }
   
   public final void c(Context paramContext, TextPaint paramTextPaint, f.a parama)
   {
-    if (c.iP) {
+    if (c.jO) {
       a(paramTextPaint, H(paramContext));
     }
     do
     {
       return;
       a(paramContext, paramTextPaint, parama);
-    } while (this.iK);
-    a(paramTextPaint, this.iL);
+    } while (this.jJ);
+    a(paramTextPaint, this.jK);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.d.b
  * JD-Core Version:    0.7.0.1
  */

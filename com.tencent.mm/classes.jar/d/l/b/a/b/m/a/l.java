@@ -15,31 +15,31 @@ import java.util.List;
 public final class l
   implements b
 {
-  final av JRV;
-  private final f JYV;
-  d.g.a.a<? extends List<? extends bg>> JYW;
-  final l JYX;
+  final av LFo;
+  private final f LMo;
+  d.g.a.a<? extends List<? extends bg>> LMp;
+  final l LMq;
   
   static
   {
     AppMethodBeat.i(61074);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(l.class), "_supertypes", "get_supertypes()Ljava/util/List;")) };
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(l.class), "_supertypes", "get_supertypes()Ljava/util/List;")) };
     AppMethodBeat.o(61074);
   }
   
   l(av paramav, d.g.a.a<? extends List<? extends bg>> parama, l paraml)
   {
     AppMethodBeat.i(61081);
-    this.JRV = paramav;
-    this.JYW = parama;
-    this.JYX = paraml;
-    this.JYV = d.g.a(d.k.JfJ, (d.g.a.a)new a(this));
+    this.LFo = paramav;
+    this.LMp = parama;
+    this.LMq = paraml;
+    this.LMo = d.g.a(d.k.KTd, (d.g.a.a)new a(this));
     AppMethodBeat.o(61081);
   }
   
   private l(av paramav, List<? extends bg> paramList)
   {
-    this(paramav, (d.g.a.a)new l.1(paramList), null);
+    this(paramav, (d.g.a.a)new d.g.b.l(paramList) {}, null);
     AppMethodBeat.i(61082);
     AppMethodBeat.o(61082);
   }
@@ -65,13 +65,13 @@ public final class l
       AppMethodBeat.o(61078);
       throw paramObject;
     }
-    localObject1 = this.JYX;
+    localObject1 = this.LMq;
     if (localObject1 == null) {
       localObject1 = this;
     }
     for (;;)
     {
-      localObject2 = ((l)paramObject).JYX;
+      localObject2 = ((l)paramObject).LMq;
       if (localObject2 == null) {}
       for (paramObject = (l)paramObject;; paramObject = localObject2)
       {
@@ -86,46 +86,46 @@ public final class l
     }
   }
   
-  public final av fIX()
-  {
-    return this.JRV;
-  }
-  
-  public final List<bg> fJP()
-  {
-    AppMethodBeat.i(61075);
-    List localList2 = (List)this.JYV.getValue();
-    List localList1 = localList2;
-    if (localList2 == null) {
-      localList1 = (List)d.a.v.Jgl;
-    }
-    AppMethodBeat.o(61075);
-    return localList1;
-  }
-  
-  public final h fxM()
+  public final h fQq()
   {
     return null;
   }
   
-  public final boolean fxO()
+  public final boolean fQs()
   {
     return false;
   }
   
-  public final d.l.b.a.b.a.g fza()
+  public final d.l.b.a.b.a.g fRE()
   {
     AppMethodBeat.i(61077);
-    Object localObject = this.JRV.fzr();
+    Object localObject = this.LFo.fRV();
     d.g.b.k.g(localObject, "projection.type");
     localObject = d.l.b.a.b.m.d.a.aN((ab)localObject);
     AppMethodBeat.o(61077);
     return localObject;
   }
   
+  public final av gbA()
+  {
+    return this.LFo;
+  }
+  
+  public final List<bg> gcs()
+  {
+    AppMethodBeat.i(61075);
+    List localList2 = (List)this.LMo.getValue();
+    List localList1 = localList2;
+    if (localList2 == null) {
+      localList1 = (List)d.a.v.KTF;
+    }
+    AppMethodBeat.o(61075);
+    return localList1;
+  }
+  
   public final List<as> getParameters()
   {
-    return (List)d.a.v.Jgl;
+    return (List)d.a.v.KTF;
   }
   
   public final int hashCode()
@@ -134,7 +134,7 @@ public final class l
     l locall;
     for (Object localObject = this;; localObject = locall)
     {
-      locall = ((l)localObject).JYX;
+      locall = ((l)localObject).LMq;
       if (locall == null) {
         break;
       }
@@ -147,7 +147,7 @@ public final class l
   public final String toString()
   {
     AppMethodBeat.i(61080);
-    String str = "CapturedType(" + this.JRV + ')';
+    String str = "CapturedType(" + this.LFo + ')';
     AppMethodBeat.o(61080);
     return str;
   }
@@ -157,6 +157,16 @@ public final class l
     implements d.g.a.a<List<? extends bg>>
   {
     a(l paraml)
+    {
+      super();
+    }
+  }
+  
+  static final class b
+    extends d.g.b.l
+    implements d.g.a.a<List<? extends bg>>
+  {
+    b(List paramList)
     {
       super();
     }
@@ -174,7 +184,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.a.l
  * JD-Core Version:    0.7.0.1
  */

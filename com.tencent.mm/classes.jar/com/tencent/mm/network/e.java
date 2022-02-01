@@ -6,6 +6,12 @@ import java.util.List;
 
 public abstract interface e
 {
+  public abstract void As(String paramString);
+  
+  public abstract void At(String paramString);
+  
+  public abstract void Au(String paramString);
+  
   public abstract int a(r paramr, l paraml);
   
   public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
@@ -22,29 +28,29 @@ public abstract interface e
   
   public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
   
+  public abstract boolean aBL();
+  
+  public abstract c aBZ();
+  
+  public abstract i aCa();
+  
+  public abstract void aCb();
+  
+  public abstract void aCc();
+  
   public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
-  
-  public abstract boolean auS();
-  
-  public abstract c avg();
-  
-  public abstract i avh();
-  
-  public abstract void avi();
-  
-  public abstract void avj();
-  
-  public abstract void c(String paramString1, long paramLong, String paramString2);
   
   public abstract void cancel(int paramInt);
   
-  public abstract void ei(boolean paramBoolean);
+  public abstract void d(String paramString1, long paramLong, String paramString2);
   
-  public abstract void ej(boolean paramBoolean);
+  public abstract void eD(boolean paramBoolean);
   
-  public abstract void ek(boolean paramBoolean);
+  public abstract void eE(boolean paramBoolean);
   
-  public abstract void el(boolean paramBoolean);
+  public abstract void eF(boolean paramBoolean);
+  
+  public abstract void eG(boolean paramBoolean);
   
   public abstract void forceUseV6(boolean paramBoolean);
   
@@ -71,12 +77,6 @@ public abstract interface e
   public abstract void stopSignalling();
   
   public abstract void switchProcessActiveState(boolean paramBoolean);
-  
-  public abstract void wm(String paramString);
-  
-  public abstract void wn(String paramString);
-  
-  public abstract void wo(String paramString);
 }
 
 

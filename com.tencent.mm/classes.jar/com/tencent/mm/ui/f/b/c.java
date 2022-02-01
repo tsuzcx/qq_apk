@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static b Hii = null;
+  private static b IIB = null;
   
   public static void a(b paramb)
   {
-    Hii = paramb;
+    IIB = paramb;
   }
   
-  public static Drawable lu(String paramString1, String paramString2)
+  public static Drawable lR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(142752);
-    if (Hii != null)
+    if (IIB != null)
     {
-      paramString1 = Hii.eW(paramString1, paramString2);
+      paramString1 = IIB.fj(paramString1, paramString2);
       if ((paramString1 instanceof Drawable))
       {
         paramString1 = (Drawable)paramString1;
@@ -33,7 +33,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.f.b.c
  * JD-Core Version:    0.7.0.1
  */

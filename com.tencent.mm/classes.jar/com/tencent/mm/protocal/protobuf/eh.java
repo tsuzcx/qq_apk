@@ -1,78 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class eh
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Cyw;
-  public String Cyx;
-  public int Cyy;
-  public String Id;
-  public String Version;
-  public String scR;
+  public String djj;
+  public int status;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125709);
+    AppMethodBeat.i(122485);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Id != null) {
-        paramVarArgs.d(1, this.Id);
+      if (this.djj == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: appid");
+        AppMethodBeat.o(122485);
+        throw paramVarArgs;
       }
-      if (this.Version != null) {
-        paramVarArgs.d(2, this.Version);
+      if (this.djj != null) {
+        paramVarArgs.d(1, this.djj);
       }
-      if (this.scR != null) {
-        paramVarArgs.d(3, this.scR);
-      }
-      if (this.Cyw != null) {
-        paramVarArgs.d(4, this.Cyw);
-      }
-      if (this.Cyx != null) {
-        paramVarArgs.d(5, this.Cyx);
-      }
-      paramVarArgs.aR(6, this.Cyy);
-      AppMethodBeat.o(125709);
+      paramVarArgs.aR(2, this.status);
+      AppMethodBeat.o(122485);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Id == null) {
-        break label502;
+      if (this.djj == null) {
+        break label306;
       }
     }
-    label502:
-    for (int i = f.a.a.b.b.a.e(1, this.Id) + 0;; i = 0)
+    label306:
+    for (paramInt = f.a.a.b.b.a.e(1, this.djj) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.Version != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Version);
-      }
-      i = paramInt;
-      if (this.scR != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.scR);
-      }
-      paramInt = i;
-      if (this.Cyw != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Cyw);
-      }
-      i = paramInt;
-      if (this.Cyx != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Cyx);
-      }
-      paramInt = f.a.a.b.b.a.bA(6, this.Cyy);
-      AppMethodBeat.o(125709);
-      return i + paramInt;
+      int i = f.a.a.b.b.a.bx(2, this.status);
+      AppMethodBeat.o(122485);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(125709);
+        if (this.djj == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: appid");
+          AppMethodBeat.o(122485);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(122485);
         return 0;
       }
       if (paramInt == 3)
@@ -82,34 +63,18 @@ public final class eh
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(125709);
+          AppMethodBeat.o(122485);
           return -1;
         case 1: 
-          localeh.Id = locala.KhF.readString();
-          AppMethodBeat.o(125709);
-          return 0;
-        case 2: 
-          localeh.Version = locala.KhF.readString();
-          AppMethodBeat.o(125709);
-          return 0;
-        case 3: 
-          localeh.scR = locala.KhF.readString();
-          AppMethodBeat.o(125709);
-          return 0;
-        case 4: 
-          localeh.Cyw = locala.KhF.readString();
-          AppMethodBeat.o(125709);
-          return 0;
-        case 5: 
-          localeh.Cyx = locala.KhF.readString();
-          AppMethodBeat.o(125709);
+          localeh.djj = locala.LVo.readString();
+          AppMethodBeat.o(122485);
           return 0;
         }
-        localeh.Cyy = locala.KhF.xS();
-        AppMethodBeat.o(125709);
+        localeh.status = locala.LVo.xF();
+        AppMethodBeat.o(122485);
         return 0;
       }
-      AppMethodBeat.o(125709);
+      AppMethodBeat.o(122485);
       return -1;
     }
   }

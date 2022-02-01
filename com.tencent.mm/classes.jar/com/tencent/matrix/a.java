@@ -22,17 +22,17 @@ import java.util.Set;
 
 public enum a
 {
-  private final Set<b> csT = new HashSet();
-  public boolean csU = false;
-  public String csV = "default";
-  a csW = new a((byte)0);
-  boolean csX = false;
-  public String csY;
+  private final Set<b> cqb = new HashSet();
+  public boolean cqc = false;
+  public String cqd = "default";
+  a cqe = new a((byte)0);
+  boolean cqf = false;
+  public String cqg;
   Handler handler;
   
   private a() {}
   
-  public static String GD()
+  public static String Go()
   {
     l = System.currentTimeMillis();
     try
@@ -82,33 +82,33 @@ public enum a
   
   public final void a(b paramb)
   {
-    synchronized (this.csT)
+    synchronized (this.cqb)
     {
-      this.csT.add(paramb);
+      this.cqb.add(paramb);
       return;
     }
   }
   
   public final void b(b paramb)
   {
-    synchronized (this.csT)
+    synchronized (this.cqb)
     {
-      this.csT.remove(paramb);
+      this.cqb.remove(paramb);
       return;
     }
   }
   
-  public final void cQ(String paramString)
+  public final void cF(String paramString)
   {
     c.i("Matrix.AppActiveDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
-    this.csY = paramString;
+    this.cqg = paramString;
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "?";
     }
     localStringBuilder.append(str);
-    this.csV = localStringBuilder.toString();
+    this.cqd = localStringBuilder.toString();
   }
   
   final class a
@@ -129,13 +129,13 @@ public enum a
     public final void onActivityStarted(Activity paramActivity)
     {
       a.a(a.this, paramActivity);
-      a.a(a.this, a.this.csV);
+      a.a(a.this, a.this.cqd);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
-      if (a.GD() == null) {
-        a.b(a.this, a.this.csV);
+      if (a.Go() == null) {
+        a.b(a.this, a.this.cqd);
       }
     }
     

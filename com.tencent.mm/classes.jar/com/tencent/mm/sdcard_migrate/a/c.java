@@ -37,353 +37,353 @@ public final class c
   extends Dialog
   implements DialogInterface
 {
-  private LinearLayout ERU;
-  private TextView ERV;
-  private TextView ERW;
-  private TextView ERX;
-  private TextView ERY;
-  private TextView ERZ;
-  private ImageView ESa;
-  private View ESb;
-  private LinearLayout ESc;
-  private ViewStub ESd;
-  private LinearLayout ESe;
-  private ViewGroup ESf;
-  private LinearLayout ESg;
-  private ViewGroup ESh;
-  private View ESi;
-  private boolean ESj;
-  private Animation ESk;
-  private Animation ESl;
-  private Animation ESm;
-  private Animation ESn;
-  private c.a.c ESo;
-  private DialogInterface.OnDismissListener ESp;
-  private View aeL;
+  private Button Bqt;
+  private Animation GpA;
+  private c.a.c GpB;
+  private DialogInterface.OnDismissListener GpC;
+  private LinearLayout Gph;
+  private TextView Gpi;
+  private TextView Gpj;
+  private TextView Gpk;
+  private TextView Gpl;
+  private TextView Gpm;
+  private ImageView Gpn;
+  private View Gpo;
+  private LinearLayout Gpp;
+  private ViewStub Gpq;
+  private LinearLayout Gpr;
+  private ViewGroup Gps;
+  private LinearLayout Gpt;
+  private ViewGroup Gpu;
+  private View Gpv;
+  private boolean Gpw;
+  private Animation Gpx;
+  private Animation Gpy;
+  private Animation Gpz;
+  private View afF;
   com.tencent.mm.ui.widget.a.c iOnDialogDismissListener;
-  private boolean lA;
-  private TextView lWE;
   private Context mContext;
   private EditText mEditText;
+  private TextView myG;
+  private boolean mz;
   private boolean needEdit;
-  private Button pRD;
-  private Button zXZ;
+  private Button qAl;
   
   public c(Context paramContext)
   {
     super(paramContext, 2131821723);
-    AppMethodBeat.i(196870);
-    this.ESj = false;
+    AppMethodBeat.i(195890);
+    this.Gpw = false;
     this.needEdit = false;
     this.mContext = paramContext;
-    this.ERU = ((LinearLayout)View.inflate(this.mContext, 2131494766, null));
-    this.zXZ = ((Button)this.ERU.findViewById(2131302314));
-    this.pRD = ((Button)this.ERU.findViewById(2131302301));
-    this.lWE = ((TextView)this.ERU.findViewById(2131302315));
-    this.ERV = ((TextView)this.ERU.findViewById(2131302317));
-    this.ERW = ((TextView)this.ERU.findViewById(2131302307));
-    this.ERX = ((TextView)this.ERU.findViewById(2131302312));
-    this.ERY = ((TextView)this.ERU.findViewById(2131302311));
-    this.ERZ = ((TextView)this.ERU.findViewById(2131298564));
-    this.mEditText = ((EditText)this.ERU.findViewById(2131298569));
-    this.ESa = ((ImageView)this.ERU.findViewById(2131302310));
-    this.ESc = ((LinearLayout)this.ERU.findViewById(2131302316));
-    this.ESd = ((ViewStub)this.ERU.findViewById(2131305933));
-    this.ESe = ((LinearLayout)this.ERU.findViewById(2131302308));
-    this.ESf = ((ViewGroup)this.ERU.findViewById(2131302295));
-    this.ESi = this.ERU.findViewById(2131302300);
-    this.ESg = ((LinearLayout)this.ERU.findViewById(2131302303));
-    this.ESh = ((ViewGroup)this.ERU.findViewById(2131305932));
+    this.Gph = ((LinearLayout)View.inflate(this.mContext, 2131494766, null));
+    this.Bqt = ((Button)this.Gph.findViewById(2131302314));
+    this.qAl = ((Button)this.Gph.findViewById(2131302301));
+    this.myG = ((TextView)this.Gph.findViewById(2131302315));
+    this.Gpi = ((TextView)this.Gph.findViewById(2131302317));
+    this.Gpj = ((TextView)this.Gph.findViewById(2131302307));
+    this.Gpk = ((TextView)this.Gph.findViewById(2131302312));
+    this.Gpl = ((TextView)this.Gph.findViewById(2131302311));
+    this.Gpm = ((TextView)this.Gph.findViewById(2131298564));
+    this.mEditText = ((EditText)this.Gph.findViewById(2131298569));
+    this.Gpn = ((ImageView)this.Gph.findViewById(2131302310));
+    this.Gpp = ((LinearLayout)this.Gph.findViewById(2131302316));
+    this.Gpq = ((ViewStub)this.Gph.findViewById(2131305933));
+    this.Gpr = ((LinearLayout)this.Gph.findViewById(2131302308));
+    this.Gps = ((ViewGroup)this.Gph.findViewById(2131302295));
+    this.Gpv = this.Gph.findViewById(2131302300);
+    this.Gpt = ((LinearLayout)this.Gph.findViewById(2131302303));
+    this.Gpu = ((ViewGroup)this.Gph.findViewById(2131305932));
     setCanceledOnTouchOutside(true);
-    this.ESk = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.ESl = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.ESm = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    this.ESn = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    AppMethodBeat.o(196870);
+    this.Gpx = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.Gpy = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.Gpz = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    this.GpA = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    AppMethodBeat.o(195890);
   }
   
-  private void Wa(int paramInt)
+  private void Yj(int paramInt)
   {
-    AppMethodBeat.i(196874);
-    if (this.ERW != null) {
-      this.ERW.setTextColor(paramInt);
+    AppMethodBeat.i(195894);
+    if (this.Gpj != null) {
+      this.Gpj.setTextColor(paramInt);
     }
-    AppMethodBeat.o(196874);
+    AppMethodBeat.o(195894);
   }
   
-  private void Wb(int paramInt)
+  private void Yk(int paramInt)
   {
-    AppMethodBeat.i(196877);
-    if (this.ESe != null) {
-      this.ESe.setVisibility(paramInt);
+    AppMethodBeat.i(195897);
+    if (this.Gpr != null) {
+      this.Gpr.setVisibility(paramInt);
     }
-    if (this.ESg != null) {
-      this.ESg.setVisibility(paramInt);
+    if (this.Gpt != null) {
+      this.Gpt.setVisibility(paramInt);
     }
-    if ((this.ERZ != null) && (this.ESj)) {
-      this.ERZ.setVisibility(paramInt);
+    if ((this.Gpm != null) && (this.Gpw)) {
+      this.Gpm.setVisibility(paramInt);
     }
     if (this.mEditText != null)
     {
       if (!this.needEdit)
       {
         this.mEditText.setVisibility(8);
-        AppMethodBeat.o(196877);
+        AppMethodBeat.o(195897);
         return;
       }
       this.mEditText.setVisibility(paramInt);
     }
-    AppMethodBeat.o(196877);
+    AppMethodBeat.o(195897);
   }
   
-  private void Wc(int paramInt)
+  private void Yl(int paramInt)
   {
-    AppMethodBeat.i(196880);
-    this.zXZ.setTextColor(paramInt);
-    AppMethodBeat.o(196880);
+    AppMethodBeat.i(195900);
+    this.Bqt.setTextColor(paramInt);
+    AppMethodBeat.o(195900);
   }
   
-  private void Wd(int paramInt)
+  private void Ym(int paramInt)
   {
-    AppMethodBeat.i(196881);
-    this.pRD.setTextColor(paramInt);
-    AppMethodBeat.o(196881);
+    AppMethodBeat.i(195901);
+    this.qAl.setTextColor(paramInt);
+    AppMethodBeat.o(195901);
   }
   
   private void a(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(196884);
-    this.ESi.setVisibility(8);
-    this.ESf.removeAllViews();
-    this.ESf.addView(paramView, paramLayoutParams);
-    AppMethodBeat.o(196884);
+    AppMethodBeat.i(195904);
+    this.Gpv.setVisibility(8);
+    this.Gps.removeAllViews();
+    this.Gps.addView(paramView, paramLayoutParams);
+    AppMethodBeat.o(195904);
   }
   
   private void a(CharSequence paramCharSequence, final DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(196882);
-    if (this.pRD != null)
+    AppMethodBeat.i(195902);
+    if (this.qAl != null)
     {
-      this.pRD.setVisibility(0);
-      this.pRD.setText(paramCharSequence);
-      this.pRD.setOnClickListener(new View.OnClickListener()
+      this.qAl.setVisibility(0);
+      this.qAl.setText(paramCharSequence);
+      this.qAl.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(196862);
+          AppMethodBeat.i(195882);
           if (paramOnClickListener != null) {
             paramOnClickListener.onClick(c.this, -2);
           }
-          if (this.ESy) {
+          if (this.GpL) {
             c.this.cancel();
           }
-          AppMethodBeat.o(196862);
+          AppMethodBeat.o(195882);
         }
       });
     }
-    AppMethodBeat.o(196882);
+    AppMethodBeat.o(195902);
   }
   
   private void a(CharSequence paramCharSequence, final boolean paramBoolean, final DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(196879);
-    if (this.zXZ == null)
+    AppMethodBeat.i(195899);
+    if (this.Bqt == null)
     {
-      AppMethodBeat.o(196879);
+      AppMethodBeat.o(195899);
       return;
     }
-    this.zXZ.setVisibility(0);
-    this.zXZ.setText(paramCharSequence);
-    this.zXZ.setOnClickListener(new View.OnClickListener()
+    this.Bqt.setVisibility(0);
+    this.Bqt.setText(paramCharSequence);
+    this.Bqt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(196861);
+        AppMethodBeat.i(195881);
         if (paramOnClickListener != null) {
           paramOnClickListener.onClick(c.this, -1);
         }
         if (paramBoolean) {
           c.this.dismiss();
         }
-        AppMethodBeat.o(196861);
+        AppMethodBeat.o(195881);
       }
     });
-    AppMethodBeat.o(196879);
+    AppMethodBeat.o(195899);
   }
   
-  private void fw(View paramView)
+  private void fJ(View paramView)
   {
-    AppMethodBeat.i(196878);
-    this.aeL = paramView;
-    if (this.aeL != null)
+    AppMethodBeat.i(195898);
+    this.afF = paramView;
+    if (this.afF != null)
     {
-      this.ESe.setVisibility(0);
-      this.ESg.setVisibility(0);
-      this.ESg.removeAllViews();
-      this.ESg.setGravity(1);
-      this.ESg.addView(this.aeL, new LinearLayout.LayoutParams(-1, -1));
+      this.Gpr.setVisibility(0);
+      this.Gpt.setVisibility(0);
+      this.Gpt.removeAllViews();
+      this.Gpt.setGravity(1);
+      this.Gpt.addView(this.afF, new LinearLayout.LayoutParams(-1, -1));
     }
-    AppMethodBeat.o(196878);
+    AppMethodBeat.o(195898);
   }
   
-  private void uL(boolean paramBoolean)
+  private void vN(boolean paramBoolean)
   {
-    AppMethodBeat.i(196876);
+    AppMethodBeat.i(195896);
     if (paramBoolean)
     {
       int i = ao.fromDPToPix(this.mContext, 8);
-      this.ESe.setVisibility(0);
-      this.ESe.setPadding(i, i, i, i);
-      this.ESe.setBackgroundResource(2131231925);
+      this.Gpr.setVisibility(0);
+      this.Gpr.setPadding(i, i, i, i);
+      this.Gpr.setBackgroundResource(2131231925);
     }
-    AppMethodBeat.o(196876);
+    AppMethodBeat.o(195896);
   }
   
   public final void a(final a parama)
   {
-    AppMethodBeat.i(196885);
+    AppMethodBeat.i(195905);
     int i;
     if ((parama.title != null) && (parama.title.length() > 0))
     {
-      i = parama.ERM;
-      if (this.lWE != null) {
-        this.lWE.setGravity(i);
+      i = parama.GoZ;
+      if (this.myG != null) {
+        this.myG.setGravity(i);
       }
       setTitle(parama.title);
     }
     Object localObject4;
     Object localObject1;
-    if ((parama.ERe != null) && (parama.ERe.length() > 0))
+    if ((parama.Gor != null) && (parama.Gor.length() > 0))
     {
-      localObject4 = parama.ERe;
-      this.ESc.setVisibility(0);
-      this.ERV.setVisibility(0);
+      localObject4 = parama.Gor;
+      this.Gpp.setVisibility(0);
+      this.Gpi.setVisibility(0);
       localObject1 = localObject4;
-      if (this.ESo != null)
+      if (this.GpB != null)
       {
-        localObject1 = this.ESo;
+        localObject1 = this.GpB;
         ((CharSequence)localObject4).toString();
-        this.lWE.getTextSize();
-        localObject1 = ((c.a.c)localObject1).eEL();
+        this.myG.getTextSize();
+        localObject1 = ((c.a.c)localObject1).eUf();
       }
-      this.ERV.setText((CharSequence)localObject1);
+      this.Gpi.setText((CharSequence)localObject1);
     }
-    if (parama.BTR != 0)
+    if (parama.Dmh != 0)
     {
-      i = parama.BTR;
-      this.lWE.setTextColor(ColorStateList.valueOf(i));
+      i = parama.Dmh;
+      this.myG.setTextColor(ColorStateList.valueOf(i));
     }
-    if (parama.ERJ != 0)
+    if (parama.GoW != 0)
     {
-      i = parama.ERJ;
-      this.lWE.setMaxLines(i);
+      i = parama.GoW;
+      this.myG.setMaxLines(i);
     }
-    if (parama.ERK != 0)
+    if (parama.GoX != 0)
     {
-      i = parama.ERK;
-      this.ERW.setMaxLines(i);
+      i = parama.GoX;
+      this.Gpj.setMaxLines(i);
     }
-    if (parama.sk != null) {
-      fw(parama.sk);
+    if (parama.tk != null) {
+      fJ(parama.tk);
     }
-    if (parama.ERH != null)
+    if (parama.GoU != null)
     {
-      localObject4 = parama.ERH;
-      this.ESc.setVisibility(0);
-      this.ESd.setLayoutResource(2131493580);
+      localObject4 = parama.GoU;
+      this.Gpp.setVisibility(0);
+      this.Gpq.setLayoutResource(2131493580);
     }
     try
     {
-      localObject1 = (LinearLayout)this.ESd.inflate();
+      localObject1 = (LinearLayout)this.Gpq.inflate();
       ((LinearLayout)localObject1).addView((View)localObject4);
-      if (parama.ERI != null)
+      if (parama.GoV != null)
       {
-        this.ESb = parama.ERI;
-        if (this.ESb != null)
+        this.Gpo = parama.GoV;
+        if (this.Gpo != null)
         {
-          this.ESe.setVisibility(8);
-          this.ERZ.setVisibility(8);
+          this.Gpr.setVisibility(8);
+          this.Gpm.setVisibility(8);
           this.mEditText.setVisibility(8);
-          this.ESh.removeAllViews();
-          this.ESh.addView(this.ESb, new LinearLayout.LayoutParams(-1, -1));
-          this.ESh.setVisibility(8);
+          this.Gpu.removeAllViews();
+          this.Gpu.addView(this.Gpo, new LinearLayout.LayoutParams(-1, -1));
+          this.Gpu.setVisibility(8);
         }
       }
-      if (parama.ERp != null)
+      if (parama.GoC != null)
       {
-        localObject1 = parama.ERp;
-        if (this.aeL == null)
+        localObject1 = parama.GoC;
+        if (this.afF == null)
         {
-          this.ESe.setVisibility(0);
-          this.ESa.setVisibility(0);
-          this.ESa.setBackgroundDrawable((Drawable)localObject1);
+          this.Gpr.setVisibility(0);
+          this.Gpn.setVisibility(0);
+          this.Gpn.setBackgroundDrawable((Drawable)localObject1);
         }
       }
-      if ((parama.ERr != null) && (parama.ERr.length() > 0)) {
-        setMessage(parama.ERr);
+      if ((parama.GoE != null) && (parama.GoE.length() > 0)) {
+        setMessage(parama.GoE);
       }
-      uL(parama.ERA);
+      vN(parama.GoN);
       if (parama.thumbPath != null)
       {
         localObject1 = parama.thumbPath;
         i = ao.fromDPToPix(this.mContext, 120);
-        this.ESe.setVisibility(0);
-        this.ESa.setVisibility(0);
-        if ((this.ESa instanceof com.tencent.mm.ui.f.a)) {
-          ((com.tencent.mm.ui.f.a)this.ESa).aB((String)localObject1, i, i);
+        this.Gpr.setVisibility(0);
+        this.Gpn.setVisibility(0);
+        if ((this.Gpn instanceof com.tencent.mm.ui.f.a)) {
+          ((com.tencent.mm.ui.f.a)this.Gpn).aE((String)localObject1, i, i);
         }
-        i = parama.ERO;
-        this.ESe.setVisibility(i);
-        this.ESa.setVisibility(i);
+        i = parama.Gpb;
+        this.Gpr.setVisibility(i);
+        this.Gpn.setVisibility(i);
       }
-      if ((!parama.ERS) && (!parama.ERT))
+      if ((!parama.Gpf) && (!parama.Gpg))
       {
-        if ((parama.ERr != null) && (parama.ERr.length() > 0)) {
-          setMessage(parama.ERr);
+        if ((parama.GoE != null) && (parama.GoE.length() > 0)) {
+          setMessage(parama.GoE);
         }
-        if ((parama.ERs == null) || (parama.ERs.length() <= 0)) {
+        if ((parama.GoF == null) || (parama.GoF.length() <= 0)) {
           break label1950;
         }
-        localObject1 = parama.ERs;
-        this.ESe.setVisibility(0);
-        this.ERX.setVisibility(0);
-        this.ERX.setMaxLines(2);
-        this.ERX.setText((CharSequence)localObject1);
-        if ((parama.ERt != null) && (parama.ERt.length() > 0))
+        localObject1 = parama.GoF;
+        this.Gpr.setVisibility(0);
+        this.Gpk.setVisibility(0);
+        this.Gpk.setMaxLines(2);
+        this.Gpk.setText((CharSequence)localObject1);
+        if ((parama.GoG != null) && (parama.GoG.length() > 0))
         {
-          localObject4 = parama.ERt;
+          localObject4 = parama.GoG;
           if (localObject4 != null)
           {
-            this.ESe.setVisibility(0);
-            this.ERY.setVisibility(0);
+            this.Gpr.setVisibility(0);
+            this.Gpl.setVisibility(0);
             localObject1 = localObject4;
-            if (this.ESo != null)
+            if (this.GpB != null)
             {
-              localObject1 = this.ESo;
-              this.ERY.getContext();
+              localObject1 = this.GpB;
+              this.Gpl.getContext();
               ((CharSequence)localObject4).toString();
-              this.ERY.getTextSize();
-              localObject1 = ((c.a.c)localObject1).eEL();
+              this.Gpl.getTextSize();
+              localObject1 = ((c.a.c)localObject1).eUf();
             }
-            this.ERY.setText((CharSequence)localObject1);
+            this.Gpl.setText((CharSequence)localObject1);
           }
         }
-        if (parama.ERq != null)
+        if (parama.GoD != null)
         {
-          localObject1 = parama.ERq;
-          if (this.aeL == null)
+          localObject1 = parama.GoD;
+          if (this.afF == null)
           {
-            this.ESe.setVisibility(0);
-            this.ESa.setVisibility(0);
-            this.ESa.setImageBitmap((Bitmap)localObject1);
+            this.Gpr.setVisibility(0);
+            this.Gpn.setVisibility(0);
+            this.Gpn.setImageBitmap((Bitmap)localObject1);
           }
         }
       }
-      if (parama.ERS)
+      if (parama.Gpf)
       {
-        localObject1 = parama.ERq;
-        localObject5 = parama.ERs;
-        localObject4 = parama.ERt;
+        localObject1 = parama.GoD;
+        localObject5 = parama.GoF;
+        localObject4 = parama.GoG;
         localObject6 = View.inflate(this.mContext, 2131493583, null);
         if (localObject1 != null)
         {
@@ -396,12 +396,12 @@ public final class c
           localObject7 = (TextView)((View)localObject6).findViewById(2131302312);
           ((TextView)localObject7).setVisibility(0);
           localObject1 = localObject5;
-          if (this.ESo != null)
+          if (this.GpB != null)
           {
-            localObject1 = this.ESo;
+            localObject1 = this.GpB;
             ((CharSequence)localObject5).toString();
             ((TextView)localObject7).getTextSize();
-            localObject1 = ((c.a.c)localObject1).eEL();
+            localObject1 = ((c.a.c)localObject1).eUf();
           }
           ((TextView)localObject7).setText((CharSequence)localObject1);
         }
@@ -409,23 +409,23 @@ public final class c
         {
           localObject5 = (TextView)((View)localObject6).findViewById(2131302311);
           ((TextView)localObject5).setVisibility(0);
-          if (this.ESo == null) {
+          if (this.GpB == null) {
             break label2233;
           }
-          localObject1 = this.ESo;
+          localObject1 = this.GpB;
           ((CharSequence)localObject4).toString();
           ((TextView)localObject5).getTextSize();
-          localObject1 = ((c.a.c)localObject1).eEL();
+          localObject1 = ((c.a.c)localObject1).eUf();
           ((TextView)localObject5).setText((CharSequence)localObject1);
         }
-        fw((View)localObject6);
-        if ((parama.ERi != null) || (parama.ERj != null))
+        fJ((View)localObject6);
+        if ((parama.Gov != null) || (parama.Gow != null))
         {
-          localObject4 = parama.ERi;
-          localObject5 = parama.ERj;
-          bool = parama.ERk;
-          localObject6 = parama.ERm;
-          this.ESd.setLayoutResource(2131493593);
+          localObject4 = parama.Gov;
+          localObject5 = parama.Gow;
+          bool = parama.Gox;
+          localObject6 = parama.Goz;
+          this.Gpq.setLayoutResource(2131493593);
         }
       }
     }
@@ -439,7 +439,7 @@ public final class c
           Object localObject6;
           Object localObject7;
           boolean bool;
-          localObject1 = (LinearLayout)this.ESd.inflate();
+          localObject1 = (LinearLayout)this.Gpq.inflate();
           if ((localObject1 != null) && (localObject4 != null)) {
             ((ImageView)((LinearLayout)localObject1).findViewById(2131305922)).setVisibility(0);
           }
@@ -448,12 +448,12 @@ public final class c
             localObject7 = (TextView)((LinearLayout)localObject1).findViewById(2131305945);
             ((TextView)localObject7).setVisibility(0);
             localObject4 = localObject5;
-            if (this.ESo != null)
+            if (this.GpB != null)
             {
-              localObject4 = this.ESo;
+              localObject4 = this.GpB;
               ((CharSequence)localObject5).toString();
-              this.lWE.getTextSize();
-              localObject4 = ((c.a.c)localObject4).eEL();
+              this.myG.getTextSize();
+              localObject4 = ((c.a.c)localObject4).eUf();
             }
             ((TextView)localObject7).setText((CharSequence)localObject4);
           }
@@ -461,37 +461,37 @@ public final class c
           {
             localObject4 = (ImageView)((LinearLayout)localObject1).findViewById(2131300962);
             ((ImageView)localObject4).setVisibility(0);
-            Wb(0);
+            Yk(0);
             ((LinearLayout)localObject1).setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
-                AppMethodBeat.i(196860);
-                if (this.ESr.isSelected())
+                AppMethodBeat.i(195880);
+                if (this.GpE.isSelected())
                 {
                   c.b(c.this).startAnimation(c.a(c.this));
                   c.a(c.this).setAnimationListener(new Animation.AnimationListener()
                   {
                     public final void onAnimationEnd(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(196857);
+                      AppMethodBeat.i(195877);
                       c.b(c.this).setVisibility(8);
                       c.a(c.this, 0);
-                      AppMethodBeat.o(196857);
+                      AppMethodBeat.o(195877);
                     }
                     
                     public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
                     
                     public final void onAnimationStart(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(196856);
+                      AppMethodBeat.i(195876);
                       c.a(c.this, c.c(c.this));
-                      AppMethodBeat.o(196856);
+                      AppMethodBeat.o(195876);
                     }
                   });
-                  ObjectAnimator.ofFloat(this.ESr, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
-                  this.ESr.setSelected(false);
-                  AppMethodBeat.o(196860);
+                  ObjectAnimator.ofFloat(this.GpE, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
+                  this.GpE.setSelected(false);
+                  AppMethodBeat.o(195880);
                   return;
                 }
                 c.b(c.this).startAnimation(c.d(c.this));
@@ -499,32 +499,32 @@ public final class c
                 {
                   public final void onAnimationEnd(Animation paramAnonymous2Animation)
                   {
-                    AppMethodBeat.i(196859);
+                    AppMethodBeat.i(195879);
                     c.b(c.this).setVisibility(0);
                     c.a(c.this, 8);
-                    AppMethodBeat.o(196859);
+                    AppMethodBeat.o(195879);
                   }
                   
                   public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
                   
                   public final void onAnimationStart(Animation paramAnonymous2Animation)
                   {
-                    AppMethodBeat.i(196858);
+                    AppMethodBeat.i(195878);
                     c.a(c.this, c.e(c.this));
-                    AppMethodBeat.o(196858);
+                    AppMethodBeat.o(195878);
                   }
                 });
-                ObjectAnimator.ofFloat(this.ESr, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
-                this.ESr.setSelected(true);
-                AppMethodBeat.o(196860);
+                ObjectAnimator.ofFloat(this.GpE, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
+                this.GpE.setSelected(true);
+                AppMethodBeat.o(195880);
               }
             });
           }
-          if (parama.ERn != null)
+          if (parama.GoA != null)
           {
-            localObject1 = parama.ERn;
-            if ((this.ESe != null) && (this.ESe.getVisibility() == 0)) {
-              this.ESe.setOnClickListener(new View.OnClickListener()
+            localObject1 = parama.GoA;
+            if ((this.Gpr != null) && (this.Gpr.getVisibility() == 0)) {
+              this.Gpr.setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymousView) {}
               });
@@ -532,155 +532,155 @@ public final class c
           }
           else
           {
-            if ((parama.ERf != null) && (parama.ERf.length() > 0))
+            if ((parama.Gos != null) && (parama.Gos.length() > 0))
             {
-              localObject1 = parama.ERf;
+              localObject1 = parama.Gos;
               if (localObject1 != null)
               {
-                this.ERZ.setVisibility(0);
-                this.ERZ.setText((CharSequence)localObject1);
+                this.Gpm.setVisibility(0);
+                this.Gpm.setText((CharSequence)localObject1);
               }
-              this.ESj = true;
-              i = parama.ERL;
-              if (this.ERZ != null) {
-                this.ERZ.setGravity(i);
+              this.Gpw = true;
+              i = parama.GoY;
+              if (this.Gpm != null) {
+                this.Gpm.setGravity(i);
               }
             }
-            if ((parama.ERg != null) && (parama.ERg.length() > 0))
+            if ((parama.Got != null) && (parama.Got.length() > 0))
             {
-              localObject1 = parama.ERg;
+              localObject1 = parama.Got;
               this.mEditText.setVisibility(0);
               this.mEditText.setHint((CharSequence)localObject1);
             }
-            if (parama.ERh)
+            if (parama.Gou)
             {
-              this.needEdit = parama.ERh;
-              if (!parama.ERh) {
+              this.needEdit = parama.Gou;
+              if (!parama.Gou) {
                 continue;
               }
               this.mEditText.setVisibility(0);
             }
-            if ((parama.ERu != null) && (parama.ERu.length() > 0)) {
-              a(parama.ERu, parama.ERR, parama.ERC);
+            if ((parama.GoH != null) && (parama.GoH.length() > 0)) {
+              a(parama.GoH, parama.Gpe, parama.GoP);
             }
-            if ((parama.ERv != null) && (parama.ERv.length() > 0)) {
-              a(parama.ERv, parama.ERD);
+            if ((parama.GoI != null) && (parama.GoI.length() > 0)) {
+              a(parama.GoI, parama.GoQ);
             }
-            if (parama.ERQ != 0) {
-              Wc(parama.ERQ);
+            if (parama.Gpd != 0) {
+              Yl(parama.Gpd);
             }
-            if (parama.ERP != 0) {
-              Wd(parama.ERP);
+            if (parama.Gpc != 0) {
+              Ym(parama.Gpc);
             }
-            if (parama.Vb != null) {
-              setOnCancelListener(parama.Vb);
+            if (parama.VW != null) {
+              setOnCancelListener(parama.VW);
             }
-            if (parama.Vc != null)
+            if (parama.VX != null)
             {
-              this.ESp = parama.Vc;
-              setOnDismissListener(parama.Vc);
+              this.GpC = parama.VX;
+              setOnDismissListener(parama.VX);
             }
-            if (parama.ERo != null) {
-              this.ESo = parama.ERo;
+            if (parama.GoB != null) {
+              this.GpB = parama.GoB;
             }
-            setCancelable(parama.lA);
-            this.lA = parama.lA;
-            if (!this.lA) {
-              super.setCancelable(parama.ERz);
+            setCancelable(parama.mz);
+            this.mz = parama.mz;
+            if (!this.mz) {
+              super.setCancelable(parama.GoM);
             }
-            if ((parama.ERw != null) || (parama.ERx != null) || (parama.ERy != null))
+            if ((parama.GoJ != null) || (parama.GoK != null) || (parama.GoL != null))
             {
               localObject1 = View.inflate(this.mContext, 2131493592, null);
               localObject4 = (Button)((View)localObject1).findViewById(2131302297);
               localObject5 = (Button)((View)localObject1).findViewById(2131302298);
               localObject6 = (Button)((View)localObject1).findViewById(2131302299);
-              if (parama.ERw != null)
+              if (parama.GoJ != null)
               {
                 ((Button)localObject4).setVisibility(0);
-                ((Button)localObject4).setText(parama.ERw);
+                ((Button)localObject4).setText(parama.GoJ);
                 ((Button)localObject4).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
-                    AppMethodBeat.i(196863);
-                    if (parama.ERE != null) {
-                      parama.ERE.onClick(c.this, -1);
+                    AppMethodBeat.i(195883);
+                    if (parama.GoR != null) {
+                      parama.GoR.onClick(c.this, -1);
                     }
                     c.this.dismiss();
-                    AppMethodBeat.o(196863);
+                    AppMethodBeat.o(195883);
                   }
                 });
               }
-              if (parama.ERx != null)
+              if (parama.GoK != null)
               {
                 ((Button)localObject5).setVisibility(0);
-                ((Button)localObject5).setText(parama.ERx);
+                ((Button)localObject5).setText(parama.GoK);
                 ((Button)localObject5).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
-                    AppMethodBeat.i(196864);
-                    if (parama.ERF != null) {
-                      parama.ERF.onClick(c.this, -2);
+                    AppMethodBeat.i(195884);
+                    if (parama.GoS != null) {
+                      parama.GoS.onClick(c.this, -2);
                     }
                     c.this.dismiss();
-                    AppMethodBeat.o(196864);
+                    AppMethodBeat.o(195884);
                   }
                 });
               }
-              if (parama.ERy != null)
+              if (parama.GoL != null)
               {
                 ((Button)localObject6).setVisibility(0);
-                ((Button)localObject6).setText(parama.ERy);
+                ((Button)localObject6).setText(parama.GoL);
                 ((Button)localObject6).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
-                    AppMethodBeat.i(196865);
-                    if (parama.ERG != null) {
-                      parama.ERG.onClick(c.this, -3);
+                    AppMethodBeat.i(195885);
+                    if (parama.GoT != null) {
+                      parama.GoT.onClick(c.this, -3);
                     }
                     c.this.dismiss();
-                    AppMethodBeat.o(196865);
+                    AppMethodBeat.o(195885);
                   }
                 });
               }
               a((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
             }
-            if (parama.ERl)
+            if (parama.Goy)
             {
               localObject1 = View.inflate(this.mContext, 2131493579, null);
-              this.pRD = ((Button)((View)localObject1).findViewById(2131302301));
-              this.zXZ = ((Button)((View)localObject1).findViewById(2131302314));
-              if (parama.ERQ != 0) {
-                Wc(parama.ERQ);
+              this.qAl = ((Button)((View)localObject1).findViewById(2131302301));
+              this.Bqt = ((Button)((View)localObject1).findViewById(2131302314));
+              if (parama.Gpd != 0) {
+                Yl(parama.Gpd);
               }
-              if (parama.ERP != 0) {
-                Wd(parama.ERP);
+              if (parama.Gpc != 0) {
+                Ym(parama.Gpc);
               }
-              if ((parama.ERu != null) && (parama.ERu.length() > 0)) {
-                a(parama.ERu, parama.ERR, parama.ERC);
+              if ((parama.GoH != null) && (parama.GoH.length() > 0)) {
+                a(parama.GoH, parama.Gpe, parama.GoP);
               }
-              if ((parama.ERv != null) && (parama.ERv.length() > 0)) {
-                a(parama.ERv, parama.ERD);
+              if ((parama.GoI != null) && (parama.GoI.length() > 0)) {
+                a(parama.GoI, parama.GoQ);
               }
               a((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
             }
-            AppMethodBeat.o(196885);
+            AppMethodBeat.o(195905);
             return;
             localException1 = localException1;
-            this.ESd.setVisibility(0);
+            this.Gpq.setVisibility(0);
             Object localObject2 = null;
             continue;
             label1950:
-            uL(false);
+            vN(false);
             continue;
-            if (!parama.ERT) {
+            if (!parama.Gpg) {
               continue;
             }
-            localObject2 = parama.ERq;
-            localObject5 = parama.ERs;
-            localObject4 = parama.ERt;
+            localObject2 = parama.GoD;
+            localObject5 = parama.GoF;
+            localObject4 = parama.GoG;
             localObject6 = View.inflate(this.mContext, 2131493584, null);
             if (localObject2 != null)
             {
@@ -693,12 +693,12 @@ public final class c
               localObject7 = (TextView)((View)localObject6).findViewById(2131302312);
               ((TextView)localObject7).setVisibility(0);
               localObject2 = localObject5;
-              if (this.ESo != null)
+              if (this.GpB != null)
               {
-                localObject2 = this.ESo;
+                localObject2 = this.GpB;
                 ((CharSequence)localObject5).toString();
                 ((TextView)localObject7).getTextSize();
-                localObject2 = ((c.a.c)localObject2).eEL();
+                localObject2 = ((c.a.c)localObject2).eUf();
               }
               ((TextView)localObject7).setText((CharSequence)localObject2);
             }
@@ -706,27 +706,27 @@ public final class c
             {
               localObject5 = (TextView)((View)localObject6).findViewById(2131302311);
               ((TextView)localObject5).setVisibility(0);
-              if (this.ESo == null) {
+              if (this.GpB == null) {
                 continue;
               }
-              localObject2 = this.ESo;
+              localObject2 = this.GpB;
               ((CharSequence)localObject4).toString();
               ((TextView)localObject5).getTextSize();
-              localObject2 = ((c.a.c)localObject2).eEL();
+              localObject2 = ((c.a.c)localObject2).eUf();
               ((TextView)localObject5).setText((CharSequence)localObject2);
             }
-            fw((View)localObject6);
+            fJ((View)localObject6);
           }
         }
         catch (Exception localException2)
         {
-          this.ESd.setVisibility(0);
+          this.Gpq.setVisibility(0);
           localObject3 = null;
           continue;
-          if (this.ESg == null) {
+          if (this.Gpt == null) {
             continue;
           }
-          this.ESg.setOnClickListener(new View.OnClickListener()
+          this.Gpt.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView) {}
           });
@@ -744,20 +744,20 @@ public final class c
   
   public final void dismiss()
   {
-    AppMethodBeat.i(196887);
+    AppMethodBeat.i(195907);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       new Handler(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(196866);
+          AppMethodBeat.i(195886);
           c.this.dismiss();
-          AppMethodBeat.o(196866);
+          AppMethodBeat.o(195886);
         }
       });
       an.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
-      AppMethodBeat.o(196887);
+      AppMethodBeat.o(195907);
       return;
     }
     try
@@ -772,7 +772,7 @@ public final class c
         if (this.iOnDialogDismissListener != null) {
           this.iOnDialogDismissListener.onDialogDismiss(this);
         }
-        AppMethodBeat.o(196887);
+        AppMethodBeat.o(195907);
         return;
         super.dismiss();
       }
@@ -788,144 +788,144 @@ public final class c
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(196871);
+    AppMethodBeat.i(195891);
     super.onCreate(paramBundle);
-    setContentView(this.ERU);
-    AppMethodBeat.o(196871);
+    setContentView(this.Gph);
+    AppMethodBeat.o(195891);
   }
   
   public final void setCancelable(boolean paramBoolean)
   {
-    AppMethodBeat.i(196883);
+    AppMethodBeat.i(195903);
     super.setCancelable(paramBoolean);
-    this.lA = paramBoolean;
-    setCanceledOnTouchOutside(this.lA);
-    AppMethodBeat.o(196883);
+    this.mz = paramBoolean;
+    setCanceledOnTouchOutside(this.mz);
+    AppMethodBeat.o(195903);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(196875);
-    this.ESe.setVisibility(0);
-    this.ERW.setVisibility(0);
+    AppMethodBeat.i(195895);
+    this.Gpr.setVisibility(0);
+    this.Gpj.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.ESo != null)
+    if (this.GpB != null)
     {
-      localObject = this.ESo;
-      this.ERW.getContext();
+      localObject = this.GpB;
+      this.Gpj.getContext();
       paramCharSequence.toString();
-      this.ERW.getTextSize();
-      localObject = ((c.a.c)localObject).eEL();
+      this.Gpj.getTextSize();
+      localObject = ((c.a.c)localObject).eUf();
     }
-    this.ERW.setText((CharSequence)localObject);
-    AppMethodBeat.o(196875);
+    this.Gpj.setText((CharSequence)localObject);
+    AppMethodBeat.o(195895);
   }
   
   public final void setTitle(int paramInt)
   {
-    AppMethodBeat.i(196873);
-    this.ESc.setVisibility(0);
-    this.lWE.setVisibility(0);
-    this.lWE.setMaxLines(2);
-    this.lWE.setText(paramInt);
-    this.lWE.getPaint().setFakeBoldText(true);
-    Wa(this.mContext.getResources().getColor(2131099734));
-    AppMethodBeat.o(196873);
+    AppMethodBeat.i(195893);
+    this.Gpp.setVisibility(0);
+    this.myG.setVisibility(0);
+    this.myG.setMaxLines(2);
+    this.myG.setText(paramInt);
+    this.myG.getPaint().setFakeBoldText(true);
+    Yj(this.mContext.getResources().getColor(2131099734));
+    AppMethodBeat.o(195893);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(196872);
-    this.ESc.setVisibility(0);
-    this.lWE.setVisibility(0);
+    AppMethodBeat.i(195892);
+    this.Gpp.setVisibility(0);
+    this.myG.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.ESo != null)
+    if (this.GpB != null)
     {
-      localObject = this.ESo;
+      localObject = this.GpB;
       paramCharSequence.toString();
-      this.lWE.getTextSize();
-      localObject = ((c.a.c)localObject).eEL();
+      this.myG.getTextSize();
+      localObject = ((c.a.c)localObject).eUf();
     }
-    this.lWE.setMaxLines(2);
-    this.lWE.setText((CharSequence)localObject);
-    this.lWE.getPaint().setFakeBoldText(true);
-    Wa(this.mContext.getResources().getColor(2131099734));
-    AppMethodBeat.o(196872);
+    this.myG.setMaxLines(2);
+    this.myG.setText((CharSequence)localObject);
+    this.myG.getPaint().setFakeBoldText(true);
+    Yj(this.mContext.getResources().getColor(2131099734));
+    AppMethodBeat.o(195892);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(196886);
+    AppMethodBeat.i(195906);
     try
     {
       super.show();
-      AppMethodBeat.o(196886);
+      AppMethodBeat.o(195906);
       return;
     }
     catch (Exception localException)
     {
       an.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(196886);
+      AppMethodBeat.o(195906);
     }
   }
   
   public static final class a
   {
-    public a ESA;
+    public a GpN;
     public Context mContext;
     
     public a(Context paramContext)
     {
-      AppMethodBeat.i(196867);
+      AppMethodBeat.i(195887);
       this.mContext = paramContext;
-      this.ESA = new a();
-      AppMethodBeat.o(196867);
+      this.GpN = new a();
+      AppMethodBeat.o(195887);
     }
     
     public final a a(DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.ESA.ERC = paramOnClickListener;
+      this.GpN.GoP = paramOnClickListener;
       return this;
     }
     
-    public final a aEW(String paramString)
+    public final a aKn(String paramString)
     {
-      this.ESA.title = paramString;
+      this.GpN.title = paramString;
       return this;
     }
     
-    public final a aEX(String paramString)
+    public final a aKo(String paramString)
     {
-      this.ESA.ERr = paramString;
+      this.GpN.GoE = paramString;
       return this;
     }
     
-    public final a aEY(String paramString)
+    public final a aKp(String paramString)
     {
-      this.ESA.ERu = paramString;
+      this.GpN.GoH = paramString;
       return this;
     }
     
-    public final a eEI()
+    public final a eUc()
     {
-      AppMethodBeat.i(196868);
-      this.ESA.ERu = this.mContext.getString(2131755835);
-      AppMethodBeat.o(196868);
+      AppMethodBeat.i(195888);
+      this.GpN.GoH = this.mContext.getString(2131755835);
+      AppMethodBeat.o(195888);
       return this;
     }
     
-    public final a eEJ()
+    public final a eUd()
     {
-      this.ESA.lA = false;
+      this.GpN.mz = false;
       return this;
     }
     
-    public final c eEK()
+    public final c eUe()
     {
-      AppMethodBeat.i(196869);
+      AppMethodBeat.i(195889);
       c localc = new c(this.mContext);
-      localc.a(this.ESA);
-      AppMethodBeat.o(196869);
+      localc.a(this.GpN);
+      AppMethodBeat.o(195889);
       return localc;
     }
     
@@ -935,7 +935,7 @@ public final class c
     
     public static abstract interface c
     {
-      public abstract CharSequence eEL();
+      public abstract CharSequence eUf();
     }
   }
 }

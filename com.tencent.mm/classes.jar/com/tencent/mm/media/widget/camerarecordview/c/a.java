@@ -9,24 +9,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.a.b;
 import com.tencent.mm.media.widget.camerarecordview.c;
 import com.tencent.mm.media.widget.camerarecordview.preview.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit;", "", "ctx", "Landroid/content/Context;", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "(Landroid/content/Context;Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;)V", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraConfig", "()Lcom/tencent/mm/media/widget/camera/CameraConfig;", "setCameraConfig", "(Lcom/tencent/mm/media/widget/camera/CameraConfig;)V", "context", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentDisplayRotation", "", "orientationChangeListener", "com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1;", "checkContext", "", "enableFit", "", "enable", "release", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit;", "", "ctx", "Landroid/content/Context;", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "(Landroid/content/Context;Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;)V", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraConfig", "()Lcom/tencent/mm/media/widget/camera/CameraConfig;", "setCameraConfig", "(Lcom/tencent/mm/media/widget/camera/CameraConfig;)V", "context", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentDisplayRotation", "", "orientationChangeListener", "com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1;", "checkContext", "", "enableFit", "", "enable", "release", "Companion", "plugin-mediaeditor_release"})
 public final class a
 {
-  public static final a.a gBy;
+  public static final a.a hbV;
   public Context context;
-  private int gBw;
-  public b gBx;
-  b gwF;
+  b gXc;
+  private int hbT;
+  public b hbU;
   
   static
   {
     AppMethodBeat.i(94289);
-    gBy = new a.a((byte)0);
+    hbV = new a.a((byte)0);
     AppMethodBeat.o(94289);
   }
   
@@ -34,11 +34,11 @@ public final class a
   {
     AppMethodBeat.i(94288);
     this.context = paramContext;
-    this.gBx = new b(this, parama, this.context);
+    this.hbU = new b(this, parama, this.context);
     AppMethodBeat.o(94288);
   }
   
-  private final boolean aob()
+  private final boolean auS()
   {
     return this.context != null;
   }
@@ -46,15 +46,15 @@ public final class a
   public final void a(boolean paramBoolean, b paramb)
   {
     AppMethodBeat.i(94287);
-    ad.i("MicroMsg.PreviewOrientationFit", "enable :" + paramBoolean + " ,cameraConfig " + paramb);
-    if (!aob())
+    ac.i("MicroMsg.PreviewOrientationFit", "enable :" + paramBoolean + " ,cameraConfig " + paramb);
+    if (!auS())
     {
       AppMethodBeat.o(94287);
       return;
     }
     if (paramBoolean)
     {
-      this.gwF = paramb;
+      this.gXc = paramb;
       paramb = this.context;
       if (paramb == null)
       {
@@ -63,7 +63,7 @@ public final class a
         throw paramb;
       }
       ((Activity)paramb).setRequestedOrientation(7);
-      this.gBx.enable();
+      this.hbU.enable();
       AppMethodBeat.o(94287);
       return;
     }
@@ -75,12 +75,12 @@ public final class a
       throw paramb;
     }
     ((Activity)paramb).setRequestedOrientation(1);
-    this.gBx.disable();
-    this.gBw = 0;
+    this.hbU.disable();
+    this.hbT = 0;
     AppMethodBeat.o(94287);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Landroid/view/OrientationEventListener;", "onOrientationChanged", "", "orientation", "", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Landroid/view/OrientationEventListener;", "onOrientationChanged", "", "orientation", "", "plugin-mediaeditor_release"})
   public static final class b
     extends OrientationEventListener
   {
@@ -92,12 +92,12 @@ public final class a
     public final void onOrientationChanged(int paramInt)
     {
       AppMethodBeat.i(94286);
-      if (!a.a(this.gBz))
+      if (!a.a(this.hbW))
       {
         AppMethodBeat.o(94286);
         return;
       }
-      Object localObject = this.gBz.context;
+      Object localObject = this.hbW.context;
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type android.app.Activity");
@@ -109,13 +109,13 @@ public final class a
       localObject = ((WindowManager)localObject).getDefaultDisplay();
       k.g(localObject, "(context as Activity).windowManager.defaultDisplay");
       paramInt = ((Display)localObject).getRotation();
-      if (paramInt == a.b(this.gBz))
+      if (paramInt == a.b(this.hbW))
       {
         AppMethodBeat.o(94286);
         return;
       }
-      ad.i("MicroMsg.PreviewOrientationFit", "last rotation :" + a.b(this.gBz) + " ,current rotation:" + paramInt);
-      a.a(this.gBz, paramInt);
+      ac.i("MicroMsg.PreviewOrientationFit", "last rotation :" + a.b(this.hbW) + " ,current rotation:" + paramInt);
+      a.a(this.hbW, paramInt);
       switch (paramInt)
       {
       default: 
@@ -123,16 +123,16 @@ public final class a
       }
       while (paramInt == 0)
       {
-        localObject = this.gBz.gwF;
+        localObject = this.hbW.gXc;
         if (localObject != null)
         {
-          b.mF(270);
+          b.nt(270);
           parama.getCameraPreviewView().a((b)localObject);
-          localObject = c.gBa;
+          localObject = c.hbw;
           localObject = c.getRenderer();
           if (localObject != null)
           {
-            ((com.tencent.mm.media.i.a)localObject).mz(b.amy());
+            ((com.tencent.mm.media.i.a)localObject).mE(b.atq());
             AppMethodBeat.o(94286);
             return;
             paramInt = 0;
@@ -156,16 +156,16 @@ public final class a
       }
       if (paramInt == 180)
       {
-        localObject = this.gBz.gwF;
+        localObject = this.hbW.gXc;
         if (localObject != null)
         {
-          b.mF(90);
+          b.nt(90);
           parama.getCameraPreviewView().a((b)localObject);
-          localObject = c.gBa;
+          localObject = c.hbw;
           localObject = c.getRenderer();
           if (localObject != null)
           {
-            ((com.tencent.mm.media.i.a)localObject).mz(b.amy());
+            ((com.tencent.mm.media.i.a)localObject).mE(b.atq());
             AppMethodBeat.o(94286);
             return;
           }

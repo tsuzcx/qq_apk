@@ -11,12 +11,12 @@ import java.util.List;
 
 public final class n
 {
-  private static final List<String> ljh;
+  private static final List<String> lIZ;
   
   static
   {
     AppMethodBeat.i(147668);
-    ljh = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
+    lIZ = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
     AppMethodBeat.o(147668);
   }
   
@@ -32,7 +32,7 @@ public final class n
       switch (i)
       {
       default: 
-        paramString = paramAppBrandRuntime.getAppConfig().FK(paramString);
+        paramString = paramAppBrandRuntime.getAppConfig().JO(paramString);
         if (paramString != null) {
           break label99;
         }
@@ -56,7 +56,7 @@ public final class n
   public static boolean a(String paramString, k paramk)
   {
     AppMethodBeat.i(147666);
-    if (!ljh.contains(paramString))
+    if (!lIZ.contains(paramString))
     {
       AppMethodBeat.o(147666);
       return false;
@@ -83,7 +83,7 @@ public final class n
         break;
       }
     }
-    boolean bool = paramk.jdO;
+    boolean bool = paramk.jEc;
     AppMethodBeat.o(147666);
     return bool;
     AppMethodBeat.o(147666);
@@ -92,7 +92,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.n
  * JD-Core Version:    0.7.0.1
  */

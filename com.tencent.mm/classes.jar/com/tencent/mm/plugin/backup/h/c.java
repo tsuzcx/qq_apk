@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.backup.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ay;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.az;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.aj;
 import com.tencent.mm.model.w;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.l;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bh;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.util.HashMap;
@@ -24,24 +24,24 @@ import java.util.Set;
 
 public final class c
 {
-  public static s Ou(String paramString)
+  public static s SE(String paramString)
   {
     AppMethodBeat.i(21761);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(21761);
       return null;
     }
-    paramString = d.bxT().bxU().aCI().zO(paramString);
+    paramString = d.bEP().bEQ().aJy().DT(paramString);
     AppMethodBeat.o(21761);
     return paramString;
   }
   
-  public static String Ov(String paramString)
+  public static String SF(String paramString)
   {
     AppMethodBeat.i(21762);
-    String str = l.d(d.bxT().bxU().apY(), "msg_", paramString, ".amr", 2);
-    if (bt.isNullOrNil(str))
+    String str = l.d(d.bEP().bEQ().awN(), "msg_", paramString, ".amr", 2);
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(21762);
       return null;
@@ -51,16 +51,16 @@ public final class c
       AppMethodBeat.o(21762);
       return str;
     }
-    paramString = d.bxT().bxU().aDE() + paramString;
+    paramString = d.bEP().bEQ().aKv() + paramString;
     if (new e(paramString + ".amr").exists()) {
-      i.lD(paramString + ".amr", str);
+      i.ma(paramString + ".amr", str);
     }
     for (;;)
     {
       AppMethodBeat.o(21762);
       return str;
       if (new e(paramString).exists()) {
-        i.lD(paramString, str);
+        i.ma(paramString, str);
       }
     }
   }
@@ -68,30 +68,30 @@ public final class c
   public static void g(HashMap<String, Integer> paramHashMap)
   {
     AppMethodBeat.i(21757);
-    ad.i("MicroMsg.BackupStorageLogic", "buildConversation, unReadSum size[%d]", new Object[] { Integer.valueOf(paramHashMap.size()) });
+    ac.i("MicroMsg.BackupStorageLogic", "buildConversation, unReadSum size[%d]", new Object[] { Integer.valueOf(paramHashMap.size()) });
     Iterator localIterator = paramHashMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
-      bl localbl = d.bxT().bxU().apO().hn(str1, " and not ( type = 10000 and isSend != 2 ) ");
+      bo localbo = d.bEP().bEQ().awD().hG(str1, " and not ( type = 10000 and isSend != 2 ) ");
       int i;
       String str2;
-      am localam;
-      if (localbl != null)
+      ap localap;
+      if (localbo != null)
       {
         i = ((Integer)paramHashMap.get(str1)).intValue();
-        str2 = localbl.field_talker;
-        ad.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, talker:%s, addUnreadCount:%d", new Object[] { str2, Integer.valueOf(i) });
-        localam = d.bxT().bxU().apR().aIn(str2);
-        if ((localam == null) || (localam.field_conversationTime <= localbl.field_createTime) || (localam.field_conversationTime == 9223372036854775807L)) {
+        str2 = localbo.field_talker;
+        ac.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, talker:%s, addUnreadCount:%d", new Object[] { str2, Integer.valueOf(i) });
+        localap = d.bEP().bEQ().awG().aNI(str2);
+        if ((localap == null) || (localap.field_conversationTime <= localbo.field_createTime) || (localap.field_conversationTime == 9223372036854775807L)) {
           break label216;
         }
-        ad.e("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg ignore(maybe the system time is bigger than normal)");
+        ac.e("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg ignore(maybe the system time is bigger than normal)");
       }
       Object localObject;
       for (;;)
       {
-        localObject = d.bxT().bxU();
+        localObject = d.bEP().bEQ();
         if (((b)localObject).uin != 0) {
           break;
         }
@@ -100,33 +100,33 @@ public final class c
         throw paramHashMap;
         label216:
         boolean bool = false;
-        localObject = localam;
-        if (localam == null)
+        localObject = localap;
+        if (localap == null)
         {
-          localObject = new am(str2);
+          localObject = new ap(str2);
           bool = true;
         }
-        ((am)localObject).jV(localbl.field_isSend);
-        ((am)localObject).jT(i + ((ay)localObject).field_unReadCount);
-        ((am)localObject).aG(localbl);
-        ((am)localObject).nK(Integer.toString(localbl.getType()));
-        long l = ((ay)localObject).field_flag;
-        ((am)localObject).kT(localbl.field_createTime & 0xFFFFFFFF | l & 0x0);
-        ((am)localObject).jS(0);
-        ad.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, isNewConv[%b], talker[%s], flag[%d]", new Object[] { Boolean.valueOf(bool), str2, Long.valueOf(((ay)localObject).field_flag) });
+        ((ap)localObject).jT(localbo.field_isSend);
+        ((ap)localObject).jR(i + ((az)localObject).field_unReadCount);
+        ((ap)localObject).aI(localbo);
+        ((ap)localObject).qQ(Integer.toString(localbo.getType()));
+        long l = ((az)localObject).field_flag;
+        ((ap)localObject).ov(localbo.field_createTime & 0xFFFFFFFF | l & 0x0);
+        ((ap)localObject).jQ(0);
+        ac.i("MicroMsg.BackupStorageLogic", "updateConvFromLastMsg, isNewConv[%b], talker[%s], flag[%d]", new Object[] { Boolean.valueOf(bool), str2, Long.valueOf(((az)localObject).field_flag) });
         if (bool) {
-          d.bxT().bxU().apR().e((am)localObject);
+          d.bEP().bEQ().awG().e((ap)localObject);
         } else {
-          d.bxT().bxU().apR().a((am)localObject, str2);
+          d.bEP().bEQ().awG().a((ap)localObject, str2);
         }
       }
-      ((b)localObject).mxR.aB(str1, 0L);
+      ((b)localObject).mZS.aD(str1, 0L);
     }
-    d.bxT().bxU().apR().eLi();
+    d.bEP().bEQ().awG().faK();
     AppMethodBeat.o(21757);
   }
   
-  public static boolean pF(String paramString)
+  public static boolean sQ(String paramString)
   {
     AppMethodBeat.i(21758);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -134,39 +134,39 @@ public final class c
       AppMethodBeat.o(21758);
       return false;
     }
-    boolean bool = w.sl(paramString);
+    boolean bool = w.wo(paramString);
     AppMethodBeat.o(21758);
     return bool;
   }
   
-  public static long u(bl parambl)
+  public static long u(bo parambo)
   {
     AppMethodBeat.i(21759);
-    af localaf = d.bxT().bxU().apM().aHY(parambl.field_talker);
-    if ((localaf == null) || ((int)localaf.fId == 0))
+    ai localai = d.bEP().bEQ().awB().aNt(parambo.field_talker);
+    if ((localai == null) || ((int)localai.fLJ == 0))
     {
-      if (bt.isNullOrNil(parambl.field_talker)) {
+      if (bs.isNullOrNil(parambo.field_talker)) {
         break label146;
       }
-      d.bxT().bxV().h(2, parambl.field_talker);
-      d.bxT().bxU().apM().af(new af(parambl.field_talker));
+      d.bEP().bER().h(2, parambo.field_talker);
+      d.bEP().bEQ().awB().ag(new ai(parambo.field_talker));
     }
     for (;;)
     {
-      long l = d.bxT().bxU().apO().an(parambl);
+      long l = d.bEP().bEQ().awD().ap(parambo);
       if (l < 0L) {
-        ad.e("MicroMsg.BackupStorageLogic", "insertMsgWithContact failed: type:%d, talker:%s", new Object[] { Integer.valueOf(parambl.getType()), parambl.field_talker });
+        ac.e("MicroMsg.BackupStorageLogic", "insertMsgWithContact failed: type:%d, talker:%s", new Object[] { Integer.valueOf(parambo.getType()), parambo.field_talker });
       }
       AppMethodBeat.o(21759);
       return l;
       label146:
-      if ((parambl.field_talker.endsWith("@chatroom")) && (d.bxT().bxU().apV().tL(parambl.field_talker) == null)) {
-        d.bxT().bxV().h(2, parambl.field_talker);
+      if ((parambo.field_talker.endsWith("@chatroom")) && (d.bEP().bEQ().awK().xR(parambo.field_talker) == null)) {
+        d.bEP().bER().h(2, parambo.field_talker);
       }
     }
   }
   
-  public static int ue(String paramString)
+  public static int yk(String paramString)
   {
     AppMethodBeat.i(21760);
     if (paramString == null)

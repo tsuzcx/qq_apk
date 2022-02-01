@@ -13,14 +13,14 @@ import java.io.InputStream;
 public final class e<Model, Data>
   implements n<Model, Data>
 {
-  private final a<Data> aHk;
+  private final a<Data> aIa;
   
   public e(a<Data> parama)
   {
-    this.aHk = parama;
+    this.aIa = parama;
   }
   
-  public final boolean U(Model paramModel)
+  public final boolean W(Model paramModel)
   {
     AppMethodBeat.i(77225);
     boolean bool = paramModel.toString().startsWith("data:image");
@@ -31,31 +31,31 @@ public final class e<Model, Data>
   public final n.a<Data> b(Model paramModel, int paramInt1, int paramInt2, j paramj)
   {
     AppMethodBeat.i(77224);
-    paramModel = new n.a(new b(paramModel), new b(paramModel.toString(), this.aHk));
+    paramModel = new n.a(new b(paramModel), new b(paramModel.toString(), this.aIa));
     AppMethodBeat.o(77224);
     return paramModel;
   }
   
   public static abstract interface a<Data>
   {
-    public abstract void O(Data paramData);
+    public abstract void Q(Data paramData);
     
-    public abstract Data P(String paramString);
+    public abstract Data R(String paramString);
     
-    public abstract Class<Data> nK();
+    public abstract Class<Data> nU();
   }
   
   static final class b<Data>
     implements d<Data>
   {
-    private final String aHl;
-    private final e.a<Data> aHm;
+    private final String aIb;
+    private final e.a<Data> aIc;
     private Data data;
     
     b(String paramString, e.a<Data> parama)
     {
-      this.aHl = paramString;
-      this.aHm = parama;
+      this.aIb = paramString;
+      this.aIc = parama;
     }
     
     public final void a(g paramg, d.a<? super Data> parama)
@@ -63,8 +63,8 @@ public final class e<Model, Data>
       AppMethodBeat.i(77217);
       try
       {
-        this.data = this.aHm.P(this.aHl);
-        parama.P(this.data);
+        this.data = this.aIc.R(this.aIb);
+        parama.R(this.data);
         AppMethodBeat.o(77217);
         return;
       }
@@ -82,7 +82,7 @@ public final class e<Model, Data>
       AppMethodBeat.i(77218);
       try
       {
-        this.aHm.O(this.data);
+        this.aIc.Q(this.data);
         AppMethodBeat.o(77218);
         return;
       }
@@ -92,31 +92,31 @@ public final class e<Model, Data>
       }
     }
     
-    public final Class<Data> nK()
+    public final Class<Data> nU()
     {
       AppMethodBeat.i(77219);
-      Class localClass = this.aHm.nK();
+      Class localClass = this.aIc.nU();
       AppMethodBeat.o(77219);
       return localClass;
     }
     
-    public final a nL()
+    public final a nV()
     {
-      return a.aBX;
+      return a.aCP;
     }
   }
   
   public static final class c<Model>
     implements o<Model, InputStream>
   {
-    private final e.a<InputStream> aHn;
+    private final e.a<InputStream> aId;
     
     public c()
     {
       AppMethodBeat.i(77222);
-      this.aHn = new e.a()
+      this.aId = new e.a()
       {
-        public final Class<InputStream> nK()
+        public final Class<InputStream> nU()
         {
           return InputStream.class;
         }
@@ -127,7 +127,7 @@ public final class e<Model, Data>
     public final n<Model, InputStream> a(r paramr)
     {
       AppMethodBeat.i(77223);
-      paramr = new e(this.aHn);
+      paramr = new e(this.aId);
       AppMethodBeat.o(77223);
       return paramr;
     }
@@ -135,7 +135,7 @@ public final class e<Model, Data>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -46,13 +46,13 @@ public class SwEngine
   public static void stopContinousLocationUpdate()
   {
     AppMethodBeat.i(87877);
-    t.zp();
+    t.zc();
     AppMethodBeat.o(87877);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.swlocation.api.SwEngine
  * JD-Core Version:    0.7.0.1
  */

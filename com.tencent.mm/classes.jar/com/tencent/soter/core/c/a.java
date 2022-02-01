@@ -111,9 +111,9 @@ public class a
     paramX509Certificate = new String(arrayOfByte);
     d.i("Soter.CertUtil", "soter: challenge json in attestation certificate ".concat(String.valueOf(paramX509Certificate)), new Object[0]);
     paramX509Certificate = new JSONObject(paramX509Certificate);
-    parami.yaF = paramX509Certificate.getString("cpu_id");
+    parami.znE = paramX509Certificate.getString("cpu_id");
     parami.uid = paramX509Certificate.getInt("uid");
-    parami.IuP = paramX509Certificate.getLong("counter");
+    parami.JWy = paramX509Certificate.getLong("counter");
     label255:
     AppMethodBeat.o(88644);
     return;

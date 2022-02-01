@@ -14,15 +14,15 @@ import java.util.Map;
 
 public final class a
 {
-  Map<BitmapType, b> aPk;
-  SparseArray<Map<BitmapType, b>> aPl;
+  Map<BitmapType, b> aQa;
+  SparseArray<Map<BitmapType, b>> aQb;
   
   public a()
   {
     AppMethodBeat.i(127329);
-    this.aPk = new HashMap(3);
-    this.aPl = new SparseArray();
-    this.aPk.put(BitmapType.Native, new b()
+    this.aQa = new HashMap(3);
+    this.aQb = new SparseArray();
+    this.aQa.put(BitmapType.Native, new b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -31,7 +31,7 @@ public final class a
       
       public final void destroy() {}
       
-      public final IBitmap re()
+      public final IBitmap ro()
       {
         AppMethodBeat.i(127326);
         b.b localb = new b.b();
@@ -39,7 +39,7 @@ public final class a
         return localb;
       }
     });
-    this.aPk.put(BitmapType.Legacy, new b()
+    this.aQa.put(BitmapType.Legacy, new b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -48,7 +48,7 @@ public final class a
       
       public final void destroy() {}
       
-      public final IBitmap<Bitmap> re()
+      public final IBitmap<Bitmap> ro()
       {
         AppMethodBeat.i(127327);
         LegacyBitmap localLegacyBitmap = new LegacyBitmap();
@@ -56,7 +56,7 @@ public final class a
         return localLegacyBitmap;
       }
     });
-    this.aPk.put(BitmapType.Undefined, new b()
+    this.aQa.put(BitmapType.Undefined, new b()
     {
       public final boolean a(c paramAnonymousc)
       {
@@ -65,7 +65,7 @@ public final class a
       
       public final void destroy() {}
       
-      public final IBitmap re()
+      public final IBitmap ro()
       {
         AppMethodBeat.i(127328);
         b.a locala = new b.a();
@@ -81,17 +81,17 @@ public final class a
     AppMethodBeat.i(127331);
     if (((b)paramMap.get(BitmapType.Native)).a(paramc))
     {
-      paramc = ((b)paramMap.get(BitmapType.Native)).re();
+      paramc = ((b)paramMap.get(BitmapType.Native)).ro();
       AppMethodBeat.o(127331);
       return paramc;
     }
     if (((b)paramMap.get(BitmapType.Legacy)).a(paramc))
     {
-      paramc = ((b)paramMap.get(BitmapType.Legacy)).re();
+      paramc = ((b)paramMap.get(BitmapType.Legacy)).ro();
       AppMethodBeat.o(127331);
       return paramc;
     }
-    paramc = ((b)paramMap.get(BitmapType.Undefined)).re();
+    paramc = ((b)paramMap.get(BitmapType.Undefined)).ro();
     AppMethodBeat.o(127331);
     return paramc;
   }
@@ -113,7 +113,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.github.henryye.nativeiv.a
  * JD-Core Version:    0.7.0.1
  */

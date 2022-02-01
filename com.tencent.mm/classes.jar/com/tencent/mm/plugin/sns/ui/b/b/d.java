@@ -15,31 +15,31 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.item.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
   extends b
 {
-  int[] ssm;
-  AnimatorSet vWT;
-  a.a xOC;
-  private ValueAnimator xOg;
-  private ValueAnimator xOh;
-  ViewGroup xOi;
-  LinearLayout.LayoutParams xOj;
-  LinearLayout.LayoutParams xOk;
-  LinearLayout.LayoutParams xOl;
-  FrameLayout.LayoutParams xOp;
+  int[] tAc;
+  AnimatorSet xhG;
+  private ValueAnimator zaW;
+  private ValueAnimator zaX;
+  ViewGroup zaY;
+  LinearLayout.LayoutParams zaZ;
+  LinearLayout.LayoutParams zba;
+  LinearLayout.LayoutParams zbb;
+  FrameLayout.LayoutParams zbf;
+  a.a zbs;
   
   public d(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(99961);
-    this.ssm = new int[2];
+    this.tAc = new int[2];
     this.activity = paramMMActivity;
-    this.xOC = ((a.a)paramBaseViewHolder);
-    this.xOg = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.xOg.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.zbs = ((a.a)paramBaseViewHolder);
+    this.zaW = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    this.zaW.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -47,132 +47,132 @@ public final class d
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (f != 1.0F)
         {
-          paramAnonymousValueAnimator = (FrameLayout.LayoutParams)d.this.xOC.hSH.getLayoutParams();
-          paramAnonymousValueAnimator.leftMargin = ((int)(d.this.xOp.leftMargin * f));
-          paramAnonymousValueAnimator.rightMargin = ((int)(d.this.xOp.rightMargin * f));
-          paramAnonymousValueAnimator.topMargin = ((int)(d.this.xOp.topMargin * f));
-          paramAnonymousValueAnimator.bottomMargin = ((int)(d.this.xOp.bottomMargin * f));
-          d.this.xOC.hSH.setLayoutParams(paramAnonymousValueAnimator);
-          d.this.xOC.xRJ.setScaleX(f);
-          d.this.xOC.xRJ.setScaleY(f);
-          d.this.xOC.xRJ.setAlpha(f);
+          paramAnonymousValueAnimator = (FrameLayout.LayoutParams)d.this.zbs.isM.getLayoutParams();
+          paramAnonymousValueAnimator.leftMargin = ((int)(d.this.zbf.leftMargin * f));
+          paramAnonymousValueAnimator.rightMargin = ((int)(d.this.zbf.rightMargin * f));
+          paramAnonymousValueAnimator.topMargin = ((int)(d.this.zbf.topMargin * f));
+          paramAnonymousValueAnimator.bottomMargin = ((int)(d.this.zbf.bottomMargin * f));
+          d.this.zbs.isM.setLayoutParams(paramAnonymousValueAnimator);
+          d.this.zbs.zeE.setScaleX(f);
+          d.this.zbs.zeE.setScaleY(f);
+          d.this.zbs.zeE.setAlpha(f);
         }
         AppMethodBeat.o(99956);
       }
     });
-    this.xOg.setDuration(400L);
-    this.xOg.addListener(new AnimatorListenerAdapter()
+    this.zaW.setDuration(400L);
+    this.zaW.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99957);
-        if (d.this.xOC.fUH)
+        if (d.this.zbs.fYC)
         {
-          ad.i("MicroMsg.CardAdClickAnimation", "holder is busy");
-          d.this.vWT.end();
+          ac.i("MicroMsg.CardAdClickAnimation", "holder is busy");
+          d.this.xhG.end();
           AppMethodBeat.o(99957);
           return;
         }
-        d.this.xOC.fUH = true;
-        d.this.xOC.hSH.getLocationInWindow(d.this.ssm);
-        ad.i("MicroMsg.CardAdClickAnimation", "card container location in window %s, %s", new Object[] { Integer.valueOf(d.this.ssm[0]), Integer.valueOf(d.this.ssm[1]) });
-        d.this.xOp = new FrameLayout.LayoutParams(-2, -2);
-        d.this.xOp.leftMargin = d.this.ssm[0];
-        d.this.xOp.rightMargin = (d.this.xOi.getWidth() - d.this.xOp.leftMargin - d.this.xOC.hSH.getWidth());
-        d.this.xOp.topMargin = d.this.ssm[1];
-        d.this.xOp.bottomMargin = (d.this.xOi.getHeight() - d.this.xOp.topMargin - d.this.xOC.hSH.getHeight());
+        d.this.zbs.fYC = true;
+        d.this.zbs.isM.getLocationInWindow(d.this.tAc);
+        ac.i("MicroMsg.CardAdClickAnimation", "card container location in window %s, %s", new Object[] { Integer.valueOf(d.this.tAc[0]), Integer.valueOf(d.this.tAc[1]) });
+        d.this.zbf = new FrameLayout.LayoutParams(-2, -2);
+        d.this.zbf.leftMargin = d.this.tAc[0];
+        d.this.zbf.rightMargin = (d.this.zaY.getWidth() - d.this.zbf.leftMargin - d.this.zbs.isM.getWidth());
+        d.this.zbf.topMargin = d.this.tAc[1];
+        d.this.zbf.bottomMargin = (d.this.zaY.getHeight() - d.this.zbf.topMargin - d.this.zbs.isM.getHeight());
         Object localObject1 = new int[2];
-        d.this.xOC.xRJ.getLocationInWindow((int[])localObject1);
-        ad.i("MicroMsg.CardAdClickAnimation", "media container location in window %s, %s", new Object[] { Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]) });
+        d.this.zbs.zeE.getLocationInWindow((int[])localObject1);
+        ac.i("MicroMsg.CardAdClickAnimation", "media container location in window %s, %s", new Object[] { Integer.valueOf(localObject1[0]), Integer.valueOf(localObject1[1]) });
         paramAnonymousAnimator = new FrameLayout.LayoutParams(-2, -2);
         paramAnonymousAnimator.leftMargin = localObject1[0];
-        paramAnonymousAnimator.rightMargin = (d.this.xOi.getWidth() - paramAnonymousAnimator.leftMargin - d.this.xOC.xRJ.getWidth());
+        paramAnonymousAnimator.rightMargin = (d.this.zaY.getWidth() - paramAnonymousAnimator.leftMargin - d.this.zbs.zeE.getWidth());
         paramAnonymousAnimator.topMargin = localObject1[1];
-        paramAnonymousAnimator.bottomMargin = (d.this.xOi.getHeight() - paramAnonymousAnimator.topMargin - d.this.xOC.xRJ.getHeight());
+        paramAnonymousAnimator.bottomMargin = (d.this.zaY.getHeight() - paramAnonymousAnimator.topMargin - d.this.zbs.zeE.getHeight());
         Object localObject2 = new int[2];
-        d.this.xOC.xRK.getLocationInWindow((int[])localObject2);
-        ad.i("MicroMsg.CardAdClickAnimation", "other container location in window %s, %s", new Object[] { Integer.valueOf(localObject2[0]), Integer.valueOf(localObject2[1]) });
+        d.this.zbs.zeF.getLocationInWindow((int[])localObject2);
+        ac.i("MicroMsg.CardAdClickAnimation", "other container location in window %s, %s", new Object[] { Integer.valueOf(localObject2[0]), Integer.valueOf(localObject2[1]) });
         localObject1 = new FrameLayout.LayoutParams(-1, -2);
         ((FrameLayout.LayoutParams)localObject1).leftMargin = localObject2[0];
-        ((FrameLayout.LayoutParams)localObject1).rightMargin = (d.this.xOi.getWidth() - ((FrameLayout.LayoutParams)localObject1).leftMargin - d.this.xOC.xRK.getWidth());
+        ((FrameLayout.LayoutParams)localObject1).rightMargin = (d.this.zaY.getWidth() - ((FrameLayout.LayoutParams)localObject1).leftMargin - d.this.zbs.zeF.getWidth());
         ((FrameLayout.LayoutParams)localObject1).topMargin = localObject2[1];
-        ((FrameLayout.LayoutParams)localObject1).bottomMargin = (d.this.xOi.getHeight() - ((FrameLayout.LayoutParams)localObject1).topMargin - d.this.xOC.xRK.getHeight());
-        localObject2 = d.this.xOC.xQv.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject2).width = d.this.xOC.hSH.getWidth();
-        ((ViewGroup.LayoutParams)localObject2).height = (d.this.xOC.hSH.getHeight() + d.this.xOj.topMargin + d.this.xOj.bottomMargin);
-        d.this.xOC.xQv.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ((FrameLayout.LayoutParams)localObject1).bottomMargin = (d.this.zaY.getHeight() - ((FrameLayout.LayoutParams)localObject1).topMargin - d.this.zbs.zeF.getHeight());
+        localObject2 = d.this.zbs.zdl.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject2).width = d.this.zbs.isM.getWidth();
+        ((ViewGroup.LayoutParams)localObject2).height = (d.this.zbs.isM.getHeight() + d.this.zaZ.topMargin + d.this.zaZ.bottomMargin);
+        d.this.zbs.zdl.setLayoutParams((ViewGroup.LayoutParams)localObject2);
         localObject2 = new FrameLayout.LayoutParams(-1, -1);
-        ((FrameLayout.LayoutParams)localObject2).leftMargin = d.this.xOp.leftMargin;
-        ((FrameLayout.LayoutParams)localObject2).rightMargin = d.this.xOp.rightMargin;
-        ((FrameLayout.LayoutParams)localObject2).topMargin = d.this.xOp.topMargin;
-        ((FrameLayout.LayoutParams)localObject2).bottomMargin = d.this.xOp.bottomMargin;
-        d.this.xOC.xQv.removeView(d.this.xOC.hSH);
-        d.this.xOi.addView(d.this.xOC.hSH, (ViewGroup.LayoutParams)localObject2);
-        d.this.xOC.hSH.removeView(d.this.xOC.xRJ);
-        d.this.xOi.addView(d.this.xOC.xRJ, paramAnonymousAnimator);
-        d.this.xOC.hSH.removeView(d.this.xOC.xRK);
-        d.this.xOi.addView(d.this.xOC.xRK, (ViewGroup.LayoutParams)localObject1);
+        ((FrameLayout.LayoutParams)localObject2).leftMargin = d.this.zbf.leftMargin;
+        ((FrameLayout.LayoutParams)localObject2).rightMargin = d.this.zbf.rightMargin;
+        ((FrameLayout.LayoutParams)localObject2).topMargin = d.this.zbf.topMargin;
+        ((FrameLayout.LayoutParams)localObject2).bottomMargin = d.this.zbf.bottomMargin;
+        d.this.zbs.zdl.removeView(d.this.zbs.isM);
+        d.this.zaY.addView(d.this.zbs.isM, (ViewGroup.LayoutParams)localObject2);
+        d.this.zbs.isM.removeView(d.this.zbs.zeE);
+        d.this.zaY.addView(d.this.zbs.zeE, paramAnonymousAnimator);
+        d.this.zbs.isM.removeView(d.this.zbs.zeF);
+        d.this.zaY.addView(d.this.zbs.zeF, (ViewGroup.LayoutParams)localObject1);
         AppMethodBeat.o(99957);
       }
     });
-    this.xOh = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.xOh.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.zaX = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    this.zaX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(99958);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        d.this.xOC.xRK.setAlpha(f);
+        d.this.zbs.zeF.setAlpha(f);
         AppMethodBeat.o(99958);
       }
     });
-    this.xOh.setDuration(100L);
-    this.xOj = ((LinearLayout.LayoutParams)this.xOC.hSH.getLayoutParams());
-    this.xOk = ((LinearLayout.LayoutParams)this.xOC.xRJ.getLayoutParams());
-    this.xOl = ((LinearLayout.LayoutParams)this.xOC.xRK.getLayoutParams());
-    this.vWT = new AnimatorSet();
-    this.vWT.playTogether(new Animator[] { this.xOg, this.xOh });
-    this.xOi = ((FrameLayout)paramMMActivity.getBodyView().getParent());
-    this.vWT.addListener(new AnimatorListenerAdapter()
+    this.zaX.setDuration(100L);
+    this.zaZ = ((LinearLayout.LayoutParams)this.zbs.isM.getLayoutParams());
+    this.zba = ((LinearLayout.LayoutParams)this.zbs.zeE.getLayoutParams());
+    this.zbb = ((LinearLayout.LayoutParams)this.zbs.zeF.getLayoutParams());
+    this.xhG = new AnimatorSet();
+    this.xhG.playTogether(new Animator[] { this.zaW, this.zaX });
+    this.zaY = ((FrameLayout)paramMMActivity.getBodyView().getParent());
+    this.xhG.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99960);
-        ad.i("MicroMsg.CardAdClickAnimation", "onAnimation end");
-        ((ViewGroup)d.this.xOC.hSH.getParent()).removeView(d.this.xOC.hSH);
-        ((ViewGroup)d.this.xOC.xRJ.getParent()).removeView(d.this.xOC.xRJ);
-        ((ViewGroup)d.this.xOC.xRK.getParent()).removeView(d.this.xOC.xRK);
-        d.this.xOC.xQv.addView(d.this.xOC.hSH, d.this.xOj);
-        d.this.xOC.hSH.addView(d.this.xOC.xRJ, d.this.xOk);
-        d.this.xOC.hSH.addView(d.this.xOC.xRK, d.this.xOl);
-        d.this.xOC.xRJ.setScaleX(1.0F);
-        d.this.xOC.xRJ.setScaleY(1.0F);
-        d.this.xOC.xRJ.setAlpha(1.0F);
-        d.this.xOC.xRK.setAlpha(1.0F);
-        if (d.this.xOe != null) {
-          d.this.xOe.onAnimationEnd();
+        ac.i("MicroMsg.CardAdClickAnimation", "onAnimation end");
+        ((ViewGroup)d.this.zbs.isM.getParent()).removeView(d.this.zbs.isM);
+        ((ViewGroup)d.this.zbs.zeE.getParent()).removeView(d.this.zbs.zeE);
+        ((ViewGroup)d.this.zbs.zeF.getParent()).removeView(d.this.zbs.zeF);
+        d.this.zbs.zdl.addView(d.this.zbs.isM, d.this.zaZ);
+        d.this.zbs.isM.addView(d.this.zbs.zeE, d.this.zba);
+        d.this.zbs.isM.addView(d.this.zbs.zeF, d.this.zbb);
+        d.this.zbs.zeE.setScaleX(1.0F);
+        d.this.zbs.zeE.setScaleY(1.0F);
+        d.this.zbs.zeE.setAlpha(1.0F);
+        d.this.zbs.zeF.setAlpha(1.0F);
+        if (d.this.zaU != null) {
+          d.this.zaU.onAnimationEnd();
         }
-        d.this.xOC.fUH = false;
+        d.this.zbs.fYC = false;
         AppMethodBeat.o(99960);
       }
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99959);
-        ad.i("MicroMsg.CardAdClickAnimation", "onAnimation start");
+        ac.i("MicroMsg.CardAdClickAnimation", "onAnimation start");
         AppMethodBeat.o(99959);
       }
     });
     AppMethodBeat.o(99961);
   }
   
-  public final void ts(long paramLong)
+  public final void xV(long paramLong)
   {
     AppMethodBeat.i(99962);
-    if (!this.vWT.isStarted())
+    if (!this.xhG.isStarted())
     {
-      this.vWT.setStartDelay(paramLong);
-      this.vWT.start();
+      this.xhG.setStartDelay(paramLong);
+      this.xhG.start();
     }
     AppMethodBeat.o(99962);
   }

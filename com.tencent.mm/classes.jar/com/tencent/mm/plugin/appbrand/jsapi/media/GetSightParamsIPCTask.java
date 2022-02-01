@@ -8,26 +8,26 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "()V", "invoke", "data", "Companion", "TaskParams", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "()V", "invoke", "data", "Companion", "TaskParams", "plugin-appbrand-integration_release"})
 public final class GetSightParamsIPCTask
   implements com.tencent.mm.ipcinvoker.k<TaskParams, SightParams>
 {
-  public static final a jWo;
+  public static final a kxa;
   
   static
   {
     AppMethodBeat.i(50551);
-    jWo = new a((byte)0);
+    kxa = new a((byte)0);
     AppMethodBeat.o(50551);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Landroid/os/Parcelable;", "in", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "sightMode", "", "maxDuration", "isFront", "", "(IIZ)V", "()Z", "getMaxDuration", "()I", "getSightMode", "component1", "component2", "component3", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "", "writeToParcel", "", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Landroid/os/Parcelable;", "in", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "sightMode", "", "maxDuration", "isFront", "", "(IIZ)V", "()Z", "getMaxDuration", "()I", "getSightMode", "component1", "component2", "component3", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "", "writeToParcel", "", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   public static final class TaskParams
     implements Parcelable
   {
     public static final a CREATOR;
     final boolean isFront;
-    final int jWp;
+    final int kxb;
     final int maxDuration;
     
     static
@@ -39,7 +39,7 @@ public final class GetSightParamsIPCTask
     
     public TaskParams(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      this.jWp = paramInt1;
+      this.kxb = paramInt1;
       this.maxDuration = paramInt2;
       this.isFront = paramBoolean;
     }
@@ -58,7 +58,7 @@ public final class GetSightParamsIPCTask
         if ((paramObject instanceof TaskParams))
         {
           paramObject = (TaskParams)paramObject;
-          if ((this.jWp != paramObject.jWp) || (this.maxDuration != paramObject.maxDuration) || (this.isFront != paramObject.isFront)) {}
+          if ((this.kxb != paramObject.kxb) || (this.maxDuration != paramObject.maxDuration) || (this.isFront != paramObject.isFront)) {}
         }
       }
       else {
@@ -75,7 +75,7 @@ public final class GetSightParamsIPCTask
     public final String toString()
     {
       AppMethodBeat.i(50549);
-      String str = "TaskParams(sightMode=" + this.jWp + ", maxDuration=" + this.maxDuration + ", isFront=" + this.isFront + ")";
+      String str = "TaskParams(sightMode=" + this.kxb + ", maxDuration=" + this.maxDuration + ", isFront=" + this.isFront + ")";
       AppMethodBeat.o(50549);
       return str;
     }
@@ -84,7 +84,7 @@ public final class GetSightParamsIPCTask
     {
       AppMethodBeat.i(50546);
       d.g.b.k.h(paramParcel, "dest");
-      paramParcel.writeInt(this.jWp);
+      paramParcel.writeInt(this.kxb);
       paramParcel.writeInt(this.maxDuration);
       if (this.isFront) {}
       for (byte b = 1;; b = 0)
@@ -95,13 +95,13 @@ public final class GetSightParamsIPCTask
       }
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "plugin-appbrand-integration_release"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "plugin-appbrand-integration_release"})
     public static final class a
       implements Parcelable.Creator<GetSightParamsIPCTask.TaskParams>
     {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$Companion;", "", "()V", "getSightParams", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "sightMode", "", "maxDuration", "isFront", "", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$Companion;", "", "()V", "getSightParams", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "sightMode", "", "maxDuration", "isFront", "", "plugin-appbrand-integration_release"})
   public static final class a
   {
     public static SightParams o(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -117,7 +117,7 @@ public final class GetSightParamsIPCTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.GetSightParamsIPCTask
  * JD-Core Version:    0.7.0.1
  */

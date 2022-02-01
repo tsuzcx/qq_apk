@@ -6,8 +6,8 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class j$a
   implements a
@@ -16,7 +16,7 @@ final class j$a
   {
     int i = 0;
     AppMethodBeat.i(44196);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(44196);
       return false;
@@ -45,7 +45,7 @@ final class j$a
         break;
       }
       break label63;
-      aj.getContext().getSharedPreferences("wcwebview", g.XN()).edit().putBoolean("m_bEnableLocalDebug", true).commit();
+      ai.getContext().getSharedPreferences("wcwebview", g.YK()).edit().putBoolean("m_bEnableLocalDebug", true).commit();
     }
   }
 }

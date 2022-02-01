@@ -10,7 +10,7 @@ public class GameFloatLayerInfo
 {
   public static final Parcelable.Creator<GameFloatLayerInfo> CREATOR;
   public int orientation;
-  public boolean rOL;
+  public boolean sWB;
   public String url;
   
   static
@@ -22,20 +22,20 @@ public class GameFloatLayerInfo
   
   public GameFloatLayerInfo()
   {
-    this.rOL = false;
+    this.sWB = false;
     this.orientation = -1;
   }
   
   private GameFloatLayerInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(82974);
-    this.rOL = false;
+    this.sWB = false;
     this.orientation = -1;
     this.url = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.rOL = bool;
+      this.sWB = bool;
       this.orientation = paramParcel.readInt();
       AppMethodBeat.o(82974);
       return;
@@ -52,7 +52,7 @@ public class GameFloatLayerInfo
   {
     AppMethodBeat.i(82973);
     paramParcel.writeString(this.url);
-    if (this.rOL) {}
+    if (this.sWB) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

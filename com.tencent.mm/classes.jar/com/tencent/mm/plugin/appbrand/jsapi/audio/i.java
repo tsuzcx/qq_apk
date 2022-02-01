@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.g.b;
 import com.tencent.mm.plugin.appbrand.g.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 

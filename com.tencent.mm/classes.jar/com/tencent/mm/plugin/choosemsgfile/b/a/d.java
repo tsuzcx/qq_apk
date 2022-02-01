@@ -6,94 +6,94 @@ import com.tencent.mm.choosemsgfile.compat.MsgFile;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.choosemsgfile.b.b.e;
 import com.tencent.mm.plugin.choosemsgfile.b.b.j;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import com.tencent.mm.vending.e.b;
 
 public final class d
   extends c
 {
-  private int LZ;
-  private int anj;
-  private av cbR;
+  private int MW;
+  private int aoe;
+  private au bYO;
   
   public d(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, b paramb)
   {
     super(parama, parama1, paramb);
     AppMethodBeat.i(123229);
-    this.LZ = 0;
-    this.anj = parama.bNy();
+    this.MW = 0;
+    this.aoe = parama.bUJ();
     AppMethodBeat.o(123229);
   }
   
-  private void AI()
+  private void Am()
   {
     AppMethodBeat.i(123232);
-    if (bNv())
+    if (bUG())
     {
       MsgFile localMsgFile = new MsgFile();
-      localMsgFile.fileSize = this.nLs.bNy();
+      localMsgFile.fileSize = this.oos.bUJ();
       localMsgFile.filePath = "only for test";
-      localMsgFile.fileName = (this.nLs.getFileName() + "." + localMsgFile.fyk);
+      localMsgFile.fileName = (this.oos.getFileName() + "." + localMsgFile.fBR);
       localMsgFile.type = "file";
-      localMsgFile.fyk = this.nLs.bNx();
-      localMsgFile.timeStamp = this.nLs.getTimeStamp();
+      localMsgFile.fBR = this.oos.bUI();
+      localMsgFile.timeStamp = this.oos.getTimeStamp();
       b(localMsgFile);
       AppMethodBeat.o(123232);
       return;
     }
-    bNt();
+    bUE();
     AppMethodBeat.o(123232);
   }
   
-  private boolean bNu()
+  private boolean bUF()
   {
-    if ((this.nLs instanceof j)) {
-      return ((j)this.nLs).nLQ;
+    if ((this.oos instanceof j)) {
+      return ((j)this.oos).ooQ;
     }
-    if ((this.nLs instanceof e)) {
-      return ((e)this.nLs).nLQ;
+    if ((this.oos instanceof e)) {
+      return ((e)this.oos).ooQ;
     }
     return false;
   }
   
-  private boolean bNv()
+  private boolean bUG()
   {
-    if ((this.nLs instanceof j)) {
-      return ((j)this.nLs).nLS;
+    if ((this.oos instanceof j)) {
+      return ((j)this.oos).ooS;
     }
-    if ((this.nLs instanceof e)) {
-      return ((e)this.nLs).nLS;
+    if ((this.oos instanceof e)) {
+      return ((e)this.oos).ooS;
     }
     return false;
   }
   
-  protected final boolean bNr()
+  protected final boolean bUC()
   {
     AppMethodBeat.i(123230);
-    if (bNu()) {
-      AI();
+    if (bUF()) {
+      Am();
     }
-    boolean bool = bNu();
+    boolean bool = bUF();
     AppMethodBeat.o(123230);
     return bool;
   }
   
-  protected final void biB()
+  protected final void bpv()
   {
     AppMethodBeat.i(123231);
     boolean bool;
-    av localav;
+    au localau;
     long l;
-    if ((this.nLs instanceof j))
+    if ((this.oos instanceof j))
     {
-      bool = ((j)this.nLs).nLR;
+      bool = ((j)this.oos).ooR;
       if (!bool) {
         break label166;
       }
-      if (this.cbR == null) {
-        this.cbR = new av(g.afE().EUN.getLooper(), new av.a()
+      if (this.bYO == null) {
+        this.bYO = new au(g.agU().GrZ.getLooper(), new au.a()
         {
           public final boolean onTimerExpired()
           {
@@ -102,7 +102,7 @@ public final class d
             if (d.a(d.this) > d.b(d.this)) {
               d.a(d.this, d.b(d.this));
             }
-            d.this.eQ(d.a(d.this), d.b(d.this));
+            d.this.eT(d.a(d.this), d.b(d.this));
             if (d.a(d.this) == d.b(d.this))
             {
               d.c(d.this);
@@ -114,50 +114,50 @@ public final class d
           }
         }, true);
       }
-      localav = this.cbR;
-      if (!(this.nLs instanceof j)) {
+      localau = this.bYO;
+      if (!(this.oos instanceof j)) {
         break label135;
       }
-      l = ((j)this.nLs).nLT;
+      l = ((j)this.oos).ooT;
     }
     for (;;)
     {
-      localav.av(l, l);
+      localau.au(l, l);
       AppMethodBeat.o(123231);
       return;
-      if ((this.nLs instanceof e))
+      if ((this.oos instanceof e))
       {
-        bool = ((e)this.nLs).nLR;
+        bool = ((e)this.oos).ooR;
         break;
       }
       bool = false;
       break;
       label135:
-      if ((this.nLs instanceof e)) {
-        l = ((e)this.nLs).nLT;
+      if ((this.oos instanceof e)) {
+        l = ((e)this.oos).ooT;
       } else {
         l = 1000L;
       }
     }
     label166:
-    AI();
+    Am();
     AppMethodBeat.o(123231);
   }
   
   protected final boolean checkValid()
   {
-    if ((this.nLs instanceof j)) {
-      return ((j)this.nLs).nLP;
+    if ((this.oos instanceof j)) {
+      return ((j)this.oos).ooP;
     }
-    if ((this.nLs instanceof e)) {
-      return ((e)this.nLs).nLP;
+    if ((this.oos instanceof e)) {
+      return ((e)this.oos).ooP;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.d
  * JD-Core Version:    0.7.0.1
  */

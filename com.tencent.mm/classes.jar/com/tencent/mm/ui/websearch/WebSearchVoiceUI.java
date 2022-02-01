@@ -18,9 +18,9 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.websearch.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.statusbar.b;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 
@@ -28,11 +28,11 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class WebSearchVoiceUI
   extends MMActivity
 {
-  private b Hlm = null;
-  private com.tencent.mm.pluginsdk.ui.websearch.a Hyo;
-  private View Hyp;
-  private int Hyq;
-  private String dtw;
+  private b ILH = null;
+  private com.tencent.mm.pluginsdk.ui.websearch.a IYL;
+  private View IYM;
+  private int IYN;
+  private String drf;
   private int scene;
   private String sessionId;
   
@@ -68,10 +68,10 @@ public class WebSearchVoiceUI
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.Hlm = new b(this);
-      this.Hlm.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.Hlm);
-      getSwipeBackLayout().setContentView(this.Hlm);
+      this.ILH = new b(this);
+      this.ILH.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.ILH);
+      getSwipeBackLayout().setContentView(this.ILH);
     }
     com.tencent.mm.ui.statusbar.a.e(getContentView(), getStatusBarColor(), true);
     AppMethodBeat.o(39589);
@@ -110,18 +110,18 @@ public class WebSearchVoiceUI
     if (getIntent() != null)
     {
       this.sessionId = getIntent().getStringExtra("sessionId");
-      this.dtw = getIntent().getStringExtra("subSessionId");
+      this.drf = getIntent().getStringExtra("subSessionId");
       this.scene = getIntent().getIntExtra("key_scene", -1);
-      this.Hyq = getIntent().getIntExtra("key_is_nav_voice", 0);
+      this.IYN = getIntent().getIntExtra("key_is_nav_voice", 0);
     }
-    this.Hyp = findViewById(2131306548);
+    this.IYM = findViewById(2131306548);
     this.mController.hideTitleView();
-    if (this.Hyo == null)
+    if (this.IYL == null)
     {
-      this.Hyo = new com.tencent.mm.pluginsdk.ui.websearch.a(getContext());
-      this.Hyo.setCallback(new a.a()
+      this.IYL = new com.tencent.mm.pluginsdk.ui.websearch.a(getContext());
+      this.IYL.setCallback(new a.a()
       {
-        public final void aBG(String paramAnonymousString)
+        public final void aGY(String paramAnonymousString)
         {
           AppMethodBeat.i(39586);
           String str = paramAnonymousString;
@@ -135,53 +135,53 @@ public class WebSearchVoiceUI
           paramAnonymousString = new Intent();
           paramAnonymousString.putExtra("text", str);
           WebSearchVoiceUI.this.setResult(0, paramAnonymousString);
-          h.vKh.f(15178, new Object[] { Integer.valueOf(3), Long.valueOf(System.currentTimeMillis()), str, WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          h.wUl.f(15178, new Object[] { Integer.valueOf(3), Long.valueOf(System.currentTimeMillis()), str, WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           WebSearchVoiceUI.this.finish();
           AppMethodBeat.o(39586);
         }
         
-        public final void exM()
+        public final void eNg()
         {
           AppMethodBeat.i(39585);
           WebSearchVoiceUI.this.setResult(0);
-          h.vKh.f(15178, new Object[] { Integer.valueOf(4), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+          h.wUl.f(15178, new Object[] { Integer.valueOf(4), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           WebSearchVoiceUI.this.finish();
           AppMethodBeat.o(39585);
         }
         
-        public final void tY(boolean paramAnonymousBoolean)
+        public final void uZ(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(39587);
           if (paramAnonymousBoolean) {
-            h.vKh.f(15178, new Object[] { Integer.valueOf(2), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
+            h.wUl.f(15178, new Object[] { Integer.valueOf(2), Long.valueOf(System.currentTimeMillis()), "", WebSearchVoiceUI.a(WebSearchVoiceUI.this), WebSearchVoiceUI.b(WebSearchVoiceUI.this), Integer.valueOf(WebSearchVoiceUI.c(WebSearchVoiceUI.this)), Integer.valueOf(WebSearchVoiceUI.d(WebSearchVoiceUI.this)) });
           }
           AppMethodBeat.o(39587);
         }
       });
     }
-    this.Hyo.eAb();
-    com.tencent.mm.pluginsdk.ui.websearch.a locala = this.Hyo;
-    ad.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(locala.CaE), Boolean.valueOf(locala.Chv) });
-    if (locala.Chv)
+    this.IYL.ePv();
+    com.tencent.mm.pluginsdk.ui.websearch.a locala = this.IYL;
+    ac.d("MicroMsg.VoiceInputPanel", "refreshHeight DISPLAY_HEIGHT_PORT_IN_PX %s,needRefreshProtHeight %s", new Object[] { Integer.valueOf(locala.DsU), Boolean.valueOf(locala.DzM) });
+    if (locala.DzM)
     {
-      locala.Chv = false;
+      locala.DzM = false;
       View localView = locala.findViewById(2131306495);
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      int i = locala.CaE;
+      int i = locala.DsU;
       paramBundle = localLayoutParams;
       if (localLayoutParams == null) {
         paramBundle = new LinearLayout.LayoutParams(-1, i);
       }
       paramBundle.height = i;
       localView.setLayoutParams(paramBundle);
-      locala.eAd();
+      locala.ePx();
       locala.requestLayout();
     }
-    this.Hyo.setVisibility(0);
+    this.IYL.setVisibility(0);
     paramBundle = new RelativeLayout.LayoutParams(-1, -2);
     paramBundle.addRule(12);
-    ((ViewGroup)findViewById(2131304239)).addView(this.Hyo, paramBundle);
-    h.vKh.f(15178, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()), "", this.sessionId, this.dtw, Integer.valueOf(this.scene), Integer.valueOf(this.Hyq) });
+    ((ViewGroup)findViewById(2131304239)).addView(this.IYL, paramBundle);
+    h.wUl.f(15178, new Object[] { Integer.valueOf(1), Long.valueOf(System.currentTimeMillis()), "", this.sessionId, this.drf, Integer.valueOf(this.scene), Integer.valueOf(this.IYN) });
     AppMethodBeat.o(39588);
   }
   
@@ -189,8 +189,8 @@ public class WebSearchVoiceUI
   {
     AppMethodBeat.i(39593);
     super.onDestroy();
-    if (this.Hyo != null) {
-      this.Hyo.destroy();
+    if (this.IYL != null) {
+      this.IYL.destroy();
     }
     AppMethodBeat.o(39593);
   }

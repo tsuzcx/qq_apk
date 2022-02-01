@@ -2,70 +2,70 @@ package com.tencent.mm.plugin.fts.a.d.a;
 
 import android.content.Context;
 import com.tencent.mm.plugin.fts.a.a.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public abstract class a
 {
   public String info;
-  public int kme;
-  public final int nBH;
-  public int oEL;
+  public int kNw;
+  public final int oeH;
   public int pageType;
+  public int pil;
   public final int position;
-  public h roS;
-  public int rqA;
-  public int rqB;
-  public String rqC;
-  public long rqD;
-  public boolean rqE;
-  public int rqF;
-  public int rqG;
-  public long rqH;
-  public boolean rqI;
-  public boolean rqy;
-  public boolean rqz = true;
+  public h sxM;
+  public int szA;
+  public long szB;
+  public boolean szC;
+  public boolean szs;
+  public boolean szt = true;
+  public int szu;
+  public int szv;
+  public String szw;
+  public long szx;
+  public boolean szy;
+  public int szz;
   
   public a(int paramInt1, int paramInt2)
   {
-    this.nBH = paramInt1;
+    this.oeH = paramInt1;
     this.position = paramInt2;
-    ad.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs) {}
   
-  public String aWt()
+  public abstract a.b adW();
+  
+  public String bdr()
   {
     return "";
   }
   
-  public int aWu()
+  public int bds()
   {
     return 0;
   }
   
-  public abstract a.b acQ();
-  
-  public int cxv()
+  public int cKH()
   {
     return 0;
   }
   
-  public boolean cxw()
+  public boolean cKI()
   {
     return false;
   }
   
-  public int cxx()
+  public int cKJ()
   {
     return 0;
   }
   
-  public final void fI(int paramInt1, int paramInt2)
+  public final void fP(int paramInt1, int paramInt2)
   {
-    this.rqF = paramInt1;
-    this.rqG = paramInt2;
-    this.rqI = true;
+    this.szz = paramInt1;
+    this.szA = paramInt2;
+    this.szC = true;
   }
   
   public String getAppId()
@@ -75,7 +75,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.a.a
  * JD-Core Version:    0.7.0.1
  */

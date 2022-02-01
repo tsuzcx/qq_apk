@@ -4,7 +4,7 @@ import android.graphics.drawable.Drawable;
 
 public abstract interface f
 {
-  public abstract Drawable dZ();
+  public abstract Drawable ek();
   
   public abstract void l(Drawable paramDrawable);
 }

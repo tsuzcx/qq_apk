@@ -10,8 +10,8 @@ import android.view.Window;
 import com.tencent.luggage.h.e;
 import com.tencent.luggage.h.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.BaseActivity;
 import com.tencent.mm.ui.am;
 
@@ -19,7 +19,7 @@ public class BaseLuggageActivity
   extends BaseActivity
   implements e.d
 {
-  private static boolean aJZ(String paramString)
+  private static boolean aPB(String paramString)
   {
     AppMethodBeat.i(176011);
     String str1 = Build.MODEL;
@@ -29,7 +29,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176011);
       return false;
     }
-    if ((lo(str1, paramString)) || (lo(str2, paramString)))
+    if ((lL(str1, paramString)) || (lL(str2, paramString)))
     {
       AppMethodBeat.o(176011);
       return true;
@@ -38,7 +38,7 @@ public class BaseLuggageActivity
     return false;
   }
   
-  private static boolean lo(String paramString1, String paramString2)
+  private static boolean lL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(176010);
     if ((paramString1 == null) || (paramString2 == null))
@@ -46,7 +46,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176010);
       return false;
     }
-    boolean bool = bt.kU(paramString1.toLowerCase(), paramString2.toLowerCase());
+    boolean bool = bs.lr(paramString1.toLowerCase(), paramString2.toLowerCase());
     AppMethodBeat.o(176010);
     return bool;
   }
@@ -69,7 +69,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131598);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    e.az(this).onActivityResult(paramInt1, paramInt2, paramIntent);
+    e.aA(this).onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(131598);
   }
   
@@ -77,7 +77,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131599);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    e.az(this).b(paramInt, paramArrayOfInt);
+    e.aA(this).b(paramInt, paramArrayOfInt);
     AppMethodBeat.o(131599);
   }
   
@@ -94,14 +94,14 @@ public class BaseLuggageActivity
     View localView;
     if (Build.VERSION.SDK_INT >= 26)
     {
-      if ((!aJZ("y83a")) && (!aJZ("y83")) && (!aJZ("v1732a")) && (!aJZ("v1732t"))) {
+      if ((!aPB("y83a")) && (!aPB("y83")) && (!aPB("v1732a")) && (!aPB("v1732t"))) {
         break label100;
       }
       i = 1;
       if (i == 0)
       {
         getWindow().setNavigationBarColor(paramInt);
-        boolean bool = am.XC(paramInt);
+        boolean bool = am.ZN(paramInt);
         localView = getWindow().getDecorView();
         paramInt = localView.getSystemUiVisibility();
         if (!bool) {
@@ -134,7 +134,7 @@ public class BaseLuggageActivity
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
       AppMethodBeat.o(131601);
     }
   }

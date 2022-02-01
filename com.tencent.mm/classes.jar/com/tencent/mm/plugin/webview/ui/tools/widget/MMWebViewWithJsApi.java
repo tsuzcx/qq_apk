@@ -6,14 +6,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.pluginsdk.ui.tools.x;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.ab;
-import com.tencent.xweb.y;
+import com.tencent.xweb.ac;
+import com.tencent.xweb.z;
 
 public class MMWebViewWithJsApi
   extends MMWebView
 {
-  private k BuK;
-  private boolean BuL;
+  private k CMT;
+  private boolean CMU;
   
   public MMWebViewWithJsApi(Context paramContext)
   {
@@ -29,16 +29,16 @@ public class MMWebViewWithJsApi
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(82238);
-    this.BuL = true;
-    feQ();
+    this.CMU = true;
+    fuL();
     getSettings().setJavaScriptEnabled(true);
-    getSettings().fri();
+    getSettings().fJJ();
     setWebChromeClient(new i(this));
     setWebViewClient(new k(this));
     paramContext = getSettings().getUserAgentString();
-    if (!x.aCK(paramContext))
+    if (!x.aIc(paramContext))
     {
-      paramContext = x.bR(getContext(), paramContext);
+      paramContext = x.bS(getContext(), paramContext);
       getSettings().setUserAgentString(paramContext);
     }
     AppMethodBeat.o(82238);
@@ -46,8 +46,8 @@ public class MMWebViewWithJsApi
   
   public f getJsapi()
   {
-    if (this.BuK != null) {
-      return this.BuK.BmE;
+    if (this.CMT != null) {
+      return this.CMT.CEL;
     }
     return null;
   }
@@ -55,10 +55,10 @@ public class MMWebViewWithJsApi
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(82241);
-    if (this.BuK != null)
+    if (this.CMT != null)
     {
-      this.BuK.tD(true);
-      this.BuK.ayh("");
+      this.CMT.uF(true);
+      this.CMT.aDy("");
     }
     super.loadData(paramString1, paramString2, paramString3);
     AppMethodBeat.o(82241);
@@ -67,10 +67,10 @@ public class MMWebViewWithJsApi
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(82242);
-    if (this.BuK != null)
+    if (this.CMT != null)
     {
-      this.BuK.tD(true);
-      this.BuK.ayh("");
+      this.CMT.uF(true);
+      this.CMT.aDy("");
     }
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
     AppMethodBeat.o(82242);
@@ -79,10 +79,10 @@ public class MMWebViewWithJsApi
   public void loadUrl(String paramString)
   {
     AppMethodBeat.i(82243);
-    if (this.BuK != null)
+    if (this.CMT != null)
     {
-      this.BuK.tD(false);
-      if (this.BuK.ayh(paramString)) {}
+      this.CMT.uF(false);
+      if (this.CMT.aDy(paramString)) {}
     }
     else
     {
@@ -95,45 +95,45 @@ public class MMWebViewWithJsApi
   {
     AppMethodBeat.i(82240);
     super.onDetachedFromWindow();
-    if ((this.BuK != null) && (this.BuL)) {
-      this.BuK.cleanup();
+    if ((this.CMT != null) && (this.CMU)) {
+      this.CMT.cleanup();
     }
     AppMethodBeat.o(82240);
   }
   
   public void setCleanOnDetached(boolean paramBoolean)
   {
-    this.BuL = paramBoolean;
+    this.CMU = paramBoolean;
   }
   
-  public void setWebViewClient(ab paramab)
+  public void setWebViewClient(ac paramac)
   {
     AppMethodBeat.i(82239);
-    super.setWebViewClient(paramab);
-    if ((paramab instanceof k))
+    super.setWebViewClient(paramac);
+    if ((paramac instanceof k))
     {
-      this.BuK = ((k)paramab);
+      this.CMT = ((k)paramac);
       AppMethodBeat.o(82239);
       return;
     }
-    this.BuK = null;
+    this.CMT = null;
     AppMethodBeat.o(82239);
   }
   
   public static final class a
   {
-    public static MMWebViewWithJsApi gI(Context paramContext)
+    public static MMWebViewWithJsApi gT(Context paramContext)
     {
-      AppMethodBeat.i(197214);
-      paramContext = gJ(paramContext);
-      AppMethodBeat.o(197214);
+      AppMethodBeat.i(210106);
+      paramContext = gU(paramContext);
+      AppMethodBeat.o(210106);
       return paramContext;
     }
     
-    public static MMWebViewWithJsApi gJ(Context paramContext)
+    public static MMWebViewWithJsApi gU(Context paramContext)
     {
       AppMethodBeat.i(82237);
-      MMWebViewWithJsApi.gH(paramContext);
+      MMWebViewWithJsApi.gS(paramContext);
       paramContext = new MMWebViewWithJsApi(paramContext);
       MMWebViewWithJsApi.b(paramContext);
       AppMethodBeat.o(82237);

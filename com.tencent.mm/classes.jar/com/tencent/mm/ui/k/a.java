@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.h.a;
+import com.tencent.mm.ba.i.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.g.a.f;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,28 +27,28 @@ import org.b.g.d;
 public final class a
   implements b.a
 {
-  org.b.d.i HxA;
-  private boolean HxB;
-  boolean HxC;
-  public b HxD;
-  public a HxE;
-  org.b.e.b Hxy;
-  public org.b.d.i Hxz;
+  org.b.e.b IXV;
+  public org.b.d.i IXW;
+  org.b.d.i IXX;
+  private boolean IXY;
+  boolean IXZ;
+  public a.b IYa;
+  public a.a IYb;
   Context context;
-  ap xkC;
+  ao yxu;
   
   public a()
   {
     AppMethodBeat.i(152862);
-    this.Hxy = null;
-    this.Hxz = null;
-    this.HxA = null;
-    this.HxB = false;
-    this.HxC = false;
-    this.HxD = null;
-    this.HxE = null;
+    this.IXV = null;
+    this.IXW = null;
+    this.IXX = null;
+    this.IXY = false;
+    this.IXZ = false;
+    this.IYa = null;
+    this.IYb = null;
     this.context = null;
-    this.xkC = new ap()
+    this.yxu = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -66,7 +67,7 @@ public final class a
           if (localContext.checkCallingOrSelfPermission("android.permission.INTERNET") == 0) {
             break label125;
           }
-          f.S(localContext, "Error", "Application requires permission to access the Internet");
+          f.R(localContext, "Error", "Application requires permission to access the Internet");
         }
         for (;;)
         {
@@ -74,14 +75,14 @@ public final class a
           {
             paramAnonymousMessage = (a.c)paramAnonymousMessage.obj;
             localObject = a.this;
-            ((a)localObject).HxC = false;
-            if (paramAnonymousMessage == a.c.HxJ)
+            ((a)localObject).IXZ = false;
+            if (paramAnonymousMessage == a.c.IYg)
             {
-              ((a)localObject).HxA = null;
+              ((a)localObject).IXX = null;
               a.a(null);
             }
-            if (((a)localObject).HxE != null) {
-              ((a)localObject).HxE.b(paramAnonymousMessage);
+            if (((a)localObject).IYb != null) {
+              ((a)localObject).IYb.b(paramAnonymousMessage);
             }
           }
           AppMethodBeat.o(152852);
@@ -90,39 +91,39 @@ public final class a
           new b(localContext, (String)localObject, locala).show();
           continue;
           label142:
-          a.this.c(a.c.HxJ);
+          a.this.c(a.c.IYg);
         }
       }
     };
     Object localObject = new org.b.a.a();
-    ((org.b.a.a)localObject).Knr = org.b.a.a.bC(c.a.class);
-    d.mP("XMr2y8FEVEqZBcZ1TU3gLA", "Invalid Api key");
-    ((org.b.a.a)localObject).Kno = "XMr2y8FEVEqZBcZ1TU3gLA";
-    d.mP("kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo", "Invalid Api secret");
-    ((org.b.a.a)localObject).Knp = "kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo";
+    ((org.b.a.a)localObject).Mba = org.b.a.a.bF(c.a.class);
+    d.np("XMr2y8FEVEqZBcZ1TU3gLA", "Invalid Api key");
+    ((org.b.a.a)localObject).MaX = "XMr2y8FEVEqZBcZ1TU3gLA";
+    d.np("kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo", "Invalid Api secret");
+    ((org.b.a.a)localObject).MaY = "kyWwA5vbB6H1NDQFufR9hD5vWGStxhweIbatclCo";
     d.j("wechatapp://sign-in-twitter.wechatapp.com/", "Callback can't be null");
-    ((org.b.a.a)localObject).Knq = "wechatapp://sign-in-twitter.wechatapp.com/";
-    d.j(((org.b.a.a)localObject).Knr, "You must specify a valid api through the provider() method");
-    d.mP(((org.b.a.a)localObject).Kno, "You must provide an api key");
-    d.mP(((org.b.a.a)localObject).Knp, "You must provide an api secret");
-    this.Hxy = ((org.b.a.a)localObject).Knr.a(new org.b.d.a(((org.b.a.a)localObject).Kno, ((org.b.a.a)localObject).Knp, ((org.b.a.a)localObject).Knq, ((org.b.a.a)localObject).Kns, ((org.b.a.a)localObject).scope, ((org.b.a.a)localObject).Knt));
+    ((org.b.a.a)localObject).MaZ = "wechatapp://sign-in-twitter.wechatapp.com/";
+    d.j(((org.b.a.a)localObject).Mba, "You must specify a valid api through the provider() method");
+    d.np(((org.b.a.a)localObject).MaX, "You must provide an api key");
+    d.np(((org.b.a.a)localObject).MaY, "You must provide an api secret");
+    this.IXV = ((org.b.a.a)localObject).Mba.a(new org.b.d.a(((org.b.a.a)localObject).MaX, ((org.b.a.a)localObject).MaY, ((org.b.a.a)localObject).MaZ, ((org.b.a.a)localObject).Mbb, ((org.b.a.a)localObject).scope, ((org.b.a.a)localObject).Mbc));
     String str;
-    if (com.tencent.mm.kernel.g.afz().aeI())
+    if (com.tencent.mm.kernel.g.agP().afY())
     {
-      localObject = (String)com.tencent.mm.kernel.g.afB().afk().get(69377, null);
-      str = (String)com.tencent.mm.kernel.g.afB().afk().get(69378, null);
-      if ((bt.isNullOrNil((String)localObject)) || (bt.isNullOrNil(str))) {
+      localObject = (String)com.tencent.mm.kernel.g.agR().agA().get(69377, null);
+      str = (String)com.tencent.mm.kernel.g.agR().agA().get(69378, null);
+      if ((bs.isNullOrNil((String)localObject)) || (bs.isNullOrNil(str))) {
         localObject = null;
       }
     }
     for (;;)
     {
-      this.Hxz = ((org.b.d.i)localObject);
+      this.IXW = ((org.b.d.i)localObject);
       AppMethodBeat.o(152862);
       return;
       localObject = new org.b.d.i((String)localObject, str);
       continue;
-      ad.e("Twitter", "acchas not ready for restoreTwitterAccessToken");
+      ac.e("Twitter", "acchas not ready for restoreTwitterAccessToken");
       localObject = null;
     }
   }
@@ -130,70 +131,70 @@ public final class a
   static void a(org.b.d.i parami)
   {
     AppMethodBeat.i(152865);
-    aj.getContext().getSharedPreferences(aj.eFD(), 0);
+    ai.getContext().getSharedPreferences(ai.eUX(), 0);
     if (parami == null)
     {
-      com.tencent.mm.kernel.g.afB().afk().set(69377, "");
-      com.tencent.mm.kernel.g.afB().afk().set(69378, "");
+      com.tencent.mm.kernel.g.agR().agA().set(69377, "");
+      com.tencent.mm.kernel.g.agR().agA().set(69378, "");
       AppMethodBeat.o(152865);
       return;
     }
-    com.tencent.mm.kernel.g.afB().afk().set(69377, parami.token);
-    com.tencent.mm.kernel.g.afB().afk().set(69378, parami.DNx);
+    com.tencent.mm.kernel.g.agR().agA().set(69377, parami.token);
+    com.tencent.mm.kernel.g.agR().agA().set(69378, parami.FjO);
     AppMethodBeat.o(152865);
   }
   
-  static void wL(boolean paramBoolean)
+  static void xS(boolean paramBoolean)
   {
     AppMethodBeat.i(152870);
     ArrayList localArrayList = new ArrayList();
     if (paramBoolean) {}
     for (String str = "1";; str = "2")
     {
-      localArrayList.add(new h.a(10251, str));
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new com.tencent.mm.bb.h(localArrayList));
+      localArrayList.add(new i.a(10251, str));
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new com.tencent.mm.ba.i(localArrayList));
       AppMethodBeat.o(152870);
       return;
     }
   }
   
-  public final void a(a parama)
+  public final void a(a.a parama)
   {
     AppMethodBeat.i(152864);
-    if (this.HxC)
+    if (this.IXZ)
     {
       AppMethodBeat.o(152864);
       return;
     }
-    this.HxE = parama;
-    this.HxC = true;
+    this.IYb = parama;
+    this.IXZ = true;
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(152854);
-        Object localObject = a.c.HxI;
-        if (a.this.Hxz == null) {
-          localObject = a.c.HxJ;
+        Object localObject = a.c.IYf;
+        if (a.this.IXW == null) {
+          localObject = a.c.IYg;
         }
         for (;;)
         {
-          localObject = a.this.xkC.obtainMessage(1010, localObject);
-          a.this.xkC.sendMessage((Message)localObject);
+          localObject = a.this.yxu.obtainMessage(1010, localObject);
+          a.this.yxu.sendMessage((Message)localObject);
           AppMethodBeat.o(152854);
           return;
-          c localc1 = new c(j.KnK, "https://api.twitter.com/1.1/account/verify_credentials.json");
-          a.this.Hxy.a(a.this.Hxz, localc1);
+          c localc1 = new c(j.Mbt, "https://api.twitter.com/1.1/account/verify_credentials.json");
+          a.this.IXV.a(a.this.IXW, localc1);
           try
           {
-            if (localc1.fNf().code != 200) {
-              localObject = a.c.HxJ;
+            if (localc1.gfV().code != 200) {
+              localObject = a.c.IYg;
             }
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.Twitter", localException, "request error.", new Object[0]);
-            a.c localc = a.c.HxJ;
+            ac.printErrStackTrace("MicroMsg.Twitter", localException, "request error.", new Object[0]);
+            a.c localc = a.c.IYg;
           }
         }
       }
@@ -201,18 +202,18 @@ public final class a
     AppMethodBeat.o(152864);
   }
   
-  public final void a(b paramb, Context paramContext)
+  public final void a(a.b paramb, Context paramContext)
   {
     AppMethodBeat.i(152863);
-    if (this.HxB)
+    if (this.IXY)
     {
       AppMethodBeat.o(152863);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(583L, 0L, 1L, false);
-    this.HxD = paramb;
+    h.wUl.idkeyStat(583L, 0L, 1L, false);
+    this.IYa = paramb;
     this.context = paramContext;
-    this.HxB = true;
+    this.IXY = true;
     com.tencent.mm.sdk.g.b.c(new Runnable()
     {
       public final void run()
@@ -221,8 +222,8 @@ public final class a
         AppMethodBeat.i(152853);
         try
         {
-          a.this.HxA = a.this.Hxy.fNl();
-          String str = a.this.Hxy.b(a.this.HxA);
+          a.this.IXX = a.this.IXV.ggb();
+          String str = a.this.IXV.b(a.this.IXX);
           localObject = str;
         }
         catch (org.b.b.b localb)
@@ -234,8 +235,8 @@ public final class a
           label48:
           break label48;
         }
-        localObject = a.this.xkC.obtainMessage(1000, localObject);
-        a.this.xkC.sendMessage((Message)localObject);
+        localObject = a.this.yxu.obtainMessage(1000, localObject);
+        a.this.yxu.sendMessage((Message)localObject);
         AppMethodBeat.o(152853);
       }
     }, "Twitter_doOAuth");
@@ -245,52 +246,52 @@ public final class a
   final void c(c paramc)
   {
     AppMethodBeat.i(152866);
-    this.HxB = false;
-    this.HxA = null;
-    if (this.HxD != null) {
-      this.HxD.a(paramc);
+    this.IXY = false;
+    this.IXX = null;
+    if (this.IYa != null) {
+      this.IYa.a(paramc);
     }
     AppMethodBeat.o(152866);
   }
   
-  public final boolean feC()
+  public final boolean fux()
   {
-    return this.Hxz != null;
+    return this.IXW != null;
   }
   
-  public final void feD()
+  public final void fuy()
   {
     AppMethodBeat.i(152868);
-    wL(false);
-    c(c.HxJ);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(583L, 2L, 1L, false);
+    xS(false);
+    c(c.IYg);
+    h.wUl.idkeyStat(583L, 2L, 1L, false);
     AppMethodBeat.o(152868);
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(152869);
-    wL(false);
-    c(c.HxK);
-    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(583L, 3L, 1L, false);
+    xS(false);
+    c(c.IYh);
+    h.wUl.idkeyStat(583L, 3L, 1L, false);
     AppMethodBeat.o(152869);
   }
   
   public final void w(final Bundle paramBundle)
   {
     AppMethodBeat.i(152867);
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
         Object localObject3 = null;
         AppMethodBeat.i(152857);
-        if (a.this.HxA == null)
+        if (a.this.IXX == null)
         {
           AppMethodBeat.o(152857);
           return;
         }
-        a.wL(true);
+        a.xS(true);
         String str = paramBundle.getString("oauth_verifier");
         Object localObject1 = localObject3;
         if (str != null) {
@@ -298,31 +299,31 @@ public final class a
         }
         try
         {
-          localObject1 = a.this.Hxy.a(a.this.HxA, (org.b.d.k)localObject1);
+          localObject1 = a.this.IXV.a(a.this.IXX, (org.b.d.k)localObject1);
           if (localObject1 != null)
           {
-            a.this.Hxz = ((org.b.d.i)localObject1);
-            a.a(a.this.Hxz);
-            new ap(Looper.getMainLooper()).post(new Runnable()
+            a.this.IXW = ((org.b.d.i)localObject1);
+            a.a(a.this.IXW);
+            new ao(Looper.getMainLooper()).post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(152855);
-                a.this.c(a.c.HxI);
-                com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(583L, 1L, 1L, false);
+                a.this.c(a.c.IYf);
+                h.wUl.idkeyStat(583L, 1L, 1L, false);
                 AppMethodBeat.o(152855);
               }
             });
             AppMethodBeat.o(152857);
             return;
           }
-          new ap(Looper.getMainLooper()).post(new Runnable()
+          new ao(Looper.getMainLooper()).post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(152856);
-              a.this.c(a.c.HxJ);
-              com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(583L, 4L, 1L, false);
+              a.this.c(a.c.IYg);
+              h.wUl.idkeyStat(583L, 4L, 1L, false);
               AppMethodBeat.o(152856);
             }
           });
@@ -349,25 +350,15 @@ public final class a
     AppMethodBeat.o(152867);
   }
   
-  public static abstract interface a
-  {
-    public abstract void b(a.c paramc);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a(a.c paramc);
-  }
-  
   public static enum c
   {
     static
     {
       AppMethodBeat.i(152861);
-      HxI = new c("Finished", 0);
-      HxJ = new c("Failed", 1);
-      HxK = new c("Canceled", 2);
-      HxL = new c[] { HxI, HxJ, HxK };
+      IYf = new c("Finished", 0);
+      IYg = new c("Failed", 1);
+      IYh = new c("Canceled", 2);
+      IYi = new c[] { IYf, IYg, IYh };
       AppMethodBeat.o(152861);
     }
     
@@ -376,7 +367,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.k.a
  * JD-Core Version:    0.7.0.1
  */

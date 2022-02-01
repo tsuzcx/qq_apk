@@ -9,25 +9,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.z;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 public class LaunchAAByPersonAmountSelectRow
   extends LinearLayout
 {
-  private ImageView fuj;
-  private WalletFormView icA;
-  private View icB;
-  private TextWatcher icC;
-  private TextView icz;
+  private ImageView fxQ;
+  private TextView gIk;
+  private WalletFormView iCI;
+  private View iCJ;
+  private TextWatcher iCK;
   private String username;
   
   public LaunchAAByPersonAmountSelectRow(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(63580);
-    this.icC = null;
+    this.iCK = null;
     init(paramContext);
     AppMethodBeat.o(63580);
   }
@@ -36,7 +36,7 @@ public class LaunchAAByPersonAmountSelectRow
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(63581);
-    this.icC = null;
+    this.iCK = null;
     init(paramContext);
     AppMethodBeat.o(63581);
   }
@@ -44,31 +44,31 @@ public class LaunchAAByPersonAmountSelectRow
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63582);
-    y.js(paramContext).inflate(2131494546, this, true);
-    this.fuj = ((ImageView)findViewById(2131296996));
-    this.icz = ((TextView)findViewById(2131306252));
-    this.icA = ((WalletFormView)findViewById(2131302444));
-    this.icB = findViewById(2131299154);
+    z.jD(paramContext).inflate(2131494546, this, true);
+    this.fxQ = ((ImageView)findViewById(2131296996));
+    this.gIk = ((TextView)findViewById(2131306252));
+    this.iCI = ((WalletFormView)findViewById(2131302444));
+    this.iCJ = findViewById(2131299154);
     AppMethodBeat.o(63582);
   }
   
   public double getAmount()
   {
     AppMethodBeat.i(63584);
-    String str = this.icA.getText().toString();
-    if ((bt.isNullOrNil(str)) || ("".equals(str)))
+    String str = this.iCI.getText().toString();
+    if ((bs.isNullOrNil(str)) || ("".equals(str)))
     {
       AppMethodBeat.o(63584);
       return 0.0D;
     }
-    double d = bt.getDouble(str, 0.0D);
+    double d = bs.getDouble(str, 0.0D);
     AppMethodBeat.o(63584);
     return d;
   }
   
   public WalletFormView getMoneyEdit()
   {
-    return this.icA;
+    return this.iCI;
   }
   
   public String getUsername()
@@ -79,7 +79,7 @@ public class LaunchAAByPersonAmountSelectRow
   public void setDividerVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(63585);
-    View localView = this.icB;
+    View localView = this.iCJ;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -92,8 +92,8 @@ public class LaunchAAByPersonAmountSelectRow
   public void setTextWatcher(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(63583);
-    this.icC = paramTextWatcher;
-    this.icA.a(paramTextWatcher);
+    this.iCK = paramTextWatcher;
+    this.iCI.a(paramTextWatcher);
     AppMethodBeat.o(63583);
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
 
@@ -16,18 +16,18 @@ final class c
     super(paramContext, paramAppBrandRuntime, paramWxaVersionInfo);
   }
   
-  protected final void bob()
+  protected final void buX()
   {
-    AppMethodBeat.i(196175);
-    super.bob();
+    AppMethodBeat.i(187020);
+    super.buX();
     a(getContext().getString(2131755293), a.n(getContext(), 2131099726), "white", a.n(getContext(), 2131101179));
     setBackgroundResource(2131099726);
-    AppMethodBeat.o(196175);
+    AppMethodBeat.o(187020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.c
  * JD-Core Version:    0.7.0.1
  */

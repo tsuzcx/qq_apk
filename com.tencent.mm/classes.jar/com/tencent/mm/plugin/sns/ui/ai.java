@@ -3,101 +3,101 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.protocal.protobuf.aw;
 import com.tencent.mm.protocal.protobuf.ay;
-import com.tencent.mm.protocal.protobuf.dv;
-import com.tencent.mm.protocal.protobuf.ei;
-import com.tencent.mm.protocal.protobuf.ej;
+import com.tencent.mm.protocal.protobuf.ba;
+import com.tencent.mm.protocal.protobuf.dx;
+import com.tencent.mm.protocal.protobuf.ek;
+import com.tencent.mm.protocal.protobuf.el;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class ai
 {
-  public static int a(Context paramContext, ay paramay)
+  public static int a(Context paramContext, ba paramba)
   {
     AppMethodBeat.i(98140);
-    if (paramay == null)
+    if (paramba == null)
     {
       AppMethodBeat.o(98140);
       return 0;
     }
-    if (paramay.mBH == 6)
+    if (paramba.ndI == 6)
     {
-      if (paramay.Cva == null)
+      if (paramba.DNv == null)
       {
         AppMethodBeat.o(98140);
         return 0;
       }
-      if (paramay.CuY == null)
+      if (paramba.DNt == null)
       {
         AppMethodBeat.o(98140);
         return 0;
       }
-      if (a.hYu.t(paramContext, paramay.CuY.hnC))
+      if (a.iyy.t(paramContext, paramba.DNt.hOf))
       {
-        i = paramay.Cva.Cym;
+        i = paramba.DNv.DQI;
         AppMethodBeat.o(98140);
         return i;
       }
-      i = paramay.Cva.Cyn;
+      i = paramba.DNv.DQJ;
       AppMethodBeat.o(98140);
       return i;
     }
-    int i = paramay.Scene;
+    int i = paramba.Scene;
     AppMethodBeat.o(98140);
     return i;
   }
   
-  public static void a(Context paramContext, bf parambf, ay paramay)
+  public static void a(Context paramContext, bf parambf, ba paramba)
   {
     AppMethodBeat.i(98141);
-    if ((paramay != null) && (paramay.CuY != null))
+    if ((paramba != null) && (paramba.DNt != null))
     {
-      Object localObject = paramay.CuY.hnC;
+      Object localObject = paramba.DNt.hOf;
       boolean bool;
-      if (bt.isNullOrNil((String)localObject))
+      if (bs.isNullOrNil((String)localObject))
       {
         bool = false;
         if (!bool) {
           break label465;
         }
-        parambf.xIR = false;
-        if ((paramay.Cvc == null) || (paramay.Cvd == null)) {
+        parambf.yVH = false;
+        if ((paramba.DNx == null) || (paramba.DNy == null)) {
           break label291;
         }
-        if (!a.hYu.t(paramContext, paramay.CuY.hnC)) {
+        if (!a.iyy.t(paramContext, paramba.DNt.hOf)) {
           break label247;
         }
-        paramContext = paramay.Cvc;
+        paramContext = paramba.DNx;
         label84:
-        localObject = ac.eFu();
+        localObject = ab.eUO();
         if (!((String)localObject).equals("zh_CN")) {
           break label255;
         }
-        paramContext = paramContext.CyA;
+        paramContext = paramContext.DQW;
         label104:
-        switch (paramay.mBH)
+        switch (paramba.ndI)
         {
         default: 
-          parambf.xIR = false;
+          parambf.yVH = false;
         }
       }
       for (;;)
       {
-        if (bt.isNullOrNil(paramContext))
+        if (bs.isNullOrNil(paramContext))
         {
-          ad.e("MicroMsg.OpenActionContent", "text can not load ?");
-          parambf.xIR = false;
+          ac.e("MicroMsg.OpenActionContent", "text can not load ?");
+          parambf.yVH = false;
         }
         AppMethodBeat.o(98141);
         return;
-        localObject = h.j((String)localObject, true, false);
-        if ((localObject == null) || (bt.isNullOrNil(((g)localObject).field_appId)))
+        localObject = h.k((String)localObject, true, false);
+        if ((localObject == null) || (bs.isNullOrNil(((g)localObject).field_appId)))
         {
           bool = false;
           break;
@@ -105,29 +105,29 @@ public final class ai
         if ((((g)localObject).field_appInfoFlag & 0x20) > 0) {}
         for (bool = true;; bool = false)
         {
-          ad.v("MicroMsg.AppInfoLogic", "canShowSNSTail, appid = %s, ret = %b", new Object[] { ((g)localObject).field_appId, Boolean.valueOf(bool) });
+          ac.v("MicroMsg.AppInfoLogic", "canShowSNSTail, appid = %s, ret = %b", new Object[] { ((g)localObject).field_appId, Boolean.valueOf(bool) });
           break;
         }
         label247:
-        paramContext = paramay.Cvd;
+        paramContext = paramba.DNy;
         break label84;
         label255:
         if ((((String)localObject).equals("zh_TW")) || (((String)localObject).equals("zh_HK")))
         {
-          paramContext = paramContext.CyB;
+          paramContext = paramContext.DQX;
           break label104;
         }
-        paramContext = paramContext.Cyz;
+        paramContext = paramContext.DQV;
         break label104;
         label291:
-        if (paramay == null) {
+        if (paramba == null) {
           localObject = "";
         }
         for (;;)
         {
           try
           {
-            if (bt.isNullOrNil((String)localObject)) {
+            if (bs.isNullOrNil((String)localObject)) {
               continue;
             }
             int i = paramContext.getResources().getIdentifier((String)localObject, "string", paramContext.getPackageName());
@@ -140,36 +140,36 @@ public final class ai
           {
             paramContext = "";
           }
-          if (paramay.mBH == 6)
+          if (paramba.ndI == 6)
           {
-            if (paramay.Cvb == null) {
+            if (paramba.DNw == null) {
               localObject = "";
-            } else if (a.hYu.t(paramContext, paramay.CuY.hnC)) {
-              localObject = paramay.Cvb.CyC;
+            } else if (a.iyy.t(paramContext, paramba.DNt.hOf)) {
+              localObject = paramba.DNw.DQY;
             } else {
-              localObject = paramay.Cvb.CyD;
+              localObject = paramba.DNw.DQZ;
             }
           }
           else {
-            localObject = paramay.CuZ;
+            localObject = paramba.DNu;
           }
         }
         break label104;
-        parambf.xIS = paramContext;
-        parambf.xIR = true;
+        parambf.yVI = paramContext;
+        parambf.yVH = true;
         continue;
-        if (paramay.Scene == 1)
+        if (paramba.Scene == 1)
         {
-          parambf.xIS = paramContext;
-          parambf.xIR = true;
+          parambf.yVI = paramContext;
+          parambf.yVH = true;
           continue;
-          parambf.xIS = paramContext;
-          parambf.xIR = true;
+          parambf.yVI = paramContext;
+          parambf.yVH = true;
         }
       }
     }
     label465:
-    parambf.xIR = false;
+    parambf.yVH = false;
     AppMethodBeat.o(98141);
   }
 }

@@ -12,9 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.live.b.a.d;
-import com.tencent.mm.live.b.f;
 import com.tencent.mm.live.view.a.b;
 import d.l;
 import d.o;
@@ -23,86 +22,86 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/view/LiveAfterStateView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "backBtn", "Landroid/widget/ImageView;", "loadingView", "Landroid/widget/ProgressBar;", "onlineCountGroup", "Landroid/view/ViewGroup;", "onlineCountTv", "Landroid/widget/TextView;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "retryTip", "roomCountGroup", "roomCountTv", "subTitleTv", "titleTv", "finish", "", "getLayoutId", "initViews", "loadMembers", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showDataView", "showLoadingView", "showRetryView", "start", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/view/LiveAfterStateView;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "backBtn", "Landroid/widget/ImageView;", "loadingView", "Landroid/widget/ProgressBar;", "onlineCountGroup", "Landroid/view/ViewGroup;", "onlineCountTv", "Landroid/widget/TextView;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "retryTip", "roomCountGroup", "roomCountTv", "subTitleTv", "titleTv", "finish", "", "getLayoutId", "initViews", "loadMembers", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showDataView", "showLoadingView", "showRetryView", "start", "plugin-logic_release"})
 public final class LiveAfterStateView
   extends RelativeLayout
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private TextView Kwd;
-  private ViewGroup Kyh;
-  private ViewGroup Kyi;
-  private TextView Kyj;
-  private TextView Kyk;
-  private TextView Kyl;
-  private final b Kym;
-  private RecyclerView fPw;
-  private ProgressBar fQC;
+  private RecyclerView fTr;
+  private ProgressBar fUx;
+  private TextView gCt;
+  private ViewGroup gEH;
+  private ViewGroup gEI;
+  private TextView gEJ;
+  private TextView gEK;
+  private TextView gEL;
+  private final b gEM;
   
   public LiveAfterStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(203408);
-    AppMethodBeat.o(203408);
+    AppMethodBeat.i(190614);
+    AppMethodBeat.o(190614);
   }
   
   public LiveAfterStateView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(203407);
-    this.Kym = new b();
+    AppMethodBeat.i(190613);
+    this.gEM = new b();
     View.inflate(paramContext, getLayoutId(), (ViewGroup)this);
-    this.Kyh = ((ViewGroup)findViewById(2131307435));
-    this.Kyi = ((ViewGroup)findViewById(2131307441));
-    this.fPw = ((RecyclerView)findViewById(2131307433));
-    this.Kyj = ((TextView)findViewById(2131307439));
-    this.Kyk = ((TextView)findViewById(2131307437));
-    this.Kyl = ((TextView)findViewById(2131307443));
-    this.fQC = ((ProgressBar)findViewById(2131307434));
-    this.Kwd = ((TextView)findViewById(2131307438));
-    paramContext = this.fPw;
+    this.gEH = ((ViewGroup)findViewById(2131307511));
+    this.gEI = ((ViewGroup)findViewById(2131307517));
+    this.fTr = ((RecyclerView)findViewById(2131307509));
+    this.gEJ = ((TextView)findViewById(2131307515));
+    this.gEK = ((TextView)findViewById(2131307513));
+    this.gEL = ((TextView)findViewById(2131307519));
+    this.fUx = ((ProgressBar)findViewById(2131307510));
+    this.gCt = ((TextView)findViewById(2131307514));
+    paramContext = this.fTr;
     if (paramContext != null)
     {
       getContext();
       paramContext.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
     }
-    paramContext = this.fPw;
+    paramContext = this.fTr;
     if (paramContext != null)
     {
-      paramContext.setAdapter((RecyclerView.a)this.Kym);
-      AppMethodBeat.o(203407);
+      paramContext.setAdapter((RecyclerView.a)this.gEM);
+      AppMethodBeat.o(190613);
       return;
     }
-    AppMethodBeat.o(203407);
+    AppMethodBeat.o(190613);
   }
   
   public final int getLayoutId()
   {
-    return 2131496274;
+    return 2131496283;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(203406);
+    AppMethodBeat.i(190612);
     if ((paramn instanceof d))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.fQC;
+        paramString = this.fUx;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.Kwd;
+        paramString = this.gCt;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.fPw;
+        paramString = this.fTr;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = f.rGw;
-        paramString = f.eND();
-        paramn = f.rGw;
-        paramString = (o)paramString.get(f.eNB());
+        paramString = com.tencent.mm.live.b.g.guG;
+        paramString = com.tencent.mm.live.b.g.akC();
+        paramn = com.tencent.mm.live.b.g.guG;
+        paramString = (o)paramString.get(com.tencent.mm.live.b.g.akA());
         if (paramString != null) {}
         for (paramString = (ArrayList)paramString.first;; paramString = null)
         {
@@ -115,33 +114,33 @@ public final class LiveAfterStateView
             paramn.add(new com.tencent.mm.live.view.a.g((String)paramString.next()));
           }
         }
-        this.Kym.dx((List)paramn);
-        this.Kym.notifyDataSetChanged();
-        AppMethodBeat.o(203406);
+        this.gEM.Z((List)paramn);
+        this.gEM.notifyDataSetChanged();
+        AppMethodBeat.o(190612);
         return;
       }
-      paramString = this.fQC;
+      paramString = this.fUx;
       if (paramString != null) {
         paramString.setVisibility(8);
       }
-      paramString = this.Kwd;
+      paramString = this.gCt;
       if (paramString != null) {
         paramString.setVisibility(0);
       }
-      paramString = this.fPw;
+      paramString = this.fTr;
       if (paramString != null)
       {
         paramString.setVisibility(8);
-        AppMethodBeat.o(203406);
+        AppMethodBeat.o(190612);
         return;
       }
     }
-    AppMethodBeat.o(203406);
+    AppMethodBeat.o(190612);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.view.LiveAfterStateView
  * JD-Core Version:    0.7.0.1
  */

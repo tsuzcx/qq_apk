@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.topstory.ui.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.c.c;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.protocal.protobuf.dcy;
-import com.tencent.mm.protocal.protobuf.dda;
-import com.tencent.mm.protocal.protobuf.ddb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.din;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.IOException;
 import java.util.LinkedList;
 
 public final class a
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private static com.tencent.mm.plugin.ball.c.f jpa;
+  private static com.tencent.mm.plugin.ball.c.f jPm;
   
   static
   {
     AppMethodBeat.i(125904);
-    jpa = new com.tencent.mm.plugin.ball.c.g()
+    jPm = new com.tencent.mm.plugin.ball.c.g()
     {
       public final void c(BallInfo paramAnonymousBallInfo)
       {
@@ -40,89 +40,89 @@ public final class a
     super(paramf);
   }
   
-  public static void aWo()
+  public static void bdm()
   {
     AppMethodBeat.i(125900);
     if (com.tencent.mm.kernel.g.ab(c.class) != null) {
-      ((c)com.tencent.mm.kernel.g.ab(c.class)).a(8, jpa);
+      ((c)com.tencent.mm.kernel.g.ab(c.class)).a(8, jPm);
     }
     AppMethodBeat.o(125900);
   }
   
-  public static void aWp()
+  public static void bdn()
   {
     AppMethodBeat.i(125901);
     if (com.tencent.mm.kernel.g.ab(c.class) != null) {
-      ((c)com.tencent.mm.kernel.g.ab(c.class)).b(8, jpa);
+      ((c)com.tencent.mm.kernel.g.ab(c.class)).b(8, jPm);
     }
     AppMethodBeat.o(125901);
   }
   
-  public final void Z(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(125899);
-    super.Z(paramInt, paramString);
-    bzz().mDz = 7;
-    AppMethodBeat.o(125899);
-  }
-  
-  public final void a(dcy paramdcy, ddb paramddb)
+  public final void a(dil paramdil, dio paramdio)
   {
     AppMethodBeat.i(125902);
-    ad.i("MicroMsg.TopStory.TopStoryFloatBallHelper", "updateFloatBallData contextId:%s videoId:%s", new Object[] { paramdcy.qwV, paramddb.rNP });
-    dda localdda = new dda();
-    localdda.Euu = paramdcy.Euu;
-    localdda.Euv = paramdcy.Euv;
-    if (bt.isNullOrNil(paramdcy.jko)) {
-      localdda.Euw = paramdcy.Euw;
+    ac.i("MicroMsg.TopStory.TopStoryFloatBallHelper", "updateFloatBallData contextId:%s videoId:%s", new Object[] { paramdil.qox, paramdio.sVF });
+    din localdin = new din();
+    localdin.FRv = paramdil.FRv;
+    localdin.FRw = paramdil.FRw;
+    if (bs.isNullOrNil(paramdil.jKB)) {
+      localdin.FRx = paramdil.FRx;
     }
     for (;;)
     {
-      localdda.Eux = paramdcy.Eux;
-      localdda.EuA = paramdcy.EuA;
-      localdda.qwV = paramdcy.qwV;
-      localdda.EuH = paramdcy.EuH;
-      localdda.offset = paramdcy.offset;
-      localdda.Euy = paramdcy.Euy;
-      localdda.scene = paramdcy.scene;
-      localdda.dcm = paramdcy.dcm;
-      localdda.AFX = paramdcy.AFX;
-      localdda.EuL.add(paramddb);
+      localdin.FRy = paramdil.FRy;
+      localdin.FRB = paramdil.FRB;
+      localdin.qox = paramdil.qox;
+      localdin.FRI = paramdil.FRI;
+      localdin.offset = paramdil.offset;
+      localdin.FRz = paramdil.FRz;
+      localdin.scene = paramdil.scene;
+      localdin.cZL = paramdil.cZL;
+      localdin.BYq = paramdil.BYq;
+      localdin.FRM.add(paramdio);
       try
       {
-        OE(paramddb.title);
-        paramdcy = localdda.toByteArray();
-        if (this.mDH != null)
+        SO(paramdio.title);
+        paramdil = localdin.toByteArray();
+        if (this.nfN != null)
         {
-          ad.i("MicroMsg.FloatBallHelper", "updateByteArrayExtra, %s", new Object[] { "key_context" });
-          this.mDH.l("key_context", paramdcy);
-          bzv();
+          ac.i("MicroMsg.FloatBallHelper", "updateByteArrayExtra, %s", new Object[] { "key_context" });
+          this.nfN.l("key_context", paramdil);
+          bGr();
         }
-        bzz().dnC = localdda.Euw;
-        bzz().mDA = paramddb.rNP;
-        bzz().mDy = localdda.scene;
-        ad.d("MicroMsg.TopStory.TopStoryFloatBallHelper", "updateFloatBallData, searchId:%s vid:%s", new Object[] { localdda.Euw, paramddb.rNP });
-        bzv();
+        bGv().dlk = localdin.FRx;
+        bGv().nfH = paramdio.sVF;
+        bGv().nfF = localdin.scene;
+        ac.d("MicroMsg.TopStory.TopStoryFloatBallHelper", "updateFloatBallData, searchId:%s vid:%s", new Object[] { localdin.FRx, paramdio.sVF });
+        bGr();
         AppMethodBeat.o(125902);
         return;
-        localdda.Euw = paramdcy.jko;
+        localdin.FRx = paramdil.jKB;
       }
-      catch (IOException paramdcy)
+      catch (IOException paramdil)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.TopStory.TopStoryFloatBallHelper", paramdcy, "updateFloatBallData exception:%s", new Object[] { paramdcy });
+          ac.printErrStackTrace("MicroMsg.TopStory.TopStoryFloatBallHelper", paramdil, "updateFloatBallData exception:%s", new Object[] { paramdil });
         }
       }
     }
   }
   
-  public final boolean aVX()
+  public final void aa(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(125899);
+    super.aa(paramInt, paramString);
+    bGv().nfG = 7;
+    AppMethodBeat.o(125899);
+  }
+  
+  public final boolean bcV()
   {
     return true;
   }
   
-  public final boolean aWg()
+  public final boolean bde()
   {
     return true;
   }

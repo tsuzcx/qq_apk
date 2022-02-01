@@ -3,39 +3,18 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class gt
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int esJ = "time".hashCode();
-  private static final int ffP = "weSeeUri".hashCode();
+  private static final int eKw = "expireTime".hashCode();
+  private static final int fir = "host".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean esq = true;
-  private boolean ffO = true;
-  public long field_time;
-  public String field_weSeeUri;
-  
-  public static c.a So()
-  {
-    c.a locala = new c.a();
-    locala.EYt = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "weSeeUri";
-    locala.EYv.put("weSeeUri", "TEXT");
-    localStringBuilder.append(" weSeeUri TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "time";
-    locala.EYv.put("time", "LONG");
-    localStringBuilder.append(" time LONG");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
-  }
+  private boolean eKl = true;
+  public long field_expireTime;
+  public String field_host;
+  private boolean fiq = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -50,10 +29,10 @@ public abstract class gt
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ffP != k) {
+      if (fir != k) {
         break label60;
       }
-      this.field_weSeeUri = paramCursor.getString(i);
+      this.field_host = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -61,8 +40,8 @@ public abstract class gt
       break label20;
       break;
       label60:
-      if (esJ == k) {
-        this.field_time = paramCursor.getLong(i);
+      if (eKw == k) {
+        this.field_expireTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,11 +51,11 @@ public abstract class gt
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ffO) {
-      localContentValues.put("weSeeUri", this.field_weSeeUri);
+    if (this.fiq) {
+      localContentValues.put("host", this.field_host);
     }
-    if (this.esq) {
-      localContentValues.put("time", Long.valueOf(this.field_time));
+    if (this.eKl) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

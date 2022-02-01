@@ -6,93 +6,93 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.voiceprint.model.d;
 import com.tencent.mm.plugin.voiceprint.model.j;
 import com.tencent.mm.plugin.voiceprint.model.q.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class VoiceUnLockUI
   extends BaseVoicePrintUI
   implements q.a
 {
-  private com.tencent.mm.plugin.voiceprint.model.q zfe;
+  private com.tencent.mm.plugin.voiceprint.model.q AxK;
   
-  public final void atc(String paramString)
+  public final void ayt(String paramString)
   {
     AppMethodBeat.i(29928);
-    this.zdE = paramString;
-    this.zdZ.dRF();
-    this.zdZ.setTipText(paramString);
-    this.zdZ.cQI();
-    this.zdW.setEnabled(true);
+    this.Awk = paramString;
+    this.AwF.egQ();
+    this.AwF.setTipText(paramString);
+    this.AwF.der();
+    this.AwC.setEnabled(true);
     AppMethodBeat.o(29928);
   }
   
-  protected final void cKf()
+  protected final void cXK()
   {
     AppMethodBeat.i(29927);
     findViewById(2131304179).setVisibility(8);
-    this.zdZ.cQH();
-    this.zdZ.setTitleText(2131764734);
-    this.zdZ.dRG();
-    this.zdW.setEnabled(false);
+    this.AwF.egP();
+    this.AwF.setTitleText(2131764734);
+    this.AwF.egR();
+    this.AwC.setEnabled(false);
     AppMethodBeat.o(29927);
   }
   
-  protected void dRE()
+  protected final void egF()
+  {
+    AppMethodBeat.i(29926);
+    ac.d("MicroMsg.VoiceUnLockUI", "sendVoice, filename:%s", new Object[] { this.AwH });
+    if ((!bs.isNullOrNil(this.AwH)) && (!bs.isNullOrNil(this.AxK.Awk)))
+    {
+      Object localObject = this.AxK;
+      localObject = new j(this.AwH, ((com.tencent.mm.plugin.voiceprint.model.q)localObject).Awl);
+      ((j)localObject).AvU = true;
+      az.agi().a((n)localObject, 0);
+      this.AwC.setEnabled(false);
+      this.AwF.egP();
+    }
+    AppMethodBeat.o(29926);
+  }
+  
+  protected void egO()
   {
     AppMethodBeat.i(29930);
     Object localObject = new Intent();
     ((Intent)localObject).putExtra("kscene_type", 73);
     ((Intent)localObject).setClass(this, VoicePrintFinishUI.class);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/voiceprint/ui/VoiceUnLockUI", "onUnlockSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/voiceprint/ui/VoiceUnLockUI", "onUnlockSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceUnLockUI", "onUnlockSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(29930);
   }
   
-  public final void dRn()
+  public final void egx()
   {
     AppMethodBeat.i(29931);
-    dRu();
+    egE();
     AppMethodBeat.o(29931);
   }
   
-  public final void dRp()
+  public final void egz()
   {
     AppMethodBeat.i(29932);
-    PK(2131764735);
+    RT(2131764735);
     AppMethodBeat.o(29932);
-  }
-  
-  protected final void dRv()
-  {
-    AppMethodBeat.i(29926);
-    ad.d("MicroMsg.VoiceUnLockUI", "sendVoice, filename:%s", new Object[] { this.zeb });
-    if ((!bt.isNullOrNil(this.zeb)) && (!bt.isNullOrNil(this.zfe.zdE)))
-    {
-      Object localObject = this.zfe;
-      localObject = new j(this.zeb, ((com.tencent.mm.plugin.voiceprint.model.q)localObject).zdF);
-      ((j)localObject).zdo = true;
-      az.aeS().a((n)localObject, 0);
-      this.zdW.setEnabled(false);
-      this.zdZ.cQH();
-    }
-    AppMethodBeat.o(29926);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(29925);
     super.onCreate(paramBundle);
-    this.zfe = new com.tencent.mm.plugin.voiceprint.model.q(this);
-    ad.d("MicroMsg.VoicePrintUnLockService", "getVoiceText");
-    az.aeS().a(new d(73, ""), 0);
+    this.AxK = new com.tencent.mm.plugin.voiceprint.model.q(this);
+    ac.d("MicroMsg.VoicePrintUnLockService", "getVoiceText");
+    az.agi().a(new d(73, ""), 0);
     AppMethodBeat.o(29925);
   }
   
@@ -100,10 +100,10 @@ public class VoiceUnLockUI
   {
     AppMethodBeat.i(29933);
     super.onDestroy();
-    com.tencent.mm.plugin.voiceprint.model.q localq = this.zfe;
-    az.aeS().b(611, localq);
-    az.aeS().b(613, localq);
-    localq.zdV = null;
+    com.tencent.mm.plugin.voiceprint.model.q localq = this.AxK;
+    az.agi().b(611, localq);
+    az.agi().b(613, localq);
+    localq.AwB = null;
     AppMethodBeat.o(29933);
   }
   
@@ -113,26 +113,26 @@ public class VoiceUnLockUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void rp(boolean paramBoolean)
+  public final void sq(boolean paramBoolean)
   {
     AppMethodBeat.i(29929);
-    this.zdZ.cQI();
-    this.zdW.setEnabled(true);
+    this.AwF.der();
+    this.AwC.setEnabled(true);
     if (paramBoolean)
     {
-      ad.d("MicroMsg.VoiceUnLockUI", "unlock success");
-      dRE();
+      ac.d("MicroMsg.VoiceUnLockUI", "unlock success");
+      egO();
       AppMethodBeat.o(29929);
       return;
     }
-    this.zdZ.setErr(2131764733);
-    this.zdZ.dRH();
+    this.AwF.setErr(2131764733);
+    this.AwF.egS();
     AppMethodBeat.o(29929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceUnLockUI
  * JD-Core Version:    0.7.0.1
  */

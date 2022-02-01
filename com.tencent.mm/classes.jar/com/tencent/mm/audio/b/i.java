@@ -3,56 +3,58 @@ package com.tencent.mm.audio.b;
 import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.modelvoice.e;
 import com.tencent.mm.modelvoice.f;
 import com.tencent.mm.modelvoice.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
 public final class i
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private static int cZH = 0;
-  public static boolean cZI = true;
-  Queue<String> cZA;
-  Queue<r> cZB;
-  Map<String, f.a> cZC;
-  private boolean cZD;
-  private boolean cZE;
-  public int cZF;
-  private long cZG;
-  f.a cZJ;
-  private av cZK;
+  private static int cXd = 0;
+  public static boolean cXe = true;
+  Queue<String> cWW;
+  Queue<r> cWX;
+  Map<String, f.a> cWY;
+  private boolean cWZ;
+  private boolean cXa;
+  public int cXb;
+  private long cXc;
+  f.a cXf;
+  private au cXg;
   private boolean running;
   
   public i()
   {
     AppMethodBeat.i(148358);
-    this.cZA = new LinkedList();
-    this.cZB = new LinkedList();
-    this.cZC = new HashMap();
-    this.cZD = false;
-    this.cZE = false;
+    this.cWW = new LinkedList();
+    this.cWX = new LinkedList();
+    this.cWY = new HashMap();
+    this.cWZ = false;
+    this.cXa = false;
     this.running = false;
-    this.cZF = 0;
-    this.cZG = 0L;
-    this.cZJ = new f.a();
-    this.cZK = new av(com.tencent.mm.kernel.g.afE().EUN.getLooper(), new av.a()
+    this.cXb = 0;
+    this.cXc = 0L;
+    this.cXf = new f.a();
+    this.cXg = new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(148356);
-        ad.d("MicroMsg.SceneVoiceService", "onTimerExpired");
-        i.h(i.this);
+        ac.i("MicroMsg.SceneVoiceService", "onTimerExpired[%s]", new Object[] { i.this.toString() });
+        i.i(i.this);
         AppMethodBeat.o(148356);
         return false;
       }
@@ -65,127 +67,145 @@ public final class i
         return str;
       }
     }, false);
-    com.tencent.mm.kernel.g.aeS().a(127, this);
-    com.tencent.mm.kernel.g.aeS().a(128, this);
+    ac.i("MicroMsg.SceneVoiceService", "SceneVoiceService %s", new Object[] { bs.eWi().toString() });
+    com.tencent.mm.kernel.g.agi().a(127, this);
+    com.tencent.mm.kernel.g.agi().a(128, this);
     AppMethodBeat.o(148358);
   }
   
-  private void Oy()
+  public static final i EF()
+  {
+    AppMethodBeat.i(210502);
+    i locali = i.a.EJ();
+    AppMethodBeat.o(210502);
+    return locali;
+  }
+  
+  private void Ou()
   {
     AppMethodBeat.i(148360);
-    this.cZC.clear();
-    this.cZA.clear();
-    this.cZB.clear();
-    this.cZE = false;
-    this.cZD = false;
+    this.cWY.clear();
+    this.cWW.clear();
+    this.cWX.clear();
+    this.cXa = false;
+    this.cWZ = false;
     this.running = false;
-    ad.i("MicroMsg.SceneVoiceService", "Finish service use time(ms):" + this.cZJ.XK());
+    ac.i("MicroMsg.SceneVoiceService", "Finish service use time(ms):" + this.cXf.YH() + "[" + toString() + "]");
     AppMethodBeat.o(148360);
   }
   
   public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final n paramn)
   {
     AppMethodBeat.i(148359);
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    String str1 = toString();
+    String str2 = bs.bG(paramString, "");
+    if (paramn != null) {}
+    for (paramString = paramn.toString();; paramString = Integer.valueOf(0))
     {
-      public final void run()
+      ac.i("MicroMsg.SceneVoiceService", "[%s]errType:%s errCode:%s errMsg:%s scene:%s", new Object[] { str1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, paramString });
+      com.tencent.mm.kernel.g.agU().az(new Runnable()
       {
-        AppMethodBeat.i(148352);
-        i.access$008();
-        String str;
-        int i;
-        if (paramn.getType() == 128)
+        public final void run()
         {
-          i.a(i.this);
-          str = ((e)paramn).fileName;
-          i = ((e)paramn).retCode;
-          long l2 = 0L;
-          long l1 = l2;
-          if (str != null)
-          {
-            l1 = l2;
-            if (i.this.cZC.get(str) != null)
-            {
-              l1 = ((f.a)i.this.cZC.get(str)).XK();
-              i.this.cZC.remove(str);
-            }
-          }
-          ad.i("MicroMsg.SceneVoiceService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
-          if ((paramInt1 != 3) || (i == 0)) {
-            break label412;
-          }
-          i.c(i.this);
-          label219:
-          ad.i("MicroMsg.SceneVoiceService", "onSceneEnd  inCnt:" + i.cZH + " stop:" + i.d(i.this) + " running:" + i.e(i.this) + " recving:" + i.f(i.this) + " sending:" + i.g(i.this));
-          if (i.d(i.this) <= 0) {
-            break label431;
-          }
-          i.h(i.this);
-        }
-        for (;;)
-        {
-          i.Oz();
-          AppMethodBeat.o(148352);
-          return;
-          if (paramn.getType() == 127)
+          AppMethodBeat.i(148352);
+          i.aBu();
+          String str;
+          int i;
+          if (paramn.getType() == 128)
           {
             i.b(i.this);
-            str = ((f)paramn).fileName;
-            i = ((f)paramn).retCode;
-            break;
-          }
-          ad.e("MicroMsg.SceneVoiceService", "onSceneEnd Error SceneType:" + paramn.getType());
-          i.Oz();
-          AppMethodBeat.o(148352);
-          return;
-          label412:
-          if (paramInt1 == 0) {
-            break label219;
-          }
-          i.a(i.this, 0);
-          break label219;
-          label431:
-          if ((!i.g(i.this)) && (!i.f(i.this)))
-          {
-            i.i(i.this);
-            ad.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try next delay 3s [%d, %d] [%b]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(i.cZI) });
-            if ((i.cZI) && (paramInt1 == 4)) {
-              com.tencent.mm.kernel.g.afE().m(new Runnable()
+            str = ((e)paramn).fileName;
+            i = ((e)paramn).retCode;
+            long l2 = 0L;
+            long l1 = l2;
+            if (str != null)
+            {
+              l1 = l2;
+              if (i.this.cWY.get(str) != null)
               {
-                public final void run()
+                l1 = ((f.a)i.this.cWY.get(str)).YH();
+                i.this.cWY.remove(str);
+              }
+            }
+            ac.i("MicroMsg.SceneVoiceService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
+            if ((paramInt1 != 3) || (i == 0)) {
+              break label412;
+            }
+            i.c(i.this);
+            label219:
+            ac.i("MicroMsg.SceneVoiceService", "onSceneEnd  inCnt:" + i.cXd + " stop:" + i.d(i.this) + " running:" + i.e(i.this) + " recving:" + i.g(i.this) + " sending:" + i.f(i.this));
+            if (i.d(i.this) <= 0) {
+              break label431;
+            }
+            i.i(i.this);
+          }
+          for (;;)
+          {
+            i.aJX();
+            AppMethodBeat.o(148352);
+            return;
+            if (paramn.getType() == 127)
+            {
+              i.a(i.this);
+              str = ((f)paramn).fileName;
+              i = ((f)paramn).retCode;
+              break;
+            }
+            ac.e("MicroMsg.SceneVoiceService", "onSceneEnd Error SceneType:" + paramn.getType());
+            i.aJX();
+            AppMethodBeat.o(148352);
+            return;
+            label412:
+            if (paramInt1 == 0) {
+              break label219;
+            }
+            i.a(i.this, 0);
+            break label219;
+            label431:
+            if ((!i.f(i.this)) && (!i.g(i.this)))
+            {
+              i.h(i.this);
+              ac.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try next delay 3s [%d, %d] [%b]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(i.cXe) });
+              if ((i.cXe) && (paramInt1 == 4)) {
+                com.tencent.mm.kernel.g.agU().m(new Runnable()
                 {
-                  AppMethodBeat.i(148351);
-                  ad.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try run");
-                  i.this.run();
-                  AppMethodBeat.o(148351);
-                }
-              }, 10000L);
+                  public final void run()
+                  {
+                    AppMethodBeat.i(148351);
+                    ac.i("MicroMsg.SceneVoiceService", "onSceneEnd fin and try run");
+                    i.this.run();
+                    AppMethodBeat.o(148351);
+                  }
+                }, 10000L);
+              }
             }
           }
         }
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(148353);
-        String str = super.toString() + "|onSceneEnd";
-        AppMethodBeat.o(148353);
-        return str;
-      }
-    });
-    AppMethodBeat.o(148359);
+        
+        public final String toString()
+        {
+          AppMethodBeat.i(148353);
+          String str = super.toString() + "|onSceneEnd";
+          AppMethodBeat.o(148353);
+          return str;
+        }
+      });
+      AppMethodBeat.o(148359);
+      return;
+    }
   }
   
   public final void run()
   {
     AppMethodBeat.i(148361);
-    com.tencent.mm.kernel.g.afE().ax(new Runnable()
+    ac.i("MicroMsg.SceneVoiceService", "run() %s", new Object[] { toString() });
+    com.tencent.mm.kernel.g.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(148354);
         long l = System.currentTimeMillis() - i.j(i.this);
-        ad.i("MicroMsg.SceneVoiceService", "Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + " sending:" + i.g(i.this) + " recving:" + i.f(i.this));
+        ac.i("MicroMsg.SceneVoiceService", "Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + " sending:" + i.f(i.this) + " recving:" + i.g(i.this) + "[" + i.this.toString() + "]");
         if (i.e(i.this))
         {
           if (l < 60000L)
@@ -193,14 +213,14 @@ public final class i
             AppMethodBeat.o(148354);
             return;
           }
-          ad.e("MicroMsg.SceneVoiceService", "ERR: Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + i.g(i.this) + " recving:" + i.f(i.this));
+          ac.e("MicroMsg.SceneVoiceService", "ERR: Try Run service runningFlag:" + i.e(i.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + i.f(i.this) + " recving:" + i.g(i.this));
         }
         i.k(i.this);
-        i.b(i.this);
-        i.a(i.this, 3);
         i.a(i.this);
-        i.this.cZJ.fGp = SystemClock.elapsedRealtime();
-        i.l(i.this).av(10L, 10L);
+        i.a(i.this, 3);
+        i.b(i.this);
+        i.this.cXf.fJW = SystemClock.elapsedRealtime();
+        i.l(i.this).au(10L, 10L);
         AppMethodBeat.o(148354);
       }
       
@@ -217,7 +237,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.audio.b.i
  * JD-Core Version:    0.7.0.1
  */

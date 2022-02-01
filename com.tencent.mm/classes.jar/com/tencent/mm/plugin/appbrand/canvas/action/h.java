@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawRectActionArg;
+import com.tencent.mm.plugin.appbrand.z.g;
 import org.json.JSONArray;
 
 public final class h
@@ -14,7 +14,7 @@ public final class h
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     AppMethodBeat.i(144881);
-    paramCanvas.drawRect(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat2 + paramFloat4, paramd.iYL);
+    paramCanvas.drawRect(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat2 + paramFloat4, paramd.jzb);
     AppMethodBeat.o(144881);
     return true;
   }
@@ -46,7 +46,7 @@ public final class h
     return bool;
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144879);
     DrawRectActionArg localDrawRectActionArg = new DrawRectActionArg();
@@ -61,7 +61,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.h
  * JD-Core Version:    0.7.0.1
  */

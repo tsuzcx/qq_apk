@@ -8,19 +8,13 @@ public abstract class en
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSI = "hit".hashCode();
-  private static final int eSJ = "hitTimeMS".hashCode();
-  private static final int elJ = "appId".hashCode();
-  private static final int emV = "version".hashCode();
+  private static final int eJv = "retryCount".hashCode();
+  private static final int eVF = "cardUserId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSG = true;
-  private boolean eSH = true;
-  private boolean els = true;
-  private boolean emQ = true;
-  public String field_appId;
-  public int field_hit;
-  public long field_hitTimeMS;
-  public int field_version;
+  private boolean eJd = true;
+  private boolean eVE = true;
+  public String field_cardUserId;
+  public int field_retryCount;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,23 +29,20 @@ public abstract class en
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
-        break label60;
+      if (eVF != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_cardUserId = paramCursor.getString(i);
+      this.eVE = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (emV == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (eSI == k) {
-        this.field_hit = paramCursor.getInt(i);
-      } else if (eSJ == k) {
-        this.field_hitTimeMS = paramCursor.getLong(i);
+      label65:
+      if (eJv == k) {
+        this.field_retryCount = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,17 +52,11 @@ public abstract class en
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eVE) {
+      localContentValues.put("cardUserId", this.field_cardUserId);
     }
-    if (this.emQ) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
-    }
-    if (this.eSG) {
-      localContentValues.put("hit", Integer.valueOf(this.field_hit));
-    }
-    if (this.eSH) {
-      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
+    if (this.eJd) {
+      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

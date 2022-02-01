@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.uk;
+import com.tencent.mm.g.a.uu;
 import com.tencent.mm.kernel.g;
 
 final class PluginFav$5
@@ -13,10 +13,10 @@ final class PluginFav$5
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(101538);
-    if ((g.afw()) && (g.afz().gcn))
+    if ((g.agM()) && (g.agP().ggT))
     {
-      g.afz();
-      com.tencent.mm.kernel.a.aeC();
+      g.agP();
+      com.tencent.mm.kernel.a.afS();
     }
     AppMethodBeat.o(101538);
   }
@@ -24,11 +24,11 @@ final class PluginFav$5
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(101537);
-    if ((g.afw()) && (g.afz().gcn))
+    if ((g.agM()) && (g.agP().ggT))
     {
-      g.afz();
-      if (!com.tencent.mm.kernel.a.aeC()) {
-        com.tencent.mm.sdk.b.a.ESL.l(new uk());
+      g.agP();
+      if (!com.tencent.mm.kernel.a.afS()) {
+        com.tencent.mm.sdk.b.a.GpY.l(new uu());
       }
     }
     AppMethodBeat.o(101537);
@@ -36,7 +36,7 @@ final class PluginFav$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.PluginFav.5
  * JD-Core Version:    0.7.0.1
  */

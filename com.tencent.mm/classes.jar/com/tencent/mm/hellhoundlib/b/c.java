@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static ThreadLocal<a> fYc;
+  private static ThreadLocal<a> gcJ;
   
   static
   {
     AppMethodBeat.i(183796);
-    fYc = new ThreadLocal();
+    gcJ = new ThreadLocal();
     AppMethodBeat.o(183796);
   }
   
   public static a a(int paramInt, a parama)
   {
     AppMethodBeat.i(183795);
-    parama.bd(Integer.valueOf(paramInt));
+    parama.ba(Integer.valueOf(paramInt));
     AppMethodBeat.o(183795);
     return parama;
   }

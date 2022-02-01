@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.qmessage.a;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h;
 import junit.framework.Assert;
 
@@ -11,19 +11,19 @@ public final class e
   extends k
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS qcontact ( username text  PRIMARY KEY , qq long  , extinfo text  , needupdate int  , extupdateseq long  , imgupdateseq long  , reserved1 int  , reserved2 int  , reserved3 int  , reserved4 int  , reserved5 text  , reserved6 text  , reserved7 text  , reserved8 text  ) " };
-  private h gPa;
+  private h hpA;
   
   public e(h paramh)
   {
-    this.gPa = paramh;
+    this.hpA = paramh;
   }
   
   public final boolean a(d paramd)
   {
     AppMethodBeat.i(27722);
-    paramd.dtM = -1;
+    paramd.drx = -1;
     paramd = paramd.convertTo();
-    if ((int)this.gPa.a("qcontact", "username", paramd) != -1)
+    if ((int)this.hpA.a("qcontact", "username", paramd) != -1)
     {
       AppMethodBeat.o(27722);
       return true;
@@ -45,7 +45,7 @@ public final class e
       AppMethodBeat.o(27723);
       return false;
     }
-    if (this.gPa.update("qcontact", paramd.convertTo(), "username=?", new String[] { paramString }) > 0)
+    if (this.hpA.update("qcontact", paramd.convertTo(), "username=?", new String[] { paramString }) > 0)
     {
       AppMethodBeat.o(27723);
       return true;
@@ -54,12 +54,12 @@ public final class e
     return false;
   }
   
-  public final d akO(String paramString)
+  public final d apN(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(27724);
-    paramString = "select qcontact.username,qcontact.qq,qcontact.extinfo,qcontact.needupdate,qcontact.extupdateseq,qcontact.imgupdateseq,qcontact.reserved1,qcontact.reserved2,qcontact.reserved3,qcontact.reserved4,qcontact.reserved5,qcontact.reserved6,qcontact.reserved7,qcontact.reserved8 from qcontact   where qcontact.username = \"" + bt.aFQ(String.valueOf(paramString)) + "\"";
-    Cursor localCursor = this.gPa.a(paramString, null, 2);
+    paramString = "select qcontact.username,qcontact.qq,qcontact.extinfo,qcontact.needupdate,qcontact.extupdateseq,qcontact.imgupdateseq,qcontact.reserved1,qcontact.reserved2,qcontact.reserved3,qcontact.reserved4,qcontact.reserved5,qcontact.reserved6,qcontact.reserved7,qcontact.reserved8 from qcontact   where qcontact.username = \"" + bs.aLh(String.valueOf(paramString)) + "\"";
+    Cursor localCursor = this.hpA.a(paramString, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(27724);
@@ -78,7 +78,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qmessage.a.e
  * JD-Core Version:    0.7.0.1
  */

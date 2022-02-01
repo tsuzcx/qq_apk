@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class BDStatusInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public long favDBSize_;
   public long mmDBSize_;
@@ -25,22 +25,22 @@ public class BDStatusInfo
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.mmDBSize_);
-      paramVarArgs.aG(2, this.snsDBSize_);
+      paramVarArgs.aO(1, this.mmDBSize_);
+      paramVarArgs.aO(2, this.snsDBSize_);
       paramVarArgs.aR(3, this.mmDBTableCount_);
       paramVarArgs.e(4, 8, this.tableList_);
-      paramVarArgs.aG(5, this.favDBSize_);
+      paramVarArgs.aO(5, this.favDBSize_);
       AppMethodBeat.o(151533);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.q(1, this.mmDBSize_);
-      i = f.a.a.b.b.a.q(2, this.snsDBSize_);
-      int j = f.a.a.b.b.a.bA(3, this.mmDBTableCount_);
+      paramInt = f.a.a.b.b.a.p(1, this.mmDBSize_);
+      i = f.a.a.b.b.a.p(2, this.snsDBSize_);
+      int j = f.a.a.b.b.a.bx(3, this.mmDBTableCount_);
       int k = f.a.a.a.c(4, 8, this.tableList_);
-      int m = f.a.a.b.b.a.q(5, this.favDBSize_);
+      int m = f.a.a.b.b.a.p(5, this.favDBSize_);
       AppMethodBeat.o(151533);
       return paramInt + 0 + i + j + k + m;
     }
@@ -49,9 +49,9 @@ public class BDStatusInfo
       paramVarArgs = (byte[])paramVarArgs[0];
       this.tableList_.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(151533);
@@ -68,19 +68,19 @@ public class BDStatusInfo
         AppMethodBeat.o(151533);
         return -1;
       case 1: 
-        localBDStatusInfo.mmDBSize_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        localBDStatusInfo.mmDBSize_ = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(151533);
         return 0;
       case 2: 
-        localBDStatusInfo.snsDBSize_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        localBDStatusInfo.snsDBSize_ = ((f.a.a.a.a)localObject1).LVo.xG();
         AppMethodBeat.o(151533);
         return 0;
       case 3: 
-        localBDStatusInfo.mmDBTableCount_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        localBDStatusInfo.mmDBTableCount_ = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(151533);
         return 0;
       case 4: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -88,14 +88,14 @@ public class BDStatusInfo
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new TableInfo();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((TableInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (boolean bool = true; bool; bool = ((TableInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localBDStatusInfo.tableList_.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(151533);
         return 0;
       }
-      localBDStatusInfo.favDBSize_ = ((f.a.a.a.a)localObject1).KhF.xT();
+      localBDStatusInfo.favDBSize_ = ((f.a.a.a.a)localObject1).LVo.xG();
       AppMethodBeat.o(151533);
       return 0;
     }
@@ -105,7 +105,7 @@ public class BDStatusInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.BDStatusInfo
  * JD-Core Version:    0.7.0.1
  */

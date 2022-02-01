@@ -14,38 +14,38 @@ import com.tencent.toybrick.g.b.b;
 public final class a
   extends g<a, a>
 {
-  public static final int IGe = 2131493530;
-  private Drawable IGf;
-  private b.b<a> IGg;
-  private b.a<a> IGh;
-  private CharSequence uEo;
+  public static final int Ksp = 2131493530;
+  private Drawable Ksq;
+  private b.b<a> Ksr;
+  private b.a<a> Kss;
+  private CharSequence vNf;
   
   public final int getLayoutResource()
   {
-    return IGe;
+    return Ksp;
   }
   
   public final class a
     extends com.tencent.toybrick.f.a
   {
-    public TextView IGj;
-    public ImageView IGk;
-    public ImageView IGl;
-    public MMSwitchBtn IGm;
+    public TextView Ksu;
+    public ImageView Ksv;
+    public ImageView Ksw;
+    public MMSwitchBtn Ksx;
     public TextView titleTv;
-    public TextView uCm;
+    public TextView vLf;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159933);
       this.titleTv = ((TextView)paramView.findViewById(16908310));
-      this.IGl = ((ImageView)paramView.findViewById(2131301384));
-      this.IGj = ((TextView)paramView.findViewById(2131305740));
-      this.IGk = ((ImageView)paramView.findViewById(2131300957));
-      this.uCm = ((TextView)paramView.findViewById(2131305546));
-      this.IGm = ((MMSwitchBtn)paramView.findViewById(2131298255));
-      this.IGm.setSwitchListener(new MMSwitchBtn.a()
+      this.Ksw = ((ImageView)paramView.findViewById(2131301384));
+      this.Ksu = ((TextView)paramView.findViewById(2131305740));
+      this.Ksv = ((ImageView)paramView.findViewById(2131300957));
+      this.vLf = ((TextView)paramView.findViewById(2131305546));
+      this.Ksx = ((MMSwitchBtn)paramView.findViewById(2131298255));
+      this.Ksx.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean) {}
       });

@@ -8,29 +8,44 @@ public abstract class eg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eSp = "sceneFlag".hashCode();
-  private static final int eSq = "msgTypeFlag".hashCode();
-  private static final int eSr = "msgState".hashCode();
-  private static final int ejR;
-  private static final int elJ = "appId".hashCode();
-  private static final int enM = "packageName".hashCode();
+  private static final int eVa;
+  private static final int eVb;
+  private static final int eVc;
+  private static final int eVd = "seq".hashCode();
+  private static final int enw;
+  private static final int eok;
+  private static final int etG;
+  private static final int exD = "encryptUsername".hashCode();
+  private static final int exx;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSm = true;
-  private boolean eSn = true;
-  private boolean eSo = true;
-  private boolean ejO = true;
-  private boolean els = true;
-  private boolean enq = true;
-  public String field_appId;
-  public int field_msgState;
-  public int field_msgTypeFlag;
-  public String field_packageName;
-  public int field_sceneFlag;
-  public int field_status;
+  private boolean eUW = true;
+  private boolean eUX = true;
+  private boolean eUY = true;
+  private boolean eUZ = true;
+  private boolean enu = true;
+  private boolean eoh = true;
+  private boolean etC = true;
+  private boolean exf = true;
+  private boolean exl = true;
+  public int field_addState;
+  public String field_encryptUsername;
+  public String field_nickname;
+  public String field_oldUsername;
+  public String field_pinyinName;
+  public int field_seq;
+  public int field_showHead;
+  public String field_ticket;
+  public String field_username;
   
   static
   {
-    ejR = "status".hashCode();
+    eVa = "oldUsername".hashCode();
+    enw = "ticket".hashCode();
+    etG = "nickname".hashCode();
+    eVb = "addState".hashCode();
+    exx = "showHead".hashCode();
+    eVc = "pinyinName".hashCode();
+    eok = "username".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -46,28 +61,33 @@ public abstract class eg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elJ != k) {
-        break label65;
+      if (exD != k) {
+        break label60;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.els = true;
+      this.field_encryptUsername = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (enM == k) {
-        this.field_packageName = paramCursor.getString(i);
-      } else if (ejR == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eSp == k) {
-        this.field_sceneFlag = paramCursor.getInt(i);
-      } else if (eSq == k) {
-        this.field_msgTypeFlag = paramCursor.getInt(i);
-      } else if (eSr == k) {
-        this.field_msgState = paramCursor.getInt(i);
+      label60:
+      if (eVa == k) {
+        this.field_oldUsername = paramCursor.getString(i);
+      } else if (enw == k) {
+        this.field_ticket = paramCursor.getString(i);
+      } else if (etG == k) {
+        this.field_nickname = paramCursor.getString(i);
+      } else if (eVb == k) {
+        this.field_addState = paramCursor.getInt(i);
+      } else if (exx == k) {
+        this.field_showHead = paramCursor.getInt(i);
+      } else if (eVc == k) {
+        this.field_pinyinName = paramCursor.getString(i);
+      } else if (eok == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eVd == k) {
+        this.field_seq = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -77,23 +97,32 @@ public abstract class eg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.exl) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.enq) {
-      localContentValues.put("packageName", this.field_packageName);
+    if (this.eUW) {
+      localContentValues.put("oldUsername", this.field_oldUsername);
     }
-    if (this.ejO) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.enu) {
+      localContentValues.put("ticket", this.field_ticket);
     }
-    if (this.eSm) {
-      localContentValues.put("sceneFlag", Integer.valueOf(this.field_sceneFlag));
+    if (this.etC) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.eSn) {
-      localContentValues.put("msgTypeFlag", Integer.valueOf(this.field_msgTypeFlag));
+    if (this.eUX) {
+      localContentValues.put("addState", Integer.valueOf(this.field_addState));
     }
-    if (this.eSo) {
-      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
+    if (this.exf) {
+      localContentValues.put("showHead", Integer.valueOf(this.field_showHead));
+    }
+    if (this.eUY) {
+      localContentValues.put("pinyinName", this.field_pinyinName);
+    }
+    if (this.eoh) {
+      localContentValues.put("username", this.field_username);
+    }
+    if (this.eUZ) {
+      localContentValues.put("seq", Integer.valueOf(this.field_seq));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

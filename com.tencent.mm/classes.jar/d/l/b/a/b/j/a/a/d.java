@@ -18,22 +18,22 @@ public final class d
   static final av a(av paramav, as paramas)
   {
     AppMethodBeat.i(60037);
-    if ((paramas == null) || (paramav.fJZ() == bh.JYC))
+    if ((paramas == null) || (paramav.gcC() == bh.LLV))
     {
       AppMethodBeat.o(60037);
       return paramav;
     }
-    if (paramas.fyC() == paramav.fJZ())
+    if (paramas.fRg() == paramav.gcC())
     {
-      if (paramav.fJY())
+      if (paramav.gcB())
       {
-        paramas = d.l.b.a.b.l.b.JWw;
+        paramas = d.l.b.a.b.l.b.LJP;
         k.g(paramas, "LockBasedStorageManager.NO_LOCKS");
         paramav = (av)new ax((ab)new ae(paramas, (d.g.a.a)new a(paramav)));
         AppMethodBeat.o(60037);
         return paramav;
       }
-      paramav = (av)new ax(paramav.fzr());
+      paramav = (av)new ax(paramav.fRV());
       AppMethodBeat.o(60037);
       return paramav;
     }
@@ -46,7 +46,7 @@ public final class d
   {
     AppMethodBeat.i(60035);
     k.h(paramab, "$this$isCaptured");
-    boolean bool = paramab.fIW() instanceof b;
+    boolean bool = paramab.gbz() instanceof b;
     AppMethodBeat.o(60035);
     return bool;
   }
@@ -86,7 +86,7 @@ public final class d
       av localav = super.O(paramab);
       if (localav != null)
       {
-        paramab = paramab.fIW().fxM();
+        paramab = paramab.gbz().fQq();
         if ((paramab instanceof as)) {
           break label65;
         }
@@ -103,15 +103,15 @@ public final class d
       }
     }
     
-    public final boolean fIY()
+    public final boolean gbB()
     {
-      return this.JRY;
+      return this.LFr;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.a.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,11 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.map.tools.Callback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 
 public class URLNetImpl
   extends AbsNetImpl
 {
-  private static final int BUF_SIZE = 4096;
   private static final boolean DEBUG = false;
   private static final String TAG = "URLNetImpl";
   private HttpURLConnection mCurrentConnect;
@@ -25,128 +21,6 @@ public class URLNetImpl
       System.setProperty("http.keepAlive", "false");
     }
     AppMethodBeat.o(180933);
-  }
-  
-  public static final void safeClose(Closeable paramCloseable)
-  {
-    AppMethodBeat.i(180935);
-    if (paramCloseable != null) {
-      try
-      {
-        paramCloseable.close();
-        AppMethodBeat.o(180935);
-        return;
-      }
-      catch (IOException paramCloseable) {}
-    }
-    AppMethodBeat.o(180935);
-  }
-  
-  /* Error */
-  public static byte[] toBytes(java.io.InputStream paramInputStream)
-  {
-    // Byte code:
-    //   0: ldc 81
-    //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: ifnonnull +10 -> 16
-    //   9: ldc 81
-    //   11: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   14: aconst_null
-    //   15: areturn
-    //   16: new 83	java/io/ByteArrayOutputStream
-    //   19: dup
-    //   20: invokespecial 84	java/io/ByteArrayOutputStream:<init>	()V
-    //   23: astore_2
-    //   24: sipush 4096
-    //   27: newarray byte
-    //   29: astore_3
-    //   30: aload_0
-    //   31: aload_3
-    //   32: iconst_0
-    //   33: sipush 4096
-    //   36: invokevirtual 90	java/io/InputStream:read	([BII)I
-    //   39: istore_1
-    //   40: iload_1
-    //   41: iconst_m1
-    //   42: if_icmpeq +25 -> 67
-    //   45: aload_2
-    //   46: aload_3
-    //   47: iconst_0
-    //   48: iload_1
-    //   49: invokevirtual 94	java/io/ByteArrayOutputStream:write	([BII)V
-    //   52: goto -22 -> 30
-    //   55: astore_0
-    //   56: aload_2
-    //   57: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   60: ldc 81
-    //   62: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   65: aconst_null
-    //   66: areturn
-    //   67: aload_2
-    //   68: invokevirtual 99	java/io/ByteArrayOutputStream:flush	()V
-    //   71: aload_2
-    //   72: invokevirtual 103	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   75: astore_0
-    //   76: aload_2
-    //   77: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   80: ldc 81
-    //   82: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: aload_0
-    //   86: areturn
-    //   87: astore_0
-    //   88: aconst_null
-    //   89: astore_2
-    //   90: aload_2
-    //   91: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   94: ldc 81
-    //   96: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   99: aload_0
-    //   100: athrow
-    //   101: astore_0
-    //   102: goto -12 -> 90
-    //   105: astore_0
-    //   106: aconst_null
-    //   107: astore_2
-    //   108: goto -52 -> 56
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	111	0	paramInputStream	java.io.InputStream
-    //   39	10	1	i	int
-    //   23	85	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   29	18	3	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   24	30	55	java/lang/Throwable
-    //   30	40	55	java/lang/Throwable
-    //   45	52	55	java/lang/Throwable
-    //   67	76	55	java/lang/Throwable
-    //   16	24	87	finally
-    //   24	30	101	finally
-    //   30	40	101	finally
-    //   45	52	101	finally
-    //   67	76	101	finally
-    //   16	24	105	java/lang/Throwable
-  }
-  
-  public static void writeBytesWithoutClose(byte[] paramArrayOfByte, OutputStream paramOutputStream)
-  {
-    AppMethodBeat.i(180937);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramOutputStream == null))
-    {
-      AppMethodBeat.o(180937);
-      return;
-    }
-    try
-    {
-      paramOutputStream.write(paramArrayOfByte);
-      AppMethodBeat.o(180937);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      AppMethodBeat.o(180937);
-    }
   }
   
   public boolean cancel()
@@ -173,14 +47,14 @@ public class URLNetImpl
   protected com.tencent.map.tools.net.NetResponse onGetRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, java.util.HashMap<String, String> paramHashMap, com.tencent.map.tools.net.http.HttpCanceler paramHttpCanceler)
   {
     // Byte code:
-    //   0: ldc 131
-    //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 85
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aconst_null
     //   6: astore 8
-    //   8: new 133	java/net/URL
+    //   8: new 87	java/net/URL
     //   11: dup
     //   12: aload_1
-    //   13: invokespecial 136	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   13: invokespecial 90	java/net/URL:<init>	(Ljava/lang/String;)V
     //   16: astore 11
     //   18: aload 8
     //   20: astore_1
@@ -188,10 +62,10 @@ public class URLNetImpl
     //   24: dup
     //   25: aload_0
     //   26: iload_3
-    //   27: invokespecial 139	com/tencent/map/tools/net/adapter/URLNetImpl$a:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;I)V
+    //   27: invokespecial 93	com/tencent/map/tools/net/adapter/URLNetImpl$a:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;I)V
     //   30: astore 13
     //   32: aload 13
-    //   34: invokevirtual 141	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	()Z
+    //   34: invokevirtual 95	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	()Z
     //   37: ifeq +609 -> 646
     //   40: iconst_0
     //   41: istore 7
@@ -200,16 +74,16 @@ public class URLNetImpl
     //   45: aload 11
     //   47: ifnull +639 -> 686
     //   50: aload 11
-    //   52: invokevirtual 145	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   55: checkcast 116	java/net/HttpURLConnection
+    //   52: invokevirtual 99	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   55: checkcast 68	java/net/HttpURLConnection
     //   58: astore 8
     //   60: aload 8
     //   62: astore 9
     //   64: iload 7
     //   66: istore_3
     //   67: aload 8
-    //   69: ldc 147
-    //   71: invokevirtual 150	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   69: ldc 101
+    //   71: invokevirtual 104	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   74: iload 4
     //   76: ifle +17 -> 93
     //   79: aload 8
@@ -218,7 +92,7 @@ public class URLNetImpl
     //   85: istore_3
     //   86: aload 8
     //   88: iload 4
-    //   90: invokevirtual 153	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   90: invokevirtual 107	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   93: aload 5
     //   95: ifnull +207 -> 302
     //   98: aload 8
@@ -226,60 +100,60 @@ public class URLNetImpl
     //   102: iload 7
     //   104: istore_3
     //   105: aload 5
-    //   107: invokevirtual 158	java/util/HashMap:isEmpty	()Z
+    //   107: invokevirtual 112	java/util/HashMap:isEmpty	()Z
     //   110: ifne +192 -> 302
     //   113: aload 8
     //   115: astore 9
     //   117: iload 7
     //   119: istore_3
     //   120: aload 5
-    //   122: invokevirtual 162	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   125: invokeinterface 168 1 0
+    //   122: invokevirtual 116	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   125: invokeinterface 122 1 0
     //   130: astore 10
     //   132: aload 8
     //   134: astore 9
     //   136: iload 7
     //   138: istore_3
     //   139: aload 10
-    //   141: invokeinterface 173 1 0
+    //   141: invokeinterface 127 1 0
     //   146: ifeq +156 -> 302
     //   149: aload 8
     //   151: astore 9
     //   153: iload 7
     //   155: istore_3
     //   156: aload 10
-    //   158: invokeinterface 177 1 0
-    //   163: checkcast 179	java/util/Map$Entry
+    //   158: invokeinterface 131 1 0
+    //   163: checkcast 133	java/util/Map$Entry
     //   166: astore 14
     //   168: aload 8
     //   170: astore 9
     //   172: iload 7
     //   174: istore_3
     //   175: aload 14
-    //   177: invokeinterface 182 1 0
-    //   182: checkcast 184	java/lang/String
+    //   177: invokeinterface 136 1 0
+    //   182: checkcast 138	java/lang/String
     //   185: astore 12
     //   187: aload 8
     //   189: astore 9
     //   191: iload 7
     //   193: istore_3
     //   194: aload 14
-    //   196: invokeinterface 187 1 0
-    //   201: checkcast 184	java/lang/String
+    //   196: invokeinterface 141 1 0
+    //   201: checkcast 138	java/lang/String
     //   204: astore 14
     //   206: aload 8
     //   208: astore 9
     //   210: iload 7
     //   212: istore_3
     //   213: aload 12
-    //   215: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   215: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   218: ifne -86 -> 132
     //   221: aload 8
     //   223: astore 9
     //   225: iload 7
     //   227: istore_3
     //   228: aload 14
-    //   230: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   230: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   233: ifne -101 -> 132
     //   236: aload 8
     //   238: astore 9
@@ -288,7 +162,7 @@ public class URLNetImpl
     //   243: aload 8
     //   245: aload 12
     //   247: aload 14
-    //   249: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   252: goto -120 -> 132
     //   255: astore 9
     //   257: aload 8
@@ -296,19 +170,19 @@ public class URLNetImpl
     //   261: aload 10
     //   263: astore 9
     //   265: aload 13
-    //   267: invokevirtual 199	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
+    //   267: invokevirtual 153	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
     //   270: aload_1
     //   271: astore 8
     //   273: aload 10
     //   275: ifnull +365 -> 640
     //   278: aload 10
-    //   280: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
+    //   280: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
     //   283: goto -251 -> 32
     //   286: astore_1
-    //   287: new 201	com/tencent/map/tools/net/NetResponse
+    //   287: new 155	com/tencent/map/tools/net/NetResponse
     //   290: dup
     //   291: aload_1
-    //   292: invokespecial 204	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+    //   292: invokespecial 158	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
     //   295: astore_1
     //   296: aconst_null
     //   297: astore 11
@@ -318,16 +192,16 @@ public class URLNetImpl
     //   306: iload 7
     //   308: istore_3
     //   309: aload_2
-    //   310: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   310: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   313: ifne +18 -> 331
     //   316: aload 8
     //   318: astore 9
     //   320: iload 7
     //   322: istore_3
     //   323: aload 8
-    //   325: ldc 206
+    //   325: ldc 160
     //   327: aload_2
-    //   328: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   328: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   331: aload 6
     //   333: ifnull +39 -> 372
     //   336: aload 8
@@ -340,35 +214,35 @@ public class URLNetImpl
     //   349: dup
     //   350: aload_0
     //   351: aload 13
-    //   353: invokespecial 209	com/tencent/map/tools/net/adapter/URLNetImpl$1:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;Lcom/tencent/map/tools/net/adapter/URLNetImpl$a;)V
-    //   356: invokevirtual 215	com/tencent/map/tools/net/http/HttpCanceler:setHttpAccessRequest	(Lcom/tencent/map/tools/net/NetAdapter;Lcom/tencent/map/tools/Callback;)V
+    //   353: invokespecial 163	com/tencent/map/tools/net/adapter/URLNetImpl$1:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;Lcom/tencent/map/tools/net/adapter/URLNetImpl$a;)V
+    //   356: invokevirtual 169	com/tencent/map/tools/net/http/HttpCanceler:setHttpAccessRequest	(Lcom/tencent/map/tools/net/NetAdapter;Lcom/tencent/map/tools/Callback;)V
     //   359: aload 8
     //   361: astore 9
     //   363: iload 7
     //   365: istore_3
     //   366: aload_0
     //   367: aload 8
-    //   369: putfield 34	com/tencent/map/tools/net/adapter/URLNetImpl:mCurrentConnect	Ljava/net/HttpURLConnection;
+    //   369: putfield 31	com/tencent/map/tools/net/adapter/URLNetImpl:mCurrentConnect	Ljava/net/HttpURLConnection;
     //   372: aload 8
     //   374: astore 9
     //   376: iload 7
     //   378: istore_3
     //   379: aload 8
-    //   381: invokevirtual 218	java/net/HttpURLConnection:connect	()V
+    //   381: invokevirtual 172	java/net/HttpURLConnection:connect	()V
     //   384: aload 8
     //   386: astore 9
     //   388: iload 7
     //   390: istore_3
     //   391: aload 8
-    //   393: invokevirtual 222	java/net/HttpURLConnection:getResponseCode	()I
+    //   393: invokevirtual 176	java/net/HttpURLConnection:getResponseCode	()I
     //   396: istore 7
     //   398: aload 8
     //   400: astore 9
     //   402: iload 7
     //   404: istore_3
-    //   405: new 201	com/tencent/map/tools/net/NetResponse
+    //   405: new 155	com/tencent/map/tools/net/NetResponse
     //   408: dup
-    //   409: invokespecial 223	com/tencent/map/tools/net/NetResponse:<init>	()V
+    //   409: invokespecial 177	com/tencent/map/tools/net/NetResponse:<init>	()V
     //   412: astore 12
     //   414: aload 8
     //   416: astore 9
@@ -376,16 +250,16 @@ public class URLNetImpl
     //   420: istore_3
     //   421: aload 12
     //   423: iload 7
-    //   425: putfield 226	com/tencent/map/tools/net/NetResponse:statusCode	I
+    //   425: putfield 181	com/tencent/map/tools/net/NetResponse:statusCode	I
     //   428: aload 8
     //   430: astore 9
     //   432: iload 7
     //   434: istore_3
     //   435: aload 12
     //   437: aload 8
-    //   439: invokevirtual 230	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   442: invokestatic 234	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
-    //   445: putfield 237	com/tencent/map/tools/net/NetResponse:charset	Ljava/lang/String;
+    //   439: invokevirtual 185	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   442: invokestatic 189	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
+    //   445: putfield 192	com/tencent/map/tools/net/NetResponse:charset	Ljava/lang/String;
     //   448: iload 7
     //   450: sipush 200
     //   453: if_icmpne +72 -> 525
@@ -395,23 +269,23 @@ public class URLNetImpl
     //   462: istore_3
     //   463: aload 12
     //   465: iconst_0
-    //   466: putfield 240	com/tencent/map/tools/net/NetResponse:errorCode	I
+    //   466: putfield 195	com/tencent/map/tools/net/NetResponse:errorCode	I
     //   469: aload 8
     //   471: astore 9
     //   473: iload 7
     //   475: istore_3
     //   476: aload 12
     //   478: aload 8
-    //   480: invokevirtual 244	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   483: invokestatic 246	com/tencent/map/tools/net/adapter/URLNetImpl:toBytes	(Ljava/io/InputStream;)[B
-    //   486: putfield 250	com/tencent/map/tools/net/NetResponse:data	[B
+    //   480: invokevirtual 199	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   483: invokestatic 205	com/tencent/map/tools/net/NetUtil:toBytes	(Ljava/io/InputStream;)[B
+    //   486: putfield 209	com/tencent/map/tools/net/NetResponse:data	[B
     //   489: aload 8
     //   491: astore 9
     //   493: iload 7
     //   495: istore_3
     //   496: aload 13
     //   498: iconst_0
-    //   499: putfield 252	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	Z
+    //   499: putfield 211	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	Z
     //   502: aload 12
     //   504: astore_1
     //   505: aload 8
@@ -421,7 +295,7 @@ public class URLNetImpl
     //   512: aload 9
     //   514: ifnull +126 -> 640
     //   517: aload 9
-    //   519: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
+    //   519: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
     //   522: goto -490 -> 32
     //   525: aload 8
     //   527: astore 9
@@ -429,15 +303,15 @@ public class URLNetImpl
     //   531: istore_3
     //   532: aload 12
     //   534: aload 8
-    //   536: invokevirtual 255	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
-    //   539: invokestatic 246	com/tencent/map/tools/net/adapter/URLNetImpl:toBytes	(Ljava/io/InputStream;)[B
-    //   542: putfield 258	com/tencent/map/tools/net/NetResponse:errorData	[B
+    //   536: invokevirtual 214	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
+    //   539: invokestatic 205	com/tencent/map/tools/net/NetUtil:toBytes	(Ljava/io/InputStream;)[B
+    //   542: putfield 217	com/tencent/map/tools/net/NetResponse:errorData	[B
     //   545: aload 8
     //   547: astore 9
     //   549: iload 7
     //   551: istore_3
     //   552: aload 13
-    //   554: invokevirtual 199	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
+    //   554: invokevirtual 153	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
     //   557: aload 8
     //   559: astore 9
     //   561: aload 12
@@ -452,22 +326,22 @@ public class URLNetImpl
     //   578: astore 8
     //   580: aconst_null
     //   581: astore_1
-    //   582: new 201	com/tencent/map/tools/net/NetResponse
+    //   582: new 155	com/tencent/map/tools/net/NetResponse
     //   585: dup
     //   586: aload 8
-    //   588: invokespecial 204	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+    //   588: invokespecial 158	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
     //   591: astore 9
     //   593: aload 9
     //   595: iload_3
-    //   596: putfield 226	com/tencent/map/tools/net/NetResponse:statusCode	I
+    //   596: putfield 181	com/tencent/map/tools/net/NetResponse:statusCode	I
     //   599: aload 13
-    //   601: invokevirtual 199	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
+    //   601: invokevirtual 153	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
     //   604: aload 9
     //   606: astore 8
     //   608: aload_1
     //   609: ifnull +31 -> 640
     //   612: aload_1
-    //   613: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
+    //   613: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
     //   616: aload 9
     //   618: astore_1
     //   619: goto -587 -> 32
@@ -477,16 +351,16 @@ public class URLNetImpl
     //   625: aload_1
     //   626: ifnull +7 -> 633
     //   629: aload_1
-    //   630: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   633: ldc 131
-    //   635: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   630: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   633: ldc 85
+    //   635: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   638: aload_2
     //   639: athrow
     //   640: aload 8
     //   642: astore_1
     //   643: goto -611 -> 32
-    //   646: ldc 131
-    //   648: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   646: ldc 85
+    //   648: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   651: aload_1
     //   652: areturn
     //   653: astore_2
@@ -521,7 +395,7 @@ public class URLNetImpl
     //   0	692	6	paramHttpCanceler	com.tencent.map.tools.net.http.HttpCanceler
     //   41	509	7	i	int
     //   6	563	8	localObject1	Object
-    //   578	9	8	localIOException	IOException
+    //   578	9	8	localIOException	java.io.IOException
     //   606	65	8	localObject2	Object
     //   678	1	8	localSocketTimeoutException1	java.net.SocketTimeoutException
     //   62	177	9	localObject3	Object
@@ -625,961 +499,961 @@ public class URLNetImpl
     //   1: istore 5
     //   3: iconst_0
     //   4: istore 4
-    //   6: ldc_w 263
-    //   9: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   12: new 133	java/net/URL
-    //   15: dup
-    //   16: aload_1
-    //   17: invokespecial 136	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   20: astore_1
-    //   21: aconst_null
-    //   22: astore 6
-    //   24: aload_1
-    //   25: ifnull +374 -> 399
-    //   28: aload_1
-    //   29: invokevirtual 145	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   32: checkcast 116	java/net/HttpURLConnection
-    //   35: astore_1
-    //   36: aload_1
-    //   37: ldc_w 265
-    //   40: invokevirtual 150	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   43: aload_1
-    //   44: iconst_1
-    //   45: invokevirtual 269	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   48: aload_2
-    //   49: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   52: ifne +10 -> 62
-    //   55: aload_1
-    //   56: ldc 206
-    //   58: aload_2
-    //   59: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   62: aload_1
-    //   63: invokevirtual 273	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   66: astore_2
-    //   67: iload 5
-    //   69: istore 4
-    //   71: aload_3
-    //   72: aload_2
-    //   73: invokestatic 275	com/tencent/map/tools/net/adapter/URLNetImpl:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
-    //   76: iload 5
-    //   78: istore 4
-    //   80: aload_1
-    //   81: invokevirtual 218	java/net/HttpURLConnection:connect	()V
-    //   84: iload 5
-    //   86: istore 4
-    //   88: aload_1
-    //   89: invokevirtual 222	java/net/HttpURLConnection:getResponseCode	()I
-    //   92: istore 5
-    //   94: iload 5
-    //   96: istore 4
-    //   98: new 201	com/tencent/map/tools/net/NetResponse
-    //   101: dup
-    //   102: invokespecial 223	com/tencent/map/tools/net/NetResponse:<init>	()V
-    //   105: astore_3
-    //   106: iload 5
-    //   108: istore 4
-    //   110: aload_3
-    //   111: iload 5
-    //   113: putfield 226	com/tencent/map/tools/net/NetResponse:statusCode	I
-    //   116: iload 5
-    //   118: istore 4
-    //   120: aload_3
-    //   121: aload_1
-    //   122: invokevirtual 230	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   125: invokestatic 234	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
-    //   128: putfield 237	com/tencent/map/tools/net/NetResponse:charset	Ljava/lang/String;
-    //   131: iload 5
-    //   133: sipush 200
-    //   136: if_icmpne +69 -> 205
-    //   139: iload 5
-    //   141: istore 4
-    //   143: aload_3
-    //   144: iconst_0
-    //   145: putfield 240	com/tencent/map/tools/net/NetResponse:errorCode	I
-    //   148: iload 5
-    //   150: istore 4
-    //   152: aload_3
-    //   153: aload_1
-    //   154: invokevirtual 244	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   157: invokestatic 246	com/tencent/map/tools/net/adapter/URLNetImpl:toBytes	(Ljava/io/InputStream;)[B
-    //   160: putfield 250	com/tencent/map/tools/net/NetResponse:data	[B
-    //   163: aload_3
-    //   164: astore 6
-    //   166: aload_1
-    //   167: ifnull +7 -> 174
-    //   170: aload_1
-    //   171: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   174: aload_2
-    //   175: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   178: aload 6
-    //   180: astore_1
-    //   181: ldc_w 263
-    //   184: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   187: aload_1
-    //   188: areturn
-    //   189: astore_1
-    //   190: new 201	com/tencent/map/tools/net/NetResponse
-    //   193: dup
-    //   194: aload_1
-    //   195: invokespecial 204	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
-    //   198: astore 6
-    //   200: aconst_null
-    //   201: astore_1
-    //   202: goto -178 -> 24
-    //   205: iload 5
-    //   207: istore 4
-    //   209: aload_3
-    //   210: aload_1
-    //   211: invokevirtual 255	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
-    //   214: invokestatic 246	com/tencent/map/tools/net/adapter/URLNetImpl:toBytes	(Ljava/io/InputStream;)[B
-    //   217: putfield 258	com/tencent/map/tools/net/NetResponse:errorData	[B
-    //   220: aload_3
-    //   221: astore 6
-    //   223: goto -57 -> 166
-    //   226: astore_1
-    //   227: aconst_null
-    //   228: astore_1
-    //   229: aconst_null
-    //   230: astore_2
-    //   231: aload_2
-    //   232: ifnull +7 -> 239
-    //   235: aload_2
-    //   236: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   239: aload_1
-    //   240: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   243: aload 6
-    //   245: astore_1
-    //   246: goto -65 -> 181
-    //   249: astore_3
-    //   250: aconst_null
-    //   251: astore_1
-    //   252: aconst_null
-    //   253: astore_2
-    //   254: new 201	com/tencent/map/tools/net/NetResponse
-    //   257: dup
-    //   258: aload_3
-    //   259: invokespecial 204	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
-    //   262: astore_3
-    //   263: aload_3
-    //   264: iload 4
-    //   266: putfield 226	com/tencent/map/tools/net/NetResponse:statusCode	I
-    //   269: aload_2
-    //   270: ifnull +7 -> 277
-    //   273: aload_2
-    //   274: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   277: aload_1
-    //   278: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   281: aload_3
-    //   282: astore_1
-    //   283: goto -102 -> 181
-    //   286: astore_3
-    //   287: aconst_null
-    //   288: astore_1
-    //   289: aconst_null
-    //   290: astore_2
-    //   291: aload_2
-    //   292: ifnull +7 -> 299
-    //   295: aload_2
-    //   296: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   299: aload_1
-    //   300: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   303: ldc_w 263
-    //   306: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   309: aload_3
-    //   310: athrow
-    //   311: astore_3
-    //   312: aconst_null
-    //   313: astore 6
-    //   315: aload_1
-    //   316: astore_2
-    //   317: aload 6
-    //   319: astore_1
-    //   320: goto -29 -> 291
-    //   323: astore_3
-    //   324: aload_1
-    //   325: astore 6
-    //   327: aload_2
-    //   328: astore_1
-    //   329: aload 6
-    //   331: astore_2
-    //   332: goto -41 -> 291
+    //   6: ldc 222
+    //   8: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   11: new 87	java/net/URL
+    //   14: dup
+    //   15: aload_1
+    //   16: invokespecial 90	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   19: astore_1
+    //   20: aconst_null
+    //   21: astore 6
+    //   23: aload_1
+    //   24: ifnull +371 -> 395
+    //   27: aload_1
+    //   28: invokevirtual 99	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   31: checkcast 68	java/net/HttpURLConnection
+    //   34: astore_1
+    //   35: aload_1
+    //   36: ldc 224
+    //   38: invokevirtual 104	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   41: aload_1
+    //   42: iconst_1
+    //   43: invokevirtual 228	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   46: aload_2
+    //   47: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   50: ifne +10 -> 60
+    //   53: aload_1
+    //   54: ldc 160
+    //   56: aload_2
+    //   57: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   60: aload_1
+    //   61: invokevirtual 232	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   64: astore_2
+    //   65: iload 5
+    //   67: istore 4
+    //   69: aload_3
+    //   70: aload_2
+    //   71: invokestatic 236	com/tencent/map/tools/net/NetUtil:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
+    //   74: iload 5
+    //   76: istore 4
+    //   78: aload_1
+    //   79: invokevirtual 172	java/net/HttpURLConnection:connect	()V
+    //   82: iload 5
+    //   84: istore 4
+    //   86: aload_1
+    //   87: invokevirtual 176	java/net/HttpURLConnection:getResponseCode	()I
+    //   90: istore 5
+    //   92: iload 5
+    //   94: istore 4
+    //   96: new 155	com/tencent/map/tools/net/NetResponse
+    //   99: dup
+    //   100: invokespecial 177	com/tencent/map/tools/net/NetResponse:<init>	()V
+    //   103: astore_3
+    //   104: iload 5
+    //   106: istore 4
+    //   108: aload_3
+    //   109: iload 5
+    //   111: putfield 181	com/tencent/map/tools/net/NetResponse:statusCode	I
+    //   114: iload 5
+    //   116: istore 4
+    //   118: aload_3
+    //   119: aload_1
+    //   120: invokevirtual 185	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   123: invokestatic 189	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: putfield 192	com/tencent/map/tools/net/NetResponse:charset	Ljava/lang/String;
+    //   129: iload 5
+    //   131: sipush 200
+    //   134: if_icmpne +68 -> 202
+    //   137: iload 5
+    //   139: istore 4
+    //   141: aload_3
+    //   142: iconst_0
+    //   143: putfield 195	com/tencent/map/tools/net/NetResponse:errorCode	I
+    //   146: iload 5
+    //   148: istore 4
+    //   150: aload_3
+    //   151: aload_1
+    //   152: invokevirtual 199	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   155: invokestatic 205	com/tencent/map/tools/net/NetUtil:toBytes	(Ljava/io/InputStream;)[B
+    //   158: putfield 209	com/tencent/map/tools/net/NetResponse:data	[B
+    //   161: aload_3
+    //   162: astore 6
+    //   164: aload_1
+    //   165: ifnull +7 -> 172
+    //   168: aload_1
+    //   169: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   172: aload_2
+    //   173: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   176: aload 6
+    //   178: astore_1
+    //   179: ldc 222
+    //   181: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: aload_1
+    //   185: areturn
+    //   186: astore_1
+    //   187: new 155	com/tencent/map/tools/net/NetResponse
+    //   190: dup
+    //   191: aload_1
+    //   192: invokespecial 158	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+    //   195: astore 6
+    //   197: aconst_null
+    //   198: astore_1
+    //   199: goto -176 -> 23
+    //   202: iload 5
+    //   204: istore 4
+    //   206: aload_3
+    //   207: aload_1
+    //   208: invokevirtual 214	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
+    //   211: invokestatic 205	com/tencent/map/tools/net/NetUtil:toBytes	(Ljava/io/InputStream;)[B
+    //   214: putfield 217	com/tencent/map/tools/net/NetResponse:errorData	[B
+    //   217: aload_3
+    //   218: astore 6
+    //   220: goto -56 -> 164
+    //   223: astore_1
+    //   224: aconst_null
+    //   225: astore_1
+    //   226: aconst_null
+    //   227: astore_2
+    //   228: aload_2
+    //   229: ifnull +7 -> 236
+    //   232: aload_2
+    //   233: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   236: aload_1
+    //   237: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   240: aload 6
+    //   242: astore_1
+    //   243: goto -64 -> 179
+    //   246: astore_3
+    //   247: aconst_null
+    //   248: astore_1
+    //   249: aconst_null
+    //   250: astore_2
+    //   251: new 155	com/tencent/map/tools/net/NetResponse
+    //   254: dup
+    //   255: aload_3
+    //   256: invokespecial 158	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+    //   259: astore_3
+    //   260: aload_3
+    //   261: iload 4
+    //   263: putfield 181	com/tencent/map/tools/net/NetResponse:statusCode	I
+    //   266: aload_2
+    //   267: ifnull +7 -> 274
+    //   270: aload_2
+    //   271: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   274: aload_1
+    //   275: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   278: aload_3
+    //   279: astore_1
+    //   280: goto -101 -> 179
+    //   283: astore_3
+    //   284: aconst_null
+    //   285: astore_1
+    //   286: aconst_null
+    //   287: astore_2
+    //   288: aload_2
+    //   289: ifnull +7 -> 296
+    //   292: aload_2
+    //   293: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   296: aload_1
+    //   297: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   300: ldc 222
+    //   302: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   305: aload_3
+    //   306: athrow
+    //   307: astore_3
+    //   308: aconst_null
+    //   309: astore 6
+    //   311: aload_1
+    //   312: astore_2
+    //   313: aload 6
+    //   315: astore_1
+    //   316: goto -28 -> 288
+    //   319: astore_3
+    //   320: aload_1
+    //   321: astore 6
+    //   323: aload_2
+    //   324: astore_1
+    //   325: aload 6
+    //   327: astore_2
+    //   328: goto -40 -> 288
+    //   331: astore_3
+    //   332: goto -44 -> 288
     //   335: astore_3
-    //   336: goto -45 -> 291
-    //   339: astore_3
-    //   340: aconst_null
-    //   341: astore 6
-    //   343: aload_1
-    //   344: astore_2
-    //   345: aload 6
-    //   347: astore_1
-    //   348: goto -94 -> 254
-    //   351: astore_3
-    //   352: aload_1
-    //   353: astore 6
-    //   355: aload_2
-    //   356: astore_1
-    //   357: aload 6
+    //   336: aconst_null
+    //   337: astore 6
+    //   339: aload_1
+    //   340: astore_2
+    //   341: aload 6
+    //   343: astore_1
+    //   344: goto -93 -> 251
+    //   347: astore_3
+    //   348: aload_1
+    //   349: astore 6
+    //   351: aload_2
+    //   352: astore_1
+    //   353: aload 6
+    //   355: astore_2
+    //   356: goto -105 -> 251
     //   359: astore_2
-    //   360: goto -106 -> 254
+    //   360: aconst_null
+    //   361: astore_3
+    //   362: aload_1
     //   363: astore_2
-    //   364: aconst_null
-    //   365: astore_3
-    //   366: aload_1
-    //   367: astore_2
-    //   368: aload_3
-    //   369: astore_1
-    //   370: goto -139 -> 231
-    //   373: astore_3
-    //   374: aload_2
-    //   375: astore_3
-    //   376: aload_1
-    //   377: astore_2
-    //   378: aload_3
-    //   379: astore_1
-    //   380: goto -149 -> 231
-    //   383: astore 6
-    //   385: aload_2
-    //   386: astore 7
-    //   388: aload_1
-    //   389: astore_2
-    //   390: aload_3
-    //   391: astore 6
-    //   393: aload 7
-    //   395: astore_1
-    //   396: goto -165 -> 231
-    //   399: aconst_null
-    //   400: astore_2
-    //   401: aconst_null
-    //   402: astore_1
-    //   403: goto -237 -> 166
+    //   364: aload_3
+    //   365: astore_1
+    //   366: goto -138 -> 228
+    //   369: astore_3
+    //   370: aload_2
+    //   371: astore_3
+    //   372: aload_1
+    //   373: astore_2
+    //   374: aload_3
+    //   375: astore_1
+    //   376: goto -148 -> 228
+    //   379: astore 6
+    //   381: aload_2
+    //   382: astore 7
+    //   384: aload_1
+    //   385: astore_2
+    //   386: aload_3
+    //   387: astore 6
+    //   389: aload 7
+    //   391: astore_1
+    //   392: goto -164 -> 228
+    //   395: aconst_null
+    //   396: astore_2
+    //   397: aconst_null
+    //   398: astore_1
+    //   399: goto -235 -> 164
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	406	0	this	URLNetImpl
-    //   0	406	1	paramString1	String
-    //   0	406	2	paramString2	String
-    //   0	406	3	paramArrayOfByte	byte[]
-    //   4	261	4	i	int
-    //   1	205	5	j	int
-    //   22	336	6	localObject	Object
-    //   383	1	6	localSocketTimeoutException	java.net.SocketTimeoutException
-    //   391	1	6	arrayOfByte	byte[]
-    //   386	8	7	str	String
+    //   0	402	0	this	URLNetImpl
+    //   0	402	1	paramString1	String
+    //   0	402	2	paramString2	String
+    //   0	402	3	paramArrayOfByte	byte[]
+    //   4	258	4	i	int
+    //   1	202	5	j	int
+    //   21	333	6	localObject	Object
+    //   379	1	6	localSocketTimeoutException	java.net.SocketTimeoutException
+    //   387	1	6	arrayOfByte	byte[]
+    //   382	8	7	str	String
     // Exception table:
     //   from	to	target	type
-    //   12	21	189	java/net/MalformedURLException
-    //   28	36	226	java/net/SocketTimeoutException
-    //   28	36	249	java/io/IOException
-    //   28	36	286	finally
-    //   36	62	311	finally
-    //   62	67	311	finally
-    //   71	76	323	finally
-    //   80	84	323	finally
-    //   88	94	323	finally
-    //   98	106	323	finally
-    //   110	116	323	finally
-    //   120	131	323	finally
-    //   143	148	323	finally
-    //   152	163	323	finally
-    //   209	220	323	finally
-    //   254	269	335	finally
-    //   36	62	339	java/io/IOException
-    //   62	67	339	java/io/IOException
-    //   71	76	351	java/io/IOException
-    //   80	84	351	java/io/IOException
-    //   88	94	351	java/io/IOException
-    //   98	106	351	java/io/IOException
-    //   110	116	351	java/io/IOException
-    //   120	131	351	java/io/IOException
-    //   143	148	351	java/io/IOException
-    //   152	163	351	java/io/IOException
-    //   209	220	351	java/io/IOException
-    //   36	62	363	java/net/SocketTimeoutException
-    //   62	67	363	java/net/SocketTimeoutException
-    //   71	76	373	java/net/SocketTimeoutException
-    //   80	84	373	java/net/SocketTimeoutException
-    //   88	94	373	java/net/SocketTimeoutException
-    //   98	106	373	java/net/SocketTimeoutException
-    //   110	116	383	java/net/SocketTimeoutException
-    //   120	131	383	java/net/SocketTimeoutException
-    //   143	148	383	java/net/SocketTimeoutException
-    //   152	163	383	java/net/SocketTimeoutException
-    //   209	220	383	java/net/SocketTimeoutException
+    //   11	20	186	java/net/MalformedURLException
+    //   27	35	223	java/net/SocketTimeoutException
+    //   27	35	246	java/io/IOException
+    //   27	35	283	finally
+    //   35	60	307	finally
+    //   60	65	307	finally
+    //   69	74	319	finally
+    //   78	82	319	finally
+    //   86	92	319	finally
+    //   96	104	319	finally
+    //   108	114	319	finally
+    //   118	129	319	finally
+    //   141	146	319	finally
+    //   150	161	319	finally
+    //   206	217	319	finally
+    //   251	266	331	finally
+    //   35	60	335	java/io/IOException
+    //   60	65	335	java/io/IOException
+    //   69	74	347	java/io/IOException
+    //   78	82	347	java/io/IOException
+    //   86	92	347	java/io/IOException
+    //   96	104	347	java/io/IOException
+    //   108	114	347	java/io/IOException
+    //   118	129	347	java/io/IOException
+    //   141	146	347	java/io/IOException
+    //   150	161	347	java/io/IOException
+    //   206	217	347	java/io/IOException
+    //   35	60	359	java/net/SocketTimeoutException
+    //   60	65	359	java/net/SocketTimeoutException
+    //   69	74	369	java/net/SocketTimeoutException
+    //   78	82	369	java/net/SocketTimeoutException
+    //   86	92	369	java/net/SocketTimeoutException
+    //   96	104	369	java/net/SocketTimeoutException
+    //   108	114	379	java/net/SocketTimeoutException
+    //   118	129	379	java/net/SocketTimeoutException
+    //   141	146	379	java/net/SocketTimeoutException
+    //   150	161	379	java/net/SocketTimeoutException
+    //   206	217	379	java/net/SocketTimeoutException
   }
   
   /* Error */
   protected com.tencent.map.tools.net.NetResponse onPostRequest(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt1, java.util.HashMap<String, String> paramHashMap, com.tencent.map.tools.net.http.HttpCanceler paramHttpCanceler, int paramInt2)
   {
     // Byte code:
-    //   0: ldc_w 278
-    //   3: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aconst_null
-    //   7: astore 9
-    //   9: new 133	java/net/URL
-    //   12: dup
-    //   13: aload_1
-    //   14: invokespecial 136	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   17: astore 13
-    //   19: aload 9
-    //   21: astore_1
-    //   22: new 12	com/tencent/map/tools/net/adapter/URLNetImpl$a
-    //   25: dup
-    //   26: aload_0
-    //   27: iload 4
-    //   29: invokespecial 139	com/tencent/map/tools/net/adapter/URLNetImpl$a:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;I)V
-    //   32: astore 15
-    //   34: aload 15
-    //   36: invokevirtual 141	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	()Z
-    //   39: ifeq +557 -> 596
-    //   42: aconst_null
-    //   43: astore 12
-    //   45: aconst_null
-    //   46: astore 11
-    //   48: aconst_null
-    //   49: astore 10
-    //   51: iconst_0
-    //   52: istore 4
-    //   54: aload 13
-    //   56: ifnull +646 -> 702
-    //   59: aload 13
-    //   61: invokevirtual 145	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   64: checkcast 116	java/net/HttpURLConnection
-    //   67: astore 9
-    //   69: aload 9
-    //   71: ldc_w 265
-    //   74: invokevirtual 150	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   77: aload 9
-    //   79: iconst_1
-    //   80: invokevirtual 269	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   83: iload 7
-    //   85: ifle +10 -> 95
-    //   88: aload 9
-    //   90: iload 7
-    //   92: invokevirtual 153	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   95: aload 5
-    //   97: ifnull +149 -> 246
-    //   100: aload 5
-    //   102: invokevirtual 158	java/util/HashMap:isEmpty	()Z
-    //   105: ifne +141 -> 246
-    //   108: aload 5
-    //   110: invokevirtual 162	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   113: invokeinterface 168 1 0
-    //   118: astore 11
-    //   120: aload 11
-    //   122: invokeinterface 173 1 0
-    //   127: ifeq +119 -> 246
-    //   130: aload 11
-    //   132: invokeinterface 177 1 0
-    //   137: checkcast 179	java/util/Map$Entry
-    //   140: astore 14
-    //   142: aload 14
-    //   144: invokeinterface 182 1 0
-    //   149: checkcast 184	java/lang/String
-    //   152: astore 12
-    //   154: aload 14
-    //   156: invokeinterface 187 1 0
-    //   161: checkcast 184	java/lang/String
-    //   164: astore 14
-    //   166: aload 12
-    //   168: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   171: ifne -51 -> 120
-    //   174: aload 14
-    //   176: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   179: ifne -59 -> 120
-    //   182: aload 9
-    //   184: aload 12
-    //   186: aload 14
-    //   188: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   191: goto -71 -> 120
-    //   194: astore 10
-    //   196: aconst_null
-    //   197: astore 10
-    //   199: aload 9
-    //   201: astore 11
-    //   203: aload 10
-    //   205: astore 12
-    //   207: aload 15
-    //   209: invokevirtual 199	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
-    //   212: aload 9
-    //   214: ifnull +8 -> 222
-    //   217: aload 9
-    //   219: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   222: aload 10
-    //   224: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   227: goto -193 -> 34
-    //   230: astore_1
-    //   231: new 201	com/tencent/map/tools/net/NetResponse
-    //   234: dup
-    //   235: aload_1
-    //   236: invokespecial 204	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
-    //   239: astore_1
-    //   240: aconst_null
-    //   241: astore 13
-    //   243: goto -221 -> 22
-    //   246: aload_2
-    //   247: invokestatic 192	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   250: ifne +11 -> 261
-    //   253: aload 9
-    //   255: ldc 206
-    //   257: aload_2
-    //   258: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   261: aload 6
-    //   263: ifnull +25 -> 288
-    //   266: aload 6
-    //   268: aload_0
-    //   269: new 8	com/tencent/map/tools/net/adapter/URLNetImpl$2
-    //   272: dup
-    //   273: aload_0
-    //   274: aload 15
-    //   276: invokespecial 279	com/tencent/map/tools/net/adapter/URLNetImpl$2:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;Lcom/tencent/map/tools/net/adapter/URLNetImpl$a;)V
-    //   279: invokevirtual 215	com/tencent/map/tools/net/http/HttpCanceler:setHttpAccessRequest	(Lcom/tencent/map/tools/net/NetAdapter;Lcom/tencent/map/tools/Callback;)V
-    //   282: aload_0
-    //   283: aload 9
-    //   285: putfield 34	com/tencent/map/tools/net/adapter/URLNetImpl:mCurrentConnect	Ljava/net/HttpURLConnection;
-    //   288: aload 9
-    //   290: invokevirtual 273	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   293: astore 11
-    //   295: aload 11
-    //   297: astore 10
-    //   299: aload 9
-    //   301: astore 11
-    //   303: aload 10
-    //   305: astore 12
-    //   307: aload_3
-    //   308: aload 10
-    //   310: invokestatic 275	com/tencent/map/tools/net/adapter/URLNetImpl:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
-    //   313: aload 9
-    //   315: astore 11
-    //   317: aload 10
-    //   319: astore 12
-    //   321: aload 9
-    //   323: invokevirtual 218	java/net/HttpURLConnection:connect	()V
-    //   326: aload 9
-    //   328: astore 11
-    //   330: aload 10
-    //   332: astore 12
-    //   334: aload 9
-    //   336: invokevirtual 222	java/net/HttpURLConnection:getResponseCode	()I
-    //   339: istore 8
-    //   341: aload 9
-    //   343: astore 11
-    //   345: aload 10
-    //   347: astore 12
-    //   349: new 201	com/tencent/map/tools/net/NetResponse
-    //   352: dup
-    //   353: invokespecial 223	com/tencent/map/tools/net/NetResponse:<init>	()V
-    //   356: astore 14
-    //   358: aload 9
-    //   360: astore 11
-    //   362: aload 10
-    //   364: astore 12
-    //   366: aload 14
-    //   368: iload 8
-    //   370: putfield 226	com/tencent/map/tools/net/NetResponse:statusCode	I
-    //   373: aload 9
-    //   375: astore 11
-    //   377: aload 10
-    //   379: astore 12
-    //   381: aload 14
-    //   383: aload 9
-    //   385: invokevirtual 230	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   388: invokestatic 234	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
-    //   391: putfield 237	com/tencent/map/tools/net/NetResponse:charset	Ljava/lang/String;
-    //   394: iload 8
-    //   396: sipush 200
-    //   399: if_icmpne +73 -> 472
-    //   402: aload 9
-    //   404: astore 11
-    //   406: aload 10
-    //   408: astore 12
-    //   410: aload 14
-    //   412: iconst_0
-    //   413: putfield 240	com/tencent/map/tools/net/NetResponse:errorCode	I
-    //   416: aload 9
-    //   418: astore 11
-    //   420: aload 10
-    //   422: astore 12
-    //   424: aload 14
-    //   426: aload 9
-    //   428: invokevirtual 244	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   431: invokestatic 246	com/tencent/map/tools/net/adapter/URLNetImpl:toBytes	(Ljava/io/InputStream;)[B
-    //   434: putfield 250	com/tencent/map/tools/net/NetResponse:data	[B
-    //   437: aload 9
-    //   439: astore 11
-    //   441: aload 10
-    //   443: astore 12
-    //   445: aload 15
-    //   447: iconst_0
-    //   448: putfield 252	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	Z
-    //   451: aload 14
-    //   453: astore_1
-    //   454: aload 9
-    //   456: ifnull +8 -> 464
-    //   459: aload 9
-    //   461: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   464: aload 10
-    //   466: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   469: goto -435 -> 34
-    //   472: aload 9
-    //   474: astore 11
-    //   476: aload 10
-    //   478: astore 12
-    //   480: aload 14
-    //   482: aload 9
-    //   484: invokevirtual 255	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
-    //   487: invokestatic 246	com/tencent/map/tools/net/adapter/URLNetImpl:toBytes	(Ljava/io/InputStream;)[B
-    //   490: putfield 258	com/tencent/map/tools/net/NetResponse:errorData	[B
-    //   493: aload 9
-    //   495: astore 11
-    //   497: aload 10
-    //   499: astore 12
-    //   501: aload 15
-    //   503: invokevirtual 199	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
-    //   506: aload 14
-    //   508: astore_1
-    //   509: goto -55 -> 454
-    //   512: astore_1
-    //   513: aload 14
-    //   515: astore_1
-    //   516: goto -317 -> 199
-    //   519: astore 10
-    //   521: aconst_null
-    //   522: astore 9
-    //   524: aload 11
-    //   526: astore_1
-    //   527: new 201	com/tencent/map/tools/net/NetResponse
-    //   530: dup
-    //   531: aload 10
-    //   533: invokespecial 204	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
-    //   536: astore 10
-    //   538: aload 10
-    //   540: iload 4
-    //   542: putfield 226	com/tencent/map/tools/net/NetResponse:statusCode	I
-    //   545: aload 15
-    //   547: invokevirtual 199	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
-    //   550: aload_1
-    //   551: ifnull +7 -> 558
-    //   554: aload_1
-    //   555: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   558: aload 9
-    //   560: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   563: aload 10
-    //   565: astore_1
-    //   566: goto -532 -> 34
-    //   569: astore_2
-    //   570: aload 12
-    //   572: astore_1
-    //   573: aload 10
-    //   575: astore_3
-    //   576: aload_1
-    //   577: ifnull +7 -> 584
-    //   580: aload_1
-    //   581: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   584: aload_3
-    //   585: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   588: ldc_w 278
-    //   591: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   594: aload_2
-    //   595: athrow
-    //   596: ldc_w 278
-    //   599: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   602: aload_1
-    //   603: areturn
-    //   604: astore_2
-    //   605: aload 9
-    //   607: astore_1
-    //   608: aload 10
-    //   610: astore_3
-    //   611: goto -35 -> 576
-    //   614: astore_2
-    //   615: aload 12
-    //   617: astore_3
-    //   618: aload 11
-    //   620: astore_1
-    //   621: goto -45 -> 576
-    //   624: astore_2
-    //   625: aload 9
-    //   627: astore_3
-    //   628: goto -52 -> 576
-    //   631: astore 10
-    //   633: aconst_null
-    //   634: astore 11
-    //   636: aload 9
-    //   638: astore_1
-    //   639: aload 11
-    //   641: astore 9
-    //   643: goto -116 -> 527
-    //   646: astore_1
-    //   647: aload 10
-    //   649: astore 11
-    //   651: aload_1
-    //   652: astore 10
-    //   654: aload 9
-    //   656: astore_1
-    //   657: aload 11
-    //   659: astore 9
-    //   661: goto -134 -> 527
-    //   664: astore_1
-    //   665: iload 8
-    //   667: istore 4
-    //   669: aload 10
-    //   671: astore 11
-    //   673: aload_1
-    //   674: astore 10
-    //   676: aload 9
-    //   678: astore_1
-    //   679: aload 11
-    //   681: astore 9
-    //   683: goto -156 -> 527
-    //   686: astore 9
-    //   688: aconst_null
-    //   689: astore 10
-    //   691: aconst_null
-    //   692: astore 9
-    //   694: goto -495 -> 199
-    //   697: astore 11
-    //   699: goto -500 -> 199
-    //   702: aconst_null
-    //   703: astore 10
-    //   705: aconst_null
-    //   706: astore 9
-    //   708: goto -254 -> 454
+    //   0: ldc 243
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aconst_null
+    //   6: astore 9
+    //   8: new 87	java/net/URL
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 90	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   16: astore 13
+    //   18: aload 9
+    //   20: astore_1
+    //   21: new 12	com/tencent/map/tools/net/adapter/URLNetImpl$a
+    //   24: dup
+    //   25: aload_0
+    //   26: iload 4
+    //   28: invokespecial 93	com/tencent/map/tools/net/adapter/URLNetImpl$a:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;I)V
+    //   31: astore 15
+    //   33: aload 15
+    //   35: invokevirtual 95	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	()Z
+    //   38: ifeq +555 -> 593
+    //   41: aconst_null
+    //   42: astore 12
+    //   44: aconst_null
+    //   45: astore 11
+    //   47: aconst_null
+    //   48: astore 10
+    //   50: iconst_0
+    //   51: istore 4
+    //   53: aload 13
+    //   55: ifnull +643 -> 698
+    //   58: aload 13
+    //   60: invokevirtual 99	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   63: checkcast 68	java/net/HttpURLConnection
+    //   66: astore 9
+    //   68: aload 9
+    //   70: ldc 224
+    //   72: invokevirtual 104	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   75: aload 9
+    //   77: iconst_1
+    //   78: invokevirtual 228	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   81: iload 7
+    //   83: ifle +10 -> 93
+    //   86: aload 9
+    //   88: iload 7
+    //   90: invokevirtual 107	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   93: aload 5
+    //   95: ifnull +149 -> 244
+    //   98: aload 5
+    //   100: invokevirtual 112	java/util/HashMap:isEmpty	()Z
+    //   103: ifne +141 -> 244
+    //   106: aload 5
+    //   108: invokevirtual 116	java/util/HashMap:entrySet	()Ljava/util/Set;
+    //   111: invokeinterface 122 1 0
+    //   116: astore 11
+    //   118: aload 11
+    //   120: invokeinterface 127 1 0
+    //   125: ifeq +119 -> 244
+    //   128: aload 11
+    //   130: invokeinterface 131 1 0
+    //   135: checkcast 133	java/util/Map$Entry
+    //   138: astore 14
+    //   140: aload 14
+    //   142: invokeinterface 136 1 0
+    //   147: checkcast 138	java/lang/String
+    //   150: astore 12
+    //   152: aload 14
+    //   154: invokeinterface 141 1 0
+    //   159: checkcast 138	java/lang/String
+    //   162: astore 14
+    //   164: aload 12
+    //   166: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   169: ifne -51 -> 118
+    //   172: aload 14
+    //   174: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   177: ifne -59 -> 118
+    //   180: aload 9
+    //   182: aload 12
+    //   184: aload 14
+    //   186: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: goto -71 -> 118
+    //   192: astore 10
+    //   194: aconst_null
+    //   195: astore 10
+    //   197: aload 9
+    //   199: astore 11
+    //   201: aload 10
+    //   203: astore 12
+    //   205: aload 15
+    //   207: invokevirtual 153	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
+    //   210: aload 9
+    //   212: ifnull +8 -> 220
+    //   215: aload 9
+    //   217: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   220: aload 10
+    //   222: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   225: goto -192 -> 33
+    //   228: astore_1
+    //   229: new 155	com/tencent/map/tools/net/NetResponse
+    //   232: dup
+    //   233: aload_1
+    //   234: invokespecial 158	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+    //   237: astore_1
+    //   238: aconst_null
+    //   239: astore 13
+    //   241: goto -220 -> 21
+    //   244: aload_2
+    //   245: invokestatic 146	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   248: ifne +11 -> 259
+    //   251: aload 9
+    //   253: ldc 160
+    //   255: aload_2
+    //   256: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   259: aload 6
+    //   261: ifnull +25 -> 286
+    //   264: aload 6
+    //   266: aload_0
+    //   267: new 8	com/tencent/map/tools/net/adapter/URLNetImpl$2
+    //   270: dup
+    //   271: aload_0
+    //   272: aload 15
+    //   274: invokespecial 244	com/tencent/map/tools/net/adapter/URLNetImpl$2:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;Lcom/tencent/map/tools/net/adapter/URLNetImpl$a;)V
+    //   277: invokevirtual 169	com/tencent/map/tools/net/http/HttpCanceler:setHttpAccessRequest	(Lcom/tencent/map/tools/net/NetAdapter;Lcom/tencent/map/tools/Callback;)V
+    //   280: aload_0
+    //   281: aload 9
+    //   283: putfield 31	com/tencent/map/tools/net/adapter/URLNetImpl:mCurrentConnect	Ljava/net/HttpURLConnection;
+    //   286: aload 9
+    //   288: invokevirtual 232	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   291: astore 11
+    //   293: aload 11
+    //   295: astore 10
+    //   297: aload 9
+    //   299: astore 11
+    //   301: aload 10
+    //   303: astore 12
+    //   305: aload_3
+    //   306: aload 10
+    //   308: invokestatic 236	com/tencent/map/tools/net/NetUtil:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
+    //   311: aload 9
+    //   313: astore 11
+    //   315: aload 10
+    //   317: astore 12
+    //   319: aload 9
+    //   321: invokevirtual 172	java/net/HttpURLConnection:connect	()V
+    //   324: aload 9
+    //   326: astore 11
+    //   328: aload 10
+    //   330: astore 12
+    //   332: aload 9
+    //   334: invokevirtual 176	java/net/HttpURLConnection:getResponseCode	()I
+    //   337: istore 8
+    //   339: aload 9
+    //   341: astore 11
+    //   343: aload 10
+    //   345: astore 12
+    //   347: new 155	com/tencent/map/tools/net/NetResponse
+    //   350: dup
+    //   351: invokespecial 177	com/tencent/map/tools/net/NetResponse:<init>	()V
+    //   354: astore 14
+    //   356: aload 9
+    //   358: astore 11
+    //   360: aload 10
+    //   362: astore 12
+    //   364: aload 14
+    //   366: iload 8
+    //   368: putfield 181	com/tencent/map/tools/net/NetResponse:statusCode	I
+    //   371: aload 9
+    //   373: astore 11
+    //   375: aload 10
+    //   377: astore 12
+    //   379: aload 14
+    //   381: aload 9
+    //   383: invokevirtual 185	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   386: invokestatic 189	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
+    //   389: putfield 192	com/tencent/map/tools/net/NetResponse:charset	Ljava/lang/String;
+    //   392: iload 8
+    //   394: sipush 200
+    //   397: if_icmpne +73 -> 470
+    //   400: aload 9
+    //   402: astore 11
+    //   404: aload 10
+    //   406: astore 12
+    //   408: aload 14
+    //   410: iconst_0
+    //   411: putfield 195	com/tencent/map/tools/net/NetResponse:errorCode	I
+    //   414: aload 9
+    //   416: astore 11
+    //   418: aload 10
+    //   420: astore 12
+    //   422: aload 14
+    //   424: aload 9
+    //   426: invokevirtual 199	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   429: invokestatic 205	com/tencent/map/tools/net/NetUtil:toBytes	(Ljava/io/InputStream;)[B
+    //   432: putfield 209	com/tencent/map/tools/net/NetResponse:data	[B
+    //   435: aload 9
+    //   437: astore 11
+    //   439: aload 10
+    //   441: astore 12
+    //   443: aload 15
+    //   445: iconst_0
+    //   446: putfield 211	com/tencent/map/tools/net/adapter/URLNetImpl$a:a	Z
+    //   449: aload 14
+    //   451: astore_1
+    //   452: aload 9
+    //   454: ifnull +8 -> 462
+    //   457: aload 9
+    //   459: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   462: aload 10
+    //   464: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   467: goto -434 -> 33
+    //   470: aload 9
+    //   472: astore 11
+    //   474: aload 10
+    //   476: astore 12
+    //   478: aload 14
+    //   480: aload 9
+    //   482: invokevirtual 214	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
+    //   485: invokestatic 205	com/tencent/map/tools/net/NetUtil:toBytes	(Ljava/io/InputStream;)[B
+    //   488: putfield 217	com/tencent/map/tools/net/NetResponse:errorData	[B
+    //   491: aload 9
+    //   493: astore 11
+    //   495: aload 10
+    //   497: astore 12
+    //   499: aload 15
+    //   501: invokevirtual 153	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
+    //   504: aload 14
+    //   506: astore_1
+    //   507: goto -55 -> 452
+    //   510: astore_1
+    //   511: aload 14
+    //   513: astore_1
+    //   514: goto -317 -> 197
+    //   517: astore 10
+    //   519: aconst_null
+    //   520: astore 9
+    //   522: aload 11
+    //   524: astore_1
+    //   525: new 155	com/tencent/map/tools/net/NetResponse
+    //   528: dup
+    //   529: aload 10
+    //   531: invokespecial 158	com/tencent/map/tools/net/NetResponse:<init>	(Ljava/lang/Exception;)V
+    //   534: astore 10
+    //   536: aload 10
+    //   538: iload 4
+    //   540: putfield 181	com/tencent/map/tools/net/NetResponse:statusCode	I
+    //   543: aload 15
+    //   545: invokevirtual 153	com/tencent/map/tools/net/adapter/URLNetImpl$a:b	()V
+    //   548: aload_1
+    //   549: ifnull +7 -> 556
+    //   552: aload_1
+    //   553: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   556: aload 9
+    //   558: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   561: aload 10
+    //   563: astore_1
+    //   564: goto -531 -> 33
+    //   567: astore_2
+    //   568: aload 12
+    //   570: astore_1
+    //   571: aload 10
+    //   573: astore_3
+    //   574: aload_1
+    //   575: ifnull +7 -> 582
+    //   578: aload_1
+    //   579: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   582: aload_3
+    //   583: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   586: ldc 243
+    //   588: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   591: aload_2
+    //   592: athrow
+    //   593: ldc 243
+    //   595: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   598: aload_1
+    //   599: areturn
+    //   600: astore_2
+    //   601: aload 9
+    //   603: astore_1
+    //   604: aload 10
+    //   606: astore_3
+    //   607: goto -33 -> 574
+    //   610: astore_2
+    //   611: aload 12
+    //   613: astore_3
+    //   614: aload 11
+    //   616: astore_1
+    //   617: goto -43 -> 574
+    //   620: astore_2
+    //   621: aload 9
+    //   623: astore_3
+    //   624: goto -50 -> 574
+    //   627: astore 10
+    //   629: aconst_null
+    //   630: astore 11
+    //   632: aload 9
+    //   634: astore_1
+    //   635: aload 11
+    //   637: astore 9
+    //   639: goto -114 -> 525
+    //   642: astore_1
+    //   643: aload 10
+    //   645: astore 11
+    //   647: aload_1
+    //   648: astore 10
+    //   650: aload 9
+    //   652: astore_1
+    //   653: aload 11
+    //   655: astore 9
+    //   657: goto -132 -> 525
+    //   660: astore_1
+    //   661: iload 8
+    //   663: istore 4
+    //   665: aload 10
+    //   667: astore 11
+    //   669: aload_1
+    //   670: astore 10
+    //   672: aload 9
+    //   674: astore_1
+    //   675: aload 11
+    //   677: astore 9
+    //   679: goto -154 -> 525
+    //   682: astore 9
+    //   684: aconst_null
+    //   685: astore 10
+    //   687: aconst_null
+    //   688: astore 9
+    //   690: goto -493 -> 197
+    //   693: astore 11
+    //   695: goto -498 -> 197
+    //   698: aconst_null
+    //   699: astore 10
+    //   701: aconst_null
+    //   702: astore 9
+    //   704: goto -252 -> 452
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	711	0	this	URLNetImpl
-    //   0	711	1	paramString1	String
-    //   0	711	2	paramString2	String
-    //   0	711	3	paramArrayOfByte	byte[]
-    //   0	711	4	paramInt1	int
-    //   0	711	5	paramHashMap	java.util.HashMap<String, String>
-    //   0	711	6	paramHttpCanceler	com.tencent.map.tools.net.http.HttpCanceler
-    //   0	711	7	paramInt2	int
-    //   339	327	8	i	int
-    //   7	675	9	localObject1	Object
-    //   686	1	9	localSocketTimeoutException1	java.net.SocketTimeoutException
-    //   692	15	9	localObject2	Object
-    //   49	1	10	localObject3	Object
-    //   194	1	10	localSocketTimeoutException2	java.net.SocketTimeoutException
-    //   197	301	10	localObject4	Object
-    //   519	13	10	localIOException1	IOException
-    //   536	73	10	localNetResponse	com.tencent.map.tools.net.NetResponse
-    //   631	17	10	localIOException2	IOException
-    //   652	52	10	str	String
-    //   46	634	11	localObject5	Object
-    //   697	1	11	localSocketTimeoutException3	java.net.SocketTimeoutException
-    //   43	573	12	localObject6	Object
-    //   17	225	13	localURL	java.net.URL
-    //   140	374	14	localObject7	Object
-    //   32	514	15	locala	a
+    //   0	707	0	this	URLNetImpl
+    //   0	707	1	paramString1	String
+    //   0	707	2	paramString2	String
+    //   0	707	3	paramArrayOfByte	byte[]
+    //   0	707	4	paramInt1	int
+    //   0	707	5	paramHashMap	java.util.HashMap<String, String>
+    //   0	707	6	paramHttpCanceler	com.tencent.map.tools.net.http.HttpCanceler
+    //   0	707	7	paramInt2	int
+    //   337	325	8	i	int
+    //   6	672	9	localObject1	Object
+    //   682	1	9	localSocketTimeoutException1	java.net.SocketTimeoutException
+    //   688	15	9	localObject2	Object
+    //   48	1	10	localObject3	Object
+    //   192	1	10	localSocketTimeoutException2	java.net.SocketTimeoutException
+    //   195	301	10	localObject4	Object
+    //   517	13	10	localIOException1	java.io.IOException
+    //   534	71	10	localNetResponse	com.tencent.map.tools.net.NetResponse
+    //   627	17	10	localIOException2	java.io.IOException
+    //   648	52	10	str	String
+    //   45	631	11	localObject5	Object
+    //   693	1	11	localSocketTimeoutException3	java.net.SocketTimeoutException
+    //   42	570	12	localObject6	Object
+    //   16	224	13	localURL	java.net.URL
+    //   138	374	14	localObject7	Object
+    //   31	513	15	locala	a
     // Exception table:
     //   from	to	target	type
-    //   69	83	194	java/net/SocketTimeoutException
-    //   88	95	194	java/net/SocketTimeoutException
-    //   100	120	194	java/net/SocketTimeoutException
-    //   120	191	194	java/net/SocketTimeoutException
-    //   246	261	194	java/net/SocketTimeoutException
-    //   266	288	194	java/net/SocketTimeoutException
-    //   288	295	194	java/net/SocketTimeoutException
-    //   9	19	230	java/net/MalformedURLException
-    //   366	373	512	java/net/SocketTimeoutException
-    //   381	394	512	java/net/SocketTimeoutException
-    //   410	416	512	java/net/SocketTimeoutException
-    //   424	437	512	java/net/SocketTimeoutException
-    //   445	451	512	java/net/SocketTimeoutException
-    //   480	493	512	java/net/SocketTimeoutException
-    //   501	506	512	java/net/SocketTimeoutException
-    //   59	69	519	java/io/IOException
-    //   59	69	569	finally
-    //   69	83	604	finally
-    //   88	95	604	finally
-    //   100	120	604	finally
-    //   120	191	604	finally
-    //   246	261	604	finally
-    //   266	288	604	finally
-    //   288	295	604	finally
-    //   207	212	614	finally
-    //   307	313	614	finally
-    //   321	326	614	finally
-    //   334	341	614	finally
-    //   349	358	614	finally
-    //   366	373	614	finally
-    //   381	394	614	finally
-    //   410	416	614	finally
-    //   424	437	614	finally
-    //   445	451	614	finally
-    //   480	493	614	finally
-    //   501	506	614	finally
-    //   527	550	624	finally
-    //   69	83	631	java/io/IOException
-    //   88	95	631	java/io/IOException
-    //   100	120	631	java/io/IOException
-    //   120	191	631	java/io/IOException
-    //   246	261	631	java/io/IOException
-    //   266	288	631	java/io/IOException
-    //   288	295	631	java/io/IOException
-    //   307	313	646	java/io/IOException
-    //   321	326	646	java/io/IOException
-    //   334	341	646	java/io/IOException
-    //   349	358	664	java/io/IOException
-    //   366	373	664	java/io/IOException
-    //   381	394	664	java/io/IOException
-    //   410	416	664	java/io/IOException
-    //   424	437	664	java/io/IOException
-    //   445	451	664	java/io/IOException
-    //   480	493	664	java/io/IOException
-    //   501	506	664	java/io/IOException
-    //   59	69	686	java/net/SocketTimeoutException
-    //   307	313	697	java/net/SocketTimeoutException
-    //   321	326	697	java/net/SocketTimeoutException
-    //   334	341	697	java/net/SocketTimeoutException
-    //   349	358	697	java/net/SocketTimeoutException
+    //   68	81	192	java/net/SocketTimeoutException
+    //   86	93	192	java/net/SocketTimeoutException
+    //   98	118	192	java/net/SocketTimeoutException
+    //   118	189	192	java/net/SocketTimeoutException
+    //   244	259	192	java/net/SocketTimeoutException
+    //   264	286	192	java/net/SocketTimeoutException
+    //   286	293	192	java/net/SocketTimeoutException
+    //   8	18	228	java/net/MalformedURLException
+    //   364	371	510	java/net/SocketTimeoutException
+    //   379	392	510	java/net/SocketTimeoutException
+    //   408	414	510	java/net/SocketTimeoutException
+    //   422	435	510	java/net/SocketTimeoutException
+    //   443	449	510	java/net/SocketTimeoutException
+    //   478	491	510	java/net/SocketTimeoutException
+    //   499	504	510	java/net/SocketTimeoutException
+    //   58	68	517	java/io/IOException
+    //   58	68	567	finally
+    //   68	81	600	finally
+    //   86	93	600	finally
+    //   98	118	600	finally
+    //   118	189	600	finally
+    //   244	259	600	finally
+    //   264	286	600	finally
+    //   286	293	600	finally
+    //   205	210	610	finally
+    //   305	311	610	finally
+    //   319	324	610	finally
+    //   332	339	610	finally
+    //   347	356	610	finally
+    //   364	371	610	finally
+    //   379	392	610	finally
+    //   408	414	610	finally
+    //   422	435	610	finally
+    //   443	449	610	finally
+    //   478	491	610	finally
+    //   499	504	610	finally
+    //   525	548	620	finally
+    //   68	81	627	java/io/IOException
+    //   86	93	627	java/io/IOException
+    //   98	118	627	java/io/IOException
+    //   118	189	627	java/io/IOException
+    //   244	259	627	java/io/IOException
+    //   264	286	627	java/io/IOException
+    //   286	293	627	java/io/IOException
+    //   305	311	642	java/io/IOException
+    //   319	324	642	java/io/IOException
+    //   332	339	642	java/io/IOException
+    //   347	356	660	java/io/IOException
+    //   364	371	660	java/io/IOException
+    //   379	392	660	java/io/IOException
+    //   408	414	660	java/io/IOException
+    //   422	435	660	java/io/IOException
+    //   443	449	660	java/io/IOException
+    //   478	491	660	java/io/IOException
+    //   499	504	660	java/io/IOException
+    //   58	68	682	java/net/SocketTimeoutException
+    //   305	311	693	java/net/SocketTimeoutException
+    //   319	324	693	java/net/SocketTimeoutException
+    //   332	339	693	java/net/SocketTimeoutException
+    //   347	356	693	java/net/SocketTimeoutException
   }
   
   /* Error */
   protected void onRangePost(String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, String paramString4, String paramString5, com.tencent.map.tools.net.http.HttpCanceler paramHttpCanceler)
   {
     // Byte code:
-    //   0: ldc_w 283
-    //   3: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 133	java/net/URL
-    //   9: dup
-    //   10: aload_1
-    //   11: invokespecial 136	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   14: astore_1
-    //   15: aload_1
-    //   16: ifnull +365 -> 381
-    //   19: aload_1
-    //   20: invokevirtual 145	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   23: checkcast 116	java/net/HttpURLConnection
-    //   26: astore_1
-    //   27: aload_1
-    //   28: ldc_w 265
-    //   31: invokevirtual 150	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   34: aload_1
-    //   35: iconst_1
-    //   36: invokevirtual 269	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   39: aload_1
-    //   40: ldc 206
-    //   42: ldc_w 285
-    //   45: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   48: aload_1
-    //   49: ldc_w 287
-    //   52: aload_3
-    //   53: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   56: aload_1
-    //   57: ldc_w 289
-    //   60: aload 4
-    //   62: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   65: aload_1
-    //   66: ldc_w 291
-    //   69: aload 5
-    //   71: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   74: aload_1
-    //   75: ldc_w 293
-    //   78: new 295	java/lang/StringBuilder
-    //   81: dup
-    //   82: ldc_w 297
-    //   85: invokespecial 298	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   88: aload 6
-    //   90: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: ldc_w 304
-    //   96: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokevirtual 196	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   0: ldc 248
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 87	java/net/URL
+    //   8: dup
+    //   9: aload_1
+    //   10: invokespecial 90	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   13: astore_1
+    //   14: aload_1
+    //   15: ifnull +355 -> 370
+    //   18: aload_1
+    //   19: invokevirtual 99	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   22: checkcast 68	java/net/HttpURLConnection
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ldc 224
+    //   29: invokevirtual 104	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   32: aload_1
+    //   33: iconst_1
+    //   34: invokevirtual 228	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   37: aload_1
+    //   38: ldc 160
+    //   40: ldc 250
+    //   42: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: aload_1
+    //   46: ldc 252
+    //   48: aload_3
+    //   49: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: aload_1
+    //   53: ldc 254
+    //   55: aload 4
+    //   57: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   60: aload_1
+    //   61: ldc_w 256
+    //   64: aload 5
+    //   66: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   69: aload_1
+    //   70: ldc_w 258
+    //   73: new 260	java/lang/StringBuilder
+    //   76: dup
+    //   77: ldc_w 262
+    //   80: invokespecial 263	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   83: aload 6
+    //   85: invokevirtual 267	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: ldc_w 269
+    //   91: invokevirtual 267	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: invokevirtual 272	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   97: invokevirtual 150	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: aload 7
+    //   102: ifnull +22 -> 124
     //   105: aload 7
-    //   107: ifnull +22 -> 129
-    //   110: aload 7
+    //   107: aload_0
+    //   108: new 10	com/tencent/map/tools/net/adapter/URLNetImpl$3
+    //   111: dup
     //   112: aload_0
-    //   113: new 10	com/tencent/map/tools/net/adapter/URLNetImpl$3
-    //   116: dup
-    //   117: aload_0
-    //   118: invokespecial 310	com/tencent/map/tools/net/adapter/URLNetImpl$3:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;)V
-    //   121: invokevirtual 215	com/tencent/map/tools/net/http/HttpCanceler:setHttpAccessRequest	(Lcom/tencent/map/tools/net/NetAdapter;Lcom/tencent/map/tools/Callback;)V
-    //   124: aload_0
-    //   125: aload_1
-    //   126: putfield 34	com/tencent/map/tools/net/adapter/URLNetImpl:mCurrentConnect	Ljava/net/HttpURLConnection;
-    //   129: aload_1
-    //   130: invokevirtual 273	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   133: astore_3
-    //   134: aload_2
-    //   135: aload_3
-    //   136: invokestatic 275	com/tencent/map/tools/net/adapter/URLNetImpl:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
-    //   139: aload_1
-    //   140: invokevirtual 218	java/net/HttpURLConnection:connect	()V
-    //   143: aload_1
-    //   144: invokevirtual 222	java/net/HttpURLConnection:getResponseCode	()I
-    //   147: istore 8
-    //   149: aload_1
-    //   150: invokevirtual 230	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   153: invokestatic 234	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
-    //   156: pop
-    //   157: iload 8
-    //   159: sipush 200
-    //   162: if_icmpne +121 -> 283
-    //   165: aload_1
-    //   166: ldc_w 312
-    //   169: invokevirtual 315	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   172: astore_2
-    //   173: aload_2
-    //   174: invokestatic 53	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   177: istore 8
+    //   113: invokespecial 275	com/tencent/map/tools/net/adapter/URLNetImpl$3:<init>	(Lcom/tencent/map/tools/net/adapter/URLNetImpl;)V
+    //   116: invokevirtual 169	com/tencent/map/tools/net/http/HttpCanceler:setHttpAccessRequest	(Lcom/tencent/map/tools/net/NetAdapter;Lcom/tencent/map/tools/Callback;)V
+    //   119: aload_0
+    //   120: aload_1
+    //   121: putfield 31	com/tencent/map/tools/net/adapter/URLNetImpl:mCurrentConnect	Ljava/net/HttpURLConnection;
+    //   124: aload_1
+    //   125: invokevirtual 232	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   128: astore_3
+    //   129: aload_2
+    //   130: aload_3
+    //   131: invokestatic 236	com/tencent/map/tools/net/NetUtil:writeBytesWithoutClose	([BLjava/io/OutputStream;)V
+    //   134: aload_1
+    //   135: invokevirtual 172	java/net/HttpURLConnection:connect	()V
+    //   138: aload_1
+    //   139: invokevirtual 176	java/net/HttpURLConnection:getResponseCode	()I
+    //   142: istore 8
+    //   144: aload_1
+    //   145: invokevirtual 185	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   148: invokestatic 189	com/tencent/map/tools/net/adapter/URLNetImpl:parseCharset	(Ljava/lang/String;)Ljava/lang/String;
+    //   151: pop
+    //   152: iload 8
+    //   154: sipush 200
+    //   157: if_icmpne +117 -> 274
+    //   160: aload_1
+    //   161: ldc_w 277
+    //   164: invokevirtual 280	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   167: astore_2
+    //   168: aload_2
+    //   169: invokestatic 50	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   172: istore 8
+    //   174: iload 8
+    //   176: ifeq +98 -> 274
     //   179: iload 8
-    //   181: ifeq +102 -> 283
-    //   184: iload 8
-    //   186: bipush 254
-    //   188: if_icmpne +47 -> 235
-    //   191: new 317	com/tencent/map/tools/net/exception/FileUploadResetException
-    //   194: dup
-    //   195: invokespecial 318	com/tencent/map/tools/net/exception/FileUploadResetException:<init>	()V
-    //   198: astore_2
-    //   199: ldc_w 283
-    //   202: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   205: aload_2
-    //   206: athrow
-    //   207: astore_2
-    //   208: aload_3
-    //   209: astore_2
-    //   210: aload_1
-    //   211: ifnull +7 -> 218
-    //   214: aload_1
-    //   215: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   218: aload_2
-    //   219: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   222: ldc_w 283
-    //   225: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   228: return
-    //   229: astore_1
-    //   230: aconst_null
-    //   231: astore_1
-    //   232: goto -217 -> 15
-    //   235: new 320	java/lang/Exception
-    //   238: dup
-    //   239: ldc_w 322
-    //   242: aload_2
-    //   243: invokestatic 326	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   246: invokevirtual 329	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   249: invokespecial 330	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   252: astore_2
-    //   253: ldc_w 283
-    //   256: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   259: aload_2
-    //   260: athrow
-    //   261: astore_2
-    //   262: aload_3
-    //   263: astore_2
-    //   264: aload_1
-    //   265: ifnull +7 -> 272
-    //   268: aload_1
-    //   269: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   272: aload_2
-    //   273: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   276: ldc_w 283
-    //   279: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   282: return
-    //   283: aload_3
-    //   284: astore_2
-    //   285: aload_1
-    //   286: ifnull +7 -> 293
-    //   289: aload_1
-    //   290: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   293: aload_2
-    //   294: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   297: ldc_w 283
-    //   300: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   303: return
-    //   304: astore_1
-    //   305: aconst_null
-    //   306: astore_2
-    //   307: aconst_null
-    //   308: astore_3
-    //   309: aload_3
-    //   310: ifnull +7 -> 317
-    //   313: aload_3
-    //   314: invokevirtual 119	java/net/HttpURLConnection:disconnect	()V
-    //   317: aload_2
-    //   318: invokestatic 96	com/tencent/map/tools/net/adapter/URLNetImpl:safeClose	(Ljava/io/Closeable;)V
-    //   321: ldc_w 283
-    //   324: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   327: aload_1
-    //   328: athrow
-    //   329: astore 4
-    //   331: aconst_null
-    //   332: astore_2
-    //   333: aload_1
-    //   334: astore_3
-    //   335: aload 4
-    //   337: astore_1
-    //   338: goto -29 -> 309
-    //   341: astore 4
-    //   343: aload_3
+    //   181: bipush 254
+    //   183: if_icmpne +45 -> 228
+    //   186: new 282	com/tencent/map/tools/net/exception/FileUploadResetException
+    //   189: dup
+    //   190: invokespecial 283	com/tencent/map/tools/net/exception/FileUploadResetException:<init>	()V
+    //   193: astore_2
+    //   194: ldc 248
+    //   196: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   199: aload_2
+    //   200: athrow
+    //   201: astore_2
+    //   202: aload_3
+    //   203: astore_2
+    //   204: aload_1
+    //   205: ifnull +7 -> 212
+    //   208: aload_1
+    //   209: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   212: aload_2
+    //   213: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   216: ldc 248
+    //   218: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   221: return
+    //   222: astore_1
+    //   223: aconst_null
+    //   224: astore_1
+    //   225: goto -211 -> 14
+    //   228: new 285	java/lang/Exception
+    //   231: dup
+    //   232: ldc_w 287
+    //   235: aload_2
+    //   236: invokestatic 291	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   239: invokevirtual 294	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   242: invokespecial 295	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   245: astore_2
+    //   246: ldc 248
+    //   248: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   251: aload_2
+    //   252: athrow
+    //   253: astore_2
+    //   254: aload_3
+    //   255: astore_2
+    //   256: aload_1
+    //   257: ifnull +7 -> 264
+    //   260: aload_1
+    //   261: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   264: aload_2
+    //   265: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   268: ldc 248
+    //   270: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   273: return
+    //   274: aload_3
+    //   275: astore_2
+    //   276: aload_1
+    //   277: ifnull +7 -> 284
+    //   280: aload_1
+    //   281: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   284: aload_2
+    //   285: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   288: ldc 248
+    //   290: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   293: return
+    //   294: astore_1
+    //   295: aconst_null
+    //   296: astore_2
+    //   297: aconst_null
+    //   298: astore_3
+    //   299: aload_3
+    //   300: ifnull +7 -> 307
+    //   303: aload_3
+    //   304: invokevirtual 71	java/net/HttpURLConnection:disconnect	()V
+    //   307: aload_2
+    //   308: invokestatic 240	com/tencent/map/tools/net/NetUtil:safeClose	(Ljava/io/Closeable;)V
+    //   311: ldc 248
+    //   313: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   316: aload_1
+    //   317: athrow
+    //   318: astore 4
+    //   320: aconst_null
+    //   321: astore_2
+    //   322: aload_1
+    //   323: astore_3
+    //   324: aload 4
+    //   326: astore_1
+    //   327: goto -28 -> 299
+    //   330: astore 4
+    //   332: aload_3
+    //   333: astore_2
+    //   334: aload_1
+    //   335: astore_3
+    //   336: aload 4
+    //   338: astore_1
+    //   339: goto -40 -> 299
+    //   342: astore_1
+    //   343: aconst_null
     //   344: astore_2
-    //   345: aload_1
-    //   346: astore_3
-    //   347: aload 4
-    //   349: astore_1
-    //   350: goto -41 -> 309
-    //   353: astore_1
-    //   354: aconst_null
-    //   355: astore_2
-    //   356: aconst_null
-    //   357: astore_1
-    //   358: goto -94 -> 264
-    //   361: astore_2
-    //   362: aconst_null
-    //   363: astore_2
-    //   364: goto -100 -> 264
-    //   367: astore_1
-    //   368: aconst_null
-    //   369: astore_2
+    //   345: aconst_null
+    //   346: astore_1
+    //   347: goto -91 -> 256
+    //   350: astore_2
+    //   351: aconst_null
+    //   352: astore_2
+    //   353: goto -97 -> 256
+    //   356: astore_1
+    //   357: aconst_null
+    //   358: astore_2
+    //   359: aconst_null
+    //   360: astore_1
+    //   361: goto -157 -> 204
+    //   364: astore_2
+    //   365: aconst_null
+    //   366: astore_2
+    //   367: goto -163 -> 204
     //   370: aconst_null
-    //   371: astore_1
-    //   372: goto -162 -> 210
-    //   375: astore_2
-    //   376: aconst_null
-    //   377: astore_2
-    //   378: goto -168 -> 210
-    //   381: aconst_null
-    //   382: astore_2
-    //   383: aconst_null
-    //   384: astore_1
-    //   385: goto -100 -> 285
+    //   371: astore_2
+    //   372: aconst_null
+    //   373: astore_1
+    //   374: goto -98 -> 276
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	388	0	this	URLNetImpl
-    //   0	388	1	paramString1	String
-    //   0	388	2	paramArrayOfByte	byte[]
-    //   0	388	3	paramString2	String
-    //   0	388	4	paramString3	String
-    //   0	388	5	paramString4	String
-    //   0	388	6	paramString5	String
-    //   0	388	7	paramHttpCanceler	com.tencent.map.tools.net.http.HttpCanceler
-    //   147	42	8	i	int
+    //   0	377	0	this	URLNetImpl
+    //   0	377	1	paramString1	String
+    //   0	377	2	paramArrayOfByte	byte[]
+    //   0	377	3	paramString2	String
+    //   0	377	4	paramString3	String
+    //   0	377	5	paramString4	String
+    //   0	377	6	paramString5	String
+    //   0	377	7	paramHttpCanceler	com.tencent.map.tools.net.http.HttpCanceler
+    //   142	42	8	i	int
     // Exception table:
     //   from	to	target	type
-    //   134	157	207	java/net/SocketTimeoutException
-    //   165	179	207	java/net/SocketTimeoutException
-    //   191	207	207	java/net/SocketTimeoutException
-    //   235	261	207	java/net/SocketTimeoutException
-    //   6	15	229	java/net/MalformedURLException
-    //   134	157	261	java/io/IOException
-    //   165	179	261	java/io/IOException
-    //   191	207	261	java/io/IOException
-    //   235	261	261	java/io/IOException
-    //   19	27	304	finally
-    //   27	105	329	finally
-    //   110	129	329	finally
-    //   129	134	329	finally
-    //   134	157	341	finally
-    //   165	179	341	finally
-    //   191	207	341	finally
-    //   235	261	341	finally
-    //   19	27	353	java/io/IOException
-    //   27	105	361	java/io/IOException
-    //   110	129	361	java/io/IOException
-    //   129	134	361	java/io/IOException
-    //   19	27	367	java/net/SocketTimeoutException
-    //   27	105	375	java/net/SocketTimeoutException
-    //   110	129	375	java/net/SocketTimeoutException
-    //   129	134	375	java/net/SocketTimeoutException
+    //   129	152	201	java/net/SocketTimeoutException
+    //   160	174	201	java/net/SocketTimeoutException
+    //   186	201	201	java/net/SocketTimeoutException
+    //   228	253	201	java/net/SocketTimeoutException
+    //   5	14	222	java/net/MalformedURLException
+    //   129	152	253	java/io/IOException
+    //   160	174	253	java/io/IOException
+    //   186	201	253	java/io/IOException
+    //   228	253	253	java/io/IOException
+    //   18	26	294	finally
+    //   26	100	318	finally
+    //   105	124	318	finally
+    //   124	129	318	finally
+    //   129	152	330	finally
+    //   160	174	330	finally
+    //   186	201	330	finally
+    //   228	253	330	finally
+    //   18	26	342	java/io/IOException
+    //   26	100	350	java/io/IOException
+    //   105	124	350	java/io/IOException
+    //   124	129	350	java/io/IOException
+    //   18	26	356	java/net/SocketTimeoutException
+    //   26	100	364	java/net/SocketTimeoutException
+    //   105	124	364	java/net/SocketTimeoutException
+    //   124	129	364	java/net/SocketTimeoutException
   }
   
   final class a
@@ -1614,7 +1488,7 @@ public class URLNetImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.net.adapter.URLNetImpl
  * JD-Core Version:    0.7.0.1
  */

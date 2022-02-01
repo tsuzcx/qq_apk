@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class hv
   extends b
 {
-  public a dlA;
+  public a diT;
   
   public hv()
   {
@@ -15,16 +16,22 @@ public final class hv
   
   private hv(byte paramByte)
   {
-    AppMethodBeat.i(123476);
-    this.dlA = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116030);
+    this.diT = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(123476);
+    AppMethodBeat.o(116030);
   }
   
   public static final class a
   {
-    public String dlB;
+    public int actionCode;
+    public String appId;
+    public Context context;
+    public String extMsg;
+    public String messageAction;
+    public String messageExt;
+    public int scene;
   }
 }
 

@@ -13,8 +13,8 @@ final class ax
   {
     boolean bool = true;
     AppMethodBeat.i(128913);
-    paramc = paramc.Ee().Ee(paramString);
-    switch (1.jQL[paramc.ordinal()])
+    paramc = paramc.DH().Ih(paramString);
+    switch (1.krw[paramc.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -26,10 +26,10 @@ final class ax
       return paramc;
     }
     paramString = new i.a("ok", new Object[0]);
-    if (paramc == l.iSq) {}
+    if (paramc == l.jsB) {}
     for (;;)
     {
-      paramc = paramString.s("result", Boolean.valueOf(bool));
+      paramc = paramString.r("result", Boolean.valueOf(bool));
       AppMethodBeat.o(128913);
       return paramc;
       bool = false;
@@ -38,7 +38,7 @@ final class ax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ax
  * JD-Core Version:    0.7.0.1
  */

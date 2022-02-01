@@ -11,14 +11,14 @@ public class BoldSpan
     super(1);
   }
   
-  public static Boolean bTx()
+  public static Boolean caL()
   {
     return Boolean.TRUE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.BoldSpan
  * JD-Core Version:    0.7.0.1
  */

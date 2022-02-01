@@ -6,17 +6,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements e<String>
 {
-  private String jmY;
+  private String jNl;
   
-  public final boolean Hj(String paramString)
+  public final boolean Ln(String paramString)
   {
     AppMethodBeat.i(121373);
-    if (this.jmY == null)
+    if (this.jNl == null)
     {
       AppMethodBeat.o(121373);
       return true;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.hashCode() != this.jmY.hashCode()))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.hashCode() != this.jNl.hashCode()))
     {
       AppMethodBeat.o(121373);
       return true;
@@ -25,7 +25,7 @@ public final class b
     return false;
   }
   
-  public final void S(Runnable paramRunnable)
+  public final void U(Runnable paramRunnable)
   {
     AppMethodBeat.i(121374);
     paramRunnable.run();
@@ -39,21 +39,21 @@ public final class b
     AppMethodBeat.o(121372);
   }
   
-  public final void aVA() {}
+  public final void bcy() {}
   
-  public final int aVB()
+  public final int bcz()
   {
     return 1;
   }
   
   public final void reset()
   {
-    this.jmY = null;
+    this.jNl = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.a.b
  * JD-Core Version:    0.7.0.1
  */

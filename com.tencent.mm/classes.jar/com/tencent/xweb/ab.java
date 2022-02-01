@@ -1,88 +1,23 @@
 package com.tencent.xweb;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.net.http.SslError;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.e;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class ab
+public abstract interface ab
 {
-  public e IMW;
+  public abstract boolean A(MotionEvent paramMotionEvent);
   
-  public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return null;
-  }
+  public abstract boolean B(MotionEvent paramMotionEvent);
   
-  public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
-  {
-    return null;
-  }
+  public abstract boolean b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean);
   
-  public void a(WebView paramWebView, float paramFloat1, float paramFloat2) {}
+  public abstract void blu();
   
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
+  public abstract void d(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2);
   
-  public void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse) {}
+  public abstract void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView);
   
-  public void a(WebView paramWebView, q paramq, SslError paramSslError)
-  {
-    AppMethodBeat.i(156921);
-    if (paramq != null) {
-      paramq.cancel();
-    }
-    AppMethodBeat.o(156921);
-  }
-  
-  public void a(WebView paramWebView, String paramString, boolean paramBoolean) {}
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    return false;
-  }
-  
-  public void b(WebView paramWebView, String paramString) {}
-  
-  public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(156919);
-    if (this.IMW == null)
-    {
-      AppMethodBeat.o(156919);
-      return;
-    }
-    this.IMW.z(paramString, paramBitmap);
-    AppMethodBeat.o(156919);
-  }
-  
-  public boolean b(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    return false;
-  }
-  
-  public WebResourceResponse c(WebView paramWebView, String paramString)
-  {
-    return null;
-  }
-  
-  public boolean d(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    AppMethodBeat.i(156920);
-    if ((paramWebResourceRequest == null) || (paramWebResourceRequest.getUrl() == null))
-    {
-      AppMethodBeat.o(156920);
-      return false;
-    }
-    boolean bool = a(paramWebView, paramWebResourceRequest.getUrl().toString());
-    AppMethodBeat.o(156920);
-    return bool;
-  }
-  
-  public void e(WebView paramWebView, String paramString) {}
-  
-  public void h(WebView paramWebView, String paramString) {}
+  public abstract boolean z(MotionEvent paramMotionEvent);
 }
 
 

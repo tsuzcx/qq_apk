@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class OpenFileChooserUI$8$4
   implements Runnable
@@ -14,11 +14,11 @@ final class OpenFileChooserUI$8$4
     AppMethodBeat.i(175760);
     Intent localIntent = new Intent();
     localIntent.putExtra("key_pick_local_media_callback_type", 1);
-    localIntent.putExtra("key_pick_local_media_local_id", this.rSY);
-    localIntent.putExtra("key_pick_local_media_thumb_local_id", this.BdC);
-    ad.i("MicroMsg.OpenFileChooserUI", "thumbLocalId:%s", new Object[] { this.BdC });
-    this.Bdz.Bdy.setResult(-1, localIntent);
-    this.Bdz.Bdy.finish();
+    localIntent.putExtra("key_pick_local_media_local_id", this.taQ);
+    localIntent.putExtra("key_pick_local_media_thumb_local_id", this.CvO);
+    ac.i("MicroMsg.OpenFileChooserUI", "thumbLocalId:%s", new Object[] { this.CvO });
+    this.CvL.CvK.setResult(-1, localIntent);
+    this.CvL.CvK.finish();
     AppMethodBeat.o(175760);
   }
 }

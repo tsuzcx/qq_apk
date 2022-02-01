@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class bu
   extends a<h>
@@ -12,7 +12,7 @@ public final class bu
   private void a(h paramh, int paramInt, String paramString)
   {
     AppMethodBeat.i(45617);
-    ad.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
+    ac.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
     if (paramh != null) {
       paramh.h(paramInt, e(paramString, null));
     }

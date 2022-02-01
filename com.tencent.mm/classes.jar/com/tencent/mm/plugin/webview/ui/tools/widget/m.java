@@ -9,7 +9,7 @@ import com.tencent.mm.protocal.c;
 public class m
   extends f.a
 {
-  public boolean Tj(int paramInt)
+  public boolean Vr(int paramInt)
   {
     return false;
   }
@@ -24,47 +24,47 @@ public class m
     return false;
   }
   
-  public void axu(String paramString) {}
+  public void aCM(String paramString) {}
   
-  public void ay(Bundle paramBundle) {}
+  public void aD(Bundle paramBundle) {}
   
-  public void az(Bundle paramBundle) {}
+  public void aE(Bundle paramBundle) {}
   
-  public final String dvR()
+  public final String dKq()
   {
     return null;
   }
   
   public void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public void ekt() {}
-  
-  public void eku() {}
-  
-  public String ene()
+  public String eCA()
   {
     return null;
   }
   
-  public final int enf()
+  public String eCy()
+  {
+    return null;
+  }
+  
+  public final int eCz()
   {
     return 0;
   }
   
-  public String eng()
-  {
-    return null;
-  }
-  
-  public Bundle ev(String paramString1, String paramString2)
+  public Bundle eH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(82235);
-    paramString1 = c.aDg(null);
+    paramString1 = c.aIx(null);
     AppMethodBeat.o(82235);
     return paramString1;
   }
   
-  public boolean f(int paramInt, Bundle paramBundle)
+  public void ezP() {}
+  
+  public void ezQ() {}
+  
+  public boolean g(int paramInt, Bundle paramBundle)
   {
     return false;
   }
@@ -74,22 +74,22 @@ public class m
     return null;
   }
   
-  public Bundle j(int paramInt, Bundle paramBundle)
+  public Bundle k(int paramInt, Bundle paramBundle)
   {
     return null;
   }
   
-  public void kd(String paramString1, String paramString2) {}
+  public void kA(String paramString1, String paramString2) {}
   
-  public void ke(String paramString1, String paramString2) {}
+  public void kz(String paramString1, String paramString2) {}
   
-  public void t(int paramInt, Bundle paramBundle) {}
+  public void u(int paramInt, Bundle paramBundle) {}
   
-  public void to(boolean paramBoolean) {}
+  public void uq(boolean paramBoolean) {}
   
-  public void tp(boolean paramBoolean) {}
+  public void ur(boolean paramBoolean) {}
   
-  public void tq(boolean paramBoolean) {}
+  public void us(boolean paramBoolean) {}
 }
 
 

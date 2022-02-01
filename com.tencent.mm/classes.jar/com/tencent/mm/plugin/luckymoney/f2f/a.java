@@ -7,7 +7,7 @@ import android.content.res.Resources;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -18,28 +18,28 @@ import java.util.Set;
 public final class a
 {
   public volatile boolean stopped;
-  public SoundPool tah;
-  Hashtable<String, Integer> tai;
-  Map<Integer, Boolean> taj;
+  public SoundPool uiw;
+  Hashtable<String, Integer> uix;
+  Map<Integer, Boolean> uiy;
   
   public a()
   {
     AppMethodBeat.i(65033);
     this.stopped = false;
-    this.tah = new SoundPool(2, 3, 0);
-    this.tai = new Hashtable();
-    this.taj = new HashMap();
+    this.uiw = new SoundPool(2, 3, 0);
+    this.uix = new Hashtable();
+    this.uiy = new HashMap();
     AppMethodBeat.o(65033);
   }
   
-  public final void oB(String paramString)
+  public final void rH(String paramString)
   {
     AppMethodBeat.i(65034);
-    if (this.tai.containsKey(paramString))
+    if (this.uix.containsKey(paramString))
     {
-      int i = ((Integer)this.tai.get(paramString)).intValue();
-      if ((i >= 0) && (this.taj.containsKey(Integer.valueOf(i))) && (((Boolean)this.taj.get(Integer.valueOf(i))).booleanValue())) {
-        this.tah.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
+      int i = ((Integer)this.uix.get(paramString)).intValue();
+      if ((i >= 0) && (this.uiy.containsKey(Integer.valueOf(i))) && (((Boolean)this.uiy.get(Integer.valueOf(i))).booleanValue())) {
+        this.uiw.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
       }
     }
     AppMethodBeat.o(65034);
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a
  * JD-Core Version:    0.7.0.1
  */

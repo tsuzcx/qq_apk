@@ -15,34 +15,35 @@ import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class s
 {
-  static void IB()
+  static void Ik()
   {
-    if (i.cGt != null) {
-      h localh = i.cGt;
+    if (i.cDB != null) {
+      h localh = i.cDB;
     }
   }
   
-  static void IC()
+  static void Il()
   {
-    if (i.cGt != null) {
-      h localh = i.cGt;
+    if (i.cDB != null) {
+      h localh = i.cDB;
     }
   }
   
-  public static void ID()
+  public static void Im()
   {
-    if (i.cGt != null) {
-      h localh = i.cGt;
+    if (i.cDB != null) {
+      h localh = i.cDB;
     }
   }
   
-  static String IE()
+  static String In()
   {
     AppMethodBeat.i(87650);
     try
@@ -56,7 +57,7 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      IC();
+      Il();
       AppMethodBeat.o(87650);
     }
     return "";
@@ -92,13 +93,13 @@ public final class s
   static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
     AppMethodBeat.i(87640);
-    if (dz(paramString2)) {
+    if (jdMethod_do(paramString2)) {
       paramJSONObject.put(paramString1, paramString2);
     }
     AppMethodBeat.o(87640);
   }
   
-  static boolean aX(Context paramContext)
+  static boolean aY(Context paramContext)
   {
     AppMethodBeat.i(87639);
     try
@@ -121,12 +122,12 @@ public final class s
     return false;
   }
   
-  static String aY(Context paramContext)
+  static String aZ(Context paramContext)
   {
     AppMethodBeat.i(87643);
     try
     {
-      if (p(paramContext, "android.permission.READ_PHONE_STATE"))
+      if (checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
       {
         paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
         if (paramContext != null)
@@ -137,46 +138,17 @@ public final class s
       }
       else
       {
-        IB();
+        Ik();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        IC();
+        Il();
       }
     }
     AppMethodBeat.o(87643);
-    return "";
-  }
-  
-  static String aZ(Context paramContext)
-  {
-    AppMethodBeat.i(87644);
-    if (p(paramContext, "android.permission.ACCESS_WIFI_STATE")) {
-      try
-      {
-        paramContext = (WifiManager)paramContext.getSystemService("wifi");
-        if (paramContext == null)
-        {
-          AppMethodBeat.o(87644);
-          return "";
-        }
-        paramContext = paramContext.getConnectionInfo().getMacAddress();
-        AppMethodBeat.o(87644);
-        return paramContext;
-      }
-      catch (Exception paramContext)
-      {
-        "get wifi address error".concat(String.valueOf(paramContext));
-        IB();
-        AppMethodBeat.o(87644);
-        return "";
-      }
-    }
-    IB();
-    AppMethodBeat.o(87644);
     return "";
   }
   
@@ -204,6 +176,35 @@ public final class s
   
   static String ba(Context paramContext)
   {
+    AppMethodBeat.i(87644);
+    if (checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE")) {
+      try
+      {
+        paramContext = (WifiManager)paramContext.getSystemService("wifi");
+        if (paramContext == null)
+        {
+          AppMethodBeat.o(87644);
+          return "";
+        }
+        paramContext = paramContext.getConnectionInfo().getMacAddress();
+        AppMethodBeat.o(87644);
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        "get wifi address error".concat(String.valueOf(paramContext));
+        Ik();
+        AppMethodBeat.o(87644);
+        return "";
+      }
+    }
+    Ik();
+    AppMethodBeat.o(87644);
+    return "";
+  }
+  
+  static String bb(Context paramContext)
+  {
     AppMethodBeat.i(87646);
     try
     {
@@ -217,13 +218,13 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      IC();
+      Il();
       AppMethodBeat.o(87646);
     }
     return null;
   }
   
-  static String bb(Context paramContext)
+  static String bc(Context paramContext)
   {
     AppMethodBeat.i(87647);
     try
@@ -238,18 +239,18 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      IC();
+      Il();
       AppMethodBeat.o(87647);
     }
     return null;
   }
   
-  static JSONArray bc(Context paramContext)
+  static JSONArray bd(Context paramContext)
   {
     AppMethodBeat.i(87648);
     try
     {
-      if ((p(paramContext, "android.permission.INTERNET")) && (p(paramContext, "android.permission.ACCESS_NETWORK_STATE")))
+      if ((checkPermission(paramContext, "android.permission.INTERNET")) && (checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE")))
       {
         paramContext = (WifiManager)paramContext.getSystemService("wifi");
         if (paramContext != null)
@@ -257,7 +258,7 @@ public final class s
           paramContext = paramContext.getScanResults();
           if ((paramContext != null) && (paramContext.size() > 0))
           {
-            Collections.sort(paramContext, new s.1());
+            Collections.sort(paramContext, new Comparator() {});
             JSONArray localJSONArray = new JSONArray();
             int i = 0;
             for (;;)
@@ -281,26 +282,26 @@ public final class s
       }
       else
       {
-        IB();
+        Ik();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        IC();
+        Il();
       }
     }
     AppMethodBeat.o(87648);
     return null;
   }
   
-  static String bd(Context paramContext)
+  static String be(Context paramContext)
   {
     AppMethodBeat.i(87649);
     try
     {
-      if (p(paramContext, "android.permission.WRITE_EXTERNAL_STORAGE"))
+      if (checkPermission(paramContext, "android.permission.WRITE_EXTERNAL_STORAGE"))
       {
         paramContext = Environment.getExternalStorageState();
         if ((paramContext != null) && (paramContext.equals("mounted")))
@@ -319,27 +320,27 @@ public final class s
       }
       else
       {
-        IB();
+        Ik();
         AppMethodBeat.o(87649);
         return null;
       }
     }
     catch (Throwable paramContext)
     {
-      ID();
+      Im();
       AppMethodBeat.o(87649);
     }
     return null;
   }
   
-  static String be(Context paramContext)
+  static String bf(Context paramContext)
   {
     AppMethodBeat.i(87651);
     for (;;)
     {
       try
       {
-        if ((!p(paramContext, "android.permission.INTERNET")) || (!p(paramContext, "android.permission.ACCESS_NETWORK_STATE"))) {
+        if ((!checkPermission(paramContext, "android.permission.INTERNET")) || (!checkPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE"))) {
           continue;
         }
         paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
@@ -361,7 +362,7 @@ public final class s
         String str1;
         String str2;
         paramContext = null;
-        IC();
+        Il();
         continue;
         paramContext = null;
         continue;
@@ -382,22 +383,32 @@ public final class s
       {
         paramContext = "MOBILE";
         continue;
-        IB();
+        Ik();
         paramContext = null;
       }
     }
   }
   
-  static boolean dA(String paramString)
+  static boolean checkPermission(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(87635);
-    if ((paramString != null) && (paramString.trim().length() >= 40))
+    boolean bool = false;
+    AppMethodBeat.i(87638);
+    try
     {
-      AppMethodBeat.o(87635);
-      return true;
+      int i = paramContext.getPackageManager().checkPermission(paramString, paramContext.getPackageName());
+      if (i == 0) {
+        bool = true;
+      }
     }
-    AppMethodBeat.o(87635);
-    return false;
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        Im();
+      }
+    }
+    AppMethodBeat.o(87638);
+    return bool;
   }
   
   static String decode(String paramString)
@@ -421,13 +432,13 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      ID();
+      Im();
       AppMethodBeat.o(87641);
     }
     return paramString;
   }
   
-  static boolean dz(String paramString)
+  static boolean jdMethod_do(String paramString)
   {
     AppMethodBeat.i(87634);
     if ((paramString == null) || (paramString.trim().length() == 0))
@@ -437,6 +448,18 @@ public final class s
     }
     AppMethodBeat.o(87634);
     return true;
+  }
+  
+  static boolean dp(String paramString)
+  {
+    AppMethodBeat.i(87635);
+    if ((paramString != null) && (paramString.trim().length() >= 40))
+    {
+      AppMethodBeat.o(87635);
+      return true;
+    }
+    AppMethodBeat.o(87635);
+    return false;
   }
   
   static String encode(String paramString)
@@ -460,7 +483,7 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      ID();
+      Im();
       AppMethodBeat.o(87642);
     }
     return paramString;
@@ -469,7 +492,7 @@ public final class s
   private static WifiInfo getWifiInfo(Context paramContext)
   {
     AppMethodBeat.i(87645);
-    if (p(paramContext, "android.permission.ACCESS_WIFI_STATE"))
+    if (checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE"))
     {
       paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
       if (paramContext != null)
@@ -482,32 +505,10 @@ public final class s
     AppMethodBeat.o(87645);
     return null;
   }
-  
-  static boolean p(Context paramContext, String paramString)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(87638);
-    try
-    {
-      int i = paramContext.getPackageManager().checkPermission(paramString, paramContext.getPackageName());
-      if (i == 0) {
-        bool = true;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        ID();
-      }
-    }
-    AppMethodBeat.o(87638);
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.s
  * JD-Core Version:    0.7.0.1
  */

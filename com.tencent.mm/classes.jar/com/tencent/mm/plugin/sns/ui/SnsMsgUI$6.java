@@ -14,14 +14,14 @@ final class SnsMsgUI$6
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(98858);
-    g.afC();
-    g.afA().gcy.a(this.xBy);
+    g.agS();
+    g.agQ().ghe.a(this.yOl);
     AppMethodBeat.o(98858);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.6
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ public enum FaceScanRect$a
   static
   {
     AppMethodBeat.i(104188);
-    pWE = new a("OPENED", 0);
-    pWF = new a("CLOSED", 1);
-    pWG = new a("INIT", 2);
-    pWH = new a[] { pWE, pWF, pWG };
+    qFj = new a("OPENED", 0);
+    qFk = new a("CLOSED", 1);
+    qFl = new a("INIT", 2);
+    qFm = new a[] { qFj, qFk, qFl };
     AppMethodBeat.o(104188);
   }
   
@@ -18,7 +18,7 @@ public enum FaceScanRect$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceScanRect.a
  * JD-Core Version:    0.7.0.1
  */

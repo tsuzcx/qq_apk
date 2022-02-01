@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.ab;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,21 +8,21 @@ import java.util.List;
 public abstract interface f
   extends ab
 {
-  public abstract boolean Vq();
+  public abstract boolean Wp();
   
-  public abstract void a(List<String> paramList, String paramString, bl parambl);
+  public abstract void a(List<String> paramList, String paramString, bo parambo);
   
-  public abstract CharSequence aKG(String paramString);
+  public abstract CharSequence aQj(String paramString);
   
-  public abstract void bj(LinkedList<String> paramLinkedList);
+  public abstract void bq(LinkedList<String> paramLinkedList);
   
-  public abstract boolean eWU();
+  public abstract boolean fmG();
   
-  public abstract boolean eWV();
+  public abstract boolean fmH();
   
-  public abstract boolean eWW();
+  public abstract boolean fmI();
   
-  public abstract boolean eWX();
+  public abstract boolean fmJ();
 }
 
 

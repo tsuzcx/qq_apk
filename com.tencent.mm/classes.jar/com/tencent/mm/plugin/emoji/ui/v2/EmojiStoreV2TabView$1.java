@@ -13,15 +13,15 @@ final class EmojiStoreV2TabView$1
   {
     AppMethodBeat.i(109371);
     int i = ((Integer)paramView.getTag()).intValue();
-    if (EmojiStoreV2TabView.a(this.oIo) != null) {
-      EmojiStoreV2TabView.a(this.oIo).onTabClick(i);
+    if (EmojiStoreV2TabView.a(this.plO) != null) {
+      EmojiStoreV2TabView.a(this.plO).onTabClick(i);
     }
     AppMethodBeat.o(109371);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView.1
  * JD-Core Version:    0.7.0.1
  */

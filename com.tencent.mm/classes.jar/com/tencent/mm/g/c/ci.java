@@ -8,19 +8,16 @@ public abstract class ci
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFV = "protocolNumber".hashCode();
-  private static final int eFW = "logContent".hashCode();
-  private static final int ekU = "createTime".hashCode();
-  private static final int exb = "id".hashCode();
+  private static final int epS = "modifyTime".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFT = true;
-  private boolean eFU = true;
-  private boolean ekx = true;
-  private boolean ewY = true;
-  public long field_createTime;
-  public String field_id;
-  public String field_logContent;
-  public int field_protocolNumber;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  private boolean epw = true;
+  public String field_key;
+  public long field_modifyTime;
+  public String field_value;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +32,11 @@ public abstract class ci
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (exb != k) {
+      if (key_HASHCODE != k) {
         break label65;
       }
-      this.field_id = paramCursor.getString(i);
-      this.ewY = true;
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
@@ -47,12 +44,10 @@ public abstract class ci
       break label20;
       break;
       label65:
-      if (eFV == k) {
-        this.field_protocolNumber = paramCursor.getInt(i);
-      } else if (eFW == k) {
-        this.field_logContent = paramCursor.getString(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getLong(i);
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getString(i);
+      } else if (epS == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -62,17 +57,14 @@ public abstract class ci
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ewY) {
-      localContentValues.put("id", this.field_id);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.eFT) {
-      localContentValues.put("protocolNumber", Integer.valueOf(this.field_protocolNumber));
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    if (this.eFU) {
-      localContentValues.put("logContent", this.field_logContent);
-    }
-    if (this.ekx) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.epw) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

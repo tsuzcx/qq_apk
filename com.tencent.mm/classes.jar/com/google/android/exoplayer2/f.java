@@ -1,11 +1,11 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.j;
+import com.google.android.exoplayer2.source.i;
 
 public abstract interface f
   extends q
 {
-  public abstract void a(j paramj);
+  public abstract void a(i parami);
   
   public abstract void a(c... paramVarArgs);
   
@@ -23,15 +23,15 @@ public abstract interface f
   
   public static final class c
   {
-    public final f.b aQM;
-    public final int aQN;
-    public final Object aQO;
+    public final f.b aRH;
+    public final int aRI;
+    public final Object aRJ;
     
     public c(f.b paramb, int paramInt, Object paramObject)
     {
-      this.aQM = paramb;
-      this.aQN = paramInt;
-      this.aQO = paramObject;
+      this.aRH = paramb;
+      this.aRI = paramInt;
+      this.aRJ = paramObject;
     }
   }
 }

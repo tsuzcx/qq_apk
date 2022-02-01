@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public final class d
 {
-  public final p bVX;
+  public final p bTF;
   public final String mName;
   
   public d(p paramp, String paramString)
   {
-    this.bVX = paramp;
+    this.bTF = paramp;
     this.mName = paramString;
   }
   
@@ -23,13 +23,13 @@ public final class d
         return false;
       }
       paramObject = (d)paramObject;
-    } while ((this.bVX == paramObject.bVX) && (this.mName.equals(paramObject.mName)));
+    } while ((this.bTF == paramObject.bTF) && (this.mName.equals(paramObject.mName)));
     return false;
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.bVX, this.mName });
+    return Arrays.hashCode(new Object[] { this.bTF, this.mName });
   }
 }
 

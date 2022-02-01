@@ -6,19 +6,19 @@ import com.tencent.mm.plugin.report.service.h;
 public final class e
   extends a
 {
-  public long sDp = 0L;
-  public long sDq = 0L;
+  public long tKX = 0L;
+  public long tKY = 0L;
   
-  public final void bmJ()
+  public final void btF()
   {
     AppMethodBeat.i(25502);
-    h.vKh.f(12935, new Object[] { Long.valueOf(this.sDp), Long.valueOf(this.sDq) });
+    h.wUl.f(12935, new Object[] { Long.valueOf(this.tKX), Long.valueOf(this.tKY) });
     AppMethodBeat.o(25502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.e
  * JD-Core Version:    0.7.0.1
  */

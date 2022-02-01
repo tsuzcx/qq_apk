@@ -8,8 +8,8 @@ import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.o.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class SynchronizedVideoPlayTextureView
   extends VideoPlayerTextureView
@@ -40,54 +40,54 @@ public class SynchronizedVideoPlayTextureView
     AppMethodBeat.o(169159);
   }
   
-  protected final void bei()
+  protected final void blc()
   {
     AppMethodBeat.i(169161);
-    ad.i("MicroMsg.SynchronizedVideoPlayTextureView", "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
+    ac.i("MicroMsg.SynchronizedVideoPlayTextureView", "%d open video [%s]", new Object[] { Integer.valueOf(hashCode()), this.path });
     synchronized (this.lock)
     {
-      if (this.oNJ != null)
+      if (this.prd != null)
       {
-        this.oNJ.tAl = null;
-        this.oNJ.stop();
-        this.oNJ.release();
-        this.oNJ = null;
+        this.prd.uIH = null;
+        this.prd.stop();
+        this.prd.release();
+        this.prd = null;
       }
-      if (bt.isNullOrNil(this.path))
+      if (bs.isNullOrNil(this.path))
       {
-        ad.w("MicroMsg.SynchronizedVideoPlayTextureView", "%d open video but path is null.", new Object[] { Integer.valueOf(hashCode()) });
+        ac.w("MicroMsg.SynchronizedVideoPlayTextureView", "%d open video but path is null.", new Object[] { Integer.valueOf(hashCode()) });
         AppMethodBeat.o(169161);
         return;
       }
       try
       {
-        this.WD = false;
-        this.oNJ = new j(Looper.getMainLooper());
-        this.oNJ.setPath(this.path);
-        this.oNJ.setIOnlineCache(this.tzW);
-        this.oNJ.setNeedResetExtractor(this.oNP);
-        this.oNJ.setIsOnlineVideoType(this.oNQ);
-        this.oNJ.tAl = this.oNT;
-        this.oNJ.setSurface(this.mSurface);
-        this.oNJ.nd(this.oNR);
+        this.Xy = false;
+        this.prd = new j(Looper.getMainLooper());
+        this.prd.setPath(this.path);
+        this.prd.setIOnlineCache(this.uIt);
+        this.prd.setNeedResetExtractor(this.prj);
+        this.prd.setIsOnlineVideoType(this.prk);
+        this.prd.uIH = this.prn;
+        this.prd.setSurface(this.mSurface);
+        this.prd.nW(this.prl);
         if (this.mSurface != null) {
-          this.oNJ.cuQ();
+          this.prd.cIc();
         }
         for (;;)
         {
           AppMethodBeat.o(169161);
           return;
-          if (this.oNL) {
-            this.oNJ.cuQ();
+          if (this.prf) {
+            this.prd.cIc();
           }
         }
         localObject2 = finally;
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("MicroMsg.SynchronizedVideoPlayTextureView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
-        if (this.oNM != null) {
-          this.oNM.onError(-1, -1);
+        ac.printErrStackTrace("MicroMsg.SynchronizedVideoPlayTextureView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
+        if (this.prg != null) {
+          this.prg.onError(-1, -1);
         }
         AppMethodBeat.o(169161);
         return;
@@ -102,48 +102,48 @@ public class SynchronizedVideoPlayTextureView
     {
       synchronized (this.lock)
       {
-        ad.i("MicroMsg.SynchronizedVideoPlayTextureView", "%d surface[%d] available [%d, %d] pauseByDestroyed[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurfaceTexture.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.kuD) });
+        ac.i("MicroMsg.SynchronizedVideoPlayTextureView", "%d surface[%d] available [%d, %d] pauseByDestroyed[%b]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramSurfaceTexture.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.kVS) });
         try
         {
-          eTg();
-          super.i(this.mSurface);
+          fiQ();
+          super.h(this.mSurface);
           this.mSurface = new Surface(paramSurfaceTexture);
-          if ((this.oNJ != null) && (this.WD)) {
+          if ((this.prd != null) && (this.Xy)) {
             continue;
           }
-          bei();
-          bGA();
-          if (this.oNO != null) {
-            this.oNO.aCw();
+          blc();
+          bNN();
+          if (this.pri != null) {
+            this.pri.aJn();
           }
         }
         catch (Exception paramSurfaceTexture)
         {
-          ad.printErrStackTrace("MicroMsg.SynchronizedVideoPlayTextureView", paramSurfaceTexture, "onSurfaceTextureAvailable failed", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SynchronizedVideoPlayTextureView", paramSurfaceTexture, "onSurfaceTextureAvailable failed", new Object[0]);
           continue;
         }
         AppMethodBeat.o(169167);
         return;
-        this.oNJ.j(this.mSurface);
-        if (!d.lf(23)) {
+        this.prd.i(this.mSurface);
+        if (!d.kZ(23)) {
           break label236;
         }
-        if (this.kuD)
+        if (this.kVS)
         {
-          this.oNJ.start();
-          this.kuD = false;
+          this.prd.start();
+          this.kVS = false;
         }
       }
-      this.kuE = true;
-      this.kuC = 0L;
-      this.oNJ.setMute(true);
-      this.oNJ.start();
+      this.kVT = true;
+      this.kVR = 0L;
+      this.prd.setMute(true);
+      this.prd.start();
       continue;
       label236:
-      if (this.kuD) {
-        d(this.oNJ.cPu(), true);
+      if (this.kVS) {
+        d(this.prd.ddd(), true);
       } else {
-        d(this.oNJ.cPu(), false);
+        d(this.prd.ddd(), false);
       }
     }
   }
@@ -153,23 +153,34 @@ public class SynchronizedVideoPlayTextureView
     AppMethodBeat.i(169168);
     synchronized (this.lock)
     {
-      if ((d.lf(23)) && (this.kuE) && (this.kuC > 0L))
+      if ((d.kZ(23)) && (this.kVT) && (this.kVR > 0L))
       {
-        if (this.oNJ != null)
+        if (this.prd != null)
         {
-          this.oNJ.pause();
-          this.oNJ.setMute(this.fqj);
+          this.prd.pause();
+          this.prd.setMute(this.ftN);
         }
-        this.kuE = false;
+        this.kVT = false;
       }
-      if ((this.kuC > 0L) && (this.CnA != null))
+      if ((this.kVR > 0L) && (this.DFT != null))
       {
-        ad.i("MicroMsg.SynchronizedVideoPlayTextureView", "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
-        this.CnA.beo();
-        this.CnA = null;
+        ac.i("MicroMsg.SynchronizedVideoPlayTextureView", "%d notify surface update", new Object[] { Integer.valueOf(hashCode()) });
+        this.DFT.bli();
+        this.DFT = null;
       }
-      this.kuC = System.currentTimeMillis();
+      this.kVR = System.currentTimeMillis();
       AppMethodBeat.o(169168);
+      return;
+    }
+  }
+  
+  public final void p(double paramDouble)
+  {
+    AppMethodBeat.i(169165);
+    synchronized (this.lock)
+    {
+      super.p(paramDouble);
+      AppMethodBeat.o(169165);
       return;
     }
   }
@@ -180,18 +191,8 @@ public class SynchronizedVideoPlayTextureView
     synchronized (this.lock)
     {
       super.pause();
+      this.pre = false;
       AppMethodBeat.o(169164);
-      return;
-    }
-  }
-  
-  public final void q(double paramDouble)
-  {
-    AppMethodBeat.i(169165);
-    synchronized (this.lock)
-    {
-      super.q(paramDouble);
-      AppMethodBeat.o(169165);
       return;
     }
   }
@@ -223,6 +224,7 @@ public class SynchronizedVideoPlayTextureView
     AppMethodBeat.i(169163);
     synchronized (this.lock)
     {
+      this.pre = true;
       boolean bool = super.start();
       AppMethodBeat.o(169163);
       return bool;
@@ -242,7 +244,7 @@ public class SynchronizedVideoPlayTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.SynchronizedVideoPlayTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -31,89 +31,90 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private LinearLayout HEW;
-  private LinearLayout HEX;
-  private int HFH;
-  private int HFI;
-  private LinearLayout HFJ;
-  private Button HFK;
-  private Button HFL;
-  private Button HFM;
-  public LinearLayout HFN;
-  private TextView HFO;
-  private a HFP;
-  private a HFQ;
-  public a HFR;
-  private ViewTreeObserver acK;
-  public View jGG;
-  private Dialog kBi;
-  private BottomSheetBehavior kBl;
-  private boolean kBm;
-  private int kBn;
-  private boolean kBp;
+  private LinearLayout Jfq;
+  private LinearLayout Jfr;
+  private int Jge;
+  private int Jgf;
+  private LinearLayout Jgg;
+  private Button Jgh;
+  private Button Jgi;
+  private Button Jgj;
+  public LinearLayout Jgk;
+  private TextView Jgl;
+  private a Jgm;
+  private a Jgn;
+  public a Jgo;
+  private ViewTreeObserver adE;
+  private int iHV;
+  public View khe;
+  private Dialog lcA;
+  private BottomSheetBehavior lcD;
+  private boolean lcE;
+  private int lcF;
+  private boolean lcH;
   private Context mContext;
-  private View nO;
-  private boolean qVs;
-  private boolean qVt;
+  private View oP;
+  private boolean rVy;
+  private boolean rVz;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(195218);
-    this.kBm = false;
-    this.qVt = false;
-    this.kBp = false;
-    this.HFH = 0;
-    this.HFI = 0;
+    AppMethodBeat.i(199689);
+    this.lcE = false;
+    this.rVz = false;
+    this.lcH = false;
+    this.Jge = 0;
+    this.Jgf = 0;
     this.mContext = paramContext;
-    this.HFH = 0;
-    this.HFI = 0;
-    aL(this.mContext);
-    AppMethodBeat.o(195218);
+    this.Jge = 0;
+    this.Jgf = 0;
+    aM(this.mContext);
+    AppMethodBeat.o(199689);
   }
   
-  public g(Context paramContext, int paramInt)
+  public g(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(195219);
-    this.kBm = false;
-    this.qVt = false;
-    this.kBp = false;
-    this.HFH = 0;
-    this.HFI = 0;
+    AppMethodBeat.i(199690);
+    this.lcE = false;
+    this.rVz = false;
+    this.lcH = false;
+    this.Jge = 0;
+    this.Jgf = 0;
     this.mContext = paramContext;
-    this.HFH = paramInt;
-    this.HFI = 3;
-    aL(this.mContext);
-    AppMethodBeat.o(195219);
+    this.Jge = paramInt1;
+    this.Jgf = paramInt2;
+    aM(this.mContext);
+    AppMethodBeat.o(199690);
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
-    AppMethodBeat.i(195222);
+    AppMethodBeat.i(199693);
     if ((this.mContext instanceof Activity)) {
-      this.nO = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.oP = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.kBi = new a(paramContext, 2131820788);
-    this.jGG = View.inflate(paramContext, 2131494796, null);
-    this.HEW = ((LinearLayout)this.jGG.findViewById(2131297466));
-    this.HEX = ((LinearLayout)this.jGG.findViewById(2131297462));
-    this.HFN = ((LinearLayout)this.jGG.findViewById(2131297461));
-    ffz();
+    this.lcA = new a(paramContext, 2131820788);
+    this.khe = View.inflate(paramContext, 2131494796, null);
+    this.Jfq = ((LinearLayout)this.khe.findViewById(2131297466));
+    this.Jfr = ((LinearLayout)this.khe.findViewById(2131297462));
+    this.Jgk = ((LinearLayout)this.khe.findViewById(2131297461));
+    fvy();
     initHeaderView();
-    this.kBm = aov();
-    this.kBi.setContentView(this.jGG);
-    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-    this.kBl.setState(3);
-    this.kBl.lq = new BottomSheetBehavior.a()
+    this.lcE = aly();
+    this.lcA.setContentView(this.khe);
+    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+    this.lcD.setState(3);
+    this.lcD.mp = new BottomSheetBehavior.a()
     {
       public final void N(int paramAnonymousInt) {}
       
-      public final void h(float paramAnonymousFloat) {}
+      public final void l(float paramAnonymousFloat) {}
     };
-    this.kBi.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.lcA.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(195213);
+        AppMethodBeat.i(199684);
         if (g.a(g.this) != null)
         {
           if (!g.a(g.this).isAlive()) {
@@ -125,105 +126,105 @@ public final class g
         if (!g.c(g.this)) {
           g.d(g.this);
         }
-        AppMethodBeat.o(195213);
+        AppMethodBeat.o(199684);
       }
     });
-    AppMethodBeat.o(195222);
+    AppMethodBeat.o(199693);
   }
   
-  private boolean aov()
+  private boolean aly()
   {
-    AppMethodBeat.i(195235);
+    AppMethodBeat.i(199707);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(195235);
+      AppMethodBeat.o(199707);
       return true;
     }
-    AppMethodBeat.o(195235);
+    AppMethodBeat.o(199707);
     return false;
   }
   
   @TargetApi(23)
-  private void eqc()
+  private void eFw()
   {
-    AppMethodBeat.i(195229);
-    if ((Build.VERSION.SDK_INT >= 23) && (this.kBi != null))
+    AppMethodBeat.i(199701);
+    if ((Build.VERSION.SDK_INT >= 23) && (this.lcA != null))
     {
-      this.kBi.getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.kBi.getWindow().setStatusBarColor(0);
+      this.lcA.getWindow().getDecorView().setSystemUiVisibility(9216);
+      this.lcA.getWindow().setStatusBarColor(0);
     }
-    AppMethodBeat.o(195229);
+    AppMethodBeat.o(199701);
   }
   
-  private void ffx()
+  private void fvv()
   {
-    AppMethodBeat.i(195234);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jGG.getLayoutParams();
-    if ((this.kBm) && (this.nO != null))
+    AppMethodBeat.i(199706);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.khe.getLayoutParams();
+    if ((this.lcE) && (this.oP != null))
     {
       Rect localRect = new Rect();
-      this.nO.getWindowVisibleDisplayFrame(localRect);
+      this.oP.getWindowVisibleDisplayFrame(localRect);
       localLayoutParams.width = localRect.right;
     }
-    this.jGG.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(195234);
+    this.khe.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(199706);
   }
   
-  private void ffz()
+  private void fvy()
   {
-    AppMethodBeat.i(195227);
-    this.HFJ = ((LinearLayout)this.jGG.findViewById(2131297590));
-    this.HFK = ((Button)this.jGG.findViewById(2131297587));
-    this.HFL = ((Button)this.jGG.findViewById(2131297588));
-    this.HFM = ((Button)this.jGG.findViewById(2131297600));
-    switch (this.HFH)
+    AppMethodBeat.i(199699);
+    this.Jgg = ((LinearLayout)this.khe.findViewById(2131297590));
+    this.Jgh = ((Button)this.khe.findViewById(2131297587));
+    this.Jgi = ((Button)this.khe.findViewById(2131297588));
+    this.Jgj = ((Button)this.khe.findViewById(2131297600));
+    switch (this.Jge)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(195227);
+      AppMethodBeat.o(199699);
       return;
-      this.HFJ.setVisibility(8);
-      AppMethodBeat.o(195227);
+      this.Jgg.setVisibility(8);
+      AppMethodBeat.o(199699);
       return;
-      this.HFJ.setVisibility(0);
-      this.HFM.setVisibility(8);
-      this.HFK.setOnClickListener(new View.OnClickListener()
+      this.Jgg.setVisibility(0);
+      this.Jgj.setVisibility(8);
+      this.Jgh.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(195214);
+          AppMethodBeat.i(199685);
           if (g.e(g.this) != null) {
             g.e(g.this).onClick();
           }
-          AppMethodBeat.o(195214);
+          AppMethodBeat.o(199685);
         }
       });
-      this.HFL.setOnClickListener(new View.OnClickListener()
+      this.Jgi.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(195215);
+          AppMethodBeat.i(199686);
           if (g.f(g.this) != null) {
             g.f(g.this).onClick();
           }
-          AppMethodBeat.o(195215);
+          AppMethodBeat.o(199686);
         }
       });
-      AppMethodBeat.o(195227);
+      AppMethodBeat.o(199699);
       return;
-      this.HFJ.setVisibility(0);
-      this.HFK.setVisibility(8);
-      this.HFL.setVisibility(8);
-      this.HFM.setOnClickListener(new View.OnClickListener()
+      this.Jgg.setVisibility(0);
+      this.Jgh.setVisibility(8);
+      this.Jgi.setVisibility(8);
+      this.Jgj.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(195216);
+          AppMethodBeat.i(199687);
           if (g.g(g.this) != null) {
             g.g(g.this).onClick();
           }
-          AppMethodBeat.o(195216);
+          AppMethodBeat.o(199687);
         }
       });
     }
@@ -231,151 +232,151 @@ public final class g
   
   private int getRotation()
   {
-    AppMethodBeat.i(195221);
+    AppMethodBeat.i(199692);
     int i = 0;
     if ((this.mContext instanceof Activity)) {
       i = ((Activity)this.mContext).getWindow().getWindowManager().getDefaultDisplay().getRotation();
     }
-    AppMethodBeat.o(195221);
+    AppMethodBeat.o(199692);
     return i;
   }
   
   private void initHeaderView()
   {
-    AppMethodBeat.i(195228);
-    if (this.HEW != null)
+    AppMethodBeat.i(199700);
+    if (this.Jfq != null)
     {
-      this.HEW.setVisibility(0);
-      switch (this.HFI)
+      this.Jfq.setVisibility(0);
+      switch (this.Jgf)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(195228);
+      AppMethodBeat.o(199700);
       return;
-      this.HEW.setVisibility(8);
-      AppMethodBeat.o(195228);
+      this.Jfq.setVisibility(8);
+      AppMethodBeat.o(199700);
       return;
       View localView = LayoutInflater.from(this.mContext).inflate(2131494428, null);
       localView.findViewById(2131298372).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(195217);
-          g.this.bfo();
-          AppMethodBeat.o(195217);
+          AppMethodBeat.i(199688);
+          g.this.bmi();
+          AppMethodBeat.o(199688);
         }
       });
-      this.HEW.removeAllViews();
-      this.HEW.setGravity(17);
-      this.HEW.addView(localView, -1, -2);
-      AppMethodBeat.o(195228);
+      this.Jfq.removeAllViews();
+      this.Jfq.setGravity(17);
+      this.Jfq.addView(localView, -1, -2);
+      AppMethodBeat.o(199700);
       return;
       localView = LayoutInflater.from(this.mContext).inflate(2131494429, null);
-      this.HFO = ((TextView)localView.findViewById(2131305945));
-      this.HEW.removeAllViews();
-      this.HEW.setGravity(17);
-      this.HEW.addView(localView, -1, -2);
+      this.Jgl = ((TextView)localView.findViewById(2131305945));
+      this.Jfq.removeAllViews();
+      this.Jfq.setGravity(17);
+      this.Jfq.addView(localView, -1, -2);
     }
   }
   
   public final void a(a parama1, a parama2)
   {
-    this.HFP = parama1;
-    this.HFQ = parama2;
+    this.Jgm = parama1;
+    this.Jgn = parama2;
   }
   
-  public final void aaH(int paramInt)
+  public final void acS(int paramInt)
   {
-    AppMethodBeat.i(195225);
-    if (this.HFM != null) {
+    AppMethodBeat.i(199697);
+    if (this.Jgj != null) {
       switch (paramInt)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(195225);
+      AppMethodBeat.o(199697);
       return;
-      this.HFM.setBackgroundResource(2131231365);
-      AppMethodBeat.o(195225);
+      this.Jgj.setBackgroundResource(2131231365);
+      AppMethodBeat.o(199697);
       return;
-      this.HFM.setBackgroundResource(2131231367);
-      this.HFM.setTextColor(this.mContext.getResources().getColor(2131101180));
-      AppMethodBeat.o(195225);
+      this.Jgj.setBackgroundResource(2131231367);
+      this.Jgj.setTextColor(this.mContext.getResources().getColor(2131101180));
+      AppMethodBeat.o(199697);
       return;
-      this.HFM.setBackgroundResource(2131231370);
-      AppMethodBeat.o(195225);
+      this.Jgj.setBackgroundResource(2131231370);
+      AppMethodBeat.o(199697);
       return;
-      this.HFM.setBackgroundResource(2131231375);
-      AppMethodBeat.o(195225);
+      this.Jgj.setBackgroundResource(2131231375);
+      AppMethodBeat.o(199697);
       return;
-      this.HFM.setBackgroundResource(2131231362);
-      AppMethodBeat.o(195225);
+      this.Jgj.setBackgroundResource(2131231362);
+      AppMethodBeat.o(199697);
       return;
-      this.HFM.setBackgroundResource(2131231368);
+      this.Jgj.setBackgroundResource(2131231368);
     }
   }
   
-  public final void aw(CharSequence paramCharSequence)
+  public final void ax(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(195224);
-    if (this.HFM != null) {
-      this.HFM.setText(paramCharSequence);
+    AppMethodBeat.i(199696);
+    if (this.Jgj != null) {
+      this.Jgj.setText(paramCharSequence);
     }
-    AppMethodBeat.o(195224);
+    AppMethodBeat.o(199696);
   }
   
-  public final void bfo()
+  public final void bmi()
   {
-    AppMethodBeat.i(195232);
-    if (this.kBi != null)
+    AppMethodBeat.i(199704);
+    if (this.lcA != null)
     {
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.kBi.dismiss();
+        this.lcA.dismiss();
       }
-      if (this.kBl != null) {
-        this.kBl.lh = true;
+      if (this.lcD != null) {
+        this.lcD.mg = true;
       }
     }
-    AppMethodBeat.o(195232);
+    AppMethodBeat.o(199704);
   }
   
   public final void c(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    AppMethodBeat.i(195223);
-    if ((this.HFK != null) && (this.HFL != null))
+    AppMethodBeat.i(199695);
+    if ((this.Jgh != null) && (this.Jgi != null))
     {
-      this.HFK.setText(paramCharSequence1);
-      this.HFL.setText(paramCharSequence2);
+      this.Jgh.setText(paramCharSequence1);
+      this.Jgi.setText(paramCharSequence2);
     }
-    AppMethodBeat.o(195223);
+    AppMethodBeat.o(199695);
   }
   
-  public final void csG()
+  public final void cED()
   {
-    AppMethodBeat.i(195231);
-    this.kBm = aov();
-    this.kBn = getRotation();
-    if (this.kBi != null)
+    AppMethodBeat.i(199703);
+    this.lcE = aly();
+    this.lcF = getRotation();
+    if (this.lcA != null)
     {
-      ((ViewGroup)this.jGG.getParent()).setVisibility(0);
-      ffx();
+      ((ViewGroup)this.khe.getParent()).setVisibility(0);
+      fvv();
       if (Build.VERSION.SDK_INT >= 21) {
-        this.kBi.getWindow().addFlags(-2147483648);
+        this.lcA.getWindow().addFlags(-2147483648);
       }
-      if (this.qVs) {
-        eqc();
+      if (this.rVy) {
+        eFw();
       }
-      if (!this.kBp) {
+      if (!this.lcH) {
         break label219;
       }
-      this.kBi.getWindow().setFlags(8, 8);
-      this.kBi.getWindow().addFlags(131200);
-      this.kBi.getWindow().getDecorView().setSystemUiVisibility(6);
-      if (this.nO != null) {
-        if (this.acK != null) {
+      this.lcA.getWindow().setFlags(8, 8);
+      this.lcA.getWindow().addFlags(131200);
+      this.lcA.getWindow().getDecorView().setSystemUiVisibility(6);
+      if (this.oP != null) {
+        if (this.adE != null) {
           break label274;
         }
       }
@@ -383,82 +384,99 @@ public final class g
     label274:
     for (int i = 1;; i = 0)
     {
-      this.acK = this.nO.getViewTreeObserver();
+      this.adE = this.oP.getViewTreeObserver();
       if (i != 0) {
-        this.acK.addOnGlobalLayoutListener(this);
+        this.adE.addOnGlobalLayoutListener(this);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.kBi.show();
+        this.lcA.show();
       }
-      if (this.kBl != null) {
-        this.kBl.lh = false;
+      if (this.lcD != null) {
+        this.lcD.mg = false;
       }
-      AppMethodBeat.o(195231);
+      AppMethodBeat.o(199703);
       return;
       label219:
-      this.kBi.getWindow().clearFlags(8);
-      this.kBi.getWindow().clearFlags(131072);
-      this.kBi.getWindow().clearFlags(128);
-      this.kBi.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.lcA.getWindow().clearFlags(8);
+      this.lcA.getWindow().clearFlags(131072);
+      this.lcA.getWindow().clearFlags(128);
+      this.lcA.getWindow().getDecorView().setSystemUiVisibility(0);
       break;
     }
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(195233);
-    if ((this.kBi != null) && (this.kBi.isShowing()))
+    AppMethodBeat.i(199705);
+    if ((this.lcA != null) && (this.lcA.isShowing()))
     {
-      AppMethodBeat.o(195233);
+      AppMethodBeat.o(199705);
       return true;
     }
-    AppMethodBeat.o(195233);
+    AppMethodBeat.o(199705);
     return false;
   }
   
   public final void onGlobalLayout()
   {
-    AppMethodBeat.i(195220);
+    AppMethodBeat.i(199691);
     if (isShowing())
     {
-      View localView = this.nO;
+      View localView = this.oP;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bfo();
-        AppMethodBeat.o(195220);
+        bmi();
+        AppMethodBeat.o(199691);
         return;
       }
-      if ((isShowing()) && ((this.kBm != aov()) || (this.kBn != getRotation()))) {
-        bfo();
+      if ((isShowing()) && ((this.lcE != aly()) || (this.lcF != getRotation()))) {
+        bmi();
       }
     }
-    AppMethodBeat.o(195220);
+    AppMethodBeat.o(199691);
   }
   
   public final void setCustomView(View paramView)
   {
-    AppMethodBeat.i(195230);
-    if (this.HFN != null)
+    AppMethodBeat.i(199702);
+    if (this.Jgk != null)
     {
-      this.HFN.setVisibility(0);
-      this.HFN.removeAllViews();
-      this.HFN.setGravity(17);
-      this.HFN.addView(paramView, -1, -2);
+      this.Jgk.setVisibility(0);
+      this.Jgk.removeAllViews();
+      this.Jgk.setGravity(17);
+      this.Jgk.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(195230);
+    AppMethodBeat.o(199702);
   }
   
   public final void setHeaderView(View paramView)
   {
-    AppMethodBeat.i(195226);
-    if (this.HEW != null)
+    AppMethodBeat.i(199698);
+    if (this.Jfq != null)
     {
-      this.HEW.setVisibility(0);
-      this.HEW.removeAllViews();
-      this.HEW.setGravity(17);
-      this.HEW.addView(paramView, -1, -2);
+      this.Jfq.setVisibility(0);
+      this.Jfq.removeAllViews();
+      this.Jfq.setGravity(17);
+      this.Jfq.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(195226);
+    AppMethodBeat.o(199698);
+  }
+  
+  public final void setHeight(int paramInt)
+  {
+    AppMethodBeat.i(199694);
+    if (paramInt != 0)
+    {
+      this.iHV = paramInt;
+      if (this.iHV != 0) {
+        this.lcD.J(this.iHV);
+      }
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.khe.getLayoutParams();
+      localLayoutParams.height = paramInt;
+      this.khe.setLayoutParams(localLayoutParams);
+      this.khe.invalidate();
+    }
+    AppMethodBeat.o(199694);
   }
   
   public static abstract interface a
@@ -468,7 +486,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -12,45 +12,45 @@ import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.plugin.f;
+import com.tencent.mm.plugin.recordvideo.plugin.h;
 import com.tencent.mm.plugin.recordvideo.plugin.p;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.BaseEditVideoPluginLayout;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView;
-import com.tencent.mm.plugin.vlog.model.j;
-import com.tencent.mm.plugin.vlog.model.z;
-import com.tencent.mm.plugin.vlog.ui.manager.b.b;
-import com.tencent.mm.plugin.vlog.ui.manager.b.d;
-import com.tencent.mm.plugin.vlog.ui.manager.b.e;
+import com.tencent.mm.plugin.vlog.model.ab;
+import com.tencent.mm.plugin.vlog.model.v;
+import com.tencent.mm.plugin.vlog.ui.manager.a.b;
+import com.tencent.mm.plugin.vlog.ui.manager.a.d;
+import com.tencent.mm.plugin.vlog.ui.manager.a.e;
 import com.tencent.mm.plugin.vlog.ui.preview.VLogPreloadPlayView;
-import com.tencent.mm.protocal.protobuf.aoa;
-import com.tencent.mm.protocal.protobuf.kh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.are;
+import com.tencent.mm.protocal.protobuf.kn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.a.m;
 import d.g.a.q;
 import d.g.b.k;
-import d.y;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/VLogPreviewPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "previewPlayerPlugin", "Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogPreviewPlayerPlugin;", "vLogDataManager", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "vLogGenerateManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "videoGenerateCallback", "Lkotlin/Function3;", "", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "getPlayerView", "Landroid/view/View;", "initLogic", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "release", "requestVLogScript", "sid", "fid", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-vlog_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/VLogPreviewPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "previewPlayerPlugin", "Lcom/tencent/mm/plugin/vlog/ui/plugin/VLogPreviewPlayerPlugin;", "vLogDataManager", "Lcom/tencent/mm/plugin/vlog/model/VLogDataManager;", "vLogGenerateManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "videoGenerateCallback", "Lkotlin/Function3;", "", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "getPlayerView", "Landroid/view/View;", "initLogic", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "model", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "release", "requestVLogScript", "sid", "fid", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-vlog_release"})
 public final class VLogPreviewPluginLayout
   extends BaseEditVideoPluginLayout
   implements com.tencent.mm.plugin.recordvideo.plugin.parent.d
 {
-  public static final a zbV;
-  private final z Ltl;
-  private q<? super Boolean, ? super Integer, ? super b.b, y> zbR;
-  private com.tencent.mm.plugin.vlog.ui.plugin.a zbS;
-  private com.tencent.mm.plugin.vlog.ui.manager.b zbT;
+  public static final VLogPreviewPluginLayout.a Ask;
+  private q<? super Boolean, ? super Integer, ? super a.b, d.y> Asg;
+  private com.tencent.mm.plugin.vlog.ui.plugin.g Ash;
+  private com.tencent.mm.plugin.vlog.ui.manager.a Asi;
+  private final v Asj;
   
   static
   {
     AppMethodBeat.i(111121);
-    zbV = new a((byte)0);
+    Ask = new VLogPreviewPluginLayout.a((byte)0);
     AppMethodBeat.o(111121);
   }
   
@@ -58,19 +58,19 @@ public final class VLogPreviewPluginLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(111120);
-    this.zbR = ((q)new c(this, paramContext));
-    paramContext = com.tencent.mm.plugin.vlog.ui.manager.d.zcE;
-    this.Ltl = com.tencent.mm.plugin.vlog.ui.manager.d.fZa();
-    ad.i("MicroMsg.VLogPreviewPluginLayout", "VLogPreviewPluginLayout invoke init");
+    this.Asg = ((q)new c(this, paramContext));
+    paramContext = com.tencent.mm.plugin.vlog.ui.manager.c.AsH;
+    this.Asj = com.tencent.mm.plugin.vlog.ui.manager.c.ega();
+    ac.i("MicroMsg.VLogPreviewPluginLayout", "VLogPreviewPluginLayout invoke init");
     AppMethodBeat.o(111120);
   }
   
   public final void a(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
     AppMethodBeat.i(111115);
-    ad.i("MicroMsg.VLogPreviewPluginLayout", "loadCurrentPage model:".concat(String.valueOf(paramb)));
+    ac.i("MicroMsg.VLogPreviewPluginLayout", "loadCurrentPage model:".concat(String.valueOf(paramb)));
     super.a(paramb);
-    d.b.a(this, d.c.voD);
+    d.b.a(this, d.c.wxk);
     AppMethodBeat.o(111115);
   }
   
@@ -83,7 +83,7 @@ public final class VLogPreviewPluginLayout
     super.a(parama, paramRecordConfigProvider);
     getCropVideoPlugin().setVisibility(8);
     f localf = getEditFinishPlugin();
-    parama = paramRecordConfigProvider.vhI;
+    parama = paramRecordConfigProvider.wqu;
     Object localObject1;
     label79:
     Object localObject2;
@@ -91,62 +91,62 @@ public final class VLogPreviewPluginLayout
     Object localObject3;
     if (parama != null)
     {
-      parama = Integer.valueOf(parama.fGS);
-      localObject1 = paramRecordConfigProvider.vhI;
+      parama = Integer.valueOf(parama.fKz);
+      localObject1 = paramRecordConfigProvider.wqu;
       if (localObject1 == null) {
         break label326;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).fGT);
-      localObject2 = paramRecordConfigProvider.vhI;
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).fKA);
+      localObject2 = paramRecordConfigProvider.wqu;
       if (localObject2 == null) {
         break label332;
       }
       localObject2 = ((UICustomParam)localObject2).text;
-      localObject3 = paramRecordConfigProvider.vhI;
+      localObject3 = paramRecordConfigProvider.wqu;
       if (localObject3 == null) {
         break label338;
       }
-      localObject3 = Integer.valueOf(((UICustomParam)localObject3).fGU);
+      localObject3 = Integer.valueOf(((UICustomParam)localObject3).fKB);
       label118:
       localf.a(parama, (Integer)localObject1, (String)localObject2, (Integer)localObject3);
       localObject2 = getAddMusicPlugin();
-      parama = paramRecordConfigProvider.vhI;
+      parama = paramRecordConfigProvider.wqu;
       if (parama == null) {
         break label344;
       }
-      parama = Integer.valueOf(parama.fGS);
+      parama = Integer.valueOf(parama.fKz);
       label153:
-      localObject1 = paramRecordConfigProvider.vhI;
+      localObject1 = paramRecordConfigProvider.wqu;
       if (localObject1 == null) {
         break label349;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).fGT);
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).fKA);
       label174:
       com.tencent.mm.plugin.recordvideo.plugin.a.a.a((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject2, parama, (Integer)localObject1);
       localObject1 = getAddonTextPlugin();
-      parama = paramRecordConfigProvider.vhI;
+      parama = paramRecordConfigProvider.wqu;
       if (parama == null) {
         break label355;
       }
-      parama = parama.fGV;
+      parama = parama.fKC;
       label202:
       ((p)localObject1).setText(parama);
       localObject2 = getAddTextPlugin();
-      parama = paramRecordConfigProvider.vhI;
+      parama = paramRecordConfigProvider.wqu;
       if (parama == null) {
         break label360;
       }
-      parama = Integer.valueOf(parama.fGS);
+      parama = Integer.valueOf(parama.fKz);
       label231:
-      localObject3 = paramRecordConfigProvider.vhI;
+      localObject3 = paramRecordConfigProvider.wqu;
       localObject1 = localObject4;
       if (localObject3 != null) {
-        localObject1 = Integer.valueOf(((UICustomParam)localObject3).fGT);
+        localObject1 = Integer.valueOf(((UICustomParam)localObject3).fKA);
       }
       ((com.tencent.mm.plugin.recordvideo.plugin.c)localObject2).a(parama, (Integer)localObject1);
       getMoreMenuPlugin().setScene(paramRecordConfigProvider.scene);
       parama = getAddTipPlugin();
-      paramRecordConfigProvider = paramRecordConfigProvider.vhI.fGR;
+      paramRecordConfigProvider = paramRecordConfigProvider.wqu.fKy;
       k.g(paramRecordConfigProvider, "configProvider.uiParam.pluginHiddenMap");
       if (!paramRecordConfigProvider.containsKey("plugin_tip")) {
         break label365;
@@ -162,7 +162,7 @@ public final class VLogPreviewPluginLayout
     label365:
     for (int i = 8;; i = 0)
     {
-      parama.vjz = i;
+      parama.wsk = i;
       AppMethodBeat.o(111114);
       return;
       parama = null;
@@ -189,12 +189,12 @@ public final class VLogPreviewPluginLayout
     boolean bool = true;
     AppMethodBeat.i(111116);
     k.h(paramc, "status");
-    ad.i("MicroMsg.VLogPreviewPluginLayout", "statusChange " + paramc + "  param:" + paramBundle);
+    ac.i("MicroMsg.VLogPreviewPluginLayout", "statusChange " + paramc + "  param:" + paramBundle);
     Object localObject;
-    switch (a.ciE[paramc.ordinal()])
+    switch (a.cfA[paramc.ordinal()])
     {
     default: 
-      ad.i("MicroMsg.VLogPreviewPluginLayout", "unknown key ".concat(String.valueOf(paramc)));
+      ac.i("MicroMsg.VLogPreviewPluginLayout", "unknown key ".concat(String.valueOf(paramc)));
       super.a(paramc, paramBundle);
       AppMethodBeat.o(111116);
       return;
@@ -203,11 +203,11 @@ public final class VLogPreviewPluginLayout
       getVideoControlContainerPlugin().setVisibility(0);
       localObject = getAddMusicPlugin();
       paramc = getConfigProvider();
-      if (!this.Ltl.LrC)
+      if (!this.Asj.AoM)
       {
         i = 1;
         paramBundle = new com.tencent.mm.plugin.recordvideo.b.d();
-        ad.i("MicroMsg.EditAddMusicPlugin", "editorConfig : ".concat(String.valueOf(paramBundle)));
+        ac.i("MicroMsg.EditAddMusicPlugin", "editorConfig : ".concat(String.valueOf(paramBundle)));
         if (paramc == null) {
           break label289;
         }
@@ -222,19 +222,19 @@ public final class VLogPreviewPluginLayout
           break label352;
         }
         ((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject).setPlayMusicWhenSearchFinish(false);
-        paramc = ((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject).vmE;
+        paramc = ((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject).wvm;
         k.h(paramBundle, "config");
         paramc.b(paramBundle);
         paramc.a(paramBundle);
-        paramc.vqR.setSelection(Integer.valueOf(-1));
+        paramc.wAP.setSelection(Integer.valueOf(-1));
         if (i == 0) {
           break label382;
         }
-        paramc.vqL.setVisibility(0);
+        paramc.wAJ.setVisibility(0);
       }
       for (;;)
       {
-        getAddMusicPlugin().eJ(this.Ltl.cUZ());
+        getAddMusicPlugin().eO(this.Asj.diF());
         AppMethodBeat.o(111116);
         return;
         i = 0;
@@ -244,25 +244,25 @@ public final class VLogPreviewPluginLayout
         if (paramc.intValue() != 2) {
           break label203;
         }
-        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.vgU);
-        paramBundle.vgx = true;
-        paramBundle.vgw = true;
+        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.wpG);
+        paramBundle.wpj = true;
+        paramBundle.wpi = true;
         break label211;
         if (paramc.intValue() != 3) {
           break label207;
         }
-        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.vgT);
-        paramBundle.vgw = true;
-        paramBundle.vgx = true;
+        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.wpF);
+        paramBundle.wpi = true;
+        paramBundle.wpj = true;
         break label211;
         if (paramc.intValue() != 11) {
           break label211;
         }
-        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.vhd);
-        paramBundle.vgw = true;
-        paramBundle.vgx = true;
+        paramBundle.a(com.tencent.mm.plugin.recordvideo.b.i.wpP);
+        paramBundle.wpi = true;
+        paramBundle.wpj = true;
         break label211;
-        paramc.vqL.setVisibility(8);
+        paramc.wAJ.setVisibility(8);
       }
     case 2: 
       if (paramBundle != null)
@@ -270,29 +270,29 @@ public final class VLogPreviewPluginLayout
         paramc = (AudioCacheInfo)paramBundle.getParcelable("EDIT_SELECT_MUSIC_PARCELABLE");
         if (paramc != null)
         {
-          i = paramc.dep;
-          paramBundle = AudioCacheInfo.viM;
-          if (i == AudioCacheInfo.dhQ())
+          i = paramc.dbL;
+          paramBundle = AudioCacheInfo.wry;
+          if (i == AudioCacheInfo.dvB())
           {
-            ad.i("MicroMsg.VLogPreviewPluginLayout", "current script index is :" + paramc.position);
-            paramc = this.Ltl.aif(paramc.position);
-            paramBundle = this.zbS;
+            ac.i("MicroMsg.VLogPreviewPluginLayout", "current script index is :" + paramc.position);
+            paramc = this.Asj.RP(paramc.position);
+            paramBundle = this.Ash;
             if (paramBundle == null) {
-              k.aPZ("previewPlayerPlugin");
+              k.aVY("previewPlayerPlugin");
             }
             k.h(paramc, "model");
-            paramBundle = paramBundle.zcF;
+            paramBundle = paramBundle.Ats;
             k.h(paramc, "model");
-            ad.i("MicroMsg.VLogPreloadPlayView", "renderScript:".concat(String.valueOf(paramc)));
-            if (paramBundle.Lti == null) {
-              paramBundle.zcs = paramc;
+            ac.i("MicroMsg.VLogPreloadPlayView", "renderScript:".concat(String.valueOf(paramc)));
+            if (paramBundle.ArL == null) {
+              paramBundle.Asu = paramc;
             }
-            paramBundle = paramBundle.Lti;
+            paramBundle = paramBundle.ArL;
             if (paramBundle != null) {
-              paramBundle.a(paramc, paramc.getVideoDurationMs(), paramc.yZt);
+              paramBundle.a(paramc, paramc.getVideoDurationMs(), paramc.AoW);
             }
-            paramBundle = j.yZD;
-            j.a(paramc);
+            paramBundle = ab.Apg;
+            ab.a(paramc);
           }
           AppMethodBeat.o(111116);
           return;
@@ -306,12 +306,12 @@ public final class VLogPreviewPluginLayout
         paramc = (AudioCacheInfo)paramBundle.getParcelable("EDIT_VLOG_SEARCH_MUSIC_FINISH_PARCELABLE");
         if (paramc != null)
         {
-          i = paramc.viz;
-          ad.i("MicroMsg.VLogPreviewPluginLayout", "requestVLogScript prepare:true");
+          i = paramc.wri;
+          ac.i("MicroMsg.VLogPreviewPluginLayout", "requestVLogScript prepare:true");
           paramc = getContext().getString(2131764707);
           k.g(paramc, "context.getString(R.string.vlog_dialog_tip)");
-          alN(paramc);
-          this.Ltl.a(i, (d.g.a.b)new b(this));
+          aqN(paramc);
+          this.Asj.a(i, (d.g.a.b)new b(this));
           AppMethodBeat.o(111116);
           return;
         }
@@ -319,7 +319,7 @@ public final class VLogPreviewPluginLayout
       AppMethodBeat.o(111116);
       return;
     case 4: 
-      getAddMusicPlugin().eK(this.Ltl.cUZ());
+      getAddMusicPlugin().eP(this.Asj.diF());
       AppMethodBeat.o(111116);
       return;
     case 5: 
@@ -329,52 +329,52 @@ public final class VLogPreviewPluginLayout
       label211:
       label352:
       label382:
-      paramc = j.yZD;
+      paramc = ab.Apg;
       label289:
       label294:
       label323:
-      paramc = j.yZC;
+      paramc = ab.Apf;
       if (paramc != null)
       {
-        j.a(null);
-        paramBundle = j.yZD;
+        ab.a(null);
+        paramBundle = ab.Apg;
         k.h(paramc, "vLogScriptModel");
-        paramBundle = new kh();
-        paramBundle.CFc = paramc.yZr;
-        paramBundle.CFd = 2L;
-        paramBundle.CFf = System.currentTimeMillis();
-        paramBundle.dlI = paramc.dQV();
-        paramBundle.wVR = paramc.dQU();
-        paramBundle.CFg = paramc.dQW();
-        j.yZB.add(paramBundle);
-        ad.i(j.TAG, "record select: vlogScriptModel = ".concat(String.valueOf(paramc)));
-        j.a(paramc);
+        paramBundle = new kn();
+        paramBundle.DXC = paramc.AoU;
+        paramBundle.DXD = 2L;
+        paramBundle.DXF = System.currentTimeMillis();
+        paramBundle.djq = paramc.efN();
+        paramBundle.yiF = paramc.efM();
+        paramBundle.DXG = paramc.efO();
+        ab.Ape.add(paramBundle);
+        ac.i(ab.TAG, "record select: vlogScriptModel = ".concat(String.valueOf(paramc)));
+        ab.a(paramc);
       }
-      ad.i(j.TAG, "record send");
-      j.dhV();
+      ac.i(ab.TAG, "record send");
+      ab.dvG();
       onPause();
-      paramc = this.zbT;
+      paramc = this.Asi;
       if (paramc != null)
       {
-        ad.i("MicroMsg.VLogGenerateManager", "release");
-        paramc.zcp.release();
+        ac.i("MicroMsg.VLogGenerateManager", "release");
+        paramc.Asr.release();
       }
-      if (!getMoreMenuPlugin().vjK) {
+      if (!getMoreMenuPlugin().wsv) {
         break;
       }
     }
     for (int i = 1;; i = 0)
     {
-      paramc = CaptureDataManager.vhw;
+      paramc = CaptureDataManager.wqi;
       k.g(paramc, "CaptureDataManager.INSTANCE");
       paramc.getExtData().putInt("key_extra_feature_flag", i);
-      if (getMoreMenuPlugin().boX == 2)
+      if (getMoreMenuPlugin().bns == 2)
       {
-        paramc = CaptureDataManager.vhw;
+        paramc = CaptureDataManager.wqi;
         k.g(paramc, "CaptureDataManager.INSTANCE");
-        paramc.getExtData().putString("key_group_list", getMoreMenuPlugin().dik());
-        paramc = this.Ltl.fYR();
-        if (paramc.yZs.isEmpty()) {
+        paramc.getExtData().putString("key_group_list", getMoreMenuPlugin().dvU());
+        paramc = this.Asj.efL();
+        if (paramc.AoV.isEmpty()) {
           break label989;
         }
       }
@@ -384,99 +384,99 @@ public final class VLogPreviewPluginLayout
         if (i != 0) {
           break label994;
         }
-        ad.e("MicroMsg.VLogPreviewPluginLayout", "model is not valid");
+        ac.e("MicroMsg.VLogPreviewPluginLayout", "model is not valid");
         AppMethodBeat.o(111116);
         return;
-        if (getMoreMenuPlugin().boX != 3) {
+        if (getMoreMenuPlugin().bns != 3) {
           break;
         }
-        paramc = CaptureDataManager.vhw;
+        paramc = CaptureDataManager.wqi;
         k.g(paramc, "CaptureDataManager.INSTANCE");
-        paramc.getExtData().putString("key_black_list", getMoreMenuPlugin().dik());
+        paramc.getExtData().putString("key_black_list", getMoreMenuPlugin().dvU());
         break;
       }
       label994:
-      paramc.p(getItemContainerPlugin().die());
-      paramBundle = getItemContainerPlugin().did();
+      paramc.p(getItemContainerPlugin().dvO());
+      paramBundle = getItemContainerPlugin().dvN();
       k.h(paramBundle, "<set-?>");
-      paramc.yZv = paramBundle;
-      paramc.at(com.tencent.mm.plugin.recordvideo.plugin.h.a(getItemContainerPlugin()));
+      paramc.AoY = paramBundle;
+      paramc.aF(h.a(getItemContainerPlugin()));
       if (getContext() != null)
       {
         paramBundle = getContext();
         localObject = getConfigProvider();
         if (localObject == null) {
-          k.fvU();
+          k.fOy();
         }
-        this.zbT = new com.tencent.mm.plugin.vlog.ui.manager.b(paramBundle, paramc, (RecordConfigProvider)localObject, getAddMusicPlugin().vmE.getMuteOrigin(), getAddMusicPlugin().vgH);
+        this.Asi = new com.tencent.mm.plugin.vlog.ui.manager.a(paramBundle, paramc, (RecordConfigProvider)localObject, getAddMusicPlugin().wvm.getMuteOrigin(), getAddMusicPlugin().wpt);
         paramc = getContext().getString(2131764707);
         k.g(paramc, "context.getString(R.string.vlog_dialog_tip)");
-        alN(paramc);
-        paramc = com.tencent.mm.kernel.g.afB();
+        aqN(paramc);
+        paramc = com.tencent.mm.kernel.g.agR();
         k.g(paramc, "MMKernel.storage()");
-        i = paramc.afk().getInt(ae.a.FsM, 0);
+        i = paramc.agA().getInt(ah.a.GQE, 0);
         paramc = new StringBuilder("remux foreground? ");
         if (i == 0) {}
         int j;
         for (;;)
         {
-          ad.i("MicroMsg.VLogPreviewPluginLayout", bool);
+          ac.i("MicroMsg.VLogPreviewPluginLayout", bool);
           if (i != 0) {
             break label1364;
           }
-          paramc = this.zbT;
+          paramc = this.Asi;
           if (paramc == null) {
             break label1357;
           }
-          paramBundle = this.zbS;
+          paramBundle = this.Ash;
           if (paramBundle == null) {
-            k.aPZ("previewPlayerPlugin");
+            k.aVY("previewPlayerPlugin");
           }
-          i = paramBundle.zcF.getWidth();
-          paramBundle = this.zbS;
+          i = paramBundle.Ats.getWidth();
+          paramBundle = this.Ash;
           if (paramBundle == null) {
-            k.aPZ("previewPlayerPlugin");
+            k.aVY("previewPlayerPlugin");
           }
-          j = paramBundle.zcF.getHeight();
-          paramBundle = this.zbR;
+          j = paramBundle.Ats.getHeight();
+          paramBundle = this.Asg;
           k.h(paramBundle, "callback");
-          ad.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.vcC.vhU);
-          paramc.rDO = paramBundle;
-          paramc.zcp.hN(i, j);
-          if (!TextUtils.isEmpty((CharSequence)paramc.zcs.yZt)) {
+          ac.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.rRi.wqG);
+          paramc.sMG = paramBundle;
+          paramc.Asr.ib(i, j);
+          if (!TextUtils.isEmpty((CharSequence)paramc.Asu.AoW)) {
             break;
           }
-          paramc.zcp.b(paramc.zcr);
+          paramc.Asr.c(paramc.Ast);
           AppMethodBeat.o(111116);
           return;
           bool = false;
         }
-        paramc.zco.b(paramc.zcs.yZt, (m)new b.e(paramc));
+        paramc.Asq.b(paramc.Asu.AoW, (m)new a.e(paramc));
         AppMethodBeat.o(111116);
         return;
         label1357:
         AppMethodBeat.o(111116);
         return;
         label1364:
-        paramc = this.zbT;
+        paramc = this.Asi;
         if (paramc != null)
         {
-          paramBundle = this.zbS;
+          paramBundle = this.Ash;
           if (paramBundle == null) {
-            k.aPZ("previewPlayerPlugin");
+            k.aVY("previewPlayerPlugin");
           }
-          i = paramBundle.zcF.getWidth();
-          paramBundle = this.zbS;
+          i = paramBundle.Ats.getWidth();
+          paramBundle = this.Ash;
           if (paramBundle == null) {
-            k.aPZ("previewPlayerPlugin");
+            k.aVY("previewPlayerPlugin");
           }
-          j = paramBundle.zcF.getHeight();
-          paramBundle = this.zbR;
+          j = paramBundle.Ats.getHeight();
+          paramBundle = this.Asg;
           k.h(paramBundle, "callback");
-          ad.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.vcC.vhU);
-          paramc.rDO = paramBundle;
-          paramc.zcp.hN(i, j);
-          com.tencent.mm.plugin.vlog.remux.g.a(paramc.zcp, (d.g.a.r)new b.d(paramc, i, j));
+          ac.i("MicroMsg.VLogGenerateManager", "generate path :" + paramc.rRi.wqG);
+          paramc.sMG = paramBundle;
+          paramc.Asr.ib(i, j);
+          com.tencent.mm.plugin.vlog.remux.d.a(paramc.Asr, (d.g.a.r)new a.d(paramc, i, j));
           AppMethodBeat.o(111116);
           return;
         }
@@ -486,11 +486,11 @@ public final class VLogPreviewPluginLayout
       if (paramBundle != null)
       {
         bool = paramBundle.getBoolean("PARAM_EDIT_ORIGIN_VOICE_MUTE_BOOLEAN");
-        paramc = this.zbS;
+        paramc = this.Ash;
         if (paramc == null) {
-          k.aPZ("previewPlayerPlugin");
+          k.aVY("previewPlayerPlugin");
         }
-        paramc.zcF.setMute(bool);
+        paramc.Ats.setMute(bool);
         AppMethodBeat.o(111116);
         return;
       }
@@ -499,16 +499,16 @@ public final class VLogPreviewPluginLayout
     }
   }
   
-  public final boolean dia()
+  public final boolean alO()
   {
     AppMethodBeat.i(111118);
-    ad.i("MicroMsg.VLogPreviewPluginLayout", "onBackPress");
-    if (!super.dia())
+    ac.i("MicroMsg.VLogPreviewPluginLayout", "onBackPress");
+    if (!super.alO())
     {
-      Object localObject = j.yZD;
-      j.a(null);
-      ad.i(j.TAG, "record cancel");
-      j.dhV();
+      Object localObject = ab.Apg;
+      ab.a(null);
+      ac.i(ab.TAG, "record cancel");
+      ab.dvG();
       localObject = getNavigator();
       if (localObject != null) {
         ((com.tencent.mm.plugin.recordvideo.activity.a)localObject).a(0, null);
@@ -522,13 +522,13 @@ public final class VLogPreviewPluginLayout
   {
     AppMethodBeat.i(111117);
     Object localObject = new VLogPreloadPlayView(getContext());
-    this.zbS = new com.tencent.mm.plugin.vlog.ui.plugin.a((VLogPreloadPlayView)localObject, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
+    this.Ash = new com.tencent.mm.plugin.vlog.ui.plugin.g((VLogPreloadPlayView)localObject, (com.tencent.mm.plugin.recordvideo.plugin.parent.d)this);
     ArrayList localArrayList = getPluginList();
-    com.tencent.mm.plugin.vlog.ui.plugin.a locala = this.zbS;
-    if (locala == null) {
-      k.aPZ("previewPlayerPlugin");
+    com.tencent.mm.plugin.vlog.ui.plugin.g localg = this.Ash;
+    if (localg == null) {
+      k.aVY("previewPlayerPlugin");
     }
-    localArrayList.add(locala);
+    localArrayList.add(localg);
     localObject = (View)localObject;
     AppMethodBeat.o(111117);
     return localObject;
@@ -541,13 +541,10 @@ public final class VLogPreviewPluginLayout
     AppMethodBeat.o(111119);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/ui/VLogPreviewPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/GenerateVlogRespBody;", "invoke"})
   static final class b
     extends d.g.b.l
-    implements d.g.a.b<aoa, y>
+    implements d.g.a.b<are, d.y>
   {
     b(VLogPreviewPluginLayout paramVLogPreviewPluginLayout)
     {
@@ -555,10 +552,10 @@ public final class VLogPreviewPluginLayout
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "success", "", "errorCode", "", "model", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "success", "", "errorCode", "", "model", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "invoke"})
   static final class c
     extends d.g.b.l
-    implements q<Boolean, Integer, b.b, y>
+    implements q<Boolean, Integer, a.b, d.y>
   {
     c(VLogPreviewPluginLayout paramVLogPreviewPluginLayout, Context paramContext)
     {
@@ -568,7 +565,7 @@ public final class VLogPreviewPluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.VLogPreviewPluginLayout
  * JD-Core Version:    0.7.0.1
  */

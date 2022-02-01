@@ -10,14 +10,14 @@ import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 
 public abstract interface f
 {
-  public static final f kOI;
+  public static final f lqh;
   
   static
   {
-    if (((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu()) {}
+    if (((com.tencent.mm.kernel.b.h)g.agO().agp()).ahL()) {}
     for (Object localObject = new h();; localObject = new b())
     {
-      kOI = (f)localObject;
+      lqh = (f)localObject;
       return;
     }
   }
@@ -28,7 +28,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.f
  * JD-Core Version:    0.7.0.1
  */

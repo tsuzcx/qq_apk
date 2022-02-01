@@ -10,19 +10,19 @@ import java.util.Map;
 public final class q
   implements an
 {
-  private final h JAM;
+  private final h Lof;
   
   public q(h paramh)
   {
     AppMethodBeat.i(58227);
-    this.JAM = paramh;
+    this.Lof = paramh;
     AppMethodBeat.o(58227);
   }
   
-  public final ao fzn()
+  public final ao fRR()
   {
     AppMethodBeat.i(58226);
-    ao localao = ao.JqK;
+    ao localao = ao.Led;
     k.g(localao, "SourceFile.NO_SOURCE_FILE");
     AppMethodBeat.o(58226);
     return localao;
@@ -31,14 +31,14 @@ public final class q
   public final String toString()
   {
     AppMethodBeat.i(58225);
-    String str = this.JAM + ": " + this.JAM.fBM().keySet();
+    String str = this.Lof + ": " + this.Lof.fUq().keySet();
     AppMethodBeat.o(58225);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.b.q
  * JD-Core Version:    0.7.0.1
  */

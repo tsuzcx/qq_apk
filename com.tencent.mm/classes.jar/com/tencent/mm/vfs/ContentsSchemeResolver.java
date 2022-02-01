@@ -19,7 +19,7 @@ public final class ContentsSchemeResolver
   extends SchemeResolver.Base
 {
   public static final a CREATOR;
-  private final ContentProviderFileSystem HRk;
+  private final ContentProviderFileSystem JrR;
   
   static
   {
@@ -31,13 +31,13 @@ public final class ContentsSchemeResolver
   private ContentsSchemeResolver()
   {
     AppMethodBeat.i(13059);
-    this.HRk = new ContentProviderFileSystem(a.gap().mContext);
+    this.JrR = new ContentProviderFileSystem(a.ghk().mContext);
     AppMethodBeat.o(13059);
   }
   
-  public static ContentsSchemeResolver fhC()
+  public static ContentsSchemeResolver fxE()
   {
-    return a.HRm;
+    return a.JrT;
   }
   
   public final Pair<FileSystem, String> a(SchemeResolver.a parama, Uri paramUri)
@@ -56,7 +56,7 @@ public final class ContentsSchemeResolver
     if (paramUri != null) {
       parama.append(paramUri);
     }
-    parama = new Pair(this.HRk, parama.toString());
+    parama = new Pair(this.JrR, parama.toString());
     AppMethodBeat.o(13060);
     return parama;
   }
@@ -65,16 +65,16 @@ public final class ContentsSchemeResolver
     extends AbstractFileSystem
   {
     public static final Parcelable.Creator<ContentProviderFileSystem> CREATOR = null;
-    private final ContentResolver HRl;
+    private final ContentResolver JrS;
     
     ContentProviderFileSystem(Context paramContext)
     {
       AppMethodBeat.i(13048);
-      this.HRl = paramContext.getContentResolver();
+      this.JrS = paramContext.getContentResolver();
       AppMethodBeat.o(13048);
     }
     
-    public final ByteChannel aMB(String paramString)
+    public final ByteChannel aSd(String paramString)
     {
       AppMethodBeat.i(13052);
       paramString = new FileNotFoundException("Not supported.");
@@ -82,7 +82,7 @@ public final class ContentsSchemeResolver
       throw paramString;
     }
     
-    public final FileSystem.b aMC(String paramString)
+    public final FileSystem.b aSe(String paramString)
     {
       AppMethodBeat.i(13049);
       paramString = new FileSystem.b();
@@ -90,10 +90,10 @@ public final class ContentsSchemeResolver
       return paramString;
     }
     
-    public final boolean aMD(String paramString)
+    public final boolean aSf(String paramString)
     {
       AppMethodBeat.i(13054);
-      if (aME(paramString) != null)
+      if (aSg(paramString) != null)
       {
         AppMethodBeat.o(13054);
         return true;
@@ -102,13 +102,13 @@ public final class ContentsSchemeResolver
       return false;
     }
     
-    public final FileSystem.a aME(String paramString)
+    public final FileSystem.a aSg(String paramString)
     {
       Object localObject2 = null;
       AppMethodBeat.i(13055);
       try
       {
-        Object localObject1 = this.HRl.query(Uri.parse(paramString), null, null, null, null);
+        Object localObject1 = this.JrS.query(Uri.parse(paramString), null, null, null, null);
         if (localObject1 == null)
         {
           q.closeQuietly((Closeable)localObject1);
@@ -150,15 +150,15 @@ public final class ContentsSchemeResolver
       throw paramString;
     }
     
-    public final boolean aMF(String paramString)
+    public final boolean aSh(String paramString)
     {
       return false;
     }
     
-    public final OutputStream cM(String paramString, boolean paramBoolean)
+    public final OutputStream cS(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(13051);
-      ContentResolver localContentResolver = this.HRl;
+      ContentResolver localContentResolver = this.JrS;
       Uri localUri = Uri.parse(paramString);
       if (paramBoolean) {}
       for (paramString = "wa";; paramString = "w")
@@ -169,35 +169,35 @@ public final class ContentsSchemeResolver
       }
     }
     
-    public final Iterable<FileSystem.a> cN(String paramString, boolean paramBoolean)
+    public final Iterable<FileSystem.a> cT(String paramString, boolean paramBoolean)
     {
       return null;
     }
     
-    public final boolean cO(String paramString, boolean paramBoolean)
+    public final boolean cU(String paramString, boolean paramBoolean)
     {
       return false;
     }
     
-    public final String cP(String paramString, boolean paramBoolean)
+    public final String cV(String paramString, boolean paramBoolean)
     {
       return null;
     }
     
-    public final boolean cf(String paramString, long paramLong)
+    public final boolean ch(String paramString, long paramLong)
     {
       return false;
     }
     
-    public final int fhA()
+    public final int fxC()
     {
       return 1;
     }
     
-    public final ParcelFileDescriptor lw(String paramString1, String paramString2)
+    public final ParcelFileDescriptor lT(String paramString1, String paramString2)
     {
       AppMethodBeat.i(13053);
-      paramString1 = this.HRl.openFileDescriptor(Uri.parse(paramString1), paramString2);
+      paramString1 = this.JrS.openFileDescriptor(Uri.parse(paramString1), paramString2);
       AppMethodBeat.o(13053);
       return paramString1;
     }
@@ -205,21 +205,9 @@ public final class ContentsSchemeResolver
     public final InputStream openRead(String paramString)
     {
       AppMethodBeat.i(13050);
-      paramString = this.HRl.openInputStream(Uri.parse(paramString));
+      paramString = this.JrS.openInputStream(Uri.parse(paramString));
       AppMethodBeat.o(13050);
       return paramString;
-    }
-    
-    public final boolean vv(String paramString)
-    {
-      AppMethodBeat.i(13056);
-      if (this.HRl.delete(Uri.parse(paramString), null, null) > 0)
-      {
-        AppMethodBeat.o(13056);
-        return true;
-      }
-      AppMethodBeat.o(13056);
-      return false;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
@@ -229,17 +217,29 @@ public final class ContentsSchemeResolver
       AppMethodBeat.o(13057);
       throw paramParcel;
     }
+    
+    public final boolean zB(String paramString)
+    {
+      AppMethodBeat.i(13056);
+      if (this.JrS.delete(Uri.parse(paramString), null, null) > 0)
+      {
+        AppMethodBeat.o(13056);
+        return true;
+      }
+      AppMethodBeat.o(13056);
+      return false;
+    }
   }
   
   static final class a
     implements Parcelable.Creator<ContentsSchemeResolver>
   {
-    static final ContentsSchemeResolver HRm;
+    static final ContentsSchemeResolver JrT;
     
     static
     {
       AppMethodBeat.i(13058);
-      HRm = new ContentsSchemeResolver((byte)0);
+      JrT = new ContentsSchemeResolver((byte)0);
       AppMethodBeat.o(13058);
     }
   }

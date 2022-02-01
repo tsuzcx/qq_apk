@@ -11,25 +11,25 @@ import d.l;
 import d.v;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/touch/MatrixChecker;", "", "()V", "bounds", "Landroid/graphics/RectF;", "getBounds", "()Landroid/graphics/RectF;", "setBounds", "(Landroid/graphics/RectF;)V", "maxScale", "", "getMaxScale", "()F", "setMaxScale", "(F)V", "minScale", "getMinScale", "setMinScale", "pivot", "", "getPivot", "()[F", "setPivot", "([F)V", "clamp", "value", "min", "max", "interpolate", "from", "to", "input", "resolve", "", "matrix", "Landroid/graphics/Matrix;", "updateCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/editor/touch/MatrixChecker;", "", "()V", "bounds", "Landroid/graphics/RectF;", "getBounds", "()Landroid/graphics/RectF;", "setBounds", "(Landroid/graphics/RectF;)V", "maxScale", "", "getMaxScale", "()F", "setMaxScale", "(F)V", "minScale", "getMinScale", "setMinScale", "pivot", "", "getPivot", "()[F", "setPivot", "([F)V", "clamp", "value", "min", "max", "interpolate", "from", "to", "input", "resolve", "", "matrix", "Landroid/graphics/Matrix;", "updateCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "plugin-mediaeditor_release"})
 public final class a
 {
-  public float aMu;
-  public float aMv;
-  private RectF gpq;
-  float[] gpr;
+  public float aNk;
+  public float aNl;
+  private RectF gPY;
+  float[] gPZ;
   
   public a()
   {
     AppMethodBeat.i(93596);
-    this.gpq = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.gpr = new float[2];
-    this.aMv = 1.0F;
-    this.aMu = 1.0F;
+    this.gPY = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.gPZ = new float[2];
+    this.aNl = 1.0F;
+    this.aNk = 1.0F;
     AppMethodBeat.o(93596);
   }
   
-  private static float k(float paramFloat1, float paramFloat2, float paramFloat3)
+  private static float j(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(93595);
     paramFloat1 = Math.max(paramFloat2, Math.min(paramFloat1, paramFloat3));
@@ -42,9 +42,9 @@ public final class a
     AppMethodBeat.i(93594);
     k.h(paramMatrix, "matrix");
     final float[] arrayOfFloat1 = new float[2];
-    paramMatrix.mapPoints(arrayOfFloat1, this.gpr);
-    float f1 = k(arrayOfFloat1[0], this.gpq.left, this.gpq.right);
-    float f2 = k(arrayOfFloat1[1], this.gpq.top, this.gpq.bottom);
+    paramMatrix.mapPoints(arrayOfFloat1, this.gPZ);
+    float f1 = j(arrayOfFloat1[0], this.gPY.left, this.gPY.right);
+    float f2 = j(arrayOfFloat1[1], this.gPY.top, this.gPY.bottom);
     float[] arrayOfFloat2 = new float[9];
     paramMatrix.getValues(arrayOfFloat2);
     double d1 = arrayOfFloat2[0];
@@ -52,7 +52,7 @@ public final class a
     double d3 = arrayOfFloat2[4];
     final float f3 = (float)Math.sqrt(d1 * d1 + d2 * d2);
     final float f4 = (float)Math.round(Math.atan2(d2, d3) * 57.295779513082323D);
-    final float f5 = k(f3, this.aMv, this.aMu);
+    final float f5 = j(f3, this.aNl, this.aNk);
     paramMatrix = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     k.g(paramMatrix, "animator");
     paramMatrix.setDuration(100L);
@@ -65,7 +65,7 @@ public final class a
   {
     AppMethodBeat.i(93592);
     k.h(paramRectF, "<set-?>");
-    this.gpq = paramRectF;
+    this.gPY = paramRectF;
     AppMethodBeat.o(93592);
   }
   
@@ -73,11 +73,11 @@ public final class a
   {
     AppMethodBeat.i(93593);
     k.h(paramArrayOfFloat, "<set-?>");
-    this.gpr = paramArrayOfFloat;
+    this.gPZ = paramArrayOfFloat;
     AppMethodBeat.o(93593);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class a
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -86,7 +86,7 @@ public final class a
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
       AppMethodBeat.i(93591);
-      Object localObject = this.gps;
+      Object localObject = this.gQa;
       k.g(paramValueAnimator, "animation");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
@@ -97,14 +97,14 @@ public final class a
       }
       float f = ((Float)paramValueAnimator).floatValue();
       paramValueAnimator = new Matrix();
-      paramValueAnimator.setTranslate(-localObject.gpr[0], -localObject.gpr[1]);
-      paramValueAnimator.postScale(a.l(f3, f5, f), a.l(f3, f5, f));
+      paramValueAnimator.setTranslate(-localObject.gPZ[0], -localObject.gPZ[1]);
+      paramValueAnimator.postScale(a.k(f3, f5, f), a.k(f3, f5, f));
       paramValueAnimator.postRotate(f4);
-      paramValueAnimator.postTranslate(a.l(arrayOfFloat1[0], this.gpx[0], f), a.l(arrayOfFloat1[1], this.gpx[1], f));
+      paramValueAnimator.postTranslate(a.k(arrayOfFloat1[0], this.gQf[0], f), a.k(arrayOfFloat1[1], this.gQf[1], f));
       localObject = paramb;
       if (localObject != null)
       {
-        ((b)localObject).aA(paramValueAnimator);
+        ((b)localObject).ay(paramValueAnimator);
         AppMethodBeat.o(93591);
         return;
       }
@@ -114,7 +114,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.editor.c.a
  * JD-Core Version:    0.7.0.1
  */

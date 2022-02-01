@@ -1,145 +1,102 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import com.tencent.mm.plugin.appbrand.appstorage.x;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
-import java.io.IOException;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
+import com.tencent.mm.plugin.appbrand.utils.n;
+import com.tencent.mm.plugin.appbrand.utils.n.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
-public abstract class b
-  extends a<c>
+public final class b
+  extends a
 {
-  private static String Hv(String paramString)
-  {
-    return "wxfile://clientdata/".concat(String.valueOf(paramString));
-  }
+  public static final int CTRL_INDEX = 92;
+  public static final String NAME = "enableAccelerometer";
   
-  private static void Hw(String paramString)
+  public final void a(final c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    paramString = new e(paramString + ".nomedia");
-    if (!paramString.exists()) {
-      ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: no nomedia file. trigger new");
-    }
-    try
+    AppMethodBeat.i(137625);
+    final l locall = new l("enableAccelerometer");
+    paramJSONObject = locall.a(paramc, paramJSONObject, new b(paramc)
     {
-      paramString.createNewFile();
-      return;
-    }
-    catch (IOException paramString)
-    {
-      ad.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramString, "hy: create no media file failed!", new Object[0]);
-    }
-  }
-  
-  private static String b(c paramc, String paramString)
-  {
-    if ((paramc == null) || (bt.isNullOrNil(paramString)))
-    {
-      if (paramc == null) {}
-      for (boolean bool = true;; bool = false)
+      public final void onDestroy()
       {
-        ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool), paramString });
-        return null;
+        AppMethodBeat.i(137623);
+        g.b(paramc.getAppId(), this);
+        locall.a(this);
+        AppMethodBeat.o(137623);
       }
-    }
-    paramc = (ar)paramc.Ee();
-    if (paramc == null)
-    {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: fs is null");
-      return null;
-    }
-    String str = ((x)paramc.EZ("wxfile://clientdata")).iSI;
-    paramc = str;
-    if (!str.endsWith("/")) {
-      paramc = str + "/";
-    }
-    Hw(paramc);
-    return paramc + paramString;
+    }, "JsApi#SensorAccelerometer" + paramc.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(1) })));
+    paramc.h(paramInt, k(paramJSONObject.errMsg, paramJSONObject.values));
+    AppMethodBeat.o(137625);
   }
   
-  protected final a a(c paramc, String paramString1, String paramString2)
+  public static final class a
+    extends ar
   {
-    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: request saveFileToClientData: %s, %b, %b", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
-    if (!i.eK(paramString1))
-    {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: src file not exists!");
-      return null;
-    }
-    paramc = b(paramc, paramString2);
-    if (paramc == null)
-    {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate dest file!");
-      return null;
-    }
-    if (i.eK(paramc))
-    {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      i.deleteFile(paramc);
-    }
-    e locale = new e(paramc);
-    if (!i.lF(q.B(new e(paramString1).mUri), q.B(locale.mUri)))
-    {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: rename failed!");
-      return null;
-    }
-    return new a(paramc, Hv(paramString2), (byte)0);
+    private static final int CTRL_INDEX = 93;
+    private static final String NAME = "onAccelerometerChange";
   }
   
-  abstract void a(c paramc, JSONObject paramJSONObject, int paramInt);
-  
-  protected final a c(c paramc, String paramString)
+  static abstract class b
+    extends l.a
+    implements SensorEventListener
   {
-    paramc = b(paramc, paramString);
-    if (paramc == null)
-    {
-      ad.e("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate!");
-      return null;
-    }
-    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: creating file: %s", new Object[] { paramc });
-    if (i.eK(paramc))
-    {
-      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
-      i.deleteFile(paramc);
-    }
-    e locale = new e(paramc);
-    i.aMF(i.aMQ(paramc));
-    try
-    {
-      if (!locale.createNewFile())
-      {
-        ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: create file failed!");
-        return null;
-      }
-    }
-    catch (IOException paramc)
-    {
-      ad.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramc, "hy: create file failed!", new Object[0]);
-      return null;
-    }
-    return new a(q.B(locale.fhU()), Hv(paramString), (byte)0);
-  }
-  
-  protected final class a
-  {
-    String jqW;
-    String jqX;
+    private n kKp;
+    b.a kKq = new b.a();
     
-    private a(String paramString1, String paramString2)
+    b(final c paramc)
     {
-      this.jqW = paramString1;
-      this.jqX = paramString2;
+      this.kKq.h(paramc);
+      this.kKp = new n(i.kKR.biJ(), new n.a()
+      {
+        public final boolean k(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(137624);
+          paramAnonymousVarArgs = (float[])paramAnonymousVarArgs[0];
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("x", Float.valueOf(-paramAnonymousVarArgs[0] / 10.0F));
+          localHashMap.put("y", Float.valueOf(-paramAnonymousVarArgs[1] / 10.0F));
+          localHashMap.put("z", Float.valueOf(-paramAnonymousVarArgs[2] / 10.0F));
+          b.b.this.kKq.B(localHashMap);
+          boolean bool = k.a.kKY.a(b.b.this.kKq, paramc);
+          AppMethodBeat.o(137624);
+          return bool;
+        }
+      });
+    }
+    
+    public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+    
+    public void onSensorChanged(SensorEvent paramSensorEvent)
+    {
+      if (paramSensorEvent.sensor.getType() != 1) {
+        return;
+      }
+      paramSensorEvent = paramSensorEvent.values;
+      if ((paramSensorEvent == null) || (paramSensorEvent.length < 3))
+      {
+        ac.w("MicroMsg.JsApiEnableAccelerometer", "ACCELEROMETER sensor callback data invalidate.");
+        return;
+      }
+      ac.v("MicroMsg.JsApiEnableAccelerometer", "try to do frequency limit action(%s).", new Object[] { Boolean.valueOf(this.kKp.m(new Object[] { paramSensorEvent })) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.b
  * JD-Core Version:    0.7.0.1
  */

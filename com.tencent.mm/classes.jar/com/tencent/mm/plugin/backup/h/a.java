@@ -4,28 +4,30 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
+import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public com.tencent.mm.sdk.platformtools.ap handler;
-  LinkedList<a> mxD;
+  public ao handler;
+  LinkedList<a> mZE;
   
   public a()
   {
     AppMethodBeat.i(21743);
-    this.mxD = new LinkedList();
-    this.handler = new com.tencent.mm.sdk.platformtools.ap(Looper.getMainLooper());
+    this.mZE = new LinkedList();
+    this.handler = new ao(Looper.getMainLooper());
     AppMethodBeat.o(21743);
   }
   
   public final void h(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(21744);
-    this.mxD.add(new a(paramInt, paramObject));
+    this.mZE.add(new a(paramInt, paramObject));
     AppMethodBeat.o(21744);
   }
   

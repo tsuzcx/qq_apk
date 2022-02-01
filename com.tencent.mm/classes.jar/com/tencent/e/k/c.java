@@ -7,7 +7,7 @@ public final class c
   public static boolean c(Class<?> paramClass, String paramString, Object paramObject)
   {
     AppMethodBeat.i(183496);
-    boolean bool = new a(paramClass, paramString).eu(paramObject);
+    boolean bool = new a(paramClass, paramString).ev(paramObject);
     AppMethodBeat.o(183496);
     return bool;
   }

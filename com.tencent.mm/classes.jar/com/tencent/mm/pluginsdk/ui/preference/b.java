@@ -2,40 +2,38 @@ package com.tencent.mm.pluginsdk.ui.preference;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bk.d;
-import com.tencent.mm.g.a.gi;
-import com.tencent.mm.g.a.gi.b;
-import com.tencent.mm.g.c.dj;
+import com.tencent.mm.bj.d;
+import com.tencent.mm.g.a.gj;
+import com.tencent.mm.g.a.gj.b;
+import com.tencent.mm.g.c.dl;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.ba;
-import com.tencent.mm.storage.bb;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bl.a;
-import com.tencent.mm.storage.bl.d;
-import com.tencent.mm.storage.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bo.a;
+import com.tencent.mm.storage.bo.d;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 import junit.framework.Assert;
 
 public final class b
 {
-  public String Cix;
-  public boolean dDS;
-  public String gKF;
+  public String DAO;
+  public boolean dBE;
+  public String hlf;
+  public String iIk;
   public long id;
-  public String iic;
   public String nickname;
   public String username;
-  public int woZ;
+  public int xAq;
   
   private static b a(Context paramContext, long paramLong, boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
@@ -53,18 +51,18 @@ public final class b
     int i;
     if (paramInt == 0)
     {
-      localObject3 = bl.a.aIO(paramString2);
-      localObject1 = ((bl.a)localObject3).yGA;
-      localObject2 = ((bl.a)localObject3).nickname;
-      localObject6 = ((bl.a)localObject3).FzV;
-      localObject4 = ((bl.a)localObject3).FzW;
-      i = ((bl.a)localObject3).scene;
+      localObject3 = bo.a.aOk(paramString2);
+      localObject1 = ((bo.a)localObject3).zTO;
+      localObject2 = ((bo.a)localObject3).nickname;
+      localObject6 = ((bo.a)localObject3).GYX;
+      localObject4 = ((bo.a)localObject3).GYY;
+      i = ((bo.a)localObject3).scene;
       localObject3 = localObject7;
     }
     for (;;)
     {
       paramContext = a(paramContext, paramLong, paramBoolean, paramString1, paramString2, paramInt, (String)localObject1, (String)localObject2, (String)localObject6, (String)localObject4, (String)localObject5, i);
-      paramContext.Cix = ((String)localObject3);
+      paramContext.DAO = ((String)localObject3);
       AppMethodBeat.o(31841);
       return paramContext;
       localObject3 = localObject7;
@@ -73,8 +71,8 @@ public final class b
       i = j;
       if (paramBoolean)
       {
-        bl.d locald = bl.d.aIR(paramString2);
-        String str1 = locald.yGA;
+        bo.d locald = bo.d.aOn(paramString2);
+        String str1 = locald.zTO;
         String str2 = locald.nickname;
         String str3 = locald.content;
         localObject3 = localObject7;
@@ -84,9 +82,9 @@ public final class b
         localObject4 = localObject9;
         localObject5 = str3;
         i = j;
-        if (locald.FAl == 1)
+        if (locald.GZn == 1)
         {
-          localObject3 = locald.FAn;
+          localObject3 = locald.GZp;
           localObject1 = str1;
           localObject2 = str2;
           localObject6 = localObject8;
@@ -106,15 +104,15 @@ public final class b
     if (!paramBoolean) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.dDS = bool;
-      ad.d("MicroMsg.FMessageProvider", "build, fmsgInfo.type:%d, fmsgInfo.talker:%s, scene:%d  ", new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2) });
+      localb.dBE = bool;
+      ac.d("MicroMsg.FMessageProvider", "build, fmsgInfo.type:%d, fmsgInfo.talker:%s, scene:%d  ", new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2) });
       if (paramInt1 != 0) {
         break label357;
       }
       if (paramString2 != null) {
         break;
       }
-      ad.e("MicroMsg.FMessageProvider", "build fail, fmsgInfo msgContent is null, fmsgInfo.talker = ".concat(String.valueOf(paramString1)));
+      ac.e("MicroMsg.FMessageProvider", "build fail, fmsgInfo msgContent is null, fmsgInfo.talker = ".concat(String.valueOf(paramString1)));
       AppMethodBeat.o(31842);
       return null;
     }
@@ -123,136 +121,136 @@ public final class b
     switch (paramInt2)
     {
     default: 
-      localb.gKF = paramContext.getString(2131757168);
+      localb.hlf = paramContext.getString(2131757168);
     }
     for (;;)
     {
       AppMethodBeat.o(31842);
       return localb;
-      localb.gKF = paramContext.getString(2131757159);
+      localb.hlf = paramContext.getString(2131757159);
       continue;
-      paramString1 = new gi();
-      paramString1.djw.djt = paramString5;
-      paramString1.djw.dju = paramString6;
-      a.ESL.l(paramString1);
-      localb.gKF = paramContext.getString(2131757164, new Object[] { bt.by(paramString1.djx.djy, "") });
+      paramString1 = new gj();
+      paramString1.dgR.dgO = paramString5;
+      paramString1.dgR.dgP = paramString6;
+      a.GpY.l(paramString1);
+      localb.hlf = paramContext.getString(2131757164, new Object[] { bs.bG(paramString1.dgS.dgT, "") });
       continue;
-      localb.gKF = paramContext.getString(2131757175);
+      localb.hlf = paramContext.getString(2131757175);
       continue;
-      localb.gKF = paramContext.getString(2131757169);
+      localb.hlf = paramContext.getString(2131757169);
       continue;
-      localb.iic = bl.a.aIO(paramString2).iic;
-      localb.gKF = paramContext.getString(2131757162);
+      localb.iIk = bo.a.aOk(paramString2).iIk;
+      localb.hlf = paramContext.getString(2131757162);
       continue;
       label357:
       if (!paramBoolean)
       {
         localb.username = paramString1;
-        localb.gKF = paramString2;
+        localb.hlf = paramString2;
       }
       else
       {
         localb.username = paramString3;
         localb.nickname = paramString4;
         if ((paramString7 != null) && (!paramString7.trim().equals(""))) {
-          localb.gKF = paramString7;
+          localb.hlf = paramString7;
         } else {
-          localb.gKF = paramContext.getString(2131761707);
+          localb.hlf = paramContext.getString(2131761707);
         }
       }
     }
   }
   
-  public static b a(Context paramContext, dj paramdj)
+  public static b a(Context paramContext, dl paramdl)
   {
     AppMethodBeat.i(31843);
-    ad.d("MicroMsg.FMessageProvider", "build lbs, talker = " + paramdj.field_sayhiuser + ", scene = " + paramdj.field_scene);
+    ac.d("MicroMsg.FMessageProvider", "build lbs, talker = " + paramdl.field_sayhiuser + ", scene = " + paramdl.field_scene);
     b localb = new b();
-    localb.id = paramdj.systemRowid;
-    if (paramdj.field_isSend == 1) {}
+    localb.id = paramdl.systemRowid;
+    if (paramdl.field_isSend == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.dDS = bool;
-      localb.username = paramdj.field_sayhiuser;
-      localb.woZ = paramdj.field_scene;
-      if (paramdj.field_isSend != 1) {
+      localb.dBE = bool;
+      localb.username = paramdl.field_sayhiuser;
+      localb.xAq = paramdl.field_scene;
+      if (paramdl.field_isSend != 1) {
         break;
       }
-      localb.gKF = paramdj.field_content;
+      localb.hlf = paramdl.field_content;
       AppMethodBeat.o(31843);
       return localb;
     }
-    paramdj = bl.d.aIR(paramdj.field_content);
-    if ((paramdj.content != null) && (!paramdj.content.trim().equals(""))) {}
-    for (localb.gKF = paramdj.content;; localb.gKF = paramContext.getString(2131757177))
+    paramdl = bo.d.aOn(paramdl.field_content);
+    if ((paramdl.content != null) && (!paramdl.content.trim().equals(""))) {}
+    for (localb.hlf = paramdl.content;; localb.hlf = paramContext.getString(2131757177))
     {
-      localb.nickname = paramdj.nickname;
+      localb.nickname = paramdl.nickname;
       break;
     }
   }
   
-  public static b a(Context paramContext, bu parambu)
+  public static b a(Context paramContext, bx parambx)
   {
     AppMethodBeat.i(31844);
-    ad.d("MicroMsg.FMessageProvider", "build shake, talker = " + parambu.field_talker + ", scene = " + parambu.field_scene);
+    ac.d("MicroMsg.FMessageProvider", "build shake, talker = " + parambx.field_talker + ", scene = " + parambx.field_scene);
     b localb = new b();
-    localb.id = parambu.systemRowid;
-    if (parambu.field_isSend == 1) {}
+    localb.id = parambx.systemRowid;
+    if (parambx.field_isSend == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localb.dDS = bool;
-      localb.username = parambu.field_sayhiuser;
-      localb.woZ = parambu.field_scene;
-      if (parambu.field_isSend != 1) {
+      localb.dBE = bool;
+      localb.username = parambx.field_sayhiuser;
+      localb.xAq = parambx.field_scene;
+      if (parambx.field_isSend != 1) {
         break;
       }
-      localb.gKF = parambu.field_content;
+      localb.hlf = parambx.field_content;
       AppMethodBeat.o(31844);
       return localb;
     }
-    parambu = bl.d.aIR(parambu.field_content);
-    if ((parambu.content != null) && (!parambu.content.trim().equals(""))) {}
-    for (localb.gKF = parambu.content;; localb.gKF = paramContext.getString(2131757177))
+    parambx = bo.d.aOn(parambx.field_content);
+    if ((parambx.content != null) && (!parambx.content.trim().equals(""))) {}
+    for (localb.hlf = parambx.content;; localb.hlf = paramContext.getString(2131757177))
     {
-      localb.nickname = parambu.nickname;
+      localb.nickname = parambx.nickname;
       break;
     }
   }
   
-  public static af a(ba paramba)
+  public static com.tencent.mm.storage.ai a(bd parambd)
   {
     AppMethodBeat.i(31850);
-    af localaf = new af();
-    if (paramba == null)
+    com.tencent.mm.storage.ai localai = new com.tencent.mm.storage.ai();
+    if (parambd == null)
     {
       AppMethodBeat.o(31850);
-      return localaf;
+      return localai;
     }
-    if (paramba.field_type == 0)
+    if (parambd.field_type == 0)
     {
-      paramba = aCi(paramba.field_msgContent);
+      parambd = aHA(parambd.field_msgContent);
       AppMethodBeat.o(31850);
-      return paramba;
+      return parambd;
     }
-    paramba = aCj(paramba.field_msgContent);
+    parambd = aHB(parambd.field_msgContent);
     AppMethodBeat.o(31850);
-    return paramba;
+    return parambd;
   }
   
   public static String a(Context paramContext, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(31848);
-    ad.d("MicroMsg.FMessageProvider", "setDigest, fmsgType = %d, fmsgScene = %d, fmsgContent = %s, isSend = %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
+    ac.d("MicroMsg.FMessageProvider", "setDigest, fmsgType = %d, fmsgScene = %d, fmsgContent = %s, isSend = %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject;
     if (paramInt1 == 0)
     {
       if (paramString == null)
       {
-        ad.e("MicroMsg.FMessageProvider", "setDigest fail, fmsgContent is null");
+        ac.e("MicroMsg.FMessageProvider", "setDigest fail, fmsgContent is null");
         AppMethodBeat.o(31848);
         return null;
       }
-      paramString = bl.a.aIO(paramString);
+      paramString = bo.a.aOk(paramString);
       switch (paramString.scene)
       {
       default: 
@@ -265,11 +263,11 @@ public final class b
       return localObject;
       localObject = paramContext.getString(2131757159);
       continue;
-      localObject = new gi();
-      ((gi)localObject).djw.djt = paramString.FzV;
-      ((gi)localObject).djw.dju = paramString.FzW;
-      a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
-      localObject = paramContext.getString(2131757164, new Object[] { bt.by(((gi)localObject).djx.djy, "") });
+      localObject = new gj();
+      ((gj)localObject).dgR.dgO = paramString.GYX;
+      ((gj)localObject).dgR.dgP = paramString.GYY;
+      a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+      localObject = paramContext.getString(2131757164, new Object[] { bs.bG(((gj)localObject).dgS.dgT, "") });
       continue;
       localObject = paramContext.getString(2131757175);
       continue;
@@ -280,7 +278,7 @@ public final class b
       localObject = paramString;
       if (!paramBoolean)
       {
-        paramString = bl.d.aIR(paramString);
+        paramString = bo.d.aOn(paramString);
         if ((paramString.content != null) && (!paramString.content.trim().equals(""))) {
           localObject = paramString.content;
         } else {
@@ -290,144 +288,144 @@ public final class b
     }
   }
   
-  public static b[] a(Context paramContext, dj[] paramArrayOfdj)
+  public static b[] a(Context paramContext, dl[] paramArrayOfdl)
   {
     AppMethodBeat.i(31846);
     StringBuilder localStringBuilder = new StringBuilder("convert lbsList, talker = ");
-    if ((paramArrayOfdj == null) || (paramArrayOfdj.length == 0) || (paramArrayOfdj[0] == null)) {}
-    for (Object localObject = "null";; localObject = paramArrayOfdj[0].field_sayhiuser)
+    if ((paramArrayOfdl == null) || (paramArrayOfdl.length == 0) || (paramArrayOfdl[0] == null)) {}
+    for (Object localObject = "null";; localObject = paramArrayOfdl[0].field_sayhiuser)
     {
-      ad.d("MicroMsg.FMessageProvider", (String)localObject);
-      if ((paramArrayOfdj != null) && (paramArrayOfdj.length != 0)) {
+      ac.d("MicroMsg.FMessageProvider", (String)localObject);
+      if ((paramArrayOfdl != null) && (paramArrayOfdl.length != 0)) {
         break;
       }
-      ad.e("MicroMsg.FMessageProvider", "convert lbs fail, lbsList is null");
+      ac.e("MicroMsg.FMessageProvider", "convert lbs fail, lbsList is null");
       AppMethodBeat.o(31846);
       return null;
     }
-    localObject = new b[paramArrayOfdj.length];
+    localObject = new b[paramArrayOfdl.length];
     int i = 0;
     while (i < localObject.length)
     {
-      localObject[(localObject.length - i - 1)] = a(paramContext, paramArrayOfdj[i]);
+      localObject[(localObject.length - i - 1)] = a(paramContext, paramArrayOfdl[i]);
       i += 1;
     }
     AppMethodBeat.o(31846);
     return localObject;
   }
   
-  public static b[] a(Context paramContext, ba[] paramArrayOfba)
+  public static b[] a(Context paramContext, bd[] paramArrayOfbd)
   {
     AppMethodBeat.i(31845);
     StringBuilder localStringBuilder = new StringBuilder("convert fmsgList, talker = ");
-    if ((paramArrayOfba == null) || (paramArrayOfba.length == 0) || (paramArrayOfba[0] == null)) {}
-    for (Object localObject = "null";; localObject = paramArrayOfba[0].field_talker)
+    if ((paramArrayOfbd == null) || (paramArrayOfbd.length == 0) || (paramArrayOfbd[0] == null)) {}
+    for (Object localObject = "null";; localObject = paramArrayOfbd[0].field_talker)
     {
-      ad.d("MicroMsg.FMessageProvider", (String)localObject);
-      if ((paramArrayOfba != null) && (paramArrayOfba.length != 0)) {
+      ac.d("MicroMsg.FMessageProvider", (String)localObject);
+      if ((paramArrayOfbd != null) && (paramArrayOfbd.length != 0)) {
         break;
       }
-      ad.e("MicroMsg.FMessageProvider", "convert fmsg fail, fmsgList is null");
+      ac.e("MicroMsg.FMessageProvider", "convert fmsg fail, fmsgList is null");
       AppMethodBeat.o(31845);
       return null;
     }
-    localObject = new b[paramArrayOfba.length];
+    localObject = new b[paramArrayOfbd.length];
     int i = 0;
     while (i < localObject.length)
     {
-      localObject[(localObject.length - i - 1)] = c(paramContext, paramArrayOfba[i]);
+      localObject[(localObject.length - i - 1)] = c(paramContext, paramArrayOfbd[i]);
       i += 1;
     }
     AppMethodBeat.o(31845);
     return localObject;
   }
   
-  public static b[] a(Context paramContext, bu[] paramArrayOfbu)
+  public static b[] a(Context paramContext, bx[] paramArrayOfbx)
   {
     AppMethodBeat.i(31847);
     StringBuilder localStringBuilder = new StringBuilder("convert shakeList, talker = ");
-    if ((paramArrayOfbu == null) || (paramArrayOfbu.length == 0) || (paramArrayOfbu[0] == null)) {}
-    for (Object localObject = "null";; localObject = paramArrayOfbu[0].field_sayhiuser)
+    if ((paramArrayOfbx == null) || (paramArrayOfbx.length == 0) || (paramArrayOfbx[0] == null)) {}
+    for (Object localObject = "null";; localObject = paramArrayOfbx[0].field_sayhiuser)
     {
-      ad.d("MicroMsg.FMessageProvider", (String)localObject);
-      if ((paramArrayOfbu != null) && (paramArrayOfbu.length != 0)) {
+      ac.d("MicroMsg.FMessageProvider", (String)localObject);
+      if ((paramArrayOfbx != null) && (paramArrayOfbx.length != 0)) {
         break;
       }
-      ad.e("MicroMsg.FMessageProvider", "convert shake fail, shakeList is null");
+      ac.e("MicroMsg.FMessageProvider", "convert shake fail, shakeList is null");
       AppMethodBeat.o(31847);
       return null;
     }
-    localObject = new b[paramArrayOfbu.length];
+    localObject = new b[paramArrayOfbx.length];
     int i = 0;
     while (i < localObject.length)
     {
-      localObject[(localObject.length - i - 1)] = a(paramContext, paramArrayOfbu[i]);
+      localObject[(localObject.length - i - 1)] = a(paramContext, paramArrayOfbx[i]);
       i += 1;
     }
     AppMethodBeat.o(31847);
     return localObject;
   }
   
-  private static af aCi(String paramString)
+  private static com.tencent.mm.storage.ai aHA(String paramString)
   {
     AppMethodBeat.i(31851);
-    paramString = bl.a.aIO(paramString);
-    af localaf = new af();
-    localaf.setUsername(paramString.yGA);
-    localaf.na(paramString.eKn);
-    localaf.nd(paramString.getDisplayName());
-    localaf.ne(paramString.ilE);
-    localaf.nf(paramString.ilF);
-    localaf.jJ(paramString.evp);
-    localaf.nv(paramString.getProvince());
-    localaf.nw(paramString.getCity());
-    localaf.nu(paramString.signature);
-    localaf.jF(paramString.AOL);
-    localaf.nz(paramString.evE);
-    localaf.nI(paramString.Cin);
+    paramString = bo.a.aOk(paramString);
+    com.tencent.mm.storage.ai localai = new com.tencent.mm.storage.ai();
+    localai.setUsername(paramString.zTO);
+    localai.qg(paramString.eNf);
+    localai.qj(paramString.getDisplayName());
+    localai.qk(paramString.iLL);
+    localai.ql(paramString.iLM);
+    localai.jH(paramString.exL);
+    localai.qB(paramString.getProvince());
+    localai.qC(paramString.getCity());
+    localai.qA(paramString.signature);
+    localai.jD(paramString.Chb);
+    localai.qF(paramString.eya);
+    localai.qO(paramString.DAE);
     AppMethodBeat.o(31851);
-    return localaf;
+    return localai;
   }
   
-  private static af aCj(String paramString)
+  private static com.tencent.mm.storage.ai aHB(String paramString)
   {
     AppMethodBeat.i(31852);
-    paramString = bl.d.aIR(paramString);
-    af localaf = new af();
-    localaf.setUsername(paramString.yGA);
-    localaf.na(paramString.eKn);
-    localaf.nd(paramString.nickname);
-    localaf.ne(paramString.ilE);
-    localaf.nf(paramString.ilF);
-    localaf.jJ(paramString.evp);
-    localaf.nu(paramString.signature);
-    localaf.nv(paramString.getProvince());
-    localaf.nw(paramString.getCity());
+    paramString = bo.d.aOn(paramString);
+    com.tencent.mm.storage.ai localai = new com.tencent.mm.storage.ai();
+    localai.setUsername(paramString.zTO);
+    localai.qg(paramString.eNf);
+    localai.qj(paramString.nickname);
+    localai.qk(paramString.iLL);
+    localai.ql(paramString.iLM);
+    localai.jH(paramString.exL);
+    localai.qA(paramString.signature);
+    localai.qB(paramString.getProvince());
+    localai.qC(paramString.getCity());
     AppMethodBeat.o(31852);
-    return localaf;
+    return localai;
   }
   
-  public static b c(Context paramContext, ba paramba)
+  public static b c(Context paramContext, bd parambd)
   {
     AppMethodBeat.i(31840);
-    paramContext = a(paramContext, paramba.systemRowid, paramba.eLF(), paramba.field_talker, paramba.field_msgContent, paramba.field_type);
+    paramContext = a(paramContext, parambd.systemRowid, parambd.fbj(), parambd.field_talker, parambd.field_msgContent, parambd.field_type);
     AppMethodBeat.o(31840);
     return paramContext;
   }
   
-  public static void cj(String paramString, int paramInt)
+  public static void co(String paramString, int paramInt)
   {
     AppMethodBeat.i(31849);
-    bi[] arrayOfbi = null;
-    bu[] arrayOfbu;
+    bl[] arrayOfbl = null;
+    bx[] arrayOfbx;
     Object localObject1;
-    ba[] arrayOfba;
+    bd[] arrayOfbd;
     if ((paramInt == 26) || (paramInt == 27) || (paramInt == 28) || (paramInt == 29))
     {
-      ad.d("MicroMsg.FMessageProvider", "initAddContent, scene is shake");
-      arrayOfbu = d.aCq().aJk(paramString);
-      localObject1 = a(aj.getContext(), arrayOfbu);
-      arrayOfba = null;
+      ac.d("MicroMsg.FMessageProvider", "initAddContent, scene is shake");
+      arrayOfbx = d.aJg().aOG(paramString);
+      localObject1 = a(com.tencent.mm.sdk.platformtools.ai.getContext(), arrayOfbx);
+      arrayOfbd = null;
     }
     while (localObject1 == null)
     {
@@ -435,36 +433,36 @@ public final class b
       return;
       if (paramInt == 18)
       {
-        ad.d("MicroMsg.FMessageProvider", "initAddContent, scene is lbs");
-        arrayOfbi = d.aCp().aIL(paramString);
-        localObject1 = a(aj.getContext(), arrayOfbi);
-        arrayOfbu = null;
-        arrayOfba = null;
+        ac.d("MicroMsg.FMessageProvider", "initAddContent, scene is lbs");
+        arrayOfbl = d.aJf().aOh(paramString);
+        localObject1 = a(com.tencent.mm.sdk.platformtools.ai.getContext(), arrayOfbl);
+        arrayOfbx = null;
+        arrayOfbd = null;
       }
       else
       {
-        arrayOfba = d.aCn().aII(paramString);
-        localObject1 = a(aj.getContext(), arrayOfba);
-        arrayOfbu = null;
+        arrayOfbd = d.aJd().aOe(paramString);
+        localObject1 = a(com.tencent.mm.sdk.platformtools.ai.getContext(), arrayOfbd);
+        arrayOfbx = null;
       }
     }
     paramInt = 0;
     int k = localObject1.length;
     int i = 0;
     Object localObject2;
-    bl localbl;
+    bo localbo;
     int m;
     int j;
     if (i < k)
     {
       localObject2 = localObject1[i];
-      localbl = new bl();
-      localbl.setContent(localObject2.gKF);
-      m = w.tq(localObject2.username);
-      if (arrayOfba != null)
+      localbo = new bo();
+      localbo.setContent(localObject2.hlf);
+      m = w.xt(localObject2.username);
+      if (arrayOfbd != null)
       {
         j = paramInt + 1;
-        localbl.kY(arrayOfba[paramInt].field_createTime);
+        localbo.oA(arrayOfbd[paramInt].field_createTime);
         paramInt = j;
       }
     }
@@ -473,16 +471,16 @@ public final class b
     for (;;)
     {
       label215:
-      localbl.nY(localObject2.username);
-      localbl.setType(m);
+      localbo.re(localObject2.username);
+      localbo.setType(m);
       label252:
       long l;
-      if (localObject2.dDS)
+      if (localObject2.dBE)
       {
-        localbl.setStatus(2);
-        localbl.jV(1);
-        az.arV();
-        l = c.apO().an(localbl);
+        localbo.setStatus(2);
+        localbo.jT(1);
+        az.ayM();
+        l = c.awD().ap(localbo);
         if (l == -1L) {
           break label384;
         }
@@ -490,46 +488,46 @@ public final class b
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue(bool);
-        ad.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
+        ac.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
         i += 1;
         break;
-        if (arrayOfbi != null)
+        if (arrayOfbl != null)
         {
           j = paramInt + 1;
-          localbl.kY(arrayOfbi[paramInt].field_createtime * 1000L);
+          localbo.oA(arrayOfbl[paramInt].field_createtime * 1000L);
           paramInt = j;
           break label215;
         }
-        if (arrayOfbu == null) {
+        if (arrayOfbx == null) {
           break label546;
         }
         j = paramInt + 1;
-        localbl.kY(arrayOfbu[paramInt].field_createtime * 1000L);
+        localbo.oA(arrayOfbx[paramInt].field_createtime * 1000L);
         paramInt = j;
         break label215;
-        localbl.setStatus(6);
-        localbl.jV(0);
+        localbo.setStatus(6);
+        localbo.jT(0);
         break label252;
       }
-      localObject1 = new bl();
-      if (arrayOfba != null) {
-        ((bl)localObject1).kY(arrayOfba[0].field_createTime + 1L);
+      localObject1 = new bo();
+      if (arrayOfbd != null) {
+        ((bo)localObject1).oA(arrayOfbd[0].field_createTime + 1L);
       }
       for (;;)
       {
-        ((bl)localObject1).nY(paramString);
-        ((bl)localObject1).setContent(aj.getContext().getString(2131764537));
-        ((bl)localObject1).setType(10000);
-        ((bl)localObject1).setStatus(6);
-        ((bl)localObject1).jV(0);
-        az.arV();
-        ad.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = ".concat(String.valueOf(c.apO().an((bl)localObject1))));
+        ((bo)localObject1).re(paramString);
+        ((bo)localObject1).setContent(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131764537));
+        ((bo)localObject1).setType(10000);
+        ((bo)localObject1).setStatus(6);
+        ((bo)localObject1).jT(0);
+        az.ayM();
+        ac.i("MicroMsg.FMessageProvider", "new msg inserted to db , local id = ".concat(String.valueOf(c.awD().ap((bo)localObject1))));
         AppMethodBeat.o(31849);
         return;
-        if (arrayOfbi != null) {
-          ((bl)localObject1).kY(arrayOfbi[0].field_createtime * 1000L + 1L);
-        } else if (arrayOfbu != null) {
-          ((bl)localObject1).kY(arrayOfbu[0].field_createtime * 1000L + 1L);
+        if (arrayOfbl != null) {
+          ((bo)localObject1).oA(arrayOfbl[0].field_createtime * 1000L + 1L);
+        } else if (arrayOfbx != null) {
+          ((bo)localObject1).oA(arrayOfbx[0].field_createtime * 1000L + 1L);
         }
       }
     }
@@ -537,7 +535,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.b
  * JD-Core Version:    0.7.0.1
  */

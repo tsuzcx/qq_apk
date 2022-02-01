@@ -4,17 +4,17 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.Selection;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class a
 {
-  private final ap kFL;
-  public volatile c mfy;
+  private final ao lhe;
+  public volatile c mHx;
   
   public a()
   {
     AppMethodBeat.i(131519);
-    this.kFL = new ap(Looper.getMainLooper())
+    this.lhe = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -23,8 +23,8 @@ public final class a
         {
           String str = (String)paramAnonymousMessage.obj;
           int i = paramAnonymousMessage.arg1;
-          if (a.this.mfy != null) {
-            a.this.mfy.bw(str, i);
+          if (a.this.mHx != null) {
+            a.this.mHx.bA(str, i);
           }
         }
         AppMethodBeat.o(131518);
@@ -41,13 +41,13 @@ public final class a
       AppMethodBeat.o(131520);
       return;
     }
-    paramCharSequence = this.kFL.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
-    this.kFL.removeMessages(1000);
-    ap localap = this.kFL;
+    paramCharSequence = this.lhe.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
+    this.lhe.removeMessages(1000);
+    ao localao = this.lhe;
     if (paramBoolean) {}
     for (long l = 150L;; l = 0L)
     {
-      localap.sendMessageDelayed(paramCharSequence, l);
+      localao.sendMessageDelayed(paramCharSequence, l);
       AppMethodBeat.o(131520);
       return;
     }
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c.a
  * JD-Core Version:    0.7.0.1
  */

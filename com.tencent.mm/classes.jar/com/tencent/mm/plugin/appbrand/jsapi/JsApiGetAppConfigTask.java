@@ -16,7 +16,7 @@ class JsApiGetAppConfigTask
 {
   public static final Parcelable.Creator<JsApiGetAppConfigTask> CREATOR;
   public String appId;
-  public Runnable jwt;
+  public Runnable jWP;
   public String key;
   public int scene;
   public int type;
@@ -38,35 +38,26 @@ class JsApiGetAppConfigTask
     AppMethodBeat.o(45485);
   }
   
-  public final void aEA()
-  {
-    AppMethodBeat.i(45487);
-    if (this.jwt != null) {
-      this.jwt.run();
-    }
-    AppMethodBeat.o(45487);
-  }
-  
-  public final void aEz()
+  public final void aLq()
   {
     AppMethodBeat.i(45486);
-    if (!g.afz().gcn)
+    if (!g.agP().ggT)
     {
       AppMethodBeat.o(45486);
       return;
     }
-    Pair localPair = ((b)j.T(b.class)).F(this.appId, 4, this.scene);
+    Pair localPair = ((b)j.T(b.class)).E(this.appId, 4, this.scene);
     if (((Boolean)localPair.first).booleanValue())
     {
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(((Integer)localPair.second).intValue(), 166L);
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.jqG;
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a.A(((Integer)localPair.second).intValue(), 166L);
     }
     if (!((Boolean)localPair.first).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
       p.a(this.appId, this.type, 0, new p.c()
       {
-        public final void Eh(String paramAnonymousString)
+        public final void Ik(String paramAnonymousString)
         {
           AppMethodBeat.i(45483);
           JsApiGetAppConfigTask.this.value = paramAnonymousString;
@@ -77,6 +68,15 @@ class JsApiGetAppConfigTask
       AppMethodBeat.o(45486);
       return;
     }
+  }
+  
+  public final void aLr()
+  {
+    AppMethodBeat.i(45487);
+    if (this.jWP != null) {
+      this.jWP.run();
+    }
+    AppMethodBeat.o(45487);
   }
   
   public final void e(Parcel paramParcel)

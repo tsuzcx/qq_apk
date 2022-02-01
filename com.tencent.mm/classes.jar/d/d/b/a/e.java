@@ -1,17 +1,29 @@
 package d.d.b.a;
 
 import d.l;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "kotlin-stdlib"})
-public abstract interface e
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/DebugMetadata;", "", "version", "", "sourceFile", "", "lineNumbers", "", "localNames", "", "spilled", "indexToLabel", "methodName", "className", "c", "()Ljava/lang/String;", "i", "()[I", "l", "n", "()[Ljava/lang/String;", "m", "f", "s", "v", "()I", "kotlin-stdlib"})
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.TYPE})
+public @interface e
 {
-  public abstract e fvC();
+  String c() default "";
   
-  public abstract StackTraceElement fvD();
+  String f() default "";
+  
+  int fOl() default 1;
+  
+  int[] l() default {};
+  
+  String m() default "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     d.d.b.a.e
  * JD-Core Version:    0.7.0.1
  */

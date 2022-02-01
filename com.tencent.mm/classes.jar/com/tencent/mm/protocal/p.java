@@ -3,8 +3,8 @@ package com.tencent.mm.protocal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.c;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -18,24 +18,24 @@ public final class p
     extends l.d
     implements l.b
   {
-    public String CqG;
-    public byte[] CqH;
-    public int djq;
-    public int dtM;
-    public int htk;
+    public String DIY;
+    public byte[] DIZ;
+    public int dgL;
+    public int drx;
+    public int hTM;
     
     public a()
     {
       AppMethodBeat.i(32087);
-      this.djq = 0;
-      this.dtM = 0;
-      this.htk = 0;
-      this.CqG = "";
-      this.CqH = new byte[0];
+      this.dgL = 0;
+      this.drx = 0;
+      this.hTM = 0;
+      this.DIY = "";
+      this.DIZ = new byte[0];
       AppMethodBeat.o(32087);
     }
     
-    private byte[] ch(byte[] paramArrayOfByte)
+    private byte[] cg(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32089);
       if (paramArrayOfByte == null)
@@ -47,8 +47,8 @@ public final class p
       try
       {
         DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-        localDataOutputStream.writeByte(this.djq);
-        localDataOutputStream.writeByte(this.dtM);
+        localDataOutputStream.writeByte(this.dgL);
+        localDataOutputStream.writeByte(this.drx);
         localDataOutputStream.write(paramArrayOfByte);
         localDataOutputStream.close();
         paramArrayOfByte = localByteArrayOutputStream.toByteArray();
@@ -59,23 +59,23 @@ public final class p
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMDirectSend", "direct merge all failed, err=" + paramArrayOfByte.getMessage());
+          ac.e("MicroMsg.MMDirectSend", "direct merge all failed, err=" + paramArrayOfByte.getMessage());
         }
       }
     }
     
-    private byte[] eBW()
+    private byte[] eRr()
     {
       AppMethodBeat.i(32088);
       Object localObject = new ByteArrayOutputStream();
       try
       {
         DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
-        localDataOutputStream.writeInt(this.htk);
-        localDataOutputStream.writeShort(this.CqG.getBytes().length);
-        localDataOutputStream.write(this.CqG.getBytes());
-        localDataOutputStream.writeShort(this.CqH.length);
-        localDataOutputStream.write(this.CqH);
+        localDataOutputStream.writeInt(this.hTM);
+        localDataOutputStream.writeShort(this.DIY.getBytes().length);
+        localDataOutputStream.write(this.DIY.getBytes());
+        localDataOutputStream.writeShort(this.DIZ.length);
+        localDataOutputStream.write(this.DIZ);
         localDataOutputStream.close();
         localObject = ((ByteArrayOutputStream)localObject).toByteArray();
         AppMethodBeat.o(32088);
@@ -85,7 +85,7 @@ public final class p
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMDirectSend", "direct merge tail failed, err=" + localIOException.getMessage());
+          ac.e("MicroMsg.MMDirectSend", "direct merge tail failed, err=" + localIOException.getMessage());
         }
       }
     }
@@ -113,10 +113,10 @@ public final class p
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(32090);
-      byte[] arrayOfByte = eBW();
+      byte[] arrayOfByte = eRr();
       PByteArray localPByteArray = new PByteArray();
-      c.a(localPByteArray, arrayOfByte, p.aDk(super.getDeviceID()));
-      arrayOfByte = ch(localPByteArray.value);
+      c.a(localPByteArray, arrayOfByte, p.aIB(super.getDeviceID()));
+      arrayOfByte = cg(localPByteArray.value);
       AppMethodBeat.o(32090);
       return arrayOfByte;
     }
@@ -128,31 +128,31 @@ public final class p
   {
     public byte[] content;
     public String deviceID;
-    private int djq;
-    private int dtM;
-    public String hrn;
-    private int htk;
+    private int dgL;
+    private int drx;
+    public String hRP;
+    private int hTM;
     
     public b()
     {
       AppMethodBeat.i(32091);
-      this.hrn = "";
+      this.hRP = "";
       this.content = new byte[0];
       this.deviceID = "";
-      this.djq = 0;
-      this.dtM = 0;
-      this.htk = 0;
-      this.hrn = "";
+      this.dgL = 0;
+      this.drx = 0;
+      this.hTM = 0;
+      this.hRP = "";
       this.content = new byte[0];
       AppMethodBeat.o(32091);
     }
     
-    private byte[] ci(byte[] paramArrayOfByte)
+    private byte[] ch(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32092);
       if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2))
       {
-        ad.e("MicroMsg.MMDirectSend", "parse all failed, empty buf");
+        ac.e("MicroMsg.MMDirectSend", "parse all failed, empty buf");
         AppMethodBeat.o(32092);
         return null;
       }
@@ -161,10 +161,10 @@ public final class p
       {
         paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
         DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
-        this.djq = localDataInputStream.readByte();
-        this.dtM = localDataInputStream.readByte();
+        this.dgL = localDataInputStream.readByte();
+        this.drx = localDataInputStream.readByte();
         localDataInputStream.readFully(arrayOfByte);
-        ad.d("MicroMsg.MMDirectSend", "cmdId:" + this.djq + ", flag=" + this.dtM + ", tail len=" + arrayOfByte.length);
+        ac.d("MicroMsg.MMDirectSend", "cmdId:" + this.dgL + ", flag=" + this.drx + ", tail len=" + arrayOfByte.length);
         paramArrayOfByte.close();
         AppMethodBeat.o(32092);
         return arrayOfByte;
@@ -173,7 +173,7 @@ public final class p
       {
         for (;;)
         {
-          ad.e("MicroMsg.MMDirectSend", "direct parse all failed, err=" + paramArrayOfByte.getMessage());
+          ac.e("MicroMsg.MMDirectSend", "direct parse all failed, err=" + paramArrayOfByte.getMessage());
         }
       }
     }
@@ -181,10 +181,10 @@ public final class p
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(32093);
-      byte[] arrayOfByte1 = p.aDk(this.deviceID);
+      byte[] arrayOfByte1 = p.aIB(this.deviceID);
       PByteArray localPByteArray = new PByteArray();
       int i;
-      if (c.b(localPByteArray, ci(paramArrayOfByte), arrayOfByte1) != 0)
+      if (c.b(localPByteArray, ch(paramArrayOfByte), arrayOfByte1) != 0)
       {
         byte[] arrayOfByte2 = new byte[16];
         i = 0;
@@ -193,16 +193,16 @@ public final class p
           arrayOfByte2[i] = 0;
           i += 1;
         }
-        if (c.b(localPByteArray, ci(paramArrayOfByte), arrayOfByte2) != 0)
+        if (c.b(localPByteArray, ch(paramArrayOfByte), arrayOfByte2) != 0)
         {
-          ad.e("MicroMsg.MMDirectSend", "decrypting from buffer using key=%s error", new Object[] { bt.cv(arrayOfByte1) });
+          ac.e("MicroMsg.MMDirectSend", "decrypting from buffer using key=%s error", new Object[] { bs.cu(arrayOfByte1) });
           AppMethodBeat.o(32093);
           return -1;
         }
       }
       paramArrayOfByte = localPByteArray.value;
       if (paramArrayOfByte == null) {
-        ad.e("MicroMsg.MMDirectSend", "parse tail failed, empty buf");
+        ac.e("MicroMsg.MMDirectSend", "parse tail failed, empty buf");
       }
       for (;;)
       {
@@ -211,8 +211,8 @@ public final class p
         try
         {
           paramArrayOfByte = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
-          this.htk = paramArrayOfByte.readInt();
-          ad.d("MicroMsg.MMDirectSend", "seq=" + this.htk);
+          this.hTM = paramArrayOfByte.readInt();
+          ac.d("MicroMsg.MMDirectSend", "seq=" + this.hTM);
           i = paramArrayOfByte.readShort();
           if (i >= 0) {
             break label232;
@@ -223,14 +223,14 @@ public final class p
         }
         catch (IOException paramArrayOfByte)
         {
-          ad.e("MicroMsg.MMDirectSend", "direct parse all failed, err=" + paramArrayOfByte.getMessage());
+          ac.e("MicroMsg.MMDirectSend", "direct parse all failed, err=" + paramArrayOfByte.getMessage());
         }
         continue;
         label232:
         arrayOfByte1 = new byte[i];
         paramArrayOfByte.readFully(arrayOfByte1);
-        this.hrn = new String(arrayOfByte1);
-        ad.d("MicroMsg.MMDirectSend", "recievers len=" + i + ", sender=" + this.hrn);
+        this.hRP = new String(arrayOfByte1);
+        ac.d("MicroMsg.MMDirectSend", "recievers len=" + i + ", sender=" + this.hRP);
         i = paramArrayOfByte.readShort();
         if (i < 0)
         {
@@ -240,7 +240,7 @@ public final class p
         }
         this.content = new byte[i];
         paramArrayOfByte.readFully(this.content);
-        ad.d("MicroMsg.MMDirectSend", "content len=" + this.content.length);
+        ac.d("MicroMsg.MMDirectSend", "content len=" + this.content.length);
       }
     }
     
@@ -257,7 +257,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.p
  * JD-Core Version:    0.7.0.1
  */

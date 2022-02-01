@@ -6,10 +6,10 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.luckymoney.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -21,40 +21,40 @@ import org.json.JSONObject;
 public final class ai
   extends am
 {
-  public String drI;
-  public String iau;
-  public int nTT;
-  public String sYj;
-  public String sYk;
-  public String sYt;
-  public au tdy;
-  public String tfj;
-  public boolean tfk;
-  public int tfl;
-  public String tfm;
-  public au tfn;
-  public au tfo;
-  public au tfp;
-  public int tfq;
-  public int tfr;
-  public int tfs;
-  public int tft;
-  public int tfu;
-  public LinkedList<w> tfv;
+  public String dpt;
+  public String iAx;
+  public int oxo;
+  public String ugH;
+  public String ugx;
+  public String ugy;
+  public au ulN;
+  public int unA;
+  public String unB;
+  public au unC;
+  public au unD;
+  public au unE;
+  public int unF;
+  public int unG;
+  public int unH;
+  public int unI;
+  public int unJ;
+  public LinkedList<w> unK;
+  public String uny;
+  public boolean unz;
   
   public ai(String paramString, int paramInt)
   {
     AppMethodBeat.i(65288);
-    this.tfq = 0;
-    this.tfr = 0;
-    this.tfs = 0;
-    this.tft = 0;
-    this.tfu = 0;
+    this.unF = 0;
+    this.unG = 0;
+    this.unH = 0;
+    this.unI = 0;
+    this.unJ = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("scene", "8");
     localHashMap.put("ver", paramString);
-    g.afC();
-    localHashMap.put("walletType", String.valueOf(g.afB().afk().get(339975, null)));
+    g.agS();
+    localHashMap.put("walletType", String.valueOf(g.agR().agA().get(339975, null)));
     localHashMap.put("hasSource", String.valueOf(paramInt));
     setRequestData(localHashMap);
     AppMethodBeat.o(65288);
@@ -63,21 +63,21 @@ public final class ai
   public ai(String paramString, int paramInt, byte paramByte)
   {
     AppMethodBeat.i(65289);
-    this.tfq = 0;
-    this.tfr = 0;
-    this.tfs = 0;
-    this.tft = 0;
-    this.tfu = 0;
+    this.unF = 0;
+    this.unG = 0;
+    this.unH = 0;
+    this.unI = 0;
+    this.unJ = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("ver", paramString);
-    g.afC();
-    localHashMap.put("walletType", String.valueOf(g.afB().afk().get(339975, null)));
+    g.agS();
+    localHashMap.put("walletType", String.valueOf(g.agR().agA().get(339975, null)));
     localHashMap.put("hasSource", String.valueOf(paramInt));
     setRequestData(localHashMap);
     AppMethodBeat.o(65289);
   }
   
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/operationwxhb";
   }
@@ -92,87 +92,87 @@ public final class ai
     AppMethodBeat.i(65290);
     if (paramInt == 0)
     {
-      this.tfl = paramJSONObject.optInt("randomAmount");
-      this.tfj = paramJSONObject.optString("randomWishing");
-      this.iau = paramJSONObject.optString("notice");
-      this.tfm = paramJSONObject.optString("notice_url");
+      this.unA = paramJSONObject.optInt("randomAmount");
+      this.uny = paramJSONObject.optString("randomWishing");
+      this.iAx = paramJSONObject.optString("notice");
+      this.unB = paramJSONObject.optString("notice_url");
       boolean bool;
       if (paramJSONObject.optInt("hasCanShareHongBao") == 1) {
         bool = true;
       }
       for (;;)
       {
-        this.tfk = bool;
-        this.nTT = paramJSONObject.optInt("currency");
-        this.sYj = paramJSONObject.optString("currencyUint");
-        this.sYk = paramJSONObject.optString("currencyWording");
-        this.drI = paramJSONObject.optString("unique_id");
-        ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "currency=" + this.nTT + ";currencyUint=" + this.sYj + ";currencyWording=" + this.sYk + ";uniqueId=" + this.drI);
+        this.unz = bool;
+        this.oxo = paramJSONObject.optInt("currency");
+        this.ugx = paramJSONObject.optString("currencyUint");
+        this.ugy = paramJSONObject.optString("currencyWording");
+        this.dpt = paramJSONObject.optString("unique_id");
+        ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "currency=" + this.oxo + ";currencyUint=" + this.ugx + ";currencyWording=" + this.ugy + ";uniqueId=" + this.dpt);
         paramString = new j();
-        paramString.tcZ = paramJSONObject.optString("groupHint");
-        paramString.tda = paramJSONObject.optString("personalHint");
-        paramString.sYh = (paramJSONObject.optLong("totalAmount", 200000L) / 100.0D);
-        paramString.sYe = paramJSONObject.optInt("totalNum", 100);
-        paramString.sYf = (paramJSONObject.optLong("perPersonMaxValue", 20000L) / 100.0D);
-        paramString.sYi = (paramJSONObject.optLong("perGroupMaxValue", 20000L) / 100.0D);
-        paramString.sYg = (paramJSONObject.optLong("perMinValue", 1L) / 100.0D);
-        paramString.tdb = paramJSONObject.optInt("payShowBGFlag");
-        paramString.nTT = this.nTT;
-        paramString.sYj = this.sYj;
-        paramString.sYk = this.sYk;
-        paramString.tdc = paramJSONObject.optString("foreignFaqUrl");
-        paramString.tdd = paramJSONObject.optString("foreignHongBaoName");
-        paramString.tde = paramJSONObject.optString("showSourceAndMac");
-        paramString.tdf = paramJSONObject.optString("coverinfo");
-        ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "foreignFaqUrl: %s, foreignHongBaoName: %s", new Object[] { paramString.tdc, paramString.tdd });
-        a.cKP();
-        Object localObject = a.cKQ();
-        ((k)localObject).sYI = paramString;
-        ((k)localObject).cLs();
-        ad.i("MicroMsg.LuckyMoneyConfigManager", "setConfig maxTotalAmount:" + ((k)localObject).sYI.sYh + " maxTotalNum:" + ((k)localObject).sYI.sYe + " perGroupMaxValue:" + ((k)localObject).sYI.sYi + " perMinValue:" + ((k)localObject).sYI.sYg + " perPersonMaxValue:" + ((k)localObject).sYI.sYf);
+        paramString.ulo = paramJSONObject.optString("groupHint");
+        paramString.ulp = paramJSONObject.optString("personalHint");
+        paramString.ugv = (paramJSONObject.optLong("totalAmount", 200000L) / 100.0D);
+        paramString.ugs = paramJSONObject.optInt("totalNum", 100);
+        paramString.ugt = (paramJSONObject.optLong("perPersonMaxValue", 20000L) / 100.0D);
+        paramString.ugw = (paramJSONObject.optLong("perGroupMaxValue", 20000L) / 100.0D);
+        paramString.ugu = (paramJSONObject.optLong("perMinValue", 1L) / 100.0D);
+        paramString.ulq = paramJSONObject.optInt("payShowBGFlag");
+        paramString.oxo = this.oxo;
+        paramString.ugx = this.ugx;
+        paramString.ugy = this.ugy;
+        paramString.ulr = paramJSONObject.optString("foreignFaqUrl");
+        paramString.uls = paramJSONObject.optString("foreignHongBaoName");
+        paramString.ult = paramJSONObject.optString("showSourceAndMac");
+        paramString.ulu = paramJSONObject.optString("coverinfo");
+        ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "foreignFaqUrl: %s, foreignHongBaoName: %s", new Object[] { paramString.ulr, paramString.uls });
+        a.cYv();
+        Object localObject = a.cYw();
+        ((k)localObject).ugW = paramString;
+        ((k)localObject).cYY();
+        ac.i("MicroMsg.LuckyMoneyConfigManager", "setConfig maxTotalAmount:" + ((k)localObject).ugW.ugv + " maxTotalNum:" + ((k)localObject).ugW.ugs + " perGroupMaxValue:" + ((k)localObject).ugW.ugw + " perMinValue:" + ((k)localObject).ugW.ugu + " perPersonMaxValue:" + ((k)localObject).ugW.ugt);
         try
         {
-          paramString = new String(((k)localObject).sYI.toByteArray(), "ISO-8859-1");
-          g.afC();
-          g.afB().afk().set(356355, paramString);
-          g.afC();
-          g.afB().afk().eKy();
-          this.tfn = x.av(paramJSONObject.optJSONObject("operationHeader"));
-          this.tdy = x.av(paramJSONObject.optJSONObject("operationTail"));
-          this.tfo = x.av(paramJSONObject.optJSONObject("operationNext"));
-          this.tfp = x.av(paramJSONObject.optJSONObject("operationMiddle"));
+          paramString = new String(((k)localObject).ugW.toByteArray(), "ISO-8859-1");
+          g.agS();
+          g.agR().agA().set(356355, paramString);
+          g.agS();
+          g.agR().agA().faa();
+          this.unC = x.aw(paramJSONObject.optJSONObject("operationHeader"));
+          this.ulN = x.aw(paramJSONObject.optJSONObject("operationTail"));
+          this.unD = x.aw(paramJSONObject.optJSONObject("operationNext"));
+          this.unE = x.aw(paramJSONObject.optJSONObject("operationMiddle"));
           paramInt = paramJSONObject.optInt("sceneSwitch");
-          g.afC();
-          g.afB().afk().set(ae.a.FgF, Integer.valueOf(paramInt));
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "sceneSwitch:".concat(String.valueOf(paramInt)));
-          this.tfq = paramJSONObject.optInt("scenePicSwitch");
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "scenePicSwitch:" + this.tfq);
-          this.tfs = paramJSONObject.optInt("enableYearHbExpression");
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "enableYearHbExpression:%s", new Object[] { Integer.valueOf(this.tfs) });
-          this.tfr = paramJSONObject.optInt("enableSelfie");
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "enableSelfIe:" + this.tfr);
-          this.tft = paramJSONObject.optInt("enableNormalSelfie");
-          this.tfu = paramJSONObject.optInt("enableNormalAllExpression");
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "enableNormalSelfie:%s enableNormalAllExpression:%s", new Object[] { Integer.valueOf(this.tft), Integer.valueOf(this.tfu) });
+          g.agS();
+          g.agR().agA().set(ah.a.GEt, Integer.valueOf(paramInt));
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "sceneSwitch:".concat(String.valueOf(paramInt)));
+          this.unF = paramJSONObject.optInt("scenePicSwitch");
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "scenePicSwitch:" + this.unF);
+          this.unH = paramJSONObject.optInt("enableYearHbExpression");
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "enableYearHbExpression:%s", new Object[] { Integer.valueOf(this.unH) });
+          this.unG = paramJSONObject.optInt("enableSelfie");
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "enableSelfIe:" + this.unG);
+          this.unI = paramJSONObject.optInt("enableNormalSelfie");
+          this.unJ = paramJSONObject.optInt("enableNormalAllExpression");
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "enableNormalSelfie:%s enableNormalAllExpression:%s", new Object[] { Integer.valueOf(this.unI), Integer.valueOf(this.unJ) });
           paramInt = paramJSONObject.optInt("enableWeishiHb");
-          g.afC();
-          g.afB().afk().set(ae.a.FgH, Integer.valueOf(paramInt));
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "weishiHbSwitch:".concat(String.valueOf(paramInt)));
-          this.sYt = paramJSONObject.optString("wishing");
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "wishing: %s", new Object[] { this.sYt });
+          g.agS();
+          g.agR().agA().set(ah.a.GEv, Integer.valueOf(paramInt));
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "weishiHbSwitch:".concat(String.valueOf(paramInt)));
+          this.ugH = paramJSONObject.optString("wishing");
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "wishing: %s", new Object[] { this.ugH });
           paramString = paramJSONObject.optJSONArray("yearMess");
           if ((paramString != null) && (paramString.length() > 0))
           {
-            ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "yearMessJson length:" + paramString.length());
-            this.tfv = new LinkedList();
+            ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "yearMessJson length:" + paramString.length());
+            this.unK = new LinkedList();
             paramInt = 0;
             while (paramInt < paramString.length())
             {
               paramJSONObject = paramString.optJSONObject(paramInt);
               localObject = new w();
-              ((w)localObject).teD = paramJSONObject.optInt("yearAmount", 0);
-              ((w)localObject).teE = paramJSONObject.optString("yearWish");
-              this.tfv.add(localObject);
+              ((w)localObject).umS = paramJSONObject.optInt("yearAmount", 0);
+              ((w)localObject).umT = paramJSONObject.optString("yearWish");
+              this.unK.add(localObject);
               paramInt += 1;
               continue;
               bool = false;
@@ -183,33 +183,33 @@ public final class ai
         {
           for (;;)
           {
-            ad.w("MicroMsg.LuckyMoneyConfigManager", "save config exp, " + paramString.getLocalizedMessage());
+            ac.w("MicroMsg.LuckyMoneyConfigManager", "save config exp, " + paramString.getLocalizedMessage());
           }
         }
         catch (IOException paramString)
         {
           for (;;)
           {
-            ad.w("MicroMsg.LuckyMoneyConfigManager", "save config exp, " + paramString.getLocalizedMessage());
+            ac.w("MicroMsg.LuckyMoneyConfigManager", "save config exp, " + paramString.getLocalizedMessage());
           }
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "yearMessJson is empty!");
-          g.afC();
-          paramInt = ((Integer)g.afB().afk().get(ae.a.Fvf, Integer.valueOf(0))).intValue();
-          int i = ((b)g.ab(b.class)).a(b.a.poL, 0);
-          if ((bt.iY(paramInt, 1)) || (bt.iY(i, 1)))
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "yearMessJson is empty!");
+          g.agS();
+          paramInt = ((Integer)g.agR().agA().get(ah.a.GSZ, Integer.valueOf(0))).intValue();
+          int i = ((b)g.ab(b.class)).a(b.a.pSw, 0);
+          if ((bs.jl(paramInt, 1)) || (bs.jl(i, 1)))
           {
-            this.tft = 1;
-            this.tfu = 1;
-            this.tfr = 1;
-            this.tfs = 1;
+            this.unI = 1;
+            this.unJ = 1;
+            this.unG = 1;
+            this.unH = 1;
           }
-          ad.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "localSwitch() enableNormalSelfie:%s enableNormalAllExpression:%s enableSelfie:%s enableYearHbExpression:%s", new Object[] { Integer.valueOf(this.tft), Integer.valueOf(this.tfu), Integer.valueOf(this.tfr), Integer.valueOf(this.tfs) });
+          ac.i("MicroMsg.NetSceneLuckyMoneyGetConfig", "localSwitch() enableNormalSelfie:%s enableNormalAllExpression:%s enableSelfie:%s enableYearHbExpression:%s", new Object[] { Integer.valueOf(this.unI), Integer.valueOf(this.unJ), Integer.valueOf(this.unG), Integer.valueOf(this.unH) });
           AppMethodBeat.o(65290);
           return;
         }
       }
     }
-    ad.e("MicroMsg.NetSceneLuckyMoneyGetConfig", "hongbao operation fail, errCode:" + paramInt + ", errMsg:" + paramString);
+    ac.e("MicroMsg.NetSceneLuckyMoneyGetConfig", "hongbao operation fail, errCode:" + paramInt + ", errMsg:" + paramString);
     AppMethodBeat.o(65290);
   }
 }

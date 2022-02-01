@@ -1,60 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class dml
-  extends ckq
+  extends cqk
 {
-  public int DdZ;
-  public long Dea;
-  public long EAY;
-  public int ECf;
-  public int Timestamp;
+  public int ENp;
+  public int ENq;
+  public int ENr;
+  public int ENs;
+  public String ENt;
+  public int ENu;
+  public String FkI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115881);
+    AppMethodBeat.i(101834);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.BaseResponse == null)
       {
-        paramVarArgs.kX(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(101834);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(2, this.DdZ);
-      paramVarArgs.aG(3, this.Dea);
-      paramVarArgs.aR(4, this.Timestamp);
-      paramVarArgs.aG(5, this.EAY);
-      paramVarArgs.aR(6, this.ECf);
-      AppMethodBeat.o(115881);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      if (this.FkI != null) {
+        paramVarArgs.d(2, this.FkI);
+      }
+      if (this.ENt != null) {
+        paramVarArgs.d(3, this.ENt);
+      }
+      paramVarArgs.aR(4, this.ENs);
+      paramVarArgs.aR(5, this.ENp);
+      paramVarArgs.aR(6, this.ENq);
+      paramVarArgs.aR(7, this.ENr);
+      paramVarArgs.aR(8, this.ENu);
+      AppMethodBeat.o(101834);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label542;
+      if (this.BaseResponse == null) {
+        break label714;
       }
     }
-    label542:
-    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label714:
+    for (int i = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bA(2, this.DdZ);
-      int j = f.a.a.b.b.a.q(3, this.Dea);
-      int k = f.a.a.b.b.a.bA(4, this.Timestamp);
-      int m = f.a.a.b.b.a.q(5, this.EAY);
-      int n = f.a.a.b.b.a.bA(6, this.ECf);
-      AppMethodBeat.o(115881);
-      return paramInt + i + j + k + m + n;
+      paramInt = i;
+      if (this.FkI != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FkI);
+      }
+      i = paramInt;
+      if (this.ENt != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ENt);
+      }
+      paramInt = f.a.a.b.b.a.bx(4, this.ENs);
+      int j = f.a.a.b.b.a.bx(5, this.ENp);
+      int k = f.a.a.b.b.a.bx(6, this.ENq);
+      int m = f.a.a.b.b.a.bx(7, this.ENr);
+      int n = f.a.a.b.b.a.bx(8, this.ENu);
+      AppMethodBeat.o(101834);
+      return i + paramInt + j + k + m + n;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(115881);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(101834);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(101834);
         return 0;
       }
       if (paramInt == 3)
@@ -65,45 +94,53 @@ public final class dml
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(115881);
+          AppMethodBeat.o(101834);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ip();
+            localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdml.BaseRequest = ((ip)localObject1);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdml.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(115881);
+          AppMethodBeat.o(101834);
           return 0;
         case 2: 
-          localdml.DdZ = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115881);
+          localdml.FkI = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(101834);
           return 0;
         case 3: 
-          localdml.Dea = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(115881);
+          localdml.ENt = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(101834);
           return 0;
         case 4: 
-          localdml.Timestamp = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(115881);
+          localdml.ENs = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(101834);
           return 0;
         case 5: 
-          localdml.EAY = ((f.a.a.a.a)localObject1).KhF.xT();
-          AppMethodBeat.o(115881);
+          localdml.ENp = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(101834);
+          return 0;
+        case 6: 
+          localdml.ENq = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(101834);
+          return 0;
+        case 7: 
+          localdml.ENr = ((f.a.a.a.a)localObject1).LVo.xF();
+          AppMethodBeat.o(101834);
           return 0;
         }
-        localdml.ECf = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(115881);
+        localdml.ENu = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(101834);
         return 0;
       }
-      AppMethodBeat.o(115881);
+      AppMethodBeat.o(101834);
       return -1;
     }
   }

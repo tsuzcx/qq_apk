@@ -3,49 +3,49 @@ package com.tencent.mm.api;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.q;
+import com.tencent.mm.av.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.m.e;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.h;
 
 public final class b
 {
-  private static String[] cHZ = null;
-  private static Boolean cIa = null;
+  private static String[] cFg = null;
+  private static Boolean cFh = null;
   
-  private static void IS()
+  private static void IB()
   {
     AppMethodBeat.i(116347);
     try
     {
-      String str = ((a)g.ab(a.class)).Zd().getValue("BizEnableWxPicUrl");
-      ad.i("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, urlList: %s", new Object[] { str });
-      if (!bt.isNullOrNil(str))
+      String str = ((a)g.ab(a.class)).ZY().getValue("BizEnableWxPicUrl");
+      ac.i("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, urlList: %s", new Object[] { str });
+      if (!bs.isNullOrNil(str))
       {
-        cHZ = str.split(";");
-        ad.d("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, CDN_URL_LIST.length: %d", new Object[] { Integer.valueOf(cHZ.length) });
+        cFg = str.split(";");
+        ac.d("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList, CDN_URL_LIST.length: %d", new Object[] { Integer.valueOf(cFg.length) });
       }
       AppMethodBeat.o(116347);
       return;
     }
     catch (com.tencent.mm.model.b localb)
     {
-      ad.w("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList fail, AccountNotReady");
+      ac.w("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList fail, AccountNotReady");
       AppMethodBeat.o(116347);
       return;
     }
     catch (Exception localException)
     {
-      ad.d("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList error: %s", new Object[] { localException.getMessage() });
+      ac.d("MicroMsg.BizImageStrategy", "alvinluo initCdnUrlList error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(116347);
     }
   }
   
-  public static boolean IT()
+  public static boolean IC()
   {
     AppMethodBeat.i(116353);
     if ((h.IS_FLAVOR_RED) || (h.DEBUG))
@@ -53,22 +53,22 @@ public final class b
       AppMethodBeat.o(116353);
       return true;
     }
-    if (cIa == null) {
-      IU();
+    if (cFh == null) {
+      ID();
     }
-    boolean bool = cIa.booleanValue();
+    boolean bool = cFh.booleanValue();
     AppMethodBeat.o(116353);
     return bool;
   }
   
-  public static void IU()
+  public static void ID()
   {
     AppMethodBeat.i(116354);
-    cIa = Boolean.valueOf(IV());
+    cFh = Boolean.valueOf(IE());
     AppMethodBeat.o(116354);
   }
   
-  private static boolean IV()
+  private static boolean IE()
   {
     AppMethodBeat.i(116355);
     if ((h.IS_FLAVOR_RED) || (h.DEBUG))
@@ -76,11 +76,11 @@ public final class b
       AppMethodBeat.o(116355);
       return true;
     }
-    int i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pmI, 0);
+    int i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQi, 0);
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ad.i("MicroMsg.BizImageStrategy", "alvinluo updateWxPicOpenStatus config: %d, isOpen: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
+      ac.i("MicroMsg.BizImageStrategy", "alvinluo updateWxPicOpenStatus config: %d, isOpen: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
       AppMethodBeat.o(116355);
       return bool;
     }
@@ -89,7 +89,7 @@ public final class b
   public static String a(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(116345);
-    if ((paramBoolean) && (hs(paramInt))) {}
+    if ((paramBoolean) && (hb(paramInt))) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       paramString = l(paramString, paramBoolean);
@@ -98,137 +98,17 @@ public final class b
     }
   }
   
-  private static boolean dI(String paramString)
-  {
-    AppMethodBeat.i(116348);
-    if ((cHZ != null) && (cHZ.length > 0) && (!bt.isNullOrNil(paramString)))
-    {
-      String[] arrayOfString = cHZ;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramString.startsWith(arrayOfString[i]))
-        {
-          AppMethodBeat.o(116348);
-          return true;
-        }
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(116348);
-    return false;
-  }
-  
-  private static String dJ(String paramString)
-  {
-    AppMethodBeat.i(116349);
-    if ((cHZ == null) || (cHZ.length == 0))
-    {
-      ad.d("MicroMsg.BizImageStrategy", "addWebpURLIfNecessary, cdn url is null");
-      IS();
-    }
-    if (!dI(paramString))
-    {
-      ad.d("MicroMsg.BizImageStrategy", "addWebpURLIfNecessary, is not cdn url");
-      AppMethodBeat.o(116349);
-      return paramString;
-    }
-    try
-    {
-      Object localObject = Uri.parse(paramString);
-      String str1 = ((Uri)localObject).getQueryParameter("wxtype");
-      boolean bool = bt.isNullOrNil(str1);
-      if (bool)
-      {
-        AppMethodBeat.o(116349);
-        return paramString;
-      }
-      str1 = str1.toLowerCase();
-      if (!str1.equals("gif"))
-      {
-        bool = str1.contains("gif");
-        if (!bool) {}
-      }
-      else
-      {
-        AppMethodBeat.o(116349);
-        return paramString;
-      }
-      String str2 = ((Uri)localObject).getQueryParameter("tp");
-      if (!bt.isNullOrNil(str2))
-      {
-        bool = str2.equals("webp");
-        if (bool)
-        {
-          AppMethodBeat.o(116349);
-          return paramString;
-        }
-      }
-      if (!bt.isNullOrNil(str1))
-      {
-        localObject = ((Uri)localObject).buildUpon().appendQueryParameter("tp", "webp").build().toString();
-        AppMethodBeat.o(116349);
-        return localObject;
-      }
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(116349);
-      return paramString;
-    }
-    AppMethodBeat.o(116349);
-    return paramString;
-  }
-  
-  public static boolean dK(String paramString)
-  {
-    AppMethodBeat.i(116350);
-    try
-    {
-      boolean bool = bt.isNullOrNil(paramString);
-      if (bool)
-      {
-        AppMethodBeat.o(116350);
-        return false;
-      }
-      bool = dI(paramString);
-      if (!bool)
-      {
-        AppMethodBeat.o(116350);
-        return false;
-      }
-      paramString = Uri.parse(paramString).getQueryParameter("tp");
-      if (!bt.isNullOrNil(paramString))
-      {
-        bool = paramString.equals("webp");
-        if (bool)
-        {
-          AppMethodBeat.o(116350);
-          return true;
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(116350);
-      return false;
-    }
-    AppMethodBeat.o(116350);
-    return false;
-  }
-  
-  private static String dL(String paramString)
+  private static String dA(String paramString)
   {
     AppMethodBeat.i(116351);
-    if ((cHZ == null) || (cHZ.length == 0))
+    if ((cFg == null) || (cFg.length == 0))
     {
-      ad.d("MicroMsg.BizImageStrategy", "addWXPicURLIfNecessary, cdn url is null");
-      IS();
+      ac.d("MicroMsg.BizImageStrategy", "addWXPicURLIfNecessary, cdn url is null");
+      IB();
     }
-    if (!dI(paramString))
+    if (!dx(paramString))
     {
-      ad.d("MicroMsg.BizImageStrategy", "addWXPicURLIfNecessary, is not cdn url");
+      ac.d("MicroMsg.BizImageStrategy", "addWXPicURLIfNecessary, is not cdn url");
       AppMethodBeat.o(116351);
       return paramString;
     }
@@ -252,7 +132,7 @@ public final class b
         }
       }
       str = ((Uri)localObject).getQueryParameter("tp");
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
         bool = str.equals("wxpic");
         if (bool)
@@ -272,25 +152,25 @@ public final class b
     return paramString;
   }
   
-  public static boolean dM(String paramString)
+  public static boolean dB(String paramString)
   {
     AppMethodBeat.i(116352);
     try
     {
-      boolean bool = bt.isNullOrNil(paramString);
+      boolean bool = bs.isNullOrNil(paramString);
       if (bool)
       {
         AppMethodBeat.o(116352);
         return false;
       }
-      bool = dI(paramString);
+      bool = dx(paramString);
       if (!bool)
       {
         AppMethodBeat.o(116352);
         return false;
       }
       paramString = Uri.parse(paramString).getQueryParameter("tp");
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
         bool = paramString.equals("wxpic");
         if (bool)
@@ -309,7 +189,127 @@ public final class b
     return false;
   }
   
-  private static boolean hs(int paramInt)
+  private static boolean dx(String paramString)
+  {
+    AppMethodBeat.i(116348);
+    if ((cFg != null) && (cFg.length > 0) && (!bs.isNullOrNil(paramString)))
+    {
+      String[] arrayOfString = cFg;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (paramString.startsWith(arrayOfString[i]))
+        {
+          AppMethodBeat.o(116348);
+          return true;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(116348);
+    return false;
+  }
+  
+  private static String dy(String paramString)
+  {
+    AppMethodBeat.i(116349);
+    if ((cFg == null) || (cFg.length == 0))
+    {
+      ac.d("MicroMsg.BizImageStrategy", "addWebpURLIfNecessary, cdn url is null");
+      IB();
+    }
+    if (!dx(paramString))
+    {
+      ac.d("MicroMsg.BizImageStrategy", "addWebpURLIfNecessary, is not cdn url");
+      AppMethodBeat.o(116349);
+      return paramString;
+    }
+    try
+    {
+      Object localObject = Uri.parse(paramString);
+      String str1 = ((Uri)localObject).getQueryParameter("wxtype");
+      boolean bool = bs.isNullOrNil(str1);
+      if (bool)
+      {
+        AppMethodBeat.o(116349);
+        return paramString;
+      }
+      str1 = str1.toLowerCase();
+      if (!str1.equals("gif"))
+      {
+        bool = str1.contains("gif");
+        if (!bool) {}
+      }
+      else
+      {
+        AppMethodBeat.o(116349);
+        return paramString;
+      }
+      String str2 = ((Uri)localObject).getQueryParameter("tp");
+      if (!bs.isNullOrNil(str2))
+      {
+        bool = str2.equals("webp");
+        if (bool)
+        {
+          AppMethodBeat.o(116349);
+          return paramString;
+        }
+      }
+      if (!bs.isNullOrNil(str1))
+      {
+        localObject = ((Uri)localObject).buildUpon().appendQueryParameter("tp", "webp").build().toString();
+        AppMethodBeat.o(116349);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(116349);
+      return paramString;
+    }
+    AppMethodBeat.o(116349);
+    return paramString;
+  }
+  
+  public static boolean dz(String paramString)
+  {
+    AppMethodBeat.i(116350);
+    try
+    {
+      boolean bool = bs.isNullOrNil(paramString);
+      if (bool)
+      {
+        AppMethodBeat.o(116350);
+        return false;
+      }
+      bool = dx(paramString);
+      if (!bool)
+      {
+        AppMethodBeat.o(116350);
+        return false;
+      }
+      paramString = Uri.parse(paramString).getQueryParameter("tp");
+      if (!bs.isNullOrNil(paramString))
+      {
+        bool = paramString.equals("webp");
+        if (bool)
+        {
+          AppMethodBeat.o(116350);
+          return true;
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(116350);
+      return false;
+    }
+    AppMethodBeat.o(116350);
+    return false;
+  }
+  
+  private static boolean hb(int paramInt)
   {
     return (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4);
   }
@@ -318,16 +318,16 @@ public final class b
   {
     AppMethodBeat.i(116346);
     String str;
-    if ((IT()) && (paramBoolean)) {
-      str = dL(paramString);
+    if ((IC()) && (paramBoolean)) {
+      str = dA(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(116346);
       return str;
       str = paramString;
-      if (q.ayM()) {
-        str = dJ(paramString);
+      if (q.aFE()) {
+        str = dy(paramString);
       }
     }
   }
@@ -342,7 +342,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.b
  * JD-Core Version:    0.7.0.1
  */

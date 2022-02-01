@@ -21,24 +21,26 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.al.x;
-import com.tencent.mm.al.x.a;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.x;
+import com.tencent.mm.ak.x.a;
+import com.tencent.mm.al.af;
 import com.tencent.mm.api.c.a;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.g.a.dj;
-import com.tencent.mm.g.a.dj.b;
-import com.tencent.mm.g.a.dn;
-import com.tencent.mm.g.a.dn.b;
-import com.tencent.mm.g.a.ln;
-import com.tencent.mm.g.a.qc;
-import com.tencent.mm.g.a.t;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.a.dk;
+import com.tencent.mm.g.a.dk.b;
+import com.tencent.mm.g.a.do;
+import com.tencent.mm.g.a.do.b;
+import com.tencent.mm.g.a.lw;
+import com.tencent.mm.g.a.ql;
+import com.tencent.mm.g.a.u;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
+import com.tencent.mm.model.ar.b.a;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.w;
 import com.tencent.mm.modelsns.SnsAdClick;
@@ -46,25 +48,25 @@ import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.plugin.profile.ui.ContactInfoUI;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.b.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.a.a;
-import com.tencent.mm.protocal.protobuf.ccj;
-import com.tencent.mm.protocal.protobuf.dju;
-import com.tencent.mm.protocal.protobuf.lj;
-import com.tencent.mm.protocal.protobuf.lq;
-import com.tencent.mm.protocal.protobuf.lr;
-import com.tencent.mm.protocal.protobuf.ls;
+import com.tencent.mm.protocal.protobuf.aaf;
+import com.tencent.mm.protocal.protobuf.chl;
+import com.tencent.mm.protocal.protobuf.dpj;
+import com.tencent.mm.protocal.protobuf.lp;
+import com.tencent.mm.protocal.protobuf.lx;
+import com.tencent.mm.protocal.protobuf.ly;
 import com.tencent.mm.protocal.protobuf.lz;
-import com.tencent.mm.protocal.protobuf.mv;
-import com.tencent.mm.protocal.protobuf.mw;
+import com.tencent.mm.protocal.protobuf.mg;
 import com.tencent.mm.protocal.protobuf.nc;
 import com.tencent.mm.protocal.protobuf.nd;
-import com.tencent.mm.protocal.protobuf.ne;
-import com.tencent.mm.protocal.protobuf.xq;
-import com.tencent.mm.protocal.protobuf.zh;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.u;
+import com.tencent.mm.protocal.protobuf.nj;
+import com.tencent.mm.protocal.protobuf.nk;
+import com.tencent.mm.protocal.protobuf.nl;
+import com.tencent.mm.protocal.protobuf.yi;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.base.n.c;
@@ -85,143 +87,143 @@ import java.util.List;
 import junit.framework.Assert;
 
 public class ContactWidgetNewBizInfo
-  implements LifecycleObserver, com.tencent.mm.al.g, com.tencent.mm.pluginsdk.b.b
+  implements LifecycleObserver, com.tencent.mm.ak.g, com.tencent.mm.pluginsdk.b.b
 {
-  private static String uFk = "crashFlag";
-  private static boolean uFl = false;
-  private List<c.a> cIe;
-  private c.b cIf;
-  private String cIo;
-  com.tencent.mm.storage.af contact;
+  private static String vOb = "crashFlag";
+  private static boolean vOc = false;
+  private List<c.a> cFl;
+  private c.b cFm;
+  private String cFv;
+  ai contact;
   private long endTime;
   long enterTime;
-  int ima;
+  int iMg;
   private boolean isLoading;
-  private com.tencent.mm.sdk.b.c jBI;
-  private WeakReference<ContactWidgetNewBizInfo> mLl;
-  private com.tencent.mm.sdk.b.c mYl;
-  private String niM;
-  public String rso;
+  private com.tencent.mm.sdk.b.c kce;
+  private com.tencent.mm.sdk.b.c nAK;
+  private String nLF;
+  private WeakReference<ContactWidgetNewBizInfo> nnu;
+  public String sBi;
   private com.tencent.mm.ui.base.preference.f screen;
   private p tipDialog;
-  private String uAe;
-  SnsAdClick uBA;
-  private String uBB;
-  private List<WxaAttributes.WxaEntryInfo> uBq;
-  private zh uBr;
-  private int uBv;
-  private Bundle uBz;
-  ContactInfoUI uFc;
-  private ne uFd;
-  private com.tencent.mm.plugin.profile.ui.newbizinfo.b.c uFe;
-  private boolean uFf;
-  private int uFg;
-  private boolean uFh;
-  private boolean uFi;
-  private Parcelable uFj;
-  com.tencent.mm.api.c uzN;
-  boolean uzZ;
+  com.tencent.mm.api.c vIG;
+  boolean vIS;
+  private String vIX;
+  private List<WxaAttributes.WxaEntryInfo> vKj;
+  private aaf vKk;
+  private int vKo;
+  private Bundle vKs;
+  SnsAdClick vKt;
+  private String vKu;
+  ContactInfoUI vNT;
+  private nl vNU;
+  private com.tencent.mm.plugin.profile.ui.newbizinfo.b.c vNV;
+  private boolean vNW;
+  private int vNX;
+  private boolean vNY;
+  private boolean vNZ;
+  private Parcelable vOa;
   
-  public ContactWidgetNewBizInfo(final ContactInfoUI paramContactInfoUI, final String paramString, zh paramzh)
+  public ContactWidgetNewBizInfo(final ContactInfoUI paramContactInfoUI, final String paramString, aaf paramaaf)
   {
     AppMethodBeat.i(27442);
-    this.uBv = 0;
-    this.uBA = null;
-    this.uBB = null;
-    this.uFe = null;
-    this.mLl = null;
-    this.niM = "";
-    this.uFf = false;
-    this.jBI = new b(this);
-    this.mYl = new a(this);
-    this.uFg = 0;
-    this.uFh = true;
+    this.vKo = 0;
+    this.vKt = null;
+    this.vKu = null;
+    this.vNV = null;
+    this.nnu = null;
+    this.nLF = "";
+    this.vNW = false;
+    this.kce = new b(this);
+    this.nAK = new a(this);
+    this.vNX = 0;
+    this.vNY = true;
     this.isLoading = false;
-    this.uFi = false;
+    this.vNZ = false;
     this.tipDialog = null;
-    this.mLl = new WeakReference(this);
-    this.uFc = paramContactInfoUI;
-    this.uAe = paramString;
-    this.uBr = paramzh;
+    this.nnu = new WeakReference(this);
+    this.vNT = paramContactInfoUI;
+    this.vIX = paramString;
+    this.vKk = paramaaf;
     paramString = paramContactInfoUI.getListView();
-    dda();
+    dqI();
     paramString.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(191231);
+        AppMethodBeat.i(196052);
         if (ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this) != null)
         {
-          paramAnonymousAbsListView = (NewBizInfoHeaderPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aKk("contact_info_header_newbizinfo");
+          paramAnonymousAbsListView = (NewBizInfoHeaderPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aPN("contact_info_header_newbizinfo");
           if (paramAnonymousAbsListView != null)
           {
             int[] arrayOfInt = new int[2];
-            if (paramAnonymousAbsListView.uFB == null) {}
+            if (paramAnonymousAbsListView.vOt == null) {}
             for (paramAnonymousInt1 = 0; paramAnonymousInt1 < 0; paramAnonymousInt1 = arrayOfInt[1])
             {
-              paramAnonymousInt2 = paramAnonymousAbsListView.uFD.getMeasuredHeight();
-              float f = (paramAnonymousInt1 + paramAnonymousInt2 - this.uFn) / paramAnonymousInt2;
-              paramContactInfoUI.setMMTitleColor(ao.aD(paramContactInfoUI, 2130968584));
+              paramAnonymousInt2 = paramAnonymousAbsListView.vOv.getMeasuredHeight();
+              float f = (paramAnonymousInt1 + paramAnonymousInt2 - this.vOe) / paramAnonymousInt2;
+              paramContactInfoUI.setMMTitleColor(ao.aJ(paramContactInfoUI, 2130968584));
               paramContactInfoUI.setTitleAlpha(1.0F - f);
-              AppMethodBeat.o(191231);
+              AppMethodBeat.o(196052);
               return;
-              paramAnonymousAbsListView.uFB.getLocationInWindow(arrayOfInt);
+              paramAnonymousAbsListView.vOt.getLocationInWindow(arrayOfInt);
             }
             if (paramAnonymousInt1 == 0)
             {
-              if (paramAnonymousAbsListView.uFB == null) {}
-              for (boolean bool = false; !bool; bool = paramAnonymousAbsListView.uFB.isAttachedToWindow())
+              if (paramAnonymousAbsListView.vOt == null) {}
+              for (boolean bool = false; !bool; bool = paramAnonymousAbsListView.vOt.isAttachedToWindow())
               {
-                paramContactInfoUI.setMMTitleColor(ao.aD(paramContactInfoUI, 2130968584));
-                AppMethodBeat.o(191231);
+                paramContactInfoUI.setMMTitleColor(ao.aJ(paramContactInfoUI, 2130968584));
+                AppMethodBeat.o(196052);
                 return;
               }
             }
             paramContactInfoUI.setMMTitleColor(0);
           }
         }
-        AppMethodBeat.o(191231);
+        AppMethodBeat.o(196052);
       }
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(191230);
+        AppMethodBeat.i(196051);
         ArrayList localArrayList;
         if ((paramAnonymousInt == 0) && (ContactWidgetNewBizInfo.a(ContactWidgetNewBizInfo.this) != null))
         {
           paramAnonymousAbsListView = ContactWidgetNewBizInfo.a(ContactWidgetNewBizInfo.this);
           paramAnonymousInt = paramString.getFirstVisiblePosition();
           int i = paramString.getLastVisiblePosition();
-          if (paramAnonymousAbsListView.ddm().xA(16))
+          if (paramAnonymousAbsListView.dqU().ys(16))
           {
-            int j = paramAnonymousAbsListView.ddl();
-            int k = paramAnonymousAbsListView.uGB;
+            int j = paramAnonymousAbsListView.dqT();
+            int k = paramAnonymousAbsListView.vPs;
             localArrayList = new ArrayList();
             if (paramAnonymousInt <= i) {
               for (;;)
               {
-                if (paramAnonymousAbsListView.JC(paramAnonymousInt))
+                if (paramAnonymousAbsListView.LB(paramAnonymousInt))
                 {
                   int n = paramAnonymousInt + (j - k);
-                  if (paramAnonymousAbsListView.uGz.Jy(n) == a.b.uGp)
+                  if (paramAnonymousAbsListView.vPq.Lx(n) == a.b.vPg)
                   {
-                    Object localObject1 = paramAnonymousAbsListView.uGz.getItem(n);
+                    Object localObject1 = paramAnonymousAbsListView.vPq.getItem(n);
                     if (localObject1 == null)
                     {
                       paramAnonymousAbsListView = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizMessage");
-                      AppMethodBeat.o(191230);
+                      AppMethodBeat.o(196051);
                       throw paramAnonymousAbsListView;
                     }
-                    localObject1 = (mv)localObject1;
-                    Object localObject2 = paramAnonymousAbsListView.uGG.contact;
+                    localObject1 = (nc)localObject1;
+                    Object localObject2 = paramAnonymousAbsListView.vPx.contact;
                     k.g(localObject2, "widget.contact");
-                    localObject2 = ((au)localObject2).field_username;
-                    long l = paramAnonymousAbsListView.uGG.enterTime;
-                    int m = paramAnonymousAbsListView.uGG.ima;
+                    localObject2 = ((av)localObject2).field_username;
+                    long l = paramAnonymousAbsListView.vPx.enterTime;
+                    int m = paramAnonymousAbsListView.vPx.iMg;
                     n /= 2;
-                    if (((mv)localObject1).CKn.saz == 49)
+                    if (((nc)localObject1).EcP.tit == 49)
                     {
-                      localObject3 = ((mv)localObject1).CKs.CIj;
+                      localObject3 = ((nc)localObject1).EcU.EaL;
                       k.g(localObject3, "bizMessage.AppMsg.DetailInfo");
                       Object localObject4 = (Iterable)localObject3;
                       localObject3 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject4, 10));
@@ -229,24 +231,24 @@ public class ContactWidgetNewBizInfo
                       Object localObject5;
                       while (((Iterator)localObject4).hasNext())
                       {
-                        localObject5 = (lr)((Iterator)localObject4).next();
-                        ((Collection)localObject3).add(d.a.j.listOf(new String[] { ((lr)localObject5).CHL, String.valueOf(((lr)localObject5).gKq) }));
+                        localObject5 = (ly)((Iterator)localObject4).next();
+                        ((Collection)localObject3).add(d.a.j.listOf(new String[] { ((ly)localObject5).Ean, String.valueOf(((ly)localObject5).hkQ) }));
                       }
                       localArrayList.addAll((Collection)localObject3);
-                      localObject3 = ((mv)localObject1).CKs.CIj;
+                      localObject3 = ((nc)localObject1).EcU.EaL;
                       k.g(localObject3, "bizMessage.AppMsg.DetailInfo");
                       localObject3 = ((Iterable)localObject3).iterator();
                       while (((Iterator)localObject3).hasNext())
                       {
-                        localObject4 = (lr)((Iterator)localObject3).next();
-                        localObject5 = com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.uHY;
+                        localObject4 = (ly)((Iterator)localObject3).next();
+                        localObject5 = com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.vQP;
                         k.g(localObject2, "userName");
-                        com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.a((String)localObject2, l, ((mv)localObject1).CKs.CIi.CHH, ((lr)localObject4).CHK, ((lr)localObject4).gKq, n, ((mv)localObject1).CKs.CIi.CreateTime, m);
+                        com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.a((String)localObject2, l, ((nc)localObject1).EcU.EaK.Eaj, ((ly)localObject4).Eam, ((ly)localObject4).hkQ, n, ((nc)localObject1).EcU.EaK.CreateTime, m);
                       }
                     }
-                    Object localObject3 = com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.uHY;
+                    Object localObject3 = com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.vQP;
                     k.g(localObject2, "userName");
-                    com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.a((String)localObject2, l, ((mv)localObject1).CKn.uKX, 0, -1, n, ((mv)localObject1).CKn.CZk, m);
+                    com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.a((String)localObject2, l, ((nc)localObject1).EcP.vTO, 0, -1, n, ((nc)localObject1).EcP.ErX, m);
                   }
                 }
                 if (paramAnonymousInt == i) {
@@ -264,9 +266,9 @@ public class ContactWidgetNewBizInfo
         for (paramAnonymousInt = 1;; paramAnonymousInt = 0)
         {
           if (paramAnonymousInt != 0) {
-            paramAnonymousAbsListView.ddm().i((List)localArrayList, 126);
+            paramAnonymousAbsListView.dqU().i((List)localArrayList, 126);
           }
-          AppMethodBeat.o(191230);
+          AppMethodBeat.o(196051);
           return;
         }
       }
@@ -275,163 +277,163 @@ public class ContactWidgetNewBizInfo
   }
   
   /* Error */
-  private void T(com.tencent.mm.storage.af paramaf)
+  private void U(ai paramai)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 190
-    //   4: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 192
+    //   4: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: ifnull +9 -> 17
-    //   11: getstatic 104	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uFl	Z
+    //   11: getstatic 106	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vOc	Z
     //   14: ifeq +11 -> 25
-    //   17: ldc 190
-    //   19: invokestatic 187	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: ldc 192
+    //   19: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: aload_0
     //   23: monitorexit
     //   24: return
     //   25: iconst_1
-    //   26: putstatic 104	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uFl	Z
-    //   29: ldc 192
-    //   31: invokestatic 198	com/tencent/mm/sdk/platformtools/ax:aFD	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/ax;
+    //   26: putstatic 106	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vOc	Z
+    //   29: ldc 194
+    //   31: invokestatic 200	com/tencent/mm/sdk/platformtools/aw:aKU	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/aw;
     //   34: astore_2
     //   35: aload_2
-    //   36: getstatic 102	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uFk	Ljava/lang/String;
+    //   36: getstatic 104	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vOb	Ljava/lang/String;
     //   39: iconst_0
-    //   40: invokevirtual 202	com/tencent/mm/sdk/platformtools/ax:decodeBool	(Ljava/lang/String;Z)Z
+    //   40: invokevirtual 204	com/tencent/mm/sdk/platformtools/aw:decodeBool	(Ljava/lang/String;Z)Z
     //   43: ifeq +29 -> 72
-    //   46: ldc 204
-    //   48: ldc 206
-    //   50: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: getstatic 217	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
-    //   56: ldc2_w 218
+    //   46: ldc 206
+    //   48: ldc 208
+    //   50: invokestatic 213	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: getstatic 219	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   56: ldc2_w 220
     //   59: lconst_0
     //   60: lconst_1
     //   61: iconst_0
-    //   62: invokevirtual 223	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   62: invokevirtual 225	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   65: aload_1
-    //   66: getfield 228	com/tencent/mm/g/c/au:field_username	Ljava/lang/String;
-    //   69: invokestatic 234	com/tencent/mm/plugin/profile/ui/newbizinfo/a:clear	(Ljava/lang/String;)V
+    //   66: getfield 230	com/tencent/mm/g/c/av:field_username	Ljava/lang/String;
+    //   69: invokestatic 236	com/tencent/mm/plugin/profile/ui/newbizinfo/a:clear	(Ljava/lang/String;)V
     //   72: aload_2
-    //   73: getstatic 102	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uFk	Ljava/lang/String;
+    //   73: getstatic 104	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vOb	Ljava/lang/String;
     //   76: iconst_1
-    //   77: invokevirtual 237	com/tencent/mm/sdk/platformtools/ax:encode	(Ljava/lang/String;Z)Z
+    //   77: invokevirtual 239	com/tencent/mm/sdk/platformtools/aw:encode	(Ljava/lang/String;Z)Z
     //   80: pop
-    //   81: ldc 204
-    //   83: ldc 239
-    //   85: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   88: getstatic 244	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
+    //   81: ldc 206
+    //   83: ldc 241
+    //   85: invokestatic 213	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   88: getstatic 246	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
     //   91: ifne +15 -> 106
-    //   94: getstatic 247	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_RED	Z
+    //   94: getstatic 249	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_RED	Z
     //   97: ifne +9 -> 106
-    //   100: invokestatic 253	com/tencent/mm/sdk/platformtools/bu:eGT	()Z
-    //   103: ifeq +21 -> 124
+    //   100: invokestatic 255	com/tencent/mm/sdk/platformtools/bt:eWo	()Z
+    //   103: ifeq +22 -> 125
     //   106: aload_2
-    //   107: ldc 255
-    //   109: iconst_0
-    //   110: invokevirtual 259	com/tencent/mm/sdk/platformtools/ax:decodeInt	(Ljava/lang/String;I)I
-    //   113: iconst_1
-    //   114: if_icmpne +10 -> 124
-    //   117: ldc_w 261
-    //   120: iconst_0
-    //   121: invokestatic 267	junit/framework/Assert:assertTrue	(Ljava/lang/String;Z)V
-    //   124: getstatic 273	com/tencent/e/h:Iye	Lcom/tencent/e/i;
-    //   127: new 16	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo$2
-    //   130: dup
-    //   131: aload_0
-    //   132: aload_2
-    //   133: invokespecial 276	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo$2:<init>	(Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo;Lcom/tencent/mm/sdk/platformtools/ax;)V
-    //   136: ldc2_w 277
-    //   139: invokeinterface 284 4 0
-    //   144: pop
-    //   145: ldc 190
-    //   147: invokestatic 187	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   150: goto -128 -> 22
-    //   153: astore_1
-    //   154: aload_0
-    //   155: monitorexit
-    //   156: aload_1
-    //   157: athrow
+    //   107: ldc_w 257
+    //   110: iconst_0
+    //   111: invokevirtual 261	com/tencent/mm/sdk/platformtools/aw:decodeInt	(Ljava/lang/String;I)I
+    //   114: iconst_1
+    //   115: if_icmpne +10 -> 125
+    //   118: ldc_w 263
+    //   121: iconst_0
+    //   122: invokestatic 269	junit/framework/Assert:assertTrue	(Ljava/lang/String;Z)V
+    //   125: getstatic 275	com/tencent/e/h:JZN	Lcom/tencent/e/i;
+    //   128: new 16	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo$2
+    //   131: dup
+    //   132: aload_0
+    //   133: aload_2
+    //   134: invokespecial 278	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo$2:<init>	(Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo;Lcom/tencent/mm/sdk/platformtools/aw;)V
+    //   137: ldc2_w 279
+    //   140: invokeinterface 286 4 0
+    //   145: pop
+    //   146: ldc 192
+    //   148: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: goto -129 -> 22
+    //   154: astore_1
+    //   155: aload_0
+    //   156: monitorexit
+    //   157: aload_1
+    //   158: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	158	0	this	ContactWidgetNewBizInfo
-    //   0	158	1	paramaf	com.tencent.mm.storage.af
-    //   34	99	2	localax	ax
+    //   0	159	0	this	ContactWidgetNewBizInfo
+    //   0	159	1	paramai	ai
+    //   34	100	2	localaw	aw
     // Exception table:
     //   from	to	target	type
-    //   2	7	153	finally
-    //   11	17	153	finally
-    //   17	22	153	finally
-    //   25	72	153	finally
-    //   72	106	153	finally
-    //   106	124	153	finally
-    //   124	150	153	finally
+    //   2	7	154	finally
+    //   11	17	154	finally
+    //   17	22	154	finally
+    //   25	72	154	finally
+    //   72	106	154	finally
+    //   106	125	154	finally
+    //   125	151	154	finally
   }
   
-  private void a(ne paramne)
+  private void a(nl paramnl)
   {
     AppMethodBeat.i(169758);
-    if (paramne == null)
+    if (paramnl == null)
     {
       AppMethodBeat.o(169758);
       return;
     }
-    if (paramne.CKZ != null)
+    if (paramnl.EdB != null)
     {
-      com.tencent.mm.plugin.brandservice.b.d.D(paramne.CKZ.DvV, true);
-      boolean bool = paramne.CKZ.DvV;
-      if (paramne.CKZ.DYN != null)
+      com.tencent.mm.plugin.brandservice.b.c.E(paramnl.EdB.ERq, true);
+      boolean bool = paramnl.EdB.ERq;
+      if (paramnl.EdB.FvH != null)
       {
-        i = paramne.CKZ.DYN.size();
-        ad.i("MicroMsg.ContactWidgetNewBizInfo", "alvinluo updateProfileInfo %b, size: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+        i = paramnl.EdB.FvH.size();
+        ac.i("MicroMsg.ContactWidgetNewBizInfo", "alvinluo updateProfileInfo %b, size: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
       }
     }
     label90:
     com.tencent.mm.plugin.profile.ui.newbizinfo.b.c localc;
-    ccj localccj;
+    chl localchl;
     com.tencent.mm.plugin.profile.ui.newbizinfo.b.a locala;
     for (;;)
     {
-      if (paramne.CKT != null)
+      if (paramnl.Edv != null)
       {
-        dda();
-        if (this.uFe != null)
+        dqI();
+        if (this.vNV != null)
         {
-          localc = this.uFe;
-          Object localObject1 = paramne.CKT;
-          localccj = paramne.CKZ;
+          localc = this.vNV;
+          Object localObject1 = paramnl.Edv;
+          localchl = paramnl.EdB;
           k.h(localObject1, "msgList");
-          locala = localc.uGz;
+          locala = localc.vPq;
           k.h(localObject1, "msgList");
-          locala.fyl.clear();
+          locala.fBS.clear();
           k.g(Calendar.getInstance(), "Calendar.getInstance()");
           new Date();
-          Object localObject2 = ((mw)localObject1).CKt;
+          Object localObject2 = ((nd)localObject1).EcV;
           k.g(localObject2, "msgList.Msg");
           localObject2 = ((Iterable)localObject2).iterator();
           for (;;)
           {
             if (((Iterator)localObject2).hasNext())
             {
-              mv localmv = (mv)((Iterator)localObject2).next();
-              locala.fyl.add(new o(a.b.uGo, localmv));
-              locala.fyl.add(new o(a.b.uGp, localmv));
+              nc localnc = (nc)((Iterator)localObject2).next();
+              locala.fBS.add(new o(a.b.vPf, localnc));
+              locala.fBS.add(new o(a.b.vPg, localnc));
               continue;
               i = -1;
               break;
-              ad.e("MicroMsg.ContactWidgetNewBizInfo", "alvinluo updateProfileInfo videochannel_notify_info is null");
+              ac.e("MicroMsg.ContactWidgetNewBizInfo", "alvinluo updateProfileInfo videochannel_notify_info is null");
               break label90;
             }
           }
-          localObject1 = ((mw)localObject1).CKu;
-          if ((localObject1 != null) && (((nc)localObject1).CKN == 0)) {
-            locala.fyl.add(new o(a.b.uGq, new mv()));
+          localObject1 = ((nd)localObject1).EcW;
+          if ((localObject1 != null) && (((nj)localObject1).Edp == 0)) {
+            locala.fBS.add(new o(a.b.vPh, new nc()));
           }
-          locala = localc.uGz;
-          if ((localccj != null) && (com.tencent.mm.plugin.brandservice.b.d.bCg()))
+          locala = localc.vPq;
+          if ((localchl != null) && (com.tencent.mm.plugin.brandservice.b.c.bJe()))
           {
-            localObject1 = localccj.DYN;
+            localObject1 = localchl.FvH;
             k.g(localObject1, "notifyInfo.notify_list");
             if (((Collection)localObject1).isEmpty()) {
               break label500;
@@ -445,165 +447,30 @@ public class ContactWidgetNewBizInfo
     {
       if (i != 0)
       {
-        ad.i("MicroMsg.BizMessageAdapter", "alvinluo updateHeader add video channel");
-        locala.uGf.clear();
-        locala.uGf.add(new o(a.b.uGr, localccj));
+        ac.i("MicroMsg.BizMessageAdapter", "alvinluo updateHeader add video channel");
+        locala.vOW.clear();
+        locala.vOW.add(new o(a.b.vPi, localchl));
       }
-      localc.uGH.notifyDataSetChanged();
-      if ((!this.uFf) && (paramne.CKZ != null) && (paramne.CKZ.DYN != null) && (paramne.CKZ.DYN.size() > 0) && (com.tencent.mm.plugin.brandservice.b.d.bCg()))
+      localc.vPy.notifyDataSetChanged();
+      if ((!this.vNW) && (paramnl.EdB != null) && (paramnl.EdB.FvH != null) && (paramnl.EdB.FvH.size() > 0) && (com.tencent.mm.plugin.brandservice.b.c.bJe()))
       {
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.L(this.contact.field_username, 1401, this.ima);
-        this.uFf = true;
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 1401, this.iMg);
+        this.vNW = true;
       }
       AppMethodBeat.o(169758);
       return;
     }
   }
   
-  private void a(String paramString, final com.tencent.mm.bx.b paramb)
-  {
-    AppMethodBeat.i(27450);
-    if (this.isLoading)
-    {
-      ad.i("MicroMsg.ContactWidgetNewBizInfo", "not obtailBizInfoFromCgi, use cache");
-      AppMethodBeat.o(27450);
-      return;
-    }
-    this.isLoading = true;
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = 2656;
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/bizattr/bizprofilev2";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    nd localnd = new nd();
-    localnd.CIt = paramString;
-    if (paramb != null)
-    {
-      localnd.CKO = 1;
-      localnd.CKM = paramb;
-      localnd.CKP = 20;
-      localnd.Scene = this.ima;
-      localnd.CKQ = u.getSessionId();
-      ((b.a)localObject).gUU = localnd;
-      ((b.a)localObject).gUV = new ne();
-      localObject = ((b.a)localObject).atI();
-      paramb = new x.a()
-      {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb, n paramAnonymousn)
-        {
-          AppMethodBeat.i(191238);
-          ad.i("MicroMsg.ContactWidgetNewBizInfo", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-          paramAnonymousString = (ne)paramAnonymousb.gUT.gUX;
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null))
-          {
-            paramAnonymousb = a.uGe;
-            a.a(paramAnonymousString.CKT);
-            if (paramb == null) {
-              break label379;
-            }
-            if ((!paramb.equals(ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).CKT.CKu.CKM)) || (paramAnonymousString.CKT == null)) {
-              break label369;
-            }
-            ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).CKT.CKt.addAll(paramAnonymousString.CKT.CKt);
-            ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).CKT.CKu = paramAnonymousString.CKT.CKu;
-            if (paramb == null) {
-              break label415;
-            }
-            if ((ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this) != null) && (ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).CKT != null))
-            {
-              ContactWidgetNewBizInfo.a(ContactWidgetNewBizInfo.this, ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this));
-              com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.L(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 106, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
-            }
-            label220:
-            if ((paramAnonymousString.CID & 0x4) == 0) {
-              break label442;
-            }
-            paramAnonymousb = ContactWidgetNewBizInfo.c(4, paramAnonymousString.CKX);
-            if (paramAnonymousb == null) {
-              break label442;
-            }
-            paramAnonymousn = (NewBizInfoErrMsgPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aKk("contact_info_biz_err_msg");
-            ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cE("contact_info_biz_err_msg", false);
-            paramAnonymousn.setErrMsg(paramAnonymousb);
-          }
-          for (;;)
-          {
-            for (;;)
-            {
-              if ((paramAnonymousString.CID & 0x2) != 0)
-              {
-                paramAnonymousString = (NewBizInfoHeaderPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aKk("contact_info_header_newbizinfo");
-                paramAnonymousString.uFG = true;
-                if (paramAnonymousString.fuj != null)
-                {
-                  com.tencent.mm.plugin.brandservice.b.e.a(paramAnonymousString.fuj, paramAnonymousString.contact, "", true);
-                  paramAnonymousString.fuj.setClickable(false);
-                }
-              }
-              ContactWidgetNewBizInfo.n(ContactWidgetNewBizInfo.this);
-              ContactWidgetNewBizInfo.o(ContactWidgetNewBizInfo.this);
-              AppMethodBeat.o(191238);
-              return 0;
-              label369:
-              ad.e("MicroMsg.ContactWidgetNewBizInfo", "drop err resp");
-              break;
-              try
-              {
-                label379:
-                ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).parseFrom(paramAnonymousString.toByteArray());
-              }
-              catch (IOException paramAnonymousb)
-              {
-                ad.printErrStackTrace("MicroMsg.ContactWidgetNewBizInfo", paramAnonymousb, "profileInfo.parseFrom", new Object[0]);
-              }
-            }
-            break;
-            label415:
-            a.b(ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this));
-            ContactWidgetNewBizInfo.l(ContactWidgetNewBizInfo.this);
-            ContactWidgetNewBizInfo.m(ContactWidgetNewBizInfo.this);
-            break label220;
-            label442:
-            if ((paramAnonymousString.CID & 0x8) != 0)
-            {
-              paramAnonymousb = ContactWidgetNewBizInfo.c(8, paramAnonymousString.CKX);
-              if (paramAnonymousb != null)
-              {
-                paramAnonymousn = (NewBizInfoErrMsgPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aKk("contact_info_biz_err_msg");
-                ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cE("contact_info_biz_err_msg", false);
-                paramAnonymousn.setErrMsg(paramAnonymousb);
-                continue;
-              }
-            }
-            ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cE("contact_info_biz_err_msg", true);
-          }
-        }
-      };
-      if (!(this.uFc instanceof com.tencent.mm.vending.e.b)) {
-        break label197;
-      }
-    }
-    label197:
-    for (paramString = this.uFc;; paramString = null)
-    {
-      x.a((com.tencent.mm.al.b)localObject, paramb, false, paramString);
-      AppMethodBeat.o(27450);
-      return;
-      localnd.CKO = 0;
-      localnd.CKP = 5;
-      break;
-    }
-  }
-  
-  private static int akK(String paramString)
+  private static int apJ(String paramString)
   {
     int j = 10000;
     AppMethodBeat.i(27460);
     int i = j;
-    if (!bt.isNullOrNil(paramString)) {}
+    if (!bs.isNullOrNil(paramString)) {}
     try
     {
-      i = bt.getInt(Uri.parse(paramString).getQueryParameter("scene"), 10000);
+      i = bs.getInt(Uri.parse(paramString).getQueryParameter("scene"), 10000);
       AppMethodBeat.o(27460);
       return i;
     }
@@ -616,10 +483,145 @@ public class ContactWidgetNewBizInfo
     }
   }
   
-  private boolean bHR()
+  private void b(String paramString, final com.tencent.mm.bw.b paramb)
+  {
+    AppMethodBeat.i(27450);
+    if (this.isLoading)
+    {
+      ac.i("MicroMsg.ContactWidgetNewBizInfo", "not obtailBizInfoFromCgi, use cache");
+      AppMethodBeat.o(27450);
+      return;
+    }
+    this.isLoading = true;
+    Object localObject = new b.a();
+    ((b.a)localObject).funcId = 2656;
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/bizattr/bizprofilev2";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    nk localnk = new nk();
+    localnk.EaV = paramString;
+    if (paramb != null)
+    {
+      localnk.Edq = 1;
+      localnk.Edo = paramb;
+      localnk.Edr = 20;
+      localnk.Scene = this.iMg;
+      localnk.Eds = com.tencent.mm.storage.v.getSessionId();
+      ((b.a)localObject).hvt = localnk;
+      ((b.a)localObject).hvu = new nl();
+      localObject = ((b.a)localObject).aAz();
+      paramb = new x.a()
+      {
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+        {
+          AppMethodBeat.i(196060);
+          ac.i("MicroMsg.ContactWidgetNewBizInfo", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          paramAnonymousString = (nl)paramAnonymousb.hvs.hvw;
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousString != null))
+          {
+            paramAnonymousb = a.vOV;
+            a.a(paramAnonymousString.Edv);
+            if (paramb == null) {
+              break label379;
+            }
+            if ((!paramb.equals(ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).Edv.EcW.Edo)) || (paramAnonymousString.Edv == null)) {
+              break label369;
+            }
+            ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).Edv.EcV.addAll(paramAnonymousString.Edv.EcV);
+            ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).Edv.EcW = paramAnonymousString.Edv.EcW;
+            if (paramb == null) {
+              break label415;
+            }
+            if ((ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this) != null) && (ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).Edv != null))
+            {
+              ContactWidgetNewBizInfo.a(ContactWidgetNewBizInfo.this, ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this));
+              com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 106, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
+            }
+            label220:
+            if ((paramAnonymousString.Ebf & 0x4) == 0) {
+              break label442;
+            }
+            paramAnonymousb = ContactWidgetNewBizInfo.c(4, paramAnonymousString.Edz);
+            if (paramAnonymousb == null) {
+              break label442;
+            }
+            paramAnonymousn = (NewBizInfoErrMsgPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aPN("contact_info_biz_err_msg");
+            ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cK("contact_info_biz_err_msg", false);
+            paramAnonymousn.setErrMsg(paramAnonymousb);
+          }
+          for (;;)
+          {
+            for (;;)
+            {
+              if ((paramAnonymousString.Ebf & 0x2) != 0)
+              {
+                paramAnonymousString = (NewBizInfoHeaderPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aPN("contact_info_header_newbizinfo");
+                paramAnonymousString.vOx = true;
+                if (paramAnonymousString.fxQ != null)
+                {
+                  com.tencent.mm.plugin.brandservice.b.d.a(paramAnonymousString.fxQ, paramAnonymousString.contact, "", true);
+                  paramAnonymousString.fxQ.setClickable(false);
+                }
+              }
+              ContactWidgetNewBizInfo.n(ContactWidgetNewBizInfo.this);
+              ContactWidgetNewBizInfo.o(ContactWidgetNewBizInfo.this);
+              AppMethodBeat.o(196060);
+              return 0;
+              label369:
+              ac.e("MicroMsg.ContactWidgetNewBizInfo", "drop err resp");
+              break;
+              try
+              {
+                label379:
+                ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this).parseFrom(paramAnonymousString.toByteArray());
+              }
+              catch (IOException paramAnonymousb)
+              {
+                ac.printErrStackTrace("MicroMsg.ContactWidgetNewBizInfo", paramAnonymousb, "profileInfo.parseFrom", new Object[0]);
+              }
+            }
+            break;
+            label415:
+            a.b(ContactWidgetNewBizInfo.k(ContactWidgetNewBizInfo.this));
+            ContactWidgetNewBizInfo.l(ContactWidgetNewBizInfo.this);
+            ContactWidgetNewBizInfo.m(ContactWidgetNewBizInfo.this);
+            break label220;
+            label442:
+            if ((paramAnonymousString.Ebf & 0x8) != 0)
+            {
+              paramAnonymousb = ContactWidgetNewBizInfo.c(8, paramAnonymousString.Edz);
+              if (paramAnonymousb != null)
+              {
+                paramAnonymousn = (NewBizInfoErrMsgPreference)ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).aPN("contact_info_biz_err_msg");
+                ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cK("contact_info_biz_err_msg", false);
+                paramAnonymousn.setErrMsg(paramAnonymousb);
+                continue;
+              }
+            }
+            ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cK("contact_info_biz_err_msg", true);
+          }
+        }
+      };
+      if (!(this.vNT instanceof com.tencent.mm.vending.e.b)) {
+        break label197;
+      }
+    }
+    label197:
+    for (paramString = this.vNT;; paramString = null)
+    {
+      x.a((com.tencent.mm.ak.b)localObject, paramb, false, paramString);
+      AppMethodBeat.o(27450);
+      return;
+      localnk.Edq = 0;
+      localnk.Edr = 5;
+      break;
+    }
+  }
+  
+  private boolean bPe()
   {
     AppMethodBeat.i(27452);
-    if ((this.uFd != null) && (this.uFd.CKR != null) && (this.uFd.CKR.CGR == 0) && (!ddd()))
+    if ((this.vNU != null) && (this.vNU.Edt != null) && (this.vNU.Edt.DZr == 0) && (!dqL()))
     {
       AppMethodBeat.o(27452);
       return true;
@@ -628,409 +630,93 @@ public class ContactWidgetNewBizInfo
     return false;
   }
   
-  private void dcu()
-  {
-    AppMethodBeat.i(27451);
-    bRu();
-    ddb();
-    this.screen.removeAll();
-    this.screen.addPreferencesFromResource(2131951647);
-    Object localObject = (NewBizInfoHeaderPreference)this.screen.aKk("contact_info_header_newbizinfo");
-    if ((localObject != null) && (!bt.isNullOrNil(this.contact.field_username)))
-    {
-      ((NewBizInfoHeaderPreference)localObject).a(this.contact, this.uAe, this.uzN, this.uFd);
-      this.uFi = true;
-      if (this.uFd == null) {
-        break label594;
-      }
-      if (!com.tencent.mm.n.b.ls(this.contact.field_type)) {
-        break label563;
-      }
-      this.screen.cE("contact_info_biz_add", true);
-      this.screen.cE("contact_info_biz_go_chatting", false);
-      ((NewBizInfoFollowPreference)this.screen.aKk("contact_info_biz_go_chatting")).uzY = this;
-      label161:
-      if ((this.uFd != null) && (this.uFd.CKR != null) && (this.uFd.CKT != null) && (this.uFd.CKT.CKu != null)) {
-        a(this.uFd);
-      }
-      if ((this.uFd != null) && (!bHR()) && (!com.tencent.mm.n.b.ls(this.contact.field_type))) {
-        this.uFc.showOptionMenu(false);
-      }
-      if ((this.uFd == null) || (this.uFd.CKW == null)) {
-        break label639;
-      }
-      this.screen.cE("contact_info_biz_menu_newbizinfo", false);
-      if (this.uFd != null) {
-        ((NewBizInfoMenuPreference)this.screen.aKk("contact_info_biz_menu_newbizinfo")).a(this.uFd.CKW, this.contact, this.ima);
-      }
-    }
-    for (;;)
-    {
-      this.screen.cE("contact_info_biz_err_msg", true);
-      ad.d("MicroMsg.ContactWidgetNewBizInfo", "KIsardDevice(%b)", new Object[] { Boolean.valueOf(this.uFc.getIntent().getBooleanExtra("KIsHardDevice", false)) });
-      if ((this.uFc.getIntent() == null) || (!this.uFc.getIntent().getBooleanExtra("KIsHardDevice", false))) {
-        break label677;
-      }
-      ad.d("MicroMsg.ContactWidgetNewBizInfo", "Hard device biz...");
-      boolean bool = dcx();
-      ad.d("MicroMsg.ContactWidgetNewBizInfo", "contact.isContact()(%b), isHarDeviceBound(%b)", new Object[] { Boolean.valueOf(com.tencent.mm.n.b.ls(this.contact.field_type)), Boolean.valueOf(bool) });
-      if ((com.tencent.mm.n.b.ls(this.contact.field_type)) && (bool)) {
-        break label670;
-      }
-      ad.w("MicroMsg.ContactWidgetNewBizInfo", "%s is not my hard biz contact", new Object[] { this.contact.field_username });
-      dcv();
-      localObject = (NewBizInfoNotFollowPreference)this.screen.aKk("contact_info_biz_add");
-      this.screen.cE("contact_info_biz_add", false);
-      if (localObject == null) {
-        break label670;
-      }
-      if (!bool) {
-        break label656;
-      }
-      ((NewBizInfoNotFollowPreference)localObject).setTitle(this.uFc.getString(2131757610));
-      AppMethodBeat.o(27451);
-      return;
-      ad.w("MicroMsg.ContactWidgetNewBizInfo", "head pref is null");
-      this.screen.cE("contact_info_header_bizinfo", true);
-      break;
-      label563:
-      this.screen.cE("contact_info_biz_add", false);
-      this.screen.cE("contact_info_biz_go_chatting", true);
-      break label161;
-      label594:
-      this.screen.cE("contact_info_biz_add", true);
-      this.screen.cE("contact_info_biz_go_chatting", true);
-      this.screen.cE("contact_info_biz_space", false);
-      break label161;
-      label639:
-      this.screen.cE("contact_info_biz_menu_newbizinfo", true);
-    }
-    label656:
-    ((NewBizInfoNotFollowPreference)localObject).setTitle(this.uFc.getString(2131757596));
-    label670:
-    AppMethodBeat.o(27451);
-    return;
-    label677:
-    if (ddd())
-    {
-      this.screen.cE("contact_info_biz_loading", false);
-      this.screen.cE("contact_info_biz_add", true);
-      this.screen.cE("contact_info_biz_go_chatting", true);
-      this.screen.cE("contact_info_message_newbizinfo", true);
-    }
-    AppMethodBeat.o(27451);
-  }
-  
-  private void dcv()
-  {
-    AppMethodBeat.i(27454);
-    if ((this.contact != null) && ((w.tl(this.contact.field_username)) || (w.tw(this.contact.field_username))) && (com.tencent.mm.n.b.ls(this.contact.field_type)))
-    {
-      this.screen.cE("contact_info_biz_go_chatting", false);
-      AppMethodBeat.o(27454);
-      return;
-    }
-    this.screen.cE("contact_info_biz_go_chatting", true);
-    AppMethodBeat.o(27454);
-  }
-  
-  private void dcw()
-  {
-    AppMethodBeat.i(27458);
-    if ((NewBizInfoHeaderPreference)this.screen.aKk("contact_info_header_newbizinfo") != null) {
-      NewBizInfoHeaderPreference.rK(System.currentTimeMillis());
-    }
-    if ((this.uFc.getIntent() != null) && (this.uFc.getIntent().getBooleanExtra("KIsHardDevice", false)))
-    {
-      localObject1 = this.uFc.getIntent().getStringExtra("KHardDeviceBindTicket");
-      if (!bt.isNullOrNil((String)localObject1)) {
-        break label334;
-      }
-      ad.i("MicroMsg.ContactWidgetNewBizInfo", "bindTicket is null, means it is not switch from QRcode scan, just add contact");
-    }
-    label334:
-    while (dcx())
-    {
-      localObject1 = new com.tencent.mm.pluginsdk.ui.applet.a(this.uFc, new a.a()
-      {
-        public final void a(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, String paramAnonymousString1, String paramAnonymousString2)
-        {
-          AppMethodBeat.i(191241);
-          com.tencent.mm.storage.af localaf;
-          if (paramAnonymousBoolean1)
-          {
-            com.tencent.mm.ui.base.h.cf(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getString(2131757607));
-            ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cE("contact_info_time_expired", true);
-            localaf = ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this);
-            if ((localaf != null) && (!bt.isNullOrNil(paramAnonymousString1))) {
-              break label379;
-            }
-            ad.e("MicroMsg.ContactWidgetNewBizInfo", "respUsername == " + paramAnonymousString1 + ", contact = " + localaf);
-            if (ContactWidgetNewBizInfo.q(ContactWidgetNewBizInfo.this) != null)
-            {
-              paramAnonymousString1 = new qc();
-              ContactWidgetNewBizInfo.q(ContactWidgetNewBizInfo.this).hsX = 4;
-              paramAnonymousString1.dvG.dvH = ContactWidgetNewBizInfo.q(ContactWidgetNewBizInfo.this);
-              com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousString1);
-            }
-            paramAnonymousString1 = com.tencent.mm.am.af.awe().wy(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
-            paramAnonymousString1.field_status = 1;
-            if ((!bt.isNullOrNil(paramAnonymousString1.field_extInfo)) || (bt.isNullOrNil(paramAnonymousString1.field_username)) || (ContactWidgetNewBizInfo.r(ContactWidgetNewBizInfo.this) == null) || (!paramAnonymousString1.field_username.equals(bt.nullAsNil(ContactWidgetNewBizInfo.r(ContactWidgetNewBizInfo.this).field_username)))) {
-              break label667;
-            }
-            com.tencent.mm.am.af.awe().g(ContactWidgetNewBizInfo.r(ContactWidgetNewBizInfo.this));
-            label240:
-            paramAnonymousBoolean1 = ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getIntent().getBooleanExtra("key_biz_profile_stay_after_follow_op", false);
-            paramAnonymousBoolean2 = ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getIntent().getBooleanExtra("key_start_biz_profile_from_app_brand_profile", false);
-            if (!paramAnonymousString1.Je()) {
-              break label678;
-            }
-            paramAnonymousString1 = new Intent();
-            paramAnonymousString1.putExtra("enterprise_biz_name", ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
-            paramAnonymousString1.putExtra("enterprise_biz_display_name", com.tencent.mm.model.v.sh(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username));
-            paramAnonymousString1.putExtra("enterprise_from_scene", 7);
-            paramAnonymousString1.addFlags(67108864);
-            com.tencent.mm.bs.d.e(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ".ui.conversation.EnterpriseConversationUI", paramAnonymousString1);
-          }
-          label608:
-          for (;;)
-          {
-            label355:
-            ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).finish();
-            label379:
-            do
-            {
-              ContactWidgetNewBizInfo.a(ContactWidgetNewBizInfo.this, 3);
-              AppMethodBeat.o(191241);
-              return;
-              paramAnonymousString2 = null;
-              if (w.sC(localaf.field_username))
-              {
-                String str = bt.nullAsNil(localaf.field_username);
-                paramAnonymousString2 = com.tencent.mm.am.f.ei(str);
-                if (paramAnonymousString2 != null) {
-                  paramAnonymousString2.field_username = paramAnonymousString1;
-                }
-                com.tencent.mm.am.af.awe().delete(str);
-                localaf.nj(str);
-              }
-              localaf.setUsername(paramAnonymousString1);
-              if ((int)localaf.fId == 0)
-              {
-                az.arV();
-                com.tencent.mm.model.c.apM().ag(localaf);
-              }
-              if ((int)localaf.fId <= 0)
-              {
-                ad.e("MicroMsg.ContactWidgetNewBizInfo", "addContact : insert contact failed");
-                break;
-              }
-              w.u(localaf);
-              az.arV();
-              paramAnonymousString1 = com.tencent.mm.model.c.apM().aHY(localaf.field_username);
-              if (paramAnonymousString2 != null)
-              {
-                com.tencent.mm.am.af.awe().f(paramAnonymousString2);
-                break;
-              }
-              paramAnonymousString2 = com.tencent.mm.am.f.ei(paramAnonymousString1.field_username);
-              if ((paramAnonymousString1.eKB()) && (com.tencent.mm.am.a.avv())) {}
-              for (int i = 1;; i = 0)
-              {
-                if ((paramAnonymousString2 != null) && ((!paramAnonymousString2.IY()) || (i != 0))) {
-                  break label608;
-                }
-                ad.d("MicroMsg.ContactWidgetNewBizInfo", "shouldUpdate");
-                ar.a.gMW.aB(paramAnonymousString1.field_username, "");
-                com.tencent.mm.ak.c.vO(paramAnonymousString1.field_username);
-                break;
-              }
-              if ((!paramAnonymousString1.eKF()) || (i != 0)) {
-                break;
-              }
-              ad.d("MicroMsg.ContactWidgetNewBizInfo", "update contact, last check time=%d", new Object[] { Integer.valueOf(paramAnonymousString1.evG) });
-              ar.a.gMW.aB(paramAnonymousString1.field_username, "");
-              com.tencent.mm.ak.c.vO(paramAnonymousString1.field_username);
-              break;
-              com.tencent.mm.am.af.awe().g(paramAnonymousString1);
-              break label240;
-              paramAnonymousString1 = new Intent();
-              paramAnonymousString1.putExtra("Chat_User", ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
-              paramAnonymousString1.putExtra("key_has_add_contact", true);
-              paramAnonymousString1.putExtra("finish_direct", true);
-              if (paramAnonymousBoolean2) {
-                paramAnonymousString1.addFlags(268435456);
-              }
-              u.aHx(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
-              com.tencent.mm.plugin.profile.b.hYt.d(paramAnonymousString1, ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this));
-              if (paramAnonymousBoolean1) {
-                break label355;
-              }
-            } while (!paramAnonymousBoolean2);
-          }
-        }
-      });
-      localObject2 = new LinkedList();
-      ((LinkedList)localObject2).add(Integer.valueOf(this.ima));
-      if (this.cIo != null) {
-        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).BXu = this.cIo;
-      }
-      if (!bt.isNullOrNil(this.rso)) {
-        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).rso = this.rso;
-      }
-      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).BXA = true;
-      String str = this.uFc.getIntent().getStringExtra("url");
-      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).BXB = str;
-      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).niJ = e.a.Xd(this.uFc.getIntent().getIntExtra("qbarScene", -1));
-      dju localdju = new dju();
-      localdju.CzZ = this.uFc.getIntent().getIntExtra("Contact_Sub_Scene", 0);
-      localdju.DcD = this.uFc.getIntent().getStringExtra("Contact_Scene_Note");
-      if (!bt.isNullOrNil(str))
-      {
-        if (bt.isNullOrNil(localdju.DcD)) {
-          localdju.DcD = str;
-        }
-        if (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).isMpUrl(str)) {
-          localdju.EzH = akK(str);
-        }
-      }
-      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).BXC = localdju;
-      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).a(this.contact.field_username, (LinkedList)localObject2, this.uBB);
-      dde();
-      AppMethodBeat.o(27458);
-      return;
-    }
-    ad.d("MicroMsg.ContactWidgetNewBizInfo", "IsHardDevice, bindTicket = %s", new Object[] { localObject1 });
-    az.aeS().a(536, this);
-    Object localObject2 = new dj();
-    ((dj)localObject2).dfw.dfy = ((String)localObject1);
-    ((dj)localObject2).dfw.opType = 1;
-    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
-    Object localObject1 = ((dj)localObject2).dfx.dfA;
-    localObject2 = this.uFc;
-    this.uFc.getString(2131755906);
-    this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject2, this.uFc.getString(2131755936), true, new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(191240);
-        az.aeS().b(536, ContactWidgetNewBizInfo.this);
-        paramAnonymousDialogInterface = new dj();
-        paramAnonymousDialogInterface.dfw.opType = 2;
-        paramAnonymousDialogInterface.dfw.dfA = this.cZL;
-        com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousDialogInterface);
-        AppMethodBeat.o(191240);
-      }
-    });
-    AppMethodBeat.o(27458);
-  }
-  
-  private boolean dcx()
-  {
-    AppMethodBeat.i(27462);
-    if (this.uFc.getIntent() == null)
-    {
-      AppMethodBeat.o(27462);
-      return false;
-    }
-    String str1 = this.uFc.getIntent().getStringExtra("device_id");
-    String str2 = this.uFc.getIntent().getStringExtra("device_type");
-    dn localdn = new dn();
-    localdn.dfH.cLR = str1;
-    localdn.dfH.dfF = str2;
-    com.tencent.mm.sdk.b.a.ESL.l(localdn);
-    boolean bool = localdn.dfI.dfJ;
-    AppMethodBeat.o(27462);
-    return bool;
-  }
-  
-  private void dda()
+  private void dqI()
   {
     AppMethodBeat.i(27446);
-    if (this.uFe != null)
+    if (this.vNV != null)
     {
       AppMethodBeat.o(27446);
       return;
     }
-    com.tencent.mm.ui.base.preference.h localh = (com.tencent.mm.ui.base.preference.h)this.uFc.getListView().getAdapter();
+    com.tencent.mm.ui.base.preference.h localh = (com.tencent.mm.ui.base.preference.h)this.vNT.getListView().getAdapter();
     if (localh == null)
     {
-      ad.e("MicroMsg.ContactWidgetNewBizInfo", "empty adapter");
+      ac.e("MicroMsg.ContactWidgetNewBizInfo", "empty adapter");
       AppMethodBeat.o(27446);
       return;
     }
-    this.uFe = new com.tencent.mm.plugin.profile.ui.newbizinfo.b.c(this.uFc, this, localh, new String[] { "contact_info_biz_err_msg", "contact_info_footer_space" });
-    localh.GfB = this.uFe;
+    this.vNV = new com.tencent.mm.plugin.profile.ui.newbizinfo.b.c(this.vNT, this, localh, new String[] { "contact_info_biz_err_msg", "contact_info_footer_space" });
+    localh.HFq = this.vNV;
     AppMethodBeat.o(27446);
   }
   
-  private void ddb()
+  private void dqJ()
   {
     AppMethodBeat.i(27448);
-    com.tencent.mm.api.c localc2 = com.tencent.mm.am.f.ei(this.contact.field_username);
-    this.cIe = null;
-    this.cIf = null;
-    this.uBq = null;
+    com.tencent.mm.api.c localc2 = com.tencent.mm.al.f.dX(this.contact.field_username);
+    this.cFl = null;
+    this.cFm = null;
+    this.vKj = null;
     com.tencent.mm.api.c localc1;
     if (localc2 != null)
     {
       localc1 = localc2;
-      if (localc2.bU(false) != null) {}
+      if (localc2.bV(false) != null) {}
     }
     else
     {
       localc1 = localc2;
-      if (this.uBr != null)
+      if (this.vKk != null)
       {
         localc1 = new com.tencent.mm.api.c();
         localc1.field_username = this.contact.field_username;
-        localc1.field_brandFlag = this.uBr.ika;
-        localc1.field_brandIconURL = this.uBr.ikd;
-        localc1.field_brandInfo = this.uBr.ikc;
-        localc1.field_extInfo = this.uBr.ikb;
-        localc1.field_type = localc1.bU(false).getServiceType();
+        localc1.field_brandFlag = this.vKk.iKh;
+        localc1.field_brandIconURL = this.vKk.iKk;
+        localc1.field_brandInfo = this.vKk.iKj;
+        localc1.field_extInfo = this.vKk.iKi;
+        localc1.field_type = localc1.bV(false).getServiceType();
       }
     }
-    if ((localc1 != null) && (localc1.field_brandInfo == null) && (localc1.field_extInfo == null) && (this.uBr != null))
+    if ((localc1 != null) && (localc1.field_brandInfo == null) && (localc1.field_extInfo == null) && (this.vKk != null))
     {
       localc1.field_username = this.contact.field_username;
-      localc1.field_brandFlag = this.uBr.ika;
-      localc1.field_brandIconURL = this.uBr.ikd;
-      localc1.field_brandInfo = this.uBr.ikc;
-      localc1.field_extInfo = this.uBr.ikb;
-      localc1.field_type = localc1.bU(false).getServiceType();
+      localc1.field_brandFlag = this.vKk.iKh;
+      localc1.field_brandIconURL = this.vKk.iKk;
+      localc1.field_brandInfo = this.vKk.iKj;
+      localc1.field_extInfo = this.vKk.iKi;
+      localc1.field_type = localc1.bV(false).getServiceType();
     }
     if (localc1 != null)
     {
-      this.uzN = localc1;
-      this.cIe = localc1.Jn();
-      this.cIf = localc1.bU(false);
-      this.uBq = this.cIf.getWxaEntryInfoList();
-      if ((this.cIf.Jr() != null) && (this.cIf.Jr().length() > 0)) {
-        this.cIo = this.cIf.Jr();
+      this.vIG = localc1;
+      this.cFl = localc1.IW();
+      this.cFm = localc1.bV(false);
+      this.vKj = this.cFm.getWxaEntryInfoList();
+      if ((this.cFm.Ja() != null) && (this.cFm.Ja().length() > 0)) {
+        this.cFv = this.cFm.Ja();
       }
     }
     AppMethodBeat.o(27448);
   }
   
-  private boolean ddd()
+  private boolean dqL()
   {
     boolean bool1 = true;
     AppMethodBeat.i(27453);
     try
     {
-      String str = this.cIf.Ju();
-      boolean bool2 = bt.isNullOrNil(str);
+      String str = this.cFm.Jd();
+      boolean bool2 = bs.isNullOrNil(str);
       if (bool2)
       {
         AppMethodBeat.o(27453);
         return false;
       }
-      long l = bt.getLong(str, 0L);
+      long l = bs.getLong(str, 0L);
       if ((l > 0L) && (l - System.currentTimeMillis() / 1000L < 0L)) {}
       for (;;)
       {
-        ad.d("MicroMsg.ContactWidgetNewBizInfo", "isBizAccountTimeExpired:%b", new Object[] { Boolean.valueOf(bool1) });
+        ac.d("MicroMsg.ContactWidgetNewBizInfo", "isBizAccountTimeExpired:%b", new Object[] { Boolean.valueOf(bool1) });
         AppMethodBeat.o(27453);
         return bool1;
         bool1 = false;
@@ -1044,104 +730,104 @@ public class ContactWidgetNewBizInfo
   }
   
   /* Error */
-  private void dde()
+  private void dqM()
   {
     // Byte code:
     //   0: sipush 27459
-    //   3: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 156	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uFc	Lcom/tencent/mm/plugin/profile/ui/ContactInfoUI;
-    //   10: invokevirtual 786	com/tencent/mm/plugin/profile/ui/ContactInfoUI:getIntent	()Landroid/content/Intent;
+    //   7: getfield 158	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vNT	Lcom/tencent/mm/plugin/profile/ui/ContactInfoUI;
+    //   10: invokevirtual 823	com/tencent/mm/plugin/profile/ui/ContactInfoUI:getIntent	()Landroid/content/Intent;
     //   13: astore 13
     //   15: aload 13
-    //   17: ldc_w 1112
+    //   17: ldc_w 825
     //   20: iconst_0
-    //   21: invokevirtual 884	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   24: invokestatic 1117	com/tencent/mm/plugin/profile/ui/newbizinfo/b/g:JF	(I)I
+    //   21: invokevirtual 828	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   24: invokestatic 834	com/tencent/mm/plugin/profile/ui/newbizinfo/b/g:LE	(I)I
     //   27: istore_1
     //   28: aload 13
-    //   30: ldc_w 1119
-    //   33: invokevirtual 854	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   30: ldc_w 836
+    //   33: invokevirtual 839	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   36: astore 14
     //   38: aload 13
-    //   40: ldc_w 1121
-    //   43: invokevirtual 854	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: ldc_w 841
+    //   43: invokevirtual 839	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   46: astore 15
     //   48: aload 13
-    //   50: ldc_w 1123
+    //   50: ldc_w 843
     //   53: iconst_0
-    //   54: invokevirtual 884	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   54: invokevirtual 828	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   57: aload 14
-    //   59: invokestatic 1127	com/tencent/mm/plugin/profile/ui/newbizinfo/b/g:bs	(ILjava/lang/String;)I
+    //   59: invokestatic 847	com/tencent/mm/plugin/profile/ui/newbizinfo/b/g:bx	(ILjava/lang/String;)I
     //   62: istore_2
     //   63: aload 13
-    //   65: ldc_w 636
-    //   68: invokevirtual 854	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   65: ldc_w 638
+    //   68: invokevirtual 839	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   71: astore 8
     //   73: aload 13
-    //   75: ldc_w 876
-    //   78: invokevirtual 854	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   75: ldc_w 849
+    //   78: invokevirtual 839	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   81: astore 12
     //   83: aload 13
-    //   85: ldc_w 1129
-    //   88: invokevirtual 1133	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   85: ldc_w 851
+    //   88: invokevirtual 855	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
     //   91: astore 10
-    //   93: ldc 127
+    //   93: ldc 129
     //   95: astore 9
     //   97: aload 10
     //   99: ifnull +15 -> 114
     //   102: aload 10
-    //   104: ldc_w 1135
-    //   107: ldc 127
-    //   109: invokevirtual 1140	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   104: ldc_w 857
+    //   107: ldc 129
+    //   109: invokevirtual 863	android/os/Bundle:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   112: astore 9
     //   114: aload 13
-    //   116: ldc_w 881
+    //   116: ldc_w 865
     //   119: iconst_m1
-    //   120: invokevirtual 884	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   123: invokestatic 890	com/tencent/mm/ui/e$a:Xd	(I)I
+    //   120: invokevirtual 828	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   123: invokestatic 870	com/tencent/mm/ui/e$a:Zn	(I)I
     //   126: istore_3
     //   127: aload_0
-    //   128: getfield 468	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:contact	Lcom/tencent/mm/storage/af;
-    //   131: getfield 228	com/tencent/mm/g/c/au:field_username	Ljava/lang/String;
+    //   128: getfield 470	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:contact	Lcom/tencent/mm/storage/ai;
+    //   131: getfield 230	com/tencent/mm/g/c/av:field_username	Ljava/lang/String;
     //   134: astore 16
     //   136: aload 9
-    //   138: invokestatic 555	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   138: invokestatic 488	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   141: ifne +429 -> 570
     //   144: aload 9
-    //   146: invokestatic 1143	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   149: ldc_w 1145
-    //   152: invokestatic 1149	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   146: invokestatic 873	com/tencent/mm/sdk/platformtools/bs:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   149: ldc_w 875
+    //   152: invokestatic 879	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   155: astore 9
     //   157: aload 8
     //   159: astore 10
     //   161: aload 8
-    //   163: invokestatic 1143	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   166: ldc_w 1145
-    //   169: invokestatic 1149	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   163: invokestatic 873	com/tencent/mm/sdk/platformtools/bs:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   166: ldc_w 875
+    //   169: invokestatic 879	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   172: astore 8
     //   174: aload 8
     //   176: astore 10
     //   178: aload 12
-    //   180: invokestatic 1143	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   183: ldc_w 1145
-    //   186: invokestatic 1149	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   180: invokestatic 873	com/tencent/mm/sdk/platformtools/bs:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   183: ldc_w 875
+    //   186: invokestatic 879	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   189: astore 11
     //   191: aload 11
     //   193: astore 10
-    //   195: getstatic 217	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   195: getstatic 219	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   198: sipush 16232
     //   201: bipush 9
     //   203: anewarray 4	java/lang/Object
     //   206: dup
     //   207: iconst_0
     //   208: iload_1
-    //   209: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   209: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   212: aastore
     //   213: dup
     //   214: iconst_1
     //   215: iload_2
-    //   216: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   216: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   219: aastore
     //   220: dup
     //   221: iconst_2
@@ -1166,29 +852,29 @@ public class ContactWidgetNewBizInfo
     //   246: dup
     //   247: bipush 7
     //   249: iload_3
-    //   250: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   250: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   253: aastore
     //   254: dup
     //   255: bipush 8
     //   257: aload 16
     //   259: aastore
-    //   260: invokevirtual 1152	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   260: invokevirtual 882	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
     //   263: aload_0
-    //   264: getfield 121	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uBB	Ljava/lang/String;
-    //   267: invokestatic 555	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   264: getfield 123	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vKu	Ljava/lang/String;
+    //   267: invokestatic 488	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   270: ifne +16 -> 286
-    //   273: getstatic 217	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   273: getstatic 219	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   276: sipush 16697
     //   279: aload_0
-    //   280: getfield 121	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:uBB	Ljava/lang/String;
-    //   283: invokevirtual 1156	com/tencent/mm/plugin/report/service/h:kvStat	(ILjava/lang/String;)V
+    //   280: getfield 123	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:vKu	Ljava/lang/String;
+    //   283: invokevirtual 886	com/tencent/mm/plugin/report/service/h:kvStat	(ILjava/lang/String;)V
     //   286: aload 13
-    //   288: ldc_w 1112
+    //   288: ldc_w 825
     //   291: iconst_0
-    //   292: invokevirtual 884	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
+    //   292: invokevirtual 828	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
     //   295: istore_1
-    //   296: invokestatic 845	java/lang/System:currentTimeMillis	()J
-    //   299: ldc2_w 277
+    //   296: invokestatic 815	java/lang/System:currentTimeMillis	()J
+    //   299: ldc2_w 279
     //   302: ldiv
     //   303: l2i
     //   304: i2l
@@ -1197,136 +883,136 @@ public class ContactWidgetNewBizInfo
     //   308: sipush 160
     //   311: if_icmpne +147 -> 458
     //   314: aload 13
-    //   316: ldc_w 1158
+    //   316: ldc_w 888
     //   319: lconst_0
-    //   320: invokevirtual 1161	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   320: invokevirtual 891	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   323: lstore 6
-    //   325: getstatic 217	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   325: getstatic 219	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   328: sipush 15721
     //   331: bipush 9
     //   333: anewarray 4	java/lang/Object
     //   336: dup
     //   337: iconst_0
     //   338: aload_0
-    //   339: getfield 468	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:contact	Lcom/tencent/mm/storage/af;
-    //   342: getfield 228	com/tencent/mm/g/c/au:field_username	Ljava/lang/String;
+    //   339: getfield 470	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:contact	Lcom/tencent/mm/storage/ai;
+    //   342: getfield 230	com/tencent/mm/g/c/av:field_username	Ljava/lang/String;
     //   345: aastore
     //   346: dup
     //   347: iconst_1
     //   348: iconst_0
-    //   349: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   349: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   352: aastore
     //   353: dup
     //   354: iconst_2
     //   355: bipush 14
-    //   357: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   357: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   360: aastore
     //   361: dup
     //   362: iconst_3
     //   363: lload 4
-    //   365: invokestatic 1166	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   365: invokestatic 896	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   368: aastore
     //   369: dup
     //   370: iconst_4
-    //   371: invokestatic 520	com/tencent/mm/storage/u:getSessionId	()I
-    //   374: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   371: invokestatic 548	com/tencent/mm/storage/v:getSessionId	()I
+    //   374: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   377: aastore
     //   378: dup
     //   379: iconst_5
     //   380: iconst_0
-    //   381: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   381: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   384: aastore
     //   385: dup
     //   386: bipush 6
     //   388: lload 6
-    //   390: invokestatic 1166	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   390: invokestatic 896	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   393: aastore
     //   394: dup
     //   395: bipush 7
-    //   397: ldc 127
+    //   397: ldc 129
     //   399: aastore
     //   400: dup
     //   401: bipush 8
     //   403: iconst_1
-    //   404: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   404: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   407: aastore
-    //   408: invokevirtual 1152	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
-    //   411: getstatic 217	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
-    //   414: ldc2_w 1167
-    //   417: ldc2_w 1169
+    //   408: invokevirtual 882	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   411: getstatic 219	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   414: ldc2_w 897
+    //   417: ldc2_w 899
     //   420: lconst_1
     //   421: iconst_0
-    //   422: invokevirtual 223	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   422: invokevirtual 225	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   425: sipush 27459
-    //   428: invokestatic 187	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   428: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   431: return
     //   432: astore 10
-    //   434: ldc 127
+    //   434: ldc 129
     //   436: astore 9
-    //   438: ldc 204
+    //   438: ldc 206
     //   440: aload 10
-    //   442: ldc 127
+    //   442: ldc 129
     //   444: iconst_0
     //   445: anewarray 4	java/lang/Object
-    //   448: invokestatic 1174	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   448: invokestatic 904	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   451: aload 12
     //   453: astore 10
     //   455: goto -260 -> 195
     //   458: iload_1
     //   459: sipush 174
     //   462: if_icmpne +88 -> 550
-    //   465: getstatic 217	com/tencent/mm/plugin/report/service/h:vKh	Lcom/tencent/mm/plugin/report/service/h;
+    //   465: getstatic 219	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
     //   468: sipush 15721
     //   471: bipush 9
     //   473: anewarray 4	java/lang/Object
     //   476: dup
     //   477: iconst_0
     //   478: aload_0
-    //   479: getfield 468	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:contact	Lcom/tencent/mm/storage/af;
-    //   482: getfield 228	com/tencent/mm/g/c/au:field_username	Ljava/lang/String;
+    //   479: getfield 470	com/tencent/mm/plugin/profile/ui/newbizinfo/ContactWidgetNewBizInfo:contact	Lcom/tencent/mm/storage/ai;
+    //   482: getfield 230	com/tencent/mm/g/c/av:field_username	Ljava/lang/String;
     //   485: aastore
     //   486: dup
     //   487: iconst_1
     //   488: iconst_0
-    //   489: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   489: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   492: aastore
     //   493: dup
     //   494: iconst_2
     //   495: bipush 21
-    //   497: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   497: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   500: aastore
     //   501: dup
     //   502: iconst_3
     //   503: lload 4
-    //   505: invokestatic 1166	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   505: invokestatic 896	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   508: aastore
     //   509: dup
     //   510: iconst_4
-    //   511: invokestatic 520	com/tencent/mm/storage/u:getSessionId	()I
-    //   514: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   511: invokestatic 548	com/tencent/mm/storage/v:getSessionId	()I
+    //   514: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   517: aastore
     //   518: dup
     //   519: iconst_5
     //   520: iconst_0
-    //   521: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   521: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   524: aastore
     //   525: dup
     //   526: bipush 6
     //   528: iconst_0
-    //   529: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   529: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   532: aastore
     //   533: dup
     //   534: bipush 7
-    //   536: ldc 127
+    //   536: ldc 129
     //   538: aastore
     //   539: dup
     //   540: bipush 8
     //   542: iconst_2
-    //   543: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   543: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   546: aastore
-    //   547: invokevirtual 1152	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   547: invokevirtual 882	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
     //   550: sipush 27459
-    //   553: invokestatic 187	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   553: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   556: return
     //   557: astore 11
     //   559: aload 10
@@ -1334,7 +1020,7 @@ public class ContactWidgetNewBizInfo
     //   563: aload 11
     //   565: astore 10
     //   567: goto -129 -> 438
-    //   570: ldc 127
+    //   570: ldc 129
     //   572: astore 9
     //   574: aload 12
     //   576: astore 10
@@ -1366,89 +1052,413 @@ public class ContactWidgetNewBizInfo
     //   178	191	557	java/io/UnsupportedEncodingException
   }
   
+  private void dqc()
+  {
+    AppMethodBeat.i(27451);
+    bYJ();
+    dqJ();
+    this.screen.removeAll();
+    this.screen.addPreferencesFromResource(2131951647);
+    Object localObject = (NewBizInfoHeaderPreference)this.screen.aPN("contact_info_header_newbizinfo");
+    if ((localObject != null) && (!bs.isNullOrNil(this.contact.field_username)))
+    {
+      ((NewBizInfoHeaderPreference)localObject).a(this.contact, this.vIX, this.vIG, this.vNU);
+      this.vNZ = true;
+      if (this.vNU == null) {
+        break label594;
+      }
+      if (!com.tencent.mm.n.b.ln(this.contact.field_type)) {
+        break label563;
+      }
+      this.screen.cK("contact_info_biz_add", true);
+      this.screen.cK("contact_info_biz_go_chatting", false);
+      ((NewBizInfoFollowPreference)this.screen.aPN("contact_info_biz_go_chatting")).vIR = this;
+      label161:
+      if ((this.vNU != null) && (this.vNU.Edt != null) && (this.vNU.Edv != null) && (this.vNU.Edv.EcW != null)) {
+        a(this.vNU);
+      }
+      if ((this.vNU != null) && (!bPe()) && (!com.tencent.mm.n.b.ln(this.contact.field_type))) {
+        this.vNT.showOptionMenu(false);
+      }
+      if ((this.vNU == null) || (this.vNU.Edy == null)) {
+        break label639;
+      }
+      this.screen.cK("contact_info_biz_menu_newbizinfo", false);
+      if (this.vNU != null) {
+        ((NewBizInfoMenuPreference)this.screen.aPN("contact_info_biz_menu_newbizinfo")).a(this.vNU.Edy, this.contact, this.iMg);
+      }
+    }
+    for (;;)
+    {
+      this.screen.cK("contact_info_biz_err_msg", true);
+      ac.d("MicroMsg.ContactWidgetNewBizInfo", "KIsardDevice(%b)", new Object[] { Boolean.valueOf(this.vNT.getIntent().getBooleanExtra("KIsHardDevice", false)) });
+      if ((this.vNT.getIntent() == null) || (!this.vNT.getIntent().getBooleanExtra("KIsHardDevice", false))) {
+        break label677;
+      }
+      ac.d("MicroMsg.ContactWidgetNewBizInfo", "Hard device biz...");
+      boolean bool = dqf();
+      ac.d("MicroMsg.ContactWidgetNewBizInfo", "contact.isContact()(%b), isHarDeviceBound(%b)", new Object[] { Boolean.valueOf(com.tencent.mm.n.b.ln(this.contact.field_type)), Boolean.valueOf(bool) });
+      if ((com.tencent.mm.n.b.ln(this.contact.field_type)) && (bool)) {
+        break label670;
+      }
+      ac.w("MicroMsg.ContactWidgetNewBizInfo", "%s is not my hard biz contact", new Object[] { this.contact.field_username });
+      dqd();
+      localObject = (NewBizInfoNotFollowPreference)this.screen.aPN("contact_info_biz_add");
+      this.screen.cK("contact_info_biz_add", false);
+      if (localObject == null) {
+        break label670;
+      }
+      if (!bool) {
+        break label656;
+      }
+      ((NewBizInfoNotFollowPreference)localObject).setTitle(this.vNT.getString(2131757610));
+      AppMethodBeat.o(27451);
+      return;
+      ac.w("MicroMsg.ContactWidgetNewBizInfo", "head pref is null");
+      this.screen.cK("contact_info_header_bizinfo", true);
+      break;
+      label563:
+      this.screen.cK("contact_info_biz_add", false);
+      this.screen.cK("contact_info_biz_go_chatting", true);
+      break label161;
+      label594:
+      this.screen.cK("contact_info_biz_add", true);
+      this.screen.cK("contact_info_biz_go_chatting", true);
+      this.screen.cK("contact_info_biz_space", false);
+      break label161;
+      label639:
+      this.screen.cK("contact_info_biz_menu_newbizinfo", true);
+    }
+    label656:
+    ((NewBizInfoNotFollowPreference)localObject).setTitle(this.vNT.getString(2131757596));
+    label670:
+    AppMethodBeat.o(27451);
+    return;
+    label677:
+    if (dqL())
+    {
+      this.screen.cK("contact_info_biz_loading", false);
+      this.screen.cK("contact_info_biz_add", true);
+      this.screen.cK("contact_info_biz_go_chatting", true);
+      this.screen.cK("contact_info_message_newbizinfo", true);
+    }
+    AppMethodBeat.o(27451);
+  }
+  
+  private void dqd()
+  {
+    AppMethodBeat.i(27454);
+    if ((this.contact != null) && ((w.xo(this.contact.field_username)) || (w.xz(this.contact.field_username))) && (com.tencent.mm.n.b.ln(this.contact.field_type)))
+    {
+      this.screen.cK("contact_info_biz_go_chatting", false);
+      AppMethodBeat.o(27454);
+      return;
+    }
+    this.screen.cK("contact_info_biz_go_chatting", true);
+    AppMethodBeat.o(27454);
+  }
+  
+  private void dqe()
+  {
+    AppMethodBeat.i(27458);
+    if ((NewBizInfoHeaderPreference)this.screen.aPN("contact_info_header_newbizinfo") != null) {
+      NewBizInfoHeaderPreference.wn(System.currentTimeMillis());
+    }
+    if ((this.vNT.getIntent() != null) && (this.vNT.getIntent().getBooleanExtra("KIsHardDevice", false)))
+    {
+      localObject1 = this.vNT.getIntent().getStringExtra("KHardDeviceBindTicket");
+      if (!bs.isNullOrNil((String)localObject1)) {
+        break label334;
+      }
+      ac.i("MicroMsg.ContactWidgetNewBizInfo", "bindTicket is null, means it is not switch from QRcode scan, just add contact");
+    }
+    label334:
+    while (dqf())
+    {
+      localObject1 = new com.tencent.mm.pluginsdk.ui.applet.a(this.vNT, new a.a()
+      {
+        public final void a(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, String paramAnonymousString1, String paramAnonymousString2)
+        {
+          AppMethodBeat.i(196063);
+          ai localai;
+          if (paramAnonymousBoolean1)
+          {
+            com.tencent.mm.ui.base.h.cg(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getString(2131757607));
+            ContactWidgetNewBizInfo.c(ContactWidgetNewBizInfo.this).cK("contact_info_time_expired", true);
+            localai = ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this);
+            if ((localai != null) && (!bs.isNullOrNil(paramAnonymousString1))) {
+              break label379;
+            }
+            ac.e("MicroMsg.ContactWidgetNewBizInfo", "respUsername == " + paramAnonymousString1 + ", contact = " + localai);
+            if (ContactWidgetNewBizInfo.q(ContactWidgetNewBizInfo.this) != null)
+            {
+              paramAnonymousString1 = new ql();
+              ContactWidgetNewBizInfo.q(ContactWidgetNewBizInfo.this).hTz = 4;
+              paramAnonymousString1.dtt.dtu = ContactWidgetNewBizInfo.q(ContactWidgetNewBizInfo.this);
+              com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousString1);
+            }
+            paramAnonymousString1 = af.aCW().AE(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
+            paramAnonymousString1.field_status = 1;
+            if ((!bs.isNullOrNil(paramAnonymousString1.field_extInfo)) || (bs.isNullOrNil(paramAnonymousString1.field_username)) || (ContactWidgetNewBizInfo.r(ContactWidgetNewBizInfo.this) == null) || (!paramAnonymousString1.field_username.equals(bs.nullAsNil(ContactWidgetNewBizInfo.r(ContactWidgetNewBizInfo.this).field_username)))) {
+              break label667;
+            }
+            af.aCW().g(ContactWidgetNewBizInfo.r(ContactWidgetNewBizInfo.this));
+            label240:
+            paramAnonymousBoolean1 = ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getIntent().getBooleanExtra("key_biz_profile_stay_after_follow_op", false);
+            paramAnonymousBoolean2 = ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getIntent().getBooleanExtra("key_start_biz_profile_from_app_brand_profile", false);
+            if (!paramAnonymousString1.IN()) {
+              break label678;
+            }
+            paramAnonymousString1 = new Intent();
+            paramAnonymousString1.putExtra("enterprise_biz_name", ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
+            paramAnonymousString1.putExtra("enterprise_biz_display_name", com.tencent.mm.model.v.wk(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username));
+            paramAnonymousString1.putExtra("enterprise_from_scene", 7);
+            paramAnonymousString1.addFlags(67108864);
+            com.tencent.mm.br.d.e(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ".ui.conversation.EnterpriseConversationUI", paramAnonymousString1);
+          }
+          label608:
+          for (;;)
+          {
+            label355:
+            ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).finish();
+            label379:
+            do
+            {
+              ContactWidgetNewBizInfo.a(ContactWidgetNewBizInfo.this, 3);
+              AppMethodBeat.o(196063);
+              return;
+              paramAnonymousString2 = null;
+              if (w.wF(localai.field_username))
+              {
+                String str = bs.nullAsNil(localai.field_username);
+                paramAnonymousString2 = com.tencent.mm.al.f.dX(str);
+                if (paramAnonymousString2 != null) {
+                  paramAnonymousString2.field_username = paramAnonymousString1;
+                }
+                af.aCW().delete(str);
+                localai.qp(str);
+              }
+              localai.setUsername(paramAnonymousString1);
+              if ((int)localai.fLJ == 0)
+              {
+                az.ayM();
+                com.tencent.mm.model.c.awB().ah(localai);
+              }
+              if ((int)localai.fLJ <= 0)
+              {
+                ac.e("MicroMsg.ContactWidgetNewBizInfo", "addContact : insert contact failed");
+                break;
+              }
+              w.u(localai);
+              az.ayM();
+              paramAnonymousString1 = com.tencent.mm.model.c.awB().aNt(localai.field_username);
+              if (paramAnonymousString2 != null)
+              {
+                af.aCW().f(paramAnonymousString2);
+                break;
+              }
+              paramAnonymousString2 = com.tencent.mm.al.f.dX(paramAnonymousString1.field_username);
+              if ((paramAnonymousString1.fad()) && (com.tencent.mm.al.a.aCo())) {}
+              for (int i = 1;; i = 0)
+              {
+                if ((paramAnonymousString2 != null) && ((!paramAnonymousString2.IH()) || (i != 0))) {
+                  break label608;
+                }
+                ac.d("MicroMsg.ContactWidgetNewBizInfo", "shouldUpdate");
+                ar.a.hnw.aJ(paramAnonymousString1.field_username, "");
+                com.tencent.mm.aj.c.zU(paramAnonymousString1.field_username);
+                break;
+              }
+              if ((!paramAnonymousString1.fah()) || (i != 0)) {
+                break;
+              }
+              ac.d("MicroMsg.ContactWidgetNewBizInfo", "update contact, last check time=%d", new Object[] { Integer.valueOf(paramAnonymousString1.eyc) });
+              ar.a.hnw.aJ(paramAnonymousString1.field_username, "");
+              com.tencent.mm.aj.c.zU(paramAnonymousString1.field_username);
+              break;
+              af.aCW().g(paramAnonymousString1);
+              break label240;
+              paramAnonymousString1 = new Intent();
+              paramAnonymousString1.putExtra("Chat_User", ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
+              paramAnonymousString1.putExtra("key_has_add_contact", true);
+              paramAnonymousString1.putExtra("finish_direct", true);
+              if (paramAnonymousBoolean2) {
+                paramAnonymousString1.addFlags(268435456);
+              }
+              com.tencent.mm.storage.v.aMS(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
+              com.tencent.mm.plugin.profile.b.iyx.d(paramAnonymousString1, ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this));
+              if (paramAnonymousBoolean1) {
+                break label355;
+              }
+            } while (!paramAnonymousBoolean2);
+          }
+        }
+      });
+      localObject2 = new LinkedList();
+      ((LinkedList)localObject2).add(Integer.valueOf(this.iMg));
+      if (this.cFv != null) {
+        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).DpL = this.cFv;
+      }
+      if (!bs.isNullOrNil(this.sBi)) {
+        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).sBi = this.sBi;
+      }
+      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).DpR = true;
+      String str = this.vNT.getIntent().getStringExtra("url");
+      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).DpS = str;
+      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).nLC = e.a.Zn(this.vNT.getIntent().getIntExtra("qbarScene", -1));
+      dpj localdpj = new dpj();
+      localdpj.DSv = this.vNT.getIntent().getIntExtra("Contact_Sub_Scene", 0);
+      localdpj.EvK = this.vNT.getIntent().getStringExtra("Contact_Scene_Note");
+      if (!bs.isNullOrNil(str))
+      {
+        if (bs.isNullOrNil(localdpj.EvK)) {
+          localdpj.EvK = str;
+        }
+        if (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).Tg(str)) {
+          localdpj.FWL = apJ(str);
+        }
+      }
+      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).DpT = localdpj;
+      ((com.tencent.mm.pluginsdk.ui.applet.a)localObject1).a(this.contact.field_username, (LinkedList)localObject2, this.vKu);
+      dqM();
+      AppMethodBeat.o(27458);
+      return;
+    }
+    ac.d("MicroMsg.ContactWidgetNewBizInfo", "IsHardDevice, bindTicket = %s", new Object[] { localObject1 });
+    az.agi().a(536, this);
+    Object localObject2 = new dk();
+    ((dk)localObject2).dcR.dcT = ((String)localObject1);
+    ((dk)localObject2).dcR.opType = 1;
+    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
+    Object localObject1 = ((dk)localObject2).dcS.dcV;
+    localObject2 = this.vNT;
+    this.vNT.getString(2131755906);
+    this.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject2, this.vNT.getString(2131755936), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(196062);
+        az.agi().b(536, ContactWidgetNewBizInfo.this);
+        paramAnonymousDialogInterface = new dk();
+        paramAnonymousDialogInterface.dcR.opType = 2;
+        paramAnonymousDialogInterface.dcR.dcV = this.cXh;
+        com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousDialogInterface);
+        AppMethodBeat.o(196062);
+      }
+    });
+    AppMethodBeat.o(27458);
+  }
+  
+  private boolean dqf()
+  {
+    AppMethodBeat.i(27462);
+    if (this.vNT.getIntent() == null)
+    {
+      AppMethodBeat.o(27462);
+      return false;
+    }
+    String str1 = this.vNT.getIntent().getStringExtra("device_id");
+    String str2 = this.vNT.getIntent().getStringExtra("device_type");
+    do localdo = new do();
+    localdo.ddc.cIZ = str1;
+    localdo.ddc.dda = str2;
+    com.tencent.mm.sdk.b.a.GpY.l(localdo);
+    boolean bool = localdo.ddd.dde;
+    AppMethodBeat.o(27462);
+    return bool;
+  }
+  
   private void initActionBar()
   {
     AppMethodBeat.i(27445);
-    this.uFc.setMMTitle(bt.nullAsNil(this.contact.field_nickname));
-    this.uFc.setMMTitleColor(0);
-    this.uFc.setTitleDividerVis(false);
-    this.uFc.setIsDarkActionbarBg(false);
-    this.uFc.setActionbarColor(ao.aD(this.uFc, 2130968579));
-    this.uFc.hideActionbarLine();
-    this.uFc.setBackBtn(new MenuItem.OnMenuItemClickListener()
+    this.vNT.setMMTitle(bs.nullAsNil(this.contact.field_nickname));
+    this.vNT.setMMTitleColor(0);
+    this.vNT.setTitleDividerVis(false);
+    this.vNT.setIsDarkActionbarBg(false);
+    this.vNT.setActionbarColor(ao.aJ(this.vNT, 2130968579));
+    this.vNT.hideActionbarLine();
+    this.vNT.setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(191233);
+        AppMethodBeat.i(196054);
         ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).onBackPressed();
-        AppMethodBeat.o(191233);
+        AppMethodBeat.o(196054);
         return true;
       }
     }, 2131689490);
-    this.uFc.removeAllOptionMenu();
-    this.uFc.addIconOptionMenu(1, 2131764452, 2131689494, new MenuItem.OnMenuItemClickListener()
+    this.vNT.removeAllOptionMenu();
+    this.vNT.addIconOptionMenu(1, 2131764452, 2131689494, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(191234);
+        AppMethodBeat.i(196055);
         ContactWidgetNewBizInfo.d(ContactWidgetNewBizInfo.this);
-        AppMethodBeat.o(191234);
+        AppMethodBeat.o(196055);
         return true;
       }
     });
-    this.uFc.addIconOptionMenu(0, "", 2131689493, new MenuItem.OnMenuItemClickListener()
+    this.vNT.addIconOptionMenu(0, "", 2131689493, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(27434);
         paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), 1, false);
-        paramAnonymousMenuItem.HrX = new n.c()
+        paramAnonymousMenuItem.ISu = new n.c()
         {
           public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
           {
-            AppMethodBeat.i(191235);
-            if (com.tencent.mm.n.b.ls(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_type))
-            {
-              if (!ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).ZS()) {
-                break label153;
+            AppMethodBeat.i(196057);
+            if (com.tencent.mm.n.b.ln(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_type)) {
+              if (ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).aaN()) {
+                if ((com.tencent.mm.storage.v.bIO()) && (com.tencent.mm.al.f.AO(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username))) {
+                  paramAnonymous2l.jw(5, 2131757612);
+                }
               }
-              if ((!u.bBQ()) || (!com.tencent.mm.am.f.wI(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username))) {
-                break label142;
-              }
-              paramAnonymous2l.jj(5, 2131757612);
             }
             for (;;)
             {
-              if (com.tencent.mm.n.b.ls(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_type)) {
-                paramAnonymous2l.jj(2, 2131757807);
+              paramAnonymous2l.jw(2, 2131757807);
+              paramAnonymous2l.jw(6, 2131757156);
+              if (com.tencent.mm.n.b.ln(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_type)) {
+                paramAnonymous2l.jw(3, 2131757623);
               }
-              paramAnonymous2l.jj(6, 2131757156);
-              if (com.tencent.mm.n.b.ls(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_type)) {
-                paramAnonymous2l.jj(3, 2131757623);
-              }
-              AppMethodBeat.o(191235);
+              AppMethodBeat.o(196057);
               return;
-              label142:
-              paramAnonymous2l.jj(5, 2131761053);
+              paramAnonymous2l.jw(5, 2131761053);
               continue;
-              label153:
-              if ((u.bBQ()) && (com.tencent.mm.am.f.wI(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username))) {
-                paramAnonymous2l.jj(4, 2131757608);
-              } else {
-                paramAnonymous2l.jj(4, 2131757877);
+              if ((com.tencent.mm.storage.v.bIO()) && (com.tencent.mm.al.f.AO(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username)))
+              {
+                paramAnonymous2l.jw(4, 2131757608);
+              }
+              else
+              {
+                paramAnonymous2l.jw(4, 2131757877);
+                continue;
+                if ((int)ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).fLJ <= 0) {
+                  ar.a.hnw.a(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, "", new ar.b.a()
+                  {
+                    public final void p(String paramAnonymous3String, boolean paramAnonymous3Boolean)
+                    {
+                      AppMethodBeat.i(196056);
+                      ac.i("MicroMsg.ContactWidgetNewBizInfo", "onCreateMMMenu Fetch Contact username:%s, succ: %b", new Object[] { paramAnonymous3String, Boolean.valueOf(paramAnonymous3Boolean) });
+                      AppMethodBeat.o(196056);
+                    }
+                  });
+                }
               }
             }
           }
         };
-        paramAnonymousMenuItem.HrY = new n.d()
+        paramAnonymousMenuItem.ISv = new n.d()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
-            AppMethodBeat.i(191236);
+            AppMethodBeat.i(196058);
             switch (paramAnonymous2MenuItem.getItemId())
             {
             default: 
-              ad.w("MicroMsg.ContactWidgetNewBizInfo", "default onMMMenuItemSelected err");
+              ac.w("MicroMsg.ContactWidgetNewBizInfo", "default onMMMenuItemSelected err");
             case 2: 
             case 3: 
             case 4: 
@@ -1457,35 +1467,35 @@ public class ContactWidgetNewBizInfo
               {
                 do
                 {
-                  AppMethodBeat.o(191236);
+                  AppMethodBeat.o(196058);
                   return;
                   ContactWidgetNewBizInfo.f(ContactWidgetNewBizInfo.this);
-                  AppMethodBeat.o(191236);
+                  AppMethodBeat.o(196058);
                   return;
                   ContactWidgetNewBizInfo.g(ContactWidgetNewBizInfo.this);
-                  AppMethodBeat.o(191236);
+                  AppMethodBeat.o(196058);
                   return;
-                  com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.L(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 903, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
-                  com.tencent.mm.model.j.rI(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
+                  com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 903, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
+                  com.tencent.mm.model.j.vL(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username);
                   ContactWidgetNewBizInfo.i(ContactWidgetNewBizInfo.this);
-                } while ((u.bBQ()) && (!com.tencent.mm.am.f.wG(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username)));
-                com.tencent.mm.ui.base.h.cf(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getString(2131761054));
-                AppMethodBeat.o(191236);
+                } while ((com.tencent.mm.storage.v.bIO()) && (!com.tencent.mm.al.f.AM(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username)));
+                com.tencent.mm.ui.base.h.cg(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getString(2131761054));
+                AppMethodBeat.o(196058);
                 return;
-                w.D(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, true);
-                com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.L(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 904, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
+                w.E(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, true);
+                com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 904, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
                 ContactWidgetNewBizInfo.i(ContactWidgetNewBizInfo.this);
-              } while ((u.bBQ()) && (!com.tencent.mm.am.f.wG(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username)));
-              com.tencent.mm.ui.base.h.cf(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getString(2131756644));
-              AppMethodBeat.o(191236);
+              } while ((com.tencent.mm.storage.v.bIO()) && (!com.tencent.mm.al.f.AM(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username)));
+              com.tencent.mm.ui.base.h.cg(ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this), ContactWidgetNewBizInfo.b(ContactWidgetNewBizInfo.this).getString(2131756644));
+              AppMethodBeat.o(196058);
               return;
             }
             ContactWidgetNewBizInfo.j(ContactWidgetNewBizInfo.this);
-            AppMethodBeat.o(191236);
+            AppMethodBeat.o(196058);
           }
         };
-        paramAnonymousMenuItem.csG();
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.L(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 600, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
+        paramAnonymousMenuItem.cED();
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(ContactWidgetNewBizInfo.e(ContactWidgetNewBizInfo.this).field_username, 600, ContactWidgetNewBizInfo.h(ContactWidgetNewBizInfo.this));
         AppMethodBeat.o(27434);
         return false;
       }
@@ -1493,39 +1503,39 @@ public class ContactWidgetNewBizInfo
     AppMethodBeat.o(27445);
   }
   
-  final void Jx(int paramInt)
+  final void Lw(int paramInt)
   {
     AppMethodBeat.i(27463);
-    if ((this.uBz == null) || ((this.ima != 39) && (this.ima != 56) && (this.ima != 35) && (this.ima != 87) && (this.ima != 88) && (this.ima != 89) && (this.ima != 85)))
+    if ((this.vKs == null) || ((this.iMg != 39) && (this.iMg != 56) && (this.iMg != 35) && (this.iMg != 87) && (this.iMg != 88) && (this.iMg != 89) && (this.iMg != 85)))
     {
-      ad.d("MicroMsg.ContactWidgetNewBizInfo", "mExtArgs is null or the add contact action is not from biz search.");
+      ac.d("MicroMsg.ContactWidgetNewBizInfo", "mExtArgs is null or the add contact action is not from biz search.");
       AppMethodBeat.o(27463);
       return;
     }
     if (this.contact == null)
     {
-      ad.i("MicroMsg.ContactWidgetNewBizInfo", "contact is null.");
+      ac.i("MicroMsg.ContactWidgetNewBizInfo", "contact is null.");
       AppMethodBeat.o(27463);
       return;
     }
-    String str2 = this.uBz.getString("Contact_Ext_Args_Search_Id");
-    String str3 = bt.nullAsNil(this.uBz.getString("Contact_Ext_Args_Query_String"));
-    int j = this.uBz.getInt("Contact_Ext_Args_Index");
+    String str2 = this.vKs.getString("Contact_Ext_Args_Search_Id");
+    String str3 = bs.nullAsNil(this.vKs.getString("Contact_Ext_Args_Query_String"));
+    int j = this.vKs.getInt("Contact_Ext_Args_Index");
     int i;
-    switch (this.ima)
+    switch (this.iMg)
     {
     default: 
       i = 0;
-      str1 = bt.nullAsNil(this.uBz.getString("Contact_Ext_Extra_Params"));
-      str2 = str3 + "," + paramInt + "," + bt.nullAsNil(this.contact.field_username) + "," + j + "," + System.currentTimeMillis() / 1000L + "," + str2 + "," + i;
-      if (bt.isNullOrNil(null)) {
+      str1 = bs.nullAsNil(this.vKs.getString("Contact_Ext_Extra_Params"));
+      str2 = str3 + "," + paramInt + "," + bs.nullAsNil(this.contact.field_username) + "," + j + "," + System.currentTimeMillis() / 1000L + "," + str2 + "," + i;
+      if (bs.isNullOrNil(null)) {
         break;
       }
     }
     for (String str1 = str2 + "," + null + "," + str1;; str1 = str2 + ",," + str1)
     {
-      ad.v("MicroMsg.ContactWidgetNewBizInfo", "report 10866: %s", new Object[] { str1 });
-      com.tencent.mm.plugin.report.service.h.vKh.kvStat(10866, str1);
+      ac.v("MicroMsg.ContactWidgetNewBizInfo", "report 10866: %s", new Object[] { str1 });
+      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10866, str1);
       AppMethodBeat.o(27463);
       return;
       i = 1;
@@ -1541,43 +1551,43 @@ public class ContactWidgetNewBizInfo
     }
   }
   
-  public final long QU()
+  public final long Rw()
   {
     return this.enterTime;
   }
   
-  public final boolean SN(String paramString)
+  public final boolean WZ(String paramString)
   {
     AppMethodBeat.i(27457);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.ContactWidgetNewBizInfo", "handleEvent key is null, return");
+      ac.e("MicroMsg.ContactWidgetNewBizInfo", "handleEvent key is null, return");
       AppMethodBeat.o(27457);
       return false;
     }
-    ad.i("MicroMsg.ContactWidgetNewBizInfo", "handleEvent key:%s", new Object[] { paramString });
+    ac.i("MicroMsg.ContactWidgetNewBizInfo", "handleEvent key:%s", new Object[] { paramString });
     if ("contact_info_biz_add".endsWith(paramString))
     {
-      if (!com.tencent.mm.model.gdpr.c.atn()) {
-        dcw();
+      if (!com.tencent.mm.model.gdpr.c.aAe()) {
+        dqe();
       }
       for (;;)
       {
-        if (this.uBv != 0) {
-          com.tencent.mm.plugin.report.service.h.vKh.f(11263, new Object[] { Integer.valueOf(this.uBv), this.contact.field_username });
+        if (this.vKo != 0) {
+          com.tencent.mm.plugin.report.service.h.wUl.f(11263, new Object[] { Integer.valueOf(this.vKo), this.contact.field_username });
         }
-        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.L(this.contact.field_username, 200, this.ima);
+        com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.K(this.contact.field_username, 200, this.iMg);
         AppMethodBeat.o(27457);
         return true;
-        com.tencent.mm.model.gdpr.c.a(this.uFc, com.tencent.mm.model.gdpr.a.gQa, this.contact.field_username, new com.tencent.mm.model.gdpr.b()
+        com.tencent.mm.model.gdpr.c.a(this.vNT, com.tencent.mm.model.gdpr.a.hqA, this.contact.field_username, new com.tencent.mm.model.gdpr.b()
         {
-          public final void ns(int paramAnonymousInt)
+          public final void og(int paramAnonymousInt)
           {
-            AppMethodBeat.i(191239);
+            AppMethodBeat.i(196061);
             if (paramAnonymousInt == 0) {
               ContactWidgetNewBizInfo.p(ContactWidgetNewBizInfo.this);
             }
-            AppMethodBeat.o(191239);
+            AppMethodBeat.o(196061);
           }
         });
       }
@@ -1586,19 +1596,19 @@ public class ContactWidgetNewBizInfo
     return true;
   }
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, com.tencent.mm.storage.af paramaf, boolean paramBoolean, int paramInt)
+  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, ai paramai, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(27443);
-    if (this.uFc.isFinishing())
+    if (this.vNT.isFinishing())
     {
       AppMethodBeat.o(27443);
       return true;
     }
-    if (paramaf != null)
+    if (paramai != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (bt.nullAsNil(paramaf.field_username).length() <= 0) {
+      if (bs.nullAsNil(paramai.field_username).length() <= 0) {
         break label374;
       }
       bool = true;
@@ -1613,44 +1623,44 @@ public class ContactWidgetNewBizInfo
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      T(paramaf);
+      U(paramai);
       this.screen = paramf;
-      this.contact = paramaf;
-      this.uzZ = paramBoolean;
-      this.ima = paramInt;
-      this.uBA = ((SnsAdClick)this.uFc.getIntent().getParcelableExtra("KSnsAdTag"));
-      this.uBB = this.uFc.getIntent().getStringExtra("key_add_contact_report_info");
-      this.uBv = this.uFc.getIntent().getIntExtra("add_more_friend_search_scene", 0);
-      this.uBz = this.uFc.getIntent().getBundleExtra("Contact_Ext_Args");
-      this.niM = this.uFc.getIntent().getStringExtra("key_channel_session_id");
-      if (this.uFh)
+      this.contact = paramai;
+      this.vIS = paramBoolean;
+      this.iMg = paramInt;
+      this.vKt = ((SnsAdClick)this.vNT.getIntent().getParcelableExtra("KSnsAdTag"));
+      this.vKu = this.vNT.getIntent().getStringExtra("key_add_contact_report_info");
+      this.vKo = this.vNT.getIntent().getIntExtra("add_more_friend_search_scene", 0);
+      this.vKs = this.vNT.getIntent().getBundleExtra("Contact_Ext_Args");
+      this.nLF = this.vNT.getIntent().getStringExtra("key_channel_session_id");
+      if (this.vNY)
       {
-        this.uFh = false;
+        this.vNY = false;
         initActionBar();
-        this.uFd = a.akM(this.contact.field_username);
-        dcu();
-        a(paramaf.field_username, null);
-        paramf = this.uFc.getIntent().getStringExtra("Contact_BIZ_PopupInfoMsg");
-        if (!bt.isNullOrNil(paramf))
+        this.vNU = a.apL(this.contact.field_username);
+        dqc();
+        b(paramai.field_username, null);
+        paramf = this.vNT.getIntent().getStringExtra("Contact_BIZ_PopupInfoMsg");
+        if (!bs.isNullOrNil(paramf))
         {
-          this.uFc.getIntent().putExtra("Contact_BIZ_PopupInfoMsg", "");
-          com.tencent.mm.ui.base.h.a(this.uFc, paramf, "", this.uFc.getString(2131755835), null);
+          this.vNT.getIntent().putExtra("Contact_BIZ_PopupInfoMsg", "");
+          com.tencent.mm.ui.base.h.a(this.vNT, paramf, "", this.vNT.getString(2131755835), null);
         }
-        if (paramaf != null) {
-          com.tencent.mm.am.af.awq().ws(paramaf.field_username);
+        if (paramai != null) {
+          af.aDi().Ay(paramai.field_username);
         }
       }
-      if (this.uFj != null)
+      if (this.vOa != null)
       {
-        paramf = this.uFc.getListView();
+        paramf = this.vNT.getListView();
         if (paramf != null) {
-          paramf.onRestoreInstanceState(this.uFj);
+          paramf.onRestoreInstanceState(this.vOa);
         }
       }
-      if ((this.uFc instanceof FragmentActivity))
+      if ((this.vNT instanceof FragmentActivity))
       {
-        this.uFc.getLifecycle().removeObserver(this);
-        this.uFc.getLifecycle().addObserver(this);
+        this.vNT.getLifecycle().removeObserver(this);
+        this.vNT.getLifecycle().addObserver(this);
       }
       AppMethodBeat.o(27443);
       return true;
@@ -1661,47 +1671,47 @@ public class ContactWidgetNewBizInfo
     }
   }
   
-  public final boolean acO()
+  public final boolean adU()
   {
     AppMethodBeat.i(27465);
-    if ((this.contact == null) || (this.uzN == null) || (this.uFd == null) || (this.uFd.CKS == null) || (this.uFd.CKR == null))
+    if ((this.contact == null) || (this.vIG == null) || (this.vNU == null) || (this.vNU.Edu == null) || (this.vNU.Edt == null))
     {
-      ad.w("MicroMsg.ContactWidgetNewBizInfo", "reportEnd fail, err");
-      this.mYl.dead();
-      this.jBI.dead();
+      ac.w("MicroMsg.ContactWidgetNewBizInfo", "reportEnd fail, err");
+      this.nAK.dead();
+      this.kce.dead();
       AppMethodBeat.o(27465);
       return false;
     }
     this.endTime = System.currentTimeMillis();
     String str = this.contact.field_username;
-    int k = this.ima;
-    int m = this.uzN.field_type;
+    int k = this.iMg;
+    int m = this.vIG.field_type;
     long l1 = this.enterTime;
     long l2 = this.endTime;
     int i;
     label134:
     int n;
     int i1;
-    if (com.tencent.mm.n.b.ls(this.contact.field_type))
+    if (com.tencent.mm.n.b.ln(this.contact.field_type))
     {
       i = 1;
-      n = this.uFd.CKS.CIw;
-      i1 = this.uFd.CKS.CIx;
-      if (this.uBq == null) {
+      n = this.vNU.Edu.EaY;
+      i1 = this.vNU.Edu.EaZ;
+      if (this.vKj == null) {
         break label231;
       }
     }
     label231:
-    for (int j = this.uBq.size();; j = 0)
+    for (int j = this.vKj.size();; j = 0)
     {
-      com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.a(str, k, m, l1, l2, i, n, i1, j, com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.b(this.uFd.CKT), com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.a(this.uFd.CKW), this.uFd.CKR.mAQ);
+      com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.a(str, k, m, l1, l2, i, n, i1, j, com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.b(this.vNU.Edv), com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.a(this.vNU.Edy), this.vNU.Edt.ncR);
       break;
       i = 0;
       break label134;
     }
   }
   
-  public final boolean bRu()
+  public final boolean bYJ()
   {
     AppMethodBeat.i(27455);
     if (this.screen == null)
@@ -1709,56 +1719,56 @@ public class ContactWidgetNewBizInfo
       AppMethodBeat.o(27455);
       return true;
     }
-    Object localObject = (NewBizInfoHeaderPreference)this.screen.aKk("contact_info_header_newbizinfo");
+    Object localObject = (NewBizInfoHeaderPreference)this.screen.aPN("contact_info_header_newbizinfo");
     if (localObject != null) {
       ((NewBizInfoHeaderPreference)localObject).onDetach();
     }
-    localObject = this.uFc.getListView();
+    localObject = this.vNT.getListView();
     if (localObject != null) {
-      this.uFj = ((ListView)localObject).onSaveInstanceState();
+      this.vOa = ((ListView)localObject).onSaveInstanceState();
     }
     AppMethodBeat.o(27455);
     return true;
   }
   
-  public final void bYc()
+  public final void cfp()
   {
     AppMethodBeat.i(27449);
-    if ((this.uFi) && (this.uFd.CKT != null) && (this.uFd.CKT.CKu != null) && (this.uFd.CKT.CKu.CKN == 0)) {
-      a(this.contact.field_username, this.uFd.CKT.CKu.CKM);
+    if ((this.vNZ) && (this.vNU.Edv != null) && (this.vNU.Edv.EcW != null) && (this.vNU.Edv.EcW.Edp == 0)) {
+      b(this.contact.field_username, this.vNU.Edv.EcW.Edo);
     }
     AppMethodBeat.o(27449);
   }
   
-  public final com.tencent.mm.storage.af ddc()
+  public final ai dqK()
   {
     return this.contact;
   }
   
-  public final int ddf()
+  public final int dqN()
   {
-    return this.ima;
+    return this.iMg;
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
   public void onActivityDestroy()
   {
     AppMethodBeat.i(27444);
-    ad.i("MicroMsg.ContactWidgetNewBizInfo", "[onActivityDestroy]");
-    bRu();
+    ac.i("MicroMsg.ContactWidgetNewBizInfo", "[onActivityDestroy]");
+    bYJ();
     AppMethodBeat.o(27444);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(27456);
-    if (this.uFc == null)
+    if (this.vNT == null)
     {
-      ad.e("MicroMsg.ContactWidgetNewBizInfo", "null == context");
+      ac.e("MicroMsg.ContactWidgetNewBizInfo", "null == context");
       AppMethodBeat.o(27456);
       return;
     }
-    ad.i("MicroMsg.ContactWidgetNewBizInfo", "onActivityResult, requestCode = %d, resultCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.ContactWidgetNewBizInfo", "onActivityResult, requestCode = %d, resultCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     default: 
@@ -1771,9 +1781,9 @@ public class ContactWidgetNewBizInfo
       String str2 = paramIntent.getStringExtra("received_card_name");
       boolean bool = paramIntent.getBooleanExtra("Is_Chatroom", false);
       paramIntent = paramIntent.getStringExtra("custom_send_text");
-      com.tencent.mm.plugin.messenger.a.j.cOB().q(str1, str2, bool);
-      com.tencent.mm.plugin.messenger.a.j.cOB().hm(paramIntent, str2);
-      com.tencent.mm.ui.widget.snackbar.b.n(this.uFc, this.uFc.getString(2131759420));
+      com.tencent.mm.plugin.messenger.a.j.dck().q(str1, str2, bool);
+      com.tencent.mm.plugin.messenger.a.j.dck().hF(paramIntent, str2);
+      com.tencent.mm.ui.widget.snackbar.b.n(this.vNT, this.vNT.getString(2131759420));
       AppMethodBeat.o(27456);
       return;
     }
@@ -1783,23 +1793,23 @@ public class ContactWidgetNewBizInfo
   public final boolean onCreate()
   {
     AppMethodBeat.i(27464);
-    if ((this.contact == null) || (this.uzN == null))
+    if ((this.contact == null) || (this.vIG == null))
     {
-      ad.w("MicroMsg.ContactWidgetNewBizInfo", "reportStart fail, err");
-      this.mYl.alive();
-      this.jBI.alive();
+      ac.w("MicroMsg.ContactWidgetNewBizInfo", "reportStart fail, err");
+      this.nAK.alive();
+      this.kce.alive();
       AppMethodBeat.o(27464);
       return false;
     }
     this.enterTime = System.currentTimeMillis();
     String str = this.contact.field_username;
-    int j = this.ima;
-    int k = this.uzN.field_type;
+    int j = this.iMg;
+    int k = this.vIG.field_type;
     long l = this.enterTime;
-    if (com.tencent.mm.n.b.ls(this.contact.field_type)) {}
+    if (com.tencent.mm.n.b.ln(this.contact.field_type)) {}
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.a(str, j, k, l, i, this.niM);
+      com.tencent.mm.plugin.profile.ui.newbizinfo.c.a.a(str, j, k, l, i, this.nLF);
       break;
     }
   }
@@ -1807,63 +1817,63 @@ public class ContactWidgetNewBizInfo
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(27461);
-    ad.d("MicroMsg.ContactWidgetNewBizInfo", "onSceneEnd errType = " + paramInt1 + ", errCode = " + paramInt2 + ",errMsg = " + paramString);
+    ac.d("MicroMsg.ContactWidgetNewBizInfo", "onSceneEnd errType = " + paramInt1 + ", errCode = " + paramInt2 + ",errMsg = " + paramString);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
     if (paramn == null)
     {
-      ad.e("MicroMsg.ContactWidgetNewBizInfo", "scene == null");
+      ac.e("MicroMsg.ContactWidgetNewBizInfo", "scene == null");
       AppMethodBeat.o(27461);
       return;
     }
-    az.aeS().b(paramn.getType(), this);
+    az.agi().b(paramn.getType(), this);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ad.e("MicroMsg.ContactWidgetNewBizInfo", "scene.getType() = %s", new Object[] { Integer.valueOf(paramn.getType()) });
+      ac.e("MicroMsg.ContactWidgetNewBizInfo", "scene.getType() = %s", new Object[] { Integer.valueOf(paramn.getType()) });
       AppMethodBeat.o(27461);
       return;
     }
-    ad.d("MicroMsg.ContactWidgetNewBizInfo", "scene.getType() = %s", new Object[] { Integer.valueOf(paramn.getType()) });
+    ac.d("MicroMsg.ContactWidgetNewBizInfo", "scene.getType() = %s", new Object[] { Integer.valueOf(paramn.getType()) });
     if (paramn.getType() == 536)
     {
-      az.aeS().b(536, this);
-      dcu();
+      az.agi().b(536, this);
+      dqc();
     }
     AppMethodBeat.o(27461);
   }
   
   static final class a
-    extends com.tencent.mm.sdk.b.c<t>
+    extends com.tencent.mm.sdk.b.c<u>
   {
-    private WeakReference<ContactWidgetNewBizInfo> uFt;
+    private WeakReference<ContactWidgetNewBizInfo> vOl;
     
     public a(ContactWidgetNewBizInfo paramContactWidgetNewBizInfo)
     {
-      AppMethodBeat.i(191242);
-      this.uFt = new WeakReference(paramContactWidgetNewBizInfo);
-      this.__eventId = t.class.getName().hashCode();
-      AppMethodBeat.o(191242);
+      AppMethodBeat.i(196064);
+      this.vOl = new WeakReference(paramContactWidgetNewBizInfo);
+      this.__eventId = u.class.getName().hashCode();
+      AppMethodBeat.o(196064);
     }
   }
   
   static final class b
-    extends com.tencent.mm.sdk.b.c<ln>
+    extends com.tencent.mm.sdk.b.c<lw>
   {
-    private WeakReference<ContactWidgetNewBizInfo> uFt;
+    private WeakReference<ContactWidgetNewBizInfo> vOl;
     
     public b(ContactWidgetNewBizInfo paramContactWidgetNewBizInfo)
     {
-      AppMethodBeat.i(191244);
-      this.uFt = new WeakReference(paramContactWidgetNewBizInfo);
-      this.__eventId = ln.class.getName().hashCode();
-      AppMethodBeat.o(191244);
+      AppMethodBeat.i(196066);
+      this.vOl = new WeakReference(paramContactWidgetNewBizInfo);
+      this.__eventId = lw.class.getName().hashCode();
+      AppMethodBeat.o(196066);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.ContactWidgetNewBizInfo
  * JD-Core Version:    0.7.0.1
  */

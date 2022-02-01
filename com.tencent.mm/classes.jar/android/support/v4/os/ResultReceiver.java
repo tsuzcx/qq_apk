@@ -11,13 +11,13 @@ public class ResultReceiver
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
-  final boolean Ks = false;
-  a Kt;
+  final boolean Ln = false;
+  a Lo;
   final Handler mHandler = null;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.Kt = a.a.e(paramParcel.readStrongBinder());
+    this.Lo = a.a.e(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -29,12 +29,12 @@ public class ResultReceiver
   
   public final void send(int paramInt, Bundle paramBundle)
   {
-    if (this.Ks) {
+    if (this.Ln) {
       if (this.mHandler != null) {
         this.mHandler.post(new b(paramInt, paramBundle));
       }
     }
-    while (this.Kt == null)
+    while (this.Lo == null)
     {
       return;
       onReceiveResult(paramInt, paramBundle);
@@ -42,7 +42,7 @@ public class ResultReceiver
     }
     try
     {
-      this.Kt.send(paramInt, paramBundle);
+      this.Lo.send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -52,10 +52,10 @@ public class ResultReceiver
   {
     try
     {
-      if (this.Kt == null) {
-        this.Kt = new a();
+      if (this.Lo == null) {
+        this.Lo = new a();
       }
-      paramParcel.writeStrongBinder(this.Kt.asBinder());
+      paramParcel.writeStrongBinder(this.Lo.asBinder());
       return;
     }
     finally {}
@@ -80,24 +80,24 @@ public class ResultReceiver
   final class b
     implements Runnable
   {
-    final Bundle Kv;
+    final Bundle Lq;
     final int mResultCode;
     
     b(int paramInt, Bundle paramBundle)
     {
       this.mResultCode = paramInt;
-      this.Kv = paramBundle;
+      this.Lq = paramBundle;
     }
     
     public final void run()
     {
-      ResultReceiver.this.onReceiveResult(this.mResultCode, this.Kv);
+      ResultReceiver.this.onReceiveResult(this.mResultCode, this.Lq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.os.ResultReceiver
  * JD-Core Version:    0.7.0.1
  */

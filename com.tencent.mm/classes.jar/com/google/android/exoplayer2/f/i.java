@@ -7,46 +7,46 @@ public abstract class i
   extends f
   implements d
 {
-  private long aSr;
-  private d brO;
+  private long aTk;
+  private d bpN;
   
   public final void a(long paramLong1, d paramd, long paramLong2)
   {
     this.timeUs = paramLong1;
-    this.brO = paramd;
+    this.bpN = paramd;
     paramLong1 = paramLong2;
     if (paramLong2 == 9223372036854775807L) {
       paramLong1 = this.timeUs;
     }
-    this.aSr = paramLong1;
+    this.aTk = paramLong1;
   }
   
-  public final int am(long paramLong)
+  public final int ai(long paramLong)
   {
-    return this.brO.am(paramLong - this.aSr);
+    return this.bpN.ai(paramLong - this.aTk);
   }
   
-  public final List<a> an(long paramLong)
+  public final List<a> aj(long paramLong)
   {
-    return this.brO.an(paramLong - this.aSr);
+    return this.bpN.aj(paramLong - this.aTk);
   }
   
   public final void clear()
   {
     super.clear();
-    this.brO = null;
+    this.bpN = null;
   }
   
-  public final long eR(int paramInt)
+  public final long eE(int paramInt)
   {
-    return this.brO.eR(paramInt) + this.aSr;
+    return this.bpN.eE(paramInt) + this.aTk;
   }
   
   public abstract void release();
   
-  public final int uB()
+  public final int uw()
   {
-    return this.brO.uB();
+    return this.bpN.uw();
   }
 }
 

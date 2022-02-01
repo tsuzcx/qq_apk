@@ -14,23 +14,23 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.j.d;
 import com.tencent.mm.pluginsdk.j.d.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bd;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bc;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.z;
 
 public class WalletAwardShakeAnimView
   extends RelativeLayout
 {
-  private View AtB;
-  private TextView AtC;
-  private String AtD;
-  private int AtE;
-  private String AtF;
-  private int AtG;
-  private ValueAnimator AtH;
-  private a AtI;
+  private View BLV;
+  private TextView BLW;
+  private String BLX;
+  private int BLY;
+  private String BLZ;
+  private int BMa;
+  private ValueAnimator BMb;
+  private a BMc;
   private Runnable delayNofiyRunnable;
   private boolean isInvokeCallback;
   private boolean isStartShake;
@@ -43,8 +43,8 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.i(71499);
     this.isStartShake = false;
     this.isInvokeCallback = false;
-    this.AtE = 0;
-    this.AtG = 0;
+    this.BLY = 0;
+    this.BMa = 0;
     this.delayNofiyRunnable = new Runnable()
     {
       public final void run()
@@ -64,8 +64,8 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.i(71500);
     this.isStartShake = false;
     this.isInvokeCallback = false;
-    this.AtE = 0;
-    this.AtG = 0;
+    this.BLY = 0;
+    this.BMa = 0;
     this.delayNofiyRunnable = new Runnable()
     {
       public final void run()
@@ -79,18 +79,18 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.o(71500);
   }
   
-  private void efa()
+  private void euv()
   {
     AppMethodBeat.i(71505);
-    if (this.AtH != null) {
-      this.AtH.cancel();
+    if (this.BMb != null) {
+      this.BMb.cancel();
     }
-    this.AtH = ValueAnimator.ofFloat(new float[] { -30.0F, 30.0F });
-    this.AtH.setInterpolator(new LinearInterpolator());
-    this.AtH.setRepeatMode(2);
-    this.AtH.setRepeatCount(-1);
-    this.AtH.setDuration(300L);
-    this.AtH.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.BMb = ValueAnimator.ofFloat(new float[] { -30.0F, 30.0F });
+    this.BMb.setInterpolator(new LinearInterpolator());
+    this.BMb.setRepeatMode(2);
+    this.BMb.setRepeatCount(-1);
+    this.BMb.setDuration(300L);
+    this.BMb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -99,17 +99,17 @@ public class WalletAwardShakeAnimView
         AppMethodBeat.o(71498);
       }
     });
-    this.AtH.start();
+    this.BMb.start();
     AppMethodBeat.o(71505);
   }
   
   private void init()
   {
     AppMethodBeat.i(71501);
-    y.js(getContext()).inflate(2131495897, this);
+    z.jD(getContext()).inflate(2131495897, this);
     findViewById(2131297029).setBackground(getResources().getDrawable(2131691403));
-    this.AtB = findViewById(2131304678);
-    this.AtC = ((TextView)findViewById(2131304677));
+    this.BLV = findViewById(2131304678);
+    this.BLW = ((TextView)findViewById(2131304677));
     AppMethodBeat.o(71501);
   }
   
@@ -118,39 +118,39 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.i(71506);
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.bQk();
+      this.shakeSensor.bXB();
       this.shakeSensor = null;
     }
     this.isInvokeCallback = false;
     this.isStartShake = false;
-    if (this.AtH != null) {
-      this.AtH.cancel();
+    if (this.BMb != null) {
+      this.BMb.cancel();
     }
-    this.AtB.setRotation(0.0F);
-    if (!bt.isNullOrNil(this.AtD))
+    this.BLV.setRotation(0.0F);
+    if (!bs.isNullOrNil(this.BLX))
     {
-      this.AtC.setText(this.AtD);
-      if (this.AtE == 0) {
+      this.BLW.setText(this.BLX);
+      if (this.BLY == 0) {
         break label128;
       }
-      this.AtC.setTextColor(this.AtE);
+      this.BLW.setTextColor(this.BLY);
     }
     for (;;)
     {
-      aq.az(this.delayNofiyRunnable);
+      ap.aB(this.delayNofiyRunnable);
       AppMethodBeat.o(71506);
       return;
-      this.AtC.setText(getResources().getText(2131765880));
+      this.BLW.setText(getResources().getText(2131765880));
       break;
       label128:
-      this.AtC.setTextColor(getResources().getColor(2131100800));
+      this.BLW.setTextColor(getResources().getColor(2131100800));
     }
   }
   
-  public final void eeZ()
+  public final void euu()
   {
     AppMethodBeat.i(71504);
-    ad.i("MicroMsg.WalletAwardShakeAnimView", "startShake");
+    ac.i("MicroMsg.WalletAwardShakeAnimView", "startShake");
     getContext();
     this.shakeSensor = new d();
     this.shakeSensor.a(new d.a()
@@ -160,8 +160,8 @@ public class WalletAwardShakeAnimView
       public final void onShake(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(71496);
-        ad.i("MicroMsg.WalletAwardShakeAnimView", "onShake");
-        long l = bt.aS(WalletAwardShakeAnimView.b(WalletAwardShakeAnimView.this));
+        ac.i("MicroMsg.WalletAwardShakeAnimView", "onShake");
+        long l = bs.aO(WalletAwardShakeAnimView.b(WalletAwardShakeAnimView.this));
         if (!WalletAwardShakeAnimView.c(WalletAwardShakeAnimView.this))
         {
           if (l < 1200L) {
@@ -173,7 +173,7 @@ public class WalletAwardShakeAnimView
           AppMethodBeat.o(71496);
           return;
         }
-        WalletAwardShakeAnimView.a(WalletAwardShakeAnimView.this, bt.GC());
+        WalletAwardShakeAnimView.a(WalletAwardShakeAnimView.this, bs.Gn());
         WalletAwardShakeAnimView.d(WalletAwardShakeAnimView.this);
         if (!WalletAwardShakeAnimView.e(WalletAwardShakeAnimView.this))
         {
@@ -183,7 +183,7 @@ public class WalletAwardShakeAnimView
         AppMethodBeat.o(71496);
       }
     });
-    this.lastShakeTime = bt.GC();
+    this.lastShakeTime = bs.Gn();
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -192,54 +192,54 @@ public class WalletAwardShakeAnimView
         if (!WalletAwardShakeAnimView.e(WalletAwardShakeAnimView.this))
         {
           WalletAwardShakeAnimView.f(WalletAwardShakeAnimView.this);
-          bd.az(WalletAwardShakeAnimView.this.getContext(), 2131763618);
+          bc.aF(WalletAwardShakeAnimView.this.getContext(), 2131763618);
           WalletAwardShakeAnimView.h(WalletAwardShakeAnimView.this);
           if (WalletAwardShakeAnimView.i(WalletAwardShakeAnimView.this) != null) {
-            WalletAwardShakeAnimView.i(WalletAwardShakeAnimView.this).sQ(false);
+            WalletAwardShakeAnimView.i(WalletAwardShakeAnimView.this).tR(false);
           }
         }
         AppMethodBeat.o(71497);
       }
     });
-    aq.az(this.delayNofiyRunnable);
-    aq.n(this.delayNofiyRunnable, 3000L);
+    ap.aB(this.delayNofiyRunnable);
+    ap.n(this.delayNofiyRunnable, 3000L);
     AppMethodBeat.o(71504);
   }
   
   public void setAfterHintWording(String paramString)
   {
-    this.AtF = paramString;
+    this.BLZ = paramString;
   }
   
   public void setAfterHintWordingColor(int paramInt)
   {
-    this.AtG = paramInt;
+    this.BMa = paramInt;
   }
   
   public void setShakeHintWording(String paramString)
   {
     AppMethodBeat.i(71502);
-    this.AtD = paramString;
-    this.AtC.setText(paramString);
+    this.BLX = paramString;
+    this.BLW.setText(paramString);
     AppMethodBeat.o(71502);
   }
   
   public void setShakeHintWordingColor(int paramInt)
   {
     AppMethodBeat.i(71503);
-    this.AtE = paramInt;
-    this.AtC.setTextColor(paramInt);
+    this.BLY = paramInt;
+    this.BLW.setTextColor(paramInt);
     AppMethodBeat.o(71503);
   }
   
   public void setShakeOrClickCallback(a parama)
   {
-    this.AtI = parama;
+    this.BMc = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void sQ(boolean paramBoolean);
+    public abstract void tR(boolean paramBoolean);
   }
 }
 

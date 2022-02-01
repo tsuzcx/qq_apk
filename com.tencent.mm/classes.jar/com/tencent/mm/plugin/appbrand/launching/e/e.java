@@ -6,32 +6,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.ui.r;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
   extends ContextWrapper
   implements g
 {
-  private int jun;
-  private final c<com.tencent.mm.plugin.appbrand.service.d> kOF;
-  private d kOG;
+  private int jUI;
+  private final c<com.tencent.mm.plugin.appbrand.service.d> lqe;
+  private d lqf;
   private String mToken;
   
   public e(AppBrandLaunchProxyUI paramAppBrandLaunchProxyUI)
   {
     super(paramAppBrandLaunchProxyUI);
     AppMethodBeat.i(47454);
-    this.kOF = new c() {};
-    this.jun = 0;
+    this.lqe = new c() {};
+    this.jUI = 0;
     AppMethodBeat.o(47454);
   }
   
-  private void Kt(String paramString)
+  private void OA(String paramString)
   {
     AppMethodBeat.i(47458);
-    if ((this.kOG == null) || (this.kOG.kOo))
+    if ((this.lqf == null) || (this.lqf.lpN))
     {
-      ad.i("MicroMsg.FromMMProxyUI", "reason[%s] process[%s] isFinished, just finish activity", new Object[] { paramString, this.mToken });
+      ac.i("MicroMsg.FromMMProxyUI", "reason[%s] process[%s] isFinished, just finish activity", new Object[] { paramString, this.mToken });
       finish();
     }
     AppMethodBeat.o(47458);
@@ -50,7 +50,7 @@ public final class e
     r.b(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow());
     r.c(((AppBrandLaunchProxyUI)super.getBaseContext()).getWindow(), true);
     paramIntent = paramIntent.getStringExtra("extra_entry_token");
-    d locald = d.Ks(paramIntent);
+    d locald = d.Oz(paramIntent);
     if (locald == null)
     {
       finish();
@@ -59,12 +59,12 @@ public final class e
     }
     locald.setBaseContext((AppBrandLaunchProxyUI)super.getBaseContext());
     this.mToken = paramIntent;
-    this.kOG = locald;
-    this.kOF.alive();
+    this.lqf = locald;
+    this.lqe.alive();
     AppMethodBeat.o(47456);
   }
   
-  public final boolean bhn()
+  public final boolean boh()
   {
     return true;
   }
@@ -72,9 +72,9 @@ public final class e
   public final void onDestroy()
   {
     AppMethodBeat.i(47459);
-    this.kOF.dead();
-    if (this.kOG != null) {
-      this.kOG.bhi();
+    this.lqe.dead();
+    if (this.lqf != null) {
+      this.lqf.boc();
     }
     AppMethodBeat.o(47459);
   }
@@ -84,17 +84,17 @@ public final class e
   public final void onResume()
   {
     AppMethodBeat.i(47457);
-    this.jun += 1;
-    ad.i("MicroMsg.FromMMProxyUI", "onResume, resume count:%d", new Object[] { Integer.valueOf(this.jun) });
-    if (this.jun > 1) {
-      Kt("NotFirstResume");
+    this.jUI += 1;
+    ac.i("MicroMsg.FromMMProxyUI", "onResume, resume count:%d", new Object[] { Integer.valueOf(this.jUI) });
+    if (this.jUI > 1) {
+      OA("NotFirstResume");
     }
     AppMethodBeat.o(47457);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.game.luggage.c.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.protocal.protobuf.bpp;
+import com.tencent.mm.protocal.protobuf.bug;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public final class i
@@ -14,7 +14,7 @@ public final class i
     super(7);
   }
   
-  public final void a(Context paramContext, f paramf, bpp parambpp)
+  public final void a(Context paramContext, f paramf, bug parambug)
   {
     AppMethodBeat.i(83114);
     if (paramf.getWebView() != null) {

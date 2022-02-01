@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.ball.a;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,54 +19,57 @@ import com.tencent.mm.plugin.ball.d.c;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.view.CircleAnimateView;
 import com.tencent.mm.plugin.ball.view.CircleImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.plugin.ball.view.d.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.s;
 import java.util.List;
 
 public final class a
   extends RecyclerView.a<a>
 {
-  private static final int mCE;
-  private static final int mCF;
-  private static final int mCG;
-  private static final int mCH;
-  private static final int mCI;
-  private static final int mCJ;
-  private static final int mCK;
-  private static final int mCL;
-  private static final int mCM;
-  private static final int mCN;
-  private static final int mCO;
-  private static final int mCP;
-  private static final int mCQ;
-  private static final int mCR;
-  private static final int mCS;
-  public boolean mCA;
-  public boolean mCB;
-  public List<BallInfo> mCC;
-  public c mCD;
+  private static final int neI;
+  private static final int neJ;
+  private static final int neK;
+  private static final int neL;
+  private static final int neM;
+  private static final int neN;
+  private static final int neO;
+  private static final int neP;
+  private static final int neQ;
+  private static final int neR;
+  private static final int neS;
+  private static final int neT;
+  private static final int neU;
+  private static final int neV;
+  private static final int neW;
   private Context mContext;
+  public boolean neC;
+  public boolean neD;
+  public List<BallInfo> neE;
+  public c neF;
+  public boolean neG;
+  public d.b neH;
   
   static
   {
     AppMethodBeat.i(106029);
-    mCE = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166382);
-    mCF = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166364);
-    mCG = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166383);
-    mCH = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166365);
-    mCI = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166379);
-    mCJ = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166380);
-    mCK = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166378);
-    mCL = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166372);
-    mCM = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166374);
-    mCN = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166368);
-    mCO = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166370);
-    mCP = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166373);
-    mCQ = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166375);
-    mCR = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166369);
-    mCS = com.tencent.mm.cd.a.ap(aj.getContext(), 2131166371);
+    neI = com.tencent.mm.cc.a.av(ai.getContext(), 2131166382);
+    neJ = com.tencent.mm.cc.a.av(ai.getContext(), 2131166364);
+    neK = com.tencent.mm.cc.a.av(ai.getContext(), 2131166383);
+    neL = com.tencent.mm.cc.a.av(ai.getContext(), 2131166365);
+    neM = com.tencent.mm.cc.a.av(ai.getContext(), 2131166379);
+    neN = com.tencent.mm.cc.a.av(ai.getContext(), 2131166380);
+    neO = com.tencent.mm.cc.a.av(ai.getContext(), 2131166378);
+    neP = com.tencent.mm.cc.a.av(ai.getContext(), 2131166372);
+    neQ = com.tencent.mm.cc.a.av(ai.getContext(), 2131166374);
+    neR = com.tencent.mm.cc.a.av(ai.getContext(), 2131166368);
+    neS = com.tencent.mm.cc.a.av(ai.getContext(), 2131166370);
+    neT = com.tencent.mm.cc.a.av(ai.getContext(), 2131166373);
+    neU = com.tencent.mm.cc.a.av(ai.getContext(), 2131166375);
+    neV = com.tencent.mm.cc.a.av(ai.getContext(), 2131166369);
+    neW = com.tencent.mm.cc.a.av(ai.getContext(), 2131166371);
     AppMethodBeat.o(106029);
   }
   
@@ -76,7 +81,7 @@ public final class a
   private static void a(TextView paramTextView, String paramString)
   {
     AppMethodBeat.i(106024);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
       paramTextView.setVisibility(0);
       paramTextView.setText(Html.fromHtml(paramString));
@@ -92,11 +97,11 @@ public final class a
   {
     AppMethodBeat.i(106025);
     if (paramInt != -1) {
-      if (t.av(aj.getContext(), paramInt)) {
-        if (parama.mDh != paramInt)
+      if (s.aB(ai.getContext(), paramInt)) {
+        if (parama.nfn != paramInt)
         {
-          parama.mCY.setVisibility(8);
-          parama.mCZ.setVisibility(0);
+          parama.nfd.setVisibility(8);
+          parama.nfe.setVisibility(0);
         }
       }
     }
@@ -105,59 +110,71 @@ public final class a
       int i;
       try
       {
-        parama.mCZ.setImageResource(paramInt);
+        parama.nfe.setImageResource(paramInt);
         if (paramBallInfo.progress >= 0L)
         {
-          parama.mCZ.setProgress(paramBallInfo.progress);
-          parama.mDh = paramInt;
+          parama.nfe.setProgress(paramBallInfo.progress);
+          parama.nfn = paramInt;
           AppMethodBeat.o(106025);
           return;
         }
       }
       catch (Exception localException1)
       {
-        ad.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException1, "setIconAnimateView exception:%s", new Object[] { localException1 });
-        i = com.tencent.mm.plugin.ball.f.d.wG(paramBallInfo.state);
-        parama.mCZ.setImageResource(i);
+        ac.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException1, "setIconAnimateView exception:%s", new Object[] { localException1 });
+        i = com.tencent.mm.plugin.ball.f.d.xx(paramBallInfo.state);
+        parama.nfe.setImageResource(i);
         continue;
-        parama.mCZ.setProgress(-2147483648L);
+        parama.nfe.setProgress(-2147483648L);
         continue;
       }
-      if (parama.mDh != paramInt)
+      if (parama.nfn != paramInt)
       {
-        parama.mCZ.setVisibility(8);
-        parama.mCY.setVisibility(0);
+        parama.nfe.setVisibility(8);
+        parama.nfd.setVisibility(0);
       }
       try
       {
-        parama.mCY.setImageResource(paramInt);
+        parama.nfd.setImageResource(paramInt);
         if (paramBallInfo.progress >= 0L) {
-          parama.mCY.setProgress(paramBallInfo.progress);
+          parama.nfd.setProgress(paramBallInfo.progress);
         }
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException2, "setIconImageView exception:%s", new Object[] { localException2 });
-          i = com.tencent.mm.plugin.ball.f.d.wF(paramBallInfo.type);
-          parama.mCY.setImageResource(i);
-          paramBallInfo.kYl = i;
+          ac.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException2, "setIconImageView exception:%s", new Object[] { localException2 });
+          i = com.tencent.mm.plugin.ball.f.d.xw(paramBallInfo.type);
+          parama.nfd.setImageResource(i);
+          paramBallInfo.lzV = i;
         }
-        parama.mCY.setProgress(-2147483648L);
+        parama.nfd.setProgress(-2147483648L);
       }
       continue;
-      parama.mCY.setVisibility(4);
-      parama.mCZ.setVisibility(4);
+      parama.nfd.setVisibility(4);
+      parama.nfe.setVisibility(4);
     }
+  }
+  
+  private boolean xl(int paramInt)
+  {
+    AppMethodBeat.i(207960);
+    if ((paramInt >= 0) && (paramInt < this.neE.size()))
+    {
+      AppMethodBeat.o(207960);
+      return true;
+    }
+    AppMethodBeat.o(207960);
+    return false;
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(106022);
-    if (com.tencent.mm.plugin.ball.f.d.h(this.mCC))
+    if (com.tencent.mm.plugin.ball.f.d.h(this.neE))
     {
-      int i = this.mCC.size();
+      int i = this.neE.size();
       AppMethodBeat.o(106022);
       return i;
     }
@@ -168,9 +185,9 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(106023);
-    if ((com.tencent.mm.plugin.ball.f.d.h(this.mCC)) && (paramInt >= 0) && (paramInt < this.mCC.size()))
+    if ((com.tencent.mm.plugin.ball.f.d.h(this.neE)) && (paramInt >= 0) && (paramInt < this.neE.size()))
     {
-      if (((BallInfo)this.mCC.get(paramInt)).mDu)
+      if (((BallInfo)this.neE.get(paramInt)).nfB)
       {
         AppMethodBeat.o(106023);
         return 2;
@@ -183,38 +200,44 @@ public final class a
   }
   
   public final class a
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    public CircleImageView mCY;
-    public CircleAnimateView mCZ;
-    public ImageView mDa;
-    public FrameLayout mDc;
-    public TextView mDd;
-    public TextView mDe;
-    public LinearLayout mDf;
-    public ImageView mDg;
-    public int mDh;
+    public BallInfo nfc;
+    public CircleImageView nfd;
+    public CircleAnimateView nfe;
+    public ImageView nff;
+    public FrameLayout nfg;
+    public TextView nfh;
+    public TextView nfi;
+    public LinearLayout nfj;
+    public ImageView nfk;
+    public LinearLayout nfl;
+    public LinearLayout nfm;
+    public int nfn;
+    public int position;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(106021);
-      this.mDh = -1;
-      this.mCY = ((CircleImageView)paramView.findViewById(2131300881));
-      this.mCZ = ((CircleAnimateView)paramView.findViewById(2131300879));
-      this.mDa = ((ImageView)paramView.findViewById(2131304078));
-      this.mDc = ((FrameLayout)paramView.findViewById(2131304077));
-      this.mDd = ((TextView)paramView.findViewById(2131302658));
-      this.mDe = ((TextView)paramView.findViewById(2131302657));
-      this.mDf = ((LinearLayout)paramView.findViewById(2131302655));
-      this.mDg = ((ImageView)paramView.findViewById(2131296938));
+      this.nfn = -1;
+      this.nfd = ((CircleImageView)paramView.findViewById(2131300881));
+      this.nfe = ((CircleAnimateView)paramView.findViewById(2131300879));
+      this.nff = ((ImageView)paramView.findViewById(2131304078));
+      this.nfg = ((FrameLayout)paramView.findViewById(2131304077));
+      this.nfh = ((TextView)paramView.findViewById(2131302658));
+      this.nfi = ((TextView)paramView.findViewById(2131302657));
+      this.nfj = ((LinearLayout)paramView.findViewById(2131302655));
+      this.nfk = ((ImageView)paramView.findViewById(2131296938));
+      this.nfl = ((LinearLayout)paramView.findViewById(2131307865));
+      this.nfm = ((LinearLayout)paramView.findViewById(2131307866));
       AppMethodBeat.o(106021);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.a
  * JD-Core Version:    0.7.0.1
  */

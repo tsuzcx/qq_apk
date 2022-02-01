@@ -3,41 +3,41 @@ package com.tencent.mm.plugin.soter;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.b.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.soter.a.b.c;
 import com.tencent.soter.a.f.e;
 import com.tencent.soter.a.g.b.a;
 
 public final class a
 {
-  private com.tencent.soter.a.a.a xZP;
-  private d xZQ;
-  private b xZR;
+  private com.tencent.soter.a.a.a zmP;
+  private d zmQ;
+  private b zmR;
   
   public final void a(a parama, Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(130802);
-    ad.i("MicroMsg.SoterManager", "request authorize and sign: %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.xZP == null) {
-      this.xZP = new com.tencent.soter.a.a.a();
+    ac.i("MicroMsg.SoterManager", "request authorize and sign: %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.zmP == null) {
+      this.zmP = new com.tencent.soter.a.a.a();
     }
-    this.xZP.fnn();
+    this.zmP.fDD();
     b.a locala = new b.a();
-    locala.abX(paramInt2);
-    locala.abW(paramInt1);
-    locala.kH(paramContext);
-    locala.a(this.xZP);
-    locala.aNV(paramString);
-    if (this.xZR != null) {
-      this.xZR.xZX = null;
+    locala.aeq(paramInt2);
+    locala.aep(paramInt1);
+    locala.kT(paramContext);
+    locala.a(this.zmP);
+    locala.aTy(paramString);
+    if (this.zmR != null) {
+      this.zmR.zmX = null;
     }
-    this.xZR = new b(parama, paramInt2);
-    locala.a(this.xZR);
-    if (this.xZQ != null) {
-      this.xZQ.xZX = null;
+    this.zmR = new b(parama, paramInt2);
+    locala.a(this.zmR);
+    if (this.zmQ != null) {
+      this.zmQ.zmX = null;
     }
-    this.xZQ = new d(parama, paramInt1);
-    com.tencent.soter.a.a.a(this.xZQ, locala.IvW);
+    this.zmQ = new d(parama, paramInt1);
+    com.tencent.soter.a.a.a(this.zmQ, locala.JXF);
     AppMethodBeat.o(130802);
   }
   
@@ -51,7 +51,7 @@ public final class a
   final void a(final c paramc, final boolean paramBoolean, final int paramInt1, final e parame, final int paramInt2)
   {
     AppMethodBeat.i(130801);
-    ad.i("MicroMsg.SoterManager", "prepare auth key internal: %s, %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ac.i("MicroMsg.SoterManager", "prepare auth key internal: %s, %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     com.tencent.soter.a.a.a(new com.tencent.soter.a.b.b() {}, paramBoolean, paramInt1, parame, new f());
     AppMethodBeat.o(130801);
   }
@@ -59,15 +59,15 @@ public final class a
   public final void cancel()
   {
     AppMethodBeat.i(130803);
-    ad.i("MicroMsg.SoterManager", "cancel");
-    if (this.xZP != null) {
-      this.xZP.xu(true);
+    ac.i("MicroMsg.SoterManager", "cancel");
+    if (this.zmP != null) {
+      this.zmP.yE(true);
     }
-    if (this.xZQ != null) {
-      this.xZQ.xZX = null;
+    if (this.zmQ != null) {
+      this.zmQ.zmX = null;
     }
-    if (this.xZR != null) {
-      this.xZR.xZX = null;
+    if (this.zmR != null) {
+      this.zmR.zmX = null;
     }
     AppMethodBeat.o(130803);
   }
@@ -82,18 +82,18 @@ public final class a
   static final class b
     implements com.tencent.soter.a.a.b
   {
-    private int deh;
-    a.a xZX;
+    private int dbD;
+    a.a zmX;
     
     public b(a.a parama, int paramInt)
     {
-      this.xZX = parama;
-      this.deh = paramInt;
+      this.zmX = parama;
+      this.dbD = paramInt;
     }
     
-    public final void dED() {}
+    public final void dTc() {}
     
-    public final void dEE() {}
+    public final void dTd() {}
     
     public final void onAuthenticationCancelled() {}
     
@@ -102,9 +102,9 @@ public final class a
     public final void onAuthenticationFailed()
     {
       AppMethodBeat.i(130798);
-      ad.i("MicroMsg.SoterManager", "request authorize failed");
-      if ((this.deh == 1) && (this.xZX != null)) {
-        this.xZX.a(1, new com.tencent.soter.a.b.a());
+      ac.i("MicroMsg.SoterManager", "request authorize failed");
+      if ((this.dbD == 1) && (this.zmX != null)) {
+        this.zmX.a(1, new com.tencent.soter.a.b.a());
       }
       AppMethodBeat.o(130798);
     }
@@ -123,11 +123,11 @@ public final class a
     implements com.tencent.soter.a.b.b<com.tencent.soter.a.b.a>
   {
     private int scene;
-    a.a xZX;
+    a.a zmX;
     
     public d(a.a parama, int paramInt)
     {
-      this.xZX = parama;
+      this.zmX = parama;
       this.scene = paramInt;
     }
   }

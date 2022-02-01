@@ -13,8 +13,8 @@ final class bc
   {
     AppMethodBeat.i(128924);
     boolean bool = paramJSONObject.optBoolean("recursive", false);
-    paramc = paramc.Ee().ag(paramString, bool);
-    switch (1.jQL[paramc.ordinal()])
+    paramc = paramc.DH().ah(paramString, bool);
+    switch (1.krw[paramc.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -41,7 +41,7 @@ final class bc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bc
  * JD-Core Version:    0.7.0.1
  */

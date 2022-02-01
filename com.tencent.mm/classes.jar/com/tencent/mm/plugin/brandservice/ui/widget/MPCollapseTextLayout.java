@@ -13,42 +13,42 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isSpecialText", "", "mCollapseButton", "Landroid/widget/TextView;", "mCollapseButtonHideWhenExpanded", "mCollapseButtonPaddingBottom", "mCollapseButtonWidth", "mCollapseText", "", "mCollaspeCallback", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout$CollapseTextCallback;", "mContent", "mContentTextView", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "mContext", "mDefaultCollapseWidth", "mEnableExpand", "mExpandText", "mExpanded", "mExtraEllipsizeWidth", "mMaxLines", "mProcessContentRunnable", "Ljava/lang/Runnable;", "mSpecialTextView", "mViewWidth", "needProcessContent", "changeMaxLines", "", "maxLines", "collapseSpecialText", "collapseText", "textWidth", "enoughSpace", "right", "", "expandText", "textLayout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "realLines", "getCollapseButton", "getContextTextView", "init", "onCollapse", "collapseTextCallback", "onExpand", "line", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "processContent", "content", "", "expand", "enableExpand", "setCollapseButtonHideWhenExpanded", "hide", "setCollapseText", "setContent", "setEnableExpand", "setExpandText", "setMaxLines", "switchProperTextView", "CollapseTextCallback", "Companion", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isSpecialText", "", "mCollapseButton", "Landroid/widget/TextView;", "mCollapseButtonHideWhenExpanded", "mCollapseButtonPaddingBottom", "mCollapseButtonWidth", "mCollapseText", "", "mCollaspeCallback", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPCollapseTextLayout$CollapseTextCallback;", "mContent", "mContentTextView", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "mContext", "mDefaultCollapseWidth", "mEnableExpand", "mExpandText", "mExpanded", "mExtraEllipsizeWidth", "mMaxLines", "mProcessContentRunnable", "Ljava/lang/Runnable;", "mSpecialTextView", "mViewWidth", "needProcessContent", "changeMaxLines", "", "maxLines", "collapseSpecialText", "collapseText", "textWidth", "enoughSpace", "right", "", "expandText", "textLayout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "realLines", "getCollapseButton", "getContextTextView", "init", "onCollapse", "collapseTextCallback", "onExpand", "line", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "processContent", "content", "", "expand", "enableExpand", "setCollapseButtonHideWhenExpanded", "hide", "setCollapseText", "setContent", "setEnableExpand", "setExpandText", "setMaxLines", "switchProperTextView", "CollapseTextCallback", "Companion", "plugin-brandservice_release"})
 public final class MPCollapseTextLayout
   extends RelativeLayout
 {
-  public static final MPCollapseTextLayout.b nnb;
-  private int aNI;
+  public static final MPCollapseTextLayout.b nQb;
+  private int aOy;
   private String mContent;
   private Context mContext;
-  private TextView naO;
-  private boolean nmL;
-  private boolean nmM;
-  private int nmN;
-  private MPCollapseTextLayout.a nmO;
-  private MMNeat7extView nmP;
-  private TextView nmQ;
-  private int nmR;
-  private int nmS;
-  private int nmT;
-  private boolean nmU;
-  private boolean nmV;
-  private int nmW;
-  private String nmX;
-  private String nmY;
-  private boolean nmZ;
-  private Runnable nna;
+  private TextView nDm;
+  private boolean nPL;
+  private boolean nPM;
+  private int nPN;
+  private MPCollapseTextLayout.a nPO;
+  private MMNeat7extView nPP;
+  private TextView nPQ;
+  private int nPR;
+  private int nPS;
+  private int nPT;
+  private boolean nPU;
+  private boolean nPV;
+  private int nPW;
+  private String nPX;
+  private String nPY;
+  private boolean nPZ;
+  private Runnable nQa;
   
   static
   {
     AppMethodBeat.i(7382);
-    nnb = new MPCollapseTextLayout.b((byte)0);
+    nQb = new MPCollapseTextLayout.b((byte)0);
     AppMethodBeat.o(7382);
   }
   
@@ -57,11 +57,11 @@ public final class MPCollapseTextLayout
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(7380);
     this.mContent = "";
-    this.nmN = 5;
-    this.nmX = "";
-    this.nmY = "";
+    this.nPN = 5;
+    this.nPX = "";
+    this.nPY = "";
     this.mContext = paramContext;
-    bGy();
+    bNL();
     AppMethodBeat.o(7380);
   }
   
@@ -70,20 +70,20 @@ public final class MPCollapseTextLayout
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(7381);
     this.mContent = "";
-    this.nmN = 5;
-    this.nmX = "";
-    this.nmY = "";
+    this.nPN = 5;
+    this.nPX = "";
+    this.nPY = "";
     this.mContext = paramContext;
-    bGy();
+    bNL();
     AppMethodBeat.o(7381);
   }
   
   private final void a(com.tencent.neattextview.textview.layout.a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(7376);
-    if (this.nmU)
+    if (this.nPU)
     {
-      parama = this.naO;
+      parama = this.nDm;
       if (parama != null)
       {
         parama.setVisibility(8);
@@ -98,29 +98,29 @@ public final class MPCollapseTextLayout
       AppMethodBeat.o(7376);
       return;
     }
-    this.nmL = true;
-    TextView localTextView = this.naO;
+    this.nPL = true;
+    TextView localTextView = this.nDm;
     if (localTextView != null) {
-      localTextView.setText((CharSequence)this.nmX);
+      localTextView.setText((CharSequence)this.nPX);
     }
-    localTextView = this.naO;
+    localTextView = this.nDm;
     if (localTextView != null) {
       localTextView.setVisibility(0);
     }
     float f = parama.getLineRight(paramInt2 - 1);
-    ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo expandText textWidth: %d, realLines: %d, maxLines: %d, last line right: %f", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.nmN), Float.valueOf(f) });
-    parama = this.naO;
+    ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo expandText textWidth: %d, realLines: %d, maxLines: %d, last line right: %f", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.nPN), Float.valueOf(f) });
+    parama = this.nDm;
     if (parama != null)
     {
       parama = parama.getLayoutParams();
       if ((!(parama instanceof RelativeLayout.LayoutParams)) || (c(f, paramInt1))) {
         break label246;
       }
-      ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo expandText collapseButton show be at below");
+      ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo expandText collapseButton show be at below");
       ((RelativeLayout.LayoutParams)parama).removeRule(12);
       ((RelativeLayout.LayoutParams)parama).removeRule(3);
       parama = (RelativeLayout.LayoutParams)parama;
-      if (!this.nmV) {
+      if (!this.nPV) {
         break label240;
       }
     }
@@ -145,39 +145,39 @@ public final class MPCollapseTextLayout
   private final void a(boolean paramBoolean1, boolean paramBoolean2, final MPCollapseTextLayout.a parama)
   {
     AppMethodBeat.i(7374);
-    Object localObject = this.nmP;
+    Object localObject = this.nPP;
     final int i;
     if (localObject != null)
     {
-      localObject = ((MMNeat7extView)localObject).ki(this.aNI, 2147483647);
+      localObject = ((MMNeat7extView)localObject).kv(this.aOy, 2147483647);
       if (localObject == null) {
         break label213;
       }
-      i = ((com.tencent.neattextview.textview.layout.a)localObject).fkV();
+      i = ((com.tencent.neattextview.textview.layout.a)localObject).fBm();
       label44:
-      ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo processContent width: %d, line: %d, specialText: %b, expand: %b, enableExpand: %b, hashCode: %d", new Object[] { Integer.valueOf(this.aNI), Integer.valueOf(i), Boolean.valueOf(this.nmV), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(hashCode()) });
-      bGz();
-      if (i <= this.nmN) {
+      ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo processContent width: %d, line: %d, specialText: %b, expand: %b, enableExpand: %b, hashCode: %d", new Object[] { Integer.valueOf(this.aOy), Integer.valueOf(i), Boolean.valueOf(this.nPV), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(hashCode()) });
+      bNM();
+      if (i <= this.nPN) {
         break label237;
       }
       if (!paramBoolean1) {
-        yI(this.nmN);
+        zy(this.nPN);
       }
-      TextView localTextView = this.naO;
+      TextView localTextView = this.nDm;
       if (localTextView != null) {
         localTextView.setVisibility(0);
       }
       if (!paramBoolean1) {
         break label219;
       }
-      a((com.tencent.neattextview.textview.layout.a)localObject, this.aNI, i);
+      a((com.tencent.neattextview.textview.layout.a)localObject, this.aOy, i);
     }
     for (;;)
     {
       if (!paramBoolean2) {
         break label265;
       }
-      localObject = this.naO;
+      localObject = this.nDm;
       if (localObject == null) {
         break label230;
       }
@@ -190,14 +190,14 @@ public final class MPCollapseTextLayout
       i = 0;
       break label44;
       label219:
-      yH(this.aNI);
+      zx(this.aOy);
     }
     label230:
     AppMethodBeat.o(7374);
     return;
     label237:
-    yI(2147483647);
-    parama = this.naO;
+    zy(2147483647);
+    parama = this.nDm;
     if (parama != null)
     {
       parama.setVisibility(8);
@@ -208,70 +208,70 @@ public final class MPCollapseTextLayout
     AppMethodBeat.o(7374);
   }
   
-  private final void bGy()
+  private final void bNL()
   {
     AppMethodBeat.i(7369);
     setClipChildren(false);
     setClipToPadding(false);
-    Object localObject = y.js(this.mContext).inflate(2131494562, (ViewGroup)this);
-    this.nmP = ((MMNeat7extView)((View)localObject).findViewById(2131298778));
-    this.naO = ((TextView)((View)localObject).findViewById(2131298417));
-    this.nmQ = ((TextView)((View)localObject).findViewById(2131298779));
-    localObject = this.naO;
+    Object localObject = z.jD(this.mContext).inflate(2131494562, (ViewGroup)this);
+    this.nPP = ((MMNeat7extView)((View)localObject).findViewById(2131298778));
+    this.nDm = ((TextView)((View)localObject).findViewById(2131298417));
+    this.nPQ = ((TextView)((View)localObject).findViewById(2131298779));
+    localObject = this.nDm;
     if (localObject != null) {
       ((TextView)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
-    this.nmS = com.tencent.mm.cd.a.fromDPToPix(this.mContext, 30);
-    localObject = this.naO;
+    this.nPS = com.tencent.mm.cc.a.fromDPToPix(this.mContext, 30);
+    localObject = this.nDm;
     if (localObject != null) {}
-    for (int i = ((TextView)localObject).getMeasuredWidth();; i = this.nmS)
+    for (int i = ((TextView)localObject).getMeasuredWidth();; i = this.nPS)
     {
-      this.nmR = i;
-      this.nmW = ((int)(com.tencent.mm.cd.a.getDensity(this.mContext) * 2.5F));
-      this.nmT = getResources().getDimensionPixelSize(2131165575);
+      this.nPR = i;
+      this.nPW = ((int)(com.tencent.mm.cc.a.getDensity(this.mContext) * 2.5F));
+      this.nPT = getResources().getDimensionPixelSize(2131165575);
       localObject = this.mContext.getResources().getString(2131756619);
       k.g(localObject, "mContext.resources.getSt…_line_item_text_collapse)");
-      this.nmX = ((String)localObject);
+      this.nPX = ((String)localObject);
       localObject = this.mContext.getResources().getString(2131756621);
       k.g(localObject, "mContext.resources.getSt…time_line_item_text_more)");
-      this.nmY = ((String)localObject);
+      this.nPY = ((String)localObject);
       AppMethodBeat.o(7369);
       return;
     }
   }
   
-  private final void bGz()
+  private final void bNM()
   {
     AppMethodBeat.i(7378);
-    if (!this.nmV)
+    if (!this.nPV)
     {
-      localObject = this.nmP;
+      localObject = this.nPP;
       if (localObject != null) {
         ((MMNeat7extView)localObject).setVisibility(0);
       }
-      localObject = this.nmQ;
+      localObject = this.nPQ;
       if (localObject != null) {
         ((TextView)localObject).setVisibility(8);
       }
-      localObject = this.naO;
+      localObject = this.nDm;
       if (localObject != null)
       {
-        ((TextView)localObject).setPadding(0, 0, 0, this.nmW);
+        ((TextView)localObject).setPadding(0, 0, 0, this.nPW);
         AppMethodBeat.o(7378);
         return;
       }
       AppMethodBeat.o(7378);
       return;
     }
-    Object localObject = this.nmP;
+    Object localObject = this.nPP;
     if (localObject != null) {
       ((MMNeat7extView)localObject).setVisibility(8);
     }
-    localObject = this.nmQ;
+    localObject = this.nPQ;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(0);
     }
-    localObject = this.naO;
+    localObject = this.nDm;
     if (localObject != null)
     {
       ((TextView)localObject).setPadding(0, 0, 0, 0);
@@ -284,13 +284,13 @@ public final class MPCollapseTextLayout
   private final boolean c(float paramFloat, int paramInt)
   {
     AppMethodBeat.i(7379);
-    TextView localTextView = this.naO;
+    TextView localTextView = this.nDm;
     if (localTextView != null) {}
-    for (int i = localTextView.getMeasuredWidth();; i = this.nmS)
+    for (int i = localTextView.getMeasuredWidth();; i = this.nPS)
     {
-      this.nmR = i;
-      float f = paramInt - this.nmR;
-      if (this.nmV) {
+      this.nPR = i;
+      float f = paramInt - this.nPR;
+      if (this.nPV) {
         f = paramInt * 3.0F / 4.0F;
       }
       if (paramFloat >= f) {
@@ -303,43 +303,43 @@ public final class MPCollapseTextLayout
     return false;
   }
   
-  private final void yH(int paramInt)
+  private final void zx(int paramInt)
   {
     AppMethodBeat.i(7375);
-    if (this.nmP == null)
+    if (this.nPP == null)
     {
       AppMethodBeat.o(7375);
       return;
     }
-    this.nmL = false;
-    Object localObject = this.naO;
+    this.nPL = false;
+    Object localObject = this.nDm;
     if (localObject != null) {
-      ((TextView)localObject).setText((CharSequence)this.nmY);
+      ((TextView)localObject).setText((CharSequence)this.nPY);
     }
-    boolean bool = this.nmV;
-    localObject = this.nmP;
+    boolean bool = this.nPV;
+    localObject = this.nPP;
     float f;
     if (localObject != null)
     {
-      localObject = ((MMNeat7extView)localObject).ki(paramInt, 2147483647);
+      localObject = ((MMNeat7extView)localObject).kv(paramInt, 2147483647);
       if (localObject == null) {
         break label227;
       }
-      f = ((com.tencent.neattextview.textview.layout.a)localObject).getLineRight(this.nmN - 1);
+      f = ((com.tencent.neattextview.textview.layout.a)localObject).getLineRight(this.nPN - 1);
       label93:
-      ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo doCollapseText lastLineRight: %f, textWidth: %d, mCollapseButtonWidth: %d, content: %s", new Object[] { Float.valueOf(f), Integer.valueOf(paramInt), Integer.valueOf(this.nmR), this.mContent });
+      ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo doCollapseText lastLineRight: %f, textWidth: %d, mCollapseButtonWidth: %d, content: %s", new Object[] { Float.valueOf(f), Integer.valueOf(paramInt), Integer.valueOf(this.nPR), this.mContent });
       if (!c(f, paramInt)) {
         break label251;
       }
       if (bool) {
         break label232;
       }
-      localObject = this.nmP;
+      localObject = this.nPP;
       if (localObject != null) {
         ((MMNeat7extView)localObject).a(TextUtils.TruncateAt.END, 0.0F);
       }
       label169:
-      localObject = this.naO;
+      localObject = this.nDm;
       if (localObject == null) {
         break label357;
       }
@@ -365,12 +365,12 @@ public final class MPCollapseTextLayout
       label251:
       if (!bool)
       {
-        f = this.nmR + this.nmT - Math.max(paramInt - f, 0.0F);
-        localObject = this.nmP;
+        f = this.nPR + this.nPT - Math.max(paramInt - f, 0.0F);
+        localObject = this.nPP;
         if (localObject != null) {
           ((MMNeat7extView)localObject).a(TextUtils.TruncateAt.END, f);
         }
-        ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo doCollapseText ellipsize: %f", new Object[] { Float.valueOf(f) });
+        ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo doCollapseText ellipsize: %f", new Object[] { Float.valueOf(f) });
         post((Runnable)new d(this));
         break label169;
       }
@@ -380,12 +380,12 @@ public final class MPCollapseTextLayout
     }
   }
   
-  private final void yI(int paramInt)
+  private final void zy(int paramInt)
   {
     AppMethodBeat.i(7377);
-    if (!this.nmV)
+    if (!this.nPV)
     {
-      localObject = this.nmP;
+      localObject = this.nPP;
       if (localObject != null)
       {
         ((MMNeat7extView)localObject).setMaxLines(paramInt);
@@ -395,7 +395,7 @@ public final class MPCollapseTextLayout
       AppMethodBeat.o(7377);
       return;
     }
-    Object localObject = this.nmQ;
+    Object localObject = this.nPQ;
     if (localObject != null)
     {
       ((TextView)localObject).setMaxLines(paramInt);
@@ -407,27 +407,27 @@ public final class MPCollapseTextLayout
   
   public final TextView getCollapseButton()
   {
-    return this.naO;
+    return this.nDm;
   }
   
   public final MMNeat7extView getContextTextView()
   {
-    return this.nmP;
+    return this.nPP;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(7370);
     super.onMeasure(paramInt1, paramInt2);
-    ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo onMeasure width: %d, viewWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()), Integer.valueOf(this.aNI) });
-    if (this.aNI != getMeasuredWidth())
+    ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo onMeasure width: %d, viewWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()), Integer.valueOf(this.aOy) });
+    if (this.aOy != getMeasuredWidth())
     {
-      this.aNI = getMeasuredWidth();
-      if (this.nmZ)
+      this.aOy = getMeasuredWidth();
+      if (this.nPZ)
       {
-        ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo onMeasure needProcessContent");
-        this.nmZ = false;
-        a(this.nmL, this.nmM, this.nmO);
+        ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo onMeasure needProcessContent");
+        this.nPZ = false;
+        a(this.nPL, this.nPM, this.nPO);
       }
     }
     AppMethodBeat.o(7370);
@@ -435,14 +435,14 @@ public final class MPCollapseTextLayout
   
   public final void setCollapseButtonHideWhenExpanded(boolean paramBoolean)
   {
-    this.nmU = paramBoolean;
+    this.nPU = paramBoolean;
   }
   
   public final void setCollapseText(String paramString)
   {
     AppMethodBeat.i(7371);
     k.h(paramString, "collapseText");
-    this.nmX = paramString;
+    this.nPX = paramString;
     AppMethodBeat.o(7371);
   }
   
@@ -452,75 +452,75 @@ public final class MPCollapseTextLayout
     k.h(paramCharSequence, "content");
     k.h(paramCharSequence, "content");
     k.h(paramCharSequence, "content");
-    if ((this.mContent.equals(paramCharSequence)) && (!this.nmL) && (!this.nmM))
+    if ((this.mContent.equals(paramCharSequence)) && (!this.nPL) && (!this.nPM))
     {
-      ad.v("MicroMsg.MPCollapseTextLayout", "alvinluo setContent ignore %s", new Object[] { this.mContent, paramCharSequence });
+      ac.v("MicroMsg.MPCollapseTextLayout", "alvinluo setContent ignore %s", new Object[] { this.mContent, paramCharSequence });
       AppMethodBeat.o(7373);
       return;
     }
     this.mContent = paramCharSequence.toString();
-    Object localObject = this.nmP;
+    Object localObject = this.nPP;
     if (localObject != null) {
-      ((MMNeat7extView)localObject).setMaxLines(this.nmN);
+      ((MMNeat7extView)localObject).setMaxLines(this.nPN);
     }
-    localObject = this.nmP;
+    localObject = this.nPP;
     if (localObject != null) {
-      ((MMNeat7extView)localObject).aq(paramCharSequence);
+      ((MMNeat7extView)localObject).ar(paramCharSequence);
     }
-    localObject = this.nmQ;
+    localObject = this.nPQ;
     if (localObject != null) {
-      ((TextView)localObject).setMaxLines(this.nmN);
+      ((TextView)localObject).setMaxLines(this.nPN);
     }
-    localObject = this.nmQ;
+    localObject = this.nPQ;
     if (localObject != null) {
       ((TextView)localObject).setText(paramCharSequence);
     }
-    paramCharSequence = this.nmP;
+    paramCharSequence = this.nPP;
     if (paramCharSequence != null) {}
-    for (boolean bool = paramCharSequence.flh();; bool = false)
+    for (boolean bool = paramCharSequence.fBy();; bool = false)
     {
-      this.nmV = bool;
-      this.nmL = false;
-      this.nmM = false;
-      this.nmO = null;
-      if (this.nna != null)
+      this.nPV = bool;
+      this.nPL = false;
+      this.nPM = false;
+      this.nPO = null;
+      if (this.nQa != null)
       {
-        paramCharSequence = this.nmP;
+        paramCharSequence = this.nPP;
         if (paramCharSequence != null) {
-          paramCharSequence.removeCallbacks(this.nna);
+          paramCharSequence.removeCallbacks(this.nQa);
         }
       }
-      if (this.aNI == 0) {
+      if (this.aOy == 0) {
         break;
       }
-      this.nmZ = false;
+      this.nPZ = false;
       a(false, false, null);
       AppMethodBeat.o(7373);
       return;
     }
-    this.nmZ = true;
+    this.nPZ = true;
     AppMethodBeat.o(7373);
   }
   
   public final void setEnableExpand(boolean paramBoolean)
   {
-    this.nmM = paramBoolean;
+    this.nPM = paramBoolean;
   }
   
   public final void setExpandText(String paramString)
   {
     AppMethodBeat.i(7372);
     k.h(paramString, "expandText");
-    this.nmY = paramString;
+    this.nPY = paramString;
     AppMethodBeat.o(7372);
   }
   
   public final void setMaxLines(int paramInt)
   {
-    this.nmN = paramInt;
+    this.nPN = paramInt;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -529,14 +529,14 @@ public final class MPCollapseTextLayout
     public final void run()
     {
       AppMethodBeat.i(7365);
-      TextView localTextView = MPCollapseTextLayout.d(this.nnc);
+      TextView localTextView = MPCollapseTextLayout.d(this.nQc);
       if (localTextView != null) {
         localTextView.setVisibility(0);
       }
-      localTextView = MPCollapseTextLayout.d(this.nnc);
+      localTextView = MPCollapseTextLayout.d(this.nQc);
       if (localTextView != null)
       {
-        localTextView.setText((CharSequence)MPCollapseTextLayout.e(this.nnc));
+        localTextView.setText((CharSequence)MPCollapseTextLayout.e(this.nQc));
         AppMethodBeat.o(7365);
         return;
       }
@@ -544,7 +544,7 @@ public final class MPCollapseTextLayout
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -553,7 +553,7 @@ public final class MPCollapseTextLayout
     public final void run()
     {
       AppMethodBeat.i(7366);
-      MMNeat7extView localMMNeat7extView = MPCollapseTextLayout.f(this.nnc);
+      MMNeat7extView localMMNeat7extView = MPCollapseTextLayout.f(this.nQc);
       if (localMMNeat7extView != null)
       {
         localMMNeat7extView.requestLayout();
@@ -564,7 +564,7 @@ public final class MPCollapseTextLayout
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -573,12 +573,12 @@ public final class MPCollapseTextLayout
     public final void run()
     {
       AppMethodBeat.i(7367);
-      MPCollapseTextLayout.g(this.nnc);
+      MPCollapseTextLayout.g(this.nQc);
       AppMethodBeat.o(7367);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
@@ -587,13 +587,13 @@ public final class MPCollapseTextLayout
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(7368);
-      if (!MPCollapseTextLayout.a(this.nnc))
+      if (!MPCollapseTextLayout.a(this.nQc))
       {
-        MPCollapseTextLayout.b(this.nnc);
+        MPCollapseTextLayout.b(this.nQc);
         AppMethodBeat.o(7368);
         return;
       }
-      MPCollapseTextLayout.c(this.nnc);
+      MPCollapseTextLayout.c(this.nQc);
       AppMethodBeat.o(7368);
     }
   }

@@ -15,30 +15,30 @@ import android.view.SurfaceView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.IOException;
 
 public class VideoView
   extends SurfaceView
 {
-  SurfaceHolder.Callback CnK;
-  private MediaPlayer.OnPreparedListener HxP;
-  private int HxQ;
-  private int HxR;
-  private a HxS;
-  private int ark;
-  public boolean cnf;
-  private MediaPlayer.OnCompletionListener hCO;
-  private MediaPlayer.OnErrorListener hCP;
-  private SurfaceHolder jrQ;
-  public MediaPlayer ksn;
-  MediaPlayer.OnPreparedListener kso;
-  MediaPlayer.OnVideoSizeChangedListener ksp;
-  private MediaPlayer.OnCompletionListener ksq;
-  private MediaPlayer.OnErrorListener kst;
-  private MediaPlayer.OnBufferingUpdateListener ksu;
-  private String kul;
-  public boolean kum;
+  SurfaceHolder.Callback DGd;
+  private MediaPlayer.OnPreparedListener IYm;
+  private int IYn;
+  private int IYo;
+  private a IYp;
+  private int asf;
+  public boolean ckh;
+  private MediaPlayer.OnCompletionListener idp;
+  private MediaPlayer.OnErrorListener idq;
+  private SurfaceHolder jSi;
+  public MediaPlayer kTD;
+  MediaPlayer.OnPreparedListener kTE;
+  MediaPlayer.OnVideoSizeChangedListener kTF;
+  private MediaPlayer.OnCompletionListener kTG;
+  private MediaPlayer.OnErrorListener kTJ;
+  private MediaPlayer.OnBufferingUpdateListener kTK;
+  private String kVA;
+  public boolean kVB;
   private Context mContext;
   private int mSurfaceHeight;
   private int mSurfaceWidth;
@@ -50,7 +50,7 @@ public class VideoView
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(39499);
     this.mContext = paramContext;
-    feF();
+    fuA();
     AppMethodBeat.o(39499);
   }
   
@@ -58,24 +58,24 @@ public class VideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(39500);
-    this.jrQ = null;
-    this.ksn = null;
-    this.ksp = new MediaPlayer.OnVideoSizeChangedListener()
+    this.jSi = null;
+    this.kTD = null;
+    this.kTF = new MediaPlayer.OnVideoSizeChangedListener()
     {
       public final void onVideoSizeChanged(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(39490);
         VideoView.a(VideoView.this, paramAnonymousMediaPlayer.getVideoWidth());
         VideoView.b(VideoView.this, paramAnonymousMediaPlayer.getVideoHeight());
-        ad.v("MicroMsg.VideoView", "on size change size:( " + VideoView.a(VideoView.this) + " , " + VideoView.b(VideoView.this) + " )");
-        VideoView.this.feE();
+        ac.v("MicroMsg.VideoView", "on size change size:( " + VideoView.a(VideoView.this) + " , " + VideoView.b(VideoView.this) + " )");
+        VideoView.this.fuz();
         if (VideoView.a(VideoView.this) != 0) {
           VideoView.b(VideoView.this);
         }
         AppMethodBeat.o(39490);
       }
     };
-    this.kso = new MediaPlayer.OnPreparedListener()
+    this.kTE = new MediaPlayer.OnPreparedListener()
     {
       public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
@@ -86,7 +86,7 @@ public class VideoView
         }
         VideoView.a(VideoView.this, paramAnonymousMediaPlayer.getVideoWidth());
         VideoView.b(VideoView.this, paramAnonymousMediaPlayer.getVideoHeight());
-        VideoView.this.feE();
+        VideoView.this.fuz();
         if ((VideoView.a(VideoView.this) != 0) && (VideoView.b(VideoView.this) != 0))
         {
           if (VideoView.f(VideoView.this))
@@ -126,7 +126,7 @@ public class VideoView
         }
       }
     };
-    this.ksq = new MediaPlayer.OnCompletionListener()
+    this.kTG = new MediaPlayer.OnCompletionListener()
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
@@ -137,12 +137,12 @@ public class VideoView
         AppMethodBeat.o(39492);
       }
     };
-    this.kst = new MediaPlayer.OnErrorListener()
+    this.kTJ = new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(39493);
-        ad.d("MicroMsg.VideoView", "Error: " + paramAnonymousInt1 + "," + paramAnonymousInt2);
+        ac.d("MicroMsg.VideoView", "Error: " + paramAnonymousInt1 + "," + paramAnonymousInt2);
         if ((VideoView.o(VideoView.this) != null) && (VideoView.o(VideoView.this).onError(VideoView.e(VideoView.this), paramAnonymousInt1, paramAnonymousInt2)))
         {
           AppMethodBeat.o(39493);
@@ -153,7 +153,7 @@ public class VideoView
         return true;
       }
     };
-    this.ksu = new MediaPlayer.OnBufferingUpdateListener()
+    this.kTK = new MediaPlayer.OnBufferingUpdateListener()
     {
       public final void onBufferingUpdate(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt)
       {
@@ -162,7 +162,7 @@ public class VideoView
         AppMethodBeat.o(39494);
       }
     };
-    this.CnK = new SurfaceHolder.Callback()
+    this.DGd = new SurfaceHolder.Callback()
     {
       public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -203,14 +203,14 @@ public class VideoView
       }
     };
     this.mContext = paramContext;
-    feF();
+    fuA();
     AppMethodBeat.o(39500);
   }
   
-  private void bei()
+  private void blc()
   {
     AppMethodBeat.i(39506);
-    if ((this.kul == null) || (this.jrQ == null))
+    if ((this.kVA == null) || (this.jSi == null))
     {
       AppMethodBeat.o(39506);
       return;
@@ -218,31 +218,31 @@ public class VideoView
     Intent localIntent = new Intent("com.android.music.musicservicecommand");
     localIntent.putExtra("command", "pause");
     this.mContext.sendBroadcast(localIntent);
-    if (this.ksn != null)
+    if (this.kTD != null)
     {
-      this.ksn.reset();
-      this.ksn.release();
-      this.ksn = null;
+      this.kTD.reset();
+      this.kTD.release();
+      this.kTD = null;
     }
     try
     {
-      this.ksn = new k();
-      this.ksn.setOnPreparedListener(this.kso);
-      this.ksn.setOnVideoSizeChangedListener(this.ksp);
-      this.kum = false;
-      ad.v("MicroMsg.VideoView", "reset duration to -1 in openVideo");
-      this.ark = -1;
-      this.ksn.setOnCompletionListener(this.ksq);
-      this.ksn.setOnErrorListener(this.kst);
-      this.ksn.setOnBufferingUpdateListener(this.ksu);
-      this.HxQ = 0;
-      this.ksn.setDataSource(this.kul);
-      this.ksn.setDisplay(this.jrQ);
-      this.ksn.setAudioStreamType(3);
-      this.ksn.setScreenOnWhilePlaying(true);
-      this.ksn.prepareAsync();
-      this.mVideoHeight = this.ksn.getVideoHeight();
-      this.mVideoWidth = this.ksn.getVideoWidth();
+      this.kTD = new k();
+      this.kTD.setOnPreparedListener(this.kTE);
+      this.kTD.setOnVideoSizeChangedListener(this.kTF);
+      this.kVB = false;
+      ac.v("MicroMsg.VideoView", "reset duration to -1 in openVideo");
+      this.asf = -1;
+      this.kTD.setOnCompletionListener(this.kTG);
+      this.kTD.setOnErrorListener(this.kTJ);
+      this.kTD.setOnBufferingUpdateListener(this.kTK);
+      this.IYn = 0;
+      this.kTD.setDataSource(this.kVA);
+      this.kTD.setDisplay(this.jSi);
+      this.kTD.setAudioStreamType(3);
+      this.kTD.setScreenOnWhilePlaying(true);
+      this.kTD.prepareAsync();
+      this.mVideoHeight = this.kTD.getVideoHeight();
+      this.mVideoWidth = this.kTD.getVideoWidth();
       AppMethodBeat.o(39506);
       return;
     }
@@ -257,12 +257,12 @@ public class VideoView
     }
   }
   
-  private void feF()
+  private void fuA()
   {
     AppMethodBeat.i(39501);
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
-    getHolder().addCallback(this.CnK);
+    getHolder().addCallback(this.DGd);
     getHolder().setType(3);
     setFocusable(true);
     setFocusableInTouchMode(true);
@@ -270,7 +270,7 @@ public class VideoView
     AppMethodBeat.o(39501);
   }
   
-  public final void feE()
+  public final void fuz()
   {
     AppMethodBeat.i(39498);
     if ((this.mVideoHeight == 0) || (this.mVideoWidth == 0))
@@ -280,8 +280,8 @@ public class VideoView
     }
     int k = this.mVideoWidth;
     int m = this.mVideoHeight;
-    ad.v("MicroMsg.VideoView", "video size before:" + k + "   " + m);
-    ad.v("MicroMsg.VideoView", "layout size before:" + getWidth() + "   " + getHeight());
+    ac.v("MicroMsg.VideoView", "video size before:" + k + "   " + m);
+    ac.v("MicroMsg.VideoView", "layout size before:" + getWidth() + "   " + getHeight());
     int i = getWidth();
     int j = getHeight();
     if (i <= 0) {
@@ -305,8 +305,8 @@ public class VideoView
           localLayoutParams.addRule(13);
           setLayoutParams(localLayoutParams);
           invalidate();
-          ad.v("MicroMsg.VideoView", "video size after:" + this.ksn.getVideoWidth() + "   " + this.ksn.getVideoHeight());
-          ad.v("MicroMsg.VideoView", "layout size after:" + localLayoutParams.width + "   " + localLayoutParams.height);
+          ac.v("MicroMsg.VideoView", "video size after:" + this.kTD.getVideoWidth() + "   " + this.kTD.getVideoHeight());
+          ac.v("MicroMsg.VideoView", "layout size after:" + localLayoutParams.width + "   " + localLayoutParams.height);
           AppMethodBeat.o(39498);
           return;
           localLayoutParams.width = i;
@@ -322,8 +322,8 @@ public class VideoView
   
   public int getBufferPercentage()
   {
-    if (this.ksn != null) {
-      return this.HxQ;
+    if (this.kTD != null) {
+      return this.IYn;
     }
     return 0;
   }
@@ -331,9 +331,9 @@ public class VideoView
   public int getCurrentPosition()
   {
     AppMethodBeat.i(39508);
-    if ((this.ksn != null) && (this.kum))
+    if ((this.kTD != null) && (this.kVB))
     {
-      int i = this.ksn.getCurrentPosition();
+      int i = this.kTD.getCurrentPosition();
       AppMethodBeat.o(39508);
       return i;
     }
@@ -344,21 +344,21 @@ public class VideoView
   public int getDuration()
   {
     AppMethodBeat.i(39507);
-    if ((this.ksn != null) && (this.kum))
+    if ((this.kTD != null) && (this.kVB))
     {
-      if (this.ark > 0)
+      if (this.asf > 0)
       {
-        i = this.ark;
+        i = this.asf;
         AppMethodBeat.o(39507);
         return i;
       }
-      this.ark = this.ksn.getDuration();
-      i = this.ark;
+      this.asf = this.kTD.getDuration();
+      i = this.asf;
       AppMethodBeat.o(39507);
       return i;
     }
-    this.ark = -1;
-    int i = this.ark;
+    this.asf = -1;
+    int i = this.asf;
     AppMethodBeat.o(39507);
     return i;
   }
@@ -371,20 +371,20 @@ public class VideoView
   public int getVideoTimeLeft()
   {
     AppMethodBeat.i(39505);
-    if (this.ksn == null)
+    if (this.kTD == null)
     {
       AppMethodBeat.o(39505);
       return 0;
     }
-    int i = this.ksn.getDuration();
-    int j = this.ksn.getCurrentPosition();
+    int i = this.kTD.getDuration();
+    int j = this.kTD.getCurrentPosition();
     AppMethodBeat.o(39505);
     return i - j;
   }
   
   public String getVideoURI()
   {
-    return this.kul;
+    return this.kVA;
   }
   
   public int getVideoWidth()
@@ -395,9 +395,9 @@ public class VideoView
   public final boolean isPlaying()
   {
     AppMethodBeat.i(39509);
-    if ((this.ksn != null) && (this.kum))
+    if ((this.kTD != null) && (this.kVB))
     {
-      boolean bool = this.ksn.isPlaying();
+      boolean bool = this.kTD.isPlaying();
       AppMethodBeat.o(39509);
       return bool;
     }
@@ -408,34 +408,34 @@ public class VideoView
   public void setLooping(boolean paramBoolean)
   {
     AppMethodBeat.i(39503);
-    if (this.ksn != null) {
-      this.ksn.setLooping(paramBoolean);
+    if (this.kTD != null) {
+      this.kTD.setLooping(paramBoolean);
     }
     AppMethodBeat.o(39503);
   }
   
   public void setOnCompletionListener(MediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    this.hCO = paramOnCompletionListener;
+    this.idp = paramOnCompletionListener;
   }
   
   public void setOnErrorListener(MediaPlayer.OnErrorListener paramOnErrorListener)
   {
-    this.hCP = paramOnErrorListener;
+    this.idq = paramOnErrorListener;
   }
   
   public void setOnPreparedListener(MediaPlayer.OnPreparedListener paramOnPreparedListener)
   {
-    this.HxP = paramOnPreparedListener;
+    this.IYm = paramOnPreparedListener;
   }
   
   public void setVideoURI(String paramString)
   {
     AppMethodBeat.i(39502);
-    this.kul = paramString;
-    this.cnf = false;
-    this.HxR = 0;
-    bei();
+    this.kVA = paramString;
+    this.ckh = false;
+    this.IYo = 0;
+    blc();
     requestLayout();
     invalidate();
     AppMethodBeat.o(39502);
@@ -443,17 +443,17 @@ public class VideoView
   
   public void setVideoViewIm(a parama)
   {
-    this.HxS = parama;
+    this.IYp = parama;
   }
   
   public final void stopPlayback()
   {
     AppMethodBeat.i(39504);
-    if (this.ksn != null)
+    if (this.kTD != null)
     {
-      this.ksn.stop();
-      this.ksn.release();
-      this.ksn = null;
+      this.kTD.stop();
+      this.kTD.release();
+      this.kTD = null;
     }
     AppMethodBeat.o(39504);
   }

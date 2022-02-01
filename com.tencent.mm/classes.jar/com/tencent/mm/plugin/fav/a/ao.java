@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.bi;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bh;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.File;
 import java.util.Set;
 
 public final class ao
 {
-  private static String hdr = "";
-  public static Set<String> qbk;
-  public static int qbl = 1;
+  private static String hDU = "";
+  public static Set<String> qJQ;
+  public static int qJR = 1;
   
   /* Error */
-  public static int axp()
+  public static int aEh()
   {
     // Byte code:
     //   0: ldc 25
@@ -25,7 +25,7 @@ public final class ao
     //   8: dup
     //   9: new 35	java/io/File
     //   12: dup
-    //   13: invokestatic 39	com/tencent/mm/plugin/fav/a/ao:ciq	()Ljava/lang/String;
+    //   13: invokestatic 39	com/tencent/mm/plugin/fav/a/ao:cpX	()Ljava/lang/String;
     //   16: ldc 41
     //   18: invokespecial 45	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/io/File;)V
@@ -85,9 +85,9 @@ public final class ao
     //   118: iload_0
     //   119: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   122: aastore
-    //   123: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   123: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   126: aload_2
-    //   127: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   127: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   130: ldc 25
     //   132: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: iload_0
@@ -103,9 +103,9 @@ public final class ao
     //   146: invokevirtual 110	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   149: iconst_0
     //   150: anewarray 4	java/lang/Object
-    //   153: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   153: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   156: aload_2
-    //   157: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   157: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   160: ldc 25
     //   162: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: iconst_1
@@ -114,7 +114,7 @@ public final class ao
     //   168: aconst_null
     //   169: astore_1
     //   170: aload_1
-    //   171: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   171: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   174: ldc 25
     //   176: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload_2
@@ -153,12 +153,12 @@ public final class ao
   }
   
   /* Error */
-  public static int axq()
+  public static int aEi()
   {
     // Byte code:
     //   0: ldc 116
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 122	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   5: invokestatic 122	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
     //   8: invokevirtual 128	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   11: astore_1
     //   12: aload_1
@@ -236,13 +236,13 @@ public final class ao
     //   144: iload_0
     //   145: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   148: aastore
-    //   149: invokestatic 99	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: invokestatic 99	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   152: aload_2
-    //   153: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   153: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   156: aload 4
-    //   158: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   158: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   161: aload_1
-    //   162: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   162: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   165: ldc 116
     //   167: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: iload_0
@@ -266,13 +266,13 @@ public final class ao
     //   194: invokevirtual 110	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   197: iconst_0
     //   198: anewarray 4	java/lang/Object
-    //   201: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   204: aload_2
-    //   205: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   205: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   208: aload 4
-    //   210: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   210: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   213: aload_1
-    //   214: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   214: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   217: ldc 116
     //   219: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   222: iconst_1
@@ -285,11 +285,11 @@ public final class ao
     //   230: aconst_null
     //   231: astore_2
     //   232: aload_2
-    //   233: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   233: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   236: aload 4
-    //   238: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   238: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   241: aload_3
-    //   242: invokestatic 104	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   242: invokestatic 104	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
     //   245: ldc 116
     //   247: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   250: aload_1
@@ -364,11 +364,11 @@ public final class ao
     //   130	152	296	java/lang/Exception
   }
   
-  public static String cip()
+  public static String cpW()
   {
     AppMethodBeat.i(127421);
-    if (bi.eGu() > 1048576L) {}
-    for (Object localObject = new File(kz(false), "wenote/res");; localObject = new File(b.aih(), "wenote/res"))
+    if (bh.eVP() > 1048576L) {}
+    for (Object localObject = new File(ld(false), "wenote/res");; localObject = new File(b.aph(), "wenote/res"))
     {
       localObject = ((File)localObject).getAbsolutePath();
       AppMethodBeat.o(127421);
@@ -376,17 +376,17 @@ public final class ao
     }
   }
   
-  public static String ciq()
+  public static String cpX()
   {
     AppMethodBeat.i(127422);
-    Object localObject = new File(kz(false), "wenote/res");
+    Object localObject = new File(ld(false), "wenote/res");
     if (new File((File)localObject, "WNNote.zip").exists())
     {
       localObject = ((File)localObject).getAbsolutePath();
       AppMethodBeat.o(127422);
       return localObject;
     }
-    localObject = new File(b.aih(), "wenote/res");
+    localObject = new File(b.aph(), "wenote/res");
     if (new File((File)localObject, "WNNote.zip").exists())
     {
       localObject = ((File)localObject).getAbsolutePath();
@@ -397,10 +397,10 @@ public final class ao
     return "";
   }
   
-  public static String cir()
+  public static String cpY()
   {
     AppMethodBeat.i(127423);
-    Object localObject = new File(kz(true), "wenote/loc/data");
+    Object localObject = new File(ld(true), "wenote/loc/data");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -409,11 +409,11 @@ public final class ao
     return localObject;
   }
   
-  public static String cis()
+  public static String cpZ()
   {
     AppMethodBeat.i(127424);
     Object localObject = new StringBuilder();
-    File localFile = new File(kz(false), "wenote/html/upload");
+    File localFile = new File(ld(false), "wenote/html/upload");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -422,10 +422,10 @@ public final class ao
     return localObject;
   }
   
-  public static String cit()
+  public static String cqa()
   {
     AppMethodBeat.i(127425);
-    Object localObject = new File(kz(true), "wenote/image/localpath");
+    Object localObject = new File(ld(true), "wenote/image/localpath");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -434,10 +434,10 @@ public final class ao
     return localObject;
   }
   
-  public static String ciu()
+  public static String cqb()
   {
     AppMethodBeat.i(127426);
-    Object localObject = new File(kz(true), "wenote/voice/data");
+    Object localObject = new File(ld(true), "wenote/voice/data");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -446,26 +446,26 @@ public final class ao
     return localObject;
   }
   
-  private static String kz(boolean paramBoolean)
+  private static String ld(boolean paramBoolean)
   {
     AppMethodBeat.i(127420);
     if (paramBoolean)
     {
-      str = g.afB().gcW;
+      str = g.agR().ghC;
       AppMethodBeat.o(127420);
       return str;
     }
-    if (bt.isNullOrNil(hdr)) {
-      hdr = b.aia().replace("/data/user/0", "/data/data");
+    if (bs.isNullOrNil(hDU)) {
+      hDU = b.apa().replace("/data/user/0", "/data/data");
     }
-    String str = hdr;
+    String str = hDU;
     AppMethodBeat.o(127420);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.ao
  * JD-Core Version:    0.7.0.1
  */

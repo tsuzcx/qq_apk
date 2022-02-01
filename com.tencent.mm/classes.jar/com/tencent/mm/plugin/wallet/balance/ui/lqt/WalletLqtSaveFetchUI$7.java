@@ -1,30 +1,27 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.wallet_core.d.a;
 
 final class WalletLqtSaveFetchUI$7
-  implements View.OnClickListener
+  implements d.a
 {
   WalletLqtSaveFetchUI$7(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
   
-  public final void onClick(View paramView)
+  public final Intent r(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(68975);
-    if (!WalletLqtSaveFetchUI.q(this.zMe).isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      WalletLqtSaveFetchUI.q(this.zMe).setChecked(bool);
-      AppMethodBeat.o(68975);
-      return;
-    }
+    AppMethodBeat.i(207207);
+    ac.i("MicroMsg.WalletLqtSaveFetchUI", "feedbackData: %s", new Object[] { paramBundle });
+    AppMethodBeat.o(207207);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI.7
  * JD-Core Version:    0.7.0.1
  */

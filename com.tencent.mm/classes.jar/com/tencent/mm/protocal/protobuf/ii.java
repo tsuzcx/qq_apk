@@ -3,89 +3,84 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ii
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CDR;
-  public String CDS;
-  public String CDT;
-  public String CDU;
-  public String CDV;
-  public String ntj;
-  public String odo;
+  public String DVS;
+  public String DVU;
+  public boolean DWe;
+  public String DWf;
+  public String cZz;
+  public String tGS;
+  public String wEw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124392);
+    AppMethodBeat.i(19405);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CDR != null) {
-        paramVarArgs.d(1, this.CDR);
+      if (this.tGS != null) {
+        paramVarArgs.d(1, this.tGS);
       }
-      if (this.CDS != null) {
-        paramVarArgs.d(2, this.CDS);
+      if (this.wEw != null) {
+        paramVarArgs.d(2, this.wEw);
       }
-      if (this.CDT != null) {
-        paramVarArgs.d(3, this.CDT);
+      if (this.cZz != null) {
+        paramVarArgs.d(3, this.cZz);
       }
-      if (this.odo != null) {
-        paramVarArgs.d(4, this.odo);
+      paramVarArgs.bl(4, this.DWe);
+      if (this.DVU != null) {
+        paramVarArgs.d(5, this.DVU);
       }
-      if (this.ntj != null) {
-        paramVarArgs.d(5, this.ntj);
+      if (this.DVS != null) {
+        paramVarArgs.d(6, this.DVS);
       }
-      if (this.CDU != null) {
-        paramVarArgs.d(6, this.CDU);
+      if (this.DWf != null) {
+        paramVarArgs.d(7, this.DWf);
       }
-      if (this.CDV != null) {
-        paramVarArgs.d(7, this.CDV);
-      }
-      AppMethodBeat.o(124392);
+      AppMethodBeat.o(19405);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CDR == null) {
-        break label578;
+      if (this.tGS == null) {
+        break label575;
       }
     }
-    label578:
-    for (int i = f.a.a.b.b.a.e(1, this.CDR) + 0;; i = 0)
+    label575:
+    for (int i = f.a.a.b.b.a.e(1, this.tGS) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.CDS != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.CDS);
+      if (this.wEw != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.wEw);
       }
       i = paramInt;
-      if (this.CDT != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.CDT);
+      if (this.cZz != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.cZz);
+      }
+      i += f.a.a.b.b.a.fK(4) + 1;
+      paramInt = i;
+      if (this.DVU != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.DVU);
+      }
+      i = paramInt;
+      if (this.DVS != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.DVS);
       }
       paramInt = i;
-      if (this.odo != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.odo);
+      if (this.DWf != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.DWf);
       }
-      i = paramInt;
-      if (this.ntj != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.ntj);
-      }
-      paramInt = i;
-      if (this.CDU != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.CDU);
-      }
-      i = paramInt;
-      if (this.CDV != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.CDV);
-      }
-      AppMethodBeat.o(124392);
-      return i;
+      AppMethodBeat.o(19405);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(124392);
+        AppMethodBeat.o(19405);
         return 0;
       }
       if (paramInt == 3)
@@ -95,45 +90,45 @@ public final class ii
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(124392);
+          AppMethodBeat.o(19405);
           return -1;
         case 1: 
-          localii.CDR = locala.KhF.readString();
-          AppMethodBeat.o(124392);
+          localii.tGS = locala.LVo.readString();
+          AppMethodBeat.o(19405);
           return 0;
         case 2: 
-          localii.CDS = locala.KhF.readString();
-          AppMethodBeat.o(124392);
+          localii.wEw = locala.LVo.readString();
+          AppMethodBeat.o(19405);
           return 0;
         case 3: 
-          localii.CDT = locala.KhF.readString();
-          AppMethodBeat.o(124392);
+          localii.cZz = locala.LVo.readString();
+          AppMethodBeat.o(19405);
           return 0;
         case 4: 
-          localii.odo = locala.KhF.readString();
-          AppMethodBeat.o(124392);
+          localii.DWe = locala.LVo.fZX();
+          AppMethodBeat.o(19405);
           return 0;
         case 5: 
-          localii.ntj = locala.KhF.readString();
-          AppMethodBeat.o(124392);
+          localii.DVU = locala.LVo.readString();
+          AppMethodBeat.o(19405);
           return 0;
         case 6: 
-          localii.CDU = locala.KhF.readString();
-          AppMethodBeat.o(124392);
+          localii.DVS = locala.LVo.readString();
+          AppMethodBeat.o(19405);
           return 0;
         }
-        localii.CDV = locala.KhF.readString();
-        AppMethodBeat.o(124392);
+        localii.DWf = locala.LVo.readString();
+        AppMethodBeat.o(19405);
         return 0;
       }
-      AppMethodBeat.o(124392);
+      AppMethodBeat.o(19405);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ii
  * JD-Core Version:    0.7.0.1
  */

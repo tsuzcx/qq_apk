@@ -10,13 +10,13 @@ public final class AssetReader
   extends AbsReader
 {
   public static final Parcelable.Creator<AssetReader> CREATOR;
-  public static final AssetReader iLr;
-  private final WxaPkgWrappingInfo iLq;
+  public static final AssetReader jly;
+  private final WxaPkgWrappingInfo jlx;
   
   static
   {
     AppMethodBeat.i(139824);
-    iLr = new AssetReader();
+    jly = new AssetReader();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(139824);
   }
@@ -24,11 +24,11 @@ public final class AssetReader
   public AssetReader()
   {
     AppMethodBeat.i(139822);
-    this.iLq = new WxaPkgWrappingInfo();
-    this.iLq.iOS = true;
-    this.iLq.iOQ = 0;
-    this.iLq.pkgVersion = aw.VERSION;
-    this.iLq.md5 = "";
+    this.jlx = new WxaPkgWrappingInfo();
+    this.jlx.jpc = true;
+    this.jlx.jpa = 0;
+    this.jlx.pkgVersion = aw.VERSION;
+    this.jlx.md5 = "";
     AppMethodBeat.o(139822);
   }
   
@@ -53,7 +53,7 @@ public final class AssetReader
   public final String toString()
   {
     AppMethodBeat.i(139823);
-    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(aPc()), aPa() });
+    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(aVU()), aVS() });
     AppMethodBeat.o(139823);
     return str;
   }
@@ -62,7 +62,7 @@ public final class AssetReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.AssetReader
  * JD-Core Version:    0.7.0.1
  */

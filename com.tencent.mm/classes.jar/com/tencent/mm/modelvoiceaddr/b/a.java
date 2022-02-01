@@ -1,18 +1,18 @@
 package com.tencent.mm.modelvoiceaddr.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ckk;
-import com.tencent.mm.protocal.protobuf.ckl;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cpr;
+import com.tencent.mm.protocal.protobuf.cps;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class a
@@ -20,25 +20,25 @@ public final class a
   implements k
 {
   private g callback;
-  ckk hFI;
+  cpr igk;
   private b rr;
   
-  a(int paramInt, LinkedList<cmf> paramLinkedList, cmf paramcmf1, cmf paramcmf2)
+  a(int paramInt, LinkedList<crm> paramLinkedList, crm paramcrm1, crm paramcrm2)
   {
     AppMethodBeat.i(148644);
     b.a locala = new b.a();
-    locala.gUU = new ckk();
-    locala.gUV = new ckl();
+    locala.hvt = new cpr();
+    locala.hvu = new cps();
     locala.uri = "/cgi-bin/micromsg-bin/reportvoiceresult";
     locala.funcId = 228;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
-    this.hFI = ((ckk)this.rr.gUS.gUX);
-    this.hFI.EfM = paramInt;
-    this.hFI.EfN = paramLinkedList;
-    this.hFI.EfO = paramcmf1;
-    this.hFI.EfP = paramcmf2;
+    this.rr = locala.aAz();
+    this.igk = ((cpr)this.rr.hvr.hvw);
+    this.igk.FCM = paramInt;
+    this.igk.FCN = paramLinkedList;
+    this.igk.FCO = paramcrm1;
+    this.igk.FCP = paramcrm2;
     AppMethodBeat.o(148644);
   }
   
@@ -59,14 +59,14 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(148646);
-    ad.d("MicroMsg.NetSceneNewVoiceInputReport", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    ac.d("MicroMsg.NetSceneNewVoiceInputReport", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(148646);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class a
 {
-  public static void an(Bundle paramBundle)
+  public static void as(Bundle paramBundle)
   {
     AppMethodBeat.i(30050);
     Intent localIntent = new Intent();
-    localIntent.setPackage(aj.getContext().getPackageName());
+    localIntent.setPackage(ai.getContext().getPackageName());
     localIntent.setAction("com.tencent.mm.wear.message");
     localIntent.putExtras(paramBundle);
-    aj.getContext().sendBroadcast(localIntent);
+    ai.getContext().sendBroadcast(localIntent);
     AppMethodBeat.o(30050);
   }
 }

@@ -9,7 +9,7 @@ public class ParcelImpl
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelImpl> CREATOR;
-  private final c ayJ;
+  private final c azD;
   
   static
   {
@@ -21,7 +21,7 @@ public class ParcelImpl
   protected ParcelImpl(Parcel paramParcel)
   {
     AppMethodBeat.i(62407);
-    this.ayJ = new b(paramParcel).mW();
+    this.azD = new b(paramParcel).ng();
     AppMethodBeat.o(62407);
   }
   
@@ -33,13 +33,13 @@ public class ParcelImpl
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(62408);
-    new b(paramParcel).b(this.ayJ);
+    new b(paramParcel).b(this.azD);
     AppMethodBeat.o(62408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     androidx.versionedparcelable.ParcelImpl
  * JD-Core Version:    0.7.0.1
  */

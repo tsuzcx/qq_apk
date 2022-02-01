@@ -10,41 +10,41 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.bd;
-import com.tencent.mm.plugin.appbrand.s.a.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.r.a.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.sdk.platformtools.h;
 import d.g.b.k;
 import d.l;
 import io.flutter.embedding.android.FlutterView;
 import io.flutter.embedding.android.FlutterView.b;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/WxaFlutterRenderView;", "Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/IWxaRenderView;", "Landroid/widget/FrameLayout;", "Lio/flutter/embedding/engine/renderer/OnFirstFrameRenderedListener;", "context", "Landroid/content/Context;", "viewId", "", "engineProvider", "Lcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;", "(Landroid/content/Context;JLcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;)V", "appBrandWebView", "Lcom/tencent/mm/plugin/appbrand/page/IAppBrandWebView;", "background", "", "flutterEngine", "Lio/flutter/embedding/engine/FlutterEngine;", "flutterViewAttached", "flutterViewContainer", "flutterViewForeground", "Lio/flutter/embedding/android/FlutterView;", "flutterViewIdle", "inStack", "onForegroundTime", "pendingAttachFlutterView", "Ljava/lang/Runnable;", "getPendingAttachFlutterView", "()Ljava/lang/Runnable;", "setPendingAttachFlutterView", "(Ljava/lang/Runnable;)V", "addLabel", "", "addLayoutChangeListener", "listener", "Landroid/view/View$OnLayoutChangeListener;", "attachFlutterView", "lastForegroundView", "detachFlutterView", "enterFullScreen", "exitFullScreen", "getView", "Landroid/view/View;", "getViewId", "onBackground", "onDestroy", "onFirstFrameRendered", "onForeground", "onShow", "onStackPop", "onStackPush", "removeLayoutChangeListener", "setWxaWebView", "view", "Companion", "luggage-native-view_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/WxaFlutterRenderView;", "Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/IWxaRenderView;", "Landroid/widget/FrameLayout;", "Lio/flutter/embedding/engine/renderer/FlutterUiDisplayListener;", "context", "Landroid/content/Context;", "viewId", "", "engineProvider", "Lcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;", "(Landroid/content/Context;JLcom/tencent/mm/plugin/luggage/natives/flutter/IFlutterEngineProvider;)V", "appBrandWebView", "Lcom/tencent/mm/plugin/appbrand/page/IAppBrandWebView;", "background", "", "flutterEngine", "Lio/flutter/embedding/engine/FlutterEngine;", "flutterViewAttached", "flutterViewContainer", "flutterViewForeground", "Lio/flutter/embedding/android/FlutterView;", "flutterViewIdle", "inStack", "onForegroundTime", "pendingAttachFlutterView", "Ljava/lang/Runnable;", "getPendingAttachFlutterView", "()Ljava/lang/Runnable;", "setPendingAttachFlutterView", "(Ljava/lang/Runnable;)V", "addLabel", "", "addLayoutChangeListener", "listener", "Landroid/view/View$OnLayoutChangeListener;", "attachFlutterView", "lastForegroundView", "detachFlutterView", "enterFullScreen", "exitFullScreen", "getView", "Landroid/view/View;", "getViewId", "onBackground", "onDestroy", "onFlutterUiDisplayed", "onFlutterUiNoLongerDisplayed", "onForeground", "onShow", "onStackPop", "onStackPush", "removeLayoutChangeListener", "setWxaWebView", "view", "Companion", "luggage-native-view_release"})
 @SuppressLint({"ViewConstructor"})
 public final class c
   extends FrameLayout
   implements a, io.flutter.embedding.engine.b.b
 {
-  public static final c.a trP;
-  private io.flutter.embedding.engine.a rdu;
-  private final com.tencent.mm.plugin.m.a.a.b trD;
-  private boolean trF;
-  private bd trG;
-  private boolean trH;
-  private boolean trI;
-  private FlutterView trJ;
-  private FlutterView trK;
-  private FrameLayout trL;
-  private long trM;
-  private Runnable trN;
-  private final long trO;
+  public static final a uAi;
+  private final long rEi;
+  private io.flutter.embedding.engine.a slN;
+  private ay uAa;
+  private boolean uAb;
+  private boolean uAc;
+  private FlutterView uAd;
+  private FlutterView uAe;
+  private FrameLayout uAf;
+  private long uAg;
+  private Runnable uAh;
+  private final com.tencent.mm.plugin.m.a.a.b uzX;
+  private boolean uzZ;
   
   static
   {
     AppMethodBeat.i(123868);
-    trP = new c.a((byte)0);
+    uAi = new a((byte)0);
     AppMethodBeat.o(123868);
   }
   
@@ -52,20 +52,20 @@ public final class c
   {
     super(paramContext);
     AppMethodBeat.i(123867);
-    this.trO = paramLong;
-    this.trD = paramb;
-    this.trF = true;
-    this.trJ = new FlutterView(paramContext, FlutterView.b.IXY);
-    this.trK = new FlutterView(paramContext, FlutterView.b.IXY);
+    this.rEi = paramLong;
+    this.uzX = paramb;
+    this.uzZ = true;
+    this.uAd = new FlutterView(paramContext, FlutterView.b.KLe);
+    this.uAe = new FlutterView(paramContext, FlutterView.b.KLe);
     setBackgroundColor(-1);
-    this.trJ.setBackgroundColor(-1);
-    this.trK.setBackgroundColor(-1);
-    this.trK.addOnFirstFrameRenderedListener((io.flutter.embedding.engine.b.b)this);
-    this.trJ.addOnFirstFrameRenderedListener((io.flutter.embedding.engine.b.b)this);
-    if ((bu.eGR()) || (h.IS_FLAVOR_RED))
+    this.uAd.setBackgroundColor(-1);
+    this.uAe.setBackgroundColor(-1);
+    this.uAe.a((io.flutter.embedding.engine.b.b)this);
+    this.uAd.a((io.flutter.embedding.engine.b.b)this);
+    if ((bt.eWm()) || (h.IS_FLAVOR_RED))
     {
-      this.trL = new FrameLayout(getContext());
-      addView((View)this.trL, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
+      this.uAf = new FrameLayout(getContext());
+      addView((View)this.uAf, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
       paramContext = new TextView(getContext());
       paramContext.setText((CharSequence)"Flutter");
       paramContext.setTextSize(10.0F);
@@ -87,11 +87,11 @@ public final class c
     }
     for (;;)
     {
-      this.trL.addView((View)this.trJ, new ViewGroup.LayoutParams(-1, -1));
-      this.trL.addView((View)this.trK, new ViewGroup.LayoutParams(-1, -1));
+      this.uAf.addView((View)this.uAd, new ViewGroup.LayoutParams(-1, -1));
+      this.uAf.addView((View)this.uAe, new ViewGroup.LayoutParams(-1, -1));
       AppMethodBeat.o(123867);
       return;
-      this.trL = ((FrameLayout)this);
+      this.uAf = ((FrameLayout)this);
     }
   }
   
@@ -111,57 +111,71 @@ public final class c
     AppMethodBeat.o(123866);
   }
   
-  public final void bcC()
-  {
-    AppMethodBeat.i(123854);
-    aq.f((Runnable)new c(this));
-    AppMethodBeat.o(123854);
-  }
-  
-  public final void c(a parama)
+  public final void b(a parama)
   {
     AppMethodBeat.i(123860);
-    if (this.trH)
+    if (this.uAb)
     {
       AppMethodBeat.o(123860);
       return;
     }
-    io.flutter.embedding.engine.a locala = this.trD.fs(getContext());
-    ad.i("WxaFlutterRenderView", "attachFlutterView " + this.trO);
+    io.flutter.embedding.engine.a locala = this.uzX.fE(getContext());
+    ac.i("WxaFlutterRenderView", "attachFlutterView " + this.rEi);
     if (parama != null) {
-      parama.cMZ();
+      parama.daG();
     }
     if (parama != null)
     {
-      this.trJ.b(locala);
+      this.uAd.c(locala);
       k.g(locala, "flutterEngine");
-      locala.fuB().fuV();
-      this.rdu = locala;
-      this.trN = ((Runnable)new b(this));
+      locala.fNb().fNz();
+      this.slN = locala;
+      this.uAh = ((Runnable)new b(this));
     }
     for (;;)
     {
-      this.trK.requestFocus();
-      this.trH = true;
+      this.uAe.requestFocus();
+      this.uAb = true;
       AppMethodBeat.o(123860);
       return;
-      this.trK.b(locala);
+      this.uAe.c(locala);
       k.g(locala, "flutterEngine");
-      locala.fuB().fuV();
-      this.rdu = locala;
+      locala.fNb().fNz();
+      this.slN = locala;
     }
   }
   
-  public final void cMY()
+  public final void bjx()
+  {
+    AppMethodBeat.i(123854);
+    ap.f((Runnable)new c(this));
+    AppMethodBeat.o(123854);
+  }
+  
+  public final void cHX()
+  {
+    AppMethodBeat.i(205636);
+    ac.i("WxaFlutterRenderView", "onFirstFrameRendered " + this.rEi);
+    AppMethodBeat.o(205636);
+  }
+  
+  public final void cHY()
+  {
+    AppMethodBeat.i(205637);
+    ac.i("WxaFlutterRenderView", "onFlutterUiNoLongerDisplayed " + this.rEi);
+    AppMethodBeat.o(205637);
+  }
+  
+  public final void cWw()
   {
     AppMethodBeat.i(123855);
-    Object localObject = this.trG;
+    Object localObject = this.uAa;
     if (localObject != null)
     {
-      localObject = ((bd)localObject).getFullscreenImpl();
+      localObject = ((ay)localObject).getFullscreenImpl();
       if (localObject != null)
       {
-        ((d)localObject).aNT();
+        ((d)localObject).aUJ();
         AppMethodBeat.o(123855);
         return;
       }
@@ -169,49 +183,49 @@ public final class c
     AppMethodBeat.o(123855);
   }
   
-  public final void cMZ()
+  public final void daG()
   {
     AppMethodBeat.i(123857);
-    if (!this.trH)
+    if (!this.uAb)
     {
       AppMethodBeat.o(123857);
       return;
     }
-    ad.i("WxaFlutterRenderView", "detachFlutterView " + this.trO);
-    this.trF = true;
-    this.trK.fuw();
-    this.trH = false;
-    Object localObject = this.rdu;
+    ac.i("WxaFlutterRenderView", "detachFlutterView " + this.rEi);
+    this.uzZ = true;
+    this.uAe.fMX();
+    this.uAb = false;
+    Object localObject = this.slN;
     if (localObject != null)
     {
-      localObject = ((io.flutter.embedding.engine.a)localObject).fuB();
+      localObject = ((io.flutter.embedding.engine.a)localObject).fNb();
       if (localObject != null) {
-        ((io.flutter.embedding.engine.c.c)localObject).fuX();
+        ((io.flutter.embedding.engine.c.c)localObject).fNB();
       }
     }
-    this.rdu = null;
+    this.slN = null;
     AppMethodBeat.o(123857);
   }
   
-  public final void cNa()
+  public final void daH()
   {
     AppMethodBeat.i(123863);
-    this.trI = false;
-    ad.i("WxaFlutterRenderView", "onStackPop " + this.trO);
+    this.uAc = false;
+    ac.i("WxaFlutterRenderView", "onStackPop " + this.rEi);
     AppMethodBeat.o(123863);
   }
   
-  public final void cNb()
+  public final void daI()
   {
     AppMethodBeat.i(123862);
-    this.trI = true;
-    ad.i("WxaFlutterRenderView", "onStackPush " + this.trO);
+    this.uAc = true;
+    ac.i("WxaFlutterRenderView", "onStackPush " + this.rEi);
     AppMethodBeat.o(123862);
   }
   
   public final Runnable getPendingAttachFlutterView()
   {
-    return this.trN;
+    return this.uAh;
   }
   
   public final View getView()
@@ -221,28 +235,28 @@ public final class c
   
   public final long getViewId()
   {
-    return this.trO;
+    return this.rEi;
   }
   
   public final void onBackground()
   {
     AppMethodBeat.i(123856);
-    ad.i("WxaFlutterRenderView", "onBackground " + this.trO);
-    Object localObject = this.rdu;
+    ac.i("WxaFlutterRenderView", "onBackground " + this.rEi);
+    Object localObject = this.slN;
     if (localObject != null)
     {
-      localObject = ((io.flutter.embedding.engine.a)localObject).fuB();
+      localObject = ((io.flutter.embedding.engine.a)localObject).fNb();
       if (localObject != null) {
-        ((io.flutter.embedding.engine.c.c)localObject).fuX();
+        ((io.flutter.embedding.engine.c.c)localObject).fNB();
       }
     }
-    localObject = this.rdu;
+    localObject = this.slN;
     if (localObject != null)
     {
-      localObject = ((io.flutter.embedding.engine.a)localObject).fuB();
+      localObject = ((io.flutter.embedding.engine.a)localObject).fNb();
       if (localObject != null)
       {
-        ((io.flutter.embedding.engine.c.c)localObject).fuV();
+        ((io.flutter.embedding.engine.c.c)localObject).fNz();
         AppMethodBeat.o(123856);
         return;
       }
@@ -253,76 +267,72 @@ public final class c
   public final void onDestroy()
   {
     AppMethodBeat.i(123861);
-    ad.i("WxaFlutterRenderView", "onDestroy " + this.trO);
+    ac.i("WxaFlutterRenderView", "onDestroy " + this.rEi);
     removeAllViewsInLayout();
-    this.trK.removeAllViewsInLayout();
-    this.trJ.removeAllViewsInLayout();
-    this.trL.removeAllViewsInLayout();
-    this.trG = null;
+    this.uAe.removeAllViewsInLayout();
+    this.uAd.removeAllViewsInLayout();
+    this.uAf.removeAllViewsInLayout();
+    this.uAa = null;
     AppMethodBeat.o(123861);
-  }
-  
-  public final void onFirstFrameRendered()
-  {
-    AppMethodBeat.i(123864);
-    ad.i("WxaFlutterRenderView", "onFirstFrameRendered " + this.trO);
-    AppMethodBeat.o(123864);
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(123858);
-    com.tencent.mm.plugin.m.a.c.c localc = com.tencent.mm.plugin.m.a.c.c.tsc;
-    com.tencent.mm.plugin.m.a.c.c.afB("onForeground");
-    localc = com.tencent.mm.plugin.m.a.c.c.tsc;
-    com.tencent.mm.plugin.m.a.c.c.hi("inject_js_Start", "onForeground");
-    localc = com.tencent.mm.plugin.m.a.c.c.tsc;
-    com.tencent.mm.plugin.m.a.c.c.hi("ui_create", "onForeground");
-    this.trM = System.currentTimeMillis();
-    ad.i("WxaFlutterRenderView", "onForeground " + this.trO);
-    this.trF = false;
+    com.tencent.mm.plugin.m.a.c.c localc = com.tencent.mm.plugin.m.a.c.c.uAv;
+    com.tencent.mm.plugin.m.a.c.c.akv("onForeground");
+    localc = com.tencent.mm.plugin.m.a.c.c.uAv;
+    com.tencent.mm.plugin.m.a.c.c.hB("inject_js_Start", "onForeground");
+    localc = com.tencent.mm.plugin.m.a.c.c.uAv;
+    com.tencent.mm.plugin.m.a.c.c.hB("ui_create", "onForeground");
+    this.uAg = System.currentTimeMillis();
+    ac.i("WxaFlutterRenderView", "onForeground " + this.rEi);
+    this.uzZ = false;
     AppMethodBeat.o(123858);
   }
   
   public final void onShow()
   {
     AppMethodBeat.i(123859);
-    Object localObject = com.tencent.mm.plugin.m.a.c.c.tsc;
-    localObject = com.tencent.mm.plugin.m.a.c.c.tsc;
-    com.tencent.mm.plugin.m.a.c.c.afB(com.tencent.mm.plugin.m.a.c.c.cNc());
-    localObject = com.tencent.mm.plugin.m.a.c.c.tsc;
-    localObject = com.tencent.mm.plugin.m.a.c.c.tsc;
-    com.tencent.mm.plugin.m.a.c.c.hi("ui_create", com.tencent.mm.plugin.m.a.c.c.cNc());
-    localObject = com.tencent.mm.plugin.m.a.c.c.tsc;
+    Object localObject = com.tencent.mm.plugin.m.a.c.c.uAv;
+    localObject = com.tencent.mm.plugin.m.a.c.c.uAv;
+    com.tencent.mm.plugin.m.a.c.c.akv(com.tencent.mm.plugin.m.a.c.c.daJ());
+    localObject = com.tencent.mm.plugin.m.a.c.c.uAv;
+    localObject = com.tencent.mm.plugin.m.a.c.c.uAv;
+    com.tencent.mm.plugin.m.a.c.c.hB("ui_create", com.tencent.mm.plugin.m.a.c.c.daJ());
+    localObject = com.tencent.mm.plugin.m.a.c.c.uAv;
     com.tencent.mm.plugin.m.a.c.c.clear();
-    ad.i("WxaFlutterRenderView", "onShow " + this.trO);
-    localObject = this.rdu;
+    ac.i("WxaFlutterRenderView", "onShow " + this.rEi);
+    localObject = this.slN;
     if (localObject != null)
     {
-      localObject = ((io.flutter.embedding.engine.a)localObject).fuB();
+      localObject = ((io.flutter.embedding.engine.a)localObject).fNb();
       if (localObject != null) {
-        ((io.flutter.embedding.engine.c.c)localObject).fuW();
+        ((io.flutter.embedding.engine.c.c)localObject).fNA();
       }
     }
-    localObject = this.trN;
+    localObject = this.uAh;
     if (localObject != null) {
-      aq.n((Runnable)localObject, 30L);
+      ap.n((Runnable)localObject, 30L);
     }
-    this.trN = null;
+    this.uAh = null;
     AppMethodBeat.o(123859);
   }
   
   public final void setPendingAttachFlutterView(Runnable paramRunnable)
   {
-    this.trN = paramRunnable;
+    this.uAh = paramRunnable;
   }
   
-  public final void setWxaWebView(bd parambd)
+  public final void setWxaWebView(ay paramay)
   {
-    this.trG = parambd;
+    this.uAa = paramay;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/luggage/natives/flutter/renderview/WxaFlutterRenderView$Companion;", "", "()V", "TAG", "", "luggage-native-view_release"})
+  public static final class a {}
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -331,15 +341,15 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(123852);
-      c.b(this.trQ).bringChildToFront((View)c.c(this.trQ));
-      FlutterView localFlutterView = c.d(this.trQ);
-      c.b(this.trQ, c.c(this.trQ));
-      c.a(this.trQ, localFlutterView);
+      c.b(this.uAj).bringChildToFront((View)c.c(this.uAj));
+      FlutterView localFlutterView = c.d(this.uAj);
+      c.b(this.uAj, c.c(this.uAj));
+      c.a(this.uAj, localFlutterView);
       AppMethodBeat.o(123852);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -348,13 +358,13 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(123853);
-      Object localObject = c.a(this.trQ);
+      Object localObject = c.a(this.uAj);
       if (localObject != null)
       {
-        localObject = ((bd)localObject).getFullscreenImpl();
+        localObject = ((ay)localObject).getFullscreenImpl();
         if (localObject != null)
         {
-          ((d)localObject).O((View)this.trQ, 90);
+          ((d)localObject).O((View)this.uAj, 90);
           AppMethodBeat.o(123853);
           return;
         }
@@ -365,7 +375,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.m.a.a.b.c
  * JD-Core Version:    0.7.0.1
  */

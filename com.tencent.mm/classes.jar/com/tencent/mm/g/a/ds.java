@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ds
   extends b
 {
-  public a dfW;
-  public b dfX;
+  public a ddp;
   
   public ds()
   {
@@ -16,23 +15,16 @@ public final class ds
   
   private ds(byte paramByte)
   {
-    AppMethodBeat.i(115984);
-    this.dfW = new a();
-    this.dfX = new b();
-    this.ESR = false;
+    AppMethodBeat.i(115983);
+    this.ddp = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(115984);
+    AppMethodBeat.o(115983);
   }
   
   public static final class a
   {
-    public boolean dfN = false;
-  }
-  
-  public static final class b
-  {
-    public boolean dfO;
-    public String dfY;
+    public boolean ddq = false;
   }
 }
 

@@ -7,9 +7,9 @@ public enum v$b
   static
   {
     AppMethodBeat.i(140854);
-    lMJ = new b("OK", 0);
-    lMK = new b("FAIL_SIZE_EXCEED_LIMIT", 1);
-    lML = new b[] { lMJ, lMK };
+    moG = new b("OK", 0);
+    moH = new b("FAIL_SIZE_EXCEED_LIMIT", 1);
+    moI = new b[] { moG, moH };
     AppMethodBeat.o(140854);
   }
   

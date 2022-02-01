@@ -21,39 +21,39 @@ import java.util.List;
 public final class c
   extends d
 {
-  private final a[] bsA;
-  private a bsB;
-  private b bsC;
-  private int bsD;
-  private final m bse;
-  private List<com.google.android.exoplayer2.f.a> bsj;
-  private List<com.google.android.exoplayer2.f.a> bsk;
-  private final l bsy;
-  private final int bsz;
+  private a bqA;
+  private b bqB;
+  private int bqC;
+  private final m bqd;
+  private List<com.google.android.exoplayer2.f.a> bqi;
+  private List<com.google.android.exoplayer2.f.a> bqj;
+  private final l bqx;
+  private final int bqy;
+  private final a[] bqz;
   
   public c(int paramInt)
   {
     AppMethodBeat.i(92763);
-    this.bse = new m();
-    this.bsy = new l();
+    this.bqd = new m();
+    this.bqx = new l();
     int i = paramInt;
     if (paramInt == -1) {
       i = 1;
     }
-    this.bsz = i;
-    this.bsA = new a[8];
+    this.bqy = i;
+    this.bqz = new a[8];
     paramInt = 0;
     while (paramInt < 8)
     {
-      this.bsA[paramInt] = new a();
+      this.bqz[paramInt] = new a();
       paramInt += 1;
     }
-    this.bsB = this.bsA[0];
-    uJ();
+    this.bqA = this.bqz[0];
+    uD();
     AppMethodBeat.o(92763);
   }
   
-  private void eT(int paramInt)
+  private void eG(int paramInt)
   {
     AppMethodBeat.i(92769);
     switch (paramInt)
@@ -61,7 +61,7 @@ public final class c
     default: 
       if ((paramInt >= 17) && (paramInt <= 23))
       {
-        this.bsy.ep(8);
+        this.bqx.ep(8);
         AppMethodBeat.o(92769);
         return;
       }
@@ -70,19 +70,19 @@ public final class c
       AppMethodBeat.o(92769);
       return;
     case 3: 
-      this.bsj = uI();
+      this.bqi = uC();
       AppMethodBeat.o(92769);
       return;
     case 8: 
-      this.bsB.uM();
+      this.bqA.uG();
       AppMethodBeat.o(92769);
       return;
     case 12: 
-      uJ();
+      uD();
       AppMethodBeat.o(92769);
       return;
     case 13: 
-      this.bsB.append('\n');
+      this.bqA.append('\n');
       AppMethodBeat.o(92769);
       return;
     case 14: 
@@ -91,14 +91,14 @@ public final class c
     }
     if ((paramInt >= 24) && (paramInt <= 31))
     {
-      this.bsy.ep(16);
+      this.bqx.ep(16);
       AppMethodBeat.o(92769);
       return;
     }
     AppMethodBeat.o(92769);
   }
   
-  private void eU(int paramInt)
+  private void eH(int paramInt)
   {
     AppMethodBeat.i(92770);
     switch (paramInt)
@@ -112,16 +112,16 @@ public final class c
         AppMethodBeat.o(92770);
         return;
         paramInt -= 128;
-      } while (this.bsD == paramInt);
-      this.bsD = paramInt;
-      this.bsB = this.bsA[paramInt];
+      } while (this.bqC == paramInt);
+      this.bqC = paramInt;
+      this.bqA = this.bqz[paramInt];
       AppMethodBeat.o(92770);
       return;
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.bsy.sV()) {
-          this.bsA[(8 - paramInt)].clear();
+        if (this.bqx.te()) {
+          this.bqz[(8 - paramInt)].clear();
         }
         paramInt += 1;
       }
@@ -130,8 +130,8 @@ public final class c
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.bsy.sV()) {
-          this.bsA[(8 - paramInt)].visible = true;
+        if (this.bqx.te()) {
+          this.bqz[(8 - paramInt)].visible = true;
         }
         paramInt += 1;
       }
@@ -140,8 +140,8 @@ public final class c
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.bsy.sV()) {
-          this.bsA[(8 - paramInt)].visible = false;
+        if (this.bqx.te()) {
+          this.bqz[(8 - paramInt)].visible = false;
         }
         paramInt += 1;
       }
@@ -150,9 +150,9 @@ public final class c
       paramInt = 1;
       if (paramInt <= 8)
       {
-        if (this.bsy.sV())
+        if (this.bqx.te())
         {
-          locala = this.bsA[(8 - paramInt)];
+          locala = this.bqz[(8 - paramInt)];
           if (locala.visible) {
             break label374;
           }
@@ -169,207 +169,207 @@ public final class c
       paramInt = 1;
       while (paramInt <= 8)
       {
-        if (this.bsy.sV()) {
-          this.bsA[(8 - paramInt)].reset();
+        if (this.bqx.te()) {
+          this.bqz[(8 - paramInt)].reset();
         }
         paramInt += 1;
       }
       AppMethodBeat.o(92770);
       return;
-      this.bsy.ep(8);
+      this.bqx.ep(8);
       AppMethodBeat.o(92770);
       return;
       AppMethodBeat.o(92770);
       return;
-      uJ();
+      uD();
       AppMethodBeat.o(92770);
       return;
-      if (!this.bsB.bsP)
+      if (!this.bqA.bqO)
       {
-        this.bsy.ep(16);
+        this.bqx.ep(16);
         AppMethodBeat.o(92770);
         return;
       }
-      this.bsy.eo(4);
-      this.bsy.eo(2);
-      this.bsy.eo(2);
-      boolean bool1 = this.bsy.sV();
-      boolean bool2 = this.bsy.sV();
-      this.bsy.eo(3);
-      this.bsy.eo(3);
-      this.bsB.h(bool1, bool2);
+      this.bqx.eo(4);
+      this.bqx.eo(2);
+      this.bqx.eo(2);
+      boolean bool1 = this.bqx.te();
+      boolean bool2 = this.bqx.te();
+      this.bqx.eo(3);
+      this.bqx.eo(3);
+      this.bqA.h(bool1, bool2);
       AppMethodBeat.o(92770);
       return;
-      if (!this.bsB.bsP)
+      if (!this.bqA.bqO)
       {
-        this.bsy.ep(24);
+        this.bqx.ep(24);
         AppMethodBeat.o(92770);
         return;
       }
-      paramInt = this.bsy.eo(2);
-      paramInt = a.m(this.bsy.eo(2), this.bsy.eo(2), this.bsy.eo(2), paramInt);
-      int i = this.bsy.eo(2);
-      i = a.m(this.bsy.eo(2), this.bsy.eo(2), this.bsy.eo(2), i);
-      this.bsy.ep(2);
-      a.t(this.bsy.eo(2), this.bsy.eo(2), this.bsy.eo(2));
-      this.bsB.bl(paramInt, i);
+      paramInt = this.bqx.eo(2);
+      paramInt = a.m(this.bqx.eo(2), this.bqx.eo(2), this.bqx.eo(2), paramInt);
+      int i = this.bqx.eo(2);
+      i = a.m(this.bqx.eo(2), this.bqx.eo(2), this.bqx.eo(2), i);
+      this.bqx.ep(2);
+      a.t(this.bqx.eo(2), this.bqx.eo(2), this.bqx.eo(2));
+      this.bqA.bj(paramInt, i);
       AppMethodBeat.o(92770);
       return;
-      if (!this.bsB.bsP)
+      if (!this.bqA.bqO)
       {
-        this.bsy.ep(16);
+        this.bqx.ep(16);
         AppMethodBeat.o(92770);
         return;
       }
-      this.bsy.ep(4);
-      paramInt = this.bsy.eo(4);
-      this.bsy.ep(2);
-      this.bsy.eo(6);
-      a locala = this.bsB;
+      this.bqx.ep(4);
+      paramInt = this.bqx.eo(4);
+      this.bqx.ep(2);
+      this.bqx.eo(6);
+      a locala = this.bqA;
       if (locala.row != paramInt) {
         locala.append('\n');
       }
       locala.row = paramInt;
       AppMethodBeat.o(92770);
       return;
-      if (!this.bsB.bsP)
+      if (!this.bqA.bqO)
       {
-        this.bsy.ep(32);
+        this.bqx.ep(32);
         AppMethodBeat.o(92770);
         return;
       }
-      paramInt = this.bsy.eo(2);
-      paramInt = a.m(this.bsy.eo(2), this.bsy.eo(2), this.bsy.eo(2), paramInt);
-      this.bsy.eo(2);
-      a.t(this.bsy.eo(2), this.bsy.eo(2), this.bsy.eo(2));
-      this.bsy.sV();
-      this.bsy.sV();
-      this.bsy.eo(2);
-      this.bsy.eo(2);
-      i = this.bsy.eo(2);
-      this.bsy.ep(8);
-      this.bsB.bk(paramInt, i);
+      paramInt = this.bqx.eo(2);
+      paramInt = a.m(this.bqx.eo(2), this.bqx.eo(2), this.bqx.eo(2), paramInt);
+      this.bqx.eo(2);
+      a.t(this.bqx.eo(2), this.bqx.eo(2), this.bqx.eo(2));
+      this.bqx.te();
+      this.bqx.te();
+      this.bqx.eo(2);
+      this.bqx.eo(2);
+      i = this.bqx.eo(2);
+      this.bqx.ep(8);
+      this.bqA.bi(paramInt, i);
       AppMethodBeat.o(92770);
       return;
       paramInt -= 152;
-      locala = this.bsA[paramInt];
-      this.bsy.ep(2);
-      bool1 = this.bsy.sV();
-      bool2 = this.bsy.sV();
-      this.bsy.sV();
-      int j = this.bsy.eo(3);
-      boolean bool3 = this.bsy.sV();
-      int k = this.bsy.eo(7);
-      int m = this.bsy.eo(8);
-      int n = this.bsy.eo(4);
-      int i1 = this.bsy.eo(4);
-      this.bsy.ep(2);
-      this.bsy.eo(6);
-      this.bsy.ep(2);
-      int i2 = this.bsy.eo(3);
-      i = this.bsy.eo(3);
-      locala.bsP = true;
+      locala = this.bqz[paramInt];
+      this.bqx.ep(2);
+      bool1 = this.bqx.te();
+      bool2 = this.bqx.te();
+      this.bqx.te();
+      int j = this.bqx.eo(3);
+      boolean bool3 = this.bqx.te();
+      int k = this.bqx.eo(7);
+      int m = this.bqx.eo(8);
+      int n = this.bqx.eo(4);
+      int i1 = this.bqx.eo(4);
+      this.bqx.ep(2);
+      this.bqx.eo(6);
+      this.bqx.ep(2);
+      int i2 = this.bqx.eo(3);
+      i = this.bqx.eo(3);
+      locala.bqO = true;
       locala.visible = bool1;
-      locala.bsU = bool2;
+      locala.bqT = bool2;
       locala.priority = j;
-      locala.bsQ = bool3;
-      locala.bsR = k;
-      locala.bsS = m;
-      locala.bsT = n;
+      locala.bqP = bool3;
+      locala.bqQ = k;
+      locala.bqR = m;
+      locala.bqS = n;
       if (locala.rowCount != i1 + 1)
       {
         locala.rowCount = (i1 + 1);
-        while (((bool2) && (locala.bss.size() >= locala.rowCount)) || (locala.bss.size() >= 15)) {
-          locala.bss.remove(0);
+        while (((bool2) && (locala.bqr.size() >= locala.rowCount)) || (locala.bqr.size() >= 15)) {
+          locala.bqr.remove(0);
         }
       }
-      if ((i2 != 0) && (locala.bsW != i2))
+      if ((i2 != 0) && (locala.bqV != i2))
       {
-        locala.bsW = i2;
+        locala.bqV = i2;
         j = i2 - 1;
-        locala.bk(a.bsL[j], a.bsH[j]);
+        locala.bi(a.bqK[j], a.bqG[j]);
       }
-      if ((i != 0) && (locala.bsX != i))
+      if ((i != 0) && (locala.bqW != i))
       {
-        locala.bsX = i;
+        locala.bqW = i;
         locala.h(false, false);
-        locala.bl(a.bsE, a.bsO[(i - 1)]);
+        locala.bj(a.bqD, a.bqN[(i - 1)]);
       }
-    } while (this.bsD == paramInt);
-    this.bsD = paramInt;
-    this.bsB = this.bsA[paramInt];
+    } while (this.bqC == paramInt);
+    this.bqC = paramInt;
+    this.bqA = this.bqz[paramInt];
     AppMethodBeat.o(92770);
   }
   
-  private void eV(int paramInt)
+  private void eI(int paramInt)
   {
     AppMethodBeat.i(92771);
     if (paramInt > 7)
     {
       if (paramInt <= 15)
       {
-        this.bsy.ep(8);
+        this.bqx.ep(8);
         AppMethodBeat.o(92771);
         return;
       }
       if (paramInt <= 23)
       {
-        this.bsy.ep(16);
+        this.bqx.ep(16);
         AppMethodBeat.o(92771);
         return;
       }
       if (paramInt <= 31) {
-        this.bsy.ep(24);
+        this.bqx.ep(24);
       }
     }
     AppMethodBeat.o(92771);
   }
   
-  private void eW(int paramInt)
+  private void eJ(int paramInt)
   {
     AppMethodBeat.i(92772);
     if (paramInt <= 135)
     {
-      this.bsy.ep(32);
+      this.bqx.ep(32);
       AppMethodBeat.o(92772);
       return;
     }
     if (paramInt <= 143)
     {
-      this.bsy.ep(40);
+      this.bqx.ep(40);
       AppMethodBeat.o(92772);
       return;
     }
     if (paramInt <= 159)
     {
-      this.bsy.ep(2);
-      paramInt = this.bsy.eo(6);
-      this.bsy.ep(paramInt * 8);
+      this.bqx.ep(2);
+      paramInt = this.bqx.eo(6);
+      this.bqx.ep(paramInt * 8);
     }
     AppMethodBeat.o(92772);
   }
   
-  private void eX(int paramInt)
+  private void eK(int paramInt)
   {
     AppMethodBeat.i(92773);
     if (paramInt == 127)
     {
-      this.bsB.append('♫');
+      this.bqA.append('♫');
       AppMethodBeat.o(92773);
       return;
     }
-    this.bsB.append((char)(paramInt & 0xFF));
+    this.bqA.append((char)(paramInt & 0xFF));
     AppMethodBeat.o(92773);
   }
   
-  private void eY(int paramInt)
+  private void eL(int paramInt)
   {
     AppMethodBeat.i(92774);
-    this.bsB.append((char)(paramInt & 0xFF));
+    this.bqA.append((char)(paramInt & 0xFF));
     AppMethodBeat.o(92774);
   }
   
-  private void eZ(int paramInt)
+  private void eM(int paramInt)
   {
     AppMethodBeat.i(92775);
     switch (paramInt)
@@ -378,132 +378,132 @@ public final class c
       AppMethodBeat.o(92775);
       return;
     case 32: 
-      this.bsB.append(' ');
+      this.bqA.append(' ');
       AppMethodBeat.o(92775);
       return;
     case 33: 
-      this.bsB.append(' ');
+      this.bqA.append(' ');
       AppMethodBeat.o(92775);
       return;
     case 37: 
-      this.bsB.append('…');
+      this.bqA.append('…');
       AppMethodBeat.o(92775);
       return;
     case 42: 
-      this.bsB.append('Š');
+      this.bqA.append('Š');
       AppMethodBeat.o(92775);
       return;
     case 44: 
-      this.bsB.append('Œ');
+      this.bqA.append('Œ');
       AppMethodBeat.o(92775);
       return;
     case 48: 
-      this.bsB.append('█');
+      this.bqA.append('█');
       AppMethodBeat.o(92775);
       return;
     case 49: 
-      this.bsB.append('‘');
+      this.bqA.append('‘');
       AppMethodBeat.o(92775);
       return;
     case 50: 
-      this.bsB.append('’');
+      this.bqA.append('’');
       AppMethodBeat.o(92775);
       return;
     case 51: 
-      this.bsB.append('“');
+      this.bqA.append('“');
       AppMethodBeat.o(92775);
       return;
     case 52: 
-      this.bsB.append('”');
+      this.bqA.append('”');
       AppMethodBeat.o(92775);
       return;
     case 53: 
-      this.bsB.append('•');
+      this.bqA.append('•');
       AppMethodBeat.o(92775);
       return;
     case 57: 
-      this.bsB.append('™');
+      this.bqA.append('™');
       AppMethodBeat.o(92775);
       return;
     case 58: 
-      this.bsB.append('š');
+      this.bqA.append('š');
       AppMethodBeat.o(92775);
       return;
     case 60: 
-      this.bsB.append('œ');
+      this.bqA.append('œ');
       AppMethodBeat.o(92775);
       return;
     case 61: 
-      this.bsB.append('℠');
+      this.bqA.append('℠');
       AppMethodBeat.o(92775);
       return;
     case 63: 
-      this.bsB.append('Ÿ');
+      this.bqA.append('Ÿ');
       AppMethodBeat.o(92775);
       return;
     case 118: 
-      this.bsB.append('⅛');
+      this.bqA.append('⅛');
       AppMethodBeat.o(92775);
       return;
     case 119: 
-      this.bsB.append('⅜');
+      this.bqA.append('⅜');
       AppMethodBeat.o(92775);
       return;
     case 120: 
-      this.bsB.append('⅝');
+      this.bqA.append('⅝');
       AppMethodBeat.o(92775);
       return;
     case 121: 
-      this.bsB.append('⅞');
+      this.bqA.append('⅞');
       AppMethodBeat.o(92775);
       return;
     case 122: 
-      this.bsB.append('│');
+      this.bqA.append('│');
       AppMethodBeat.o(92775);
       return;
     case 123: 
-      this.bsB.append('┐');
+      this.bqA.append('┐');
       AppMethodBeat.o(92775);
       return;
     case 124: 
-      this.bsB.append('└');
+      this.bqA.append('└');
       AppMethodBeat.o(92775);
       return;
     case 125: 
-      this.bsB.append('─');
+      this.bqA.append('─');
       AppMethodBeat.o(92775);
       return;
     case 126: 
-      this.bsB.append('┘');
+      this.bqA.append('┘');
       AppMethodBeat.o(92775);
       return;
     }
-    this.bsB.append('┌');
+    this.bqA.append('┌');
     AppMethodBeat.o(92775);
   }
   
-  private void fa(int paramInt)
+  private void eN(int paramInt)
   {
     AppMethodBeat.i(92776);
     if (paramInt == 160)
     {
-      this.bsB.append('㏄');
+      this.bqA.append('㏄');
       AppMethodBeat.o(92776);
       return;
     }
-    this.bsB.append('_');
+    this.bqA.append('_');
     AppMethodBeat.o(92776);
   }
   
-  private List<com.google.android.exoplayer2.f.a> uI()
+  private List<com.google.android.exoplayer2.f.a> uC()
   {
     AppMethodBeat.i(92777);
     Object localObject = new ArrayList();
     int i = 0;
     while (i < 8)
     {
-      if ((!this.bsA[i].isEmpty()) && (this.bsA[i].visible)) {
-        ((List)localObject).add(this.bsA[i].uS());
+      if ((!this.bqz[i].isEmpty()) && (this.bqz[i].visible)) {
+        ((List)localObject).add(this.bqz[i].uM());
       }
       i += 1;
     }
@@ -513,48 +513,48 @@ public final class c
     return localObject;
   }
   
-  private void uJ()
+  private void uD()
   {
     AppMethodBeat.i(92778);
     int i = 0;
     while (i < 8)
     {
-      this.bsA[i].reset();
+      this.bqz[i].reset();
       i += 1;
     }
     AppMethodBeat.o(92778);
   }
   
-  private void uQ()
+  private void uK()
   {
     AppMethodBeat.i(92767);
-    if (this.bsC == null)
+    if (this.bqB == null)
     {
       AppMethodBeat.o(92767);
       return;
     }
-    uR();
-    this.bsC = null;
+    uL();
+    this.bqB = null;
     AppMethodBeat.o(92767);
   }
   
-  private void uR()
+  private void uL()
   {
     AppMethodBeat.i(92768);
-    if (this.bsC.currentIndex != this.bsC.btd * 2 - 1)
+    if (this.bqB.currentIndex != this.bqB.brc * 2 - 1)
     {
-      new StringBuilder("DtvCcPacket ended prematurely; size is ").append(this.bsC.btd * 2 - 1).append(", but current index is ").append(this.bsC.currentIndex).append(" (sequence number ").append(this.bsC.btc).append("); ignoring packet");
+      new StringBuilder("DtvCcPacket ended prematurely; size is ").append(this.bqB.brc * 2 - 1).append(", but current index is ").append(this.bqB.currentIndex).append(" (sequence number ").append(this.bqB.brb).append("); ignoring packet");
       AppMethodBeat.o(92768);
       return;
     }
-    this.bsy.q(this.bsC.bte, this.bsC.currentIndex);
-    int j = this.bsy.eo(3);
-    int k = this.bsy.eo(5);
+    this.bqx.n(this.bqB.brd, this.bqB.currentIndex);
+    int j = this.bqx.eo(3);
+    int k = this.bqx.eo(5);
     int i = j;
     if (j == 7)
     {
-      this.bsy.ep(2);
-      i = j + this.bsy.eo(6);
+      this.bqx.ep(2);
+      i = j + this.bqx.eo(6);
     }
     if (k == 0)
     {
@@ -564,62 +564,62 @@ public final class c
       AppMethodBeat.o(92768);
       return;
     }
-    if (i != this.bsz)
+    if (i != this.bqy)
     {
       AppMethodBeat.o(92768);
       return;
     }
     i = 0;
-    while (this.bsy.vF() > 0)
+    while (this.bqx.vu() > 0)
     {
-      j = this.bsy.eo(8);
+      j = this.bqx.eo(8);
       if (j != 16)
       {
         if (j <= 31)
         {
-          eT(j);
+          eG(j);
         }
         else if (j <= 127)
         {
-          eX(j);
+          eK(j);
           i = 1;
         }
         else if (j <= 159)
         {
-          eU(j);
+          eH(j);
           i = 1;
         }
         else if (j <= 255)
         {
-          eY(j);
+          eL(j);
           i = 1;
         }
       }
       else
       {
-        j = this.bsy.eo(8);
+        j = this.bqx.eo(8);
         if (j <= 31)
         {
-          eV(j);
+          eI(j);
         }
         else if (j <= 127)
         {
-          eZ(j);
+          eM(j);
           i = 1;
         }
         else if (j <= 159)
         {
-          eW(j);
+          eJ(j);
         }
         else if (j <= 255)
         {
-          fa(j);
+          eN(j);
           i = 1;
         }
       }
     }
     if (i != 0) {
-      this.bsj = uI();
+      this.bqi = uC();
     }
     AppMethodBeat.o(92768);
   }
@@ -627,10 +627,10 @@ public final class c
   protected final void a(h paramh)
   {
     AppMethodBeat.i(92766);
-    this.bse.q(paramh.aIq.array(), paramh.aIq.limit());
-    if (this.bse.vJ() >= 3)
+    this.bqd.n(paramh.aJg.array(), paramh.aJg.limit());
+    if (this.bqd.vy() >= 3)
     {
-      int k = this.bse.readUnsignedByte() & 0x7;
+      int k = this.bqd.readUnsignedByte() & 0x7;
       int m = k & 0x3;
       if ((k & 0x4) == 4) {}
       int i;
@@ -638,31 +638,31 @@ public final class c
       b localb;
       for (k = 1;; k = 0)
       {
-        i = (byte)this.bse.readUnsignedByte();
-        j = (byte)this.bse.readUnsignedByte();
+        i = (byte)this.bqd.readUnsignedByte();
+        j = (byte)this.bqd.readUnsignedByte();
         if (((m != 2) && (m != 3)) || (k == 0)) {
           break;
         }
         if (m != 3) {
           break label221;
         }
-        uQ();
+        uK();
         m = i & 0x3F;
         k = m;
         if (m == 0) {
           k = 64;
         }
-        this.bsC = new b((i & 0xC0) >> 6, k);
-        paramh = this.bsC.bte;
-        localb = this.bsC;
+        this.bqB = new b((i & 0xC0) >> 6, k);
+        paramh = this.bqB.brd;
+        localb = this.bqB;
         k = localb.currentIndex;
         localb.currentIndex = (k + 1);
         paramh[k] = j;
         label187:
-        if (this.bsC.currentIndex != this.bsC.btd * 2 - 1) {
+        if (this.bqB.currentIndex != this.bqB.brc * 2 - 1) {
           break label313;
         }
-        uQ();
+        uK();
         break;
       }
       label221:
@@ -670,16 +670,16 @@ public final class c
       for (boolean bool = true;; bool = false)
       {
         com.google.android.exoplayer2.i.a.checkArgument(bool);
-        if (this.bsC == null) {
+        if (this.bqB == null) {
           break;
         }
-        paramh = this.bsC.bte;
-        localb = this.bsC;
+        paramh = this.bqB.brd;
+        localb = this.bqB;
         k = localb.currentIndex;
         localb.currentIndex = (k + 1);
         paramh[k] = i;
-        paramh = this.bsC.bte;
-        localb = this.bsC;
+        paramh = this.bqB.brd;
+        localb = this.bqB;
         k = localb.currentIndex;
         localb.currentIndex = (k + 1);
         paramh[k] = j;
@@ -695,59 +695,59 @@ public final class c
   {
     AppMethodBeat.i(92764);
     super.flush();
-    this.bsj = null;
-    this.bsk = null;
-    this.bsD = 0;
-    this.bsB = this.bsA[this.bsD];
-    uJ();
-    this.bsC = null;
+    this.bqi = null;
+    this.bqj = null;
+    this.bqC = 0;
+    this.bqA = this.bqz[this.bqC];
+    uD();
+    this.bqB = null;
     AppMethodBeat.o(92764);
   }
   
-  protected final boolean uG()
+  protected final boolean uA()
   {
-    return this.bsj != this.bsk;
+    return this.bqi != this.bqj;
   }
   
-  protected final com.google.android.exoplayer2.f.d uH()
+  protected final com.google.android.exoplayer2.f.d uB()
   {
     AppMethodBeat.i(92765);
-    this.bsk = this.bsj;
-    f localf = new f(this.bsj);
+    this.bqj = this.bqi;
+    f localf = new f(this.bqi);
     AppMethodBeat.o(92765);
     return localf;
   }
   
   static final class a
   {
-    public static final int bsE;
-    public static final int bsF;
-    public static final int bsG;
-    static final int[] bsH;
-    private static final int[] bsI;
-    private static final int[] bsJ;
-    private static final boolean[] bsK;
-    static final int[] bsL;
-    private static final int[] bsM;
-    private static final int[] bsN;
-    static final int[] bsO;
+    public static final int bqD;
+    public static final int bqE;
+    public static final int bqF;
+    static final int[] bqG;
+    private static final int[] bqH;
+    private static final int[] bqI;
+    private static final boolean[] bqJ;
+    static final int[] bqK;
+    private static final int[] bqL;
+    private static final int[] bqM;
+    static final int[] bqN;
     private int backgroundColor;
-    boolean bsP;
-    boolean bsQ;
-    int bsR;
-    int bsS;
-    int bsT;
-    boolean bsU;
-    private int bsV;
-    int bsW;
-    int bsX;
-    private int bsY;
-    private int bsZ;
-    final List<SpannableString> bss;
-    private final SpannableStringBuilder bst;
-    private int bsv;
-    private int bta;
-    private int btb;
+    boolean bqO;
+    boolean bqP;
+    int bqQ;
+    int bqR;
+    int bqS;
+    boolean bqT;
+    private int bqU;
+    int bqV;
+    int bqW;
+    private int bqX;
+    private int bqY;
+    private int bqZ;
+    final List<SpannableString> bqr;
+    private final SpannableStringBuilder bqs;
+    private int bqu;
+    private int bra;
     private int foregroundColor;
     int priority;
     int row;
@@ -757,25 +757,25 @@ public final class c
     static
     {
       AppMethodBeat.i(92761);
-      bsE = m(2, 2, 2, 0);
-      bsF = m(0, 0, 0, 0);
-      bsG = m(0, 0, 0, 3);
-      bsH = new int[] { 0, 0, 0, 0, 0, 2, 0 };
-      bsI = new int[] { 0, 0, 0, 0, 0, 0, 2 };
-      bsJ = new int[] { 3, 3, 3, 3, 3, 3, 1 };
-      bsK = new boolean[] { 0, 0, 0, 1, 1, 1, 0 };
-      bsL = new int[] { bsF, bsG, bsF, bsF, bsG, bsF, bsF };
-      bsM = new int[] { 0, 1, 2, 3, 4, 3, 4 };
-      bsN = new int[] { 0, 0, 0, 0, 0, 3, 3 };
-      bsO = new int[] { bsF, bsF, bsF, bsF, bsF, bsG, bsG };
+      bqD = m(2, 2, 2, 0);
+      bqE = m(0, 0, 0, 0);
+      bqF = m(0, 0, 0, 3);
+      bqG = new int[] { 0, 0, 0, 0, 0, 2, 0 };
+      bqH = new int[] { 0, 0, 0, 0, 0, 0, 2 };
+      bqI = new int[] { 3, 3, 3, 3, 3, 3, 1 };
+      bqJ = new boolean[] { 0, 0, 0, 1, 1, 1, 0 };
+      bqK = new int[] { bqE, bqF, bqE, bqE, bqF, bqE, bqE };
+      bqL = new int[] { 0, 1, 2, 3, 4, 3, 4 };
+      bqM = new int[] { 0, 0, 0, 0, 0, 3, 3 };
+      bqN = new int[] { bqE, bqE, bqE, bqE, bqE, bqF, bqF };
       AppMethodBeat.o(92761);
     }
     
     public a()
     {
       AppMethodBeat.i(92749);
-      this.bss = new LinkedList();
-      this.bst = new SpannableStringBuilder();
+      this.bqr = new LinkedList();
+      this.bqs = new SpannableStringBuilder();
       reset();
       AppMethodBeat.o(92749);
     }
@@ -784,10 +784,10 @@ public final class c
     {
       int i = 255;
       AppMethodBeat.i(92760);
-      com.google.android.exoplayer2.i.a.bn(paramInt1, 4);
-      com.google.android.exoplayer2.i.a.bn(paramInt2, 4);
-      com.google.android.exoplayer2.i.a.bn(paramInt3, 4);
-      com.google.android.exoplayer2.i.a.bn(paramInt4, 4);
+      com.google.android.exoplayer2.i.a.bl(paramInt1, 4);
+      com.google.android.exoplayer2.i.a.bl(paramInt2, 4);
+      com.google.android.exoplayer2.i.a.bl(paramInt3, 4);
+      com.google.android.exoplayer2.i.a.bl(paramInt4, 4);
       switch (paramInt4)
       {
       default: 
@@ -835,24 +835,24 @@ public final class c
       return paramInt1;
     }
     
-    private SpannableString uO()
+    private SpannableString uI()
     {
       AppMethodBeat.i(92757);
-      Object localObject = new SpannableStringBuilder(this.bst);
+      Object localObject = new SpannableStringBuilder(this.bqs);
       int i = ((SpannableStringBuilder)localObject).length();
       if (i > 0)
       {
-        if (this.bsZ != -1) {
-          ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(2), this.bsZ, i, 33);
+        if (this.bqY != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(2), this.bqY, i, 33);
         }
-        if (this.bsv != -1) {
-          ((SpannableStringBuilder)localObject).setSpan(new UnderlineSpan(), this.bsv, i, 33);
+        if (this.bqu != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new UnderlineSpan(), this.bqu, i, 33);
         }
-        if (this.bta != -1) {
-          ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(this.foregroundColor), this.bta, i, 33);
+        if (this.bqZ != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(this.foregroundColor), this.bqZ, i, 33);
         }
-        if (this.btb != -1) {
-          ((SpannableStringBuilder)localObject).setSpan(new BackgroundColorSpan(this.backgroundColor), this.btb, i, 33);
+        if (this.bra != -1) {
+          ((SpannableStringBuilder)localObject).setSpan(new BackgroundColorSpan(this.backgroundColor), this.bra, i, 33);
         }
       }
       localObject = new SpannableString((CharSequence)localObject);
@@ -865,51 +865,51 @@ public final class c
       AppMethodBeat.i(92756);
       if (paramChar == '\n')
       {
-        this.bss.add(uO());
-        this.bst.clear();
-        if (this.bsZ != -1) {
-          this.bsZ = 0;
+        this.bqr.add(uI());
+        this.bqs.clear();
+        if (this.bqY != -1) {
+          this.bqY = 0;
         }
-        if (this.bsv != -1) {
-          this.bsv = 0;
+        if (this.bqu != -1) {
+          this.bqu = 0;
         }
-        if (this.bta != -1) {
-          this.bta = 0;
+        if (this.bqZ != -1) {
+          this.bqZ = 0;
         }
-        if (this.btb != -1) {
-          this.btb = 0;
+        if (this.bra != -1) {
+          this.bra = 0;
         }
-        while (((this.bsU) && (this.bss.size() >= this.rowCount)) || (this.bss.size() >= 15)) {
-          this.bss.remove(0);
+        while (((this.bqT) && (this.bqr.size() >= this.rowCount)) || (this.bqr.size() >= 15)) {
+          this.bqr.remove(0);
         }
       }
-      this.bst.append(paramChar);
+      this.bqs.append(paramChar);
       AppMethodBeat.o(92756);
     }
     
-    public final void bk(int paramInt1, int paramInt2)
+    public final void bi(int paramInt1, int paramInt2)
     {
-      this.bsY = paramInt1;
-      this.bsV = paramInt2;
+      this.bqX = paramInt1;
+      this.bqU = paramInt2;
     }
     
-    public final void bl(int paramInt1, int paramInt2)
+    public final void bj(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(92754);
-      if ((this.bta != -1) && (this.foregroundColor != paramInt1)) {
-        this.bst.setSpan(new ForegroundColorSpan(this.foregroundColor), this.bta, this.bst.length(), 33);
+      if ((this.bqZ != -1) && (this.foregroundColor != paramInt1)) {
+        this.bqs.setSpan(new ForegroundColorSpan(this.foregroundColor), this.bqZ, this.bqs.length(), 33);
       }
-      if (paramInt1 != bsE)
+      if (paramInt1 != bqD)
       {
-        this.bta = this.bst.length();
+        this.bqZ = this.bqs.length();
         this.foregroundColor = paramInt1;
       }
-      if ((this.btb != -1) && (this.backgroundColor != paramInt2)) {
-        this.bst.setSpan(new BackgroundColorSpan(this.backgroundColor), this.btb, this.bst.length(), 33);
+      if ((this.bra != -1) && (this.backgroundColor != paramInt2)) {
+        this.bqs.setSpan(new BackgroundColorSpan(this.backgroundColor), this.bra, this.bqs.length(), 33);
       }
-      if (paramInt2 != bsF)
+      if (paramInt2 != bqE)
       {
-        this.btb = this.bst.length();
+        this.bra = this.bqs.length();
         this.backgroundColor = paramInt2;
       }
       AppMethodBeat.o(92754);
@@ -918,12 +918,12 @@ public final class c
     public final void clear()
     {
       AppMethodBeat.i(92752);
-      this.bss.clear();
-      this.bst.clear();
-      this.bsZ = -1;
-      this.bsv = -1;
-      this.bta = -1;
-      this.btb = -1;
+      this.bqr.clear();
+      this.bqs.clear();
+      this.bqY = -1;
+      this.bqu = -1;
+      this.bqZ = -1;
+      this.bra = -1;
       this.row = 0;
       AppMethodBeat.o(92752);
     }
@@ -931,28 +931,28 @@ public final class c
     public final void h(boolean paramBoolean1, boolean paramBoolean2)
     {
       AppMethodBeat.i(92753);
-      if (this.bsZ != -1) {
+      if (this.bqY != -1) {
         if (!paramBoolean1)
         {
-          this.bst.setSpan(new StyleSpan(2), this.bsZ, this.bst.length(), 33);
-          this.bsZ = -1;
+          this.bqs.setSpan(new StyleSpan(2), this.bqY, this.bqs.length(), 33);
+          this.bqY = -1;
         }
       }
-      while (this.bsv != -1)
+      while (this.bqu != -1)
       {
         if (paramBoolean2) {
           break label133;
         }
-        this.bst.setSpan(new UnderlineSpan(), this.bsv, this.bst.length(), 33);
-        this.bsv = -1;
+        this.bqs.setSpan(new UnderlineSpan(), this.bqu, this.bqs.length(), 33);
+        this.bqu = -1;
         AppMethodBeat.o(92753);
         return;
         if (paramBoolean1) {
-          this.bsZ = this.bst.length();
+          this.bqY = this.bqs.length();
         }
       }
       if (paramBoolean2) {
-        this.bsv = this.bst.length();
+        this.bqu = this.bqs.length();
       }
       label133:
       AppMethodBeat.o(92753);
@@ -961,7 +961,7 @@ public final class c
     public final boolean isEmpty()
     {
       AppMethodBeat.i(92750);
-      if ((!this.bsP) || ((this.bss.isEmpty()) && (this.bst.length() == 0)))
+      if ((!this.bqO) || ((this.bqr.isEmpty()) && (this.bqs.length() == 0)))
       {
         AppMethodBeat.o(92750);
         return true;
@@ -974,35 +974,35 @@ public final class c
     {
       AppMethodBeat.i(92751);
       clear();
-      this.bsP = false;
+      this.bqO = false;
       this.visible = false;
       this.priority = 4;
-      this.bsQ = false;
-      this.bsR = 0;
-      this.bsS = 0;
-      this.bsT = 0;
+      this.bqP = false;
+      this.bqQ = 0;
+      this.bqR = 0;
+      this.bqS = 0;
       this.rowCount = 15;
-      this.bsU = true;
-      this.bsV = 0;
-      this.bsW = 0;
-      this.bsX = 0;
-      this.bsY = bsF;
-      this.foregroundColor = bsE;
-      this.backgroundColor = bsF;
+      this.bqT = true;
+      this.bqU = 0;
+      this.bqV = 0;
+      this.bqW = 0;
+      this.bqX = bqE;
+      this.foregroundColor = bqD;
+      this.backgroundColor = bqE;
       AppMethodBeat.o(92751);
     }
     
-    public final void uM()
+    public final void uG()
     {
       AppMethodBeat.i(92755);
-      int i = this.bst.length();
+      int i = this.bqs.length();
       if (i > 0) {
-        this.bst.delete(i - 1, i);
+        this.bqs.delete(i - 1, i);
       }
       AppMethodBeat.o(92755);
     }
     
-    public final b uS()
+    public final b uM()
     {
       boolean bool = false;
       AppMethodBeat.i(92758);
@@ -1013,37 +1013,37 @@ public final class c
       }
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
       int i = 0;
-      while (i < this.bss.size())
+      while (i < this.bqr.size())
       {
-        localSpannableStringBuilder.append((CharSequence)this.bss.get(i));
+        localSpannableStringBuilder.append((CharSequence)this.bqr.get(i));
         localSpannableStringBuilder.append('\n');
         i += 1;
       }
-      localSpannableStringBuilder.append(uO());
+      localSpannableStringBuilder.append(uI());
       Object localObject;
       float f2;
       float f1;
       label192:
       label203:
       int j;
-      switch (this.bsV)
+      switch (this.bqU)
       {
       default: 
-        localObject = new IllegalArgumentException("Unexpected justification value: " + this.bsV);
+        localObject = new IllegalArgumentException("Unexpected justification value: " + this.bqU);
         AppMethodBeat.o(92758);
         throw ((Throwable)localObject);
       case 0: 
       case 3: 
         localObject = Layout.Alignment.ALIGN_NORMAL;
-        if (this.bsQ)
+        if (this.bqP)
         {
-          f2 = this.bsS / 99.0F;
-          f1 = this.bsR / 99.0F;
-          if (this.bsT % 3 != 0) {
+          f2 = this.bqR / 99.0F;
+          f1 = this.bqQ / 99.0F;
+          if (this.bqS % 3 != 0) {
             break label319;
           }
           i = 0;
-          if (this.bsT / 3 != 0) {
+          if (this.bqS / 3 != 0) {
             break label339;
           }
           j = 0;
@@ -1052,21 +1052,21 @@ public final class c
       }
       for (;;)
       {
-        if (this.bsY != bsF) {
+        if (this.bqX != bqE) {
           bool = true;
         }
-        localObject = new b(localSpannableStringBuilder, (Layout.Alignment)localObject, f1 * 0.9F + 0.05F, i, f2 * 0.9F + 0.05F, j, bool, this.bsY, this.priority);
+        localObject = new b(localSpannableStringBuilder, (Layout.Alignment)localObject, f1 * 0.9F + 0.05F, i, f2 * 0.9F + 0.05F, j, bool, this.bqX, this.priority);
         AppMethodBeat.o(92758);
         return localObject;
         localObject = Layout.Alignment.ALIGN_OPPOSITE;
         break;
         localObject = Layout.Alignment.ALIGN_CENTER;
         break;
-        f2 = this.bsS / 209.0F;
-        f1 = this.bsR / 74.0F;
+        f2 = this.bqR / 209.0F;
+        f1 = this.bqQ / 74.0F;
         break label192;
         label319:
-        if (this.bsT % 3 == 1)
+        if (this.bqS % 3 == 1)
         {
           i = 1;
           break label203;
@@ -1074,7 +1074,7 @@ public final class c
         i = 2;
         break label203;
         label339:
-        if (this.bsT / 3 == 1) {
+        if (this.bqS / 3 == 1) {
           j = 1;
         } else {
           j = 2;
@@ -1085,17 +1085,17 @@ public final class c
   
   static final class b
   {
-    public final int btc;
-    public final int btd;
-    public final byte[] bte;
+    public final int brb;
+    public final int brc;
+    public final byte[] brd;
     int currentIndex;
     
     public b(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(92762);
-      this.btc = paramInt1;
-      this.btd = paramInt2;
-      this.bte = new byte[paramInt2 * 2 - 1];
+      this.brb = paramInt1;
+      this.brc = paramInt2;
+      this.brd = new byte[paramInt2 * 2 - 1];
       this.currentIndex = 0;
       AppMethodBeat.o(92762);
     }

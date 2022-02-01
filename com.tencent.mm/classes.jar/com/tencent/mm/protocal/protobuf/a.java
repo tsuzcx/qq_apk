@@ -3,13 +3,13 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String doh;
-  public int dtM;
-  public String nTQ;
-  public String tfH;
-  public String tfI;
+  public String dlQ;
+  public int drx;
+  public String oxl;
+  public String unW;
+  public String unX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,40 +17,40 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.dtM);
-      if (this.doh != null) {
-        paramVarArgs.d(2, this.doh);
+      paramVarArgs.aR(1, this.drx);
+      if (this.dlQ != null) {
+        paramVarArgs.d(2, this.dlQ);
       }
-      if (this.tfH != null) {
-        paramVarArgs.d(3, this.tfH);
+      if (this.unW != null) {
+        paramVarArgs.d(3, this.unW);
       }
-      if (this.tfI != null) {
-        paramVarArgs.d(4, this.tfI);
+      if (this.unX != null) {
+        paramVarArgs.d(4, this.unX);
       }
-      if (this.nTQ != null) {
-        paramVarArgs.d(5, this.nTQ);
+      if (this.oxl != null) {
+        paramVarArgs.d(5, this.oxl);
       }
       AppMethodBeat.o(91310);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.dtM) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.drx) + 0;
       paramInt = i;
-      if (this.doh != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.doh);
+      if (this.dlQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dlQ);
       }
       i = paramInt;
-      if (this.tfH != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.tfH);
+      if (this.unW != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.unW);
       }
       paramInt = i;
-      if (this.tfI != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.tfI);
+      if (this.unX != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.unX);
       }
       i = paramInt;
-      if (this.nTQ != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.nTQ);
+      if (this.oxl != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.oxl);
       }
       AppMethodBeat.o(91310);
       return i;
@@ -58,9 +58,9 @@ public final class a
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(91310);
@@ -76,23 +76,23 @@ public final class a
         AppMethodBeat.o(91310);
         return -1;
       case 1: 
-        locala1.dtM = locala.KhF.xS();
+        locala1.drx = locala.LVo.xF();
         AppMethodBeat.o(91310);
         return 0;
       case 2: 
-        locala1.doh = locala.KhF.readString();
+        locala1.dlQ = locala.LVo.readString();
         AppMethodBeat.o(91310);
         return 0;
       case 3: 
-        locala1.tfH = locala.KhF.readString();
+        locala1.unW = locala.LVo.readString();
         AppMethodBeat.o(91310);
         return 0;
       case 4: 
-        locala1.tfI = locala.KhF.readString();
+        locala1.unX = locala.LVo.readString();
         AppMethodBeat.o(91310);
         return 0;
       }
-      locala1.nTQ = locala.KhF.readString();
+      locala1.oxl = locala.LVo.readString();
       AppMethodBeat.o(91310);
       return 0;
     }
@@ -102,7 +102,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.a
  * JD-Core Version:    0.7.0.1
  */

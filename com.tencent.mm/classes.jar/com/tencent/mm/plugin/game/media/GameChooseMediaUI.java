@@ -9,30 +9,30 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI;
 import com.tencent.mm.plugin.game.api.f;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 
 public class GameChooseMediaUI
   extends AlbumPreviewUI
 {
-  public final void abH(String paramString)
+  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, s.b paramb)
+  {
+    AppMethodBeat.i(40903);
+    super.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener, s.b.How);
+    AppMethodBeat.o(40903);
+  }
+  
+  public final void agz(String paramString)
   {
     AppMethodBeat.i(40904);
     ((f)g.ab(f.class)).i(this, paramString, 4377);
     AppMethodBeat.o(40904);
   }
   
-  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, r.b paramb)
-  {
-    AppMethodBeat.i(40903);
-    super.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener, r.b.FOL);
-    AppMethodBeat.o(40903);
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(40901);
     super.onCreate(paramBundle);
-    overridePendingTransition(MMFragmentActivity.a.FPg, MMFragmentActivity.a.FPh);
+    overridePendingTransition(MMFragmentActivity.a.HoR, MMFragmentActivity.a.HoS);
     AppMethodBeat.o(40901);
   }
   

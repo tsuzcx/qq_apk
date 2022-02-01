@@ -14,17 +14,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   implements t
 {
-  private final c bFb;
+  private final c bCJ;
   
   public d(c paramc)
   {
-    this.bFb = paramc;
+    this.bCJ = paramc;
   }
   
   static s<?> a(c paramc, f paramf, a<?> parama, b paramb)
   {
     AppMethodBeat.i(107992);
-    Object localObject = paramc.b(a.J(paramb.value())).xx();
+    Object localObject = paramc.b(a.J(paramb.value())).xk();
     if ((localObject instanceof s)) {}
     for (paramc = (s)localObject;; paramc = ((t)localObject).a(paramf, parama))
     {
@@ -32,8 +32,8 @@ public final class d
       if (paramc != null)
       {
         paramf = paramc;
-        if (paramb.xu()) {
-          paramf = paramc.xr();
+        if (paramb.xh()) {
+          paramf = paramc.xe();
         }
       }
       AppMethodBeat.o(107992);
@@ -69,20 +69,20 @@ public final class d
   public final <T> s<T> a(f paramf, a<T> parama)
   {
     AppMethodBeat.i(107991);
-    b localb = (b)parama.bIC.getAnnotation(b.class);
+    b localb = (b)parama.bGk.getAnnotation(b.class);
     if (localb == null)
     {
       AppMethodBeat.o(107991);
       return null;
     }
-    paramf = a(this.bFb, paramf, parama, localb);
+    paramf = a(this.bCJ, paramf, parama, localb);
     AppMethodBeat.o(107991);
     return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.b.a.d
  * JD-Core Version:    0.7.0.1
  */

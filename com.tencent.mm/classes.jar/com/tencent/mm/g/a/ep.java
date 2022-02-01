@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ep
   extends b
 {
-  public a dha;
-  public b dhb;
+  public a det;
+  public b deu;
   
   public ep()
   {
@@ -16,24 +16,24 @@ public final class ep
   
   private ep(byte paramByte)
   {
-    AppMethodBeat.i(116007);
-    this.dha = new a();
-    this.dhb = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116006);
+    this.det = new a();
+    this.deu = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116007);
+    AppMethodBeat.o(116006);
   }
   
   public static final class a
   {
-    public String cLR;
-    public String data;
-    public String dfM;
+    public String cIZ;
+    public byte[] data;
+    public String ddh;
   }
   
   public static final class b
   {
-    public boolean dfO;
+    public boolean ddj;
   }
 }
 

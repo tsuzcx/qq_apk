@@ -7,7 +7,6 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.BaseSavedState;
 import android.view.View.OnFocusChangeListener;
@@ -22,50 +21,26 @@ import com.tencent.mm.ui.f.c.b;
 public class MMClearEditText
   extends EditText
 {
-  public boolean BVC;
-  Drawable BVD;
-  private boolean FWD;
-  public String mgy;
-  int oow;
-  private View.OnFocusChangeListener uZg;
-  private View.OnTouchListener zrL;
+  private View.OnTouchListener AKw;
+  public boolean DnT;
+  Drawable DnU;
+  private boolean Hwr;
+  public String mIy;
+  int oRW;
+  private View.OnFocusChangeListener whV;
   
   public MMClearEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159155);
-    this.mgy = "";
-    this.BVC = false;
-    this.BVD = ao.aC(getContext(), 2130968981);
-    this.oow = 0;
-    this.uZg = null;
-    this.zrL = new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(159154);
-        paramAnonymousView = MMClearEditText.this;
-        if (paramAnonymousView.getCompoundDrawables()[2] == null)
-        {
-          AppMethodBeat.o(159154);
-          return false;
-        }
-        if (paramAnonymousMotionEvent.getAction() != 1)
-        {
-          AppMethodBeat.o(159154);
-          return false;
-        }
-        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMClearEditText.this.BVD.getIntrinsicWidth())
-        {
-          paramAnonymousView.setText("");
-          MMClearEditText.c(MMClearEditText.this);
-        }
-        AppMethodBeat.o(159154);
-        return false;
-      }
-    };
-    this.FWD = false;
-    caY();
+    this.mIy = "";
+    this.DnT = false;
+    this.DnU = ao.aI(getContext(), 2130968981);
+    this.oRW = 0;
+    this.whV = null;
+    this.AKw = new MMClearEditText.3(this);
+    this.Hwr = false;
+    cih();
     AppMethodBeat.o(159155);
   }
   
@@ -73,42 +48,18 @@ public class MMClearEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159156);
-    this.mgy = "";
-    this.BVC = false;
-    this.BVD = ao.aC(getContext(), 2130968981);
-    this.oow = 0;
-    this.uZg = null;
-    this.zrL = new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(159154);
-        paramAnonymousView = MMClearEditText.this;
-        if (paramAnonymousView.getCompoundDrawables()[2] == null)
-        {
-          AppMethodBeat.o(159154);
-          return false;
-        }
-        if (paramAnonymousMotionEvent.getAction() != 1)
-        {
-          AppMethodBeat.o(159154);
-          return false;
-        }
-        if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMClearEditText.this.BVD.getIntrinsicWidth())
-        {
-          paramAnonymousView.setText("");
-          MMClearEditText.c(MMClearEditText.this);
-        }
-        AppMethodBeat.o(159154);
-        return false;
-      }
-    };
-    this.FWD = false;
-    caY();
+    this.mIy = "";
+    this.DnT = false;
+    this.DnU = ao.aI(getContext(), 2130968981);
+    this.oRW = 0;
+    this.whV = null;
+    this.AKw = new MMClearEditText.3(this);
+    this.Hwr = false;
+    cih();
     AppMethodBeat.o(159156);
   }
   
-  private void aBB(String paramString)
+  private void aGT(String paramString)
   {
     AppMethodBeat.i(159159);
     int i = getSelectionStart();
@@ -127,17 +78,17 @@ public class MMClearEditText
     AppMethodBeat.o(159159);
   }
   
-  private void caY()
+  private void cih()
   {
     AppMethodBeat.i(159157);
-    if (this.BVD == null) {
-      this.BVD = ao.aC(getContext(), 2130968981);
+    if (this.DnU == null) {
+      this.DnU = ao.aI(getContext(), 2130968981);
     }
-    this.BVD.setBounds(0, 0, this.BVD.getIntrinsicWidth(), this.BVD.getIntrinsicHeight());
-    an.d("MicroMsg.MMClearEditText", "imgX width %d height %d", new Object[] { Integer.valueOf(this.BVD.getIntrinsicWidth()), Integer.valueOf(this.BVD.getIntrinsicHeight()) });
-    exv();
-    setHeight(this.BVD.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
-    setOnTouchListener(this.zrL);
+    this.DnU.setBounds(0, 0, this.DnU.getIntrinsicWidth(), this.DnU.getIntrinsicHeight());
+    an.d("MicroMsg.MMClearEditText", "imgX width %d height %d", new Object[] { Integer.valueOf(this.DnU.getIntrinsicWidth()), Integer.valueOf(this.DnU.getIntrinsicHeight()) });
+    eMP();
+    setHeight(this.DnU.getIntrinsicHeight() + getResources().getDimensionPixelSize(2131165519) * 5);
+    setOnTouchListener(this.AKw);
     addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
@@ -166,29 +117,29 @@ public class MMClearEditText
     AppMethodBeat.o(159157);
   }
   
-  private void exv()
+  private void eMP()
   {
     AppMethodBeat.i(159160);
     if ((getText().toString().equals("")) || (!isFocused()))
     {
-      exx();
+      eMR();
       AppMethodBeat.o(159160);
       return;
     }
-    exw();
+    eMQ();
     AppMethodBeat.o(159160);
   }
   
-  private void exw()
+  private void eMQ()
   {
     AppMethodBeat.i(159161);
-    if (!this.FWD) {
-      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.BVD, getCompoundDrawables()[3]);
+    if (!this.Hwr) {
+      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.DnU, getCompoundDrawables()[3]);
     }
     AppMethodBeat.o(159161);
   }
   
-  private void exx()
+  private void eMR()
   {
     AppMethodBeat.i(159162);
     setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
@@ -197,7 +148,7 @@ public class MMClearEditText
   
   public View.OnTouchListener getDefaultOnTouchListener()
   {
-    return this.zrL;
+    return this.AKw;
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
@@ -209,7 +160,7 @@ public class MMClearEditText
       AppMethodBeat.o(159163);
       return;
     }
-    if (!this.BVC) {
+    if (!this.DnT) {
       paramParcelable = View.BaseSavedState.EMPTY_STATE;
     }
     super.onRestoreInstanceState(paramParcelable);
@@ -223,12 +174,12 @@ public class MMClearEditText
     String str;
     if (paramInt == 16908322)
     {
-      this.oow = 0;
+      this.oRW = 0;
       str = getText().toString();
     }
     try
     {
-      aBB(str);
+      aGT(str);
       AppMethodBeat.o(159158);
       return bool;
     }
@@ -236,11 +187,11 @@ public class MMClearEditText
     {
       for (;;)
       {
-        an.e("MicroMsg.MMClearEditText", "!!MMClearEditText Exception %d", new Object[] { Integer.valueOf(this.oow) });
-        if (this.oow < 3)
+        an.e("MicroMsg.MMClearEditText", "!!MMClearEditText Exception %d", new Object[] { Integer.valueOf(this.oRW) });
+        if (this.oRW < 3)
         {
-          this.oow += 1;
-          aBB(" ".concat(String.valueOf(str)));
+          this.oRW += 1;
+          aGT(" ".concat(String.valueOf(str)));
         }
         else
         {
@@ -252,12 +203,12 @@ public class MMClearEditText
   
   public void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.uZg = paramOnFocusChangeListener;
+    this.whV = paramOnFocusChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMClearEditText
  * JD-Core Version:    0.7.0.1
  */

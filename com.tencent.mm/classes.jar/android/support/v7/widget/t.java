@@ -10,15 +10,15 @@ public abstract interface t
   
   public abstract void bv(int paramInt);
   
-  public abstract void gg();
-  
-  public abstract boolean hS();
-  
-  public abstract boolean hT();
-  
-  public abstract void hU();
+  public abstract void go();
   
   public abstract boolean hideOverflowMenu();
+  
+  public abstract boolean ia();
+  
+  public abstract boolean ib();
+  
+  public abstract void ic();
   
   public abstract boolean isOverflowMenuShowing();
   

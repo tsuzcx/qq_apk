@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.util.Base64;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
@@ -13,24 +12,25 @@ import com.tencent.luggage.h.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.p;
-import com.tencent.mm.plugin.appbrand.aa.o;
-import com.tencent.mm.plugin.appbrand.aa.o.a;
+import com.tencent.mm.plugin.appbrand.z.o;
+import com.tencent.mm.plugin.appbrand.z.o.a;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.sdk.f.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bd.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.vfs.i;
 import com.tencent.xweb.WebView;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Map;
@@ -42,25 +42,25 @@ import org.json.JSONObject;
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
 public final class x
 {
-  private static o.a CnS;
-  private static final Pattern CnT;
-  private static int CnU;
-  private static be hUs;
+  private static o.a DGl;
+  private static final Pattern DGm;
+  private static int DGn;
+  private static bd iuw;
   
   static
   {
     AppMethodBeat.i(103177);
-    CnS = null;
-    hUs = null;
-    CnT = Pattern.compile("data:(image|img)/\\S+;base64,\\S+");
-    CnU = -1;
+    DGl = null;
+    iuw = null;
+    DGm = Pattern.compile("data:(image|img)/\\S+;base64,\\S+");
+    DGn = -1;
     AppMethodBeat.o(103177);
   }
   
-  public static boolean A(String paramString1, String paramString2)
+  public static boolean B(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103157);
-    boolean bool = k.A(paramString1, paramString2);
+    boolean bool = k.B(paramString1, paramString2);
     AppMethodBeat.o(103157);
     return bool;
   }
@@ -68,24 +68,24 @@ public final class x
   public static void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(103160);
-    if (hUs == null) {
-      hUs = new be(1, "webview-save-image", 1);
+    if (iuw == null) {
+      iuw = new bd(1, "webview-save-image", 1);
     }
-    hUs.c(new c(paramContext, paramString1, paramString2, paramBoolean, 1, parama));
+    iuw.c(new c(paramContext, paramString1, paramString2, paramBoolean, 1, parama));
     AppMethodBeat.o(103160);
   }
   
   private static void a(b paramb)
   {
     AppMethodBeat.i(103162);
-    ad.d("MicroMsg.WebViewUtil", "initIFrame");
-    aq.f(new Runnable()
+    ac.d("MicroMsg.WebViewUtil", "initIFrame");
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189780);
-        this.CnY.aCT("javascript:var edw_iframe = document.getElementById('_edw_iframe_');if (edw_iframe === null) {edw_iframe = document.createElement('iframe');edw_iframe.id = '_edw_iframe_';edw_iframe.style.display = 'none';document.documentElement.appendChild(edw_iframe);}");
-        AppMethodBeat.o(189780);
+        AppMethodBeat.i(205409);
+        this.DGr.aIk("javascript:var edw_iframe = document.getElementById('_edw_iframe_');if (edw_iframe === null) {edw_iframe = document.createElement('iframe');edw_iframe.id = '_edw_iframe_';edw_iframe.style.display = 'none';document.documentElement.appendChild(edw_iframe);}");
+        AppMethodBeat.o(205409);
       }
     });
     AppMethodBeat.o(103162);
@@ -94,27 +94,27 @@ public final class x
   private static void a(final b paramb, final String paramString1, final String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(103165);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
-      ad.e("MicroMsg.WebViewUtil", "getJsResult fail, invalid argument, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
+      ac.e("MicroMsg.WebViewUtil", "getJsResult fail, invalid argument, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(103165);
       return;
     }
-    ad.d("MicroMsg.WebViewUtil", "getJsResult, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
+    ac.d("MicroMsg.WebViewUtil", "getJsResult, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
     a(paramb);
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189782);
-        if (this.CnZ)
+        AppMethodBeat.i(205411);
+        if (this.DGs)
         {
-          paramb.aCT("javascript:document.getElementById('_edw_iframe_').src = '" + paramString1 + "' + " + paramString2);
-          AppMethodBeat.o(189782);
+          paramb.aIk("javascript:document.getElementById('_edw_iframe_').src = '" + paramString1 + "' + " + paramString2);
+          AppMethodBeat.o(205411);
           return;
         }
-        paramb.aCT("javascript:console.log('" + paramString1 + "' + " + paramString2 + ")");
-        AppMethodBeat.o(189782);
+        paramb.aIk("javascript:console.log('" + paramString1 + "' + " + paramString2 + ")");
+        AppMethodBeat.o(205411);
       }
     });
     AppMethodBeat.o(103165);
@@ -137,17 +137,36 @@ public final class x
     }
     a(new b()
     {
-      public final void aCT(String paramAnonymousString)
+      public final void aIk(String paramAnonymousString)
       {
-        AppMethodBeat.i(189781);
-        this.CnX.evaluateJavascript(paramAnonymousString, null);
-        AppMethodBeat.o(189781);
+        AppMethodBeat.i(205410);
+        this.DGq.evaluateJavascript(paramAnonymousString, null);
+        AppMethodBeat.o(205410);
       }
     }, paramString1, paramString2, paramBoolean);
     AppMethodBeat.o(103164);
   }
   
-  public static boolean aCK(String paramString)
+  public static String aBE(String paramString)
+  {
+    AppMethodBeat.i(103176);
+    if (bs.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(103176);
+      return paramString;
+    }
+    int i = paramString.indexOf("#");
+    if (i < 0)
+    {
+      AppMethodBeat.o(103176);
+      return paramString;
+    }
+    paramString = paramString.substring(0, i);
+    AppMethodBeat.o(103176);
+    return paramString;
+  }
+  
+  public static boolean aIc(String paramString)
   {
     AppMethodBeat.i(103156);
     if (paramString == null)
@@ -160,10 +179,10 @@ public final class x
     return bool;
   }
   
-  public static final String aCL(String paramString)
+  public static final String aId(String paramString)
   {
     AppMethodBeat.i(103168);
-    if (!bt.isNullOrNil(paramString)) {
+    if (!bs.isNullOrNil(paramString)) {
       try
       {
         String str = URLEncoder.encode(paramString, "utf-8");
@@ -172,17 +191,17 @@ public final class x
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        ad.e("MicroMsg.WebViewUtil", "URLEncode fail, throw : %s", new Object[] { localUnsupportedEncodingException.getMessage() });
+        ac.e("MicroMsg.WebViewUtil", "URLEncode fail, throw : %s", new Object[] { localUnsupportedEncodingException.getMessage() });
       }
     }
     AppMethodBeat.o(103168);
     return paramString;
   }
   
-  public static final String aCM(String paramString)
+  public static final String aIe(String paramString)
   {
     AppMethodBeat.i(103169);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
       try
       {
@@ -194,7 +213,7 @@ public final class x
         for (;;)
         {
           paramString = paramString.getBytes();
-          ad.e("MicroMsg.WebViewUtil", "getBytes fail, throw : %s", new Object[] { localUnsupportedEncodingException.getMessage() });
+          ac.e("MicroMsg.WebViewUtil", "getBytes fail, throw : %s", new Object[] { localUnsupportedEncodingException.getMessage() });
         }
       }
       paramString = Base64.encodeToString(paramString, 2);
@@ -205,15 +224,15 @@ public final class x
     return paramString;
   }
   
-  public static String aCN(String paramString)
+  public static String aIf(String paramString)
   {
     AppMethodBeat.i(103172);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(103172);
       return null;
     }
-    if (!CnT.matcher(paramString).matches())
+    if (!DGm.matcher(paramString).matches())
     {
       AppMethodBeat.o(103172);
       return null;
@@ -223,7 +242,7 @@ public final class x
     return paramString;
   }
   
-  public static String aCO(String paramString)
+  public static String aIg(String paramString)
   {
     AppMethodBeat.i(103174);
     String str2 = "";
@@ -245,30 +264,30 @@ public final class x
   }
   
   @Deprecated
-  public static String aCP(String paramString)
+  public static String aIh(String paramString)
   {
     AppMethodBeat.i(103175);
-    paramString = d.aCP(paramString);
+    paramString = d.aIh(paramString);
     AppMethodBeat.o(103175);
     return paramString;
   }
   
-  public static String aCQ(String paramString)
+  public static String aIi(String paramString)
   {
-    AppMethodBeat.i(189783);
-    paramString = String.format("preverify://url=%s", new Object[] { URLEncoder.encode(awm(bt.nullAsNil(paramString))) });
-    AppMethodBeat.o(189783);
+    AppMethodBeat.i(205412);
+    paramString = String.format("preverify://url=%s", new Object[] { URLEncoder.encode(aBE(bs.nullAsNil(paramString))) });
+    AppMethodBeat.o(205412);
     return paramString;
   }
   
-  public static String aCR(String paramString)
+  public static String aIj(String paramString)
   {
     AppMethodBeat.i(184503);
-    if (!bt.isNullOrNil(paramString)) {
+    if (!bs.isNullOrNil(paramString)) {
       try
       {
         paramString = new JSONObject(paramString);
-        if (ai.Eq())
+        if (aj.DT())
         {
           paramString = paramString.optString("dark");
           AppMethodBeat.o(184503);
@@ -280,62 +299,38 @@ public final class x
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.WebViewUtil", paramString.getMessage());
+        ac.e("MicroMsg.WebViewUtil", paramString.getMessage());
       }
     }
     AppMethodBeat.o(184503);
     return null;
   }
   
-  public static boolean aCS(String paramString)
+  public static boolean aXH(String paramString)
   {
-    AppMethodBeat.i(189785);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(210492);
+    if (bs.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(189785);
+      AppMethodBeat.o(210492);
       return false;
     }
     try
     {
-      String str = Uri.parse(paramString).getHost();
-      boolean bool = paramString.equalsIgnoreCase("http://" + str + "/");
-      if (bool)
+      boolean bool = new URL(paramString).getHost().equals("mp.weixin.qq.com");
+      if (!bool)
       {
-        AppMethodBeat.o(189785);
-        return true;
-      }
-      bool = paramString.equalsIgnoreCase("https://" + str + "/");
-      if (bool)
-      {
-        AppMethodBeat.o(189785);
-        return true;
+        AppMethodBeat.o(210492);
+        return false;
       }
     }
     catch (Exception paramString)
     {
-      ad.e("MicroMsg.WebViewUtil", "isBaseUrl ex=%s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(189785);
+      ac.e("MicroMsg.WebViewUtil", "create url fail : " + paramString.getLocalizedMessage());
+      AppMethodBeat.o(210492);
+      return false;
     }
-    return false;
-  }
-  
-  public static String awm(String paramString)
-  {
-    AppMethodBeat.i(103176);
-    if (bt.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(103176);
-      return paramString;
-    }
-    int i = paramString.indexOf("#");
-    if (i < 0)
-    {
-      AppMethodBeat.o(103176);
-      return paramString;
-    }
-    paramString = paramString.substring(0, i);
-    AppMethodBeat.o(103176);
-    return paramString;
+    AppMethodBeat.o(210492);
+    return true;
   }
   
   public static void b(Context paramContext, final String paramString1, final String paramString2, final boolean paramBoolean)
@@ -345,35 +340,26 @@ public final class x
     {
       public final void run()
       {
-        AppMethodBeat.i(189777);
-        if (x.eAZ() == null) {
-          x.a(new be(1, "webview-save-image", 1));
+        AppMethodBeat.i(205406);
+        if (x.eQt() == null) {
+          x.a(new bd(1, "webview-save-image", 1));
         }
-        x.eAZ().c(new x.c(this.val$context, paramString1, paramString2, paramBoolean));
-        AppMethodBeat.o(189777);
+        x.eQt().c(new x.c(this.val$context, paramString1, paramString2, paramBoolean));
+        AppMethodBeat.o(205406);
       }
     }, new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(189778);
+        AppMethodBeat.i(205407);
         Toast.makeText(this.val$context, this.val$context.getString(2131766280), 1).show();
-        AppMethodBeat.o(189778);
+        AppMethodBeat.o(205407);
       }
     });
     AppMethodBeat.o(103159);
   }
   
-  @Deprecated
-  public static String bR(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(103155);
-    paramContext = o.a(paramContext, paramString, (o.a)e.K(o.a.class));
-    AppMethodBeat.o(103155);
-    return paramContext;
-  }
-  
-  public static final String bz(Map<String, Object> paramMap)
+  public static final String bE(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(103167);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -382,7 +368,7 @@ public final class x
     {
       String str = (String)localIterator.next();
       Object localObject = paramMap.get(str);
-      if ((!bt.isNullOrNil(str)) && (localObject != null) && ((!(localObject instanceof String)) || (!bt.isNullOrNil((String)localObject))))
+      if ((!bs.isNullOrNil(str)) && (localObject != null) && ((!(localObject instanceof String)) || (!bs.isNullOrNil((String)localObject))))
       {
         if (localStringBuilder.length() > 0) {
           localStringBuilder.append("&");
@@ -397,6 +383,15 @@ public final class x
     return paramMap;
   }
   
+  @Deprecated
+  public static String bS(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(103155);
+    paramContext = o.a(paramContext, paramString, (o.a)e.K(o.a.class));
+    AppMethodBeat.o(103155);
+    return paramContext;
+  }
+  
   public static void c(WebView paramWebView)
   {
     AppMethodBeat.i(103161);
@@ -407,56 +402,20 @@ public final class x
     }
     a(new b()
     {
-      public final void aCT(String paramAnonymousString)
+      public final void aIk(String paramAnonymousString)
       {
-        AppMethodBeat.i(189779);
-        this.CnX.evaluateJavascript(paramAnonymousString, null);
-        AppMethodBeat.o(189779);
+        AppMethodBeat.i(205408);
+        this.DGq.evaluateJavascript(paramAnonymousString, null);
+        AppMethodBeat.o(205408);
       }
     });
     AppMethodBeat.o(103161);
   }
   
-  public static boolean eAY()
-  {
-    AppMethodBeat.i(189784);
-    if (CnU != -1)
-    {
-      if (CnU == 1)
-      {
-        AppMethodBeat.o(189784);
-        return true;
-      }
-      AppMethodBeat.o(189784);
-      return false;
-    }
-    int i = ax.aFC("bizCommand").decodeInt("sameLayerOpen", -1);
-    CnU = i;
-    if (i != -1)
-    {
-      if (CnU == 1)
-      {
-        AppMethodBeat.o(189784);
-        return true;
-      }
-      AppMethodBeat.o(189784);
-      return false;
-    }
-    CnU = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pmx, 0);
-    ad.i("MicroMsg.WebViewUtil", "useSameLayerForVideo useSameLayer=%d", new Object[] { Integer.valueOf(CnU) });
-    if (CnU == 1)
-    {
-      AppMethodBeat.o(189784);
-      return true;
-    }
-    AppMethodBeat.o(189784);
-    return false;
-  }
-  
-  public static String emh()
+  public static String cWt()
   {
     AppMethodBeat.i(103173);
-    Object localObject = (ConnectivityManager)aj.getContext().getSystemService("connectivity");
+    Object localObject = (ConnectivityManager)ai.getContext().getSystemService("connectivity");
     if (localObject == null)
     {
       AppMethodBeat.o(103173);
@@ -473,7 +432,7 @@ public final class x
       AppMethodBeat.o(103173);
       return "WIFI";
     }
-    ad.d("MicroMsg.WebViewUtil", "activeNetInfo extra=%s, type=%d, %s", new Object[] { ((NetworkInfo)localObject).getExtraInfo(), Integer.valueOf(((NetworkInfo)localObject).getType()), ((NetworkInfo)localObject).getExtraInfo() });
+    ac.d("MicroMsg.WebViewUtil", "activeNetInfo extra=%s, type=%d, %s", new Object[] { ((NetworkInfo)localObject).getExtraInfo(), Integer.valueOf(((NetworkInfo)localObject).getType()), ((NetworkInfo)localObject).getExtraInfo() });
     if (((NetworkInfo)localObject).getExtraInfo() != null)
     {
       localObject = ((NetworkInfo)localObject).getExtraInfo().toLowerCase();
@@ -484,25 +443,61 @@ public final class x
     return "no";
   }
   
+  public static boolean eQs()
+  {
+    AppMethodBeat.i(205413);
+    if (DGn != -1)
+    {
+      if (DGn == 1)
+      {
+        AppMethodBeat.o(205413);
+        return true;
+      }
+      AppMethodBeat.o(205413);
+      return false;
+    }
+    int i = aw.aKT("bizCommand").decodeInt("sameLayerOpen", -1);
+    DGn = i;
+    if (i != -1)
+    {
+      if (DGn == 1)
+      {
+        AppMethodBeat.o(205413);
+        return true;
+      }
+      AppMethodBeat.o(205413);
+      return false;
+    }
+    DGn = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pPU, 0);
+    ac.i("MicroMsg.WebViewUtil", "useSameLayerForVideo useSameLayer=%d", new Object[] { Integer.valueOf(DGn) });
+    if (DGn == 1)
+    {
+      AppMethodBeat.o(205413);
+      return true;
+    }
+    AppMethodBeat.o(205413);
+    return false;
+  }
+  
   @Deprecated
   public static PackageInfo getPackageInfo(Context paramContext, String paramString)
   {
     AppMethodBeat.i(103158);
-    paramContext = com.tencent.mm.plugin.appbrand.aa.b.getPackageInfo(paramContext, paramString);
+    paramContext = com.tencent.mm.plugin.appbrand.z.b.getPackageInfo(paramContext, paramString);
     AppMethodBeat.o(103158);
     return paramContext;
   }
   
-  public static String kG(String paramString1, String paramString2)
+  public static String ld(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103166);
-    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
     {
-      ad.e("MicroMsg.WebViewUtil", "genJsCode fail, invalid argument, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
+      ac.e("MicroMsg.WebViewUtil", "genJsCode fail, invalid argument, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(103166);
       return null;
     }
-    ad.d("MicroMsg.WebViewUtil", "genJsCode, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
+    ac.d("MicroMsg.WebViewUtil", "genJsCode, scheme = %s, jsCode = %s", new Object[] { paramString1, paramString2 });
     paramString1 = "document.getElementById('_edw_iframe_').src = '" + paramString1 + "' + " + paramString2;
     AppMethodBeat.o(103166);
     return paramString1;
@@ -510,33 +505,33 @@ public final class x
   
   public static abstract interface a
   {
-    public abstract void JK(String paramString);
+    public abstract void NR(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract void aCT(String paramString);
+    public abstract void aIk(String paramString);
   }
   
   static final class c
-    implements be.a
+    implements bd.a
   {
-    private static Pattern Cob;
-    private static Pattern Coc;
-    private String Cod;
-    private String Coe;
-    private x.a Cof;
+    private static Pattern DGu;
+    private static Pattern DGv;
+    private String DGw;
+    private String DGx;
+    private x.a DGy;
     private Context context;
-    private String gFC;
+    private String hgd;
     private String imagePath;
-    private boolean nMt;
     private int opType;
+    private boolean opt;
     
     static
     {
       AppMethodBeat.i(103154);
-      Cob = Pattern.compile("image/[A-Za-z0-9]+");
-      Coc = Pattern.compile("filename=[A-Za-z0-9@.]+.[A-Za-z0-9]+");
+      DGu = Pattern.compile("image/[A-Za-z0-9]+");
+      DGv = Pattern.compile("filename=[A-Za-z0-9@.]+.[A-Za-z0-9]+");
       AppMethodBeat.o(103154);
     }
     
@@ -548,34 +543,34 @@ public final class x
     public c(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, int paramInt, x.a parama)
     {
       this.context = paramContext;
-      this.gFC = paramString1;
-      this.Coe = paramString2;
-      this.nMt = paramBoolean;
+      this.hgd = paramString1;
+      this.DGx = paramString2;
+      this.opt = paramBoolean;
       this.opType = paramInt;
-      this.Cof = parama;
+      this.DGy = parama;
     }
     
     private void a(String paramString1, String paramString2, InputStream paramInputStream)
     {
       AppMethodBeat.i(177338);
-      ad.i("MicroMsg.WebViewUtil", "contentType = %s, dispositionType = %s", new Object[] { paramString1, paramString2 });
+      ac.i("MicroMsg.WebViewUtil", "contentType = %s, dispositionType = %s", new Object[] { paramString1, paramString2 });
       Object localObject2 = null;
       Object localObject1 = localObject2;
-      if (!bt.isNullOrNil(paramString1))
+      if (!bs.isNullOrNil(paramString1))
       {
-        paramString1 = Cob.matcher(paramString1);
+        paramString1 = DGu.matcher(paramString1);
         localObject1 = localObject2;
         if (paramString1.find()) {
           localObject1 = paramString1.group().substring(paramString1.group().lastIndexOf('/') + 1);
         }
       }
       paramString1 = (String)localObject1;
-      if (bt.isNullOrNil((String)localObject1))
+      if (bs.isNullOrNil((String)localObject1))
       {
         paramString1 = (String)localObject1;
-        if (!bt.isNullOrNil(paramString2))
+        if (!bs.isNullOrNil(paramString2))
         {
-          paramString2 = Coc.matcher(paramString2);
+          paramString2 = DGv.matcher(paramString2);
           paramString1 = (String)localObject1;
           if (paramString2.find()) {
             paramString1 = paramString2.group().substring(paramString2.group().lastIndexOf('.') + 1);
@@ -584,9 +579,9 @@ public final class x
       }
       paramString2 = paramString1;
       int i;
-      if (bt.isNullOrNil(paramString1))
+      if (bs.isNullOrNil(paramString1))
       {
-        paramString1 = new v(this.gFC);
+        paramString1 = new v(this.hgd);
         i = paramString1.mPath.lastIndexOf('.');
         if (i != -1) {
           break label223;
@@ -595,8 +590,8 @@ public final class x
       label223:
       for (paramString2 = "jpg";; paramString2 = paramString1.mPath.substring(i + 1))
       {
-        this.imagePath = q.ahd(paramString2);
-        paramString1 = i.cM(this.imagePath, false);
+        this.imagePath = q.alY(paramString2);
+        paramString1 = i.cS(this.imagePath, false);
         paramString2 = new byte[8192];
         for (;;)
         {
@@ -613,7 +608,7 @@ public final class x
         paramString1.close();
         if (this.opType == 0)
         {
-          this.Cod = this.context.getString(2131757969, new Object[] { q.eAT() });
+          this.DGw = this.context.getString(2131757969, new Object[] { q.eQn() });
           q.k(this.imagePath, this.context);
         }
         AppMethodBeat.o(177338);
@@ -623,7 +618,7 @@ public final class x
       {
         for (;;)
         {
-          ad.e("MicroMsg.WebViewUtil", "close os failed : %s", new Object[] { paramString1.getMessage() });
+          ac.e("MicroMsg.WebViewUtil", "close os failed : %s", new Object[] { paramString1.getMessage() });
         }
       }
     }
@@ -650,17 +645,17 @@ public final class x
           }
           catch (Exception paramHttpURLConnection)
           {
-            ad.printErrStackTrace("MicroMsg.WebViewUtil", paramHttpURLConnection, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.WebViewUtil", paramHttpURLConnection, "", new Object[0]);
           }
           localException = localException;
-          ad.e("MicroMsg.WebViewUtil", localException.getMessage());
+          ac.e("MicroMsg.WebViewUtil", localException.getMessage());
         }
         AppMethodBeat.o(184502);
       }
     }
     
     /* Error */
-    private void eBa()
+    private void eQu()
     {
       // Byte code:
       //   0: ldc 204
@@ -668,7 +663,7 @@ public final class x
       //   5: new 206	java/net/URL
       //   8: dup
       //   9: aload_0
-      //   10: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   10: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   13: invokespecial 207	java/net/URL:<init>	(Ljava/lang/String;)V
       //   16: invokevirtual 211	java/net/URL:openConnection	()Ljava/net/URLConnection;
       //   19: checkcast 185	java/net/HttpURLConnection
@@ -679,7 +674,7 @@ public final class x
       //   29: aload_2
       //   30: ldc 218
       //   32: aload_0
-      //   33: getfield 65	com/tencent/mm/pluginsdk/ui/tools/x$c:Coe	Ljava/lang/String;
+      //   33: getfield 65	com/tencent/mm/pluginsdk/ui/tools/x$c:DGx	Ljava/lang/String;
       //   36: invokevirtual 221	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
       //   39: aload_2
       //   40: iconst_1
@@ -716,15 +711,15 @@ public final class x
       //   102: iconst_0
       //   103: aload_3
       //   104: aastore
-      //   105: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   105: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   108: aload_3
-      //   109: invokestatic 91	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   109: invokestatic 91	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   112: ifne +23 -> 135
       //   115: aload_0
       //   116: aload_3
-      //   117: putfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   117: putfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   120: aload_0
-      //   121: invokespecial 240	com/tencent/mm/pluginsdk/ui/tools/x$c:eBa	()V
+      //   121: invokespecial 240	com/tencent/mm/pluginsdk/ui/tools/x$c:eQu	()V
       //   124: aload_2
       //   125: aconst_null
       //   126: invokestatic 242	com/tencent/mm/pluginsdk/ui/tools/x$c:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
@@ -736,7 +731,7 @@ public final class x
       //   137: getfield 61	com/tencent/mm/pluginsdk/ui/tools/x$c:context	Landroid/content/Context;
       //   140: ldc 243
       //   142: invokevirtual 245	android/content/Context:getString	(I)Ljava/lang/String;
-      //   145: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:Cod	Ljava/lang/String;
+      //   145: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:DGw	Ljava/lang/String;
       //   148: aload_2
       //   149: aconst_null
       //   150: invokestatic 242	com/tencent/mm/pluginsdk/ui/tools/x$c:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
@@ -776,7 +771,7 @@ public final class x
       //   210: aload 4
       //   212: invokevirtual 178	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   215: aastore
-      //   216: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   216: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   219: aload_3
       //   220: aload_2
       //   221: invokestatic 242	com/tencent/mm/pluginsdk/ui/tools/x$c:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
@@ -866,7 +861,7 @@ public final class x
     }
     
     /* Error */
-    public final boolean aus()
+    public final boolean aBj()
     {
       // Byte code:
       //   0: aconst_null
@@ -876,43 +871,43 @@ public final class x
       //   6: ldc_w 256
       //   9: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   12: aload_0
-      //   13: getfield 67	com/tencent/mm/pluginsdk/ui/tools/x$c:nMt	Z
+      //   13: getfield 67	com/tencent/mm/pluginsdk/ui/tools/x$c:opt	Z
       //   16: ifne +25 -> 41
       //   19: aload_0
       //   20: aload_0
       //   21: getfield 61	com/tencent/mm/pluginsdk/ui/tools/x$c:context	Landroid/content/Context;
       //   24: ldc_w 257
       //   27: invokevirtual 245	android/content/Context:getString	(I)Ljava/lang/String;
-      //   30: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:Cod	Ljava/lang/String;
+      //   30: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:DGw	Ljava/lang/String;
       //   33: ldc_w 256
       //   36: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   39: iconst_1
       //   40: ireturn
       //   41: aload_0
-      //   42: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
-      //   45: invokestatic 91	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   42: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
+      //   45: invokestatic 91	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   48: ifeq +11 -> 59
       //   51: ldc_w 256
       //   54: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   57: iconst_0
       //   58: ireturn
       //   59: aload_0
-      //   60: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   60: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   63: invokestatic 262	android/webkit/URLUtil:isDataUrl	(Ljava/lang/String;)Z
       //   66: ifeq +356 -> 422
       //   69: ldc 125
       //   71: astore_2
       //   72: aload_0
-      //   73: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
-      //   76: invokestatic 91	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   73: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
+      //   76: invokestatic 91	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   79: ifne +16 -> 95
       //   82: aload_0
-      //   83: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   83: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   86: ldc_w 264
       //   89: invokevirtual 267	java/lang/String:startsWith	(Ljava/lang/String;)Z
       //   92: ifne +19 -> 111
       //   95: aload_0
-      //   96: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   96: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   99: ldc_w 264
       //   102: invokevirtual 270	java/lang/String:toUpperCase	()Ljava/lang/String;
       //   105: invokevirtual 267	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -921,14 +916,14 @@ public final class x
       //   114: astore_2
       //   115: aload_0
       //   116: aload_2
-      //   117: invokestatic 131	com/tencent/mm/pluginsdk/ui/tools/q:ahd	(Ljava/lang/String;)Ljava/lang/String;
+      //   117: invokestatic 131	com/tencent/mm/pluginsdk/ui/tools/q:alY	(Ljava/lang/String;)Ljava/lang/String;
       //   120: putfield 133	com/tencent/mm/pluginsdk/ui/tools/x$c:imagePath	Ljava/lang/String;
       //   123: aload 4
       //   125: astore_3
       //   126: aload 5
       //   128: astore_2
       //   129: aload_0
-      //   130: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   130: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   133: ldc_w 274
       //   136: invokevirtual 278	java/lang/String:indexOf	(Ljava/lang/String;)I
       //   139: istore_1
@@ -940,12 +935,12 @@ public final class x
       //   149: astore_2
       //   150: aload_0
       //   151: aload_0
-      //   152: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   152: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   155: iload_1
       //   156: bipush 7
       //   158: iadd
       //   159: invokevirtual 115	java/lang/String:substring	(I)Ljava/lang/String;
-      //   162: putfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   162: putfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   165: aload 4
       //   167: astore_3
       //   168: aload 5
@@ -953,14 +948,14 @@ public final class x
       //   171: aload_0
       //   172: getfield 133	com/tencent/mm/pluginsdk/ui/tools/x$c:imagePath	Ljava/lang/String;
       //   175: iconst_0
-      //   176: invokestatic 139	com/tencent/mm/vfs/i:cM	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+      //   176: invokestatic 139	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/OutputStream;
       //   179: astore 4
       //   181: aload 4
       //   183: astore_3
       //   184: aload 4
       //   186: astore_2
       //   187: aload_0
-      //   188: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   188: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   191: iconst_0
       //   192: invokestatic 284	android/util/Base64:decode	(Ljava/lang/String;I)[B
       //   195: astore 5
@@ -997,10 +992,10 @@ public final class x
       //   251: anewarray 4	java/lang/Object
       //   254: dup
       //   255: iconst_0
-      //   256: invokestatic 161	com/tencent/mm/pluginsdk/ui/tools/q:eAT	()Ljava/lang/String;
+      //   256: invokestatic 161	com/tencent/mm/pluginsdk/ui/tools/q:eQn	()Ljava/lang/String;
       //   259: aastore
       //   260: invokevirtual 167	android/content/Context:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-      //   263: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:Cod	Ljava/lang/String;
+      //   263: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:DGw	Ljava/lang/String;
       //   266: aload 4
       //   268: astore_3
       //   269: aload 4
@@ -1028,7 +1023,7 @@ public final class x
       //   313: aload_2
       //   314: invokevirtual 178	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   317: aastore
-      //   318: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   318: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   321: goto -28 -> 293
       //   324: astore 4
       //   326: aload_3
@@ -1042,7 +1037,7 @@ public final class x
       //   339: aload 4
       //   341: invokevirtual 178	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   344: aastore
-      //   345: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   345: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   348: aload_3
       //   349: ifnull -56 -> 293
       //   352: aload_3
@@ -1058,7 +1053,7 @@ public final class x
       //   371: aload_2
       //   372: invokevirtual 178	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   375: aastore
-      //   376: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   376: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   379: goto -86 -> 293
       //   382: astore_3
       //   383: aload_2
@@ -1079,16 +1074,16 @@ public final class x
       //   411: aload_2
       //   412: invokevirtual 178	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   415: aastore
-      //   416: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   416: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   419: goto -28 -> 391
       //   422: aload_0
-      //   423: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   423: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   426: invokestatic 294	android/webkit/URLUtil:isHttpsUrl	(Ljava/lang/String;)Z
       //   429: ifeq +237 -> 666
       //   432: new 206	java/net/URL
       //   435: dup
       //   436: aload_0
-      //   437: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   437: getfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   440: invokespecial 207	java/net/URL:<init>	(Ljava/lang/String;)V
       //   443: invokevirtual 211	java/net/URL:openConnection	()Ljava/net/URLConnection;
       //   446: checkcast 296	javax/net/ssl/HttpsURLConnection
@@ -1099,7 +1094,7 @@ public final class x
       //   456: aload_2
       //   457: ldc 218
       //   459: aload_0
-      //   460: getfield 65	com/tencent/mm/pluginsdk/ui/tools/x$c:Coe	Ljava/lang/String;
+      //   460: getfield 65	com/tencent/mm/pluginsdk/ui/tools/x$c:DGx	Ljava/lang/String;
       //   463: invokevirtual 298	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
       //   466: aload_2
       //   467: iconst_1
@@ -1136,15 +1131,15 @@ public final class x
       //   529: iconst_0
       //   530: aload_3
       //   531: aastore
-      //   532: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   532: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   535: aload_3
-      //   536: invokestatic 91	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+      //   536: invokestatic 91	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
       //   539: ifne +20 -> 559
       //   542: aload_0
       //   543: aload_3
-      //   544: putfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:gFC	Ljava/lang/String;
+      //   544: putfield 63	com/tencent/mm/pluginsdk/ui/tools/x$c:hgd	Ljava/lang/String;
       //   547: aload_0
-      //   548: invokespecial 240	com/tencent/mm/pluginsdk/ui/tools/x$c:eBa	()V
+      //   548: invokespecial 240	com/tencent/mm/pluginsdk/ui/tools/x$c:eQu	()V
       //   551: aload_2
       //   552: aconst_null
       //   553: invokestatic 242	com/tencent/mm/pluginsdk/ui/tools/x$c:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
@@ -1154,7 +1149,7 @@ public final class x
       //   561: getfield 61	com/tencent/mm/pluginsdk/ui/tools/x$c:context	Landroid/content/Context;
       //   564: ldc 243
       //   566: invokevirtual 245	android/content/Context:getString	(I)Ljava/lang/String;
-      //   569: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:Cod	Ljava/lang/String;
+      //   569: putfield 169	com/tencent/mm/pluginsdk/ui/tools/x$c:DGw	Ljava/lang/String;
       //   572: aload_2
       //   573: aconst_null
       //   574: invokestatic 242	com/tencent/mm/pluginsdk/ui/tools/x$c:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
@@ -1190,7 +1185,7 @@ public final class x
       //   629: aload 4
       //   631: invokevirtual 178	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   634: aastore
-      //   635: invokestatic 181	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   635: invokestatic 181	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   638: aload_3
       //   639: aload_2
       //   640: invokestatic 242	com/tencent/mm/pluginsdk/ui/tools/x$c:a	(Ljava/net/HttpURLConnection;Ljava/io/InputStream;)V
@@ -1208,7 +1203,7 @@ public final class x
       //   663: aload 4
       //   665: athrow
       //   666: aload_0
-      //   667: invokespecial 240	com/tencent/mm/pluginsdk/ui/tools/x$c:eBa	()V
+      //   667: invokespecial 240	com/tencent/mm/pluginsdk/ui/tools/x$c:eQu	()V
       //   670: goto -377 -> 293
       //   673: astore 4
       //   675: aconst_null
@@ -1311,17 +1306,17 @@ public final class x
       //   591	604	717	java/lang/Exception
     }
     
-    public final boolean aut()
+    public final boolean aBk()
     {
       AppMethodBeat.i(103149);
       if (1 == this.opType)
       {
-        this.Cof.JK(this.imagePath);
+        this.DGy.NR(this.imagePath);
         AppMethodBeat.o(103149);
         return true;
       }
-      if (!bt.isNullOrNil(this.Cod)) {
-        Toast.makeText(this.context, this.Cod, 1).show();
+      if (!bs.isNullOrNil(this.DGw)) {
+        Toast.makeText(this.context, this.DGw, 1).show();
       }
       for (;;)
       {

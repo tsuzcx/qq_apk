@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.background.a;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -11,25 +11,25 @@ import java.util.Arrays;
 public final class b
   extends a
 {
-  private final float[] veB;
-  private final float[] veC;
-  private FloatBuffer veD;
-  private FloatBuffer veE;
-  private int veF;
-  private int veG;
-  private int veH;
-  private int veI;
-  private int veJ;
+  private final float[] wnp;
+  private final float[] wnq;
+  private FloatBuffer wnr;
+  private FloatBuffer wns;
+  private int wnt;
+  private int wnu;
+  private int wnv;
+  private int wnw;
+  private int wnx;
   
   public b()
   {
     AppMethodBeat.i(74995);
-    this.veB = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
-    this.veC = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    this.wnp = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
+    this.wnq = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
     AppMethodBeat.o(74995);
   }
   
-  public static void dhb()
+  public static void duJ()
   {
     AppMethodBeat.i(75000);
     GLES20.glDrawArrays(5, 0, 4);
@@ -40,13 +40,13 @@ public final class b
   {
     AppMethodBeat.i(75002);
     long l = System.currentTimeMillis();
-    this.veD = ByteBuffer.allocateDirect(this.veB.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.veD.put(this.veB).position(0);
-    GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.veD);
+    this.wnr = ByteBuffer.allocateDirect(this.wnp.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.wnr.put(this.wnp).position(0);
+    GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.wnr);
     GLES20.glEnableVertexAttribArray(0);
     float f7 = paramInt1 / paramInt3;
     float f8 = paramInt2 / paramInt4;
-    float[] arrayOfFloat = Arrays.copyOf(this.veC, this.veC.length);
+    float[] arrayOfFloat = Arrays.copyOf(this.wnq, this.wnq.length);
     float f3 = 0.0F;
     float f1 = 0.0F;
     float f2;
@@ -68,9 +68,9 @@ public final class b
       arrayOfFloat[5] = f1;
       arrayOfFloat[6] = f3;
       arrayOfFloat[7] = f1;
-      this.veE = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.veE.put(arrayOfFloat).position(0);
-      GLES20.glVertexAttribPointer(2, 2, 5126, false, 0, this.veE);
+      this.wns = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.wns.put(arrayOfFloat).position(0);
+      GLES20.glVertexAttribPointer(2, 2, 5126, false, 0, this.wns);
       GLES20.glEnableVertexAttribArray(2);
       f4 = 0.0F;
       f3 = 1.0F;
@@ -91,9 +91,9 @@ public final class b
       arrayOfFloat[5] = f2;
       arrayOfFloat[6] = f3;
       arrayOfFloat[7] = f2;
-      this.veE = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.veE.put(arrayOfFloat).position(0);
-      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.veE);
+      this.wns = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.wns.put(arrayOfFloat).position(0);
+      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.wns);
       GLES20.glEnableVertexAttribArray(1);
       arrayOfFloat = new float[4];
       arrayOfFloat[0] = paramInt2;
@@ -111,8 +111,8 @@ public final class b
     {
       FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(16).order(ByteOrder.nativeOrder()).asFloatBuffer();
       localFloatBuffer.put(arrayOfFloat).position(0);
-      GLES20.glUniform4fv(this.veJ, 1, localFloatBuffer);
-      ad.i("MicroMsg.Story.FadeImageShader", "scale cost:" + (System.currentTimeMillis() - l));
+      GLES20.glUniform4fv(this.wnx, 1, localFloatBuffer);
+      ac.i("MicroMsg.Story.FadeImageShader", "scale cost:" + (System.currentTimeMillis() - l));
       AppMethodBeat.o(75002);
       return;
       f2 = f3;
@@ -144,17 +144,17 @@ public final class b
     }
   }
   
-  public final void bh(float paramFloat)
+  public final void bo(float paramFloat)
   {
     AppMethodBeat.i(75001);
-    GLES20.glUniform1f(this.veI, paramFloat);
+    GLES20.glUniform1f(this.wnw, paramFloat);
     AppMethodBeat.o(75001);
   }
   
-  public final void dha()
+  public final void duI()
   {
     AppMethodBeat.i(74996);
-    ad.i("MicroMsg.Story.FadeImageShader", "comipleAndLinkProgram");
+    ac.i("MicroMsg.Story.FadeImageShader", "comipleAndLinkProgram");
     int[] arrayOfInt = new int[1];
     int i = loadShader(35633, "attribute vec4 a_position;\nattribute vec2 a_texCoords;\nattribute vec2 a_texBgCoords;\nvarying vec2 v_texCoords;\nvarying vec2 v_texBgCoords;\nuniform mat4 uMVPMatrix; \nvoid main()\n{\n  gl_Position = uMVPMatrix * a_position;\n  v_texCoords = a_texCoords;\n  v_texBgCoords = a_texBgCoords;\n}");
     int j = loadShader(35632, "precision mediump float;\nuniform sampler2D u_Texture;\nuniform sampler2D u_TextureBg;\nvarying vec2 v_texCoords;\nvarying vec2 v_texBgCoords;\nuniform float u_texAlphaRatio;\nuniform vec4 centerPic; // 按top bottom left right来传\nvoid main()\n{\n    vec4 fcolor = vec4(0.0);\n    if (gl_FragCoord.y > centerPic[0] || gl_FragCoord.y < centerPic[1] || \n        gl_FragCoord.x > centerPic[3] || gl_FragCoord.x < centerPic[2]) {\n        // >top <bottom >right <left, 不是中间的图片区域，取背景色\n        fcolor = texture2D(u_TextureBg, v_texBgCoords);\n    } else {\n        fcolor = texture2D(u_Texture, v_texCoords);\n    } \n    fcolor.a *= u_texAlphaRatio;\n    gl_FragColor = fcolor;\n}");
@@ -173,41 +173,41 @@ public final class b
     GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
     if (arrayOfInt[0] == 0)
     {
-      ad.e("MicroMsg.Story.FadeImageShader", "Error linking program:");
-      ad.e("MicroMsg.Story.FadeImageShader", GLES20.glGetProgramInfoLog(k));
+      ac.e("MicroMsg.Story.FadeImageShader", "Error linking program:");
+      ac.e("MicroMsg.Story.FadeImageShader", GLES20.glGetProgramInfoLog(k));
       GLES20.glDeleteProgram(k);
       AppMethodBeat.o(74996);
       return;
     }
-    this.veH = GLES20.glGetUniformLocation(k, "uMVPMatrix");
-    this.veI = GLES20.glGetUniformLocation(k, "u_texAlphaRatio");
-    this.veJ = GLES20.glGetUniformLocation(k, "centerPic");
-    this.veF = GLES20.glGetUniformLocation(k, "u_Texture");
-    this.veG = GLES20.glGetUniformLocation(k, "u_TextureBg");
-    this.vew = k;
+    this.wnv = GLES20.glGetUniformLocation(k, "uMVPMatrix");
+    this.wnw = GLES20.glGetUniformLocation(k, "u_texAlphaRatio");
+    this.wnx = GLES20.glGetUniformLocation(k, "centerPic");
+    this.wnt = GLES20.glGetUniformLocation(k, "u_Texture");
+    this.wnu = GLES20.glGetUniformLocation(k, "u_TextureBg");
+    this.wnk = k;
     AppMethodBeat.o(74996);
   }
   
-  public final void gJ(int paramInt1, int paramInt2)
+  public final void gQ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74997);
     GLES20.glBindTexture(3553, paramInt1);
-    GLES20.glUniform1i(this.veF, paramInt2);
+    GLES20.glUniform1i(this.wnt, paramInt2);
     AppMethodBeat.o(74997);
   }
   
-  public final void gK(int paramInt1, int paramInt2)
+  public final void gR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74998);
     GLES20.glBindTexture(3553, paramInt1);
-    GLES20.glUniform1i(this.veG, paramInt2);
+    GLES20.glUniform1i(this.wnu, paramInt2);
     AppMethodBeat.o(74998);
   }
   
   public final void o(float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(74999);
-    GLES20.glUniformMatrix4fv(this.veH, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.wnv, 1, false, paramArrayOfFloat, 0);
     AppMethodBeat.o(74999);
   }
 }

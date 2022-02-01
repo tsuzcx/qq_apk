@@ -6,10 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.aw;
 import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.ay;
 import d.g.a.b;
 import d.g.b.k;
 import d.l;
@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
 public final class d
 {
   private static final String N(Bundle paramBundle)
@@ -67,12 +67,12 @@ public final class d
     }
   }
   
-  public static final boolean a(ax paramax, String paramString, long paramLong)
+  public static final boolean a(aw paramaw, String paramString, long paramLong)
   {
     AppMethodBeat.i(6577);
-    k.h(paramax, "$this$isExpire");
+    k.h(paramaw, "$this$isExpire");
     k.h(paramString, "key");
-    boolean bool = as.au(paramax.getLong(paramString, 0L), paramLong);
+    boolean bool = ar.at(paramaw.getLong(paramString, 0L), paramLong);
     AppMethodBeat.o(6577);
     return bool;
   }
@@ -86,12 +86,12 @@ public final class d
     return paramIntent;
   }
   
-  public static final void b(ax paramax, String paramString)
+  public static final void b(aw paramaw, String paramString)
   {
     AppMethodBeat.i(6576);
-    k.h(paramax, "$this$putNow");
+    k.h(paramaw, "$this$putNow");
     k.h(paramString, "key");
-    paramax.putLong(paramString, System.currentTimeMillis());
+    paramaw.putLong(paramString, System.currentTimeMillis());
     AppMethodBeat.o(6576);
   }
   
@@ -112,7 +112,7 @@ public final class d
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
       k.g(localRunningAppProcessInfo, "info");
-      if (((Boolean)paramb.aA(localRunningAppProcessInfo)).booleanValue())
+      if (((Boolean)paramb.ay(localRunningAppProcessInfo)).booleanValue())
       {
         AppMethodBeat.o(6578);
         return true;
@@ -122,26 +122,26 @@ public final class d
     return false;
   }
   
-  public static final String bDp()
+  public static final String bKC()
   {
     AppMethodBeat.i(6579);
-    Context localContext = aj.getContext();
-    if (ay.isWifi(localContext))
+    Context localContext = ai.getContext();
+    if (ax.isWifi(localContext))
     {
       AppMethodBeat.o(6579);
       return "wifi";
     }
-    if (ay.is4G(localContext))
+    if (ax.is4G(localContext))
     {
       AppMethodBeat.o(6579);
       return "4g";
     }
-    if (ay.is3G(localContext))
+    if (ax.is3G(localContext))
     {
       AppMethodBeat.o(6579);
       return "3g";
     }
-    if (ay.is2G(localContext))
+    if (ax.is2G(localContext))
     {
       AppMethodBeat.o(6579);
       return "2g";

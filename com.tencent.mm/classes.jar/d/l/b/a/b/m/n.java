@@ -12,37 +12,37 @@ public abstract class n
 {
   public abstract n b(aj paramaj);
   
-  protected abstract aj fBP();
-  
-  public boolean fBT()
+  public final h fQN()
   {
-    return fBP().fBT();
+    return fUt().fQN();
   }
   
-  public final List<av> fIT()
+  public g fQj()
   {
-    return fBP().fIT();
+    return fUt().fQj();
   }
   
-  public final at fIW()
+  protected abstract aj fUt();
+  
+  public boolean fUx()
   {
-    return fBP().fIW();
+    return fUt().fUx();
   }
   
-  public g fxF()
+  public final List<av> gbw()
   {
-    return fBP().fxF();
+    return fUt().gbw();
   }
   
-  public final h fyj()
+  public final at gbz()
   {
-    return fBP().fyj();
+    return fUt().gbz();
   }
   
   public aj i(i parami)
   {
     k.h(parami, "kotlinTypeRefiner");
-    parami = parami.aL((ab)fBP());
+    parami = parami.aL((ab)fUt());
     if (parami == null) {
       throw new v("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
     }
@@ -51,7 +51,7 @@ public abstract class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.n
  * JD-Core Version:    0.7.0.1
  */

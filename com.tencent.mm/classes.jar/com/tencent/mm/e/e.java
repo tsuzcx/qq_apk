@@ -13,15 +13,15 @@ import android.text.SpannableString;
 import android.view.MotionEvent;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.f;
 import com.tencent.mm.api.p;
 import com.tencent.mm.c.c.1;
 import com.tencent.mm.c.c.2;
 import com.tencent.mm.cache.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.ap;
+import com.tencent.mm.z.f;
 import java.util.ListIterator;
 import java.util.Stack;
 import java.util.Timer;
@@ -30,110 +30,110 @@ import java.util.TimerTask;
 public final class e
   extends b<d>
 {
-  private boolean cSB;
-  private volatile boolean cSC;
-  private TimerTask cSD;
-  private Rect cSE;
-  private float cSF;
-  private float cSG;
-  private int cSH;
-  private int cSI;
-  private boolean cSJ;
-  private com.tencent.mm.c.c cSK;
-  public com.tencent.mm.ag.a cSL;
-  boolean cSM;
-  private boolean cSd;
+  private boolean cPX;
+  private boolean cPY;
+  private volatile boolean cPZ;
+  private TimerTask cQa;
+  private Rect cQb;
+  private float cQc;
+  private float cQd;
+  private int cQe;
+  private int cQf;
+  private boolean cQg;
+  private com.tencent.mm.c.c cQh;
+  public com.tencent.mm.af.a cQi;
+  boolean cQj;
   private Timer mTimer;
-  Matrix uv;
+  Matrix vt;
   
   public e()
   {
     AppMethodBeat.i(9156);
     this.mTimer = new Timer();
-    this.cSC = false;
-    this.cSE = new Rect();
-    this.cSB = false;
-    this.cSd = false;
-    this.cSF = 0.0F;
-    this.cSG = 0.0F;
-    this.cSH = 0;
-    this.cSI = 0;
-    this.cSJ = false;
-    this.cSK = new com.tencent.mm.c.c(this);
-    this.uv = new Matrix();
-    this.cSM = false;
+    this.cPZ = false;
+    this.cQb = new Rect();
+    this.cPX = false;
+    this.cPY = false;
+    this.cQc = 0.0F;
+    this.cQd = 0.0F;
+    this.cQe = 0;
+    this.cQf = 0;
+    this.cQg = false;
+    this.cQh = new com.tencent.mm.c.c(this);
+    this.vt = new Matrix();
+    this.cQj = false;
     AppMethodBeat.o(9156);
   }
   
-  private com.tencent.mm.aa.c Mr()
+  private com.tencent.mm.z.c Mp()
   {
     Object localObject1 = null;
     AppMethodBeat.i(9162);
-    Object localObject2 = (d)Md();
+    Object localObject2 = (d)Mb();
     if (localObject2 == null)
     {
       AppMethodBeat.o(9162);
       return null;
     }
-    ListIterator localListIterator = ((d)localObject2).UA();
+    ListIterator localListIterator = ((d)localObject2).Vv();
     while (localListIterator.hasPrevious())
     {
-      localObject2 = (com.tencent.mm.aa.c)localListIterator.previous();
-      if (((com.tencent.mm.aa.c)localObject2).fsk) {
+      localObject2 = (com.tencent.mm.z.c)localListIterator.previous();
+      if (((com.tencent.mm.z.c)localObject2).fvR) {
         localObject1 = localObject2;
       }
-      ((com.tencent.mm.aa.c)localObject2).setSelected(false);
+      ((com.tencent.mm.z.c)localObject2).setSelected(false);
     }
     AppMethodBeat.o(9162);
     return localObject1;
   }
   
-  private void Ms()
+  private void Mq()
   {
     AppMethodBeat.i(9163);
-    ad.d("MicroMsg.EmojiAndTextArtist", "[registerFocusTask]");
-    if (this.cSD != null) {
-      this.cSD.cancel();
+    ac.d("MicroMsg.EmojiAndTextArtist", "[registerFocusTask]");
+    if (this.cQa != null) {
+      this.cQa.cancel();
     }
-    if (this.cSC)
+    if (this.cPZ)
     {
-      ad.w("MicroMsg.EmojiAndTextArtist", "[registerFocusTask] isTimerCancel=true");
+      ac.w("MicroMsg.EmojiAndTextArtist", "[registerFocusTask] isTimerCancel=true");
       AppMethodBeat.o(9163);
       return;
     }
-    this.cSD = new a(this);
-    this.mTimer.schedule(this.cSD, 1500L);
+    this.cQa = new a(this);
+    this.mTimer.schedule(this.cQa, 1500L);
     AppMethodBeat.o(9163);
   }
   
-  private void Mt()
+  private void Mr()
   {
     AppMethodBeat.i(9164);
-    ad.d("MicroMsg.EmojiAndTextArtist", "[unRegisterFocusTask]");
-    if (this.cSD != null) {
-      this.cSD.cancel();
+    ac.d("MicroMsg.EmojiAndTextArtist", "[unRegisterFocusTask]");
+    if (this.cQa != null) {
+      this.cQa.cancel();
     }
     AppMethodBeat.o(9164);
   }
   
-  private com.tencent.mm.aa.c u(float paramFloat1, float paramFloat2)
+  private com.tencent.mm.z.c u(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(9161);
-    if (Md() == null)
+    if (Mb() == null)
     {
-      ad.e("MicroMsg.EmojiAndTextArtist", "[isContainsItem] getCache is null!");
+      ac.e("MicroMsg.EmojiAndTextArtist", "[isContainsItem] getCache is null!");
       AppMethodBeat.o(9161);
       return null;
     }
-    ListIterator localListIterator = ((d)Md()).UA();
-    com.tencent.mm.aa.c localc;
+    ListIterator localListIterator = ((d)Mb()).Vv();
+    com.tencent.mm.z.c localc;
     float[] arrayOfFloat;
     do
     {
       if (!localListIterator.hasPrevious()) {
         break;
       }
-      localc = (com.tencent.mm.aa.c)localListIterator.previous();
+      localc = (com.tencent.mm.z.c)localListIterator.previous();
       arrayOfFloat = s(paramFloat1, paramFloat2);
     } while (!localc.v(arrayOfFloat[0], arrayOfFloat[1]));
     for (;;)
@@ -144,156 +144,117 @@ public final class e
     }
   }
   
-  public final a Mb()
+  public final a LZ()
   {
-    return a.cRu;
+    return a.cOP;
   }
   
-  public final void Mc() {}
+  public final void Ma() {}
   
   public final void a(SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(9165);
-    ad.i("MicroMsg.EmojiAndTextArtist", "[addItem] text:%s", new Object[] { paramSpannableString });
-    if (bt.ai(paramSpannableString))
+    ac.i("MicroMsg.EmojiAndTextArtist", "[addItem] text:%s", new Object[] { paramSpannableString });
+    if (bs.aj(paramSpannableString))
     {
       AppMethodBeat.o(9165);
       return;
     }
-    d locald = (d)Md();
+    d locald = (d)Mb();
     if (locald == null)
     {
-      ad.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+      ac.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
       AppMethodBeat.o(9165);
       return;
     }
-    Mt();
     Mr();
-    ci(false);
+    Mp();
+    ck(false);
     Object localObject = getBoardRect();
-    paramSpannableString = new f(aj.getContext(), getMainMatrix(), locald.aj(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
+    paramSpannableString = new f(ai.getContext(), getMainMatrix(), locald.aj(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
     paramSpannableString.setSelected(true);
-    paramSpannableString.gaD = true;
+    paramSpannableString.gfj = true;
     localObject = s(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
-    paramSpannableString.a(localObject[0], localObject[1], this.cRz.getInitScale() / this.cRz.getCurScale(), (int)getRotation());
+    paramSpannableString.a(localObject[0], localObject[1], this.cOU.getInitScale() / this.cOU.getCurScale(), (int)getRotation());
     locald.a(paramSpannableString);
-    Mk();
-    Ms();
+    Mi();
+    Mq();
     AppMethodBeat.o(9165);
   }
   
   public final void a(f paramf, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(9167);
-    d locald = (d)Md();
+    d locald = (d)Mb();
     if (locald == null)
     {
-      ad.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+      ac.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
       AppMethodBeat.o(9167);
       return;
     }
-    Object localObject = paramf.gav;
-    ad.i("MicroMsg.EmojiAndTextCache", "[delete] id:%s", new Object[] { localObject });
-    com.tencent.mm.aa.c localc;
-    if ((locald.fmC != null) && (locald.fmC.size() > 0))
+    Object localObject = paramf.gfb;
+    ac.i("MicroMsg.EmojiAndTextCache", "[delete] id:%s", new Object[] { localObject });
+    com.tencent.mm.z.c localc;
+    if ((locald.fpX != null) && (locald.fpX.size() > 0))
     {
-      localc = (com.tencent.mm.aa.c)locald.fmC.peek();
-      if (!localc.gav.equalsIgnoreCase((String)localObject)) {
+      localc = (com.tencent.mm.z.c)locald.fpX.peek();
+      if (!localc.gfb.equalsIgnoreCase((String)localObject)) {
         break label266;
       }
-      locald.fmC.pop();
+      locald.fpX.pop();
     }
     for (;;)
     {
       paramf.setSelected(true);
-      paramf.gaD = true;
-      Mt();
+      paramf.gfj = true;
       Mr();
-      ci(true);
-      if (!bt.ai(paramSpannableString))
+      Mp();
+      ck(true);
+      if (!bs.aj(paramSpannableString))
       {
         localObject = getBoardRect();
-        paramSpannableString = new f(aj.getContext(), getMainMatrix(), locald.aj(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
+        paramSpannableString = new f(ai.getContext(), getMainMatrix(), locald.aj(true), (Rect)localObject, paramSpannableString, paramInt1, paramInt2);
         paramSpannableString.setSelected(true);
-        localObject = paramf.gay;
-        paramSpannableString.a(((PointF)localObject).x, ((PointF)localObject).y, this.cRz.getInitScale() / this.cRz.getCurScale(), paramf.mRotation);
-        paramSpannableString.cHQ = paramf.cHQ;
+        localObject = paramf.gfe;
+        paramSpannableString.a(((PointF)localObject).x, ((PointF)localObject).y, this.cOU.getInitScale() / this.cOU.getCurScale(), paramf.mRotation);
+        paramSpannableString.cEY = paramf.cEY;
         locald.a(paramSpannableString);
       }
-      Mk();
-      Ms();
+      Mi();
+      Mq();
       AppMethodBeat.o(9167);
       return;
       label266:
-      ad.e("MicroMsg.EmojiAndTextCache", "[delete] id:%s emojiItem:%s", new Object[] { localObject, localc });
+      ac.e("MicroMsg.EmojiAndTextCache", "[delete] id:%s emojiItem:%s", new Object[] { localObject, localc });
     }
   }
   
   public final void b(p paramp)
   {
     AppMethodBeat.i(9166);
-    ad.i("MicroMsg.EmojiAndTextArtist", "[addEmojiItem] item:%s", new Object[] { paramp });
-    d locald = (d)Md();
+    ac.i("MicroMsg.EmojiAndTextArtist", "[addEmojiItem] item:%s", new Object[] { paramp });
+    d locald = (d)Mb();
     if (locald == null)
     {
-      ad.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
+      ac.w("MicroMsg.EmojiAndTextArtist", "cache is null!");
       AppMethodBeat.o(9166);
       return;
     }
-    Mt();
     Mr();
-    ci(false);
+    Mp();
+    ck(false);
     Object localObject = getBoardRect();
-    paramp = new com.tencent.mm.aa.c(aj.getContext(), getMainMatrix(), locald.aj(true), paramp, (Rect)localObject);
+    paramp = new com.tencent.mm.z.c(ai.getContext(), getMainMatrix(), locald.aj(true), paramp, (Rect)localObject);
     paramp.setSelected(true);
     localObject = s(((Rect)localObject).centerX(), ((Rect)localObject).centerY());
-    paramp.a(localObject[0], localObject[1], this.cRz.getInitScale() / this.cRz.getCurScale(), (int)getRotation());
+    paramp.a(localObject[0], localObject[1], this.cOU.getInitScale() / this.cOU.getCurScale(), (int)getRotation());
     locald.a(paramp);
-    Mk();
-    Ms();
+    Mi();
+    Mq();
     AppMethodBeat.o(9166);
   }
   
-  public final void onAlive()
-  {
-    AppMethodBeat.i(9157);
-    super.onAlive();
-    int i = (int)aj.getResources().getDimension(2131166754);
-    int j = (int)aj.getResources().getDimension(2131166755);
-    int k = ap.eb(this.cRz.eBt().getContext());
-    this.cSE.set((getBoardRect().width() - j) / 2, getBoardRect().height() - i - k, getBoardRect().width() - k, (j + getBoardRect().width()) / 2);
-    if (this.cSC) {
-      this.mTimer = new Timer();
-    }
-    AppMethodBeat.o(9157);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(9160);
-    super.onDestroy();
-    this.cSC = true;
-    Mt();
-    this.mTimer.cancel();
-    AppMethodBeat.o(9160);
-  }
-  
-  public final void onDraw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(9158);
-    d(paramCanvas);
-    Object localObject = (d)Md();
-    if (localObject != null)
-    {
-      localObject = ((d)localObject).Uz();
-      if ((localObject != null) && (((com.tencent.mm.aa.c)localObject).fsk)) {
-        ((com.tencent.mm.aa.c)localObject).draw(paramCanvas);
-      }
-    }
-    AppMethodBeat.o(9158);
-  }
-  
-  public final boolean p(MotionEvent paramMotionEvent)
+  public final boolean n(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9159);
     boolean bool;
@@ -303,17 +264,17 @@ public final class e
     case 3: 
     case 4: 
     default: 
-      super.p(paramMotionEvent);
-      bool = this.cSB;
+      super.n(paramMotionEvent);
+      bool = this.cPX;
       AppMethodBeat.o(9159);
       return bool;
     case 0: 
-      Mt();
+      Mr();
       localObject1 = u(paramMotionEvent.getX(), paramMotionEvent.getY());
       if (localObject1 == null)
       {
-        this.cSB = false;
-        if (Md() == null) {
+        this.cPX = false;
+        if (Mb() == null) {
           bool = false;
         }
       }
@@ -321,35 +282,35 @@ public final class e
     }
     while (bool)
     {
-      Mr();
-      ci(false);
-      Mk();
+      Mp();
+      ck(false);
+      Mi();
       break;
-      localObject1 = ((d)Md()).Uz();
+      localObject1 = ((d)Mb()).Vu();
       if (localObject1 != null)
       {
-        bool = ((com.tencent.mm.aa.c)localObject1).fsk;
+        bool = ((com.tencent.mm.z.c)localObject1).fvR;
         continue;
-        bool = ((com.tencent.mm.aa.c)localObject1).gaD;
-        Mr();
-        this.cSB = true;
-        ((com.tencent.mm.aa.c)localObject1).setSelected(true);
-        ((com.tencent.mm.aa.c)localObject1).gaD = bool;
-        ((com.tencent.mm.aa.c)localObject1).gaA.set(((com.tencent.mm.aa.c)localObject1).gay);
-        ((d)Md()).b((com.tencent.mm.aa.c)localObject1);
-        ci(true);
-        Mk();
+        bool = ((com.tencent.mm.z.c)localObject1).gfj;
+        Mp();
+        this.cPX = true;
+        ((com.tencent.mm.z.c)localObject1).setSelected(true);
+        ((com.tencent.mm.z.c)localObject1).gfj = bool;
+        ((com.tencent.mm.z.c)localObject1).gfg.set(((com.tencent.mm.z.c)localObject1).gfe);
+        ((d)Mb()).b((com.tencent.mm.z.c)localObject1);
+        ck(true);
+        Mi();
         break;
-        if (this.cSB)
+        if (this.cPX)
         {
-          this.cSF = q(paramMotionEvent);
-          this.cSH = ((int)Math.toDegrees(Math.atan2(r(paramMotionEvent)[0], r(paramMotionEvent)[1])));
-          localObject1 = ((d)Md()).Uz();
-          if ((localObject1 == null) || (!((com.tencent.mm.aa.c)localObject1).fsk)) {
+          this.cQc = o(paramMotionEvent);
+          this.cQe = ((int)Math.toDegrees(Math.atan2(p(paramMotionEvent)[0], p(paramMotionEvent)[1])));
+          localObject1 = ((d)Mb()).Vu();
+          if ((localObject1 == null) || (!((com.tencent.mm.z.c)localObject1).fvR)) {
             break;
           }
-          this.cSI = ((com.tencent.mm.aa.c)localObject1).mRotation;
-          this.cSG = ((com.tencent.mm.aa.c)localObject1).cHQ;
+          this.cQf = ((com.tencent.mm.z.c)localObject1).mRotation;
+          this.cQd = ((com.tencent.mm.z.c)localObject1).cEY;
           break;
         }
         localObject1 = new int[2];
@@ -362,63 +323,63 @@ public final class e
         if (localObject1 == null) {
           break;
         }
-        bool = ((com.tencent.mm.aa.c)localObject1).gaD;
-        Mr();
-        ((com.tencent.mm.aa.c)localObject1).gaD = bool;
-        this.cSB = true;
-        ((com.tencent.mm.aa.c)localObject1).setSelected(true);
-        ((d)Md()).b((com.tencent.mm.aa.c)localObject1);
-        this.cSF = q(paramMotionEvent);
-        this.cSH = ((int)Math.toDegrees(Math.atan2(r(paramMotionEvent)[0], r(paramMotionEvent)[1])));
-        if ((localObject1 != null) && (((com.tencent.mm.aa.c)localObject1).fsk))
+        bool = ((com.tencent.mm.z.c)localObject1).gfj;
+        Mp();
+        ((com.tencent.mm.z.c)localObject1).gfj = bool;
+        this.cPX = true;
+        ((com.tencent.mm.z.c)localObject1).setSelected(true);
+        ((d)Mb()).b((com.tencent.mm.z.c)localObject1);
+        this.cQc = o(paramMotionEvent);
+        this.cQe = ((int)Math.toDegrees(Math.atan2(p(paramMotionEvent)[0], p(paramMotionEvent)[1])));
+        if ((localObject1 != null) && (((com.tencent.mm.z.c)localObject1).fvR))
         {
-          this.cSI = ((com.tencent.mm.aa.c)localObject1).mRotation;
-          this.cSG = ((com.tencent.mm.aa.c)localObject1).cHQ;
+          this.cQf = ((com.tencent.mm.z.c)localObject1).mRotation;
+          this.cQd = ((com.tencent.mm.z.c)localObject1).cEY;
         }
-        ci(true);
-        Mk();
+        ck(true);
+        Mi();
         break;
-        this.cSJ = true;
+        this.cQg = true;
         break;
-        if (this.cSJ)
+        if (this.cQg)
         {
-          this.cSJ = false;
+          this.cQg = false;
           AppMethodBeat.o(9159);
           return true;
         }
-        if ((!this.cSB) || (!t(paramMotionEvent))) {
+        if ((!this.cPX) || (!r(paramMotionEvent))) {
           break;
         }
-        if ((!this.cSd) && (this.cSL != null)) {
-          this.cSL.onShow();
+        if ((!this.cPY) && (this.cQi != null)) {
+          this.cQi.onShow();
         }
         localObject1 = new int[2];
-        localObject1[0] = ((int)(paramMotionEvent.getX(0) - this.cRG.x));
-        localObject1[1] = ((int)(paramMotionEvent.getY(0) - this.cRG.y));
+        localObject1[0] = ((int)(paramMotionEvent.getX(0) - this.cPb.x));
+        localObject1[1] = ((int)(paramMotionEvent.getY(0) - this.cPb.y));
         float f1 = 1.0F;
         int i = 0;
         if (paramMotionEvent.getPointerCount() > 1)
         {
-          if (0.0F != this.cSF) {
-            f1 = q(paramMotionEvent) / this.cSF;
+          if (0.0F != this.cQc) {
+            f1 = o(paramMotionEvent) / this.cQc;
           }
-          i = this.cSH - (int)Math.toDegrees(Math.atan2(r(paramMotionEvent)[0], r(paramMotionEvent)[1]));
+          i = this.cQe - (int)Math.toDegrees(Math.atan2(p(paramMotionEvent)[0], p(paramMotionEvent)[1]));
         }
         for (;;)
         {
           float f2 = localObject1[0];
           float f3 = localObject1[1];
-          float f4 = this.cSG;
-          int j = this.cSI;
+          float f4 = this.cQd;
+          int j = this.cQf;
           int k = paramMotionEvent.getPointerCount();
-          localObject1 = ((d)Md()).Uz();
+          localObject1 = ((d)Mb()).Vu();
           Object localObject3;
           Object localObject2;
           if (localObject1 != null)
           {
-            this.uv.reset();
-            this.uv.postRotate(-getRotation());
-            localObject3 = this.uv;
+            this.vt.reset();
+            this.vt.postRotate(-getRotation());
+            localObject3 = this.vt;
             localObject2 = new Matrix();
             ((Matrix)localObject3).invert((Matrix)localObject2);
             localObject3 = new float[2];
@@ -428,98 +389,98 @@ public final class e
             if (k <= 1) {
               break label924;
             }
-            ((com.tencent.mm.aa.c)localObject1).b(0.0F, 0.0F, f1 * f4, (i + j) % 360);
+            ((com.tencent.mm.z.c)localObject1).b(0.0F, 0.0F, f1 * f4, (i + j) % 360);
             label811:
-            ((com.tencent.mm.aa.c)localObject1).adR();
-            localObject2 = ((com.tencent.mm.aa.c)localObject1).gay;
+            ((com.tencent.mm.z.c)localObject1).afh();
+            localObject2 = ((com.tencent.mm.z.c)localObject1).gfe;
             localObject2 = t(((PointF)localObject2).x, ((PointF)localObject2).y);
-            if (this.cSE.top > localObject2[1]) {
+            if (this.cQb.top > localObject2[1]) {
               break label956;
             }
-            if (this.cSL != null) {
-              this.cSL.ad((localObject2[1] - this.cSE.top) / this.cSE.height());
+            if (this.cQi != null) {
+              this.cQi.ah((localObject2[1] - this.cQb.top) / this.cQb.height());
             }
           }
-          for (this.cSM = true;; this.cSM = false)
+          for (this.cQj = true;; this.cQj = false)
           {
             if ((localObject1 instanceof f)) {
-              ((com.tencent.mm.aa.c)localObject1).gaD = false;
+              ((com.tencent.mm.z.c)localObject1).gfj = false;
             }
-            this.cSd = true;
-            Mk();
+            this.cPY = true;
+            Mi();
             break;
             label924:
-            ((com.tencent.mm.aa.c)localObject1).b(localObject3[0] / getScale(), localObject3[1] / getScale(), 0.0F, ((com.tencent.mm.aa.c)localObject1).mRotation);
+            ((com.tencent.mm.z.c)localObject1).b(localObject3[0] / getScale(), localObject3[1] / getScale(), 0.0F, ((com.tencent.mm.z.c)localObject1).mRotation);
             break label811;
             label956:
-            if ((this.cSL != null) && (this.cSM)) {
-              this.cSL.agQ();
+            if ((this.cQi != null) && (this.cQj)) {
+              this.cQi.aih();
             }
           }
           if (!isAlive())
           {
-            ad.e("MicroMsg.EmojiAndTextArtist", "[ACTION_UP] is not alive!");
+            ac.e("MicroMsg.EmojiAndTextArtist", "[ACTION_UP] is not alive!");
             AppMethodBeat.o(9159);
             return false;
           }
-          if (Md() == null)
+          if (Mb() == null)
           {
-            ad.e("MicroMsg.EmojiAndTextArtist", "[getCache] is null!");
+            ac.e("MicroMsg.EmojiAndTextArtist", "[getCache] is null!");
             AppMethodBeat.o(9159);
             return false;
           }
-          localObject1 = ((d)Md()).Uz();
+          localObject1 = ((d)Mb()).Vu();
           if (localObject1 != null)
           {
-            if (!this.cRB.contains((int)((com.tencent.mm.aa.c)localObject1).gay.x, (int)((com.tencent.mm.aa.c)localObject1).gay.y))
+            if (!this.cOW.contains((int)((com.tencent.mm.z.c)localObject1).gfe.x, (int)((com.tencent.mm.z.c)localObject1).gfe.y))
             {
-              this.cSK.cHI = true;
-              localObject2 = this.cSK;
-              ((com.tencent.mm.c.c)localObject2).cHK = ((com.tencent.mm.aa.c)localObject1);
-              ((com.tencent.mm.c.c)localObject2).cHz = (((com.tencent.mm.aa.c)localObject1).gaA.x - ((com.tencent.mm.aa.c)localObject1).gay.x);
-              ((com.tencent.mm.c.c)localObject2).cHA = (((com.tencent.mm.aa.c)localObject1).gaA.y - ((com.tencent.mm.aa.c)localObject1).gay.y);
-              ((com.tencent.mm.c.c)localObject2).cHL = ((com.tencent.mm.aa.c)localObject1).gav;
-              localObject2 = this.cSK;
-              if (((com.tencent.mm.c.b)localObject2).cHI)
+              this.cQh.cEQ = true;
+              localObject2 = this.cQh;
+              ((com.tencent.mm.c.c)localObject2).cES = ((com.tencent.mm.z.c)localObject1);
+              ((com.tencent.mm.c.c)localObject2).cEH = (((com.tencent.mm.z.c)localObject1).gfg.x - ((com.tencent.mm.z.c)localObject1).gfe.x);
+              ((com.tencent.mm.c.c)localObject2).cEI = (((com.tencent.mm.z.c)localObject1).gfg.y - ((com.tencent.mm.z.c)localObject1).gfe.y);
+              ((com.tencent.mm.c.c)localObject2).cET = ((com.tencent.mm.z.c)localObject1).gfb;
+              localObject2 = this.cQh;
+              if (((com.tencent.mm.c.b)localObject2).cEQ)
               {
-                ((com.tencent.mm.c.c)localObject2).cHw = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).cHA }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).cHz }) });
-                ((com.tencent.mm.c.c)localObject2).cHw.addUpdateListener(new c.1((com.tencent.mm.c.c)localObject2));
-                ((com.tencent.mm.c.c)localObject2).cHw.addListener(new c.2((com.tencent.mm.c.c)localObject2));
-                ((com.tencent.mm.c.c)localObject2).cHw.setInterpolator(new LinearInterpolator());
-                ((com.tencent.mm.c.c)localObject2).cHw.setDuration(100L);
-                ((com.tencent.mm.c.c)localObject2).cHw.start();
+                ((com.tencent.mm.c.c)localObject2).cEE = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).cEI }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, ((com.tencent.mm.c.c)localObject2).cEH }) });
+                ((com.tencent.mm.c.c)localObject2).cEE.addUpdateListener(new c.1((com.tencent.mm.c.c)localObject2));
+                ((com.tencent.mm.c.c)localObject2).cEE.addListener(new c.2((com.tencent.mm.c.c)localObject2));
+                ((com.tencent.mm.c.c)localObject2).cEE.setInterpolator(new LinearInterpolator());
+                ((com.tencent.mm.c.c)localObject2).cEE.setDuration(100L);
+                ((com.tencent.mm.c.c)localObject2).cEE.start();
               }
             }
             if ((localObject1 instanceof f))
             {
               localObject2 = (f)localObject1;
-              if ((!((com.tencent.mm.aa.c)localObject2).fsk) || (!((com.tencent.mm.aa.c)localObject2).gaD)) {
+              if ((!((com.tencent.mm.z.c)localObject2).fvR) || (!((com.tencent.mm.z.c)localObject2).gfj)) {
                 break label1485;
               }
-              if (this.cSL != null) {
-                this.cSL.a((f)localObject2);
+              if (this.cQi != null) {
+                this.cQi.a((f)localObject2);
               }
             }
           }
           for (;;)
           {
-            localObject2 = ((com.tencent.mm.aa.c)localObject1).gay;
+            localObject2 = ((com.tencent.mm.z.c)localObject1).gfe;
             localObject2 = t(((PointF)localObject2).x, ((PointF)localObject2).y);
-            ad.i("MicroMsg.EmojiAndTextArtist", "mRubbishRect:%s pointF:%s", new Object[] { this.cSE, Float.valueOf(localObject2[1]) });
-            if ((((com.tencent.mm.aa.c)localObject1).fsk) && (this.cSE.top <= localObject2[1]) && (this.cSB) && (this.cSL != null))
+            ac.i("MicroMsg.EmojiAndTextArtist", "mRubbishRect:%s pointF:%s", new Object[] { this.cQb, Float.valueOf(localObject2[1]) });
+            if ((((com.tencent.mm.z.c)localObject1).fvR) && (this.cQb.top <= localObject2[1]) && (this.cPX) && (this.cQi != null))
             {
-              ((d)Md()).Uy();
-              Mk();
+              ((d)Mb()).Vt();
+              Mi();
             }
-            Ms();
-            if ((this.cSd) && (this.cSL != null)) {
-              this.cSL.onHide();
+            Mq();
+            if ((this.cPY) && (this.cQi != null)) {
+              this.cQi.onHide();
             }
-            this.cSd = false;
+            this.cPY = false;
             break;
             label1485:
-            if (((com.tencent.mm.aa.c)localObject2).fsk) {
-              ((com.tencent.mm.aa.c)localObject2).gaD = true;
+            if (((com.tencent.mm.z.c)localObject2).fvR) {
+              ((com.tencent.mm.z.c)localObject2).gfj = true;
             }
           }
           f1 = 1.0F;
@@ -529,17 +490,56 @@ public final class e
     }
   }
   
+  public final void onAlive()
+  {
+    AppMethodBeat.i(9157);
+    super.onAlive();
+    int i = (int)ai.getResources().getDimension(2131166754);
+    int j = (int)ai.getResources().getDimension(2131166755);
+    int k = ap.ej(this.cOU.eQN().getContext());
+    this.cQb.set((getBoardRect().width() - j) / 2, getBoardRect().height() - i - k, getBoardRect().width() - k, (j + getBoardRect().width()) / 2);
+    if (this.cPZ) {
+      this.mTimer = new Timer();
+    }
+    AppMethodBeat.o(9157);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(9160);
+    super.onDestroy();
+    this.cPZ = true;
+    Mr();
+    this.mTimer.cancel();
+    AppMethodBeat.o(9160);
+  }
+  
+  public final void onDraw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(9158);
+    d(paramCanvas);
+    Object localObject = (d)Mb();
+    if (localObject != null)
+    {
+      localObject = ((d)localObject).Vu();
+      if ((localObject != null) && (((com.tencent.mm.z.c)localObject).fvR)) {
+        ((com.tencent.mm.z.c)localObject).draw(paramCanvas);
+      }
+    }
+    AppMethodBeat.o(9158);
+  }
+  
   final class a
     extends TimerTask
   {
-    private b cSN;
+    private b cQk;
     private Handler mHandler;
     
     public a(b paramb)
     {
       AppMethodBeat.i(9154);
       this.mHandler = new Handler(Looper.getMainLooper());
-      this.cSN = paramb;
+      this.cQk = paramb;
       AppMethodBeat.o(9154);
     }
     
@@ -551,18 +551,18 @@ public final class e
         public final void run()
         {
           AppMethodBeat.i(9153);
-          ad.d("MicroMsg.EmojiAndTextArtist", "cancel focus!");
-          if (e.this.Md() == null)
+          ac.d("MicroMsg.EmojiAndTextArtist", "cancel focus!");
+          if (e.this.Mb() == null)
           {
             AppMethodBeat.o(9153);
             return;
           }
-          com.tencent.mm.aa.c localc = ((d)e.this.Md()).Uz();
-          if ((localc != null) && (localc.fsk))
+          com.tencent.mm.z.c localc = ((d)e.this.Mb()).Vu();
+          if ((localc != null) && (localc.fvR))
           {
             localc.setSelected(false);
-            e.a.a(e.a.this).ci(false);
-            e.a.a(e.a.this).Mk();
+            e.a.a(e.a.this).ck(false);
+            e.a.a(e.a.this).Mi();
           }
           AppMethodBeat.o(9153);
         }
@@ -573,7 +573,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.e.e
  * JD-Core Version:    0.7.0.1
  */

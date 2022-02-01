@@ -28,7 +28,7 @@ final class a
     AppMethodBeat.o(88152);
   }
   
-  private static long C(byte[] paramArrayOfByte, int paramInt)
+  private static long A(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -48,12 +48,12 @@ final class a
     int i = 16;
     try
     {
-      long l2 = C(paramArrayOfByte, 0);
-      long l1 = C(paramArrayOfByte, 4);
-      long l4 = C(this.key, 0);
-      long l5 = C(this.key, 4);
-      long l6 = C(this.key, 8);
-      long l7 = C(this.key, 12);
+      long l2 = A(paramArrayOfByte, 0);
+      long l1 = A(paramArrayOfByte, 4);
+      long l4 = A(this.key, 0);
+      long l5 = A(this.key, 4);
+      long l6 = A(this.key, 8);
+      long l7 = A(this.key, 12);
       long l3 = 0L;
       for (;;)
       {
@@ -81,14 +81,14 @@ final class a
     }
   }
   
-  final boolean I(byte[] paramArrayOfByte, int paramInt)
+  final boolean G(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(88156);
     for (this.pos = 0;; this.pos += 1)
     {
       if (this.pos >= 8)
       {
-        this.prePlain = aA(this.prePlain);
+        this.prePlain = az(this.prePlain);
         if (this.prePlain != null) {
           break;
         }
@@ -111,18 +111,18 @@ final class a
     return true;
   }
   
-  final byte[] aA(byte[] paramArrayOfByte)
+  final byte[] az(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88154);
     int i = 16;
     try
     {
-      long l1 = C(paramArrayOfByte, 0);
-      long l3 = C(paramArrayOfByte, 4);
-      long l4 = C(this.key, 0);
-      long l5 = C(this.key, 4);
-      long l6 = C(this.key, 8);
-      long l7 = C(this.key, 12);
+      long l1 = A(paramArrayOfByte, 0);
+      long l3 = A(paramArrayOfByte, 4);
+      long l4 = A(this.key, 0);
+      long l5 = A(this.key, 4);
+      long l6 = A(this.key, 8);
+      long l7 = A(this.key, 12);
       long l2 = 3816266640L;
       for (;;)
       {

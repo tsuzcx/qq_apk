@@ -12,7 +12,7 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"myNfcAdapter", "Landroid/nfc/NfcAdapter;", "getMyNfcAdapter", "()Landroid/nfc/NfcAdapter;", "map", "", "R", "Lorg/json/JSONArray;", "transform", "Lkotlin/Function1;", "", "mapRecursive", "mapTo", "C", "", "destination", "(Lorg/json/JSONArray;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "mapToRecursive", "", "toMap", "", "", "Lorg/json/JSONObject;", "toMapRecursive", "luggage-commons-jsapi-nfc-ext_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"myNfcAdapter", "Landroid/nfc/NfcAdapter;", "getMyNfcAdapter", "()Landroid/nfc/NfcAdapter;", "map", "", "R", "Lorg/json/JSONArray;", "transform", "Lkotlin/Function1;", "", "mapRecursive", "mapTo", "C", "", "destination", "(Lorg/json/JSONArray;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "mapToRecursive", "", "toMap", "", "", "Lorg/json/JSONObject;", "toMapRecursive", "luggage-commons-jsapi-nfc-ext_release"})
 public final class a
 {
   private static List<Object> a(JSONArray paramJSONArray, b<Object, ? extends Object> paramb)
@@ -37,7 +37,7 @@ public final class a
     {
       Object localObject1 = paramJSONArray.get(i);
       k.g(localObject1, "get(index)");
-      Object localObject2 = paramb.aA(localObject1);
+      Object localObject2 = paramb.ay(localObject1);
       if ((localObject2 instanceof JSONObject)) {
         localObject1 = a((JSONObject)localObject2, paramb);
       }
@@ -69,7 +69,7 @@ public final class a
       String str = (String)localIterator.next();
       Object localObject1 = paramJSONObject.get(str);
       k.g(localObject1, "get(it)");
-      Object localObject2 = paramb.aA(localObject1);
+      Object localObject2 = paramb.ay(localObject1);
       Map localMap = (Map)localHashMap;
       k.g(str, "it");
       if ((localObject2 instanceof JSONObject)) {

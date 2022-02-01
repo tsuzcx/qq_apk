@@ -14,20 +14,20 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.setting.model.k;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.storage.bt;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
 public class SendFeedBackUI
   extends MMActivity
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private ProgressDialog fpP = null;
-  private EditText lmq;
-  private TextView weY = null;
+  private ProgressDialog fts = null;
+  private EditText lMg;
+  private TextView xqm = null;
   
   public int getLayoutId()
   {
@@ -38,13 +38,13 @@ public class SendFeedBackUI
   {
     AppMethodBeat.i(73989);
     setMMTitle(2131763230);
-    this.lmq = ((EditText)findViewById(2131298739));
+    this.lMg = ((EditText)findViewById(2131298739));
     String str = getIntent().getStringExtra("intentKeyFrom");
     if ((str != null) && (str.equals("fromEnjoyAppDialog")))
     {
-      this.weY = ((TextView)findViewById(2131306434));
-      this.weY.setVisibility(0);
-      this.weY.setOnClickListener(new View.OnClickListener()
+      this.xqm = ((TextView)findViewById(2131306434));
+      this.xqm.setVisibility(0);
+      this.xqm.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -79,13 +79,13 @@ public class SendFeedBackUI
           if (paramAnonymousMenuItem.startsWith("//traceroute"))
           {
             SendFeedBackUI.a(SendFeedBackUI.this).setText("");
-            d.O(SendFeedBackUI.this.getContext(), "traceroute", ".ui.NetworkDiagnoseIntroUI");
+            d.N(SendFeedBackUI.this.getContext(), "traceroute", ".ui.NetworkDiagnoseIntroUI");
             AppMethodBeat.o(73985);
             return false;
           }
-          paramAnonymousMenuItem = new k(com.tencent.mm.compatible.deviceinfo.q.Xe(), paramAnonymousMenuItem + " key " + bt.eMY() + " local key " + bt.eMX() + "NetType:" + ay.getNetTypeString(SendFeedBackUI.this.getApplicationContext()) + " hasNeon: " + com.tencent.mm.compatible.deviceinfo.n.WL() + " isArmv6: " + com.tencent.mm.compatible.deviceinfo.n.WN() + " isArmv7: " + com.tencent.mm.compatible.deviceinfo.n.WM());
-          com.tencent.mm.kernel.g.aeS().a(153, SendFeedBackUI.this);
-          com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem, 0);
+          paramAnonymousMenuItem = new k(com.tencent.mm.compatible.deviceinfo.q.Yb(), paramAnonymousMenuItem + " key " + bw.fcC() + " local key " + bw.fcB() + "NetType:" + ax.getNetTypeString(SendFeedBackUI.this.getApplicationContext()) + " hasNeon: " + com.tencent.mm.compatible.deviceinfo.n.XJ() + " isArmv6: " + com.tencent.mm.compatible.deviceinfo.n.XL() + " isArmv7: " + com.tencent.mm.compatible.deviceinfo.n.XK());
+          com.tencent.mm.kernel.g.agi().a(153, SendFeedBackUI.this);
+          com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem, 0);
           SendFeedBackUI.this.hideVKB();
           SendFeedBackUI localSendFeedBackUI1 = SendFeedBackUI.this;
           SendFeedBackUI localSendFeedBackUI2 = SendFeedBackUI.this;
@@ -95,7 +95,7 @@ public class SendFeedBackUI
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(73984);
-              com.tencent.mm.kernel.g.aeS().a(paramAnonymousMenuItem);
+              com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem);
               AppMethodBeat.o(73984);
             }
           }));
@@ -118,18 +118,18 @@ public class SendFeedBackUI
   public void onDestroy()
   {
     AppMethodBeat.i(73988);
-    com.tencent.mm.kernel.g.aeS().b(153, this);
+    com.tencent.mm.kernel.g.agi().b(153, this);
     super.onDestroy();
     AppMethodBeat.o(73988);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(73990);
-    if (this.fpP != null)
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
@@ -160,7 +160,7 @@ public class SendFeedBackUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SendFeedBackUI
  * JD-Core Version:    0.7.0.1
  */

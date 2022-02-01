@@ -8,15 +8,15 @@ import java.util.Arrays;
 public final class a
   implements Serializable
 {
-  private byte[] ueH;
-  private transient int ueI;
-  private transient int ueJ;
-  private transient int ueK;
+  private byte[] vnG;
+  private transient int vnH;
+  private transient int vnI;
+  private transient int vnJ;
   
   public a(String paramString)
   {
     AppMethodBeat.i(26641);
-    this.ueH = com.tencent.mm.plugin.nfc.c.a.hexStringToByteArray(paramString);
+    this.vnG = com.tencent.mm.plugin.nfc.c.a.hexStringToByteArray(paramString);
     parse();
     AppMethodBeat.o(26641);
   }
@@ -24,7 +24,7 @@ public final class a
   public a(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26640);
-    this.ueH = ((byte[])paramArrayOfByte.clone());
+    this.vnG = ((byte[])paramArrayOfByte.clone());
     parse();
     AppMethodBeat.o(26640);
   }
@@ -33,24 +33,24 @@ public final class a
   {
     int i = 256;
     AppMethodBeat.i(26642);
-    if (this.ueH.length < 4)
+    if (this.vnG.length < 4)
     {
       localIllegalArgumentException = new IllegalArgumentException("apdu must be at least 4 bytes long");
       AppMethodBeat.o(26642);
       throw localIllegalArgumentException;
     }
-    if (this.ueH.length == 4)
+    if (this.vnG.length == 4)
     {
       AppMethodBeat.o(26642);
       return;
     }
-    int j = this.ueH[4] & 0xFF;
-    if (this.ueH.length == 5)
+    int j = this.vnG[4] & 0xFF;
+    if (this.vnG.length == 5)
     {
       if (j == 0) {}
       for (;;)
       {
-        this.ueJ = i;
+        this.vnI = i;
         AppMethodBeat.o(26642);
         return;
         i = j;
@@ -58,77 +58,77 @@ public final class a
     }
     if (j != 0)
     {
-      if (this.ueH.length == j + 5)
+      if (this.vnG.length == j + 5)
       {
-        this.ueI = j;
-        this.ueK = 5;
+        this.vnH = j;
+        this.vnJ = 5;
         AppMethodBeat.o(26642);
         return;
       }
-      if (this.ueH.length == j + 6)
+      if (this.vnG.length == j + 6)
       {
-        this.ueI = j;
-        this.ueK = 5;
-        j = this.ueH[(this.ueH.length - 1)] & 0xFF;
+        this.vnH = j;
+        this.vnJ = 5;
+        j = this.vnG[(this.vnG.length - 1)] & 0xFF;
         if (j == 0) {}
         for (;;)
         {
-          this.ueJ = i;
+          this.vnI = i;
           AppMethodBeat.o(26642);
           return;
           i = j;
         }
       }
-      localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.ueH.length + ", b1=" + j);
+      localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.vnG.length + ", b1=" + j);
       AppMethodBeat.o(26642);
       throw localIllegalArgumentException;
     }
-    if (this.ueH.length < 7)
+    if (this.vnG.length < 7)
     {
-      localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.ueH.length + ", b1=" + j);
+      localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.vnG.length + ", b1=" + j);
       AppMethodBeat.o(26642);
       throw localIllegalArgumentException;
     }
-    int k = (this.ueH[5] & 0xFF) << 8 | this.ueH[6] & 0xFF;
-    if (this.ueH.length == 7)
+    int k = (this.vnG[5] & 0xFF) << 8 | this.vnG[6] & 0xFF;
+    if (this.vnG.length == 7)
     {
       i = k;
       if (k == 0) {
         i = 65536;
       }
-      this.ueJ = i;
+      this.vnI = i;
       AppMethodBeat.o(26642);
       return;
     }
     if (k == 0)
     {
-      localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.ueH.length + ", b1=" + j + ", b2||b3=" + k);
+      localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.vnG.length + ", b1=" + j + ", b2||b3=" + k);
       AppMethodBeat.o(26642);
       throw localIllegalArgumentException;
     }
-    if (this.ueH.length == k + 7)
+    if (this.vnG.length == k + 7)
     {
-      this.ueI = k;
-      this.ueK = 7;
+      this.vnH = k;
+      this.vnJ = 7;
       AppMethodBeat.o(26642);
       return;
     }
-    if (this.ueH.length == k + 9)
+    if (this.vnG.length == k + 9)
     {
-      this.ueI = k;
-      this.ueK = 7;
-      i = this.ueH.length - 2;
-      j = this.ueH[i];
-      j = this.ueH[(i + 1)] & 0xFF | (j & 0xFF) << 8;
+      this.vnH = k;
+      this.vnJ = 7;
+      i = this.vnG.length - 2;
+      j = this.vnG[i];
+      j = this.vnG[(i + 1)] & 0xFF | (j & 0xFF) << 8;
       i = j;
       if (j == 0) {
         i = 65536;
       }
-      this.ueJ = i;
+      this.vnI = i;
       AppMethodBeat.o(26642);
       return;
     }
-    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.ueH.length + ", b1=" + j + ", b2||b3=" + k);
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid APDU: length=" + this.vnG.length + ", b1=" + j + ", b2||b3=" + k);
     AppMethodBeat.o(26642);
     throw localIllegalArgumentException;
   }
@@ -136,15 +136,15 @@ public final class a
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
     AppMethodBeat.i(26647);
-    this.ueH = ((byte[])(byte[])paramObjectInputStream.readUnshared());
+    this.vnG = ((byte[])(byte[])paramObjectInputStream.readUnshared());
     parse();
     AppMethodBeat.o(26647);
   }
   
-  public final void Iu(int paramInt)
+  public final void Kt(int paramInt)
   {
-    this.ueJ = paramInt;
-    this.ueH[(this.ueH.length - 1)] = ((byte)paramInt);
+    this.vnI = paramInt;
+    this.vnG[(this.vnG.length - 1)] = ((byte)paramInt);
   }
   
   public final boolean equals(Object paramObject)
@@ -161,7 +161,7 @@ public final class a
       return false;
     }
     paramObject = (a)paramObject;
-    boolean bool = Arrays.equals(this.ueH, paramObject.ueH);
+    boolean bool = Arrays.equals(this.vnG, paramObject.vnG);
     AppMethodBeat.o(26645);
     return bool;
   }
@@ -169,7 +169,7 @@ public final class a
   public final byte[] getBytes()
   {
     AppMethodBeat.i(26643);
-    byte[] arrayOfByte = (byte[])this.ueH.clone();
+    byte[] arrayOfByte = (byte[])this.vnG.clone();
     AppMethodBeat.o(26643);
     return arrayOfByte;
   }
@@ -177,7 +177,7 @@ public final class a
   public final int hashCode()
   {
     AppMethodBeat.i(26646);
-    int i = Arrays.hashCode(this.ueH);
+    int i = Arrays.hashCode(this.vnG);
     AppMethodBeat.o(26646);
     return i;
   }
@@ -185,7 +185,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(26644);
-    String str = com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(this.ueH);
+    String str = com.tencent.mm.plugin.nfc.c.a.byteArrayToHexString(this.vnG);
     AppMethodBeat.o(26644);
     return str;
   }

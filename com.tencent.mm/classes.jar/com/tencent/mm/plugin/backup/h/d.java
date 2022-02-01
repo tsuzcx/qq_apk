@@ -3,66 +3,66 @@ package com.tencent.mm.plugin.backup.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class d
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String TAG = "MicroMsg.BackupStorageModel";
-  private static d mxS;
-  private b mxT;
-  private a mxU;
+  private static d mZT;
+  private b mZU;
+  private a mZV;
   
-  public static d bxT()
+  public static d bEP()
   {
     AppMethodBeat.i(21763);
-    if (mxS == null)
+    if (mZT == null)
     {
       locald = new d();
-      mxS = locald;
+      mZT = locald;
       a(locald);
     }
-    d locald = mxS;
+    d locald = mZT;
     AppMethodBeat.o(21763);
     return locald;
   }
   
-  public final void bvO()
+  public final void bCK()
   {
-    mxS = null;
+    mZT = null;
   }
   
-  public final b bxU()
+  public final b bEQ()
   {
     AppMethodBeat.i(21764);
-    if (this.mxT == null) {
-      this.mxT = new b();
+    if (this.mZU == null) {
+      this.mZU = new b();
     }
-    b localb = this.mxT;
+    b localb = this.mZU;
     AppMethodBeat.o(21764);
     return localb;
   }
   
-  public final a bxV()
+  public final a bER()
   {
     AppMethodBeat.i(21765);
-    if (this.mxU == null) {
-      this.mxU = new a();
+    if (this.mZV == null) {
+      this.mZV = new a();
     }
-    a locala = this.mxU;
+    a locala = this.mZV;
     AppMethodBeat.o(21765);
     return locala;
   }
   
-  public final void bxW()
+  public final void bES()
   {
     AppMethodBeat.i(21766);
-    ad.i(TAG, "backupInitStorage.");
-    b localb = bxU();
-    az.arV();
+    ac.i(TAG, "backupInitStorage.");
+    b localb = bEQ();
+    az.ayM();
     String str = c.getAccPath();
-    az.arV();
-    localb.ce(str, c.getUin());
+    az.ayM();
+    localb.cj(str, c.getUin());
     AppMethodBeat.o(21766);
   }
 }

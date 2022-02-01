@@ -7,27 +7,27 @@ import java.util.HashMap;
 public abstract interface d<T>
   extends Cursor
 {
-  public abstract boolean WP(int paramInt);
+  public abstract boolean YZ(int paramInt);
   
-  public abstract a WQ(int paramInt);
+  public abstract a Za(int paramInt);
   
-  public abstract void WR(int paramInt);
+  public abstract void Zb(int paramInt);
   
   public abstract void a(f.a parama);
   
   public abstract boolean a(Object paramObject, a parama);
   
-  public abstract boolean dT(Object paramObject);
+  public abstract boolean dU(Object paramObject);
   
-  public abstract a dU(Object paramObject);
+  public abstract a dV(Object paramObject);
   
-  public abstract SparseArray<T>[] eNV();
+  public abstract HashMap<Object, T> fdA();
   
-  public abstract HashMap<Object, T> eNW();
+  public abstract boolean fdB();
   
-  public abstract boolean eNX();
+  public abstract SparseArray<T>[] fdz();
   
-  public abstract void ve(boolean paramBoolean);
+  public abstract void wg(boolean paramBoolean);
 }
 
 

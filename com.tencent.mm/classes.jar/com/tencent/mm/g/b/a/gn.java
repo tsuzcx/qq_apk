@@ -6,175 +6,155 @@ import com.tencent.mm.plugin.report.a;
 public final class gn
   extends a
 {
-  private String dHL = "";
-  private String dQK = "";
-  private long eec = 0L;
-  private long ehb = 0L;
-  private long ehc = 0L;
-  private int ehd = 0;
-  private String ehe = "";
-  private String ehf = "";
-  private String ehg = "";
-  private String ehh = "";
-  private long ehi = 0L;
-  private String ehj = "";
-  private String ehk = "";
+  private long eaM = 0L;
+  private String ecm;
+  private a ecn;
+  private long eco = 0L;
+  private long ecp = 0L;
+  private String ecq;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(43769);
+    AppMethodBeat.i(43470);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHL);
+    ((StringBuffer)localObject).append(this.ecm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehb);
+    ((StringBuffer)localObject).append(this.eaM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehc);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehg);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehh);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehi);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehj);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehk);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eec);
+    if (this.ecn != null) {}
+    for (int i = this.ecn.value;; i = -1)
+    {
+      ((StringBuffer)localObject).append(i);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.eco);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.ecp);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.ecq);
+      localObject = ((StringBuffer)localObject).toString();
+      arz((String)localObject);
+      AppMethodBeat.o(43470);
+      return localObject;
+    }
+  }
+  
+  public final String PS()
+  {
+    AppMethodBeat.i(43471);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("AppId:").append(this.ecm);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AppVersion:").append(this.eaM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AppState:").append(this.ecn);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AppType:").append(this.eco);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FileOccupation:").append(this.ecp);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("DirPrefix:").append(this.ecq);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(43769);
+    AppMethodBeat.o(43471);
     return localObject;
   }
   
-  public final String PW()
+  public final long SG()
   {
-    AppMethodBeat.i(43770);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("appid:").append(this.dHL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appversion:").append(this.ehb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appstate:").append(this.ehc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errorType:").append(this.ehd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errorName:").append(this.ehe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errorMessage:").append(this.ehf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errorStack:").append(this.ehg);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sdkversion:").append(this.ehh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("apptype:").append(this.ehi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("route:").append(this.ehj);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.dQK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sdkupdatetime:").append(this.ehk);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sceneId:").append(this.eec);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43770);
-    return localObject;
+    return this.ecp;
   }
   
-  public final gn Sl()
+  public final String SH()
   {
-    this.ehd = 9;
+    return this.ecq;
+  }
+  
+  public final gn a(a parama)
+  {
+    this.ecn = parama;
     return this;
+  }
+  
+  public final String getAppId()
+  {
+    return this.ecm;
   }
   
   public final int getId()
   {
-    return 13582;
+    return 17687;
   }
   
-  public final gn kg(long paramLong)
+  public final gn ll(long paramLong)
   {
-    this.ehb = paramLong;
+    this.eaM = paramLong;
     return this;
   }
   
-  public final gn kh(long paramLong)
+  public final gn lm(long paramLong)
   {
-    this.ehc = paramLong;
+    this.eco = paramLong;
     return this;
   }
   
-  public final gn ki(long paramLong)
+  public final gn ln(long paramLong)
   {
-    this.ehi = paramLong;
+    this.ecp = paramLong;
     return this;
   }
   
-  public final gn kj(long paramLong)
+  public final gn nW(String paramString)
   {
-    this.eec = paramLong;
+    AppMethodBeat.i(43469);
+    this.ecm = t("AppId", paramString, true);
+    AppMethodBeat.o(43469);
     return this;
   }
   
-  public final gn mb(String paramString)
+  public final gn nX(String paramString)
   {
-    AppMethodBeat.i(43763);
-    this.dHL = t("appid", paramString, true);
-    AppMethodBeat.o(43763);
+    AppMethodBeat.i(180149);
+    this.ecq = t("DirPrefix", paramString, true);
+    AppMethodBeat.o(180149);
     return this;
   }
   
-  public final gn mc(String paramString)
+  public static enum a
   {
-    AppMethodBeat.i(43764);
-    this.ehf = t("errorMessage", paramString, true);
-    AppMethodBeat.o(43764);
-    return this;
-  }
-  
-  public final gn md(String paramString)
-  {
-    AppMethodBeat.i(43765);
-    this.ehg = t("errorStack", paramString, true);
-    AppMethodBeat.o(43765);
-    return this;
-  }
-  
-  public final gn me(String paramString)
-  {
-    AppMethodBeat.i(43766);
-    this.ehh = t("sdkversion", paramString, true);
-    AppMethodBeat.o(43766);
-    return this;
-  }
-  
-  public final gn mf(String paramString)
-  {
-    AppMethodBeat.i(43767);
-    this.ehj = t("route", paramString, true);
-    AppMethodBeat.o(43767);
-    return this;
-  }
-  
-  public final gn mg(String paramString)
-  {
-    AppMethodBeat.i(43768);
-    this.dQK = t("query", paramString, true);
-    AppMethodBeat.o(43768);
-    return this;
+    final int value;
+    
+    static
+    {
+      AppMethodBeat.i(43468);
+      ecr = new a("release", 0, 1);
+      ecs = new a("debug", 1, 2);
+      ect = new a("demo", 2, 3);
+      ecu = new a[] { ecr, ecs, ect };
+      AppMethodBeat.o(43468);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+    
+    public static a iE(int paramInt)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return null;
+      case 1: 
+        return ecr;
+      case 2: 
+        return ecs;
+      }
+      return ect;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gn
  * JD-Core Version:    0.7.0.1
  */

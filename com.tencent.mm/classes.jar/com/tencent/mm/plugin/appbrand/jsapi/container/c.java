@@ -9,9 +9,9 @@ import android.graphics.PointF;
 import android.view.View;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +57,7 @@ public final class c
       break label71;
     }
     parame = (AppBrandNativeContainerView)parame.ax(AppBrandNativeContainerView.class);
-    ad.i("MicroMsg.JsApiUpdatePositioningContainer", "scrollLeft:%d, scrollTop:%d, animation:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    ac.i("MicroMsg.JsApiUpdatePositioningContainer", "scrollLeft:%d, scrollTop:%d, animation:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     if (k == 1)
     {
       paramView = ObjectAnimator.ofFloat(parame, "x", new float[] { parame.getX(), -i });
@@ -93,7 +93,7 @@ public final class c
     {
       paramInt = g.a(paramJSONObject, "innerHeight", parame.getHeight());
       i = g.a(paramJSONObject, "innerWidth", parame.getWidth());
-      ad.i("MicroMsg.JsApiUpdatePositioningContainer", "innerHeight:%d, innerWidth:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      ac.i("MicroMsg.JsApiUpdatePositioningContainer", "innerHeight:%d, innerWidth:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       paramView = parame.getLayoutParams();
       paramView.height = paramInt;
       paramView.width = i;
@@ -111,14 +111,14 @@ public final class c
   public final class a
     implements Interpolator
   {
-    private int jPa;
-    private final PointF jPb;
-    private final PointF jPc;
-    protected PointF jPd;
-    protected PointF jPe;
-    protected PointF jPf;
-    protected PointF jPg;
-    protected PointF jPh;
+    private int kpB;
+    private final PointF kpC;
+    private final PointF kpD;
+    protected PointF kpE;
+    protected PointF kpF;
+    protected PointF kpG;
+    protected PointF kpH;
+    protected PointF kpI;
     
     public a()
     {
@@ -130,12 +130,12 @@ public final class c
     private a(PointF paramPointF1, PointF paramPointF2)
     {
       AppMethodBeat.i(137511);
-      this.jPa = 0;
-      this.jPb = new PointF();
-      this.jPc = new PointF();
-      this.jPf = new PointF();
-      this.jPg = new PointF();
-      this.jPh = new PointF();
+      this.kpB = 0;
+      this.kpC = new PointF();
+      this.kpD = new PointF();
+      this.kpG = new PointF();
+      this.kpH = new PointF();
+      this.kpI = new PointF();
       if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F))
       {
         this$1 = new IllegalArgumentException("startX value must be in the range [0, 1]");
@@ -148,8 +148,8 @@ public final class c
         AppMethodBeat.o(137511);
         throw c.this;
       }
-      this.jPd = paramPointF1;
-      this.jPe = paramPointF2;
+      this.kpE = paramPointF1;
+      this.kpF = paramPointF2;
       AppMethodBeat.o(137511);
     }
     
@@ -160,22 +160,22 @@ public final class c
       float f1 = paramFloat;
       while (i < 14)
       {
-        this.jPh.x = (this.jPd.x * 3.0F);
-        this.jPg.x = ((this.jPe.x - this.jPd.x) * 3.0F - this.jPh.x);
-        this.jPf.x = (1.0F - this.jPh.x - this.jPg.x);
-        f2 = (this.jPh.x + (this.jPg.x + this.jPf.x * f1) * f1) * f1 - paramFloat;
+        this.kpI.x = (this.kpE.x * 3.0F);
+        this.kpH.x = ((this.kpF.x - this.kpE.x) * 3.0F - this.kpI.x);
+        this.kpG.x = (1.0F - this.kpI.x - this.kpH.x);
+        f2 = (this.kpI.x + (this.kpH.x + this.kpG.x * f1) * f1) * f1 - paramFloat;
         if (Math.abs(f2) < 0.001D) {
           break;
         }
-        f1 -= f2 / (this.jPh.x + (2.0F * this.jPg.x + this.jPf.x * 3.0F * f1) * f1);
+        f1 -= f2 / (this.kpI.x + (2.0F * this.kpH.x + this.kpG.x * 3.0F * f1) * f1);
         i += 1;
       }
-      this.jPh.y = (this.jPd.y * 3.0F);
-      this.jPg.y = ((this.jPe.y - this.jPd.y) * 3.0F - this.jPh.y);
-      this.jPf.y = (1.0F - this.jPh.y - this.jPg.y);
-      paramFloat = this.jPh.y;
-      float f2 = this.jPg.y;
-      float f3 = this.jPf.y;
+      this.kpI.y = (this.kpE.y * 3.0F);
+      this.kpH.y = ((this.kpF.y - this.kpE.y) * 3.0F - this.kpI.y);
+      this.kpG.y = (1.0F - this.kpI.y - this.kpH.y);
+      paramFloat = this.kpI.y;
+      float f2 = this.kpH.y;
+      float f3 = this.kpG.y;
       AppMethodBeat.o(137513);
       return (paramFloat + (f2 + f3 * f1) * f1) * f1;
     }
@@ -183,7 +183,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.c
  * JD-Core Version:    0.7.0.1
  */

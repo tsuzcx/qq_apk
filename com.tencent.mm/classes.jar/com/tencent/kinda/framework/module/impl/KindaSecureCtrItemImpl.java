@@ -24,7 +24,7 @@ public class KindaSecureCtrItemImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaSecureCtrItemImpl
  * JD-Core Version:    0.7.0.1
  */

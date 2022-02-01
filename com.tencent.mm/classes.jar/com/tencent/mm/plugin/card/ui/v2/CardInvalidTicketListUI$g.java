@@ -5,7 +5,7 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class CardInvalidTicketListUI$g
   implements MenuItem.OnMenuItemClickListener
 {
@@ -14,7 +14,7 @@ final class CardInvalidTicketListUI$g
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(112484);
-    this.nFz.finish();
+    this.oiA.finish();
     AppMethodBeat.o(112484);
     return false;
   }

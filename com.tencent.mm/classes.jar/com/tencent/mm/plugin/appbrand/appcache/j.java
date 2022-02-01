@@ -5,23 +5,35 @@ import com.tencent.mm.compatible.loader.a;
 
 public abstract interface j
 {
-  public static final int[] iLC = { 0, 10002, 10102, 6 };
-  public static final int[] iLD = { 1, 2, 999, 10000, 10001, 10100, 10101 };
+  public static final int[] jlJ = { 0, 10002, 10102, 6 };
+  public static final int[] jlK = { 1, 2, 999, 10000, 10001, 10100, 10101 };
   
   public static enum a
   {
-    public static boolean nz(int paramInt)
+    public static boolean isValid(int paramInt)
+    {
+      AppMethodBeat.i(194846);
+      if ((a.contains(j.jlJ, paramInt)) || (a.contains(j.jlK, paramInt)))
+      {
+        AppMethodBeat.o(194846);
+        return true;
+      }
+      AppMethodBeat.o(194846);
+      return false;
+    }
+    
+    public static boolean on(int paramInt)
     {
       AppMethodBeat.i(123489);
-      boolean bool = a.contains(j.iLD, paramInt);
+      boolean bool = a.contains(j.jlK, paramInt);
       AppMethodBeat.o(123489);
       return bool;
     }
     
-    public static boolean qD(int paramInt)
+    public static boolean rq(int paramInt)
     {
       AppMethodBeat.i(123488);
-      boolean bool = a.contains(j.iLC, paramInt);
+      boolean bool = a.contains(j.jlJ, paramInt);
       AppMethodBeat.o(123488);
       return bool;
     }
@@ -29,7 +41,7 @@ public abstract interface j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.j
  * JD-Core Version:    0.7.0.1
  */

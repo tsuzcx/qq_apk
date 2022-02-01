@@ -7,20 +7,20 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 
 public final class c
 {
-  private static final int oli = 2131493749;
-  private static final int olj = 2131493747;
-  public SparseIntArray olk;
+  private static final int oOI = 2131493749;
+  private static final int oOJ = 2131493747;
+  public SparseIntArray oOK;
   
   public c()
   {
     AppMethodBeat.i(181646);
-    this.olk = new SparseIntArray();
-    this.olk.put(1, oli);
-    this.olk.put(2, olj);
-    this.olk.put(4, olj);
-    this.olk.put(6, olj);
-    this.olk.put(0, olj);
-    this.olk.put(-1, olj);
+    this.oOK = new SparseIntArray();
+    this.oOK.put(1, oOI);
+    this.oOK.put(2, oOJ);
+    this.oOK.put(4, oOJ);
+    this.oOK.put(6, oOJ);
+    this.oOK.put(0, oOJ);
+    this.oOK.put(-1, oOJ);
     AppMethodBeat.o(181646);
   }
   
@@ -62,7 +62,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.c
  * JD-Core Version:    0.7.0.1
  */

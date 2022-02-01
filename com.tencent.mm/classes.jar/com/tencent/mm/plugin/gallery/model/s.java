@@ -11,11 +11,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,11 +32,11 @@ import org.json.JSONObject;
 public final class s
 {
   public static final Uri BASE_URI;
-  public ContentResolver hTQ;
-  public int rBX;
-  public boolean rBY;
-  public boolean rBZ;
-  public List<GalleryItem.MediaItem> rCa;
+  public ContentResolver gne;
+  public int sKQ;
+  public boolean sKR;
+  public boolean sKS;
+  public List<GalleryItem.MediaItem> sKT;
   
   static
   {
@@ -48,13 +48,13 @@ public final class s
   private s()
   {
     AppMethodBeat.i(111368);
-    this.rBX = 100;
-    this.rCa = new ArrayList();
-    this.hTQ = aj.getContext().getContentResolver();
+    this.sKQ = 100;
+    this.sKT = new ArrayList();
+    this.gne = ai.getContext().getContentResolver();
     AppMethodBeat.o(111368);
   }
   
-  static LinkedList<GalleryItem.AlbumItem> R(ArrayList<a> paramArrayList)
+  static LinkedList<GalleryItem.AlbumItem> ac(ArrayList<a> paramArrayList)
   {
     AppMethodBeat.i(173744);
     LinkedList localLinkedList = new LinkedList();
@@ -66,17 +66,17 @@ public final class s
     return localLinkedList;
   }
   
-  public static s czT()
+  public static s cNf()
   {
-    return j.rCr;
+    return s.j.sLl;
   }
   
-  public static String[] czU()
+  public static String[] cNg()
   {
     return new String[] { "categoryID", "categoryName", "albumID", "albumName", "albumCapacity", "coverID", "coverData", "albumTag" };
   }
   
-  public static c dK(List<a> paramList)
+  public static s.c dO(List<a> paramList)
   {
     AppMethodBeat.i(111369);
     ArrayList localArrayList = new ArrayList();
@@ -85,7 +85,7 @@ public final class s
     while (paramList.hasNext())
     {
       a locala = (a)paramList.next();
-      d locald = locala.rCb;
+      d locald = locala.sKU;
       Object localObject = (List)localHashMap.get(locald);
       if (localObject == null)
       {
@@ -99,15 +99,15 @@ public final class s
         ((List)localObject).add(locala);
       }
     }
-    paramList = new c(localArrayList, localHashMap);
+    paramList = new s.c(localArrayList, localHashMap);
     AppMethodBeat.o(111369);
     return paramList;
   }
   
-  public static b go(String paramString1, String paramString2)
+  public static b gF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(111372);
-    if (bt.isNullOrNil(paramString1))
+    if (bs.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(111372);
       return null;
@@ -118,7 +118,7 @@ public final class s
       try
       {
         paramString1 = new JSONObject(paramString1);
-        localb.rCh = paramString1.optBoolean("ocr", false);
+        localb.sLa = paramString1.optBoolean("ocr", false);
         Object localObject = paramString1.optJSONObject("cropArea");
         if (localObject != null)
         {
@@ -128,25 +128,25 @@ public final class s
           double d3 = ((JSONObject)localObject).optDouble("right", -1.0D);
           double d4 = ((JSONObject)localObject).optDouble("bottom", -1.0D);
           localObject = new e();
-          ((e)localObject).rCo = i;
-          ((e)localObject).nkQ = d1;
-          ((e)localObject).nkR = d2;
-          ((e)localObject).nkS = d3;
-          ((e)localObject).nkT = d4;
+          ((e)localObject).sLi = i;
+          ((e)localObject).nNQ = d1;
+          ((e)localObject).nNR = d2;
+          ((e)localObject).nNS = d3;
+          ((e)localObject).nNT = d4;
           ((e)localObject).id = paramString2;
-          localb.rAs = ((e)localObject);
+          localb.sJk = ((e)localObject);
         }
         if (3 != paramString1.optInt("coverType", 1)) {
           continue;
         }
         bool = true;
-        localb.rCi = bool;
-        localb.rCj = paramString1.optBoolean("favorite", false);
+        localb.sLb = bool;
+        localb.sLd = paramString1.optBoolean("favorite", false);
       }
       catch (JSONException paramString1)
       {
         boolean bool;
-        ad.e("MicroMsg.SmartGalleryQueryUtil", "parse album json error, msg: %s.", new Object[] { paramString1.getMessage(), paramString1 });
+        ac.e("MicroMsg.SmartGalleryQueryUtil", "parse album json error, msg: %s.", new Object[] { paramString1.getMessage(), paramString1 });
         continue;
       }
       AppMethodBeat.o(111372);
@@ -155,7 +155,7 @@ public final class s
     }
   }
   
-  public static List<i> m(List<a> paramList, String paramString)
+  public static List<s.i> m(List<a> paramList, String paramString)
   {
     AppMethodBeat.i(111370);
     ArrayList localArrayList = new ArrayList();
@@ -165,13 +165,13 @@ public final class s
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = (a)((Iterator)localObject2).next();
-      if ((((a)localObject1).rCg != null) && (((a)localObject1).rCg.rCh))
+      if ((((a)localObject1).sKZ != null) && (((a)localObject1).sKZ.sLa))
       {
         paramList = (List<a>)localObject1;
       }
       else
       {
-        d locald = ((a)localObject1).rCb;
+        d locald = ((a)localObject1).sKU;
         Object localObject3 = (List)localHashMap.get(locald);
         if (localObject3 == null)
         {
@@ -194,8 +194,8 @@ public final class s
     }
     if (paramList != null)
     {
-      localArrayList.add(new d("OCR", aj.getContext().getResources().getString(2131763726)));
-      paramList.rBh = aj.getContext().getResources().getString(2131763725, new Object[] { paramString });
+      localArrayList.add(new d("OCR", ai.getContext().getResources().getString(2131763726)));
+      paramList.sJZ = ai.getContext().getResources().getString(2131763725, new Object[] { paramString });
       localArrayList.add(paramList);
     }
     AppMethodBeat.o(111370);
@@ -206,9 +206,9 @@ public final class s
   {
     AppMethodBeat.i(111371);
     ArrayList localArrayList = new ArrayList();
-    if (bt.gL(paramList))
+    if (bs.gY(paramList))
     {
-      ad.i("MicroMsg.SmartGalleryQueryUtil", "getFavMediaItemByIds, ids is invalid.");
+      ac.i("MicroMsg.SmartGalleryQueryUtil", "getFavMediaItemByIds, ids is invalid.");
       AppMethodBeat.o(111371);
       return localArrayList;
     }
@@ -237,11 +237,11 @@ public final class s
               break;
             }
             localObject1 = (com.tencent.mm.plugin.fav.a.g)paramList.next();
-          } while (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.mVb.size() == 0);
-          i = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.mVb.size() - 1;
+          } while (((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.nxC.size() == 0);
+          i = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.nxC.size() - 1;
         } while (i < 0);
-        localObject2 = (afy)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.mVb.get(i);
-        if (i.eK(b.d((afy)localObject2))) {
+        localObject2 = (agx)((com.tencent.mm.plugin.fav.a.g)localObject1).field_favProto.nxC.get(i);
+        if (i.eA(b.d((agx)localObject2))) {
           switch (paramInt)
           {
           }
@@ -253,29 +253,29 @@ public final class s
         break label186;
         i = paramList.size();
         break;
-        if (((afy)localObject2).dataType == 2)
+        if (((agx)localObject2).dataType == 2)
         {
-          localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((afy)localObject2), "", "image/fav");
-          ((GalleryItem.MediaItem)localObject2).rBt = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
+          localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((agx)localObject2), "", "image/fav");
+          ((GalleryItem.MediaItem)localObject2).sKl = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
           localArrayList.add(localObject2);
           continue;
-          if ((((afy)localObject2).dataType == 4) || (((afy)localObject2).dataType == 15))
+          if ((((agx)localObject2).dataType == 4) || (((agx)localObject2).dataType == 15))
           {
-            localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((afy)localObject2), "", "video/fav");
-            ((GalleryItem.MediaItem)localObject2).rBt = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
+            localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((agx)localObject2), "", "video/fav");
+            ((GalleryItem.MediaItem)localObject2).sKl = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
             localArrayList.add(localObject2);
             continue;
-            if ((((afy)localObject2).dataType == 2) || (((afy)localObject2).dataType == 4) || (((afy)localObject2).dataType == 15)) {
-              if (((afy)localObject2).dataType == 2)
+            if ((((agx)localObject2).dataType == 2) || (((agx)localObject2).dataType == 4) || (((agx)localObject2).dataType == 15)) {
+              if (((agx)localObject2).dataType == 2)
               {
-                localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((afy)localObject2), "", "image/fav");
-                ((GalleryItem.MediaItem)localObject2).rBt = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
+                localObject2 = GalleryItem.MediaItem.a(1, -1L, b.d((agx)localObject2), "", "image/fav");
+                ((GalleryItem.MediaItem)localObject2).sKl = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
                 localArrayList.add(localObject2);
               }
               else
               {
-                localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((afy)localObject2), "", "video/fav");
-                ((GalleryItem.MediaItem)localObject2).rBt = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
+                localObject2 = GalleryItem.MediaItem.a(2, -1L, b.d((agx)localObject2), "", "video/fav");
+                ((GalleryItem.MediaItem)localObject2).sKl = ((com.tencent.mm.plugin.fav.a.g)localObject1).field_updateTime;
                 localArrayList.add(localObject2);
               }
             }
@@ -287,18 +287,18 @@ public final class s
     }
   }
   
-  public final boolean czV()
+  public final boolean cNh()
   {
     AppMethodBeat.i(173743);
     boolean bool;
     Object localObject;
     try
     {
-      Bundle localBundle = this.hTQ.call(BASE_URI, "isSmartGalleryAvailable", null, null);
+      Bundle localBundle = this.gne.call(BASE_URI, "isSmartGalleryAvailable", null, null);
       if (localBundle != null)
       {
         bool = localBundle.getBoolean("isSmartGalleryAvailable");
-        ad.i("MicroMsg.SmartGalleryQueryUtil", "isCategoryInfoValid res: %s.", new Object[] { Boolean.valueOf(bool) });
+        ac.i("MicroMsg.SmartGalleryQueryUtil", "isCategoryInfoValid res: %s.", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(173743);
         return bool;
       }
@@ -306,15 +306,15 @@ public final class s
     catch (Exception localException)
     {
       localObject = BASE_URI.buildUpon().appendEncodedPath("albums").build();
-      localObject = this.hTQ.query((Uri)localObject, czU(), null, null, null);
+      localObject = this.gne.query((Uri)localObject, cNg(), null, null, null);
       if (localObject == null) {
         break label146;
       }
     }
-    ad.i("MicroMsg.SmartGalleryQueryUtil", "cursor not null.");
+    ac.i("MicroMsg.SmartGalleryQueryUtil", "cursor not null.");
     if (((Cursor)localObject).moveToNext())
     {
-      ad.i("MicroMsg.SmartGalleryQueryUtil", "isCategoryInfoValid");
+      ac.i("MicroMsg.SmartGalleryQueryUtil", "isCategoryInfoValid");
       bool = true;
       ((Cursor)localObject).close();
     }
@@ -329,57 +329,57 @@ public final class s
     }
   }
   
-  public final void czW()
+  public final void cNi()
   {
     AppMethodBeat.i(111373);
-    ad.i("MicroMsg.SmartGalleryQueryUtil", "clearSelectedMediaPath");
-    this.rCa.clear();
+    ac.i("MicroMsg.SmartGalleryQueryUtil", "clearSelectedMediaPath");
+    this.sKT.clear();
     AppMethodBeat.o(111373);
   }
   
-  public final int czX()
+  public final int cNj()
   {
     AppMethodBeat.i(111375);
-    int i = this.rCa.size();
+    int i = this.sKT.size();
     AppMethodBeat.o(111375);
     return i;
   }
   
-  public final void dL(List<GalleryItem.MediaItem> paramList)
+  public final void dP(List<GalleryItem.MediaItem> paramList)
   {
     AppMethodBeat.i(111374);
-    czW();
-    this.rCa.addAll(paramList);
+    cNi();
+    this.sKT.addAll(paramList);
     AppMethodBeat.o(111374);
   }
   
   public static final class a
     extends s.i
   {
-    public String rBh;
-    public s.d rCb;
-    public String rCc;
-    public int rCd;
-    public long rCe;
-    public String rCf;
-    public s.b rCg;
+    public String sJZ;
+    public s.d sKU;
+    public String sKV;
+    public int sKW;
+    public long sKX;
+    public String sKY;
+    public s.b sKZ;
     
     public a()
     {
       this.mType = 1;
     }
     
-    public final void gp(String paramString1, String paramString2)
+    public final void gG(String paramString1, String paramString2)
     {
       AppMethodBeat.i(111360);
-      this.rCb = new s.d(paramString1, paramString2);
+      this.sKU = new s.d(paramString1, paramString2);
       AppMethodBeat.o(111360);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(111361);
-      String str = "[albumID " + this.rCc + " albumName " + this.rBh + " albumCapacity " + this.rCd + " albumCoverId " + this.rCe + " albumCoverData " + this.rCf + " albumTag " + this.rCg + "]";
+      String str = "[albumID " + this.sKV + " albumName " + this.sJZ + " albumCapacity " + this.sKW + " albumCoverId " + this.sKX + " albumCoverData " + this.sKY + " albumTag " + this.sKZ + "]";
       AppMethodBeat.o(111361);
       return str;
     }
@@ -387,42 +387,30 @@ public final class s
   
   public static final class b
   {
-    public s.e rAs;
-    public boolean rCh = false;
-    public boolean rCi = false;
-    public boolean rCj;
+    public s.e sJk;
+    public boolean sLa = false;
+    public boolean sLb = false;
+    public boolean sLd;
     
     public final String toString()
     {
       AppMethodBeat.i(111362);
-      StringBuilder localStringBuilder = new StringBuilder("isOcr: ").append(this.rCh).append(" cropArea: ");
-      if (this.rAs == null) {}
-      for (String str = "";; str = this.rAs.toString())
+      StringBuilder localStringBuilder = new StringBuilder("isOcr: ").append(this.sLa).append(" cropArea: ");
+      if (this.sJk == null) {}
+      for (String str = "";; str = this.sJk.toString())
       {
-        str = str + " coverIsVideo: " + this.rCi;
+        str = str + " coverIsVideo: " + this.sLb;
         AppMethodBeat.o(111362);
         return str;
       }
     }
   }
   
-  public static final class c
-  {
-    public List<s.d> rCk;
-    public Map<s.d, List<s.a>> rCl;
-    
-    public c(List<s.d> paramList, Map<s.d, List<s.a>> paramMap)
-    {
-      this.rCk = paramList;
-      this.rCl = paramMap;
-    }
-  }
-  
   public static final class d
     extends s.i
   {
-    public String rCm;
-    public String rCn;
+    public String sLg;
+    public String sLh;
     
     d()
     {
@@ -432,14 +420,14 @@ public final class s
     d(String paramString1, String paramString2)
     {
       this();
-      this.rCm = paramString1;
-      this.rCn = paramString2;
+      this.sLg = paramString1;
+      this.sLh = paramString2;
     }
     
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(111364);
-      if (((paramObject instanceof d)) && (this.rCn.equals(((d)paramObject).rCn)) && (this.rCm.equals(((d)paramObject).rCm)))
+      if (((paramObject instanceof d)) && (this.sLh.equals(((d)paramObject).sLh)) && (this.sLg.equals(((d)paramObject).sLg)))
       {
         AppMethodBeat.o(111364);
         return true;
@@ -451,8 +439,8 @@ public final class s
     public final int hashCode()
     {
       AppMethodBeat.i(111363);
-      int i = this.rCm.hashCode();
-      int j = this.rCn.hashCode();
+      int i = this.sLg.hashCode();
+      int j = this.sLh.hashCode();
       AppMethodBeat.o(111363);
       return (i + 629) * 37 + j;
     }
@@ -461,11 +449,11 @@ public final class s
   public static final class e
   {
     public String id;
-    double nkQ;
-    double nkR;
-    double nkS;
-    double nkT;
-    int rCo = 0;
+    double nNQ;
+    double nNR;
+    double nNS;
+    double nNT;
+    int sLi = 0;
     
     public final boolean equals(Object paramObject)
     {
@@ -483,54 +471,15 @@ public final class s
     public final String toString()
     {
       AppMethodBeat.i(111366);
-      String str = "crop area info -> cropType:" + this.rCo + " left:" + this.nkQ + " top:" + this.nkR + " right:" + this.nkS + " bottom:" + this.nkT + " id:" + this.id;
+      String str = "crop area info -> cropType:" + this.sLi + " left:" + this.nNQ + " top:" + this.nNR + " right:" + this.nNS + " bottom:" + this.nNT + " id:" + this.id;
       AppMethodBeat.o(111366);
       return str;
-    }
-  }
-  
-  public static final class f
-    extends s.i
-  {
-    public f()
-    {
-      this.mType = 2;
-    }
-  }
-  
-  public static final class g
-  {
-    public String data;
-    public long rCp;
-    public long rCq;
-    public String type;
-  }
-  
-  public static abstract interface h
-  {
-    public abstract void b(List<s.g> paramList, boolean paramBoolean);
-  }
-  
-  public static abstract class i
-  {
-    public int mType;
-  }
-  
-  static final class j
-  {
-    static s rCr;
-    
-    static
-    {
-      AppMethodBeat.i(111367);
-      rCr = new s((byte)0);
-      AppMethodBeat.o(111367);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.s
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 import android.annotation.TargetApi;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 @TargetApi(11)
 public final class n
@@ -16,7 +16,7 @@ public final class n
       AppMethodBeat.o(141185);
       return;
     }
-    ad.i("MicroMsg.ChattingUI.ScrollController", "setSelectionFromTop position %s smooth %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.ChattingUI.ScrollController", "setSelectionFromTop position %s smooth %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean) });
     paramListView.setItemChecked(paramInt1, true);
     paramListView.setSelectionFromTop(paramInt1, paramInt2);
     AppMethodBeat.o(141185);
@@ -24,7 +24,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.n
  * JD-Core Version:    0.7.0.1
  */

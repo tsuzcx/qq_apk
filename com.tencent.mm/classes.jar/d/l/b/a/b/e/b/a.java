@@ -9,44 +9,44 @@ import java.util.List;
 
 public abstract class a
 {
-  public static final a JJT = new a((byte)0);
-  public final int JJQ;
-  private final List<Integer> JJR;
-  private final int[] JJS;
+  public static final a Lxm = new a((byte)0);
+  public final int Lxj;
+  private final List<Integer> Lxk;
+  private final int[] Lxl;
   public final int major;
   public final int minor;
   
   public a(int... paramVarArgs)
   {
-    this.JJS = paramVarArgs;
-    paramVarArgs = e.j(this.JJS, 0);
+    this.Lxl = paramVarArgs;
+    paramVarArgs = e.m(this.Lxl, 0);
     int i;
     if (paramVarArgs != null)
     {
       i = paramVarArgs.intValue();
       this.major = i;
-      paramVarArgs = e.j(this.JJS, 1);
+      paramVarArgs = e.m(this.Lxl, 1);
       if (paramVarArgs == null) {
         break label133;
       }
       i = paramVarArgs.intValue();
       label58:
       this.minor = i;
-      paramVarArgs = e.j(this.JJS, 2);
+      paramVarArgs = e.m(this.Lxl, 2);
       i = j;
       if (paramVarArgs != null) {
         i = paramVarArgs.intValue();
       }
-      this.JJQ = i;
-      if (this.JJS.length <= 3) {
+      this.Lxj = i;
+      if (this.Lxl.length <= 3) {
         break label138;
       }
     }
     label133:
     label138:
-    for (paramVarArgs = j.m((Iterable)e.N(this.JJS).subList(3, this.JJS.length));; paramVarArgs = (List)v.Jgl)
+    for (paramVarArgs = j.l((Iterable)e.N(this.Lxl).subList(3, this.Lxl.length));; paramVarArgs = (List)v.KTF)
     {
-      this.JJR = paramVarArgs;
+      this.Lxk = paramVarArgs;
       return;
       i = -1;
       break;
@@ -71,20 +71,20 @@ public abstract class a
   
   public boolean equals(Object paramObject)
   {
-    return (paramObject != null) && (k.g(getClass(), paramObject.getClass())) && (this.major == ((a)paramObject).major) && (this.minor == ((a)paramObject).minor) && (this.JJQ == ((a)paramObject).JJQ) && (k.g(this.JJR, ((a)paramObject).JJR));
+    return (paramObject != null) && (k.g(getClass(), paramObject.getClass())) && (this.major == ((a)paramObject).major) && (this.minor == ((a)paramObject).minor) && (this.Lxj == ((a)paramObject).Lxj) && (k.g(this.Lxk, ((a)paramObject).Lxk));
   }
   
   public int hashCode()
   {
     int i = this.major;
     i += i * 31 + this.minor;
-    i += i * 31 + this.JJQ;
-    return i + (i * 31 + this.JJR.hashCode());
+    i += i * 31 + this.Lxj;
+    return i + (i * 31 + this.Lxk.hashCode());
   }
   
   public String toString()
   {
-    Object localObject = this.JJS;
+    Object localObject = this.Lxl;
     ArrayList localArrayList = new ArrayList();
     int k = localObject.length;
     int i = 0;
@@ -114,7 +114,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.e.b.a
  * JD-Core Version:    0.7.0.1
  */

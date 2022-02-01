@@ -1,201 +1,204 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ahf
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String CUC;
-  public String DjA;
-  public String DjB;
-  public int DjC;
-  public String DjD;
-  public int DjE;
-  public long Djr;
-  public long Djs;
-  public long Djt;
-  public String Dju;
-  public long Djv;
-  public String Djw;
-  public String Djx;
-  public String Djy;
-  public String Djz;
+  public String DWF;
+  public ahg EBB;
+  public String ddo;
+  public int duration;
+  public int hgY = -1;
+  public int hgZ;
+  public int hha = 0;
+  public int hhb;
+  public int hhc;
+  public String hhd;
+  public String hkV;
+  public String hld;
+  public int videoHeight;
+  public String videoUrl;
+  public int videoWidth;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91460);
+    AppMethodBeat.i(127467);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.Djr);
-      paramVarArgs.aG(2, this.Djs);
-      paramVarArgs.aG(3, this.Djt);
-      if (this.Dju != null) {
-        paramVarArgs.d(4, this.Dju);
+      paramVarArgs.aR(1, this.hgY);
+      paramVarArgs.aR(2, this.hha);
+      paramVarArgs.aR(3, this.videoWidth);
+      paramVarArgs.aR(4, this.videoHeight);
+      paramVarArgs.aR(5, this.hgZ);
+      paramVarArgs.aR(6, this.duration);
+      if (this.hhd != null) {
+        paramVarArgs.d(7, this.hhd);
       }
-      paramVarArgs.aG(5, this.Djv);
-      if (this.Djw != null) {
-        paramVarArgs.d(6, this.Djw);
+      if (this.ddo != null) {
+        paramVarArgs.d(8, this.ddo);
       }
-      if (this.Djx != null) {
-        paramVarArgs.d(7, this.Djx);
+      if (this.hkV != null) {
+        paramVarArgs.d(9, this.hkV);
       }
-      if (this.Djy != null) {
-        paramVarArgs.d(8, this.Djy);
+      paramVarArgs.aR(10, this.hhc);
+      if (this.EBB != null)
+      {
+        paramVarArgs.ln(11, this.EBB.computeSize());
+        this.EBB.writeFields(paramVarArgs);
       }
-      if (this.Djz != null) {
-        paramVarArgs.d(9, this.Djz);
+      if (this.hld != null) {
+        paramVarArgs.d(12, this.hld);
       }
-      if (this.DjA != null) {
-        paramVarArgs.d(10, this.DjA);
+      if (this.DWF != null) {
+        paramVarArgs.d(13, this.DWF);
       }
-      if (this.DjB != null) {
-        paramVarArgs.d(11, this.DjB);
+      if (this.videoUrl != null) {
+        paramVarArgs.d(14, this.videoUrl);
       }
-      paramVarArgs.aR(12, this.DjC);
-      if (this.DjD != null) {
-        paramVarArgs.d(13, this.DjD);
-      }
-      paramVarArgs.aR(14, this.DjE);
-      if (this.CUC != null) {
-        paramVarArgs.d(15, this.CUC);
-      }
-      AppMethodBeat.o(91460);
+      paramVarArgs.aR(15, this.hhb);
+      AppMethodBeat.o(127467);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.q(1, this.Djr) + 0 + f.a.a.b.b.a.q(2, this.Djs) + f.a.a.b.b.a.q(3, this.Djt);
+      i = f.a.a.b.b.a.bx(1, this.hgY) + 0 + f.a.a.b.b.a.bx(2, this.hha) + f.a.a.b.b.a.bx(3, this.videoWidth) + f.a.a.b.b.a.bx(4, this.videoHeight) + f.a.a.b.b.a.bx(5, this.hgZ) + f.a.a.b.b.a.bx(6, this.duration);
       paramInt = i;
-      if (this.Dju != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Dju);
-      }
-      i = paramInt + f.a.a.b.b.a.q(5, this.Djv);
-      paramInt = i;
-      if (this.Djw != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.Djw);
+      if (this.hhd != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.hhd);
       }
       i = paramInt;
-      if (this.Djx != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.Djx);
+      if (this.ddo != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.ddo);
       }
       paramInt = i;
-      if (this.Djy != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.Djy);
+      if (this.hkV != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.hkV);
+      }
+      i = paramInt + f.a.a.b.b.a.bx(10, this.hhc);
+      paramInt = i;
+      if (this.EBB != null) {
+        paramInt = i + f.a.a.a.lm(11, this.EBB.computeSize());
       }
       i = paramInt;
-      if (this.Djz != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.Djz);
+      if (this.hld != null) {
+        i = paramInt + f.a.a.b.b.a.e(12, this.hld);
       }
       paramInt = i;
-      if (this.DjA != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.DjA);
+      if (this.DWF != null) {
+        paramInt = i + f.a.a.b.b.a.e(13, this.DWF);
       }
       i = paramInt;
-      if (this.DjB != null) {
-        i = paramInt + f.a.a.b.b.a.e(11, this.DjB);
+      if (this.videoUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(14, this.videoUrl);
       }
-      i += f.a.a.b.b.a.bA(12, this.DjC);
-      paramInt = i;
-      if (this.DjD != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.DjD);
-      }
-      i = paramInt + f.a.a.b.b.a.bA(14, this.DjE);
-      paramInt = i;
-      if (this.CUC != null) {
-        paramInt = i + f.a.a.b.b.a.e(15, this.CUC);
-      }
-      AppMethodBeat.o(91460);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bx(15, this.hhb);
+      AppMethodBeat.o(127467);
+      return i + paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(91460);
+      AppMethodBeat.o(127467);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       ahf localahf = (ahf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(91460);
+        AppMethodBeat.o(127467);
         return -1;
       case 1: 
-        localahf.Djr = locala.KhF.xT();
-        AppMethodBeat.o(91460);
+        localahf.hgY = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 2: 
-        localahf.Djs = locala.KhF.xT();
-        AppMethodBeat.o(91460);
+        localahf.hha = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 3: 
-        localahf.Djt = locala.KhF.xT();
-        AppMethodBeat.o(91460);
+        localahf.videoWidth = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 4: 
-        localahf.Dju = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.videoHeight = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 5: 
-        localahf.Djv = locala.KhF.xT();
-        AppMethodBeat.o(91460);
+        localahf.hgZ = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 6: 
-        localahf.Djw = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.duration = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 7: 
-        localahf.Djx = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.hhd = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127467);
         return 0;
       case 8: 
-        localahf.Djy = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.ddo = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127467);
         return 0;
       case 9: 
-        localahf.Djz = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.hkV = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127467);
         return 0;
       case 10: 
-        localahf.DjA = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.hhc = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(127467);
         return 0;
       case 11: 
-        localahf.DjB = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new ahg();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((ahg)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localahf.EBB = ((ahg)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(127467);
         return 0;
       case 12: 
-        localahf.DjC = locala.KhF.xS();
-        AppMethodBeat.o(91460);
+        localahf.hld = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127467);
         return 0;
       case 13: 
-        localahf.DjD = locala.KhF.readString();
-        AppMethodBeat.o(91460);
+        localahf.DWF = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127467);
         return 0;
       case 14: 
-        localahf.DjE = locala.KhF.xS();
-        AppMethodBeat.o(91460);
+        localahf.videoUrl = ((f.a.a.a.a)localObject1).LVo.readString();
+        AppMethodBeat.o(127467);
         return 0;
       }
-      localahf.CUC = locala.KhF.readString();
-      AppMethodBeat.o(91460);
+      localahf.hhb = ((f.a.a.a.a)localObject1).LVo.xF();
+      AppMethodBeat.o(127467);
       return 0;
     }
-    AppMethodBeat.o(91460);
+    AppMethodBeat.o(127467);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ahf
  * JD-Core Version:    0.7.0.1
  */

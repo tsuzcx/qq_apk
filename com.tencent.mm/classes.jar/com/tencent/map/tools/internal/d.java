@@ -6,6 +6,8 @@ public abstract interface d
   
   public abstract Object callSheetMth(Object paramObject, String paramString, Object... paramVarArgs);
   
+  public abstract Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject);
+  
   public abstract Class findSheet(String paramString);
   
   public abstract <T> Class<? extends T> findSheet(String paramString, Class<T> paramClass);

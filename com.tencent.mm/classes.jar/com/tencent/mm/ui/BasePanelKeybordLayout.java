@@ -6,16 +6,16 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class BasePanelKeybordLayout
   extends KeyboardLinearLayout
 {
-  private int CfW = -1;
-  private a FHs = null;
+  private int Dyn = -1;
+  private a HgA = null;
   
   public BasePanelKeybordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,13 +33,13 @@ public abstract class BasePanelKeybordLayout
   {
     int i = View.MeasureSpec.getSize(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt2);
-    ad.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
+    ac.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
     if (m >= 0)
     {
-      if (this.CfW >= 0) {
+      if (this.Dyn >= 0) {
         break label62;
       }
-      this.CfW = m;
+      this.Dyn = m;
     }
     label62:
     int n;
@@ -54,8 +54,8 @@ public abstract class BasePanelKeybordLayout
         {
           super.onMeasure(paramInt1, paramInt2);
           return;
-          n = this.CfW - m;
-          this.CfW = m;
+          n = this.Dyn - m;
+          this.Dyn = m;
         } while (n == 0);
         localObject = getPanelView();
       } while (localObject == null);
@@ -73,13 +73,13 @@ public abstract class BasePanelKeybordLayout
       if (i < 0) {
         j = 0;
       }
-      int i1 = i.il(aj.getContext());
-      i = i.in(getContext());
+      int i1 = i.iw(ai.getContext());
+      i = i.iy(getContext());
       int k = j;
-      if (i.XO() > 0)
+      if (i.YL() > 0)
       {
         k = j;
-        if (m >= i.XO()) {
+        if (m >= i.YL()) {
           k = i;
         }
       }
@@ -107,7 +107,7 @@ public abstract class BasePanelKeybordLayout
           j = i;
         }
       }
-      ad.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
+      ac.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
       localLayoutParams.height = j;
       localView.setLayoutParams(localLayoutParams);
       break label102;
@@ -117,14 +117,14 @@ public abstract class BasePanelKeybordLayout
   
   public void setOnMeasureListener(a parama)
   {
-    this.FHs = parama;
+    this.HgA = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.BasePanelKeybordLayout
  * JD-Core Version:    0.7.0.1
  */

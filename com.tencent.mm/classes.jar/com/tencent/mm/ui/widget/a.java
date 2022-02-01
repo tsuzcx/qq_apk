@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   extends ImageSpan
 {
-  public int HyD = 0;
+  public int IZa = 0;
   
   public a(Drawable paramDrawable)
   {

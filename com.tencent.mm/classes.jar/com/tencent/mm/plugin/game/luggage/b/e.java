@@ -18,7 +18,7 @@ public class e
   public final void a(Context paramContext, String paramString, bn.a parama)
   {
     AppMethodBeat.i(83054);
-    paramContext = b.HG(paramString);
+    paramContext = b.LK(paramString);
     if (paramContext == null)
     {
       parama.f("empty_postId", null);
@@ -46,7 +46,7 @@ public class e
   
   public final void b(a<f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

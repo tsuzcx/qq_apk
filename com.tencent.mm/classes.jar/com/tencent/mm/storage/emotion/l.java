@@ -1,104 +1,44 @@
 package com.tencent.mm.storage.emotion;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
+import com.tencent.mm.g.c.bm;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class l
-  extends j<k>
-  implements g.a
+  extends bm
 {
-  public static final String[] SQL_CREATE;
-  private e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(105117);
-    SQL_CREATE = new String[] { j.getCreateSQLs(k.info, "EmotionDetailInfo") };
-    AppMethodBeat.o(105117);
+    AppMethodBeat.i(105115);
+    c.a locala = new c.a();
+    locala.GvF = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "productID";
+    locala.GvH.put("productID", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" productID TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "productID";
+    locala.columns[1] = "content";
+    locala.GvH.put("content", "BLOB default '' ");
+    localStringBuilder.append(" content BLOB default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "lan";
+    locala.GvH.put("lan", "TEXT default '' ");
+    localStringBuilder.append(" lan TEXT default '' ");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(105115);
   }
   
-  public l(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, k.info, "EmotionDetailInfo", null);
-    this.db = parame;
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final void a(String paramString1, GetEmotionDetailResponse paramGetEmotionDetailResponse, String paramString2)
-  {
-    AppMethodBeat.i(183930);
-    if ((bt.isNullOrNil(paramString1)) || (paramGetEmotionDetailResponse == null)) {
-      ad.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
-    }
-    try
-    {
-      k localk = new k();
-      localk.field_productID = paramString1;
-      localk.field_content = paramGetEmotionDetailResponse.toByteArray();
-      localk.field_lan = paramString2;
-      paramGetEmotionDetailResponse = localk.convertTo();
-      if (this.db.replace("EmotionDetailInfo", "productID", paramGetEmotionDetailResponse) > 0L)
-      {
-        ad.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
-        AppMethodBeat.o(183930);
-        return;
-      }
-      ad.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID failed. ProductId:%s", new Object[] { paramString1 });
-      AppMethodBeat.o(183930);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      ad.e("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bt.m(paramString1) });
-      AppMethodBeat.o(183930);
-    }
-  }
-  
-  public final k aJE(String paramString)
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(105116);
-    if (bt.isNullOrNil(paramString))
-    {
-      ad.w("MicroMsg.emoji.EmotionDetailInfoStorage", "getEmotionDetailRespnseByPID failed. productID is null.");
-      AppMethodBeat.o(105116);
-      return null;
-    }
-    Cursor localCursor = this.db.a("EmotionDetailInfo", new String[] { "content", "lan" }, "productID=?", new String[] { paramString }, null, null, null, 2);
-    Object localObject1 = localObject2;
-    if (localCursor != null)
-    {
-      localObject1 = localObject2;
-      if (localCursor.moveToFirst())
-      {
-        localObject1 = new k();
-        ((k)localObject1).field_content = localCursor.getBlob(0);
-        ((k)localObject1).field_lan = localCursor.getString(1);
-        ((k)localObject1).field_productID = paramString;
-      }
-    }
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    AppMethodBeat.o(105116);
-    return localObject1;
-  }
-  
-  public final String getTableName()
-  {
-    return "EmotionDetailInfo";
+    return info;
   }
 }
 

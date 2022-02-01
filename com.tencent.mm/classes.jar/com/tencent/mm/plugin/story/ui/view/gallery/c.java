@@ -8,33 +8,33 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.j.a;
 import com.tencent.mm.ui.widget.listview.PullDownListView;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDragCloseConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "downX", "", "downY", "lastScrollType", "", "mStoryView", "Landroid/view/View;", "getMStoryView", "()Landroid/view/View;", "setMStoryView", "(Landroid/view/View;)V", "mWrapperView", "Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "getMWrapperView", "()Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "setMWrapperView", "(Lcom/tencent/mm/ui/widget/listview/PullDownListView;)V", "moveUpLimit", "pointerId", "touchConsumed", "", "touchX", "touchY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "scaleBackOverScroll", "offset", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDragCloseConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "downX", "", "downY", "lastScrollType", "", "mStoryView", "Landroid/view/View;", "getMStoryView", "()Landroid/view/View;", "setMStoryView", "(Landroid/view/View;)V", "mWrapperView", "Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "getMWrapperView", "()Lcom/tencent/mm/ui/widget/listview/PullDownListView;", "setMWrapperView", "(Lcom/tencent/mm/ui/widget/listview/PullDownListView;)V", "moveUpLimit", "pointerId", "touchConsumed", "", "touchX", "touchY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "scaleBackOverScroll", "offset", "plugin-story_release"})
 public final class c
   extends a
 {
-  private float cEZ;
-  private float cFa;
-  private float fPl;
-  private float fPm;
-  private VelocityTracker lr;
-  private int tHq;
-  PullDownListView yxJ;
-  View yxK;
-  private int yxL;
-  private boolean yxM;
-  private int yxN;
+  private float cCh;
+  private float cCi;
+  private float fTg;
+  private float fTh;
+  private VelocityTracker mq;
+  private int uPM;
+  PullDownListView zKY;
+  View zKZ;
+  private int zLa;
+  private boolean zLb;
+  private int zLc;
   
   public c()
   {
     AppMethodBeat.i(120331);
-    this.yxL = ao.fromDPToPix(aj.getContext(), 30);
+    this.zLa = ao.fromDPToPix(ai.getContext(), 30);
     AppMethodBeat.o(120331);
   }
   
@@ -43,56 +43,56 @@ public final class c
     float f2 = 0.0F;
     AppMethodBeat.i(120330);
     k.h(paramMotionEvent, "event");
-    if (this.lr == null) {
-      this.lr = VelocityTracker.obtain();
+    if (this.mq == null) {
+      this.mq = VelocityTracker.obtain();
     }
-    Object localObject = this.lr;
+    Object localObject = this.mq;
     if (localObject != null) {
       ((VelocityTracker)localObject).addMovement(paramMotionEvent);
     }
     switch (paramMotionEvent.getActionMasked())
     {
     default: 
-      paramBoolean = this.yxM;
+      paramBoolean = this.zLb;
       AppMethodBeat.o(120330);
       return paramBoolean;
     case 0: 
-      this.tHq = paramMotionEvent.getPointerId(0);
-      this.cEZ = paramMotionEvent.getRawX();
-      this.cFa = paramMotionEvent.getRawY();
-      this.yxM = false;
+      this.uPM = paramMotionEvent.getPointerId(0);
+      this.cCh = paramMotionEvent.getRawX();
+      this.cCi = paramMotionEvent.getRawY();
+      this.zLb = false;
     }
     for (;;)
     {
-      this.yxN = 0;
+      this.zLc = 0;
       break;
       if (!paramBoolean) {
         break;
       }
-      this.yxN = paramInt;
-      this.fPl = paramMotionEvent.getRawX();
-      this.fPm = paramMotionEvent.getRawY();
-      float f3 = this.fPm - this.cFa;
-      localObject = this.lr;
+      this.zLc = paramInt;
+      this.fTg = paramMotionEvent.getRawX();
+      this.fTh = paramMotionEvent.getRawY();
+      float f3 = this.fTh - this.cCi;
+      localObject = this.mq;
       if (localObject != null) {
         ((VelocityTracker)localObject).computeCurrentVelocity(1000);
       }
-      localObject = this.lr;
+      localObject = this.mq;
       if (localObject != null) {}
-      for (float f1 = ((VelocityTracker)localObject).getXVelocity(this.tHq);; f1 = 0.0F)
+      for (float f1 = ((VelocityTracker)localObject).getXVelocity(this.uPM);; f1 = 0.0F)
       {
-        localObject = this.lr;
+        localObject = this.mq;
         if (localObject != null) {
-          f2 = ((VelocityTracker)localObject).getYVelocity(this.tHq);
+          f2 = ((VelocityTracker)localObject).getYVelocity(this.uPM);
         }
         if (paramInt != 1) {
           break label294;
         }
-        this.yxM = true;
-        if ((Math.abs(f3) <= this.yxL) || (Math.abs(f2) <= Math.abs(f1))) {
+        this.zLb = true;
+        if ((Math.abs(f3) <= this.zLa) || (Math.abs(f2) <= Math.abs(f1))) {
           break;
         }
-        localObject = this.yxJ;
+        localObject = this.zKY;
         if (localObject == null) {
           break;
         }
@@ -103,46 +103,46 @@ public final class c
       if (paramInt != 2) {
         break;
       }
-      this.yxM = true;
-      paramMotionEvent = this.yxK;
+      this.zLb = true;
+      paramMotionEvent = this.zKZ;
       if (paramMotionEvent != null) {}
       for (paramMotionEvent = paramMotionEvent.getLayoutParams();; paramMotionEvent = null)
       {
         paramMotionEvent = (ViewGroup.MarginLayoutParams)paramMotionEvent;
-        if ((this.yxJ == null) || (paramMotionEvent == null)) {
+        if ((this.zKY == null) || (paramMotionEvent == null)) {
           break;
         }
         paramMotionEvent.topMargin = ((int)(f3 / 15.0F));
-        localObject = this.yxK;
+        localObject = this.zKZ;
         if (localObject == null) {
           break;
         }
         ((View)localObject).setLayoutParams((ViewGroup.LayoutParams)paramMotionEvent);
         break;
       }
-      localObject = this.lr;
+      localObject = this.mq;
       if (localObject != null) {
         ((VelocityTracker)localObject).clear();
       }
-      localObject = this.lr;
+      localObject = this.mq;
       if (localObject != null) {
         ((VelocityTracker)localObject).recycle();
       }
-      this.lr = null;
-      if (this.yxN == 1)
+      this.mq = null;
+      if (this.zLc == 1)
       {
-        localObject = this.yxJ;
+        localObject = this.zKY;
         if (localObject != null) {
           ((PullDownListView)localObject).dispatchTouchEvent(paramMotionEvent);
         }
       }
-      else if (this.yxN == 2)
+      else if (this.zLc == 2)
       {
-        paramMotionEvent = this.yxJ;
+        paramMotionEvent = this.zKY;
         if (paramMotionEvent != null) {
-          paramMotionEvent.ffR();
+          paramMotionEvent.fvQ();
         }
-        localObject = aj.getContext().getSystemService("vibrator");
+        localObject = ai.getContext().getSystemService("vibrator");
         paramMotionEvent = (MotionEvent)localObject;
         if (!(localObject instanceof Vibrator)) {
           paramMotionEvent = null;
@@ -155,14 +155,14 @@ public final class c
     }
   }
   
-  public final int dLn()
+  public final int dZN()
   {
     return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.vfs.i;
 import java.util.List;
@@ -28,12 +28,12 @@ public final class b
       AppMethodBeat.o(116211);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(116207);
-        this.wue.onError(paramInt);
+        this.xFu.onError(paramInt);
         AppMethodBeat.o(116207);
       }
     });
@@ -47,7 +47,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.a.b
  * JD-Core Version:    0.7.0.1
  */

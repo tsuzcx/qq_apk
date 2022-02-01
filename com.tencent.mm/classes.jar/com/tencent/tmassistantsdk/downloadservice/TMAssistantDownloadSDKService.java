@@ -8,7 +8,7 @@ import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceCallback;
 import com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceInterface.Stub;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
@@ -223,7 +223,7 @@ public class TMAssistantDownloadSDKService
       {
         for (;;)
         {
-          ad.printErrStackTrace("TMAssistantDownloadSDKService", paramString1, "", new Object[0]);
+          ac.printErrStackTrace("TMAssistantDownloadSDKService", paramString1, "", new Object[0]);
         }
       }
     }
@@ -307,7 +307,7 @@ public class TMAssistantDownloadSDKService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.TMAssistantDownloadSDKService
  * JD-Core Version:    0.7.0.1
  */

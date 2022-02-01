@@ -1,6 +1,5 @@
 package com.tencent.xweb;
 
-@Deprecated
 public abstract interface k {}
 
 

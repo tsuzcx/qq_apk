@@ -6,75 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class au
   extends a
 {
-  public long dMP;
-  public long dMQ = 0L;
-  public long dMR = 0L;
-  public long dMS = 0L;
-  public long dMT;
-  private String dMU = "";
-  public long dMV;
+  private String dFe;
+  private long dKB;
+  private long dKC;
+  private long dKD;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(192595);
+    AppMethodBeat.i(194978);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dMP);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMQ);
+    ((StringBuffer)localObject).append(this.dKB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMR);
+    ((StringBuffer)localObject).append(this.dKC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMV);
+    ((StringBuffer)localObject).append(this.dKD);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(192595);
+    arz((String)localObject);
+    AppMethodBeat.o(194978);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(192596);
+    AppMethodBeat.i(194979);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("RecomdCount:").append(this.dMP);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickMore:").append(this.dMQ);
+    ((StringBuffer)localObject).append("Type:").append(this.dKB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RecomdSelect:").append(this.dMR);
+    ((StringBuffer)localObject).append("IsOverlap:").append(this.dKC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OtherSelect:").append(this.dMS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExitType:").append(this.dMT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TicketId:").append(this.dMU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OtherCount:").append(this.dMV);
+    ((StringBuffer)localObject).append("OverlapCount:").append(this.dKD);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(192596);
+    AppMethodBeat.o(194979);
     return localObject;
+  }
+  
+  public final au eg(long paramLong)
+  {
+    this.dKB = paramLong;
+    return this;
+  }
+  
+  public final au eh(long paramLong)
+  {
+    this.dKC = paramLong;
+    return this;
+  }
+  
+  public final au ei(long paramLong)
+  {
+    this.dKD = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 19450;
+    return 19946;
   }
   
-  public final au hL(String paramString)
+  public final au ib(String paramString)
   {
-    AppMethodBeat.i(192594);
-    this.dMU = t("TicketId", paramString, true);
-    AppMethodBeat.o(192594);
+    AppMethodBeat.i(194977);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(194977);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.au
  * JD-Core Version:    0.7.0.1
  */

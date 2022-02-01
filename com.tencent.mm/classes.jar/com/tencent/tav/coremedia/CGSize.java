@@ -11,9 +11,9 @@ public class CGSize
   
   static
   {
-    AppMethodBeat.i(204353);
+    AppMethodBeat.i(195692);
     CGSizeZero = new CGSize(0.0F, 0.0F);
-    AppMethodBeat.o(204353);
+    AppMethodBeat.o(195692);
   }
   
   public CGSize()
@@ -29,9 +29,9 @@ public class CGSize
   
   public CGSize clone()
   {
-    AppMethodBeat.i(204351);
+    AppMethodBeat.i(195690);
     CGSize localCGSize = new CGSize(this.width, this.height);
-    AppMethodBeat.o(204351);
+    AppMethodBeat.o(195690);
     return localCGSize;
   }
   
@@ -45,15 +45,15 @@ public class CGSize
   
   public String toString()
   {
-    AppMethodBeat.i(204350);
+    AppMethodBeat.i(195689);
     String str = "[" + this.width + "," + this.height + "]";
-    AppMethodBeat.o(204350);
+    AppMethodBeat.o(195689);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.coremedia.CGSize
  * JD-Core Version:    0.7.0.1
  */

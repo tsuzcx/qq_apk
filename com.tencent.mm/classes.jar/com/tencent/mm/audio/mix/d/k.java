@@ -1,23 +1,23 @@
 package com.tencent.mm.audio.mix.d;
 
-import com.tencent.mm.aj.b;
+import com.tencent.mm.ai.b;
 import com.tencent.mm.audio.mix.a.d;
 
 public abstract interface k
 {
-  public abstract void MX();
+  public abstract void MV();
   
-  public abstract void MY();
+  public abstract void MW();
   
-  public abstract boolean Nb();
+  public abstract boolean MZ();
   
-  public abstract boolean Nc();
+  public abstract boolean Na();
   
-  public abstract d Nd();
+  public abstract d Nb();
   
-  public abstract void Ng();
+  public abstract void Ne();
   
-  public abstract b Nn();
+  public abstract b Nl();
   
   public abstract long getCurrentPosition();
   

@@ -17,40 +17,40 @@ import android.view.View;
 
 public final class b
 {
-  public static final int gK = 0;
-  private final a gL;
-  private final Path gM;
-  private final Paint gN;
-  public final Paint gO;
-  private c.d gP;
-  public Drawable gQ;
-  private boolean gR;
-  private boolean gS;
+  public static final int hJ = 0;
+  private final a hK;
+  private final Path hL;
+  private final Paint hM;
+  public final Paint hN;
+  private c.d hO;
+  public Drawable hP;
+  private boolean hQ;
+  private boolean hR;
   private final View view;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      gK = 2;
+      hJ = 2;
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      gK = 1;
+      hJ = 1;
       return;
     }
   }
   
   public b(a parama)
   {
-    this.gL = parama;
+    this.hK = parama;
     this.view = ((View)parama);
     this.view.setWillNotDraw(false);
-    this.gM = new Path();
-    this.gN = new Paint(7);
-    this.gO = new Paint(1);
-    this.gO.setColor(0);
+    this.hL = new Path();
+    this.hM = new Paint(7);
+    this.hN = new Paint(1);
+    this.hN.setColor(0);
   }
   
   private float a(c.d paramd)
@@ -58,28 +58,41 @@ public final class b
     return k.c(paramd.centerX, paramd.centerY, this.view.getWidth(), this.view.getHeight());
   }
   
-  private void aY()
+  private void b(Canvas paramCanvas)
   {
-    if (gK == 1)
+    if (bi())
     {
-      this.gM.rewind();
-      if (this.gP != null) {
-        this.gM.addCircle(this.gP.centerX, this.gP.centerY, this.gP.radius, Path.Direction.CW);
+      Rect localRect = this.hP.getBounds();
+      float f1 = this.hO.centerX - localRect.width() / 2.0F;
+      float f2 = this.hO.centerY - localRect.height() / 2.0F;
+      paramCanvas.translate(f1, f2);
+      this.hP.draw(paramCanvas);
+      paramCanvas.translate(-f1, -f2);
+    }
+  }
+  
+  private void bf()
+  {
+    if (hJ == 1)
+    {
+      this.hL.rewind();
+      if (this.hO != null) {
+        this.hL.addCircle(this.hO.centerX, this.hO.centerY, this.hO.radius, Path.Direction.CW);
       }
     }
     this.view.invalidate();
   }
   
-  private boolean aZ()
+  private boolean bg()
   {
     int i;
-    if ((this.gP == null) || (this.gP.bc()))
+    if ((this.hO == null) || (this.hO.bj()))
     {
       i = 1;
-      if (gK != 0) {
+      if (hJ != 0) {
         break label45;
       }
-      if ((i != 0) || (!this.gS)) {
+      if ((i != 0) || (!this.hR)) {
         break label43;
       }
     }
@@ -95,35 +108,22 @@ public final class b
     return false;
   }
   
-  private void b(Canvas paramCanvas)
+  private boolean bh()
   {
-    if (bb())
+    return (!this.hQ) && (Color.alpha(this.hN.getColor()) != 0);
+  }
+  
+  private boolean bi()
+  {
+    return (!this.hQ) && (this.hP != null) && (this.hO != null);
+  }
+  
+  public final void bc()
+  {
+    if (hJ == 0)
     {
-      Rect localRect = this.gQ.getBounds();
-      float f1 = this.gP.centerX - localRect.width() / 2.0F;
-      float f2 = this.gP.centerY - localRect.height() / 2.0F;
-      paramCanvas.translate(f1, f2);
-      this.gQ.draw(paramCanvas);
-      paramCanvas.translate(-f1, -f2);
-    }
-  }
-  
-  private boolean ba()
-  {
-    return (!this.gR) && (Color.alpha(this.gO.getColor()) != 0);
-  }
-  
-  private boolean bb()
-  {
-    return (!this.gR) && (this.gQ != null) && (this.gP != null);
-  }
-  
-  public final void aV()
-  {
-    if (gK == 0)
-    {
-      this.gR = true;
-      this.gS = false;
+      this.hQ = true;
+      this.hR = false;
       this.view.buildDrawingCache();
       Object localObject2 = this.view.getDrawingCache();
       Object localObject1 = localObject2;
@@ -143,37 +143,37 @@ public final class b
       }
       if (localObject1 != null)
       {
-        localObject2 = this.gN;
+        localObject2 = this.hM;
         Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
         ((Paint)localObject2).setShader(new BitmapShader((Bitmap)localObject1, localTileMode, localTileMode));
       }
-      this.gR = false;
-      this.gS = true;
+      this.hQ = false;
+      this.hR = true;
     }
   }
   
-  public final void aW()
+  public final void bd()
   {
-    if (gK == 0)
+    if (hJ == 0)
     {
-      this.gS = false;
+      this.hR = false;
       this.view.destroyDrawingCache();
-      this.gN.setShader(null);
+      this.hM.setShader(null);
       this.view.invalidate();
     }
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (aZ()) {
-      switch (gK)
+    if (bg()) {
+      switch (hJ)
       {
       default: 
-        throw new IllegalStateException("Unsupported strategy " + gK);
+        throw new IllegalStateException("Unsupported strategy " + hJ);
       case 2: 
-        this.gL.a(paramCanvas);
-        if (ba()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.gO);
+        this.hK.a(paramCanvas);
+        if (bh()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.hN);
         }
         break;
       }
@@ -183,21 +183,21 @@ public final class b
       b(paramCanvas);
       return;
       int i = paramCanvas.save();
-      paramCanvas.clipPath(this.gM);
-      this.gL.a(paramCanvas);
-      if (ba()) {
-        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.gO);
+      paramCanvas.clipPath(this.hL);
+      this.hK.a(paramCanvas);
+      if (bh()) {
+        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.hN);
       }
       paramCanvas.restoreToCount(i);
       continue;
-      paramCanvas.drawCircle(this.gP.centerX, this.gP.centerY, this.gP.radius, this.gN);
-      if (ba())
+      paramCanvas.drawCircle(this.hO.centerX, this.hO.centerY, this.hO.radius, this.hM);
+      if (bh())
       {
-        paramCanvas.drawCircle(this.gP.centerX, this.gP.centerY, this.gP.radius, this.gO);
+        paramCanvas.drawCircle(this.hO.centerX, this.hO.centerY, this.hO.radius, this.hN);
         continue;
-        this.gL.a(paramCanvas);
-        if (ba()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.gO);
+        this.hK.a(paramCanvas);
+        if (bh()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.hN);
         }
       }
     }
@@ -206,58 +206,58 @@ public final class b
   public final c.d getRevealInfo()
   {
     Object localObject;
-    if (this.gP == null) {
+    if (this.hO == null) {
       localObject = null;
     }
     c.d locald;
     do
     {
       return localObject;
-      locald = new c.d(this.gP);
+      locald = new c.d(this.hO);
       localObject = locald;
-    } while (!locald.bc());
+    } while (!locald.bj());
     locald.radius = a(locald);
     return locald;
   }
   
   public final boolean isOpaque()
   {
-    return (this.gL.aX()) && (!aZ());
+    return (this.hK.be()) && (!bg());
   }
   
   public final void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    this.gQ = paramDrawable;
+    this.hP = paramDrawable;
     this.view.invalidate();
   }
   
   public final void setCircularRevealScrimColor(int paramInt)
   {
-    this.gO.setColor(paramInt);
+    this.hN.setColor(paramInt);
     this.view.invalidate();
   }
   
   public final void setRevealInfo(c.d paramd)
   {
     if (paramd == null) {
-      this.gP = null;
+      this.hO = null;
     }
     label70:
     for (;;)
     {
-      aY();
+      bf();
       return;
-      if (this.gP == null) {
-        this.gP = new c.d(paramd);
+      if (this.hO == null) {
+        this.hO = new c.d(paramd);
       }
       for (;;)
       {
         if (!k.e(paramd.radius, a(paramd))) {
           break label70;
         }
-        this.gP.radius = 3.4028235E+38F;
+        this.hO.radius = 3.4028235E+38F;
         break;
-        this.gP.b(paramd);
+        this.hO.b(paramd);
       }
     }
   }
@@ -266,12 +266,12 @@ public final class b
   {
     public abstract void a(Canvas paramCanvas);
     
-    public abstract boolean aX();
+    public abstract boolean be();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.circularreveal.b
  * JD-Core Version:    0.7.0.1
  */

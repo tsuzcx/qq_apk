@@ -5,48 +5,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public enum w
   implements b
 {
-  private int iMw = -1;
-  private String iMx = null;
+  private int jmD = -1;
+  private String jmE = null;
   
   static
   {
     AppMethodBeat.i(44302);
-    iMv = new w("INSTANCE");
-    iMy = new w[] { iMv };
+    jmC = new w("INSTANCE");
+    jmF = new w[] { jmC };
     AppMethodBeat.o(44302);
   }
   
   private w() {}
   
-  final void Q(int paramInt, String paramString)
+  final void R(int paramInt, String paramString)
   {
-    this.iMw = paramInt;
-    this.iMx = paramString;
+    this.jmD = paramInt;
+    this.jmE = paramString;
   }
   
-  public final void fh(boolean paramBoolean)
+  public final void fD(boolean paramBoolean)
   {
     AppMethodBeat.i(44301);
-    Object localObject = WxaPkgIntegrityChecker.q(paramBoolean, true);
+    Object localObject = WxaPkgIntegrityChecker.r(paramBoolean, true);
     if (((Pair)localObject).second != null)
     {
       AppMethodBeat.o(44301);
       return;
     }
-    if (((Pair)localObject).first == WxaPkgIntegrityChecker.a.iOk)
+    if (((Pair)localObject).first == WxaPkgIntegrityChecker.a.jot)
     {
-      localObject = j.aOK();
+      localObject = j.aVC();
       if (paramBoolean)
       {
         i = 0;
         localObject = ((bf)localObject).a("@LibraryAppId", i, new String[] { "downloadURL", "version" });
-        if ((localObject == null) || (bt.isNullOrNil(((bb)localObject).field_downloadURL))) {
+        if ((localObject == null) || (bs.isNullOrNil(((bb)localObject).field_downloadURL))) {
           break label283;
         }
         if (!paramBoolean) {
@@ -61,26 +61,26 @@ public enum w
         if (!paramBoolean) {
           break label259;
         }
-        if ((this.iMw <= 0) || (bt.isNullOrNil(this.iMx))) {
+        if ((this.jmD <= 0) || (bs.isNullOrNil(this.jmE))) {
           break label239;
         }
-        paramBoolean = u.aPE();
-        ad.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] lib can be patch, abtest open %b", new Object[] { Boolean.valueOf(paramBoolean) });
+        paramBoolean = u.aWw();
+        ac.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] lib can be patch, abtest open %b", new Object[] { Boolean.valueOf(paramBoolean) });
         if (!paramBoolean) {
           break label239;
         }
-        if (WxaPkgIntegrityChecker.C("@LibraryAppId", 0, this.iMw).first != WxaPkgIntegrityChecker.a.iOg) {
+        if (WxaPkgIntegrityChecker.B("@LibraryAppId", 0, this.jmD).first != WxaPkgIntegrityChecker.a.jop) {
           break label211;
         }
-        ad.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] start incremental lib download");
-        s.a("@LibraryAppId", this.iMw, ((bb)localObject).field_version, this.iMx, local1);
+        ac.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] start incremental lib download");
+        s.a("@LibraryAppId", this.jmD, ((bb)localObject).field_version, this.jmE, local1);
         AppMethodBeat.o(44301);
         return;
         i = 999;
         break;
       }
       label211:
-      ad.e("MicroMsg.AppBrand.PkgDownloadService", "[incremental] OldLibPkg[%d] or PatchUrl[%s] Invalid", new Object[] { Integer.valueOf(this.iMw), this.iMx });
+      ac.e("MicroMsg.AppBrand.PkgDownloadService", "[incremental] OldLibPkg[%d] or PatchUrl[%s] Invalid", new Object[] { Integer.valueOf(this.jmD), this.jmE });
       label239:
       bh.a(((bb)localObject).field_downloadURL, ((bb)localObject).field_version, local1);
       AppMethodBeat.o(44301);
@@ -88,10 +88,10 @@ public enum w
       label259:
       bh.a("@LibraryAppId", 999, ((bb)localObject).field_downloadURL, local1, new a.a()
       {
-        public final String aPJ()
+        public final String aWB()
         {
           AppMethodBeat.i(44298);
-          String str = "_" + this.iMB.field_versionMd5;
+          String str = "_" + this.jmI.field_versionMd5;
           AppMethodBeat.o(44298);
           return str;
         }
@@ -103,7 +103,7 @@ public enum w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.w
  * JD-Core Version:    0.7.0.1
  */

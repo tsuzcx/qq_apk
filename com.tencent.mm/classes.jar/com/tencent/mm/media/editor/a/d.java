@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/item/BitmapEditorItem;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/editor/item/BitmapEditorItem;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-mediaeditor_release"})
 public final class d
   extends b
 {
@@ -22,7 +22,7 @@ public final class d
     AppMethodBeat.o(93563);
   }
   
-  public final long ajy()
+  public final long aqx()
   {
     return 9223372036854775807L;
   }
@@ -35,7 +35,7 @@ public final class d
     k.h(paramCanvas, "canvas");
     k.h(paramPaint, "paint");
     paramCanvas.save();
-    paramCanvas.concat(this.dY);
+    paramCanvas.concat(this.eY);
     paramCanvas.drawBitmap(this.bitmap, 0.0F, 0.0F, paramPaint);
     paramCanvas.restore();
     AppMethodBeat.o(93562);
@@ -45,7 +45,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.editor.a.d
  * JD-Core Version:    0.7.0.1
  */

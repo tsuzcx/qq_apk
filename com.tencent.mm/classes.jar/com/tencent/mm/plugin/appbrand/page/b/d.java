@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
-import com.tencent.mm.plugin.appbrand.s.a.e.a;
+import com.tencent.mm.plugin.appbrand.r.a.e.a;
 
 public abstract interface d
 {
-  public abstract boolean Cv();
+  public abstract boolean BZ();
   
-  public abstract String Cw();
+  public abstract String Ca();
   
   public abstract void a(e.a parama);
   
-  public abstract void cm(String paramString);
+  public abstract void cc(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.d
  * JD-Core Version:    0.7.0.1
  */

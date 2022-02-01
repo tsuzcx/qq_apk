@@ -26,15 +26,15 @@ public final class f
   private static final b.c a(d.l.b.a.b.f.c paramc)
   {
     AppMethodBeat.i(56661);
-    if ((!paramc.fHg()) || (paramc.JLV.isEmpty()))
+    if ((!paramc.fZK()) || (paramc.Lzo.isEmpty()))
     {
       AppMethodBeat.o(56661);
       return null;
     }
-    Object localObject = d.l.b.a.b.a.a.a.Joo;
-    localObject = paramc.fHe().qV();
+    Object localObject = d.l.b.a.b.a.a.a.LbI;
+    localObject = paramc.fZI().rf();
     k.g(localObject, "shortName().asString()");
-    paramc = paramc.fHh().fHd();
+    paramc = paramc.fZL().fZH();
     k.g(paramc, "toSafe().parent()");
     paramc = a.a.b((String)localObject, paramc);
     AppMethodBeat.o(56661);
@@ -74,7 +74,7 @@ public final class f
         localObject2 = ((Iterator)localObject1).next();
         Collection localCollection = (Collection)localArrayList;
         if (i < 0) {
-          d.a.j.fvx();
+          d.a.j.fOc();
         }
         localCollection.add(d.l.b.a.b.m.d.a.aO((ab)localObject2));
         i += 1;
@@ -90,20 +90,20 @@ public final class f
       if (!paramBoolean) {
         break label295;
       }
-      paramList = paramg.adS(i);
+      paramList = paramg.agO(i);
       label231:
       k.g(paramList, "if (suspendFunction) bui…tFunction(parameterCount)");
       paramab2 = paramg1;
       if (paramab1 != null)
       {
-        paramab1 = g.JlM.Jmq;
+        paramab1 = g.KZg.KZK;
         k.g(paramab1, "KotlinBuiltIns.FQ_NAMES.extensionFunctionType");
         if (paramg1.g(paramab1) == null) {
           break label308;
         }
       }
     }
-    for (paramab2 = paramg1;; paramab2 = d.l.b.a.b.b.a.g.a.iH(d.a.j.d(paramg1, new d.l.b.a.b.b.a.j(paramg, paramab1, ae.emptyMap()))))
+    for (paramab2 = paramg1;; paramab2 = d.l.b.a.b.b.a.g.a.iX(d.a.j.d(paramg1, new d.l.b.a.b.b.a.j(paramg, paramab1, ae.emptyMap()))))
     {
       paramg = ac.a(paramab2, paramList, (List)localObject1);
       AppMethodBeat.o(56666);
@@ -111,12 +111,12 @@ public final class f
       i += 1;
       break;
       label295:
-      paramList = paramg.aQd(g.adQ(i));
+      paramList = paramg.aWc(g.agM(i));
       break label231;
       label308:
-      paramab1 = d.l.b.a.b.b.a.g.JrB;
+      paramab1 = d.l.b.a.b.b.a.g.LeU;
       paramg1 = (Iterable)paramg1;
-      paramab1 = g.JlM.Jmq;
+      paramab1 = g.KZg.KZK;
       k.g(paramab1, "KotlinBuiltIns.FQ_NAMES.extensionFunctionType");
     }
   }
@@ -144,9 +144,9 @@ public final class f
   {
     AppMethodBeat.i(56656);
     k.h(paramab, "$this$isFunctionType");
-    paramab = paramab.fIW().fxM();
+    paramab = paramab.gbz().fQq();
     if (paramab != null) {}
-    for (paramab = b((l)paramab); paramab == b.c.Joz; paramab = null)
+    for (paramab = b((l)paramab); paramab == b.c.LbS; paramab = null)
     {
       AppMethodBeat.o(56656);
       return true;
@@ -159,9 +159,9 @@ public final class f
   {
     AppMethodBeat.i(56657);
     k.h(paramab, "$this$isSuspendFunctionType");
-    paramab = paramab.fIW().fxM();
+    paramab = paramab.gbz().fQq();
     if (paramab != null) {}
-    for (paramab = b((l)paramab); paramab == b.c.JoA; paramab = null)
+    for (paramab = b((l)paramab); paramab == b.c.LbT; paramab = null)
     {
       AppMethodBeat.o(56657);
       return true;
@@ -174,9 +174,9 @@ public final class f
   {
     AppMethodBeat.i(56658);
     k.h(paramab, "$this$isBuiltinFunctionalType");
-    paramab = paramab.fIW().fxM();
+    paramab = paramab.gbz().fQq();
     if (paramab != null) {}
-    for (paramab = b((l)paramab); (paramab == b.c.Joz) || (paramab == b.c.JoA); paramab = null)
+    for (paramab = b((l)paramab); (paramab == b.c.LbS) || (paramab == b.c.LbT); paramab = null)
     {
       AppMethodBeat.o(56658);
       return true;
@@ -188,8 +188,8 @@ public final class f
   private static final boolean g(ab paramab)
   {
     AppMethodBeat.i(56659);
-    paramab = paramab.fxF();
-    b localb = g.JlM.Jmq;
+    paramab = paramab.fQj();
+    b localb = g.KZg.KZK;
     k.g(localb, "KotlinBuiltIns.FQ_NAMES.extensionFunctionType");
     if (paramab.g(localb) != null)
     {
@@ -205,7 +205,7 @@ public final class f
     AppMethodBeat.i(56662);
     k.h(paramab, "$this$getReceiverTypeFromFunctionType");
     boolean bool = f(paramab);
-    if ((aa.JfW) && (!bool))
+    if ((aa.KTq) && (!bool))
     {
       paramab = (Throwable)new AssertionError("Not a function type: ".concat(String.valueOf(paramab)));
       AppMethodBeat.o(56662);
@@ -213,7 +213,7 @@ public final class f
     }
     if (g(paramab))
     {
-      paramab = ((av)d.a.j.iy(paramab.fIT())).fzr();
+      paramab = ((av)d.a.j.iO(paramab.gbw())).fRV();
       AppMethodBeat.o(56662);
       return paramab;
     }
@@ -226,13 +226,13 @@ public final class f
     AppMethodBeat.i(56663);
     k.h(paramab, "$this$getReturnTypeFromFunctionType");
     boolean bool = f(paramab);
-    if ((aa.JfW) && (!bool))
+    if ((aa.KTq) && (!bool))
     {
       paramab = (Throwable)new AssertionError("Not a function type: ".concat(String.valueOf(paramab)));
       AppMethodBeat.o(56663);
       throw paramab;
     }
-    paramab = ((av)d.a.j.iA(paramab.fIT())).fzr();
+    paramab = ((av)d.a.j.iQ(paramab.gbw())).fRV();
     k.g(paramab, "arguments.last().type");
     AppMethodBeat.o(56663);
     return paramab;
@@ -244,13 +244,13 @@ public final class f
     AppMethodBeat.i(56664);
     k.h(paramab, "$this$getValueParameterTypesFromFunctionType");
     boolean bool = f(paramab);
-    if ((aa.JfW) && (!bool))
+    if ((aa.KTq) && (!bool))
     {
       paramab = (Throwable)new AssertionError("Not a function type: ".concat(String.valueOf(paramab)));
       AppMethodBeat.o(56664);
       throw paramab;
     }
-    List localList = paramab.fIT();
+    List localList = paramab.gbw();
     k.h(paramab, "$this$isBuiltinExtensionFunctionalType");
     int i;
     label96:
@@ -269,7 +269,7 @@ public final class f
     }
     for (;;)
     {
-      if ((!aa.JfW) || (j != 0)) {
+      if ((!aa.KTq) || (j != 0)) {
         break label165;
       }
       paramab = (Throwable)new AssertionError("Not an exact function type: ".concat(String.valueOf(paramab)));
@@ -293,8 +293,8 @@ public final class f
   {
     AppMethodBeat.i(56665);
     k.h(paramab, "$this$extractParameterNameFromFunctionTypeArgument");
-    paramab = paramab.fxF();
-    Object localObject = g.JlM.Jmr;
+    paramab = paramab.fQj();
+    Object localObject = g.KZg.KZL;
     k.g(localObject, "KotlinBuiltIns.FQ_NAMES.parameterName");
     paramab = paramab.g((b)localObject);
     if (paramab == null)
@@ -302,7 +302,7 @@ public final class f
       AppMethodBeat.o(56665);
       return null;
     }
-    localObject = d.a.j.g((Iterable)paramab.fzH().values());
+    localObject = d.a.j.g((Iterable)paramab.fSl().values());
     paramab = (ab)localObject;
     if (!(localObject instanceof v)) {
       paramab = null;
@@ -312,7 +312,7 @@ public final class f
     {
       paramab = (String)paramab.getValue();
       if (paramab != null) {
-        if (!d.l.b.a.b.f.f.aQD(paramab)) {
+        if (!d.l.b.a.b.f.f.aWC(paramab)) {
           break label121;
         }
       }
@@ -324,14 +324,14 @@ public final class f
       label121:
       paramab = null;
     }
-    paramab = d.l.b.a.b.f.f.aQC(paramab);
+    paramab = d.l.b.a.b.f.f.aWB(paramab);
     AppMethodBeat.o(56665);
     return paramab;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.f
  * JD-Core Version:    0.7.0.1
  */

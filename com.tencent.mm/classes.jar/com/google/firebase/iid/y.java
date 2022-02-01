@@ -20,12 +20,12 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 public final class y
   implements ServiceConnection
 {
-  private final Context bDj;
-  private final Intent bEb;
-  private final ScheduledExecutorService bEc;
-  private final Queue<u> bEd;
-  private w bEe;
-  private boolean bEf;
+  private final Context bAR;
+  private final Intent bBJ;
+  private final ScheduledExecutorService bBK;
+  private final Queue<u> bBL;
+  private w bBM;
+  private boolean bBN;
   
   public y(Context paramContext, String paramString)
   {
@@ -37,11 +37,11 @@ public final class y
   private y(Context paramContext, String paramString, ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(4215);
-    this.bEd = new ArrayDeque();
-    this.bEf = false;
-    this.bDj = paramContext.getApplicationContext();
-    this.bEb = new Intent(paramString).setPackage(this.bDj.getPackageName());
-    this.bEc = paramScheduledExecutorService;
+    this.bBL = new ArrayDeque();
+    this.bBN = false;
+    this.bAR = paramContext.getApplicationContext();
+    this.bBJ = new Intent(paramString).setPackage(this.bAR.getPackageName());
+    this.bBK = paramScheduledExecutorService;
     AppMethodBeat.o(4215);
   }
   
@@ -54,16 +54,16 @@ public final class y
       {
         AppMethodBeat.i(4217);
         Log.isLoggable("EnhancedIntentService", 3);
-        if (this.bEd.isEmpty()) {
+        if (this.bBL.isEmpty()) {
           break label291;
         }
         Log.isLoggable("EnhancedIntentService", 3);
-        if ((this.bEe == null) || (!this.bEe.isBinderAlive())) {
+        if ((this.bBM == null) || (!this.bBM.isBinderAlive())) {
           break;
         }
         Log.isLoggable("EnhancedIntentService", 3);
-        Object localObject = (u)this.bEd.poll();
-        localw = this.bEe;
+        Object localObject = (u)this.bBL.poll();
+        localw = this.bBM;
         if (Binder.getCallingUid() != Process.myUid())
         {
           localObject = new SecurityException("Binding only allowed within app");
@@ -73,20 +73,20 @@ public final class y
       }
       finally {}
       Log.isLoggable("EnhancedIntentService", 3);
-      if (localw.bDY.h(localu.intent))
+      if (localw.bBG.h(localu.intent))
       {
         localu.finish();
       }
       else
       {
         Log.isLoggable("EnhancedIntentService", 3);
-        localw.bDY.bDO.execute(new x(localw, localu));
+        localw.bBG.bBw.execute(new x(localw, localu));
       }
     }
     boolean bool;
     if (Log.isLoggable("EnhancedIntentService", 3))
     {
-      if (!this.bEf)
+      if (!this.bBN)
       {
         bool = true;
         new StringBuilder(39).append("binder is dead. start connection? ").append(bool);
@@ -94,16 +94,16 @@ public final class y
     }
     else
     {
-      if (this.bEf) {
+      if (this.bBN) {
         break label282;
       }
-      this.bEf = true;
+      this.bBN = true;
     }
     for (;;)
     {
       try
       {
-        bool = ConnectionTracker.getInstance().bindService(this.bDj, this.bEb, this, 65);
+        bool = ConnectionTracker.getInstance().bindService(this.bAR, this.bBJ, this, 65);
         if (!bool) {
           continue;
         }
@@ -118,9 +118,9 @@ public final class y
       }
       bool = false;
       break;
-      if (!this.bEd.isEmpty())
+      if (!this.bBL.isEmpty())
       {
-        ((u)this.bEd.poll()).finish();
+        ((u)this.bBL.poll()).finish();
       }
       else
       {
@@ -137,7 +137,7 @@ public final class y
     {
       AppMethodBeat.i(4216);
       Log.isLoggable("EnhancedIntentService", 3);
-      this.bEd.add(new u(paramIntent, paramPendingResult, this.bEc));
+      this.bBL.add(new u(paramIntent, paramPendingResult, this.bBK));
       zzc();
       AppMethodBeat.o(4216);
       return;
@@ -154,8 +154,8 @@ public final class y
     AppMethodBeat.i(4218);
     try
     {
-      this.bEf = false;
-      this.bEe = ((w)paramIBinder);
+      this.bBN = false;
+      this.bBM = ((w)paramIBinder);
       if (Log.isLoggable("EnhancedIntentService", 3))
       {
         paramComponentName = String.valueOf(paramComponentName);

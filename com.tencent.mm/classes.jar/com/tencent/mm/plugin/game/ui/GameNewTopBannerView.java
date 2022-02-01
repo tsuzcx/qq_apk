@@ -11,22 +11,22 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.e;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GameNewTopBannerView
   extends FrameLayout
   implements View.OnClickListener
 {
-  String jyd = null;
+  String jYy = null;
   Context mContext;
-  int rXI;
-  ImageView sfP;
-  ImageView sfQ;
-  int slB;
-  int slC;
-  String slD = "";
-  private String slE = "";
+  int tfA;
+  ImageView tnI;
+  ImageView tnJ;
+  int ttu;
+  int ttv;
+  String ttw = "";
+  private String ttx = "";
   
   public GameNewTopBannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class GameNewTopBannerView
     this.mContext = paramContext;
   }
   
-  static void cEr()
+  static void cRB()
   {
     AppMethodBeat.i(42321);
     GameIndexListView.setDefaultPadding(0);
@@ -50,7 +50,7 @@ public class GameNewTopBannerView
     ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
     if (localLayoutParams == null)
     {
-      ad.e("MicroMsg.GameTopBannerView", "resizeGameThemePic, params is null");
+      ac.e("MicroMsg.GameTopBannerView", "resizeGameThemePic, params is null");
       AppMethodBeat.o(42319);
       return 0;
     }
@@ -69,10 +69,10 @@ public class GameNewTopBannerView
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
     {
       paramView = (String)paramView.getTag();
-      if (!bt.isNullOrNil(paramView))
+      if (!bs.isNullOrNil(paramView))
       {
-        int i = c.A(this.mContext, paramView, "game_center_top_banner");
-        e.a(this.mContext, 10, 1017, 1, i, 0, null, this.rXI, 0, null, null, this.jyd);
+        int i = c.z(this.mContext, paramView, "game_center_top_banner");
+        e.a(this.mContext, 10, 1017, 1, i, 0, null, this.tfA, 0, null, null, this.jYy);
       }
     }
     AppMethodBeat.o(42320);
@@ -82,9 +82,9 @@ public class GameNewTopBannerView
   {
     AppMethodBeat.i(42318);
     super.onFinishInflate();
-    this.sfP = ((ImageView)findViewById(2131297217));
-    this.sfQ = ((ImageView)findViewById(2131304853));
-    ad.i("MicroMsg.GameTopBannerView", "initView finished");
+    this.tnI = ((ImageView)findViewById(2131297217));
+    this.tnJ = ((ImageView)findViewById(2131304853));
+    ac.i("MicroMsg.GameTopBannerView", "initView finished");
     AppMethodBeat.o(42318);
   }
 }

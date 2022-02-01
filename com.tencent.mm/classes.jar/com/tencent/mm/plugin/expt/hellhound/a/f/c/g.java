@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class g
 {
-  public static void WT(String paramString)
+  public static void abq(String paramString)
   {
     AppMethodBeat.i(122157);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -13,29 +13,29 @@ public final class g
       AppMethodBeat.o(122157);
       return;
     }
-    String str = cdp();
+    String str = ckX();
     if ((str == null) || (str.isEmpty()))
     {
-      WU(System.currentTimeMillis() + "@" + paramString);
+      abr(System.currentTimeMillis() + "@" + paramString);
       AppMethodBeat.o(122157);
       return;
     }
     if ("-1".equals(str))
     {
-      ad.e("HellSessionReportCache", "HABBYGE-MALI, storeFlow not login");
+      ac.e("HellSessionReportCache", "HABBYGE-MALI, storeFlow not login");
       AppMethodBeat.o(122157);
       return;
     }
     if (str.split("@").length <= 1) {}
     for (paramString = str + "@" + paramString;; paramString = str + "|" + paramString)
     {
-      WU(paramString);
+      abr(paramString);
       AppMethodBeat.o(122157);
       return;
     }
   }
   
-  public static void WU(String paramString)
+  public static void abr(String paramString)
   {
     AppMethodBeat.i(122158);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -56,12 +56,12 @@ public final class g
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("HellSessionReportCache", paramString, "HABBYGE-MALI, writeBackOfSessionUBA.writeBackOfFlow", new Object[0]);
+      ac.printErrStackTrace("HellSessionReportCache", paramString, "HABBYGE-MALI, writeBackOfSessionUBA.writeBackOfFlow", new Object[0]);
       AppMethodBeat.o(122158);
     }
   }
   
-  public static void WV(String paramString)
+  public static void abs(String paramString)
   {
     AppMethodBeat.i(122163);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -82,12 +82,12 @@ public final class g
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("HellSessionReportCache", paramString, "HABBYGE-MALI, HellSessionReportCache.writeBackOfFlow", new Object[0]);
+      ac.printErrStackTrace("HellSessionReportCache", paramString, "HABBYGE-MALI, HellSessionReportCache.writeBackOfFlow", new Object[0]);
       AppMethodBeat.o(122163);
     }
   }
   
-  public static void WW(String paramString)
+  public static void abt(String paramString)
   {
     AppMethodBeat.i(122165);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -108,12 +108,12 @@ public final class g
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("HellSessionReportCache", paramString, "HABBYGE-MALI, HellSessionReportCache.writeBackOfFlow", new Object[0]);
+      ac.printErrStackTrace("HellSessionReportCache", paramString, "HABBYGE-MALI, HellSessionReportCache.writeBackOfFlow", new Object[0]);
       AppMethodBeat.o(122165);
     }
   }
   
-  public static String cdp()
+  public static String ckX()
   {
     AppMethodBeat.i(122159);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -132,7 +132,7 @@ public final class g
     return str;
   }
   
-  public static String cdq()
+  public static String ckY()
   {
     AppMethodBeat.i(122162);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -142,7 +142,7 @@ public final class g
     }
     for (;;)
     {
-      localObject = d.WS((String)localObject);
+      localObject = d.abp((String)localObject);
       AppMethodBeat.o(122162);
       return localObject;
       String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageMegRptChe_".concat(String.valueOf(i)));
@@ -158,7 +158,7 @@ public final class g
     }
   }
   
-  public static String cdr()
+  public static String ckZ()
   {
     AppMethodBeat.i(122164);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -177,7 +177,7 @@ public final class g
     return str;
   }
   
-  public static String cds()
+  public static String cla()
   {
     AppMethodBeat.i(122166);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -196,7 +196,7 @@ public final class g
     return str;
   }
   
-  public static void pq(long paramLong)
+  public static void tf(long paramLong)
   {
     AppMethodBeat.i(184376);
     String str2 = String.valueOf(paramLong);
@@ -215,7 +215,7 @@ public final class g
       }
       catch (Exception localException)
       {
-        ad.printErrStackTrace("HellSessionReportCache", localException, "HABBYGE-MALI, HellSessionReportCache.writeBackOfMerge", new Object[0]);
+        ac.printErrStackTrace("HellSessionReportCache", localException, "HABBYGE-MALI, HellSessionReportCache.writeBackOfMerge", new Object[0]);
       }
     }
     AppMethodBeat.o(184376);
@@ -223,7 +223,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.g
  * JD-Core Version:    0.7.0.1
  */

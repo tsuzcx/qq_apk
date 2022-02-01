@@ -6,8 +6,8 @@ import org.xwalk.core.Log;
 public class WXFileDownloaderBridge
   implements b
 {
-  public static a IOg = null;
-  public c IOh = null;
+  public static a KAC = null;
+  public c KAD = null;
   
   public static void a(a parama)
   {
@@ -17,7 +17,7 @@ public class WXFileDownloaderBridge
     for (boolean bool = true;; bool = false)
     {
       Log.i("WXFileDownloaderBridge", bool);
-      IOg = parama;
+      KAC = parama;
       AppMethodBeat.o(156946);
       return;
     }
@@ -25,14 +25,14 @@ public class WXFileDownloaderBridge
   
   public static boolean isValid()
   {
-    return IOg != null;
+    return KAC != null;
   }
   
   public final void c(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(156948);
     Log.i("WXFileDownloaderBridge", "onTaskFailed, url=" + paramString + ", errCode=" + paramInt);
-    this.IOh.onTaskFail(paramString, paramInt, paramBoolean);
+    this.KAD.onTaskFail(paramString, paramInt, paramBoolean);
     AppMethodBeat.o(156948);
   }
   
@@ -40,15 +40,15 @@ public class WXFileDownloaderBridge
   {
     AppMethodBeat.i(156947);
     Log.i("WXFileDownloaderBridge", "onTaskFinished url=" + paramString1 + ", save_path=" + paramString2);
-    this.IOh.onTaskSucc(paramString1, paramString2, paramBoolean);
+    this.KAD.onTaskSucc(paramString1, paramString2, paramBoolean);
     AppMethodBeat.o(156947);
   }
   
-  public final void l(String paramString, long paramLong1, long paramLong2)
+  public final void j(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(156949);
     Log.i("WXFileDownloaderBridge", "onTaskProgressChanged, url=" + paramString + ", cur_size:" + paramLong1 + ", total_size:" + paramLong2);
-    this.IOh.onProgressChange(paramString, paramLong1, paramLong2);
+    this.KAD.onProgressChange(paramString, paramLong1, paramLong2);
     AppMethodBeat.o(156949);
   }
 }

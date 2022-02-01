@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.o;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,17 +22,17 @@ public class ay
     AppMethodBeat.i(147134);
     HashMap localHashMap = new HashMap();
     AppBrandSysConfigLU localAppBrandSysConfigLU = (AppBrandSysConfigLU)paramd.ar(AppBrandSysConfigLU.class);
-    if (localAppBrandSysConfigLU.jdS.iOQ != 0)
+    if (localAppBrandSysConfigLU.jEg.jpa != 0)
     {
       bool1 = true;
       localHashMap.put("appDebug", Boolean.valueOf(bool1));
-      localHashMap.put("appMd5", bt.nullAsNil(localAppBrandSysConfigLU.jdS.md5));
-      localHashMap.put("appVersion", Integer.valueOf(localAppBrandSysConfigLU.jdS.pkgVersion));
-      paramd = paramd.aLC();
+      localHashMap.put("appMd5", bs.nullAsNil(localAppBrandSysConfigLU.jEg.md5));
+      localHashMap.put("appVersion", Integer.valueOf(localAppBrandSysConfigLU.jEg.pkgVersion));
+      paramd = paramd.aSt();
       if (paramd != null)
       {
-        paramd = (WxaPkgWrappingInfo)paramd.aPd();
-        if (paramd.iOQ == 0) {
+        paramd = (WxaPkgWrappingInfo)paramd.aVV();
+        if (paramd.jpa == 0) {
           break label213;
         }
       }
@@ -41,7 +41,7 @@ public class ay
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localHashMap.put("libDebug", Boolean.valueOf(bool1));
-      localHashMap.put("libMd5", bt.nullAsNil(paramd.md5));
+      localHashMap.put("libMd5", bs.nullAsNil(paramd.md5));
       localHashMap.put("libVersion", Integer.valueOf(paramd.pkgVersion));
       localHashMap.put("system", "android");
       localHashMap.put("systemVersion", Integer.valueOf(Build.VERSION.SDK_INT));
@@ -54,7 +54,7 @@ public class ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ay
  * JD-Core Version:    0.7.0.1
  */

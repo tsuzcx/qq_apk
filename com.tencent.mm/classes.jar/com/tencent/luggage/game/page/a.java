@@ -9,23 +9,23 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsruntime.h;
 import com.tencent.mm.plugin.appbrand.jsruntime.j;
+import com.tencent.mm.plugin.appbrand.page.an;
+import com.tencent.mm.plugin.appbrand.page.ao;
+import com.tencent.mm.plugin.appbrand.page.aq;
 import com.tencent.mm.plugin.appbrand.page.as;
-import com.tencent.mm.plugin.appbrand.page.at;
-import com.tencent.mm.plugin.appbrand.page.av;
-import com.tencent.mm.plugin.appbrand.page.ax;
-import com.tencent.mm.plugin.appbrand.page.bd;
-import com.tencent.mm.plugin.appbrand.s.a.d;
+import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.r.a.d;
 import java.net.URL;
 
 public final class a
-  implements bd
+  implements ay
 {
-  private ViewGroup cdw;
-  private ViewGroup cdx;
+  private ViewGroup cat;
+  private ViewGroup cau;
   
-  public final void Ck() {}
+  public final void BO() {}
   
-  public final boolean Cl()
+  public final boolean BP()
   {
     return false;
   }
@@ -41,14 +41,14 @@ public final class a
   
   public final void addJavascriptInterface(Object paramObject, String paramString) {}
   
-  public final void av(Context paramContext)
+  public final void aw(Context paramContext)
   {
     AppMethodBeat.i(130625);
-    if (this.cdw == null) {
-      this.cdw = new FrameLayout(paramContext);
+    if (this.cat == null) {
+      this.cat = new FrameLayout(paramContext);
     }
-    if (this.cdx == null) {
-      this.cdx = new FrameLayout(paramContext);
+    if (this.cau == null) {
+      this.cau = new FrameLayout(paramContext);
     }
     AppMethodBeat.o(130625);
   }
@@ -60,8 +60,8 @@ public final class a
   
   public final void destroy()
   {
-    this.cdw = null;
-    this.cdx = null;
+    this.cat = null;
+    this.cau = null;
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
@@ -73,7 +73,7 @@ public final class a
   
   public final View getContentView()
   {
-    return this.cdx;
+    return this.cau;
   }
   
   public final d getFullscreenImpl()
@@ -113,23 +113,23 @@ public final class a
   
   public final View getWrapperView()
   {
-    return this.cdw;
+    return this.cat;
   }
   
   public final void j(Runnable paramRunnable)
   {
-    AppMethodBeat.i(194657);
+    AppMethodBeat.i(206105);
     if (paramRunnable != null) {
       paramRunnable.run();
     }
-    AppMethodBeat.o(194657);
+    AppMethodBeat.o(206105);
   }
   
   public final void onBackground() {}
   
   public final void onForeground() {}
   
-  public final void r(int paramInt, long paramLong) {}
+  public final void q(int paramInt, long paramLong) {}
   
   public final void setBackgroundColor(int paramInt) {}
   
@@ -137,21 +137,21 @@ public final class a
   
   public final void setJsExceptionHandler(h paramh) {}
   
-  public final void setOnScrollChangedListener(av paramav) {}
+  public final void setOnScrollChangedListener(aq paramaq) {}
   
-  public final void setOnTrimListener(at paramat) {}
+  public final void setOnTrimListener(ao paramao) {}
   
   public final void setVerticalScrollBarEnabled(boolean paramBoolean) {}
   
-  public final void setWebViewLayoutListener(as paramas) {}
+  public final void setWebViewLayoutListener(an paraman) {}
   
-  public final void setXWebKeyboardImpl(ax paramax) {}
+  public final void setXWebKeyboardImpl(as paramas) {}
   
-  public final void u(String paramString1, String paramString2) {}
+  public final void x(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.game.page.a
  * JD-Core Version:    0.7.0.1
  */

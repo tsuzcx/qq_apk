@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public final o opS;
-  public int opT;
-  public int opU;
+  public final o oTs;
+  public int oTt;
+  public int oTu;
   
   public a(o paramo, int paramInt1, int paramInt2)
   {
-    this.opS = paramo;
-    this.opT = paramInt1;
-    this.opU = paramInt2;
+    this.oTs = paramo;
+    this.oTt = paramInt1;
+    this.oTu = paramInt2;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(181925);
-    String str = this.opS.name() + " - " + this.opT + "/" + this.opU;
+    String str = this.oTs.name() + " - " + this.oTt + "/" + this.oTu;
     AppMethodBeat.o(181925);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.a
  * JD-Core Version:    0.7.0.1
  */

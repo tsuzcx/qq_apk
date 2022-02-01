@@ -12,10 +12,10 @@ import java.util.List;
 public class t
   extends aj
 {
-  private final boolean JRT;
-  private final at JXw;
-  private final List<av> JqB;
-  private final h Juv;
+  private final boolean LFm;
+  private final at LKP;
+  private final List<av> LdU;
+  private final h LhO;
   
   public t(at paramat, h paramh, byte paramByte)
   {
@@ -25,10 +25,10 @@ public class t
   public t(at paramat, h paramh, List<? extends av> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(60664);
-    this.JXw = paramat;
-    this.Juv = paramh;
-    this.JqB = paramList;
-    this.JRT = paramBoolean;
+    this.LKP = paramat;
+    this.LhO = paramh;
+    this.LdU = paramList;
+    this.LFm = paramBoolean;
     AppMethodBeat.o(60664);
   }
   
@@ -41,33 +41,33 @@ public class t
     return paramg;
   }
   
-  public final boolean fBT()
+  public final h fQN()
   {
-    return this.JRT;
+    return this.LhO;
   }
   
-  public final List<av> fIT()
-  {
-    return this.JqB;
-  }
-  
-  public final at fIW()
-  {
-    return this.JXw;
-  }
-  
-  public final g fxF()
+  public final g fQj()
   {
     AppMethodBeat.i(60655);
-    Object localObject = g.JrB;
-    localObject = g.a.fzI();
+    Object localObject = g.LeU;
+    localObject = g.a.fSm();
     AppMethodBeat.o(60655);
     return localObject;
   }
   
-  public final h fyj()
+  public final boolean fUx()
   {
-    return this.Juv;
+    return this.LFm;
+  }
+  
+  public final List<av> gbw()
+  {
+    return this.LdU;
+  }
+  
+  public final at gbz()
+  {
+    return this.LKP;
   }
   
   public t j(i parami)
@@ -81,9 +81,9 @@ public class t
   public String toString()
   {
     AppMethodBeat.i(60656);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.JXw.toString());
-    if (this.JqB.isEmpty()) {}
-    for (String str = "";; str = j.a((Iterable)this.JqB, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
+    StringBuilder localStringBuilder = new StringBuilder().append(this.LKP.toString());
+    if (this.LdU.isEmpty()) {}
+    for (String str = "";; str = j.a((Iterable)this.LdU, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
     {
       str = str;
       AppMethodBeat.o(60656);
@@ -91,17 +91,17 @@ public class t
     }
   }
   
-  public aj xW(boolean paramBoolean)
+  public aj zo(boolean paramBoolean)
   {
     AppMethodBeat.i(60659);
-    aj localaj = (aj)new t(this.JXw, this.Juv, this.JqB, paramBoolean);
+    aj localaj = (aj)new t(this.LKP, this.LhO, this.LdU, paramBoolean);
     AppMethodBeat.o(60659);
     return localaj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.t
  * JD-Core Version:    0.7.0.1
  */

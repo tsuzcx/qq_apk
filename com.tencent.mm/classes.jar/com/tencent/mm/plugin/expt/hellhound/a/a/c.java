@@ -1,100 +1,74 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cuv;
-import com.tencent.mm.protocal.protobuf.cwd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.vending.j.a;
-import java.math.BigDecimal;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.protocal.protobuf.dah;
 
-final class c
+public final class c
 {
-  static com.tencent.mm.vending.j.c<String, Integer> a(cwd paramcwd)
+  public int position;
+  public dah qkB;
+  
+  final boolean Cm(int paramInt)
   {
-    AppMethodBeat.i(177365);
-    Object localObject = paramcwd.EnV;
-    JSONArray localJSONArray;
-    try
+    AppMethodBeat.i(195217);
+    int j = this.qkB.xJx + this.qkB.rKm;
+    int i = j;
+    if (paramInt != 0)
     {
-      localJSONArray = new JSONArray();
-      localObject = ((LinkedList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      i = j;
+      if (this.qkB.y == 0)
       {
-        cuv localcuv = (cuv)((Iterator)localObject).next();
-        if (localcuv != null)
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("feedId", localcuv.feedId);
-          localJSONObject.put("viewLikeCount", localcuv.likeCount);
-          localJSONObject.put("viewCommentCount", localcuv.commentCount);
-          localJSONObject.put("userName", localcuv.userName);
-          localJSONObject.put("nickName", localcuv.bNK);
-          localJSONObject.put("isAd", localcuv.isAd);
-          localJSONObject.put("feedheight", localcuv.height);
-          localcuv.EmD = new BigDecimal(localcuv.EmD).setScale(2, 4).doubleValue();
-          localJSONObject.put("realShowTime", localcuv.EmD);
-          localcuv.EmC = new BigDecimal(localcuv.EmC).setScale(2, 4).doubleValue();
-          localJSONObject.put("stayTimeRelative", localcuv.EmC);
-          localJSONObject.put("realScreenHeight", localcuv.kvo - localcuv.wxW - localcuv.qPe - localcuv.Emz);
-          localJSONArray.put(localJSONObject);
+        i = j;
+        if (this.position == 0) {
+          i = 0;
         }
       }
-      i = localJSONArray.length();
     }
-    catch (Exception paramcwd)
+    paramInt = this.qkB.kWC - this.qkB.FJy;
+    j = Math.max(this.qkB.y, i);
+    int k = this.qkB.y + this.qkB.height;
+    int m = Math.min(k, paramInt);
+    if (this.qkB.y >= paramInt)
     {
-      ad.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramcwd, "_feedList2JsonV2-crash, %s", new Object[] { paramcwd.getMessage() });
-      AppMethodBeat.o(177365);
-      return null;
+      AppMethodBeat.o(195217);
+      return false;
     }
-    int i;
-    if (i > 0)
+    if (k <= i)
     {
-      paramcwd = a.L(localJSONArray.toString(), Integer.valueOf(i));
-      AppMethodBeat.o(177365);
-      return paramcwd;
+      AppMethodBeat.o(195217);
+      return false;
     }
-    ad.e("HABBYGE-MALI.HellTimelineReport", "_feedList2JsonV2 jsonArray Empty !!!!");
-    localJSONArray.put(b(paramcwd));
-    paramcwd = a.L(localJSONArray.toString(), Integer.valueOf(1));
-    AppMethodBeat.o(177365);
-    return paramcwd;
+    if ((this.qkB.y >= i) && (k <= paramInt))
+    {
+      AppMethodBeat.o(195217);
+      return true;
+    }
+    j = m - j;
+    if (j / this.qkB.height >= 0.9F)
+    {
+      AppMethodBeat.o(195217);
+      return true;
+    }
+    if (j / (paramInt - i) >= 0.5F)
+    {
+      AppMethodBeat.o(195217);
+      return true;
+    }
+    AppMethodBeat.o(195217);
+    return false;
   }
   
-  private static JSONObject b(cwd paramcwd)
+  public final String toString()
   {
-    AppMethodBeat.i(177366);
-    ad.w("HABBYGE-MALI.HellTimelineReport", "createInvalidateFeed, timeline: %s, %s, %s", new Object[] { Long.valueOf(paramcwd.EnS), Long.valueOf(paramcwd.EnT), Long.valueOf(paramcwd.EnU) });
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("feedId", "10001");
-      localJSONObject.put("viewLikeCount", 0);
-      localJSONObject.put("viewCommentCount", 0);
-      localJSONObject.put("userName", "");
-      localJSONObject.put("feedheight", 0);
-      localJSONObject.put("realShowTime", new BigDecimal(paramcwd.EnS).setScale(2, 4).doubleValue());
-      localJSONObject.put("stayTimeRelative", new BigDecimal(paramcwd.EnS).setScale(2, 4).doubleValue());
-      localJSONObject.put("realScreenHeight", 0);
-      AppMethodBeat.o(177366);
-      return localJSONObject;
+    if (this.qkB.feedId == null) {
+      return "NULL";
     }
-    catch (Exception paramcwd)
-    {
-      for (;;)
-      {
-        ad.printErrStackTrace("HABBYGE-MALI.HellTimelineReport", paramcwd, "createInvalidateFeed-crash, %s", new Object[] { paramcwd.getMessage() });
-      }
-    }
+    return this.qkB.feedId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.a.c
  * JD-Core Version:    0.7.0.1
  */

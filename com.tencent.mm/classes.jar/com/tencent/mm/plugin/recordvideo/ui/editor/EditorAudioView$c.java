@@ -4,7 +4,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioView$insectBottom$1$1"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioView$insectBottom$1$1"})
 final class EditorAudioView$c
   implements Runnable
 {
@@ -13,14 +13,14 @@ final class EditorAudioView$c
   public final void run()
   {
     AppMethodBeat.i(75949);
-    this.vre.setPadding(this.vre.getPaddingLeft(), this.vre.getPaddingTop(), this.vre.getPaddingRight(), this.vrf);
-    this.vre.requestLayout();
+    this.wBc.setPadding(this.wBc.getPaddingLeft(), this.wBc.getPaddingTop(), this.wBc.getPaddingRight(), this.wBd);
+    this.wBc.requestLayout();
     AppMethodBeat.o(75949);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView.c
  * JD-Core Version:    0.7.0.1
  */

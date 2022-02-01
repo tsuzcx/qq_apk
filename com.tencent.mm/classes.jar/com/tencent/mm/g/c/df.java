@@ -8,30 +8,35 @@ public abstract class df
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGS;
-  private static final int eLj = "phonenumber".hashCode();
-  private static final int eLk = "calltime".hashCode();
-  private static final int eLl = "addressId".hashCode();
-  private static final int eLm = "phoneType".hashCode();
-  private static final int ejR;
+  private static final int eDv = "svrId".hashCode();
+  private static final int eNP;
+  private static final int eNQ = "descUrl".hashCode();
+  private static final int eng;
+  private static final int eqK;
+  private static final int erH;
+  private static final int eug = "isRead".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGJ = true;
-  private boolean eLf = true;
-  private boolean eLg = true;
-  private boolean eLh = true;
-  private boolean eLi = true;
-  private boolean ejO = true;
-  public long field_addressId;
-  public long field_calltime;
-  public long field_duration;
-  public int field_phoneType;
-  public String field_phonenumber;
-  public int field_status;
+  private boolean eDs = true;
+  private boolean eNN = true;
+  private boolean eNO = true;
+  private boolean emI = true;
+  private boolean eqH = true;
+  private boolean ers = true;
+  private boolean etS = true;
+  public String field_content;
+  public String field_descUrl;
+  public short field_isRead;
+  public int field_msgType;
+  public long field_pushTime;
+  public long field_svrId;
+  public String field_title;
   
   static
   {
-    eGS = "duration".hashCode();
-    ejR = "status".hashCode();
+    eqK = "title".hashCode();
+    eng = "content".hashCode();
+    eNP = "pushTime".hashCode();
+    erH = "msgType".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -47,27 +52,30 @@ public abstract class df
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eLj != k) {
-        break label60;
+      if (eDv != k) {
+        break label65;
       }
-      this.field_phonenumber = paramCursor.getString(i);
+      this.field_svrId = paramCursor.getLong(i);
+      this.eDs = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eLk == k) {
-        this.field_calltime = paramCursor.getLong(i);
-      } else if (eGS == k) {
-        this.field_duration = paramCursor.getLong(i);
-      } else if (ejR == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eLl == k) {
-        this.field_addressId = paramCursor.getLong(i);
-      } else if (eLm == k) {
-        this.field_phoneType = paramCursor.getInt(i);
+      label65:
+      if (eug == k) {
+        this.field_isRead = paramCursor.getShort(i);
+      } else if (eqK == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (eng == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (eNP == k) {
+        this.field_pushTime = paramCursor.getLong(i);
+      } else if (erH == k) {
+        this.field_msgType = paramCursor.getInt(i);
+      } else if (eNQ == k) {
+        this.field_descUrl = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -77,23 +85,26 @@ public abstract class df
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eLf) {
-      localContentValues.put("phonenumber", this.field_phonenumber);
+    if (this.eDs) {
+      localContentValues.put("svrId", Long.valueOf(this.field_svrId));
     }
-    if (this.eLg) {
-      localContentValues.put("calltime", Long.valueOf(this.field_calltime));
+    if (this.etS) {
+      localContentValues.put("isRead", Short.valueOf(this.field_isRead));
     }
-    if (this.eGJ) {
-      localContentValues.put("duration", Long.valueOf(this.field_duration));
+    if (this.eqH) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.ejO) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.emI) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.eLh) {
-      localContentValues.put("addressId", Long.valueOf(this.field_addressId));
+    if (this.eNN) {
+      localContentValues.put("pushTime", Long.valueOf(this.field_pushTime));
     }
-    if (this.eLi) {
-      localContentValues.put("phoneType", Integer.valueOf(this.field_phoneType));
+    if (this.ers) {
+      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
+    }
+    if (this.eNO) {
+      localContentValues.put("descUrl", this.field_descUrl);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -103,7 +114,7 @@ public abstract class df
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.df
  * JD-Core Version:    0.7.0.1
  */

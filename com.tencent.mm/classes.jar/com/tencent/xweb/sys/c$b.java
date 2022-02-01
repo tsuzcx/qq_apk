@@ -1,60 +1,24 @@
 package com.tencent.xweb.sys;
 
-import android.annotation.TargetApi;
-import android.webkit.WebChromeClient.FileChooserParams;
+import android.webkit.HttpAuthHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.w.a;
+import com.tencent.xweb.j;
 
 public final class c$b
-  extends w.a
+  implements j
 {
-  public WebChromeClient.FileChooserParams IQU;
+  HttpAuthHandler KDp;
   
-  public c$b(WebChromeClient.FileChooserParams paramFileChooserParams)
+  public c$b(HttpAuthHandler paramHttpAuthHandler)
   {
-    this.IQU = paramFileChooserParams;
+    this.KDp = paramHttpAuthHandler;
   }
   
-  @TargetApi(21)
-  public final String[] getAcceptTypes()
+  public final void cancel()
   {
-    AppMethodBeat.i(153660);
-    if (this.IQU != null)
-    {
-      String[] arrayOfString = this.IQU.getAcceptTypes();
-      AppMethodBeat.o(153660);
-      return arrayOfString;
-    }
-    AppMethodBeat.o(153660);
-    return new String[0];
-  }
-  
-  @TargetApi(21)
-  public final int getMode()
-  {
-    AppMethodBeat.i(153659);
-    if (this.IQU != null)
-    {
-      int i = this.IQU.getMode();
-      AppMethodBeat.o(153659);
-      return i;
-    }
-    AppMethodBeat.o(153659);
-    return 0;
-  }
-  
-  @TargetApi(21)
-  public final boolean isCaptureEnabled()
-  {
-    AppMethodBeat.i(153661);
-    if (this.IQU != null)
-    {
-      boolean bool = this.IQU.isCaptureEnabled();
-      AppMethodBeat.o(153661);
-      return bool;
-    }
-    AppMethodBeat.o(153661);
-    return false;
+    AppMethodBeat.i(208875);
+    this.KDp.cancel();
+    AppMethodBeat.o(208875);
   }
 }
 

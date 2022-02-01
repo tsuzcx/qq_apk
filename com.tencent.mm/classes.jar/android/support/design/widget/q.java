@@ -13,7 +13,7 @@ import android.view.ViewOutlineProvider;
 
 final class q
 {
-  private static final int[] tH = { 16843848 };
+  private static final int[] uI = { 16843848 };
   
   static void A(View paramView)
   {
@@ -23,7 +23,7 @@ final class q
   static void a(View paramView, AttributeSet paramAttributeSet)
   {
     Context localContext = paramView.getContext();
-    paramAttributeSet = f.a(localContext, paramAttributeSet, tH, 0, 2131821633, new int[0]);
+    paramAttributeSet = f.a(localContext, paramAttributeSet, uI, 0, 2131821633, new int[0]);
     try
     {
       if (paramAttributeSet.hasValue(0)) {

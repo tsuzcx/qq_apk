@@ -8,5 +8,5 @@
     <LinearLayout android:gravity="center|right" android:id="@id/a3b" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="40.0dip">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icons_outlined_more" app:iconColor="@color/BW_70" />
     </LinearLayout>
-    <TextView android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/g9g" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hu" style="@style/ym" />
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/FG_2" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/g9g" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hu" />
 </LinearLayout>

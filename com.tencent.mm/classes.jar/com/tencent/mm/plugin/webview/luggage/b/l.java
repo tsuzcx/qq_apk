@@ -22,11 +22,11 @@ public final class l
   public final void a(Context paramContext, f paramf)
   {
     AppMethodBeat.i(78706);
-    ax.SL(0);
-    paramf.ekX().awi("sendAppMessage");
-    paramf.caI.a(new c()
+    ax.UT(0);
+    paramf.eAt().aBA("sendAppMessage");
+    paramf.bXF.a(new c()
     {
-      public final JSONObject AM()
+      public final JSONObject Aq()
       {
         return null;
       }
@@ -36,14 +36,14 @@ public final class l
         return "menu:share:appmessage";
       }
     });
-    h.vKh.dB(982, 9);
+    h.wUl.dB(982, 9);
     AppMethodBeat.o(78706);
   }
   
   public final void a(Context paramContext, f paramf, com.tencent.mm.ui.base.l paraml)
   {
     AppMethodBeat.i(78705);
-    if (paramf.Em(21)) {
+    if (paramf.Gi(21)) {
       paraml.a(this.id, paramContext.getString(2131762163), 2131689831);
     }
     AppMethodBeat.o(78705);

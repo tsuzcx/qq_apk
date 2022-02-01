@@ -7,13 +7,13 @@ import com.tencent.mm.plugin.appbrand.appcache.be;
 import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.n.e.b;
+import com.tencent.mm.plugin.appbrand.n.e.c;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.o.e.b;
-import com.tencent.mm.plugin.appbrand.o.e.c;
-import com.tencent.mm.plugin.appbrand.q.a.b;
-import com.tencent.mm.plugin.appbrand.q.b.a;
-import com.tencent.mm.plugin.appbrand.q.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.p.a.b;
+import com.tencent.mm.plugin.appbrand.p.b.a;
+import com.tencent.mm.plugin.appbrand.p.m;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,92 +26,92 @@ import org.json.JSONObject;
 
 public class d
 {
-  private static volatile d jsk;
+  private static volatile d jSE;
   public boolean hasInit;
-  public o joZ;
-  public m jsl;
-  public com.tencent.mm.plugin.appbrand.q.a jsm;
-  public p jsn;
-  public c jso;
-  public CopyOnWriteArrayList<String> jsp;
-  public boolean jsq;
-  public boolean jsr;
-  public AtomicInteger jss;
-  public AtomicInteger jst;
-  public AtomicInteger jsu;
-  public AtomicInteger jsv;
+  public o jPl;
+  public m jSF;
+  public com.tencent.mm.plugin.appbrand.p.a jSG;
+  public p jSH;
+  public c jSI;
+  public CopyOnWriteArrayList<String> jSJ;
+  public boolean jSK;
+  public boolean jSL;
+  public AtomicInteger jSM;
+  public AtomicInteger jSN;
+  public AtomicInteger jSO;
+  public AtomicInteger jSP;
   
   private d()
   {
     AppMethodBeat.i(45286);
     this.hasInit = false;
-    this.jsp = new CopyOnWriteArrayList();
-    this.jsq = false;
-    this.jsr = false;
+    this.jSJ = new CopyOnWriteArrayList();
+    this.jSK = false;
+    this.jSL = false;
     AppMethodBeat.o(45286);
   }
   
   public static void B(o paramo)
   {
-    AppMethodBeat.i(195777);
+    AppMethodBeat.i(186537);
     Iterator localIterator;
     try
     {
-      if ((jsk == null) || (jsk.joZ != paramo)) {
+      if ((jSE == null) || (jSE.jPl != paramo)) {
         break label180;
       }
-      if (jsk.jsl == null) {
+      if (jSE.jSF == null) {
         break label176;
       }
-      paramo = jsk.jsl;
-      synchronized (paramo.kUF)
+      paramo = jSE.jSF;
+      synchronized (paramo.lwp)
       {
-        localIterator = paramo.kUF.iterator();
+        localIterator = paramo.lwp.iterator();
         if (localIterator.hasNext()) {
           ((b)localIterator.next()).isRunning = false;
         }
       }
-      paramo.kUF.clear();
+      paramo.lwp.clear();
     }
     finally
     {
-      AppMethodBeat.o(195777);
+      AppMethodBeat.o(186537);
     }
-    synchronized (paramo.kVC)
+    synchronized (paramo.lxm)
     {
-      localIterator = paramo.kVC.iterator();
+      localIterator = paramo.lxm.iterator();
       if (localIterator.hasNext()) {
         ((b)localIterator.next()).isRunning = false;
       }
     }
-    paramo.kVC.clear();
-    jsk.joZ = null;
+    paramo.lxm.clear();
+    jSE.jPl = null;
     label176:
-    jsk = null;
+    jSE = null;
     label180:
-    AppMethodBeat.o(195777);
+    AppMethodBeat.o(186537);
   }
   
-  public static String aEB()
+  public static String aLs()
   {
     AppMethodBeat.i(45289);
     Object localObject = new StringBuilder();
-    com.tencent.mm.plugin.appbrand.q.c.bim();
-    localObject = com.tencent.mm.plugin.appbrand.q.c.bil();
+    com.tencent.mm.plugin.appbrand.p.c.bpg();
+    localObject = com.tencent.mm.plugin.appbrand.p.c.bpf();
     AppMethodBeat.o(45289);
     return localObject;
   }
   
-  public static d aWV()
+  public static d bdT()
   {
     AppMethodBeat.i(45287);
-    if (jsk == null) {}
+    if (jSE == null) {}
     try
     {
-      if (jsk == null) {
-        jsk = new d();
+      if (jSE == null) {
+        jSE = new d();
       }
-      d locald = jsk;
+      d locald = jSE;
       AppMethodBeat.o(45287);
       return locald;
     }
@@ -121,30 +121,30 @@ public class d
     }
   }
   
-  public static void fJ(boolean paramBoolean)
+  public static void gf(boolean paramBoolean)
   {
     AppMethodBeat.i(45291);
-    e.aWX().jsF = paramBoolean;
+    e.bdV().jSZ = paramBoolean;
     AppMethodBeat.o(45291);
   }
   
-  public final void aWW()
+  public final void bdU()
   {
     AppMethodBeat.i(45290);
-    if ((this.jsp != null) && (this.jsp.size() == 0))
+    if ((this.jSJ != null) && (this.jSJ.size() == 0))
     {
-      if ((this.joZ == null) || (this.joZ.getAppConfig() == null))
+      if ((this.jPl == null) || (this.jPl.getAppConfig() == null))
       {
-        ad.e("MicroMsg.WAGamePreloadManager", "hy: unexpected null app config");
+        ac.e("MicroMsg.WAGamePreloadManager", "hy: unexpected null app config");
         AppMethodBeat.o(45290);
         return;
       }
-      Object localObject1 = this.joZ.getAppConfig().jbs;
+      Object localObject1 = this.jPl.getAppConfig().jBF;
       int i;
       if (localObject1 == null)
       {
         i = 0;
-        ad.i("MicroMsg.WAGamePreloadManager", "predownload subPackage size:%d", new Object[] { Integer.valueOf(i) });
+        ac.i("MicroMsg.WAGamePreloadManager", "predownload subPackage size:%d", new Object[] { Integer.valueOf(i) });
         if (localObject1 != null) {
           localObject1 = ((ArrayList)localObject1).iterator();
         }
@@ -157,50 +157,50 @@ public class d
             break label257;
           }
           final String str = (String)((Iterator)localObject1).next();
-          ad.i("MicroMsg.WAGamePreloadManager", "predownload subPackage name:%s", new Object[] { str });
-          be.T(this.joZ);
-          if ((this.joZ == null) || (this.joZ.aNb() == null))
+          ac.i("MicroMsg.WAGamePreloadManager", "predownload subPackage name:%s", new Object[] { str });
+          be.T(this.jPl);
+          if ((this.jPl == null) || (this.jPl.aTR() == null))
           {
-            ad.e("MicroMsg.WAGamePreloadManager", "runtime or sysConfig null");
+            ac.e("MicroMsg.WAGamePreloadManager", "runtime or sysConfig null");
             continue;
             i = ((ArrayList)localObject1).size();
             break;
           }
-          Object localObject2 = this.joZ.aNb().jdS.bV(this.joZ.mAppId, str);
-          i.aEN(str);
-          if (e.c.kTR == null)
+          Object localObject2 = this.jPl.aTR().jEg.ce(this.jPl.mAppId, str);
+          i.aKe(str);
+          if (e.c.lvw == null)
           {
-            ad.e("MicroMsg.WAGamePreloadManager", "downloadSubPackage fail!");
+            ac.e("MicroMsg.WAGamePreloadManager", "downloadSubPackage fail!");
           }
           else
           {
-            localObject2 = e.c.kTR.j(this.joZ, (String)localObject2);
-            ((com.tencent.mm.plugin.appbrand.o.e)localObject2).a(new e.b()
+            localObject2 = e.c.lvw.j(this.jPl, (String)localObject2);
+            ((com.tencent.mm.plugin.appbrand.n.e)localObject2).a(new e.b()
             {
-              public final void Hz(String paramAnonymousString)
+              public final void LD(String paramAnonymousString)
               {
                 AppMethodBeat.i(45282);
-                ad.i("MicroMsg.WAGamePreloadManager", "onLoad, module(%s) pkgPath(%s)", new Object[] { str, paramAnonymousString });
+                ac.i("MicroMsg.WAGamePreloadManager", "onLoad, module(%s) pkgPath(%s)", new Object[] { str, paramAnonymousString });
                 d.a(d.this).addAndGet(1);
                 AppMethodBeat.o(45282);
               }
               
               public final void a(android.arch.a.c.a<AppBrandRuntime, Boolean> paramAnonymousa)
               {
-                AppMethodBeat.i(195776);
-                ad.i("MicroMsg.WAGamePreloadManager", "onResultCustomAction, module(%s)", new Object[] { str });
+                AppMethodBeat.i(186536);
+                ac.i("MicroMsg.WAGamePreloadManager", "onResultCustomAction, module(%s)", new Object[] { str });
                 d.a(d.this).addAndGet(1);
-                AppMethodBeat.o(195776);
+                AppMethodBeat.o(186536);
               }
               
-              public final void a(com.tencent.mm.plugin.appbrand.o.c paramAnonymousc)
+              public final void a(com.tencent.mm.plugin.appbrand.n.c paramAnonymousc)
               {
                 AppMethodBeat.i(45283);
-                ad.i("MicroMsg.WAGamePreloadManager", "hy: on load module progress %s", new Object[] { paramAnonymousc });
+                ac.i("MicroMsg.WAGamePreloadManager", "hy: on load module progress %s", new Object[] { paramAnonymousc });
                 AppMethodBeat.o(45283);
               }
             });
-            ((com.tencent.mm.plugin.appbrand.o.e)localObject2).start();
+            ((com.tencent.mm.plugin.appbrand.n.e)localObject2).start();
           }
         }
       }
@@ -212,14 +212,14 @@ public class d
   public final boolean isDownloading(String paramString)
   {
     AppMethodBeat.i(45288);
-    synchronized (this.jsp)
+    synchronized (this.jSJ)
     {
-      if (this.jsp != null)
+      if (this.jSJ != null)
       {
-        if (this.jsp.contains(paramString))
+        if (this.jSJ.contains(paramString))
         {
-          ad.i("MicroMsg.WAGamePreloadManager", "predownloadingList has url:%s,size:%d", new Object[] { paramString, Integer.valueOf(this.jsp.size()) });
-          this.jsv.addAndGet(1);
+          ac.i("MicroMsg.WAGamePreloadManager", "predownloadingList has url:%s,size:%d", new Object[] { paramString, Integer.valueOf(this.jSJ.size()) });
+          this.jSP.addAndGet(1);
           AppMethodBeat.o(45288);
           return true;
         }
@@ -233,7 +233,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.d
  * JD-Core Version:    0.7.0.1
  */

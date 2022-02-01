@@ -20,12 +20,12 @@ import java.util.regex.Pattern;
 
 public final class q
 {
-  private static final Pattern HTN;
+  private static final Pattern Juv;
   
   static
   {
     AppMethodBeat.i(13334);
-    HTN = Pattern.compile("\\$\\{([A-Za-z0-9_]+)\\}");
+    Juv = Pattern.compile("\\$\\{([A-Za-z0-9_]+)\\}");
     AppMethodBeat.o(13334);
   }
   
@@ -50,7 +50,7 @@ public final class q
     return paramUri;
   }
   
-  static String P(String paramString, Map<String, String> paramMap)
+  static String Q(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(13325);
     if (paramString == null)
@@ -58,7 +58,7 @@ public final class q
       AppMethodBeat.o(13325);
       return null;
     }
-    Matcher localMatcher = HTN.matcher(paramString);
+    Matcher localMatcher = Juv.matcher(paramString);
     StringBuilder localStringBuilder;
     int i;
     if (localMatcher.find())
@@ -106,7 +106,7 @@ public final class q
     {
       try
       {
-        paramString1 = paramFileSystem2.cM(paramString2, false);
+        paramString1 = paramFileSystem2.cS(paramString2, false);
       }
       finally
       {
@@ -155,7 +155,7 @@ public final class q
     AppMethodBeat.o(13331);
   }
   
-  static String aMW(String paramString)
+  static String aSz(String paramString)
   {
     AppMethodBeat.i(13327);
     int i = paramString.lastIndexOf('/');
@@ -172,15 +172,15 @@ public final class q
   static String b(Uri paramUri, boolean paramBoolean)
   {
     AppMethodBeat.i(13328);
-    paramUri = a.gap().a(paramUri, null);
+    paramUri = a.ghk().a(paramUri, null);
     if (!paramUri.valid())
     {
       AppMethodBeat.o(13328);
       return null;
     }
-    if ((paramUri.HRC.fhA() & 0x2) != 0)
+    if ((paramUri.Jsh.fxC() & 0x2) != 0)
     {
-      paramUri = paramUri.HRC.cP(paramUri.path, paramBoolean);
+      paramUri = paramUri.Jsh.cV(paramUri.path, paramBoolean);
       AppMethodBeat.o(13328);
       return paramUri;
     }
@@ -239,7 +239,7 @@ public final class q
     }
   }
   
-  static String l(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  static String m(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 1;
     AppMethodBeat.i(13326);
@@ -366,12 +366,12 @@ public final class q
   static abstract class a<From, To>
     implements Iterator<To>
   {
-    private final Iterator<? extends From> HTO;
-    protected final boolean HTP;
-    private From HTQ;
-    private To HTR;
-    private To HTS;
-    private Iterator<? extends To> HTT;
+    private To JuA;
+    private Iterator<? extends To> JuB;
+    private final Iterator<? extends From> Juw;
+    protected final boolean Jux;
+    private From Juy;
+    private To Juz;
     
     static
     {
@@ -385,14 +385,14 @@ public final class q
     
     a(Iterator<? extends From> paramIterator)
     {
-      this.HTO = paramIterator;
-      this.HTP = false;
+      this.Juw = paramIterator;
+      this.Jux = false;
     }
     
     a(Iterator<? extends From> paramIterator, boolean paramBoolean)
     {
-      this.HTO = paramIterator;
-      this.HTP = paramBoolean;
+      this.Juw = paramIterator;
+      this.Jux = paramBoolean;
     }
     
     protected abstract Iterator<? extends To> M(From paramFrom, To paramTo);
@@ -401,39 +401,39 @@ public final class q
     
     public boolean hasNext()
     {
-      while (this.HTS == null)
+      while (this.JuA == null)
       {
-        if (this.HTQ != null)
+        if (this.Juy != null)
         {
-          this.HTT = M(this.HTQ, this.HTR);
-          this.HTQ = null;
+          this.JuB = M(this.Juy, this.Juz);
+          this.Juy = null;
         }
-        if (this.HTT != null)
+        if (this.JuB != null)
         {
-          if (this.HTT.hasNext())
+          if (this.JuB.hasNext())
           {
-            this.HTS = this.HTT.next();
+            this.JuA = this.JuB.next();
             continue;
           }
-          this.HTT = null;
-          if (this.HTP)
+          this.JuB = null;
+          if (this.Jux)
           {
-            this.HTS = this.HTR;
+            this.JuA = this.Juz;
             continue;
           }
         }
-        assert ((this.HTQ == null) && (this.HTT == null) && (this.HTS == null));
-        if (!this.HTO.hasNext())
+        assert ((this.Juy == null) && (this.JuB == null) && (this.JuA == null));
+        if (!this.Juw.hasNext())
         {
-          this.HTR = null;
+          this.Juz = null;
           return false;
         }
-        this.HTQ = this.HTO.next();
-        if (this.HTQ != null)
+        this.Juy = this.Juw.next();
+        if (this.Juy != null)
         {
-          this.HTR = convert(this.HTQ);
-          if (!this.HTP) {
-            this.HTS = this.HTR;
+          this.Juz = convert(this.Juy);
+          if (!this.Jux) {
+            this.JuA = this.Juz;
           }
         }
       }
@@ -442,11 +442,11 @@ public final class q
     
     public To next()
     {
-      if ((this.HTS == null) && (!hasNext())) {
+      if ((this.JuA == null) && (!hasNext())) {
         throw new NoSuchElementException();
       }
-      Object localObject = this.HTS;
-      this.HTS = null;
+      Object localObject = this.JuA;
+      this.JuA = null;
       return localObject;
     }
   }

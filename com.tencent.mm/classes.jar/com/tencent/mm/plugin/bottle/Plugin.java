@@ -9,14 +9,14 @@ import com.tencent.mm.pluginsdk.m;
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.d
 {
-  private c mQZ;
+  private c ntp;
   
   public Plugin()
   {
     AppMethodBeat.i(22640);
-    this.mQZ = new c()
+    this.ntp = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ab(Context paramAnonymousContext, String paramAnonymousString)
       {
         return null;
       }
@@ -42,12 +42,12 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.mQZ;
+    return this.ntp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.i;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 final class TalkRoomUI$12
   implements View.OnClickListener
@@ -22,18 +22,18 @@ final class TalkRoomUI$12
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(29600);
-    paramView = this.yKo;
-    az.arV();
-    if (bt.a((Integer)c.afk().get(144641, null), 0) > 0) {}
+    paramView = this.zXB;
+    az.ayM();
+    if (bs.a((Integer)c.agA().get(144641, null), 0) > 0) {}
     for (int i = 0;; i = 1)
     {
       if (i == 0) {
-        this.yKo.onBackPressed();
+        this.zXB.onBackPressed();
       }
       AppMethodBeat.o(29600);
       return;
       i locali = new i(paramView, 2131821726);
-      LinearLayout localLinearLayout = (LinearLayout)y.js(aj.getContext()).inflate(2131495745, null);
+      LinearLayout localLinearLayout = (LinearLayout)z.jD(ai.getContext()).inflate(2131495745, null);
       localLinearLayout.setMinimumWidth(10000);
       Button localButton = (Button)localLinearLayout.findViewById(2131300871);
       locali.setCanceledOnTouchOutside(true);
@@ -47,7 +47,7 @@ final class TalkRoomUI$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.12
  * JD-Core Version:    0.7.0.1
  */

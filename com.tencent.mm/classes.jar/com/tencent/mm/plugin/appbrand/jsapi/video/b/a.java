@@ -11,34 +11,34 @@ import java.util.List;
 
 public class a
 {
-  private static volatile a koc;
-  public boolean cxf = false;
-  public k knX;
-  public Context kob;
-  public boolean kod = true;
-  public boolean koe = true;
-  public boolean kof = true;
-  public boolean kog = true;
-  public boolean koh = false;
-  public String koi;
-  public String koj;
-  public List<String> kok;
-  public long kol = 536870912L;
-  public long kom = 1048576L;
-  public int kon = 5;
-  public j koo;
-  public com.tencent.mm.plugin.appbrand.jsapi.video.b.d.a kop;
-  public com.tencent.mm.plugin.appbrand.jsapi.video.b.a.e koq;
-  public f kor;
+  private static volatile a kPw;
+  public Context appContext;
+  public String cacheDir;
+  public boolean cuo = false;
+  public boolean kPA = true;
+  public boolean kPB = false;
+  public String kPC;
+  public List<String> kPD;
+  public long kPE = 536870912L;
+  public long kPF = 1048576L;
+  public int kPG = 5;
+  public j kPH;
+  public com.tencent.mm.plugin.appbrand.jsapi.video.b.d.a kPI;
+  public com.tencent.mm.plugin.appbrand.jsapi.video.b.a.e kPJ;
+  public f kPK;
+  public k kPr;
+  public boolean kPx = true;
+  public boolean kPy = true;
+  public boolean kPz = true;
   
   private a(Context paramContext)
   {
-    this.kob = paramContext;
+    this.appContext = paramContext;
   }
   
-  private static String Jg(String paramString)
+  private static String Nk(String paramString)
   {
-    AppMethodBeat.i(193805);
+    AppMethodBeat.i(194152);
     if (!TextUtils.isEmpty(paramString))
     {
       com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(paramString);
@@ -54,84 +54,53 @@ public class a
         h.log(4, "PlayerConfig", "fileDir:" + paramString + " not exist, make dir result:" + bool);
       }
     }
-    AppMethodBeat.o(193805);
+    AppMethodBeat.o(194152);
     return paramString;
   }
   
-  public static a bcR()
+  public static a bjM()
   {
-    AppMethodBeat.i(193801);
-    if (koc == null)
+    AppMethodBeat.i(194148);
+    if (kPw == null)
     {
       localObject = new RuntimeException("PlayerConfig not initialized!");
-      AppMethodBeat.o(193801);
+      AppMethodBeat.o(194148);
       throw ((Throwable)localObject);
     }
-    Object localObject = koc;
-    AppMethodBeat.o(193801);
+    Object localObject = kPw;
+    AppMethodBeat.o(194148);
     return localObject;
   }
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(193802);
-    if (koc == null) {
+    AppMethodBeat.i(194149);
+    if (kPw == null) {
       try
       {
-        if (koc == null) {
-          koc = new a(paramContext);
+        if (kPw == null) {
+          kPw = new a(paramContext);
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(193802);
+        AppMethodBeat.o(194149);
       }
     }
-    AppMethodBeat.o(193802);
+    AppMethodBeat.o(194149);
   }
   
-  public final String aTh()
+  public final String bjN()
   {
-    AppMethodBeat.i(193803);
-    if (TextUtils.isEmpty(this.koj)) {
+    AppMethodBeat.i(194151);
+    if (TextUtils.isEmpty(this.kPC)) {
       try
       {
-        com.tencent.mm.vfs.e locale = com.tencent.mm.vfs.e.R(this.kob.getExternalCacheDir());
+        com.tencent.mm.vfs.e locale = com.tencent.mm.vfs.e.U(this.appContext.getFilesDir());
         if (locale == null)
         {
-          h.log(5, "PlayerConfig", "getCacheDir fail, extCacheDir not exist");
-          AppMethodBeat.o(193803);
-          return null;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          h.a(5, "PlayerConfig", "getCacheDir fail", localException);
-          localObject = null;
-        }
-        localObject = Jg(localObject + "/wxvideocache");
-        AppMethodBeat.o(193803);
-        return localObject;
-      }
-    }
-    Object localObject = this.koj;
-    AppMethodBeat.o(193803);
-    return localObject;
-  }
-  
-  public final String bcS()
-  {
-    AppMethodBeat.i(193804);
-    if (TextUtils.isEmpty(this.koi)) {
-      try
-      {
-        com.tencent.mm.vfs.e locale = com.tencent.mm.vfs.e.R(this.kob.getFilesDir());
-        if (locale == null)
-        {
-          AppMethodBeat.o(193804);
+          AppMethodBeat.o(194151);
           return null;
         }
       }
@@ -142,13 +111,44 @@ public class a
           h.a(5, "PlayerConfig", "getTempDir fail", localException);
           localObject = null;
         }
-        localObject = Jg(localObject + "/wxvideotmp");
-        AppMethodBeat.o(193804);
+        localObject = Nk(localObject + "/wxvideotmp");
+        AppMethodBeat.o(194151);
         return localObject;
       }
     }
-    Object localObject = this.koi;
-    AppMethodBeat.o(193804);
+    Object localObject = this.kPC;
+    AppMethodBeat.o(194151);
+    return localObject;
+  }
+  
+  public final String getCacheDir()
+  {
+    AppMethodBeat.i(194150);
+    if (TextUtils.isEmpty(this.cacheDir)) {
+      try
+      {
+        com.tencent.mm.vfs.e locale = com.tencent.mm.vfs.e.U(this.appContext.getExternalCacheDir());
+        if (locale == null)
+        {
+          h.log(5, "PlayerConfig", "getCacheDir fail, extCacheDir not exist");
+          AppMethodBeat.o(194150);
+          return null;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          h.a(5, "PlayerConfig", "getCacheDir fail", localException);
+          localObject = null;
+        }
+        localObject = Nk(localObject + "/wxvideocache");
+        AppMethodBeat.o(194150);
+        return localObject;
+      }
+    }
+    Object localObject = this.cacheDir;
+    AppMethodBeat.o(194150);
     return localObject;
   }
 }

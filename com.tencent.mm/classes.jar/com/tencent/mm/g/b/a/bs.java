@@ -6,44 +6,44 @@ import com.tencent.mm.plugin.report.a;
 public final class bs
   extends a
 {
-  public long dPU = 0L;
-  private String dPV = "";
+  private String dNh = "";
+  public long dNj;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(149928);
+    AppMethodBeat.i(184630);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dPU);
+    ((StringBuffer)localObject).append(this.dNh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dPV);
+    ((StringBuffer)localObject).append(this.dNj);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(149928);
+    arz((String)localObject);
+    AppMethodBeat.o(184630);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(149929);
+    AppMethodBeat.i(184631);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SendScene:").append(this.dPU);
+    ((StringBuffer)localObject).append("Roomid:").append(this.dNh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("emoticonMd5:").append(this.dPV);
+    ((StringBuffer)localObject).append("ErrCode:").append(this.dNj);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149929);
+    AppMethodBeat.o(184631);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16868;
+    return 19352;
   }
   
-  public final bs ip(String paramString)
+  public final bs jO(String paramString)
   {
-    AppMethodBeat.i(162225);
-    this.dPV = t("emoticonMd5", paramString, true);
-    AppMethodBeat.o(162225);
+    AppMethodBeat.i(184629);
+    this.dNh = t("Roomid", paramString, true);
+    AppMethodBeat.o(184629);
     return this;
   }
 }

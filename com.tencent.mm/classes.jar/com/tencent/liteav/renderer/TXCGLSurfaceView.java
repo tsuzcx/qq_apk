@@ -14,13 +14,13 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.AttributeSet;
 import com.tencent.liteav.basic.c.a;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.i;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.j;
 import com.tencent.liteav.basic.d.k;
 import com.tencent.liteav.basic.d.l;
 import com.tencent.liteav.basic.d.m;
 import com.tencent.liteav.basic.d.n;
+import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
@@ -34,14 +34,14 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class TXCGLSurfaceView
   extends TXCGLSurfaceViewBase
-  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, l
+  implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, m
 {
-  private n A;
+  private o A;
   private int B;
   private int C;
   private boolean D;
   private boolean E;
-  private m F;
+  private n F;
   private long G;
   private byte[] H;
   private long I;
@@ -51,7 +51,7 @@ public class TXCGLSurfaceView
   WeakReference<a> a;
   private SurfaceTexture g;
   private EGLContext h;
-  private g i;
+  private h i;
   private int[] j;
   private float[] k;
   private int l;
@@ -176,8 +176,8 @@ public class TXCGLSurfaceView
       final Bitmap localBitmap = Bitmap.createBitmap(i1, i3, Bitmap.Config.ARGB_8888);
       localByteBuffer.position(0);
       GLES20.glReadPixels(paramInt1, paramInt2, i1, i3, 6408, 5121, localByteBuffer);
-      final n localn = this.A;
-      if (localn != null) {
+      final o localo = this.A;
+      if (localo != null) {
         new Thread(new Runnable()
         {
           public void run()
@@ -190,7 +190,7 @@ public class TXCGLSurfaceView
               Object localObject1 = new Matrix();
               ((Matrix)localObject1).setScale(1.0F, -1.0F);
               localObject1 = Bitmap.createBitmap(localBitmap, 0, 0, i1, i3, (Matrix)localObject1, false);
-              localn.onTakePhotoComplete((Bitmap)localObject1);
+              localo.onTakePhotoComplete((Bitmap)localObject1);
               localBitmap.recycle();
               AppMethodBeat.o(16823);
               return;
@@ -427,8 +427,8 @@ public class TXCGLSurfaceView
             if (paramInt2 == 0) {
               break label580;
             }
-            g localg = this.i;
-            float[] arrayOfFloat = k.a(j.a, false, true);
+            h localh = this.i;
+            float[] arrayOfFloat = l.a(k.a, false, true);
             f1 = i5 / i2;
             if (paramInt2 == 0) {
               break label587;
@@ -438,7 +438,7 @@ public class TXCGLSurfaceView
               break label595;
             }
             paramBoolean2 = this.m;
-            localg.a(paramInt3, paramInt4, i6, arrayOfFloat, f1, paramBoolean1, paramBoolean2);
+            localh.a(paramInt3, paramInt4, i6, arrayOfFloat, f1, paramBoolean1, paramBoolean2);
             if (paramInt2 == 0) {
               break label601;
             }
@@ -539,9 +539,9 @@ public class TXCGLSurfaceView
     }
   }
   
-  public void a(n paramn)
+  public void a(o paramo)
   {
-    this.A = paramn;
+    this.A = paramo;
     this.z = true;
   }
   
@@ -857,12 +857,12 @@ public class TXCGLSurfaceView
     //   363: iadd
     //   364: putfield 130	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
     //   367: aload_0
-    //   368: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/m;
+    //   368: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/n;
     //   371: ifnull +21 -> 392
     //   374: aload_1
     //   375: ifnull +148 -> 523
     //   378: aload_0
-    //   379: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/m;
+    //   379: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/n;
     //   382: aload_1
     //   383: aload_0
     //   384: getfield 79	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
@@ -929,7 +929,7 @@ public class TXCGLSurfaceView
     //   519: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   522: return
     //   523: aload_0
-    //   524: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/m;
+    //   524: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/n;
     //   527: aload_0
     //   528: getfield 463	com/tencent/liteav/renderer/TXCGLSurfaceView:j	[I
     //   531: iconst_0
@@ -1005,7 +1005,7 @@ public class TXCGLSurfaceView
     AppMethodBeat.i(16773);
     this.h = ((EGL10)EGLContext.getEGL()).eglGetCurrentContext();
     this.j = new int[1];
-    this.j[0] = i.b();
+    this.j[0] = j.b();
     if (this.j[0] <= 0)
     {
       this.j = null;
@@ -1015,13 +1015,13 @@ public class TXCGLSurfaceView
     }
     this.g = new SurfaceTexture(this.j[0]);
     g();
-    this.i = new g();
+    this.i = new h();
     if (!this.i.a())
     {
       AppMethodBeat.o(16773);
       return;
     }
-    this.i.a(k.e, k.a(j.a, false, false));
+    this.i.a(l.e, l.a(k.a, false, false));
     if (this.F != null) {
       this.F.a(this.g);
     }
@@ -1131,9 +1131,9 @@ public class TXCGLSurfaceView
     AppMethodBeat.o(16763);
   }
   
-  public void setSurfaceTextureListener(m paramm)
+  public void setSurfaceTextureListener(n paramn)
   {
-    this.F = paramm;
+    this.F = paramn;
   }
 }
 

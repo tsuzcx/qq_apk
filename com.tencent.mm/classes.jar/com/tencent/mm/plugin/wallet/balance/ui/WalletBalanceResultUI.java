@@ -13,13 +13,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.xf;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.xq;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.balance.model.c;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
@@ -28,10 +28,10 @@ import com.tencent.mm.wallet_core.ui.e;
 public class WalletBalanceResultUI
   extends WalletBaseUI
 {
-  protected Button iwY;
-  protected Orders vIq;
-  protected TextView zHv;
-  protected CheckBox zHw;
+  protected TextView AZH;
+  protected CheckBox AZI;
+  protected Button iXb;
+  protected Orders wSu;
   
   public int getLayoutId()
   {
@@ -41,21 +41,21 @@ public class WalletBalanceResultUI
   public void initView()
   {
     AppMethodBeat.i(68688);
-    this.zHv = ((TextView)findViewById(2131306874));
-    this.iwY = ((Button)findViewById(2131306873));
-    if (this.vIq == null)
+    this.AZH = ((TextView)findViewById(2131306874));
+    this.iXb = ((Button)findViewById(2131306873));
+    if (this.wSu == null)
     {
       finish();
       AppMethodBeat.o(68688);
       return;
     }
-    this.zHv.setText(e.d(this.vIq.dcH, this.vIq.uop));
-    this.iwY.setOnClickListener(new View.OnClickListener()
+    this.AZH.setText(e.d(this.wSu.daf, this.wSu.vxl));
+    this.iXb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68683);
-        ad.i("MicroMsg.WalletBalanceResultUI", "click finish btn");
+        ac.i("MicroMsg.WalletBalanceResultUI", "click finish btn");
         WalletBalanceResultUI.a(WalletBalanceResultUI.this);
         AppMethodBeat.o(68683);
       }
@@ -76,7 +76,7 @@ public class WalletBalanceResultUI
   public void next()
   {
     AppMethodBeat.i(68689);
-    if (!getNetController().q(new Object[] { this.vIq })) {
+    if (!getNetController().s(new Object[] { this.wSu })) {
       super.next();
     }
     AppMethodBeat.o(68689);
@@ -88,7 +88,7 @@ public class WalletBalanceResultUI
   {
     AppMethodBeat.i(68687);
     super.onCreate(paramBundle);
-    this.vIq = ((Orders)getInput().getParcelable("key_orders"));
+    this.wSu = ((Orders)getInput().getParcelable("key_orders"));
     initView();
     setMMTitle("");
     setActionbarColor(getResources().getColor(2131101179));
@@ -104,20 +104,20 @@ public class WalletBalanceResultUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        s.dZT();
-        s.dZU().Aip = bt.aGK();
-        paramString = new xf();
-        paramString.dCH.scene = 15;
+        s.epp();
+        s.epq().BAK = bs.aNx();
+        paramString = new xq();
+        paramString.dAt.scene = 15;
         paramString.callback = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(68686);
-            ad.i("MicroMsg.WalletBalanceResultUI", "update user info succ, end process");
+            ac.i("MicroMsg.WalletBalanceResultUI", "update user info succ, end process");
             AppMethodBeat.o(68686);
           }
         };
-        com.tencent.mm.sdk.b.a.ESL.l(paramString);
+        com.tencent.mm.sdk.b.a.GpY.l(paramString);
       }
       next();
       AppMethodBeat.o(68690);

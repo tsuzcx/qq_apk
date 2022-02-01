@@ -16,8 +16,8 @@ final class ScanCardRectView$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(118378);
-    paramView = View.inflate(this.wbN.getContext(), 2131495286, null);
-    h.a(this.wbN.getContext(), this.wbN.getContext().getString(2131762796), this.wbN.getContext().getString(2131762795), paramView, new DialogInterface.OnClickListener()
+    paramView = View.inflate(this.xmU.getContext(), 2131495286, null);
+    h.a(this.xmU.getContext(), this.xmU.getContext().getString(2131762796), this.xmU.getContext().getString(2131762795), paramView, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -31,7 +31,7 @@ final class ScanCardRectView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.ScanCardRectView.1
  * JD-Core Version:    0.7.0.1
  */

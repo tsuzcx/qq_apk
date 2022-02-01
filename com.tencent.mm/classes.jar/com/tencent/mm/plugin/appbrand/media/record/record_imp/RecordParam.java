@@ -13,13 +13,13 @@ public class RecordParam
   public static final Parcelable.Creator<RecordParam> CREATOR;
   public String appId;
   public int duration;
-  public String fGf;
-  public String jBY;
-  public b kRH;
-  public f kRI;
-  public int kwc;
-  public int kwd;
-  public double kwe;
+  public String fJM;
+  public int kXq;
+  public int kXr;
+  public double kXs;
+  public String kcu;
+  public b lth;
+  public f lti;
   public String processName;
   public int sampleRate;
   public int scene;
@@ -35,13 +35,13 @@ public class RecordParam
   {
     this.duration = 0;
     this.sampleRate = 0;
-    this.kwc = 0;
-    this.kwd = 0;
+    this.kXq = 0;
+    this.kXr = 0;
     this.scene = 0;
-    this.kwe = 0.0D;
+    this.kXs = 0.0D;
     this.processName = "";
     this.appId = "";
-    this.kRH = b.kQw;
+    this.lth = b.lrV;
   }
   
   public RecordParam(Parcel paramParcel)
@@ -49,24 +49,24 @@ public class RecordParam
     AppMethodBeat.i(146358);
     this.duration = 0;
     this.sampleRate = 0;
-    this.kwc = 0;
-    this.kwd = 0;
+    this.kXq = 0;
+    this.kXr = 0;
     this.scene = 0;
-    this.kwe = 0.0D;
+    this.kXs = 0.0D;
     this.processName = "";
     this.appId = "";
-    this.kRH = b.kQw;
+    this.lth = b.lrV;
     this.duration = paramParcel.readInt();
     this.sampleRate = paramParcel.readInt();
-    this.kwc = paramParcel.readInt();
-    this.kwd = paramParcel.readInt();
-    this.jBY = paramParcel.readString();
-    this.fGf = paramParcel.readString();
+    this.kXq = paramParcel.readInt();
+    this.kXr = paramParcel.readInt();
+    this.kcu = paramParcel.readString();
+    this.fJM = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.kwe = paramParcel.readDouble();
+    this.kXs = paramParcel.readDouble();
     this.processName = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.kRH = b.values()[paramParcel.readInt()];
+    this.lth = b.values()[paramParcel.readInt()];
     AppMethodBeat.o(146358);
   }
   
@@ -80,21 +80,21 @@ public class RecordParam
     AppMethodBeat.i(146359);
     paramParcel.writeInt(this.duration);
     paramParcel.writeInt(this.sampleRate);
-    paramParcel.writeInt(this.kwc);
-    paramParcel.writeInt(this.kwd);
-    paramParcel.writeString(this.jBY);
-    paramParcel.writeString(this.fGf);
+    paramParcel.writeInt(this.kXq);
+    paramParcel.writeInt(this.kXr);
+    paramParcel.writeString(this.kcu);
+    paramParcel.writeString(this.fJM);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeDouble(this.kwe);
+    paramParcel.writeDouble(this.kXs);
     paramParcel.writeString(this.processName);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.kRH.ordinal());
+    paramParcel.writeInt(this.lth.ordinal());
     AppMethodBeat.o(146359);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam
  * JD-Core Version:    0.7.0.1
  */

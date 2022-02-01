@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.brg;
-import com.tencent.mm.protocal.protobuf.brh;
-import com.tencent.mm.protocal.protobuf.dim;
+import com.tencent.mm.protocal.protobuf.bvx;
+import com.tencent.mm.protocal.protobuf.bvy;
+import com.tencent.mm.protocal.protobuf.dob;
 
 public final class i
   extends n
   implements k
 {
   private g callback;
-  private final String dlB;
+  private final String djj;
   private final int scene;
-  public final String wcY;
-  public final int wcZ;
+  public final String xom;
+  public final int xon;
   
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.dlB = paramString1;
-    this.wcY = paramString2;
-    this.wcZ = paramInt1;
+    this.djj = paramString1;
+    this.xom = paramString2;
+    this.xon = paramInt1;
     this.scene = paramInt2;
   }
   
@@ -36,17 +36,17 @@ public final class i
     AppMethodBeat.i(73777);
     this.callback = paramg;
     paramg = new b.a();
-    brg localbrg = new brg();
-    localbrg.dlB = this.dlB;
-    localbrg.DPb = this.wcY;
-    localbrg.DPc = this.wcZ;
-    paramg.gUU = localbrg;
+    bvx localbvx = new bvx();
+    localbvx.djj = this.djj;
+    localbvx.Fls = this.xom;
+    localbvx.Flt = this.xon;
+    paramg.hvt = localbvx;
     paramg.uri = "/cgi-bin/mmbiz-bin/moduserauth";
-    paramg.gUV = new brh();
+    paramg.hvu = new bvy();
     paramg.funcId = getType();
     paramg.reqCmdId = 0;
     paramg.respCmdId = 0;
-    int i = dispatch(parame, paramg.atI(), this);
+    int i = dispatch(parame, paramg.aAz(), this);
     AppMethodBeat.o(73777);
     return i;
   }
@@ -59,14 +59,14 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73776);
-    paramString = (brh)((b)paramq).gUT.gUX;
-    this.callback.onSceneEnd(paramInt2, paramString.DbG.dhR, paramString.DbG.dhS, this);
+    paramString = (bvy)((b)paramq).hvs.hvw;
+    this.callback.onSceneEnd(paramInt2, paramString.EuM.dfm, paramString.EuM.dfn, this);
     AppMethodBeat.o(73776);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.i
  * JD-Core Version:    0.7.0.1
  */

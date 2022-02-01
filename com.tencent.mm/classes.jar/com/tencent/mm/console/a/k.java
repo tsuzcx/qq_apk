@@ -5,9 +5,9 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.reflect.Method;
 
 public final class k
@@ -25,7 +25,7 @@ public final class k
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20189);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(20189);
       return false;
@@ -69,34 +69,34 @@ public final class k
       }
       i = 3;
       break;
-      com.tencent.mm.platformtools.ab.hWw = true;
-      com.tencent.mm.platformtools.ab.hWv = true;
+      com.tencent.mm.platformtools.ab.iwA = true;
+      com.tencent.mm.platformtools.ab.iwz = true;
       continue;
-      com.tencent.mm.platformtools.ab.hWw = false;
-      com.tencent.mm.platformtools.ab.hWv = false;
+      com.tencent.mm.platformtools.ab.iwA = false;
+      com.tencent.mm.platformtools.ab.iwz = false;
       continue;
       i = 8888;
       if (paramArrayOfString.length >= 3) {
-        i = bt.getInt(paramArrayOfString[2], 8888);
+        i = bs.getInt(paramArrayOfString[2], 8888);
       }
       try
       {
         Class.forName("com.tencent.mm.plugin.sl_warpgate.server.WarpGateHttpServer").getMethod("startServer", new Class[] { Integer.TYPE }).invoke(null, new Object[] { Integer.valueOf(i) });
-        Toast.makeText(aj.getContext(), "start server on ".concat(String.valueOf(i)), 1).show();
+        Toast.makeText(ai.getContext(), "start server on ".concat(String.valueOf(i)), 1).show();
       }
       catch (Exception paramContext)
       {
-        ad.printErrStackTrace("MicroMsg.WarpgateCommand", paramContext, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WarpgateCommand", paramContext, "", new Object[0]);
       }
       continue;
       try
       {
         Class.forName("com.tencent.mm.plugin.sl_warpgate.server.WarpGateHttpServer").getMethod("stopServer", new Class[0]).invoke(null, new Object[0]);
-        Toast.makeText(aj.getContext(), "stop server", 1).show();
+        Toast.makeText(ai.getContext(), "stop server", 1).show();
       }
       catch (Exception paramContext)
       {
-        ad.printErrStackTrace("MicroMsg.WarpgateCommand", paramContext, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WarpgateCommand", paramContext, "", new Object[0]);
       }
     }
   }

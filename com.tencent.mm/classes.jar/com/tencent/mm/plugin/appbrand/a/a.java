@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.appbrand.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 
 public final class a
 {
-  public static long iIX;
-  public static long iIY;
-  public static final String iIZ;
-  public static boolean iJa;
+  public static long jjb;
+  public static long jjc;
+  public static final String jjd;
+  public static boolean jje;
   
   static
   {
     AppMethodBeat.i(153191);
-    e locale = e.R(aj.getContext().getCacheDir());
+    e locale = e.U(ai.getContext().getCacheDir());
     if (locale == null) {
-      iIZ = "";
+      jjd = "";
     }
     for (;;)
     {
-      iJa = false;
+      jje = false;
       AppMethodBeat.o(153191);
       return;
       locale = new e(locale, "appbrand");
@@ -30,7 +30,7 @@ public final class a
       {
         locale.mkdirs();
         label50:
-        iIZ = q.B(new e(locale, "use_isolate_bootstep.cfg").fhU());
+        jjd = q.B(new e(locale, "use_isolate_bootstep.cfg").fxV());
       }
       catch (Throwable localThrowable)
       {

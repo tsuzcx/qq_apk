@@ -8,15 +8,15 @@ public abstract interface m
   
   public abstract void j(long paramLong, String paramString);
   
-  public abstract void mZ(long paramLong);
-  
-  public abstract void na(long paramLong);
-  
   public abstract void onTaskPaused(long paramLong);
   
   public abstract void onTaskRemoved(long paramLong);
   
   public abstract void onTaskStarted(long paramLong, String paramString);
+  
+  public abstract void qN(long paramLong);
+  
+  public abstract void qO(long paramLong);
 }
 
 

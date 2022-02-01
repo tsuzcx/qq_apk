@@ -2,35 +2,35 @@ package com.tencent.mm.media.j;
 
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.ui.aj;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/util/VideoConfigUtil;", "", "()V", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/util/VideoConfigUtil;", "", "()V", "Companion", "plugin-mediaeditor_release"})
 public final class e
 {
-  private static final int gws = 1;
-  private static int gwt;
-  private static int gwu;
-  public static final a gwv;
+  private static final int gWP = 1;
+  private static int gWQ;
+  private static int gWR;
+  public static final a gWS;
   
   static
   {
     AppMethodBeat.i(94003);
-    gwv = new a((byte)0);
-    gws = 1;
-    gwt = 2;
-    gwu = 3;
+    gWS = new a((byte)0);
+    gWP = 1;
+    gWQ = 2;
+    gWR = 3;
     AppMethodBeat.o(94003);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/util/VideoConfigUtil$Companion;", "", "()V", "BASE_LEVEL_BITRATE", "", "getBASE_LEVEL_BITRATE", "()I", "HIGH_LEVEL_BITRATE", "getHIGH_LEVEL_BITRATE", "setHIGH_LEVEL_BITRATE", "(I)V", "LOW_LEVEL_BITRATE", "getLOW_LEVEL_BITRATE", "SUPER_HIGH_LEVEL_BITRATE", "getSUPER_HIGH_LEVEL_BITRATE", "setSUPER_HIGH_LEVEL_BITRATE", "TAG", "", "getCommandBitrate", "width", "mode", "getCommandHeight", "standardVideoParamWithWidth", "", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/util/VideoConfigUtil$Companion;", "", "()V", "BASE_LEVEL_BITRATE", "", "getBASE_LEVEL_BITRATE", "()I", "HIGH_LEVEL_BITRATE", "getHIGH_LEVEL_BITRATE", "setHIGH_LEVEL_BITRATE", "(I)V", "LOW_LEVEL_BITRATE", "getLOW_LEVEL_BITRATE", "SUPER_HIGH_LEVEL_BITRATE", "getSUPER_HIGH_LEVEL_BITRATE", "setSUPER_HIGH_LEVEL_BITRATE", "TAG", "", "getCommandBitrate", "width", "mode", "getCommandHeight", "standardVideoParamWithWidth", "", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "plugin-mediaeditor_release"})
   public static final class a
   {
-    public static int mC(int paramInt)
+    public static int nq(int paramInt)
     {
       AppMethodBeat.i(94002);
-      Point localPoint = ai.cf(aj.getContext());
+      Point localPoint = aj.cl(ai.getContext());
       paramInt = localPoint.y * paramInt / localPoint.x;
       AppMethodBeat.o(94002);
       return paramInt;

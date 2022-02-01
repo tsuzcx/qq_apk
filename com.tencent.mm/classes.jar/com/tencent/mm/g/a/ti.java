@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ti
   extends b
 {
-  public a dyK;
+  public a dwo;
   
   public ti()
   {
@@ -16,18 +15,16 @@ public final class ti
   
   private ti(byte paramByte)
   {
-    AppMethodBeat.i(125636);
-    this.dyK = new a();
-    this.ESR = false;
+    AppMethodBeat.i(94814);
+    this.dwo = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125636);
+    AppMethodBeat.o(94814);
   }
   
   public static final class a
   {
-    public Context context;
-    public String diQ;
-    public int djq;
+    public boolean enable;
   }
 }
 

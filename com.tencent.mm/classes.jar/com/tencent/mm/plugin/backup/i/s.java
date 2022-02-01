@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class s
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long mBA;
-  public long mBB;
-  public long mBe;
+  public long ndB;
+  public long ndC;
+  public long ndf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class s
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aG(1, this.mBe);
-      paramVarArgs.aG(2, this.mBA);
-      paramVarArgs.aG(3, this.mBB);
+      paramVarArgs.aO(1, this.ndf);
+      paramVarArgs.aO(2, this.ndB);
+      paramVarArgs.aO(3, this.ndC);
       AppMethodBeat.o(22124);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.q(1, this.mBe);
-      int i = f.a.a.b.b.a.q(2, this.mBA);
-      int j = f.a.a.b.b.a.q(3, this.mBB);
+      paramInt = f.a.a.b.b.a.p(1, this.ndf);
+      int i = f.a.a.b.b.a.p(2, this.ndB);
+      int j = f.a.a.b.b.a.p(3, this.ndC);
       AppMethodBeat.o(22124);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(22124);
@@ -50,15 +50,15 @@ public final class s
         AppMethodBeat.o(22124);
         return -1;
       case 1: 
-        locals.mBe = locala.KhF.xT();
+        locals.ndf = locala.LVo.xG();
         AppMethodBeat.o(22124);
         return 0;
       case 2: 
-        locals.mBA = locala.KhF.xT();
+        locals.ndB = locala.LVo.xG();
         AppMethodBeat.o(22124);
         return 0;
       }
-      locals.mBB = locala.KhF.xT();
+      locals.ndC = locala.LVo.xG();
       AppMethodBeat.o(22124);
       return 0;
     }

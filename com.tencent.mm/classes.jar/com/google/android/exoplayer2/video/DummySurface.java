@@ -24,20 +24,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class DummySurface
   extends Surface
 {
-  private static boolean bzB;
-  private static boolean bzC;
-  public final boolean bie;
-  private final a bzD;
-  private boolean bzE;
+  private static boolean bxj;
+  private static boolean bxk;
+  public final boolean biJ;
+  private final a bxl;
+  private boolean bxm;
   
   private DummySurface(a parama, SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
     super(paramSurfaceTexture);
-    this.bzD = parama;
-    this.bie = paramBoolean;
+    this.bxl = parama;
+    this.biJ = paramBoolean;
   }
   
-  public static boolean ah(Context paramContext)
+  public static boolean ai(Context paramContext)
   {
     boolean bool1 = true;
     for (;;)
@@ -46,7 +46,7 @@ public final class DummySurface
       try
       {
         AppMethodBeat.i(93263);
-        if (!bzC)
+        if (!bxk)
         {
           if (x.SDK_INT < 24) {
             continue;
@@ -58,13 +58,13 @@ public final class DummySurface
           if (!str.contains("EGL_EXT_protected_content"))
           {
             break label143;
-            bzB = bool1;
-            bzC = true;
+            bxj = bool1;
+            bxk = true;
           }
         }
         else
         {
-          bool1 = bzB;
+          bool1 = bxj;
           AppMethodBeat.o(93263);
           return bool1;
         }
@@ -106,11 +106,11 @@ public final class DummySurface
       AppMethodBeat.o(93264);
       throw paramContext;
     }
-    if ((!paramBoolean) || (ah(paramContext))) {}
+    if ((!paramBoolean) || (ai(paramContext))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      paramContext = new a().aY(paramBoolean);
+      paramContext = new a().aX(paramBoolean);
       AppMethodBeat.o(93264);
       return paramContext;
     }
@@ -120,12 +120,12 @@ public final class DummySurface
   {
     AppMethodBeat.i(93265);
     super.release();
-    synchronized (this.bzD)
+    synchronized (this.bxl)
     {
-      if (!this.bzE)
+      if (!this.bxm)
       {
-        this.bzD.handler.sendEmptyMessage(3);
-        this.bzE = true;
+        this.bxl.handler.sendEmptyMessage(3);
+        this.bxm = true;
       }
       AppMethodBeat.o(93265);
       return;
@@ -136,13 +136,13 @@ public final class DummySurface
     extends HandlerThread
     implements SurfaceTexture.OnFrameAvailableListener, Handler.Callback
   {
-    private final int[] bzF;
-    private EGLDisplay bzG;
-    private EGLContext bzH;
-    private EGLSurface bzI;
-    private Error bzJ;
-    private RuntimeException bzK;
-    private DummySurface bzL;
+    private final int[] bxn;
+    private EGLDisplay bxo;
+    private EGLContext bxp;
+    private EGLSurface bxq;
+    private Error bxr;
+    private RuntimeException bxs;
+    private DummySurface bxt;
     Handler handler;
     private SurfaceTexture surfaceTexture;
     
@@ -150,11 +150,11 @@ public final class DummySurface
     {
       super();
       AppMethodBeat.i(93259);
-      this.bzF = new int[1];
+      this.bxn = new int[1];
       AppMethodBeat.o(93259);
     }
     
-    public final DummySurface aY(boolean paramBoolean)
+    public final DummySurface aX(boolean paramBoolean)
     {
       int j = 0;
       AppMethodBeat.i(93260);
@@ -168,9 +168,9 @@ public final class DummySurface
         {
           ((Handler)localObject1).obtainMessage(1, i, 0).sendToTarget();
           i = j;
-          while ((this.bzL == null) && (this.bzK == null))
+          while ((this.bxt == null) && (this.bxs == null))
           {
-            localObject1 = this.bzJ;
+            localObject1 = this.bxr;
             if (localObject1 != null) {
               break;
             }
@@ -187,9 +187,9 @@ public final class DummySurface
         if (i != 0) {
           Thread.currentThread().interrupt();
         }
-        if (this.bzK != null)
+        if (this.bxs != null)
         {
-          RuntimeException localRuntimeException = this.bzK;
+          RuntimeException localRuntimeException = this.bxs;
           AppMethodBeat.o(93260);
           throw localRuntimeException;
         }
@@ -198,13 +198,13 @@ public final class DummySurface
       {
         AppMethodBeat.o(93260);
       }
-      if (this.bzJ != null)
+      if (this.bxr != null)
       {
-        localObject3 = this.bzJ;
+        localObject3 = this.bxr;
         AppMethodBeat.o(93260);
         throw ((Throwable)localObject3);
       }
-      Object localObject3 = this.bzL;
+      Object localObject3 = this.bxt;
       AppMethodBeat.o(93260);
       return localObject3;
     }
@@ -225,17 +225,17 @@ public final class DummySurface
           if (paramMessage.arg1 != 0)
           {
             bool1 = true;
-            this.bzG = EGL14.eglGetDisplay(0);
-            if (this.bzG == null) {
+            this.bxo = EGL14.eglGetDisplay(0);
+            if (this.bxo == null) {
               continue;
             }
             bool2 = true;
             a.checkState(bool2, "eglGetDisplay failed");
             paramMessage = new int[2];
-            a.checkState(EGL14.eglInitialize(this.bzG, paramMessage, 0, paramMessage, 1), "eglInitialize failed");
+            a.checkState(EGL14.eglInitialize(this.bxo, paramMessage, 0, paramMessage, 1), "eglInitialize failed");
             paramMessage = new EGLConfig[1];
             int[] arrayOfInt = new int[1];
-            if ((!EGL14.eglChooseConfig(this.bzG, new int[] { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12327, 12344, 12339, 4, 12344 }, 0, paramMessage, 0, 1, arrayOfInt, 0)) || (arrayOfInt[0] <= 0) || (paramMessage[0] == null)) {
+            if ((!EGL14.eglChooseConfig(this.bxo, new int[] { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12327, 12344, 12339, 4, 12344 }, 0, paramMessage, 0, 1, arrayOfInt, 0)) || (arrayOfInt[0] <= 0) || (paramMessage[0] == null)) {
               continue;
             }
             bool2 = true;
@@ -256,8 +256,8 @@ public final class DummySurface
             Message tmp284_280 = tmp280_274;
             tmp284_280[4] = 12344;
             tmp284_280;
-            this.bzH = EGL14.eglCreateContext(this.bzG, arrayOfInt, EGL14.EGL_NO_CONTEXT, paramMessage, 0);
-            if (this.bzH == null) {
+            this.bxp = EGL14.eglCreateContext(this.bxo, arrayOfInt, EGL14.EGL_NO_CONTEXT, paramMessage, 0);
+            if (this.bxp == null) {
               break label868;
             }
             bool2 = true;
@@ -281,23 +281,23 @@ public final class DummySurface
             Message tmp364_360 = tmp360_354;
             tmp364_360[6] = 12344;
             tmp364_360;
-            this.bzI = EGL14.eglCreatePbufferSurface(this.bzG, arrayOfInt, paramMessage, 0);
-            if (this.bzI == null) {
+            this.bxq = EGL14.eglCreatePbufferSurface(this.bxo, arrayOfInt, paramMessage, 0);
+            if (this.bxq == null) {
               continue;
             }
             bool2 = true;
             a.checkState(bool2, "eglCreatePbufferSurface failed");
-            a.checkState(EGL14.eglMakeCurrent(this.bzG, this.bzI, this.bzI, this.bzH), "eglMakeCurrent failed");
-            GLES20.glGenTextures(1, this.bzF, 0);
-            this.surfaceTexture = new SurfaceTexture(this.bzF[0]);
+            a.checkState(EGL14.eglMakeCurrent(this.bxo, this.bxq, this.bxq, this.bxp), "eglMakeCurrent failed");
+            GLES20.glGenTextures(1, this.bxn, 0);
+            this.surfaceTexture = new SurfaceTexture(this.bxn[0]);
             this.surfaceTexture.setOnFrameAvailableListener(this);
-            this.bzL = new DummySurface(this, this.surfaceTexture, bool1, (byte)0);
+            this.bxt = new DummySurface(this, this.surfaceTexture, bool1, (byte)0);
           }
         }
         catch (RuntimeException paramMessage)
         {
           boolean bool1;
-          this.bzK = paramMessage;
+          this.bxs = paramMessage;
           try
           {
             notify();
@@ -310,7 +310,7 @@ public final class DummySurface
         }
         catch (Error paramMessage)
         {
-          this.bzJ = paramMessage;
+          this.bxr = paramMessage;
           try
           {
             notify();
@@ -380,37 +380,37 @@ public final class DummySurface
           if (this.surfaceTexture != null)
           {
             this.surfaceTexture.release();
-            GLES20.glDeleteTextures(1, this.bzF, 0);
+            GLES20.glDeleteTextures(1, this.bxn, 0);
           }
         }
         finally
         {
           label768:
-          if (this.bzI != null) {
-            EGL14.eglDestroySurface(this.bzG, this.bzI);
+          if (this.bxq != null) {
+            EGL14.eglDestroySurface(this.bxo, this.bxq);
           }
-          if (this.bzH != null) {
-            EGL14.eglDestroyContext(this.bzG, this.bzH);
+          if (this.bxp != null) {
+            EGL14.eglDestroyContext(this.bxo, this.bxp);
           }
-          this.bzI = null;
-          this.bzH = null;
-          this.bzG = null;
-          this.bzL = null;
+          this.bxq = null;
+          this.bxp = null;
+          this.bxo = null;
+          this.bxt = null;
           this.surfaceTexture = null;
           AppMethodBeat.o(93262);
         }
         try
         {
-          if (this.bzI != null) {
-            EGL14.eglDestroySurface(this.bzG, this.bzI);
+          if (this.bxq != null) {
+            EGL14.eglDestroySurface(this.bxo, this.bxq);
           }
-          if (this.bzH != null) {
-            EGL14.eglDestroyContext(this.bzG, this.bzH);
+          if (this.bxp != null) {
+            EGL14.eglDestroyContext(this.bxo, this.bxp);
           }
-          this.bzI = null;
-          this.bzH = null;
-          this.bzG = null;
-          this.bzL = null;
+          this.bxq = null;
+          this.bxp = null;
+          this.bxo = null;
+          this.bxt = null;
           this.surfaceTexture = null;
           quit();
         }

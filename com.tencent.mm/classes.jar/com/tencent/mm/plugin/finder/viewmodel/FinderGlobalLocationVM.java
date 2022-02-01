@@ -1,140 +1,136 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
-import com.tencent.mm.al.q;
-import com.tencent.mm.g.a.ym;
+import com.tencent.mm.ac.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.hg;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.protocal.protobuf.asx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.awb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponentPlugin;
 import d.g.b.k;
-import d.g.b.v.f;
+import d.g.b.v.b;
 import d.o;
 import d.v;
 import d.y;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "lastAddress", "Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "getLastAddress", "()Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "setLastAddress", "(Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;)V", "locationListener", "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1;", "checkLocationPermissionWithRequest", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "checkLocationPermissionWithoutRequest", "forceRequestLocation", "lastLocation", "Lkotlin/Pair;", "", "lastLocationTime", "", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestLocation", "requestLocationPermission", "storeLocation", "longitude", "latitude", "Companion", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "lastAddress", "Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "getLastAddress", "()Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "setLastAddress", "(Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;)V", "locationListener", "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1;", "checkLocationPermissionWithRequest", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "checkLocationPermissionWithoutRequest", "forceRequestLocation", "lastLocation", "Lkotlin/Pair;", "", "lastLocationTime", "", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestLocation", "requestLocationPermission", "storeLocation", "longitude", "latitude", "Companion", "plugin-finder_release"})
 public final class FinderGlobalLocationVM
   extends UIComponentPlugin<PluginFinder>
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  public static final a LgU;
-  public asx LgS;
-  private final c LgT;
+  public static final FinderGlobalLocationVM.a sbK;
+  public awb sbI;
+  private final c sbJ;
   
   static
   {
-    AppMethodBeat.i(200299);
-    LgU = new a((byte)0);
-    AppMethodBeat.o(200299);
+    AppMethodBeat.i(204369);
+    sbK = new FinderGlobalLocationVM.a((byte)0);
+    AppMethodBeat.o(204369);
   }
   
   public FinderGlobalLocationVM()
   {
-    AppMethodBeat.i(200298);
+    AppMethodBeat.i(204368);
     StringBuilder localStringBuilder = new StringBuilder("isGetGps=");
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.qJA;
-    ad.i("Finder.GlobalLocationVM", com.tencent.mm.plugin.finder.storage.b.cpJ());
-    this.LgT = new c(this);
-    AppMethodBeat.o(200298);
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    ac.i("Finder.GlobalLocationVM", com.tencent.mm.plugin.finder.storage.b.czj());
+    this.sbJ = new c(this);
+    AppMethodBeat.o(204368);
   }
   
-  public static boolean fXe()
+  public static boolean cFG()
   {
-    AppMethodBeat.i(200292);
-    boolean bool = com.tencent.mm.pluginsdk.permission.b.k(aj.getContext(), "android.permission.ACCESS_COARSE_LOCATION", false);
-    AppMethodBeat.o(200292);
+    AppMethodBeat.i(204362);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.j(ai.getContext(), "android.permission.ACCESS_COARSE_LOCATION", false);
+    AppMethodBeat.o(204362);
     return bool;
   }
   
-  public static o<Float, Float> fXf()
+  public static o<Float, Float> cFH()
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(200295);
-    Object localObject = com.tencent.mm.kernel.g.afB();
+    AppMethodBeat.i(204365);
+    Object localObject = com.tencent.mm.kernel.g.agR();
     k.g(localObject, "MMKernel.storage()");
-    localObject = ((e)localObject).afk().get(ae.a.LBr, ";");
+    localObject = ((e)localObject).agA().get(ah.a.GVP, ";");
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type kotlin.String");
-      AppMethodBeat.o(200295);
+      AppMethodBeat.o(204365);
       throw ((Throwable)localObject);
     }
-    localObject = d.n.n.a((CharSequence)localObject, new char[] { ';' });
-    Float localFloat = d.n.n.aRd((String)((List)localObject).get(0));
+    localObject = d.n.n.b((CharSequence)localObject, new char[] { ';' });
+    Float localFloat = d.n.n.aXc((String)((List)localObject).get(0));
     if (localFloat != null) {}
     for (float f1 = localFloat.floatValue();; f1 = 0.0F)
     {
-      localObject = d.n.n.aRd((String)((List)localObject).get(1));
+      localObject = d.n.n.aXc((String)((List)localObject).get(1));
       if (localObject != null) {
         f2 = ((Float)localObject).floatValue();
       }
       localObject = new o(Float.valueOf(f1), Float.valueOf(f2));
-      AppMethodBeat.o(200295);
+      AppMethodBeat.o(204365);
       return localObject;
     }
   }
   
-  public static long fXg()
+  public static long cFI()
   {
-    AppMethodBeat.i(200296);
-    e locale = com.tencent.mm.kernel.g.afB();
+    AppMethodBeat.i(204366);
+    e locale = com.tencent.mm.kernel.g.agR();
     k.g(locale, "MMKernel.storage()");
-    long l = locale.afk().a(ae.a.LBs, 0L);
-    AppMethodBeat.o(200296);
+    long l = locale.agA().a(ah.a.GVQ, 0L);
+    AppMethodBeat.o(204366);
     return l;
   }
   
-  public static boolean r(MMActivity paramMMActivity)
+  public static boolean g(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(200293);
+    AppMethodBeat.i(204363);
     k.h(paramMMActivity, "activity");
     boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)paramMMActivity, "android.permission.ACCESS_COARSE_LOCATION", 79, null, null);
-    AppMethodBeat.o(200293);
+    AppMethodBeat.o(204363);
     return bool;
   }
   
-  public final void bMk()
+  public final void bTx()
   {
-    AppMethodBeat.i(200294);
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.qJA;
-    if (!com.tencent.mm.plugin.finder.storage.b.cpJ())
+    AppMethodBeat.i(204364);
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    if (!com.tencent.mm.plugin.finder.storage.b.czj())
     {
-      ad.w("Finder.GlobalLocationVM", "[requestLocation] is not enabel");
-      AppMethodBeat.o(200294);
+      ac.w("Finder.GlobalLocationVM", "[requestLocation] is not enabel");
+      AppMethodBeat.o(204364);
       return;
     }
-    if (!fXe())
+    if (!cFG())
     {
-      ad.w("Finder.GlobalLocationVM", "[requestLocation] without perssion.");
-      AppMethodBeat.o(200294);
+      ac.w("Finder.GlobalLocationVM", "[requestLocation] without perssion.");
+      AppMethodBeat.o(204364);
       return;
     }
-    ad.i("Finder.GlobalLocationVM", "[requestLocation]...");
+    ac.i("Finder.GlobalLocationVM", "[requestLocation]...");
     c.b(null, (d.g.a.a)new d(this));
-    AppMethodBeat.o(200294);
+    AppMethodBeat.o(204364);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
-    AppMethodBeat.i(200297);
+    AppMethodBeat.i(204367);
     if (paramn != null) {
       switch (paramn.getType())
       {
@@ -142,46 +138,43 @@ public final class FinderGlobalLocationVM
     }
     for (;;)
     {
-      AppMethodBeat.o(200297);
+      AppMethodBeat.o(204367);
       return;
-      com.tencent.mm.kernel.g.aeS().b(665, (com.tencent.mm.al.g)this);
+      com.tencent.mm.kernel.g.agi().b(665, (com.tencent.mm.ak.g)this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        this.LgS = ((com.tencent.mm.plugin.location.model.g)paramn).cJj();
+        this.sbI = ((com.tencent.mm.plugin.location.model.g)paramn).cWO();
       }
-      asx localasx = this.LgS;
-      if (localasx != null)
+      awb localawb = this.sbI;
+      if (localawb != null)
       {
-        if (bt.isNullOrNil(localasx.ijV))
+        if (bs.isNullOrNil(localawb.iKc))
         {
-          this.LgS = null;
-          ad.i("Finder.GlobalLocationVM", "Get Location Fail");
-          AppMethodBeat.o(200297);
+          this.sbI = null;
+          ac.i("Finder.GlobalLocationVM", "Get Location Fail");
+          AppMethodBeat.o(204367);
           return;
         }
-        paramn = localasx.ijN;
+        paramn = localawb.iJU;
         paramString = paramn;
         if (paramn == null) {
           paramString = "";
         }
-        localasx.ijN = paramString;
-        paramn = localasx.ijO;
+        localawb.iJU = paramString;
+        paramn = localawb.iJV;
         paramString = paramn;
         if (paramn == null) {
           paramString = "";
         }
-        localasx.ijO = paramString;
-        ad.i("Finder.GlobalLocationVM", "Get Location " + localasx.ijV + ' ' + localasx.ijN + ' ' + localasx.ijO);
-        AppMethodBeat.o(200297);
+        localawb.iJV = paramString;
+        ac.i("Finder.GlobalLocationVM", "Get Location " + localawb.iKc + ' ' + localawb.iJU + ' ' + localawb.iJV);
+        AppMethodBeat.o(204367);
         return;
       }
-      ad.i("Finder.GlobalLocationVM", "Get Location Fail");
+      ac.i("Finder.GlobalLocationVM", "Get Location Fail");
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$Companion;", "", "()V", "REQUST_PERMISSION_CODE", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   public static final class b
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -192,58 +185,58 @@ public final class FinderGlobalLocationVM
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "onGetLocation", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "plugin-finder_release"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "onGetLocation", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "plugin-finder_release"})
   public static final class c
     implements b.a
   {
     public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2)
     {
-      AppMethodBeat.i(200288);
-      d.axT().c((b.a)this);
-      final v.f localf1 = new v.f();
-      localf1.LEv = paramFloat1;
-      final v.f localf2 = new v.f();
-      localf2.LEv = paramFloat2;
+      AppMethodBeat.i(204358);
+      d.aEL().c((b.a)this);
+      final v.b localb1 = new v.b();
+      localb1.KUM = paramFloat1;
+      final v.b localb2 = new v.b();
+      localb2.KUM = paramFloat2;
       Object localObject;
       if (paramBoolean)
       {
-        FinderGlobalLocationVM.aq(paramFloat1, paramFloat2);
-        ad.i("Finder.GlobalLocationVM", "[onGetLocation] longitude=" + localf1.LEv + " latitude=" + localf2.LEv);
-        localObject = new ym();
-        ((ym)localObject).aCC.lng = paramFloat1;
-        ((ym)localObject).aCC.lat = paramFloat2;
-        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+        FinderGlobalLocationVM.O(paramFloat1, paramFloat2);
+        ac.i("Finder.GlobalLocationVM", "[onGetLocation] longitude=" + localb1.KUM + " latitude=" + localb2.KUM);
+        localObject = new hg();
+        ((hg)localObject).diq.lng = paramFloat1;
+        ((hg)localObject).diq.lat = paramFloat2;
+        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
       }
       for (;;)
       {
-        h.Iye.aP((Runnable)new a(this, localf2, localf1));
-        AppMethodBeat.o(200288);
+        h.JZN.aS((Runnable)new a(this, localb2, localb1));
+        AppMethodBeat.o(204358);
         return true;
-        localObject = FinderGlobalLocationVM.fXf();
-        localf1.LEv = ((Number)((o)localObject).first).floatValue();
-        localf2.LEv = ((Number)((o)localObject).second).floatValue();
-        ad.i("Finder.GlobalLocationVM", "[onGetLocation] from cache. longitude=" + localf1.LEv + " latitude=" + localf2.LEv);
+        localObject = FinderGlobalLocationVM.cFH();
+        localb1.KUM = ((Number)((o)localObject).first).floatValue();
+        localb2.KUM = ((Number)((o)localObject).second).floatValue();
+        ac.i("Finder.GlobalLocationVM", "[onGetLocation] from cache. longitude=" + localb1.KUM + " latitude=" + localb2.KUM);
       }
     }
     
-    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(FinderGlobalLocationVM.c paramc, v.f paramf1, v.f paramf2) {}
+      a(FinderGlobalLocationVM.c paramc, v.b paramb1, v.b paramb2) {}
       
       public final void run()
       {
-        AppMethodBeat.i(200287);
-        com.tencent.mm.plugin.location.model.g localg = new com.tencent.mm.plugin.location.model.g(localf2.LEv, localf1.LEv);
-        com.tencent.mm.kernel.g.aeS().a(665, (com.tencent.mm.al.g)this.LgW.LgV);
-        com.tencent.mm.kernel.g.aeS().b((com.tencent.mm.al.n)localg);
-        AppMethodBeat.o(200287);
+        AppMethodBeat.i(204357);
+        com.tencent.mm.plugin.location.model.g localg = new com.tencent.mm.plugin.location.model.g(localb2.KUM, localb1.KUM);
+        com.tencent.mm.kernel.g.agi().a(665, (com.tencent.mm.ak.g)this.sbM.sbL);
+        com.tencent.mm.kernel.g.agi().b((com.tencent.mm.ak.n)localg);
+        AppMethodBeat.o(204357);
       }
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class d
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -253,46 +246,10 @@ public final class FinderGlobalLocationVM
       super();
     }
   }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  public static final class e
-    implements DialogInterface.OnClickListener
-  {
-    public e(MMActivity paramMMActivity) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(200290);
-      paramDialogInterface = com.tencent.mm.plugin.finder.report.b.qFq;
-      com.tencent.mm.plugin.finder.report.b.aS((Context)this.qCc, 4);
-      paramDialogInterface = this.qCc;
-      Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$requestLocationPermission$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$requestLocationPermission$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(200290);
-    }
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  public static final class f
-    implements DialogInterface.OnClickListener
-  {
-    public f(MMActivity paramMMActivity) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(200291);
-      paramDialogInterface = com.tencent.mm.plugin.finder.report.b.qFq;
-      com.tencent.mm.plugin.finder.report.b.aS((Context)this.qCc, 3);
-      AppMethodBeat.o(200291);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM
  * JD-Core Version:    0.7.0.1
  */

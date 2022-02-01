@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.exdevice.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.exdevice.model.s;
 import com.tencent.mm.plugin.exdevice.service.m;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class k
   extends ae
   implements g
 {
   private String mDeviceType = null;
-  private String oUW = null;
-  private String oUX = null;
-  private int oyr = -1;
+  private int pbR = -1;
+  private String pyh = null;
+  private String pyi = null;
   
   public k(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.oUW = paramString1;
+    this.pyh = paramString1;
     this.mDeviceType = paramString2;
-    this.oUX = paramString3;
-    this.oyr = paramInt;
+    this.pyi = paramString3;
+    this.pbR = paramInt;
   }
   
   public final boolean a(m paramm, d paramd)
   {
     AppMethodBeat.i(23812);
-    ad.i("MicroMsg.exdevice.MMWifiStatusSubscribeTaskExcuter", "execute MMWifiStatusSubscribeTaskExcuter. brandName=" + this.oUW + ",deviceType=" + this.mDeviceType + ",deviceId=" + this.oUX + ",reqType=" + this.oyr);
-    az.aeS().a(1090, this);
-    paramm = new s(this.oUW, this.mDeviceType, this.oUX, this.oyr);
-    az.aeS().a(paramm, 0);
+    ac.i("MicroMsg.exdevice.MMWifiStatusSubscribeTaskExcuter", "execute MMWifiStatusSubscribeTaskExcuter. brandName=" + this.pyh + ",deviceType=" + this.mDeviceType + ",deviceId=" + this.pyi + ",reqType=" + this.pbR);
+    az.agi().a(1090, this);
+    paramm = new s(this.pyh, this.mDeviceType, this.pyi, this.pbR);
+    az.agi().a(paramm, 0);
     AppMethodBeat.o(23812);
     return false;
   }
@@ -41,8 +41,8 @@ public final class k
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(23811);
-    ad.i("MicroMsg.exdevice.MMWifiStatusSubscribeTaskExcuter", "onSceneEnd. errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    az.aeS().b(1090, this);
+    ac.i("MicroMsg.exdevice.MMWifiStatusSubscribeTaskExcuter", "onSceneEnd. errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    az.agi().b(1090, this);
     AppMethodBeat.o(23811);
   }
 }

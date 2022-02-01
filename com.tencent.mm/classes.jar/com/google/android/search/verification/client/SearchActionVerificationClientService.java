@@ -22,11 +22,11 @@ import java.util.Set;
 public abstract class SearchActionVerificationClientService
   extends IntentService
 {
-  private final boolean bBR = isDebugMode();
-  private final long bBS = 1000L;
-  private final Intent bBT = new Intent("com.google.android.googlequicksearchbox.SEARCH_ACTION_VERIFICATION_SERVICE").setPackage("com.google.android.googlequicksearchbox");
-  private a bBU;
-  private a bBV = null;
+  private final long bzA = 1000L;
+  private final Intent bzB = new Intent("com.google.android.googlequicksearchbox.SEARCH_ACTION_VERIFICATION_SERVICE").setPackage("com.google.android.googlequicksearchbox");
+  private a bzC;
+  private a bzD = null;
+  private final boolean bzz = isDebugMode();
   
   public SearchActionVerificationClientService()
   {
@@ -51,7 +51,7 @@ public abstract class SearchActionVerificationClientService
   
   private boolean isConnected()
   {
-    return this.bBV != null;
+    return this.bzD != null;
   }
   
   private static boolean isDebugMode()
@@ -59,7 +59,7 @@ public abstract class SearchActionVerificationClientService
     return !"user".equals(Build.TYPE);
   }
   
-  private boolean wy()
+  private boolean wl()
   {
     try
     {
@@ -75,7 +75,7 @@ public abstract class SearchActionVerificationClientService
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      if (this.bBR)
+      if (this.bzz)
       {
         String str = String.valueOf(localNameNotFoundException);
         new StringBuilder(String.valueOf(str).length() + 34).append("Unexpected NameNotFoundException: ").append(str);
@@ -89,14 +89,14 @@ public abstract class SearchActionVerificationClientService
   public final void onCreate()
   {
     super.onCreate();
-    this.bBU = new a();
-    bindService(this.bBT, this.bBU, 1);
+    this.bzC = new a();
+    bindService(this.bzB, this.bzC, 1);
   }
   
   public final void onDestroy()
   {
     super.onDestroy();
-    unbindService(this.bBU);
+    unbindService(this.bzC);
   }
   
   protected final void onHandleIntent(Intent paramIntent)
@@ -106,19 +106,19 @@ public abstract class SearchActionVerificationClientService
     do
     {
       return;
-      if ((isDebugMode()) || (wy())) {}
+      if ((isDebugMode()) || (wl())) {}
       Object localObject;
       for (int i = 1;; i = 0)
       {
         long l = System.nanoTime();
-        while ((!isConnected()) && (System.nanoTime() - l < this.bBS * 1000000L))
+        while ((!isConnected()) && (System.nanoTime() - l < this.bzA * 1000000L))
         {
           try
           {
             Thread.sleep(50L);
           }
           catch (InterruptedException localInterruptedException) {}
-          if (this.bBR)
+          if (this.bzz)
           {
             localObject = String.valueOf(localInterruptedException);
             new StringBuilder(String.valueOf(localObject).length() + 33).append("Unexpected InterruptedException: ").append((String)localObject);
@@ -131,15 +131,15 @@ public abstract class SearchActionVerificationClientService
       if (paramIntent.hasExtra("SearchActionVerificationClientExtraIntent"))
       {
         paramIntent = (Intent)paramIntent.getParcelableExtra("SearchActionVerificationClientExtraIntent");
-        if (this.bBR) {
+        if (this.bzz) {
           d(paramIntent);
         }
         try
         {
-          int j = this.bBV.getVersion();
+          int j = this.bzD.getVersion();
           new StringBuilder(24).append("API version: ").append(j);
           localObject = new Bundle();
-          if ((i == 0) || (!this.bBV.a(paramIntent, (Bundle)localObject))) {
+          if ((i == 0) || (!this.bzD.a(paramIntent, (Bundle)localObject))) {
             continue;
           }
         }
@@ -161,7 +161,7 @@ public abstract class SearchActionVerificationClientService
         a(paramIntent, bool);
         return;
       }
-    } while (!this.bBR);
+    } while (!this.bzz);
     paramIntent = String.valueOf(paramIntent);
     new StringBuilder(String.valueOf(paramIntent).length() + 28).append("No extra, nothing to check: ").append(paramIntent);
     return;

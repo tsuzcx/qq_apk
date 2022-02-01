@@ -9,8 +9,8 @@ public class DownloadBigPkgCompleteNotify
   implements Parcelable
 {
   public static final Parcelable.Creator<DownloadBigPkgCompleteNotify> CREATOR;
-  public boolean BIq;
-  public String fUW;
+  public boolean Daz;
+  public String fYR;
   public boolean success;
   
   static
@@ -23,7 +23,7 @@ public class DownloadBigPkgCompleteNotify
   private DownloadBigPkgCompleteNotify(Parcel paramParcel)
   {
     AppMethodBeat.i(110629);
-    this.fUW = paramParcel.readString();
+    this.fYR = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
@@ -35,7 +35,7 @@ public class DownloadBigPkgCompleteNotify
     label60:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.BIq = bool1;
+      this.Daz = bool1;
       AppMethodBeat.o(110629);
       return;
       bool1 = false;
@@ -45,9 +45,9 @@ public class DownloadBigPkgCompleteNotify
   
   public DownloadBigPkgCompleteNotify(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.fUW = paramString;
+    this.fYR = paramString;
     this.success = paramBoolean1;
-    this.BIq = paramBoolean2;
+    this.Daz = paramBoolean2;
   }
   
   public int describeContents()
@@ -59,12 +59,12 @@ public class DownloadBigPkgCompleteNotify
   {
     int i = 1;
     AppMethodBeat.i(110628);
-    paramParcel.writeString(this.fUW);
+    paramParcel.writeString(this.fYR);
     if (this.success)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.BIq) {
+      if (!this.Daz) {
         break label54;
       }
     }

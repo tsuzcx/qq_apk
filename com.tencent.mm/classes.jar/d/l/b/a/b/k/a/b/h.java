@@ -35,20 +35,20 @@ import java.util.Set;
 public abstract class h
   extends d.l.b.a.b.j.f.i
 {
-  private final d.l.b.a.b.l.f JBF;
-  final n JUS;
-  private final Map<d.l.b.a.b.f.f, byte[]> JWc;
-  private final Map<d.l.b.a.b.f.f, byte[]> JWd;
-  private final Map<d.l.b.a.b.f.f, byte[]> JWe;
-  private final d.l.b.a.b.l.d<d.l.b.a.b.f.f, ar> JWf;
-  private final d.l.b.a.b.l.f JWg;
-  private final d.l.b.a.b.l.f JWh;
-  private final c<d.l.b.a.b.f.f, Collection<am>> Jtw;
-  private final c<d.l.b.a.b.f.f, Collection<ah>> Jtx;
+  final n LIl;
+  private final d.l.b.a.b.l.f LJA;
+  private final Map<d.l.b.a.b.f.f, byte[]> LJv;
+  private final Map<d.l.b.a.b.f.f, byte[]> LJw;
+  private final Map<d.l.b.a.b.f.f, byte[]> LJx;
+  private final d.l.b.a.b.l.d<d.l.b.a.b.f.f, ar> LJy;
+  private final d.l.b.a.b.l.f LJz;
+  private final c<d.l.b.a.b.f.f, Collection<am>> LgP;
+  private final c<d.l.b.a.b.f.f, Collection<ah>> LgQ;
+  private final d.l.b.a.b.l.f LoY;
   
   protected h(n paramn, Collection<a.h> paramCollection, Collection<a.m> paramCollection1, Collection<a.q> paramCollection2, d.g.a.a<? extends Collection<d.l.b.a.b.f.f>> parama)
   {
-    this.JUS = paramn;
+    this.LIl = paramn;
     paramn = (Iterable)paramCollection;
     Object localObject1 = (Map)new LinkedHashMap();
     Object localObject2 = paramn.iterator();
@@ -57,7 +57,7 @@ public abstract class h
     {
       localObject3 = ((Iterator)localObject2).next();
       paramn = (q)localObject3;
-      d.l.b.a.b.f.f localf = x.b(this.JUS.Jiu, ((a.h)paramn).JHm);
+      d.l.b.a.b.f.f localf = x.b(this.LIl.KVO, ((a.h)paramn).LuF);
       paramCollection = ((Map)localObject1).get(localf);
       paramn = paramCollection;
       if (paramCollection == null)
@@ -67,7 +67,7 @@ public abstract class h
       }
       ((List)paramn).add(localObject3);
     }
-    this.JWc = bW((Map)localObject1);
+    this.LJv = cf((Map)localObject1);
     paramn = (Iterable)paramCollection1;
     paramCollection1 = (Map)new LinkedHashMap();
     localObject1 = paramn.iterator();
@@ -75,7 +75,7 @@ public abstract class h
     {
       localObject2 = ((Iterator)localObject1).next();
       paramn = (q)localObject2;
-      localObject3 = x.b(this.JUS.Jiu, ((a.m)paramn).JHm);
+      localObject3 = x.b(this.LIl.KVO, ((a.m)paramn).LuF);
       paramCollection = paramCollection1.get(localObject3);
       paramn = paramCollection;
       if (paramCollection == null)
@@ -85,7 +85,7 @@ public abstract class h
       }
       ((List)paramn).add(localObject2);
     }
-    this.JWd = bW(paramCollection1);
+    this.LJw = cf(paramCollection1);
     paramn = (Iterable)paramCollection2;
     paramCollection1 = (Map)new LinkedHashMap();
     paramCollection2 = paramn.iterator();
@@ -93,7 +93,7 @@ public abstract class h
     {
       localObject1 = paramCollection2.next();
       paramn = (q)localObject1;
-      localObject2 = x.b(this.JUS.Jiu, ((a.q)paramn).JHm);
+      localObject2 = x.b(this.LIl.KVO, ((a.q)paramn).LuF);
       paramCollection = paramCollection1.get(localObject2);
       paramn = paramCollection;
       if (paramCollection == null)
@@ -103,66 +103,66 @@ public abstract class h
       }
       ((List)paramn).add(localObject1);
     }
-    this.JWe = bW(paramCollection1);
-    this.Jtw = this.JUS.JEr.JlL.A((b)new e(this));
-    this.Jtx = this.JUS.JEr.JlL.A((b)new f(this));
-    this.JWf = this.JUS.JEr.JlL.B((b)new g(this));
-    this.JBF = this.JUS.JEr.JlL.H((d.g.a.a)new d(this));
-    this.JWg = this.JUS.JEr.JlL.H((d.g.a.a)new h(this));
-    this.JWh = this.JUS.JEr.JlL.H((d.g.a.a)new h.a(parama));
+    this.LJx = cf(paramCollection1);
+    this.LgP = this.LIl.LrK.KZf.I((b)new e(this));
+    this.LgQ = this.LIl.LrK.KZf.I((b)new f(this));
+    this.LJy = this.LIl.LrK.KZf.J((b)new g(this));
+    this.LoY = this.LIl.LrK.KZf.O((d.g.a.a)new d(this));
+    this.LJz = this.LIl.LrK.KZf.O((d.g.a.a)new h(this));
+    this.LJA = this.LIl.LrK.KZf.O((d.g.a.a)new a(parama));
   }
   
   private final e B(d.l.b.a.b.f.f paramf)
   {
-    return this.JUS.JEr.g(z(paramf));
+    return this.LIl.LrK.g(z(paramf));
   }
   
   private final void a(Collection<d.l.b.a.b.b.l> paramCollection, d.l.b.a.b.j.f.d paramd, b<? super d.l.b.a.b.f.f, Boolean> paramb, d.l.b.a.b.c.a.a parama)
   {
-    Object localObject1 = d.l.b.a.b.j.f.d.JTw;
+    Object localObject1 = d.l.b.a.b.j.f.d.LGP;
     Object localObject2;
-    if (paramd.afP(d.l.b.a.b.j.f.d.fJn()))
+    if (paramd.aiL(d.l.b.a.b.j.f.d.gbQ()))
     {
-      localObject2 = (Collection)fzV();
+      localObject2 = (Collection)fSz();
       localObject1 = new ArrayList();
       localObject2 = ((Collection)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (d.l.b.a.b.f.f)((Iterator)localObject2).next();
-        if (((Boolean)paramb.aA(localObject3)).booleanValue()) {
+        if (((Boolean)paramb.ay(localObject3)).booleanValue()) {
           ((ArrayList)localObject1).addAll(a((d.l.b.a.b.f.f)localObject3, parama));
         }
       }
       localObject2 = (List)localObject1;
-      Object localObject3 = f.a.JRt;
+      Object localObject3 = f.a.LEM;
       k.g(localObject3, "MemberComparator.NameAnd…MemberComparator.INSTANCE");
       j.a((List)localObject2, (Comparator)localObject3);
       paramCollection.addAll((Collection)localObject1);
     }
-    localObject1 = d.l.b.a.b.j.f.d.JTw;
-    if (paramd.afP(d.l.b.a.b.j.f.d.fJm()))
+    localObject1 = d.l.b.a.b.j.f.d.LGP;
+    if (paramd.aiL(d.l.b.a.b.j.f.d.gbP()))
     {
-      localObject1 = (Collection)fzU();
+      localObject1 = (Collection)fSy();
       paramd = new ArrayList();
       localObject1 = ((Collection)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (d.l.b.a.b.f.f)((Iterator)localObject1).next();
-        if (((Boolean)paramb.aA(localObject2)).booleanValue()) {
+        if (((Boolean)paramb.ay(localObject2)).booleanValue()) {
           paramd.addAll(b((d.l.b.a.b.f.f)localObject2, parama));
         }
       }
       paramb = (List)paramd;
-      parama = f.a.JRt;
+      parama = f.a.LEM;
       k.g(parama, "MemberComparator.NameAnd…MemberComparator.INSTANCE");
       j.a(paramb, (Comparator)parama);
       paramCollection.addAll((Collection)paramd);
     }
   }
   
-  private static Map<d.l.b.a.b.f.f, byte[]> bW(Map<d.l.b.a.b.f.f, ? extends Collection<? extends d.l.b.a.b.h.a>> paramMap)
+  private static Map<d.l.b.a.b.f.f, byte[]> cf(Map<d.l.b.a.b.f.f, ? extends Collection<? extends d.l.b.a.b.h.a>> paramMap)
   {
-    Map localMap = (Map)new LinkedHashMap(ae.adL(paramMap.size()));
+    Map localMap = (Map)new LinkedHashMap(ae.agH(paramMap.size()));
     paramMap = ((Iterable)paramMap.entrySet()).iterator();
     while (paramMap.hasNext())
     {
@@ -176,32 +176,32 @@ public abstract class h
       while (((Iterator)localObject4).hasNext())
       {
         ((d.l.b.a.b.h.a)((Iterator)localObject4).next()).d((OutputStream)localObject2);
-        ((Collection)localObject3).add(y.JfV);
+        ((Collection)localObject3).add(y.KTp);
       }
       localMap.put(localObject1, ((ByteArrayOutputStream)localObject2).toByteArray());
     }
     return localMap;
   }
   
-  private final Set<d.l.b.a.b.f.f> fJH()
+  private final Set<d.l.b.a.b.f.f> gck()
   {
-    return this.JWe.keySet();
+    return this.LJx.keySet();
   }
   
   protected boolean C(d.l.b.a.b.f.f paramf)
   {
     k.h(paramf, "name");
-    return fJI().contains(paramf);
+    return gcl().contains(paramf);
   }
   
   public Collection<ah> a(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    if (!fzV().contains(paramf)) {
-      return (Collection)v.Jgl;
+    if (!fSz().contains(paramf)) {
+      return (Collection)v.KTF;
     }
-    return (Collection)this.Jtx.aA(paramf);
+    return (Collection)this.LgQ.ay(paramf);
   }
   
   protected final Collection<d.l.b.a.b.b.l> a(d.l.b.a.b.j.f.d paramd, b<? super d.l.b.a.b.f.f, Boolean> paramb, d.l.b.a.b.c.a.a parama)
@@ -210,46 +210,46 @@ public abstract class h
     k.h(paramb, "nameFilter");
     k.h(parama, "location");
     ArrayList localArrayList = new ArrayList(0);
-    Object localObject = d.l.b.a.b.j.f.d.JTw;
-    if (paramd.afP(d.l.b.a.b.j.f.d.fJj())) {
+    Object localObject = d.l.b.a.b.j.f.d.LGP;
+    if (paramd.aiL(d.l.b.a.b.j.f.d.gbM())) {
       c((Collection)localArrayList, paramb);
     }
     a((Collection)localArrayList, paramd, paramb, parama);
-    parama = d.l.b.a.b.j.f.d.JTw;
-    if (paramd.afP(d.l.b.a.b.j.f.d.fJp()))
+    parama = d.l.b.a.b.j.f.d.LGP;
+    if (paramd.aiL(d.l.b.a.b.j.f.d.gbS()))
     {
-      parama = fJI().iterator();
+      parama = gcl().iterator();
       while (parama.hasNext())
       {
         localObject = (d.l.b.a.b.f.f)parama.next();
-        if (((Boolean)paramb.aA(localObject)).booleanValue()) {
+        if (((Boolean)paramb.ay(localObject)).booleanValue()) {
           d.l.b.a.b.o.a.c((Collection)localArrayList, B((d.l.b.a.b.f.f)localObject));
         }
       }
     }
-    parama = d.l.b.a.b.j.f.d.JTw;
-    if (paramd.afP(d.l.b.a.b.j.f.d.fJk()))
+    parama = d.l.b.a.b.j.f.d.LGP;
+    if (paramd.aiL(d.l.b.a.b.j.f.d.gbN()))
     {
-      paramd = fJH().iterator();
+      paramd = gck().iterator();
       while (paramd.hasNext())
       {
         parama = (d.l.b.a.b.f.f)paramd.next();
-        if (((Boolean)paramb.aA(parama)).booleanValue()) {
-          d.l.b.a.b.o.a.c((Collection)localArrayList, this.JWf.aA(parama));
+        if (((Boolean)paramb.ay(parama)).booleanValue()) {
+          d.l.b.a.b.o.a.c((Collection)localArrayList, this.LJy.ay(parama));
         }
       }
     }
-    return (Collection)d.l.b.a.b.o.a.aT(localArrayList);
+    return (Collection)d.l.b.a.b.o.a.bf(localArrayList);
   }
   
   public Collection<am> b(d.l.b.a.b.f.f paramf, d.l.b.a.b.c.a.a parama)
   {
     k.h(paramf, "name");
     k.h(parama, "location");
-    if (!fzU().contains(paramf)) {
-      return (Collection)v.Jgl;
+    if (!fSy().contains(paramf)) {
+      return (Collection)v.KTF;
     }
-    return (Collection)this.Jtw.aA(paramf);
+    return (Collection)this.LgP.ay(paramf);
   }
   
   protected void b(d.l.b.a.b.f.f paramf, Collection<ah> paramCollection)
@@ -265,8 +265,8 @@ public abstract class h
     if (C(paramf)) {
       return (d.l.b.a.b.b.h)B(paramf);
     }
-    if (fJH().contains(paramf)) {
-      return (d.l.b.a.b.b.h)this.JWf.aA(paramf);
+    if (gck().contains(paramf)) {
+      return (d.l.b.a.b.b.h)this.LJy.ay(paramf);
     }
     return null;
   }
@@ -279,26 +279,36 @@ public abstract class h
   
   protected abstract void c(Collection<d.l.b.a.b.b.l> paramCollection, b<? super d.l.b.a.b.f.f, Boolean> paramb);
   
-  protected abstract Set<d.l.b.a.b.f.f> fJF();
-  
-  protected abstract Set<d.l.b.a.b.f.f> fJG();
-  
-  public final Set<d.l.b.a.b.f.f> fJI()
+  public final Set<d.l.b.a.b.f.f> fSy()
   {
-    return (Set)d.l.b.a.b.l.h.a(this.JWh, $$delegatedProperties[2]);
+    return (Set)d.l.b.a.b.l.h.a(this.LoY, $$delegatedProperties[0]);
   }
   
-  public final Set<d.l.b.a.b.f.f> fzU()
+  public final Set<d.l.b.a.b.f.f> fSz()
   {
-    return (Set)d.l.b.a.b.l.h.a(this.JBF, $$delegatedProperties[0]);
+    return (Set)d.l.b.a.b.l.h.a(this.LJz, $$delegatedProperties[1]);
   }
   
-  public final Set<d.l.b.a.b.f.f> fzV()
+  protected abstract Set<d.l.b.a.b.f.f> gci();
+  
+  protected abstract Set<d.l.b.a.b.f.f> gcj();
+  
+  public final Set<d.l.b.a.b.f.f> gcl()
   {
-    return (Set)d.l.b.a.b.l.h.a(this.JWg, $$delegatedProperties[1]);
+    return (Set)d.l.b.a.b.l.h.a(this.LJA, $$delegatedProperties[2]);
   }
   
   protected abstract d.l.b.a.b.f.a z(d.l.b.a.b.f.f paramf);
+  
+  static final class a
+    extends d.g.b.l
+    implements d.g.a.a<Set<? extends d.l.b.a.b.f.f>>
+  {
+    a(d.g.a.a parama)
+    {
+      super();
+    }
+  }
   
   public static final class b
     extends d.g.b.l
@@ -372,7 +382,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.b.h
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.m;
 
 import android.view.ContextMenu.ContextMenuInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,17 +15,17 @@ import java.util.Map;
 
 public final class d
 {
-  public static final int[] fHl = { 1 };
-  HashMap<String, HashMap<String, String>> fHm;
-  public Map<String, String> fHn;
+  public static final int[] fKS = { 1 };
+  HashMap<String, HashMap<String, String>> fKT;
+  public Map<String, String> fKU;
   private int id;
   int version;
   
   public d(int paramInt)
   {
     AppMethodBeat.i(131988);
-    this.fHm = new HashMap();
-    this.fHn = null;
+    this.fKT = new HashMap();
+    this.fKU = null;
     this.id = paramInt;
     AppMethodBeat.o(131988);
   }
@@ -71,7 +71,7 @@ public final class d
     }
   }
   
-  public static LinkedList<a> k(Map<String, String> paramMap)
+  public static LinkedList<a> j(Map<String, String> paramMap)
   {
     AppMethodBeat.i(131991);
     Object localObject1 = null;
@@ -101,7 +101,7 @@ public final class d
       localObject1 = localObject2;
       if (((LinkedList)localObject3).size() > 0)
       {
-        ad.d("MicroMsg.ConfigListInfo", "has menuItem2, %s, %s", new Object[] { Integer.valueOf(((LinkedList)localObject2).size()), Integer.valueOf(((LinkedList)localObject3).size()) });
+        ac.d("MicroMsg.ConfigListInfo", "has menuItem2, %s, %s", new Object[] { Integer.valueOf(((LinkedList)localObject2).size()), Integer.valueOf(((LinkedList)localObject3).size()) });
         ((LinkedList)localObject2).addAll((Collection)localObject3);
         localObject1 = localObject2;
       }
@@ -117,7 +117,7 @@ public final class d
     }
   }
   
-  static boolean pz(String paramString)
+  static boolean sK(String paramString)
   {
     AppMethodBeat.i(131989);
     for (;;)
@@ -125,14 +125,14 @@ public final class d
       int i;
       try
       {
-        boolean bool = bt.isNullOrNil(paramString);
+        boolean bool = bs.isNullOrNil(paramString);
         if (bool)
         {
           AppMethodBeat.o(131989);
           return false;
         }
         Object localObject = new ArrayList();
-        if (!bt.isNullOrNil(paramString))
+        if (!bs.isNullOrNil(paramString))
         {
           paramString = paramString.split(",");
           if ((paramString != null) && (paramString.length > 0))
@@ -140,7 +140,7 @@ public final class d
             i = 0;
             if (i < paramString.length)
             {
-              if (bt.isNullOrNil(paramString[i])) {
+              if (bs.isNullOrNil(paramString[i])) {
                 break label267;
               }
               ((List)localObject).add(paramString[i]);
@@ -148,36 +148,36 @@ public final class d
             }
           }
         }
-        paramString = ac.eFu();
-        bool = bt.isNullOrNil(paramString);
+        paramString = ab.eUO();
+        bool = bs.isNullOrNil(paramString);
         if (bool)
         {
           AppMethodBeat.o(131989);
           return false;
         }
-        ad.d("MicroMsg.ConfigListInfo", "locale is ".concat(String.valueOf(paramString)));
+        ac.d("MicroMsg.ConfigListInfo", "locale is ".concat(String.valueOf(paramString)));
         localObject = ((List)localObject).iterator();
         if (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
           if ((str.trim().toLowerCase().equals("other")) && (!paramString.equals("zh_CN")))
           {
-            ad.d("MicroMsg.ConfigListInfo", "find other");
+            ac.d("MicroMsg.ConfigListInfo", "find other");
             AppMethodBeat.o(131989);
             return true;
           }
           if (!str.trim().toLowerCase().equals(paramString.trim().toLowerCase())) {
             continue;
           }
-          ad.d("MicroMsg.ConfigListInfo", "find ");
+          ac.d("MicroMsg.ConfigListInfo", "find ");
           AppMethodBeat.o(131989);
           return true;
         }
       }
       catch (Exception paramString)
       {
-        ad.e("MicroMsg.ConfigListInfo", "exception:%s", new Object[] { bt.m(paramString) });
-        ad.d("MicroMsg.ConfigListInfo", "isContainLocale failed " + paramString.getMessage());
+        ac.e("MicroMsg.ConfigListInfo", "exception:%s", new Object[] { bs.m(paramString) });
+        ac.d("MicroMsg.ConfigListInfo", "isContainLocale failed " + paramString.getMessage());
         AppMethodBeat.o(131989);
         return false;
       }
@@ -203,7 +203,7 @@ public final class d
   public static final class b
     implements ContextMenu.ContextMenuInfo
   {
-    private static int fHo = 10000;
+    private static int fKV = 10000;
     public final int id;
     public final String key;
     public final String title;
@@ -211,8 +211,8 @@ public final class d
     public b(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131987);
-      int i = fHo;
-      fHo = i + 1;
+      int i = fKV;
+      fKV = i + 1;
       this.id = i;
       this.key = paramString1;
       this.title = paramString2;

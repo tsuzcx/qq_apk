@@ -6,11 +6,11 @@ import com.tencent.luggage.d.k;
 import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.plugin.appbrand.aa.d;
+import com.tencent.mm.plugin.appbrand.z.d;
 import com.tencent.mm.plugin.webview.model.a;
 import com.tencent.mm.plugin.webview.ui.tools.game.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.util.Map;
 import org.json.JSONObject;
@@ -22,15 +22,15 @@ public final class g
   {
     super(paramg, paramk, paramBundle);
     AppMethodBeat.i(83212);
-    a.e(getWebView());
+    a.d(getWebView());
     p.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83210);
-        g.this.caI.a(new c()
+        g.this.bXF.a(new c()
         {
-          public final JSONObject AM()
+          public final JSONObject Aq()
           {
             return null;
           }
@@ -43,7 +43,7 @@ public final class g
         AppMethodBeat.o(83210);
       }
     });
-    p.z(new Runnable()
+    p.A(new Runnable()
     {
       public final void run()
       {
@@ -51,23 +51,23 @@ public final class g
         if (g.this.getWebView() != null)
         {
           String str = g.this.getWebView().getTitle();
-          if (!bt.isNullOrNil(str)) {
-            g.this.dn(str, 0);
+          if (!bs.isNullOrNil(str)) {
+            g.this.dt(str, 0);
           }
         }
         AppMethodBeat.o(83211);
       }
     });
-    cBP();
+    cPa();
     AppMethodBeat.o(83212);
   }
   
-  private void cBP()
+  private void cPa()
   {
     AppMethodBeat.i(83218);
-    this.caI.a(new c()
+    this.bXF.a(new c()
     {
-      public final JSONObject AM()
+      public final JSONObject Aq()
       {
         return null;
       }
@@ -80,47 +80,47 @@ public final class g
     AppMethodBeat.o(83218);
   }
   
-  public final String Bm()
+  public final String AQ()
   {
     AppMethodBeat.i(83213);
-    String str = d.Ne("preload_game_adapter.js");
+    String str = d.Rn("preload_game_adapter.js");
     AppMethodBeat.o(83213);
     return str;
   }
   
-  protected final h acg(String paramString)
+  protected final h agY(String paramString)
   {
     AppMethodBeat.i(83219);
-    paramString = h.ayl(paramString);
+    paramString = h.aDC(paramString);
     AppMethodBeat.o(83219);
     return paramString;
   }
   
-  public final boolean ach(String paramString)
+  public final boolean agZ(String paramString)
   {
     AppMethodBeat.i(83217);
-    if (paramString.equals(bEx()))
+    if (paramString.equals(bLL()))
     {
       AppMethodBeat.o(83217);
       return false;
     }
-    boolean bool = super.ach(paramString);
+    boolean bool = super.agZ(paramString);
     AppMethodBeat.o(83217);
     return bool;
   }
   
-  public final void bV(String paramString)
+  public final void bL(String paramString)
   {
     AppMethodBeat.i(83216);
-    super.bV(paramString);
-    cBP();
+    super.bL(paramString);
+    cPa();
     AppMethodBeat.o(83216);
   }
   
-  public final void c(String paramString1, String paramString2, Map<String, String> paramMap)
+  public final void e(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     AppMethodBeat.i(83214);
-    ad.i("MicroMsg.PreloadGameWebPage", "onUrlRedirect, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+    ac.i("MicroMsg.PreloadGameWebPage", "onUrlRedirect, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
     AppMethodBeat.o(83214);
   }
   

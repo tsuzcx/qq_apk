@@ -9,18 +9,18 @@ public class SnsAdClick
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsAdClick> CREATOR;
-  public int dep;
-  public long dze;
-  public int hsW;
-  public int hsX;
-  public int hsY;
-  public int hsZ;
-  public int hta;
-  public long htb;
-  public long htc;
-  public int htd;
-  public long hte;
-  public long htf;
+  public int dbL;
+  public long dwQ;
+  public int hTA;
+  public int hTB;
+  public int hTC;
+  public long hTD;
+  public long hTE;
+  public int hTF;
+  public long hTG;
+  public long hTH;
+  public int hTy;
+  public int hTz;
   public long startTime;
   
   static
@@ -32,17 +32,17 @@ public class SnsAdClick
   
   public SnsAdClick()
   {
-    this.hsW = 0;
-    this.hsX = 0;
-    this.hsY = 0;
+    this.hTy = 0;
+    this.hTz = 0;
+    this.hTA = 0;
     this.startTime = 0L;
-    this.hsZ = 0;
-    this.hta = 0;
-    this.htb = 0L;
-    this.htc = 0L;
-    this.htd = 0;
-    this.hte = 0L;
-    this.htf = 0L;
+    this.hTB = 0;
+    this.hTC = 0;
+    this.hTD = 0L;
+    this.hTE = 0L;
+    this.hTF = 0;
+    this.hTG = 0L;
+    this.hTH = 0L;
   }
   
   public SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4)
@@ -58,25 +58,25 @@ public class SnsAdClick
   private SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(125653);
-    this.hsW = 0;
-    this.hsX = 0;
-    this.hsY = 0;
+    this.hTy = 0;
+    this.hTz = 0;
+    this.hTA = 0;
     this.startTime = 0L;
-    this.hsZ = 0;
-    this.hta = 0;
-    this.htb = 0L;
-    this.htc = 0L;
-    this.htd = 0;
-    this.hte = 0L;
-    this.htf = 0L;
-    this.dep = paramInt1;
-    this.hsW = paramInt2;
-    this.dze = paramLong;
-    this.hsX = paramInt3;
-    this.hsY = paramInt4;
-    this.hsZ = 0;
-    this.hta = 0;
-    this.htd = paramInt5;
+    this.hTB = 0;
+    this.hTC = 0;
+    this.hTD = 0L;
+    this.hTE = 0L;
+    this.hTF = 0;
+    this.hTG = 0L;
+    this.hTH = 0L;
+    this.dbL = paramInt1;
+    this.hTy = paramInt2;
+    this.dwQ = paramLong;
+    this.hTz = paramInt3;
+    this.hTA = paramInt4;
+    this.hTB = 0;
+    this.hTC = 0;
+    this.hTF = paramInt5;
     this.startTime = System.currentTimeMillis();
     AppMethodBeat.o(125653);
   }
@@ -94,17 +94,17 @@ public class SnsAdClick
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(125654);
-    paramParcel.writeInt(this.dep);
-    paramParcel.writeInt(this.hsW);
-    paramParcel.writeLong(this.dze);
-    paramParcel.writeInt(this.hsX);
-    paramParcel.writeInt(this.hsY);
-    paramParcel.writeInt(this.hsZ);
-    paramParcel.writeInt(this.hta);
+    paramParcel.writeInt(this.dbL);
+    paramParcel.writeInt(this.hTy);
+    paramParcel.writeLong(this.dwQ);
+    paramParcel.writeInt(this.hTz);
+    paramParcel.writeInt(this.hTA);
+    paramParcel.writeInt(this.hTB);
+    paramParcel.writeInt(this.hTC);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.htc);
-    paramParcel.writeLong(this.hte);
-    paramParcel.writeLong(this.htf);
+    paramParcel.writeLong(this.hTE);
+    paramParcel.writeLong(this.hTG);
+    paramParcel.writeLong(this.hTH);
     AppMethodBeat.o(125654);
   }
 }

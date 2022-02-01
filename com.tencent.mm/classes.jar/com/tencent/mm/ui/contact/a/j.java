@@ -13,32 +13,32 @@ import com.tencent.mm.plugin.fts.ui.m;
 public final class j
   extends a
 {
-  a.a GZR;
-  private b GZT;
-  public boolean qVx;
+  a.a IAj;
+  private b IAl;
+  public boolean rVH;
   public int resId;
   
   public j(int paramInt)
   {
     super(1, paramInt);
     AppMethodBeat.i(102967);
-    this.GZT = new b();
-    this.GZR = new a();
+    this.IAl = new b();
+    this.IAj = new a();
     AppMethodBeat.o(102967);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aHr()
+  public final a.b aOg()
   {
-    return this.GZT;
+    return this.IAl;
   }
   
   public final class a
     extends a.a
   {
-    public TextView qHQ;
-    public ImageView rvb;
+    public TextView rAS;
+    public ImageView sDT;
     
     public a()
     {
@@ -58,9 +58,9 @@ public final class j
     {
       AppMethodBeat.i(102965);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495364, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.GZR;
-      paramViewGroup.qHQ = ((TextView)paramContext.findViewById(2131302483));
-      paramViewGroup.rvb = ((ImageView)paramContext.findViewById(2131302455));
+      paramViewGroup = (j.a)j.this.IAj;
+      paramViewGroup.rAS = ((TextView)paramContext.findViewById(2131302483));
+      paramViewGroup.sDT = ((ImageView)paramContext.findViewById(2131302455));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102965);
       return paramContext;
@@ -72,19 +72,19 @@ public final class j
       parama = (j.a)parama;
       parama1 = (j)parama1;
       paramContext = paramContext.getResources();
-      if (j.this.qVx)
+      if (j.this.rVH)
       {
-        m.a(paramContext.getString(2131762958, new Object[] { paramContext.getString(parama1.resId) }), parama.qHQ);
-        parama.rvb.setRotation(0.0F);
+        m.a(paramContext.getString(2131762958, new Object[] { paramContext.getString(parama1.resId) }), parama.rAS);
+        parama.sDT.setRotation(0.0F);
         AppMethodBeat.o(102966);
         return;
       }
-      m.a(paramContext.getString(2131762959), parama.qHQ);
-      parama.rvb.setRotation(180.0F);
+      m.a(paramContext.getString(2131762959), parama.rAS);
+      parama.sDT.setRotation(180.0F);
       AppMethodBeat.o(102966);
     }
     
-    public final boolean aHs()
+    public final boolean aOh()
     {
       return false;
     }
@@ -92,7 +92,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.j
  * JD-Core Version:    0.7.0.1
  */

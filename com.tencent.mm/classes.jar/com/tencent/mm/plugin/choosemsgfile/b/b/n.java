@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,19 +14,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public final class n
-  extends RecyclerView.v
+  extends RecyclerView.w
 {
-  public final CheckBox fti;
-  public final TextView ftj;
-  public final ImageView fuj;
-  public final ImageView fxT;
-  public final View icB;
-  public final ProgressBar iiP;
-  public final TextView lEA;
-  public final LinearLayout nMd;
-  public final MMPinProgressBtn nMh;
-  public final ImageView nMo;
-  public final View nMq;
+  public final ImageView fBA;
+  public final CheckBox fwP;
+  public final TextView fwQ;
+  public final ImageView fxQ;
+  public final TextView gAI;
+  public final View iCJ;
+  public final ProgressBar iIW;
+  public final LinearLayout opd;
+  public final MMPinProgressBtn oph;
+  public final ImageView opo;
+  public final View opq;
   public final TextView timeTv;
   public final TextView titleTv;
   
@@ -34,20 +34,20 @@ public final class n
   {
     super(paramView);
     AppMethodBeat.i(123305);
-    this.nMd = ((LinearLayout)paramView.findViewById(2131298738));
-    this.fuj = ((ImageView)paramView.findViewById(2131297008));
-    this.ftj = ((TextView)paramView.findViewById(2131302666));
+    this.opd = ((LinearLayout)paramView.findViewById(2131298738));
+    this.fxQ = ((ImageView)paramView.findViewById(2131297008));
+    this.fwQ = ((TextView)paramView.findViewById(2131302666));
     this.timeTv = ((TextView)paramView.findViewById(2131305822));
-    this.fti = ((CheckBox)paramView.findViewById(2131304502));
-    this.nMq = paramView.findViewById(2131304515);
-    this.nMo = ((ImageView)paramView.findViewById(2131299520));
-    this.fxT = ((ImageView)paramView.findViewById(2131300891));
+    this.fwP = ((CheckBox)paramView.findViewById(2131304502));
+    this.opq = paramView.findViewById(2131304515);
+    this.opo = ((ImageView)paramView.findViewById(2131299520));
+    this.fBA = ((ImageView)paramView.findViewById(2131300891));
     this.titleTv = ((TextView)paramView.findViewById(2131305948));
-    this.lEA = ((TextView)paramView.findViewById(2131299061));
-    this.nMh = ((MMPinProgressBtn)paramView.findViewById(2131299229));
-    this.iiP = ((ProgressBar)paramView.findViewById(2131301506));
-    this.icB = paramView.findViewById(2131299154);
-    this.nMd.setOnClickListener(new View.OnClickListener()
+    this.gAI = ((TextView)paramView.findViewById(2131299061));
+    this.oph = ((MMPinProgressBtn)paramView.findViewById(2131299229));
+    this.iIW = ((ProgressBar)paramView.findViewById(2131301506));
+    this.iCJ = paramView.findViewById(2131299154);
+    this.opd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -62,7 +62,7 @@ public final class n
         AppMethodBeat.o(123303);
       }
     });
-    this.nMq.setOnClickListener(new View.OnClickListener()
+    this.opq.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -73,12 +73,12 @@ public final class n
           AppMethodBeat.o(123304);
           return;
         }
-        if (!n.this.fti.isChecked()) {}
+        if (!n.this.fwP.isChecked()) {}
         for (boolean bool = true;; bool = false)
         {
           if (paramAnonymousView.isEnable())
           {
-            n.this.fti.setChecked(bool);
+            n.this.fwP.setChecked(bool);
             paramAnonymousView.a(bool, paramAnonymousView, n.this);
           }
           AppMethodBeat.o(123304);
@@ -89,7 +89,7 @@ public final class n
     AppMethodBeat.o(123305);
   }
   
-  public static RecyclerView.v o(ViewGroup paramViewGroup)
+  public static RecyclerView.w o(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(123306);
     paramViewGroup = new n(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493533, paramViewGroup, false));
@@ -99,7 +99,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.n
  * JD-Core Version:    0.7.0.1
  */

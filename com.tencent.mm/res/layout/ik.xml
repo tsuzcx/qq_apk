@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/sh" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="12.0dip" android:textColor="@color/s5" android:gravity="center" android:id="@id/a2i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="@string/aea" android:includeFontPadding="false" />
-    </LinearLayout>
+    <FrameLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/sh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0dip" android:textColor="@color/s5" android:gravity="center" android:id="@id/a2i" android:paddingLeft="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aea" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/s5" android:gravity="center" android:id="@id/hax" android:paddingLeft="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hhd" android:includeFontPadding="false" />
+    </FrameLayout>
     <FrameLayout android:id="@id/a2c" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/a2a" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </FrameLayout>

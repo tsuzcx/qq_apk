@@ -3,42 +3,42 @@ package com.tencent.mm.plugin.radar.ui;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
+import com.tencent.mm.aj.e.a;
 import com.tencent.mm.pluginsdk.ui.i;
 import com.tencent.mm.pluginsdk.ui.i.a;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarAvatarDrawable;", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable;", "Lcom/tencent/mm/modelavatar/AvatarStorage$IOnAvatarChanged;", "tag", "", "(Ljava/lang/String;)V", "isCrop", "", "(Ljava/lang/String;Z)V", "notifyChanged", "", "Factory", "plugin-radar_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarAvatarDrawable;", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable;", "Lcom/tencent/mm/modelavatar/AvatarStorage$IOnAvatarChanged;", "tag", "", "(Ljava/lang/String;)V", "isCrop", "", "(Ljava/lang/String;Z)V", "notifyChanged", "", "Factory", "plugin-radar_release"})
 public final class b
   extends i
   implements e.a
 {
   private b(String paramString)
   {
-    super(a.dfe(), paramString);
+    super(a.dsL(), paramString);
     AppMethodBeat.i(138590);
     AppMethodBeat.o(138590);
   }
   
-  public final void vZ(String paramString)
+  public final void Af(String paramString)
   {
     AppMethodBeat.i(138589);
     k.h(paramString, "tag");
-    super.vZ(paramString);
+    super.Af(paramString);
     AppMethodBeat.o(138589);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarAvatarDrawable$Factory;", "", "()V", "aLoader", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;", "getALoader", "()Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;", "setALoader", "(Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;)V", "attach", "", "iv", "Landroid/widget/ImageView;", "tag", "", "setLoader", "loader", "plugin-radar_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarAvatarDrawable$Factory;", "", "()V", "aLoader", "Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;", "getALoader", "()Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;", "setALoader", "(Lcom/tencent/mm/pluginsdk/ui/LazyBitmapDrawable$BitmapLoader;)V", "attach", "", "iv", "Landroid/widget/ImageView;", "tag", "", "setLoader", "loader", "plugin-radar_release"})
   public static final class a
   {
-    private static i.a uSX;
-    public static final a uSY;
+    private static i.a wbM;
+    public static final a wbN;
     
     static
     {
       AppMethodBeat.i(138588);
-      uSY = new a();
+      wbN = new a();
       AppMethodBeat.o(138588);
     }
     
@@ -46,7 +46,7 @@ public final class b
     {
       AppMethodBeat.i(138586);
       k.h(parama, "loader");
-      uSX = parama;
+      wbM = parama;
       AppMethodBeat.o(138586);
     }
     
@@ -66,15 +66,15 @@ public final class b
       }
     }
     
-    public static i.a dfe()
+    public static i.a dsL()
     {
-      return uSX;
+      return wbM;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.b
  * JD-Core Version:    0.7.0.1
  */

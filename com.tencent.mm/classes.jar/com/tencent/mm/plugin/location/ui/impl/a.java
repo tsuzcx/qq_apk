@@ -33,12 +33,12 @@ import com.tencent.mm.plugin.location.model.e;
 import com.tencent.mm.plugin.location.ui.RemarkUI;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
 import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.base.y;
 import java.util.ArrayList;
@@ -49,127 +49,127 @@ public abstract class a
   extends com.tencent.mm.plugin.k.a
 {
   public Activity activity;
-  protected int diY = 0;
-  protected ProgressDialog fpP = null;
-  protected String goQ = "";
-  ap handler = new ap(Looper.getMainLooper());
-  protected float qXK = 0.0F;
-  int sOx;
-  protected String sPP = "";
-  protected String sQB;
-  public String sTV = "";
-  protected boolean sTW = false;
-  public boolean sTX = false;
-  protected Addr sTY = null;
-  protected com.tencent.mm.plugin.location.ui.d sTZ;
-  protected LocationInfo sUa = new LocationInfo((byte)0);
-  protected LocationInfo sUb = new LocationInfo((byte)0);
-  protected a sUc;
-  protected boolean sUd = false;
-  protected HashMap<String, com.tencent.mm.plugin.location.ui.c> sUe = new HashMap();
-  protected com.tencent.mm.modelgeo.c sUf;
-  protected boolean sUg = false;
-  protected ArrayList<String> sUh = new ArrayList();
-  protected boolean sUi = false;
-  protected boolean sUj = false;
-  protected com.tencent.mm.plugin.location.model.c sUk = null;
-  protected com.tencent.mm.modelgeo.d sUl;
-  public c.a sUm = new c.a()
+  protected int dgt = 0;
+  protected ProgressDialog fts = null;
+  protected String gPy = "";
+  ao handler = new ao(Looper.getMainLooper());
+  protected float rYu = 0.0F;
+  int tWK;
+  protected String tYO;
+  protected String tYc = "";
+  protected float tmJ = 0.0F;
+  DisplayMetrics trx = null;
+  protected int type = 0;
+  public String uch = "";
+  protected boolean uci = false;
+  public boolean ucj = false;
+  protected Addr uck = null;
+  protected com.tencent.mm.plugin.location.ui.d ucl;
+  protected LocationInfo ucm = new LocationInfo((byte)0);
+  protected LocationInfo ucn = new LocationInfo((byte)0);
+  protected a uco;
+  protected boolean ucp = false;
+  protected HashMap<String, com.tencent.mm.plugin.location.ui.c> ucq = new HashMap();
+  protected com.tencent.mm.modelgeo.c ucr;
+  protected boolean ucs = false;
+  protected ArrayList<String> uct = new ArrayList();
+  protected boolean ucu = false;
+  protected boolean ucv = false;
+  protected com.tencent.mm.plugin.location.model.c ucw = null;
+  protected com.tencent.mm.modelgeo.d ucx;
+  public c.a ucy = new c.a()
   {
     public final void b(Addr paramAnonymousAddr)
     {
       AppMethodBeat.i(55997);
-      ad.d("MicroMsg.BaseMapUI", "onGetAddrss  %s", new Object[] { paramAnonymousAddr.toString() });
-      a.this.sTY = paramAnonymousAddr;
-      String str = paramAnonymousAddr.axP();
-      a.this.sUb.dtN = a.this.activity.getResources().getString(2131760712);
-      if ((paramAnonymousAddr.tag != null) && (paramAnonymousAddr.tag.equals(a.this.sUb.sOu))) {
-        a.this.sUb.sOy = str;
+      ac.d("MicroMsg.BaseMapUI", "onGetAddrss  %s", new Object[] { paramAnonymousAddr.toString() });
+      a.this.uck = paramAnonymousAddr;
+      String str = paramAnonymousAddr.aEH();
+      a.this.ucn.dry = a.this.activity.getResources().getString(2131760712);
+      if ((paramAnonymousAddr.tag != null) && (paramAnonymousAddr.tag.equals(a.this.ucn.tWH))) {
+        a.this.ucn.tWL = str;
       }
       for (;;)
       {
-        if ((paramAnonymousAddr.tag != null) && (a.this.sUe.containsKey(paramAnonymousAddr.tag)))
+        if ((paramAnonymousAddr.tag != null) && (a.this.ucq.containsKey(paramAnonymousAddr.tag)))
         {
-          paramAnonymousAddr = (com.tencent.mm.plugin.location.ui.c)a.this.sUe.get(paramAnonymousAddr.tag);
+          paramAnonymousAddr = (com.tencent.mm.plugin.location.ui.c)a.this.ucq.get(paramAnonymousAddr.tag);
           paramAnonymousAddr.setText(paramAnonymousAddr.getPreText() + str);
         }
         AppMethodBeat.o(55997);
         return;
-        if (!bt.isNullOrNil(paramAnonymousAddr.hdQ)) {
-          a.this.sUc.sUp.setVisibility(0);
+        if (!bs.isNullOrNil(paramAnonymousAddr.hEt)) {
+          a.this.uco.ucB.setVisibility(0);
         }
       }
     }
   };
-  protected float seQ = 0.0F;
-  DisplayMetrics sjE = null;
-  protected int type = 0;
   
   public a(Activity paramActivity)
   {
     this.activity = paramActivity;
-    this.sUf = com.tencent.mm.modelgeo.c.axQ();
+    this.ucr = com.tencent.mm.modelgeo.c.aEI();
   }
   
-  protected abstract String aHv();
+  protected abstract String aOk();
   
   protected final boolean c(LocationInfo paramLocationInfo)
   {
-    if (this.sUc.sQT.getIController() == null) {}
-    while (!e.j(paramLocationInfo.sOv, paramLocationInfo.sOw)) {
+    if (this.uco.tZg.getIController() == null) {}
+    while (!e.j(paramLocationInfo.tWI, paramLocationInfo.tWJ)) {
       return false;
     }
-    this.sUc.sQT.getIController().animateTo(paramLocationInfo.sOv, paramLocationInfo.sOw);
+    this.uco.tZg.getIController().animateTo(paramLocationInfo.tWI, paramLocationInfo.tWJ);
     return true;
   }
   
-  protected final void cKb()
+  protected final void cXG()
   {
-    if ((this.sUc.sUu == null) || (this.sUc.sUv == null)) {
+    if ((this.uco.ucG == null) || (this.uco.ucH == null)) {
       return;
     }
-    this.sUc.sUu.setText(k.b(this.sUc.sUu.getContext(), this.sQB, this.sUc.sUu.getTextSize()));
-    if ((this.sUh == null) || (this.sUh.isEmpty()))
+    this.uco.ucG.setText(k.b(this.uco.ucG.getContext(), this.tYO, this.uco.ucG.getTextSize()));
+    if ((this.uct == null) || (this.uct.isEmpty()))
     {
-      this.sUc.sUv.setText("");
+      this.uco.ucH.setText("");
       return;
     }
-    String str1 = (String)this.sUh.get(0);
+    String str1 = (String)this.uct.get(0);
     String str2 = this.activity.getResources().getString(2131759020);
     int i = 1;
-    while (i < this.sUh.size())
+    while (i < this.uct.size())
     {
-      str1 = str1 + str2 + (String)this.sUh.get(i);
+      str1 = str1 + str2 + (String)this.uct.get(i);
       i += 1;
     }
-    this.sUc.sUv.setText(k.b(this.sUc.sUv.getContext(), str1, this.sUc.sUv.getTextSize()));
+    this.uco.ucH.setText(k.b(this.uco.ucH.getContext(), str1, this.uco.ucH.getTextSize()));
   }
   
-  protected final void cKc()
+  protected final void cXH()
   {
-    this.sUc.sUp.removeAllViews();
+    this.uco.ucB.removeAllViews();
     View localView = View.inflate(this.activity, 2131494596, null);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.sUc.sUp.addView(localView, localLayoutParams);
-    this.sUc.sUu = ((TextView)localView.findViewById(2131301538));
-    this.sUc.sUu.setOnClickListener(new View.OnClickListener()
+    this.uco.ucB.addView(localView, localLayoutParams);
+    this.uco.ucG = ((TextView)localView.findViewById(2131301538));
+    this.uco.ucG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(55995);
         paramAnonymousView = new Intent(a.this.activity, RemarkUI.class);
         paramAnonymousView.putExtra("key_nullable", true);
-        paramAnonymousView.putExtra("key_value", a.this.cKd());
+        paramAnonymousView.putExtra("key_value", a.this.cXI());
         paramAnonymousView.putExtra("key_hint", a.this.getString(2131760726));
-        paramAnonymousView.putExtra("Kwebmap_locaion", a.this.sUa.sOy);
+        paramAnonymousView.putExtra("Kwebmap_locaion", a.this.ucm.tWL);
         paramAnonymousView.putExtra("kFavInfoLocalId", a.this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
         paramAnonymousView.putExtra("kRemark", a.this.activity.getIntent().getStringExtra("kRemark"));
         a.this.activity.startActivityForResult(paramAnonymousView, 4096);
         AppMethodBeat.o(55995);
       }
     });
-    this.sUc.sUv = ((TextView)localView.findViewById(2131301543));
-    this.sUc.sUv.setOnClickListener(new View.OnClickListener()
+    this.uco.ucH = ((TextView)localView.findViewById(2131301543));
+    this.uco.ucH.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -181,19 +181,19 @@ public abstract class a
         AppMethodBeat.o(55996);
       }
     });
-    cKb();
+    cXG();
   }
   
-  protected final String cKd()
+  protected final String cXI()
   {
-    return bt.by(this.sQB, "");
+    return bs.bG(this.tYO, "");
   }
   
-  protected abstract void cKe();
+  protected abstract void cXJ();
   
-  abstract void cKf();
+  abstract void cXK();
   
-  public boolean cKg()
+  public boolean cXL()
   {
     return true;
   }
@@ -202,8 +202,8 @@ public abstract class a
   {
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ad.d("MicroMsg.BaseMapUI", "dispatchKeyEvent");
-      cKe();
+      ac.d("MicroMsg.BaseMapUI", "dispatchKeyEvent");
+      cXJ();
       this.activity.finish();
       return true;
     }
@@ -244,39 +244,39 @@ public abstract class a
   
   protected final void initView()
   {
-    ad.d("MicroMsg.BaseMapUI", "initView");
-    this.sUc.sUt = ((LinearLayout)findViewById(2131300707));
-    this.sUc.sQT = ((com.tencent.mm.plugin.k.d)findViewById(2131300334));
-    this.sUc.sUo = ((FrameLayout)findViewById(2131298786));
-    this.sUc.sUp = ((RelativeLayout)findViewById(2131305886));
-    this.sUc.oPR = ((ImageView)findViewById(2131305914));
-    this.sUc.sUq = ((ImageButton)findViewById(2131305916));
-    this.sUc.sUr = findViewById(2131305917);
-    this.sUc.sUs = ((TextView)findViewById(2131296377));
-    this.sUc.titleView = ((TextView)findViewById(2131302293));
-    this.sUc.sLG = ((TextView)findViewById(2131302473));
-    this.sUc.titleView.setText(aHv());
-    this.sUc.sQT.getIController().setZoom(com.tencent.mm.plugin.location.ui.d.cJD());
+    ac.d("MicroMsg.BaseMapUI", "initView");
+    this.uco.ucF = ((LinearLayout)findViewById(2131300707));
+    this.uco.tZg = ((com.tencent.mm.plugin.k.d)findViewById(2131300334));
+    this.uco.ucA = ((FrameLayout)findViewById(2131298786));
+    this.uco.ucB = ((RelativeLayout)findViewById(2131305886));
+    this.uco.gyM = ((ImageView)findViewById(2131305914));
+    this.uco.ucC = ((ImageButton)findViewById(2131305916));
+    this.uco.ucD = findViewById(2131305917);
+    this.uco.ucE = ((TextView)findViewById(2131296377));
+    this.uco.titleView = ((TextView)findViewById(2131302293));
+    this.uco.tTl = ((TextView)findViewById(2131302473));
+    this.uco.titleView.setText(aOk());
+    this.uco.tZg.getIController().setZoom(com.tencent.mm.plugin.location.ui.d.cXi());
     if ((this.type != 0) && (this.type != 3))
     {
-      this.sUc.sUq.setVisibility(0);
-      this.sUc.sUr.setVisibility(8);
-      this.sUc.sUq.setEnabled(false);
-      this.sUc.sUq.setImageResource(2131690603);
+      this.uco.ucC.setVisibility(0);
+      this.uco.ucD.setVisibility(8);
+      this.uco.ucC.setEnabled(false);
+      this.uco.ucC.setImageResource(2131690603);
     }
-    this.sUc.sQT.setBuiltInZoomControls(false);
-    this.sUc.oPR.setOnClickListener(new View.OnClickListener()
+    this.uco.tZg.setBuiltInZoomControls(false);
+    this.uco.gyM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(55998);
-        a.this.cKe();
+        a.this.cXJ();
         a.this.hideVKB();
         a.this.activity.finish();
         AppMethodBeat.o(55998);
       }
     });
-    this.sUc.sUs.setOnClickListener(new View.OnClickListener()
+    this.uco.ucE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -284,9 +284,9 @@ public abstract class a
         AppMethodBeat.o(55999);
       }
     });
-    cKf();
-    setActionbarColor(aj.getResources().getColor(2131100705));
-    this.sUc.sQT.setMapAnchor(0.5F, 0.5F);
+    cXK();
+    setActionbarColor(ai.getResources().getColor(2131100705));
+    this.uco.tZg.setMapAnchor(0.5F, 0.5F);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -300,18 +300,18 @@ public abstract class a
         if (4096 != paramInt1) {
           break;
         }
-      } while (this.sUc.sUu == null);
+      } while (this.uco.ucG == null);
       paramIntent = paramIntent.getCharSequenceExtra("key_result");
       if (paramIntent == null) {}
       for (paramIntent = "";; paramIntent = paramIntent.toString())
       {
-        this.sQB = paramIntent;
-        cKb();
+        this.tYO = paramIntent;
+        cXG();
         return;
       }
-    } while ((4100 != paramInt1) || (this.sUc.sUv == null));
-    this.sUh = paramIntent.getStringArrayListExtra("key_fav_result_list");
-    cKb();
+    } while ((4100 != paramInt1) || (this.uco.ucH == null));
+    this.uct = paramIntent.getStringArrayListExtra("key_fav_result_list");
+    cXG();
   }
   
   public void onBackPressed()
@@ -321,40 +321,40 @@ public abstract class a
   
   public void onCreate(Bundle paramBundle)
   {
-    this.sUl = com.tencent.mm.modelgeo.d.axT();
-    Object localObject = this.sUb;
-    LocationInfo localLocationInfo = this.sUa;
-    paramBundle = ac.f(aj.eFE());
-    ad.d("MicroMsg.BaseMapUI", " initLanguage ".concat(String.valueOf(paramBundle)));
+    this.ucx = com.tencent.mm.modelgeo.d.aEL();
+    Object localObject = this.ucn;
+    LocationInfo localLocationInfo = this.ucm;
+    paramBundle = ab.f(ai.eUY());
+    ac.d("MicroMsg.BaseMapUI", " initLanguage ".concat(String.valueOf(paramBundle)));
     if (paramBundle.equals("language_default"))
     {
-      ac.a(this.activity, Locale.ENGLISH);
+      ab.a(this.activity, Locale.ENGLISH);
       paramBundle = "en";
-      localLocationInfo.sOz = paramBundle;
-      ((LocationInfo)localObject).sOz = paramBundle;
-      ad.d("MicroMsg.BaseMapUI", "sosomap " + this.sUa.sOz);
+      localLocationInfo.tWM = paramBundle;
+      ((LocationInfo)localObject).tWM = paramBundle;
+      ac.d("MicroMsg.BaseMapUI", "sosomap " + this.ucm.tWM);
       this.activity.requestWindowFeature(1);
       this.activity.setContentView(2131494411);
       paramBundle = (FrameLayout)findViewById(2131302155);
-      localObject = (SoSoMapView)d.fp(this.activity);
+      localObject = (SoSoMapView)d.fB(this.activity);
       paramBundle.addView((View)localObject);
-      if (!ai.Eq()) {
+      if (!aj.DT()) {
         break label301;
       }
       ((SoSoMapView)localObject).enableDarkMode();
     }
     for (;;)
     {
-      this.sTZ = new com.tencent.mm.plugin.location.ui.d(this.activity);
-      this.sUc = new a();
-      this.sQB = this.activity.getIntent().getStringExtra("kRemark");
-      this.sUh = this.activity.getIntent().getStringArrayListExtra("kTags");
+      this.ucl = new com.tencent.mm.plugin.location.ui.d(this.activity);
+      this.uco = new a();
+      this.tYO = this.activity.getIntent().getStringExtra("kRemark");
+      this.uct = this.activity.getIntent().getStringArrayListExtra("kTags");
       this.type = this.activity.getIntent().getIntExtra("map_view_type", 0);
-      this.sTX = this.activity.getIntent().getBooleanExtra("kIs_pick_poi", false);
-      ad.i("MicroMsg.BaseMapUI", "isPickPoi " + this.sTX);
+      this.ucj = this.activity.getIntent().getBooleanExtra("kIs_pick_poi", false);
+      ac.i("MicroMsg.BaseMapUI", "isPickPoi " + this.ucj);
       return;
-      Locale localLocale = ac.aFt(paramBundle);
-      ac.a(this.activity, localLocale);
+      Locale localLocale = ab.aKK(paramBundle);
+      ab.a(this.activity, localLocale);
       break;
       label301:
       ((SoSoMapView)localObject).disableDarkMode();
@@ -363,15 +363,15 @@ public abstract class a
   
   public void onDestroy()
   {
-    this.sUf.a(this.sUm);
-    this.sUe.clear();
-    ad.d("MicroMsg.BaseMapUI", "destroy");
-    if (this.fpP != null)
+    this.ucr.a(this.ucy);
+    this.ucq.clear();
+    ac.d("MicroMsg.BaseMapUI", "destroy");
+    if (this.fts != null)
     {
-      this.fpP.dismiss();
-      this.fpP = null;
+      this.fts.dismiss();
+      this.fts = null;
     }
-    this.sUc.sQT.destroy();
+    this.uco.tZg.destroy();
     System.gc();
   }
   
@@ -387,20 +387,20 @@ public abstract class a
   
   protected final void setActionbarColor(int paramInt)
   {
-    this.sUc.sUt.setBackgroundColor(paramInt);
-    Boolean localBoolean = Boolean.valueOf(am.XC(paramInt));
+    this.uco.ucF.setBackgroundColor(paramInt);
+    Boolean localBoolean = Boolean.valueOf(am.ZN(paramInt));
     Object localObject;
     if (localBoolean.booleanValue())
     {
-      this.sUc.oPR.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-      this.sUc.sUq.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
-      this.sUc.titleView.setTextColor(aj.getResources().getColor(2131101182));
+      this.uco.gyM.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.uco.ucC.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+      this.uco.titleView.setTextColor(ai.getResources().getColor(2131101182));
       if (Build.VERSION.SDK_INT >= 21)
       {
         localObject = this.activity.getWindow();
         ((Window)localObject).clearFlags(201326592);
         ((Window)localObject).addFlags(-2147483648);
-        if ((Build.VERSION.SDK_INT < 23) || (g.XM())) {
+        if ((Build.VERSION.SDK_INT < 23) || (g.YJ())) {
           break label237;
         }
       }
@@ -422,9 +422,9 @@ public abstract class a
       {
         ((View)localObject).setSystemUiVisibility(paramInt);
         return;
-        this.sUc.oPR.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
-        this.sUc.sUq.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
-        this.sUc.titleView.setTextColor(aj.getResources().getColor(2131100021));
+        this.uco.gyM.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+        this.uco.ucC.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
+        this.uco.titleView.setTextColor(ai.getResources().getColor(2131100021));
         break;
         label237:
         if (Build.VERSION.SDK_INT < 21) {
@@ -442,25 +442,25 @@ public abstract class a
   
   final class a
   {
-    ImageView oPR;
-    TextView sLG;
-    com.tencent.mm.plugin.k.d sQT;
-    FrameLayout sUo;
-    RelativeLayout sUp;
-    ImageButton sUq;
-    View sUr;
-    TextView sUs;
-    LinearLayout sUt;
-    TextView sUu;
-    TextView sUv;
+    ImageView gyM;
+    TextView tTl;
+    com.tencent.mm.plugin.k.d tZg;
     TextView titleView;
+    FrameLayout ucA;
+    RelativeLayout ucB;
+    ImageButton ucC;
+    View ucD;
+    TextView ucE;
+    LinearLayout ucF;
+    TextView ucG;
+    TextView ucH;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.a
  * JD-Core Version:    0.7.0.1
  */

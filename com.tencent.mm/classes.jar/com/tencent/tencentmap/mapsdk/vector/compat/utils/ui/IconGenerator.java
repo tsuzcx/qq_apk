@@ -37,14 +37,14 @@ public class IconGenerator
   
   static
   {
-    AppMethodBeat.i(190547);
+    AppMethodBeat.i(192366);
     SQUARE_TEXT_VIEW_ID = new AtomicInteger(1).get();
-    AppMethodBeat.o(190547);
+    AppMethodBeat.o(192366);
   }
   
   public IconGenerator(Context paramContext)
   {
-    AppMethodBeat.i(190533);
+    AppMethodBeat.i(192352);
     this.g = 0.5F;
     this.h = 1.0F;
     this.a = paramContext;
@@ -52,29 +52,29 @@ public class IconGenerator
     this.c = ((RotationLayout)this.b.getChildAt(0));
     this.e = this.d;
     setStyle(1);
-    AppMethodBeat.o(190533);
+    AppMethodBeat.o(192352);
   }
   
   private float a(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(190541);
+    AppMethodBeat.i(192360);
     switch (this.f)
     {
     default: 
       IllegalStateException localIllegalStateException = new IllegalStateException();
-      AppMethodBeat.o(190541);
+      AppMethodBeat.o(192360);
       throw localIllegalStateException;
     case 0: 
-      AppMethodBeat.o(190541);
+      AppMethodBeat.o(192360);
       return paramFloat1;
     case 1: 
-      AppMethodBeat.o(190541);
+      AppMethodBeat.o(192360);
       return 1.0F - paramFloat2;
     case 2: 
-      AppMethodBeat.o(190541);
+      AppMethodBeat.o(192360);
       return 1.0F - paramFloat1;
     }
-    AppMethodBeat.o(190541);
+    AppMethodBeat.o(192360);
     return paramFloat2;
   }
   
@@ -90,7 +90,7 @@ public class IconGenerator
   
   private ViewGroup a()
   {
-    AppMethodBeat.i(190534);
+    AppMethodBeat.i(192353);
     LinearLayout localLinearLayout = new LinearLayout(this.a);
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     localLinearLayout.setOrientation(1);
@@ -105,29 +105,29 @@ public class IconGenerator
     this.d.setId(SQUARE_TEXT_VIEW_ID);
     this.c.addView(this.d);
     localLinearLayout.addView(this.c);
-    AppMethodBeat.o(190534);
+    AppMethodBeat.o(192353);
     return localLinearLayout;
   }
   
   public float getAnchorU()
   {
-    AppMethodBeat.i(190539);
+    AppMethodBeat.i(192358);
     float f1 = a(this.g, this.h);
-    AppMethodBeat.o(190539);
+    AppMethodBeat.o(192358);
     return f1;
   }
   
   public float getAnchorV()
   {
-    AppMethodBeat.i(190540);
+    AppMethodBeat.i(192359);
     float f1 = a(this.h, this.g);
-    AppMethodBeat.o(190540);
+    AppMethodBeat.o(192359);
     return f1;
   }
   
   public Bitmap makeIcon()
   {
-    AppMethodBeat.i(190536);
+    AppMethodBeat.i(192355);
     int i = View.MeasureSpec.makeMeasureSpec(0, 0);
     this.b.measure(i, i);
     int j = this.b.getMeasuredWidth();
@@ -152,7 +152,7 @@ public class IconGenerator
     for (;;)
     {
       this.b.draw(localCanvas);
-      AppMethodBeat.o(190536);
+      AppMethodBeat.o(192355);
       return localBitmap;
       label149:
       if (this.f == 2)
@@ -169,48 +169,48 @@ public class IconGenerator
   
   public Bitmap makeIcon(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(190535);
+    AppMethodBeat.i(192354);
     if (this.d != null) {
       this.d.setText(paramCharSequence);
     }
     paramCharSequence = makeIcon();
-    AppMethodBeat.o(190535);
+    AppMethodBeat.o(192354);
     return paramCharSequence;
   }
   
   public void setBackground(Drawable paramDrawable)
   {
-    AppMethodBeat.i(190545);
+    AppMethodBeat.i(192364);
     this.b.setBackgroundDrawable(paramDrawable);
     if (paramDrawable != null)
     {
       Rect localRect = new Rect();
       paramDrawable.getPadding(localRect);
       this.b.setPadding(localRect.left, localRect.top, localRect.right, localRect.bottom);
-      AppMethodBeat.o(190545);
+      AppMethodBeat.o(192364);
       return;
     }
     this.b.setPadding(0, 0, 0, 0);
-    AppMethodBeat.o(190545);
+    AppMethodBeat.o(192364);
   }
   
   public void setContentPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(190546);
+    AppMethodBeat.i(192365);
     this.e.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(190546);
+    AppMethodBeat.o(192365);
   }
   
   public void setContentRotation(int paramInt)
   {
-    AppMethodBeat.i(190538);
+    AppMethodBeat.i(192357);
     this.c.setViewRotation(paramInt);
-    AppMethodBeat.o(190538);
+    AppMethodBeat.o(192357);
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(190537);
+    AppMethodBeat.i(192356);
     this.c.removeAllViews();
     this.c.addView(paramView);
     this.e = paramView;
@@ -219,7 +219,7 @@ public class IconGenerator
     for (paramView = (TextView)paramView;; paramView = null)
     {
       this.d = paramView;
-      AppMethodBeat.o(190537);
+      AppMethodBeat.o(192356);
       return;
     }
   }
@@ -231,42 +231,42 @@ public class IconGenerator
   
   public void setStyle(int paramInt)
   {
-    AppMethodBeat.i(190544);
+    AppMethodBeat.i(192363);
     setTextAppearance(this.a, a(paramInt));
     if (paramInt == 0)
     {
       setTextAppearance(16973892, -8421505, 14.0F, 0);
-      AppMethodBeat.o(190544);
+      AppMethodBeat.o(192363);
       return;
     }
     if (paramInt == 1) {
       setTextAppearance(16973892, -1118482, 14.0F, 0);
     }
-    AppMethodBeat.o(190544);
+    AppMethodBeat.o(192363);
   }
   
   public void setTextAppearance(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
   {
-    AppMethodBeat.i(190543);
+    AppMethodBeat.i(192362);
     setTextAppearance(this.a, paramInt1);
     this.d.setTextColor(paramInt2);
     this.d.setTextSize(paramFloat);
     this.d.setTypeface(this.d.getTypeface(), paramInt3);
-    AppMethodBeat.o(190543);
+    AppMethodBeat.o(192362);
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(190542);
+    AppMethodBeat.i(192361);
     if (this.d != null) {
       this.d.setTextAppearance(paramContext, paramInt);
     }
-    AppMethodBeat.o(190542);
+    AppMethodBeat.o(192361);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.ui.IconGenerator
  * JD-Core Version:    0.7.0.1
  */

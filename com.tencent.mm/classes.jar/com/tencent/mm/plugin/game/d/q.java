@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Desc;
   public String Title;
-  public String saj;
+  public String tic;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,8 +21,8 @@ public final class q
       if (this.Desc != null) {
         paramVarArgs.d(2, this.Desc);
       }
-      if (this.saj != null) {
-        paramVarArgs.d(3, this.saj);
+      if (this.tic != null) {
+        paramVarArgs.d(3, this.tic);
       }
       AppMethodBeat.o(41719);
       return 0;
@@ -40,17 +40,17 @@ public final class q
         paramInt = i + f.a.a.b.b.a.e(2, this.Desc);
       }
       i = paramInt;
-      if (this.saj != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.saj);
+      if (this.tic != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tic);
       }
       AppMethodBeat.o(41719);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41719);
@@ -66,15 +66,15 @@ public final class q
           AppMethodBeat.o(41719);
           return -1;
         case 1: 
-          localq.Title = locala.KhF.readString();
+          localq.Title = locala.LVo.readString();
           AppMethodBeat.o(41719);
           return 0;
         case 2: 
-          localq.Desc = locala.KhF.readString();
+          localq.Desc = locala.LVo.readString();
           AppMethodBeat.o(41719);
           return 0;
         }
-        localq.saj = locala.KhF.readString();
+        localq.tic = locala.LVo.readString();
         AppMethodBeat.o(41719);
         return 0;
       }
@@ -85,7 +85,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.q
  * JD-Core Version:    0.7.0.1
  */

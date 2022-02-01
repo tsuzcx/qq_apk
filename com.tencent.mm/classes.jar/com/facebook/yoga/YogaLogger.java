@@ -2,7 +2,7 @@ package com.facebook.yoga;
 
 public abstract interface YogaLogger
 {
-  public abstract void log(YogaNode paramYogaNode, YogaLogLevel paramYogaLogLevel, String paramString);
+  public abstract void log(YogaLogLevel paramYogaLogLevel, String paramString);
 }
 
 

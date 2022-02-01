@@ -21,9 +21,9 @@ public class ConfettiView
   extends View
   implements View.OnLayoutChangeListener
 {
-  List<b> hOT;
-  private boolean hPD;
-  private b hPE;
+  private boolean ipY;
+  private b ipZ;
+  List<b> ipo;
   boolean terminated;
   
   public ConfettiView(Context paramContext, AttributeSet paramAttributeSet)
@@ -31,7 +31,7 @@ public class ConfettiView
     super(paramContext, paramAttributeSet);
   }
   
-  public static ConfettiView cK(Context paramContext)
+  public static ConfettiView cT(Context paramContext)
   {
     AppMethodBeat.i(151362);
     ConfettiView localConfettiView = new ConfettiView(paramContext, null);
@@ -43,7 +43,7 @@ public class ConfettiView
     return localConfettiView;
   }
   
-  public final void aFE()
+  public final void aMv()
   {
     AppMethodBeat.i(151363);
     if (!this.terminated)
@@ -61,8 +61,8 @@ public class ConfettiView
     ViewGroup localViewGroup = (ViewGroup)getParent();
     localViewGroup.removeOnLayoutChangeListener(this);
     localViewGroup.addOnLayoutChangeListener(this);
-    if (this.hOT == null) {
-      aFE();
+    if (this.ipo == null) {
+      aMv();
     }
     AppMethodBeat.o(151364);
   }
@@ -74,20 +74,20 @@ public class ConfettiView
     if (!this.terminated)
     {
       paramCanvas.save();
-      Iterator localIterator = this.hOT.iterator();
+      Iterator localIterator = this.ipo.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
-        if (localb.hQa)
+        if (localb.iqv)
         {
-          float f1 = localb.hQb;
-          float f2 = localb.hQd;
-          float f3 = localb.hQc;
-          localb.a(paramCanvas, f2 + f1, localb.hQe + f3, localb.hPY, localb.hPV);
+          float f1 = localb.iqw;
+          float f2 = localb.iqy;
+          float f3 = localb.iqx;
+          localb.a(paramCanvas, f2 + f1, localb.iqz + f3, localb.iqt, localb.iqq);
         }
-        else if ((localb.hPZ) && (!localb.terminated))
+        else if ((localb.iqu) && (!localb.terminated))
         {
-          localb.a(paramCanvas, localb.hPW, localb.hPX, localb.hPY, localb.hPV);
+          localb.a(paramCanvas, localb.iqr, localb.iqs, localb.iqt, localb.iqq);
         }
       }
       paramCanvas.restore();
@@ -115,7 +115,7 @@ public class ConfettiView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(151367);
-    if (this.hPD) {}
+    if (this.ipY) {}
     int i;
     switch (paramMotionEvent.getAction())
     {
@@ -129,7 +129,7 @@ public class ConfettiView
       }
       AppMethodBeat.o(151367);
       return true;
-      Object localObject = this.hOT.iterator();
+      Object localObject = this.ipo.iterator();
       label261:
       label265:
       for (;;)
@@ -140,27 +140,27 @@ public class ConfettiView
         b localb = (b)((Iterator)localObject).next();
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        if ((localb.hPW <= f1) && (f1 <= localb.hPW + localb.getWidth()) && (localb.hPX <= f2) && (f2 <= localb.hPX + localb.getHeight()))
+        if ((localb.iqr <= f1) && (f1 <= localb.iqr + localb.getWidth()) && (localb.iqs <= f2) && (f2 <= localb.iqs + localb.getHeight()))
         {
           i = 1;
           label171:
           if (i == 0) {
             break label261;
           }
-          localb.hQa = true;
-          localb.hQb = f1;
-          localb.hQc = f2;
-          localb.hQd = (localb.hPW - f1);
-          localb.hQe = (localb.hPX - f2);
-          localb.lr = VelocityTracker.obtain();
-          localb.lr.addMovement(paramMotionEvent);
+          localb.iqv = true;
+          localb.iqw = f1;
+          localb.iqx = f2;
+          localb.iqy = (localb.iqr - f1);
+          localb.iqz = (localb.iqs - f2);
+          localb.mq = VelocityTracker.obtain();
+          localb.mq.addMovement(paramMotionEvent);
         }
         for (i = 1;; i = 0)
         {
           if (i == 0) {
             break label265;
           }
-          this.hPE = localb;
+          this.ipZ = localb;
           i = 1;
           break;
           i = 0;
@@ -170,31 +170,31 @@ public class ConfettiView
       label267:
       i = 0;
       continue;
-      if (this.hPE == null) {
+      if (this.ipZ == null) {
         break;
       }
-      localObject = this.hPE;
-      ((b)localObject).hQb = paramMotionEvent.getX();
-      ((b)localObject).hQc = paramMotionEvent.getY();
-      ((b)localObject).lr.addMovement(paramMotionEvent);
+      localObject = this.ipZ;
+      ((b)localObject).iqw = paramMotionEvent.getX();
+      ((b)localObject).iqx = paramMotionEvent.getY();
+      ((b)localObject).mq.addMovement(paramMotionEvent);
       i = 1;
       continue;
-      if (this.hPE == null) {
+      if (this.ipZ == null) {
         break;
       }
-      localObject = this.hPE;
-      ((b)localObject).lr.addMovement(paramMotionEvent);
-      ((b)localObject).lr.computeCurrentVelocity(1);
-      ((b)localObject).hPK = -1L;
-      ((b)localObject).hPL = (paramMotionEvent.getX() + ((b)localObject).hQd);
-      ((b)localObject).hPM = (paramMotionEvent.getY() + ((b)localObject).hQe);
-      ((b)localObject).hPN = ((b)localObject).lr.getXVelocity();
-      ((b)localObject).hPO = ((b)localObject).lr.getYVelocity();
-      ((b)localObject).hPR = ((b)localObject).hPY;
-      ((b)localObject).lr.recycle();
-      ((b)localObject).k(((b)localObject).hPa);
-      ((b)localObject).hQa = false;
-      this.hPE = null;
+      localObject = this.ipZ;
+      ((b)localObject).mq.addMovement(paramMotionEvent);
+      ((b)localObject).mq.computeCurrentVelocity(1);
+      ((b)localObject).iqf = -1L;
+      ((b)localObject).iqg = (paramMotionEvent.getX() + ((b)localObject).iqy);
+      ((b)localObject).iqh = (paramMotionEvent.getY() + ((b)localObject).iqz);
+      ((b)localObject).iqi = ((b)localObject).mq.getXVelocity();
+      ((b)localObject).iqj = ((b)localObject).mq.getYVelocity();
+      ((b)localObject).iqm = ((b)localObject).iqt;
+      ((b)localObject).mq.recycle();
+      ((b)localObject).j(((b)localObject).ipv);
+      ((b)localObject).iqv = false;
+      this.ipZ = null;
       i = 1;
     }
     label459:
@@ -204,7 +204,7 @@ public class ConfettiView
   
   public void setTouchEnabled(boolean paramBoolean)
   {
-    this.hPD = paramBoolean;
+    this.ipY = paramBoolean;
   }
 }
 

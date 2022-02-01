@@ -1,64 +1,48 @@
 package com.tencent.mm.plugin.appbrand.jsapi.w;
 
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.bs;
+import org.json.JSONObject;
 
-public enum b
+public final class b
 {
-  public final String kmy;
-  
-  static
+  public static void a(View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(147307);
-    kmu = new b("UPDATING", 0, "updating");
-    kmv = new b("NO_UPDATE", 1, "noUpdate");
-    kmw = new b("UPDATE_READY", 2, "updateReady");
-    kmx = new b("UPDATE_FAILED", 3, "updateFailed");
-    kmz = new b[] { kmu, kmv, kmw, kmx };
-    AppMethodBeat.o(147307);
-  }
-  
-  private b(String paramString)
-  {
-    this.kmy = paramString;
-  }
-  
-  public static b Jb(String paramString)
-  {
-    AppMethodBeat.i(147306);
-    b[] arrayOfb = values();
-    int j = arrayOfb.length;
-    int i = 0;
-    while (i < j)
-    {
-      b localb = arrayOfb[i];
-      if (localb.kmy.equals(paramString))
+    AppMethodBeat.i(140677);
+    if ((paramView != null) && (paramJSONObject != null) && (paramJSONObject.has("accessibility")) && (paramJSONObject.optBoolean("accessibility", false))) {
+      paramView.setAccessibilityDelegate(new View.AccessibilityDelegate()
       {
-        AppMethodBeat.o(147306);
-        return localb;
-      }
-      i += 1;
+        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+        {
+          AppMethodBeat.i(140676);
+          super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+          if (!bs.isNullOrNil(this.kWG)) {
+            paramAnonymousAccessibilityNodeInfo.setContentDescription(this.kWG);
+          }
+          if ((!bs.isNullOrNil(this.kWH)) && (this.kWH.equalsIgnoreCase("button")))
+          {
+            paramAnonymousAccessibilityNodeInfo.setClickable(true);
+            paramAnonymousAccessibilityNodeInfo.setClassName(Button.class.getName());
+            AppMethodBeat.o(140676);
+            return;
+          }
+          paramAnonymousAccessibilityNodeInfo.setClickable(false);
+          paramAnonymousAccessibilityNodeInfo.setClassName(TextView.class.getName());
+          AppMethodBeat.o(140676);
+        }
+      });
     }
-    paramString = new IllegalArgumentException(String.format("Invalid name %s", new Object[] { paramString }));
-    AppMethodBeat.o(147306);
-    throw paramString;
-  }
-  
-  public final String toString()
-  {
-    return this.kmy;
-  }
-  
-  public static final class a
-    extends p
-  {
-    private static final int CTRL_INDEX = -2;
-    private static final String NAME = "onUpdateStatusChange";
+    AppMethodBeat.o(140677);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w.b
  * JD-Core Version:    0.7.0.1
  */

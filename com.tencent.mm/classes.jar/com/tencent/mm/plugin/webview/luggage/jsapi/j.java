@@ -13,12 +13,12 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.luggage.d.a<Lcom.tencent.mm.plugin.webview.luggage.f;>.a;
 import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKVideoItem;
 import com.tencent.mm.plugin.webview.model.aw;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.base.n.d;
@@ -30,14 +30,14 @@ import org.json.JSONObject;
 public class j
   extends bo<f>
 {
-  private a<f>.a AVj;
+  private a<f>.a Cnw;
   private MMActivity activity;
-  private MMActivity.a juO;
+  private MMActivity.a jVj;
   
   public j()
   {
     AppMethodBeat.i(78532);
-    this.juO = new MMActivity.a()
+    this.jVj = new MMActivity.a()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
@@ -58,7 +58,7 @@ public class j
           return;
           if (paramAnonymousIntent == null)
           {
-            ad.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA bundle is null,");
+            ac.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA bundle is null,");
             j.a(j.this, "fail");
             AppMethodBeat.o(78531);
             return;
@@ -69,21 +69,21 @@ public class j
           }
           localObject1 = paramAnonymousIntent.getStringExtra("key_pick_local_media_local_id");
           paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_pick_local_media_thumb_local_id");
-          ad.i("MicroMsg.JsApiChooseMedia", "video localId:%s", new Object[] { localObject1 });
-          ad.i("MicroMsg.JsApiChooseMedia", "video thumbLocalId:%s", new Object[] { paramAnonymousIntent });
-          if (bt.isNullOrNil((String)localObject1))
+          ac.i("MicroMsg.JsApiChooseMedia", "video localId:%s", new Object[] { localObject1 });
+          ac.i("MicroMsg.JsApiChooseMedia", "video thumbLocalId:%s", new Object[] { paramAnonymousIntent });
+          if (bs.isNullOrNil((String)localObject1))
           {
-            ad.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA video localId is null");
+            ac.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA video localId is null");
             j.a(j.this, "fail");
             AppMethodBeat.o(78531);
             return;
           }
-          Object localObject2 = com.tencent.mm.plugin.webview.luggage.c.b.awq((String)localObject1);
+          Object localObject2 = com.tencent.mm.plugin.webview.luggage.c.b.aBI((String)localObject1);
           if ((localObject2 != null) && ((localObject2 instanceof WebViewJSSDKVideoItem)))
           {
             localObject2 = (WebViewJSSDKVideoItem)localObject2;
             paramAnonymousIntent = aw.b((String)localObject1, paramAnonymousIntent, ((WebViewJSSDKVideoItem)localObject2).duration, ((WebViewJSSDKVideoItem)localObject2).height, ((WebViewJSSDKVideoItem)localObject2).width, ((WebViewJSSDKVideoItem)localObject2).size);
-            ad.i("MicroMsg.JsApiChooseMedia", "after parse to json data : %s", new Object[] { paramAnonymousIntent });
+            ac.i("MicroMsg.JsApiChooseMedia", "after parse to json data : %s", new Object[] { paramAnonymousIntent });
             localObject1 = new HashMap();
             ((HashMap)localObject1).put("type", Integer.valueOf(1));
             ((HashMap)localObject1).put("localIds", paramAnonymousIntent);
@@ -91,15 +91,15 @@ public class j
             AppMethodBeat.o(78531);
             return;
           }
-          ad.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA nor the videoitem");
+          ac.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA nor the videoitem");
         }
         if (paramAnonymousInt1 == 2)
         {
           paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_pick_local_media_local_ids");
-          ad.i("MicroMsg.JsApiChooseMedia", "chooseMedia localIds:%s", new Object[] { paramAnonymousIntent });
-          if (bt.isNullOrNil(paramAnonymousIntent))
+          ac.i("MicroMsg.JsApiChooseMedia", "chooseMedia localIds:%s", new Object[] { paramAnonymousIntent });
+          if (bs.isNullOrNil(paramAnonymousIntent))
           {
-            ad.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA image localIds is null");
+            ac.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult REQUEST_CHOOSE_MEDIA image localIds is null");
             j.a(j.this, "fail");
             AppMethodBeat.o(78531);
             return;
@@ -111,7 +111,7 @@ public class j
           AppMethodBeat.o(78531);
           return;
         }
-        ad.e("MicroMsg.JsApiChooseMedia", "type:%d is error", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+        ac.e("MicroMsg.JsApiChooseMedia", "type:%d is error", new Object[] { Integer.valueOf(paramAnonymousInt1) });
         j.a(j.this, "fail");
         AppMethodBeat.o(78531);
       }
@@ -119,36 +119,36 @@ public class j
     AppMethodBeat.o(78532);
   }
   
-  private void aR(Intent paramIntent)
+  private void aT(Intent paramIntent)
   {
     AppMethodBeat.i(78535);
-    ad.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromAlbum");
+    ac.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromAlbum");
     paramIntent.putExtra("key_pick_local_pic_capture", 4096);
-    this.activity.mmSetOnActivityResultCallback(this.juO);
+    this.activity.mmSetOnActivityResultCallback(this.jVj);
     d.a(this.activity, "webview", ".ui.tools.OpenFileChooserUI", paramIntent, 0xFFFF & hashCode(), false);
     AppMethodBeat.o(78535);
   }
   
-  private void c(String paramString, HashMap<String, Object> paramHashMap)
+  private void d(String paramString, HashMap<String, Object> paramHashMap)
   {
     AppMethodBeat.i(78536);
-    if (this.AVj != null) {
-      this.AVj.c(paramString, paramHashMap);
+    if (this.Cnw != null) {
+      this.Cnw.c(paramString, paramHashMap);
     }
-    this.AVj = null;
+    this.Cnw = null;
     this.activity = null;
     AppMethodBeat.o(78536);
   }
   
-  private void d(String paramString, Intent paramIntent)
+  private void e(String paramString, Intent paramIntent)
   {
     AppMethodBeat.i(78534);
-    ad.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromCamera");
+    ac.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromCamera");
     if (paramString.equals("front")) {}
     for (int i = 16;; i = 256)
     {
       paramIntent.putExtra("key_pick_local_pic_capture", i);
-      this.activity.mmSetOnActivityResultCallback(this.juO);
+      this.activity.mmSetOnActivityResultCallback(this.jVj);
       d.a(this.activity, "webview", ".ui.tools.OpenFileChooserUI", paramIntent, 0xFFFF & hashCode(), false);
       AppMethodBeat.o(78534);
       return;
@@ -160,33 +160,33 @@ public class j
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78533);
-    ad.i("MicroMsg.JsApiChooseMedia", "invoke");
-    this.activity = ((MMActivity)((f)parama.bZU).mContext);
-    this.AVj = parama;
+    ac.i("MicroMsg.JsApiChooseMedia", "invoke");
+    this.activity = ((MMActivity)((f)parama.bWR).mContext);
+    this.Cnw = parama;
     if (this.activity == null)
     {
-      c("fail", null);
+      d("fail", null);
       AppMethodBeat.o(78533);
       return;
     }
-    Object localObject = parama.bZV.bZb;
+    Object localObject = parama.bWS.bVY;
     boolean bool1 = com.tencent.mm.pluginsdk.permission.b.a(this.activity, "android.permission.CAMERA", 119, "", "");
-    ad.i("MicroMsg.JsApiChooseMedia", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool1) });
+    ac.i("MicroMsg.JsApiChooseMedia", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool1) });
     boolean bool2 = com.tencent.mm.pluginsdk.permission.b.a(this.activity, "android.permission.RECORD_AUDIO", 120, "", "");
-    ad.i("MicroMsg.JsApiChooseMedia", " checkPermission checkMicroPhone[%b]", new Object[] { Boolean.valueOf(bool2) });
+    ac.i("MicroMsg.JsApiChooseMedia", " checkPermission checkMicroPhone[%b]", new Object[] { Boolean.valueOf(bool2) });
     if ((!bool2) || (!bool1))
     {
-      c("no_user_permission", null);
+      d("no_user_permission", null);
       AppMethodBeat.o(78533);
       return;
     }
-    String str1 = bt.nullAsNil(((JSONObject)localObject).optString("sourceType"));
+    String str1 = bs.nullAsNil(((JSONObject)localObject).optString("sourceType"));
     parama = ((JSONObject)localObject).optString("mediaType", "");
     int j = Math.min(((JSONObject)localObject).optInt("maxDuration", 10), 10);
     final String str2 = ((JSONObject)localObject).optString("camera", "");
     int i = ((JSONObject)localObject).optInt("count", 1);
     String str3 = ((JSONObject)localObject).optString("sizeType", "");
-    ad.i("MicroMsg.JsApiChooseMedia", "doChooseMedia sourceType:%s, mediaType:%s, maxDuration:%d, camera:%s, count:%d, sizeType:%s", new Object[] { str1, parama, Integer.valueOf(j), str2, Integer.valueOf(i), str3 });
+    ac.i("MicroMsg.JsApiChooseMedia", "doChooseMedia sourceType:%s, mediaType:%s, maxDuration:%d, camera:%s, count:%d, sizeType:%s", new Object[] { str1, parama, Integer.valueOf(j), str2, Integer.valueOf(i), str3 });
     final Intent localIntent = new Intent();
     localIntent.putExtra("key_pick_local_pic_count", i);
     i = j;
@@ -216,7 +216,7 @@ public class j
         }
       }
       localIntent.putExtra("key_pick_local_pic_send_raw", parama);
-      if (!bt.isNullOrNil(str1)) {
+      if (!bs.isNullOrNil(str1)) {
         break label574;
       }
     }
@@ -271,23 +271,23 @@ public class j
       }
       if (parama.contains("album"))
       {
-        aR(localIntent);
+        aT(localIntent);
         AppMethodBeat.o(78533);
         return;
       }
       if (parama.contains("camera"))
       {
-        d(str2, localIntent);
+        e(str2, localIntent);
         AppMethodBeat.o(78533);
         return;
       }
-      c("sourceType_error", null);
+      d("sourceType_error", null);
       AppMethodBeat.o(78533);
       return;
     }
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

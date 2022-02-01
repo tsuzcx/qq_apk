@@ -13,23 +13,23 @@ import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.jsapi.ax;
-import com.tencent.mm.protocal.protobuf.bpp;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import org.json.JSONObject;
 
 public final class g
   extends a
 {
-  private a.b rPQ;
+  private a.b sXH;
   
   public g()
   {
     super(4);
     AppMethodBeat.i(83111);
-    this.rPQ = new a.b()
+    this.sXH = new a.b()
     {
-      public final void aXO()
+      public final void beL()
       {
         AppMethodBeat.i(83110);
         FavUrlTask localFavUrlTask = new FavUrlTask();
@@ -41,44 +41,44 @@ public final class g
     AppMethodBeat.o(83111);
   }
   
-  public final void a(Context paramContext, f paramf, bpp parambpp)
+  public final void a(Context paramContext, f paramf, bug parambug)
   {
     AppMethodBeat.i(83112);
-    parambpp = new Bundle();
-    parambpp.putLong("msg_id", paramf.mParams.getLong("msg_id", -9223372036854775808L));
-    parambpp.putString("sns_local_id", paramf.mParams.getString("sns_local_id"));
-    parambpp.putInt("news_svr_id", paramf.mParams.getInt("news_svr_id", 0));
-    parambpp.putString("news_svr_tweetid", paramf.mParams.getString("news_svr_tweetid"));
-    parambpp.putInt("message_index", paramf.mParams.getInt("message_index", 0));
+    parambug = new Bundle();
+    parambug.putLong("msg_id", paramf.mParams.getLong("msg_id", -9223372036854775808L));
+    parambug.putString("sns_local_id", paramf.mParams.getString("sns_local_id"));
+    parambug.putInt("news_svr_id", paramf.mParams.getInt("news_svr_id", 0));
+    parambug.putString("news_svr_tweetid", paramf.mParams.getString("news_svr_tweetid"));
+    parambug.putInt("message_index", paramf.mParams.getInt("message_index", 0));
     Object localObject = paramf.getUrl();
-    String str = paramf.bEx();
-    parambpp.putString("rawUrl", str);
-    if ((!bt.isNullOrNil(str)) && (str.endsWith("#rd")))
+    String str = paramf.bLL();
+    parambug.putString("rawUrl", str);
+    if ((!bs.isNullOrNil(str)) && (str.endsWith("#rd")))
     {
       str = str.substring(0, str.length() - 3);
-      if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      if ((!bs.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
-        parambpp.putString("rawUrl", (String)localObject);
-        parambpp.putLong("msg_id", -9223372036854775808L);
+        parambug.putString("rawUrl", (String)localObject);
+        parambug.putLong("msg_id", -9223372036854775808L);
       }
     }
     for (;;)
     {
-      parambpp.putString("preChatName", paramf.mParams.getString("preChatName"));
-      parambpp.putInt("preMsgIndex", paramf.mParams.getInt("preMsgIndex", 0));
-      parambpp.putString("prePublishId", paramf.mParams.getString("prePublishId"));
-      parambpp.putString("preUsername", paramf.mParams.getString("preUsername"));
+      parambug.putString("preChatName", paramf.mParams.getString("preChatName"));
+      parambug.putInt("preMsgIndex", paramf.mParams.getInt("preMsgIndex", 0));
+      parambug.putString("prePublishId", paramf.mParams.getString("prePublishId"));
+      parambug.putString("preUsername", paramf.mParams.getString("preUsername"));
       localObject = new FavUrlTask();
       ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).dow = parambpp;
+      ((FavUrlTask)localObject).dmf = parambug;
       AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).ASK) {
+      if (!((FavUrlTask)localObject).CkX) {
         break;
       }
-      ax.SL(1);
-      paramf.caI.a(new c()
+      ax.UT(1);
+      paramf.bXF.a(new c()
       {
-        public final JSONObject AM()
+        public final JSONObject Aq()
         {
           return null;
         }
@@ -90,14 +90,14 @@ public final class g
       });
       AppMethodBeat.o(83112);
       return;
-      if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      if ((!bs.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
-        parambpp.putString("rawUrl", (String)localObject);
-        parambpp.putLong("msg_id", -9223372036854775808L);
-        parambpp.putString("sns_local_id", "");
+        parambug.putString("rawUrl", (String)localObject);
+        parambug.putLong("msg_id", -9223372036854775808L);
+        parambug.putString("sns_local_id", "");
       }
     }
-    e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.rPQ);
+    e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.sXH);
     AppMethodBeat.o(83112);
   }
 }

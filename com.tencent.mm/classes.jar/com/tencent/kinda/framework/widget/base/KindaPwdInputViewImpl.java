@@ -6,8 +6,8 @@ import com.tencent.kinda.gen.KPwdInputViewOnEndEnterPasswordCallback;
 import com.tencent.kinda.gen.KPwdInputViewOnPasswordChangeCallback;
 import com.tencent.kinda.gen.PwdViewStyle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
@@ -28,7 +28,7 @@ public class KindaPwdInputViewImpl
     AppMethodBeat.i(18933);
     this.pwdView = new EditHintPasswdView(paramContext);
     if (this.pwdStyle == PwdViewStyle.CHECKPWDSTYLE) {
-      this.pwdView.abA(1);
+      this.pwdView.adT(1);
     }
     for (;;)
     {
@@ -42,7 +42,7 @@ public class KindaPwdInputViewImpl
         {
           AppMethodBeat.i(18931);
           if (KindaPwdInputViewImpl.this.pwdView.mEditText != null) {
-            TenpaySecureEditText.setSalt(e.fkB());
+            TenpaySecureEditText.setSalt(e.fAR());
           }
           if (paramAnonymousBoolean)
           {
@@ -65,7 +65,7 @@ public class KindaPwdInputViewImpl
       paramContext = this.pwdView;
       AppMethodBeat.o(18933);
       return paramContext;
-      this.pwdView.abA(0);
+      this.pwdView.adT(0);
     }
   }
   
@@ -105,7 +105,7 @@ public class KindaPwdInputViewImpl
   {
     AppMethodBeat.i(18935);
     if (paramBoolean) {
-      this.pwdView.dga();
+      this.pwdView.dtH();
     }
     AppMethodBeat.o(18935);
   }
@@ -114,7 +114,7 @@ public class KindaPwdInputViewImpl
   {
     AppMethodBeat.i(18934);
     if ((paramBoolean) && (this.pwdView.getVisibility() == 0) && (!this.pwdView.hasFocus())) {
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public void run()
         {
@@ -145,17 +145,17 @@ public class KindaPwdInputViewImpl
   
   public void setPwdStyle(PwdViewStyle paramPwdViewStyle)
   {
-    AppMethodBeat.i(186441);
-    ad.d("base_MMKView", "set pwd: %s", new Object[] { paramPwdViewStyle });
+    AppMethodBeat.i(207403);
+    ac.d("base_MMKView", "set pwd: %s", new Object[] { paramPwdViewStyle });
     this.pwdStyle = paramPwdViewStyle;
     if (this.pwdStyle == PwdViewStyle.CHECKPWDSTYLE)
     {
-      this.pwdView.abA(1);
-      AppMethodBeat.o(186441);
+      this.pwdView.adT(1);
+      AppMethodBeat.o(207403);
       return;
     }
-    this.pwdView.abA(0);
-    AppMethodBeat.o(186441);
+    this.pwdView.adT(0);
+    AppMethodBeat.o(207403);
   }
   
   public void setTextLength(long paramLong) {}

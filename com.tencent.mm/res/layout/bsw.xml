@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/hlz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.WxImageView android:background="@raw/live_anchor_top_shadow" android:layout_width="fill_parent" android:layout_height="@dimen/am7" android:layout_alignParentTop="true" />
-    <com.tencent.mm.ui.base.WxImageView android:background="@raw/live_anchor_bottom_shadow" android:layout_width="fill_parent" android:layout_height="@dimen/am7" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/hmf" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/bq" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/hmh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@id/hmf" />
 </RelativeLayout>

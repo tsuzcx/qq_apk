@@ -13,9 +13,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.j.c;
 import com.tencent.mm.media.j.c.a;
 import com.tencent.mm.media.j.c.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.g.a.b;
 import d.g.a.q;
 import d.g.b.k;
@@ -23,67 +23,67 @@ import d.y;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "", "width", "", "height", "(II)V", "beautyParam", "dataCallbackList", "Ljava/util/ArrayList;", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "", "Lkotlin/collections/ArrayList;", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "externalTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "faceBeautyAlgorithm", "getFaceBeautyAlgorithm", "()I", "setFaceBeautyAlgorithm", "(I)V", "fboCallbackList", "Lkotlin/Function1;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHeight", "setHeight", "initCallback", "isRelease", "", "logFrameAvailable", "mDrawPerFrameStartTimes", "", "mIsRenderLocal", "mLocalRenderSurface", "Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "mRemoteRenderSurface", "onDrawProcEndAfterViewAddCallback", "Lkotlin/Function0;", "getOnDrawProcEndAfterViewAddCallback", "()Lkotlin/jvm/functions/Function0;", "setOnDrawProcEndAfterViewAddCallback", "(Lkotlin/jvm/functions/Function0;)V", "onDrawProcPerFrameCost", "Lkotlin/ParameterName;", "name", "cost", "getOnDrawProcPerFrameCost", "()Lkotlin/jvm/functions/Function1;", "setOnDrawProcPerFrameCost", "(Lkotlin/jvm/functions/Function1;)V", "pauseRender", "postInit", "renderProc", "Lcom/tencent/mm/plugin/voip/video/render/VoipRenderProcExternalTexture;", "renderThread", "Landroid/os/HandlerThread;", "rendering", "rotateRenderDegree", "getRotateRenderDegree", "()Ljava/lang/Integer;", "setRotateRenderDegree", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "surface", "Landroid/view/Surface;", "getSurface", "()Landroid/view/Surface;", "setSurface", "(Landroid/view/Surface;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "getWidth", "setWidth", "addFBOAvailableCallback", "callback", "addFrameDataCallback", "buffer", "addRenderSurface", "renderSide", "checkInit", "choiceRenderSurface", "createContext", "destroy", "getFaceBeautyType", "getGLContext", "Landroid/opengl/EGLContext;", "getOutputExternalTexture", "makeOutputSurface", "onPreviewTextureFrameAvailable", "onRendererFrameAvailable", "queue", "removeSurface", "renderImpl", "setLocalRenderOrientation", "rotateDegree", "setVoIPBeauty", "cmd", "start", "stop", "switchRenderSurface", "switchRenderSurfaceToBeauty", "updateDrawViewSize", "outputSurface", "updatePboAndWindowsSize", "cameraSize", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "mIsMirror", "Companion", "plugin-voip_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/video/render/PboSurfaceRender;", "", "width", "", "height", "(II)V", "beautyParam", "dataCallbackList", "Ljava/util/ArrayList;", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "", "Lkotlin/collections/ArrayList;", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "externalTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "faceBeautyAlgorithm", "getFaceBeautyAlgorithm", "()I", "setFaceBeautyAlgorithm", "(I)V", "fboCallbackList", "Lkotlin/Function1;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHeight", "setHeight", "initCallback", "isRelease", "", "logFrameAvailable", "mDrawPerFrameStartTimes", "", "mIsRenderLocal", "mLocalRenderSurface", "Lcom/tencent/mm/plugin/voip/video/render/OpenGLSurface;", "mRemoteRenderSurface", "onDrawProcEndAfterViewAddCallback", "Lkotlin/Function0;", "getOnDrawProcEndAfterViewAddCallback", "()Lkotlin/jvm/functions/Function0;", "setOnDrawProcEndAfterViewAddCallback", "(Lkotlin/jvm/functions/Function0;)V", "onDrawProcPerFrameCost", "Lkotlin/ParameterName;", "name", "cost", "getOnDrawProcPerFrameCost", "()Lkotlin/jvm/functions/Function1;", "setOnDrawProcPerFrameCost", "(Lkotlin/jvm/functions/Function1;)V", "pauseRender", "postInit", "renderProc", "Lcom/tencent/mm/plugin/voip/video/render/VoipRenderProcExternalTexture;", "renderThread", "Landroid/os/HandlerThread;", "rendering", "rotateRenderDegree", "getRotateRenderDegree", "()Ljava/lang/Integer;", "setRotateRenderDegree", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "surface", "Landroid/view/Surface;", "getSurface", "()Landroid/view/Surface;", "setSurface", "(Landroid/view/Surface;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "getWidth", "setWidth", "addFBOAvailableCallback", "callback", "addFrameDataCallback", "buffer", "addRenderSurface", "renderSide", "checkInit", "choiceRenderSurface", "createContext", "destroy", "getFaceBeautyType", "getGLContext", "Landroid/opengl/EGLContext;", "getOutputExternalTexture", "makeOutputSurface", "onPreviewTextureFrameAvailable", "onRendererFrameAvailable", "queue", "removeSurface", "renderImpl", "setLocalRenderOrientation", "rotateDegree", "setVoIPBeauty", "cmd", "start", "stop", "switchRenderSurface", "switchRenderSurfaceToBeauty", "updateDrawViewSize", "outputSurface", "updatePboAndWindowsSize", "cameraSize", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "mIsMirror", "Companion", "plugin-voip_release"})
 public final class f
 {
-  public static final f.a zzO;
-  c.b gBJ;
-  private boolean gqu;
-  private final HandlerThread gsj;
-  ap handler;
+  public static final f.a ASf;
+  private long AOD;
+  private int AOs;
+  e ARB;
+  e ARC;
+  private boolean ARH;
+  public i ARV;
+  private com.tencent.mm.media.f.d ARW;
+  boolean ARX;
+  private boolean ARY;
+  private b<? super f, y> ARZ;
+  d.g.a.a<y> ARw;
+  b<? super Long, y> ARx;
+  private boolean ARz;
+  ArrayList<q<ByteBuffer, Integer, Integer, y>> ASa;
+  ArrayList<b<com.tencent.mm.media.f.d, y>> ASb;
+  private boolean ASc;
+  int ASd;
+  public Integer ASe;
+  private boolean gRc;
+  private final HandlerThread gSR;
+  ao handler;
+  c.b hcg;
   int height;
   Surface surface;
   SurfaceTexture surfaceTexture;
   int width;
-  private int zvB;
-  private long zvM;
-  d.g.a.a<y> zyF;
-  b<? super Long, y> zyG;
-  private boolean zyI;
-  e zyK;
-  e zyL;
-  private boolean zyQ;
-  public i zzE;
-  private com.tencent.mm.media.f.d zzF;
-  boolean zzG;
-  private boolean zzH;
-  private b<? super f, y> zzI;
-  ArrayList<q<ByteBuffer, Integer, Integer, y>> zzJ;
-  ArrayList<b<com.tencent.mm.media.f.d, y>> zzK;
-  private boolean zzL;
-  int zzM;
-  public Integer zzN;
   
   static
   {
-    AppMethodBeat.i(192436);
-    zzO = new f.a((byte)0);
-    AppMethodBeat.o(192436);
+    AppMethodBeat.i(208787);
+    ASf = new f.a((byte)0);
+    AppMethodBeat.o(208787);
   }
   
   public f(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192435);
+    AppMethodBeat.i(208786);
     this.width = paramInt1;
     this.height = paramInt2;
-    Object localObject = com.tencent.e.c.d.gx("PboSurfaceRender_renderThread_" + hashCode(), 5);
+    Object localObject = com.tencent.e.c.d.gB("PboSurfaceRender_renderThread_" + hashCode(), 5);
     k.g(localObject, "SpecialThreadFactory.cre…}\", Thread.NORM_PRIORITY)");
-    this.gsj = ((HandlerThread)localObject);
-    this.zzJ = new ArrayList();
-    this.zzK = new ArrayList();
-    this.zvM = -1L;
-    this.zyQ = true;
-    this.gsj.start();
-    this.handler = new ap(this.gsj.getLooper());
-    this.zyI = false;
-    this.gqu = false;
-    this.zvB = -1;
-    localObject = this.zzE;
+    this.gSR = ((HandlerThread)localObject);
+    this.ASa = new ArrayList();
+    this.ASb = new ArrayList();
+    this.AOD = -1L;
+    this.ARH = true;
+    this.gSR.start();
+    this.handler = new ao(this.gSR.getLooper());
+    this.ARz = false;
+    this.gRc = false;
+    this.AOs = -1;
+    localObject = this.ARV;
     if (localObject != null) {}
-    for (localObject = Integer.valueOf(((com.tencent.mm.media.i.b.a)localObject).guD);; localObject = null)
+    for (localObject = Integer.valueOf(((com.tencent.mm.media.i.b.a)localObject).gVh);; localObject = null)
     {
-      this.zzN = ((Integer)localObject);
-      AppMethodBeat.o(192435);
+      this.ASe = ((Integer)localObject);
+      AppMethodBeat.o(208786);
       return;
     }
   }
@@ -91,38 +91,38 @@ public final class f
   private final boolean a(e parame)
   {
     EGLContext localEGLContext = null;
-    AppMethodBeat.i(192434);
+    AppMethodBeat.i(208785);
     try
     {
-      if (this.gBJ != null)
+      if (this.hcg != null)
       {
         Object localObject2 = new StringBuilder("eGl display= ");
-        localObject1 = this.gBJ;
+        localObject1 = this.hcg;
         if (localObject1 != null)
         {
-          localObject1 = ((c.b)localObject1).gwm;
+          localObject1 = ((c.b)localObject1).gWK;
           localObject2 = ((StringBuilder)localObject2).append(localObject1).append(",eglContext=");
-          localObject1 = this.gBJ;
+          localObject1 = this.hcg;
           if (localObject1 == null) {
             break label219;
           }
-          localObject1 = ((c.b)localObject1).gwo;
+          localObject1 = ((c.b)localObject1).gWL;
           label69:
           localObject2 = ((StringBuilder)localObject2).append(localObject1).append(",eglSurface=");
-          localObject1 = this.gBJ;
+          localObject1 = this.hcg;
           if (localObject1 == null) {
             break label224;
           }
           localObject1 = ((c.b)localObject1).eglSurface;
           label97:
-          ad.i("MicroMsg.PboSurfaceRender", localObject1 + " and current surface is " + parame);
-          localObject1 = c.gwl;
-          localObject1 = this.gBJ;
+          ac.i("MicroMsg.PboSurfaceRender", localObject1 + " and current surface is " + parame);
+          localObject1 = c.gWJ;
+          localObject1 = this.hcg;
           if (localObject1 == null) {
-            k.fvU();
+            k.fOy();
           }
-          parame.a(c.a.a(((c.b)localObject1).gwm, parame.zzB));
-          localObject1 = this.gBJ;
+          parame.a(c.a.a(((c.b)localObject1).gWK, parame.ARS));
+          localObject1 = this.hcg;
           if (localObject1 == null) {
             break label229;
           }
@@ -130,16 +130,16 @@ public final class f
         label219:
         label224:
         label229:
-        for (localObject1 = ((c.b)localObject1).gwm;; localObject1 = null)
+        for (localObject1 = ((c.b)localObject1).gWK;; localObject1 = null)
         {
-          localObject2 = parame.dXO();
-          EGLSurface localEGLSurface2 = parame.dXO();
-          c.b localb = this.gBJ;
+          localObject2 = parame.enk();
+          EGLSurface localEGLSurface2 = parame.enk();
+          c.b localb = this.hcg;
           if (localb != null) {
-            localEGLContext = localb.gwo;
+            localEGLContext = localb.gWL;
           }
           EGL14.eglMakeCurrent((EGLDisplay)localObject1, (EGLSurface)localObject2, localEGLSurface2, localEGLContext);
-          AppMethodBeat.o(192434);
+          AppMethodBeat.o(208785);
           return true;
           localObject1 = null;
           break;
@@ -152,146 +152,146 @@ public final class f
       Object localObject1 = EGL14.EGL_NO_SURFACE;
       k.g(localObject1, "EGL14.EGL_NO_SURFACE");
       parame.a((EGLSurface)localObject1);
-      AppMethodBeat.o(192434);
+      AppMethodBeat.o(208785);
       return false;
     }
     catch (Exception localException)
     {
-      ad.w("MicroMsg.PboSurfaceRender", "can't create eglSurface");
+      ac.w("MicroMsg.PboSurfaceRender", "can't create eglSurface");
       EGLSurface localEGLSurface1 = EGL14.EGL_NO_SURFACE;
       k.g(localEGLSurface1, "EGL14.EGL_NO_SURFACE");
       parame.a(localEGLSurface1);
-      AppMethodBeat.o(192434);
+      AppMethodBeat.o(208785);
     }
     return false;
   }
   
-  private final void akv()
+  private final void arr()
   {
-    AppMethodBeat.i(192430);
+    AppMethodBeat.i(208781);
     Object localObject1 = this.surfaceTexture;
     if (localObject1 != null)
     {
-      if (this.zzH)
+      if (this.ARY)
       {
-        AppMethodBeat.o(192430);
+        AppMethodBeat.o(208781);
         return;
       }
       try
       {
         ((SurfaceTexture)localObject1).updateTexImage();
-        if (dXK() != 0) {
-          break label277;
+        if (eng() != 0) {
+          break label284;
         }
-        if (this.zyQ)
+        if (this.ARH)
         {
-          localObject1 = this.zyK;
-          if (localObject1 == null) {
-            break label270;
+          localObject1 = this.ARB;
+          if ((localObject1 == null) || (!this.ARz)) {
+            break label277;
           }
-          if ((((e)localObject1).dXO() != EGL14.EGL_NO_SURFACE) || (a((e)localObject1))) {
-            break label110;
+          if ((((e)localObject1).enk() != EGL14.EGL_NO_SURFACE) || (a((e)localObject1))) {
+            break label117;
           }
-          AppMethodBeat.o(192430);
+          AppMethodBeat.o(208781);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.PboSurfaceRender", (Throwable)localException, "updateTexImage error", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.PboSurfaceRender", (Throwable)localException, "updateTexImage error", new Object[0]);
           continue;
-          localObject2 = this.zyL;
+          localObject2 = this.ARC;
         }
-        label110:
-        this.zvM = bt.GC();
-        Object localObject3 = this.zzE;
+        label117:
+        this.AOD = bs.Gn();
+        Object localObject3 = this.ARV;
         if (localObject3 != null) {
-          ((i)localObject3).cT(((e)localObject2).zzC.width, ((e)localObject2).zzC.height);
+          ((i)localObject3).cR(((e)localObject2).ART.width, ((e)localObject2).ART.height);
         }
-        localObject3 = this.zzE;
+        localObject3 = this.ARV;
         if (localObject3 != null) {
-          ((i)localObject3).akk();
+          ((i)localObject3).ajG();
         }
-        localObject3 = c.gwl;
-        localObject3 = this.gBJ;
+        localObject3 = c.gWJ;
+        localObject3 = this.hcg;
         if (localObject3 != null) {}
-        for (localObject3 = ((c.b)localObject3).gwm;; localObject3 = null)
+        for (localObject3 = ((c.b)localObject3).gWK;; localObject3 = null)
         {
-          c.a.a((EGLDisplay)localObject3, ((e)localObject2).dXO());
-          if (this.zyF == null) {
+          c.a.a((EGLDisplay)localObject3, ((e)localObject2).enk());
+          if (this.ARw == null) {
             break;
           }
           GLES30.glFinish();
-          localObject2 = this.zyF;
+          localObject2 = this.ARw;
           if (localObject2 != null) {
             ((d.g.a.a)localObject2).invoke();
           }
-          this.zyF = null;
-          AppMethodBeat.o(192430);
+          this.ARw = null;
+          AppMethodBeat.o(208781);
           return;
         }
         GLES30.glFinish();
-        localObject2 = this.zyG;
+        localObject2 = this.ARx;
         if (localObject2 != null)
         {
-          ((b)localObject2).aA(Long.valueOf(bt.aS(this.zvM)));
-          AppMethodBeat.o(192430);
+          ((b)localObject2).ay(Long.valueOf(bs.aO(this.AOD)));
+          AppMethodBeat.o(208781);
           return;
         }
-        AppMethodBeat.o(192430);
+        AppMethodBeat.o(208781);
         return;
       }
-      label270:
-      AppMethodBeat.o(192430);
-      return;
       label277:
-      this.zvM = bt.GC();
-      Object localObject2 = this.zzE;
+      AppMethodBeat.o(208781);
+      return;
+      label284:
+      this.AOD = bs.Gn();
+      Object localObject2 = this.ARV;
       if (localObject2 != null) {
-        ((i)localObject2).akk();
+        ((i)localObject2).ajG();
       }
-      localObject2 = this.zyG;
+      localObject2 = this.ARx;
       if (localObject2 != null)
       {
-        ((b)localObject2).aA(Long.valueOf(bt.aS(this.zvM)));
-        AppMethodBeat.o(192430);
+        ((b)localObject2).ay(Long.valueOf(bs.aO(this.AOD)));
+        AppMethodBeat.o(208781);
         return;
       }
-      AppMethodBeat.o(192430);
+      AppMethodBeat.o(208781);
       return;
     }
-    AppMethodBeat.o(192430);
+    AppMethodBeat.o(208781);
   }
   
-  public final void QU(final int paramInt)
+  public final void Td(final int paramInt)
   {
     int j = 1;
-    AppMethodBeat.i(192431);
-    ad.i("MicroMsg.PboSurfaceRender", "setVoIPBeauty, isON:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.zvB = paramInt;
+    AppMethodBeat.i(208782);
+    ac.i("MicroMsg.PboSurfaceRender", "setVoIPBeauty, isON:%d", new Object[] { Integer.valueOf(paramInt) });
+    this.AOs = paramInt;
     int i;
-    if ((this.zvB & 0x8) != 0)
+    if ((this.AOs & 0x8) != 0)
     {
       i = 1;
-      if ((this.zvB == 0) || (i != 0)) {
+      if ((this.AOs == 0) || (i != 0)) {
         break label100;
       }
-      ad.i("MicroMsg.PboSurfaceRender", "render YT face-beauty algorithm");
+      ac.i("MicroMsg.PboSurfaceRender", "render YT face-beauty algorithm");
       i = 2;
     }
     for (;;)
     {
-      this.zzM = i;
+      this.ASd = i;
       i((d.g.a.a)new j(this, paramInt));
-      AppMethodBeat.o(192431);
+      AppMethodBeat.o(208782);
       return;
       i = 0;
       break;
       label100:
-      if ((i != 0) && ((this.zvB & 0x8) != 0))
+      if ((i != 0) && ((this.AOs & 0x8) != 0))
       {
-        ad.i("MicroMsg.PboSurfaceRender", "render WC face-beauty algorithm");
+        ac.i("MicroMsg.PboSurfaceRender", "render WC face-beauty algorithm");
         i = j;
       }
       else
@@ -301,41 +301,41 @@ public final class f
     }
   }
   
-  public final void dXH()
+  public final void enc()
   {
-    AppMethodBeat.i(192433);
-    ad.m("MicroMsg.PboSurfaceRender", "switchRenderSurface", new Object[0]);
+    AppMethodBeat.i(208784);
+    ac.m("MicroMsg.PboSurfaceRender", "switchRenderSurface", new Object[0]);
     i((d.g.a.a)new m(this));
-    AppMethodBeat.o(192433);
+    AppMethodBeat.o(208784);
   }
   
-  public final int dXK()
+  public final int eng()
   {
-    i locali = this.zzE;
+    i locali = this.ARV;
     if (locali != null) {
-      return locali.zAC;
+      return locali.ASU;
     }
     return 0;
   }
   
   public final void i(d.g.a.a<y> parama)
   {
-    AppMethodBeat.i(192432);
+    AppMethodBeat.i(208783);
     k.h(parama, "callback");
-    if (this.gsj.isAlive())
+    if (this.gSR.isAlive())
     {
-      ap localap = this.handler;
-      if (localap != null)
+      ao localao = this.handler;
+      if (localao != null)
       {
-        localap.post((Runnable)new g(parama));
-        AppMethodBeat.o(192432);
+        localao.post((Runnable)new g(parama));
+        AppMethodBeat.o(208783);
         return;
       }
     }
-    AppMethodBeat.o(192432);
+    AppMethodBeat.o(208783);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -346,7 +346,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -357,7 +357,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable", "com/tencent/mm/plugin/voip/video/render/PboSurfaceRender$createContext$3$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable", "com/tencent/mm/plugin/voip/video/render/PboSurfaceRender$createContext$3$1"})
   static final class d
     implements SurfaceTexture.OnFrameAvailableListener
   {
@@ -365,16 +365,16 @@ public final class f
     
     public final void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(192418);
-      f.i(this.zzP);
-      if (this.zzP.dXK() != 0) {
-        f.j(this.zzP);
+      AppMethodBeat.i(208769);
+      f.i(this.ASg);
+      if (this.ASg.eng() != 0) {
+        f.j(this.ASg);
       }
-      AppMethodBeat.o(192418);
+      AppMethodBeat.o(208769);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class e
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -385,7 +385,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class g
     implements Runnable
   {
@@ -393,19 +393,19 @@ public final class f
     
     public final void run()
     {
-      AppMethodBeat.i(192421);
-      b localb = f.b(this.zzP);
+      AppMethodBeat.i(208772);
+      b localb = f.b(this.ASg);
       if (localb != null)
       {
-        localb.aA(this.zzP);
-        AppMethodBeat.o(192421);
+        localb.ay(this.ASg);
+        AppMethodBeat.o(208772);
         return;
       }
-      AppMethodBeat.o(192421);
+      AppMethodBeat.o(208772);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class h
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -416,7 +416,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class i
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -427,7 +427,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class j
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -438,7 +438,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class k
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -449,7 +449,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class l
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -460,7 +460,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class m
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -471,7 +471,7 @@ public final class f
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class n
     extends d.g.b.l
     implements d.g.a.a<y>
@@ -484,7 +484,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.render.f
  * JD-Core Version:    0.7.0.1
  */

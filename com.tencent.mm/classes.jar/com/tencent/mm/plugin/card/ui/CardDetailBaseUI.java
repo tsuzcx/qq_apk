@@ -15,28 +15,28 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public abstract class CardDetailBaseUI
   extends MMActivity
 {
-  private TextView kEu;
-  private ImageView lEt;
-  private View lEz;
-  private TextView nym;
-  private ImageView nyn;
-  private View nyo;
+  private TextView lfN;
+  private ImageView mgn;
+  private View mgu;
+  private TextView obn;
+  private ImageView obo;
+  private View obp;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.lEz = y.js(getContext()).inflate(2131493268, null);
-    this.lEz.setBackgroundColor(getResources().getColor(2131099873));
-    this.kEu = ((TextView)this.lEz.findViewById(2131305908));
-    this.nym = ((TextView)this.lEz.findViewById(2131305509));
-    this.lEt = ((ImageView)this.lEz.findViewById(2131296940));
-    this.nyn = ((ImageView)this.lEz.findViewById(2131302241));
-    this.nyo = this.lEz.findViewById(2131299154);
+    this.mgu = z.jD(getContext()).inflate(2131493268, null);
+    this.mgu.setBackgroundColor(getResources().getColor(2131099873));
+    this.lfN = ((TextView)this.mgu.findViewById(2131305908));
+    this.obn = ((TextView)this.mgu.findViewById(2131305509));
+    this.mgn = ((ImageView)this.mgu.findViewById(2131296940));
+    this.obo = ((ImageView)this.mgu.findViewById(2131302241));
+    this.obp = this.mgu.findViewById(2131299154);
     LinearLayout localLinearLayout;
     Object localObject;
     if ((getContentView() != null) && (((ViewGroup)getContentView()).getChildCount() > 0))
@@ -55,7 +55,7 @@ public abstract class CardDetailBaseUI
     for (int i = getResources().getDimensionPixelSize(2131165251);; i = getResources().getDimensionPixelSize(2131165252))
     {
       localObject = new LinearLayout.LayoutParams(-1, i);
-      localLinearLayout.addView(this.lEz, (ViewGroup.LayoutParams)localObject);
+      localLinearLayout.addView(this.mgu, (ViewGroup.LayoutParams)localObject);
       localLinearLayout.addView(paramBundle);
       ((ViewGroup)getContentView()).addView(localLinearLayout);
       return;

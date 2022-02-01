@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class nq
   extends b
 {
-  public a dsK;
+  public a dqa;
   
   public nq()
   {
@@ -16,25 +15,26 @@ public final class nq
   
   private nq(byte paramByte)
   {
-    AppMethodBeat.i(127409);
-    this.dsK = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116038);
+    this.dqa = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(127409);
+    AppMethodBeat.o(116038);
   }
   
   public static final class a
   {
-    public Context context;
-    public boolean drV = true;
-    public String dsL;
-    public long msgId = -1L;
-    public int scene;
+    public String cIZ;
+    public int dea;
+    public String dmX;
+    public int op = 0;
+    public int reason;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.nq
  * JD-Core Version:    0.7.0.1
  */

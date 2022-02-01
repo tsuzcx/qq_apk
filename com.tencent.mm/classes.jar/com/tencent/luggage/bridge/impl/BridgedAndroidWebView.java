@@ -14,9 +14,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class BridgedAndroidWebView
   extends BridgedAndroidWebViewBase
 {
-  private WebViewClient bZL;
-  private WebChromeClient bZM;
-  private o bZw;
+  private WebViewClient bWI;
+  private WebChromeClient bWJ;
+  private o bWt;
   
   public BridgedAndroidWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,12 +27,12 @@ public class BridgedAndroidWebView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(140352);
-    this.bZL = new WebViewClient()
+    this.bWI = new WebViewClient()
     {
       public final void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(140350);
-        BridgedAndroidWebView.a(BridgedAndroidWebView.this).bZD.onReady();
+        BridgedAndroidWebView.a(BridgedAndroidWebView.this).bWA.onReady();
         AppMethodBeat.o(140350);
       }
       
@@ -43,12 +43,12 @@ public class BridgedAndroidWebView
         AppMethodBeat.o(140349);
       }
     };
-    this.bZM = new WebChromeClient()
+    this.bWJ = new WebChromeClient()
     {
       public boolean onJsPrompt(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, JsPromptResult paramAnonymousJsPromptResult)
       {
         AppMethodBeat.i(140351);
-        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).bZD.bN(paramAnonymousString2);
+        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).bWA.bD(paramAnonymousString2);
         if (paramAnonymousWebView != null)
         {
           paramAnonymousJsPromptResult.confirm(paramAnonymousWebView);
@@ -59,15 +59,15 @@ public class BridgedAndroidWebView
         return false;
       }
     };
-    this.bZw = new o(this);
-    setWebViewClient(this.bZL);
-    setWebChromeClient(this.bZM);
+    this.bWt = new o(this);
+    setWebViewClient(this.bWI);
+    setWebChromeClient(this.bWJ);
     AppMethodBeat.o(140352);
   }
   
   public o getBridge()
   {
-    return this.bZw;
+    return this.bWt;
   }
 }
 

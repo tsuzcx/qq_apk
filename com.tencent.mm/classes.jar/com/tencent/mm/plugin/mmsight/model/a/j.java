@@ -4,29 +4,29 @@ import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class j
   extends a<byte[]>
 {
-  private static int hBa;
-  public static final j tEA;
+  private static int ibB;
+  public static final j uMV;
   
   static
   {
     AppMethodBeat.i(148835);
-    tEA = new j();
-    hBa = 0;
+    uMV = new j();
+    ibB = 0;
     AppMethodBeat.o(148835);
   }
   
-  public final long aoQ()
+  public final long avH()
   {
     AppMethodBeat.i(148828);
-    if (hBa <= 0) {
-      hBa = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
+    if (ibB <= 0) {
+      ibB = ((ActivityManager)ai.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    if (hBa >= 512)
+    if (ibB >= 512)
     {
       AppMethodBeat.o(148828);
       return 41943040L;
@@ -35,15 +35,15 @@ public final class j
     return 20971520L;
   }
   
-  public final long aoR()
+  public final long avI()
   {
     return 10485760L;
   }
   
-  public final void aoS()
+  public final void avJ()
   {
     AppMethodBeat.i(148829);
-    super.aoS();
+    super.avJ();
     AppMethodBeat.o(148829);
   }
   
@@ -68,7 +68,7 @@ public final class j
     try
     {
       AppMethodBeat.i(148826);
-      super.bL(paramArrayOfByte);
+      super.bJ(paramArrayOfByte);
       AppMethodBeat.o(148826);
       return;
     }

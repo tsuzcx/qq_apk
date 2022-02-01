@@ -6,7 +6,7 @@ public abstract interface CookieInternal$ICookieManagerInternal
 {
   public abstract void e(WebView paramWebView);
   
-  public abstract void fqD();
+  public abstract void fJb();
   
   public abstract String getCookie(String paramString);
   

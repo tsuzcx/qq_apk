@@ -7,21 +7,21 @@ import java.util.List;
 public final class e<K, V>
   extends a<K, V>
 {
-  private transient int bVN = 3;
+  private transient int bTv = 3;
   
   private e()
   {
     super(new HashMap());
   }
   
-  public static <K, V> e<K, V> zR()
+  public static <K, V> e<K, V> zE()
   {
     return new e();
   }
   
-  final List<V> zA()
+  final List<V> zn()
   {
-    return new ArrayList(this.bVN);
+    return new ArrayList(this.bTv);
   }
 }
 

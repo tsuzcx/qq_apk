@@ -3,13 +3,14 @@ package com.tencent.mm.plugin.wear.model;
 import android.os.Looper;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.q;
-import com.tencent.mm.am.e;
-import com.tencent.mm.am.f;
-import com.tencent.mm.g.a.xx;
-import com.tencent.mm.g.a.xx.a;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.al.af;
+import com.tencent.mm.al.e;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.a.yi;
+import com.tencent.mm.g.a.yi.a;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.ar.a;
 import com.tencent.mm.model.ar.b;
 import com.tencent.mm.model.az;
@@ -17,108 +18,107 @@ import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.wear.model.e.i;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.protocal.protobuf.drc;
+import com.tencent.mm.protocal.protobuf.dwt;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.bj;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
   implements g
 {
-  boolean ADS;
-  com.tencent.mm.sdk.b.c ADT;
-  av ADU;
-  n.b rqR;
+  boolean BWm;
+  com.tencent.mm.sdk.b.c BWn;
+  au BWo;
+  n.b szL;
   
   public b()
   {
     AppMethodBeat.i(29971);
-    this.ADT = new com.tencent.mm.sdk.b.c() {};
-    this.rqR = new n.b()
+    this.BWn = new com.tencent.mm.sdk.b.c() {};
+    this.szL = new n.b()
     {
       public final void a(int paramAnonymousInt, com.tencent.mm.sdk.e.n paramAnonymousn, Object paramAnonymousObject)
       {
         AppMethodBeat.i(29967);
         if ((paramAnonymousObject == null) || (!(paramAnonymousObject instanceof String)))
         {
-          ad.d("MicroMsg.Wear.WearBizLogic", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousn, paramAnonymousObject });
+          ac.d("MicroMsg.Wear.WearBizLogic", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousn, paramAnonymousObject });
           AppMethodBeat.o(29967);
           return;
         }
         paramAnonymousn = (String)paramAnonymousObject;
         if ((paramAnonymousn != null) && (paramAnonymousn.equals("gh_43f2581f6fd6")))
         {
-          if ((!b.ehb()) && (b.this.ADS))
+          if ((!b.ewv()) && (b.this.BWm))
           {
-            b.this.ADS = false;
+            b.this.BWm = false;
             AppMethodBeat.o(29967);
             return;
           }
-          if ((b.ehb()) && (!b.this.ADS)) {
+          if ((b.ewv()) && (!b.this.BWm)) {
             b.this.connect();
           }
         }
         AppMethodBeat.o(29967);
       }
     };
-    this.ADU = new av(Looper.getMainLooper(), new av.a()
+    this.BWo = new au(Looper.getMainLooper(), new au.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(29968);
-        b.a(a.egV().ADZ.AEM);
+        b.a(a.ewp().BWt.BXg);
         AppMethodBeat.o(29968);
         return true;
       }
     }, true);
-    com.tencent.mm.sdk.b.a.ESL.c(this.ADT);
-    az.arV();
-    com.tencent.mm.model.c.apM().a(this.rqR);
+    com.tencent.mm.sdk.b.a.GpY.c(this.BWn);
+    az.ayM();
+    com.tencent.mm.model.c.awB().a(this.szL);
     AppMethodBeat.o(29971);
   }
   
-  public static void a(drc paramdrc)
+  public static void a(dwt paramdwt)
   {
     AppMethodBeat.i(29976);
-    if (paramdrc != null)
+    if (paramdwt != null)
     {
-      xx localxx = new xx();
-      localxx.dEk.dbV = 6;
-      localxx.dEk.cLR = paramdrc.EGm;
-      com.tencent.mm.sdk.b.a.ESL.l(localxx);
+      yi localyi = new yi();
+      localyi.dBW.cZu = 6;
+      localyi.dBW.cIZ = paramdwt.Gdy;
+      com.tencent.mm.sdk.b.a.GpY.l(localyi);
       AppMethodBeat.o(29976);
       return;
     }
-    ad.i("MicroMsg.Wear.WearBizLogic", "request is null");
+    ac.i("MicroMsg.Wear.WearBizLogic", "request is null");
     AppMethodBeat.o(29976);
   }
   
-  static boolean auL(String paramString)
+  static boolean aAc(String paramString)
   {
     AppMethodBeat.i(29974);
-    xx localxx = new xx();
-    localxx.dEk.dbV = 3;
-    localxx.dEk.cLR = paramString;
-    localxx.dEk.dfF = "gh_43f2581f6fd6";
-    com.tencent.mm.sdk.b.a.ESL.l(localxx);
-    ad.i("MicroMsg.Wear.WearBizLogic", "isRegister: %b", new Object[] { Boolean.valueOf(localxx.dEk.dhg) });
-    boolean bool = localxx.dEk.dhg;
+    yi localyi = new yi();
+    localyi.dBW.cZu = 3;
+    localyi.dBW.cIZ = paramString;
+    localyi.dBW.dda = "gh_43f2581f6fd6";
+    com.tencent.mm.sdk.b.a.GpY.l(localyi);
+    ac.i("MicroMsg.Wear.WearBizLogic", "isRegister: %b", new Object[] { Boolean.valueOf(localyi.dBW.deB) });
+    boolean bool = localyi.dBW.deB;
     AppMethodBeat.o(29974);
     return bool;
   }
   
-  static boolean ehb()
+  static boolean ewv()
   {
     AppMethodBeat.i(29975);
-    az.arV();
-    boolean bool = com.tencent.mm.n.b.ls(com.tencent.mm.model.c.apM().aHY("gh_43f2581f6fd6").field_type);
+    az.ayM();
+    boolean bool = com.tencent.mm.n.b.ln(com.tencent.mm.model.c.awB().aNt("gh_43f2581f6fd6").field_type);
     AppMethodBeat.o(29975);
     return bool;
   }
@@ -126,173 +126,173 @@ public final class b
   public final void connect()
   {
     AppMethodBeat.i(29972);
-    Object localObject = a.egV().ADZ.AEM;
+    Object localObject = a.ewp().BWt.BXg;
     if (localObject == null)
     {
-      ad.e("MicroMsg.Wear.WearBizLogic", "get connect wear data error");
+      ac.e("MicroMsg.Wear.WearBizLogic", "get connect wear data error");
       AppMethodBeat.o(29972);
       return;
     }
-    if (!ehb())
+    if (!ewv())
     {
-      az.arV();
-      boolean bool = ((Boolean)com.tencent.mm.model.c.afk().get(327825, Boolean.FALSE)).booleanValue();
-      ad.i("MicroMsg.Wear.WearBizLogic", "auto focus biz contact %b", new Object[] { Boolean.valueOf(bool) });
+      az.ayM();
+      boolean bool = ((Boolean)com.tencent.mm.model.c.agA().get(327825, Boolean.FALSE)).booleanValue();
+      ac.i("MicroMsg.Wear.WearBizLogic", "auto focus biz contact %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
-        if (bt.iP(aj.getContext()))
+        if (bs.ja(com.tencent.mm.sdk.platformtools.ai.getContext()))
         {
-          ad.i("MicroMsg.Wear.WearBizLogic", "oversea user, forbid biz auto focus logic");
+          ac.i("MicroMsg.Wear.WearBizLogic", "oversea user, forbid biz auto focus logic");
           AppMethodBeat.o(29972);
           return;
         }
-        a.egW().a(new a((byte)0));
-        a.egW().a(new b((drc)localObject));
+        a.ewq().a(new a((byte)0));
+        a.ewq().a(new b((dwt)localObject));
       }
       AppMethodBeat.o(29972);
       return;
     }
-    if (!auL(((drc)localObject).EGm))
+    if (!aAc(((dwt)localObject).Gdy))
     {
-      ad.i("MicroMsg.Wear.WearBizLogic", "start to register device %s", new Object[] { ((drc)localObject).EGm });
-      a.egW().a(new b((drc)localObject));
+      ac.i("MicroMsg.Wear.WearBizLogic", "start to register device %s", new Object[] { ((dwt)localObject).Gdy });
+      a.ewq().a(new b((dwt)localObject));
       AppMethodBeat.o(29972);
       return;
     }
-    if (!this.ADS)
+    if (!this.BWm)
     {
-      ad.i("MicroMsg.Wear.WearBizLogic", "start to auth device %s", new Object[] { ((drc)localObject).EGm });
-      localObject = ((drc)localObject).EGm;
-      if ((!this.ADS) && (auL((String)localObject)))
+      ac.i("MicroMsg.Wear.WearBizLogic", "start to auth device %s", new Object[] { ((dwt)localObject).Gdy });
+      localObject = ((dwt)localObject).Gdy;
+      if ((!this.BWm) && (aAc((String)localObject)))
       {
-        ad.i("MicroMsg.Wear.WearBizLogic", "auth device, deviceId=%s | deviceType=%s", new Object[] { localObject, "gh_43f2581f6fd6" });
-        xx localxx = new xx();
-        localxx.dEk.dbV = 7;
-        localxx.dEk.cLR = ((String)localObject);
-        localxx.dEk.dfF = "gh_43f2581f6fd6";
-        com.tencent.mm.sdk.b.a.ESL.l(localxx);
+        ac.i("MicroMsg.Wear.WearBizLogic", "auth device, deviceId=%s | deviceType=%s", new Object[] { localObject, "gh_43f2581f6fd6" });
+        yi localyi = new yi();
+        localyi.dBW.cZu = 7;
+        localyi.dBW.cIZ = ((String)localObject);
+        localyi.dBW.dda = "gh_43f2581f6fd6";
+        com.tencent.mm.sdk.b.a.GpY.l(localyi);
       }
       AppMethodBeat.o(29972);
       return;
     }
-    if (this.ADU.eFX())
+    if (this.BWo.eVs())
     {
-      ad.i("MicroMsg.Wear.WearBizLogic", "start step count timer");
-      this.ADU.av(3600000L, 3600000L);
+      ac.i("MicroMsg.Wear.WearBizLogic", "start step count timer");
+      this.BWo.au(3600000L, 3600000L);
     }
     for (;;)
     {
-      a((drc)localObject);
+      a((dwt)localObject);
       AppMethodBeat.o(29972);
       return;
-      ad.i("MicroMsg.Wear.WearBizLogic", "stop timer and restart step count timer");
-      this.ADU.stopTimer();
-      this.ADU.av(3600000L, 3600000L);
+      ac.i("MicroMsg.Wear.WearBizLogic", "stop timer and restart step count timer");
+      this.BWo.stopTimer();
+      this.BWo.au(3600000L, 3600000L);
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(29973);
     Object localObject;
     if ((paramn instanceof com.tencent.mm.plugin.wear.model.d.a))
     {
-      az.aeS().b(1091, this);
+      az.agi().b(1091, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.Wear.WearBizLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        ac.e("MicroMsg.Wear.WearBizLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
         AppMethodBeat.o(29973);
         return;
       }
       paramn = (com.tencent.mm.plugin.wear.model.d.a)paramn;
-      paramString = paramn.cLR;
-      paramn = paramn.dfF;
-      localObject = new xx();
-      ((xx)localObject).dEk.dbV = 1;
-      ((xx)localObject).dEk.cLR = paramString;
-      ((xx)localObject).dEk.dfF = paramn;
-      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+      paramString = paramn.cIZ;
+      paramn = paramn.dda;
+      localObject = new yi();
+      ((yi)localObject).dBW.cZu = 1;
+      ((yi)localObject).dBW.cIZ = paramString;
+      ((yi)localObject).dBW.dda = paramn;
+      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
       AppMethodBeat.o(29973);
       return;
     }
     if ((paramn instanceof o))
     {
-      az.aeS().b(30, this);
+      az.agi().b(30, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ad.e("MicroMsg.Wear.WearBizLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        if ((paramInt1 == 4) && (paramInt2 == -24) && (!bt.isNullOrNil(paramString)))
+        ac.e("MicroMsg.Wear.WearBizLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        if ((paramInt1 == 4) && (paramInt2 == -24) && (!bs.isNullOrNil(paramString)))
         {
-          Toast.makeText(aj.getContext(), paramString, 1).show();
+          Toast.makeText(com.tencent.mm.sdk.platformtools.ai.getContext(), paramString, 1).show();
           AppMethodBeat.o(29973);
         }
       }
       else
       {
-        localObject = ((o)paramn).evr();
-        ad.i("MicroMsg.Wear.WearBizLogic", "bind fitness contact %s success", new Object[] { localObject });
-        az.arV();
-        paramn = com.tencent.mm.model.c.apM().aHY("gh_43f2581f6fd6");
-        if ((paramn != null) && (!bt.isNullOrNil((String)localObject))) {
+        localObject = ((o)paramn).eKL();
+        ac.i("MicroMsg.Wear.WearBizLogic", "bind fitness contact %s success", new Object[] { localObject });
+        az.ayM();
+        paramn = com.tencent.mm.model.c.awB().aNt("gh_43f2581f6fd6");
+        if ((paramn != null) && (!bs.isNullOrNil((String)localObject))) {
           break label369;
         }
-        ad.e("MicroMsg.Wear.WearBizLogic", "respUsername == " + (String)localObject + ", contact = " + paramn);
+        ac.e("MicroMsg.Wear.WearBizLogic", "respUsername == " + (String)localObject + ", contact = " + paramn);
       }
     }
     for (;;)
     {
-      paramString = com.tencent.mm.am.af.awe().wy(paramn.field_username);
-      com.tencent.mm.am.af.awe().g(paramString);
-      az.arV();
-      com.tencent.mm.model.c.afk().set(327825, Boolean.TRUE);
+      paramString = af.aCW().AE(paramn.field_username);
+      af.aCW().g(paramString);
+      az.ayM();
+      com.tencent.mm.model.c.agA().set(327825, Boolean.TRUE);
       connect();
       AppMethodBeat.o(29973);
       return;
       label369:
       paramString = null;
-      if (w.sC(paramn.field_username))
+      if (w.wF(paramn.field_username))
       {
-        String str = bt.nullAsNil(paramn.field_username);
-        paramString = f.ei(str);
+        String str = bs.nullAsNil(paramn.field_username);
+        paramString = f.dX(str);
         if (paramString != null) {
           paramString.field_username = ((String)localObject);
         }
-        com.tencent.mm.am.af.awe().delete(str);
-        paramn.nj(str);
+        af.aCW().delete(str);
+        paramn.qp(str);
       }
       paramn.setUsername((String)localObject);
-      if ((int)paramn.fId == 0)
+      if ((int)paramn.fLJ == 0)
       {
-        az.arV();
-        com.tencent.mm.model.c.apM().ag(paramn);
+        az.ayM();
+        com.tencent.mm.model.c.awB().ah(paramn);
       }
-      if ((int)paramn.fId <= 0)
+      if ((int)paramn.fLJ <= 0)
       {
-        ad.e("MicroMsg.Wear.WearBizLogic", "addContact : insert contact failed");
+        ac.e("MicroMsg.Wear.WearBizLogic", "addContact : insert contact failed");
       }
       else
       {
         w.u(paramn);
-        az.arV();
-        localObject = com.tencent.mm.model.c.apM().aHY(paramn.field_username);
+        az.ayM();
+        localObject = com.tencent.mm.model.c.awB().aNt(paramn.field_username);
         if (paramString != null)
         {
-          com.tencent.mm.am.af.awe().f(paramString);
+          af.aCW().f(paramString);
         }
         else
         {
-          paramString = f.ei(((au)localObject).field_username);
-          if ((paramString == null) || (paramString.IY()))
+          paramString = f.dX(((av)localObject).field_username);
+          if ((paramString == null) || (paramString.IH()))
           {
-            ad.d("MicroMsg.Wear.WearBizLogic", "shouldUpdate");
-            ar.a.gMW.aB(((au)localObject).field_username, "");
-            com.tencent.mm.ak.c.vO(((au)localObject).field_username);
+            ac.d("MicroMsg.Wear.WearBizLogic", "shouldUpdate");
+            ar.a.hnw.aJ(((av)localObject).field_username, "");
+            com.tencent.mm.aj.c.zU(((av)localObject).field_username);
           }
-          else if (((com.tencent.mm.storage.af)localObject).eKF())
+          else if (((com.tencent.mm.storage.ai)localObject).fah())
           {
-            ad.d("MicroMsg.Wear.WearBizLogic", "update contact, last check time=%d", new Object[] { Integer.valueOf(((au)localObject).evG) });
-            ar.a.gMW.aB(((au)localObject).field_username, "");
-            com.tencent.mm.ak.c.vO(((au)localObject).field_username);
+            ac.d("MicroMsg.Wear.WearBizLogic", "update contact, last check time=%d", new Object[] { Integer.valueOf(((av)localObject).eyc) });
+            ar.a.hnw.aJ(((av)localObject).field_username, "");
+            com.tencent.mm.aj.c.zU(((av)localObject).field_username);
           }
         }
       }
@@ -307,13 +307,13 @@ public final class b
     public final void execute()
     {
       AppMethodBeat.i(29969);
-      az.aeS().a(30, b.this);
+      az.agi().a(30, b.this);
       Object localObject = new LinkedList();
       ((LinkedList)localObject).add("gh_43f2581f6fd6");
       LinkedList localLinkedList = new LinkedList();
       localLinkedList.add(Integer.valueOf(1));
       localObject = new o((List)localObject, localLinkedList, "", "");
-      az.aeS().a((com.tencent.mm.al.n)localObject, 0);
+      az.agi().a((com.tencent.mm.ak.n)localObject, 0);
       AppMethodBeat.o(29969);
     }
     
@@ -326,19 +326,19 @@ public final class b
   final class b
     extends com.tencent.mm.plugin.wear.model.f.d
   {
-    private drc ADW;
+    private dwt BWq;
     
-    public b(drc paramdrc)
+    public b(dwt paramdwt)
     {
-      this.ADW = paramdrc;
+      this.BWq = paramdwt;
     }
     
     public final void execute()
     {
       AppMethodBeat.i(29970);
-      az.aeS().a(1091, b.this);
-      com.tencent.mm.plugin.wear.model.d.a locala = new com.tencent.mm.plugin.wear.model.d.a(this.ADW.EGm, "gh_43f2581f6fd6");
-      az.aeS().a(locala, 0);
+      az.agi().a(1091, b.this);
+      com.tencent.mm.plugin.wear.model.d.a locala = new com.tencent.mm.plugin.wear.model.d.a(this.BWq.Gdy, "gh_43f2581f6fd6");
+      az.agi().a(locala, 0);
       AppMethodBeat.o(29970);
     }
     
@@ -350,7 +350,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.b
  * JD-Core Version:    0.7.0.1
  */

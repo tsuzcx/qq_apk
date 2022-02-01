@@ -11,30 +11,30 @@ import com.tencent.mm.plugin.fts.ui.m;
 public final class h
   extends a
 {
-  private b GZN;
-  a GZO;
+  private b IAf;
+  a IAg;
   public String header;
   
   public h(int paramInt)
   {
     super(0, paramInt);
     AppMethodBeat.i(102960);
-    this.GZN = new b();
-    this.GZO = new a();
+    this.IAf = new b();
+    this.IAg = new a();
     AppMethodBeat.o(102960);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aHr()
+  public final a.b aOg()
   {
-    return this.GZN;
+    return this.IAf;
   }
   
   public final class a
     extends a.a
   {
-    public TextView nOq;
+    public TextView ors;
     
     public a()
     {
@@ -54,8 +54,8 @@ public final class h
     {
       AppMethodBeat.i(102958);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495362, paramViewGroup, false);
-      paramViewGroup = (h.a)h.this.GZO;
-      paramViewGroup.nOq = ((TextView)paramContext.findViewById(2131300734));
+      paramViewGroup = (h.a)h.this.IAg;
+      paramViewGroup.ors = ((TextView)paramContext.findViewById(2131300734));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102958);
       return paramContext;
@@ -65,11 +65,11 @@ public final class h
     {
       AppMethodBeat.i(102959);
       paramContext = (h.a)parama;
-      m.a(((h)parama1).header, paramContext.nOq);
+      m.a(((h)parama1).header, paramContext.ors);
       AppMethodBeat.o(102959);
     }
     
-    public final boolean aHs()
+    public final boolean aOh()
     {
       return false;
     }
@@ -77,7 +77,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.h
  * JD-Core Version:    0.7.0.1
  */

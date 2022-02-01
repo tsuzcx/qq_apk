@@ -6,11 +6,11 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.a;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.v;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.protocal.protobuf.dnz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.dtq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONObject;
 
 @Deprecated
@@ -18,66 +18,66 @@ public final class r
   extends c
   implements i
 {
-  private n ccI;
-  private l chM;
+  private n bZF;
+  private l ceH;
   
-  public final String BF()
+  public final void BE()
+  {
+    AppMethodBeat.i(44954);
+    aUp();
+    AppMethodBeat.o(44954);
+  }
+  
+  public final String Bj()
   {
     AppMethodBeat.i(44957);
-    Object localObject = DL();
-    String str = getRuntime().getAppConfig().jbB;
+    Object localObject = Do();
+    String str = getRuntime().getAppConfig().jBO;
     localObject = String.format("var __wxConfig = %s;\nvar __wxIndexPage = \"%s\"", new Object[] { ((JSONObject)localObject).toString(), str });
     AppMethodBeat.o(44957);
     return localObject;
   }
   
-  public final void Ca()
-  {
-    AppMethodBeat.i(44954);
-    aNz();
-    AppMethodBeat.o(44954);
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.jsruntime.i DI()
+  public final com.tencent.mm.plugin.appbrand.jsruntime.i Dl()
   {
     AppMethodBeat.i(44952);
-    this.ccI = new n();
-    n localn = this.ccI;
+    this.bZF = new n();
+    n localn = this.bZF;
     AppMethodBeat.o(44952);
     return localn;
   }
   
-  public final void ch(String paramString)
+  public final void bX(String paramString)
   {
     AppMethodBeat.i(44958);
-    ad.d("MicroMsg.RemoteDebugService", "RemoteDebugInfo");
-    dnz localdnz = new dnz();
-    localdnz.EEy = getRuntime().aNd().getCurrentPage().getCurrentPageView().aOd();
-    localdnz.EEx = paramString;
-    paramString = u.a(localdnz, this.chM, "domEvent");
-    this.ccI.a(paramString);
+    ac.d("MicroMsg.RemoteDebugService", "RemoteDebugInfo");
+    dtq localdtq = new dtq();
+    localdtq.GbL = getRuntime().aTT().getCurrentPage().getCurrentPageView().aUT();
+    localdtq.GbK = paramString;
+    paramString = u.a(localdtq, this.ceH, "domEvent");
+    this.bZF.a(paramString);
     AppMethodBeat.o(44958);
   }
   
-  public final void ci(String paramString) {}
+  public final void bY(String paramString) {}
   
   public final void d(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(44955);
     super.d(paramAppBrandRuntime);
-    aXB();
-    if (u.jhw != null)
+    bey();
+    if (u.jHL != null)
     {
-      this.chM = u.jhw;
-      u.jhw = null;
+      this.ceH = u.jHL;
+      u.jHL = null;
     }
     for (;;)
     {
-      this.chM.a(this, getRuntime().aNc().extInfo);
-      this.ccI.a(this.chM);
+      this.ceH.a(this, getRuntime().aTS().extInfo);
+      this.bZF.a(this.ceH);
       AppMethodBeat.o(44955);
       return;
-      this.chM = new l();
+      this.ceH = new l();
     }
   }
   
@@ -85,16 +85,16 @@ public final class r
   {
     AppMethodBeat.i(44953);
     String str = paramString;
-    if (bt.isNullOrNil(paramString)) {
+    if (bs.isNullOrNil(paramString)) {
       str = "{}";
     }
-    this.ccI.W(paramInt, str);
+    this.bZF.X(paramInt, str);
     AppMethodBeat.o(44953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.r
  * JD-Core Version:    0.7.0.1
  */

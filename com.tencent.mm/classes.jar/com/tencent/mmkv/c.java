@@ -7,9 +7,9 @@ public enum c
   static
   {
     AppMethodBeat.i(13542);
-    IgQ = new c("OnErrorDiscard", 0);
-    IgR = new c("OnErrorRecover", 1);
-    IgS = new c[] { IgQ, IgR };
+    JIy = new c("OnErrorDiscard", 0);
+    JIz = new c("OnErrorRecover", 1);
+    JIA = new c[] { JIy, JIz };
     AppMethodBeat.o(13542);
   }
   

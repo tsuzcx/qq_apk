@@ -1,69 +1,81 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import java.util.LinkedList;
 
 public final class bq
-  extends j<bp>
+  extends com.tencent.mm.bw.a
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  public LinkedList<br> GZH;
   
-  static
+  public bq()
   {
-    AppMethodBeat.i(32885);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bp.info, "OpenMsgListener") };
-    AppMethodBeat.o(32885);
+    AppMethodBeat.i(43274);
+    this.GZH = new LinkedList();
+    AppMethodBeat.o(43274);
   }
   
-  public bq(e parame)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    super(parame, bp.info, "OpenMsgListener", null);
-    AppMethodBeat.i(32881);
-    this.db = parame;
-    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
-    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
-    AppMethodBeat.o(32881);
-  }
-  
-  public final bp aIZ(String paramString)
-  {
-    AppMethodBeat.i(32882);
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(43275);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(32882);
-      return null;
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.GZH);
+      AppMethodBeat.o(43275);
+      return 0;
     }
-    Cursor localCursor = this.db.a("OpenMsgListener", null, "appId=?", new String[] { bt.aFQ(paramString) }, null, null, null, 2);
-    if (!localCursor.moveToFirst())
+    if (paramInt == 1)
     {
-      ad.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
-      localCursor.close();
-      AppMethodBeat.o(32882);
-      return null;
+      paramInt = f.a.a.a.c(1, 8, this.GZH);
+      AppMethodBeat.o(43275);
+      return paramInt + 0;
     }
-    paramString = new bp();
-    paramString.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(32882);
-    return paramString;
-  }
-  
-  public final Cursor eMN()
-  {
-    AppMethodBeat.i(32883);
-    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
-    AppMethodBeat.o(32883);
-    return localCursor;
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.GZH.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      AppMethodBeat.o(43275);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      bq localbq = (bq)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(43275);
+        return -1;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new br();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((br)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localbq.GZH.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(43275);
+      return 0;
+    }
+    AppMethodBeat.o(43275);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.bq
  * JD-Core Version:    0.7.0.1
  */

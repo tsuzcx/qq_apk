@@ -10,12 +10,12 @@ import d.l.b.a.b.h.i.f;
 public final class a
   extends d.l.b.a.b.k.a
 {
-  public static final a JVz;
+  public static final a LIS;
   
   static
   {
     AppMethodBeat.i(60386);
-    JVz = new a();
+    LIS = new a();
     AppMethodBeat.o(60386);
   }
   
@@ -33,7 +33,7 @@ public final class a
       AppMethodBeat.o(60384);
       return "default-package";
     }
-    paramb = paramb.fHe().qV();
+    paramb = paramb.fZI().rf();
     k.g(paramb, "fqName.shortName().asString()");
     AppMethodBeat.o(60384);
     return paramb;
@@ -41,7 +41,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.a.a
  * JD-Core Version:    0.7.0.1
  */

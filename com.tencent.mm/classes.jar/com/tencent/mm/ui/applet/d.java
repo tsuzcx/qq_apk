@@ -18,108 +18,108 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.d.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.cj.d.b;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.lang.ref.WeakReference;
 
 public final class d
 {
-  private static int FUB = 0;
+  private static int Huq = 0;
   
-  public static void jE(Context paramContext)
+  public static void jP(Context paramContext)
   {
     AppMethodBeat.i(33846);
-    if (FUB > 0)
+    if (Huq > 0)
     {
       AppMethodBeat.o(33846);
       return;
     }
     paramContext = new a(paramContext, LayoutInflater.from(paramContext).inflate(2131495800, null));
-    paramContext.FUj.addView(paramContext.FUi, paramContext.FUk);
-    FUB += 1;
+    paramContext.HtY.addView(paramContext.HtX, paramContext.HtZ);
+    Huq += 1;
     AppMethodBeat.o(33846);
   }
   
   public static final class a
   {
-    boolean FUC;
-    d.b FUD;
-    com.tencent.mm.ck.d.a FUE;
-    int FUF;
-    ap FUG;
-    FrameLayout FUi;
-    WindowManager FUj;
-    WindowManager.LayoutParams FUk;
-    private ViewGroup.LayoutParams FUl;
+    FrameLayout HtX;
+    WindowManager HtY;
+    WindowManager.LayoutParams HtZ;
+    private ViewGroup.LayoutParams Hua;
+    boolean Hur;
+    d.b Hus;
+    com.tencent.mm.cj.d.a Hut;
+    ao Huu;
     Context context;
-    ImageView dnd;
-    ProgressBar dnf;
+    ImageView dkL;
+    ProgressBar dkN;
     View mView;
-    TextView sgI;
+    int rDB;
+    TextView toC;
     
     public a(final Context paramContext, View paramView)
     {
       AppMethodBeat.i(33843);
-      this.FUC = false;
-      this.FUD = new d.b()
+      this.Hur = false;
+      this.Hus = new d.b()
       {
-        public final void eOO()
+        public final void fes()
         {
           AppMethodBeat.i(33838);
-          d.a.this.jF(d.a.this.context);
+          d.a.this.jQ(d.a.this.context);
           Toast.makeText(d.a.this.context, "trace file has saved ", 0).show();
           AppMethodBeat.o(33838);
         }
       };
-      this.FUF = 0;
-      this.FUG = new ap()
+      this.rDB = 0;
+      this.Huu = new ao()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(33842);
-          if (d.a.this.sgI.getVisibility() != 0)
+          if (d.a.this.toC.getVisibility() != 0)
           {
-            d.a.this.FUF = 0;
+            d.a.this.rDB = 0;
             AppMethodBeat.o(33842);
             return;
           }
           d.a locala = d.a.this;
-          locala.FUF += 1;
-          d.a.this.eSp();
+          locala.rDB += 1;
+          d.a.this.fhZ();
           super.handleMessage(paramAnonymousMessage);
           AppMethodBeat.o(33842);
         }
       };
-      if ((this.FUi != null) && (this.FUj != null))
+      if ((this.HtX != null) && (this.HtY != null))
       {
         AppMethodBeat.o(33843);
         return;
       }
-      com.tencent.mm.ck.d.eOM().FFo = new WeakReference(this.FUD);
-      this.sgI = ((TextView)paramView.findViewById(2131305811));
-      this.dnd = ((ImageView)paramView.findViewById(2131297631));
+      com.tencent.mm.cj.d.feq().Her = new WeakReference(this.Hus);
+      this.toC = ((TextView)paramView.findViewById(2131305811));
+      this.dkL = ((ImageView)paramView.findViewById(2131297631));
       ((ImageView)paramView.findViewById(2131298992)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(33839);
-          if ((d.a.this.FUC) && (d.a.this.dnf.getVisibility() != 0)) {
-            com.tencent.mm.ck.d.eOM().b(d.a.this.FUE);
+          if ((d.a.this.Hur) && (d.a.this.dkN.getVisibility() != 0)) {
+            com.tencent.mm.cj.d.feq().b(d.a.this.Hut);
           }
           paramAnonymousView = d.a.this;
           try
           {
-            if (paramAnonymousView.FUj != null)
+            if (paramAnonymousView.HtY != null)
             {
-              if (paramAnonymousView.FUi != null) {
-                paramAnonymousView.FUj.removeView(paramAnonymousView.FUi);
+              if (paramAnonymousView.HtX != null) {
+                paramAnonymousView.HtY.removeView(paramAnonymousView.HtX);
               }
-              paramAnonymousView.FUj = null;
+              paramAnonymousView.HtY = null;
             }
-            if (paramAnonymousView.FUi != null)
+            if (paramAnonymousView.HtX != null)
             {
-              paramAnonymousView.FUi.removeAllViews();
-              paramAnonymousView.FUi = null;
+              paramAnonymousView.HtX.removeAllViews();
+              paramAnonymousView.HtX = null;
             }
             paramAnonymousView.mView = null;
           }
@@ -128,37 +128,37 @@ public final class d
             label103:
             break label103;
           }
-          d.eSo();
+          d.fhY();
           AppMethodBeat.o(33839);
         }
       });
-      this.dnf = ((ProgressBar)paramView.findViewById(2131302644));
-      this.dnf.setVisibility(8);
+      this.dkN = ((ProgressBar)paramView.findViewById(2131302644));
+      this.dkN.setVisibility(8);
       this.context = paramContext;
-      this.FUk = new WindowManager.LayoutParams();
-      this.FUk.height = -2;
-      this.FUk.width = -2;
-      this.FUj = ((WindowManager)paramContext.getSystemService("window"));
-      this.FUk.x = 0;
-      this.FUk.y = 0;
-      this.FUk.flags = 40;
-      this.FUk.type = 2002;
+      this.HtZ = new WindowManager.LayoutParams();
+      this.HtZ.height = -2;
+      this.HtZ.width = -2;
+      this.HtY = ((WindowManager)paramContext.getSystemService("window"));
+      this.HtZ.x = 0;
+      this.HtZ.y = 0;
+      this.HtZ.flags = 40;
+      this.HtZ.type = 2002;
       this.mView = paramView;
-      this.sgI.setVisibility(8);
-      this.FUk.gravity = 51;
-      this.FUk.format = 1;
-      this.FUi = new FrameLayout(paramContext);
-      this.FUi.setPadding(4, 4, 4, 4);
-      this.FUl = new ViewGroup.LayoutParams(-2, -2);
-      this.FUi.addView(this.mView, this.FUl);
+      this.toC.setVisibility(8);
+      this.HtZ.gravity = 51;
+      this.HtZ.format = 1;
+      this.HtX = new FrameLayout(paramContext);
+      this.HtX.setPadding(4, 4, 4, 4);
+      this.Hua = new ViewGroup.LayoutParams(-2, -2);
+      this.HtX.addView(this.mView, this.Hua);
       paramContext = paramContext.getResources().getDisplayMetrics();
-      this.FUi.setOnTouchListener(new View.OnTouchListener()
+      this.HtX.setOnTouchListener(new View.OnTouchListener()
       {
-        int FUn;
-        int FUo;
-        int FUp;
-        int FUq;
-        long FUr;
+        int Huc;
+        int Hud;
+        int Hue;
+        int Huf;
+        long Hug;
         
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -170,78 +170,78 @@ public final class d
           {
             AppMethodBeat.o(33841);
             return false;
-            this.FUn = ((int)paramAnonymousMotionEvent.getRawX() - d.a.this.FUk.x);
-            this.FUo = ((int)paramAnonymousMotionEvent.getRawY() - d.a.this.FUk.y);
-            this.FUr = System.currentTimeMillis();
+            this.Huc = ((int)paramAnonymousMotionEvent.getRawX() - d.a.this.HtZ.x);
+            this.Hud = ((int)paramAnonymousMotionEvent.getRawY() - d.a.this.HtZ.y);
+            this.Hug = System.currentTimeMillis();
             continue;
-            this.FUp = (paramContext.widthPixels - d.a.this.FUk.width - 1);
-            this.FUq = (paramContext.heightPixels - d.a.this.FUk.height - 1);
-            d.a.this.FUk.x = ((int)paramAnonymousMotionEvent.getRawX() - this.FUn);
-            d.a.this.FUk.y = ((int)paramAnonymousMotionEvent.getRawY() - this.FUo);
-            paramAnonymousView = d.a.this.FUk;
-            if (d.a.this.FUk.x < 0)
+            this.Hue = (paramContext.widthPixels - d.a.this.HtZ.width - 1);
+            this.Huf = (paramContext.heightPixels - d.a.this.HtZ.height - 1);
+            d.a.this.HtZ.x = ((int)paramAnonymousMotionEvent.getRawX() - this.Huc);
+            d.a.this.HtZ.y = ((int)paramAnonymousMotionEvent.getRawY() - this.Hud);
+            paramAnonymousView = d.a.this.HtZ;
+            if (d.a.this.HtZ.x < 0)
             {
               i = 0;
               label204:
               paramAnonymousView.x = i;
-              paramAnonymousView = d.a.this.FUk;
-              if (d.a.this.FUk.x <= this.FUp) {
+              paramAnonymousView = d.a.this.HtZ;
+              if (d.a.this.HtZ.x <= this.Hue) {
                 break label350;
               }
-              i = this.FUp;
+              i = this.Hue;
               label239:
               paramAnonymousView.x = i;
-              paramAnonymousView = d.a.this.FUk;
-              if (d.a.this.FUk.y >= 0) {
+              paramAnonymousView = d.a.this.HtZ;
+              if (d.a.this.HtZ.y >= 0) {
                 break label364;
               }
               i = 0;
               label267:
               paramAnonymousView.y = i;
-              paramAnonymousView = d.a.this.FUk;
-              if (d.a.this.FUk.y <= this.FUq) {
+              paramAnonymousView = d.a.this.HtZ;
+              if (d.a.this.HtZ.y <= this.Huf) {
                 break label378;
               }
             }
             label350:
             label364:
             label378:
-            for (int i = this.FUq;; i = d.a.this.FUk.y)
+            for (int i = this.Huf;; i = d.a.this.HtZ.y)
             {
               paramAnonymousView.y = i;
-              d.a.this.FUj.updateViewLayout(d.a.this.FUi, d.a.this.FUk);
+              d.a.this.HtY.updateViewLayout(d.a.this.HtX, d.a.this.HtZ);
               break;
-              i = d.a.this.FUk.x;
+              i = d.a.this.HtZ.x;
               break label204;
-              i = d.a.this.FUk.x;
+              i = d.a.this.HtZ.x;
               break label239;
-              i = d.a.this.FUk.y;
+              i = d.a.this.HtZ.y;
               break label267;
             }
-            if (System.currentTimeMillis() - this.FUr < 300L)
+            if (System.currentTimeMillis() - this.Hug < 300L)
             {
               paramAnonymousView = d.a.this;
-              paramAnonymousView.FUG.removeMessages(0);
-              paramAnonymousView.FUF = 0;
-              if (!paramAnonymousView.FUC) {
+              paramAnonymousView.Huu.removeMessages(0);
+              paramAnonymousView.rDB = 0;
+              if (!paramAnonymousView.Hur) {
                 break;
               }
-              paramAnonymousView.dnf.setVisibility(0);
-              paramAnonymousView.dnd.setVisibility(4);
-              if (!com.tencent.mm.ck.d.eOM().b(paramAnonymousView.FUE)) {
-                paramAnonymousView.jF(paramAnonymousView.context);
+              paramAnonymousView.dkN.setVisibility(0);
+              paramAnonymousView.dkL.setVisibility(4);
+              if (!com.tencent.mm.cj.d.feq().b(paramAnonymousView.Hut)) {
+                paramAnonymousView.jQ(paramAnonymousView.context);
               }
             }
           }
-          paramAnonymousView.dnd.setVisibility(0);
-          paramAnonymousView.dnd.setBackgroundDrawable(paramAnonymousView.context.getResources().getDrawable(2131234419));
-          if (!paramAnonymousView.FUC) {}
+          paramAnonymousView.dkL.setVisibility(0);
+          paramAnonymousView.dkL.setBackgroundDrawable(paramAnonymousView.context.getResources().getDrawable(2131234419));
+          if (!paramAnonymousView.Hur) {}
           for (boolean bool = true;; bool = false)
           {
-            paramAnonymousView.FUC = bool;
-            paramAnonymousView.FUE = new com.tencent.mm.ck.d.a(null, 6, 8, 0);
-            com.tencent.mm.ck.d.eOM().c(paramAnonymousView.FUE);
-            paramAnonymousView.eSp();
+            paramAnonymousView.Hur = bool;
+            paramAnonymousView.Hut = new com.tencent.mm.cj.d.a(null, 6, 8, 0);
+            com.tencent.mm.cj.d.feq().c(paramAnonymousView.Hut);
+            paramAnonymousView.fhZ();
             break;
           }
         }
@@ -249,33 +249,33 @@ public final class d
       AppMethodBeat.o(33843);
     }
     
-    final void eSp()
+    final void fhZ()
     {
       AppMethodBeat.i(33845);
-      this.sgI.setText(this.FUF);
-      this.FUG.sendEmptyMessageDelayed(0, 1000L);
+      this.toC.setText(this.rDB);
+      this.Huu.sendEmptyMessageDelayed(0, 1000L);
       AppMethodBeat.o(33845);
     }
     
-    final void jF(Context paramContext)
+    final void jQ(Context paramContext)
     {
       boolean bool = false;
       AppMethodBeat.i(33844);
-      this.dnd.setVisibility(0);
-      this.dnf.setVisibility(4);
-      if (!this.FUC) {
+      this.dkL.setVisibility(0);
+      this.dkN.setVisibility(4);
+      if (!this.Hur) {
         bool = true;
       }
-      this.FUC = bool;
-      this.dnd.setBackgroundDrawable(paramContext.getResources().getDrawable(2131234418));
-      this.sgI.setVisibility(8);
+      this.Hur = bool;
+      this.dkL.setBackgroundDrawable(paramContext.getResources().getDrawable(2131234418));
+      this.toC.setVisibility(8);
       AppMethodBeat.o(33844);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.applet.d
  * JD-Core Version:    0.7.0.1
  */

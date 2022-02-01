@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.protocal.protobuf.pw;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class l
 {
-  private static l sXB;
-  List<pp> sOM;
+  private static l ufO;
+  List<pw> tWZ;
   
   static
   {
     AppMethodBeat.i(56227);
-    sXB = new l();
+    ufO = new l();
     AppMethodBeat.o(56227);
   }
   
   private l()
   {
     AppMethodBeat.i(56226);
-    this.sOM = new ArrayList(8);
+    this.tWZ = new ArrayList(8);
     AppMethodBeat.o(56226);
   }
   
-  public static l cKK()
+  public static l cYp()
   {
-    return sXB;
+    return ufO;
   }
 }
 

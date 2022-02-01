@@ -3,8 +3,8 @@ package com.google.c.d;
 public final class e
   extends n
 {
-  static final int[] bLH;
-  static final int bLT = arrayOfInt[39];
+  static final int bJB = arrayOfInt[39];
+  static final int[] bJp;
   
   static
   {
@@ -54,12 +54,12 @@ public final class e
     arrayOfInt[42] = '';
     arrayOfInt[43] = 42;
     arrayOfInt;
-    bLH = arrayOfInt;
+    bJp = arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.d.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,54 +2,54 @@ package com.tencent.mm.plugin.voip_cs.d;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class c
 {
-  public static final int tRK;
-  public static final int tRL;
-  public static final int tRM;
-  public static final int tRN;
-  public static final int tRP;
-  public static final int tRS;
-  public static final int tRU;
-  public static final int tSa;
-  public static final int tSc;
-  public static final int tSf;
-  private static int zDV;
+  private static int AWi;
+  public static final int rTi;
+  public static final int vaB;
+  public static final int vaH;
+  public static final int vaJ;
+  public static final int vaM;
+  public static final int vas;
+  public static final int vat;
+  public static final int vau;
+  public static final int vaw;
+  public static final int vaz;
   
   static
   {
     AppMethodBeat.i(125492);
-    tRK = a.fromDPToPix(aj.getContext(), 3);
-    tRL = a.fromDPToPix(aj.getContext(), 4);
-    tRM = a.fromDPToPix(aj.getContext(), 8);
-    tRN = a.fromDPToPix(aj.getContext(), 10);
-    tRP = a.fromDPToPix(aj.getContext(), 14);
-    tRS = a.fromDPToPix(aj.getContext(), 30);
-    tRU = a.fromDPToPix(aj.getContext(), 32);
-    tSc = a.fromDPToPix(aj.getContext(), 96);
-    tSa = a.fromDPToPix(aj.getContext(), 76);
-    tSf = a.fromDPToPix(aj.getContext(), 230);
-    zDV = 0;
+    vas = a.fromDPToPix(ai.getContext(), 3);
+    rTi = a.fromDPToPix(ai.getContext(), 4);
+    vat = a.fromDPToPix(ai.getContext(), 8);
+    vau = a.fromDPToPix(ai.getContext(), 10);
+    vaw = a.fromDPToPix(ai.getContext(), 14);
+    vaz = a.fromDPToPix(ai.getContext(), 30);
+    vaB = a.fromDPToPix(ai.getContext(), 32);
+    vaJ = a.fromDPToPix(ai.getContext(), 96);
+    vaH = a.fromDPToPix(ai.getContext(), 76);
+    vaM = a.fromDPToPix(ai.getContext(), 230);
+    AWi = 0;
     AppMethodBeat.o(125492);
   }
   
-  public static int gs(Context paramContext)
+  public static int gE(Context paramContext)
   {
     AppMethodBeat.i(125491);
-    if (zDV == 0) {
-      zDV = a.hW(paramContext);
+    if (AWi == 0) {
+      AWi = a.ih(paramContext);
     }
-    int i = zDV;
+    int i = AWi;
     AppMethodBeat.o(125491);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.d.c
  * JD-Core Version:    0.7.0.1
  */

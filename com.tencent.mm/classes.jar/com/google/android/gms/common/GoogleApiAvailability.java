@@ -203,10 +203,10 @@ public class GoogleApiAvailability
       return;
       ((Notification.Builder)localObject1).setContentIntent(paramPendingIntent);
       break;
-      localObject2 = new s.c(paramContext).as(17301642).i(((Resources)localObject2).getString(2131757541)).g(System.currentTimeMillis()).F(true);
-      ((s.c)localObject2).Ew = paramPendingIntent;
+      localObject2 = new s.c(paramContext).as(17301642).i(((Resources)localObject2).getString(2131757541)).i(System.currentTimeMillis()).F(true);
+      ((s.c)localObject2).Fu = paramPendingIntent;
       paramPendingIntent = ((s.c)localObject2).f(str).g((CharSequence)localObject1);
-      paramPendingIntent.EN = true;
+      paramPendingIntent.FL = true;
       paramPendingIntent = paramPendingIntent.a(new s.b().e((CharSequence)localObject1));
       if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
         paramPendingIntent.mChannelId = zza(paramContext, localNotificationManager);

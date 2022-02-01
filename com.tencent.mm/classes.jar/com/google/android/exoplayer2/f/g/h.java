@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static final Pattern bvA;
-  private static final Pattern bvz;
+  private static final Pattern bty;
+  private static final Pattern btz;
   
   static
   {
     AppMethodBeat.i(92916);
-    bvz = Pattern.compile("^NOTE(( |\t).*)?$");
-    bvA = Pattern.compile("^﻿?WEBVTT(( |\t).*)?$");
+    bty = Pattern.compile("^NOTE(( |\t).*)?$");
+    btz = Pattern.compile("^﻿?WEBVTT(( |\t).*)?$");
     AppMethodBeat.o(92916);
   }
   
@@ -22,7 +22,7 @@ public final class h
   {
     AppMethodBeat.i(92912);
     paramm = paramm.readLine();
-    if ((paramm == null) || (!bvA.matcher(paramm).matches()))
+    if ((paramm == null) || (!btz.matcher(paramm).matches()))
     {
       paramm = new com.google.android.exoplayer2.f.f("Expected WEBVTT. Got ".concat(String.valueOf(paramm)));
       AppMethodBeat.o(92912);
@@ -41,7 +41,7 @@ public final class h
       if (localObject == null) {
         break;
       }
-      if (bvz.matcher((CharSequence)localObject).matches()) {
+      if (bty.matcher((CharSequence)localObject).matches()) {
         for (;;)
         {
           localObject = paramm.readLine();
@@ -50,7 +50,7 @@ public final class h
           }
         }
       }
-      localObject = f.bvo.matcher((CharSequence)localObject);
+      localObject = f.btn.matcher((CharSequence)localObject);
     } while (!((Matcher)localObject).matches());
     AppMethodBeat.o(92915);
     return localObject;
@@ -58,21 +58,7 @@ public final class h
     return null;
   }
   
-  public static float aA(String paramString)
-  {
-    AppMethodBeat.i(92914);
-    if (!paramString.endsWith("%"))
-    {
-      paramString = new NumberFormatException("Percentages must end with %");
-      AppMethodBeat.o(92914);
-      throw paramString;
-    }
-    float f = Float.parseFloat(paramString.substring(0, paramString.length() - 1)) / 100.0F;
-    AppMethodBeat.o(92914);
-    return f;
-  }
-  
-  public static long az(String paramString)
+  public static long au(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(92913);
@@ -88,6 +74,20 @@ public final class h
     long l2 = Long.parseLong(paramString[1]);
     AppMethodBeat.o(92913);
     return (l2 + l1 * 1000L) * 1000L;
+  }
+  
+  public static float av(String paramString)
+  {
+    AppMethodBeat.i(92914);
+    if (!paramString.endsWith("%"))
+    {
+      paramString = new NumberFormatException("Percentages must end with %");
+      AppMethodBeat.o(92914);
+      throw paramString;
+    }
+    float f = Float.parseFloat(paramString.substring(0, paramString.length() - 1)) / 100.0F;
+    AppMethodBeat.o(92914);
+    return f;
   }
 }
 

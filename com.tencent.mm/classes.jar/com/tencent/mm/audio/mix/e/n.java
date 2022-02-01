@@ -15,13 +15,13 @@ public final class n
       int k = 0;
       while (j < paramInt1)
       {
-        k += this.cVN[j][i];
+        k += this.cTj[j][i];
         j += 1;
       }
-      this.cVQ[i] = ((short)(k / paramInt1));
+      this.cTm[i] = ((short)(k / paramInt1));
       i += 1;
     }
-    byte[] arrayOfByte = cg(paramInt3, paramInt2);
+    byte[] arrayOfByte = ce(paramInt3, paramInt2);
     AppMethodBeat.o(136882);
     return arrayOfByte;
   }

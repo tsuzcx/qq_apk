@@ -8,32 +8,32 @@ import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.plugin.appbrand.au.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.Locale;
 
 public final class u
   extends q
 {
-  private static volatile u jeD;
+  private static volatile u jER;
   
   /* Error */
-  public static aa Gb(String paramString)
+  public static aa Kf(String paramString)
   {
     // Byte code:
     //   0: ldc 20
     //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 32	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 32	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifne +9 -> 18
-    //   12: invokestatic 38	com/tencent/mm/kernel/g:afw	()Z
+    //   12: invokestatic 38	com/tencent/mm/kernel/g:agM	()Z
     //   15: ifne +10 -> 25
     //   18: ldc 20
     //   20: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aconst_null
     //   24: areturn
-    //   25: invokestatic 47	com/tencent/mm/plugin/appbrand/app/j:aOC	()Lcom/tencent/mm/plugin/appbrand/config/v;
+    //   25: invokestatic 47	com/tencent/mm/plugin/appbrand/app/j:aVu	()Lcom/tencent/mm/plugin/appbrand/config/v;
     //   28: aload_0
     //   29: bipush 9
     //   31: anewarray 49	java/lang/String
@@ -99,61 +99,61 @@ public final class u
     //   127: aload_2
     //   128: aload_3
     //   129: getfield 100	com/tencent/mm/plugin/appbrand/config/WxaAttributes:field_brandIconURL	Ljava/lang/String;
-    //   132: putfield 103	com/tencent/mm/plugin/appbrand/config/aa:dkD	Ljava/lang/String;
+    //   132: putfield 103	com/tencent/mm/plugin/appbrand/config/aa:dic	Ljava/lang/String;
     //   135: aload_2
     //   136: aload_3
-    //   137: invokevirtual 107	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTO	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$c;
-    //   140: getfield 113	com/tencent/mm/plugin/appbrand/config/WxaAttributes$c:jfo	Ljava/util/List;
-    //   143: putfield 114	com/tencent/mm/plugin/appbrand/config/aa:jfo	Ljava/util/List;
+    //   137: invokevirtual 107	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baM	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$c;
+    //   140: getfield 113	com/tencent/mm/plugin/appbrand/config/WxaAttributes$c:jFD	Ljava/util/List;
+    //   143: putfield 114	com/tencent/mm/plugin/appbrand/config/aa:jFD	Ljava/util/List;
     //   146: aload_3
-    //   147: invokevirtual 118	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTP	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
+    //   147: invokevirtual 118	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baN	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
     //   150: ifnonnull +90 -> 240
     //   153: iconst_m1
     //   154: istore_1
     //   155: aload_2
     //   156: iload_1
-    //   157: putfield 122	com/tencent/mm/plugin/appbrand/config/aa:cfk	I
+    //   157: putfield 122	com/tencent/mm/plugin/appbrand/config/aa:ccg	I
     //   160: aload_2
     //   161: aload_3
-    //   162: invokevirtual 126	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTQ	()Ljava/util/List;
-    //   165: putfield 129	com/tencent/mm/plugin/appbrand/config/aa:jfb	Ljava/util/List;
+    //   162: invokevirtual 126	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baO	()Ljava/util/List;
+    //   165: putfield 129	com/tencent/mm/plugin/appbrand/config/aa:jFq	Ljava/util/List;
     //   168: aload_2
     //   169: aload_3
-    //   170: invokevirtual 107	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTO	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$c;
-    //   173: getfield 133	com/tencent/mm/plugin/appbrand/config/WxaAttributes$c:jfn	Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$c$a;
-    //   176: getfield 138	com/tencent/mm/plugin/appbrand/config/WxaAttributes$c$a:cfU	I
-    //   179: putfield 139	com/tencent/mm/plugin/appbrand/config/aa:cfU	I
+    //   170: invokevirtual 107	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baM	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$c;
+    //   173: getfield 133	com/tencent/mm/plugin/appbrand/config/WxaAttributes$c:jFC	Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$c$a;
+    //   176: getfield 138	com/tencent/mm/plugin/appbrand/config/WxaAttributes$c$a:ccR	I
+    //   179: putfield 139	com/tencent/mm/plugin/appbrand/config/aa:ccR	I
     //   182: aload_2
     //   183: aload_3
-    //   184: invokevirtual 143	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTN	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$a;
-    //   187: getfield 148	com/tencent/mm/plugin/appbrand/config/WxaAttributes$a:cIB	I
-    //   190: putfield 151	com/tencent/mm/plugin/appbrand/config/aa:cfd	I
+    //   184: invokevirtual 143	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baL	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$a;
+    //   187: getfield 148	com/tencent/mm/plugin/appbrand/config/WxaAttributes$a:cFI	I
+    //   190: putfield 151	com/tencent/mm/plugin/appbrand/config/aa:cca	I
     //   193: aload_2
     //   194: aload_3
-    //   195: invokevirtual 143	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTN	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$a;
+    //   195: invokevirtual 143	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baL	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$a;
     //   198: getfield 154	com/tencent/mm/plugin/appbrand/config/WxaAttributes$a:originalFlag	I
     //   201: putfield 155	com/tencent/mm/plugin/appbrand/config/aa:originalFlag	I
     //   204: aload_2
     //   205: aload_3
-    //   206: invokevirtual 143	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTN	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$a;
-    //   209: getfield 158	com/tencent/mm/plugin/appbrand/config/WxaAttributes$a:jdh	Ljava/lang/String;
-    //   212: putfield 159	com/tencent/mm/plugin/appbrand/config/aa:jdh	Ljava/lang/String;
+    //   206: invokevirtual 143	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baL	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$a;
+    //   209: getfield 158	com/tencent/mm/plugin/appbrand/config/WxaAttributes$a:jDu	Ljava/lang/String;
+    //   212: putfield 159	com/tencent/mm/plugin/appbrand/config/aa:jDu	Ljava/lang/String;
     //   215: aload_3
     //   216: getfield 162	com/tencent/mm/plugin/appbrand/config/WxaAttributes:field_registerSource	Ljava/lang/String;
-    //   219: invokestatic 32	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   219: invokestatic 32	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   222: ifeq +49 -> 271
     //   225: ldc 164
     //   227: astore_0
     //   228: aload_2
     //   229: aload_0
-    //   230: putfield 167	com/tencent/mm/plugin/appbrand/config/aa:cJl	Ljava/lang/String;
+    //   230: putfield 167	com/tencent/mm/plugin/appbrand/config/aa:cGs	Ljava/lang/String;
     //   233: ldc 20
     //   235: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   238: aload_2
     //   239: areturn
     //   240: aload_3
-    //   241: invokevirtual 118	com/tencent/mm/plugin/appbrand/config/WxaAttributes:aTP	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
-    //   244: getfield 170	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:cfk	I
+    //   241: invokevirtual 118	com/tencent/mm/plugin/appbrand/config/WxaAttributes:baN	()Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;
+    //   244: getfield 170	com/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo:ccg	I
     //   247: istore_1
     //   248: goto -93 -> 155
     //   251: astore 4
@@ -165,7 +165,7 @@ public final class u
     //   262: iconst_0
     //   263: aload_0
     //   264: aastore
-    //   265: invokestatic 182	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   265: invokestatic 182	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   268: goto -53 -> 215
     //   271: new 184	org/json/JSONObject
     //   274: dup
@@ -198,19 +198,19 @@ public final class u
     //   271	290	300	java/lang/Exception
   }
   
-  public static com.tencent.mm.plugin.appbrand.backgroundfetch.a Gc(String paramString)
+  public static com.tencent.mm.plugin.appbrand.backgroundfetch.a Kg(String paramString)
   {
     AppMethodBeat.i(44891);
-    if (j.aOC() != null)
+    if (j.aVu() != null)
     {
-      paramString = j.aOC().d(paramString, new String[0]);
+      paramString = j.aVu().d(paramString, new String[0]);
       if (paramString != null)
       {
         com.tencent.mm.plugin.appbrand.backgroundfetch.a locala = new com.tencent.mm.plugin.appbrand.backgroundfetch.a();
-        locala.iXi = paramString.aTO().jfn.iXi;
-        locala.iXj = paramString.aTO().jfn.iXj;
-        locala.iXk = paramString.aTO().jfn.iXk;
-        locala.iXl = paramString.aTO().jfn.iXl;
+        locala.jxy = paramString.baM().jFC.jxy;
+        locala.jxz = paramString.baM().jFC.jxz;
+        locala.jxA = paramString.baM().jFC.jxA;
+        locala.jxB = paramString.baM().jFC.jxB;
         AppMethodBeat.o(44891);
         return locala;
       }
@@ -219,15 +219,15 @@ public final class u
     return null;
   }
   
-  public static boolean Gd(String paramString)
+  public static boolean Kh(String paramString)
   {
     AppMethodBeat.i(44893);
-    if (j.aOC() != null)
+    if (j.aVu() != null)
     {
-      paramString = j.aOC().d(paramString, new String[] { "appInfo" });
+      paramString = j.aVu().d(paramString, new String[] { "appInfo" });
       if (paramString != null)
       {
-        if ((paramString.aTN() != null) && (paramString.aTN().aTT()))
+        if ((paramString.baL() != null) && (paramString.baL().baR()))
         {
           AppMethodBeat.o(44893);
           return true;
@@ -240,10 +240,10 @@ public final class u
     return false;
   }
   
-  public static AppBrandSysConfigWC Ge(String paramString)
+  public static AppBrandSysConfigWC Ki(String paramString)
   {
     AppMethodBeat.i(44894);
-    paramString = j.aOC().e(paramString, new String[0]);
+    paramString = j.aVu().e(paramString, new String[0]);
     if (paramString != null)
     {
       paramString = d(paramString);
@@ -254,29 +254,29 @@ public final class u
     return null;
   }
   
-  public static long Gf(String paramString)
+  public static long Kj(String paramString)
   {
     AppMethodBeat.i(44896);
-    paramString = j.aOC().d(paramString, new String[] { "appInfo" });
-    if ((paramString == null) || (paramString.aTN() == null))
+    paramString = j.aVu().d(paramString, new String[] { "appInfo" });
+    if ((paramString == null) || (paramString.baL() == null))
     {
       AppMethodBeat.o(44896);
       return 0L;
     }
-    long l = paramString.aTN().cfT;
+    long l = paramString.baL().ccQ;
     AppMethodBeat.o(44896);
     return l;
   }
   
-  public static String[] Gg(String paramString)
+  public static String[] Kk(String paramString)
   {
     AppMethodBeat.i(44897);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44897);
       return null;
     }
-    Object localObject = j.aOC().d(paramString, new String[] { "roundedSquareIconURL", "bigHeadURL" });
+    Object localObject = j.aVu().d(paramString, new String[] { "roundedSquareIconURL", "bigHeadURL" });
     if (localObject == null)
     {
       AppMethodBeat.o(44897);
@@ -288,15 +288,15 @@ public final class u
     return new String[] { paramString, localObject };
   }
   
-  public static String Gh(String paramString)
+  public static String Kl(String paramString)
   {
     AppMethodBeat.i(44898);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44898);
       return null;
     }
-    paramString = j.aOC().d(paramString, new String[] { "appId" });
+    paramString = j.aVu().d(paramString, new String[] { "appId" });
     if (paramString == null)
     {
       AppMethodBeat.o(44898);
@@ -307,15 +307,15 @@ public final class u
     return paramString;
   }
   
-  public static String Gi(String paramString)
+  public static String Km(String paramString)
   {
     AppMethodBeat.i(44899);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44899);
       return null;
     }
-    paramString = j.aOC().e(paramString, new String[] { "nickname" });
+    paramString = j.aVu().e(paramString, new String[] { "nickname" });
     if (paramString == null)
     {
       AppMethodBeat.o(44899);
@@ -326,15 +326,15 @@ public final class u
     return paramString;
   }
   
-  public static String Gj(String paramString)
+  public static String Kn(String paramString)
   {
     AppMethodBeat.i(44900);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44900);
       return null;
     }
-    paramString = j.aOC().e(paramString, new String[] { "username" });
+    paramString = j.aVu().e(paramString, new String[] { "username" });
     if (paramString == null)
     {
       AppMethodBeat.o(44900);
@@ -345,16 +345,16 @@ public final class u
     return paramString;
   }
   
-  public static void Gk(String paramString)
+  public static void Ko(String paramString)
   {
     AppMethodBeat.i(44901);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44901);
       return;
     }
-    v localv = j.aOC();
-    if (!bt.isNullOrNil(paramString))
+    v localv = j.aVu();
+    if (!bs.isNullOrNil(paramString))
     {
       ContentValues localContentValues = new ContentValues(2);
       localContentValues.put("syncVersion", "");
@@ -364,24 +364,24 @@ public final class u
     AppMethodBeat.o(44901);
   }
   
-  public static void Gl(String paramString)
+  public static void Kp(String paramString)
   {
     AppMethodBeat.i(44902);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44902);
       return;
     }
     WxaAttributes localWxaAttributes = new WxaAttributes();
     localWxaAttributes.field_username = paramString;
-    j.aOC().delete(localWxaAttributes, new String[] { "username" });
+    j.aVu().delete(localWxaAttributes, new String[] { "username" });
     AppMethodBeat.o(44902);
   }
   
   public static AppBrandRecentTaskInfo a(String paramString1, String paramString2, int paramInt, long paramLong)
   {
     AppMethodBeat.i(44890);
-    WxaAttributes localWxaAttributes = j.aOC().d(paramString2, new String[] { "appId", "nickname", "shortNickname", "smallHeadURL", "appInfo", "versionInfo", "dynamicInfo" });
+    WxaAttributes localWxaAttributes = j.aVu().d(paramString2, new String[] { "appId", "nickname", "shortNickname", "smallHeadURL", "appInfo", "versionInfo", "dynamicInfo" });
     int j = 0;
     int i;
     if (localWxaAttributes == null)
@@ -408,7 +408,7 @@ public final class u
       {
         long l3 = 0L;
         l1 = l3;
-        if (j.a.qD(paramInt))
+        if (j.a.rq(paramInt))
         {
           if (localWxaAttributes != null) {
             break label339;
@@ -419,7 +419,7 @@ public final class u
         {
           com.tencent.mm.plugin.appbrand.appusage.u localu = (com.tencent.mm.plugin.appbrand.appusage.u)j.T(com.tencent.mm.plugin.appbrand.appusage.u.class);
           if (localu == null) {
-            ad.w("MicroMsg.WxaAttrStorageHelper", "assembleRecentInfo by username(%s) but NULL starAppStorage, maybe account released", new Object[] { paramString2 });
+            ac.w("MicroMsg.WxaAttrStorageHelper", "assembleRecentInfo by username(%s) but NULL starAppStorage, maybe account released", new Object[] { paramString2 });
           }
           String str5 = String.valueOf(paramString1);
           label167:
@@ -445,12 +445,12 @@ public final class u
               break label381;
             }
             str4 = "";
-            if ((localu == null) || (!localu.aV(paramString2, paramInt))) {
+            if ((localu == null) || (!localu.aZ(paramString2, paramInt))) {
               break label391;
             }
             bool1 = true;
             label212:
-            if ((localWxaAttributes == null) || (localWxaAttributes.aTO().jfn.cfU != 1)) {
+            if ((localWxaAttributes == null) || (localWxaAttributes.baM().jFC.ccR != 1)) {
               break label397;
             }
           }
@@ -465,11 +465,11 @@ public final class u
                 return paramString1;
                 try
                 {
-                  i = localWxaAttributes.aTN().cIB;
+                  i = localWxaAttributes.baL().cFI;
                 }
                 catch (NullPointerException localNullPointerException1)
                 {
-                  ad.e("MicroMsg.WxaAttrStorageHelper", "assembleRecentInfo, NULL appInfo, username = %s", new Object[] { paramString2 });
+                  ac.e("MicroMsg.WxaAttrStorageHelper", "assembleRecentInfo, NULL appInfo, username = %s", new Object[] { paramString2 });
                 }
               }
               break label73;
@@ -485,7 +485,7 @@ public final class u
                   label381:
                   try
                   {
-                    int k = localWxaAttributes.aTP().aAS;
+                    int k = localWxaAttributes.baN().aBM;
                     i = k;
                   }
                   catch (NullPointerException localNullPointerException4) {}
@@ -493,13 +493,13 @@ public final class u
                   label397:
                   try
                   {
-                    l1 = localWxaAttributes.aTN().cfT;
+                    l1 = localWxaAttributes.baL().ccQ;
                   }
                   catch (NullPointerException localNullPointerException3) {}
                 }
                 try
                 {
-                  l1 = localWxaAttributes.aTN().iVR;
+                  l1 = localWxaAttributes.baL().jwh;
                 }
                 catch (NullPointerException localNullPointerException2)
                 {
@@ -523,23 +523,23 @@ public final class u
     }
   }
   
-  public static u aTL()
+  public static u baJ()
   {
     AppMethodBeat.i(44883);
     Object localObject1;
-    if (j.aOC() == null)
+    if (j.aVu() == null)
     {
       localObject1 = new com.tencent.mm.model.b();
       AppMethodBeat.o(44883);
       throw ((Throwable)localObject1);
     }
-    if (jeD == null) {}
+    if (jER == null) {}
     try
     {
-      if (jeD == null) {
-        jeD = new u();
+      if (jER == null) {
+        jER = new u();
       }
-      localObject1 = jeD;
+      localObject1 = jER;
       AppMethodBeat.o(44883);
       return localObject1;
     }
@@ -558,46 +558,46 @@ public final class u
       try
       {
         AppBrandSysConfigLU localAppBrandSysConfigLU = (AppBrandSysConfigLU)new au.a() {}.newInstance();
-        localAppBrandSysConfigLU.dfM = paramWxaAttributes.field_nickname;
-        localAppBrandSysConfigLU.hGe = paramWxaAttributes.field_smallHeadURL;
+        localAppBrandSysConfigLU.ddh = paramWxaAttributes.field_nickname;
+        localAppBrandSysConfigLU.igG = paramWxaAttributes.field_smallHeadURL;
         localAppBrandSysConfigLU.appId = paramWxaAttributes.field_appId;
-        localAppBrandSysConfigLU.jdL = paramWxaAttributes.aTO().jfn.jdL;
-        localAppBrandSysConfigLU.cfx = paramWxaAttributes.aTO().jfn.cfx;
-        localAppBrandSysConfigLU.cfA = paramWxaAttributes.aTO().jfn.cfA;
-        localAppBrandSysConfigLU.cfB = paramWxaAttributes.aTO().jfn.cfB;
-        localAppBrandSysConfigLU.cfC = paramWxaAttributes.aTO().jfn.cfC;
-        localAppBrandSysConfigLU.cfD = paramWxaAttributes.aTO().jfn.cfD;
-        localAppBrandSysConfigLU.cfE = paramWxaAttributes.aTO().jfn.cfE;
-        localAppBrandSysConfigLU.cfz = paramWxaAttributes.aTO().jfn.cfz;
-        localAppBrandSysConfigLU.cfy = paramWxaAttributes.aTO().jfn.cfy;
-        localAppBrandSysConfigLU.cfF = paramWxaAttributes.aTO().jfn.jfr;
-        localAppBrandSysConfigLU.cfG = paramWxaAttributes.aTO().jfn.jfs;
-        localAppBrandSysConfigLU.cfH = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.aTN().jff));
-        localAppBrandSysConfigLU.cfI = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.aTN().jfg));
-        localAppBrandSysConfigLU.cfK = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.aTN().jfi));
-        localAppBrandSysConfigLU.cfJ = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.aTN().jfh));
-        localAppBrandSysConfigLU.cfL = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.aTN().jfj));
-        localAppBrandSysConfigLU.cfT = paramWxaAttributes.aTN().cfT;
-        localAppBrandSysConfigLU.jdQ = paramWxaAttributes.aTO().jfn.jdQ;
-        localAppBrandSysConfigLU.jdR = paramWxaAttributes.aTO().jfn.jdR;
-        localAppBrandSysConfigLU.cfM = paramWxaAttributes.aTO().jfn.cfM;
-        localAppBrandSysConfigLU.cfS = new String[] { paramWxaAttributes.field_roundedSquareIconURL, paramWxaAttributes.field_brandIconURL, paramWxaAttributes.field_bigHeadURL };
-        localAppBrandSysConfigLU.cfO = paramWxaAttributes.aTO().jfn.cfO;
-        localAppBrandSysConfigLU.cfP = paramWxaAttributes.aTO().jfn.jfp;
-        localAppBrandSysConfigLU.cfq = l.FQ(localAppBrandSysConfigLU.appId);
-        localAppBrandSysConfigLU.cfU = paramWxaAttributes.aTO().jfn.cfU;
+        localAppBrandSysConfigLU.jDZ = paramWxaAttributes.baM().jFC.jDZ;
+        localAppBrandSysConfigLU.ccu = paramWxaAttributes.baM().jFC.ccu;
+        localAppBrandSysConfigLU.ccx = paramWxaAttributes.baM().jFC.ccx;
+        localAppBrandSysConfigLU.ccy = paramWxaAttributes.baM().jFC.ccy;
+        localAppBrandSysConfigLU.ccz = paramWxaAttributes.baM().jFC.ccz;
+        localAppBrandSysConfigLU.ccA = paramWxaAttributes.baM().jFC.ccA;
+        localAppBrandSysConfigLU.ccB = paramWxaAttributes.baM().jFC.ccB;
+        localAppBrandSysConfigLU.ccw = paramWxaAttributes.baM().jFC.ccw;
+        localAppBrandSysConfigLU.ccv = paramWxaAttributes.baM().jFC.ccv;
+        localAppBrandSysConfigLU.ccC = paramWxaAttributes.baM().jFC.jFG;
+        localAppBrandSysConfigLU.ccD = paramWxaAttributes.baM().jFC.jFH;
+        localAppBrandSysConfigLU.ccE = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.baL().jFu));
+        localAppBrandSysConfigLU.ccF = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.baL().jFv));
+        localAppBrandSysConfigLU.ccH = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.baL().jFx));
+        localAppBrandSysConfigLU.ccG = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.baL().jFw));
+        localAppBrandSysConfigLU.ccI = ((ArrayList)com.tencent.luggage.h.b.c(new ArrayList(), paramWxaAttributes.baL().jFy));
+        localAppBrandSysConfigLU.ccQ = paramWxaAttributes.baL().ccQ;
+        localAppBrandSysConfigLU.jEe = paramWxaAttributes.baM().jFC.jEe;
+        localAppBrandSysConfigLU.jEf = paramWxaAttributes.baM().jFC.jEf;
+        localAppBrandSysConfigLU.ccJ = paramWxaAttributes.baM().jFC.ccJ;
+        localAppBrandSysConfigLU.ccP = new String[] { paramWxaAttributes.field_roundedSquareIconURL, paramWxaAttributes.field_brandIconURL, paramWxaAttributes.field_bigHeadURL };
+        localAppBrandSysConfigLU.ccL = paramWxaAttributes.baM().jFC.ccL;
+        localAppBrandSysConfigLU.ccM = paramWxaAttributes.baM().jFC.jFE;
+        localAppBrandSysConfigLU.ccn = l.JU(localAppBrandSysConfigLU.appId);
+        localAppBrandSysConfigLU.ccR = paramWxaAttributes.baM().jFC.ccR;
         paramWxaAttributes = (AppBrandSysConfigWC)localAppBrandSysConfigLU;
         if (paramWxaAttributes != null)
         {
-          paramWxaAttributes.cfN = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getInt("ClientBenchmarkLevel", -1);
-          paramWxaAttributes.cfr = "1".equals(j.Dh().get(paramWxaAttributes.appId + "_PerformancePanelEnabled", "0"));
+          paramWxaAttributes.ccK = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).ZY().getInt("ClientBenchmarkLevel", -1);
+          paramWxaAttributes.cco = "1".equals(j.CK().get(paramWxaAttributes.appId + "_PerformancePanelEnabled", "0"));
         }
         AppMethodBeat.o(44895);
         return paramWxaAttributes;
       }
       catch (Exception paramWxaAttributes)
       {
-        ad.e("MicroMsg.WxaAttrStorageHelper", "assembleSysConfig, <init> e = %s", new Object[] { paramWxaAttributes });
+        ac.e("MicroMsg.WxaAttrStorageHelper", "assembleSysConfig, <init> e = %s", new Object[] { paramWxaAttributes });
         AppMethodBeat.o(44895);
         return null;
       }
@@ -608,7 +608,7 @@ public final class u
   public static boolean j(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(44888);
-    paramBoolean = j.aOC().j(paramString, paramInt, paramBoolean);
+    paramBoolean = j.aVu().j(paramString, paramInt, paramBoolean);
     AppMethodBeat.o(44888);
     return paramBoolean;
   }
@@ -617,7 +617,7 @@ public final class u
   {
     try
     {
-      jeD = null;
+      jER = null;
       return;
     }
     finally {}
@@ -625,7 +625,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.u
  * JD-Core Version:    0.7.0.1
  */

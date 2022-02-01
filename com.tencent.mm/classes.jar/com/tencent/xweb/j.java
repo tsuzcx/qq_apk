@@ -1,9 +1,12 @@
 package com.tencent.xweb;
 
-public abstract interface j {}
+public abstract interface j
+{
+  public abstract void cancel();
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.j
  * JD-Core Version:    0.7.0.1
  */

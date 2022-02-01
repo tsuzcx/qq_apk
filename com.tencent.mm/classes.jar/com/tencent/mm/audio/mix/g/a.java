@@ -3,16 +3,16 @@ package com.tencent.mm.audio.mix.g;
 public final class a
   implements b
 {
-  private com.tencent.mm.aj.b cUz;
+  private com.tencent.mm.ai.b cRW;
   
-  public a(com.tencent.mm.aj.b paramb)
+  public a(com.tencent.mm.ai.b paramb)
   {
-    this.cUz = paramb;
+    this.cRW = paramb;
   }
   
-  public final com.tencent.mm.aj.b NW()
+  public final com.tencent.mm.ai.b NT()
   {
-    return this.cUz;
+    return this.cRW;
   }
 }
 

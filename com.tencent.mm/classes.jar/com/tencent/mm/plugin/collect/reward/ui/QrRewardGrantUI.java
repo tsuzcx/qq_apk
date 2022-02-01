@@ -17,8 +17,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.a.gf;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.a.gg;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.collect.reward.a.a.a;
 import com.tencent.mm.plugin.collect.reward.a.d;
@@ -26,13 +26,13 @@ import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.ta;
+import com.tencent.mm.protocal.protobuf.tk;
 import com.tencent.mm.sdk.b.c;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.wallet_core.b;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
@@ -41,53 +41,53 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 public class QrRewardGrantUI
   extends QrRewardBaseUI
 {
-  private RadioButton acV;
+  private RadioButton adP;
   private int channel;
-  private String dcE;
-  private String jBp;
-  private String nSY;
-  private String nVA;
-  private String nVB;
-  private c<gf> nVC;
-  private CdnImageView nVg;
-  private TextView nVh;
-  private TextView nVi;
-  private WalletTextView nVj;
-  private LinearLayout nVk;
-  private WalletFormView nVl;
-  private MMEditText nVm;
-  private Button nVn;
-  private int nVo;
-  private int nVp;
-  private String nVq;
-  private String nVr;
-  private String nVs;
-  private String nVt;
-  private String nVu;
-  private String nVv;
-  private String nVw;
-  private String nVx;
-  private String nVy;
-  private int nVz;
+  private String dac;
+  private String kbL;
+  private String owt;
+  private CdnImageView oyB;
+  private TextView oyC;
+  private TextView oyD;
+  private WalletTextView oyE;
+  private LinearLayout oyF;
+  private WalletFormView oyG;
+  private MMEditText oyH;
+  private Button oyI;
+  private int oyJ;
+  private int oyK;
+  private String oyL;
+  private String oyM;
+  private String oyN;
+  private String oyO;
+  private String oyP;
+  private String oyQ;
+  private String oyR;
+  private String oyS;
+  private String oyT;
+  private int oyU;
+  private String oyV;
+  private String oyW;
+  private c<gg> oyX;
   
   public QrRewardGrantUI()
   {
     AppMethodBeat.i(63931);
-    this.nVC = new c() {};
+    this.oyX = new c() {};
     AppMethodBeat.o(63931);
   }
   
-  private void eN(String paramString1, String paramString2)
+  private void fa(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63937);
-    ad.i("MicroMsg.QrRewardGrantUI", "do pay check");
-    if (bt.isNullOrNil(this.dcE)) {
-      this.dcE = paramString1;
+    ac.i("MicroMsg.QrRewardGrantUI", "do pay check");
+    if (bs.isNullOrNil(this.dac)) {
+      this.dac = paramString1;
     }
-    if (bt.isNullOrNil(this.nSY)) {
-      this.nSY = paramString2;
+    if (bs.isNullOrNil(this.owt)) {
+      this.owt = paramString2;
     }
-    doSceneProgress(new d(this.dcE, this.nVr, this.nSY, this.nVo, this.nVs, this.nVt), false);
+    doSceneProgress(new d(this.dac, this.oyM, this.owt, this.oyJ, this.oyN, this.oyO), false);
     AppMethodBeat.o(63937);
   }
   
@@ -99,33 +99,33 @@ public class QrRewardGrantUI
   public void initView()
   {
     AppMethodBeat.i(63933);
-    this.nVg = ((CdnImageView)findViewById(2131303629));
-    this.nVh = ((TextView)findViewById(2131303630));
-    this.nVj = ((WalletTextView)findViewById(2131303634));
-    this.nVk = ((LinearLayout)findViewById(2131303633));
-    this.nVl = ((WalletFormView)findViewById(2131303631));
-    this.nVm = ((MMEditText)findViewById(2131303632));
-    this.nVn = ((Button)findViewById(2131303635));
-    this.nVi = ((TextView)findViewById(2131303628));
-    this.acV = ((RadioButton)findViewById(2131303705));
-    this.acV.setChecked(true);
-    this.nVi.setText(getString(2131762108, new Object[] { Math.round(this.nVz / 100.0F) }));
+    this.oyB = ((CdnImageView)findViewById(2131303629));
+    this.oyC = ((TextView)findViewById(2131303630));
+    this.oyE = ((WalletTextView)findViewById(2131303634));
+    this.oyF = ((LinearLayout)findViewById(2131303633));
+    this.oyG = ((WalletFormView)findViewById(2131303631));
+    this.oyH = ((MMEditText)findViewById(2131303632));
+    this.oyI = ((Button)findViewById(2131303635));
+    this.oyD = ((TextView)findViewById(2131303628));
+    this.adP = ((RadioButton)findViewById(2131303705));
+    this.adP.setChecked(true);
+    this.oyD.setText(getString(2131762108, new Object[] { Math.round(this.oyU / 100.0F) }));
     String str;
-    if (bt.isNullOrNil(this.nVB))
+    if (bs.isNullOrNil(this.oyW))
     {
-      a.b.a(this.nVg, this.nVu, 0.03F, false);
-      if (!bt.isNullOrNil(this.nVA)) {
+      a.b.a(this.oyB, this.oyP, 0.03F, false);
+      if (!bs.isNullOrNil(this.oyV)) {
         break label423;
       }
-      str = com.tencent.mm.wallet_core.ui.e.gn(com.tencent.mm.wallet_core.ui.e.sh(this.nVu), 10);
+      str = com.tencent.mm.wallet_core.ui.e.gr(com.tencent.mm.wallet_core.ui.e.wk(this.oyP), 10);
       label234:
-      this.nVh.setText(k.c(this, getString(2131762094, new Object[] { str })));
-      if (this.nVp != 2) {
+      this.oyC.setText(k.c(this, getString(2131762094, new Object[] { str })));
+      if (this.oyK != 2) {
         break label431;
       }
-      ad.i("MicroMsg.QrRewardGrantUI", "edit layout");
-      setEditFocusListener(this.nVl, 2, false);
-      this.nVl.a(new TextWatcher()
+      ac.i("MicroMsg.QrRewardGrantUI", "edit layout");
+      setEditFocusListener(this.oyG, 2, false);
+      this.oyG.a(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -141,7 +141,7 @@ public class QrRewardGrantUI
           }
           for (;;)
           {
-            i = (int)Math.round(bt.getDouble(paramAnonymousEditable.toString(), 0.0D) * 100.0D);
+            i = (int)Math.round(bs.getDouble(paramAnonymousEditable.toString(), 0.0D) * 100.0D);
             QrRewardGrantUI.a(QrRewardGrantUI.this, i);
             QrRewardGrantUI.b(QrRewardGrantUI.this, i);
             AppMethodBeat.o(63923);
@@ -158,19 +158,19 @@ public class QrRewardGrantUI
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.nVl.setVisibility(0);
-      this.nVk.setVisibility(8);
-      this.nVl.fkI();
-      this.nVn.setEnabled(false);
+      this.oyG.setVisibility(0);
+      this.oyF.setVisibility(8);
+      this.oyG.fAY();
+      this.oyI.setEnabled(false);
     }
     for (;;)
     {
-      this.nVn.setOnClickListener(new v()
+      this.oyI.setOnClickListener(new w()
       {
-        public final void bOU()
+        public final void bWk()
         {
           AppMethodBeat.i(63924);
-          int i = (int)Math.round(bt.getDouble(QrRewardGrantUI.a(QrRewardGrantUI.this).getText(), 0.0D) * 100.0D);
+          int i = (int)Math.round(bs.getDouble(QrRewardGrantUI.a(QrRewardGrantUI.this).getText(), 0.0D) * 100.0D);
           if (QrRewardGrantUI.a(QrRewardGrantUI.this, i)) {
             QrRewardGrantUI.b(QrRewardGrantUI.this);
           }
@@ -193,23 +193,23 @@ public class QrRewardGrantUI
           }
         }
       });
-      this.acV.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      this.adP.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
         public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean) {}
       });
       AppMethodBeat.o(63933);
       return;
       int i = BackwardSupportUtil.b.g(this, 50.0F);
-      this.nVg.setRoundCorner(true);
-      this.nVg.r(this.nVB, i, i, 2131231875);
+      this.oyB.setRoundCorner(true);
+      this.oyB.r(this.oyW, i, i, 2131231875);
       break;
       label423:
-      str = this.nVA;
+      str = this.oyV;
       break label234;
       label431:
-      this.nVj.setText(com.tencent.mm.wallet_core.ui.e.D(this.nVo / 100.0D));
-      this.nVl.setVisibility(8);
-      this.nVk.setVisibility(0);
+      this.oyE.setText(com.tencent.mm.wallet_core.ui.e.C(this.oyJ / 100.0D));
+      this.oyG.setVisibility(8);
+      this.oyF.setVisibility(0);
     }
   }
   
@@ -222,7 +222,7 @@ public class QrRewardGrantUI
       {
         setResult(-1);
         if (paramIntent != null) {
-          eN(paramIntent.getStringExtra("key_reqKey"), paramIntent.getStringExtra("key_trans_id"));
+          fa(paramIntent.getStringExtra("key_reqKey"), paramIntent.getStringExtra("key_trans_id"));
         }
         finish();
         AppMethodBeat.o(63936);
@@ -239,26 +239,26 @@ public class QrRewardGrantUI
     AppMethodBeat.i(63932);
     super.onCreate(paramBundle);
     addSceneEndListener(1336);
-    this.nVC.alive();
+    this.oyX.alive();
     setMMTitle(2131762093);
-    this.nVo = getIntent().getIntExtra("key_money_amt", 20000);
-    this.nVp = getIntent().getIntExtra("key_amt_type", 0);
-    this.nVq = getIntent().getStringExtra("key_qrcode_desc");
+    this.oyJ = getIntent().getIntExtra("key_money_amt", 20000);
+    this.oyK = getIntent().getIntExtra("key_amt_type", 0);
+    this.oyL = getIntent().getStringExtra("key_qrcode_desc");
     this.channel = getIntent().getIntExtra("key_channel", 0);
-    this.nVs = getIntent().getStringExtra("key_rcvr_open_id");
-    this.nVu = getIntent().getStringExtra("key_rcvr_name");
-    this.nVv = getIntent().getStringExtra("key_rcvr_true_name");
-    this.nVw = getIntent().getStringExtra("key_scan_id");
-    this.jBp = getIntent().getStringExtra("key_web_url");
-    this.nVx = getIntent().getStringExtra("key_sxtend_1");
-    this.nVy = getIntent().getStringExtra("key_sxtend_2");
-    this.nVz = getIntent().getIntExtra("key_max_amt", 20000);
-    this.nVA = getIntent().getStringExtra("key_receiver_nickname");
-    this.nVB = getIntent().getStringExtra("key_photo_url");
-    ad.i("MicroMsg.QrRewardGrantUI", "amtType: %s, channel: %s, maxAmt: %s", new Object[] { Integer.valueOf(this.nVp), Integer.valueOf(this.channel), Integer.valueOf(this.nVz) });
+    this.oyN = getIntent().getStringExtra("key_rcvr_open_id");
+    this.oyP = getIntent().getStringExtra("key_rcvr_name");
+    this.oyQ = getIntent().getStringExtra("key_rcvr_true_name");
+    this.oyR = getIntent().getStringExtra("key_scan_id");
+    this.kbL = getIntent().getStringExtra("key_web_url");
+    this.oyS = getIntent().getStringExtra("key_sxtend_1");
+    this.oyT = getIntent().getStringExtra("key_sxtend_2");
+    this.oyU = getIntent().getIntExtra("key_max_amt", 20000);
+    this.oyV = getIntent().getStringExtra("key_receiver_nickname");
+    this.oyW = getIntent().getStringExtra("key_photo_url");
+    ac.i("MicroMsg.QrRewardGrantUI", "amtType: %s, channel: %s, maxAmt: %s", new Object[] { Integer.valueOf(this.oyK), Integer.valueOf(this.channel), Integer.valueOf(this.oyU) });
     initView();
-    b.fjk();
-    if ((b.b(b.a.pom, true)) && (((com.tencent.mm.pluginsdk.wallet.a)g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_REWARD_CODE_PAY_SWTICH_KEY"))) {}
+    b.fzz();
+    if ((b.b(b.a.pRO, true)) && (((com.tencent.mm.pluginsdk.wallet.a)g.ab(com.tencent.mm.pluginsdk.wallet.a.class)).kindaCacheServiceGetBool("NEW_CASHIER_REWARD_CODE_PAY_SWTICH_KEY"))) {}
     for (boolean bool = true;; bool = false)
     {
       this.mKindaEnable = bool;
@@ -272,7 +272,7 @@ public class QrRewardGrantUI
     AppMethodBeat.i(63935);
     super.onDestroy();
     removeSceneEndListener(1336);
-    this.nVC.dead();
+    this.oyX.dead();
     AppMethodBeat.o(63935);
   }
   
@@ -284,18 +284,18 @@ public class QrRewardGrantUI
       paramString = (com.tencent.mm.plugin.collect.reward.a.e)paramn;
       paramString.a(new a.a()
       {
-        public final void h(n paramAnonymousn)
+        public final void g(n paramAnonymousn)
         {
           AppMethodBeat.i(63929);
-          QrRewardGrantUI.a(QrRewardGrantUI.this, paramString.nUX.dlJ);
-          QrRewardGrantUI.b(QrRewardGrantUI.this, paramString.nUX.CUF);
-          QrRewardGrantUI.c(QrRewardGrantUI.this, paramString.nUX.CxX);
-          QrRewardGrantUI.d(QrRewardGrantUI.this, paramString.nUX.CUD);
-          QrRewardGrantUI.e(QrRewardGrantUI.this, paramString.nUX.CUC);
-          ad.i("MicroMsg.QrRewardGrantUI", "remind str: %s", new Object[] { paramString.nUX.CUR });
-          if (!bt.isNullOrNil(paramString.nUX.CUR))
+          QrRewardGrantUI.a(QrRewardGrantUI.this, paramString.oys.djr);
+          QrRewardGrantUI.b(QrRewardGrantUI.this, paramString.oys.Enp);
+          QrRewardGrantUI.c(QrRewardGrantUI.this, paramString.oys.DQt);
+          QrRewardGrantUI.d(QrRewardGrantUI.this, paramString.oys.Enn);
+          QrRewardGrantUI.e(QrRewardGrantUI.this, paramString.oys.Enm);
+          ac.i("MicroMsg.QrRewardGrantUI", "remind str: %s", new Object[] { paramString.oys.EnB });
+          if (!bs.isNullOrNil(paramString.oys.EnB))
           {
-            h.d(QrRewardGrantUI.this.getContext(), paramString.nUX.CUR, "", QrRewardGrantUI.this.getString(2131762444), QrRewardGrantUI.this.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            h.d(QrRewardGrantUI.this.getContext(), paramString.oys.EnB, "", QrRewardGrantUI.this.getString(2131762444), QrRewardGrantUI.this.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -315,12 +315,12 @@ public class QrRewardGrantUI
         }
       }).b(new a.a()
       {
-        public final void h(n paramAnonymousn)
+        public final void g(n paramAnonymousn)
         {
           AppMethodBeat.i(63927);
-          ad.e("MicroMsg.QrRewardGrantUI", "place order error: %s, %s", new Object[] { Integer.valueOf(paramString.nUX.dcG), paramString.nUX.nTK });
-          if (!bt.isNullOrNil(paramString.nUX.nTK)) {
-            Toast.makeText(QrRewardGrantUI.this, paramString.nUX.nTK, 0).show();
+          ac.e("MicroMsg.QrRewardGrantUI", "place order error: %s, %s", new Object[] { Integer.valueOf(paramString.oys.dae), paramString.oys.oxf });
+          if (!bs.isNullOrNil(paramString.oys.oxf)) {
+            Toast.makeText(QrRewardGrantUI.this, paramString.oys.oxf, 0).show();
           }
           if (QrRewardGrantUI.e(QrRewardGrantUI.this)) {
             QrRewardGrantUI.this.hideLoading();
@@ -329,10 +329,10 @@ public class QrRewardGrantUI
         }
       }).c(new a.a()
       {
-        public final void h(n paramAnonymousn)
+        public final void g(n paramAnonymousn)
         {
           AppMethodBeat.i(63926);
-          ad.e("MicroMsg.QrRewardGrantUI", "net error: %s", new Object[] { paramAnonymousn });
+          ac.e("MicroMsg.QrRewardGrantUI", "net error: %s", new Object[] { paramAnonymousn });
           if (QrRewardGrantUI.d(QrRewardGrantUI.this)) {
             QrRewardGrantUI.this.hideLoading();
           }

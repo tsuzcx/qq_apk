@@ -8,7 +8,7 @@ final class c
     super(parama2, (byte)0);
   }
   
-  public final a bH(String paramString)
+  public final a by(String paramString)
   {
     throw new UnsupportedOperationException("already specified useForNull");
   }

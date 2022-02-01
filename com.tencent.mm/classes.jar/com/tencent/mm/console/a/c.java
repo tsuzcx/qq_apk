@@ -13,14 +13,14 @@ import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.fts.PluginFTS;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.websearch.api.af;
+import com.tencent.mm.plugin.websearch.api.ad;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.protocal.protobuf.bsd;
-import com.tencent.mm.protocal.protobuf.bse;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.bwu;
+import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -47,7 +47,7 @@ public final class c
     localTextView.setGravity(19);
     localTextView.setTextSize(1, 10.0F);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localTextView.setTextColor(ao.aD(paramContext, 2130968584));
+    localTextView.setTextColor(ao.aJ(paramContext, 2130968584));
     localTextView.setTypeface(Typeface.MONOSPACE);
     int i = paramContext.getResources().getDimensionPixelSize(2131165480);
     localTextView.setPadding(i, i, i, i);
@@ -60,7 +60,7 @@ public final class c
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20172);
-    if (ad.getLogLevel() > 1)
+    if (ac.getLogLevel() > 1)
     {
       AppMethodBeat.o(20172);
       return false;
@@ -144,31 +144,31 @@ public final class c
       }
       i = 11;
       break;
-      paramString = af.eib();
+      paramString = ad.exv();
       paramArrayOfString = new StringBuilder();
-      paramString = paramString.mAL.iterator();
+      paramString = paramString.ncM.iterator();
       while (paramString.hasNext())
       {
-        localObject = (bsd)paramString.next();
-        paramArrayOfString.append(String.format("%s | %.2f | %s", new Object[] { v.sh(((bsd)localObject).Username), Double.valueOf(((bsd)localObject).DPA), com.tencent.mm.pluginsdk.g.h.formatTime("yyyy-MM-dd HH:mm", ((bsd)localObject).DPB / 1000L) }));
+        localObject = (bwu)paramString.next();
+        paramArrayOfString.append(String.format("%s | %.2f | %s", new Object[] { v.wk(((bwu)localObject).Username), Double.valueOf(((bwu)localObject).FlR), com.tencent.mm.pluginsdk.g.h.formatTime("yyyy-MM-dd HH:mm", ((bwu)localObject).FlS / 1000L) }));
         paramArrayOfString.append("\n");
       }
       E(paramContext, paramArrayOfString.toString());
       continue;
-      az.arV();
-      paramContext = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.aff(), "FTS5IndexMicroMsg_encrypt.db");
+      az.ayM();
+      paramContext = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.agv(), "FTS5IndexMicroMsg_encrypt.db");
       if (paramContext.exists()) {
         paramContext.delete();
       }
       Process.killProcess(Process.myPid());
       continue;
-      az.arV();
-      paramContext = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.aff(), "FTS5IndexMicroMsg_encrypt.db");
+      az.ayM();
+      paramContext = new com.tencent.mm.vfs.e(com.tencent.mm.model.c.agv(), "FTS5IndexMicroMsg_encrypt.db");
       paramArrayOfString = new com.tencent.mm.vfs.e("/sdcard/IndexMicroMsg.db");
       if (paramArrayOfString.exists()) {
         paramArrayOfString.delete();
       }
-      i.lC(q.B(paramContext.fhU()), q.B(paramArrayOfString.fhU()));
+      i.lZ(q.B(paramContext.fxV()), q.B(paramArrayOfString.fxV()));
       continue;
       try
       {
@@ -176,68 +176,68 @@ public final class c
       }
       catch (Exception paramContext)
       {
-        ad.printErrStackTrace("MicroMsg.CommandTestFTS", paramContext, "corrupt command", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.CommandTestFTS", paramContext, "corrupt command", new Object[0]);
       }
       continue;
-      g.afC();
-      g.afB().afk().set(ae.a.Fqi, Integer.valueOf(5));
+      g.agS();
+      g.agR().agA().set(ah.a.GNY, Integer.valueOf(5));
       continue;
       paramContext = new j();
       paramContext.query = paramArrayOfString[2];
-      paramContext.iWB = 65523;
+      paramContext.jwR = 65523;
       ((n)g.ad(n.class)).search(10000, paramContext);
       continue;
-      paramContext = ae.a.Fow;
-      paramArrayOfString = ae.a.Fox;
-      paramString = ae.a.Foy;
-      Object localObject = ae.a.Foz;
-      ae.a locala1 = ae.a.FoA;
-      ae.a locala2 = ae.a.FoB;
-      ae.a locala3 = ae.a.FoC;
-      ae.a locala4 = ae.a.FoD;
-      ae.a locala5 = ae.a.FoE;
-      ae.a locala6 = ae.a.FoF;
-      ae.a locala7 = ae.a.FoG;
-      ae.a locala8 = ae.a.FoH;
-      ae.a locala9 = ae.a.FoI;
-      ae.a locala10 = ae.a.FoJ;
-      ae.a locala11 = ae.a.FoK;
-      ae.a locala12 = ae.a.FoL;
-      ae.a locala13 = ae.a.FoM;
-      ae.a locala14 = ae.a.FoN;
-      ae.a locala15 = ae.a.FoO;
-      ae.a locala16 = ae.a.FoP;
-      ae.a locala17 = ae.a.FoQ;
-      ae.a locala18 = ae.a.FoR;
-      ae.a locala19 = ae.a.FoS;
-      ae.a locala20 = ae.a.FoT;
-      ae.a locala21 = ae.a.FoU;
-      ae.a locala22 = ae.a.FoV;
+      paramContext = ah.a.GMl;
+      paramArrayOfString = ah.a.GMm;
+      paramString = ah.a.GMn;
+      Object localObject = ah.a.GMo;
+      ah.a locala1 = ah.a.GMp;
+      ah.a locala2 = ah.a.GMq;
+      ah.a locala3 = ah.a.GMr;
+      ah.a locala4 = ah.a.GMs;
+      ah.a locala5 = ah.a.GMt;
+      ah.a locala6 = ah.a.GMu;
+      ah.a locala7 = ah.a.GMv;
+      ah.a locala8 = ah.a.GMw;
+      ah.a locala9 = ah.a.GMx;
+      ah.a locala10 = ah.a.GMy;
+      ah.a locala11 = ah.a.GMz;
+      ah.a locala12 = ah.a.GMA;
+      ah.a locala13 = ah.a.GMB;
+      ah.a locala14 = ah.a.GMC;
+      ah.a locala15 = ah.a.GMD;
+      ah.a locala16 = ah.a.GME;
+      ah.a locala17 = ah.a.GMF;
+      ah.a locala18 = ah.a.GMG;
+      ah.a locala19 = ah.a.GMH;
+      ah.a locala20 = ah.a.GMI;
+      ah.a locala21 = ah.a.GMJ;
+      ah.a locala22 = ah.a.GMK;
       i = 0;
       while (i < 26)
       {
-        ae.a locala23 = new ae.a[] { paramContext, paramArrayOfString, paramString, localObject, locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15, locala16, locala17, locala18, locala19, locala20, locala21, locala22 }[i];
-        az.arV();
-        com.tencent.mm.model.c.afk().set(locala23, "");
+        ah.a locala23 = new ah.a[] { paramContext, paramArrayOfString, paramString, localObject, locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15, locala16, locala17, locala18, locala19, locala20, locala21, locala22 }[i];
+        az.ayM();
+        com.tencent.mm.model.c.agA().set(locala23, "");
         i += 1;
       }
-      paramArrayOfString = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fts.a.c.rnM, "FTS5IndexMicroMsgInfo.txt");
+      paramArrayOfString = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fts.a.c.swG, "FTS5IndexMicroMsgInfo.txt");
       if (!paramArrayOfString.exists()) {
         continue;
       }
       try
       {
-        E(paramContext, i.aMP(q.B(paramArrayOfString.fhU())));
+        E(paramContext, i.aSr(q.B(paramArrayOfString.fxV())));
       }
       catch (IOException paramContext) {}
       continue;
       paramContext = new j();
-      paramContext.iWB = 65521;
-      paramContext.rpL = 100;
+      paramContext.jwR = 65521;
+      paramContext.syF = 100;
       if (paramArrayOfString.length > 2) {}
       try
       {
-        paramContext.rpL = Integer.valueOf(paramArrayOfString[2]).intValue();
+        paramContext.syF = Integer.valueOf(paramArrayOfString[2]).intValue();
         label1129:
         if (paramArrayOfString.length > 3) {
           paramContext.talker = paramArrayOfString[3];
@@ -245,16 +245,16 @@ public final class c
         ((n)g.ad(n.class)).search(10000, paramContext);
         continue;
         paramContext = new j();
-        paramContext.iWB = 65524;
+        paramContext.jwR = 65524;
         ((n)g.ad(n.class)).search(10000, paramContext);
         continue;
         paramContext = new j();
-        paramContext.iWB = 65525;
+        paramContext.jwR = 65525;
         ((n)g.ad(n.class)).search(10000, paramContext);
         continue;
         paramContext = "test_key_" + System.currentTimeMillis();
-        g.afC();
-        g.afB().afk().set(ae.a.Fqk, paramContext);
+        g.agS();
+        g.agR().agA().set(ah.a.GOa, paramContext);
         Process.killProcess(Process.myPid());
       }
       catch (Exception paramString)

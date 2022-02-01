@@ -6,14 +6,14 @@ import d.l.b.a.b.m.ab;
 
 final class p
 {
-  final d JDM;
-  final ab Jko;
+  final ab KXI;
+  final d Lrf;
   
   public p(ab paramab, d paramd)
   {
     AppMethodBeat.i(58122);
-    this.Jko = paramab;
-    this.JDM = paramd;
+    this.KXI = paramab;
+    this.Lrf = paramd;
     AppMethodBeat.o(58122);
   }
   
@@ -25,7 +25,7 @@ final class p
       if ((paramObject instanceof p))
       {
         paramObject = (p)paramObject;
-        if ((!k.g(this.Jko, paramObject.Jko)) || (!k.g(this.JDM, paramObject.JDM))) {}
+        if ((!k.g(this.KXI, paramObject.KXI)) || (!k.g(this.Lrf, paramObject.Lrf))) {}
       }
     }
     else
@@ -41,11 +41,11 @@ final class p
   {
     int j = 0;
     AppMethodBeat.i(58124);
-    Object localObject = this.Jko;
+    Object localObject = this.KXI;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.JDM;
+      localObject = this.Lrf;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -57,14 +57,14 @@ final class p
   public final String toString()
   {
     AppMethodBeat.i(58123);
-    String str = "TypeAndDefaultQualifiers(type=" + this.Jko + ", defaultQualifiers=" + this.JDM + ")";
+    String str = "TypeAndDefaultQualifiers(type=" + this.KXI + ", defaultQualifiers=" + this.Lrf + ")";
     AppMethodBeat.o(58123);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
+import com.tencent.mm.plugin.appbrand.z.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -18,12 +18,12 @@ public class RealSetFillStyleActionLinearArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionLinearArg> CREATOR;
-  public float iZa;
-  public float iZb;
-  public float iZc;
-  public float iZd;
-  public int[] iZe;
-  public float[] iZf;
+  public float jzq;
+  public float jzr;
+  public float jzs;
+  public float jzt;
+  public int[] jzu;
+  public float[] jzv;
   
   static
   {
@@ -42,12 +42,12 @@ public class RealSetFillStyleActionLinearArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145046);
-    if ((this.iZe == null) || (this.iZf == null))
+    if ((this.jzu == null) || (this.jzv == null))
     {
       AppMethodBeat.o(145046);
       return false;
     }
-    paramd.iYM.setShader(new LinearGradient(this.iZa, this.iZb, this.iZc, this.iZd, this.iZe, this.iZf, Shader.TileMode.CLAMP));
+    paramd.jzc.setShader(new LinearGradient(this.jzq, this.jzr, this.jzs, this.jzt, this.jzu, this.jzv, Shader.TileMode.CLAMP));
     AppMethodBeat.o(145046);
     return true;
   }
@@ -76,7 +76,7 @@ public class RealSetFillStyleActionLinearArg
       return false;
     }
     paramObject = (RealSetFillStyleActionLinearArg)paramObject;
-    if ((Float.compare(paramObject.iZa, this.iZa) == 0) && (Float.compare(paramObject.iZb, this.iZb) == 0) && (Float.compare(paramObject.iZc, this.iZc) == 0) && (Float.compare(paramObject.iZd, this.iZd) == 0) && (Arrays.equals(this.iZe, paramObject.iZe)) && (Arrays.equals(this.iZf, paramObject.iZf)))
+    if ((Float.compare(paramObject.jzq, this.jzq) == 0) && (Float.compare(paramObject.jzr, this.jzr) == 0) && (Float.compare(paramObject.jzs, this.jzs) == 0) && (Float.compare(paramObject.jzt, this.jzt) == 0) && (Arrays.equals(this.jzu, paramObject.jzu)) && (Arrays.equals(this.jzv, paramObject.jzv)))
     {
       AppMethodBeat.o(145049);
       return true;
@@ -100,26 +100,26 @@ public class RealSetFillStyleActionLinearArg
       AppMethodBeat.o(145051);
       return;
     }
-    this.iZa = g.f(localJSONArray, 0);
-    this.iZb = g.f(localJSONArray, 1);
-    this.iZc = g.f(localJSONArray, 2);
-    this.iZd = g.f(localJSONArray, 3);
+    this.jzq = g.f(localJSONArray, 0);
+    this.jzr = g.f(localJSONArray, 1);
+    this.jzs = g.f(localJSONArray, 2);
+    this.jzt = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
       AppMethodBeat.o(145051);
       return;
     }
-    this.iZe = new int[paramJSONArray.length()];
-    this.iZf = new float[paramJSONArray.length()];
+    this.jzu = new int[paramJSONArray.length()];
+    this.jzv = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.iZf[i] = ((float)localJSONArray.optDouble(0));
-        this.iZe[i] = g.p(localJSONArray.optJSONArray(1));
+        this.jzv[i] = ((float)localJSONArray.optDouble(0));
+        this.jzu[i] = g.p(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
@@ -130,21 +130,21 @@ public class RealSetFillStyleActionLinearArg
   {
     AppMethodBeat.i(145047);
     super.h(paramParcel);
-    this.iZa = paramParcel.readFloat();
-    this.iZb = paramParcel.readFloat();
-    this.iZc = paramParcel.readFloat();
-    this.iZd = paramParcel.readFloat();
+    this.jzq = paramParcel.readFloat();
+    this.jzr = paramParcel.readFloat();
+    this.jzs = paramParcel.readFloat();
+    this.jzt = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.iZe = new int[i];
-      paramParcel.readIntArray(this.iZe);
+      this.jzu = new int[i];
+      paramParcel.readIntArray(this.jzu);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.iZf = new float[i];
-      paramParcel.readFloatArray(this.iZf);
+      this.jzv = new float[i];
+      paramParcel.readFloatArray(this.jzv);
     }
     AppMethodBeat.o(145047);
   }
@@ -152,9 +152,9 @@ public class RealSetFillStyleActionLinearArg
   public int hashCode()
   {
     AppMethodBeat.i(145050);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.iZa), Float.valueOf(this.iZb), Float.valueOf(this.iZc), Float.valueOf(this.iZd) });
-    int j = Arrays.hashCode(this.iZe);
-    int k = Arrays.hashCode(this.iZf);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzq), Float.valueOf(this.jzr), Float.valueOf(this.jzs), Float.valueOf(this.jzt) });
+    int j = Arrays.hashCode(this.jzu);
+    int k = Arrays.hashCode(this.jzv);
     AppMethodBeat.o(145050);
     return (i * 31 + j) * 31 + k;
   }
@@ -170,19 +170,19 @@ public class RealSetFillStyleActionLinearArg
   {
     AppMethodBeat.i(145048);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.iZa);
-    paramParcel.writeFloat(this.iZb);
-    paramParcel.writeFloat(this.iZc);
-    paramParcel.writeFloat(this.iZd);
-    if (this.iZe != null)
+    paramParcel.writeFloat(this.jzq);
+    paramParcel.writeFloat(this.jzr);
+    paramParcel.writeFloat(this.jzs);
+    paramParcel.writeFloat(this.jzt);
+    if (this.jzu != null)
     {
-      paramParcel.writeInt(this.iZe.length);
-      paramParcel.writeIntArray(this.iZe);
+      paramParcel.writeInt(this.jzu.length);
+      paramParcel.writeIntArray(this.jzu);
     }
-    while (this.iZf != null)
+    while (this.jzv != null)
     {
-      paramParcel.writeInt(this.iZf.length);
-      paramParcel.writeFloatArray(this.iZf);
+      paramParcel.writeInt(this.jzv.length);
+      paramParcel.writeFloatArray(this.jzv);
       AppMethodBeat.o(145048);
       return;
       paramParcel.writeInt(0);
@@ -193,7 +193,7 @@ public class RealSetFillStyleActionLinearArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionLinearArg
  * JD-Core Version:    0.7.0.1
  */

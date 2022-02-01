@@ -11,7 +11,7 @@ public final class n
   public static final d a(g paramg, e parame, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(58118);
-    if ((!paramBoolean2) || (paramg != g.JCS))
+    if ((!paramBoolean2) || (paramg != g.Lql))
     {
       paramg = new d(paramg, parame, false, paramBoolean1);
       AppMethodBeat.o(58118);
@@ -26,13 +26,13 @@ public final class n
   {
     AppMethodBeat.i(58120);
     k.h(paramSet, "$this$select");
-    if (paramg == g.JCT)
+    if (paramg == g.Lqm)
     {
-      paramSet = g.JCT;
+      paramSet = g.Lqm;
       AppMethodBeat.o(58120);
       return paramSet;
     }
-    paramSet = (g)a(paramSet, g.JCS, g.JCR, paramg, paramBoolean);
+    paramSet = (g)a(paramSet, g.Lql, g.Lqk, paramg, paramBoolean);
     AppMethodBeat.o(58120);
     return paramSet;
   }
@@ -68,7 +68,7 @@ public final class n
       return paramSet;
       if (paramT3 != null)
       {
-        paramT2 = j.o((Iterable)ak.c(paramSet, paramT3));
+        paramT2 = j.n((Iterable)ak.c(paramSet, paramT3));
         paramT1 = paramT2;
         if (paramT2 != null) {}
       }
@@ -86,7 +86,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.n
  * JD-Core Version:    0.7.0.1
  */

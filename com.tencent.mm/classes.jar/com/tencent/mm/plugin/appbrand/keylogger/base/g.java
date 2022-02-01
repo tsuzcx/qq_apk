@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 public class g
   implements d
 {
-  private final int kEW = 0;
-  private final int kEX = 0;
+  private final int lgp = 0;
+  private final int lgq = 0;
   private final int mType = 2;
   
-  public final int bfY()
+  public final int bmS()
   {
-    return this.kEX;
+    return this.lgq;
   }
   
-  public final int bfZ()
+  public final int bmT()
   {
-    return this.kEW;
+    return this.lgp;
   }
   
   public final int getType()
@@ -24,7 +24,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.g
  * JD-Core Version:    0.7.0.1
  */

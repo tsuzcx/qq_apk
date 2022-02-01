@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class si
   extends b
 {
-  public a dxS;
+  public a dvt;
   
   public si()
   {
@@ -15,24 +15,21 @@ public final class si
   
   private si(byte paramByte)
   {
-    AppMethodBeat.i(121036);
-    this.dxS = new a();
-    this.ESR = false;
+    AppMethodBeat.i(110507);
+    this.dvt = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(121036);
+    AppMethodBeat.o(110507);
   }
   
   public static final class a
   {
-    public String dlu;
-    public Boolean dxR;
-    public long dxT;
-    public Boolean dxU;
+    public boolean djT = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.si
  * JD-Core Version:    0.7.0.1
  */

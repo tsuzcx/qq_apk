@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Looper;
-import android.support.v4.content.d;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
@@ -23,10 +22,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nr;
+import com.tencent.mm.g.a.oa;
 import com.tencent.mm.plugin.sight.decode.ui.b;
 import com.tencent.mm.plugin.sns.data.j;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ae;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
@@ -37,13 +36,11 @@ import com.tencent.mm.pluginsdk.ui.h.b;
 import com.tencent.mm.pluginsdk.ui.h.d;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.vfs.i;
 import org.json.JSONException;
@@ -54,83 +51,83 @@ public final class ah
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, View.OnClickListener, View.OnTouchListener, b, h.b, h.d
 {
   private Context context;
-  private ap gAC;
-  private GestureDetector hRv;
-  private ProgressBar iiH;
+  private ProgressBar gCw;
+  private View gGk;
+  private ao gox;
+  private GestureDetector irA;
   private boolean isAutoPlay;
   private volatile boolean isWaiting;
-  private View lRB;
   private int length;
-  private ImageView rww;
-  private long tUy;
-  private int tVe;
-  AdLandingVideoWrapper xbP;
-  private VideoPlayerSeekBar xbQ;
-  private ImageView xbR;
-  private boolean xbS;
-  private ImageView xbT;
-  private TextView xbU;
-  private Runnable xbV;
-  private boolean xbW;
-  private boolean xbX;
-  private boolean xbY;
-  private boolean xbZ;
-  private ImageView xcQ;
-  private View xcR;
-  private volatile boolean xcS;
-  private Runnable xcT;
-  private int xcU;
-  private int xcV;
-  private View xcW;
-  private boolean xca;
-  private boolean xcb;
-  private boolean xcc;
-  private boolean xce;
-  private boolean xcf;
-  private boolean xcg;
-  private int xch;
-  private int xci;
-  private int xcj;
-  private int xck;
-  private int xcl;
-  private ak xcm;
-  private View.OnClickListener xcn;
-  private View.OnClickListener xco;
-  private View.OnClickListener xcp;
-  private View.OnClickListener xcq;
-  private volatile int xdt;
+  private ImageView sFo;
+  private int vdM;
+  private long vdg;
+  AdLandingVideoWrapper yoE;
+  private VideoPlayerSeekBar yoF;
+  private ImageView yoG;
+  private boolean yoH;
+  private ImageView yoI;
+  private TextView yoJ;
+  private Runnable yoK;
+  private boolean yoL;
+  private boolean yoM;
+  private boolean yoN;
+  private boolean yoO;
+  private boolean yoP;
+  private boolean yoQ;
+  private boolean yoR;
+  private boolean yoS;
+  private boolean yoT;
+  private boolean yoU;
+  private int yoV;
+  private int yoW;
+  private int yoX;
+  private int yoY;
+  private int yoZ;
+  private ImageView ypE;
+  private View ypF;
+  private volatile boolean ypG;
+  private Runnable ypH;
+  private int ypI;
+  private int ypJ;
+  private View ypL;
+  private ak ypa;
+  private View.OnClickListener ypb;
+  private View.OnClickListener ypc;
+  private View.OnClickListener ypd;
+  private View.OnClickListener ype;
+  private volatile int yqi;
   
-  public ah(final Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah paramah, ViewGroup paramViewGroup)
+  public ah(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai paramai, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramah, paramViewGroup);
+    super(paramContext, paramai, paramViewGroup);
     AppMethodBeat.i(96774);
-    this.xbW = false;
-    this.xbX = false;
-    this.xbY = false;
-    this.xbZ = true;
-    this.xca = true;
-    this.xcb = false;
-    this.xcc = true;
+    this.yoL = false;
+    this.yoM = false;
+    this.yoN = false;
+    this.yoO = true;
+    this.yoP = true;
+    this.yoQ = false;
+    this.yoR = true;
     this.isAutoPlay = false;
-    this.xce = false;
-    this.xcf = false;
-    this.xcg = false;
-    this.xch = 0;
-    this.tUy = 0L;
-    this.xci = 0;
-    this.tVe = 0;
-    this.xcj = 0;
-    this.xck = 0;
-    this.xcl = 0;
-    this.xcm = null;
-    this.xcn = new View.OnClickListener()
+    this.yoS = false;
+    this.yoT = false;
+    this.yoU = false;
+    this.yoV = 0;
+    this.vdg = 0L;
+    this.yoW = 0;
+    this.vdM = 0;
+    this.yoX = 0;
+    this.yoY = 0;
+    this.yoZ = 0;
+    this.ypa = null;
+    this.ypb = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(96769);
-        ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "play btn onclick isPlaying[%b]", new Object[] { Boolean.valueOf(ah.this.xbP.isPlaying()) });
+        ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "play btn onclick isPlaying[%b]", new Object[] { Boolean.valueOf(ah.this.yoE.isPlaying()) });
         ah.a(ah.this, ah.g(ah.this));
-        if (ah.this.xbP.isPlaying())
+        if (ah.this.yoE.isPlaying())
         {
           ah.h(ah.this);
           ah.a(ah.this, 4);
@@ -141,19 +138,19 @@ public final class ah
           return;
         }
         if (ah.i(ah.this)) {
-          ah.this.dvw();
+          ah.this.dJV();
         }
         for (;;)
         {
           ah.j(ah.this);
           ah.a(ah.this, 3);
           break;
-          ah.this.dvD();
-          ah.this.dvC();
+          ah.this.dKc();
+          ah.this.dKb();
         }
       }
     };
-    this.xco = new View.OnClickListener()
+    this.ypc = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -162,19 +159,19 @@ public final class ah
         ah.a(ah.this, ah.g(ah.this));
         if (ah.i(ah.this))
         {
-          ah.this.dvD();
-          ah.this.dvC();
+          ah.this.dKc();
+          ah.this.dKb();
         }
         for (;;)
         {
           ah.n(ah.this);
           AppMethodBeat.o(96771);
           return;
-          ah.this.dvw();
+          ah.this.dJV();
         }
       }
     };
-    this.xcp = new View.OnClickListener()
+    this.ypd = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -183,40 +180,40 @@ public final class ah
         ah.o(ah.this);
         ah.p(ah.this);
         ah.a(ah.this, 3);
-        ah.this.dvC();
+        ah.this.dKb();
         ah.a(ah.this, true);
-        aq.n(new Runnable()
+        ap.n(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(187471);
+            AppMethodBeat.i(200275);
             if (ah.q(ah.this))
             {
-              AppMethodBeat.o(187471);
+              AppMethodBeat.o(200275);
               return;
             }
             ah.a(ah.this, false);
-            AppMethodBeat.o(187471);
+            AppMethodBeat.o(200275);
           }
         }, 10000L);
         AppMethodBeat.o(96772);
       }
     };
-    this.xcq = new View.OnClickListener()
+    this.ype = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView) {}
     };
-    this.xcS = false;
+    this.ypG = false;
     this.isWaiting = false;
-    this.xdt = 0;
-    this.xcU = 0;
-    this.xcV = 0;
+    this.yqi = 0;
+    this.ypI = 0;
+    this.ypJ = 0;
     this.context = paramContext;
-    this.gAC = new ap(Looper.getMainLooper());
+    this.gox = new ao(Looper.getMainLooper());
     try
     {
-      this.hRv = new GestureDetector(this);
-      this.xcT = new Runnable()
+      this.irA = new GestureDetector(this);
+      this.ypH = new Runnable()
       {
         public final void run()
         {
@@ -225,116 +222,101 @@ public final class ah
           AppMethodBeat.o(96762);
         }
       };
-      this.xbV = new Runnable()
+      this.yoK = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(187466);
+          AppMethodBeat.i(200270);
           ah.a(ah.this, false);
-          AppMethodBeat.o(187466);
+          AppMethodBeat.o(200270);
         }
       };
-      this.xcm = new ak()
-      {
-        public final void qa(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(187467);
-          Intent localIntent = new Intent("com.tencent.mm.adlanding.video_progressbar_change");
-          if (paramAnonymousBoolean) {}
-          for (int i = 1;; i = 0)
-          {
-            localIntent.putExtra("show", i);
-            d.T(paramContext).b(localIntent);
-            AppMethodBeat.o(187467);
-            return;
-          }
-        }
-      };
+      this.ypa = new ah.7(this, paramContext);
       AppMethodBeat.o(96774);
       return;
     }
-    catch (Throwable paramah)
+    catch (Throwable paramai)
     {
       for (;;)
       {
-        ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramah.toString());
+        ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramai.toString());
       }
     }
   }
   
-  private void MI(int paramInt)
+  private void OK(int paramInt)
   {
     AppMethodBeat.i(96779);
-    if (this.xbP != null)
+    if (this.yoE != null)
     {
-      this.xbT.setVisibility(8);
-      if (this.rww.getVisibility() == 0) {
-        this.iiH.setVisibility(0);
+      this.yoI.setVisibility(8);
+      if (this.sFo.getVisibility() == 0) {
+        this.gCw.setVisibility(0);
       }
-      this.xbP.c(paramInt, true);
+      this.yoE.c(paramInt, true);
     }
     AppMethodBeat.o(96779);
   }
   
-  private void ap(Runnable paramRunnable)
+  private void ar(Runnable paramRunnable)
   {
-    AppMethodBeat.i(187473);
+    AppMethodBeat.i(200277);
     try
     {
-      this.gAC.removeCallbacks(paramRunnable);
-      this.gAC.postDelayed(paramRunnable, 4000L);
-      AppMethodBeat.o(187473);
+      this.gox.removeCallbacks(paramRunnable);
+      this.gox.postDelayed(paramRunnable, 4000L);
+      AppMethodBeat.o(200277);
       return;
     }
     catch (Throwable paramRunnable)
     {
-      ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramRunnable.toString());
-      AppMethodBeat.o(187473);
+      ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramRunnable.toString());
+      AppMethodBeat.o(200277);
     }
   }
   
-  private void bOu()
+  private void bVK()
   {
     AppMethodBeat.i(96776);
-    ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "starting play, downFailed=" + this.xce);
-    if (this.xce)
+    ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "starting play, downFailed=" + this.yoS);
+    if (this.yoS)
     {
-      ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "last download fail ,try again");
-      if ((this.xbQ != null) && (this.xbQ.getParent() != null)) {
-        ((ViewGroup)this.xbQ.getParent()).removeView(this.xbQ);
+      ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "last download fail ,try again");
+      if ((this.yoF != null) && (this.yoF.getParent() != null)) {
+        ((ViewGroup)this.yoF.getParent()).removeView(this.yoF);
       }
-      this.xbP.setFullScreen(false);
-      this.xbP.c(false, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wWw, 0);
+      this.yoE.setFullScreen(false);
+      this.yoE.c(false, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).yjk, 0);
       try
       {
-        int i = this.kvn;
-        if ((this.xbQ != null) && (this.xbQ.getParent() != null)) {
-          ((ViewGroup)this.xbQ.getParent()).removeView(this.xbQ);
+        int i = this.kWB;
+        if ((this.yoF != null) && (this.yoF.getParent() != null)) {
+          ((ViewGroup)this.yoF.getParent()).removeView(this.yoF);
         }
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i - com.tencent.mm.cd.a.fromDPToPix(this.context, 75), -2);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i - com.tencent.mm.cc.a.fromDPToPix(this.context, 75), -2);
         localLayoutParams.addRule(12);
-        localLayoutParams.bottomMargin = com.tencent.mm.cd.a.fromDPToPix(this.context, 3);
-        this.xbQ.setLayoutParams(localLayoutParams);
-        ((ViewGroup)this.contentView.findViewById(2131298770)).addView(this.xbQ, localLayoutParams);
+        localLayoutParams.bottomMargin = com.tencent.mm.cc.a.fromDPToPix(this.context, 3);
+        this.yoF.setLayoutParams(localLayoutParams);
+        ((ViewGroup)this.contentView.findViewById(2131298770)).addView(this.yoF, localLayoutParams);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "startPlay exp=" + bt.m(localException));
+          ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "startPlay exp=" + bs.m(localException));
         }
       }
-      MI(0);
-      this.xbP.dwG();
+      OK(0);
+      this.yoE.dLf();
       AppMethodBeat.o(96776);
       return;
     }
-    this.gAC.post(new Runnable()
+    this.gox.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(96763);
-        if (!ah.this.xbP.isPlaying())
+        if (!ah.this.yoE.isPlaying())
         {
           if (ah.r(ah.this).getCurrPosSec() != ah.r(ah.this).getVideoDurationSec()) {
             break label65;
@@ -343,7 +325,7 @@ public final class ah
         }
         for (;;)
         {
-          ah.r(ah.this).dwG();
+          ah.r(ah.this).dLf();
           AppMethodBeat.o(96763);
           return;
           label65:
@@ -351,43 +333,43 @@ public final class ah
         }
       }
     });
-    this.tUy = System.currentTimeMillis();
-    this.tVe += 1;
+    this.vdg = System.currentTimeMillis();
+    this.vdM += 1;
     AppMethodBeat.o(96776);
   }
   
-  private void qb(boolean paramBoolean)
+  private void ra(boolean paramBoolean)
   {
-    AppMethodBeat.i(187472);
+    AppMethodBeat.i(200276);
     try
     {
-      this.xbQ.setIsPlay(paramBoolean);
-      this.xbQ.getPlayBtn().getLayoutParams().width = this.length;
-      this.xbQ.getPlayBtn().getLayoutParams().height = this.length;
+      this.yoF.setIsPlay(paramBoolean);
+      this.yoF.getPlayBtn().getLayoutParams().width = this.length;
+      this.yoF.getPlayBtn().getLayoutParams().height = this.length;
       if (paramBoolean)
       {
-        ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "startPlay");
-        this.xbQ.getPlayBtn().setImageDrawable(com.tencent.mm.cd.a.l(this.context, 2131691470));
-        AppMethodBeat.o(187472);
+        ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "startPlay");
+        this.yoF.getPlayBtn().setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131691470));
+        AppMethodBeat.o(200276);
         return;
       }
-      ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "pausePlay");
-      this.xbQ.getPlayBtn().setImageDrawable(com.tencent.mm.cd.a.l(this.context, 2131691469));
-      AppMethodBeat.o(187472);
+      ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "pausePlay");
+      this.yoF.getPlayBtn().setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131691469));
+      AppMethodBeat.o(200276);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable.toString());
-      AppMethodBeat.o(187472);
+      ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable.toString());
+      AppMethodBeat.o(200276);
     }
   }
   
-  private void qc(final boolean paramBoolean)
+  private void rb(final boolean paramBoolean)
   {
-    AppMethodBeat.i(187474);
-    ad.d("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "pause play");
-    this.gAC.post(new Runnable()
+    AppMethodBeat.i(200278);
+    ac.d("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "pause play");
+    this.gox.post(new Runnable()
     {
       public final void run()
       {
@@ -406,17 +388,17 @@ public final class ah
         }
         catch (Throwable localThrowable)
         {
-          ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable.toString());
+          ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable.toString());
           AppMethodBeat.o(96764);
         }
       }
     });
-    if (this.tUy != 0L)
+    if (this.vdg != 0L)
     {
-      this.xci = ((int)(this.xci + (System.currentTimeMillis() - this.tUy)));
-      this.tUy = 0L;
+      this.yoW = ((int)(this.yoW + (System.currentTimeMillis() - this.vdg)));
+      this.vdg = 0L;
     }
-    AppMethodBeat.o(187474);
+    AppMethodBeat.o(200278);
   }
   
   private void setFocus(boolean paramBoolean)
@@ -424,131 +406,131 @@ public final class ah
     AppMethodBeat.i(96778);
     if (paramBoolean)
     {
-      this.xbQ.setVisibility(0);
-      this.xbR.setVisibility(0);
-      this.lRB.setVisibility(0);
-      this.xcQ.setVisibility(0);
-      if (this.xcm != null) {
-        this.xcm.qa(true);
+      this.yoF.setVisibility(0);
+      this.yoG.setVisibility(0);
+      this.gGk.setVisibility(0);
+      this.ypE.setVisibility(0);
+      if (this.ypa != null) {
+        this.ypa.qZ(true);
       }
-      ap(this.xbV);
+      ar(this.yoK);
       AppMethodBeat.o(96778);
       return;
     }
-    this.xbY = false;
-    this.xbQ.setVisibility(4);
-    this.xbR.setVisibility(8);
-    this.lRB.setVisibility(4);
-    this.xcQ.setVisibility(8);
-    if (this.xcm != null) {
-      this.xcm.qa(false);
+    this.yoN = false;
+    this.yoF.setVisibility(4);
+    this.yoG.setVisibility(8);
+    this.gGk.setVisibility(4);
+    this.ypE.setVisibility(8);
+    if (this.ypa != null) {
+      this.ypa.qZ(false);
     }
-    this.gAC.removeCallbacks(this.xbV);
+    this.gox.removeCallbacks(this.yoK);
     AppMethodBeat.o(96778);
   }
   
   public final void a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, boolean paramBoolean3, int paramInt7)
   {
-    AppMethodBeat.i(187482);
+    AppMethodBeat.i(200286);
     try
     {
-      this.xch = 6;
-      this.xcS = paramBoolean2;
-      this.xcV += 1;
-      this.xck += paramInt2;
-      this.xcU += paramInt3;
-      this.xcl += paramInt4;
-      this.xcj += paramInt5;
-      this.tVe += paramInt6;
-      this.xci = ((int)(this.xci + paramLong));
+      this.yoV = 6;
+      this.ypG = paramBoolean2;
+      this.ypJ += 1;
+      this.yoY += paramInt2;
+      this.ypI += paramInt3;
+      this.yoZ += paramInt4;
+      this.yoX += paramInt5;
+      this.vdM += paramInt6;
+      this.yoW = ((int)(this.yoW + paramLong));
       if (paramBoolean2) {
-        this.tUy = System.currentTimeMillis();
+        this.vdg = System.currentTimeMillis();
       }
-      this.gAC.removeCallbacks(this.xcT);
-      this.xcR.setVisibility(8);
-      ad.i("NonFullOrFullVideoType", "currPosSec = " + paramInt1 + ", isPlaying = " + paramBoolean2 + ", bNoVoice = " + paramBoolean1);
+      this.gox.removeCallbacks(this.ypH);
+      this.ypF.setVisibility(8);
+      ac.i("NonFullOrFullVideoType", "currPosSec = " + paramInt1 + ", isPlaying = " + paramBoolean2 + ", bNoVoice = " + paramBoolean1);
       if (paramBoolean3)
       {
-        if ((paramInt7 > 0) && (paramInt7 <= this.xbP.getVideoDurationSec()))
+        if ((paramInt7 > 0) && (paramInt7 <= this.yoE.getVideoDurationSec()))
         {
-          this.xbQ.seek(this.xbP.getCacheTimeSec());
-          this.xbP.c(this.xbP.getCacheTimeSec(), true);
+          this.yoF.seek(this.yoE.getCacheTimeSec());
+          this.yoE.c(this.yoE.getCacheTimeSec(), true);
         }
         for (;;)
         {
-          this.tUy = System.currentTimeMillis();
-          qb(true);
+          this.vdg = System.currentTimeMillis();
+          ra(true);
           if (!paramBoolean1) {
             break;
           }
-          dvw();
-          AppMethodBeat.o(187482);
+          dJV();
+          AppMethodBeat.o(200286);
           return;
-          this.xbQ.seek(0);
-          this.xbP.c(0.0D, true);
+          this.yoF.seek(0);
+          this.yoE.c(0.0D, true);
         }
       }
-      if (paramInt1 >= this.xbP.getVideoDurationSec()) {
+      if (paramInt1 >= this.yoE.getVideoDurationSec()) {
         break label305;
       }
     }
     catch (Throwable localThrowable)
     {
-      ad.e("NonFullOrFullVideoType", localThrowable.toString());
-      AppMethodBeat.o(187482);
+      ac.e("NonFullOrFullVideoType", localThrowable.toString());
+      AppMethodBeat.o(200286);
       return;
     }
     if (paramInt1 < 0)
     {
       label305:
-      this.xbQ.seek(0);
-      this.xbP.c(0.0D, paramBoolean2);
+      this.yoF.seek(0);
+      this.yoE.c(0.0D, paramBoolean2);
     }
     for (;;)
     {
-      qb(paramBoolean2);
+      ra(paramBoolean2);
       break;
-      this.xbQ.seek(paramInt1);
-      this.xbP.c(paramInt1, paramBoolean2);
+      this.yoF.seek(paramInt1);
+      this.yoE.c(paramInt1, paramBoolean2);
     }
-    dvC();
-    AppMethodBeat.o(187482);
+    dKb();
+    AppMethodBeat.o(200286);
   }
   
-  public final boolean aG(JSONObject paramJSONObject)
+  public final boolean aH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(96786);
-    if (!super.aG(paramJSONObject))
+    if (!super.aH(paramJSONObject))
     {
       AppMethodBeat.o(96786);
       return false;
     }
     try
     {
-      paramJSONObject.put("streamVideoDuraion", this.xbP.getVideoDurationSec() * 1000);
-      paramJSONObject.put("playTimeInterval", this.xci);
-      paramJSONObject.put("playCount", this.tVe);
-      paramJSONObject.put("playCompletedCount", this.xcj);
-      paramJSONObject.put("clickFullscreenBtnCount", this.xcV);
-      paramJSONObject.put("doubleClickCount", this.xcU);
-      paramJSONObject.put("clickPlayControlCount", this.xck);
-      paramJSONObject.put("clickVoiceControlCount", this.xcl);
+      paramJSONObject.put("streamVideoDuraion", this.yoE.getVideoDurationSec() * 1000);
+      paramJSONObject.put("playTimeInterval", this.yoW);
+      paramJSONObject.put("playCount", this.vdM);
+      paramJSONObject.put("playCompletedCount", this.yoX);
+      paramJSONObject.put("clickFullscreenBtnCount", this.ypJ);
+      paramJSONObject.put("doubleClickCount", this.ypI);
+      paramJSONObject.put("clickPlayControlCount", this.yoY);
+      paramJSONObject.put("clickVoiceControlCount", this.yoZ);
       if (this.isAutoPlay) {}
       for (String str = "1";; str = "0")
       {
         paramJSONObject.put("isAutoPlay", str);
         JSONObject localJSONObject;
-        if (!this.xcf)
+        if (!this.yoT)
         {
-          str = ai.du(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXs);
+          str = com.tencent.mm.sdk.platformtools.ah.dg(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykg);
           localJSONObject = new JSONObject();
           localJSONObject.put("urlMd5", str);
           localJSONObject.put("needDownload", 1);
           paramJSONObject.put("thumbUrlInfo", localJSONObject);
         }
-        if (!this.xcg)
+        if (!this.yoU)
         {
-          str = ai.du(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wWw);
+          str = com.tencent.mm.sdk.platformtools.ah.dg(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).yjk);
           localJSONObject = new JSONObject();
           localJSONObject.put("urlMd5", str);
           localJSONObject.put("needDownload", 1);
@@ -561,124 +543,390 @@ public final class ah
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(96786);
     }
   }
   
-  public final void bcv()
+  public final void anR()
   {
-    AppMethodBeat.i(187476);
-    this.xbY = true;
-    ap(this.xbV);
-    AppMethodBeat.o(187476);
+    AppMethodBeat.i(200280);
+    this.yoN = true;
+    ar(this.yoK);
+    AppMethodBeat.o(200280);
   }
   
   public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96790);
-    ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "online play error, %s", new Object[] { paramString3 });
-    this.xce = true;
+    ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "online play error, %s", new Object[] { paramString3 });
+    this.yoS = true;
     AppMethodBeat.o(96790);
   }
   
-  public final void cka()
+  public final void crH()
   {
-    AppMethodBeat.i(187483);
-    qc(false);
-    this.xch = 4;
-    AppMethodBeat.o(187483);
+    AppMethodBeat.i(200287);
+    rb(false);
+    this.yoV = 4;
+    AppMethodBeat.o(200287);
   }
   
-  public final void ckb()
+  public final void crI()
   {
-    AppMethodBeat.i(187484);
-    this.xch = 3;
-    bOu();
-    AppMethodBeat.o(187484);
+    AppMethodBeat.i(200288);
+    this.yoV = 3;
+    bVK();
+    AppMethodBeat.o(200288);
   }
   
   public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public final void db(String paramString1, String paramString2)
+  public final void dJV()
   {
-    this.xce = false;
+    AppMethodBeat.i(96780);
+    super.dJV();
+    this.yoG.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690341));
+    this.yoE.setMute(true);
+    this.yoO = true;
+    AppMethodBeat.o(96780);
   }
   
-  public final void dc(String paramString1, String paramString2)
+  public final void dJW()
   {
-    AppMethodBeat.i(96788);
-    this.xcj += 1;
-    setFocus(true);
-    this.xbP.xdT.stopTimer();
-    if (this.tUy != 0L)
+    boolean bool2 = true;
+    AppMethodBeat.i(96775);
+    Object localObject1 = this.contentView.findViewById(2131298770);
+    this.ypL = ((View)localObject1);
+    ((View)localObject1).setBackgroundColor(-16777216);
+    int k = this.kWB;
+    int j = this.kWC;
+    int i = j;
+    if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykh == 1)
     {
-      this.xci = ((int)(this.xci + (System.currentTimeMillis() - this.tUy)));
-      this.tUy = 0L;
+      i = j;
+      if ((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).width > 0) {
+        i = k * (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).height / (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).width;
+      }
     }
-    this.xch = 5;
-    this.xbP.onUIPause();
-    AppMethodBeat.o(96788);
+    else
+    {
+      ((View)localObject1).setPadding((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).paddingLeft, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).paddingTop, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).paddingRight, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).paddingBottom);
+    }
+    ((View)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(k, i));
+    ((View)localObject1).setMinimumHeight(i);
+    ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "createView, displayType=" + ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykh + ", containerW=" + k + ", vH=" + i + ", padding=" + j.eC((View)localObject1));
+    this.yoE = ((AdLandingVideoWrapper)((View)localObject1).findViewById(2131306410));
+    this.yoE.setIMMVideoViewCallback(this);
+    this.yoE.setOnClickListener(this.ype);
+    this.yoE.setFullScreen(false);
+    this.yoE.c(false, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).yjk, 0);
+    this.yoE.setIsShowBasicControls(true);
+    Object localObject2;
+    if (!((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).yjq)
+    {
+      ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "fixVideoBlackline, enable=false");
+      this.gCw = ((ProgressBar)((View)localObject1).findViewById(2131303535));
+      this.sFo = ((ImageView)((View)localObject1).findViewById(2131305798));
+      localObject2 = h.js("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykg);
+      if (!i.eA((String)localObject2)) {
+        this.yoT = false;
+      }
+      if (!this.yoT) {
+        break label1351;
+      }
+      this.sFo.setImageBitmap(f.decodeFile((String)localObject2));
+      label409:
+      this.yoJ = ((TextView)((View)localObject1).findViewById(2131299517));
+      this.yoJ.setText(this.context.getString(2131758104));
+      this.gGk = ((View)localObject1).findViewById(2131304920);
+      this.gGk.setVisibility(4);
+      this.yoF = new VideoPlayerSeekBar(this.context);
+      this.yoF.setVisibility(4);
+      if (this.ypa != null)
+      {
+        localObject2 = this.ypa;
+        if (this.yoF.getVisibility() != 0) {
+          break label1382;
+        }
+      }
+    }
+    label1294:
+    label1351:
+    label1382:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      ((ak)localObject2).qZ(bool1);
+      this.yoF.setIplaySeekCallback(this);
+      this.yoF.setOnPlayButtonClickListener(this.ypb);
+      localObject2 = new RelativeLayout.LayoutParams(k - com.tencent.mm.cc.a.fromDPToPix(this.context, 75), -2);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(12);
+      this.yoF.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      this.yoE.setVideoFooterView(this.yoF);
+      this.yoG = ((ImageView)((View)localObject1).findViewById(2131304921));
+      this.yoG.setVisibility(4);
+      this.yoG.setOnClickListener(this.ypc);
+      try
+      {
+        localObject3 = this.yoG.getParent();
+        if ((localObject3 instanceof ViewGroup)) {
+          ((ViewGroup)localObject3).removeView(this.yoG);
+        }
+        localObject3 = (RelativeLayout.LayoutParams)this.yoG.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject3).bottomMargin = com.tencent.mm.cc.a.fromDPToPix(this.context, 8);
+        ((RelativeLayout.LayoutParams)localObject3).rightMargin = com.tencent.mm.cc.a.fromDPToPix(this.context, 10);
+        ((ViewGroup)localObject1).addView(this.yoG, (ViewGroup.LayoutParams)localObject3);
+        ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "init voiceTypeBtn and visible");
+      }
+      catch (Throwable localThrowable4)
+      {
+        for (;;)
+        {
+          Object localObject3;
+          ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable4.toString());
+        }
+      }
+      this.yoI = ((ImageView)((View)localObject1).findViewById(2131305196));
+      this.yoI.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131691166));
+      this.yoI.setVisibility(8);
+      this.yoI.setOnClickListener(this.ypd);
+      ((ViewGroup)this.yoF.getParent()).removeView(this.yoF);
+      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
+      ((ViewGroup)localObject1).addView(this.yoF, (ViewGroup.LayoutParams)localObject2);
+      this.yoE.setVideoPlayCallback(new AdLandingVideoWrapper.a()
+      {
+        public final void sQ(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(200274);
+          ah.c(ah.this).post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(200273);
+              ah.b(ah.this, ah.this.yoE.isPlaying());
+              AppMethodBeat.o(200273);
+            }
+          });
+          if ((ah.d(ah.this).yjp != null) && (paramAnonymousInt * 1000 >= ah.d(ah.this).yjp.yke) && (!ah.e(ah.this)))
+          {
+            ah.f(ah.this);
+            oa localoa = new oa();
+            localoa.dqw.dqx = ah.d(ah.this).yjp.dqx;
+            com.tencent.mm.sdk.b.a.GpY.l(localoa);
+          }
+          AppMethodBeat.o(200274);
+        }
+      });
+      localObject1 = this.ypL;
+      try
+      {
+        this.length = com.tencent.mm.cc.a.fromDPToPix(this.context, 32);
+        this.yoE.setOnTouchListener(this);
+        this.ypE = ((ImageView)((View)localObject1).findViewById(2131307246));
+        localObject2 = this.ypE.getParent();
+        if ((localObject2 instanceof ViewGroup)) {
+          ((ViewGroup)localObject2).removeView(this.ypE);
+        }
+        localObject2 = (RelativeLayout.LayoutParams)this.ypE.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = com.tencent.mm.cc.a.fromDPToPix(this.context, 8);
+        ((RelativeLayout.LayoutParams)localObject2).rightMargin = com.tencent.mm.cc.a.fromDPToPix(this.context, 10);
+        ((ViewGroup)localObject1).addView(this.ypE, (ViewGroup.LayoutParams)localObject2);
+        this.ypE.setOnClickListener(this);
+        this.ypE.setVisibility(8);
+        ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "init fullScreenBtn and visible");
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          label1150:
+          ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable1.toString());
+          continue;
+          bool1 = false;
+        }
+      }
+      try
+      {
+        this.yoE.setLoop(true);
+        this.yoE.setLoopCompletionCallback(this);
+        localObject1 = this.yoF.getParent();
+        if ((localObject1 instanceof ViewGroup)) {
+          ((ViewGroup)localObject1).removeView(this.yoF);
+        }
+        localObject1 = new RelativeLayout.LayoutParams(this.ypL.getLayoutParams().width - com.tencent.mm.cc.a.fromDPToPix(this.context, 75), -2);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(12);
+        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cc.a.fromDPToPix(this.context, 3);
+        this.yoF.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        ((ViewGroup)this.contentView.findViewById(2131298770)).addView(this.yoF, (ViewGroup.LayoutParams)localObject1);
+        this.yoF.setVisibility(4);
+        ra(false);
+        if (this.ypa != null)
+        {
+          localObject1 = this.ypa;
+          if (this.yoF.getVisibility() != 0) {
+            break label1418;
+          }
+          bool1 = bool2;
+          ((ak)localObject1).qZ(bool1);
+        }
+        ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "init progressBar and visible");
+      }
+      catch (Throwable localThrowable2)
+      {
+        ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable2.toString());
+        break label1150;
+      }
+      localObject1 = this.ypL;
+      try
+      {
+        this.ypF = ((View)localObject1).findViewById(2131307220);
+        this.ypF.setVisibility(8);
+        AppMethodBeat.o(96775);
+        return;
+      }
+      catch (Throwable localThrowable3)
+      {
+        ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable3.toString());
+        AppMethodBeat.o(96775);
+      }
+      localObject2 = this.yoE.getInnerVideoView();
+      localObject3 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ;
+      if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject3).paddingLeft != 0.0F) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject3).paddingTop != 0.0F) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject3).paddingRight != 0.0F) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)localObject3).paddingBottom != 0.0F)) {}
+      for (bool1 = true;; bool1 = false)
+      {
+        if ((!(localObject2 instanceof VideoPlayerTextureView)) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykh != 1) || (bool1)) {
+          break label1294;
+        }
+        ((View)localObject2).addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+        {
+          public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
+          {
+            AppMethodBeat.i(200269);
+            try
+            {
+              paramAnonymousInt1 = paramAnonymousView.getWidth();
+              paramAnonymousInt2 = paramAnonymousView.getHeight();
+              paramAnonymousInt3 = ah.u(ah.this).getWidth();
+              paramAnonymousInt4 = ah.u(ah.this).getHeight();
+              if ((paramAnonymousInt2 <= 1) || (paramAnonymousInt1 <= 1) || (paramAnonymousInt3 == 0) || (paramAnonymousInt4 == 0))
+              {
+                AppMethodBeat.o(200269);
+                return;
+              }
+              ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, videoW=" + paramAnonymousInt1 + ", videoH=" + paramAnonymousInt2 + ", containerW=" + paramAnonymousInt3 + ", containH=" + paramAnonymousInt4 + ", container.padding=" + j.eC(ah.u(ah.this)));
+              if (paramAnonymousInt2 == paramAnonymousInt4)
+              {
+                AppMethodBeat.o(200269);
+                return;
+              }
+              if ((paramAnonymousInt2 >= paramAnonymousInt1) && (paramAnonymousInt4 >= paramAnonymousInt3) && (Math.abs(paramAnonymousInt2 - paramAnonymousInt4) < 2))
+              {
+                paramAnonymousView = ah.u(ah.this).getLayoutParams();
+                paramAnonymousView.height = paramAnonymousInt2;
+                ah.u(ah.this).setLayoutParams(paramAnonymousView);
+                ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, reset VideoContainer.height");
+              }
+              AppMethodBeat.o(200269);
+              return;
+            }
+            catch (Exception paramAnonymousView)
+            {
+              ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, exp=" + paramAnonymousView.toString());
+              AppMethodBeat.o(200269);
+            }
+          }
+        });
+        break;
+      }
+      ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, innerVideoView=" + localObject2 + ", displayType=" + ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykh + ", hasPadding=" + bool1);
+      break;
+      h.c("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykg, false, 1000000001, new f.a()
+      {
+        public final void asD(String paramAnonymousString)
+        {
+          AppMethodBeat.i(200272);
+          if (ah.b(ah.this).getVisibility() == 0) {
+            ah.b(ah.this).setImageBitmap(f.decodeFile(paramAnonymousString));
+          }
+          AppMethodBeat.o(200272);
+        }
+        
+        public final void dFC() {}
+        
+        public final void dFD() {}
+      });
+      break label409;
+    }
+    label1418:
   }
   
-  public final void dd(String paramString1, String paramString2) {}
-  
-  public final void de(String paramString1, String paramString2)
+  public final void dJX()
   {
-    AppMethodBeat.i(96789);
-    this.rww.setVisibility(8);
-    this.iiH.setVisibility(8);
+    AppMethodBeat.i(96784);
+    super.dJX();
     try
     {
-      this.gAC.removeCallbacks(this.xcT);
-      this.xcR.setVisibility(8);
-      qb(true);
-      AppMethodBeat.o(96789);
+      this.gox.removeCallbacks(this.yoK);
+      this.gox.removeCallbacks(this.ypH);
+      this.yoE.onUIDestroy();
+      AppMethodBeat.o(96784);
       return;
     }
-    catch (Throwable paramString1)
+    catch (Throwable localThrowable)
     {
-      ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramString1.toString());
-      AppMethodBeat.o(96789);
+      for (;;)
+      {
+        ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable.toString());
+      }
     }
   }
   
-  public final void dg(String paramString1, String paramString2)
+  public final void dJY()
   {
-    this.isWaiting = true;
+    AppMethodBeat.i(96782);
+    super.dJY();
+    AppMethodBeat.o(96782);
   }
   
-  public final void dh(String paramString1, String paramString2)
-  {
-    this.isWaiting = false;
-    this.xdt = 0;
-  }
-  
-  public final void dvA()
+  public final void dJZ()
   {
     AppMethodBeat.i(96783);
-    super.dvA();
-    qc(false);
-    if ((!this.xcb) && (!this.xcc))
+    super.dJZ();
+    rb(false);
+    if ((!this.yoQ) && (!this.yoR))
     {
       AppMethodBeat.o(96783);
       return;
     }
-    this.xcc = false;
-    this.xcb = false;
-    if (this.xch == 1) {
-      this.xch = 2;
+    this.yoR = false;
+    this.yoQ = false;
+    if (this.yoV == 1) {
+      this.yoV = 2;
     }
     AppMethodBeat.o(96783);
   }
   
-  public final void dvB()
+  public final void dKF()
+  {
+    AppMethodBeat.i(96791);
+    super.dKF();
+    rb(false);
+    String str = h.js("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).ykg);
+    if (i.eA(str))
+    {
+      this.sFo.setImageBitmap(f.decodeFile(str));
+      this.sFo.setVisibility(0);
+    }
+    AppMethodBeat.o(96791);
+  }
+  
+  public final void dKa()
   {
     AppMethodBeat.i(96785);
-    super.dvB();
-    int i = dwc();
+    super.dKa();
+    int i = dKB();
     int j = getView().getHeight();
-    ad.d("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "inScreenHeight %d, height %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    ac.d("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "inScreenHeight %d, height %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     if ((i == 0) || (j == 0))
     {
       AppMethodBeat.o(96785);
@@ -691,448 +939,184 @@ public final class ah
     }
     if (i >= j * 0.5F)
     {
-      if ((this.xcb) && (!this.xcc))
+      if ((this.yoQ) && (!this.yoR))
       {
         AppMethodBeat.o(96785);
         return;
       }
-      this.xcc = false;
-      this.xcb = true;
-      if (this.xch == 6)
+      this.yoR = false;
+      this.yoQ = true;
+      if (this.yoV == 6)
       {
-        if (this.xcS)
+        if (this.ypG)
         {
-          this.xch = 1;
+          this.yoV = 1;
           AppMethodBeat.o(96785);
           return;
         }
-        this.xch = 4;
+        this.yoV = 4;
         AppMethodBeat.o(96785);
         return;
       }
-      this.rww.setVisibility(0);
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)aj.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
-      if ((!this.xca) || ((this.xca) && (localNetworkInfo != null) && (localNetworkInfo.getType() == 1)))
+      this.sFo.setVisibility(0);
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)com.tencent.mm.sdk.platformtools.ai.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+      if ((!this.yoP) || ((this.yoP) && (localNetworkInfo != null) && (localNetworkInfo.getType() == 1)))
       {
         setFocus(true);
-        aq.n(new Runnable()
+        ap.n(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(187464);
+            AppMethodBeat.i(200268);
             if (ah.q(ah.this))
             {
-              AppMethodBeat.o(187464);
+              AppMethodBeat.o(200268);
               return;
             }
             ah.a(ah.this, false);
-            AppMethodBeat.o(187464);
+            AppMethodBeat.o(200268);
           }
         }, 3000L);
       }
-      if (this.xca)
+      if (this.yoP)
       {
         if ((localNetworkInfo == null) || ((localNetworkInfo != null) && (localNetworkInfo.getType() != 1)))
         {
-          this.xbT.setVisibility(0);
+          this.yoI.setVisibility(0);
           this.isAutoPlay = false;
-          this.xca = false;
+          this.yoP = false;
           AppMethodBeat.o(96785);
           return;
         }
         this.isAutoPlay = true;
-        this.xca = false;
+        this.yoP = false;
       }
-      if (this.xch == 0) {
+      if (this.yoV == 0) {
         if ((localNetworkInfo != null) && (localNetworkInfo.getType() == 1))
         {
-          if (!this.xbZ) {
+          if (!this.yoO) {
             break label332;
           }
-          dvw();
-          this.xch = 1;
+          dJV();
+          this.yoV = 1;
         }
       }
       for (;;)
       {
-        bOu();
+        bVK();
         label332:
         do
         {
           AppMethodBeat.o(96785);
           return;
-          dvC();
+          dKb();
           break;
-          if (this.xch == 2)
+          if (this.yoV == 2)
           {
-            if (this.xbZ) {
-              dvw();
+            if (this.yoO) {
+              dJV();
             }
             for (;;)
             {
-              bOu();
-              this.xch = 1;
+              bVK();
+              this.yoV = 1;
               AppMethodBeat.o(96785);
               return;
-              dvC();
+              dKb();
             }
           }
-        } while (this.xch != 3);
-        if (this.xbZ) {
-          dvw();
+        } while (this.yoV != 3);
+        if (this.yoO) {
+          dJV();
         } else {
-          dvC();
+          dKb();
         }
       }
     }
-    this.xcc = false;
-    this.xcb = false;
-    qc(false);
-    if (this.xch == 1) {
-      this.xch = 2;
+    this.yoR = false;
+    this.yoQ = false;
+    rb(false);
+    if (this.yoV == 1) {
+      this.yoV = 2;
     }
     AppMethodBeat.o(96785);
   }
   
-  public final void dvC()
+  public final void dKb()
   {
     AppMethodBeat.i(96781);
-    super.dvC();
-    this.xbR.setImageDrawable(com.tencent.mm.cd.a.l(this.context, 2131690342));
-    this.xbP.setMute(false);
-    this.xbZ = false;
+    super.dKb();
+    this.yoG.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690342));
+    this.yoE.setMute(false);
+    this.yoO = false;
     AppMethodBeat.o(96781);
   }
   
-  protected final void dvN() {}
+  protected final void dKm() {}
   
-  public final void dvw()
+  public final void dLd()
   {
-    AppMethodBeat.i(96780);
-    super.dvw();
-    this.xbR.setImageDrawable(com.tencent.mm.cd.a.l(this.context, 2131690341));
-    this.xbP.setMute(true);
-    this.xbZ = true;
-    AppMethodBeat.o(96780);
+    AppMethodBeat.i(200281);
+    ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLoopCompletion");
+    this.yoX += 1;
+    AppMethodBeat.o(200281);
   }
   
-  public final void dvx()
+  public final void jdMethod_do(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(96775);
-    Object localObject1 = this.contentView.findViewById(2131298770);
-    this.xcW = ((View)localObject1);
-    ((View)localObject1).setBackgroundColor(-16777216);
-    int k = this.kvn;
-    int j = this.kvo;
-    int i = j;
-    if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXt == 1)
-    {
-      i = j;
-      if ((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).width > 0) {
-        i = k * (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).height / (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).width;
-      }
-    }
-    else
-    {
-      ((View)localObject1).setPadding((int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).paddingLeft, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).paddingTop, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).paddingRight, (int)((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).paddingBottom);
-    }
-    ((View)localObject1).setLayoutParams(new RelativeLayout.LayoutParams(k, i));
-    ((View)localObject1).setMinimumHeight(i);
-    ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "createView, displayType=" + ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXt + ", containerW=" + k + ", vH=" + i + ", padding=" + j.ep((View)localObject1));
-    this.xbP = ((AdLandingVideoWrapper)((View)localObject1).findViewById(2131306410));
-    this.xbP.setIMMVideoViewCallback(this);
-    this.xbP.setOnClickListener(this.xcq);
-    this.xbP.setFullScreen(false);
-    this.xbP.c(false, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wWw, 0);
-    this.xbP.setIsShowBasicControls(true);
-    Object localObject2;
-    if (!((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wWC)
-    {
-      ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "fixVideoBlackline, enable=false");
-      this.iiH = ((ProgressBar)((View)localObject1).findViewById(2131303535));
-      this.rww = ((ImageView)((View)localObject1).findViewById(2131305798));
-      localObject2 = h.iU("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXs);
-      if (!i.eK((String)localObject2)) {
-        this.xcf = false;
-      }
-      if (!this.xcf) {
-        break label1351;
-      }
-      this.rww.setImageBitmap(f.decodeFile((String)localObject2));
-      label409:
-      this.xbU = ((TextView)((View)localObject1).findViewById(2131299517));
-      this.xbU.setText(this.context.getString(2131758104));
-      this.lRB = ((View)localObject1).findViewById(2131304920);
-      this.lRB.setVisibility(4);
-      this.xbQ = new VideoPlayerSeekBar(this.context);
-      this.xbQ.setVisibility(4);
-      if (this.xcm != null)
-      {
-        localObject2 = this.xcm;
-        if (this.xbQ.getVisibility() != 0) {
-          break label1382;
-        }
-      }
-    }
-    label1294:
-    label1351:
-    label1382:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((ak)localObject2).qa(bool1);
-      this.xbQ.setIplaySeekCallback(this);
-      this.xbQ.setOnPlayButtonClickListener(this.xcn);
-      localObject2 = new RelativeLayout.LayoutParams(k - com.tencent.mm.cd.a.fromDPToPix(this.context, 75), -2);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(12);
-      this.xbQ.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      this.xbP.setVideoFooterView(this.xbQ);
-      this.xbR = ((ImageView)((View)localObject1).findViewById(2131304921));
-      this.xbR.setVisibility(4);
-      this.xbR.setOnClickListener(this.xco);
-      try
-      {
-        localObject3 = this.xbR.getParent();
-        if ((localObject3 instanceof ViewGroup)) {
-          ((ViewGroup)localObject3).removeView(this.xbR);
-        }
-        localObject3 = (RelativeLayout.LayoutParams)this.xbR.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject3).bottomMargin = com.tencent.mm.cd.a.fromDPToPix(this.context, 8);
-        ((RelativeLayout.LayoutParams)localObject3).rightMargin = com.tencent.mm.cd.a.fromDPToPix(this.context, 10);
-        ((ViewGroup)localObject1).addView(this.xbR, (ViewGroup.LayoutParams)localObject3);
-        ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "init voiceTypeBtn and visible");
-      }
-      catch (Throwable localThrowable4)
-      {
-        for (;;)
-        {
-          Object localObject3;
-          ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable4.toString());
-        }
-      }
-      this.xbT = ((ImageView)((View)localObject1).findViewById(2131305196));
-      this.xbT.setImageDrawable(com.tencent.mm.cd.a.l(this.context, 2131691166));
-      this.xbT.setVisibility(8);
-      this.xbT.setOnClickListener(this.xcp);
-      ((ViewGroup)this.xbQ.getParent()).removeView(this.xbQ);
-      ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
-      ((ViewGroup)localObject1).addView(this.xbQ, (ViewGroup.LayoutParams)localObject2);
-      this.xbP.setVideoPlayCallback(new AdLandingVideoWrapper.a()
-      {
-        public final void sa(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(187470);
-          ah.c(ah.this).post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(187469);
-              ah.b(ah.this, ah.this.xbP.isPlaying());
-              AppMethodBeat.o(187469);
-            }
-          });
-          if ((ah.d(ah.this).wWB != null) && (paramAnonymousInt * 1000 >= ah.d(ah.this).wWB.wXq) && (!ah.e(ah.this)))
-          {
-            ah.f(ah.this);
-            nr localnr = new nr();
-            localnr.dsM.dsN = ah.d(ah.this).wWB.dsN;
-            com.tencent.mm.sdk.b.a.ESL.l(localnr);
-          }
-          AppMethodBeat.o(187470);
-        }
-      });
-      localObject1 = this.xcW;
-      try
-      {
-        this.length = com.tencent.mm.cd.a.fromDPToPix(this.context, 32);
-        this.xbP.setOnTouchListener(this);
-        this.xcQ = ((ImageView)((View)localObject1).findViewById(2131307246));
-        localObject2 = this.xcQ.getParent();
-        if ((localObject2 instanceof ViewGroup)) {
-          ((ViewGroup)localObject2).removeView(this.xcQ);
-        }
-        localObject2 = (RelativeLayout.LayoutParams)this.xcQ.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = com.tencent.mm.cd.a.fromDPToPix(this.context, 8);
-        ((RelativeLayout.LayoutParams)localObject2).rightMargin = com.tencent.mm.cd.a.fromDPToPix(this.context, 10);
-        ((ViewGroup)localObject1).addView(this.xcQ, (ViewGroup.LayoutParams)localObject2);
-        this.xcQ.setOnClickListener(this);
-        this.xcQ.setVisibility(8);
-        ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "init fullScreenBtn and visible");
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          label1150:
-          ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable1.toString());
-          continue;
-          bool1 = false;
-        }
-      }
-      try
-      {
-        this.xbP.setLoop(true);
-        this.xbP.setLoopCompletionCallback(this);
-        localObject1 = this.xbQ.getParent();
-        if ((localObject1 instanceof ViewGroup)) {
-          ((ViewGroup)localObject1).removeView(this.xbQ);
-        }
-        localObject1 = new RelativeLayout.LayoutParams(this.xcW.getLayoutParams().width - com.tencent.mm.cd.a.fromDPToPix(this.context, 75), -2);
-        ((RelativeLayout.LayoutParams)localObject1).addRule(12);
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = com.tencent.mm.cd.a.fromDPToPix(this.context, 3);
-        this.xbQ.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        ((ViewGroup)this.contentView.findViewById(2131298770)).addView(this.xbQ, (ViewGroup.LayoutParams)localObject1);
-        this.xbQ.setVisibility(4);
-        qb(false);
-        if (this.xcm != null)
-        {
-          localObject1 = this.xcm;
-          if (this.xbQ.getVisibility() != 0) {
-            break label1418;
-          }
-          bool1 = bool2;
-          ((ak)localObject1).qa(bool1);
-        }
-        ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "init progressBar and visible");
-      }
-      catch (Throwable localThrowable2)
-      {
-        ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable2.toString());
-        break label1150;
-      }
-      localObject1 = this.xcW;
-      try
-      {
-        this.xcR = ((View)localObject1).findViewById(2131307220);
-        this.xcR.setVisibility(8);
-        AppMethodBeat.o(96775);
-        return;
-      }
-      catch (Throwable localThrowable3)
-      {
-        ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable3.toString());
-        AppMethodBeat.o(96775);
-      }
-      localObject2 = this.xbP.getInnerVideoView();
-      localObject3 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab;
-      if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)localObject3).paddingLeft != 0.0F) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)localObject3).paddingTop != 0.0F) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)localObject3).paddingRight != 0.0F) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)localObject3).paddingBottom != 0.0F)) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        if ((!(localObject2 instanceof VideoPlayerTextureView)) || (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXt != 1) || (bool1)) {
-          break label1294;
-        }
-        ((View)localObject2).addOnLayoutChangeListener(new View.OnLayoutChangeListener()
-        {
-          public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
-          {
-            AppMethodBeat.i(187465);
-            try
-            {
-              paramAnonymousInt1 = paramAnonymousView.getWidth();
-              paramAnonymousInt2 = paramAnonymousView.getHeight();
-              paramAnonymousInt3 = ah.u(ah.this).getWidth();
-              paramAnonymousInt4 = ah.u(ah.this).getHeight();
-              if ((paramAnonymousInt2 <= 1) || (paramAnonymousInt1 <= 1) || (paramAnonymousInt3 == 0) || (paramAnonymousInt4 == 0))
-              {
-                AppMethodBeat.o(187465);
-                return;
-              }
-              ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, videoW=" + paramAnonymousInt1 + ", videoH=" + paramAnonymousInt2 + ", containerW=" + paramAnonymousInt3 + ", containH=" + paramAnonymousInt4 + ", container.padding=" + j.ep(ah.u(ah.this)));
-              if (paramAnonymousInt2 == paramAnonymousInt4)
-              {
-                AppMethodBeat.o(187465);
-                return;
-              }
-              if ((paramAnonymousInt2 >= paramAnonymousInt1) && (paramAnonymousInt4 >= paramAnonymousInt3) && (Math.abs(paramAnonymousInt2 - paramAnonymousInt4) < 2))
-              {
-                paramAnonymousView = ah.u(ah.this).getLayoutParams();
-                paramAnonymousView.height = paramAnonymousInt2;
-                ah.u(ah.this).setLayoutParams(paramAnonymousView);
-                ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, reset VideoContainer.height");
-              }
-              AppMethodBeat.o(187465);
-              return;
-            }
-            catch (Exception paramAnonymousView)
-            {
-              ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, exp=" + paramAnonymousView.toString());
-              AppMethodBeat.o(187465);
-            }
-          }
-        });
-        break;
-      }
-      ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLayoutChange, innerVideoView=" + localObject2 + ", displayType=" + ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXt + ", hasPadding=" + bool1);
-      break;
-      h.c("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXs, false, 1000000001, new f.a()
-      {
-        public final void apm(String paramAnonymousString)
-        {
-          AppMethodBeat.i(187468);
-          if (ah.b(ah.this).getVisibility() == 0) {
-            ah.b(ah.this).setImageBitmap(f.decodeFile(paramAnonymousString));
-          }
-          AppMethodBeat.o(187468);
-        }
-        
-        public final void dsA() {}
-        
-        public final void duP() {}
-      });
-      break label409;
-    }
-    label1418:
+    this.yoS = false;
   }
   
-  public final void dvy()
+  public final void dp(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96784);
-    super.dvy();
+    AppMethodBeat.i(96788);
+    this.yoX += 1;
+    setFocus(true);
+    this.yoE.yqI.stopTimer();
+    if (this.vdg != 0L)
+    {
+      this.yoW = ((int)(this.yoW + (System.currentTimeMillis() - this.vdg)));
+      this.vdg = 0L;
+    }
+    this.yoV = 5;
+    this.yoE.onUIPause();
+    AppMethodBeat.o(96788);
+  }
+  
+  public final void dq(String paramString1, String paramString2) {}
+  
+  public final void dr(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(96789);
+    this.sFo.setVisibility(8);
+    this.gCw.setVisibility(8);
     try
     {
-      this.gAC.removeCallbacks(this.xbV);
-      this.gAC.removeCallbacks(this.xcT);
-      this.xbP.onUIDestroy();
-      AppMethodBeat.o(96784);
+      this.gox.removeCallbacks(this.ypH);
+      this.ypF.setVisibility(8);
+      ra(true);
+      AppMethodBeat.o(96789);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Throwable paramString1)
     {
-      for (;;)
-      {
-        ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", localThrowable.toString());
-      }
+      ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramString1.toString());
+      AppMethodBeat.o(96789);
     }
   }
   
-  public final void dvz()
+  public final void ds(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96782);
-    super.dvz();
-    AppMethodBeat.o(96782);
+    this.isWaiting = true;
   }
   
-  public final void dwE()
+  public final void dt(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187477);
-    ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onLoopCompletion");
-    this.xcj += 1;
-    AppMethodBeat.o(187477);
+    this.isWaiting = false;
+    this.yqi = 0;
   }
   
-  public final void dwg()
-  {
-    AppMethodBeat.i(96791);
-    super.dwg();
-    qc(false);
-    String str = h.iU("adId", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wXs);
-    if (i.eK(str))
-    {
-      this.rww.setImageBitmap(f.decodeFile(str));
-      this.rww.setVisibility(0);
-    }
-    AppMethodBeat.o(96791);
-  }
+  public final void eJ(String paramString1, String paramString2) {}
   
   protected final int getLayout()
   {
@@ -1141,90 +1125,109 @@ public final class ah
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(187475);
-    boolean bool = this.xbP.isPlaying();
-    AppMethodBeat.o(187475);
+    AppMethodBeat.i(200279);
+    boolean bool = this.yoE.isPlaying();
+    AppMethodBeat.o(200279);
     return bool;
   }
   
-  public final void jw(String paramString1, String paramString2) {}
+  public final void nn(int paramInt)
+  {
+    AppMethodBeat.i(96787);
+    ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onSeek time ".concat(String.valueOf(paramInt)));
+    this.yqi = paramInt;
+    if (this.yoO) {
+      dJV();
+    }
+    for (;;)
+    {
+      this.gox.removeCallbacks(this.ypH);
+      this.ypF.setVisibility(8);
+      OK(paramInt);
+      this.yoV = 3;
+      AppMethodBeat.o(96787);
+      return;
+      dKc();
+      dKb();
+    }
+  }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(187479);
+    AppMethodBeat.i(200283);
     if (paramView.getId() == 2131307246)
     {
-      ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "click full screen btn");
+      ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "click full screen btn");
       try
       {
         if ((this.context instanceof SnsAdNativeLandingPagesUI))
         {
-          this.xcV += 1;
-          this.gAC.removeCallbacks(this.xcT);
-          this.xcR.setVisibility(8);
+          this.ypJ += 1;
+          this.gox.removeCallbacks(this.ypH);
+          this.ypF.setVisibility(8);
           paramView = (SnsAdNativeLandingPagesUI)this.context;
           Intent localIntent = new Intent(paramView, VideoFullScreenActivity.class);
           localIntent.putExtra("KComponentVideoType", 1);
-          localIntent.putExtra("KComponentCid", dwe());
-          localIntent.putExtra("KComponentCurrentTime", this.xbP.getCurrPosSec());
-          localIntent.putExtra("KComponentTotalTime", this.xbP.getVideoDurationSec());
-          localIntent.putExtra("KComponentVoiceType", this.xbZ);
-          localIntent.putExtra("KComponentProgressType", this.xbP.isPlaying());
-          localIntent.putExtra("KComponentStreamVideoUrlPath", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah)this.xab).wWw);
+          localIntent.putExtra("KComponentCid", dKD());
+          localIntent.putExtra("KComponentCurrentTime", this.yoE.getCurrPosSec());
+          localIntent.putExtra("KComponentTotalTime", this.yoE.getVideoDurationSec());
+          localIntent.putExtra("KComponentVoiceType", this.yoO);
+          localIntent.putExtra("KComponentProgressType", this.yoE.isPlaying());
+          localIntent.putExtra("KComponentStreamVideoUrlPath", ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai)this.ymQ).yjk);
           localIntent.putExtra("KComponentIsWaiting", this.isWaiting);
-          localIntent.putExtra("KComponentSeekTimeDueWaiting", this.xdt);
-          localIntent.putExtra("KComponentKComponentCacheTime", this.xbP.getCacheTimeSec());
-          paramView.startActivityForResult(localIntent, SnsAdNativeLandingPagesUI.xuk);
-          AppMethodBeat.o(187479);
+          localIntent.putExtra("KComponentSeekTimeDueWaiting", this.yqi);
+          localIntent.putExtra("KComponentKComponentCacheTime", this.yoE.getCacheTimeSec());
+          paramView.startActivityForResult(localIntent, SnsAdNativeLandingPagesUI.yHa);
+          AppMethodBeat.o(200283);
           return;
         }
-        this.xcQ.setVisibility(8);
-        AppMethodBeat.o(187479);
+        this.ypE.setVisibility(8);
+        AppMethodBeat.o(200283);
         return;
       }
       catch (Throwable paramView)
       {
-        this.xcQ.setVisibility(8);
-        ad.e("NonFullOrFullVideoType", paramView.toString());
+        this.ypE.setVisibility(8);
+        ac.e("NonFullOrFullVideoType", paramView.toString());
       }
     }
-    AppMethodBeat.o(187479);
+    AppMethodBeat.o(200283);
   }
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(187481);
+    AppMethodBeat.i(200285);
     for (;;)
     {
       try
       {
-        ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "onDoubleTap");
-        ap(this.xbV);
-        if (!this.xce) {
-          this.xcU += 1;
+        ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "onDoubleTap");
+        ar(this.yoK);
+        if (!this.yoS) {
+          this.ypI += 1;
         }
-        if (!this.xbP.isPlaying()) {
+        if (!this.yoE.isPlaying()) {
           continue;
         }
-        qc(true);
-        this.xch = 4;
+        rb(true);
+        this.yoV = 4;
       }
       catch (Throwable paramMotionEvent)
       {
-        ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramMotionEvent.toString());
+        ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramMotionEvent.toString());
         continue;
-        dvD();
-        dvC();
+        dKc();
+        dKb();
         continue;
       }
-      AppMethodBeat.o(187481);
+      AppMethodBeat.o(200285);
       return false;
-      if (!this.xbZ) {
+      if (!this.yoO) {
         continue;
       }
-      dvw();
-      bOu();
-      this.xch = 3;
+      dJV();
+      bVK();
+      this.yoV = 3;
     }
   }
   
@@ -1254,20 +1257,20 @@ public final class ah
   
   public final boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(187480);
+    AppMethodBeat.i(200284);
     try
     {
-      ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "onSingleTapConfirmed");
-      if (!this.xbY)
+      ac.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", "onSingleTapConfirmed");
+      if (!this.yoN)
       {
-        this.xbY = true;
+        this.yoN = true;
         setFocus(true);
       }
       for (;;)
       {
-        AppMethodBeat.o(187480);
+        AppMethodBeat.o(200284);
         return false;
-        this.xbY = false;
+        this.yoN = false;
         setFocus(false);
       }
     }
@@ -1275,7 +1278,7 @@ public final class ah
     {
       for (;;)
       {
-        ad.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramMotionEvent.toString());
+        ac.e("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent.VideoOptimize", paramMotionEvent.toString());
       }
     }
   }
@@ -1288,36 +1291,15 @@ public final class ah
   @SuppressLint({"ClickableViewAccessibility"})
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(187478);
-    boolean bool = this.hRv.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(187478);
+    AppMethodBeat.i(200282);
+    boolean bool = this.irA.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(200282);
     return bool;
-  }
-  
-  public final void rZ(int paramInt)
-  {
-    AppMethodBeat.i(96787);
-    ad.i("MicroMsg.Sns.AdLandingPageStreamVideoPlayerComponent", "onSeek time ".concat(String.valueOf(paramInt)));
-    this.xdt = paramInt;
-    if (this.xbZ) {
-      dvw();
-    }
-    for (;;)
-    {
-      this.gAC.removeCallbacks(this.xcT);
-      this.xcR.setVisibility(8);
-      MI(paramInt);
-      this.xch = 3;
-      AppMethodBeat.o(96787);
-      return;
-      dvD();
-      dvC();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ah
  * JD-Core Version:    0.7.0.1
  */

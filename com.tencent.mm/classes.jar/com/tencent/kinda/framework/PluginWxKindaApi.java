@@ -14,7 +14,7 @@ public class PluginWxKindaApi
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(18262);
-    if (paramg.agu())
+    if (paramg.ahL())
     {
       pin(new t(SubCoreKinda.class));
       com.tencent.mm.kernel.g.b(a.class, new WxCrossServices());

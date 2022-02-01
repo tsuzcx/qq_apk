@@ -15,12 +15,12 @@ final class x
   
   public final void add(View paramView)
   {
-    this.AC.add(paramView);
+    this.BA.add(paramView);
   }
   
   public final void remove(View paramView)
   {
-    this.AC.remove(paramView);
+    this.BA.remove(paramView);
   }
 }
 

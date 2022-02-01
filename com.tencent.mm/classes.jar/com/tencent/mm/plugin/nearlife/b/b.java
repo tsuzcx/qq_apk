@@ -2,53 +2,53 @@ package com.tencent.mm.plugin.nearlife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.blc;
-import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.boy;
+import com.tencent.mm.protocal.protobuf.crm;
 import java.util.LinkedList;
 
 public final class b
 {
   public String Title;
-  public String dnB;
-  public int evt;
-  public int mBH;
-  public String sWi;
-  public int ubA;
-  public LinkedList<cmf> ubB;
-  public float ubC;
-  public String ubD;
-  public SKBuiltinBuffer_t ubE;
-  public blc ubF;
-  public String ubw;
-  public float ubx;
-  public int uby;
-  public LinkedList<Integer> ubz;
+  public String dlj;
+  public int exP;
+  public int ndI;
+  public String uev;
+  public float vkA;
+  public String vkB;
+  public SKBuiltinBuffer_t vkC;
+  public boy vkD;
+  public String vku;
+  public float vkv;
+  public int vkw;
+  public LinkedList<Integer> vkx;
+  public int vky;
+  public LinkedList<crm> vkz;
   
-  public b(String paramString, blc paramblc)
+  public b(String paramString, boy paramboy)
   {
     AppMethodBeat.i(26547);
-    this.ubz = new LinkedList();
-    this.ubB = new LinkedList();
-    this.sWi = paramString;
-    this.ubw = paramblc.ubw;
-    this.Title = paramblc.Title;
-    this.ubx = paramblc.ubx;
-    this.uby = paramblc.uby;
-    this.ubz = paramblc.ubz;
-    this.ubA = paramblc.ubA;
-    this.ubB = paramblc.ubB;
-    this.ubC = paramblc.ubC;
-    this.ubD = paramblc.ubD;
-    this.mBH = paramblc.mBH;
-    this.ubE = paramblc.ubE;
-    this.evt = paramblc.DJg;
-    this.ubF = paramblc;
+    this.vkx = new LinkedList();
+    this.vkz = new LinkedList();
+    this.uev = paramString;
+    this.vku = paramboy.vku;
+    this.Title = paramboy.Title;
+    this.vkv = paramboy.vkv;
+    this.vkw = paramboy.vkw;
+    this.vkx = paramboy.vkx;
+    this.vky = paramboy.vky;
+    this.vkz = paramboy.vkz;
+    this.vkA = paramboy.vkA;
+    this.vkB = paramboy.vkB;
+    this.ndI = paramboy.ndI;
+    this.vkC = paramboy.vkC;
+    this.exP = paramboy.FeB;
+    this.vkD = paramboy;
     AppMethodBeat.o(26547);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.b.b
  * JD-Core Version:    0.7.0.1
  */

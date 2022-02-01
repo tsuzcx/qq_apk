@@ -2,21 +2,21 @@ package io.flutter.facade;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.a.a.b;
-import io.flutter.a.a.p;
+import io.flutter.plugin.a.b;
+import io.flutter.plugin.a.p;
 import io.flutter.view.FlutterNativeView;
 import io.flutter.view.FlutterView;
 
 final class a$1
   extends FlutterView
 {
-  private final b<String> Jbe;
+  private final b<String> KOI;
   
   a$1(Context paramContext, FlutterNativeView paramFlutterNativeView)
   {
     super(paramContext, null, paramFlutterNativeView);
     AppMethodBeat.i(159068);
-    this.Jbe = new b(this, "flutter/lifecycle", p.JbB);
+    this.KOI = new b(this, "flutter/lifecycle", p.KPf);
     AppMethodBeat.o(159068);
   }
   
@@ -31,13 +31,13 @@ final class a$1
   public final void onPostResume()
   {
     AppMethodBeat.i(159070);
-    this.Jbe.eA("AppLifecycleState.resumed");
+    this.KOI.eC("AppLifecycleState.resumed");
     AppMethodBeat.o(159070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.facade.a.1
  * JD-Core Version:    0.7.0.1
  */

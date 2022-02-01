@@ -7,11 +7,11 @@ public abstract interface f<K, O>
 {
   public abstract void a(a<K, O> parama);
   
-  public abstract O aM(K paramK);
+  public abstract O aJ(K paramK);
   
-  public abstract boolean aN(K paramK);
+  public abstract boolean aK(K paramK);
   
-  public abstract boolean aO(K paramK);
+  public abstract boolean aL(K paramK);
   
   public abstract void clear();
   

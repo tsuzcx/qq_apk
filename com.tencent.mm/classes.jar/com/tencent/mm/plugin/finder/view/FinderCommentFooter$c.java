@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class FinderCommentFooter$c
   implements View.OnClickListener
 {
@@ -15,7 +15,7 @@ final class FinderCommentFooter$c
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(178472);
-    this.qWk.aA(Integer.valueOf(this.qWl));
+    this.rWz.ay(Integer.valueOf(this.rWA));
     AppMethodBeat.o(178472);
   }
 }

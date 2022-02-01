@@ -8,24 +8,24 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class b
 {
-  private int CKE;
-  private c FUe;
-  LinkedList<String> FUf;
-  a FUg;
+  private int Edg;
+  private c HtT;
+  LinkedList<String> HtU;
+  a HtV;
   int direction;
-  private GestureDetector hRv;
-  private MessageQueue.IdleHandler nbI;
+  private GestureDetector irA;
+  private MessageQueue.IdleHandler nEp;
   
   public b(a parama)
   {
     AppMethodBeat.i(141587);
     this.direction = 0;
-    this.hRv = new GestureDetector(new GestureDetector.OnGestureListener()
+    this.irA = new GestureDetector(new GestureDetector.OnGestureListener()
     {
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
@@ -57,25 +57,25 @@ public final class b
         return false;
       }
     });
-    this.FUg = parama;
-    this.CKE = 15;
-    this.FUe = new c();
-    this.FUf = new LinkedList();
-    this.nbI = new MessageQueue.IdleHandler()
+    this.HtV = parama;
+    this.Edg = 15;
+    this.HtT = new c();
+    this.HtU = new LinkedList();
+    this.nEp = new MessageQueue.IdleHandler()
     {
       public final boolean queueIdle()
       {
         AppMethodBeat.i(141583);
-        while (b.this.FUf.size() > 0)
+        while (b.this.HtU.size() > 0)
         {
-          String str = (String)b.this.FUf.removeFirst();
-          b.this.FUg.Cl(str);
+          String str = (String)b.this.HtU.removeFirst();
+          b.this.HtV.Go(str);
         }
         AppMethodBeat.o(141583);
         return true;
       }
     };
-    Looper.myQueue().addIdleHandler(this.nbI);
+    Looper.myQueue().addIdleHandler(this.nEp);
     AppMethodBeat.o(141587);
   }
   
@@ -84,19 +84,19 @@ public final class b
     AppMethodBeat.i(141588);
     if (paramb == null)
     {
-      ad.e("MicroMsg.EarlyGetHeadImg", "earlyGet, getter is null, no early get headimg will be performed");
+      ac.e("MicroMsg.EarlyGetHeadImg", "earlyGet, getter is null, no early get headimg will be performed");
       AppMethodBeat.o(141588);
       return;
     }
-    if (this.CKE <= 0)
+    if (this.Edg <= 0)
     {
-      ad.e("MicroMsg.EarlyGetHeadImg", "earlyGet fail, threshold is invalid");
+      ac.e("MicroMsg.EarlyGetHeadImg", "earlyGet fail, threshold is invalid");
       AppMethodBeat.o(141588);
       return;
     }
-    int j = paramb.aII();
+    int j = paramb.aPz();
     int i = 1;
-    if (i <= this.CKE)
+    if (i <= this.Edg)
     {
       String str;
       if (this.direction == 1)
@@ -106,11 +106,11 @@ public final class b
           AppMethodBeat.o(141588);
           return;
         }
-        str = paramb.qa(paramInt - i);
-        if ((str != null) && (str.length() != 0) && (!this.FUe.contains(str)))
+        str = paramb.qN(paramInt - i);
+        if ((str != null) && (str.length() != 0) && (!this.HtT.contains(str)))
         {
-          this.FUe.xe(str);
-          this.FUf.add(str);
+          this.HtT.Bk(str);
+          this.HtU.add(str);
         }
       }
       for (;;)
@@ -122,11 +122,11 @@ public final class b
           AppMethodBeat.o(141588);
           return;
         }
-        str = paramb.qa(paramInt + i);
-        if ((str != null) && (str.length() != 0) && (!this.FUe.contains(str)))
+        str = paramb.qN(paramInt + i);
+        if ((str != null) && (str.length() != 0) && (!this.HtT.contains(str)))
         {
-          this.FUe.xe(str);
-          this.FUf.add(str);
+          this.HtT.Bk(str);
+          this.HtU.add(str);
         }
       }
     }
@@ -136,8 +136,8 @@ public final class b
   public final void detach()
   {
     AppMethodBeat.i(141590);
-    if (this.nbI != null) {
-      Looper.myQueue().removeIdleHandler(this.nbI);
+    if (this.nEp != null) {
+      Looper.myQueue().removeIdleHandler(this.nEp);
     }
     AppMethodBeat.o(141590);
   }
@@ -145,65 +145,65 @@ public final class b
   public final void onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141589);
-    if (this.hRv != null) {
-      this.hRv.onTouchEvent(paramMotionEvent);
+    if (this.irA != null) {
+      this.irA.onTouchEvent(paramMotionEvent);
     }
     AppMethodBeat.o(141589);
   }
   
   public static abstract interface a
   {
-    public abstract Bitmap Cl(String paramString);
+    public abstract Bitmap Go(String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract int aII();
+    public abstract int aPz();
     
-    public abstract String qa(int paramInt);
+    public abstract String qN(int paramInt);
   }
   
   final class c
   {
-    private LinkedList<String> fyl;
+    private LinkedList<String> fBS;
     private int maxSize;
     
     public c()
     {
       AppMethodBeat.i(141584);
-      this.fyl = null;
+      this.fBS = null;
       this.maxSize = 40;
-      this.fyl = new LinkedList();
+      this.fBS = new LinkedList();
       AppMethodBeat.o(141584);
+    }
+    
+    final void Bk(String paramString)
+    {
+      AppMethodBeat.i(141585);
+      if (this.fBS.contains(paramString))
+      {
+        AppMethodBeat.o(141585);
+        return;
+      }
+      this.fBS.add(paramString);
+      if (this.fBS.size() >= this.maxSize) {
+        this.fBS.removeFirst();
+      }
+      AppMethodBeat.o(141585);
     }
     
     final boolean contains(String paramString)
     {
       AppMethodBeat.i(141586);
-      boolean bool = this.fyl.contains(paramString);
+      boolean bool = this.fBS.contains(paramString);
       AppMethodBeat.o(141586);
       return bool;
-    }
-    
-    final void xe(String paramString)
-    {
-      AppMethodBeat.i(141585);
-      if (this.fyl.contains(paramString))
-      {
-        AppMethodBeat.o(141585);
-        return;
-      }
-      this.fyl.add(paramString);
-      if (this.fyl.size() >= this.maxSize) {
-        this.fyl.removeFirst();
-      }
-      AppMethodBeat.o(141585);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.applet.b
  * JD-Core Version:    0.7.0.1
  */

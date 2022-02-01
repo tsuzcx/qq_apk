@@ -9,31 +9,31 @@ import java.util.Map;
 public abstract interface l
   extends t
 {
-  public abstract i<String> bcY();
+  public abstract i<String> bjT();
   
   public abstract Map<String, List<String>> getResponseHeaders();
   
   public static class a
     extends IOException
   {
-    public final g kou;
+    public final g kPN;
     
     public a(IOException paramIOException, g paramg)
     {
       super();
-      this.kou = paramg;
+      this.kPN = paramg;
     }
     
     public a(String paramString, g paramg)
     {
       super();
-      this.kou = paramg;
+      this.kPN = paramg;
     }
     
     public a(String paramString, IOException paramIOException, g paramg)
     {
       super(paramIOException);
-      this.kou = paramg;
+      this.kPN = paramg;
     }
   }
   
@@ -72,32 +72,32 @@ public abstract interface l
   public static final class e
     extends l.a
   {
-    public final String bxn;
-    public final Map<String, List<String>> bxo;
+    public final String contentType;
+    public final Map<String, List<String>> headerFields;
     
     public e(String paramString, Map<String, List<String>> paramMap, g paramg)
     {
       super(paramg);
-      AppMethodBeat.i(193902);
-      this.bxn = paramString;
-      this.bxo = paramMap;
-      AppMethodBeat.o(193902);
+      AppMethodBeat.i(194249);
+      this.contentType = paramString;
+      this.headerFields = paramMap;
+      AppMethodBeat.o(194249);
     }
   }
   
   public static final class f
     extends l.a
   {
-    public final Map<String, List<String>> bxo;
+    public final Map<String, List<String>> headerFields;
     public final int responseCode;
     
     public f(int paramInt, Map<String, List<String>> paramMap, g paramg)
     {
       super(paramg);
-      AppMethodBeat.i(193903);
+      AppMethodBeat.i(194250);
       this.responseCode = paramInt;
-      this.bxo = paramMap;
-      AppMethodBeat.o(193903);
+      this.headerFields = paramMap;
+      AppMethodBeat.o(194250);
     }
   }
   

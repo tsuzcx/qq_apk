@@ -14,33 +14,33 @@ import com.tencent.mm.plugin.game.d.p;
 import com.tencent.mm.plugin.game.e.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class GameFeedSubscriptView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private ImageView nVN;
-  private af siP;
-  private TextView siU;
-  private TextView siV;
-  private LinearLayout siW;
-  private TextView siX;
-  private TextView siY;
-  private TextView siZ;
+  private ImageView ozi;
+  private af tqI;
+  private TextView tqN;
+  private TextView tqO;
+  private LinearLayout tqP;
+  private TextView tqQ;
+  private TextView tqR;
+  private TextView tqS;
   
   public GameFeedSubscriptView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void EI(int paramInt)
+  private void GE(int paramInt)
   {
     AppMethodBeat.i(42134);
     if (paramInt == 1) {}
-    for (String str = a.ad(this.siP.rZW, "clickType", "leftCorner");; str = a.ad(this.siP.rZW, "clickType", "rightCorner"))
+    for (String str = a.ae(this.tqI.thP, "clickType", "leftCorner");; str = a.ae(this.tqI.thP, "clickType", "rightCorner"))
     {
-      com.tencent.mm.game.report.e.a(getContext(), 10, 1024, this.siP.rZY, 7, this.siP.hnC, GameIndexListView.getSourceScene(), str);
+      com.tencent.mm.game.report.e.a(getContext(), 10, 1024, this.tqI.thR, 7, this.tqI.hOf, GameIndexListView.getSourceScene(), str);
       AppMethodBeat.o(42134);
       return;
     }
@@ -49,24 +49,24 @@ public class GameFeedSubscriptView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42133);
-    if (this.siP == null)
+    if (this.tqI == null)
     {
       AppMethodBeat.o(42133);
       return;
     }
     if ((paramView.getId() == 2131301390) || (paramView.getId() == 2131301391) || (paramView.getId() == 2131297017))
     {
-      if ((this.siP.saV != null) && (!bt.isNullOrNil(this.siP.saV.rZo)))
+      if ((this.tqI.tiP != null) && (!bs.isNullOrNil(this.tqI.tiP.thh)))
       {
-        c.ax(getContext(), this.siP.saV.rZo);
-        EI(1);
+        c.ay(getContext(), this.tqI.tiP.thh);
+        GE(1);
         AppMethodBeat.o(42133);
       }
     }
-    else if ((paramView.getId() == 2131304196) && (this.siP.saW != null) && (!bt.isNullOrNil(this.siP.saW.rZo)))
+    else if ((paramView.getId() == 2131304196) && (this.tqI.tiQ != null) && (!bs.isNullOrNil(this.tqI.tiQ.thh)))
     {
-      c.ax(getContext(), this.siP.saW.rZo);
-      EI(2);
+      c.ay(getContext(), this.tqI.tiQ.thh);
+      GE(2);
     }
     AppMethodBeat.o(42133);
   }
@@ -76,63 +76,63 @@ public class GameFeedSubscriptView
     AppMethodBeat.i(42131);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131494307, this, true);
-    this.siU = ((TextView)localView.findViewById(2131301390));
-    this.siV = ((TextView)localView.findViewById(2131301391));
-    this.siW = ((LinearLayout)localView.findViewById(2131297017));
-    this.nVN = ((ImageView)localView.findViewById(2131296996));
-    this.siX = ((TextView)localView.findViewById(2131302858));
-    this.siY = ((TextView)localView.findViewById(2131306231));
-    this.siZ = ((TextView)localView.findViewById(2131304196));
-    this.siU.setOnClickListener(this);
-    this.siV.setOnClickListener(this);
-    this.siW.setOnClickListener(this);
-    this.siZ.setOnClickListener(this);
+    this.tqN = ((TextView)localView.findViewById(2131301390));
+    this.tqO = ((TextView)localView.findViewById(2131301391));
+    this.tqP = ((LinearLayout)localView.findViewById(2131297017));
+    this.ozi = ((ImageView)localView.findViewById(2131296996));
+    this.tqQ = ((TextView)localView.findViewById(2131302858));
+    this.tqR = ((TextView)localView.findViewById(2131306231));
+    this.tqS = ((TextView)localView.findViewById(2131304196));
+    this.tqN.setOnClickListener(this);
+    this.tqO.setOnClickListener(this);
+    this.tqP.setOnClickListener(this);
+    this.tqS.setOnClickListener(this);
     AppMethodBeat.o(42131);
   }
   
   public void setData(af paramaf)
   {
     AppMethodBeat.i(42132);
-    if ((paramaf == null) || ((paramaf.saV == null) && (paramaf.saW == null)))
+    if ((paramaf == null) || ((paramaf.tiP == null) && (paramaf.tiQ == null)))
     {
       setVisibility(8);
       AppMethodBeat.o(42132);
       return;
     }
-    this.siP = paramaf;
+    this.tqI = paramaf;
     setVisibility(0);
-    this.siU.setVisibility(8);
-    this.siV.setVisibility(8);
-    this.siW.setVisibility(8);
-    if (paramaf.saV != null) {
-      switch (paramaf.saV.sai)
+    this.tqN.setVisibility(8);
+    this.tqO.setVisibility(8);
+    this.tqP.setVisibility(8);
+    if (paramaf.tiP != null) {
+      switch (paramaf.tiP.tib)
       {
       }
     }
-    while (paramaf.saW != null)
+    while (paramaf.tiQ != null)
     {
-      this.siZ.setText(paramaf.saW.Desc);
-      this.siZ.setVisibility(0);
+      this.tqS.setText(paramaf.tiQ.Desc);
+      this.tqS.setVisibility(0);
       AppMethodBeat.o(42132);
       return;
-      this.siU.setVisibility(0);
-      this.siU.setText(paramaf.saV.Desc);
+      this.tqN.setVisibility(0);
+      this.tqN.setText(paramaf.tiP.Desc);
       continue;
-      this.siV.setVisibility(0);
-      this.siV.setText(paramaf.saV.Desc);
+      this.tqO.setVisibility(0);
+      this.tqO.setText(paramaf.tiP.Desc);
       continue;
-      this.siW.setVisibility(0);
-      if (!bt.isNullOrNil(paramaf.saV.sah))
+      this.tqP.setVisibility(0);
+      if (!bs.isNullOrNil(paramaf.tiP.tia))
       {
         e.a.a locala = new e.a.a();
-        locala.gkG = true;
-        com.tencent.mm.plugin.game.f.e.cEB().a(this.nVN, paramaf.saV.sah, locala.cEC());
-        this.nVN.setVisibility(0);
+        locala.gLt = true;
+        com.tencent.mm.plugin.game.f.e.cRL().a(this.ozi, paramaf.tiP.tia, locala.cRM());
+        this.ozi.setVisibility(0);
       }
-      this.siX.setText(paramaf.saV.Name);
-      this.siY.setText(paramaf.saV.Desc);
+      this.tqQ.setText(paramaf.tiP.Name);
+      this.tqR.setText(paramaf.tiP.Desc);
     }
-    this.siZ.setVisibility(8);
+    this.tqS.setVisibility(8);
     AppMethodBeat.o(42132);
   }
 }

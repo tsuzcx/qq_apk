@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.os.IBinder;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.c;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
 import com.tencent.mm.plugin.backup.bakoldlogic.c.f;
-import com.tencent.mm.protocal.protobuf.asn;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.avr;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.service.MMService;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.SERVICESCHECK})
@@ -22,18 +22,18 @@ public class BakOldUSBService
   extends MMService
   implements g
 {
-  private boolean mvW = false;
-  private int myl = -1;
+  private boolean mXX = false;
+  private int nam = -1;
   
-  private boolean byb()
+  private boolean bEX()
   {
-    return (this.myl == 0) || (this.myl == 1);
+    return (this.nam == 0) || (this.nam == 1);
   }
   
-  public final IBinder TF()
+  public final IBinder Uz()
   {
     AppMethodBeat.i(21812);
-    ad.i("MicroMsg.BakOldUSBService", "onBind()");
+    ac.i("MicroMsg.BakOldUSBService", "onBind()");
     AppMethodBeat.o(21812);
     return null;
   }
@@ -46,9 +46,9 @@ public class BakOldUSBService
   public final void onCreate()
   {
     AppMethodBeat.i(21813);
-    ad.i("MicroMsg.BakOldUSBService", "onCreate()");
+    ac.i("MicroMsg.BakOldUSBService", "onCreate()");
     super.onCreate();
-    az.aeS().a(595, this);
+    az.agi().a(595, this);
     com.tencent.mm.plugin.backup.g.b.a(1, this);
     AppMethodBeat.o(21813);
   }
@@ -56,10 +56,10 @@ public class BakOldUSBService
   public final void onDestroy()
   {
     AppMethodBeat.i(21815);
-    az.aeS().b(595, this);
+    az.agi().b(595, this);
     com.tencent.mm.plugin.backup.g.b.b(1, this);
     super.onDestroy();
-    ad.i("MicroMsg.BakOldUSBService", "onDestroy thread:" + Thread.currentThread().getName());
+    ac.i("MicroMsg.BakOldUSBService", "onDestroy thread:" + Thread.currentThread().getName());
     AppMethodBeat.o(21815);
   }
   
@@ -70,17 +70,17 @@ public class BakOldUSBService
     if (paramn == null)
     {
       str = "";
-      ad.i("MicroMsg.BakOldUSBService", "summerbak onSceneEnd [%d, %d, %s] [%s] backupScene[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, str, Integer.valueOf(this.myl) });
+      ac.i("MicroMsg.BakOldUSBService", "summerbak onSceneEnd [%d, %d, %s] [%s] backupScene[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, str, Integer.valueOf(this.nam) });
       if (!(paramn instanceof com.tencent.mm.plugin.backup.g.b)) {
         break label257;
       }
-      ad.d("MicroMsg.BakOldUSBService", "summerback BackupBaseScene type[%d], backupScene[%d]", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(this.myl) });
+      ac.d("MicroMsg.BakOldUSBService", "summerback BackupBaseScene type[%d], backupScene[%d]", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(this.nam) });
       if ((paramn.getType() == 1) && (paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = new Intent().setClassName(aj.getContext(), "com.tencent.mm.ui.LauncherUI");
+        paramString = new Intent().setClassName(ai.getContext(), "com.tencent.mm.ui.LauncherUI");
         paramString.addFlags(335544320);
         paramString.putExtra("nofification_type", "back_to_pcmgr_notification");
-        if (byb()) {
+        if (bEX()) {
           break label251;
         }
       }
@@ -89,9 +89,9 @@ public class BakOldUSBService
     for (boolean bool = true;; bool = false)
     {
       paramString.putExtra("newPCBackup", bool);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldmodel/BakOldUSBService", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramString.lS(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.aeD(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldmodel/BakOldUSBService", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramString.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldmodel/BakOldUSBService", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       stopSelf();
       AppMethodBeat.o(21816);
@@ -104,49 +104,49 @@ public class BakOldUSBService
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((f)paramn).byw();
-        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().mqb = paramString.ID;
-        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().mqc = paramString.CCO;
-        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().mqd = paramString.CCP;
-        this.myl = paramString.Scene;
-        ad.d("MicroMsg.BakOldUSBService", "summerbak getconnetinfo type: %d, scene: %d isFromWifi:%b", new Object[] { Integer.valueOf(paramString.mBH), Integer.valueOf(paramString.Scene), Boolean.valueOf(this.mvW) });
-        if ((!this.mvW) && (paramString.mBH == 1))
+        paramString = ((f)paramn).bFs();
+        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().mSc = paramString.ID;
+        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().mSd = paramString.DVl;
+        com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().mSe = paramString.DVm;
+        this.nam = paramString.Scene;
+        ac.d("MicroMsg.BakOldUSBService", "summerbak getconnetinfo type: %d, scene: %d isFromWifi:%b", new Object[] { Integer.valueOf(paramString.ndI), Integer.valueOf(paramString.Scene), Boolean.valueOf(this.mXX) });
+        if ((!this.mXX) && (paramString.ndI == 1))
         {
-          ad.e("MicroMsg.BakOldUSBService", "broast from usb but type is wifi, url may be fake!!!!");
+          ac.e("MicroMsg.BakOldUSBService", "broast from usb but type is wifi, url may be fake!!!!");
           stopSelf();
           AppMethodBeat.o(21816);
           return;
         }
-        if (byb())
+        if (bEX())
         {
-          com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().bye().ec(paramString.CCH, paramString.CCI);
-          com.tencent.mm.plugin.backup.g.b.a(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().bye());
-          com.tencent.mm.plugin.backup.g.b.a(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().byg());
-          com.tencent.mm.plugin.backup.g.b.vT(1);
-          com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().byg().f(paramString.mBH, paramString.CCG);
+          com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFa().eo(paramString.DVe, paramString.DVf);
+          com.tencent.mm.plugin.backup.g.b.a(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFa());
+          com.tencent.mm.plugin.backup.g.b.a(com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFc());
+          com.tencent.mm.plugin.backup.g.b.wK(1);
+          com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFc().f(paramString.ndI, paramString.DVd);
           AppMethodBeat.o(21816);
           return;
         }
-        ad.d("MicroMsg.BakOldUSBService", "summerbak onSceneEnd need todo for new scene:% ", new Object[] { Integer.valueOf(this.myl) });
+        ac.d("MicroMsg.BakOldUSBService", "summerbak onSceneEnd need todo for new scene:% ", new Object[] { Integer.valueOf(this.nam) });
         AppMethodBeat.o(21816);
         return;
       }
-      com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().byf().myC = 2;
-      com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().byf().asE();
+      com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFb().naD = 2;
+      com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFb().azv();
       if ((paramInt1 != 4) || (paramInt2 != -2011)) {
         break label554;
       }
-      ad.i("MicroMsg.BakOldUSBService", "getConnect info: INVALID URL");
+      ac.i("MicroMsg.BakOldUSBService", "getConnect info: INVALID URL");
     }
     for (;;)
     {
-      com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().bye();
-      e.byn();
+      com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFa();
+      e.bFj();
       stopSelf();
       AppMethodBeat.o(21816);
       return;
       label554:
-      ad.i("MicroMsg.BakOldUSBService", "getConnect info other error");
+      ac.i("MicroMsg.BakOldUSBService", "getConnect info other error");
     }
   }
   
@@ -154,44 +154,44 @@ public class BakOldUSBService
   {
     paramInt1 = 1;
     AppMethodBeat.i(21814);
-    ad.i("MicroMsg.BakOldUSBService", "onStartCommand() scene：%d", new Object[] { Integer.valueOf(this.myl) });
+    ac.i("MicroMsg.BakOldUSBService", "onStartCommand() scene：%d", new Object[] { Integer.valueOf(this.nam) });
     if (paramIntent == null)
     {
-      ad.w("MicroMsg.BakOldUSBService", "onStartCommand intent is null");
+      ac.w("MicroMsg.BakOldUSBService", "onStartCommand intent is null");
       AppMethodBeat.o(21814);
       return 2;
     }
     String str = paramIntent.getStringExtra("url");
-    if (bt.isNullOrNil(str))
+    if (bs.isNullOrNil(str))
     {
-      ad.e("MicroMsg.BakOldUSBService", "onStartCommand url is null");
+      ac.e("MicroMsg.BakOldUSBService", "onStartCommand url is null");
       stopSelf();
       AppMethodBeat.o(21814);
       return 2;
     }
-    this.mvW = paramIntent.getBooleanExtra("isFromWifi", false);
-    ad.i("MicroMsg.BakOldUSBService", "Broadcast url:%s, isFromWifi:%b", new Object[] { str, Boolean.valueOf(this.mvW) });
-    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().byf().asE();
-    paramIntent = com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.byd().byf();
-    if (this.mvW) {
+    this.mXX = paramIntent.getBooleanExtra("isFromWifi", false);
+    ac.i("MicroMsg.BakOldUSBService", "Broadcast url:%s, isFromWifi:%b", new Object[] { str, Boolean.valueOf(this.mXX) });
+    com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFb().azv();
+    paramIntent = com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a.bEZ().bFb();
+    if (this.mXX) {
       paramInt1 = 2;
     }
-    paramIntent.myB = paramInt1;
-    if (!az.arW())
+    paramIntent.naC = paramInt1;
+    if (!az.ayN())
     {
-      ad.e("MicroMsg.BakOldUSBService", "onStartCommand not in Login state");
-      paramIntent = new Intent().setClassName(aj.getContext(), "com.tencent.mm.ui.LauncherUI");
+      ac.e("MicroMsg.BakOldUSBService", "onStartCommand not in Login state");
+      paramIntent = new Intent().setClassName(ai.getContext(), "com.tencent.mm.ui.LauncherUI");
       paramIntent.addFlags(335544320);
       paramIntent.putExtra("nofification_type", "back_to_pcmgr_notification");
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.adn(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldmodel/BakOldUSBService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.lS(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.aeD(), "com/tencent/mm/plugin/backup/bakoldlogic/bakoldmodel/BakOldUSBService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.lR(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/bakoldlogic/bakoldmodel/BakOldUSBService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(21814);
       return 2;
     }
     paramIntent = new f(str);
-    az.aeS().a(paramIntent, 0);
+    az.agi().a(paramIntent, 0);
     AppMethodBeat.o(21814);
     return 2;
   }

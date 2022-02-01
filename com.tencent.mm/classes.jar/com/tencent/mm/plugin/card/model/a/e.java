@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.card.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
+import com.tencent.mm.cn.f;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.ard;
-import com.tencent.mm.protocal.protobuf.are;
-import com.tencent.mm.protocal.protobuf.ckq;
-import com.tencent.mm.protocal.protobuf.cld;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.auh;
+import com.tencent.mm.protocal.protobuf.aui;
+import com.tencent.mm.protocal.protobuf.cpx;
+import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.vending.c.a;
 import d.g.b.k;
 import d.l;
 import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/model/v2/CgiGetCardEntranceStyle;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetCardEntranceStyleResponse;", "()V", "Companion", "plugin-card_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/model/v2/CgiGetCardEntranceStyle;", "Lcom/tencent/mm/plugin/card/model/v2/CommonCardCgi;", "Lcom/tencent/mm/protocal/protobuf/GetCardEntranceStyleResponse;", "()V", "Companion", "plugin-card_release"})
 public final class e
-  extends j<are>
+  extends j<aui>
 {
   private static final String TAG = "MicroMsg.CgiGetCardEntranceStyle";
-  public static final a nuM;
+  public static final a nXM;
   
   static
   {
     AppMethodBeat.i(112392);
-    nuM = new a((byte)0);
+    nXM = new a((byte)0);
     TAG = "MicroMsg.CgiGetCardEntranceStyle";
     AppMethodBeat.o(112392);
   }
@@ -33,48 +33,48 @@ public final class e
   public e()
   {
     AppMethodBeat.i(112391);
-    ard localard = new ard();
-    are localare = new are();
-    a((ckq)localard, (cld)localare, 2793, "/cgi-bin/mmpay-bin/mktgetcardentrancestyle");
-    ad.i(TAG, "do get card entrance style");
+    auh localauh = new auh();
+    aui localaui = new aui();
+    a((cpx)localauh, (cqk)localaui, 2793, "/cgi-bin/mmpay-bin/mktgetcardentrancestyle");
+    ac.i(TAG, "do get card entrance style");
     AppMethodBeat.o(112391);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/model/v2/CgiGetCardEntranceStyle$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "triggerGetCardEntrance", "", "force", "", "plugin-card_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/model/v2/CgiGetCardEntranceStyle$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "triggerGetCardEntrance", "", "force", "", "plugin-card_release"})
   public static final class a
   {
-    public static void bJr()
+    public static void bQE()
     {
-      AppMethodBeat.i(192667);
-      ad.i(e.access$getTAG$cp(), "trigger get card entrance: %s", new Object[] { Boolean.TRUE });
-      Object localObject = g.afB();
+      AppMethodBeat.i(206241);
+      ac.i(e.access$getTAG$cp(), "trigger get card entrance: %s", new Object[] { Boolean.TRUE });
+      Object localObject = g.agR();
       k.g(localObject, "MMKernel.storage()");
-      localObject = ((com.tencent.mm.kernel.e)localObject).afk().get(ae.a.Fuw, Long.valueOf(0L));
+      localObject = ((com.tencent.mm.kernel.e)localObject).agA().get(ah.a.GSq, Long.valueOf(0L));
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type kotlin.Long");
-        AppMethodBeat.o(192667);
+        AppMethodBeat.o(206241);
         throw ((Throwable)localObject);
       }
       ((Long)localObject).longValue();
       System.currentTimeMillis();
-      localObject = g.afB();
+      localObject = g.agR();
       k.g(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.e)localObject).afk().set(ae.a.Fuw, Long.valueOf(System.currentTimeMillis()));
-      new e().auK().h((a)a.nuN);
-      AppMethodBeat.o(192667);
+      ((com.tencent.mm.kernel.e)localObject).agA().set(ah.a.GSq, Long.valueOf(System.currentTimeMillis()));
+      new e().aBB().h((a)a.nXN);
+      AppMethodBeat.o(206241);
     }
     
-    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetCardEntranceStyleResponse;", "kotlin.jvm.PlatformType", "call"})
+    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetCardEntranceStyleResponse;", "kotlin.jvm.PlatformType", "call"})
     static final class a<_Ret, _Var>
       implements a<_Ret, _Var>
     {
-      public static final a nuN;
+      public static final a nXN;
       
       static
       {
         AppMethodBeat.i(112390);
-        nuN = new a();
+        nXN = new a();
         AppMethodBeat.o(112390);
       }
     }

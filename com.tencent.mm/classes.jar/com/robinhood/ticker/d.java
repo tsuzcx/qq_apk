@@ -6,28 +6,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  private final c[] bOa;
-  final f bOb;
-  char bOc = '\000';
-  char bOd = '\000';
-  char[] bOe;
-  int bOf;
-  float bOg;
-  float bOh;
-  float bOi;
-  float bOj;
-  float bOk;
-  float bOl;
-  float bOm;
-  float bOn;
-  int bOo;
+  private final c[] bLI;
+  final f bLJ;
+  char bLK = '\000';
+  char bLL = '\000';
+  char[] bLM;
+  int bLN;
+  float bLO;
+  float bLP;
+  float bLQ;
+  float bLR;
+  float bLS;
+  float bLT;
+  float bLU;
+  float bLV;
+  int bLW;
   int endIndex;
   int startIndex;
   
   d(c[] paramArrayOfc, f paramf)
   {
-    this.bOa = paramArrayOfc;
-    this.bOb = paramf;
+    this.bLI = paramArrayOfc;
+    this.bLJ = paramf;
   }
   
   static boolean a(Canvas paramCanvas, Paint paramPaint, char[] paramArrayOfChar, int paramInt, float paramFloat)
@@ -47,18 +47,18 @@ final class d
   {
     int m = 0;
     AppMethodBeat.i(39845);
-    this.bOd = paramChar;
-    this.bOi = this.bOj;
-    this.bOk = this.bOb.p(paramChar);
-    this.bOl = Math.max(this.bOi, this.bOk);
-    this.bOe = null;
+    this.bLL = paramChar;
+    this.bLQ = this.bLR;
+    this.bLS = this.bLJ.p(paramChar);
+    this.bLT = Math.max(this.bLQ, this.bLS);
+    this.bLM = null;
     int k = 0;
-    while (k < this.bOa.length)
+    while (k < this.bLI.length)
     {
-      Object localObject = this.bOa[k];
-      paramChar = this.bOc;
-      char c = this.bOd;
-      TickerView.a locala = this.bOb.bOu;
+      Object localObject = this.bLI[k];
+      paramChar = this.bLK;
+      char c = this.bLL;
+      TickerView.a locala = this.bLJ.bMc;
       int n = ((c)localObject).n(paramChar);
       int i1 = ((c)localObject).n(c);
       if ((n < 0) || (i1 < 0))
@@ -66,7 +66,7 @@ final class d
         localObject = null;
         if (localObject != null)
         {
-          this.bOe = this.bOa[k].bNW;
+          this.bLM = this.bLI[k].bLE;
           this.startIndex = ((c.a)localObject).startIndex;
           this.endIndex = ((c.a)localObject).endIndex;
         }
@@ -75,7 +75,7 @@ final class d
       else
       {
         int j;
-        switch (c.1.bNY[locala.ordinal()])
+        switch (c.1.bLG[locala.ordinal()])
         {
         default: 
           j = n;
@@ -87,7 +87,7 @@ final class d
           break;
           if (c == 0)
           {
-            i = ((c)localObject).bNW.length;
+            i = ((c)localObject).bLE.length;
             j = n;
           }
           else
@@ -96,14 +96,14 @@ final class d
             j = n;
             if (i1 < n)
             {
-              i = i1 + ((c)localObject).bNV;
+              i = i1 + ((c)localObject).bLD;
               j = n;
               continue;
               i = i1;
               j = n;
               if (n < i1)
               {
-                j = n + ((c)localObject).bNV;
+                j = n + ((c)localObject).bLD;
                 i = i1;
                 continue;
                 i = i1;
@@ -117,9 +117,9 @@ final class d
                     {
                       i = i1;
                       j = n;
-                      if (((c)localObject).bNV - n + i1 < n - i1)
+                      if (((c)localObject).bLD - n + i1 < n - i1)
                       {
-                        i = i1 + ((c)localObject).bNV;
+                        i = i1 + ((c)localObject).bLD;
                         j = n;
                       }
                     }
@@ -131,9 +131,9 @@ final class d
                       {
                         i = i1;
                         j = n;
-                        if (((c)localObject).bNV - i1 + n < i1 - n)
+                        if (((c)localObject).bLD - i1 + n < i1 - n)
                         {
-                          j = n + ((c)localObject).bNV;
+                          j = n + ((c)localObject).bLD;
                           i = i1;
                         }
                       }
@@ -146,11 +146,11 @@ final class d
         }
       }
     }
-    if (this.bOe == null)
+    if (this.bLM == null)
     {
-      if (this.bOc == this.bOd)
+      if (this.bLK == this.bLL)
       {
-        this.bOe = new char[] { this.bOc };
+        this.bLM = new char[] { this.bLK };
         this.endIndex = 0;
         this.startIndex = 0;
       }
@@ -168,43 +168,43 @@ final class d
     label555:
     for (int i = 1;; i = -1)
     {
-      this.bOo = i;
-      this.bOn = this.bOm;
-      this.bOm = 0.0F;
+      this.bLW = i;
+      this.bLV = this.bLU;
+      this.bLU = 0.0F;
       AppMethodBeat.o(39845);
       return;
-      this.bOe = new char[] { this.bOc, this.bOd };
+      this.bLM = new char[] { this.bLK, this.bLL };
       this.startIndex = 0;
       this.endIndex = 1;
       break;
     }
   }
   
-  final float yI()
+  final float yv()
   {
     AppMethodBeat.i(39846);
-    yJ();
-    float f = this.bOj;
+    yw();
+    float f = this.bLR;
     AppMethodBeat.o(39846);
     return f;
   }
   
-  final void yJ()
+  final void yw()
   {
     AppMethodBeat.i(39847);
-    float f = this.bOb.p(this.bOd);
-    if ((this.bOj == this.bOk) && (this.bOk != f))
+    float f = this.bLJ.p(this.bLL);
+    if ((this.bLR == this.bLS) && (this.bLS != f))
     {
-      this.bOk = f;
-      this.bOj = f;
-      this.bOl = f;
+      this.bLS = f;
+      this.bLR = f;
+      this.bLT = f;
     }
     AppMethodBeat.o(39847);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.robinhood.ticker.d
  * JD-Core Version:    0.7.0.1
  */

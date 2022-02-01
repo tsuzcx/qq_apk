@@ -7,12 +7,12 @@ import com.tencent.mm.plugin.appbrand.jsapi.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.t;
 import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.v;
 
 @SuppressLint({"ViewConstructor"})
 public final class c
-  extends u
+  extends v
 {
   public c(Context paramContext, o paramo)
   {
@@ -24,36 +24,36 @@ public final class c
   static final class a
     extends com.tencent.luggage.game.page.f
   {
-    public final aa a(t paramt)
+    public final aa a(u paramu)
     {
       AppMethodBeat.i(174729);
-      paramt = new d();
-      paramt.a(new f.d()
+      paramu = new d();
+      paramu.a(new f.d()
       {
         public final void onForeground()
         {
           AppMethodBeat.i(45173);
-          com.tencent.mm.plugin.ball.f.f.d(true, true, true);
+          com.tencent.mm.plugin.ball.f.f.e(true, true, true);
           AppMethodBeat.o(45173);
         }
       });
-      paramt.a(new f.b()
+      paramu.a(new f.b()
       {
         public final void onBackground()
         {
           AppMethodBeat.i(45174);
-          com.tencent.mm.plugin.ball.f.f.d(false, true, true);
+          com.tencent.mm.plugin.ball.f.f.e(false, true, true);
           AppMethodBeat.o(45174);
         }
       });
       AppMethodBeat.o(174729);
-      return paramt;
+      return paramu;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.c
  * JD-Core Version:    0.7.0.1
  */

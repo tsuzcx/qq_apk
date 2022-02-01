@@ -1,16 +1,16 @@
 package com.tencent.mm.sandbox.updater;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wl;
+import com.tencent.mm.g.a.ww;
 import com.tencent.mm.sdk.b.c;
 
 public final class i
-  extends c<wl>
+  extends c<ww>
 {
   public i()
   {
     AppMethodBeat.i(161486);
-    this.__eventId = wl.class.getName().hashCode();
+    this.__eventId = ww.class.getName().hashCode();
     AppMethodBeat.o(161486);
   }
 }

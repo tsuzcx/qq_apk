@@ -7,10 +7,10 @@ import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -38,8 +38,8 @@ public class e
       {
         localJSONObject.put("download_id", paramFileDownloadTaskInfo.id);
         localJSONObject.put("state", str);
-        if ((str == "downloading") && (paramFileDownloadTaskInfo.mqq != 0L)) {
-          localJSONObject.put("progress", paramFileDownloadTaskInfo.ofL / paramFileDownloadTaskInfo.mqq * 100L);
+        if ((str == "downloading") && (paramFileDownloadTaskInfo.mSs != 0L)) {
+          localJSONObject.put("progress", paramFileDownloadTaskInfo.oJm / paramFileDownloadTaskInfo.mSs * 100L);
         }
         parama.f(null, localJSONObject);
         AppMethodBeat.o(8830);
@@ -47,14 +47,14 @@ public class e
       }
       catch (Exception paramFileDownloadTaskInfo)
       {
-        ad.e("MicroMsg.JsApiQueryDownloadTask", paramFileDownloadTaskInfo.getMessage());
+        ac.e("MicroMsg.JsApiQueryDownloadTask", paramFileDownloadTaskInfo.getMessage());
         AppMethodBeat.o(8830);
       }
       str = "api_not_support";
       continue;
       str = "downloading";
       continue;
-      if (i.eK(paramFileDownloadTaskInfo.path))
+      if (i.eA(paramFileDownloadTaskInfo.path))
       {
         str = "download_succ";
       }
@@ -62,7 +62,7 @@ public class e
       {
         str = "default";
         continue;
-        if ((paramFileDownloadTaskInfo.ofN) && (!ay.isWifi(aj.getContext())))
+        if ((paramFileDownloadTaskInfo.oJo) && (!ax.isWifi(ai.getContext())))
         {
           str = "download_wait_for_wifi";
         }
@@ -87,7 +87,7 @@ public class e
       localLinkedList.add(paramJSONArray.optString(i));
       i += 1;
     }
-    f.bQt();
+    f.bXJ();
     paramJSONArray = f.R(localLinkedList);
     if (paramJSONArray.size() > 0)
     {
@@ -108,22 +108,22 @@ public class e
           {
             localJSONObject2.put("download_id", localFileDownloadTaskInfo.id);
             localJSONObject2.put("state", paramJSONArray);
-            if ((paramJSONArray == "downloading") && (localFileDownloadTaskInfo.mqq != 0L)) {
-              localJSONObject2.put("progress", localFileDownloadTaskInfo.ofL / localFileDownloadTaskInfo.mqq * 100L);
+            if ((paramJSONArray == "downloading") && (localFileDownloadTaskInfo.mSs != 0L)) {
+              localJSONObject2.put("progress", localFileDownloadTaskInfo.oJm / localFileDownloadTaskInfo.mSs * 100L);
             }
             localJSONObject1.put(localFileDownloadTaskInfo.appId, localJSONObject2);
             localLinkedList.remove(localFileDownloadTaskInfo.appId);
           }
           catch (Exception paramJSONArray)
           {
-            ad.e("MicroMsg.JsApiQueryDownloadTask", paramJSONArray.getMessage());
+            ac.e("MicroMsg.JsApiQueryDownloadTask", paramJSONArray.getMessage());
           }
           break;
           paramJSONArray = "api_not_support";
           continue;
           paramJSONArray = "downloading";
           continue;
-          if (i.eK(localFileDownloadTaskInfo.path))
+          if (i.eA(localFileDownloadTaskInfo.path))
           {
             paramJSONArray = "download_succ";
           }
@@ -131,7 +131,7 @@ public class e
           {
             paramJSONArray = "default";
             continue;
-            if ((localFileDownloadTaskInfo.ofN) && (!ay.isWifi(aj.getContext())))
+            if ((localFileDownloadTaskInfo.oJo) && (!ax.isWifi(ai.getContext())))
             {
               paramJSONArray = "download_wait_for_wifi";
             }
@@ -154,7 +154,7 @@ public class e
       parama.f(null, paramJSONArray);
       AppMethodBeat.o(8831);
       return;
-      ad.e("MicroMsg.JsApiQueryDownloadTask", "taskInfos is null");
+      ac.e("MicroMsg.JsApiQueryDownloadTask", "taskInfos is null");
       a(localJSONObject1, localLinkedList);
       paramJSONArray = new JSONObject();
       try
@@ -179,7 +179,7 @@ public class e
   private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(8832);
-    if (bt.gL(paramLinkedList))
+    if (bs.gY(paramLinkedList))
     {
       AppMethodBeat.o(8832);
       return;
@@ -197,7 +197,7 @@ public class e
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
+        ac.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
       }
     }
     AppMethodBeat.o(8832);
@@ -206,7 +206,7 @@ public class e
   public final void a(Context paramContext, String paramString, bn.a parama)
   {
     AppMethodBeat.i(8829);
-    ad.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
+    ac.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
     try
     {
       paramContext = new JSONObject(paramString);
@@ -220,7 +220,7 @@ public class e
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
+      ac.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(8829);
       return;
@@ -229,7 +229,7 @@ public class e
     paramContext = paramContext.optString("appid");
     if (l > 0L)
     {
-      paramString = f.bQt().oh(l);
+      paramString = f.bXJ().rT(l);
       paramContext = paramString;
       if (paramString == null) {
         paramContext = new FileDownloadTaskInfo();
@@ -238,9 +238,9 @@ public class e
       AppMethodBeat.o(8829);
       return;
     }
-    if (!bt.isNullOrNil(paramContext))
+    if (!bs.isNullOrNil(paramContext))
     {
-      paramString = f.bQt().Sp(paramContext);
+      paramString = f.bXJ().WB(paramContext);
       paramContext = paramString;
       if (paramString == null) {
         paramContext = new FileDownloadTaskInfo();
@@ -255,7 +255,7 @@ public class e
   
   public final void b(a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

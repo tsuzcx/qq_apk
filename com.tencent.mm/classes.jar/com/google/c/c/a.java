@@ -16,21 +16,21 @@ public final class a
   private static com.google.c.b.b a(e parame, k paramk)
   {
     AppMethodBeat.i(12340);
-    int i1 = paramk.yt();
-    int i2 = paramk.yu();
-    com.google.c.f.b.b localb = new com.google.c.f.b.b(paramk.yv(), paramk.yw());
+    int i1 = paramk.yg();
+    int i2 = paramk.yh();
+    com.google.c.f.b.b localb = new com.google.c.f.b.b(paramk.yi(), paramk.yj());
     int j = 0;
     int i = 0;
     int m;
     boolean bool;
     if (j < i2)
     {
-      if (j % paramk.bLy != 0) {
+      if (j % paramk.bJg != 0) {
         break label414;
       }
       k = 0;
       m = 0;
-      if (k < paramk.yv())
+      if (k < paramk.yi())
       {
         if (k % 2 == 0) {}
         for (bool = true;; bool = false)
@@ -52,17 +52,17 @@ public final class a
       if (m < i1)
       {
         int n = i;
-        if (m % paramk.bLx == 0)
+        if (m % paramk.bJf == 0)
         {
           localb.set(i, k, true);
           n = i + 1;
         }
-        if (parame.bLf[(parame.bLe * j + m)] == 1)
+        if (parame.bIN[(parame.bIM * j + m)] == 1)
         {
           bool = true;
           localb.set(n, k, bool);
           i = n + 1;
-          if (m % paramk.bLx != paramk.bLx - 1) {
+          if (m % paramk.bJf != paramk.bJf - 1) {
             break label411;
           }
           if (j % 2 != 0) {
@@ -85,11 +85,11 @@ public final class a
         bool = false;
         break label216;
         m = k + 1;
-        if (j % paramk.bLy == paramk.bLy - 1)
+        if (j % paramk.bJg == paramk.bJg - 1)
         {
           i = 0;
           k = 0;
-          while (i < paramk.yv())
+          while (i < paramk.yi())
           {
             localb.set(k, m, true);
             k += 1;
@@ -110,7 +110,7 @@ public final class a
             j = 0;
             while (j < m)
             {
-              if (localb.bP(i, j) == 1) {
+              if (localb.bM(i, j) == 1) {
                 parame.set(i, j);
               }
               j += 1;
@@ -133,7 +133,7 @@ public final class a
       AppMethodBeat.o(12339);
       throw paramString;
     }
-    if (parama != com.google.c.a.bJf)
+    if (parama != com.google.c.a.bGN)
     {
       paramString = new IllegalArgumentException("Can only encode DATA_MATRIX, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12339);
@@ -145,18 +145,18 @@ public final class a
       AppMethodBeat.o(12339);
       throw paramString;
     }
-    parama = l.bLC;
+    parama = l.bJk;
     Object localObject;
     if (paramMap != null)
     {
-      localObject = (l)paramMap.get(c.bJu);
+      localObject = (l)paramMap.get(c.bHc);
       if (localObject != null) {
         parama = (com.google.c.a)localObject;
       }
-      localObject = (com.google.c.b)paramMap.get(c.bJv);
+      localObject = (com.google.c.b)paramMap.get(c.bHd);
       if (localObject != null)
       {
-        paramMap = (com.google.c.b)paramMap.get(c.bJw);
+        paramMap = (com.google.c.b)paramMap.get(c.bHe);
         if (paramMap == null) {}
       }
     }
@@ -164,8 +164,8 @@ public final class a
     {
       paramString = j.a(paramString, parama, (com.google.c.b)localObject, paramMap);
       parama = k.a(paramString.length(), parama, (com.google.c.b)localObject, paramMap);
-      paramString = new e(i.a(paramString, parama), parama.yt(), parama.yu());
-      paramString.yl();
+      paramString = new e(i.a(paramString, parama), parama.yg(), parama.yh());
+      paramString.xY();
       paramString = a(paramString, parama);
       AppMethodBeat.o(12339);
       return paramString;
@@ -180,7 +180,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.c.a
  * JD-Core Version:    0.7.0.1
  */

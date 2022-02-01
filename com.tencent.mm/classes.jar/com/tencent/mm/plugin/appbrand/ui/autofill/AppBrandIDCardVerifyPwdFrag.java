@@ -17,10 +17,10 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.b;
-import com.tencent.mm.protocal.protobuf.gw;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ha;
+import com.tencent.mm.protocal.protobuf.hb;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.a;
@@ -32,7 +32,7 @@ import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -41,48 +41,48 @@ import java.util.LinkedList;
 public class AppBrandIDCardVerifyPwdFrag
   extends MMFragment
 {
-  private LinearLayout fyb;
-  private MMFormVerifyCodeInputView irU;
-  private TextView lEA;
-  private Button lEC;
-  private gx lEQ;
-  AppBrandIDCardUI.a lEy;
-  private View lEz;
-  private gw lFd;
-  private TextView lFe;
-  private TextView ljT;
+  private LinearLayout fBI;
+  private TextView gAI;
+  private MMFormVerifyCodeInputView iRZ;
+  private TextView lJL;
   private a mActionBarHelper;
   private MyKeyboardWindow mKeyboard;
+  private hb mgK;
+  private ha mgX;
+  private TextView mgY;
+  AppBrandIDCardUI.a mgt;
+  private View mgu;
+  private Button mgw;
   
   public void dealContentView(View paramView)
   {
     AppMethodBeat.i(48977);
-    if ((this.lEy == null) || (this.lEy.boU() == null))
+    if ((this.mgt == null) || (this.mgt.bvP() == null))
     {
-      ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
+      ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
       AppMethodBeat.o(48977);
       return;
     }
-    if ((this.lEy.boU().CBM == null) || (this.lEy.boU().CBM.size() <= 0))
+    if ((this.mgt.bvP().DUk == null) || (this.mgt.bvP().DUk.size() <= 0))
     {
-      ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sms.get(0) is null, err, return");
+      ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sms.get(0) is null, err, return");
       AppMethodBeat.o(48977);
       return;
     }
-    this.fyb = ((LinearLayout)paramView.findViewById(2131296756));
-    this.lEA = ((TextView)paramView.findViewById(2131296753));
-    this.ljT = ((TextView)paramView.findViewById(2131296757));
-    this.lFe = ((TextView)paramView.findViewById(2131296758));
-    this.lEC = ((Button)paramView.findViewById(2131296742));
-    this.irU = ((MMFormVerifyCodeInputView)paramView.findViewById(2131296754));
+    this.fBI = ((LinearLayout)paramView.findViewById(2131296756));
+    this.gAI = ((TextView)paramView.findViewById(2131296753));
+    this.lJL = ((TextView)paramView.findViewById(2131296757));
+    this.mgY = ((TextView)paramView.findViewById(2131296758));
+    this.mgw = ((Button)paramView.findViewById(2131296742));
+    this.iRZ = ((MMFormVerifyCodeInputView)paramView.findViewById(2131296754));
     this.mKeyboard = ((MyKeyboardWindow)paramView.findViewById(2131296755));
-    this.lEz = y.js(getContext()).inflate(2131492921, null);
-    this.lEz.setBackgroundColor(getResources().getColor(2131100705));
-    this.mActionBarHelper = new a(this.lEz);
-    paramView = new LinearLayout.LayoutParams(-1, b.dL(getActivity()));
-    this.fyb.addView(this.lEz, 0, paramView);
-    this.lEQ = this.lEy.boU();
-    this.mActionBarHelper.setTitle(this.lEQ.title);
+    this.mgu = z.jD(getContext()).inflate(2131492921, null);
+    this.mgu.setBackgroundColor(getResources().getColor(2131100705));
+    this.mActionBarHelper = new a(this.mgu);
+    paramView = new LinearLayout.LayoutParams(-1, b.dT(getActivity()));
+    this.fBI.addView(this.mgu, 0, paramView);
+    this.mgK = this.mgt.bvP();
+    this.mActionBarHelper.setTitle(this.mgK.title);
     this.mActionBarHelper.e(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -94,75 +94,75 @@ public class AppBrandIDCardVerifyPwdFrag
         AppMethodBeat.o(48968);
       }
     });
-    this.lEA.setText(this.lEQ.desc);
-    this.lFd = ((gw)this.lEQ.CBM.get(0));
-    this.ljT.setText(((gw)this.lEQ.CBM.get(0)).CBL);
-    if (this.lEQ.CBM.size() > 1)
+    this.gAI.setText(this.mgK.desc);
+    this.mgX = ((ha)this.mgK.DUk.get(0));
+    this.lJL.setText(((ha)this.mgK.DUk.get(0)).DUj);
+    if (this.mgK.DUk.size() > 1)
     {
-      this.lFe.setVisibility(0);
-      this.lFe.setOnClickListener(new View.OnClickListener()
+      this.mgY.setVisibility(0);
+      this.mgY.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(48971);
           if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
-            AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).boS();
+            AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).bvN();
           }
           paramAnonymousView = new e(AppBrandIDCardVerifyPwdFrag.this.getContext(), 1, false);
-          paramAnonymousView.HrX = new n.c()
+          paramAnonymousView.ISu = new n.c()
           {
             public final void onCreateMMMenu(l paramAnonymous2l)
             {
               AppMethodBeat.i(48969);
-              ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_list.size %d", new Object[] { Integer.valueOf(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).CBM.size()) });
-              Iterator localIterator = AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).CBM.iterator();
+              ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_list.size %d", new Object[] { Integer.valueOf(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.size()) });
+              Iterator localIterator = AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.iterator();
               while (localIterator.hasNext())
               {
-                gw localgw = (gw)localIterator.next();
-                if ((bt.isNullOrNil(localgw.CBK)) || (bt.isNullOrNil(localgw.CBL))) {
-                  ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_id or show_phone is empty, continue");
+                ha localha = (ha)localIterator.next();
+                if ((bs.isNullOrNil(localha.DUi)) || (bs.isNullOrNil(localha.DUj))) {
+                  ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_id or show_phone is empty, continue");
                 } else {
-                  paramAnonymous2l.c(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).CBM.indexOf(localgw), localgw.CBL);
+                  paramAnonymous2l.c(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.indexOf(localha), localha.DUj);
                 }
               }
               AppMethodBeat.o(48969);
             }
           };
-          paramAnonymousView.HrY = new n.d()
+          paramAnonymousView.ISv = new n.d()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
               AppMethodBeat.i(48970);
-              gw localgw = (gw)AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).CBM.get(paramAnonymous2MenuItem.getItemId());
-              if (localgw == null)
+              ha localha = (ha)AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.get(paramAnonymous2MenuItem.getItemId());
+              if (localha == null)
               {
-                ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "not find phone_id, menuItem id :%d", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
+                ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "not find phone_id, menuItem id :%d", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
                 AppMethodBeat.o(48970);
                 return;
               }
-              ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "select menuItem id:%d, phone_id:%s, show_phone:%s, bank_type:%s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()), localgw.CBK, localgw.CBL, localgw.dca });
-              AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this, localgw);
-              AppBrandIDCardVerifyPwdFrag.c(AppBrandIDCardVerifyPwdFrag.this).setText(localgw.CBL);
+              ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "select menuItem id:%d, phone_id:%s, show_phone:%s, bank_type:%s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()), localha.DUi, localha.DUj, localha.cZz });
+              AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this, localha);
+              AppBrandIDCardVerifyPwdFrag.c(AppBrandIDCardVerifyPwdFrag.this).setText(localha.DUj);
               AppMethodBeat.o(48970);
             }
           };
-          paramAnonymousView.csG();
+          paramAnonymousView.cED();
           AppMethodBeat.o(48971);
         }
       });
-      this.irU.setVisibility(0);
-      this.irU.setSendSmsBtnClickListener(new View.OnClickListener()
+      this.iRZ.setVisibility(0);
+      this.iRZ.setSendSmsBtnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(48974);
-          h.a(AppBrandIDCardVerifyPwdFrag.this.getContext(), AppBrandIDCardVerifyPwdFrag.this.getString(2131755472) + AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this).CBL, AppBrandIDCardVerifyPwdFrag.this.getString(2131755467), AppBrandIDCardVerifyPwdFrag.this.getString(2131755835), AppBrandIDCardVerifyPwdFrag.this.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          h.a(AppBrandIDCardVerifyPwdFrag.this.getContext(), AppBrandIDCardVerifyPwdFrag.this.getString(2131755472) + AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this).DUj, AppBrandIDCardVerifyPwdFrag.this.getString(2131755467), AppBrandIDCardVerifyPwdFrag.this.getString(2131755835), AppBrandIDCardVerifyPwdFrag.this.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(48972);
-              AppBrandIDCardVerifyPwdFrag.e(AppBrandIDCardVerifyPwdFrag.this).blz();
-              ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sendSms click");
+              AppBrandIDCardVerifyPwdFrag.e(AppBrandIDCardVerifyPwdFrag.this).bso();
+              ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sendSms click");
               if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
                 AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).a(AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this));
               }
@@ -180,7 +180,7 @@ public class AppBrandIDCardVerifyPwdFrag
           AppMethodBeat.o(48974);
         }
       });
-      this.irU.addTextChangedListener(new TextWatcher()
+      this.iRZ.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -199,7 +199,7 @@ public class AppBrandIDCardVerifyPwdFrag
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      paramView = this.irU.getContentEditText();
+      paramView = this.iRZ.getContentEditText();
       if (paramView != null)
       {
         if (Build.VERSION.SDK_INT < 21) {
@@ -208,22 +208,22 @@ public class AppBrandIDCardVerifyPwdFrag
         paramView.setShowSoftInputOnFocus(false);
       }
       label449:
-      if ((this.irU.getText() == null) || (this.irU.getText().toString().length() <= 0)) {
+      if ((this.iRZ.getText() == null) || (this.iRZ.getText().toString().length() <= 0)) {
         break label764;
       }
-      this.lEC.setEnabled(true);
+      this.mgw.setEnabled(true);
     }
     for (;;)
     {
       for (;;)
       {
-        this.lEC.setVisibility(0);
-        this.lEC.setOnClickListener(new View.OnClickListener()
+        this.mgw.setVisibility(0);
+        this.mgw.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(48976);
-            ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "verify sms click");
+            ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "verify sms click");
             if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
               AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).a(AppBrandIDCardVerifyPwdFrag.e(AppBrandIDCardVerifyPwdFrag.this).getText().toString(), AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this));
             }
@@ -231,7 +231,7 @@ public class AppBrandIDCardVerifyPwdFrag
           }
         });
         this.mKeyboard.setXMode(0);
-        this.mKeyboard.setInputEditText(this.irU.getContentEditText());
+        this.mKeyboard.setInputEditText(this.iRZ.getContentEditText());
         if (Build.VERSION.SDK_INT >= 14)
         {
           paramView = new c();
@@ -239,7 +239,7 @@ public class AppBrandIDCardVerifyPwdFrag
         }
         AppMethodBeat.o(48977);
         return;
-        this.lFe.setVisibility(8);
+        this.mgY.setVisibility(8);
         break;
         try
         {
@@ -253,7 +253,7 @@ public class AppBrandIDCardVerifyPwdFrag
         {
           for (;;)
           {
-            ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+            ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
             try
             {
               Method localMethod2 = EditText.class.getMethod("setSoftInputShownOnFocus", new Class[] { Boolean.TYPE });
@@ -263,7 +263,7 @@ public class AppBrandIDCardVerifyPwdFrag
             }
             catch (Exception localException)
             {
-              ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bt.m(localException) });
+              ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bs.m(localException) });
             }
           }
           if ((paramView.getContext() == null) || (!(paramView.getContext() instanceof MMActivity))) {
@@ -273,12 +273,12 @@ public class AppBrandIDCardVerifyPwdFrag
         }
         catch (Exception paramView)
         {
-          ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bt.m(paramView) });
+          ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bs.m(paramView) });
         }
       }
       break label449;
       label764:
-      this.lEC.setEnabled(false);
+      this.mgw.setEnabled(false);
     }
   }
   
@@ -307,9 +307,9 @@ public class AppBrandIDCardVerifyPwdFrag
   public void onSwipeBack()
   {
     AppMethodBeat.i(48979);
-    if (this.lEy != null)
+    if (this.mgt != null)
     {
-      this.lEy.onSwipeBack();
+      this.mgt.onSwipeBack();
       getContentView().setVisibility(8);
       if (isSupportNavigationSwipeBack()) {
         getSwipeBackLayout().setEnableGesture(false);
@@ -320,7 +320,7 @@ public class AppBrandIDCardVerifyPwdFrag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.autofill.AppBrandIDCardVerifyPwdFrag
  * JD-Core Version:    0.7.0.1
  */

@@ -4,29 +4,29 @@ import android.content.Context;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.cu;
 import com.tencent.mm.sdk.e.j;
 
 public abstract interface b
-  extends a, p, v<cs>
+  extends a, p, v<cu>
 {
-  public abstract void aD(String paramString, int paramInt);
+  public abstract void aH(String paramString, int paramInt);
   
-  public abstract void aah(String paramString);
+  public abstract void aeZ(String paramString);
   
-  public abstract long aai(String paramString);
+  public abstract long afa(String paramString);
   
-  public abstract boolean aaj(String paramString);
+  public abstract boolean afb(String paramString);
   
-  public abstract boolean cuW();
+  public abstract boolean cIi();
   
-  public abstract j cuX();
+  public abstract j cIj();
   
-  public abstract void eQ(Context paramContext);
+  public abstract void fd(Context paramContext);
   
   public abstract boolean hasError();
   
-  public abstract void ly(boolean paramBoolean);
+  public abstract void mq(boolean paramBoolean);
 }
 
 

@@ -8,48 +8,48 @@ import java.security.MessageDigest;
 public class g
   implements com.bumptech.glide.c.h
 {
-  private int aFj;
-  public final h aHr;
-  public final String aHs;
-  public String aHt;
-  public URL aHu;
-  private volatile byte[] aHv;
+  private int aFZ;
+  public final h aIh;
+  public final String aIi;
+  public String aIj;
+  public URL aIk;
+  private volatile byte[] aIl;
   public final URL url;
   
   public g(String paramString)
   {
-    this(paramString, h.aHx);
+    this(paramString, h.aIn);
   }
   
   private g(String paramString, h paramh)
   {
     AppMethodBeat.i(77238);
     this.url = null;
-    this.aHs = i.checkNotEmpty(paramString);
-    this.aHr = ((h)i.checkNotNull(paramh, "Argument must not be null"));
+    this.aIi = i.checkNotEmpty(paramString);
+    this.aIh = ((h)i.checkNotNull(paramh, "Argument must not be null"));
     AppMethodBeat.o(77238);
   }
   
   public g(URL paramURL)
   {
-    this(paramURL, h.aHx);
+    this(paramURL, h.aIn);
   }
   
   private g(URL paramURL, h paramh)
   {
     AppMethodBeat.i(77237);
     this.url = ((URL)i.checkNotNull(paramURL, "Argument must not be null"));
-    this.aHs = null;
-    this.aHr = ((h)i.checkNotNull(paramh, "Argument must not be null"));
+    this.aIi = null;
+    this.aIh = ((h)i.checkNotNull(paramh, "Argument must not be null"));
     AppMethodBeat.o(77237);
   }
   
   private String getCacheKey()
   {
     AppMethodBeat.i(77239);
-    if (this.aHs != null)
+    if (this.aIi != null)
     {
-      str = this.aHs;
+      str = this.aIi;
       AppMethodBeat.o(77239);
       return str;
     }
@@ -61,10 +61,10 @@ public class g
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77241);
-    if (this.aHv == null) {
-      this.aHv = getCacheKey().getBytes(aCw);
+    if (this.aIl == null) {
+      this.aIl = getCacheKey().getBytes(aDo);
     }
-    paramMessageDigest.update(this.aHv);
+    paramMessageDigest.update(this.aIl);
     AppMethodBeat.o(77241);
   }
   
@@ -74,7 +74,7 @@ public class g
     if ((paramObject instanceof g))
     {
       paramObject = (g)paramObject;
-      if ((getCacheKey().equals(paramObject.getCacheKey())) && (this.aHr.equals(paramObject.aHr)))
+      if ((getCacheKey().equals(paramObject.getCacheKey())) && (this.aIh.equals(paramObject.aIh)))
       {
         AppMethodBeat.o(77242);
         return true;
@@ -89,12 +89,12 @@ public class g
   public int hashCode()
   {
     AppMethodBeat.i(77243);
-    if (this.aFj == 0)
+    if (this.aFZ == 0)
     {
-      this.aFj = getCacheKey().hashCode();
-      this.aFj = (this.aFj * 31 + this.aHr.hashCode());
+      this.aFZ = getCacheKey().hashCode();
+      this.aFZ = (this.aFZ * 31 + this.aIh.hashCode());
     }
-    int i = this.aFj;
+    int i = this.aFZ;
     AppMethodBeat.o(77243);
     return i;
   }
@@ -109,7 +109,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.c.g
  * JD-Core Version:    0.7.0.1
  */

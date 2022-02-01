@@ -16,9 +16,9 @@ import com.tencent.mm.plugin.ball.c.f;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.downloader.b.a.b;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aw;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,33 +27,33 @@ import java.util.Map;
 public final class e
   extends com.tencent.mm.plugin.ball.service.a
 {
-  private static LinkedList<com.tencent.mm.plugin.downloader_app.api.e> ohM;
-  public f jpa;
-  LinkedList<String> ohK;
-  LinkedList<String> ohL;
-  boolean ohN;
-  public a.b ohO;
-  boolean ohP;
+  private static LinkedList<com.tencent.mm.plugin.downloader_app.api.e> oLm;
+  public f jPm;
+  LinkedList<String> oLk;
+  LinkedList<String> oLl;
+  boolean oLn;
+  public a.b oLo;
+  boolean oLp;
   
   static
   {
     AppMethodBeat.i(183808);
-    ohM = new LinkedList();
+    oLm = new LinkedList();
     AppMethodBeat.o(183808);
   }
   
   private e()
   {
     AppMethodBeat.i(175265);
-    this.ohK = new LinkedList();
-    this.ohL = new LinkedList();
-    this.ohN = false;
-    this.ohO = new a.b()
+    this.oLk = new LinkedList();
+    this.oLl = new LinkedList();
+    this.oLn = false;
+    this.oLo = new a.b()
     {
-      public final void L(int paramAnonymousInt, long paramAnonymousLong)
+      public final void K(int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(175257);
-        Object localObject = com.tencent.mm.plugin.downloader.model.d.oq(paramAnonymousLong);
+        Object localObject = com.tencent.mm.plugin.downloader.model.d.sc(paramAnonymousLong);
         if ((localObject == null) || (!((com.tencent.mm.plugin.downloader.g.a)localObject).field_fromDownloadApp))
         {
           AppMethodBeat.o(175257);
@@ -63,76 +63,76 @@ public final class e
         localObject = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_appId;
         if ((paramAnonymousInt == 1) || (paramAnonymousInt == 7))
         {
-          ad.i("MicroMsg.GameDownloadFloatBallHelper", "onTaskStart");
-          e.jl(false);
-          locale.ohN = false;
-          if (!locale.ohK.contains(localObject)) {
-            locale.ohK.add(localObject);
+          ac.i("MicroMsg.GameDownloadFloatBallHelper", "onTaskStart");
+          e.jO(false);
+          locale.oLn = false;
+          if (!locale.oLk.contains(localObject)) {
+            locale.oLk.add(localObject);
           }
-          if (!locale.ohL.contains(localObject))
+          if (!locale.oLl.contains(localObject))
           {
-            com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Sk((String)localObject);
+            com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Ww((String)localObject);
             if ((locala != null) && ((locala.field_autoDownload) || (locala.field_reserveInWifi))) {
-              locale.ohL.add(localObject);
+              locale.oLl.add(localObject);
             }
           }
-          ad.i("MicroMsg.GameDownloadFloatBallHelper", "onTaskStart, isInDownloadMainUI:%s", new Object[] { Boolean.valueOf(locale.ohP) });
-          if (!locale.bzs())
+          ac.i("MicroMsg.GameDownloadFloatBallHelper", "onTaskStart, isInDownloadMainUI:%s", new Object[] { Boolean.valueOf(locale.oLp) });
+          if (!locale.bGo())
           {
-            ad.i("MicroMsg.GameDownloadFloatBallHelper", "addCurrentBall");
-            if ((com.tencent.mm.compatible.d.b.bZ(aj.getContext())) || (!locale.ohL.contains(localObject)))
+            ac.i("MicroMsg.GameDownloadFloatBallHelper", "addCurrentBall");
+            if ((com.tencent.mm.compatible.d.b.cc(ai.getContext())) || (!locale.oLl.contains(localObject)))
             {
-              locale.wB(com.tencent.mm.plugin.ball.f.d.eB(locale.mDH.state, 16));
-              locale.bzu();
+              locale.xs(com.tencent.mm.plugin.ball.f.d.eE(locale.nfN.state, 16));
+              locale.bGq();
             }
           }
-          locale.io(locale.ohP);
-          locale.bRa();
+          locale.iO(locale.oLp);
+          locale.bYp();
           locale.updateTitle();
-          com.tencent.mm.game.report.e.a(aj.getContext(), 34, 3402, 0, 1, 0, locale.bRb());
+          com.tencent.mm.game.report.e.a(ai.getContext(), 34, 3402, 0, 1, 0, locale.bYq());
           AppMethodBeat.o(175257);
           return;
         }
         if (paramAnonymousInt == 6)
         {
-          if (!locale.ohN)
+          if (!locale.oLn)
           {
-            if (!locale.ohK.contains(localObject)) {
-              locale.ohK.add(localObject);
+            if (!locale.oLk.contains(localObject)) {
+              locale.oLk.add(localObject);
             }
-            locale.io(locale.ohP);
-            ad.i("MicroMsg.GameDownloadFloatBallHelper", "onProgressChanged, isInDownloadMainUI:%s", new Object[] { Boolean.valueOf(locale.ohP) });
-            if ((com.tencent.mm.compatible.d.b.bZ(aj.getContext())) && (!locale.bzs()))
+            locale.iO(locale.oLp);
+            ac.i("MicroMsg.GameDownloadFloatBallHelper", "onProgressChanged, isInDownloadMainUI:%s", new Object[] { Boolean.valueOf(locale.oLp) });
+            if ((com.tencent.mm.compatible.d.b.cc(ai.getContext())) && (!locale.bGo()))
             {
-              locale.wB(com.tencent.mm.plugin.ball.f.d.eB(locale.mDH.state, 16));
-              locale.bzu();
+              locale.xs(com.tencent.mm.plugin.ball.f.d.eE(locale.nfN.state, 16));
+              locale.bGq();
               locale.updateTitle();
             }
-            locale.bRa();
+            locale.bYp();
           }
           AppMethodBeat.o(175257);
           return;
         }
         if (paramAnonymousInt == 5)
         {
-          locale.aG((String)localObject, true);
+          locale.aH((String)localObject, true);
           AppMethodBeat.o(175257);
           return;
         }
-        locale.aG((String)localObject, false);
+        locale.aH((String)localObject, false);
         AppMethodBeat.o(175257);
       }
     };
-    this.ohP = false;
-    this.jpa = new com.tencent.mm.plugin.ball.c.g()
+    this.oLp = false;
+    this.jPm = new com.tencent.mm.plugin.ball.c.g()
     {
       public final void c(BallInfo paramAnonymousBallInfo)
       {
         AppMethodBeat.i(175261);
         paramAnonymousBallInfo = new Intent();
         paramAnonymousBallInfo.putExtra("from_scene", 2);
-        ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(aj.getContext(), paramAnonymousBallInfo, null);
-        com.tencent.mm.game.report.e.a(aj.getContext(), 34, 3403, 1, 6, 0, e.b(e.this));
+        ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(ai.getContext(), paramAnonymousBallInfo, null);
+        com.tencent.mm.game.report.e.a(ai.getContext(), 34, 3403, 1, 6, 0, e.b(e.this));
         AppMethodBeat.o(175261);
       }
       
@@ -144,44 +144,44 @@ public final class e
           AppMethodBeat.o(175262);
           return;
         }
-        com.tencent.mm.game.report.e.a(aj.getContext(), 34, 3403, 2, 21, 0, e.b(e.this));
-        ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).bQN();
+        com.tencent.mm.game.report.e.a(ai.getContext(), 34, 3403, 2, 21, 0, e.b(e.this));
+        ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).bYd();
         e.a(e.this).clear();
-        e.jl(true);
+        e.jO(true);
         AppMethodBeat.o(175262);
       }
       
       public final void e(BallInfo paramAnonymousBallInfo)
       {
         AppMethodBeat.i(175263);
-        com.tencent.mm.game.report.e.a(aj.getContext(), 34, 3403, 0, 1, 0, e.b(e.this));
+        com.tencent.mm.game.report.e.a(ai.getContext(), 34, 3403, 0, 1, 0, e.b(e.this));
         AppMethodBeat.o(175263);
       }
     };
-    Z(16, "GameDownloadFloatBall");
-    bzz().mDz = 11;
-    in(true);
-    bzv();
-    com.tencent.mm.plugin.ball.a.d locald = d.a.mDj;
+    aa(16, "GameDownloadFloatBall");
+    bGv().nfG = 11;
+    iN(true);
+    bGr();
+    com.tencent.mm.plugin.ball.a.d locald = d.a.nfp;
     com.tencent.mm.plugin.ball.a.c local2 = new com.tencent.mm.plugin.ball.a.c()
     {
       public final boolean a(Context paramAnonymousContext, BallInfo paramAnonymousBallInfo)
       {
         AppMethodBeat.i(175259);
-        paramAnonymousContext = ax.aFD("game_download_float_ball");
+        paramAnonymousContext = aw.aKU("game_download_float_ball");
         paramAnonymousBallInfo = new StringBuilder("game_download_first_");
-        com.tencent.mm.kernel.g.afz();
-        boolean bool = paramAnonymousContext.getBoolean(com.tencent.mm.kernel.a.aeo(), true);
+        com.tencent.mm.kernel.g.agP();
+        boolean bool = paramAnonymousContext.getBoolean(com.tencent.mm.kernel.a.afE(), true);
         if (e.a(e.this).size() > 0) {}
         for (paramAnonymousContext = (String)e.a(e.this).get(0);; paramAnonymousContext = "")
         {
           if (bool)
           {
-            com.tencent.mm.game.report.api.a.fUK.c(paramAnonymousContext, 7, 0, null, "");
-            paramAnonymousContext = ax.aFD("game_download_float_ball");
+            com.tencent.mm.game.report.api.a.fYF.c(paramAnonymousContext, 7, 0, null, "");
+            paramAnonymousContext = aw.aKU("game_download_float_ball");
             paramAnonymousBallInfo = new StringBuilder("game_download_first_");
-            com.tencent.mm.kernel.g.afz();
-            paramAnonymousContext.putBoolean(com.tencent.mm.kernel.a.aeo(), false).commit();
+            com.tencent.mm.kernel.g.agP();
+            paramAnonymousContext.putBoolean(com.tencent.mm.kernel.a.afE(), false).commit();
           }
           AppMethodBeat.o(175259);
           return false;
@@ -196,18 +196,18 @@ public final class e
           public final void run()
           {
             AppMethodBeat.i(175258);
-            ad.i("MicroMsg.GameDownloadFloatBallHelper", "onBallNameTextViewSet");
+            ac.i("MicroMsg.GameDownloadFloatBallHelper", "onBallNameTextViewSet");
             Layout localLayout = paramAnonymousTextView.getLayout();
             if (localLayout == null)
             {
-              ad.e("MicroMsg.GameDownloadFloatBallHelper", "onBallNameTextViewSet layout null");
+              ac.e("MicroMsg.GameDownloadFloatBallHelper", "onBallNameTextViewSet layout null");
               AppMethodBeat.o(175258);
               return;
             }
             int i = localLayout.getLineCount();
             if ((i > 0) && (localLayout.getEllipsisCount(i - 1) > 0) && (e.a(e.this).size() > 1))
             {
-              ad.i("MicroMsg.GameDownloadFloatBallHelper", "ellipsis");
+              ac.i("MicroMsg.GameDownloadFloatBallHelper", "ellipsis");
               TextPaint localTextPaint = paramAnonymousTextView.getPaint();
               int j = localLayout.getLineEnd(0);
               String str2 = String.format("...等%d个游戏", new Object[] { Integer.valueOf(e.a(e.this).size()) });
@@ -221,7 +221,7 @@ public final class e
                 i = (int)localTextPaint.measureText(str1);
               }
               str1 = paramAnonymousBallInfo.name.substring(0, j) + str1 + str2;
-              e.this.OE(str1);
+              e.this.SO(str1);
             }
             AppMethodBeat.o(175258);
           }
@@ -230,40 +230,40 @@ public final class e
         return false;
       }
     };
-    locald.mDi.put(Integer.valueOf(16), local2);
+    locald.nfo.put(Integer.valueOf(16), local2);
     AppMethodBeat.o(175265);
   }
   
   public static void a(com.tencent.mm.plugin.downloader_app.api.e parame)
   {
     AppMethodBeat.i(183806);
-    ohM.add(parame);
+    oLm.add(parame);
     AppMethodBeat.o(183806);
   }
   
   public static void b(com.tencent.mm.plugin.downloader_app.api.e parame)
   {
     AppMethodBeat.i(183807);
-    ohM.remove(parame);
+    oLm.remove(parame);
     AppMethodBeat.o(183807);
   }
   
-  public static e bQZ()
+  public static e bYo()
   {
-    return a.ohS;
+    return a.oLs;
   }
   
-  public static boolean bRc()
+  public static boolean bYr()
   {
     AppMethodBeat.i(183805);
-    boolean bool = ax.aFC("download_app").getBoolean("show_red_dot", false);
+    boolean bool = aw.aKT("download_app").getBoolean("show_red_dot", false);
     if (bool)
     {
-      long l = ax.aFC("download_app").getLong("red_dot_create_time", 0L);
+      long l = aw.aKT("download_app").getLong("red_dot_create_time", 0L);
       if (System.currentTimeMillis() - l > 86400L)
       {
-        ax.aFC("download_app").putBoolean("show_red_dot", false).apply();
-        ax.aFC("download_app").putLong("red_dot_create_time", 0L).apply();
+        aw.aKT("download_app").putBoolean("show_red_dot", false).apply();
+        aw.aKT("download_app").putLong("red_dot_create_time", 0L).apply();
         AppMethodBeat.o(183805);
         return false;
       }
@@ -272,12 +272,12 @@ public final class e
     return bool;
   }
   
-  public static void jl(boolean paramBoolean)
+  public static void jO(boolean paramBoolean)
   {
     AppMethodBeat.i(183804);
-    ax.aFC("download_app").putBoolean("show_red_dot", paramBoolean).apply();
-    ax.aFC("download_app").putLong("red_dot_create_time", System.currentTimeMillis()).apply();
-    Object localObject = ohM.iterator();
+    aw.aKT("download_app").putBoolean("show_red_dot", paramBoolean).apply();
+    aw.aKT("download_app").putLong("red_dot_create_time", System.currentTimeMillis()).apply();
+    Object localObject = oLm.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((com.tencent.mm.plugin.downloader_app.api.e)((Iterator)localObject).next()).onChange(paramBoolean);
     }
@@ -287,39 +287,39 @@ public final class e
     AppMethodBeat.o(183804);
   }
   
-  final void aG(String paramString, boolean paramBoolean)
+  final void aH(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(183803);
-    this.ohK.remove(paramString);
-    this.ohL.remove(paramString);
-    if (this.ohK.isEmpty())
+    this.oLk.remove(paramString);
+    this.oLl.remove(paramString);
+    if (this.oLk.isEmpty())
     {
-      this.ohN = true;
-      bzt();
+      this.oLn = true;
+      bGp();
       if (paramBoolean) {
-        jl(true);
+        jO(true);
       }
       AppMethodBeat.o(183803);
       return;
     }
-    io(this.ohP);
-    ad.i("MicroMsg.GameDownloadFloatBallHelper", "onTaskFinished, isInDownloadMainUI:%s", new Object[] { Boolean.valueOf(this.ohP) });
-    bRa();
+    iO(this.oLp);
+    ac.i("MicroMsg.GameDownloadFloatBallHelper", "onTaskFinished, isInDownloadMainUI:%s", new Object[] { Boolean.valueOf(this.oLp) });
+    bYp();
     updateTitle();
     AppMethodBeat.o(183803);
   }
   
-  final void bRa()
+  final void bYp()
   {
     AppMethodBeat.i(175266);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.ohK.iterator();
+    Iterator localIterator = this.oLk.iterator();
     long l1 = 0L;
     long l2 = 0L;
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Sk(str);
+      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Ww(str);
       if ((locala == null) || (locala.field_status != 1))
       {
         localLinkedList.add(str);
@@ -331,32 +331,32 @@ public final class e
       }
     }
     if (l1 > 0L) {
-      nu(100L * l2 / l1);
+      rg(100L * l2 / l1);
     }
     if (localLinkedList.size() > 0) {
-      this.ohK.remove(localLinkedList);
+      this.oLk.remove(localLinkedList);
     }
     AppMethodBeat.o(175266);
   }
   
-  final String bRb()
+  final String bYq()
   {
     AppMethodBeat.i(175268);
-    if (this.ohK.isEmpty())
+    if (this.oLk.isEmpty())
     {
       AppMethodBeat.o(175268);
       return "";
     }
     Object localObject = new HashMap();
-    ((HashMap)localObject).put("gamenum", String.valueOf(this.ohK.size()));
+    ((HashMap)localObject).put("gamenum", String.valueOf(this.oLk.size()));
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.ohK.iterator();
+    Iterator localIterator = this.oLk.iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append((String)localIterator.next()).append("_");
     }
     localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     ((HashMap)localObject).put("appidg", localStringBuilder.toString());
-    localObject = com.tencent.mm.game.report.d.a.m((Map)localObject);
+    localObject = com.tencent.mm.game.report.d.a.l((Map)localObject);
     AppMethodBeat.o(175268);
     return localObject;
   }
@@ -364,41 +364,41 @@ public final class e
   final void updateTitle()
   {
     AppMethodBeat.i(175267);
-    int i = this.ohK.size();
+    int i = this.oLk.size();
     if (i > 0)
     {
       Object localObject = new StringBuilder();
-      if (this.ohL.size() > 0) {
-        ((StringBuilder)localObject).append(aj.getResources().getString(2131756690));
+      if (this.oLl.size() > 0) {
+        ((StringBuilder)localObject).append(ai.getResources().getString(2131756690));
       }
       i -= 1;
       while (i > 0)
       {
-        localg = h.j((String)this.ohK.get(i), true, false);
+        localg = h.k((String)this.oLk.get(i), true, false);
         if (localg != null) {
           ((StringBuilder)localObject).append(localg.field_appName).append("、");
         }
         i -= 1;
       }
-      com.tencent.mm.pluginsdk.model.app.g localg = h.j((String)this.ohK.get(0), true, false);
+      com.tencent.mm.pluginsdk.model.app.g localg = h.k((String)this.oLk.get(0), true, false);
       if (localg != null) {
         ((StringBuilder)localObject).append(localg.field_appName);
       }
       localObject = ((StringBuilder)localObject).toString();
-      ad.i("MicroMsg.GameDownloadFloatBallHelper", "updateTitle, name = %s, length : %d", new Object[] { localObject, Integer.valueOf(((String)localObject).length()) });
-      OE((String)localObject);
+      ac.i("MicroMsg.GameDownloadFloatBallHelper", "updateTitle, name = %s, length : %d", new Object[] { localObject, Integer.valueOf(((String)localObject).length()) });
+      SO((String)localObject);
     }
     AppMethodBeat.o(175267);
   }
   
   static final class a
   {
-    static e ohS;
+    static e oLs;
     
     static
     {
       AppMethodBeat.i(175264);
-      ohS = new e((byte)0);
+      oLs = new e((byte)0);
       AppMethodBeat.o(175264);
     }
   }

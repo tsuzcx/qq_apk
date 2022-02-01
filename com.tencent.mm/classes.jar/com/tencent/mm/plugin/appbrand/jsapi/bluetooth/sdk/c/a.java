@@ -14,96 +14,90 @@ import junit.framework.Assert;
 public abstract class a
   implements e
 {
-  public boolean aMt = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.jIN.aMt;
-  protected final Handler azU = new Handler(Looper.getMainLooper());
-  public volatile boolean bgw = false;
-  public boolean jIS = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.jIN.jIS;
-  public boolean jIU = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.jIN.jIU;
-  public d jJH;
-  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b jJI;
-  public b jJJ;
-  private final Runnable jJK = new Runnable()
+  protected final Handler aAO = new Handler(Looper.getMainLooper());
+  public boolean aNj = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kjo.aNj;
+  public boolean bhc = false;
+  public boolean kjt = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kjo.kjt;
+  public boolean kjv = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kjo.kjv;
+  public d kkh;
+  protected com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b kki;
+  public b kkj;
+  private Runnable kkk = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(144589);
-      if (a.this.bgw)
+      if (a.this.bhc)
       {
         AppMethodBeat.o(144589);
         return;
       }
-      a.this.a(j.jKo);
+      a.this.a(j.kkP);
       a.this.done();
       AppMethodBeat.o(144589);
     }
   };
-  public long jJL = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.jIN.jIP;
-  public long jJM = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.jIN.jIY;
-  public j jJN;
-  protected int jJO = hashCode();
+  public long kkl = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kjo.kjq;
+  public long kkm = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.kjo.kjz;
+  public j kkn;
+  protected int kko = hashCode();
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b paramb)
   {
-    this.jJI = paramb;
+    this.kki = paramb;
   }
   
   public final void a(final j paramj)
   {
-    this.jJN = paramj;
-    if (this.jIS)
+    this.kkn = paramj;
+    if (this.kjt)
     {
-      this.azU.post(new Runnable()
+      this.aAO.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(144590);
-          a.this.jJJ.a(paramj);
+          a.this.kkj.a(paramj);
           AppMethodBeat.o(144590);
         }
       });
       return;
     }
-    this.jJJ.a(paramj);
+    this.kkj.a(paramj);
   }
-  
-  public abstract void aYR();
   
   public void b(j paramj) {}
   
+  public abstract void bfM();
+  
   public final void doAction()
   {
-    Assert.assertNotNull(this.jJH);
-    Assert.assertNotNull(this.jJI);
-    Assert.assertNotNull(this.jJJ);
-    this.azU.postDelayed(this.jJK, this.jJL);
-    aYR();
+    Assert.assertNotNull(this.kkh);
+    Assert.assertNotNull(this.kki);
+    Assert.assertNotNull(this.kkj);
+    this.aAO.postDelayed(this.kkk, this.kkl);
+    bfM();
   }
   
   public final void done()
   {
-    this.azU.removeCallbacks(this.jJK);
-    this.bgw = true;
-    b(this.jJN);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.jJI;
-    Object localObject = this.jJN;
+    this.aAO.removeCallbacks(this.kkk);
+    this.bhc = true;
+    b(this.kkn);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.b localb = this.kki;
+    Object localObject = this.kkn;
     if (localObject != null) {}
     for (;;)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectDispatcher", "actionCompleteCallback action:%s result:%s", new Object[] { this, localObject });
-      if (!this.jIU) {
+      if (!this.kjv) {
         break;
       }
-      localb.aYO();
+      localb.bfK();
       return;
       localObject = "";
     }
-    localObject = localb.jJg;
-    if (localObject != null)
-    {
-      ((List)localObject).remove(this);
-      return;
-    }
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.BleConnectDispatcher", "actionCompleteCallback, runActions is null", new Object[0]);
+    localb.kjH.remove(this);
   }
   
   public abstract String getName();
@@ -130,7 +124,7 @@ public abstract class a
   
   public String toString()
   {
-    return "Action#" + this.jJO + "{action='" + getName() + '\'' + ", debug=" + this.aMt + ", mainThread=" + this.jIS + ", serial=" + this.jIU + '}';
+    return "Action#" + this.kko + "{action='" + getName() + '\'' + ", debug=" + this.aNj + ", mainThread=" + this.kjt + ", serial=" + this.kjv + '}';
   }
 }
 

@@ -7,7 +7,7 @@ public class AssetUtils
 {
   public static void getRotationMatrix(Matrix paramMatrix, int paramInt, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(201327);
+    AppMethodBeat.i(197388);
     int i = paramInt % 4;
     paramInt = i;
     if (i < 0) {
@@ -30,7 +30,7 @@ public class AssetUtils
     for (;;)
     {
       paramMatrix.setValues(new float[] { f4, f2, paramFloat2, f3, f1, paramFloat1, 0.0F, 0.0F, 1.0F });
-      AppMethodBeat.o(201327);
+      AppMethodBeat.o(197388);
       return;
       paramFloat1 = 0.0F;
       f1 = 0.0F;
@@ -57,7 +57,7 @@ public class AssetUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.asset.AssetUtils
  * JD-Core Version:    0.7.0.1
  */

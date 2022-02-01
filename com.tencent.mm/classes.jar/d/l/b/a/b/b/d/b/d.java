@@ -7,17 +7,17 @@ import java.lang.annotation.Annotation;
 public abstract class d
   implements d.l.b.a.b.d.a.e.b
 {
-  public static final a Jwa = new a((byte)0);
-  private final f JsQ;
+  public static final a Ljt = new a((byte)0);
+  private final f Lgj;
   
   public d(f paramf)
   {
-    this.JsQ = paramf;
+    this.Lgj = paramf;
   }
   
-  public final f fyB()
+  public final f fRf()
   {
-    return this.JsQ;
+    return this.Lgj;
   }
   
   public static final class a
@@ -26,7 +26,7 @@ public abstract class d
     {
       AppMethodBeat.i(57415);
       d.g.b.k.h(paramObject, "value");
-      if (b.bt(paramObject.getClass()))
+      if (b.bw(paramObject.getClass()))
       {
         paramObject = (d)new o(paramf, (Enum)paramObject);
         AppMethodBeat.o(57415);
@@ -58,7 +58,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.d
  * JD-Core Version:    0.7.0.1
  */

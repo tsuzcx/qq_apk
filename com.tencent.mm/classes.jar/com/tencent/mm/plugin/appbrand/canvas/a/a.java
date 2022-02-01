@@ -5,27 +5,27 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.k;
+import com.tencent.mm.plugin.appbrand.z.k;
 import java.io.Serializable;
 
 public final class a
   extends Paint
   implements Serializable
 {
-  public a iZN;
-  private float iZO;
-  private String iZP;
-  private int iZQ;
-  private float iZR;
-  private int iZS;
+  public a jAa;
+  private float jAb;
+  private String jAc;
+  private int jAd;
+  private float jAe;
+  private int jAf;
   private int mColor;
   
   public a()
   {
     AppMethodBeat.i(145336);
-    this.iZN = a.iZT;
-    this.iZR = 3.4028235E+38F;
-    this.iZS = 2147483647;
+    this.jAa = a.jAg;
+    this.jAe = 3.4028235E+38F;
+    this.jAf = 2147483647;
     init();
     AppMethodBeat.o(145336);
   }
@@ -33,36 +33,36 @@ public final class a
   private void init()
   {
     AppMethodBeat.i(145337);
-    this.iZO = 0.0F;
+    this.jAb = 0.0F;
     this.mColor = 0;
-    this.iZP = null;
-    this.iZQ = 0;
-    if (this.iZR == 3.4028235E+38F)
+    this.jAc = null;
+    this.jAd = 0;
+    if (this.jAe == 3.4028235E+38F)
     {
-      this.iZO = (getAlpha() / 255.0F);
-      this.iZR = this.iZO;
+      this.jAb = (getAlpha() / 255.0F);
+      this.jAe = this.jAb;
     }
-    while (this.iZS == 2147483647)
+    while (this.jAf == 2147483647)
     {
       this.mColor = getColor();
-      this.iZS = this.mColor;
+      this.jAf = this.mColor;
       AppMethodBeat.o(145337);
       return;
-      this.iZO = this.iZR;
+      this.jAb = this.jAe;
     }
-    this.mColor = this.iZS;
+    this.mColor = this.jAf;
     AppMethodBeat.o(145337);
   }
   
-  public final void Ft(String paramString)
+  public final void Jx(String paramString)
   {
     AppMethodBeat.i(145345);
-    this.iZP = paramString;
-    setTypeface(Typeface.create(paramString, this.iZQ));
+    this.jAc = paramString;
+    setTypeface(Typeface.create(paramString, this.jAd));
     AppMethodBeat.o(145345);
   }
   
-  public final a aTa()
+  public final a aZZ()
   {
     AppMethodBeat.i(145339);
     a locala = new a();
@@ -90,16 +90,16 @@ public final class a
       locala.setTextSize(getTextSize());
       locala.setTextAlign(getTextAlign());
       locala.setTypeface(getTypeface());
-      locala.iZN = this.iZN;
+      locala.jAa = this.jAa;
       AppMethodBeat.o(145339);
       return locala;
     }
   }
   
-  public final void ap(float paramFloat)
+  public final void at(float paramFloat)
   {
     AppMethodBeat.i(145341);
-    this.iZO = paramFloat;
+    this.jAb = paramFloat;
     setColor(this.mColor);
     AppMethodBeat.o(145341);
   }
@@ -131,7 +131,7 @@ public final class a
       parama.setTextSize(getTextSize());
       parama.setTextAlign(getTextAlign());
       parama.setTypeface(getTypeface());
-      parama.iZN = this.iZN;
+      parama.jAa = this.jAa;
       AppMethodBeat.o(145340);
       return parama;
     }
@@ -145,11 +145,11 @@ public final class a
     return localObject;
   }
   
-  public final void qS(int paramInt)
+  public final void rF(int paramInt)
   {
     AppMethodBeat.i(145346);
-    this.iZQ = paramInt;
-    setTypeface(Typeface.create(this.iZP, paramInt));
+    this.jAd = paramInt;
+    setTypeface(Typeface.create(this.jAc, paramInt));
     AppMethodBeat.o(145346);
   }
   
@@ -165,7 +165,7 @@ public final class a
   {
     AppMethodBeat.i(145343);
     super.reset();
-    this.iZN = a.iZT;
+    this.jAa = a.jAg;
     AppMethodBeat.o(145343);
   }
   
@@ -173,7 +173,7 @@ public final class a
   {
     AppMethodBeat.i(145342);
     this.mColor = paramInt;
-    super.setColor(((int)(Color.alpha(paramInt) * this.iZO) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    super.setColor(((int)(Color.alpha(paramInt) * this.jAb) & 0xFF) << 24 | 0xFFFFFF & paramInt);
     AppMethodBeat.o(145342);
   }
   
@@ -182,11 +182,11 @@ public final class a
     static
     {
       AppMethodBeat.i(145335);
-      iZT = new a("NORMAL", 0);
-      iZU = new a("TOP", 1);
-      iZV = new a("BOTTOM", 2);
-      iZW = new a("MIDDLE", 3);
-      iZX = new a[] { iZT, iZU, iZV, iZW };
+      jAg = new a("NORMAL", 0);
+      jAh = new a("TOP", 1);
+      jAi = new a("BOTTOM", 2);
+      jAj = new a("MIDDLE", 3);
+      jAk = new a[] { jAg, jAh, jAi, jAj };
       AppMethodBeat.o(145335);
     }
     
@@ -195,7 +195,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.a.a
  * JD-Core Version:    0.7.0.1
  */

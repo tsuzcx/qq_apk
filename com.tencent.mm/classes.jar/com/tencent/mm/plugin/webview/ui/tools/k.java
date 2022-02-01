@@ -5,52 +5,50 @@ import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.model.ax;
 import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class k
 {
-  public static k BfO;
-  private String BfP;
+  public static k Cya;
+  private String Cyb;
   private String bssid;
-  boolean gPQ = false;
-  private e kxf = null;
+  boolean hqq = false;
+  private e kYt = null;
   private int networkType;
   private String sessionId;
   private String ssid;
-  String wSh;
+  String yeN;
   
   static
   {
     AppMethodBeat.i(79943);
-    BfO = new k();
+    Cya = new k();
     AppMethodBeat.o(79943);
   }
   
-  private void m(int paramInt1, String paramString, int paramInt2)
+  private void o(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(79942);
     f localf = new f();
-    localf.o("20adInfo", this.wSh + ",");
-    localf.o("21optype", paramInt1 + ",");
-    localf.o("22sessionId", this.sessionId + ",");
-    localf.o("23currURL", this.BfP + ",");
-    localf.o("24referURL", paramString + ",");
-    localf.o("25errCode", paramInt2 + ",");
-    localf.o("26networkType", this.networkType + ",");
-    localf.o("27timeStamp", bt.eGO() + ",");
-    localf.o("28ssid", this.ssid + ",");
-    localf.o("29bssid", this.bssid + ",");
-    ad.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.sessionId, this.BfP, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
-    h.vKh.f(13791, new Object[] { localf });
-    if (this.kxf == null)
+    localf.n("20adInfo", this.yeN + ",");
+    localf.n("21optype", paramInt1 + ",");
+    localf.n("22sessionId", this.sessionId + ",");
+    localf.n("23currURL", this.Cyb + ",");
+    localf.n("24referURL", paramString + ",");
+    localf.n("25errCode", paramInt2 + ",");
+    localf.n("26networkType", this.networkType + ",");
+    localf.n("27timeStamp", bs.eWj() + ",");
+    localf.n("28ssid", this.ssid + ",");
+    localf.n("29bssid", this.bssid + ",");
+    ac.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.sessionId, this.Cyb, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
+    h.wUl.f(13791, new Object[] { localf });
+    if (this.kYt == null)
     {
-      ad.e("MicroMsg.WebViewReportUtil", "report invoker null");
+      ac.e("MicroMsg.WebViewReportUtil", "report invoker null");
       AppMethodBeat.o(79942);
       return;
     }
@@ -58,116 +56,116 @@ public final class k
     paramString.putString("ad_report_data_str", localf.toString());
     try
     {
-      this.kxf.w(1295, paramString);
+      this.kYt.x(1295, paramString);
       AppMethodBeat.o(79942);
       return;
     }
     catch (RemoteException paramString)
     {
-      ad.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
+      ac.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
       AppMethodBeat.o(79942);
     }
   }
   
-  public final void Bx()
+  public final void Bb()
   {
-    AppMethodBeat.i(187949);
-    ad.v("MicroMsg.WebViewReportUtil", "onPageFinished traceid %s", new Object[] { this.wSh });
-    if (bt.isNullOrNil(this.wSh))
+    AppMethodBeat.i(188380);
+    ac.v("MicroMsg.WebViewReportUtil", "onPageFinished traceid %s", new Object[] { this.yeN });
+    if (bs.isNullOrNil(this.yeN))
     {
-      AppMethodBeat.o(187949);
+      AppMethodBeat.o(188380);
       return;
     }
-    lI(2);
-    AppMethodBeat.o(187949);
+    lA(2);
+    AppMethodBeat.o(188380);
   }
   
-  public final void TA(int paramInt)
+  public final void VI(int paramInt)
   {
     AppMethodBeat.i(79939);
-    ad.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.wSh });
-    if (bt.isNullOrNil(this.wSh))
+    ac.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.yeN });
+    if (bs.isNullOrNil(this.yeN))
     {
       AppMethodBeat.o(79939);
       return;
     }
-    m(3, "", paramInt);
+    o(3, "", paramInt);
     AppMethodBeat.o(79939);
   }
   
   public final void b(e parame)
   {
-    this.kxf = parame;
+    this.kYt = parame;
   }
   
-  public final void bU(String paramString)
+  public final void bK(String paramString)
   {
-    AppMethodBeat.i(187948);
-    ad.v("MicroMsg.WebViewReportUtil", "onPageStarted url %s, currUrl %s, traceid %s", new Object[] { paramString, this.BfP, this.wSh });
-    String str = this.BfP;
-    this.BfP = paramString;
-    if (bt.isNullOrNil(this.wSh))
+    AppMethodBeat.i(188379);
+    ac.v("MicroMsg.WebViewReportUtil", "onPageStarted url %s, currUrl %s, traceid %s", new Object[] { paramString, this.Cyb, this.yeN });
+    String str = this.Cyb;
+    this.Cyb = paramString;
+    if (bs.isNullOrNil(this.yeN))
     {
-      AppMethodBeat.o(187948);
+      AppMethodBeat.o(188379);
       return;
     }
-    m(1, str, 0);
-    AppMethodBeat.o(187948);
+    o(1, str, 0);
+    AppMethodBeat.o(188379);
   }
   
   public final void close()
   {
     AppMethodBeat.i(79940);
-    ad.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.wSh });
-    this.gPQ = true;
-    if (bt.isNullOrNil(this.wSh))
+    ac.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.yeN });
+    this.hqq = true;
+    if (bs.isNullOrNil(this.yeN))
     {
       AppMethodBeat.o(79940);
       return;
     }
-    lI(4);
-    this.wSh = null;
+    lA(4);
+    this.yeN = null;
     AppMethodBeat.o(79940);
   }
   
-  public final void kg(String paramString1, String paramString2)
+  public final void kC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(79938);
-    ad.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
-    this.wSh = paramString1;
-    this.networkType = ax.baS();
-    this.sessionId = ai.du(paramString2 + bt.eGO());
-    this.ssid = ay.iA(aj.getContext());
-    this.bssid = ay.iB(aj.getContext());
-    this.gPQ = false;
+    ac.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
+    this.yeN = paramString1;
+    this.networkType = com.tencent.mm.plugin.webview.model.ax.bhK();
+    this.sessionId = ah.dg(paramString2 + bs.eWj());
+    this.ssid = com.tencent.mm.sdk.platformtools.ax.iL(ai.getContext());
+    this.bssid = com.tencent.mm.sdk.platformtools.ax.iM(ai.getContext());
+    this.hqq = false;
     AppMethodBeat.o(79938);
   }
   
-  final void lI(int paramInt)
+  final void lA(int paramInt)
   {
     AppMethodBeat.i(79941);
-    m(paramInt, "", 0);
+    o(paramInt, "", 0);
     AppMethodBeat.o(79941);
   }
   
   public final void setTraceId(String paramString)
   {
-    AppMethodBeat.i(187947);
+    AppMethodBeat.i(188378);
     String str3 = "";
     String str1 = str3;
-    if (this.kxf != null) {}
+    if (this.kYt != null) {}
     try
     {
-      str1 = this.kxf.j(23, null).getString("config_info_username");
-      kg(paramString, str1);
-      AppMethodBeat.o(187947);
+      str1 = this.kYt.k(23, null).getString("config_info_username");
+      kC(paramString, str1);
+      AppMethodBeat.o(188378);
       return;
     }
     catch (RemoteException localRemoteException)
     {
       for (;;)
       {
-        ad.e("MicroMsg.WebViewReportUtil", "setTraceId getConfigInfo exp:%s", new Object[] { localRemoteException });
+        ac.e("MicroMsg.WebViewReportUtil", "setTraceId getConfigInfo exp:%s", new Object[] { localRemoteException });
         String str2 = str3;
       }
     }

@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 public final class a
 {
-  public static HashMap<String, WeakReference<Object>> hQT;
+  public static HashMap<String, WeakReference<Object>> iqX;
   
   static
   {
     AppMethodBeat.i(145582);
-    hQT = new HashMap();
+    iqX = new HashMap();
     AppMethodBeat.o(145582);
   }
 }

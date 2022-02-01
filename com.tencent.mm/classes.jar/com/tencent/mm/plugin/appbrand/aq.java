@@ -2,95 +2,95 @@ package com.tencent.mm.plugin.appbrand;
 
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.q.b.b;
-import com.tencent.mm.plugin.appbrand.q.d.b;
-import com.tencent.mm.plugin.appbrand.q.k.c;
-import com.tencent.mm.plugin.appbrand.r.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.appbrand.p.b.b;
+import com.tencent.mm.plugin.appbrand.p.d.b;
+import com.tencent.mm.plugin.appbrand.p.k.c;
+import com.tencent.mm.plugin.appbrand.q.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class aq
 {
-  private static int iIb;
-  private static int iIc;
-  private static int iId;
-  private static k.c iIe;
-  private static k.c iIf;
-  private static d.b iIg;
-  private static b.b iIh;
+  private static int jid;
+  private static int jie;
+  private static int jif;
+  private static k.c jig;
+  private static k.c jih;
+  private static d.b jii;
+  private static b.b jij;
   
   static
   {
     AppMethodBeat.i(43996);
-    iIb = 1;
-    iIc = 2;
-    iId = 3;
-    iIe = new k.c()
+    jid = 1;
+    jie = 2;
+    jif = 3;
+    jig = new k.c()
     {
-      public final boolean Dx(String paramAnonymousString)
+      public final boolean HA(String paramAnonymousString)
       {
         AppMethodBeat.i(43986);
-        if (c.Lj(paramAnonymousString))
+        if (c.Pr(paramAnonymousString))
         {
-          ad.i("MicroMsg.WcWssSwitchLogic", "isWcWssOpen : true for hardcode case");
+          ac.i("MicroMsg.WcWssSwitchLogic", "isWcWssOpen : true for hardcode case");
           AppMethodBeat.o(43986);
           return true;
         }
-        boolean bool = aq.qu(aq.iIb);
+        boolean bool = aq.rh(aq.jid);
         AppMethodBeat.o(43986);
         return bool;
       }
       
-      public final boolean aNR()
+      public final boolean aUH()
       {
         AppMethodBeat.i(43987);
-        boolean bool = aq.qv(aq.iIb);
+        boolean bool = aq.ri(aq.jid);
         AppMethodBeat.o(43987);
         return bool;
       }
     };
-    iIf = new k.c()
+    jih = new k.c()
     {
-      public final boolean Dx(String paramAnonymousString)
+      public final boolean HA(String paramAnonymousString)
       {
         AppMethodBeat.i(43988);
-        boolean bool = aq.qu(aq.iIb);
+        boolean bool = aq.rh(aq.jid);
         AppMethodBeat.o(43988);
         return bool;
       }
       
-      public final boolean aNR()
+      public final boolean aUH()
       {
         AppMethodBeat.i(43989);
-        boolean bool = aq.qv(aq.iIb);
+        boolean bool = aq.ri(aq.jid);
         AppMethodBeat.o(43989);
         return bool;
       }
     };
-    iIg = new d.b()
+    jii = new d.b()
     {
-      public final boolean aNR()
+      public final boolean aUH()
       {
         AppMethodBeat.i(43991);
-        boolean bool = aq.qv(aq.iIc);
+        boolean bool = aq.ri(aq.jie);
         AppMethodBeat.o(43991);
         return bool;
       }
       
-      public final boolean aNS()
+      public final boolean aUI()
       {
         AppMethodBeat.i(43990);
-        boolean bool = aq.qu(aq.iIc);
+        boolean bool = aq.rh(aq.jie);
         AppMethodBeat.o(43990);
         return bool;
       }
     };
-    iIh = new b.b()
+    jij = new b.b()
     {
-      public final boolean aNS()
+      public final boolean aUI()
       {
         AppMethodBeat.i(43992);
-        boolean bool = aq.qu(aq.iId);
+        boolean bool = aq.rh(aq.jif);
         AppMethodBeat.o(43992);
         return bool;
       }
@@ -98,33 +98,33 @@ public final class aq
     AppMethodBeat.o(43996);
   }
   
-  public static k.c aNN()
+  public static k.c aUD()
   {
-    return iIe;
+    return jig;
   }
   
-  public static k.c aNO()
+  public static k.c aUE()
   {
-    return iIf;
+    return jih;
   }
   
-  public static d.b aNP()
+  public static d.b aUF()
   {
-    return iIg;
+    return jii;
   }
   
-  public static b.b aNQ()
+  public static b.b aUG()
   {
-    return iIh;
+    return jij;
   }
   
-  private static Boolean qt(int paramInt)
+  private static Boolean rg(int paramInt)
   {
     AppMethodBeat.i(43993);
     Object localObject;
-    if (paramInt == iIb)
+    if (paramInt == jid)
     {
-      localObject = aj.eFF().getString("appbrandgame_open_wcwss", "");
+      localObject = ai.eUZ().getString("appbrandgame_open_wcwss", "");
       if ((localObject != null) && (((String)localObject).equalsIgnoreCase("wcwss")))
       {
         localObject = Boolean.TRUE;
@@ -138,9 +138,9 @@ public final class aq
         return localObject;
       }
     }
-    else if (paramInt == iIc)
+    else if (paramInt == jie)
     {
-      localObject = aj.eFF().getString("appbrandgame_open_cdnrequest", "");
+      localObject = ai.eUZ().getString("appbrandgame_open_cdnrequest", "");
       if ((localObject != null) && (((String)localObject).equalsIgnoreCase("chromium")))
       {
         localObject = Boolean.TRUE;
@@ -154,9 +154,9 @@ public final class aq
         return localObject;
       }
     }
-    else if (paramInt == iId)
+    else if (paramInt == jif)
     {
-      localObject = aj.eFF().getString("appbrandgame_open_cronetdownload", "");
+      localObject = ai.eUZ().getString("appbrandgame_open_cronetdownload", "");
       if ((localObject != null) && (((String)localObject).equalsIgnoreCase("open")))
       {
         localObject = Boolean.TRUE;
@@ -176,7 +176,7 @@ public final class aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aq
  * JD-Core Version:    0.7.0.1
  */

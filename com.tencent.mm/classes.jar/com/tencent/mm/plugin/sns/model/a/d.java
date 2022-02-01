@@ -5,9 +5,9 @@ import com.tencent.mm.network.v;
 import com.tencent.mm.plugin.sns.data.q;
 import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.model.b.3;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,15 +16,15 @@ import java.io.OutputStream;
 public final class d
   extends b
 {
-  private long wLY = 0L;
-  private int wLZ = 0;
+  private long xYE = 0L;
+  private int xYF = 0;
   
   public d(c.a parama, a parama1)
   {
     super(parama, parama1);
   }
   
-  public final boolean J(InputStream paramInputStream)
+  public final boolean I(InputStream paramInputStream)
   {
     AppMethodBeat.i(96069);
     com.tencent.mm.plugin.sns.model.b localb = null;
@@ -36,20 +36,20 @@ public final class d
       byte[] arrayOfByte = new byte[1024];
       localOutputStream1 = localOutputStream2;
       localObject = localb;
-      String str1 = this.wLz.getPath() + this.wLz.dut();
+      String str1 = this.xYf.getPath() + this.xYf.dIT();
       localOutputStream1 = localOutputStream2;
       localObject = localb;
-      ad.i("MicroMsg.SnsDownloadAdSight", "getdatabegin ".concat(String.valueOf(i.aMN(str1))));
+      ac.i("MicroMsg.SnsDownloadAdSight", "getdatabegin ".concat(String.valueOf(i.aSp(str1))));
       localOutputStream1 = localOutputStream2;
       localObject = localb;
-      localOutputStream2 = i.cM(str1, true);
+      localOutputStream2 = i.cS(str1, true);
       int j = 1;
       localOutputStream1 = localOutputStream2;
       localObject = localOutputStream2;
       long l = System.currentTimeMillis();
       localOutputStream1 = localOutputStream2;
       localObject = localOutputStream2;
-      this.wLK.value = "";
+      this.xYq.value = "";
       int i = 0;
       for (;;)
       {
@@ -61,30 +61,30 @@ public final class d
         }
         localOutputStream1 = localOutputStream2;
         localObject = localOutputStream2;
-        if (this.wLN == 0L)
+        if (this.xYt == 0L)
         {
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          this.wLN = bt.vM(this.wLO);
+          this.xYt = bs.Ap(this.xYu);
         }
         localOutputStream1 = localOutputStream2;
         localObject = localOutputStream2;
-        if (k > this.wLL)
+        if (k > this.xYr)
         {
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          this.wLL = k;
+          this.xYr = k;
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          this.wLM = bt.aGK();
+          this.xYs = bs.aNx();
         }
         localOutputStream1 = localOutputStream2;
         localObject = localOutputStream2;
-        if (!q.anO(af.getAccPath()))
+        if (!q.ata(af.getAccPath()))
         {
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          ad.i("MicroMsg.SnsDownloadAdSight", "read data");
+          ac.i("MicroMsg.SnsDownloadAdSight", "read data");
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
           localOutputStream2.close();
@@ -102,7 +102,7 @@ public final class d
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "", new Object[0]);
             }
           }
         }
@@ -111,31 +111,31 @@ public final class d
         localOutputStream2.write(arrayOfByte, 0, k);
         localOutputStream1 = localOutputStream2;
         localObject = localOutputStream2;
-        this.wLS += k;
+        this.xYy += k;
         k = j;
         localOutputStream1 = localOutputStream2;
         localObject = localOutputStream2;
-        if (this.wLS - this.wLZ > 409600 * j)
+        if (this.xYy - this.xYF > 409600 * j)
         {
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          localb = af.dtp();
+          localb = af.dHM();
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          String str2 = this.wLz.mediaId;
+          String str2 = this.xYf.mediaId;
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          af.czA().post(new b.3(localb, str2, str1));
+          af.cMM().post(new b.3(localb, str2, str1));
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
-          this.wLZ = this.wLS;
+          this.xYF = this.xYy;
           k = j + 1;
         }
         i = 1;
         j = k;
         localOutputStream1 = localOutputStream2;
         localObject = localOutputStream2;
-        if (a(this.wLS, l, this.wLK))
+        if (a(this.xYy, l, this.xYq))
         {
           localOutputStream1 = localOutputStream2;
           localObject = localOutputStream2;
@@ -150,18 +150,18 @@ public final class d
       localObject = null;
       localOutputStream1 = null;
       if (i != 0) {
-        a(this.wLS, 0L, this.wLK);
+        a(this.xYy, 0L, this.xYq);
       }
-      ad.i("MicroMsg.SnsDownloadAdSight", "getdataend2  ".concat(String.valueOf(i.aMN(this.wLz.getPath() + this.wLz.dut()))));
+      ac.i("MicroMsg.SnsDownloadAdSight", "getdataend2  ".concat(String.valueOf(i.aSp(this.xYf.getPath() + this.xYf.dIT()))));
       AppMethodBeat.o(96069);
       return true;
     }
     catch (Exception paramInputStream)
     {
       localObject = localOutputStream1;
-      ad.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "snscdndownload fail : " + paramInputStream.getMessage(), new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "snscdndownload fail : " + paramInputStream.getMessage(), new Object[0]);
       localObject = localOutputStream1;
-      ad.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "", new Object[0]);
       if (localOutputStream1 != null) {}
       try
       {
@@ -173,7 +173,7 @@ public final class d
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.SnsDownloadAdSight", paramInputStream, "", new Object[0]);
         }
       }
     }
@@ -191,7 +191,7 @@ public final class d
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.SnsDownloadAdSight", localIOException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SnsDownloadAdSight", localIOException, "", new Object[0]);
       }
     }
   }
@@ -199,38 +199,38 @@ public final class d
   public final v a(v paramv)
   {
     AppMethodBeat.i(96068);
-    this.wLY = 0L;
-    if (this.wLY > 0L)
+    this.xYE = 0L;
+    if (this.xYE > 0L)
     {
-      ad.i("MicroMsg.SnsDownloadAdSight", "appendHttpArg range " + this.wLY);
-      paramv.setRequestProperty("RANGE", "bytes=" + this.wLY + "-");
+      ac.i("MicroMsg.SnsDownloadAdSight", "appendHttpArg range " + this.xYE);
+      paramv.setRequestProperty("RANGE", "bytes=" + this.xYE + "-");
     }
     AppMethodBeat.o(96068);
     return paramv;
   }
   
-  public final String apd(String paramString)
+  public final String aup(String paramString)
   {
     return paramString;
   }
   
-  public final boolean duu()
+  public final boolean dIU()
   {
     return false;
   }
   
-  public final boolean duv()
+  public final boolean dIV()
   {
     AppMethodBeat.i(96070);
-    long l = i.aMN(this.wLz.getPath() + this.wLz.dut());
-    ad.i("MicroMsg.SnsDownloadAdSight", "preceeData  downloadLen " + l + " " + this.wLP);
-    if (l < this.wLP + this.wLY)
+    long l = i.aSp(this.xYf.getPath() + this.xYf.dIT());
+    ac.i("MicroMsg.SnsDownloadAdSight", "preceeData  downloadLen " + l + " " + this.xYv);
+    if (l < this.xYv + this.xYE)
     {
       AppMethodBeat.o(96070);
       return false;
     }
-    String str = q.j(this.dyS);
-    i.aQ(this.wLz.getPath(), this.wLz.dut(), str);
+    String str = q.j(this.dwE);
+    i.aT(this.xYf.getPath(), this.xYf.dIT(), str);
     AppMethodBeat.o(96070);
     return true;
   }

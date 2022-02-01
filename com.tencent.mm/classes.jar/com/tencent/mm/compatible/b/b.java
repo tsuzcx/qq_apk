@@ -5,38 +5,38 @@ import java.util.concurrent.locks.Lock;
 
 public final class b
 {
-  public byte[] fyA = null;
-  public int fyB = 0;
-  public int fyC = 0;
-  public boolean fyD = false;
-  public Lock fyE = null;
-  public int fyy = 0;
-  public int fyz = 0;
+  public int fCf = 0;
+  public int fCg = 0;
+  public byte[] fCh = null;
+  public int fCi = 0;
+  public int fCj = 0;
+  public boolean fCk = false;
+  public Lock fCl = null;
   
-  public final int Wi()
+  public final int Xg()
   {
     AppMethodBeat.i(155548);
-    if (this.fyD) {
-      this.fyE.lock();
+    if (this.fCk) {
+      this.fCl.lock();
     }
-    if (this.fyB == this.fyC)
+    if (this.fCi == this.fCj)
     {
       AppMethodBeat.o(155548);
       return 0;
     }
-    if (this.fyB < this.fyC) {
-      this.fyz = (this.fyC - this.fyB);
+    if (this.fCi < this.fCj) {
+      this.fCg = (this.fCj - this.fCi);
     }
     for (;;)
     {
-      if (this.fyD) {
-        this.fyE.unlock();
+      if (this.fCk) {
+        this.fCl.unlock();
       }
-      int i = this.fyz;
+      int i = this.fCg;
       AppMethodBeat.o(155548);
       return i;
-      if (this.fyB > this.fyC) {
-        this.fyz = (this.fyC + this.fyy - this.fyB);
+      if (this.fCi > this.fCj) {
+        this.fCg = (this.fCj + this.fCf - this.fCi);
       }
     }
   }

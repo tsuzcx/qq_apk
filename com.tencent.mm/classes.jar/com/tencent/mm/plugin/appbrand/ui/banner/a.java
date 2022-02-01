@@ -19,24 +19,24 @@ public final class a
     AppMethodBeat.o(48982);
   }
   
-  public final BannerModel boV()
+  public final BannerModel bvQ()
   {
     AppMethodBeat.i(48980);
-    BannerModel localBannerModel = b.boY();
+    BannerModel localBannerModel = b.bvT();
     AppMethodBeat.o(48980);
     return localBannerModel;
   }
   
-  public final void boW()
+  public final void bvR()
   {
     AppMethodBeat.i(48983);
-    AppBrandStickyBannerLogic.b.boW();
+    AppBrandStickyBannerLogic.b.bvR();
     AppMethodBeat.o(48983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,57 +4,57 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/IRecordBasicConfig;", "()V", "enableFavorite", "", "enableImage2Video", "enableLyrics", "enableMusic", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getElementName", "Lcom/tencent/mm/plugin/recordvideo/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "StoryBasicConfig", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/IRecordBasicConfig;", "()V", "enableFavorite", "", "enableImage2Video", "enableLyrics", "enableMusic", "enableSnsNotify", "enableTips", "getDurationFromAlbum", "", "getElementName", "Lcom/tencent/mm/plugin/recordvideo/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "StoryBasicConfig", "plugin-recordvideo_release"})
 public final class a
   extends com.tencent.mm.plugin.recordvideo.b.h<a>
 {
-  public static final a vhg;
+  public static final a wpS;
   
   static
   {
     AppMethodBeat.i(75393);
-    vhg = new a();
+    wpS = new a();
     AppMethodBeat.o(75393);
   }
   
-  public final void ajo()
+  public final void aqo()
   {
     boolean bool2 = true;
     AppMethodBeat.i(75390);
-    a locala = (a)ajm();
-    if (P("StoryEditVideoBgmSwitch", 1) == 1)
+    a locala = (a)aqm();
+    if (U("StoryEditVideoBgmSwitch", 1) == 1)
     {
       bool1 = true;
-      locala.vhs = bool1;
-      int i = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 1);
-      ((a)ajm()).vht = (i * 100);
-      ((a)ajm()).vhu = (i * 100);
+      locala.wqe = bool1;
+      int i = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 1);
+      ((a)aqm()).wqf = (i * 100);
+      ((a)aqm()).wqg = (i * 100);
       if ((!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) && (!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE) && (!com.tencent.mm.sdk.platformtools.h.DEBUG)) {
         break label294;
       }
-      ((a)ajm()).vhh = true;
-      ((a)ajm()).vhi = true;
-      ((a)ajm()).vhj = true;
-      ((a)ajm()).vhm = true;
-      ((a)ajm()).vhl = true;
-      locala = (a)ajm();
+      ((a)aqm()).wpT = true;
+      ((a)aqm()).wpU = true;
+      ((a)aqm()).wpV = true;
+      ((a)aqm()).wpY = true;
+      ((a)aqm()).wpX = true;
+      locala = (a)aqm();
       bool1 = true;
       label155:
-      locala.vho = bool1;
-      ((a)ajm()).vhp = P("StoryFeaturedExpiredTime", 15552000);
-      ((a)ajm()).vhq = ((b)g.ab(b.class)).a(b.a.pjK, 10);
-      locala = (a)ajm();
-      if (((b)g.ab(b.class)).a(b.a.pjG, 1) != 1) {
+      locala.wqa = bool1;
+      ((a)aqm()).wqb = U("StoryFeaturedExpiredTime", 15552000);
+      ((a)aqm()).wqc = ((b)g.ab(b.class)).a(b.a.pNb, 10);
+      locala = (a)aqm();
+      if (((b)g.ab(b.class)).a(b.a.pMX, 1) != 1) {
         break label549;
       }
       bool1 = true;
       label239:
-      locala.vhk = bool1;
-      locala = (a)ajm();
-      if (((b)g.ab(b.class)).a(b.a.pjN, 1) != 1) {
+      locala.wpW = bool1;
+      locala = (a)aqm();
+      if (((b)g.ab(b.class)).a(b.a.pNe, 1) != 1) {
         break label554;
       }
     }
@@ -62,47 +62,47 @@ public final class a
     label554:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      locala.vhn = bool1;
+      locala.wpZ = bool1;
       AppMethodBeat.o(75390);
       return;
       bool1 = false;
       break;
-      locala = (a)ajm();
-      if (((b)g.ab(b.class)).a(b.a.pjD, 0) == 1)
+      locala = (a)aqm();
+      if (((b)g.ab(b.class)).a(b.a.pMU, 0) == 1)
       {
         bool1 = true;
         label326:
-        locala.vhh = bool1;
-        locala = (a)ajm();
-        if (((b)g.ab(b.class)).a(b.a.pjE, 0) != 1) {
+        locala.wpT = bool1;
+        locala = (a)aqm();
+        if (((b)g.ab(b.class)).a(b.a.pMV, 0) != 1) {
           break label524;
         }
         bool1 = true;
         label364:
-        locala.vhi = bool1;
-        locala = (a)ajm();
-        if (((b)g.ab(b.class)).a(b.a.pjF, 0) != 1) {
+        locala.wpU = bool1;
+        locala = (a)aqm();
+        if (((b)g.ab(b.class)).a(b.a.pMW, 0) != 1) {
           break label529;
         }
         bool1 = true;
-        locala.vhj = bool1;
-        locala = (a)ajm();
-        if (((b)g.ab(b.class)).a(b.a.pjI, 1) != 1) {
+        locala.wpV = bool1;
+        locala = (a)aqm();
+        if (((b)g.ab(b.class)).a(b.a.pMZ, 1) != 1) {
           break label534;
         }
         bool1 = true;
         label440:
-        locala.vhm = bool1;
-        locala = (a)ajm();
-        if (((b)g.ab(b.class)).a(b.a.pjH, 1) != 1) {
+        locala.wpY = bool1;
+        locala = (a)aqm();
+        if (((b)g.ab(b.class)).a(b.a.pMY, 1) != 1) {
           break label539;
         }
       }
       for (bool1 = true;; bool1 = false)
       {
-        locala.vhl = bool1;
-        locala = (a)ajm();
-        if (((b)g.ab(b.class)).a(b.a.pjM, 0) != 1) {
+        locala.wpX = bool1;
+        locala = (a)aqm();
+        if (((b)g.ab(b.class)).a(b.a.pNd, 0) != 1) {
           break label544;
         }
         bool1 = true;
@@ -123,39 +123,39 @@ public final class a
     }
   }
   
-  public final boolean dhx()
+  public final boolean dve()
   {
     AppMethodBeat.i(75391);
-    boolean bool = ((a)ajp()).vhi;
+    boolean bool = ((a)aqp()).wpU;
     AppMethodBeat.o(75391);
     return bool;
   }
   
-  public final boolean dhy()
+  public final boolean dvf()
   {
     AppMethodBeat.i(75392);
-    boolean bool = ((a)ajp()).vhk;
+    boolean bool = ((a)aqp()).wpW;
     AppMethodBeat.o(75392);
     return bool;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/config/moduleconfig/BasicElementConfig$StoryBasicConfig;", "", "repeatMD5", "", "showMusicIcon", "", "albumThumbHeight", "albumThumbWidth", "(IZII)V", "getAlbumThumbHeight", "()I", "setAlbumThumbHeight", "(I)V", "getAlbumThumbWidth", "setAlbumThumbWidth", "durationFromAlbum", "getDurationFromAlbum", "setDurationFromAlbum", "enableBlurMouth", "getEnableBlurMouth", "()Z", "setEnableBlurMouth", "(Z)V", "enableFavorite", "getEnableFavorite", "setEnableFavorite", "enableImage2Video", "getEnableImage2Video", "setEnableImage2Video", "enableLyrics", "getEnableLyrics", "setEnableLyrics", "enableMusic", "getEnableMusic", "setEnableMusic", "enableReply", "getEnableReply", "setEnableReply", "enableSnsNotify", "getEnableSnsNotify", "setEnableSnsNotify", "enableTips", "getEnableTips", "setEnableTips", "favExpiredTime", "getFavExpiredTime", "setFavExpiredTime", "getRepeatMD5", "setRepeatMD5", "getShowMusicIcon", "setShowMusicIcon", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
   public static final class a
   {
-    boolean vhh;
-    boolean vhi;
-    boolean vhj;
-    boolean vhk;
-    boolean vhl;
-    public boolean vhm;
-    public boolean vhn = true;
-    boolean vho;
-    int vhp = 15552000;
-    public int vhq = 10;
-    private int vhr = 2;
-    boolean vhs = true;
-    int vht = 0;
-    int vhu = 0;
+    boolean wpT;
+    boolean wpU;
+    boolean wpV;
+    boolean wpW;
+    boolean wpX;
+    public boolean wpY;
+    public boolean wpZ = true;
+    boolean wqa;
+    int wqb = 15552000;
+    public int wqc = 10;
+    private int wqd = 2;
+    boolean wqe = true;
+    int wqf = 0;
+    int wqg = 0;
     
     public final boolean equals(Object paramObject)
     {
@@ -164,7 +164,7 @@ public final class a
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.vhr != paramObject.vhr) || (this.vhs != paramObject.vhs) || (this.vht != paramObject.vht) || (this.vhu != paramObject.vhu)) {}
+          if ((this.wqd != paramObject.wqd) || (this.wqe != paramObject.wqe) || (this.wqf != paramObject.wqf) || (this.wqg != paramObject.wqg)) {}
         }
       }
       else {
@@ -181,7 +181,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(75388);
-      String str = "StoryBasicConfig(repeatMD5=" + this.vhr + ", showMusicIcon=" + this.vhs + ", albumThumbHeight=" + this.vht + ", albumThumbWidth=" + this.vhu + ")";
+      String str = "StoryBasicConfig(repeatMD5=" + this.wqd + ", showMusicIcon=" + this.wqe + ", albumThumbHeight=" + this.wqf + ", albumThumbWidth=" + this.wqg + ")";
       AppMethodBeat.o(75388);
       return str;
     }
@@ -189,7 +189,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.b.a.a
  * JD-Core Version:    0.7.0.1
  */

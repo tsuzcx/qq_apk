@@ -25,21 +25,21 @@ abstract interface FlexItem
   
   public abstract int getWidth();
   
-  public abstract int wl();
+  public abstract int vY();
   
-  public abstract boolean wm();
+  public abstract boolean vZ();
   
-  public abstract float wn();
+  public abstract float wa();
   
-  public abstract int wo();
+  public abstract int wb();
   
-  public abstract int wp();
+  public abstract int wc();
   
-  public abstract int wq();
+  public abstract int wd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.flexbox.FlexItem
  * JD-Core Version:    0.7.0.1
  */

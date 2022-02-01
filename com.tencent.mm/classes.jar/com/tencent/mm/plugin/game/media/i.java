@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public final class i
   extends android.support.v4.app.i
 {
-  private ArrayList<GameGalleryFragment> rRT;
+  private ArrayList<GameGalleryFragment> sZJ;
   
   public i(g paramg, ArrayList<GameGalleryFragment> paramArrayList)
   {
     super(paramg);
-    this.rRT = paramArrayList;
+    this.sZJ = paramArrayList;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(40996);
-    int i = this.rRT.size();
+    int i = this.sZJ.size();
     AppMethodBeat.o(40996);
     return i;
   }
@@ -27,7 +27,7 @@ public final class i
   public final Fragment getItem(int paramInt)
   {
     AppMethodBeat.i(40995);
-    Object localObject = this.rRT;
+    Object localObject = this.sZJ;
     localObject = (Fragment)((ArrayList)localObject).get(paramInt % ((ArrayList)localObject).size());
     AppMethodBeat.o(40995);
     return localObject;

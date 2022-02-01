@@ -7,42 +7,42 @@ import org.json.JSONObject;
 
 public abstract class o
 {
-  protected q iIL;
-  private int joH;
-  private m joI;
-  protected aa jvZ;
-  protected JSONObject jwa;
+  private int jOT;
+  private m jOU;
+  protected aa jWv;
+  protected JSONObject jWw;
+  protected q jiP;
   
   public o(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
     if ((paramm == null) || (paramq == null) || (paramJSONObject == null)) {
       throw new IllegalArgumentException("JsApiAsyncRequest");
     }
-    this.joI = paramm;
-    this.iIL = paramq;
-    this.jvZ = paramaa;
-    this.joH = paramInt;
-    this.jwa = paramJSONObject;
+    this.jOU = paramm;
+    this.jiP = paramq;
+    this.jWv = paramaa;
+    this.jOT = paramInt;
+    this.jWw = paramJSONObject;
   }
   
-  protected final void A(Map<String, ? extends Object> paramMap)
+  public final q CX()
   {
-    this.iIL.h(this.joH, this.joI.k("ok", paramMap));
+    return this.jiP;
   }
   
-  public final q Du()
+  public final JSONObject beG()
   {
-    return this.iIL;
-  }
-  
-  public final JSONObject aXJ()
-  {
-    return this.jwa;
+    return this.jWw;
   }
   
   protected final void l(String paramString, Map<String, ? extends Object> paramMap)
   {
-    this.iIL.h(this.joH, this.joI.k(paramString, paramMap));
+    this.jiP.h(this.jOT, this.jOU.k(paramString, paramMap));
+  }
+  
+  protected final void z(Map<String, ? extends Object> paramMap)
+  {
+    this.jiP.h(this.jOT, this.jOU.k("ok", paramMap));
   }
 }
 

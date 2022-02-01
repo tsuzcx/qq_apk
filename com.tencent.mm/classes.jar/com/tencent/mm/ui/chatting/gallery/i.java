@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.model.d;
 import com.tencent.mm.model.d.a;
 import com.tencent.mm.modelvideo.o;
@@ -21,32 +21,32 @@ import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
 import com.tencent.mm.pluginsdk.ui.tools.h;
-import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.protocal.protobuf.dev;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 import java.util.HashMap;
 
 public final class i
   extends a
-  implements d.a, t.a, av.a
+  implements d.a, t.a, au.a
 {
-  private HashMap<String, j.a> GBZ;
-  private boolean GCa;
-  private d nnt;
+  private HashMap<String, j.a> IbT;
+  private boolean IbU;
+  private d nQt;
   
   public i(b paramb)
   {
     super(paramb);
     AppMethodBeat.i(36090);
-    this.GCa = false;
-    this.GCa = false;
-    this.GBZ = new HashMap();
-    o.aCI().a(this, Looper.getMainLooper());
-    this.nnt = new d();
+    this.IbU = false;
+    this.IbU = false;
+    this.IbT = new HashMap();
+    o.aJy().a(this, Looper.getMainLooper());
+    this.nQt = new d();
     AppMethodBeat.o(36090);
   }
   
@@ -58,10 +58,10 @@ public final class i
       AppMethodBeat.o(36094);
       return;
     }
-    com.tencent.mm.modelvideo.u.Ab(params.getFileName());
-    paramk.fab().GDI.setVisibility(0);
-    paramk.fab().GDI.setProgress(com.tencent.mm.modelvideo.u.g(params));
-    o.aCI().a(this, Looper.getMainLooper());
+    com.tencent.mm.modelvideo.u.Eg(params.getFileName());
+    paramk.fpR().IdF.setVisibility(0);
+    paramk.fpR().IdF.setProgress(com.tencent.mm.modelvideo.u.g(params));
+    o.aJy().a(this, Looper.getMainLooper());
     AppMethodBeat.o(36094);
   }
   
@@ -73,16 +73,16 @@ public final class i
       AppMethodBeat.o(36096);
       return;
     }
-    paramk.fab().GDI.setVisibility(8);
+    paramk.fpR().IdF.setVisibility(8);
     if (paramBoolean)
     {
-      paramk.fab().GDG.setVisibility(8);
-      ((View)paramk.fab().GDF).setVisibility(0);
+      paramk.fpR().IdD.setVisibility(8);
+      ((View)paramk.fpR().IdC).setVisibility(0);
       AppMethodBeat.o(36096);
       return;
     }
-    paramk.fab().GDG.setVisibility(0);
-    ((View)paramk.fab().GDF).setVisibility(8);
+    paramk.fpR().IdD.setVisibility(0);
+    ((View)paramk.fpR().IdC).setVisibility(8);
     AppMethodBeat.o(36096);
   }
   
@@ -94,95 +94,95 @@ public final class i
       AppMethodBeat.o(36098);
       return false;
     }
-    o.aCI().a(this);
-    if (this.GzZ.GAa.getCurrentItem() == parama.pos)
+    o.aJy().a(this);
+    if (this.HZU.HZV.getCurrentItem() == parama.pos)
     {
-      parama = YW(parama.pos);
+      parama = abi(parama.pos);
       if (parama != null) {
-        parama.fab().GDI.setVisibility(8);
+        parama.fpR().IdF.setVisibility(8);
       }
       AppMethodBeat.o(36098);
       return true;
     }
-    this.GzZ.Ze(parama.pos);
+    this.HZU.abq(parama.pos);
     AppMethodBeat.o(36098);
     return false;
   }
   
-  private void b(bl parambl, final k paramk)
+  private void b(bo parambo, final k paramk)
   {
     AppMethodBeat.i(36095);
-    if (this.GCa)
+    if (this.IbU)
     {
       AppMethodBeat.o(36095);
       return;
     }
-    paramk.fab().GDJ.setVisibility(8);
-    o.aCI();
-    String str = t.zQ(parambl.field_imgPath);
-    if (parambl.eMl())
+    paramk.fpR().IdG.setVisibility(8);
+    o.aJy();
+    String str = t.DV(parambo.field_imgPath);
+    if (parambo.fbQ())
     {
-      Toast.makeText(this.GzZ.GAa, 2131764677, 0).show();
+      Toast.makeText(this.HZU.HZV, 2131764677, 0).show();
       AppMethodBeat.o(36095);
       return;
     }
-    if ((str == null) || (!com.tencent.mm.vfs.i.eK(str)))
+    if ((str == null) || (!com.tencent.mm.vfs.i.eA(str)))
     {
-      Toast.makeText(this.GzZ.GAa, 2131764677, 0).show();
+      Toast.makeText(this.HZU.HZV, 2131764677, 0).show();
       AppMethodBeat.o(36095);
       return;
     }
-    this.GzZ.GAa.getContext().getWindow().addFlags(128);
-    Boolean localBoolean = (Boolean)paramk.GDD.get(str);
+    this.HZU.HZV.getContext().getWindow().addFlags(128);
+    Boolean localBoolean = (Boolean)paramk.IdA.get(str);
     if ((localBoolean == null) || (!localBoolean.booleanValue()))
     {
-      ((View)paramk.fab().GDF).setTag(str);
-      paramk.fab().GDH.setVisibility(8);
-      paramk.fab().GDF.stop();
-      if (this.GzZ.GAa.wO(parambl.field_msgId) != 3) {
+      ((View)paramk.fpR().IdC).setTag(str);
+      paramk.fpR().IdE.setVisibility(8);
+      paramk.fpR().IdC.stop();
+      if (this.HZU.HZV.Br(parambo.field_msgId) != 3) {
         break label381;
       }
-      paramk.fab().GDF.setMute(true);
-      if ((paramk.fab().GDF instanceof VideoSightView)) {
-        ((VideoSightView)paramk.fab().GDF).setIsAdVideo(b.bT(parambl));
+      paramk.fpR().IdC.setMute(true);
+      if ((paramk.fpR().IdC instanceof VideoSightView)) {
+        ((VideoSightView)paramk.fpR().IdC).setIsAdVideo(b.bW(parambo));
       }
-      paramk.fab().GDF.setVideoPath(str);
-      if (paramk.fab().GDF.y(this.GzZ.GAa.getContext(), false)) {
+      paramk.fpR().IdC.setVideoPath(str);
+      if (paramk.fpR().IdC.z(this.HZU.HZV.getContext(), false)) {
         break label397;
       }
-      paramk.fab().GDH.setVisibility(0);
-      paramk.fab().GDH.setOnClickListener(new View.OnClickListener()
+      paramk.fpR().IdE.setVisibility(0);
+      paramk.fpR().IdE.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(36089);
-          paramk.fab().GDF.y(i.this.GzZ.GAa.getContext(), true);
+          paramk.fpR().IdC.z(i.this.HZU.HZV.getContext(), true);
           AppMethodBeat.o(36089);
         }
       });
-      ((View)paramk.fab().GDF).setVisibility(8);
-      paramk.fab().GDG.setVisibility(0);
+      ((View)paramk.fpR().IdC).setVisibility(8);
+      paramk.fpR().IdD.setVisibility(0);
     }
     for (;;)
     {
-      ad.d("MicroMsg.ImageGallerySightHandler", "mAudioHelperTool requestFocus");
-      this.nnt.a(this);
-      ((View)paramk.fab().GDF).setVisibility(0);
+      ac.d("MicroMsg.ImageGallerySightHandler", "mAudioHelperTool requestFocus");
+      this.nQt.a(this);
+      ((View)paramk.fpR().IdC).setVisibility(0);
       AppMethodBeat.o(36095);
       return;
       label381:
-      paramk.fab().GDF.setMute(false);
+      paramk.fpR().IdC.setMute(false);
       break;
       label397:
-      ((View)paramk.fab().GDF).setVisibility(0);
-      paramk.fab().GDG.setVisibility(8);
+      ((View)paramk.fpR().IdC).setVisibility(0);
+      paramk.fpR().IdD.setVisibility(8);
     }
   }
   
-  public final void MV()
+  public final void MT()
   {
     AppMethodBeat.i(36092);
-    SparseArray localSparseArray = this.GzZ.Gbm;
+    SparseArray localSparseArray = this.HZU.HBb;
     int i = 0;
     while (i < localSparseArray.size())
     {
@@ -190,18 +190,18 @@ public final class i
       if ((localSparseArray.get(j) != null) && (((View)localSparseArray.get(j)).getTag() != null))
       {
         k localk = (k)((View)localSparseArray.get(j)).getTag();
-        if ((localk.GDE != null) && (localk.fab().GDE.getVisibility() == 0))
+        if ((localk.IdB != null) && (localk.fpR().IdB.getVisibility() == 0))
         {
-          localk.fab().GDF.setVideoCallback(null);
-          if ((((View)localk.fab().GDF).getVisibility() == 0) && (localk != null))
+          localk.fpR().IdC.setVideoCallback(null);
+          if ((((View)localk.fpR().IdC).getVisibility() == 0) && (localk != null))
           {
             a(localk, false);
-            if (localk.fab().GDF != null) {
-              localk.fab().GDF.stop();
+            if (localk.fpR().IdC != null) {
+              localk.fpR().IdC.stop();
             }
-            ad.d("MicroMsg.ImageGallerySightHandler", "mAudioHelperTool abandonFocus");
-            this.nnt.ea(false);
-            this.GzZ.GAa.getContext().getWindow().clearFlags(128);
+            ac.d("MicroMsg.ImageGallerySightHandler", "mAudioHelperTool abandonFocus");
+            this.nQt.ev(false);
+            this.HZU.HZV.getContext().getWindow().clearFlags(128);
           }
         }
       }
@@ -210,20 +210,149 @@ public final class i
     AppMethodBeat.o(36092);
   }
   
-  public final void Zm(int paramInt)
+  public final void a(t.a.a parama)
+  {
+    AppMethodBeat.i(36100);
+    Object localObject = parama.fileName;
+    if ((bs.isNullOrNil((String)localObject)) || (this.IbT == null))
+    {
+      AppMethodBeat.o(36100);
+      return;
+    }
+    parama = (j.a)this.IbT.get(localObject);
+    if (parama == null)
+    {
+      AppMethodBeat.o(36100);
+      return;
+    }
+    bo localbo = parama.cZc;
+    if ((localbo == null) || (localbo.field_imgPath == null) || (!localbo.field_imgPath.equals(localObject)))
+    {
+      AppMethodBeat.o(36100);
+      return;
+    }
+    localObject = com.tencent.mm.modelvideo.u.Ej(localbo.field_imgPath);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(36100);
+      return;
+    }
+    if ((localbo.fbQ()) || (((com.tencent.mm.modelvideo.s)localObject).status == 198))
+    {
+      if (a(parama)) {
+        Toast.makeText(this.HZU.HZV, 2131764677, 0).show();
+      }
+      AppMethodBeat.o(36100);
+      return;
+    }
+    int i = com.tencent.mm.modelvideo.u.g((com.tencent.mm.modelvideo.s)localObject);
+    localObject = abi(parama.pos);
+    if ((this.HZU.HZV.getCurrentItem() == parama.pos) && (localObject != null))
+    {
+      ((k)localObject).fpR().IdF.setVisibility(0);
+      ((k)localObject).fpR().IdF.setProgress(i);
+    }
+    while (i < ((k)localObject).fpS().IdF.getMax())
+    {
+      AppMethodBeat.o(36100);
+      return;
+      if (localObject == null)
+      {
+        AppMethodBeat.o(36100);
+        return;
+      }
+    }
+    if (a(parama)) {
+      b(localbo, (k)localObject);
+    }
+    AppMethodBeat.o(36100);
+  }
+  
+  public final boolean a(k paramk, bo parambo, int paramInt)
+  {
+    AppMethodBeat.i(36091);
+    super.a(paramk, parambo, paramInt);
+    o.aJy();
+    Object localObject1 = BackwardSupportUtil.b.n(t.DW(parambo.field_imgPath), 1.0F);
+    if (this.IbT != null) {
+      this.IbT.put(parambo.field_imgPath, new j.a(parambo, paramInt));
+    }
+    a(paramk, false);
+    ((View)paramk.fpR().IdC).setVisibility(8);
+    paramk.fpR().IdD.setImageBitmap((Bitmap)localObject1);
+    paramk.fpR().IdD.setVisibility(0);
+    paramk.fpR().IdG.setVisibility(8);
+    localObject1 = com.tencent.mm.modelvideo.u.Ej(parambo.field_imgPath);
+    paramk.IdG.setTag(localObject1);
+    Object localObject2;
+    if (localObject1 == null)
+    {
+      localObject2 = null;
+      if (localObject2 != null) {
+        break label202;
+      }
+      paramk.qPW.setVisibility(8);
+    }
+    for (;;)
+    {
+      if ((paramk.fpR().IdC instanceof VideoSightView)) {
+        com.tencent.mm.pluginsdk.ui.tools.s.a(paramk.qPW, (VideoSightView)paramk.fpR().IdC);
+      }
+      AppMethodBeat.o(36091);
+      return true;
+      localObject2 = ((com.tencent.mm.modelvideo.s)localObject1).iaR;
+      break;
+      label202:
+      if (bs.isNullOrNil(((dev)localObject2).hjV))
+      {
+        ac.i("MicroMsg.ImageGallerySightHandler", " there is no attachurl, show more info btn");
+        localObject1 = ((dev)localObject2).hjY;
+        localObject2 = ((dev)localObject2).hjZ;
+        if ((!bs.isNullOrNil((String)localObject1)) && (!bs.isNullOrNil((String)localObject2)))
+        {
+          paramk.qPW.setText((CharSequence)localObject1);
+          paramk.qPW.setVisibility(0);
+          paramk.qPW.setTag(parambo);
+        }
+        else
+        {
+          paramk.qPW.setVisibility(8);
+        }
+      }
+      else
+      {
+        paramk.qPW.setVisibility(0);
+        paramk.qPW.setText(this.HZU.HZV.getString(2131763759, new Object[] { Integer.valueOf(((dev)localObject2).EBs) }));
+        Object localObject3 = this.HZU.HZV.getString(2131763759);
+        localObject1 = localObject3;
+        if (((dev)localObject2).EBs / 60 > 0) {
+          localObject1 = (String)localObject3 + this.HZU.HZV.getString(2131763761, new Object[] { Integer.valueOf(((dev)localObject2).EBs / 60) });
+        }
+        localObject3 = localObject1;
+        if (((dev)localObject2).EBs % 60 > 0) {
+          localObject3 = (String)localObject1 + this.HZU.HZV.getString(2131763762, new Object[] { Integer.valueOf(((dev)localObject2).EBs % 60) });
+        }
+        localObject1 = (String)localObject3 + this.HZU.HZV.getString(2131763760);
+        paramk.qPW.setText((CharSequence)localObject1);
+        paramk.qPW.setTag(parambo);
+      }
+    }
+  }
+  
+  public final void aby(int paramInt)
   {
     AppMethodBeat.i(36093);
-    bl localbl = this.GzZ.YE(paramInt);
-    k localk = YW(paramInt);
-    if ((localbl == null) || (localk == null))
+    bo localbo = this.HZU.aaP(paramInt);
+    k localk = abi(paramInt);
+    if ((localbo == null) || (localk == null))
     {
       AppMethodBeat.o(36093);
       return;
     }
-    com.tencent.mm.modelvideo.s locals = com.tencent.mm.modelvideo.u.Ae(localbl.field_imgPath);
+    com.tencent.mm.modelvideo.s locals = com.tencent.mm.modelvideo.u.Ej(localbo.field_imgPath);
     if (locals != null)
     {
-      if (localbl.field_isSend == 0)
+      if (localbo.field_isSend == 0)
       {
         if ((locals.status == 113) || (locals.status == 111) || (locals.status == 112))
         {
@@ -238,183 +367,54 @@ public final class i
           return;
         }
       }
-      b(localbl, localk);
+      b(localbo, localk);
     }
     AppMethodBeat.o(36093);
   }
   
-  public final void a(t.a.a parama)
-  {
-    AppMethodBeat.i(36100);
-    Object localObject = parama.fileName;
-    if ((bt.isNullOrNil((String)localObject)) || (this.GBZ == null))
-    {
-      AppMethodBeat.o(36100);
-      return;
-    }
-    parama = (j.a)this.GBZ.get(localObject);
-    if (parama == null)
-    {
-      AppMethodBeat.o(36100);
-      return;
-    }
-    bl localbl = parama.dbD;
-    if ((localbl == null) || (localbl.field_imgPath == null) || (!localbl.field_imgPath.equals(localObject)))
-    {
-      AppMethodBeat.o(36100);
-      return;
-    }
-    localObject = com.tencent.mm.modelvideo.u.Ae(localbl.field_imgPath);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(36100);
-      return;
-    }
-    if ((localbl.eMl()) || (((com.tencent.mm.modelvideo.s)localObject).status == 198))
-    {
-      if (a(parama)) {
-        Toast.makeText(this.GzZ.GAa, 2131764677, 0).show();
-      }
-      AppMethodBeat.o(36100);
-      return;
-    }
-    int i = com.tencent.mm.modelvideo.u.g((com.tencent.mm.modelvideo.s)localObject);
-    localObject = YW(parama.pos);
-    if ((this.GzZ.GAa.getCurrentItem() == parama.pos) && (localObject != null))
-    {
-      ((k)localObject).fab().GDI.setVisibility(0);
-      ((k)localObject).fab().GDI.setProgress(i);
-    }
-    while (i < ((k)localObject).fac().GDI.getMax())
-    {
-      AppMethodBeat.o(36100);
-      return;
-      if (localObject == null)
-      {
-        AppMethodBeat.o(36100);
-        return;
-      }
-    }
-    if (a(parama)) {
-      b(localbl, (k)localObject);
-    }
-    AppMethodBeat.o(36100);
-  }
+  public final void axj() {}
   
-  public final boolean a(k paramk, bl parambl, int paramInt)
-  {
-    AppMethodBeat.i(36091);
-    super.a(paramk, parambl, paramInt);
-    o.aCI();
-    Object localObject1 = BackwardSupportUtil.b.n(t.zR(parambl.field_imgPath), 1.0F);
-    if (this.GBZ != null) {
-      this.GBZ.put(parambl.field_imgPath, new j.a(parambl, paramInt));
-    }
-    a(paramk, false);
-    ((View)paramk.fab().GDF).setVisibility(8);
-    paramk.fab().GDG.setImageBitmap((Bitmap)localObject1);
-    paramk.fab().GDG.setVisibility(0);
-    paramk.fab().GDJ.setVisibility(8);
-    localObject1 = com.tencent.mm.modelvideo.u.Ae(parambl.field_imgPath);
-    paramk.GDJ.setTag(localObject1);
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject2 = null;
-      if (localObject2 != null) {
-        break label202;
-      }
-      paramk.qhu.setVisibility(8);
-    }
-    for (;;)
-    {
-      if ((paramk.fab().GDF instanceof VideoSightView)) {
-        com.tencent.mm.pluginsdk.ui.tools.s.a(paramk.qhu, (VideoSightView)paramk.fab().GDF);
-      }
-      AppMethodBeat.o(36091);
-      return true;
-      localObject2 = ((com.tencent.mm.modelvideo.s)localObject1).hAq;
-      break;
-      label202:
-      if (bt.isNullOrNil(((czj)localObject2).gJv))
-      {
-        ad.i("MicroMsg.ImageGallerySightHandler", " there is no attachurl, show more info btn");
-        localObject1 = ((czj)localObject2).gJy;
-        localObject2 = ((czj)localObject2).gJz;
-        if ((!bt.isNullOrNil((String)localObject1)) && (!bt.isNullOrNil((String)localObject2)))
-        {
-          paramk.qhu.setText((CharSequence)localObject1);
-          paramk.qhu.setVisibility(0);
-          paramk.qhu.setTag(parambl);
-        }
-        else
-        {
-          paramk.qhu.setVisibility(8);
-        }
-      }
-      else
-      {
-        paramk.qhu.setVisibility(0);
-        paramk.qhu.setText(this.GzZ.GAa.getString(2131763759, new Object[] { Integer.valueOf(((czj)localObject2).Dim) }));
-        Object localObject3 = this.GzZ.GAa.getString(2131763759);
-        localObject1 = localObject3;
-        if (((czj)localObject2).Dim / 60 > 0) {
-          localObject1 = (String)localObject3 + this.GzZ.GAa.getString(2131763761, new Object[] { Integer.valueOf(((czj)localObject2).Dim / 60) });
-        }
-        localObject3 = localObject1;
-        if (((czj)localObject2).Dim % 60 > 0) {
-          localObject3 = (String)localObject1 + this.GzZ.GAa.getString(2131763762, new Object[] { Integer.valueOf(((czj)localObject2).Dim % 60) });
-        }
-        localObject1 = (String)localObject3 + this.GzZ.GAa.getString(2131763760);
-        paramk.qhu.setText((CharSequence)localObject1);
-        paramk.qhu.setTag(parambl);
-      }
-    }
-  }
+  public final void axk() {}
   
-  public final void aqt() {}
+  public final void axl() {}
   
-  public final void aqu() {}
-  
-  public final void aqv() {}
-  
-  public final void aqw() {}
+  public final void axm() {}
   
   public final void detach()
   {
     AppMethodBeat.i(36099);
-    MV();
-    this.GzZ.GAa.getContext().getWindow().clearFlags(128);
-    this.GCa = true;
+    MT();
+    this.HZU.HZV.getContext().getWindow().clearFlags(128);
+    this.IbU = true;
     super.detach();
-    this.GBZ.clear();
-    this.GBZ = null;
-    o.aCI().a(this);
-    ad.d("MicroMsg.ImageGallerySightHandler", "mAudioHelperTool abandonFocus");
-    this.nnt.ea(true);
+    this.IbT.clear();
+    this.IbT = null;
+    o.aJy().a(this);
+    ac.d("MicroMsg.ImageGallerySightHandler", "mAudioHelperTool abandonFocus");
+    this.nQt.ev(true);
     AppMethodBeat.o(36099);
   }
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(36097);
-    if (this.GzZ == null)
+    if (this.HZU == null)
     {
       AppMethodBeat.o(36097);
       return false;
     }
-    k localk = this.GzZ.eZs();
+    k localk = this.HZU.fph();
     if (localk == null)
     {
       AppMethodBeat.o(36097);
       return false;
     }
-    if (localk.GDE == null)
+    if (localk.IdB == null)
     {
       AppMethodBeat.o(36097);
       return false;
     }
-    if (localk.fab().GDE.getVisibility() != 0)
+    if (localk.fpR().IdB.getVisibility() != 0)
     {
       AppMethodBeat.o(36097);
       return false;

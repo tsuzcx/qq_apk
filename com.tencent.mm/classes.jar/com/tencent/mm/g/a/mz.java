@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
 
 public final class mz
   extends b
 {
-  public a dsd;
-  
   public mz()
   {
     this((byte)0);
@@ -16,16 +12,8 @@ public final class mz
   
   private mz(byte paramByte)
   {
-    AppMethodBeat.i(116037);
-    this.dsd = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116037);
-  }
-  
-  public static final class a
-  {
-    public ArrayList dlQ;
   }
 }
 

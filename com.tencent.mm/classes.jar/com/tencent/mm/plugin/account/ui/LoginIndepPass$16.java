@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelsimple.s;
 
@@ -15,7 +15,7 @@ final class LoginIndepPass$16
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(128162);
-    g.aeS().a(this.irt);
+    g.agi().a(this.iRy);
     AppMethodBeat.o(128162);
   }
 }

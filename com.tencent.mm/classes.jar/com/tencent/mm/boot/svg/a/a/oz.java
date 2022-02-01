@@ -55,14 +55,6 @@ public final class oz
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
       ((Paint)localObject1).setColor(-16777216);
       localObject2 = c.n(paramVarArgs);
-      ((Path)localObject2).moveTo(34.667442F, 20.4F);
-      ((Path)localObject2).cubicTo(38.549126F, 24.392387F, 40.950001F, 29.907822F, 40.950001F, 36.0F);
-      ((Path)localObject2).cubicTo(40.950001F, 42.092178F, 38.549126F, 47.607613F, 34.667442F, 51.599998F);
-      ((Path)localObject2).lineTo(31.167261F, 48.0F);
-      ((Path)localObject2).cubicTo(34.153175F, 44.928932F, 36.0F, 40.686291F, 36.0F, 36.0F);
-      ((Path)localObject2).cubicTo(36.0F, 31.313709F, 34.153175F, 27.071068F, 31.167261F, 24.0F);
-      ((Path)localObject2).lineTo(34.667442F, 20.4F);
-      ((Path)localObject2).close();
       ((Path)localObject2).moveTo(26.500357F, 28.799999F);
       ((Path)localObject2).cubicTo(28.291904F, 30.642641F, 29.4F, 33.188225F, 29.4F, 36.0F);
       ((Path)localObject2).cubicTo(29.4F, 38.811775F, 28.291904F, 41.357361F, 26.500357F, 43.200001F);

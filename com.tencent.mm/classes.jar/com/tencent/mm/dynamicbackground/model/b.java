@@ -3,34 +3,34 @@ package com.tencent.mm.dynamicbackground.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
+@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "", "isInitCrash", "", "markDrawEndPoint", "", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "willCrash", "Companion", "dynamicbg_release"})
 public abstract interface b
 {
-  public static final a fIq = a.fIr;
+  public static final a fLW = a.fLX;
   
-  public abstract boolean aai();
+  public abstract boolean abh();
   
-  public abstract void aaj();
+  public abstract void abi();
   
-  public abstract void aak();
+  public abstract void abj();
   
-  public abstract void aal();
+  public abstract void abk();
   
-  public abstract boolean aam();
+  public abstract boolean abl();
   
-  public abstract boolean aan();
+  public abstract boolean abm();
   
-  public abstract void aao();
+  public abstract void abn();
   
-  public abstract void aap();
+  public abstract void abo();
   
-  @l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"})
+  @l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener$Companion;", "", "()V", "CHECK_DRAW_COUNT", "", "dynamicbg_release"})
   public static final class a
   {
     static
     {
       AppMethodBeat.i(103078);
-      fIr = new a();
+      fLX = new a();
       AppMethodBeat.o(103078);
     }
   }

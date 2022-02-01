@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bn;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -11,16 +11,16 @@ import java.util.HashMap;
 public final class a
   implements com.tencent.mm.kernel.api.bucket.a, d, com.tencent.mm.plugin.n.a.a
 {
-  private bk twY;
+  private bn uFq;
   
-  public final bk apT()
+  public final bn awI()
   {
     AppMethodBeat.i(151497);
-    g.afC();
-    g.afz().aeD();
-    bk localbk = this.twY;
+    g.agS();
+    g.agP().afT();
+    bn localbn = this.uFq;
     AppMethodBeat.o(151497);
-    return localbk;
+    return localbn;
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
@@ -31,7 +31,7 @@ public final class a
     {
       public final String[] getSQLs()
       {
-        return bk.SQL_CREATE;
+        return bn.SQL_CREATE;
       }
     });
     AppMethodBeat.o(151499);
@@ -43,13 +43,13 @@ public final class a
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(151498);
-    this.twY = new bk(paramh1);
+    this.uFq = new bn(paramh1);
     AppMethodBeat.o(151498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.n.a
  * JD-Core Version:    0.7.0.1
  */

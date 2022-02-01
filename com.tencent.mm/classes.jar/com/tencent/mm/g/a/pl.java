@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pl
   extends b
 {
-  public a dva;
+  public a dss;
   
   public pl()
   {
@@ -15,25 +15,25 @@ public final class pl
   
   private pl(byte paramByte)
   {
-    AppMethodBeat.i(116042);
-    this.dva = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91213);
+    this.dss = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116042);
+    AppMethodBeat.o(91213);
   }
   
   public static final class a
   {
-    public int deB;
-    public int deC;
-    public String dtQ;
-    public String filePath;
-    public String result;
+    public String content;
+    public String dng;
+    public String dsu;
+    public String toUser;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.pl
  * JD-Core Version:    0.7.0.1
  */

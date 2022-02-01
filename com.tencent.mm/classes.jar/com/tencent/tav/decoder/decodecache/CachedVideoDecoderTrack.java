@@ -33,29 +33,29 @@ public class CachedVideoDecoderTrack
   
   public CachedVideoDecoderTrack(IDecoderTrack paramIDecoderTrack, boolean paramBoolean)
   {
-    AppMethodBeat.i(201952);
+    AppMethodBeat.i(198013);
     this.segmentSize = 60;
     this.nextFrameDecoderLock = new Object();
     this.lastSampleTime = CMTime.CMTimeInvalid;
     this.revert = paramBoolean;
     this.segmentDecoder = new SegmentDecoderThread(this, paramIDecoderTrack);
-    AppMethodBeat.o(201952);
+    AppMethodBeat.o(198013);
   }
   
   private void clearCurrentFrameSegment()
   {
-    AppMethodBeat.i(201969);
+    AppMethodBeat.i(198030);
     if (this.currentFrameSegment != null)
     {
       this.currentFrameSegment.clear();
       this.currentFrameSegment = null;
     }
-    AppMethodBeat.o(201969);
+    AppMethodBeat.o(198030);
   }
   
   private CMSampleBuffer decoderFrame(CMTime paramCMTime)
   {
-    AppMethodBeat.i(201967);
+    AppMethodBeat.i(198028);
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     this.segmentDecoder.decoderSegment(paramCMTime, localCountDownLatch);
     try
@@ -63,7 +63,7 @@ public class CachedVideoDecoderTrack
       localCountDownLatch.await(5L, TimeUnit.SECONDS);
       label34:
       paramCMTime = this.segmentDecoder.seekSampleBuffer;
-      AppMethodBeat.o(201967);
+      AppMethodBeat.o(198028);
       return paramCMTime;
     }
     catch (InterruptedException paramCMTime)
@@ -468,9 +468,9 @@ public class CachedVideoDecoderTrack
   
   public void clipRangeAndClearRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(201963);
+    AppMethodBeat.i(198024);
     this.segmentDecoder.decoderTrack.clipRangeAndClearRange(paramCMTimeRange);
-    AppMethodBeat.o(201963);
+    AppMethodBeat.o(198024);
   }
   
   public CMTime getCurrentSampleTime()
@@ -480,41 +480,41 @@ public class CachedVideoDecoderTrack
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(201970);
+    AppMethodBeat.i(198031);
     CMTime localCMTime = this.segmentDecoder.decoderTrack.getDuration();
-    AppMethodBeat.o(201970);
+    AppMethodBeat.o(198031);
     return localCMTime;
   }
   
   public CMTime getFrameDuration()
   {
-    AppMethodBeat.i(201958);
+    AppMethodBeat.i(198019);
     CMTime localCMTime = this.segmentDecoder.decoderTrack.getFrameDuration();
-    AppMethodBeat.o(201958);
+    AppMethodBeat.o(198019);
     return localCMTime;
   }
   
   public int getFrameRate()
   {
-    AppMethodBeat.i(201957);
+    AppMethodBeat.i(198018);
     int i = this.segmentDecoder.decoderTrack.getFrameRate();
-    AppMethodBeat.o(201957);
+    AppMethodBeat.o(198018);
     return i;
   }
   
   public CGSize getMaxRenderSize()
   {
-    AppMethodBeat.i(201972);
+    AppMethodBeat.i(198033);
     CGSize localCGSize = this.segmentDecoder.decoderTrack.getMaxRenderSize();
-    AppMethodBeat.o(201972);
+    AppMethodBeat.o(198033);
     return localCGSize;
   }
   
   public int getTrackId()
   {
-    AppMethodBeat.i(201960);
+    AppMethodBeat.i(198021);
     int i = this.segmentDecoder.decoderTrack.getTrackId();
-    AppMethodBeat.o(201960);
+    AppMethodBeat.o(198021);
     return i;
   }
   
@@ -525,31 +525,31 @@ public class CachedVideoDecoderTrack
   
   public CMSampleBuffer readSample()
   {
-    AppMethodBeat.i(201965);
+    AppMethodBeat.i(198026);
     if (this.lastSampleTime == CMTime.CMTimeInvalid)
     {
       localCMSampleBuffer = readSample(CMTime.CMTimeZero);
-      AppMethodBeat.o(201965);
+      AppMethodBeat.o(198026);
       return localCMSampleBuffer;
     }
     if (this.lastSampleTime.smallThan(CMTime.CMTimeZero))
     {
       localCMSampleBuffer = new CMSampleBuffer(this.lastSampleTime);
-      AppMethodBeat.o(201965);
+      AppMethodBeat.o(198026);
       return localCMSampleBuffer;
     }
     CMSampleBuffer localCMSampleBuffer = readSample(this.lastSampleTime.add(getFrameDuration()));
-    AppMethodBeat.o(201965);
+    AppMethodBeat.o(198026);
     return localCMSampleBuffer;
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
   {
-    AppMethodBeat.i(201966);
+    AppMethodBeat.i(198027);
     if (paramCMTime.smallThan(CMTime.CMTimeZero))
     {
       paramCMTime = readSample();
-      AppMethodBeat.o(201966);
+      AppMethodBeat.o(198027);
       return paramCMTime;
     }
     Logger.e("CachedVideoTrack", "readSample: targetTime = ".concat(String.valueOf(paramCMTime)));
@@ -565,7 +565,7 @@ public class CachedVideoDecoderTrack
         {
           Logger.e("CachedVideoTrack", bool + "  " + ((CacheFrame)localObject).sampleBuffer.isNewFrame() + " time = " + ((CacheFrame)localObject).realFrameTime + "  " + ((CacheFrame)localObject).frameTime);
           paramCMTime = ((CacheFrame)localObject).sampleBuffer;
-          AppMethodBeat.o(201966);
+          AppMethodBeat.o(198027);
           return paramCMTime;
         }
       }
@@ -574,32 +574,32 @@ public class CachedVideoDecoderTrack
     {
       this.lastSampleTime = IDecoder.SAMPLE_TIME_FINISH;
       paramCMTime = new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
-      AppMethodBeat.o(201966);
+      AppMethodBeat.o(198027);
       return paramCMTime;
     }
     Object localObject = decoderSegment(paramCMTime);
     if (localObject != null)
     {
       Logger.e("CachedVideoTrack", "readSample: hint currentSegment - " + ((CMSampleBuffer)localObject).getTime());
-      AppMethodBeat.o(201966);
+      AppMethodBeat.o(198027);
       return localObject;
     }
     if (paramCMTime.bigThan(getDuration()))
     {
       this.lastSampleTime = IDecoder.SAMPLE_TIME_FINISH;
       paramCMTime = new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
-      AppMethodBeat.o(201966);
+      AppMethodBeat.o(198027);
       return paramCMTime;
     }
     this.lastSampleTime = IDecoder.SAMPLE_TIME_ERROR;
     paramCMTime = new CMSampleBuffer(IDecoder.SAMPLE_TIME_ERROR);
-    AppMethodBeat.o(201966);
+    AppMethodBeat.o(198027);
     return paramCMTime;
   }
   
   public void release()
   {
-    AppMethodBeat.i(201971);
+    AppMethodBeat.i(198032);
     if (this.currentFrameSegment != null) {
       this.currentFrameSegment.clear();
     }
@@ -613,14 +613,14 @@ public class CachedVideoDecoderTrack
         this.segmentDecoder.release();
         this.segmentDecoder = null;
       }
-      AppMethodBeat.o(201971);
+      AppMethodBeat.o(198032);
       return;
     }
   }
   
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(201964);
+    AppMethodBeat.i(198025);
     Logger.e("CachedVideoTrack", "seekTo: PlayerThreadMain ".concat(String.valueOf(paramCMTime)));
     int i;
     label120:
@@ -656,7 +656,7 @@ public class CachedVideoDecoderTrack
     for (paramCMTime = IDecoder.SAMPLE_TIME_FINISH;; paramCMTime = localCMSampleBuffer.getTime())
     {
       this.lastSampleTime = paramCMTime;
-      AppMethodBeat.o(201964);
+      AppMethodBeat.o(198025);
       return localCMSampleBuffer;
       this.lastSampleTime = paramCMTime;
       break;
@@ -664,27 +664,27 @@ public class CachedVideoDecoderTrack
       break label120;
     }
     label198:
-    AppMethodBeat.o(201964);
+    AppMethodBeat.o(198025);
     return null;
   }
   
   public void setDecodeType(IDecoder.DecodeType paramDecodeType)
   {
-    AppMethodBeat.i(201961);
+    AppMethodBeat.i(198022);
     this.segmentDecoder.decoderTrack.setDecodeType(paramDecodeType);
-    AppMethodBeat.o(201961);
+    AppMethodBeat.o(198022);
   }
   
   public void setFrameRate(int paramInt)
   {
-    AppMethodBeat.i(201956);
+    AppMethodBeat.i(198017);
     this.segmentDecoder.decoderTrack.setFrameRate(paramInt);
-    AppMethodBeat.o(201956);
+    AppMethodBeat.o(198017);
   }
   
   public void setMaxFrameCacheSize(int paramInt)
   {
-    AppMethodBeat.i(201973);
+    AppMethodBeat.i(198034);
     if (paramInt > 0)
     {
       this.segmentSize = paramInt;
@@ -692,7 +692,7 @@ public class CachedVideoDecoderTrack
         this.segmentDecoder.texturePool.setMaxCacheLength(paramInt);
       }
     }
-    AppMethodBeat.o(201973);
+    AppMethodBeat.o(198034);
   }
   
   public void setRevert(boolean paramBoolean)
@@ -702,44 +702,44 @@ public class CachedVideoDecoderTrack
   
   public void setTrackSegments(List<DecoderTrackSegment> paramList)
   {
-    AppMethodBeat.i(201962);
+    AppMethodBeat.i(198023);
     this.segmentDecoder.decoderTrack.setTrackSegments(paramList);
-    AppMethodBeat.o(201962);
+    AppMethodBeat.o(198023);
   }
   
   public void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(201959);
+    AppMethodBeat.i(198020);
     this.segmentDecoder.decoderTrack.setVolume(paramFloat);
-    AppMethodBeat.o(201959);
+    AppMethodBeat.o(198020);
   }
   
   public void start()
   {
-    AppMethodBeat.i(201953);
+    AppMethodBeat.i(198014);
     start(null);
-    AppMethodBeat.o(201953);
+    AppMethodBeat.o(198014);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator)
   {
-    AppMethodBeat.i(201954);
+    AppMethodBeat.i(198015);
     start(paramSurfaceCreator, null);
-    AppMethodBeat.o(201954);
+    AppMethodBeat.o(198015);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(201955);
+    AppMethodBeat.i(198016);
     this.validTimeRange = paramCMTimeRange;
     this.renderContext = ((RenderContext)paramSurfaceCreator);
     this.segmentDecoder.startForReady();
-    AppMethodBeat.o(201955);
+    AppMethodBeat.o(198016);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.CachedVideoDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

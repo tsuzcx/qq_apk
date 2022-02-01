@@ -1,59 +1,21 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import com.tencent.tav.coremedia.TextureInfo;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"scaleRect", "", "origin", "Landroid/graphics/Rect;", "target", "getScale", "", "Landroid/graphics/Matrix;", "scaleBy", "scale", "setRectToRectCenterCrop", "src", "Landroid/graphics/RectF;", "dst", "srcLeft", "srcTop", "srcRight", "srcBottom", "dstLeft", "dstTop", "dstRight", "dstBottom", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/TrackRenderInfo;", "", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "texture", "Lcom/tencent/tav/coremedia/TextureInfo;", "(Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTexture", "()Lcom/tencent/tav/coremedia/TextureInfo;", "setTexture", "(Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTrack", "()Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setTrack", "(Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;)V", "plugin-vlog_release"})
 public final class p
 {
-  public static final void a(Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
-  {
-    AppMethodBeat.i(200829);
-    k.h(paramMatrix, "$this$setRectToRectCenterCrop");
-    a(paramMatrix, new RectF(0.0F, 0.0F, paramFloat1, paramFloat2), new RectF(paramFloat3, paramFloat4, paramFloat5, paramFloat6));
-    AppMethodBeat.o(200829);
-  }
+  private u AnN;
+  public TextureInfo texture;
   
-  public static final void a(Matrix paramMatrix, RectF paramRectF1, RectF paramRectF2)
+  public p(u paramu, TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(200828);
-    k.h(paramMatrix, "$this$setRectToRectCenterCrop");
-    k.h(paramRectF1, "src");
-    k.h(paramRectF2, "dst");
-    paramMatrix.reset();
-    float f = Math.max(paramRectF2.height() / paramRectF1.height(), paramRectF2.width() / paramRectF1.width());
-    paramMatrix.postTranslate(-paramRectF1.centerX(), -paramRectF1.centerY());
-    paramMatrix.postScale(f, f);
-    paramMatrix.postTranslate(paramRectF2.centerX(), paramRectF2.centerY());
-    AppMethodBeat.o(200828);
-  }
-  
-  public static final void b(Rect paramRect, float paramFloat)
-  {
-    AppMethodBeat.i(200830);
-    k.h(paramRect, "$this$scaleBy");
-    paramRect.left = Math.round(paramRect.left * paramFloat);
-    paramRect.top = Math.round(paramRect.top * paramFloat);
-    paramRect.right = Math.round(paramRect.right * paramFloat);
-    paramRect.bottom = Math.round(paramRect.bottom * paramFloat);
-    AppMethodBeat.o(200830);
-  }
-  
-  public static final float f(Matrix paramMatrix)
-  {
-    AppMethodBeat.i(200827);
-    k.h(paramMatrix, "$this$getScale");
-    float[] arrayOfFloat = new float[9];
-    paramMatrix.getValues(arrayOfFloat);
-    float f1 = arrayOfFloat[0];
-    float f2 = arrayOfFloat[3];
-    f1 = (float)Math.sqrt(f2 * f2 + f1 * f1);
-    AppMethodBeat.o(200827);
-    return f1;
+    AppMethodBeat.i(207561);
+    this.AnN = paramu;
+    this.texture = paramTextureInfo;
+    AppMethodBeat.o(207561);
   }
 }
 

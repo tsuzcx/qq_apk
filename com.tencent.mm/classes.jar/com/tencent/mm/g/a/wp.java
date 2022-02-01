@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class wp
   extends b
 {
-  public a dCb;
-  
   public wp()
   {
     this((byte)0);
@@ -15,19 +12,8 @@ public final class wp
   
   private wp(byte paramByte)
   {
-    AppMethodBeat.i(19844);
-    this.dCb = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(19844);
-  }
-  
-  public static final class a
-  {
-    public int action;
-    public int dCc;
-    public String result;
-    public String userCode;
   }
 }
 

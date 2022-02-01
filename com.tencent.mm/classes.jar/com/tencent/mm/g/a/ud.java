@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.HashMap;
 
 public final class ud
   extends b
 {
-  public a dzv;
+  public a dwP;
   
   public ud()
   {
@@ -15,17 +16,18 @@ public final class ud
   
   private ud(byte paramByte)
   {
-    AppMethodBeat.i(125648);
-    this.dzv = new a();
-    this.ESR = false;
+    AppMethodBeat.i(94815);
+    this.dwP = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(125648);
+    AppMethodBeat.o(94815);
   }
   
   public static final class a
   {
-    public String id;
-    public int type = 0;
+    public long dwQ;
+    public int dwR;
+    public HashMap dwS;
   }
 }
 

@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.c.b.i;
 import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,23 +19,23 @@ import java.util.Set;
 
 public final class o
 {
-  public long[] Gne;
-  public a cOd;
+  public long[] HMU;
+  public a cLy;
   
   public o(final a parama, long[] paramArrayOfLong)
   {
     AppMethodBeat.i(34486);
-    this.Gne = null;
-    this.cOd = parama;
-    this.Gne = paramArrayOfLong;
-    this.cOd.GzJ.removeAllOptionMenu();
-    this.cOd.GzJ.addTextOptionMenu(2, this.cOd.GzJ.getMMResources().getString(2131756588), new MenuItem.OnMenuItemClickListener()
+    this.HMU = null;
+    this.cLy = parama;
+    this.HMU = paramArrayOfLong;
+    this.cLy.HZF.removeAllOptionMenu();
+    this.cLy.HZF.addTextOptionMenu(2, this.cLy.HZF.getMMResources().getString(2131756588), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(34484);
         paramAnonymousMenuItem = new Intent();
-        Object localObject2 = ((i)o.this.cOd.be(i.class)).eWg();
+        Object localObject2 = ((i)o.this.cLy.bf(i.class)).flS();
         if (localObject2 != null)
         {
           Object localObject1 = new ArrayList();
@@ -56,25 +56,25 @@ public final class o
             i += 1;
           }
           paramAnonymousMenuItem.putExtra("k_outside_expose_proof_item_list", (long[])localObject2);
-          o.this.cOd.GzJ.getContext().setResult(-1, paramAnonymousMenuItem);
+          o.this.cLy.HZF.getContext().setResult(-1, paramAnonymousMenuItem);
         }
         for (;;)
         {
-          paramAnonymousMenuItem.putExtra("k_is_group_chat", o.this.cOd.eZb());
-          o.this.cOd.GzJ.eUW();
+          paramAnonymousMenuItem.putExtra("k_is_group_chat", o.this.cLy.foQ());
+          o.this.cLy.HZF.fkI();
           AppMethodBeat.o(34484);
           return false;
-          o.this.cOd.GzJ.getContext().setResult(0, paramAnonymousMenuItem);
+          o.this.cLy.HZF.getContext().setResult(0, paramAnonymousMenuItem);
         }
       }
-    }, null, r.b.FOB);
-    parama = (i)this.cOd.be(i.class);
+    }, null, s.b.Hom);
+    parama = (i)this.cLy.bf(i.class);
     parama.g(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34485);
-        parama.wA(((Long)paramAnonymousView.getTag()).longValue());
+        parama.Bd(((Long)paramAnonymousView.getTag()).longValue());
         AppMethodBeat.o(34485);
       }
     });
@@ -83,7 +83,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.o
  * JD-Core Version:    0.7.0.1
  */

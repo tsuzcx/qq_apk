@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.b.e;
 
 public abstract interface e<T>
 {
-  public abstract T cy(T paramT);
+  public abstract T cw(T paramT);
 }
 
 

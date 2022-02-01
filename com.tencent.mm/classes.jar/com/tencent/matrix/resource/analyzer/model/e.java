@@ -5,17 +5,17 @@ import java.io.Serializable;
 public final class e
   implements Serializable
 {
-  public final String cyH;
-  public final boolean cyI;
-  public final String cyJ;
+  public final String cvQ;
+  public final boolean cvR;
+  public final String cvS;
   public final String name;
   
   e(d.c paramc)
   {
     this.name = paramc.name;
-    this.cyH = paramc.cyH;
-    this.cyI = paramc.cyI;
-    this.cyJ = paramc.cyJ;
+    this.cvQ = paramc.cvQ;
+    this.cvR = paramc.cvR;
+    this.cvS = paramc.cvS;
   }
 }
 

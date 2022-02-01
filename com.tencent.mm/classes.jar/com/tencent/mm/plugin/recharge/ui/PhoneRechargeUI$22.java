@@ -14,7 +14,7 @@ final class PhoneRechargeUI$22
   {
     AppMethodBeat.i(67184);
     if (paramInt == -2) {
-      h.vKh.f(17623, new Object[] { Integer.valueOf(this.fpl), Integer.valueOf(2) });
+      h.wUl.f(17623, new Object[] { Integer.valueOf(this.fsL), Integer.valueOf(2) });
     }
     AppMethodBeat.o(67184);
   }

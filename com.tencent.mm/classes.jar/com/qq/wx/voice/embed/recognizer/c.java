@@ -4,7 +4,7 @@ public abstract interface c
 {
   public abstract void a(a parama);
   
-  public abstract void gp(int paramInt);
+  public abstract void onGetError(int paramInt);
 }
 
 

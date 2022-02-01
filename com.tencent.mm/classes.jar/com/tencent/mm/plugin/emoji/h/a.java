@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.emoji.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.c;
 
 public final class a
 {
-  public static boolean Up(String paramString)
+  public static boolean YB(String paramString)
   {
     AppMethodBeat.i(109441);
     if (paramString == null)
@@ -17,7 +17,7 @@ public final class a
       AppMethodBeat.o(109441);
       return false;
     }
-    boolean bool = paramString.equals(bXj());
+    boolean bool = paramString.equals(cew());
     AppMethodBeat.o(109441);
     return bool;
   }
@@ -30,23 +30,23 @@ public final class a
       AppMethodBeat.o(109440);
       return false;
     }
-    boolean bool = Up(paramEmojiGroupInfo.field_productID);
+    boolean bool = YB(paramEmojiGroupInfo.field_productID);
     AppMethodBeat.o(109440);
     return bool;
   }
   
-  public static boolean bWs()
+  public static boolean cdF()
   {
     AppMethodBeat.i(109438);
-    boolean bool = k.getEmojiStorageMgr().FyZ.eNf();
+    boolean bool = k.getEmojiStorageMgr().GYa.fcJ();
     AppMethodBeat.o(109438);
     return bool;
   }
   
-  public static final String bXj()
+  public static final String cew()
   {
     AppMethodBeat.i(109442);
-    String str = EmojiGroupInfo.LBN;
+    String str = EmojiGroupInfo.Jsp;
     AppMethodBeat.o(109442);
     return str;
   }
@@ -59,14 +59,14 @@ public final class a
       AppMethodBeat.o(109439);
       return false;
     }
-    boolean bool = Up(paramEmotionSummary.ProductID);
+    boolean bool = YB(paramEmotionSummary.ProductID);
     AppMethodBeat.o(109439);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.h.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,11 @@ import com.tencent.mm.compatible.util.d;
 
 public final class g
 {
-  public static void bd(Intent paramIntent)
+  public static void be(Intent paramIntent)
   {
     AppMethodBeat.i(156176);
-    if (d.lf(26)) {
-      paramIntent.setPackage(aj.getPackageName());
+    if (d.kZ(26)) {
+      paramIntent.setPackage(ai.getPackageName());
     }
     AppMethodBeat.o(156176);
   }

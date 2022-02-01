@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,16 +14,16 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static List<String> BbJ;
-  private static List<String> BbK;
+  private static List<String> CtV;
+  private static List<String> CtW;
   
   static
   {
     AppMethodBeat.i(79245);
     ArrayList localArrayList = new ArrayList();
-    BbJ = localArrayList;
+    CtV = localArrayList;
     localArrayList.add("updatePageAuth");
-    BbK = new ArrayList();
+    CtW = new ArrayList();
     AppMethodBeat.o(79245);
   }
   
@@ -34,19 +34,19 @@ public final class f
     //   0: ldc 47
     //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: bipush 70
-    //   7: invokestatic 52	com/tencent/mm/plugin/webview/g/a:lI	(I)V
+    //   7: invokestatic 52	com/tencent/mm/plugin/webview/g/a:lA	(I)V
     //   10: aload_0
-    //   11: getfield 58	com/tencent/mm/plugin/webview/c/l:uLu	Ljava/util/Map;
+    //   11: getfield 58	com/tencent/mm/plugin/webview/c/l:vUl	Ljava/util/Map;
     //   14: ldc 60
     //   16: invokeinterface 66 2 0
     //   21: checkcast 68	java/lang/String
     //   24: ldc 70
-    //   26: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokestatic 76	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   29: astore_3
     //   30: aload_3
     //   31: astore_2
     //   32: aload_3
-    //   33: invokestatic 80	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   33: invokestatic 80	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   36: ifne +17 -> 53
     //   39: ldc 82
     //   41: iconst_1
@@ -61,7 +61,7 @@ public final class f
     //   56: dup
     //   57: invokespecial 89	java/lang/StringBuilder:<init>	()V
     //   60: aload_0
-    //   61: getfield 58	com/tencent/mm/plugin/webview/c/l:uLu	Ljava/util/Map;
+    //   61: getfield 58	com/tencent/mm/plugin/webview/c/l:vUl	Ljava/util/Map;
     //   64: ldc 91
     //   66: invokeinterface 66 2 0
     //   71: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -70,23 +70,23 @@ public final class f
     //   78: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   81: astore_2
     //   82: aload_0
-    //   83: getfield 58	com/tencent/mm/plugin/webview/c/l:uLu	Ljava/util/Map;
+    //   83: getfield 58	com/tencent/mm/plugin/webview/c/l:vUl	Ljava/util/Map;
     //   86: ldc 104
     //   88: invokeinterface 66 2 0
     //   93: checkcast 68	java/lang/String
     //   96: ldc 106
-    //   98: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   98: invokestatic 76	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   101: astore_3
     //   102: aload_0
-    //   103: getfield 58	com/tencent/mm/plugin/webview/c/l:uLu	Ljava/util/Map;
+    //   103: getfield 58	com/tencent/mm/plugin/webview/c/l:vUl	Ljava/util/Map;
     //   106: ldc 108
     //   108: invokeinterface 66 2 0
     //   113: checkcast 68	java/lang/String
     //   116: ldc 70
-    //   118: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   118: invokestatic 76	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   121: astore 4
     //   123: aload_0
-    //   124: getfield 58	com/tencent/mm/plugin/webview/c/l:uLu	Ljava/util/Map;
+    //   124: getfield 58	com/tencent/mm/plugin/webview/c/l:vUl	Ljava/util/Map;
     //   127: ldc 110
     //   129: invokeinterface 66 2 0
     //   134: checkcast 68	java/lang/String
@@ -99,21 +99,21 @@ public final class f
     //   148: iconst_0
     //   149: aload_2
     //   150: aastore
-    //   151: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   151: invokestatic 119	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   154: aload_0
-    //   155: getfield 58	com/tencent/mm/plugin/webview/c/l:uLu	Ljava/util/Map;
+    //   155: getfield 58	com/tencent/mm/plugin/webview/c/l:vUl	Ljava/util/Map;
     //   158: ldc 121
     //   160: invokeinterface 66 2 0
     //   165: checkcast 68	java/lang/String
     //   168: ldc 70
-    //   170: invokestatic 76	com/tencent/mm/sdk/platformtools/bt:by	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   170: invokestatic 76	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   173: astore 7
     //   175: new 123	java/util/HashMap
     //   178: dup
     //   179: invokespecial 124	java/util/HashMap:<init>	()V
     //   182: astore 6
     //   184: aload 7
-    //   186: invokestatic 80	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   186: invokestatic 80	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   189: ifne +135 -> 324
     //   192: new 126	org/json/JSONObject
     //   195: dup
@@ -147,7 +147,7 @@ public final class f
     //   263: iconst_0
     //   264: aload 7
     //   266: aastore
-    //   267: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:m	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   267: invokestatic 154	com/tencent/mm/sdk/platformtools/ac:m	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   270: ldc 112
     //   272: ldc 156
     //   274: iconst_4
@@ -168,7 +168,7 @@ public final class f
     //   292: iconst_3
     //   293: aload 5
     //   295: aastore
-    //   296: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   296: invokestatic 159	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   299: new 6	com/tencent/mm/plugin/webview/g/f$1
     //   302: dup
     //   303: aload_3
@@ -178,13 +178,13 @@ public final class f
     //   309: aload_1
     //   310: aload_0
     //   311: invokespecial 162	com/tencent/mm/plugin/webview/g/f$1:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Lcom/tencent/mm/plugin/webview/g/f$a;Lcom/tencent/mm/plugin/webview/c/l;)V
-    //   314: invokestatic 168	com/tencent/mm/plugin/webview/a/a:ae	(Ljava/lang/Runnable;)V
+    //   314: invokestatic 168	com/tencent/mm/plugin/webview/a/a:ag	(Ljava/lang/Runnable;)V
     //   317: ldc 47
     //   319: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   322: iconst_1
     //   323: ireturn
     //   324: aload 4
-    //   326: invokestatic 80	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   326: invokestatic 80	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
     //   329: ifne -59 -> 270
     //   332: new 126	org/json/JSONObject
     //   335: dup
@@ -231,7 +231,7 @@ public final class f
     //   350	389	252	org/json/JSONException
   }
   
-  private static void e(Map paramMap)
+  private static void d(Map paramMap)
   {
     AppMethodBeat.i(79242);
     Iterator localIterator = paramMap.entrySet().iterator();
@@ -242,7 +242,7 @@ public final class f
       localObject2 = ((Map.Entry)localObject2).getValue();
       if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
       {
-        e((Map)localObject2);
+        d((Map)localObject2);
         paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
     }

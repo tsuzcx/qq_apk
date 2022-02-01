@@ -2,19 +2,19 @@ package com.tencent.mm.pluginsdk.ui;
 
 public final class j
 {
-  public long BWo = 0L;
-  public long BWp = 0L;
-  public long BWq = 0L;
-  public long BWr = 0L;
+  public long DoF = 0L;
+  public long DoG = 0L;
+  public long DoH = 0L;
+  public long DoI = 0L;
   public int blockCount = 0;
   public int duration = 0;
-  public long kCY = 0L;
-  public int kDa = 0;
-  public int kDb = 0;
-  public long kmA = 0L;
+  public long kNS = 0L;
+  public long leq = 0L;
+  public int les = 0;
+  public int let = 0;
   public String url = "";
-  public long xqo = 0L;
-  public long xqq = 0L;
+  public long yDe = 0L;
+  public long yDg = 0L;
 }
 
 

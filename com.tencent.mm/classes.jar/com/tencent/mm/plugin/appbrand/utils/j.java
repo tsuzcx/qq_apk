@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
 public final class j
 {
   private final AtomicInteger counter;
-  private final Runnable lMm;
+  private final Runnable moj;
   
   public j(Runnable paramRunnable, int paramInt)
   {
     AppMethodBeat.i(51402);
-    this.lMm = paramRunnable;
+    this.moj = paramRunnable;
     if (paramInt > 0) {}
     for (int i = 1; i == 0; i = 0)
     {
@@ -30,7 +30,7 @@ public final class j
     AppMethodBeat.i(51401);
     if (this.counter.decrementAndGet() == 0)
     {
-      Runnable localRunnable = this.lMm;
+      Runnable localRunnable = this.moj;
       if (localRunnable != null)
       {
         localRunnable.run();
@@ -43,7 +43,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.j
  * JD-Core Version:    0.7.0.1
  */

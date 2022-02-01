@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutParams;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -16,20 +16,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends RecyclerView.h
 {
-  private final Drawable ajR;
+  private final Drawable akL;
   private int mSize;
-  private final Drawable ojB;
+  private final Drawable oNb;
   
   public a(Resources paramResources)
   {
     AppMethodBeat.i(9025);
-    this.ajR = new ColorDrawable(paramResources.getColor(2131100251));
+    this.akL = new ColorDrawable(paramResources.getColor(2131100251));
     this.mSize = paramResources.getDimensionPixelSize(2131166455);
-    this.ojB = new ColorDrawable(paramResources.getColor(2131101179));
+    this.oNb = new ColorDrawable(paramResources.getColor(2131101179));
     AppMethodBeat.o(9025);
   }
   
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(9026);
     int j = paramRecyclerView.getPaddingLeft();
@@ -46,8 +46,8 @@ public final class a
       if ((localView2.getVisibility() == 8) || (localView1.getVisibility() == 8)) {
         if ((localView1 instanceof TaskItemView))
         {
-          this.ojB.setBounds(j, n, k, i1);
-          this.ojB.draw(paramCanvas);
+          this.oNb.setBounds(j, n, k, i1);
+          this.oNb.draw(paramCanvas);
         }
       }
       for (;;)
@@ -56,8 +56,8 @@ public final class a
         break;
         if (((localView1 instanceof TaskManagerHeaderView)) || ((localView1 instanceof TaskHeaderView)) || ((localView1 instanceof ExpandView)))
         {
-          this.ajR.setBounds(j, n, k, i1);
-          this.ajR.draw(paramCanvas);
+          this.akL.setBounds(j, n, k, i1);
+          this.akL.draw(paramCanvas);
         }
         else
         {
@@ -72,26 +72,26 @@ public final class a
               }
               if (((localView2 instanceof ExpandView)) && (localView2.getVisibility() == 8))
               {
-                this.ajR.setBounds(j, n, k, i1);
-                this.ajR.draw(paramCanvas);
+                this.akL.setBounds(j, n, k, i1);
+                this.akL.draw(paramCanvas);
                 continue;
               }
             }
-            this.ajR.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
-            this.ajR.draw(paramCanvas);
-            this.ojB.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
-            this.ojB.draw(paramCanvas);
+            this.akL.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
+            this.akL.draw(paramCanvas);
+            this.oNb.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
+            this.oNb.draw(paramCanvas);
             continue;
           }
           label353:
-          super.a(paramCanvas, paramRecyclerView, params);
+          super.a(paramCanvas, paramRecyclerView, paramt);
         }
       }
     }
     AppMethodBeat.o(9026);
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(9027);
     paramRect.set(0, 0, 0, this.mSize);

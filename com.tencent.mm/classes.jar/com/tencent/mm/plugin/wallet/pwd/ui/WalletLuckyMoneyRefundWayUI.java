@@ -15,19 +15,19 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.g.b.a.ej;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.g.b.a.fz;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.wallet.pwd.a.f.b;
-import com.tencent.mm.protocal.protobuf.bqz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.bvq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -37,46 +37,46 @@ import java.util.Iterator;
 public class WalletLuckyMoneyRefundWayUI
   extends MMPreference
 {
-  private f lxI;
-  private long nXu;
-  private RadioBelowSummarytAndIconPreference zTX;
-  private RadioBelowSummarytAndIconPreference zTY;
-  private com.tencent.mm.plugin.wallet.pwd.a.f.a zTZ;
-  private Preference zTb;
+  private Preference Blv;
+  private RadioBelowSummarytAndIconPreference Bmr;
+  private RadioBelowSummarytAndIconPreference Bms;
+  private com.tencent.mm.plugin.wallet.pwd.a.f.a Bmt;
+  private f lZC;
+  private long oAP;
   
-  private boolean Js(int paramInt)
+  private boolean Lr(int paramInt)
   {
-    return (this.nXu & paramInt) != 0L;
+    return (this.oAP & paramInt) != 0L;
   }
   
-  private void Rs(int paramInt)
+  private void TB(int paramInt)
   {
     AppMethodBeat.i(69732);
-    ej localej = new ej();
-    if (bt.aw(this.nXu & 0x3, 2L)) {}
+    fz localfz = new fz();
+    if (bs.av(this.oAP & 0x3, 2L)) {}
     for (int i = 2;; i = 1)
     {
-      localej.dZl = i;
-      localej.dZm = paramInt;
-      localej.aBj();
+      localfz.ebd = i;
+      localfz.ebe = paramInt;
+      localfz.aHZ();
       AppMethodBeat.o(69732);
       return;
     }
   }
   
-  private void eaS()
+  private void eqo()
   {
     AppMethodBeat.i(69733);
-    this.zTX.setWidgetLayoutResource(2131494878);
-    this.zTY.setWidgetLayoutResource(2131494879);
+    this.Bmr.setWidgetLayoutResource(2131494878);
+    this.Bms.setWidgetLayoutResource(2131494879);
     AppMethodBeat.o(69733);
   }
   
-  private void eaT()
+  private void eqp()
   {
     AppMethodBeat.i(69734);
-    this.zTX.setWidgetLayoutResource(2131494879);
-    this.zTY.setWidgetLayoutResource(2131494878);
+    this.Bmr.setWidgetLayoutResource(2131494879);
+    this.Bms.setWidgetLayoutResource(2131494878);
     AppMethodBeat.o(69734);
   }
   
@@ -88,34 +88,34 @@ public class WalletLuckyMoneyRefundWayUI
   public void initView()
   {
     AppMethodBeat.i(69729);
-    this.zTb = this.lxI.aKk("refund_way_detail");
-    this.zTX = ((RadioBelowSummarytAndIconPreference)this.lxI.aKk("refund_way_detail_lq"));
-    this.zTY = ((RadioBelowSummarytAndIconPreference)this.lxI.aKk("refund_way_detail_origin"));
-    if (this.zTb != null) {
-      this.zTb.setTitle(this.zTZ.zSb);
+    this.Blv = this.lZC.aPN("refund_way_detail");
+    this.Bmr = ((RadioBelowSummarytAndIconPreference)this.lZC.aPN("refund_way_detail_lq"));
+    this.Bms = ((RadioBelowSummarytAndIconPreference)this.lZC.aPN("refund_way_detail_origin"));
+    if (this.Blv != null) {
+      this.Blv.setTitle(this.Bmt.Bkv);
     }
-    if (this.zTX != null)
+    if (this.Bmr != null)
     {
-      this.zTX.setTitle(this.zTZ.zRX);
-      this.zTX.setSummary(this.zTZ.zRY);
+      this.Bmr.setTitle(this.Bmt.Bkr);
+      this.Bmr.setSummary(this.Bmt.Bks);
     }
-    if (this.zTY != null)
+    if (this.Bms != null)
     {
-      this.zTY.setTitle(this.zTZ.zRZ);
-      this.zTY.setSummary(this.zTZ.zSa);
-      RadioBelowSummarytAndIconPreference localRadioBelowSummarytAndIconPreference = this.zTY;
+      this.Bms.setTitle(this.Bmt.Bkt);
+      this.Bms.setSummary(this.Bmt.Bku);
+      RadioBelowSummarytAndIconPreference localRadioBelowSummarytAndIconPreference = this.Bms;
       View.OnClickListener local1 = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(69726);
-          ad.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "mOriginWay click!!");
+          ac.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "mOriginWay click!!");
           a locala = new a(WalletLuckyMoneyRefundWayUI.this, WalletLuckyMoneyRefundWayUI.a(WalletLuckyMoneyRefundWayUI.this));
           View localView = View.inflate(locala.mContext, 2131496019, null);
           LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131304241);
-          if (locala.zTZ.zSd.size() > 0)
+          if (locala.Bmt.Bkx.size() > 0)
           {
-            Iterator localIterator = locala.zTZ.zSd.iterator();
+            Iterator localIterator = locala.Bmt.Bkx.iterator();
             int i = 0;
             if (localIterator.hasNext())
             {
@@ -131,7 +131,7 @@ public class WalletLuckyMoneyRefundWayUI
                 if ((paramAnonymousView instanceof ViewGroup.MarginLayoutParams))
                 {
                   paramAnonymousView = (ViewGroup.MarginLayoutParams)paramAnonymousView;
-                  paramAnonymousView.setMargins(0, com.tencent.mm.cd.a.fromDPToPix(locala.mContext, 24), 0, 0);
+                  paramAnonymousView.setMargins(0, com.tencent.mm.cc.a.fromDPToPix(locala.mContext, 24), 0, 0);
                   ((View)localObject).setLayoutParams(paramAnonymousView);
                 }
               }
@@ -140,10 +140,10 @@ public class WalletLuckyMoneyRefundWayUI
                 paramAnonymousView = (ImageView)((View)localObject).findViewById(2131300874);
                 localTextView = (TextView)((View)localObject).findViewById(2131305902);
                 localObject = (TextView)((View)localObject).findViewById(2131305529);
-                if (!bt.isNullOrNil(localb.zSf)) {
+                if (!bs.isNullOrNil(localb.Bkz)) {
                   break label278;
                 }
-                com.tencent.mm.aw.a.a.ayO().a(localb.gFS, paramAnonymousView, new c.a().azc());
+                com.tencent.mm.av.a.a.aFG().a(localb.hgt, paramAnonymousView, new c.a().aFT());
               }
               for (;;)
               {
@@ -153,25 +153,25 @@ public class WalletLuckyMoneyRefundWayUI
                 paramAnonymousView = new ViewGroup.MarginLayoutParams(paramAnonymousView);
                 break label153;
                 label278:
-                com.tencent.mm.aw.a.a locala1 = com.tencent.mm.aw.a.a.ayO();
-                String str = localb.gFS;
+                com.tencent.mm.av.a.a locala1 = com.tencent.mm.av.a.a.aFG();
+                String str = localb.hgt;
                 c.a locala2 = new c.a();
-                locala2.md5 = localb.zSf;
-                locala1.a(str, paramAnonymousView, locala2.azc());
+                locala2.md5 = localb.Bkz;
+                locala1.a(str, paramAnonymousView, locala2.aFT());
               }
             }
           }
           paramAnonymousView = new com.tencent.mm.ui.widget.a.f.a(locala.mContext);
-          paramAnonymousView.au(locala.zTZ.zSc).gu(localView).aMs(locala.mContext.getString(2131765505)).aaG(locala.mContext.getResources().getColor(2131101134)).HFB = true;
+          paramAnonymousView.av(locala.Bmt.Bkw).gK(localView).aRU(locala.mContext.getString(2131765505)).acR(locala.mContext.getResources().getColor(2131101134)).JfY = true;
           paramAnonymousView.b(new a.1(locala)).show();
           AppMethodBeat.o(69726);
         }
       };
-      localRadioBelowSummarytAndIconPreference.abP = 2131233821;
-      localRadioBelowSummarytAndIconPreference.zSE = local1;
+      localRadioBelowSummarytAndIconPreference.acJ = 2131233821;
+      localRadioBelowSummarytAndIconPreference.BkY = local1;
     }
-    if (bt.aw(this.nXu & 0x3, 2L)) {
-      eaT();
+    if (bs.av(this.oAP & 0x3, 2L)) {
+      eqp();
     }
     for (;;)
     {
@@ -187,7 +187,7 @@ public class WalletLuckyMoneyRefundWayUI
       });
       AppMethodBeat.o(69729);
       return;
-      eaS();
+      eqo();
     }
   }
   
@@ -198,23 +198,23 @@ public class WalletLuckyMoneyRefundWayUI
     super.onCreate(paramBundle);
     setActionbarColor(getActionbarColor());
     paramBundle = getIntent().getStringExtra("key_hb_refund_config");
-    if (!bt.isNullOrNil(paramBundle))
+    if (!bs.isNullOrNil(paramBundle))
     {
-      this.zTZ = com.tencent.mm.plugin.wallet.pwd.a.f.a.atI(paramBundle);
-      ad.d("MicroMsg.WalletLuckyMoneyRefundWayUI", "mHbRefundConfig:%s", new Object[] { this.zTZ });
+      this.Bmt = com.tencent.mm.plugin.wallet.pwd.a.f.a.aza(paramBundle);
+      ac.d("MicroMsg.WalletLuckyMoneyRefundWayUI", "mHbRefundConfig:%s", new Object[] { this.Bmt });
     }
     for (;;)
     {
-      this.lxI = getPreferenceScreen();
-      this.lxI.addPreferencesFromResource(2131951759);
-      setMMTitle(this.zTZ.zRV);
-      g.afC();
-      this.nXu = ((Long)g.afB().afk().get(ae.a.Fvw, Long.valueOf(0L))).longValue();
-      ad.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "origin extStatus: %s", new Object[] { Long.toBinaryString(this.nXu) });
+      this.lZC = getPreferenceScreen();
+      this.lZC.addPreferencesFromResource(2131951759);
+      setMMTitle(this.Bmt.Bkp);
+      g.agS();
+      this.oAP = ((Long)g.agR().agA().get(ah.a.GTq, Long.valueOf(0L))).longValue();
+      ac.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "origin extStatus: %s", new Object[] { Long.toBinaryString(this.oAP) });
       initView();
       AppMethodBeat.o(69728);
       return;
-      ad.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "mHbRefundConfig == null");
+      ac.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "mHbRefundConfig == null");
       finish();
     }
   }
@@ -223,22 +223,22 @@ public class WalletLuckyMoneyRefundWayUI
   {
     AppMethodBeat.i(69730);
     super.onDestroy();
-    bqz localbqz = new bqz();
-    if (Js(1))
+    bvq localbvq = new bvq();
+    if (Lr(1))
     {
-      localbqz.DOY = 1L;
-      localbqz.DOZ = 2L;
+      localbvq.Flp = 1L;
+      localbvq.Flq = 2L;
     }
     for (;;)
     {
-      ad.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "doSettingsOplog() extStatus: %s, set_bitmask: %s, clear_bitmask:%s", new Object[] { Long.toBinaryString(this.nXu), Long.toBinaryString(localbqz.DOY), Long.toBinaryString(localbqz.DOZ) });
-      ((k)g.ab(k.class)).apL().c(new j.a(218, localbqz));
+      ac.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "doSettingsOplog() extStatus: %s, set_bitmask: %s, clear_bitmask:%s", new Object[] { Long.toBinaryString(this.oAP), Long.toBinaryString(localbvq.Flp), Long.toBinaryString(localbvq.Flq) });
+      ((k)g.ab(k.class)).awA().c(new j.a(218, localbvq));
       AppMethodBeat.o(69730);
       return;
-      if (Js(2))
+      if (Lr(2))
       {
-        localbqz.DOY = 2L;
-        localbqz.DOZ = 1L;
+        localbvq.Flp = 2L;
+        localbvq.Flq = 1L;
       }
     }
   }
@@ -247,28 +247,28 @@ public class WalletLuckyMoneyRefundWayUI
   {
     AppMethodBeat.i(69731);
     paramf = paramPreference.mKey;
-    ad.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "onPreferenceTreeClick() key:%s", new Object[] { paramf });
+    ac.i("MicroMsg.WalletLuckyMoneyRefundWayUI", "onPreferenceTreeClick() key:%s", new Object[] { paramf });
     if ("refund_way_detail_lq".equals(paramf))
     {
-      eaS();
-      Rs(1);
-      this.nXu |= 1L;
-      this.nXu &= 0xFFFFFFFD;
+      eqo();
+      TB(1);
+      this.oAP |= 1L;
+      this.oAP &= 0xFFFFFFFD;
     }
     for (;;)
     {
-      g.afC();
-      g.afB().afk().set(ae.a.Fvw, Long.valueOf(this.nXu));
-      this.lxI.notifyDataSetChanged();
+      g.agS();
+      g.agR().agA().set(ah.a.GTq, Long.valueOf(this.oAP));
+      this.lZC.notifyDataSetChanged();
       finish();
       AppMethodBeat.o(69731);
       return true;
       if ("refund_way_detail_origin".equals(paramf))
       {
-        eaT();
-        Rs(2);
-        this.nXu &= 0xFFFFFFFE;
-        this.nXu |= 0x2;
+        eqp();
+        TB(2);
+        this.oAP &= 0xFFFFFFFE;
+        this.oAP |= 0x2;
       }
     }
   }
@@ -281,7 +281,7 @@ public class WalletLuckyMoneyRefundWayUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletLuckyMoneyRefundWayUI
  * JD-Core Version:    0.7.0.1
  */

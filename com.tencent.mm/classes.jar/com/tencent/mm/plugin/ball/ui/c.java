@@ -15,38 +15,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.a.f.b;
 import com.tencent.mm.plugin.ball.d.a;
-import com.tencent.mm.plugin.ball.f.e;
-import com.tencent.mm.plugin.ball.view.d;
-import com.tencent.mm.plugin.ball.view.d.1;
-import com.tencent.mm.plugin.ball.view.d.2;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.plugin.ball.view.e.1;
+import com.tencent.mm.plugin.ball.view.e.2;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bc;
 
 public final class c
 {
   public static void a(final f paramf, final Point paramPoint, final float paramFloat, a parama)
   {
     AppMethodBeat.i(106302);
-    bd.az(aj.getContext(), 2131766133);
-    if (paramf.aWk())
+    bc.aF(ai.getContext(), 2131766133);
+    if (paramf.bdi())
     {
       paramf.a(new f.b()
       {
-        public final void ib(boolean paramAnonymousBoolean)
+        public final void iB(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(106296);
           if (!paramAnonymousBoolean)
           {
-            ad.i("MicroMsg.FloatBallSwipeTransformationHelper", "doTransform, convertToTranslucent not complete");
-            aq.f(new Runnable()
+            ac.i("MicroMsg.FloatBallSwipeTransformationHelper", "doTransform, convertToTranslucent not complete");
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(106294);
-                if (c.1.this.mFa != null) {
-                  c.1.this.mFa.aWf();
+                if (c.1.this.nhf != null) {
+                  c.1.this.nhf.bdd();
                 }
                 AppMethodBeat.o(106294);
               }
@@ -54,99 +52,99 @@ public final class c
             AppMethodBeat.o(106296);
             return;
           }
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(106295);
-              if (c.1.this.mFb != null)
+              if (c.1.this.nhg != null)
               {
-                Object localObject2 = c.1.this.mFc;
-                Object localObject3 = c.1.this.mFb;
-                float f = c.1.this.mFd;
-                a locala = c.1.this.mFa;
-                ad.i("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, ballPos(x:%d, y:%d), lastSwipePosX:%f", new Object[] { Integer.valueOf(((Point)localObject3).x), Integer.valueOf(((Point)localObject3).y), Float.valueOf(f) });
+                Object localObject2 = c.1.this.nhh;
+                Object localObject3 = c.1.this.nhg;
+                float f = c.1.this.nhi;
+                a locala = c.1.this.nhf;
+                ac.i("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, ballPos(x:%d, y:%d), lastSwipePosX:%f", new Object[] { Integer.valueOf(((Point)localObject3).x), Integer.valueOf(((Point)localObject3).y), Float.valueOf(f) });
                 if (((f)localObject2).getMaskView() == null)
                 {
-                  ad.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page mask view is null");
-                  locala.aWf();
+                  ac.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page mask view is null");
+                  locala.bdd();
                   AppMethodBeat.o(106295);
                   return;
                 }
                 if (((f)localObject2).getContentView() == null)
                 {
-                  ad.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page content view is null");
-                  locala.aWf();
+                  ac.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page content view is null");
+                  locala.bdd();
                   AppMethodBeat.o(106295);
                   return;
                 }
-                if (((f)localObject2).byJ() == null)
+                if (((f)localObject2).bFF() == null)
                 {
-                  ad.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page root view is null");
-                  locala.aWf();
+                  ac.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page root view is null");
+                  locala.bdd();
                   AppMethodBeat.o(106295);
                   return;
                 }
                 Object localObject1 = ((f)localObject2).getBitmap();
                 if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled()) || (((Bitmap)localObject1).getWidth() == 0) || (((Bitmap)localObject1).getHeight() == 0))
                 {
-                  ad.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page get bitmap is null");
-                  locala.aWf();
+                  ac.w("MicroMsg.FloatBallSwipeTransformationHelper", "doMaskAnimation, page get bitmap is null");
+                  locala.bdd();
                   AppMethodBeat.o(106295);
                   return;
                 }
-                localObject1 = new d(((f)localObject2).getActivity(), (Bitmap)localObject1);
-                ((d)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+                localObject1 = new com.tencent.mm.plugin.ball.view.e(((f)localObject2).getActivity(), (Bitmap)localObject1);
+                ((com.tencent.mm.plugin.ball.view.e)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
                 int i = ((Point)localObject3).x;
                 int j = ((Point)localObject3).y;
-                int k = e.mFL / 2;
-                ((d)localObject1).mJL = i;
-                ((d)localObject1).mJM = j;
-                ((d)localObject1).mJK = k;
-                ((d)localObject1).setContentStartPosX((int)f);
-                ((d)localObject1).setListener(new c.3((d)localObject1, locala, (f)localObject2));
-                localObject3 = ((f)localObject2).byJ();
+                int k = com.tencent.mm.plugin.ball.f.e.nhQ / 2;
+                ((com.tencent.mm.plugin.ball.view.e)localObject1).nlU = i;
+                ((com.tencent.mm.plugin.ball.view.e)localObject1).nlV = j;
+                ((com.tencent.mm.plugin.ball.view.e)localObject1).nlT = k;
+                ((com.tencent.mm.plugin.ball.view.e)localObject1).setContentStartPosX((int)f);
+                ((com.tencent.mm.plugin.ball.view.e)localObject1).setListener(new c.3((com.tencent.mm.plugin.ball.view.e)localObject1, locala, (f)localObject2));
+                localObject3 = ((f)localObject2).bFF();
                 ((ViewGroup)localObject3).addView((View)localObject1, ((ViewGroup)localObject3).getChildCount());
                 ((f)localObject2).getContentView().setVisibility(8);
                 localObject2 = new LinearInterpolator();
                 boolean bool;
-                if (((d)localObject1).mJN > 0)
+                if (((com.tencent.mm.plugin.ball.view.e)localObject1).nlW > 0)
                 {
                   bool = true;
-                  ((d)localObject1).mJO = bool;
-                  if (((d)localObject1).mJN >= ((d)localObject1).mJL) {
+                  ((com.tencent.mm.plugin.ball.view.e)localObject1).nlX = bool;
+                  if (((com.tencent.mm.plugin.ball.view.e)localObject1).nlW >= ((com.tencent.mm.plugin.ball.view.e)localObject1).nlU) {
                     break label678;
                   }
-                  i = ((d)localObject1).mJN;
+                  i = ((com.tencent.mm.plugin.ball.view.e)localObject1).nlW;
                   label412:
-                  localObject3 = PropertyValuesHolder.ofInt("canvasTranslationX", new int[] { ((d)localObject1).mJN, i });
-                  i = ((d)localObject1).mJL;
-                  if (((d)localObject1).mJO) {
-                    if (((d)localObject1).mJN >= ((d)localObject1).mJL) {
+                  localObject3 = PropertyValuesHolder.ofInt("canvasTranslationX", new int[] { ((com.tencent.mm.plugin.ball.view.e)localObject1).nlW, i });
+                  i = ((com.tencent.mm.plugin.ball.view.e)localObject1).nlU;
+                  if (((com.tencent.mm.plugin.ball.view.e)localObject1).nlX) {
+                    if (((com.tencent.mm.plugin.ball.view.e)localObject1).nlW >= ((com.tencent.mm.plugin.ball.view.e)localObject1).nlU) {
                       break label687;
                     }
                   }
                 }
                 label678:
                 label687:
-                for (i = ((d)localObject1).mJL - ((d)localObject1).mJN;; i = 0)
+                for (i = ((com.tencent.mm.plugin.ball.view.e)localObject1).nlU - ((com.tencent.mm.plugin.ball.view.e)localObject1).nlW;; i = 0)
                 {
-                  localObject3 = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("translationX", new int[] { 0, i }), PropertyValuesHolder.ofInt("translationY", new int[] { 0, ((d)localObject1).mJM }), PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 2.0F * ((d)localObject1).mJK / ((d)localObject1).mWidth }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 2.0F * ((d)localObject1).mJK / ((d)localObject1).mHeight }), localObject3, PropertyValuesHolder.ofInt("bgAlpha", new int[] { 255, 0 }) });
+                  localObject3 = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("translationX", new int[] { 0, i }), PropertyValuesHolder.ofInt("translationY", new int[] { 0, ((com.tencent.mm.plugin.ball.view.e)localObject1).nlV }), PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, 2.0F * ((com.tencent.mm.plugin.ball.view.e)localObject1).nlT / ((com.tencent.mm.plugin.ball.view.e)localObject1).mWidth }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, 2.0F * ((com.tencent.mm.plugin.ball.view.e)localObject1).nlT / ((com.tencent.mm.plugin.ball.view.e)localObject1).mHeight }), localObject3, PropertyValuesHolder.ofInt("bgAlpha", new int[] { 255, 0 }) });
                   ((ValueAnimator)localObject3).setDuration(300L);
                   ((ValueAnimator)localObject3).setInterpolator((TimeInterpolator)localObject2);
-                  ((ValueAnimator)localObject3).addUpdateListener(new d.1((d)localObject1));
-                  ((ValueAnimator)localObject3).addListener(new d.2((d)localObject1));
+                  ((ValueAnimator)localObject3).addUpdateListener(new e.1((com.tencent.mm.plugin.ball.view.e)localObject1));
+                  ((ValueAnimator)localObject3).addListener(new e.2((com.tencent.mm.plugin.ball.view.e)localObject1));
                   ((ValueAnimator)localObject3).start();
                   AppMethodBeat.o(106295);
                   return;
                   bool = false;
                   break;
-                  i = ((d)localObject1).mJL;
+                  i = ((com.tencent.mm.plugin.ball.view.e)localObject1).nlU;
                   break label412;
                 }
               }
-              if (c.1.this.mFa != null) {
-                c.1.this.mFa.aWf();
+              if (c.1.this.nhf != null) {
+                c.1.this.nhf.bdd();
               }
               AppMethodBeat.o(106295);
             }
@@ -157,13 +155,13 @@ public final class c
       AppMethodBeat.o(106302);
       return;
     }
-    aq.f(new Runnable()
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106297);
-        if (this.mFa != null) {
-          this.mFa.aWf();
+        if (this.nhf != null) {
+          this.nhf.bdd();
         }
         AppMethodBeat.o(106297);
       }
@@ -180,7 +178,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.ui.c
  * JD-Core Version:    0.7.0.1
  */

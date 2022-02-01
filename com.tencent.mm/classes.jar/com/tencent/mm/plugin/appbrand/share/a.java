@@ -7,7 +7,7 @@ import com.tencent.mm.modelappbrand.k.a;
 public final class a
   implements b.f
 {
-  public k.a luN = k.a.gRz;
+  public k.a lWH = k.a.hrZ;
   private int mHeight;
   private int mWidth;
   
@@ -17,7 +17,7 @@ public final class a
     this.mHeight = paramInt2;
   }
   
-  public final String AL()
+  public final String Ap()
   {
     AppMethodBeat.i(48316);
     String str = String.format("Decoder_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
@@ -26,7 +26,7 @@ public final class a
   }
   
   /* Error */
-  public final android.graphics.Bitmap u(java.io.InputStream paramInputStream)
+  public final android.graphics.Bitmap t(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 63
@@ -38,11 +38,11 @@ public final class a
     //   13: dup
     //   14: iconst_0
     //   15: aload_0
-    //   16: getfield 25	com/tencent/mm/plugin/appbrand/share/a:luN	Lcom/tencent/mm/modelappbrand/k$a;
+    //   16: getfield 25	com/tencent/mm/plugin/appbrand/share/a:lWH	Lcom/tencent/mm/modelappbrand/k$a;
     //   19: invokevirtual 71	com/tencent/mm/modelappbrand/k$a:ordinal	()I
     //   22: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   25: aastore
-    //   26: invokestatic 77	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   26: invokestatic 77	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   29: aload_1
     //   30: astore 6
     //   32: aload_1
@@ -120,7 +120,7 @@ public final class a
     //   174: iconst_0
     //   175: aload_1
     //   176: aastore
-    //   177: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   177: invokestatic 114	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   180: aload 6
     //   182: astore 8
     //   184: aload 6
@@ -165,7 +165,7 @@ public final class a
     //   260: getfield 125	android/graphics/BitmapFactory$Options:outWidth	I
     //   263: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   266: aastore
-    //   267: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   267: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   270: aload 6
     //   272: ifnull +8 -> 280
     //   275: aload 6
@@ -263,7 +263,7 @@ public final class a
     //   454: iconst_0
     //   455: aload_1
     //   456: aastore
-    //   457: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   457: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   460: aload 8
     //   462: ifnull +8 -> 470
     //   465: aload 8
@@ -314,9 +314,9 @@ public final class a
     //   549: astore 8
     //   551: aload 6
     //   553: astore 7
-    //   555: getstatic 151	com/tencent/mm/plugin/appbrand/share/a$1:luO	[I
+    //   555: getstatic 151	com/tencent/mm/plugin/appbrand/share/a$1:lWI	[I
     //   558: aload_0
-    //   559: getfield 25	com/tencent/mm/plugin/appbrand/share/a:luN	Lcom/tencent/mm/modelappbrand/k$a;
+    //   559: getfield 25	com/tencent/mm/plugin/appbrand/share/a:lWH	Lcom/tencent/mm/modelappbrand/k$a;
     //   562: invokevirtual 71	com/tencent/mm/modelappbrand/k$a:ordinal	()I
     //   565: iaload
     //   566: istore 4
@@ -412,7 +412,7 @@ public final class a
     //   753: iload 4
     //   755: invokestatic 47	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   758: aastore
-    //   759: invokestatic 130	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   759: invokestatic 130	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   762: aload 6
     //   764: astore 7
     //   766: aload 6
@@ -461,7 +461,7 @@ public final class a
     //   847: ldc 173
     //   849: iconst_0
     //   850: anewarray 4	java/lang/Object
-    //   853: invokestatic 177	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   853: invokestatic 177	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   856: aload 9
     //   858: astore_1
     //   859: goto -265 -> 594

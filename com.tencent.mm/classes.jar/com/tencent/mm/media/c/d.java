@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/decoder/DropFrameAlgo;", "", "()V", "dropFrames", "", "", "frames", "", "remains", "", "dropFrames2", "getDown", "", "i", "j", "x", "getUp", "f", "slope", "plugin-mediaeditor_release"})
 public final class d
 {
-  public static final d gnE;
+  public static final d gOq;
   
   static
   {
     AppMethodBeat.i(93530);
-    gnE = new d();
+    gOq = new d();
     AppMethodBeat.o(93530);
   }
   
@@ -39,7 +39,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.media.c.d
  * JD-Core Version:    0.7.0.1
  */

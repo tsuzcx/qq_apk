@@ -5,79 +5,79 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class l
 {
-  public int bdA;
-  public long[] bdB;
-  public int[] bdC;
-  public int[] bdD;
-  public int[] bdE;
-  public long[] bdF;
-  public boolean[] bdG;
-  public boolean bdH;
-  public boolean[] bdI;
-  public k bdJ;
-  public int bdK;
-  public m bdL;
-  public boolean bdM;
-  public long bdN;
-  public c bdw;
-  public long bdx;
-  public long bdy;
-  public long bdz;
+  public c bei;
+  public long bej;
+  public long bek;
+  public long bel;
+  public int bem;
+  public long[] ben;
+  public int[] beo;
+  public int[] bep;
+  public int[] beq;
+  public long[] ber;
+  public boolean[] bes;
+  public boolean bet;
+  public boolean[] beu;
+  public k bev;
+  public int bew;
+  public m bex;
+  public boolean bey;
+  public long bez;
   public int sampleCount;
   
-  public final void bi(int paramInt1, int paramInt2)
+  public final void bh(int paramInt1, int paramInt2)
   {
-    this.bdA = paramInt1;
+    this.bem = paramInt1;
     this.sampleCount = paramInt2;
-    if ((this.bdC == null) || (this.bdC.length < paramInt1))
+    if ((this.beo == null) || (this.beo.length < paramInt1))
     {
-      this.bdB = new long[paramInt1];
-      this.bdC = new int[paramInt1];
+      this.ben = new long[paramInt1];
+      this.beo = new int[paramInt1];
     }
-    if ((this.bdD == null) || (this.bdD.length < paramInt2))
+    if ((this.bep == null) || (this.bep.length < paramInt2))
     {
       paramInt1 = paramInt2 * 125 / 100;
-      this.bdD = new int[paramInt1];
-      this.bdE = new int[paramInt1];
-      this.bdF = new long[paramInt1];
-      this.bdG = new boolean[paramInt1];
-      this.bdI = new boolean[paramInt1];
+      this.bep = new int[paramInt1];
+      this.beq = new int[paramInt1];
+      this.ber = new long[paramInt1];
+      this.bes = new boolean[paramInt1];
+      this.beu = new boolean[paramInt1];
     }
   }
   
   public final void el(int paramInt)
   {
     AppMethodBeat.i(92130);
-    if ((this.bdL == null) || (this.bdL.limit < paramInt)) {
-      this.bdL = new m(paramInt);
+    if ((this.bex == null) || (this.bex.limit < paramInt)) {
+      this.bex = new m(paramInt);
     }
-    this.bdK = paramInt;
-    this.bdH = true;
-    this.bdM = true;
+    this.bew = paramInt;
+    this.bet = true;
+    this.bey = true;
     AppMethodBeat.o(92130);
   }
   
   public final long em(int paramInt)
   {
-    return this.bdF[paramInt] + this.bdE[paramInt];
+    return this.ber[paramInt] + this.beq[paramInt];
   }
   
   public final void q(m paramm)
   {
     AppMethodBeat.i(92131);
-    paramm.readBytes(this.bdL.data, 0, this.bdK);
-    this.bdL.setPosition(0);
-    this.bdM = false;
+    paramm.readBytes(this.bex.data, 0, this.bew);
+    this.bex.setPosition(0);
+    this.bey = false;
     AppMethodBeat.o(92131);
   }
   
   public final void reset()
   {
-    this.bdA = 0;
-    this.bdN = 0L;
-    this.bdH = false;
-    this.bdM = false;
-    this.bdJ = null;
+    this.bem = 0;
+    this.bez = 0L;
+    this.bet = false;
+    this.bey = false;
+    this.bev = null;
   }
 }
 

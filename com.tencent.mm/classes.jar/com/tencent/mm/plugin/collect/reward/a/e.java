@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.sz;
-import com.tencent.mm.protocal.protobuf.ta;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.tj;
+import com.tencent.mm.protocal.protobuf.tk;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class e
   extends a
 {
   private final String TAG;
   private g callback;
-  public ta nUX;
+  public tk oys;
   private b rr;
   
   public e(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt4)
@@ -24,37 +24,37 @@ public final class e
     AppMethodBeat.i(63902);
     this.TAG = "MicroMsg.NetSceneQrRewardPlaceOrder";
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new sz();
-    ((b.a)localObject).gUV = new ta();
+    ((b.a)localObject).hvt = new tj();
+    ((b.a)localObject).hvu = new tk();
     ((b.a)localObject).funcId = 1336;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/rewardqrcodeplaceorder";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (sz)this.rr.gUS.gUX;
-    ((sz)localObject).tav = paramInt1;
-    ((sz)localObject).CUL = paramInt2;
-    ((sz)localObject).CUJ = paramString1;
-    ((sz)localObject).CUK = paramString2;
-    ((sz)localObject).vBj = paramString3;
-    ((sz)localObject).channel = paramInt3;
-    ((sz)localObject).CUM = paramString4;
-    ((sz)localObject).CUD = paramString5;
-    ((sz)localObject).CUN = paramString6;
-    ((sz)localObject).CUO = paramString7;
-    ((sz)localObject).CUP = paramString8;
-    ((sz)localObject).CUQ = paramInt4;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (tj)this.rr.hvr.hvw;
+    ((tj)localObject).uiK = paramInt1;
+    ((tj)localObject).Env = paramInt2;
+    ((tj)localObject).Ent = paramString1;
+    ((tj)localObject).Enu = paramString2;
+    ((tj)localObject).wLo = paramString3;
+    ((tj)localObject).channel = paramInt3;
+    ((tj)localObject).Enw = paramString4;
+    ((tj)localObject).Enn = paramString5;
+    ((tj)localObject).Enx = paramString6;
+    ((tj)localObject).Eny = paramString7;
+    ((tj)localObject).Enz = paramString8;
+    ((tj)localObject).EnA = paramInt4;
     AppMethodBeat.o(63902);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63904);
-    ad.i("MicroMsg.NetSceneQrRewardPlaceOrder", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nUX = ((ta)((b)paramq).gUT.gUX);
-    ad.i("MicroMsg.NetSceneQrRewardPlaceOrder", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nUX.dcG), this.nUX.nTK });
-    if ((!this.nUQ) && (this.nUX.dcG != 0)) {
-      this.nUR = true;
+    ac.i("MicroMsg.NetSceneQrRewardPlaceOrder", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.oys = ((tk)((b)paramq).hvs.hvw);
+    ac.i("MicroMsg.NetSceneQrRewardPlaceOrder", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.oys.dae), this.oys.oxf });
+    if ((!this.oyl) && (this.oys.dae != 0)) {
+      this.oym = true;
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);

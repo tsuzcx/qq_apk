@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.music.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ek;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class c
-  extends ek
+  extends eo
 {
   public static c.a info;
   
   static
   {
     AppMethodBeat.i(63178);
-    info = ek.So();
+    info = eo.Th();
     AppMethodBeat.o(63178);
   }
   

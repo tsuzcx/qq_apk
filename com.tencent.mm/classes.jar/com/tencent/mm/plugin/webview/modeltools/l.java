@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public final class l
 {
-  public HashMap<String, a> BaD;
-  public HashMap<String, a> BaE;
-  private HashSet<Integer> BaF;
-  public HashMap<String, b> BaG;
+  public HashMap<String, a> CsQ;
+  public HashMap<String, a> CsR;
+  private HashSet<Integer> CsS;
+  public HashMap<String, b> CsT;
   
   public l()
   {
     AppMethodBeat.i(79218);
-    this.BaD = new HashMap();
-    this.BaE = new HashMap();
-    this.BaF = new HashSet();
-    this.BaG = new HashMap();
+    this.CsQ = new HashMap();
+    this.CsR = new HashMap();
+    this.CsS = new HashSet();
+    this.CsT = new HashMap();
     AppMethodBeat.o(79218);
   }
   
-  public final boolean SQ(int paramInt)
+  public final boolean UY(int paramInt)
   {
     AppMethodBeat.i(79222);
-    boolean bool = this.BaF.remove(Integer.valueOf(paramInt));
+    boolean bool = this.CsS.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(79222);
     return bool;
   }
   
-  public final boolean axf(String paramString)
+  public final boolean aCx(String paramString)
   {
     AppMethodBeat.i(79219);
-    if ((this.BaG.containsKey(paramString)) && (this.BaG.get(paramString) != null))
+    if ((this.CsT.containsKey(paramString)) && (this.CsT.get(paramString) != null))
     {
       AppMethodBeat.o(79219);
       return true;
@@ -42,24 +42,24 @@ public final class l
     return false;
   }
   
-  public final b axg(String paramString)
+  public final b aCy(String paramString)
   {
     AppMethodBeat.i(79220);
-    paramString = (b)this.BaG.get(paramString);
+    paramString = (b)this.CsT.get(paramString);
     AppMethodBeat.o(79220);
     return paramString;
   }
   
-  public final void cu(int paramInt, String paramString)
+  public final void cx(int paramInt, String paramString)
   {
     AppMethodBeat.i(79221);
-    if (bt.getBoolean(paramString, false))
+    if (bs.getBoolean(paramString, false))
     {
-      this.BaF.add(Integer.valueOf(paramInt));
+      this.CsS.add(Integer.valueOf(paramInt));
       AppMethodBeat.o(79221);
       return;
     }
-    this.BaF.remove(Integer.valueOf(paramInt));
+    this.CsS.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(79221);
   }
   
@@ -67,19 +67,19 @@ public final class l
   {
     public String desc;
     public String link;
-    public String qpB;
+    public String qYH;
     public String title;
   }
   
   public static final class b
   {
-    public boolean BaH;
-    public boolean BaI;
+    public boolean CsU;
+    public boolean CsV;
     public int duration;
-    public String fyo;
-    public int gGA;
-    public String gGC;
-    public int gGx;
+    public String fBV;
+    public int hgY;
+    public int hhb;
+    public String hhd;
     public String userName;
     public int videoHeight;
     public int videoWidth;

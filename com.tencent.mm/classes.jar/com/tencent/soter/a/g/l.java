@@ -14,34 +14,34 @@ import com.tencent.soter.core.c.i;
 public final class l
   extends c
 {
-  String IvD = null;
-  private boolean IwS = false;
-  private boolean IwV = false;
+  String JXm = null;
+  private boolean JYB = false;
+  private boolean JYE = false;
   private int mScene = -1;
-  e yaA = null;
-  private e yaB = null;
+  private e znA = null;
+  e znz = null;
   
   public l(int paramInt, e parame1, e parame2, boolean paramBoolean)
   {
     this.mScene = paramInt;
-    this.yaA = parame1;
-    this.IwS = paramBoolean;
-    this.IwV = true;
-    this.yaB = parame2;
+    this.znz = parame1;
+    this.JYB = paramBoolean;
+    this.JYE = true;
+    this.znA = parame2;
   }
   
-  private void fnE()
+  private void fDU()
   {
     AppMethodBeat.i(126);
-    gs(this.IvD, 1);
-    b.a locala = new b.a().cV(this.IvD, this.IwS);
-    locala.IvG = new com.tencent.soter.a.e.a()
+    gw(this.JXm, 1);
+    b.a locala = new b.a().dc(this.JXm, this.JYB);
+    locala.JXp = new com.tencent.soter.a.e.a()
     {
       public final void onError(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(120);
-        d.w("Soter.TaskPrepareAuthKey", "soter: auth key %s generate failed. errcode: %d, errmsg: %s", new Object[] { l.this.IvD, Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        l.gs(l.this.IvD, 0);
+        d.w("Soter.TaskPrepareAuthKey", "soter: auth key %s generate failed. errcode: %d, errmsg: %s", new Object[] { l.this.JXm, Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        l.gw(l.this.JXm, 0);
         l.this.c(new com.tencent.soter.a.b.c(paramAnonymousInt, paramAnonymousString));
         AppMethodBeat.o(120);
       }
@@ -50,30 +50,30 @@ public final class l
       {
         AppMethodBeat.i(121);
         d.i("Soter.TaskPrepareAuthKey", "soter: auth key generate successfully. start upload", new Object[0]);
-        if (l.this.yaA != null) {
-          l.gs(l.this.IvD, 2);
+        if (l.this.znz != null) {
+          l.gw(l.this.JXm, 2);
         }
         l locall;
         i locali;
         for (;;)
         {
           locall = l.this;
-          locali = com.tencent.soter.core.a.aNR(locall.IvD);
+          locali = com.tencent.soter.core.a.aTu(locall.JXm);
           if (locali != null) {
             break;
           }
           d.e("Soter.TaskPrepareAuthKey", "soter: auth key model is null even after generation. fatal error", new Object[0]);
-          com.tencent.soter.core.a.cU(locall.IvD, false);
+          com.tencent.soter.core.a.db(locall.JXm, false);
           locall.c(new com.tencent.soter.a.b.c(1006, "auth key model is null even after generation."));
           AppMethodBeat.o(121);
           return;
-          l.gs(l.this.IvD, 0);
+          l.gw(l.this.JXm, 0);
         }
-        if (locall.yaA != null)
+        if (locall.znz != null)
         {
-          locall.yaA.cY(new e.a(locali.signature, locali.IuR));
-          locall.yaA.a(new l.3(locall, locali));
-          locall.yaA.execute();
+          locall.znz.cZ(new e.a(locali.signature, locali.JWA));
+          locall.znz.a(new l.3(locall, locali));
+          locall.znz.execute();
           AppMethodBeat.o(121);
           return;
         }
@@ -82,88 +82,88 @@ public final class l
         AppMethodBeat.o(121);
       }
     };
-    locala.fns().gB();
+    locala.fDI().gJ();
     AppMethodBeat.o(126);
   }
   
   final void execute()
   {
     AppMethodBeat.i(125);
-    if ((!com.tencent.soter.core.a.fmV()) && (this.IwV))
+    if ((!com.tencent.soter.core.a.fDl()) && (this.JYE))
     {
       d.d("Soter.TaskPrepareAuthKey", "soter: ask not found, but required to generate it. start generate", new Object[0]);
-      com.tencent.soter.a.a.a(new com.tencent.soter.a.b.b() {}, false, this.yaB);
+      com.tencent.soter.a.a.a(new com.tencent.soter.a.b.b() {}, false, this.znA);
       AppMethodBeat.o(125);
       return;
     }
-    fnE();
+    fDU();
     AppMethodBeat.o(125);
   }
   
   @SuppressLint({"DefaultLocale"})
-  final boolean fnu()
+  final boolean fDK()
   {
     AppMethodBeat.i(123);
-    if (!com.tencent.soter.a.c.b.fno().isInit())
+    if (!com.tencent.soter.a.c.b.fDE().isInit())
     {
       d.w("Soter.TaskPrepareAuthKey", "soter: not initialized yet", new Object[0]);
       c(new com.tencent.soter.a.b.c(1008));
       AppMethodBeat.o(123);
       return true;
     }
-    if (!com.tencent.soter.a.c.b.fno().fnk())
+    if (!com.tencent.soter.a.c.b.fDE().fDA())
     {
       d.w("Soter.TaskPrepareAuthKey", "soter: not support soter", new Object[0]);
       c(new com.tencent.soter.a.b.c(2));
       AppMethodBeat.o(123);
       return true;
     }
-    this.IvD = ((String)com.tencent.soter.a.c.b.fno().fnq().get(this.mScene, ""));
-    if (g.isNullOrNil(this.IvD))
+    this.JXm = ((String)com.tencent.soter.a.c.b.fDE().fDG().get(this.mScene, ""));
+    if (g.isNullOrNil(this.JXm))
     {
       d.w("Soter.TaskPrepareAuthKey", "soter: request prepare auth key scene: %d, but key name is not registered. Please make sure you register the scene in init", new Object[0]);
       c(new com.tencent.soter.a.b.c(1009, String.format("auth scene %d not initialized in map", new Object[] { Integer.valueOf(this.mScene) })));
       AppMethodBeat.o(123);
       return true;
     }
-    boolean bool = com.tencent.soter.core.a.fmV();
-    if ((!bool) && (com.tencent.soter.core.a.aNP(this.IvD)))
+    boolean bool = com.tencent.soter.core.a.fDl();
+    if ((!bool) && (com.tencent.soter.core.a.aTs(this.JXm)))
     {
       d.w("Soter.TaskPrepareAuthKey", "soter: no ask but has auth key. delete the auth key as well", new Object[0]);
-      com.tencent.soter.core.a.cU(this.IvD, false);
+      com.tencent.soter.core.a.db(this.JXm, false);
     }
-    if ((!bool) && (!this.IwV))
+    if ((!bool) && (!this.JYE))
     {
       d.w("Soter.TaskPrepareAuthKey", "soter: has not generate app secure key yet and not require to generate it", new Object[0]);
       c(new com.tencent.soter.a.b.c(3));
       AppMethodBeat.o(123);
       return true;
     }
-    if ((com.tencent.soter.core.a.aNP(this.IvD)) && (!com.tencent.soter.core.a.aNQ(this.IvD)))
+    if ((com.tencent.soter.core.a.aTs(this.JXm)) && (!com.tencent.soter.core.a.aTt(this.JXm)))
     {
       d.w("Soter.TaskPrepareAuthKey", "soter: already has auth key but not valid. delete it already and re-generate", new Object[0]);
       AppMethodBeat.o(123);
       return false;
     }
-    if ((com.tencent.soter.core.a.aNP(this.IvD)) && (!this.IwS))
+    if ((com.tencent.soter.core.a.aTs(this.JXm)) && (!this.JYB))
     {
       d.i("Soter.TaskPrepareAuthKey", "soter: already has key. do not need generate again", new Object[0]);
-      c(new com.tencent.soter.a.b.c(com.tencent.soter.core.a.aNR(this.IvD)));
+      c(new com.tencent.soter.a.b.c(com.tencent.soter.core.a.aTu(this.JXm)));
       AppMethodBeat.o(123);
       return true;
     }
-    if (this.yaA == null) {
+    if (this.znz == null) {
       d.w("Soter.TaskPrepareAuthKey", "soter: it is strongly recommended that you provide a net wrapper to check and upload AuthKey validation from server! Please make sure you upload it later", new Object[0]);
     }
     AppMethodBeat.o(123);
     return false;
   }
   
-  final void fnv()
+  final void fDL()
   {
     AppMethodBeat.i(124);
-    d.w("Soter.TaskPrepareAuthKey", "soter: cancelled prepare authkey: %s", new Object[] { this.IvD });
-    com.tencent.soter.core.a.cU(this.IvD, false);
+    d.w("Soter.TaskPrepareAuthKey", "soter: cancelled prepare authkey: %s", new Object[] { this.JXm });
+    com.tencent.soter.core.a.db(this.JXm, false);
     AppMethodBeat.o(124);
   }
 }

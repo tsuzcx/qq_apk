@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.create.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -9,23 +9,23 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String Azq;
-  public String Azr;
-  public String Azs;
-  public String Azt;
-  public String Azu;
-  public String dpw;
+  public String BRM;
+  public String BRN;
+  public String BRO;
+  public String BRP;
+  public String BRQ;
+  public String dnh;
   public String pin;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72009);
-    this.Azq = paramString1;
-    this.Azr = paramString2;
+    this.BRM = paramString1;
+    this.BRN = paramString2;
     this.pin = paramString3;
-    this.Azt = paramString4;
-    this.Azs = paramString4;
-    this.Azu = paramString6;
+    this.BRP = paramString4;
+    this.BRO = paramString4;
+    this.BRQ = paramString6;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", String.valueOf(paramString2));
@@ -37,7 +37,7 @@ public final class a
     AppMethodBeat.o(72009);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 5;
   }
@@ -45,8 +45,8 @@ public final class a
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72010);
-    ad.d("MicroMsg.NetScenePayUCreateUser", "hy: get NetScenePayUCreateUser info. errCode: %d, errMsg:%s, json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
-    this.dpw = paramJSONObject.optString("payu_reference");
+    ac.d("MicroMsg.NetScenePayUCreateUser", "hy: get NetScenePayUCreateUser info. errCode: %d, errMsg:%s, json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
+    this.dnh = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72010);
   }
 }

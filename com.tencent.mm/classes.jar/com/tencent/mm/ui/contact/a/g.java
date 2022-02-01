@@ -17,16 +17,16 @@ import com.tencent.mm.plugin.fts.ui.m;
 public final class g
   extends a
 {
-  private a.b GZK;
-  a.a GZL;
-  private CharSequence rvA;
+  private a.b IAc;
+  a.a IAd;
+  private CharSequence sEs;
   
   public g(int paramInt)
   {
     super(5, paramInt);
     AppMethodBeat.i(102956);
-    this.GZK = new b();
-    this.GZL = new a();
+    this.IAc = new b();
+    this.IAd = new a();
     AppMethodBeat.o(102956);
   }
   
@@ -34,32 +34,32 @@ public final class g
   {
     AppMethodBeat.i(102957);
     parama = new SpannableStringBuilder();
-    String[] arrayOfString = this.roS.rps;
+    String[] arrayOfString = this.sxM.sym;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.rsF), 0, str.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(b.b.sBz), 0, str.length(), 33);
       parama.append(localSpannableString);
       parama.append("、");
       i += 1;
     }
-    this.rvA = TextUtils.concat(new CharSequence[] { paramContext.getString(2131762984), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131762984) });
+    this.sEs = TextUtils.concat(new CharSequence[] { paramContext.getString(2131762984), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131762984) });
     AppMethodBeat.o(102957);
   }
   
-  public final a.b aHr()
+  public final a.b aOg()
   {
-    return this.GZK;
+    return this.IAc;
   }
   
   public final class a
     extends a.a
   {
-    public TextView hJe;
-    public View jpE;
+    public TextView ijE;
+    public View jPT;
     
     public a()
     {
@@ -79,9 +79,9 @@ public final class g
     {
       AppMethodBeat.i(102954);
       paramContext = LayoutInflater.from(paramContext).inflate(2131495361, paramViewGroup, false);
-      paramViewGroup = (g.a)g.this.GZL;
-      paramViewGroup.hJe = ((TextView)paramContext.findViewById(2131299008));
-      paramViewGroup.jpE = paramContext.findViewById(2131300716);
+      paramViewGroup = (g.a)g.this.IAd;
+      paramViewGroup.ijE = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup.jPT = paramContext.findViewById(2131300716);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102954);
       return paramContext;
@@ -91,18 +91,18 @@ public final class g
     {
       AppMethodBeat.i(102955);
       paramContext = (g.a)parama;
-      m.a(g.a((g)parama1), paramContext.hJe);
+      m.a(g.a((g)parama1), paramContext.ijE);
       if (g.this.position == 0)
       {
-        paramContext.jpE.setVisibility(8);
+        paramContext.jPT.setVisibility(8);
         AppMethodBeat.o(102955);
         return;
       }
-      paramContext.jpE.setVisibility(0);
+      paramContext.jPT.setVisibility(0);
       AppMethodBeat.o(102955);
     }
     
-    public final boolean aHs()
+    public final boolean aOh()
     {
       return false;
     }
@@ -110,7 +110,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.g
  * JD-Core Version:    0.7.0.1
  */

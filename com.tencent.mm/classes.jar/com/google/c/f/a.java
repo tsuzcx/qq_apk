@@ -11,7 +11,7 @@ public final class a
   private static com.google.c.b.b a(f paramf, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(12324);
-    paramf = paramf.bNt;
+    paramf = paramf.bLb;
     if (paramf == null)
     {
       paramf = new IllegalStateException();
@@ -35,7 +35,7 @@ public final class a
       paramInt3 = j;
       while (i < k)
       {
-        if (paramf.bP(i, paramInt1) == 1) {
+        if (paramf.bM(i, paramInt1) == 1) {
           localb.p(paramInt3, paramInt2, n, n);
         }
         i += 1;
@@ -57,7 +57,7 @@ public final class a
       AppMethodBeat.o(12323);
       throw paramString;
     }
-    if (parama != com.google.c.a.bJl)
+    if (parama != com.google.c.a.bGT)
     {
       paramString = new IllegalArgumentException("Can only encode QR_CODE, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12323);
@@ -69,20 +69,20 @@ public final class a
       AppMethodBeat.o(12323);
       throw paramString;
     }
-    parama = com.google.c.f.a.a.bME;
+    parama = com.google.c.f.a.a.bKm;
     int j = 4;
     com.google.c.a locala = parama;
     int i = j;
     if (paramMap != null)
     {
-      if (paramMap.containsKey(com.google.c.c.bJs)) {
-        parama = com.google.c.f.a.a.valueOf(paramMap.get(com.google.c.c.bJs).toString());
+      if (paramMap.containsKey(com.google.c.c.bHa)) {
+        parama = com.google.c.f.a.a.valueOf(paramMap.get(com.google.c.c.bHa).toString());
       }
       locala = parama;
       i = j;
-      if (paramMap.containsKey(com.google.c.c.bJx))
+      if (paramMap.containsKey(com.google.c.c.bHf))
       {
-        i = Integer.parseInt(paramMap.get(com.google.c.c.bJx).toString());
+        i = Integer.parseInt(paramMap.get(com.google.c.c.bHf).toString());
         locala = parama;
       }
     }
@@ -93,7 +93,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ public class d
 {
   private int BUFFER_SIZE;
   private byte[] buffer;
-  private int cTj;
-  private com.tencent.mm.compatible.h.c cUM;
-  private z cUN;
-  private byte[] cUO;
-  private int cUP;
-  private byte[] cUQ;
+  private int cQG;
+  private com.tencent.mm.compatible.h.c cSi;
+  private z cSj;
+  private byte[] cSk;
+  private int cSl;
+  private byte[] cSm;
   private long duration;
   private int mSize;
   private String mime;
@@ -30,27 +30,27 @@ public class d
     super(paramd, paramb);
     AppMethodBeat.i(136799);
     this.mime = null;
-    this.cTj = 2;
+    this.cQG = 2;
     this.presentationTimeUs = 0L;
     this.duration = 0L;
     this.BUFFER_SIZE = 14144;
     this.buffer = new byte[this.BUFFER_SIZE];
-    this.cUO = new byte[3536];
-    this.cUP = 3536;
-    this.cUQ = new byte[3536];
+    this.cSk = new byte[3536];
+    this.cSl = 3536;
+    this.cSm = new byte[3536];
     this.mSize = 0;
     AppMethodBeat.o(136799);
   }
   
-  private void Np()
+  private void Nn()
   {
     AppMethodBeat.i(136808);
     try
     {
-      if (this.cUM != null)
+      if (this.cSi != null)
       {
-        this.cUM.fGK.release();
-        this.cUM = null;
+        this.cSi.fKr.release();
+        this.cSi = null;
       }
       AppMethodBeat.o(136808);
       return;
@@ -62,16 +62,16 @@ public class d
     }
   }
   
-  private void Nq()
+  private void No()
   {
     AppMethodBeat.i(136809);
     try
     {
-      if (this.cUN != null)
+      if (this.cSj != null)
       {
-        this.cUN.stop();
-        this.cUN.release();
-        this.cUN = null;
+        this.cSj.stop();
+        this.cSj.release();
+        this.cSj = null;
       }
       AppMethodBeat.o(136809);
       return;
@@ -128,9 +128,9 @@ public class d
         b(paramd, paramArrayOfByte);
         i += 1;
       }
-      System.arraycopy(this.buffer, j * 3536, this.cUQ, 0, k);
+      System.arraycopy(this.buffer, j * 3536, this.cSm, 0, k);
       Arrays.fill(this.buffer, 0, this.BUFFER_SIZE, (byte)0);
-      System.arraycopy(this.cUQ, 0, this.buffer, 0, k);
+      System.arraycopy(this.cSm, 0, this.buffer, 0, k);
       this.mSize = k;
     }
     AppMethodBeat.o(136805);
@@ -139,18 +139,18 @@ public class d
   private void b(com.tencent.mm.audio.mix.a.d paramd, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136806);
-    e locale = com.tencent.mm.audio.mix.b.d.ML().MK();
-    locale.cTk = paramArrayOfByte;
+    e locale = com.tencent.mm.audio.mix.b.d.MJ().MI();
+    locale.cQH = paramArrayOfByte;
     locale.sampleRate = this.sampleRate;
     locale.channels = this.channels;
-    locale.cTj = this.cTj;
+    locale.cQG = this.cQG;
     paramd.a(locale);
     a(locale);
     AppMethodBeat.o(136806);
   }
   
   /* Error */
-  protected final void Nh()
+  protected final void Nf()
   {
     // Byte code:
     //   0: ldc 162
@@ -162,15 +162,15 @@ public class d
     //   13: new 66	com/tencent/mm/compatible/h/c
     //   16: dup
     //   17: invokespecial 168	com/tencent/mm/compatible/h/c:<init>	()V
-    //   20: putfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   20: putfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
     //   23: aload_0
-    //   24: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   24: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
     //   27: aload_0
     //   28: getfield 171	com/tencent/mm/audio/mix/d/d:sourcePath	Ljava/lang/String;
-    //   31: invokevirtual 175	com/tencent/mm/compatible/h/c:px	(Ljava/lang/String;)V
+    //   31: invokevirtual 175	com/tencent/mm/compatible/h/c:sI	(Ljava/lang/String;)V
     //   34: aload_0
-    //   35: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   38: getfield 70	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   35: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   38: getfield 70	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   41: invokevirtual 179	android/media/MediaExtractor:getTrackCount	()I
     //   44: istore_2
     //   45: ldc 77
@@ -189,7 +189,7 @@ public class d
     //   66: iload_2
     //   67: if_icmpge +1486 -> 1553
     //   70: aload_0
-    //   71: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   71: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
     //   74: iload_1
     //   75: invokevirtual 194	com/tencent/mm/compatible/h/c:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   78: astore 10
@@ -214,13 +214,13 @@ public class d
     //   122: invokestatic 108	com/tencent/mm/audio/mix/h/b:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   125: aload_0
     //   126: sipush 703
-    //   129: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   129: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   132: aload_0
     //   133: aload_0
-    //   134: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   134: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   137: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   140: aload_0
-    //   141: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   141: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   144: ldc 162
     //   146: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   149: return
@@ -238,9 +238,9 @@ public class d
     //   169: invokestatic 87	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   172: aload_0
     //   173: sipush 702
-    //   176: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   176: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   179: aload_0
-    //   180: invokevirtual 230	com/tencent/mm/audio/mix/d/d:Na	()V
+    //   180: invokevirtual 230	com/tencent/mm/audio/mix/d/d:MY	()V
     //   183: ldc 162
     //   185: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   188: return
@@ -276,23 +276,23 @@ public class d
     //   245: aload_0
     //   246: aload_0
     //   247: getfield 35	com/tencent/mm/audio/mix/d/d:mime	Ljava/lang/String;
-    //   250: invokestatic 250	com/tencent/mm/compatible/deviceinfo/z:pl	(Ljava/lang/String;)Lcom/tencent/mm/compatible/deviceinfo/z;
-    //   253: putfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   250: invokestatic 250	com/tencent/mm/compatible/deviceinfo/z:sx	(Ljava/lang/String;)Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   253: putfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   256: aload_0
-    //   257: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   257: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   260: aload 10
     //   262: aconst_null
     //   263: iconst_0
     //   264: invokevirtual 253	com/tencent/mm/compatible/deviceinfo/z:a	(Landroid/media/MediaFormat;Landroid/view/Surface;I)V
     //   267: aload_0
-    //   268: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   268: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   271: invokevirtual 256	com/tencent/mm/compatible/deviceinfo/z:start	()V
     //   274: aload_0
-    //   275: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   275: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   278: invokevirtual 260	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
     //   281: astore 12
     //   283: aload_0
-    //   284: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   284: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   287: invokevirtual 263	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   290: astore 11
     //   292: ldc 77
@@ -328,7 +328,7 @@ public class d
     //   345: dup
     //   346: iconst_2
     //   347: aload_0
-    //   348: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   348: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   351: invokestatic 187	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   354: aastore
     //   355: dup
@@ -340,13 +340,13 @@ public class d
     //   365: dup
     //   366: iconst_4
     //   367: aload_0
-    //   368: getfield 276	com/tencent/mm/audio/mix/d/d:cUy	Lcom/tencent/mm/audio/mix/g/b;
+    //   368: getfield 276	com/tencent/mm/audio/mix/d/d:cRV	Lcom/tencent/mm/audio/mix/g/b;
     //   371: invokeinterface 282 1 0
-    //   376: getfield 287	com/tencent/mm/aj/b:cTr	Ljava/lang/String;
+    //   376: getfield 287	com/tencent/mm/ai/b:cQO	Ljava/lang/String;
     //   379: aastore
     //   380: invokestatic 190	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   383: aload_0
-    //   384: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   384: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
     //   387: iconst_0
     //   388: invokevirtual 290	com/tencent/mm/compatible/h/c:selectTrack	(I)V
     //   391: new 292	android/media/MediaCodec$BufferInfo
@@ -356,7 +356,7 @@ public class d
     //   400: iconst_0
     //   401: istore_2
     //   402: aload_0
-    //   403: invokevirtual 297	com/tencent/mm/audio/mix/d/d:Nd	()Lcom/tencent/mm/audio/mix/a/d;
+    //   403: invokevirtual 297	com/tencent/mm/audio/mix/d/d:Nb	()Lcom/tencent/mm/audio/mix/a/d;
     //   406: astore 13
     //   408: aload 13
     //   410: invokevirtual 300	com/tencent/mm/audio/mix/a/d:reset	()V
@@ -365,7 +365,7 @@ public class d
     //   417: aload_0
     //   418: getfield 150	com/tencent/mm/audio/mix/d/d:channels	I
     //   421: aload_0
-    //   422: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   422: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   425: invokestatic 306	com/tencent/mm/audio/mix/f/a:H	(III)Z
     //   428: ifne +40 -> 468
     //   431: ldc 77
@@ -380,11 +380,11 @@ public class d
     //   450: aload_0
     //   451: getfield 150	com/tencent/mm/audio/mix/d/d:channels	I
     //   454: aload_0
-    //   455: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   455: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   458: aload_0
     //   459: getfield 171	com/tencent/mm/audio/mix/d/d:sourcePath	Ljava/lang/String;
     //   462: invokespecial 313	com/tencent/mm/audio/mix/c/d:<init>	(Lcom/tencent/mm/audio/mix/a/d;IIILjava/lang/String;)V
-    //   465: putfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   465: putfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   468: aload 13
     //   470: aload_0
     //   471: getfield 41	com/tencent/mm/audio/mix/d/d:duration	J
@@ -403,10 +403,10 @@ public class d
     //   494: bipush 50
     //   496: if_icmpge +925 -> 1421
     //   499: aload_0
-    //   500: invokevirtual 324	com/tencent/mm/audio/mix/d/d:Nc	()Z
+    //   500: invokevirtual 324	com/tencent/mm/audio/mix/d/d:Na	()Z
     //   503: ifne +918 -> 1421
     //   506: aload_0
-    //   507: invokevirtual 327	com/tencent/mm/audio/mix/d/d:Ne	()V
+    //   507: invokevirtual 327	com/tencent/mm/audio/mix/d/d:Nc	()V
     //   510: iload_2
     //   511: iconst_1
     //   512: iadd
@@ -416,7 +416,7 @@ public class d
     //   518: iload_1
     //   519: ifne +102 -> 621
     //   522: aload_0
-    //   523: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   523: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   526: ldc2_w 318
     //   529: invokevirtual 331	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
     //   532: istore 6
@@ -427,7 +427,7 @@ public class d
     //   543: aaload
     //   544: astore 11
     //   546: aload_0
-    //   547: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
+    //   547: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
     //   550: aload 11
     //   552: invokevirtual 335	com/tencent/mm/compatible/h/c:j	(Ljava/nio/ByteBuffer;)I
     //   555: istore_2
@@ -441,7 +441,7 @@ public class d
     //   570: iconst_0
     //   571: istore_2
     //   572: aload_0
-    //   573: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   573: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   576: astore 11
     //   578: aload_0
     //   579: getfield 39	com/tencent/mm/audio/mix/d/d:presentationTimeUs	J
@@ -459,13 +459,13 @@ public class d
     //   603: iload_1
     //   604: ifne +955 -> 1559
     //   607: aload_0
-    //   608: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   611: getfield 70	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   608: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   611: getfield 70	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   614: invokevirtual 343	android/media/MediaExtractor:advance	()Z
     //   617: pop
     //   618: goto +941 -> 1559
     //   621: aload_0
-    //   622: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   622: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   625: aload 14
     //   627: ldc2_w 318
     //   630: invokevirtual 347	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
@@ -495,7 +495,7 @@ public class d
     //   678: invokevirtual 359	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   681: pop
     //   682: aload_0
-    //   683: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   683: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   686: iload_2
     //   687: iconst_0
     //   688: invokevirtual 363	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
@@ -523,13 +523,13 @@ public class d
     //   732: invokestatic 87	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   735: aload_0
     //   736: sipush 705
-    //   739: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   739: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   742: aload_0
     //   743: aload_0
-    //   744: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   744: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   747: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   750: aload_0
-    //   751: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   751: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   754: ldc 162
     //   756: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   759: return
@@ -542,15 +542,15 @@ public class d
     //   773: invokestatic 87	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   776: aload_0
     //   777: sipush 704
-    //   780: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   780: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   783: aload_0
     //   784: aload_0
-    //   785: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   785: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   788: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   791: aload_0
-    //   792: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   792: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   795: aload_0
-    //   796: invokespecial 374	com/tencent/mm/audio/mix/d/d:Nq	()V
+    //   796: invokespecial 374	com/tencent/mm/audio/mix/d/d:No	()V
     //   799: ldc 162
     //   801: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   804: return
@@ -563,22 +563,22 @@ public class d
     //   818: invokestatic 87	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   821: aload_0
     //   822: sipush 716
-    //   825: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   825: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   828: aload_0
     //   829: aload_0
-    //   830: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   830: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   833: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   836: aload_0
-    //   837: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   837: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   840: aload_0
-    //   841: invokespecial 374	com/tencent/mm/audio/mix/d/d:Nq	()V
+    //   841: invokespecial 374	com/tencent/mm/audio/mix/d/d:No	()V
     //   844: ldc 162
     //   846: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   849: return
     //   850: aload_0
     //   851: aload_0
-    //   852: getfield 64	com/tencent/mm/audio/mix/d/d:cUM	Lcom/tencent/mm/compatible/h/c;
-    //   855: getfield 70	com/tencent/mm/compatible/h/c:fGK	Landroid/media/MediaExtractor;
+    //   852: getfield 64	com/tencent/mm/audio/mix/d/d:cSi	Lcom/tencent/mm/compatible/h/c;
+    //   855: getfield 70	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
     //   858: invokevirtual 380	android/media/MediaExtractor:getSampleTime	()J
     //   861: putfield 39	com/tencent/mm/audio/mix/d/d:presentationTimeUs	J
     //   864: goto -292 -> 572
@@ -600,21 +600,21 @@ public class d
     //   901: invokestatic 87	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   904: aload_0
     //   905: sipush 706
-    //   908: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   908: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   911: aload_0
     //   912: aload_0
-    //   913: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   913: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   916: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   919: aload_0
-    //   920: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   920: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   923: aload_0
-    //   924: invokespecial 374	com/tencent/mm/audio/mix/d/d:Nq	()V
+    //   924: invokespecial 374	com/tencent/mm/audio/mix/d/d:No	()V
     //   927: aload 13
     //   929: aload_0
-    //   930: getfield 276	com/tencent/mm/audio/mix/d/d:cUy	Lcom/tencent/mm/audio/mix/g/b;
+    //   930: getfield 276	com/tencent/mm/audio/mix/d/d:cRV	Lcom/tencent/mm/audio/mix/g/b;
     //   933: invokeinterface 282 1 0
-    //   938: getfield 392	com/tencent/mm/aj/b:cTo	Z
-    //   941: putfield 393	com/tencent/mm/audio/mix/a/d:cTo	Z
+    //   938: getfield 392	com/tencent/mm/ai/b:cQL	Z
+    //   941: putfield 393	com/tencent/mm/audio/mix/a/d:cQL	Z
     //   944: ldc 77
     //   946: ldc_w 395
     //   949: invokestatic 166	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;)V
@@ -625,7 +625,7 @@ public class d
     //   959: bipush 253
     //   961: if_icmpne +29 -> 990
     //   964: aload_0
-    //   965: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   965: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   968: invokevirtual 263	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   971: astore 10
     //   973: ldc 77
@@ -640,7 +640,7 @@ public class d
     //   991: bipush 254
     //   993: if_icmpne +404 -> 1397
     //   996: aload_0
-    //   997: getfield 91	com/tencent/mm/audio/mix/d/d:cUN	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   997: getfield 91	com/tencent/mm/audio/mix/d/d:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   1000: invokevirtual 401	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
     //   1003: astore 11
     //   1005: ldc 77
@@ -667,7 +667,7 @@ public class d
     //   1055: aload 11
     //   1057: ldc_w 408
     //   1060: invokevirtual 238	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   1063: putfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1063: putfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1066: ldc 77
     //   1068: ldc_w 413
     //   1071: iconst_5
@@ -687,15 +687,15 @@ public class d
     //   1095: dup
     //   1096: iconst_2
     //   1097: aload_0
-    //   1098: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1098: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1101: invokestatic 187	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1104: aastore
     //   1105: dup
     //   1106: iconst_3
     //   1107: aload_0
-    //   1108: getfield 276	com/tencent/mm/audio/mix/d/d:cUy	Lcom/tencent/mm/audio/mix/g/b;
+    //   1108: getfield 276	com/tencent/mm/audio/mix/d/d:cRV	Lcom/tencent/mm/audio/mix/g/b;
     //   1111: invokeinterface 282 1 0
-    //   1116: getfield 287	com/tencent/mm/aj/b:cTr	Ljava/lang/String;
+    //   1116: getfield 287	com/tencent/mm/ai/b:cQO	Ljava/lang/String;
     //   1119: aastore
     //   1120: dup
     //   1121: iconst_4
@@ -704,7 +704,7 @@ public class d
     //   1126: aastore
     //   1127: invokestatic 190	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1130: aload_0
-    //   1131: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1131: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1134: tableswitch	default:+437 -> 1571, 1:+442->1576, 2:+442->1576, 3:+442->1576
     //   1161: ifne +120 -> 1281
     //   1164: ldc 77
@@ -714,21 +714,21 @@ public class d
     //   1173: dup
     //   1174: iconst_0
     //   1175: aload_0
-    //   1176: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1176: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1179: invokestatic 187	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1182: aastore
     //   1183: invokestatic 417	com/tencent/mm/audio/mix/h/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1186: aload_0
     //   1187: sipush 709
-    //   1190: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   1190: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   1193: aload_0
     //   1194: aload_0
-    //   1195: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   1195: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   1198: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   1201: aload_0
-    //   1202: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   1202: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   1205: aload_0
-    //   1206: invokespecial 374	com/tencent/mm/audio/mix/d/d:Nq	()V
+    //   1206: invokespecial 374	com/tencent/mm/audio/mix/d/d:No	()V
     //   1209: ldc 162
     //   1211: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1214: return
@@ -745,13 +745,13 @@ public class d
     //   1238: if_icmpne +29 -> 1267
     //   1241: aload_0
     //   1242: iconst_2
-    //   1243: putfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1243: putfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1246: goto -180 -> 1066
     //   1249: astore 10
     //   1251: aload_0
-    //   1252: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   1252: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   1255: aload_0
-    //   1256: invokespecial 374	com/tencent/mm/audio/mix/d/d:Nq	()V
+    //   1256: invokespecial 374	com/tencent/mm/audio/mix/d/d:No	()V
     //   1259: ldc 162
     //   1261: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1264: aload 10
@@ -761,31 +761,31 @@ public class d
     //   1270: if_icmpne -204 -> 1066
     //   1273: aload_0
     //   1274: iconst_3
-    //   1275: putfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1275: putfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1278: goto -212 -> 1066
     //   1281: aload_0
     //   1282: getfield 146	com/tencent/mm/audio/mix/d/d:sampleRate	I
     //   1285: aload_0
     //   1286: getfield 150	com/tencent/mm/audio/mix/d/d:channels	I
     //   1289: aload_0
-    //   1290: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1290: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1293: invokestatic 306	com/tencent/mm/audio/mix/f/a:H	(III)Z
     //   1296: ifeq +50 -> 1346
     //   1299: aload_0
-    //   1300: getfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   1300: getfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   1303: ifnull +43 -> 1346
     //   1306: ldc 77
     //   1308: ldc_w 421
     //   1311: invokestatic 166	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1314: aload_0
-    //   1315: getfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   1315: getfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   1318: invokeinterface 426 1 0
     //   1323: aload_0
-    //   1324: getfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   1324: getfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   1327: invokeinterface 427 1 0
     //   1332: aload_0
     //   1333: aconst_null
-    //   1334: putfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   1334: putfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   1337: iload 5
     //   1339: istore_1
     //   1340: iload 4
@@ -796,19 +796,19 @@ public class d
     //   1349: iload 4
     //   1351: istore_2
     //   1352: aload_0
-    //   1353: getfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   1353: getfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   1356: ifnull -867 -> 489
     //   1359: ldc 77
     //   1361: ldc_w 429
     //   1364: invokestatic 166	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1367: aload_0
-    //   1368: getfield 317	com/tencent/mm/audio/mix/d/d:cUA	Lcom/tencent/mm/audio/mix/c/g;
+    //   1368: getfield 317	com/tencent/mm/audio/mix/d/d:cRX	Lcom/tencent/mm/audio/mix/c/g;
     //   1371: aload_0
     //   1372: getfield 146	com/tencent/mm/audio/mix/d/d:sampleRate	I
     //   1375: aload_0
     //   1376: getfield 150	com/tencent/mm/audio/mix/d/d:channels	I
     //   1379: aload_0
-    //   1380: getfield 37	com/tencent/mm/audio/mix/d/d:cTj	I
+    //   1380: getfield 37	com/tencent/mm/audio/mix/d/d:cQG	I
     //   1383: invokeinterface 433 4 0
     //   1388: iload 5
     //   1390: istore_1
@@ -855,15 +855,15 @@ public class d
     //   1470: invokestatic 417	com/tencent/mm/audio/mix/h/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1473: aload_0
     //   1474: sipush 706
-    //   1477: putfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   1477: putfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   1480: aload_0
     //   1481: aload_0
-    //   1482: getfield 220	com/tencent/mm/audio/mix/d/d:cUB	I
+    //   1482: getfield 220	com/tencent/mm/audio/mix/d/d:cRY	I
     //   1485: invokevirtual 223	com/tencent/mm/audio/mix/d/d:onError	(I)V
     //   1488: aload_0
-    //   1489: invokespecial 225	com/tencent/mm/audio/mix/d/d:Np	()V
+    //   1489: invokespecial 225	com/tencent/mm/audio/mix/d/d:Nn	()V
     //   1492: aload_0
-    //   1493: invokespecial 374	com/tencent/mm/audio/mix/d/d:Nq	()V
+    //   1493: invokespecial 374	com/tencent/mm/audio/mix/d/d:No	()V
     //   1496: goto -569 -> 927
     //   1499: iconst_0
     //   1500: istore 9
@@ -1005,18 +1005,18 @@ public class d
   protected void a(com.tencent.mm.audio.mix.a.d paramd, ByteBuffer paramByteBuffer, int paramInt)
   {
     AppMethodBeat.i(136801);
-    if (this.cUA != null)
+    if (this.cRX != null)
     {
-      if (paramInt != this.cUP)
+      if (paramInt != this.cSl)
       {
-        this.cUP = paramInt;
-        this.cUO = new byte[paramInt];
+        this.cSl = paramInt;
+        this.cSk = new byte[paramInt];
       }
-      paramByteBuffer.get(this.cUO);
-      if (this.cUy.NW().gTc) {
-        a.a(this.cUO, Nn().gSQ);
+      paramByteBuffer.get(this.cSk);
+      if (this.cRV.NT().htB) {
+        a.a(this.cSk, Nl().htp);
       }
-      this.cUA.L(this.cUO);
+      this.cRX.J(this.cSk);
       AppMethodBeat.o(136801);
       return;
     }
@@ -1027,21 +1027,21 @@ public class d
   protected void b(com.tencent.mm.audio.mix.a.d paramd)
   {
     AppMethodBeat.i(136803);
-    if (this.cUA != null)
+    if (this.cRX != null)
     {
-      this.cUA.MT();
-      if (Nc())
+      this.cRX.MR();
+      if (Na())
       {
         com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodec", "flushCache");
-        this.cUA.flushCache();
+        this.cRX.flushCache();
         AppMethodBeat.o(136803);
         return;
       }
-      if (Nb())
+      if (MZ())
       {
         com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodec", "flushCache and readCacheAndPlay");
-        this.cUA.flushCache();
-        Ni();
+        this.cRX.flushCache();
+        Ng();
         AppMethodBeat.o(136803);
         return;
       }
@@ -1064,21 +1064,21 @@ public class d
       arrayOfByte = new byte[paramInt];
       paramByteBuffer.get(arrayOfByte);
     }
-    for (paramByteBuffer = arrayOfByte;; paramByteBuffer = this.cUO)
+    for (paramByteBuffer = arrayOfByte;; paramByteBuffer = this.cSk)
     {
-      if (this.cUy.NW().gTc) {
-        a.a(paramByteBuffer, Nn().gSQ);
+      if (this.cRV.NT().htB) {
+        a.a(paramByteBuffer, Nl().htp);
       }
       a(paramd, paramByteBuffer);
       AppMethodBeat.o(136802);
       return;
-      if (paramInt != this.cUP)
+      if (paramInt != this.cSl)
       {
-        this.cUP = paramInt;
-        this.cUO = new byte[paramInt];
+        this.cSl = paramInt;
+        this.cSk = new byte[paramInt];
       }
-      Arrays.fill(this.cUO, 0, this.cUP, (byte)0);
-      paramByteBuffer.get(this.cUO, 0, this.cUP);
+      Arrays.fill(this.cSk, 0, this.cSl, (byte)0);
+      paramByteBuffer.get(this.cSk, 0, this.cSl);
     }
   }
   
@@ -1104,9 +1104,9 @@ public class d
         b(paramd, arrayOfByte);
         i += 1;
       }
-      System.arraycopy(this.buffer, j * 3536, this.cUQ, 0, k);
+      System.arraycopy(this.buffer, j * 3536, this.cSm, 0, k);
       Arrays.fill(this.buffer, 0, this.BUFFER_SIZE, (byte)0);
-      System.arraycopy(this.cUQ, 0, this.buffer, 0, k);
+      System.arraycopy(this.cSm, 0, this.buffer, 0, k);
       this.mSize = k;
     }
     if (this.mSize <= 3536)
@@ -1122,13 +1122,13 @@ public class d
   public void onRelease()
   {
     AppMethodBeat.i(136807);
-    Np();
-    Nq();
-    if (this.cUA != null)
+    Nn();
+    No();
+    if (this.cRX != null)
     {
-      this.cUA.MT();
-      this.cUA.release();
-      this.cUA = null;
+      this.cRX.MR();
+      this.cRX.release();
+      this.cRX = null;
     }
     this.sourcePath = null;
     this.mime = null;

@@ -7,20 +7,20 @@ import com.google.b.a.g;
 public final class a$be
   extends e
 {
-  public int IkG = 0;
-  public a.ay[] IlV = a.ay.flz();
-  public int InS = 0;
-  public String InT = "";
-  public String[] InU = g.EMPTY_STRING_ARRAY;
-  public long InV = 0L;
-  public String Ink = "";
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JMr = 0;
+  public a.ay[] JNG = a.ay.fBQ();
+  public String JOU = "";
+  public int JPC = 0;
+  public String JPD = "";
+  public String[] JPE = g.EMPTY_STRING_ARRAY;
+  public long JPF = 0L;
   public String groupId = "";
-  public int zkT = 0;
-  public long zkU = 0L;
   
   public a$be()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -29,94 +29,94 @@ public final class a$be
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if (this.IkG != 0) {
-      paramb.bz(4, this.IkG);
+    if (this.JMr != 0) {
+      paramb.bw(4, this.JMr);
     }
-    if (this.InS != 0) {
-      paramb.by(5, this.InS);
+    if (this.JPC != 0) {
+      paramb.bv(5, this.JPC);
     }
-    if (!this.Ink.equals("")) {
-      paramb.d(6, this.Ink);
+    if (!this.JOU.equals("")) {
+      paramb.d(6, this.JOU);
     }
     int i;
     Object localObject;
-    if ((this.IlV != null) && (this.IlV.length > 0))
+    if ((this.JNG != null) && (this.JNG.length > 0))
     {
       i = 0;
-      while (i < this.IlV.length)
+      while (i < this.JNG.length)
       {
-        localObject = this.IlV[i];
+        localObject = this.JNG[i];
         if (localObject != null) {
           paramb.a(7, (e)localObject);
         }
         i += 1;
       }
     }
-    if (!this.InT.equals("")) {
-      paramb.d(8, this.InT);
+    if (!this.JPD.equals("")) {
+      paramb.d(8, this.JPD);
     }
-    if ((this.InU != null) && (this.InU.length > 0))
+    if ((this.JPE != null) && (this.JPE.length > 0))
     {
       i = j;
-      while (i < this.InU.length)
+      while (i < this.JPE.length)
       {
-        localObject = this.InU[i];
+        localObject = this.JPE[i];
         if (localObject != null) {
           paramb.d(9, (String)localObject);
         }
         i += 1;
       }
     }
-    if (this.InV != 0L) {
-      paramb.n(10, this.InV);
+    if (this.JPF != 0L) {
+      paramb.m(10, this.JPF);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.IkG != 0) {
-      j = i + b.bB(4, this.IkG);
+    if (this.JMr != 0) {
+      j = i + b.by(4, this.JMr);
     }
     int k = j;
-    if (this.InS != 0) {
-      k = j + b.bA(5, this.InS);
+    if (this.JPC != 0) {
+      k = j + b.bx(5, this.JPC);
     }
     i = k;
-    if (!this.Ink.equals("")) {
-      i = k + b.e(6, this.Ink);
+    if (!this.JOU.equals("")) {
+      i = k + b.e(6, this.JOU);
     }
     j = i;
     Object localObject;
-    if (this.IlV != null)
+    if (this.JNG != null)
     {
       j = i;
-      if (this.IlV.length > 0)
+      if (this.JNG.length > 0)
       {
         j = 0;
-        while (j < this.IlV.length)
+        while (j < this.JNG.length)
         {
-          localObject = this.IlV[j];
+          localObject = this.JNG[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(7, (e)localObject);
@@ -128,27 +128,27 @@ public final class a$be
       }
     }
     i = j;
-    if (!this.InT.equals("")) {
-      i = j + b.e(8, this.InT);
+    if (!this.JPD.equals("")) {
+      i = j + b.e(8, this.JPD);
     }
     j = i;
-    if (this.InU != null)
+    if (this.JPE != null)
     {
       j = i;
-      if (this.InU.length > 0)
+      if (this.JPE.length > 0)
       {
         j = 0;
         k = 0;
         int n;
-        for (int m = 0; j < this.InU.length; m = n)
+        for (int m = 0; j < this.JPE.length; m = n)
         {
-          localObject = this.InU[j];
+          localObject = this.JPE[j];
           int i1 = k;
           n = m;
           if (localObject != null)
           {
             n = m + 1;
-            i1 = k + b.bs((String)localObject);
+            i1 = k + b.bj((String)localObject);
           }
           j += 1;
           k = i1;
@@ -157,8 +157,8 @@ public final class a$be
       }
     }
     i = j;
-    if (this.InV != 0L) {
-      i = j + b.p(10, this.InV);
+    if (this.JPF != 0L) {
+      i = j + b.o(10, this.JPF);
     }
     return i;
   }

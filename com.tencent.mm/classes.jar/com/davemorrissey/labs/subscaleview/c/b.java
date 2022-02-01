@@ -4,7 +4,7 @@ public abstract interface b
 {
   public abstract void cancel();
   
-  public abstract void pY();
+  public abstract void qi();
 }
 
 

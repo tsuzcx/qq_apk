@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.wenote.model.a.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 
 public class h
 {
-  private static volatile h BEb = null;
-  private q BEc = null;
+  private static volatile h CWi = null;
+  private q CWj = null;
   
   /* Error */
-  private static q ca(byte[] paramArrayOfByte)
+  private static q bZ(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 30476
@@ -66,7 +66,7 @@ public class h
     //   83: iconst_0
     //   84: aload_0
     //   85: aastore
-    //   86: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   86: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   89: aload 4
     //   91: astore_0
     //   92: goto -27 -> 65
@@ -87,7 +87,7 @@ public class h
     //   114: iconst_0
     //   115: aload 4
     //   117: aastore
-    //   118: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   121: aload_0
     //   122: ifnull +7 -> 129
     //   125: aload_0
@@ -108,7 +108,7 @@ public class h
     //   152: iconst_0
     //   153: aload_0
     //   154: aastore
-    //   155: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   155: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   158: aconst_null
     //   159: astore_0
     //   160: goto -95 -> 65
@@ -138,7 +138,7 @@ public class h
     //   202: iconst_0
     //   203: aload_1
     //   204: aastore
-    //   205: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   205: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   208: goto -24 -> 184
     //   211: astore_0
     //   212: aconst_null
@@ -242,7 +242,7 @@ public class h
     //   97: iconst_0
     //   98: aload_1
     //   99: aastore
-    //   100: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   100: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: goto -24 -> 79
     //   106: astore 4
     //   108: aconst_null
@@ -261,7 +261,7 @@ public class h
     //   125: iconst_0
     //   126: aload 4
     //   128: aastore
-    //   129: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   129: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   132: aload_0
     //   133: ifnull +7 -> 140
     //   136: aload_0
@@ -284,7 +284,7 @@ public class h
     //   167: iconst_0
     //   168: aload_0
     //   169: aastore
-    //   170: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   170: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   173: aload 6
     //   175: astore_0
     //   176: goto -97 -> 79
@@ -314,7 +314,7 @@ public class h
     //   218: iconst_0
     //   219: aload_1
     //   220: aastore
-    //   221: invokestatic 61	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   221: invokestatic 61	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   224: goto -24 -> 200
     //   227: astore_0
     //   228: aconst_null
@@ -367,16 +367,16 @@ public class h
     //   65	70	246	java/lang/Exception
   }
   
-  public static h esL()
+  public static h eIe()
   {
     AppMethodBeat.i(30473);
-    if (BEb == null) {}
+    if (CWi == null) {}
     try
     {
-      if (BEb == null) {
-        BEb = new h();
+      if (CWi == null) {
+        CWi = new h();
       }
-      h localh = BEb;
+      h localh = CWi;
       AppMethodBeat.o(30473);
       return localh;
     }
@@ -389,58 +389,58 @@ public class h
   public final void c(q paramq)
   {
     AppMethodBeat.i(30475);
-    this.BEc = paramq;
-    byte[] arrayOfByte = d(this.BEc);
+    this.CWj = paramq;
+    byte[] arrayOfByte = d(this.CWj);
     String str = "";
     paramq = str;
     if (arrayOfByte != null)
     {
       paramq = str;
       if (arrayOfByte.length > 0) {
-        paramq = bt.cy(arrayOfByte);
+        paramq = bs.cx(arrayOfByte);
       }
     }
-    if (this.BEc != null) {}
-    for (str = this.BEc.esD();; str = "null")
+    if (this.CWj != null) {}
+    for (str = this.CWj.eHW();; str = "null")
     {
-      ad.i("WNNoteKeepTopManager", "setCurrentTopItem item: %s", new Object[] { str });
-      ad.i("WNNoteKeepTopManager", "setCurrentTopItem itemStr: %s", new Object[] { paramq });
-      az.arV();
-      c.afk().set(ae.a.Fpo, bt.nullAsNil(paramq));
+      ac.i("WNNoteKeepTopManager", "setCurrentTopItem item: %s", new Object[] { str });
+      ac.i("WNNoteKeepTopManager", "setCurrentTopItem itemStr: %s", new Object[] { paramq });
+      az.ayM();
+      c.agA().set(ah.a.GNe, bs.nullAsNil(paramq));
       AppMethodBeat.o(30475);
       return;
     }
   }
   
-  public final q esM()
+  public final q eIf()
   {
     AppMethodBeat.i(30474);
-    if (this.BEc != null)
+    if (this.CWj != null)
     {
-      localObject = this.BEc;
+      localObject = this.CWj;
       AppMethodBeat.o(30474);
       return localObject;
     }
-    az.arV();
-    Object localObject = (String)c.afk().get(ae.a.Fpo, "");
-    ad.d("WNNoteKeepTopManager", "getCurrentTopItem itemStr: %s", new Object[] { localObject });
-    if (bt.isNullOrNil((String)localObject))
+    az.ayM();
+    Object localObject = (String)c.agA().get(ah.a.GNe, "");
+    ac.d("WNNoteKeepTopManager", "getCurrentTopItem itemStr: %s", new Object[] { localObject });
+    if (bs.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(30474);
       return null;
     }
-    localObject = bt.aGd((String)localObject);
+    localObject = bs.aLu((String)localObject);
     if (localObject.length <= 0)
     {
       AppMethodBeat.o(30474);
       return null;
     }
-    this.BEc = ca((byte[])localObject);
-    if (this.BEc != null) {}
-    for (localObject = this.BEc.esD();; localObject = "null")
+    this.CWj = bZ((byte[])localObject);
+    if (this.CWj != null) {}
+    for (localObject = this.CWj.eHW();; localObject = "null")
     {
-      ad.d("WNNoteKeepTopManager", "getCurrentTopItem item: %s", new Object[] { localObject });
-      localObject = this.BEc;
+      ac.d("WNNoteKeepTopManager", "getCurrentTopItem item: %s", new Object[] { localObject });
+      localObject = this.CWj;
       AppMethodBeat.o(30474);
       return localObject;
     }
@@ -448,7 +448,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.h
  * JD-Core Version:    0.7.0.1
  */

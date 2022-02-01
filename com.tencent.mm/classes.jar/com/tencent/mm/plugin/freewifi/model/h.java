@@ -7,8 +7,8 @@ import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,15 +16,15 @@ import java.util.List;
 
 public final class h
 {
-  boolean mMi;
-  a rhD;
-  BroadcastReceiver rhE;
+  boolean nou;
+  a sqw;
+  BroadcastReceiver sqx;
   
   private h()
   {
     AppMethodBeat.i(24809);
-    this.mMi = false;
-    this.rhE = new BroadcastReceiver()
+    this.nou = false;
+    this.sqx = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -32,18 +32,18 @@ public final class h
         AppMethodBeat.i(24807);
         if ((paramAnonymousContext == null) || (paramAnonymousIntent == null))
         {
-          ad.e("MicroMsg.FreeWifi.WifiScanReceiver", "context is null or intent null");
+          ac.e("MicroMsg.FreeWifi.WifiScanReceiver", "context is null or intent null");
           AppMethodBeat.o(24807);
           return;
         }
-        h.this.mMi = false;
-        paramAnonymousContext.unregisterReceiver(h.this.rhE);
+        h.this.nou = false;
+        paramAnonymousContext.unregisterReceiver(h.this.sqx);
         if ("android.net.wifi.SCAN_RESULTS".equals(paramAnonymousIntent.getAction()))
         {
-          paramAnonymousContext = (WifiManager)aj.getContext().getSystemService("wifi");
+          paramAnonymousContext = (WifiManager)ai.getContext().getSystemService("wifi");
           if (paramAnonymousContext == null)
           {
-            ad.e("MicroMsg.FreeWifi.WifiScanReceiver", "bran, WifiScanReceiver onReceive, get wifi manager failed");
+            ac.e("MicroMsg.FreeWifi.WifiScanReceiver", "bran, WifiScanReceiver onReceive, get wifi manager failed");
             AppMethodBeat.o(24807);
             return;
           }
@@ -65,9 +65,9 @@ public final class h
             if (paramAnonymousIntent != null) {
               break label241;
             }
-            ad.i("MicroMsg.FreeWifi.WifiScanReceiver", i);
-            if (h.this.rhD != null) {
-              h.this.rhD.dC(paramAnonymousIntent);
+            ac.i("MicroMsg.FreeWifi.WifiScanReceiver", i);
+            if (h.this.sqw != null) {
+              h.this.sqw.dG(paramAnonymousIntent);
             }
             AppMethodBeat.o(24807);
             return;
@@ -79,7 +79,7 @@ public final class h
           {
             h localh;
             paramAnonymousContext = new ArrayList(0);
-            ad.e("MicroMsg.FreeWifi.WifiScanReceiver", "wifiManager.getScanResults() throws security exception. " + paramAnonymousIntent.getMessage());
+            ac.e("MicroMsg.FreeWifi.WifiScanReceiver", "wifiManager.getScanResults() throws security exception. " + paramAnonymousIntent.getMessage());
             continue;
             Collections.sort(paramAnonymousContext, new h.2(localh));
             paramAnonymousIntent = paramAnonymousContext.subList(0, 20);
@@ -96,22 +96,22 @@ public final class h
   public final boolean a(a parama)
   {
     AppMethodBeat.i(24810);
-    if (this.mMi)
+    if (this.nou)
     {
       AppMethodBeat.o(24810);
       return false;
     }
-    this.mMi = true;
-    this.rhD = parama;
-    parama = (WifiManager)aj.getContext().getSystemService("wifi");
+    this.nou = true;
+    this.sqw = parama;
+    parama = (WifiManager)ai.getContext().getSystemService("wifi");
     if (parama == null)
     {
-      ad.e("MicroMsg.FreeWifi.WifiScanReceiver", "wifiDetectingTask, get wifi manager failed");
+      ac.e("MicroMsg.FreeWifi.WifiScanReceiver", "wifiDetectingTask, get wifi manager failed");
       AppMethodBeat.o(24810);
       return false;
     }
     IntentFilter localIntentFilter = new IntentFilter("android.net.wifi.SCAN_RESULTS");
-    aj.getContext().registerReceiver(this.rhE, localIntentFilter);
+    ai.getContext().registerReceiver(this.sqx, localIntentFilter);
     parama.startScan();
     AppMethodBeat.o(24810);
     return true;
@@ -119,24 +119,24 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void dC(List<ScanResult> paramList);
+    public abstract void dG(List<ScanResult> paramList);
   }
   
   public static final class b
   {
-    private static h rhG;
+    private static h sqz;
     
     static
     {
       AppMethodBeat.i(24808);
-      rhG = new h((byte)0);
+      sqz = new h((byte)0);
       AppMethodBeat.o(24808);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.h
  * JD-Core Version:    0.7.0.1
  */

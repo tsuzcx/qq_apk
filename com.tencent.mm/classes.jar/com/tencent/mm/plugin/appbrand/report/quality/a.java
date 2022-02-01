@@ -1,55 +1,56 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
 import com.eclipsesource.v8.V8;
-import com.tencent.e.i;
+import com.tencent.luggage.game.c.h.1;
+import com.tencent.luggage.game.c.h.a;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.compatible.util.p;
-import com.tencent.mm.g.b.a.fj;
-import com.tencent.mm.g.b.a.fj.a;
-import com.tencent.mm.g.b.a.fk;
-import com.tencent.mm.g.b.a.fk.a;
-import com.tencent.mm.g.b.a.fm;
-import com.tencent.mm.g.b.a.fn;
-import com.tencent.mm.g.b.a.fn.a;
-import com.tencent.mm.g.b.a.fw;
-import com.tencent.mm.g.b.a.fw.a;
-import com.tencent.mm.g.b.a.gd;
-import com.tencent.mm.g.b.a.gd.a;
-import com.tencent.mm.g.b.a.gd.b;
-import com.tencent.mm.g.b.a.gd.c;
-import com.tencent.mm.g.b.a.gd.d;
+import com.tencent.mm.g.b.a.hb;
+import com.tencent.mm.g.b.a.hb.a;
+import com.tencent.mm.g.b.a.hc;
+import com.tencent.mm.g.b.a.hc.a;
+import com.tencent.mm.g.b.a.he;
+import com.tencent.mm.g.b.a.hf;
+import com.tencent.mm.g.b.a.hf.a;
+import com.tencent.mm.g.b.a.ho;
+import com.tencent.mm.g.b.a.ho.a;
+import com.tencent.mm.g.b.a.hv;
+import com.tencent.mm.g.b.a.hv.a;
+import com.tencent.mm.g.b.a.hv.b;
+import com.tencent.mm.g.b.a.hv.c;
+import com.tencent.mm.g.b.a.hv.d;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.aa.l;
+import com.tencent.mm.plugin.appbrand.appcache.ModulePkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.d;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.g.c;
-import com.tencent.mm.plugin.appbrand.jsruntime.v;
 import com.tencent.mm.plugin.appbrand.launching.AppStartupPerformanceReportBundle;
 import com.tencent.mm.plugin.appbrand.n;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bd;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.protocal.protobuf.dvg;
-import com.tencent.mm.protocal.protobuf.dvi;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.plugin.appbrand.page.ay;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.z.l;
+import com.tencent.mm.protocal.protobuf.eax;
+import com.tencent.mm.protocal.protobuf.eaz;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Random;
 
 public class a
 {
-  private static final b lsA;
-  private static final HashMap<String, QualitySessionRuntime> lsB;
+  private static final b lUu;
+  private static final HashMap<String, QualitySessionRuntime> lUv;
   
   static
   {
@@ -58,8 +59,8 @@ public class a
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      lsA = new b();
-      lsB = new HashMap();
+      lUu = new b();
+      lUv = new HashMap();
       AppMethodBeat.o(48198);
       return;
     }
@@ -68,50 +69,65 @@ public class a
   public static void K(o paramo)
   {
     AppMethodBeat.i(48189);
-    ad.i("MicroMsg.AppBrandQualitySystem", "[QualitySystem] startSession appId = [%s] runtime.hashCode = [%d]", new Object[] { paramo.mAppId, Integer.valueOf(paramo.hashCode()) });
-    Object localObject2 = paramo.aNc().jdu;
+    ac.i("MicroMsg.AppBrandQualitySystem", "[QualitySystem] startSession appId = [%s] runtime.hashCode = [%d]", new Object[] { paramo.mAppId, Integer.valueOf(paramo.hashCode()) });
+    Object localObject2 = paramo.aTS().jDH;
     ??? = localObject2;
     if (localObject2 == null)
     {
-      ad.e("MicroMsg.AppBrandQualitySystem", "startSession with NULL qualityReportSession in InitConfig");
-      ??? = new QualitySession(com.tencent.mm.plugin.appbrand.utils.a.un(paramo.aNc().uin), paramo.aNc(), paramo.DZ().cfo);
-      paramo.aNc().jdu = ((QualitySession)???);
+      ac.e("MicroMsg.AppBrandQualitySystem", "startSession with NULL qualityReportSession in InitConfig");
+      ??? = new QualitySession(com.tencent.mm.plugin.appbrand.utils.a.vf(paramo.aTS().uin), paramo.aTS(), paramo.DC().ccl);
+      paramo.aTS().jDH = ((QualitySession)???);
     }
     localObject2 = f.h((QualitySession)???);
-    ((QualitySessionRuntime)localObject2).joZ = paramo;
-    ((QualitySessionRuntime)localObject2).cbn = paramo.CZ();
-    ((QualitySessionRuntime)localObject2).ltC = System.currentTimeMillis();
-    com.tencent.e.h.Iye.aP(new a.2((QualitySessionRuntime)localObject2));
+    ((QualitySessionRuntime)localObject2).jPl = paramo;
+    ((QualitySessionRuntime)localObject2).bYk = paramo.CC();
+    ((QualitySessionRuntime)localObject2).lVw = System.currentTimeMillis();
+    com.tencent.e.h.JZN.aS(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(48185);
+        QualitySessionRuntime localQualitySessionRuntime = this.lUw;
+        h.a locala = (h.a)com.tencent.luggage.sdk.g.c.a("MemoryInspector.getMemoryMB", new h.1(com.tencent.luggage.game.c.h.bZj));
+        if (locala == null) {}
+        for (int i = 0;; i = locala.bZm)
+        {
+          localQualitySessionRuntime.lVC = i;
+          AppMethodBeat.o(48185);
+          return;
+        }
+      }
+    });
     long l;
-    if (1 == paramo.aNc().jdv) {
+    if (1 == paramo.aTS().jDI) {
       l = 2L;
     }
     for (;;)
     {
-      ((QualitySessionRuntime)localObject2).ltQ = l;
-      synchronized (lsB)
+      ((QualitySessionRuntime)localObject2).lVK = l;
+      synchronized (lUv)
       {
-        if (($assertionsDisabled) || (lsB.get(paramo.mAppId) == null)) {
+        if (($assertionsDisabled) || (lUv.get(paramo.mAppId) == null)) {
           break;
         }
         paramo = new AssertionError();
         AppMethodBeat.o(48189);
         throw paramo;
       }
-      if (paramo.aNc().jds) {
+      if (paramo.aTS().jDF) {
         l = 0L;
       } else {
         l = 1L;
       }
     }
-    lsB.put(((QualitySessionRuntime)localObject2).appId, localObject2);
-    g.a(paramo.mAppId, new g.c()
+    lUv.put(((QualitySessionRuntime)localObject2).appId, localObject2);
+    com.tencent.mm.plugin.appbrand.g.a(paramo.mAppId, new g.c()
     {
       public final void onDestroy()
       {
         AppMethodBeat.i(48184);
-        ad.i("MicroMsg.AppBrandQualitySystem", "[QualitySystem] closeSession appId = [%s] runtime.hashCode = [%d]", new Object[] { this.iCz.mAppId, Integer.valueOf(this.iCz.hashCode()) });
-        a.O(this.iCz);
+        ac.i("MicroMsg.AppBrandQualitySystem", "[QualitySystem] closeSession appId = [%s] runtime.hashCode = [%d]", new Object[] { this.jcz.mAppId, Integer.valueOf(this.jcz.hashCode()) });
+        a.O(this.jcz);
         AppMethodBeat.o(48184);
       }
     });
@@ -121,108 +137,108 @@ public class a
   public static void L(o paramo)
   {
     long l2 = 1L;
-    AppMethodBeat.i(196078);
-    QualitySessionRuntime localQualitySessionRuntime = ax(paramo.mAppId, true);
+    AppMethodBeat.i(186920);
+    QualitySessionRuntime localQualitySessionRuntime = ay(paramo.mAppId, true);
     if (localQualitySessionRuntime == null)
     {
-      ad.e("MicroMsg.AppBrandQualitySystem", "onAppBrandSplashViewRemoved appId[%s] NULL session", new Object[] { paramo.mAppId });
-      AppMethodBeat.o(196078);
+      ac.e("MicroMsg.AppBrandQualitySystem", "onAppBrandSplashViewRemoved appId[%s] NULL session", new Object[] { paramo.mAppId });
+      AppMethodBeat.o(186920);
       return;
     }
-    fk localfk = new fk();
-    localfk.dYa = localfk.t("InstanceId", localQualitySessionRuntime.kGa, true);
-    localfk.eag = localfk.t("AppId", localQualitySessionRuntime.appId, true);
-    localfk.dYT = localQualitySessionRuntime.lty;
-    localfk.ecq = fk.a.iT(localQualitySessionRuntime.lrW);
-    localfk.eai = localQualitySessionRuntime.apptype;
-    localfk.iq(paramo.aNc().startTime);
-    localfk.ir(bt.eGO());
-    localfk.ip(localfk.ebr - localfk.ebq);
-    localfk.ecr = localfk.t("path", p.encode(bt.nullAsNil(paramo.aLS())), true);
-    if (localQualitySessionRuntime.ltU)
+    hc localhc = new hc();
+    localhc.dZT = localhc.t("InstanceId", localQualitySessionRuntime.lht, true);
+    localhc.ecm = localhc.t("AppId", localQualitySessionRuntime.appId, true);
+    localhc.eaM = localQualitySessionRuntime.lVs;
+    localhc.eew = hc.a.iR(localQualitySessionRuntime.lTR);
+    localhc.eco = localQualitySessionRuntime.apptype;
+    localhc.lS(paramo.aTS().startTime);
+    localhc.lT(bs.eWj());
+    localhc.lR(localhc.edx - localhc.edw);
+    localhc.eex = localhc.t("path", com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramo.aSI())), true);
+    if (localQualitySessionRuntime.lVO)
     {
       l1 = 1L;
-      localfk.eba = l1;
-      if ((localQualitySessionRuntime.ltH == null) || (!localQualitySessionRuntime.ltH.bgr())) {
+      localhc.edg = l1;
+      if ((localQualitySessionRuntime.lVB == null) || (!localQualitySessionRuntime.lVB.bnl())) {
         break label283;
       }
     }
     label283:
     for (long l1 = l2;; l1 = 0L)
     {
-      localfk.ecs = l1;
-      localfk.eaX = localQualitySessionRuntime.bmT();
-      localfk.ect = localQualitySessionRuntime.ltQ;
-      l1 = bt.eGO();
-      if (localQualitySessionRuntime.ltG > 0L) {
+      localhc.eey = l1;
+      localhc.edd = localQualitySessionRuntime.btP();
+      localhc.eez = localQualitySessionRuntime.lVK;
+      l1 = bs.eWj();
+      if (localQualitySessionRuntime.lVA > 0L) {
         break label288;
       }
-      localfk.ecu = 0L;
-      AppMethodBeat.o(196078);
+      localhc.eeA = 0L;
+      AppMethodBeat.o(186920);
       return;
       l1 = 0L;
       break;
     }
     label288:
-    if (l1 > localQualitySessionRuntime.ltG)
+    if (l1 > localQualitySessionRuntime.lVA)
     {
-      localfk.ecu = l1;
-      AppMethodBeat.o(196078);
+      localhc.eeA = l1;
+      AppMethodBeat.o(186920);
       return;
     }
-    localfk.ecu = 0L;
-    AppMethodBeat.o(196078);
+    localhc.eeA = 0L;
+    AppMethodBeat.o(186920);
   }
   
   public static void M(o paramo)
   {
     AppMethodBeat.i(48195);
-    QualitySessionRuntime localQualitySessionRuntime = ax(paramo.mAppId, true);
+    QualitySessionRuntime localQualitySessionRuntime = ay(paramo.mAppId, true);
     if (localQualitySessionRuntime == null)
     {
       AppMethodBeat.o(48195);
       return;
     }
-    fj localfj = localQualitySessionRuntime.ltS;
+    hb localhb = localQualitySessionRuntime.lVM;
     long l;
-    if (localfj != null)
+    if (localhb != null)
     {
-      localfj.li(localQualitySessionRuntime.kGa);
-      localfj.lj(localQualitySessionRuntime.appId);
-      localfj.dYT = localQualitySessionRuntime.lty;
-      localfj.ece = fj.a.iS(localQualitySessionRuntime.lrW);
-      localfj.eai = localQualitySessionRuntime.apptype;
-      localfj.dKe = localQualitySessionRuntime.scene;
-      localfj.lk(paramo.aNc().username);
-      if (!localQualitySessionRuntime.ltU) {
+      localhb.on(localQualitySessionRuntime.lht);
+      localhb.oo(localQualitySessionRuntime.appId);
+      localhb.eaM = localQualitySessionRuntime.lVs;
+      localhb.eek = hb.a.iQ(localQualitySessionRuntime.lTR);
+      localhb.eco = localQualitySessionRuntime.apptype;
+      localhb.dHY = localQualitySessionRuntime.scene;
+      localhb.op(paramo.aTS().username);
+      if (!localQualitySessionRuntime.lVO) {
         break label278;
       }
       l = 1L;
-      localfj.eba = l;
-      localfj.eaX = localQualitySessionRuntime.bmT();
-      localfj.ll(com.tencent.mm.plugin.appbrand.report.h.getNetworkType(aj.getContext()));
-      if (!paramo.aNc().cfn) {
+      localhb.edg = l;
+      localhb.edd = localQualitySessionRuntime.btP();
+      localhb.oq(com.tencent.mm.plugin.appbrand.report.g.getNetworkType(ai.getContext()));
+      if (!paramo.aTS().cck) {
         break label283;
       }
       l = 1L;
       label160:
-      localfj.ecg = l;
-      if (!localQualitySessionRuntime.ltT) {
+      localhb.eem = l;
+      if (!localQualitySessionRuntime.lVN) {
         break label288;
       }
       l = 1L;
       label175:
-      localfj.ech = l;
-      localfj.in(paramo.aNc().startTime);
-      localfj.RT();
-      localfj.il(localfj.ebr - localfj.ebq);
-      if (!localQualitySessionRuntime.ltV) {
+      localhb.een = l;
+      localhb.lP(paramo.aTS().startTime);
+      localhb.SM();
+      localhb.lN(localhb.edx - localhb.edw);
+      if (!localQualitySessionRuntime.lVP) {
         break label293;
       }
       l = 1L;
       label226:
-      localfj.ecl = l;
-      if (localQualitySessionRuntime.ltH == null) {
+      localhb.eer = l;
+      if (localQualitySessionRuntime.lVB == null) {
         break label298;
       }
     }
@@ -231,11 +247,11 @@ public class a
     label288:
     label293:
     label298:
-    for (localfj.eci = 1L;; localfj.eci = 0L)
+    for (localhb.eeo = 1L;; localhb.eeo = 0L)
     {
-      localfj.ecj = paramo.iGo;
-      localfj.eck = paramo.aMp();
-      localfj.aBj();
+      localhb.eep = paramo.jgq;
+      localhb.eeq = paramo.aTf();
+      localhb.aHZ();
       AppMethodBeat.o(48195);
       return;
       l = 0L;
@@ -249,186 +265,186 @@ public class a
     }
   }
   
-  public static QualitySessionRuntime ME(String paramString)
-  {
-    AppMethodBeat.i(48190);
-    paramString = ax(paramString, true);
-    AppMethodBeat.o(48190);
-    return paramString;
-  }
-  
   public static void N(o paramo)
   {
     AppMethodBeat.i(160613);
-    QualitySessionRuntime localQualitySessionRuntime = ax(paramo.mAppId, true);
+    QualitySessionRuntime localQualitySessionRuntime = ay(paramo.mAppId, true);
     if (localQualitySessionRuntime == null)
     {
       AppMethodBeat.o(160613);
       return;
     }
-    com.tencent.mm.plugin.appbrand.ad.b localb = n.Do(paramo.mAppId).iFK;
-    fw localfw = new fw();
-    localfw.dYa = localfw.t("InstanceId", localQualitySessionRuntime.kGa, true);
-    localfw.eag = localfw.t("AppId", localQualitySessionRuntime.appId, true);
-    localfw.dYT = localQualitySessionRuntime.lty;
-    localfw.eem = fw.a.jc(localQualitySessionRuntime.lrW);
-    localfw.eai = localQualitySessionRuntime.apptype;
-    localfw.dKe = localQualitySessionRuntime.scene;
-    localfw.jc(localb.iIr);
-    localfw.jd(localb.iIu);
-    localfw.jb(localb.iIu - localb.iIr);
-    localfw.ecj = paramo.iGo;
-    localfw.een = localb.iIr;
-    localfw.eeo = localb.iIu;
-    localfw.eep = (localb.iIu - localb.iIr);
-    localfw.eeq = localb.iIv;
-    localfw.eer = localb.iIw;
-    localfw.ees = (localb.iIw - localb.iIv);
-    localfw.eet = localb.iIx;
-    localfw.eeu = localb.iIy;
-    localfw.eev = (localb.iIy - localb.iIx);
-    localfw.eck = paramo.aMp();
-    localfw.eeA = (localb.iIt - localb.iIs);
-    localfw.eew = localb.iIs;
-    localfw.eex = (localb.iIs - localb.iIr);
-    localfw.eey = localb.iIt;
-    localfw.eez = (localb.iIu - localb.iIt);
-    localfw.eeB = paramo.aNo();
-    localfw.eeC = localb.iIz;
-    localfw.aBj();
+    com.tencent.mm.plugin.appbrand.ad.b localb = n.Hr(paramo.mAppId).jfM;
+    ho localho = new ho();
+    localho.dZT = localho.t("InstanceId", localQualitySessionRuntime.lht, true);
+    localho.ecm = localho.t("AppId", localQualitySessionRuntime.appId, true);
+    localho.eaM = localQualitySessionRuntime.lVs;
+    localho.egt = ho.a.ja(localQualitySessionRuntime.lTR);
+    localho.eco = localQualitySessionRuntime.apptype;
+    localho.dHY = localQualitySessionRuntime.scene;
+    localho.mE(localb.jiv);
+    localho.mF(localb.jiy);
+    localho.mD(localb.jiy - localb.jiv);
+    localho.eep = paramo.jgq;
+    localho.egu = localb.jiv;
+    localho.egv = localb.jiy;
+    localho.egw = (localb.jiy - localb.jiv);
+    localho.egx = localb.jiz;
+    localho.egy = localb.jiA;
+    localho.egz = (localb.jiA - localb.jiz);
+    localho.egA = localb.jiB;
+    localho.egB = localb.jiC;
+    localho.egC = (localb.jiC - localb.jiB);
+    localho.eeq = paramo.aTf();
+    localho.egH = (localb.jix - localb.jiw);
+    localho.egD = localb.jiw;
+    localho.egE = (localb.jiw - localb.jiv);
+    localho.egF = localb.jix;
+    localho.egG = (localb.jiy - localb.jix);
+    localho.egI = paramo.aUe();
+    localho.egJ = localb.jiD;
+    localho.aHZ();
     AppMethodBeat.o(160613);
+  }
+  
+  public static QualitySessionRuntime QN(String paramString)
+  {
+    AppMethodBeat.i(48190);
+    paramString = ay(paramString, true);
+    AppMethodBeat.o(48190);
+    return paramString;
   }
   
   public static void a(d paramd, String paramString1, int paramInt1, String paramString2, int paramInt2, long paramLong, int paramInt3, m.c paramc)
   {
-    AppMethodBeat.i(196079);
+    AppMethodBeat.i(186921);
     String str = paramd.getAppId();
-    QualitySessionRuntime localQualitySessionRuntime = ax(str, true);
+    QualitySessionRuntime localQualitySessionRuntime = ay(str, true);
     if (localQualitySessionRuntime == null)
     {
-      AppMethodBeat.o(196079);
+      AppMethodBeat.o(186921);
       return;
     }
-    ad.i("MicroMsg.AppBrandQualitySystem", "[QualitySystem] onUserScriptInject appId = [%s] session.runtime.hashCode = [%d] runtimeHashCode = [%d] name = [%s].", new Object[] { str, Integer.valueOf(localQualitySessionRuntime.joZ.hashCode()), Integer.valueOf(paramInt3), paramString1 });
-    if (paramInt3 != localQualitySessionRuntime.joZ.hashCode())
+    ac.i("MicroMsg.AppBrandQualitySystem", "[QualitySystem] onUserScriptInject appId = [%s] session.runtime.hashCode = [%d] runtimeHashCode = [%d] name = [%s].", new Object[] { str, Integer.valueOf(localQualitySessionRuntime.jPl.hashCode()), Integer.valueOf(paramInt3), paramString1 });
+    if (paramInt3 != localQualitySessionRuntime.jPl.hashCode())
     {
-      ad.e("MicroMsg.AppBrandQualitySystem", "[QualitySystem] onUserScriptInject runtime hashCode mismatch");
+      ac.e("MicroMsg.AppBrandQualitySystem", "[QualitySystem] onUserScriptInject runtime hashCode mismatch");
       if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG))
       {
         paramd = new IllegalStateException("[RED_FLAVOR_ONLY] [APPBRAND] onUserScriptInject runtime hashCode mismatch");
-        AppMethodBeat.o(196079);
+        AppMethodBeat.o(186921);
         throw paramd;
       }
-      AppMethodBeat.o(196079);
+      AppMethodBeat.o(186921);
       return;
     }
-    fm localfm = new fm();
-    localfm.eag = localfm.t("AppId", localQualitySessionRuntime.appId, true);
-    localfm.dYa = localfm.t("InstanceId", localQualitySessionRuntime.kGa, true);
-    localfm.ecH = localQualitySessionRuntime.lrW;
-    localfm.eai = localQualitySessionRuntime.apptype;
-    localfm.dYT = localQualitySessionRuntime.lty;
-    localfm.dKe = localQualitySessionRuntime.scene;
-    localfm.iv(paramLong);
-    localfm.RZ();
-    localfm.iu(localfm.ebr - localfm.ebq);
-    localfm.ecI = paramInt1;
-    localfm.ecJ = localfm.t("filePath", paramString1, true);
-    com.tencent.mm.plugin.appbrand.report.c localc = com.tencent.mm.plugin.appbrand.report.c.d(paramd.aOf());
-    switch (a.5.lsF[localc.ordinal()])
+    he localhe = new he();
+    localhe.ecm = localhe.t("AppId", localQualitySessionRuntime.appId, true);
+    localhe.dZT = localhe.t("InstanceId", localQualitySessionRuntime.lht, true);
+    localhe.eeN = localQualitySessionRuntime.lTR;
+    localhe.eco = localQualitySessionRuntime.apptype;
+    localhe.eaM = localQualitySessionRuntime.lVs;
+    localhe.dHY = localQualitySessionRuntime.scene;
+    localhe.lX(paramLong);
+    localhe.SS();
+    localhe.lW(localhe.edx - localhe.edw);
+    localhe.eeO = paramInt1;
+    localhe.eeP = localhe.t("filePath", paramString1, true);
+    com.tencent.mm.plugin.appbrand.report.c localc = com.tencent.mm.plugin.appbrand.report.c.d(paramd.aUV());
+    switch (5.lUz[localc.ordinal()])
     {
     default: 
       paramInt1 = 0;
     }
     for (;;)
     {
-      localfm.ecK = paramInt1;
+      localhe.eeQ = paramInt1;
       label390:
       boolean bool;
-      if ((paramc != null) && (paramc.codeCacheStatus >= 0) && (paramc.codeCacheStatus < v.kDv.length))
+      if ((paramc != null) && (paramc.codeCacheStatus >= 0) && (paramc.codeCacheStatus < com.tencent.mm.plugin.appbrand.jsruntime.v.leN.length))
       {
-        paramLong = v.kDv[paramc.codeCacheStatus];
-        localfm.ecL = paramLong;
+        paramLong = com.tencent.mm.plugin.appbrand.jsruntime.v.leN[paramc.codeCacheStatus];
+        localhe.eeR = paramLong;
         if (!(paramd instanceof com.tencent.mm.plugin.appbrand.service.c)) {
           break label956;
         }
-        bool = ((com.tencent.mm.plugin.appbrand.service.c)paramd).chI.BH();
+        bool = ((com.tencent.mm.plugin.appbrand.service.c)paramd).ceD.Bl();
         label416:
         if (!bool) {
           break label987;
         }
         paramLong = 1L;
         label424:
-        localfm.ecM = paramLong;
+        localhe.eeS = paramLong;
         if (paramc == null) {
           break label993;
         }
         paramLong = paramc.flatJSCompileCost;
         label443:
-        localfm.ecN = paramLong;
-        if (!org.apache.commons.b.a.contains(com.tencent.mm.plugin.appbrand.report.c.lpf, localc)) {
+        localhe.eeT = paramLong;
+        if (!org.apache.commons.b.a.contains(com.tencent.mm.plugin.appbrand.report.c.lRf, localc)) {
           break label999;
         }
-        localfm.lm(V8.getV8Version());
+        localhe.or(V8.getV8Version());
         label470:
-        localfm.ecP = localfm.t("pluginAppid", paramString2, true);
-        localfm.ecQ = localfm.t("pluginVersion", String.valueOf(paramInt2), true);
-        localfm.aBj();
-        if ((paramd instanceof com.tencent.mm.plugin.appbrand.q))
+        localhe.eeV = localhe.t("pluginAppid", paramString2, true);
+        localhe.eeW = localhe.t("pluginVersion", String.valueOf(paramInt2), true);
+        localhe.aHZ();
+        if ((paramd instanceof q))
         {
-          paramString2 = new com.tencent.mm.plugin.appbrand.jsapi.m.a();
+          paramString2 = new com.tencent.mm.plugin.appbrand.jsapi.l.a();
           paramString2.setName("evaluateJavaScript");
-          paramString2.startTime = localfm.ebq;
-          paramString2.endTime = localfm.ebr;
-          paramString2.t("fileName", localfm.ecJ);
-          paramString2.t("size", Long.valueOf(localfm.ecI));
-          paramString2.c((com.tencent.mm.plugin.appbrand.q)paramd);
+          paramString2.startTime = localhe.edw;
+          paramString2.endTime = localhe.edx;
+          paramString2.s("fileName", localhe.eeP);
+          paramString2.s("size", Long.valueOf(localhe.eeO));
+          paramString2.c((q)paramd);
         }
-        if ((!localQualitySessionRuntime.ltJ.lsG) && ((paramString1.endsWith("app-service.js")) || ("game.js".equals(paramString1))))
+        if ((!localQualitySessionRuntime.lVD.lUA) && ((paramString1.endsWith("app-service.js")) || ("game.js".equals(paramString1))))
         {
-          localQualitySessionRuntime.ltJ.lsG = true;
-          localQualitySessionRuntime.ltE = System.currentTimeMillis();
-          paramd = localQualitySessionRuntime.joZ;
-          paramString1 = new fn();
-          paramString2 = ax(str, true);
+          localQualitySessionRuntime.lVD.lUA = true;
+          localQualitySessionRuntime.lVy = System.currentTimeMillis();
+          paramd = localQualitySessionRuntime.jPl;
+          paramString1 = new hf();
+          paramString2 = ay(str, true);
           if (paramString2 != null)
           {
-            paramString1.eag = paramString1.t("AppId", paramString2.appId, true);
-            paramString1.dYa = paramString1.t("InstanceId", paramString2.kGa, true);
-            paramString1.ecR = fn.a.iV(paramString2.lrW);
-            paramString1.eai = paramString2.apptype;
-            paramString1.dYT = paramString2.lty;
-            paramString1.dKe = paramString2.scene;
-            paramString1.ix(paramString2.ltB);
-            paramString1.Sa();
-            paramString1.iw(paramString1.ebr - paramString2.ltB);
+            paramString1.ecm = paramString1.t("AppId", paramString2.appId, true);
+            paramString1.dZT = paramString1.t("InstanceId", paramString2.lht, true);
+            paramString1.eeX = hf.a.iT(paramString2.lTR);
+            paramString1.eco = paramString2.apptype;
+            paramString1.eaM = paramString2.lVs;
+            paramString1.dHY = paramString2.scene;
+            paramString1.lZ(paramString2.lVv);
+            paramString1.ST();
+            paramString1.lY(paramString1.edx - paramString2.lVv);
           }
         }
       }
       try
       {
-        paramString1.ecr = paramString1.t("path", p.encode(bt.nullAsNil(paramd.aNd().getCurrentUrl())), true);
-        if (paramd.iGf)
+        paramString1.eex = paramString1.t("path", com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramd.aTT().getCurrentUrl())), true);
+        if (paramd.jgh)
         {
           paramLong = 1L;
-          paramString1.eba = paramLong;
-          if (paramString2.ltH == null) {
+          paramString1.edg = paramLong;
+          if (paramString2.lVB == null) {
             break label1073;
           }
-          if (!paramString2.ltH.bgr()) {
+          if (!paramString2.lVB.bnl()) {
             break label1067;
           }
           paramLong = 1L;
-          paramString1.ecs = paramLong;
-          paramString1.eaX = paramString2.bmT();
-          paramString1.eaK = paramString1.t("networkType", com.tencent.mm.plugin.appbrand.report.q.dC(aj.getContext()), true);
-          paramString1.ect = paramString2.ltQ;
-          paramString1.ecS = paramString2.bmX();
-          paramString1.aBj();
-          if (DebuggerShell.aTY()) {
-            com.tencent.mm.plugin.appbrand.performance.c.b(str, "JsInject", localfm.ebq, localfm.ebr);
+          paramString1.eey = paramLong;
+          paramString1.edd = paramString2.btP();
+          paramString1.ecQ = paramString1.t("networkType", com.tencent.mm.plugin.appbrand.report.p.dL(ai.getContext()), true);
+          paramString1.eez = paramString2.lVK;
+          paramString1.eeY = paramString2.btT();
+          paramString1.aHZ();
+          if (DebuggerShell.baW()) {
+            com.tencent.mm.plugin.appbrand.performance.c.b(str, "JsInject", localhe.edw, localhe.edx);
           }
-          AppMethodBeat.o(196079);
+          AppMethodBeat.o(186921);
           return;
           paramInt1 = 102;
           continue;
@@ -453,7 +469,7 @@ public class a
           label956:
           if ((paramd instanceof ae))
           {
-            bool = ((ae)paramd).aNe().chI.BH();
+            bool = ((ae)paramd).aTU().ceD.Bl();
             break label416;
           }
           bool = false;
@@ -465,10 +481,10 @@ public class a
           paramLong = 0L;
           break label443;
           label999:
-          if (!(paramd.aOf() instanceof bd)) {
+          if (!(paramd.aUV() instanceof ay)) {
             break label470;
           }
-          localfm.lm(b.bmN());
+          localhe.or(b.btJ());
         }
       }
       catch (NullPointerException paramc)
@@ -479,7 +495,7 @@ public class a
         {
           for (;;)
           {
-            ad.e("MicroMsg.AppBrandQualitySystem", "launchToJsInject appId %s getCurrentUrl npe = %s", new Object[] { str, paramc });
+            ac.e("MicroMsg.AppBrandQualitySystem", "launchToJsInject appId %s getCurrentUrl npe = %s", new Object[] { str, paramc });
             continue;
             paramLong = 0L;
             continue;
@@ -487,7 +503,7 @@ public class a
           }
         } while (!com.tencent.mm.sdk.platformtools.h.DEBUG);
         paramd = new IllegalStateException("StartupBundle not registered.");
-        AppMethodBeat.o(196079);
+        AppMethodBeat.o(186921);
         throw paramd;
       }
     }
@@ -496,20 +512,20 @@ public class a
   public static void a(String paramString, final AppBrandSysConfigWC paramAppBrandSysConfigWC, AppStartupPerformanceReportBundle paramAppStartupPerformanceReportBundle, o paramo)
   {
     AppMethodBeat.i(48192);
-    QualitySessionRuntime localQualitySessionRuntime1 = ax(paramString, true);
+    QualitySessionRuntime localQualitySessionRuntime1 = ay(paramString, true);
     if (localQualitySessionRuntime1 == null)
     {
       AppMethodBeat.o(48192);
       return;
     }
-    localQualitySessionRuntime1.ltD = System.currentTimeMillis();
-    localQualitySessionRuntime1.ltH = paramAppStartupPerformanceReportBundle;
-    localQualitySessionRuntime1.ltB = paramo.aNc().startTime;
+    localQualitySessionRuntime1.lVx = System.currentTimeMillis();
+    localQualitySessionRuntime1.lVB = paramAppStartupPerformanceReportBundle;
+    localQualitySessionRuntime1.lVv = paramo.aTS().startTime;
     paramAppStartupPerformanceReportBundle = (AppStartupPerformanceReportBundle)paramo.c(AppStartupPerformanceReportBundle.class, false);
     if (paramAppStartupPerformanceReportBundle == null) {
-      ad.e("MicroMsg.AppBrandQualitySystem", "ReportBundle == null in resourceReady");
+      ac.e("MicroMsg.AppBrandQualitySystem", "ReportBundle == null in resourceReady");
     }
-    gd localgd;
+    hv localhv;
     QualitySessionRuntime localQualitySessionRuntime2;
     do
     {
@@ -518,31 +534,31 @@ public class a
         public final void run()
         {
           AppMethodBeat.i(48186);
-          if (this.lsC.joZ.isDestroyed())
+          if (this.lUw.jPl.isDestroyed())
           {
             AppMethodBeat.o(48186);
             return;
           }
           e locale;
-          if (!this.lsC.cbn)
+          if (!this.lUw.bYk)
           {
-            locale = this.lsC.ltK;
-            QualitySessionRuntime localQualitySessionRuntime = this.lsC;
+            locale = this.lUw.lVE;
+            QualitySessionRuntime localQualitySessionRuntime = this.lUw;
             AppBrandSysConfigWC localAppBrandSysConfigWC = paramAppBrandSysConfigWC;
-            ad.i("MicroMsg.AppBrandRuntimeEventReporter", "AppBrandRuntimeEventReporter.mayStartDependOnClientSampleRate");
-            int i = localQualitySessionRuntime.joZ.aNc().uin;
-            double d1 = localAppBrandSysConfigWC.cfR.jcF;
+            ac.i("MicroMsg.AppBrandRuntimeEventReporter", "AppBrandRuntimeEventReporter.mayStartDependOnClientSampleRate");
+            int i = localQualitySessionRuntime.jPl.aTS().uin;
+            double d1 = localAppBrandSysConfigWC.ccO.jCS;
             double d2 = new Random(i ^ System.nanoTime()).nextDouble();
             if (d2 <= d1) {}
             for (boolean bool = true;; bool = false)
             {
-              ad.i("MicroMsg.AppBrandRuntimeEventReporter", "shouldEnableReport() returned: [%b], localRandom = [%f] serverPercent = [%f]", new Object[] { Boolean.valueOf(bool), Double.valueOf(d2), Double.valueOf(d1) });
+              ac.i("MicroMsg.AppBrandRuntimeEventReporter", "shouldEnableReport() returned: [%b], localRandom = [%f] serverPercent = [%f]", new Object[] { Boolean.valueOf(bool), Double.valueOf(d2), Double.valueOf(d1) });
               if (!bool) {
                 break;
               }
               try
               {
-                locale.a(localQualitySessionRuntime, localAppBrandSysConfigWC.cfR.jcG, e.a.lsR, false);
+                locale.a(localQualitySessionRuntime, localAppBrandSysConfigWC.ccO.jCT, e.a.lUL, false);
                 return;
               }
               finally
@@ -556,79 +572,96 @@ public class a
       });
       AppMethodBeat.o(48192);
       return;
-      localgd = new gd();
-      localQualitySessionRuntime2 = ax(paramString, true);
+      localhv = new hv();
+      localQualitySessionRuntime2 = ay(paramString, true);
     } while (localQualitySessionRuntime2 == null);
-    localgd.eag = localgd.t("AppId", localQualitySessionRuntime2.appId, true);
-    localgd.dYa = localgd.t("InstanceId", localQualitySessionRuntime2.kGa, true);
-    localgd.efT = gd.a.jk(localQualitySessionRuntime2.lrW);
-    localgd.eai = localQualitySessionRuntime2.apptype;
-    localgd.dKe = localQualitySessionRuntime2.scene;
-    localgd.dYT = localQualitySessionRuntime2.lty;
-    localgd.jO(paramo.aNc().startTime);
-    localgd.Si();
-    localgd.jN(localgd.ebr - paramo.aNc().startTime);
-    localgd.egb = (paramAppStartupPerformanceReportBundle.kHI - paramAppStartupPerformanceReportBundle.kHH);
-    localgd.egc = (paramAppStartupPerformanceReportBundle.kHK - paramAppStartupPerformanceReportBundle.kHJ);
-    localgd.egd = localQualitySessionRuntime2.ltz;
-    localgd.ege = localQualitySessionRuntime2.ltA;
-    AppBrandSysConfigWC localAppBrandSysConfigWC = paramo.aNb();
-    AppBrandInitConfigWC localAppBrandInitConfigWC = paramo.aNc();
+    localhv.ecm = localhv.t("AppId", localQualitySessionRuntime2.appId, true);
+    localhv.dZT = localhv.t("InstanceId", localQualitySessionRuntime2.lht, true);
+    localhv.eia = hv.a.ji(localQualitySessionRuntime2.lTR);
+    localhv.eco = localQualitySessionRuntime2.apptype;
+    localhv.dHY = localQualitySessionRuntime2.scene;
+    localhv.eaM = localQualitySessionRuntime2.lVs;
+    localhv.nq(paramo.aTS().startTime);
+    localhv.Tb();
+    localhv.np(localhv.edx - paramo.aTS().startTime);
+    localhv.eii = (paramAppStartupPerformanceReportBundle.ljc - paramAppStartupPerformanceReportBundle.ljb);
+    localhv.eij = (paramAppStartupPerformanceReportBundle.lje - paramAppStartupPerformanceReportBundle.ljd);
+    localhv.eik = localQualitySessionRuntime2.lVt;
+    localhv.eil = localQualitySessionRuntime2.lVu;
+    Object localObject = paramo.aTR();
+    AppBrandInitConfigWC localAppBrandInitConfigWC = paramo.aTS();
     label308:
     label326:
-    long l;
-    if (paramAppStartupPerformanceReportBundle.kHN)
+    long l1;
+    if (paramAppStartupPerformanceReportBundle.ljh)
     {
-      paramString = gd.c.egp;
-      localgd.efV = paramString;
-      if (!localAppBrandInitConfigWC.cfn) {
-        break label509;
+      paramString = hv.c.eiv;
+      localhv.eic = paramString;
+      if (!localAppBrandInitConfigWC.cck) {
+        break label573;
       }
-      paramString = gd.b.egm;
-      localgd.efW = paramString;
-      if (!paramo.iGf) {
-        break label516;
+      paramString = hv.b.eis;
+      localhv.eid = paramString;
+      if (!paramo.jgh) {
+        break label580;
       }
-      l = 1L;
+      l1 = 1L;
       label342:
-      localgd.efX = l;
-      if (!paramo.iGf) {
-        break label522;
+      localhv.eie = l1;
+      long l2 = 0L;
+      if (com.tencent.mm.vfs.i.eA(((AppBrandSysConfigWC)localObject).jEg.pkgPath)) {
+        break label586;
       }
-      l = localAppBrandSysConfigWC.jdS.getPkgSize();
-      label366:
-      localgd.efU = l;
-      localgd.dON = f.getNetworkType();
-      localgd.ect = localQualitySessionRuntime2.ltQ;
-      localgd.eaX = localQualitySessionRuntime2.bmT();
-      localgd.jP(localQualitySessionRuntime2.ltH.kHG - localQualitySessionRuntime2.ltH.kHr);
-      if (!paramAppStartupPerformanceReportBundle.kHO) {
-        break label528;
+      paramString = ((AppBrandSysConfigWC)localObject).jEg.jpd.iterator();
+      do
+      {
+        l1 = l2;
+        if (!paramString.hasNext()) {
+          break;
+        }
+        localObject = (ModulePkgInfo)paramString.next();
+      } while (!com.tencent.mm.vfs.i.eA(((ModulePkgInfo)localObject).pkgPath));
+      l1 = com.tencent.mm.vfs.i.aSp(((ModulePkgInfo)localObject).pkgPath);
+      label423:
+      if (!paramo.jgh) {
+        break label602;
+      }
+      label430:
+      localhv.eib = l1;
+      localhv.dQE = f.getNetworkType();
+      localhv.eez = localQualitySessionRuntime2.lVK;
+      localhv.edd = localQualitySessionRuntime2.btP();
+      localhv.nr(localQualitySessionRuntime2.lVB.lja - localQualitySessionRuntime2.lVB.liL);
+      if (!paramAppStartupPerformanceReportBundle.lji) {
+        break label608;
       }
     }
-    label516:
-    label522:
-    label528:
-    for (paramString = gd.d.egs;; paramString = gd.d.egt)
+    label573:
+    label580:
+    label586:
+    label602:
+    label608:
+    for (paramString = hv.d.eiy;; paramString = hv.d.eiz)
     {
-      localgd.egf = paramString;
-      localgd.egg = (paramAppStartupPerformanceReportBundle.kHM - paramAppStartupPerformanceReportBundle.kHL);
-      localgd.ecS = localQualitySessionRuntime2.bmX();
-      localgd.aBj();
-      if (!DebuggerShell.aTY()) {
+      localhv.eim = paramString;
+      localhv.ein = (paramAppStartupPerformanceReportBundle.ljg - paramAppStartupPerformanceReportBundle.ljf);
+      localhv.eeY = localQualitySessionRuntime2.btT();
+      localhv.aHZ();
+      if (!DebuggerShell.baW()) {
         break;
       }
-      com.tencent.mm.plugin.appbrand.performance.c.b(localgd.eag, "ResourcePrepare", localgd.ebq, localgd.ebr);
+      com.tencent.mm.plugin.appbrand.performance.c.b(localhv.ecm, "ResourcePrepare", localhv.edw, localhv.edx);
       break;
-      paramString = gd.c.egq;
+      paramString = hv.c.eiw;
       break label308;
-      label509:
-      paramString = gd.b.egn;
+      paramString = hv.b.eit;
       break label326;
-      l = 0L;
+      l1 = 0L;
       break label342;
-      l = 0L;
-      break label366;
+      l1 = com.tencent.mm.vfs.i.aSp(((AppBrandSysConfigWC)localObject).jEg.pkgPath);
+      break label423;
+      l1 = 0L;
+      break label430;
     }
   }
   
@@ -636,498 +669,498 @@ public class a
   public static void a(String paramString, o paramo)
   {
     // Byte code:
-    //   0: ldc_w 1071
-    //   3: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1104
+    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: iconst_1
-    //   8: invokestatic 210	com/tencent/mm/plugin/appbrand/report/quality/a:ax	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
+    //   8: invokestatic 212	com/tencent/mm/plugin/appbrand/report/quality/a:ay	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
     //   11: astore 4
     //   13: aload 4
     //   15: ifnonnull +26 -> 41
-    //   18: ldc 59
-    //   20: ldc_w 1073
+    //   18: ldc 63
+    //   20: ldc_w 1106
     //   23: iconst_1
     //   24: anewarray 4	java/lang/Object
     //   27: dup
     //   28: iconst_0
     //   29: aload_0
     //   30: aastore
-    //   31: invokestatic 214	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   34: ldc_w 1071
-    //   37: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   31: invokestatic 216	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: ldc_w 1104
+    //   37: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: return
-    //   41: ldc 59
-    //   43: ldc_w 1075
+    //   41: ldc 63
+    //   43: ldc_w 1108
     //   46: iconst_1
     //   47: anewarray 4	java/lang/Object
     //   50: dup
     //   51: iconst_0
     //   52: aload_0
     //   53: aastore
-    //   54: invokestatic 82	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   54: invokestatic 86	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   57: aload 4
     //   59: aconst_null
-    //   60: putfield 340	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltS	Lcom/tencent/mm/g/b/a/fj;
-    //   63: new 1077	com/tencent/mm/g/b/a/fo
+    //   60: putfield 342	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVM	Lcom/tencent/mm/g/b/a/hb;
+    //   63: new 1110	com/tencent/mm/g/b/a/hg
     //   66: dup
-    //   67: invokespecial 1078	com/tencent/mm/g/b/a/fo:<init>	()V
+    //   67: invokespecial 1111	com/tencent/mm/g/b/a/hg:<init>	()V
     //   70: astore 4
     //   72: aload_0
     //   73: iconst_1
-    //   74: invokestatic 210	com/tencent/mm/plugin/appbrand/report/quality/a:ax	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
+    //   74: invokestatic 212	com/tencent/mm/plugin/appbrand/report/quality/a:ay	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
     //   77: astore 5
     //   79: aload 5
     //   81: ifnull +448 -> 529
     //   84: aload 4
     //   86: aload 4
-    //   88: ldc 231
+    //   88: ldc 233
     //   90: aload 5
-    //   92: getfield 193	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:appId	Ljava/lang/String;
+    //   92: getfield 195	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:appId	Ljava/lang/String;
     //   95: iconst_1
-    //   96: invokevirtual 1079	com/tencent/mm/g/b/a/fo:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   99: putfield 1080	com/tencent/mm/g/b/a/fo:eag	Ljava/lang/String;
+    //   96: invokevirtual 1112	com/tencent/mm/g/b/a/hg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   99: putfield 1113	com/tencent/mm/g/b/a/hg:ecm	Ljava/lang/String;
     //   102: aload 4
     //   104: aload 4
-    //   106: ldc 219
+    //   106: ldc 221
     //   108: aload 5
-    //   110: getfield 222	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:kGa	Ljava/lang/String;
+    //   110: getfield 224	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lht	Ljava/lang/String;
     //   113: iconst_1
-    //   114: invokevirtual 1079	com/tencent/mm/g/b/a/fo:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   117: putfield 1081	com/tencent/mm/g/b/a/fo:dYa	Ljava/lang/String;
+    //   114: invokevirtual 1112	com/tencent/mm/g/b/a/hg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   117: putfield 1114	com/tencent/mm/g/b/a/hg:dZT	Ljava/lang/String;
     //   120: aload 4
     //   122: aload 5
-    //   124: getfield 243	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lrW	I
-    //   127: invokestatic 1087	com/tencent/mm/g/b/a/fo$a:iW	(I)Lcom/tencent/mm/g/b/a/fo$a;
-    //   130: putfield 1091	com/tencent/mm/g/b/a/fo:ecX	Lcom/tencent/mm/g/b/a/fo$a;
+    //   124: getfield 245	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lTR	I
+    //   127: invokestatic 1120	com/tencent/mm/g/b/a/hg$a:iU	(I)Lcom/tencent/mm/g/b/a/hg$a;
+    //   130: putfield 1124	com/tencent/mm/g/b/a/hg:efd	Lcom/tencent/mm/g/b/a/hg$a;
     //   133: aload 4
     //   135: aload 5
-    //   137: getfield 256	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:apptype	I
+    //   137: getfield 258	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:apptype	I
     //   140: i2l
-    //   141: putfield 1092	com/tencent/mm/g/b/a/fo:eai	J
+    //   141: putfield 1125	com/tencent/mm/g/b/a/hg:eco	J
     //   144: aload 4
     //   146: aload 5
-    //   148: getfield 237	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lty	I
+    //   148: getfield 239	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVs	I
     //   151: i2l
-    //   152: putfield 1093	com/tencent/mm/g/b/a/fo:dYT	J
+    //   152: putfield 1126	com/tencent/mm/g/b/a/hg:eaM	J
     //   155: aload 4
     //   157: aload 5
-    //   159: getfield 364	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:scene	I
+    //   159: getfield 366	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:scene	I
     //   162: i2l
-    //   163: putfield 1094	com/tencent/mm/g/b/a/fo:dKe	J
+    //   163: putfield 1127	com/tencent/mm/g/b/a/hg:dHY	J
     //   166: aload 4
     //   168: aload_1
-    //   169: invokevirtual 88	com/tencent/mm/plugin/appbrand/o:aNc	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;
-    //   172: getfield 262	com/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC:startTime	J
-    //   175: invokevirtual 1098	com/tencent/mm/g/b/a/fo:iz	(J)Lcom/tencent/mm/g/b/a/fo;
+    //   169: invokevirtual 92	com/tencent/mm/plugin/appbrand/o:aTS	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;
+    //   172: getfield 264	com/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC:startTime	J
+    //   175: invokevirtual 1131	com/tencent/mm/g/b/a/hg:mb	(J)Lcom/tencent/mm/g/b/a/hg;
     //   178: pop
     //   179: aload 4
-    //   181: invokevirtual 1102	com/tencent/mm/g/b/a/fo:Sb	()Lcom/tencent/mm/g/b/a/fo;
+    //   181: invokevirtual 1135	com/tencent/mm/g/b/a/hg:SU	()Lcom/tencent/mm/g/b/a/hg;
     //   184: pop
     //   185: aload 4
     //   187: aload 4
-    //   189: getfield 1103	com/tencent/mm/g/b/a/fo:ebr	J
+    //   189: getfield 1136	com/tencent/mm/g/b/a/hg:edx	J
     //   192: aload 4
-    //   194: getfield 1104	com/tencent/mm/g/b/a/fo:ebq	J
+    //   194: getfield 1137	com/tencent/mm/g/b/a/hg:edw	J
     //   197: lsub
-    //   198: invokevirtual 1107	com/tencent/mm/g/b/a/fo:iy	(J)Lcom/tencent/mm/g/b/a/fo;
+    //   198: invokevirtual 1140	com/tencent/mm/g/b/a/hg:ma	(J)Lcom/tencent/mm/g/b/a/hg;
     //   201: pop
     //   202: aload 4
     //   204: aload 4
-    //   206: ldc_w 285
+    //   206: ldc_w 287
     //   209: aload_1
-    //   210: invokevirtual 824	com/tencent/mm/plugin/appbrand/o:aNd	()Lcom/tencent/mm/plugin/appbrand/page/u;
-    //   213: invokevirtual 829	com/tencent/mm/plugin/appbrand/page/u:getCurrentUrl	()Ljava/lang/String;
-    //   216: invokestatic 293	com/tencent/mm/sdk/platformtools/bt:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   219: invokestatic 298	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   210: invokevirtual 826	com/tencent/mm/plugin/appbrand/o:aTT	()Lcom/tencent/mm/plugin/appbrand/page/v;
+    //   213: invokevirtual 831	com/tencent/mm/plugin/appbrand/page/v:getCurrentUrl	()Ljava/lang/String;
+    //   216: invokestatic 295	com/tencent/mm/sdk/platformtools/bs:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   219: invokestatic 300	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;)Ljava/lang/String;
     //   222: iconst_1
-    //   223: invokevirtual 1079	com/tencent/mm/g/b/a/fo:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   226: putfield 1108	com/tencent/mm/g/b/a/fo:ecr	Ljava/lang/String;
+    //   223: invokevirtual 1112	com/tencent/mm/g/b/a/hg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   226: putfield 1141	com/tencent/mm/g/b/a/hg:eex	Ljava/lang/String;
     //   229: aload 5
-    //   231: getfield 304	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltU	Z
+    //   231: getfield 306	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVO	Z
     //   234: ifeq +895 -> 1129
     //   237: lconst_1
     //   238: lstore_2
     //   239: aload 4
     //   241: lload_2
-    //   242: putfield 1109	com/tencent/mm/g/b/a/fo:eba	J
+    //   242: putfield 1142	com/tencent/mm/g/b/a/hg:edg	J
     //   245: aload 5
-    //   247: getfield 311	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltH	Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;
+    //   247: getfield 313	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVB	Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;
     //   250: ifnull +889 -> 1139
     //   253: aload 5
-    //   255: getfield 311	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltH	Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;
-    //   258: invokevirtual 316	com/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle:bgr	()Z
+    //   255: getfield 313	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVB	Lcom/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle;
+    //   258: invokevirtual 318	com/tencent/mm/plugin/appbrand/launching/AppStartupPerformanceReportBundle:bnl	()Z
     //   261: ifeq +873 -> 1134
     //   264: lconst_1
     //   265: lstore_2
     //   266: aload 4
     //   268: lload_2
-    //   269: putfield 1110	com/tencent/mm/g/b/a/fo:ecs	J
+    //   269: putfield 1143	com/tencent/mm/g/b/a/hg:eey	J
     //   272: aload 4
     //   274: aload 5
-    //   276: invokevirtual 322	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmT	()J
-    //   279: putfield 1111	com/tencent/mm/g/b/a/fo:eaX	J
+    //   276: invokevirtual 324	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btP	()J
+    //   279: putfield 1144	com/tencent/mm/g/b/a/hg:edd	J
     //   282: aload 4
     //   284: lconst_0
-    //   285: putfield 1114	com/tencent/mm/g/b/a/fo:ecA	J
+    //   285: putfield 1147	com/tencent/mm/g/b/a/hg:eeG	J
     //   288: aload 4
     //   290: aload 4
-    //   292: ldc_w 838
-    //   295: invokestatic 381	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   298: invokestatic 843	com/tencent/mm/plugin/appbrand/report/q:dC	(Landroid/content/Context;)Ljava/lang/String;
+    //   292: ldc_w 840
+    //   295: invokestatic 383	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   298: invokestatic 845	com/tencent/mm/plugin/appbrand/report/p:dL	(Landroid/content/Context;)Ljava/lang/String;
     //   301: iconst_1
-    //   302: invokevirtual 1079	com/tencent/mm/g/b/a/fo:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   305: putfield 1115	com/tencent/mm/g/b/a/fo:eaK	Ljava/lang/String;
+    //   302: invokevirtual 1112	com/tencent/mm/g/b/a/hg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   305: putfield 1148	com/tencent/mm/g/b/a/hg:ecQ	Ljava/lang/String;
     //   308: aload_1
-    //   309: invokevirtual 978	com/tencent/mm/plugin/appbrand/o:aNb	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
-    //   312: getfield 1119	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:cfV	Ljava/util/List;
+    //   309: invokevirtual 980	com/tencent/mm/plugin/appbrand/o:aTR	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
+    //   312: getfield 1152	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:ccS	Ljava/util/List;
     //   315: astore 6
     //   317: aload_1
-    //   318: invokevirtual 978	com/tencent/mm/plugin/appbrand/o:aNb	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
-    //   321: getfield 1008	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:jdS	Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
-    //   324: getfield 1123	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:iOV	Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;
+    //   318: invokevirtual 980	com/tencent/mm/plugin/appbrand/o:aTR	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
+    //   321: getfield 1010	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:jEg	Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
+    //   324: getfield 1156	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:jpf	Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;
     //   327: astore 7
     //   329: aload 6
     //   331: ifnull +833 -> 1164
     //   334: aload 6
-    //   336: invokeinterface 1127 1 0
+    //   336: invokeinterface 1160 1 0
     //   341: ifle +823 -> 1164
     //   344: aload 4
     //   346: lconst_1
-    //   347: putfield 1130	com/tencent/mm/g/b/a/fo:ecB	J
+    //   347: putfield 1163	com/tencent/mm/g/b/a/hg:eeH	J
     //   350: aload 4
     //   352: aload 5
-    //   354: getfield 180	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltQ	J
-    //   357: putfield 1131	com/tencent/mm/g/b/a/fo:ect	J
+    //   354: getfield 182	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVK	J
+    //   357: putfield 1164	com/tencent/mm/g/b/a/hg:eez	J
     //   360: aload 5
-    //   362: invokevirtual 1134	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmV	()Z
+    //   362: invokevirtual 1167	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btR	()Z
     //   365: ifeq +847 -> 1212
     //   368: lconst_1
     //   369: lstore_2
     //   370: aload 4
     //   372: lload_2
-    //   373: putfield 1137	com/tencent/mm/g/b/a/fo:ecC	J
+    //   373: putfield 1170	com/tencent/mm/g/b/a/hg:eeI	J
     //   376: aload 4
     //   378: aload_1
-    //   379: getfield 427	com/tencent/mm/plugin/appbrand/o:iGo	I
+    //   379: getfield 429	com/tencent/mm/plugin/appbrand/o:jgq	I
     //   382: i2l
-    //   383: putfield 1138	com/tencent/mm/g/b/a/fo:ecj	J
+    //   383: putfield 1171	com/tencent/mm/g/b/a/hg:eep	J
     //   386: aload_1
-    //   387: invokevirtual 88	com/tencent/mm/plugin/appbrand/o:aNc	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;
-    //   390: getfield 1141	com/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC:jdw	Z
+    //   387: invokevirtual 92	com/tencent/mm/plugin/appbrand/o:aTS	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;
+    //   390: getfield 1174	com/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC:jDJ	Z
     //   393: ifeq +824 -> 1217
     //   396: lconst_1
     //   397: lstore_2
     //   398: aload 4
     //   400: lload_2
-    //   401: putfield 1144	com/tencent/mm/g/b/a/fo:ecZ	J
+    //   401: putfield 1177	com/tencent/mm/g/b/a/hg:eff	J
     //   404: aload_1
-    //   405: invokevirtual 1148	com/tencent/mm/plugin/appbrand/o:aLC	()Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
+    //   405: invokevirtual 1181	com/tencent/mm/plugin/appbrand/o:aSt	()Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;
     //   408: astore 6
     //   410: aload 6
     //   412: ifnull +810 -> 1222
     //   415: aload 4
     //   417: aload 4
-    //   419: ldc_w 1150
+    //   419: ldc_w 1183
     //   422: aload 6
-    //   424: invokeinterface 1155 1 0
+    //   424: invokeinterface 1188 1 0
     //   429: iconst_1
-    //   430: invokevirtual 1079	com/tencent/mm/g/b/a/fo:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   433: putfield 1158	com/tencent/mm/g/b/a/fo:ecY	Ljava/lang/String;
+    //   430: invokevirtual 1112	com/tencent/mm/g/b/a/hg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   433: putfield 1191	com/tencent/mm/g/b/a/hg:efe	Ljava/lang/String;
     //   436: aload 4
     //   438: aload 5
-    //   440: getfield 331	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltG	J
-    //   443: putfield 1159	com/tencent/mm/g/b/a/fo:ecu	J
+    //   440: getfield 333	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVA	J
+    //   443: putfield 1192	com/tencent/mm/g/b/a/hg:eeA	J
     //   446: aload 4
     //   448: aload 5
-    //   450: invokevirtual 850	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmX	()J
-    //   453: putfield 1160	com/tencent/mm/g/b/a/fo:ecS	J
+    //   450: invokevirtual 852	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btT	()J
+    //   453: putfield 1193	com/tencent/mm/g/b/a/hg:eeY	J
     //   456: aload 4
-    //   458: invokevirtual 1161	com/tencent/mm/g/b/a/fo:aBj	()Z
+    //   458: invokevirtual 1194	com/tencent/mm/g/b/a/hg:aHZ	()Z
     //   461: pop
-    //   462: invokestatic 859	com/tencent/mm/plugin/appbrand/debugger/DebuggerShell:aTY	()Z
+    //   462: invokestatic 861	com/tencent/mm/plugin/appbrand/debugger/DebuggerShell:baW	()Z
     //   465: ifeq +64 -> 529
     //   468: aload 5
-    //   470: getfield 304	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltU	Z
+    //   470: getfield 306	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVO	Z
     //   473: ifeq +771 -> 1244
     //   476: lconst_1
     //   477: lstore_2
-    //   478: ldc_w 1163
+    //   478: ldc_w 1196
     //   481: iconst_2
     //   482: anewarray 4	java/lang/Object
     //   485: dup
     //   486: iconst_0
-    //   487: ldc_w 1165
+    //   487: ldc_w 1198
     //   490: aastore
     //   491: dup
     //   492: iconst_1
     //   493: lload_2
-    //   494: invokestatic 760	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   494: invokestatic 762	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   497: aastore
-    //   498: invokestatic 1169	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   498: invokestatic 1202	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   501: astore 5
     //   503: aload 4
-    //   505: getfield 1080	com/tencent/mm/g/b/a/fo:eag	Ljava/lang/String;
-    //   508: ldc_w 1171
-    //   511: ldc_w 1173
+    //   505: getfield 1113	com/tencent/mm/g/b/a/hg:ecm	Ljava/lang/String;
+    //   508: ldc_w 1204
+    //   511: ldc_w 1206
     //   514: aload 4
-    //   516: getfield 1104	com/tencent/mm/g/b/a/fo:ebq	J
+    //   516: getfield 1137	com/tencent/mm/g/b/a/hg:edw	J
     //   519: aload 4
-    //   521: getfield 1103	com/tencent/mm/g/b/a/fo:ebr	J
+    //   521: getfield 1136	com/tencent/mm/g/b/a/hg:edx	J
     //   524: aload 5
-    //   526: invokestatic 1176	com/tencent/mm/plugin/appbrand/performance/c:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;)V
-    //   529: new 1178	com/tencent/mm/g/b/a/gg
+    //   526: invokestatic 1209	com/tencent/mm/plugin/appbrand/performance/c:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;)V
+    //   529: new 1211	com/tencent/mm/g/b/a/hy
     //   532: dup
-    //   533: invokespecial 1179	com/tencent/mm/g/b/a/gg:<init>	()V
+    //   533: invokespecial 1212	com/tencent/mm/g/b/a/hy:<init>	()V
     //   536: astore 4
     //   538: aload_0
     //   539: iconst_1
-    //   540: invokestatic 210	com/tencent/mm/plugin/appbrand/report/quality/a:ax	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
+    //   540: invokestatic 212	com/tencent/mm/plugin/appbrand/report/quality/a:ay	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
     //   543: astore 5
     //   545: aload 5
     //   547: ifnull +256 -> 803
     //   550: aload 5
-    //   552: invokestatic 151	java/lang/System:currentTimeMillis	()J
-    //   555: putfield 1182	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltF	J
+    //   552: invokestatic 155	java/lang/System:currentTimeMillis	()J
+    //   555: putfield 1215	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVz	J
     //   558: aload 4
     //   560: aload 4
-    //   562: ldc 231
+    //   562: ldc 233
     //   564: aload 5
-    //   566: getfield 193	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:appId	Ljava/lang/String;
+    //   566: getfield 195	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:appId	Ljava/lang/String;
     //   569: iconst_1
-    //   570: invokevirtual 1183	com/tencent/mm/g/b/a/gg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   573: putfield 1184	com/tencent/mm/g/b/a/gg:eag	Ljava/lang/String;
+    //   570: invokevirtual 1216	com/tencent/mm/g/b/a/hy:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   573: putfield 1217	com/tencent/mm/g/b/a/hy:ecm	Ljava/lang/String;
     //   576: aload 4
     //   578: aload 4
-    //   580: ldc 219
+    //   580: ldc 221
     //   582: aload 5
-    //   584: getfield 222	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:kGa	Ljava/lang/String;
+    //   584: getfield 224	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lht	Ljava/lang/String;
     //   587: iconst_1
-    //   588: invokevirtual 1183	com/tencent/mm/g/b/a/gg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   591: putfield 1185	com/tencent/mm/g/b/a/gg:dYa	Ljava/lang/String;
+    //   588: invokevirtual 1216	com/tencent/mm/g/b/a/hy:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   591: putfield 1218	com/tencent/mm/g/b/a/hy:dZT	Ljava/lang/String;
     //   594: aload 4
     //   596: aload 5
-    //   598: getfield 243	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lrW	I
-    //   601: invokestatic 1191	com/tencent/mm/g/b/a/gg$a:jn	(I)Lcom/tencent/mm/g/b/a/gg$a;
-    //   604: putfield 1195	com/tencent/mm/g/b/a/gg:egD	Lcom/tencent/mm/g/b/a/gg$a;
+    //   598: getfield 245	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lTR	I
+    //   601: invokestatic 1224	com/tencent/mm/g/b/a/hy$a:jl	(I)Lcom/tencent/mm/g/b/a/hy$a;
+    //   604: putfield 1228	com/tencent/mm/g/b/a/hy:eiJ	Lcom/tencent/mm/g/b/a/hy$a;
     //   607: aload 4
     //   609: aload 5
-    //   611: getfield 256	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:apptype	I
+    //   611: getfield 258	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:apptype	I
     //   614: i2l
-    //   615: putfield 1196	com/tencent/mm/g/b/a/gg:eai	J
+    //   615: putfield 1229	com/tencent/mm/g/b/a/hy:eco	J
     //   618: aload 4
     //   620: aload 5
-    //   622: getfield 237	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lty	I
+    //   622: getfield 239	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVs	I
     //   625: i2l
-    //   626: putfield 1197	com/tencent/mm/g/b/a/gg:dYT	J
+    //   626: putfield 1230	com/tencent/mm/g/b/a/hy:eaM	J
     //   629: aload 4
     //   631: aload 5
-    //   633: getfield 364	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:scene	I
+    //   633: getfield 366	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:scene	I
     //   636: i2l
-    //   637: putfield 1198	com/tencent/mm/g/b/a/gg:dKe	J
+    //   637: putfield 1231	com/tencent/mm/g/b/a/hy:dHY	J
     //   640: aload 4
     //   642: aload 5
-    //   644: getfield 899	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltD	J
-    //   647: invokevirtual 1202	com/tencent/mm/g/b/a/gg:jZ	(J)Lcom/tencent/mm/g/b/a/gg;
+    //   644: getfield 901	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVx	J
+    //   647: invokevirtual 1235	com/tencent/mm/g/b/a/hy:nB	(J)Lcom/tencent/mm/g/b/a/hy;
     //   650: pop
     //   651: aload 4
-    //   653: invokevirtual 1206	com/tencent/mm/g/b/a/gg:Sk	()Lcom/tencent/mm/g/b/a/gg;
+    //   653: invokevirtual 1239	com/tencent/mm/g/b/a/hy:Td	()Lcom/tencent/mm/g/b/a/hy;
     //   656: pop
     //   657: aload 4
     //   659: aload 4
-    //   661: getfield 1207	com/tencent/mm/g/b/a/gg:ebr	J
+    //   661: getfield 1240	com/tencent/mm/g/b/a/hy:edx	J
     //   664: aload 5
-    //   666: getfield 899	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltD	J
+    //   666: getfield 901	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVx	J
     //   669: lsub
-    //   670: invokevirtual 1210	com/tencent/mm/g/b/a/gg:jY	(J)Lcom/tencent/mm/g/b/a/gg;
+    //   670: invokevirtual 1243	com/tencent/mm/g/b/a/hy:nA	(J)Lcom/tencent/mm/g/b/a/hy;
     //   673: pop
     //   674: aload 4
     //   676: aload 5
-    //   678: invokevirtual 322	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmT	()J
-    //   681: putfield 1211	com/tencent/mm/g/b/a/gg:eaX	J
+    //   678: invokevirtual 324	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btP	()J
+    //   681: putfield 1244	com/tencent/mm/g/b/a/hy:edd	J
     //   684: aload 4
     //   686: aload 4
-    //   688: ldc_w 285
+    //   688: ldc_w 287
     //   691: aload_1
-    //   692: invokevirtual 824	com/tencent/mm/plugin/appbrand/o:aNd	()Lcom/tencent/mm/plugin/appbrand/page/u;
-    //   695: invokevirtual 829	com/tencent/mm/plugin/appbrand/page/u:getCurrentUrl	()Ljava/lang/String;
-    //   698: invokestatic 298	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   692: invokevirtual 826	com/tencent/mm/plugin/appbrand/o:aTT	()Lcom/tencent/mm/plugin/appbrand/page/v;
+    //   695: invokevirtual 831	com/tencent/mm/plugin/appbrand/page/v:getCurrentUrl	()Ljava/lang/String;
+    //   698: invokestatic 300	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;)Ljava/lang/String;
     //   701: iconst_1
-    //   702: invokevirtual 1183	com/tencent/mm/g/b/a/gg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   705: putfield 1212	com/tencent/mm/g/b/a/gg:ecr	Ljava/lang/String;
+    //   702: invokevirtual 1216	com/tencent/mm/g/b/a/hy:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   705: putfield 1245	com/tencent/mm/g/b/a/hy:eex	Ljava/lang/String;
     //   708: aload 4
     //   710: lconst_0
-    //   711: putfield 1213	com/tencent/mm/g/b/a/gg:ecA	J
+    //   711: putfield 1246	com/tencent/mm/g/b/a/hy:eeG	J
     //   714: aload 4
     //   716: aload 4
-    //   718: ldc_w 838
-    //   721: invokestatic 381	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   724: invokestatic 843	com/tencent/mm/plugin/appbrand/report/q:dC	(Landroid/content/Context;)Ljava/lang/String;
+    //   718: ldc_w 840
+    //   721: invokestatic 383	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   724: invokestatic 845	com/tencent/mm/plugin/appbrand/report/p:dL	(Landroid/content/Context;)Ljava/lang/String;
     //   727: iconst_1
-    //   728: invokevirtual 1183	com/tencent/mm/g/b/a/gg:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   731: putfield 1214	com/tencent/mm/g/b/a/gg:eaK	Ljava/lang/String;
+    //   728: invokevirtual 1216	com/tencent/mm/g/b/a/hy:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   731: putfield 1247	com/tencent/mm/g/b/a/hy:ecQ	Ljava/lang/String;
     //   734: aload 4
     //   736: aload 5
-    //   738: getfield 180	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltQ	J
-    //   741: putfield 1215	com/tencent/mm/g/b/a/gg:ect	J
+    //   738: getfield 182	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVK	J
+    //   741: putfield 1248	com/tencent/mm/g/b/a/hy:eez	J
     //   744: aload 5
-    //   746: invokevirtual 1134	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmV	()Z
+    //   746: invokevirtual 1167	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btR	()Z
     //   749: ifeq +500 -> 1249
     //   752: lconst_1
     //   753: lstore_2
     //   754: aload 4
     //   756: lload_2
-    //   757: putfield 1216	com/tencent/mm/g/b/a/gg:ecC	J
+    //   757: putfield 1249	com/tencent/mm/g/b/a/hy:eeI	J
     //   760: aload 4
     //   762: aload 5
-    //   764: invokevirtual 850	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmX	()J
-    //   767: putfield 1217	com/tencent/mm/g/b/a/gg:ecS	J
+    //   764: invokevirtual 852	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btT	()J
+    //   767: putfield 1250	com/tencent/mm/g/b/a/hy:eeY	J
     //   770: aload 4
-    //   772: invokevirtual 1218	com/tencent/mm/g/b/a/gg:aBj	()Z
+    //   772: invokevirtual 1251	com/tencent/mm/g/b/a/hy:aHZ	()Z
     //   775: pop
-    //   776: invokestatic 859	com/tencent/mm/plugin/appbrand/debugger/DebuggerShell:aTY	()Z
+    //   776: invokestatic 861	com/tencent/mm/plugin/appbrand/debugger/DebuggerShell:baW	()Z
     //   779: ifeq +24 -> 803
     //   782: aload 4
-    //   784: getfield 1184	com/tencent/mm/g/b/a/gg:eag	Ljava/lang/String;
-    //   787: ldc_w 1220
+    //   784: getfield 1217	com/tencent/mm/g/b/a/hy:ecm	Ljava/lang/String;
+    //   787: ldc_w 1253
     //   790: aload 4
-    //   792: getfield 1221	com/tencent/mm/g/b/a/gg:ebq	J
+    //   792: getfield 1254	com/tencent/mm/g/b/a/hy:edw	J
     //   795: aload 4
-    //   797: getfield 1207	com/tencent/mm/g/b/a/gg:ebr	J
-    //   800: invokestatic 867	com/tencent/mm/plugin/appbrand/performance/c:b	(Ljava/lang/String;Ljava/lang/String;JJ)V
-    //   803: new 1223	com/tencent/mm/g/b/a/fl
+    //   797: getfield 1240	com/tencent/mm/g/b/a/hy:edx	J
+    //   800: invokestatic 869	com/tencent/mm/plugin/appbrand/performance/c:b	(Ljava/lang/String;Ljava/lang/String;JJ)V
+    //   803: new 1256	com/tencent/mm/g/b/a/hd
     //   806: dup
-    //   807: invokespecial 1224	com/tencent/mm/g/b/a/fl:<init>	()V
+    //   807: invokespecial 1257	com/tencent/mm/g/b/a/hd:<init>	()V
     //   810: astore 4
     //   812: aload_0
     //   813: iconst_1
-    //   814: invokestatic 210	com/tencent/mm/plugin/appbrand/report/quality/a:ax	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
+    //   814: invokestatic 212	com/tencent/mm/plugin/appbrand/report/quality/a:ay	(Ljava/lang/String;Z)Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;
     //   817: astore 5
     //   819: aload 5
     //   821: ifnull +275 -> 1096
     //   824: aload 4
     //   826: aload 4
-    //   828: ldc 231
+    //   828: ldc 233
     //   830: aload 5
-    //   832: getfield 193	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:appId	Ljava/lang/String;
+    //   832: getfield 195	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:appId	Ljava/lang/String;
     //   835: iconst_1
-    //   836: invokevirtual 1225	com/tencent/mm/g/b/a/fl:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   839: putfield 1226	com/tencent/mm/g/b/a/fl:eag	Ljava/lang/String;
+    //   836: invokevirtual 1258	com/tencent/mm/g/b/a/hd:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   839: putfield 1259	com/tencent/mm/g/b/a/hd:ecm	Ljava/lang/String;
     //   842: aload 4
     //   844: aload 4
-    //   846: ldc 219
+    //   846: ldc 221
     //   848: aload 5
-    //   850: getfield 222	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:kGa	Ljava/lang/String;
+    //   850: getfield 224	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lht	Ljava/lang/String;
     //   853: iconst_1
-    //   854: invokevirtual 1225	com/tencent/mm/g/b/a/fl:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   857: putfield 1227	com/tencent/mm/g/b/a/fl:dYa	Ljava/lang/String;
+    //   854: invokevirtual 1258	com/tencent/mm/g/b/a/hd:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   857: putfield 1260	com/tencent/mm/g/b/a/hd:dZT	Ljava/lang/String;
     //   860: aload 4
     //   862: aload 5
-    //   864: getfield 243	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lrW	I
-    //   867: invokestatic 1233	com/tencent/mm/g/b/a/fl$a:iU	(I)Lcom/tencent/mm/g/b/a/fl$a;
-    //   870: putfield 1237	com/tencent/mm/g/b/a/fl:ecz	Lcom/tencent/mm/g/b/a/fl$a;
+    //   864: getfield 245	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lTR	I
+    //   867: invokestatic 1266	com/tencent/mm/g/b/a/hd$a:iS	(I)Lcom/tencent/mm/g/b/a/hd$a;
+    //   870: putfield 1270	com/tencent/mm/g/b/a/hd:eeF	Lcom/tencent/mm/g/b/a/hd$a;
     //   873: aload 4
     //   875: aload 5
-    //   877: getfield 256	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:apptype	I
+    //   877: getfield 258	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:apptype	I
     //   880: i2l
-    //   881: putfield 1238	com/tencent/mm/g/b/a/fl:eai	J
+    //   881: putfield 1271	com/tencent/mm/g/b/a/hd:eco	J
     //   884: aload 4
     //   886: aload 5
-    //   888: getfield 237	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lty	I
+    //   888: getfield 239	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVs	I
     //   891: i2l
-    //   892: putfield 1239	com/tencent/mm/g/b/a/fl:dYT	J
+    //   892: putfield 1272	com/tencent/mm/g/b/a/hd:eaM	J
     //   895: aload 4
     //   897: aload 5
-    //   899: getfield 364	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:scene	I
+    //   899: getfield 366	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:scene	I
     //   902: i2l
-    //   903: putfield 1240	com/tencent/mm/g/b/a/fl:dKe	J
+    //   903: putfield 1273	com/tencent/mm/g/b/a/hd:dHY	J
     //   906: aload 4
     //   908: aload 5
-    //   910: getfield 786	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltE	J
-    //   913: invokevirtual 1244	com/tencent/mm/g/b/a/fl:it	(J)Lcom/tencent/mm/g/b/a/fl;
+    //   910: getfield 788	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVy	J
+    //   913: invokevirtual 1277	com/tencent/mm/g/b/a/hd:lV	(J)Lcom/tencent/mm/g/b/a/hd;
     //   916: pop
     //   917: aload 4
-    //   919: invokevirtual 1248	com/tencent/mm/g/b/a/fl:RY	()Lcom/tencent/mm/g/b/a/fl;
+    //   919: invokevirtual 1281	com/tencent/mm/g/b/a/hd:SR	()Lcom/tencent/mm/g/b/a/hd;
     //   922: pop
     //   923: aload 4
     //   925: aload 4
-    //   927: getfield 1249	com/tencent/mm/g/b/a/fl:ebr	J
+    //   927: getfield 1282	com/tencent/mm/g/b/a/hd:edx	J
     //   930: aload 5
-    //   932: getfield 786	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltE	J
+    //   932: getfield 788	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVy	J
     //   935: lsub
-    //   936: invokevirtual 1252	com/tencent/mm/g/b/a/fl:is	(J)Lcom/tencent/mm/g/b/a/fl;
+    //   936: invokevirtual 1285	com/tencent/mm/g/b/a/hd:lU	(J)Lcom/tencent/mm/g/b/a/hd;
     //   939: pop
     //   940: aload 4
     //   942: aload 5
-    //   944: invokevirtual 322	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmT	()J
-    //   947: putfield 1253	com/tencent/mm/g/b/a/fl:eaX	J
+    //   944: invokevirtual 324	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btP	()J
+    //   947: putfield 1286	com/tencent/mm/g/b/a/hd:edd	J
     //   950: aload 4
     //   952: aload 4
-    //   954: ldc_w 285
+    //   954: ldc_w 287
     //   957: aload_1
-    //   958: invokevirtual 824	com/tencent/mm/plugin/appbrand/o:aNd	()Lcom/tencent/mm/plugin/appbrand/page/u;
-    //   961: invokevirtual 829	com/tencent/mm/plugin/appbrand/page/u:getCurrentUrl	()Ljava/lang/String;
-    //   964: invokestatic 298	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;)Ljava/lang/String;
+    //   958: invokevirtual 826	com/tencent/mm/plugin/appbrand/o:aTT	()Lcom/tencent/mm/plugin/appbrand/page/v;
+    //   961: invokevirtual 831	com/tencent/mm/plugin/appbrand/page/v:getCurrentUrl	()Ljava/lang/String;
+    //   964: invokestatic 300	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;)Ljava/lang/String;
     //   967: iconst_1
-    //   968: invokevirtual 1225	com/tencent/mm/g/b/a/fl:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   971: putfield 1254	com/tencent/mm/g/b/a/fl:ecr	Ljava/lang/String;
+    //   968: invokevirtual 1258	com/tencent/mm/g/b/a/hd:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   971: putfield 1287	com/tencent/mm/g/b/a/hd:eex	Ljava/lang/String;
     //   974: aload 4
     //   976: lconst_0
-    //   977: putfield 1255	com/tencent/mm/g/b/a/fl:ecA	J
+    //   977: putfield 1288	com/tencent/mm/g/b/a/hd:eeG	J
     //   980: aload 4
     //   982: aload 4
-    //   984: ldc_w 838
-    //   987: invokestatic 381	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
-    //   990: invokestatic 843	com/tencent/mm/plugin/appbrand/report/q:dC	(Landroid/content/Context;)Ljava/lang/String;
+    //   984: ldc_w 840
+    //   987: invokestatic 383	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   990: invokestatic 845	com/tencent/mm/plugin/appbrand/report/p:dL	(Landroid/content/Context;)Ljava/lang/String;
     //   993: iconst_1
-    //   994: invokevirtual 1225	com/tencent/mm/g/b/a/fl:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-    //   997: putfield 1256	com/tencent/mm/g/b/a/fl:eaK	Ljava/lang/String;
+    //   994: invokevirtual 1258	com/tencent/mm/g/b/a/hd:t	(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+    //   997: putfield 1289	com/tencent/mm/g/b/a/hd:ecQ	Ljava/lang/String;
     //   1000: aload_1
-    //   1001: invokevirtual 978	com/tencent/mm/plugin/appbrand/o:aNb	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
-    //   1004: getfield 1119	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:cfV	Ljava/util/List;
+    //   1001: invokevirtual 980	com/tencent/mm/plugin/appbrand/o:aTR	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
+    //   1004: getfield 1152	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:ccS	Ljava/util/List;
     //   1007: astore 6
     //   1009: aload_1
-    //   1010: invokevirtual 978	com/tencent/mm/plugin/appbrand/o:aNb	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
-    //   1013: getfield 1008	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:jdS	Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
-    //   1016: getfield 1123	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:iOV	Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;
+    //   1010: invokevirtual 980	com/tencent/mm/plugin/appbrand/o:aTR	()Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;
+    //   1013: getfield 1010	com/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC:jEg	Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;
+    //   1016: getfield 1156	com/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo:jpf	Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;
     //   1019: astore_1
     //   1020: aload 6
     //   1022: ifnull +232 -> 1254
     //   1025: aload 6
-    //   1027: invokeinterface 1127 1 0
+    //   1027: invokeinterface 1160 1 0
     //   1032: ifle +222 -> 1254
     //   1035: aload 4
     //   1037: lconst_1
-    //   1038: putfield 1257	com/tencent/mm/g/b/a/fl:ecB	J
+    //   1038: putfield 1290	com/tencent/mm/g/b/a/hd:eeH	J
     //   1041: aload 4
     //   1043: aload 5
-    //   1045: getfield 180	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:ltQ	J
-    //   1048: putfield 1258	com/tencent/mm/g/b/a/fl:ect	J
+    //   1045: getfield 182	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:lVK	J
+    //   1048: putfield 1291	com/tencent/mm/g/b/a/hd:eez	J
     //   1051: aload 5
-    //   1053: invokevirtual 1134	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:bmV	()Z
+    //   1053: invokevirtual 1167	com/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime:btR	()Z
     //   1056: ifeq +241 -> 1297
     //   1059: lconst_1
     //   1060: lstore_2
     //   1061: aload 4
     //   1063: lload_2
-    //   1064: putfield 1259	com/tencent/mm/g/b/a/fl:ecC	J
+    //   1064: putfield 1292	com/tencent/mm/g/b/a/hd:eeI	J
     //   1067: aload 4
-    //   1069: invokevirtual 1260	com/tencent/mm/g/b/a/fl:aBj	()Z
+    //   1069: invokevirtual 1293	com/tencent/mm/g/b/a/hd:aHZ	()Z
     //   1072: pop
-    //   1073: invokestatic 859	com/tencent/mm/plugin/appbrand/debugger/DebuggerShell:aTY	()Z
+    //   1073: invokestatic 861	com/tencent/mm/plugin/appbrand/debugger/DebuggerShell:baW	()Z
     //   1076: ifeq +20 -> 1096
     //   1079: aload_0
-    //   1080: ldc_w 1262
+    //   1080: ldc_w 1295
     //   1083: aload 4
-    //   1085: getfield 1263	com/tencent/mm/g/b/a/fl:ebq	J
+    //   1085: getfield 1296	com/tencent/mm/g/b/a/hd:edw	J
     //   1088: aload 4
-    //   1090: getfield 1249	com/tencent/mm/g/b/a/fl:ebr	J
-    //   1093: invokestatic 867	com/tencent/mm/plugin/appbrand/performance/c:b	(Ljava/lang/String;Ljava/lang/String;JJ)V
-    //   1096: ldc_w 1071
-    //   1099: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1090: getfield 1282	com/tencent/mm/g/b/a/hd:edx	J
+    //   1093: invokestatic 869	com/tencent/mm/plugin/appbrand/performance/c:b	(Ljava/lang/String;Ljava/lang/String;JJ)V
+    //   1096: ldc_w 1104
+    //   1099: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1102: return
     //   1103: astore 6
-    //   1105: ldc 59
-    //   1107: ldc_w 1265
+    //   1105: ldc 63
+    //   1107: ldc_w 1298
     //   1110: iconst_2
     //   1111: anewarray 4	java/lang/Object
     //   1114: dup
@@ -1138,7 +1171,7 @@ public class a
     //   1119: iconst_1
     //   1120: aload 6
     //   1122: aastore
-    //   1123: invokestatic 214	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1123: invokestatic 216	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1126: goto -897 -> 229
     //   1129: lconst_0
     //   1130: lstore_2
@@ -1146,35 +1179,35 @@ public class a
     //   1134: lconst_0
     //   1135: lstore_2
     //   1136: goto -870 -> 266
-    //   1139: getstatic 603	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
+    //   1139: getstatic 606	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
     //   1142: ifeq -870 -> 272
-    //   1145: new 605	java/lang/IllegalStateException
+    //   1145: new 608	java/lang/IllegalStateException
     //   1148: dup
-    //   1149: ldc_w 894
-    //   1152: invokespecial 610	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   1149: ldc_w 896
+    //   1152: invokespecial 613	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   1155: astore_0
-    //   1156: ldc_w 1071
-    //   1159: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1156: ldc_w 1104
+    //   1159: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1162: aload_0
     //   1163: athrow
     //   1164: aload 7
     //   1166: ifnull +37 -> 1203
     //   1169: aload 7
-    //   1171: ldc_w 1267
-    //   1174: invokevirtual 1273	com/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap:Et	(Ljava/lang/String;)Ljava/util/List;
+    //   1171: ldc_w 1300
+    //   1174: invokevirtual 1306	com/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap:Iw	(Ljava/lang/String;)Ljava/util/List;
     //   1177: astore 6
     //   1179: aload 6
     //   1181: ifnull -831 -> 350
     //   1184: aload 6
-    //   1186: invokeinterface 1127 1 0
+    //   1186: invokeinterface 1160 1 0
     //   1191: ifle -841 -> 350
     //   1194: aload 4
     //   1196: lconst_1
-    //   1197: putfield 1130	com/tencent/mm/g/b/a/fo:ecB	J
+    //   1197: putfield 1163	com/tencent/mm/g/b/a/hg:eeH	J
     //   1200: goto -850 -> 350
     //   1203: aload 4
     //   1205: lconst_0
-    //   1206: putfield 1130	com/tencent/mm/g/b/a/fo:ecB	J
+    //   1206: putfield 1163	com/tencent/mm/g/b/a/hg:eeH	J
     //   1209: goto -859 -> 350
     //   1212: lconst_0
     //   1213: lstore_2
@@ -1182,16 +1215,16 @@ public class a
     //   1217: lconst_0
     //   1218: lstore_2
     //   1219: goto -821 -> 398
-    //   1222: ldc 59
-    //   1224: ldc_w 1275
+    //   1222: ldc 63
+    //   1224: ldc_w 1308
     //   1227: iconst_1
     //   1228: anewarray 4	java/lang/Object
     //   1231: dup
     //   1232: iconst_0
     //   1233: aload_1
-    //   1234: getfield 67	com/tencent/mm/plugin/appbrand/AppBrandRuntime:mAppId	Ljava/lang/String;
+    //   1234: getfield 71	com/tencent/mm/plugin/appbrand/AppBrandRuntime:mAppId	Ljava/lang/String;
     //   1237: aastore
-    //   1238: invokestatic 1278	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1238: invokestatic 1311	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1241: goto -805 -> 436
     //   1244: lconst_0
     //   1245: lstore_2
@@ -1202,21 +1235,21 @@ public class a
     //   1254: aload_1
     //   1255: ifnull +33 -> 1288
     //   1258: aload_1
-    //   1259: ldc_w 1267
-    //   1262: invokevirtual 1273	com/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap:Et	(Ljava/lang/String;)Ljava/util/List;
+    //   1259: ldc_w 1300
+    //   1262: invokevirtual 1306	com/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap:Iw	(Ljava/lang/String;)Ljava/util/List;
     //   1265: astore_1
     //   1266: aload_1
     //   1267: ifnull -226 -> 1041
     //   1270: aload_1
-    //   1271: invokeinterface 1127 1 0
+    //   1271: invokeinterface 1160 1 0
     //   1276: ifle -235 -> 1041
     //   1279: aload 4
     //   1281: lconst_1
-    //   1282: putfield 1257	com/tencent/mm/g/b/a/fl:ecB	J
+    //   1282: putfield 1290	com/tencent/mm/g/b/a/hd:eeH	J
     //   1285: goto -244 -> 1041
     //   1288: aload 4
     //   1290: lconst_0
-    //   1291: putfield 1257	com/tencent/mm/g/b/a/fl:ecB	J
+    //   1291: putfield 1290	com/tencent/mm/g/b/a/hd:eeH	J
     //   1294: goto -253 -> 1041
     //   1297: lconst_0
     //   1298: lstore_2
@@ -1253,54 +1286,54 @@ public class a
       public final void run()
       {
         AppMethodBeat.i(48187);
-        QualitySessionRuntime localQualitySessionRuntime = a.ME(this.iHZ);
+        QualitySessionRuntime localQualitySessionRuntime = a.QN(this.jib);
         if ((localQualitySessionRuntime != null) && (paramb != null))
         {
           Object localObject;
-          if ((paramb.loB != null) && (paramb.loB.EJr != 0))
+          if ((paramb.lQB != null) && (paramb.lQB.GgD != 0))
           {
-            ad.i("MicroMsg.AppBrandQualitySystem", "hy: need do sample, type: %d, sampleInterval: %d", new Object[] { Integer.valueOf(paramb.loB.EJr), Integer.valueOf(paramb.loB.EJs) });
+            ac.i("MicroMsg.AppBrandQualitySystem", "hy: need do sample, type: %d, sampleInterval: %d", new Object[] { Integer.valueOf(paramb.lQB.GgD), Integer.valueOf(paramb.lQB.GgE) });
             localObject = null;
-            switch (paramb.loB.EJr)
+            switch (paramb.lQB.GgD)
             {
             default: 
-              ad.e("MicroMsg.AppBrandQualitySystem", "hy: invalid type!!");
+              ac.e("MicroMsg.AppBrandQualitySystem", "hy: invalid type!!");
             }
           }
           for (;;)
           {
             if (localObject != null) {
-              localQualitySessionRuntime.ltK.a(localQualitySessionRuntime, paramb.loB.EJs, (e.a)localObject, true);
+              localQualitySessionRuntime.lVE.a(localQualitySessionRuntime, paramb.lQB.GgE, (e.a)localObject, true);
             }
-            if ((paramb.loD == null) || (!paramb.loD.EJo)) {
+            if ((paramb.lQD == null) || (!paramb.lQD.GgA)) {
               break label324;
             }
-            localObject = com.tencent.luggage.game.e.a.CL();
-            boolean bool = paramb.loD.EJo;
-            int i = paramb.loD.EJp;
-            double d = paramb.loD.EJq;
+            localObject = com.tencent.luggage.game.e.a.Cp();
+            boolean bool = paramb.lQD.GgA;
+            int i = paramb.lQD.GgB;
+            double d = paramb.lQD.GgC;
             try
             {
-              ad.i("MicroMsg.MBNiReporter", "setConfig shouldDoSample:%b,maxSampleNum:%d,sampleRate:%f", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Double.valueOf(d) });
-              ((com.tencent.luggage.game.e.a)localObject).ceq = bool;
-              ((com.tencent.luggage.game.e.a)localObject).cer = i;
-              ((com.tencent.luggage.game.e.a)localObject).ces = d;
+              ac.i("MicroMsg.MBNiReporter", "setConfig shouldDoSample:%b,maxSampleNum:%d,sampleRate:%f", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Double.valueOf(d) });
+              ((com.tencent.luggage.game.e.a)localObject).cbn = bool;
+              ((com.tencent.luggage.game.e.a)localObject).cbo = i;
+              ((com.tencent.luggage.game.e.a)localObject).cbp = d;
               AppMethodBeat.o(48187);
               return;
-              localObject = e.a.lsQ;
+              localObject = e.a.lUK;
               continue;
-              localObject = e.a.lsR;
+              localObject = e.a.lUL;
             }
             catch (Exception localException)
             {
               for (;;)
               {
-                ad.printErrStackTrace("MicroMsg.MBNiReporter", localException, "setConfig Exception", new Object[0]);
+                ac.printErrStackTrace("MicroMsg.MBNiReporter", localException, "setConfig Exception", new Object[0]);
               }
             }
           }
         }
-        ad.i("MicroMsg.AppBrandQualitySystem", "hy: not need do sample");
+        ac.i("MicroMsg.AppBrandQualitySystem", "hy: not need do sample");
         label324:
         AppMethodBeat.o(48187);
       }
@@ -1308,13 +1341,13 @@ public class a
     AppMethodBeat.o(48193);
   }
   
-  private static QualitySessionRuntime ax(String paramString, boolean paramBoolean)
+  private static QualitySessionRuntime ay(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(48191);
     QualitySessionRuntime localQualitySessionRuntime;
-    synchronized (lsB)
+    synchronized (lUv)
     {
-      localQualitySessionRuntime = (QualitySessionRuntime)lsB.get(paramString);
+      localQualitySessionRuntime = (QualitySessionRuntime)lUv.get(paramString);
       if (localQualitySessionRuntime != null) {
         break label108;
       }
@@ -1326,25 +1359,25 @@ public class a
         throw paramString;
       }
     }
-    ad.printErrStackTrace("MicroMsg.AppBrandQualitySystem", new Throwable(), paramString, new Object[0]);
+    ac.printErrStackTrace("MicroMsg.AppBrandQualitySystem", new Throwable(), paramString, new Object[0]);
     label108:
     AppMethodBeat.o(48191);
     return localQualitySessionRuntime;
   }
   
-  public static b bmM()
+  public static b btI()
   {
-    return lsA;
+    return lUu;
   }
   
   public static final class a
   {
-    boolean lsG = false;
+    boolean lUA = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.a
  * JD-Core Version:    0.7.0.1
  */

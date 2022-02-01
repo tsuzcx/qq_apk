@@ -6,31 +6,31 @@ import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class g$b
 {
-  private static boolean cZe;
-  private static boolean cZf;
+  private static boolean cWA;
+  private static boolean cWB;
   
   static
   {
     AppMethodBeat.i(130007);
-    cZe = false;
-    cZf = false;
+    cWA = false;
+    cWB = false;
     init();
     AppMethodBeat.o(130007);
   }
   
-  public static boolean Oq()
+  public static boolean Om()
   {
-    return cZe;
+    return cWA;
   }
   
-  public static boolean Or()
+  public static boolean On()
   {
-    return cZf;
+    return cWB;
   }
   
   public static void init()
@@ -38,68 +38,68 @@ public final class g$b
     AppMethodBeat.i(177008);
     b localb = (b)com.tencent.mm.kernel.g.ab(b.class);
     if (localb != null) {
-      if (localb.a(b.a.pwb, 1) != 1) {}
+      if (localb.a(b.a.qap, 1) != 1) {}
     }
     for (boolean bool = true;; bool = true)
     {
-      ad.i("MicroMsg.RecorderUtil", "load wechatvoicesilk, ignore cpu: %s", new Object[] { Boolean.valueOf(bool) });
-      int i = m.WG();
-      ad.i("MicroMsg.RecorderUtil", "abi: %s, abi2: %s, cpuFlag: %d", new Object[] { Build.CPU_ABI, Build.CPU_ABI2, Integer.valueOf(i) });
+      ac.i("MicroMsg.RecorderUtil", "load wechatvoicesilk, ignore cpu: %s", new Object[] { Boolean.valueOf(bool) });
+      int i = m.XE();
+      ac.i("MicroMsg.RecorderUtil", "abi: %s, abi2: %s, cpuFlag: %d", new Object[] { Build.CPU_ABI, Build.CPU_ABI2, Integer.valueOf(i) });
       if (bool) {}
       for (;;)
       {
         try
         {
           g.class.getClassLoader();
-          j.pq("wechatvoicesilk");
-          cZe = true;
-          cZf = true;
-          ad.i("MicroMsg.RecorderUtil", "finish load silk so, canUseSilkDecode: %b, canUseSilkEncode: %b", new Object[] { Boolean.valueOf(cZe), Boolean.valueOf(cZf) });
+          j.sC("wechatvoicesilk");
+          cWA = true;
+          cWB = true;
+          ac.i("MicroMsg.RecorderUtil", "finish load silk so, canUseSilkDecode: %b, canUseSilkEncode: %b", new Object[] { Boolean.valueOf(cWA), Boolean.valueOf(cWB) });
           AppMethodBeat.o(177008);
           return;
           bool = false;
         }
         catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
         {
-          ad.e("MicroMsg.RecorderUtil", "load library failed!");
-          cZe = false;
-          cZf = false;
+          ac.e("MicroMsg.RecorderUtil", "load library failed!");
+          cWA = false;
+          cWB = false;
           continue;
         }
-        if ((!bt.isNullOrNil(Build.CPU_ABI)) && (!Build.CPU_ABI.contains("armeabi")) && (!bt.isNullOrNil(Build.CPU_ABI2)) && (!Build.CPU_ABI2.contains("armeabi")))
+        if ((!bs.isNullOrNil(Build.CPU_ABI)) && (!Build.CPU_ABI.contains("armeabi")) && (!bs.isNullOrNil(Build.CPU_ABI2)) && (!Build.CPU_ABI2.contains("armeabi")))
         {
-          ad.i("MicroMsg.RecorderUtil", "don't contains armeabi");
-          ad.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
-          cZe = false;
-          cZf = false;
+          ac.i("MicroMsg.RecorderUtil", "don't contains armeabi");
+          ac.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
+          cWA = false;
+          cWB = false;
         }
         else if ((i & 0x400) != 0)
         {
           try
           {
             g.class.getClassLoader();
-            j.pq("wechatvoicesilk");
-            cZe = true;
-            cZf = true;
+            j.sC("wechatvoicesilk");
+            cWA = true;
+            cWB = true;
           }
           catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
           {
-            ad.e("MicroMsg.RecorderUtil", "load library failed!");
-            cZe = false;
-            cZf = false;
+            ac.e("MicroMsg.RecorderUtil", "load library failed!");
+            cWA = false;
+            cWB = false;
           }
         }
         else if ((i & 0x200) != 0)
         {
-          ad.e("voice SilkCodec", "load library failed! silk don't support armv6!!!!");
-          cZe = false;
-          cZf = false;
+          ac.e("voice SilkCodec", "load library failed! silk don't support armv6!!!!");
+          cWA = false;
+          cWB = false;
         }
         else
         {
-          ad.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
-          cZe = false;
-          cZf = false;
+          ac.e("voice SilkCodec", "load library failed! silk don't support armv5!!!!");
+          cWA = false;
+          cWB = false;
         }
       }
     }

@@ -8,38 +8,38 @@ import java.util.List;
 final class d
 {
   int backgroundColor;
-  int buC;
-  boolean buD;
-  boolean buE;
-  int buF;
-  int buG;
-  int buH;
-  int buI;
-  int buJ;
-  float buK;
-  Layout.Alignment buM;
-  String bvi;
-  String bvj;
-  List<String> bvk;
-  String bvl;
-  String iE;
+  int bsB;
+  boolean bsC;
+  boolean bsD;
+  int bsE;
+  int bsF;
+  int bsG;
+  int bsH;
+  int bsI;
+  float bsJ;
+  Layout.Alignment bsL;
+  String bth;
+  String bti;
+  List<String> btj;
+  String btk;
+  String jD;
   
   public d()
   {
     AppMethodBeat.i(92891);
-    this.bvi = "";
-    this.bvj = "";
-    this.bvk = Collections.emptyList();
-    this.bvl = "";
-    this.iE = null;
-    this.buD = false;
-    this.buE = false;
-    this.buF = -1;
-    this.buG = -1;
-    this.buH = -1;
-    this.buI = -1;
-    this.buJ = -1;
-    this.buM = null;
+    this.bth = "";
+    this.bti = "";
+    this.btj = Collections.emptyList();
+    this.btk = "";
+    this.jD = null;
+    this.bsC = false;
+    this.bsD = false;
+    this.bsE = -1;
+    this.bsF = -1;
+    this.bsG = -1;
+    this.bsH = -1;
+    this.bsI = -1;
+    this.bsL = null;
     AppMethodBeat.o(92891);
   }
   
@@ -63,13 +63,13 @@ final class d
   public final int getStyle()
   {
     int j = 0;
-    if ((this.buH == -1) && (this.buI == -1)) {
+    if ((this.bsG == -1) && (this.bsH == -1)) {
       return -1;
     }
-    if (this.buH == 1) {}
+    if (this.bsG == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.buI == 1) {
+      if (this.bsH == 1) {
         j = 2;
       }
       return i | j;

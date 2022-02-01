@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.webview.model;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.x.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.x;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 public final class ar
   extends a
 {
-  private static String aS(Intent paramIntent)
+  private static String aU(Intent paramIntent)
   {
     AppMethodBeat.i(79039);
     try
     {
-      paramIntent = URLDecoder.decode(y.getStringExtra(paramIntent, "ext_info"), "utf-8");
+      paramIntent = URLDecoder.decode(x.getStringExtra(paramIntent, "ext_info"), "utf-8");
       AppMethodBeat.o(79039);
       return paramIntent;
     }
@@ -39,8 +39,8 @@ public final class ar
     AppMethodBeat.i(79038);
     paramIntent.putExtra("type", 4);
     paramIntent.putExtra("id", "");
-    paramIntent = aS(paramIntent);
-    if (bt.isNullOrNil(paramIntent))
+    paramIntent = aU(paramIntent);
+    if (bs.isNullOrNil(paramIntent))
     {
       AppMethodBeat.o(79038);
       return;

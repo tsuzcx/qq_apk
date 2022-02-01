@@ -34,12 +34,12 @@ public final class a
     AppMethodBeat.i(61252);
     k.h(paramab, "$this$replaceAnnotations");
     k.h(paramg, "newAnnotations");
-    if ((paramab.fxF().isEmpty()) && (paramg.isEmpty()))
+    if ((paramab.fQj().isEmpty()) && (paramg.isEmpty()))
     {
       AppMethodBeat.o(61252);
       return paramab;
     }
-    paramab = (ab)paramab.fJW().b(paramg);
+    paramab = (ab)paramab.gcz().b(paramg);
     AppMethodBeat.o(61252);
     return paramab;
   }
@@ -50,11 +50,11 @@ public final class a
     k.h(paramab, "type");
     k.h(parambh, "projectionKind");
     if (paramas != null) {}
-    for (paramas = paramas.fyC();; paramas = null)
+    for (paramas = paramas.fRg();; paramas = null)
     {
       bh localbh = parambh;
       if (paramas == parambh) {
-        localbh = bh.JYC;
+        localbh = bh.LLV;
       }
       paramab = (av)new ax(localbh, paramab);
       AppMethodBeat.o(61253);
@@ -95,7 +95,7 @@ public final class a
   {
     AppMethodBeat.i(61247);
     k.h(paramab, "$this$builtIns");
-    paramab = paramab.fIW().fza();
+    paramab = paramab.gbz().fRE();
     k.g(paramab, "constructor.builtIns");
     AppMethodBeat.o(61247);
     return paramab;
@@ -114,23 +114,23 @@ public final class a
   {
     AppMethodBeat.i(61255);
     k.h(paramab, "$this$replaceArgumentsWithStarProjections");
-    bg localbg = paramab.fJW();
+    bg localbg = paramab.gcz();
     aj localaj;
     Object localObject1;
     if ((localbg instanceof v))
     {
-      localaj = ((v)localbg).JXH;
+      localaj = ((v)localbg).LLa;
       paramab = localaj;
-      if (!localaj.fIW().getParameters().isEmpty())
+      if (!localaj.gbz().getParameters().isEmpty())
       {
-        if (localaj.fIW().fxM() == null) {
+        if (localaj.gbz().fQq() == null) {
           paramab = localaj;
         }
       }
       else
       {
-        localaj = ((v)localbg).JXI;
-        if ((!localaj.fIW().getParameters().isEmpty()) && (localaj.fIW().fxM() != null)) {
+        localaj = ((v)localbg).LLb;
+        if ((!localaj.gbz().getParameters().isEmpty()) && (localaj.gbz().fQq() != null)) {
           break label218;
         }
       }
@@ -140,7 +140,7 @@ public final class a
         paramab = (ab)be.a(paramab, (ab)localbg);
         AppMethodBeat.o(61255);
         return paramab;
-        paramab = localaj.fIW().getParameters();
+        paramab = localaj.gbz().getParameters();
         k.g(paramab, "constructor.parameters");
         localObject1 = (Iterable)paramab;
         paramab = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
@@ -151,7 +151,7 @@ public final class a
         paramab = az.a(localaj, (List)paramab);
         break;
         label218:
-        localObject1 = localaj.fIW().getParameters();
+        localObject1 = localaj.gbz().getParameters();
         k.g(localObject1, "constructor.parameters");
         Object localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -166,8 +166,8 @@ public final class a
     {
       localaj = (aj)localbg;
       paramab = localaj;
-      if (!localaj.fIW().getParameters().isEmpty()) {
-        if (localaj.fIW().fxM() != null) {
+      if (!localaj.gbz().getParameters().isEmpty()) {
+        if (localaj.gbz().fQq() != null) {
           break label369;
         }
       }
@@ -176,7 +176,7 @@ public final class a
         paramab = (bg)paramab;
         break;
         label369:
-        paramab = localaj.fIW().getParameters();
+        paramab = localaj.gbz().getParameters();
         k.g(paramab, "constructor.parameters");
         localObject1 = (Iterable)paramab;
         paramab = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
@@ -196,7 +196,7 @@ public final class a
     AppMethodBeat.i(61251);
     k.h(paramab1, "$this$isSubtypeOf");
     k.h(paramab2, "superType");
-    boolean bool = d.l.b.a.b.m.a.g.JYN.c(paramab1, paramab2);
+    boolean bool = d.l.b.a.b.m.a.g.LMg.c(paramab1, paramab2);
     AppMethodBeat.o(61251);
     return bool;
   }
@@ -205,23 +205,23 @@ public final class a
   {
     AppMethodBeat.i(61256);
     k.h(paramas, "$this$representativeUpperBound");
-    Object localObject1 = paramas.fwf();
+    Object localObject1 = paramas.fOJ();
     k.g(localObject1, "upperBounds");
     if (!((Collection)localObject1).isEmpty()) {}
-    for (int i = 1; (aa.JfW) && (i == 0); i = 0)
+    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
     {
       paramas = (Throwable)new AssertionError("Upper bounds should not be empty: ".concat(String.valueOf(paramas)));
       AppMethodBeat.o(61256);
       throw paramas;
     }
-    localObject1 = paramas.fwf();
+    localObject1 = paramas.fOJ();
     k.g(localObject1, "upperBounds");
     Iterator localIterator = ((Iterable)localObject1).iterator();
     Object localObject2;
     if (localIterator.hasNext())
     {
       localObject2 = localIterator.next();
-      h localh = ((ab)localObject2).fIW().fxM();
+      h localh = ((ab)localObject2).gbz().fQq();
       localObject1 = localh;
       if (!(localh instanceof e)) {
         localObject1 = null;
@@ -243,15 +243,15 @@ public final class a
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        paramas = paramas.fwf();
+        paramas = paramas.fOJ();
         k.g(paramas, "upperBounds");
-        paramas = j.iy(paramas);
+        paramas = j.iO(paramas);
         k.g(paramas, "upperBounds.first()");
         localObject1 = (ab)paramas;
       }
       AppMethodBeat.o(61256);
       return localObject1;
-      if ((((e)localObject1).fxu() == f.Jqe) || (((e)localObject1).fxu() == f.Jqh)) {
+      if ((((e)localObject1).fPY() == f.Ldx) || (((e)localObject1).fPY() == f.LdA)) {
         break label158;
       }
       i = 1;
@@ -263,7 +263,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.d.a
  * JD-Core Version:    0.7.0.1
  */

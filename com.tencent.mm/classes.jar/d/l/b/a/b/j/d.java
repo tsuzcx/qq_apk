@@ -8,18 +8,33 @@ public abstract interface d
 {
   public abstract b a(a parama1, a parama2, e parame);
   
-  public abstract d.a fBn();
+  public abstract a fTR();
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(59936);
+      LEB = new a("CONFLICTS_ONLY", 0);
+      LEC = new a("SUCCESS_ONLY", 1);
+      LED = new a("BOTH", 2);
+      LEE = new a[] { LEB, LEC, LED };
+      AppMethodBeat.o(59936);
+    }
+    
+    private a() {}
+  }
   
   public static enum b
   {
     static
     {
       AppMethodBeat.i(59939);
-      JRm = new b("OVERRIDABLE", 0);
-      JRn = new b("CONFLICT", 1);
-      JRo = new b("INCOMPATIBLE", 2);
-      JRp = new b("UNKNOWN", 3);
-      JRq = new b[] { JRm, JRn, JRo, JRp };
+      LEF = new b("OVERRIDABLE", 0);
+      LEG = new b("CONFLICT", 1);
+      LEH = new b("INCOMPATIBLE", 2);
+      LEI = new b("UNKNOWN", 3);
+      LEJ = new b[] { LEF, LEG, LEH, LEI };
       AppMethodBeat.o(59939);
     }
     
@@ -28,7 +43,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.j.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,10 @@ import android.view.ViewParent;
 
 public final class l
 {
-  private ViewParent MY;
-  private ViewParent MZ;
-  public boolean Na;
-  private int[] Nb;
+  private ViewParent NT;
+  private ViewParent NU;
+  public boolean NV;
+  private int[] NW;
   private final View mView;
   
   public l(View paramView)
@@ -24,10 +24,10 @@ public final class l
     default: 
       return;
     case 0: 
-      this.MY = paramViewParent;
+      this.NT = paramViewParent;
       return;
     }
-    this.MZ = paramViewParent;
+    this.NU = paramViewParent;
   }
   
   private ViewParent aO(int paramInt)
@@ -37,9 +37,9 @@ public final class l
     default: 
       return null;
     case 0: 
-      return this.MY;
+      return this.NT;
     }
-    return this.MZ;
+    return this.NU;
   }
   
   public final boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, int paramInt5)
@@ -47,7 +47,7 @@ public final class l
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.Na)
+    if (this.NV)
     {
       localViewParent = aO(paramInt5);
       if (localViewParent == null) {
@@ -90,7 +90,7 @@ public final class l
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.Na)
+    if (this.NV)
     {
       localViewParent = aO(paramInt3);
       if (localViewParent == null) {
@@ -110,10 +110,10 @@ public final class l
     {
       if (paramArrayOfInt1 == null)
       {
-        if (this.Nb == null) {
-          this.Nb = new int[2];
+        if (this.NW == null) {
+          this.NW = new int[2];
         }
-        paramArrayOfInt1 = this.Nb;
+        paramArrayOfInt1 = this.NW;
       }
       for (;;)
       {
@@ -183,7 +183,7 @@ public final class l
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.Na)
+    if (this.NV)
     {
       ViewParent localViewParent = aO(0);
       bool1 = bool2;
@@ -198,7 +198,7 @@ public final class l
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.Na)
+    if (this.NV)
     {
       ViewParent localViewParent = aO(0);
       bool1 = bool2;
@@ -221,10 +221,10 @@ public final class l
   
   public final void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    if (this.Na) {
+    if (this.NV) {
       t.aw(this.mView);
     }
-    this.Na = paramBoolean;
+    this.NV = paramBoolean;
   }
   
   public final boolean t(int paramInt1, int paramInt2)
@@ -232,7 +232,7 @@ public final class l
     if (aN(paramInt2)) {
       return true;
     }
-    if (this.Na)
+    if (this.NV)
     {
       ViewParent localViewParent = this.mView.getParent();
       View localView1 = this.mView;

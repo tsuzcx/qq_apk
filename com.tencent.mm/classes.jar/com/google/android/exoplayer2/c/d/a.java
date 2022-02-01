@@ -9,100 +9,156 @@ import java.util.List;
 
 abstract class a
 {
-  public static final int aZH = x.aY("ftyp");
-  public static final int aZI = x.aY("avc1");
-  public static final int aZJ = x.aY("avc3");
-  public static final int aZK = x.aY("hvc1");
-  public static final int aZL = x.aY("hev1");
-  public static final int aZM = x.aY("s263");
-  public static final int aZN = x.aY("d263");
-  public static final int aZO = x.aY("mdat");
-  public static final int aZP = x.aY("mp4a");
-  public static final int aZQ = x.aY(".mp3");
-  public static final int aZR = x.aY("wave");
-  public static final int aZS = x.aY("lpcm");
-  public static final int aZT = x.aY("sowt");
-  public static final int aZU = x.aY("ac-3");
-  public static final int aZV = x.aY("dac3");
-  public static final int aZW = x.aY("ec-3");
-  public static final int aZX = x.aY("dec3");
-  public static final int aZY = x.aY("dtsc");
-  public static final int aZZ = x.aY("dtsh");
-  public static final int baA = x.aY("stsd");
-  public static final int baB = x.aY("pssh");
-  public static final int baC = x.aY("sinf");
-  public static final int baD = x.aY("schm");
-  public static final int baE = x.aY("schi");
-  public static final int baF = x.aY("tenc");
-  public static final int baG = x.aY("encv");
-  public static final int baH = x.aY("enca");
-  public static final int baI = x.aY("frma");
-  public static final int baJ = x.aY("saiz");
-  public static final int baK = x.aY("saio");
-  public static final int baL = x.aY("sbgp");
-  public static final int baM = x.aY("sgpd");
-  public static final int baN = x.aY("uuid");
-  public static final int baO = x.aY("senc");
-  public static final int baP = x.aY("pasp");
-  public static final int baQ = x.aY("TTML");
-  public static final int baR = x.aY("vmhd");
-  public static final int baS = x.aY("mp4v");
-  public static final int baT = x.aY("stts");
-  public static final int baU = x.aY("stss");
-  public static final int baV = x.aY("ctts");
-  public static final int baW = x.aY("stsc");
-  public static final int baX = x.aY("stsz");
-  public static final int baY = x.aY("stz2");
-  public static final int baZ = x.aY("stco");
-  public static final int baa = x.aY("dtsl");
-  public static final int bab = x.aY("dtse");
-  public static final int bac = x.aY("ddts");
-  public static final int bad = x.aY("tfdt");
-  public static final int bae = x.aY("tfhd");
-  public static final int baf = x.aY("trex");
-  public static final int bag = x.aY("trun");
-  public static final int bah = x.aY("sidx");
-  public static final int bai = x.aY("moov");
-  public static final int baj = x.aY("mvhd");
-  public static final int bak = x.aY("trak");
-  public static final int bal = x.aY("mdia");
-  public static final int bam = x.aY("minf");
-  public static final int ban = x.aY("stbl");
-  public static final int bao = x.aY("avcC");
-  public static final int bap = x.aY("hvcC");
-  public static final int baq = x.aY("esds");
-  public static final int bar = x.aY("moof");
-  public static final int bas = x.aY("traf");
-  public static final int bat = x.aY("mvex");
-  public static final int bau = x.aY("mehd");
-  public static final int bav = x.aY("tkhd");
-  public static final int baw = x.aY("edts");
-  public static final int bax = x.aY("elst");
-  public static final int bay = x.aY("mdhd");
-  public static final int baz = x.aY("hdlr");
-  public static final int bba = x.aY("co64");
-  public static final int bbb = x.aY("tx3g");
-  public static final int bbc = x.aY("wvtt");
-  public static final int bbd = x.aY("stpp");
-  public static final int bbe = x.aY("c608");
-  public static final int bbf = x.aY("samr");
-  public static final int bbg = x.aY("sawb");
-  public static final int bbh = x.aY("udta");
-  public static final int bbi = x.aY("meta");
-  public static final int bbj = x.aY("ilst");
-  public static final int bbk = x.aY("mean");
-  public static final int bbl = x.aY("name");
-  public static final int bbm = x.aY("data");
-  public static final int bbn = x.aY("emsg");
-  public static final int bbo = x.aY("st3d");
-  public static final int bbp = x.aY("sv3d");
-  public static final int bbq = x.aY("proj");
-  public static final int bbr = x.aY("vp08");
-  public static final int bbs = x.aY("vp09");
-  public static final int bbt = x.aY("vpcC");
-  public static final int bbu = x.aY("camm");
-  public static final int bbv = x.aY("alac");
+  public static final int baA;
+  public static final int baB;
+  public static final int baC;
+  public static final int baD;
+  public static final int baE;
+  public static final int baF;
+  public static final int baG;
+  public static final int baH;
+  public static final int baI;
+  public static final int baJ;
+  public static final int baK;
+  public static final int baL;
+  public static final int baM;
+  public static final int baN;
+  public static final int baO;
+  public static final int baP;
+  public static final int baQ;
+  public static final int baR;
+  public static final int baS;
+  public static final int baT;
+  public static final int baU;
+  public static final int baV;
+  public static final int baW;
+  public static final int baX;
+  public static final int baY;
+  public static final int baZ;
+  public static final int bat = x.aQ("ftyp");
+  public static final int bau = x.aQ("avc1");
+  public static final int bav = x.aQ("avc3");
+  public static final int baw = x.aQ("hvc1");
+  public static final int bax = x.aQ("hev1");
+  public static final int bay = x.aQ("s263");
+  public static final int baz = x.aQ("d263");
+  public static final int bbA = x.aQ("senc");
+  public static final int bbB = x.aQ("pasp");
+  public static final int bbC = x.aQ("TTML");
+  public static final int bbD = x.aQ("vmhd");
+  public static final int bbE = x.aQ("mp4v");
+  public static final int bbF = x.aQ("stts");
+  public static final int bbG = x.aQ("stss");
+  public static final int bbH = x.aQ("ctts");
+  public static final int bbI = x.aQ("stsc");
+  public static final int bbJ = x.aQ("stsz");
+  public static final int bbK = x.aQ("stz2");
+  public static final int bbL = x.aQ("stco");
+  public static final int bbM = x.aQ("co64");
+  public static final int bbN = x.aQ("tx3g");
+  public static final int bbO = x.aQ("wvtt");
+  public static final int bbP = x.aQ("stpp");
+  public static final int bbQ = x.aQ("c608");
+  public static final int bbR = x.aQ("samr");
+  public static final int bbS = x.aQ("sawb");
+  public static final int bbT = x.aQ("udta");
+  public static final int bbU = x.aQ("meta");
+  public static final int bbV = x.aQ("ilst");
+  public static final int bbW = x.aQ("mean");
+  public static final int bbX = x.aQ("name");
+  public static final int bbY = x.aQ("data");
+  public static final int bbZ = x.aQ("emsg");
+  public static final int bba;
+  public static final int bbb;
+  public static final int bbc;
+  public static final int bbd;
+  public static final int bbe;
+  public static final int bbf;
+  public static final int bbg;
+  public static final int bbh;
+  public static final int bbi;
+  public static final int bbj;
+  public static final int bbk;
+  public static final int bbl;
+  public static final int bbm;
+  public static final int bbn;
+  public static final int bbo;
+  public static final int bbp;
+  public static final int bbq;
+  public static final int bbr;
+  public static final int bbs;
+  public static final int bbt;
+  public static final int bbu;
+  public static final int bbv;
+  public static final int bbw;
+  public static final int bbx;
+  public static final int bby;
+  public static final int bbz;
+  public static final int bca = x.aQ("st3d");
+  public static final int bcb = x.aQ("sv3d");
+  public static final int bcc = x.aQ("proj");
+  public static final int bcd = x.aQ("vp08");
+  public static final int bce = x.aQ("vp09");
+  public static final int bcf = x.aQ("vpcC");
+  public static final int bcg = x.aQ("camm");
+  public static final int bch = x.aQ("alac");
   public final int type;
+  
+  static
+  {
+    baA = x.aQ("mdat");
+    baB = x.aQ("mp4a");
+    baC = x.aQ(".mp3");
+    baD = x.aQ("wave");
+    baE = x.aQ("lpcm");
+    baF = x.aQ("sowt");
+    baG = x.aQ("ac-3");
+    baH = x.aQ("dac3");
+    baI = x.aQ("ec-3");
+    baJ = x.aQ("dec3");
+    baK = x.aQ("dtsc");
+    baL = x.aQ("dtsh");
+    baM = x.aQ("dtsl");
+    baN = x.aQ("dtse");
+    baO = x.aQ("ddts");
+    baP = x.aQ("tfdt");
+    baQ = x.aQ("tfhd");
+    baR = x.aQ("trex");
+    baS = x.aQ("trun");
+    baT = x.aQ("sidx");
+    baU = x.aQ("moov");
+    baV = x.aQ("mvhd");
+    baW = x.aQ("trak");
+    baX = x.aQ("mdia");
+    baY = x.aQ("minf");
+    baZ = x.aQ("stbl");
+    bba = x.aQ("avcC");
+    bbb = x.aQ("hvcC");
+    bbc = x.aQ("esds");
+    bbd = x.aQ("moof");
+    bbe = x.aQ("traf");
+    bbf = x.aQ("mvex");
+    bbg = x.aQ("mehd");
+    bbh = x.aQ("tkhd");
+    bbi = x.aQ("edts");
+    bbj = x.aQ("elst");
+    bbk = x.aQ("mdhd");
+    bbl = x.aQ("hdlr");
+    bbm = x.aQ("stsd");
+    bbn = x.aQ("pssh");
+    bbo = x.aQ("sinf");
+    bbp = x.aQ("schm");
+    bbq = x.aQ("schi");
+    bbr = x.aQ("tenc");
+    bbs = x.aQ("encv");
+    bbt = x.aQ("enca");
+    bbu = x.aQ("frma");
+    bbv = x.aQ("saiz");
+    bbw = x.aQ("saio");
+    bbx = x.aQ("sbgp");
+    bby = x.aQ("sgpd");
+    bbz = x.aQ("uuid");
+  }
   
   public a(int paramInt)
   {
@@ -132,42 +188,42 @@ abstract class a
   static final class a
     extends a
   {
-    public final long bbw;
-    public final List<a.b> bbx;
-    public final List<a> bby;
+    public final long bci;
+    public final List<a.b> bcj;
+    public final List<a> bck;
     
     public a(int paramInt, long paramLong)
     {
       super();
       AppMethodBeat.i(92050);
-      this.bbw = paramLong;
-      this.bbx = new ArrayList();
-      this.bby = new ArrayList();
+      this.bci = paramLong;
+      this.bcj = new ArrayList();
+      this.bck = new ArrayList();
       AppMethodBeat.o(92050);
     }
     
     public final void a(a parama)
     {
       AppMethodBeat.i(92052);
-      this.bby.add(parama);
+      this.bck.add(parama);
       AppMethodBeat.o(92052);
     }
     
     public final void a(a.b paramb)
     {
       AppMethodBeat.i(92051);
-      this.bbx.add(paramb);
+      this.bcj.add(paramb);
       AppMethodBeat.o(92051);
     }
     
     public final a.b eh(int paramInt)
     {
       AppMethodBeat.i(92053);
-      int j = this.bbx.size();
+      int j = this.bcj.size();
       int i = 0;
       while (i < j)
       {
-        a.b localb = (a.b)this.bbx.get(i);
+        a.b localb = (a.b)this.bcj.get(i);
         if (localb.type == paramInt)
         {
           AppMethodBeat.o(92053);
@@ -182,11 +238,11 @@ abstract class a
     public final a ei(int paramInt)
     {
       AppMethodBeat.i(92054);
-      int j = this.bby.size();
+      int j = this.bck.size();
       int i = 0;
       while (i < j)
       {
-        a locala = (a)this.bby.get(i);
+        a locala = (a)this.bck.get(i);
         if (locala.type == paramInt)
         {
           AppMethodBeat.o(92054);
@@ -201,7 +257,7 @@ abstract class a
     public final String toString()
     {
       AppMethodBeat.i(92055);
-      String str = eg(this.type) + " leaves: " + Arrays.toString(this.bbx.toArray()) + " containers: " + Arrays.toString(this.bby.toArray());
+      String str = eg(this.type) + " leaves: " + Arrays.toString(this.bcj.toArray()) + " containers: " + Arrays.toString(this.bck.toArray());
       AppMethodBeat.o(92055);
       return str;
     }
@@ -210,12 +266,12 @@ abstract class a
   static final class b
     extends a
   {
-    public final m bbz;
+    public final m bcl;
     
     public b(int paramInt, m paramm)
     {
       super();
-      this.bbz = paramm;
+      this.bcl = paramm;
     }
   }
 }

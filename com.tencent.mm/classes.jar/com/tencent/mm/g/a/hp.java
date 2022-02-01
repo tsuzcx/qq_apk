@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class hp
   extends b
 {
-  public a dll;
-  public b dlm;
-  
   public hp()
   {
     this((byte)0);
@@ -17,24 +12,8 @@ public final class hp
   
   private hp(byte paramByte)
   {
-    AppMethodBeat.i(89640);
-    this.dll = new a();
-    this.dlm = new b();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(89640);
-  }
-  
-  public static final class a
-  {
-    public int BX = 0;
-    public Context context;
-    public String dln;
-  }
-  
-  public static final class b
-  {
-    public String result;
   }
 }
 

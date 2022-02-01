@@ -5,11 +5,11 @@ import android.graphics.LinearGradient;
 import android.graphics.RadialGradient;
 import android.graphics.Shader.TileMode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetStrokeStyleActionArg;
+import com.tencent.mm.plugin.appbrand.z.g;
 import org.json.JSONArray;
 
 public final class af
@@ -81,7 +81,7 @@ public final class af
         i += 1;
       }
       paramCanvas = new LinearGradient(f1, f2, f3, f4, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-      paramd.iYL.setShader(paramCanvas);
+      paramd.jzb.setShader(paramCanvas);
     }
     for (;;)
     {
@@ -118,7 +118,7 @@ public final class af
           i += 1;
         }
         paramCanvas = new RadialGradient(f1, f2, f3, paramJSONArray, arrayOfFloat, Shader.TileMode.CLAMP);
-        paramd.iYL.setShader(paramCanvas);
+        paramd.jzb.setShader(paramCanvas);
       }
       else if ("normal".equalsIgnoreCase(paramCanvas))
       {
@@ -128,12 +128,12 @@ public final class af
           AppMethodBeat.o(144971);
           return false;
         }
-        paramd.iYL.setColor(g.p(paramCanvas));
+        paramd.jzb.setColor(g.p(paramCanvas));
       }
     }
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144970);
     SetStrokeStyleActionArg localSetStrokeStyleActionArg = new SetStrokeStyleActionArg();
@@ -148,7 +148,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.af
  * JD-Core Version:    0.7.0.1
  */

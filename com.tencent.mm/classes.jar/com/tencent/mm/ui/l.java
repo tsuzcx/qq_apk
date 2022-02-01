@@ -2,23 +2,23 @@ package com.tencent.mm.ui;
 
 public abstract interface l
 {
-  public abstract void eQA();
+  public abstract void fgg();
   
-  public abstract void eQB();
+  public abstract void fgh();
   
-  public abstract void eQC();
+  public abstract void fgi();
   
-  public abstract void eQD();
+  public abstract void fgj();
   
-  public abstract void eQE();
+  public abstract void fgk();
   
-  public abstract void eQF();
+  public abstract void fgl();
   
-  public abstract void eQG();
+  public abstract void fgm();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.l
  * JD-Core Version:    0.7.0.1
  */

@@ -12,54 +12,54 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public final class a
   extends FrameLayout
   implements View.OnClickListener, f
 {
-  private final ap mHandler;
-  private TextView mkg;
-  private final Runnable mkh;
-  private ViewPropertyAnimator mki;
-  ViewPropertyAnimator mkj;
+  private final ao mHandler;
+  private TextView mMg;
+  private final Runnable mMh;
+  private ViewPropertyAnimator mMi;
+  ViewPropertyAnimator mMj;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135488);
-    this.mkh = new Runnable()
+    this.mMh = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(135483);
         a locala = a.this;
-        if ((locala.getAlpha() == 0.0F) || (locala.mkj != null))
+        if ((locala.getAlpha() == 0.0F) || (locala.mMj != null))
         {
           AppMethodBeat.o(135483);
           return;
         }
         locala.animate().cancel();
         ViewPropertyAnimator localViewPropertyAnimator = locala.animate();
-        locala.mkj = localViewPropertyAnimator;
+        locala.mMj = localViewPropertyAnimator;
         localViewPropertyAnimator.alpha(0.0F).setListener(new a.3(locala)).start();
         AppMethodBeat.o(135483);
       }
     };
-    this.mHandler = new ap(Looper.getMainLooper());
+    this.mHandler = new ao(Looper.getMainLooper());
     LayoutInflater.from(paramContext).inflate(2131493060, this, true);
-    this.mkg = ((TextView)findViewById(2131305902));
+    this.mMg = ((TextView)findViewById(2131305902));
     setOnClickListener(this);
     AppMethodBeat.o(135488);
   }
   
-  public final void NU(String paramString)
+  public final void Sd(String paramString)
   {
     AppMethodBeat.i(135489);
-    this.mkg.setText(paramString);
-    this.mHandler.removeCallbacks(this.mkh);
-    this.mHandler.postDelayed(this.mkh, mkt);
-    if ((getAlpha() == 1.0F) || (this.mki != null))
+    this.mMg.setText(paramString);
+    this.mHandler.removeCallbacks(this.mMh);
+    this.mHandler.postDelayed(this.mMh, mMu);
+    if ((getAlpha() == 1.0F) || (this.mMi != null))
     {
       AppMethodBeat.o(135489);
       return;
@@ -67,7 +67,7 @@ public final class a
     setVisibility(0);
     animate().cancel();
     paramString = animate();
-    this.mki = paramString;
+    this.mMi = paramString;
     paramString.alpha(1.0F).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
@@ -103,7 +103,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e.a
  * JD-Core Version:    0.7.0.1
  */

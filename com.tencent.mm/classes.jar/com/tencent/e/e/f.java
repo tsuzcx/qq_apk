@@ -20,10 +20,10 @@ public final class f<E>
     super(paramE);
   }
   
-  private g fob()
+  private g fEr()
   {
     AppMethodBeat.i(183310);
-    if ((com.tencent.e.j.a.fom() == null) && (Looper.myLooper() == null))
+    if ((com.tencent.e.j.a.fEC() == null) && (Looper.myLooper() == null))
     {
       localObject = new RuntimeException(String.format("fail to create DefaultScheduler. Current thread[%s-%s] without a Looper or Serial.", new Object[] { Thread.currentThread().getName(), Long.valueOf(Thread.currentThread().getId()) }));
       AppMethodBeat.o(183310);
@@ -31,25 +31,25 @@ public final class f<E>
     }
     Object localObject = new g()
     {
-      private com.tencent.e.d.a IyY;
+      private com.tencent.e.d.a KaH;
       
       public final void execute(Runnable paramAnonymousRunnable)
       {
         AppMethodBeat.i(183303);
-        this.IyY.post(paramAnonymousRunnable);
+        this.KaH.post(paramAnonymousRunnable);
         AppMethodBeat.o(183303);
       }
       
       public final String getTag()
       {
         AppMethodBeat.i(183304);
-        if ((this.IyY instanceof c))
+        if ((this.KaH instanceof c))
         {
-          str = this.IyY.getSerialTag();
+          str = this.KaH.getSerialTag();
           AppMethodBeat.o(183304);
           return str;
         }
-        String str = com.tencent.e.j.a.p(this.IyY.getLooper());
+        String str = com.tencent.e.j.a.p(this.KaH.getLooper());
         AppMethodBeat.o(183304);
         return str;
       }
@@ -57,7 +57,7 @@ public final class f<E>
       public final void onShutdown()
       {
         AppMethodBeat.i(183305);
-        this.IyY.removeCallbacksAndMessages(null);
+        this.KaH.removeCallbacksAndMessages(null);
         AppMethodBeat.o(183305);
       }
     };
@@ -69,16 +69,16 @@ public final class f<E>
   {
     AppMethodBeat.i(183307);
     Object localObject = this;
-    if (!this.ndV.compareAndSet(false, true))
+    if (!this.nGH.compareAndSet(false, true))
     {
-      d.IxU.w("Pipeline", "this pipeline has begin.", new Object[0]);
+      d.JZD.w("Pipeline", "this pipeline has begin.", new Object[0]);
       AppMethodBeat.o(183307);
       return;
     }
-    while (((e)localObject).IyT != null) {
-      localObject = ((e)localObject).IyT;
+    while (((e)localObject).KaC != null) {
+      localObject = ((e)localObject).KaC;
     }
-    ((e)localObject).b(((e)localObject).IyR);
+    ((e)localObject).b(((e)localObject).KaA);
     AppMethodBeat.o(183307);
   }
   
@@ -87,57 +87,57 @@ public final class f<E>
     AppMethodBeat.i(183306);
     Objects.requireNonNull(parama);
     f localf = new f();
-    localf.IyQ = fnZ();
-    localf.IyT = this;
-    this.IyU = localf;
-    this.IyR = parama;
+    localf.Kaz = fEp();
+    localf.KaC = this;
+    this.KaD = localf;
+    this.KaA = parama;
     AppMethodBeat.o(183306);
     return localf;
   }
   
-  final a<Throwable, ?> fnW()
+  final a<Throwable, ?> fEm()
   {
-    for (Object localObject = this; (localObject != null) && (((e)localObject).IyS == null); localObject = ((e)localObject).IyU) {}
+    for (Object localObject = this; (localObject != null) && (((e)localObject).KaB == null); localObject = ((e)localObject).KaD) {}
     if (localObject != null) {
-      return ((e)localObject).IyS;
+      return ((e)localObject).KaB;
     }
     return null;
   }
   
-  public final g fnZ()
+  public final g fEp()
   {
     AppMethodBeat.i(183309);
-    if (this.IyQ == null)
+    if (this.Kaz == null)
     {
-      localg = fob();
+      localg = fEr();
       AppMethodBeat.o(183309);
       return localg;
     }
-    g localg = this.IyQ;
+    g localg = this.Kaz;
     AppMethodBeat.o(183309);
     return localg;
   }
   
-  public final f<E> foa()
+  public final f<E> fEq()
   {
-    this.IyQ = IyL;
+    this.Kaz = Kau;
     return this;
   }
   
   public final E take()
   {
     AppMethodBeat.i(183308);
-    if (this.IyP == null)
+    if (this.Kay == null)
     {
-      localObject = com.tencent.e.j.a.fom();
+      localObject = com.tencent.e.j.a.fEC();
       String str;
       if (localObject == null)
       {
         str = com.tencent.e.j.a.p(Looper.myLooper());
         localObject = this;
       }
-      while (((e)localObject).IyT != null) {
-        if (((e)localObject).IyQ.getTag().equals(str))
+      while (((e)localObject).KaC != null) {
+        if (((e)localObject).Kaz.getTag().equals(str))
         {
           localObject = new RuntimeException("this pipeline will happen dead lock in future. please to check it. serialTag=".concat(String.valueOf(str)));
           AppMethodBeat.o(183308);
@@ -147,7 +147,7 @@ public final class f<E>
         }
         else
         {
-          localObject = ((e)localObject).IyT;
+          localObject = ((e)localObject).KaC;
         }
       }
     }

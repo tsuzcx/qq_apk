@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class ScanTranslationResultUI$g
   implements View.OnClickListener
 {
@@ -14,7 +14,7 @@ final class ScanTranslationResultUI$g
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(162354);
-    ScanTranslationResultUI.j(this.vUE);
+    ScanTranslationResultUI.j(this.xfp);
     AppMethodBeat.o(162354);
   }
 }

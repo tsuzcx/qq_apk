@@ -1,7 +1,7 @@
 package com.tencent.mm.ui.chatting.c.b;
 
 import android.view.MenuItem;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.ui.chatting.c.ab;
 import com.tencent.mm.ui.chatting.viewitems.c;
 import java.util.List;
@@ -9,15 +9,15 @@ import java.util.List;
 public abstract interface aa
   extends ab
 {
-  public abstract int YZ();
+  public abstract int ZV();
   
   public abstract void a(MenuItem paramMenuItem, c paramc);
   
-  public abstract boolean aKL(String paramString);
+  public abstract boolean aQo(String paramString);
   
-  public abstract List<bl> eYo();
+  public abstract List<bo> foa();
   
-  public abstract boolean eYp();
+  public abstract boolean fob();
 }
 
 

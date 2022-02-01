@@ -1,14 +1,17 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bl;
 
 public final class kp
   extends b
 {
-  public a dpf;
-  public b dpg;
+  public a dmn;
+  public b dmo;
   
   public kp()
   {
@@ -17,31 +20,32 @@ public final class kp
   
   private kp(byte paramByte)
   {
-    AppMethodBeat.i(55664);
-    this.dpf = new a();
-    this.dpg = new b();
-    this.ESR = false;
+    AppMethodBeat.i(149868);
+    this.dmn = new a();
+    this.dmo = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(55664);
+    AppMethodBeat.o(149868);
   }
   
   public static final class a
   {
-    public String aSt;
-    public bl dbD;
-    public int doZ = 0;
-    public boolean dph = false;
+    public String appId;
+    public int cZX;
+    public Context context;
+    public Bundle dcb;
+    public WXMediaMessage dis;
+    public am dmp;
   }
   
   public static final class b
   {
-    public String dld;
-    public String dpi;
+    public boolean dmq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.kp
  * JD-Core Version:    0.7.0.1
  */

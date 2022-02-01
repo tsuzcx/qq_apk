@@ -14,13 +14,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RadioCheckPreference
   extends Preference
 {
-  private CheckBox GdZ;
-  private int Gea;
-  private boolean lG;
-  private TextView zVJ;
-  private int zVK;
-  private String zVL;
-  private int zVM;
+  private TextView Bod;
+  private int Boe;
+  private String Bof;
+  private int Bog;
+  private CheckBox HDO;
+  private int HDP;
+  private boolean mF;
   
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,11 +31,11 @@ public class RadioCheckPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142666);
-    this.lG = false;
-    this.zVK = -1;
-    this.zVL = "";
-    this.zVM = 8;
-    this.Gea = -1;
+    this.mF = false;
+    this.Boe = -1;
+    this.Bof = "";
+    this.Bog = 8;
+    this.HDP = -1;
     setLayoutResource(2131494804);
     AppMethodBeat.o(142666);
   }
@@ -44,30 +44,30 @@ public class RadioCheckPreference
   {
     AppMethodBeat.i(142668);
     super.onBindView(paramView);
-    Yb(8);
-    this.GdZ = ((CheckBox)paramView.findViewById(2131303709));
-    this.GdZ.setChecked(this.lG);
-    this.zVJ = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.zVL;
-    int i = this.zVK;
-    this.zVK = i;
-    this.zVL = paramView;
-    if (this.zVJ != null)
+    aam(8);
+    this.HDO = ((CheckBox)paramView.findViewById(2131303709));
+    this.HDO.setChecked(this.mF);
+    this.Bod = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.Bof;
+    int i = this.Boe;
+    this.Boe = i;
+    this.Bof = paramView;
+    if (this.Bod != null)
     {
       if (i > 0) {
-        this.zVJ.setBackgroundResource(this.zVK);
+        this.Bod.setBackgroundResource(this.Boe);
       }
-      if (!TextUtils.isEmpty(this.zVL)) {
-        this.zVJ.setText(this.zVL);
+      if (!TextUtils.isEmpty(this.Bof)) {
+        this.Bod.setText(this.Bof);
       }
     }
-    this.zVM = this.zVM;
-    if (this.zVJ != null) {
-      this.zVJ.setVisibility(this.zVM);
+    this.Bog = this.Bog;
+    if (this.Bod != null) {
+      this.Bod.setVisibility(this.Bog);
     }
-    paramView = (LinearLayout.LayoutParams)this.GdZ.getLayoutParams();
-    if (-1 != this.Gea) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.Gea, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.HDO.getLayoutParams();
+    if (-1 != this.HDP) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.HDP, paramView.bottomMargin);
     }
     AppMethodBeat.o(142668);
   }
@@ -84,12 +84,12 @@ public class RadioCheckPreference
     return paramViewGroup;
   }
   
-  public final void vP(boolean paramBoolean)
+  public final void wT(boolean paramBoolean)
   {
     AppMethodBeat.i(142669);
-    this.lG = paramBoolean;
-    if (this.GdZ != null) {
-      this.GdZ.setChecked(paramBoolean);
+    this.mF = paramBoolean;
+    if (this.HDO != null) {
+      this.HDO.setChecked(paramBoolean);
     }
     AppMethodBeat.o(142669);
   }

@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a;
-import com.tencent.mm.aw.o;
+import com.tencent.mm.av.a.a;
+import com.tencent.mm.av.o;
 import com.tencent.mm.openim.a.c.b;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 
 public final class a$2
@@ -25,8 +25,8 @@ public final class a$2
   {
     AppMethodBeat.i(26867);
     super.onBindView(paramView);
-    if (this.uCm != null) {
-      if ((this.uzq.action != 2) && (this.uzq.action != 3)) {
+    if (this.vLf != null) {
+      if ((this.vIj.action != 2) && (this.vIj.action != 3)) {
         break label113;
       }
     }
@@ -34,12 +34,12 @@ public final class a$2
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.uCm.setTextColor(aj.getResources().getColorStateList(2131100733));
+        this.vLf.setTextColor(ai.getResources().getColorStateList(2131100733));
       }
-      if ((this.Gfk != null) && (!TextUtils.isEmpty(this.uzq.dub)))
+      if ((this.HEZ != null) && (!TextUtils.isEmpty(this.vIj.drM)))
       {
-        this.Gfk.setVisibility(0);
-        o.ayJ().loadImage(this.uzq.dub, this.Gfk);
+        this.HEZ.setVisibility(0);
+        o.aFB().loadImage(this.vIj.drM, this.HEZ);
       }
       AppMethodBeat.o(26867);
       return;
@@ -48,7 +48,7 @@ public final class a$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.a.a.2
  * JD-Core Version:    0.7.0.1
  */

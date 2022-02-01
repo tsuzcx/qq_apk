@@ -34,11 +34,11 @@ public class TestTimeForSns
     {
       this.hasDrawed = true;
       if (this.listener != null) {
-        this.listener.cAy();
+        this.listener.cNI();
       }
     }
-    g.KJ(10);
-    g.KJ(22);
+    g.MI(10);
+    g.MI(22);
     AppMethodBeat.o(99702);
   }
   
@@ -54,7 +54,7 @@ public class TestTimeForSns
   
   public static abstract interface a
   {
-    public abstract void cAy();
+    public abstract void cNI();
   }
 }
 

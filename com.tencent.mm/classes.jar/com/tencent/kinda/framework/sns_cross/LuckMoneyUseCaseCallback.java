@@ -39,17 +39,17 @@ public class LuckMoneyUseCaseCallback
       {
         localIntent = new Intent();
         localIntent.putExtra("key_trans_id", paramITransmitKvData);
-        if (localPayInfo.Cos != null) {
-          bool = localPayInfo.Cos.getBoolean("isF2FHongBao", false);
+        if (localPayInfo.hbR != null) {
+          bool = localPayInfo.hbR.getBoolean("isF2FHongBao", false);
         }
         if (!bool) {
           break;
         }
-        ((LuckyMoneyPrepareUI)localObject).h(i, localIntent);
+        ((LuckyMoneyPrepareUI)localObject).i(i, localIntent);
         AppMethodBeat.o(18710);
         return;
       }
-      ((LuckyMoneyPrepareUI)localObject).i(i, localIntent);
+      ((LuckyMoneyPrepareUI)localObject).j(i, localIntent);
     }
     AppMethodBeat.o(18710);
   }

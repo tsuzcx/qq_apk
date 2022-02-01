@@ -16,7 +16,7 @@ import com.tencent.mm.ui.MMActivity;
 public class ReaderAppIntroUI
   extends MMActivity
 {
-  private int duE = 0;
+  private int dsp = 0;
   
   public int getLayoutId()
   {
@@ -28,8 +28,8 @@ public class ReaderAppIntroUI
     AppMethodBeat.i(102705);
     ImageView localImageView = (ImageView)findViewById(2131303778);
     TextView localTextView = (TextView)findViewById(2131303779);
-    this.duE = getIntent().getIntExtra("type", 0);
-    if (this.duE == 20)
+    this.dsp = getIntent().getIntExtra("type", 0);
+    if (this.dsp == 20)
     {
       setMMTitle(2131760208);
       localImageView.setImageResource(2131233792);
@@ -50,7 +50,7 @@ public class ReaderAppIntroUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(102703);
-        a.hYt.c(new Intent().putExtra("Contact_User", bo.nl(ReaderAppIntroUI.a(ReaderAppIntroUI.this))), ReaderAppIntroUI.this);
+        a.iyx.c(new Intent().putExtra("Contact_User", bo.nZ(ReaderAppIntroUI.a(ReaderAppIntroUI.this))), ReaderAppIntroUI.this);
         ReaderAppIntroUI.this.finish();
         AppMethodBeat.o(102703);
         return true;
@@ -75,7 +75,7 @@ public class ReaderAppIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.ui.ReaderAppIntroUI
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ import junit.framework.Assert;
 public class PressAlphaImageView
   extends WeImageView
 {
-  private float HsS;
+  private float ITp;
   
   public PressAlphaImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143206);
-    this.HsS = 0.7F;
+    this.ITp = 0.7F;
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -52,12 +52,12 @@ public class PressAlphaImageView
   
   public void setPressAlpha(float paramFloat)
   {
-    this.HsS = paramFloat;
+    this.ITp = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.PressAlphaImageView
  * JD-Core Version:    0.7.0.1
  */

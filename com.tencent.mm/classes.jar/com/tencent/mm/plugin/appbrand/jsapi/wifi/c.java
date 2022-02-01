@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.ar;
 import com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.b;
 import com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -24,9 +24,9 @@ public final class c
   public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(144688);
-    if (!d.kxS)
+    if (!d.kZg)
     {
-      ad.e("MicroMsg.JsApiGetWifiList", "not invoke startWifi");
+      ac.e("MicroMsg.JsApiGetWifiList", "not invoke startWifi");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12000));
       paramc.h(paramInt, k("fail:not invoke startWifi", paramJSONObject));
@@ -36,17 +36,17 @@ public final class c
     final Context localContext = paramc.getContext();
     if (localContext == null)
     {
-      ad.e("MicroMsg.JsApiGetWifiList", "mContext is null, invoke fail!");
+      ac.e("MicroMsg.JsApiGetWifiList", "mContext is null, invoke fail!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12010));
       paramc.h(paramInt, k("fail:context is null", paramJSONObject));
       AppMethodBeat.o(144688);
       return;
     }
-    e.dv(localContext);
+    e.dE(localContext);
     if (!com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c.isWifiEnabled())
     {
-      ad.e("MicroMsg.JsApiGetWifiList", "wifi is disable,invoke fail!");
+      ac.e("MicroMsg.JsApiGetWifiList", "wifi is disable,invoke fail!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(12005));
       paramc.h(paramInt, k("fail:wifi is disable", paramJSONObject));
@@ -54,52 +54,52 @@ public final class c
       return;
     }
     final AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
-    Object localObject = new av.a()
+    Object localObject = new au.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(193705);
-        ad.i("MicroMsg.JsApiGetWifiList", "onTimerExpired");
-        e.beN();
+        AppMethodBeat.i(204978);
+        ac.i("MicroMsg.JsApiGetWifiList", "onTimerExpired");
+        e.blH();
         if (!localAtomicBoolean.get())
         {
-          com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d locald = e.beM();
+          com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d locald = e.blG();
           c.a(c.this, paramc, paramInt, localContext, locald);
           localAtomicBoolean.set(true);
         }
         for (;;)
         {
-          AppMethodBeat.o(193705);
+          AppMethodBeat.o(204978);
           return false;
-          ad.i("MicroMsg.JsApiGetWifiList", "onTimerExpired, hasCallback");
+          ac.i("MicroMsg.JsApiGetWifiList", "onTimerExpired, hasCallback");
         }
       }
     };
-    localObject = new av(Looper.getMainLooper(), (av.a)localObject, false);
+    localObject = new au(Looper.getMainLooper(), (au.a)localObject, false);
     e.a(new b()
     {
       public final void a(com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.d paramAnonymousd)
       {
-        AppMethodBeat.i(193706);
-        ad.i("MicroMsg.JsApiGetWifiList", "onGetWiFiList");
-        this.kxR.stopTimer();
-        e.beN();
+        AppMethodBeat.i(204979);
+        ac.i("MicroMsg.JsApiGetWifiList", "onGetWiFiList");
+        this.kZf.stopTimer();
+        e.blH();
         if (!localAtomicBoolean.get())
         {
           c.a(c.this, paramc, paramInt, localContext, paramAnonymousd);
           localAtomicBoolean.set(true);
-          AppMethodBeat.o(193706);
+          AppMethodBeat.o(204979);
           return;
         }
-        ad.i("MicroMsg.JsApiGetWifiList", "onGetWiFiList, hasCallback");
-        AppMethodBeat.o(193706);
+        ac.i("MicroMsg.JsApiGetWifiList", "onGetWiFiList, hasCallback");
+        AppMethodBeat.o(204979);
       }
     });
     if (paramJSONObject != null) {}
     for (long l = paramJSONObject.optLong("timeout", 10000L);; l = 10000L)
     {
-      ad.i("MicroMsg.JsApiGetWifiList", "invoke, getWifiListAsyncTimeoutMills: ".concat(String.valueOf(l)));
-      ((av)localObject).av(l, l);
+      ac.i("MicroMsg.JsApiGetWifiList", "invoke, getWifiListAsyncTimeoutMills: ".concat(String.valueOf(l)));
+      ((au)localObject).au(l, l);
       AppMethodBeat.o(144688);
       return;
     }
@@ -114,7 +114,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.c
  * JD-Core Version:    0.7.0.1
  */

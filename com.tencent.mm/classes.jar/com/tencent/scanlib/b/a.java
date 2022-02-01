@@ -13,33 +13,33 @@ import java.util.List;
 
 public class a
 {
-  protected com.tencent.qbar.a ItF;
+  protected com.tencent.qbar.a JVo;
   protected String TAG;
-  protected boolean fFP;
-  protected Object vNi;
+  protected boolean fJw;
+  protected Object wXD;
   
   public a(String paramString)
   {
     AppMethodBeat.i(3546);
     this.TAG = "BaseQBarAIDecoder";
-    this.vNi = new Object();
-    this.ItF = new com.tencent.qbar.a();
+    this.wXD = new Object();
+    this.JVo = new com.tencent.qbar.a();
     this.TAG = (this.TAG + "_" + paramString);
     AppMethodBeat.o(3546);
   }
   
-  private List<a.a> H(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private List<a.a> G(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3549);
     long l = System.currentTimeMillis();
-    paramInt1 = this.ItF.G(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.JVo.F(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt1 < 0)
     {
       Log.e(this.TAG, "scanImage result ".concat(String.valueOf(paramInt1)));
       AppMethodBeat.o(3549);
       return null;
     }
-    paramArrayOfByte = this.ItF.flK();
+    paramArrayOfByte = this.JVo.fCb();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0)) {
       Log.e(this.TAG, String.format("get no results ,cost %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
     }
@@ -48,12 +48,12 @@ public class a
     return paramArrayOfByte;
   }
   
-  public final List<a.a> I(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final List<a.a> H(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3553);
-    synchronized (this.vNi)
+    synchronized (this.wXD)
     {
-      paramArrayOfByte = H(paramArrayOfByte, paramInt1, paramInt2);
+      paramArrayOfByte = G(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(3553);
       return paramArrayOfByte;
     }
@@ -62,7 +62,7 @@ public class a
   public final void K(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     AppMethodBeat.i(3550);
-    this.ItF.I(paramList, paramList1);
+    this.JVo.I(paramList, paramList1);
     Log.i(this.TAG, String.format("get detect code result %d", new Object[] { Integer.valueOf(paramList.size()) }));
     AppMethodBeat.o(3550);
   }
@@ -92,7 +92,7 @@ public class a
     arrayOfInt1[1] = 1;
     arrayOfInt1[2] = 4;
     arrayOfInt1[3] = 5;
-    int i = this.ItF.i(arrayOfInt1, arrayOfInt1.length);
+    int i = this.JVo.l(arrayOfInt1, arrayOfInt1.length);
     AppMethodBeat.o(3554);
     return i;
   }
@@ -115,7 +115,7 @@ public class a
       AppMethodBeat.o(3548);
       return null;
     }
-    paramArrayOfInt = H(arrayOfByte, paramPoint.x, paramPoint.y);
+    paramArrayOfInt = G(arrayOfByte, paramPoint.x, paramPoint.y);
     AppMethodBeat.o(3548);
     return paramArrayOfInt;
   }
@@ -127,29 +127,29 @@ public class a
     //   0: sipush 3547
     //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 160	com/tencent/scanlib/b/a:fFP	Z
+    //   7: getfield 162	com/tencent/scanlib/b/a:fJw	Z
     //   10: ifeq +10 -> 20
     //   13: sipush 3547
     //   16: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: return
     //   20: aload_0
-    //   21: getfield 29	com/tencent/scanlib/b/a:vNi	Ljava/lang/Object;
+    //   21: getfield 29	com/tencent/scanlib/b/a:wXD	Ljava/lang/Object;
     //   24: astore_3
     //   25: aload_3
     //   26: monitorenter
     //   27: aload_0
-    //   28: getfield 34	com/tencent/scanlib/b/a:ItF	Lcom/tencent/qbar/a;
+    //   28: getfield 34	com/tencent/scanlib/b/a:JVo	Lcom/tencent/qbar/a;
     //   31: iload_1
-    //   32: ldc 162
-    //   34: ldc 164
+    //   32: ldc 164
+    //   34: ldc 166
     //   36: aload_2
-    //   37: invokevirtual 167	com/tencent/qbar/a:a	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/qbar/QbarNative$QbarAiModelParam;)I
+    //   37: invokevirtual 169	com/tencent/qbar/a:a	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/qbar/QbarNative$QbarAiModelParam;)I
     //   40: istore_1
     //   41: iload_1
     //   42: ifeq +28 -> 70
     //   45: aload_0
     //   46: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
-    //   49: ldc 169
+    //   49: ldc 171
     //   51: iload_1
     //   52: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   55: invokevirtual 75	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
@@ -161,10 +161,10 @@ public class a
     //   69: return
     //   70: aload_0
     //   71: iconst_1
-    //   72: putfield 160	com/tencent/scanlib/b/a:fFP	Z
+    //   72: putfield 162	com/tencent/scanlib/b/a:fJw	Z
     //   75: aload_0
     //   76: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
-    //   79: ldc 171
+    //   79: ldc 173
     //   81: invokestatic 111	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   84: aload_3
     //   85: monitorexit
@@ -234,7 +234,7 @@ public class a
         m = ???.top;
         arrayOfByte = new byte[i * j * 3 / 2];
       }
-      synchronized (this.vNi)
+      synchronized (this.wXD)
       {
         paramInt = d.a(arrayOfByte, paramArrayOfInt, paramArrayOfByte, paramPoint.x, paramPoint.y, k, m, i, j, paramInt);
         if (paramInt != 0)
@@ -259,27 +259,27 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo fmJ()
+  public final QbarNative.QBarZoomInfo fCZ()
   {
     AppMethodBeat.i(3551);
-    QbarNative.QBarZoomInfo localQBarZoomInfo = this.ItF.flL();
+    QbarNative.QBarZoomInfo localQBarZoomInfo = this.JVo.fCc();
     AppMethodBeat.o(3551);
     return localQBarZoomInfo;
   }
   
   public final boolean hasInited()
   {
-    return this.fFP;
+    return this.fJw;
   }
   
   public final void release()
   {
     AppMethodBeat.i(3555);
-    synchronized (this.vNi)
+    synchronized (this.wXD)
     {
-      this.fFP = false;
-      if (this.ItF != null) {
-        this.ItF.release();
+      this.fJw = false;
+      if (this.JVo != null) {
+        this.JVo.release();
       }
       AppMethodBeat.o(3555);
       return;

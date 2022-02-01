@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.remittance.mobile.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
@@ -29,15 +29,15 @@ public final class a
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67674);
-        ad.i("MicroMsg.BankMobile.BankMobileShortCutView", "showBankMobileShortCutView click cancel!");
-        this.idS.bfo();
+        ac.i("MicroMsg.BankMobile.BankMobileShortCutView", "showBankMobileShortCutView click cancel!");
+        this.iEb.bmi();
         if (paramBoolean)
         {
-          b.Kw(5);
+          b.Mv(5);
           AppMethodBeat.o(67674);
           return;
         }
-        b.Kw(2);
+        b.Mv(2);
         AppMethodBeat.o(67674);
       }
     });
@@ -59,7 +59,7 @@ public final class a
         paramString = str + arrayOfChar[i];
         i += 1;
       }
-      b.Kw(4);
+      b.Mv(4);
     }
     for (;;)
     {
@@ -69,52 +69,52 @@ public final class a
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67675);
-          ad.i("MicroMsg.BankMobile.BankMobileShortCutView", "showBankMobileShortCutView click confirm!");
+          ac.i("MicroMsg.BankMobile.BankMobileShortCutView", "showBankMobileShortCutView click confirm!");
           paramAnonymousView = new Intent();
-          if (this.vxH)
+          if (this.wHM)
           {
             paramAnonymousView.putExtra("key_content", paramString);
             d.b(paramMMActivity, "remittance", ".bankcard.ui.BankRemitBankcardInputUI", paramAnonymousView);
-            b.Kw(6);
-            locale.bfo();
+            b.Mv(6);
+            locale.bmi();
             AppMethodBeat.o(67675);
             return;
           }
           paramAnonymousView.putExtra("key_content", paramString);
-          if (g.afB().afk().getBoolean(ae.a.FvI, true)) {
+          if (g.agR().agA().getBoolean(ah.a.GTC, true)) {
             d.b(paramMMActivity, "remittance", ".mobile.ui.MobileRemitWelcomeUI", paramAnonymousView);
           }
           for (;;)
           {
-            b.Kw(3);
+            b.Mv(3);
             break;
             d.b(paramMMActivity, "remittance", ".mobile.ui.MobileRemitNumberInputUI", paramAnonymousView);
           }
         }
       });
-      locale.HrX = new n.c()
+      locale.ISu = new n.c()
       {
         public final void onCreateMMMenu(l paramAnonymousl)
         {
           AppMethodBeat.i(67676);
           paramAnonymousl.clear();
-          this.idS.setFooterView(null);
-          this.idS.setFooterView(localView);
+          this.iEb.setFooterView(null);
+          this.iEb.setFooterView(localView);
           AppMethodBeat.o(67676);
         }
       };
-      locale.ffu();
-      locale.csG();
+      locale.fvq();
+      locale.cED();
       AppMethodBeat.o(67677);
       return;
       ((TextView)localView.findViewById(2131305902)).setText(2131756356);
-      b.Kw(1);
+      b.Mv(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.ui.a
  * JD-Core Version:    0.7.0.1
  */

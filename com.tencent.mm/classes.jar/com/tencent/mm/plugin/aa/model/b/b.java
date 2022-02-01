@@ -9,8 +9,8 @@ import java.util.List;
 public class b
   implements com.tencent.mm.vending.c.b<a>
 {
-  protected a iaQ;
-  public final a iaR;
+  protected a iAT;
+  public final a iAU;
   
   public b()
   {
@@ -22,8 +22,8 @@ public class b
   private b(a parama)
   {
     AppMethodBeat.i(63437);
-    this.iaR = new a();
-    this.iaQ = parama;
+    this.iAU = new a();
+    this.iAT = parama;
     AppMethodBeat.o(63437);
   }
   
@@ -32,12 +32,12 @@ public class b
   {
     public a() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.ANY";
     }
     
-    public final com.tencent.mm.vending.g.c<d<List, String, Boolean>> m(boolean paramBoolean, int paramInt)
+    public final com.tencent.mm.vending.g.c<d<List, String, Boolean>> n(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(63434);
       com.tencent.mm.vending.g.c localc = g.J(Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt)).c(this);
@@ -48,7 +48,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.b
  * JD-Core Version:    0.7.0.1
  */

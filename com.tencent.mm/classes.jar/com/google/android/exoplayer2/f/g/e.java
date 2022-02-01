@@ -30,12 +30,12 @@ final class e
   
   public static final class a
   {
-    Layout.Alignment brF;
-    float brG;
-    int brH;
-    float brI;
-    int brJ;
-    SpannableStringBuilder bvn;
+    Layout.Alignment bpE;
+    float bpF;
+    int bpG;
+    float bpH;
+    int bpI;
+    SpannableStringBuilder btm;
     long endTime;
     int lineType;
     long startTime;
@@ -48,30 +48,30 @@ final class e
       AppMethodBeat.o(92894);
     }
     
-    private a uY()
+    private a uS()
     {
       AppMethodBeat.i(92896);
-      if (this.brF == null) {
-        this.brJ = -2147483648;
+      if (this.bpE == null) {
+        this.bpI = -2147483648;
       }
       for (;;)
       {
         AppMethodBeat.o(92896);
         return this;
-        switch (e.1.bvm[this.brF.ordinal()])
+        switch (e.1.btl[this.bpE.ordinal()])
         {
         default: 
-          new StringBuilder("Unrecognized alignment: ").append(this.brF);
-          this.brJ = 0;
+          new StringBuilder("Unrecognized alignment: ").append(this.bpE);
+          this.bpI = 0;
           break;
         case 1: 
-          this.brJ = 0;
+          this.bpI = 0;
           break;
         case 2: 
-          this.brJ = 1;
+          this.bpI = 1;
           break;
         case 3: 
-          this.brJ = 2;
+          this.bpI = 2;
         }
       }
     }
@@ -80,23 +80,23 @@ final class e
     {
       this.startTime = 0L;
       this.endTime = 0L;
-      this.bvn = null;
-      this.brF = null;
-      this.brG = 1.4E-45F;
+      this.btm = null;
+      this.bpE = null;
+      this.bpF = 1.4E-45F;
       this.lineType = -2147483648;
-      this.brH = -2147483648;
-      this.brI = 1.4E-45F;
-      this.brJ = -2147483648;
+      this.bpG = -2147483648;
+      this.bpH = 1.4E-45F;
+      this.bpI = -2147483648;
       this.width = 1.4E-45F;
     }
     
-    public final e uX()
+    public final e uR()
     {
       AppMethodBeat.i(92895);
-      if ((this.brI != 1.4E-45F) && (this.brJ == -2147483648)) {
-        uY();
+      if ((this.bpH != 1.4E-45F) && (this.bpI == -2147483648)) {
+        uS();
       }
-      e locale = new e(this.startTime, this.endTime, this.bvn, this.brF, this.brG, this.lineType, this.brH, this.brI, this.brJ, this.width);
+      e locale = new e(this.startTime, this.endTime, this.btm, this.bpE, this.bpF, this.lineType, this.bpG, this.bpH, this.bpI, this.width);
       AppMethodBeat.o(92895);
       return locale;
     }

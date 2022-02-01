@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 
 public final class j
 {
-  public static File U(Context paramContext)
+  public static File V(Context paramContext)
   {
     String str = ".font" + Process.myPid() + "-" + Process.myTid() + "-";
     int i = 0;
@@ -34,7 +34,7 @@ public final class j
   
   public static ByteBuffer a(Context paramContext, Resources paramResources, int paramInt)
   {
-    paramContext = U(paramContext);
+    paramContext = V(paramContext);
     if (paramContext == null) {
       return null;
     }

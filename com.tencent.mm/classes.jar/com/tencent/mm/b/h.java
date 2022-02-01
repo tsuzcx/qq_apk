@@ -1,13 +1,13 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.af;
 
 public class h<K, O>
-  extends ag<K, O>
+  extends af<K, O>
   implements f<K, O>
 {
-  private f.b<K, O> cHt = null;
-  private f.c<K, O> cHu = null;
+  private f.b<K, O> cEB = null;
+  private f.c<K, O> cEC = null;
   
   public h(int paramInt)
   {
@@ -17,14 +17,14 @@ public class h<K, O>
   public h(int paramInt, f.b<K, O> paramb)
   {
     super(paramInt);
-    this.cHt = paramb;
+    this.cEB = paramb;
   }
   
   public h(int paramInt, f.b<K, O> paramb, f.c<K, O> paramc)
   {
     super(paramInt);
-    this.cHt = paramb;
-    this.cHu = paramc;
+    this.cEB = paramb;
+    this.cEC = paramc;
   }
   
   public void a(f.a<K, O> parama)
@@ -32,7 +32,7 @@ public class h<K, O>
     clear();
   }
   
-  public final O aM(K paramK)
+  public final O aJ(K paramK)
   {
     return get(paramK);
   }
@@ -50,8 +50,8 @@ public class h<K, O>
   public void entryRemoved(boolean paramBoolean, K paramK, O paramO1, O paramO2)
   {
     super.entryRemoved(paramBoolean, paramK, paramO1, paramO2);
-    if (this.cHt != null) {
-      this.cHt.c(paramK, paramO1, paramO2);
+    if (this.cEB != null) {
+      this.cEB.c(paramK, paramO1, paramO2);
     }
   }
   
@@ -65,8 +65,8 @@ public class h<K, O>
   
   public int sizeOf(K paramK, O paramO)
   {
-    if (this.cHu != null) {
-      return this.cHu.p(paramK, paramO);
+    if (this.cEC != null) {
+      return this.cEC.p(paramK, paramO);
     }
     return super.sizeOf(paramK, paramO);
   }

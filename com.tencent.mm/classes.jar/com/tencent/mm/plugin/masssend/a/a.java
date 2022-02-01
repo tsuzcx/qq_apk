@@ -5,60 +5,84 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public int cJQ;
+  public int cGX;
   public long createTime;
-  int dtM;
+  int drx;
   public String filename;
-  String gOV;
-  String gOW;
-  int hAe;
-  long hAg;
-  String htx;
+  String hTZ;
+  String hpv;
+  String hpw;
+  int iaF;
+  long iaH;
   public int msgType;
   int status;
-  String tvI;
-  public String tvJ;
-  public int tvK;
-  public int tvL;
-  int tvM;
-  int tvN;
-  public int tvO;
+  String uEb;
+  public String uEc;
+  public int uEd;
+  public int uEe;
+  int uEf;
+  int uEg;
+  public int uEh;
   public int videoSource;
   
   public a()
   {
     AppMethodBeat.i(26343);
-    this.dtM = -1;
-    this.htx = "";
+    this.drx = -1;
+    this.hTZ = "";
     this.status = 0;
     this.createTime = 0L;
-    this.hAg = 0L;
+    this.iaH = 0L;
     this.filename = "";
-    this.tvI = "";
-    this.tvJ = "";
-    this.tvK = 0;
+    this.uEb = "";
+    this.uEc = "";
+    this.uEd = 0;
     this.msgType = 0;
-    this.tvL = 0;
-    this.tvM = 0;
-    this.cJQ = 0;
-    this.hAe = 0;
-    this.tvN = 0;
+    this.uEe = 0;
+    this.uEf = 0;
+    this.cGX = 0;
+    this.iaF = 0;
+    this.uEg = 0;
     this.videoSource = 0;
-    this.tvO = 0;
-    this.gOV = "";
-    this.gOW = "";
+    this.uEh = 0;
+    this.hpv = "";
+    this.hpw = "";
     AppMethodBeat.o(26343);
   }
   
-  public final String cNJ()
+  public final void convertFrom(Cursor paramCursor)
   {
-    if (this.htx == null) {
-      return "";
-    }
-    return this.htx;
+    AppMethodBeat.i(26344);
+    this.hTZ = paramCursor.getString(0);
+    this.status = paramCursor.getInt(1);
+    this.createTime = paramCursor.getLong(2);
+    this.iaH = paramCursor.getLong(3);
+    this.filename = paramCursor.getString(4);
+    this.uEb = paramCursor.getString(5);
+    this.uEc = paramCursor.getString(6);
+    this.uEd = paramCursor.getInt(7);
+    this.msgType = paramCursor.getInt(8);
+    this.uEe = paramCursor.getInt(9);
+    this.uEf = paramCursor.getInt(10);
+    this.cGX = paramCursor.getInt(11);
+    this.iaF = paramCursor.getInt(12);
+    this.uEg = paramCursor.getInt(13);
+    this.videoSource = paramCursor.getInt(14);
+    this.uEh = paramCursor.getInt(15);
+    this.hpv = paramCursor.getString(16);
+    this.hpw = paramCursor.getString(17);
+    AppMethodBeat.o(26344);
   }
   
-  public final String cNK()
+  public final String dbq()
+  {
+    if (this.hTZ == null) {
+      return "";
+    }
+    return this.hTZ;
+  }
+  
+  public final String dbr()
   {
     if (this.filename == null) {
       return "";
@@ -66,49 +90,25 @@ public final class a
     return this.filename;
   }
   
-  public final String cNL()
+  public final String dbs()
   {
-    if (this.tvI == null) {
+    if (this.uEb == null) {
       return "";
     }
-    return this.tvI;
+    return this.uEb;
   }
   
-  public final String cNM()
+  public final String dbt()
   {
-    if (this.tvJ == null) {
+    if (this.uEc == null) {
       return "";
     }
-    return this.tvJ;
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(26344);
-    this.htx = paramCursor.getString(0);
-    this.status = paramCursor.getInt(1);
-    this.createTime = paramCursor.getLong(2);
-    this.hAg = paramCursor.getLong(3);
-    this.filename = paramCursor.getString(4);
-    this.tvI = paramCursor.getString(5);
-    this.tvJ = paramCursor.getString(6);
-    this.tvK = paramCursor.getInt(7);
-    this.msgType = paramCursor.getInt(8);
-    this.tvL = paramCursor.getInt(9);
-    this.tvM = paramCursor.getInt(10);
-    this.cJQ = paramCursor.getInt(11);
-    this.hAe = paramCursor.getInt(12);
-    this.tvN = paramCursor.getInt(13);
-    this.videoSource = paramCursor.getInt(14);
-    this.tvO = paramCursor.getInt(15);
-    this.gOV = paramCursor.getString(16);
-    this.gOW = paramCursor.getString(17);
-    AppMethodBeat.o(26344);
+    return this.uEc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.a
  * JD-Core Version:    0.7.0.1
  */

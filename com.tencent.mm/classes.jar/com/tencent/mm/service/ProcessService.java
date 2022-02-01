@@ -5,12 +5,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class ProcessService
 {
-  public static ConcurrentHashMap<String, b> EZP;
+  public static ConcurrentHashMap<String, b> Gxg;
   
   static
   {
     AppMethodBeat.i(133212);
-    EZP = new ConcurrentHashMap();
+    Gxg = new ConcurrentHashMap();
     AppMethodBeat.o(133212);
   }
 }

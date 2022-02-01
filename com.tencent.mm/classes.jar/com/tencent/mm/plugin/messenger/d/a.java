@@ -12,11 +12,11 @@ import com.tencent.mm.plugin.messenger.a.f.b;
 import com.tencent.mm.plugin.messenger.a.f.c;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -30,27 +30,27 @@ import java.util.Map;
 public final class a
   implements f
 {
-  private Map<String, LinkedList<f.b>> tyV;
-  private Map<String, LinkedList<com.tencent.mm.plugin.messenger.a.f.a>> tyW;
-  private Map<String, HashSet<f.c>> tyX;
-  private com.tencent.mm.aw.a.d.a<Long, CharSequence> tyY;
-  private com.tencent.mm.aw.a.d.a<Long, CharSequence> tyZ;
-  public p tza;
+  private Map<String, LinkedList<f.b>> uHs;
+  private Map<String, LinkedList<com.tencent.mm.plugin.messenger.a.f.a>> uHt;
+  private Map<String, HashSet<f.c>> uHu;
+  private com.tencent.mm.av.a.d.a<Long, CharSequence> uHv;
+  private com.tencent.mm.av.a.d.a<Long, CharSequence> uHw;
+  public p uHx;
   
   public a()
   {
     AppMethodBeat.i(90754);
-    this.tyV = new HashMap();
-    this.tyW = new HashMap();
-    this.tyX = new HashMap();
-    this.tyY = new com.tencent.mm.aw.a.d.a(200);
-    this.tyZ = new com.tencent.mm.aw.a.d.a(500);
-    this.tza = new p()
+    this.uHs = new HashMap();
+    this.uHt = new HashMap();
+    this.uHu = new HashMap();
+    this.uHv = new com.tencent.mm.av.a.d.a(200);
+    this.uHw = new com.tencent.mm.av.a.d.a(500);
+    this.uHx = new p()
     {
-      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, com.tencent.mm.al.f.a paramAnonymousa)
+      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, com.tencent.mm.ak.f.a paramAnonymousa)
       {
         AppMethodBeat.i(90750);
-        ad.i("MicroMsg.SysMsgTemplateImp", "hy: on new xml received: %s", new Object[] { paramAnonymousMap.toString() });
+        ac.i("MicroMsg.SysMsgTemplateImp", "hy: on new xml received: %s", new Object[] { paramAnonymousMap.toString() });
         a.a(a.this, paramAnonymousString, paramAnonymousMap, paramAnonymousa);
         AppMethodBeat.o(90750);
       }
@@ -58,7 +58,7 @@ public final class a
     AppMethodBeat.o(90754);
   }
   
-  private static void M(CharSequence paramCharSequence)
+  private static void N(CharSequence paramCharSequence)
   {
     int i = 0;
     AppMethodBeat.i(90765);
@@ -85,7 +85,7 @@ public final class a
   
   private CharSequence a(Map<String, String> paramMap, Bundle paramBundle, WeakReference<Context> paramWeakReference, int paramInt, WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(196724);
+    AppMethodBeat.i(198608);
     ArrayList localArrayList1 = new ArrayList();
     int i = 0;
     Object localObject2 = new StringBuilder();
@@ -97,27 +97,27 @@ public final class a
       localObject1 = "";
       localObject1 = localObject1;
       localObject1 = ".sysmsg.sysmsgtemplate.content_template" + (String)localObject1;
-      if (bt.isNullOrNil((String)paramMap.get(localObject1))) {
+      if (bs.isNullOrNil((String)paramMap.get(localObject1))) {
         break label885;
       }
       localObject2 = (String)paramMap.get((String)localObject1 + ".$type");
-      if (!agS((String)localObject2))
+      if (!alM((String)localObject2))
       {
-        ad.w("MicroMsg.SysMsgTemplateImp", "hy: non supported type: %s", new Object[] { localObject2 });
-        localArrayList1.add(x((String)localObject1, paramMap));
+        ac.w("MicroMsg.SysMsgTemplateImp", "hy: non supported type: %s", new Object[] { localObject2 });
+        localArrayList1.add(y((String)localObject1, paramMap));
       }
       if (paramBundle != null) {
         paramBundle.putString("template_type", (String)localObject2);
       }
       localObject1 = (String)paramMap.get((String)localObject1 + ".template");
-      ad.v("MicroMsg.SysMsgTemplateImp", "hy: rawTemplate : %s", new Object[] { localObject1 });
-      localObject1 = c.agU((String)localObject1);
+      ac.v("MicroMsg.SysMsgTemplateImp", "hy: rawTemplate : %s", new Object[] { localObject1 });
+      localObject1 = c.alO((String)localObject1);
       if (localObject1 != null) {
         break label293;
       }
       j = 0;
       label227:
-      ad.d("MicroMsg.SysMsgTemplateImp", "hy: parsed %d models", new Object[] { Integer.valueOf(j) });
+      ac.d("MicroMsg.SysMsgTemplateImp", "hy: parsed %d models", new Object[] { Integer.valueOf(j) });
       if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0)) {
         break label303;
       }
@@ -140,7 +140,7 @@ public final class a
         c.a locala = (c.a)localIterator.next();
         if (locala.type == 0)
         {
-          localArrayList2.add(new SpannableString(k.c(aj.getContext(), locala.content)));
+          localArrayList2.add(new SpannableString(k.c(ai.getContext(), locala.content)));
         }
         else if (locala.type == 1)
         {
@@ -150,7 +150,7 @@ public final class a
           if (j != 0) {
             localObject1 = (String)localObject2 + j;
           }
-          if (!bt.isNullOrNil((String)paramMap.get(localObject1)))
+          if (!bs.isNullOrNil((String)paramMap.get(localObject1)))
           {
             localObject2 = (String)paramMap.get((String)localObject1 + ".$name");
             String str;
@@ -162,22 +162,22 @@ public final class a
               if (paramInt != 0) {
                 break label713;
               }
-              localObject2 = (List)this.tyV.get(str);
+              localObject2 = (List)this.uHs.get(str);
               if ((localObject2 != null) && (((List)localObject2).size() > 0)) {
                 break label647;
               }
               localObject2 = null;
-              if ((agT(str)) && (localObject2 != null)) {
+              if ((alN(str)) && (localObject2 != null)) {
                 break label678;
               }
-              str = bt.by(str, "");
+              str = bs.bG(str, "");
               if (localObject2 != null) {
                 break label672;
               }
               bool = true;
               label602:
-              ad.i("MicroMsg.SysMsgTemplateImp", "alvinluo not support link type: %s or listener == null: %b", new Object[] { str, Boolean.valueOf(bool) });
-              localArrayList2.add(x((String)localObject1, paramMap));
+              ac.i("MicroMsg.SysMsgTemplateImp", "alvinluo not support link type: %s or listener == null: %b", new Object[] { str, Boolean.valueOf(bool) });
+              localArrayList2.add(y((String)localObject1, paramMap));
             }
             label647:
             label672:
@@ -187,59 +187,59 @@ public final class a
             {
               j += 1;
               break;
-              localObject2 = (f.b)((LinkedList)this.tyV.get(str)).getLast();
+              localObject2 = (f.b)((LinkedList)this.uHs.get(str)).getLast();
               break label572;
               bool = false;
               break label602;
               localObject1 = ((f.b)localObject2).a(paramMap, (String)localObject1, paramBundle, paramWeakReference, paramWeakReference1);
-              M((CharSequence)localObject1);
+              N((CharSequence)localObject1);
               localArrayList2.add(nullAsNil((CharSequence)localObject1));
               continue;
               label713:
               if (paramInt == 1)
               {
-                localObject2 = (List)this.tyW.get(str);
+                localObject2 = (List)this.uHt.get(str);
                 if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {}
-                for (localObject2 = null;; localObject2 = (com.tencent.mm.plugin.messenger.a.f.a)((LinkedList)this.tyW.get(str)).getLast())
+                for (localObject2 = null;; localObject2 = (com.tencent.mm.plugin.messenger.a.f.a)((LinkedList)this.uHt.get(str)).getLast())
                 {
-                  if ((agT(str)) && (localObject2 != null)) {
+                  if ((alN(str)) && (localObject2 != null)) {
                     break label806;
                   }
-                  localArrayList2.add(x((String)localObject1, paramMap));
+                  localArrayList2.add(y((String)localObject1, paramMap));
                   break;
                 }
-                localArrayList2.add(bt.nullAsNil(((com.tencent.mm.plugin.messenger.a.f.a)localObject2).e(paramMap, (String)localObject1)));
+                localArrayList2.add(bs.nullAsNil(((com.tencent.mm.plugin.messenger.a.f.a)localObject2).e(paramMap, (String)localObject1)));
               }
               else
               {
-                ad.e("MicroMsg.SysMsgTemplateImp", "hy: not supported digest type");
+                ac.e("MicroMsg.SysMsgTemplateImp", "hy: not supported digest type");
               }
             }
           }
         }
         else
         {
-          ad.e("MicroMsg.SysMsgTemplateImp", "hy: invalid! should not get here");
+          ac.e("MicroMsg.SysMsgTemplateImp", "hy: invalid! should not get here");
         }
       }
       localObject1 = concactSpannable(localArrayList2);
-      ad.v("MicroMsg.SysMsgTemplateImp", "hy: concatedvalue is %s", new Object[] { localObject1 });
+      ac.v("MicroMsg.SysMsgTemplateImp", "hy: concatedvalue is %s", new Object[] { localObject1 });
       localArrayList1.add(localObject1);
     }
     label885:
     if (localArrayList1.size() == 0)
     {
-      ad.w("MicroMsg.SysMsgTemplateImp", "hy: not handled");
+      ac.w("MicroMsg.SysMsgTemplateImp", "hy: not handled");
       paramMap = new SpannableString("");
-      AppMethodBeat.o(196724);
+      AppMethodBeat.o(198608);
       return paramMap;
     }
     paramMap = concactSpannable(localArrayList1);
-    AppMethodBeat.o(196724);
+    AppMethodBeat.o(198608);
     return paramMap;
   }
   
-  private static boolean agS(String paramString)
+  private static boolean alM(String paramString)
   {
     AppMethodBeat.i(90768);
     if (("tmpl_type_profile".equals(paramString)) || ("tmpl_type_profilewithrevoke".equals(paramString)) || ("tmpl_type_profilewithrevokeqrcode".equals(paramString)) || ("tmpl_type_wxappnotifywithview".equals(paramString)) || ("tmpl_type_succeed_contact".equals(paramString)) || ("tmpl_type_jump_chat".equals(paramString)) || ("new_tmpl_type_succeed_contact".equals(paramString)))
@@ -251,10 +251,10 @@ public final class a
     return false;
   }
   
-  private static boolean agT(String paramString)
+  private static boolean alN(String paramString)
   {
     AppMethodBeat.i(90769);
-    if (("link_profile".equals(paramString)) || ("link_revoke".equals(paramString)) || ("link_revoke_qrcode".equals(paramString)) || ("link_plain".equals(paramString)) || ("link_view_wxapp".equals(paramString)) || ("link_succeed_contact".equals(paramString)) || ("link_jump_chat".equals(paramString)) || ("link_admin_explain".equals(paramString)) || ("link_live".equals(paramString)) || ("comment_link_profile".equals(paramString)) || ("new_link_succeed_contact".equals(paramString)))
+    if (("link_profile".equals(paramString)) || ("link_revoke".equals(paramString)) || ("link_revoke_qrcode".equals(paramString)) || ("link_plain".equals(paramString)) || ("link_view_wxapp".equals(paramString)) || ("link_succeed_contact".equals(paramString)) || ("link_jump_chat".equals(paramString)) || ("link_admin_explain".equals(paramString)) || ("new_link_succeed_contact".equals(paramString)) || ("link_live".equals(paramString)) || ("comment_link_profile".equals(paramString)))
     {
       AppMethodBeat.o(90769);
       return true;
@@ -286,19 +286,19 @@ public final class a
     return paramCharSequence;
   }
   
-  private static CharSequence x(String paramString, Map<String, String> paramMap)
+  private static CharSequence y(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(90767);
-    if (bt.getInt((String)paramMap.get(paramString + ".$hidden"), 0) == 1) {}
+    if (bs.getInt((String)paramMap.get(paramString + ".$hidden"), 0) == 1) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.v("MicroMsg.SysMsgTemplateImp", "hy: hide");
+      ac.v("MicroMsg.SysMsgTemplateImp", "hy: hide");
       paramString = new SpannableString("");
       AppMethodBeat.o(90767);
       return paramString;
     }
     paramString = (String)paramMap.get(paramString + ".plain");
-    paramString = new SpannableString(k.c(aj.getContext(), bt.nullAsNil(paramString)));
+    paramString = new SpannableString(k.c(ai.getContext(), bs.nullAsNil(paramString)));
     AppMethodBeat.o(90767);
     return paramString;
   }
@@ -306,39 +306,39 @@ public final class a
   public final void a(String paramString, com.tencent.mm.plugin.messenger.a.f.a parama)
   {
     AppMethodBeat.i(90759);
-    ad.i("MicroMsg.SysMsgTemplateImp", "hy: adding digest listener: %s", new Object[] { paramString });
-    if (!this.tyW.containsKey(paramString)) {
-      this.tyW.put(paramString, new LinkedList());
+    ac.i("MicroMsg.SysMsgTemplateImp", "hy: adding digest listener: %s", new Object[] { paramString });
+    if (!this.uHt.containsKey(paramString)) {
+      this.uHt.put(paramString, new LinkedList());
     }
-    if (!((List)this.tyW.get(paramString)).contains(parama)) {
-      ((LinkedList)this.tyW.get(paramString)).add(parama);
+    if (!((List)this.uHt.get(paramString)).contains(parama)) {
+      ((LinkedList)this.uHt.get(paramString)).add(parama);
     }
     AppMethodBeat.o(90759);
   }
   
   public final void a(String paramString, f.b paramb)
   {
-    AppMethodBeat.i(196720);
-    if (!this.tyV.containsKey(paramString)) {
-      this.tyV.put(paramString, new LinkedList());
+    AppMethodBeat.i(198604);
+    if (!this.uHs.containsKey(paramString)) {
+      this.uHs.put(paramString, new LinkedList());
     }
-    List localList = (List)this.tyV.get(paramString);
-    ad.i("MicroMsg.SysMsgTemplateImp", "hy: adding template listener: %s list=%s", new Object[] { paramString, localList });
+    List localList = (List)this.uHs.get(paramString);
+    ac.i("MicroMsg.SysMsgTemplateImp", "hy: adding template listener: %s list=%s", new Object[] { paramString, localList });
     if ((localList != null) && (!localList.contains(paramb))) {
-      ((LinkedList)this.tyV.get(paramString)).add(paramb);
+      ((LinkedList)this.uHs.get(paramString)).add(paramb);
     }
-    AppMethodBeat.o(196720);
+    AppMethodBeat.o(198604);
   }
   
   public final void a(final String paramString, final f.c paramc)
   {
-    AppMethodBeat.i(196718);
-    aq.f(new Runnable()
+    AppMethodBeat.i(198602);
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(90751);
-        ad.i("MicroMsg.SysMsgTemplateImp", "hy: adding Received listener: %s", new Object[] { paramString });
+        ac.i("MicroMsg.SysMsgTemplateImp", "hy: adding Received listener: %s", new Object[] { paramString });
         HashSet localHashSet2 = (HashSet)a.a(a.this).get(paramString);
         HashSet localHashSet1 = localHashSet2;
         if (localHashSet2 == null) {
@@ -351,16 +351,16 @@ public final class a
         AppMethodBeat.o(90751);
       }
     });
-    AppMethodBeat.o(196718);
+    AppMethodBeat.o(198602);
   }
   
   public final void a(String paramString, Map<String, String> paramMap, Bundle paramBundle)
   {
-    AppMethodBeat.i(196723);
+    AppMethodBeat.i(198607);
     try
     {
       Object localObject = paramBundle.getString("template_type");
-      localObject = (HashSet)this.tyX.get(localObject);
+      localObject = (HashSet)this.uHu.get(localObject);
       if (localObject != null)
       {
         localObject = ((HashSet)localObject).iterator();
@@ -368,72 +368,72 @@ public final class a
           ((f.c)((Iterator)localObject).next()).b(paramString, paramMap, paramBundle);
         }
       }
-      AppMethodBeat.o(196723);
+      AppMethodBeat.o(198607);
     }
     catch (Exception paramString)
     {
-      ad.printErrStackTrace("MicroMsg.SysMsgTemplateImp", paramString, "", new Object[0]);
-      AppMethodBeat.o(196723);
+      ac.printErrStackTrace("MicroMsg.SysMsgTemplateImp", paramString, "", new Object[0]);
+      AppMethodBeat.o(198607);
       return;
     }
   }
   
-  public final void afO(String paramString)
+  public final void akI(String paramString)
   {
-    AppMethodBeat.i(196721);
-    ad.i("MicroMsg.SysMsgTemplateImp", "hy: removing template listener: %s", new Object[] { paramString });
-    if (!this.tyV.containsKey(paramString)) {
-      ad.w("MicroMsg.SysMsgTemplateImp", "[removeTemplateListener] mHandleListener is not contains this linkName:%s", new Object[] { paramString });
+    AppMethodBeat.i(198605);
+    ac.i("MicroMsg.SysMsgTemplateImp", "hy: removing template listener: %s", new Object[] { paramString });
+    if (!this.uHs.containsKey(paramString)) {
+      ac.w("MicroMsg.SysMsgTemplateImp", "[removeTemplateListener] mHandleListener is not contains this linkName:%s", new Object[] { paramString });
     }
-    LinkedList localLinkedList = (LinkedList)this.tyV.get(paramString);
+    LinkedList localLinkedList = (LinkedList)this.uHs.get(paramString);
     if (localLinkedList == null)
     {
-      ad.e("MicroMsg.SysMsgTemplateImp", "list is null!");
-      AppMethodBeat.o(196721);
+      ac.e("MicroMsg.SysMsgTemplateImp", "list is null!");
+      AppMethodBeat.o(198605);
       return;
     }
-    ad.i("MicroMsg.SysMsgTemplateImp", "[removeTemplateListener] linkName(%s) list size:%s", new Object[] { paramString, Integer.valueOf(localLinkedList.size()) });
+    ac.i("MicroMsg.SysMsgTemplateImp", "[removeTemplateListener] linkName(%s) list size:%s", new Object[] { paramString, Integer.valueOf(localLinkedList.size()) });
     if (localLinkedList.size() > 0) {
       localLinkedList.removeLast();
     }
-    AppMethodBeat.o(196721);
+    AppMethodBeat.o(198605);
   }
   
-  public final void afP(String paramString)
+  public final void akJ(String paramString)
   {
     AppMethodBeat.i(90760);
-    ad.i("MicroMsg.SysMsgTemplateImp", "hy: removing digest listener: %s", new Object[] { paramString });
-    if (!this.tyW.containsKey(paramString)) {
-      ad.w("MicroMsg.SysMsgTemplateImp", "[removeTemplateListener] mHandleListener is not contains this linkName:%s", new Object[] { paramString });
+    ac.i("MicroMsg.SysMsgTemplateImp", "hy: removing digest listener: %s", new Object[] { paramString });
+    if (!this.uHt.containsKey(paramString)) {
+      ac.w("MicroMsg.SysMsgTemplateImp", "[removeTemplateListener] mHandleListener is not contains this linkName:%s", new Object[] { paramString });
     }
-    LinkedList localLinkedList = (LinkedList)this.tyW.get(paramString);
-    ad.i("MicroMsg.SysMsgTemplateImp", "[removeDigestListener] linkName(%s) list size:%s", new Object[] { paramString, Integer.valueOf(localLinkedList.size()) });
+    LinkedList localLinkedList = (LinkedList)this.uHt.get(paramString);
+    ac.i("MicroMsg.SysMsgTemplateImp", "[removeDigestListener] linkName(%s) list size:%s", new Object[] { paramString, Integer.valueOf(localLinkedList.size()) });
     if (localLinkedList.size() > 0) {
       localLinkedList.removeLast();
     }
     AppMethodBeat.o(90760);
   }
   
-  public final CharSequence afQ(String paramString)
+  public final CharSequence akK(String paramString)
   {
     AppMethodBeat.i(90762);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.SysMsgTemplateImp", "hy: [digest] request translate content is null!");
+      ac.w("MicroMsg.SysMsgTemplateImp", "hy: [digest] request translate content is null!");
       AppMethodBeat.o(90762);
       return null;
     }
-    paramString = bw.K(paramString, "sysmsg");
+    paramString = bv.L(paramString, "sysmsg");
     if (paramString == null)
     {
-      ad.i("MicroMsg.SysMsgTemplateImp", "hy: [digest] not retrieved sysmsg from new xml!");
+      ac.i("MicroMsg.SysMsgTemplateImp", "hy: [digest] not retrieved sysmsg from new xml!");
       AppMethodBeat.o(90762);
       return null;
     }
     String str = (String)paramString.get(".sysmsg.$type");
-    if ((bt.isNullOrNil(str)) || (!"sysmsgtemplate".equals(str)))
+    if ((bs.isNullOrNil(str)) || (!"sysmsgtemplate".equals(str)))
     {
-      ad.w("MicroMsg.SysMsgTemplateImp", "hy: [digest] not acceptable sysmsg: %s", new Object[] { str });
+      ac.w("MicroMsg.SysMsgTemplateImp", "hy: [digest] not acceptable sysmsg: %s", new Object[] { str });
       AppMethodBeat.o(90762);
       return null;
     }
@@ -444,41 +444,41 @@ public final class a
   
   public final CharSequence b(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(196722);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(198606);
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.SysMsgTemplateImp", "hy: request translate content is null!");
-      AppMethodBeat.o(196722);
+      ac.w("MicroMsg.SysMsgTemplateImp", "hy: request translate content is null!");
+      AppMethodBeat.o(198606);
       return null;
     }
-    paramString = bw.K(paramString, "sysmsg");
+    paramString = bv.L(paramString, "sysmsg");
     if (paramString == null)
     {
-      ad.i("MicroMsg.SysMsgTemplateImp", "hy: not retrieved sysmsg from new xml!");
-      AppMethodBeat.o(196722);
+      ac.i("MicroMsg.SysMsgTemplateImp", "hy: not retrieved sysmsg from new xml!");
+      AppMethodBeat.o(198606);
       return null;
     }
     String str = (String)paramString.get(".sysmsg.$type");
-    if ((bt.isNullOrNil(str)) || (!"sysmsgtemplate".equals(str)))
+    if ((bs.isNullOrNil(str)) || (!"sysmsgtemplate".equals(str)))
     {
-      ad.w("MicroMsg.SysMsgTemplateImp", "hy: not acceptable sysmsg: %s", new Object[] { str });
-      AppMethodBeat.o(196722);
+      ac.w("MicroMsg.SysMsgTemplateImp", "hy: not acceptable sysmsg: %s", new Object[] { str });
+      AppMethodBeat.o(198606);
       return null;
     }
     paramString = a(paramString, paramBundle, paramWeakReference, 0, paramWeakReference1);
-    AppMethodBeat.o(196722);
+    AppMethodBeat.o(198606);
     return paramString;
   }
   
   public final void b(final String paramString, final f.c paramc)
   {
-    AppMethodBeat.i(196719);
-    aq.f(new Runnable()
+    AppMethodBeat.i(198603);
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(90752);
-        ad.i("MicroMsg.SysMsgTemplateImp", "hy: removing Received listener: %s", new Object[] { paramString });
+        ac.i("MicroMsg.SysMsgTemplateImp", "hy: removing Received listener: %s", new Object[] { paramString });
         HashSet localHashSet = (HashSet)a.a(a.this).get(paramString);
         if (localHashSet == null)
         {
@@ -496,12 +496,12 @@ public final class a
         AppMethodBeat.o(90752);
       }
     });
-    AppMethodBeat.o(196719);
+    AppMethodBeat.o(198603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.d.a
  * JD-Core Version:    0.7.0.1
  */

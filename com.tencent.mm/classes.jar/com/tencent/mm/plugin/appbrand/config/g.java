@@ -5,27 +5,27 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Map;
 import org.apache.commons.b.a;
 
 public final class g
   extends b
 {
-  private final String[] jdj;
+  private final String[] jDw;
   
   private g()
   {
     AppMethodBeat.i(44827);
-    this.jdj = new String[] { "wx308bd2aeb83d3345" };
+    this.jDw = new String[] { "wx308bd2aeb83d3345" };
     AppMethodBeat.o(44827);
   }
   
-  public static g aTy()
+  public static g baw()
   {
     try
     {
-      g localg = (g)ceX;
+      g localg = (g)cbU;
       return localg;
     }
     finally {}
@@ -36,7 +36,7 @@ public final class g
     AppMethodBeat.i(44828);
     try
     {
-      ceX = new g();
+      cbU = new g();
       return;
     }
     finally
@@ -45,10 +45,10 @@ public final class g
     }
   }
   
-  public final AppBrandInitConfigWC FO(String paramString)
+  public final AppBrandInitConfigWC JS(String paramString)
   {
     AppMethodBeat.i(44829);
-    paramString = (AppBrandInitConfigWC)super.cr(paramString);
+    paramString = (AppBrandInitConfigWC)super.cg(paramString);
     AppMethodBeat.o(44829);
     return paramString;
   }
@@ -61,26 +61,26 @@ public final class g
     boolean bool;
     if (localObject2 != null)
     {
-      localAppBrandInitConfigWC = new AppBrandInitConfigWC(((AppBrandInitConfigLU)localObject2).aTw());
-      if ((!???.aTN().aTT()) || ((!h.aLE()) && (a.contains(this.jdj, localAppBrandInitConfigWC.appId)))) {
+      localAppBrandInitConfigWC = new AppBrandInitConfigWC(((AppBrandInitConfigLU)localObject2).bau());
+      if ((!???.baL().baR()) || ((!h.aSv()) && (a.contains(this.jDw, localAppBrandInitConfigWC.appId)))) {
         break label151;
       }
       bool = true;
     }
     for (;;)
     {
-      localAppBrandInitConfigWC.jdl = bool;
+      localAppBrandInitConfigWC.jDy = bool;
       if (localAppBrandInitConfigWC != null) {
-        localAppBrandInitConfigWC.jdw = ???.aTO().jfn.jft;
+        localAppBrandInitConfigWC.jDJ = ???.baM().jFC.jFI;
       }
       if ((localAppBrandInitConfigWC != null) && (!TextUtils.isEmpty(localAppBrandInitConfigWC.appId)))
       {
         localObject2 = localAppBrandInitConfigWC.appId;
-        ad.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { localObject2 });
+        ac.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { localObject2 });
       }
-      synchronized (this.ceY)
+      synchronized (this.cbV)
       {
-        this.ceY.remove(localObject2);
+        this.cbV.remove(localObject2);
         AppMethodBeat.o(44830);
         return localAppBrandInitConfigWC;
         label151:
@@ -91,7 +91,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.g
  * JD-Core Version:    0.7.0.1
  */

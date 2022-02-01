@@ -3,43 +3,57 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class anw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Ddo;
-  public int mBH;
+  public float height;
+  public int mediaType;
+  public String thumbUrl;
+  public String url;
+  public float width;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(186600);
+    AppMethodBeat.i(164045);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.mBH);
-      if (this.Ddo != null) {
-        paramVarArgs.d(2, this.Ddo);
+      paramVarArgs.aR(1, this.mediaType);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      AppMethodBeat.o(186600);
+      if (this.thumbUrl != null) {
+        paramVarArgs.d(3, this.thumbUrl);
+      }
+      paramVarArgs.x(4, this.width);
+      paramVarArgs.x(5, this.height);
+      AppMethodBeat.o(164045);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.mBH) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.mediaType) + 0;
       paramInt = i;
-      if (this.Ddo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Ddo);
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
-      AppMethodBeat.o(186600);
-      return paramInt;
+      i = paramInt;
+      if (this.thumbUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.thumbUrl);
+      }
+      paramInt = f.a.a.b.b.a.fK(4);
+      int j = f.a.a.b.b.a.fK(5);
+      AppMethodBeat.o(164045);
+      return i + (paramInt + 4) + (j + 4);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(186600);
+      AppMethodBeat.o(164045);
       return 0;
     }
     if (paramInt == 3)
@@ -49,24 +63,36 @@ public final class anw
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(186600);
+        AppMethodBeat.o(164045);
         return -1;
       case 1: 
-        localanw.mBH = locala.KhF.xS();
-        AppMethodBeat.o(186600);
+        localanw.mediaType = locala.LVo.xF();
+        AppMethodBeat.o(164045);
+        return 0;
+      case 2: 
+        localanw.url = locala.LVo.readString();
+        AppMethodBeat.o(164045);
+        return 0;
+      case 3: 
+        localanw.thumbUrl = locala.LVo.readString();
+        AppMethodBeat.o(164045);
+        return 0;
+      case 4: 
+        localanw.width = Float.intBitsToFloat(locala.LVo.gaa());
+        AppMethodBeat.o(164045);
         return 0;
       }
-      localanw.Ddo = locala.KhF.readString();
-      AppMethodBeat.o(186600);
+      localanw.height = Float.intBitsToFloat(locala.LVo.gaa());
+      AppMethodBeat.o(164045);
       return 0;
     }
-    AppMethodBeat.o(186600);
+    AppMethodBeat.o(164045);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.anw
  * JD-Core Version:    0.7.0.1
  */

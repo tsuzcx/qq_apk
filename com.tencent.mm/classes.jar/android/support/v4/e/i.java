@@ -10,9 +10,9 @@ import java.util.Set;
 
 public abstract class i<K, V>
 {
-  i<K, V>.b LW;
-  i<K, V>.c LX;
-  i<K, V>.e LY;
+  i<K, V>.b MT;
+  i<K, V>.c MU;
+  i<K, V>.e MV;
   
   public static <K, V> boolean a(Map<K, V> paramMap, Collection<?> paramCollection)
   {
@@ -60,15 +60,15 @@ public abstract class i<K, V>
     return false;
   }
   
-  protected abstract int B(Object paramObject);
+  protected abstract int D(Object paramObject);
   
-  protected abstract int C(Object paramObject);
+  protected abstract int E(Object paramObject);
   
   protected abstract V a(int paramInt, V paramV);
   
   public final <T> T[] a(T[] paramArrayOfT, int paramInt)
   {
-    int j = eN();
+    int j = eV();
     if (paramArrayOfT.length < j) {
       paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
     }
@@ -91,7 +91,7 @@ public abstract class i<K, V>
   
   public final Object[] aK(int paramInt)
   {
-    int j = eN();
+    int j = eV();
     Object[] arrayOfObject = new Object[j];
     int i = 0;
     while (i < j)
@@ -104,18 +104,18 @@ public abstract class i<K, V>
   
   protected abstract void b(K paramK, V paramV);
   
-  protected abstract int eN();
+  protected abstract int eV();
   
-  protected abstract Map<K, V> eO();
+  protected abstract Map<K, V> eW();
   
-  protected abstract void eP();
+  protected abstract void eX();
   
   public final Set<K> getKeySet()
   {
-    if (this.LX == null) {
-      this.LX = new c();
+    if (this.MU == null) {
+      this.MU = new c();
     }
-    return this.LX;
+    return this.MU;
   }
   
   protected abstract Object s(int paramInt1, int paramInt2);
@@ -123,15 +123,15 @@ public abstract class i<K, V>
   final class a<T>
     implements Iterator<T>
   {
-    final int LZ;
-    boolean Ma = false;
+    final int MW;
+    boolean MX = false;
     int mIndex;
     int mSize;
     
     a(int paramInt)
     {
-      this.LZ = paramInt;
-      this.mSize = i.this.eN();
+      this.MW = paramInt;
+      this.mSize = i.this.eV();
     }
     
     public final boolean hasNext()
@@ -144,20 +144,20 @@ public abstract class i<K, V>
       if (!hasNext()) {
         throw new NoSuchElementException();
       }
-      Object localObject = i.this.s(this.mIndex, this.LZ);
+      Object localObject = i.this.s(this.mIndex, this.MW);
       this.mIndex += 1;
-      this.Ma = true;
+      this.MX = true;
       return localObject;
     }
     
     public final void remove()
     {
-      if (!this.Ma) {
+      if (!this.MX) {
         throw new IllegalStateException();
       }
       this.mIndex -= 1;
       this.mSize -= 1;
-      this.Ma = false;
+      this.MX = false;
       i.this.aG(this.mIndex);
     }
   }
@@ -169,19 +169,19 @@ public abstract class i<K, V>
     
     public final boolean addAll(Collection<? extends Map.Entry<K, V>> paramCollection)
     {
-      int i = i.this.eN();
+      int i = i.this.eV();
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)paramCollection.next();
         i.this.b(localEntry.getKey(), localEntry.getValue());
       }
-      return i != i.this.eN();
+      return i != i.this.eV();
     }
     
     public final void clear()
     {
-      i.this.eP();
+      i.this.eX();
     }
     
     public final boolean contains(Object paramObject)
@@ -192,7 +192,7 @@ public abstract class i<K, V>
       {
         return false;
         paramObject = (Map.Entry)paramObject;
-        i = i.this.B(paramObject.getKey());
+        i = i.this.D(paramObject.getKey());
       } while (i < 0);
       return d.equal(i.this.s(i, 1), paramObject.getValue());
     }
@@ -215,7 +215,7 @@ public abstract class i<K, V>
     
     public final int hashCode()
     {
-      int j = i.this.eN() - 1;
+      int j = i.this.eV() - 1;
       int i = 0;
       if (j >= 0)
       {
@@ -245,7 +245,7 @@ public abstract class i<K, V>
     
     public final boolean isEmpty()
     {
-      return i.this.eN() == 0;
+      return i.this.eV() == 0;
     }
     
     public final Iterator<Map.Entry<K, V>> iterator()
@@ -270,7 +270,7 @@ public abstract class i<K, V>
     
     public final int size()
     {
-      return i.this.eN();
+      return i.this.eV();
     }
     
     public final Object[] toArray()
@@ -301,17 +301,17 @@ public abstract class i<K, V>
     
     public final void clear()
     {
-      i.this.eP();
+      i.this.eX();
     }
     
     public final boolean contains(Object paramObject)
     {
-      return i.this.B(paramObject) >= 0;
+      return i.this.D(paramObject) >= 0;
     }
     
     public final boolean containsAll(Collection<?> paramCollection)
     {
-      Map localMap = i.this.eO();
+      Map localMap = i.this.eW();
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext()) {
         if (!localMap.containsKey(paramCollection.next())) {
@@ -328,7 +328,7 @@ public abstract class i<K, V>
     
     public final int hashCode()
     {
-      int i = i.this.eN() - 1;
+      int i = i.this.eV() - 1;
       int j = 0;
       if (i >= 0)
       {
@@ -346,7 +346,7 @@ public abstract class i<K, V>
     
     public final boolean isEmpty()
     {
-      return i.this.eN() == 0;
+      return i.this.eV() == 0;
     }
     
     public final Iterator<K> iterator()
@@ -356,7 +356,7 @@ public abstract class i<K, V>
     
     public final boolean remove(Object paramObject)
     {
-      int i = i.this.B(paramObject);
+      int i = i.this.D(paramObject);
       if (i >= 0)
       {
         i.this.aG(i);
@@ -367,7 +367,7 @@ public abstract class i<K, V>
     
     public final boolean removeAll(Collection<?> paramCollection)
     {
-      Map localMap = i.this.eO();
+      Map localMap = i.this.eW();
       int i = localMap.size();
       paramCollection = paramCollection.iterator();
       while (paramCollection.hasNext()) {
@@ -378,12 +378,12 @@ public abstract class i<K, V>
     
     public final boolean retainAll(Collection<?> paramCollection)
     {
-      return i.a(i.this.eO(), paramCollection);
+      return i.a(i.this.eW(), paramCollection);
     }
     
     public final int size()
     {
-      return i.this.eN();
+      return i.this.eV();
     }
     
     public final Object[] toArray()
@@ -400,15 +400,15 @@ public abstract class i<K, V>
   final class d
     implements Iterator<Map.Entry<K, V>>, Map.Entry<K, V>
   {
-    int Mc = i.this.eN() - 1;
-    boolean Md = false;
+    int MZ = i.this.eV() - 1;
+    boolean Na = false;
     int mIndex = -1;
     
     d() {}
     
     public final boolean equals(Object paramObject)
     {
-      if (!this.Md) {
+      if (!this.Na) {
         throw new IllegalStateException("This container does not support retaining Map.Entry objects");
       }
       if (!(paramObject instanceof Map.Entry)) {}
@@ -422,7 +422,7 @@ public abstract class i<K, V>
     
     public final K getKey()
     {
-      if (!this.Md) {
+      if (!this.Na) {
         throw new IllegalStateException("This container does not support retaining Map.Entry objects");
       }
       return i.this.s(this.mIndex, 0);
@@ -430,7 +430,7 @@ public abstract class i<K, V>
     
     public final V getValue()
     {
-      if (!this.Md) {
+      if (!this.Na) {
         throw new IllegalStateException("This container does not support retaining Map.Entry objects");
       }
       return i.this.s(this.mIndex, 1);
@@ -438,13 +438,13 @@ public abstract class i<K, V>
     
     public final boolean hasNext()
     {
-      return this.mIndex < this.Mc;
+      return this.mIndex < this.MZ;
     }
     
     public final int hashCode()
     {
       int j = 0;
-      if (!this.Md) {
+      if (!this.Na) {
         throw new IllegalStateException("This container does not support retaining Map.Entry objects");
       }
       Object localObject1 = i.this.s(this.mIndex, 0);
@@ -469,18 +469,18 @@ public abstract class i<K, V>
     
     public final void remove()
     {
-      if (!this.Md) {
+      if (!this.Na) {
         throw new IllegalStateException();
       }
       i.this.aG(this.mIndex);
       this.mIndex -= 1;
-      this.Mc -= 1;
-      this.Md = false;
+      this.MZ -= 1;
+      this.Na = false;
     }
     
     public final V setValue(V paramV)
     {
-      if (!this.Md) {
+      if (!this.Na) {
         throw new IllegalStateException("This container does not support retaining Map.Entry objects");
       }
       return i.this.a(this.mIndex, paramV);
@@ -509,12 +509,12 @@ public abstract class i<K, V>
     
     public final void clear()
     {
-      i.this.eP();
+      i.this.eX();
     }
     
     public final boolean contains(Object paramObject)
     {
-      return i.this.C(paramObject) >= 0;
+      return i.this.E(paramObject) >= 0;
     }
     
     public final boolean containsAll(Collection<?> paramCollection)
@@ -530,7 +530,7 @@ public abstract class i<K, V>
     
     public final boolean isEmpty()
     {
-      return i.this.eN() == 0;
+      return i.this.eV() == 0;
     }
     
     public final Iterator<V> iterator()
@@ -540,7 +540,7 @@ public abstract class i<K, V>
     
     public final boolean remove(Object paramObject)
     {
-      int i = i.this.C(paramObject);
+      int i = i.this.E(paramObject);
       if (i >= 0)
       {
         i.this.aG(i);
@@ -551,7 +551,7 @@ public abstract class i<K, V>
     
     public final boolean removeAll(Collection<?> paramCollection)
     {
-      int j = i.this.eN();
+      int j = i.this.eV();
       int i = 0;
       boolean bool = false;
       while (i < j)
@@ -573,7 +573,7 @@ public abstract class i<K, V>
     
     public final boolean retainAll(Collection<?> paramCollection)
     {
-      int j = i.this.eN();
+      int j = i.this.eV();
       int i = 0;
       boolean bool = false;
       while (i < j)
@@ -595,7 +595,7 @@ public abstract class i<K, V>
     
     public final int size()
     {
-      return i.this.eN();
+      return i.this.eV();
     }
     
     public final Object[] toArray()

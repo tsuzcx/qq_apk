@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.exdevice.service;
 
 public abstract interface r
 {
-  public abstract void OS(String paramString);
+  public abstract void Tc(String paramString);
   
   public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract void xt(int paramInt);
+  public abstract void yl(int paramInt);
 }
 
 

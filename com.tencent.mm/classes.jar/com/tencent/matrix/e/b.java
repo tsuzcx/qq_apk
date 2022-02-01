@@ -64,12 +64,12 @@ public abstract class b
     this.status = 1;
     this.application = paramApplication;
     this.pluginListener = paramc;
-    a.csS.a(this);
+    a.cqa.a(this);
   }
   
   public boolean isForeground()
   {
-    return a.csS.csU;
+    return a.cqa.cqc;
   }
   
   public boolean isPluginDestroyed()
@@ -97,8 +97,8 @@ public abstract class b
     if (paramc.tag == null) {
       paramc.tag = getTag();
     }
-    paramc.cwW = this;
-    JSONObject localJSONObject = paramc.cwV;
+    paramc.cuf = this;
+    JSONObject localJSONObject = paramc.cue;
     try
     {
       if (paramc.tag != null) {

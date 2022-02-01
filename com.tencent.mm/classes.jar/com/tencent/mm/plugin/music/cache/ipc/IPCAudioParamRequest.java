@@ -9,10 +9,10 @@ public class IPCAudioParamRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCAudioParamRequest> CREATOR;
-  public String dqm;
-  public byte[] hnR;
+  public String dnX;
+  public byte[] hOu;
   public String mimeType;
-  public int tVB;
+  public int vej;
   
   static
   {
@@ -23,25 +23,25 @@ public class IPCAudioParamRequest
   
   public IPCAudioParamRequest()
   {
-    this.dqm = "";
-    this.tVB = 0;
+    this.dnX = "";
+    this.vej = 0;
     this.mimeType = "";
   }
   
   public IPCAudioParamRequest(Parcel paramParcel)
   {
     AppMethodBeat.i(137208);
-    this.dqm = "";
-    this.tVB = 0;
+    this.dnX = "";
+    this.vej = 0;
     this.mimeType = "";
-    this.dqm = paramParcel.readString();
-    this.tVB = paramParcel.readInt();
+    this.dnX = paramParcel.readString();
+    this.vej = paramParcel.readInt();
     this.mimeType = paramParcel.readString();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.hnR = new byte[i];
-      paramParcel.readByteArray(this.hnR);
+      this.hOu = new byte[i];
+      paramParcel.readByteArray(this.hOu);
     }
     AppMethodBeat.o(137208);
   }
@@ -54,13 +54,13 @@ public class IPCAudioParamRequest
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(137209);
-    paramParcel.writeString(this.dqm);
-    paramParcel.writeInt(this.tVB);
+    paramParcel.writeString(this.dnX);
+    paramParcel.writeInt(this.vej);
     paramParcel.writeString(this.mimeType);
-    if (this.hnR != null)
+    if (this.hOu != null)
     {
-      paramParcel.writeInt(this.hnR.length);
-      paramParcel.writeByteArray(this.hnR);
+      paramParcel.writeInt(this.hOu.length);
+      paramParcel.writeByteArray(this.hOu);
       AppMethodBeat.o(137209);
       return;
     }
@@ -70,7 +70,7 @@ public class IPCAudioParamRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest
  * JD-Core Version:    0.7.0.1
  */

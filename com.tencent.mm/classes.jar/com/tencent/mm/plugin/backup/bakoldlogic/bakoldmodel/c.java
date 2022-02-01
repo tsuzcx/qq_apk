@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.storagebase.h;
 
 public final class c
 {
-  public long glk = 0L;
-  private long mrY = -1L;
-  boolean mrZ = false;
+  public long gLX = 0L;
+  boolean gas = false;
+  private long mUa = -1L;
   
   public final void begin()
   {
     AppMethodBeat.i(21817);
-    ad.d("MicroMsg.Recoverfaster", "begin");
-    if (b.byA().byB().gda != null)
+    ac.d("MicroMsg.Recoverfaster", "begin");
+    if (b.bFw().bFx().ghG != null)
     {
-      this.mrY = b.byA().byB().gda.rb(Thread.currentThread().getId());
-      this.mrZ = true;
+      this.mUa = b.bFw().bFx().ghG.vE(Thread.currentThread().getId());
+      this.gas = true;
     }
-    this.glk = bt.eGO();
+    this.gLX = bs.eWj();
     AppMethodBeat.o(21817);
   }
   
   public final void end()
   {
     AppMethodBeat.i(21818);
-    if ((this.mrZ) && (b.byA().byB().gda != null))
+    if ((this.gas) && (b.bFw().bFx().ghG != null))
     {
-      b.byA().byB().gda.mX(this.mrY);
-      this.mrZ = false;
+      b.bFw().bFx().ghG.qL(this.mUa);
+      this.gas = false;
     }
     AppMethodBeat.o(21818);
   }

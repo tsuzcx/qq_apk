@@ -18,10 +18,10 @@ public final class g
   public final void a(Context paramContext, f paramf)
   {
     AppMethodBeat.i(78695);
-    if ((!paramf.ekR()) && (!paramf.bZZ.Bb().AU())) {
+    if ((!paramf.eAn()) && (!paramf.bWW.AF().Ay())) {
       ((Activity)paramf.mContext).finish();
     }
-    com.tencent.mm.plugin.report.service.h.vKh.dB(982, 11);
+    com.tencent.mm.plugin.report.service.h.wUl.dB(982, 11);
     AppMethodBeat.o(78695);
   }
   

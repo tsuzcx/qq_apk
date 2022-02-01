@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.downloader.d;
 public final class e
 {
   /* Error */
-  public static android.util.Pair<java.nio.ByteBuffer, java.lang.Long> I(com.tencent.mm.vfs.e parame)
+  public static android.util.Pair<java.nio.ByteBuffer, java.lang.Long> H(com.tencent.mm.vfs.e parame)
   {
     // Byte code:
     //   0: ldc 7
@@ -22,7 +22,7 @@ public final class e
     //   27: getfield 29	com/tencent/mm/vfs/e:mUri	Landroid/net/Uri;
     //   30: invokestatic 35	com/tencent/mm/vfs/q:B	(Landroid/net/Uri;)Ljava/lang/String;
     //   33: iconst_0
-    //   34: invokestatic 41	com/tencent/mm/vfs/i:cS	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   34: invokestatic 41	com/tencent/mm/vfs/i:cY	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   37: astore_0
     //   38: aload_0
     //   39: invokestatic 47	com/tencent/mm/plugin/downloader/d/a:g	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;
@@ -78,7 +78,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.e
  * JD-Core Version:    0.7.0.1
  */

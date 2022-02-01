@@ -2,7 +2,7 @@ package com.tencent.mm.sdk;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.k;
 import java.io.BufferedReader;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 
 public final class b
 {
-  public static Set eEM()
+  public static Set eUg()
   {
     AppMethodBeat.i(32814);
     Object localObject;
@@ -19,7 +19,7 @@ public final class b
     {
       HashSet localHashSet = new HashSet();
       localObject = new BufferedReader(new k("/proc/" + Process.myPid() + "/maps"));
-      ad.i("MicroMsg.NativeLibraries", "Dump NativeLibrares:");
+      ac.i("MicroMsg.NativeLibraries", "Dump NativeLibrares:");
       for (;;)
       {
         String str = ((BufferedReader)localObject).readLine();
@@ -34,12 +34,12 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      ad.printErrStackTrace("MicroMsg.NativeLibraries", localThrowable, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.NativeLibraries", localThrowable, "", new Object[0]);
       AppMethodBeat.o(32814);
       return null;
     }
     while (((Iterator)localObject).hasNext()) {
-      ad.i("MicroMsg.NativeLibraries", String.valueOf((String)((Iterator)localObject).next()));
+      ac.i("MicroMsg.NativeLibraries", String.valueOf((String)((Iterator)localObject).next()));
     }
     AppMethodBeat.o(32814);
     return localThrowable;

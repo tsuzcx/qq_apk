@@ -8,11 +8,11 @@ public abstract class ac
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eoQ = "sessionName".hashCode();
-  private static final int eoT = "msgListDataId".hashCode();
+  private static final int eqU = "sessionName".hashCode();
+  private static final int eqX = "msgListDataId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eoN = true;
-  private boolean eoS = true;
+  private boolean eqR = true;
+  private boolean eqW = true;
   public String field_msgListDataId;
   public String field_sessionName;
   
@@ -29,11 +29,11 @@ public abstract class ac
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoT != k) {
+      if (eqX != k) {
         break label65;
       }
       this.field_msgListDataId = paramCursor.getString(i);
-      this.eoS = true;
+      this.eqW = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ac
       break label20;
       break;
       label65:
-      if (eoQ == k) {
+      if (eqU == k) {
         this.field_sessionName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,13 +52,13 @@ public abstract class ac
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoS) {
+    if (this.eqW) {
       localContentValues.put("msgListDataId", this.field_msgListDataId);
     }
     if (this.field_sessionName == null) {
       this.field_sessionName = "";
     }
-    if (this.eoN) {
+    if (this.eqR) {
       localContentValues.put("sessionName", this.field_sessionName);
     }
     if (this.systemRowid > 0L) {

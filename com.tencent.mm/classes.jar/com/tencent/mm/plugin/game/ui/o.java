@@ -6,7 +6,7 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.e;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class o
   extends b
@@ -14,7 +14,7 @@ public final class o
   public o(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.rXI = paramInt;
+    this.tfA = paramInt;
   }
   
   public final void onClick(View paramView)
@@ -33,17 +33,17 @@ public final class o
       ((Bundle)localObject).putCharSequence("game_app_id", paramView.field_appId);
       ((Bundle)localObject).putInt("game_report_from_scene", 1301);
       i = c.a(this.mContext, paramView.field_appId, null, (Bundle)localObject);
-      localObject = e.a(null, null, paramView.rWS, null);
-      e.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, (String)localObject);
+      localObject = e.a(null, null, paramView.teK, null);
+      e.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, (String)localObject);
     }
     do
     {
       AppMethodBeat.o(42277);
       return;
-    } while (bt.isNullOrNil(paramView.rWb));
-    int i = c.ax(this.mContext, paramView.rWb);
-    Object localObject = e.a(null, null, paramView.rWS, null);
-    e.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, (String)localObject);
+    } while (bs.isNullOrNil(paramView.tdT));
+    int i = c.ay(this.mContext, paramView.tdT);
+    Object localObject = e.a(null, null, paramView.teK, null);
+    e.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, (String)localObject);
     AppMethodBeat.o(42277);
   }
 }

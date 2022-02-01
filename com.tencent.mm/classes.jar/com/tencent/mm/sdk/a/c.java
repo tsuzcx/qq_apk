@@ -4,21 +4,23 @@ import android.content.Context;
 
 public abstract interface c
 {
-  public abstract void M(String paramString1, String paramString2);
-  
   public abstract void N(String paramString1, String paramString2);
   
-  public abstract void a(a parama);
+  public abstract void O(String paramString1, String paramString2);
   
   public abstract void a(a parama);
   
-  public abstract void bp(Context paramContext);
+  public abstract void a(a parama);
+  
+  public abstract void bq(Context paramContext);
   
   public abstract void d(int paramInt, String paramString1, String paramString2);
   
+  public abstract void er(String paramString);
+  
   public static abstract interface a
   {
-    public abstract String aTX();
+    public abstract String baV();
   }
 }
 

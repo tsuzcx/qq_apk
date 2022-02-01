@@ -16,23 +16,27 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.am.d;
-import com.tencent.mm.am.f;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.al.af;
+import com.tencent.mm.al.f;
+import com.tencent.mm.av.a.a.c;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
-import com.tencent.mm.protocal.protobuf.aqq;
-import com.tencent.mm.protocal.protobuf.dpl;
-import com.tencent.mm.protocal.protobuf.mn;
+import com.tencent.mm.protocal.protobuf.atu;
+import com.tencent.mm.protocal.protobuf.dvc;
+import com.tencent.mm.protocal.protobuf.mu;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
 import com.tencent.mm.sdk.e.n.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.ui.MMActivity;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -42,42 +46,64 @@ import java.util.List;
 public class EnterpriseBizEntranceListUI
   extends MMActivity
 {
-  private String gWU;
-  private ListView iwH;
-  private AdapterView.OnItemClickListener mUR;
-  private a mUZ;
-  private e mUs;
+  private String hxt;
+  private ListView iWK;
+  private e nwK;
+  private a nxa;
+  private AdapterView.OnItemClickListener nxr;
+  private b nxz;
   private int scene;
   
-  private void cc(List<dpl> paramList)
+  public EnterpriseBizEntranceListUI()
   {
-    AppMethodBeat.i(192960);
-    if (this.mUZ == null)
+    AppMethodBeat.i(198678);
+    this.nxa = new a(new EnterpriseBizEntranceListUI.a.a()
     {
-      AppMethodBeat.o(192960);
+      public final String bJE()
+      {
+        AppMethodBeat.i(198657);
+        String str = EnterpriseBizEntranceListUI.c(EnterpriseBizEntranceListUI.this);
+        AppMethodBeat.o(198657);
+        return str;
+      }
+      
+      public final Context getContext()
+      {
+        return EnterpriseBizEntranceListUI.this;
+      }
+    });
+    AppMethodBeat.o(198678);
+  }
+  
+  private void cd(List<dvc> paramList)
+  {
+    AppMethodBeat.i(198680);
+    if (this.nxz == null)
+    {
+      AppMethodBeat.o(198680);
       return;
     }
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      paramList = this.mUZ;
+      paramList = this.nxz;
       LinkedList localLinkedList = new LinkedList();
-      c localc = new c();
-      localc.mVh = 2131690123;
-      localc.mVg.type = 1;
-      localc.mVg.uoA = paramList.context.getString(2131758431);
-      localc.mVg.odo = "https://wwcdn.weixin.qq.com/node/wework/images/icon_im.48490d44c5.png";
-      localLinkedList.add(localc);
-      localc = new c();
-      localc.mVg.uoA = paramList.context.getString(2131758449);
-      localc.mVg.odo = "https://wwcdn.weixin.qq.com/node/wework/images/icon_workspace.cb133ed72e.png";
-      localc.mVg.type = 2;
-      localLinkedList.add(localc);
-      paramList.mVb = localLinkedList;
-      AppMethodBeat.o(192960);
+      d locald = new d();
+      locald.nxH = 2131690123;
+      locald.nxG.type = 1;
+      locald.nxG.vxw = paramList.context.getString(2131758431);
+      locald.nxG.oGN = "https://wwcdn.weixin.qq.com/node/wework/images/icon_im.48490d44c5.png";
+      localLinkedList.add(locald);
+      locald = new d();
+      locald.nxG.vxw = paramList.context.getString(2131758449);
+      locald.nxG.oGN = "https://wwcdn.weixin.qq.com/node/wework/images/icon_workspace.cb133ed72e.png";
+      locald.nxG.type = 2;
+      localLinkedList.add(locald);
+      paramList.nxC = localLinkedList;
+      AppMethodBeat.o(198680);
       return;
     }
-    this.mUZ.cd(paramList);
-    AppMethodBeat.o(192960);
+    this.nxz.cf(paramList);
+    AppMethodBeat.o(198680);
   }
   
   public int getLayoutId()
@@ -87,31 +113,31 @@ public class EnterpriseBizEntranceListUI
   
   public void initView()
   {
-    AppMethodBeat.i(192961);
-    this.iwH = ((ListView)findViewById(2131299505));
-    if (this.mUZ == null)
+    AppMethodBeat.i(198681);
+    this.iWK = ((ListView)findViewById(2131299505));
+    if (this.nxz == null)
     {
-      this.mUZ = new a(this);
-      cc(f.wP(this.gWU));
-      com.tencent.mm.am.af.awn();
-      d.a(this.gWU, new b(this));
-      this.mUR = new AdapterView.OnItemClickListener()
+      this.nxz = new b(this);
+      cd(f.AV(this.hxt));
+      af.aDf();
+      com.tencent.mm.al.d.a(this.hxt, new c(this));
+      this.nxr = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(192941);
-          ad.i("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "onItemClick position = %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          AppMethodBeat.i(198654);
+          ac.i("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "onItemClick position = %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
           EnterpriseBizEntranceListUI.a(EnterpriseBizEntranceListUI.this, paramAnonymousInt);
-          AppMethodBeat.o(192941);
+          AppMethodBeat.o(198654);
         }
       };
     }
-    ad.i("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "count = %s", new Object[] { Integer.valueOf(this.mUZ.getCount()) });
-    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(this.gWU);
-    setMMTitle(((com.tencent.mm.storage.af)localObject).ZW());
-    if ((localObject == null) || (!com.tencent.mm.n.b.ls(((au)localObject).field_type)) || (this.mUZ.getCount() <= 0))
+    ac.i("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "count = %s", new Object[] { Integer.valueOf(this.nxz.getCount()) });
+    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.hxt);
+    setMMTitle(((ai)localObject).aaR());
+    if ((localObject == null) || (!com.tencent.mm.n.b.ln(((av)localObject).field_type)) || (this.nxz.getCount() <= 0))
     {
-      this.iwH.setVisibility(8);
+      this.iWK.setVisibility(8);
       localObject = (TextView)findViewById(2131299506);
       ((TextView)localObject).setText(2131758444);
       ((TextView)localObject).setVisibility(0);
@@ -122,10 +148,10 @@ public class EnterpriseBizEntranceListUI
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(192942);
+          AppMethodBeat.i(198655);
           EnterpriseBizEntranceListUI.this.hideVKB();
           EnterpriseBizEntranceListUI.this.finish();
-          AppMethodBeat.o(192942);
+          AppMethodBeat.o(198655);
           return true;
         }
       });
@@ -133,79 +159,79 @@ public class EnterpriseBizEntranceListUI
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(192943);
+          AppMethodBeat.i(198656);
           paramAnonymousView = EnterpriseBizEntranceListUI.b(EnterpriseBizEntranceListUI.this);
-          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
           Object localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          BackwardSupportUtil.c.b((ListView)paramAnonymousView.lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          AppMethodBeat.o(192943);
+          AppMethodBeat.o(198656);
         }
       });
-      addIconOptionMenu(1, 2131755134, 2131689489, new e.1(this.mUs));
-      AppMethodBeat.o(192961);
+      addIconOptionMenu(1, 2131755134, 2131689489, this.nwK.bJG());
+      AppMethodBeat.o(198681);
       return;
-      this.iwH.setVisibility(0);
-      this.iwH.setAdapter(this.mUZ);
-      this.iwH.setOnItemClickListener(this.mUR);
+      this.iWK.setVisibility(0);
+      this.iWK.setAdapter(this.nxz);
+      this.iWK.setOnItemClickListener(this.nxr);
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(192962);
+    AppMethodBeat.i(198682);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.mUs.d(paramInt1, paramInt2, paramIntent))
+    if (this.nwK.d(paramInt1, paramInt2, paramIntent))
     {
-      AppMethodBeat.o(192962);
+      AppMethodBeat.o(198682);
       return;
     }
-    AppMethodBeat.o(192962);
+    AppMethodBeat.o(198682);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192959);
+    AppMethodBeat.i(198679);
     super.onCreate(paramBundle);
     this.scene = getIntent().getIntExtra("enterprise_scene", 2);
-    this.gWU = getIntent().getStringExtra("enterprise_biz_name");
-    this.mUs = new e(this, this.gWU);
-    ad.i("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "bizName = %s", new Object[] { this.gWU });
+    this.hxt = getIntent().getStringExtra("enterprise_biz_name");
+    this.nwK = new e(this, this.hxt);
+    ac.i("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "bizName = %s", new Object[] { this.hxt });
     initView();
-    com.tencent.mm.am.af.awe().add(this.mUZ);
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().a(this.mUZ);
-    AppMethodBeat.o(192959);
+    af.aCW().add(this.nxz);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().a(this.nxz);
+    AppMethodBeat.o(198679);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(192965);
-    com.tencent.mm.am.af.awe().remove(this.mUZ);
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().b(this.mUZ);
+    AppMethodBeat.i(198685);
+    af.aCW().remove(this.nxz);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().b(this.nxz);
     super.onDestroy();
-    AppMethodBeat.o(192965);
+    AppMethodBeat.o(198685);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(192964);
+    AppMethodBeat.i(198684);
     super.onPause();
-    AppMethodBeat.o(192964);
+    AppMethodBeat.o(198684);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(192963);
+    AppMethodBeat.i(198683);
     super.onResume();
-    if (!w.sD(this.gWU))
+    if (!w.wG(this.hxt))
     {
-      ad.e("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "%s !isContact", new Object[] { this.gWU });
+      ac.e("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "%s !isContact", new Object[] { this.hxt });
       finish();
-      AppMethodBeat.o(192963);
+      AppMethodBeat.o(198683);
       return;
     }
-    AppMethodBeat.o(192963);
+    AppMethodBeat.o(198683);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -214,31 +240,114 @@ public class EnterpriseBizEntranceListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  final class a
+  public static final class a
+  {
+    private a nxB;
+    
+    public a(a parama)
+    {
+      this.nxB = parama;
+    }
+    
+    private void Tw(String paramString)
+    {
+      AppMethodBeat.i(198661);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("rawUrl", paramString);
+      localIntent.putExtra("useJs", true);
+      localIntent.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
+      localIntent.addFlags(67108864);
+      com.tencent.mm.br.d.b(this.nxB.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(198661);
+    }
+    
+    private void bJH()
+    {
+      AppMethodBeat.i(198659);
+      try
+      {
+        Object localObject = new Intent();
+        ((Intent)localObject).setClassName(this.nxB.getContext(), "com.tencent.mm.ui.conversation.EnterpriseConversationUI");
+        ((Intent)localObject).putExtra("enterprise_biz_name", this.nxB.bJE());
+        ((Intent)localObject).putExtra("enterprise_biz_display_name", v.wk(this.nxB.bJE()));
+        Context localContext = this.nxB.getContext();
+        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListUI$BizEntranceListItemBinding", "jumpToMsgListUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListUI$BizEntranceListItemBinding", "jumpToMsgListUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(198659);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        ac.w("MicroMsg.BrandService.EnterpriseBizEntranceListUI", "jumpToMsgListUI fail, father=%s, error msg: %s", new Object[] { this.nxB.bJE(), localThrowable.getMessage() });
+        AppMethodBeat.o(198659);
+      }
+    }
+    
+    private void bJI()
+    {
+      AppMethodBeat.i(198660);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("enterprise_from_scene", 1);
+      localIntent.putExtra("enterprise_biz_name", this.nxB.bJE());
+      com.tencent.mm.br.d.b(this.nxB.getContext(), "brandservice", ".ui.EnterpriseBizContactListUI", localIntent);
+      AppMethodBeat.o(198660);
+    }
+    
+    public final void a(dvc paramdvc)
+    {
+      AppMethodBeat.i(198658);
+      switch (paramdvc.type)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(198658);
+        return;
+        bJH();
+        AppMethodBeat.o(198658);
+        return;
+        bJI();
+        AppMethodBeat.o(198658);
+        return;
+        Tw(paramdvc.nWj);
+      }
+    }
+    
+    public static abstract interface a
+    {
+      public abstract String bJE();
+      
+      public abstract Context getContext();
+    }
+  }
+  
+  final class b
     extends BaseAdapter
     implements k.a, n.b
   {
     final Context context;
-    LinkedList<EnterpriseBizEntranceListUI.c> mVb;
+    LinkedList<EnterpriseBizEntranceListUI.d> nxC;
     
-    public a(Context paramContext)
+    public b(Context paramContext)
     {
       this.context = paramContext;
     }
     
-    private void bCB()
+    private void bJJ()
     {
-      AppMethodBeat.i(192948);
-      aq.f(new Runnable()
+      AppMethodBeat.i(198666);
+      ap.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(192944);
+          AppMethodBeat.i(198662);
           TextView localTextView = (TextView)EnterpriseBizEntranceListUI.this.findViewById(2131299506);
           if ((EnterpriseBizEntranceListUI.b(EnterpriseBizEntranceListUI.this) != null) && (localTextView != null))
           {
-            com.tencent.mm.storage.af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(EnterpriseBizEntranceListUI.c(EnterpriseBizEntranceListUI.this));
-            if ((localaf != null) && (com.tencent.mm.n.b.ls(localaf.field_type))) {
+            ai localai = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(EnterpriseBizEntranceListUI.c(EnterpriseBizEntranceListUI.this));
+            if ((localai != null) && (com.tencent.mm.n.b.ln(localai.field_type))) {
               break label114;
             }
             EnterpriseBizEntranceListUI.b(EnterpriseBizEntranceListUI.this).setVisibility(8);
@@ -246,8 +355,8 @@ public class EnterpriseBizEntranceListUI
           }
           for (;;)
           {
-            EnterpriseBizEntranceListUI.a.this.notifyDataSetChanged();
-            AppMethodBeat.o(192944);
+            EnterpriseBizEntranceListUI.b.this.notifyDataSetChanged();
+            AppMethodBeat.o(198662);
             return;
             label114:
             if (EnterpriseBizEntranceListUI.a(EnterpriseBizEntranceListUI.this).getCount() <= 0)
@@ -265,42 +374,42 @@ public class EnterpriseBizEntranceListUI
           }
         }
       });
-      AppMethodBeat.o(192948);
+      AppMethodBeat.o(198666);
     }
     
     public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
     {
-      AppMethodBeat.i(192946);
-      ad.i("MicroMsg.EnterpriseBizListAdapter", "onNotifyChange1 %d", new Object[] { Integer.valueOf(paramInt) });
-      bCB();
-      AppMethodBeat.o(192946);
+      AppMethodBeat.i(198664);
+      ac.i("MicroMsg.EnterpriseBizListAdapter", "onNotifyChange1 %d", new Object[] { Integer.valueOf(paramInt) });
+      bJJ();
+      AppMethodBeat.o(198664);
     }
     
     public final void a(String paramString, m paramm)
     {
-      AppMethodBeat.i(192947);
-      ad.i("MicroMsg.EnterpriseBizListAdapter", "onNotifyChange2 %s", new Object[] { paramString });
-      bCB();
-      AppMethodBeat.o(192947);
+      AppMethodBeat.i(198665);
+      ac.i("MicroMsg.EnterpriseBizListAdapter", "onNotifyChange2 %s", new Object[] { paramString });
+      bJJ();
+      AppMethodBeat.o(198665);
     }
     
-    public final void cd(List<dpl> paramList)
+    public final void cf(List<dvc> paramList)
     {
-      AppMethodBeat.i(192949);
+      AppMethodBeat.i(198667);
       LinkedList localLinkedList = new LinkedList();
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        localLinkedList.add(new EnterpriseBizEntranceListUI.c((dpl)paramList.next()));
+        localLinkedList.add(new EnterpriseBizEntranceListUI.d((dvc)paramList.next()));
       }
-      this.mVb = localLinkedList;
-      AppMethodBeat.o(192949);
+      this.nxC = localLinkedList;
+      AppMethodBeat.o(198667);
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(192950);
-      int i = this.mVb.size();
-      AppMethodBeat.o(192950);
+      AppMethodBeat.i(198668);
+      int i = this.nxC.size();
+      AppMethodBeat.o(198668);
       return i;
     }
     
@@ -311,25 +420,25 @@ public class EnterpriseBizEntranceListUI
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(192952);
+      AppMethodBeat.i(198670);
       Context localContext = paramViewGroup.getContext();
       if (paramView == null)
       {
         paramViewGroup = new a();
         paramView = View.inflate(localContext, 2131493839, null);
-        paramViewGroup.ikp = ((ImageView)paramView.findViewById(2131302687));
-        paramViewGroup.iiF = ((TextView)paramView.findViewById(2131302693));
+        paramViewGroup.iKw = ((ImageView)paramView.findViewById(2131302687));
+        paramViewGroup.iIN = ((TextView)paramView.findViewById(2131302693));
         paramView.setTag(paramViewGroup);
       }
-      EnterpriseBizEntranceListUI.c localc;
+      EnterpriseBizEntranceListUI.d locald;
       for (;;)
       {
-        localc = xM(paramInt);
-        if (localc != null) {
+        locald = yD(paramInt);
+        if (locald != null) {
           break;
         }
         paramViewGroup.clear();
-        AppMethodBeat.o(192952);
+        AppMethodBeat.o(198670);
         return paramView;
         paramViewGroup = (a)paramView.getTag();
       }
@@ -338,129 +447,146 @@ public class EnterpriseBizEntranceListUI
       int i = paramView.getPaddingTop();
       int j = paramView.getPaddingRight();
       int k = paramView.getPaddingLeft();
-      paramView.setBackgroundDrawable(com.tencent.mm.cd.a.l(localContext, 2131231818));
+      paramView.setBackgroundDrawable(com.tencent.mm.cc.a.l(localContext, 2131231818));
       paramView.setPadding(k, i, j, paramInt);
-      String str = bt.nullAsNil(localc.mVg.uoA);
-      paramViewGroup.iiF.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localContext, str, paramViewGroup.iiF.getTextSize()));
-      paramViewGroup.iiF.setVisibility(0);
-      paramViewGroup.ikp.setVisibility(0);
-      o.ayJ().a(localc.mVg.odo, paramViewGroup.ikp, EnterpriseBizEntranceListUI.c.a(localc, localContext));
-      AppMethodBeat.o(192952);
+      String str = bs.nullAsNil(locald.nxG.vxw);
+      paramViewGroup.iIN.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localContext, str, paramViewGroup.iIN.getTextSize()));
+      paramViewGroup.iIN.setVisibility(0);
+      paramViewGroup.iKw.setVisibility(0);
+      o.aFB().a(locald.nxG.oGN, paramViewGroup.iKw, EnterpriseBizEntranceListUI.d.a(locald, localContext));
+      AppMethodBeat.o(198670);
       return paramView;
     }
     
-    public final EnterpriseBizEntranceListUI.c xM(int paramInt)
+    public final EnterpriseBizEntranceListUI.d yD(int paramInt)
     {
-      AppMethodBeat.i(192951);
-      EnterpriseBizEntranceListUI.c localc = (EnterpriseBizEntranceListUI.c)this.mVb.get(paramInt);
-      AppMethodBeat.o(192951);
-      return localc;
+      AppMethodBeat.i(198669);
+      EnterpriseBizEntranceListUI.d locald = (EnterpriseBizEntranceListUI.d)this.nxC.get(paramInt);
+      AppMethodBeat.o(198669);
+      return locald;
     }
     
     final class a
     {
-      TextView iiF;
-      ImageView ikp;
+      TextView iIN;
+      ImageView iKw;
       
       a() {}
       
       public final void clear()
       {
-        AppMethodBeat.i(192945);
-        if (this.ikp != null)
+        AppMethodBeat.i(198663);
+        if (this.iKw != null)
         {
-          this.ikp.setImageDrawable(null);
-          this.ikp.setVisibility(8);
+          this.iKw.setImageDrawable(null);
+          this.iKw.setVisibility(8);
         }
-        if (this.iiF != null)
+        if (this.iIN != null)
         {
-          this.iiF.setText("");
-          this.iiF.setVisibility(8);
+          this.iIN.setText("");
+          this.iIN.setVisibility(8);
         }
-        AppMethodBeat.o(192945);
-      }
-    }
-  }
-  
-  static final class b
-    implements com.tencent.mm.al.g
-  {
-    private final WeakReference<EnterpriseBizEntranceListUI> leJ;
-    
-    public b(EnterpriseBizEntranceListUI paramEnterpriseBizEntranceListUI)
-    {
-      AppMethodBeat.i(192955);
-      this.leJ = new WeakReference(paramEnterpriseBizEntranceListUI);
-      AppMethodBeat.o(192955);
-    }
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.al.n paramn)
-    {
-      AppMethodBeat.i(192956);
-      try
-      {
-        if (this.leJ.get() != null)
-        {
-          paramString = (EnterpriseBizEntranceListUI)this.leJ.get();
-          boolean bool = paramString.isFinishing();
-          if (bool)
-          {
-            AppMethodBeat.o(192956);
-            return;
-          }
-          EnterpriseBizEntranceListUI.ad(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(192954);
-              try
-              {
-                EnterpriseBizEntranceListUI.a(paramString, this.mVe.DrA.CJw);
-                EnterpriseBizEntranceListUI.a(paramString).notifyDataSetChanged();
-                AppMethodBeat.o(192954);
-                return;
-              }
-              catch (Throwable localThrowable)
-              {
-                AppMethodBeat.o(192954);
-              }
-            }
-          });
-        }
-        AppMethodBeat.o(192956);
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        AppMethodBeat.o(192956);
+        AppMethodBeat.o(198663);
       }
     }
   }
   
   static final class c
+    implements com.tencent.mm.ak.g
   {
-    private static float mVi = 0.1F;
-    final dpl mVg;
-    int mVh;
+    private final WeakReference<EnterpriseBizEntranceListUI> lEz;
     
-    c()
+    public c(EnterpriseBizEntranceListUI paramEnterpriseBizEntranceListUI)
     {
-      AppMethodBeat.i(192957);
-      this.mVh = 0;
-      this.mVg = new dpl();
-      AppMethodBeat.o(192957);
+      AppMethodBeat.i(198673);
+      this.lEz = new WeakReference(paramEnterpriseBizEntranceListUI);
+      AppMethodBeat.o(198673);
     }
     
-    c(dpl paramdpl)
+    public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.n paramn)
     {
-      this.mVh = 0;
-      this.mVg = paramdpl;
+      AppMethodBeat.i(198674);
+      try
+      {
+        if (this.lEz.get() != null)
+        {
+          paramString = (EnterpriseBizEntranceListUI)this.lEz.get();
+          boolean bool = paramString.isFinishing();
+          if (bool)
+          {
+            AppMethodBeat.o(198674);
+            return;
+          }
+          EnterpriseBizEntranceListUI.af(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(198672);
+              try
+              {
+                EnterpriseBizEntranceListUI.a(paramString, this.nwR.EMC.EbY);
+                EnterpriseBizEntranceListUI.a(paramString).notifyDataSetChanged();
+                AppMethodBeat.o(198672);
+                return;
+              }
+              catch (Throwable localThrowable)
+              {
+                AppMethodBeat.o(198672);
+              }
+            }
+          });
+        }
+        AppMethodBeat.o(198674);
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        AppMethodBeat.o(198674);
+      }
+    }
+  }
+  
+  public static final class d
+  {
+    private static float nxI = 0.1F;
+    final dvc nxG;
+    int nxH;
+    
+    d()
+    {
+      AppMethodBeat.i(198675);
+      this.nxH = 0;
+      this.nxG = new dvc();
+      AppMethodBeat.o(198675);
+    }
+    
+    d(dvc paramdvc)
+    {
+      this.nxH = 0;
+      this.nxG = paramdvc;
+    }
+    
+    public static c M(Context paramContext, int paramInt)
+    {
+      AppMethodBeat.i(198676);
+      c.a locala = new c.a();
+      locala.hKx = true;
+      locala.gKm = true;
+      locala.hKI = paramInt;
+      locala.gLt = true;
+      if (com.tencent.mm.cc.a.id(paramContext)) {}
+      for (locala.hKP = (nxI * com.tencent.mm.cc.a.av(paramContext, 2131165190));; locala.hKP = (nxI * com.tencent.mm.cc.a.av(paramContext, 2131165508)))
+      {
+        paramContext = locala.aFT();
+        AppMethodBeat.o(198676);
+        return paramContext;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.EnterpriseBizEntranceListUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,25 +2,25 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.xo;
-import com.tencent.mm.g.a.xo.b;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.xz;
+import com.tencent.mm.g.a.xz.b;
 import com.tencent.mm.model.u;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.List;
 
 public final class f
 {
-  private static int ieA = 4;
-  private static int iex = 1;
-  private static int iey = 2;
-  private static int iez = 3;
+  private static int iEG = 1;
+  private static int iEH = 2;
+  private static int iEI = 3;
+  private static int iEJ = 4;
   
-  public static int E(int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int D(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt1 == 5) {
       if (!paramBoolean) {}
@@ -55,7 +55,7 @@ public final class f
     return 2131231384;
   }
   
-  public static int F(int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int E(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt1 == 5) {}
     do
@@ -77,7 +77,7 @@ public final class f
     return -1;
   }
   
-  public static int G(int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int F(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt1 == 5) {
       if (!paramBoolean) {}
@@ -116,7 +116,7 @@ public final class f
   {
     AppMethodBeat.i(34308);
     a locala = g(paramb);
-    switch (paramb.gIX)
+    switch (paramb.hjx)
     {
     }
     for (;;)
@@ -125,10 +125,10 @@ public final class f
       return 2131689842;
       if ((paramBoolean) || (locala.role == 1))
       {
-        if ((locala.Glg <= 0) || (locala.Glh < 0) || (locala.Gli < 0)) {}
+        if ((locala.HKV <= 0) || (locala.HKW < 0) || (locala.HKX < 0)) {}
       }
       else {
-        switch (locala.Glg)
+        switch (locala.HKV)
         {
         default: 
           break;
@@ -145,8 +145,8 @@ public final class f
           if (locala.role != 2) {
             break label223;
           }
-          if ((locala.Glg > 0) && (locala.Glj >= 0L)) {
-            switch (locala.Glg)
+          if ((locala.HKV > 0) && (locala.HKY >= 0L)) {
+            switch (locala.HKV)
             {
             }
           }
@@ -168,8 +168,8 @@ public final class f
   public static String b(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(34310);
-    Object localObject = aj.getContext();
-    ad.d("MicroMsg.C2CAppMsgUtil", "getC2CLuckyMoneyDescByHbStatus() hbType:%s hbStatus:%s receiveStatus:%s isGroupChat:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean2) });
+    Object localObject = ai.getContext();
+    ac.d("MicroMsg.C2CAppMsgUtil", "getC2CLuckyMoneyDescByHbStatus() hbType:%s hbStatus:%s receiveStatus:%s isGroupChat:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean2) });
     if (paramInt2 == 5)
     {
       localObject = ((Context)localObject).getString(2131760834);
@@ -297,16 +297,16 @@ public final class f
       int m;
       try
       {
-        str1 = u.aqG();
-        if (paramb.gIX <= 0)
+        str1 = u.axw();
+        if (paramb.hjx <= 0)
         {
           if (paramBoolean)
           {
-            str1 = paramb.gIJ;
+            str1 = paramb.hjj;
             AppMethodBeat.o(34309);
             return str1;
           }
-          str1 = paramb.gIK;
+          str1 = paramb.hjk;
           AppMethodBeat.o(34309);
           return str1;
         }
@@ -317,16 +317,16 @@ public final class f
         int i6 = -1;
         i7 = 0;
         l = -1L;
-        Object localObject = paramb.gIW;
-        xo localxo = new xo();
-        localxo.dDH.dDJ = ((String)localObject);
-        a.ESL.l(localxo);
-        if (paramb.gIX != 2)
+        Object localObject = paramb.hjw;
+        xz localxz = new xz();
+        localxz.dBt.dBv = ((String)localObject);
+        a.GpY.l(localxz);
+        if (paramb.hjx != 2)
         {
           i3 = i6;
           i2 = i5;
           n = i4;
-          if (paramb.gIX != 3) {
+          if (paramb.hjx != 3) {
             break label905;
           }
         }
@@ -334,9 +334,9 @@ public final class f
         j = i5;
         k = i4;
         m = i8;
-        if (!bt.gL(paramb.gJb))
+        if (!bs.gY(paramb.hjB))
         {
-          localObject = paramb.gJb.iterator();
+          localObject = paramb.hjB.iterator();
           i = i6;
           j = i5;
           k = i4;
@@ -347,9 +347,9 @@ public final class f
             if ((arrayOfString.length != 4) || (!arrayOfString[0].equals(str1))) {
               continue;
             }
-            k = bt.getInt(arrayOfString[1], -1);
-            j = bt.getInt(arrayOfString[2], -1);
-            i = bt.getInt(arrayOfString[3], -1);
+            k = bs.getInt(arrayOfString[1], -1);
+            j = bs.getInt(arrayOfString[2], -1);
+            i = bs.getInt(arrayOfString[3], -1);
             m = 1;
           }
         }
@@ -357,10 +357,10 @@ public final class f
         i2 = j;
         n = k;
         i1 = m;
-        if (bt.gL(paramb.gJd)) {
+        if (bs.gY(paramb.hjD)) {
           break label905;
         }
-        localObject = paramb.gJd.iterator();
+        localObject = paramb.hjD.iterator();
         i3 = i;
         i2 = j;
         n = k;
@@ -372,32 +372,32 @@ public final class f
         if ((arrayOfString.length != 3) || (!arrayOfString[0].equals(str1))) {
           continue;
         }
-        l = bt.getLong(arrayOfString[1], -1L);
-        n = bt.getInt(arrayOfString[2], -1);
+        l = bs.getLong(arrayOfString[1], -1L);
+        n = bs.getInt(arrayOfString[2], -1);
         i1 = 1;
         i2 = j;
         i3 = i;
         j = i1;
         i = n;
-        if (localxo.dDI.status == iez)
+        if (localxz.dBu.status == iEI)
         {
-          str1 = aj.getContext().getString(2131755055);
+          str1 = ai.getContext().getString(2131755055);
           AppMethodBeat.o(34309);
           return str1;
         }
-        if (localxo.dDI.status == iey)
+        if (localxz.dBu.status == iEH)
         {
-          str1 = aj.getContext().getString(2131755047);
+          str1 = ai.getContext().getString(2131755047);
           AppMethodBeat.o(34309);
           return str1;
         }
-        if (localxo.dDI.status == ieA)
+        if (localxz.dBu.status == iEJ)
         {
-          str1 = aj.getContext().getString(2131755053);
+          str1 = ai.getContext().getString(2131755053);
           AppMethodBeat.o(34309);
           return str1;
         }
-        n = paramb.gIX;
+        n = paramb.hjx;
         switch (n)
         {
         }
@@ -405,38 +405,38 @@ public final class f
       catch (Exception localException)
       {
         String str1;
-        ad.e("MicroMsg.C2CAppMsgUtil", "getC2CDescFromAppMsgContent, error: %s", new Object[] { localException.getMessage() });
+        ac.e("MicroMsg.C2CAppMsgUtil", "getC2CDescFromAppMsgContent, error: %s", new Object[] { localException.getMessage() });
         continue;
-        str2 = paramb.gIK;
+        str2 = paramb.hjk;
         AppMethodBeat.o(34309);
         return str2;
       }
       if (paramBoolean)
       {
-        paramb = paramb.gIJ;
+        paramb = paramb.hjj;
         AppMethodBeat.o(34309);
         return paramb;
         if (paramBoolean)
         {
-          str1 = paramb.gIJ;
+          str1 = paramb.hjj;
           AppMethodBeat.o(34309);
           return str1;
         }
         String str2;
-        if ((!str2.equals(paramb.gJg)) && (!paramBoolean)) {
+        if ((!str2.equals(paramb.hjG)) && (!paramBoolean)) {
           if (m != 0)
           {
             break label921;
-            str2 = aj.getContext().getString(2131755056);
+            str2 = ai.getContext().getString(2131755056);
             AppMethodBeat.o(34309);
             return str2;
-            str2 = aj.getContext().getString(2131755054, new Object[] { Integer.valueOf(i2 - i3) });
+            str2 = ai.getContext().getString(2131755054, new Object[] { Integer.valueOf(i2 - i3) });
             AppMethodBeat.o(34309);
             return str2;
-            str2 = aj.getContext().getString(2131755052);
+            str2 = ai.getContext().getString(2131755052);
             AppMethodBeat.o(34309);
             return str2;
-            str2 = aj.getContext().getString(2131755055);
+            str2 = ai.getContext().getString(2131755055);
             AppMethodBeat.o(34309);
             return str2;
           }
@@ -452,24 +452,24 @@ public final class f
               default: 
                 break;
               case 1: 
-                str2 = aj.getContext().getString(2131755049, new Object[] { Float.valueOf((float)l / 100.0F) });
+                str2 = ai.getContext().getString(2131755049, new Object[] { Float.valueOf((float)l / 100.0F) });
                 AppMethodBeat.o(34309);
                 return str2;
               case 2: 
-                str2 = aj.getContext().getString(2131755048, new Object[] { Float.valueOf((float)l / 100.0F) });
+                str2 = ai.getContext().getString(2131755048, new Object[] { Float.valueOf((float)l / 100.0F) });
                 AppMethodBeat.o(34309);
                 return str2;
               case 3: 
-                str2 = aj.getContext().getString(2131755051, new Object[] { Float.valueOf((float)l / 100.0F) });
+                str2 = ai.getContext().getString(2131755051, new Object[] { Float.valueOf((float)l / 100.0F) });
                 AppMethodBeat.o(34309);
                 return str2;
               case 4: 
-                str2 = aj.getContext().getString(2131755050);
+                str2 = ai.getContext().getString(2131755050);
                 AppMethodBeat.o(34309);
                 return str2;
               }
             }
-            str2 = aj.getContext().getString(2131755050);
+            str2 = ai.getContext().getString(2131755050);
             AppMethodBeat.o(34309);
             return str2;
           }
@@ -477,7 +477,7 @@ public final class f
       }
       else
       {
-        paramb = paramb.gIK;
+        paramb = paramb.hjk;
         AppMethodBeat.o(34309);
         return paramb;
         label905:
@@ -509,11 +509,11 @@ public final class f
       AppMethodBeat.o(34311);
       return 2131230726;
     }
-    Object localObject = paramb.gIW;
-    xo localxo = new xo();
-    localxo.dDH.dDJ = ((String)localObject);
-    a.ESL.l(localxo);
-    if ((localxo.dDI.status == iez) || (localxo.dDI.status == iey) || (localxo.dDI.status == ieA))
+    Object localObject = paramb.hjw;
+    xz localxz = new xz();
+    localxz.dBt.dBv = ((String)localObject);
+    a.GpY.l(localxz);
+    if ((localxz.dBu.status == iEI) || (localxz.dBu.status == iEH) || (localxz.dBu.status == iEJ))
     {
       if (paramBoolean)
       {
@@ -524,7 +524,7 @@ public final class f
       return 2131230731;
     }
     localObject = g(paramb);
-    switch (paramb.gIX)
+    switch (paramb.hjx)
     {
     }
     while (paramBoolean)
@@ -532,11 +532,11 @@ public final class f
       AppMethodBeat.o(34311);
       return 2131230732;
       if ((paramBoolean) || (((a)localObject).role == 1)) {
-        if ((((a)localObject).Glg <= 0) || (((a)localObject).Glh < 0) || (((a)localObject).Gli < 0)) {
+        if ((((a)localObject).HKV <= 0) || (((a)localObject).HKW < 0) || (((a)localObject).HKX < 0)) {
           break;
         }
       } else {
-        switch (((a)localObject).Glg)
+        switch (((a)localObject).HKV)
         {
         default: 
           break;
@@ -560,8 +560,8 @@ public final class f
           return 2131230731;
           if (((a)localObject).role == 2)
           {
-            if ((((a)localObject).Glg > 0) && (((a)localObject).Glj >= 0L)) {
-              switch (((a)localObject).Glg)
+            if ((((a)localObject).HKV > 0) && (((a)localObject).HKY >= 0L)) {
+              switch (((a)localObject).HKV)
               {
               default: 
                 break;
@@ -612,17 +612,17 @@ public final class f
       AppMethodBeat.o(34312);
       return -12479656;
     }
-    Object localObject = paramb.gIW;
-    xo localxo = new xo();
-    localxo.dDH.dDJ = ((String)localObject);
-    a.ESL.l(localxo);
-    if ((localxo.dDI.status == iez) || (localxo.dDI.status == iey) || (localxo.dDI.status == ieA))
+    Object localObject = paramb.hjw;
+    xz localxz = new xz();
+    localxz.dBt.dBv = ((String)localObject);
+    a.GpY.l(localxz);
+    if ((localxz.dBu.status == iEI) || (localxz.dBu.status == iEH) || (localxz.dBu.status == iEJ))
     {
       AppMethodBeat.o(34312);
       return -8868722;
     }
     localObject = g(paramb);
-    switch (paramb.gIX)
+    switch (paramb.hjx)
     {
     }
     for (;;)
@@ -631,10 +631,10 @@ public final class f
       return -12479656;
       if ((paramBoolean) || (((a)localObject).role == 1))
       {
-        if ((((a)localObject).Glg <= 0) || (((a)localObject).Glh < 0) || (((a)localObject).Gli < 0)) {}
+        if ((((a)localObject).HKV <= 0) || (((a)localObject).HKW < 0) || (((a)localObject).HKX < 0)) {}
       }
       else {
-        switch (((a)localObject).Glg)
+        switch (((a)localObject).HKV)
         {
         default: 
           break;
@@ -649,8 +649,8 @@ public final class f
           if (((a)localObject).role != 2) {
             break label307;
           }
-          if ((((a)localObject).Glg > 0) && (((a)localObject).Glj >= 0L)) {
-            switch (((a)localObject).Glg)
+          if ((((a)localObject).HKV > 0) && (((a)localObject).HKY >= 0L)) {
+            switch (((a)localObject).HKV)
             {
             }
           }
@@ -670,34 +670,34 @@ public final class f
   public static a g(k.b paramb)
   {
     AppMethodBeat.i(34307);
-    String str = u.aqG();
-    if ((paramb.gIX == 2) || (paramb.gIX == 3))
+    String str = u.axw();
+    if ((paramb.hjx == 2) || (paramb.hjx == 3))
     {
       Object localObject;
-      if (!bt.gL(paramb.gJb))
+      if (!bs.gY(paramb.hjB))
       {
-        localObject = paramb.gJb.iterator();
+        localObject = paramb.hjB.iterator();
         while (((Iterator)localObject).hasNext())
         {
           String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
           if ((arrayOfString.length == 4) && (arrayOfString[0].equals(str)))
           {
-            paramb = new a(bt.getInt(arrayOfString[1], -1), bt.getInt(arrayOfString[2], -1), bt.getInt(arrayOfString[3], -1));
+            paramb = new a(bs.getInt(arrayOfString[1], -1), bs.getInt(arrayOfString[2], -1), bs.getInt(arrayOfString[3], -1));
             AppMethodBeat.o(34307);
             return paramb;
           }
         }
       }
-      if (!bt.gL(paramb.gJd))
+      if (!bs.gY(paramb.hjD))
       {
-        paramb = paramb.gJd.iterator();
+        paramb = paramb.hjD.iterator();
         while (paramb.hasNext())
         {
           localObject = ((String)paramb.next()).split(",");
           if ((localObject.length == 3) && (localObject[0].equals(str)))
           {
-            long l = bt.getLong(localObject[1], -1L);
-            paramb = new a(bt.getInt(localObject[2], -1), l);
+            long l = bs.getLong(localObject[1], -1L);
+            paramb = new a(bs.getInt(localObject[2], -1), l);
             AppMethodBeat.o(34307);
             return paramb;
           }
@@ -711,10 +711,10 @@ public final class f
   
   public static final class a
   {
-    public int Glg;
-    public int Glh = -1;
-    public int Gli = -1;
-    public long Glj = -1L;
+    public int HKV;
+    public int HKW = -1;
+    public int HKX = -1;
+    public long HKY = -1L;
     public int role;
     
     public a()
@@ -725,22 +725,22 @@ public final class f
     public a(int paramInt1, int paramInt2, int paramInt3)
     {
       this.role = 1;
-      this.Glg = paramInt1;
-      this.Glh = paramInt2;
-      this.Gli = paramInt3;
+      this.HKV = paramInt1;
+      this.HKW = paramInt2;
+      this.HKX = paramInt3;
     }
     
     public a(int paramInt, long paramLong)
     {
       this.role = 2;
-      this.Glg = paramInt;
-      this.Glj = paramLong;
+      this.HKV = paramInt;
+      this.HKY = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.f
  * JD-Core Version:    0.7.0.1
  */

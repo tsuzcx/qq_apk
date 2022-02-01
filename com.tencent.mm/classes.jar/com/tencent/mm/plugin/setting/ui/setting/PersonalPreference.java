@@ -11,45 +11,45 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PersonalPreference
   extends Preference
 {
-  private String dtU;
-  private String eKn;
-  private TextView fsI;
-  Bitmap gTB;
-  String qDs;
-  ImageView qkM;
+  private String drF;
+  private String eNf;
+  private TextView fwp;
+  Bitmap hua;
+  ImageView qTo;
+  String ruB;
   private String username;
-  private TextView wet;
-  int weu;
-  private View.OnClickListener wev;
+  private TextView xpH;
+  int xpI;
+  private View.OnClickListener xpJ;
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.fsI = null;
-    this.wet = null;
-    this.qkM = null;
-    this.gTB = null;
-    this.weu = -1;
-    this.qDs = null;
+    this.fwp = null;
+    this.xpH = null;
+    this.qTo = null;
+    this.hua = null;
+    this.xpI = -1;
+    this.ruB = null;
   }
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73903);
-    this.fsI = null;
-    this.wet = null;
-    this.qkM = null;
-    this.gTB = null;
-    this.weu = -1;
-    this.qDs = null;
+    this.fwp = null;
+    this.xpH = null;
+    this.qTo = null;
+    this.hua = null;
+    this.xpI = -1;
+    this.ruB = null;
     setLayoutResource(2131494804);
     setWidgetLayoutResource(2131494884);
     AppMethodBeat.o(73903);
@@ -58,41 +58,41 @@ public class PersonalPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(73905);
-    if (this.qkM == null) {
-      this.qkM = ((ImageView)paramView.findViewById(2131300943));
+    if (this.qTo == null) {
+      this.qTo = ((ImageView)paramView.findViewById(2131300943));
     }
-    if (this.gTB != null)
+    if (this.hua != null)
     {
-      this.qkM.setImageBitmap(this.gTB);
-      this.qkM.setOnClickListener(this.wev);
-      if ((this.fsI != null) && (this.dtU != null)) {
-        this.fsI.setText(k.b(this.mContext, this.dtU, this.fsI.getTextSize()));
+      this.qTo.setImageBitmap(this.hua);
+      this.qTo.setOnClickListener(this.xpJ);
+      if ((this.fwp != null) && (this.drF != null)) {
+        this.fwp.setText(k.b(this.mContext, this.drF, this.fwp.getTextSize()));
       }
-      if (this.wet != null) {
-        if (!bt.isNullOrNil(this.eKn)) {
+      if (this.xpH != null) {
+        if (!bs.isNullOrNil(this.eNf)) {
           break label230;
         }
       }
     }
     label230:
-    for (String str = this.username;; str = this.eKn)
+    for (String str = this.username;; str = this.eNf)
     {
-      if ((bt.isNullOrNil(this.eKn)) && (af.aHK(this.username))) {
-        this.wet.setVisibility(8);
+      if ((bs.isNullOrNil(this.eNf)) && (ai.aNf(this.username))) {
+        this.xpH.setVisibility(8);
       }
-      this.wet.setText(this.mContext.getString(2131755760) + str);
+      this.xpH.setText(this.mContext.getString(2131755760) + str);
       super.onBindView(paramView);
       AppMethodBeat.o(73905);
       return;
-      if (this.weu > 0)
+      if (this.xpI > 0)
       {
-        this.qkM.setImageResource(this.weu);
+        this.qTo.setImageResource(this.xpI);
         break;
       }
-      if (this.qDs == null) {
+      if (this.ruB == null) {
         break;
       }
-      a.b.c(this.qkM, this.qDs);
+      a.b.c(this.qTo, this.ruB);
       break;
     }
   }
@@ -110,7 +110,7 @@ public class PersonalPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PersonalPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ah.f;
+import com.tencent.mm.ah.k.b;
 import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Map;
 
 public class b
@@ -12,6 +12,18 @@ public class b
 {
   public String songAlbumUrl = "";
   public String songLyric = "";
+  
+  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(152372);
+    if (!bs.isNullOrNil(this.songAlbumUrl)) {
+      paramStringBuilder.append("<songalbumurl>").append(bs.aLw(this.songAlbumUrl)).append("</songalbumurl>");
+    }
+    if (!bs.isNullOrNil(this.songLyric)) {
+      paramStringBuilder.append("<songlyric>").append(bs.aLw(this.songLyric)).append("</songlyric>");
+    }
+    AppMethodBeat.o(152372);
+  }
   
   public final void a(Map<String, String> paramMap, k.b paramb)
   {
@@ -21,7 +33,7 @@ public class b
     AppMethodBeat.o(152373);
   }
   
-  public final f apu()
+  public final f alG()
   {
     AppMethodBeat.i(152371);
     b localb = new b();
@@ -30,22 +42,10 @@ public class b
     AppMethodBeat.o(152371);
     return localb;
   }
-  
-  public final void b(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(152372);
-    if (!bt.isNullOrNil(this.songAlbumUrl)) {
-      paramStringBuilder.append("<songalbumurl>").append(bt.aGf(this.songAlbumUrl)).append("</songalbumurl>");
-    }
-    if (!bt.isNullOrNil(this.songLyric)) {
-      paramStringBuilder.append("<songlyric>").append(bt.aGf(this.songLyric)).append("</songlyric>");
-    }
-    AppMethodBeat.o(152372);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,17 @@ import java.nio.ByteOrder;
 
 public abstract interface a
 {
-  public static final ByteOrder bXC = ByteOrder.BIG_ENDIAN;
+  public static final ByteOrder bVk = ByteOrder.BIG_ENDIAN;
   
-  public abstract void A(byte[] paramArrayOfByte);
+  public abstract long Aa();
   
-  public abstract long An();
-  
-  public abstract void aK(long paramLong);
+  public abstract void aG(long paramLong);
   
   public abstract boolean hasRemaining();
   
-  public abstract long position();
+  public abstract void p(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public abstract void q(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract long position();
   
   public abstract byte readByte();
   
@@ -31,6 +29,8 @@ public abstract interface a
   public abstract long readLong();
   
   public abstract short readShort();
+  
+  public abstract void y(byte[] paramArrayOfByte);
 }
 
 

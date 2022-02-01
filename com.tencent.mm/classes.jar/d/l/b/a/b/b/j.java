@@ -9,12 +9,12 @@ import d.l.b.a.b.m.bc;
 
 public final class j
 {
-  public static final j Jqk;
+  public static final j LdD;
   
   static
   {
     AppMethodBeat.i(56849);
-    Jqk = new j();
+    LdD = new j();
     AppMethodBeat.o(56849);
   }
   
@@ -25,7 +25,7 @@ public final class j
     k.h(paramab, "$this$canBeUsedForConstVal");
     if (!g.o(paramab))
     {
-      m localm = m.Jom;
+      m localm = m.LbG;
       if (!m.F(paramab)) {
         break label42;
       }
@@ -42,7 +42,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.j
  * JD-Core Version:    0.7.0.1
  */

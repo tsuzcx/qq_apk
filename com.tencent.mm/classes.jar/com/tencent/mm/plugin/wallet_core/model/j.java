@@ -8,12 +8,12 @@ import org.json.JSONObject;
 
 public final class j
 {
-  public String Aeh;
-  public List<j.a> Aei;
+  public String BwB;
+  public List<j.a> BwC;
   public String content;
   public String title;
   
-  public static j aY(JSONObject paramJSONObject)
+  public static j aZ(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70282);
     if (paramJSONObject == null)
@@ -24,17 +24,17 @@ public final class j
     j localj = new j();
     localj.title = paramJSONObject.optString("title");
     localj.content = paramJSONObject.optString("content");
-    localj.Aeh = paramJSONObject.optString("content_not_enough");
-    localj.Aei = new ArrayList();
+    localj.BwB = paramJSONObject.optString("content_not_enough");
+    localj.BwC = new ArrayList();
     paramJSONObject = paramJSONObject.optJSONArray("show_infos");
     if (paramJSONObject != null)
     {
       int i = 0;
       while (i < paramJSONObject.length())
       {
-        j.a locala = j.a.aZ(paramJSONObject.optJSONObject(i));
+        j.a locala = j.a.ba(paramJSONObject.optJSONObject(i));
         if (locala != null) {
-          localj.Aei.add(locala);
+          localj.BwC.add(locala);
         }
         i += 1;
       }

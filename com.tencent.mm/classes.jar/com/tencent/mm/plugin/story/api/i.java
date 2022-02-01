@@ -11,9 +11,9 @@ public abstract interface i
   
   public abstract void aZ(View paramView);
   
-  public abstract View.OnClickListener dGg();
+  public abstract View.OnClickListener dUH();
   
-  public abstract void eE(String paramString, int paramInt);
+  public abstract void eM(String paramString, int paramInt);
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   
@@ -25,7 +25,7 @@ public abstract interface i
   
   public static abstract interface a
   {
-    public abstract boolean eY(View paramView);
+    public abstract boolean fl(View paramView);
   }
 }
 

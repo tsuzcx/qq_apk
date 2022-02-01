@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 
@@ -13,12 +13,12 @@ import com.tencent.mm.ui.base.a;
 public class TopStorySubTaskHomeUI
   extends MMActivity
 {
-  private b yME;
+  private b Aav;
   
   public TopStorySubTaskHomeUI()
   {
     AppMethodBeat.i(126020);
-    this.yME = new b(this, false);
+    this.Aav = new b(this, false);
     AppMethodBeat.o(126020);
   }
   
@@ -31,15 +31,15 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126021);
     super.onCreate(paramBundle);
-    ad.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.yME.onCreate(paramBundle);
+    ac.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
+    this.Aav.onCreate(paramBundle);
     AppMethodBeat.o(126021);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(126025);
-    this.yME.onDestroy();
+    this.Aav.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(126025);
   }
@@ -47,7 +47,7 @@ public class TopStorySubTaskHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(126022);
-    boolean bool = this.yME.Pf(paramInt);
+    boolean bool = this.Aav.Rl(paramInt);
     AppMethodBeat.o(126022);
     return bool;
   }
@@ -55,7 +55,7 @@ public class TopStorySubTaskHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(126026);
-    this.yME.onNewIntent(paramIntent);
+    this.Aav.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(126026);
   }
@@ -63,7 +63,7 @@ public class TopStorySubTaskHomeUI
   public void onPause()
   {
     AppMethodBeat.i(126024);
-    this.yME.onPause();
+    this.Aav.onPause();
     super.onPause();
     AppMethodBeat.o(126024);
   }
@@ -72,7 +72,7 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126023);
     super.onResume();
-    this.yME.onResume();
+    this.Aav.onResume();
     AppMethodBeat.o(126023);
   }
   
@@ -80,7 +80,7 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126027);
     super.onSaveInstanceState(paramBundle);
-    this.yME.onSaveInstanceState(paramBundle);
+    this.Aav.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(126027);
   }
   
@@ -92,7 +92,7 @@ public class TopStorySubTaskHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStorySubTaskHomeUI
  * JD-Core Version:    0.7.0.1
  */

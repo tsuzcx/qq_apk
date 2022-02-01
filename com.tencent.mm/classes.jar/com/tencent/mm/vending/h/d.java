@@ -7,18 +7,18 @@ import com.tencent.mm.vending.i.b;
 
 public abstract class d
 {
-  public static final h HQL = new h(Looper.getMainLooper(), "Vending.UI");
-  public static final h HQM = new h(b.fhw().HQX.getLooper(), "Vending.LOGIC");
-  public static final h HQN = new h(a.fhv().HQV.getLooper(), "Vending.HEAVY_WORK");
+  public static final h Jrg = new h(Looper.getMainLooper(), "Vending.UI");
+  public static final h Jrh = new h(b.fxy().Jrs.getLooper(), "Vending.LOGIC");
+  public static final h Jri = new h(a.fxx().Jrq.getLooper(), "Vending.HEAVY_WORK");
   
   static
   {
-    g.fht();
+    g.fxv();
   }
   
-  public static d fhs()
+  public static d fxu()
   {
-    return g.fhs();
+    return g.fxu();
   }
   
   public abstract void cancel();
@@ -27,7 +27,7 @@ public abstract class d
   
   public abstract String getType();
   
-  public abstract void v(Runnable paramRunnable);
+  public abstract void w(Runnable paramRunnable);
 }
 
 

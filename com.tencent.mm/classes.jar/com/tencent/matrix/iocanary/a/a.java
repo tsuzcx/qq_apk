@@ -1,39 +1,42 @@
 package com.tencent.matrix.iocanary.a;
 
-import com.tencent.c.a.a.a;
-
 public final class a
 {
-  public final com.tencent.c.a.a cty;
+  public final com.tencent.c.a.a cqF;
   
   private a(com.tencent.c.a.a parama)
   {
-    this.cty = parama;
+    this.cqF = parama;
   }
   
-  public final boolean Hi()
+  public final boolean GT()
   {
-    return this.cty.get(a.a.Ihk.name(), true);
+    return this.cqF.get(com.tencent.c.a.a.a.JIS.name(), true);
   }
   
-  public final boolean Hj()
+  public final boolean GU()
   {
-    return this.cty.get(a.a.Ihp.name(), true);
+    return this.cqF.get(com.tencent.c.a.a.a.JIX.name(), true);
   }
   
-  public final boolean Hk()
+  public final boolean GV()
   {
-    return this.cty.get(a.a.Ihm.name(), true);
+    return this.cqF.get(com.tencent.c.a.a.a.JIU.name(), true);
   }
   
-  public final boolean Hl()
+  public final boolean GW()
   {
-    return this.cty.get(a.a.Ihr.name(), true);
+    return this.cqF.get(com.tencent.c.a.a.a.JIZ.name(), true);
   }
   
   public final String toString()
   {
-    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(Hi()), Boolean.valueOf(Hk()), Boolean.valueOf(Hj()), Boolean.valueOf(Hl()) });
+    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(GT()), Boolean.valueOf(GV()), Boolean.valueOf(GU()), Boolean.valueOf(GW()) });
+  }
+  
+  public static final class a
+  {
+    public com.tencent.c.a.a cqF;
   }
 }
 

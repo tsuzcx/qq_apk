@@ -12,13 +12,13 @@ public final class n
   extends AbstractList<String>
   implements o, RandomAccess
 {
-  public static final o JNg;
+  public static final o LAz;
   private final List<Object> list;
   
   static
   {
     AppMethodBeat.i(59516);
-    JNg = new n().fHX();
+    LAz = new n().gaA();
     AppMethodBeat.o(59516);
   }
   
@@ -48,7 +48,7 @@ public final class n
     }
     if ((paramObject instanceof d))
     {
-      paramObject = ((d)paramObject).eBA();
+      paramObject = ((d)paramObject).eQU();
       AppMethodBeat.o(59509);
       return paramObject;
     }
@@ -62,7 +62,7 @@ public final class n
     AppMethodBeat.i(59505);
     Object localObject = paramCollection;
     if ((paramCollection instanceof o)) {
-      localObject = ((o)paramCollection).fHW();
+      localObject = ((o)paramCollection).gaz();
     }
     boolean bool = this.list.addAll(paramInt, (Collection)localObject);
     this.modCount += 1;
@@ -78,7 +78,7 @@ public final class n
     return bool;
   }
   
-  public final d afJ(int paramInt)
+  public final d aiF(int paramInt)
   {
     AppMethodBeat.i(59508);
     Object localObject = this.list.get(paramInt);
@@ -94,7 +94,7 @@ public final class n
       AppMethodBeat.o(59508);
       return locald;
       if ((localObject instanceof String)) {
-        locald = d.aQH((String)localObject);
+        locald = d.aWG((String)localObject);
       } else {
         locald = d.cT((byte[])localObject);
       }
@@ -117,20 +117,20 @@ public final class n
     AppMethodBeat.o(59507);
   }
   
-  public final List<?> fHW()
-  {
-    AppMethodBeat.i(59510);
-    List localList = Collections.unmodifiableList(this.list);
-    AppMethodBeat.o(59510);
-    return localList;
-  }
-  
-  public final o fHX()
+  public final o gaA()
   {
     AppMethodBeat.i(59511);
     x localx = new x(this);
     AppMethodBeat.o(59511);
     return localx;
+  }
+  
+  public final List<?> gaz()
+  {
+    AppMethodBeat.i(59510);
+    List localList = Collections.unmodifiableList(this.list);
+    AppMethodBeat.o(59510);
+    return localList;
   }
   
   public final int size()
@@ -143,7 +143,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.l.b.a.b.h.n
  * JD-Core Version:    0.7.0.1
  */

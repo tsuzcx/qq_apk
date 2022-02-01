@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 public abstract interface h
 {
-  public static final Charset aCw = Charset.forName("UTF-8");
+  public static final Charset aDo = Charset.forName("UTF-8");
   
   public abstract void a(MessageDigest paramMessageDigest);
   
@@ -15,7 +15,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.h
  * JD-Core Version:    0.7.0.1
  */

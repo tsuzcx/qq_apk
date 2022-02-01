@@ -9,38 +9,38 @@ public final class a$j
   public int action = 0;
   public String groupId = "";
   public int roomId = 0;
-  public long sAY = 0L;
+  public long tIG = 0L;
   public long timestamp = 0L;
   
   public a$j()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bz(1, this.action);
-    paramb.by(2, this.roomId);
-    paramb.o(3, this.sAY);
+    paramb.bw(1, this.action);
+    paramb.bv(2, this.roomId);
+    paramb.n(3, this.tIG);
     if (!this.groupId.equals("")) {
       paramb.d(4, this.groupId);
     }
     if (this.timestamp != 0L) {
-      paramb.n(5, this.timestamp);
+      paramb.m(5, this.timestamp);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg() + b.bB(1, this.action) + b.bA(2, this.roomId) + b.q(3, this.sAY);
+    int j = super.xT() + b.by(1, this.action) + b.bx(2, this.roomId) + b.p(3, this.tIG);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(4, this.groupId);
     }
     j = i;
     if (this.timestamp != 0L) {
-      j = i + b.p(5, this.timestamp);
+      j = i + b.o(5, this.timestamp);
     }
     return j;
   }

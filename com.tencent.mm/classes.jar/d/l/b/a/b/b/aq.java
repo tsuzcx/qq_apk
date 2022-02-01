@@ -15,12 +15,12 @@ public abstract interface aq
   public static final class a
     implements aq
   {
-    public static final a JqL;
+    public static final a Lee;
     
     static
     {
       AppMethodBeat.i(56886);
-      JqL = new a();
+      Lee = new a();
       AppMethodBeat.o(56886);
     }
     
@@ -38,7 +38,7 @@ public abstract interface aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.aq
  * JD-Core Version:    0.7.0.1
  */

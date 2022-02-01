@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.wxawidget.console;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +18,14 @@ import java.util.List;
 final class a
   extends RecyclerView.a
 {
-  private static final SimpleDateFormat mnF;
+  private static final SimpleDateFormat mPG;
   LayoutInflater mInflater;
-  List<LogInfo> mnG;
+  List<LogInfo> mPH;
   
   static
   {
     AppMethodBeat.i(121614);
-    mnF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+    mPG = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
     AppMethodBeat.o(121614);
   }
   
@@ -33,11 +33,11 @@ final class a
   {
     AppMethodBeat.i(121609);
     this.mInflater = LayoutInflater.from(paramContext);
-    this.mnG = new LinkedList();
+    this.mPH = new LinkedList();
     AppMethodBeat.o(121609);
   }
   
-  public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+  public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(121610);
     paramViewGroup = new a(this.mInflater.inflate(2131493596, paramViewGroup, false), paramInt);
@@ -45,18 +45,18 @@ final class a
     return paramViewGroup;
   }
   
-  public final void a(RecyclerView.v paramv, int paramInt)
+  public final void a(RecyclerView.w paramw, int paramInt)
   {
     AppMethodBeat.i(121611);
-    LogInfo localLogInfo = (LogInfo)this.mnG.get(paramInt);
-    ((a)paramv).izX.setText(String.format("[%s] %s", new Object[] { mnF.format(new Date(localLogInfo.gRD)), localLogInfo.message }));
+    LogInfo localLogInfo = (LogInfo)this.mPH.get(paramInt);
+    ((a)paramw).gIq.setText(String.format("[%s] %s", new Object[] { mPG.format(new Date(localLogInfo.hsd)), localLogInfo.message }));
     AppMethodBeat.o(121611);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(121612);
-    int i = this.mnG.size();
+    int i = this.mPH.size();
     AppMethodBeat.o(121612);
     return i;
   }
@@ -64,55 +64,55 @@ final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(121613);
-    paramInt = ((LogInfo)this.mnG.get(paramInt)).level;
+    paramInt = ((LogInfo)this.mPH.get(paramInt)).level;
     AppMethodBeat.o(121613);
     return paramInt;
   }
   
   static final class a
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    TextView izX;
-    TextView mnH;
+    TextView gIq;
+    TextView mPI;
     
     public a(View paramView, int paramInt)
     {
       super();
       AppMethodBeat.i(121608);
-      this.mnH = ((TextView)paramView.findViewById(2131301402));
-      this.izX = ((TextView)paramView.findViewById(2131298778));
+      this.mPI = ((TextView)paramView.findViewById(2131301402));
+      this.gIq = ((TextView)paramView.findViewById(2131298778));
       switch (paramInt)
       {
       default: 
-        this.mnH.setText("L");
-        this.izX.setTextColor(-7829368);
+        this.mPI.setText("L");
+        this.gIq.setTextColor(-7829368);
         AppMethodBeat.o(121608);
         return;
       case 1: 
-        this.mnH.setText("L");
-        this.izX.setTextColor(-7829368);
+        this.mPI.setText("L");
+        this.gIq.setTextColor(-7829368);
         AppMethodBeat.o(121608);
         return;
       case 2: 
-        this.mnH.setText("I");
-        this.izX.setTextColor(-16777216);
+        this.mPI.setText("I");
+        this.gIq.setTextColor(-16777216);
         AppMethodBeat.o(121608);
         return;
       case 3: 
-        this.mnH.setText("W");
-        this.izX.setTextColor(Color.rgb(0, 0, 204));
+        this.mPI.setText("W");
+        this.gIq.setTextColor(Color.rgb(0, 0, 204));
         AppMethodBeat.o(121608);
         return;
       }
-      this.mnH.setText("E");
-      this.izX.setTextColor(-65536);
+      this.mPI.setText("E");
+      this.gIq.setTextColor(-65536);
       AppMethodBeat.o(121608);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.a
  * JD-Core Version:    0.7.0.1
  */

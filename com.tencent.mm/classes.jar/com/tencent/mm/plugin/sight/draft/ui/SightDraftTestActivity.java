@@ -14,7 +14,7 @@ public class SightDraftTestActivity
     super.onCreate(paramBundle);
     paramBundle = new SightDraftContainerView(this);
     setContentView(paramBundle);
-    paramBundle.dqO();
+    paramBundle.dEX();
     AppMethodBeat.o(28692);
   }
   
@@ -26,7 +26,7 @@ public class SightDraftTestActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftTestActivity
  * JD-Core Version:    0.7.0.1
  */

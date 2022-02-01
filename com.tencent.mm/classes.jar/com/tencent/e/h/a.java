@@ -8,38 +8,38 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class a
   implements d
 {
-  private final AtomicBoolean Izr = new AtomicBoolean(false);
+  private final AtomicBoolean Kba = new AtomicBoolean(false);
   
-  protected abstract a foe();
+  protected abstract a fEu();
   
   public final <V> com.tencent.e.i.d<V> g(k<V> paramk)
   {
-    if (!this.Izr.get())
+    if (!this.Kba.get())
     {
       if (!paramk.isCancelled())
       {
-        foe().i(paramk);
+        fEu().i(paramk);
         return paramk;
       }
-      com.tencent.e.d.IxU.w("[BasePool#input] task=%s pool=%s", paramk.getKey() + "#" + paramk.IzQ, new Object[] { getName() });
+      com.tencent.e.d.JZD.w("[BasePool#input] task=%s pool=%s", paramk.getKey() + "#" + paramk.Kbz, new Object[] { getName() });
     }
     for (;;)
     {
       return null;
-      com.tencent.e.d.IxS.f(paramk.getKey(), paramk.IzQ, getName());
+      com.tencent.e.d.JZB.f(paramk.getKey(), paramk.Kbz, getName());
     }
   }
   
   public final boolean isShutdown()
   {
-    return this.Izr.get();
+    return this.Kba.get();
   }
   
   protected abstract void onShutdown();
   
   public final void shutdown()
   {
-    if (this.Izr.compareAndSet(false, true)) {
+    if (this.Kba.compareAndSet(false, true)) {
       onShutdown();
     }
   }

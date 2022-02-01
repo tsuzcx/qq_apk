@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.walletlock.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wd;
-import com.tencent.mm.g.a.wd.a;
+import com.tencent.mm.g.a.wo;
+import com.tencent.mm.g.a.wo.a;
 import com.tencent.mm.plugin.walletlock.gesture.a.d;
 import com.tencent.mm.plugin.walletlock.gesture.a.e;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.byo;
+import com.tencent.mm.protocal.protobuf.cdk;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class f$3
-  extends c<wd>
+  extends c<wo>
 {
   f$3(f paramf)
   {
     AppMethodBeat.i(161153);
-    this.__eventId = wd.class.getName().hashCode();
+    this.__eventId = wo.class.getName().hashCode();
     AppMethodBeat.o(161153);
   }
   
-  private static boolean a(wd paramwd)
+  private static boolean a(wo paramwo)
   {
     AppMethodBeat.i(129914);
-    paramwd = paramwd.dBE.dBF;
-    g localg = g.ADl;
-    g.efV();
-    boolean bool = e.b(paramwd);
+    paramwo = paramwo.dzs.dzt;
+    g localg = g.BVG;
+    g.evp();
+    boolean bool = e.b(paramwo);
     if (bool)
     {
-      ad.i("MicroMsg.WalletLockInitTask", "tom update PatternLockInfo, sign_len:%d,valid:%b,status:%d,ver:%d", new Object[] { Integer.valueOf(paramwd.DVr.getILen()), Boolean.valueOf(bool), Integer.valueOf(paramwd.DVs), Integer.valueOf(paramwd.DVq) });
-      d.a(paramwd);
+      ac.i("MicroMsg.WalletLockInitTask", "tom update PatternLockInfo, sign_len:%d,valid:%b,status:%d,ver:%d", new Object[] { Integer.valueOf(paramwo.Fsf.getILen()), Boolean.valueOf(bool), Integer.valueOf(paramwo.Fsg), Integer.valueOf(paramwo.Fse) });
+      d.a(paramwo);
     }
     for (;;)
     {
-      bool = e.ege();
-      ad.i("MicroMsg.WalletLockInitTask", "alvinluo after update gesture server info, isUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(bool) });
-      com.tencent.mm.plugin.walletlock.gesture.a.b.sV(bool);
+      bool = e.evy();
+      ac.i("MicroMsg.WalletLockInitTask", "alvinluo after update gesture server info, isUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(bool) });
+      com.tencent.mm.plugin.walletlock.gesture.a.b.tW(bool);
       ((com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.walletlock.a.b.class)).init();
       AppMethodBeat.o(129914);
       return false;
-      ad.w("MicroMsg.WalletLockInitTask", "UserInfoExt.PatternLockInfo is null or invalid.");
+      ac.w("MicroMsg.WalletLockInitTask", "UserInfoExt.PatternLockInfo is null or invalid.");
     }
   }
 }

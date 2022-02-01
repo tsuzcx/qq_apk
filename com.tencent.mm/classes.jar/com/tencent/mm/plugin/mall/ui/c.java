@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.mall.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class c
 {
-  private static boolean tve = false;
+  private static boolean uDx = false;
   
-  public static void cNF()
+  public static void dbm()
   {
-    tve = true;
+    uDx = true;
   }
   
-  public static int cNG()
+  public static int dbn()
   {
     AppMethodBeat.i(66145);
-    if (tve)
+    if (uDx)
     {
-      i = aj.getContext().getResources().getColor(2131100605);
+      i = ai.getContext().getResources().getColor(2131100605);
       AppMethodBeat.o(66145);
       return i;
     }
-    int i = aj.getContext().getResources().getColor(2131099679);
+    int i = ai.getContext().getResources().getColor(2131099679);
     AppMethodBeat.o(66145);
     return i;
   }

@@ -12,13 +12,13 @@ final class FixToolsUplogUI$3
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(73825);
-    FixToolsUplogUI.b(this.wdQ);
+    FixToolsUplogUI.b(this.xpe);
     AppMethodBeat.o(73825);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.fixtools.FixToolsUplogUI.3
  * JD-Core Version:    0.7.0.1
  */

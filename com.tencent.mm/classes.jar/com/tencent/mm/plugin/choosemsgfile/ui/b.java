@@ -31,26 +31,26 @@ public final class b
     AppMethodBeat.o(123463);
   }
   
-  public final boolean aVX()
-  {
-    AppMethodBeat.i(123460);
-    boolean bool = super.aVX();
-    AppMethodBeat.o(123460);
-    return bool;
-  }
-  
-  public final ViewGroup byJ()
+  public final ViewGroup bFF()
   {
     AppMethodBeat.i(123458);
-    ViewGroup localViewGroup = super.byJ();
+    ViewGroup localViewGroup = super.bFF();
     AppMethodBeat.o(123458);
     return localViewGroup;
   }
   
-  public final void fF(boolean paramBoolean)
+  public final boolean bcV()
+  {
+    AppMethodBeat.i(123460);
+    boolean bool = super.bcV();
+    AppMethodBeat.o(123460);
+    return bool;
+  }
+  
+  public final void gb(boolean paramBoolean)
   {
     AppMethodBeat.i(123462);
-    super.fF(paramBoolean);
+    super.gb(paramBoolean);
     AppMethodBeat.o(123462);
   }
   

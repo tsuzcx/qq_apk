@@ -1,34 +1,36 @@
 package com.tencent.mm.performance.jni.pthread;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.performance.jni.a;
-import com.tencent.mm.performance.jni.b;
+import com.tencent.mm.performance.jni.AbsHook;
+import com.tencent.mm.performance.jni.HookManager;
+import com.tencent.mm.performance.jni.LibWxPerfManager;
 import java.util.HashSet;
 import java.util.Set;
 
 public class PthreadHook
-  extends a
+  extends AbsHook
 {
-  public static final PthreadHook hQs;
-  private Set<String> hQl;
-  private Set<String> hQm;
-  private Set<String> hQt;
+  public static final PthreadHook INSTANCE;
+  private Set<String> mHookSoSet;
+  private Set<String> mHookThreadName;
+  private Set<String> mIgnoreSoSet;
   
   static
   {
-    AppMethodBeat.i(192606);
-    b.hQi.init();
-    hQs = new PthreadHook();
-    AppMethodBeat.o(192606);
+    AppMethodBeat.i(195672);
+    LibWxPerfManager.INSTANCE.init();
+    INSTANCE = new PthreadHook();
+    AppMethodBeat.o(195672);
   }
   
   private PthreadHook()
   {
-    AppMethodBeat.i(192603);
-    this.hQl = new HashSet();
-    this.hQm = new HashSet();
-    this.hQt = new HashSet();
-    AppMethodBeat.o(192603);
+    AppMethodBeat.i(195661);
+    this.mHookSoSet = new HashSet();
+    this.mIgnoreSoSet = new HashSet();
+    this.mHookThreadName = new HashSet();
+    AppMethodBeat.o(195661);
   }
   
   private native void addHookSoNative(String[] paramArrayOfString);
@@ -39,19 +41,116 @@ public class PthreadHook
   
   private native void dumpNative(String paramString);
   
-  public final void aFJ()
+  public PthreadHook addHookSo(String paramString)
   {
-    AppMethodBeat.i(192604);
-    addHookThreadNameNative((String[])this.hQt.toArray(new String[0]));
-    AppMethodBeat.o(192604);
+    AppMethodBeat.i(195662);
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = new IllegalArgumentException("so regex = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(195662);
+      throw paramString;
+    }
+    this.mHookSoSet.add(paramString);
+    AppMethodBeat.o(195662);
+    return this;
   }
   
-  public final void aFK()
+  public PthreadHook addHookSo(String... paramVarArgs)
   {
-    AppMethodBeat.i(192605);
-    addHookSoNative((String[])this.hQl.toArray(new String[0]));
-    addIgnoreSoNative((String[])this.hQm.toArray(new String[0]));
-    AppMethodBeat.o(192605);
+    AppMethodBeat.i(195663);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      addHookSo(paramVarArgs[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(195663);
+    return this;
+  }
+  
+  public PthreadHook addHookThread(String paramString)
+  {
+    AppMethodBeat.i(195666);
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = new IllegalArgumentException("thread regex should NOT be empty");
+      AppMethodBeat.o(195666);
+      throw paramString;
+    }
+    this.mHookThreadName.add(paramString);
+    AppMethodBeat.o(195666);
+    return this;
+  }
+  
+  public PthreadHook addHookThread(String... paramVarArgs)
+  {
+    AppMethodBeat.i(195667);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      addHookThread(paramVarArgs[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(195667);
+    return this;
+  }
+  
+  public PthreadHook addIgnoreSo(String paramString)
+  {
+    AppMethodBeat.i(195664);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(195664);
+      return this;
+    }
+    this.mIgnoreSoSet.add(paramString);
+    AppMethodBeat.o(195664);
+    return this;
+  }
+  
+  public PthreadHook addIgnoreSo(String... paramVarArgs)
+  {
+    AppMethodBeat.i(195665);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      addIgnoreSo(paramVarArgs[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(195665);
+    return this;
+  }
+  
+  public void dump(String paramString)
+  {
+    AppMethodBeat.i(195669);
+    dumpNative(paramString);
+    AppMethodBeat.o(195669);
+  }
+  
+  public void hook()
+  {
+    AppMethodBeat.i(195668);
+    HookManager.INSTANCE.clearHooks().addHook(this).commitHooks();
+    AppMethodBeat.o(195668);
+  }
+  
+  public void onConfigure()
+  {
+    AppMethodBeat.i(195670);
+    addHookThreadNameNative((String[])this.mHookThreadName.toArray(new String[0]));
+    AppMethodBeat.o(195670);
+  }
+  
+  public void onHook()
+  {
+    AppMethodBeat.i(195671);
+    addHookSoNative((String[])this.mHookSoSet.toArray(new String[0]));
+    addIgnoreSoNative((String[])this.mIgnoreSoSet.toArray(new String[0]));
+    AppMethodBeat.o(195671);
   }
 }
 

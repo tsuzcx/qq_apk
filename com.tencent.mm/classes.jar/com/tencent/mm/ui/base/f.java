@@ -12,7 +12,7 @@ public final class f
   private static boolean Z(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141641);
-    if (eSr())
+    if (fib())
     {
       if (paramMotionEvent.getPointerCount() >= 2)
       {
@@ -67,7 +67,7 @@ public final class f
   public static int ab(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141647);
-    if (eSr())
+    if (fib())
     {
       new e();
       int i = paramMotionEvent.getPointerCount();
@@ -111,7 +111,7 @@ public final class f
   public static void e(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(141648);
-    if (eSr())
+    if (fib())
     {
       new e();
       paramKeyEvent.startTracking();
@@ -119,15 +119,10 @@ public final class f
     AppMethodBeat.o(141648);
   }
   
-  private static boolean eSr()
-  {
-    return Build.VERSION.SDK_INT >= 5;
-  }
-  
   public static boolean f(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(141649);
-    if (eSr())
+    if (fib())
     {
       new e();
       boolean bool = paramKeyEvent.isTracking();
@@ -138,10 +133,15 @@ public final class f
     return false;
   }
   
+  private static boolean fib()
+  {
+    return Build.VERSION.SDK_INT >= 5;
+  }
+  
   public static boolean g(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(141650);
-    if (eSr())
+    if (fib())
     {
       new e();
       boolean bool = paramKeyEvent.isCanceled();

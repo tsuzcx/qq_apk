@@ -18,36 +18,36 @@ final class k
   extends c
   implements GpsStatus.Listener, LocationListener
 {
-  private static k bQE;
-  private Context FZ;
-  private LocationManager Xk;
-  private boolean bQF;
-  private GpsStatus bQG;
-  private a bQH;
-  private final l bQI;
+  private static k bOm;
+  private Context GX;
+  private LocationManager Yf;
+  private boolean bOn;
+  private GpsStatus bOo;
+  private a bOp;
+  private final l bOq;
   private Looper mLooper;
   
   private k()
   {
     AppMethodBeat.i(87938);
-    this.bQI = new l();
+    this.bOq = new l();
     AppMethodBeat.o(87938);
   }
   
   private void a(long paramLong, float paramFloat)
   {
     AppMethodBeat.i(87946);
-    this.Xk.requestLocationUpdates("gps", paramLong, paramFloat, this, this.mLooper);
+    this.Yf.requestLocationUpdates("gps", paramLong, paramFloat, this, this.mLooper);
     AppMethodBeat.o(87946);
   }
   
-  static k yY()
+  static k yL()
   {
     AppMethodBeat.i(87939);
-    if (bQE == null) {
-      bQE = new k();
+    if (bOm == null) {
+      bOm = new k();
     }
-    k localk = bQE;
+    k localk = bOm;
     AppMethodBeat.o(87939);
     return localk;
   }
@@ -55,19 +55,19 @@ final class k
   final void a(Context paramContext, Handler paramHandler, d.a parama)
   {
     AppMethodBeat.i(87942);
-    if (!this.bQF)
+    if (!this.bOn)
     {
       AppMethodBeat.o(87942);
       return;
     }
-    this.bQH = ((a)parama);
+    this.bOp = ((a)parama);
     if (paramHandler != null) {}
     for (paramContext = paramHandler.getLooper();; paramContext = null)
     {
       this.mLooper = paramContext;
-      a(this.bQH.bOU, this.bQH.bQJ);
-      this.Xk.addGpsStatusListener(this);
-      this.bQI.bQQ = Math.max(5000L, Math.min(this.bQH.bOU + 5000L, 65000L));
+      a(this.bOp.bMC, this.bOp.bOr);
+      this.Yf.addGpsStatusListener(this);
+      this.bOq.bOy = Math.max(5000L, Math.min(this.bOp.bMC + 5000L, 65000L));
       AppMethodBeat.o(87942);
       return;
     }
@@ -107,7 +107,7 @@ final class k
     //   51: new 10	com/c/a/a/k$a
     //   54: dup
     //   55: aload_2
-    //   56: getfield 124	com/c/a/a/d$a:bOU	J
+    //   56: getfield 124	com/c/a/a/d$a:bMC	J
     //   59: invokespecial 119	com/c/a/a/k$a:<init>	(J)V
     //   62: astore_2
     //   63: goto -41 -> 22
@@ -130,30 +130,30 @@ final class k
     //   51	63	66	finally
   }
   
-  final void ar(Context paramContext)
+  final void as(Context paramContext)
   {
     AppMethodBeat.i(87941);
-    this.FZ = paramContext;
-    this.Xk = ((LocationManager)paramContext.getSystemService("location"));
-    if ((this.Xk != null) && (this.Xk.getProvider("gps") != null)) {}
+    this.GX = paramContext;
+    this.Yf = ((LocationManager)paramContext.getSystemService("location"));
+    if ((this.Yf != null) && (this.Yf.getProvider("gps") != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bQF = bool;
+      this.bOn = bool;
       AppMethodBeat.o(87941);
       return;
     }
   }
   
-  final void as(Context paramContext)
+  final void at(Context paramContext)
   {
     AppMethodBeat.i(87943);
-    if (!this.bQF)
+    if (!this.bOn)
     {
       AppMethodBeat.o(87943);
       return;
     }
-    this.Xk.removeUpdates(this);
-    this.Xk.removeGpsStatusListener(this);
+    this.Yf.removeUpdates(this);
+    this.Yf.removeGpsStatusListener(this);
     AppMethodBeat.o(87943);
   }
   
@@ -162,13 +162,13 @@ final class k
     AppMethodBeat.i(87945);
     if (paramInt == 4)
     {
-      if (this.bQG == null)
+      if (this.bOo == null)
       {
-        this.bQG = this.Xk.getGpsStatus(null);
+        this.bOo = this.Yf.getGpsStatus(null);
         AppMethodBeat.o(87945);
         return;
       }
-      this.Xk.getGpsStatus(this.bQG);
+      this.Yf.getGpsStatus(this.bOo);
     }
     AppMethodBeat.o(87945);
   }
@@ -176,9 +176,9 @@ final class k
   public final void onLocationChanged(Location paramLocation)
   {
     AppMethodBeat.i(87944);
-    if (!y.bUM)
+    if (!y.bSu)
     {
-      if (Settings.Secure.getString(this.FZ.getContentResolver(), "mock_location").equals("0")) {}
+      if (Settings.Secure.getString(this.GX.getContentResolver(), "mock_location").equals("0")) {}
       for (i = 0; i != 0; i = 1)
       {
         AppMethodBeat.o(87944);
@@ -188,16 +188,16 @@ final class k
     int i = 0;
     Iterator localIterator;
     int j;
-    if (this.bQG != null)
+    if (this.bOo != null)
     {
-      localIterator = this.bQG.getSatellites().iterator();
+      localIterator = this.bOo.getSatellites().iterator();
       j = 0;
       if (localIterator.hasNext()) {}
     }
     for (;;)
     {
-      this.bQI.a(paramLocation.getAccuracy(), j, paramLocation.getTime());
-      c(new b(paramLocation.getLatitude(), paramLocation.getLongitude(), paramLocation.getAltitude(), paramLocation.getAccuracy(), paramLocation.getSpeed(), i, j, this.bQI.bQM, this.bQI.bQU / 1000L, (byte)0));
+      this.bOq.a(paramLocation.getAccuracy(), j, paramLocation.getTime());
+      c(new b(paramLocation.getLatitude(), paramLocation.getLongitude(), paramLocation.getAltitude(), paramLocation.getAccuracy(), paramLocation.getSpeed(), i, j, this.bOq.bOu, this.bOq.bOC / 1000L, (byte)0));
       AppMethodBeat.o(87944);
       return;
       GpsSatellite localGpsSatellite = (GpsSatellite)localIterator.next();
@@ -220,36 +220,36 @@ final class k
   
   public final void onStatusChanged(String paramString, int paramInt, Bundle paramBundle) {}
   
-  final void yR() {}
+  final void yE() {}
   
-  final void yS()
+  final void yF()
   {
     AppMethodBeat.i(87947);
-    if ((!this.bQF) || (!this.isRunning) || (this.bQH.bOU >= 300000L))
+    if ((!this.bOn) || (!this.isRunning) || (this.bOp.bMC >= 300000L))
     {
       AppMethodBeat.o(87947);
       return;
     }
-    a(300000L, this.bQH.bQJ);
+    a(300000L, this.bOp.bOr);
     AppMethodBeat.o(87947);
   }
   
-  final void yT()
+  final void yG()
   {
     AppMethodBeat.i(87948);
-    if ((!this.bQF) || (!this.isRunning) || (this.bQH.bOU >= 300000L))
+    if ((!this.bOn) || (!this.isRunning) || (this.bOp.bMC >= 300000L))
     {
       AppMethodBeat.o(87948);
       return;
     }
-    a(this.bQH.bOU, this.bQH.bQJ);
+    a(this.bOp.bMC, this.bOp.bOr);
     AppMethodBeat.o(87948);
   }
   
   static final class a
     extends d.a
   {
-    final int bQJ = 0;
+    final int bOr = 0;
     
     a(long paramLong)
     {
@@ -260,13 +260,13 @@ final class k
   static final class b
     extends p
   {
-    final float aSD;
-    final double bQK;
-    final float bQL;
-    final float bQM;
-    final int bQN;
-    final int bQO;
-    final long bQP;
+    final float aTw;
+    final double bOs;
+    final float bOt;
+    final float bOu;
+    final int bOv;
+    final int bOw;
+    final long bOx;
     final double lat;
     final double lng;
     
@@ -275,13 +275,13 @@ final class k
       super();
       this.lat = paramDouble1;
       this.lng = paramDouble2;
-      this.bQK = paramDouble3;
-      this.bQL = paramFloat1;
-      this.aSD = paramFloat2;
-      this.bQN = paramInt1;
-      this.bQO = paramInt2;
-      this.bQM = paramFloat3;
-      this.bQP = paramLong;
+      this.bOs = paramDouble3;
+      this.bOt = paramFloat1;
+      this.aTw = paramFloat2;
+      this.bOv = paramInt1;
+      this.bOw = paramInt2;
+      this.bOu = paramFloat3;
+      this.bOx = paramLong;
     }
   }
 }

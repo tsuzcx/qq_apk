@@ -4,29 +4,29 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
 {
-  public abstract void asD(String paramString);
+  public abstract void axM(String paramString);
   
-  public abstract void asE(String paramString);
+  public abstract void axN(String paramString);
   
-  public abstract void asF(String paramString);
+  public abstract void axO(String paramString);
   
-  public abstract void asG(String paramString);
+  public abstract void axP(String paramString);
   
-  public abstract MMActivity cKW();
+  public abstract MMActivity cYC();
   
-  public abstract void dOm();
+  public abstract void ecN();
   
-  public abstract void dOn();
+  public abstract void ecO();
   
-  public abstract void dOo();
+  public abstract void ecP();
   
-  public abstract void dOp();
+  public abstract void ecQ();
   
-  public abstract int dOq();
+  public abstract int ecR();
   
-  public abstract void hK(int paramInt1, int paramInt2);
+  public abstract void hU(int paramInt1, int paramInt2);
   
-  public abstract void hL(int paramInt1, int paramInt2);
+  public abstract void hV(int paramInt1, int paramInt2);
 }
 
 

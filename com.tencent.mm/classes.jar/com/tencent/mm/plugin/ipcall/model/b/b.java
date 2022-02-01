@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.ipcall.model.b;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 
 public abstract class b
   extends a
   implements a.a
 {
-  protected boolean hyg = false;
-  private ap mHandler = new ap(Looper.getMainLooper());
-  public a sAV = null;
+  protected boolean hYH = false;
+  private ao mHandler = new ao(Looper.getMainLooper());
+  public a tIE = null;
   
   public final void a(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
   {
-    ad.i("MicroMsg.BaseIPCallTimerService", "timer request success!, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.hyg), Integer.valueOf(getTimerInterval()) });
-    cHy();
-    if (this.sAV != null) {
-      this.sAV.a(paramInt1, (n)paramObject, paramInt2, paramInt3);
+    ac.i("MicroMsg.BaseIPCallTimerService", "timer request success!, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.hYH), Integer.valueOf(getTimerInterval()) });
+    cUJ();
+    if (this.tIE != null) {
+      this.tIE.a(paramInt1, (n)paramObject, paramInt2, paramInt3);
     }
-    if (this.hyg) {
+    if (this.hYH) {
       this.mHandler.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(25406);
-          b.this.b(b.this.sAl);
+          b.this.b(b.this.tHV);
           AppMethodBeat.o(25406);
         }
       }, getTimerInterval());
@@ -37,24 +37,24 @@ public abstract class b
   public final void a(c paramc)
   {
     super.a(paramc);
-    this.hyg = true;
-    ad.d("MicroMsg.BaseIPCallTimerService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
+    this.hYH = true;
+    ac.d("MicroMsg.BaseIPCallTimerService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
   }
   
   public final void b(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
   {
-    ad.i("MicroMsg.BaseIPCallTimerService", "timer request failed, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.hyg), Integer.valueOf(getTimerInterval()) });
-    cHz();
-    if (this.sAV != null) {
-      this.sAV.b(paramInt1, (n)paramObject, paramInt2, paramInt3);
+    ac.i("MicroMsg.BaseIPCallTimerService", "timer request failed, type: %d, isLoop: %b, interval: %d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.hYH), Integer.valueOf(getTimerInterval()) });
+    cUK();
+    if (this.tIE != null) {
+      this.tIE.b(paramInt1, (n)paramObject, paramInt2, paramInt3);
     }
-    if (this.hyg) {
+    if (this.hYH) {
       this.mHandler.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(25407);
-          b.this.b(b.this.sAl);
+          b.this.b(b.this.tHV);
           AppMethodBeat.o(25407);
         }
       }, getTimerInterval());
@@ -63,9 +63,9 @@ public abstract class b
   
   public abstract void b(c paramc);
   
-  public abstract void cHy();
+  public abstract void cUJ();
   
-  public abstract void cHz();
+  public abstract void cUK();
   
   public final void destroy()
   {
@@ -84,9 +84,9 @@ public abstract class b
   
   public final void stop()
   {
-    this.hyg = false;
+    this.hYH = false;
     onStop();
-    ad.d("MicroMsg.BaseIPCallTimerService", "stop service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
+    ac.d("MicroMsg.BaseIPCallTimerService", "stop service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
   }
   
   public static abstract interface a
@@ -98,7 +98,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.b.b
  * JD-Core Version:    0.7.0.1
  */

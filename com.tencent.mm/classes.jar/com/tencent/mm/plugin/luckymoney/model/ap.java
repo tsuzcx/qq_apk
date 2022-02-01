@@ -8,11 +8,11 @@ import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,38 +22,38 @@ import org.json.JSONObject;
 public final class ap
   extends am
 {
-  public String dDM;
+  public String dBy;
   long msgId;
-  public String sZn;
-  public RealnameGuideHelper tac;
   public String talker;
-  public l teT;
-  public String tfB;
-  public int tfC;
-  public com.tencent.mm.plugin.wallet_core.utils.b tfD;
-  public String tfg;
-  public int tfh;
-  public LuckyMoneyEmojiSwitch tfi;
+  public String uhB;
+  public RealnameGuideHelper uis;
+  public String unQ;
+  public int unR;
+  public com.tencent.mm.plugin.wallet_core.utils.b unS;
+  public l uni;
+  public String unv;
+  public int unw;
+  public LuckyMoneyEmojiSwitch unx;
   
   public ap(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     AppMethodBeat.i(65301);
-    this.teT = null;
-    this.tfC = 0;
-    this.sZn = paramString1;
-    this.dDM = paramString2;
+    this.uni = null;
+    this.unR = 0;
+    this.uhB = paramString1;
+    this.dBy = paramString2;
     this.talker = paramString5;
     HashMap localHashMap = new HashMap();
     localHashMap.put("msgType", String.valueOf(paramInt1));
     localHashMap.put("channelId", String.valueOf(paramInt2));
     localHashMap.put("sendId", paramString1);
-    if (!bt.isNullOrNil(paramString2)) {
+    if (!bs.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
-    if (!bt.isNullOrNil(paramString3))
+    if (!bs.isNullOrNil(paramString3))
     {
       localHashMap.put("headImg", URLEncoder.encode(paramString3));
-      localHashMap.put("nickName", URLEncoder.encode(bt.nullAsNil(paramString4)));
+      localHashMap.put("nickName", URLEncoder.encode(bs.nullAsNil(paramString4)));
     }
     localHashMap.put("sessionUserName", paramString5);
     localHashMap.put("ver", paramString6);
@@ -62,7 +62,7 @@ public final class ap
     AppMethodBeat.o(65301);
   }
   
-  public final String bOB()
+  public final String bVR()
   {
     return "/cgi-bin/mmpay-bin/openwxhb";
   }
@@ -79,12 +79,12 @@ public final class ap
     {
       try
       {
-        this.teT = x.at(paramJSONObject);
-        this.tfi = LuckyMoneyEmojiSwitch.as(paramJSONObject);
-        ad.i("NetSceneLuckyMoneyDetail", "luckyMoneyEmojiSwitch:%s", new Object[] { this.tfi.toString() });
-        this.tfg = paramJSONObject.optString("expression_md5");
-        this.tfh = paramJSONObject.optInt("expression_type");
-        ad.i("NetSceneLuckyMoneyDetail", "expressionmd5:%s expressiontype:%s", new Object[] { this.tfg, Integer.valueOf(this.tfh) });
+        this.uni = x.au(paramJSONObject);
+        this.unx = LuckyMoneyEmojiSwitch.at(paramJSONObject);
+        ac.i("NetSceneLuckyMoneyDetail", "luckyMoneyEmojiSwitch:%s", new Object[] { this.unx.toString() });
+        this.unv = paramJSONObject.optString("expression_md5");
+        this.unw = paramJSONObject.optInt("expression_type");
+        ac.i("NetSceneLuckyMoneyDetail", "expressionmd5:%s expressiontype:%s", new Object[] { this.unv, Integer.valueOf(this.unw) });
         if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
         {
           Object localObject = paramJSONObject.optJSONObject("real_name_info");
@@ -95,60 +95,60 @@ public final class ap
             String str2 = ((JSONObject)localObject).optString("left_button_wording");
             String str3 = ((JSONObject)localObject).optString("right_button_wording");
             localObject = ((JSONObject)localObject).optString("upload_credit_url");
-            this.tac = new RealnameGuideHelper();
-            this.tac.b(paramString, str1, str2, str3, (String)localObject, 1003);
+            this.uis = new RealnameGuideHelper();
+            this.uis.b(paramString, str1, str2, str3, (String)localObject, 1003);
           }
         }
         if (paramJSONObject.has("intercept_win")) {
-          this.tfD = com.tencent.mm.plugin.wallet_core.utils.b.bm(paramJSONObject.optJSONObject("intercept_win"));
+          this.unS = com.tencent.mm.plugin.wallet_core.utils.b.bn(paramJSONObject.optJSONObject("intercept_win"));
         }
-        this.tfB = paramJSONObject.optString("SystemMsgContext");
-        this.tfC = paramJSONObject.optInt("showYearExpression");
-        ad.i("NetSceneLuckyMoneyDetail", "showYearExpression:%s", new Object[] { Integer.valueOf(this.tfC) });
-        if ((paramInt == 0) && (!bt.isNullOrNil(this.tfB)) && (!bt.isNullOrNil(this.teT.tdE)))
+        this.unQ = paramJSONObject.optString("SystemMsgContext");
+        this.unR = paramJSONObject.optInt("showYearExpression");
+        ac.i("NetSceneLuckyMoneyDetail", "showYearExpression:%s", new Object[] { Integer.valueOf(this.unR) });
+        if ((paramInt == 0) && (!bs.isNullOrNil(this.unQ)) && (!bs.isNullOrNil(this.uni.ulT)))
         {
-          boolean bool = w.sz(this.talker);
+          boolean bool = w.wC(this.talker);
           if (bool) {}
         }
         try
         {
-          if (!u.aqG().equals(this.teT.tdE)) {
+          if (!u.axw().equals(this.uni.ulT)) {
             continue;
           }
-          paramString = aj.getContext().getString(2131760972);
-          this.tfB = this.tfB.replace("$" + this.teT.tdE + "$", paramString);
-          z.hf(this.tfB, this.talker);
+          paramString = ai.getContext().getString(2131760972);
+          this.unQ = this.unQ.replace("$" + this.uni.ulT + "$", paramString);
+          z.hy(this.unQ, this.talker);
         }
         catch (Exception paramString)
         {
           int i;
-          ad.e("NetSceneLuckyMoneyDetail", "insertLocalSysMsgIfNeed error: %s", new Object[] { paramString.getMessage() });
+          ac.e("NetSceneLuckyMoneyDetail", "insertLocalSysMsgIfNeed error: %s", new Object[] { paramString.getMessage() });
           continue;
         }
-        g.afC();
-        paramInt = ((Integer)g.afB().afk().get(ae.a.Fvf, Integer.valueOf(0))).intValue();
-        i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.poL, 0);
-        if ((bt.iY(paramInt, 1)) || (bt.iY(i, 1)))
+        g.agS();
+        paramInt = ((Integer)g.agR().agA().get(ah.a.GSZ, Integer.valueOf(0))).intValue();
+        i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pSw, 0);
+        if ((bs.jl(paramInt, 1)) || (bs.jl(i, 1)))
         {
-          if (this.tfi == null) {
-            this.tfi = new LuckyMoneyEmojiSwitch();
+          if (this.unx == null) {
+            this.unx = new LuckyMoneyEmojiSwitch();
           }
-          this.tfi.tdI = 1;
-          this.tfi.tdJ = 1;
-          this.tfi.tdK = 1;
-          this.tfi.tdL = 1;
-          this.tfC = 1;
+          this.unx.ulX = 1;
+          this.unx.ulY = 1;
+          this.unx.ulZ = 1;
+          this.unx.uma = 1;
+          this.unR = 1;
         }
-        ad.i("NetSceneLuckyMoneyDetail", "localSwitch() luckyMoneyEmojiSwitch:%s ", new Object[] { this.tfi.toString() });
+        ac.i("NetSceneLuckyMoneyDetail", "localSwitch() luckyMoneyEmojiSwitch:%s ", new Object[] { this.unx.toString() });
         AppMethodBeat.o(65302);
         return;
       }
       catch (JSONException paramString)
       {
-        ad.w("NetSceneLuckyMoneyDetail", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
+        ac.w("NetSceneLuckyMoneyDetail", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
         AppMethodBeat.o(65302);
       }
-      paramString = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(this.teT.tdE);
+      paramString = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(this.uni.ulT);
     }
   }
 }

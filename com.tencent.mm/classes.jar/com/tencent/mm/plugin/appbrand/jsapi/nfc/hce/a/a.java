@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a;
 
 public abstract interface a
 {
-  public abstract void cY(String paramString1, String paramString2);
+  public abstract void dk(String paramString1, String paramString2);
   
-  public abstract void cZ(String paramString1, String paramString2);
+  public abstract void dl(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.a
  * JD-Core Version:    0.7.0.1
  */

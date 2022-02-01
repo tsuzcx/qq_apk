@@ -1,34 +1,33 @@
 package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.ao.f;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.protocal.protobuf.avs;
-import com.tencent.mm.protocal.protobuf.blp;
-import com.tencent.mm.protocal.protobuf.blr;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.ayy;
+import com.tencent.mm.protocal.protobuf.bpl;
+import com.tencent.mm.protocal.protobuf.bpn;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
 import d.v;
 import java.io.ByteArrayOutputStream;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sticker/loader/StickerFileIdTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "aesKey", "fileId", "fileSize", "", "netScene", "Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "outputPath", "task", "Lcom/tencent/mm/cdn/keep_TaskInfo;", "zipPath", "call", "", "cancel", "handleFile", "", "onResult", "success", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "runTask", "uniqueId", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/StickerFileIdTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "aesKey", "fileId", "fileSize", "", "netScene", "Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "outputPath", "task", "Lcom/tencent/mm/cdn/keep_TaskInfo;", "zipPath", "call", "", "cancel", "handleFile", "", "onResult", "success", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "runTask", "uniqueId", "plugin-sticker_release"})
 public final class d
   extends g
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private com.tencent.mm.sticker.b.a Fdi;
-  private String Fdj;
+  private com.tencent.mm.sticker.b.a GAF;
+  private String GAG;
   final String TAG;
-  private String fMw;
+  private String fQi;
   private String fileId;
   private int fileSize;
-  private final String oLh;
-  private final com.tencent.mm.i.g viP;
+  private final String poB;
+  private final com.tencent.mm.i.g wrB;
   
   public d(StickerLoadInfo paramStickerLoadInfo)
   {
@@ -36,21 +35,21 @@ public final class d
     AppMethodBeat.i(105924);
     this.TAG = "MicroMsg.StickerTask";
     this.fileId = paramStickerLoadInfo.fileId;
-    this.fMw = paramStickerLoadInfo.fMw;
-    this.fileSize = paramStickerLoadInfo.iLS;
-    Object localObject = e.Fds;
-    this.oLh = e.aHd(paramStickerLoadInfo.oJp);
+    this.fQi = paramStickerLoadInfo.fQi;
+    this.fileSize = paramStickerLoadInfo.jlZ;
+    Object localObject = e.GAP;
+    this.poB = e.aMx(paramStickerLoadInfo.pmO);
     localObject = new StringBuilder();
-    e locale = e.Fds;
-    this.Fdj = (e.eIZ() + paramStickerLoadInfo.oJp);
-    this.viP = new com.tencent.mm.i.g();
-    this.viP.fnH = ((g.a)new g.a()
+    e locale = e.GAP;
+    this.GAG = (e.eYv() + paramStickerLoadInfo.pmO);
+    this.wrB = new com.tencent.mm.i.g();
+    this.wrB.frb = ((g.a)new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         Object localObject = null;
         AppMethodBeat.i(105918);
-        String str = this.Fdk.TAG;
+        String str = this.GAH.TAG;
         StringBuilder localStringBuilder = new StringBuilder("callback: ").append(paramAnonymousString).append(", ").append(paramAnonymousInt).append("; progress ");
         if (paramAnonymousc != null)
         {
@@ -66,7 +65,7 @@ public final class d
           if (paramAnonymousd != null) {
             paramAnonymousString = Integer.valueOf(paramAnonymousd.field_retCode);
           }
-          ad.i(str, paramAnonymousString);
+          ac.i(str, paramAnonymousString);
           if (paramAnonymousInt != 0) {
             break label175;
           }
@@ -75,8 +74,8 @@ public final class d
             if (paramAnonymousd.field_retCode != 0) {
               break label175;
             }
-            this.Fdk.eIX();
-            this.Fdk.df(true);
+            this.GAH.eYt();
+            this.GAH.de(true);
           }
         }
         for (;;)
@@ -89,7 +88,7 @@ public final class d
           paramAnonymousString = null;
           break label83;
           label175:
-          this.Fdk.df(false);
+          this.GAH.de(false);
         }
       }
       
@@ -103,14 +102,14 @@ public final class d
     AppMethodBeat.o(105924);
   }
   
-  private final void MQ()
+  private final void MO()
   {
     AppMethodBeat.i(105920);
     if (((CharSequence)this.fileId).length() == 0)
     {
       i = 1;
       if (i == 0) {
-        if (((CharSequence)this.fMw).length() != 0) {
+        if (((CharSequence)this.fQi).length() != 0) {
           break label63;
         }
       }
@@ -121,44 +120,44 @@ public final class d
       if (i == 0) {
         break label68;
       }
-      df(false);
+      de(false);
       AppMethodBeat.o(105920);
       return;
       i = 0;
       break;
     }
     label68:
-    this.viP.field_fileType = com.tencent.mm.i.a.MediaType_FILE;
-    this.viP.field_needStorage = true;
-    this.viP.field_mediaId = ("lensInfo_" + this.Fdv.oJp);
-    this.viP.field_fileId = this.fileId;
-    this.viP.field_aesKey = this.fMw;
-    this.viP.field_totalLen = this.fileSize;
-    this.viP.field_fullpath = this.Fdj;
-    f.awL().d(this.viP);
+    this.wrB.field_fileType = com.tencent.mm.i.a.MediaType_FILE;
+    this.wrB.field_needStorage = true;
+    this.wrB.field_mediaId = ("lensInfo_" + this.GAW.pmO);
+    this.wrB.field_fileId = this.fileId;
+    this.wrB.field_aesKey = this.fQi;
+    this.wrB.field_totalLen = this.fileSize;
+    this.wrB.field_fullpath = this.GAG;
+    com.tencent.mm.an.f.aDD().e(this.wrB);
     AppMethodBeat.o(105920);
   }
   
-  public final String abi()
+  public final String acg()
   {
-    return this.Fdv.oJp;
+    return this.GAW.pmO;
   }
   
   public final void call()
   {
     AppMethodBeat.i(105919);
-    if (((CharSequence)this.Fdv.oJp).length() == 0) {}
+    if (((CharSequence)this.GAW.pmO).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ad.w(this.TAG, "call: lensId is " + this.Fdv.oJp);
-      df(false);
+      ac.w(this.TAG, "call: lensId is " + this.GAW.pmO);
+      de(false);
       AppMethodBeat.o(105919);
       return;
     }
-    if (i.eK(this.oLh))
+    if (i.eA(this.poB))
     {
-      ad.i(this.TAG, "call: file exists " + this.oLh);
-      df(true);
+      ac.i(this.TAG, "call: file exists " + this.poB);
+      de(true);
       AppMethodBeat.o(105919);
       return;
     }
@@ -166,7 +165,7 @@ public final class d
     {
       i = 1;
       if (i == 0) {
-        if (((CharSequence)this.fMw).length() != 0) {
+        if (((CharSequence)this.fQi).length() != 0) {
           break label234;
         }
       }
@@ -177,42 +176,42 @@ public final class d
       if (i == 0) {
         break label239;
       }
-      this.Fdi = new com.tencent.mm.sticker.b.a();
-      com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.afA();
+      this.GAF = new com.tencent.mm.sticker.b.a();
+      com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
       k.g(localb, "MMKernel.network()");
-      localb.aeS().a(3903, (com.tencent.mm.al.g)this);
-      localb = com.tencent.mm.kernel.g.afA();
+      localb.agi().a(3903, (com.tencent.mm.ak.g)this);
+      localb = com.tencent.mm.kernel.g.agQ();
       k.g(localb, "MMKernel.network()");
-      localb.aeS().b((n)this.Fdi);
+      localb.agi().b((n)this.GAF);
       AppMethodBeat.o(105919);
       return;
       i = 0;
       break;
     }
     label239:
-    MQ();
+    MO();
     AppMethodBeat.o(105919);
   }
   
-  public final void df(boolean paramBoolean)
+  public final void de(boolean paramBoolean)
   {
     AppMethodBeat.i(105923);
-    ad.i(this.TAG, "onResult: ".concat(String.valueOf(paramBoolean)));
-    super.df(paramBoolean);
+    ac.i(this.TAG, "onResult: ".concat(String.valueOf(paramBoolean)));
+    super.de(paramBoolean);
     AppMethodBeat.o(105923);
   }
   
-  final boolean eIX()
+  final boolean eYt()
   {
     AppMethodBeat.i(105921);
-    i.aMF(this.oLh);
-    if (i.fc(this.Fdj, this.oLh) == 0)
+    i.aSh(this.poB);
+    if (i.fp(this.GAG, this.poB) == 0)
     {
-      i.deleteFile(this.Fdj);
-      com.tencent.mm.sticker.e locale = new com.tencent.mm.sticker.e();
-      locale.aGZ(this.oLh);
-      locale.aGY(this.Fdv.oJp);
-      locale.aHb(this.oLh);
+      i.deleteFile(this.GAG);
+      com.tencent.mm.sticker.f localf = new com.tencent.mm.sticker.f();
+      localf.aMs(this.poB);
+      localf.aMr(this.GAW.pmO);
+      localf.aMu(this.poB);
     }
     AppMethodBeat.o(105921);
     return true;
@@ -221,33 +220,33 @@ public final class d
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(105922);
-    if (k.g(paramn, this.Fdi))
+    if (k.g(paramn, this.GAF))
     {
-      paramString = com.tencent.mm.kernel.g.afA();
+      paramString = com.tencent.mm.kernel.g.agQ();
       k.g(paramString, "MMKernel.network()");
-      paramString.aeS().b(3903, (com.tencent.mm.al.g)this);
-      paramString = this.Fdi;
+      paramString.agi().b(3903, (com.tencent.mm.ak.g)this);
+      paramString = this.GAF;
       if (paramString != null)
       {
-        paramString = paramString.rr.auM();
+        paramString = paramString.rr.aBD();
         if (paramString == null)
         {
           paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLensInfoResponse");
           AppMethodBeat.o(105922);
           throw paramString;
         }
-        paramString = (avs)paramString;
+        paramString = (ayy)paramString;
         if ((paramInt1 != 0) || (paramInt2 != 0) || (paramString == null)) {
           break label248;
         }
-        paramn = paramString.Dvo;
+        paramn = paramString.EQx;
         String str;
         if (paramn != null)
         {
-          paramn = paramn.DJr;
+          paramn = paramn.FeM;
           if (paramn != null)
           {
-            str = paramn.CCm;
+            str = paramn.DUJ;
             paramn = str;
             if (str != null) {
               break label143;
@@ -257,10 +256,10 @@ public final class d
         paramn = "";
         label143:
         this.fileId = paramn;
-        paramn = paramString.Dvo;
+        paramn = paramString.EQx;
         if (paramn != null)
         {
-          paramn = paramn.DJr;
+          paramn = paramn.FeM;
           if (paramn != null)
           {
             str = paramn.AesKey;
@@ -272,12 +271,12 @@ public final class d
         }
         paramn = "";
         label193:
-        this.fMw = paramn;
-        paramString = paramString.Dvo;
+        this.fQi = paramn;
+        paramString = paramString.EQx;
         if (paramString == null) {
           break label243;
         }
-        paramString = paramString.DJr;
+        paramString = paramString.FeM;
         if (paramString == null) {
           break label243;
         }
@@ -286,21 +285,21 @@ public final class d
       for (paramInt1 = paramString.FileSize;; paramInt1 = 0)
       {
         this.fileSize = paramInt1;
-        MQ();
+        MO();
         AppMethodBeat.o(105922);
         return;
         paramString = null;
         break;
       }
       label248:
-      df(false);
+      de(false);
     }
     AppMethodBeat.o(105922);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.d
  * JD-Core Version:    0.7.0.1
  */

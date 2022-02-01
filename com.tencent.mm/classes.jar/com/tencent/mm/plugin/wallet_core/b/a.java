@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d;
@@ -28,7 +28,7 @@ public abstract class a
   
   public d a(Activity paramActivity, Bundle paramBundle)
   {
-    H(new Object[] { "start", paramActivity, paramBundle });
+    J(new Object[] { "start", paramActivity, paramBundle });
     if (paramBundle != null) {
       paramBundle.putBoolean("key_is_bind_reg_process", true);
     }
@@ -38,7 +38,7 @@ public abstract class a
   
   public void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    H(new Object[] { "forward", paramActivity, Integer.valueOf(paramInt), paramBundle });
+    J(new Object[] { "forward", paramActivity, Integer.valueOf(paramInt), paramBundle });
     if (((paramActivity instanceof WalletBankcardIdUI)) || ((paramActivity instanceof WalletConfirmCardIDUI))) {
       b(paramActivity, WalletCardElementUI.class, paramBundle);
     }
@@ -66,13 +66,13 @@ public abstract class a
     default: 
       return false;
     }
-    ad.i("MicroMsg.ProcessManager", "404 bind error, cancel bind!");
+    ac.i("MicroMsg.ProcessManager", "404 bind error, cancel bind!");
     h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131765078), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(69864);
-        a.this.b(paramWalletBaseUI, a.this.dow);
+        a.this.b(paramWalletBaseUI, a.this.dmf);
         if (paramWalletBaseUI.isTransparent()) {
           paramWalletBaseUI.finish();
         }
@@ -90,13 +90,13 @@ public abstract class a
   
   public void g(Activity paramActivity, int paramInt)
   {
-    H(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
+    J(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
     if ((paramActivity instanceof WalletPwdConfirmUI))
     {
       a(paramActivity, WalletSetPasswordUI.class, paramInt);
       return;
     }
-    P(paramActivity);
+    Q(paramActivity);
   }
 }
 

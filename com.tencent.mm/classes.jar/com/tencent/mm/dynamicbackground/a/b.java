@@ -6,21 +6,21 @@ import d.g.b.k;
 import d.l;
 import java.io.File;
 
-@l(fvt={1, 1, 11}, fvu={""}, fvv={"Lcom/tencent/mm/dynamicbackground/util/DynamicBgAssetsManager;", "", "()V", "TAG", "", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getSavedFileDirectory", "init", "dynamicbg_release"})
+@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/util/DynamicBgAssetsManager;", "", "()V", "TAG", "", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getSavedFileDirectory", "init", "dynamicbg_release"})
 public final class b
 {
   private static final String TAG = "DynamicBgAssetsManager";
-  public static final b fID;
+  public static final b fMj;
   
   static
   {
     AppMethodBeat.i(103093);
-    fID = new b();
+    fMj = new b();
     TAG = "DynamicBgAssetsManager";
     AppMethodBeat.o(103093);
   }
   
-  public static String cg(Context paramContext)
+  public static String cm(Context paramContext)
   {
     AppMethodBeat.i(103092);
     k.h(paramContext, "context");
@@ -87,7 +87,7 @@ public final class b
     //   94: astore 5
     //   96: aload_2
     //   97: ifnonnull +6 -> 103
-    //   100: invokestatic 134	d/g/b/k:fvU	()V
+    //   100: invokestatic 134	d/g/b/k:fOy	()V
     //   103: aload_2
     //   104: aload 5
     //   106: invokevirtual 140	java/io/InputStream:read	([B)I
@@ -228,7 +228,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.a.b
  * JD-Core Version:    0.7.0.1
  */

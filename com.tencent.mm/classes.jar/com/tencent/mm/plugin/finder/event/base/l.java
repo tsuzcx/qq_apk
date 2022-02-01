@@ -1,38 +1,35 @@
 package com.tencent.mm.plugin.finder.event.base;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.view.recyclerview.a;
-import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "type", "", "(I)V", "acrossFeedList", "", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "getAcrossFeedList", "()Ljava/util/List;", "setAcrossFeedList", "(Ljava/util/List;)V", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "()I", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "visibleFeedList", "getVisibleFeedList", "setVisibleFeedList", "visibleNotFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "getVisibleNotFeedList", "()Ljava/util/LinkedList;", "setVisibleNotFeedList", "(Ljava/util/LinkedList;)V", "toString", "", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "type", "", "(I)V", "acrossFeedList", "", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "getAcrossFeedList", "()Ljava/util/List;", "setAcrossFeedList", "(Ljava/util/List;)V", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getType", "visibleFeedList", "getVisibleFeedList", "setVisibleFeedList", "Companion", "plugin-finder_release"})
 public final class l
-  extends i
+  extends b
 {
-  public List<k> KMl;
-  public List<k> KMm;
-  public LinkedList<a> KMn;
-  public int mYh = -1;
-  public int mYi = -1;
-  public long qGl = -1L;
+  public static final l.a rdS;
+  public int nAG;
+  public int nAH;
+  public int rdH;
+  public int rdJ;
+  public List<g> rdP;
+  public List<g> rdQ;
+  private final int type;
+  
+  static
+  {
+    AppMethodBeat.i(201431);
+    rdS = new l.a((byte)0);
+    AppMethodBeat.o(201431);
+  }
   
   public l(int paramInt)
   {
-    super(paramInt);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(197549);
-    StringBuilder localStringBuilder = new StringBuilder("ScrollEvent(type=").append(this.type).append(", firstCompletelyVisibleItemPosition=").append(this.qsB).append(", firstVisibleItemPosition=").append(this.qsi).append(", lastCompletelyVisibleItemPosition=").append(this.qsC).append(", lastVisibleItemPosition=").append(this.qsj).append(", itemCount=").append(this.ahd).append(", newState=").append(this.qsD).append(") idleAcrossFeedList=");
-    Object localObject = this.KMl;
-    if (localObject != null) {}
-    for (localObject = Integer.valueOf(((List)localObject).size());; localObject = null)
-    {
-      localObject = localObject;
-      AppMethodBeat.o(197549);
-      return localObject;
-    }
+    this.type = paramInt;
+    this.nAG = -1;
+    this.nAH = -1;
+    this.rdH = -1;
+    this.rdJ = -1;
   }
 }
 

@@ -8,8 +8,8 @@ import com.tencent.matrix.mrs.core.MatrixUploadIssue;
 import com.tencent.matrix.mrs.core.MrsLogic;
 import com.tencent.matrix.strategy.MatrixStrategyNotifyBroadcast;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.vfs.q;
 import java.util.Iterator;
 import java.util.Set;
@@ -22,26 +22,26 @@ public final class h
   extends com.tencent.matrix.e.a
 {
   private final Context context;
-  public volatile boolean csX = false;
-  private Long cxd;
-  private String cxe;
-  private volatile boolean cxf;
-  private Long cxg;
-  private f cxh = new f();
-  private final ConcurrentHashMap<h.c, Object> cxi = new ConcurrentHashMap();
-  public h.b cxj;
-  private final ConcurrentLinkedQueue<h.d> cxk = new ConcurrentLinkedQueue();
-  public final ConcurrentLinkedDeque<h.d> cxl = new ConcurrentLinkedDeque();
+  public volatile boolean cqf = false;
+  private Long cum;
+  private String cun;
+  private volatile boolean cuo;
+  private Long cup;
+  private f cuq = new f();
+  private final ConcurrentHashMap<c, Object> cur = new ConcurrentHashMap();
+  public b cus;
+  private final ConcurrentLinkedQueue<d> cut = new ConcurrentLinkedQueue();
+  public final ConcurrentLinkedDeque<d> cuu = new ConcurrentLinkedDeque();
   
   public h(Context paramContext, Long paramLong1, String paramString, Boolean paramBoolean, Long paramLong2)
   {
     super(paramContext);
     this.context = paramContext;
-    this.cxd = paramLong1;
-    this.cxe = paramString;
-    this.cxf = paramBoolean.booleanValue();
-    this.cxg = paramLong2;
-    if (aj.cbe()) {
+    this.cum = paramLong1;
+    this.cun = paramString;
+    this.cuo = paramBoolean.booleanValue();
+    this.cup = paramLong2;
+    if (ai.cin()) {
       try
       {
         MrsLogic.init(paramLong1.longValue(), paramString, paramBoolean.booleanValue(), paramLong2.longValue());
@@ -88,7 +88,7 @@ public final class h
       localMatrixUploadIssue.setNeedDeleteFileAfterSucc(true);
       localMatrixUploadIssue.setType(paramc.type);
       localMatrixUploadIssue.setDesKey(paramc.key);
-      localMatrixUploadIssue.setFilePath(q.B(parame.fhU()));
+      localMatrixUploadIssue.setFilePath(q.B(parame.fxV()));
       MrsLogic.uploadMatrixIssue(localMatrixUploadIssue);
       return;
     }
@@ -100,35 +100,35 @@ public final class h
   
   public final void a(c paramc)
   {
-    paramc = h.d.d(paramc);
-    if ((paramc.cwW instanceof com.tencent.matrix.trace.a))
+    paramc = d.d(paramc);
+    if ((paramc.cuf instanceof com.tencent.matrix.trace.a))
     {
-      this.cxl.addFirst(paramc);
-      if (this.cxl.size() >= 30) {
-        this.cxl.removeLast();
+      this.cuu.addFirst(paramc);
+      if (this.cuu.size() >= 30) {
+        this.cuu.removeLast();
       }
     }
     try
     {
-      if ((this.cxj != null) && (this.cxj.c(paramc)))
+      if ((this.cus != null) && (this.cus.c(paramc)))
       {
-        ad.w("MicroMsg.MatrixReporter", "[reportJson] pass this report! tag=%s", new Object[] { paramc.tag });
+        ac.w("MicroMsg.MatrixReporter", "[reportJson] pass this report! tag=%s", new Object[] { paramc.tag });
         return;
       }
     }
     catch (Exception paramc)
     {
-      ad.printErrStackTrace("MicroMsg.MatrixReporter", paramc, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MatrixReporter", paramc, "", new Object[0]);
       return;
     }
-    Object localObject = this.cxi.keySet().iterator();
+    Object localObject = this.cur.keySet().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((h.c)((Iterator)localObject).next()).a(paramc);
+      ((c)((Iterator)localObject).next()).a(paramc);
     }
     localObject = paramc.filePath;
     try
     {
-      if (aj.cbe())
+      if (ai.cin())
       {
         a(paramc, (String)localObject);
         return;
@@ -143,7 +143,7 @@ public final class h
     localIntent.putExtra("tag", paramc.tag);
     localIntent.putExtra("key", paramc.key);
     localIntent.putExtra("type", paramc.type);
-    localIntent.putExtra("value", paramc.cwV.toString());
+    localIntent.putExtra("value", paramc.cue.toString());
     localIntent.putExtra("filePath", (String)localObject);
     com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix report with broadcast tag:%s", new Object[] { paramc.tag });
     this.context.sendBroadcast(localIntent);
@@ -151,45 +151,89 @@ public final class h
   
   public final void a(c paramc, String paramString)
   {
-    if ((!this.csX) && (aj.cbe()))
+    if ((!this.cqf) && (ai.cin()))
     {
       com.tencent.matrix.g.c.w("MicroMsg.MatrixReporter", "MatrixReportBroadcast, matrix report is not init, wait to report plugin:%s", new Object[] { paramc.tag });
-      paramc = h.d.d(paramc);
+      paramc = d.d(paramc);
       paramc.filePath = paramString;
-      this.cxk.add(paramc);
+      this.cut.add(paramc);
     }
     do
     {
       return;
-      if (!this.cxk.isEmpty())
+      if (!this.cut.isEmpty())
       {
-        Iterator localIterator = this.cxk.iterator();
+        Iterator localIterator = this.cut.iterator();
         while (localIterator.hasNext())
         {
-          h.d locald = (h.d)localIterator.next();
-          com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix report pending list! tag:%s, key:%s, data:%s", new Object[] { locald.tag, locald.cwV, Integer.valueOf(d.CpK) });
-          MrsLogic.collectData(locald.tag, locald.cwV.toString().getBytes());
+          d locald = (d)localIterator.next();
+          com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix report pending list! tag:%s, key:%s, data:%s", new Object[] { locald.tag, locald.cue, Integer.valueOf(d.DIc) });
+          MrsLogic.collectData(locald.tag, locald.cue.toString().getBytes());
           if (!TextUtils.isEmpty(paramString)) {
             a(locald, new com.tencent.mm.vfs.e(locald.filePath));
           }
         }
-        this.cxk.clear();
+        this.cut.clear();
       }
-      com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix reportLocal tag:%s, key:%s, data:%s", new Object[] { paramc.tag, paramc.cwV, Integer.valueOf(d.CpK) });
-      MrsLogic.collectData(paramc.tag, paramc.cwV.toString().getBytes());
-      this.cxh.d(paramc.tag, paramc.cwV);
+      com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix reportLocal tag:%s, key:%s, data:%s", new Object[] { paramc.tag, paramc.cue, Integer.valueOf(d.DIc) });
+      MrsLogic.collectData(paramc.tag, paramc.cue.toString().getBytes());
+      this.cuq.d(paramc.tag, paramc.cue);
     } while (TextUtils.isEmpty(paramString));
     a(paramc, new com.tencent.mm.vfs.e(paramString));
   }
   
-  public final void a(h.c paramc)
+  public final void a(c paramc)
   {
-    this.cxi.put(paramc, new Object());
+    this.cur.put(paramc, new Object());
   }
   
   public final String toString()
   {
-    return "clientVersion=" + this.cxd + " revision=" + this.cxe + " isDebug=" + this.cxf + " publishType" + this.cxg;
+    return "clientVersion=" + this.cum + " revision=" + this.cun + " isDebug=" + this.cuo + " publishType" + this.cup;
+  }
+  
+  public static final class a
+  {
+    public final Context context;
+    public Long cum;
+    public String cun;
+    public Long cup;
+    public Boolean cuv;
+    
+    public a(Context paramContext)
+    {
+      if (paramContext == null) {
+        throw new RuntimeException("matrix report init, context is null");
+      }
+      this.context = paramContext;
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract boolean c(c paramc);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(h.d paramd);
+  }
+  
+  public static final class d
+    extends c
+  {
+    public String filePath;
+    
+    public static d d(c paramc)
+    {
+      d locald = new d();
+      locald.cue = paramc.cue;
+      locald.tag = paramc.tag;
+      locald.cuf = paramc.cuf;
+      locald.key = paramc.key;
+      locald.type = paramc.type;
+      return locald;
+    }
   }
 }
 

@@ -13,7 +13,7 @@ public final class e
     AppMethodBeat.i(138372);
     try
     {
-      paramString1 = c(aNI(paramString1), paramString2, paramVarArgs);
+      paramString1 = c(aTl(paramString1), paramString2, paramVarArgs);
       AppMethodBeat.o(138372);
       return paramString1;
     }
@@ -25,7 +25,7 @@ public final class e
     return null;
   }
   
-  private static Class<?> aNI(String paramString)
+  private static Class<?> aTl(String paramString)
   {
     AppMethodBeat.i(138368);
     try
@@ -136,12 +136,12 @@ public final class e
     return null;
   }
   
-  public static Object lP(String paramString1, String paramString2)
+  public static Object mm(String paramString1, String paramString2)
   {
     AppMethodBeat.i(138370);
     try
     {
-      paramString1 = b(aNI(paramString1), paramString2, null);
+      paramString1 = b(aTl(paramString1), paramString2, null);
       AppMethodBeat.o(138370);
       return paramString1;
     }
@@ -155,7 +155,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.b.e
  * JD-Core Version:    0.7.0.1
  */

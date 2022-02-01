@@ -10,7 +10,7 @@ import android.view.animation.AccelerateInterpolator;
 public abstract class a
   implements c
 {
-  public static Animator cH(View paramView)
+  public static Animator cJ(View paramView)
   {
     paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
     paramView.setDuration(2000L);
@@ -22,17 +22,17 @@ public abstract class a
   
   protected abstract void A(CharSequence paramCharSequence);
   
-  protected abstract void L(Runnable paramRunnable);
+  protected abstract void N(Runnable paramRunnable);
   
   protected abstract Context getContext();
   
-  protected abstract void tp(int paramInt);
+  protected abstract void ug(int paramInt);
   
   protected abstract void x(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.a
  * JD-Core Version:    0.7.0.1
  */

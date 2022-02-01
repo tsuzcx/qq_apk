@@ -10,117 +10,117 @@ import oicq.wlogin_sdk.tools.util;
 
 public final class b
 {
-  public i KhJ;
-  private j KhK;
-  private f KhL;
-  private g KhM;
-  private h KhN;
-  private e KhO;
-  public d KhP;
-  private int KhQ;
-  private int KhR;
+  private int LVA;
+  public i LVs;
+  private j LVt;
+  private f LVu;
+  private g LVv;
+  private h LVw;
+  private e LVx;
+  public d LVy;
+  private int LVz;
   private Context mContext;
   
   public b(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88047);
-    this.KhJ = new i();
-    this.KhK = new j(this.KhJ);
-    this.KhL = new f(this.KhJ);
-    this.KhM = new g(this.KhJ);
-    this.KhN = new h(this.KhJ);
-    this.KhO = new e(this.KhJ);
-    this.KhP = null;
+    this.LVs = new i();
+    this.LVt = new j(this.LVs);
+    this.LVu = new f(this.LVs);
+    this.LVv = new g(this.LVs);
+    this.LVw = new h(this.LVs);
+    this.LVx = new e(this.LVs);
+    this.LVy = null;
     this.mContext = null;
-    this.KhQ = 66560;
-    this.KhR = 1404;
+    this.LVz = 66560;
+    this.LVA = 1404;
     this.mContext = paramContext;
-    i locali = this.KhJ;
+    i locali = this.LVs;
     locali._context = paramContext;
-    locali.Kix = paramInt;
-    locali.KiR = new c(paramContext);
+    locali.LWg = paramInt;
+    locali.LWA = new c(paramContext);
     paramContext = new byte[16];
-    locali.Kio.nextBytes(paramContext);
-    System.arraycopy(paramContext, 0, locali.Kir, 0, 16);
-    fMB();
+    locali.LVX.nextBytes(paramContext);
+    System.arraycopy(paramContext, 0, locali.LWa, 0, 16);
+    gfr();
     AppMethodBeat.o(88047);
   }
   
-  private int fMB()
+  private int gfr()
   {
     AppMethodBeat.i(88052);
     for (;;)
     {
       try
       {
-        Object localObject1 = util.lu(this.mContext);
+        Object localObject1 = util.lJ(this.mContext);
         if ((localObject1 == null) || (localObject1.length <= 0))
         {
-          localObject1 = util.ln(this.mContext);
+          localObject1 = util.lC(this.mContext);
           if ((localObject1 == null) || (localObject1.length <= 0))
           {
             localObject1 = new String("%4;7t>;28<fc.5*6").getBytes();
-            this.KhJ.KiK = 0;
+            this.LVs.LWt = 0;
             util.b(this.mContext, (byte[])localObject1);
-            this.KhJ.KiJ = 1;
-            this.KhJ.KiL = 1;
-            this.KhJ.Kiy = new byte[localObject1.length];
-            System.arraycopy(localObject1, 0, this.KhJ.Kiy, 0, localObject1.length);
+            this.LVs.LWs = 1;
+            this.LVs.LWu = 1;
+            this.LVs.LWh = new byte[localObject1.length];
+            System.arraycopy(localObject1, 0, this.LVs.LWh, 0, localObject1.length);
             Object localObject3 = new byte[localObject1.length + 1];
             localObject3[0] = 35;
             System.arraycopy(localObject1, 0, localObject3, 1, localObject1.length);
-            this.KhJ.Kip = util.dj((byte[])localObject3);
-            i.Kiz = (byte[])this.KhJ.Kiy.clone();
-            this.KhJ.KiA = util.lo(this.mContext);
-            i = util.lq(this.mContext);
-            this.KhJ.KiB = util.lp(this.mContext);
-            if (i != this.KhJ.KiB)
+            this.LVs.LVY = util.dj((byte[])localObject3);
+            i.LWi = (byte[])this.LVs.LWh.clone();
+            this.LVs.LWj = util.lD(this.mContext);
+            i = util.lF(this.mContext);
+            this.LVs.LWk = util.lE(this.mContext);
+            if (i != this.LVs.LWk)
             {
-              util.lr(this.mContext);
-              util.aO(this.mContext, this.KhJ.KiB);
+              util.lG(this.mContext);
+              util.aU(this.mContext, this.LVs.LWk);
             }
-            this.KhJ.KiD = util.ls(this.mContext).getBytes();
-            this.KhJ.KiM = util.lt(this.mContext);
-            this.KhJ.KiC = util.lv(this.mContext);
-            this.KhJ.KiF = util.cC(this.mContext, new String(this.KhJ.KiC));
-            this.KhJ.KiG = util.cD(this.mContext, new String(this.KhJ.KiC));
+            this.LVs.LWm = util.lH(this.mContext).getBytes();
+            this.LVs.LWv = util.lI(this.mContext);
+            this.LVs.LWl = util.lK(this.mContext);
+            this.LVs.LWo = util.cG(this.mContext, new String(this.LVs.LWl));
+            this.LVs.LWp = util.cH(this.mContext, new String(this.LVs.LWl));
             localObject1 = Build.MODEL;
             if (localObject1 != null) {
               break label492;
             }
-            this.KhJ.KiH = new byte[0];
+            this.LVs.LWq = new byte[0];
             if ((util.isFileExist("/system/bin/su")) || (util.isFileExist("/system/xbin/su")) || (util.isFileExist("/sbin/su"))) {
               break label506;
             }
             i = 0;
-            localObject1 = this.KhJ;
+            localObject1 = this.LVs;
             if (i == 0) {
               break label511;
             }
             i = 1;
-            ((i)localObject1).KiI = i;
+            ((i)localObject1).LWr = i;
             localObject3 = Build.VERSION.RELEASE;
             localObject1 = localObject3;
             if (localObject3 == null) {
               localObject1 = "";
             }
-            util.aRk("WtloginHelper init ok: android version:" + (String)localObject1 + " release time:" + util.fMS());
+            util.aXk("WtloginHelper init ok: android version:" + (String)localObject1 + " release time:" + util.gfI());
             return 0;
           }
-          this.KhJ.KiK = 1;
+          this.LVs.LWt = 1;
           continue;
         }
-        this.KhJ.KiK = 1;
+        this.LVs.LWt = 1;
       }
       finally
       {
         AppMethodBeat.o(88052);
       }
-      this.KhJ.KiJ = 0;
-      this.KhJ.KiL = 0;
+      this.LVs.LWs = 0;
+      this.LVs.LWu = 0;
       continue;
       label492:
-      this.KhJ.KiH = localObject2.getBytes();
+      this.LVs.LWq = localObject2.getBytes();
       continue;
       label506:
       int i = 1;
@@ -130,160 +130,58 @@ public final class b
     }
   }
   
-  public final byte[] a(long paramLong, a parama, String paramString)
-  {
-    AppMethodBeat.i(88048);
-    util.aRk("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 ...");
-    String str = paramString;
-    if (paramString.length() > 16) {
-      str = paramString.substring(0, 16);
-    }
-    try
-    {
-      switch (fMC()[parama.ordinal()])
-      {
-      case 1: 
-        return null;
-      }
-    }
-    finally
-    {
-      AppMethodBeat.o(88048);
-    }
-    if ((str == null) || (str.length() == 0))
-    {
-      util.aRk("USER_WITH_PWD userPasswd null");
-      AppMethodBeat.o(88048);
-      return null;
-    }
-    parama = oicq.wlogin_sdk.tools.c.aRi(str);
-    for (int i = 0;; i = 1)
-    {
-      this.KhJ.KiB = util.lp(this.mContext);
-      this.KhJ.KiD = util.ls(this.mContext).getBytes();
-      this.KhJ._uin = paramLong;
-      this.KhJ.Kiu = 522017402L;
-      this.KhJ.Kiv = 8256;
-      this.KhJ.Kis = new oicq.wlogin_sdk.a.f();
-      this.KhP = this.KhK;
-      if (i != 0) {}
-      for (parama = this.KhK.a(paramLong, this.KhJ.KiP, parama, this.KhR, this.KhQ, this.KhJ.KiM);; parama = this.KhK.a(paramLong, this.KhJ.KiP, paramString, parama, this.KhR, this.KhQ, this.KhJ.KiM))
-      {
-        for (;;)
-        {
-          util.aRk("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 end");
-          AppMethodBeat.o(88048);
-          return parama;
-          if ((str == null) || (str.length() == 0))
-          {
-            util.aRk("USER_WITH_MD5 userPasswd null");
-            AppMethodBeat.o(88048);
-            return null;
-          }
-          try
-          {
-            parama = (byte[])str.getBytes("ISO-8859-1").clone();
-            i = 0;
-          }
-          catch (Exception parama)
-          {
-            AppMethodBeat.o(88048);
-            return null;
-          }
-        }
-        parama = this.KhJ.xT(paramLong);
-        if ((parama == null) || (parama._en_A1 == null) || (parama._en_A1.length <= 0)) {
-          util.aRk("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: null");
-        }
-        for (parama = null; (parama == null) || (parama.length < 16); parama = (byte[])parama._en_A1.clone())
-        {
-          util.aRk("USER_WITH_A1 tmp_pwd null");
-          AppMethodBeat.o(88048);
-          return null;
-          util.aRk("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: not null");
-        }
-        paramString = new byte[4];
-        util.d(paramString, 0, i.fMF());
-      }
-      break;
-    }
-  }
-  
-  public final byte[] f(long paramLong, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(88049);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-    {
-      AppMethodBeat.o(88049);
-      return null;
-    }
-    util.aRk("user:" + paramLong + " CheckPicture ...");
-    try
-    {
-      this.KhP = this.KhM;
-      paramArrayOfByte = this.KhM.db(paramArrayOfByte);
-      util.aRk("user:" + paramLong + " CheckPicture end");
-      AppMethodBeat.o(88049);
-      return paramArrayOfByte;
-    }
-    finally
-    {
-      AppMethodBeat.o(88049);
-    }
-  }
-  
   /* Error */
-  public final byte[] xQ(long paramLong)
+  public final byte[] CD(long paramLong)
   {
     // Byte code:
-    //   0: ldc_w 410
+    //   0: ldc_w 309
     //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_0
-    //   9: getfield 45	oicq/wlogin_sdk/request/b:KhJ	Loicq/wlogin_sdk/request/i;
-    //   12: getfield 414	oicq/wlogin_sdk/request/i:Kit	Loicq/wlogin_sdk/a/g;
+    //   9: getfield 45	oicq/wlogin_sdk/request/b:LVs	Loicq/wlogin_sdk/request/i;
+    //   12: getfield 313	oicq/wlogin_sdk/request/i:LWc	Loicq/wlogin_sdk/a/g;
     //   15: astore_3
     //   16: aload_3
-    //   17: getfield 419	oicq/wlogin_sdk/a/g:Kje	I
+    //   17: getfield 318	oicq/wlogin_sdk/a/g:LWN	I
     //   20: newarray byte
     //   22: astore 4
     //   24: aload_3
-    //   25: getfield 419	oicq/wlogin_sdk/a/g:Kje	I
+    //   25: getfield 318	oicq/wlogin_sdk/a/g:LWN	I
     //   28: ifgt +46 -> 74
     //   31: aload_0
     //   32: monitorexit
     //   33: new 263	java/lang/StringBuilder
     //   36: dup
-    //   37: ldc_w 400
+    //   37: ldc_w 320
     //   40: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   43: lload_1
-    //   44: invokevirtual 315	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   47: ldc_w 421
+    //   44: invokevirtual 323	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   47: ldc_w 325
     //   50: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: aload 4
     //   55: arraylength
-    //   56: invokevirtual 424	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 328	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   59: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 282	oicq/wlogin_sdk/tools/util:aRk	(Ljava/lang/String;)V
-    //   65: ldc_w 410
+    //   62: invokestatic 282	oicq/wlogin_sdk/tools/util:aXk	(Ljava/lang/String;)V
+    //   65: ldc_w 309
     //   68: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload 4
     //   73: areturn
     //   74: aload_3
-    //   75: getfield 427	oicq/wlogin_sdk/a/g:Kie	[B
+    //   75: getfield 331	oicq/wlogin_sdk/a/g:LVN	[B
     //   78: aload_3
-    //   79: getfield 430	oicq/wlogin_sdk/a/g:Kjg	I
+    //   79: getfield 334	oicq/wlogin_sdk/a/g:LWP	I
     //   82: aload 4
     //   84: iconst_0
     //   85: aload_3
-    //   86: getfield 419	oicq/wlogin_sdk/a/g:Kje	I
+    //   86: getfield 318	oicq/wlogin_sdk/a/g:LWN	I
     //   89: invokestatic 116	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   92: goto -61 -> 31
     //   95: astore_3
     //   96: aload_0
     //   97: monitorexit
-    //   98: ldc_w 410
+    //   98: ldc_w 309
     //   101: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: aload_3
     //   105: athrow
@@ -302,12 +200,114 @@ public final class b
     //   96	98	95	finally
   }
   
-  public final void xR(long paramLong)
+  public final void CE(long paramLong)
   {
     AppMethodBeat.i(88051);
-    util.aRk("user:" + paramLong + " ClearUserSigInfo");
-    this.KhJ.g(Long.valueOf(paramLong));
+    util.aXk("user:" + paramLong + " ClearUserSigInfo");
+    this.LVs.h(Long.valueOf(paramLong));
     AppMethodBeat.o(88051);
+  }
+  
+  public final byte[] a(long paramLong, a parama, String paramString)
+  {
+    AppMethodBeat.i(88048);
+    util.aXk("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 ...");
+    String str = paramString;
+    if (paramString.length() > 16) {
+      str = paramString.substring(0, 16);
+    }
+    try
+    {
+      switch (gfs()[parama.ordinal()])
+      {
+      case 1: 
+        return null;
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(88048);
+    }
+    if ((str == null) || (str.length() == 0))
+    {
+      util.aXk("USER_WITH_PWD userPasswd null");
+      AppMethodBeat.o(88048);
+      return null;
+    }
+    parama = oicq.wlogin_sdk.tools.c.aXi(str);
+    for (int i = 0;; i = 1)
+    {
+      this.LVs.LWk = util.lE(this.mContext);
+      this.LVs.LWm = util.lH(this.mContext).getBytes();
+      this.LVs._uin = paramLong;
+      this.LVs.LWd = 522017402L;
+      this.LVs.LWe = 8256;
+      this.LVs.LWb = new oicq.wlogin_sdk.a.f();
+      this.LVy = this.LVt;
+      if (i != 0) {}
+      for (parama = this.LVt.a(paramLong, this.LVs.LWy, parama, this.LVA, this.LVz, this.LVs.LWv);; parama = this.LVt.a(paramLong, this.LVs.LWy, paramString, parama, this.LVA, this.LVz, this.LVs.LWv))
+      {
+        for (;;)
+        {
+          util.aXk("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 end");
+          AppMethodBeat.o(88048);
+          return parama;
+          if ((str == null) || (str.length() == 0))
+          {
+            util.aXk("USER_WITH_MD5 userPasswd null");
+            AppMethodBeat.o(88048);
+            return null;
+          }
+          try
+          {
+            parama = (byte[])str.getBytes("ISO-8859-1").clone();
+            i = 0;
+          }
+          catch (Exception parama)
+          {
+            AppMethodBeat.o(88048);
+            return null;
+          }
+        }
+        parama = this.LVs.CG(paramLong);
+        if ((parama == null) || (parama._en_A1 == null) || (parama._en_A1.length <= 0)) {
+          util.aXk("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: null");
+        }
+        for (parama = null; (parama == null) || (parama.length < 16); parama = (byte[])parama._en_A1.clone())
+        {
+          util.aXk("USER_WITH_A1 tmp_pwd null");
+          AppMethodBeat.o(88048);
+          return null;
+          util.aXk("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: not null");
+        }
+        paramString = new byte[4];
+        util.d(paramString, 0, i.gfv());
+      }
+      break;
+    }
+  }
+  
+  public final byte[] f(long paramLong, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(88049);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      AppMethodBeat.o(88049);
+      return null;
+    }
+    util.aXk("user:" + paramLong + " CheckPicture ...");
+    try
+    {
+      this.LVy = this.LVv;
+      paramArrayOfByte = this.LVv.db(paramArrayOfByte);
+      util.aXk("user:" + paramLong + " CheckPicture end");
+      AppMethodBeat.o(88049);
+      return paramArrayOfByte;
+    }
+    finally
+    {
+      AppMethodBeat.o(88049);
+    }
   }
   
   public static enum a
@@ -315,10 +315,10 @@ public final class b
     static
     {
       AppMethodBeat.i(88044);
-      KhT = new a("USER_WITH_PWD", 0);
-      KhU = new a("USER_WITH_MD5", 1);
-      KhV = new a("USER_WITH_A1", 2);
-      KhW = new a[] { KhT, KhU, KhV };
+      LVC = new a("USER_WITH_PWD", 0);
+      LVD = new a("USER_WITH_MD5", 1);
+      LVE = new a("USER_WITH_A1", 2);
+      LVF = new a[] { LVC, LVD, LVE };
       AppMethodBeat.o(88044);
     }
   }

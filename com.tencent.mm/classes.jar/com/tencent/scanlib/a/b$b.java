@@ -7,7 +7,7 @@ public abstract class b$b
 {
   public static abstract interface a
   {
-    public abstract void dmD();
+    public abstract void dAJ();
   }
 }
 

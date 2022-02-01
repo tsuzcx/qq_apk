@@ -1,86 +1,130 @@
 package com.tencent.mm.plugin.appbrand.jsapi.r;
 
+import android.support.v4.e.l.a;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.permission.e;
+import com.tencent.mm.plugin.appbrand.report.model.i;
+import com.tencent.mm.sdk.platformtools.bs;
+import d.g.b.k;
 import d.l;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/EventOnInitialRenderingCacheReady;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporter;", "", "()V", "mInfoMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiInfo;", "mObjectPool", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporter$JsApiInfoPool;", "doCleanupJobOnRuntimeDestroyed", "", "doCleanupJobOnRuntimeSuspended", "report", "callbackId", "", "ret", "", "setJsApiInfo", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandBaseJsApi;", "data", "path", "getPermissionValue", "safeClear", "T", "safePut", "key", "value", "(Landroid/util/SparseArray;ILjava/lang/Object;)V", "safeRemoveReturnOld", "(Landroid/util/SparseArray;I)Ljava/lang/Object;", "JsApiInfoPool", "plugin-appbrand-integration_release"})
 public final class a
-  extends p
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "onInitialRenderingCacheReady";
-  public static final a khT;
+  public final SparseArray<b> kJn;
+  public final a kJo;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(147955);
-    khT = new a((byte)0);
-    AppMethodBeat.o(147955);
+    AppMethodBeat.i(50666);
+    this.kJn = new SparseArray();
+    this.kJo = new a();
+    AppMethodBeat.o(50666);
   }
   
-  public static final void a(String paramString1, String paramString2, aa paramaa)
+  private static <T> T b(SparseArray<T> paramSparseArray, int paramInt)
   {
-    p localp = null;
-    AppMethodBeat.i(147956);
-    if (paramString1 == null)
+    AppMethodBeat.i(50665);
+    try
     {
-      AppMethodBeat.o(147956);
-      return;
-    }
-    if (paramaa == null)
-    {
-      AppMethodBeat.o(147956);
-      return;
-    }
-    Object localObject = (CharSequence)paramString2;
-    int i;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
-    {
-      i = 1;
-      if (i == 0) {
-        break label137;
+      Object localObject1 = paramSparseArray.get(paramInt, null);
+      if (localObject1 != null) {
+        paramSparseArray.remove(paramInt);
       }
-      paramString2 = localp;
+      return localObject1;
     }
-    for (;;)
+    finally
     {
-      localp = new a().g((c)paramaa);
-      localObject = new HashMap();
-      ((HashMap)localObject).put("content", paramString1);
-      ((HashMap)localObject).put("webviewData", paramString2);
-      ((HashMap)localObject).put("path", paramaa.getURL());
-      localp.B((Map)localObject).aXQ();
-      AppMethodBeat.o(147956);
-      return;
-      i = 0;
-      break;
-      try
-      {
-        label137:
-        paramString2 = new JSONObject(paramString2);
-      }
-      catch (Exception paramString2)
-      {
-        for (;;)
-        {
-          paramString2 = null;
-        }
-      }
+      AppMethodBeat.o(50665);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/EventOnInitialRenderingCacheReady$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "dispatchReady", "", "content", "webviewData", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
+  public final void aj(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(50664);
+    k.h(paramString, "ret");
+    b localb = (b)b(this.kJn, paramInt);
+    if (localb == null)
+    {
+      AppMethodBeat.o(50664);
+      return;
+    }
+    long l1 = bs.Gn();
+    long l2 = localb.startTime;
+    Object localObject = localb.kJq;
+    k.g(localObject, "info.component");
+    String str1 = ((h)localObject).getAppId();
+    String str2 = localb.path;
+    localObject = localb.kJr;
+    k.g(localObject, "info.api");
+    String str3 = ((com.tencent.mm.plugin.appbrand.jsapi.b)localObject).getName();
+    String str4 = localb.data;
+    localObject = localb.kJq;
+    k.g(localObject, "this.component");
+    AppBrandRuntime localAppBrandRuntime = ((h)localObject).getRuntime();
+    localObject = localAppBrandRuntime;
+    if (!(localAppBrandRuntime instanceof o)) {
+      localObject = null;
+    }
+    localObject = (o)localObject;
+    if (localObject != null)
+    {
+      localObject = ((o)localObject).Dx();
+      if (localObject == null) {}
+    }
+    for (paramInt = ((e)localObject).a((c)localb.kJq, localb.kJr, localb.data, false);; paramInt = -1)
+    {
+      i.a(str1, str2, str3, str4, paramInt, l1 - l2, paramString);
+      this.kJo.a(localb);
+      AppMethodBeat.o(50664);
+      return;
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporter$JsApiInfoPool;", "Landroid/support/v4/util/Pools$Pool;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiInfo;", "()V", "mQueue", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "acquire", "clear", "", "release", "", "jsApiInfo", "plugin-appbrand-integration_release"})
+  public static final class a
+    implements l.a<b>
+  {
+    public final ConcurrentLinkedDeque<b> kJp;
+    
+    public a()
+    {
+      AppMethodBeat.i(50663);
+      this.kJp = new ConcurrentLinkedDeque();
+      AppMethodBeat.o(50663);
+    }
+    
+    public final boolean a(b paramb)
+    {
+      AppMethodBeat.i(50661);
+      k.h(paramb, "jsApiInfo");
+      boolean bool = this.kJp.offer(paramb);
+      AppMethodBeat.o(50661);
+      return bool;
+    }
+    
+    public final b biF()
+    {
+      AppMethodBeat.i(50659);
+      b localb2 = (b)this.kJp.poll();
+      b localb1 = localb2;
+      if (localb2 == null) {
+        localb1 = new b();
+      }
+      AppMethodBeat.o(50659);
+      return localb1;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r.a
  * JD-Core Version:    0.7.0.1
  */

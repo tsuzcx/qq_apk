@@ -6,59 +6,77 @@ import android.view.KeyEvent;
 import android.view.KeyEvent.DispatcherState;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.view.InsectFrameLayout;
+import com.tencent.mm.ui.widget.InsectFrameLayout;
 import d.g.a.b;
 import d.g.b.k;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "Lcom/tencent/mm/emoji/view/InsectFrameLayout;", "Lcom/tencent/mm/media/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "panelView", "Landroid/view/View;", "visibleCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "visible", "", "dispatchKeyEvent", "event", "Landroid/view/KeyEvent;", "insectBottom", "bottom", "isShow", "setOnVisibleChangeCallback", "callback", "setPanelView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "setShow", "show", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "Lcom/tencent/mm/ui/widget/InsectFrameLayout;", "Lcom/tencent/mm/media/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "", "closeTouchOutside", "getCloseTouchOutside", "()Z", "setCloseTouchOutside", "(Z)V", "panelView", "Landroid/view/View;", "visibleCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visible", "", "dispatchKeyEvent", "event", "Landroid/view/KeyEvent;", "insectBottom", "bottom", "isShow", "setOnVisibleChangeCallback", "callback", "setPanelView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "setShow", "show", "plugin-recordvideo_release"})
 public final class EditorPanelHolder
   extends InsectFrameLayout
 {
-  private View LdD;
-  private b<? super Boolean, y> gpp;
+  private b<? super Boolean, y> gPX;
+  private View rUv;
+  private boolean wCa;
   
   public EditorPanelHolder(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(204311);
-    AppMethodBeat.o(204311);
+    AppMethodBeat.i(199433);
+    AppMethodBeat.o(199433);
   }
   
   public EditorPanelHolder(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(204310);
+    AppMethodBeat.i(199432);
+    this.wCa = true;
     setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(204304);
-        this.LpS.setShow(false);
-        AppMethodBeat.o(204304);
+        AppMethodBeat.i(199423);
+        if (this.wCb.getCloseTouchOutside()) {
+          this.wCb.setShow(false);
+        }
+        AppMethodBeat.o(199423);
       }
     });
-    AppMethodBeat.o(204310);
+    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    AppMethodBeat.o(199432);
   }
   
-  public final boolean cco()
+  public final boolean bjw()
+  {
+    AppMethodBeat.i(199430);
+    if (getVisibility() == 0)
+    {
+      AppMethodBeat.o(199430);
+      return true;
+    }
+    AppMethodBeat.o(199430);
+    return false;
+  }
+  
+  public final boolean cEv()
   {
     return true;
   }
   
   public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(204309);
+    AppMethodBeat.i(199431);
     k.h(paramKeyEvent, "event");
     if (paramKeyEvent.getKeyCode() == 4)
     {
       if (getKeyDispatcherState() == null)
       {
         bool = super.dispatchKeyEvent(paramKeyEvent);
-        AppMethodBeat.o(204309);
+        AppMethodBeat.o(199431);
         return bool;
       }
       KeyEvent.DispatcherState localDispatcherState;
@@ -68,7 +86,7 @@ public final class EditorPanelHolder
         if (localDispatcherState != null) {
           localDispatcherState.startTracking(paramKeyEvent, this);
         }
-        AppMethodBeat.o(204309);
+        AppMethodBeat.o(199431);
         return true;
       }
       if (paramKeyEvent.getAction() == 1)
@@ -77,100 +95,135 @@ public final class EditorPanelHolder
         if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
         {
           setShow(false);
-          AppMethodBeat.o(204309);
+          AppMethodBeat.o(199431);
           return true;
         }
       }
       bool = super.dispatchKeyEvent(paramKeyEvent);
-      AppMethodBeat.o(204309);
+      AppMethodBeat.o(199431);
       return bool;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(204309);
+    AppMethodBeat.o(199431);
     return bool;
+  }
+  
+  public final boolean getCloseTouchOutside()
+  {
+    return this.wCa;
+  }
+  
+  public final void setCloseTouchOutside(boolean paramBoolean)
+  {
+    AppMethodBeat.i(199427);
+    this.wCa = paramBoolean;
+    if (this.wCa)
+    {
+      setOnClickListener((View.OnClickListener)new a(this));
+      AppMethodBeat.o(199427);
+      return;
+    }
+    setClickable(false);
+    AppMethodBeat.o(199427);
   }
   
   public final void setOnVisibleChangeCallback(b<? super Boolean, y> paramb)
   {
-    this.gpp = paramb;
+    this.gPX = paramb;
   }
   
   public final void setShow(boolean paramBoolean)
   {
-    AppMethodBeat.i(204308);
+    AppMethodBeat.i(199429);
     if (paramBoolean)
     {
       setVisibility(0);
-      localObject = this.gpp;
+      localObject = this.gPX;
       if (localObject != null) {
-        ((b)localObject).aA(Boolean.TRUE);
+        ((b)localObject).ay(Boolean.TRUE);
       }
-      localObject = this.LdD;
+      localObject = this.rUv;
       if (localObject != null)
       {
         ((View)localObject).animate().cancel();
         if (((View)localObject).getHeight() == 0)
         {
           ((View)localObject).setVisibility(4);
-          ((View)localObject).post((Runnable)new b((View)localObject));
-          AppMethodBeat.o(204308);
+          ((View)localObject).post((Runnable)new c((View)localObject));
+          AppMethodBeat.o(199429);
           return;
         }
         ((View)localObject).animate().translationY(0.0F).start();
-        AppMethodBeat.o(204308);
+        AppMethodBeat.o(199429);
         return;
       }
-      AppMethodBeat.o(204308);
+      AppMethodBeat.o(199429);
       return;
     }
-    Object localObject = this.gpp;
+    Object localObject = this.gPX;
     if (localObject != null) {
-      ((b)localObject).aA(Boolean.FALSE);
+      ((b)localObject).ay(Boolean.FALSE);
     }
-    localObject = this.LdD;
+    localObject = this.rUv;
     if (localObject != null)
     {
       ((View)localObject).animate().cancel();
-      ((View)localObject).animate().translationY(((View)localObject).getHeight()).withEndAction((Runnable)new a(this)).start();
-      AppMethodBeat.o(204308);
+      ((View)localObject).animate().translationY(((View)localObject).getHeight()).withEndAction((Runnable)new b(this)).start();
+      AppMethodBeat.o(199429);
       return;
     }
-    AppMethodBeat.o(204308);
+    AppMethodBeat.o(199429);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$setShow$2$1"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
-    implements Runnable
+    implements View.OnClickListener
   {
     a(EditorPanelHolder paramEditorPanelHolder) {}
     
-    public final void run()
+    public final void onClick(View paramView)
     {
-      AppMethodBeat.i(204305);
-      this.LpS.setVisibility(8);
-      AppMethodBeat.o(204305);
+      AppMethodBeat.i(199424);
+      if (this.wCb.getCloseTouchOutside()) {
+        this.wCb.setShow(false);
+      }
+      AppMethodBeat.o(199424);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$setShow$2$1"})
   static final class b
     implements Runnable
   {
-    b(View paramView) {}
+    b(EditorPanelHolder paramEditorPanelHolder) {}
     
     public final void run()
     {
-      AppMethodBeat.i(204306);
-      this.LdF.setVisibility(0);
-      this.LdF.setTranslationY(this.LdF.getHeight());
-      this.LdF.animate().translationY(0.0F).start();
-      AppMethodBeat.o(204306);
+      AppMethodBeat.i(199425);
+      this.wCb.setVisibility(8);
+      AppMethodBeat.o(199425);
+    }
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(View paramView) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(199426);
+      this.rUx.setVisibility(0);
+      this.rUx.setTranslationY(this.rUx.getHeight());
+      this.rUx.animate().translationY(0.0F).start();
+      AppMethodBeat.o(199426);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder
  * JD-Core Version:    0.7.0.1
  */

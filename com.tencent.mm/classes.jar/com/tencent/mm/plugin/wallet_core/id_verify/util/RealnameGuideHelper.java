@@ -6,8 +6,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.a;
 
@@ -15,14 +15,14 @@ public class RealnameGuideHelper
   implements Parcelable
 {
   public static final Parcelable.Creator<RealnameGuideHelper> CREATOR;
-  private SetPwdInfo AaT;
-  private boolean AaU;
+  private SetPwdInfo Btn;
+  private boolean Bto;
   private int mEntryScene;
-  private String tfF;
-  private String tfG;
-  private String tfH;
-  private String tfI;
-  private String tfJ;
+  private String unU;
+  private String unV;
+  private String unW;
+  private String unX;
+  private String unY;
   
   static
   {
@@ -33,29 +33,29 @@ public class RealnameGuideHelper
   
   public RealnameGuideHelper()
   {
-    this.tfH = "";
-    this.tfI = "";
-    this.tfJ = "";
-    this.AaU = false;
+    this.unW = "";
+    this.unX = "";
+    this.unY = "";
+    this.Bto = false;
   }
   
   protected RealnameGuideHelper(Parcel paramParcel)
   {
     AppMethodBeat.i(70169);
-    this.tfH = "";
-    this.tfI = "";
-    this.tfJ = "";
-    this.AaU = false;
-    this.AaT = ((SetPwdInfo)paramParcel.readParcelable(SetPwdInfo.class.getClassLoader()));
-    this.tfF = paramParcel.readString();
-    this.tfG = paramParcel.readString();
-    this.tfH = paramParcel.readString();
-    this.tfI = paramParcel.readString();
-    this.tfJ = paramParcel.readString();
+    this.unW = "";
+    this.unX = "";
+    this.unY = "";
+    this.Bto = false;
+    this.Btn = ((SetPwdInfo)paramParcel.readParcelable(SetPwdInfo.class.getClassLoader()));
+    this.unU = paramParcel.readString();
+    this.unV = paramParcel.readString();
+    this.unW = paramParcel.readString();
+    this.unX = paramParcel.readString();
+    this.unY = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.AaU = bool;
+      this.Bto = bool;
       this.mEntryScene = paramParcel.readInt();
       AppMethodBeat.o(70169);
       return;
@@ -64,29 +64,29 @@ public class RealnameGuideHelper
   
   public final void a(String paramString1, SetPwdInfo paramSetPwdInfo, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    this.AaT = paramSetPwdInfo;
-    this.tfF = paramString1;
-    this.tfG = paramString2;
-    this.tfH = paramString3;
-    this.tfI = paramString4;
-    this.tfJ = paramString5;
+    this.Btn = paramSetPwdInfo;
+    this.unU = paramString1;
+    this.unV = paramString2;
+    this.unW = paramString3;
+    this.unX = paramString4;
+    this.unY = paramString5;
     this.mEntryScene = paramInt;
   }
   
   public final boolean a(MMActivity paramMMActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(70172);
-    ad.d("MicroMsg.RealnameGuideHelper", "doIfNeedSetPwd sendPwdMsg %s mEntryScene %s guide_wording %s upload_credit_url %s left_button_wording %s right_button_wording %s hadShow %s guide_flag %s", new Object[] { this.AaT, Integer.valueOf(this.mEntryScene), this.tfG, this.tfJ, this.tfH, this.tfI, Boolean.valueOf(this.AaU), this.tfF });
-    if (this.AaU)
+    ac.d("MicroMsg.RealnameGuideHelper", "doIfNeedSetPwd sendPwdMsg %s mEntryScene %s guide_wording %s upload_credit_url %s left_button_wording %s right_button_wording %s hadShow %s guide_flag %s", new Object[] { this.Btn, Integer.valueOf(this.mEntryScene), this.unV, this.unY, this.unW, this.unX, Boolean.valueOf(this.Bto), this.unU });
+    if (this.Bto)
     {
       AppMethodBeat.o(70172);
       return false;
     }
-    if ((this.AaT != null) && (this.AaT.Abe == 1))
+    if ((this.Btn != null) && (this.Btn.Bty == 1))
     {
-      boolean bool = a.a(paramMMActivity, paramBundle, this.mEntryScene, this.AaT.tfG, this.AaT.tfH, this.AaT.tfI, paramOnClickListener);
-      if ((bool) && (!this.AaU)) {
-        this.AaU = true;
+      boolean bool = a.a(paramMMActivity, paramBundle, this.mEntryScene, this.Btn.unV, this.Btn.unW, this.Btn.unX, paramOnClickListener);
+      if ((bool) && (!this.Bto)) {
+        this.Bto = true;
       }
       AppMethodBeat.o(70172);
       return bool;
@@ -98,26 +98,26 @@ public class RealnameGuideHelper
   public final boolean a(MMActivity paramMMActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener, d.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(70174);
-    if (this.AaU)
+    if (this.Bto)
     {
       AppMethodBeat.o(70174);
       return false;
     }
-    if ("1".equals(this.tfF))
+    if ("1".equals(this.unU))
     {
-      if (!this.AaU) {
-        this.AaU = true;
+      if (!this.Bto) {
+        this.Bto = true;
       }
       paramBoolean = a.a(paramMMActivity, paramBundle, parama, this.mEntryScene);
       AppMethodBeat.o(70174);
       return paramBoolean;
     }
-    if (("2".equals(this.tfF)) && (!bt.isNullOrNil(this.tfJ)))
+    if (("2".equals(this.unU)) && (!bs.isNullOrNil(this.unY)))
     {
-      if (!this.AaU) {
-        this.AaU = true;
+      if (!this.Bto) {
+        this.Bto = true;
       }
-      paramBoolean = a.a(paramMMActivity, this.tfG, this.tfJ, this.tfH, this.tfI, paramBoolean, paramOnClickListener);
+      paramBoolean = a.a(paramMMActivity, this.unV, this.unY, this.unW, this.unX, paramBoolean, paramOnClickListener);
       AppMethodBeat.o(70174);
       return paramBoolean;
     }
@@ -148,13 +148,13 @@ public class RealnameGuideHelper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70170);
-    paramParcel.writeParcelable(this.AaT, paramInt);
-    paramParcel.writeString(this.tfF);
-    paramParcel.writeString(this.tfG);
-    paramParcel.writeString(this.tfH);
-    paramParcel.writeString(this.tfI);
-    paramParcel.writeString(this.tfJ);
-    if (this.AaU) {}
+    paramParcel.writeParcelable(this.Btn, paramInt);
+    paramParcel.writeString(this.unU);
+    paramParcel.writeString(this.unV);
+    paramParcel.writeString(this.unW);
+    paramParcel.writeString(this.unX);
+    paramParcel.writeString(this.unY);
+    if (this.Bto) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);

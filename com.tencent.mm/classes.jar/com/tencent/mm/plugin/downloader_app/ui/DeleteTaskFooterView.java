@@ -17,38 +17,38 @@ import com.tencent.mm.plugin.downloader_app.b;
 public class DeleteTaskFooterView
   extends LinearLayout
 {
-  private boolean Tf;
-  private LinearLayout oiT;
-  ImageView oiU;
-  LinearLayout oiV;
-  TextView oiW;
-  ImageView oiX;
-  boolean oiY;
-  private d.c oiZ;
+  private boolean Ua;
+  private LinearLayout oMt;
+  ImageView oMu;
+  LinearLayout oMv;
+  TextView oMw;
+  ImageView oMx;
+  boolean oMy;
+  private d.c oMz;
   
   public DeleteTaskFooterView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(8981);
-    this.Tf = true;
-    this.oiY = false;
-    this.oiZ = new d.c()
+    this.Ua = true;
+    this.oMy = false;
+    this.oMz = new d.c()
     {
-      public final void jk(boolean paramAnonymousBoolean)
+      public final void jN(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(8978);
         DeleteTaskFooterView localDeleteTaskFooterView = DeleteTaskFooterView.this;
         if (paramAnonymousBoolean)
         {
-          localDeleteTaskFooterView.oiV.setClickable(true);
-          b.e(localDeleteTaskFooterView.oiX, "download_delete_enable");
-          localDeleteTaskFooterView.oiW.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099803));
+          localDeleteTaskFooterView.oMv.setClickable(true);
+          b.e(localDeleteTaskFooterView.oMx, "download_delete_enable");
+          localDeleteTaskFooterView.oMw.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099803));
           AppMethodBeat.o(8978);
           return;
         }
-        localDeleteTaskFooterView.oiV.setClickable(false);
-        b.e(localDeleteTaskFooterView.oiX, "download_delete_disable");
-        localDeleteTaskFooterView.oiW.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099737));
+        localDeleteTaskFooterView.oMv.setClickable(false);
+        b.e(localDeleteTaskFooterView.oMx, "download_delete_disable");
+        localDeleteTaskFooterView.oMw.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131099737));
         AppMethodBeat.o(8978);
       }
     };
@@ -59,7 +59,7 @@ public class DeleteTaskFooterView
   {
     AppMethodBeat.i(8983);
     super.onAttachedToWindow();
-    d.a(this.oiZ);
+    d.a(this.oMz);
     AppMethodBeat.o(8983);
   }
   
@@ -67,7 +67,7 @@ public class DeleteTaskFooterView
   {
     AppMethodBeat.i(8984);
     super.onDetachedFromWindow();
-    d.b(this.oiZ);
+    d.b(this.oMz);
     AppMethodBeat.o(8984);
   }
   
@@ -76,9 +76,9 @@ public class DeleteTaskFooterView
     AppMethodBeat.i(8982);
     super.onFinishInflate();
     View localView = LayoutInflater.from(getContext()).inflate(2131493691, this, true);
-    this.oiT = ((LinearLayout)localView.findViewById(2131298220));
-    this.oiU = ((ImageView)localView.findViewById(2131298219));
-    this.oiT.setOnClickListener(new View.OnClickListener()
+    this.oMt = ((LinearLayout)localView.findViewById(2131298220));
+    this.oMu = ((ImageView)localView.findViewById(2131298219));
+    this.oMt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -91,7 +91,7 @@ public class DeleteTaskFooterView
         for (;;)
         {
           if (DeleteTaskFooterView.c(DeleteTaskFooterView.this)) {
-            DeleteTaskFooterView.jm(DeleteTaskFooterView.a(DeleteTaskFooterView.this));
+            DeleteTaskFooterView.jP(DeleteTaskFooterView.a(DeleteTaskFooterView.this));
           }
           DeleteTaskFooterView.d(DeleteTaskFooterView.this);
           AppMethodBeat.o(8979);
@@ -101,19 +101,19 @@ public class DeleteTaskFooterView
         }
       }
     });
-    this.oiV = ((LinearLayout)localView.findViewById(2131298986));
-    this.oiV.setOnClickListener(new View.OnClickListener()
+    this.oMv = ((LinearLayout)localView.findViewById(2131298986));
+    this.oMv.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8980);
-        DeleteTaskFooterView.bRl();
+        DeleteTaskFooterView.bYA();
         AppMethodBeat.o(8980);
       }
     });
-    this.oiV.setClickable(false);
-    this.oiW = ((TextView)localView.findViewById(2131298982));
-    this.oiX = ((ImageView)localView.findViewById(2131298987));
+    this.oMv.setClickable(false);
+    this.oMw = ((TextView)localView.findViewById(2131298982));
+    this.oMx = ((ImageView)localView.findViewById(2131298987));
     AppMethodBeat.o(8982);
   }
 }

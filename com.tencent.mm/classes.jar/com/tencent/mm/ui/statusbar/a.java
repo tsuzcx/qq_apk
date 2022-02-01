@@ -11,9 +11,9 @@ public final class a
   public static void H(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(133798);
-    paramView = gn(paramView);
+    paramView = gB(paramView);
     if (paramView != null) {
-      paramView.wD(paramBoolean);
+      paramView.xK(paramBoolean);
     }
     AppMethodBeat.o(133798);
   }
@@ -26,19 +26,19 @@ public final class a
       AppMethodBeat.o(133797);
       return;
     }
-    if (!c.HlA)
+    if (!c.ILV)
     {
       AppMethodBeat.o(133797);
       return;
     }
-    b localb = gn(paramView);
+    b localb = gB(paramView);
     if (localb != null)
     {
       localb.L(paramInt, paramBoolean);
       AppMethodBeat.o(133797);
       return;
     }
-    paramView = com.tencent.mm.sdk.f.a.iV(paramView.getContext());
+    paramView = com.tencent.mm.sdk.f.a.jg(paramView.getContext());
     if (paramView != null)
     {
       paramView.getWindow().setStatusBarColor(paramInt);
@@ -47,7 +47,7 @@ public final class a
     AppMethodBeat.o(133797);
   }
   
-  private static b gn(View paramView)
+  private static b gB(View paramView)
   {
     AppMethodBeat.i(133796);
     if (paramView == null)

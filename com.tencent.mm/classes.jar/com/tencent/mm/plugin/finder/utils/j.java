@@ -1,119 +1,121 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.media.ExifInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import d.g.a.b;
+import d.g.b.k;
 import d.l;
+import d.n.n;
 import d.v;
-import java.util.Collection;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "", "exif", "Landroid/media/ExifInterface;", "(Landroid/media/ExifInterface;)V", "Latitude", "", "getLatitude", "()Ljava/lang/Float;", "setLatitude", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "Longitude", "getLongitude", "setLongitude", "TAG", "", "isValid", "", "()Z", "setValid", "(Z)V", "convertToDegree", "stringDMS", "(Ljava/lang/String;)Ljava/lang/Float;", "toString", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/utils/FinderOriginalUtil;", "", "()V", "ORIGINAL_TERMS_URL", "", "TAG", "debugOriginalEntrance", "", "getDebugOriginalEntrance", "()Z", "setDebugOriginalEntrance", "(Z)V", "debugOriginalNeedCheck", "getDebugOriginalNeedCheck", "setDebugOriginalNeedCheck", "checkInsertOriginalRedDot", "", "checkPostNeedOriginal", "context", "Lcom/tencent/mm/ui/MMActivity;", "continuePost", "Lkotlin/Function0;", "getRemainApplyCount", "", "getRemainForwardCount", "getSelfOriginalEntranceFlag", "getSelfOriginalFlag", "getSpamDay", "getSpamYearFlag", "isSelfOriginal", "isSelfOriginalNeedCheck", "isSelfOriginalSpam", "setSpanTouch", "tv", "Landroid/widget/TextView;", "text", "Landroid/text/Spannable;", "spanLink", "Landroid/content/Context;", "h5url", "allText", "linkText", "descTv", "logTag", "rawDescText", "startTag", "endTag", "plugin-finder_release"})
 public final class j
 {
-  private final String TAG;
-  private boolean cBN;
-  public Float qTd;
-  public Float qTe;
+  private static final String TAG = "Finder.FinderOriginalUtil";
+  public static final j rOX;
   
-  public j(ExifInterface paramExifInterface)
+  static
   {
-    AppMethodBeat.i(167973);
-    this.TAG = "Finder.GeoDegree";
-    Object localObject = paramExifInterface.getAttribute("GPSLatitude");
-    String str2 = paramExifInterface.getAttribute("GPSLatitudeRef");
-    String str1 = paramExifInterface.getAttribute("GPSLongitude");
-    paramExifInterface = paramExifInterface.getAttribute("GPSLongitudeRef");
-    if ((localObject != null) && (str2 != null) && (str1 != null) && (paramExifInterface != null))
-    {
-      this.cBN = true;
-      if (d.g.b.k.g(str2, "N")) {}
-      for (this.qTd = ZW((String)localObject); d.g.b.k.g(paramExifInterface, "E"); this.qTd = Float.valueOf(0.0F - ((Float)localObject).floatValue()))
-      {
-        this.qTe = ZW(str1);
-        AppMethodBeat.o(167973);
-        return;
-        localObject = ZW((String)localObject);
-        if (localObject == null) {
-          d.g.b.k.fvU();
-        }
-      }
-      paramExifInterface = ZW(str1);
-      if (paramExifInterface == null) {
-        d.g.b.k.fvU();
-      }
-      this.qTe = Float.valueOf(0.0F - paramExifInterface.floatValue());
-    }
-    AppMethodBeat.o(167973);
+    AppMethodBeat.i(203617);
+    rOX = new j();
+    TAG = "Finder.FinderOriginalUtil";
+    AppMethodBeat.o(203617);
   }
   
-  private final Float ZW(String paramString)
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, TextView paramTextView, String paramString4)
   {
-    AppMethodBeat.i(167971);
-    try
+    AppMethodBeat.i(203612);
+    k.h(paramContext, "context");
+    k.h(paramString1, "h5url");
+    k.h(paramString2, "allText");
+    k.h(paramString3, "linkText");
+    k.h(paramTextView, "descTv");
+    k.h(paramString4, "logTag");
+    int i = n.a((CharSequence)paramString2, paramString3, 0, false, 6);
+    int j = i + paramString3.length();
+    paramString3 = new SpannableString((CharSequence)paramString2);
+    if ((i >= 0) && (j <= paramString2.length()))
     {
-      paramString = (CharSequence)paramString;
-      paramString = ((Collection)new d.n.k(",").r(paramString, 3)).toArray(new String[0]);
-      if (paramString == null)
-      {
-        paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-        AppMethodBeat.o(167971);
-        throw paramString;
-      }
+      paramString2 = ai.getContext();
+      k.g(paramString2, "MMApplicationContext.getContext()");
+      int k = paramString2.getResources().getColor(2131100547);
+      paramString2 = ai.getContext();
+      k.g(paramString2, "MMApplicationContext.getContext()");
+      paramString3.setSpan(new com.tencent.mm.plugin.finder.view.g(paramString1, k, paramString2.getResources().getColor(2131099658), (b)new j.b(paramString4, paramContext)), i, j, 17);
     }
-    catch (Throwable paramString)
-    {
-      ad.printErrStackTrace(this.TAG, paramString, "convertToDegree", new Object[0]);
-      AppMethodBeat.o(167971);
-      return null;
-    }
-    paramString = (String[])paramString;
-    Object localObject = (CharSequence)paramString[0];
-    localObject = ((Collection)new d.n.k("/").r((CharSequence)localObject, 2)).toArray(new String[0]);
-    if (localObject == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    localObject = (String[])localObject;
-    double d1 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
-    localObject = (CharSequence)paramString[1];
-    localObject = ((Collection)new d.n.k("/").r((CharSequence)localObject, 2)).toArray(new String[0]);
-    if (localObject == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    localObject = (String[])localObject;
-    double d3 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
-    paramString = (CharSequence)paramString[2];
-    paramString = ((Collection)new d.n.k("/").r(paramString, 2)).toArray(new String[0]);
-    if (paramString == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(167971);
-      throw paramString;
-    }
-    paramString = (String[])paramString;
-    double d2 = Double.parseDouble(paramString[0]) / Double.parseDouble(paramString[1]);
-    d3 /= 60.0D;
-    float f = (float)(d2 / 3600.0D + (d1 + d3));
-    AppMethodBeat.o(167971);
-    return Float.valueOf(f);
+    paramTextView.setText((CharSequence)paramString3);
+    paramTextView.setOnTouchListener((View.OnTouchListener)new j.a((Spannable)paramString3, paramTextView));
+    AppMethodBeat.o(203612);
   }
   
-  public final String toString()
+  public static int cCW()
   {
-    AppMethodBeat.i(167972);
-    String str = String.valueOf(this.qTd) + ", " + String.valueOf(this.qTe);
-    AppMethodBeat.o(167972);
-    return str;
+    AppMethodBeat.i(203613);
+    Object localObject = com.tencent.mm.kernel.g.agR();
+    k.g(localObject, "MMKernel.storage()");
+    localObject = ((e)localObject).agA().get(ah.a.GTZ, Integer.valueOf(1));
+    if (localObject == null)
+    {
+      localObject = new v("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(203613);
+      throw ((Throwable)localObject);
+    }
+    int i = ((Integer)localObject).intValue();
+    if (i < 0)
+    {
+      AppMethodBeat.o(203613);
+      return 0;
+    }
+    AppMethodBeat.o(203613);
+    return i;
+  }
+  
+  public static int cCX()
+  {
+    AppMethodBeat.i(203614);
+    e locale = com.tencent.mm.kernel.g.agR();
+    k.g(locale, "MMKernel.storage()");
+    int i = locale.agA().getInt(ah.a.GTY, 0);
+    AppMethodBeat.o(203614);
+    return i;
+  }
+  
+  public static boolean cCY()
+  {
+    AppMethodBeat.i(203615);
+    e locale = com.tencent.mm.kernel.g.agR();
+    k.g(locale, "MMKernel.storage()");
+    if (locale.agA().getInt(ah.a.GUc, 0) > 0)
+    {
+      AppMethodBeat.o(203615);
+      return true;
+    }
+    AppMethodBeat.o(203615);
+    return false;
+  }
+  
+  public static int cCZ()
+  {
+    AppMethodBeat.i(203616);
+    e locale = com.tencent.mm.kernel.g.agR();
+    k.g(locale, "MMKernel.storage()");
+    int i = locale.agA().getInt(ah.a.GUb, 0);
+    AppMethodBeat.o(203616);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.j
  * JD-Core Version:    0.7.0.1
  */

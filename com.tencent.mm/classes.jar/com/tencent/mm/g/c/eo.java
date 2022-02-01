@@ -3,39 +3,74 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class eo
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
-  private static final int eSM = "sceneList".hashCode();
-  private static final int eSN = "cgiList".hashCode();
-  private static final int ekd;
-  private static final int eke;
-  private static final int elJ;
-  private static final int eme = "username".hashCode();
-  private static final int enk = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eFD = "fileName".hashCode();
+  private static final int eTs = "musicId".hashCode();
+  private static final int eVL = "musicUrl".hashCode();
+  private static final int eVM = "indexBitData".hashCode();
+  private static final int eVN = "fileCacheComplete".hashCode();
+  private static final int eVO = "pieceFileMIMEType".hashCode();
+  private static final int eVP = "removeDirtyBit".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eSK = true;
-  private boolean eSL = true;
-  private boolean ejW = true;
-  private boolean ejX = true;
-  private boolean els = true;
-  private boolean emb = true;
-  private boolean enf = true;
-  public String field_appId;
-  public String field_cgiList;
-  public long field_endTime;
-  public int field_reportId;
-  public String field_sceneList;
-  public long field_startTime;
-  public String field_username;
+  private boolean eFa = true;
+  private boolean eSI = true;
+  private boolean eVG = true;
+  private boolean eVH = true;
+  private boolean eVI = true;
+  private boolean eVJ = true;
+  private boolean eVK = true;
+  public int field_fileCacheComplete;
+  public String field_fileName;
+  public byte[] field_indexBitData;
+  public String field_musicId;
+  public String field_musicUrl;
+  public String field_pieceFileMIMEType;
+  public int field_removeDirtyBit;
   
-  static
+  public static c.a Th()
   {
-    elJ = "appId".hashCode();
-    ekd = "startTime".hashCode();
-    eke = "endTime".hashCode();
+    c.a locala = new c.a();
+    locala.GvF = new Field[7];
+    locala.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "musicId";
+    locala.GvH.put("musicId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.GvG = "musicId";
+    locala.columns[1] = "musicUrl";
+    locala.GvH.put("musicUrl", "TEXT");
+    localStringBuilder.append(" musicUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "fileName";
+    locala.GvH.put("fileName", "TEXT");
+    localStringBuilder.append(" fileName TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "indexBitData";
+    locala.GvH.put("indexBitData", "BLOB");
+    localStringBuilder.append(" indexBitData BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "fileCacheComplete";
+    locala.GvH.put("fileCacheComplete", "INTEGER");
+    localStringBuilder.append(" fileCacheComplete INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "pieceFileMIMEType";
+    locala.GvH.put("pieceFileMIMEType", "TEXT");
+    localStringBuilder.append(" pieceFileMIMEType TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "removeDirtyBit";
+    locala.GvH.put("removeDirtyBit", "INTEGER");
+    localStringBuilder.append(" removeDirtyBit INTEGER");
+    locala.columns[7] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -51,11 +86,11 @@ public abstract class eo
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eme != k) {
+      if (eTs != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.emb = true;
+      this.field_musicId = paramCursor.getString(i);
+      this.eSI = true;
     }
     for (;;)
     {
@@ -63,18 +98,18 @@ public abstract class eo
       break label20;
       break;
       label65:
-      if (elJ == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (ekd == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (eke == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (eSM == k) {
-        this.field_sceneList = paramCursor.getString(i);
-      } else if (eSN == k) {
-        this.field_cgiList = paramCursor.getString(i);
-      } else if (enk == k) {
-        this.field_reportId = paramCursor.getInt(i);
+      if (eVL == k) {
+        this.field_musicUrl = paramCursor.getString(i);
+      } else if (eFD == k) {
+        this.field_fileName = paramCursor.getString(i);
+      } else if (eVM == k) {
+        this.field_indexBitData = paramCursor.getBlob(i);
+      } else if (eVN == k) {
+        this.field_fileCacheComplete = paramCursor.getInt(i);
+      } else if (eVO == k) {
+        this.field_pieceFileMIMEType = paramCursor.getString(i);
+      } else if (eVP == k) {
+        this.field_removeDirtyBit = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -84,26 +119,26 @@ public abstract class eo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emb) {
-      localContentValues.put("username", this.field_username);
+    if (this.eSI) {
+      localContentValues.put("musicId", this.field_musicId);
     }
-    if (this.els) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eVG) {
+      localContentValues.put("musicUrl", this.field_musicUrl);
     }
-    if (this.ejW) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    if (this.eFa) {
+      localContentValues.put("fileName", this.field_fileName);
     }
-    if (this.ejX) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    if (this.eVH) {
+      localContentValues.put("indexBitData", this.field_indexBitData);
     }
-    if (this.eSK) {
-      localContentValues.put("sceneList", this.field_sceneList);
+    if (this.eVI) {
+      localContentValues.put("fileCacheComplete", Integer.valueOf(this.field_fileCacheComplete));
     }
-    if (this.eSL) {
-      localContentValues.put("cgiList", this.field_cgiList);
+    if (this.eVJ) {
+      localContentValues.put("pieceFileMIMEType", this.field_pieceFileMIMEType);
     }
-    if (this.enf) {
-      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
+    if (this.eVK) {
+      localContentValues.put("removeDirtyBit", Integer.valueOf(this.field_removeDirtyBit));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

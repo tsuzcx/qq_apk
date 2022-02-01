@@ -11,11 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class a
   implements b
 {
-  private static final HashMap<String, g.a> Izq = new HashMap();
+  private static final HashMap<String, g.a> KaZ = new HashMap();
   
   public void a(g paramg)
   {
-    paramg = paramg.Ize.Izg;
+    paramg = paramg.KaN.KaP;
     int i;
     do
     {
@@ -23,16 +23,16 @@ public abstract class a
     } while (!paramg.compareAndSet(i, i - 1));
   }
   
-  public final g aOb(String paramString)
+  public final g aTE(String paramString)
   {
-    synchronized (Izq)
+    synchronized (KaZ)
     {
-      g.a locala2 = (g.a)Izq.get(paramString);
+      g.a locala2 = (g.a)KaZ.get(paramString);
       g.a locala1 = locala2;
       if (locala2 == null)
       {
         locala1 = new g.a(paramString, new AtomicInteger());
-        Izq.put(paramString, locala1);
+        KaZ.put(paramString, locala1);
       }
       return new g(locala1);
     }
@@ -42,7 +42,7 @@ public abstract class a
   
   public final void d(g paramg)
   {
-    paramg = paramg.Ize.Izg;
+    paramg = paramg.KaN.KaP;
     int i;
     do
     {
@@ -50,16 +50,16 @@ public abstract class a
     } while (!paramg.compareAndSet(i, i + 1));
   }
   
-  public final Map<String, Integer> fod()
+  public final Map<String, Integer> fEt()
   {
     HashMap localHashMap2 = new HashMap();
-    synchronized (Izq)
+    synchronized (KaZ)
     {
-      Iterator localIterator = Izq.values().iterator();
+      Iterator localIterator = KaZ.values().iterator();
       while (localIterator.hasNext())
       {
         g.a locala = (g.a)localIterator.next();
-        int i = locala.Izg.get();
+        int i = locala.KaP.get();
         if (i > 0) {
           localHashMap2.put(locala.key, Integer.valueOf(i));
         }

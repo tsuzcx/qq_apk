@@ -1,7 +1,7 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -18,7 +18,7 @@ public final class j
     this.fileName = paramString;
   }
   
-  private boolean eD(boolean paramBoolean)
+  private boolean eX(boolean paramBoolean)
   {
     AppMethodBeat.i(130042);
     if (this.fileName.length() >= 0)
@@ -33,16 +33,16 @@ public final class j
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ad.d("MicroMsg.SilkFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
+      ac.d("MicroMsg.SilkFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
       try
       {
-        this.file = i.cS(this.fileName, paramBoolean);
+        this.file = i.cY(this.fileName, paramBoolean);
         AppMethodBeat.o(130042);
         return true;
       }
       catch (Exception localException)
       {
-        ad.e("MicroMsg.SilkFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        ac.e("MicroMsg.SilkFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
         this.file = null;
         AppMethodBeat.o(130042);
       }
@@ -52,7 +52,7 @@ public final class j
     return false;
   }
   
-  public final void aDm()
+  public final void aKd()
   {
     AppMethodBeat.i(130041);
     if (this.file != null) {
@@ -60,7 +60,7 @@ public final class j
       {
         this.file.close();
         this.file = null;
-        ad.d("MicroMsg.SilkFileOperator", "Close :" + this.fileName);
+        ac.d("MicroMsg.SilkFileOperator", "Close :" + this.fileName);
         AppMethodBeat.o(130041);
         return;
       }
@@ -79,7 +79,7 @@ public final class j
       AppMethodBeat.o(130043);
       return localg;
     }
-    if ((this.file == null) && (!eD(false)))
+    if ((this.file == null) && (!eX(false)))
     {
       localg.ret = -2;
       AppMethodBeat.o(130043);
@@ -91,21 +91,21 @@ public final class j
       long l = this.file.length();
       this.file.seek(paramInt1);
       int i = this.file.read(localg.buf, 0, paramInt2);
-      ad.d("MicroMsg.SilkFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt1 + " readRet:" + i + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
+      ac.d("MicroMsg.SilkFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt1 + " readRet:" + i + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       paramInt2 = i;
       if (i < 0) {
         paramInt2 = 0;
       }
-      localg.cZc = paramInt2;
-      localg.hAL = (paramInt2 + paramInt1);
+      localg.cWy = paramInt2;
+      localg.ibm = (paramInt2 + paramInt1);
       localg.ret = 0;
       AppMethodBeat.o(130043);
       return localg;
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.SilkFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt1 + "  failed:[" + localException.getMessage() + "] ");
-      aDm();
+      ac.e("MicroMsg.SilkFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt1 + "  failed:[" + localException.getMessage() + "] ");
+      aKd();
       localg.ret = -1;
       AppMethodBeat.o(130043);
     }
@@ -125,7 +125,7 @@ public final class j
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      if ((this.file != null) || (eD(true))) {
+      if ((this.file != null) || (eX(true))) {
         break;
       }
       AppMethodBeat.o(130044);
@@ -155,8 +155,8 @@ public final class j
       }
       catch (Exception paramArrayOfByte)
       {
-        ad.e("MicroMsg.SilkFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + paramInt2 + " failed:[" + paramArrayOfByte.getMessage() + "]");
-        aDm();
+        ac.e("MicroMsg.SilkFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + paramInt2 + " failed:[" + paramArrayOfByte.getMessage() + "]");
+        aKd();
         AppMethodBeat.o(130044);
         return -3;
       }
@@ -169,7 +169,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvoice.j
  * JD-Core Version:    0.7.0.1
  */

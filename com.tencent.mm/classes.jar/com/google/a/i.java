@@ -60,12 +60,12 @@ public final class i
     return localIterator;
   }
   
-  public final Number xn()
+  public final Number xa()
   {
     AppMethodBeat.i(108122);
     if (this.elements.size() == 1)
     {
-      localObject = ((k)this.elements.get(0)).xn();
+      localObject = ((k)this.elements.get(0)).xa();
       AppMethodBeat.o(108122);
       return localObject;
     }
@@ -74,12 +74,12 @@ public final class i
     throw ((Throwable)localObject);
   }
   
-  public final String xo()
+  public final String xb()
   {
     AppMethodBeat.i(108123);
     if (this.elements.size() == 1)
     {
-      localObject = ((k)this.elements.get(0)).xo();
+      localObject = ((k)this.elements.get(0)).xb();
       AppMethodBeat.o(108123);
       return localObject;
     }
@@ -90,7 +90,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.a.i
  * JD-Core Version:    0.7.0.1
  */

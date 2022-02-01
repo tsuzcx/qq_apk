@@ -14,6 +14,7 @@ import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.hotplug.IncrementComponentManager;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.lang.reflect.Field;
 
 public class TinkerHackInstrumentation
@@ -96,10 +97,13 @@ public class TinkerHackInstrumentation
     paramClassLoader = (ComponentName)paramIntent.getParcelableExtra("tinker_iek_old_component");
     if (paramClassLoader == null)
     {
-      new StringBuilder("oldComponent was null, start ").append(paramIntent.getComponent()).append(" next.");
+      ShareTinkerLog.w("Tinker.Instrumentation", "oldComponent was null, start " + paramIntent.getComponent() + " next.", new Object[0]);
       return false;
     }
-    if (IncrementComponentManager.queryActivityInfo(paramClassLoader.getClassName()) == null) {
+    String str = paramClassLoader.getClassName();
+    if (IncrementComponentManager.queryActivityInfo(str) == null)
+    {
+      ShareTinkerLog.e("Tinker.Instrumentation", "Failed to query target activity's info, perhaps the target is not hotpluged component. Target: ".concat(String.valueOf(str)), new Object[0]);
       return false;
     }
     paramIntent.setComponent(paramClassLoader);
@@ -141,9 +145,12 @@ public class TinkerHackInstrumentation
   
   public void install()
   {
-    if (!(this.mInstrumentationField.get(this.mActivityThread) instanceof TinkerHackInstrumentation)) {
-      this.mInstrumentationField.set(this.mActivityThread, this);
+    if ((this.mInstrumentationField.get(this.mActivityThread) instanceof TinkerHackInstrumentation))
+    {
+      ShareTinkerLog.w("Tinker.Instrumentation", "already installed, skip rest logic.", new Object[0]);
+      return;
     }
+    this.mInstrumentationField.set(this.mActivityThread, this);
   }
   
   public Activity newActivity(Class<?> paramClass, Context paramContext, IBinder paramIBinder, Application paramApplication, Intent paramIntent, ActivityInfo paramActivityInfo, CharSequence paramCharSequence, Activity paramActivity, String paramString, Object paramObject)

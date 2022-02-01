@@ -24,7 +24,7 @@ public final class d
     this.context = paramContext;
   }
   
-  private static b R(String paramString)
+  private static b T(String paramString)
   {
     AppMethodBeat.i(77596);
     Class localClass;
@@ -85,7 +85,7 @@ public final class d
     throw paramClass;
   }
   
-  public final List<b> pn()
+  public final List<b> px()
   {
     AppMethodBeat.i(77595);
     Log.isLoggable("ManifestParser", 3);
@@ -109,7 +109,7 @@ public final class d
         String str = (String)localIterator.next();
         if ("GlideModule".equals(localApplicationInfo.metaData.get(str)))
         {
-          localArrayList.add(R(str));
+          localArrayList.add(T(str));
           Log.isLoggable("ManifestParser", 3);
         }
       }
@@ -127,7 +127,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.bumptech.glide.d.d
  * JD-Core Version:    0.7.0.1
  */

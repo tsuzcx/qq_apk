@@ -8,27 +8,27 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactRemarkAndLabelPreference
   extends Preference
 {
-  private TextView kEu;
+  private TextView lfN;
   private Context mContext;
-  private String pTa;
-  private TextView uAZ;
-  private TextView uBa;
-  private boolean uBb;
-  private String uBc;
-  private String uBd;
+  private String qBH;
+  private TextView vJS;
+  private TextView vJT;
+  private boolean vJU;
+  private String vJV;
+  private String vJW;
   
   public ContactRemarkAndLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.uBb = false;
+    this.vJU = false;
     this.mContext = paramContext;
   }
   
@@ -36,7 +36,7 @@ public class ContactRemarkAndLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27044);
-    this.uBb = false;
+    this.vJU = false;
     this.mContext = paramContext;
     setLayoutResource(2131494804);
     AppMethodBeat.o(27044);
@@ -45,57 +45,57 @@ public class ContactRemarkAndLabelPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27046);
-    this.kEu = ((TextView)paramView.findViewById(2131305902));
-    this.uAZ = ((TextView)paramView.findViewById(2131303978));
-    this.uBa = ((TextView)paramView.findViewById(2131301282));
+    this.lfN = ((TextView)paramView.findViewById(2131305902));
+    this.vJS = ((TextView)paramView.findViewById(2131303978));
+    this.vJT = ((TextView)paramView.findViewById(2131301282));
     RelativeLayout.LayoutParams localLayoutParams;
-    if ((this.kEu != null) && (!bt.isNullOrNil(this.pTa)))
+    if ((this.lfN != null) && (!bs.isNullOrNil(this.qBH)))
     {
-      this.kEu.setVisibility(0);
-      this.kEu.setText(this.pTa);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.kEu.getLayoutParams();
-      localLayoutParams.width = a.ao(this.mContext, 2131165370);
-      this.kEu.setLayoutParams(localLayoutParams);
+      this.lfN.setVisibility(0);
+      this.lfN.setText(this.qBH);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.lfN.getLayoutParams();
+      localLayoutParams.width = a.au(this.mContext, 2131165370);
+      this.lfN.setLayoutParams(localLayoutParams);
     }
-    if (this.uAZ != null) {
-      if (!this.uBb)
+    if (this.vJS != null) {
+      if (!this.vJU)
       {
-        this.uAZ.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        this.vJS.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         i = 0;
-        if (!bt.isNullOrNil(this.uBc))
+        if (!bs.isNullOrNil(this.vJV))
         {
-          this.uAZ.setVisibility(0);
-          this.uAZ.setText(k.b(this.mContext, bt.nullAsNil(this.uBc), this.uAZ.getTextSize()));
+          this.vJS.setVisibility(0);
+          this.vJS.setText(k.b(this.mContext, bs.nullAsNil(this.vJV), this.vJS.getTextSize()));
         }
       }
     }
     for (int i = 1;; i = 0)
     {
       int j = i;
-      if (this.uBa != null)
+      if (this.vJT != null)
       {
         j = i;
-        if (!bt.isNullOrNil(this.uBd))
+        if (!bs.isNullOrNil(this.vJW))
         {
           j = i | 0x2;
-          this.uBa.setVisibility(0);
-          this.uBa.setText(this.uBd);
+          this.vJT.setVisibility(0);
+          this.vJT.setText(this.vJW);
         }
       }
       if (j == 1) {
-        ((RelativeLayout.LayoutParams)this.uAZ.getLayoutParams()).addRule(15);
+        ((RelativeLayout.LayoutParams)this.vJS.getLayoutParams()).addRule(15);
       }
       if (j == 2)
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.uBa.getLayoutParams();
+        localLayoutParams = (RelativeLayout.LayoutParams)this.vJT.getLayoutParams();
         localLayoutParams.addRule(3, 0);
         localLayoutParams.addRule(15);
       }
       super.onBindView(paramView);
       AppMethodBeat.o(27046);
       return;
-      this.uAZ.setVisibility(0);
-      this.uAZ.setCompoundDrawablesWithIntrinsicBounds(2131689872, 0, 0, 0);
+      this.vJS.setVisibility(0);
+      this.vJS.setCompoundDrawablesWithIntrinsicBounds(2131689872, 0, 0, 0);
       i = 1;
       break;
     }

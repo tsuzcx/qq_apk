@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.ext.d;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.g.a.bk;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.ext.openapi.provider.ExtControlProviderOpenApi;
 import com.tencent.mm.pluginsdk.h.a.a.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.BufferedReader;
@@ -25,50 +25,64 @@ import java.util.Iterator;
 
 public final class c
 {
-  private static com.tencent.mm.sdk.b.c iop;
-  private static HashSet<String> pLQ;
-  private static HashSet<String> pLR;
-  private static ArrayList<a> pLS;
-  private static HashMap<String, e.a> pLT;
+  private static com.tencent.mm.sdk.b.c iOv;
+  private static ArrayList<a> quA;
+  private static HashMap<String, e.a> quB;
+  private static HashSet<String> quy;
+  private static HashSet<String> quz;
   
   static
   {
     AppMethodBeat.i(24489);
-    pLQ = new HashSet();
-    pLR = new HashSet();
-    pLS = new ArrayList();
-    iop = new com.tencent.mm.sdk.b.c() {};
-    pLT = new HashMap();
+    quy = new HashSet();
+    quz = new HashSet();
+    quA = new ArrayList();
+    iOv = new com.tencent.mm.sdk.b.c() {};
+    quB = new HashMap();
     AppMethodBeat.o(24489);
   }
   
-  public static void XA(String paramString)
+  public static void a(String paramString, e.a parama)
+  {
+    AppMethodBeat.i(24481);
+    quB.put(paramString, parama);
+    AppMethodBeat.o(24481);
+  }
+  
+  public static void abW(String paramString)
+  {
+    AppMethodBeat.i(24479);
+    quy.add(paramString);
+    AppMethodBeat.o(24479);
+  }
+  
+  public static void abX(String paramString)
   {
     AppMethodBeat.i(24480);
-    pLR.add(paramString);
+    quz.add(paramString);
     AppMethodBeat.o(24480);
   }
   
-  public static e.a XB(String paramString)
+  public static e.a abY(String paramString)
   {
     AppMethodBeat.i(24482);
-    paramString = (e.a)pLT.get(paramString);
+    paramString = (e.a)quB.get(paramString);
     AppMethodBeat.o(24482);
     return paramString;
   }
   
-  public static boolean XC(String paramString)
+  public static boolean abZ(String paramString)
   {
     AppMethodBeat.i(24484);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.ExtQbarDataManager", "hy: null in fastJudgeInWhitelist");
+      ac.w("MicroMsg.ExtQbarDataManager", "hy: null in fastJudgeInWhitelist");
       AppMethodBeat.o(24484);
       return false;
     }
-    if (pLQ.contains(paramString))
+    if (quy.contains(paramString))
     {
-      ad.i("MicroMsg.ExtQbarDataManager", "hy: %s already in whitelist", new Object[] { paramString });
+      ac.i("MicroMsg.ExtQbarDataManager", "hy: %s already in whitelist", new Object[] { paramString });
       AppMethodBeat.o(24484);
       return true;
     }
@@ -76,18 +90,18 @@ public final class c
     return false;
   }
   
-  public static boolean XD(String paramString)
+  public static boolean aca(String paramString)
   {
     AppMethodBeat.i(24485);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.ExtQbarDataManager", "hy: null in fastJudgeInBlacklist");
+      ac.w("MicroMsg.ExtQbarDataManager", "hy: null in fastJudgeInBlacklist");
       AppMethodBeat.o(24485);
       return false;
     }
-    if (pLR.contains(paramString))
+    if (quz.contains(paramString))
     {
-      ad.i("MicroMsg.ExtQbarDataManager", "hy: %s already in blacklist", new Object[] { paramString });
+      ac.i("MicroMsg.ExtQbarDataManager", "hy: %s already in blacklist", new Object[] { paramString });
       AppMethodBeat.o(24485);
       return true;
     }
@@ -95,17 +109,17 @@ public final class c
     return false;
   }
   
-  public static b.b XE(String paramString)
+  public static b.b acb(String paramString)
   {
     AppMethodBeat.i(24486);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.w("MicroMsg.ExtQbarDataManager", "hy: url is null when get config");
-      paramString = b.b.pLO;
+      ac.w("MicroMsg.ExtQbarDataManager", "hy: url is null when get config");
+      paramString = b.b.quw;
       AppMethodBeat.o(24486);
       return paramString;
     }
-    Iterator localIterator = pLS.iterator();
+    Iterator localIterator = quA.iterator();
     Object localObject;
     label189:
     b.b localb;
@@ -118,12 +132,12 @@ public final class c
       if (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        if (locala.pLG == b.a.pLI)
+        if (locala.quo == b.a.quq)
         {
           if (paramString.startsWith(locala.url))
           {
-            ad.i("MicroMsg.ExtQbarDataManager", "hy: match prefix: %s", new Object[] { locala.url });
-            paramString = locala.pLH;
+            ac.i("MicroMsg.ExtQbarDataManager", "hy: match prefix: %s", new Object[] { locala.url });
+            paramString = locala.qup;
             AppMethodBeat.o(24486);
             return paramString;
           }
@@ -133,28 +147,28 @@ public final class c
           try
           {
             localObject = new URL(paramString).getHost();
-            ad.d("MicroMsg.ExtQbarDataManager", "hy: host is %s", new Object[] { localObject });
-            if (!bt.T(new String[0])) {
+            ac.d("MicroMsg.ExtQbarDataManager", "hy: host is %s", new Object[] { localObject });
+            if (!bs.T(new String[0])) {
               break label189;
             }
-            ad.w("MicroMsg.ExtQbarDataManager", "hy: no valid host");
+            ac.w("MicroMsg.ExtQbarDataManager", "hy: no valid host");
           }
           catch (MalformedURLException localMalformedURLException)
           {
-            ad.printErrStackTrace("MicroMsg.ExtQbarDataManager", localMalformedURLException, "hy: error in url convert: %s", new Object[] { paramString });
+            ac.printErrStackTrace("MicroMsg.ExtQbarDataManager", localMalformedURLException, "hy: error in url convert: %s", new Object[] { paramString });
           }
           continue;
-          if (localMalformedURLException.pLG == b.a.pLK)
+          if (localMalformedURLException.quo == b.a.qus)
           {
             if (localMalformedURLException.url.equals(localObject))
             {
-              ad.i("MicroMsg.ExtQbarDataManager", "hy: match domain: %s", new Object[] { localMalformedURLException.pLG });
-              localb = localMalformedURLException.pLH;
+              ac.i("MicroMsg.ExtQbarDataManager", "hy: match domain: %s", new Object[] { localMalformedURLException.quo });
+              localb = localMalformedURLException.qup;
               AppMethodBeat.o(24486);
               return localb;
             }
           }
-          else if (localb.pLG == b.a.pLJ)
+          else if (localb.quo == b.a.qur)
           {
             arrayOfString = localb.url.split("\\.");
             localObject = ((String)localObject).split("\\.");
@@ -181,13 +195,13 @@ public final class c
         if (k == 0) {
           break;
         }
-        ad.i("MicroMsg.ExtQbarDataManager", "hy: match %s subdomain: %s", new Object[] { paramString, localb.url });
-        localb = localb.pLH;
+        ac.i("MicroMsg.ExtQbarDataManager", "hy: match %s subdomain: %s", new Object[] { paramString, localb.url });
+        localb = localb.qup;
         AppMethodBeat.o(24486);
         return localb;
-        ad.e("MicroMsg.ExtQbarDataManager", "hy: damn it impossible!");
+        ac.e("MicroMsg.ExtQbarDataManager", "hy: damn it impossible!");
         break;
-        paramString = b.b.pLO;
+        paramString = b.b.quw;
         AppMethodBeat.o(24486);
         return paramString;
       }
@@ -196,30 +210,23 @@ public final class c
     }
   }
   
-  public static void Xz(String paramString)
+  public static void clearCache()
   {
-    AppMethodBeat.i(24479);
-    pLQ.add(paramString);
-    AppMethodBeat.o(24479);
+    AppMethodBeat.i(24483);
+    quB.clear();
+    AppMethodBeat.o(24483);
   }
   
-  public static void a(String paramString, e.a parama)
-  {
-    AppMethodBeat.i(24481);
-    pLT.put(paramString, parama);
-    AppMethodBeat.o(24481);
-  }
-  
-  private static String cfd()
+  private static String cmK()
   {
     AppMethodBeat.i(24475);
     if (ExtControlProviderOpenApi.IS_DEBUG) {}
-    for (String str = aj.getContext().getExternalCacheDir().getParent() + "/extqbar";; str = aj.getContext().getFilesDir().getParent() + "/extqbar")
+    for (String str = ai.getContext().getExternalCacheDir().getParent() + "/extqbar";; str = ai.getContext().getFilesDir().getParent() + "/extqbar")
     {
       e locale = new e(str);
       if (!locale.exists())
       {
-        ad.i("MicroMsg.ExtQbarDataManager", "hy: face dir not exist. mk dir");
+        ac.i("MicroMsg.ExtQbarDataManager", "hy: face dir not exist. mk dir");
         locale.mkdirs();
       }
       str = str + "/ext_qbar_config.csv";
@@ -228,13 +235,13 @@ public final class c
     }
   }
   
-  private static void cfe()
+  private static void cmL()
   {
     AppMethodBeat.i(24476);
-    if (!i.eK(cfd()))
+    if (!i.eA(cmK()))
     {
-      ad.w("MicroMsg.ExtQbarDataManager", "hy: not found csv file");
-      g.aeS().a(new m(46), 0);
+      ac.w("MicroMsg.ExtQbarDataManager", "hy: not found csv file");
+      g.agi().a(new m(46), 0);
       AppMethodBeat.o(24476);
       return;
     }
@@ -245,32 +252,32 @@ public final class c
       String[] arrayOfString;
       try
       {
-        Object localObject1 = i.aMP(cfd());
-        ad.i("MicroMsg.ExtQbarDataManager", "hy: found qrcode config");
-        ad.v("MicroMsg.ExtQbarDataManager", "hy: qrcode config is %s", new Object[] { localObject1 });
-        if (bt.isNullOrNil((String)localObject1)) {
-          ad.w("MicroMsg.ExtQbarDataManager", "hy: no preset black/white config");
+        Object localObject1 = i.aSr(cmK());
+        ac.i("MicroMsg.ExtQbarDataManager", "hy: found qrcode config");
+        ac.v("MicroMsg.ExtQbarDataManager", "hy: qrcode config is %s", new Object[] { localObject1 });
+        if (bs.isNullOrNil((String)localObject1)) {
+          ac.w("MicroMsg.ExtQbarDataManager", "hy: no preset black/white config");
         }
         localObject1 = new BufferedReader(new StringReader((String)localObject1));
-        long l = bt.GC();
+        long l = bs.Gn();
         try
         {
           localObject2 = ((BufferedReader)localObject1).readLine();
           if (localObject2 != null)
           {
-            ad.d("MicroMsg.ExtQbarDataManager", "hy: retrieving line");
+            ac.d("MicroMsg.ExtQbarDataManager", "hy: retrieving line");
             arrayOfString = ((String)localObject2).split(",");
             if (arrayOfString.length >= 3) {
               continue;
             }
-            ad.w("MicroMsg.ExtQbarDataManager", "hy: line %s not qualified length!", new Object[] { localObject2 });
+            ac.w("MicroMsg.ExtQbarDataManager", "hy: line %s not qualified length!", new Object[] { localObject2 });
           }
           localObject2 = new a();
         }
         catch (Exception localException)
         {
-          ad.printErrStackTrace("MicroMsg.ExtQbarDataManager", localException, "hy: exception when parse config!", new Object[0]);
-          ad.i("MicroMsg.ExtQbarDataManager", "hy: qrcode config retrieved using %d ms", new Object[] { Long.valueOf(bt.aS(l)) });
+          ac.printErrStackTrace("MicroMsg.ExtQbarDataManager", localException, "hy: exception when parse config!", new Object[0]);
+          ac.i("MicroMsg.ExtQbarDataManager", "hy: qrcode config retrieved using %d ms", new Object[] { Long.valueOf(bs.aO(l)) });
           AppMethodBeat.o(24476);
           return;
         }
@@ -278,15 +285,15 @@ public final class c
         if (!"white".equalsIgnoreCase(arrayOfString[0])) {
           break label390;
         }
-        ((a)localObject2).pLH = b.b.pLN;
+        ((a)localObject2).qup = b.b.quv;
         if ("prefix".equalsIgnoreCase(arrayOfString[1]))
         {
-          ((a)localObject2).pLG = b.a.pLI;
+          ((a)localObject2).quo = b.a.quq;
           i = 1;
           if (i == 0) {
             continue;
           }
-          pLS.add(localObject2);
+          quA.add(localObject2);
           continue;
         }
         if (!"subdomain".equalsIgnoreCase(arrayOfString[1])) {
@@ -295,82 +302,75 @@ public final class c
       }
       catch (IOException localIOException)
       {
-        ad.printErrStackTrace("MicroMsg.ExtQbarDataManager", localIOException, "hy: read config file failed!", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.ExtQbarDataManager", localIOException, "hy: read config file failed!", new Object[0]);
         AppMethodBeat.o(24476);
         return;
       }
-      ((a)localObject2).pLG = b.a.pLJ;
+      ((a)localObject2).quo = b.a.qur;
       int i = 1;
       continue;
       label340:
       if ("domain".equalsIgnoreCase(arrayOfString[1]))
       {
-        ((a)localObject2).pLG = b.a.pLK;
+        ((a)localObject2).quo = b.a.qus;
         i = 1;
       }
       else
       {
-        ad.w("MicroMsg.ExtQbarDataManager", "hy: [white] 2nd not qualified! %s", new Object[] { arrayOfString[1] });
+        ac.w("MicroMsg.ExtQbarDataManager", "hy: [white] 2nd not qualified! %s", new Object[] { arrayOfString[1] });
         i = 0;
         continue;
         if ("black".equalsIgnoreCase(arrayOfString[0]))
         {
-          ((a)localObject2).pLH = b.b.pLM;
+          ((a)localObject2).qup = b.b.quu;
           if ("prefix".equalsIgnoreCase(arrayOfString[1]))
           {
-            ((a)localObject2).pLG = b.a.pLI;
+            ((a)localObject2).quo = b.a.quq;
             i = 1;
           }
           else if ("subdomain".equalsIgnoreCase(arrayOfString[1]))
           {
-            ((a)localObject2).pLG = b.a.pLJ;
+            ((a)localObject2).quo = b.a.qur;
             i = 1;
           }
           else if ("domain".equalsIgnoreCase(arrayOfString[1]))
           {
-            ((a)localObject2).pLG = b.a.pLK;
+            ((a)localObject2).quo = b.a.qus;
             i = 1;
           }
           else
           {
-            ad.w("MicroMsg.ExtQbarDataManager", "hy: [black] 2nd not qualified! %s", new Object[] { arrayOfString[1] });
+            ac.w("MicroMsg.ExtQbarDataManager", "hy: [black] 2nd not qualified! %s", new Object[] { arrayOfString[1] });
             i = 0;
           }
         }
         else
         {
-          ad.w("MicroMsg.ExtQbarDataManager", "hy: 1st not qualified! %s", new Object[] { arrayOfString[0] });
+          ac.w("MicroMsg.ExtQbarDataManager", "hy: 1st not qualified! %s", new Object[] { arrayOfString[0] });
           i = 0;
         }
       }
     }
   }
   
-  public static void cff()
+  public static void cmM()
   {
     AppMethodBeat.i(24477);
-    cfe();
-    com.tencent.mm.sdk.b.a.ESL.c(iop);
+    cmL();
+    com.tencent.mm.sdk.b.a.GpY.c(iOv);
     AppMethodBeat.o(24477);
   }
   
-  public static void cfg()
+  public static void cmN()
   {
     AppMethodBeat.i(24478);
-    com.tencent.mm.sdk.b.a.ESL.d(iop);
+    com.tencent.mm.sdk.b.a.GpY.d(iOv);
     AppMethodBeat.o(24478);
-  }
-  
-  public static void clearCache()
-  {
-    AppMethodBeat.i(24483);
-    pLT.clear();
-    AppMethodBeat.o(24483);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.d.c
  * JD-Core Version:    0.7.0.1
  */

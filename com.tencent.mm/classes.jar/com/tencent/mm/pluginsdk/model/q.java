@@ -21,11 +21,11 @@ import java.util.regex.Pattern;
 public final class q
   extends s
 {
-  public static final String[] BPe = { "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "application/pdf", "application/epub+zip", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/zip", "application/rar" };
-  public static final int[] BPf = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
-  public static final int[] BPg = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
+  public static final String[] Dhs = { "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "application/pdf", "application/epub+zip", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/zip", "application/rar" };
+  public static final int[] Dht = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
+  public static final int[] Dhu = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
   
-  public static int aAJ(String paramString)
+  public static int aGb(String paramString)
   {
     AppMethodBeat.i(109472);
     Object localObject2 = null;
@@ -48,16 +48,16 @@ public final class q
     }
     int i = 0;
     int j = -1;
-    while (i < BPe.length)
+    while (i < Dhs.length)
     {
-      if (BPe[i].equals(localObject2)) {
+      if (Dhs[i].equals(localObject2)) {
         j = i;
       }
       i += 1;
     }
     if (j != -1)
     {
-      i = BPf[j];
+      i = Dht[j];
       AppMethodBeat.o(109472);
       return i;
     }
@@ -65,7 +65,7 @@ public final class q
     return 2131689577;
   }
   
-  public static int bG(Context paramContext, String paramString)
+  public static int bH(Context paramContext, String paramString)
   {
     AppMethodBeat.i(109468);
     if (paramContext == null)
@@ -107,8 +107,8 @@ public final class q
           localObject1 = paramString;
           if (paramString.getScheme().toLowerCase().equals("qb"))
           {
-            localObject1 = gZ(paramContext);
-            if (((a)localObject1).BPh != -1) {
+            localObject1 = hk(paramContext);
+            if (((a)localObject1).Dhv != -1) {
               break label219;
             }
             i = 0;
@@ -119,14 +119,14 @@ public final class q
             if (i == 0) {
               localObject1 = Uri.parse("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375" + URLEncoder.encode((String)localObject2, "UTF-8"));
             }
-            localObject3 = gZ(paramContext);
-            if (((a)localObject3).BPh != -1) {
+            localObject3 = hk(paramContext);
+            if (((a)localObject3).Dhv != -1) {
               break;
             }
             AppMethodBeat.o(109468);
             return 4;
             label219:
-            if (((a)localObject1).BPh == 2)
+            if (((a)localObject1).Dhv == 2)
             {
               i = ((a)localObject1).ver;
               if (i < 42)
@@ -137,7 +137,7 @@ public final class q
             }
             i = 1;
           }
-          if (((a)localObject3).BPh != 2) {
+          if (((a)localObject3).Dhv != 2) {
             break label284;
           }
         }
@@ -155,7 +155,7 @@ public final class q
     }
     label284:
     Object localObject2 = new Intent("android.intent.action.VIEW");
-    if (((a)localObject3).BPh == 2) {
+    if (((a)localObject3).Dhv == 2) {
       if ((((a)localObject3).ver >= 33) && (((a)localObject3).ver <= 39))
       {
         ((Intent)localObject2).setClassName("com.tencent.mtt", "com.tencent.mtt.PhotoEditUI");
@@ -170,9 +170,9 @@ public final class q
         paramString.putExtra("loginType", 24);
         paramString.putExtra("ChannelID", "com.tencent.mm");
         paramString.putExtra("PosID", 0);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.adn(), "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.lS(0));
+        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramString.lR(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(109468);
         return 0;
@@ -199,10 +199,10 @@ public final class q
             paramString = (String)localObject2;
             if (!TextUtils.isEmpty(((b)localObject3).classname))
             {
-              ((Intent)localObject2).setClassName(((b)localObject3).BPj, ((b)localObject3).classname);
+              ((Intent)localObject2).setClassName(((b)localObject3).Dhx, ((b)localObject3).classname);
               paramString = (String)localObject2;
               continue;
-              if (((a)localObject3).BPh == 1)
+              if (((a)localObject3).Dhv == 1)
               {
                 if (((a)localObject3).ver == 1)
                 {
@@ -219,7 +219,7 @@ public final class q
                   }
                 }
               }
-              else if (((a)localObject3).BPh == 0)
+              else if (((a)localObject3).Dhv == 0)
               {
                 if ((((a)localObject3).ver >= 4) && (((a)localObject3).ver <= 6))
                 {
@@ -239,7 +239,7 @@ public final class q
                       paramString = (String)localObject2;
                       if (!TextUtils.isEmpty(((b)localObject3).classname))
                       {
-                        ((Intent)localObject2).setClassName(((b)localObject3).BPj, ((b)localObject3).classname);
+                        ((Intent)localObject2).setClassName(((b)localObject3).Dhx, ((b)localObject3).classname);
                         paramString = (String)localObject2;
                       }
                     }
@@ -256,7 +256,7 @@ public final class q
                   paramString = (String)localObject2;
                   if (!TextUtils.isEmpty(((b)localObject3).classname))
                   {
-                    ((Intent)localObject2).setClassName(((b)localObject3).BPj, ((b)localObject3).classname);
+                    ((Intent)localObject2).setClassName(((b)localObject3).Dhx, ((b)localObject3).classname);
                     paramString = (String)localObject2;
                   }
                 }
@@ -289,24 +289,24 @@ public final class q
       if (str.contains("com.tencent.mtt"))
       {
         paramContext.classname = ((ResolveInfo)localObject).activityInfo.name;
-        paramContext.BPj = ((ResolveInfo)localObject).activityInfo.packageName;
+        paramContext.Dhx = ((ResolveInfo)localObject).activityInfo.packageName;
         AppMethodBeat.o(109470);
         return paramContext;
       }
       if (str.contains("com.tencent.qbx"))
       {
         paramContext.classname = ((ResolveInfo)localObject).activityInfo.name;
-        paramContext.BPj = ((ResolveInfo)localObject).activityInfo.packageName;
+        paramContext.Dhx = ((ResolveInfo)localObject).activityInfo.packageName;
       }
     }
     AppMethodBeat.o(109470);
     return paramContext;
   }
   
-  public static boolean gY(Context paramContext)
+  public static boolean hj(Context paramContext)
   {
     AppMethodBeat.i(109464);
-    if (gZ(paramContext).BPh == -1)
+    if (hk(paramContext).Dhv == -1)
     {
       AppMethodBeat.o(109464);
       return false;
@@ -315,7 +315,7 @@ public final class q
     return true;
   }
   
-  private static a gZ(Context paramContext)
+  private static a hk(Context paramContext)
   {
     AppMethodBeat.i(109469);
     locala = new a();
@@ -329,9 +329,9 @@ public final class q
         {
           localObject6 = localPackageManager.getPackageInfo("com.tencent.mtt", 0);
           localObject1 = localObject6;
-          locala.BPh = 2;
+          locala.Dhv = 2;
           localObject1 = localObject6;
-          locala.BPi = "ADRQB_";
+          locala.Dhw = "ADRQB_";
           Object localObject3 = localObject6;
           if (localObject6 != null)
           {
@@ -342,7 +342,7 @@ public final class q
               localObject1 = localObject6;
               locala.ver = ((PackageInfo)localObject6).versionCode;
               localObject1 = localObject6;
-              locala.BPi += ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
+              locala.Dhw += ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
               AppMethodBeat.o(109469);
               return locala;
             }
@@ -367,9 +367,9 @@ public final class q
       {
         localObject1 = localPackageManager.getPackageInfo("com.tencent.qbx", 0);
         localObject4 = localObject1;
-        locala.BPh = 0;
+        locala.Dhv = 0;
         localObject4 = localObject1;
-        locala.BPi = "ADRQBX_";
+        locala.Dhw = "ADRQBX_";
         paramContext = (Context)localObject1;
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException1)
@@ -378,9 +378,9 @@ public final class q
         {
           localPackageInfo1 = localPackageManager.getPackageInfo("com.tencent.qbx5", 0);
           localObject4 = localPackageInfo1;
-          locala.BPh = 1;
+          locala.Dhv = 1;
           localObject4 = localPackageInfo1;
-          locala.BPi = "ADRQBX5_";
+          locala.Dhw = "ADRQBX5_";
           paramContext = localPackageInfo1;
         }
         catch (PackageManager.NameNotFoundException localNameNotFoundException2)
@@ -390,9 +390,9 @@ public final class q
           {
             localObject4 = localPackageManager.getPackageInfo("com.tencent.mtt", 0);
             localObject2 = localObject4;
-            locala.BPh = 2;
+            locala.Dhv = 2;
             localObject2 = localObject4;
-            locala.BPi = "ADRQB_";
+            locala.Dhw = "ADRQB_";
             paramContext = (Context)localObject4;
           }
           catch (PackageManager.NameNotFoundException localNameNotFoundException4)
@@ -401,9 +401,9 @@ public final class q
             {
               PackageInfo localPackageInfo2 = localPackageManager.getPackageInfo("com.tencent.mtt.x86", 0);
               localObject2 = localPackageInfo2;
-              locala.BPh = 2;
+              locala.Dhv = 2;
               localObject2 = localPackageInfo2;
-              locala.BPi = "ADRQB_";
+              locala.Dhw = "ADRQB_";
               paramContext = localPackageInfo2;
             }
             catch (Exception localException)
@@ -418,15 +418,15 @@ public final class q
                 }
                 paramContext = localObject2;
                 localObject5 = localObject2;
-                if (TextUtils.isEmpty(((b)localObject6).BPj)) {
+                if (TextUtils.isEmpty(((b)localObject6).Dhx)) {
                   continue;
                 }
                 localObject5 = localObject2;
-                paramContext = localPackageManager.getPackageInfo(((b)localObject6).BPj, 0);
+                paramContext = localPackageManager.getPackageInfo(((b)localObject6).Dhx, 0);
                 localObject5 = paramContext;
-                locala.BPh = 2;
+                locala.Dhv = 2;
                 localObject5 = paramContext;
-                locala.BPi = "ADRQB_";
+                locala.Dhw = "ADRQB_";
               }
               catch (Exception paramContext)
               {
@@ -440,36 +440,10 @@ public final class q
     if (paramContext != null)
     {
       locala.ver = paramContext.versionCode;
-      locala.BPi += paramContext.versionName.replaceAll("\\.", "");
+      locala.Dhw += paramContext.versionName.replaceAll("\\.", "");
     }
     AppMethodBeat.o(109469);
     return locala;
-  }
-  
-  public final boolean R(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(109471);
-    paramContext = paramContext.getPackageManager().queryIntentActivities(paramIntent, 0);
-    if ((paramContext != null) && (paramContext.size() > 0))
-    {
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext())
-      {
-        paramIntent = ((ResolveInfo)paramContext.next()).activityInfo.packageName;
-        if (paramIntent.contains("com.tencent.mtt"))
-        {
-          AppMethodBeat.o(109471);
-          return true;
-        }
-        if (paramIntent.contains("com.tencent.qbx"))
-        {
-          AppMethodBeat.o(109471);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(109471);
-    return false;
   }
   
   public final String a(Context paramContext, ResolveInfo paramResolveInfo)
@@ -548,7 +522,7 @@ public final class q
     return paramContext;
   }
   
-  public final boolean aAD(String paramString)
+  public final boolean aFV(String paramString)
   {
     AppMethodBeat.i(109465);
     if (("com.tencent.mtt".equals(paramString)) || ("com.tencent.qbx".equals(paramString)) || ("com.tencent.mtt.x86".equals(paramString)) || ("com.tencent.qbx5".equals(paramString)))
@@ -560,37 +534,63 @@ public final class q
     return false;
   }
   
-  public final String aGz()
+  public final String aNm()
   {
     return "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10318";
   }
   
-  public final String eve()
+  public final boolean af(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(109471);
+    paramContext = paramContext.getPackageManager().queryIntentActivities(paramIntent, 0);
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
+      {
+        paramIntent = ((ResolveInfo)paramContext.next()).activityInfo.packageName;
+        if (paramIntent.contains("com.tencent.mtt"))
+        {
+          AppMethodBeat.o(109471);
+          return true;
+        }
+        if (paramIntent.contains("com.tencent.qbx"))
+        {
+          AppMethodBeat.o(109471);
+          return true;
+        }
+      }
+    }
+    AppMethodBeat.o(109471);
+    return false;
+  }
+  
+  public final String eKy()
   {
     return "qq_browser.apk";
   }
   
-  public final t.a evf()
+  public final t.a eKz()
   {
     AppMethodBeat.i(109466);
     t.a locala = new t.a();
-    locala.BPn = 2131762069;
-    locala.BPp = 2131762070;
-    locala.BPm = 2131232696;
+    locala.DhB = 2131762069;
+    locala.DhD = 2131762070;
+    locala.DhA = 2131232696;
     AppMethodBeat.o(109466);
     return locala;
   }
   
-  public final boolean gX(Context paramContext)
+  public final boolean hi(Context paramContext)
   {
     AppMethodBeat.i(109463);
-    paramContext = gZ(paramContext);
-    if (paramContext.BPh == -1)
+    paramContext = hk(paramContext);
+    if (paramContext.Dhv == -1)
     {
       AppMethodBeat.o(109463);
       return false;
     }
-    if ((paramContext.BPh == 2) && (paramContext.ver < 33))
+    if ((paramContext.Dhv == 2) && (paramContext.ver < 33))
     {
       AppMethodBeat.o(109463);
       return false;
@@ -601,14 +601,14 @@ public final class q
   
   public static final class a
   {
-    public int BPh = -1;
-    public String BPi = "";
+    public int Dhv = -1;
+    public String Dhw = "";
     public int ver = -1;
   }
   
   static final class b
   {
-    public String BPj = "";
+    public String Dhx = "";
     public String classname = "";
   }
 }

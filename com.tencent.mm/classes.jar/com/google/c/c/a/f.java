@@ -57,9 +57,9 @@ final class f
     AppMethodBeat.i(12359);
     Object localObject = new StringBuilder();
     char c;
-    if (paramh.yn())
+    if (paramh.ya())
     {
-      c = paramh.ym();
+      c = paramh.xZ();
       if ((c < ' ') || (c > '?')) {
         break label138;
       }
@@ -72,12 +72,12 @@ final class f
       if (((StringBuilder)localObject).length() < 4) {
         break;
       }
-      paramh.bv(t((CharSequence)localObject));
+      paramh.bm(t((CharSequence)localObject));
       ((StringBuilder)localObject).delete(0, 4);
-      if (j.b(paramh.bLg, paramh.pos, 4) == 4) {
+      if (j.b(paramh.bIO, paramh.pos, 4) == 4) {
         break;
       }
-      paramh.bLl = 0;
+      paramh.bIT = 0;
       ((StringBuilder)localObject).append('\037');
       try
       {
@@ -96,10 +96,10 @@ final class f
         {
           if (i == 1)
           {
-            paramh.yq();
-            k = paramh.bLm.bLv;
-            int m = paramh.bLk.length();
-            int n = paramh.yp();
+            paramh.yd();
+            k = paramh.bIU.bJd;
+            int m = paramh.bIS.length();
+            int n = paramh.yc();
             if ((n == 0) && (k - m <= 2)) {
               return;
             }
@@ -114,13 +114,13 @@ final class f
       }
       finally
       {
-        paramh.bLl = 0;
+        paramh.bIT = 0;
         AppMethodBeat.o(12359);
       }
     }
     int k = i - 1;
     String str = t(localCharSequence);
-    if (!paramh.yn()) {
+    if (!paramh.ya()) {
       i = 1;
     }
     for (;;)
@@ -128,20 +128,20 @@ final class f
       j = i;
       if (k <= 2)
       {
-        paramh.gi(paramh.bLk.length() + k);
+        paramh.fU(paramh.bIS.length() + k);
         j = i;
-        if (paramh.bLm.bLv - paramh.bLk.length() >= 3)
+        if (paramh.bIU.bJd - paramh.bIS.length() >= 3)
         {
-          paramh.gi(paramh.bLk.length() + str.length());
+          paramh.fU(paramh.bIS.length() + str.length());
           j = 0;
         }
       }
       if (j != 0)
       {
-        paramh.bLm = null;
+        paramh.bIU = null;
         paramh.pos -= k;
         label381:
-        paramh.bLl = 0;
+        paramh.bIT = 0;
         AppMethodBeat.o(12359);
         return;
         i = 0;
@@ -150,7 +150,7 @@ final class f
       {
         i = 0;
         break;
-        paramh.bv(str);
+        paramh.bm(str);
         break label381;
       }
       i = j;

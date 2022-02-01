@@ -7,9 +7,9 @@ public enum q
   static
   {
     AppMethodBeat.i(181960);
-    oqw = new q("EXACT", 0);
-    oqx = new q("SPAN_FLAGS", 1);
-    oqy = new q[] { oqw, oqx };
+    oTW = new q("EXACT", 0);
+    oTX = new q("SPAN_FLAGS", 1);
+    oTY = new q[] { oTW, oTX };
     AppMethodBeat.o(181960);
   }
   
@@ -17,7 +17,7 @@ public enum q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.q
  * JD-Core Version:    0.7.0.1
  */

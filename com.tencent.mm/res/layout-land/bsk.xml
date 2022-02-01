@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="220.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="22.0dip" android:gravity="center" android:id="@id/hsu" android:background="#90ffffff" android:layout_width="250.0dip" android:layout_height="wrap_content" android:hint="@string/hp0" android:inputType="number" style="@style/ok" />
+    <Button android:id="@id/hk4" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hmn" style="@style/o8" />
+</LinearLayout>

@@ -6,110 +6,116 @@ import com.tencent.mm.plugin.report.a;
 public final class ay
   extends a
 {
-  private String dHr = "";
-  private long dKe = 0L;
-  private String dMC = "";
-  private String dNe = "";
-  public long dNf = 0L;
-  private String dNg = "";
-  public String dNh = "";
-  public long dNi = 0L;
+  private String dFe;
+  private long dHN;
+  private long dHR;
+  private String dIp;
+  private String dIq;
+  private long dIr;
+  private long dIs;
+  private String dLA;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(116481);
+    AppMethodBeat.i(168912);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dKe);
+    ((StringBuffer)localObject).append(this.dFe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNe);
+    ((StringBuffer)localObject).append(this.dHR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHr);
+    ((StringBuffer)localObject).append(this.dIp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dMC);
+    ((StringBuffer)localObject).append(this.dIq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNf);
+    ((StringBuffer)localObject).append(this.dIr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNg);
+    ((StringBuffer)localObject).append(this.dIs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNh);
+    ((StringBuffer)localObject).append(this.dLA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNi);
+    ((StringBuffer)localObject).append(this.dHN);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(116481);
+    arz((String)localObject);
+    AppMethodBeat.o(168912);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(116482);
+    AppMethodBeat.i(168913);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dKe);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dFe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SearchId:").append(this.dNe);
+    ((StringBuffer)localObject).append("scene:").append(this.dHR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    ((StringBuffer)localObject).append("Tag:").append(this.dIp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Query:").append(this.dMC);
+    ((StringBuffer)localObject).append("TagId:").append(this.dIq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpType:").append(this.dNf);
+    ((StringBuffer)localObject).append("IsPoi:").append(this.dIr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Path:").append(this.dNg);
+    ((StringBuffer)localObject).append("TagFeedCnt:").append(this.dIs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WeappUsrname:").append(this.dNh);
+    ((StringBuffer)localObject).append("feedid:").append(this.dLA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ServiceType:").append(this.dNi);
+    ((StringBuffer)localObject).append("FeedLikeCount:").append(this.dHN);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(116482);
+    AppMethodBeat.o(168913);
     return localObject;
   }
   
-  public final ay Ql()
+  public final ay eO(long paramLong)
   {
-    this.dKe = 47L;
+    this.dHR = paramLong;
+    return this;
+  }
+  
+  public final ay eP(long paramLong)
+  {
+    this.dHN = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 16019;
+    return 19188;
   }
   
-  public final ay hP(String paramString)
+  public final ay iv(String paramString)
   {
-    AppMethodBeat.i(116477);
-    this.dNe = t("SearchId", paramString, true);
-    AppMethodBeat.o(116477);
+    AppMethodBeat.i(168908);
+    this.dFe = t("SessionId", paramString, true);
+    AppMethodBeat.o(168908);
     return this;
   }
   
-  public final ay hQ(String paramString)
+  public final ay iw(String paramString)
   {
-    AppMethodBeat.i(116478);
-    this.dHr = t("SessionId", paramString, true);
-    AppMethodBeat.o(116478);
+    AppMethodBeat.i(168909);
+    this.dIp = t("Tag", paramString, true);
+    AppMethodBeat.o(168909);
     return this;
   }
   
-  public final ay hR(String paramString)
+  public final ay ix(String paramString)
   {
-    AppMethodBeat.i(116479);
-    this.dMC = t("Query", paramString, true);
-    AppMethodBeat.o(116479);
+    AppMethodBeat.i(168910);
+    this.dIq = t("TagId", paramString, true);
+    AppMethodBeat.o(168910);
     return this;
   }
   
-  public final ay hS(String paramString)
+  public final ay iy(String paramString)
   {
-    AppMethodBeat.i(116480);
-    this.dNg = t("Path", paramString, true);
-    AppMethodBeat.o(116480);
+    AppMethodBeat.i(168911);
+    this.dLA = t("feedid", paramString, true);
+    AppMethodBeat.o(168911);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ay
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bq9" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/finder_icons_outlined_subscriptions" app:iconColor="@color/FG_0" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:text="@string/hhq" android:layout_toRightOf="@id/bq9" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f29" android:layout_width="@dimen/c0" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_arrow" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/BW_70" android:id="@id/hp4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ci" android:text="@string/hk0" android:layout_toLeftOf="@id/f29" />
-</RelativeLayout>

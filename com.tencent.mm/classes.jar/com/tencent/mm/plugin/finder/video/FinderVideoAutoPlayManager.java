@@ -7,267 +7,372 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.event.base.d;
 import com.tencent.mm.plugin.finder.event.base.f;
 import com.tencent.mm.plugin.finder.life.UILifecycleObserver;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.report.i.b;
-import com.tencent.mm.plugin.finder.report.j.a;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.utils.i.e;
+import com.tencent.mm.plugin.finder.utils.n;
+import com.tencent.mm.plugin.finder.utils.n.a;
 import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderHomeUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ao.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.RecyclerHorizontalViewPager;
-import d.g.a.b;
+import com.tencent.mm.ui.component.a;
+import com.tencent.mm.view.recyclerview.e;
+import d.a.j;
 import d.g.b.k;
-import d.y;
+import d.g.b.v.a;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "recycler", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "tabType", "", "(Lcom/tencent/mm/ui/MMActivity;Landroid/support/v7/widget/RecyclerView;Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;I)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "isLocked", "", "isResume", "lockKV", "Ljava/util/HashSet;", "", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mediaRect", "Landroid/graphics/Rect;", "mediaViewLocation", "", "getRecycler", "()Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "getTabType", "()I", "check2Play", "", "mediaIndex", "playPosition", "getNearbyDistance", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "isAsync", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "lock", "scene", "isLock", "unLockAfterCheck", "onCreate", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onEventHappen", "ev", "onPause", "onRelease", "onResume", "onStart", "onStop", "pauseAllVideo", "without", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "playFocusHolder", "focusHolder", "focusMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "mediaList", "Ljava/util/LinkedList;", "feedId", "", "nonceId", "setup", "Companion", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "recycler", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "tabType", "", "(Lcom/tencent/mm/ui/MMActivity;Landroid/support/v7/widget/RecyclerView;Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;I)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "hasTryMoreAgainSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "isLocked", "", "isResume", "lockKV", "mainHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mediaRect", "Landroid/graphics/Rect;", "mediaViewLocation", "", "getRecycler", "()Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "getTabType", "()I", "check2Play", "", "mediaIndex", "playPosition", "getNearbyDistance", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "isAsync", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "isUserVisibleFocused", "lock", "scene", "isLock", "unLockAfterCheck", "onCreate", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onEventHappen", "ev", "onPause", "onRelease", "onResume", "onStart", "onStop", "pauseAllVideo", "without", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "playFocusHolder", "focusHolder", "focusMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "feedId", "", "playMultiVideoHolder", "playSingleVideoHolder", "prepareHolder", "setup", "Companion", "plugin-finder_release"})
 public final class FinderVideoAutoPlayManager
-  extends f
+  extends d
   implements UILifecycleObserver
 {
-  public static final a qTD;
-  private final int IoU;
-  private final HashSet<String> Lcr;
-  private final FinderVideoRecycler Lcs;
-  private boolean aFx;
+  public static final FinderVideoAutoPlayManager.a rSm;
+  private boolean aGn;
   private final MMActivity activity;
-  final RecyclerView fPw;
-  private final ap hbq;
+  private final int diw;
+  final RecyclerView fTr;
+  private final ao hBR;
   private boolean isResume;
-  private final Rect qSZ;
-  private final int[] qTB;
+  private final Rect rPL;
+  private final int[] rSi;
+  private final HashSet<String> rSj;
+  private final HashSet<String> rSk;
+  private final FinderVideoRecycler rSl;
   
   static
   {
     AppMethodBeat.i(168029);
-    qTD = new a((byte)0);
+    rSm = new FinderVideoAutoPlayManager.a((byte)0);
     AppMethodBeat.o(168029);
   }
   
   public FinderVideoAutoPlayManager(MMActivity paramMMActivity, RecyclerView paramRecyclerView, FinderVideoRecycler paramFinderVideoRecycler, int paramInt)
   {
-    AppMethodBeat.i(199781);
+    AppMethodBeat.i(203845);
     this.activity = paramMMActivity;
-    this.fPw = paramRecyclerView;
-    this.Lcs = paramFinderVideoRecycler;
-    this.IoU = paramInt;
-    this.qTB = new int[2];
-    this.hbq = new ap(Looper.getMainLooper(), (ap.a)new b(this));
-    this.Lcr = new HashSet();
-    this.qSZ = new Rect();
-    AppMethodBeat.o(199781);
+    this.fTr = paramRecyclerView;
+    this.rSl = paramFinderVideoRecycler;
+    this.diw = paramInt;
+    this.rSi = new int[2];
+    this.hBR = new ao(Looper.getMainLooper(), (ao.a)new c(this));
+    this.rSj = new HashSet();
+    this.rPL = new Rect();
+    this.rSk = new HashSet();
+    AppMethodBeat.o(203845);
   }
   
-  private final void U(RecyclerView.v paramv)
+  private final void D(final RecyclerView paramRecyclerView)
+  {
+    AppMethodBeat.i(210203);
+    Object localObject1 = paramRecyclerView.getLayoutManager();
+    final int i;
+    final int j;
+    Object localObject2;
+    final v.a locala;
+    Object localObject3;
+    if ((localObject1 instanceof LinearLayoutManager))
+    {
+      i = ((LinearLayoutManager)localObject1).jW();
+      j = ((LinearLayoutManager)localObject1).jY();
+      localObject1 = n.rPN;
+      localObject2 = n.b(paramRecyclerView, i, j, 8);
+      locala = new v.a();
+      locala.KUL = false;
+      localObject1 = n.rPN;
+      localObject3 = ((n.a)localObject2).raq;
+      BaseFinderFeed localBaseFinderFeed = ((n.a)localObject2).rdD;
+      localObject1 = ((n.a)localObject2).rdD;
+      if (localObject1 != null)
+      {
+        localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+        if (localObject1 != null)
+        {
+          localObject1 = ((FinderItem)localObject1).getMediaList();
+          if (localObject1 != null) {
+            localObject1 = (bqs)j.iP((List)localObject1);
+          }
+        }
+      }
+      while ((localObject3 != null) && (localBaseFinderFeed != null) && (localObject1 != null))
+      {
+        if (((e)localObject3).lu() != ((e)localObject3).lv())
+        {
+          localObject4 = "[check2Play] holder=" + localObject3 + " centerId=" + ((n.a)localObject2).dig + " first=" + i + " end=" + j + " adapterPosition=" + ((e)localObject3).lv() + " layoutPosition=" + ((e)localObject3).lu() + " isInLayout=" + paramRecyclerView.isInLayout();
+          ac.e("Finder.VideoAutoPlayManager", (String)localObject4);
+          com.tencent.mm.plugin.report.service.h.wUl.f(20251, new Object[] { Integer.valueOf(1), localObject4 });
+          localObject4 = ((e)localObject3).hashCode() + '_' + ((e)localObject3).lv() + '_' + ((e)localObject3).lu() + '_' + ((e)localObject3).lx();
+          if (!this.rSk.contains(localObject4))
+          {
+            paramRecyclerView.post((Runnable)new b((String)localObject4, this, (n.a)localObject2, i, j, paramRecyclerView, locala));
+            AppMethodBeat.o(210203);
+            return;
+            localObject1 = null;
+            continue;
+          }
+        }
+        Object localObject4 = a.IrY;
+        localObject4 = ((FinderReporterUIC)a.q(this.activity).get(FinderReporterUIC.class)).Ff(this.diw);
+        if (localObject4 != null) {
+          ((f)localObject4).g(paramRecyclerView, 6);
+        }
+        paramRecyclerView = (FinderMediaBanner)((e)localObject3).adJ(2131302203);
+        paramRecyclerView.getGlobalVisibleRect(this.rPL);
+        k.g(paramRecyclerView, "banner");
+        i = paramRecyclerView.getHeight();
+        ac.d("Finder.VideoAutoPlayManager", "check2Play bannerHeight:" + i + " mediaRect:" + this.rPL.height());
+        if ((this.rPL.height() < i / 2.5F) || (localBaseFinderFeed.feedObject.getMediaType() != 4)) {
+          break label1022;
+        }
+        U((RecyclerView.w)localObject3);
+        a((RecyclerView.w)localObject3, (bqs)localObject1, localBaseFinderFeed.feedObject.getId());
+        locala.KUL = true;
+        localObject1 = null;
+        paramRecyclerView = (List)((n.a)localObject2).uGK;
+        i = 0;
+        paramRecyclerView = paramRecyclerView.iterator();
+        label598:
+        if (!paramRecyclerView.hasNext()) {
+          break label1042;
+        }
+        if (((n.a)paramRecyclerView.next()).dig != ((n.a)localObject2).dig) {
+          break label1030;
+        }
+        j = 1;
+        label630:
+        if (j == 0) {
+          break label1035;
+        }
+        label634:
+        if (i == -1) {
+          break label1101;
+        }
+        j = i - 1;
+        i += 1;
+        if ((j < 0) || (j >= ((n.a)localObject2).uGK.size())) {
+          break label1096;
+        }
+        paramRecyclerView = (n.a)((n.a)localObject2).uGK.get(j);
+        label676:
+        if ((i < 0) || (i >= ((n.a)localObject2).uGK.size())) {
+          break label1093;
+        }
+        localObject1 = (n.a)((n.a)localObject2).uGK.get(i);
+      }
+    }
+    for (;;)
+    {
+      localObject3 = new StringBuilder("check2Play preFeed:");
+      if (paramRecyclerView != null)
+      {
+        localObject2 = Long.valueOf(paramRecyclerView.dig);
+        label731:
+        localObject3 = ((StringBuilder)localObject3).append(localObject2).append(" nextFeed:");
+        if (paramRecyclerView == null) {
+          break label1053;
+        }
+        localObject2 = Long.valueOf(paramRecyclerView.dig);
+        label759:
+        ac.d("Finder.VideoAutoPlayManager", localObject2);
+        localObject2 = n.rPN;
+        if (paramRecyclerView == null) {
+          break label1059;
+        }
+        localObject2 = paramRecyclerView.raq;
+        label790:
+        if (paramRecyclerView == null) {
+          break label1065;
+        }
+        localObject3 = paramRecyclerView.rdD;
+        label800:
+        if (paramRecyclerView == null) {
+          break label1071;
+        }
+        paramRecyclerView = paramRecyclerView.rdD;
+        if (paramRecyclerView == null) {
+          break label1071;
+        }
+        paramRecyclerView = paramRecyclerView.feedObject;
+        if (paramRecyclerView == null) {
+          break label1071;
+        }
+        paramRecyclerView = paramRecyclerView.getMediaList();
+        if (paramRecyclerView == null) {
+          break label1071;
+        }
+        paramRecyclerView = (bqs)j.iP((List)paramRecyclerView);
+        label842:
+        if ((localObject2 != null) && (localObject3 != null) && (paramRecyclerView != null) && (((BaseFinderFeed)localObject3).feedObject.getMediaType() == 4)) {
+          b((RecyclerView.w)localObject2, paramRecyclerView, ((BaseFinderFeed)localObject3).lx());
+        }
+        paramRecyclerView = n.rPN;
+        if (localObject1 == null) {
+          break label1076;
+        }
+        paramRecyclerView = ((n.a)localObject1).raq;
+        label897:
+        if (localObject1 == null) {
+          break label1081;
+        }
+        localObject2 = ((n.a)localObject1).rdD;
+        label909:
+        if (localObject1 == null) {
+          break label1087;
+        }
+        localObject1 = ((n.a)localObject1).rdD;
+        if (localObject1 == null) {
+          break label1087;
+        }
+        localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+        if (localObject1 == null) {
+          break label1087;
+        }
+        localObject1 = ((FinderItem)localObject1).getMediaList();
+        if (localObject1 == null) {
+          break label1087;
+        }
+      }
+      label1030:
+      label1035:
+      label1042:
+      label1053:
+      label1059:
+      label1065:
+      label1071:
+      label1076:
+      label1081:
+      label1087:
+      for (localObject1 = (bqs)j.iP((List)localObject1);; localObject1 = null)
+      {
+        if ((paramRecyclerView != null) && (localObject2 != null) && (localObject1 != null) && (((BaseFinderFeed)localObject2).feedObject.getMediaType() == 4)) {
+          b((RecyclerView.w)paramRecyclerView, (bqs)localObject1, ((BaseFinderFeed)localObject2).lx());
+        }
+        if (!locala.KUL) {
+          U(null);
+        }
+        AppMethodBeat.o(210203);
+        return;
+        label1022:
+        U(null);
+        break;
+        j = 0;
+        break label630;
+        i += 1;
+        break label598;
+        i = -1;
+        break label634;
+        localObject2 = null;
+        break label731;
+        localObject2 = null;
+        break label759;
+        localObject2 = null;
+        break label790;
+        localObject3 = null;
+        break label800;
+        paramRecyclerView = null;
+        break label842;
+        paramRecyclerView = null;
+        break label897;
+        localObject2 = null;
+        break label909;
+      }
+      label1093:
+      continue;
+      label1096:
+      paramRecyclerView = null;
+      break label676;
+      label1101:
+      paramRecyclerView = null;
+    }
+  }
+  
+  private final void U(RecyclerView.w paramw)
   {
     AppMethodBeat.i(168020);
-    if (paramv != null)
+    if (paramw != null)
     {
-      paramv = paramv.arI;
-      if (paramv == null) {}
+      paramw = paramw.asD;
+      if (paramw == null) {}
     }
-    for (paramv = (FinderVideoLayout)paramv.findViewById(2131299975);; paramv = null)
+    for (paramw = (FinderVideoLayout)paramw.findViewById(2131299975);; paramw = null)
     {
-      this.Lcs.J((b)new c(paramv));
+      this.rSl.C((d.g.a.b)new e(paramw));
       AppMethodBeat.o(168020);
       return;
     }
   }
   
-  private static void a(RecyclerView.v paramv, bmd parambmd, long paramLong)
+  private static void a(RecyclerView.w paramw, bqs parambqs, long paramLong)
   {
-    AppMethodBeat.i(168019);
-    if (paramv != null)
+    AppMethodBeat.i(210204);
+    if (paramw != null)
     {
-      FinderVideoLayout localFinderVideoLayout = (FinderVideoLayout)paramv.arI.findViewById(2131299975);
+      FinderVideoLayout localFinderVideoLayout = (FinderVideoLayout)paramw.asD.findViewById(2131299975);
       if (localFinderVideoLayout != null)
       {
-        localFinderVideoLayout.play(paramv.ln());
-        AppMethodBeat.o(168019);
+        localFinderVideoLayout.play(paramw.lv());
+        AppMethodBeat.o(210204);
         return;
       }
-      ad.e("Finder.VideoAutoPlayManager", "videoContainer is null! mediaId=" + parambmd.mediaId + "] feedId=" + paramLong);
+      ac.e("Finder.VideoAutoPlayManager", "playFocusHolder videoContainer is null! mediaId=" + parambqs.mediaId + "] feedId=" + paramLong);
     }
-    AppMethodBeat.o(168019);
+    AppMethodBeat.o(210204);
   }
   
-  private final void k(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  private static void b(RecyclerView.w paramw, bqs parambqs, long paramLong)
   {
-    AppMethodBeat.i(168017);
-    this.hbq.removeMessages(1);
-    if (!this.isResume)
+    AppMethodBeat.i(210205);
+    if (paramw != null)
     {
-      ad.w("Finder.VideoAutoPlayManager", "activity is not resume");
-      AppMethodBeat.o(168017);
-      return;
-    }
-    if (this.aFx)
-    {
-      ad.w("Finder.VideoAutoPlayManager", "isLocked=" + this.aFx + " lockKV=" + this.Lcr);
-      AppMethodBeat.o(168017);
-      return;
-    }
-    Object localObject1;
-    if (paramInt2 != -1)
-    {
-      localObject1 = paramRecyclerView.cj(paramInt2);
-      if (!(localObject1 instanceof com.tencent.mm.view.recyclerview.e)) {
-        break label303;
-      }
-      localObject1 = (com.tencent.mm.view.recyclerview.e)localObject1;
-    }
-    BaseFinderFeed localBaseFinderFeed;
-    Object localObject2;
-    long l;
-    while (localObject1 != null)
-    {
-      localBaseFinderFeed = (BaseFinderFeed)((com.tencent.mm.view.recyclerview.e)localObject1).fjf();
-      localObject2 = localBaseFinderFeed.feedObject.getMediaList();
-      if (paramInt1 >= ((LinkedList)localObject2).size())
+      FinderVideoLayout localFinderVideoLayout = (FinderVideoLayout)paramw.asD.findViewById(2131299975);
+      if (localFinderVideoLayout != null)
       {
-        ad.w("Finder.VideoAutoPlayManager", "mediaIndex=" + paramInt1 + " >= " + ((LinkedList)localObject2).size());
-        AppMethodBeat.o(168017);
+        ac.d("Finder.VideoAutoPlayManager", "prepareToPlay ".concat(String.valueOf(paramLong)));
+        paramw.lv();
+        localFinderVideoLayout.cMP();
+        AppMethodBeat.o(210205);
         return;
-        localObject1 = paramRecyclerView.getLayoutManager();
-        if ((localObject1 instanceof LinearLayoutManager))
-        {
-          paramInt2 = ((LinearLayoutManager)localObject1).jO();
-          int i = ((LinearLayoutManager)localObject1).jQ();
-          localObject1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-          l = com.tencent.mm.plugin.finder.utils.i.j(paramRecyclerView, paramInt2, i).feedId;
-          localObject1 = paramRecyclerView.getAdapter();
-          if ((localObject1 instanceof com.tencent.mm.view.recyclerview.d))
-          {
-            localObject1 = ((com.tencent.mm.view.recyclerview.d)localObject1).L(l, true);
-            if ((localObject1 instanceof com.tencent.mm.view.recyclerview.e))
-            {
-              localObject1 = (com.tencent.mm.view.recyclerview.e)localObject1;
-              continue;
-            }
-            ad.e("Finder.VideoAutoPlayManager", "[check2Play] holder=".concat(String.valueOf(localObject1)));
-          }
-        }
-        label303:
-        localObject1 = null;
       }
-      else
-      {
-        Object localObject3 = com.tencent.mm.ui.component.a.LCX;
-        localObject3 = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.activity).get(FinderReporterUIC.class)).ahX(this.IoU);
-        if (localObject3 != null) {
-          ((com.tencent.mm.plugin.finder.event.base.e)localObject3).g(paramRecyclerView, 6);
-        }
-        paramRecyclerView = (FinderMediaBanner)((com.tencent.mm.view.recyclerview.e)localObject1).abq(2131302203);
-        paramRecyclerView.getGlobalVisibleRect(this.qSZ);
-        k.g(paramRecyclerView, "banner");
-        paramInt1 = paramRecyclerView.getHeight();
-        if ((this.qSZ.height() < paramInt1 / 2.5F) || (localBaseFinderFeed.feedObject.getMediaType() != 4)) {
-          break label508;
-        }
-        paramRecyclerView = (bmd)((LinkedList)localObject2).getFirst();
-        U((RecyclerView.v)localObject1);
-        localObject2 = (RecyclerView.v)localObject1;
-        k.g(paramRecyclerView, "first");
-        l = localBaseFinderFeed.feedObject.getId();
-        localBaseFinderFeed.feedObject.getObjectNonceId();
-        a((RecyclerView.v)localObject2, paramRecyclerView, l);
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 == null)
-      {
-        paramRecyclerView = (FinderVideoAutoPlayManager)this;
-        ad.e("Finder.VideoAutoPlayManager", "focusHolder is null");
-        paramRecyclerView.U(null);
-        paramRecyclerView = y.JfV;
-      }
-      AppMethodBeat.o(168017);
+      ac.e("Finder.VideoAutoPlayManager", "prepareHolder videoContainer is null! mediaId=" + parambqs.mediaId + "] feedId=" + paramLong);
+      AppMethodBeat.o(210205);
       return;
-      label508:
-      if ((this.qSZ.height() >= paramInt1 / 2.5F) && (localBaseFinderFeed.feedObject.getMediaType() == 8))
-      {
-        localObject2 = ((LinkedList)localObject2).get(paramRecyclerView.getFocusPosition());
-        k.g(localObject2, "mediaList[banner.focusPosition]");
-        localObject2 = (bmd)localObject2;
-        if (((bmd)localObject2).mediaType == 4)
-        {
-          paramRecyclerView = paramRecyclerView.getPagerView().cj(paramRecyclerView.getFocusPosition());
-          U(paramRecyclerView);
-          l = localBaseFinderFeed.feedObject.getId();
-          localBaseFinderFeed.feedObject.getObjectNonceId();
-          a(paramRecyclerView, (bmd)localObject2, l);
-        }
-        else
-        {
-          U(null);
-        }
-      }
-      else
-      {
-        U(null);
-      }
     }
+    AppMethodBeat.o(210205);
   }
   
-  public final void a(c paramc)
+  public final void a(final com.tencent.mm.plugin.finder.event.base.b paramb)
   {
     AppMethodBeat.i(168015);
-    k.h(paramc, "ev");
-    if ((paramc instanceof com.tencent.mm.plugin.finder.event.base.i))
-    {
-      a(this, this.fPw, 0, 0, 6);
-      AppMethodBeat.o(168015);
-      return;
-    }
-    if ((paramc instanceof com.tencent.mm.plugin.finder.event.base.a))
-    {
-      if (((com.tencent.mm.plugin.finder.event.base.a)paramc).ahc == null)
-      {
-        this.hbq.removeMessages(1);
-        this.hbq.sendEmptyMessageDelayed(1, 500L);
-        AppMethodBeat.o(168015);
-      }
-    }
-    else
-    {
-      if ((paramc instanceof i.b))
-      {
-        a(this, this.fPw, ((i.b)paramc).index, 0, 4);
-        ad.i("Finder.VideoAutoPlayManager", "[PageChangeEvent] ".concat(String.valueOf(paramc)));
-        AppMethodBeat.o(168015);
-        return;
-      }
-      if ((paramc instanceof j.a))
-      {
-        k(this.fPw, 0, ((j.a)paramc).qvB);
-        ad.i("Finder.VideoAutoPlayManager", "[PlayEvent] ".concat(String.valueOf(paramc)));
-      }
+    k.h(paramb, "ev");
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.h)) {
+      this.fTr.post((Runnable)new d(this, paramb));
     }
     AppMethodBeat.o(168015);
   }
   
-  public final boolean a(com.tencent.mm.plugin.finder.event.base.d paramd, c paramc)
+  public final boolean a(c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
   {
     AppMethodBeat.i(168021);
-    k.h(paramd, "dispatcher");
-    k.h(paramc, "event");
-    if ((paramc instanceof com.tencent.mm.plugin.finder.event.base.i))
+    k.h(paramc, "dispatcher");
+    k.h(paramb, "event");
+    if ((paramb instanceof com.tencent.mm.plugin.finder.event.base.h))
     {
-      if ((((com.tencent.mm.plugin.finder.event.base.i)paramc).type == 3) || (((com.tencent.mm.plugin.finder.event.base.i)paramc).type == 0))
+      if ((((com.tencent.mm.plugin.finder.event.base.h)paramb).type == 3) || (((com.tencent.mm.plugin.finder.event.base.h)paramb).type == 0) || (((com.tencent.mm.plugin.finder.event.base.h)paramb).type == 8) || (((com.tencent.mm.plugin.finder.event.base.h)paramb).type == 5))
       {
         AppMethodBeat.o(168021);
         return true;
@@ -275,51 +380,36 @@ public final class FinderVideoAutoPlayManager
       AppMethodBeat.o(168021);
       return false;
     }
-    if ((paramc instanceof com.tencent.mm.plugin.finder.event.base.a))
-    {
-      AppMethodBeat.o(168021);
-      return true;
-    }
-    if ((paramc instanceof i.b))
-    {
-      AppMethodBeat.o(168021);
-      return true;
-    }
-    if ((paramc instanceof j.a))
-    {
-      AppMethodBeat.o(168021);
-      return true;
-    }
     AppMethodBeat.o(168021);
     return false;
   }
   
-  public final boolean clc()
+  public final boolean csW()
   {
     return false;
   }
   
-  public final void m(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final void e(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(199779);
+    AppMethodBeat.i(203842);
     k.h(paramString, "scene");
-    ad.i("Finder.VideoAutoPlayManager", "scene=" + paramString + " isLock=" + paramBoolean1 + " unLockAfterCheck=" + paramBoolean2);
+    ac.i("Finder.VideoAutoPlayManager", "[lock] scene=" + paramString + " isLock=" + paramBoolean1 + " lockSize=" + this.rSj.size() + " unLockAfterCheck=" + paramBoolean2);
     if (paramBoolean1)
     {
-      this.Lcr.add(paramString);
-      this.aFx = true;
+      this.rSj.add(paramString);
+      this.aGn = true;
     }
     for (;;)
     {
-      this.hbq.removeMessages(1);
-      if ((!this.aFx) && (paramBoolean2)) {
-        this.hbq.sendEmptyMessage(1);
+      this.hBR.removeMessages(1);
+      if ((!this.aGn) && (paramBoolean2)) {
+        this.hBR.sendEmptyMessage(1);
       }
-      AppMethodBeat.o(199779);
+      AppMethodBeat.o(203842);
       return;
-      this.Lcr.remove(paramString);
-      if (this.Lcr.size() <= 0) {
-        this.aFx = false;
+      this.rSj.remove(paramString);
+      if (this.rSj.size() <= 0) {
+        this.aGn = false;
       }
     }
   }
@@ -342,7 +432,7 @@ public final class FinderVideoAutoPlayManager
   {
     AppMethodBeat.i(168025);
     k.h(paramLifecycleOwner, "var1");
-    this.hbq.removeMessages(1);
+    this.hBR.removeMessages(1);
     this.isResume = false;
     AppMethodBeat.o(168025);
   }
@@ -351,7 +441,7 @@ public final class FinderVideoAutoPlayManager
   {
     AppMethodBeat.i(168016);
     super.onRelease();
-    this.hbq.removeCallbacksAndMessages(null);
+    this.hBR.removeCallbacksAndMessages(null);
     AppMethodBeat.o(168016);
   }
   
@@ -359,8 +449,11 @@ public final class FinderVideoAutoPlayManager
   {
     AppMethodBeat.i(168024);
     k.h(paramLifecycleOwner, "var1");
-    if (!this.hbq.hasMessages(1)) {
-      this.hbq.sendEmptyMessage(1);
+    paramLifecycleOwner = a.IrY;
+    paramLifecycleOwner = a.q(this.activity).get(FinderHomeUIC.class);
+    k.g(paramLifecycleOwner, "UICProvider.of(activity)…inderHomeUIC::class.java)");
+    if ((((FinderHomeUIC)paramLifecycleOwner).cFV() == this.diw) && (!this.hBR.hasMessages(1))) {
+      this.hBR.sendEmptyMessage(1);
     }
     this.isResume = true;
     AppMethodBeat.o(168024);
@@ -387,45 +480,72 @@ public final class FinderVideoAutoPlayManager
     if (localObject != null) {
       a((MMActivity)localObject, (UILifecycleObserver)this);
     }
-    localObject = com.tencent.mm.ui.component.a.LCX;
-    localObject = ((FinderReporterUIC)com.tencent.mm.ui.component.a.s(this.activity).get(FinderReporterUIC.class)).ahW(this.IoU);
+    localObject = a.IrY;
+    localObject = ((FinderReporterUIC)a.q(this.activity).get(FinderReporterUIC.class)).Fd(this.diw);
     if (localObject != null) {
-      ((com.tencent.mm.plugin.finder.event.base.d)localObject).a((f)this);
+      ((c)localObject).a((d)this);
     }
-    if (!this.hbq.hasMessages(1)) {
-      this.hbq.sendEmptyMessageDelayed(1, 500L);
+    if (!this.hBR.hasMessages(1)) {
+      this.hBR.sendEmptyMessageDelayed(1, 500L);
     }
     AppMethodBeat.o(168013);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager$Companion;", "", "()V", "BASE_LINE", "", "DELAY_CHECK_TIME", "", "TAG", "", "WHAT_CHECK_PLAY", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/video/FinderVideoAutoPlayManager$playMultiVideoHolder$1$1"})
   static final class b
-    implements ap.a
+    implements Runnable
   {
-    b(FinderVideoAutoPlayManager paramFinderVideoAutoPlayManager) {}
+    b(String paramString, FinderVideoAutoPlayManager paramFinderVideoAutoPlayManager, n.a parama, int paramInt1, int paramInt2, RecyclerView paramRecyclerView, v.a parama1) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(210201);
+      FinderVideoAutoPlayManager.a(jdField_this).add(this.kdj);
+      FinderVideoAutoPlayManager.a(jdField_this, paramRecyclerView);
+      AppMethodBeat.o(210201);
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  static final class c
+    implements ao.a
+  {
+    c(FinderVideoAutoPlayManager paramFinderVideoAutoPlayManager) {}
     
     public final boolean handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(168011);
       if (paramMessage.what == 1)
       {
-        ad.i("Finder.VideoAutoPlayManager", "data change to check play...");
-        FinderVideoAutoPlayManager.a(this.qTE, this.qTE.fPw, 0, 0, 6);
+        ac.i("Finder.VideoAutoPlayManager", "data change to check play...");
+        FinderVideoAutoPlayManager.a(this.rSn, this.rSn.fTr);
       }
       AppMethodBeat.o(168011);
       return true;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "view", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
-  static final class c
-    extends d.g.b.l
-    implements b<o, Boolean>
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  static final class d
+    implements Runnable
   {
-    c(FinderVideoLayout paramFinderVideoLayout)
+    d(FinderVideoAutoPlayManager paramFinderVideoAutoPlayManager, com.tencent.mm.plugin.finder.event.base.b paramb) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(203841);
+      ac.d("Finder.VideoAutoPlayManager", "ScrollEvent " + ((com.tencent.mm.plugin.finder.event.base.h)paramb).type);
+      FinderVideoAutoPlayManager.a(this.rSn, this.rSn.fTr);
+      AppMethodBeat.o(203841);
+    }
+  }
+  
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "view", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
+  static final class e
+    extends d.g.b.l
+    implements d.g.a.b<o, Boolean>
+  {
+    e(FinderVideoLayout paramFinderVideoLayout)
     {
       super();
     }
@@ -433,7 +553,7 @@ public final class FinderVideoAutoPlayManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderVideoAutoPlayManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,23 +4,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.boj;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bsz;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class SightCaptureResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SightCaptureResult> CREATOR;
-  public boolean osM;
-  public boolean tAP;
-  public boolean tAQ;
-  public String tAR;
-  public String tAS;
-  public String tAT;
-  public String tAU;
-  public int tAV;
-  public boj tAW;
-  public String tAX;
+  public boolean oWm;
+  public boolean uJm;
+  public boolean uJn;
+  public String uJo;
+  public String uJp;
+  public String uJq;
+  public String uJr;
+  public int uJs;
+  public bsz uJt;
+  public String uJu;
   
   static
   {
@@ -32,26 +32,26 @@ public class SightCaptureResult
   protected SightCaptureResult(Parcel paramParcel)
   {
     AppMethodBeat.i(148780);
-    this.osM = false;
-    this.tAP = false;
-    this.tAQ = true;
-    this.tAR = "";
-    this.tAS = "";
-    this.tAT = "";
-    this.tAU = "";
-    this.tAV = 0;
-    this.tAW = new boj();
-    this.tAX = "";
+    this.oWm = false;
+    this.uJm = false;
+    this.uJn = true;
+    this.uJo = "";
+    this.uJp = "";
+    this.uJq = "";
+    this.uJr = "";
+    this.uJs = 0;
+    this.uJt = new bsz();
+    this.uJu = "";
     if (paramParcel.readByte() != 0)
     {
       bool = true;
-      this.osM = bool;
+      this.oWm = bool;
       if (paramParcel.readByte() == 0) {
         break label203;
       }
       bool = true;
       label93:
-      this.tAP = bool;
+      this.uJm = bool;
       if (paramParcel.readByte() == 0) {
         break label208;
       }
@@ -60,25 +60,25 @@ public class SightCaptureResult
     label208:
     for (boolean bool = true;; bool = false)
     {
-      this.tAQ = bool;
-      this.tAR = paramParcel.readString();
-      this.tAS = paramParcel.readString();
-      this.tAT = paramParcel.readString();
-      this.tAU = paramParcel.readString();
-      this.tAV = paramParcel.readInt();
-      this.tAX = paramParcel.readString();
+      this.uJn = bool;
+      this.uJo = paramParcel.readString();
+      this.uJp = paramParcel.readString();
+      this.uJq = paramParcel.readString();
+      this.uJr = paramParcel.readString();
+      this.uJs = paramParcel.readInt();
+      this.uJu = paramParcel.readString();
       try
       {
         byte[] arrayOfByte = new byte[paramParcel.readInt()];
         paramParcel.readByteArray(arrayOfByte);
-        this.tAW = new boj();
-        this.tAW.parseFrom(arrayOfByte);
+        this.uJt = new bsz();
+        this.uJt.parseFrom(arrayOfByte);
         AppMethodBeat.o(148780);
         return;
       }
       catch (Exception paramParcel)
       {
-        ad.e("MicroMsg.SightCaptureResult", "read ext info error: %s", new Object[] { paramParcel.getMessage() });
+        ac.e("MicroMsg.SightCaptureResult", "read ext info error: %s", new Object[] { paramParcel.getMessage() });
         AppMethodBeat.o(148780);
       }
       bool = false;
@@ -91,45 +91,45 @@ public class SightCaptureResult
   public SightCaptureResult(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(148779);
-    this.osM = false;
-    this.tAP = false;
-    this.tAQ = true;
-    this.tAR = "";
-    this.tAS = "";
-    this.tAT = "";
-    this.tAU = "";
-    this.tAV = 0;
-    this.tAW = new boj();
-    this.tAX = "";
-    this.tAQ = paramBoolean;
-    this.tAX = paramString;
-    this.osM = false;
-    this.tAP = true;
+    this.oWm = false;
+    this.uJm = false;
+    this.uJn = true;
+    this.uJo = "";
+    this.uJp = "";
+    this.uJq = "";
+    this.uJr = "";
+    this.uJs = 0;
+    this.uJt = new bsz();
+    this.uJu = "";
+    this.uJn = paramBoolean;
+    this.uJu = paramString;
+    this.oWm = false;
+    this.uJm = true;
     AppMethodBeat.o(148779);
   }
   
-  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boj paramboj)
+  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, bsz parambsz)
   {
     AppMethodBeat.i(148778);
-    this.osM = false;
-    this.tAP = false;
-    this.tAQ = true;
-    this.tAR = "";
-    this.tAS = "";
-    this.tAT = "";
-    this.tAU = "";
-    this.tAV = 0;
-    this.tAW = new boj();
-    this.tAX = "";
-    this.tAQ = paramBoolean;
-    this.tAR = paramString1;
-    this.tAS = paramString2;
-    this.tAT = paramString3;
-    this.tAV = paramInt;
-    this.tAW = paramboj;
-    this.tAU = paramString4;
-    this.osM = true;
-    this.tAP = false;
+    this.oWm = false;
+    this.uJm = false;
+    this.uJn = true;
+    this.uJo = "";
+    this.uJp = "";
+    this.uJq = "";
+    this.uJr = "";
+    this.uJs = 0;
+    this.uJt = new bsz();
+    this.uJu = "";
+    this.uJn = paramBoolean;
+    this.uJo = paramString1;
+    this.uJp = paramString2;
+    this.uJq = paramString3;
+    this.uJs = paramInt;
+    this.uJt = parambsz;
+    this.uJr = paramString4;
+    this.oWm = true;
+    this.uJm = false;
     AppMethodBeat.o(148778);
   }
   
@@ -142,17 +142,17 @@ public class SightCaptureResult
   {
     int i = 1;
     AppMethodBeat.i(148781);
-    if (this.osM)
+    if (this.oWm)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.tAP) {
+      if (!this.uJm) {
         break label133;
       }
       paramInt = 1;
       label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.tAQ) {
+      if (!this.uJn) {
         break label138;
       }
     }
@@ -161,15 +161,15 @@ public class SightCaptureResult
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.tAR);
-      paramParcel.writeString(this.tAS);
-      paramParcel.writeString(this.tAT);
-      paramParcel.writeString(this.tAU);
-      paramParcel.writeInt(this.tAV);
-      paramParcel.writeString(this.tAX);
+      paramParcel.writeString(this.uJo);
+      paramParcel.writeString(this.uJp);
+      paramParcel.writeString(this.uJq);
+      paramParcel.writeString(this.uJr);
+      paramParcel.writeInt(this.uJs);
+      paramParcel.writeString(this.uJu);
       try
       {
-        byte[] arrayOfByte = this.tAW.toByteArray();
+        byte[] arrayOfByte = this.uJt.toByteArray();
         paramParcel.writeInt(arrayOfByte.length);
         paramParcel.writeByteArray(arrayOfByte);
         AppMethodBeat.o(148781);
@@ -177,7 +177,7 @@ public class SightCaptureResult
       }
       catch (Exception paramParcel)
       {
-        ad.e("MicroMsg.SightCaptureResult", "write ext info error");
+        ac.e("MicroMsg.SightCaptureResult", "write ext info error");
         AppMethodBeat.o(148781);
       }
       paramInt = 0;

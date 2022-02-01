@@ -9,21 +9,21 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Timer;
 
 public class FaceNumberView
   extends LinearLayout
 {
-  private String pVZ;
-  private int pWa;
-  private ViewGroup pWb;
-  public FaceNumberItemView[] pWc;
-  private int pWd;
-  private Animation pWe;
-  private FaceNumberView.a pWf;
+  private String qEE;
+  private int qEF;
+  private ViewGroup qEG;
+  public FaceNumberItemView[] qEH;
+  private int qEI;
+  private Animation qEJ;
+  private FaceNumberView.a qEK;
   
   public FaceNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,14 +34,14 @@ public class FaceNumberView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104176);
-    this.pVZ = null;
-    this.pWc = null;
-    this.pWd = 0;
-    this.pWe = null;
-    this.pWf = FaceNumberView.a.pWh;
-    this.pWb = ((ViewGroup)inflate(getContext(), 2131493915, null));
-    addView(this.pWb);
-    this.pWe = AnimationUtils.loadAnimation(getContext(), 2130772095);
+    this.qEE = null;
+    this.qEH = null;
+    this.qEI = 0;
+    this.qEJ = null;
+    this.qEK = FaceNumberView.a.qEM;
+    this.qEG = ((ViewGroup)inflate(getContext(), 2131493915, null));
+    addView(this.qEG);
+    this.qEJ = AnimationUtils.loadAnimation(getContext(), 2130772095);
     AppMethodBeat.o(104176);
   }
   
@@ -117,41 +117,41 @@ public class FaceNumberView
     AppMethodBeat.o(104178);
   }
   
-  private void cgX()
+  private void coE()
   {
     int i = 0;
     AppMethodBeat.i(104177);
-    if ((this.pWc != null) && (this.pWc.length > 0))
+    if ((this.qEH != null) && (this.qEH.length > 0))
     {
-      if (!bt.isNullOrNil(this.pVZ))
+      if (!bs.isNullOrNil(this.qEE))
       {
         i = 0;
-        if (i < this.pWc.length)
+        if (i < this.qEH.length)
         {
           String str;
           FaceNumberItemView localFaceNumberItemView;
-          if (this.pWa > i)
+          if (this.qEF > i)
           {
-            str = this.pVZ.charAt(i);
-            if (this.pWa == i + 1)
+            str = this.qEE.charAt(i);
+            if (this.qEF == i + 1)
             {
-              localFaceNumberItemView = this.pWc[i];
-              if (localFaceNumberItemView.pVO != null) {
-                localFaceNumberItemView.cgW();
+              localFaceNumberItemView = this.qEH[i];
+              if (localFaceNumberItemView.qEt != null) {
+                localFaceNumberItemView.coD();
               }
-              localFaceNumberItemView.pVO = new Timer("FaceNumberItemView_karaoke", true);
-              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.pVW, (byte)0);
-              localFaceNumberItemView.pVO.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.pVP);
+              localFaceNumberItemView.qEt = new Timer("FaceNumberItemView_karaoke", true);
+              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.qEB, (byte)0);
+              localFaceNumberItemView.qEt.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.qEu);
             }
           }
           for (;;)
           {
-            a(this.pWc[i], str);
+            a(this.qEH[i], str);
             i += 1;
             break;
-            this.pWc[i].cgW();
-            localFaceNumberItemView = this.pWc[i];
-            localFaceNumberItemView.pVV = 30;
+            this.qEH[i].coD();
+            localFaceNumberItemView = this.qEH[i];
+            localFaceNumberItemView.qEA = 30;
             localFaceNumberItemView.invalidate();
             continue;
             str = "";
@@ -160,34 +160,34 @@ public class FaceNumberView
         AppMethodBeat.o(104177);
         return;
       }
-      while (i < this.pWc.length)
+      while (i < this.qEH.length)
       {
-        a(this.pWc[i], "point");
+        a(this.qEH[i], "point");
         i += 1;
       }
     }
     AppMethodBeat.o(104177);
   }
   
-  private void cgY()
+  private void coF()
   {
     AppMethodBeat.i(104179);
-    if (this.pVZ != null)
+    if (this.qEE != null)
     {
-      this.pWa = this.pVZ.length();
+      this.qEF = this.qEE.length();
       AppMethodBeat.o(104179);
       return;
     }
-    this.pWa = 0;
+    this.qEF = 0;
     AppMethodBeat.o(104179);
   }
   
-  public final void XO(String paramString)
+  public final void acl(String paramString)
   {
     AppMethodBeat.i(104180);
-    this.pVZ = paramString;
-    cgY();
-    cgX();
+    this.qEE = paramString;
+    coF();
+    coE();
     AppMethodBeat.o(104180);
   }
   
@@ -196,26 +196,26 @@ public class FaceNumberView
     AppMethodBeat.i(104175);
     if (paramInt > 12)
     {
-      ad.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed max length: %d", new Object[] { Integer.valueOf(paramInt) });
+      ac.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed max length: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(104175);
       return;
     }
     if (paramInt <= 0)
     {
-      ad.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed min length: %d", new Object[] { Integer.valueOf(paramInt) });
+      ac.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed min length: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(104175);
       return;
     }
-    if (paramInt == this.pWd)
+    if (paramInt == this.qEI)
     {
-      ad.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
-      XO(null);
+      ac.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
+      acl(null);
       AppMethodBeat.o(104175);
       return;
     }
-    this.pWb.removeAllViews();
-    this.pWd = paramInt;
-    this.pWc = new FaceNumberItemView[this.pWd];
+    this.qEG.removeAllViews();
+    this.qEI = paramInt;
+    this.qEH = new FaceNumberItemView[this.qEI];
     int k = 0;
     if (k < paramInt)
     {
@@ -231,8 +231,8 @@ public class FaceNumberView
       for (;;)
       {
         localFaceNumberItemView.setGravity(j);
-        this.pWc[k] = localFaceNumberItemView;
-        this.pWb.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131166277)));
+        this.qEH[k] = localFaceNumberItemView;
+        this.qEG.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131166277)));
         k += 1;
         break;
         if (k == paramInt - 1)

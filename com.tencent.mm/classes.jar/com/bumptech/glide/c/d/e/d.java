@@ -35,12 +35,12 @@ public final class d
   
   public final com.bumptech.glide.c.c b(j paramj)
   {
-    return com.bumptech.glide.c.c.aCi;
+    return com.bumptech.glide.c.c.aDa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.e.d
  * JD-Core Version:    0.7.0.1
  */

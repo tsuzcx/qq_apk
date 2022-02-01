@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.topstory;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.compatible.util.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.plugin.topstory.a.b.b;
 import com.tencent.mm.plugin.topstory.a.f;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.s;
-import com.tencent.mm.protocal.protobuf.ckd;
-import com.tencent.mm.protocal.protobuf.dcy;
-import com.tencent.mm.protocal.protobuf.ddb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.plugin.websearch.api.r;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,14 +31,14 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class c
   implements f
 {
-  ap xuj;
-  Map<Long, a> yLh;
+  ao yGZ;
+  Map<Long, a> zZa;
   
   public c()
   {
     AppMethodBeat.i(88463);
-    this.yLh = new ConcurrentHashMap();
-    this.xuj = new ap("TopStoryReportExposeTask")
+    this.zZa = new ConcurrentHashMap();
+    this.yGZ = new ao("TopStoryReportExposeTask")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -57,40 +57,40 @@ public final class c
     AppMethodBeat.o(88463);
   }
   
-  public static void a(dcy paramdcy, ddb paramddb, b paramb)
+  public static void a(dil paramdil, dio paramdio, b paramb)
   {
     AppMethodBeat.i(88465);
-    ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "stopVideoPlay: %s %s", new Object[] { paramddb, paramb });
-    if ((paramddb != null) && (paramb != null))
+    ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "stopVideoPlay: %s %s", new Object[] { paramdio, paramb });
+    if ((paramdio != null) && (paramb != null))
     {
-      paramb.yLA = System.currentTimeMillis();
-      paramb.yLB = (paramb.yLA - paramb.yLz);
-      Object localObject = b(paramdcy, paramddb, paramb);
-      if (!bt.isNullOrNil((String)localObject))
+      paramb.zZt = System.currentTimeMillis();
+      paramb.zZu = (paramb.zZt - paramb.zZs);
+      Object localObject = b(paramdil, paramdio, paramb);
+      if (!bs.isNullOrNil((String)localObject))
       {
-        ckd localckd = new ckd();
-        localckd.Eff = ((String)localObject);
-        ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "build14436VideoPlayReportString %s", new Object[] { localckd.Eff });
-        localObject = new s(localckd);
-        g.aeS().a((n)localObject, 0);
+        cpk localcpk = new cpk();
+        localcpk.FCf = ((String)localObject);
+        ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "build14436VideoPlayReportString %s", new Object[] { localcpk.FCf });
+        localObject = new r(localcpk);
+        g.agi().a((n)localObject, 0);
       }
-      if (paramb.yLS == null) {
+      if (paramb.zZL == null) {
         break label477;
       }
     }
     label477:
-    for (int i = paramb.yLS.videoBitrate;; i = 0)
+    for (int i = paramb.zZL.videoBitrate;; i = 0)
     {
-      paramdcy = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramdcy.scene), paramddb.rNP, Long.valueOf(paramddb.EuU), "mp4", Integer.valueOf(paramddb.xot), Integer.valueOf(i), Long.valueOf(paramb.yLz), Long.valueOf(paramb.yLA), Long.valueOf(paramb.yLC), Long.valueOf(paramb.yLB), Long.valueOf(paramb.yLE), Long.valueOf(paramb.yLF), Long.valueOf(paramb.yLG), Long.valueOf(paramb.yLH), Long.valueOf(paramb.yLK), Long.valueOf(paramb.yLL), Long.valueOf(paramb.yLD), Long.valueOf(paramb.yLM), Long.valueOf(paramb.yLN), Long.valueOf(paramb.yLP), Long.valueOf(paramb.yLQ), paramb.gKw, Long.valueOf(paramb.position), aa.cWN(), Long.valueOf(paramb.yLO), Long.valueOf(paramb.yLR), Long.valueOf(paramb.yLI), Long.valueOf(paramb.yLJ), paramdcy.qwV });
-      ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "stopVideoPlay 15414 %s", new Object[] { paramdcy });
-      e.vIY.kvStat(15414, paramdcy);
+      paramdil = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramdil.scene), paramdio.sVF, Long.valueOf(paramdio.FRV), "mp4", Integer.valueOf(paramdio.yBk), Integer.valueOf(i), Long.valueOf(paramb.zZs), Long.valueOf(paramb.zZt), Long.valueOf(paramb.zZv), Long.valueOf(paramb.zZu), Long.valueOf(paramb.zZx), Long.valueOf(paramb.zZy), Long.valueOf(paramb.zZz), Long.valueOf(paramb.zZA), Long.valueOf(paramb.zZD), Long.valueOf(paramb.zZE), Long.valueOf(paramb.zZw), Long.valueOf(paramb.zZF), Long.valueOf(paramb.zZG), Long.valueOf(paramb.zZI), Long.valueOf(paramb.zZJ), paramb.hkW, Long.valueOf(paramb.position), z.dkv(), Long.valueOf(paramb.zZH), Long.valueOf(paramb.zZK), Long.valueOf(paramb.zZB), Long.valueOf(paramb.zZC), paramdil.qox });
+      ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "stopVideoPlay 15414 %s", new Object[] { paramdil });
+      e.wTc.kvStat(15414, paramdil);
       com.tencent.mm.plugin.topstory.a.a.a.a(paramb);
       AppMethodBeat.o(88465);
       return;
     }
   }
   
-  private static String b(dcy paramdcy, ddb paramddb, int paramInt1, int paramInt2, String paramString)
+  private static String b(dil paramdil, dio paramdio, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(88467);
     StringBuilder localStringBuilder = new StringBuilder("");
@@ -99,14 +99,14 @@ public final class c
       try
       {
         localStringBuilder.append("scene=");
-        localStringBuilder.append(paramdcy.scene);
+        localStringBuilder.append(paramdil.scene);
         localStringBuilder.append("&");
         localStringBuilder.append("businesstype=3");
         localStringBuilder.append("&");
         localStringBuilder.append("mediatype=2");
         localStringBuilder.append("&");
         localStringBuilder.append("docid=");
-        localStringBuilder.append(paramddb.roQ);
+        localStringBuilder.append(paramdio.sxK);
         localStringBuilder.append("&");
         localStringBuilder.append("typepos=");
         localStringBuilder.append("0");
@@ -115,12 +115,12 @@ public final class c
         localStringBuilder.append(paramInt1 + 1);
         localStringBuilder.append("&");
         localStringBuilder.append("searchid=");
-        localStringBuilder.append(paramdcy.jko);
+        localStringBuilder.append(paramdil.jKB);
         localStringBuilder.append("&");
         localStringBuilder.append("ishomepage=");
         localStringBuilder.append(0);
         localStringBuilder.append("&rec_category=");
-        localStringBuilder.append(paramddb.EuN);
+        localStringBuilder.append(paramdio.FRO);
         localStringBuilder.append("&");
         localStringBuilder.append("timestamp=");
         localStringBuilder.append(System.currentTimeMillis());
@@ -130,7 +130,7 @@ public final class c
         localStringBuilder.append("&");
         localStringBuilder.append("clickcontent=");
       }
-      catch (Exception paramdcy)
+      catch (Exception paramdil)
       {
         continue;
       }
@@ -147,45 +147,45 @@ public final class c
         localStringBuilder.append("query=");
         try
         {
-          localStringBuilder.append(p.encode(paramdcy.dcm, "utf-8"));
+          localStringBuilder.append(p.encode(paramdil.cZL, "utf-8"));
           localStringBuilder.append("&");
           localStringBuilder.append("resulttype=");
-          localStringBuilder.append(paramddb.EuT);
+          localStringBuilder.append(paramdio.FRU);
           localStringBuilder.append("&");
           localStringBuilder.append("sessionid=");
-          localStringBuilder.append(aa.RY(paramdcy.scene));
+          localStringBuilder.append(z.Ui(paramdil.scene));
           localStringBuilder.append("&");
           localStringBuilder.append("expand=");
           try
           {
-            localStringBuilder.append(p.encode(paramddb.EuP, "utf-8"));
+            localStringBuilder.append(p.encode(paramdio.FRQ, "utf-8"));
             localStringBuilder.append("&");
             localStringBuilder.append("title=");
             try
             {
-              localStringBuilder.append(p.encode(paramddb.title, "utf-8"));
+              localStringBuilder.append(p.encode(paramdio.title, "utf-8"));
               localStringBuilder.append("&");
               localStringBuilder.append("nettype=");
-              if (ay.isWifi(aj.getContext()))
+              if (ax.isWifi(ai.getContext()))
               {
                 localStringBuilder.append("wifi");
                 localStringBuilder.append("&");
                 localStringBuilder.append("itemtype=");
-                localStringBuilder.append(paramddb.EuQ);
-                paramdcy = localStringBuilder.toString();
+                localStringBuilder.append(paramdio.FRR);
+                paramdil = localStringBuilder.toString();
                 AppMethodBeat.o(88467);
-                return paramdcy;
+                return paramdil;
               }
-              if (ay.is4G(aj.getContext()))
+              if (ax.is4G(ai.getContext()))
               {
                 localStringBuilder.append("4g");
                 continue;
               }
               localStringBuilder.append("3g");
             }
-            catch (Exception paramdcy) {}
+            catch (Exception paramdil) {}
           }
-          catch (Exception paramdcy) {}
+          catch (Exception paramdil) {}
         }
         catch (Exception paramString) {}
       }
@@ -193,89 +193,89 @@ public final class c
     }
   }
   
-  private static String b(dcy paramdcy, ddb paramddb, b paramb)
+  private static String b(dil paramdil, dio paramdio, b paramb)
   {
     AppMethodBeat.i(88468);
     StringBuilder localStringBuilder = new StringBuilder("");
     localStringBuilder.append("ismediaplay=1");
     localStringBuilder.append("&searchid=");
-    localStringBuilder.append(paramdcy.jko);
+    localStringBuilder.append(paramdil.jKB);
     localStringBuilder.append("&scene=");
-    localStringBuilder.append(paramdcy.scene);
+    localStringBuilder.append(paramdil.scene);
     localStringBuilder.append("&businesstype=3");
     localStringBuilder.append("&mediatype=2");
     localStringBuilder.append("&rec_category=");
-    localStringBuilder.append(paramdcy.Euy);
+    localStringBuilder.append(paramdil.FRz);
     localStringBuilder.append("&docid=");
-    localStringBuilder.append(paramddb.roQ);
+    localStringBuilder.append(paramdio.sxK);
     localStringBuilder.append("&cdnsourcetype=");
-    localStringBuilder.append(paramddb.Eva);
+    localStringBuilder.append(paramdio.FSb);
     try
     {
-      localStringBuilder.append("&expand1=").append(p.encode(paramddb.EuP, "utf-8"));
+      localStringBuilder.append("&expand1=").append(p.encode(paramdio.FRQ, "utf-8"));
       label146:
       localStringBuilder.append("&query=");
       try
       {
-        localStringBuilder.append(p.encode(paramdcy.dcm, "utf-8"));
+        localStringBuilder.append(p.encode(paramdil.cZL, "utf-8"));
         label169:
         localStringBuilder.append("&title=");
         try
         {
-          localStringBuilder.append(p.encode(paramddb.title, "utf-8"));
+          localStringBuilder.append(p.encode(paramdio.title, "utf-8"));
           label192:
           localStringBuilder.append("&duration=");
-          localStringBuilder.append(paramddb.xot * 1000);
+          localStringBuilder.append(paramdio.yBk * 1000);
           localStringBuilder.append("&mediaid=");
-          localStringBuilder.append(paramddb.rNP);
+          localStringBuilder.append(paramdio.sVF);
           if (paramb != null)
           {
             localStringBuilder.append("&startplaytime=");
-            localStringBuilder.append(paramb.yLz);
+            localStringBuilder.append(paramb.zZs);
             localStringBuilder.append("&endplaytime=");
-            localStringBuilder.append(paramb.yLA);
+            localStringBuilder.append(paramb.zZt);
             localStringBuilder.append("&playtime=");
-            localStringBuilder.append(paramb.yLB);
+            localStringBuilder.append(paramb.zZu);
             localStringBuilder.append("&lastplayms=");
-            localStringBuilder.append(paramb.yLC);
+            localStringBuilder.append(paramb.zZv);
             localStringBuilder.append("&autoplay=");
-            localStringBuilder.append(paramb.yLG);
+            localStringBuilder.append(paramb.zZz);
             localStringBuilder.append("&hasplayended=");
-            localStringBuilder.append(paramb.yLD);
+            localStringBuilder.append(paramb.zZw);
             localStringBuilder.append("&hasquickplay=");
-            localStringBuilder.append(paramb.yLE);
+            localStringBuilder.append(paramb.zZx);
             localStringBuilder.append("&hasfullscreen=");
-            localStringBuilder.append(paramb.yLF);
+            localStringBuilder.append(paramb.zZy);
             localStringBuilder.append("&hitpreload=");
-            localStringBuilder.append(paramb.yLH);
+            localStringBuilder.append(paramb.zZA);
             localStringBuilder.append("&firstloadtime=");
-            localStringBuilder.append(paramb.yLK);
+            localStringBuilder.append(paramb.zZD);
             localStringBuilder.append("&downloadfinishtime=");
-            localStringBuilder.append(paramb.yLL);
+            localStringBuilder.append(paramb.zZE);
             localStringBuilder.append("&firstmoovreadytime=");
-            localStringBuilder.append(paramb.yLM);
+            localStringBuilder.append(paramb.zZF);
             localStringBuilder.append("&firstdataavailabletime=");
-            localStringBuilder.append(paramb.yLP);
+            localStringBuilder.append(paramb.zZI);
             localStringBuilder.append("&filesize=");
-            localStringBuilder.append(paramb.yLT);
-            if (paramb.yLS != null)
+            localStringBuilder.append(paramb.zZM);
+            if (paramb.zZL != null)
             {
               localStringBuilder.append("&bitrate=");
-              localStringBuilder.append(paramb.yLS.videoBitrate);
+              localStringBuilder.append(paramb.zZL.videoBitrate);
               localStringBuilder.append("&audiobitrate=");
-              localStringBuilder.append(paramb.yLS.audioBitrate);
+              localStringBuilder.append(paramb.zZL.audioBitrate);
             }
           }
-          paramdcy = localStringBuilder.toString();
+          paramdil = localStringBuilder.toString();
           AppMethodBeat.o(88468);
-          return paramdcy;
+          return paramdil;
         }
-        catch (Exception paramdcy)
+        catch (Exception paramdil)
         {
           break label192;
         }
       }
-      catch (Exception paramdcy)
+      catch (Exception paramdil)
       {
         break label169;
       }
@@ -286,22 +286,22 @@ public final class c
     }
   }
   
-  public final void a(dcy paramdcy, ddb paramddb, int paramInt1, int paramInt2, String paramString)
+  public final void a(dil paramdil, dio paramdio, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(88466);
-    paramdcy = b(paramdcy, paramddb, paramInt1, paramInt2, paramString);
-    if (!bt.isNullOrNil(paramdcy))
+    paramdil = b(paramdil, paramdio, paramInt1, paramInt2, paramString);
+    if (!bs.isNullOrNil(paramdil))
     {
-      paramddb = new ckd();
-      paramddb.Eff = paramdcy;
-      ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "do12721ClickVideoReport %s", new Object[] { paramddb.Eff });
-      paramdcy = new s(paramddb);
-      g.aeS().a(paramdcy, 0);
+      paramdio = new cpk();
+      paramdio.FCf = paramdil;
+      ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "do12721ClickVideoReport %s", new Object[] { paramdio.FCf });
+      paramdil = new r(paramdio);
+      g.agi().a(paramdil, 0);
     }
     AppMethodBeat.o(88466);
   }
   
-  public final void a(dcy paramdcy, HashSet<com.tencent.mm.plugin.topstory.a.b.c> paramHashSet)
+  public final void a(dil paramdil, HashSet<com.tencent.mm.plugin.topstory.a.b.c> paramHashSet)
   {
     AppMethodBeat.i(88464);
     if (paramHashSet.size() == 0)
@@ -309,37 +309,37 @@ public final class c
       AppMethodBeat.o(88464);
       return;
     }
-    a locala = (a)this.yLh.get(Long.valueOf(paramdcy.Euy));
-    if ((locala != null) && (this.xuj.hasMessages(0)))
+    a locala = (a)this.zZa.get(Long.valueOf(paramdil.FRz));
+    if ((locala != null) && (this.yGZ.hasMessages(0)))
     {
-      ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "reportExposeVideoInfo hit cached task %d add %d", new Object[] { Integer.valueOf(locala.yLj.size()), Integer.valueOf(paramHashSet.size()) });
-      paramdcy = paramHashSet.iterator();
-      while (paramdcy.hasNext())
+      ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "reportExposeVideoInfo hit cached task %d add %d", new Object[] { Integer.valueOf(locala.zZc.size()), Integer.valueOf(paramHashSet.size()) });
+      paramdil = paramHashSet.iterator();
+      while (paramdil.hasNext())
       {
-        paramHashSet = (com.tencent.mm.plugin.topstory.a.b.c)paramdcy.next();
-        locala.yLj.add(paramHashSet);
+        paramHashSet = (com.tencent.mm.plugin.topstory.a.b.c)paramdil.next();
+        locala.zZc.add(paramHashSet);
       }
       AppMethodBeat.o(88464);
       return;
     }
     if (locala != null) {
-      ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "reportExposeVideoInfo not report task: %s size: %d", new Object[] { locala, Integer.valueOf(locala.yLj.size()) });
+      ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "reportExposeVideoInfo not report task: %s size: %d", new Object[] { locala, Integer.valueOf(locala.zZc.size()) });
     }
     locala = new a((byte)0);
-    ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "reportExposeVideoInfo new task %d %s", new Object[] { Integer.valueOf(paramHashSet.size()), locala });
+    ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "reportExposeVideoInfo new task %d %s", new Object[] { Integer.valueOf(paramHashSet.size()), locala });
     locala.createTime = System.currentTimeMillis();
     paramHashSet = paramHashSet.iterator();
     while (paramHashSet.hasNext())
     {
       com.tencent.mm.plugin.topstory.a.b.c localc = (com.tencent.mm.plugin.topstory.a.b.c)paramHashSet.next();
-      locala.yLj.add(localc);
+      locala.zZc.add(localc);
     }
-    locala.yLk = paramdcy;
-    if (locala.yLj.size() > 0)
+    locala.zZd = paramdil;
+    if (locala.zZc.size() > 0)
     {
-      this.xuj.removeMessages(0);
-      this.xuj.sendMessageDelayed(this.xuj.obtainMessage(0, locala), 5000L);
-      this.yLh.put(Long.valueOf(paramdcy.Euy), locala);
+      this.yGZ.removeMessages(0);
+      this.yGZ.sendMessageDelayed(this.yGZ.obtainMessage(0, locala), 5000L);
+      this.zZa.put(Long.valueOf(paramdil.FRz), locala);
     }
     AppMethodBeat.o(88464);
   }
@@ -348,17 +348,17 @@ public final class c
     implements Runnable
   {
     long createTime;
-    HashSet<com.tencent.mm.plugin.topstory.a.b.c> yLj;
-    dcy yLk;
+    HashSet<com.tencent.mm.plugin.topstory.a.b.c> zZc;
+    dil zZd;
     
     private a()
     {
       AppMethodBeat.i(88460);
-      this.yLj = new HashSet();
+      this.zZc = new HashSet();
       AppMethodBeat.o(88460);
     }
     
-    private static String a(List<com.tencent.mm.plugin.topstory.a.b.c> paramList, dcy paramdcy)
+    private static String a(List<com.tencent.mm.plugin.topstory.a.b.c> paramList, dil paramdil)
     {
       AppMethodBeat.i(88462);
       StringBuilder localStringBuilder1;
@@ -378,14 +378,14 @@ public final class c
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (com.tencent.mm.plugin.topstory.a.b.c)((Iterator)localObject2).next();
-          ddb localddb = ((com.tencent.mm.plugin.topstory.a.b.c)localObject3).yLU;
-          ((StringBuilder)localObject1).append(localddb.dcn);
+          dio localdio = ((com.tencent.mm.plugin.topstory.a.b.c)localObject3).zZN;
+          ((StringBuilder)localObject1).append(localdio.cZM);
           ((StringBuilder)localObject1).append(":");
-          ((StringBuilder)localObject1).append(localddb.roQ);
+          ((StringBuilder)localObject1).append(localdio.sxK);
           ((StringBuilder)localObject1).append(":");
-          ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.topstory.a.b.c)localObject3).rwE);
+          ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.topstory.a.b.c)localObject3).sFw);
           ((StringBuilder)localObject1).append(":");
-          ((StringBuilder)localObject1).append(localddb.EuP);
+          ((StringBuilder)localObject1).append(localdio.FRQ);
           ((StringBuilder)localObject1).append(";");
         }
         try
@@ -395,10 +395,10 @@ public final class c
           localObject1 = paramList.iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = ((com.tencent.mm.plugin.topstory.a.b.c)((Iterator)localObject1).next()).yLU;
-            localStringBuilder1.append(((ddb)localObject2).dcn);
+            localObject2 = ((com.tencent.mm.plugin.topstory.a.b.c)((Iterator)localObject1).next()).zZN;
+            localStringBuilder1.append(((dio)localObject2).cZM);
             localStringBuilder1.append(":");
-            localStringBuilder1.append(((ddb)localObject2).EuT);
+            localStringBuilder1.append(((dio)localObject2).FRU);
             localStringBuilder1.append(";");
           }
         }
@@ -406,17 +406,17 @@ public final class c
         {
           for (;;)
           {
-            ad.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", localException, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", localException, "", new Object[0]);
           }
           localStringBuilder1.append("&expand=");
           localStringBuilder2 = new StringBuilder("");
           localObject2 = paramList.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject3 = ((com.tencent.mm.plugin.topstory.a.b.c)((Iterator)localObject2).next()).yLU;
-            localStringBuilder2.append(((ddb)localObject3).dcn);
+            localObject3 = ((com.tencent.mm.plugin.topstory.a.b.c)((Iterator)localObject2).next()).zZN;
+            localStringBuilder2.append(((dio)localObject3).cZM);
             localStringBuilder2.append(":");
-            localStringBuilder2.append(((ddb)localObject3).EuR);
+            localStringBuilder2.append(((dio)localObject3).FRS);
             localStringBuilder2.append(";");
           }
           try
@@ -427,7 +427,7 @@ public final class c
             paramList = paramList.iterator();
             while (paramList.hasNext())
             {
-              localStringBuilder2.append(((com.tencent.mm.plugin.topstory.a.b.c)paramList.next()).yLU.EuQ);
+              localStringBuilder2.append(((com.tencent.mm.plugin.topstory.a.b.c)paramList.next()).zZN.FRR);
               localStringBuilder2.append(";");
             }
           }
@@ -435,40 +435,40 @@ public final class c
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", localUnsupportedEncodingException, "", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", localUnsupportedEncodingException, "", new Object[0]);
             }
             localStringBuilder1.append(localUnsupportedEncodingException);
-            if (paramdcy == null) {
+            if (paramdil == null) {
               break label636;
             }
           }
           localStringBuilder1.append("&");
           localStringBuilder1.append("searchid=");
-          localStringBuilder1.append(paramdcy.jko);
+          localStringBuilder1.append(paramdil.jKB);
           localStringBuilder1.append("&");
           localStringBuilder1.append("query=");
         }
       }
       catch (Exception paramList)
       {
-        ad.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", paramList, "build14057VideoInfoExposeString error: %s", new Object[] { paramList.getMessage() });
+        ac.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", paramList, "build14057VideoInfoExposeString error: %s", new Object[] { paramList.getMessage() });
         AppMethodBeat.o(88462);
         return null;
       }
       try
       {
         StringBuilder localStringBuilder2;
-        localStringBuilder1.append(p.encode(paramdcy.dcm, "utf-8"));
+        localStringBuilder1.append(p.encode(paramdil.cZL, "utf-8"));
         localStringBuilder1.append("&");
         localStringBuilder1.append("ishomepage=0");
         localStringBuilder1.append("&");
         localStringBuilder1.append("sessionid=");
-        localStringBuilder1.append(aa.RY(paramdcy.scene));
+        localStringBuilder1.append(z.Ui(paramdil.scene));
         localStringBuilder1.append("&");
         localStringBuilder1.append("scene=");
-        localStringBuilder1.append(paramdcy.scene);
+        localStringBuilder1.append(paramdil.scene);
         localStringBuilder1.append("&rec_category=");
-        localStringBuilder1.append(paramdcy.Euy);
+        localStringBuilder1.append(paramdil.FRz);
         label636:
         paramList = localStringBuilder1.toString();
         AppMethodBeat.o(88462);
@@ -478,7 +478,7 @@ public final class c
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", paramList, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.TopStory.TopStoryReporterImpl", paramList, "", new Object[0]);
         }
       }
     }
@@ -486,10 +486,10 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(88461);
-      ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "Star to run ReportExposeTask");
-      c.this.yLh.remove(Long.valueOf(this.yLk.Euy));
+      ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "Star to run ReportExposeTask");
+      c.this.zZa.remove(Long.valueOf(this.zZd.FRz));
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.yLj);
+      localArrayList.addAll(this.zZc);
       int j;
       for (int i = 0;; i = j)
       {
@@ -497,19 +497,19 @@ public final class c
         if (j >= localArrayList.size()) {}
         for (List localList = localArrayList.subList(i, localArrayList.size());; localList = localArrayList.subList(i, j))
         {
-          String str = a(localList, this.yLk);
-          if (!bt.isNullOrNil(str))
+          String str = a(localList, this.zZd);
+          if (!bs.isNullOrNil(str))
           {
-            final ckd localckd = new ckd();
-            localckd.Eff = str;
-            ad.i("MicroMsg.TopStory.TopStoryReporterImpl", "build14057VideoInfoExposeString %d report string: %s", new Object[] { Integer.valueOf(localList.size()), localckd.Eff });
-            aq.f(new Runnable()
+            final cpk localcpk = new cpk();
+            localcpk.FCf = str;
+            ac.i("MicroMsg.TopStory.TopStoryReporterImpl", "build14057VideoInfoExposeString %d report string: %s", new Object[] { Integer.valueOf(localList.size()), localcpk.FCf });
+            ap.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(88459);
-                s locals = new s(localckd);
-                g.aeS().a(locals, 0);
+                r localr = new r(localcpk);
+                g.agi().a(localr, 0);
                 AppMethodBeat.o(88459);
               }
             });

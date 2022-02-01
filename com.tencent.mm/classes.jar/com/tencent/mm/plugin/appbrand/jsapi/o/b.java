@@ -1,82 +1,44 @@
 package com.tencent.mm.plugin.appbrand.jsapi.o;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.MenuItem;
+import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.aw;
+import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.b;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract interface b
+public final class b
+  extends a<q>
 {
-  public abstract a EG();
+  private static final int CTRL_INDEX = 107;
+  private static final String NAME = "showActionSheet";
+  public static a kIj;
   
-  public abstract Boolean EH();
-  
-  public static enum a
+  public static abstract interface a
   {
-    static
-    {
-      AppMethodBeat.i(176553);
-      kgX = new a("NONE", 0);
-      kgY = new a("PUSH", 1);
-      kgZ = new a("POP", 2);
-      kha = new a("PUSH_AND_POP", 3);
-      khb = new a[] { kgX, kgY, kgZ, kha };
-      AppMethodBeat.o(176553);
-    }
-    
-    private a() {}
-    
-    public static a IT(String paramString)
-    {
-      AppMethodBeat.i(176552);
-      paramString = paramString.trim();
-      int i = -1;
-      switch (paramString.hashCode())
-      {
-      }
-      for (;;)
-      {
-        switch (i)
-        {
-        default: 
-          AppMethodBeat.o(176552);
-          return null;
-          if (paramString.equals(""))
-          {
-            i = 0;
-            continue;
-            if (paramString.equals("push"))
-            {
-              i = 1;
-              continue;
-              if (paramString.equals("pop"))
-              {
-                i = 2;
-                continue;
-                if (paramString.equals("pushAndPop")) {
-                  i = 3;
-                }
-              }
-            }
-          }
-          break;
-        }
-      }
-      paramString = kgX;
-      AppMethodBeat.o(176552);
-      return paramString;
-      paramString = kgY;
-      AppMethodBeat.o(176552);
-      return paramString;
-      paramString = kgZ;
-      AppMethodBeat.o(176552);
-      return paramString;
-      paramString = kha;
-      AppMethodBeat.o(176552);
-      return paramString;
-    }
+    public abstract void sJ(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.o.b
  * JD-Core Version:    0.7.0.1
  */

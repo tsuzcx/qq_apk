@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gi
   extends b
 {
-  public a djw;
-  public b djx;
+  public a dgM;
+  public b dgN;
   
   public gi()
   {
@@ -16,28 +16,28 @@ public final class gi
   
   private gi(byte paramByte)
   {
-    AppMethodBeat.i(155367);
-    this.djw = new a();
-    this.djx = new b();
-    this.ESR = false;
+    AppMethodBeat.i(155366);
+    this.dgM = new a();
+    this.dgN = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(155367);
+    AppMethodBeat.o(155366);
   }
   
   public static final class a
   {
-    public String djt;
-    public String dju;
+    public String dgO;
+    public String dgP;
   }
   
   public static final class b
   {
-    public String djy;
+    public boolean dgQ = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gi
  * JD-Core Version:    0.7.0.1
  */

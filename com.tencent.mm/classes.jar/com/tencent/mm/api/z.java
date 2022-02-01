@@ -5,11 +5,11 @@ import com.tencent.mm.pluginsdk.ui.chat.f;
 public class z
   implements f
 {
-  public a cJL;
+  public a cGS;
   
   public final void a(a parama)
   {
-    this.cJL = parama;
+    this.cGS = parama;
   }
   
   public static abstract interface a
@@ -21,7 +21,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.z
  * JD-Core Version:    0.7.0.1
  */

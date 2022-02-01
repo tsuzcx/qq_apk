@@ -1,25 +1,51 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.permission.c;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.cl;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import org.json.JSONObject;
 
-public final class j
-  extends p
+@Deprecated
+public abstract class j<CONTEXT extends c, EXTENSION>
+  extends y<CONTEXT>
 {
-  public static final int CTRL_INDEX = 518;
-  public static final String NAME = "onVoIPChatMembersChanged";
+  private final Class<EXTENSION> aMt;
   
-  public j()
+  protected j(Class<EXTENSION> paramClass)
   {
-    AppMethodBeat.i(180260);
-    c.Me("onVoIPChatMembersChanged");
-    AppMethodBeat.o(180260);
+    this.aMt = paramClass;
   }
+  
+  public final String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
+  {
+    aa localaa = cl.i(paramCONTEXT);
+    if (localaa == null) {
+      return e("fail:page don't exist", null);
+    }
+    if (paramJSONObject == null) {
+      return e("fail:invalid data", null);
+    }
+    Object localObject = localaa.Q(this.aMt);
+    if (localObject != null) {
+      return a(paramCONTEXT, paramJSONObject, localObject);
+    }
+    if (!localaa.isRunning()) {
+      return e("fail:interrupted", null);
+    }
+    if (localaa.jdX) {
+      throw new IllegalAccessError(String.format("%s Not Found", new Object[] { this.aMt.getName() }));
+    }
+    return e("fail:not supported", null);
+  }
+  
+  protected abstract String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, EXTENSION paramEXTENSION);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.j
  * JD-Core Version:    0.7.0.1
  */

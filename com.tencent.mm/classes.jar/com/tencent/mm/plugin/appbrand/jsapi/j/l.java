@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import com.tencent.luggage.sdk.b.a.a.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class l
   implements e.b
@@ -14,19 +14,19 @@ public final class l
   public final boolean isOpen()
   {
     AppMethodBeat.i(174843);
-    Object localObject = aj.eFF().getString("appbrandgame_open_nativewss", "");
+    Object localObject = ai.eUZ().getString("appbrandgame_open_nativewss", "");
     if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close"))) {}
     for (localObject = Boolean.TRUE; ((Boolean)localObject).booleanValue(); localObject = Boolean.FALSE)
     {
-      ad.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding Command close");
+      ac.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding Command close");
       AppMethodBeat.o(174843);
       return false;
     }
-    localObject = b.ceD().b("clicfg_appbrand_native_socket_default_wcwss", "1", true, true);
-    ad.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding xSwitch xSwitchStr:%s", new Object[] { localObject });
+    localObject = b.cmk().b("clicfg_appbrand_native_socket_default_wcwss", "1", true, true);
+    ac.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding xSwitch xSwitchStr:%s", new Object[] { localObject });
     if (!TextUtils.equals((CharSequence)localObject, "1"))
     {
-      ad.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding xSwitch false");
+      ac.i("MicroMsg.AppBrand.WcWssNativeSwitchDelegateImpl", "createWcWssBinding xSwitch false");
       AppMethodBeat.o(174843);
       return false;
     }
@@ -36,7 +36,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.l
  * JD-Core Version:    0.7.0.1
  */

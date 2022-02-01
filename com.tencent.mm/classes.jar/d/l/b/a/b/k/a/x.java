@@ -12,7 +12,7 @@ public final class x
   {
     AppMethodBeat.i(60342);
     k.h(paramc, "$this$getClassId");
-    paramc = a.dk(paramc.afo(paramInt), paramc.afp(paramInt));
+    paramc = a.dp(paramc.aik(paramInt), paramc.ail(paramInt));
     k.g(paramc, "ClassId.fromString(getQu… isLocalClassName(index))");
     AppMethodBeat.o(60342);
     return paramc;
@@ -22,7 +22,7 @@ public final class x
   {
     AppMethodBeat.i(60343);
     k.h(paramc, "$this$getName");
-    paramc = f.aQF(paramc.getString(paramInt));
+    paramc = f.aWE(paramc.getString(paramInt));
     k.g(paramc, "Name.guessByFirstCharacter(getString(index))");
     AppMethodBeat.o(60343);
     return paramc;
@@ -30,7 +30,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.k.a.x
  * JD-Core Version:    0.7.0.1
  */

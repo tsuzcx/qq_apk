@@ -6,62 +6,62 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.c.a.g;
 import com.tencent.mm.plugin.shake.d.a.h;
 import com.tencent.mm.plugin.shake.d.a.j;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ao.a;
 
 public final class l
 {
-  protected static long wlQ = 16000L;
-  protected static int wlR = 54158;
-  public int wlS;
-  public b wlT;
+  protected static long xxg = 16000L;
+  protected static int xxh = 54158;
+  public int xxi;
+  public b xxj;
   
   public final b a(Context paramContext, int paramInt, l.a parama)
   {
     AppMethodBeat.i(28148);
-    if (paramInt == this.wlS)
+    if (paramInt == this.xxi)
     {
-      paramContext = this.wlT;
+      paramContext = this.xxj;
       AppMethodBeat.o(28148);
       return paramContext;
     }
-    if (this.wlT != null) {
-      this.wlT.doF();
+    if (this.xxj != null) {
+      this.xxj.dCP();
     }
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.wlS = paramInt;
-      this.wlT.init();
-      paramContext = this.wlT;
+      this.xxi = paramInt;
+      this.xxj.init();
+      paramContext = this.xxj;
       AppMethodBeat.o(28148);
       return paramContext;
-      this.wlT = new c(paramContext, parama);
+      this.xxj = new c(paramContext, parama);
       continue;
-      this.wlT = j.a(parama);
+      this.xxj = j.a(parama);
       continue;
-      this.wlT = new com.tencent.mm.plugin.shake.d.a.l(paramContext, parama);
+      this.xxj = new com.tencent.mm.plugin.shake.d.a.l(paramContext, parama);
       continue;
-      this.wlT = new h(parama);
+      this.xxj = new h(parama);
       continue;
-      this.wlT = new g(parama);
+      this.xxj = new g(parama);
     }
   }
   
   public static abstract class b
   {
-    public l.a wlU;
-    protected boolean wlV = false;
-    protected long wlW = l.wlQ;
-    private ap wlX = new ap(new ap.a()
+    public l.a xxk;
+    protected boolean xxl = false;
+    protected long xxm = l.xxg;
+    private ao xxn = new ao(new ao.a()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(28147);
-        if ((paramAnonymousMessage.what == l.wlR) && (!l.b.this.wlV) && (l.b.this.wlU != null)) {
-          l.b.this.wlU.c(null, 5L);
+        if ((paramAnonymousMessage.what == l.xxh) && (!l.b.this.xxl) && (l.b.this.xxk != null)) {
+          l.b.this.xxk.d(null, 5L);
         }
         AppMethodBeat.o(28147);
         return false;
@@ -70,13 +70,13 @@ public final class l
     
     public b(l.a parama)
     {
-      this.wlU = parama;
+      this.xxk = parama;
     }
     
-    public void doF()
+    public void dCP()
     {
       reset();
-      this.wlU = null;
+      this.xxk = null;
     }
     
     public abstract void init();
@@ -92,7 +92,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.l
  * JD-Core Version:    0.7.0.1
  */

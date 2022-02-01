@@ -13,15 +13,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -30,20 +30,20 @@ public class FreeWifiPcUI
   extends MMActivity
 {
   private String appId;
-  private String dgo;
-  private Button hJh;
-  private String ril;
-  private Button rkm;
-  private String rkr;
-  private TextView rlj;
-  private int rlk;
-  private p rll = null;
+  private String ddJ;
+  private Button gAJ;
+  private String sre;
+  private Button stf;
+  private String stk;
+  private TextView suc;
+  private int sud;
+  private p sue = null;
   
   private void goBack()
   {
     AppMethodBeat.i(25127);
     Intent localIntent = new Intent();
-    com.tencent.mm.plugin.freewifi.g.hYt.h(localIntent, this);
+    com.tencent.mm.plugin.freewifi.g.iyx.h(localIntent, this);
     finish();
     AppMethodBeat.o(25127);
   }
@@ -74,20 +74,20 @@ public class FreeWifiPcUI
       }
     });
     this.appId = getIntent().getStringExtra("free_wifi_appid");
-    this.rlk = getIntent().getIntExtra("ConstantsFreeWifi.FREE_WIFI_PC_ENCRYPTED_SHOPID", 0);
-    this.dgo = getIntent().getStringExtra("ConstantsFreeWifi.FREE_WIFI_PC_TICKET");
-    this.ril = getIntent().getStringExtra("free_wifi_app_nickname");
-    this.rkr = getIntent().getStringExtra("free_wifi_privacy_url");
-    this.rlj = ((TextView)findViewById(2131300270));
-    this.hJh = ((Button)findViewById(2131300271));
-    this.rlj.setText("由" + this.ril + "提供");
-    this.hJh.setOnClickListener(new View.OnClickListener()
+    this.sud = getIntent().getIntExtra("ConstantsFreeWifi.FREE_WIFI_PC_ENCRYPTED_SHOPID", 0);
+    this.ddJ = getIntent().getStringExtra("ConstantsFreeWifi.FREE_WIFI_PC_TICKET");
+    this.sre = getIntent().getStringExtra("free_wifi_app_nickname");
+    this.stk = getIntent().getStringExtra("free_wifi_privacy_url");
+    this.suc = ((TextView)findViewById(2131300270));
+    this.gAJ = ((Button)findViewById(2131300271));
+    this.suc.setText("由" + this.sre + "提供");
+    this.gAJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(25123);
         FreeWifiPcUI.b(FreeWifiPcUI.this).setClickable(false);
-        paramAnonymousView = new av(new av.a()
+        paramAnonymousView = new au(new au.a()
         {
           public final boolean onTimerExpired()
           {
@@ -100,16 +100,16 @@ public class FreeWifiPcUI
             return true;
           }
         }, false);
-        paramAnonymousView.av(2000L, 2000L);
-        k.a locala = k.cvq();
-        locala.rfJ = String.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this));
-        locala.rfK = FreeWifiPcUI.d(FreeWifiPcUI.this);
-        locala.nSA = FreeWifiPcUI.c(FreeWifiPcUI.this);
-        locala.rfM = k.b.rgt.rgx;
-        locala.rfN = k.b.rgt.name;
-        locala.cvs().cvr();
-        ad.i("MicroMsg.FreeWifi.FreeWifiPcUI", "sessionKey=%s, step=%d, method=setOnClickListener, desc=It starts NetSceneSetPcLoginUserInfo.shopid=%d, appid=%s, ticket=%s", new Object[] { m.ai(FreeWifiPcUI.this.getIntent()), Integer.valueOf(m.aj(FreeWifiPcUI.this.getIntent())), Integer.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this)), FreeWifiPcUI.d(FreeWifiPcUI.this), FreeWifiPcUI.c(FreeWifiPcUI.this) });
-        new com.tencent.mm.plugin.freewifi.d.l(FreeWifiPcUI.d(FreeWifiPcUI.this), FreeWifiPcUI.e(FreeWifiPcUI.this), FreeWifiPcUI.c(FreeWifiPcUI.this)).c(new com.tencent.mm.al.g()
+        paramAnonymousView.au(2000L, 2000L);
+        k.a locala = k.cIC();
+        locala.soB = String.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this));
+        locala.soC = FreeWifiPcUI.d(FreeWifiPcUI.this);
+        locala.ovU = FreeWifiPcUI.c(FreeWifiPcUI.this);
+        locala.soE = k.b.spl.spp;
+        locala.soF = k.b.spl.name;
+        locala.cIE().cID();
+        ac.i("MicroMsg.FreeWifi.FreeWifiPcUI", "sessionKey=%s, step=%d, method=setOnClickListener, desc=It starts NetSceneSetPcLoginUserInfo.shopid=%d, appid=%s, ticket=%s", new Object[] { m.aj(FreeWifiPcUI.this.getIntent()), Integer.valueOf(m.ak(FreeWifiPcUI.this.getIntent())), Integer.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this)), FreeWifiPcUI.d(FreeWifiPcUI.this), FreeWifiPcUI.c(FreeWifiPcUI.this) });
+        new com.tencent.mm.plugin.freewifi.d.l(FreeWifiPcUI.d(FreeWifiPcUI.this), FreeWifiPcUI.e(FreeWifiPcUI.this), FreeWifiPcUI.c(FreeWifiPcUI.this)).c(new com.tencent.mm.ak.g()
         {
           public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
           {
@@ -120,19 +120,19 @@ public class FreeWifiPcUI
             }
             for (;;)
             {
-              paramAnonymous2String = k.cvq();
-              paramAnonymous2String.rfJ = String.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this));
-              paramAnonymous2String.rfK = FreeWifiPcUI.d(FreeWifiPcUI.this);
-              paramAnonymous2String.nSA = FreeWifiPcUI.c(FreeWifiPcUI.this);
-              paramAnonymous2String.rfM = k.b.rgu.rgx;
-              paramAnonymous2String.rfN = k.b.rgu.name;
+              paramAnonymous2String = k.cIC();
+              paramAnonymous2String.soB = String.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this));
+              paramAnonymous2String.soC = FreeWifiPcUI.d(FreeWifiPcUI.this);
+              paramAnonymous2String.ovU = FreeWifiPcUI.c(FreeWifiPcUI.this);
+              paramAnonymous2String.soE = k.b.spm.spp;
+              paramAnonymous2String.soF = k.b.spm.name;
               paramAnonymous2String.result = paramAnonymous2Int2;
-              paramAnonymous2String.cvs().cvr();
-              ad.i("MicroMsg.FreeWifi.FreeWifiPcUI", "sessionKey=%s, step=%d, method=setOnClickListener, desc=NetSceneSetPcLoginUserInfo returns.shopid=%d, appid=%s, ticket=%s", new Object[] { m.ai(FreeWifiPcUI.this.getIntent()), Integer.valueOf(m.aj(FreeWifiPcUI.this.getIntent())), Integer.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this)), FreeWifiPcUI.d(FreeWifiPcUI.this), FreeWifiPcUI.c(FreeWifiPcUI.this) });
+              paramAnonymous2String.cIE().cID();
+              ac.i("MicroMsg.FreeWifi.FreeWifiPcUI", "sessionKey=%s, step=%d, method=setOnClickListener, desc=NetSceneSetPcLoginUserInfo returns.shopid=%d, appid=%s, ticket=%s", new Object[] { m.aj(FreeWifiPcUI.this.getIntent()), Integer.valueOf(m.ak(FreeWifiPcUI.this.getIntent())), Integer.valueOf(FreeWifiPcUI.e(FreeWifiPcUI.this)), FreeWifiPcUI.d(FreeWifiPcUI.this), FreeWifiPcUI.c(FreeWifiPcUI.this) });
               AppMethodBeat.o(25122);
               return;
-              if ((m.fG(paramAnonymous2Int1, paramAnonymous2Int2)) && (!m.dq(paramAnonymous2String))) {
-                FreeWifiPcUI.a(FreeWifiPcUI.this, paramAnonymous2String + "(" + m.a(m.ak(FreeWifiPcUI.this.getIntent()), k.b.rgu, paramAnonymous2Int2) + ")", "");
+              if ((m.fN(paramAnonymous2Int1, paramAnonymous2Int2)) && (!m.cX(paramAnonymous2String))) {
+                FreeWifiPcUI.a(FreeWifiPcUI.this, paramAnonymous2String + "(" + m.a(m.al(FreeWifiPcUI.this.getIntent()), k.b.spm, paramAnonymous2Int2) + ")", "");
               } else {
                 FreeWifiPcUI.a(FreeWifiPcUI.this, FreeWifiPcUI.this.getString(2131759621), FreeWifiPcUI.this.getString(2131759622));
               }
@@ -142,8 +142,8 @@ public class FreeWifiPcUI
         AppMethodBeat.o(25123);
       }
     });
-    this.rkm = ((Button)findViewById(2131300272));
-    this.rkm.setOnClickListener(new View.OnClickListener()
+    this.stf = ((Button)findViewById(2131300272));
+    this.stf.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -181,7 +181,7 @@ public class FreeWifiPcUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiPcUI
  * JD-Core Version:    0.7.0.1
  */

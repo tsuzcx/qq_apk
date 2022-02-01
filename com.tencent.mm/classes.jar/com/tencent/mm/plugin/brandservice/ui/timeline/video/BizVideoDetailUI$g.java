@@ -5,17 +5,17 @@ import com.tencent.xweb.WebView;
 import d.g.a.m;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
 final class BizVideoDetailUI$g
   extends d.g.b.l
   implements m<WebView, String, y>
 {
-  public static final g njK;
+  public static final g nMD;
   
   static
   {
     AppMethodBeat.i(7091);
-    njK = new g();
+    nMD = new g();
     AppMethodBeat.o(7091);
   }
   

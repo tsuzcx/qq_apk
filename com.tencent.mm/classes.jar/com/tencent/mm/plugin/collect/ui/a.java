@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.collect.model.e;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.z;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,12 +20,12 @@ public final class a
   extends BaseAdapter
 {
   private Context mContext;
-  List<com.tencent.mm.plugin.collect.model.a> nWL;
+  List<com.tencent.mm.plugin.collect.model.a> oAg;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(64030);
-    this.nWL = new ArrayList();
+    this.oAg = new ArrayList();
     this.mContext = paramContext;
     AppMethodBeat.o(64030);
   }
@@ -33,7 +33,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(64031);
-    int i = this.nWL.size();
+    int i = this.oAg.size();
     AppMethodBeat.o(64031);
     return i;
   }
@@ -41,7 +41,7 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(64032);
-    Object localObject = this.nWL.get(paramInt);
+    Object localObject = this.oAg.get(paramInt);
     AppMethodBeat.o(64032);
     return localObject;
   }
@@ -57,48 +57,48 @@ public final class a
     View localView = paramView;
     if (paramView == null)
     {
-      localView = y.js(this.mContext).inflate(2131493553, paramViewGroup, false);
+      localView = z.jD(this.mContext).inflate(2131493553, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
-    paramView = (com.tencent.mm.plugin.collect.model.a)this.nWL.get(paramInt);
+    paramView = (com.tencent.mm.plugin.collect.model.a)this.oAg.get(paramInt);
     paramViewGroup = (a)localView.getTag();
-    TextView localTextView = paramViewGroup.nNi;
+    TextView localTextView = paramViewGroup.oqk;
     Context localContext = this.mContext;
     long l = paramView.timestamp;
     localTextView.setText(new SimpleDateFormat(localContext.getString(2131757436)).format(new Date(l * 1000L)));
-    paramViewGroup.nWM.setText(e.zG(paramView.del));
-    if (!bt.isNullOrNil(paramView.desc))
+    paramViewGroup.oAh.setText(e.Ay(paramView.dbH));
+    if (!bs.isNullOrNil(paramView.desc))
     {
-      paramViewGroup.kFd.setText(paramView.desc);
-      paramViewGroup.kFd.setVisibility(0);
+      paramViewGroup.lgw.setText(paramView.desc);
+      paramViewGroup.lgw.setVisibility(0);
     }
     for (;;)
     {
       AppMethodBeat.o(64033);
       return localView;
-      paramViewGroup.kFd.setVisibility(8);
+      paramViewGroup.lgw.setVisibility(8);
     }
   }
   
   static final class a
   {
-    TextView kFd;
-    TextView nNi;
-    WalletTextView nWM;
+    TextView lgw;
+    WalletTextView oAh;
+    TextView oqk;
     
     public a(View paramView)
     {
       AppMethodBeat.i(64029);
-      this.nNi = ((TextView)paramView.findViewById(2131298427));
-      this.nWM = ((WalletTextView)paramView.findViewById(2131298444));
-      this.kFd = ((TextView)paramView.findViewById(2131298428));
+      this.oqk = ((TextView)paramView.findViewById(2131298427));
+      this.oAh = ((WalletTextView)paramView.findViewById(2131298444));
+      this.lgw = ((TextView)paramView.findViewById(2131298428));
       AppMethodBeat.o(64029);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.a
  * JD-Core Version:    0.7.0.1
  */

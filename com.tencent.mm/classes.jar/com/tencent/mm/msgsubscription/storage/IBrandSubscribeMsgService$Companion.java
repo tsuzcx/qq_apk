@@ -3,13 +3,13 @@ package com.tencent.mm.msgsubscription.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/storage/IBrandSubscribeMsgService$Companion;", "", "()V", "TAG", "", "SubscribeMsgListWrapper", "plugin-comm_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/storage/IBrandSubscribeMsgService$Companion;", "", "()V", "TAG", "", "SubscribeMsgListWrapper", "plugin-comm_release"})
 public final class IBrandSubscribeMsgService$Companion
 {
   static
   {
     AppMethodBeat.i(149641);
-    hHN = new Companion();
+    iip = new Companion();
     AppMethodBeat.o(149641);
   }
 }

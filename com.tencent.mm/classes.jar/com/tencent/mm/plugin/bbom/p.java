@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.bbom;
 
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.w;
+import com.tencent.mm.ak.w;
 import com.tencent.mm.b.o;
 import com.tencent.mm.booter.NotifyReceiver.NotifyService;
-import com.tencent.mm.g.a.ao;
-import com.tencent.mm.g.a.gq;
-import com.tencent.mm.g.a.jr;
-import com.tencent.mm.g.a.me;
-import com.tencent.mm.g.a.me.a;
-import com.tencent.mm.g.a.sx;
-import com.tencent.mm.g.a.vj;
-import com.tencent.mm.g.a.vj.b;
-import com.tencent.mm.g.a.wt;
-import com.tencent.mm.g.a.ww;
+import com.tencent.mm.g.a.ap;
+import com.tencent.mm.g.a.gr;
+import com.tencent.mm.g.a.jz;
+import com.tencent.mm.g.a.mn;
+import com.tencent.mm.g.a.mn.a;
+import com.tencent.mm.g.a.tg;
+import com.tencent.mm.g.a.vt;
+import com.tencent.mm.g.a.vt.b;
+import com.tencent.mm.g.a.xe;
+import com.tencent.mm.g.a.xh;
 import com.tencent.mm.jni.utils.UtilsJni;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.az;
@@ -23,10 +23,10 @@ import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.plugin.zero.a.c;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.protocal.p.b;
-import com.tencent.mm.protocal.protobuf.cop;
-import com.tencent.mm.protocal.protobuf.cwx;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ctw;
+import com.tencent.mm.protocal.protobuf.dcj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class p
   implements c
@@ -41,122 +41,122 @@ public final class p
     {
       AppMethodBeat.o(22380);
       return;
-      ad.d("MicroMsg.NotifyReceiverCallbackImpl", "on direct send notify");
+      ac.d("MicroMsg.NotifyReceiverCallbackImpl", "on direct send notify");
       paramNotifyService = new p.b();
-      paramNotifyService.deviceID = com.tencent.mm.compatible.deviceinfo.q.Xa();
+      paramNotifyService.deviceID = com.tencent.mm.compatible.deviceinfo.q.XX();
       paramArrayOfByte2 = new w(paramNotifyService, 10);
       try
       {
         if (paramArrayOfByte2.a(10, paramArrayOfByte1, null, 0L)) {
-          az.aeS().onSceneEnd(0, 0, "", new i(paramNotifyService));
+          az.agi().onSceneEnd(0, 0, "", new i(paramNotifyService));
         }
         AppMethodBeat.o(22380);
         return;
       }
       catch (RemoteException paramNotifyService)
       {
-        ad.printErrStackTrace("MicroMsg.NotifyReceiverCallbackImpl", paramNotifyService, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.NotifyReceiverCallbackImpl", paramNotifyService, "", new Object[0]);
         AppMethodBeat.o(22380);
         return;
       }
-      NotifyReceiver.NotifyService.om("NotifyReceiver.dealWithNotify:MM_PKT_VOIP_REQ");
-      paramNotifyService = new vj();
-      paramNotifyService.dAP.dAR = true;
-      com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
-      paramNotifyService = paramNotifyService.dAQ.dAT;
-      if (!bt.isNullOrNil(paramNotifyService))
+      NotifyReceiver.NotifyService.rs("NotifyReceiver.dealWithNotify:MM_PKT_VOIP_REQ");
+      paramNotifyService = new vt();
+      paramNotifyService.dyB.dyD = true;
+      com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
+      paramNotifyService = paramNotifyService.dyC.dyF;
+      if (!bs.isNullOrNil(paramNotifyService))
       {
-        ad.v("MicroMsg.NotifyReceiverCallbackImpl", "voipinvite, exit talkroom first: ".concat(String.valueOf(paramNotifyService)));
-        paramNotifyService = new vj();
-        paramNotifyService.dAP.dAS = true;
-        com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+        ac.v("MicroMsg.NotifyReceiverCallbackImpl", "voipinvite, exit talkroom first: ".concat(String.valueOf(paramNotifyService)));
+        paramNotifyService = new vt();
+        paramNotifyService.dyB.dyE = true;
+        com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
       }
       if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length > 0))
       {
         if (paramArrayOfByte1[0] == 1)
         {
-          ad.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify case MM_VOIP_PUSHTYPE_INVITE, will launch voipUI");
-          paramNotifyService = new ww();
-          paramNotifyService.dCp.djq = 3;
-          paramNotifyService.dCp.dCi = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          ac.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify case MM_VOIP_PUSHTYPE_INVITE, will launch voipUI");
+          paramNotifyService = new xh();
+          paramNotifyService.dAb.dgL = 3;
+          paramNotifyService.dAb.dzW = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
         }
         if (paramArrayOfByte1[0] == 101)
         {
-          ad.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify case MM_PSTN_PUSHTYPE_INVITE");
-          paramNotifyService = new jr();
-          paramNotifyService.dnR.dnS = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          ac.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify case MM_PSTN_PUSHTYPE_INVITE");
+          paramNotifyService = new jz();
+          paramNotifyService.dlA.dlB = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
         }
         if (paramArrayOfByte1[0] == 3)
         {
-          ad.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify, MM_VOIP_PUSHTYPE_CANCEL");
-          paramNotifyService = new ww();
-          paramNotifyService.dCp.djq = 9;
-          paramNotifyService.dCp.dCi = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          ac.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify, MM_VOIP_PUSHTYPE_CANCEL");
+          paramNotifyService = new xh();
+          paramNotifyService.dAb.dgL = 9;
+          paramNotifyService.dAb.dzW = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
         }
         if (paramArrayOfByte1[0] == 2)
         {
-          ad.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify, MM_VOIP_PUSHTYPE_ANSWERED");
-          paramNotifyService = new ww();
-          paramNotifyService.dCp.djq = 10;
-          paramNotifyService.dCp.dCi = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          ac.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify, MM_VOIP_PUSHTYPE_ANSWERED");
+          paramNotifyService = new xh();
+          paramNotifyService.dAb.dgL = 10;
+          paramNotifyService.dAb.dzW = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
         }
         if (paramArrayOfByte1[0] == 102)
         {
-          ad.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify, MM_VOIP_PUSHTYPE_ANSWERED");
-          paramNotifyService = new wt();
-          paramNotifyService.dCh.dCi = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          ac.d("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify, MM_VOIP_PUSHTYPE_ANSWERED");
+          paramNotifyService = new xe();
+          paramNotifyService.dzV.dzW = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
-          ad.i("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify MMFunc_VoipSync do VoipSync");
-          paramNotifyService = new ww();
-          paramNotifyService.dCp.djq = 6;
-          paramNotifyService.dCp.dCi = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          ac.i("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify MMFunc_VoipSync do VoipSync");
+          paramNotifyService = new xh();
+          paramNotifyService.dAb.dgL = 6;
+          paramNotifyService.dAb.dzW = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
-          ad.i("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify MM_VOIP_CS_PUSHTYPE_SYN do VoipSync");
+          ac.i("MicroMsg.NotifyReceiverCallbackImpl", "dealWithNotify MM_VOIP_CS_PUSHTYPE_SYN do VoipSync");
           AppMethodBeat.o(22380);
           return;
-          paramNotifyService = new gq();
-          paramNotifyService.djX.djY = paramArrayOfByte1;
-          com.tencent.mm.sdk.b.a.ESL.l(paramNotifyService);
+          paramNotifyService = new gr();
+          paramNotifyService.dhs.dht = paramArrayOfByte1;
+          com.tencent.mm.sdk.b.a.GpY.l(paramNotifyService);
           AppMethodBeat.o(22380);
           return;
-          NotifyReceiver.NotifyService.om("NotifyReceiver.dealWithNotify:MM_PKT_VOIP_REQ");
-          if (!bt.cw(paramArrayOfByte1))
+          NotifyReceiver.NotifyService.rs("NotifyReceiver.dealWithNotify:MM_PKT_VOIP_REQ");
+          if (!bs.cv(paramArrayOfByte1))
           {
             paramNotifyService = new String(paramArrayOfByte1);
-            paramArrayOfByte1 = new ao();
-            paramArrayOfByte1.dcv.type = 4;
-            paramArrayOfByte1.dcv.dcx = paramNotifyService;
-            com.tencent.mm.sdk.b.a.ESL.l(paramArrayOfByte1);
+            paramArrayOfByte1 = new ap();
+            paramArrayOfByte1.cZT.type = 4;
+            paramArrayOfByte1.cZT.cZV = paramNotifyService;
+            com.tencent.mm.sdk.b.a.GpY.l(paramArrayOfByte1);
             AppMethodBeat.o(22380);
             return;
-            ad.i("MicroMsg.NotifyReceiverCallbackImpl", "jacks do voice notify UI");
+            ac.i("MicroMsg.NotifyReceiverCallbackImpl", "jacks do voice notify UI");
             if (paramArrayOfByte1.length >= 8)
             {
               paramNotifyService = new byte[4];
               paramArrayOfByte2 = new byte[4];
               System.arraycopy(paramArrayOfByte1, 0, paramNotifyService, 0, 4);
               System.arraycopy(paramArrayOfByte1, 4, paramArrayOfByte2, 0, 4);
-              paramArrayOfByte1 = new me();
-              paramArrayOfByte1.drp.drq = o.v(paramNotifyService, 0);
-              paramArrayOfByte1.drp.drr = o.v(paramArrayOfByte2, 0);
-              ad.i("MicroMsg.NotifyReceiverCallbackImpl", "notifyId: %d, sequence: %d", new Object[] { Integer.valueOf(paramArrayOfByte1.drp.drq), Integer.valueOf(paramArrayOfByte1.drp.drr) });
-              com.tencent.mm.sdk.b.a.ESL.l(paramArrayOfByte1);
+              paramArrayOfByte1 = new mn();
+              paramArrayOfByte1.dpa.dpb = o.t(paramNotifyService, 0);
+              paramArrayOfByte1.dpa.dpc = o.t(paramArrayOfByte2, 0);
+              ac.i("MicroMsg.NotifyReceiverCallbackImpl", "notifyId: %d, sequence: %d", new Object[] { Integer.valueOf(paramArrayOfByte1.dpa.dpb), Integer.valueOf(paramArrayOfByte1.dpa.dpc) });
+              com.tencent.mm.sdk.b.a.GpY.l(paramArrayOfByte1);
             }
             AppMethodBeat.o(22380);
             return;
@@ -164,12 +164,12 @@ public final class p
             if (paramArrayOfByte1 == null)
             {
               paramInt = -1;
-              ad.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr on MM_PKT_SILENCE_NOTIFY notify respBuf len[%d]", new Object[] { Integer.valueOf(paramInt) });
+              ac.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr on MM_PKT_SILENCE_NOTIFY notify respBuf len[%d]", new Object[] { Integer.valueOf(paramInt) });
               localObject = null;
               paramNotifyService = null;
-              e.vIY.idkeyStat(403L, 38L, 1L, false);
+              e.wTc.idkeyStat(403L, 38L, 1L, false);
               if (paramArrayOfByte1 != null) {
-                paramNotifyService = new cop();
+                paramNotifyService = new ctw();
               }
             }
             for (;;)
@@ -177,12 +177,12 @@ public final class p
               try
               {
                 paramNotifyService.parseFrom(paramArrayOfByte1);
-                ad.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr MM_PKT_SILENCE_NOTIFY secureData[%d, %d, %d, %d, %d, %d]", new Object[] { Integer.valueOf(paramNotifyService.Eiz), Integer.valueOf(paramNotifyService.EiA), Integer.valueOf(paramNotifyService.EiB), Integer.valueOf(paramNotifyService.EiC), Integer.valueOf(paramNotifyService.EiD), Integer.valueOf(paramNotifyService.EiE) });
-                if (paramNotifyService.Eiz == 13)
+                ac.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr MM_PKT_SILENCE_NOTIFY secureData[%d, %d, %d, %d, %d, %d]", new Object[] { Integer.valueOf(paramNotifyService.FFx), Integer.valueOf(paramNotifyService.FFy), Integer.valueOf(paramNotifyService.FFz), Integer.valueOf(paramNotifyService.FFA), Integer.valueOf(paramNotifyService.FFB), Integer.valueOf(paramNotifyService.FFC) });
+                if (paramNotifyService.FFx == 13)
                 {
-                  g.afC();
-                  paramArrayOfByte1 = g.afA().mq(3);
-                  paramNotifyService = UtilsJni.AesGcmDecryptWithUncompress(paramArrayOfByte1, paramNotifyService.DcU.wA);
+                  g.agS();
+                  paramArrayOfByte1 = g.agQ().mp(3);
+                  paramNotifyService = UtilsJni.AesGcmDecryptWithUncompress(paramArrayOfByte1, paramNotifyService.Ewb.xy);
                   if (paramArrayOfByte1 == null)
                   {
                     paramInt = -1;
@@ -200,14 +200,14 @@ public final class p
               }
               try
               {
-                ad.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr MM_PKT_SILENCE_NOTIFY AES_GCM_ENCRYPT serverSession[%s] data[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+                ac.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr MM_PKT_SILENCE_NOTIFY AES_GCM_ENCRYPT serverSession[%s] data[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
                 if (paramNotifyService == null) {
                   break label1189;
                 }
-                ad.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr on MM_PKT_SILENCE_NOTIFY data len:%d", new Object[] { Integer.valueOf(paramNotifyService.length) });
-                paramArrayOfByte1 = new sx();
-                paramArrayOfByte1.dyz.data = paramNotifyService;
-                com.tencent.mm.sdk.b.a.ESL.l(paramArrayOfByte1);
+                ac.i("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr on MM_PKT_SILENCE_NOTIFY data len:%d", new Object[] { Integer.valueOf(paramNotifyService.length) });
+                paramArrayOfByte1 = new tg();
+                paramArrayOfByte1.dwl.data = paramNotifyService;
+                com.tencent.mm.sdk.b.a.GpY.l(paramArrayOfByte1);
                 AppMethodBeat.o(22380);
                 return;
               }
@@ -221,34 +221,34 @@ public final class p
               continue;
               i = paramNotifyService.length;
               continue;
-              paramNotifyService = MMProtocalJni.decodeSecureNotifyData(paramArrayOfByte2, paramNotifyService.Eiz, paramNotifyService.EiA, paramNotifyService.EiB, paramNotifyService.EiC, paramNotifyService.EiD, paramNotifyService.EiE, paramNotifyService.EiF, paramNotifyService.DcU.wA);
+              paramNotifyService = MMProtocalJni.decodeSecureNotifyData(paramArrayOfByte2, paramNotifyService.FFx, paramNotifyService.FFy, paramNotifyService.FFz, paramNotifyService.FFA, paramNotifyService.FFB, paramNotifyService.FFC, paramNotifyService.FFD, paramNotifyService.Ewb.xy);
               continue;
               label1147:
-              ad.e("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr MM_PKT_SILENCE_NOTIFY secureData parseFrom e: " + paramArrayOfByte1.getMessage());
-              e.vIY.idkeyStat(403L, 39L, 1L, false);
+              ac.e("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr MM_PKT_SILENCE_NOTIFY secureData parseFrom e: " + paramArrayOfByte1.getMessage());
+              e.wTc.idkeyStat(403L, 39L, 1L, false);
             }
             label1189:
-            ad.e("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr on MM_PKT_SILENCE_NOTIFY data is null");
-            e.vIY.idkeyStat(403L, 40L, 1L, false);
+            ac.e("MicroMsg.NotifyReceiverCallbackImpl", "summerbadcr on MM_PKT_SILENCE_NOTIFY data is null");
+            e.wTc.idkeyStat(403L, 40L, 1L, false);
             AppMethodBeat.o(22380);
             return;
-            paramNotifyService = new cwx();
+            paramNotifyService = new dcj();
             try
             {
               paramNotifyService.parseFrom(paramArrayOfByte1);
-              paramNotifyService = new com.tencent.mm.bo.a(paramNotifyService.DKa, paramNotifyService.EoX, paramNotifyService.EoY, paramNotifyService.EoZ, paramNotifyService.Epa, paramNotifyService.Epc, paramNotifyService.Epb, paramNotifyService.EoU);
-              g.afA().gcy.a(paramNotifyService, 0);
+              paramNotifyService = new com.tencent.mm.bn.a(paramNotifyService.Fgp, paramNotifyService.FLW, paramNotifyService.FLX, paramNotifyService.FLY, paramNotifyService.FLZ, paramNotifyService.FMb, paramNotifyService.FMa, paramNotifyService.FLT);
+              g.agQ().ghe.a(paramNotifyService, 0);
               AppMethodBeat.o(22380);
               return;
             }
             catch (Exception paramNotifyService)
             {
-              ad.e("MicroMsg.NotifyReceiverCallbackImpl", "speed test parse data failed. e: " + paramNotifyService.getMessage());
+              ac.e("MicroMsg.NotifyReceiverCallbackImpl", "speed test parse data failed. e: " + paramNotifyService.getMessage());
               AppMethodBeat.o(22380);
               return;
             }
-            ad.d("MicroMsg.NotifyReceiverCallbackImpl", "do disaster auth ");
-            g.afA().gcy.a(new com.tencent.mm.modelsimple.b(), 0);
+            ac.d("MicroMsg.NotifyReceiverCallbackImpl", "do disaster auth ");
+            g.agQ().ghe.a(new com.tencent.mm.modelsimple.b(), 0);
           }
         }
       }
@@ -257,7 +257,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.p
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import java.lang.reflect.Field;
 
 public final class a<T>
 {
-  public Field bEQ;
+  public Field bCy;
   private String classname;
-  private boolean fFP;
+  private boolean fJw;
   private String fieldName;
   public Object obj;
   
@@ -26,11 +26,11 @@ public final class a<T>
     AppMethodBeat.o(148753);
   }
   
-  public final boolean Xz()
+  public final boolean Yw()
   {
     AppMethodBeat.i(148756);
     prepare();
-    if (this.bEQ != null)
+    if (this.bCy != null)
     {
       AppMethodBeat.o(148756);
       return true;
@@ -44,7 +44,7 @@ public final class a<T>
     AppMethodBeat.i(148755);
     prepare();
     Object localObject;
-    if (this.bEQ == null)
+    if (this.bCy == null)
     {
       localObject = new NoSuchFieldException();
       AppMethodBeat.o(148755);
@@ -52,7 +52,7 @@ public final class a<T>
     }
     try
     {
-      localObject = this.bEQ.get(this.obj);
+      localObject = this.bCy.get(this.obj);
       AppMethodBeat.o(148755);
       return localObject;
     }
@@ -67,19 +67,19 @@ public final class a<T>
   public final void prepare()
   {
     AppMethodBeat.i(148754);
-    if (this.fFP)
+    if (this.fJw)
     {
       AppMethodBeat.o(148754);
       return;
     }
-    this.fFP = true;
+    this.fJw = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
         Field localField1 = localClass.getDeclaredField(this.fieldName);
         localField1.setAccessible(true);
-        this.bEQ = localField1;
+        this.bCy = localField1;
         return;
       }
       catch (Exception localException1)
@@ -100,7 +100,7 @@ public final class a<T>
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.bEQ = localField2;
+                this.bCy = localField2;
               }
             }
           }

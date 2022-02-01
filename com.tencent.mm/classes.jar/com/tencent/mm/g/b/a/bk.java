@@ -2,169 +2,151 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.Arrays;
 
 public final class bk
   extends a
 {
-  public int dKu;
-  private String dKv;
-  private String dNH;
-  public long dNI;
-  public long dNJ;
-  public long dNK;
-  public long dPH;
-  private long dPI;
-  private boolean dPJ;
+  private long dHT;
+  private String dHV;
+  private String dHW;
+  private long dHY;
+  private String dJP;
+  private String dMb;
+  private String dMc;
+  private long dMd;
+  private long dMe;
+  private long dMf;
   
-  public bk()
+  public final String PR()
   {
-    this.dKu = 0;
-    this.dKv = "";
-    this.dPH = 0L;
-    this.dNH = "";
-    this.dNI = 0L;
-    this.dNJ = 0L;
-    this.dPI = 0L;
-    this.dNK = 0L;
-  }
-  
-  public bk(String paramString)
-  {
-    AppMethodBeat.i(121758);
-    this.dKu = 0;
-    this.dKv = "";
-    this.dPH = 0L;
-    this.dNH = "";
-    this.dNI = 0L;
-    this.dNJ = 0L;
-    this.dPI = 0L;
-    this.dNK = 0L;
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 9) {
-          break label201;
-        }
-        String[] arrayOfString = new String[9];
-        Arrays.fill(arrayOfString, 0, 9, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label201:
-    for (;;)
-    {
-      this.dKu = bt.getInt(paramString[0], 0);
-      ij(paramString[1]);
-      this.dPH = bt.getLong(paramString[2], 0L);
-      ik(paramString[3]);
-      this.dNI = bt.getLong(paramString[4], 0L);
-      eU(bt.getLong(paramString[5], 0L));
-      this.dPI = bt.getLong(paramString[6], 0L);
-      this.dPJ = a.getBoolean(paramString[7]);
-      this.dNK = bt.getLong(paramString[8], 0L);
-      AppMethodBeat.o(121758);
-      return;
-    }
-  }
-  
-  public final String PV()
-  {
-    AppMethodBeat.i(121762);
-    String str = il(",");
-    AppMethodBeat.o(121762);
-    return str;
-  }
-  
-  public final String PW()
-  {
-    AppMethodBeat.i(121764);
+    AppMethodBeat.i(195033);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PID:").append(this.dKu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PName:").append(this.dKv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Seq:").append(this.dPH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Name:").append(this.dNH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Type:").append(this.dNI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TimeStampMs:").append(this.dNJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("GreenManFg:").append(this.dPI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("QueueFgBool:").append(this.dPJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HashCode:").append(this.dNK);
+    ((StringBuffer)localObject).append(this.dHY);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHV);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHW);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dJP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dMb);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dMc);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dMd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dMe);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dMf);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHT);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(121764);
+    arz((String)localObject);
+    AppMethodBeat.o(195033);
     return localObject;
   }
   
-  public final bk eU(long paramLong)
+  public final String PS()
   {
-    AppMethodBeat.i(121761);
-    this.dNJ = paramLong;
-    super.bb("TimeStampMs", this.dNJ);
-    AppMethodBeat.o(121761);
+    AppMethodBeat.i(195034);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("Scene:").append(this.dHY);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Sessionid:").append(this.dHV);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Contextid:").append(this.dHW);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickTabContextid:").append(this.dJP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PoiText:").append(this.dMb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FilterTextItems:").append(this.dMc);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsUnflodtab:").append(this.dMd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsUnflodopen:").append(this.dMe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FliterPageType:").append(this.dMf);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CommentScene:").append(this.dHT);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(195034);
+    return localObject;
+  }
+  
+  public final bk fE(long paramLong)
+  {
+    this.dHY = paramLong;
+    return this;
+  }
+  
+  public final bk fF(long paramLong)
+  {
+    this.dMd = paramLong;
+    return this;
+  }
+  
+  public final bk fG(long paramLong)
+  {
+    this.dMe = paramLong;
+    return this;
+  }
+  
+  public final bk fH(long paramLong)
+  {
+    this.dMf = paramLong;
+    return this;
+  }
+  
+  public final bk fI(long paramLong)
+  {
+    this.dHT = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 15885;
+    return 19996;
   }
   
-  public final bk ij(String paramString)
+  public final bk jm(String paramString)
   {
-    AppMethodBeat.i(121759);
-    this.dKv = t("PName", paramString, true);
-    AppMethodBeat.o(121759);
+    AppMethodBeat.i(195028);
+    this.dHV = t("Sessionid", paramString, true);
+    AppMethodBeat.o(195028);
     return this;
   }
   
-  public final bk ik(String paramString)
+  public final bk jn(String paramString)
   {
-    AppMethodBeat.i(121760);
-    this.dNH = t("Name", paramString, true);
-    AppMethodBeat.o(121760);
+    AppMethodBeat.i(195029);
+    this.dHW = t("Contextid", paramString, true);
+    AppMethodBeat.o(195029);
     return this;
   }
   
-  public final String il(String paramString)
+  public final bk jo(String paramString)
   {
-    AppMethodBeat.i(121763);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.dKu);
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(this.dKv);
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(this.dPH);
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(this.dNH);
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(this.dNI);
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(this.dNJ);
-    localStringBuffer.append(paramString);
-    localStringBuffer.append(this.dPI);
-    localStringBuffer.append(paramString);
-    if (this.dPJ) {}
-    for (int i = 1;; i = 0)
-    {
-      localStringBuffer.append(i);
-      localStringBuffer.append(paramString);
-      localStringBuffer.append(this.dNK);
-      paramString = localStringBuffer.toString();
-      ams(paramString);
-      AppMethodBeat.o(121763);
-      return paramString;
-    }
+    AppMethodBeat.i(195030);
+    this.dJP = t("ClickTabContextid", paramString, true);
+    AppMethodBeat.o(195030);
+    return this;
+  }
+  
+  public final bk jp(String paramString)
+  {
+    AppMethodBeat.i(195031);
+    this.dMb = t("PoiText", paramString, true);
+    AppMethodBeat.o(195031);
+    return this;
+  }
+  
+  public final bk jq(String paramString)
+  {
+    AppMethodBeat.i(195032);
+    this.dMc = t("FilterTextItems", paramString, true);
+    AppMethodBeat.o(195032);
+    return this;
   }
 }
 

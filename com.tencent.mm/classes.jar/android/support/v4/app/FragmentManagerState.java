@@ -8,20 +8,20 @@ final class FragmentManagerState
   implements Parcelable
 {
   public static final Parcelable.Creator<FragmentManagerState> CREATOR = new Parcelable.Creator() {};
-  FragmentState[] Dd;
-  int[] De;
-  BackStackState[] Df;
-  int Dg = -1;
+  FragmentState[] Eb;
+  int[] Ec;
+  BackStackState[] Ed;
+  int Ee = -1;
   int mNextFragmentIndex;
   
   public FragmentManagerState() {}
   
   public FragmentManagerState(Parcel paramParcel)
   {
-    this.Dd = ((FragmentState[])paramParcel.createTypedArray(FragmentState.CREATOR));
-    this.De = paramParcel.createIntArray();
-    this.Df = ((BackStackState[])paramParcel.createTypedArray(BackStackState.CREATOR));
-    this.Dg = paramParcel.readInt();
+    this.Eb = ((FragmentState[])paramParcel.createTypedArray(FragmentState.CREATOR));
+    this.Ec = paramParcel.createIntArray();
+    this.Ed = ((BackStackState[])paramParcel.createTypedArray(BackStackState.CREATOR));
+    this.Ee = paramParcel.readInt();
     this.mNextFragmentIndex = paramParcel.readInt();
   }
   
@@ -32,10 +32,10 @@ final class FragmentManagerState
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeTypedArray(this.Dd, paramInt);
-    paramParcel.writeIntArray(this.De);
-    paramParcel.writeTypedArray(this.Df, paramInt);
-    paramParcel.writeInt(this.Dg);
+    paramParcel.writeTypedArray(this.Eb, paramInt);
+    paramParcel.writeIntArray(this.Ec);
+    paramParcel.writeTypedArray(this.Ed, paramInt);
+    paramParcel.writeInt(this.Ee);
     paramParcel.writeInt(this.mNextFragmentIndex);
   }
 }

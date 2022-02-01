@@ -13,14 +13,14 @@ final class RemittanceDetailUI$15
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(68140);
-    e.p(this.vHk.getContext(), RemittanceDetailUI.w(this.vHk), false);
+    e.o(this.wRp.getContext(), RemittanceDetailUI.w(this.wRp), false);
     AppMethodBeat.o(68140);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceDetailUI.15
  * JD-Core Version:    0.7.0.1
  */

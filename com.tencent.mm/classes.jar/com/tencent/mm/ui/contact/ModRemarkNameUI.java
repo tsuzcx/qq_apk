@@ -18,19 +18,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.messenger.foundation.a.a.m;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.ui.tools.j.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bz;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMTagPanel;
 import com.tencent.mm.ui.tools.f;
@@ -41,42 +41,42 @@ public class ModRemarkNameUI
   extends MMActivity
   implements g
 {
-  private TextView GUC;
-  private View GUD;
-  private View GUE;
-  private MMTagPanel GUM;
-  private TextView GUN;
-  private EditText GWL;
-  private int GWM;
-  private String GWN;
-  private TextView GWO;
-  private EditText GWP;
-  private TextView GWQ;
-  private String GWR;
-  private boolean GWS;
-  private a GWT;
-  private View GWU;
-  private TextView GWV;
-  private af contact;
-  private String dtV;
-  private String iaz;
-  private int ima;
-  private ArrayList<String> uAu;
-  private String uBd;
-  private bw uTk;
+  private TextView IuP;
+  private View IuQ;
+  private View IuR;
+  private MMTagPanel IuZ;
+  private TextView Iva;
+  private EditText IwZ;
+  private int Ixa;
+  private String Ixb;
+  private TextView Ixc;
+  private EditText Ixd;
+  private TextView Ixe;
+  private String Ixf;
+  private boolean Ixg;
+  private a Ixh;
+  private View Ixi;
+  private TextView Ixj;
+  private ai contact;
+  private String drG;
+  private String iAC;
+  private int iMg;
+  private String vJW;
+  private ArrayList<String> vJn;
+  private bz wbZ;
   
   public ModRemarkNameUI()
   {
     AppMethodBeat.i(37872);
-    this.GWN = "";
-    this.iaz = "";
-    this.GWO = null;
-    this.GWP = null;
-    this.GWQ = null;
-    this.GWR = "";
-    this.GWS = false;
-    this.ima = 9;
-    this.GWT = new a((byte)0);
+    this.Ixb = "";
+    this.iAC = "";
+    this.Ixc = null;
+    this.Ixd = null;
+    this.Ixe = null;
+    this.Ixf = "";
+    this.Ixg = false;
+    this.iMg = 9;
+    this.Ixh = new a((byte)0);
     AppMethodBeat.o(37872);
   }
   
@@ -88,24 +88,24 @@ public class ModRemarkNameUI
   public void initView()
   {
     AppMethodBeat.i(37874);
-    this.dtV = getIntent().getStringExtra("Contact_User");
-    if ((this.dtV != null) && (this.dtV.length() > 0))
+    this.drG = getIntent().getStringExtra("Contact_User");
+    if ((this.drG != null) && (this.drG.length() > 0))
     {
-      az.arV();
-      this.contact = com.tencent.mm.model.c.apM().aHY(this.dtV);
-      az.arV();
-      this.uTk = com.tencent.mm.model.c.apN().agQ(this.dtV);
-      if ((this.contact == null) || (bt.isNullOrNil(this.contact.field_username)))
+      az.ayM();
+      this.contact = com.tencent.mm.model.c.awB().aNt(this.drG);
+      az.ayM();
+      this.wbZ = com.tencent.mm.model.c.awC().alK(this.drG);
+      if ((this.contact == null) || (bs.isNullOrNil(this.contact.field_username)))
       {
-        this.contact = new af(this.dtV);
-        this.contact.nd(bt.nullAsNil(this.GWN));
-        this.contact.nb(bt.nullAsNil(this.iaz));
+        this.contact = new ai(this.drG);
+        this.contact.qj(bs.nullAsNil(this.Ixb));
+        this.contact.qh(bs.nullAsNil(this.iAC));
       }
     }
-    this.GWL = ((EditText)findViewById(2131298627));
+    this.IwZ = ((EditText)findViewById(2131298627));
     Object localObject1 = new MMEditText.b()
     {
-      public final void aJE()
+      public final void aQv()
       {
         AppMethodBeat.i(37864);
         if (ModRemarkNameUI.a(ModRemarkNameUI.this).getText().toString().trim().length() > 0) {
@@ -115,25 +115,25 @@ public class ModRemarkNameUI
       }
     };
     Object localObject2 = new j.a();
-    ((j.a)localObject2).CmY = ((MMEditText.b)localObject1);
-    this.GWL.addTextChangedListener((TextWatcher)localObject2);
-    com.tencent.mm.ui.tools.b.c.d(this.GWL).aaj(32).a(null);
-    if ((this.contact != null) && (this.GWM != 3))
+    ((j.a)localObject2).DFq = ((MMEditText.b)localObject1);
+    this.IwZ.addTextChangedListener((TextWatcher)localObject2);
+    com.tencent.mm.ui.tools.b.c.d(this.IwZ).acw(32).a(null);
+    if ((this.contact != null) && (this.Ixa != 3))
     {
-      if (this.GWM == 4)
+      if (this.Ixa == 4)
       {
-        this.GWL.setText(k.b(this, bt.nullAsNil(this.GWN), this.GWL.getTextSize()));
-        this.GWL.setSelection(this.GWL.getText().length());
+        this.IwZ.setText(k.b(this, bs.nullAsNil(this.Ixb), this.IwZ.getTextSize()));
+        this.IwZ.setSelection(this.IwZ.getText().length());
       }
     }
     else
     {
-      if (this.GWM != 0) {
+      if (this.Ixa != 0) {
         break label1118;
       }
       setMMTitle(2131757731);
-      localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Cc(this.contact.field_username);
-      if ((localObject1 != null) && (!bt.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aIv())) && (!((com.tencent.mm.plugin.account.friend.a.a)localObject1).aIv().equals(this.GWL.getText()))) {
+      localObject1 = com.tencent.mm.plugin.account.a.getAddrUploadStg().Gf(this.contact.field_username);
+      if ((localObject1 != null) && (!bs.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm())) && (!((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm().equals(this.IwZ.getText()))) {
         break label988;
       }
       label326:
@@ -157,7 +157,7 @@ public class ModRemarkNameUI
           }
         }
       });
-      if ((this.GWL == null) || (this.GWL.getText().toString().trim().length() <= 0)) {
+      if ((this.IwZ == null) || (this.IwZ.getText().toString().trim().length() <= 0)) {
         break label1251;
       }
       enableOptionMenu(true);
@@ -174,21 +174,21 @@ public class ModRemarkNameUI
           return true;
         }
       });
-      this.GWO = ((TextView)findViewById(2131298634));
-      this.GWP = ((EditText)findViewById(2131298626));
-      this.GWQ = ((TextView)findViewById(2131307005));
-      this.GUE = findViewById(2131298625);
-      com.tencent.mm.ui.tools.b.c.d(this.GWP).aaj(800).a(null);
-      this.GWQ.setText(f.cJ(800, this.GWP.getEditableText().toString()));
-      this.GWP.append(k.b(this, bt.nullAsNil(this.GWR), this.GWP.getTextSize()));
-      this.GWO.append(k.b(this, bt.nullAsNil(this.GWR), this.GWO.getTextSize()));
-      if (this.uTk != null)
+      this.Ixc = ((TextView)findViewById(2131298634));
+      this.Ixd = ((EditText)findViewById(2131298626));
+      this.Ixe = ((TextView)findViewById(2131307005));
+      this.IuR = findViewById(2131298625);
+      com.tencent.mm.ui.tools.b.c.d(this.Ixd).acw(800).a(null);
+      this.Ixe.setText(f.cM(800, this.Ixd.getEditableText().toString()));
+      this.Ixd.append(k.b(this, bs.nullAsNil(this.Ixf), this.Ixd.getTextSize()));
+      this.Ixc.append(k.b(this, bs.nullAsNil(this.Ixf), this.Ixc.getTextSize()));
+      if (this.wbZ != null)
       {
-        this.GWP.setText(k.b(this, bt.nullAsNil(this.uTk.field_conDescription), this.GWP.getTextSize()));
-        this.GWO.setText(k.b(this, bt.nullAsNil(this.uTk.field_conDescription), this.GWP.getTextSize()));
+        this.Ixd.setText(k.b(this, bs.nullAsNil(this.wbZ.field_conDescription), this.Ixd.getTextSize()));
+        this.Ixc.setText(k.b(this, bs.nullAsNil(this.wbZ.field_conDescription), this.Ixd.getTextSize()));
       }
-      this.GWP.addTextChangedListener(new b((byte)0));
-      this.GWO.setOnClickListener(new View.OnClickListener()
+      this.Ixd.addTextChangedListener(new b((byte)0));
+      this.Ixc.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -202,67 +202,67 @@ public class ModRemarkNameUI
       });
       AppMethodBeat.o(37874);
       return;
-      if (!bt.isNullOrNil(this.contact.field_conRemark))
+      if (!bs.isNullOrNil(this.contact.field_conRemark))
       {
-        if ((this.GWM == 0) && (!bt.isNullOrNil(this.iaz)))
+        if ((this.Ixa == 0) && (!bs.isNullOrNil(this.iAC)))
         {
-          this.GWL.setText(k.b(this, this.iaz, this.GWL.getTextSize()));
+          this.IwZ.setText(k.b(this, this.iAC, this.IwZ.getTextSize()));
           break;
         }
-        this.GWL.setText(k.b(this, bt.nullAsNil(this.contact.field_conRemark), this.GWL.getTextSize()));
+        this.IwZ.setText(k.b(this, bs.nullAsNil(this.contact.field_conRemark), this.IwZ.getTextSize()));
         break;
       }
-      if (!bt.isNullOrNil(this.iaz))
+      if (!bs.isNullOrNil(this.iAC))
       {
-        this.GWL.setText(k.b(this, bt.nullAsNil(this.iaz), this.GWL.getTextSize()));
+        this.IwZ.setText(k.b(this, bs.nullAsNil(this.iAC), this.IwZ.getTextSize()));
         break;
       }
-      if (!bt.isNullOrNil(this.contact.field_nickname))
+      if (!bs.isNullOrNil(this.contact.field_nickname))
       {
-        if ((this.GWM == 0) && (!bt.isNullOrNil(this.GWN)) && (!com.tencent.mm.n.b.ls(this.contact.field_type)))
+        if ((this.Ixa == 0) && (!bs.isNullOrNil(this.Ixb)) && (!com.tencent.mm.n.b.ln(this.contact.field_type)))
         {
-          this.GWL.setText(k.b(this, bt.nullAsNil(this.GWN), this.GWL.getTextSize()));
+          this.IwZ.setText(k.b(this, bs.nullAsNil(this.Ixb), this.IwZ.getTextSize()));
           break;
         }
-        this.GWL.setText(k.b(this, bt.nullAsNil(this.contact.field_nickname), this.GWL.getTextSize()));
+        this.IwZ.setText(k.b(this, bs.nullAsNil(this.contact.field_nickname), this.IwZ.getTextSize()));
         break;
       }
-      if (!bt.isNullOrNil(this.GWN))
+      if (!bs.isNullOrNil(this.Ixb))
       {
-        this.GWL.setText(k.b(this, bt.nullAsNil(this.GWN), this.GWL.getTextSize()));
+        this.IwZ.setText(k.b(this, bs.nullAsNil(this.Ixb), this.IwZ.getTextSize()));
         break;
       }
       localObject1 = this.contact.field_nickname;
-      if ((bt.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
+      if ((bs.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
       for (int i = 0;; i = 1)
       {
         if (i == 0) {
           break label976;
         }
-        this.GWL.setText(k.b(this, bt.nullAsNil(this.contact.ZX()), this.GWL.getTextSize()));
+        this.IwZ.setText(k.b(this, bs.nullAsNil(this.contact.aaS()), this.IwZ.getTextSize()));
         break;
       }
       label976:
-      this.GWL.setText("");
+      this.IwZ.setText("");
       break;
       label988:
-      this.GUC = ((TextView)findViewById(2131302425));
-      this.GUD = findViewById(2131302419);
-      this.GUD.setVisibility(0);
-      this.GUC.setText(bt.nullAsNil(getString(2131757816, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).aIv() })));
+      this.IuP = ((TextView)findViewById(2131302425));
+      this.IuQ = findViewById(2131302419);
+      this.IuQ.setVisibility(0);
+      this.IuP.setText(bs.nullAsNil(getString(2131757816, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm() })));
       localObject2 = new l(getString(2131766242));
-      ((l)localObject2).setSpan(new c(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aIv()), 0, ((l)localObject2).length(), 17);
-      this.GUC.append(" ");
-      this.GUC.append((CharSequence)localObject2);
-      this.GUC.setMovementMethod(LinkMovementMethod.getInstance());
+      ((l)localObject2).setSpan(new c(((com.tencent.mm.plugin.account.friend.a.a)localObject1).aPm()), 0, ((l)localObject2).length(), 17);
+      this.IuP.append(" ");
+      this.IuP.append((CharSequence)localObject2);
+      this.IuP.setMovementMethod(LinkMovementMethod.getInstance());
       break label326;
       label1118:
-      if (this.GWM == 3)
+      if (this.Ixa == 3)
       {
         setMMTitle(2131764345);
-        this.GWL.setHint("");
-        if (!bt.isNullOrNil(this.GWN)) {
-          this.GWL.setText(this.GWN);
+        this.IwZ.setHint("");
+        if (!bs.isNullOrNil(this.Ixb)) {
+          this.IwZ.setText(this.Ixb);
         }
         localObject1 = (TextView)findViewById(2131298628);
         ((TextView)localObject1).setText(2131763093);
@@ -270,11 +270,11 @@ public class ModRemarkNameUI
         findViewById(2131302420).setVisibility(8);
         break label326;
       }
-      if (this.GWM != 4) {
+      if (this.Ixa != 4) {
         break label326;
       }
       setMMTitle(2131762651);
-      this.GWL.setHint("");
+      this.IwZ.setHint("");
       localObject1 = (TextView)findViewById(2131298628);
       ((TextView)localObject1).setText(2131762702);
       ((TextView)localObject1).setVisibility(0);
@@ -289,26 +289,26 @@ public class ModRemarkNameUI
     int j = 0;
     AppMethodBeat.i(37873);
     super.onCreate(paramBundle);
-    this.ima = getIntent().getIntExtra("Contact_Scene", 9);
-    this.GWM = getIntent().getIntExtra("Contact_mode_name_type", 0);
-    this.GWN = bt.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
-    this.iaz = bt.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
-    this.GWS = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
+    this.iMg = getIntent().getIntExtra("Contact_Scene", 9);
+    this.Ixa = getIntent().getIntExtra("Contact_mode_name_type", 0);
+    this.Ixb = bs.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
+    this.iAC = bs.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
+    this.Ixg = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
     initView();
-    this.GWV = ((TextView)findViewById(2131298624));
-    this.GWU = findViewById(2131298622);
+    this.Ixj = ((TextView)findViewById(2131298624));
+    this.Ixi = findViewById(2131298622);
     int i;
-    if (this.GWM != 0)
+    if (this.Ixa != 0)
     {
-      this.GWU.setVisibility(8);
-      this.GWV.setVisibility(8);
-      this.GUM = ((MMTagPanel)findViewById(2131298623));
-      this.GUM.setPanelClickable(false);
-      this.GUN = ((TextView)findViewById(2131298621));
-      this.GUN.setText(2131761304);
-      this.GUM.setOnClickListener(this.GWT);
-      this.GUN.setOnClickListener(this.GWT);
-      if ((this.contact == null) || (!af.aHH(this.contact.field_username))) {
+      this.Ixi.setVisibility(8);
+      this.Ixj.setVisibility(8);
+      this.IuZ = ((MMTagPanel)findViewById(2131298623));
+      this.IuZ.setPanelClickable(false);
+      this.Iva = ((TextView)findViewById(2131298621));
+      this.Iva.setText(2131761304);
+      this.IuZ.setOnClickListener(this.Ixh);
+      this.Iva.setOnClickListener(this.Ixh);
+      if ((this.contact == null) || (!ai.aNc(this.contact.field_username))) {
         break label274;
       }
       i = 1;
@@ -317,18 +317,18 @@ public class ModRemarkNameUI
     {
       if (i != 0)
       {
-        if (this.GWL == null)
+        if (this.IwZ == null)
         {
           AppMethodBeat.o(37873);
           return;
-          this.GWU.setVisibility(0);
-          this.GWV.setVisibility(0);
+          this.Ixi.setVisibility(0);
+          this.Ixj.setVisibility(0);
           break;
           label274:
           i = 0;
           continue;
         }
-        paramBundle = (ViewGroup)this.GWL.getParent();
+        paramBundle = (ViewGroup)this.IwZ.getParent();
         int k = paramBundle.getChildCount();
         i = j;
         while (i < k)
@@ -356,27 +356,27 @@ public class ModRemarkNameUI
   {
     AppMethodBeat.i(37875);
     super.onResume();
-    az.arV();
-    this.uTk = com.tencent.mm.model.c.apN().agQ(this.dtV);
-    if (this.uTk != null)
+    az.ayM();
+    this.wbZ = com.tencent.mm.model.c.awC().alK(this.drG);
+    if (this.wbZ != null)
     {
-      this.uBd = this.uTk.field_contactLabels;
-      this.uAu = ((ArrayList)com.tencent.mm.plugin.label.a.a.cIS().aeJ(this.uBd));
+      this.vJW = this.wbZ.field_contactLabels;
+      this.vJn = ((ArrayList)com.tencent.mm.plugin.label.a.a.cWd().ajB(this.vJW));
     }
-    if (!bt.isNullOrNil(this.uBd))
+    if (!bs.isNullOrNil(this.vJW))
     {
-      this.GUM.setVisibility(0);
-      this.GUN.setVisibility(8);
-      if ((this.uAu != null) && (!this.uAu.isEmpty()))
+      this.IuZ.setVisibility(0);
+      this.Iva.setVisibility(8);
+      if ((this.vJn != null) && (!this.vJn.isEmpty()))
       {
-        this.GUM.a(this.uAu, this.uAu);
+        this.IuZ.a(this.vJn, this.vJn);
         AppMethodBeat.o(37875);
       }
     }
     else
     {
-      this.GUM.setVisibility(8);
-      this.GUN.setVisibility(0);
+      this.IuZ.setVisibility(8);
+      this.Iva.setVisibility(0);
     }
     AppMethodBeat.o(37875);
   }
@@ -384,12 +384,12 @@ public class ModRemarkNameUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(37877);
-    ad.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ac.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (paramn.getType() == 44)
     {
       if ((paramInt1 != 0) && (paramInt2 < 0))
       {
-        ad.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
+        ac.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
         Toast.makeText(this, getString(2131762691, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       }
       finish();
@@ -419,19 +419,19 @@ public class ModRemarkNameUI
   final class b
     implements TextWatcher
   {
-    private int weg = 800;
+    private int xpu = 800;
     
     private b() {}
     
     public final void afterTextChanged(Editable paramEditable)
     {
       AppMethodBeat.i(37869);
-      this.weg = f.cJ(800, paramEditable.toString());
-      if (this.weg < 0) {
-        this.weg = 0;
+      this.xpu = f.cM(800, paramEditable.toString());
+      if (this.xpu < 0) {
+        this.xpu = 0;
       }
       if (ModRemarkNameUI.i(ModRemarkNameUI.this) != null) {
-        ModRemarkNameUI.i(ModRemarkNameUI.this).setText(this.weg);
+        ModRemarkNameUI.i(ModRemarkNameUI.this).setText(this.xpu);
       }
       ModRemarkNameUI.j(ModRemarkNameUI.this);
       AppMethodBeat.o(37869);
@@ -445,17 +445,17 @@ public class ModRemarkNameUI
   final class c
     extends ClickableSpan
   {
-    public String iaz;
+    public String iAC;
     
     public c(String paramString)
     {
-      this.iaz = paramString;
+      this.iAC = paramString;
     }
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(37870);
-      ModRemarkNameUI.a(ModRemarkNameUI.this).setText(k.b(ModRemarkNameUI.this, bt.nullAsNil(this.iaz), ModRemarkNameUI.a(ModRemarkNameUI.this).getTextSize()));
+      ModRemarkNameUI.a(ModRemarkNameUI.this).setText(k.b(ModRemarkNameUI.this, bs.nullAsNil(this.iAC), ModRemarkNameUI.a(ModRemarkNameUI.this).getTextSize()));
       ModRemarkNameUI.a(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.a(ModRemarkNameUI.this).getText().length());
       ModRemarkNameUI.l(ModRemarkNameUI.this).setVisibility(8);
       AppMethodBeat.o(37870);
@@ -472,7 +472,7 @@ public class ModRemarkNameUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ModRemarkNameUI
  * JD-Core Version:    0.7.0.1
  */

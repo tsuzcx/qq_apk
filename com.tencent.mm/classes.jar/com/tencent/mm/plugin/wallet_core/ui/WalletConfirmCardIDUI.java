@@ -5,16 +5,18 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.plugin.wallet_core.c.y;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -24,15 +26,15 @@ import com.tenpay.bankcard.TenpaySegmentEditText;
 public class WalletConfirmCardIDUI
   extends WalletBaseUI
 {
-  private TenpaySegmentEditText Ang;
-  private boolean Anh = true;
-  private Button sic;
+  private TenpaySegmentEditText BFB;
+  private boolean BFC = true;
+  private Button tpW;
   
   public void finish()
   {
     AppMethodBeat.i(162422);
     super.finish();
-    z.fjZ();
+    z.fAp();
     getInput().remove("key_bankcard_cropimg");
     AppMethodBeat.o(162422);
   }
@@ -50,30 +52,30 @@ public class WalletConfirmCardIDUI
     Bitmap localBitmap = (Bitmap)getInput().getParcelable("key_bankcard_cropimg");
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      ad.e("MicroMsg.WalletConfirmCardIDUI", "cardID is empty");
+      ac.e("MicroMsg.WalletConfirmCardIDUI", "cardID is empty");
       finish();
       AppMethodBeat.o(70936);
       return;
     }
     if (localBitmap == null)
     {
-      ad.e("MicroMsg.WalletConfirmCardIDUI", "cardID bitmap is null");
+      ac.e("MicroMsg.WalletConfirmCardIDUI", "cardID bitmap is null");
       finish();
       AppMethodBeat.o(70936);
       return;
     }
     setMMTitle(2131765215);
-    this.sic = ((Button)findViewById(2131302852));
-    this.Ang = ((TenpaySegmentEditText)findViewById(2131299255));
-    this.Ang.setText((String)localObject, str);
+    this.tpW = ((Button)findViewById(2131302852));
+    this.BFB = ((TenpaySegmentEditText)findViewById(2131299255));
+    this.BFB.setText((String)localObject, str);
     this.mKeyboard = ((MyKeyboardWindow)findViewById(2131305695));
     this.mKBLayout = findViewById(2131305693);
     ((ImageView)findViewById(2131297827)).setImageBitmap(localBitmap);
-    this.Ang.setKeyboard(this.mKeyboard);
+    this.BFB.setKeyboard(this.mKeyboard);
     this.mKeyboard.setXMode(0);
-    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.Ang.getWindowToken(), 0);
+    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.BFB.getWindowToken(), 0);
     this.mKBLayout.setVisibility(8);
-    this.Ang.setOnClickListener(new View.OnClickListener()
+    this.BFB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -87,22 +89,22 @@ public class WalletConfirmCardIDUI
         AppMethodBeat.o(70931);
       }
     });
-    localObject = this.Ang.get3DesEncrptData();
-    this.sic.setOnClickListener(new View.OnClickListener()
+    localObject = this.BFB.get3DesEncrptData();
+    this.tpW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70932);
         paramAnonymousView = WalletConfirmCardIDUI.f(WalletConfirmCardIDUI.this).get3DesEncrptData();
-        if ((paramAnonymousView != null) && (paramAnonymousView.equals(this.Anj))) {
-          com.tencent.mm.plugin.report.service.h.vKh.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
+        if ((paramAnonymousView != null) && (paramAnonymousView.equals(this.BFE))) {
+          com.tencent.mm.plugin.report.service.h.wUl.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(1) });
         }
         for (;;)
         {
           WalletConfirmCardIDUI.g(WalletConfirmCardIDUI.this);
           AppMethodBeat.o(70932);
           return;
-          com.tencent.mm.plugin.report.service.h.vKh.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
+          com.tencent.mm.plugin.report.service.h.wUl.f(11353, new Object[] { Integer.valueOf(0), Integer.valueOf(2) });
         }
       }
     });
@@ -112,11 +114,19 @@ public class WalletConfirmCardIDUI
     if ((this.mKeyboard == null) || (this.mKBLayout == null)) {}
     for (;;)
     {
-      this.Ang.setFocusable(false);
-      this.Ang.setFocusableInTouchMode(true);
+      this.BFB.setFocusable(false);
+      this.BFB.setFocusableInTouchMode(true);
       AppMethodBeat.o(70936);
       return;
-      ((View)localObject).setOnClickListener(new WalletConfirmCardIDUI.4(this));
+      ((View)localObject).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(70933);
+          WalletConfirmCardIDUI.this.hideTenpayKB();
+          AppMethodBeat.o(70933);
+        }
+      });
     }
   }
   
@@ -130,7 +140,24 @@ public class WalletConfirmCardIDUI
     AppMethodBeat.i(70934);
     super.onCreate(paramBundle);
     initView();
-    setBackBtn(new WalletConfirmCardIDUI.1(this));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(70930);
+        if (WalletConfirmCardIDUI.this.needConfirmFinish())
+        {
+          WalletConfirmCardIDUI.this.hideVKB();
+          WalletConfirmCardIDUI.this.showDialog(1000);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(70930);
+          return false;
+          WalletConfirmCardIDUI.this.finish();
+        }
+      }
+    });
     AppMethodBeat.o(70934);
   }
   
@@ -150,28 +177,28 @@ public class WalletConfirmCardIDUI
       if ((paramn instanceof y))
       {
         paramn = (y)paramn;
-        paramString.putBoolean("key_need_area", paramn.ebm());
-        paramString.putBoolean("key_need_profession", paramn.ebn());
+        paramString.putBoolean("key_need_area", paramn.eqI());
+        paramString.putBoolean("key_need_profession", paramn.eqJ());
         paramString.putParcelableArray("key_profession_list", paramn.mProfessions);
-        if (paramn.zWD == 1) {}
+        if (paramn.BoX == 1) {}
         for (bool1 = true;; bool1 = false)
         {
           paramString.putBoolean("key_need_country", bool1);
-          paramString.putStringArray("key_country_excludes", paramn.zWE);
-          if (paramn.zWz == null) {
+          paramString.putStringArray("key_country_excludes", paramn.BoY);
+          if (paramn.BoT == null) {
             break label238;
           }
-          if ((!paramn.zWz.AdC) || (!paramn.zWz.isError())) {
+          if ((!paramn.BoT.BvW) || (!paramn.BoT.isError())) {
             break;
           }
-          com.tencent.mm.ui.base.h.j(this, 2131765036, 2131755906);
+          com.tencent.mm.ui.base.h.l(this, 2131765036, 2131755906);
           AppMethodBeat.o(70937);
           return true;
         }
         paramString.putBoolean("key_is_reset_with_new_card", bool2);
-        paramString.putString("bank_name", paramn.zWz.szi);
-        paramString.putParcelable("elemt_query", paramn.zWz);
-        paramString.putString("key_card_id", this.Ang.getEncryptDataWithHash(false));
+        paramString.putString("bank_name", paramn.BoT.tGS);
+        paramString.putParcelable("elemt_query", paramn.BoT);
+        paramString.putString("key_card_id", this.BFB.getEncryptDataWithHash(false));
         a.k(this, paramString);
         AppMethodBeat.o(70937);
         return true;
@@ -179,7 +206,7 @@ public class WalletConfirmCardIDUI
         paramString.putBoolean("key_is_reset_with_new_card", bool2);
         paramString.putString("bank_name", "");
         paramString.putParcelable("elemt_query", new ElementQuery());
-        paramString.putString("key_card_id", this.Ang.getEncryptDataWithHash(false));
+        paramString.putString("key_card_id", this.BFB.getEncryptDataWithHash(false));
         a.k(this, paramString);
       }
     }
@@ -192,7 +219,7 @@ public class WalletConfirmCardIDUI
     paramString.putString("bank_name", "");
     paramString.putBoolean("key_is_reset_with_new_card", bool2);
     paramString.putParcelable("elemt_query", new ElementQuery());
-    paramString.putString("key_card_id", this.Ang.getEncryptDataWithHash(false));
+    paramString.putString("key_card_id", this.BFB.getEncryptDataWithHash(false));
     a.k(this, paramString);
     AppMethodBeat.o(70937);
     return true;

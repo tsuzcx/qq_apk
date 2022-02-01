@@ -15,7 +15,7 @@ public abstract class b
   extends h
   implements at
 {
-  private int aFj = 0;
+  private int aFZ = 0;
   
   public b(i parami)
   {
@@ -25,7 +25,7 @@ public abstract class b
   private static boolean d(d.l.b.a.b.b.h paramh)
   {
     if (paramh == null) {
-      adP(2);
+      agL(2);
     }
     return (!u.L(paramh)) && (!d.l.b.a.b.j.c.m(paramh));
   }
@@ -44,8 +44,8 @@ public abstract class b
     if (((at)paramObject).getParameters().size() != getParameters().size()) {
       return false;
     }
-    Object localObject = fxN();
-    paramObject = ((at)paramObject).fxM();
+    Object localObject = fQr();
+    paramObject = ((at)paramObject).fQq();
     if ((!d((d.l.b.a.b.b.h)localObject)) || ((paramObject != null) && (!d(paramObject)))) {
       return false;
     }
@@ -53,11 +53,11 @@ public abstract class b
     {
       localObject = (e)localObject;
       paramObject = (e)paramObject;
-      if (!((e)localObject).fyB().equals(paramObject.fyB())) {
+      if (!((e)localObject).fRf().equals(paramObject.fRf())) {
         return false;
       }
-      localObject = ((e)localObject).fxq();
-      for (paramObject = paramObject.fxq(); (localObject != null) && (paramObject != null); paramObject = paramObject.fxq())
+      localObject = ((e)localObject).fPU();
+      for (paramObject = paramObject.fPU(); (localObject != null) && (paramObject != null); paramObject = paramObject.fPU())
       {
         if ((localObject instanceof y)) {
           return paramObject instanceof y;
@@ -67,7 +67,7 @@ public abstract class b
         }
         if ((localObject instanceof d.l.b.a.b.b.ab))
         {
-          if (((paramObject instanceof d.l.b.a.b.b.ab)) && (((d.l.b.a.b.b.ab)localObject).fzd().equals(((d.l.b.a.b.b.ab)paramObject).fzd()))) {
+          if (((paramObject instanceof d.l.b.a.b.b.ab)) && (((d.l.b.a.b.b.ab)localObject).fRH().equals(((d.l.b.a.b.b.ab)paramObject).fRH()))) {
             break;
           }
           return false;
@@ -75,74 +75,74 @@ public abstract class b
         if ((paramObject instanceof d.l.b.a.b.b.ab)) {
           return false;
         }
-        if (!((l)localObject).fyB().equals(paramObject.fyB())) {
+        if (!((l)localObject).fRf().equals(paramObject.fRf())) {
           return false;
         }
-        localObject = ((l)localObject).fxq();
+        localObject = ((l)localObject).fPU();
       }
       return true;
     }
     return false;
   }
   
-  public abstract e fxN();
+  public abstract e fQr();
   
-  protected final ab fzR()
+  public final g fRE()
   {
-    if (g.e(fxN())) {
-      return null;
-    }
-    return fza().fxb();
-  }
-  
-  public final g fza()
-  {
-    g localg = a.G(fxN());
+    g localg = a.G(fQr());
     if (localg == null) {
-      adP(1);
+      agL(1);
     }
     return localg;
   }
   
+  protected final ab fSv()
+  {
+    if (g.e(fQr())) {
+      return null;
+    }
+    return fRE().fPF();
+  }
+  
   public final int hashCode()
   {
-    int i = this.aFj;
+    int i = this.aFZ;
     if (i != 0) {
       return i;
     }
-    e locale = fxN();
+    e locale = fQr();
     if (d(locale)) {}
     for (i = d.l.b.a.b.j.c.n(locale).hashCode();; i = System.identityHashCode(this))
     {
-      this.aFj = i;
+      this.aFZ = i;
       return i;
     }
   }
   
-  protected final Collection<ab> yl(boolean paramBoolean)
+  protected final Collection<ab> zD(boolean paramBoolean)
   {
-    Object localObject2 = fxN().fxq();
+    Object localObject2 = fQr().fPU();
     if (!(localObject2 instanceof e))
     {
       localObject1 = Collections.emptyList();
       if (localObject1 == null) {
-        adP(3);
+        agL(3);
       }
       return localObject1;
     }
     Object localObject1 = new d.l.b.a.b.o.h();
     localObject2 = (e)localObject2;
-    ((Collection)localObject1).add(((e)localObject2).fyA());
-    localObject2 = ((e)localObject2).fxt();
+    ((Collection)localObject1).add(((e)localObject2).fRe());
+    localObject2 = ((e)localObject2).fPX();
     if ((paramBoolean) && (localObject2 != null)) {
-      ((Collection)localObject1).add(((e)localObject2).fyA());
+      ((Collection)localObject1).add(((e)localObject2).fRe());
     }
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.b
  * JD-Core Version:    0.7.0.1
  */

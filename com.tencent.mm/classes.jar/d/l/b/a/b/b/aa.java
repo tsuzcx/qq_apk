@@ -19,18 +19,18 @@ import java.util.List;
 
 public final class aa
 {
-  final i JlL;
-  final y Jon;
-  final c<d.l.b.a.b.f.b, ab> Jqt;
-  private final c<aa.a, e> Jqu;
+  final i KZf;
+  final y LbH;
+  final c<d.l.b.a.b.f.b, ab> LdM;
+  private final c<a, e> LdN;
   
   public aa(i parami, y paramy)
   {
     AppMethodBeat.i(56877);
-    this.JlL = parami;
-    this.Jon = paramy;
-    this.Jqt = this.JlL.A((d.g.a.b)new d(this));
-    this.Jqu = this.JlL.A((d.g.a.b)new c(this));
+    this.KZf = parami;
+    this.LbH = paramy;
+    this.LdM = this.KZf.I((d.g.a.b)new d(this));
+    this.LdN = this.KZf.I((d.g.a.b)new c(this));
     AppMethodBeat.o(56877);
   }
   
@@ -39,130 +39,189 @@ public final class aa
     AppMethodBeat.i(56876);
     k.h(parama, "classId");
     k.h(paramList, "typeParametersCount");
-    parama = (e)this.Jqu.aA(new aa.a(parama, paramList));
+    parama = (e)this.LdN.ay(new a(parama, paramList));
     AppMethodBeat.o(56876);
     return parama;
+  }
+  
+  static final class a
+  {
+    final d.l.b.a.b.f.a LbB;
+    final List<Integer> LdO;
+    
+    public a(d.l.b.a.b.f.a parama, List<Integer> paramList)
+    {
+      AppMethodBeat.i(56865);
+      this.LbB = parama;
+      this.LdO = paramList;
+      AppMethodBeat.o(56865);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(56868);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((!k.g(this.LbB, paramObject.LbB)) || (!k.g(this.LdO, paramObject.LdO))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(56868);
+        return true;
+      }
+      AppMethodBeat.o(56868);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      int j = 0;
+      AppMethodBeat.i(56867);
+      Object localObject = this.LbB;
+      if (localObject != null) {}
+      for (int i = localObject.hashCode();; i = 0)
+      {
+        localObject = this.LdO;
+        if (localObject != null) {
+          j = localObject.hashCode();
+        }
+        AppMethodBeat.o(56867);
+        return i * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(56866);
+      String str = "ClassRequest(classId=" + this.LbB + ", typeParametersCount=" + this.LdO + ")";
+      AppMethodBeat.o(56866);
+      return str;
+    }
   }
   
   public static final class b
     extends d.l.b.a.b.b.c.g
   {
-    private final List<as> Jqw;
-    private final d.l.b.a.b.m.j Jqx;
-    private final boolean Jqy;
+    private final List<as> LdP;
+    private final d.l.b.a.b.m.j LdQ;
+    private final boolean LdR;
     
     public b(i parami, l paraml, d.l.b.a.b.f.f paramf, boolean paramBoolean, int paramInt)
     {
-      super(paraml, paramf, an.JqJ);
+      super(paraml, paramf, an.Lec);
       AppMethodBeat.i(56873);
-      this.Jqy = paramBoolean;
-      paramf = (Iterable)h.kJ(0, paramInt);
+      this.LdR = paramBoolean;
+      paramf = (Iterable)h.kZ(0, paramInt);
       paraml = (Collection)new ArrayList(d.a.j.a(paramf, 10));
       paramf = paramf.iterator();
       while (paramf.hasNext())
       {
         paramInt = ((d.a.ab)paramf).nextInt();
         l locall = (l)this;
-        g.a locala = d.l.b.a.b.b.a.g.JrB;
-        paraml.add(ai.a(locall, g.a.fzI(), bh.JYC, d.l.b.a.b.f.f.aQC("T".concat(String.valueOf(paramInt))), paramInt));
+        g.a locala = d.l.b.a.b.b.a.g.LeU;
+        paraml.add(ai.a(locall, g.a.fSm(), bh.LLV, d.l.b.a.b.f.f.aWB("T".concat(String.valueOf(paramInt))), paramInt));
       }
-      this.Jqw = ((List)paraml);
-      this.Jqx = new d.l.b.a.b.m.j((e)this, this.Jqw, (Collection)ak.setOf(d.l.b.a.b.j.d.a.F(this).fza().fxb()), parami);
+      this.LdP = ((List)paraml);
+      this.LdQ = new d.l.b.a.b.m.j((e)this, this.LdP, (Collection)ak.setOf(d.l.b.a.b.j.d.a.F(this).fRE().fPF()), parami);
       AppMethodBeat.o(56873);
     }
     
-    public final Collection<d> fvR()
+    public final Collection<d> fOv()
     {
-      return (Collection)x.Jgn;
+      return (Collection)x.KTH;
     }
     
-    public final boolean fxA()
-    {
-      return false;
-    }
-    
-    public final boolean fxB()
-    {
-      return false;
-    }
-    
-    public final boolean fxC()
-    {
-      return false;
-    }
-    
-    public final boolean fxD()
-    {
-      return false;
-    }
-    
-    public final boolean fxE()
-    {
-      return false;
-    }
-    
-    public final d.l.b.a.b.b.a.g fxF()
-    {
-      AppMethodBeat.i(56870);
-      Object localObject = d.l.b.a.b.b.a.g.JrB;
-      localObject = g.a.fzI();
-      AppMethodBeat.o(56870);
-      return localObject;
-    }
-    
-    public final Collection<e> fxH()
-    {
-      return (Collection)v.Jgl;
-    }
-    
-    public final List<as> fxI()
-    {
-      return this.Jqw;
-    }
-    
-    public final e fxt()
+    public final e fPX()
     {
       return null;
     }
     
-    public final f fxu()
+    public final f fPY()
     {
-      return f.Jqd;
+      return f.Ldw;
     }
     
-    public final w fxv()
+    public final w fPZ()
     {
-      return w.Jqn;
+      return w.LdG;
     }
     
-    public final d fxw()
+    public final d fQa()
     {
       return null;
     }
     
-    public final ba fxx()
+    public final ba fQb()
     {
       AppMethodBeat.i(56869);
-      ba localba = az.JqT;
+      ba localba = az.Lem;
       k.g(localba, "Visibilities.PUBLIC");
       AppMethodBeat.o(56869);
       return localba;
     }
     
-    public final boolean fxy()
+    public final boolean fQc()
     {
       return false;
     }
     
-    public final boolean fxz()
+    public final boolean fQd()
     {
-      return this.Jqy;
+      return this.LdR;
+    }
+    
+    public final boolean fQe()
+    {
+      return false;
+    }
+    
+    public final boolean fQf()
+    {
+      return false;
+    }
+    
+    public final boolean fQg()
+    {
+      return false;
+    }
+    
+    public final boolean fQh()
+    {
+      return false;
+    }
+    
+    public final boolean fQi()
+    {
+      return false;
+    }
+    
+    public final d.l.b.a.b.b.a.g fQj()
+    {
+      AppMethodBeat.i(56870);
+      Object localObject = d.l.b.a.b.b.a.g.LeU;
+      localObject = g.a.fSm();
+      AppMethodBeat.o(56870);
+      return localObject;
+    }
+    
+    public final Collection<e> fQl()
+    {
+      return (Collection)v.KTF;
+    }
+    
+    public final List<as> fQm()
+    {
+      return this.LdP;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(56872);
-      String str = "class " + fyB() + " (not found)";
+      String str = "class " + fRf() + " (not found)";
       AppMethodBeat.o(56872);
       return str;
     }
@@ -190,7 +249,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import java.lang.reflect.Method;
 
 public final class b
 {
-  private String WM;
-  private Class<?> cFP;
+  private String XH;
+  private Class<?> cCX;
   private boolean mInit;
   private Method mMethod;
   private Class[] mParameterTypes;
@@ -20,8 +20,8 @@ public final class b
       AppMethodBeat.o(183491);
       throw paramClass;
     }
-    this.cFP = paramClass;
-    this.WM = paramString;
+    this.cCX = paramClass;
+    this.XH = paramString;
     this.mParameterTypes = paramVarArgs;
     AppMethodBeat.o(183491);
   }
@@ -34,7 +34,7 @@ public final class b
       prepare();
       if (this.mMethod == null)
       {
-        paramObject = new NoSuchFieldException("Method " + this.WM + " is not exists.");
+        paramObject = new NoSuchFieldException("Method " + this.XH + " is not exists.");
         AppMethodBeat.o(183494);
         throw paramObject;
       }
@@ -57,7 +57,7 @@ public final class b
           AppMethodBeat.o(183492);
           return;
         }
-        localClass1 = this.cFP;
+        localClass1 = this.cCX;
         if (localClass1 == null) {}
       }
       finally
@@ -65,7 +65,7 @@ public final class b
         try
         {
           Class localClass1;
-          Method localMethod = localClass1.getDeclaredMethod(this.WM, this.mParameterTypes);
+          Method localMethod = localClass1.getDeclaredMethod(this.XH, this.mParameterTypes);
           localMethod.setAccessible(true);
           this.mMethod = localMethod;
           this.mInit = true;

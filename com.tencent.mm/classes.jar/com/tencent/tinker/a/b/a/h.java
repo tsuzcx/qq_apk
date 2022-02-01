@@ -3,14 +3,14 @@ package com.tencent.tinker.a.b.a;
 public final class h
   extends a
 {
-  public short[] ICm;
+  public short[] Kov;
   
   public h(int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("initSize < 0");
     }
-    this.ICm = new short[paramInt];
+    this.Kov = new short[paramInt];
   }
   
   public final void a(short paramShort1, short paramShort2, short paramShort3)
@@ -28,15 +28,15 @@ public final class h
   
   public final void c(short paramShort)
   {
-    int i = this.amn;
-    if (this.ICm.length - i <= 0)
+    int i = this.anh;
+    if (this.Kov.length - i <= 0)
     {
-      short[] arrayOfShort = new short[this.ICm.length + (this.ICm.length >> 1)];
-      System.arraycopy(this.ICm, 0, arrayOfShort, 0, i);
-      this.ICm = arrayOfShort;
+      short[] arrayOfShort = new short[this.Kov.length + (this.Kov.length >> 1)];
+      System.arraycopy(this.Kov, 0, arrayOfShort, 0, i);
+      this.Kov = arrayOfShort;
     }
-    this.ICm[this.amn] = paramShort;
-    foX();
+    this.Kov[this.anh] = paramShort;
+    fHf();
   }
   
   public final void writeInt(int paramInt)

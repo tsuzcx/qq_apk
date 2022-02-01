@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.m.a.c;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class b
 {
@@ -15,7 +15,7 @@ public final class b
       AppMethodBeat.o(123792);
       return;
     }
-    aq.f(paramRunnable);
+    ap.f(paramRunnable);
     AppMethodBeat.o(123792);
   }
 }

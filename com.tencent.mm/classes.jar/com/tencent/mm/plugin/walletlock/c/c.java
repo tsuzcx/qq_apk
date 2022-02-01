@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.walletlock.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.up;
+import com.tencent.mm.g.a.uz;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<up>
+  extends com.tencent.mm.sdk.b.c<uz>
 {
   public c()
   {
     AppMethodBeat.i(161150);
-    this.__eventId = up.class.getName().hashCode();
+    this.__eventId = uz.class.getName().hashCode();
     AppMethodBeat.o(161150);
   }
 }

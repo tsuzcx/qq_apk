@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.d.a.a;
@@ -13,14 +13,14 @@ import com.tencent.mm.plugin.fts.a.e;
 import com.tencent.mm.plugin.fts.ui.a.k;
 import com.tencent.mm.plugin.fts.ui.a.s;
 import com.tencent.mm.plugin.fts.ui.a.t;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.protocal.protobuf.ble;
-import com.tencent.mm.protocal.protobuf.coj;
-import com.tencent.mm.protocal.protobuf.cok;
-import com.tencent.mm.protocal.protobuf.dvs;
-import com.tencent.mm.protocal.protobuf.dwd;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.plugin.websearch.api.z;
+import com.tencent.mm.protocal.protobuf.bpa;
+import com.tencent.mm.protocal.protobuf.ctq;
+import com.tencent.mm.protocal.protobuf.ctr;
+import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.protocal.protobuf.ebu;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -29,25 +29,25 @@ import org.json.JSONObject;
 
 public final class n
   extends com.tencent.mm.plugin.fts.a.d.b
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
   String query;
-  public long rqH;
-  private int rqs;
-  private int rqu;
-  long rty;
-  long rxi;
-  private com.tencent.mm.plugin.fts.ui.c.c rxj;
-  private cok rxk;
-  private ap rxl;
+  long sCr;
+  long sGa;
+  private com.tencent.mm.plugin.fts.ui.c.c sGb;
+  private ctr sGc;
+  private ao sGd;
+  public long szB;
+  private int szm;
+  private int szo;
   
   public n(Context paramContext, e.b paramb, int paramInt)
   {
     super(paramContext, paramb, paramInt);
     AppMethodBeat.i(112221);
-    this.rqs = 2147483647;
-    this.rqu = 2147483647;
-    this.rxl = new ap(Looper.getMainLooper())
+    this.szm = 2147483647;
+    this.szo = 2147483647;
+    this.sGd = new ao(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -60,12 +60,12 @@ public final class n
         {
           AppMethodBeat.o(112220);
           return;
-          if (paramAnonymousMessage.obj.equals(Long.valueOf(n.this.rxi)))
+          if (paramAnonymousMessage.obj.equals(Long.valueOf(n.this.sGa)))
           {
-            n.this.rqH = System.currentTimeMillis();
-            ad.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "cancel Time %d", new Object[] { Long.valueOf(n.this.rqH - n.this.rty) });
-            n.this.rqr.a(n.this, n.this.query);
-            n.this.cxr();
+            n.this.szB = System.currentTimeMillis();
+            ac.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "cancel Time %d", new Object[] { Long.valueOf(n.this.szB - n.this.sCr) });
+            n.this.szl.a(n.this, n.this.query);
+            n.this.cKD();
             n.this.clearData();
           }
         }
@@ -74,71 +74,71 @@ public final class n
     AppMethodBeat.o(112221);
   }
   
-  public final int DF(int paramInt)
+  public final int FB(int paramInt)
   {
     AppMethodBeat.i(112224);
     int i;
-    if ((this.rxk != null) && (this.rxk.CAD.size() > 0))
+    if ((this.sGc != null) && (this.sGc.DSZ.size() > 0))
     {
-      this.rqs = paramInt;
-      i = paramInt + 1 + this.rxk.CAD.size();
-      if (this.rxk.Dwd)
+      this.szm = paramInt;
+      i = paramInt + 1 + this.sGc.DSZ.size();
+      if (this.sGc.ERy)
       {
-        this.rqu = i;
+        this.szo = i;
         i += 1;
       }
     }
     for (;;)
     {
-      ad.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "updateHeaderPosition curPos %d oriPos %d headerPosition %d morePosition %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(this.rqs), Integer.valueOf(this.rqu) });
+      ac.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "updateHeaderPosition curPos %d oriPos %d headerPosition %d morePosition %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(this.szm), Integer.valueOf(this.szo) });
       AppMethodBeat.o(112224);
       return i;
-      this.rqu = 2147483647;
+      this.szo = 2147483647;
       continue;
-      this.rqs = 2147483647;
-      this.rqu = 2147483647;
+      this.szm = 2147483647;
+      this.szo = 2147483647;
       i = paramInt;
     }
   }
   
-  public final a DG(int paramInt)
+  public final a FC(int paramInt)
   {
     AppMethodBeat.i(112226);
     Object localObject;
-    if (paramInt == this.rqs) {
+    if (paramInt == this.szm) {
       localObject = new k(paramInt);
     }
     for (;;)
     {
       if (localObject != null)
       {
-        ((a)localObject).oEL = -20;
-        ((a)localObject).kme = this.kme;
-        ((a)localObject).rqz = false;
-        ((a)localObject).roS = h.bc(this.query, false);
+        ((a)localObject).pil = -20;
+        ((a)localObject).kNw = this.kNw;
+        ((a)localObject).szt = false;
+        ((a)localObject).sxM = h.bi(this.query, false);
       }
       if (localObject != null) {}
       for (boolean bool = true;; bool = false)
       {
-        ad.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "createDataItem position %d %s %d %d", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool), Integer.valueOf(this.rqs), Integer.valueOf(this.rqu) });
+        ac.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "createDataItem position %d %s %d %d", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool), Integer.valueOf(this.szm), Integer.valueOf(this.szo) });
         AppMethodBeat.o(112226);
         return localObject;
-        if (paramInt == this.rqu)
+        if (paramInt == this.szo)
         {
           localObject = new t(paramInt);
-          ((t)localObject).rwo = ((dwd)this.rxk.CAD.get(0));
-          ((t)localObject).rwB = this.rxk.Eiq;
-          ((t)localObject).rqI = true;
-          ((t)localObject).rqB = 2;
+          ((t)localObject).sFg = ((ebu)this.sGc.DSZ.get(0));
+          ((t)localObject).sFt = this.sGc.FFo;
+          ((t)localObject).szC = true;
+          ((t)localObject).szv = 2;
           break;
         }
-        if (paramInt != this.rqs + 1) {
+        if (paramInt != this.szm + 1) {
           break label229;
         }
         localObject = new s(paramInt);
-        ((s)localObject).rwo = ((dwd)this.rxk.CAD.get(0));
-        ((s)localObject).rqI = true;
-        ((s)localObject).rqB = 1;
+        ((s)localObject).sFg = ((ebu)this.sGc.DSZ.get(0));
+        ((s)localObject).szC = true;
+        ((s)localObject).szv = 1;
         break;
       }
       label229:
@@ -146,63 +146,54 @@ public final class n
     }
   }
   
-  public final void a(String paramString, ap paramap, HashSet<String> paramHashSet, long paramLong)
+  public final void a(String paramString, ao paramao, HashSet<String> paramHashSet, long paramLong)
   {
     AppMethodBeat.i(112222);
-    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.prb, com.tencent.mm.util.c.fgV()) == 0)
+    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUO, com.tencent.mm.util.c.fwV()) == 0)
     {
-      this.rqr.a(this, paramString);
+      this.szl.a(this, paramString);
       AppMethodBeat.o(112222);
       return;
     }
     this.query = paramString;
-    if (this.rxj != null)
+    if (this.sGb != null)
     {
-      com.tencent.mm.kernel.g.aeS().a(this.rxj);
-      com.tencent.mm.kernel.g.aeS().b(2599, this);
-      this.rxj = null;
+      com.tencent.mm.kernel.g.agi().a(this.sGb);
+      com.tencent.mm.kernel.g.agi().b(2599, this);
+      this.sGb = null;
     }
-    paramap = new coj();
-    paramap.CLI = paramString;
-    paramap.Efv = paramLong;
-    paramap.EfA = e.rob;
-    paramap.Eio = true;
-    paramap.Ein = 25L;
-    this.rxi = paramLong;
-    paramString = aa.bCk();
+    paramao = new ctq();
+    paramao.Eel = paramString;
+    paramao.FCv = paramLong;
+    paramao.FCA = e.swV;
+    paramao.FFm = true;
+    paramao.FFl = 25L;
+    this.sGa = paramLong;
+    paramString = z.bJn();
     if (paramString != null)
     {
-      paramap.Eip = new dvs();
-      paramap.Eip.COJ = paramString.COJ;
-      paramap.Eip.COI = paramString.COI;
+      paramao.FFn = new ebj();
+      paramao.FFn.Ehu = paramString.Ehu;
+      paramao.FFn.Eht = paramString.Eht;
     }
-    this.rxj = new com.tencent.mm.plugin.fts.ui.c.c(paramap);
-    com.tencent.mm.kernel.g.aeS().a(2599, this);
-    com.tencent.mm.kernel.g.aeS().a(this.rxj, 0);
-    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.prc, 500);
-    this.rty = System.currentTimeMillis();
-    this.rxl.removeMessages(1);
-    paramString = this.rxl.obtainMessage(1, Long.valueOf(paramLong));
-    this.rxl.sendMessageDelayed(paramString, i);
+    this.sGb = new com.tencent.mm.plugin.fts.ui.c.c(paramao);
+    com.tencent.mm.kernel.g.agi().a(2599, this);
+    com.tencent.mm.kernel.g.agi().a(this.sGb, 0);
+    int i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUP, 500);
+    this.sCr = System.currentTimeMillis();
+    this.sGd.removeMessages(1);
+    paramString = this.sGd.obtainMessage(1, Long.valueOf(paramLong));
+    this.sGd.sendMessageDelayed(paramString, i);
     AppMethodBeat.o(112222);
   }
   
-  public final void clearData()
-  {
-    this.rxi = 0L;
-    this.query = null;
-    this.rxk = null;
-    this.rqs = 2147483647;
-    this.rqu = 2147483647;
-  }
-  
-  public final int cxq()
+  public final int cKC()
   {
     AppMethodBeat.i(112228);
-    if ((this.rxk != null) && (this.rxk.CAD.size() > 0)) {
+    if ((this.sGc != null) && (this.sGc.DSZ.size() > 0)) {
       try
       {
-        boolean bool = "HOME".equals(new JSONObject(((dwd)this.rxk.CAD.get(0)).EJU).optString("content_type", ""));
+        boolean bool = "HOME".equals(new JSONObject(((ebu)this.sGc.DSZ.get(0)).Ghg).optString("content_type", ""));
         if (bool)
         {
           AppMethodBeat.o(112228);
@@ -217,39 +208,39 @@ public final class n
     return 0;
   }
   
-  public final void cxr()
+  public final void cKD()
   {
     AppMethodBeat.i(112223);
-    if (this.rxj != null)
+    if (this.sGb != null)
     {
-      com.tencent.mm.kernel.g.aeS().a(this.rxj);
-      com.tencent.mm.kernel.g.aeS().b(2599, this);
-      this.rxj = null;
+      com.tencent.mm.kernel.g.agi().a(this.sGb);
+      com.tencent.mm.kernel.g.agi().b(2599, this);
+      this.sGb = null;
     }
-    this.rxl.removeMessages(1);
+    this.sGd.removeMessages(1);
     AppMethodBeat.o(112223);
   }
   
-  public final LinkedList<Integer> cxs()
+  public final LinkedList<Integer> cKE()
   {
     AppMethodBeat.i(112225);
     LinkedList localLinkedList = new LinkedList();
-    if (this.rqs != 2147483647) {
-      localLinkedList.add(Integer.valueOf(this.rqs));
+    if (this.szm != 2147483647) {
+      localLinkedList.add(Integer.valueOf(this.szm));
     }
     AppMethodBeat.o(112225);
     return localLinkedList;
   }
   
-  public final int cxt()
+  public final int cKF()
   {
     int i = 0;
     AppMethodBeat.i(112227);
-    if (this.rxk != null)
+    if (this.sGc != null)
     {
-      if (this.rxk.CAD.size() > 0)
+      if (this.sGc.DSZ.size() > 0)
       {
-        if (this.rxk.Dwd) {
+        if (this.sGc.ERy) {
           i = 1;
         }
         AppMethodBeat.o(112227);
@@ -262,9 +253,18 @@ public final class n
     return 0;
   }
   
-  public final long cxu()
+  public final long cKG()
   {
-    return this.rqH;
+    return this.szB;
+  }
+  
+  public final void clearData()
+  {
+    this.sGa = 0L;
+    this.query = null;
+    this.sGc = null;
+    this.szm = 2147483647;
+    this.szo = 2147483647;
   }
   
   public final int getType()
@@ -272,31 +272,31 @@ public final class n
     return 256;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(112229);
-    if (paramn.equals(this.rxj))
+    if (paramn.equals(this.sGb))
     {
-      this.rxl.removeMessages(1);
-      this.rqH = System.currentTimeMillis();
-      com.tencent.mm.kernel.g.aeS().b(2599, this);
-      paramString = this.rxj.rxe;
+      this.sGd.removeMessages(1);
+      this.szB = System.currentTimeMillis();
+      com.tencent.mm.kernel.g.agi().b(2599, this);
+      paramString = this.sGb.sFW;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.rxk = paramString;
-        ad.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "onSceneEnd Count %d TotalCount %d ContinueFlag %s SearchTime %d", new Object[] { Integer.valueOf(this.rxk.mAK), Integer.valueOf(this.rxk.mBk), Boolean.valueOf(this.rxk.Dwd), Long.valueOf(this.rqH - this.rty) });
+        this.sGc = paramString;
+        ac.i("MicroMsg.FTS.FTSWeAppSearchUIUnit", "onSceneEnd Count %d TotalCount %d ContinueFlag %s SearchTime %d", new Object[] { Integer.valueOf(this.sGc.ncL), Integer.valueOf(this.sGc.ndl), Boolean.valueOf(this.sGc.ERy), Long.valueOf(this.szB - this.sCr) });
       }
-      this.rqr.a(this, this.query);
+      this.szl.a(this, this.query);
     }
     AppMethodBeat.o(112229);
   }
   
-  public final List<com.tencent.mm.plugin.fts.a.a.c> qR(long paramLong)
+  public final List<com.tencent.mm.plugin.fts.a.a.c> vu(long paramLong)
   {
     AppMethodBeat.i(112230);
     ArrayList localArrayList = new ArrayList();
-    if ((this.rxk != null) && (this.rxk.CAD.size() > 0)) {
-      if (cxq() != 2) {
+    if ((this.sGc != null) && (this.sGc.DSZ.size() > 0)) {
+      if (cKC() != 2) {
         break label241;
       }
     }
@@ -304,20 +304,20 @@ public final class n
     for (int i = 26;; i = 25)
     {
       com.tencent.mm.plugin.fts.a.a.c localc = new com.tencent.mm.plugin.fts.a.a.c();
-      localc.position = (this.rqs + 1);
-      localc.roO = (this.rqH - paramLong);
-      localc.drI = String.valueOf(((dwd)this.rxk.CAD.get(0)).hashCode());
-      localc.drT = i;
-      localc.roQ = ((dwd)this.rxk.CAD.get(0)).EJQ;
+      localc.position = (this.szm + 1);
+      localc.sxI = (this.szB - paramLong);
+      localc.dpt = String.valueOf(((ebu)this.sGc.DSZ.get(0)).hashCode());
+      localc.dpE = i;
+      localc.sxK = ((ebu)this.sGc.DSZ.get(0)).Ghc;
       localArrayList.add(localc);
-      if (this.rxk.Dwd)
+      if (this.sGc.ERy)
       {
         localc = new com.tencent.mm.plugin.fts.a.a.c();
-        localc.position = this.rqu;
-        localc.roO = (this.rqH - paramLong);
-        localc.drI = String.valueOf(this.rxk.hashCode());
-        localc.drT = i;
-        localc.roQ = ((dwd)this.rxk.CAD.get(0)).EJQ;
+        localc.position = this.szo;
+        localc.sxI = (this.szB - paramLong);
+        localc.dpt = String.valueOf(this.sGc.hashCode());
+        localc.dpE = i;
+        localc.sxK = ((ebu)this.sGc.DSZ.get(0)).Ghc;
         localArrayList.add(localc);
       }
       AppMethodBeat.o(112230);
@@ -327,7 +327,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.n
  * JD-Core Version:    0.7.0.1
  */

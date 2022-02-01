@@ -35,9 +35,9 @@ import com.tencent.mm.plugin.qqmail.b.q;
 import com.tencent.mm.plugin.qqmail.b.w;
 import com.tencent.mm.plugin.qqmail.stub.ReadMailProxy;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,22 +47,22 @@ import java.util.regex.Pattern;
 public class MailAddrsViewControl
   extends RelativeLayout
 {
-  private static final Pattern uPO;
-  private ap handler;
-  private boolean izy;
-  private GestureDetector uOR;
-  private LinkedList<p> uPI;
-  AutoCompleteTextView uPJ;
-  private MailAddrsViewControl.b uPK;
-  private c uPL;
-  private View uPM;
-  private a uPN;
-  private GestureDetector.SimpleOnGestureListener uPP;
+  private static final Pattern vYE;
+  private ao handler;
+  private boolean iZB;
+  private GestureDetector vXH;
+  private MailAddrsViewControl.b vYA;
+  private c vYB;
+  private View vYC;
+  private a vYD;
+  private GestureDetector.SimpleOnGestureListener vYF;
+  private LinkedList<p> vYy;
+  AutoCompleteTextView vYz;
   
   static
   {
     AppMethodBeat.i(123102);
-    uPO = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
+    vYE = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+");
     AppMethodBeat.o(123102);
   }
   
@@ -70,13 +70,13 @@ public class MailAddrsViewControl
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(123085);
-    this.izy = false;
-    this.uPI = new LinkedList();
-    this.handler = new ap();
-    this.uPN = null;
-    this.uPP = new GestureDetector.SimpleOnGestureListener()
+    this.iZB = false;
+    this.vYy = new LinkedList();
+    this.handler = new ao();
+    this.vYD = null;
+    this.vYF = new GestureDetector.SimpleOnGestureListener()
     {
-      private void deM()
+      private void dst()
       {
         AppMethodBeat.i(123071);
         Object localObject2 = (p)MailAddrsViewControl.c(MailAddrsViewControl.this).getTag();
@@ -87,15 +87,15 @@ public class MailAddrsViewControl
         }
         Object localObject1 = new Intent(MailAddrsViewControl.this.getContext(), MailAddrProfileUI.class);
         ((Intent)localObject1).putExtra("name", ((p)localObject2).name);
-        ((Intent)localObject1).putExtra("addr", ((p)localObject2).sOr);
+        ((Intent)localObject1).putExtra("addr", ((p)localObject2).tWE);
         if (!MailAddrsViewControl.h(MailAddrsViewControl.this)) {}
         for (boolean bool = true;; bool = false)
         {
           ((Intent)localObject1).putExtra("can_compose", bool);
           localObject2 = MailAddrsViewControl.this.getContext();
-          localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "startActivity", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+          localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject1);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "startActivity", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/qqmail/ui/MailAddrsViewControl$8", "startActivity", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(123071);
           return;
@@ -105,7 +105,7 @@ public class MailAddrsViewControl
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(123074);
-        deM();
+        dst();
         AppMethodBeat.o(123074);
         return true;
       }
@@ -126,25 +126,25 @@ public class MailAddrsViewControl
       {
         AppMethodBeat.i(123072);
         if (!MailAddrsViewControl.h(MailAddrsViewControl.this)) {
-          deM();
+          dst();
         }
         AppMethodBeat.o(123072);
         return true;
       }
     };
-    this.uOR = new GestureDetector(paramContext, this.uPP);
+    this.vXH = new GestureDetector(paramContext, this.vYF);
     AppMethodBeat.o(123085);
   }
   
-  private static boolean alf(String paramString)
+  private static boolean aqe(String paramString)
   {
     AppMethodBeat.i(123097);
-    boolean bool = uPO.matcher(paramString).matches();
+    boolean bool = vYE.matcher(paramString).matches();
     AppMethodBeat.o(123097);
     return bool;
   }
   
-  private void bo(String paramString, boolean paramBoolean)
+  private void bv(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(123100);
     paramString = paramString.trim();
@@ -153,51 +153,51 @@ public class MailAddrsViewControl
       AppMethodBeat.o(123100);
       return;
     }
-    Object localObject = ((o)g.ad(o.class)).getNormalMailAppService().uLV.akV(paramString);
+    Object localObject = ((o)g.ad(o.class)).getNormalMailAppService().vUL.apU(paramString);
     if (((List)localObject).size() > 0)
     {
       e((p)((List)localObject).get(0));
-      this.uPJ.setText("");
+      this.vYz.setText("");
       AppMethodBeat.o(123100);
       return;
     }
-    if (alf(paramString))
+    if (aqe(paramString))
     {
       localObject = new p();
       ((p)localObject).name = paramString;
-      ((p)localObject).sOr = paramString;
-      ((p)localObject).uLy = 0;
+      ((p)localObject).tWE = paramString;
+      ((p)localObject).vUp = 0;
       e((p)localObject);
-      this.uPJ.setText("");
+      this.vYz.setText("");
       AppMethodBeat.o(123100);
       return;
     }
     if (paramBoolean)
     {
-      if (this.uPN != null) {
-        this.uPN.dew();
+      if (this.vYD != null) {
+        this.vYD.dse();
       }
       for (;;)
       {
-        this.uPJ.setText(paramString);
-        this.uPJ.setSelection(paramString.length());
+        this.vYz.setText(paramString);
+        this.vYz.setSelection(paramString.length());
         AppMethodBeat.o(123100);
         return;
         Toast.makeText(getContext(), 2131761980, 2000).show();
       }
     }
-    if (this.uPN != null) {
-      this.uPN.b(this);
+    if (this.vYD != null) {
+      this.vYD.b(this);
     }
     AppMethodBeat.o(123100);
   }
   
-  private void deJ()
+  private void dsq()
   {
     AppMethodBeat.i(177331);
     removeAllViews();
-    this.uPI.clear();
-    deL();
+    this.vYy.clear();
+    dss();
     invalidate();
     AppMethodBeat.o(177331);
   }
@@ -213,22 +213,22 @@ public class MailAddrsViewControl
       try
       {
         paramd = (String)new ReadMailProxy(paramd, null).REMOTE_CALL("getUserBindEmail", new Object[0]);
-        arrayOfString = new String[this.uPI.size()];
-        if (i >= this.uPI.size()) {
+        arrayOfString = new String[this.vYy.size()];
+        if (i >= this.vYy.size()) {
           break;
         }
-        p localp = (p)this.uPI.get(i);
-        if ((paramBoolean) && (localp.sOr.equalsIgnoreCase(paramd))) {
+        p localp = (p)this.vYy.get(i);
+        if ((paramBoolean) && (localp.tWE.equalsIgnoreCase(paramd))) {
           break label173;
         }
-        arrayOfString[i] = (localp.name + " " + localp.sOr);
+        arrayOfString[i] = (localp.name + " " + localp.tWE);
         i += 1;
         continue;
         paramd = u.getUserBindEmail();
       }
       catch (Exception paramd)
       {
-        ad.e("MicroMsg.QQMail.MailAddrsViewControl", "getMailAddrStringArray, getUserBindEmail fail, ex = %s", new Object[] { paramd.getMessage() });
+        ac.e("MicroMsg.QQMail.MailAddrsViewControl", "getMailAddrStringArray, getUserBindEmail fail, ex = %s", new Object[] { paramd.getMessage() });
         AppMethodBeat.o(123088);
         return null;
       }
@@ -244,7 +244,7 @@ public class MailAddrsViewControl
   {
     AppMethodBeat.i(123093);
     if (paramBoolean) {
-      deJ();
+      dsq();
     }
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
@@ -255,7 +255,7 @@ public class MailAddrsViewControl
     int i = 0;
     while (i < j)
     {
-      p localp = q.akW(paramArrayOfString[i]);
+      p localp = q.apV(paramArrayOfString[i]);
       if (localp != null) {
         e(localp);
       }
@@ -264,10 +264,10 @@ public class MailAddrsViewControl
     AppMethodBeat.o(123093);
   }
   
-  public final boolean deH()
+  public final boolean dso()
   {
     AppMethodBeat.i(123084);
-    Editable localEditable = this.uPJ.getText();
+    Editable localEditable = this.vYz.getText();
     if (localEditable != null)
     {
       if (localEditable.toString().length() <= 0)
@@ -282,11 +282,11 @@ public class MailAddrsViewControl
     return true;
   }
   
-  public final boolean deI()
+  public final boolean dsp()
   {
     AppMethodBeat.i(123089);
-    String str = this.uPJ.getEditableText().toString().trim();
-    if ((!bt.isNullOrNil(str)) && (alf(str)))
+    String str = this.vYz.getEditableText().toString().trim();
+    if ((!bs.isNullOrNil(str)) && (aqe(str)))
     {
       AppMethodBeat.o(123089);
       return true;
@@ -295,12 +295,12 @@ public class MailAddrsViewControl
     return false;
   }
   
-  public final boolean deK()
+  public final boolean dsr()
   {
     AppMethodBeat.i(123098);
-    Iterator localIterator = this.uPI.iterator();
+    Iterator localIterator = this.vYy.iterator();
     while (localIterator.hasNext()) {
-      if (!alf(((p)localIterator.next()).sOr))
+      if (!aqe(((p)localIterator.next()).tWE))
       {
         AppMethodBeat.o(123098);
         return false;
@@ -310,7 +310,7 @@ public class MailAddrsViewControl
     return true;
   }
   
-  final void deL()
+  final void dss()
   {
     AppMethodBeat.i(123099);
     int i2 = getChildCount();
@@ -340,7 +340,7 @@ public class MailAddrsViewControl
           localView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
           k = localView.getMeasuredWidth();
         }
-        if ((this.uPJ == null) || (m != i2 - 1) || (this.uPJ.isFocused())) {
+        if ((this.vYz == null) || (m != i2 - 1) || (this.vYz.isFocused())) {
           break label236;
         }
       }
@@ -377,13 +377,13 @@ public class MailAddrsViewControl
       AppMethodBeat.o(123092);
       return;
     }
-    Object localObject1 = this.uPI.iterator();
+    Object localObject1 = this.vYy.iterator();
     do
     {
       if (!((Iterator)localObject1).hasNext()) {
         break;
       }
-    } while (!((p)((Iterator)localObject1).next()).sOr.equalsIgnoreCase(paramp.sOr));
+    } while (!((p)((Iterator)localObject1).next()).tWE.equalsIgnoreCase(paramp.tWE));
     for (int i = 1;; i = 0)
     {
       if (i == 0)
@@ -392,23 +392,23 @@ public class MailAddrsViewControl
         localObject1 = (Button)((ViewGroup)localObject2).findViewById(2131303603);
         ((ViewGroup)localObject2).removeView((View)((Button)localObject1).getParent());
         ((Button)localObject1).setText(paramp.name);
-        if (this.izy) {
+        if (this.iZB) {
           ((Button)localObject1).setCompoundDrawables(null, null, null, null);
         }
-        ((Button)localObject1).setTag(this.uPI.size());
+        ((Button)localObject1).setTag(this.vYy.size());
         localObject2 = (View)((Button)localObject1).getParent();
         ((Button)localObject1).setTag(paramp);
         ((View)localObject2).setVisibility(4);
         ((View)localObject2).setTag(paramp);
-        addView((View)localObject2, this.uPI.size());
-        this.uPI.add(paramp);
+        addView((View)localObject2, this.vYy.size());
+        this.vYy.add(paramp);
         this.handler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(123065);
-            this.uPR.invalidate();
-            this.uPR.setOnTouchListener(new View.OnTouchListener()
+            this.vYH.invalidate();
+            this.vYH.setOnTouchListener(new View.OnTouchListener()
             {
               public final boolean onTouch(View paramAnonymous2View, MotionEvent paramAnonymous2MotionEvent)
               {
@@ -419,10 +419,10 @@ public class MailAddrsViewControl
                   MailAddrsViewControl.a(MailAddrsViewControl.this, null);
                 }
                 MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymous2View);
-                if ((MailAddrsViewControl.this.uPJ != null) && (paramAnonymous2MotionEvent.getAction() == 0))
+                if ((MailAddrsViewControl.this.vYz != null) && (paramAnonymous2MotionEvent.getAction() == 0))
                 {
-                  paramAnonymous2View = MailAddrsViewControl.2.this.uPR;
-                  if (MailAddrsViewControl.2.this.uPR.isSelected()) {
+                  paramAnonymous2View = MailAddrsViewControl.2.this.vYH;
+                  if (MailAddrsViewControl.2.this.vYH.isSelected()) {
                     break label207;
                   }
                 }
@@ -430,8 +430,8 @@ public class MailAddrsViewControl
                 for (boolean bool = true;; bool = false)
                 {
                   paramAnonymous2View.setSelected(bool);
-                  MailAddrsViewControl.this.uPJ.setVisibility(0);
-                  MailAddrsViewControl.this.uPJ.requestFocus();
+                  MailAddrsViewControl.this.vYz.setVisibility(0);
+                  MailAddrsViewControl.this.vYz.requestFocus();
                   ((InputMethodManager)MailAddrsViewControl.this.getContext().getSystemService("input_method")).toggleSoftInput(0, 1);
                   bool = MailAddrsViewControl.d(MailAddrsViewControl.this).onTouchEvent(paramAnonymous2MotionEvent);
                   AppMethodBeat.o(123064);
@@ -439,7 +439,7 @@ public class MailAddrsViewControl
                 }
               }
             });
-            MailAddrsViewControl.this.deL();
+            MailAddrsViewControl.this.dss();
             MailAddrsViewControl.this.invalidate();
             AppMethodBeat.o(123065);
           }
@@ -450,7 +450,7 @@ public class MailAddrsViewControl
     }
   }
   
-  public final void eB(List<p> paramList)
+  public final void eF(List<p> paramList)
   {
     AppMethodBeat.i(123094);
     if (paramList == null)
@@ -469,14 +469,14 @@ public class MailAddrsViewControl
   {
     AppMethodBeat.i(123096);
     int i = 0;
-    while (i < this.uPI.size())
+    while (i < this.vYy.size())
     {
-      p localp = (p)this.uPI.get(i);
-      if (paramp.sOr.equalsIgnoreCase(localp.sOr))
+      p localp = (p)this.vYy.get(i);
+      if (paramp.tWE.equalsIgnoreCase(localp.tWE))
       {
         removeViewAt(i);
-        this.uPI.remove(i);
-        deL();
+        this.vYy.remove(i);
+        dss();
         invalidate();
         AppMethodBeat.o(123096);
         return;
@@ -489,19 +489,19 @@ public class MailAddrsViewControl
   public String getAddrsString()
   {
     AppMethodBeat.i(123090);
-    if (deI()) {
-      bo(this.uPJ.getEditableText().toString(), false);
+    if (dsp()) {
+      bv(this.vYz.getEditableText().toString(), false);
     }
     String str1 = "";
     int i = 0;
-    while (i < this.uPI.size())
+    while (i < this.vYy.size())
     {
-      p localp = (p)this.uPI.get(i);
+      p localp = (p)this.vYy.get(i);
       String str2 = str1;
       if (i != 0) {
         str2 = str1 + ",";
       }
-      str1 = str2 + localp.sOr;
+      str1 = str2 + localp.tWE;
       i += 1;
     }
     AppMethodBeat.o(123090);
@@ -510,13 +510,13 @@ public class MailAddrsViewControl
   
   public LinkedList<p> getMailAddrs()
   {
-    return this.uPI;
+    return this.vYy;
   }
   
   public int getSize()
   {
     AppMethodBeat.i(123091);
-    int i = this.uPI.size();
+    int i = this.vYy.size();
     AppMethodBeat.o(123091);
     return i;
   }
@@ -524,10 +524,10 @@ public class MailAddrsViewControl
   public void setAddrsAdapter(MailAddrsViewControl.b paramb)
   {
     AppMethodBeat.i(123087);
-    if ((this.uPJ != null) && (paramb != null))
+    if ((this.vYz != null) && (paramb != null))
     {
-      this.uPK = paramb;
-      this.uPJ.setAdapter(paramb);
+      this.vYA = paramb;
+      this.vYz.setAdapter(paramb);
     }
     AppMethodBeat.o(123087);
   }
@@ -535,8 +535,8 @@ public class MailAddrsViewControl
   public void setEditable(boolean paramBoolean)
   {
     AppMethodBeat.i(123086);
-    this.izy = paramBoolean;
-    if ((paramBoolean) && (this.uPJ == null))
+    this.iZB = paramBoolean;
+    if ((paramBoolean) && (this.vYz == null))
     {
       int i = 0;
       for (;;)
@@ -548,67 +548,67 @@ public class MailAddrsViewControl
           if (!(localObject instanceof AutoCompleteTextView)) {
             break label167;
           }
-          this.uPJ = ((AutoCompleteTextView)localObject);
+          this.vYz = ((AutoCompleteTextView)localObject);
         }
         label167:
         do
         {
-          if (this.uPJ == null) {
+          if (this.vYz == null) {
             break;
           }
-          this.uPJ.setDropDownBackgroundResource(2131233704);
+          this.vYz.setDropDownBackgroundResource(2131233704);
           setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(123063);
-              MailAddrsViewControl.this.uPJ.requestFocus();
+              MailAddrsViewControl.this.vYz.requestFocus();
               ((InputMethodManager)MailAddrsViewControl.this.getContext().getSystemService("input_method")).toggleSoftInput(0, 1);
               AppMethodBeat.o(123063);
             }
           });
-          this.uPJ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+          this.vYz.setOnItemClickListener(new AdapterView.OnItemClickListener()
           {
             public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
             {
               AppMethodBeat.i(123066);
-              paramAnonymousAdapterView = MailAddrsViewControl.e(MailAddrsViewControl.this).JP(paramAnonymousInt);
+              paramAnonymousAdapterView = MailAddrsViewControl.e(MailAddrsViewControl.this).LO(paramAnonymousInt);
               MailAddrsViewControl.this.e(paramAnonymousAdapterView);
-              MailAddrsViewControl.this.uPJ.setText("");
+              MailAddrsViewControl.this.vYz.setText("");
               AppMethodBeat.o(123066);
             }
           });
-          this.uPJ.setOnEditorActionListener(new TextView.OnEditorActionListener()
+          this.vYz.setOnEditorActionListener(new TextView.OnEditorActionListener()
           {
             public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
             {
               AppMethodBeat.i(123067);
               if (paramAnonymousInt == 5)
               {
-                paramAnonymousTextView = MailAddrsViewControl.this.uPJ.getEditableText().toString();
+                paramAnonymousTextView = MailAddrsViewControl.this.vYz.getEditableText().toString();
                 if ((paramAnonymousTextView != null) && (paramAnonymousTextView.length() > 0))
                 {
                   MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousTextView, false);
-                  MailAddrsViewControl.this.deL();
+                  MailAddrsViewControl.this.dss();
                 }
               }
               AppMethodBeat.o(123067);
               return true;
             }
           });
-          this.uPJ.setOnKeyListener(new View.OnKeyListener()
+          this.vYz.setOnKeyListener(new View.OnKeyListener()
           {
             public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
             {
               AppMethodBeat.i(123068);
               if ((paramAnonymousInt == 67) && (paramAnonymousKeyEvent.getAction() == 0))
               {
-                paramAnonymousView = MailAddrsViewControl.this.uPJ.getEditableText().toString();
+                paramAnonymousView = MailAddrsViewControl.this.vYz.getEditableText().toString();
                 if ((paramAnonymousView.length() == 0) && (MailAddrsViewControl.c(MailAddrsViewControl.this) != null) && (MailAddrsViewControl.c(MailAddrsViewControl.this).isSelected()))
                 {
                   MailAddrsViewControl.this.f((p)MailAddrsViewControl.c(MailAddrsViewControl.this).getTag());
                   MailAddrsViewControl.a(MailAddrsViewControl.this, null);
-                  MailAddrsViewControl.this.deL();
+                  MailAddrsViewControl.this.dss();
                 }
               }
               for (;;)
@@ -626,15 +626,15 @@ public class MailAddrsViewControl
                   else
                   {
                     MailAddrsViewControl.this.f((p)MailAddrsViewControl.f(MailAddrsViewControl.this).get(paramAnonymousInt));
-                    MailAddrsViewControl.this.deL();
+                    MailAddrsViewControl.this.dss();
                     continue;
                     if ((paramAnonymousInt == 66) && (paramAnonymousKeyEvent.getAction() == 0))
                     {
-                      paramAnonymousView = MailAddrsViewControl.this.uPJ.getEditableText().toString();
+                      paramAnonymousView = MailAddrsViewControl.this.vYz.getEditableText().toString();
                       if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0))
                       {
                         MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousView, true);
-                        MailAddrsViewControl.this.deL();
+                        MailAddrsViewControl.this.dss();
                       }
                     }
                   }
@@ -642,7 +642,7 @@ public class MailAddrsViewControl
               }
             }
           });
-          this.uPJ.addTextChangedListener(new TextWatcher()
+          this.vYz.addTextChangedListener(new TextWatcher()
           {
             public final void afterTextChanged(Editable paramAnonymousEditable) {}
             
@@ -655,19 +655,19 @@ public class MailAddrsViewControl
               if ((paramAnonymousCharSequence.endsWith("\n")) || (paramAnonymousCharSequence.endsWith(" "))) {
                 MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousCharSequence, true);
               }
-              MailAddrsViewControl.this.deL();
+              MailAddrsViewControl.this.dss();
               AppMethodBeat.o(123069);
             }
           });
-          this.uPJ.setOnFocusChangeListener(new View.OnFocusChangeListener()
+          this.vYz.setOnFocusChangeListener(new View.OnFocusChangeListener()
           {
             public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(123070);
               if (MailAddrsViewControl.g(MailAddrsViewControl.this) != null) {
-                MailAddrsViewControl.g(MailAddrsViewControl.this).og(paramAnonymousBoolean);
+                MailAddrsViewControl.g(MailAddrsViewControl.this).pa(paramAnonymousBoolean);
               }
-              paramAnonymousView = MailAddrsViewControl.this.uPJ.getEditableText().toString();
+              paramAnonymousView = MailAddrsViewControl.this.vYz.getEditableText().toString();
               if ((!paramAnonymousBoolean) && (paramAnonymousView.trim().length() > 0)) {
                 MailAddrsViewControl.a(MailAddrsViewControl.this, paramAnonymousView, false);
               }
@@ -676,7 +676,7 @@ public class MailAddrsViewControl
                 MailAddrsViewControl.c(MailAddrsViewControl.this).setSelected(paramAnonymousBoolean);
                 MailAddrsViewControl.a(MailAddrsViewControl.this, null);
               }
-              MailAddrsViewControl.this.deL();
+              MailAddrsViewControl.this.dss();
               AppMethodBeat.o(123070);
             }
           });
@@ -690,24 +690,24 @@ public class MailAddrsViewControl
             {
               View localView = ((ViewGroup)localObject).getChildAt(j);
               if ((localView instanceof AutoCompleteTextView)) {
-                this.uPJ = ((AutoCompleteTextView)localView);
+                this.vYz = ((AutoCompleteTextView)localView);
               }
               j += 1;
             }
           }
-        } while (this.uPJ != null);
+        } while (this.vYz != null);
         i += 1;
       }
     }
-    if ((!paramBoolean) && (this.uPJ != null)) {
-      this.uPJ.setVisibility(8);
+    if ((!paramBoolean) && (this.vYz != null)) {
+      this.vYz.setVisibility(8);
     }
     AppMethodBeat.o(123086);
   }
   
   public void setInvalidMailAddrListener(a parama)
   {
-    this.uPN = parama;
+    this.vYD = parama;
   }
   
   public void setMailAdds(List<p> paramList)
@@ -722,14 +722,14 @@ public class MailAddrsViewControl
     p localp1;
     int j;
     p localp2;
-    while (i < this.uPI.size())
+    while (i < this.vYy.size())
     {
-      localp1 = (p)this.uPI.get(i);
+      localp1 = (p)this.vYy.get(i);
       j = 0;
       while (j < paramList.size())
       {
         localp2 = (p)paramList.get(j);
-        if (localp1.sOr.equalsIgnoreCase(localp2.sOr)) {
+        if (localp1.tWE.equalsIgnoreCase(localp2.tWE)) {
           break;
         }
         j += 1;
@@ -744,15 +744,15 @@ public class MailAddrsViewControl
     {
       localp1 = (p)paramList.get(i);
       j = 0;
-      while (j < this.uPI.size())
+      while (j < this.vYy.size())
       {
-        localp2 = (p)this.uPI.get(j);
-        if (localp1.sOr.equalsIgnoreCase(localp2.sOr)) {
+        localp2 = (p)this.vYy.get(j);
+        if (localp1.tWE.equalsIgnoreCase(localp2.tWE)) {
           break;
         }
         j += 1;
       }
-      if (j == this.uPI.size()) {
+      if (j == this.vYy.size()) {
         e(localp1);
       }
       i += 1;
@@ -762,19 +762,19 @@ public class MailAddrsViewControl
   
   public void setOnActionListener(c paramc)
   {
-    this.uPL = paramc;
+    this.vYB = paramc;
   }
   
   public static abstract interface a
   {
     public abstract void b(MailAddrsViewControl paramMailAddrsViewControl);
     
-    public abstract void dew();
+    public abstract void dse();
   }
   
   public static abstract class c
   {
-    public void og(boolean paramBoolean) {}
+    public void pa(boolean paramBoolean) {}
   }
 }
 

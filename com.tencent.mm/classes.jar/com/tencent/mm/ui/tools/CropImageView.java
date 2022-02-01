@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.ui.base.f;
 import com.tencent.mm.ui.f.b.c;
 import java.util.Timer;
@@ -23,73 +23,73 @@ import java.util.TimerTask;
 public class CropImageView
   extends ImageView
 {
-  private boolean GbR;
-  private Drawable GbS;
-  private boolean HmS;
-  private boolean HmT;
-  private float HmU;
-  private float HmV;
-  private PointF HmW;
-  float HmX;
-  float HmY;
-  boolean HmZ;
-  private boolean Hna;
-  private boolean Hnb;
-  private boolean Hnc;
-  private boolean Hnd;
-  private boolean Hne;
-  private boolean Hnf;
-  private boolean Hng;
-  private float Hnh;
-  private c Hni;
-  private boolean Hnj;
-  private boolean Hnk;
-  Timer Hnl;
-  ap Hnm;
-  private b Hnn;
-  ap Hno;
-  private a Hnp;
-  private boolean Hnq;
-  int dnV;
-  private float qXK;
-  Bitmap rJR;
-  private View.OnTouchListener ryf;
-  private long sTp;
-  private float seQ;
-  private Timer tOV;
+  private boolean HBG;
+  private Drawable HBH;
+  private boolean INA;
+  private boolean INB;
+  private float INC;
+  private c IND;
+  private boolean INE;
+  private boolean INF;
+  Timer ING;
+  ao INH;
+  private b INI;
+  ao INJ;
+  private a INK;
+  private boolean INL;
+  private boolean INn;
+  private boolean INo;
+  private float INp;
+  private float INq;
+  private PointF INr;
+  float INs;
+  float INt;
+  boolean INu;
+  private boolean INv;
+  private boolean INw;
+  private boolean INx;
+  private boolean INy;
+  private boolean INz;
+  int dlE;
+  private float rYu;
+  private View.OnTouchListener sGX;
+  Bitmap sRG;
+  private float tmJ;
   private float translateX;
   private float translateY;
+  private Timer uXx;
+  private long ubB;
   
   public CropImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143044);
-    this.HmS = true;
-    this.HmT = false;
-    this.HmW = new PointF();
-    this.HmX = 0.0F;
-    this.HmY = 0.0F;
-    this.HmZ = false;
-    this.Hna = false;
-    this.Hnb = false;
-    this.Hnc = false;
-    this.Hnd = false;
-    this.Hne = false;
-    this.Hnf = false;
-    this.Hng = false;
-    this.Hnh = 1.0F;
+    this.INn = true;
+    this.INo = false;
+    this.INr = new PointF();
+    this.INs = 0.0F;
+    this.INt = 0.0F;
+    this.INu = false;
+    this.INv = false;
+    this.INw = false;
+    this.INx = false;
+    this.INy = false;
+    this.INz = false;
+    this.INA = false;
+    this.INB = false;
+    this.INC = 1.0F;
     this.translateX = 0.0F;
     this.translateY = 0.0F;
-    this.tOV = new Timer(true);
-    this.Hni = null;
-    this.Hnj = false;
-    this.Hnk = false;
-    this.Hnm = new ap()
+    this.uXx = new Timer(true);
+    this.IND = null;
+    this.INE = false;
+    this.INF = false;
+    this.INH = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(143038);
-        ad.d("MicroMsg.CropImageView", "on handler");
+        ac.d("MicroMsg.CropImageView", "on handler");
         if (paramAnonymousMessage.what == 4659) {
           CropImageView.this.zoomIn();
         }
@@ -127,7 +127,7 @@ public class CropImageView
           {
             long l = System.currentTimeMillis();
             if ((CropImageView.f(CropImageView.this) != 0L) && (l - CropImageView.f(CropImageView.this) < 300L) && (l - CropImageView.f(CropImageView.this) >= 0L) && (CropImageView.g(CropImageView.this) != null)) {
-              CropImageView.g(CropImageView.this).fdI();
+              CropImageView.g(CropImageView.this).ftD();
             }
             CropImageView.a(CropImageView.this, 0L);
           }
@@ -136,8 +136,8 @@ public class CropImageView
         }
       }
     };
-    this.Hnn = null;
-    this.Hno = new ap()
+    this.INI = null;
+    this.INJ = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -158,9 +158,9 @@ public class CropImageView
         }
       }
     };
-    this.dnV = 0;
-    this.Hnq = true;
-    this.ryf = new View.OnTouchListener()
+    this.dlE = 0;
+    this.INL = true;
+    this.sGX = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, final MotionEvent paramAnonymousMotionEvent)
       {
@@ -176,7 +176,7 @@ public class CropImageView
           return false;
         }
         int i = paramAnonymousMotionEvent.getAction() & 0xFF;
-        ad.d("MicroMsg.CropImageView", "on touch : event type=" + i + ", isDownOnImg=" + CropImageView.v(CropImageView.this));
+        ac.d("MicroMsg.CropImageView", "on touch : event type=" + i + ", isDownOnImg=" + CropImageView.v(CropImageView.this));
         if ((!CropImageView.v(CropImageView.this)) && (i != 0))
         {
           AppMethodBeat.o(143041);
@@ -189,24 +189,24 @@ public class CropImageView
         {
           AppMethodBeat.o(143041);
           return false;
-          ad.d("MicroMsg.CropImageView", "action_mult_down");
+          ac.d("MicroMsg.CropImageView", "action_mult_down");
           CropImageView.b(CropImageView.this, true);
-          CropImageView.this.HmX = f.aa(paramAnonymousMotionEvent);
-          if (CropImageView.this.HmX > 5.0F)
+          CropImageView.this.INs = f.aa(paramAnonymousMotionEvent);
+          if (CropImageView.this.INs > 5.0F)
           {
-            CropImageView.this.HmZ = true;
+            CropImageView.this.INu = true;
             f.a(CropImageView.h(CropImageView.this), paramAnonymousMotionEvent);
             AppMethodBeat.o(143041);
             return true;
-            ad.d("MicroMsg.CropImageView", "action_mult_up");
-            CropImageView.this.HmZ = false;
+            ac.d("MicroMsg.CropImageView", "action_mult_up");
+            CropImageView.this.INu = false;
             CropImageView.b(CropImageView.this, true);
             AppMethodBeat.o(143041);
             return true;
-            ad.d("MicroMsg.CropImageView", "action_down");
+            ac.d("MicroMsg.CropImageView", "action_down");
             CropImageView.a(CropImageView.this, paramAnonymousMotionEvent.getRawX());
             CropImageView.b(CropImageView.this, paramAnonymousMotionEvent.getRawY());
-            ad.d("MicroMsg.CropImageView", "lastX=" + CropImageView.w(CropImageView.this) + ",lastY=" + CropImageView.x(CropImageView.this));
+            ac.d("MicroMsg.CropImageView", "lastX=" + CropImageView.w(CropImageView.this) + ",lastY=" + CropImageView.x(CropImageView.this));
             CropImageView.c(CropImageView.this, CropImageView.w(CropImageView.this));
             CropImageView.d(CropImageView.this, CropImageView.x(CropImageView.this));
             paramAnonymousView = CropImageView.this.getImageMatrix();
@@ -216,27 +216,27 @@ public class CropImageView
             CropImageView.a(CropImageView.this, paramAnonymousMotionEvent.contains(CropImageView.w(CropImageView.this), CropImageView.x(CropImageView.this)));
             CropImageView.a(CropImageView.this, System.currentTimeMillis());
             continue;
-            ad.d("MicroMsg.CropImageView", "action_move");
+            ac.d("MicroMsg.CropImageView", "action_move");
             float f1;
-            if (CropImageView.this.HmZ)
+            if (CropImageView.this.INu)
             {
-              ad.d("MicroMsg.CropImageView", "is valid mult down");
-              CropImageView.this.HmY = f.aa(paramAnonymousMotionEvent);
-              f1 = CropImageView.this.HmY - CropImageView.this.HmX;
-              if ((CropImageView.this.HmY > 5.0F) && (Math.abs(f1) > 5.0F))
+              ac.d("MicroMsg.CropImageView", "is valid mult down");
+              CropImageView.this.INt = f.aa(paramAnonymousMotionEvent);
+              f1 = CropImageView.this.INt - CropImageView.this.INs;
+              if ((CropImageView.this.INt > 5.0F) && (Math.abs(f1) > 5.0F))
               {
                 f.a(CropImageView.h(CropImageView.this), paramAnonymousMotionEvent);
-                ad.d("MicroMsg.CropImageView", "mX=" + CropImageView.h(CropImageView.this).x + ",mY=" + CropImageView.h(CropImageView.this).y);
+                ac.d("MicroMsg.CropImageView", "mX=" + CropImageView.h(CropImageView.this).x + ",mY=" + CropImageView.h(CropImageView.this).y);
                 if (f1 <= 0.0F) {
                   break label731;
                 }
-                ad.d("MicroMsg.CropImageView", "zoom in");
+                ac.d("MicroMsg.CropImageView", "zoom in");
                 CropImageView.this.zoomIn();
               }
             }
             for (;;)
             {
-              CropImageView.this.HmX = CropImageView.this.HmY;
+              CropImageView.this.INs = CropImageView.this.INt;
               if (!CropImageView.y(CropImageView.this))
               {
                 f1 = paramAnonymousMotionEvent.getRawX() - CropImageView.w(CropImageView.this);
@@ -251,10 +251,10 @@ public class CropImageView
               CropImageView.b(CropImageView.this, paramAnonymousMotionEvent.getRawY());
               break;
               label731:
-              ad.d("MicroMsg.CropImageView", "zoom out");
+              ac.d("MicroMsg.CropImageView", "zoom out");
               CropImageView.this.zoomOut();
             }
-            ad.d("MicroMsg.CropImageView", "action_up");
+            ac.d("MicroMsg.CropImageView", "action_up");
             if (CropImageView.z(CropImageView.this))
             {
               CropImageView.c(CropImageView.this, false);
@@ -306,69 +306,69 @@ public class CropImageView
         }
       }
     };
-    this.GbR = false;
-    fdJ();
+    this.HBG = false;
+    ftE();
     AppMethodBeat.o(143044);
   }
   
-  private void fdK()
+  private void ftF()
   {
     AppMethodBeat.i(143048);
     float[] arrayOfFloat1 = new float[2];
     float[] arrayOfFloat2 = new float[2];
-    float f = this.HmW.x;
+    float f = this.INr.x;
     arrayOfFloat2[0] = f;
     arrayOfFloat1[0] = f;
-    f = this.HmW.y;
+    f = this.INr.y;
     arrayOfFloat2[1] = f;
     arrayOfFloat1[1] = f;
     getImageMatrix().mapPoints(arrayOfFloat1);
     getImageMatrix().postScale(1.0666F, 1.0666F);
     getImageMatrix().mapPoints(arrayOfFloat2);
     getImageMatrix().postTranslate((arrayOfFloat1[0] - arrayOfFloat2[0]) / 2.0F, (arrayOfFloat1[1] - arrayOfFloat2[1]) / 2.0F);
-    setImageBitmap(this.rJR);
+    setImageBitmap(this.sRG);
     invalidate();
     AppMethodBeat.o(143048);
   }
   
-  private void fdL()
+  private void ftG()
   {
     AppMethodBeat.i(143050);
     float[] arrayOfFloat1 = new float[2];
     float[] arrayOfFloat2 = new float[2];
-    float f = this.HmW.x;
+    float f = this.INr.x;
     arrayOfFloat2[0] = f;
     arrayOfFloat1[0] = f;
-    f = this.HmW.y;
+    f = this.INr.y;
     arrayOfFloat2[1] = f;
     arrayOfFloat1[1] = f;
     getImageMatrix().mapPoints(arrayOfFloat1);
     getImageMatrix().postScale(0.9375F, 0.9375F);
     getImageMatrix().mapPoints(arrayOfFloat2);
     getImageMatrix().postTranslate((arrayOfFloat1[0] - arrayOfFloat2[0]) / 2.0F, (arrayOfFloat1[1] - arrayOfFloat2[1]) / 2.0F);
-    setImageBitmap(this.rJR);
+    setImageBitmap(this.sRG);
     invalidate();
     AppMethodBeat.o(143050);
   }
   
-  public final void fdJ()
+  public final void ftE()
   {
     AppMethodBeat.i(143046);
-    setOnTouchListener(this.ryf);
+    setOnTouchListener(this.sGX);
     AppMethodBeat.o(143046);
   }
   
   public Bitmap getBmp()
   {
-    return this.rJR;
+    return this.sRG;
   }
   
   public int getGifHeight()
   {
     AppMethodBeat.i(143053);
-    if ((this.GbR) && (this.GbS != null))
+    if ((this.HBG) && (this.HBH != null))
     {
-      i = this.GbS.getIntrinsicHeight();
+      i = this.HBH.getIntrinsicHeight();
       AppMethodBeat.o(143053);
       return i;
     }
@@ -380,9 +380,9 @@ public class CropImageView
   public int getGifWidth()
   {
     AppMethodBeat.i(143052);
-    if ((this.GbR) && (this.GbS != null))
+    if ((this.HBG) && (this.HBH != null))
     {
-      i = this.GbS.getIntrinsicWidth();
+      i = this.HBH.getIntrinsicWidth();
       AppMethodBeat.o(143052);
       return i;
     }
@@ -393,12 +393,12 @@ public class CropImageView
   
   public int getRotateCount()
   {
-    return this.dnV;
+    return this.dlE;
   }
   
   public void setEnableOprate(boolean paramBoolean)
   {
-    this.Hnq = paramBoolean;
+    this.INL = paramBoolean;
   }
   
   public void setGifPath(String paramString)
@@ -406,15 +406,15 @@ public class CropImageView
     AppMethodBeat.i(143051);
     try
     {
-      this.GbR = true;
-      this.GbS = c.lu(paramString, paramString);
-      setImageDrawable(this.GbS);
+      this.HBG = true;
+      this.HBH = c.lR(paramString, paramString);
+      setImageDrawable(this.HBH);
       AppMethodBeat.o(143051);
       return;
     }
     catch (Exception paramString)
     {
-      this.GbR = false;
+      this.HBG = false;
       AppMethodBeat.o(143051);
     }
   }
@@ -422,62 +422,62 @@ public class CropImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(143045);
-    this.GbR = false;
-    this.rJR = paramBitmap;
-    f.a(this.HmW, paramBitmap);
+    this.HBG = false;
+    this.sRG = paramBitmap;
+    f.a(this.INr, paramBitmap);
     super.setImageBitmap(paramBitmap);
     AppMethodBeat.o(143045);
   }
   
   public void setLimitZoomIn(boolean paramBoolean)
   {
-    this.HmS = paramBoolean;
+    this.INn = paramBoolean;
   }
   
   public void setOnShortClick(a parama)
   {
-    this.Hnp = parama;
+    this.INK = parama;
   }
   
   public final void zoomIn()
   {
     AppMethodBeat.i(143047);
-    this.Hnh *= 1.0666F;
-    if (1.0F <= this.Hnh) {
-      this.Hnc = false;
+    this.INC *= 1.0666F;
+    if (1.0F <= this.INC) {
+      this.INx = false;
     }
-    if (1.6F < this.Hnh) {}
-    for (this.Hnb = true; (this.HmS) && (4.0F < this.Hnh); this.Hnb = false)
+    if (1.6F < this.INC) {}
+    for (this.INw = true; (this.INn) && (4.0F < this.INC); this.INw = false)
     {
-      this.Hnh = 4.0F;
+      this.INC = 4.0F;
       AppMethodBeat.o(143047);
       return;
     }
-    fdK();
+    ftF();
     AppMethodBeat.o(143047);
   }
   
   public final void zoomOut()
   {
     AppMethodBeat.i(143049);
-    this.Hnh *= 0.9375F;
-    if (1.6F > this.Hnh) {
-      this.Hnb = false;
+    this.INC *= 0.9375F;
+    if (1.6F > this.INC) {
+      this.INw = false;
     }
-    if (1.0F > this.Hnh) {}
-    for (this.Hnc = true; 0.4F > this.Hnh; this.Hnc = false)
+    if (1.0F > this.INC) {}
+    for (this.INx = true; 0.4F > this.INC; this.INx = false)
     {
-      this.Hnh = 0.4F;
+      this.INC = 0.4F;
       AppMethodBeat.o(143049);
       return;
     }
-    fdL();
+    ftG();
     AppMethodBeat.o(143049);
   }
   
   public static abstract interface a
   {
-    public abstract void fdI();
+    public abstract void ftD();
   }
   
   final class b
@@ -487,10 +487,10 @@ public class CropImageView
     {
       AppMethodBeat.i(143042);
       Message localMessage = new Message();
-      if ((CropImageView.p(this.Hnr)) || (CropImageView.q(this.Hnr)) || (CropImageView.r(this.Hnr)) || (CropImageView.s(this.Hnr))) {}
+      if ((CropImageView.p(this.INM)) || (CropImageView.q(this.INM)) || (CropImageView.r(this.INM)) || (CropImageView.s(this.INM))) {}
       for (localMessage.what = 4654;; localMessage.what = 4653)
       {
-        CropImageView.t(this.Hnr).sendMessage(localMessage);
+        CropImageView.t(this.INM).sendMessage(localMessage);
         AppMethodBeat.o(143042);
         return;
       }
@@ -503,17 +503,17 @@ public class CropImageView
     public final void run()
     {
       AppMethodBeat.i(143043);
-      ad.d("MicroMsg.CropImageView", "in timer task run");
+      ac.d("MicroMsg.CropImageView", "in timer task run");
       Message localMessage = new Message();
-      if (CropImageView.j(this.Hnr)) {
+      if (CropImageView.j(this.INM)) {
         localMessage.what = 4659;
       }
       for (;;)
       {
-        CropImageView.l(this.Hnr).sendMessage(localMessage);
+        CropImageView.l(this.INM).sendMessage(localMessage);
         AppMethodBeat.o(143043);
         return;
-        if (CropImageView.k(this.Hnr)) {
+        if (CropImageView.k(this.INM)) {
           localMessage.what = 4658;
         } else {
           localMessage.what = 4660;

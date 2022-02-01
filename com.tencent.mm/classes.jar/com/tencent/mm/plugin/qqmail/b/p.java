@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class p
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String name;
-  public String sOr;
-  public int uLx;
-  public int uLy;
-  public String uLz;
+  public String pinyin;
+  public String tWE;
+  public int vUo;
+  public int vUp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -24,41 +24,41 @@ public final class p
         AppMethodBeat.o(122694);
         throw paramVarArgs;
       }
-      if (this.sOr == null)
+      if (this.tWE == null)
       {
         paramVarArgs = new b("Not all required fields were included: addr");
         AppMethodBeat.o(122694);
         throw paramVarArgs;
       }
-      paramVarArgs.aR(1, this.uLx);
+      paramVarArgs.aR(1, this.vUo);
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
-      if (this.sOr != null) {
-        paramVarArgs.d(3, this.sOr);
+      if (this.tWE != null) {
+        paramVarArgs.d(3, this.tWE);
       }
-      paramVarArgs.aR(4, this.uLy);
-      if (this.uLz != null) {
-        paramVarArgs.d(5, this.uLz);
+      paramVarArgs.aR(4, this.vUp);
+      if (this.pinyin != null) {
+        paramVarArgs.d(5, this.pinyin);
       }
       AppMethodBeat.o(122694);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.uLx) + 0;
+      int i = f.a.a.b.b.a.bx(1, this.vUo) + 0;
       paramInt = i;
       if (this.name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
       }
       i = paramInt;
-      if (this.sOr != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.sOr);
+      if (this.tWE != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tWE);
       }
-      i += f.a.a.b.b.a.bA(4, this.uLy);
+      i += f.a.a.b.b.a.bx(4, this.vUp);
       paramInt = i;
-      if (this.uLz != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.uLz);
+      if (this.pinyin != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.pinyin);
       }
       AppMethodBeat.o(122694);
       return paramInt;
@@ -66,9 +66,9 @@ public final class p
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       if (this.name == null)
@@ -77,7 +77,7 @@ public final class p
         AppMethodBeat.o(122694);
         throw paramVarArgs;
       }
-      if (this.sOr == null)
+      if (this.tWE == null)
       {
         paramVarArgs = new b("Not all required fields were included: addr");
         AppMethodBeat.o(122694);
@@ -96,23 +96,23 @@ public final class p
         AppMethodBeat.o(122694);
         return -1;
       case 1: 
-        localp.uLx = locala.KhF.xS();
+        localp.vUo = locala.LVo.xF();
         AppMethodBeat.o(122694);
         return 0;
       case 2: 
-        localp.name = locala.KhF.readString();
+        localp.name = locala.LVo.readString();
         AppMethodBeat.o(122694);
         return 0;
       case 3: 
-        localp.sOr = locala.KhF.readString();
+        localp.tWE = locala.LVo.readString();
         AppMethodBeat.o(122694);
         return 0;
       case 4: 
-        localp.uLy = locala.KhF.xS();
+        localp.vUp = locala.LVo.xF();
         AppMethodBeat.o(122694);
         return 0;
       }
-      localp.uLz = locala.KhF.readString();
+      localp.pinyin = locala.LVo.readString();
       AppMethodBeat.o(122694);
       return 0;
     }

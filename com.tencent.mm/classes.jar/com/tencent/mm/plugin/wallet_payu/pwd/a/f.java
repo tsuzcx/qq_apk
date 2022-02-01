@@ -19,7 +19,7 @@ public class f
     AppMethodBeat.i(72153);
     if ((paramMMActivity instanceof WalletPayUSecurityQuestionAnswerUI))
     {
-      paramMMActivity = new a(paramMMActivity, parami, this.dow);
+      paramMMActivity = new a(paramMMActivity, parami, this.dmf);
       AppMethodBeat.o(72153);
       return paramMMActivity;
     }
@@ -50,7 +50,7 @@ public class f
     AppMethodBeat.o(72152);
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "PayUForgotPwdProcess";
   }

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.fingerprint.b.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -52,12 +52,12 @@ public final class f
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ad.i("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay success");
-      d.lr(true);
+      ac.i("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay success");
+      d.mj(true);
       AppMethodBeat.o(64475);
       return;
     }
-    ad.e("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay failed");
+    ac.e("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay failed");
     AppMethodBeat.o(64475);
   }
   

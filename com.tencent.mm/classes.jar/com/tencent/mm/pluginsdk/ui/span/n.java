@@ -11,25 +11,25 @@ import android.view.ViewConfiguration;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.StaticTextView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class n
   implements View.OnTouchListener
 {
-  private static int Ckv;
+  private static int DCM;
   private static boolean DEBUG;
-  private static int Mw;
-  private o Cks;
-  private boolean Ckt;
-  private View Cku;
-  private ap Ckw;
-  private b Ckx;
-  private a Cky;
-  private boolean lVP;
+  private static int Nt;
+  private o DCJ;
+  private boolean DCK;
+  private View DCL;
+  private ao DCN;
+  private b DCO;
+  private a DCP;
   String mSessionId;
+  private boolean mxR;
   private Context uiContext;
   private View view;
   
@@ -37,50 +37,50 @@ public final class n
   {
     AppMethodBeat.i(152338);
     DEBUG = false;
-    Mw = ViewConfiguration.getTapTimeout();
+    Nt = ViewConfiguration.getTapTimeout();
     int i = ViewConfiguration.getLongPressTimeout();
-    Ckv = i;
-    if (i > Mw * 2) {
-      Ckv -= Mw;
+    DCM = i;
+    if (i > Nt * 2) {
+      DCM -= Nt;
     }
-    ad.d("MicroMsg.PressSpanTouchListener", "long press timeout:%d", new Object[] { Integer.valueOf(Ckv) });
+    ac.d("MicroMsg.PressSpanTouchListener", "long press timeout:%d", new Object[] { Integer.valueOf(DCM) });
     AppMethodBeat.o(152338);
   }
   
   public n()
   {
     AppMethodBeat.i(152331);
-    this.Cks = null;
-    this.Ckt = false;
-    this.Cku = null;
-    this.lVP = false;
+    this.DCJ = null;
+    this.DCK = false;
+    this.DCL = null;
+    this.mxR = false;
     this.uiContext = null;
-    this.Ckw = new ap(Looper.getMainLooper());
-    this.Ckx = new b((byte)0);
-    this.Cky = new a();
+    this.DCN = new ao(Looper.getMainLooper());
+    this.DCO = new b((byte)0);
+    this.DCP = new a();
     AppMethodBeat.o(152331);
   }
   
   public n(Context paramContext)
   {
     AppMethodBeat.i(152332);
-    this.Cks = null;
-    this.Ckt = false;
-    this.Cku = null;
-    this.lVP = false;
+    this.DCJ = null;
+    this.DCK = false;
+    this.DCL = null;
+    this.mxR = false;
     this.uiContext = null;
-    this.Ckw = new ap(Looper.getMainLooper());
-    this.Ckx = new b((byte)0);
-    this.Cky = new a();
+    this.DCN = new ao(Looper.getMainLooper());
+    this.DCO = new b((byte)0);
+    this.DCP = new a();
     this.uiContext = paramContext;
     AppMethodBeat.o(152332);
   }
   
-  private void Vm(int paramInt)
+  private void Xv(int paramInt)
   {
     AppMethodBeat.i(152336);
     if (this.view != null) {
-      this.Ckw.postDelayed(this.Cky, Ckv - paramInt);
+      this.DCN.postDelayed(this.DCP, DCM - paramInt);
     }
     AppMethodBeat.o(152336);
   }
@@ -120,7 +120,7 @@ public final class n
       localLayout = ((TextView)paramView).getLayout();
       localCharSequence = ((TextView)paramView).getText();
       if (DEBUG) {
-        ad.d("MicroMsg.PressSpanTouchListener", "ontouch action: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " " + bt.eGN().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.lVP) });
+        ac.d("MicroMsg.PressSpanTouchListener", "ontouch action: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " " + bs.eWi().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.mxR) });
       }
       localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if ((!(localCharSequence instanceof Spanned)) || (localLayout == null)) {
@@ -154,7 +154,7 @@ public final class n
     {
       localMotionEvent.recycle();
       if (DEBUG) {
-        ad.d("MicroMsg.PressSpanTouchListener", "ontouch action2: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " processResult: " + bool + " " + bt.eGN().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.lVP) });
+        ac.d("MicroMsg.PressSpanTouchListener", "ontouch action2: %d, isLongPress:%b " + localLayout + " " + (localCharSequence instanceof Spanned) + " processResult: " + bool + " " + bs.eWi().toString(), new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(this.mxR) });
       }
       AppMethodBeat.o(152333);
       return bool;
@@ -215,7 +215,7 @@ public final class n
         localObject = (o[])((Spanned)localObject).getSpans(i, i, o.class);
         i = localObject.length - 1;
         if (DEBUG) {
-          ad.d("MicroMsg.PressSpanTouchListener", "processPress action: %d, isLongPress:%b " + localObject.length + " " + this.Cks + " " + bt.eGN().toString(), new Object[] { Integer.valueOf(localMotionEvent.getAction()), Boolean.valueOf(this.lVP) });
+          ac.d("MicroMsg.PressSpanTouchListener", "processPress action: %d, isLongPress:%b " + localObject.length + " " + this.DCJ + " " + bs.eWi().toString(), new Object[] { Integer.valueOf(localMotionEvent.getAction()), Boolean.valueOf(this.mxR) });
         }
         if (localObject.length == 0) {
           break label1326;
@@ -223,16 +223,16 @@ public final class n
         if (j != 1) {
           break label1054;
         }
-        this.Ckw.removeCallbacks(this.Ckx);
-        this.Ckw.removeCallbacks(this.Cky);
-        if (!this.lVP) {
+        this.DCN.removeCallbacks(this.DCO);
+        this.DCN.removeCallbacks(this.DCP);
+        if (!this.mxR) {
           break label945;
         }
         resetStatus();
-        this.lVP = false;
-        paramView.setClickable(this.Ckt);
+        this.mxR = false;
+        paramView.setClickable(this.DCK);
         if (DEBUG) {
-          ad.i("MicroMsg.PressSpanTouchListener", "processPress action1 " + localMotionEvent.getAction());
+          ac.i("MicroMsg.PressSpanTouchListener", "processPress action1 " + localMotionEvent.getAction());
         }
         i = 0;
       }
@@ -242,7 +242,7 @@ public final class n
           break label1378;
         }
         if (DEBUG) {
-          ad.i("MicroMsg.PressSpanTouchListener", "processTouch action1 " + localMotionEvent.getAction());
+          ac.i("MicroMsg.PressSpanTouchListener", "processTouch action1 " + localMotionEvent.getAction());
         }
         bool = true;
         break;
@@ -256,70 +256,70 @@ public final class n
         i -= paramView.getPaddingTop();
         break label589;
         label945:
-        this.lVP = false;
-        if (this.Cks != null)
+        this.mxR = false;
+        if (this.DCJ != null)
         {
-          this.Cks.setSessionId(this.mSessionId);
+          this.DCJ.setSessionId(this.mSessionId);
           if (this.uiContext != null) {
-            this.Cks.setContext(this.uiContext);
+            this.DCJ.setContext(this.uiContext);
           }
-          this.Cks.onClick(paramView);
+          this.DCJ.onClick(paramView);
         }
         for (;;)
         {
-          paramView.setClickable(this.Ckt);
+          paramView.setClickable(this.DCK);
           resetStatus();
           if (DEBUG) {
-            ad.i("MicroMsg.PressSpanTouchListener", "processPress action2 " + localMotionEvent.getAction());
+            ac.i("MicroMsg.PressSpanTouchListener", "processPress action2 " + localMotionEvent.getAction());
           }
           i = 0;
           break;
-          ad.e("MicroMsg.PressSpanTouchListener", "ACTION_UP error, lastClickSpan is null");
+          ac.e("MicroMsg.PressSpanTouchListener", "ACTION_UP error, lastClickSpan is null");
         }
         label1054:
         if ((j == 0) || (j == 2))
         {
-          if ((j == 0) && (Ckv > 0)) {
-            Vm(0);
+          if ((j == 0) && (DCM > 0)) {
+            Xv(0);
           }
           if (j == 0)
           {
-            this.lVP = false;
-            this.Ckt = paramView.isClickable();
+            this.mxR = false;
+            this.DCK = paramView.isClickable();
           }
           resetStatus();
-          this.Cks = localObject[i];
-          this.Cku = paramView;
+          this.DCJ = localObject[i];
+          this.DCL = paramView;
           localObject[i].setContext(null);
           localObject[i].setIsPressed(true);
           localObject[i].setEnable(true);
           paramView.invalidate();
-          if (this.lVP)
+          if (this.mxR)
           {
             localObject[i].setIsPressed(false);
             localObject[i].setEnable(false);
-            paramView.setClickable(this.Ckt);
+            paramView.setClickable(this.DCK);
             if (DEBUG) {
-              ad.i("MicroMsg.PressSpanTouchListener", "processPress action3 " + localMotionEvent.getAction());
+              ac.i("MicroMsg.PressSpanTouchListener", "processPress action3 " + localMotionEvent.getAction());
             }
             i = 0;
           }
           else
           {
             if (DEBUG) {
-              ad.i("MicroMsg.PressSpanTouchListener", "processPress action4 " + localMotionEvent.getAction());
+              ac.i("MicroMsg.PressSpanTouchListener", "processPress action4 " + localMotionEvent.getAction());
             }
             i = 1;
           }
         }
         else if (j == 3)
         {
-          this.Ckw.removeCallbacks(this.Ckx);
-          this.Ckw.removeCallbacks(this.Cky);
-          paramView.setClickable(this.Ckt);
+          this.DCN.removeCallbacks(this.DCO);
+          this.DCN.removeCallbacks(this.DCP);
+          paramView.setClickable(this.DCK);
           resetStatus();
           if (DEBUG) {
-            ad.i("MicroMsg.PressSpanTouchListener", "processPress action5 " + localMotionEvent.getAction());
+            ac.i("MicroMsg.PressSpanTouchListener", "processPress action5 " + localMotionEvent.getAction());
           }
           i = 0;
           continue;
@@ -329,10 +329,10 @@ public final class n
         else
         {
           if (j == 1) {
-            this.lVP = false;
+            this.mxR = false;
           }
           if (DEBUG) {
-            ad.i("MicroMsg.PressSpanTouchListener", "processPress action6 " + localMotionEvent.getAction());
+            ac.i("MicroMsg.PressSpanTouchListener", "processPress action6 " + localMotionEvent.getAction());
           }
           i = 0;
         }
@@ -341,7 +341,7 @@ public final class n
       if (!DEBUG) {
         break label302;
       }
-      ad.i("MicroMsg.PressSpanTouchListener", "processTouch action2 " + localMotionEvent.getAction());
+      ac.i("MicroMsg.PressSpanTouchListener", "processTouch action2 " + localMotionEvent.getAction());
       break label302;
       label1413:
       bool = false;
@@ -351,13 +351,13 @@ public final class n
   public final void resetStatus()
   {
     AppMethodBeat.i(152335);
-    if (this.Cks != null)
+    if (this.DCJ != null)
     {
-      this.Cks.setIsPressed(false);
-      this.Cks.setContext(null);
-      this.Cku.invalidate();
-      this.Cku = null;
-      this.Cks = null;
+      this.DCJ.setIsPressed(false);
+      this.DCJ.setContext(null);
+      this.DCL.invalidate();
+      this.DCL = null;
+      this.DCJ = null;
     }
     AppMethodBeat.o(152335);
   }
@@ -372,7 +372,7 @@ public final class n
       AppMethodBeat.i(152329);
       if ((n.a(n.this) != null) && (n.a(n.this).isPressed()))
       {
-        ad.d("MicroMsg.PressSpanTouchListener", "long pressed timeout");
+        ac.d("MicroMsg.PressSpanTouchListener", "long pressed timeout");
         n.b(n.this);
         n.this.resetStatus();
       }
@@ -388,14 +388,14 @@ public final class n
     public final void run()
     {
       AppMethodBeat.i(152330);
-      n.a(n.this, n.Mw);
+      n.a(n.this, n.Nt);
       AppMethodBeat.o(152330);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.n
  * JD-Core Version:    0.7.0.1
  */

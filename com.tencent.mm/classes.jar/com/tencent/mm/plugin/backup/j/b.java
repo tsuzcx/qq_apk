@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.backup.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aa;
-import com.tencent.mm.g.a.ah;
-import com.tencent.mm.g.a.y;
+import com.tencent.mm.g.a.ab;
+import com.tencent.mm.g.a.ai;
+import com.tencent.mm.g.a.z;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
 {
-  private static b mCx;
-  c mCu;
-  c mCv;
-  c mCw;
+  private static b nez;
+  c jdField_new;
+  c nex;
+  c ney;
   
-  public static b byI()
+  public static b bFE()
   {
     AppMethodBeat.i(22162);
-    if (mCx == null) {
-      mCx = new b();
+    if (nez == null) {
+      nez = new b();
     }
-    b localb = mCx;
+    b localb = nez;
     AppMethodBeat.o(22162);
     return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.j.b
  * JD-Core Version:    0.7.0.1
  */

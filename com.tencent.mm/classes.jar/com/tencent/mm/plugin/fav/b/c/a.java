@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.fav.b.c;
 
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bo;
 
 public final class a
 {
-  public bl dbD;
-  public boolean qbB;
-  public boolean qbC;
-  public a qbD;
+  public bo cZc;
+  public boolean qKh;
+  public boolean qKi;
+  public a qKj;
   public String talker;
   
-  public a(boolean paramBoolean1, boolean paramBoolean2, String paramString, bl parambl, a parama)
+  public a(boolean paramBoolean1, boolean paramBoolean2, String paramString, bo parambo, a parama)
   {
-    this.qbB = paramBoolean1;
-    this.qbC = paramBoolean2;
+    this.qKh = paramBoolean1;
+    this.qKi = paramBoolean2;
     this.talker = paramString;
-    this.dbD = parambl;
-    this.qbD = parama;
+    this.cZc = parambo;
+    this.qKj = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void ciz();
+    public abstract void cqg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.c.a
  * JD-Core Version:    0.7.0.1
  */

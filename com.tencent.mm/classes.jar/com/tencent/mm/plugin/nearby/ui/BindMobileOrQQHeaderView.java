@@ -18,16 +18,16 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class BindMobileOrQQHeaderView
   extends LinearLayout
 {
-  private TextView tZY;
-  private WeImageView tZZ;
-  private a uaa;
-  private View.OnClickListener uab;
+  private WeImageView rqs;
+  private TextView viY;
+  private a viZ;
+  private View.OnClickListener vja;
   
   public BindMobileOrQQHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(89803);
-    this.uab = new View.OnClickListener()
+    this.vja = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -35,17 +35,17 @@ public class BindMobileOrQQHeaderView
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.V(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.asX().uz("3") != null)
+        MMWizardActivity.aj(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.azO().yF("3") != null)
         {
-          g.asX().uz("3").result = "1";
-          f.uE("3");
+          g.azO().yF("3").result = "1";
+          f.yK("3");
         }
         AppMethodBeat.o(89797);
       }
     };
-    this.uaa = a.uae;
-    aL(paramContext);
+    this.viZ = a.vjd;
+    aM(paramContext);
     AppMethodBeat.o(89803);
   }
   
@@ -53,7 +53,7 @@ public class BindMobileOrQQHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(89802);
-    this.uab = new View.OnClickListener()
+    this.vja = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -61,38 +61,38 @@ public class BindMobileOrQQHeaderView
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.V(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.asX().uz("3") != null)
+        MMWizardActivity.aj(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.azO().yF("3") != null)
         {
-          g.asX().uz("3").result = "1";
-          f.uE("3");
+          g.azO().yF("3").result = "1";
+          f.yK("3");
         }
         AppMethodBeat.o(89797);
       }
     };
-    aL(paramContext);
+    aM(paramContext);
     AppMethodBeat.o(89802);
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
     AppMethodBeat.i(89804);
     paramContext = View.inflate(paramContext, 2131494999, this);
-    this.tZY = ((TextView)paramContext.findViewById(2131302701));
-    this.tZZ = ((WeImageView)paramContext.findViewById(2131302683));
-    switch (2.uad[this.uaa.ordinal()])
+    this.viY = ((TextView)paramContext.findViewById(2131302701));
+    this.rqs = ((WeImageView)paramContext.findViewById(2131302683));
+    switch (2.vjc[this.viZ.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.uab);
-      this.tZZ.setImageResource(2131690530);
+      setOnClickListener(this.vja);
+      this.rqs.setImageResource(2131690530);
       AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.uab);
-      this.tZZ.setImageResource(2131690548);
+      setOnClickListener(this.vja);
+      this.rqs.setImageResource(2131690548);
     }
   }
   
@@ -101,9 +101,9 @@ public class BindMobileOrQQHeaderView
     static
     {
       AppMethodBeat.i(89801);
-      uae = new a("Mobile", 0);
-      uaf = new a("UploadContact", 1);
-      uag = new a[] { uae, uaf };
+      vjd = new a("Mobile", 0);
+      vje = new a("UploadContact", 1);
+      vjf = new a[] { vjd, vje };
       AppMethodBeat.o(89801);
     }
     
@@ -112,7 +112,7 @@ public class BindMobileOrQQHeaderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.BindMobileOrQQHeaderView
  * JD-Core Version:    0.7.0.1
  */

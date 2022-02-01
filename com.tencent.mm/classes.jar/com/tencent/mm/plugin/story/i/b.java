@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.i;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fq;
+import com.tencent.mm.g.c.fu;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import d.l;
@@ -13,36 +13,36 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/storage/StoryCommentStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseStoryCommentSync;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "CON_UNREAD", "", "commentFlagSet", "Ljava/util/ArrayList;", "", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "buildLimitString", "data", "", "col", "reverse", "", "getAllData", "Lcom/tencent/mm/plugin/story/storage/StoryCommentSync;", "getAllUnreadSync", "getByStoryId", "storyId", "", "getORIntRange", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/storage/StoryCommentStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseStoryCommentSync;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "CON_UNREAD", "", "commentFlagSet", "Ljava/util/ArrayList;", "", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "buildLimitString", "data", "", "col", "reverse", "", "getAllData", "Lcom/tencent/mm/plugin/story/storage/StoryCommentSync;", "getAllUnreadSync", "getByStoryId", "storyId", "", "getORIntRange", "Companion", "plugin-story_release"})
 public final class b
-  extends j<fq>
+  extends j<fu>
 {
   private static final String[] SQL_CREATE;
   private static final String TAG = "MicroMsg.StoryCommentStorage";
-  public static final String yoL = "select * from StoryCommentSync";
-  public static final a yoM;
+  public static final String zCk = "select * from StoryCommentSync";
+  public static final a zCl;
   public final e db;
-  private final ArrayList<Integer> yoJ;
-  public String yoK;
+  private final ArrayList<Integer> zCi;
+  public String zCj;
   
   static
   {
     AppMethodBeat.i(119478);
-    yoM = new a((byte)0);
+    zCl = new a((byte)0);
     TAG = "MicroMsg.StoryCommentStorage";
-    c.a locala = c.yoN;
+    c.a locala = c.zCm;
     SQL_CREATE = new String[] { j.getCreateSQLs(c.access$getInfo$cp(), "StoryCommentSync") };
-    yoL = "select * from StoryCommentSync";
+    zCk = "select * from StoryCommentSync";
     AppMethodBeat.o(119478);
   }
   
   public b(e parame)
   {
-    super(parame, c.access$getInfo$cp(), "StoryCommentSync", fq.INDEX_CREATE);
+    super(parame, c.access$getInfo$cp(), "StoryCommentSync", fu.INDEX_CREATE);
     AppMethodBeat.i(119477);
     this.db = parame;
-    parame = a.b.yot;
-    parame = Arrays.asList(new Integer[] { Integer.valueOf(a.b.dKl()) });
+    parame = a.b.zBS;
+    parame = Arrays.asList(new Integer[] { Integer.valueOf(a.b.dYM()) });
     d.g.b.k.g(parame, "Arrays.asList(ConstantsS…COMMENT_SYNC_FLAG_UNREAD)");
     d.g.b.k.h(parame, "data");
     Object localObject2 = new ArrayList((Collection)parame);
@@ -67,28 +67,28 @@ public final class b
     }
     parame.add(Integer.valueOf(0));
     ((ArrayList)localObject1).addAll((Collection)parame);
-    this.yoJ = ((ArrayList)localObject1);
-    this.yoK = "";
+    this.zCi = ((ArrayList)localObject1);
+    this.zCj = "";
     parame = new ArrayList();
-    localObject1 = this.yoJ.iterator();
+    localObject1 = this.zCi.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Integer)((Iterator)localObject1).next();
       i = ((Integer)localObject2).intValue();
-      localObject3 = a.b.yot;
-      if ((i & a.b.dKl()) != 0) {
+      localObject3 = a.b.zBS;
+      if ((i & a.b.dYM()) != 0) {
         parame.add(localObject2);
       }
     }
-    localObject1 = k.ypq;
-    this.yoK = k.a.j((List)parame, "commentFlag");
+    localObject1 = k.zCP;
+    this.zCj = k.a.j((List)parame, "commentFlag");
     AppMethodBeat.o(119477);
   }
   
-  public final List<c> dKw()
+  public final List<c> dYX()
   {
     AppMethodBeat.i(119476);
-    Object localObject2 = yoL;
+    Object localObject2 = zCk;
     Object localObject1 = new ArrayList();
     localObject2 = this.db.rawQuery((String)localObject2, null);
     if (localObject2 != null)
@@ -106,7 +106,7 @@ public final class b
     return localObject1;
   }
   
-  public final c tS(long paramLong)
+  public final c yv(long paramLong)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -127,12 +127,12 @@ public final class b
     return localObject1;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/storage/StoryCommentStorage$Companion;", "", "()V", "EventNotifyCommentRead", "", "EventNotifyCommentUnread", "NotifyCommentRead", "", "NotifyCommentUnread", "SQL_CREATE", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SqlSelectAll", "TAG", "Table", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/storage/StoryCommentStorage$Companion;", "", "()V", "EventNotifyCommentRead", "", "EventNotifyCommentUnread", "NotifyCommentRead", "", "NotifyCommentUnread", "SQL_CREATE", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SqlSelectAll", "TAG", "Table", "plugin-story_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.i.b
  * JD-Core Version:    0.7.0.1
  */

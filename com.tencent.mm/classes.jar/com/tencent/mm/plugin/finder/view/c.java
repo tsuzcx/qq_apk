@@ -29,46 +29,46 @@ import com.tencent.mm.ui.widget.a.b;
 public final class c
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private ViewTreeObserver acK;
-  public View jGG;
-  private Dialog kBi;
-  private BottomSheetBehavior kBl;
-  private boolean kBm;
-  private int kBn;
-  private boolean kBp;
-  private boolean kBq;
+  private ViewTreeObserver adE;
+  public View khe;
+  private Dialog lcA;
+  private BottomSheetBehavior lcD;
+  private boolean lcE;
+  private int lcF;
+  private boolean lcH;
+  private boolean lcI;
   private Context mContext;
-  private View nO;
-  private boolean qVs;
-  private boolean qVt;
+  private View oP;
+  private boolean rVy;
+  private boolean rVz;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(178057);
-    this.kBm = false;
-    this.qVt = false;
-    this.kBp = false;
-    this.kBq = false;
+    this.lcE = false;
+    this.rVz = false;
+    this.lcH = false;
+    this.lcI = false;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.nO = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.oP = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
     paramContext = this.mContext;
-    if (this.kBq) {}
-    for (this.kBi = new b(paramContext);; this.kBi = new a(paramContext, 2131820788))
+    if (this.lcI) {}
+    for (this.lcA = new b(paramContext);; this.lcA = new a(paramContext, 2131820788))
     {
-      this.jGG = View.inflate(paramContext, 2131494069, null);
-      this.kBm = aov();
-      this.kBi.setContentView(this.jGG);
-      this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-      this.kBl.setState(3);
-      this.kBl.lq = new BottomSheetBehavior.a()
+      this.khe = View.inflate(paramContext, 2131494069, null);
+      this.lcE = aly();
+      this.lcA.setContentView(this.khe);
+      this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+      this.lcD.setState(3);
+      this.lcD.mp = new BottomSheetBehavior.a()
       {
         public final void N(int paramAnonymousInt) {}
         
-        public final void h(float paramAnonymousFloat) {}
+        public final void l(float paramAnonymousFloat) {}
       };
-      this.kBi.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.lcA.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -92,7 +92,7 @@ public final class c
     }
   }
   
-  private boolean aov()
+  private boolean aly()
   {
     AppMethodBeat.i(178064);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -119,7 +119,7 @@ public final class c
   private boolean isShowing()
   {
     AppMethodBeat.i(178063);
-    if ((this.kBi != null) && (this.kBi.isShowing()))
+    if ((this.lcA != null) && (this.lcA.isShowing()))
     {
       AppMethodBeat.o(178063);
       return true;
@@ -128,62 +128,62 @@ public final class c
     return false;
   }
   
-  public final c Do(int paramInt)
+  public final c EP(int paramInt)
   {
-    AppMethodBeat.i(190861);
-    LinearLayout localLinearLayout = (LinearLayout)this.jGG.findViewById(2131297461);
-    LayoutInflater.from(this.jGG.getContext()).inflate(paramInt, localLinearLayout, true);
-    AppMethodBeat.o(190861);
+    AppMethodBeat.i(201080);
+    LinearLayout localLinearLayout = (LinearLayout)this.khe.findViewById(2131297461);
+    LayoutInflater.from(this.khe.getContext()).inflate(paramInt, localLinearLayout, true);
+    AppMethodBeat.o(201080);
     return this;
   }
   
-  public final void bfo()
+  public final void bmi()
   {
     AppMethodBeat.i(178062);
-    if (this.kBi != null)
+    if (this.lcA != null)
     {
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.kBi.dismiss();
+        this.lcA.dismiss();
       }
-      if (this.kBl != null) {
-        this.kBl.lh = true;
+      if (this.lcD != null) {
+        this.lcD.mg = true;
       }
     }
     AppMethodBeat.o(178062);
   }
   
-  public final void csG()
+  public final void cED()
   {
     AppMethodBeat.i(178061);
-    this.kBm = aov();
-    this.kBn = getRotation();
-    if (this.kBi != null)
+    this.lcE = aly();
+    this.lcF = getRotation();
+    if (this.lcA != null)
     {
-      ((ViewGroup)this.jGG.getParent()).setVisibility(0);
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jGG.getLayoutParams();
-      if ((this.kBm) && (this.nO != null))
+      ((ViewGroup)this.khe.getParent()).setVisibility(0);
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.khe.getLayoutParams();
+      if ((this.lcE) && (this.oP != null))
       {
         Rect localRect = new Rect();
-        this.nO.getWindowVisibleDisplayFrame(localRect);
+        this.oP.getWindowVisibleDisplayFrame(localRect);
         localLayoutParams.width = localRect.right;
       }
-      this.jGG.setLayoutParams(localLayoutParams);
+      this.khe.setLayoutParams(localLayoutParams);
       if (Build.VERSION.SDK_INT >= 21) {
-        this.kBi.getWindow().addFlags(-2147483648);
+        this.lcA.getWindow().addFlags(-2147483648);
       }
-      if ((this.qVs) && (Build.VERSION.SDK_INT >= 23) && (this.kBi != null))
+      if ((this.rVy) && (Build.VERSION.SDK_INT >= 23) && (this.lcA != null))
       {
-        this.kBi.getWindow().getDecorView().setSystemUiVisibility(9216);
-        this.kBi.getWindow().setStatusBarColor(0);
+        this.lcA.getWindow().getDecorView().setSystemUiVisibility(9216);
+        this.lcA.getWindow().setStatusBarColor(0);
       }
-      if (!this.kBp) {
+      if (!this.lcH) {
         break label308;
       }
-      this.kBi.getWindow().setFlags(8, 8);
-      this.kBi.getWindow().addFlags(131200);
-      this.kBi.getWindow().getDecorView().setSystemUiVisibility(6);
-      if (this.nO != null) {
-        if (this.acK != null) {
+      this.lcA.getWindow().setFlags(8, 8);
+      this.lcA.getWindow().addFlags(131200);
+      this.lcA.getWindow().getDecorView().setSystemUiVisibility(6);
+      if (this.oP != null) {
+        if (this.adE != null) {
           break label363;
         }
       }
@@ -192,22 +192,22 @@ public final class c
     label363:
     for (int i = 1;; i = 0)
     {
-      this.acK = this.nO.getViewTreeObserver();
+      this.adE = this.oP.getViewTreeObserver();
       if (i != 0) {
-        this.acK.addOnGlobalLayoutListener(this);
+        this.adE.addOnGlobalLayoutListener(this);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.kBi.show();
+        this.lcA.show();
       }
-      if (this.kBl != null) {
-        this.kBl.lh = false;
+      if (this.lcD != null) {
+        this.lcD.mg = false;
       }
       AppMethodBeat.o(178061);
       return;
-      this.kBi.getWindow().clearFlags(8);
-      this.kBi.getWindow().clearFlags(131072);
-      this.kBi.getWindow().clearFlags(128);
-      this.kBi.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.lcA.getWindow().clearFlags(8);
+      this.lcA.getWindow().clearFlags(131072);
+      this.lcA.getWindow().clearFlags(128);
+      this.lcA.getWindow().getDecorView().setSystemUiVisibility(0);
       break;
     }
   }
@@ -217,15 +217,15 @@ public final class c
     AppMethodBeat.i(178058);
     if (isShowing())
     {
-      View localView = this.nO;
+      View localView = this.oP;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bfo();
+        bmi();
         AppMethodBeat.o(178058);
         return;
       }
-      if ((isShowing()) && ((this.kBm != aov()) || (this.kBn != getRotation()))) {
-        bfo();
+      if ((isShowing()) && ((this.lcE != aly()) || (this.lcF != getRotation()))) {
+        bmi();
       }
     }
     AppMethodBeat.o(178058);
@@ -233,7 +233,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.c
  * JD-Core Version:    0.7.0.1
  */

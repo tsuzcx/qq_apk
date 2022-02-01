@@ -5,22 +5,22 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/widget/ToastUtil;", "", "()V", "dismiss", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "dialog", "showProgress", "wording", "", "context", "Landroid/content/Context;", "showToast", "bundle", "Landroid/os/Bundle;", "plugin-webview_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/widget/ToastUtil;", "", "()V", "dismiss", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "dialog", "showProgress", "wording", "", "context", "Landroid/content/Context;", "showToast", "bundle", "Landroid/os/Bundle;", "plugin-webview_release"})
 public final class p
 {
-  public static final p Bwh;
+  public static final p COp;
   
   static
   {
     AppMethodBeat.i(82756);
-    Bwh = new p();
+    COp = new p();
     AppMethodBeat.o(82756);
   }
   
@@ -53,7 +53,7 @@ public final class p
     if (paramBundle != null) {}
     for (paramBundle = paramBundle.getString("wording");; paramBundle = null)
     {
-      t.cg(paramContext, paramBundle);
+      t.ch(paramContext, paramBundle);
       break;
       if (!str.equals("dismissloading")) {
         break;
@@ -77,7 +77,7 @@ public final class p
     AppMethodBeat.i(82754);
     k.h(paramString, "wording");
     k.h(paramContext, "context");
-    MMActivity localMMActivity = q.gL(paramContext);
+    MMActivity localMMActivity = q.gW(paramContext);
     if ((localMMActivity != null) && (localMMActivity.isFinishing() == true))
     {
       AppMethodBeat.o(82754);
@@ -93,7 +93,7 @@ public final class p
         return paramp;
       }
     }
-    paramString = h.b(paramContext, paramString, true, (DialogInterface.OnCancelListener)a.Bwi);
+    paramString = h.b(paramContext, paramString, true, (DialogInterface.OnCancelListener)a.COq);
     AppMethodBeat.o(82754);
     return paramString;
   }
@@ -108,16 +108,16 @@ public final class p
     return paramp;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class a
     implements DialogInterface.OnCancelListener
   {
-    public static final a Bwi;
+    public static final a COq;
     
     static
     {
       AppMethodBeat.i(82752);
-      Bwi = new a();
+      COq = new a();
       AppMethodBeat.o(82752);
     }
     
@@ -132,8 +132,8 @@ public final class p
       }
       catch (Exception paramDialogInterface)
       {
-        n.a locala = n.Bvn;
-        ad.e(n.access$getTAG$cp(), "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+        n.a locala = n.CNw;
+        ac.e(n.access$getTAG$cp(), "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
         AppMethodBeat.o(82751);
       }
     }

@@ -9,16 +9,16 @@ import java.util.Collections;
 public final class h
   implements b
 {
-  private static long bwP;
-  private static int koZ;
-  private static long kpa;
-  private int bwK;
-  private long bxw;
+  private static long buL;
+  private static int kQs;
+  private static long kQt;
+  private int buG;
+  private long bvf;
   private final Handler eventHandler;
-  private final b.a koV;
-  private final c koW;
-  private final p koX;
-  private long koY;
+  private final b.a kQo;
+  private final c kQp;
+  private final p kQq;
+  private long kQr;
   
   public h()
   {
@@ -28,8 +28,8 @@ public final class h
   public h(byte paramByte)
   {
     this(new q());
-    AppMethodBeat.i(193871);
-    AppMethodBeat.o(193871);
+    AppMethodBeat.i(194218);
+    AppMethodBeat.o(194218);
   }
   
   private h(c paramc)
@@ -39,13 +39,13 @@ public final class h
   
   private h(c paramc, byte paramByte)
   {
-    AppMethodBeat.i(193872);
+    AppMethodBeat.i(194219);
     this.eventHandler = null;
-    this.koV = null;
-    this.koW = paramc;
-    this.koX = new p();
-    bwP = -1L;
-    AppMethodBeat.o(193872);
+    this.kQo = null;
+    this.kQp = paramc;
+    this.kQq = new p();
+    buL = -1L;
+    AppMethodBeat.o(194219);
   }
   
   public final void onTransferEnd()
@@ -56,55 +56,55 @@ public final class h
     {
       try
       {
-        AppMethodBeat.i(193874);
-        if (this.bwK > 0)
+        AppMethodBeat.i(194221);
+        if (this.buG > 0)
         {
           bool = true;
           a.checkState(bool);
-          l2 = this.koW.elapsedRealtime();
-          i = (int)(l2 - this.bxw);
-          koZ = i;
+          l2 = this.kQp.elapsedRealtime();
+          i = (int)(l2 - this.bvf);
+          kQs = i;
           if (i <= 0) {
             break label527;
           }
-          f = (float)(this.koY * 8000L / koZ);
-          localObject4 = this.koX;
-          i = (int)Math.sqrt(this.koY);
-          if (((p)localObject4).bzm != 1)
+          f = (float)(this.kQr * 8000L / kQs);
+          localObject4 = this.kQq;
+          i = (int)Math.sqrt(this.kQr);
+          if (((p)localObject4).bwU != 1)
           {
-            Collections.sort(((p)localObject4).bzk, p.bzh);
-            ((p)localObject4).bzm = 1;
+            Collections.sort(((p)localObject4).bwS, p.bwP);
+            ((p)localObject4).bwU = 1;
           }
-          if (((p)localObject4).bzp <= 0) {
+          if (((p)localObject4).bwX <= 0) {
             break label323;
           }
-          Object localObject1 = ((p)localObject4).kpq;
-          j = ((p)localObject4).bzp - 1;
-          ((p)localObject4).bzp = j;
+          Object localObject1 = ((p)localObject4).kQJ;
+          j = ((p)localObject4).bwX - 1;
+          ((p)localObject4).bwX = j;
           localObject1 = localObject1[j];
-          j = ((p)localObject4).bzn;
-          ((p)localObject4).bzn = (j + 1);
+          j = ((p)localObject4).bwV;
+          ((p)localObject4).bwV = (j + 1);
           ((p.a)localObject1).index = j;
           ((p.a)localObject1).weight = i;
           ((p.a)localObject1).value = f;
-          ((p)localObject4).bzk.add(localObject1);
-          ((p)localObject4).bzo += i;
-          if (((p)localObject4).bzo <= ((p)localObject4).bzj) {
+          ((p)localObject4).bwS.add(localObject1);
+          ((p)localObject4).bwW += i;
+          if (((p)localObject4).bwW <= ((p)localObject4).bwR) {
             break;
           }
-          i = ((p)localObject4).bzo - ((p)localObject4).bzj;
-          localObject1 = (p.a)((p)localObject4).bzk.get(0);
+          i = ((p)localObject4).bwW - ((p)localObject4).bwR;
+          localObject1 = (p.a)((p)localObject4).bwS.get(0);
           if (((p.a)localObject1).weight > i) {
             break label336;
           }
-          ((p)localObject4).bzo -= ((p.a)localObject1).weight;
-          ((p)localObject4).bzk.remove(0);
-          if (((p)localObject4).bzp >= 5) {
+          ((p)localObject4).bwW -= ((p.a)localObject1).weight;
+          ((p)localObject4).bwS.remove(0);
+          if (((p)localObject4).bwX >= 5) {
             continue;
           }
-          p.a[] arrayOfa = ((p)localObject4).kpq;
-          i = ((p)localObject4).bzp;
-          ((p)localObject4).bzp = (i + 1);
+          p.a[] arrayOfa = ((p)localObject4).kQJ;
+          i = ((p)localObject4).bwX;
+          ((p)localObject4).bwX = (i + 1);
           arrayOfa[i] = localObject1;
           continue;
         }
@@ -117,20 +117,20 @@ public final class h
       continue;
       label336:
       ((p.a)localObject3).weight -= i;
-      ((p)localObject4).bzo -= i;
+      ((p)localObject4).bwW -= i;
     }
-    Object localObject3 = this.koX;
-    if (((p)localObject3).bzm != 0)
+    Object localObject3 = this.kQq;
+    if (((p)localObject3).bwU != 0)
     {
-      Collections.sort(((p)localObject3).bzk, p.bzi);
-      ((p)localObject3).bzm = 0;
+      Collections.sort(((p)localObject3).bwS, p.bwQ);
+      ((p)localObject3).bwU = 0;
     }
-    float f = ((p)localObject3).bzo;
+    float f = ((p)localObject3).bwW;
     final int i = 0;
     int j = 0;
-    if (i < ((p)localObject3).bzk.size())
+    if (i < ((p)localObject3).bwS.size())
     {
-      localObject4 = (p.a)((p)localObject3).bzk.get(i);
+      localObject4 = (p.a)((p)localObject3).bwS.get(i);
       j = ((p.a)localObject4).weight + j;
       if (j >= 0.5F * f)
       {
@@ -145,32 +145,32 @@ public final class h
     label615:
     for (final long l1 = -1L;; l1 = f)
     {
-      bwP = l1;
-      kpa = l1;
-      i = koZ;
-      l1 = this.koY;
-      long l3 = bwP;
-      if ((this.eventHandler != null) && (this.koV != null)) {
+      buL = l1;
+      kQt = l1;
+      i = kQs;
+      l1 = this.kQr;
+      long l3 = buL;
+      if ((this.eventHandler != null) && (this.kQo != null)) {
         this.eventHandler.post(new Runnable()
         {
           public final void run() {}
         });
       }
-      this.bwK -= 1;
-      if (this.bwK > 0) {
-        this.bxw = l2;
+      this.buG -= 1;
+      if (this.buG > 0) {
+        this.bvf = l2;
       }
-      this.koY = 0L;
-      AppMethodBeat.o(193874);
+      this.kQr = 0L;
+      AppMethodBeat.o(194221);
       return;
       i += 1;
       break;
-      if (((p)localObject3).bzk.isEmpty())
+      if (((p)localObject3).bwS.isEmpty())
       {
         f = (0.0F / 0.0F);
         break label455;
       }
-      f = ((p.a)((p)localObject3).bzk.get(((p)localObject3).bzk.size() - 1)).value;
+      f = ((p.a)((p)localObject3).bwS.get(((p)localObject3).bwS.size() - 1)).value;
       break label455;
     }
   }
@@ -179,22 +179,22 @@ public final class h
   {
     try
     {
-      AppMethodBeat.i(193873);
-      if (this.bwK == 0) {
-        this.bxw = this.koW.elapsedRealtime();
+      AppMethodBeat.i(194220);
+      if (this.buG == 0) {
+        this.bvf = this.kQp.elapsedRealtime();
       }
-      this.bwK += 1;
-      AppMethodBeat.o(193873);
+      this.buG += 1;
+      AppMethodBeat.o(194220);
       return;
     }
     finally {}
   }
   
-  public final void sc(int paramInt)
+  public final void sS(int paramInt)
   {
     try
     {
-      this.koY += paramInt;
+      this.kQr += paramInt;
       return;
     }
     finally

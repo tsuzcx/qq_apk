@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.ui.video.n;
 import com.tencent.mm.plugin.topstory.ui.video.o;
-import com.tencent.mm.protocal.protobuf.ddb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Map;
@@ -20,21 +20,21 @@ import java.util.Map;
 public final class e
   extends com.tencent.mm.plugin.topstory.ui.video.e
 {
-  boolean yRK;
-  private boolean yRL;
-  boolean yRV;
-  private h yRW;
+  private boolean AfA;
+  boolean AfK;
+  private h AfL;
+  boolean Afz;
   
   public e(b paramb)
   {
     super(paramb);
   }
   
-  public final int Pl(int paramInt)
+  public final int Rr(int paramInt)
   {
     AppMethodBeat.i(126426);
     int i = getHeadersCount();
-    if (bt.gL(((b)this.yOm).dOT().Pq(paramInt - i).rNO))
+    if (bs.gY(((b)this.Acd).edt().Rw(paramInt - i).sVE))
     {
       AppMethodBeat.o(126426);
       return 0;
@@ -43,45 +43,45 @@ public final class e
     return 1;
   }
   
-  public final void m(final List<ddb> paramList, final boolean paramBoolean)
+  public final void n(final List<dio> paramList, final boolean paramBoolean)
   {
     AppMethodBeat.i(126425);
-    super.m(paramList, paramBoolean);
-    aq.f(new Runnable()
+    super.n(paramList, paramBoolean);
+    ap.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126424);
         for (;;)
         {
-          synchronized (e.a(e.this).dOT())
+          synchronized (e.a(e.this).edt())
           {
-            List localList = ???.dPE();
-            ad.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(paramList.size()) });
+            List localList = ???.eed();
+            ac.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(paramList.size()) });
             if (!paramBoolean) {
               break label498;
             }
             int j = localList.size();
             if (localList.size() > 0)
             {
-              if (!((ddb)localList.get(0)).rNP.equals(((ddb)paramList.get(0)).rNP))
+              if (!((dio)localList.get(0)).sVF.equals(((dio)paramList.get(0)).sVF))
               {
                 paramList.remove(0);
                 i = 0;
                 localList.addAll(paramList);
                 if (i != 0)
                 {
-                  localObject2 = (ddb)paramList.get(0);
+                  localObject2 = (dio)paramList.get(0);
                   localList.set(0, localObject2);
-                  com.tencent.mm.plugin.topstory.ui.video.h localh = e.this.b((ddb)localObject2);
+                  com.tencent.mm.plugin.topstory.ui.video.h localh = e.this.b((dio)localObject2);
                   if (localh != null) {
-                    localh.d((ddb)localObject2);
+                    localh.d((dio)localObject2);
                   }
                 }
                 if (e.b(e.this))
                 {
-                  e.this.aql.notifyChanged();
-                  e.a(e.this).dOF().i((ddb)localList.get(0));
+                  e.this.arg.notifyChanged();
+                  e.a(e.this).edf().i((dio)localList.get(0));
                   AppMethodBeat.o(126424);
                 }
               }
@@ -93,11 +93,11 @@ public final class e
               }
               if ((e.c(e.this) != null) && (localList != null) && (localList.get(0) != null))
               {
-                localObject2 = (ddb)localList.get(0);
-                e.c(e.this).d((ddb)localObject2);
-                e.d(e.this).put(((ddb)localObject2).rNP, new WeakReference(e.c(e.this)));
+                localObject2 = (dio)localList.get(0);
+                e.c(e.this).d((dio)localObject2);
+                e.d(e.this).put(((dio)localObject2).sVF, new WeakReference(e.c(e.this)));
                 e.e(e.this);
-                if (((((ddb)localObject2).EuW & 0x80) > 0) && (g.afB().afk().getInt(ae.a.FsP, 0) <= 0)) {
+                if (((((dio)localObject2).FRX & 0x80) > 0) && (g.agR().agA().getInt(ah.a.GQH, 0) <= 0)) {
                   e.g(e.this).getRecyclerView().postDelayed(new e.1.1(this), 1000L);
                 }
               }

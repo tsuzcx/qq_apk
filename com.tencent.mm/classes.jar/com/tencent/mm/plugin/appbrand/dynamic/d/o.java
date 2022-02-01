@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.ab.b.b.a;
+import com.tencent.mm.aa.b.b.a;
 import org.json.JSONObject;
 
 public final class o
@@ -11,11 +11,11 @@ public final class o
     super("triggerGettingWidgetData", -2);
   }
   
-  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1) {}
+  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.o
  * JD-Core Version:    0.7.0.1
  */

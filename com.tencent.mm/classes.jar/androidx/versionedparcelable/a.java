@@ -81,15 +81,15 @@ public abstract class a
     return Class.forName(String.format("%s.%sParcelizer", new Object[] { paramClass.getPackage().getName(), paramClass.getSimpleName() }), false, paramClass.getClassLoader());
   }
   
-  public final void K(String paramString)
+  public final void M(String paramString)
   {
-    dk(7);
+    dj(7);
     writeString(paramString);
   }
   
-  public final String L(String paramString)
+  public final String N(String paramString)
   {
-    if (!dj(7)) {
+    if (!di(7)) {
       return paramString;
     }
     return readString();
@@ -97,29 +97,29 @@ public abstract class a
   
   public final <T extends Parcelable> T a(T paramT, int paramInt)
   {
-    if (!dj(paramInt)) {
+    if (!di(paramInt)) {
       return paramT;
     }
-    return mV();
+    return nf();
   }
   
   protected abstract void a(Parcelable paramParcelable);
   
   public final void a(c paramc)
   {
-    dk(1);
+    dj(1);
     b(paramc);
   }
   
   public final void aR(int paramInt1, int paramInt2)
   {
-    dk(paramInt2);
+    dj(paramInt2);
     writeInt(paramInt1);
   }
   
   public final int aS(int paramInt1, int paramInt2)
   {
-    if (!dj(paramInt2)) {
+    if (!di(paramInt2)) {
       return paramInt1;
     }
     return readInt();
@@ -133,52 +133,52 @@ public abstract class a
       return;
     }
     c(paramc);
-    a locala = mT();
+    a locala = nd();
     a(paramc, locala);
-    locala.mS();
+    locala.nc();
   }
   
   public final <T extends c> T d(T paramT)
   {
-    if (!dj(1)) {
+    if (!di(1)) {
       return paramT;
     }
-    return mW();
+    return ng();
   }
   
-  protected abstract boolean dj(int paramInt);
+  protected abstract boolean di(int paramInt);
   
-  protected abstract void dk(int paramInt);
+  protected abstract void dj(int paramInt);
   
   public final void i(byte[] paramArrayOfByte)
   {
-    dk(2);
+    dj(2);
     writeByteArray(paramArrayOfByte);
   }
   
   public final byte[] j(byte[] paramArrayOfByte)
   {
-    if (!dj(2)) {
+    if (!di(2)) {
       return paramArrayOfByte;
     }
-    return mU();
+    return ne();
   }
   
-  protected abstract void mS();
+  protected abstract void nc();
   
-  protected abstract a mT();
+  protected abstract a nd();
   
-  protected abstract byte[] mU();
+  protected abstract byte[] ne();
   
-  protected abstract <T extends Parcelable> T mV();
+  protected abstract <T extends Parcelable> T nf();
   
-  protected final <T extends c> T mW()
+  protected final <T extends c> T ng()
   {
     String str = readString();
     if (str == null) {
       return null;
     }
-    return a(str, mT());
+    return a(str, nd());
   }
   
   protected abstract int readInt();
@@ -191,7 +191,7 @@ public abstract class a
   
   public final void writeParcelable(Parcelable paramParcelable, int paramInt)
   {
-    dk(paramInt);
+    dj(paramInt);
     a(paramParcelable);
   }
   
@@ -199,7 +199,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     androidx.versionedparcelable.a
  * JD-Core Version:    0.7.0.1
  */

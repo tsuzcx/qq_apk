@@ -8,15 +8,15 @@ public abstract class e
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ekr = "mau".hashCode();
-  private static final int eks = "dau".hashCode();
-  private static final int ekt = "useTime".hashCode();
+  private static final int emv = "mau".hashCode();
+  private static final int emw = "dau".hashCode();
+  private static final int emx = "useTime".hashCode();
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private boolean __hadSetkey = true;
-  private boolean eko = true;
-  private boolean ekp = true;
-  private boolean ekq = true;
+  private boolean ems = true;
+  private boolean emt = true;
+  private boolean emu = true;
   public int field_dau;
   public int field_key;
   public int field_mau;
@@ -47,11 +47,11 @@ public abstract class e
       break label20;
       break;
       label65:
-      if (ekr == k) {
+      if (emv == k) {
         this.field_mau = paramCursor.getInt(i);
-      } else if (eks == k) {
+      } else if (emw == k) {
         this.field_dau = paramCursor.getInt(i);
-      } else if (ekt == k) {
+      } else if (emx == k) {
         this.field_useTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -65,13 +65,13 @@ public abstract class e
     if (this.__hadSetkey) {
       localContentValues.put("key", Integer.valueOf(this.field_key));
     }
-    if (this.eko) {
+    if (this.ems) {
       localContentValues.put("mau", Integer.valueOf(this.field_mau));
     }
-    if (this.ekp) {
+    if (this.emt) {
       localContentValues.put("dau", Integer.valueOf(this.field_dau));
     }
-    if (this.ekq) {
+    if (this.emu) {
       localContentValues.put("useTime", Long.valueOf(this.field_useTime));
     }
     if (this.systemRowid > 0L) {

@@ -9,9 +9,9 @@ public class SoterDeviceResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SoterDeviceResult> CREATOR;
-  public byte[] Ivp;
-  public int Ivq;
-  public int bRZ;
+  public byte[] JWY;
+  public int JWZ;
+  public int bPH;
   
   static
   {
@@ -25,9 +25,9 @@ public class SoterDeviceResult
   protected SoterDeviceResult(Parcel paramParcel)
   {
     AppMethodBeat.i(88740);
-    this.bRZ = paramParcel.readInt();
-    this.Ivp = paramParcel.createByteArray();
-    this.Ivq = paramParcel.readInt();
+    this.bPH = paramParcel.readInt();
+    this.JWY = paramParcel.createByteArray();
+    this.JWZ = paramParcel.readInt();
     AppMethodBeat.o(88740);
   }
   
@@ -39,15 +39,15 @@ public class SoterDeviceResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(88741);
-    paramParcel.writeInt(this.bRZ);
-    paramParcel.writeByteArray(this.Ivp);
-    paramParcel.writeInt(this.Ivq);
+    paramParcel.writeInt(this.bPH);
+    paramParcel.writeByteArray(this.JWY);
+    paramParcel.writeInt(this.JWZ);
     AppMethodBeat.o(88741);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.soterserver.SoterDeviceResult
  * JD-Core Version:    0.7.0.1
  */

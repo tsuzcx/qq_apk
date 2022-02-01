@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.PorterDuff.Mode;
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.c;
 import com.tencent.mm.api.p;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.z.c;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Stack;
@@ -15,60 +15,60 @@ import java.util.Stack;
 public final class d
   implements f<c>
 {
-  public Stack<c> fmC;
-  public Stack<c> fmD;
-  private int fmF;
+  public Stack<c> fpX;
+  public Stack<c> fpY;
+  private int fqa;
   
-  public final void Mj()
+  public final void Mh()
   {
-    this.fmF += 1;
+    this.fqa += 1;
   }
   
-  public final ListIterator<c> UA()
-  {
-    AppMethodBeat.i(9222);
-    ListIterator localListIterator = this.fmC.listIterator(this.fmC.size());
-    AppMethodBeat.o(9222);
-    return localListIterator;
-  }
-  
-  public final void Ut()
+  public final void Vo()
   {
     AppMethodBeat.i(9214);
-    ad.i("MicroMsg.EmojiAndTextCache", "[onRestore] size:%s isExit:%s", new Object[] { Integer.valueOf(this.fmC.size()), Boolean.FALSE });
-    this.fmC.clear();
-    if (this.fmD != null)
+    ac.i("MicroMsg.EmojiAndTextCache", "[onRestore] size:%s isExit:%s", new Object[] { Integer.valueOf(this.fpX.size()), Boolean.FALSE });
+    this.fpX.clear();
+    if (this.fpY != null)
     {
-      ad.i("MicroMsg.EmojiAndTextCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fmD.size()) });
-      this.fmC.addAll(this.fmD);
+      ac.i("MicroMsg.EmojiAndTextCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fpY.size()) });
+      this.fpX.addAll(this.fpY);
     }
-    ad.i("MicroMsg.EmojiAndTextCache", "[onRestore] mCurStack size:%s ", new Object[] { Integer.valueOf(this.fmC.size()) });
-    Iterator localIterator = this.fmC.iterator();
+    ac.i("MicroMsg.EmojiAndTextCache", "[onRestore] mCurStack size:%s ", new Object[] { Integer.valueOf(this.fpX.size()) });
+    Iterator localIterator = this.fpX.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).adN();
+      ((c)localIterator.next()).afd();
     }
     AppMethodBeat.o(9214);
   }
   
-  public final c Uy()
+  public final c Vt()
   {
     AppMethodBeat.i(9217);
-    c localc = (c)this.fmC.pop();
+    c localc = (c)this.fpX.pop();
     AppMethodBeat.o(9217);
     return localc;
   }
   
-  public final c Uz()
+  public final c Vu()
   {
     AppMethodBeat.i(9218);
-    if ((this.fmC != null) && (this.fmC.size() > 0))
+    if ((this.fpX != null) && (this.fpX.size() > 0))
     {
-      c localc = (c)this.fmC.peek();
+      c localc = (c)this.fpX.peek();
       AppMethodBeat.o(9218);
       return localc;
     }
     AppMethodBeat.o(9218);
     return null;
+  }
+  
+  public final ListIterator<c> Vv()
+  {
+    AppMethodBeat.i(9222);
+    ListIterator localListIterator = this.fpX.listIterator(this.fpX.size());
+    AppMethodBeat.o(9222);
+    return localListIterator;
   }
   
   public final void a(Canvas paramCanvas, boolean paramBoolean)
@@ -77,19 +77,19 @@ public final class d
     if (paramBoolean)
     {
       paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-      localObject = this.fmC.iterator();
+      localObject = this.fpX.iterator();
       while (((Iterator)localObject).hasNext())
       {
         c localc = (c)((Iterator)localObject).next();
-        if (!localc.fsk) {
+        if (!localc.fvR) {
           localc.draw(paramCanvas);
         }
       }
       AppMethodBeat.o(9215);
       return;
     }
-    Object localObject = Uz();
-    if ((localObject != null) && (!((c)localObject).fsk)) {
+    Object localObject = Vu();
+    if ((localObject != null) && (!((c)localObject).fvR)) {
       ((c)localObject).draw(paramCanvas);
     }
     AppMethodBeat.o(9215);
@@ -98,8 +98,8 @@ public final class d
   public final void a(c paramc)
   {
     AppMethodBeat.i(9219);
-    if (this.fmC != null) {
-      this.fmC.push(paramc);
+    if (this.fpX != null) {
+      this.fpX.push(paramc);
     }
     AppMethodBeat.o(9219);
   }
@@ -110,18 +110,18 @@ public final class d
     int i;
     if (paramBoolean)
     {
-      if (this.fmC != null)
+      if (this.fpX != null)
       {
-        i = this.fmC.size();
+        i = this.fpX.size();
         AppMethodBeat.o(9220);
         return i;
       }
       AppMethodBeat.o(9220);
       return 0;
     }
-    if (this.fmD != null)
+    if (this.fpY != null)
     {
-      i = this.fmD.size();
+      i = this.fpY.size();
       AppMethodBeat.o(9220);
       return i;
     }
@@ -137,40 +137,40 @@ public final class d
       AppMethodBeat.o(9221);
       return;
     }
-    int i = this.fmC.indexOf(paramc);
-    this.fmC.remove(i);
-    this.fmC.push(paramc);
+    int i = this.fpX.indexOf(paramc);
+    this.fpX.remove(i);
+    this.fpX.push(paramc);
     AppMethodBeat.o(9221);
   }
   
   public final void cA(boolean paramBoolean)
   {
     AppMethodBeat.i(9213);
-    ad.i("MicroMsg.EmojiAndTextCache", "[onSave] size:%s isExit:%s", new Object[] { Integer.valueOf(this.fmC.size()), Boolean.valueOf(paramBoolean) });
-    if (this.fmD != null) {
-      this.fmD.clear();
+    ac.i("MicroMsg.EmojiAndTextCache", "[onSave] size:%s isExit:%s", new Object[] { Integer.valueOf(this.fpX.size()), Boolean.valueOf(paramBoolean) });
+    if (this.fpY != null) {
+      this.fpY.clear();
     }
-    this.fmD = new Stack();
-    Iterator localIterator = this.fmC.iterator();
+    this.fpY = new Stack();
+    Iterator localIterator = this.fpX.iterator();
     c localc;
     while (localIterator.hasNext())
     {
       localc = (c)localIterator.next();
-      this.fmD.push(localc.adS());
+      this.fpY.push(localc.afi());
     }
-    ad.i("MicroMsg.EmojiAndTextCache", "[onSave] mLastStack size:%s", new Object[] { Integer.valueOf(this.fmD.size()) });
+    ac.i("MicroMsg.EmojiAndTextCache", "[onSave] mLastStack size:%s", new Object[] { Integer.valueOf(this.fpY.size()) });
     if (paramBoolean)
     {
-      this.fmC.clear();
-      localIterator = this.fmD.iterator();
+      this.fpX.clear();
+      localIterator = this.fpY.iterator();
       while (localIterator.hasNext())
       {
         localc = (c)localIterator.next();
-        ad.d("MicroMsg.EmojiItem", "[recycleBitmap]");
-        if ((localc.gax != null) && (!localc.gax.isRecycled()))
+        ac.d("MicroMsg.EmojiItem", "[recycleBitmap]");
+        if ((localc.gfd != null) && (!localc.gfd.isRecycled()))
         {
-          ad.i("MicroMsg.EmojiItem", "bitmap recycle %s", new Object[] { localc.gax.toString() });
-          localc.gax.recycle();
+          ac.i("MicroMsg.EmojiItem", "bitmap recycle %s", new Object[] { localc.gfd.toString() });
+          localc.gfd.recycle();
         }
       }
     }
@@ -184,20 +184,20 @@ public final class d
     Iterator localIterator;
     if (paramBoolean)
     {
-      localIterator = this.fmC.iterator();
+      localIterator = this.fpX.iterator();
       while (localIterator.hasNext()) {
-        if (((c)localIterator.next() instanceof com.tencent.mm.aa.f)) {
+        if (((c)localIterator.next() instanceof com.tencent.mm.z.f)) {
           arrayOfInt[1] += 1;
         } else {
           arrayOfInt[0] += 1;
         }
       }
     }
-    if (this.fmD != null)
+    if (this.fpY != null)
     {
-      localIterator = this.fmD.iterator();
+      localIterator = this.fpY.iterator();
       while (localIterator.hasNext()) {
-        if (((c)localIterator.next() instanceof com.tencent.mm.aa.f)) {
+        if (((c)localIterator.next() instanceof com.tencent.mm.z.f)) {
           arrayOfInt[1] += 1;
         } else {
           arrayOfInt[0] += 1;
@@ -211,7 +211,7 @@ public final class d
   public final void e(Canvas paramCanvas)
   {
     AppMethodBeat.i(9216);
-    Iterator localIterator = this.fmC.iterator();
+    Iterator localIterator = this.fpX.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
@@ -221,61 +221,61 @@ public final class d
     AppMethodBeat.o(9216);
   }
   
-  public final String[] oJ(String paramString)
-  {
-    AppMethodBeat.i(9224);
-    String[] arrayOfString = new String[2];
-    arrayOfString[0] = "";
-    arrayOfString[1] = "";
-    Iterator localIterator = this.fmC.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      if ((localc instanceof com.tencent.mm.aa.f)) {
-        arrayOfString[1] = (arrayOfString[1] + ((com.tencent.mm.aa.f)localc).gaW.toString() + paramString);
-      } else {
-        arrayOfString[0] = (arrayOfString[0] + localc.gaw.JS() + paramString);
-      }
-    }
-    AppMethodBeat.o(9224);
-    return arrayOfString;
-  }
-  
   public final void onCreate()
   {
     AppMethodBeat.i(9211);
-    ad.i("MicroMsg.EmojiAndTextCache", "[onCreate]");
-    this.fmC = new Stack();
+    ac.i("MicroMsg.EmojiAndTextCache", "[onCreate]");
+    this.fpX = new Stack();
     AppMethodBeat.o(9211);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(9212);
-    ad.i("MicroMsg.EmojiAndTextCache", "[onDestroy]");
+    ac.i("MicroMsg.EmojiAndTextCache", "[onDestroy]");
     Iterator localIterator;
-    if (this.fmC != null)
+    if (this.fpX != null)
     {
-      localIterator = this.fmC.iterator();
+      localIterator = this.fpX.iterator();
       while (localIterator.hasNext()) {
         ((c)localIterator.next()).clear();
       }
-      this.fmC.clear();
+      this.fpX.clear();
     }
-    if (this.fmD != null)
+    if (this.fpY != null)
     {
-      localIterator = this.fmD.iterator();
+      localIterator = this.fpY.iterator();
       while (localIterator.hasNext()) {
         ((c)localIterator.next()).clear();
       }
-      this.fmD.clear();
+      this.fpY.clear();
     }
     AppMethodBeat.o(9212);
+  }
+  
+  public final String[] rS(String paramString)
+  {
+    AppMethodBeat.i(9224);
+    String[] arrayOfString = new String[2];
+    arrayOfString[0] = "";
+    arrayOfString[1] = "";
+    Iterator localIterator = this.fpX.iterator();
+    while (localIterator.hasNext())
+    {
+      c localc = (c)localIterator.next();
+      if ((localc instanceof com.tencent.mm.z.f)) {
+        arrayOfString[1] = (arrayOfString[1] + ((com.tencent.mm.z.f)localc).gfC.toString() + paramString);
+      } else {
+        arrayOfString[0] = (arrayOfString[0] + localc.gfc.JC() + paramString);
+      }
+    }
+    AppMethodBeat.o(9224);
+    return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.cache.d
  * JD-Core Version:    0.7.0.1
  */

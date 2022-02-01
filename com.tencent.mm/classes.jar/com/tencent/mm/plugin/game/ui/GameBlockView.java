@@ -13,16 +13,16 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.e;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class GameBlockView
   extends LinearLayout
 {
   LayoutInflater mInflater;
-  LinearLayout qlu;
-  LinearLayout.LayoutParams sfh;
-  k sfi;
-  a sfj;
+  LinearLayout qTW;
+  LinearLayout.LayoutParams tna;
+  k tnb;
+  a tnc;
   
   public GameBlockView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,20 +35,20 @@ public class GameBlockView
     super.onFinishInflate();
     setOrientation(1);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.sfh = new LinearLayout.LayoutParams(-1, -2);
-    this.qlu = this;
-    this.sfi = new k();
-    ad.i("MicroMsg.GameBlockView", "initView finished");
+    this.tna = new LinearLayout.LayoutParams(-1, -2);
+    this.qTW = this;
+    this.tnb = new k();
+    ac.i("MicroMsg.GameBlockView", "initView finished");
     AppMethodBeat.o(41910);
   }
   
   static final class a
   {
-    public ImageView seX;
-    public TextView seY;
-    public ViewGroup sfm;
-    public TextView sfn;
-    public GameDownloadView sfo;
+    public ImageView tmQ;
+    public TextView tmR;
+    public ViewGroup tnf;
+    public TextView tng;
+    public GameDownloadView tnh;
   }
 }
 

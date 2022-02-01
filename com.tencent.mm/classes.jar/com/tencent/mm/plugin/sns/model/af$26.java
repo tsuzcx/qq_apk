@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tx;
+import com.tencent.mm.g.a.ug;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.sns.j.i;
+import com.tencent.mm.plugin.sns.i.i;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
 final class af$26
-  extends c<tx>
+  extends c<ug>
 {
   af$26(af paramaf)
   {
     AppMethodBeat.i(160668);
-    this.__eventId = tx.class.getName().hashCode();
+    this.__eventId = ug.class.getName().hashCode();
     AppMethodBeat.o(160668);
   }
   
-  private static boolean dtM()
+  private static boolean dIk()
   {
     AppMethodBeat.i(176266);
-    com.tencent.mm.plugin.sns.lucky.a.g.dsq();
-    ae.a locala = ae.a.Fkd;
+    com.tencent.mm.plugin.sns.lucky.a.g.dGP();
+    ah.a locala = ah.a.GHS;
     i locali = new i();
     try
     {
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().set(locala, new String(locali.toByteArray(), Charset.forName("ISO-8859-1")));
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().set(locala, new String(locali.toByteArray(), Charset.forName("ISO-8859-1")));
       AppMethodBeat.o(176266);
       return false;
     }
@@ -38,7 +38,7 @@ final class af$26
     {
       for (;;)
       {
-        ad.w("MicroMsg.RedDotUtil", "mardRedotList save exception:" + localIOException.getLocalizedMessage());
+        ac.w("MicroMsg.RedDotUtil", "mardRedotList save exception:" + localIOException.getLocalizedMessage());
       }
     }
   }

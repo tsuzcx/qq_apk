@@ -435,9 +435,9 @@ public class b
     ((Intent)localObject2).addFlags(268435456);
     ((Intent)localObject2).putExtra("TXScreenCapture.ScreenCaptureIntent", this.f.createScreenCaptureIntent());
     localObject1 = this.e;
-    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).adn(), "com/tencent/liteav/screencapture/b", "h", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lS(0));
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/liteav/screencapture/b", "h", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/liteav/screencapture/b", "h", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(16552);
     return true;

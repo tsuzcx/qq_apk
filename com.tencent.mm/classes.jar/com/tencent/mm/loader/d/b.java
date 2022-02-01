@@ -4,12 +4,12 @@ import com.tencent.mm.loader.h.a.a;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/common/IDataFetcher;", "T", "", "()V", "loadData", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "loader", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady;", "loadDataImp", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "IDataReady", "IDataReady2", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/common/IDataFetcher;", "T", "", "()V", "loadData", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "loader", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady;", "loadDataImp", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "IDataReady", "IDataReady2", "libimageloader_release"})
 public abstract class b<T>
 {
   protected abstract void a(a<T> parama, com.tencent.mm.loader.f.f paramf, b paramb);
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady;", "", "onDataReady", "", "resp", "Lcom/tencent/mm/loader/model/Response;", "onError", "onTransferToBatchGet", "libimageloader_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady;", "", "onDataReady", "", "resp", "Lcom/tencent/mm/loader/model/Response;", "onError", "onTransferToBatchGet", "libimageloader_release"})
   public static abstract interface a
   {
     public abstract void a(com.tencent.mm.loader.h.f<?> paramf);
@@ -17,7 +17,7 @@ public abstract class b<T>
     public abstract void onError();
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "", "onDataReady", "", "resp", "Lcom/tencent/mm/loader/model/Response;", "onError", "onTransferToBatchGet", "libimageloader_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "", "onDataReady", "", "resp", "Lcom/tencent/mm/loader/model/Response;", "onError", "onTransferToBatchGet", "libimageloader_release"})
   public static abstract interface b
   {
     public abstract void a(com.tencent.mm.loader.h.f<?> paramf);
@@ -25,7 +25,7 @@ public abstract class b<T>
     public abstract void onError();
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "T", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "T", "run"})
   public static final class c
     implements Runnable
   {
@@ -33,21 +33,21 @@ public abstract class b<T>
     
     public final void run()
     {
-      this.gjV.execute((Runnable)new Runnable()
+      this.gKI.execute((Runnable)new Runnable()
       {
         public final void run()
         {
-          this.gjZ.gjU.a(this.gjZ.gjW, this.gjZ.gjX, (b.b)new b.b()
+          this.gKM.gKH.a(this.gKM.gKJ, this.gKM.gKK, (b.b)new b.b()
           {
             public final void a(com.tencent.mm.loader.h.f<?> paramAnonymous2f)
             {
               k.h(paramAnonymous2f, "resp");
-              this.gka.gjZ.gjY.a(paramAnonymous2f);
+              this.gKN.gKM.gKL.a(paramAnonymous2f);
             }
             
             public final void onError()
             {
-              this.gka.gjZ.gjY.onError();
+              this.gKN.gKM.gKL.onError();
             }
           });
         }
@@ -57,7 +57,7 @@ public abstract class b<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.d.b
  * JD-Core Version:    0.7.0.1
  */

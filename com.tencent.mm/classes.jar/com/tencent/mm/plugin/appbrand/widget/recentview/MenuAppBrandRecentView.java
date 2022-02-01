@@ -16,9 +16,9 @@ import com.tencent.mm.plugin.appbrand.widget.desktop.b;
 public class MenuAppBrandRecentView
   extends BaseAppBrandRecentView
 {
-  private static final int mlZ = b.lTd - 1;
-  private static final int mma = b.lTd;
-  private AppBrandRecentView.b lWI;
+  private static final int mOa = b.mvf - 1;
+  private static final int mOb = b.mvf;
+  private AppBrandRecentView.b myK;
   
   public MenuAppBrandRecentView(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class MenuAppBrandRecentView
     if ((parama != null) && (parama.type == 2))
     {
       paramb.titleTv.setVisibility(0);
-      paramb.lVy.setVisibility(8);
+      paramb.mxA.setVisibility(8);
       paramb.titleTv.setText(2131761462);
-      paramb.kXS.setImageResource(2131689605);
+      paramb.lzC.setImageResource(2131689605);
       AppMethodBeat.o(50005);
       return;
     }
     if ((parama != null) && (parama.type == -1)) {
-      paramb.kXS.setImageResource(2131690013);
+      paramb.lzC.setImageResource(2131690013);
     }
     AppMethodBeat.o(50005);
   }
@@ -57,12 +57,12 @@ public class MenuAppBrandRecentView
   
   protected int getLoadCount()
   {
-    return mma;
+    return mOb;
   }
   
   protected int getShowCount()
   {
-    return mlZ;
+    return mOa;
   }
   
   protected String getType()
@@ -94,7 +94,7 @@ public class MenuAppBrandRecentView
           {
             paramAnonymousView = new AppBrandStatObject();
             paramAnonymousView.scene = 1090;
-            ((n)g.ab(n.class)).a(MenuAppBrandRecentView.this.getContext(), paramAnonymousa.lVq.username, null, paramAnonymousa.lVq.gXn, -1, null, paramAnonymousView);
+            ((n)g.ab(n.class)).a(MenuAppBrandRecentView.this.getContext(), paramAnonymousa.mxs.username, null, paramAnonymousa.mxs.hxM, -1, null, paramAnonymousView);
           }
           AppMethodBeat.o(50002);
           return false;
@@ -117,12 +117,12 @@ public class MenuAppBrandRecentView
   
   public void setOnItemClickListener(AppBrandRecentView.b paramb)
   {
-    this.lWI = paramb;
+    this.myK = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.MenuAppBrandRecentView
  * JD-Core Version:    0.7.0.1
  */

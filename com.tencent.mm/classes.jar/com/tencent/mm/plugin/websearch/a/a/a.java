@@ -5,13 +5,13 @@ import java.util.List;
 
 public abstract class a<T>
 {
-  protected int AHR;
+  protected int Cai;
   protected String query;
   
   public a(String paramString)
   {
     this.query = paramString;
-    this.AHR = 2147483647;
+    this.Cai = 2147483647;
   }
   
   public boolean equals(Object paramObject)
@@ -25,14 +25,14 @@ public abstract class a<T>
       }
       paramObject = (a)paramObject;
       if ((this.query == paramObject.query) || ((this.query != null) && (this.query.equalsIgnoreCase(paramObject.query)))) {}
-      for (int i = 1; (paramObject.AHR != this.AHR) || (i == 0); i = 0) {
+      for (int i = 1; (paramObject.Cai != this.Cai) || (i == 0); i = 0) {
         return false;
       }
     }
     return false;
   }
   
-  public abstract void gu(List<m> paramList);
+  public abstract void gF(List<m> paramList);
   
   public int hashCode()
   {
@@ -41,7 +41,7 @@ public abstract class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.a.a.a
  * JD-Core Version:    0.7.0.1
  */

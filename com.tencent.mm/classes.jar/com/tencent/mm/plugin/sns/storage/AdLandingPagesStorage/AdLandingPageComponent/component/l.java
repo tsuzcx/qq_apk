@@ -18,101 +18,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.f;
 
 public final class l
 {
-  public String fDK;
-  private View hIZ;
+  public String fHr;
+  private View ijA;
   private Context mContext;
   public String mTitle;
-  public String oyz;
-  a xag;
-  private int xah;
-  private int xai;
-  private boolean xaj;
-  private boolean xak;
-  public a xal;
+  public String pbZ;
+  a ymV;
+  private int ymW;
+  private int ymX;
+  private boolean ymY;
+  private boolean ymZ;
+  public a yna;
   
   public l(final Context paramContext, k paramk, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(96483);
-    this.fDK = "";
+    this.fHr = "";
     this.mTitle = "";
-    this.oyz = "";
-    this.xah = -1;
-    this.xai = -1;
-    this.xaj = false;
-    this.xak = false;
-    this.fDK = paramString1;
+    this.pbZ = "";
+    this.ymW = -1;
+    this.ymX = -1;
+    this.ymY = false;
+    this.ymZ = false;
+    this.fHr = paramString1;
     this.mTitle = paramString2;
-    this.oyz = paramString3;
+    this.pbZ = paramString3;
     this.mContext = paramContext;
-    this.xaj = paramBoolean1;
-    this.xak = paramBoolean2;
+    this.ymY = paramBoolean1;
+    this.ymZ = paramBoolean2;
     if ((paramk != null) && (paramk.getView() != null))
     {
-      this.xag = new a(paramContext);
-      this.xag.setCanceledOnTouchOutside(true);
-      this.hIZ = View.inflate(paramContext, 2131495496, null);
-      if (this.hIZ == null)
+      this.ymV = new a(paramContext);
+      this.ymV.setCanceledOnTouchOutside(true);
+      this.ijA = View.inflate(paramContext, 2131495496, null);
+      if (this.ijA == null)
       {
-        ad.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
+        ac.e("MicroMsg.AdLandingPageBottomSheet", "mRootView init fail!");
         AppMethodBeat.o(96483);
         return;
       }
-      paramContext = (LinearLayout)this.hIZ.findViewById(2131298549);
+      paramContext = (LinearLayout)this.ijA.findViewById(2131298549);
       paramString1 = paramk.getView();
       if (paramString1.getParent() != null) {
         ((ViewGroup)paramString1.getParent()).removeView(paramString1);
       }
-      this.xah = ((int)paramk.dwb().wWG);
-      this.xai = ((int)paramk.dwb().wWH);
+      this.ymW = ((int)paramk.dKA().yju);
+      this.ymX = ((int)paramk.dKA().yjv);
       paramk = new LinearLayout.LayoutParams(-1, -1);
-      if ((this.xah != 2147483647) && (this.xai != 2147483647)) {}
+      if ((this.ymW != 2147483647) && (this.ymX != 2147483647)) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0)
         {
-          paramk.width = this.xah;
-          paramk.height = this.xai;
+          paramk.width = this.ymW;
+          paramk.height = this.ymX;
         }
         paramContext.addView(paramString1, paramk);
-        ((TextView)this.hIZ.findViewById(2131297466)).setText(paramString2);
-        paramContext = this.hIZ.findViewById(2131298368);
+        ((TextView)this.ijA.findViewById(2131297466)).setText(paramString2);
+        paramContext = this.ijA.findViewById(2131298368);
         paramContext.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(96478);
-            l.this.xag.cancel();
+            l.this.ymV.cancel();
             AppMethodBeat.o(96478);
           }
         });
-        paramk = this.hIZ.findViewById(2131297460);
+        paramk = this.ijA.findViewById(2131297460);
         paramk.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(96479);
-            l.this.xag.cancel();
+            l.this.ymV.cancel();
             AppMethodBeat.o(96479);
           }
         });
-        if (!this.xak) {
+        if (!this.ymZ) {
           paramk.setVisibility(8);
         }
-        if (this.xaj) {
+        if (this.ymY) {
           paramContext.setVisibility(8);
         }
-        paramContext = (ImageView)this.hIZ.findViewById(2131305894);
+        paramContext = (ImageView)this.ijA.findViewById(2131305894);
         paramContext.setVisibility(8);
-        if (bt.isNullOrNil(paramString3)) {
+        if (bs.isNullOrNil(paramString3)) {
           break label424;
         }
-        paramk = h.iY("adId", paramString3);
+        paramk = h.jw("adId", paramString3);
         if (paramk == null) {
           break;
         }
@@ -123,7 +123,7 @@ public final class l
       }
       h.a(paramString3, 0, new f.a()
       {
-        public final void apm(String paramAnonymousString)
+        public final void asD(String paramAnonymousString)
         {
           AppMethodBeat.i(96480);
           try
@@ -136,76 +136,76 @@ public final class l
           }
           catch (Exception paramAnonymousString)
           {
-            ad.e("MicroMsg.AdLandingPageBottomSheet", "%s" + bt.m(paramAnonymousString));
+            ac.e("MicroMsg.AdLandingPageBottomSheet", "%s" + bs.m(paramAnonymousString));
             AppMethodBeat.o(96480);
           }
         }
         
-        public final void dsA() {}
+        public final void dFC() {}
         
-        public final void duP() {}
+        public final void dFD() {}
       });
     }
     label424:
     AppMethodBeat.o(96483);
   }
   
-  public final void bfo()
+  public final void bmi()
   {
     AppMethodBeat.i(96485);
-    if (this.xag != null) {
-      this.xag.dismiss();
+    if (this.ymV != null) {
+      this.ymV.dismiss();
     }
     AppMethodBeat.o(96485);
   }
   
-  public final void csG()
+  public final void cED()
   {
     AppMethodBeat.i(96484);
-    if ((this.hIZ == null) || (this.xag == null))
+    if ((this.ijA == null) || (this.ymV == null))
     {
       AppMethodBeat.o(96484);
       return;
     }
-    this.xag.getWindow().setFlags(8, 8);
-    this.xag.getWindow().addFlags(131200);
-    if (this.xal != null)
+    this.ymV.getWindow().setFlags(8, 8);
+    this.ymV.getWindow().addFlags(131200);
+    if (this.yna != null)
     {
-      this.xag.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.ymV.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(96481);
-          l.this.xal.dwj();
+          l.this.yna.dKI();
           AppMethodBeat.o(96481);
         }
       });
-      this.xag.setOnCancelListener(new DialogInterface.OnCancelListener()
+      this.ymV.setOnCancelListener(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(96482);
-          l.this.xal.dwk();
+          l.this.yna.dKJ();
           AppMethodBeat.o(96482);
         }
       });
     }
-    this.xag.setContentView(this.hIZ);
-    BottomSheetBehavior.l((View)this.hIZ.getParent()).J(al.fU(this.mContext)[1]);
-    this.xag.show();
+    this.ymV.setContentView(this.ijA);
+    BottomSheetBehavior.l((View)this.ijA.getParent()).J(al.gg(this.mContext)[1]);
+    this.ymV.show();
     AppMethodBeat.o(96484);
   }
   
   public static abstract interface a
   {
-    public abstract void dwj();
+    public abstract void dKI();
     
-    public abstract void dwk();
+    public abstract void dKJ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l
  * JD-Core Version:    0.7.0.1
  */

@@ -15,65 +15,65 @@ import com.tencent.mm.plugin.editor.model.a.m;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 import com.tencent.mm.plugin.editor.widget.voiceview.VoiceView;
 import com.tencent.mm.plugin.editor.widget.voiceview.VoiceView.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class i
   extends d
 {
-  private LinearLayout irQ;
-  public LinearLayout olP;
-  public LinearLayout olQ;
-  public VoiceView olR;
-  public ImageView olS;
-  private TextView olT;
-  private TextView olU;
-  private m olV;
-  private final ap olW;
+  private LinearLayout iRV;
+  public LinearLayout oPp;
+  public LinearLayout oPq;
+  public VoiceView oPr;
+  public ImageView oPs;
+  private TextView oPt;
+  private TextView oPu;
+  private m oPv;
+  private final ao oPw;
   
   public i(View paramView, j paramj)
   {
     super(paramView, paramj);
     AppMethodBeat.i(181667);
-    this.olW = new ap()
+    this.oPw = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(181666);
-        if (i.a(i.this).omJ)
+        if (i.a(i.this).oQj)
         {
           i.b(i.this).removeMessages(4096);
           AppMethodBeat.o(181666);
           return;
         }
-        paramAnonymousMessage = " " + b.C(aj.getContext(), i.a(i.this).omL).toString();
+        paramAnonymousMessage = " " + b.F(ai.getContext(), i.a(i.this).oQl).toString();
         i.c(i.this).setText(paramAnonymousMessage);
         sendEmptyMessageDelayed(4096, 500L);
         AppMethodBeat.o(181666);
       }
     };
-    this.irQ = ((LinearLayout)paramView.findViewById(2131302943));
-    this.olP = ((LinearLayout)paramView.findViewById(2131302945));
-    this.olQ = ((LinearLayout)paramView.findViewById(2131302944));
-    this.olS = ((ImageView)paramView.findViewById(2131302946));
-    this.olT = ((TextView)paramView.findViewById(2131302948));
-    this.olU = ((TextView)paramView.findViewById(2131302949));
-    this.olR = ((VoiceView)paramView.findViewById(2131302925));
-    this.olR.setVoiceHelper(com.tencent.mm.plugin.editor.widget.voiceview.a.bTH());
-    this.irQ.setVisibility(0);
-    this.olP.setVisibility(8);
-    this.olQ.setVisibility(0);
-    this.djK.setVisibility(8);
-    this.oln.setVisibility(8);
-    this.irQ.setOnClickListener(new View.OnClickListener()
+    this.iRV = ((LinearLayout)paramView.findViewById(2131302943));
+    this.oPp = ((LinearLayout)paramView.findViewById(2131302945));
+    this.oPq = ((LinearLayout)paramView.findViewById(2131302944));
+    this.oPs = ((ImageView)paramView.findViewById(2131302946));
+    this.oPt = ((TextView)paramView.findViewById(2131302948));
+    this.oPu = ((TextView)paramView.findViewById(2131302949));
+    this.oPr = ((VoiceView)paramView.findViewById(2131302925));
+    this.oPr.setVoiceHelper(com.tencent.mm.plugin.editor.widget.voiceview.a.caV());
+    this.iRV.setVisibility(0);
+    this.oPp.setVisibility(8);
+    this.oPq.setVisibility(0);
+    this.dhf.setVisibility(8);
+    this.oON.setVisibility(8);
+    this.iRV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181665);
-        if ((i.a(i.this) != null) && (i.a(i.this).omS.booleanValue())) {
-          i.a(i.this).omT = Boolean.TRUE;
+        if ((i.a(i.this) != null) && (i.a(i.this).oQs.booleanValue())) {
+          i.a(i.this).oQt = Boolean.TRUE;
         }
         AppMethodBeat.o(181665);
       }
@@ -84,14 +84,14 @@ public final class i
   public final void a(com.tencent.mm.plugin.editor.model.a.a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181668);
-    this.olV = ((m)parama);
-    if (this.olV.omJ)
+    this.oPv = ((m)parama);
+    if (this.oPv.oQj)
     {
-      this.irQ.setBackgroundResource(0);
-      this.olQ.setVisibility(0);
-      this.olP.setVisibility(8);
-      this.irQ.setPadding(0, 0, 0, 0);
-      if (!parama.omC) {
+      this.iRV.setBackgroundResource(0);
+      this.oPq.setVisibility(0);
+      this.oPp.setVisibility(8);
+      this.iRV.setPadding(0, 0, 0, 0);
+      if (!parama.oQc) {
         break label589;
       }
     }
@@ -100,71 +100,71 @@ public final class i
     label589:
     for (int i = 1;; i = 0)
     {
-      Object localObject1 = this.olR;
-      Object localObject2 = this.olV.drZ;
-      int j = this.olV.dkj;
-      int k = this.olV.dkk;
-      ((VoiceView)localObject1).path = bt.by((String)localObject2, "");
-      ((VoiceView)localObject1).dkj = j;
+      Object localObject1 = this.oPr;
+      Object localObject2 = this.oPv.dpK;
+      int j = this.oPv.dhE;
+      int k = this.oPv.dhF;
+      ((VoiceView)localObject1).path = bs.bG((String)localObject2, "");
+      ((VoiceView)localObject1).dhE = j;
       ((VoiceView)localObject1).duration = k;
       if (i != 0)
       {
-        ((VoiceView)localObject1).lRB.setVisibility(0);
-        if (!((VoiceView)localObject1).path.equals(((VoiceView)localObject1).orr.path)) {
+        ((VoiceView)localObject1).gGk.setVisibility(0);
+        if (!((VoiceView)localObject1).path.equals(((VoiceView)localObject1).oUR.path)) {
           break label317;
         }
-        if (!((VoiceView)localObject1).orr.bTK()) {
+        if (!((VoiceView)localObject1).oUR.caY()) {
           break label227;
         }
-        ad.i("MicroMsg.NoteVoiceView", "updateInfo .isPlay()");
-        localObject2 = ((VoiceView)localObject1).ors;
-        ((VoiceView)localObject1).orr.Oa();
-        ((VoiceView.a)localObject2).jA(true);
+        ac.i("MicroMsg.NoteVoiceView", "updateInfo .isPlay()");
+        localObject2 = ((VoiceView)localObject1).oUS;
+        ((VoiceView)localObject1).oUR.NW();
+        ((VoiceView.a)localObject2).kd(true);
       }
       for (;;)
       {
         super.a(parama, paramInt1, paramInt2);
         AppMethodBeat.o(181668);
         return;
-        ((VoiceView)localObject1).lRB.setVisibility(8);
+        ((VoiceView)localObject1).gGk.setVisibility(8);
         break;
         label227:
-        localObject2 = ((VoiceView)localObject1).orr;
-        if (((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject2).org == null) {
-          ad.w("MicroMsg.RecordVoiceHelper", "check is pause, but player is null");
+        localObject2 = ((VoiceView)localObject1).oUR;
+        if (((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject2).oUG == null) {
+          ac.w("MicroMsg.RecordVoiceHelper", "check is pause, but player is null");
         }
-        for (boolean bool = false;; bool = ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject2).org.Nb())
+        for (boolean bool = false;; bool = ((com.tencent.mm.plugin.editor.widget.voiceview.a)localObject2).oUG.MZ())
         {
           if (!bool) {
             break label304;
           }
-          ad.i("MicroMsg.NoteVoiceView", "updateInfo .isPause()");
-          localObject2 = ((VoiceView)localObject1).ors;
-          ((VoiceView)localObject1).orr.Oa();
-          ((VoiceView.a)localObject2).jA(false);
+          ac.i("MicroMsg.NoteVoiceView", "updateInfo .isPause()");
+          localObject2 = ((VoiceView)localObject1).oUS;
+          ((VoiceView)localObject1).oUR.NW();
+          ((VoiceView.a)localObject2).kd(false);
           break;
         }
-        ((VoiceView)localObject1).ors.Ah(k);
+        ((VoiceView)localObject1).oUS.AZ(k);
         continue;
-        ((VoiceView)localObject1).ors.Ah(k);
+        ((VoiceView)localObject1).oUS.AZ(k);
         continue;
-        this.irQ.setBackgroundResource(2131231992);
-        this.irQ.setPadding(26, 7, 0, 7);
-        this.olQ.setVisibility(8);
-        this.olP.setVisibility(0);
-        localObject1 = this.olS;
+        this.iRV.setBackgroundResource(2131231992);
+        this.iRV.setPadding(26, 7, 0, 7);
+        this.oPq.setVisibility(8);
+        this.oPp.setVisibility(0);
+        localObject1 = this.oPs;
         if (((ImageView)localObject1).getAnimation() != null) {
           ((ImageView)localObject1).startAnimation(((ImageView)localObject1).getAnimation());
         }
         for (;;)
         {
-          if (!this.olV.omS.booleanValue()) {
+          if (!this.oPv.oQs.booleanValue()) {
             break label527;
           }
-          this.olW.sendEmptyMessage(4096);
-          this.olT.setText(2131759039);
-          localObject1 = " " + b.C(aj.getContext(), this.olV.omL).toString();
-          this.olU.setText((CharSequence)localObject1);
+          this.oPw.sendEmptyMessage(4096);
+          this.oPt.setText(2131759039);
+          localObject1 = " " + b.F(ai.getContext(), this.oPv.oQl).toString();
+          this.oPu.setText((CharSequence)localObject1);
           break;
           localObject2 = new AlphaAnimation(1.0F, 0.0F);
           ((Animation)localObject2).setDuration(500L);
@@ -173,21 +173,21 @@ public final class i
           ((Animation)localObject2).setRepeatMode(2);
           ((ImageView)localObject1).startAnimation((Animation)localObject2);
         }
-        this.olT.setText(2131759038);
-        localObject1 = " " + b.C(aj.getContext(), (int)b.mI(this.olV.dkk)).toString();
-        this.olU.setText((CharSequence)localObject1);
+        this.oPt.setText(2131759038);
+        localObject1 = " " + b.F(ai.getContext(), (int)b.qw(this.oPv.dhF)).toString();
+        this.oPu.setText((CharSequence)localObject1);
       }
     }
   }
   
-  public final int bSa()
+  public final int bZp()
   {
     return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.i
  * JD-Core Version:    0.7.0.1
  */

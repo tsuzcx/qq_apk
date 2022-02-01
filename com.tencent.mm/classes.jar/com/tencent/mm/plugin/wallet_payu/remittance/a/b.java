@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +22,7 @@ public final class b
     AppMethodBeat.o(72168);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 16;
   }
@@ -30,7 +30,7 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72169);
-    ad.d("MicroMsg", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("MicroMsg", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72169);

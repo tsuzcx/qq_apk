@@ -5,13 +5,13 @@ import com.tencent.mm.ui.tools.f;
 
 public final class b
 {
-  public static String NB(String paramString)
+  public static String RK(String paramString)
   {
     AppMethodBeat.i(49863);
     if (paramString != null) {
       try
       {
-        int i = f.aLJ(paramString);
+        int i = f.aRl(paramString);
         if (i <= 12)
         {
           AppMethodBeat.o(49863);
@@ -24,7 +24,7 @@ public final class b
         int k = 0;
         while (j < m)
         {
-          k += f.aLJ(String.valueOf(localObject[j]));
+          k += f.aRl(String.valueOf(localObject[j]));
           if (k >= 12)
           {
             localObject = paramString.substring(0, i) + '…';
@@ -47,7 +47,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.d.b
  * JD-Core Version:    0.7.0.1
  */

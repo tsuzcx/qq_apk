@@ -5,41 +5,41 @@ import com.tencent.mm.loader.e.b.e.a;
 import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.g.h;
 import com.tencent.mm.loader.h.a.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/task/LoadTask;", "T", "R", "Lcom/tencent/mm/loader/loader/IWorkTask;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "target", "Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "REAPER", "Lcom/tencent/mm/loader/Reaper;", "(Lcom/tencent/mm/loader/model/data/DataItem;Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;Lcom/tencent/mm/loader/Reaper;)V", "getREAPER", "()Lcom/tencent/mm/loader/Reaper;", "setREAPER", "(Lcom/tencent/mm/loader/Reaper;)V", "TAG", "", "debugInfo", "getDebugInfo", "()Ljava/lang/String;", "setDebugInfo", "(Ljava/lang/String;)V", "getTarget", "()Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "setTarget", "(Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;)V", "taskStatus", "Lcom/tencent/mm/loader/loader/WorkStatus;", "getTaskStatus", "()Lcom/tencent/mm/loader/loader/WorkStatus;", "setTaskStatus", "(Lcom/tencent/mm/loader/loader/WorkStatus;)V", "getUrl", "()Lcom/tencent/mm/loader/model/data/DataItem;", "setUrl", "(Lcom/tencent/mm/loader/model/data/DataItem;)V", "cacheImageToDisk", "", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "source", "Lcom/tencent/mm/loader/model/Resource;", "resource", "task", "call", "debugCheck", "execute", "fileType", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "taskListener", "Lcom/tencent/mm/loader/task/LoadTask$ITask;", "reportReadCacheTime", "time", "", "taskEnd", "resultData", "Lcom/tencent/mm/loader/model/LoadResult;", "uniqueId", "ITask", "libimageloader_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/task/LoadTask;", "T", "R", "Lcom/tencent/mm/loader/loader/IWorkTask;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "target", "Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "REAPER", "Lcom/tencent/mm/loader/Reaper;", "(Lcom/tencent/mm/loader/model/data/DataItem;Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;Lcom/tencent/mm/loader/Reaper;)V", "getREAPER", "()Lcom/tencent/mm/loader/Reaper;", "setREAPER", "(Lcom/tencent/mm/loader/Reaper;)V", "TAG", "", "debugInfo", "getDebugInfo", "()Ljava/lang/String;", "setDebugInfo", "(Ljava/lang/String;)V", "getTarget", "()Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "setTarget", "(Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;)V", "taskStatus", "Lcom/tencent/mm/loader/loader/WorkStatus;", "getTaskStatus", "()Lcom/tencent/mm/loader/loader/WorkStatus;", "setTaskStatus", "(Lcom/tencent/mm/loader/loader/WorkStatus;)V", "getUrl", "()Lcom/tencent/mm/loader/model/data/DataItem;", "setUrl", "(Lcom/tencent/mm/loader/model/data/DataItem;)V", "cacheImageToDisk", "", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "source", "Lcom/tencent/mm/loader/model/Resource;", "resource", "task", "call", "debugCheck", "execute", "fileType", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "taskListener", "Lcom/tencent/mm/loader/task/LoadTask$ITask;", "reportReadCacheTime", "time", "", "taskEnd", "resultData", "Lcom/tencent/mm/loader/model/LoadResult;", "uniqueId", "ITask", "libimageloader_release"})
 public abstract class b<T, R>
   extends com.tencent.mm.loader.g.c
 {
   final String TAG;
-  com.tencent.mm.loader.e.b.d<R> gir;
-  public String gis;
-  a<T> gkt;
-  h gmv;
-  com.tencent.mm.loader.f<T, R> gmw;
+  com.tencent.mm.loader.e.b.d<R> gJa;
+  public String gJb;
+  a<T> gLg;
+  h gNi;
+  com.tencent.mm.loader.f<T, R> gNj;
   
   public b(a<T> parama, com.tencent.mm.loader.e.b.d<R> paramd, com.tencent.mm.loader.f<T, R> paramf)
   {
-    this.gkt = parama;
-    this.gir = paramd;
-    this.gmw = paramf;
+    this.gLg = parama;
+    this.gJa = paramd;
+    this.gNj = paramf;
     this.TAG = "MicroMsg.Loader.ImageLoader.ImageLoadTask";
-    this.gmv = h.gkY;
+    this.gNi = h.gLL;
   }
   
   protected abstract void a(e.c paramc, a<R> parama);
   
   protected final void a(com.tencent.mm.loader.h.c<R> paramc)
   {
-    Object localObject = this.gmw;
-    if (((com.tencent.mm.loader.f)localObject).ghZ != null) {
-      ((com.tencent.mm.loader.f)localObject).agT();
+    Object localObject = this.gNj;
+    if (((com.tencent.mm.loader.f)localObject).gII != null) {
+      ((com.tencent.mm.loader.f)localObject).anU();
     }
-    com.tencent.mm.loader.f.d locald = ((com.tencent.mm.loader.f)localObject).ghX;
-    a locala = this.gkt;
-    localObject = ((com.tencent.mm.loader.f)localObject).agT().gkf;
+    com.tencent.mm.loader.f.d locald = ((com.tencent.mm.loader.f)localObject).gIG;
+    a locala = this.gLg;
+    localObject = ((com.tencent.mm.loader.f)localObject).anU().gKS;
     if (paramc != null) {}
     for (paramc = paramc.value;; paramc = null)
     {
@@ -53,14 +53,14 @@ public abstract class b<T, R>
     k.h(paramf, "httpResponse");
     k.h(parame1, "source");
     k.h(paramb, "task");
-    if (this.gmw.ghW.gjs) {
-      this.gmw.gic.a(this.gkt, paramf, parame1, parame2, this.gmw.ghW, this.gmw);
+    if (this.gNj.gIF.gKd) {
+      this.gNj.gIL.a(this.gLg, paramf, parame1, parame2, this.gNj.gIF, this.gNj);
     }
   }
   
-  public final String abi()
+  public final String acg()
   {
-    String str = this.gkt.toString();
+    String str = this.gLg.toString();
     k.g(str, "url.toString()");
     return str;
   }
@@ -68,51 +68,51 @@ public abstract class b<T, R>
   public final void b(h paramh)
   {
     k.h(paramh, "<set-?>");
-    this.gmv = paramh;
+    this.gNi = paramh;
   }
   
   public final void call()
   {
     System.currentTimeMillis();
-    a(this.gmw.ghW.gju, (a)new b(this));
+    a(this.gNj.gIF.gKf, (a)new b(this));
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/task/LoadTask$ITask;", "RR", "", "onTaskDownFin", "", "resultData", "Lcom/tencent/mm/loader/model/LoadResult;", "onTaskFail", "onTaskRemove", "ontaskLoadFin", "libimageloader_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/task/LoadTask$ITask;", "RR", "", "onTaskDownFin", "", "resultData", "Lcom/tencent/mm/loader/model/LoadResult;", "onTaskFail", "onTaskRemove", "ontaskLoadFin", "libimageloader_release"})
   public static abstract interface a<RR>
   {
-    public abstract void aji();
+    public abstract void aqi();
     
     public abstract void b(com.tencent.mm.loader.h.c<RR> paramc);
     
     public abstract void c(com.tencent.mm.loader.h.c<RR> paramc);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/loader/task/LoadTask$call$1", "Lcom/tencent/mm/loader/task/LoadTask$ITask;", "onTaskDownFin", "", "resultData", "Lcom/tencent/mm/loader/model/LoadResult;", "onTaskFail", "onTaskRemove", "ontaskLoadFin", "libimageloader_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/loader/task/LoadTask$call$1", "Lcom/tencent/mm/loader/task/LoadTask$ITask;", "onTaskDownFin", "", "resultData", "Lcom/tencent/mm/loader/model/LoadResult;", "onTaskFail", "onTaskRemove", "ontaskLoadFin", "libimageloader_release"})
   public static final class b
     implements b.a<R>
   {
-    public final void aji()
+    public final void aqi()
     {
-      this.gmx.b(h.glb);
-      ad.i(this.gmx.TAG, "onTaskFail " + this.gmx.gkt);
-      this.gmx.a(this.gmx.gmv);
+      this.gNk.b(h.gLO);
+      ac.i(this.gNk.TAG, "onTaskFail " + this.gNk.gLg);
+      this.gNk.a(this.gNk.gNi);
     }
     
     public final void b(com.tencent.mm.loader.h.c<R> paramc)
     {
       k.h(paramc, "resultData");
-      this.gmx.b(h.gla);
+      this.gNk.b(h.gLN);
       if (paramc.isValid()) {}
       for (Object localObject = paramc;; localObject = null)
       {
         if (localObject != null)
         {
-          ad.i(this.gmx.TAG, "[ImageLoader] onTaskDownFin. get bitmap successs. " + this.gmx.gkt + ' ' + paramc.value);
-          localObject = com.tencent.mm.loader.e.b.e.gkl;
-          e.a.ahv().a(this.gmx.gkt, paramc);
+          ac.i(this.gNk.TAG, "[ImageLoader] onTaskDownFin. get bitmap successs. " + this.gNk.gLg + ' ' + paramc.value);
+          localObject = com.tencent.mm.loader.e.b.e.gKY;
+          e.a.aox().a(this.gNk.gLg, paramc);
         }
-        this.gmx.a(paramc);
-        this.gmx.a(this.gmx.gmv);
+        this.gNk.a(paramc);
+        this.gNk.a(this.gNk.gNi);
         return;
       }
     }
@@ -120,18 +120,18 @@ public abstract class b<T, R>
     public final void c(com.tencent.mm.loader.h.c<R> paramc)
     {
       k.h(paramc, "resultData");
-      this.gmx.b(h.gla);
+      this.gNk.b(h.gLN);
       if (paramc.isValid()) {}
       for (Object localObject = paramc;; localObject = null)
       {
         if (localObject != null)
         {
-          ad.i(this.gmx.TAG, "[ImageLoader] ontaskLoadFin. get bitmap successs. " + this.gmx.gkt + ' ' + paramc.value);
-          localObject = com.tencent.mm.loader.e.b.e.gkl;
-          e.a.ahv().a(this.gmx.gkt, paramc);
+          ac.i(this.gNk.TAG, "[ImageLoader] ontaskLoadFin. get bitmap successs. " + this.gNk.gLg + ' ' + paramc.value);
+          localObject = com.tencent.mm.loader.e.b.e.gKY;
+          e.a.aox().a(this.gNk.gLg, paramc);
         }
-        this.gmx.a(paramc);
-        this.gmx.a(this.gmx.gmv);
+        this.gNk.a(paramc);
+        this.gNk.a(this.gNk.gNi);
         return;
       }
     }
@@ -139,7 +139,7 @@ public abstract class b<T, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.loader.k.b
  * JD-Core Version:    0.7.0.1
  */

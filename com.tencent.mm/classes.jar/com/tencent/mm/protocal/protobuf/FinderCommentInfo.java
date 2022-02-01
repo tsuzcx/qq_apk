@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public class FinderCommentInfo
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public int blacklist_flag;
   public String client_id;
@@ -55,14 +55,14 @@ public class FinderCommentInfo
       if (this.content != null) {
         paramVarArgs.d(3, this.content);
       }
-      paramVarArgs.aG(4, this.commentId);
-      paramVarArgs.aG(5, this.replyCommentId);
+      paramVarArgs.aO(4, this.commentId);
+      paramVarArgs.aO(5, this.replyCommentId);
       paramVarArgs.aR(6, this.deleteFlag);
       if (this.headUrl != null) {
         paramVarArgs.d(7, this.headUrl);
       }
       paramVarArgs.e(8, 8, this.levelTwoComment);
-      paramVarArgs.aG(9, this.createtime);
+      paramVarArgs.aO(9, this.createtime);
       if (this.replyNickname != null) {
         paramVarArgs.d(10, this.replyNickname);
       }
@@ -71,7 +71,7 @@ public class FinderCommentInfo
       }
       paramVarArgs.aR(12, this.likeFlag);
       paramVarArgs.aR(13, this.likeCount);
-      paramVarArgs.aG(14, this.displayid);
+      paramVarArgs.aO(14, this.displayid);
       paramVarArgs.aR(15, this.expandCommentCount);
       if (this.lastBuffer != null) {
         paramVarArgs.c(16, this.lastBuffer);
@@ -110,12 +110,12 @@ public class FinderCommentInfo
       if (this.content != null) {
         i = paramInt + f.a.a.b.b.a.e(3, this.content);
       }
-      i = i + f.a.a.b.b.a.q(4, this.commentId) + f.a.a.b.b.a.q(5, this.replyCommentId) + f.a.a.b.b.a.bA(6, this.deleteFlag);
+      i = i + f.a.a.b.b.a.p(4, this.commentId) + f.a.a.b.b.a.p(5, this.replyCommentId) + f.a.a.b.b.a.bx(6, this.deleteFlag);
       paramInt = i;
       if (this.headUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(7, this.headUrl);
       }
-      i = paramInt + f.a.a.a.c(8, 8, this.levelTwoComment) + f.a.a.b.b.a.q(9, this.createtime);
+      i = paramInt + f.a.a.a.c(8, 8, this.levelTwoComment) + f.a.a.b.b.a.p(9, this.createtime);
       paramInt = i;
       if (this.replyNickname != null) {
         paramInt = i + f.a.a.b.b.a.e(10, this.replyNickname);
@@ -124,12 +124,12 @@ public class FinderCommentInfo
       if (this.displayidDiscarded != null) {
         i = paramInt + f.a.a.b.b.a.e(11, this.displayidDiscarded);
       }
-      i = i + f.a.a.b.b.a.bA(12, this.likeFlag) + f.a.a.b.b.a.bA(13, this.likeCount) + f.a.a.b.b.a.q(14, this.displayid) + f.a.a.b.b.a.bA(15, this.expandCommentCount);
+      i = i + f.a.a.b.b.a.bx(12, this.likeFlag) + f.a.a.b.b.a.bx(13, this.likeCount) + f.a.a.b.b.a.p(14, this.displayid) + f.a.a.b.b.a.bx(15, this.expandCommentCount);
       paramInt = i;
       if (this.lastBuffer != null) {
         paramInt = i + f.a.a.b.b.a.b(16, this.lastBuffer);
       }
-      i = paramInt + f.a.a.b.b.a.bA(17, this.continueFlag) + f.a.a.b.b.a.bA(18, this.displayFlag) + f.a.a.b.b.a.bA(19, this.blacklist_flag);
+      i = paramInt + f.a.a.b.b.a.bx(17, this.continueFlag) + f.a.a.b.b.a.bx(18, this.displayFlag) + f.a.a.b.b.a.bx(19, this.blacklist_flag);
       paramInt = i;
       if (this.reply_content != null) {
         paramInt = i + f.a.a.b.b.a.e(20, this.reply_content);
@@ -142,9 +142,9 @@ public class FinderCommentInfo
       if (this.client_id != null) {
         paramInt = i + f.a.a.b.b.a.e(22, this.client_id);
       }
-      i = f.a.a.b.b.a.bA(23, this.upContinueFlag);
-      int j = f.a.a.b.b.a.bA(24, this.replyBlacklistFlag);
-      int k = f.a.a.b.b.a.bA(25, this.extFlag);
+      i = f.a.a.b.b.a.bx(23, this.upContinueFlag);
+      int j = f.a.a.b.b.a.bx(24, this.replyBlacklistFlag);
+      int k = f.a.a.b.b.a.bx(25, this.extFlag);
       AppMethodBeat.o(168941);
       return paramInt + i + j + k;
       if (paramInt == 2)
@@ -152,9 +152,9 @@ public class FinderCommentInfo
         paramVarArgs = (byte[])paramVarArgs[0];
         this.levelTwoComment.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(168941);
@@ -171,35 +171,35 @@ public class FinderCommentInfo
           AppMethodBeat.o(168941);
           return -1;
         case 1: 
-          localFinderCommentInfo.username = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.username = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 2: 
-          localFinderCommentInfo.nickname = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.nickname = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 3: 
-          localFinderCommentInfo.content = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.content = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 4: 
-          localFinderCommentInfo.commentId = ((f.a.a.a.a)localObject1).KhF.xT();
+          localFinderCommentInfo.commentId = ((f.a.a.a.a)localObject1).LVo.xG();
           AppMethodBeat.o(168941);
           return 0;
         case 5: 
-          localFinderCommentInfo.replyCommentId = ((f.a.a.a.a)localObject1).KhF.xT();
+          localFinderCommentInfo.replyCommentId = ((f.a.a.a.a)localObject1).LVo.xG();
           AppMethodBeat.o(168941);
           return 0;
         case 6: 
-          localFinderCommentInfo.deleteFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.deleteFlag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 7: 
-          localFinderCommentInfo.headUrl = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.headUrl = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 8: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -207,78 +207,78 @@ public class FinderCommentInfo
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new FinderCommentInfo();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderCommentInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (boolean bool = true; bool; bool = ((FinderCommentInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localFinderCommentInfo.levelTwoComment.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168941);
           return 0;
         case 9: 
-          localFinderCommentInfo.createtime = ((f.a.a.a.a)localObject1).KhF.xT();
+          localFinderCommentInfo.createtime = ((f.a.a.a.a)localObject1).LVo.xG();
           AppMethodBeat.o(168941);
           return 0;
         case 10: 
-          localFinderCommentInfo.replyNickname = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.replyNickname = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 11: 
-          localFinderCommentInfo.displayidDiscarded = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.displayidDiscarded = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 12: 
-          localFinderCommentInfo.likeFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.likeFlag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 13: 
-          localFinderCommentInfo.likeCount = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.likeCount = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 14: 
-          localFinderCommentInfo.displayid = ((f.a.a.a.a)localObject1).KhF.xT();
+          localFinderCommentInfo.displayid = ((f.a.a.a.a)localObject1).LVo.xG();
           AppMethodBeat.o(168941);
           return 0;
         case 15: 
-          localFinderCommentInfo.expandCommentCount = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.expandCommentCount = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 16: 
-          localFinderCommentInfo.lastBuffer = ((f.a.a.a.a)localObject1).KhF.fMu();
+          localFinderCommentInfo.lastBuffer = ((f.a.a.a.a)localObject1).LVo.gfk();
           AppMethodBeat.o(168941);
           return 0;
         case 17: 
-          localFinderCommentInfo.continueFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.continueFlag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 18: 
-          localFinderCommentInfo.displayFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.displayFlag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 19: 
-          localFinderCommentInfo.blacklist_flag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.blacklist_flag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 20: 
-          localFinderCommentInfo.reply_content = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.reply_content = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 21: 
-          localFinderCommentInfo.reply_username = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.reply_username = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 22: 
-          localFinderCommentInfo.client_id = ((f.a.a.a.a)localObject1).KhF.readString();
+          localFinderCommentInfo.client_id = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(168941);
           return 0;
         case 23: 
-          localFinderCommentInfo.upContinueFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.upContinueFlag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         case 24: 
-          localFinderCommentInfo.replyBlacklistFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+          localFinderCommentInfo.replyBlacklistFlag = ((f.a.a.a.a)localObject1).LVo.xF();
           AppMethodBeat.o(168941);
           return 0;
         }
-        localFinderCommentInfo.extFlag = ((f.a.a.a.a)localObject1).KhF.xS();
+        localFinderCommentInfo.extFlag = ((f.a.a.a.a)localObject1).LVo.xF();
         AppMethodBeat.o(168941);
         return 0;
       }
@@ -289,7 +289,7 @@ public class FinderCommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.FinderCommentInfo
  * JD-Core Version:    0.7.0.1
  */

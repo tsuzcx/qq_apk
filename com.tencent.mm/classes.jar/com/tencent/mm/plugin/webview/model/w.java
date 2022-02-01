@@ -1,72 +1,72 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.b;
-import com.tencent.mm.protocal.protobuf.big;
-import com.tencent.mm.protocal.protobuf.bit;
-import com.tencent.mm.protocal.protobuf.biu;
-import com.tencent.mm.protocal.protobuf.bji;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bly;
+import com.tencent.mm.protocal.protobuf.bml;
+import com.tencent.mm.protocal.protobuf.bmm;
+import com.tencent.mm.protocal.protobuf.bna;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class w
   extends n
   implements k, a.b
 {
-  private final int AXm;
-  public big AXn;
-  private g gbr;
-  public final com.tencent.mm.al.b rr;
+  public bly CpA;
+  private final int Cpz;
+  private g gfX;
+  public final com.tencent.mm.ak.b rr;
   
-  public w(big parambig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, com.tencent.mm.bx.b paramb, int paramInt1, LinkedList<bji> paramLinkedList, int paramInt2)
+  public w(bly parambly, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, com.tencent.mm.bw.b paramb, int paramInt1, LinkedList<bna> paramLinkedList, int paramInt2)
   {
-    AppMethodBeat.i(187890);
-    ad.i("MicroMsg.webview.NetSceneJSAPISetAuth", "NetSceneJSAPISetAuth doScene url[%s], appid[%s], jsapiName[%s], [%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1) });
-    this.AXn = parambig;
-    this.AXm = paramInt2;
-    parambig = new b.a();
-    parambig.gUU = new bit();
-    parambig.gUV = new biu();
-    parambig.uri = "/cgi-bin/mmbiz-bin/jsapi-setauth";
-    parambig.funcId = 1096;
-    parambig.reqCmdId = 0;
-    parambig.respCmdId = 0;
-    this.rr = parambig.atI();
-    parambig = (bit)this.rr.gUS.gUX;
-    parambig.url = paramString1;
-    parambig.DFV = paramString2;
-    parambig.dlB = paramString3;
-    parambig.DFP = paramString4;
-    parambig.cMo = paramString5;
-    parambig.DFR = paramString6;
-    parambig.signature = paramString7;
-    parambig.DFS = paramString8;
-    parambig.DFU = paramInt1;
-    parambig.DFT = paramb;
-    parambig.DFZ = paramLinkedList;
-    AppMethodBeat.o(187890);
+    AppMethodBeat.i(188317);
+    ac.i("MicroMsg.webview.NetSceneJSAPISetAuth", "NetSceneJSAPISetAuth doScene url[%s], appid[%s], jsapiName[%s], [%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1) });
+    this.CpA = parambly;
+    this.Cpz = paramInt2;
+    parambly = new b.a();
+    parambly.hvt = new bml();
+    parambly.hvu = new bmm();
+    parambly.uri = "/cgi-bin/mmbiz-bin/jsapi-setauth";
+    parambly.funcId = 1096;
+    parambly.reqCmdId = 0;
+    parambly.respCmdId = 0;
+    this.rr = parambly.aAz();
+    parambly = (bml)this.rr.hvr.hvw;
+    parambly.url = paramString1;
+    parambly.Fbp = paramString2;
+    parambly.djj = paramString3;
+    parambly.Fbj = paramString4;
+    parambly.cJz = paramString5;
+    parambly.Fbl = paramString6;
+    parambly.signature = paramString7;
+    parambly.Fbm = paramString8;
+    parambly.Fbo = paramInt1;
+    parambly.Fbn = paramb;
+    parambly.Fbt = paramLinkedList;
+    AppMethodBeat.o(188317);
   }
   
   public final int doScene(e parame, g paramg)
   {
     AppMethodBeat.i(78908);
-    ad.i("MicroMsg.webview.NetSceneJSAPISetAuth", "doScene");
-    this.gbr = paramg;
+    ac.i("MicroMsg.webview.NetSceneJSAPISetAuth", "doScene");
+    this.gfX = paramg;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(78908);
     return i;
   }
   
-  public final int eiZ()
+  public final int eyt()
   {
-    return this.AXm;
+    return this.Cpz;
   }
   
   public final int getType()
@@ -77,8 +77,8 @@ public final class w
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78907);
-    ad.i("MicroMsg.webview.NetSceneJSAPISetAuth", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    ac.i("MicroMsg.webview.NetSceneJSAPISetAuth", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.gfX.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78907);
   }
 }

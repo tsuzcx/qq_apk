@@ -6,13 +6,13 @@ import android.os.IBinder;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
@@ -20,7 +20,7 @@ public class RedirectToChattingByPhoneStubUI
   extends HellActivity
   implements g
 {
-  private p pMe = null;
+  private p quM = null;
   
   public final boolean hideVKB()
   {
@@ -46,7 +46,7 @@ public class RedirectToChattingByPhoneStubUI
     try
     {
       bool = localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
-      ad.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
+      ac.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(24515);
       return bool;
     }
@@ -54,7 +54,7 @@ public class RedirectToChattingByPhoneStubUI
     {
       for (;;)
       {
-        ad.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
+        ac.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
         boolean bool = false;
       }
     }
@@ -65,8 +65,8 @@ public class RedirectToChattingByPhoneStubUI
     AppMethodBeat.i(24512);
     super.onCreate(paramBundle);
     getString(2131755936);
-    this.pMe = h.b(this, "", false, null);
-    aq.n(new Runnable()
+    this.quM = h.b(this, "", false, null);
+    ap.n(new Runnable()
     {
       public final void run()
       {
@@ -75,7 +75,7 @@ public class RedirectToChattingByPhoneStubUI
         AppMethodBeat.o(24511);
       }
     }, 500L);
-    az.aeS().a(106, this);
+    az.agi().a(106, this);
     AppMethodBeat.o(24512);
   }
   
@@ -83,11 +83,11 @@ public class RedirectToChattingByPhoneStubUI
   {
     AppMethodBeat.i(24513);
     super.onDestroy();
-    az.aeS().b(106, this);
-    if (this.pMe != null)
+    az.agi().b(106, this);
+    if (this.quM != null)
     {
-      this.pMe.dismiss();
-      this.pMe = null;
+      this.quM.dismiss();
+      this.quM = null;
     }
     AppMethodBeat.o(24513);
   }

@@ -7,31 +7,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/gallery/FavStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "dateList", "", "", "username", "isMultiSelected", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "checkedList", "queryCondition", "", "(JLjava/util/List;Ljava/lang/String;ZLjava/util/Map;Ljava/util/ArrayList;I)V", "getCheckedList", "()Ljava/util/ArrayList;", "getDateList", "()Ljava/util/List;", "getFilterList", "()Ljava/util/Map;", "()Z", "getUsername", "()Ljava/lang/String;", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/FavStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "dateList", "", "", "username", "isMultiSelected", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "checkedList", "queryCondition", "", "(JLjava/util/List;Ljava/lang/String;ZLjava/util/Map;Ljava/util/ArrayList;I)V", "getCheckedList", "()Ljava/util/ArrayList;", "getDateList", "()Ljava/util/List;", "getFilterList", "()Ljava/util/Map;", "()Z", "getUsername", "()Ljava/lang/String;", "plugin-story_release"})
 public final class c
   extends p
 {
   public final String username;
-  public final boolean wkc;
-  public final Map<String, ArrayList<Long>> yhu;
-  final List<String> yhv;
-  public final ArrayList<Long> yhw;
+  public final boolean xvs;
+  public final Map<String, ArrayList<Long>> zuu;
+  final List<String> zuv;
+  public final ArrayList<Long> zuw;
   
   public c(long paramLong, List<String> paramList, String paramString, boolean paramBoolean, Map<String, ? extends ArrayList<Long>> paramMap, ArrayList<Long> paramArrayList, int paramInt)
   {
     super(paramLong, paramInt);
     AppMethodBeat.i(118907);
-    this.yhv = paramList;
+    this.zuv = paramList;
     this.username = paramString;
-    this.wkc = paramBoolean;
-    this.yhu = paramMap;
-    this.yhw = paramArrayList;
+    this.xvs = paramBoolean;
+    this.zuu = paramMap;
+    this.zuw = paramArrayList;
     AppMethodBeat.o(118907);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.d.c
  * JD-Core Version:    0.7.0.1
  */

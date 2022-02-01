@@ -8,170 +8,170 @@ import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.f;
-import com.tencent.mm.protocal.protobuf.eas;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.protocal.protobuf.bqd;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/plugin/LiveReadyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "COUNT_DOWN_END", "", "COUNT_DOWN_START", "cancelBtn", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "countDownTv", "Landroid/widget/TextView;", "curCountDown", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onBackPress", "", "reset", "", "setTextWithAnim", "setVisible", "visible", "startCountDown", "startLive", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stopCountDown", "unMount", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveReadyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "COUNT_DOWN_END", "", "COUNT_DOWN_START", "cancelBtn", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "countDownTv", "Landroid/widget/TextView;", "curCountDown", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "onBackPress", "", "reset", "", "setTextWithAnim", "setVisible", "visible", "startCountDown", "startLive", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stopCountDown", "unMount", "plugin-logic_release"})
 public final class aq
   extends a
 {
-  final b IIs;
-  private final int KwH;
-  final int KwI;
-  private final TextView KwJ;
-  int KwK;
-  private final Button hJg;
-  final av timerHandler;
+  private final int gCW;
+  final int gCX;
+  private final Button gCY;
+  private final TextView gCZ;
+  int gDa;
+  final b gzb;
+  final au timerHandler;
   
   public aq(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(203039);
-    this.IIs = paramb;
-    this.KwH = 3;
-    this.hJg = ((Button)paramViewGroup.findViewById(2131307639));
-    this.KwJ = ((TextView)paramViewGroup.findViewById(2131307641));
-    this.KwK = this.KwH;
-    this.timerHandler = new av((av.a)new a(this), true);
-    this.hJg.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(190273);
+    this.gzb = paramb;
+    this.gCW = 3;
+    this.gCY = ((Button)paramViewGroup.findViewById(2131307722));
+    this.gCZ = ((TextView)paramViewGroup.findViewById(2131307724));
+    this.gDa = this.gCW;
+    this.timerHandler = new au((au.a)new a(this), true);
+    this.gCY.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(203030);
-        this.KwL.timerHandler.stopTimer();
-        this.KwL.reset();
-        paramAnonymousView = f.rGw;
-        f.a(new eas());
-        b.b.a(this.KwL.IIs, b.c.FAS);
-        b.b.a(this.KwL.IIs, b.c.HRP);
-        AppMethodBeat.o(203030);
+        AppMethodBeat.i(190264);
+        this.gDb.timerHandler.stopTimer();
+        this.gDb.reset();
+        paramAnonymousView = g.guG;
+        g.a(new bqd());
+        b.b.a(this.gDb.gzb, b.c.gxG);
+        b.b.a(this.gDb.gzb, b.c.gyA);
+        AppMethodBeat.o(190264);
       }
     });
-    AppMethodBeat.o(203039);
+    AppMethodBeat.o(190273);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(203036);
+    AppMethodBeat.i(190270);
     k.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (ar.ciE[paramc.ordinal()])
+    switch (ar.cfA[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(203036);
+      AppMethodBeat.o(190270);
       return;
-      agK(0);
-      fOX();
-      this.timerHandler.av(1000L, 1000L);
-      AppMethodBeat.o(203036);
+      nj(0);
+      amf();
+      this.timerHandler.au(1000L, 1000L);
+      AppMethodBeat.o(190270);
       return;
-      agK(8);
-      AppMethodBeat.o(203036);
+      nj(8);
+      AppMethodBeat.o(190270);
       return;
-      paramc = f.rGw;
-      f.la(true);
-      com.tencent.mm.live.d.a.fPl();
+      paramc = g.guG;
+      g.dM(true);
+      com.tencent.mm.live.d.a.amx();
     }
   }
   
-  public final void agK(int paramInt)
+  public final void alN()
   {
-    AppMethodBeat.i(203035);
-    super.agK(paramInt);
+    AppMethodBeat.i(190271);
+    this.timerHandler.stopTimer();
+    reset();
+    AppMethodBeat.o(190271);
+  }
+  
+  public final boolean alO()
+  {
+    AppMethodBeat.i(190272);
+    if (this.gnb.getVisibility() == 0)
+    {
+      this.timerHandler.stopTimer();
+      reset();
+      g localg = g.guG;
+      g.a(new bqd());
+      b.b.a(this.gzb, b.c.gxG);
+      AppMethodBeat.o(190272);
+      return true;
+    }
+    AppMethodBeat.o(190272);
+    return false;
+  }
+  
+  final void amf()
+  {
+    AppMethodBeat.i(190268);
+    TextView localTextView = this.gCZ;
+    k.g(localTextView, "countDownTv");
+    localTextView.setText((CharSequence)String.valueOf(this.gDa));
+    localTextView = this.gCZ;
+    k.g(localTextView, "countDownTv");
+    localTextView.setScaleX(1.5F);
+    localTextView = this.gCZ;
+    k.g(localTextView, "countDownTv");
+    localTextView.setScaleY(1.5F);
+    this.gCZ.animate().scaleX(1.0F).scaleY(1.0F).setDuration(200L).start();
+    AppMethodBeat.o(190268);
+  }
+  
+  public final void nj(int paramInt)
+  {
+    AppMethodBeat.i(190269);
+    super.nj(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
       this.timerHandler.stopTimer();
       reset();
     }
-    AppMethodBeat.o(203035);
-  }
-  
-  public final boolean dia()
-  {
-    AppMethodBeat.i(203038);
-    if (this.pTc.getVisibility() == 0)
-    {
-      this.timerHandler.stopTimer();
-      reset();
-      f localf = f.rGw;
-      f.a(new eas());
-      b.b.a(this.IIs, b.c.FAS);
-      AppMethodBeat.o(203038);
-      return true;
-    }
-    AppMethodBeat.o(203038);
-    return false;
-  }
-  
-  public final void fON()
-  {
-    AppMethodBeat.i(203037);
-    this.timerHandler.stopTimer();
-    reset();
-    AppMethodBeat.o(203037);
-  }
-  
-  final void fOX()
-  {
-    AppMethodBeat.i(203034);
-    TextView localTextView = this.KwJ;
-    k.g(localTextView, "countDownTv");
-    localTextView.setText((CharSequence)String.valueOf(this.KwK));
-    localTextView = this.KwJ;
-    k.g(localTextView, "countDownTv");
-    localTextView.setScaleX(1.5F);
-    localTextView = this.KwJ;
-    k.g(localTextView, "countDownTv");
-    localTextView.setScaleY(1.5F);
-    this.KwJ.animate().scaleX(1.0F).scaleY(1.0F).setDuration(200L).start();
-    AppMethodBeat.o(203034);
+    AppMethodBeat.o(190269);
   }
   
   final void reset()
   {
-    AppMethodBeat.i(203033);
-    TextView localTextView = this.KwJ;
+    AppMethodBeat.i(190267);
+    TextView localTextView = this.gCZ;
     k.g(localTextView, "countDownTv");
     localTextView.setScaleX(1.0F);
-    localTextView = this.KwJ;
+    localTextView = this.gCZ;
     k.g(localTextView, "countDownTv");
     localTextView.setScaleY(1.0F);
-    this.KwK = this.KwH;
-    AppMethodBeat.o(203033);
+    this.gDa = this.gCW;
+    AppMethodBeat.o(190267);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onTimerExpired"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onTimerExpired"})
   static final class a
-    implements av.a
+    implements au.a
   {
     a(aq paramaq) {}
     
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(203032);
-      if (this.KwL.KwK > this.KwL.KwI)
+      AppMethodBeat.i(190266);
+      if (this.gDb.gDa > this.gDb.gCX)
       {
-        aq localaq = this.KwL;
-        localaq.KwK -= 1;
-        this.KwL.fOX();
-        AppMethodBeat.o(203032);
+        aq localaq = this.gDb;
+        localaq.gDa -= 1;
+        this.gDb.amf();
+        AppMethodBeat.o(190266);
         return true;
       }
-      b.b.a(this.KwL.IIs, b.c.HRS);
-      AppMethodBeat.o(203032);
+      b.b.a(this.gDb.gzb, b.c.gyD);
+      AppMethodBeat.o(190266);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.aq
  * JD-Core Version:    0.7.0.1
  */

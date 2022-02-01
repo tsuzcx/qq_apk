@@ -37,10 +37,10 @@ public class SQLiteLintPlugin
     com.tencent.matrix.report.c localc = new com.tencent.matrix.report.c(paramSQLiteLintIssue.type);
     localc.key = paramSQLiteLintIssue.id;
     JSONObject localJSONObject = new JSONObject();
-    localc.cwV = localJSONObject;
+    localc.cue = localJSONObject;
     try
     {
-      localJSONObject.put("machine", a.aN(getApplication()));
+      localJSONObject.put("machine", a.aO(getApplication()));
       localJSONObject.put("id", paramSQLiteLintIssue.id);
       localJSONObject.put("dbPath", paramSQLiteLintIssue.dbPath);
       localJSONObject.put("level", paramSQLiteLintIssue.level);

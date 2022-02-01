@@ -10,10 +10,10 @@ import com.tencent.mm.plugin.downloader_app.a.c;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,9 +28,9 @@ public class a
       paramString = new JSONObject(paramString);
       str1 = paramString.optString("task_url");
       l = paramString.optLong("task_size");
-      if (bt.isNullOrNil(str1))
+      if (bs.isNullOrNil(str1))
       {
-        ad.e("MicroMsg.JsApiAddDownloadTaskStraight", "url is null");
+        ac.e("MicroMsg.JsApiAddDownloadTaskStraight", "url is null");
         parama.f("fail", null);
         AppMethodBeat.o(8823);
         return;
@@ -38,16 +38,16 @@ public class a
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiAddDownloadTaskStraight", "paras data error: " + paramContext.getMessage());
+      ac.e("MicroMsg.JsApiAddDownloadTaskStraight", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(8823);
       return;
     }
     com.tencent.mm.plugin.downloader.f.a.a(9, new b(paramString.optString("appid"), 1000, -1L, ""));
-    if (!ay.isNetworkConnected(paramContext))
+    if (!ax.isNetworkConnected(paramContext))
     {
       parama.f("fail_network_not_connected", null);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -56,14 +56,14 @@ public class a
           AppMethodBeat.o(8819);
         }
       });
-      ad.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, network not ready");
+      ac.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, network not ready");
       AppMethodBeat.o(8823);
       return;
     }
-    if (!e.XG())
+    if (!e.YD())
     {
       parama.f("sdcard_not_ready", null);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -72,14 +72,14 @@ public class a
           AppMethodBeat.o(8820);
         }
       });
-      ad.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, sdcard not ready");
+      ac.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, sdcard not ready");
       AppMethodBeat.o(8823);
       return;
     }
-    if ((l > 0L) && (!h.oA(l)) && (!h.oz(l)))
+    if ((l > 0L) && (!h.sm(l)) && (!h.sl(l)))
     {
       parama.f("has_not_enough_space", null);
-      aq.f(new Runnable()
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -88,7 +88,7 @@ public class a
           AppMethodBeat.o(8821);
         }
       });
-      ad.i("MicroMsg.JsApiAddDownloadTaskStraight", "fail, not enough space, require size = ".concat(String.valueOf(l)));
+      ac.i("MicroMsg.JsApiAddDownloadTaskStraight", "fail, not enough space, require size = ".concat(String.valueOf(l)));
       AppMethodBeat.o(8823);
       return;
     }
@@ -104,13 +104,13 @@ public class a
     paramString = new com.tencent.mm.plugin.downloader_app.a.a();
     paramString.appName = str1;
     paramString.downloadUrl = str2;
-    paramString.ohq = str3;
-    paramString.ohs = l;
-    paramString.kNB = str4;
+    paramString.oKQ = str3;
+    paramString.oKS = l;
+    paramString.lpa = str4;
     paramString.extInfo = str5;
     paramString.appId = str6;
     paramString.packageName = str7;
-    paramString.dlp = i;
+    paramString.diX = i;
     c.a(paramContext, paramString, new a.b()
     {
       public final void a(com.tencent.mm.plugin.downloader_app.api.a.a paramAnonymousa, long paramAnonymousLong)
@@ -122,7 +122,7 @@ public class a
           AppMethodBeat.o(8822);
           return;
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.ogO) {
+        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKo) {
           try
           {
             paramAnonymousa = new JSONObject();
@@ -138,13 +138,13 @@ public class a
             return;
           }
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.ogP)
+        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKp)
         {
           parama.f("fail", null);
           AppMethodBeat.o(8822);
           return;
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.ogQ) {
+        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKq) {
           try
           {
             paramAnonymousa = new JSONObject();
@@ -166,7 +166,7 @@ public class a
   
   public final void b(com.tencent.luggage.d.a.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 1;
   }

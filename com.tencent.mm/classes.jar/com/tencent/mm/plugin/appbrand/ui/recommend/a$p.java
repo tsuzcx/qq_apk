@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.chm;
+import com.tencent.mm.protocal.protobuf.cmp;
 import d.g.a.m;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "<anonymous parameter 1>", "", "invoke"})
 final class a$p
   extends d.g.b.l
-  implements m<chm, Integer, y>
+  implements m<cmp, Integer, y>
 {
-  public static final p lKv;
+  public static final p mms;
   
   static
   {
     AppMethodBeat.i(51333);
-    lKv = new p();
+    mms = new p();
     AppMethodBeat.o(51333);
   }
   
@@ -26,7 +26,7 @@ final class a$p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,11 @@ package com.tencent.mm.plugin.wallet.pay.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
+import com.tencent.mm.plugin.wallet_core.model.aj;
 import com.tencent.mm.plugin.wallet_core.model.d;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +20,8 @@ public final class c
   extends m
 {
   public String desc;
-  public String uop;
-  public double vAP;
+  public String vxl;
+  public double wKU;
   
   public c(String paramString)
   {
@@ -50,29 +52,29 @@ public final class c
     AppMethodBeat.i(69263);
     if (paramInt == 0)
     {
-      this.uop = paramJSONObject.optString("fee_type");
-      this.vAP = (paramJSONObject.optDouble("total_fee") / 100.0D);
+      this.vxl = paramJSONObject.optString("fee_type");
+      this.wKU = (paramJSONObject.optDouble("total_fee") / 100.0D);
       paramString = paramJSONObject.optJSONArray("Array");
       if ((paramString != null) && (paramString.length() > 0)) {
         this.desc = ((JSONObject)paramString.opt(0)).optString("desc");
       }
-      com.tencent.mm.plugin.wallet_core.model.aj localaj = s.ecd();
+      aj localaj = s.erz();
       paramJSONObject = paramJSONObject.optJSONObject("bindqueryresp");
-      localaj.Aib.clear();
+      localaj.BAv.clear();
       if (paramJSONObject == null)
       {
-        ad.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
+        ac.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
         AppMethodBeat.o(69263);
         return;
       }
       JSONArray localJSONArray = paramJSONObject.optJSONArray("Array");
       if ((localJSONArray == null) || (localJSONArray.length() <= 0))
       {
-        ad.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list is null");
+        ac.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list is null");
         paramString = paramJSONObject.optJSONObject("user_info");
         if (paramString != null)
         {
-          localaj.Aic = paramString.optString("last_card_bind_serialno");
+          localaj.BAw = paramString.optString("last_card_bind_serialno");
           AppMethodBeat.o(69263);
         }
       }
@@ -81,17 +83,17 @@ public final class c
         paramInt = 0;
         while (paramInt < localJSONArray.length())
         {
-          d locald = d.ebB();
+          d locald = d.eqX();
           try
           {
             paramString = (JSONObject)localJSONArray.get(paramInt);
             if (paramString != null)
             {
-              paramString = locald.aR(paramString);
-              if (paramString.ebv())
+              paramString = locald.aS(paramString);
+              if (paramString.eqR())
               {
                 paramString.field_desc = paramString.field_bankName;
-                localaj.Aib.add(paramString);
+                localaj.BAv.add(paramString);
               }
             }
             else
@@ -103,21 +105,21 @@ public final class c
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
               paramString = null;
               continue;
-              if (paramString.ebx()) {
-                paramString.field_desc = com.tencent.mm.sdk.platformtools.aj.getContext().getString(2131765222, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-              } else if (paramString.ebu()) {
-                paramString.field_desc = com.tencent.mm.sdk.platformtools.aj.getContext().getString(2131765998, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+              if (paramString.eqT()) {
+                paramString.field_desc = ai.getContext().getString(2131765222, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+              } else if (paramString.eqQ()) {
+                paramString.field_desc = ai.getContext().getString(2131765998, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               } else {
-                paramString.field_desc = com.tencent.mm.sdk.platformtools.aj.getContext().getString(2131765242, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
+                paramString.field_desc = ai.getContext().getString(2131765242, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               }
             }
           }
         }
       }
-      ad.e("MicroMsg.WalletRepaymentBankcardMgr", "user_info is null");
+      ac.e("MicroMsg.WalletRepaymentBankcardMgr", "user_info is null");
     }
     AppMethodBeat.o(69263);
   }

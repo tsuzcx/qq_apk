@@ -17,9 +17,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Range;
 import android.view.Surface;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.j;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.k;
+import com.tencent.liteav.basic.d.l;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
@@ -621,8 +621,8 @@ public class a
       return false;
     }
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    this.mEncodeFilter = new g();
-    this.mEncodeFilter.a(k.e, k.a(j.a, false, false));
+    this.mEncodeFilter = new h();
+    this.mEncodeFilter.a(l.e, l.a(k.a, false, false));
     if (!this.mEncodeFilter.a())
     {
       this.mEncodeFilter = null;

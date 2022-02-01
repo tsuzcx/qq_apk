@@ -9,22 +9,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class b
 {
-  private static volatile b gEw;
-  public static final com.tencent.mm.memory.a.a.a.a gEx;
+  private static volatile b heX;
+  public static final com.tencent.mm.memory.a.a.a.a heY;
   private final String TAG;
-  public ConcurrentHashMap<String, b> gEc;
-  private b gEy;
+  public ConcurrentHashMap<String, b> heD;
+  private b heZ;
   
   static
   {
     AppMethodBeat.i(156504);
-    com.tencent.mm.memory.a.a.a.a locala = com.tencent.mm.memory.a.a.a.a.apq();
-    gEx = locala;
-    b localb = apl();
+    com.tencent.mm.memory.a.a.a.a locala = com.tencent.mm.memory.a.a.a.a.awh();
+    heY = locala;
+    b localb = awc();
     a locala1 = new a(locala);
-    localb.gEc.put(locala.drI, locala1);
-    if (locala.equals(gEx)) {
-      localb.gEy = locala1;
+    localb.heD.put(locala.dpt, locala1);
+    if (locala.equals(heY)) {
+      localb.heZ = locala1;
     }
     AppMethodBeat.o(156504);
   }
@@ -33,21 +33,21 @@ public class b
   {
     AppMethodBeat.i(156498);
     this.TAG = "MicroMsg.CacheInvoke";
-    this.gEy = null;
-    this.gEc = new ConcurrentHashMap();
+    this.heZ = null;
+    this.heD = new ConcurrentHashMap();
     AppMethodBeat.o(156498);
   }
   
-  public static b apl()
+  public static b awc()
   {
     AppMethodBeat.i(156499);
-    if (gEw == null) {}
+    if (heX == null) {}
     try
     {
-      if (gEw == null) {
-        gEw = new b();
+      if (heX == null) {
+        heX = new b();
       }
-      b localb = gEw;
+      b localb = heX;
       AppMethodBeat.o(156499);
       return localb;
     }
@@ -60,7 +60,7 @@ public class b
   private static b b(com.tencent.mm.memory.a.a.a.a parama)
   {
     AppMethodBeat.i(156500);
-    parama = (b)apl().gEc.get(parama.drI);
+    parama = (b)awc().heD.get(parama.dpt);
     AppMethodBeat.o(156500);
     return parama;
   }
@@ -73,14 +73,14 @@ public class b
       AppMethodBeat.o(156501);
       return null;
     }
-    if (gEx.equals(parama))
+    if (heY.equals(parama))
     {
-      parama = apl().gEy.apo();
+      parama = awc().heZ.awf();
       AppMethodBeat.o(156501);
       return parama;
     }
-    apl();
-    parama = b(parama).apo();
+    awc();
+    parama = b(parama).awf();
     AppMethodBeat.o(156501);
     return parama;
   }
@@ -93,14 +93,14 @@ public class b
       AppMethodBeat.o(156502);
       return null;
     }
-    if (gEx.equals(parama))
+    if (heY.equals(parama))
     {
-      parama = apl().gEy.app();
+      parama = awc().heZ.awg();
       AppMethodBeat.o(156502);
       return parama;
     }
-    apl();
-    parama = b(parama).app();
+    awc();
+    parama = b(parama).awg();
     AppMethodBeat.o(156502);
     return parama;
   }
@@ -113,14 +113,14 @@ public class b
       AppMethodBeat.o(156503);
       return 2147483647;
     }
-    if (gEx.equals(parama))
+    if (heY.equals(parama))
     {
-      i = apl().gEy.apn().gEG;
+      i = awc().heZ.awe().hfh;
       AppMethodBeat.o(156503);
       return i;
     }
-    apl();
-    int i = b(parama).apn().gEG;
+    awc();
+    int i = b(parama).awe().hfh;
     AppMethodBeat.o(156503);
     return i;
   }
@@ -128,59 +128,59 @@ public class b
   static final class a
     implements b.b
   {
-    private static String gEC = "//data[%d,%d]::%s::%s";
-    private g<String, Object> gEA;
-    private com.tencent.mm.memory.a.a.a.a gEB;
-    private d<String, a> gEz;
+    private static String hfd = "//data[%d,%d]::%s::%s";
+    private d<String, a> hfa;
+    private g<String, Object> hfb;
+    private com.tencent.mm.memory.a.a.a.a hfc;
     
     a(com.tencent.mm.memory.a.a.a.a parama)
     {
       AppMethodBeat.i(156496);
-      this.gEz = null;
-      this.gEA = null;
-      this.gEB = parama;
-      this.gEz = new com.tencent.mm.memory.a.a.a.f(parama, new f.b()new f.c {}, new f.c() {}) {};
-      this.gEA = new g(10);
+      this.hfa = null;
+      this.hfb = null;
+      this.hfc = parama;
+      this.hfa = new com.tencent.mm.memory.a.a.a.f(parama, new f.b()new f.c {}, new f.c() {}) {};
+      this.hfb = new g(10);
       AppMethodBeat.o(156496);
     }
     
-    public final void apm()
+    public final void awd()
     {
       AppMethodBeat.i(156497);
-      this.gEz.trimToSize(this.gEB.gEG / 2);
+      this.hfa.trimToSize(this.hfc.hfh / 2);
       AppMethodBeat.o(156497);
     }
     
-    public final com.tencent.mm.memory.a.a.a.a apn()
+    public final com.tencent.mm.memory.a.a.a.a awe()
     {
-      return this.gEB;
+      return this.hfc;
     }
     
-    public final d apo()
+    public final d awf()
     {
-      return this.gEz;
+      return this.hfa;
     }
     
-    public final com.tencent.mm.b.f app()
+    public final com.tencent.mm.b.f awg()
     {
-      return this.gEA;
+      return this.hfb;
     }
   }
   
   public static abstract interface b<T>
   {
-    public abstract void apm();
+    public abstract void awd();
     
-    public abstract com.tencent.mm.memory.a.a.a.a apn();
+    public abstract com.tencent.mm.memory.a.a.a.a awe();
     
-    public abstract d<String, T> apo();
+    public abstract d<String, T> awf();
     
-    public abstract com.tencent.mm.b.f<String, T> app();
+    public abstract com.tencent.mm.b.f<String, T> awg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.b
  * JD-Core Version:    0.7.0.1
  */

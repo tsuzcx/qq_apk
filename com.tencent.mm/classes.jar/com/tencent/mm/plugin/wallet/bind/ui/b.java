@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae;
 
 public final class b
 {
@@ -17,8 +17,8 @@ public final class b
       AppMethodBeat.o(69076);
       return false;
     }
-    g.afC();
-    Object localObject1 = (String)g.afB().afk().get(196659, null);
+    g.agS();
+    Object localObject1 = (String)g.agR().agA().get(196659, null);
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       AppMethodBeat.o(69076);

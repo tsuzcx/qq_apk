@@ -1,215 +1,97 @@
 package com.tencent.mm.bh;
 
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.app.n.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.vfs.i;
+import com.tencent.mm.g.a.lt;
+import com.tencent.mm.g.a.lt.b;
+import com.tencent.mm.ui.widget.a.d.a;
 
 public final class e
 {
-  private static e htT = null;
-  private n.a appForegroundListener;
-  be hei;
-  private String htU;
-  private byte[] mLock;
-  private com.tencent.mm.al.g onSceneEndCallback;
-  
-  private e()
+  public static com.tencent.mm.ui.widget.a.d a(Context paramContext, int paramInt, Runnable paramRunnable)
   {
-    AppMethodBeat.i(148397);
-    this.appForegroundListener = new n.a()
+    AppMethodBeat.i(151161);
+    paramContext = new d.a(paramContext);
+    paramContext.acF(2131755906);
+    paramContext.acJ(paramInt);
+    paramContext.acM(2131755793).b(new DialogInterface.OnClickListener()
     {
-      public final void onAppBackground(String paramAnonymousString)
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(148391);
-        paramAnonymousString = e.this;
-        Looper.myQueue().addIdleHandler(new e.2(paramAnonymousString));
-        AppMethodBeat.o(148391);
+        AppMethodBeat.i(151155);
+        if (this.hXV != null) {
+          this.hXV.run();
+        }
+        AppMethodBeat.o(151155);
       }
-      
-      public final void onAppForeground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(148390);
-        paramAnonymousString = e.this;
-        ad.d("MicroMsg.SpeexUploadCore", "now pause speex uploader");
-        paramAnonymousString.hei.pause(true);
-        AppMethodBeat.o(148390);
-      }
-    };
-    this.hei = new be(1, "speex_worker");
-    this.mLock = new byte[0];
-    this.onSceneEndCallback = new com.tencent.mm.al.g()
+    });
+    paramContext.yf(true);
+    paramContext.e(new DialogInterface.OnCancelListener()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(148396);
-        if (e.c(e.this) == null)
-        {
-          AppMethodBeat.o(148396);
-          return;
+        AppMethodBeat.i(151156);
+        if (this.hXV != null) {
+          this.hXV.run();
         }
-        ad.d("MicroMsg.SpeexUploadCore", "onSceneEnd " + ((a)paramAnonymousn).filename + " filepath " + e.c(e.this) + " errCode " + paramAnonymousInt2);
-        if (((a)paramAnonymousn).filename.equals(e.c(e.this)))
-        {
-          com.tencent.mm.kernel.g.aeS().b(240, e.d(e.this));
-          if (paramAnonymousInt2 == 0)
-          {
-            d.aBo();
-            d.aBq();
-          }
-          paramAnonymousString = new com.tencent.mm.vfs.e(e.c(e.this));
-          try
-          {
-            boolean bool = paramAnonymousString.delete();
-            ad.d("MicroMsg.SpeexUploadCore", "delete " + e.c(e.this) + " delete " + bool + " errCode " + paramAnonymousInt2);
-            return;
-          }
-          catch (Exception paramAnonymousString)
-          {
-            ad.e("MicroMsg.SpeexUploadCore", "exception:%s", new Object[] { bt.m(paramAnonymousString) });
-            return;
-          }
-          finally
-          {
-            e.aBx().start();
-            e.e(e.this);
-            AppMethodBeat.o(148396);
-          }
-        }
-        AppMethodBeat.o(148396);
+        AppMethodBeat.o(151156);
       }
-    };
-    this.appForegroundListener.alive();
-    AppMethodBeat.o(148397);
+    });
+    paramContext = paramContext.fvp();
+    paramContext.show();
+    AppMethodBeat.o(151161);
+    return paramContext;
   }
   
-  public static e aBx()
+  public static boolean aIX()
   {
-    AppMethodBeat.i(148398);
-    if (htT == null) {
-      htT = new e();
-    }
-    e locale = htT;
-    AppMethodBeat.o(148398);
-    return locale;
+    AppMethodBeat.i(151158);
+    lt locallt = new lt();
+    locallt.dnK.action = 2;
+    com.tencent.mm.sdk.b.a.GpY.l(locallt);
+    boolean bool = locallt.dnL.isStart;
+    AppMethodBeat.o(151158);
+    return bool;
   }
   
-  private static com.tencent.mm.vfs.e dl(int paramInt1, int paramInt2)
+  public static boolean aIY()
   {
-    AppMethodBeat.i(148401);
-    Object localObject1 = new com.tencent.mm.vfs.e(b.aBn());
-    if ((!((com.tencent.mm.vfs.e)localObject1).exists()) || (!((com.tencent.mm.vfs.e)localObject1).isDirectory()))
+    AppMethodBeat.i(151159);
+    if ((g.hXW != null) && (g.hXW.aIJ()))
     {
-      AppMethodBeat.o(148401);
-      return null;
+      AppMethodBeat.o(151159);
+      return true;
     }
-    com.tencent.mm.vfs.e[] arrayOfe = ((com.tencent.mm.vfs.e)localObject1).fhW();
-    int i = 0;
-    localObject1 = null;
-    Object localObject2 = localObject1;
-    if (arrayOfe != null)
-    {
-      localObject2 = localObject1;
-      if (i < arrayOfe.length)
-      {
-        localObject2 = arrayOfe[i];
-        localObject1 = localObject2;
-        long l;
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-          if (((com.tencent.mm.vfs.e)localObject2).isFile())
-          {
-            ad.d("MicroMsg.SpeexUploadCore", "file " + com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject2).mUri));
-            localObject1 = com.tencent.mm.vfs.q.B(((com.tencent.mm.vfs.e)localObject2).mUri);
-            l = ((com.tencent.mm.vfs.e)localObject2).length();
-            if (((com.tencent.mm.vfs.e)localObject2).getName().endsWith(".spx")) {
-              break label169;
-            }
-          }
-        }
-        for (localObject1 = null;; localObject1 = null)
-        {
-          i += 1;
-          break;
-          label169:
-          if ((l >= paramInt1) && (l <= paramInt2)) {
-            break label226;
-          }
-          ad.d("MicroMsg.SpeexUploadCore", "unfit delete %s, minsize: %d, maxSize: %d", new Object[] { localObject1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-          i.deleteFile((String)localObject1);
-        }
-      }
-    }
-    label226:
-    AppMethodBeat.o(148401);
-    return localObject2;
+    AppMethodBeat.o(151159);
+    return false;
   }
   
-  public final void b(be.a parama)
+  public static boolean aIZ()
   {
-    AppMethodBeat.i(148399);
-    ad.d("MicroMsg.SpeexUploadCore", "pushWork");
-    this.hei.c(parama);
-    AppMethodBeat.o(148399);
+    AppMethodBeat.i(151160);
+    if ((com.tencent.mm.bi.d.hXY != null) && (com.tencent.mm.bi.d.hXY.aJa()))
+    {
+      AppMethodBeat.o(151160);
+      return true;
+    }
+    AppMethodBeat.o(151160);
+    return false;
   }
   
-  public final void start()
+  public static boolean cf(Context paramContext)
   {
-    AppMethodBeat.i(148400);
-    if (!ay.isWifi(aj.getContext()))
-    {
-      AppMethodBeat.o(148400);
-      return;
-    }
-    new ap(Looper.getMainLooper()).postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(148395);
-        Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
-        {
-          public final boolean queueIdle()
-          {
-            AppMethodBeat.i(148394);
-            e.this.b(new be.a()
-            {
-              public final boolean aus()
-              {
-                return true;
-              }
-              
-              public final boolean aut()
-              {
-                AppMethodBeat.i(148393);
-                e.b(e.this);
-                AppMethodBeat.o(148393);
-                return false;
-              }
-            });
-            AppMethodBeat.o(148394);
-            return false;
-          }
-        });
-        AppMethodBeat.o(148395);
-      }
-    }, 100L);
-    AppMethodBeat.o(148400);
+    AppMethodBeat.i(151157);
+    boolean bool = com.tencent.mm.r.a.cf(paramContext);
+    AppMethodBeat.o(151157);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bh.e
  * JD-Core Version:    0.7.0.1
  */

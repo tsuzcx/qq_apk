@@ -5,29 +5,29 @@ import com.tencent.mm.plugin.expt.hellhound.core.b;
 
 public final class c
 {
-  private static volatile c pEN;
-  public a pEO;
+  private static volatile c qjA;
+  public a qjB;
   
   private c()
   {
     AppMethodBeat.i(121964);
-    this.pEO = new d();
-    if (b.cbv()) {
-      this.pEO.reset();
+    this.qjB = new d();
+    if (b.ciE()) {
+      this.qjB.reset();
     }
     AppMethodBeat.o(121964);
   }
   
-  public static c cbS()
+  public static c cjd()
   {
     AppMethodBeat.i(121963);
-    if (pEN == null) {}
+    if (qjA == null) {}
     try
     {
-      if (pEN == null) {
-        pEN = new c();
+      if (qjA == null) {
+        qjA = new c();
       }
-      c localc = pEN;
+      c localc = qjA;
       AppMethodBeat.o(121963);
       return localc;
     }
@@ -37,16 +37,16 @@ public final class c
     }
   }
   
-  public final void VX(String paramString)
+  public final void aam(String paramString)
   {
     AppMethodBeat.i(121965);
-    this.pEO.VX(paramString);
+    this.qjB.aam(paramString);
     AppMethodBeat.o(121965);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

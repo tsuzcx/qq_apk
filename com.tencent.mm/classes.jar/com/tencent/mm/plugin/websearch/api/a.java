@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.al.n;
-import com.tencent.mm.protocal.protobuf.dis;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.protocal.protobuf.doh;
 import java.util.LinkedList;
 
 public abstract class a
   extends n
 {
-  protected int AFI;
-  protected Bundle AFJ;
-  protected int LZ;
-  protected String dtx;
+  protected int BYb;
+  protected Bundle BYc;
+  protected int MW;
+  protected String drg;
   protected int mScene;
-  protected String rLL;
+  protected String sTA;
   
-  public final void RW(int paramInt)
+  public final void Ug(int paramInt)
   {
-    this.AFI = paramInt;
+    this.BYb = paramInt;
   }
   
-  public void aT(LinkedList<dis> paramLinkedList) {}
+  public void ba(LinkedList<doh> paramLinkedList) {}
   
-  public final String cxj()
+  public final String cKv()
   {
-    return this.rLL;
+    return this.sTA;
   }
   
-  public final int ehC()
+  public final int ewW()
   {
-    return this.AFI;
+    return this.BYb;
   }
   
-  public final boolean ehD()
+  public final boolean ewX()
   {
-    return this.LZ == 0;
+    return this.MW == 0;
   }
   
-  public final Bundle ehE()
+  public final Bundle ewY()
   {
-    return this.AFJ;
+    return this.BYc;
   }
   
-  public abstract String ehF();
+  public abstract String ewZ();
   
-  public abstract int ehG();
+  public abstract int exa();
   
-  public final String ehH()
+  public final String exb()
   {
-    return this.dtx;
+    return this.drg;
   }
 }
 

@@ -2,25 +2,25 @@ package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.protocal.protobuf.blp;
+import com.tencent.mm.protocal.protobuf.bpl;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
 public final class a
   implements c
 {
-  final blp oKq;
+  final bpl GzM;
   
-  public a(blp paramblp)
+  public a(bpl parambpl)
   {
     AppMethodBeat.i(105912);
-    this.oKq = paramblp;
+    this.GzM = parambpl;
     AppMethodBeat.o(105912);
   }
   
-  public final String aaX()
+  public final String abW()
   {
-    String str2 = this.oKq.Dds;
+    String str2 = this.GzM.Ewy;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.a
  * JD-Core Version:    0.7.0.1
  */

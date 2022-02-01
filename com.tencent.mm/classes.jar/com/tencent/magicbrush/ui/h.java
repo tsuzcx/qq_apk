@@ -11,39 +11,39 @@ import d.g.a.b;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/ui/MBTextureView;", "Landroid/view/TextureView;", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBRendererView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "surfaceListener", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBSurfaceListener;", "thisView", "Landroid/view/View;", "getThisView", "()Landroid/view/View;", "viewType", "Lcom/tencent/magicbrush/ui/MagicBrushView$ViewType;", "getViewType", "()Lcom/tencent/magicbrush/ui/MagicBrushView$ViewType;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "canCaptureFromjava", "", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "setSurfaceListener", "l", "shouldReleaseSurface", "switchToRecordableMode", "recordable", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "Ljava/lang/Void;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "lib-magicbrush-nano_release"})
+@l(fNY={1, 1, 13}, fNZ={""}, fOa={"Lcom/tencent/magicbrush/ui/MBTextureView;", "Landroid/view/TextureView;", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBRendererView;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "surfaceListener", "Lcom/tencent/magicbrush/ui/MagicBrushView$MBSurfaceListener;", "thisView", "Landroid/view/View;", "getThisView", "()Landroid/view/View;", "viewType", "Lcom/tencent/magicbrush/ui/MagicBrushView$ViewType;", "getViewType", "()Lcom/tencent/magicbrush/ui/MagicBrushView$ViewType;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "canCaptureFromjava", "", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "setSurfaceListener", "l", "shouldReleaseSurface", "switchToRecordableMode", "foceRecreate", "recordable", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "success", "Ljava/lang/Void;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "lib-magicbrush-nano_release"})
 public class h
   extends TextureView
   implements TextureView.SurfaceTextureListener, MagicBrushView.b
 {
-  private final View csc;
-  private final MagicBrushView.h csd;
-  private MagicBrushView.c cse;
+  private final View cpj;
+  private final MagicBrushView.h cpk;
+  private MagicBrushView.c cpl;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(140235);
-    this.csc = ((View)this);
+    this.cpj = ((View)this);
     super.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    this.csd = MagicBrushView.h.css;
+    this.cpk = MagicBrushView.h.cpz;
     AppMethodBeat.o(140235);
   }
   
-  public final void a(b<? super Boolean, Void> paramb, MBRuntime paramMBRuntime)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, b<? super Boolean, Void> paramb, MBRuntime paramMBRuntime)
   {
-    AppMethodBeat.i(140234);
+    AppMethodBeat.i(190939);
     k.h(paramb, "callback");
     k.h(paramMBRuntime, "runtime");
-    paramb.aA(Boolean.TRUE);
-    AppMethodBeat.o(140234);
+    paramb.ay(Boolean.TRUE);
+    AppMethodBeat.o(190939);
   }
   
   public final void b(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(182580);
     k.h(paramSurfaceTexture, "surface");
-    MagicBrushView.c localc = this.cse;
+    MagicBrushView.c localc = this.cpl;
     if (localc != null)
     {
       localc.a(paramSurfaceTexture, paramInt1, paramInt2, true);
@@ -63,12 +63,12 @@ public class h
   
   public View getThisView()
   {
-    return this.csc;
+    return this.cpj;
   }
   
   public MagicBrushView.h getViewType()
   {
-    return this.csd;
+    return this.cpk;
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -83,9 +83,9 @@ public class h
   {
     AppMethodBeat.i(140232);
     k.h(paramSurfaceTexture, "surface");
-    MagicBrushView.c localc = this.cse;
+    MagicBrushView.c localc = this.cpl;
     if (localc != null) {
-      localc.aC(paramSurfaceTexture);
+      localc.b(paramSurfaceTexture, false);
     }
     AppMethodBeat.o(140232);
     return true;
@@ -95,7 +95,7 @@ public class h
   {
     AppMethodBeat.i(140231);
     k.h(paramSurfaceTexture, "surface");
-    MagicBrushView.c localc = this.cse;
+    MagicBrushView.c localc = this.cpl;
     if (localc != null)
     {
       localc.a(paramSurfaceTexture, paramInt1, paramInt2);
@@ -114,12 +114,12 @@ public class h
   
   public void setSurfaceListener(MagicBrushView.c paramc)
   {
-    this.cse = paramc;
+    this.cpl = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.ui.h
  * JD-Core Version:    0.7.0.1
  */

@@ -25,21 +25,21 @@ import com.tencent.mm.api.aa.a;
 import com.tencent.mm.api.z.a;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.pluginsdk.ui.chat.d;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.protocal.protobuf.cuo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.z;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.daa;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
@@ -50,60 +50,60 @@ import java.util.List;
 public class SnsCommentFooter
   extends InputPanelLinearLayout
 {
-  private Button fPz;
-  ChatFooterPanel fSY;
-  MMActivity imP;
+  private Button fTu;
+  ChatFooterPanel fWT;
+  MMActivity iMV;
+  private ImageView rYm;
   int state;
-  private TextWatcher tqA;
-  private ImageButton tqu;
-  MMEditText tqv;
-  private boolean tqw;
-  public boolean tqx;
-  private boolean tqy;
-  boolean tqz;
-  cuo wFh;
-  private ImageView xye;
-  private ImageView xyf;
-  private Button xyg;
-  int xyh;
-  private int xyi;
-  private int xyj;
-  private int xyk;
-  private String xyl;
-  private b xym;
-  boolean xyn;
-  private boolean xyo;
-  private boolean xyp;
-  public boolean xyq;
-  private String xyr;
-  private boolean xyt;
-  private a xyu;
-  private c xyv;
-  private bn xyw;
+  private ImageButton uyL;
+  MMEditText uyM;
+  private boolean uyN;
+  public boolean uyO;
+  private boolean uyP;
+  boolean uyQ;
+  private TextWatcher uyR;
+  daa xRC;
+  private ImageView yKU;
+  private Button yKV;
+  int yKW;
+  private int yKX;
+  private int yKY;
+  private int yKZ;
+  private String yLa;
+  private b yLb;
+  boolean yLc;
+  private boolean yLd;
+  private boolean yLe;
+  public boolean yLf;
+  private String yLg;
+  private boolean yLh;
+  private a yLi;
+  private c yLj;
+  private bn yLk;
   
   public SnsCommentFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98650);
-    this.wFh = null;
-    this.xyh = 0;
+    this.xRC = null;
+    this.yKW = 0;
     this.state = 0;
-    this.tqw = false;
-    this.xyi = -1;
-    this.xyj = -1;
-    this.xyk = 0;
-    this.xym = null;
-    this.xyn = false;
-    this.xyo = false;
-    this.xyp = z.ip(getContext());
-    this.tqx = false;
-    this.tqy = true;
-    this.xyr = "";
-    this.xyt = false;
-    this.tqz = true;
-    this.tqA = new TextWatcher()
+    this.uyN = false;
+    this.yKX = -1;
+    this.yKY = -1;
+    this.yKZ = 0;
+    this.yLb = null;
+    this.yLc = false;
+    this.yLd = false;
+    this.yLe = y.iA(getContext());
+    this.uyO = false;
+    this.uyP = true;
+    this.yLg = "";
+    this.yLh = false;
+    this.uyQ = true;
+    this.uyR = new TextWatcher()
     {
-      private int xyC = 0;
+      private int yLq = 0;
       
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -113,27 +113,27 @@ public class SnsCommentFooter
           AppMethodBeat.o(98639);
           return;
         }
-        if ((com.tencent.mm.plugin.sns.ui.widget.e.hA(SnsCommentFooter.c(SnsCommentFooter.this), 8)) && (!bt.isNullOrNil(SnsCommentFooter.d(SnsCommentFooter.this))) && (SnsCommentFooter.b(SnsCommentFooter.this).getText() != null) && (!SnsCommentFooter.b(SnsCommentFooter.this).getText().toString().startsWith(SnsCommentFooter.d(SnsCommentFooter.this))))
+        if ((com.tencent.mm.plugin.sns.ui.widget.e.hJ(SnsCommentFooter.c(SnsCommentFooter.this), 8)) && (!bs.isNullOrNil(SnsCommentFooter.d(SnsCommentFooter.this))) && (SnsCommentFooter.b(SnsCommentFooter.this).getText() != null) && (!SnsCommentFooter.b(SnsCommentFooter.this).getText().toString().startsWith(SnsCommentFooter.d(SnsCommentFooter.this))))
         {
-          ad.i("MicroMsg.SnsCommentFooter", "cur text %s", new Object[] { SnsCommentFooter.b(SnsCommentFooter.this).getText() });
+          ac.i("MicroMsg.SnsCommentFooter", "cur text %s", new Object[] { SnsCommentFooter.b(SnsCommentFooter.this).getText() });
           SnsCommentFooter.a(SnsCommentFooter.this, "");
           SnsCommentFooter.e(SnsCommentFooter.this);
-          SnsCommentFooter.this.Ns(8);
+          SnsCommentFooter.this.Pw(8);
           SnsCommentFooter.a(SnsCommentFooter.this, 0);
         }
         SnsCommentFooter.b(SnsCommentFooter.this).requestFocus();
         if (SnsCommentFooter.b(SnsCommentFooter.this).getText().toString().trim().length() > 0) {}
         for (int i = 1;; i = 0)
         {
-          if ((i != 0) && (SnsCommentFooter.this.tqz))
+          if ((i != 0) && (SnsCommentFooter.this.uyQ))
           {
             SnsCommentFooter.a(SnsCommentFooter.this, true);
-            SnsCommentFooter.this.tqz = false;
+            SnsCommentFooter.this.uyQ = false;
           }
           if (i == 0)
           {
             SnsCommentFooter.a(SnsCommentFooter.this, false);
-            SnsCommentFooter.this.tqz = true;
+            SnsCommentFooter.this.uyQ = true;
           }
           AppMethodBeat.o(98639);
           return;
@@ -146,7 +146,7 @@ public class SnsCommentFooter
         if (paramAnonymousCharSequence == null) {}
         for (paramAnonymousInt1 = 0;; paramAnonymousInt1 = paramAnonymousCharSequence.length())
         {
-          this.xyC = paramAnonymousInt1;
+          this.yLq = paramAnonymousInt1;
           AppMethodBeat.o(98637);
           return;
         }
@@ -155,48 +155,48 @@ public class SnsCommentFooter
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(98638);
-        if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.wzN))
+        if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.xMh))
         {
-          SnsCommentFooter.this.Ns(16);
-          ad.d("MicroMsg.SnsCommentFooter", "clean SNS_COMMENT_FLAG_FOLD");
+          SnsCommentFooter.this.Pw(16);
+          ac.d("MicroMsg.SnsCommentFooter", "clean SNS_COMMENT_FLAG_FOLD");
           AppMethodBeat.o(98638);
           return;
         }
-        if (paramAnonymousCharSequence.length() - this.xyC > a.wzN)
+        if (paramAnonymousCharSequence.length() - this.yLq > a.xMh)
         {
           SnsCommentFooter.this.setCommentFlag(16);
-          ad.d("MicroMsg.SnsCommentFooter", "add SNS_COMMENT_FLAG_FOLD");
+          ac.d("MicroMsg.SnsCommentFooter", "add SNS_COMMENT_FLAG_FOLD");
         }
         AppMethodBeat.o(98638);
       }
     };
-    this.imP = ((MMActivity)paramContext);
+    this.iMV = ((MMActivity)paramContext);
     if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE) || (com.tencent.mm.sdk.platformtools.h.DEBUG))
     {
-      if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.psj, 0) == 1) {}
+      if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pWo, 0) == 1) {}
       for (bool = true;; bool = false)
       {
-        this.xyn = bool;
+        this.yLc = bool;
         AppMethodBeat.o(98650);
         return;
       }
     }
-    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.psj, 0) == 1) {}
+    if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pWo, 0) == 1) {}
     for (;;)
     {
-      this.xyn = bool;
+      this.yLc = bool;
       AppMethodBeat.o(98650);
       return;
       bool = false;
     }
   }
   
-  private void btC()
+  private void bAC()
   {
     AppMethodBeat.i(98654);
-    this.fSY.onResume();
-    if ((z.ip(getContext())) && (dBg())) {
-      getInputPanelHelper().aJ(new Runnable()
+    this.fWT.onResume();
+    if ((y.iA(getContext())) && (dPD())) {
+      getInputPanelHelper().aM(new Runnable()
       {
         public final void run()
         {
@@ -208,23 +208,23 @@ public class SnsCommentFooter
     }
     for (;;)
     {
-      if (this.xyv != null) {
-        this.xyv.onShow();
+      if (this.yLj != null) {
+        this.yLj.onShow();
       }
       AppMethodBeat.o(98654);
       return;
-      this.fSY.setVisibility(0);
+      this.fWT.setVisibility(0);
     }
   }
   
-  private void dBf()
+  private void dPC()
   {
     AppMethodBeat.i(98666);
-    int i = z.in(getContext());
-    if (this.fSY != null)
+    int i = y.iy(getContext());
+    if (this.fWT != null)
     {
-      this.fSY.setPortHeightPx(i);
-      ViewGroup.LayoutParams localLayoutParams = this.fSY.getLayoutParams();
+      this.fWT.setPortHeightPx(i);
+      ViewGroup.LayoutParams localLayoutParams = this.fWT.getLayoutParams();
       if (localLayoutParams != null) {
         localLayoutParams.height = i;
       }
@@ -232,12 +232,12 @@ public class SnsCommentFooter
     AppMethodBeat.o(98666);
   }
   
-  private boolean dBg()
+  private boolean dPD()
   {
     AppMethodBeat.i(98667);
-    int i = ai.eb(getContext());
-    ad.i("MicroMsg.SnsCommentFooter", "is show key board %d, %d, %d", new Object[] { Integer.valueOf(this.xyj), Integer.valueOf(this.xyi), Integer.valueOf(i) });
-    if ((this.xyj > 0) && (this.xyj < this.xyi - i))
+    int i = aj.ej(getContext());
+    ac.i("MicroMsg.SnsCommentFooter", "is show key board %d, %d, %d", new Object[] { Integer.valueOf(this.yKY), Integer.valueOf(this.yKX), Integer.valueOf(i) });
+    if ((this.yKY > 0) && (this.yKY < this.yKX - i))
     {
       AppMethodBeat.o(98667);
       return true;
@@ -246,56 +246,94 @@ public class SnsCommentFooter
     return false;
   }
   
-  private void mU(boolean paramBoolean)
+  private void nM(boolean paramBoolean)
   {
     AppMethodBeat.i(98670);
     Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772095);
     Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772100);
     localAnimation1.setDuration(150L);
     localAnimation2.setDuration(150L);
-    if ((this.fPz == null) || (this.xyg == null))
+    if ((this.fTu == null) || (this.yKV == null))
     {
       AppMethodBeat.o(98670);
       return;
     }
     if (paramBoolean)
     {
-      if ((this.fPz.getVisibility() == 8) || (this.fPz.getVisibility() == 4))
+      if ((this.fTu.getVisibility() == 8) || (this.fTu.getVisibility() == 4))
       {
         AppMethodBeat.o(98670);
         return;
       }
-      this.xyg.startAnimation(localAnimation1);
-      this.xyg.setVisibility(0);
-      this.fPz.startAnimation(localAnimation2);
-      this.fPz.setVisibility(8);
+      this.yKV.startAnimation(localAnimation1);
+      this.yKV.setVisibility(0);
+      this.fTu.startAnimation(localAnimation2);
+      this.fTu.setVisibility(8);
     }
     for (;;)
     {
-      this.xyg.getParent().requestLayout();
+      this.yKV.getParent().requestLayout();
       AppMethodBeat.o(98670);
       return;
-      if ((this.fPz.getVisibility() == 0) || (this.fPz.getVisibility() == 0))
+      if ((this.fTu.getVisibility() == 0) || (this.fTu.getVisibility() == 0))
       {
         AppMethodBeat.o(98670);
         return;
       }
-      this.fPz.startAnimation(localAnimation1);
-      this.fPz.setVisibility(0);
-      this.xyg.startAnimation(localAnimation2);
-      this.xyg.setVisibility(8);
+      this.fTu.startAnimation(localAnimation1);
+      this.fTu.setVisibility(0);
+      this.yKV.startAnimation(localAnimation2);
+      this.yKV.setVisibility(8);
     }
   }
   
-  public final void Ns(int paramInt)
+  public final void Pw(int paramInt)
   {
-    this.xyh &= (paramInt ^ 0xFFFFFFFF);
+    this.yKW &= (paramInt ^ 0xFFFFFFFF);
   }
   
-  public final boolean dBb()
+  public final void dPA()
+  {
+    AppMethodBeat.i(98655);
+    if (this.uyM == null)
+    {
+      ac.e("MicroMsg.SnsCommentFooter", "send edittext is null");
+      AppMethodBeat.o(98655);
+      return;
+    }
+    this.uyM.removeTextChangedListener(this.uyR);
+    this.uyM.addTextChangedListener(this.uyR);
+    AppMethodBeat.o(98655);
+  }
+  
+  public final void dPB()
+  {
+    AppMethodBeat.i(98660);
+    this.uyM.setText("");
+    this.uyM.setHint("");
+    this.xRC = null;
+    this.yKW = 0;
+    this.state = 0;
+    AppMethodBeat.o(98660);
+  }
+  
+  public final void dPE()
+  {
+    AppMethodBeat.i(98669);
+    this.yLk = null;
+    if (this.fWT != null)
+    {
+      ac.i("MicroMsg.SnsCommentFooter", "commentfooter release");
+      this.fWT.eMG();
+      this.fWT.destroy();
+    }
+    AppMethodBeat.o(98669);
+  }
+  
+  public final boolean dPy()
   {
     AppMethodBeat.i(98649);
-    if ((this.tqv.getText() == null) || (bt.isNullOrNil(this.tqv.getText().toString())))
+    if ((this.uyM.getText() == null) || (bs.isNullOrNil(this.uyM.getText().toString())))
     {
       AppMethodBeat.o(98649);
       return true;
@@ -304,100 +342,86 @@ public class SnsCommentFooter
     return false;
   }
   
-  public final boolean dBc()
+  public final boolean dPz()
   {
     return this.state == 1;
-  }
-  
-  public final void dBd()
-  {
-    AppMethodBeat.i(98655);
-    if (this.tqv == null)
-    {
-      ad.e("MicroMsg.SnsCommentFooter", "send edittext is null");
-      AppMethodBeat.o(98655);
-      return;
-    }
-    this.tqv.removeTextChangedListener(this.tqA);
-    this.tqv.addTextChangedListener(this.tqA);
-    AppMethodBeat.o(98655);
-  }
-  
-  public final void dBe()
-  {
-    AppMethodBeat.i(98660);
-    this.tqv.setText("");
-    this.tqv.setHint("");
-    this.wFh = null;
-    this.xyh = 0;
-    this.state = 0;
-    AppMethodBeat.o(98660);
-  }
-  
-  public final void dBh()
-  {
-    AppMethodBeat.i(98669);
-    this.xyw = null;
-    if (this.fSY != null)
-    {
-      ad.i("MicroMsg.SnsCommentFooter", "commentfooter release");
-      this.fSY.exm();
-      this.fSY.destroy();
-    }
-    AppMethodBeat.o(98669);
   }
   
   public final void g(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(98665);
     super.g(paramBoolean, paramInt);
-    this.tqx = paramBoolean;
-    if ((paramBoolean) && (getVisibility() == 0) && (this.xyw != null))
+    this.uyO = paramBoolean;
+    if ((paramBoolean) && (getVisibility() == 0) && (this.yLk != null))
     {
-      ad.d("MicroMsg.SnsCommentFooter", "jacks dynamic adjust animation up");
-      this.xyw.dCX();
+      ac.d("MicroMsg.SnsCommentFooter", "jacks dynamic adjust animation up");
+      this.yLk.dRu();
     }
-    if ((this.xyk != paramInt) && (paramInt != 0))
+    if ((this.yKZ != paramInt) && (paramInt != 0))
     {
-      this.xyk = paramInt;
+      this.yKZ = paramInt;
       i.A(getContext(), paramInt);
-      dBf();
+      dPC();
     }
     AppMethodBeat.o(98665);
   }
   
   public String getCommentAtPrefix()
   {
-    return this.xyl;
+    return this.yLa;
   }
   
   public int getCommentFlag()
   {
-    return this.xyh;
+    return this.yKW;
   }
   
-  public cuo getCommentInfo()
+  public daa getCommentInfo()
   {
     AppMethodBeat.i(98661);
-    if (this.wFh == null)
+    if (this.xRC == null)
     {
-      localcuo = new cuo();
+      localdaa = new daa();
       AppMethodBeat.o(98661);
-      return localcuo;
+      return localdaa;
     }
-    cuo localcuo = this.wFh;
+    daa localdaa = this.xRC;
     AppMethodBeat.o(98661);
-    return localcuo;
+    return localdaa;
+  }
+  
+  public final void lY(boolean paramBoolean)
+  {
+    AppMethodBeat.i(98659);
+    if (this.rYm != null)
+    {
+      if (paramBoolean)
+      {
+        this.rYm.setVisibility(0);
+        if ((com.tencent.mm.m.g.ZY().getInt("SnsAdAtFriendRedDot", 0) == 1) && (com.tencent.mm.kernel.g.agR().agA().getBoolean(ah.a.GSF, true)))
+        {
+          this.yKU.setVisibility(0);
+          AppMethodBeat.o(98659);
+          return;
+        }
+        this.yKU.setVisibility(8);
+        AppMethodBeat.o(98659);
+        return;
+      }
+      this.rYm.setVisibility(8);
+      this.yKU.setVisibility(8);
+    }
+    AppMethodBeat.o(98659);
   }
   
   public final void o(final List<k> paramList, String paramString)
   {
     AppMethodBeat.i(98656);
-    this.xyr = paramString;
+    this.yLg = paramString;
     k localk;
-    if (this.tqv != null)
+    if (this.uyM != null)
     {
-      if (bt.isNullOrNil(paramString)) {
+      if (bs.isNullOrNil(paramString)) {
         break label172;
       }
       Iterator localIterator = paramList.iterator();
@@ -410,21 +434,21 @@ public class SnsCommentFooter
       }
     }
     label172:
-    for (paramString = bt.by(localk.text, "");; paramString = "")
+    for (paramString = bs.bG(localk.text, "");; paramString = "")
     {
-      if (!bt.isNullOrNil(paramString))
+      if (!bs.isNullOrNil(paramString))
       {
-        this.xyg.setVisibility(0);
-        this.fPz.setVisibility(8);
-        this.tqv.setText("");
-        this.tqv.aMd(paramString);
+        this.yKV.setVisibility(0);
+        this.fTu.setVisibility(8);
+        this.uyM.setText("");
+        this.uyM.aRF(paramString);
       }
       for (;;)
       {
-        if (!this.xyt) {
-          this.tqv.addTextChangedListener(new TextWatcher()
+        if (!this.yLh) {
+          this.uyM.addTextChangedListener(new TextWatcher()
           {
-            int xyC = 0;
+            int yLq = 0;
             
             public final void afterTextChanged(Editable paramAnonymousEditable)
             {
@@ -434,16 +458,16 @@ public class SnsCommentFooter
                 AppMethodBeat.o(98642);
                 return;
               }
-              if ((com.tencent.mm.plugin.sns.ui.widget.e.hA(SnsCommentFooter.c(SnsCommentFooter.this), 8)) && (!bt.isNullOrNil(SnsCommentFooter.d(SnsCommentFooter.this))) && (!bt.isNullOrNil(SnsCommentFooter.b(SnsCommentFooter.this).getText().toString())) && (!SnsCommentFooter.b(SnsCommentFooter.this).getText().toString().startsWith(SnsCommentFooter.d(SnsCommentFooter.this))))
+              if ((com.tencent.mm.plugin.sns.ui.widget.e.hJ(SnsCommentFooter.c(SnsCommentFooter.this), 8)) && (!bs.isNullOrNil(SnsCommentFooter.d(SnsCommentFooter.this))) && (!bs.isNullOrNil(SnsCommentFooter.b(SnsCommentFooter.this).getText().toString())) && (!SnsCommentFooter.b(SnsCommentFooter.this).getText().toString().startsWith(SnsCommentFooter.d(SnsCommentFooter.this))))
               {
-                ad.i("MicroMsg.SnsCommentFooter", "commentAtPrefix [%s], curTxt [%s]", new Object[] { SnsCommentFooter.d(SnsCommentFooter.this), SnsCommentFooter.b(SnsCommentFooter.this).getText() });
+                ac.i("MicroMsg.SnsCommentFooter", "commentAtPrefix [%s], curTxt [%s]", new Object[] { SnsCommentFooter.d(SnsCommentFooter.this), SnsCommentFooter.b(SnsCommentFooter.this).getText() });
                 SnsCommentFooter.a(SnsCommentFooter.this, "");
                 SnsCommentFooter.e(SnsCommentFooter.this);
-                SnsCommentFooter.this.Ns(8);
+                SnsCommentFooter.this.Pw(8);
                 SnsCommentFooter.a(SnsCommentFooter.this, 0);
               }
-              ad.d("MicroMsg.SnsCommentFooter", "update commentkey:" + SnsCommentFooter.f(SnsCommentFooter.this));
-              if (!bt.isNullOrNil(SnsCommentFooter.f(SnsCommentFooter.this)))
+              ac.d("MicroMsg.SnsCommentFooter", "update commentkey:" + SnsCommentFooter.f(SnsCommentFooter.this));
+              if (!bs.isNullOrNil(SnsCommentFooter.f(SnsCommentFooter.this)))
               {
                 paramAnonymousEditable = paramList.iterator();
                 while (paramAnonymousEditable.hasNext())
@@ -451,9 +475,9 @@ public class SnsCommentFooter
                   k localk = (k)paramAnonymousEditable.next();
                   if (SnsCommentFooter.f(SnsCommentFooter.this).equals(localk.key))
                   {
-                    ad.d("MicroMsg.SnsCommentFooter", "afterTextChanged update");
+                    ac.d("MicroMsg.SnsCommentFooter", "afterTextChanged update");
                     localk.text = SnsCommentFooter.b(SnsCommentFooter.this).getText().toString();
-                    localk.dtM = SnsCommentFooter.c(SnsCommentFooter.this);
+                    localk.drx = SnsCommentFooter.c(SnsCommentFooter.this);
                   }
                 }
               }
@@ -461,33 +485,33 @@ public class SnsCommentFooter
               {
                 if (i == 0)
                 {
-                  ad.d("MicroMsg.SnsCommentFooter", "afterTextChanged add");
+                  ac.d("MicroMsg.SnsCommentFooter", "afterTextChanged add");
                   paramAnonymousEditable = new k();
                   paramAnonymousEditable.key = SnsCommentFooter.f(SnsCommentFooter.this);
                   paramAnonymousEditable.text = SnsCommentFooter.b(SnsCommentFooter.this).getText().toString();
-                  paramAnonymousEditable.dtM = SnsCommentFooter.c(SnsCommentFooter.this);
+                  paramAnonymousEditable.drx = SnsCommentFooter.c(SnsCommentFooter.this);
                   if ((paramAnonymousEditable.text != null) && (paramAnonymousEditable.text.length() > 0)) {
                     paramList.add(paramAnonymousEditable);
                   }
                 }
                 if (paramList.size() > 5)
                 {
-                  ad.d("MicroMsg.SnsCommentFooter", "comments remove");
+                  ac.d("MicroMsg.SnsCommentFooter", "comments remove");
                   paramList.remove(0);
                 }
                 SnsCommentFooter.b(SnsCommentFooter.this).requestFocus();
                 if (SnsCommentFooter.b(SnsCommentFooter.this).getText().toString().trim().length() > 0) {}
                 for (boolean bool = true;; bool = false)
                 {
-                  if ((bool) && (SnsCommentFooter.this.tqz))
+                  if ((bool) && (SnsCommentFooter.this.uyQ))
                   {
                     SnsCommentFooter.a(SnsCommentFooter.this, bool);
-                    SnsCommentFooter.this.tqz = false;
+                    SnsCommentFooter.this.uyQ = false;
                   }
                   if (!bool)
                   {
                     SnsCommentFooter.a(SnsCommentFooter.this, bool);
-                    SnsCommentFooter.this.tqz = true;
+                    SnsCommentFooter.this.uyQ = true;
                   }
                   AppMethodBeat.o(98642);
                   return;
@@ -501,7 +525,7 @@ public class SnsCommentFooter
               if (paramAnonymousCharSequence == null) {}
               for (paramAnonymousInt1 = 0;; paramAnonymousInt1 = paramAnonymousCharSequence.length())
               {
-                this.xyC = paramAnonymousInt1;
+                this.yLq = paramAnonymousInt1;
                 AppMethodBeat.o(98641);
                 return;
               }
@@ -510,26 +534,26 @@ public class SnsCommentFooter
             public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
             {
               AppMethodBeat.i(98640);
-              if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.wzN))
+              if ((paramAnonymousCharSequence == null) || (paramAnonymousCharSequence.length() < a.xMh))
               {
-                SnsCommentFooter.this.Ns(16);
-                ad.d("MicroMsg.SnsCommentFooter", "clean SNS_COMMENT_FLAG_FOLD");
+                SnsCommentFooter.this.Pw(16);
+                ac.d("MicroMsg.SnsCommentFooter", "clean SNS_COMMENT_FLAG_FOLD");
                 AppMethodBeat.o(98640);
                 return;
               }
-              if (paramAnonymousCharSequence.length() - this.xyC > a.wzN)
+              if (paramAnonymousCharSequence.length() - this.yLq > a.xMh)
               {
                 SnsCommentFooter.this.setCommentFlag(16);
-                ad.d("MicroMsg.SnsCommentFooter", "add SNS_COMMENT_FLAG_FOLD");
+                ac.d("MicroMsg.SnsCommentFooter", "add SNS_COMMENT_FLAG_FOLD");
               }
               AppMethodBeat.o(98640);
             }
           });
         }
-        this.xyt = true;
+        this.yLh = true;
         AppMethodBeat.o(98656);
         return;
-        this.tqv.setText("");
+        this.uyM.setText("");
       }
     }
   }
@@ -538,8 +562,8 @@ public class SnsCommentFooter
   {
     AppMethodBeat.i(98664);
     super.onConfigurationChanged(paramConfiguration);
-    if (this.fSY != null) {
-      dBf();
+    if (this.fWT != null) {
+      dPC();
     }
     AppMethodBeat.o(98664);
   }
@@ -548,99 +572,75 @@ public class SnsCommentFooter
   {
     AppMethodBeat.i(98668);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.xyi < paramInt4) {}
-    for (paramInt1 = paramInt4;; paramInt1 = this.xyi)
+    if (this.yKX < paramInt4) {}
+    for (paramInt1 = paramInt4;; paramInt1 = this.yKX)
     {
-      this.xyi = paramInt1;
-      this.xyj = paramInt4;
+      this.yKX = paramInt1;
+      this.yKY = paramInt4;
       AppMethodBeat.o(98668);
       return;
     }
   }
   
-  public final void qn(boolean paramBoolean)
+  public final void rm(boolean paramBoolean)
   {
     AppMethodBeat.i(98653);
-    if (this.fSY == null)
+    if (this.fWT == null)
     {
       AppMethodBeat.o(98653);
       return;
     }
-    this.xyq = paramBoolean;
-    ad.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(paramBoolean)));
+    this.yLf = paramBoolean;
+    ac.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(paramBoolean)));
     if (!paramBoolean)
     {
-      this.fSY.setVisibility(8);
-      this.tqu.setImageResource(2131690564);
-      this.imP.hideVKB();
+      this.fWT.setVisibility(8);
+      this.uyL.setImageResource(2131690564);
+      this.iMV.hideVKB();
       requestLayout();
       AppMethodBeat.o(98653);
       return;
     }
     if (this.state == 0)
     {
-      this.tqv.requestFocus();
-      this.imP.showVKB();
-      this.fSY.setVisibility(8);
+      this.uyM.requestFocus();
+      this.iMV.showVKB();
+      this.fWT.setVisibility(8);
     }
     for (;;)
     {
-      this.tqy = false;
+      this.uyP = false;
       AppMethodBeat.o(98653);
       return;
-      this.tqv.requestFocus();
-      this.imP.hideVKB();
-      btC();
+      this.uyM.requestFocus();
+      this.iMV.hideVKB();
+      bAC();
     }
-  }
-  
-  public final void qo(boolean paramBoolean)
-  {
-    AppMethodBeat.i(98659);
-    if (this.xye != null)
-    {
-      if (paramBoolean)
-      {
-        this.xye.setVisibility(0);
-        if ((com.tencent.mm.m.g.Zd().getInt("SnsAdAtFriendRedDot", 0) == 1) && (com.tencent.mm.kernel.g.afB().afk().getBoolean(ae.a.FuL, true)))
-        {
-          this.xyf.setVisibility(0);
-          AppMethodBeat.o(98659);
-          return;
-        }
-        this.xyf.setVisibility(8);
-        AppMethodBeat.o(98659);
-        return;
-      }
-      this.xye.setVisibility(8);
-      this.xyf.setVisibility(8);
-    }
-    AppMethodBeat.o(98659);
   }
   
   public void setAfterEditAction(Runnable paramRunnable)
   {
     AppMethodBeat.i(98651);
-    paramRunnable = (ViewGroup)inflate(this.imP, 2131495541, this);
-    this.xye = ((ImageView)paramRunnable.findViewById(2131296545));
-    this.xyf = ((ImageView)paramRunnable.findViewById(2131296546));
-    this.fPz = ((Button)paramRunnable.findViewById(2131296560));
-    this.xyg = ((Button)paramRunnable.findViewById(2131296553));
-    this.tqv = ((MMEditText)paramRunnable.findViewById(2131296549));
-    mU(false);
-    this.xye.setOnClickListener(new SnsCommentFooter.7(this));
-    this.tqu = ((ImageButton)paramRunnable.findViewById(2131296558));
-    this.tqu.setOnClickListener(new View.OnClickListener()
+    paramRunnable = (ViewGroup)inflate(this.iMV, 2131495541, this);
+    this.rYm = ((ImageView)paramRunnable.findViewById(2131296545));
+    this.yKU = ((ImageView)paramRunnable.findViewById(2131296546));
+    this.fTu = ((Button)paramRunnable.findViewById(2131296560));
+    this.yKV = ((Button)paramRunnable.findViewById(2131296553));
+    this.uyM = ((MMEditText)paramRunnable.findViewById(2131296549));
+    nM(false);
+    this.rYm.setOnClickListener(new SnsCommentFooter.7(this));
+    this.uyL = ((ImageButton)paramRunnable.findViewById(2131296558));
+    this.uyL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98644);
         SnsCommentFooter.this.setModeClick(true);
-        ad.i("MicroMsg.SnsCommentFooter", "state onClick" + SnsCommentFooter.i(SnsCommentFooter.this));
+        ac.i("MicroMsg.SnsCommentFooter", "state onClick" + SnsCommentFooter.i(SnsCommentFooter.this));
         if (SnsCommentFooter.i(SnsCommentFooter.this) == 0)
         {
           SnsCommentFooter.b(SnsCommentFooter.this).requestFocus();
-          SnsCommentFooter.this.imP.hideVKB();
+          SnsCommentFooter.this.iMV.hideVKB();
           SnsCommentFooter.a(SnsCommentFooter.this, 1);
           SnsCommentFooter.j(SnsCommentFooter.this);
           SnsCommentFooter.this.setToSendTextColor(false);
@@ -652,15 +652,15 @@ public class SnsCommentFooter
         SnsCommentFooter.m(SnsCommentFooter.this);
         SnsCommentFooter.l(SnsCommentFooter.this);
         SnsCommentFooter.b(SnsCommentFooter.this).requestFocus();
-        SnsCommentFooter.this.imP.showVKB();
+        SnsCommentFooter.this.iMV.showVKB();
         SnsCommentFooter.this.setToSendTextColor(true);
         SnsCommentFooter.k(SnsCommentFooter.this).setImageResource(2131690564);
         SnsCommentFooter.a(SnsCommentFooter.this, 0);
         AppMethodBeat.o(98644);
       }
     });
-    this.tqv.setHint(this.imP.getString(2131764046));
-    this.tqv.setOnTouchListener(new View.OnTouchListener()
+    this.uyM.setHint(this.iMV.getString(2131764046));
+    this.uyM.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -670,32 +670,32 @@ public class SnsCommentFooter
         SnsCommentFooter.m(SnsCommentFooter.this);
         SnsCommentFooter.k(SnsCommentFooter.this).setImageResource(2131690564);
         if (SnsCommentFooter.n(SnsCommentFooter.this) != null) {
-          SnsCommentFooter.n(SnsCommentFooter.this).dBa();
+          SnsCommentFooter.n(SnsCommentFooter.this).dPx();
         }
         SnsCommentFooter.a(SnsCommentFooter.this, 0);
         AppMethodBeat.o(98645);
         return false;
       }
     });
-    if (com.tencent.mm.pluginsdk.ui.chat.e.Cgj == null)
+    if (com.tencent.mm.pluginsdk.ui.chat.e.DyA == null)
     {
-      this.fSY = new d(this.imP);
+      this.fWT = new d(this.iMV);
       AppMethodBeat.o(98651);
       return;
     }
-    this.fSY = com.tencent.mm.pluginsdk.ui.chat.e.Cgj.es(getContext());
-    this.fSY.setEntranceScene(ChatFooterPanel.BUY);
-    this.fSY.setVisibility(8);
+    this.fWT = com.tencent.mm.pluginsdk.ui.chat.e.DyA.eA(getContext());
+    this.fWT.setEntranceScene(ChatFooterPanel.Dno);
+    this.fWT.setVisibility(8);
     paramRunnable = (LinearLayout)findViewById(2131304239);
-    this.xyk = z.in(getContext());
-    paramRunnable.addView(this.fSY, -1, this.xyk);
-    if (!this.xyn) {
-      this.fSY.exn();
+    this.yKZ = y.iy(getContext());
+    paramRunnable.addView(this.fWT, -1, this.yKZ);
+    if (!this.yLc) {
+      this.fWT.eMH();
     }
-    this.fSY.onResume();
-    this.fSY.setOnTextOperationListener(new SnsCommentFooter.10(this));
-    paramRunnable = aa.cJM.Kg();
-    paramRunnable.cJL = new z.a()
+    this.fWT.onResume();
+    this.fWT.setOnTextOperationListener(new SnsCommentFooter.10(this));
+    paramRunnable = aa.cGT.JQ();
+    paramRunnable.cGS = new z.a()
     {
       public final void a(final com.tencent.mm.api.p paramAnonymousp)
       {
@@ -704,7 +704,7 @@ public class SnsCommentFooter
         {
           boolean bool = false;
           String str;
-          if ((SnsCommentFooter.o(SnsCommentFooter.this) != null) && (!bt.isNullOrNil(SnsCommentFooter.o(SnsCommentFooter.this).Username)))
+          if ((SnsCommentFooter.o(SnsCommentFooter.this) != null) && (!bs.isNullOrNil(SnsCommentFooter.o(SnsCommentFooter.this).Username)))
           {
             str = SnsCommentFooter.o(SnsCommentFooter.this).Username;
             bool = true;
@@ -723,21 +723,21 @@ public class SnsCommentFooter
               return;
             }
           }
-          a.hYt.a(SnsCommentFooter.h(SnsCommentFooter.this), str, ((EmojiInfo)paramAnonymousp).field_md5, bool, new y.a()
+          a.iyx.a(SnsCommentFooter.h(SnsCommentFooter.this), str, ((EmojiInfo)paramAnonymousp).field_md5, bool, new y.a()
           {
             public final void a(boolean paramAnonymous2Boolean, String paramAnonymous2String, int paramAnonymous2Int)
             {
               AppMethodBeat.i(98630);
               if ((SnsCommentFooter.q(SnsCommentFooter.this) != null) && (paramAnonymous2Boolean)) {
-                if (!com.tencent.mm.plugin.sns.ui.widget.e.hA(SnsCommentFooter.c(SnsCommentFooter.this), 8)) {
+                if (!com.tencent.mm.plugin.sns.ui.widget.e.hJ(SnsCommentFooter.c(SnsCommentFooter.this), 8)) {
                   break label94;
                 }
               }
               label94:
               for (paramAnonymous2String = SnsCommentFooter.this.getCommentAtPrefix();; paramAnonymous2String = "")
               {
-                SnsCommentFooter.q(SnsCommentFooter.this).jj(paramAnonymous2String, ((EmojiInfo)paramAnonymousp).field_md5);
-                com.tencent.mm.plugin.report.service.h.vKh.dB(150, 81);
+                SnsCommentFooter.q(SnsCommentFooter.this).jH(paramAnonymous2String, ((EmojiInfo)paramAnonymousp).field_md5);
+                com.tencent.mm.plugin.report.service.h.wUl.dB(150, 81);
                 AppMethodBeat.o(98630);
                 return;
               }
@@ -749,89 +749,89 @@ public class SnsCommentFooter
       
       public final void onHide() {}
     };
-    this.fSY.setCallback(paramRunnable);
+    this.fWT.setCallback(paramRunnable);
     AppMethodBeat.o(98651);
   }
   
   public void setAnitiomAdjust(bn parambn)
   {
-    this.xyw = parambn;
+    this.yLk = parambn;
   }
   
   public void setCommentAtPrefix(String paramString)
   {
-    this.xyl = paramString;
+    this.yLa = paramString;
   }
   
   public void setCommentFlag(int paramInt)
   {
-    this.xyh |= paramInt;
+    this.yKW |= paramInt;
   }
   
   public void setCommentHint(String paramString)
   {
     AppMethodBeat.i(98658);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
-      if (com.tencent.mm.plugin.sns.ui.widget.e.hA(this.xyh, 1))
+      if (com.tencent.mm.plugin.sns.ui.widget.e.hJ(this.yKW, 1))
       {
-        this.tqv.setHint(com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), this.imP.getString(2131763743) + paramString + this.imP.getString(2131763775, new Object[] { Float.valueOf(this.tqv.getTextSize()) }), this.tqv.getTextSize()));
+        this.uyM.setHint(com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), this.iMV.getString(2131763743) + paramString + this.iMV.getString(2131763775, new Object[] { Float.valueOf(this.uyM.getTextSize()) }), this.uyM.getTextSize()));
         AppMethodBeat.o(98658);
         return;
       }
-      this.tqv.setHint(com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), paramString, this.tqv.getTextSize()));
+      this.uyM.setHint(com.tencent.mm.pluginsdk.ui.span.k.b(getContext(), paramString, this.uyM.getTextSize()));
       AppMethodBeat.o(98658);
       return;
     }
-    this.tqv.setHint("");
+    this.uyM.setHint("");
     AppMethodBeat.o(98658);
   }
   
-  public void setCommentInfo(cuo paramcuo)
+  public void setCommentInfo(daa paramdaa)
   {
-    this.wFh = paramcuo;
+    this.xRC = paramdaa;
   }
   
   public void setFeedEmojiCommentEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(176296);
-    this.xyo = paramBoolean;
-    ad.i("MicroMsg.SnsCommentFooter", "setFeedEmojiCommentEnable:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.yLd = paramBoolean;
+    ac.i("MicroMsg.SnsCommentFooter", "setFeedEmojiCommentEnable:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(176296);
   }
   
   public void setModeClick(boolean paramBoolean)
   {
-    this.tqw = paramBoolean;
+    this.uyN = paramBoolean;
   }
   
   public void setOnCommentSendImp(final b paramb)
   {
     AppMethodBeat.i(98663);
-    this.xym = paramb;
-    this.xyg.setOnClickListener(new View.OnClickListener()
+    this.yLb = paramb;
+    this.yKV.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98634);
-        paramAnonymousView = c.d(SnsCommentFooter.b(SnsCommentFooter.this)).aaj(com.tencent.mm.m.b.YF());
-        paramAnonymousView.HuM = true;
+        paramAnonymousView = c.d(SnsCommentFooter.b(SnsCommentFooter.this)).acw(com.tencent.mm.m.b.ZC());
+        paramAnonymousView.IVj = true;
         paramAnonymousView.a(new c.a()
         {
-          public final void CH(String paramAnonymous2String)
+          public final void GK(String paramAnonymous2String)
           {
             AppMethodBeat.i(98632);
-            SnsCommentFooter.2.this.xyA.jj(SnsCommentFooter.b(SnsCommentFooter.this).getText().toString(), "");
+            SnsCommentFooter.2.this.yLo.jH(SnsCommentFooter.b(SnsCommentFooter.this).getText().toString(), "");
             SnsCommentFooter.b(SnsCommentFooter.this).setText("");
             AppMethodBeat.o(98632);
           }
           
-          public final void aKr() {}
+          public final void aRi() {}
           
-          public final void ck(String paramAnonymous2String)
+          public final void ca(String paramAnonymous2String)
           {
             AppMethodBeat.i(163118);
-            com.tencent.mm.ui.base.h.j(SnsCommentFooter.h(SnsCommentFooter.this), 2131764058, 2131764059);
+            com.tencent.mm.ui.base.h.l(SnsCommentFooter.h(SnsCommentFooter.this), 2131764058, 2131764059);
             AppMethodBeat.o(163118);
           }
         });
@@ -843,21 +843,21 @@ public class SnsCommentFooter
   
   public void setOnEditTouchListener(a parama)
   {
-    this.xyu = parama;
+    this.yLi = parama;
   }
   
   public void setOnSmileyShowListener(c paramc)
   {
-    this.xyv = paramc;
+    this.yLj = paramc;
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(98657);
-    if (this.tqv != null)
+    if (this.uyM != null)
     {
-      this.tqv.setText("");
-      this.tqv.aMd(paramString);
+      this.uyM.setText("");
+      this.uyM.aRF(paramString);
     }
     AppMethodBeat.o(98657);
   }
@@ -865,21 +865,21 @@ public class SnsCommentFooter
   public void setToSendTextColor(boolean paramBoolean)
   {
     AppMethodBeat.i(98662);
-    if (this.tqv == null)
+    if (this.uyM == null)
     {
       AppMethodBeat.o(98662);
       return;
     }
     if (paramBoolean)
     {
-      this.tqv.setTextColor(getResources().getColor(2131100636));
+      this.uyM.setTextColor(getResources().getColor(2131100636));
       AppMethodBeat.o(98662);
       return;
     }
-    this.tqv.setTextColor(getResources().getColor(2131100482));
-    ad.i("MicroMsg.SnsCommentFooter", "focusEdt: %s, %s", new Object[] { Boolean.FALSE, this.tqv });
-    if (this.tqv != null) {
-      this.tqv.clearFocus();
+    this.uyM.setTextColor(getResources().getColor(2131100482));
+    ac.i("MicroMsg.SnsCommentFooter", "focusEdt: %s, %s", new Object[] { Boolean.FALSE, this.uyM });
+    if (this.uyM != null) {
+      this.uyM.clearFocus();
     }
     AppMethodBeat.o(98662);
   }
@@ -892,19 +892,19 @@ public class SnsCommentFooter
     if (paramInt == 0) {
       bool = true;
     }
-    qn(bool);
+    rm(bool);
     super.setVisibility(paramInt);
     AppMethodBeat.o(98652);
   }
   
   static abstract interface a
   {
-    public abstract void dBa();
+    public abstract void dPx();
   }
   
   static abstract interface b
   {
-    public abstract void jj(String paramString1, String paramString2);
+    public abstract void jH(String paramString1, String paramString2);
   }
   
   static abstract interface c

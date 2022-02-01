@@ -13,8 +13,8 @@ final class WalletOfflineCoinPurseUI$9
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(66410);
-    h.vKh.f(14515, new Object[] { Integer.valueOf(1) });
-    WalletOfflineCoinPurseUI.n(this.umB);
+    h.wUl.f(14515, new Object[] { Integer.valueOf(1) });
+    WalletOfflineCoinPurseUI.n(this.vvx);
     AppMethodBeat.o(66410);
   }
 }

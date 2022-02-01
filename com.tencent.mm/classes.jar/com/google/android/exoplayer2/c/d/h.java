@@ -3,28 +3,10 @@ package com.google.android.exoplayer2.c.d;
 import android.util.Pair;
 import com.google.android.exoplayer2.i.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.nio.ByteBuffer;
 import java.util.UUID;
 
 public final class h
 {
-  public static byte[] a(UUID paramUUID, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(92121);
-    int i = paramArrayOfByte.length + 32;
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(i);
-    localByteBuffer.putInt(i);
-    localByteBuffer.putInt(a.baB);
-    localByteBuffer.putInt(0);
-    localByteBuffer.putLong(paramUUID.getMostSignificantBits());
-    localByteBuffer.putLong(paramUUID.getLeastSignificantBits());
-    localByteBuffer.putInt(paramArrayOfByte.length);
-    localByteBuffer.put(paramArrayOfByte);
-    paramUUID = localByteBuffer.array();
-    AppMethodBeat.o(92121);
-    return paramUUID;
-  }
-  
   public static UUID r(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92122);
@@ -49,12 +31,12 @@ public final class h
       return null;
     }
     paramArrayOfByte.setPosition(0);
-    if (paramArrayOfByte.readInt() != paramArrayOfByte.vJ() + 4)
+    if (paramArrayOfByte.readInt() != paramArrayOfByte.vy() + 4)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    if (paramArrayOfByte.readInt() != a.baB)
+    if (paramArrayOfByte.readInt() != a.bbn)
     {
       AppMethodBeat.o(92123);
       return null;
@@ -67,10 +49,10 @@ public final class h
     }
     UUID localUUID = new UUID(paramArrayOfByte.readLong(), paramArrayOfByte.readLong());
     if (i == 1) {
-      paramArrayOfByte.fl(paramArrayOfByte.vQ() * 16);
+      paramArrayOfByte.eX(paramArrayOfByte.vF() * 16);
     }
-    i = paramArrayOfByte.vQ();
-    if (i != paramArrayOfByte.vJ())
+    i = paramArrayOfByte.vF();
+    if (i != paramArrayOfByte.vy())
     {
       AppMethodBeat.o(92123);
       return null;

@@ -5,7 +5,7 @@ import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

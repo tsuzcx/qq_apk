@@ -4,11 +4,11 @@ import java.util.HashMap;
 
 public final class c
 {
-  public int BBM;
-  public int BBN;
-  public String BBO;
-  public int aaU;
-  public HashMap<String, String> cvB;
+  public int CTS;
+  public int CTT;
+  public String CTU;
+  public int abP;
+  public HashMap<String, String> csJ;
   public long endTime;
   public long startTime;
 }

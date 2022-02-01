@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.c.a;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.m;
@@ -30,7 +30,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.Plugin
  * JD-Core Version:    0.7.0.1
  */

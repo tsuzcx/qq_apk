@@ -12,7 +12,7 @@ public final class c
   {
     AppMethodBeat.i(22634);
     getClass().getClassLoader();
-    j.pq("tencentloc");
+    j.sC("tencentloc");
     AppMethodBeat.o(22634);
   }
   
@@ -23,7 +23,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.e.c
  * JD-Core Version:    0.7.0.1
  */

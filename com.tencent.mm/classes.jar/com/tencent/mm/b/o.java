@@ -2,12 +2,12 @@ package com.tencent.mm.b;
 
 public final class o
 {
-  public static int G(byte[] paramArrayOfByte)
+  public static int E(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[0] & 0xFF) << 0;
   }
   
-  public static byte[] hr(int paramInt)
+  public static byte[] ha(int paramInt)
   {
     int j = 0;
     byte[] arrayOfByte1 = new byte[4];
@@ -27,14 +27,14 @@ public final class o
     return arrayOfByte2;
   }
   
-  public static int v(byte[] paramArrayOfByte, int paramInt)
+  public static int t(byte[] paramArrayOfByte, int paramInt)
   {
     return (paramArrayOfByte[paramInt] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.b.o
  * JD-Core Version:    0.7.0.1
  */

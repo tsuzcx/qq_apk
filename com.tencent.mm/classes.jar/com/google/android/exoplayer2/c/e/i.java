@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private final int beF;
-  int beG;
-  int beH;
+  private final int bfr;
+  int bft;
+  int bfu;
   private final byte[] data;
   
   public i(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92167);
     this.data = paramArrayOfByte;
-    this.beF = paramArrayOfByte.length;
+    this.bfr = paramArrayOfByte.length;
     AppMethodBeat.o(92167);
   }
   
-  private void sW()
+  private void tf()
   {
     AppMethodBeat.i(92171);
-    if ((this.beG >= 0) && ((this.beG < this.beF) || ((this.beG == this.beF) && (this.beH == 0)))) {}
+    if ((this.bft >= 0) && ((this.bft < this.bfr) || ((this.bft == this.bfr) && (this.bfu == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
@@ -33,11 +33,11 @@ final class i
   public final int eo(int paramInt)
   {
     AppMethodBeat.i(92169);
-    int k = this.beG;
-    int j = Math.min(paramInt, 8 - this.beH);
+    int k = this.bft;
+    int j = Math.min(paramInt, 8 - this.bfu);
     byte[] arrayOfByte = this.data;
     int i = k + 1;
-    k = (arrayOfByte[k] & 0xFF) >> this.beH & 255 >> 8 - j;
+    k = (arrayOfByte[k] & 0xFF) >> this.bfu & 255 >> 8 - j;
     while (j < paramInt)
     {
       k |= (this.data[i] & 0xFF) << j;
@@ -53,21 +53,21 @@ final class i
   {
     AppMethodBeat.i(92170);
     int i = paramInt / 8;
-    this.beG += i;
-    this.beH = (paramInt - i * 8 + this.beH);
-    if (this.beH > 7)
+    this.bft += i;
+    this.bfu = (paramInt - i * 8 + this.bfu);
+    if (this.bfu > 7)
     {
-      this.beG += 1;
-      this.beH -= 8;
+      this.bft += 1;
+      this.bfu -= 8;
     }
-    sW();
+    tf();
     AppMethodBeat.o(92170);
   }
   
-  public final boolean sV()
+  public final boolean te()
   {
     AppMethodBeat.i(92168);
-    if (((this.data[this.beG] & 0xFF) >> this.beH & 0x1) == 1) {}
+    if (((this.data[this.bft] & 0xFF) >> this.bfu & 0x1) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       ep(1);

@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SummaryBelowPreference;
 
 public class RightBelowPreference
   extends SummaryBelowPreference
 {
-  private CharSequence zSG;
+  private CharSequence Bla;
   
   public RightBelowPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,10 +25,10 @@ public class RightBelowPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void P(CharSequence paramCharSequence)
+  public final void Q(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(69585);
-    this.zSG = paramCharSequence;
+    this.Bla = paramCharSequence;
     notifyChanged();
     AppMethodBeat.o(69585);
   }
@@ -37,8 +37,8 @@ public class RightBelowPreference
   {
     AppMethodBeat.i(69584);
     super.onBindView(paramView);
-    if (!bt.ai(this.zSG)) {
-      ((TextView)paramView.findViewById(2131304183)).setText(this.zSG);
+    if (!bs.aj(this.Bla)) {
+      ((TextView)paramView.findViewById(2131304183)).setText(this.Bla);
     }
     paramView.findViewById(2131304172).setVisibility(8);
     AppMethodBeat.o(69584);
@@ -55,7 +55,7 @@ public class RightBelowPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference
  * JD-Core Version:    0.7.0.1
  */

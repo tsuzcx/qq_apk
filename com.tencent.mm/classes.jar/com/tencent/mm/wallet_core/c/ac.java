@@ -5,34 +5,34 @@ import org.json.JSONObject;
 
 public final class ac
 {
-  public String EEr;
-  public String EsX;
-  public String IdZ;
-  public String Iea;
-  public int Ieb;
+  public String FPZ;
+  public String GbE;
+  public String JFB;
+  public String JFC;
+  public int JFD;
   
   public ac()
   {
-    this.IdZ = "";
-    this.EEr = "";
-    this.Iea = "";
-    this.EsX = "";
-    this.Ieb = 0;
+    this.JFB = "";
+    this.GbE = "";
+    this.JFC = "";
+    this.FPZ = "";
+    this.JFD = 0;
   }
   
   public ac(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72811);
-    this.IdZ = "";
-    this.EEr = "";
-    this.Iea = "";
-    this.EsX = "";
-    this.Ieb = 0;
-    this.IdZ = paramJSONObject.optString("device_id");
-    this.EEr = paramJSONObject.optString("device_name");
-    this.Iea = paramJSONObject.optString("device_os");
-    this.Ieb = paramJSONObject.optInt("Is_cur_device");
-    this.EsX = paramJSONObject.optString("crt_no");
+    this.JFB = "";
+    this.GbE = "";
+    this.JFC = "";
+    this.FPZ = "";
+    this.JFD = 0;
+    this.JFB = paramJSONObject.optString("device_id");
+    this.GbE = paramJSONObject.optString("device_name");
+    this.JFC = paramJSONObject.optString("device_os");
+    this.JFD = paramJSONObject.optInt("Is_cur_device");
+    this.FPZ = paramJSONObject.optString("crt_no");
     AppMethodBeat.o(72811);
   }
 }

@@ -1,43 +1,95 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
 
 public final class i
-  extends k
-  implements j
+  implements com.tencent.mm.ak.g
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS oplog2 ( id INTEGER PRIMARY KEY , inserTime long , cmdId int , buffer blob , reserved1 int , reserved2 long , reserved3 text , reserved4 text ) " };
-  h gPa;
-  
-  public i(h paramh)
+  public i()
   {
-    this.gPa = paramh;
+    AppMethodBeat.i(150802);
+    com.tencent.mm.kernel.g.agQ().ghe.a(159, this);
+    com.tencent.mm.kernel.g.agQ().ghe.a(160, this);
+    l locall = new l(5);
+    com.tencent.mm.kernel.g.agQ().ghe.a(locall, 0);
+    AppMethodBeat.o(150802);
   }
   
-  public final boolean b(j.b paramb)
+  private static void aGI()
   {
-    AppMethodBeat.i(116842);
-    if (paramb == null)
+    AppMethodBeat.i(150805);
+    com.tencent.mm.kernel.g.agR().agA().set(81939, Long.valueOf(bs.eWj()));
+    AppMethodBeat.o(150805);
+  }
+  
+  private void release()
+  {
+    AppMethodBeat.i(150803);
+    com.tencent.mm.kernel.g.agQ().ghe.b(159, this);
+    com.tencent.mm.kernel.g.agQ().ghe.b(160, this);
+    AppMethodBeat.o(150803);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  {
+    AppMethodBeat.i(150804);
+    if ((!(paramn instanceof com.tencent.mm.ak.p)) || (((com.tencent.mm.ak.p)paramn).aBJ() != 5))
     {
-      AppMethodBeat.o(116842);
-      return true;
+      ac.d("MicroMsg.LangPackageUpdater", "another scene");
+      AppMethodBeat.o(150804);
+      return;
     }
-    if (this.gPa.delete("oplog2", "id= ? AND inserTime= ?", new String[] { paramb.id, paramb.hfj }) >= 0)
+    int i = paramn.getType();
+    if (i == 159)
     {
-      AppMethodBeat.o(116842);
-      return true;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        aGI();
+        paramString = t.aGO().po(5);
+        if ((paramString == null) || (paramString.length == 0))
+        {
+          ac.i("MicroMsg.LangPackageUpdater", "error no pkg found.");
+          release();
+          AppMethodBeat.o(150804);
+          return;
+        }
+        paramString = paramString[0];
+        ac.i("MicroMsg.LangPackageUpdater", "dkregcode Pkg id:" + paramString.id + " version:" + paramString.version + " status:" + paramString.status + " type:" + paramString.dib);
+        if (5 != paramString.status)
+        {
+          release();
+          AppMethodBeat.o(150804);
+          return;
+        }
+        paramString = new k(paramString.id, 5);
+        com.tencent.mm.kernel.g.agQ().ghe.a(paramString, 0);
+        AppMethodBeat.o(150804);
+        return;
+      }
+      release();
+      AppMethodBeat.o(150804);
+      return;
     }
-    AppMethodBeat.o(116842);
-    return false;
+    if (i == 160)
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        aGI();
+      }
+      release();
+    }
+    AppMethodBeat.o(150804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bb.i
  * JD-Core Version:    0.7.0.1
  */

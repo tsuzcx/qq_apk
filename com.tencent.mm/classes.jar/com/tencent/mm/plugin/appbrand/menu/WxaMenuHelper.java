@@ -6,12 +6,12 @@ import java.util.List;
 
 public final class WxaMenuHelper
 {
-  private final SparseArray<com.tencent.mm.plugin.appbrand.menu.a.a> kSL;
+  private final SparseArray<com.tencent.mm.plugin.appbrand.menu.a.a> lul;
   
   private WxaMenuHelper()
   {
     AppMethodBeat.i(47672);
-    this.kSL = new SparseArray();
+    this.lul = new SparseArray();
     a(new d());
     a(new i());
     a(new k());
@@ -32,34 +32,34 @@ public final class WxaMenuHelper
   private void a(com.tencent.mm.plugin.appbrand.menu.a.a parama)
   {
     AppMethodBeat.i(47674);
-    this.kSL.put(parama.kSO, parama);
+    this.lul.put(parama.luo, parama);
     AppMethodBeat.o(47674);
   }
   
   public static void a(List<p> paramList, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(47673);
-    p localp = new p(paramInt, paramBoolean1, (com.tencent.mm.plugin.appbrand.menu.a.a)a.kSN.kSL.get(paramInt));
-    localp.kRX = paramBoolean2;
+    p localp = new p(paramInt, paramBoolean1, (com.tencent.mm.plugin.appbrand.menu.a.a)a.lun.lul.get(paramInt));
+    localp.ltx = paramBoolean2;
     paramList.add(localp);
     AppMethodBeat.o(47673);
   }
   
   static final class a
   {
-    static WxaMenuHelper kSN;
+    static WxaMenuHelper lun;
     
     static
     {
       AppMethodBeat.i(47671);
-      kSN = new WxaMenuHelper((byte)0);
+      lun = new WxaMenuHelper((byte)0);
       AppMethodBeat.o(47671);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.WxaMenuHelper
  * JD-Core Version:    0.7.0.1
  */

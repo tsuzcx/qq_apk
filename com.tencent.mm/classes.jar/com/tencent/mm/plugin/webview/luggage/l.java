@@ -22,15 +22,15 @@ import com.tencent.luggage.d.c;
 import com.tencent.luggage.d.g;
 import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.am;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.statusbar.a;
 import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,29 +38,29 @@ import org.json.JSONObject;
 public class l
   extends FrameLayout
 {
-  private f ASM;
-  private com.tencent.mm.ui.statusbar.b ATT;
-  protected LinearLayout ATU;
-  private ImageView ATV;
-  private TextView ATW;
-  private n ATX;
-  protected com.tencent.mm.plugin.webview.luggage.b.n ATY;
-  private u ATZ;
-  public d AUa;
-  private boolean AUb;
-  private View.OnClickListener AUc;
-  private TextView kEu;
-  private ImageView lEt;
+  private f CkZ;
+  private com.tencent.mm.ui.statusbar.b Cmg;
+  protected LinearLayout Cmh;
+  private ImageView Cmi;
+  private TextView Cmj;
+  private n Cmk;
+  protected com.tencent.mm.plugin.webview.luggage.b.n Cml;
+  private u Cmm;
+  public d Cmn;
+  private boolean Cmo;
+  private View.OnClickListener Cmp;
+  private TextView lfN;
   protected Context mContext;
   private String mTitle;
+  private ImageView mgn;
   
   public l(final f paramf)
   {
     super(paramf.mContext);
     AppMethodBeat.i(78384);
-    this.AUa = null;
-    this.AUb = false;
-    this.AUc = new View.OnClickListener()
+    this.Cmn = null;
+    this.Cmo = false;
+    this.Cmp = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -70,9 +70,9 @@ public class l
           AppMethodBeat.o(78383);
           return;
         }
-        l.a(l.this).caI.a(new c()
+        l.a(l.this).bXF.a(new c()
         {
-          public final JSONObject AM()
+          public final JSONObject Aq()
           {
             AppMethodBeat.i(78382);
             JSONObject localJSONObject = new JSONObject();
@@ -89,52 +89,52 @@ public class l
       }
     };
     this.mContext = paramf.mContext;
-    this.ASM = paramf;
-    this.ATT = new b(this.mContext);
-    addView(this.ATT, -1, -1);
+    this.CkZ = paramf;
+    this.Cmg = new b(this.mContext);
+    addView(this.Cmg, -1, -1);
     setBackgroundResource(2131099873);
-    View localView = y.js(getContext()).inflate(2131496079, this, false);
-    this.ATT.addView(localView, new FrameLayout.LayoutParams(-1, getActionBarHeight()));
-    this.lEt = ((ImageView)localView.findViewById(2131296396));
-    this.lEt.setOnClickListener(new View.OnClickListener()
+    View localView = z.jD(getContext()).inflate(2131496079, this, false);
+    this.Cmg.addView(localView, new FrameLayout.LayoutParams(-1, getActionBarHeight()));
+    this.mgn = ((ImageView)localView.findViewById(2131296396));
+    this.mgn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78375);
-        if (!l.this.ekR()) {
-          l.this.cBA();
+        if (!l.this.eAn()) {
+          l.this.cOL();
         }
         AppMethodBeat.o(78375);
       }
     });
-    this.kEu = ((TextView)localView.findViewById(2131305902));
-    this.ATU = ((LinearLayout)localView.findViewById(2131296410));
-    this.ATV = ((ImageView)localView.findViewById(2131296409));
-    this.ATV.setOnClickListener(new View.OnClickListener()
+    this.lfN = ((TextView)localView.findViewById(2131305902));
+    this.Cmh = ((LinearLayout)localView.findViewById(2131296410));
+    this.Cmi = ((ImageView)localView.findViewById(2131296409));
+    this.Cmi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78376);
-        if (paramf.bZZ.Ba().peek() == l.a(l.this)) {
-          l.this.cBB();
+        if (paramf.bWW.AE().peek() == l.a(l.this)) {
+          l.this.cOM();
         }
         AppMethodBeat.o(78376);
       }
     });
-    this.ATV.setClickable(false);
-    this.ATW = ((TextView)localView.findViewById(2131296411));
-    this.ATW.setOnClickListener(new View.OnClickListener()
+    this.Cmi.setClickable(false);
+    this.Cmj = ((TextView)localView.findViewById(2131296411));
+    this.Cmj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78377);
-        if (paramf.bZZ.Ba().peek() == l.a(l.this)) {
-          l.this.cBB();
+        if (paramf.bWW.AE().peek() == l.a(l.this)) {
+          l.this.cOM();
         }
         AppMethodBeat.o(78377);
       }
     });
-    this.ATW.setClickable(false);
+    this.Cmj.setClickable(false);
     AppMethodBeat.o(78384);
   }
   
@@ -158,7 +158,7 @@ public class l
       int i = 0;
       while (i < paramJSONArray.length())
       {
-        getMenuHelp().awo(paramJSONArray.optString(i));
+        getMenuHelp().aBG(paramJSONArray.optString(i));
         i += 1;
       }
     }
@@ -173,21 +173,21 @@ public class l
       int i = 0;
       while (i < paramJSONArray.length())
       {
-        getMenuHelp().awp(paramJSONArray.optString(i));
+        getMenuHelp().aBH(paramJSONArray.optString(i));
         i += 1;
       }
     }
     AppMethodBeat.o(78396);
   }
   
-  public void cBA()
+  public void cOL()
   {
     AppMethodBeat.i(78392);
-    this.ASM.fF(true);
+    this.CkZ.gb(true);
     AppMethodBeat.o(78392);
   }
   
-  public void cBB()
+  public void cOM()
   {
     AppMethodBeat.i(78389);
     boolean bool = false;
@@ -206,30 +206,44 @@ public class l
     if (bool) {}
     for (long l = 100L;; l = 0L)
     {
-      aq.n(local4, l);
+      ap.n(local4, l);
       AppMethodBeat.o(78389);
       return;
     }
   }
   
-  public void cBC()
+  public void cON()
   {
     AppMethodBeat.i(78390);
-    if (this.ATX != null) {
-      this.ATX.eln();
+    if (this.Cmk != null) {
+      this.Cmk.eAJ();
     }
     AppMethodBeat.o(78390);
   }
   
-  public final boolean ekR()
+  public final void eAH()
+  {
+    AppMethodBeat.i(78393);
+    getMenuHelp().eAH();
+    AppMethodBeat.o(78393);
+  }
+  
+  public final void eAI()
+  {
+    AppMethodBeat.i(78394);
+    getMenuHelp().eAI();
+    AppMethodBeat.o(78394);
+  }
+  
+  public final boolean eAn()
   {
     AppMethodBeat.i(78398);
-    if ((this.ATZ != null) && (this.ATZ.elw()))
+    if ((this.Cmm != null) && (this.Cmm.eAS()))
     {
-      Object localObject1 = this.ATZ.elx();
-      String str1 = this.ATZ.ely();
-      String str2 = this.ATZ.elz();
-      ad.i("MicroMsg.GameWebViewActionBar", "use js api close window confirm info : %s, %s, %s", new Object[] { localObject1, str1, str2 });
+      Object localObject1 = this.Cmm.eAT();
+      String str1 = this.Cmm.eAU();
+      String str2 = this.Cmm.eAV();
+      ac.i("MicroMsg.GameWebViewActionBar", "use js api close window confirm info : %s, %s, %s", new Object[] { localObject1, str1, str2 });
       View localView = View.inflate(getContext(), 2131494763, null);
       Object localObject2 = (CheckBox)localView.findViewById(2131302304);
       ((CheckBox)localObject2).setChecked(false);
@@ -240,13 +254,13 @@ public class l
       localObject1 = (TextView)localView.findViewById(2131302305);
       ((TextView)localObject1).setTextColor(getResources().getColor(2131100711));
       ((TextView)localObject1).setVisibility(8);
-      this.AUa = h.a(getContext(), true, "", localView, str1, str2, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.Cmn = h.a(getContext(), true, "", localView, str1, str2, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(78379);
           l.b(l.this);
-          l.this.cBA();
+          l.this.cOL();
           AppMethodBeat.o(78379);
         }
       }, new DialogInterface.OnClickListener()
@@ -265,27 +279,13 @@ public class l
     return false;
   }
   
-  public final void ell()
-  {
-    AppMethodBeat.i(78393);
-    getMenuHelp().ell();
-    AppMethodBeat.o(78393);
-  }
-  
-  public final void elm()
-  {
-    AppMethodBeat.i(78394);
-    getMenuHelp().elm();
-    AppMethodBeat.o(78394);
-  }
-  
   protected com.tencent.mm.plugin.webview.luggage.b.n getMenuHelp()
   {
     AppMethodBeat.i(78388);
-    if (this.ATY == null) {
-      this.ATY = new com.tencent.mm.plugin.webview.luggage.b.n();
+    if (this.Cml == null) {
+      this.Cml = new com.tencent.mm.plugin.webview.luggage.b.n();
     }
-    com.tencent.mm.plugin.webview.luggage.b.n localn = this.ATY;
+    com.tencent.mm.plugin.webview.luggage.b.n localn = this.Cml;
     AppMethodBeat.o(78388);
     return localn;
   }
@@ -303,13 +303,13 @@ public class l
   {
     boolean bool1 = true;
     AppMethodBeat.i(78399);
-    ad.i("MicroMsg.GameWebViewActionBar", "setActionBarColor, color : %d", new Object[] { Integer.valueOf(paramInt) });
+    ac.i("MicroMsg.GameWebViewActionBar", "setActionBarColor, color : %d", new Object[] { Integer.valueOf(paramInt) });
     int i = paramInt;
     if (paramInt == 0) {
       i = getResources().getColor(2131101179);
     }
-    boolean bool2 = am.XC(i);
-    com.tencent.mm.ui.statusbar.b localb = this.ATT;
+    boolean bool2 = am.ZN(i);
+    com.tencent.mm.ui.statusbar.b localb = this.Cmg;
     if (!bool2) {}
     for (;;)
     {
@@ -318,20 +318,20 @@ public class l
       if (bool2) {
         break;
       }
-      this.kEu.setTextColor(-16777216);
-      this.lEt.setColorFilter(-16777216);
-      if (this.AUb) {
+      this.lfN.setTextColor(-16777216);
+      this.mgn.setColorFilter(-16777216);
+      if (this.Cmo) {
         break label160;
       }
-      this.ATV.setImageResource(2131689493);
+      this.Cmi.setImageResource(2131689493);
       AppMethodBeat.o(78399);
       return;
       bool1 = false;
     }
-    this.kEu.setTextColor(-1);
-    this.lEt.clearColorFilter();
-    if (!this.AUb) {
-      this.ATV.setImageResource(2131689500);
+    this.lfN.setTextColor(-1);
+    this.mgn.clearColorFilter();
+    if (!this.Cmo) {
+      this.Cmi.setImageResource(2131689500);
     }
     label160:
     AppMethodBeat.o(78399);
@@ -340,7 +340,7 @@ public class l
   protected void setBackBtn(int paramInt)
   {
     AppMethodBeat.i(182686);
-    this.lEt.setImageResource(paramInt);
+    this.mgn.setImageResource(paramInt);
     AppMethodBeat.o(182686);
   }
   
@@ -350,7 +350,7 @@ public class l
     if (paramBundle == null) {}
     for (paramBundle = null;; paramBundle = new u(paramBundle))
     {
-      this.ATZ = paramBundle;
+      this.Cmm = paramBundle;
       AppMethodBeat.o(78397);
       return;
     }
@@ -371,14 +371,14 @@ public class l
     String str2 = paramBundle.getString("set_navigation_bar_buttons_icon_data");
     String str4 = paramBundle.getString("set_navigation_bar_buttons_text_color");
     final boolean bool2 = paramBundle.getBoolean("set_navigation_bar_buttons_need_click_event", false);
-    final int i = com.tencent.mm.plugin.webview.ui.tools.e.fj(str3, -1);
-    final int j = (int)com.tencent.mm.plugin.webview.ui.tools.e.axN(str4);
+    final int i = com.tencent.mm.plugin.webview.ui.tools.e.fr(str3, -1);
+    final int j = (int)com.tencent.mm.plugin.webview.ui.tools.e.aDf(str4);
     paramBundle = localObject;
-    if (!bt.isNullOrNil(str2)) {}
+    if (!bs.isNullOrNil(str2)) {}
     try
     {
-      paramBundle = com.tencent.mm.plugin.webview.ui.tools.e.axO(str2);
-      aq.f(new Runnable()
+      paramBundle = com.tencent.mm.plugin.webview.ui.tools.e.aDg(str2);
+      ap.f(new Runnable()
       {
         public final void run()
         {
@@ -417,7 +417,7 @@ public class l
                 l.c(l.this).setOnClickListener(l.e(l.this));
               }
             }
-            else if (!bt.isNullOrNil(str1))
+            else if (!bs.isNullOrNil(str1))
             {
               l.c(l.this).setVisibility(8);
               l.d(l.this).setVisibility(0);
@@ -448,7 +448,7 @@ public class l
     {
       for (;;)
       {
-        ad.e("MicroMsg.GameWebViewActionBar", "setNavigationBarButtons, decode base64 image, exception = %s", new Object[] { paramBundle });
+        ac.e("MicroMsg.GameWebViewActionBar", "setNavigationBarButtons, decode base64 image, exception = %s", new Object[] { paramBundle });
         paramBundle = localObject;
       }
     }
@@ -459,29 +459,29 @@ public class l
     AppMethodBeat.i(78385);
     if (paramBoolean)
     {
-      this.ATV.setClickable(true);
-      this.ATW.setClickable(true);
+      this.Cmi.setClickable(true);
+      this.Cmj.setClickable(true);
       AppMethodBeat.o(78385);
       return;
     }
-    this.ATV.setClickable(false);
-    this.ATW.setClickable(false);
+    this.Cmi.setClickable(false);
+    this.Cmj.setClickable(false);
     AppMethodBeat.o(78385);
   }
   
   public void setTitleColor(int paramInt)
   {
     AppMethodBeat.i(78387);
-    this.kEu.setTextColor(paramInt);
+    this.lfN.setTextColor(paramInt);
     AppMethodBeat.o(78387);
   }
   
   public void setTitleText(String paramString)
   {
     AppMethodBeat.i(78386);
-    ad.d("MicroMsg.GameWebViewActionBar", "setTitleText, title: %s", new Object[] { paramString });
+    ac.d("MicroMsg.GameWebViewActionBar", "setTitleText, title: %s", new Object[] { paramString });
     this.mTitle = paramString;
-    this.kEu.setText(paramString);
+    this.lfN.setText(paramString);
     AppMethodBeat.o(78386);
   }
 }

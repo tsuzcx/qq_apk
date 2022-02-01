@@ -7,7 +7,6 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.n;
@@ -16,10 +15,11 @@ import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.plugin.appbrand.report.quality.a;
-import com.tencent.mm.plugin.appbrand.utils.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.plugin.appbrand.utils.ad;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import java.util.HashMap;
 
 public final class f
@@ -34,22 +34,22 @@ public final class f
     AppMethodBeat.i(44050);
     HashMap localHashMap = new HashMap();
     localHashMap.put("appId", paramq.getAppId());
-    localHashMap.put("appName", paramq.getRuntime().Eg().dfM);
-    localHashMap.put("appIcon", paramq.getRuntime().Eg().iconUrl);
+    localHashMap.put("appName", paramq.getRuntime().DJ().ddh);
+    localHashMap.put("appIcon", paramq.getRuntime().DJ().iconUrl);
     if ((paramq.getRuntime() instanceof o)) {
-      localHashMap.put("scene", Integer.valueOf(((o)paramq.getRuntime()).DZ().cfo.scene));
+      localHashMap.put("scene", Integer.valueOf(((o)paramq.getRuntime()).DC().ccl.scene));
     }
-    localHashMap.put("source", bt.by(this.source, "launch"));
-    boolean bool2 = ai.Eq();
+    localHashMap.put("source", bs.bG(this.source, "launch"));
+    boolean bool2 = aj.DT();
     localHashMap.put("isDarkMode", Boolean.valueOf(bool2));
     if ((paramq.getRuntime() instanceof o)) {}
-    for (boolean bool1 = ((o)paramq.getRuntime()).CZ();; bool1 = false)
+    for (boolean bool1 = ((o)paramq.getRuntime()).CC();; bool1 = false)
     {
       localHashMap.put("isGame", Boolean.valueOf(bool1));
-      Object localObject = a.ME(paramq.getAppId());
-      if ((localObject != null) && (!bt.isNullOrNil(((QualitySession)localObject).kGa)))
+      Object localObject = a.QN(paramq.getAppId());
+      if ((localObject != null) && (!bs.isNullOrNil(((QualitySession)localObject).lht)))
       {
-        localObject = ((QualitySession)localObject).kGa;
+        localObject = ((QualitySession)localObject).lht;
         localHashMap.put("instanceId", localObject);
         if (paramContext == null) {
           break label397;
@@ -63,27 +63,27 @@ public final class f
       {
         int j = paramContext[0];
         int i = paramContext[1];
-        j = g.uk(j);
-        i = g.uk(i);
+        j = g.vc(j);
+        i = g.vc(i);
         localHashMap.put("screenWidth", Integer.valueOf(j));
         localHashMap.put("screenHeight", Integer.valueOf(i));
-        localHashMap.put("pixelRatio", Float.valueOf(g.bqj()));
-        ad.i("MicroMsg.JsApiEventShouldShowSplashAd", "dispatch, screenSize[%s, %s], pixelRatio:%s, isDarkMode:%s, isGame:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(g.bqj()), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-        n.Dp(paramq.getAppId()).iFK.iIr = bt.eGO();
-        B(localHashMap).g(paramq).aXQ();
+        localHashMap.put("pixelRatio", Float.valueOf(g.bxg()));
+        ac.i("MicroMsg.JsApiEventShouldShowSplashAd", "dispatch, screenSize[%s, %s], pixelRatio:%s, isDarkMode:%s, isGame:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(g.bxg()), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        n.Hs(paramq.getAppId()).jfM.jiv = bs.eWj();
+        A(localHashMap).g(paramq).beN();
         AppMethodBeat.o(44050);
         return;
         localObject = "";
         break;
         label397:
-        paramContext = ac.g(paramq);
+        paramContext = ad.g(paramq);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.a.f
  * JD-Core Version:    0.7.0.1
  */

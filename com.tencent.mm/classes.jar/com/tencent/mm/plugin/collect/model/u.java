@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public class u
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String dcF;
-  public String dem;
-  public String fyo;
+  public String dad;
+  public String dbI;
+  public String fBV;
   public int msgType;
-  public double nUf;
-  public int nUh;
-  public String nUi;
+  public double oxA;
+  public int oxC;
+  public String oxD;
   public int scene;
   public int status;
   public String type;
@@ -30,13 +30,13 @@ public class u
         AppMethodBeat.o(91250);
         throw paramVarArgs;
       }
-      if (this.dcF == null)
+      if (this.dad == null)
       {
         paramVarArgs = new b("Not all required fields were included: transactionId");
         AppMethodBeat.o(91250);
         throw paramVarArgs;
       }
-      if (this.dem == null)
+      if (this.dbI == null)
       {
         paramVarArgs = new b("Not all required fields were included: feeType");
         AppMethodBeat.o(91250);
@@ -45,21 +45,21 @@ public class u
       if (this.username != null) {
         paramVarArgs.d(1, this.username);
       }
-      if (this.dcF != null) {
-        paramVarArgs.d(2, this.dcF);
+      if (this.dad != null) {
+        paramVarArgs.d(2, this.dad);
       }
-      paramVarArgs.e(3, this.nUf);
-      if (this.dem != null) {
-        paramVarArgs.d(4, this.dem);
+      paramVarArgs.e(3, this.oxA);
+      if (this.dbI != null) {
+        paramVarArgs.d(4, this.dbI);
       }
-      paramVarArgs.aR(5, this.nUh);
+      paramVarArgs.aR(5, this.oxC);
       paramVarArgs.aR(6, this.scene);
       paramVarArgs.aR(7, this.status);
-      if (this.fyo != null) {
-        paramVarArgs.d(8, this.fyo);
+      if (this.fBV != null) {
+        paramVarArgs.d(8, this.fBV);
       }
-      if (this.nUi != null) {
-        paramVarArgs.d(9, this.nUi);
+      if (this.oxD != null) {
+        paramVarArgs.d(9, this.oxD);
       }
       paramVarArgs.aR(10, this.msgType);
       if (this.type != null) {
@@ -77,24 +77,24 @@ public class u
     for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.dcF != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.dcF);
+      if (this.dad != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.dad);
       }
-      i += f.a.a.b.b.a.fY(3) + 8;
+      i += f.a.a.b.b.a.fK(3) + 8;
       paramInt = i;
-      if (this.dem != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.dem);
+      if (this.dbI != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.dbI);
       }
-      i = paramInt + f.a.a.b.b.a.bA(5, this.nUh) + f.a.a.b.b.a.bA(6, this.scene) + f.a.a.b.b.a.bA(7, this.status);
+      i = paramInt + f.a.a.b.b.a.bx(5, this.oxC) + f.a.a.b.b.a.bx(6, this.scene) + f.a.a.b.b.a.bx(7, this.status);
       paramInt = i;
-      if (this.fyo != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.fyo);
+      if (this.fBV != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.fBV);
       }
       i = paramInt;
-      if (this.nUi != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.nUi);
+      if (this.oxD != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.oxD);
       }
-      i += f.a.a.b.b.a.bA(10, this.msgType);
+      i += f.a.a.b.b.a.bx(10, this.msgType);
       paramInt = i;
       if (this.type != null) {
         paramInt = i + f.a.a.b.b.a.e(11, this.type);
@@ -104,9 +104,9 @@ public class u
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         if (this.username == null)
@@ -115,13 +115,13 @@ public class u
           AppMethodBeat.o(91250);
           throw paramVarArgs;
         }
-        if (this.dcF == null)
+        if (this.dad == null)
         {
           paramVarArgs = new b("Not all required fields were included: transactionId");
           AppMethodBeat.o(91250);
           throw paramVarArgs;
         }
-        if (this.dem == null)
+        if (this.dbI == null)
         {
           paramVarArgs = new b("Not all required fields were included: feeType");
           AppMethodBeat.o(91250);
@@ -140,47 +140,47 @@ public class u
           AppMethodBeat.o(91250);
           return -1;
         case 1: 
-          localu.username = locala.KhF.readString();
+          localu.username = locala.LVo.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 2: 
-          localu.dcF = locala.KhF.readString();
+          localu.dad = locala.LVo.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 3: 
-          localu.nUf = Double.longBitsToDouble(locala.KhF.fHy());
+          localu.oxA = Double.longBitsToDouble(locala.LVo.gab());
           AppMethodBeat.o(91250);
           return 0;
         case 4: 
-          localu.dem = locala.KhF.readString();
+          localu.dbI = locala.LVo.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 5: 
-          localu.nUh = locala.KhF.xS();
+          localu.oxC = locala.LVo.xF();
           AppMethodBeat.o(91250);
           return 0;
         case 6: 
-          localu.scene = locala.KhF.xS();
+          localu.scene = locala.LVo.xF();
           AppMethodBeat.o(91250);
           return 0;
         case 7: 
-          localu.status = locala.KhF.xS();
+          localu.status = locala.LVo.xF();
           AppMethodBeat.o(91250);
           return 0;
         case 8: 
-          localu.fyo = locala.KhF.readString();
+          localu.fBV = locala.LVo.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 9: 
-          localu.nUi = locala.KhF.readString();
+          localu.oxD = locala.LVo.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 10: 
-          localu.msgType = locala.KhF.xS();
+          localu.msgType = locala.LVo.xF();
           AppMethodBeat.o(91250);
           return 0;
         }
-        localu.type = locala.KhF.readString();
+        localu.type = locala.LVo.readString();
         AppMethodBeat.o(91250);
         return 0;
       }
@@ -191,7 +191,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.u
  * JD-Core Version:    0.7.0.1
  */

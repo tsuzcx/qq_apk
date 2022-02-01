@@ -12,34 +12,34 @@ import java.util.List;
 final class b
   implements d.a<Object>, e
 {
-  private final List<h> aDk;
-  private final f<?> aDl;
-  private final e.a aDm;
-  private int aDn = -1;
-  private h aDo;
-  private List<n<File, ?>> aDp;
-  private int aDq;
-  private volatile n.a<?> aDr;
-  private File aDs;
+  private final List<h> aEb;
+  private final f<?> aEc;
+  private final e.a aEd;
+  private int aEe = -1;
+  private h aEf;
+  private List<n<File, ?>> aEg;
+  private int aEh;
+  private volatile n.a<?> aEi;
+  private File aEj;
   
   b(f<?> paramf, e.a parama)
   {
-    this(paramf.nT(), paramf, parama);
+    this(paramf.od(), paramf, parama);
     AppMethodBeat.i(76921);
     AppMethodBeat.o(76921);
   }
   
   b(List<h> paramList, f<?> paramf, e.a parama)
   {
-    this.aDk = paramList;
-    this.aDl = paramf;
-    this.aDm = parama;
+    this.aEb = paramList;
+    this.aEc = paramf;
+    this.aEd = parama;
   }
   
-  private boolean nP()
+  private boolean nZ()
   {
     AppMethodBeat.i(76923);
-    if (this.aDq < this.aDp.size())
+    if (this.aEh < this.aEg.size())
     {
       AppMethodBeat.o(76923);
       return true;
@@ -48,19 +48,19 @@ final class b
     return false;
   }
   
-  public final void P(Object paramObject)
+  public final void R(Object paramObject)
   {
     AppMethodBeat.i(76925);
-    this.aDm.a(this.aDo, paramObject, this.aDr.aHI, com.bumptech.glide.c.a.aBZ, this.aDo);
+    this.aEd.a(this.aEf, paramObject, this.aEi.aIy, com.bumptech.glide.c.a.aCR, this.aEf);
     AppMethodBeat.o(76925);
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(76924);
-    n.a locala = this.aDr;
+    n.a locala = this.aEi;
     if (locala != null) {
-      locala.aHI.cancel();
+      locala.aIy.cancel();
     }
     AppMethodBeat.o(76924);
   }
@@ -68,45 +68,45 @@ final class b
   public final void e(Exception paramException)
   {
     AppMethodBeat.i(76926);
-    this.aDm.a(this.aDo, paramException, this.aDr.aHI, com.bumptech.glide.c.a.aBZ);
+    this.aEd.a(this.aEf, paramException, this.aEi.aIy, com.bumptech.glide.c.a.aCR);
     AppMethodBeat.o(76926);
   }
   
-  public final boolean nO()
+  public final boolean nY()
   {
     boolean bool = false;
     AppMethodBeat.i(76922);
     Object localObject;
-    while ((this.aDp == null) || (!nP()))
+    while ((this.aEg == null) || (!nZ()))
     {
-      this.aDn += 1;
-      if (this.aDn >= this.aDk.size())
+      this.aEe += 1;
+      if (this.aEe >= this.aEb.size())
       {
         AppMethodBeat.o(76922);
         return false;
       }
-      localObject = (h)this.aDk.get(this.aDn);
-      c localc = new c((h)localObject, this.aDl.aDt);
-      this.aDs = this.aDl.nR().a(localc);
-      if (this.aDs != null)
+      localObject = (h)this.aEb.get(this.aEe);
+      c localc = new c((h)localObject, this.aEc.aEk);
+      this.aEj = this.aEc.ob().a(localc);
+      if (this.aEj != null)
       {
-        this.aDo = ((h)localObject);
-        this.aDp = this.aDl.t(this.aDs);
-        this.aDq = 0;
+        this.aEf = ((h)localObject);
+        this.aEg = this.aEc.t(this.aEj);
+        this.aEh = 0;
       }
     }
-    this.aDr = null;
-    if ((!bool) && (nP()))
+    this.aEi = null;
+    if ((!bool) && (nZ()))
     {
-      localObject = this.aDp;
-      int i = this.aDq;
-      this.aDq = (i + 1);
-      this.aDr = ((n)((List)localObject).get(i)).b(this.aDs, this.aDl.width, this.aDl.height, this.aDl.aDv);
-      if ((this.aDr == null) || (!this.aDl.k(this.aDr.aHI.nK()))) {
+      localObject = this.aEg;
+      int i = this.aEh;
+      this.aEh = (i + 1);
+      this.aEi = ((n)((List)localObject).get(i)).b(this.aEj, this.aEc.width, this.aEc.height, this.aEc.aEm);
+      if ((this.aEi == null) || (!this.aEc.k(this.aEi.aIy.nU()))) {
         break label279;
       }
       bool = true;
-      this.aDr.aHI.a(this.aDl.aDC, this);
+      this.aEi.aIy.a(this.aEc.aEt, this);
     }
     label279:
     for (;;)
@@ -119,7 +119,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b
  * JD-Core Version:    0.7.0.1
  */

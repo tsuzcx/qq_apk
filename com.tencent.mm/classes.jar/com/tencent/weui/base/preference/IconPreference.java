@@ -17,42 +17,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class IconPreference
   extends Preference
 {
-  protected int FGP;
-  private Bitmap FKj;
-  RelativeLayout.LayoutParams GeC;
-  private int GeD;
-  private int GeE;
-  private int GeF;
-  private int GeG;
-  private int GeH;
-  private int GeI;
-  private View GeJ;
-  private View GeK;
-  private TextView GeL;
-  private TextView GeM;
-  private ImageView GeN;
-  private boolean GeP;
-  private boolean GeQ;
-  private int GeR;
-  private boolean GeS;
-  private int Geu;
-  private int Gev;
-  private int Gew;
-  private ImageView Gex;
-  private ViewGroup Gey;
-  private TextView Gez;
-  private int GfY;
+  private TextView HEA;
+  private TextView HEB;
+  private ImageView HEC;
+  private boolean HEE;
+  private boolean HEF;
+  private int HEG;
+  private boolean HEH;
+  private int HEj;
+  private int HEk;
+  private int HEl;
+  private ImageView HEm;
+  private ViewGroup HEn;
+  private TextView HEo;
+  RelativeLayout.LayoutParams HEr;
+  private int HEs;
+  private int HEt;
+  private int HEu;
+  private int HEv;
+  private int HEw;
+  private int HEx;
+  private View HEy;
+  private View HEz;
+  private int HFN;
+  protected int HfX;
+  private Bitmap Hjr;
   private Context context;
   private String desc;
   private Drawable drawable;
+  private TextView gAI;
   private int height;
-  private TextView lEA;
-  protected ImageView tto;
-  private String uCA;
-  private String uCB;
-  private ImageView wYW;
-  private int wey;
-  private int wez;
+  protected ImageView uBH;
+  private String vLt;
+  private String vLu;
+  private int xpM;
+  private int xpN;
+  private ImageView ylK;
   
   public IconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -63,34 +63,34 @@ public class IconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159990);
-    this.FGP = -1;
-    this.tto = null;
-    this.uCA = "";
-    this.wey = -1;
-    this.wez = 8;
-    this.Geu = 8;
-    this.GeD = 8;
+    this.HfX = -1;
+    this.uBH = null;
+    this.vLt = "";
+    this.xpM = -1;
+    this.xpN = 8;
+    this.HEj = 8;
+    this.HEs = 8;
     this.desc = "";
-    this.uCB = "";
-    this.GeE = -1;
-    this.GeF = 8;
-    this.GeG = -1;
-    this.FKj = null;
-    this.GeH = 8;
-    this.Gev = 8;
-    this.Gew = 8;
-    this.GeI = 8;
-    this.GfY = 0;
-    this.Gex = null;
-    this.Gey = null;
-    this.GeJ = null;
-    this.GeK = null;
-    this.wYW = null;
+    this.vLu = "";
+    this.HEt = -1;
+    this.HEu = 8;
+    this.HEv = -1;
+    this.Hjr = null;
+    this.HEw = 8;
+    this.HEk = 8;
+    this.HEl = 8;
+    this.HEx = 8;
+    this.HFN = 0;
+    this.HEm = null;
+    this.HEn = null;
+    this.HEy = null;
+    this.HEz = null;
+    this.ylK = null;
     this.height = -1;
-    this.GeP = false;
-    this.GeQ = false;
-    this.GeR = -1;
-    this.GeS = false;
+    this.HEE = false;
+    this.HEF = false;
+    this.HEG = -1;
+    this.HEH = false;
     this.context = paramContext;
     setLayoutResource(2131494804);
     AppMethodBeat.o(159990);
@@ -100,14 +100,14 @@ public class IconPreference
   {
     AppMethodBeat.i(159992);
     super.onBindView(paramView);
-    this.GeN = ((ImageView)paramView.findViewById(2131300943));
+    this.HEC = ((ImageView)paramView.findViewById(2131300943));
     Object localObject;
-    if (this.GeN != null)
+    if (this.HEC != null)
     {
       if (this.drawable != null)
       {
-        this.GeN.setImageDrawable(this.drawable);
-        this.GeN.setVisibility(0);
+        this.HEC.setImageDrawable(this.drawable);
+        this.HEC.setVisibility(0);
       }
     }
     else
@@ -117,83 +117,83 @@ public class IconPreference
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      this.GeM = ((TextView)paramView.findViewById(2131305745));
-      if (this.GeM != null)
+      this.HEB = ((TextView)paramView.findViewById(2131305745));
+      if (this.HEB != null)
       {
-        if (!this.GeQ) {
+        if (!this.HEF) {
           break label714;
         }
-        this.GeM.setCompoundDrawablesWithIntrinsicBounds(2131234447, 0, 0, 0);
-        this.GeM.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
+        this.HEB.setCompoundDrawablesWithIntrinsicBounds(2131234447, 0, 0, 0);
+        this.HEB.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
         label154:
-        this.GeM.setVisibility(this.wez);
-        this.GeM.setText(this.uCA);
-        if (this.wey != -1) {
-          this.GeM.setBackgroundDrawable(this.context.getResources().getDrawable(this.wey));
+        this.HEB.setVisibility(this.xpN);
+        this.HEB.setText(this.vLt);
+        if (this.xpM != -1) {
+          this.HEB.setBackgroundDrawable(this.context.getResources().getDrawable(this.xpM));
         }
       }
-      this.GeL = ((TextView)paramView.findViewById(2131305747));
-      if (this.GeL != null)
+      this.HEA = ((TextView)paramView.findViewById(2131305747));
+      if (this.HEA != null)
       {
-        this.GeL.setVisibility(this.GeF);
-        this.GeL.setText(this.uCB);
-        if (this.GeE != -1) {
-          this.GeL.setBackgroundDrawable(this.context.getResources().getDrawable(this.GeE));
+        this.HEA.setVisibility(this.HEu);
+        this.HEA.setText(this.vLu);
+        if (this.HEt != -1) {
+          this.HEA.setBackgroundDrawable(this.context.getResources().getDrawable(this.HEt));
         }
-        if (this.GeG != -1) {
-          this.GeL.setTextColor(this.GeG);
+        if (this.HEv != -1) {
+          this.HEA.setTextColor(this.HEv);
         }
-        if (!this.GeP) {
+        if (!this.HEE) {
           break label728;
         }
-        this.GeL.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131234447, 0);
-        this.GeL.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
+        this.HEA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2131234447, 0);
+        this.HEA.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131165568));
       }
       label334:
-      this.Gex = ((ImageView)paramView.findViewById(2131305740));
-      this.Gex.setVisibility(this.Geu);
-      if (this.GeR != -1) {
-        this.Gex.setImageResource(this.GeR);
+      this.HEm = ((ImageView)paramView.findViewById(2131305740));
+      this.HEm.setVisibility(this.HEj);
+      if (this.HEG != -1) {
+        this.HEm.setImageResource(this.HEG);
       }
-      this.tto = ((ImageView)paramView.findViewById(2131300959));
-      this.Gey = ((ViewGroup)paramView.findViewById(2131304191));
-      this.GeK = paramView.findViewById(2131304181);
-      this.GeK.setVisibility(this.GeI);
-      this.GeJ = paramView.findViewById(2131304190);
-      this.GeJ.setVisibility(this.Gew);
-      this.wYW = ((ImageView)paramView.findViewById(2131304172));
-      this.wYW.setVisibility(this.GfY);
-      if (this.FKj == null) {
+      this.uBH = ((ImageView)paramView.findViewById(2131300959));
+      this.HEn = ((ViewGroup)paramView.findViewById(2131304191));
+      this.HEz = paramView.findViewById(2131304181);
+      this.HEz.setVisibility(this.HEx);
+      this.HEy = paramView.findViewById(2131304190);
+      this.HEy.setVisibility(this.HEl);
+      this.ylK = ((ImageView)paramView.findViewById(2131304172));
+      this.ylK.setVisibility(this.HFN);
+      if (this.Hjr == null) {
         break label742;
       }
-      this.tto.setImageBitmap(this.FKj);
+      this.uBH.setImageBitmap(this.Hjr);
       label487:
-      this.tto.setVisibility(this.GeH);
-      this.Gey.setVisibility(this.Gev);
-      if (this.GeC != null) {
-        this.tto.setLayoutParams(this.GeC);
+      this.uBH.setVisibility(this.HEw);
+      this.HEn.setVisibility(this.HEk);
+      if (this.HEr != null) {
+        this.uBH.setLayoutParams(this.HEr);
       }
-      this.Gez = ((TextView)paramView.findViewById(16908310));
-      this.lEA = ((TextView)paramView.findViewById(2131298996));
-      if (this.lEA != null)
+      this.HEo = ((TextView)paramView.findViewById(16908310));
+      this.gAI = ((TextView)paramView.findViewById(2131298996));
+      if (this.gAI != null)
       {
-        this.lEA.setVisibility(this.GeD);
-        this.lEA.setText(this.desc);
-        if (!this.GeS) {
+        this.gAI.setVisibility(this.HEs);
+        this.gAI.setText(this.desc);
+        if (!this.HEH) {
           break label764;
         }
-        this.lEA.setTextColor(this.context.getResources().getColor(2131100249));
+        this.gAI.setTextColor(this.context.getResources().getColor(2131100249));
       }
       label608:
-      if (this.Gez != null)
+      if (this.HEo != null)
       {
-        if (!this.GeS) {
+        if (!this.HEH) {
           break label786;
         }
-        this.Gez.setTextColor(this.context.getResources().getColor(2131100249));
+        this.HEo.setTextColor(this.context.getResources().getColor(2131100249));
       }
       label641:
-      if (this.GeS) {
+      if (this.HEH) {
         break label809;
       }
     }
@@ -206,31 +206,31 @@ public class IconPreference
       return;
       if (getIcon() != null)
       {
-        localObject = this.GeN;
+        localObject = this.HEC;
         Drawable localDrawable = getIcon();
         this.drawable = localDrawable;
         ((ImageView)localObject).setImageDrawable(localDrawable);
-        this.GeN.setVisibility(0);
+        this.HEC.setVisibility(0);
         break;
       }
-      this.GeN.setVisibility(8);
+      this.HEC.setVisibility(8);
       break;
       label714:
-      this.GeM.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      this.HEB.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break label154;
       label728:
-      this.GeL.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      this.HEA.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       break label334;
       label742:
-      if (this.FGP == -1) {
+      if (this.HfX == -1) {
         break label487;
       }
-      this.tto.setImageResource(this.FGP);
+      this.uBH.setImageResource(this.HfX);
       break label487;
       label764:
-      this.lEA.setTextColor(this.context.getResources().getColor(2131100490));
+      this.gAI.setTextColor(this.context.getResources().getColor(2131100490));
       break label608;
-      this.Gez.setTextColor(this.context.getResources().getColor(2131100711));
+      this.HEo.setTextColor(this.context.getResources().getColor(2131100711));
       break label641;
     }
   }
@@ -248,7 +248,7 @@ public class IconPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.weui.base.preference.IconPreference
  * JD-Core Version:    0.7.0.1
  */

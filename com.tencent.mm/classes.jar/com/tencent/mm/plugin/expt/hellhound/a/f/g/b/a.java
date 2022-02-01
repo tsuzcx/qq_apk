@@ -4,7 +4,7 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.c;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.preference.Preference;
 import d.g.b.k;
 import d.l;
@@ -13,36 +13,36 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/special/jd/FindMoreFriendUIMonitor;", "", "()V", "Companion", "FindMoreFriendUIListener", "plugin-expt_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/special/jd/FindMoreFriendUIMonitor;", "", "()V", "Companion", "FindMoreFriendUIListener", "plugin-expt_release"})
 public final class a
 {
-  private static boolean pHM;
-  private static boolean pHN;
-  private static boolean pHO;
-  private static final b pHP;
-  public static final a.a pHQ;
+  private static boolean qqt;
+  private static boolean qqu;
+  private static boolean qqv;
+  private static final b qqw;
+  public static final a.a qqx;
   
   static
   {
     AppMethodBeat.i(177420);
-    pHQ = new a.a((byte)0);
-    pHP = new b();
+    qqx = new a.a((byte)0);
+    qqw = new b();
     AppMethodBeat.o(177420);
   }
   
-  public static final void cdL()
+  public static final void cjz()
   {
     AppMethodBeat.i(177421);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z"));
     HashMap localHashMap = new HashMap();
     ((Map)localHashMap).put("com/tencent/mm/ui/FindMoreFriendsUI", localArrayList);
-    com.tencent.mm.hellhoundlib.a.adm();
-    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)pHP);
+    com.tencent.mm.hellhoundlib.a.aeC();
+    com.tencent.mm.hellhoundlib.a.a((Map)localHashMap, (c)qqw);
     AppMethodBeat.o(177421);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/special/jd/FindMoreFriendUIMonitor$FindMoreFriendUIListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/special/jd/FindMoreFriendUIMonitor$FindMoreFriendUIListener;", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "()V", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
   static final class b
     implements c
   {
@@ -67,34 +67,34 @@ public final class a
         throw paramString1;
       }
       paramString1 = (Preference)paramString1;
-      paramString2 = a.pHQ;
-      a.kh(k.g("jd_market_entrance", paramString1.getKey()));
-      paramString2 = a.pHQ;
-      a.ki(k.g("find_friends_by_qrcode", paramString1.getKey()));
-      paramString2 = a.pHQ;
-      a.kj(k.g("find_friends_by_finder", paramString1.getKey()));
+      paramString2 = a.qqx;
+      a.kL(k.g("jd_market_entrance", paramString1.getKey()));
+      paramString2 = a.qqx;
+      a.kM(k.g("find_friends_by_qrcode", paramString1.getKey()));
+      paramString2 = a.qqx;
+      a.kN(k.g("find_friends_by_finder", paramString1.getKey()));
       paramString1 = paramString1.getKey();
-      paramString2 = a.pHQ;
-      boolean bool1 = a.cdI();
-      paramString2 = a.pHQ;
-      boolean bool2 = a.cdJ();
-      paramString2 = a.pHQ;
-      ad.i("FindMoreFriendUIMonitor", "HABBYGE-MALI, FindMoreFriendUIMonitor, runOnEnter: %s, %b, %b, %b", new Object[] { paramString1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(a.cdK()) });
-      paramString1 = a.pHQ;
-      if (a.cdK())
+      paramString2 = a.qqx;
+      boolean bool1 = a.clq();
+      paramString2 = a.qqx;
+      boolean bool2 = a.clr();
+      paramString2 = a.qqx;
+      ac.i("FindMoreFriendUIMonitor", "HABBYGE-MALI, FindMoreFriendUIMonitor, runOnEnter: %s, %b, %b, %b", new Object[] { paramString1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(a.cls()) });
+      paramString1 = a.qqx;
+      if (a.cls())
       {
-        ad.i("FindMoreFriendUIMonitor", "HABBYGE-MALI, Finder, 19354, 1");
-        e.vIY.f(19354, new Object[] { Integer.valueOf(1) });
+        ac.i("FindMoreFriendUIMonitor", "HABBYGE-MALI, Finder, 19354, 1");
+        e.wTc.f(19354, new Object[] { Integer.valueOf(1) });
       }
       AppMethodBeat.o(184285);
     }
     
-    public final void g(String paramString, Object paramObject) {}
+    public final void f(String paramString, Object paramObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.g.b.a
  * JD-Core Version:    0.7.0.1
  */

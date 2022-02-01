@@ -14,23 +14,23 @@ public class AppBrandInitConfigWC
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandInitConfigWC> CREATOR;
-  public String iJl;
-  public String iJm;
-  public AppBrandLaunchFromNotifyReferrer iJn;
-  public boolean jdl;
-  public long jdm;
-  public String jdn;
-  public PersistableBundle jdo;
-  public String jdp;
-  public String jdq;
-  public String jdr;
-  public boolean jds;
-  public WebRenderingCacheDirectoryDescriptor jdt;
-  public volatile QualitySession jdu;
-  public transient int jdv;
-  public boolean jdw;
-  public int jdx;
-  public String jdy;
+  public String jDA;
+  public PersistableBundle jDB;
+  public String jDC;
+  public String jDD;
+  public String jDE;
+  public boolean jDF;
+  public WebRenderingCacheDirectoryDescriptor jDG;
+  public volatile QualitySession jDH;
+  public transient int jDI;
+  public boolean jDJ;
+  public int jDK;
+  public String jDL;
+  public boolean jDy;
+  public long jDz;
+  public String jjp;
+  public String jjq;
+  public AppBrandLaunchFromNotifyReferrer jjr;
   public int launchMode;
   
   static
@@ -43,8 +43,8 @@ public class AppBrandInitConfigWC
   public AppBrandInitConfigWC()
   {
     AppMethodBeat.i(44834);
-    this.jdo = new PersistableBundle();
-    this.jds = false;
+    this.jDB = new PersistableBundle();
+    this.jDF = false;
     AppMethodBeat.o(44834);
   }
   
@@ -52,25 +52,25 @@ public class AppBrandInitConfigWC
   {
     super(paramParcel);
     AppMethodBeat.i(44839);
-    this.jdo = new PersistableBundle();
-    this.jds = false;
+    this.jDB = new PersistableBundle();
+    this.jDF = false;
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.jdl = bool1;
+      this.jDy = bool1;
       if (paramParcel.readByte() == 0) {
         break label222;
       }
       bool1 = true;
       label51:
-      this.jdw = bool1;
-      this.jdx = paramParcel.readInt();
-      this.jdm = paramParcel.readLong();
-      this.jdn = paramParcel.readString();
-      this.jdu = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
-      this.jdp = paramParcel.readString();
-      this.jdo = paramParcel.readPersistableBundle(AppBrandInitConfigWC.class.getClassLoader());
-      this.jdq = paramParcel.readString();
+      this.jDJ = bool1;
+      this.jDK = paramParcel.readInt();
+      this.jDz = paramParcel.readLong();
+      this.jDA = paramParcel.readString();
+      this.jDH = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
+      this.jDC = paramParcel.readString();
+      this.jDB = paramParcel.readPersistableBundle(AppBrandInitConfigWC.class.getClassLoader());
+      this.jDD = paramParcel.readString();
       if (paramParcel.readByte() <= 0) {
         break label227;
       }
@@ -79,14 +79,14 @@ public class AppBrandInitConfigWC
     label227:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jds = bool1;
-      this.jdr = paramParcel.readString();
-      this.jdt = ((WebRenderingCacheDirectoryDescriptor)paramParcel.readParcelable(WebRenderingCacheDirectoryDescriptor.class.getClassLoader()));
-      this.iJl = paramParcel.readString();
+      this.jDF = bool1;
+      this.jDE = paramParcel.readString();
+      this.jDG = ((WebRenderingCacheDirectoryDescriptor)paramParcel.readParcelable(WebRenderingCacheDirectoryDescriptor.class.getClassLoader()));
+      this.jjp = paramParcel.readString();
       this.launchMode = paramParcel.readInt();
-      this.iJm = paramParcel.readString();
-      this.iJn = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
-      this.jdy = paramParcel.readString();
+      this.jjq = paramParcel.readString();
+      this.jjr = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
+      this.jDL = paramParcel.readString();
       AppMethodBeat.o(44839);
       return;
       bool1 = false;
@@ -96,22 +96,22 @@ public class AppBrandInitConfigWC
     }
   }
   
-  private AppBrandInitConfigWC aTz()
+  private AppBrandInitConfigWC bax()
   {
     AppMethodBeat.i(44836);
-    Parcel localParcel = aTw();
+    Parcel localParcel = bau();
     AppBrandInitConfigWC localAppBrandInitConfigWC = new AppBrandInitConfigWC(localParcel);
     localParcel.recycle();
     AppMethodBeat.o(44836);
     return localAppBrandInitConfigWC;
   }
   
-  public final boolean CZ()
+  public final boolean CC()
   {
-    return this.cfd == 4;
+    return this.cca == 4;
   }
   
-  public final Parcel aTw()
+  public final Parcel bau()
   {
     AppMethodBeat.i(44837);
     Parcel localParcel = Parcel.obtain();
@@ -125,7 +125,7 @@ public class AppBrandInitConfigWC
   public String toString()
   {
     AppMethodBeat.i(44835);
-    String str = "AppBrandInitConfigWC {visitingSessionId='" + this.cfb + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.dfM + '\'' + ", debugType=" + this.iOP + ", uin=" + this.uin + ", isPluginApp=" + this.jdl + ", isAdContact=" + this.jdw + ", performanceValue=" + this.jdx + ", orientation='" + this.jbC + '\'' + ", enterPath='" + this.iJb + '\'' + ", shareName='" + this.cff + '\'' + ", shareKey='" + this.cfh + '\'' + ", startTime=" + this.startTime + ", attrsFromCgi=" + this.cfn + ", referrer=" + this.cfi + ", extInfo=" + this.extInfo + ", appVersion=" + this.aAS + ", launchMode=" + this.launchMode + "， triggerServiceName" + this.jdr + '}';
+    String str = "AppBrandInitConfigWC {visitingSessionId='" + this.cbY + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.ddh + '\'' + ", debugType=" + this.joY + ", uin=" + this.uin + ", isPluginApp=" + this.jDy + ", isAdContact=" + this.jDJ + ", performanceValue=" + this.jDK + ", orientation='" + this.jBP + '\'' + ", enterPath='" + this.jjf + '\'' + ", shareName='" + this.ccc + '\'' + ", shareKey='" + this.ccd + '\'' + ", startTime=" + this.startTime + ", attrsFromCgi=" + this.cck + ", referrer=" + this.cce + ", extInfo=" + this.extInfo + ", appVersion=" + this.aBM + ", launchMode=" + this.launchMode + "， triggerServiceName" + this.jDE + '}';
     AppMethodBeat.o(44835);
     return str;
   }
@@ -136,37 +136,37 @@ public class AppBrandInitConfigWC
     AppMethodBeat.i(44838);
     super.writeToParcel(paramParcel, paramInt);
     byte b;
-    if (this.jdl)
+    if (this.jDy)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.jdw) {
+      if (!this.jDJ) {
         break label184;
       }
       b = 1;
       label38:
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.jdx);
-      paramParcel.writeLong(this.jdm);
-      paramParcel.writeString(this.jdn);
-      paramParcel.writeParcelable(this.jdu, paramInt);
-      paramParcel.writeString(this.jdp);
-      paramParcel.writePersistableBundle(this.jdo);
-      paramParcel.writeString(this.jdq);
-      if (!this.jds) {
+      paramParcel.writeInt(this.jDK);
+      paramParcel.writeLong(this.jDz);
+      paramParcel.writeString(this.jDA);
+      paramParcel.writeParcelable(this.jDH, paramInt);
+      paramParcel.writeString(this.jDC);
+      paramParcel.writePersistableBundle(this.jDB);
+      paramParcel.writeString(this.jDD);
+      if (!this.jDF) {
         break label189;
       }
     }
     for (;;)
     {
       paramParcel.writeByte((byte)i);
-      paramParcel.writeString(this.jdr);
-      paramParcel.writeParcelable(this.jdt, paramInt);
-      paramParcel.writeString(this.iJl);
+      paramParcel.writeString(this.jDE);
+      paramParcel.writeParcelable(this.jDG, paramInt);
+      paramParcel.writeString(this.jjp);
       paramParcel.writeInt(this.launchMode);
-      paramParcel.writeString(this.iJm);
-      paramParcel.writeParcelable(this.iJn, paramInt);
-      paramParcel.writeString(this.jdy);
+      paramParcel.writeString(this.jjq);
+      paramParcel.writeParcelable(this.jjr, paramInt);
+      paramParcel.writeString(this.jDL);
       AppMethodBeat.o(44838);
       return;
       b = 0;
@@ -181,7 +181,7 @@ public class AppBrandInitConfigWC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC
  * JD-Core Version:    0.7.0.1
  */

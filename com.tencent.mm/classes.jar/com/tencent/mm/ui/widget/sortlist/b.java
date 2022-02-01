@@ -11,20 +11,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   extends ViewGroup
 {
-  private int Hu;
+  private int Is;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159747);
-    this.Hu = 48;
+    this.Is = 48;
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     AppMethodBeat.o(159747);
   }
   
   public int getGravity()
   {
-    return this.Hu;
+    return this.Is;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -36,7 +36,7 @@ public class b
       AppMethodBeat.o(159748);
       return;
     }
-    if (this.Hu == 48)
+    if (this.Is == 48)
     {
       localView.layout(0, 0, getMeasuredWidth(), localView.getMeasuredHeight());
       AppMethodBeat.o(159748);
@@ -82,12 +82,12 @@ public class b
   
   public void setGravity(int paramInt)
   {
-    this.Hu = paramInt;
+    this.Is = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.b
  * JD-Core Version:    0.7.0.1
  */

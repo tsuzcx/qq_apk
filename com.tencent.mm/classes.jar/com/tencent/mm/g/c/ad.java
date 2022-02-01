@@ -8,13 +8,13 @@ public abstract class ad
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ekd = "startTime".hashCode();
-  private static final int eke = "endTime".hashCode();
-  private static final int eoQ = "sessionName".hashCode();
+  private static final int emh = "startTime".hashCode();
+  private static final int emi = "endTime".hashCode();
+  private static final int eqU = "sessionName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ejW = true;
-  private boolean ejX = true;
-  private boolean eoN = true;
+  private boolean ema = true;
+  private boolean emb = true;
+  private boolean eqR = true;
   public long field_endTime;
   public String field_sessionName;
   public long field_startTime;
@@ -32,7 +32,7 @@ public abstract class ad
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eoQ != k) {
+      if (eqU != k) {
         break label60;
       }
       this.field_sessionName = paramCursor.getString(i);
@@ -43,9 +43,9 @@ public abstract class ad
       break label20;
       break;
       label60:
-      if (ekd == k) {
+      if (emh == k) {
         this.field_startTime = paramCursor.getLong(i);
-      } else if (eke == k) {
+      } else if (emi == k) {
         this.field_endTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -59,13 +59,13 @@ public abstract class ad
     if (this.field_sessionName == null) {
       this.field_sessionName = "";
     }
-    if (this.eoN) {
+    if (this.eqR) {
       localContentValues.put("sessionName", this.field_sessionName);
     }
-    if (this.ejW) {
+    if (this.ema) {
       localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.ejX) {
+    if (this.emb) {
       localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
     if (this.systemRowid > 0L) {

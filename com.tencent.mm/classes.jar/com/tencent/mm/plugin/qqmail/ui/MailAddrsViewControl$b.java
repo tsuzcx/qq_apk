@@ -19,27 +19,27 @@ public final class MailAddrsViewControl$b
   extends BaseAdapter
   implements Filterable
 {
-  private List<p> ipH;
-  private ArrayList<p> ipI;
+  private List<p> iPO;
+  private ArrayList<p> iPP;
   private Context mContext;
   private final Object mLock;
-  private boolean uPT;
-  private a uPU;
+  private boolean vYJ;
+  private a vYK;
   
   public MailAddrsViewControl$b(Context paramContext, List<p> paramList)
   {
     AppMethodBeat.i(123077);
     this.mLock = new Object();
-    this.uPT = true;
+    this.vYJ = true;
     this.mContext = paramContext;
-    this.ipH = paramList;
+    this.iPO = paramList;
     AppMethodBeat.o(123077);
   }
   
-  public final p JP(int paramInt)
+  public final p LO(int paramInt)
   {
     AppMethodBeat.i(123080);
-    p localp = (p)this.ipH.get(paramInt);
+    p localp = (p)this.iPO.get(paramInt);
     AppMethodBeat.o(123080);
     return localp;
   }
@@ -47,7 +47,7 @@ public final class MailAddrsViewControl$b
   public final int getCount()
   {
     AppMethodBeat.i(123079);
-    int i = this.ipH.size();
+    int i = this.iPO.size();
     AppMethodBeat.o(123079);
     return i;
   }
@@ -55,10 +55,10 @@ public final class MailAddrsViewControl$b
   public final Filter getFilter()
   {
     AppMethodBeat.i(123082);
-    if (this.uPU == null) {
-      this.uPU = new a((byte)0);
+    if (this.vYK == null) {
+      this.vYK = new a((byte)0);
     }
-    a locala = this.uPU;
+    a locala = this.vYK;
     AppMethodBeat.o(123082);
     return locala;
   }
@@ -75,18 +75,18 @@ public final class MailAddrsViewControl$b
     {
       paramView = View.inflate(this.mContext, 2131495158, null);
       paramViewGroup = new b((byte)0);
-      paramViewGroup.imt = ((TextView)paramView.findViewById(2131303579));
-      paramViewGroup.uPE = ((TextView)paramView.findViewById(2131303576));
-      paramViewGroup.uPW = ((CheckBox)paramView.findViewById(2131303580));
+      paramViewGroup.iMz = ((TextView)paramView.findViewById(2131303579));
+      paramViewGroup.vYu = ((TextView)paramView.findViewById(2131303576));
+      paramViewGroup.vYM = ((CheckBox)paramView.findViewById(2131303580));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup = JP(paramInt);
+      paramViewGroup = LO(paramInt);
       b localb = (b)paramView.getTag();
-      localb.imt.setText(paramViewGroup.name);
-      localb.uPE.setText(paramViewGroup.sOr);
-      localb.uPW.setVisibility(8);
+      localb.iMz.setText(paramViewGroup.name);
+      localb.vYu.setText(paramViewGroup.tWE);
+      localb.vYM.setVisibility(8);
       paramView.setBackgroundColor(this.mContext.getResources().getColor(2131101179));
       AppMethodBeat.o(123081);
       return paramView;
@@ -98,7 +98,7 @@ public final class MailAddrsViewControl$b
   {
     AppMethodBeat.i(123078);
     super.notifyDataSetChanged();
-    this.uPT = true;
+    this.vYJ = true;
     AppMethodBeat.o(123078);
   }
   
@@ -143,7 +143,7 @@ public final class MailAddrsViewControl$b
         while (i < j)
         {
           p localp = (p)((ArrayList)???).get(i);
-          if ((localp.name.toLowerCase().contains(???)) || (localp.sOr.toLowerCase().contains(???))) {
+          if ((localp.name.toLowerCase().contains(???)) || (localp.tWE.toLowerCase().contains(???))) {
             localArrayList.add(localp);
           }
           i += 1;
@@ -171,9 +171,9 @@ public final class MailAddrsViewControl$b
   
   final class b
   {
-    TextView imt;
-    TextView uPE;
-    CheckBox uPW;
+    TextView iMz;
+    CheckBox vYM;
+    TextView vYu;
     
     private b() {}
   }

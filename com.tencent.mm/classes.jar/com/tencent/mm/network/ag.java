@@ -5,20 +5,20 @@ import d.g.a.b;
 import d.l;
 import java.io.InputStream;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"runUse", "R", "T", "", "target", "asException", "block", "Lkotlin/Function1;", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "use", "Lcom/tencent/mm/network/MMHttpUrlConnection;", "(Lcom/tencent/mm/network/MMHttpUrlConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Lcom/tencent/mm/network/MMHttpUrlCronetConnection;", "(Lcom/tencent/mm/network/MMHttpUrlCronetConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Lcom/tencent/mm/network/MMHttpsUrlConnection;", "(Lcom/tencent/mm/network/MMHttpsUrlConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Ljava/net/URLConnection;", "(Ljava/net/URLConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "mmkernel_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"runUse", "R", "T", "", "target", "asException", "block", "Lkotlin/Function1;", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "use", "Lcom/tencent/mm/network/MMHttpUrlConnection;", "(Lcom/tencent/mm/network/MMHttpUrlConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Lcom/tencent/mm/network/MMHttpUrlCronetConnection;", "(Lcom/tencent/mm/network/MMHttpUrlCronetConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Lcom/tencent/mm/network/MMHttpsUrlConnection;", "(Lcom/tencent/mm/network/MMHttpsUrlConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Ljava/net/URLConnection;", "(Ljava/net/URLConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "mmkernel_release"})
 public final class ag
 {
   public static final <T, R> R a(T paramT, b<? super T, ? extends R> paramb)
   {
-    AppMethodBeat.i(192932);
+    AppMethodBeat.i(206866);
     try
     {
-      paramb = paramb.aA(paramT);
+      paramb = paramb.ay(paramT);
     }
     catch (Throwable paramb)
     {
       label29:
-      AppMethodBeat.o(192932);
+      AppMethodBeat.o(206866);
       throw paramb;
     }
     finally
@@ -35,7 +35,7 @@ public final class ag
         break label68;
       }
       ((x)paramT).disconnect();
-      AppMethodBeat.o(192932);
+      AppMethodBeat.o(206866);
     }
     try
     {
@@ -49,7 +49,7 @@ public final class ag
       break label29;
     }
     ((x)paramT).disconnect();
-    AppMethodBeat.o(192932);
+    AppMethodBeat.o(206866);
     return paramb;
   }
 }

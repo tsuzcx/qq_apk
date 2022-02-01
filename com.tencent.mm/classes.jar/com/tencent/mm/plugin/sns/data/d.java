@@ -6,25 +6,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
 {
   public int requestType;
-  public m wAv;
-  public SparseArray<m> wAw;
+  public m xMO;
+  public SparseArray<m> xMP;
   
   public d()
   {
     AppMethodBeat.i(95067);
-    this.wAw = new SparseArray();
+    this.xMP = new SparseArray();
     AppMethodBeat.o(95067);
   }
   
   public d(SparseArray<m> paramSparseArray)
   {
-    this.wAw = paramSparseArray;
+    this.xMP = paramSparseArray;
     this.requestType = 9;
   }
   
   public d(m paramm, int paramInt)
   {
-    this.wAv = paramm;
+    this.xMO = paramm;
     this.requestType = paramInt;
   }
 }

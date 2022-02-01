@@ -10,17 +10,17 @@ import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.m;
 import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public abstract class d
   extends i
 {
-  public p Ee()
+  public p DH()
   {
     if (!isRunning()) {
-      return super.Ee();
+      return super.DH();
     }
-    return getRuntime().Ee();
+    return getRuntime().DH();
   }
   
   public final <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass)
@@ -59,34 +59,34 @@ public abstract class d
     return true;
   }
   
-  public final com.tencent.mm.plugin.appbrand.b.b aLA()
-  {
-    if (!isRunning()) {
-      return com.tencent.mm.plugin.appbrand.b.b.iQN;
-    }
-    return getRuntime().iDK.iQP.aQO();
-  }
-  
-  public final m aLB()
-  {
-    if (!isRunning()) {
-      return super.aLB();
-    }
-    return getRuntime().hKb;
-  }
-  
-  public final ICommLibReader aLC()
-  {
-    return (ICommLibReader)K(ICommLibReader.class);
-  }
-  
-  public final q aLz()
+  public final q aSq()
   {
     AppBrandRuntime localAppBrandRuntime = getRuntime();
     if (localAppBrandRuntime == null) {
       return null;
     }
     return be.U(localAppBrandRuntime);
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.b.b aSr()
+  {
+    if (!isRunning()) {
+      return com.tencent.mm.plugin.appbrand.b.b.jqX;
+    }
+    return getRuntime().jdK.jqZ.aXJ();
+  }
+  
+  public final m aSs()
+  {
+    if (!isRunning()) {
+      return super.aSs();
+    }
+    return getRuntime().iky;
+  }
+  
+  public final ICommLibReader aSt()
+  {
+    return (ICommLibReader)K(ICommLibReader.class);
   }
   
   public final <T extends j> T ar(Class<T> paramClass)
@@ -129,7 +129,7 @@ public abstract class d
   {
     Object localObject1;
     if (getRuntime() == null) {
-      localObject1 = aj.getContext();
+      localObject1 = ai.getContext();
     }
     Object localObject2;
     do
@@ -137,16 +137,16 @@ public abstract class d
       do
       {
         return localObject1;
-        localObject2 = a.iV(getRuntime().mContext);
+        localObject2 = a.jg(getRuntime().mContext);
         localObject1 = localObject2;
       } while (localObject2 != null);
       localObject2 = getRuntime().mContext;
       localObject1 = localObject2;
     } while (localObject2 != null);
-    return aj.getContext();
+    return ai.getContext();
   }
   
-  public abstract com.tencent.mm.plugin.appbrand.s.a.c getWindowAndroid();
+  public abstract com.tencent.mm.plugin.appbrand.r.a.c getWindowAndroid();
   
   public boolean isRunning()
   {
@@ -156,7 +156,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.d
  * JD-Core Version:    0.7.0.1
  */

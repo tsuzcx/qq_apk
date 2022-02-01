@@ -10,17 +10,17 @@ public abstract interface a
   
   public abstract boolean K(CharSequence paramCharSequence);
   
-  public abstract String Tk(String paramString);
+  public abstract String Xw(String paramString);
   
   public abstract SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
   public abstract SpannableString b(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract String eU(String paramString1, String paramString2);
+  public abstract String fh(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.b.a
  * JD-Core Version:    0.7.0.1
  */

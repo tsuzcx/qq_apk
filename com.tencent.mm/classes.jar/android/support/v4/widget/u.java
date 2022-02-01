@@ -9,27 +9,27 @@ import android.view.ViewParent;
 
 public final class u
 {
-  private static final ThreadLocal<Matrix> TS = new ThreadLocal();
-  private static final ThreadLocal<RectF> TT = new ThreadLocal();
+  private static final ThreadLocal<Matrix> UN = new ThreadLocal();
+  private static final ThreadLocal<RectF> UO = new ThreadLocal();
   
   public static void a(ViewGroup paramViewGroup, View paramView, Rect paramRect)
   {
     paramRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
-    Matrix localMatrix = (Matrix)TS.get();
+    Matrix localMatrix = (Matrix)UN.get();
     if (localMatrix == null)
     {
       localMatrix = new Matrix();
-      TS.set(localMatrix);
+      UN.set(localMatrix);
     }
     for (;;)
     {
       a(paramViewGroup, paramView, localMatrix);
-      paramView = (RectF)TT.get();
+      paramView = (RectF)UO.get();
       paramViewGroup = paramView;
       if (paramView == null)
       {
         paramViewGroup = new RectF();
-        TT.set(paramViewGroup);
+        UO.set(paramViewGroup);
       }
       paramViewGroup.set(paramRect);
       localMatrix.mapRect(paramViewGroup);

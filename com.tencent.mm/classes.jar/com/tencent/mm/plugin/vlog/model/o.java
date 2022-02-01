@@ -1,20 +1,29 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tav.decoder.logger.ILog;
+import com.tencent.tav.decoder.logger.Logger;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/vlog/model/ImageSource;", "Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "width", "", "height", "path", "", "(IILjava/lang/String;)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "plugin-vlog_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/TAVKitLog;", "", "()V", "TAG", "", "setUp", "", "plugin-vlog_release"})
 public final class o
-  extends s
 {
-  String path;
+  public static final o AnM;
+  private static final String TAG = "MicroMsg.TAVKit";
   
-  public o(int paramInt1, int paramInt2, String paramString)
+  static
   {
-    super(paramInt1, paramInt2, 1, (byte)0);
-    AppMethodBeat.i(200826);
-    this.path = paramString;
-    AppMethodBeat.o(200826);
+    AppMethodBeat.i(207560);
+    AnM = new o();
+    TAG = "MicroMsg.TAVKit";
+    AppMethodBeat.o(207560);
+  }
+  
+  public static void cZj()
+  {
+    AppMethodBeat.i(207559);
+    Logger.setLogger((ILog)new o.a());
+    AppMethodBeat.o(207559);
   }
 }
 

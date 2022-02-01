@@ -14,10 +14,10 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.kinda.gen.VoidStringCallback;
 import com.tencent.kinda.gen.VoidStringStringCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hy;
-import com.tencent.mm.g.a.hy.b;
-import com.tencent.mm.g.a.ka;
-import com.tencent.mm.g.a.px;
+import com.tencent.mm.g.a.if;
+import com.tencent.mm.g.a.if.b;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.g.a.qg;
 import com.tencent.mm.plugin.fingerprint.b.a.d;
 import com.tencent.mm.plugin.fingerprint.b.a.e;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
@@ -25,9 +25,9 @@ import com.tencent.mm.plugin.fingerprint.b.a.i;
 import com.tencent.mm.plugin.fingerprint.b.p;
 import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.s;
-import com.tencent.mm.protocal.protobuf.gp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.protocal.protobuf.gt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.MMActivity;
 import java.io.IOException;
 import org.json.JSONException;
@@ -37,7 +37,7 @@ public class KindaFingerprintImpl
   implements KFingerprintService
 {
   String TAG;
-  private com.tencent.mm.sdk.b.c<ka> activetyListener;
+  private com.tencent.mm.sdk.b.c<ki> activetyListener;
   private VoidBoolCallback changePwdCallback;
   int identify_num;
   com.tencent.mm.plugin.fingerprint.d.a mgr;
@@ -47,18 +47,7 @@ public class KindaFingerprintImpl
   {
     AppMethodBeat.i(18436);
     this.TAG = "KindaFingerprintImpl";
-    this.activetyListener = new com.tencent.mm.sdk.b.c()
-    {
-      public boolean callback(ka paramAnonymouska)
-      {
-        AppMethodBeat.i(18426);
-        if ((paramAnonymouska != null) && (KindaFingerprintImpl.this.changePwdCallback != null)) {
-          KindaFingerprintImpl.this.changePwdCallback.call(false);
-        }
-        AppMethodBeat.o(18426);
-        return false;
-      }
-    };
+    this.activetyListener = new KindaFingerprintImpl.1(this);
     this.mgr = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
     this.identify_num = 0;
     this.tipDialog = null;
@@ -73,34 +62,34 @@ public class KindaFingerprintImpl
       AppMethodBeat.o(18438);
       return;
     }
-    p.rcp.rcj = paramString2;
-    paramVoidStringCallback = new px();
-    com.tencent.mm.sdk.b.a.ESL.l(paramVoidStringCallback);
-    com.tencent.mm.plugin.soter.d.a.dEP();
-    ad.i(this.TAG, "req fingerprint auth 2");
-    com.tencent.mm.plugin.soter.d.a.dEP();
-    com.tencent.mm.plugin.report.service.h.vKh.dB(1104, 38);
+    p.skJ.skD = paramString2;
+    paramVoidStringCallback = new qg();
+    com.tencent.mm.sdk.b.a.GpY.l(paramVoidStringCallback);
+    com.tencent.mm.plugin.soter.d.a.dTo();
+    ac.i(this.TAG, "req fingerprint auth 2");
+    com.tencent.mm.plugin.soter.d.a.dTo();
+    com.tencent.mm.plugin.report.service.h.wUl.dB(1104, 38);
     paramVoidStringCallback = (i)com.tencent.mm.kernel.g.ab(i.class);
     paramString2 = new f(paramString2);
-    paramString2.dcE = paramString1;
-    paramVoidStringCallback.a(aj.getContext(), paramString2, new d()
+    paramString2.dac = paramString1;
+    paramVoidStringCallback.a(ai.getContext(), paramString2, new d()
     {
       public void onFail(e paramAnonymouse)
       {
         AppMethodBeat.i(18429);
-        com.tencent.mm.plugin.soter.d.a.Oe(2);
-        com.tencent.mm.plugin.fingerprint.b.a.c localc = paramAnonymouse.rcA;
+        com.tencent.mm.plugin.soter.d.a.Qj(2);
+        com.tencent.mm.plugin.fingerprint.b.a.c localc = paramAnonymouse.skU;
         if ((localc.errCode == 2005) || (localc.errCode == 2007)) {
-          com.tencent.mm.plugin.report.service.h.vKh.dB(1104, 36);
+          com.tencent.mm.plugin.report.service.h.wUl.dB(1104, 36);
         }
         if ((localc.errCode == 10308) || (localc.errCode == 2) || (localc.errCode == 1001))
         {
-          ad.i(KindaFingerprintImpl.this.TAG, "hy: FingerPrintAuthEvent callback, auth | fail max | common err | pipeline exception, should change to pwd!");
+          ac.i(KindaFingerprintImpl.this.TAG, "hy: FingerPrintAuthEvent callback, auth | fail max | common err | pipeline exception, should change to pwd!");
           paramVoidBoolCallback.call(true);
         }
         for (;;)
         {
-          ad.i(KindaFingerprintImpl.this.TAG, "FingerPrint fail! retry count: " + paramAnonymouse.retryCount);
+          ac.i(KindaFingerprintImpl.this.TAG, "FingerPrint fail! retry count: " + paramAnonymouse.retryCount);
           AppMethodBeat.o(18429);
           return;
           paramVoidBoolCallback.call(false);
@@ -110,28 +99,28 @@ public class KindaFingerprintImpl
       public void onRetry(e paramAnonymouse)
       {
         AppMethodBeat.i(18430);
-        com.tencent.mm.plugin.soter.d.a.Oe(1);
+        com.tencent.mm.plugin.soter.d.a.Qj(1);
         paramVoidCallback.call();
-        ad.i(KindaFingerprintImpl.this.TAG, "FingerPrint retry! retry count: " + paramAnonymouse.retryCount);
+        ac.i(KindaFingerprintImpl.this.TAG, "FingerPrint retry! retry count: " + paramAnonymouse.retryCount);
         AppMethodBeat.o(18430);
       }
       
       public void onSuccess(e paramAnonymouse)
       {
         AppMethodBeat.i(18428);
-        ad.i(KindaFingerprintImpl.this.TAG, "FingerPrint success!, encrypted_pay_info: %s, retry count: ", new Object[] { paramAnonymouse.rcA.dlK, Integer.valueOf(paramAnonymouse.retryCount) });
-        gp localgp = new gp();
-        localgp.CBz = true;
-        localgp.dlK = paramAnonymouse.rcA.dlK;
-        localgp.dlL = paramAnonymouse.rcA.dlL;
-        localgp.ApX = paramAnonymouse.retryCount;
+        ac.i(KindaFingerprintImpl.this.TAG, "FingerPrint success!, encrypted_pay_info: %s, retry count: ", new Object[] { paramAnonymouse.skU.djs, Integer.valueOf(paramAnonymouse.retryCount) });
+        gt localgt = new gt();
+        localgt.DTX = true;
+        localgt.djs = paramAnonymouse.skU.djs;
+        localgt.djt = paramAnonymouse.skU.djt;
+        localgt.BIr = paramAnonymouse.retryCount;
         try
         {
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("json", paramAnonymouse.rcA.rck);
-          localJSONObject.put("signature", paramAnonymouse.rcA.rcl);
-          localJSONObject.put("soter_type", s.ecc().ecL());
-          localgp.CBA = localJSONObject.toString();
+          localJSONObject.put("json", paramAnonymouse.skU.skE);
+          localJSONObject.put("signature", paramAnonymouse.skU.skF);
+          localJSONObject.put("soter_type", s.ery().esg());
+          localgt.DTY = localJSONObject.toString();
         }
         catch (JSONException localJSONException)
         {
@@ -139,27 +128,27 @@ public class KindaFingerprintImpl
           {
             for (;;)
             {
-              paramVoidBinaryI32Callback.call(localgp.toByteArray(), paramAnonymouse.rcA.dlI);
-              com.tencent.mm.plugin.report.service.h.vKh.dB(1104, 37);
-              com.tencent.mm.plugin.soter.d.a.Oe(0);
+              paramVoidBinaryI32Callback.call(localgt.toByteArray(), paramAnonymouse.skU.djq);
+              com.tencent.mm.plugin.report.service.h.wUl.dB(1104, 37);
+              com.tencent.mm.plugin.soter.d.a.Qj(0);
               AppMethodBeat.o(18428);
               return;
               localJSONException = localJSONException;
-              ad.printErrStackTrace(KindaFingerprintImpl.this.TAG, localJSONException, "json exception while construct json for soter_req. message: %s", new Object[] { localJSONException.getMessage() });
+              ac.printErrStackTrace(KindaFingerprintImpl.this.TAG, localJSONException, "json exception while construct json for soter_req. message: %s", new Object[] { localJSONException.getMessage() });
             }
           }
           catch (IOException paramAnonymouse)
           {
             for (;;)
             {
-              ad.printErrStackTrace(KindaFingerprintImpl.this.TAG, paramAnonymouse, "FingerPrint exception: %s", new Object[] { paramAnonymouse.getMessage() });
+              ac.printErrStackTrace(KindaFingerprintImpl.this.TAG, paramAnonymouse, "FingerPrint exception: %s", new Object[] { paramAnonymouse.getMessage() });
             }
           }
         }
       }
     });
     this.changePwdCallback = paramVoidBoolCallback;
-    com.tencent.mm.sdk.b.a.ESL.b(this.activetyListener);
+    com.tencent.mm.sdk.b.a.GpY.b(this.activetyListener);
     AppMethodBeat.o(18438);
   }
   
@@ -172,7 +161,7 @@ public class KindaFingerprintImpl
     if (paramBoolean2)
     {
       i = 0;
-      if (!this.mgr.ctN()) {
+      if (!this.mgr.cGZ()) {
         break label75;
       }
       i = 1;
@@ -184,7 +173,7 @@ public class KindaFingerprintImpl
       AppMethodBeat.o(18443);
       return;
       label75:
-      if (this.mgr.ctQ()) {
+      if (this.mgr.cHc()) {
         i = 2;
       }
     }
@@ -204,11 +193,11 @@ public class KindaFingerprintImpl
   public boolean isNeedChangeAuthKey()
   {
     AppMethodBeat.i(18442);
-    boolean bool = this.mgr.ctZ();
-    if ((p.rcp.rcr) || (!bool)) {}
+    boolean bool = this.mgr.cHl();
+    if ((p.skJ.skL) || (!bool)) {}
     for (bool = true;; bool = false)
     {
-      p.rcp.rcr = bool;
+      p.skJ.skL = bool;
       AppMethodBeat.o(18442);
       return bool;
     }
@@ -217,34 +206,34 @@ public class KindaFingerprintImpl
   public void reGenFpRsaKeyImpl(boolean paramBoolean, int paramInt, String paramString, final VoidStringStringCallback paramVoidStringStringCallback, final VoidCallback paramVoidCallback)
   {
     AppMethodBeat.i(18440);
-    final hy localhy = new hy();
-    localhy.dlG = null;
-    localhy.dlF.dlH = paramBoolean;
+    final if localif = new if();
+    localif.djo = null;
+    localif.djn.djp = paramBoolean;
     if (paramBoolean) {
       showProgress();
     }
-    localhy.dlF.dlI = paramInt;
-    localhy.dlF.dlJ = paramString;
-    localhy.callback = new Runnable()
+    localif.djn.djq = paramInt;
+    localif.djn.djr = paramString;
+    localif.callback = new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(18431);
-        ad.i(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback");
-        hy.b localb = localhy.dlG;
-        if ((localb != null) && (localb.dhg))
+        ac.i(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback");
+        if.b localb = localif.djo;
+        if ((localb != null) && (localb.deB))
         {
-          ad.i(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
+          ac.i(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback, result.isSuccess is true");
           KindaFingerprintImpl.this.closeTipDialog();
           if (paramVoidStringStringCallback != null)
           {
-            paramVoidStringStringCallback.call(localb.dlK, localb.dlL);
+            paramVoidStringStringCallback.call(localb.djs, localb.djt);
             AppMethodBeat.o(18431);
           }
         }
-        else if ((localb != null) && (!localb.dhg))
+        else if ((localb != null) && (!localb.deB))
         {
-          ad.e(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
+          ac.e(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback, result.isSuccess is false");
           KindaFingerprintImpl.this.closeTipDialog();
           if (paramVoidCallback != null)
           {
@@ -254,35 +243,35 @@ public class KindaFingerprintImpl
         }
         else
         {
-          ad.i(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback, result == null");
+          ac.i(KindaFingerprintImpl.this.TAG, "GenFingerPrintRsaKeyEvent callback, result == null");
         }
         AppMethodBeat.o(18431);
       }
     };
-    com.tencent.mm.sdk.b.a.ESL.a(localhy, Looper.getMainLooper());
+    com.tencent.mm.sdk.b.a.GpY.a(localif, Looper.getMainLooper());
     AppMethodBeat.o(18440);
   }
   
   public void releaseService()
   {
     AppMethodBeat.i(18439);
-    px localpx = new px();
-    com.tencent.mm.sdk.b.a.ESL.l(localpx);
-    com.tencent.mm.sdk.b.a.ESL.d(this.activetyListener);
+    qg localqg = new qg();
+    com.tencent.mm.sdk.b.a.GpY.l(localqg);
+    com.tencent.mm.sdk.b.a.GpY.d(this.activetyListener);
     AppMethodBeat.o(18439);
   }
   
   public void setNeedChangeAuthKey(boolean paramBoolean)
   {
-    p.rcp.rcr = paramBoolean;
+    p.skJ.skL = paramBoolean;
   }
   
   public void showFaceIdAuthDialogImpl(String paramString, final VoidBinaryI32Callback paramVoidBinaryI32Callback, final VoidCallback paramVoidCallback1, final VoidCallback paramVoidCallback2)
   {
     AppMethodBeat.i(18441);
-    ad.i(this.TAG, "showFaceIdAuthDialogImpl begin");
-    p.rcp.rcj = paramString;
-    com.tencent.mm.plugin.report.service.h.vKh.f(15817, new Object[] { Integer.valueOf(3) });
+    ac.i(this.TAG, "showFaceIdAuthDialogImpl begin");
+    p.skJ.skD = paramString;
+    com.tencent.mm.plugin.report.service.h.wUl.f(15817, new Object[] { Integer.valueOf(3) });
     paramString = (com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.b.h.class);
     Bundle localBundle = new Bundle();
     localBundle.putInt("face_auth_scene", 1);
@@ -291,7 +280,7 @@ public class KindaFingerprintImpl
       public void onAuthCancel()
       {
         AppMethodBeat.i(18434);
-        ad.i(KindaFingerprintImpl.this.TAG, "face id auth cancel");
+        ac.i(KindaFingerprintImpl.this.TAG, "face id auth cancel");
         if (paramVoidCallback2 != null) {
           paramVoidCallback2.call();
         }
@@ -301,7 +290,7 @@ public class KindaFingerprintImpl
       public void onAuthFail(int paramAnonymousInt)
       {
         AppMethodBeat.i(18433);
-        ad.i(KindaFingerprintImpl.this.TAG, "face id auth fail: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(KindaFingerprintImpl.this.identify_num) });
+        ac.i(KindaFingerprintImpl.this.TAG, "face id auth fail: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(KindaFingerprintImpl.this.identify_num) });
         if (paramVoidCallback1 != null) {
           paramVoidCallback1.call();
         }
@@ -313,19 +302,19 @@ public class KindaFingerprintImpl
       public void onAuthSuccess(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(18432);
-        ad.i(KindaFingerprintImpl.this.TAG, "face id auth success");
-        gp localgp = new gp();
-        localgp.CBz = true;
-        localgp.dlK = "";
-        localgp.dlL = "";
-        localgp.CBA = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).ctR();
+        ac.i(KindaFingerprintImpl.this.TAG, "face id auth success");
+        gt localgt = new gt();
+        localgt.DTX = true;
+        localgt.djs = "";
+        localgt.djt = "";
+        localgt.DTY = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class)).cHd();
         KindaFingerprintImpl localKindaFingerprintImpl = KindaFingerprintImpl.this;
         paramAnonymousInt2 = localKindaFingerprintImpl.identify_num + 1;
         localKindaFingerprintImpl.identify_num = paramAnonymousInt2;
-        localgp.ApX = paramAnonymousInt2;
+        localgt.BIr = paramAnonymousInt2;
         try
         {
-          paramVoidBinaryI32Callback.call(localgp.toByteArray(), paramAnonymousInt1);
+          paramVoidBinaryI32Callback.call(localgt.toByteArray(), paramAnonymousInt1);
           AppMethodBeat.o(18432);
           return;
         }
@@ -360,7 +349,7 @@ public class KindaFingerprintImpl
         AppMethodBeat.o(18445);
         return;
       }
-      ad.e(this.TAG, "fingerprint loading error! KindaContext return null!!");
+      ac.e(this.TAG, "fingerprint loading error! KindaContext return null!!");
     }
     AppMethodBeat.o(18445);
   }
@@ -368,13 +357,13 @@ public class KindaFingerprintImpl
   public BioType supportBioType()
   {
     AppMethodBeat.i(18437);
-    if ((this.mgr != null) && (this.mgr.ctS()) && (!this.mgr.ctO()) && (this.mgr.ctN()))
+    if ((this.mgr != null) && (this.mgr.cHe()) && (!this.mgr.cHa()) && (this.mgr.cGZ()))
     {
       localBioType = BioType.FINGERPRINT;
       AppMethodBeat.o(18437);
       return localBioType;
     }
-    if ((this.mgr != null) && (this.mgr.cua()) && (!this.mgr.ctP()) && (this.mgr.ctQ()))
+    if ((this.mgr != null) && (this.mgr.cHm()) && (!this.mgr.cHb()) && (this.mgr.cHc()))
     {
       localBioType = BioType.FACEID;
       AppMethodBeat.o(18437);

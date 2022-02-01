@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public LinkedList<String> mAM;
-  public LinkedList<Long> mAN;
+  public LinkedList<String> ncN;
+  public LinkedList<Long> ncO;
   
   public j()
   {
     AppMethodBeat.i(22112);
-    this.mAM = new LinkedList();
-    this.mAN = new LinkedList();
+    this.ncN = new LinkedList();
+    this.ncO = new LinkedList();
     AppMethodBeat.o(22112);
   }
   
@@ -23,27 +23,27 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 1, this.mAM);
-      paramVarArgs.e(2, 3, this.mAN);
+      paramVarArgs.e(1, 1, this.ncN);
+      paramVarArgs.e(2, 3, this.ncO);
       AppMethodBeat.o(22113);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 1, this.mAM);
-      int i = f.a.a.a.c(2, 3, this.mAN);
+      paramInt = f.a.a.a.c(1, 1, this.ncN);
+      int i = f.a.a.a.c(2, 3, this.ncO);
       AppMethodBeat.o(22113);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.mAM.clear();
-      this.mAN.clear();
+      this.ncN.clear();
+      this.ncO.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
       AppMethodBeat.o(22113);
@@ -59,11 +59,11 @@ public final class j
         AppMethodBeat.o(22113);
         return -1;
       case 1: 
-        localj.mAM.add(locala.KhF.readString());
+        localj.ncN.add(locala.LVo.readString());
         AppMethodBeat.o(22113);
         return 0;
       }
-      localj.mAN.add(Long.valueOf(locala.KhF.xT()));
+      localj.ncO.add(Long.valueOf(locala.LVo.xG()));
       AppMethodBeat.o(22113);
       return 0;
     }
@@ -73,7 +73,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.j
  * JD-Core Version:    0.7.0.1
  */

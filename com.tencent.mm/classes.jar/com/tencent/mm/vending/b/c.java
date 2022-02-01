@@ -17,20 +17,20 @@ public abstract class c<_Callback>
   
   private void b(final com.tencent.mm.vending.j.a parama)
   {
-    Iterator localIterator = fhi().iterator();
+    Iterator localIterator = fxk().iterator();
     while (localIterator.hasNext())
     {
       final b localb = (b)localIterator.next();
       if (localb != null)
       {
-        if (localb.cLA != null) {
-          this.HPJ.c(localb.cLA);
+        if (localb.cII != null) {
+          this.Jqe.c(localb.cII);
         }
         for (;;)
         {
-          this.HPJ.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.HPQ, true);
+          this.Jqe.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.Jql, true);
           break;
-          this.HPJ.c(d.fhs());
+          this.Jqe.c(d.fxu());
         }
       }
     }
@@ -52,7 +52,7 @@ public abstract class c<_Callback>
   
   public abstract void a(_Callback param_Callback, com.tencent.mm.vending.j.a parama);
   
-  public final b<_Callback> bv(_Callback param_Callback)
+  public final b<_Callback> bs(_Callback param_Callback)
   {
     return a(new b(param_Callback, this));
   }

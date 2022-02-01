@@ -1,43 +1,43 @@
 package com.tencent.luggage.bridge;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
 
 public final class o
 {
-  private s bZA;
-  n bZB;
-  public f bZC;
-  public p bZD;
-  public ConcurrentHashMap<String, l> bZE;
-  private ConcurrentHashMap<String, j> bZF;
-  private ConcurrentHashMap<Integer, h> bZG;
-  private AtomicInteger bZH;
+  public p bWA;
+  public ConcurrentHashMap<String, l> bWB;
+  private ConcurrentHashMap<String, j> bWC;
+  private ConcurrentHashMap<Integer, h> bWD;
+  private AtomicInteger bWE;
+  private s bWx;
+  n bWy;
+  public f bWz;
   
   public o(s params)
   {
     AppMethodBeat.i(140336);
-    this.bZE = new ConcurrentHashMap();
-    this.bZF = new ConcurrentHashMap();
-    this.bZG = new ConcurrentHashMap();
-    this.bZH = new AtomicInteger(1);
-    this.bZA = params;
-    this.bZB = new n(this);
-    this.bZC = new f(this.bZA);
-    this.bZD = new q(this);
-    this.bZA.addJavascriptInterface(new r(this.bZB), "_luggageBridgeNative");
+    this.bWB = new ConcurrentHashMap();
+    this.bWC = new ConcurrentHashMap();
+    this.bWD = new ConcurrentHashMap();
+    this.bWE = new AtomicInteger(1);
+    this.bWx = params;
+    this.bWy = new n(this);
+    this.bWz = new f(this.bWx);
+    this.bWA = new q(this);
+    this.bWx.addJavascriptInterface(new r(this.bWy), "_luggageBridgeNative");
     AppMethodBeat.o(140336);
   }
   
   private void a(i parami)
   {
     AppMethodBeat.i(140340);
-    if ((j)this.bZF.get(parami.bZq) == null)
+    if ((j)this.bWC.get(parami.bWn) == null)
     {
-      ad.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.bZq });
+      ac.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.bWn });
       AppMethodBeat.o(140340);
       return;
     }
@@ -45,7 +45,7 @@ public final class o
   }
   
   /* Error */
-  public final void AK()
+  public final void Ao()
   {
     // Byte code:
     //   0: ldc 114
@@ -60,7 +60,7 @@ public final class o
     //   21: new 119	java/io/InputStreamReader
     //   24: dup
     //   25: aload_0
-    //   26: getfield 50	com/tencent/luggage/bridge/o:bZA	Lcom/tencent/luggage/bridge/s;
+    //   26: getfield 50	com/tencent/luggage/bridge/o:bWx	Lcom/tencent/luggage/bridge/s;
     //   29: invokeinterface 123 1 0
     //   34: invokevirtual 129	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   37: ldc 131
@@ -95,7 +95,7 @@ public final class o
     //   87: iconst_0
     //   88: aload 4
     //   90: aastore
-    //   91: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_3
     //   95: ifnull +7 -> 102
     //   98: aload_3
@@ -106,7 +106,7 @@ public final class o
     //   108: aload_3
     //   109: invokevirtual 153	java/io/InputStreamReader:close	()V
     //   112: aload_0
-    //   113: getfield 50	com/tencent/luggage/bridge/o:bZA	Lcom/tencent/luggage/bridge/s;
+    //   113: getfield 50	com/tencent/luggage/bridge/o:bWx	Lcom/tencent/luggage/bridge/s;
     //   116: aload 4
     //   118: invokevirtual 157	java/io/StringWriter:toString	()Ljava/lang/String;
     //   121: invokeinterface 161 2 0
@@ -122,7 +122,7 @@ public final class o
     //   142: iconst_0
     //   143: aload_2
     //   144: aastore
-    //   145: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   145: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   148: goto -36 -> 112
     //   151: astore_2
     //   152: ldc 102
@@ -133,7 +133,7 @@ public final class o
     //   161: iconst_0
     //   162: aload_2
     //   163: aastore
-    //   164: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   164: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   167: ldc 114
     //   169: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   172: return
@@ -157,7 +157,7 @@ public final class o
     //   201: iconst_0
     //   202: aload_2
     //   203: aastore
-    //   204: invokestatic 110	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   204: invokestatic 110	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   207: goto -23 -> 184
     //   210: astore_3
     //   211: goto -35 -> 176
@@ -203,26 +203,26 @@ public final class o
     {
       try
       {
-        paramm = new k(this.bZC, paramm, paramBoolean);
-        l locall = (l)this.bZE.get(paramm.bZn);
+        paramm = new k(this.bWz, paramm, paramBoolean);
+        l locall = (l)this.bWB.get(paramm.bWk);
         if (locall != null)
         {
           locall.a(paramm);
-          if (!paramm.bZt) {
+          if (!paramm.bWq) {
             break;
           }
-          paramm = paramm.AJ();
+          paramm = paramm.An();
           AppMethodBeat.o(140338);
           return paramm;
         }
       }
       catch (JSONException paramm)
       {
-        ad.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
+        ac.e("LuggageBridge", "inflate Js2JavaInvokeContext failed: %s", new Object[] { paramm });
         AppMethodBeat.o(140338);
         return null;
       }
-      ad.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.bZn });
+      ac.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.bWk });
       paramm.a("system:function_not_exist", null);
     }
     AppMethodBeat.o(140338);
@@ -235,14 +235,14 @@ public final class o
     try
     {
       paramm = new i(paramm);
-      ad.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.bZq });
+      ac.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.bWn });
       a(paramm);
       AppMethodBeat.o(140339);
       return;
     }
     catch (JSONException paramm)
     {
-      ad.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      ac.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
       AppMethodBeat.o(140339);
     }
   }
@@ -253,29 +253,29 @@ public final class o
     try
     {
       paramm = new g(paramm);
-      if ((h)this.bZG.get(Integer.valueOf(paramm.bZo)) == null)
+      if ((h)this.bWD.get(Integer.valueOf(paramm.bWl)) == null)
       {
-        ad.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.bZo) });
+        ac.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.bWl) });
         AppMethodBeat.o(140341);
         return;
       }
     }
     catch (JSONException paramm)
     {
-      ad.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
+      ac.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramm });
       AppMethodBeat.o(140341);
       return;
     }
-    if (!paramm.bZp) {
-      this.bZG.remove(Integer.valueOf(paramm.bZo));
+    if (!paramm.bWm) {
+      this.bWD.remove(Integer.valueOf(paramm.bWl));
     }
     AppMethodBeat.o(140341);
   }
   
-  public final void bM(String paramString)
+  public final void bC(String paramString)
   {
     AppMethodBeat.i(140337);
-    this.bZA.bO(paramString);
+    this.bWx.bE(paramString);
     AppMethodBeat.o(140337);
   }
 }

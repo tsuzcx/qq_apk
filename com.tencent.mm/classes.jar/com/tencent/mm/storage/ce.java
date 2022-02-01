@@ -1,84 +1,82 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class ce
   extends j<cd>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   public e db;
   
   static
   {
-    AppMethodBeat.i(148677);
-    SQL_CREATE = new String[] { j.getCreateSQLs(cd.info, "VoiceTransText") };
-    AppMethodBeat.o(148677);
+    AppMethodBeat.i(32891);
+    SQL_CREATE = new String[] { j.getCreateSQLs(cd.info, "UserOpenIdInApp") };
+    AppMethodBeat.o(32891);
   }
   
   public ce(e parame)
   {
-    this(parame, cd.info, "VoiceTransText");
-  }
-  
-  private ce(e parame, c.a parama, String paramString)
-  {
-    super(parame, parama, paramString, null);
+    super(parame, cd.info, "UserOpenIdInApp", null);
+    AppMethodBeat.i(32887);
     this.db = parame;
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
+    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
+    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
+    AppMethodBeat.o(32887);
   }
   
   public final boolean a(cd paramcd)
   {
-    AppMethodBeat.i(148674);
-    if (paramcd == null)
+    AppMethodBeat.i(32889);
+    if ((paramcd == null) || (bs.isNullOrNil(paramcd.field_appId)) || (bs.isNullOrNil(paramcd.field_openId)) || (bs.isNullOrNil(paramcd.field_username)))
     {
-      AppMethodBeat.o(148674);
+      ac.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
+      AppMethodBeat.o(32889);
       return false;
     }
-    paramcd = paramcd.convertTo();
-    if (this.db.replace("VoiceTransText", "msgId", paramcd) >= 0L)
+    ContentValues localContentValues = paramcd.convertTo();
+    if (this.db.replace("UserOpenIdInApp", cd.info.GvG, localContentValues) > 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(148674);
-      return true;
+      ac.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { paramcd.field_appId, paramcd.field_username, Boolean.valueOf(bool) });
+      AppMethodBeat.o(32889);
+      return bool;
     }
-    AppMethodBeat.o(148674);
-    return false;
   }
   
-  public final cd aJn(String paramString)
+  public final cd aOH(String paramString)
   {
-    AppMethodBeat.i(148675);
-    if (bt.isNullOrNil(paramString))
+    AppMethodBeat.i(32888);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(148675);
+      AppMethodBeat.o(32888);
       return null;
     }
-    cd localcd = new cd();
-    paramString = this.db.a("VoiceTransText", null, "cmsgId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localcd.convertFrom(paramString);
+    Cursor localCursor = this.db.a("UserOpenIdInApp", null, "openId=?", new String[] { bs.aLh(paramString) }, null, null, null, 2);
+    if (!localCursor.moveToFirst())
+    {
+      ac.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(32888);
+      return null;
     }
-    paramString.close();
-    AppMethodBeat.o(148675);
-    return localcd;
+    paramString = new cd();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(32888);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.ce
  * JD-Core Version:    0.7.0.1
  */

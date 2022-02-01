@@ -7,11 +7,15 @@ import android.text.InputFilter;
 import android.text.Layout;
 import android.text.Layout.Alignment;
 import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.MetaKeyKeyListener;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -19,49 +23,90 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.x.d.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.w.e;
+import com.tencent.mm.plugin.appbrand.jsapi.w.e.f;
+import com.tencent.mm.plugin.appbrand.widget.base.d;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class q
   extends y
 {
-  private float kvF;
-  private com.tencent.mm.plugin.appbrand.widget.g.a lQh;
-  private final InputFilter mcj;
-  private float mck;
-  private float mcl;
-  private float mcm;
-  private boolean mcn;
-  private MotionEvent mco;
-  private boolean mcp;
-  final ag<q> mcq;
+  private float kWT;
+  private final InputFilter mEh;
+  private float mEi;
+  private float mEj;
+  private float mEk;
+  private boolean mEl;
+  private MotionEvent mEm;
+  private boolean mEn;
+  final ag<q> mEo;
+  private com.tencent.mm.plugin.appbrand.widget.g.a msk;
   
   public q(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136436);
-    this.mcj = new q.4(this);
-    this.mck = 0.0F;
-    this.mcl = 1.2F;
-    this.mcm = getTextSize();
-    this.mcn = false;
-    this.mcp = false;
-    this.mcq = new ag(this);
+    this.mEh = new InputFilter()
+    {
+      public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
+      {
+        AppMethodBeat.i(136435);
+        if ((!TextUtils.isEmpty(paramAnonymousCharSequence)) && (q.a(q.this) != null))
+        {
+          if ((paramAnonymousCharSequence instanceof Spannable)) {}
+          for (paramAnonymousCharSequence = (Spannable)paramAnonymousCharSequence;; paramAnonymousCharSequence = new SpannableStringBuilder(paramAnonymousCharSequence))
+          {
+            paramAnonymousCharSequence.setSpan(q.a(q.this), 0, paramAnonymousCharSequence.length(), 18);
+            AppMethodBeat.o(136435);
+            return paramAnonymousCharSequence;
+          }
+        }
+        AppMethodBeat.o(136435);
+        return null;
+      }
+    };
+    this.mEi = 0.0F;
+    this.mEj = 1.2F;
+    this.mEk = getTextSize();
+    this.mEl = false;
+    this.mEn = false;
+    this.mEo = new ag(this);
     super.setSingleLine(false);
     super.setLineSpacing(0.0F, 1.0F);
     super.setVerticalScrollbarPosition(2);
-    super.setSpannableFactory(new q.1(this));
+    super.setSpannableFactory(new Spannable.Factory()
+    {
+      public final Spannable newSpannable(CharSequence paramAnonymousCharSequence)
+      {
+        AppMethodBeat.i(136432);
+        paramAnonymousCharSequence = super.newSpannable(paramAnonymousCharSequence);
+        if ((q.a(q.this) != null) && (!TextUtils.isEmpty(paramAnonymousCharSequence))) {
+          paramAnonymousCharSequence.setSpan(q.a(q.this), 0, paramAnonymousCharSequence.length(), 18);
+        }
+        AppMethodBeat.o(136432);
+        return paramAnonymousCharSequence;
+      }
+    });
     super.a(new ab.c()
     {
-      public final void btr()
+      public final void bAr()
       {
         AppMethodBeat.i(136433);
-        q.this.btn();
+        q.this.bAn();
         AppMethodBeat.o(136433);
       }
     });
-    super.setOnLongClickListener(new q.3(this));
-    this.kvF = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    super.setOnLongClickListener(new View.OnLongClickListener()
+    {
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(136434);
+        boolean bool = q.this.bym();
+        AppMethodBeat.o(136434);
+        return bool;
+      }
+    });
+    this.kWT = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     setAutoHeight(false);
     b(0.0F, false);
     AppMethodBeat.o(136436);
@@ -72,21 +117,21 @@ public final class q
     AppMethodBeat.i(136443);
     float f = paramFloat;
     if (paramFloat <= 0.0F) {
-      f = this.mcl * this.mcm + this.mck;
+      f = this.mEj * this.mEk + this.mEi;
     }
-    if ((this.lQh != null) && (!this.lQh.aI(f)))
+    if ((this.msk != null) && (!this.msk.aM(f)))
     {
       AppMethodBeat.o(136443);
       return;
     }
-    if (this.lQh == null) {
-      this.lQh = new com.tencent.mm.plugin.appbrand.widget.g.a(f);
+    if (this.msk == null) {
+      this.msk = new com.tencent.mm.plugin.appbrand.widget.g.a(f);
     }
     while (!paramBoolean)
     {
       AppMethodBeat.o(136443);
       return;
-      this.lQh.setHeight(f);
+      this.msk.setHeight(f);
     }
     if (hasFocus())
     {
@@ -94,11 +139,11 @@ public final class q
       AppMethodBeat.o(136443);
       return;
     }
-    btK();
+    bAJ();
     AppMethodBeat.o(136443);
   }
   
-  public final void H(float paramFloat1, float paramFloat2)
+  public final void K(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(136459);
     if (!isEnabled())
@@ -106,7 +151,7 @@ public final class q
       AppMethodBeat.o(136459);
       return;
     }
-    if (brm())
+    if (bym())
     {
       int i = aj.a.a(this, getScrollX() + paramFloat1, getScrollY() + paramFloat2);
       if (i >= 0) {
@@ -117,27 +162,10 @@ public final class q
     AppMethodBeat.o(136459);
   }
   
-  public final boolean brm()
-  {
-    AppMethodBeat.i(136453);
-    if (!this.mcn)
-    {
-      btG();
-      getMeasuredHeight();
-    }
-    if ((!isFocusable()) && (!bts()))
-    {
-      AppMethodBeat.o(136453);
-      return true;
-    }
-    AppMethodBeat.o(136453);
-    return false;
-  }
-  
-  protected final void btn()
+  protected final void bAn()
   {
     AppMethodBeat.i(136439);
-    if (this.mcn)
+    if (this.mEl)
     {
       if (getMeasuredHeight() > getMaxHeight())
       {
@@ -152,29 +180,46 @@ public final class q
     AppMethodBeat.o(136439);
   }
   
-  public final boolean bto()
+  public final boolean bAo()
   {
     return true;
   }
   
-  public final boolean btp()
+  public final boolean bAp()
   {
     return false;
   }
   
-  public final void btq()
+  public final void bAq()
   {
     AppMethodBeat.i(136452);
-    aj.dl(this).restartInput(this);
+    aj.dn(this).restartInput(this);
     AppMethodBeat.o(136452);
+  }
+  
+  public final boolean bym()
+  {
+    AppMethodBeat.i(136453);
+    if (!this.mEl)
+    {
+      bAF();
+      getMeasuredHeight();
+    }
+    if ((!isFocusable()) && (!bAs()))
+    {
+      AppMethodBeat.o(136453);
+      return true;
+    }
+    AppMethodBeat.o(136453);
+    return false;
   }
   
   final Editable c(Editable paramEditable)
   {
     AppMethodBeat.i(136437);
     paramEditable = super.c(paramEditable);
-    if ((this.lQh != null) && (!TextUtils.isEmpty(paramEditable))) {
-      paramEditable.setSpan(this.lQh, 0, paramEditable.length(), 18);
+    if ((this.msk != null) && (!TextUtils.isEmpty(paramEditable))) {
+      paramEditable.setSpan(this.msk, 0, paramEditable.length(), 18);
     }
     AppMethodBeat.o(136437);
     return paramEditable;
@@ -183,7 +228,7 @@ public final class q
   public final boolean canScrollVertically(int paramInt)
   {
     AppMethodBeat.i(136457);
-    if (btG() <= getHeight())
+    if (bAF() <= getHeight())
     {
       AppMethodBeat.o(136457);
       return false;
@@ -196,7 +241,7 @@ public final class q
   public final View getInputPanel()
   {
     AppMethodBeat.i(136451);
-    w localw = w.dg(this);
+    w localw = w.di(this);
     AppMethodBeat.o(136451);
     return localw;
   }
@@ -204,9 +249,9 @@ public final class q
   public final int getLineHeight()
   {
     AppMethodBeat.i(136447);
-    if (this.lQh != null)
+    if (this.msk != null)
     {
-      i = this.lQh.height;
+      i = this.msk.height;
       AppMethodBeat.o(136447);
       return i;
     }
@@ -252,20 +297,20 @@ public final class q
     label472:
     label499:
     float f3;
-    if ((brm()) && ((getParent() instanceof com.tencent.mm.plugin.appbrand.widget.base.d)))
+    if ((bym()) && ((getParent() instanceof d)))
     {
-      if ((paramMotionEvent.getActionMasked() != 0) || (((com.tencent.mm.plugin.appbrand.widget.base.d)getParent()).N(paramMotionEvent)))
+      if ((paramMotionEvent.getActionMasked() != 0) || (((d)getParent()).L(paramMotionEvent)))
       {
-        ag localag = this.mcq;
+        ag localag = this.mEo;
         com.tencent.mm.plugin.appbrand.widget.base.a.a(localag.TAG, "processTouchEvent", paramMotionEvent);
-        Object localObject2 = localag.mdO;
+        Object localObject2 = localag.mFN;
         i = paramMotionEvent.getActionIndex();
         f1 = paramMotionEvent.getX(i);
         f2 = paramMotionEvent.getY(i);
-        if ((paramMotionEvent.getActionMasked() != 0) && (localag.mdR == null))
+        if ((paramMotionEvent.getActionMasked() != 0) && (localag.mFQ == null))
         {
-          ad.v(localag.TAG, "[textscroll] no pointer down before, just return");
-          localag.btO();
+          ac.v(localag.TAG, "[textscroll] no pointer down before, just return");
+          localag.bAN();
           AppMethodBeat.o(136458);
           return false;
         }
@@ -275,8 +320,8 @@ public final class q
         switch (paramMotionEvent.getActionMasked())
         {
         default: 
-          localObject1 = localag.mdO;
-          localObject3 = localag.mdO.getText();
+          localObject1 = localag.mFN;
+          localObject3 = localag.mFN.getText();
           if ((((TextView)localObject1).canScrollVertically(-1)) || (((TextView)localObject1).canScrollVertically(1))) {
             switch (paramMotionEvent.getActionMasked())
             {
@@ -293,27 +338,27 @@ public final class q
             com.tencent.mm.plugin.appbrand.widget.base.a.a(localag.TAG, "[textscroll] handled | ".concat(String.valueOf(bool)), paramMotionEvent);
             AppMethodBeat.o(136458);
             return bool;
-            ad.v(localag.TAG, "[apptouch] ACTION_UP, pointerDown %B", new Object[] { Boolean.valueOf(localag.mdS) });
-            if ((localag.mdS) && (localag.mdR != null))
+            ac.v(localag.TAG, "[apptouch] ACTION_UP, pointerDown %B", new Object[] { Boolean.valueOf(localag.mFR) });
+            if ((localag.mFR) && (localag.mFQ != null))
             {
-              localObject1 = com.tencent.mm.plugin.appbrand.jsapi.x.d.cB(localag.mdO);
-              if ((localag.mdQ != null) && (Math.abs(localag.mdQ.x - ((d.f)localObject1).x) <= 1.0F) && (Math.abs(localag.mdQ.y - ((d.f)localObject1).y) <= 1.0F)) {
+              localObject1 = e.cD(localag.mFN);
+              if ((localag.mFP != null) && (Math.abs(localag.mFP.x - ((e.f)localObject1).x) <= 1.0F) && (Math.abs(localag.mFP.y - ((e.f)localObject1).y) <= 1.0F)) {
                 break label398;
               }
-              ad.v(localag.TAG, "[apptouch] check tap on ACTION_UP, but view has moved.");
+              ac.v(localag.TAG, "[apptouch] check tap on ACTION_UP, but view has moved.");
             }
             for (;;)
             {
-              localag.btO();
+              localag.bAN();
               break;
-              if (!localag.a(localag.mdR, paramMotionEvent)) {
-                ad.v(localag.TAG, "[apptouch] check tap on ACTION_UP exceed tap scope");
+              if (!localag.a(localag.mFQ, paramMotionEvent)) {
+                ac.v(localag.TAG, "[apptouch] check tap on ACTION_UP exceed tap scope");
               } else {
-                ((ab)localObject2).H(f1, f2);
+                ((ab)localObject2).K(f1, f2);
               }
             }
-            localag.mdR = MotionEvent.obtain(paramMotionEvent);
-            localag.mdQ = com.tencent.mm.plugin.appbrand.jsapi.x.d.cB((View)localObject2);
+            localag.mFQ = MotionEvent.obtain(paramMotionEvent);
+            localag.mFP = e.cD((View)localObject2);
             if (localObject2 != null)
             {
               localObject1 = ((View)localObject2).getParent();
@@ -321,11 +366,11 @@ public final class q
                 if (((ViewGroup)localObject1).shouldDelayChildPressedState())
                 {
                   i = 1;
-                  ((EditText)localObject2).removeCallbacks(localag.mdT);
+                  ((EditText)localObject2).removeCallbacks(localag.mFS);
                   if (i == 0) {
                     break label554;
                   }
-                  ((EditText)localObject2).postDelayed(localag.mdT, ViewConfiguration.getTapTimeout());
+                  ((EditText)localObject2).postDelayed(localag.mFS, ViewConfiguration.getTapTimeout());
                 }
               }
             }
@@ -338,20 +383,20 @@ public final class q
               i = 0;
               break label499;
               label554:
-              localag.mdT.run();
+              localag.mFS.run();
             }
-            localag.btO();
+            localag.bAN();
             break;
-            f3 = localag.mdP;
+            f3 = localag.mFO;
             if ((f1 >= -f3) && (f2 >= -f3) && (f1 < ((View)localObject2).getWidth() + f3) && (f2 < ((View)localObject2).getHeight() + f3)) {}
             for (i = 1;; i = 0)
             {
-              if ((i != 0) && (localag.a(localag.mdR, paramMotionEvent))) {
+              if ((i != 0) && (localag.a(localag.mFQ, paramMotionEvent))) {
                 break label685;
               }
-              localag.mdS = false;
-              ((EditText)localObject2).removeCallbacks(localag.mdT);
-              ((EditText)localObject2).removeCallbacks(localag.mdU);
+              localag.mFR = false;
+              ((EditText)localObject2).removeCallbacks(localag.mFS);
+              ((EditText)localObject2).removeCallbacks(localag.mFT);
               break;
             }
             label685:
@@ -368,7 +413,7 @@ public final class q
             i = 1;
             continue;
             localObject1 = ai.h((TextView)localObject1);
-            if ((localObject1 != null) && (localObject1.length > 0) && (localObject1[0].meg))
+            if ((localObject1 != null) && (localObject1.length > 0) && (localObject1[0].mGf))
             {
               i = 1;
             }
@@ -380,17 +425,17 @@ public final class q
               if (localObject2.length <= 0) {
                 break label236;
               }
-              if (!localObject2[0].mef)
+              if (!localObject2[0].mGe)
               {
                 i = ViewConfiguration.get(((TextView)localObject1).getContext()).getScaledTouchSlop();
                 if ((Math.abs(paramMotionEvent.getX() - localObject2[0].mX) >= i) || (Math.abs(paramMotionEvent.getY() - localObject2[0].mY) >= i)) {
-                  localObject2[0].mef = true;
+                  localObject2[0].mGe = true;
                 }
               }
-              if (!localObject2[0].mef) {
+              if (!localObject2[0].mGe) {
                 break label236;
               }
-              localObject2[0].meg = true;
+              localObject2[0].mGf = true;
               if (((paramMotionEvent.getMetaState() & 0x1) != 0) || (MetaKeyKeyListener.getMetaState((CharSequence)localObject3, 1) == 1) || (MetaKeyKeyListener.getMetaState((CharSequence)localObject3, 2048) != 0))
               {
                 i = 1;
@@ -404,11 +449,11 @@ public final class q
               {
                 localObject2[0].mX = paramMotionEvent.getX();
                 localObject2[0].mY = paramMotionEvent.getY();
-                if (!localObject2[0].meh) {
+                if (!localObject2[0].mGg) {
                   break label1100;
                 }
-                localObject2[0].meh = false;
-                localObject2[0].mef = false;
+                localObject2[0].mGg = false;
+                localObject2[0].mGe = false;
                 break;
                 i = 0;
                 break label983;
@@ -452,7 +497,7 @@ public final class q
                   break label1394;
                 }
                 ((TextView)localObject1).cancelLongPress();
-                localObject2[0].atZ = true;
+                localObject2[0].auU = true;
                 i = 1;
                 break;
                 i = 0;
@@ -471,7 +516,7 @@ public final class q
                 }
               }
               label1394:
-              if (!localObject2[0].atZ) {
+              if (!localObject2[0].auU) {
                 break label1410;
               }
               i = 1;
@@ -492,13 +537,13 @@ public final class q
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(136458);
       return bool;
-      this.mcp = false;
-      if (this.mco != null)
+      this.mEn = false;
+      if (this.mEm != null)
       {
-        this.mco.recycle();
-        this.mco = null;
+        this.mEm.recycle();
+        this.mEm = null;
       }
-      if (this.mcp)
+      if (this.mEn)
       {
         i = aj.a.a(this, paramMotionEvent.getX(paramMotionEvent.getActionIndex()), paramMotionEvent.getY(paramMotionEvent.getActionIndex()));
         if (i >= 0) {
@@ -509,20 +554,20 @@ public final class q
       {
         AppMethodBeat.o(136458);
         return true;
-        this.mco = MotionEvent.obtain(paramMotionEvent);
-        this.mcp = true;
+        this.mEm = MotionEvent.obtain(paramMotionEvent);
+        this.mEn = true;
         continue;
-        if (this.mcp)
+        if (this.mEn)
         {
-          f1 = this.mco.getX(this.mco.getActionIndex());
-          f2 = this.mco.getY(this.mco.getActionIndex());
+          f1 = this.mEm.getX(this.mEm.getActionIndex());
+          f2 = this.mEm.getY(this.mEm.getActionIndex());
           f3 = paramMotionEvent.getX(paramMotionEvent.getActionIndex());
           float f4 = paramMotionEvent.getY(paramMotionEvent.getActionIndex());
-          if ((Math.abs(f1 - f3) > this.kvF) || (Math.abs(f2 - f4) > this.kvF))
+          if ((Math.abs(f1 - f3) > this.kWT) || (Math.abs(f2 - f4) > this.kWT))
           {
             cancelLongPress();
             setPressed(false);
-            this.mcp = false;
+            this.mEn = false;
           }
         }
       }
@@ -554,8 +599,8 @@ public final class q
   public final void setAutoHeight(boolean paramBoolean)
   {
     AppMethodBeat.i(136438);
-    this.mcn = paramBoolean;
-    if (!this.mcn) {}
+    this.mEl = paramBoolean;
+    if (!this.mEl) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       setVerticalScrollBarEnabled(paramBoolean);
@@ -569,7 +614,7 @@ public final class q
     int i = 0;
     AppMethodBeat.i(136442);
     InputFilter[] arrayOfInputFilter = paramArrayOfInputFilter;
-    if (this.mcj != null)
+    if (this.mEh != null)
     {
       arrayOfInputFilter = paramArrayOfInputFilter;
       if (paramArrayOfInputFilter == null) {
@@ -581,7 +626,7 @@ public final class q
         paramArrayOfInputFilter[i] = arrayOfInputFilter[i];
         i += 1;
       }
-      paramArrayOfInputFilter[i] = this.mcj;
+      paramArrayOfInputFilter[i] = this.mEh;
       arrayOfInputFilter = paramArrayOfInputFilter;
     }
     super.setFilters(arrayOfInputFilter);
@@ -617,15 +662,15 @@ public final class q
   public final void setLineSpace(float paramFloat)
   {
     AppMethodBeat.i(136449);
-    setLineSpacing(paramFloat, this.mcl);
+    setLineSpacing(paramFloat, this.mEj);
     AppMethodBeat.o(136449);
   }
   
   public final void setLineSpacing(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(136448);
-    this.mck = paramFloat1;
-    this.mcl = paramFloat2;
+    this.mEi = paramFloat1;
+    this.mEj = paramFloat2;
     b(0.0F, true);
     AppMethodBeat.o(136448);
   }
@@ -636,14 +681,14 @@ public final class q
   {
     AppMethodBeat.i(136446);
     super.setTextSize(paramInt, paramFloat);
-    this.mcm = TypedValue.applyDimension(paramInt, paramFloat, getResources().getDisplayMetrics());
+    this.mEk = TypedValue.applyDimension(paramInt, paramFloat, getResources().getDisplayMetrics());
     b(0.0F, true);
     AppMethodBeat.o(136446);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.q
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import java.io.Writer;
 
 public abstract class l
 {
-  public static l aPd = new l()
+  public static l aPT = new l()
   {
     final i a(Writer paramAnonymousWriter)
     {
@@ -15,7 +15,7 @@ public abstract class l
       return paramAnonymousWriter;
     }
   };
-  public static l aPe = k.dF(2);
+  public static l aPU = k.dE(2);
   
   abstract i a(Writer paramWriter);
 }

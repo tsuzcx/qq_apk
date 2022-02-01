@@ -12,9 +12,9 @@ public class TimePoint
   implements Parcelable
 {
   public static final Parcelable.Creator<TimePoint> CREATOR;
-  final AtomicInteger jaR;
-  final AtomicLong jaS;
-  final AtomicReference<TimePoint> jaT;
+  final AtomicInteger jBe;
+  final AtomicLong jBf;
+  final AtomicReference<TimePoint> jBg;
   String name;
   
   static
@@ -27,9 +27,9 @@ public class TimePoint
   TimePoint()
   {
     AppMethodBeat.i(146126);
-    this.jaR = new AtomicInteger();
-    this.jaS = new AtomicLong();
-    this.jaT = new AtomicReference();
+    this.jBe = new AtomicInteger();
+    this.jBf = new AtomicLong();
+    this.jBg = new AtomicReference();
     this.name = "";
     AppMethodBeat.o(146126);
   }
@@ -37,11 +37,11 @@ public class TimePoint
   public TimePoint(String paramString, long paramLong)
   {
     AppMethodBeat.i(146127);
-    this.jaR = new AtomicInteger();
-    this.jaS = new AtomicLong();
-    this.jaT = new AtomicReference();
+    this.jBe = new AtomicInteger();
+    this.jBf = new AtomicLong();
+    this.jBg = new AtomicReference();
     this.name = paramString;
-    this.jaS.set(paramLong);
+    this.jBf.set(paramLong);
     AppMethodBeat.o(146127);
   }
   
@@ -54,9 +54,9 @@ public class TimePoint
   {
     AppMethodBeat.i(146128);
     paramParcel.writeString(this.name);
-    paramParcel.writeLong(this.jaS.get());
-    paramParcel.writeInt(this.jaR.get());
-    paramParcel.writeParcelable((Parcelable)this.jaT.get(), paramInt);
+    paramParcel.writeLong(this.jBf.get());
+    paramParcel.writeInt(this.jBe.get());
+    paramParcel.writeParcelable((Parcelable)this.jBg.get(), paramInt);
     AppMethodBeat.o(146128);
   }
 }

@@ -1,93 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class ddt
-  extends cld
+  extends com.tencent.mm.bw.a
 {
-  public String Evs;
+  public String FNt;
+  public String FNu;
+  public String FNv;
+  public String FNw;
+  public String FNx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32472);
+    AppMethodBeat.i(101531);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
+      if (this.FNt == null)
       {
-        paramVarArgs.kX(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: videoFileMD5");
+        AppMethodBeat.o(101531);
+        throw paramVarArgs;
       }
-      if (this.Evs != null) {
-        paramVarArgs.d(2, this.Evs);
+      if (this.FNt != null) {
+        paramVarArgs.d(1, this.FNt);
       }
-      AppMethodBeat.o(32472);
+      if (this.FNu != null) {
+        paramVarArgs.d(2, this.FNu);
+      }
+      if (this.FNv != null) {
+        paramVarArgs.d(3, this.FNv);
+      }
+      if (this.FNw != null) {
+        paramVarArgs.d(4, this.FNw);
+      }
+      if (this.FNx != null) {
+        paramVarArgs.d(5, this.FNx);
+      }
+      AppMethodBeat.o(101531);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label378;
+      if (this.FNt == null) {
+        break label502;
       }
     }
-    label378:
-    for (paramInt = f.a.a.a.kW(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label502:
+    for (int i = f.a.a.b.b.a.e(1, this.FNt) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Evs != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Evs);
+      paramInt = i;
+      if (this.FNu != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FNu);
       }
-      AppMethodBeat.o(32472);
+      i = paramInt;
+      if (this.FNv != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FNv);
+      }
+      paramInt = i;
+      if (this.FNw != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FNw);
+      }
+      i = paramInt;
+      if (this.FNx != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FNx);
+      }
+      AppMethodBeat.o(101531);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cld.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cld.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(32472);
+        if (this.FNt == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: videoFileMD5");
+          AppMethodBeat.o(101531);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(101531);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         ddt localddt = (ddt)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32472);
+          AppMethodBeat.o(101531);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localddt.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32472);
+          localddt.FNt = locala.LVo.readString();
+          AppMethodBeat.o(101531);
+          return 0;
+        case 2: 
+          localddt.FNu = locala.LVo.readString();
+          AppMethodBeat.o(101531);
+          return 0;
+        case 3: 
+          localddt.FNv = locala.LVo.readString();
+          AppMethodBeat.o(101531);
+          return 0;
+        case 4: 
+          localddt.FNw = locala.LVo.readString();
+          AppMethodBeat.o(101531);
           return 0;
         }
-        localddt.Evs = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(32472);
+        localddt.FNx = locala.LVo.readString();
+        AppMethodBeat.o(101531);
         return 0;
       }
-      AppMethodBeat.o(32472);
+      AppMethodBeat.o(101531);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ddt
  * JD-Core Version:    0.7.0.1
  */

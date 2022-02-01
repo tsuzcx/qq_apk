@@ -13,12 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.bew;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bio;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import com.tencent.mm.wallet_core.ui.e;
@@ -28,19 +28,19 @@ import java.io.IOException;
 public class WalletLqtSaveFetchFinishUI
   extends WalletBaseUI
 {
-  private int fOf;
-  private ViewGroup nVK;
-  private Button tLH;
-  private TextView zLi;
-  private WalletTextView zLj;
-  private TextView zLk;
-  private TextView zLl;
-  private bew zLm;
-  private CdnImageView zLn;
-  private TextView zLo;
-  private TextView zLp;
-  private LinearLayout zLq;
-  private ViewGroup zLr;
+  private TextView BdA;
+  private bio BdB;
+  private CdnImageView BdC;
+  private TextView BdD;
+  private TextView BdE;
+  private LinearLayout BdF;
+  private ViewGroup BdG;
+  private TextView Bdx;
+  private WalletTextView Bdy;
+  private TextView Bdz;
+  private int fRQ;
+  private ViewGroup ozf;
+  private Button uUl;
   
   public int getForceOrientation()
   {
@@ -62,18 +62,18 @@ public class WalletLqtSaveFetchFinishUI
     setActionbarColor(getResources().getColor(2131101179));
     hideTitleView();
     enableBackMenu(false);
-    this.nVK = ((ViewGroup)findViewById(2131301989));
-    this.zLi = ((TextView)findViewById(2131305530));
-    this.zLj = ((WalletTextView)findViewById(2131296664));
-    this.tLH = ((Button)findViewById(2131300102));
-    this.zLk = ((TextView)findViewById(2131303509));
-    this.zLl = ((TextView)findViewById(2131306212));
-    this.zLn = ((CdnImageView)findViewById(2131297442));
-    this.zLo = ((TextView)findViewById(2131297443));
-    this.zLp = ((TextView)findViewById(2131297441));
-    this.zLq = ((LinearLayout)findViewById(2131297452));
-    this.zLr = ((ViewGroup)findViewById(2131300101));
-    this.fOf = getIntent().getIntExtra("entrance_type", 0);
+    this.ozf = ((ViewGroup)findViewById(2131301989));
+    this.Bdx = ((TextView)findViewById(2131305530));
+    this.Bdy = ((WalletTextView)findViewById(2131296664));
+    this.uUl = ((Button)findViewById(2131300102));
+    this.Bdz = ((TextView)findViewById(2131303509));
+    this.BdA = ((TextView)findViewById(2131306212));
+    this.BdC = ((CdnImageView)findViewById(2131297442));
+    this.BdD = ((TextView)findViewById(2131297443));
+    this.BdE = ((TextView)findViewById(2131297441));
+    this.BdF = ((LinearLayout)findViewById(2131297452));
+    this.BdG = ((ViewGroup)findViewById(2131300101));
+    this.fRQ = getIntent().getIntExtra("entrance_type", 0);
     int i = getIntent().getIntExtra("key_mode", 1);
     double d = getIntent().getDoubleExtra("key_amount", 0.0D);
     paramBundle = getIntent().getStringExtra("profile_date_wording");
@@ -82,13 +82,13 @@ public class WalletLqtSaveFetchFinishUI
     if (arrayOfByte != null) {}
     try
     {
-      this.zLm = ((bew)new bew().parseFrom(arrayOfByte));
+      this.BdB = ((bio)new bio().parseFrom(arrayOfByte));
       if (i == 1)
       {
-        this.zLi.setText(getString(2131765497));
+        this.Bdx.setText(getString(2131765497));
         setMMTitle(getString(2131765497));
-        this.zLj.setText(e.D(d));
-        this.tLH.setOnClickListener(new View.OnClickListener()
+        this.Bdy.setText(e.C(d));
+        this.uUl.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -105,27 +105,27 @@ public class WalletLqtSaveFetchFinishUI
             AppMethodBeat.o(68961);
           }
         });
-        if (!bt.isNullOrNil(paramBundle))
+        if (!bs.isNullOrNil(paramBundle))
         {
-          this.zLk.setText(paramBundle);
-          this.zLk.setVisibility(0);
+          this.Bdz.setText(paramBundle);
+          this.Bdz.setVisibility(0);
         }
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
-          this.zLl.setText(k.d(this, str, (int)this.zLl.getTextSize()));
-          this.zLl.setClickable(true);
-          this.zLl.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.n());
-          this.zLl.setVisibility(0);
+          this.BdA.setText(k.d(this, str, (int)this.BdA.getTextSize()));
+          this.BdA.setClickable(true);
+          this.BdA.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.n());
+          this.BdA.setVisibility(0);
         }
-        if (this.zLm == null) {
+        if (this.BdB == null) {
           break label574;
         }
-        if (!bt.isNullOrNil(this.zLm.dub)) {
-          this.zLn.setUrl(this.zLm.dub);
+        if (!bs.isNullOrNil(this.BdB.drM)) {
+          this.BdC.setUrl(this.BdB.drM);
         }
-        this.zLo.setText(this.zLm.title);
-        this.zLp.setText(this.zLm.desc);
-        this.zLq.setOnClickListener(new View.OnClickListener()
+        this.BdD.setText(this.BdB.title);
+        this.BdE.setText(this.BdB.desc);
+        this.BdF.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -135,9 +135,9 @@ public class WalletLqtSaveFetchFinishUI
             {
               localObject = new Intent(WalletLqtSaveFetchFinishUI.this.getContext(), WalletLqtPlanBeforeHomeUI.class);
               paramAnonymousView = WalletLqtSaveFetchFinishUI.this;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+              localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(68962);
               return;
@@ -147,18 +147,18 @@ public class WalletLqtSaveFetchFinishUI
               localObject = new Intent(WalletLqtSaveFetchFinishUI.this.getContext(), WalletLqtPlanAddUI.class);
               ((Intent)localObject).putExtra("key_mode", 3);
               paramAnonymousView = WalletLqtSaveFetchFinishUI.this;
-              localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+              localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtSaveFetchFinishUI$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(68962);
               return;
             }
-            ad.w("MicroMsg.WalletLqtSaveFetchFinishUI", "unknown url: %s", new Object[] { WalletLqtSaveFetchFinishUI.b(WalletLqtSaveFetchFinishUI.this).url });
+            ac.w("MicroMsg.WalletLqtSaveFetchFinishUI", "unknown url: %s", new Object[] { WalletLqtSaveFetchFinishUI.b(WalletLqtSaveFetchFinishUI.this).url });
             AppMethodBeat.o(68962);
           }
         });
-        this.zLq.setVisibility(0);
+        this.BdF.setVisibility(0);
         getWindow().getDecorView().post(new Runnable()
         {
           public final void run()
@@ -181,16 +181,16 @@ public class WalletLqtSaveFetchFinishUI
     {
       for (;;)
       {
-        ad.printErrStackTrace("MicroMsg.WalletLqtSaveFetchFinishUI", localIOException, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.WalletLqtSaveFetchFinishUI", localIOException, "", new Object[0]);
         continue;
         if (i == 2)
         {
-          this.zLi.setText(getString(2131765414));
+          this.Bdx.setText(getString(2131765414));
           setMMTitle(getString(2131765414));
         }
       }
       label574:
-      this.zLq.setVisibility(8);
+      this.BdF.setVisibility(8);
       getWindow().getDecorView().post(new Runnable()
       {
         public final void run()
@@ -215,7 +215,7 @@ public class WalletLqtSaveFetchFinishUI
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     return false;
   }
@@ -235,7 +235,7 @@ public class WalletLqtSaveFetchFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchFinishUI
  * JD-Core Version:    0.7.0.1
  */

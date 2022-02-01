@@ -8,8 +8,8 @@ import com.tencent.kinda.gen.KRegionEditViewOnRegionSelectedCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.framework.app.UIPageFragmentActivity.a;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -47,7 +47,7 @@ public class KindaRegionEditViewImpl
           return;
         }
         KindaRegionEditViewImpl.access$002(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Country"));
-        if (!bt.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_City")))
+        if (!bs.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_City")))
         {
           KindaRegionEditViewImpl.access$102(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_Province"));
           KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_City"));
@@ -58,13 +58,13 @@ public class KindaRegionEditViewImpl
           String str2 = paramAnonymousIntent.getStringExtra("ProviceName");
           paramAnonymousIntent = paramAnonymousIntent.getStringExtra("CityName");
           StringBuilder localStringBuilder = new StringBuilder();
-          if (!bt.isNullOrNil(str1)) {
+          if (!bs.isNullOrNil(str1)) {
             localStringBuilder.append(str1);
           }
-          if (!bt.isNullOrNil(str2)) {
+          if (!bs.isNullOrNil(str2)) {
             localStringBuilder.append(" ").append(str2);
           }
-          if (!bt.isNullOrNil(paramAnonymousIntent)) {
+          if (!bs.isNullOrNil(paramAnonymousIntent)) {
             localStringBuilder.append(" ").append(paramAnonymousIntent);
           }
           KindaRegionEditViewImpl.this.mEditText.setText(localStringBuilder.toString());
@@ -73,7 +73,7 @@ public class KindaRegionEditViewImpl
           }
           AppMethodBeat.o(18938);
           return;
-          if (!bt.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_Province"))) {
+          if (!bs.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_Province"))) {
             KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_Province"));
           } else {
             KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, KindaRegionEditViewImpl.this.countryCode);
@@ -97,7 +97,7 @@ public class KindaRegionEditViewImpl
     this.mContext = paramContext;
     if ((this.mContext instanceof UIPageFragmentActivity))
     {
-      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).fTZ.getAndIncrement();
+      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).fXU.getAndIncrement();
       UIPageFragmentActivity.a(this.REQUEST_CODE, this.intentHandler);
     }
     paramContext = this.mEditText;
@@ -146,7 +146,7 @@ public class KindaRegionEditViewImpl
   public boolean isUSOrCA()
   {
     AppMethodBeat.i(18942);
-    if (bt.isNullOrNil(this.countryCode))
+    if (bs.isNullOrNil(this.countryCode))
     {
       AppMethodBeat.o(18942);
       return false;
@@ -177,7 +177,7 @@ public class KindaRegionEditViewImpl
     {
       ((BaseFrActivity)this.mContext).hideTenpayKB();
       Intent localIntent = new Intent();
-      localIntent.setClassName(aj.getPackageName(), aj.eFC() + ".ui.tools.MultiStageCitySelectUI");
+      localIntent.setClassName(ai.getPackageName(), ai.eUW() + ".ui.tools.MultiStageCitySelectUI");
       localIntent.putExtra("GetAddress", true);
       localIntent.putExtra("IsNeedShowSearchBar", this.mShowDomesticCity);
       localIntent.putExtra("IsRealNameVerifyScene", this.mShowDomesticCity);
@@ -202,7 +202,7 @@ public class KindaRegionEditViewImpl
     this.countryCode = paramString1;
     this.provinceCode = paramString2;
     this.cityCode = paramString3;
-    if (!bt.isNullOrNil(paramString4)) {
+    if (!bs.isNullOrNil(paramString4)) {
       this.mEditText.setText(paramString4);
     }
     AppMethodBeat.o(18941);

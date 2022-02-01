@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.ui.recents;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,16 +18,16 @@ final class m
   public final boolean H(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49225);
-    if (!this.lJR.get(paramInt1).getClass().equals(this.lJS.get(paramInt2).getClass()))
+    if (!this.mlO.get(paramInt1).getClass().equals(this.mlP.get(paramInt2).getClass()))
     {
       AppMethodBeat.o(49225);
       return false;
     }
-    if ((this.lJR.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.mlO.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.lJR.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.lJS.get(paramInt2);
-      if ((localAppBrandRecentTaskInfo1.iOP == localAppBrandRecentTaskInfo2.iOP) && (localAppBrandRecentTaskInfo1.dbj.equals(localAppBrandRecentTaskInfo2.dbj)))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mlO.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mlP.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.joY == localAppBrandRecentTaskInfo2.joY) && (localAppBrandRecentTaskInfo1.cYF.equals(localAppBrandRecentTaskInfo2.cYF)))
       {
         AppMethodBeat.o(49225);
         return true;
@@ -42,11 +42,11 @@ final class m
   public final boolean I(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49226);
-    if ((this.lJR.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.mlO.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.lJR.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.lJS.get(paramInt2);
-      if ((localAppBrandRecentTaskInfo1.iVe == localAppBrandRecentTaskInfo2.iVe) && (bt.nullAsNil(localAppBrandRecentTaskInfo1.iVd).equals(localAppBrandRecentTaskInfo2.iVd)) && (bt.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mlO.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mlP.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.jvu == localAppBrandRecentTaskInfo2.jvu) && (bs.nullAsNil(localAppBrandRecentTaskInfo1.jvt).equals(localAppBrandRecentTaskInfo2.jvt)) && (bs.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
       {
         AppMethodBeat.o(49226);
         return true;
@@ -61,23 +61,23 @@ final class m
   public final Object J(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49227);
-    if (paramInt1 >= this.lJR.size())
+    if (paramInt1 >= this.mlO.size())
     {
       AppMethodBeat.o(49227);
       return null;
     }
     Bundle localBundle = new Bundle();
-    if ((this.lJR.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.mlO.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.lJR.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.lJS.get(paramInt2);
-      if (localAppBrandRecentTaskInfo1.iVe != localAppBrandRecentTaskInfo2.iVe) {
-        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.iVe);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.mlO.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.mlP.get(paramInt2);
+      if (localAppBrandRecentTaskInfo1.jvu != localAppBrandRecentTaskInfo2.jvu) {
+        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.jvu);
       }
-      if (!bt.nullAsNil(localAppBrandRecentTaskInfo1.iVd).equals(bt.nullAsNil(localAppBrandRecentTaskInfo2.iVd))) {
-        localBundle.putString("icon", localAppBrandRecentTaskInfo2.iVd);
+      if (!bs.nullAsNil(localAppBrandRecentTaskInfo1.jvt).equals(bs.nullAsNil(localAppBrandRecentTaskInfo2.jvt))) {
+        localBundle.putString("icon", localAppBrandRecentTaskInfo2.jvt);
       }
-      if (!bt.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(bt.nullAsNil(localAppBrandRecentTaskInfo2.appName))) {
+      if (!bs.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(bs.nullAsNil(localAppBrandRecentTaskInfo2.appName))) {
         localBundle.putString("nick_name", localAppBrandRecentTaskInfo2.appName);
       }
     }
@@ -92,7 +92,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.m
  * JD-Core Version:    0.7.0.1
  */

@@ -13,37 +13,37 @@ public abstract class b
     super(paramp);
   }
   
-  public abstract String C(long paramLong, String paramString);
+  public abstract String A(long paramLong, String paramString);
   
   public abstract void a(Context paramContext, be parambe, String paramString);
   
-  public abstract void adg();
+  public abstract void aew();
   
-  public abstract void aqF(String paramString);
+  public abstract void avO(String paramString);
   
-  public abstract void aqG(String paramString);
+  public abstract void avP(String paramString);
   
-  public abstract void aqH(String paramString);
+  public abstract void avQ(String paramString);
   
-  public abstract void aqI(String paramString);
+  public abstract void avR(String paramString);
   
-  public abstract void aqJ(String paramString);
+  public abstract void avS(String paramString);
   
-  public abstract void dBK();
+  public abstract void dQh();
   
-  public abstract String dDd();
+  public abstract String dRA();
   
-  public abstract String dDe();
+  public abstract String dRB();
   
-  public abstract String dDf();
+  public abstract String dRC();
   
-  public abstract String dDg();
+  public abstract String dRD();
   
-  public abstract String dDh();
+  public abstract String dRE();
   
-  public abstract void qw(boolean paramBoolean);
+  public abstract void ru(boolean paramBoolean);
   
-  public abstract String tr(long paramLong);
+  public abstract String xU(long paramLong);
 }
 
 

@@ -7,12 +7,12 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.h;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.z.a;
-import com.tencent.mm.z.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.y.a;
+import com.tencent.mm.y.c;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,57 +20,57 @@ import java.util.Map;
 
 public final class k
 {
-  private List<WeakReference<a>> nqa;
-  public List<com.tencent.mm.plugin.card.model.g> nrj;
-  public int nrk;
+  private List<WeakReference<a>> nTa;
+  public List<com.tencent.mm.plugin.card.model.g> nUj;
+  public int nUk;
   
   public k()
   {
     AppMethodBeat.i(112684);
-    this.nqa = new ArrayList();
-    this.nrj = new ArrayList();
-    this.nrk = 0;
+    this.nTa = new ArrayList();
+    this.nUj = new ArrayList();
+    this.nUk = 0;
     loadFromDB();
-    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(139268, null);
+    Object localObject = com.tencent.mm.kernel.g.agR().agA().get(139268, null);
     if (localObject == null) {}
     for (int i = 0;; i = ((Integer)localObject).intValue())
     {
-      this.nrk = i;
+      this.nUk = i;
       AppMethodBeat.o(112684);
       return;
     }
   }
   
-  public static void bIK()
+  public static void bPX()
   {
     AppMethodBeat.i(112699);
-    ad.i("MicroMsg.CardMsgManager", "clearRedDotAndWording()");
+    ac.i("MicroMsg.CardMsgManager", "clearRedDotAndWording()");
     b.c(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(112683);
-        ad.i("MicroMsg.CardMsgManager", "begin to clearRedDotAndWording()");
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fho, "");
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fhu, Integer.valueOf(0));
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fhr, "");
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fhs, "");
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fht, "");
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.FhF, "");
-        com.tencent.mm.kernel.g.afB().afk().set(ae.a.FhG, Boolean.FALSE);
-        if (c.adr().cJ(262152, 266256)) {
-          c.adr().x(262152, false);
+        ac.i("MicroMsg.CardMsgManager", "begin to clearRedDotAndWording()");
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFd, "");
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFj, Integer.valueOf(0));
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFg, "");
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFh, "");
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFi, "");
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFu, "");
+        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GFv, Boolean.FALSE);
+        if (c.aeH().cH(262152, 266256)) {
+          c.aeH().x(262152, false);
         }
-        if (c.adr().cI(262152, 266256)) {
-          c.adr().w(262152, false);
+        if (c.aeH().cG(262152, 266256)) {
+          c.aeH().w(262152, false);
         }
-        if (c.adr().a(ae.a.Fhi, ae.a.Fhk)) {
-          c.adr().a(ae.a.Fhi, false);
+        if (c.aeH().a(ah.a.GEX, ah.a.GEZ)) {
+          c.aeH().a(ah.a.GEX, false);
         }
-        if (c.adr().a(ae.a.Fhj, ae.a.Fhl)) {
-          c.adr().a(ae.a.Fhj, false);
+        if (c.aeH().a(ah.a.GEY, ah.a.GFa)) {
+          c.aeH().a(ah.a.GEY, false);
         }
-        ad.i("MicroMsg.CardMsgManager", "end to clearRedDotAndWording()");
+        ac.i("MicroMsg.CardMsgManager", "end to clearRedDotAndWording()");
         AppMethodBeat.o(112683);
       }
     }, "clearRedDotAndWording");
@@ -80,8 +80,8 @@ public final class k
   public static void c(com.tencent.mm.plugin.card.model.g paramg)
   {
     AppMethodBeat.i(112689);
-    if (!am.bIX().insert(paramg)) {
-      ad.e("MicroMsg.CardMsgManager", "insert CardMsgInfo failed! id:" + paramg.field_msg_id);
+    if (!am.bQk().insert(paramg)) {
+      ac.e("MicroMsg.CardMsgManager", "insert CardMsgInfo failed! id:" + paramg.field_msg_id);
     }
     AppMethodBeat.o(112689);
   }
@@ -94,9 +94,9 @@ public final class k
       AppMethodBeat.o(112696);
       return false;
     }
-    boolean bool = am.bIX().delete(paramg, new String[0]);
+    boolean bool = am.bQk().delete(paramg, new String[0]);
     if (!bool) {
-      ad.e("MicroMsg.CardMsgManager", "delete CardMsgInfo failed! id:" + paramg.field_msg_id);
+      ac.e("MicroMsg.CardMsgManager", "delete CardMsgInfo failed! id:" + paramg.field_msg_id);
     }
     AppMethodBeat.o(112696);
     return bool;
@@ -114,14 +114,14 @@ public final class k
       for (Object localObject = Integer.valueOf(i);; localObject = "")
       {
         localObject = localObject;
-        if (bt.isNullOrNil((String)paramMap.get((String)localObject + ".title"))) {
+        if (bs.isNullOrNil((String)paramMap.get((String)localObject + ".title"))) {
           break label362;
         }
         localStringBuilder1.append("<jump_buttons>");
-        localStringBuilder1.append("<title>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".title").toString()))) + "</title>");
-        localStringBuilder1.append("<description>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".description").toString()))) + "</description>");
-        localStringBuilder1.append("<button_wording>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".button_wording").toString()))) + "</button_wording>");
-        localStringBuilder1.append("<jump_url>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".jump_url").toString()))) + "</jump_url>");
+        localStringBuilder1.append("<title>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".title").toString()))) + "</title>");
+        localStringBuilder1.append("<description>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".description").toString()))) + "</description>");
+        localStringBuilder1.append("<button_wording>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".button_wording").toString()))) + "</button_wording>");
+        localStringBuilder1.append("<jump_url>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".jump_url").toString()))) + "</jump_url>");
         localStringBuilder1.append("</jump_buttons>");
         i += 1;
         break;
@@ -129,7 +129,7 @@ public final class k
     }
     label362:
     paramMap = new StringBuilder();
-    if (!bt.isNullOrNil(localStringBuilder1.toString()))
+    if (!bs.isNullOrNil(localStringBuilder1.toString()))
     {
       paramMap.append("<jump_buttons_list>");
       paramMap.append(localStringBuilder1.toString());
@@ -154,16 +154,16 @@ public final class k
         localObject1 = localObject1;
         localObject2 = (String)paramMap.get((String)localObject1 + ".card_id");
         String str = (String)paramMap.get((String)localObject1 + ".title");
-        if ((bt.isNullOrNil((String)localObject2)) && (bt.isNullOrNil(str))) {
+        if ((bs.isNullOrNil((String)localObject2)) && (bs.isNullOrNil(str))) {
           break label524;
         }
         localStringBuilder.append("<accept_buttons>");
-        localStringBuilder.append("<title>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".title").toString()))) + "</title>");
-        localStringBuilder.append("<sub_title>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".sub_title").toString()))) + "</sub_title>");
-        localStringBuilder.append("<card_id>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".card_id").toString()))) + "</card_id>");
-        localStringBuilder.append("<card_ext>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".card_ext").toString()))) + "</card_ext>");
-        localStringBuilder.append("<end_time>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".end_time").toString()))) + "</end_time>");
-        localStringBuilder.append("<action_type>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".action_type").toString()))) + "</action_type>");
+        localStringBuilder.append("<title>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".title").toString()))) + "</title>");
+        localStringBuilder.append("<sub_title>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".sub_title").toString()))) + "</sub_title>");
+        localStringBuilder.append("<card_id>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".card_id").toString()))) + "</card_id>");
+        localStringBuilder.append("<card_ext>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".card_ext").toString()))) + "</card_ext>");
+        localStringBuilder.append("<end_time>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".end_time").toString()))) + "</end_time>");
+        localStringBuilder.append("<action_type>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject1).append(".action_type").toString()))) + "</action_type>");
         localStringBuilder.append("</accept_buttons>");
         i += 1;
         break;
@@ -171,7 +171,7 @@ public final class k
     }
     label524:
     paramMap = new StringBuilder();
-    if (!bt.isNullOrNil(localStringBuilder.toString()))
+    if (!bs.isNullOrNil(localStringBuilder.toString()))
     {
       paramMap.append("<accept_buttons_list>");
       paramMap.append(localStringBuilder.toString());
@@ -194,11 +194,11 @@ public final class k
       for (Object localObject = Integer.valueOf(i);; localObject = "")
       {
         localObject = localObject;
-        if (bt.isNullOrNil((String)paramMap.get((String)localObject + ".code_id"))) {
+        if (bs.isNullOrNil((String)paramMap.get((String)localObject + ".code_id"))) {
           break label185;
         }
         localStringBuilder1.append("<unavailable_qr_codes>");
-        localStringBuilder1.append("<code_id>" + bt.aGf(bt.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".code_id").toString()))) + "</code_id>");
+        localStringBuilder1.append("<code_id>" + bs.aLw(bs.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".code_id").toString()))) + "</code_id>");
         localStringBuilder1.append("</unavailable_qr_codes>");
         i += 1;
         break;
@@ -206,7 +206,7 @@ public final class k
     }
     label185:
     paramMap = new StringBuilder();
-    if (!bt.isNullOrNil(localStringBuilder1.toString()))
+    if (!bs.isNullOrNil(localStringBuilder1.toString()))
     {
       paramMap.append("<unavailable_qr_code_list>");
       paramMap.append(localStringBuilder1.toString());
@@ -220,7 +220,7 @@ public final class k
   private void loadFromDB()
   {
     AppMethodBeat.i(112690);
-    Cursor localCursor = am.bIX().getAll();
+    Cursor localCursor = am.bQk().getAll();
     if ((localCursor != null) && (localCursor.getCount() > 0))
     {
       localCursor.moveToFirst();
@@ -258,7 +258,7 @@ public final class k
         localg.field_report_scene = localCursor.getInt(i9);
         localg.field_read_state = localCursor.getInt(i10);
         localCursor.moveToNext();
-        this.nrj.add(localg);
+        this.nUj.add(localg);
       }
     }
     if (localCursor != null) {
@@ -267,18 +267,18 @@ public final class k
     AppMethodBeat.o(112690);
   }
   
-  public final boolean Qp(String paramString)
+  public final boolean UB(String paramString)
   {
     AppMethodBeat.i(112694);
-    if ((this.nrj == null) || (TextUtils.isEmpty(paramString)))
+    if ((this.nUj == null) || (TextUtils.isEmpty(paramString)))
     {
       AppMethodBeat.o(112694);
       return false;
     }
     int i = 0;
-    while (i < this.nrj.size())
+    while (i < this.nUj.size())
     {
-      com.tencent.mm.plugin.card.model.g localg = (com.tencent.mm.plugin.card.model.g)this.nrj.get(i);
+      com.tencent.mm.plugin.card.model.g localg = (com.tencent.mm.plugin.card.model.g)this.nUj.get(i);
       if ((localg != null) && (localg.field_msg_id != null) && (localg.field_msg_id.equals(paramString)))
       {
         AppMethodBeat.o(112694);
@@ -290,7 +290,7 @@ public final class k
     return false;
   }
   
-  public final boolean Qq(String paramString)
+  public final boolean UC(String paramString)
   {
     AppMethodBeat.i(112695);
     if (TextUtils.isEmpty(paramString))
@@ -299,22 +299,22 @@ public final class k
       return false;
     }
     Object localObject;
-    if ((this.nrj == null) || (TextUtils.isEmpty(paramString))) {
+    if ((this.nUj == null) || (TextUtils.isEmpty(paramString))) {
       localObject = null;
     }
     while (localObject != null)
     {
-      this.nrj.remove(localObject);
+      this.nUj.remove(localObject);
       d(localObject);
       AppMethodBeat.o(112695);
       return true;
       int i = 0;
       for (;;)
       {
-        if (i >= this.nrj.size()) {
+        if (i >= this.nUj.size()) {
           break label117;
         }
-        com.tencent.mm.plugin.card.model.g localg = (com.tencent.mm.plugin.card.model.g)this.nrj.get(i);
+        com.tencent.mm.plugin.card.model.g localg = (com.tencent.mm.plugin.card.model.g)this.nUj.get(i);
         localObject = localg;
         if (paramString.equals(localg.field_msg_id)) {
           break;
@@ -331,25 +331,25 @@ public final class k
   public final void a(a parama)
   {
     AppMethodBeat.i(112687);
-    if (this.nqa == null) {
-      this.nqa = new ArrayList();
+    if (this.nTa == null) {
+      this.nTa = new ArrayList();
     }
-    this.nqa.add(new WeakReference(parama));
+    this.nTa.add(new WeakReference(parama));
     AppMethodBeat.o(112687);
   }
   
   public final void a(com.tencent.mm.plugin.card.model.g paramg)
   {
     AppMethodBeat.i(112685);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112685);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -365,21 +365,21 @@ public final class k
   public final void b(a parama)
   {
     AppMethodBeat.i(112688);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112688);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.nqa.get(i);
+      WeakReference localWeakReference = (WeakReference)this.nTa.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          this.nqa.remove(localWeakReference);
+          this.nTa.remove(localWeakReference);
           AppMethodBeat.o(112688);
           return;
         }
@@ -389,23 +389,23 @@ public final class k
     AppMethodBeat.o(112688);
   }
   
-  public final void bIJ()
+  public final void bPW()
   {
     AppMethodBeat.i(112698);
-    this.nrk = 0;
-    com.tencent.mm.kernel.g.afB().afk().set(139268, Integer.valueOf(this.nrk));
+    this.nUk = 0;
+    com.tencent.mm.kernel.g.agR().agA().set(139268, Integer.valueOf(this.nUk));
     AppMethodBeat.o(112698);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(112697);
-    if ((this.nrj == null) || (this.nrj.isEmpty()))
+    if ((this.nUj == null) || (this.nUj.isEmpty()))
     {
       AppMethodBeat.o(112697);
       return 0;
     }
-    int i = this.nrj.size();
+    int i = this.nUj.size();
     AppMethodBeat.o(112697);
     return i;
   }
@@ -413,15 +413,15 @@ public final class k
   public final void onChange()
   {
     AppMethodBeat.i(112686);
-    if (this.nqa == null)
+    if (this.nTa == null)
     {
       AppMethodBeat.o(112686);
       return;
     }
     int i = 0;
-    while (i < this.nqa.size())
+    while (i < this.nTa.size())
     {
-      Object localObject = (WeakReference)this.nqa.get(i);
+      Object localObject = (WeakReference)this.nTa.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();

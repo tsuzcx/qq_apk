@@ -79,15 +79,15 @@ public class YTFaceTrack
   
   private static native boolean nativeInit();
   
-  public native FaceStatus[] DoDetectionProcess(YTFaceTrack.YTImage paramYTImage);
+  public native YTFaceTrack.FaceStatus[] DoDetectionProcess(YTFaceTrack.YTImage paramYTImage);
   
-  public native FaceStatus[] DoDetectionProcessBitmap(Bitmap paramBitmap, int paramInt, YTFaceTrack.YTImage paramYTImage);
+  public native YTFaceTrack.FaceStatus[] DoDetectionProcessBitmap(Bitmap paramBitmap, int paramInt, YTFaceTrack.YTImage paramYTImage);
   
-  public native FaceStatus[] DoDetectionProcessRGB(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, YTFaceTrack.YTImage paramYTImage);
+  public native YTFaceTrack.FaceStatus[] DoDetectionProcessRGB(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, YTFaceTrack.YTImage paramYTImage);
   
-  public native FaceStatus[] DoDetectionProcessRGBA(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, YTFaceTrack.YTImage paramYTImage);
+  public native YTFaceTrack.FaceStatus[] DoDetectionProcessRGBA(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, YTFaceTrack.YTImage paramYTImage);
   
-  public native FaceStatus[] DoDetectionProcessYUV(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, YTFaceTrack.YTImage paramYTImage);
+  public native YTFaceTrack.FaceStatus[] DoDetectionProcessYUV(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, YTFaceTrack.YTImage paramYTImage);
   
   public native YTFaceAlignParam GetFaceAlignParam();
   
@@ -134,20 +134,10 @@ public class YTFaceTrack
     NativeDestructor();
     AppMethodBeat.o(73432);
   }
-  
-  public static class FaceStatus
-  {
-    public float pitch;
-    public float[] pointsVis;
-    public float roll;
-    public float[] xys;
-    public float[] xys5p;
-    public float yaw;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.youtu.ytfacetrack.YTFaceTrack
  * JD-Core Version:    0.7.0.1
  */

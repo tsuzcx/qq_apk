@@ -2,14 +2,14 @@ package com.tencent.mm.emoji.a.a;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/panel/TabDataListener;", "", "onTabChange", "", "start", "", "count", "onTabInsert", "onTabRemove", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/TabDataListener;", "", "onTabChange", "", "start", "", "count", "onTabInsert", "onTabRemove", "plugin-emojisdk_release"})
 public abstract interface aj
 {
+  public abstract void cC(int paramInt1, int paramInt2);
+  
+  public abstract void cD(int paramInt1, int paramInt2);
+  
   public abstract void cE(int paramInt1, int paramInt2);
-  
-  public abstract void cF(int paramInt1, int paramInt2);
-  
-  public abstract void cG(int paramInt1, int paramInt2);
 }
 
 

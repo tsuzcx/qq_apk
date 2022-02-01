@@ -4,9 +4,9 @@ import android.content.Context;
 import android.text.ClipboardManager;
 import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,9 +16,9 @@ import java.util.Set;
 public final class b
 {
   public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> dataList;
-  private static String oni;
+  private static String oQI;
   
-  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> bSm()
+  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> bZB()
   {
     AppMethodBeat.i(181720);
     ArrayList localArrayList = new ArrayList();
@@ -39,7 +39,7 @@ public final class b
     return localArrayList;
   }
   
-  private static Set<String> bSn()
+  private static Set<String> bZC()
   {
     AppMethodBeat.i(181722);
     HashSet localHashSet = new HashSet();
@@ -53,11 +53,11 @@ public final class b
     {
       Object localObject = (com.tencent.mm.plugin.editor.model.a.a)localIterator.next();
       String str = com.tencent.mm.plugin.editor.b.b((com.tencent.mm.plugin.editor.model.a.a)localObject);
-      if (!bt.isNullOrNil(str)) {
+      if (!bs.isNullOrNil(str)) {
         localHashSet.add(str);
       }
       localObject = com.tencent.mm.plugin.editor.b.c((com.tencent.mm.plugin.editor.model.a.a)localObject);
-      if (!bt.isNullOrNil((String)localObject)) {
+      if (!bs.isNullOrNil((String)localObject)) {
         localHashSet.add(localObject);
       }
     }
@@ -65,16 +65,16 @@ public final class b
     return localHashSet;
   }
   
-  public static boolean bSo()
+  public static boolean bZD()
   {
     AppMethodBeat.i(181724);
-    ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    ClipboardManager localClipboardManager = (ClipboardManager)ai.getContext().getSystemService("clipboard");
     if (localClipboardManager.getText().length() >= 16384)
     {
       AppMethodBeat.o(181724);
       return true;
     }
-    if (com.tencent.mm.plugin.editor.b.SU(localClipboardManager.getText().toString()) >= 16384)
+    if (com.tencent.mm.plugin.editor.b.Xg(localClipboardManager.getText().toString()) >= 16384)
     {
       AppMethodBeat.o(181724);
       return true;
@@ -83,10 +83,10 @@ public final class b
     return false;
   }
   
-  public static int bSp()
+  public static int bZE()
   {
     AppMethodBeat.i(181725);
-    Object localObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    Object localObject = (ClipboardManager)ai.getContext().getSystemService("clipboard");
     if ((localObject == null) || (((ClipboardManager)localObject).getText() == null) || (((ClipboardManager)localObject).getText().length() <= 0)) {}
     for (int i = 1;; i = 0)
     {
@@ -112,7 +112,7 @@ public final class b
         {
           localObject = ((ClipboardManager)localObject).getText();
           if ((localObject instanceof Spanned)) {}
-          for (localObject = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject); ((String)localObject).equals(oni); localObject = ((CharSequence)localObject).toString())
+          for (localObject = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject); ((String)localObject).equals(oQI); localObject = ((CharSequence)localObject).toString())
           {
             AppMethodBeat.o(181725);
             return 3;
@@ -122,7 +122,7 @@ public final class b
         {
           for (;;)
           {
-            ad.e("EditorClipboardManager", "get clipboard data error : ", new Object[] { localException });
+            ac.e("EditorClipboardManager", "get clipboard data error : ", new Object[] { localException });
             String str = "";
           }
           AppMethodBeat.o(181725);
@@ -139,7 +139,7 @@ public final class b
       dataList.clear();
     }
     dataList = paramArrayList;
-    com.tencent.mm.plugin.fav.a.ao.qbk = bSn();
+    com.tencent.mm.plugin.fav.a.ao.qJQ = bZC();
     paramArrayList = new StringBuilder("");
     if (dataList != null)
     {
@@ -157,10 +157,10 @@ public final class b
         }
       }
     }
-    oni = com.tencent.mm.plugin.editor.b.SW(paramArrayList.toString());
-    paramContext = (ClipboardManager)aj.getContext().getSystemService("clipboard");
+    oQI = com.tencent.mm.plugin.editor.b.Xi(paramArrayList.toString());
+    paramContext = (ClipboardManager)ai.getContext().getSystemService("clipboard");
     if (paramContext != null) {
-      paramContext.setText(com.tencent.mm.plugin.editor.model.nativenote.a.a.Tc(oni));
+      paramContext.setText(com.tencent.mm.plugin.editor.model.nativenote.a.a.Xo(oQI));
     }
     AppMethodBeat.o(181719);
   }
@@ -171,8 +171,8 @@ public final class b
     if (dataList != null) {
       dataList.clear();
     }
-    oni = "";
-    com.tencent.mm.plugin.fav.a.ao.qbk = null;
+    oQI = "";
+    com.tencent.mm.plugin.fav.a.ao.qJQ = null;
     AppMethodBeat.o(181721);
   }
   
@@ -195,10 +195,10 @@ public final class b
     else
     {
       String str = com.tencent.mm.plugin.editor.b.b(parama);
-      if (!bt.isNullOrNil(str))
+      if (!bs.isNullOrNil(str))
       {
         bool1 = bool2;
-        if (i.eK(str)) {}
+        if (i.eA(str)) {}
       }
       else
       {
@@ -213,10 +213,10 @@ public final class b
     else
     {
       parama = com.tencent.mm.plugin.editor.b.c(parama);
-      if (!bt.isNullOrNil(parama))
+      if (!bs.isNullOrNil(parama))
       {
         bool2 = bool1;
-        if (i.eK(parama)) {}
+        if (i.eA(parama)) {}
       }
       else
       {
@@ -229,7 +229,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.b
  * JD-Core Version:    0.7.0.1
  */

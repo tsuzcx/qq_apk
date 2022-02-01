@@ -1,21 +1,21 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.hq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.hu;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class k$a
   extends l.d
   implements l.b
 {
-  public hq Cqu;
-  public byte[] Cqv;
-  public byte[] Cqw;
+  public hu DIM;
+  public byte[] DIN;
+  public byte[] DIO;
   
   public k$a()
   {
     AppMethodBeat.i(32080);
-    this.Cqu = new hq();
+    this.DIM = new hu();
     AppMethodBeat.o(32080);
   }
   
@@ -32,16 +32,16 @@ public final class k$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(32081);
-    this.Cqu.setBaseRequest(l.a(this));
-    ad.d("MicroMsg.MMBakchatCreateQRcodeOffline.Req", "key:%s  AddrCount:%s  AddrList:%s, PCName:%s, PCAcctName:%s, Scene:%s, DataSize:%s, WifiName:%s, Tickit:%s", new Object[] { this.Cqv, Integer.valueOf(this.Cqu.CCF), this.Cqu.CCG, this.Cqu.CCH, this.Cqu.CCI, Integer.valueOf(this.Cqu.Scene), Long.valueOf(this.Cqu.mBe), this.Cqu.CCJ, this.Cqu.CCK });
-    byte[] arrayOfByte = this.Cqu.toByteArray();
+    this.DIM.setBaseRequest(l.a(this));
+    ac.d("MicroMsg.MMBakchatCreateQRcodeOffline.Req", "key:%s  AddrCount:%s  AddrList:%s, PCName:%s, PCAcctName:%s, Scene:%s, DataSize:%s, WifiName:%s, Tickit:%s", new Object[] { this.DIN, Integer.valueOf(this.DIM.DVc), this.DIM.DVd, this.DIM.DVe, this.DIM.DVf, Integer.valueOf(this.DIM.Scene), Long.valueOf(this.DIM.ndf), this.DIM.DVg, this.DIM.DVh });
+    byte[] arrayOfByte = this.DIM.toByteArray();
     AppMethodBeat.o(32081);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.k.a
  * JD-Core Version:    0.7.0.1
  */

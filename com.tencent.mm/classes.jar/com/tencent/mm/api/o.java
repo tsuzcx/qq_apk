@@ -9,13 +9,13 @@ public abstract interface o
   
   public abstract boolean b(c paramc);
   
-  public abstract c ei(String paramString);
+  public abstract c dX(String paramString);
   
-  public abstract void ej(String paramString);
+  public abstract void dY(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.o
  * JD-Core Version:    0.7.0.1
  */

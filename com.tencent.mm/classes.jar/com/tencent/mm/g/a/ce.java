@@ -7,8 +7,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ce
   extends b
 {
-  public a det;
-  public b deu;
+  public a dbP;
+  public b dbQ;
   
   public ce()
   {
@@ -18,9 +18,9 @@ public final class ce
   private ce(byte paramByte)
   {
     AppMethodBeat.i(149859);
-    this.det = new a();
-    this.deu = new b();
-    this.ESR = false;
+    this.dbP = new a();
+    this.dbQ = new b();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(149859);
   }
@@ -28,18 +28,18 @@ public final class ce
   public static final class a
   {
     public Context context;
-    public String dev;
+    public String dbR;
     public String username;
   }
   
   public static final class b
   {
-    public boolean dew = false;
+    public boolean dbS = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.ce
  * JD-Core Version:    0.7.0.1
  */

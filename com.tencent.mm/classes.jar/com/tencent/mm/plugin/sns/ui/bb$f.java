@@ -4,11 +4,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 abstract class bb$f
 {
-  View.OnClickListener xDW = new View.OnClickListener()
+  View.OnClickListener yQK = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -18,15 +18,15 @@ abstract class bb$f
         AppMethodBeat.o(99033);
         return;
       }
-      ad.d("MicroMsg.SnsphotoAdapter", "sign click");
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      int j = bb.f.this.xEa.position;
-      bb.f.this.hq(i, j + 2);
+      ac.d("MicroMsg.SnsphotoAdapter", "sign click");
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      int j = bb.f.this.yQO.position;
+      bb.f.this.hz(i, j + 2);
       AppMethodBeat.o(99033);
     }
   };
-  View.OnClickListener xDX = new View.OnClickListener()
+  View.OnClickListener yQL = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -36,14 +36,14 @@ abstract class bb$f
         AppMethodBeat.o(99034);
         return;
       }
-      ad.d("MicroMsg.SnsphotoAdapter", "sign click");
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      bb.f.this.Nz(i);
+      ac.d("MicroMsg.SnsphotoAdapter", "sign click");
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      bb.f.this.PD(i);
       AppMethodBeat.o(99034);
     }
   };
-  View.OnClickListener xDY = new View.OnClickListener()
+  View.OnClickListener yQM = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -53,15 +53,15 @@ abstract class bb$f
         AppMethodBeat.o(99035);
         return;
       }
-      ad.d("MicroMsg.SnsphotoAdapter", "snssight click");
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      int j = bb.f.this.xEa.position;
-      bb.f.this.hq(i, j + 2);
+      ac.d("MicroMsg.SnsphotoAdapter", "snssight click");
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      int j = bb.f.this.yQO.position;
+      bb.f.this.hz(i, j + 2);
       AppMethodBeat.o(99035);
     }
   };
-  View.OnLongClickListener xDZ = new View.OnLongClickListener()
+  View.OnLongClickListener yQN = new View.OnLongClickListener()
   {
     public final boolean onLongClick(View paramAnonymousView)
     {
@@ -71,17 +71,17 @@ abstract class bb$f
         AppMethodBeat.o(99036);
         return true;
       }
-      ad.d("MicroMsg.SnsphotoAdapter", "snsFailPhoto long click");
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      int j = bb.f.this.xEa.position;
-      bb.f.this.hr(i, j);
+      ac.d("MicroMsg.SnsphotoAdapter", "snsFailPhoto long click");
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      int j = bb.f.this.yQO.position;
+      bb.f.this.hA(i, j);
       AppMethodBeat.o(99036);
       return true;
     }
   };
-  public bb.f.a xEa = new bb.f.a();
-  View.OnClickListener xjW = new View.OnClickListener()
+  public bb.f.a yQO = new bb.f.a();
+  View.OnClickListener ywP = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -91,14 +91,14 @@ abstract class bb$f
         AppMethodBeat.o(99030);
         return;
       }
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      int j = bb.f.this.xEa.position;
-      bb.f.this.hp(i, j);
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      int j = bb.f.this.yQO.position;
+      bb.f.this.hy(i, j);
       AppMethodBeat.o(99030);
     }
   };
-  View.OnClickListener xjX = new View.OnClickListener()
+  View.OnClickListener ywQ = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -108,14 +108,14 @@ abstract class bb$f
         AppMethodBeat.o(99031);
         return;
       }
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      int j = bb.f.this.xEa.position;
-      bb.f.this.hp(i, j + 1);
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      int j = bb.f.this.yQO.position;
+      bb.f.this.hy(i, j + 1);
       AppMethodBeat.o(99031);
     }
   };
-  View.OnClickListener xjY = new View.OnClickListener()
+  View.OnClickListener ywR = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
@@ -125,21 +125,21 @@ abstract class bb$f
         AppMethodBeat.o(99032);
         return;
       }
-      bb.f.this.xEa = ((bb.f.a)paramAnonymousView.getTag());
-      int i = bb.f.this.xEa.dzf;
-      int j = bb.f.this.xEa.position;
-      bb.f.this.hp(i, j + 2);
+      bb.f.this.yQO = ((bb.f.a)paramAnonymousView.getTag());
+      int i = bb.f.this.yQO.dwR;
+      int j = bb.f.this.yQO.position;
+      bb.f.this.hy(i, j + 2);
       AppMethodBeat.o(99032);
     }
   };
   
-  public abstract void Nz(int paramInt);
+  public abstract void PD(int paramInt);
   
-  public abstract void hp(int paramInt1, int paramInt2);
+  public abstract void hA(int paramInt1, int paramInt2);
   
-  public abstract void hq(int paramInt1, int paramInt2);
+  public abstract void hy(int paramInt1, int paramInt2);
   
-  public abstract void hr(int paramInt1, int paramInt2);
+  public abstract void hz(int paramInt1, int paramInt2);
 }
 
 

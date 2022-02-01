@@ -6,21 +6,21 @@ import com.tencent.mm.loader.e.a.c;
 import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.f;
 import com.tencent.mm.loader.h.b.a;
-import com.tencent.mm.plugin.finder.utils.i;
+import com.tencent.mm.plugin.finder.utils.n;
 import d.g.b.k;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "Companion", "plugin-finder_release"})
 public final class b
   extends c
 {
-  public static final a qCe;
+  public static final b.a rtg;
   
   static
   {
     AppMethodBeat.i(166301);
-    qCe = new a((byte)0);
+    rtg = new b.a((byte)0);
     AppMethodBeat.o(166301);
   }
   
@@ -31,24 +31,21 @@ public final class b
     k.h(paramf, "reaper");
     k.h(parama, "input");
     paramg = null;
-    com.tencent.mm.ad.b localb = new com.tencent.mm.ad.b("FinderBitmapProducer");
-    parama = parama.ahS();
+    com.tencent.mm.ac.b localb = new com.tencent.mm.ac.b("FinderBitmapProducer");
+    parama = parama.aoS();
     if (parama != null)
     {
-      int i = paramf.ghW.gjv;
-      int j = paramf.ghW.gjw;
-      paramg = i.qTa;
-      paramg = i.a(parama, i, j);
-      paramf = y.JfV;
+      int i = paramf.gIF.gKg;
+      int j = paramf.gIF.gKh;
+      paramg = n.rPN;
+      paramg = n.a(parama, i, j);
+      paramf = y.KTp;
     }
-    localb.agL();
+    localb.aic();
     paramg = new com.tencent.mm.loader.h.e(paramg);
     AppMethodBeat.o(166300);
     return paramg;
   }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

@@ -1,77 +1,81 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.n;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import java.util.HashMap;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.aa;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.h;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.i;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.z;
+import com.tencent.mm.sdk.platformtools.ac;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
 {
-  private static final int CTRL_INDEX = 424;
-  private static final String NAME = "openRedPacket";
-  
-  public final boolean aXA()
+  public static void a(b paramb, JSONObject paramJSONObject)
   {
-    return true;
+    AppMethodBeat.i(205020);
+    paramb = paramb.bhj().kwg;
+    if (paramb == null) {
+      ac.e("MicroMsg.AppBrandMapUtils", "visibleRegion is  null");
+    }
+    Object localObject = paramb.kwh;
+    if (localObject == null) {
+      ac.e("MicroMsg.AppBrandMapUtils", "latLngBounds is  null");
+    }
+    paramb = ((b.i)localObject).kvI;
+    localObject = ((b.i)localObject).kvJ;
+    JSONObject localJSONObject1 = new JSONObject();
+    if (paramb != null) {}
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("latitude", paramb.latitude);
+      localJSONObject2.put("longitude", paramb.longitude);
+      localJSONObject1.put("southwest", localJSONObject2);
+      if (localObject != null)
+      {
+        paramb = new JSONObject();
+        paramb.put("latitude", ((b.h)localObject).latitude);
+        paramb.put("longitude", ((b.h)localObject).longitude);
+        localJSONObject1.put("northeast", paramb);
+      }
+      paramJSONObject.remove("region");
+      paramJSONObject.put("region", localJSONObject1);
+      AppMethodBeat.o(205020);
+      return;
+    }
+    catch (JSONException paramb)
+    {
+      ac.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
+      AppMethodBeat.o(205020);
+    }
   }
   
-  public static final class a
-    extends n
+  public static void b(b paramb, JSONObject paramJSONObject)
   {
-    public a(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
+    AppMethodBeat.i(205021);
+    paramb = paramb.bhn();
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      super(paramq, paramaa, paramJSONObject, paramInt);
+      localJSONObject.put("latitude", paramb.latitude);
+      localJSONObject.put("longitude", paramb.longitude);
+      paramJSONObject.remove("centerLocation");
+      paramJSONObject.put("centerLocation", localJSONObject);
+      AppMethodBeat.o(205021);
+      return;
     }
-    
-    public final void C(Intent paramIntent)
+    catch (JSONException paramb)
     {
-      AppMethodBeat.i(46389);
-      ad.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.onResult");
-      paramIntent = new HashMap();
-      paramIntent.put("errCode", Integer.valueOf(0));
-      A(paramIntent);
-      AppMethodBeat.o(46389);
-    }
-    
-    public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
-    {
-      AppMethodBeat.i(174839);
-      String str = Du().getAppId();
-      paramJSONObject = paramJSONObject.optString("redPacketId", null);
-      if ((bt.isNullOrNil(str)) || (bt.isNullOrNil(paramJSONObject)))
-      {
-        ad.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.launch appId = [%s] sendId = [%s]", new Object[] { str, paramJSONObject });
-        AppMethodBeat.o(174839);
-        return false;
-      }
-      ((com.tencent.mm.plugin.luckymoney.appbrand.a)g.ab(com.tencent.mm.plugin.luckymoney.appbrand.a.class)).a(paramActivity, paramJSONObject, str, paramInt);
-      AppMethodBeat.o(174839);
-      return true;
-    }
-    
-    public final void onError(int paramInt, String paramString)
-    {
-      AppMethodBeat.i(46390);
-      ad.i("MicroMsg.JsApiOpenRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("errCode", Integer.valueOf(paramInt));
-      l(paramString, localHashMap);
-      AppMethodBeat.o(46390);
+      ac.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
+      AppMethodBeat.o(205021);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -18,32 +18,32 @@ import java.util.Arrays;
 
 public final class a
 {
-  private com.tencent.tinker.c.a.a.a.i<t> ICA;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.c> ICB;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.b> ICC;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.e> ICD;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.g> ICE;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.h> ICF;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.a> ICG;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.k> ICH;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.d> ICI;
-  private final com.tencent.tinker.a.a.i ICq;
-  private final com.tencent.tinker.a.a.i ICr;
-  private final com.tencent.tinker.c.a.b.a ICs;
-  private final com.tencent.tinker.c.a.c.c ICt;
-  private com.tencent.tinker.c.a.a.a.i<r> ICu;
-  private com.tencent.tinker.c.a.a.a.i<Integer> ICv;
-  private com.tencent.tinker.c.a.a.a.i<q> ICw;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.n> ICx;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.p> ICy;
-  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.f> ICz;
+  private final com.tencent.tinker.a.a.i KoA;
+  private final com.tencent.tinker.c.a.b.a KoB;
+  private final com.tencent.tinker.c.a.c.c KoC;
+  private com.tencent.tinker.c.a.a.a.i<r> KoD;
+  private com.tencent.tinker.c.a.a.a.i<Integer> KoE;
+  private com.tencent.tinker.c.a.a.a.i<q> KoF;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.n> KoG;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.p> KoH;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.f> KoI;
+  private com.tencent.tinker.c.a.a.a.i<t> KoJ;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.c> KoK;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.b> KoL;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.e> KoM;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.g> KoN;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.h> KoO;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.a> KoP;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.k> KoQ;
+  private com.tencent.tinker.c.a.a.a.i<com.tencent.tinker.a.a.d> KoR;
+  private final com.tencent.tinker.a.a.i Koz;
   
   private a(com.tencent.tinker.a.a.i parami, com.tencent.tinker.c.a.b.a parama)
   {
-    this.ICq = parami;
-    this.ICs = parama;
-    this.ICr = new com.tencent.tinker.a.a.i(parama.IDr);
-    this.ICt = new com.tencent.tinker.c.a.c.c();
+    this.Koz = parami;
+    this.KoB = parama;
+    this.KoA = new com.tencent.tinker.a.a.i(parama.KpA);
+    this.KoC = new com.tencent.tinker.c.a.c.c();
   }
   
   public a(InputStream paramInputStream1, InputStream paramInputStream2)
@@ -54,109 +54,109 @@ public final class a
   public final void c(OutputStream paramOutputStream)
   {
     int j = 0;
-    Object localObject1 = this.ICq.xy(false);
+    Object localObject1 = this.Koz.yO(false);
     if (localObject1 == null) {
       throw new IOException("failed to compute old dex's signature.");
     }
-    if (this.ICs == null) {
+    if (this.KoB == null) {
       throw new IllegalArgumentException("patch file is null.");
     }
-    Object localObject2 = this.ICs.IDK;
+    Object localObject2 = this.KoB.KpT;
     if (com.tencent.tinker.a.a.b.c.p((byte[])localObject1, (byte[])localObject2) != 0) {
       throw new IOException(String.format("old dex signature mismatch! expected: %s, actual: %s", new Object[] { Arrays.toString((byte[])localObject1), Arrays.toString((byte[])localObject2) }));
     }
-    localObject1 = this.ICr.IBe;
-    ((s)localObject1).IBy.off = 0;
-    ((s)localObject1).IBy.size = 1;
-    ((s)localObject1).IBF.size = 1;
-    ((s)localObject1).IBz.off = this.ICs.IDt;
-    ((s)localObject1).IBA.off = this.ICs.IDu;
-    ((s)localObject1).IBG.off = this.ICs.IDA;
-    ((s)localObject1).IBB.off = this.ICs.IDv;
-    ((s)localObject1).IBC.off = this.ICs.IDw;
-    ((s)localObject1).IBD.off = this.ICs.IDx;
-    ((s)localObject1).IBE.off = this.ICs.IDy;
-    ((s)localObject1).IBF.off = this.ICs.IDz;
-    ((s)localObject1).IBL.off = this.ICs.IDF;
-    ((s)localObject1).IBN.off = this.ICs.IDH;
-    ((s)localObject1).IBI.off = this.ICs.IDC;
-    ((s)localObject1).IBH.off = this.ICs.IDB;
-    ((s)localObject1).IBP.off = this.ICs.IDJ;
-    ((s)localObject1).IBO.off = this.ICs.IDI;
-    ((s)localObject1).IBM.off = this.ICs.IDG;
-    ((s)localObject1).IBK.off = this.ICs.IDE;
-    ((s)localObject1).IBJ.off = this.ICs.IDD;
-    ((s)localObject1).fileSize = this.ICs.IDr;
-    Arrays.sort(((s)localObject1).IBQ);
-    ((s)localObject1).foQ();
-    this.ICu = new com.tencent.tinker.c.a.a.a.n(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICv = new o(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICw = new l(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICx = new j(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICy = new com.tencent.tinker.c.a.a.a.k(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICz = new com.tencent.tinker.c.a.a.a.f(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICA = new com.tencent.tinker.c.a.a.a.p(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICB = new com.tencent.tinker.c.a.a.a.b(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICC = new com.tencent.tinker.c.a.a.a.c(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICD = new com.tencent.tinker.c.a.a.a.e(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICE = new com.tencent.tinker.c.a.a.a.g(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICF = new com.tencent.tinker.c.a.a.a.h(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICG = new com.tencent.tinker.c.a.a.a.a(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICH = new m(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICI = new com.tencent.tinker.c.a.a.a.d(this.ICs, this.ICq, this.ICr, this.ICt);
-    this.ICu.execute();
-    this.ICv.execute();
-    this.ICA.execute();
-    this.ICw.execute();
-    this.ICx.execute();
-    this.ICy.execute();
-    this.ICG.execute();
-    this.ICC.execute();
-    this.ICB.execute();
-    this.ICI.execute();
-    this.ICF.execute();
-    this.ICE.execute();
-    this.ICD.execute();
-    this.ICH.execute();
-    this.ICz.execute();
-    localObject2 = this.ICr.acc(((s)localObject1).IBy.off);
+    localObject1 = this.KoA.Knn;
+    ((s)localObject1).KnH.off = 0;
+    ((s)localObject1).KnH.size = 1;
+    ((s)localObject1).KnO.size = 1;
+    ((s)localObject1).KnI.off = this.KoB.KpC;
+    ((s)localObject1).KnJ.off = this.KoB.KpD;
+    ((s)localObject1).KnP.off = this.KoB.KpJ;
+    ((s)localObject1).KnK.off = this.KoB.KpE;
+    ((s)localObject1).KnL.off = this.KoB.KpF;
+    ((s)localObject1).KnM.off = this.KoB.KpG;
+    ((s)localObject1).KnN.off = this.KoB.KpH;
+    ((s)localObject1).KnO.off = this.KoB.KpI;
+    ((s)localObject1).KnU.off = this.KoB.KpO;
+    ((s)localObject1).KnW.off = this.KoB.KpQ;
+    ((s)localObject1).KnR.off = this.KoB.KpL;
+    ((s)localObject1).KnQ.off = this.KoB.KpK;
+    ((s)localObject1).KnY.off = this.KoB.KpS;
+    ((s)localObject1).KnX.off = this.KoB.KpR;
+    ((s)localObject1).KnV.off = this.KoB.KpP;
+    ((s)localObject1).KnT.off = this.KoB.KpN;
+    ((s)localObject1).KnS.off = this.KoB.KpM;
+    ((s)localObject1).fileSize = this.KoB.KpA;
+    Arrays.sort(((s)localObject1).KnZ);
+    ((s)localObject1).fGY();
+    this.KoD = new com.tencent.tinker.c.a.a.a.n(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoE = new o(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoF = new l(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoG = new j(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoH = new com.tencent.tinker.c.a.a.a.k(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoI = new com.tencent.tinker.c.a.a.a.f(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoJ = new com.tencent.tinker.c.a.a.a.p(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoK = new com.tencent.tinker.c.a.a.a.b(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoL = new com.tencent.tinker.c.a.a.a.c(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoM = new com.tencent.tinker.c.a.a.a.e(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoN = new com.tencent.tinker.c.a.a.a.g(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoO = new com.tencent.tinker.c.a.a.a.h(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoP = new com.tencent.tinker.c.a.a.a.a(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoQ = new m(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoR = new com.tencent.tinker.c.a.a.a.d(this.KoB, this.Koz, this.KoA, this.KoC);
+    this.KoD.execute();
+    this.KoE.execute();
+    this.KoJ.execute();
+    this.KoF.execute();
+    this.KoG.execute();
+    this.KoH.execute();
+    this.KoP.execute();
+    this.KoL.execute();
+    this.KoK.execute();
+    this.KoR.execute();
+    this.KoO.execute();
+    this.KoN.execute();
+    this.KoM.execute();
+    this.KoQ.execute();
+    this.KoI.execute();
+    localObject2 = this.KoA.aeY(((s)localObject1).KnH.off);
     ((i.e)localObject2).write(("dex\n" + "035" + "").getBytes("UTF-8"));
-    ((i.e)localObject2).writeInt(((s)localObject1).hDs);
-    ((i.e)localObject2).write(((s)localObject1).taa);
+    ((i.e)localObject2).writeInt(((s)localObject1).idU);
+    ((i.e)localObject2).write(((s)localObject1).uiq);
     ((i.e)localObject2).writeInt(((s)localObject1).fileSize);
     ((i.e)localObject2).writeInt(112);
     ((i.e)localObject2).writeInt(305419896);
-    ((i.e)localObject2).writeInt(((s)localObject1).IBR);
-    ((i.e)localObject2).writeInt(((s)localObject1).IBS);
-    ((i.e)localObject2).writeInt(((s)localObject1).IBF.off);
-    ((i.e)localObject2).writeInt(((s)localObject1).IBz.size);
-    if (((s)localObject1).IBz.exists())
+    ((i.e)localObject2).writeInt(((s)localObject1).Koa);
+    ((i.e)localObject2).writeInt(((s)localObject1).Kob);
+    ((i.e)localObject2).writeInt(((s)localObject1).KnO.off);
+    ((i.e)localObject2).writeInt(((s)localObject1).KnI.size);
+    if (((s)localObject1).KnI.exists())
     {
-      i = ((s)localObject1).IBz.off;
+      i = ((s)localObject1).KnI.off;
       ((i.e)localObject2).writeInt(i);
-      ((i.e)localObject2).writeInt(((s)localObject1).IBA.size);
-      if (!((s)localObject1).IBA.exists()) {
+      ((i.e)localObject2).writeInt(((s)localObject1).KnJ.size);
+      if (!((s)localObject1).KnJ.exists()) {
         break label1360;
       }
-      i = ((s)localObject1).IBA.off;
+      i = ((s)localObject1).KnJ.off;
       label1125:
       ((i.e)localObject2).writeInt(i);
-      ((i.e)localObject2).writeInt(((s)localObject1).IBB.size);
-      if (!((s)localObject1).IBB.exists()) {
+      ((i.e)localObject2).writeInt(((s)localObject1).KnK.size);
+      if (!((s)localObject1).KnK.exists()) {
         break label1365;
       }
-      i = ((s)localObject1).IBB.off;
+      i = ((s)localObject1).KnK.off;
       label1164:
       ((i.e)localObject2).writeInt(i);
-      ((i.e)localObject2).writeInt(((s)localObject1).IBC.size);
-      if (!((s)localObject1).IBC.exists()) {
+      ((i.e)localObject2).writeInt(((s)localObject1).KnL.size);
+      if (!((s)localObject1).KnL.exists()) {
         break label1370;
       }
-      i = ((s)localObject1).IBC.off;
+      i = ((s)localObject1).KnL.off;
       label1203:
       ((i.e)localObject2).writeInt(i);
-      ((i.e)localObject2).writeInt(((s)localObject1).IBD.size);
-      if (!((s)localObject1).IBD.exists()) {
+      ((i.e)localObject2).writeInt(((s)localObject1).KnM.size);
+      if (!((s)localObject1).KnM.exists()) {
         break label1375;
       }
     }
@@ -164,20 +164,20 @@ public final class a
     label1365:
     label1370:
     label1375:
-    for (int i = ((s)localObject1).IBD.off;; i = 0)
+    for (int i = ((s)localObject1).KnM.off;; i = 0)
     {
       ((i.e)localObject2).writeInt(i);
-      ((i.e)localObject2).writeInt(((s)localObject1).IBE.size);
+      ((i.e)localObject2).writeInt(((s)localObject1).KnN.size);
       i = j;
-      if (((s)localObject1).IBE.exists()) {
-        i = ((s)localObject1).IBE.off;
+      if (((s)localObject1).KnN.exists()) {
+        i = ((s)localObject1).KnN.off;
       }
       ((i.e)localObject2).writeInt(i);
-      ((i.e)localObject2).writeInt(((s)localObject1).oJm);
-      ((i.e)localObject2).writeInt(((s)localObject1).IBT);
-      ((s)localObject1).b(this.ICr.acc(((s)localObject1).IBF.off));
-      this.ICr.fos();
-      paramOutputStream.write(this.ICr.aIq.array());
+      ((i.e)localObject2).writeInt(((s)localObject1).dataSize);
+      ((i.e)localObject2).writeInt(((s)localObject1).Koc);
+      ((s)localObject1).b(this.KoA.aeY(((s)localObject1).KnO.off));
+      this.KoA.fGA();
+      paramOutputStream.write(this.KoA.aJg.array());
       paramOutputStream.flush();
       return;
       i = 0;

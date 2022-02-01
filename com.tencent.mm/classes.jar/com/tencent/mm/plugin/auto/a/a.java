@@ -8,12 +8,16 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.support.v4.app.s.d;
 import android.support.v4.app.s.d.a;
 import android.support.v4.app.s.d.a.a;
+import android.support.v4.app.x;
+import android.support.v4.app.x.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k.b;
-import com.tencent.mm.g.a.ww;
-import com.tencent.mm.g.a.ww.b;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ah.k.b;
+import com.tencent.mm.g.a.xh;
+import com.tencent.mm.g.a.xh.b;
+import com.tencent.mm.g.a.y;
+import com.tencent.mm.g.a.y.a;
+import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.m.f;
 import com.tencent.mm.model.az;
 import com.tencent.mm.model.bi;
@@ -21,41 +25,39 @@ import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bl.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bo.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.List;
 
 public final class a
 {
-  com.tencent.mm.sdk.b.c mpM;
+  com.tencent.mm.sdk.b.c mRN;
   
   public a()
   {
     AppMethodBeat.i(21156);
-    this.mpM = new com.tencent.mm.sdk.b.c()
+    this.mRN = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(com.tencent.mm.g.a.x paramAnonymousx)
+      private static boolean a(y paramAnonymousy)
       {
         AppMethodBeat.i(21154);
-        if ((paramAnonymousx instanceof com.tencent.mm.g.a.x)) {}
+        if ((paramAnonymousy instanceof y)) {}
         try
         {
-          com.tencent.mm.g.a.x.a locala = paramAnonymousx.dbP;
-          localObject1 = paramAnonymousx.dbP.username;
-          paramAnonymousx = paramAnonymousx.dbP.title;
-          if (a.bvK()) {
+          y.a locala = paramAnonymousy.cZo;
+          localObject1 = paramAnonymousy.cZo.username;
+          paramAnonymousy = paramAnonymousy.cZo.title;
+          if (a.bCG()) {
             break label58;
           }
-          paramAnonymousx = null;
-          locala.dbQ = paramAnonymousx;
+          paramAnonymousy = null;
+          locala.cZp = paramAnonymousy;
         }
-        catch (Throwable paramAnonymousx)
+        catch (Throwable paramAnonymousy)
         {
           for (;;)
           {
@@ -65,7 +67,7 @@ public final class a
             Object localObject5;
             int i;
             Object localObject6;
-            ad.printErrStackTrace("MicroMsg.auto.AutoLogic", paramAnonymousx, "", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.auto.AutoLogic", paramAnonymousy, "", new Object[0]);
             continue;
             continue;
             Object localObject1 = null;
@@ -73,114 +75,114 @@ public final class a
             continue;
             i -= 1;
             continue;
-            paramAnonymousx = (com.tencent.mm.g.a.x)localObject2;
+            paramAnonymousy = (y)localObject2;
           }
         }
         AppMethodBeat.o(21154);
         return false;
         label58:
         localObject2 = new Intent().addFlags(32).setAction("com.tencent.mm.permission.MM_AUTO_HEARD_MESSAGE").putExtra("key_username", (String)localObject1);
-        com.tencent.mm.sdk.platformtools.g.bd((Intent)localObject2);
-        localObject2 = PendingIntent.getBroadcast(aj.getContext(), ((String)localObject1).hashCode(), (Intent)localObject2, 134217728);
+        com.tencent.mm.sdk.platformtools.g.be((Intent)localObject2);
+        localObject2 = PendingIntent.getBroadcast(com.tencent.mm.sdk.platformtools.ai.getContext(), ((String)localObject1).hashCode(), (Intent)localObject2, 134217728);
         localObject3 = new Intent().addFlags(32).setAction("com.tencent.mm.permission.MM_AUTO_REPLY_MESSAGE").putExtra("key_username", (String)localObject1);
-        com.tencent.mm.sdk.platformtools.g.bd((Intent)localObject3);
-        localObject3 = PendingIntent.getBroadcast(aj.getContext(), ((String)localObject1).hashCode(), (Intent)localObject3, 134217728);
-        localObject4 = new android.support.v4.app.x.a("key_voice_reply_text");
-        ((android.support.v4.app.x.a)localObject4).FI = aj.getContext().getString(2131755875);
-        localObject5 = new android.support.v4.app.x(((android.support.v4.app.x.a)localObject4).FH, ((android.support.v4.app.x.a)localObject4).FI, ((android.support.v4.app.x.a)localObject4).FJ, ((android.support.v4.app.x.a)localObject4).FK, ((android.support.v4.app.x.a)localObject4).mExtras, ((android.support.v4.app.x.a)localObject4).FL);
-        localObject4 = new s.d.a.a(paramAnonymousx);
-        ((s.d.a.a)localObject4).Fe = ((PendingIntent)localObject2);
-        ((s.d.a.a)localObject4).Fc = ((android.support.v4.app.x)localObject5);
-        ((s.d.a.a)localObject4).Fd = ((PendingIntent)localObject3);
-        int j = f.pD((String)localObject1);
+        com.tencent.mm.sdk.platformtools.g.be((Intent)localObject3);
+        localObject3 = PendingIntent.getBroadcast(com.tencent.mm.sdk.platformtools.ai.getContext(), ((String)localObject1).hashCode(), (Intent)localObject3, 134217728);
+        localObject4 = new x.a("key_voice_reply_text");
+        ((x.a)localObject4).GG = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131755875);
+        localObject5 = new x(((x.a)localObject4).GF, ((x.a)localObject4).GG, ((x.a)localObject4).GH, ((x.a)localObject4).GI, ((x.a)localObject4).mExtras, ((x.a)localObject4).GJ);
+        localObject4 = new s.d.a.a(paramAnonymousy);
+        ((s.d.a.a)localObject4).Gc = ((PendingIntent)localObject2);
+        ((s.d.a.a)localObject4).Ga = ((x)localObject5);
+        ((s.d.a.a)localObject4).Gb = ((PendingIntent)localObject3);
+        int j = f.sO((String)localObject1);
         i = j;
         if (j > 10) {
           i = 10;
         }
-        az.arV();
-        localObject5 = com.tencent.mm.model.c.apO().dE((String)localObject1, i);
+        az.ayM();
+        localObject5 = com.tencent.mm.model.c.awD().dK((String)localObject1, i);
         i = ((List)localObject5).size() - 1;
         if (i >= 0)
         {
-          localObject6 = (bl)((List)localObject5).get(i);
+          localObject6 = (bo)((List)localObject5).get(i);
           localObject2 = null;
-          if (!w.pF(((du)localObject6).field_talker)) {
+          if (!w.sQ(((dy)localObject6).field_talker)) {
             break label1689;
           }
-          localObject1 = ((du)localObject6).field_talker;
-          j = bi.uc(((du)localObject6).field_content);
-          paramAnonymousx = (com.tencent.mm.g.a.x)localObject1;
+          localObject1 = ((dy)localObject6).field_talker;
+          j = bi.yi(((dy)localObject6).field_content);
+          paramAnonymousy = (y)localObject1;
           if (j != -1)
           {
-            localObject3 = ((du)localObject6).field_content.substring(0, j).trim();
-            paramAnonymousx = (com.tencent.mm.g.a.x)localObject1;
+            localObject3 = ((dy)localObject6).field_content.substring(0, j).trim();
+            paramAnonymousy = (y)localObject1;
             if (localObject3 != null)
             {
-              paramAnonymousx = (com.tencent.mm.g.a.x)localObject1;
+              paramAnonymousy = (y)localObject1;
               if (((String)localObject3).length() > 0) {
-                paramAnonymousx = (com.tencent.mm.g.a.x)localObject3;
+                paramAnonymousy = (y)localObject3;
               }
             }
           }
-          az.arV();
-          localObject3 = com.tencent.mm.model.c.apM().aHY(paramAnonymousx);
-          localObject1 = v.b((af)localObject3, paramAnonymousx);
-          if ((!w.pF(paramAnonymousx)) || ((!((au)localObject3).field_username.equals(localObject1)) && (!bt.isNullOrNil((String)localObject1)))) {
+          az.ayM();
+          localObject3 = com.tencent.mm.model.c.awB().aNt(paramAnonymousy);
+          localObject1 = v.b((com.tencent.mm.storage.ai)localObject3, paramAnonymousy);
+          if ((!w.sQ(paramAnonymousy)) || ((!((av)localObject3).field_username.equals(localObject1)) && (!bs.isNullOrNil((String)localObject1)))) {
             break label1695;
           }
-          localObject1 = aj.getContext().getString(2131757293);
-          if (((bl)localObject6).eJO()) {
-            paramAnonymousx = aj.getContext().getString(2131761693);
+          localObject1 = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131757293);
+          if (((bo)localObject6).eZm()) {
+            paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761693);
           }
           for (;;)
           {
             label464:
-            localObject2 = paramAnonymousx;
-            if (paramAnonymousx == null) {
-              localObject2 = aj.getContext().getString(2131761720);
+            localObject2 = paramAnonymousy;
+            if (paramAnonymousy == null) {
+              localObject2 = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761720);
             }
-            paramAnonymousx = (com.tencent.mm.g.a.x)localObject2;
+            paramAnonymousy = (y)localObject2;
             if (localObject1 != null) {
-              paramAnonymousx = String.format("%s: %s", new Object[] { localObject1, localObject2 });
+              paramAnonymousy = String.format("%s: %s", new Object[] { localObject1, localObject2 });
             }
-            ((s.d.a.a)localObject4).Fh.add(paramAnonymousx);
+            ((s.d.a.a)localObject4).Gf.add(paramAnonymousy);
             if (i != 0) {
               break label1698;
             }
-            ((s.d.a.a)localObject4).Fg = ((du)localObject6).field_createTime;
+            ((s.d.a.a)localObject4).Ge = ((dy)localObject6).field_createTime;
             break label1698;
-            if (((bl)localObject6).isText())
+            if (((bo)localObject6).isText())
             {
-              if ((w.pF(((du)localObject6).field_talker)) && (((du)localObject6).field_isSend != 1))
+              if ((w.sQ(((dy)localObject6).field_talker)) && (((dy)localObject6).field_isSend != 1))
               {
-                j = bi.uc(((du)localObject6).field_content);
+                j = bi.yi(((dy)localObject6).field_content);
                 if (j != -1) {
-                  paramAnonymousx = ((du)localObject6).field_content.substring(j + 1).trim();
+                  paramAnonymousy = ((dy)localObject6).field_content.substring(j + 1).trim();
                 } else {
-                  paramAnonymousx = ((du)localObject6).field_content;
+                  paramAnonymousy = ((dy)localObject6).field_content;
                 }
               }
               else
               {
-                paramAnonymousx = ((du)localObject6).field_content;
+                paramAnonymousy = ((dy)localObject6).field_content;
               }
             }
-            else if (((bl)localObject6).eJN())
+            else if (((bo)localObject6).eZl())
             {
-              paramAnonymousx = aj.getContext().getString(2131761729);
+              paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761729);
             }
-            else if (((bl)localObject6).cjM())
+            else if (((bo)localObject6).crt())
             {
-              paramAnonymousx = aj.getContext().getString(2131761728);
+              paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761728);
             }
-            else if (((bl)localObject6).cjO())
+            else if (((bo)localObject6).crv())
             {
-              paramAnonymousx = aj.getContext().getString(2131761719);
+              paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761719);
             }
-            else if (((bl)localObject6).cxB())
+            else if (((bo)localObject6).cKN())
             {
-              localObject3 = k.b.rx(((du)localObject6).field_content);
-              paramAnonymousx = (com.tencent.mm.g.a.x)localObject2;
+              localObject3 = k.b.vA(((dy)localObject6).field_content);
+              paramAnonymousy = (y)localObject2;
               if (localObject3 == null) {}
             }
             else
@@ -188,81 +190,81 @@ public final class a
               switch (((k.b)localObject3).type)
               {
               case 2: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761693), new Object[0]);
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761693), new Object[0]);
                 break;
               case 5: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761662), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761662), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 3: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761665), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761665), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 6: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761661), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761661), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 4: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761669), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761669), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 19: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761667), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761667), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 24: 
-                paramAnonymousx = aj.getContext().getString(2131759036);
+                paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131759036);
                 break;
               case 15: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761660), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761660), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 10: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761666), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761666), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 13: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761664), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761664), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 20: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761668), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761668), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 16: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761673), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761673), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 break;
               case 8: 
-                paramAnonymousx = String.format(aj.getContext().getString(2131761674), new Object[] { bt.by(((k.b)localObject3).title, "") });
+                paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761674), new Object[] { bs.bG(((k.b)localObject3).title, "") });
                 continue;
-                if (((bl)localObject6).eLY())
+                if (((bo)localObject6).fbC())
                 {
-                  paramAnonymousx = aj.getContext().getString(2131761682);
+                  paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761682);
                   localObject2 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
                   if (localObject2 == null) {
                     break label1686;
                   }
-                  paramAnonymousx = ((com.tencent.mm.pluginsdk.a.d)localObject2).Tz(((du)localObject6).field_imgPath);
-                  if ((paramAnonymousx == null) || (bt.isNullOrNil(((com.tencent.mm.pluginsdk.a.d)localObject2).TD(paramAnonymousx.JS())))) {
-                    paramAnonymousx = aj.getContext().getString(2131761682);
+                  paramAnonymousy = ((com.tencent.mm.pluginsdk.a.d)localObject2).XL(((dy)localObject6).field_imgPath);
+                  if ((paramAnonymousy == null) || (bs.isNullOrNil(((com.tencent.mm.pluginsdk.a.d)localObject2).XP(paramAnonymousy.JC())))) {
+                    paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761682);
                   } else {
-                    paramAnonymousx = "[" + ((com.tencent.mm.pluginsdk.a.d)localObject2).TD(paramAnonymousx.JS()) + "]";
+                    paramAnonymousy = "[" + ((com.tencent.mm.pluginsdk.a.d)localObject2).XP(paramAnonymousy.JC()) + "]";
                   }
                 }
-                else if (((bl)localObject6).cxD())
+                else if (((bo)localObject6).cKP())
                 {
-                  paramAnonymousx = aj.getContext().getString(2131761694);
+                  paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761694);
                 }
                 else
                 {
-                  if ((!((bl)localObject6).eLT()) && (!((bl)localObject6).eLU())) {
+                  if ((!((bo)localObject6).fbx()) && (!((bo)localObject6).fby())) {
                     break label1486;
                   }
-                  if (!((du)localObject6).field_content.equals(bl.FzM))
+                  if (!((dy)localObject6).field_content.equals(bo.GYO))
                   {
-                    paramAnonymousx = ((du)localObject6).field_content;
-                    localObject2 = new ww();
-                    ((ww)localObject2).dCp.djq = 1;
-                    ((ww)localObject2).dCp.content = paramAnonymousx;
-                    com.tencent.mm.sdk.b.a.ESL.l((b)localObject2);
-                    if (((ww)localObject2).dCq.type != 3) {
+                    paramAnonymousy = ((dy)localObject6).field_content;
+                    localObject2 = new xh();
+                    ((xh)localObject2).dAb.dgL = 1;
+                    ((xh)localObject2).dAb.content = paramAnonymousy;
+                    com.tencent.mm.sdk.b.a.GpY.l((b)localObject2);
+                    if (((xh)localObject2).dAc.type != 3) {
                       break label1718;
                     }
                     j = 1;
                     break label1711;
                   }
-                  paramAnonymousx = aj.getContext().getString(2131761733);
+                  paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761733);
                 }
                 break;
               }
@@ -278,30 +280,30 @@ public final class a
         label1721:
         for (;;)
         {
-          paramAnonymousx = aj.getContext().getString(2131761732);
+          paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761732);
           break label464;
           label1486:
-          if (((bl)localObject6).eLX())
+          if (((bo)localObject6).fbB())
           {
-            az.arV();
-            paramAnonymousx = com.tencent.mm.model.c.apO().agC(((du)localObject6).field_content);
-            paramAnonymousx = String.format(aj.getContext().getString(2131761673), new Object[] { paramAnonymousx.getDisplayName() });
+            az.ayM();
+            paramAnonymousy = com.tencent.mm.model.c.awD().alw(((dy)localObject6).field_content);
+            paramAnonymousy = String.format(com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761673), new Object[] { paramAnonymousy.getDisplayName() });
             break label464;
           }
-          paramAnonymousx = (com.tencent.mm.g.a.x)localObject2;
-          if (((bl)localObject6).getType() != -1879048186) {
+          paramAnonymousy = (y)localObject2;
+          if (((bo)localObject6).getType() != -1879048186) {
             break label464;
           }
-          paramAnonymousx = aj.getContext().getString(2131761663);
+          paramAnonymousy = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761663);
           break label464;
-          paramAnonymousx = new s.d();
-          localObject1 = (String[])((s.d.a.a)localObject4).Fh.toArray(new String[((s.d.a.a)localObject4).Fh.size()]);
-          localObject2 = ((s.d.a.a)localObject4).Fi;
-          localObject3 = ((s.d.a.a)localObject4).Fc;
-          localObject5 = ((s.d.a.a)localObject4).Fd;
-          localObject6 = ((s.d.a.a)localObject4).Fe;
-          long l = ((s.d.a.a)localObject4).Fg;
-          paramAnonymousx.Fa = new s.d.a((String[])localObject1, (android.support.v4.app.x)localObject3, (PendingIntent)localObject5, (PendingIntent)localObject6, new String[] { localObject2 }, l);
+          paramAnonymousy = new s.d();
+          localObject1 = (String[])((s.d.a.a)localObject4).Gf.toArray(new String[((s.d.a.a)localObject4).Gf.size()]);
+          localObject2 = ((s.d.a.a)localObject4).Gg;
+          localObject3 = ((s.d.a.a)localObject4).Ga;
+          localObject5 = ((s.d.a.a)localObject4).Gb;
+          localObject6 = ((s.d.a.a)localObject4).Gc;
+          long l = ((s.d.a.a)localObject4).Ge;
+          paramAnonymousy.FY = new s.d.a((String[])localObject1, (x)localObject3, (PendingIntent)localObject5, (PendingIntent)localObject6, new String[] { localObject2 }, l);
           break;
           for (;;)
           {
@@ -317,10 +319,10 @@ public final class a
     AppMethodBeat.o(21156);
   }
   
-  static boolean bvK()
+  static boolean bCG()
   {
     AppMethodBeat.i(21157);
-    PackageManager localPackageManager = aj.getContext().getPackageManager();
+    PackageManager localPackageManager = com.tencent.mm.sdk.platformtools.ai.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.projection.gearhead", 1);
@@ -333,14 +335,14 @@ public final class a
         boolean bool = false;
       }
     }
-    ad.i("MicroMsg.auto.AutoLogic", "isInstallAutoApp %b", new Object[] { Boolean.valueOf(bool) });
+    ac.i("MicroMsg.auto.AutoLogic", "isInstallAutoApp %b", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(21157);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.a.a
  * JD-Core Version:    0.7.0.1
  */

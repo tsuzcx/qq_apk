@@ -8,16 +8,34 @@ public abstract class ha
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fgN = "pluginAppID".hashCode();
-  private static final int fgO = "pluginAppVersion".hashCode();
-  private static final int fgP = "pluginStringVersion".hashCode();
+  private static final int enO = "appId".hashCode();
+  private static final int eol = "updateTime".hashCode();
+  private static final int fiY = "accessTime".hashCode();
+  private static final int fjA;
+  private static final int fjB;
+  private static final int fjC = "cacheFilePath".hashCode();
+  private static final int fjz = "commLibVersionId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fgK = true;
-  private boolean fgL = true;
-  private boolean fgM = true;
-  public String field_pluginAppID;
-  public int field_pluginAppVersion;
-  public String field_pluginStringVersion;
+  private boolean enx = true;
+  private boolean eoi = true;
+  private boolean fiK = true;
+  public long field_accessTime;
+  public String field_appId;
+  public String field_appVersionId;
+  public String field_cacheFilePath;
+  public String field_commLibVersionId;
+  public String field_pageURL;
+  public long field_updateTime;
+  private boolean fjv = true;
+  private boolean fjw = true;
+  private boolean fjx = true;
+  private boolean fjy = true;
+  
+  static
+  {
+    fjA = "appVersionId".hashCode();
+    fjB = "pageURL".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,10 +50,10 @@ public abstract class ha
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgN != k) {
+      if (enO != k) {
         break label60;
       }
-      this.field_pluginAppID = paramCursor.getString(i);
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -43,10 +61,18 @@ public abstract class ha
       break label20;
       break;
       label60:
-      if (fgO == k) {
-        this.field_pluginAppVersion = paramCursor.getInt(i);
-      } else if (fgP == k) {
-        this.field_pluginStringVersion = paramCursor.getString(i);
+      if (fjz == k) {
+        this.field_commLibVersionId = paramCursor.getString(i);
+      } else if (fjA == k) {
+        this.field_appVersionId = paramCursor.getString(i);
+      } else if (fjB == k) {
+        this.field_pageURL = paramCursor.getString(i);
+      } else if (eol == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (fiY == k) {
+        this.field_accessTime = paramCursor.getLong(i);
+      } else if (fjC == k) {
+        this.field_cacheFilePath = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +82,26 @@ public abstract class ha
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgK) {
-      localContentValues.put("pluginAppID", this.field_pluginAppID);
+    if (this.enx) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.fgL) {
-      localContentValues.put("pluginAppVersion", Integer.valueOf(this.field_pluginAppVersion));
+    if (this.fjv) {
+      localContentValues.put("commLibVersionId", this.field_commLibVersionId);
     }
-    if (this.fgM) {
-      localContentValues.put("pluginStringVersion", this.field_pluginStringVersion);
+    if (this.fjw) {
+      localContentValues.put("appVersionId", this.field_appVersionId);
+    }
+    if (this.fjx) {
+      localContentValues.put("pageURL", this.field_pageURL);
+    }
+    if (this.eoi) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.fiK) {
+      localContentValues.put("accessTime", Long.valueOf(this.field_accessTime));
+    }
+    if (this.fjy) {
+      localContentValues.put("cacheFilePath", this.field_cacheFilePath);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -73,7 +111,7 @@ public abstract class ha
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ha
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,12 @@ package com.tencent.mm.plugin.fav.ui.detail;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -32,13 +28,10 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.fav.a.ab;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.an;
 import com.tencent.mm.plugin.fav.a.k;
-import com.tencent.mm.plugin.fav.a.m.a;
-import com.tencent.mm.plugin.fav.a.m.b;
 import com.tencent.mm.plugin.fav.a.m.c;
 import com.tencent.mm.plugin.fav.a.m.d;
 import com.tencent.mm.plugin.fav.a.x;
@@ -48,16 +41,15 @@ import com.tencent.mm.plugin.fav.ui.o;
 import com.tencent.mm.plugin.handoff.model.HandOffFile;
 import com.tencent.mm.plugin.messenger.a.j;
 import com.tencent.mm.pluginsdk.ui.tools.t;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.agb;
-import com.tencent.mm.protocal.protobuf.ago;
-import com.tencent.mm.protocal.protobuf.agq;
+import com.tencent.mm.protocal.protobuf.agx;
+import com.tencent.mm.protocal.protobuf.aha;
+import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.ahp;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.base.n.c;
@@ -71,71 +63,56 @@ public class FavoriteFileDetailUI
   extends BaseFavDetailReportUI
   implements com.tencent.mm.plugin.fav.a.p, k.a
 {
-  private long deL;
-  private afy djJ;
-  private boolean drV;
-  private ap gAC;
-  private TextView imt;
-  private TextView kXT;
-  private int mUE;
-  private int mUF;
-  private com.tencent.mm.ui.widget.b.a mVN;
-  private com.tencent.mm.pluginsdk.ui.tools.h nAZ;
-  private Button oAT;
-  private n.d peM;
+  private long dcg;
+  private agx dhe;
+  private boolean dpG;
+  private ao gox;
+  private TextView iMz;
+  private TextView lzD;
+  private int nwY;
+  private int nwZ;
+  private com.tencent.mm.ui.widget.b.a nym;
+  private com.tencent.mm.pluginsdk.ui.tools.h odZ;
+  private n.d pHX;
+  private Button pet;
   private ProgressBar progressBar;
-  private com.tencent.mm.plugin.fav.a.g qaS;
-  private k qfm;
-  private String qhA;
-  private boolean qhB;
-  private boolean qhC;
-  private boolean qhD;
-  private HandOffFile qhE;
-  private com.tencent.mm.plugin.fav.ui.b.a qhF;
-  private View.OnTouchListener qhG;
-  private View.OnLongClickListener qhH;
-  private Button qho;
-  private Button qhp;
-  private MMImageView qhq;
-  private TextView qhr;
-  private View qhs;
-  private View qht;
-  private TextView qhu;
-  private ImageView qhv;
-  private TextView qhw;
-  private boolean qhx;
-  private boolean qhy;
-  private String qhz;
+  private com.tencent.mm.plugin.fav.a.g qJy;
+  private k qNO;
+  private Button qPQ;
+  private Button qPR;
+  private MMImageView qPS;
+  private TextView qPT;
+  private View qPU;
+  private View qPV;
+  private TextView qPW;
+  private ImageView qPX;
+  private TextView qPY;
+  private boolean qPZ;
+  private boolean qQa;
+  private String qQb;
+  private String qQc;
+  private boolean qQd;
+  private boolean qQe;
+  private boolean qQf;
+  private HandOffFile qQg;
+  private com.tencent.mm.plugin.fav.ui.b.a qQh;
+  private View.OnTouchListener qQi;
+  private View.OnLongClickListener qQj;
   
   public FavoriteFileDetailUI()
   {
     AppMethodBeat.i(107138);
-    this.nAZ = null;
-    this.qfm = new k();
-    this.qhx = false;
-    this.qhy = false;
-    this.drV = true;
-    this.qhB = false;
-    this.qhC = false;
-    this.qhD = false;
-    this.mVN = null;
-    this.peM = new n.d()
-    {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(107137);
-        ClipboardManager localClipboardManager = (ClipboardManager)aj.getContext().getSystemService("clipboard");
-        if (bt.isNullOrNil(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).title)) {}
-        for (paramAnonymousMenuItem = FavoriteFileDetailUI.this.getString(2131761808);; paramAnonymousMenuItem = FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).title)
-        {
-          localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, paramAnonymousMenuItem));
-          com.tencent.mm.ui.base.h.cf(FavoriteFileDetailUI.this, FavoriteFileDetailUI.this.getString(2131755702));
-          AppMethodBeat.o(107137);
-          return;
-        }
-      }
-    };
-    this.qhG = new View.OnTouchListener()
+    this.odZ = null;
+    this.qNO = new k();
+    this.qPZ = false;
+    this.qQa = false;
+    this.dpG = true;
+    this.qQd = false;
+    this.qQe = false;
+    this.qQf = false;
+    this.nym = null;
+    this.pHX = new FavoriteFileDetailUI.17(this);
+    this.qQi = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -152,14 +129,14 @@ public class FavoriteFileDetailUI
         }
       }
     };
-    this.qhH = new View.OnLongClickListener()
+    this.qQj = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107116);
-        ad.d("MicroMsg.FavoriteFileDetailUI", "onLongClick");
+        ac.d("MicroMsg.FavoriteFileDetailUI", "onLongClick");
         if (FavoriteFileDetailUI.m(FavoriteFileDetailUI.this) == null) {
-          FavoriteFileDetailUI.a(FavoriteFileDetailUI.this, new com.tencent.mm.ui.widget.b.a(FavoriteFileDetailUI.this.cjz()));
+          FavoriteFileDetailUI.a(FavoriteFileDetailUI.this, new com.tencent.mm.ui.widget.b.a(FavoriteFileDetailUI.this.crg()));
         }
         FavoriteFileDetailUI.m(FavoriteFileDetailUI.this).a(paramAnonymousView, FavoriteFileDetailUI.this, FavoriteFileDetailUI.n(FavoriteFileDetailUI.this), FavoriteFileDetailUI.o(FavoriteFileDetailUI.this), FavoriteFileDetailUI.p(FavoriteFileDetailUI.this));
         AppMethodBeat.o(107116);
@@ -172,7 +149,7 @@ public class FavoriteFileDetailUI
   private void a(final float paramFloat, final String paramString)
   {
     AppMethodBeat.i(107156);
-    this.gAC.post(new Runnable()
+    this.gox.post(new Runnable()
     {
       public final void run()
       {
@@ -185,69 +162,87 @@ public class FavoriteFileDetailUI
     AppMethodBeat.o(107156);
   }
   
-  private void bei()
+  private void blc()
   {
     AppMethodBeat.i(107158);
-    if (this.qhB)
+    if (this.qQd)
     {
       AppMethodBeat.o(107158);
       return;
     }
-    Object localObject = this.qhk;
-    ((com.tencent.mm.plugin.fav.a.h.a)localObject).pZQ += 1;
-    this.qhB = true;
+    Object localObject = this.qPM;
+    ((com.tencent.mm.plugin.fav.a.h.a)localObject).qIx += 1;
+    this.qQd = true;
     localObject = new Intent();
-    ((Intent)localObject).putExtra("key_detail_info_id", this.deL);
-    ((Intent)localObject).putExtra("key_detail_fav_path", com.tencent.mm.plugin.fav.a.b.d(this.djJ));
-    ((Intent)localObject).putExtra("key_detail_fav_thumb_path", com.tencent.mm.plugin.fav.a.b.a(this.djJ));
-    ((Intent)localObject).putExtra("key_detail_fav_video_duration", this.djJ.duration);
-    ((Intent)localObject).putExtra("key_detail_statExtStr", this.djJ.dxG);
-    ((Intent)localObject).putExtra("key_detail_msg_uuid", this.djJ.hAt);
+    ((Intent)localObject).putExtra("key_detail_info_id", this.dcg);
+    ((Intent)localObject).putExtra("key_detail_fav_path", com.tencent.mm.plugin.fav.a.b.d(this.dhe));
+    ((Intent)localObject).putExtra("key_detail_fav_thumb_path", com.tencent.mm.plugin.fav.a.b.a(this.dhe));
+    ((Intent)localObject).putExtra("key_detail_fav_video_duration", this.dhe.duration);
+    ((Intent)localObject).putExtra("key_detail_statExtStr", this.dhe.dvs);
+    ((Intent)localObject).putExtra("key_detail_msg_uuid", this.dhe.iaU);
     com.tencent.mm.plugin.fav.a.b.b(this, ".ui.detail.FavoriteVideoPlayUI", (Intent)localObject);
     finish();
     AppMethodBeat.o(107158);
   }
   
-  private void cjA()
+  private void crf()
+  {
+    AppMethodBeat.i(107139);
+    this.qQc = getIntent().getStringExtra("key_detail_data_id");
+    Iterator localIterator = this.qJy.field_favProto.nxC.iterator();
+    while (localIterator.hasNext())
+    {
+      agx localagx = (agx)localIterator.next();
+      if (localagx.dhw.equals(this.qQc)) {
+        this.dhe = localagx;
+      }
+    }
+    if (this.dhe == null) {
+      this.dhe = com.tencent.mm.plugin.fav.a.b.c(this.qJy);
+    }
+    AppMethodBeat.o(107139);
+  }
+  
+  private void crh()
   {
     AppMethodBeat.i(107146);
-    this.qhq.setVisibility(8);
-    this.imt.setVisibility(8);
-    this.qhp.setVisibility(8);
-    this.oAT.setVisibility(8);
-    this.qho.setVisibility(8);
-    this.qhs.setVisibility(8);
-    this.kXT.setVisibility(8);
-    this.qhv.setVisibility(0);
-    this.qhw.setVisibility(0);
-    if (this.djJ.dataType == 4)
+    this.qPS.setVisibility(8);
+    this.iMz.setVisibility(8);
+    this.qPR.setVisibility(8);
+    this.pet.setVisibility(8);
+    this.qPQ.setVisibility(8);
+    this.qPU.setVisibility(8);
+    this.lzD.setVisibility(8);
+    this.qPX.setVisibility(0);
+    this.qPY.setVisibility(0);
+    if (this.dhe.dataType == 4)
     {
-      this.kXT.setGravity(17);
-      this.kXT.setText(2131758941);
+      this.lzD.setGravity(17);
+      this.lzD.setText(2131758941);
       AppMethodBeat.o(107146);
       return;
     }
-    this.kXT.setGravity(17);
-    this.kXT.setText(2131758940);
-    if (this.djJ.Dhh == 2)
+    this.lzD.setGravity(17);
+    this.lzD.setText(2131758940);
+    if (this.dhe.EAn == 2)
     {
-      this.qhw.setText(2131758858);
+      this.qPY.setText(2131758858);
       AppMethodBeat.o(107146);
       return;
     }
-    this.qhw.setText(2131758859);
+    this.qPY.setText(2131758859);
     AppMethodBeat.o(107146);
   }
   
-  private void cjB()
+  private void cri()
   {
     AppMethodBeat.i(107147);
-    this.qhp.setVisibility(8);
-    this.oAT.setVisibility(8);
-    this.qho.setVisibility(8);
-    this.kXT.setVisibility(8);
-    this.qhs.setVisibility(0);
-    com.tencent.mm.plugin.fav.a.c localc = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().Yk(this.djJ.dkb);
+    this.qPR.setVisibility(8);
+    this.pet.setVisibility(8);
+    this.qPQ.setVisibility(8);
+    this.lzD.setVisibility(8);
+    this.qPU.setVisibility(0);
+    com.tencent.mm.plugin.fav.a.c localc = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().acG(this.dhe.dhw);
     int j;
     int i;
     int k;
@@ -257,34 +252,34 @@ public class FavoriteFileDetailUI
       i = localc.field_offset;
       k = localc.field_totalLen;
     }
-    while ((this.qaS.chH()) && (bt.isNullOrNil(this.djJ.DfZ)))
+    while ((this.qJy.cpo()) && (bs.isNullOrNil(this.dhe.Ezf)))
     {
-      a(j, getString(2131759028, new Object[] { com.tencent.mm.plugin.fav.a.b.aS(i), com.tencent.mm.plugin.fav.a.b.aS(k) }));
+      a(j, getString(2131759028, new Object[] { com.tencent.mm.plugin.fav.a.b.aX(i), com.tencent.mm.plugin.fav.a.b.aX(k) }));
       AppMethodBeat.o(107147);
       return;
-      k = (int)this.djJ.Dgu;
+      k = (int)this.dhe.EzA;
       i = 0;
       j = 0;
     }
-    a(j, getString(2131758872, new Object[] { com.tencent.mm.plugin.fav.a.b.aS(i), com.tencent.mm.plugin.fav.a.b.aS(k) }));
+    a(j, getString(2131758872, new Object[] { com.tencent.mm.plugin.fav.a.b.aX(i), com.tencent.mm.plugin.fav.a.b.aX(k) }));
     AppMethodBeat.o(107147);
   }
   
-  private void cjC()
+  private void crj()
   {
     AppMethodBeat.i(107148);
-    this.qhs.setVisibility(8);
-    this.qho.setVisibility(8);
-    if (bt.isNullOrNil(this.djJ.Dgg))
+    this.qPU.setVisibility(8);
+    this.qPQ.setVisibility(8);
+    if (bs.isNullOrNil(this.dhe.Ezm))
     {
-      this.oAT.setVisibility(8);
-      this.qhp.setVisibility(0);
-      localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().Yk(this.djJ.dkb);
+      this.pet.setVisibility(8);
+      this.qPR.setVisibility(0);
+      localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().acG(this.dhe.dhw);
       if ((localObject == null) || (((com.tencent.mm.plugin.fav.a.c)localObject).field_offset <= 0)) {
         break label150;
       }
-      localObject = this.qhp;
-      if (!this.qaS.isUploadFailed()) {
+      localObject = this.qPR;
+      if (!this.qJy.isUploadFailed()) {
         break label143;
       }
     }
@@ -292,15 +287,15 @@ public class FavoriteFileDetailUI
     for (int i = 2131758922;; i = 2131758921)
     {
       ((Button)localObject).setText(i);
-      this.kXT.setVisibility(8);
+      this.lzD.setVisibility(8);
       AppMethodBeat.o(107148);
       return;
-      this.oAT.setVisibility(0);
+      this.pet.setVisibility(0);
       break;
     }
     label150:
-    Object localObject = this.qhp;
-    if (this.qaS.isUploadFailed()) {}
+    Object localObject = this.qPR;
+    if (this.qJy.isUploadFailed()) {}
     for (i = 2131758923;; i = 2131758918)
     {
       ((Button)localObject).setText(i);
@@ -308,10 +303,10 @@ public class FavoriteFileDetailUI
     }
   }
   
-  private boolean cjD()
+  private boolean crk()
   {
     AppMethodBeat.i(107149);
-    if ((com.tencent.mm.plugin.fav.a.b.g(this.djJ)) && (com.tencent.mm.plugin.fav.a.b.h(this.djJ)))
+    if ((com.tencent.mm.plugin.fav.a.b.g(this.dhe)) && (com.tencent.mm.plugin.fav.a.b.h(this.dhe)))
     {
       AppMethodBeat.o(107149);
       return true;
@@ -320,30 +315,30 @@ public class FavoriteFileDetailUI
     return false;
   }
   
-  private void cjE()
+  private void crl()
   {
     AppMethodBeat.i(107150);
-    if ((getType() == 15) && (this.djJ.DgZ != null) && (!bt.isNullOrNil(this.djJ.DgZ.gJv)) && (!bt.isNullOrNil(this.djJ.DgZ.gJz)))
+    if ((getType() == 15) && (this.dhe.EAf != null) && (!bs.isNullOrNil(this.dhe.EAf.hjV)) && (!bs.isNullOrNil(this.dhe.EAf.hjZ)))
     {
-      this.qhC = true;
-      this.qhq.setVisibility(8);
-      this.qhs.setVisibility(8);
-      this.qhp.setVisibility(8);
-      this.oAT.setVisibility(8);
-      this.qho.setVisibility(8);
-      this.kXT.setVisibility(8);
-      String str = com.tencent.mm.plugin.fav.a.b.d(this.djJ);
-      ad.d("MicroMsg.FavoriteFileDetailUI", f.XI() + " initView: fullpath:" + str);
+      this.qQe = true;
+      this.qPS.setVisibility(8);
+      this.qPU.setVisibility(8);
+      this.qPR.setVisibility(8);
+      this.pet.setVisibility(8);
+      this.qPQ.setVisibility(8);
+      this.lzD.setVisibility(8);
+      String str = com.tencent.mm.plugin.fav.a.b.d(this.dhe);
+      ac.d("MicroMsg.FavoriteFileDetailUI", f.YF() + " initView: fullpath:" + str);
       ViewGroup localViewGroup = (ViewGroup)findViewById(2131306317);
-      this.nAZ = t.ho((MMActivity)super.getContext());
+      this.odZ = t.hz((MMActivity)super.getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       localLayoutParams.addRule(13);
-      localViewGroup.addView((View)this.nAZ, 0, localLayoutParams);
-      this.nAZ.setVideoCallback(new com.tencent.mm.pluginsdk.ui.tools.h.a()
+      localViewGroup.addView((View)this.odZ, 0, localLayoutParams);
+      this.odZ.setVideoCallback(new com.tencent.mm.pluginsdk.ui.tools.h.a()
       {
-        public final void dY(int paramAnonymousInt1, int paramAnonymousInt2) {}
+        public final void dZ(int paramAnonymousInt1, int paramAnonymousInt2) {}
         
-        public final int eM(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final int eP(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           return 0;
         }
@@ -360,12 +355,12 @@ public class FavoriteFileDetailUI
             return;
           }
           FavoriteFileDetailUI.s(FavoriteFileDetailUI.this);
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(107117);
-              com.tencent.mm.ui.base.h.j(FavoriteFileDetailUI.this.cjz(), 2131764680, 2131764690);
+              com.tencent.mm.ui.base.h.l(FavoriteFileDetailUI.this.crg(), 2131764680, 2131764690);
               Bitmap localBitmap = o.a(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this), FavoriteFileDetailUI.b(FavoriteFileDetailUI.this));
               ImageView localImageView = (ImageView)FavoriteFileDetailUI.this.findViewById(2131306415);
               if (localImageView != null)
@@ -379,40 +374,40 @@ public class FavoriteFileDetailUI
           AppMethodBeat.o(107119);
         }
         
-        public final void rq()
+        public final void rB()
         {
           AppMethodBeat.i(107118);
-          ad.d("MicroMsg.FavoriteFileDetailUI", f.XI() + " onPrepared");
+          ac.d("MicroMsg.FavoriteFileDetailUI", f.YF() + " onPrepared");
           FavoriteFileDetailUI.q(FavoriteFileDetailUI.this).setLoop(true);
           FavoriteFileDetailUI.q(FavoriteFileDetailUI.this).start();
           AppMethodBeat.o(107118);
         }
       });
-      ad.d("MicroMsg.FavoriteFileDetailUI", f.XI() + " initView :" + str);
+      ac.d("MicroMsg.FavoriteFileDetailUI", f.YF() + " initView :" + str);
       if (str != null)
       {
-        this.nAZ.stop();
-        this.nAZ.setVideoPath(str);
+        this.odZ.stop();
+        this.odZ.setVideoPath(str);
       }
-      ad.d("MicroMsg.FavoriteFileDetailUI", f.XI() + " initView");
-      com.tencent.mm.az.a.azD();
-      com.tencent.mm.plugin.report.service.h.vKh.f(11444, new Object[] { Integer.valueOf(4) });
+      ac.d("MicroMsg.FavoriteFileDetailUI", f.YF() + " initView");
+      com.tencent.mm.ay.a.aGt();
+      com.tencent.mm.plugin.report.service.h.wUl.f(11444, new Object[] { Integer.valueOf(4) });
     }
     if ((getType() == 15) || (getType() == 4)) {
-      if (!this.qhC)
+      if (!this.qQe)
       {
-        this.qhs.setVisibility(8);
-        this.qhp.setVisibility(8);
-        this.oAT.setVisibility(8);
-        this.qho.setVisibility(0);
-        this.qho.setText(2131758920);
-        this.kXT.setVisibility(8);
-        bei();
+        this.qPU.setVisibility(8);
+        this.qPR.setVisibility(8);
+        this.pet.setVisibility(8);
+        this.qPQ.setVisibility(0);
+        this.qPQ.setText(2131758920);
+        this.lzD.setVisibility(8);
+        blc();
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.afE().ax(new Runnable()
+      com.tencent.mm.kernel.g.agU().az(new Runnable()
       {
         public final void run()
         {
@@ -421,22 +416,22 @@ public class FavoriteFileDetailUI
           AppMethodBeat.o(107121);
         }
       });
-      if (this.qhE.stq != 1)
+      if (this.qQg.tBg != 1)
       {
-        this.qhE.stq = 1;
-        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.qhE);
+        this.qQg.tBg = 1;
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).e(this.qQg);
       }
       AppMethodBeat.o(107150);
       return;
-      if (!cjD()) {
+      if (!crk()) {
         break;
       }
-      this.qhs.setVisibility(8);
-      this.qhp.setVisibility(8);
-      this.oAT.setVisibility(0);
-      this.qho.setVisibility(8);
-      this.kXT.setVisibility(8);
-      this.oAT.setOnClickListener(new View.OnClickListener()
+      this.qPU.setVisibility(8);
+      this.qPR.setVisibility(8);
+      this.pet.setVisibility(0);
+      this.qPQ.setVisibility(8);
+      this.lzD.setVisibility(8);
+      this.pet.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -446,25 +441,25 @@ public class FavoriteFileDetailUI
         }
       });
     }
-    this.qhs.setVisibility(8);
-    this.qhp.setVisibility(8);
-    if (bt.isNullOrNil(this.djJ.Dgg)) {
-      this.oAT.setVisibility(8);
+    this.qPU.setVisibility(8);
+    this.qPR.setVisibility(8);
+    if (bs.isNullOrNil(this.dhe.Ezm)) {
+      this.pet.setVisibility(8);
     }
     for (;;)
     {
-      this.qho.setVisibility(0);
-      this.qhk.pZP = true;
-      this.kXT.setVisibility(0);
+      this.qPQ.setVisibility(0);
+      this.qPM.qIw = true;
+      this.lzD.setVisibility(0);
       break;
-      this.oAT.setVisibility(0);
+      this.pet.setVisibility(0);
     }
   }
   
-  private boolean cjF()
+  private boolean crm()
   {
     AppMethodBeat.i(107159);
-    com.tencent.mm.plugin.fav.a.c localc = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().Yk(this.djJ.dkb);
+    com.tencent.mm.plugin.fav.a.c localc = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().acG(this.dhe.dhw);
     if (localc == null)
     {
       AppMethodBeat.o(107159);
@@ -475,72 +470,54 @@ public class FavoriteFileDetailUI
       AppMethodBeat.o(107159);
       return true;
     }
-    if (this.djJ.dataType == 8)
+    if (this.dhe.dataType == 8)
     {
       AppMethodBeat.o(107159);
       return false;
     }
-    if (this.qhD)
+    if (this.qQf)
     {
       AppMethodBeat.o(107159);
       return false;
     }
-    if ((localc.field_status == 4) && (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().Yk(this.djJ.dkb).field_extFlag != 0))
+    if ((localc.field_status == 4) && (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().acG(this.dhe.dhw).field_extFlag != 0))
     {
-      com.tencent.mm.plugin.fav.a.b.a(this.qaS, this.djJ, true);
-      this.qhD = true;
+      com.tencent.mm.plugin.fav.a.b.a(this.qJy, this.dhe, true);
+      this.qQf = true;
     }
-    ad.i("MicroMsg.FavoriteFileDetailUI", "FavoriteFileDetail download, check retry, return %B", new Object[] { Boolean.valueOf(this.qhD) });
-    boolean bool = this.qhD;
+    ac.i("MicroMsg.FavoriteFileDetailUI", "FavoriteFileDetail download, check retry, return %B", new Object[] { Boolean.valueOf(this.qQf) });
+    boolean bool = this.qQf;
     AppMethodBeat.o(107159);
     return bool;
-  }
-  
-  private void cjy()
-  {
-    AppMethodBeat.i(107139);
-    this.qhA = getIntent().getStringExtra("key_detail_data_id");
-    Iterator localIterator = this.qaS.field_favProto.mVb.iterator();
-    while (localIterator.hasNext())
-    {
-      afy localafy = (afy)localIterator.next();
-      if (localafy.dkb.equals(this.qhA)) {
-        this.djJ = localafy;
-      }
-    }
-    if (this.djJ == null) {
-      this.djJ = com.tencent.mm.plugin.fav.a.b.c(this.qaS);
-    }
-    AppMethodBeat.o(107139);
   }
   
   private int getType()
   {
     AppMethodBeat.i(107143);
-    if (this.djJ == null)
+    if (this.dhe == null)
     {
-      ad.w("MicroMsg.FavoriteFileDetailUI", "get type but data item is null");
+      ac.w("MicroMsg.FavoriteFileDetailUI", "get type but data item is null");
       AppMethodBeat.o(107143);
       return 8;
     }
-    if (this.djJ.dataType == 0)
+    if (this.dhe.dataType == 0)
     {
-      ad.w("MicroMsg.FavoriteFileDetailUI", "get data type, but data item type is 0, info type %d", new Object[] { Integer.valueOf(this.qaS.field_type) });
-      if (4 == this.qaS.field_type)
+      ac.w("MicroMsg.FavoriteFileDetailUI", "get data type, but data item type is 0, info type %d", new Object[] { Integer.valueOf(this.qJy.field_type) });
+      if (4 == this.qJy.field_type)
       {
         AppMethodBeat.o(107143);
         return 4;
       }
-      if (16 == this.qaS.field_type)
+      if (16 == this.qJy.field_type)
       {
-        if ((this.djJ != null) && (this.djJ.DgZ != null))
+        if ((this.dhe != null) && (this.dhe.EAf != null))
         {
-          if (!bt.isNullOrNil(this.djJ.DgZ.gJv))
+          if (!bs.isNullOrNil(this.dhe.EAf.hjV))
           {
             AppMethodBeat.o(107143);
             return 15;
           }
-          if (!bt.isNullOrNil(this.djJ.DgZ.gJz))
+          if (!bs.isNullOrNil(this.dhe.EAf.hjZ))
           {
             AppMethodBeat.o(107143);
             return 15;
@@ -552,16 +529,16 @@ public class FavoriteFileDetailUI
       AppMethodBeat.o(107143);
       return 8;
     }
-    if (this.djJ.dataType == 15)
+    if (this.dhe.dataType == 15)
     {
-      if ((this.djJ != null) && (this.djJ.DgZ != null))
+      if ((this.dhe != null) && (this.dhe.EAf != null))
       {
-        if (!bt.isNullOrNil(this.djJ.DgZ.gJv))
+        if (!bs.isNullOrNil(this.dhe.EAf.hjV))
         {
           AppMethodBeat.o(107143);
           return 15;
         }
-        if (!bt.isNullOrNil(this.djJ.DgZ.gJz))
+        if (!bs.isNullOrNil(this.dhe.EAf.hjZ))
         {
           AppMethodBeat.o(107143);
           return 15;
@@ -570,86 +547,86 @@ public class FavoriteFileDetailUI
       AppMethodBeat.o(107143);
       return 4;
     }
-    int i = this.djJ.dataType;
+    int i = this.dhe.dataType;
     AppMethodBeat.o(107143);
     return i;
   }
   
-  private void kF(boolean paramBoolean)
+  private void lj(boolean paramBoolean)
   {
     AppMethodBeat.i(107144);
-    boolean bool = com.tencent.mm.plugin.fav.a.b.g(this.djJ);
-    ad.i("MicroMsg.FavoriteFileDetailUI", "init status, info type %d, exist:%B path:%s", new Object[] { Integer.valueOf(this.qaS.field_itemStatus), Boolean.valueOf(bool), com.tencent.mm.plugin.fav.a.b.d(this.djJ) });
-    if (this.djJ.Dhh != 0)
+    boolean bool = com.tencent.mm.plugin.fav.a.b.g(this.dhe);
+    ac.i("MicroMsg.FavoriteFileDetailUI", "init status, info type %d, exist:%B path:%s", new Object[] { Integer.valueOf(this.qJy.field_itemStatus), Boolean.valueOf(bool), com.tencent.mm.plugin.fav.a.b.d(this.dhe) });
+    if (this.dhe.EAn != 0)
     {
-      cjA();
+      crh();
       AppMethodBeat.o(107144);
       return;
     }
     int i;
-    if ((this.qaS.isDone()) || (bool) || (!bt.isNullOrNil(this.djJ.DfZ)))
+    if ((this.qJy.isDone()) || (bool) || (!bs.isNullOrNil(this.dhe.Ezf)))
     {
       if (bool)
       {
-        cjE();
+        crl();
         i = getIntent().getIntExtra("key_detail_open_way", 0);
-        agq localagq;
-        if (bt.iY(i, 1))
+        ahp localahp;
+        if (bs.jl(i, 1))
         {
-          localagq = new agq();
-          localagq.dzK = 2;
-          ((y)com.tencent.mm.kernel.g.ab(y.class)).a((MMActivity)super.getContext(), this.qaS, localagq);
+          localahp = new ahp();
+          localahp.dxw = 2;
+          ((y)com.tencent.mm.kernel.g.ab(y.class)).a((MMActivity)super.getContext(), this.qJy, localahp);
           AppMethodBeat.o(107144);
           return;
         }
-        if (bt.iY(i, 2))
+        if (bs.jl(i, 2))
         {
-          localagq = new agq();
-          localagq.dzK = 2;
-          if ((this.djJ.dataType == 8) && (bt.kU(this.djJ.dkb, this.qhA)))
+          localahp = new ahp();
+          localahp.dxw = 2;
+          if ((this.dhe.dataType == 8) && (bs.lr(this.dhe.dhw, this.qQc)))
           {
-            com.tencent.mm.plugin.fav.a.g localg = this.qaS.chL();
+            com.tencent.mm.plugin.fav.a.g localg = this.qJy.cps();
             localg.field_type = 8;
-            localg.pZE = true;
-            localg.pZF = this.qaS;
-            localg.djR = (this.qaS.field_localId + "_" + this.qhA);
-            localg.pZG = this.qhA;
-            localg.field_favProto = com.tencent.mm.plugin.fav.a.a.c.c(this.qaS.field_favProto);
-            localg.field_favProto.mVb = new LinkedList();
-            localg.field_favProto.mVb.add(this.djJ);
-            localg.field_favProto.aEj(this.djJ.title);
-            ((y)com.tencent.mm.kernel.g.ab(y.class)).a((MMActivity)super.getContext(), localg, localagq);
+            localg.qIl = true;
+            localg.qIm = this.qJy;
+            localg.dhm = (this.qJy.field_localId + "_" + this.qQc);
+            localg.qIn = this.qQc;
+            localg.field_favProto = com.tencent.mm.plugin.fav.a.a.c.c(this.qJy.field_favProto);
+            localg.field_favProto.nxC = new LinkedList();
+            localg.field_favProto.nxC.add(this.dhe);
+            localg.field_favProto.aJA(this.dhe.title);
+            ((y)com.tencent.mm.kernel.g.ab(y.class)).a((MMActivity)super.getContext(), localg, localahp);
             AppMethodBeat.o(107144);
             return;
           }
-          ((y)com.tencent.mm.kernel.g.ab(y.class)).a((MMActivity)super.getContext(), this.qaS, localagq);
+          ((y)com.tencent.mm.kernel.g.ab(y.class)).a((MMActivity)super.getContext(), this.qJy, localahp);
         }
         AppMethodBeat.o(107144);
         return;
       }
-      if (bt.isNullOrNil(this.djJ.DfZ))
+      if (bs.isNullOrNil(this.dhe.Ezf))
       {
-        cjA();
+        crh();
         AppMethodBeat.o(107144);
         return;
       }
-      ad.w("MicroMsg.FavoriteFileDetailUI", "? info is done, source file not exist, cdn data url is not null");
-      cjC();
+      ac.w("MicroMsg.FavoriteFileDetailUI", "? info is done, source file not exist, cdn data url is not null");
+      crj();
       AppMethodBeat.o(107144);
       return;
     }
-    if (this.qaS.chI())
+    if (this.qJy.cpp())
     {
-      if (bt.isNullOrNil(this.djJ.DfZ))
+      if (bs.isNullOrNil(this.dhe.Ezf))
       {
-        cjA();
+        crh();
         if (paramBoolean)
         {
           i = getType();
           if ((4 == i) || (15 == i)) {}
           for (i = 2131758978;; i = 2131758965)
           {
-            com.tencent.mm.ui.base.h.cf((MMActivity)super.getContext(), getString(i));
+            com.tencent.mm.ui.base.h.cg((MMActivity)super.getContext(), getString(i));
             AppMethodBeat.o(107144);
             return;
           }
@@ -657,33 +634,33 @@ public class FavoriteFileDetailUI
       }
       else
       {
-        cjC();
+        crj();
         if (paramBoolean)
         {
-          com.tencent.mm.ui.base.h.cf((MMActivity)super.getContext(), getString(2131758104));
+          com.tencent.mm.ui.base.h.cg((MMActivity)super.getContext(), getString(2131758104));
           AppMethodBeat.o(107144);
         }
       }
     }
-    else if (this.qaS.isUploadFailed())
+    else if (this.qJy.isUploadFailed())
     {
-      cjC();
+      crj();
       if (paramBoolean)
       {
-        com.tencent.mm.ui.base.h.cf((MMActivity)super.getContext(), getString(2131758844));
+        com.tencent.mm.ui.base.h.cg((MMActivity)super.getContext(), getString(2131758844));
         AppMethodBeat.o(107144);
       }
     }
     else
     {
-      if ((this.qaS.isDownloading()) || (this.qaS.chH()))
+      if ((this.qJy.isDownloading()) || (this.qJy.cpo()))
       {
-        cjB();
+        cri();
         AppMethodBeat.o(107144);
         return;
       }
-      ad.w("MicroMsg.FavoriteFileDetailUI", "other status, not done, downloading, uploading, downloadfail, uploadfail");
-      cjC();
+      ac.w("MicroMsg.FavoriteFileDetailUI", "other status, not done, downloading, uploading, downloadfail, uploadfail");
+      crj();
     }
     AppMethodBeat.o(107144);
   }
@@ -691,25 +668,25 @@ public class FavoriteFileDetailUI
   public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
     AppMethodBeat.i(107157);
-    ad.i("MicroMsg.FavoriteFileDetailUI", "on favitem change, notifyId:%s, curId:%d", new Object[] { paramString, Long.valueOf(this.qaS.field_localId) });
-    paramString = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(this.qaS.field_localId);
-    if ((paramString == null) && (!this.qhy))
+    ac.i("MicroMsg.FavoriteFileDetailUI", "on favitem change, notifyId:%s, curId:%d", new Object[] { paramString, Long.valueOf(this.qJy.field_localId) });
+    paramString = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(this.qJy.field_localId);
+    if ((paramString == null) && (!this.qQa))
     {
-      ad.w("MicroMsg.FavoriteFileDetailUI", "error, on notify change, cannot find info");
+      ac.w("MicroMsg.FavoriteFileDetailUI", "error, on notify change, cannot find info");
       finish();
       AppMethodBeat.o(107157);
       return;
     }
-    if (!this.qhy) {
-      this.qaS = paramString;
+    if (!this.qQa) {
+      this.qJy = paramString;
     }
-    cjy();
-    if (cjF())
+    crf();
+    if (crm())
     {
       AppMethodBeat.o(107157);
       return;
     }
-    this.gAC.post(new Runnable()
+    this.gox.post(new Runnable()
     {
       public final void run()
       {
@@ -721,11 +698,11 @@ public class FavoriteFileDetailUI
     AppMethodBeat.o(107157);
   }
   
-  public final MMActivity cjz()
+  public final MMActivity crg()
   {
-    AppMethodBeat.i(202392);
+    AppMethodBeat.i(210542);
     MMActivity localMMActivity = (MMActivity)super.getContext();
-    AppMethodBeat.o(202392);
+    AppMethodBeat.o(210542);
     return localMMActivity;
   }
   
@@ -734,23 +711,23 @@ public class FavoriteFileDetailUI
     AppMethodBeat.i(107155);
     if ((paramc == null) || (paramc.field_dataId == null))
     {
-      ad.w("MicroMsg.FavoriteFileDetailUI", "on cdn status changed, item is null");
+      ac.w("MicroMsg.FavoriteFileDetailUI", "on cdn status changed, item is null");
       AppMethodBeat.o(107155);
       return;
     }
-    ad.d("MicroMsg.FavoriteFileDetailUI", "on cdn status changed, dataID is %s, field id is %s", new Object[] { this.djJ.dkb, paramc.field_dataId });
-    if (paramc.field_dataId.equals(this.djJ.dkb))
+    ac.d("MicroMsg.FavoriteFileDetailUI", "on cdn status changed, dataID is %s, field id is %s", new Object[] { this.dhe.dhw, paramc.field_dataId });
+    if (paramc.field_dataId.equals(this.dhe.dhw))
     {
-      if ((this.qaS.chH()) && (bt.isNullOrNil(this.djJ.DfZ)))
+      if ((this.qJy.cpo()) && (bs.isNullOrNil(this.dhe.Ezf)))
       {
-        a(paramc.getProgress(), getString(2131759028, new Object[] { com.tencent.mm.plugin.fav.a.b.aS(paramc.field_offset), com.tencent.mm.plugin.fav.a.b.aS(paramc.field_totalLen) }));
+        a(paramc.getProgress(), getString(2131759028, new Object[] { com.tencent.mm.plugin.fav.a.b.aX(paramc.field_offset), com.tencent.mm.plugin.fav.a.b.aX(paramc.field_totalLen) }));
         AppMethodBeat.o(107155);
         return;
       }
-      a(paramc.getProgress(), getString(2131758872, new Object[] { com.tencent.mm.plugin.fav.a.b.aS(paramc.field_offset), com.tencent.mm.plugin.fav.a.b.aS(paramc.field_totalLen) }));
-      if ((this.qhy) && (i.eK(paramc.field_path)))
+      a(paramc.getProgress(), getString(2131758872, new Object[] { com.tencent.mm.plugin.fav.a.b.aX(paramc.field_offset), com.tencent.mm.plugin.fav.a.b.aX(paramc.field_totalLen) }));
+      if ((this.qQa) && (i.eA(paramc.field_path)))
       {
-        this.qaS.field_itemStatus = 10;
+        this.qJy.field_itemStatus = 10;
         a("", null);
       }
       AppMethodBeat.o(107155);
@@ -794,18 +771,18 @@ public class FavoriteFileDetailUI
       for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
       {
         localObject2 = com.tencent.mm.ui.base.h.b((MMActivity)super.getContext(), getString(2131758906), false, null);
-        ad.d("MicroMsg.FavoriteFileDetailUI", "do share msg, fav msg type %d", new Object[] { Integer.valueOf(getType()) });
+        ac.d("MicroMsg.FavoriteFileDetailUI", "do share msg, fav msg type %d", new Object[] { Integer.valueOf(getType()) });
         localObject2 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107122);
-            this.qcu.dismiss();
+            this.qLa.dismiss();
             AppMethodBeat.o(107122);
           }
         };
         paramInt2 = getType();
-        if (!bt.isNullOrNil((String)localObject1)) {
+        if (!bs.isNullOrNil((String)localObject1)) {
           break label159;
         }
         AppMethodBeat.o(107154);
@@ -814,7 +791,7 @@ public class FavoriteFileDetailUI
         break;
       }
       label159:
-      Iterator localIterator = bt.S(((String)localObject1).split(",")).iterator();
+      Iterator localIterator = bs.S(((String)localObject1).split(",")).iterator();
       label267:
       label311:
       label339:
@@ -823,33 +800,33 @@ public class FavoriteFileDetailUI
         String str = (String)localIterator.next();
         if ((paramInt2 == 4) || (paramInt2 == 15))
         {
-          com.tencent.mm.plugin.fav.ui.l.a((MMActivity)super.getContext(), str, this.djJ, (Runnable)localObject2);
-          boolean bool = w.pF(str);
+          com.tencent.mm.plugin.fav.ui.l.a((MMActivity)super.getContext(), str, this.dhe, (Runnable)localObject2);
+          boolean bool = w.sQ(str);
           if (bool)
           {
-            localObject1 = m.c.qaB;
+            localObject1 = m.c.qJh;
             label245:
-            com.tencent.mm.plugin.fav.a.g localg = this.qaS;
-            m.d locald = m.d.qaF;
+            com.tencent.mm.plugin.fav.a.g localg = this.qJy;
+            m.d locald = m.d.qJl;
             if (!bool) {
               break label311;
             }
-            paramInt1 = com.tencent.mm.model.q.rY(str);
+            paramInt1 = com.tencent.mm.model.q.wb(str);
             com.tencent.mm.plugin.fav.a.m.a((m.c)localObject1, localg, locald, paramInt1);
           }
         }
         for (;;)
         {
-          if (bt.isNullOrNil(paramIntent)) {
+          if (bs.isNullOrNil(paramIntent)) {
             break label339;
           }
-          j.cOB().W(str, paramIntent, w.tq(str));
+          j.dck().X(str, paramIntent, w.xt(str));
           break;
-          localObject1 = m.c.qaA;
+          localObject1 = m.c.qJg;
           break label245;
           paramInt1 = 0;
           break label267;
-          com.tencent.mm.plugin.fav.ui.l.a((MMActivity)super.getContext(), str, this.qaS, this.djJ, (Runnable)localObject2);
+          com.tencent.mm.plugin.fav.ui.l.a((MMActivity)super.getContext(), str, this.qJy, this.dhe, (Runnable)localObject2);
         }
       }
       com.tencent.mm.ui.widget.snackbar.b.n(this, getString(2131758834));
@@ -861,40 +838,40 @@ public class FavoriteFileDetailUI
   {
     AppMethodBeat.i(107140);
     super.onCreate(paramBundle);
-    this.gAC = new ap();
-    this.deL = getIntent().getLongExtra("key_detail_info_id", -1L);
-    this.qhy = getIntent().getBooleanExtra("fav_open_from_wnnote", false);
-    this.drV = getIntent().getBooleanExtra("show_share", true);
-    this.qhz = getIntent().getStringExtra("fav_note_xml");
-    this.qaS = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(this.deL);
-    if ((this.qhy) && (!bt.isNullOrNil(this.qhz))) {
-      this.qaS = com.tencent.mm.plugin.fav.a.b.XY(this.qhz);
+    this.gox = new ao();
+    this.dcg = getIntent().getLongExtra("key_detail_info_id", -1L);
+    this.qQa = getIntent().getBooleanExtra("fav_open_from_wnnote", false);
+    this.dpG = getIntent().getBooleanExtra("show_share", true);
+    this.qQb = getIntent().getStringExtra("fav_note_xml");
+    this.qJy = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(this.dcg);
+    if ((this.qQa) && (!bs.isNullOrNil(this.qQb))) {
+      this.qJy = com.tencent.mm.plugin.fav.a.b.acu(this.qQb);
     }
-    if (this.qaS == null)
+    if (this.qJy == null)
     {
-      ad.w("MicroMsg.FavoriteFileDetailUI", "error, cannot find download info");
+      ac.w("MicroMsg.FavoriteFileDetailUI", "error, cannot find download info");
       finish();
       AppMethodBeat.o(107140);
       return;
     }
-    H(this.qaS);
-    com.tencent.mm.plugin.fav.a.m.x(this.qaS);
-    cjy();
-    this.oAT = ((Button)findViewById(2131303391));
-    this.qho = ((Button)findViewById(2131303020));
-    this.qhp = ((Button)findViewById(2131299195));
-    this.qhq = ((MMImageView)findViewById(2131300891));
-    this.imt = ((TextView)findViewById(2131302666));
-    this.kXT = ((TextView)findViewById(2131305896));
-    this.qht = findViewById(2131299221);
-    this.qhs = findViewById(2131299216);
+    H(this.qJy);
+    com.tencent.mm.plugin.fav.a.m.x(this.qJy);
+    crf();
+    this.pet = ((Button)findViewById(2131303391));
+    this.qPQ = ((Button)findViewById(2131303020));
+    this.qPR = ((Button)findViewById(2131299195));
+    this.qPS = ((MMImageView)findViewById(2131300891));
+    this.iMz = ((TextView)findViewById(2131302666));
+    this.lzD = ((TextView)findViewById(2131305896));
+    this.qPV = findViewById(2131299221);
+    this.qPU = findViewById(2131299216);
     this.progressBar = ((ProgressBar)findViewById(2131299214));
-    this.qhr = ((TextView)findViewById(2131299217));
-    this.qhu = ((TextView)findViewById(2131304777));
-    this.qhv = ((ImageView)findViewById(2131299790));
-    this.qhw = ((TextView)findViewById(2131299791));
-    this.imt.setOnTouchListener(this.qhG);
-    this.imt.setOnLongClickListener(this.qhH);
+    this.qPT = ((TextView)findViewById(2131299217));
+    this.qPW = ((TextView)findViewById(2131304777));
+    this.qPX = ((ImageView)findViewById(2131299790));
+    this.qPY = ((TextView)findViewById(2131299791));
+    this.iMz.setOnTouchListener(this.qQi);
+    this.iMz.setOnLongClickListener(this.qQj);
     final int i = getType();
     label420:
     Object localObject2;
@@ -903,33 +880,18 @@ public class FavoriteFileDetailUI
     if (4 == i)
     {
       setMMTitle(2131759030);
-      if (this.djJ.dataType != 4) {
+      if (this.dhe.dataType != 4) {
         break label916;
       }
-      this.qhq.setImageResource(2131689581);
-      this.imt.setText(this.djJ.title);
-      localObject2 = this.djJ.DgZ;
+      this.qPS.setImageResource(2131689581);
+      this.iMz.setText(this.dhe.title);
+      localObject2 = this.dhe.EAf;
       if (localObject2 != null) {
         break label946;
       }
-      this.qhu.setVisibility(8);
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(107126);
-          com.tencent.mm.plugin.fav.a.m.a(m.a.qaq, FavoriteFileDetailUI.b(FavoriteFileDetailUI.this));
-          if ((FavoriteFileDetailUI.c(FavoriteFileDetailUI.this) != null) && (FavoriteFileDetailUI.c(FavoriteFileDetailUI.this).rg(1)))
-          {
-            AppMethodBeat.o(107126);
-            return true;
-          }
-          FavoriteFileDetailUI.this.finish();
-          AppMethodBeat.o(107126);
-          return true;
-        }
-      });
-      this.qho.setOnClickListener(new View.OnClickListener()
+      this.qPW.setVisibility(8);
+      setBackBtn(new FavoriteFileDetailUI.11(this));
+      this.qPQ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -946,38 +908,38 @@ public class FavoriteFileDetailUI
           AppMethodBeat.o(107127);
         }
       });
-      paramBundle = this.djJ.Dgg;
-      if (!bt.isNullOrNil(paramBundle)) {
-        this.oAT.setOnClickListener(new View.OnClickListener()
+      paramBundle = this.dhe.Ezm;
+      if (!bs.isNullOrNil(paramBundle)) {
+        this.pet.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(107128);
-            ad.d("MicroMsg.FavoriteFileDetailUI", "start video preview, fav id %d, fav local id %d", new Object[] { Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id), Long.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId) });
+            ac.d("MicroMsg.FavoriteFileDetailUI", "start video preview, fav id %d, fav local id %d", new Object[] { Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id), Long.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId) });
             paramAnonymousView = new Intent();
             paramAnonymousView.putExtra("rawUrl", paramBundle);
             paramAnonymousView.putExtra("is_favorite_item", true);
             paramAnonymousView.putExtra("fav_local_id", FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId);
             paramAnonymousView.putExtra("geta8key_scene", 14);
             paramAnonymousView.putExtra("geta8key_scene", 14);
-            com.tencent.mm.bs.d.b(FavoriteFileDetailUI.this.cjz(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+            com.tencent.mm.br.d.b(FavoriteFileDetailUI.this.crg(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
             AppMethodBeat.o(107128);
           }
         });
       }
-      this.qhp.setOnClickListener(new View.OnClickListener()
+      this.qPR.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107129);
-          ad.i("MicroMsg.FavoriteFileDetailUI", "click item favid %d, localid %d, itemstatus %d", new Object[] { Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id), Long.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId), Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_itemStatus) });
-          if (!com.tencent.mm.compatible.util.e.XG())
+          ac.i("MicroMsg.FavoriteFileDetailUI", "click item favid %d, localid %d, itemstatus %d", new Object[] { Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id), Long.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId), Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_itemStatus) });
+          if (!com.tencent.mm.compatible.util.e.YD())
           {
-            com.tencent.mm.ui.base.h.j(FavoriteFileDetailUI.this.cjz(), 2131758934, 2131758845);
+            com.tencent.mm.ui.base.h.l(FavoriteFileDetailUI.this.crg(), 2131758934, 2131758845);
             AppMethodBeat.o(107129);
             return;
           }
-          if ((FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).isUploadFailed()) || (bt.isNullOrNil(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).DfZ))) {
+          if ((FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).isUploadFailed()) || (bs.isNullOrNil(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).Ezf))) {
             com.tencent.mm.plugin.fav.a.b.l(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this));
           }
           for (;;)
@@ -997,7 +959,7 @@ public class FavoriteFileDetailUI
           }
         }
       });
-      this.qht.setOnClickListener(new View.OnClickListener()
+      this.qPV.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -1017,14 +979,14 @@ public class FavoriteFileDetailUI
           }
         }
       });
-      if (this.drV)
+      if (this.dpG)
       {
         final boolean bool2 = getIntent().getBooleanExtra("key_detail_can_delete", true);
         i = getType();
         if (i != 8) {
           break label1239;
         }
-        bool1 = this.qaS.chE();
+        bool1 = this.qJy.cpl();
         label584:
         if ((bool1) || (bool2)) {
           addIconOptionMenu(0, 2131764451, 2131690603, new MenuItem.OnMenuItemClickListener()
@@ -1035,23 +997,23 @@ public class FavoriteFileDetailUI
               if (bool1)
               {
                 FavoriteFileDetailUI.k(FavoriteFileDetailUI.this);
-                if ((!k.i(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this))) && (FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).Dhh == 0)) {}
+                if ((!k.i(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this))) && (FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).EAn == 0)) {}
               }
               else if (!bool2)
               {
                 AppMethodBeat.o(107136);
                 return false;
               }
-              paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(FavoriteFileDetailUI.this.cjz(), 1, false);
-              paramAnonymousMenuItem.HrX = new n.c()
+              paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(FavoriteFileDetailUI.this.crg(), 1, false);
+              paramAnonymousMenuItem.ISu = new n.c()
               {
                 public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
                 {
                   AppMethodBeat.i(107131);
-                  if (FavoriteFileDetailUI.16.this.qhO)
+                  if (FavoriteFileDetailUI.16.this.qQq)
                   {
                     FavoriteFileDetailUI.k(FavoriteFileDetailUI.this);
-                    if ((!k.i(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this))) && (FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).Dhh == 0))
+                    if ((!k.i(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this))) && (FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).EAn == 0))
                     {
                       if (FavoriteFileDetailUI.16.this.val$type != 8) {
                         break label222;
@@ -1060,7 +1022,7 @@ public class FavoriteFileDetailUI
                       if (FavoriteFileDetailUI.c(FavoriteFileDetailUI.this) != null)
                       {
                         FavoriteFileDetailUI.c(FavoriteFileDetailUI.this);
-                        if (!FavoriteFileDetailUI.c(FavoriteFileDetailUI.this).bzs()) {
+                        if (!FavoriteFileDetailUI.c(FavoriteFileDetailUI.this).bGo()) {
                           break label201;
                         }
                         paramAnonymous2l.c(5, FavoriteFileDetailUI.this.getString(2131756770));
@@ -1069,10 +1031,10 @@ public class FavoriteFileDetailUI
                   }
                   for (;;)
                   {
-                    if (FavoriteFileDetailUI.16.this.qhP)
+                    if (FavoriteFileDetailUI.16.this.qQr)
                     {
                       paramAnonymous2l.c(3, FavoriteFileDetailUI.this.getString(2131758875));
-                      paramAnonymous2l.c(2, FavoriteFileDetailUI.this.cjz().getString(2131755707));
+                      paramAnonymous2l.c(2, FavoriteFileDetailUI.this.crg().getString(2131755707));
                     }
                     AppMethodBeat.o(107131);
                     return;
@@ -1093,14 +1055,14 @@ public class FavoriteFileDetailUI
                     else
                     {
                       paramAnonymous2l.c(0, FavoriteFileDetailUI.this.getString(2131759001));
-                      if ((FavoriteFileDetailUI.16.this.qhP) && (FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).chF())) {
+                      if ((FavoriteFileDetailUI.16.this.qQr) && (FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).cpm())) {
                         paramAnonymous2l.c(1, FavoriteFileDetailUI.this.getString(2131758951));
                       }
                     }
                   }
                 }
               };
-              paramAnonymousMenuItem.HrY = new n.d()
+              paramAnonymousMenuItem.ISv = new n.d()
               {
                 public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                 {
@@ -1116,60 +1078,60 @@ public class FavoriteFileDetailUI
                     if (FavoriteFileDetailUI.d(FavoriteFileDetailUI.this) == 8)
                     {
                       paramAnonymous2MenuItem = com.tencent.mm.plugin.fav.a.b.d(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this));
-                      if (!i.eK(paramAnonymous2MenuItem))
+                      if (!i.eA(paramAnonymous2MenuItem))
                       {
-                        ad.e("MicroMsg.FavoriteFileDetailUI", "share file failed, file not exists");
+                        ac.e("MicroMsg.FavoriteFileDetailUI", "share file failed, file not exists");
                         Toast.makeText(FavoriteFileDetailUI.this, FavoriteFileDetailUI.this.getString(2131758999), 1).show();
                         AppMethodBeat.o(107135);
                         return;
                       }
                       if (new com.tencent.mm.vfs.e(paramAnonymous2MenuItem).length() > 10485760L)
                       {
-                        ad.e("MicroMsg.FavoriteFileDetailUI", "share file failed, file too large");
+                        ac.e("MicroMsg.FavoriteFileDetailUI", "share file failed, file too large");
                         Toast.makeText(FavoriteFileDetailUI.this, FavoriteFileDetailUI.this.getString(2131759000), 1).show();
                         AppMethodBeat.o(107135);
                         return;
                       }
                     }
-                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.qhk;
-                    paramAnonymous2MenuItem.pZR += 1;
+                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.qPM;
+                    paramAnonymous2MenuItem.qIy += 1;
                     FavoriteFileDetailUI.a(FavoriteFileDetailUI.this, FavoriteFileDetailUI.b(FavoriteFileDetailUI.this));
                     AppMethodBeat.o(107135);
                     return;
-                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.qhk;
-                    paramAnonymous2MenuItem.pZS += 1;
-                    Object localObject = com.tencent.mm.ui.base.h.b(FavoriteFileDetailUI.this.cjz(), FavoriteFileDetailUI.this.getString(2131758906), false, null);
-                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.cjz();
+                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.qPM;
+                    paramAnonymous2MenuItem.qIz += 1;
+                    Object localObject = com.tencent.mm.ui.base.h.b(FavoriteFileDetailUI.this.crg(), FavoriteFileDetailUI.this.getString(2131758906), false, null);
+                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.crg();
                     com.tencent.mm.plugin.fav.a.g localg = FavoriteFileDetailUI.b(FavoriteFileDetailUI.this);
                     localObject = new Runnable()
                     {
                       public final void run()
                       {
                         AppMethodBeat.i(107132);
-                        this.qcu.dismiss();
+                        this.qLa.dismiss();
                         AppMethodBeat.o(107132);
                       }
                     };
                     LinkedList localLinkedList = new LinkedList();
                     localLinkedList.add(Integer.valueOf(localg.field_id));
                     paramAnonymous2MenuItem = new an("", localLinkedList, new l.2(localg, paramAnonymous2MenuItem, (Runnable)localObject));
-                    com.tencent.mm.kernel.g.aeS().a(paramAnonymous2MenuItem, 0);
+                    com.tencent.mm.kernel.g.agi().a(paramAnonymous2MenuItem, 0);
                     AppMethodBeat.o(107135);
                     return;
-                    com.tencent.mm.ui.base.h.a(FavoriteFileDetailUI.this.cjz(), FavoriteFileDetailUI.this.getString(2131755709), "", new DialogInterface.OnClickListener()
+                    com.tencent.mm.ui.base.h.a(FavoriteFileDetailUI.this.crg(), FavoriteFileDetailUI.this.getString(2131755709), "", new DialogInterface.OnClickListener()
                     {
                       public final void onClick(final DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(107134);
-                        paramAnonymous3DialogInterface = com.tencent.mm.ui.base.h.b(FavoriteFileDetailUI.this.cjz(), FavoriteFileDetailUI.this.getString(2131755709), false, null);
-                        com.tencent.mm.plugin.fav.a.b.a(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId, new Runnable()
+                        paramAnonymous3DialogInterface = com.tencent.mm.ui.base.h.b(FavoriteFileDetailUI.this.crg(), FavoriteFileDetailUI.this.getString(2131755709), false, null);
+                        com.tencent.mm.plugin.fav.a.b.b(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId, new Runnable()
                         {
                           public final void run()
                           {
                             AppMethodBeat.i(107133);
-                            FavoriteFileDetailUI.this.qhk.pZV = true;
+                            FavoriteFileDetailUI.this.qPM.qIC = true;
                             paramAnonymous3DialogInterface.dismiss();
-                            ad.d("MicroMsg.FavoriteFileDetailUI", "do del fav file, local id %d, fav id %d", new Object[] { Long.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId), Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id) });
+                            ac.d("MicroMsg.FavoriteFileDetailUI", "do del fav file, local id %d, fav id %d", new Object[] { Long.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId), Integer.valueOf(FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id) });
                             FavoriteFileDetailUI.this.finish();
                             AppMethodBeat.o(107133);
                           }
@@ -1179,12 +1141,12 @@ public class FavoriteFileDetailUI
                     }, null);
                     AppMethodBeat.o(107135);
                     return;
-                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.qhk;
-                    paramAnonymous2MenuItem.pZU += 1;
+                    paramAnonymous2MenuItem = FavoriteFileDetailUI.this.qPM;
+                    paramAnonymous2MenuItem.qIB += 1;
                     paramAnonymous2MenuItem = new Intent();
                     paramAnonymous2MenuItem.putExtra("key_fav_scene", 2);
                     paramAnonymous2MenuItem.putExtra("key_fav_item_id", FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_localId);
-                    com.tencent.mm.plugin.fav.a.b.b(FavoriteFileDetailUI.this.cjz(), ".ui.FavTagEditUI", paramAnonymous2MenuItem);
+                    com.tencent.mm.plugin.fav.a.b.b(FavoriteFileDetailUI.this.crg(), ".ui.FavTagEditUI", paramAnonymous2MenuItem);
                     AppMethodBeat.o(107135);
                     return;
                     FavoriteFileDetailUI.l(FavoriteFileDetailUI.this);
@@ -1192,55 +1154,55 @@ public class FavoriteFileDetailUI
                     return;
                   } while (FavoriteFileDetailUI.c(FavoriteFileDetailUI.this) == null);
                   paramAnonymous2MenuItem = FavoriteFileDetailUI.c(FavoriteFileDetailUI.this);
-                  if (!FavoriteFileDetailUI.c(FavoriteFileDetailUI.this).bzs()) {}
+                  if (!FavoriteFileDetailUI.c(FavoriteFileDetailUI.this).bGo()) {}
                   for (;;)
                   {
-                    paramAnonymous2MenuItem.fE(bool);
+                    paramAnonymous2MenuItem.ga(bool);
                     break;
                     bool = false;
                   }
                 }
               };
-              paramAnonymousMenuItem.csG();
+              paramAnonymousMenuItem.cED();
               AppMethodBeat.o(107136);
               return true;
             }
           });
         }
       }
-      this.qhE = HandOffFile.b(this.djJ, this.qaS);
-      if (!com.tencent.mm.plugin.fav.a.b.g(this.djJ)) {
+      this.qQg = HandOffFile.b(this.dhe, this.qJy);
+      if (!com.tencent.mm.plugin.fav.a.b.g(this.dhe)) {
         break label1312;
       }
-      this.qhE.stq = 1;
+      this.qQg.tBg = 1;
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).c(this.qhE);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).f(this.qhE);
-      kF(false);
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).c(this.qQg);
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).f(this.qQg);
+      lj(false);
       if (getType() == 8)
       {
-        paramBundle = com.tencent.mm.plugin.fav.a.b.d(this.djJ);
-        bool1 = i.eK(paramBundle);
+        paramBundle = com.tencent.mm.plugin.fav.a.b.d(this.dhe);
+        bool1 = i.eA(paramBundle);
         if (bool1)
         {
-          this.qhF = new com.tencent.mm.plugin.fav.ui.b.a(new com.tencent.mm.plugin.fav.ui.b.b((MMActivity)super.getContext()));
-          this.qhF.fO(paramBundle, this.djJ.Dgo);
-          localObject2 = this.qhF;
-          paramBundle = this.djJ.Dgo;
-          String str = this.djJ.title;
-          localObject1 = com.tencent.mm.plugin.ball.f.d.OK(paramBundle);
+          this.qQh = new com.tencent.mm.plugin.fav.ui.b.a(new com.tencent.mm.plugin.fav.ui.b.b((MMActivity)super.getContext()));
+          this.qQh.gb(paramBundle, this.dhe.Ezu);
+          localObject2 = this.qQh;
+          paramBundle = this.dhe.Ezu;
+          String str = this.dhe.title;
+          localObject1 = com.tencent.mm.plugin.ball.f.d.SU(paramBundle);
           paramBundle = (Bundle)localObject1;
           if (localObject1 == null) {
-            paramBundle = com.tencent.mm.plugin.ball.f.d.OK("unknown");
+            paramBundle = com.tencent.mm.plugin.ball.f.d.SU("unknown");
           }
-          ((com.tencent.mm.plugin.fav.ui.b.a)localObject2).mDH.kYl = paramBundle.intValue();
-          ((com.tencent.mm.plugin.fav.ui.b.a)localObject2).mDH.name = str;
-          ((com.tencent.mm.plugin.fav.ui.b.a)localObject2).bzv();
-          this.qhE.K(this.qhF.mDH);
+          ((com.tencent.mm.plugin.fav.ui.b.a)localObject2).nfN.lzV = paramBundle.intValue();
+          ((com.tencent.mm.plugin.fav.ui.b.a)localObject2).nfN.name = str;
+          ((com.tencent.mm.plugin.fav.ui.b.a)localObject2).bGr();
+          this.qQg.K(this.qQh.nfN);
         }
-        ad.i("MicroMsg.FavoriteFileDetailUI", "initFloatBallHelper() ifSupportFB:%s", new Object[] { Boolean.valueOf(bool1) });
+        ac.i("MicroMsg.FavoriteFileDetailUI", "initFloatBallHelper() ifSupportFB:%s", new Object[] { Boolean.valueOf(bool1) });
       }
       AppMethodBeat.o(107140);
       return;
@@ -1248,108 +1210,49 @@ public class FavoriteFileDetailUI
       {
         setMMTitle(2131759030);
         findViewById(2131306317).setBackgroundResource(2131100017);
-        this.imt.setVisibility(8);
+        this.iMz.setVisibility(8);
         break;
       }
       setMMTitle(2131758904);
       break;
       label916:
-      this.qhq.setImageResource(((ab)com.tencent.mm.kernel.g.ab(ab.class)).Yn(this.djJ.Dgo));
+      this.qPS.setImageResource(((ab)com.tencent.mm.kernel.g.ab(ab.class)).acJ(this.dhe.Ezu));
       break label420;
       label946:
-      if (bt.isNullOrNil(((agb)localObject2).gJv))
+      if (bs.isNullOrNil(((aha)localObject2).hjV))
       {
-        ad.i("MicroMsg.FavoriteFileDetailUI", " there is no attachurl, show more info btn");
-        paramBundle = ((agb)localObject2).gJy;
-        localObject1 = ((agb)localObject2).gJz;
-        if ((!bt.isNullOrNil(paramBundle)) && (!bt.isNullOrNil((String)localObject1)))
+        ac.i("MicroMsg.FavoriteFileDetailUI", " there is no attachurl, show more info btn");
+        paramBundle = ((aha)localObject2).hjY;
+        localObject1 = ((aha)localObject2).hjZ;
+        if ((!bs.isNullOrNil(paramBundle)) && (!bs.isNullOrNil((String)localObject1)))
         {
-          this.qhu.setText(paramBundle);
-          this.qhu.setVisibility(0);
-          this.qhu.setOnClickListener(new View.OnClickListener()
-          {
-            public final void onClick(final View paramAnonymousView)
-            {
-              AppMethodBeat.i(107114);
-              paramAnonymousView = new Intent();
-              Bundle localBundle = new Bundle();
-              localBundle.putString("key_snsad_statextstr", FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).dxG);
-              paramAnonymousView.putExtra("jsapiargs", localBundle);
-              paramAnonymousView.putExtra("rawUrl", this.qhI);
-              paramAnonymousView.putExtra("useJs", true);
-              new ap(Looper.getMainLooper()).post(new Runnable()
-              {
-                public final void run()
-                {
-                  AppMethodBeat.i(107113);
-                  com.tencent.mm.bs.d.b(FavoriteFileDetailUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-                  FavoriteFileDetailUI.this.finish();
-                  AppMethodBeat.o(107113);
-                }
-              });
-              AppMethodBeat.o(107114);
-            }
-          });
+          this.qPW.setText(paramBundle);
+          this.qPW.setVisibility(0);
+          this.qPW.setOnClickListener(new FavoriteFileDetailUI.1(this, (String)localObject1));
           break label457;
         }
-        this.qhu.setVisibility(8);
+        this.qPW.setVisibility(8);
         break label457;
       }
       Object localObject1 = getResources().getString(2131763759);
       paramBundle = (Bundle)localObject1;
-      if (((agb)localObject2).Dim / 60 > 0) {
-        paramBundle = (String)localObject1 + getResources().getString(2131763761, new Object[] { Integer.valueOf(((agb)localObject2).Dim / 60) });
+      if (((aha)localObject2).EBs / 60 > 0) {
+        paramBundle = (String)localObject1 + getResources().getString(2131763761, new Object[] { Integer.valueOf(((aha)localObject2).EBs / 60) });
       }
       localObject1 = paramBundle;
-      if (((agb)localObject2).Dim % 60 > 0) {
-        localObject1 = paramBundle + getResources().getString(2131763762, new Object[] { Integer.valueOf(((agb)localObject2).Dim % 60) });
+      if (((aha)localObject2).EBs % 60 > 0) {
+        localObject1 = paramBundle + getResources().getString(2131763762, new Object[] { Integer.valueOf(((aha)localObject2).EBs % 60) });
       }
       paramBundle = (String)localObject1 + getResources().getString(2131763760);
-      this.qhu.setText(paramBundle);
-      this.qhu.setVisibility(0);
-      this.qhu.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(107125);
-          com.tencent.mm.plugin.fav.a.m.a(m.a.qao, FavoriteFileDetailUI.b(FavoriteFileDetailUI.this));
-          paramAnonymousView = FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).DgZ;
-          String str = com.tencent.mm.plugin.fav.a.b.a(FavoriteFileDetailUI.a(FavoriteFileDetailUI.this));
-          Intent localIntent = new Intent();
-          localIntent.putExtra("KFromTimeLine", false);
-          localIntent.putExtra("KStremVideoUrl", paramAnonymousView.gJv);
-          localIntent.putExtra("StreamWording", paramAnonymousView.gJy);
-          localIntent.putExtra("StremWebUrl", paramAnonymousView.gJz);
-          localIntent.putExtra("KBlockFav", true);
-          localIntent.putExtra("KThumUrl", paramAnonymousView.gJA);
-          localIntent.putExtra("KThumbPath", str);
-          localIntent.putExtra("KMediaId", "fakeid_" + FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id);
-          localIntent.putExtra("KMediaVideoTime", paramAnonymousView.Dim);
-          localIntent.putExtra("KMediaTitle", FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).title);
-          localIntent.putExtra("KSta_StremVideoAduxInfo", paramAnonymousView.gJB);
-          localIntent.putExtra("KSta_StremVideoPublishId", paramAnonymousView.gJC);
-          localIntent.putExtra("KSta_SourceType", 1);
-          localIntent.putExtra("KSta_Scene", m.b.qay.value);
-          localIntent.putExtra("KSta_FromUserName", FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_fromUser);
-          localIntent.putExtra("KSta_FavID", FavoriteFileDetailUI.b(FavoriteFileDetailUI.this).field_id);
-          localIntent.putExtra("KSta_SnsStatExtStr", FavoriteFileDetailUI.a(FavoriteFileDetailUI.this).dxG);
-          if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pjp, 0) > 0)
-          {
-            com.tencent.mm.bs.d.b(FavoriteFileDetailUI.this, "sns", ".ui.SnsAdStreamVideoPlayUI", localIntent);
-            ad.i("MicroMsg.FavoriteFileDetailUI", "use new stream video play UI");
-            AppMethodBeat.o(107125);
-            return;
-          }
-          com.tencent.mm.bs.d.b(FavoriteFileDetailUI.this, "sns", ".ui.VideoAdPlayerUI", localIntent);
-          AppMethodBeat.o(107125);
-        }
-      });
+      this.qPW.setText(paramBundle);
+      this.qPW.setVisibility(0);
+      this.qPW.setOnClickListener(new FavoriteFileDetailUI.10(this));
       break label457;
       label1239:
       if (i == 15)
       {
-        paramBundle = com.tencent.mm.m.g.Zd().getValue("SIGHTCannotTransmitForFav");
-        if ((this.qaS.chE()) && (bt.aGh(paramBundle) == 0))
+        paramBundle = com.tencent.mm.m.g.ZY().getValue("SIGHTCannotTransmitForFav");
+        if ((this.qJy.cpl()) && (bs.aLy(paramBundle) == 0))
         {
           bool1 = true;
           break label584;
@@ -1357,7 +1260,7 @@ public class FavoriteFileDetailUI
         bool1 = false;
         break label584;
       }
-      if ((this.qaS.chF()) || (this.qaS.chE()))
+      if ((this.qJy.cpm()) || (this.qJy.cpl()))
       {
         bool1 = true;
         break label584;
@@ -1365,10 +1268,10 @@ public class FavoriteFileDetailUI
       bool1 = false;
       break label584;
       label1312:
-      if (bt.isNullOrNil(this.djJ.DfZ)) {
-        this.qhE.stq = 3;
+      if (bs.isNullOrNil(this.dhe.Ezf)) {
+        this.qQg.tBg = 3;
       } else {
-        this.qhE.stq = 2;
+        this.qQg.tBg = 2;
       }
     }
   }
@@ -1385,17 +1288,17 @@ public class FavoriteFileDetailUI
   {
     AppMethodBeat.i(107151);
     setResult(0, getIntent().putExtra("key_activity_browse_time", getActivityBrowseTimeMs()));
-    if (this.nAZ != null)
+    if (this.odZ != null)
     {
-      this.nAZ.setVideoCallback(null);
-      this.nAZ.stop();
-      this.nAZ.onDetach();
+      this.odZ.setVideoCallback(null);
+      this.odZ.stop();
+      this.odZ.onDetach();
     }
-    if (this.qhF != null) {
-      this.qhF.onDestroy();
+    if (this.qQh != null) {
+      this.qQh.onDestroy();
     }
-    if (this.qhE != null) {
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).d(this.qhE);
+    if (this.qQg != null) {
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).d(this.qQg);
     }
     super.onDestroy();
     AppMethodBeat.o(107151);
@@ -1404,8 +1307,8 @@ public class FavoriteFileDetailUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(107142);
-    ad.i("MicroMsg.FavoriteFileDetailUI", "onKeyDown keyCode %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((paramInt == 4) && (this.qhF != null) && (this.qhF.rg(2)))
+    ac.i("MicroMsg.FavoriteFileDetailUI", "onKeyDown keyCode %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramInt == 4) && (this.qQh != null) && (this.qQh.rT(2)))
     {
       AppMethodBeat.o(107142);
       return true;
@@ -1421,11 +1324,11 @@ public class FavoriteFileDetailUI
     super.onPause();
     ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().remove(this);
     ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().b(this);
-    if (this.nAZ != null) {
-      this.nAZ.stop();
+    if (this.odZ != null) {
+      this.odZ.stop();
     }
-    if (this.qhF != null) {
-      this.qhF.aWa();
+    if (this.qQh != null) {
+      this.qQh.bcY();
     }
     AppMethodBeat.o(107153);
   }
@@ -1436,11 +1339,11 @@ public class FavoriteFileDetailUI
     super.onResume();
     ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().add(this);
     ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavCdnStorage().a(this);
-    if (this.nAZ != null) {
-      this.nAZ.start();
+    if (this.odZ != null) {
+      this.odZ.start();
     }
-    if (this.qhF != null) {
-      this.qhF.aVZ();
+    if (this.qQh != null) {
+      this.qQh.bcX();
     }
     AppMethodBeat.o(107152);
   }
@@ -1453,7 +1356,7 @@ public class FavoriteFileDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteFileDetailUI
  * JD-Core Version:    0.7.0.1
  */

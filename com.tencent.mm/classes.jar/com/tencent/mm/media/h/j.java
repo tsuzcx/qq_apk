@@ -3,28 +3,28 @@ package com.tencent.mm.media.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ah;
 import com.tencent.mm.vfs.i;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/remuxer/RemuxConfig;", "", "()V", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/remuxer/RemuxConfig;", "", "()V", "Companion", "plugin-mediaeditor_release"})
 public final class j
 {
-  public static final a guw;
+  public static final a gVb;
   
   static
   {
     AppMethodBeat.i(93836);
-    guw = new a((byte)0);
+    gVb = new a((byte)0);
     AppMethodBeat.o(93836);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/remuxer/RemuxConfig$Companion;", "", "()V", "getAudioCpFile", "", "filePath", "getCpVideoFile", "file", "plugin-mediaeditor_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/remuxer/RemuxConfig$Companion;", "", "()V", "getAudioCpFile", "", "filePath", "getCpVideoFile", "file", "plugin-mediaeditor_release"})
   public static final class a
   {
-    public static String rm(String paramString)
+    public static String vo(String paramString)
     {
       AppMethodBeat.i(93834);
       k.h(paramString, "filePath");
@@ -33,26 +33,26 @@ public final class j
       return paramString;
     }
     
-    public static String rn(String paramString)
+    public static String vp(String paramString)
     {
       AppMethodBeat.i(93835);
       k.h(paramString, "file");
-      if (aj.cbe())
+      if (ai.cin())
       {
-        paramString = new StringBuilder();
-        localObject = g.afB();
-        k.g(localObject, "MMKernel.storage()");
-        paramString = ((e)localObject).aff() + "videoMix/";
-        i.aMF(paramString);
-        paramString = paramString + i.aEN(paramString) + "_cp_video.temp";
+        localObject = new StringBuilder();
+        e locale = g.agR();
+        k.g(locale, "MMKernel.storage()");
+        localObject = locale.agv() + "videoMix/";
+        i.aSh((String)localObject);
+        paramString = (String)localObject + i.aKe(paramString) + "_cp_video.temp";
         AppMethodBeat.o(93835);
         return paramString;
       }
-      Object localObject = ae.FfH + "tmp";
-      if (!i.eK((String)localObject)) {
-        i.aMF((String)localObject);
+      Object localObject = ah.GDu + "tmp";
+      if (!i.eA((String)localObject)) {
+        i.aSh((String)localObject);
       }
-      paramString = (String)localObject + "/" + i.aEN(paramString) + "_cp_video.temp";
+      paramString = (String)localObject + "/" + i.aKe(paramString) + "_cp_video.temp";
       AppMethodBeat.o(93835);
       return paramString;
     }
@@ -60,7 +60,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.h.j
  * JD-Core Version:    0.7.0.1
  */

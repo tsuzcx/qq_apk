@@ -9,9 +9,10 @@ import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.finder.ui.FinderAlbumUI;
+import com.tencent.mm.plugin.finder.utils.n;
 import com.tencent.mm.protocal.protobuf.FinderJsApiMediaObj;
 import com.tencent.mm.protocal.protobuf.FinderJsApiMediaThumbInfo;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -41,7 +42,7 @@ public final class g
     paramJSONObject.putExtra("query_source_type", 25);
     paramJSONObject.putExtra("query_media_type", 3);
     paramJSONObject.putExtra("fromAppBrand", true);
-    com.tencent.luggage.h.e.az(paramc.getContext()).a(paramJSONObject, new e.a()
+    com.tencent.luggage.h.e.aA(paramc.getContext()).a(paramJSONObject, new e.a()
     {
       public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
@@ -52,30 +53,30 @@ public final class g
           paramAnonymousInt = paramAnonymousIntent.getIntExtra("postType", 0);
           ArrayList localArrayList1 = paramAnonymousIntent.getStringArrayListExtra("postMediaList");
           paramAnonymousIntent = paramAnonymousIntent.getStringArrayListExtra("postThumbList");
-          ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive mediaType: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive mediaPath: %s", new Object[] { localArrayList1 });
-          ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive thumbPath: %s", new Object[] { paramAnonymousIntent });
+          ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive mediaType: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive mediaPath: %s", new Object[] { localArrayList1 });
+          ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "receive thumbPath: %s", new Object[] { paramAnonymousIntent });
           ArrayList localArrayList2 = new ArrayList();
           paramAnonymousInt = 0;
           if (paramAnonymousInt < localArrayList1.size())
           {
-            Object localObject1 = new com.tencent.mm.plugin.appbrand.aa.i();
+            Object localObject1 = new com.tencent.mm.plugin.appbrand.z.i();
             FinderJsApiMediaObj localFinderJsApiMediaObj = new FinderJsApiMediaObj();
-            Object localObject2 = paramc.Ee().a(new com.tencent.mm.vfs.e((String)localArrayList1.get(paramAnonymousInt)), null, false, (com.tencent.mm.plugin.appbrand.aa.i)localObject1);
+            Object localObject2 = paramc.DH().a(new com.tencent.mm.vfs.e((String)localArrayList1.get(paramAnonymousInt)), null, false, (com.tencent.mm.plugin.appbrand.z.i)localObject1);
             l locall;
-            if (localObject2 == l.iSq)
+            if (localObject2 == l.jsB)
             {
-              localFinderJsApiMediaObj.mediaPath = ((String)((com.tencent.mm.plugin.appbrand.aa.i)localObject1).value);
+              localFinderJsApiMediaObj.mediaPath = ((String)((com.tencent.mm.plugin.appbrand.z.i)localObject1).value);
               if (localFinderJsApiMediaObj.mediaType == 2)
               {
                 localFinderJsApiMediaObj.thumbInfo = new FinderJsApiMediaThumbInfo();
                 localObject2 = (String)paramAnonymousIntent.get(paramAnonymousInt);
-                locall = paramc.Ee().a(new com.tencent.mm.vfs.e((String)localObject2), null, false, (com.tencent.mm.plugin.appbrand.aa.i)localObject1);
-                if (locall == l.iSq)
+                locall = paramc.DH().a(new com.tencent.mm.vfs.e((String)localObject2), null, false, (com.tencent.mm.plugin.appbrand.z.i)localObject1);
+                if (locall == l.jsB)
                 {
-                  localFinderJsApiMediaObj.thumbInfo.thumbPath = ((String)((com.tencent.mm.plugin.appbrand.aa.i)localObject1).value);
-                  localObject1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-                  localObject1 = com.tencent.mm.plugin.finder.utils.i.ZQ((String)localObject2);
+                  localFinderJsApiMediaObj.thumbInfo.thumbPath = ((String)((com.tencent.mm.plugin.appbrand.z.i)localObject1).value);
+                  localObject1 = n.rPN;
+                  localObject1 = n.aeC((String)localObject2);
                   localFinderJsApiMediaObj.thumbInfo.thumbWidth = ((Point)localObject1).x;
                   localFinderJsApiMediaObj.thumbInfo.thumbHeight = ((Point)localObject1).y;
                   localArrayList2.add(localFinderJsApiMediaObj);
@@ -86,18 +87,18 @@ public final class g
             {
               paramAnonymousInt += 1;
               break;
-              ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create thumb media file error %s %s %b %d", new Object[] { locall.name(), localObject2, Boolean.valueOf(com.tencent.mm.vfs.i.eK((String)localObject2)), Long.valueOf(com.tencent.mm.vfs.i.aMN((String)localObject2)) });
+              ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create thumb media file error %s %s %b %d", new Object[] { locall.name(), localObject2, Boolean.valueOf(com.tencent.mm.vfs.i.eA((String)localObject2)), Long.valueOf(com.tencent.mm.vfs.i.aSp((String)localObject2)) });
               continue;
               if (localFinderJsApiMediaObj.mediaType == 4)
               {
                 localFinderJsApiMediaObj.thumbInfo = new FinderJsApiMediaThumbInfo();
                 localObject2 = (String)paramAnonymousIntent.get(paramAnonymousInt);
-                locall = paramc.Ee().a(new com.tencent.mm.vfs.e((String)localObject2), null, false, (com.tencent.mm.plugin.appbrand.aa.i)localObject1);
-                if (locall == l.iSq)
+                locall = paramc.DH().a(new com.tencent.mm.vfs.e((String)localObject2), null, false, (com.tencent.mm.plugin.appbrand.z.i)localObject1);
+                if (locall == l.jsB)
                 {
-                  localFinderJsApiMediaObj.thumbInfo.thumbPath = ((String)((com.tencent.mm.plugin.appbrand.aa.i)localObject1).value);
-                  localObject1 = com.tencent.mm.plugin.finder.utils.i.qTa;
-                  localObject1 = com.tencent.mm.plugin.finder.utils.i.ZP((String)localObject2);
+                  localFinderJsApiMediaObj.thumbInfo.thumbPath = ((String)((com.tencent.mm.plugin.appbrand.z.i)localObject1).value);
+                  localObject1 = n.rPN;
+                  localObject1 = n.aeB((String)localObject2);
                   if (localObject1 != null)
                   {
                     localFinderJsApiMediaObj.thumbInfo.thumbWidth = ((com.tencent.mm.plugin.sight.base.a)localObject1).width;
@@ -107,9 +108,9 @@ public final class g
                 }
                 else
                 {
-                  ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create thumb media file error %s %s %b %d", new Object[] { locall.name(), localObject2, Boolean.valueOf(com.tencent.mm.vfs.i.eK((String)localObject2)), Long.valueOf(com.tencent.mm.vfs.i.aMN((String)localObject2)) });
+                  ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create thumb media file error %s %s %b %d", new Object[] { locall.name(), localObject2, Boolean.valueOf(com.tencent.mm.vfs.i.eA((String)localObject2)), Long.valueOf(com.tencent.mm.vfs.i.aSp((String)localObject2)) });
                   continue;
-                  ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create media file error %s %s", new Object[] { ((l)localObject2).name(), localArrayList1.get(paramAnonymousInt) });
+                  ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "create media file error %s %s", new Object[] { ((l)localObject2).name(), localArrayList1.get(paramAnonymousInt) });
                 }
               }
             }
@@ -119,14 +120,14 @@ public final class g
             {
               a.b(localArrayList2, localJSONArray);
               paramAnonymousIntent = a.a("", 0, localJSONArray);
-              ad.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "returnRetMsg %s", new Object[] { paramAnonymousIntent });
+              ac.i("MicroMsg.Finder.JsApiOpenFinderPostPicker", "returnRetMsg %s", new Object[] { paramAnonymousIntent });
               paramc.h(paramInt, paramAnonymousIntent);
               AppMethodBeat.o(163960);
               return;
             }
             catch (Exception paramAnonymousIntent)
             {
-              ad.printErrStackTrace("MicroMsg.Finder.JsApiOpenFinderPostPicker", paramAnonymousIntent, "JsApiOpenFinderImagePickerController", new Object[0]);
+              ac.printErrStackTrace("MicroMsg.Finder.JsApiOpenFinderPostPicker", paramAnonymousIntent, "JsApiOpenFinderImagePickerController", new Object[0]);
               paramc.h(paramInt, a.a(paramAnonymousIntent.getMessage(), -1, localJSONArray));
               AppMethodBeat.o(163960);
               return;
@@ -145,7 +146,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.finder.g
  * JD-Core Version:    0.7.0.1
  */

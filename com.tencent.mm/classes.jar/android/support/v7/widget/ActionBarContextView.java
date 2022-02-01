@@ -21,17 +21,17 @@ import android.widget.TextView;
 public class ActionBarContextView
   extends a
 {
-  private CharSequence Eo;
-  private CharSequence Ji;
-  private TextView UA;
-  private View aeK;
-  private View aeL;
-  private LinearLayout aeM;
-  private TextView aeN;
-  private int aeO;
-  private int aeP;
-  public boolean aeQ;
-  private int aeR;
+  private CharSequence Fm;
+  private CharSequence Kd;
+  private TextView Vw;
+  private View afE;
+  private View afF;
+  private LinearLayout afG;
+  private TextView afH;
+  private int afI;
+  private int afJ;
+  public boolean afK;
+  private int afL;
   
   public ActionBarContextView(Context paramContext)
   {
@@ -48,42 +48,42 @@ public class ActionBarContextView
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = az.a(paramContext, paramAttributeSet, a.a.ActionMode, paramInt, 0);
     t.a(this, paramContext.getDrawable(0));
-    this.aeO = paramContext.getResourceId(5, 0);
-    this.aeP = paramContext.getResourceId(4, 0);
-    this.aew = paramContext.getLayoutDimension(3, 0);
-    this.aeR = paramContext.getResourceId(2, 2131492896);
-    paramContext.avP.recycle();
+    this.afI = paramContext.getResourceId(5, 0);
+    this.afJ = paramContext.getResourceId(4, 0);
+    this.afq = paramContext.getLayoutDimension(3, 0);
+    this.afL = paramContext.getResourceId(2, 2131492896);
+    paramContext.awJ.recycle();
   }
   
-  private void hN()
+  private void hV()
   {
     int m = 8;
     int j = 1;
-    if (this.aeM == null)
+    if (this.afG == null)
     {
       LayoutInflater.from(getContext()).inflate(2131492891, this);
-      this.aeM = ((LinearLayout)getChildAt(getChildCount() - 1));
-      this.UA = ((TextView)this.aeM.findViewById(2131296351));
-      this.aeN = ((TextView)this.aeM.findViewById(2131296350));
-      if (this.aeO != 0) {
-        this.UA.setTextAppearance(getContext(), this.aeO);
+      this.afG = ((LinearLayout)getChildAt(getChildCount() - 1));
+      this.Vw = ((TextView)this.afG.findViewById(2131296351));
+      this.afH = ((TextView)this.afG.findViewById(2131296350));
+      if (this.afI != 0) {
+        this.Vw.setTextAppearance(getContext(), this.afI);
       }
-      if (this.aeP != 0) {
-        this.aeN.setTextAppearance(getContext(), this.aeP);
+      if (this.afJ != 0) {
+        this.afH.setTextAppearance(getContext(), this.afJ);
       }
     }
-    this.UA.setText(this.Eo);
-    this.aeN.setText(this.Ji);
+    this.Vw.setText(this.Fm);
+    this.afH.setText(this.Kd);
     int i;
     label164:
     Object localObject;
-    if (!TextUtils.isEmpty(this.Eo))
+    if (!TextUtils.isEmpty(this.Fm))
     {
       i = 1;
-      if (TextUtils.isEmpty(this.Ji)) {
+      if (TextUtils.isEmpty(this.Kd)) {
         break label231;
       }
-      localObject = this.aeN;
+      localObject = this.afH;
       if (j == 0) {
         break label236;
       }
@@ -93,7 +93,7 @@ public class ActionBarContextView
     for (int k = 0;; k = 8)
     {
       ((TextView)localObject).setVisibility(k);
-      localObject = this.aeM;
+      localObject = this.afG;
       if (i == 0)
       {
         i = m;
@@ -104,8 +104,8 @@ public class ActionBarContextView
         i = 0;
       }
       ((LinearLayout)localObject).setVisibility(i);
-      if (this.aeM.getParent() == null) {
-        addView(this.aeM);
+      if (this.afG.getParent() == null) {
+        addView(this.afG);
       }
       return;
       i = 0;
@@ -117,14 +117,14 @@ public class ActionBarContextView
   
   public final void c(final b paramb)
   {
-    if (this.aeK == null)
+    if (this.afE == null)
     {
-      this.aeK = LayoutInflater.from(getContext()).inflate(this.aeR, this, false);
-      addView(this.aeK);
+      this.afE = LayoutInflater.from(getContext()).inflate(this.afL, this, false);
+      addView(this.afE);
     }
     for (;;)
     {
-      this.aeK.findViewById(2131296373).setOnClickListener(new View.OnClickListener()
+      this.afE.findViewById(2131296373).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -132,19 +132,19 @@ public class ActionBarContextView
         }
       });
       paramb = (h)paramb.getMenu();
-      if (this.aev != null) {
-        this.aev.hX();
+      if (this.afp != null) {
+        this.afp.ig();
       }
-      this.aev = new ActionMenuPresenter(getContext());
-      this.aev.hW();
+      this.afp = new ActionMenuPresenter(getContext());
+      this.afp.jdMethod_if();
       ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-2, -1);
-      paramb.a(this.aev, this.aet);
-      this.aeu = ((ActionMenuView)this.aev.c(this));
-      t.a(this.aeu, null);
-      addView(this.aeu, localLayoutParams);
+      paramb.a(this.afp, this.afn);
+      this.afo = ((ActionMenuView)this.afp.c(this));
+      t.a(this.afo, null);
+      addView(this.afo, localLayoutParams);
       return;
-      if (this.aeK.getParent() == null) {
-        addView(this.aeK);
+      if (this.afE.getParent() == null) {
+        addView(this.afE);
       }
     }
   }
@@ -161,35 +161,35 @@ public class ActionBarContextView
   
   public CharSequence getSubtitle()
   {
-    return this.Ji;
+    return this.Kd;
   }
   
   public CharSequence getTitle()
   {
-    return this.Eo;
+    return this.Fm;
   }
   
-  public final void hO()
+  public final void hW()
   {
-    if (this.aeK == null) {
-      hP();
+    if (this.afE == null) {
+      hX();
     }
   }
   
-  public final void hP()
+  public final void hX()
   {
     removeAllViews();
-    this.aeL = null;
-    this.aeu = null;
+    this.afF = null;
+    this.afo = null;
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.aev != null)
+    if (this.afp != null)
     {
-      this.aev.hideOverflowMenu();
-      this.aev.hY();
+      this.afp.hideOverflowMenu();
+      this.afp.ih();
     }
   }
   
@@ -200,7 +200,7 @@ public class ActionBarContextView
       paramAccessibilityEvent.setSource(this);
       paramAccessibilityEvent.setClassName(getClass().getName());
       paramAccessibilityEvent.setPackageName(getContext().getPackageName());
-      paramAccessibilityEvent.setContentDescription(this.Eo);
+      paramAccessibilityEvent.setContentDescription(this.Fm);
       return;
     }
     super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
@@ -219,12 +219,12 @@ public class ActionBarContextView
       j = getPaddingTop();
       k = paramInt4 - paramInt2 - getPaddingTop() - getPaddingBottom();
       paramInt2 = i;
-      if (this.aeK != null)
+      if (this.afE != null)
       {
         paramInt2 = i;
-        if (this.aeK.getVisibility() != 8)
+        if (this.afE.getVisibility() != 8)
         {
-          localObject = (ViewGroup.MarginLayoutParams)this.aeK.getLayoutParams();
+          localObject = (ViewGroup.MarginLayoutParams)this.afE.getLayoutParams();
           if (!paramBoolean) {
             break label254;
           }
@@ -236,32 +236,32 @@ public class ActionBarContextView
           paramInt4 = ((ViewGroup.MarginLayoutParams)localObject).leftMargin;
           label100:
           paramInt2 = c(i, paramInt2, paramBoolean);
-          paramInt2 = c(paramInt2 + a(this.aeK, paramInt2, j, k, paramBoolean), paramInt4, paramBoolean);
+          paramInt2 = c(paramInt2 + a(this.afE, paramInt2, j, k, paramBoolean), paramInt4, paramBoolean);
         }
       }
       paramInt4 = paramInt2;
-      if (this.aeM != null)
+      if (this.afG != null)
       {
         paramInt4 = paramInt2;
-        if (this.aeL == null)
+        if (this.afF == null)
         {
           paramInt4 = paramInt2;
-          if (this.aeM.getVisibility() != 8) {
-            paramInt4 = paramInt2 + a(this.aeM, paramInt2, j, k, paramBoolean);
+          if (this.afG.getVisibility() != 8) {
+            paramInt4 = paramInt2 + a(this.afG, paramInt2, j, k, paramBoolean);
           }
         }
       }
-      if (this.aeL != null) {
-        a(this.aeL, paramInt4, j, k, paramBoolean);
+      if (this.afF != null) {
+        a(this.afF, paramInt4, j, k, paramBoolean);
       }
       if (!paramBoolean) {
         break label273;
       }
       paramInt1 = getPaddingLeft();
       label213:
-      if (this.aeu != null)
+      if (this.afo != null)
       {
-        localObject = this.aeu;
+        localObject = this.afo;
         if (paramBoolean) {
           break label286;
         }
@@ -299,42 +299,42 @@ public class ActionBarContextView
     int i;
     int m;
     int j;
-    if (this.aew > 0)
+    if (this.afq > 0)
     {
-      i = this.aew;
+      i = this.afq;
       int i1 = getPaddingTop() + getPaddingBottom();
       paramInt1 = n - getPaddingLeft() - getPaddingRight();
       m = i - i1;
       j = View.MeasureSpec.makeMeasureSpec(m, -2147483648);
       paramInt2 = paramInt1;
       Object localObject;
-      if (this.aeK != null)
+      if (this.afE != null)
       {
-        paramInt1 = j(this.aeK, paramInt1, j);
-        localObject = (ViewGroup.MarginLayoutParams)this.aeK.getLayoutParams();
+        paramInt1 = j(this.afE, paramInt1, j);
+        localObject = (ViewGroup.MarginLayoutParams)this.afE.getLayoutParams();
         paramInt2 = ((ViewGroup.MarginLayoutParams)localObject).leftMargin;
         paramInt2 = paramInt1 - (((ViewGroup.MarginLayoutParams)localObject).rightMargin + paramInt2);
       }
       paramInt1 = paramInt2;
-      if (this.aeu != null)
+      if (this.afo != null)
       {
         paramInt1 = paramInt2;
-        if (this.aeu.getParent() == this) {
-          paramInt1 = j(this.aeu, paramInt2, j);
+        if (this.afo.getParent() == this) {
+          paramInt1 = j(this.afo, paramInt2, j);
         }
       }
       paramInt2 = paramInt1;
-      if (this.aeM != null)
+      if (this.afG != null)
       {
         paramInt2 = paramInt1;
-        if (this.aeL == null)
+        if (this.afF == null)
         {
-          if (!this.aeQ) {
+          if (!this.afK) {
             break label492;
           }
           paramInt2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-          this.aeM.measure(paramInt2, j);
-          int i2 = this.aeM.getMeasuredWidth();
+          this.afG.measure(paramInt2, j);
+          int i2 = this.afG.getMeasuredWidth();
           if (i2 > paramInt1) {
             break label480;
           }
@@ -344,7 +344,7 @@ public class ActionBarContextView
           if (j != 0) {
             paramInt2 = paramInt1 - i2;
           }
-          localObject = this.aeM;
+          localObject = this.afG;
           if (j == 0) {
             break label486;
           }
@@ -354,9 +354,9 @@ public class ActionBarContextView
         }
       }
       label319:
-      if (this.aeL != null)
+      if (this.afF != null)
       {
-        localObject = this.aeL.getLayoutParams();
+        localObject = this.afF.getLayoutParams();
         if (((ViewGroup.LayoutParams)localObject).width == -2) {
           break label506;
         }
@@ -374,11 +374,11 @@ public class ActionBarContextView
           break label520;
         }
         k = Math.min(((ViewGroup.LayoutParams)localObject).height, m);
-        this.aeL.measure(View.MeasureSpec.makeMeasureSpec(j, paramInt1), View.MeasureSpec.makeMeasureSpec(k, paramInt2));
+        this.afF.measure(View.MeasureSpec.makeMeasureSpec(j, paramInt1), View.MeasureSpec.makeMeasureSpec(k, paramInt2));
       }
       label384:
       label404:
-      if (this.aew > 0) {
+      if (this.afq > 0) {
         break label535;
       }
       j = getChildCount();
@@ -412,7 +412,7 @@ public class ActionBarContextView
       paramInt1 = 8;
       break label313;
       label492:
-      paramInt2 = j(this.aeM, paramInt1, j);
+      paramInt2 = j(this.afG, paramInt1, j);
       break label319;
       label506:
       paramInt1 = -2147483648;
@@ -430,19 +430,19 @@ public class ActionBarContextView
   
   public void setContentHeight(int paramInt)
   {
-    this.aew = paramInt;
+    this.afq = paramInt;
   }
   
   public void setCustomView(View paramView)
   {
-    if (this.aeL != null) {
-      removeView(this.aeL);
+    if (this.afF != null) {
+      removeView(this.afF);
     }
-    this.aeL = paramView;
-    if ((paramView != null) && (this.aeM != null))
+    this.afF = paramView;
+    if ((paramView != null) && (this.afG != null))
     {
-      removeView(this.aeM);
-      this.aeM = null;
+      removeView(this.afG);
+      this.afG = null;
     }
     if (paramView != null) {
       addView(paramView);
@@ -452,22 +452,22 @@ public class ActionBarContextView
   
   public void setSubtitle(CharSequence paramCharSequence)
   {
-    this.Ji = paramCharSequence;
-    hN();
+    this.Kd = paramCharSequence;
+    hV();
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.Eo = paramCharSequence;
-    hN();
+    this.Fm = paramCharSequence;
+    hV();
   }
   
   public void setTitleOptional(boolean paramBoolean)
   {
-    if (paramBoolean != this.aeQ) {
+    if (paramBoolean != this.afK) {
       requestLayout();
     }
-    this.aeQ = paramBoolean;
+    this.afK = paramBoolean;
   }
   
   public boolean shouldDelayChildPressedState()
@@ -477,8 +477,8 @@ public class ActionBarContextView
   
   public final boolean showOverflowMenu()
   {
-    if (this.aev != null) {
-      return this.aev.showOverflowMenu();
+    if (this.afp != null) {
+      return this.afp.showOverflowMenu();
     }
     return false;
   }

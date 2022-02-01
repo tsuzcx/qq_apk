@@ -12,22 +12,22 @@ import com.tencent.mm.ui.widget.cropview.TouchEventLayout;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/HardTouchableLayout;", "Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onDoubleClickListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "getOnDoubleClickListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "setOnDoubleClickListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;)V", "onInterceptTouchEventCallback", "Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;", "getOnInterceptTouchEventCallback", "()Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;", "setOnInterceptTouchEventCallback", "(Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;)V", "onLongClickListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "getOnLongClickListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "setOnLongClickListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;)V", "onScaleListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnScaleListener;", "getOnScaleListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnScaleListener;", "setOnScaleListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnScaleListener;)V", "onScrollListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnScrollListener;", "getOnScrollListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnScrollListener;", "setOnScrollListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnScrollListener;)V", "onSingleClickListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "getOnSingleClickListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "setOnSingleClickListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;)V", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onDoubleTap", "e", "onInterceptTouchEvent", "ev", "onLongPress", "", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "onScroll", "e1", "e2", "distanceX", "", "distanceY", "onSingleTapConfirmed", "onTouch", "v", "Landroid/view/View;", "setOnClickListener", "l", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnLongClickListener;", "Companion", "OnDoubleClickListener", "OnInterceptTouchEventCallback", "OnLongClickListener", "OnScaleListener", "OnScrollListener", "OnSingleClickListener", "libmmui_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/HardTouchableLayout;", "Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onDoubleClickListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "getOnDoubleClickListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "setOnDoubleClickListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;)V", "onInterceptTouchEventCallback", "Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;", "getOnInterceptTouchEventCallback", "()Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;", "setOnInterceptTouchEventCallback", "(Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;)V", "onLongClickListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "getOnLongClickListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "setOnLongClickListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;)V", "onScaleListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnScaleListener;", "getOnScaleListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnScaleListener;", "setOnScaleListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnScaleListener;)V", "onScrollListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnScrollListener;", "getOnScrollListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnScrollListener;", "setOnScrollListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnScrollListener;)V", "onSingleClickListener", "Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "getOnSingleClickListener", "()Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "setOnSingleClickListener", "(Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;)V", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onDoubleTap", "e", "onInterceptTouchEvent", "ev", "onLongPress", "", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "onScroll", "e1", "e2", "distanceX", "", "distanceY", "onSingleTapConfirmed", "onTouch", "v", "Landroid/view/View;", "setOnClickListener", "l", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnLongClickListener;", "Companion", "OnDoubleClickListener", "OnInterceptTouchEventCallback", "OnLongClickListener", "OnScaleListener", "OnScrollListener", "OnSingleClickListener", "libmmui_release"})
 public class HardTouchableLayout
   extends TouchEventLayout
 {
-  public static final a HUG;
-  private d HUA;
-  private g HUB;
-  private b HUC;
-  private HardTouchableLayout.f HUD;
-  private HardTouchableLayout.e HUE;
-  private c HUF;
+  public static final HardTouchableLayout.a Jvo;
+  private d Jvi;
+  private HardTouchableLayout.g Jvj;
+  private b Jvk;
+  private HardTouchableLayout.f Jvl;
+  private HardTouchableLayout.e Jvm;
+  private c Jvn;
   
   static
   {
     AppMethodBeat.i(164513);
-    HUG = new a((byte)0);
+    Jvo = new HardTouchableLayout.a((byte)0);
     AppMethodBeat.o(164513);
   }
   
@@ -70,40 +70,40 @@ public class HardTouchableLayout
   
   public final b getOnDoubleClickListener()
   {
-    return this.HUC;
+    return this.Jvk;
   }
   
   public final c getOnInterceptTouchEventCallback()
   {
-    return this.HUF;
+    return this.Jvn;
   }
   
   public final d getOnLongClickListener()
   {
-    return this.HUA;
+    return this.Jvi;
   }
   
   public final HardTouchableLayout.e getOnScaleListener()
   {
-    return this.HUE;
+    return this.Jvm;
   }
   
   public final HardTouchableLayout.f getOnScrollListener()
   {
-    return this.HUD;
+    return this.Jvl;
   }
   
-  public final g getOnSingleClickListener()
+  public final HardTouchableLayout.g getOnSingleClickListener()
   {
-    return this.HUB;
+    return this.Jvj;
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164507);
-    b localb = this.HUC;
+    b localb = this.Jvk;
     if (localb != null) {
-      localb.dQ((View)this);
+      localb.dU((View)this);
     }
     boolean bool = super.onDoubleTap(paramMotionEvent);
     AppMethodBeat.o(164507);
@@ -114,10 +114,10 @@ public class HardTouchableLayout
   {
     AppMethodBeat.i(164500);
     k.h(paramMotionEvent, "ev");
-    c localc = this.HUF;
+    c localc = this.Jvn;
     if (localc != null)
     {
-      bool = localc.U(paramMotionEvent);
+      bool = localc.S(paramMotionEvent);
       AppMethodBeat.o(164500);
       return bool;
     }
@@ -130,10 +130,10 @@ public class HardTouchableLayout
   {
     AppMethodBeat.i(164506);
     super.onLongPress(paramMotionEvent);
-    paramMotionEvent = this.HUA;
+    paramMotionEvent = this.Jvi;
     if (paramMotionEvent != null)
     {
-      paramMotionEvent.fM((View)this);
+      paramMotionEvent.fZ((View)this);
       AppMethodBeat.o(164506);
       return;
     }
@@ -179,9 +179,9 @@ public class HardTouchableLayout
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164508);
-    g localg = this.HUB;
+    HardTouchableLayout.g localg = this.Jvj;
     if (localg != null) {
-      localg.dR((View)this);
+      localg.dV((View)this);
     }
     boolean bool = super.onSingleTapConfirmed(paramMotionEvent);
     AppMethodBeat.o(164508);
@@ -200,106 +200,76 @@ public class HardTouchableLayout
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(164510);
-    this.HUB = ((g)new h(paramOnClickListener));
+    this.Jvj = ((HardTouchableLayout.g)new HardTouchableLayout.h(paramOnClickListener));
     AppMethodBeat.o(164510);
   }
   
   public final void setOnDoubleClickListener(b paramb)
   {
-    this.HUC = paramb;
+    this.Jvk = paramb;
   }
   
   public final void setOnInterceptTouchEventCallback(c paramc)
   {
-    this.HUF = paramc;
+    this.Jvn = paramc;
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
     AppMethodBeat.i(164509);
-    this.HUA = ((d)new i(paramOnLongClickListener));
+    this.Jvi = ((d)new i(paramOnLongClickListener));
     AppMethodBeat.o(164509);
   }
   
   public final void setOnLongClickListener(d paramd)
   {
-    this.HUA = paramd;
+    this.Jvi = paramd;
   }
   
   public final void setOnScaleListener(HardTouchableLayout.e parame)
   {
-    this.HUE = parame;
+    this.Jvm = parame;
   }
   
   public final void setOnScrollListener(HardTouchableLayout.f paramf)
   {
-    this.HUD = paramf;
+    this.Jvl = paramf;
   }
   
-  public final void setOnSingleClickListener(g paramg)
+  public final void setOnSingleClickListener(HardTouchableLayout.g paramg)
   {
-    this.HUB = paramg;
+    this.Jvj = paramg;
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/HardTouchableLayout$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "", "onDoubleClick", "", "view", "Landroid/view/View;", "libmmui_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "", "onDoubleClick", "", "view", "Landroid/view/View;", "libmmui_release"})
   public static abstract interface b
   {
-    public abstract void dQ(View paramView);
+    public abstract void dU(View paramView);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;", "", "isIntercept", "", "event", "Landroid/view/MotionEvent;", "libmmui_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/HardTouchableLayout$OnInterceptTouchEventCallback;", "", "isIntercept", "", "event", "Landroid/view/MotionEvent;", "libmmui_release"})
   public static abstract interface c
   {
-    public abstract boolean U(MotionEvent paramMotionEvent);
+    public abstract boolean S(MotionEvent paramMotionEvent);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "", "onLongClick", "", "view", "Landroid/view/View;", "libmmui_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "", "onLongClick", "", "view", "Landroid/view/View;", "libmmui_release"})
   public static abstract interface d
   {
-    public abstract void fM(View paramView);
+    public abstract void fZ(View paramView);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "", "onSingleClick", "", "view", "Landroid/view/View;", "libmmui_release"})
-  public static abstract interface g
-  {
-    public abstract void dR(View paramView);
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/view/HardTouchableLayout$setOnClickListener$1", "Lcom/tencent/mm/view/HardTouchableLayout$OnSingleClickListener;", "onSingleClick", "", "view", "Landroid/view/View;", "libmmui_release"})
-  public static final class h
-    implements HardTouchableLayout.g
-  {
-    h(View.OnClickListener paramOnClickListener) {}
-    
-    public final void dR(View paramView)
-    {
-      AppMethodBeat.i(164497);
-      k.h(paramView, "view");
-      View.OnClickListener localOnClickListener = this.HUH;
-      if (localOnClickListener != null)
-      {
-        localOnClickListener.onClick(paramView);
-        AppMethodBeat.o(164497);
-        return;
-      }
-      AppMethodBeat.o(164497);
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/view/HardTouchableLayout$setOnLongClickListener$1", "Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "onLongClick", "", "view", "Landroid/view/View;", "libmmui_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/view/HardTouchableLayout$setOnLongClickListener$1", "Lcom/tencent/mm/view/HardTouchableLayout$OnLongClickListener;", "onLongClick", "", "view", "Landroid/view/View;", "libmmui_release"})
   public static final class i
     implements HardTouchableLayout.d
   {
     i(View.OnLongClickListener paramOnLongClickListener) {}
     
-    public final void fM(View paramView)
+    public final void fZ(View paramView)
     {
       AppMethodBeat.i(164498);
       k.h(paramView, "view");
-      View.OnLongClickListener localOnLongClickListener = this.HUI;
+      View.OnLongClickListener localOnLongClickListener = this.Jvq;
       if (localOnLongClickListener != null)
       {
         localOnLongClickListener.onLongClick(paramView);
@@ -312,7 +282,7 @@ public class HardTouchableLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.HardTouchableLayout
  * JD-Core Version:    0.7.0.1
  */

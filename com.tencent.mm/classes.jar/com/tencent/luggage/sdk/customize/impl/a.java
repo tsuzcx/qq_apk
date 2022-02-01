@@ -4,10 +4,10 @@ import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.ui.z;
+import com.tencent.mm.plugin.appbrand.ui.y;
 
 public final class a
-  implements z
+  implements y
 {
   public final void a(Activity paramActivity, AppBrandInitConfig paramAppBrandInitConfig) {}
   
@@ -26,7 +26,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.customize.impl.a
  * JD-Core Version:    0.7.0.1
  */

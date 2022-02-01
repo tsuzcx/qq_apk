@@ -7,18 +7,18 @@ import java.util.concurrent.Executor;
 
 public class b
 {
-  private static final LinkedList<a> cCA = new LinkedList();
-  public int cCz = 0;
+  private static final LinkedList<a> czJ = new LinkedList();
+  public int czI = 0;
   private Executor executor;
   public final List<a> list = new LinkedList();
   public long time;
   
-  public int Ib()
+  public void F(List<a> paramList) {}
+  
+  public int HM()
   {
     return 0;
   }
-  
-  public void O(List<a> paramList) {}
   
   @Deprecated
   public void a(String paramString, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean) {}
@@ -32,21 +32,21 @@ public class b
   
   public static final class a
   {
-    public String cCD;
-    public long cCE;
-    public long cCF;
-    public int cCG;
-    public long cCH;
-    public long cCI;
-    public long cCJ;
-    public long cCK;
-    public boolean cCb;
+    public String czM;
+    public long czN;
+    public long czO;
+    public int czP;
+    public long czQ;
+    public long czR;
+    public long czS;
+    public long czT;
+    public boolean czk;
     
-    public static a Id()
+    public static a HO()
     {
       synchronized ()
       {
-        a locala = (a)b.Ic().poll();
+        a locala = (a)b.HN().poll();
         ??? = locala;
         if (locala == null) {
           ??? = new a();
@@ -58,7 +58,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.trace.e.b
  * JD-Core Version:    0.7.0.1
  */

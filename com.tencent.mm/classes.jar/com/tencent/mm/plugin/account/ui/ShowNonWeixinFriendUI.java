@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.aj.e.a;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.g.a.b;
@@ -26,8 +26,15 @@ public class ShowNonWeixinFriendUI
   extends MMActivity
   implements e.a
 {
-  private long ixU = 0L;
-  private String ixV = "";
+  private long iXX = 0L;
+  private String iXY = "";
+  
+  public final void Af(String paramString)
+  {
+    AppMethodBeat.i(128757);
+    initView();
+    AppMethodBeat.o(128757);
+  }
   
   public int getLayoutId()
   {
@@ -41,9 +48,9 @@ public class ShowNonWeixinFriendUI
     TextView localTextView1 = (TextView)findViewById(2131301059);
     TextView localTextView2 = (TextView)findViewById(2131301060);
     localImageView.setBackgroundDrawable(a.l(this, 2131690027));
-    localImageView.setImageBitmap(com.tencent.mm.ak.c.vH(this.ixU));
-    localTextView1.setText(this.ixV);
-    localTextView2.setText(getString(2131760355, new Object[] { this.ixV }));
+    localImageView.setImageBitmap(com.tencent.mm.aj.c.zN(this.iXX));
+    localTextView1.setText(this.iXY);
+    localTextView2.setText(getString(2131760355, new Object[] { this.iXY }));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -69,28 +76,28 @@ public class ShowNonWeixinFriendUI
           public final void a(b paramAnonymous2b)
           {
             AppMethodBeat.i(128749);
-            ad.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+            ac.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
             AppMethodBeat.o(128749);
           }
           
           public final void a(com.tencent.mm.ui.g.a.e paramAnonymous2e)
           {
             AppMethodBeat.i(128748);
-            ad.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+            ac.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
             AppMethodBeat.o(128748);
           }
           
           public final void onCancel()
           {
             AppMethodBeat.i(128751);
-            ad.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite cancle");
+            ac.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite cancle");
             AppMethodBeat.o(128751);
           }
           
           public final void w(Bundle paramAnonymous2Bundle)
           {
             AppMethodBeat.i(128750);
-            ad.i("MicroMsg.ShowNonWeixinFriendUI", "fbinvite oncomplete");
+            ac.i("MicroMsg.ShowNonWeixinFriendUI", "fbinvite oncomplete");
             h.a(ShowNonWeixinFriendUI.this.getContext(), 2131758797, 2131755906, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
@@ -114,8 +121,8 @@ public class ShowNonWeixinFriendUI
     AppMethodBeat.i(128753);
     super.onCreate(paramBundle);
     setMMTitle(2131760357);
-    this.ixU = getIntent().getLongExtra("Contact_KFacebookId", 0L);
-    this.ixV = getIntent().getStringExtra("Contact_KFacebookName");
+    this.iXX = getIntent().getLongExtra("Contact_KFacebookId", 0L);
+    this.iXY = getIntent().getStringExtra("Contact_KFacebookName");
     initView();
     AppMethodBeat.o(128753);
   }
@@ -124,7 +131,7 @@ public class ShowNonWeixinFriendUI
   {
     AppMethodBeat.i(128754);
     super.onPause();
-    p.auq().e(this);
+    p.aBh().e(this);
     AppMethodBeat.o(128754);
   }
   
@@ -132,7 +139,7 @@ public class ShowNonWeixinFriendUI
   {
     AppMethodBeat.i(128755);
     super.onResume();
-    p.auq().d(this);
+    p.aBh().d(this);
     AppMethodBeat.o(128755);
   }
   
@@ -141,17 +148,10 @@ public class ShowNonWeixinFriendUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final void vZ(String paramString)
-  {
-    AppMethodBeat.i(128757);
-    initView();
-    AppMethodBeat.o(128757);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.ShowNonWeixinFriendUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public final class a
 {
-  private final Class<?> Knn;
+  private final Class<?> MaW;
   public final Object object;
   
   private a(Class<?> paramClass)
@@ -23,14 +23,14 @@ public final class a
   
   private a(Class<?> paramClass, Object paramObject)
   {
-    this.Knn = paramClass;
+    this.MaW = paramClass;
     this.object = paramObject;
   }
   
   private Method a(String paramString, Class<?>[] paramArrayOfClass)
   {
     AppMethodBeat.i(4281);
-    Object localObject = this.Knn;
+    Object localObject = this.MaW;
     try
     {
       Method localMethod1 = ((Class)localObject).getMethod(paramString, paramArrayOfClass);
@@ -69,11 +69,11 @@ public final class a
       if (paramMethod.getReturnType() == Void.TYPE)
       {
         paramMethod.invoke(paramObject, paramVarArgs);
-        paramMethod = fU(paramObject);
+        paramMethod = gc(paramObject);
         AppMethodBeat.o(4290);
         return paramMethod;
       }
-      paramMethod = fU(paramMethod.invoke(paramObject, paramVarArgs));
+      paramMethod = gc(paramMethod.invoke(paramObject, paramVarArgs));
       AppMethodBeat.o(4290);
       return paramMethod;
     }
@@ -105,7 +105,7 @@ public final class a
       int i = 0;
       while (i < paramArrayOfClass2.length)
       {
-        if ((paramArrayOfClass2[i] != a.a.class) && (!bB(paramArrayOfClass1[i]).isAssignableFrom(bB(paramArrayOfClass2[i]))))
+        if ((paramArrayOfClass2[i] != a.a.class) && (!bE(paramArrayOfClass1[i]).isAssignableFrom(bE(paramArrayOfClass2[i]))))
         {
           AppMethodBeat.o(4285);
           return false;
@@ -119,10 +119,10 @@ public final class a
     return false;
   }
   
-  private Field aRC(String paramString)
+  private Field aXC(String paramString)
   {
     AppMethodBeat.i(4278);
-    Class localClass = this.Knn;
+    Class localClass = this.MaW;
     try
     {
       Field localField1 = (Field)c(localClass.getField(paramString));
@@ -151,7 +151,7 @@ public final class a
     }
   }
   
-  private static Class<?>[] ah(Object... paramVarArgs)
+  private static Class<?>[] aj(Object... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(4291);
@@ -193,7 +193,7 @@ public final class a
     }
   }
   
-  public static a bA(Class<?> paramClass)
+  public static a bD(Class<?> paramClass)
   {
     AppMethodBeat.i(4271);
     paramClass = new a(paramClass);
@@ -201,7 +201,7 @@ public final class a
     return paramClass;
   }
   
-  private static Class<?> bB(Class<?> paramClass)
+  private static Class<?> bE(Class<?> paramClass)
   {
     AppMethodBeat.i(4293);
     if (paramClass == null)
@@ -293,18 +293,6 @@ public final class a
     return paramClass;
   }
   
-  public static a fU(Object paramObject)
-  {
-    AppMethodBeat.i(4272);
-    if (paramObject == null) {}
-    for (Object localObject = Object.class;; localObject = paramObject.getClass())
-    {
-      paramObject = new a((Class)localObject, paramObject);
-      AppMethodBeat.o(4272);
-      return paramObject;
-    }
-  }
-  
   public static Class<?> forName(String paramString)
   {
     AppMethodBeat.i(4292);
@@ -322,12 +310,24 @@ public final class a
     }
   }
   
-  public final a aRB(String paramString)
+  public static a gc(Object paramObject)
+  {
+    AppMethodBeat.i(4272);
+    if (paramObject == null) {}
+    for (Object localObject = Object.class;; localObject = paramObject.getClass())
+    {
+      paramObject = new a((Class)localObject, paramObject);
+      AppMethodBeat.o(4272);
+      return paramObject;
+    }
+  }
+  
+  public final a aXB(String paramString)
   {
     AppMethodBeat.i(4277);
     try
     {
-      paramString = aRC(paramString);
+      paramString = aXC(paramString);
       paramString = e(paramString.getType(), paramString.get(this.object));
       AppMethodBeat.o(4277);
       return paramString;
@@ -340,27 +340,27 @@ public final class a
     }
   }
   
-  public final a aRD(String paramString)
+  public final a aXD(String paramString)
   {
     AppMethodBeat.i(4279);
-    paramString = x(paramString, new Object[0]);
+    paramString = y(paramString, new Object[0]);
     AppMethodBeat.o(4279);
     return paramString;
   }
   
-  public final a ag(Object... paramVarArgs)
+  public final a ai(Object... paramVarArgs)
   {
     AppMethodBeat.i(4284);
-    Class[] arrayOfClass = ah(paramVarArgs);
+    Class[] arrayOfClass = aj(paramVarArgs);
     try
     {
-      a locala = b(this.Knn.getDeclaredConstructor(arrayOfClass), paramVarArgs);
+      a locala = b(this.MaW.getDeclaredConstructor(arrayOfClass), paramVarArgs);
       AppMethodBeat.o(4284);
       return locala;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      Constructor[] arrayOfConstructor = this.Knn.getDeclaredConstructors();
+      Constructor[] arrayOfConstructor = this.MaW.getDeclaredConstructors();
       int j = arrayOfConstructor.length;
       int i = 0;
       while (i < j)
@@ -393,20 +393,20 @@ public final class a
     return false;
   }
   
-  public final a fMX()
-  {
-    AppMethodBeat.i(4283);
-    a locala = ag(new Object[0]);
-    AppMethodBeat.o(4283);
-    return locala;
-  }
-  
   public final <T> T get(String paramString)
   {
     AppMethodBeat.i(4276);
-    paramString = aRB(paramString).object;
+    paramString = aXB(paramString).object;
     AppMethodBeat.o(4276);
     return paramString;
+  }
+  
+  public final a gfN()
+  {
+    AppMethodBeat.i(4283);
+    a locala = ai(new Object[0]);
+    AppMethodBeat.o(4283);
+    return locala;
   }
   
   public final int hashCode()
@@ -425,10 +425,10 @@ public final class a
     return str;
   }
   
-  public final a x(String paramString, Object... paramVarArgs)
+  public final a y(String paramString, Object... paramVarArgs)
   {
     AppMethodBeat.i(4280);
-    Class[] arrayOfClass = ah(paramVarArgs);
+    Class[] arrayOfClass = aj(paramVarArgs);
     try
     {
       a locala = a(a(paramString, arrayOfClass), this.object, paramVarArgs);
@@ -440,7 +440,7 @@ public final class a
     {
       try
       {
-        Class localClass = this.Knn;
+        Class localClass = this.MaW;
         Method[] arrayOfMethod1 = localClass.getMethods();
         int j = arrayOfMethod1.length;
         int i = 0;
@@ -471,7 +471,7 @@ public final class a
             localClass = localClass.getSuperclass();
             if (localClass == null)
             {
-              paramString = new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(arrayOfClass) + " could be found on type " + this.Knn + ".");
+              paramString = new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(arrayOfClass) + " could be found on type " + this.MaW + ".");
               AppMethodBeat.o(4280);
               throw paramString;
             }
@@ -489,7 +489,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     org.a.a
  * JD-Core Version:    0.7.0.1
  */

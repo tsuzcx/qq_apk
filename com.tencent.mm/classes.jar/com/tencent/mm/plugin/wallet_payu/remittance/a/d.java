@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,12 +11,12 @@ public final class d
   extends a
 {
   public String desc;
-  public double nUf;
-  public int nUh;
+  public double oxA;
+  public int oxC;
   public int scene;
   public String username;
-  public String vBf;
-  public String vBg;
+  public String wLk;
+  public String wLl;
   
   public d(String paramString)
   {
@@ -27,7 +27,7 @@ public final class d
     AppMethodBeat.o(72172);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 24;
   }
@@ -35,19 +35,19 @@ public final class d
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72173);
-    ad.d("MicroMsg.NetScenePayURemittanceGetUsername", "errCode " + paramInt + " errMsg: " + paramString);
+    ac.d("MicroMsg.NetScenePayURemittanceGetUsername", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72173);
       return;
     }
     this.username = paramJSONObject.optString("user_name");
-    this.vBf = paramJSONObject.optString("true_name");
-    this.nUf = (paramJSONObject.optDouble("fee") / 100.0D);
+    this.wLk = paramJSONObject.optString("true_name");
+    this.oxA = (paramJSONObject.optDouble("fee") / 100.0D);
     this.desc = paramJSONObject.optString("desc");
     this.scene = paramJSONObject.optInt("scene");
-    this.vBg = paramJSONObject.optString("transfer_qrcode_id");
-    this.nUh = paramJSONObject.optInt("time_stamp");
+    this.wLl = paramJSONObject.optString("transfer_qrcode_id");
+    this.oxC = paramJSONObject.optInt("time_stamp");
     AppMethodBeat.o(72173);
   }
 }

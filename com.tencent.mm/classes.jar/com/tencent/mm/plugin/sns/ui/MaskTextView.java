@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class MaskTextView
   extends SnsTextView
@@ -25,7 +25,7 @@ public class MaskTextView
     }
     catch (Throwable paramCanvas)
     {
-      ad.printErrStackTrace("MicroMsg.MaskTextView", paramCanvas, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.MaskTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(97976);
     }
   }

@@ -2,24 +2,24 @@ package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
-import com.tencent.xweb.w.a;
+import com.tencent.xweb.x.a;
 
 public final class g$d
-  extends w.a
+  extends x.a
 {
-  public WebChromeClient.FileChooserParams IRY;
+  public WebChromeClient.FileChooserParams KEu;
   
   public g$d(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.IRY = paramFileChooserParams;
+    this.KEu = paramFileChooserParams;
   }
   
   public final String[] getAcceptTypes()
   {
     AppMethodBeat.i(153851);
-    if (this.IRY != null)
+    if (this.KEu != null)
     {
-      String[] arrayOfString = this.IRY.getAcceptTypes();
+      String[] arrayOfString = this.KEu.getAcceptTypes();
       AppMethodBeat.o(153851);
       return arrayOfString;
     }
@@ -30,9 +30,9 @@ public final class g$d
   public final int getMode()
   {
     AppMethodBeat.i(153850);
-    if (this.IRY != null)
+    if (this.KEu != null)
     {
-      int i = this.IRY.getMode();
+      int i = this.KEu.getMode();
       AppMethodBeat.o(153850);
       return i;
     }
@@ -43,9 +43,9 @@ public final class g$d
   public final boolean isCaptureEnabled()
   {
     AppMethodBeat.i(153852);
-    if (this.IRY != null)
+    if (this.KEu != null)
     {
-      boolean bool = this.IRY.isCaptureEnabled();
+      boolean bool = this.KEu.isCaptureEnabled();
       AppMethodBeat.o(153852);
       return bool;
     }

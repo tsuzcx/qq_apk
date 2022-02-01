@@ -17,8 +17,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
-@d.l(fvt={1, 1, 15}, fvu={""}, fvv={"createAnnotationInstance", "T", "", "annotationClass", "Ljava/lang/Class;", "values", "", "", "methods", "", "Ljava/lang/reflect/Method;", "(Ljava/lang/Class;Ljava/util/Map;Ljava/util/List;)Ljava/lang/Object;", "throwIllegalArgumentType", "", "index", "", "name", "expectedJvmType", "transformKotlinToJvm", "expectedType", "kotlin-reflection", "hashCode", "toString"})
+@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"createAnnotationInstance", "T", "", "annotationClass", "Ljava/lang/Class;", "values", "", "", "methods", "", "Ljava/lang/reflect/Method;", "(Ljava/lang/Class;Ljava/util/Map;Ljava/util/List;)Ljava/lang/Object;", "throwIllegalArgumentType", "", "index", "", "name", "expectedJvmType", "transformKotlinToJvm", "expectedType", "kotlin-reflection", "hashCode", "toString"})
 public final class b
 {
   static
@@ -35,9 +36,9 @@ public final class b
     d.g.b.k.h(paramMap, "values");
     d.g.b.k.h(paramList, "methods");
     final a locala = new a(paramClass, paramList, paramMap);
-    final f localf1 = g.E((d.g.a.a)new b(paramMap));
+    final f localf1 = g.K((d.g.a.a)new b(paramMap));
     final d.l.k localk1 = $$delegatedProperties[0];
-    final f localf2 = g.E((d.g.a.a)new b.d(paramClass, paramMap));
+    final f localf2 = g.K((d.g.a.a)new d(paramClass, paramMap));
     final d.l.k localk2 = $$delegatedProperties[1];
     paramList = paramClass.getClassLoader();
     paramMap = (InvocationHandler)new c(paramClass, localf2, localk2, localf1, localk1, locala, paramMap);
@@ -52,7 +53,7 @@ public final class b
     return paramClass;
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"equals", "", "T", "", "other", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"equals", "", "T", "", "other", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.b<Object, Boolean>
@@ -62,7 +63,7 @@ public final class b
       super();
     }
     
-    public final boolean eW(Object paramObject)
+    public final boolean eZ(Object paramObject)
     {
       Object localObject2 = null;
       AppMethodBeat.i(56578);
@@ -79,7 +80,7 @@ public final class b
             localObject1 = d.g.a.a((d.l.b)localObject3);
           }
         }
-        if (d.g.b.k.g(localObject1, this.JkV))
+        if (d.g.b.k.g(localObject1, this.KYp))
         {
           localObject1 = (Iterable)paramList;
           boolean bool;
@@ -224,7 +225,7 @@ public final class b
     }
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "", "T", "", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<Integer>
@@ -235,7 +236,7 @@ public final class b
     }
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "", "T", "<anonymous parameter 0>", "kotlin.jvm.PlatformType", "method", "Ljava/lang/reflect/Method;", "args", "", "invoke", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "<anonymous parameter 0>", "kotlin.jvm.PlatformType", "method", "Ljava/lang/reflect/Method;", "args", "", "invoke", "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class c
     implements InvocationHandler
   {
@@ -249,7 +250,7 @@ public final class b
       if (paramObject == null) {}
       while ((d.g.b.k.g(paramObject, "equals")) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
       {
-        boolean bool = locala.eW(e.Q(paramArrayOfObject));
+        boolean bool = locala.eZ(e.S(paramArrayOfObject));
         AppMethodBeat.o(56580);
         return Boolean.valueOf(bool);
         switch (paramObject.hashCode())
@@ -275,7 +276,7 @@ public final class b
         case 1444986633: 
           if (paramObject.equals("annotationType"))
           {
-            paramObject = this.JkV;
+            paramObject = this.KYp;
             AppMethodBeat.o(56580);
             return paramObject;
           }
@@ -293,15 +294,46 @@ public final class b
       if (paramArrayOfObject == null) {
         paramObject = new Object[0];
       }
-      paramObject = (Throwable)new x(e.T(paramObject) + ')');
+      paramObject = (Throwable)new x(e.V(paramObject) + ')');
       AppMethodBeat.o(56580);
       throw paramObject;
+    }
+  }
+  
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "", "invoke"})
+  static final class d
+    extends d.g.b.l
+    implements d.g.a.a<String>
+  {
+    d(Class paramClass, Map paramMap)
+    {
+      super();
+    }
+    
+    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "", "entry", "", "invoke"})
+    static final class a
+      extends d.g.b.l
+      implements d.g.a.b<Map.Entry<? extends String, ? extends Object>, String>
+    {
+      public static final a KYx;
+      
+      static
+      {
+        AppMethodBeat.i(56582);
+        KYx = new a();
+        AppMethodBeat.o(56582);
+      }
+      
+      a()
+      {
+        super();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.backup.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lj;
-import com.tencent.mm.g.a.lj.a;
+import com.tencent.mm.g.a.ls;
+import com.tencent.mm.g.a.ls.a;
 import com.tencent.mm.plugin.r.b;
 import com.tencent.mm.plugin.r.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 final class a$3$1
   implements Runnable
 {
-  a$3$1(a.3 param3, lj paramlj) {}
+  a$3$1(a.3 param3, ls paramls) {}
   
   public final void run()
   {
     AppMethodBeat.i(22144);
-    Object localObject = this.mCp;
-    ad.i("MicroMsg.BackupCore", "receive msgSynchronizeStartEvent run userCloseMsgSync[%b]", new Object[] { Boolean.valueOf(((lj)localObject).dpV.dpY) });
-    if (((lj)localObject).dpV.dpY)
+    Object localObject = this.neq;
+    ac.i("MicroMsg.BackupCore", "receive msgSynchronizeStartEvent run userCloseMsgSync[%b]", new Object[] { Boolean.valueOf(((ls)localObject).dnG.dnJ) });
+    if (((ls)localObject).dnG.dnJ)
     {
-      h.vKh.idkeyStat(466L, 13L, 1L, false);
+      h.wUl.idkeyStat(466L, 13L, 1L, false);
       AppMethodBeat.o(22144);
       return;
     }
-    byte[] arrayOfByte = ((lj)localObject).dpV.dpW;
+    byte[] arrayOfByte = ((ls)localObject).dnG.dnH;
     if (arrayOfByte == null)
     {
-      ad.e("MicroMsg.BackupCore", "msgsynchronize loginconfirmok key is null!");
-      h.vKh.idkeyStat(466L, 14L, 1L, false);
+      ac.e("MicroMsg.BackupCore", "msgsynchronize loginconfirmok key is null!");
+      h.wUl.idkeyStat(466L, 14L, 1L, false);
       AppMethodBeat.o(22144);
       return;
     }
-    int i = ((lj)localObject).dpV.dpX;
-    localObject = f.nq(true);
-    String str = b.tNw;
-    ((f)localObject).dpX = i;
+    int i = ((ls)localObject).dnG.dnI;
+    localObject = f.ok(true);
+    String str = b.uVZ;
+    ((f)localObject).dnI = i;
     ((f)localObject).d(str, "", arrayOfByte);
     AppMethodBeat.o(22144);
   }

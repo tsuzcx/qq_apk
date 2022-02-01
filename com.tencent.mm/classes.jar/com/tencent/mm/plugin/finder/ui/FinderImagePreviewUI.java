@@ -15,10 +15,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.SpinnerAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.b;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
@@ -31,18 +31,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 @a(35)
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/ui/FinderImagePreviewUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "animationLayout", "Lcom/tencent/mm/view/AnimationLayout;", "gallery", "Lcom/tencent/mm/ui/tools/MMGestureGallery;", "galleryBg", "Landroid/view/View;", "playingAnimation", "", "root", "scaleX", "", "scaleY", "thumRect", "Landroid/graphics/Rect;", "translationX", "translationY", "convertActivityFromTranslucent", "getLayoutId", "", "goBack", "", "initDragGallery", "initView", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "runEnterAnimation", "runExitAnimation", "setFullscreen", "FinderPreviewImageAdapter", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/ui/FinderImagePreviewUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "animationLayout", "Lcom/tencent/mm/view/AnimationLayout;", "gallery", "Lcom/tencent/mm/ui/tools/MMGestureGallery;", "galleryBg", "Landroid/view/View;", "isAvatar", "", "playingAnimation", "root", "scaleX", "", "scaleY", "thumRect", "Landroid/graphics/Rect;", "translationX", "translationY", "convertActivityFromTranslucent", "getLayoutId", "", "goBack", "", "initDragGallery", "initView", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "runEnterAnimation", "runExitAnimation", "setFullscreen", "FinderPreviewImageAdapter", "plugin-finder_release"})
 public final class FinderImagePreviewUI
   extends MMFinderUI
 {
   private final String TAG = "MicroMsg.FinderImagePreviewUI";
   private HashMap _$_findViewCache;
-  private View frN;
-  private MMGestureGallery ibu;
-  private View qMw;
-  private AnimationLayout qMx;
-  private boolean qMy;
-  private Rect qMz;
+  private View fvu;
+  private AnimationLayout iBC;
+  private boolean iBD;
+  private MMGestureGallery iBx;
+  private View rHQ;
+  private boolean rHR;
+  private Rect rHS;
   private float scaleX;
   private float scaleY;
   private float translationX;
@@ -51,19 +52,19 @@ public final class FinderImagePreviewUI
   private final void goBack()
   {
     AppMethodBeat.i(167310);
-    if (this.qMz != null)
+    if (this.rHS != null)
     {
-      if (this.qMy)
+      if (this.iBD)
       {
         finish();
         AppMethodBeat.o(167310);
         return;
       }
-      this.qMy = true;
-      ad.i(this.TAG, "runExitAnimation");
-      Object localObject = this.ibu;
+      this.iBD = true;
+      ac.i(this.TAG, "runExitAnimation");
+      Object localObject = this.iBx;
       if (localObject == null) {
-        k.aPZ("gallery");
+        k.aVY("gallery");
       }
       localObject = ((MMGestureGallery)localObject).getSelectedView();
       if (localObject == null)
@@ -73,19 +74,19 @@ public final class FinderImagePreviewUI
         throw ((Throwable)localObject);
       }
       localObject = (MultiTouchImageView)localObject;
-      AnimationLayout localAnimationLayout = this.qMx;
+      AnimationLayout localAnimationLayout = this.iBC;
       if (localAnimationLayout == null) {
-        k.aPZ("animationLayout");
+        k.aVY("animationLayout");
       }
-      View localView1 = this.qMw;
+      View localView1 = this.rHQ;
       if (localView1 == null) {
-        k.aPZ("galleryBg");
+        k.aVY("galleryBg");
       }
-      View localView2 = this.frN;
+      View localView2 = this.fvu;
       if (localView2 == null) {
-        k.aPZ("root");
+        k.aVY("root");
       }
-      localAnimationLayout.a(localView1, localView2, new ViewAnimHelper.ViewInfo(this.qMz), (Animator.AnimatorListener)new e(this, (MultiTouchImageView)localObject), (ValueAnimator.AnimatorUpdateListener)new f(this, (MultiTouchImageView)localObject));
+      localAnimationLayout.a(localView1, localView2, new ViewAnimHelper.ViewInfo(this.rHS), (Animator.AnimatorListener)new e(this, (MultiTouchImageView)localObject), (ValueAnimator.AnimatorUpdateListener)new f(this, (MultiTouchImageView)localObject));
       AppMethodBeat.o(167310);
       return;
     }
@@ -95,7 +96,7 @@ public final class FinderImagePreviewUI
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(199249);
+    AppMethodBeat.i(203220);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -106,7 +107,7 @@ public final class FinderImagePreviewUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(199249);
+    AppMethodBeat.o(203220);
     return localView1;
   }
   
@@ -125,80 +126,81 @@ public final class FinderImagePreviewUI
     AppMethodBeat.i(167309);
     Object localObject1 = getController();
     k.g(localObject1, "controller");
-    ((r)localObject1).getSupportActionBar().hide();
+    ((s)localObject1).getSupportActionBar().hide();
     getController().q((Activity)this, getResources().getColor(2131101053));
     getController().setNavigationbarColor(getResources().getColor(2131101053));
     localObject1 = findViewById(2131304239);
     k.g(localObject1, "findViewById(R.id.root)");
-    this.frN = ((View)localObject1);
+    this.fvu = ((View)localObject1);
     localObject1 = findViewById(2131300335);
     k.g(localObject1, "findViewById(R.id.gallery)");
-    this.ibu = ((MMGestureGallery)localObject1);
+    this.iBx = ((MMGestureGallery)localObject1);
     localObject1 = findViewById(2131300336);
     k.g(localObject1, "findViewById(R.id.gallery_bg)");
-    this.qMw = ((View)localObject1);
+    this.rHQ = ((View)localObject1);
     localObject1 = findViewById(2131296674);
     k.g(localObject1, "findViewById(R.id.animation_layout)");
-    this.qMx = ((AnimationLayout)localObject1);
+    this.iBC = ((AnimationLayout)localObject1);
     Object localObject2 = getIntent().getStringArrayListExtra("key_file_list");
     Object localObject3 = getIntent().getStringArrayListExtra("key_url_list");
-    this.qMz = ((Rect)getIntent().getParcelableExtra("key_thumb_location"));
-    ad.i(this.TAG, "files %s, urls", new Object[] { localObject2, localObject3 });
+    this.rHR = getIntent().getBooleanExtra("key_preview_avatar", false);
+    this.rHS = ((Rect)getIntent().getParcelableExtra("key_thumb_location"));
+    ac.i(this.TAG, "files %s, urls", new Object[] { localObject2, localObject3 });
     localObject1 = new FinderImagePreviewUI.a(this);
     if (localObject2 != null)
     {
-      ((FinderImagePreviewUI.a)localObject1).P((ArrayList)localObject2);
-      ((FinderImagePreviewUI.a)localObject1).dtp = true;
+      ((FinderImagePreviewUI.a)localObject1).Z((ArrayList)localObject2);
+      ((FinderImagePreviewUI.a)localObject1).dqZ = true;
     }
     for (;;)
     {
-      localObject2 = this.ibu;
+      localObject2 = this.iBx;
       if (localObject2 == null) {
-        k.aPZ("gallery");
+        k.aVY("gallery");
       }
       ((MMGestureGallery)localObject2).setSingleClickOverListener((MMGestureGallery.f)new c(this));
-      localObject2 = this.ibu;
+      localObject2 = this.iBx;
       if (localObject2 == null) {
-        k.aPZ("gallery");
+        k.aVY("gallery");
       }
       ((MMGestureGallery)localObject2).setAdapter((SpinnerAdapter)localObject1);
-      localObject1 = this.ibu;
+      localObject1 = this.iBx;
       if (localObject1 == null) {
-        k.aPZ("gallery");
+        k.aVY("gallery");
       }
       ((MMGestureGallery)localObject1).setGalleryScaleListener((MMGestureGallery.b)new b(this));
-      if (this.qMz == null) {
+      if (this.rHS == null) {
         break;
       }
-      if (!this.qMy)
+      if (!this.iBD)
       {
-        this.qMy = true;
-        ad.i(this.TAG, "runEnterAnimation");
-        localObject1 = this.qMx;
+        this.iBD = true;
+        ac.i(this.TAG, "runEnterAnimation");
+        localObject1 = this.iBC;
         if (localObject1 == null) {
-          k.aPZ("animationLayout");
+          k.aVY("animationLayout");
         }
-        localObject2 = this.qMw;
+        localObject2 = this.rHQ;
         if (localObject2 == null) {
-          k.aPZ("galleryBg");
+          k.aVY("galleryBg");
         }
-        localObject3 = this.frN;
+        localObject3 = this.fvu;
         if (localObject3 == null) {
-          k.aPZ("root");
+          k.aVY("root");
         }
-        ((AnimationLayout)localObject1).a((View)localObject2, (View)localObject3, new ViewAnimHelper.ViewInfo(this.qMz), (Animator.AnimatorListener)new d(this));
+        ((AnimationLayout)localObject1).a((View)localObject2, (View)localObject3, new ViewAnimHelper.ViewInfo(this.rHS), (Animator.AnimatorListener)new d(this));
       }
       AppMethodBeat.o(167309);
       return;
       if (localObject3 != null)
       {
-        ((FinderImagePreviewUI.a)localObject1).P((ArrayList)localObject3);
-        ((FinderImagePreviewUI.a)localObject1).dtp = false;
+        ((FinderImagePreviewUI.a)localObject1).Z((ArrayList)localObject3);
+        ((FinderImagePreviewUI.a)localObject1).dqZ = false;
       }
     }
-    localObject1 = this.qMw;
+    localObject1 = this.rHQ;
     if (localObject1 == null) {
-      k.aPZ("galleryBg");
+      k.aVY("galleryBg");
     }
     ((View)localObject1).setVisibility(0);
     AppMethodBeat.o(167309);
@@ -230,20 +232,20 @@ public final class FinderImagePreviewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$initDragGallery$1", "Lcom/tencent/mm/ui/tools/MMGestureGallery$IOnGalleryScale;", "onGalleryScale", "", "tx", "", "ty", "onSetPrePrama", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$initDragGallery$1", "Lcom/tencent/mm/ui/tools/MMGestureGallery$IOnGalleryScale;", "onGalleryScale", "", "tx", "", "ty", "onSetPrePrama", "plugin-finder_release"})
   public static final class b
     implements MMGestureGallery.b
   {
-    public final void J(float paramFloat1, float paramFloat2)
+    public final void M(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(167299);
-      float f2 = 1.0F - paramFloat2 / FinderImagePreviewUI.b(this.qMB).getHeight();
+      float f2 = 1.0F - paramFloat2 / FinderImagePreviewUI.c(this.rHU).getHeight();
       float f1 = f2;
       if (f2 > 1.0F) {
         f1 = 1.0F;
       }
-      ad.d(FinderImagePreviewUI.c(this.qMB), "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(f1) });
-      Object localObject = FinderImagePreviewUI.b(this.qMB).getSelectedView();
+      ac.d(FinderImagePreviewUI.d(this.rHU), "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(f1) });
+      Object localObject = FinderImagePreviewUI.c(this.rHU).getSelectedView();
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.MultiTouchImageView");
@@ -251,34 +253,34 @@ public final class FinderImagePreviewUI
         throw ((Throwable)localObject);
       }
       localObject = (MultiTouchImageView)localObject;
-      ((MultiTouchImageView)localObject).setPivotX(FinderImagePreviewUI.b(this.qMB).getWidth() / 2);
-      ((MultiTouchImageView)localObject).setPivotY(FinderImagePreviewUI.b(this.qMB).getHeight() / 2);
+      ((MultiTouchImageView)localObject).setPivotX(FinderImagePreviewUI.c(this.rHU).getWidth() / 2);
+      ((MultiTouchImageView)localObject).setPivotY(FinderImagePreviewUI.c(this.rHU).getHeight() / 2);
       ((MultiTouchImageView)localObject).setScaleX(f1);
       ((MultiTouchImageView)localObject).setScaleY(f1);
       ((MultiTouchImageView)localObject).setTranslationX(paramFloat1);
       ((MultiTouchImageView)localObject).setTranslationY(paramFloat2);
-      FinderImagePreviewUI.d(this.qMB).setAlpha(f1);
+      FinderImagePreviewUI.e(this.rHU).setAlpha(f1);
       AppMethodBeat.o(167299);
     }
     
-    public final void K(float paramFloat1, float paramFloat2) {}
+    public final void N(float paramFloat1, float paramFloat2) {}
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "singleClickOver"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "singleClickOver"})
   static final class c
     implements MMGestureGallery.f
   {
     c(FinderImagePreviewUI paramFinderImagePreviewUI) {}
     
-    public final void aHo()
+    public final void aOd()
     {
       AppMethodBeat.i(167300);
-      FinderImagePreviewUI.a(this.qMB);
+      FinderImagePreviewUI.b(this.rHU);
       AppMethodBeat.o(167300);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$runEnterAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$runEnterAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
@@ -287,7 +289,7 @@ public final class FinderImagePreviewUI
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(167301);
-      FinderImagePreviewUI.e(this.qMB);
+      FinderImagePreviewUI.f(this.rHU);
       AppMethodBeat.o(167301);
     }
     
@@ -296,12 +298,12 @@ public final class FinderImagePreviewUI
     public final void onAnimationStart(Animator paramAnimator)
     {
       AppMethodBeat.i(167302);
-      FinderImagePreviewUI.f(this.qMB).setVisibility(0);
+      FinderImagePreviewUI.g(this.rHU).setVisibility(0);
       AppMethodBeat.o(167302);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$runExitAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$runExitAnimation$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class e
     implements Animator.AnimatorListener
   {
@@ -318,8 +320,8 @@ public final class FinderImagePreviewUI
     {
       AppMethodBeat.i(167304);
       k.h(paramAnimator, "animation");
-      this.qMB.finish();
-      this.qMB.overridePendingTransition(2130771986, 2130771986);
+      this.rHU.finish();
+      this.rHU.overridePendingTransition(2130771986, 2130771986);
       AppMethodBeat.o(167304);
     }
     
@@ -334,18 +336,18 @@ public final class FinderImagePreviewUI
     {
       AppMethodBeat.i(167303);
       k.h(paramAnimator, "animation");
-      if (this.qMG.getScale() > 1.0F) {
-        this.qMG.eSz();
+      if (this.rHZ.getScale() > 1.0F) {
+        this.rHZ.fij();
       }
-      FinderImagePreviewUI.a(this.qMB, this.qMG.getTranslationX());
-      FinderImagePreviewUI.b(this.qMB, this.qMG.getTranslationY());
-      FinderImagePreviewUI.c(this.qMB, this.qMG.getScaleX());
-      FinderImagePreviewUI.d(this.qMB, this.qMG.getScaleY());
+      FinderImagePreviewUI.a(this.rHU, this.rHZ.getTranslationX());
+      FinderImagePreviewUI.b(this.rHU, this.rHZ.getTranslationY());
+      FinderImagePreviewUI.c(this.rHU, this.rHZ.getScaleX());
+      FinderImagePreviewUI.d(this.rHU, this.rHZ.getScaleY());
       AppMethodBeat.o(167303);
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$runExitAnimation$2", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "onAnimationUpdate", "", "animation", "Landroid/animation/ValueAnimator;", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderImagePreviewUI$runExitAnimation$2", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "onAnimationUpdate", "", "animation", "Landroid/animation/ValueAnimator;", "plugin-finder_release"})
   public static final class f
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -363,17 +365,17 @@ public final class FinderImagePreviewUI
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      this.qMG.setTranslationX(FinderImagePreviewUI.g(this.qMB) * (1.0F - f));
-      this.qMG.setTranslationY(FinderImagePreviewUI.h(this.qMB) * (1.0F - f));
-      this.qMG.setScaleX((1.0F - f) * FinderImagePreviewUI.i(this.qMB) + f);
-      this.qMG.setScaleY(f + (1.0F - f) * FinderImagePreviewUI.j(this.qMB));
+      this.rHZ.setTranslationX(FinderImagePreviewUI.h(this.rHU) * (1.0F - f));
+      this.rHZ.setTranslationY(FinderImagePreviewUI.i(this.rHU) * (1.0F - f));
+      this.rHZ.setScaleX((1.0F - f) * FinderImagePreviewUI.j(this.rHU) + f);
+      this.rHZ.setScaleY(f + (1.0F - f) * FinderImagePreviewUI.k(this.rHU));
       AppMethodBeat.o(167307);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderImagePreviewUI
  * JD-Core Version:    0.7.0.1
  */

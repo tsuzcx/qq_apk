@@ -9,12 +9,12 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public final class an
   implements o
 {
-  final Set<a> iHY;
+  final Set<a> jia;
   
   public an()
   {
     AppMethodBeat.i(176540);
-    this.iHY = new CopyOnWriteArraySet();
+    this.jia = new CopyOnWriteArraySet();
     AppMethodBeat.o(176540);
   }
   
@@ -22,7 +22,7 @@ public final class an
   {
     AppMethodBeat.i(176542);
     if (parama != null) {
-      this.iHY.remove(parama);
+      this.jia.remove(parama);
     }
     AppMethodBeat.o(176542);
   }
@@ -31,14 +31,14 @@ public final class an
   {
     AppMethodBeat.i(176541);
     if (parama != null) {
-      this.iHY.add(parama);
+      this.jia.add(parama);
     }
     AppMethodBeat.o(176541);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.an
  * JD-Core Version:    0.7.0.1
  */

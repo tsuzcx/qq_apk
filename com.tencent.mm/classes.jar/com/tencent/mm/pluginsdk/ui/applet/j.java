@@ -1,38 +1,38 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.aw.a.d.b;
+import com.tencent.mm.av.a.d.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
 public abstract interface j
 {
-  public abstract void UK(int paramInt);
+  public abstract void WU(int paramInt);
   
-  public abstract void aO(int paramInt, boolean paramBoolean);
+  public abstract void aS(int paramInt, boolean paramBoolean);
   
   public abstract void b(b paramb);
   
-  public abstract void dJ(String paramString1, String paramString2);
+  public abstract void dV(String paramString1, String paramString2);
   
-  public abstract void exU();
+  public abstract void eNo();
   
-  public abstract void exV();
+  public abstract void eNp();
   
-  public abstract void exW();
+  public abstract void eNq();
   
-  public abstract void exX();
+  public abstract void eNr();
   
-  public abstract void exY();
+  public abstract void eNs();
   
-  public abstract void exZ();
+  public abstract void eNt();
   
-  public abstract void eya();
+  public abstract void eNu();
   
-  public abstract void eyb();
+  public abstract void eNv();
   
-  public abstract void eyc();
+  public abstract void eNw();
   
-  public abstract void eyd();
+  public abstract void eNx();
 }
 
 

@@ -16,66 +16,80 @@ import java.lang.ref.WeakReference;
 public abstract class b
   extends Drawable
 {
-  protected int FDE = 0;
-  protected boolean FDF = false;
-  protected Paint FDG = new Paint();
-  protected WeakReference<View> FDH;
-  protected int FDI = 0;
-  protected int FDJ = 0;
-  protected int FDK = 0;
-  protected int FDL = 0;
-  protected float FDM;
-  protected final Rect Hy = new Rect();
+  protected int HcH = 0;
+  protected boolean HcI = false;
+  protected Paint HcJ = new Paint();
+  protected WeakReference<View> HcK;
+  protected int HcL = 0;
+  protected int HcM = 0;
+  protected int HcN = 0;
+  protected int HcO = 0;
+  protected float HcP;
+  protected final Rect Iw = new Rect();
   public long mDuration = 0L;
-  protected ColorFilter up;
+  protected ColorFilter vo;
   
   public b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.FDK = paramInt1;
-    this.FDL = paramInt2;
-    this.FDM = 1.0F;
-    this.FDI = this.FDK;
-    this.FDJ = this.FDL;
+    this.HcN = paramInt1;
+    this.HcO = paramInt2;
+    this.HcP = 1.0F;
+    this.HcL = this.HcN;
+    this.HcM = this.HcO;
     setLevel(10000);
-    this.FDE = paramInt3;
+    this.HcH = paramInt3;
   }
   
-  private void eOq()
+  private void fdU()
   {
-    View localView = a.C(this);
-    fA(localView);
+    View localView = a.B(this);
+    fN(localView);
     if (localView != null)
     {
-      if (this.up != null) {
-        setColorFilter(this.up);
+      if (this.vo != null) {
+        setColorFilter(this.vo);
       }
-      a.b(localView, this.FDG);
+      a.b(localView, this.HcJ);
     }
   }
   
-  protected final void eOo()
+  protected final void fN(View paramView)
   {
-    this.Hy.set(0, 0, getIntrinsicWidth(), getIntrinsicHeight());
+    try
+    {
+      this.HcK = new WeakReference(paramView);
+      return;
+    }
+    finally
+    {
+      paramView = finally;
+      throw paramView;
+    }
   }
   
-  protected final void eOp()
+  protected final void fdS()
   {
-    if (this.FDF)
+    this.Iw.set(0, 0, getIntrinsicWidth(), getIntrinsicHeight());
+  }
+  
+  protected final void fdT()
+  {
+    if (this.HcI)
     {
       Rect localRect = getBounds();
-      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), localRect, this.Hy);
+      Gravity.apply(119, getIntrinsicWidth(), getIntrinsicHeight(), localRect, this.Iw);
     }
-    this.FDF = false;
+    this.HcI = false;
   }
   
   /* Error */
-  protected final View eOr()
+  protected final View fdV()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 109	com/tencent/mm/svg/a/b:FDH	Ljava/lang/ref/WeakReference;
+    //   3: getfield 89	com/tencent/mm/svg/a/b:HcK	Ljava/lang/ref/WeakReference;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnonnull +9 -> 17
@@ -86,9 +100,9 @@ public abstract class b
     //   15: aload_1
     //   16: areturn
     //   17: aload_0
-    //   18: getfield 109	com/tencent/mm/svg/a/b:FDH	Ljava/lang/ref/WeakReference;
-    //   21: invokevirtual 115	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   24: checkcast 117	android/view/View
+    //   18: getfield 89	com/tencent/mm/svg/a/b:HcK	Ljava/lang/ref/WeakReference;
+    //   21: invokevirtual 118	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   24: checkcast 120	android/view/View
     //   27: astore_1
     //   28: goto -15 -> 13
     //   31: astore_1
@@ -107,35 +121,21 @@ public abstract class b
     //   17	28	31	finally
   }
   
-  protected final void fA(View paramView)
-  {
-    try
-    {
-      this.FDH = new WeakReference(paramView);
-      return;
-    }
-    finally
-    {
-      paramView = finally;
-      throw paramView;
-    }
-  }
-  
   public int getIntrinsicHeight()
   {
-    return this.FDJ;
+    return this.HcM;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.FDI;
+    return this.HcL;
   }
   
   public int getOpacity()
   {
-    View localView = eOr();
+    View localView = fdV();
     if ((localView != null) && (localView.getAlpha() < 1.0F)) {}
-    while ((this.FDG != null) && (this.FDG.getAlpha() < 255)) {
+    while ((this.HcJ != null) && (this.HcJ.getAlpha() < 255)) {
       return -3;
     }
     return 0;
@@ -144,20 +144,20 @@ public abstract class b
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.FDF = true;
+    this.HcI = true;
   }
   
   protected boolean onLevelChange(int paramInt)
   {
-    eOq();
+    fdU();
     return super.onLevelChange(paramInt);
   }
   
   protected final void p(Canvas paramCanvas)
   {
-    if (com.tencent.mm.svg.b.b.eOv())
+    if (com.tencent.mm.svg.b.b.fdZ())
     {
-      int i = this.Hy.height() / 3;
+      int i = this.Iw.height() / 3;
       paramCanvas.save();
       Paint localPaint = new Paint();
       localPaint.setStyle(Paint.Style.FILL);
@@ -166,7 +166,7 @@ public abstract class b
       localPaint.setTextSize(i);
       localPaint.setStrokeWidth(1.0F);
       float f = localPaint.measureText("SVG");
-      paramCanvas.translate(this.Hy.width() - f, this.Hy.height() * 2 / 3);
+      paramCanvas.translate(this.Iw.width() - f, this.Iw.height() * 2 / 3);
       paramCanvas.drawText("SVG", 0.0F, i, localPaint);
       paramCanvas.restore();
     }
@@ -175,12 +175,12 @@ public abstract class b
   @TargetApi(17)
   public void setAlpha(int paramInt)
   {
-    this.FDG.setAlpha(paramInt);
-    View localView = eOr();
+    this.HcJ.setAlpha(paramInt);
+    View localView = fdV();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 17)) {}
     try
     {
-      localView.setLayerPaint(this.FDG);
+      localView.setLayerPaint(this.HcJ);
       return;
     }
     catch (NoSuchMethodError localNoSuchMethodError)
@@ -192,13 +192,13 @@ public abstract class b
   @TargetApi(17)
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.FDG.setColorFilter(paramColorFilter);
-    View localView = eOr();
+    this.HcJ.setColorFilter(paramColorFilter);
+    View localView = fdV();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 17)) {}
     while (localView != null) {
       try
       {
-        localView.setLayerPaint(this.FDG);
+        localView.setLayerPaint(this.HcJ);
         return;
       }
       catch (NoSuchMethodError paramColorFilter)
@@ -207,12 +207,12 @@ public abstract class b
         return;
       }
     }
-    this.up = paramColorFilter;
+    this.vo = paramColorFilter;
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    eOq();
+    fdU();
     return super.setVisible(paramBoolean1, paramBoolean2);
   }
 }

@@ -15,9 +15,9 @@ import android.view.ViewGroup.MarginLayoutParams;
 public class FlowLayout
   extends ViewGroup
 {
-  private int hM;
-  private int hN;
-  private boolean hO = false;
+  private int iP;
+  private int iQ;
+  private boolean iR = false;
   
   public FlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,8 +28,8 @@ public class FlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, a.a.FlowLayout, 0, 0);
-    this.hM = paramContext.getDimensionPixelSize(2, 0);
-    this.hN = paramContext.getDimensionPixelSize(1, 0);
+    this.iP = paramContext.getDimensionPixelSize(2, 0);
+    this.iQ = paramContext.getDimensionPixelSize(1, 0);
     paramContext.recycle();
   }
   
@@ -48,12 +48,12 @@ public class FlowLayout
   
   protected int getItemSpacing()
   {
-    return this.hN;
+    return this.iQ;
   }
   
   protected int getLineSpacing()
   {
-    return this.hM;
+    return this.iP;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -107,13 +107,13 @@ public class FlowLayout
         int i3 = localView.getMeasuredWidth();
         i = paramInt1;
         i1 = paramInt3;
-        if (!this.hO)
+        if (!this.iR)
         {
           i = paramInt1;
           i1 = paramInt3;
           if (paramInt3 + n + i3 > i2)
           {
-            i = paramInt4 + this.hM;
+            i = paramInt4 + this.iP;
             i1 = paramInt2;
           }
         }
@@ -124,7 +124,7 @@ public class FlowLayout
         }
         localView.layout(i2 - paramInt1, i, i2 - i1 - n, paramInt4);
         label235:
-        paramInt3 = i1 + (m + n + localView.getMeasuredWidth() + this.hN);
+        paramInt3 = i1 + (m + n + localView.getMeasuredWidth() + this.iQ);
         paramInt1 = i;
       }
     }
@@ -197,10 +197,10 @@ public class FlowLayout
       {
         m = i;
         i5 = k;
-        if (!this.hO)
+        if (!this.iR)
         {
           i5 = getPaddingLeft();
-          m = i2 + this.hM;
+          m = i2 + this.iP;
         }
       }
       k = i5 + i4 + localView.getMeasuredWidth();
@@ -209,7 +209,7 @@ public class FlowLayout
       if (k > j) {
         i = k;
       }
-      k = i5 + (i3 + i4 + localView.getMeasuredWidth() + this.hN);
+      k = i5 + (i3 + i4 + localView.getMeasuredWidth() + this.iQ);
       i2 = m + i2;
     }
     for (int j = m;; j = m)
@@ -235,17 +235,17 @@ public class FlowLayout
   
   protected void setItemSpacing(int paramInt)
   {
-    this.hN = paramInt;
+    this.iQ = paramInt;
   }
   
   protected void setLineSpacing(int paramInt)
   {
-    this.hM = paramInt;
+    this.iP = paramInt;
   }
   
   public void setSingleLine(boolean paramBoolean)
   {
-    this.hO = paramBoolean;
+    this.iR = paramBoolean;
   }
 }
 

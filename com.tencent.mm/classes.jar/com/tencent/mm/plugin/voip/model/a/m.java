@@ -1,94 +1,54 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.voip.b.c;
-import com.tencent.mm.plugin.voip.model.l;
-import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.plugin.voip.model.w;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dme;
-import com.tencent.mm.protocal.protobuf.dnn;
-import com.tencent.mm.protocal.protobuf.dno;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.drv;
+import com.tencent.mm.protocal.protobuf.dte;
+import com.tencent.mm.protocal.protobuf.dtf;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class m
-  extends n<dnn, dno>
+  extends n<dte, dtf>
 {
-  public m(int paramInt1, dme paramdme, byte[] paramArrayOfByte, long paramLong, int paramInt2)
+  public m(int paramInt1, drv paramdrv, byte[] paramArrayOfByte, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(115256);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new dnn();
-    ((b.a)localObject).gUV = new dno();
+    ((b.a)localObject).hvt = new dte();
+    ((b.a)localObject).hvu = new dtf();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipsync";
     ((b.a)localObject).funcId = 174;
     ((b.a)localObject).reqCmdId = 62;
     ((b.a)localObject).respCmdId = 1000000062;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (dnn)this.rr.gUS.gUX;
-    ((dnn)localObject).DdZ = paramInt1;
-    ((dnn)localObject).EEi = paramdme;
-    ((dnn)localObject).Dea = paramLong;
-    ((dnn)localObject).DZr = u.aqG();
-    ((dnn)localObject).CRw = paramInt2;
-    ((dnn)localObject).CRx = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-    ((dnn)localObject).EAY = System.currentTimeMillis();
-    ad.i("MicroMsg.NetSceneVoipSync", "sync timestamp: " + ((dnn)localObject).EAY);
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (dte)this.rr.hvr.hvw;
+    ((dte)localObject).Exf = paramInt1;
+    ((dte)localObject).Gbv = paramdrv;
+    ((dte)localObject).Exg = paramLong;
+    ((dte)localObject).Fwn = u.axw();
+    ((dte)localObject).Ekh = paramInt2;
+    ((dte)localObject).Eki = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    ((dte)localObject).FYl = System.currentTimeMillis();
+    ac.i("MicroMsg.NetSceneVoipSync", "sync timestamp: " + ((dte)localObject).FYl);
     AppMethodBeat.o(115256);
   }
   
-  public final g dVg()
+  public final g eks()
   {
     AppMethodBeat.i(115257);
-    g local1 = new g()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
-      {
-        AppMethodBeat.i(115255);
-        c.Logi("MicroMsg.NetSceneVoipSync", "onSceneEnd type:" + paramAnonymousn.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
-        try
-        {
-          if (((dno)m.this.dVk()).DdZ != m.this.zjH.ziZ.roomId)
-          {
-            c.Loge("MicroMsg.NetSceneVoipSync", "syncOnSceneEnd: recv roomId != current roomid");
-            AppMethodBeat.o(115255);
-            return;
-          }
-        }
-        catch (Exception paramAnonymousString)
-        {
-          if (paramAnonymousInt1 != 0)
-          {
-            c.Loge("MicroMsg.NetSceneVoipSync", "VoipSync Failed, type:" + paramAnonymousn.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
-            m.this.zjH.ziZ.zpq.zkh = 11;
-            m.this.zjH.ziZ.zpq.zkj = paramAnonymousInt2;
-            m.this.zjH.ziZ.zpq.zki = paramAnonymousInt2;
-            m.this.zjH.ziZ.zpq.zkz = 3;
-            if (paramAnonymousInt1 == 1) {}
-            for (m.this.zjH.ziZ.zpq.zkt = 8;; m.this.zjH.ziZ.zpq.zkt = 99)
-            {
-              m.this.zjH.I(1, -9004, "");
-              AppMethodBeat.o(115255);
-              return;
-            }
-          }
-          m.this.zjH.zjc.o(paramAnonymousn);
-          AppMethodBeat.o(115255);
-        }
-      }
-    };
+    m.1 local1 = new m.1(this);
     AppMethodBeat.o(115257);
     return local1;
   }
   
-  public final int dVi()
+  public final int eku()
   {
-    return ((dnn)this.rr.gUS.gUX).CRw;
+    return ((dte)this.rr.hvr.hvw).Ekh;
   }
   
   public final int getType()
@@ -98,7 +58,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.m
  * JD-Core Version:    0.7.0.1
  */

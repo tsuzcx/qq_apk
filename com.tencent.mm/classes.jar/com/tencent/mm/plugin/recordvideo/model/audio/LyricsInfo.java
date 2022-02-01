@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bmx;
+import com.tencent.mm.protocal.protobuf.brn;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "lyricDatas", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "(Ljava/util/List;)V", "lyrics", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLyrics", "()Ljava/util/ArrayList;", "setLyrics", "(Ljava/util/ArrayList;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "lyricDatas", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "(Ljava/util/List;)V", "lyrics", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLyrics", "()Ljava/util/ArrayList;", "setLyrics", "(Ljava/util/ArrayList;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "plugin-recordvideo_release"})
 public final class LyricsInfo
   implements Parcelable
 {
   public static final a CREATOR;
-  public ArrayList<byte[]> vjg;
+  public ArrayList<byte[]> wrS;
   
   static
   {
@@ -35,21 +35,21 @@ public final class LyricsInfo
     {
       byte[] arrayOfByte = new byte[paramParcel.readInt()];
       paramParcel.readByteArray(arrayOfByte);
-      this.vjg.add(arrayOfByte);
+      this.wrS.add(arrayOfByte);
       i += 1;
     }
     AppMethodBeat.o(75436);
   }
   
-  public LyricsInfo(List<? extends bmx> paramList)
+  public LyricsInfo(List<? extends brn> paramList)
   {
     AppMethodBeat.i(75434);
-    this.vjg = new ArrayList();
+    this.wrS = new ArrayList();
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
-      bmx localbmx = (bmx)paramList.next();
-      this.vjg.add(localbmx.toByteArray());
+      brn localbrn = (brn)paramList.next();
+      this.wrS.add(localbrn.toByteArray());
     }
     AppMethodBeat.o(75434);
   }
@@ -63,8 +63,8 @@ public final class LyricsInfo
   {
     AppMethodBeat.i(75433);
     k.h(paramParcel, "parcel");
-    paramParcel.writeInt(this.vjg.size());
-    Iterator localIterator = ((Iterable)this.vjg).iterator();
+    paramParcel.writeInt(this.wrS.size());
+    Iterator localIterator = ((Iterable)this.wrS).iterator();
     while (localIterator.hasNext())
     {
       byte[] arrayOfByte = (byte[])localIterator.next();
@@ -74,7 +74,7 @@ public final class LyricsInfo
     AppMethodBeat.o(75433);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "plugin-recordvideo_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/recordvideo/model/audio/LyricsInfo;", "plugin-recordvideo_release"})
   public static final class a
     implements Parcelable.Creator<LyricsInfo>
   {}

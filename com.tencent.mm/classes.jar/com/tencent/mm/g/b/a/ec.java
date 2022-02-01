@@ -6,117 +6,137 @@ import com.tencent.mm.plugin.report.a;
 public final class ec
   extends a
 {
-  private long dXS = 0L;
-  private long dXT = 0L;
-  private String dXU = "";
-  private long dXV = 0L;
-  private String dXW = "";
-  private long dXX = 0L;
-  private long dXY = 0L;
-  private long dXZ = 0L;
+  public String dJb;
+  public long dTA = 0L;
+  public long dTB = 0L;
+  public long dTC = 0L;
+  public long dTD = 0L;
+  public long dTE = 0L;
+  private String dTF;
+  private String dTG;
+  private String dTH;
+  private String dTI;
+  public long dTJ = 0L;
+  public long dTK = 0L;
+  public String dTr;
+  public long dTs = 0L;
+  public long dTt = 0L;
+  public long dTu = 0L;
+  public long dTv = 0L;
+  public long dTw = 0L;
+  public long dTx = 0L;
+  public long dTy = 0L;
+  public long dTz = 0L;
   
-  public final String PV()
+  public final String PR()
   {
-    AppMethodBeat.i(74990);
+    AppMethodBeat.i(94840);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dXS);
+    ((StringBuffer)localObject).append(this.dJb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXT);
+    ((StringBuffer)localObject).append(this.dTr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXU);
+    ((StringBuffer)localObject).append(this.dTs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXV);
+    ((StringBuffer)localObject).append(this.dTt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXW);
+    ((StringBuffer)localObject).append(this.dTu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXX);
+    ((StringBuffer)localObject).append(this.dTv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXY);
+    ((StringBuffer)localObject).append(this.dTw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXZ);
+    ((StringBuffer)localObject).append(this.dTx);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTy);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTz);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTA);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTC);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTD);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTE);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dTK);
     localObject = ((StringBuffer)localObject).toString();
-    ams((String)localObject);
-    AppMethodBeat.o(74990);
+    arz((String)localObject);
+    AppMethodBeat.o(94840);
     return localObject;
   }
   
-  public final String PW()
+  public final String PS()
   {
-    AppMethodBeat.i(74991);
+    AppMethodBeat.i(94841);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SearchID:").append(this.dXS);
+    ((StringBuffer)localObject).append("Username:").append(this.dJb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("RecommentID:").append(this.dXT);
+    ((StringBuffer)localObject).append("PublicID:").append(this.dTr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("QueryContent:").append(this.dXU);
+    ((StringBuffer)localObject).append("PublicType:").append(this.dTs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FinishType:").append(this.dXV);
+    ((StringBuffer)localObject).append("SawLikeCount:").append(this.dTt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Behavior:").append(this.dXW);
+    ((StringBuffer)localObject).append("RealLikeCount:").append(this.dTu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MaxIndex:").append(this.dXX);
+    ((StringBuffer)localObject).append("SawLikeLines:").append(this.dTv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewSearchID:").append(this.dXY);
+    ((StringBuffer)localObject).append("RealLikeLines:").append(this.dTw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewRecommentID:").append(this.dXZ);
+    ((StringBuffer)localObject).append("IsLikeCollapsed:").append(this.dTx);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SawCommentCount:").append(this.dTy);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsLiked:").append(this.dTz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsComment:").append(this.dTA);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("HadAction:").append(this.dTB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickSpread:").append(this.dTC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("BeginTimestamp:").append(this.dTD);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EndTimestamp:").append(this.dTE);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExpId:").append(this.dTF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("GroupId:").append(this.dTG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SawLikeContent:").append(this.dTH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RealLikeContent:").append(this.dTI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CfgCollapseLines:").append(this.dTJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickShrink:").append(this.dTK);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(74991);
+    AppMethodBeat.o(94841);
     return localObject;
-  }
-  
-  public final String RJ()
-  {
-    return this.dXW;
-  }
-  
-  public final ec gN(long paramLong)
-  {
-    this.dXV = paramLong;
-    return this;
-  }
-  
-  public final ec gO(long paramLong)
-  {
-    this.dXX = paramLong;
-    return this;
-  }
-  
-  public final ec gP(long paramLong)
-  {
-    this.dXY = paramLong;
-    return this;
-  }
-  
-  public final ec gQ(long paramLong)
-  {
-    this.dXZ = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 17121;
-  }
-  
-  public final ec ks(String paramString)
-  {
-    AppMethodBeat.i(74988);
-    this.dXU = t("QueryContent", paramString, true);
-    AppMethodBeat.o(74988);
-    return this;
-  }
-  
-  public final ec kt(String paramString)
-  {
-    AppMethodBeat.i(74989);
-    this.dXW = t("Behavior", paramString, true);
-    AppMethodBeat.o(74989);
-    return this;
+    return 18448;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ec
  * JD-Core Version:    0.7.0.1
  */

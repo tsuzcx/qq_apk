@@ -10,7 +10,7 @@ import java.io.ByteArrayInputStream;
 public final class a
   implements b
 {
-  private static int cO(String paramString)
+  private static int cD(String paramString)
   {
     int j = 14;
     AppMethodBeat.i(140064);
@@ -49,10 +49,10 @@ public final class a
   
   public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(193562);
+    AppMethodBeat.i(190914);
     paramObject = (String)paramObject;
-    paramObject = new b.a(new ByteArrayInputStream(Base64.decode(paramObject.substring(cO(paramObject)), 2)));
-    AppMethodBeat.o(193562);
+    paramObject = new b.a(new ByteArrayInputStream(Base64.decode(paramObject.substring(cD(paramObject)), 2)));
+    AppMethodBeat.o(190914);
     return paramObject;
   }
   
@@ -64,7 +64,7 @@ public final class a
       AppMethodBeat.o(140065);
       return false;
     }
-    if (cO((String)paramObject) > 0)
+    if (cD((String)paramObject) > 0)
     {
       AppMethodBeat.o(140065);
       return true;
@@ -73,14 +73,14 @@ public final class a
     return false;
   }
   
-  public final String rg()
+  public final String rq()
   {
     return "base64";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.b.a
  * JD-Core Version:    0.7.0.1
  */

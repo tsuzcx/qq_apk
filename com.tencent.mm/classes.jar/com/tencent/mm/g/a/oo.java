@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class oo
   extends b
 {
-  public a dtK;
-  public b dtL;
+  public a dqW;
   
   public oo()
   {
@@ -16,32 +15,21 @@ public final class oo
   
   private oo(byte paramByte)
   {
-    AppMethodBeat.i(149879);
-    this.dtK = new a();
-    this.dtL = new b();
-    this.ESR = false;
+    AppMethodBeat.i(149878);
+    this.dqW = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(149879);
+    AppMethodBeat.o(149878);
   }
   
   public static final class a
   {
-    public int dpd = 10;
-    public int dtM = 0;
-    public String dtN;
-    public String label;
-    public double lat = -1.0D;
-    public double lng = -1.0D;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public byte[] content;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.oo
  * JD-Core Version:    0.7.0.1
  */

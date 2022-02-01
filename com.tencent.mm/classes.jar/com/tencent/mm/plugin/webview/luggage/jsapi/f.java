@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.br.d;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONException;
@@ -50,7 +50,7 @@ public class f
     }
     catch (JSONException paramContext)
     {
-      ad.e("MicroMsg.JsApiBatchViewCard", "paras data error: " + paramContext.getMessage());
+      ac.e("MicroMsg.JsApiBatchViewCard", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78523);
     }
@@ -58,7 +58,7 @@ public class f
   
   public final void b(a<com.tencent.mm.plugin.webview.luggage.f>.a parama) {}
   
-  public final int bQV()
+  public final int bYk()
   {
     return 2;
   }

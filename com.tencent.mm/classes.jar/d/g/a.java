@@ -9,7 +9,7 @@ import d.l.b;
 import d.v;
 import java.lang.annotation.Annotation;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"annotationClass", "Lkotlin/reflect/KClass;", "T", "", "getAnnotationClass", "(Ljava/lang/annotation/Annotation;)Lkotlin/reflect/KClass;", "java", "Ljava/lang/Class;", "java$annotations", "(Lkotlin/reflect/KClass;)V", "getJavaClass", "(Lkotlin/reflect/KClass;)Ljava/lang/Class;", "javaClass", "", "(Ljava/lang/Object;)Ljava/lang/Class;", "javaClass$annotations", "getRuntimeClassOfKClassInstance", "javaObjectType", "getJavaObjectType", "javaPrimitiveType", "getJavaPrimitiveType", "kotlin", "getKotlinClass", "(Ljava/lang/Class;)Lkotlin/reflect/KClass;", "isArrayOf", "", "", "([Ljava/lang/Object;)Z", "kotlin-stdlib"})
 public final class a
 {
   public static final <T extends Annotation> b<? extends T> a(T paramT)
@@ -18,7 +18,7 @@ public final class a
     k.h(paramT, "$this$annotationClass");
     paramT = paramT.annotationType();
     k.g(paramT, "(this as java.lang.annot…otation).annotationType()");
-    paramT = bj(paramT);
+    paramT = bm(paramT);
     if (paramT == null)
     {
       paramT = new v("null cannot be cast to non-null type kotlin.reflect.KClass<out T>");
@@ -33,7 +33,7 @@ public final class a
   {
     AppMethodBeat.i(129345);
     k.h(paramb, "$this$java");
-    paramb = ((d)paramb).fvP();
+    paramb = ((d)paramb).fOt();
     if (paramb == null)
     {
       paramb = new v("null cannot be cast to non-null type java.lang.Class<T>");
@@ -48,7 +48,7 @@ public final class a
   {
     AppMethodBeat.i(129346);
     k.h(paramb, "$this$javaPrimitiveType");
-    paramb = ((d)paramb).fvP();
+    paramb = ((d)paramb).fOt();
     if (paramb.isPrimitive())
     {
       if (paramb == null)
@@ -126,11 +126,11 @@ public final class a
     return paramb;
   }
   
-  public static final <T> b<T> bj(Class<T> paramClass)
+  public static final <T> b<T> bm(Class<T> paramClass)
   {
     AppMethodBeat.i(129348);
     k.h(paramClass, "$this$kotlin");
-    paramClass = w.bk(paramClass);
+    paramClass = w.bn(paramClass);
     AppMethodBeat.o(129348);
     return paramClass;
   }
@@ -139,7 +139,7 @@ public final class a
   {
     AppMethodBeat.i(129347);
     k.h(paramb, "$this$javaObjectType");
-    paramb = ((d)paramb).fvP();
+    paramb = ((d)paramb).fOt();
     if (!paramb.isPrimitive())
     {
       if (paramb == null)

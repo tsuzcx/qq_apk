@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.ad;
 
 public final class b
 {
-  public String dub;
-  public boolean iIp = false;
-  public boolean iIq = false;
-  public long iIr = 0L;
-  public long iIs = 0L;
-  public long iIt = 0L;
-  public long iIu = 0L;
-  public long iIv = 0L;
-  public long iIw = 0L;
-  public long iIx = 0L;
-  public long iIy = 0L;
-  public long iIz = 0L;
+  public String drM;
+  public long jiA = 0L;
+  public long jiB = 0L;
+  public long jiC = 0L;
+  public long jiD = 0L;
+  public boolean jit = false;
+  public boolean jiu = false;
+  public long jiv = 0L;
+  public long jiw = 0L;
+  public long jix = 0L;
+  public long jiy = 0L;
+  public long jiz = 0L;
   public String name;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.b
  * JD-Core Version:    0.7.0.1
  */

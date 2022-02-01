@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk.g;
 
 public final class f
 {
-  public static a BRH;
+  public static a DjX;
   
   public static abstract interface a
   {
-    public abstract boolean dMb();
+    public abstract boolean eaB();
   }
 }
 

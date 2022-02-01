@@ -10,21 +10,21 @@ public abstract interface b
   
   public abstract void b(int paramInt1, int paramInt2, Bundle paramBundle);
   
-  public abstract void bY(int paramInt1, int paramInt2);
+  public abstract void bV(int paramInt1, int paramInt2);
   
-  public abstract void bZ(int paramInt1, int paramInt2);
+  public abstract void bW(int paramInt1, int paramInt2);
   
   public abstract void e(int paramInt, Bundle paramBundle);
   
   public abstract void f(int paramInt, long paramLong1, long paramLong2);
   
-  public abstract void gW(int paramInt);
+  public abstract void gG(int paramInt);
   
-  public abstract void n(a parama);
+  public abstract void m(a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.k.a.a.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

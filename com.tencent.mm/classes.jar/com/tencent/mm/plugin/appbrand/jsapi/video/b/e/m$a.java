@@ -6,12 +6,12 @@ final class m$a<T>
   extends FutureTask<T>
   implements Comparable<a<T>>
 {
-  volatile long kri = 0L;
+  volatile long kSB = 0L;
   
   public m$a(Runnable paramRunnable, long paramLong)
   {
     super(paramRunnable, null);
-    this.kri = paramLong;
+    this.kSB = paramLong;
   }
 }
 

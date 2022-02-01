@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class bt
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Title;
-  public String rZr;
-  public String saB;
-  public String scM;
+  public String thk;
+  public String tiv;
+  public String tkG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,7 +17,7 @@ public final class bt
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.scM == null)
+      if (this.tkG == null)
       {
         paramVarArgs = new b("Not all required fields were included: LogoURL");
         AppMethodBeat.o(41791);
@@ -29,64 +29,64 @@ public final class bt
         AppMethodBeat.o(41791);
         throw paramVarArgs;
       }
-      if (this.saB == null)
+      if (this.tiv == null)
       {
         paramVarArgs = new b("Not all required fields were included: Detail");
         AppMethodBeat.o(41791);
         throw paramVarArgs;
       }
-      if (this.rZr == null)
+      if (this.thk == null)
       {
         paramVarArgs = new b("Not all required fields were included: WebURL");
         AppMethodBeat.o(41791);
         throw paramVarArgs;
       }
-      if (this.scM != null) {
-        paramVarArgs.d(1, this.scM);
+      if (this.tkG != null) {
+        paramVarArgs.d(1, this.tkG);
       }
       if (this.Title != null) {
         paramVarArgs.d(2, this.Title);
       }
-      if (this.saB != null) {
-        paramVarArgs.d(3, this.saB);
+      if (this.tiv != null) {
+        paramVarArgs.d(3, this.tiv);
       }
-      if (this.rZr != null) {
-        paramVarArgs.d(4, this.rZr);
+      if (this.thk != null) {
+        paramVarArgs.d(4, this.thk);
       }
       AppMethodBeat.o(41791);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.scM == null) {
+      if (this.tkG == null) {
         break label586;
       }
     }
     label586:
-    for (int i = f.a.a.b.b.a.e(1, this.scM) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.tkG) + 0;; i = 0)
     {
       paramInt = i;
       if (this.Title != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.Title);
       }
       i = paramInt;
-      if (this.saB != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.saB);
+      if (this.tiv != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tiv);
       }
       paramInt = i;
-      if (this.rZr != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.rZr);
+      if (this.thk != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.thk);
       }
       AppMethodBeat.o(41791);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.scM == null)
+        if (this.tkG == null)
         {
           paramVarArgs = new b("Not all required fields were included: LogoURL");
           AppMethodBeat.o(41791);
@@ -98,13 +98,13 @@ public final class bt
           AppMethodBeat.o(41791);
           throw paramVarArgs;
         }
-        if (this.saB == null)
+        if (this.tiv == null)
         {
           paramVarArgs = new b("Not all required fields were included: Detail");
           AppMethodBeat.o(41791);
           throw paramVarArgs;
         }
-        if (this.rZr == null)
+        if (this.thk == null)
         {
           paramVarArgs = new b("Not all required fields were included: WebURL");
           AppMethodBeat.o(41791);
@@ -123,19 +123,19 @@ public final class bt
           AppMethodBeat.o(41791);
           return -1;
         case 1: 
-          localbt.scM = locala.KhF.readString();
+          localbt.tkG = locala.LVo.readString();
           AppMethodBeat.o(41791);
           return 0;
         case 2: 
-          localbt.Title = locala.KhF.readString();
+          localbt.Title = locala.LVo.readString();
           AppMethodBeat.o(41791);
           return 0;
         case 3: 
-          localbt.saB = locala.KhF.readString();
+          localbt.tiv = locala.LVo.readString();
           AppMethodBeat.o(41791);
           return 0;
         }
-        localbt.rZr = locala.KhF.readString();
+        localbt.thk = locala.LVo.readString();
         AppMethodBeat.o(41791);
         return 0;
       }
@@ -146,7 +146,7 @@ public final class bt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.bt
  * JD-Core Version:    0.7.0.1
  */

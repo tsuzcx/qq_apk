@@ -13,23 +13,23 @@ public abstract class c
   extends y<com.tencent.mm.plugin.appbrand.jsapi.c>
   implements e
 {
-  protected a kaj = new a();
+  protected a kAW = new a();
   
   public final String a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
   {
     if (h.DEBUG) {
       throw new RuntimeException("Should call 3 params version!");
     }
-    return a(paramc, paramJSONObject, paramc.aOf());
+    return a(paramc, paramJSONObject, paramc.aUV());
   }
   
   public final String a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, o paramo)
   {
-    final String str = aEB();
+    final String str = aLs();
     HashMap localHashMap = new HashMap();
-    localHashMap.put(abh(), str);
-    this.kaj.a(str, paramo);
-    paramc.aOe().post(new Runnable()
+    localHashMap.put(acf(), str);
+    this.kAW.a(str, paramo);
+    paramc.aUU().post(new Runnable()
     {
       public final void run()
       {
@@ -41,14 +41,14 @@ public abstract class c
     return k("ok", localHashMap);
   }
   
-  public final boolean aXI()
+  public final boolean beF()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.c
  * JD-Core Version:    0.7.0.1
  */

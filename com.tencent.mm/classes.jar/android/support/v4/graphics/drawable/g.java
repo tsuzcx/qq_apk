@@ -15,56 +15,51 @@ class g
   extends Drawable
   implements Drawable.Callback, e, f
 {
-  static final PorterDuff.Mode um = PorterDuff.Mode.SRC_IN;
-  private int HE;
-  private PorterDuff.Mode HF;
-  private boolean HG;
-  a HH;
+  static final PorterDuff.Mode vl = PorterDuff.Mode.SRC_IN;
+  private int IA;
+  private PorterDuff.Mode IB;
+  private boolean IC;
+  a IE;
   Drawable mDrawable;
-  private boolean uq;
+  private boolean vp;
   
   g(Drawable paramDrawable)
   {
-    this.HH = ea();
+    this.IE = el();
     l(paramDrawable);
   }
   
   g(a parama, Resources paramResources)
   {
-    this.HH = parama;
-    if ((this.HH != null) && (this.HH.HI != null)) {
-      l(this.HH.HI.newDrawable(paramResources));
+    this.IE = parama;
+    if ((this.IE != null) && (this.IE.IF != null)) {
+      l(this.IE.IF.newDrawable(paramResources));
     }
   }
   
   private boolean f(int[] paramArrayOfInt)
   {
-    if (!eb()) {}
+    if (!em()) {}
     PorterDuff.Mode localMode;
     int i;
     do
     {
       return false;
-      ColorStateList localColorStateList = this.HH.vn;
-      localMode = this.HH.vo;
+      ColorStateList localColorStateList = this.IE.wm;
+      localMode = this.IE.wn;
       if ((localColorStateList == null) || (localMode == null)) {
         break;
       }
       i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
-    } while ((this.HG) && (i == this.HE) && (localMode == this.HF));
+    } while ((this.IC) && (i == this.IA) && (localMode == this.IB));
     setColorFilter(i, localMode);
-    this.HE = i;
-    this.HF = localMode;
-    this.HG = true;
+    this.IA = i;
+    this.IB = localMode;
+    this.IC = true;
     return true;
-    this.HG = false;
+    this.IC = false;
     clearColorFilter();
     return false;
-  }
-  
-  public final Drawable dZ()
-  {
-    return this.mDrawable;
   }
   
   public void draw(Canvas paramCanvas)
@@ -72,12 +67,17 @@ class g
     this.mDrawable.draw(paramCanvas);
   }
   
-  a ea()
+  public final Drawable ek()
   {
-    return new b(this.HH);
+    return this.mDrawable;
   }
   
-  protected boolean eb()
+  a el()
+  {
+    return new b(this.IE);
+  }
+  
+  protected boolean em()
   {
     return true;
   }
@@ -85,21 +85,21 @@ class g
   public int getChangingConfigurations()
   {
     int j = super.getChangingConfigurations();
-    if (this.HH != null) {}
-    for (int i = this.HH.getChangingConfigurations();; i = 0) {
+    if (this.IE != null) {}
+    for (int i = this.IE.getChangingConfigurations();; i = 0) {
       return i | j | this.mDrawable.getChangingConfigurations();
     }
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    if (this.HH != null)
+    if (this.IE != null)
     {
-      if (this.HH.HI != null) {}
+      if (this.IE.IF != null) {}
       for (int i = 1; i != 0; i = 0)
       {
-        this.HH.mChangingConfigurations = getChangingConfigurations();
-        return this.HH;
+        this.IE.mChangingConfigurations = getChangingConfigurations();
+        return this.IE;
       }
     }
     return null;
@@ -162,8 +162,8 @@ class g
   
   public boolean isStateful()
   {
-    if ((eb()) && (this.HH != null)) {}
-    for (ColorStateList localColorStateList = this.HH.vn; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
+    if ((em()) && (this.IE != null)) {}
+    for (ColorStateList localColorStateList = this.IE.wm; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
       return true;
     }
     return false;
@@ -187,8 +187,8 @@ class g
       setState(paramDrawable.getState());
       setLevel(paramDrawable.getLevel());
       setBounds(paramDrawable.getBounds());
-      if (this.HH != null) {
-        this.HH.HI = paramDrawable.getConstantState();
+      if (this.IE != null) {
+        this.IE.IF = paramDrawable.getConstantState();
       }
     }
     invalidateSelf();
@@ -197,15 +197,15 @@ class g
   public Drawable mutate()
   {
     a locala;
-    if ((!this.uq) && (super.mutate() == this))
+    if ((!this.vp) && (super.mutate() == this))
     {
-      this.HH = ea();
+      this.IE = el();
       if (this.mDrawable != null) {
         this.mDrawable.mutate();
       }
-      if (this.HH != null)
+      if (this.IE != null)
       {
-        locala = this.HH;
+        locala = this.IE;
         if (this.mDrawable == null) {
           break label77;
         }
@@ -214,8 +214,8 @@ class g
     label77:
     for (Drawable.ConstantState localConstantState = this.mDrawable.getConstantState();; localConstantState = null)
     {
-      locala.HI = localConstantState;
-      this.uq = true;
+      locala.IF = localConstantState;
+      this.vp = true;
       return this;
     }
   }
@@ -280,13 +280,13 @@ class g
   
   public void setTintList(ColorStateList paramColorStateList)
   {
-    this.HH.vn = paramColorStateList;
+    this.IE.wm = paramColorStateList;
     f(getState());
   }
   
   public void setTintMode(PorterDuff.Mode paramMode)
   {
-    this.HH.vo = paramMode;
+    this.IE.wn = paramMode;
     f(getState());
   }
   
@@ -303,27 +303,27 @@ class g
   protected static abstract class a
     extends Drawable.ConstantState
   {
-    Drawable.ConstantState HI;
+    Drawable.ConstantState IF;
     int mChangingConfigurations;
-    ColorStateList vn = null;
-    PorterDuff.Mode vo = g.um;
+    ColorStateList wm = null;
+    PorterDuff.Mode wn = g.vl;
     
     a(a parama)
     {
       if (parama != null)
       {
         this.mChangingConfigurations = parama.mChangingConfigurations;
-        this.HI = parama.HI;
-        this.vn = parama.vn;
-        this.vo = parama.vo;
+        this.IF = parama.IF;
+        this.wm = parama.wm;
+        this.wn = parama.wn;
       }
     }
     
     public int getChangingConfigurations()
     {
       int j = this.mChangingConfigurations;
-      if (this.HI != null) {}
-      for (int i = this.HI.getChangingConfigurations();; i = 0) {
+      if (this.IF != null) {}
+      for (int i = this.IF.getChangingConfigurations();; i = 0) {
         return i | j;
       }
     }

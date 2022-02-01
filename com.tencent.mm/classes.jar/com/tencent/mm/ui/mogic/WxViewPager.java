@@ -133,14 +133,7 @@ public class WxViewPager
     AppMethodBeat.i(142983);
     LAYOUT_ATTRS = new int[] { 16842931 };
     COMPARATOR = new Comparator() {};
-    sInterpolator = new Interpolator()
-    {
-      public final float getInterpolation(float paramAnonymousFloat)
-      {
-        paramAnonymousFloat -= 1.0F;
-        return paramAnonymousFloat * (paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat) + 1.0F;
-      }
-    };
+    sInterpolator = new WxViewPager.2();
     sPositionComparator = new f();
     AppMethodBeat.o(142983);
   }
@@ -674,7 +667,7 @@ public class WxViewPager
           f1 = paramFloat;
           if (i != 0)
           {
-            bool1 = this.mLeftEdge.E(Math.abs(paramFloat - f2) / k);
+            bool1 = this.mLeftEdge.I(Math.abs(paramFloat - f2) / k);
             f1 = paramFloat;
           }
         }
@@ -689,7 +682,7 @@ public class WxViewPager
           {
             bool1 = bool2;
             if (j != 0) {
-              bool1 = this.mRightEdge.E(Math.abs(f2 - f1) / k);
+              bool1 = this.mRightEdge.I(Math.abs(f2 - f1) / k);
             }
           }
           else
@@ -748,7 +741,7 @@ public class WxViewPager
     for (int i = 0; i < getChildCount(); i = j + 1)
     {
       j = i;
-      if (!((LayoutParams)getChildAt(i).getLayoutParams()).NZ)
+      if (!((LayoutParams)getChildAt(i).getLayoutParams()).OW)
       {
         removeViewAt(i);
         j = i - 1;
@@ -940,16 +933,16 @@ public class WxViewPager
     {
       Assert.assertNotNull(paramLayoutParams);
       LayoutParams localLayoutParams = (LayoutParams)paramLayoutParams;
-      localLayoutParams.NZ |= paramView instanceof a;
+      localLayoutParams.OW |= paramView instanceof a;
       if (this.mInLayout)
       {
-        if (localLayoutParams.NZ)
+        if (localLayoutParams.OW)
         {
           paramView = new IllegalStateException("Cannot add pager decor view during layout");
           AppMethodBeat.o(142936);
           throw paramView;
         }
-        localLayoutParams.Oa = true;
+        localLayoutParams.OX = true;
         addViewInLayout(paramView, paramInt, paramLayoutParams);
         AppMethodBeat.o(142936);
         return;
@@ -1277,7 +1270,7 @@ public class WxViewPager
           while (i < k)
           {
             localObject = (LayoutParams)getChildAt(i).getLayoutParams();
-            if (!((LayoutParams)localObject).NZ) {
+            if (!((LayoutParams)localObject).OW) {
               ((LayoutParams)localObject).widthFactor = 0.0F;
             }
             i += 1;
@@ -1355,7 +1348,7 @@ public class WxViewPager
     if ((m == 0) || ((m == 1) && (this.mAdapter != null) && (this.mAdapter.getCount() > 1)))
     {
       int j;
-      if (!this.mLeftEdge.Rz.isFinished())
+      if (!this.mLeftEdge.Su.isFinished())
       {
         k = paramCanvas.save();
         i = getHeight() - getPaddingTop() - getPaddingBottom();
@@ -1367,7 +1360,7 @@ public class WxViewPager
         paramCanvas.restoreToCount(k);
       }
       k = j;
-      if (!this.mRightEdge.Rz.isFinished())
+      if (!this.mRightEdge.Su.isFinished())
       {
         m = paramCanvas.save();
         k = getWidth();
@@ -1388,8 +1381,8 @@ public class WxViewPager
       }
       AppMethodBeat.o(142959);
       return;
-      this.mLeftEdge.Rz.finish();
-      this.mRightEdge.Rz.finish();
+      this.mLeftEdge.Su.finish();
+      this.mRightEdge.Su.finish();
     }
   }
   
@@ -1555,7 +1548,7 @@ public class WxViewPager
     if (this.mDrawingOrder == 2) {
       i = paramInt1 - 1 - paramInt2;
     }
-    paramInt1 = ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).Ob;
+    paramInt1 = ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).OY;
     AppMethodBeat.o(142918);
     return paramInt1;
   }
@@ -1881,7 +1874,7 @@ public class WxViewPager
         break label650;
       }
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      if (!localLayoutParams.NZ) {
+      if (!localLayoutParams.OW) {
         break label650;
       }
       paramInt4 = localLayoutParams.gravity;
@@ -1951,16 +1944,16 @@ public class WxViewPager
         if (localView.getVisibility() != 8)
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.NZ)
+          if (!localLayoutParams.OW)
           {
             b localb = infoForChild(localView);
             if (localb != null)
             {
               float f = paramInt4;
               i = (int)(localb.offset * f) + paramInt1;
-              if (localLayoutParams.Oa)
+              if (localLayoutParams.OX)
               {
-                localLayoutParams.Oa = false;
+                localLayoutParams.OX = false;
                 f = paramInt4;
                 localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), View.MeasureSpec.makeMeasureSpec(i2 - paramInt2 - j, 1073741824));
               }
@@ -2019,7 +2012,7 @@ public class WxViewPager
         {
           i = paramInt1;
           j = paramInt2;
-          if (localLayoutParams.NZ)
+          if (localLayoutParams.OW)
           {
             i = localLayoutParams.gravity & 0x7;
             m = localLayoutParams.gravity & 0x70;
@@ -2113,7 +2106,7 @@ public class WxViewPager
           if (localView.getVisibility() != 8)
           {
             localLayoutParams = (LayoutParams)localView.getLayoutParams();
-            if (((localLayoutParams == null) || (!localLayoutParams.NZ)) && (localLayoutParams != null))
+            if (((localLayoutParams == null) || (!localLayoutParams.OW)) && (localLayoutParams != null))
             {
               float f = paramInt1;
               localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), this.mChildHeightMeasureSpec);
@@ -2158,7 +2151,7 @@ public class WxViewPager
       {
         localView = getChildAt(m);
         LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
-        if (!localLayoutParams.NZ) {
+        if (!localLayoutParams.OW) {
           break label380;
         }
         switch (localLayoutParams.gravity & 0x7)
@@ -2209,10 +2202,10 @@ public class WxViewPager
         while (paramInt1 < i)
         {
           localView = getChildAt(paramInt1);
-          if (!((LayoutParams)localView.getLayoutParams()).NZ)
+          if (!((LayoutParams)localView.getLayoutParams()).OW)
           {
             paramFloat = (localView.getLeft() - paramInt2) / getClientWidth();
-            this.mPageTransformer.m(localView, paramFloat);
+            this.mPageTransformer.n(localView, paramFloat);
           }
           paramInt1 += 1;
         }
@@ -2272,14 +2265,14 @@ public class WxViewPager
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     if (this.mAdapter != null)
     {
-      this.mAdapter.restoreState(paramParcelable.Oc, paramParcelable.Od);
+      this.mAdapter.restoreState(paramParcelable.OZ, paramParcelable.Pa);
       setCurrentItemInternal(paramParcelable.position, false, true);
       AppMethodBeat.o(142935);
       return;
     }
     this.mRestoredCurItem = paramParcelable.position;
-    this.mRestoredAdapterState = paramParcelable.Oc;
-    this.mRestoredClassLoader = paramParcelable.Od;
+    this.mRestoredAdapterState = paramParcelable.OZ;
+    this.mRestoredClassLoader = paramParcelable.Pa;
     AppMethodBeat.o(142935);
   }
   
@@ -2289,7 +2282,7 @@ public class WxViewPager
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.position = this.mCurItem;
     if (this.mAdapter != null) {
-      localSavedState.Oc = this.mAdapter.saveState();
+      localSavedState.OZ = this.mAdapter.saveState();
     }
     AppMethodBeat.o(142934);
     return localSavedState;
@@ -2408,8 +2401,8 @@ public class WxViewPager
         }
         this.mActivePointerId = -1;
         endDrag();
-        boolean bool3 = this.mLeftEdge.fu();
-        boolean bool2 = this.mRightEdge.fu() | bool3;
+        boolean bool3 = this.mLeftEdge.fC();
+        boolean bool2 = this.mRightEdge.fC() | bool3;
         continue;
         bool2 = m;
         if (this.mIsBeingDragged)
@@ -2417,8 +2410,8 @@ public class WxViewPager
           scrollToItem(this.mCurItem, true, 0, false);
           this.mActivePointerId = -1;
           endDrag();
-          bool3 = this.mLeftEdge.fu();
-          bool2 = this.mRightEdge.fu() | bool3;
+          bool3 = this.mLeftEdge.fC();
+          bool2 = this.mRightEdge.fC() | bool3;
           continue;
           int k = paramMotionEvent.getActionIndex();
           this.mLastMotionX = paramMotionEvent.getX(k);
@@ -2713,8 +2706,8 @@ public class WxViewPager
               {
                 localObject3 = getChildAt(paramInt);
                 localObject2 = (LayoutParams)((View)localObject3).getLayoutParams();
-                ((LayoutParams)localObject2).Ob = paramInt;
-                if ((!((LayoutParams)localObject2).NZ) && (((LayoutParams)localObject2).widthFactor == 0.0F))
+                ((LayoutParams)localObject2).OY = paramInt;
+                if ((!((LayoutParams)localObject2).OW) && (((LayoutParams)localObject2).widthFactor == 0.0F))
                 {
                   localObject3 = infoForChild((View)localObject3);
                   if (localObject3 != null)
@@ -3151,9 +3144,9 @@ public class WxViewPager
   public static class LayoutParams
     extends ViewGroup.LayoutParams
   {
-    public boolean NZ;
-    boolean Oa;
-    int Ob;
+    public boolean OW;
+    boolean OX;
+    int OY;
     public int gravity;
     int position;
     float widthFactor;
@@ -3180,8 +3173,8 @@ public class WxViewPager
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    Parcelable Oc;
-    ClassLoader Od;
+    Parcelable OZ;
+    ClassLoader Pa;
     int position;
     
     static
@@ -3200,8 +3193,8 @@ public class WxViewPager
         localClassLoader = getClass().getClassLoader();
       }
       this.position = paramParcel.readInt();
-      this.Oc = paramParcel.readParcelable(localClassLoader);
-      this.Od = localClassLoader;
+      this.OZ = paramParcel.readParcelable(localClassLoader);
+      this.Pa = localClassLoader;
       AppMethodBeat.o(142898);
     }
     
@@ -3223,7 +3216,7 @@ public class WxViewPager
       AppMethodBeat.i(142896);
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeInt(this.position);
-      paramParcel.writeParcelable(this.Oc, paramInt);
+      paramParcel.writeParcelable(this.OZ, paramInt);
       AppMethodBeat.o(142896);
     }
   }
@@ -3244,7 +3237,7 @@ public class WxViewPager
   {
     c() {}
     
-    private boolean fa()
+    private boolean fi()
     {
       AppMethodBeat.i(142892);
       if ((WxViewPager.this.mAdapter != null) && (WxViewPager.this.mAdapter.getCount() > 1))
@@ -3261,8 +3254,8 @@ public class WxViewPager
       AppMethodBeat.i(142889);
       super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
       paramAccessibilityEvent.setClassName(WxViewPager.class.getName());
-      paramView = e.fd();
-      paramView.setScrollable(fa());
+      paramView = e.fl();
+      paramView.setScrollable(fi());
       if ((paramAccessibilityEvent.getEventType() == 4096) && (WxViewPager.this.mAdapter != null))
       {
         paramView.setItemCount(WxViewPager.this.mAdapter.getCount());
@@ -3277,7 +3270,7 @@ public class WxViewPager
       AppMethodBeat.i(142890);
       super.onInitializeAccessibilityNodeInfo(paramView, paramc);
       paramc.setClassName(WxViewPager.class.getName());
-      paramc.setScrollable(fa());
+      paramc.setScrollable(fi());
       if (WxViewPager.this.canScrollHorizontally(1)) {
         paramc.addAction(4096);
       }
@@ -3349,7 +3342,7 @@ public class WxViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.mogic.WxViewPager
  * JD-Core Version:    0.7.0.1
  */

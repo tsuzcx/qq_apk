@@ -10,20 +10,20 @@ import java.util.TreeMap;
 public final class j
   implements b
 {
-  private final h<a, Object> aFJ;
-  private final b aFT;
-  private final Map<Class<?>, NavigableMap<Integer, Integer>> aFU;
-  private final Map<Class<?>, a<?>> aFV;
+  private final b aGJ;
+  private final Map<Class<?>, NavigableMap<Integer, Integer>> aGK;
+  private final Map<Class<?>, a<?>> aGL;
+  private final h<a, Object> aGz;
   private int currentSize;
   private final int maxSize;
   
   public j()
   {
     AppMethodBeat.i(77099);
-    this.aFJ = new h();
-    this.aFT = new b();
-    this.aFU = new HashMap();
-    this.aFV = new HashMap();
+    this.aGz = new h();
+    this.aGJ = new b();
+    this.aGK = new HashMap();
+    this.aGL = new HashMap();
     this.maxSize = 4194304;
     AppMethodBeat.o(77099);
   }
@@ -31,15 +31,15 @@ public final class j
   public j(int paramInt)
   {
     AppMethodBeat.i(77100);
-    this.aFJ = new h();
-    this.aFT = new b();
-    this.aFU = new HashMap();
-    this.aFV = new HashMap();
+    this.aGz = new h();
+    this.aGJ = new b();
+    this.aGK = new HashMap();
+    this.aGL = new HashMap();
     this.maxSize = paramInt;
     AppMethodBeat.o(77100);
   }
   
-  private <T> a<T> S(T paramT)
+  private <T> a<T> U(T paramT)
   {
     AppMethodBeat.i(77111);
     paramT = p(paramT.getClass());
@@ -50,7 +50,7 @@ public final class j
   private <T> T a(a parama)
   {
     AppMethodBeat.i(77105);
-    parama = this.aFJ.b(parama);
+    parama = this.aGz.b(parama);
     AppMethodBeat.o(77105);
     return parama;
   }
@@ -62,8 +62,8 @@ public final class j
     Object localObject = a(parama);
     if (localObject != null)
     {
-      this.currentSize -= locala.R(localObject) * locala.or();
-      b(locala.R(localObject), paramClass);
+      this.currentSize -= locala.T(localObject) * locala.oB();
+      b(locala.T(localObject), paramClass);
     }
     paramClass = localObject;
     if (localObject == null)
@@ -73,7 +73,7 @@ public final class j
         locala.getTag();
         new StringBuilder("Allocated ").append(parama.size).append(" bytes");
       }
-      paramClass = locala.jdMethod_do(parama.size);
+      paramClass = locala.dn(parama.size);
     }
     AppMethodBeat.o(77104);
     return paramClass;
@@ -100,20 +100,20 @@ public final class j
     AppMethodBeat.o(77109);
   }
   
-  private void dp(int paramInt)
+  private void jdMethod_do(int paramInt)
   {
     AppMethodBeat.i(77108);
     while (this.currentSize > paramInt)
     {
-      Object localObject = this.aFJ.removeLast();
+      Object localObject = this.aGz.removeLast();
       com.bumptech.glide.h.i.checkNotNull(localObject, "Argument must not be null");
-      a locala = S(localObject);
-      this.currentSize -= locala.R(localObject) * locala.or();
-      b(locala.R(localObject), localObject.getClass());
+      a locala = U(localObject);
+      this.currentSize -= locala.T(localObject) * locala.oB();
+      b(locala.T(localObject), localObject.getClass());
       if (Log.isLoggable(locala.getTag(), 2))
       {
         locala.getTag();
-        new StringBuilder("evicted: ").append(locala.R(localObject));
+        new StringBuilder("evicted: ").append(locala.T(localObject));
       }
     }
     AppMethodBeat.o(77108);
@@ -122,12 +122,12 @@ public final class j
   private NavigableMap<Integer, Integer> o(Class<?> paramClass)
   {
     AppMethodBeat.i(77110);
-    NavigableMap localNavigableMap = (NavigableMap)this.aFU.get(paramClass);
+    NavigableMap localNavigableMap = (NavigableMap)this.aGK.get(paramClass);
     Object localObject = localNavigableMap;
     if (localNavigableMap == null)
     {
       localObject = new TreeMap();
-      this.aFU.put(paramClass, localObject);
+      this.aGK.put(paramClass, localObject);
     }
     AppMethodBeat.o(77110);
     return localObject;
@@ -136,7 +136,7 @@ public final class j
   private <T> a<T> p(Class<T> paramClass)
   {
     AppMethodBeat.i(77112);
-    a locala = (a)this.aFV.get(paramClass);
+    a locala = (a)this.aGL.get(paramClass);
     Object localObject = locala;
     if (locala == null) {
       if (!paramClass.equals([I.class)) {
@@ -145,7 +145,7 @@ public final class j
     }
     for (localObject = new i();; localObject = new g())
     {
-      this.aFV.put(paramClass, localObject);
+      this.aGL.put(paramClass, localObject);
       AppMethodBeat.o(77112);
       return localObject;
       label61:
@@ -188,7 +188,7 @@ public final class j
               if (j == 0) {
                 continue;
               }
-              localObject = this.aFT.d(((Integer)localObject).intValue(), paramClass);
+              localObject = this.aGJ.d(((Integer)localObject).intValue(), paramClass);
               paramClass = a((a)localObject, paramClass);
               AppMethodBeat.o(77103);
               return paramClass;
@@ -202,7 +202,7 @@ public final class j
         }
         int j = 0;
         continue;
-        localObject = this.aFT.d(paramInt, paramClass);
+        localObject = this.aGJ.d(paramInt, paramClass);
         continue;
         int i = 1;
       }
@@ -215,7 +215,7 @@ public final class j
     try
     {
       AppMethodBeat.i(77102);
-      paramClass = a(this.aFT.d(8, paramClass), paramClass);
+      paramClass = a(this.aGJ.d(8, paramClass), paramClass);
       AppMethodBeat.o(77102);
       return paramClass;
     }
@@ -226,12 +226,12 @@ public final class j
     }
   }
   
-  public final void os()
+  public final void oC()
   {
     try
     {
       AppMethodBeat.i(77106);
-      dp(0);
+      jdMethod_do(0);
       AppMethodBeat.o(77106);
       return;
     }
@@ -252,8 +252,8 @@ public final class j
         AppMethodBeat.i(77101);
         Object localObject2 = paramT.getClass();
         Object localObject1 = p((Class)localObject2);
-        int k = ((a)localObject1).R(paramT);
-        int j = k * ((a)localObject1).or();
+        int k = ((a)localObject1).T(paramT);
+        int j = k * ((a)localObject1).oB();
         if (j <= this.maxSize / 2)
         {
           i = 1;
@@ -266,8 +266,8 @@ public final class j
           i = 0;
           continue;
         }
-        localObject1 = this.aFT.d(k, (Class)localObject2);
-        this.aFJ.a((m)localObject1, paramT);
+        localObject1 = this.aGJ.d(k, (Class)localObject2);
+        this.aGz.a((m)localObject1, paramT);
         paramT = o((Class)localObject2);
         localObject2 = (Integer)paramT.get(Integer.valueOf(((a)localObject1).size));
         k = ((a)localObject1).size;
@@ -276,7 +276,7 @@ public final class j
           i = 1;
           paramT.put(Integer.valueOf(k), Integer.valueOf(i));
           this.currentSize += j;
-          dp(this.maxSize);
+          jdMethod_do(this.maxSize);
           AppMethodBeat.o(77101);
           continue;
         }
@@ -299,7 +299,7 @@ public final class j
     //   8: bipush 40
     //   10: if_icmplt +15 -> 25
     //   13: aload_0
-    //   14: invokevirtual 254	com/bumptech/glide/c/b/a/j:os	()V
+    //   14: invokevirtual 254	com/bumptech/glide/c/b/a/j:oC	()V
     //   17: ldc 252
     //   19: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: aload_0
@@ -316,7 +316,7 @@ public final class j
     //   39: getfield 54	com/bumptech/glide/c/b/a/j:maxSize	I
     //   42: iconst_2
     //   43: idiv
-    //   44: invokespecial 244	com/bumptech/glide/c/b/a/j:dp	(I)V
+    //   44: invokespecial 244	com/bumptech/glide/c/b/a/j:do	(I)V
     //   47: ldc 252
     //   49: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: goto -30 -> 22
@@ -341,19 +341,19 @@ public final class j
   static final class a
     implements m
   {
-    private final j.b aFW;
-    private Class<?> aFX;
+    private final j.b aGM;
+    private Class<?> aGN;
     int size;
     
     a(j.b paramb)
     {
-      this.aFW = paramb;
+      this.aGM = paramb;
     }
     
     final void c(int paramInt, Class<?> paramClass)
     {
       this.size = paramInt;
-      this.aFX = paramClass;
+      this.aGN = paramClass;
     }
     
     public final boolean equals(Object paramObject)
@@ -367,7 +367,7 @@ public final class j
         if (this.size == paramObject.size)
         {
           bool1 = bool2;
-          if (this.aFX == paramObject.aFX) {
+          if (this.aGN == paramObject.aGN) {
             bool1 = true;
           }
         }
@@ -379,25 +379,25 @@ public final class j
     {
       AppMethodBeat.i(77096);
       int j = this.size;
-      if (this.aFX != null) {}
-      for (int i = this.aFX.hashCode();; i = 0)
+      if (this.aGN != null) {}
+      for (int i = this.aGN.hashCode();; i = 0)
       {
         AppMethodBeat.o(77096);
         return i + j * 31;
       }
     }
     
-    public final void ou()
+    public final void oE()
     {
       AppMethodBeat.i(77095);
-      this.aFW.a(this);
+      this.aGM.a(this);
       AppMethodBeat.o(77095);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(77094);
-      String str = "Key{size=" + this.size + "array=" + this.aFX + '}';
+      String str = "Key{size=" + this.size + "array=" + this.aGN + '}';
       AppMethodBeat.o(77094);
       return str;
     }
@@ -409,7 +409,7 @@ public final class j
     final j.a d(int paramInt, Class<?> paramClass)
     {
       AppMethodBeat.i(77097);
-      j.a locala = (j.a)ow();
+      j.a locala = (j.a)oG();
       locala.c(paramInt, paramClass);
       AppMethodBeat.o(77097);
       return locala;
@@ -418,7 +418,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.a.j
  * JD-Core Version:    0.7.0.1
  */

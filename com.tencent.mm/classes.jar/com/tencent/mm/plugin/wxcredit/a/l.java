@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.wxcredit.a;
 
 public final class l
 {
-  public int BKF;
-  public String BKG;
-  public int BKH;
-  public l BKI;
+  public int DcN;
+  public String DcO;
+  public int DcP;
+  public l DcQ;
   public String desc;
   public String id;
   public int level;
-  public String nvv;
-  public String teH;
+  public String nYv;
   public String type;
+  public String umW;
 }
 
 

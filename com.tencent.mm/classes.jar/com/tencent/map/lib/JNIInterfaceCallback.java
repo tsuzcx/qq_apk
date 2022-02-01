@@ -6,6 +6,8 @@ public abstract interface JNIInterfaceCallback
   
   public abstract int callbackGetGLContext();
   
+  public abstract boolean onJniCallbackRenderMapFrame(int paramInt);
+  
   public abstract void onMapCameraChangeStopped();
   
   public abstract void onMapCameraChanged();
@@ -14,7 +16,7 @@ public abstract interface JNIInterfaceCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.map.lib.JNIInterfaceCallback
  * JD-Core Version:    0.7.0.1
  */

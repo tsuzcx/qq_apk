@@ -3,37 +3,37 @@ package com.tencent.mm.plugin.card.ui.view;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
-import com.tencent.mm.protocal.protobuf.qo;
-import com.tencent.mm.protocal.protobuf.ro;
-import com.tencent.mm.protocal.protobuf.xo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.ry;
+import com.tencent.mm.protocal.protobuf.yg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class q
   extends g
 {
-  public String nDf = "";
+  public String ogg = "";
   
-  public final ab bMH()
+  public final ab bTS()
   {
     AppMethodBeat.i(113704);
-    s locals = new s(this, this.nqt);
+    s locals = new s(this, this.nTt);
     AppMethodBeat.o(113704);
     return locals;
   }
   
-  public final ab bMI()
+  public final ab bTT()
   {
     AppMethodBeat.i(113705);
-    p localp = new p(this, this.nqt);
+    p localp = new p(this, this.nTt);
     AppMethodBeat.o(113705);
     return localp;
   }
   
-  public final ab bMJ()
+  public final ab bTU()
   {
     AppMethodBeat.i(113706);
-    r localr = new r(this, this.nqt);
+    r localr = new r(this, this.nTt);
     AppMethodBeat.o(113706);
     return localr;
   }
@@ -41,19 +41,19 @@ public final class q
   public final String e(c paramc)
   {
     AppMethodBeat.i(113703);
-    if (!bt.isNullOrNil(this.nqp.bHW().CPH))
+    if (!bs.isNullOrNil(this.nTp.bPj().Eis))
     {
-      paramc = this.nqp.bHW().CPH;
+      paramc = this.nTp.bPj().Eis;
       AppMethodBeat.o(113703);
       return paramc;
     }
-    if ((this.nqp.bHP()) && (!bt.isNullOrNil(this.nDf)))
+    if ((this.nTp.bPc()) && (!bs.isNullOrNil(this.ogg)))
     {
-      paramc = this.nDf;
+      paramc = this.ogg;
       AppMethodBeat.o(113703);
       return paramc;
     }
-    paramc = this.nqp.bHW().code;
+    paramc = this.nTp.bPj().code;
     AppMethodBeat.o(113703);
     return paramc;
   }
@@ -61,49 +61,49 @@ public final class q
   public final boolean f(b paramb)
   {
     AppMethodBeat.i(113702);
-    if (this.nqp == null)
+    if (this.nTp == null)
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
       AppMethodBeat.o(113702);
       return true;
     }
     if (paramb == null)
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
       AppMethodBeat.o(113702);
       return false;
     }
-    Object localObject = this.nqp.bHW().code;
-    String str = paramb.bHW().code;
-    if ((!bt.isNullOrNil((String)localObject)) && (!bt.isNullOrNil(str)) && (!((String)localObject).equals(str)))
+    Object localObject = this.nTp.bPj().code;
+    String str = paramb.bPj().code;
+    if ((!bs.isNullOrNil((String)localObject)) && (!bs.isNullOrNil(str)) && (!((String)localObject).equals(str)))
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    localObject = this.nqp.bHV().CSi;
-    paramb = paramb.bHV().CSi;
+    localObject = this.nTp.bPi().EkT;
+    paramb = paramb.bPi().EkT;
     if (((localObject == null) && (paramb != null)) || ((localObject != null) && (paramb == null)))
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field  is diffrent！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field  is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    if ((localObject != null) && (paramb != null) && (((xo)localObject).title != null) && (paramb.title != null) && (!((xo)localObject).title.equals(paramb.title)))
+    if ((localObject != null) && (paramb != null) && (((yg)localObject).title != null) && (paramb.title != null) && (!((yg)localObject).title.equals(paramb.title)))
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field title is diffrent！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field title is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    if ((localObject != null) && (paramb != null) && (((xo)localObject).nrt != null) && (paramb.nrt != null) && (!((xo)localObject).nrt.equals(paramb.nrt)))
+    if ((localObject != null) && (paramb != null) && (((yg)localObject).nUt != null) && (paramb.nUt != null) && (!((yg)localObject).nUt.equals(paramb.nUt)))
     {
-      ad.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field aux_title  is diffrent！");
+      ac.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field aux_title  is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    if ((this.nqp.bHP()) && (!bt.isNullOrNil(this.nDf)))
+    if ((this.nTp.bPc()) && (!bs.isNullOrNil(this.ogg)))
     {
-      ad.i("MicroMsg.CardCodeView", "dynamicCode updated！");
+      ac.i("MicroMsg.CardCodeView", "dynamicCode updated！");
       AppMethodBeat.o(113702);
       return true;
     }

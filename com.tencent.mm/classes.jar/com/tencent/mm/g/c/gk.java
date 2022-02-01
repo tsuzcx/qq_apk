@@ -8,12 +8,24 @@ public abstract class gk
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fcG = "wallet_region".hashCode();
-  private static final int fdv = "wallet_grey_item_buf".hashCode();
+  private static final int ffY = "wallet_region".hashCode();
+  private static final int ffZ = "function_list".hashCode();
+  private static final int fga = "new_list".hashCode();
+  private static final int fgb = "banner_list".hashCode();
+  private static final int fgc = "type_name_list".hashCode();
+  private static final int fgd = "isShowSetting".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fcA = true;
-  private boolean fdu = true;
-  public byte[] field_wallet_grey_item_buf;
+  private boolean ffS = true;
+  private boolean ffT = true;
+  private boolean ffU = true;
+  private boolean ffV = true;
+  private boolean ffW = true;
+  private boolean ffX = true;
+  public String field_banner_list;
+  public String field_function_list;
+  public int field_isShowSetting;
+  public String field_new_list;
+  public String field_type_name_list;
   public int field_wallet_region;
   
   public void convertFrom(Cursor paramCursor)
@@ -29,11 +41,11 @@ public abstract class gk
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fcG != k) {
+      if (ffY != k) {
         break label65;
       }
       this.field_wallet_region = paramCursor.getInt(i);
-      this.fcA = true;
+      this.ffS = true;
     }
     for (;;)
     {
@@ -41,8 +53,16 @@ public abstract class gk
       break label20;
       break;
       label65:
-      if (fdv == k) {
-        this.field_wallet_grey_item_buf = paramCursor.getBlob(i);
+      if (ffZ == k) {
+        this.field_function_list = paramCursor.getString(i);
+      } else if (fga == k) {
+        this.field_new_list = paramCursor.getString(i);
+      } else if (fgb == k) {
+        this.field_banner_list = paramCursor.getString(i);
+      } else if (fgc == k) {
+        this.field_type_name_list = paramCursor.getString(i);
+      } else if (fgd == k) {
+        this.field_isShowSetting = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +72,23 @@ public abstract class gk
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fcA) {
+    if (this.ffS) {
       localContentValues.put("wallet_region", Integer.valueOf(this.field_wallet_region));
     }
-    if (this.fdu) {
-      localContentValues.put("wallet_grey_item_buf", this.field_wallet_grey_item_buf);
+    if (this.ffT) {
+      localContentValues.put("function_list", this.field_function_list);
+    }
+    if (this.ffU) {
+      localContentValues.put("new_list", this.field_new_list);
+    }
+    if (this.ffV) {
+      localContentValues.put("banner_list", this.field_banner_list);
+    }
+    if (this.ffW) {
+      localContentValues.put("type_name_list", this.field_type_name_list);
+    }
+    if (this.ffX) {
+      localContentValues.put("isShowSetting", Integer.valueOf(this.field_isShowSetting));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +98,7 @@ public abstract class gk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gk
  * JD-Core Version:    0.7.0.1
  */

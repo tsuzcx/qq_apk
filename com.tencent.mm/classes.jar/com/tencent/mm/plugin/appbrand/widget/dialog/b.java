@@ -14,21 +14,21 @@ public class b
   extends d
   implements k
 {
-  private DialogInterface.OnShowListener KCx;
-  private boolean KCy;
   private View contentView;
-  private m hJu;
-  private DialogInterface.OnCancelListener ipN;
-  private boolean lA;
-  private boolean lB;
-  private DialogInterface.OnDismissListener lYl;
+  private DialogInterface.OnCancelListener iPU;
+  private m ijS;
+  private boolean mA;
+  private DialogInterface.OnDismissListener mAn;
+  private DialogInterface.OnShowListener mAq;
+  private boolean mAs;
+  private boolean mz;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135470);
-    this.lA = true;
-    this.KCy = false;
+    this.mz = true;
+    this.mAs = false;
     setContentView(super.getContentView());
     setCanceledOnTouchOutside(false);
     AppMethodBeat.o(135470);
@@ -37,44 +37,44 @@ public class b
   public b(Context paramContext, byte paramByte)
   {
     super(paramContext);
-    this.lA = true;
-    this.KCy = false;
+    this.mz = true;
+    this.mAs = false;
   }
   
   public final void a(m paramm)
   {
     AppMethodBeat.i(135471);
-    if (this.KCx != null) {
-      this.KCx.onShow(this);
+    if (this.mAq != null) {
+      this.mAq.onShow(this);
     }
-    this.hJu = paramm;
+    this.ijS = paramm;
     AppMethodBeat.o(135471);
   }
   
-  public final boolean aEu()
+  public final boolean aLl()
   {
     return false;
   }
   
-  public final boolean aEv()
+  public final boolean aLm()
   {
-    return this.lB;
+    return this.mA;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(135478);
-    if (this.KCy)
+    if (this.mAs)
     {
       AppMethodBeat.o(135478);
       return;
     }
-    this.KCy = true;
-    if (this.hJu != null)
+    this.mAs = true;
+    if (this.ijS != null)
     {
-      this.hJu.c(this);
-      if (this.lYl != null) {
-        this.lYl.onDismiss(this);
+      this.ijS.c(this);
+      if (this.mAn != null) {
+        this.mAn.onDismiss(this);
       }
     }
     AppMethodBeat.o(135478);
@@ -94,32 +94,32 @@ public class b
     return localView;
   }
   
-  public final int getPosition()
+  public int getPosition()
   {
     return 1;
   }
   
   public final boolean isCancelable()
   {
-    return this.lA;
+    return this.mz;
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(135477);
-    if (this.ipN != null) {
-      this.ipN.onCancel(this);
+    if (this.iPU != null) {
+      this.iPU.onCancel(this);
     }
     AppMethodBeat.o(135477);
   }
   
-  public final void pi(int paramInt) {}
+  public final void pW(int paramInt) {}
   
   public void setCancelable(boolean paramBoolean)
   {
     AppMethodBeat.i(135481);
     super.setCancelable(paramBoolean);
-    this.lA = paramBoolean;
+    this.mz = paramBoolean;
     AppMethodBeat.o(135481);
   }
   
@@ -127,7 +127,7 @@ public class b
   {
     AppMethodBeat.i(135480);
     super.setCanceledOnTouchOutside(paramBoolean);
-    this.lB = paramBoolean;
+    this.mA = paramBoolean;
     AppMethodBeat.o(135480);
   }
   
@@ -163,7 +163,7 @@ public class b
   {
     AppMethodBeat.i(135482);
     super.setOnCancelListener(paramOnCancelListener);
-    this.ipN = paramOnCancelListener;
+    this.iPU = paramOnCancelListener;
     AppMethodBeat.o(135482);
   }
   
@@ -171,7 +171,7 @@ public class b
   {
     AppMethodBeat.i(135479);
     super.setOnDismissListener(paramOnDismissListener);
-    this.lYl = paramOnDismissListener;
+    this.mAn = paramOnDismissListener;
     AppMethodBeat.o(135479);
   }
   
@@ -179,7 +179,7 @@ public class b
   {
     AppMethodBeat.i(135476);
     super.setOnShowListener(paramOnShowListener);
-    this.KCx = paramOnShowListener;
+    this.mAq = paramOnShowListener;
     AppMethodBeat.o(135476);
   }
   
@@ -187,7 +187,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.b
  * JD-Core Version:    0.7.0.1
  */

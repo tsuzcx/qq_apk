@@ -1,116 +1,111 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class byc
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int DUN;
-  public int DUO;
-  public int DUP;
-  public long DUQ;
-  public int DUR;
-  public int DUS;
-  public String Dds;
-  public String sed;
+  public LinkedList<qx> EtR;
+  public int EtS;
+  public int EtT;
+  public long lastUpdateTime;
+  public int version;
+  
+  public byc()
+  {
+    AppMethodBeat.i(32357);
+    this.EtR = new LinkedList();
+    AppMethodBeat.o(32357);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104825);
+    AppMethodBeat.i(32358);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DUN);
-      paramVarArgs.aR(2, this.DUO);
-      paramVarArgs.aR(3, this.DUP);
-      if (this.sed != null) {
-        paramVarArgs.d(4, this.sed);
-      }
-      paramVarArgs.aG(5, this.DUQ);
-      paramVarArgs.aR(6, this.DUR);
-      if (this.Dds != null) {
-        paramVarArgs.d(7, this.Dds);
-      }
-      paramVarArgs.aR(8, this.DUS);
-      AppMethodBeat.o(104825);
+      paramVarArgs.e(1, 8, this.EtR);
+      paramVarArgs.aR(2, this.version);
+      paramVarArgs.aR(3, this.EtS);
+      paramVarArgs.aR(4, this.EtT);
+      paramVarArgs.aO(5, this.lastUpdateTime);
+      AppMethodBeat.o(32358);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bA(1, this.DUN) + 0 + f.a.a.b.b.a.bA(2, this.DUO) + f.a.a.b.b.a.bA(3, this.DUP);
-      paramInt = i;
-      if (this.sed != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.sed);
-      }
-      i = paramInt + f.a.a.b.b.a.q(5, this.DUQ) + f.a.a.b.b.a.bA(6, this.DUR);
-      paramInt = i;
-      if (this.Dds != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.Dds);
-      }
-      i = f.a.a.b.b.a.bA(8, this.DUS);
-      AppMethodBeat.o(104825);
-      return paramInt + i;
+      paramInt = f.a.a.a.c(1, 8, this.EtR);
+      i = f.a.a.b.b.a.bx(2, this.version);
+      int j = f.a.a.b.b.a.bx(3, this.EtS);
+      int k = f.a.a.b.b.a.bx(4, this.EtT);
+      int m = f.a.a.b.b.a.p(5, this.lastUpdateTime);
+      AppMethodBeat.o(32358);
+      return paramInt + 0 + i + j + k + m;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.EtR.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
+          paramVarArgs.gfg();
         }
       }
-      AppMethodBeat.o(104825);
+      AppMethodBeat.o(32358);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       byc localbyc = (byc)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(104825);
+        AppMethodBeat.o(32358);
         return -1;
       case 1: 
-        localbyc.DUN = locala.KhF.xS();
-        AppMethodBeat.o(104825);
+        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new qx();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((qx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localbyc.EtR.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(32358);
         return 0;
       case 2: 
-        localbyc.DUO = locala.KhF.xS();
-        AppMethodBeat.o(104825);
+        localbyc.version = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(32358);
         return 0;
       case 3: 
-        localbyc.DUP = locala.KhF.xS();
-        AppMethodBeat.o(104825);
+        localbyc.EtS = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(32358);
         return 0;
       case 4: 
-        localbyc.sed = locala.KhF.readString();
-        AppMethodBeat.o(104825);
-        return 0;
-      case 5: 
-        localbyc.DUQ = locala.KhF.xT();
-        AppMethodBeat.o(104825);
-        return 0;
-      case 6: 
-        localbyc.DUR = locala.KhF.xS();
-        AppMethodBeat.o(104825);
-        return 0;
-      case 7: 
-        localbyc.Dds = locala.KhF.readString();
-        AppMethodBeat.o(104825);
+        localbyc.EtT = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(32358);
         return 0;
       }
-      localbyc.DUS = locala.KhF.xS();
-      AppMethodBeat.o(104825);
+      localbyc.lastUpdateTime = ((f.a.a.a.a)localObject1).LVo.xG();
+      AppMethodBeat.o(32358);
       return 0;
     }
-    AppMethodBeat.o(104825);
+    AppMethodBeat.o(32358);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.byc
  * JD-Core Version:    0.7.0.1
  */

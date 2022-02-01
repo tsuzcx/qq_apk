@@ -8,10 +8,10 @@ import java.util.Map;
 public class e
   implements b<d>
 {
-  protected d iaX;
-  public final b iaY;
-  public final c iaZ;
-  public final a iba;
+  protected d iBa;
+  public final b iBb;
+  public final c iBc;
+  public final a iBd;
   
   public e()
   {
@@ -23,10 +23,10 @@ public class e
   private e(d paramd)
   {
     AppMethodBeat.i(63452);
-    this.iaY = new b();
-    this.iaZ = new c();
-    this.iba = new a();
-    this.iaX = paramd;
+    this.iBb = new b();
+    this.iBc = new c();
+    this.iBd = new a();
+    this.iBa = paramd;
     AppMethodBeat.o(63452);
   }
   
@@ -35,7 +35,7 @@ public class e
   {
     public a() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
@@ -46,7 +46,7 @@ public class e
   {
     public b() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
@@ -65,15 +65,15 @@ public class e
   {
     public c() {}
     
-    public final String Tg()
+    public final String Ua()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> y(Map<String, Object> paramMap)
+    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> x(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63449);
-      paramMap = g.ee(paramMap).c(this);
+      paramMap = g.ef(paramMap).c(this);
       AppMethodBeat.o(63449);
       return paramMap;
     }
@@ -81,7 +81,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.e
  * JD-Core Version:    0.7.0.1
  */

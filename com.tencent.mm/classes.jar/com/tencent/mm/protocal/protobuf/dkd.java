@@ -3,81 +3,89 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dkd
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String DFR;
-  public String DFq;
-  public String EzS;
-  public String cMo;
-  public String dlB;
-  public String nCa;
+  public String cZz;
+  public String tGS;
+  public String wES;
+  public String wET;
+  public String wEU;
+  public String wEV;
+  public String wEw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123678);
+    AppMethodBeat.i(72612);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dlB != null) {
-        paramVarArgs.d(1, this.dlB);
+      if (this.wES != null) {
+        paramVarArgs.d(1, this.wES);
       }
-      if (this.cMo != null) {
-        paramVarArgs.d(2, this.cMo);
+      if (this.wET != null) {
+        paramVarArgs.d(2, this.wET);
       }
-      if (this.DFR != null) {
-        paramVarArgs.d(3, this.DFR);
+      if (this.wEw != null) {
+        paramVarArgs.d(3, this.wEw);
       }
-      if (this.EzS != null) {
-        paramVarArgs.d(4, this.EzS);
+      if (this.tGS != null) {
+        paramVarArgs.d(4, this.tGS);
       }
-      if (this.nCa != null) {
-        paramVarArgs.d(5, this.nCa);
+      if (this.cZz != null) {
+        paramVarArgs.d(5, this.cZz);
       }
-      if (this.DFq != null) {
-        paramVarArgs.d(6, this.DFq);
+      if (this.wEU != null) {
+        paramVarArgs.d(6, this.wEU);
       }
-      AppMethodBeat.o(123678);
+      if (this.wEV != null) {
+        paramVarArgs.d(7, this.wEV);
+      }
+      AppMethodBeat.o(72612);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dlB == null) {
-        break label518;
+      if (this.wES == null) {
+        break label578;
       }
     }
-    label518:
-    for (int i = f.a.a.b.b.a.e(1, this.dlB) + 0;; i = 0)
+    label578:
+    for (int i = f.a.a.b.b.a.e(1, this.wES) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.cMo != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.cMo);
+      if (this.wET != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.wET);
       }
       i = paramInt;
-      if (this.DFR != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.DFR);
+      if (this.wEw != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.wEw);
       }
       paramInt = i;
-      if (this.EzS != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.EzS);
+      if (this.tGS != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.tGS);
       }
       i = paramInt;
-      if (this.nCa != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.nCa);
+      if (this.cZz != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.cZz);
       }
       paramInt = i;
-      if (this.DFq != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.DFq);
+      if (this.wEU != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.wEU);
       }
-      AppMethodBeat.o(123678);
-      return paramInt;
+      i = paramInt;
+      if (this.wEV != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.wEV);
+      }
+      AppMethodBeat.o(72612);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(123678);
+        AppMethodBeat.o(72612);
         return 0;
       }
       if (paramInt == 3)
@@ -87,41 +95,45 @@ public final class dkd
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123678);
+          AppMethodBeat.o(72612);
           return -1;
         case 1: 
-          localdkd.dlB = locala.KhF.readString();
-          AppMethodBeat.o(123678);
+          localdkd.wES = locala.LVo.readString();
+          AppMethodBeat.o(72612);
           return 0;
         case 2: 
-          localdkd.cMo = locala.KhF.readString();
-          AppMethodBeat.o(123678);
+          localdkd.wET = locala.LVo.readString();
+          AppMethodBeat.o(72612);
           return 0;
         case 3: 
-          localdkd.DFR = locala.KhF.readString();
-          AppMethodBeat.o(123678);
+          localdkd.wEw = locala.LVo.readString();
+          AppMethodBeat.o(72612);
           return 0;
         case 4: 
-          localdkd.EzS = locala.KhF.readString();
-          AppMethodBeat.o(123678);
+          localdkd.tGS = locala.LVo.readString();
+          AppMethodBeat.o(72612);
           return 0;
         case 5: 
-          localdkd.nCa = locala.KhF.readString();
-          AppMethodBeat.o(123678);
+          localdkd.cZz = locala.LVo.readString();
+          AppMethodBeat.o(72612);
+          return 0;
+        case 6: 
+          localdkd.wEU = locala.LVo.readString();
+          AppMethodBeat.o(72612);
           return 0;
         }
-        localdkd.DFq = locala.KhF.readString();
-        AppMethodBeat.o(123678);
+        localdkd.wEV = locala.LVo.readString();
+        AppMethodBeat.o(72612);
         return 0;
       }
-      AppMethodBeat.o(123678);
+      AppMethodBeat.o(72612);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dkd
  * JD-Core Version:    0.7.0.1
  */

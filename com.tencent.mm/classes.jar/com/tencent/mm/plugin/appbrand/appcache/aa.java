@@ -4,12 +4,12 @@ import android.database.Cursor;
 import android.os.StatFs;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ez;
+import com.tencent.mm.g.b.a.gr;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.config.u;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,49 +18,49 @@ import java.util.Locale;
 
 public final class aa
 {
-  private static final byte[] iMG = new byte[0];
+  private static final byte[] jmN = new byte[0];
   
-  public static aa.b a(long paramLong, a parama)
+  public static b a(long paramLong, a parama)
   {
     AppMethodBeat.i(44310);
     if (paramLong <= 0L)
     {
-      parama = aa.b.iMI;
+      parama = b.jmP;
       AppMethodBeat.o(44310);
       return parama;
     }
-    Object localObject1 = new StatFs(ax.aQj());
+    Object localObject1 = new StatFs(ax.aXb());
     int i = ((StatFs)localObject1).getAvailableBlocks();
     long l = ((StatFs)localObject1).getBlockSize() * i;
     if ((l < 0L) || (l > paramLong))
     {
-      parama = aa.b.iMI;
+      parama = b.jmP;
       AppMethodBeat.o(44310);
       return parama;
     }
     localObject1 = (ag)j.T(ag.class);
     if (localObject1 == null)
     {
-      ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
-      parama = aa.b.iMK;
+      ac.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
+      parama = b.jmR;
       AppMethodBeat.o(44310);
       return parama;
     }
     Object localObject4 = String.format(Locale.US, " %s, %s ASC", new Object[] { "hit", "hitTimeMS" });
     Object localObject3 = new LinkedList();
-    synchronized (iMG)
+    synchronized (jmN)
     {
       localObject4 = ((ag)localObject1).db.a("PkgUsageLRURecord", new String[] { "appId", "type" }, null, null, null, null, (String)localObject4, 2);
       if (localObject4 == null)
       {
-        parama = aa.b.iMK;
+        parama = b.jmR;
         AppMethodBeat.o(44310);
         return parama;
       }
       if (!((Cursor)localObject4).moveToFirst())
       {
         ((Cursor)localObject4).close();
-        parama = aa.b.iMK;
+        parama = b.jmR;
         AppMethodBeat.o(44310);
         return parama;
       }
@@ -78,7 +78,7 @@ public final class aa
       {
         for (;;)
         {
-          ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
+          ac.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
           ((Cursor)localObject4).close();
         }
         parama = finally;
@@ -90,11 +90,11 @@ public final class aa
         ((Cursor)localObject4).close();
         AppMethodBeat.o(44310);
       }
-      ??? = j.aOK();
+      ??? = j.aVC();
       if (??? == null)
       {
-        ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
-        parama = aa.b.iMK;
+        ac.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
+        parama = b.jmR;
         AppMethodBeat.o(44310);
         return parama;
       }
@@ -106,29 +106,29 @@ public final class aa
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (Pair)((Iterator)localObject3).next();
-      Iterator localIterator = ((bf)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), bf.a.iOJ, new String[] { "pkgPath" }).iterator();
+      Iterator localIterator = ((bf)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), bf.a.joS, new String[] { "pkgPath" }).iterator();
       while (localIterator.hasNext())
       {
         bb localbb = (bb)localIterator.next();
-        l = i.aMN(localbb.field_pkgPath) + l;
+        l = i.aSp(localbb.field_pkgPath) + l;
         i.deleteFile(localbb.field_pkgPath);
         i += 1;
-        ((ag)localObject1).aD((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
+        ((ag)localObject1).aH((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
         a(parama);
         if (l >= paramLong)
         {
-          parama = new ez();
-          parama.eaD = 3L;
-          parama.eaF = i;
-          parama.eaB = 1L;
-          parama.aBj();
-          parama = aa.b.iMJ;
+          parama = new gr();
+          parama.ecJ = 3L;
+          parama.ecL = i;
+          parama.ecH = 1L;
+          parama.aHZ();
+          parama = b.jmQ;
           AppMethodBeat.o(44310);
           return parama;
         }
       }
     }
-    parama = aa.b.iMK;
+    parama = b.jmR;
     AppMethodBeat.o(44310);
     return parama;
   }
@@ -136,7 +136,7 @@ public final class aa
   private static void a(a parama)
   {
     AppMethodBeat.i(44311);
-    if ((parama != null) && (parama.aLy()))
+    if ((parama != null) && (parama.aSp()))
     {
       parama = new InterruptedException();
       AppMethodBeat.o(44311);
@@ -145,16 +145,16 @@ public final class aa
     AppMethodBeat.o(44311);
   }
   
-  public static void aC(String arg0, int paramInt)
+  public static void aG(String arg0, int paramInt)
   {
     AppMethodBeat.i(44308);
-    if (bt.isNullOrNil(???))
+    if (bs.isNullOrNil(???))
     {
       AppMethodBeat.o(44308);
       return;
     }
-    String str = u.Gh(???);
-    if (bt.isNullOrNil(str))
+    String str = u.Kl(???);
+    if (bs.isNullOrNil(str))
     {
       AppMethodBeat.o(44308);
       return;
@@ -165,38 +165,38 @@ public final class aa
       AppMethodBeat.o(44308);
       return;
     }
-    synchronized (iMG)
+    synchronized (jmN)
     {
       af localaf = new af();
       localaf.field_appId = str;
       localaf.field_type = paramInt;
-      if (localag.get(localaf, af.iLd))
+      if (localag.get(localaf, af.jlk))
       {
         localaf.field_hit += 1;
-        localaf.field_hitTimeMS = bt.eGO();
-        localag.update(localaf, af.iLd);
+        localaf.field_hitTimeMS = bs.eWj();
+        localag.update(localaf, af.jlk);
         AppMethodBeat.o(44308);
         return;
       }
       localaf.field_hit = 1;
-      localaf.field_hitTimeMS = bt.eGO();
+      localaf.field_hitTimeMS = bs.eWj();
       localag.insert(localaf);
     }
   }
   
-  public static aa.b mQ(long paramLong)
+  public static b qF(long paramLong)
   {
     AppMethodBeat.i(44309);
     try
     {
-      aa.b localb1 = a(paramLong, a.iMH);
+      b localb1 = a(paramLong, a.jmO);
       AppMethodBeat.o(44309);
       return localb1;
     }
     catch (InterruptedException localInterruptedException)
     {
-      ad.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimOffSize with dummy check, get interrupted, e = %s", new Object[] { localInterruptedException });
-      aa.b localb2 = aa.b.iMK;
+      ac.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimOffSize with dummy check, get interrupted, e = %s", new Object[] { localInterruptedException });
+      b localb2 = b.jmR;
       AppMethodBeat.o(44309);
       return localb2;
     }
@@ -204,20 +204,35 @@ public final class aa
   
   public static abstract interface a
   {
-    public static final a iMH = new a()
+    public static final a jmO = new a()
     {
-      public final boolean aLy()
+      public final boolean aSp()
       {
         return false;
       }
     };
     
-    public abstract boolean aLy();
+    public abstract boolean aSp();
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(44307);
+      jmP = new b("NO_NEED", 0);
+      jmQ = new b("TRIMMED", 1);
+      jmR = new b("TRIM_FAIL", 2);
+      jmS = new b[] { jmP, jmQ, jmR };
+      AppMethodBeat.o(44307);
+    }
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.byo;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class wd
   extends b
 {
-  public a dBE;
+  public a dza;
   
   public wd()
   {
@@ -16,21 +16,21 @@ public final class wd
   
   private wd(byte paramByte)
   {
-    AppMethodBeat.i(134107);
-    this.dBE = new a();
-    this.ESR = false;
+    AppMethodBeat.i(116053);
+    this.dza = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(134107);
+    AppMethodBeat.o(116053);
   }
   
   public static final class a
   {
-    public byo dBF;
+    public List dzb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.wd
  * JD-Core Version:    0.7.0.1
  */

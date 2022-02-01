@@ -47,15 +47,6 @@ public abstract interface IX5JsValue
   public abstract <T> T toObject(Class<T> paramClass);
   
   public abstract String toString();
-  
-  public static abstract interface JsValueFactory
-  {
-    public abstract String getJsValueClassName();
-    
-    public abstract IX5JsValue unwrap(Object paramObject);
-    
-    public abstract Object wrap(IX5JsValue paramIX5JsValue);
-  }
 }
 
 

@@ -13,8 +13,8 @@ public class AppCompatImageButton
   extends ImageButton
   implements android.support.v4.view.s, android.support.v4.widget.s
 {
-  private final i ahH;
-  private final e ahe = new e(this);
+  private final e ahY = new e(this);
+  private final i aiB;
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,130 +23,130 @@ public class AppCompatImageButton
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ab(paramContext), paramAttributeSet, paramInt);
-    this.ahe.a(paramAttributeSet, paramInt);
-    this.ahH = new i(this);
-    this.ahH.a(paramAttributeSet, paramInt);
+    super(aw.ac(paramContext), paramAttributeSet, paramInt);
+    this.ahY.a(paramAttributeSet, paramInt);
+    this.aiB = new i(this);
+    this.aiB.a(paramAttributeSet, paramInt);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ahe != null) {
-      this.ahe.iz();
+    if (this.ahY != null) {
+      this.ahY.iH();
     }
-    if (this.ahH != null) {
-      this.ahH.iE();
+    if (this.aiB != null) {
+      this.aiB.iM();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ahe != null) {
-      return this.ahe.getSupportBackgroundTintList();
+    if (this.ahY != null) {
+      return this.ahY.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ahe != null) {
-      return this.ahe.getSupportBackgroundTintMode();
+    if (this.ahY != null) {
+      return this.ahY.getSupportBackgroundTintMode();
     }
     return null;
   }
   
   public ColorStateList getSupportImageTintList()
   {
-    if (this.ahH != null) {
-      return this.ahH.getSupportImageTintList();
+    if (this.aiB != null) {
+      return this.aiB.getSupportImageTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportImageTintMode()
   {
-    if (this.ahH != null) {
-      return this.ahH.getSupportImageTintMode();
+    if (this.aiB != null) {
+      return this.aiB.getSupportImageTintMode();
     }
     return null;
   }
   
   public boolean hasOverlappingRendering()
   {
-    return (this.ahH.hasOverlappingRendering()) && (super.hasOverlappingRendering());
+    return (this.aiB.hasOverlappingRendering()) && (super.hasOverlappingRendering());
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ahe != null) {
-      this.ahe.iy();
+    if (this.ahY != null) {
+      this.ahY.iG();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ahe != null) {
-      this.ahe.bG(paramInt);
+    if (this.ahY != null) {
+      this.ahY.bG(paramInt);
     }
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
     super.setImageBitmap(paramBitmap);
-    if (this.ahH != null) {
-      this.ahH.iE();
+    if (this.aiB != null) {
+      this.aiB.iM();
     }
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    if (this.ahH != null) {
-      this.ahH.iE();
+    if (this.aiB != null) {
+      this.aiB.iM();
     }
   }
   
   public void setImageResource(int paramInt)
   {
-    this.ahH.setImageResource(paramInt);
+    this.aiB.setImageResource(paramInt);
   }
   
   public void setImageURI(Uri paramUri)
   {
     super.setImageURI(paramUri);
-    if (this.ahH != null) {
-      this.ahH.iE();
+    if (this.aiB != null) {
+      this.aiB.iM();
     }
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ahe != null) {
-      this.ahe.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ahY != null) {
+      this.ahY.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ahe != null) {
-      this.ahe.setSupportBackgroundTintMode(paramMode);
+    if (this.ahY != null) {
+      this.ahY.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setSupportImageTintList(ColorStateList paramColorStateList)
   {
-    if (this.ahH != null) {
-      this.ahH.setSupportImageTintList(paramColorStateList);
+    if (this.aiB != null) {
+      this.aiB.setSupportImageTintList(paramColorStateList);
     }
   }
   
   public void setSupportImageTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ahH != null) {
-      this.ahH.setSupportImageTintMode(paramMode);
+    if (this.aiB != null) {
+      this.aiB.setSupportImageTintMode(paramMode);
     }
   }
 }

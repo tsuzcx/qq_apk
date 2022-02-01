@@ -7,14 +7,14 @@ import java.util.Collection;
 
 public final class k
 {
-  public final Collection<a.a> JAA;
-  public final h JAz;
+  public final h LnS;
+  public final Collection<a.a> LnT;
   
   public k(h paramh, Collection<? extends a.a> paramCollection)
   {
     AppMethodBeat.i(57765);
-    this.JAz = paramh;
-    this.JAA = paramCollection;
+    this.LnS = paramh;
+    this.LnT = paramCollection;
     AppMethodBeat.o(57765);
   }
   
@@ -26,7 +26,7 @@ public final class k
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((!d.g.b.k.g(this.JAz, paramObject.JAz)) || (!d.g.b.k.g(this.JAA, paramObject.JAA))) {}
+        if ((!d.g.b.k.g(this.LnS, paramObject.LnS)) || (!d.g.b.k.g(this.LnT, paramObject.LnT))) {}
       }
     }
     else
@@ -42,11 +42,11 @@ public final class k
   {
     int j = 0;
     AppMethodBeat.i(57767);
-    Object localObject = this.JAz;
+    Object localObject = this.LnS;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.JAA;
+      localObject = this.LnT;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -58,14 +58,14 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(57766);
-    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.JAz + ", qualifierApplicabilityTypes=" + this.JAA + ")";
+    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.LnS + ", qualifierApplicabilityTypes=" + this.LnT + ")";
     AppMethodBeat.o(57766);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.k
  * JD-Core Version:    0.7.0.1
  */

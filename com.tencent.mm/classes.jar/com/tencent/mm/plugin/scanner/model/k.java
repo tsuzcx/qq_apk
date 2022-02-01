@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.nk;
-import com.tencent.mm.protocal.protobuf.nl;
+import com.tencent.mm.protocal.protobuf.nr;
+import com.tencent.mm.protocal.protobuf.ns;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
 
 public final class k
   extends n
@@ -25,28 +25,28 @@ public final class k
   {
     AppMethodBeat.i(51631);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new nk();
-    ((b.a)localObject).gUV = new nl();
+    ((b.a)localObject).hvt = new nr();
+    ((b.a)localObject).hvu = new ns();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanproductreport";
     ((b.a)localObject).funcId = 1064;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (nk)this.rr.gUS.gUX;
-    ((nk)localObject).fVv = d.CpF;
-    ((nk)localObject).fVw = d.CpE;
-    ((nk)localObject).fVx = d.CpH;
-    ((nk)localObject).fVy = d.CpI;
-    ((nk)localObject).fVz = ac.eFu();
-    ((nk)localObject).fVA = 11294;
-    ((nk)localObject).fVB = null;
-    ((nk)localObject).vOa = paramString1;
-    ((nk)localObject).vNZ = paramString2;
-    ((nk)localObject).type = paramInt1;
-    ((nk)localObject).value = paramString3;
-    ((nk)localObject).count = paramInt2;
-    ((nk)localObject).ukO = paramInt3;
-    ad.v("MircoMsg.NetSceneScanProductReport", "statid:".concat(String.valueOf(paramString2)));
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (nr)this.rr.hvr.hvw;
+    ((nr)localObject).fZq = d.DHX;
+    ((nr)localObject).fZr = d.DHW;
+    ((nr)localObject).fZs = d.DHZ;
+    ((nr)localObject).fZt = d.DIa;
+    ((nr)localObject).fZu = ab.eUO();
+    ((nr)localObject).fZv = 11294;
+    ((nr)localObject).fZw = null;
+    ((nr)localObject).wYw = paramString1;
+    ((nr)localObject).wYv = paramString2;
+    ((nr)localObject).type = paramInt1;
+    ((nr)localObject).value = paramString3;
+    ((nr)localObject).count = paramInt2;
+    ((nr)localObject).vtK = paramInt3;
+    ac.v("MircoMsg.NetSceneScanProductReport", "statid:".concat(String.valueOf(paramString2)));
     AppMethodBeat.o(51631);
   }
   
@@ -67,14 +67,14 @@ public final class k
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(51632);
-    ad.d("MircoMsg.NetSceneScanProductReport", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    ac.d("MircoMsg.NetSceneScanProductReport", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(51632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.k
  * JD-Core Version:    0.7.0.1
  */

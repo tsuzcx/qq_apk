@@ -3,15 +3,15 @@ package com.google.android.exoplayer2;
 public final class l
   extends IllegalStateException
 {
-  public final int aRV;
-  public final w aRb;
-  public final long aSw;
+  public final w aRW;
+  public final int aSQ;
+  public final long aTp;
   
   public l(w paramw, int paramInt, long paramLong)
   {
-    this.aRb = paramw;
-    this.aRV = paramInt;
-    this.aSw = paramLong;
+    this.aRW = paramw;
+    this.aSQ = paramInt;
+    this.aTp = paramLong;
   }
 }
 

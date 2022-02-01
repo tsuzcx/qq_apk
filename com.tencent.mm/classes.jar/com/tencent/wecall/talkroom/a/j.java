@@ -9,9 +9,9 @@ import com.tencent.pb.common.c.b;
 public final class j
   extends d
 {
-  public String seB;
+  public String tmu;
   
-  public final Object cC(byte[] paramArrayOfByte)
+  public final Object cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62530);
     if (paramArrayOfByte != null) {}
@@ -33,7 +33,7 @@ public final class j
     }
   }
   
-  public final String flk()
+  public final String fBB()
   {
     return "CsCmd.Cmd_V_CSVoiceMemberWhisperReq";
   }

@@ -10,9 +10,10 @@ import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
-import com.tencent.mm.protocal.protobuf.avj;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ayp;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.t;
 import java.io.Serializable;
 
@@ -20,24 +21,24 @@ public final class ae
   extends o
   implements Serializable
 {
-  AdLandingPagesProxy.e xaM;
-  protected n xdf;
+  AdLandingPagesProxy.e ynB;
+  protected n ypU;
   
   public ae(Context paramContext, n paramn, ViewGroup paramViewGroup)
   {
     super(paramContext, paramn, paramViewGroup);
     AppMethodBeat.i(96736);
-    this.xaM = new AdLandingPagesProxy.e()
+    this.ynB = new AdLandingPagesProxy.e()
     {
-      public final void bf(Object paramAnonymousObject) {}
+      public final void bc(Object paramAnonymousObject) {}
       
       public final void h(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
       {
         AppMethodBeat.i(96735);
-        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AdLandingPageSmartPhoneBtnComp", "onCallback, errType=" + paramAnonymousInt1 + ", errNo=" + paramAnonymousInt2);
+        ac.i("MicroMsg.AdLandingPageSmartPhoneBtnComp", "onCallback, errType=" + paramAnonymousInt1 + ", errNo=" + paramAnonymousInt2);
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          aq.f(new Runnable()
+          ap.f(new Runnable()
           {
             public final void run()
             {
@@ -49,46 +50,46 @@ public final class ae
           AppMethodBeat.o(96735);
           return;
         }
-        avj localavj = new avj();
+        ayp localayp = new ayp();
         try
         {
-          localavj.parseFrom((byte[])paramAnonymousObject);
-          paramAnonymousObject = localavj.DuL;
-          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AdLandingPageSmartPhoneBtnComp", "full_number=" + paramAnonymousObject + ", dial_id=" + localavj.DuM);
+          localayp.parseFrom((byte[])paramAnonymousObject);
+          paramAnonymousObject = localayp.EPU;
+          ac.i("MicroMsg.AdLandingPageSmartPhoneBtnComp", "full_number=" + paramAnonymousObject + ", dial_id=" + localayp.EPV);
           AdLandingPagesProxy.getInstance().confirmDialPhoneNum((Activity)ae.this.context, paramAnonymousObject);
           AppMethodBeat.o(96735);
           return;
         }
         catch (Exception paramAnonymousObject)
         {
-          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AdLandingPageSmartPhoneBtnComp", bt.m(paramAnonymousObject));
+          ac.e("MicroMsg.AdLandingPageSmartPhoneBtnComp", bs.m(paramAnonymousObject));
           AppMethodBeat.o(96735);
         }
       }
     };
-    this.xdf = paramn;
+    this.ypU = paramn;
     if ((paramContext instanceof SnsAdNativeLandingPagesUI))
     {
-      paramContext = dwi();
-      this.xdf.wVT = bt.aGi(paramContext.wSi);
-      this.xdf.wxc = paramContext.dvK;
-      this.xdf.iYE = paramContext.iYE;
-      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AdLandingPageSmartPhoneBtnComp", "btnInfo=" + this.xdf);
+      paramContext = dKH();
+      this.ypU.yiH = bs.aLz(paramContext.yeO);
+      this.ypU.xID = paramContext.dtx;
+      this.ypU.jyU = paramContext.jyU;
+      ac.i("MicroMsg.AdLandingPageSmartPhoneBtnComp", "btnInfo=" + this.ypU);
     }
     for (;;)
     {
-      this.xas.bg("smartphoneID", paramn.wVR);
+      this.ynh.bi("smartphoneID", paramn.yiF);
       AppMethodBeat.o(96736);
       return;
-      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AdLandingPageSmartPhoneBtnComp", "context is not SnsAdNativeLandingPagesUI");
+      ac.e("MicroMsg.AdLandingPageSmartPhoneBtnComp", "context is not SnsAdNativeLandingPagesUI");
     }
   }
   
-  protected final void dwp()
+  protected final void dKO()
   {
     AppMethodBeat.i(96737);
-    AdLandingPagesProxy.getInstance().doGetSmartPhoneScene(this.xdf.wVT, this.xdf.wVS, this.xdf.iYE, this.xdf.wxc, this.xdf.wVR, this.xaM);
-    dwn();
+    AdLandingPagesProxy.getInstance().doGetSmartPhoneScene(this.ypU.yiH, this.ypU.yiG, this.ypU.jyU, this.ypU.xID, this.ypU.yiF, this.ynB);
+    dKM();
     AppMethodBeat.o(96737);
   }
 }

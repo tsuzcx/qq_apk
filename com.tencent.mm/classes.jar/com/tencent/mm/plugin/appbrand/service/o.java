@@ -7,7 +7,7 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface o
   extends a
 {
-  public abstract boolean Kr(String paramString);
+  public abstract boolean Oy(String paramString);
   
   public abstract boolean b(Context paramContext, String paramString, int paramInt, Bundle paramBundle);
 }

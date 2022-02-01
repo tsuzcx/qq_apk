@@ -1,59 +1,62 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.n;
+import d.g.b.w;
 import d.l;
+import d.l.b;
+import d.l.d;
+import d.l.h;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/V8RawPointer;", "", "isolatePtr", "", "contextPtr", "uvLoopPtr", "(JJJ)V", "getContextPtr", "()J", "getIsolatePtr", "getUvLoopPtr", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "", "lib-magicbrush-nano_release"})
-public final class ad
+@l(fNY={1, 1, 13})
+final class ad
+  extends n
 {
-  final long cpZ;
-  final long cqa;
-  final long cqb;
+  public static final h cnf;
   
-  public ad(long paramLong1, long paramLong2, long paramLong3)
+  static
   {
-    this.cpZ = paramLong1;
-    this.cqa = paramLong2;
-    this.cqb = paramLong3;
+    AppMethodBeat.i(190923);
+    cnf = new ad();
+    AppMethodBeat.o(190923);
   }
   
-  public final boolean equals(Object paramObject)
+  public final String FZ()
   {
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof ad))
-      {
-        paramObject = (ad)paramObject;
-        if ((this.cpZ != paramObject.cpZ) || (this.cqa != paramObject.cqa) || (this.cqb != paramObject.cqb)) {}
-      }
-    }
-    else {
-      return true;
-    }
-    return false;
+    return "getSupport_gfximage_share_texture()Z";
   }
   
-  public final int hashCode()
+  public final d Ga()
   {
-    long l = this.cpZ;
-    int i = (int)(l ^ l >>> 32);
-    l = this.cqa;
-    int j = (int)(l ^ l >>> 32);
-    l = this.cqb;
-    return (i * 31 + j) * 31 + (int)(l ^ l >>> 32);
+    AppMethodBeat.i(190924);
+    b localb = w.bn(MBRuntime.MBParams.class);
+    AppMethodBeat.o(190924);
+    return localb;
   }
   
-  public final String toString()
+  public final Object get(Object paramObject)
   {
-    AppMethodBeat.i(140187);
-    String str = "V8RawPointer(isolatePtr=" + this.cpZ + ", contextPtr=" + this.cqa + ", uvLoopPtr=" + this.cqb + ")";
-    AppMethodBeat.o(140187);
-    return str;
+    AppMethodBeat.i(190925);
+    boolean bool = ((MBRuntime.MBParams)paramObject).support_gfximage_share_texture;
+    AppMethodBeat.o(190925);
+    return Boolean.valueOf(bool);
+  }
+  
+  public final String getName()
+  {
+    return "support_gfximage_share_texture";
+  }
+  
+  public final void set(Object paramObject1, Object paramObject2)
+  {
+    AppMethodBeat.i(190926);
+    ((MBRuntime.MBParams)paramObject1).support_gfximage_share_texture = ((Boolean)paramObject2).booleanValue();
+    AppMethodBeat.o(190926);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.ad
  * JD-Core Version:    0.7.0.1
  */

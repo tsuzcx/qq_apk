@@ -19,9 +19,9 @@ import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -31,15 +31,15 @@ abstract class m
   extends a<c>
 {
   protected Context mContext;
-  protected int rXI = 0;
-  private a sfv;
-  protected int sgR = 14;
-  private k.a sgV = new k.a()
+  protected int tfA = 0;
+  private a tno;
+  protected int toL = 14;
+  private k.a toP = new k.a()
   {
     public final void e(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
     {
       AppMethodBeat.i(42249);
-      if ((!paramAnonymousBoolean) || (m.this.skq == null) || (paramAnonymousString == null))
+      if ((!paramAnonymousBoolean) || (m.this.tsj == null) || (paramAnonymousString == null))
       {
         AppMethodBeat.o(42249);
         return;
@@ -47,30 +47,30 @@ abstract class m
       Object localObject;
       try
       {
-        localObject = m.this.skq.values().iterator();
+        localObject = m.this.tsj.values().iterator();
         while (((Iterator)localObject).hasNext())
         {
           l locall = (l)((Iterator)localObject).next();
-          if ((locall != null) && (locall.rVN != null) && ((locall.rVN.field_appId.equals(paramAnonymousString)) || (locall.rVN.field_packageName.equals(paramAnonymousString))))
+          if ((locall != null) && (locall.tdF != null) && ((locall.tdF.field_appId.equals(paramAnonymousString)) || (locall.tdF.field_packageName.equals(paramAnonymousString))))
           {
-            locall.fh(m.this.mContext);
-            locall.bRs();
+            locall.fu(m.this.mContext);
+            locall.bYH();
           }
         }
         paramAnonymousInt = 0;
       }
       catch (Exception paramAnonymousString)
       {
-        ad.e("MicroMsg.GameListAdapter", paramAnonymousString.getMessage());
+        ac.e("MicroMsg.GameListAdapter", paramAnonymousString.getMessage());
         AppMethodBeat.o(42249);
         return;
       }
-      while (paramAnonymousInt < m.this.rYm.size())
+      while (paramAnonymousInt < m.this.tge.size())
       {
-        localObject = (c)m.this.rYm.get(paramAnonymousInt);
+        localObject = (c)m.this.tge.get(paramAnonymousInt);
         if ((((c)localObject).type == 0) && ((((c)localObject).field_appId.equals(paramAnonymousString)) || (((c)localObject).field_packageName.equals(paramAnonymousString))) && (m.a(m.this) != null))
         {
-          m.a(m.this).EE(paramAnonymousInt);
+          m.a(m.this).GA(paramAnonymousInt);
           AppMethodBeat.o(42249);
           return;
         }
@@ -79,8 +79,8 @@ abstract class m
       AppMethodBeat.o(42249);
     }
   };
-  protected d sgW;
-  private DialogInterface.OnClickListener shG = new DialogInterface.OnClickListener()
+  protected d toQ;
+  private DialogInterface.OnClickListener tpA = new DialogInterface.OnClickListener()
   {
     public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
     {
@@ -89,54 +89,54 @@ abstract class m
       AppMethodBeat.o(42251);
     }
   };
-  protected View.OnClickListener shH = new View.OnClickListener()
+  protected View.OnClickListener tpB = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(42250);
       if (!(paramAnonymousView.getTag() instanceof c))
       {
-        ad.e("MicroMsg.GameListAdapter", "No button tag retrived, ignore click");
+        ac.e("MicroMsg.GameListAdapter", "No button tag retrived, ignore click");
         AppMethodBeat.o(42250);
         return;
       }
       paramAnonymousView = (c)paramAnonymousView.getTag();
-      if (!m.this.skq.containsKey(paramAnonymousView.field_appId))
+      if (!m.this.tsj.containsKey(paramAnonymousView.field_appId))
       {
-        ad.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
+        ac.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
         AppMethodBeat.o(42250);
         return;
       }
-      l locall = (l)m.this.skq.get(paramAnonymousView.field_appId);
-      locall.fh(m.this.mContext);
-      m.this.sgW.sev = paramAnonymousView.rVj;
-      m.this.sgW.rXI = m.this.rXI;
-      m.this.sgW.a(paramAnonymousView, locall);
+      l locall = (l)m.this.tsj.get(paramAnonymousView.field_appId);
+      locall.fu(m.this.mContext);
+      m.this.toQ.tmo = paramAnonymousView.tdb;
+      m.this.toQ.tfA = m.this.tfA;
+      m.this.toQ.a(paramAnonymousView, locall);
       AppMethodBeat.o(42250);
     }
   };
-  protected int skl;
-  protected boolean skm = true;
-  protected boolean skn = false;
-  protected boolean sko = false;
-  protected int skp;
-  protected ConcurrentHashMap<String, l> skq;
-  protected SparseArray<View> skr;
+  protected int tse;
+  protected boolean tsf = true;
+  protected boolean tsg = false;
+  protected boolean tsh = false;
+  protected int tsi;
+  protected ConcurrentHashMap<String, l> tsj;
+  protected SparseArray<View> tsk;
   
   public m(Context paramContext)
   {
     super(paramContext);
     this.mContext = paramContext;
-    this.skq = new ConcurrentHashMap();
-    k.a(this.sgV);
-    this.skr = new SparseArray();
-    this.sgW = new d(paramContext);
-    this.sgW.seK = this.shG;
+    this.tsj = new ConcurrentHashMap();
+    k.a(this.toP);
+    this.tsk = new SparseArray();
+    this.toQ = new d(paramContext);
+    this.toQ.tmD = this.tpA;
   }
   
-  public void EF(int paramInt)
+  public void GB(int paramInt)
   {
-    this.skp = paramInt;
+    this.tsi = paramInt;
   }
   
   abstract void a(c paramc, b paramb);
@@ -145,44 +145,56 @@ abstract class m
   
   public void a(a parama)
   {
-    this.sfv = parama;
+    this.tno = parama;
   }
   
-  public void acP(String paramString)
+  public void ag(View paramView, int paramInt)
   {
-    if (bt.isNullOrNil(paramString)) {}
+    paramView = (b)paramView.getTag();
+    c localc = (c)this.tge.get(paramInt);
+    if (paramView != null)
+    {
+      this.toQ.a(paramView.tsv, paramView.tsu, localc, (l)this.tsj.get(localc.field_appId));
+      return;
+    }
+    ac.e("MicroMsg.GameListAdapter", "holder should not be null, %d", new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void ahH(String paramString)
+  {
+    if (bs.isNullOrNil(paramString)) {}
     do
     {
       do
       {
         return;
-      } while (!this.skq.containsKey(paramString));
-      paramString = (l)this.skq.get(paramString);
+      } while (!this.tsj.containsKey(paramString));
+      paramString = (l)this.tsj.get(paramString);
     } while (paramString == null);
-    paramString.cDd();
+    paramString.cQn();
   }
   
-  public void acQ(String paramString)
+  public void ahI(String paramString)
   {
-    if (bt.isNullOrNil(paramString)) {}
+    if (bs.isNullOrNil(paramString)) {}
     do
     {
       do
       {
         return;
-      } while (!this.skq.containsKey(paramString));
-      paramString = (l)this.skq.get(paramString);
+      } while (!this.tsj.containsKey(paramString));
+      paramString = (l)this.tsj.get(paramString);
     } while (paramString == null);
-    paramString.bRs();
+    paramString.bYH();
   }
   
-  public void acR(String paramString)
+  public void ahJ(String paramString)
   {
     int i = 0;
-    if (i < this.rYm.size()) {
-      if (!((c)this.rYm.get(i)).field_appId.equals(paramString)) {}
+    if (i < this.tge.size()) {
+      if (!((c)this.tge.get(i)).field_appId.equals(paramString)) {}
     }
-    for (paramString = (c)this.rYm.get(i);; paramString = null)
+    for (paramString = (c)this.tge.get(i);; paramString = null)
     {
       if (paramString != null) {
         break label63;
@@ -192,45 +204,33 @@ abstract class m
       break;
     }
     label63:
-    if (!this.skq.containsKey(paramString.field_appId))
+    if (!this.tsj.containsKey(paramString.field_appId))
     {
-      ad.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
+      ac.e("MicroMsg.GameListAdapter", "No DownloadInfo found");
       return;
     }
-    l locall = (l)this.skq.get(paramString.field_appId);
-    this.sgW.a(paramString, locall);
+    l locall = (l)this.tsj.get(paramString.field_appId);
+    this.toQ.a(paramString, locall);
   }
   
-  public void af(View paramView, int paramInt)
-  {
-    paramView = (b)paramView.getTag();
-    c localc = (c)this.rYm.get(paramInt);
-    if (paramView != null)
-    {
-      this.sgW.a(paramView.skC, paramView.skB, localc, (l)this.skq.get(localc.field_appId));
-      return;
-    }
-    ad.e("MicroMsg.GameListAdapter", "holder should not be null, %d", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public void aq(final LinkedList<c> paramLinkedList)
+  public void ax(final LinkedList<c> paramLinkedList)
   {
     if (paramLinkedList == null) {
       return;
     }
-    g.afE().ax(new Runnable()
+    g.agU().az(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(42246);
         m.a(m.this, paramLinkedList);
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42245);
-            m.b(m.this, m.1.this.sks);
-            ad.i("MicroMsg.GameListAdapter", "add size: %d", new Object[] { Integer.valueOf(m.1.this.sks.size()) });
+            m.b(m.this, m.1.this.tsl);
+            ac.i("MicroMsg.GameListAdapter", "add size: %d", new Object[] { Integer.valueOf(m.1.this.tsl.size()) });
             AppMethodBeat.o(42245);
           }
         });
@@ -239,7 +239,7 @@ abstract class m
     });
   }
   
-  public void ar(final LinkedList<c> paramLinkedList)
+  public void ay(final LinkedList<c> paramLinkedList)
   {
     if (paramLinkedList == null) {
       return;
@@ -250,13 +250,13 @@ abstract class m
       {
         AppMethodBeat.i(42248);
         m.a(m.this, paramLinkedList);
-        aq.f(new Runnable()
+        ap.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(42247);
-            m.c(m.this, m.2.this.sks);
-            ad.i("MicroMsg.GameListAdapter", "set size: %d", new Object[] { Integer.valueOf(m.2.this.sks.size()) });
+            m.c(m.this, m.2.this.tsl);
+            ac.i("MicroMsg.GameListAdapter", "set size: %d", new Object[] { Integer.valueOf(m.2.this.tsl.size()) });
             AppMethodBeat.o(42247);
           }
         });
@@ -268,13 +268,13 @@ abstract class m
   public void clear()
   {
     super.clear();
-    k.b(this.sgV);
+    k.b(this.toP);
   }
   
   public void e(SparseArray<View> paramSparseArray)
   {
     if (paramSparseArray != null) {}
-    for (this.skr = paramSparseArray;; this.skr = new SparseArray())
+    for (this.tsk = paramSparseArray;; this.tsk = new SparseArray())
     {
       notifyDataSetChanged();
       return;
@@ -300,18 +300,18 @@ abstract class m
         i = 0;
         localView = View.inflate(paramView, i, null);
         paramView = new b();
-        paramView.sfm = ((ViewGroup)localView.findViewById(2131302004));
-        paramView.skw = ((TextView)localView.findViewById(2131300534));
-        paramView.skx = ((ImageView)localView.findViewById(2131300462));
-        paramView.sjB = ((TextView)localView.findViewById(2131300524));
-        paramView.sky = ((TextView)localView.findViewById(2131302786));
-        paramView.skz = ((TextView)localView.findViewById(2131300469));
-        paramView.skA = ((TextView)localView.findViewById(2131300372));
-        paramView.skB = ((Button)localView.findViewById(2131300434));
-        paramView.skC = ((TextProgressBar)localView.findViewById(2131300436));
-        paramView.skF = ((LinearLayout)localView.findViewById(2131300348));
-        paramView.skD = ((GameListSocialView)localView.findViewById(2131300549));
-        paramView.skE = ((ViewGroup)localView.findViewById(2131298909));
+        paramView.tnf = ((ViewGroup)localView.findViewById(2131302004));
+        paramView.tsp = ((TextView)localView.findViewById(2131300534));
+        paramView.tsq = ((ImageView)localView.findViewById(2131300462));
+        paramView.tru = ((TextView)localView.findViewById(2131300524));
+        paramView.tsr = ((TextView)localView.findViewById(2131302786));
+        paramView.tss = ((TextView)localView.findViewById(2131300469));
+        paramView.tst = ((TextView)localView.findViewById(2131300372));
+        paramView.tsu = ((Button)localView.findViewById(2131300434));
+        paramView.tsv = ((TextProgressBar)localView.findViewById(2131300436));
+        paramView.tsy = ((LinearLayout)localView.findViewById(2131300348));
+        paramView.tsw = ((GameListSocialView)localView.findViewById(2131300549));
+        paramView.tsx = ((ViewGroup)localView.findViewById(2131298909));
         localView.setTag(paramView);
         paramViewGroup = paramView;
         label256:
@@ -324,7 +324,7 @@ abstract class m
     do
     {
       return localView;
-      i = this.skl;
+      i = this.tse;
       break;
       i = 2131494235;
       break;
@@ -332,9 +332,9 @@ abstract class m
       localView = paramView;
       break label256;
       a(localc, paramViewGroup, paramInt);
-    } while ((this.skp != 2) || (localc.rVk));
-    com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1004, localc.position, localc.field_appId, this.rXI, localc.rVj);
-    localc.rVk = true;
+    } while ((this.tsi != 2) || (localc.tdc));
+    com.tencent.mm.plugin.game.e.a.a(this.mContext, 10, 1004, localc.position, localc.field_appId, this.tfA, localc.tdb);
+    localc.tdc = true;
     return localView;
     a(localc, paramViewGroup);
     return localView;
@@ -352,33 +352,33 @@ abstract class m
   
   public void setSourceScene(int paramInt)
   {
-    this.rXI = paramInt;
+    this.tfA = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void EE(int paramInt);
+    public abstract void GA(int paramInt);
   }
   
   protected static final class b
   {
-    public ViewGroup sfm;
-    public TextView sjB;
-    public TextView skA;
-    public Button skB;
-    public TextProgressBar skC;
-    public GameListSocialView skD;
-    public ViewGroup skE;
-    public LinearLayout skF;
-    public TextView skw;
-    public ImageView skx;
-    public TextView sky;
-    public TextView skz;
+    public ViewGroup tnf;
+    public TextView tru;
+    public TextView tsp;
+    public ImageView tsq;
+    public TextView tsr;
+    public TextView tss;
+    public TextView tst;
+    public Button tsu;
+    public TextProgressBar tsv;
+    public GameListSocialView tsw;
+    public ViewGroup tsx;
+    public LinearLayout tsy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.m
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,16 @@ import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.a;
 
 public final class b
 {
-  public final c jJb;
-  public final a jJc;
+  private Context context;
+  public c kjC;
+  public a kjD;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(144531);
-    this.jJb = new c(paramContext);
-    this.jJc = new a(paramContext);
+    this.context = paramContext;
+    this.kjC = new c(paramContext);
+    this.kjD = new a(paramContext);
     AppMethodBeat.o(144531);
   }
 }

@@ -10,12 +10,12 @@ import java.io.InputStream;
 public final class o
   implements d
 {
-  public static final o jYz;
+  public static final o kzl;
   
   static
   {
     AppMethodBeat.i(46601);
-    jYz = new o();
+    kzl = new o();
     AppMethodBeat.o(46601);
   }
   
@@ -37,15 +37,15 @@ public final class o
   
   public final Bitmap decodeStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(192556);
+    AppMethodBeat.i(205651);
     paramInputStream = f.decodeStream(paramInputStream);
-    AppMethodBeat.o(192556);
+    AppMethodBeat.o(205651);
     return paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.o
  * JD-Core Version:    0.7.0.1
  */

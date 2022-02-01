@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.nio.charset.Charset;
 
 public class KindaConfigCacheStg
@@ -65,7 +65,7 @@ public class KindaConfigCacheStg
       return null;
       try
       {
-        paramInt = bt.getInt(paramString, 0);
+        paramInt = bs.getInt(paramString, 0);
         AppMethodBeat.o(18394);
         return Integer.valueOf(paramInt);
       }
@@ -74,9 +74,9 @@ public class KindaConfigCacheStg
         long l;
         float f;
         double d;
-        ad.e("MicroMsg.KindaConfigCacheStg", "exception:%s", new Object[] { "" });
+        ac.e("MicroMsg.KindaConfigCacheStg", "exception:%s", new Object[] { "" });
       }
-      l = bt.getLong(paramString, 0L);
+      l = bs.getLong(paramString, 0L);
       AppMethodBeat.o(18394);
       return Long.valueOf(l);
       AppMethodBeat.o(18394);
@@ -84,10 +84,10 @@ public class KindaConfigCacheStg
       paramString = Boolean.valueOf(paramString);
       AppMethodBeat.o(18394);
       return paramString;
-      f = bt.getFloat(paramString, 0.0F);
+      f = bs.getFloat(paramString, 0.0F);
       AppMethodBeat.o(18394);
       return Float.valueOf(f);
-      d = bt.getDouble(paramString, 0.0D);
+      d = bs.getDouble(paramString, 0.0D);
       AppMethodBeat.o(18394);
       return Double.valueOf(d);
       paramString = paramString.getBytes();

@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class bz
   extends b
 {
-  public a def;
-  public b deg;
+  public a dbB;
+  public b dbC;
   
   public bz()
   {
@@ -17,16 +17,16 @@ public final class bz
   private bz(byte paramByte)
   {
     AppMethodBeat.i(140934);
-    this.def = new a();
-    this.deg = new b();
-    this.ESR = false;
+    this.dbB = new a();
+    this.dbC = new b();
+    this.Gqe = false;
     this.callback = null;
     AppMethodBeat.o(140934);
   }
   
   public static final class a
   {
-    public int deh = 0;
+    public int dbD = 0;
   }
   
   public static final class b
@@ -36,7 +36,7 @@ public final class bz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.bz
  * JD-Core Version:    0.7.0.1
  */

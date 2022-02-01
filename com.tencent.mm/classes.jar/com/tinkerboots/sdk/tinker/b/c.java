@@ -51,10 +51,10 @@ public final class c
     AppMethodBeat.o(3449);
   }
   
-  public final void aq(Intent paramIntent)
+  public final void ar(Intent paramIntent)
   {
     AppMethodBeat.i(3448);
-    super.aq(paramIntent);
+    super.ar(paramIntent);
     AppMethodBeat.o(3448);
   }
   
@@ -74,7 +74,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.b.c
  * JD-Core Version:    0.7.0.1
  */

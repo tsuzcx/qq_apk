@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class au
   extends b
 {
-  public a dcT;
+  public a dap;
   
   public au()
   {
@@ -15,16 +15,17 @@ public final class au
   
   private au(byte paramByte)
   {
-    AppMethodBeat.i(91197);
-    this.dcT = new a();
-    this.ESR = false;
+    AppMethodBeat.i(120830);
+    this.dap = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91197);
+    AppMethodBeat.o(120830);
   }
   
   public static final class a
   {
-    public boolean dcU;
+    public int daq;
+    public int scene = 0;
   }
 }
 

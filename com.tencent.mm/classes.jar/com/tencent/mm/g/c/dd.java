@@ -8,36 +8,13 @@ public abstract class dd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBb = "svrId".hashCode();
-  private static final int eKX;
-  private static final int eKY = "descUrl".hashCode();
-  private static final int elb;
-  private static final int eoG;
-  private static final int epD;
-  private static final int esc = "isRead".hashCode();
+  private static final int elM = "payMsgId".hashCode();
+  private static final int elP = "msgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAY = true;
-  private boolean eKV = true;
-  private boolean eKW = true;
-  private boolean ekE = true;
-  private boolean eoD = true;
-  private boolean epo = true;
-  private boolean erO = true;
-  public String field_content;
-  public String field_descUrl;
-  public short field_isRead;
-  public int field_msgType;
-  public long field_pushTime;
-  public long field_svrId;
-  public String field_title;
-  
-  static
-  {
-    eoG = "title".hashCode();
-    elb = "content".hashCode();
-    eKX = "pushTime".hashCode();
-    epD = "msgType".hashCode();
-  }
+  private boolean elI = true;
+  private boolean elL = true;
+  public long field_msgId;
+  public String field_payMsgId;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -52,11 +29,11 @@ public abstract class dd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eBb != k) {
+      if (elM != k) {
         break label65;
       }
-      this.field_svrId = paramCursor.getLong(i);
-      this.eAY = true;
+      this.field_payMsgId = paramCursor.getString(i);
+      this.elI = true;
     }
     for (;;)
     {
@@ -64,18 +41,8 @@ public abstract class dd
       break label20;
       break;
       label65:
-      if (esc == k) {
-        this.field_isRead = paramCursor.getShort(i);
-      } else if (eoG == k) {
-        this.field_title = paramCursor.getString(i);
-      } else if (elb == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eKX == k) {
-        this.field_pushTime = paramCursor.getLong(i);
-      } else if (epD == k) {
-        this.field_msgType = paramCursor.getInt(i);
-      } else if (eKY == k) {
-        this.field_descUrl = paramCursor.getString(i);
+      if (elP == k) {
+        this.field_msgId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -85,26 +52,11 @@ public abstract class dd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eAY) {
-      localContentValues.put("svrId", Long.valueOf(this.field_svrId));
+    if (this.elI) {
+      localContentValues.put("payMsgId", this.field_payMsgId);
     }
-    if (this.erO) {
-      localContentValues.put("isRead", Short.valueOf(this.field_isRead));
-    }
-    if (this.eoD) {
-      localContentValues.put("title", this.field_title);
-    }
-    if (this.ekE) {
-      localContentValues.put("content", this.field_content);
-    }
-    if (this.eKV) {
-      localContentValues.put("pushTime", Long.valueOf(this.field_pushTime));
-    }
-    if (this.epo) {
-      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
-    }
-    if (this.eKW) {
-      localContentValues.put("descUrl", this.field_descUrl);
+    if (this.elL) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

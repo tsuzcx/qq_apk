@@ -23,8 +23,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.tools.l;
@@ -34,24 +34,24 @@ public class ShakeMsgListUI
 {
   private int from;
   private int limit;
-  private n.d mRw;
   private int mType;
-  private long muT;
-  private TextView nWS;
-  private int ubj;
-  private int ubk;
-  private g woM;
-  private d woN;
-  private ListView woO;
+  private long mWU;
+  private n.d ntM;
+  private TextView oAn;
+  private int vkh;
+  private int vki;
+  private g xAd;
+  private d xAe;
+  private ListView xAf;
   
   public ShakeMsgListUI()
   {
     AppMethodBeat.i(28429);
-    this.woM = null;
+    this.xAd = null;
     this.limit = 0;
-    this.ubj = 0;
-    this.ubk = 0;
-    this.mRw = new n.d()
+    this.vkh = 0;
+    this.vki = 0;
+    this.ntM = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -59,7 +59,7 @@ public class ShakeMsgListUI
         paramAnonymousMenuItem = ShakeMsgListUI.a(ShakeMsgListUI.this);
         long l = ShakeMsgListUI.i(ShakeMsgListUI.this);
         String str = "svrid = '" + String.valueOf(l) + "'";
-        ad.i("MicroMsg.ShakeMessageStorage", "delBySvrId = ".concat(String.valueOf(paramAnonymousMenuItem.db.delete(paramAnonymousMenuItem.getTableName(), str, null))));
+        ac.i("MicroMsg.ShakeMessageStorage", "delBySvrId = ".concat(String.valueOf(paramAnonymousMenuItem.db.delete(paramAnonymousMenuItem.getTableName(), str, null))));
         ShakeMsgListUI.b(ShakeMsgListUI.this).a(null, null);
         AppMethodBeat.o(28428);
       }
@@ -67,11 +67,11 @@ public class ShakeMsgListUI
     AppMethodBeat.o(28429);
   }
   
-  private void dpJ()
+  private void dDT()
   {
     AppMethodBeat.i(28435);
-    this.nWS.setText(2131763591);
-    this.nWS.setVisibility(0);
+    this.oAn.setText(2131763591);
+    this.oAn.setVisibility(0);
     enableOptionMenu(false);
     AppMethodBeat.o(28435);
   }
@@ -108,7 +108,7 @@ public class ShakeMsgListUI
             AppMethodBeat.i(28423);
             paramAnonymous2DialogInterface = ShakeMsgListUI.a(ShakeMsgListUI.this);
             paramAnonymous2DialogInterface.db.delete(paramAnonymous2DialogInterface.getTableName(), null, null);
-            ShakeMsgListUI.b(ShakeMsgListUI.this).Wd();
+            ShakeMsgListUI.b(ShakeMsgListUI.this).Xb();
             ShakeMsgListUI.c(ShakeMsgListUI.this);
             AppMethodBeat.o(28423);
           }
@@ -120,11 +120,11 @@ public class ShakeMsgListUI
         return true;
       }
     });
-    this.nWS = ((TextView)findViewById(2131299468));
-    if (this.ubj == 0) {
-      dpJ();
+    this.oAn = ((TextView)findViewById(2131299468));
+    if (this.vkh == 0) {
+      dDT();
     }
-    this.woO = ((ListView)findViewById(2131304697));
+    this.xAf = ((ListView)findViewById(2131304697));
     Object localObject = getLayoutInflater().inflate(2131495281, null);
     ((View)localObject).setOnClickListener(new View.OnClickListener()
     {
@@ -132,48 +132,48 @@ public class ShakeMsgListUI
       {
         AppMethodBeat.i(28425);
         ShakeMsgListUI.a(ShakeMsgListUI.this, ShakeMsgListUI.d(ShakeMsgListUI.this) + 8);
-        ShakeMsgListUI.b(ShakeMsgListUI.this).LO(ShakeMsgListUI.d(ShakeMsgListUI.this));
+        ShakeMsgListUI.b(ShakeMsgListUI.this).NO(ShakeMsgListUI.d(ShakeMsgListUI.this));
         if (ShakeMsgListUI.e(ShakeMsgListUI.this) <= ShakeMsgListUI.d(ShakeMsgListUI.this)) {
-          ShakeMsgListUI.f(ShakeMsgListUI.this).removeFooterView(this.ubn);
+          ShakeMsgListUI.f(ShakeMsgListUI.this).removeFooterView(this.vkl);
         }
         AppMethodBeat.o(28425);
       }
     });
-    if ((this.ubj > 0) && (this.limit < this.ubj)) {
-      this.woO.addFooterView((View)localObject);
+    if ((this.vkh > 0) && (this.limit < this.vkh)) {
+      this.xAf.addFooterView((View)localObject);
     }
-    this.woN = new d(this);
-    this.woN.woJ = this.limit;
-    this.woO.setAdapter(this.woN);
-    this.woO.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.xAe = new d(this);
+    this.xAe.xAa = this.limit;
+    this.xAf.setAdapter(this.xAe);
+    this.xAf.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(28426);
         paramAnonymousAdapterView = (f)ShakeMsgListUI.b(ShakeMsgListUI.this).getItem(paramAnonymousInt);
-        if (!bt.isNullOrNil(paramAnonymousAdapterView.field_tag))
+        if (!bs.isNullOrNil(paramAnonymousAdapterView.field_tag))
         {
-          com.tencent.mm.plugin.report.service.h.vKh.kvStat(11316, ShakeMsgListUI.g(ShakeMsgListUI.this) + "," + paramAnonymousAdapterView.field_tag);
+          com.tencent.mm.plugin.report.service.h.wUl.kvStat(11316, ShakeMsgListUI.g(ShakeMsgListUI.this) + "," + paramAnonymousAdapterView.field_tag);
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.field_tag);
-          com.tencent.mm.bs.d.b(ShakeMsgListUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+          com.tencent.mm.br.d.b(ShakeMsgListUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
         }
         AppMethodBeat.o(28426);
       }
     });
     localObject = new l(this);
-    this.woO.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.xAf.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(28427);
         if (paramAnonymousInt < ShakeMsgListUI.f(ShakeMsgListUI.this).getHeaderViewsCount())
         {
-          ad.w("MicroMsg.ShakeMsgListUI", "on header view long click, ignore");
+          ac.w("MicroMsg.ShakeMsgListUI", "on header view long click, ignore");
           AppMethodBeat.o(28427);
           return true;
         }
-        this.mRz.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeMsgListUI.this.getContext(), ShakeMsgListUI.h(ShakeMsgListUI.this));
+        this.ntP.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeMsgListUI.this.getContext(), ShakeMsgListUI.h(ShakeMsgListUI.this));
         AppMethodBeat.o(28427);
         return true;
       }
@@ -186,33 +186,33 @@ public class ShakeMsgListUI
     AppMethodBeat.i(28430);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("shake_msg_type", 0);
-    this.woM = m.dpc();
-    this.ubk = this.woM.bIR();
+    this.xAd = m.dDm();
+    this.vki = this.xAd.bQe();
     int i;
-    if (this.ubk == 0)
+    if (this.vki == 0)
     {
       i = 8;
       this.limit = i;
-      this.ubj = this.woM.getCount();
+      this.vkh = this.xAd.getCount();
       this.from = getIntent().getIntExtra("shake_msg_from", 1);
       if (this.from != 1) {
         break label191;
       }
-      com.tencent.mm.plugin.report.service.h.vKh.f(11313, new Object[] { Integer.valueOf(this.ubk), e.dqb() });
+      com.tencent.mm.plugin.report.service.h.wUl.f(11313, new Object[] { Integer.valueOf(this.vki), e.dEl() });
     }
     for (;;)
     {
-      paramBundle = this.woM;
+      paramBundle = this.xAd;
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("status", Integer.valueOf(1));
       paramBundle.db.update(paramBundle.getTableName(), localContentValues, "status!=? ", new String[] { "1" });
       initView();
       AppMethodBeat.o(28430);
       return;
-      i = this.ubk;
+      i = this.vki;
       break;
       label191:
-      com.tencent.mm.plugin.report.service.h.vKh.f(11315, new Object[] { Integer.valueOf(this.ubk), e.dqb() });
+      com.tencent.mm.plugin.report.service.h.wUl.f(11315, new Object[] { Integer.valueOf(this.vki), e.dEl() });
     }
   }
   
@@ -220,7 +220,7 @@ public class ShakeMsgListUI
   {
     AppMethodBeat.i(28434);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.muT = ((f)this.woN.getItem(paramView.position)).field_svrid;
+    this.mWU = ((f)this.xAe.getItem(paramView.position)).field_svrid;
     paramContextMenu.add(paramView.position, 0, 0, 2131755707);
     AppMethodBeat.o(28434);
   }
@@ -228,7 +228,7 @@ public class ShakeMsgListUI
   public void onDestroy()
   {
     AppMethodBeat.i(28432);
-    this.woN.cHX();
+    this.xAe.cVi();
     super.onDestroy();
     AppMethodBeat.o(28432);
   }
@@ -237,15 +237,15 @@ public class ShakeMsgListUI
   {
     AppMethodBeat.i(28431);
     super.onResume();
-    if (this.ubj != this.woM.getCount())
+    if (this.vkh != this.xAd.getCount())
     {
-      this.ubj = this.woM.getCount();
-      if (this.ubj == 0) {
-        dpJ();
+      this.vkh = this.xAd.getCount();
+      if (this.vkh == 0) {
+        dDT();
       }
-      this.woN.Wd();
+      this.xAe.Xb();
     }
-    this.woN.notifyDataSetChanged();
+    this.xAe.notifyDataSetChanged();
     AppMethodBeat.o(28431);
   }
   
@@ -257,7 +257,7 @@ public class ShakeMsgListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeMsgListUI
  * JD-Core Version:    0.7.0.1
  */

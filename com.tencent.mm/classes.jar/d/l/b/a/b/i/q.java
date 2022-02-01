@@ -14,14 +14,14 @@ public final class q
   {
     AppMethodBeat.i(59871);
     k.h(paramc, "$this$render");
-    paramc = paramc.fHj();
+    paramc = paramc.fZN();
     k.g(paramc, "pathSegments()");
-    paramc = iO(paramc);
+    paramc = je(paramc);
     AppMethodBeat.o(59871);
     return paramc;
   }
   
-  public static final String iO(List<f> paramList)
+  public static final String je(List<f> paramList)
   {
     AppMethodBeat.i(59872);
     k.h(paramList, "pathSegments");
@@ -48,13 +48,13 @@ public final class q
     if (y(paramf))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      paramf = paramf.qV();
+      paramf = paramf.rf();
       k.g(paramf, "asString()");
       paramf = "`".concat(String.valueOf(paramf)) + '`';
       AppMethodBeat.o(59869);
       return paramf;
     }
-    paramf = paramf.qV();
+    paramf = paramf.rf();
     k.g(paramf, "asString()");
     AppMethodBeat.o(59869);
     return paramf;
@@ -63,15 +63,15 @@ public final class q
   private static final boolean y(f paramf)
   {
     AppMethodBeat.i(59870);
-    if (paramf.JLZ)
+    if (paramf.Lzs)
     {
       AppMethodBeat.o(59870);
       return false;
     }
-    paramf = paramf.qV();
+    paramf = paramf.rf();
     k.g(paramf, "asString()");
     int j;
-    if (!l.JQC.contains(paramf))
+    if (!l.LDV.contains(paramf))
     {
       paramf = (CharSequence)paramf;
       i = 0;
@@ -110,7 +110,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.i.q
  * JD-Core Version:    0.7.0.1
  */

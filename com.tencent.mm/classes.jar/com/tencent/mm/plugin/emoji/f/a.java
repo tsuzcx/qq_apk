@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.emoji.model.e;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.c;
 
 public class a
-  extends av
+  extends au
 {
-  private static int oyc;
-  private static a oyd;
-  private static q oye;
-  private static com.tencent.mm.al.g oyf;
+  private static int pbC;
+  private static a pbD;
+  private static q pbE;
+  private static com.tencent.mm.ak.g pbF;
   
   static
   {
     AppMethodBeat.i(108667);
-    oyc = 0;
-    oyf = new com.tencent.mm.al.g()
+    pbC = 0;
+    pbF = new com.tencent.mm.ak.g()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
       {
         AppMethodBeat.i(108659);
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
-          a.bVg().bVi();
+          a.cct().ccv();
           AppMethodBeat.o(108659);
           return;
         }
         a.access$002(0);
-        a.bVg().av(50L, 50L);
+        a.cct().au(50L, 50L);
         AppMethodBeat.o(108659);
       }
     };
@@ -50,18 +50,18 @@ public class a
     AppMethodBeat.o(108666);
   }
   
-  public static final a bVg()
+  public static final a cct()
   {
     AppMethodBeat.i(108662);
-    if (oyd == null) {}
+    if (pbD == null) {}
     for (;;)
     {
       try
       {
-        if (oyd == null) {
-          oyd = new a();
+        if (pbD == null) {
+          pbD = new a();
         }
-        a locala = oyd;
+        a locala = pbD;
         AppMethodBeat.o(108662);
         return locala;
       }
@@ -69,43 +69,43 @@ public class a
       {
         AppMethodBeat.o(108662);
       }
-      oyd.stopTimer();
+      pbD.stopTimer();
     }
   }
   
-  public static void bVh()
+  public static void ccu()
   {
     AppMethodBeat.i(108663);
-    oyc = 0;
-    oye = new q("com.tencent.xin.emoticon.tusiji", 1);
-    com.tencent.mm.kernel.g.afA().gcy.a(oye, 0);
-    com.tencent.mm.kernel.g.afA().gcy.a(413, oyf);
-    ad.d("MicroMsg.emoji.MockTuziDownloading", "add listener");
+    pbC = 0;
+    pbE = new q("com.tencent.xin.emoticon.tusiji", 1);
+    com.tencent.mm.kernel.g.agQ().ghe.a(pbE, 0);
+    com.tencent.mm.kernel.g.agQ().ghe.a(413, pbF);
+    ac.d("MicroMsg.emoji.MockTuziDownloading", "add listener");
     AppMethodBeat.o(108663);
   }
   
   public static void removeListener()
   {
     AppMethodBeat.i(108665);
-    if (oye != null) {
-      com.tencent.mm.kernel.g.afA().gcy.a(oye);
+    if (pbE != null) {
+      com.tencent.mm.kernel.g.agQ().ghe.a(pbE);
     }
-    com.tencent.mm.kernel.g.afA().gcy.b(413, oyf);
-    ad.d("MicroMsg.emoji.MockTuziDownloading", "remove listener");
+    com.tencent.mm.kernel.g.agQ().ghe.b(413, pbF);
+    ac.d("MicroMsg.emoji.MockTuziDownloading", "remove listener");
     AppMethodBeat.o(108665);
   }
   
-  public final void bVi()
+  public final void ccv()
   {
     AppMethodBeat.i(108664);
     stopTimer();
-    k.bVe().g(com.tencent.mm.plugin.emoji.h.a.bXj(), 3, oyc, "");
+    k.ccr().h(com.tencent.mm.plugin.emoji.h.a.cew(), 3, pbC, "");
     removeListener();
     AppMethodBeat.o(108664);
   }
   
   public static final class a
-    implements av.a
+    implements au.a
   {
     public a()
     {
@@ -117,13 +117,13 @@ public class a
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(108661);
-      if (a.oyc >= 100)
+      if (a.pbC >= 100)
       {
         a.access$002(0);
-        ad.d("MicroMsg.emoji.EmojiTuziTool", "insert tuzi");
-        c localc = k.getEmojiStorageMgr().FyZ;
+        ac.d("MicroMsg.emoji.EmojiTuziTool", "insert tuzi");
+        c localc = k.getEmojiStorageMgr().GYa;
         EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
-        localEmojiGroupInfo.field_productID = com.tencent.mm.plugin.emoji.h.a.bXj();
+        localEmojiGroupInfo.field_productID = com.tencent.mm.plugin.emoji.h.a.cew();
         localEmojiGroupInfo.field_packName = "emoji_custom_all";
         localEmojiGroupInfo.field_type = EmojiGroupInfo.TYPE_SYSTEM;
         localEmojiGroupInfo.field_sort = 1;
@@ -132,13 +132,13 @@ public class a
         localEmojiGroupInfo.field_packFlag = 1;
         localEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
         localc.c(localEmojiGroupInfo);
-        k.bVe().g(com.tencent.mm.plugin.emoji.h.a.bXj(), 7, a.oyc, "");
+        k.ccr().h(com.tencent.mm.plugin.emoji.h.a.cew(), 7, a.pbC, "");
         a.removeListener();
         AppMethodBeat.o(108661);
         return false;
       }
-      k.bVe().g(com.tencent.mm.plugin.emoji.h.a.bXj(), 6, a.oyc, "");
-      a.access$002(a.oyc + 2);
+      k.ccr().h(com.tencent.mm.plugin.emoji.h.a.cew(), 6, a.pbC, "");
+      a.access$002(a.pbC + 2);
       AppMethodBeat.o(108661);
       return true;
     }
@@ -146,7 +146,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.a
  * JD-Core Version:    0.7.0.1
  */

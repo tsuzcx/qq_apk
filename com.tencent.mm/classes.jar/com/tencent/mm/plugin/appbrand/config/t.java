@@ -4,15 +4,15 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.protocal.protobuf.duq;
-import com.tencent.mm.protocal.protobuf.dut;
-import com.tencent.mm.protocal.protobuf.kg;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.protocal.protobuf.eah;
+import com.tencent.mm.protocal.protobuf.eak;
+import com.tencent.mm.protocal.protobuf.km;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.f;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,26 +22,26 @@ import org.json.JSONObject;
 public class t
   extends j<WxaAttributes>
 {
-  public static final String[] gLs;
+  public static final String[] hlS;
   final e db;
   
   static
   {
     AppMethodBeat.i(146060);
-    gLs = new String[] { j.getCreateSQLs(WxaAttributes.iMP, "WxaAttributesTable") };
+    hlS = new String[] { j.getCreateSQLs(WxaAttributes.jmW, "WxaAttributesTable") };
     AppMethodBeat.o(146060);
   }
   
   public t(e parame)
   {
-    super(parame, WxaAttributes.iMP, "WxaAttributesTable", WxaAttributes.INDEX_CREATE);
+    super(parame, WxaAttributes.jmW, "WxaAttributesTable", WxaAttributes.INDEX_CREATE);
     this.db = parame;
   }
   
   private boolean a(WxaAttributes paramWxaAttributes, boolean paramBoolean)
   {
     boolean bool = true;
-    AppMethodBeat.i(194589);
+    AppMethodBeat.i(208994);
     paramWxaAttributes.field_usernameHash = paramWxaAttributes.field_username.hashCode();
     super.insertNotify(paramWxaAttributes, false);
     if (d("username", new String[] { "appId" }) != null) {}
@@ -50,7 +50,7 @@ public class t
       if ((bool) && (paramBoolean) && (!TextUtils.isEmpty(paramWxaAttributes.field_username))) {
         doNotify("single", 2, paramWxaAttributes.field_username);
       }
-      AppMethodBeat.o(194589);
+      AppMethodBeat.o(208994);
       return bool;
       bool = false;
     }
@@ -58,9 +58,9 @@ public class t
   
   private boolean a(WxaAttributes paramWxaAttributes, boolean paramBoolean, String... paramVarArgs)
   {
-    AppMethodBeat.i(194590);
+    AppMethodBeat.i(208995);
     int i;
-    if (!bt.T(paramVarArgs)) {
+    if (!bs.T(paramVarArgs)) {
       i = 0;
     }
     for (;;)
@@ -79,7 +79,7 @@ public class t
         if ((bool) && (paramBoolean) && (!TextUtils.isEmpty(paramWxaAttributes.field_username))) {
           doNotify("single", 3, paramWxaAttributes.field_username);
         }
-        AppMethodBeat.o(194590);
+        AppMethodBeat.o(208995);
         return bool;
       }
       i += 1;
@@ -90,7 +90,7 @@ public class t
   {
     AppMethodBeat.i(146054);
     int i;
-    if (!bt.T(paramVarArgs)) {
+    if (!bs.T(paramVarArgs)) {
       i = 0;
     }
     for (;;)
@@ -113,12 +113,12 @@ public class t
     }
   }
   
-  private boolean a(String paramString, b paramb, List<duq> paramList, boolean paramBoolean)
+  private boolean a(String paramString, b paramb, List<eah> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(194588);
-    if (bt.gL(paramList))
+    AppMethodBeat.i(208993);
+    if (bs.gY(paramList))
     {
-      AppMethodBeat.o(194588);
+      AppMethodBeat.o(208993);
       return false;
     }
     WxaAttributes localWxaAttributes = new WxaAttributes();
@@ -131,17 +131,17 @@ public class t
       bool = false;
       while (paramString.hasNext())
       {
-        paramList = (duq)paramString.next();
+        paramList = (eah)paramString.next();
         if (paramList != null) {
           bool = a(localWxaAttributes, paramList) | bool;
         }
       }
     }
-    localWxaAttributes.field_syncTimeSecond = bt.aGK();
+    localWxaAttributes.field_syncTimeSecond = bs.aNx();
     if (paramb == null)
     {
       paramString = new byte[0];
-      localWxaAttributes.field_syncVersion = bt.cy(paramString);
+      localWxaAttributes.field_syncVersion = bs.cx(paramString);
       if (!bool) {
         break label190;
       }
@@ -152,9 +152,9 @@ public class t
     }
     for (;;)
     {
-      AppMethodBeat.o(194588);
+      AppMethodBeat.o(208993);
       return bool;
-      paramString = paramb.wA;
+      paramString = paramb.xy;
       break;
       label169:
       a(localWxaAttributes, paramBoolean, new String[] { "username" });
@@ -164,23 +164,10 @@ public class t
     }
   }
   
-  private long aTK()
-  {
-    AppMethodBeat.i(182788);
-    if ((this.db instanceof f))
-    {
-      long l = ((f)this.db).rb(Thread.currentThread().getId());
-      AppMethodBeat.o(182788);
-      return l;
-    }
-    AppMethodBeat.o(182788);
-    return -1L;
-  }
-  
   private boolean b(WxaAttributes paramWxaAttributes, boolean paramBoolean, String... paramVarArgs)
   {
     AppMethodBeat.i(146055);
-    if (!bt.isNullOrNil(paramWxaAttributes.field_username)) {
+    if (!bs.isNullOrNil(paramWxaAttributes.field_username)) {
       paramWxaAttributes.field_usernameHash = paramWxaAttributes.field_username.hashCode();
     }
     boolean bool = super.delete(paramWxaAttributes, false, paramVarArgs);
@@ -191,20 +178,33 @@ public class t
     return bool;
   }
   
-  private static boolean cr(String paramString1, String paramString2)
+  private long baI()
+  {
+    AppMethodBeat.i(182788);
+    if ((this.db instanceof f))
+    {
+      long l = ((f)this.db).vE(Thread.currentThread().getId());
+      AppMethodBeat.o(182788);
+      return l;
+    }
+    AppMethodBeat.o(182788);
+    return -1L;
+  }
+  
+  private static boolean cB(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146053);
-    boolean bool = bt.nullAsNil(paramString1).equals(bt.nullAsNil(paramString2));
+    boolean bool = bs.nullAsNil(paramString1).equals(bs.nullAsNil(paramString2));
     AppMethodBeat.o(146053);
     return bool;
   }
   
-  private int mX(long paramLong)
+  private int qL(long paramLong)
   {
     AppMethodBeat.i(182789);
     if ((this.db instanceof f))
     {
-      int i = ((f)this.db).mX(paramLong);
+      int i = ((f)this.db).qL(paramLong);
       AppMethodBeat.o(182789);
       return i;
     }
@@ -212,12 +212,12 @@ public class t
     return -1;
   }
   
-  final b FZ(String paramString)
+  final b Kd(String paramString)
   {
     AppMethodBeat.i(146046);
     paramString = d(paramString, new String[] { "syncVersion" });
     if (paramString == null) {}
-    for (paramString = new byte[0];; paramString = bt.aGd(bt.nullAsNil(paramString.field_syncVersion)))
+    for (paramString = new byte[0];; paramString = bs.aLu(bs.nullAsNil(paramString.field_syncVersion)))
     {
       paramString = new b(paramString);
       AppMethodBeat.o(146046);
@@ -225,12 +225,12 @@ public class t
     }
   }
   
-  public final boolean Ga(String paramString)
+  public final boolean Ke(String paramString)
   {
     AppMethodBeat.i(146047);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.WxaAttrStorage", "delete with invalid username");
+      ac.e("MicroMsg.WxaAttrStorage", "delete with invalid username");
       AppMethodBeat.o(146047);
       return false;
     }
@@ -241,42 +241,42 @@ public class t
     return bool;
   }
   
-  protected boolean a(WxaAttributes paramWxaAttributes, duq paramduq)
+  protected boolean a(WxaAttributes paramWxaAttributes, eah parameah)
   {
     AppMethodBeat.i(146052);
-    if (("NickName".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_nickname)))
+    if (("NickName".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_nickname)))
     {
-      paramWxaAttributes.field_nickname = bt.nullAsNil(paramduq.vJI);
+      paramWxaAttributes.field_nickname = bs.nullAsNil(parameah.wTM);
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("BrandIconURL".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_brandIconURL)))
+    if (("BrandIconURL".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_brandIconURL)))
     {
-      paramWxaAttributes.field_brandIconURL = paramduq.vJI;
+      paramWxaAttributes.field_brandIconURL = parameah.wTM;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("BigHeadImgUrl".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_bigHeadURL)))
+    if (("BigHeadImgUrl".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_bigHeadURL)))
     {
-      paramWxaAttributes.field_bigHeadURL = paramduq.vJI;
+      paramWxaAttributes.field_bigHeadURL = parameah.wTM;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("SmallHeadImgUrl".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_smallHeadURL)))
+    if (("SmallHeadImgUrl".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_smallHeadURL)))
     {
-      paramWxaAttributes.field_smallHeadURL = paramduq.vJI;
+      paramWxaAttributes.field_smallHeadURL = parameah.wTM;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("Signature".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_signature)))
+    if (("Signature".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_signature)))
     {
-      paramWxaAttributes.field_signature = paramduq.vJI;
+      paramWxaAttributes.field_signature = parameah.wTM;
       AppMethodBeat.o(146052);
       return true;
     }
-    if ("WxAppOpt".equals(paramduq.sdv))
+    if ("WxAppOpt".equals(parameah.tlp))
     {
-      int i = bt.getInt(paramduq.vJI, 0);
+      int i = bs.getInt(parameah.wTM, 0);
       if (i != paramWxaAttributes.field_appOpt)
       {
         paramWxaAttributes.field_appOpt = i;
@@ -284,45 +284,51 @@ public class t
         return true;
       }
     }
-    if (("RegisterSource".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_registerSource)))
+    if (("RegisterSource".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_registerSource)))
     {
-      paramWxaAttributes.field_registerSource = paramduq.vJI;
+      paramWxaAttributes.field_registerSource = parameah.wTM;
       AppMethodBeat.o(146052);
       return true;
     }
-    if (("WxaAppInfo".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_appInfo))) {
-      paramWxaAttributes.field_appInfo = paramduq.vJI;
+    if (("WxaAppInfo".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_appInfo))) {
+      paramWxaAttributes.field_appInfo = parameah.wTM;
     }
     try
     {
-      paramduq = new JSONObject(paramduq.vJI);
-      paramWxaAttributes.field_appId = paramduq.getString("Appid");
-      paramWxaAttributes.field_roundedSquareIconURL = paramduq.getString("RoundedSquareIconUrl");
-      paramWxaAttributes.field_shortNickname = paramduq.optString("ShortNickName");
+      parameah = new JSONObject(parameah.wTM);
+      paramWxaAttributes.field_appId = parameah.getString("Appid");
+      paramWxaAttributes.field_roundedSquareIconURL = parameah.getString("RoundedSquareIconUrl");
+      paramWxaAttributes.field_shortNickname = parameah.optString("ShortNickName");
       label380:
       AppMethodBeat.o(146052);
       return true;
-      if (("WxaAppVersionInfo".equalsIgnoreCase(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_versionInfo)))
+      if (("WxaAppVersionInfo".equalsIgnoreCase(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_versionInfo)))
       {
-        paramWxaAttributes.field_versionInfo = paramduq.vJI;
+        paramWxaAttributes.field_versionInfo = parameah.wTM;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("BindWxaInfo".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_bindWxaInfo)))
+      if (("BindWxaInfo".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_bindWxaInfo)))
       {
-        paramWxaAttributes.field_bindWxaInfo = paramduq.vJI;
+        paramWxaAttributes.field_bindWxaInfo = parameah.wTM;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("WxaAppDynamic".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_dynamicInfo)))
+      if (("WxaAppDynamic".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_dynamicInfo)))
       {
-        paramWxaAttributes.field_dynamicInfo = paramduq.vJI;
+        paramWxaAttributes.field_dynamicInfo = parameah.wTM;
         AppMethodBeat.o(146052);
         return true;
       }
-      if (("MMBizMenu".equals(paramduq.sdv)) && (!cr(paramduq.vJI, paramWxaAttributes.field_bizMenu)))
+      if (("MMBizMenu".equals(parameah.tlp)) && (!cB(parameah.wTM, paramWxaAttributes.field_bizMenu)))
       {
-        paramWxaAttributes.field_bizMenu = paramduq.vJI;
+        paramWxaAttributes.field_bizMenu = parameah.wTM;
+        AppMethodBeat.o(146052);
+        return true;
+      }
+      if (("PassThroughInfo".equals(parameah.tlp)) && (!cB(parameah.tlp, paramWxaAttributes.field_passThroughInfo)))
+      {
+        paramWxaAttributes.field_passThroughInfo = parameah.wTM;
         AppMethodBeat.o(146052);
         return true;
       }
@@ -335,30 +341,30 @@ public class t
     }
   }
   
-  public final boolean a(kg paramkg)
+  public final boolean a(km paramkm)
   {
     AppMethodBeat.i(182790);
-    long l = aTK();
+    long l = baI();
     LinkedList localLinkedList = new LinkedList();
-    paramkg = paramkg.CFb.iterator();
+    paramkm = paramkm.DXB.iterator();
     boolean bool1 = false;
-    while (paramkg.hasNext())
+    while (paramkm.hasNext())
     {
-      dut localdut = (dut)paramkg.next();
-      ad.i("MicroMsg.WxaAttrStorage", "batchSyncInGroup flushAttrs(%s)", new Object[] { localdut.DII });
-      boolean bool2 = bool1 | a(localdut.DII, localdut.CIu, localdut.CIv, false);
+      eak localeak = (eak)paramkm.next();
+      ac.i("MicroMsg.WxaAttrStorage", "batchSyncInGroup flushAttrs(%s)", new Object[] { localeak.Fed });
+      boolean bool2 = bool1 | a(localeak.Fed, localeak.EaW, localeak.EaX, false);
       bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (!TextUtils.isEmpty(localdut.DII))
+        if (!TextUtils.isEmpty(localeak.Fed))
         {
-          localLinkedList.add(localdut.DII);
+          localLinkedList.add(localeak.Fed);
           bool1 = bool2;
         }
       }
     }
-    mX(l);
+    qL(l);
     if (localLinkedList.size() > 0) {
       doNotify("batch", 3, localLinkedList);
     }
@@ -366,7 +372,7 @@ public class t
     return bool1;
   }
   
-  public boolean a(String paramString, b paramb, List<duq> paramList)
+  public boolean a(String paramString, b paramb, List<eah> paramList)
   {
     AppMethodBeat.i(146051);
     boolean bool = a(paramString, paramb, paramList, true);
@@ -374,10 +380,10 @@ public class t
     return bool;
   }
   
-  public final boolean aTJ()
+  public final boolean baH()
   {
     AppMethodBeat.i(146045);
-    if ((this.db != null) && (!this.db.eHe()))
+    if ((this.db != null) && (!this.db.eWz()))
     {
       AppMethodBeat.o(146045);
       return true;
@@ -390,7 +396,7 @@ public class t
   {
     Object localObject1 = null;
     AppMethodBeat.i(146048);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146048);
       return null;
@@ -401,7 +407,7 @@ public class t
       return null;
     }
     Object localObject2 = this.db;
-    if (bt.T(paramVarArgs)) {
+    if (bs.T(paramVarArgs)) {
       paramVarArgs = null;
     }
     for (;;)
@@ -429,13 +435,13 @@ public class t
   {
     Object localObject1 = null;
     AppMethodBeat.i(146049);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146049);
       return null;
     }
     Object localObject2 = this.db;
-    if (bt.T(paramVarArgs)) {
+    if (bs.T(paramVarArgs)) {
       paramVarArgs = null;
     }
     for (;;)
@@ -462,7 +468,7 @@ public class t
   protected boolean j(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(146050);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
       AppMethodBeat.o(146050);
       return false;
@@ -491,7 +497,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.t
  * JD-Core Version:    0.7.0.1
  */

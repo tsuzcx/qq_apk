@@ -3,125 +3,40 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class dt
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS MMStoryInfo_id_Index ON MMStoryInfo(storyID)" };
-  private static final int eOC = "storyID".hashCode();
-  private static final int eOD;
-  private static final int eOE = "itemStoryFlag".hashCode();
-  private static final int eOF = "readCount".hashCode();
-  private static final int eOG = "favoriteTime".hashCode();
-  private static final int ekS = "userName".hashCode();
-  private static final int ekT = "localFlag".hashCode();
-  private static final int ekU = "createTime".hashCode();
-  private static final int ekX;
-  private static final int elb;
-  private static final int elc;
-  private static final int eld;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eBL = "width".hashCode();
+  private static final int eBM;
+  private static final int eRh = "packet_id".hashCode();
+  private static final int eRo = "media_type".hashCode();
+  private static final int eRp = "media_url".hashCode();
+  private static final int eRq = "media_md5".hashCode();
+  private static final int eRr = "media_fuzzy_thumbnail_url".hashCode();
+  private static final int eRs = "media_fuzzy_thumbnail_md5".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eOA = true;
-  private boolean eOB = true;
-  private boolean eOx = true;
-  private boolean eOy = true;
-  private boolean eOz = true;
-  private boolean ekA = true;
-  private boolean ekE = true;
-  private boolean ekF = true;
-  private boolean ekG = true;
-  private boolean ekv = true;
-  private boolean ekw = true;
-  private boolean ekx = true;
-  public byte[] field_attrBuf;
-  public int field_commentListCount;
-  public byte[] field_content;
-  public int field_createTime;
-  public int field_favoriteTime;
-  public int field_itemStoryFlag;
-  public int field_localFlag;
-  public byte[] field_postBuf;
-  public int field_readCount;
-  public int field_sourceType;
-  public long field_storyID;
-  public int field_type;
-  public String field_userName;
+  private boolean eAZ = true;
+  private boolean eBa = true;
+  private boolean eQZ = true;
+  private boolean eRj = true;
+  private boolean eRk = true;
+  private boolean eRl = true;
+  private boolean eRm = true;
+  private boolean eRn = true;
+  public int field_height;
+  public String field_media_fuzzy_thumbnail_md5;
+  public String field_media_fuzzy_thumbnail_url;
+  public String field_media_md5;
+  public int field_media_type;
+  public String field_media_url;
+  public String field_packet_id;
+  public int field_width;
   
   static
   {
-    eOD = "commentListCount".hashCode();
-    elb = "content".hashCode();
-    elc = "attrBuf".hashCode();
-    eld = "postBuf".hashCode();
-    ekX = "sourceType".hashCode();
-    type_HASHCODE = "type".hashCode();
-  }
-  
-  public static c.a So()
-  {
-    c.a locala = new c.a();
-    locala.EYt = new Field[13];
-    locala.columns = new String[14];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "storyID";
-    locala.EYv.put("storyID", "LONG");
-    localStringBuilder.append(" storyID LONG");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "userName";
-    locala.EYv.put("userName", "TEXT");
-    localStringBuilder.append(" userName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "localFlag";
-    locala.EYv.put("localFlag", "INTEGER");
-    localStringBuilder.append(" localFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "createTime";
-    locala.EYv.put("createTime", "INTEGER");
-    localStringBuilder.append(" createTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "commentListCount";
-    locala.EYv.put("commentListCount", "INTEGER");
-    localStringBuilder.append(" commentListCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "content";
-    locala.EYv.put("content", "BLOB");
-    localStringBuilder.append(" content BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "attrBuf";
-    locala.EYv.put("attrBuf", "BLOB");
-    localStringBuilder.append(" attrBuf BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "postBuf";
-    locala.EYv.put("postBuf", "BLOB");
-    localStringBuilder.append(" postBuf BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "sourceType";
-    locala.EYv.put("sourceType", "INTEGER");
-    localStringBuilder.append(" sourceType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "type";
-    locala.EYv.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "itemStoryFlag";
-    locala.EYv.put("itemStoryFlag", "INTEGER");
-    localStringBuilder.append(" itemStoryFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "readCount";
-    locala.EYv.put("readCount", "INTEGER");
-    localStringBuilder.append(" readCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "favoriteTime";
-    locala.EYv.put("favoriteTime", "INTEGER");
-    localStringBuilder.append(" favoriteTime INTEGER");
-    locala.columns[13] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eBM = "height".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -137,10 +52,10 @@ public abstract class dt
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eOC != k) {
+      if (eRo != k) {
         break label60;
       }
-      this.field_storyID = paramCursor.getLong(i);
+      this.field_media_type = paramCursor.getInt(i);
     }
     for (;;)
     {
@@ -148,30 +63,20 @@ public abstract class dt
       break label20;
       break;
       label60:
-      if (ekS == k) {
-        this.field_userName = paramCursor.getString(i);
-      } else if (ekT == k) {
-        this.field_localFlag = paramCursor.getInt(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getInt(i);
-      } else if (eOD == k) {
-        this.field_commentListCount = paramCursor.getInt(i);
-      } else if (elb == k) {
-        this.field_content = paramCursor.getBlob(i);
-      } else if (elc == k) {
-        this.field_attrBuf = paramCursor.getBlob(i);
-      } else if (eld == k) {
-        this.field_postBuf = paramCursor.getBlob(i);
-      } else if (ekX == k) {
-        this.field_sourceType = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eOE == k) {
-        this.field_itemStoryFlag = paramCursor.getInt(i);
-      } else if (eOF == k) {
-        this.field_readCount = paramCursor.getInt(i);
-      } else if (eOG == k) {
-        this.field_favoriteTime = paramCursor.getInt(i);
+      if (eRp == k) {
+        this.field_media_url = paramCursor.getString(i);
+      } else if (eRq == k) {
+        this.field_media_md5 = paramCursor.getString(i);
+      } else if (eBM == k) {
+        this.field_height = paramCursor.getInt(i);
+      } else if (eBL == k) {
+        this.field_width = paramCursor.getInt(i);
+      } else if (eRh == k) {
+        this.field_packet_id = paramCursor.getString(i);
+      } else if (eRr == k) {
+        this.field_media_fuzzy_thumbnail_url = paramCursor.getString(i);
+      } else if (eRs == k) {
+        this.field_media_fuzzy_thumbnail_md5 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -181,44 +86,29 @@ public abstract class dt
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eOx) {
-      localContentValues.put("storyID", Long.valueOf(this.field_storyID));
+    if (this.eRj) {
+      localContentValues.put("media_type", Integer.valueOf(this.field_media_type));
     }
-    if (this.ekv) {
-      localContentValues.put("userName", this.field_userName);
+    if (this.eRk) {
+      localContentValues.put("media_url", this.field_media_url);
     }
-    if (this.ekw) {
-      localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
+    if (this.eRl) {
+      localContentValues.put("media_md5", this.field_media_md5);
     }
-    if (this.ekx) {
-      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
+    if (this.eBa) {
+      localContentValues.put("height", Integer.valueOf(this.field_height));
     }
-    if (this.eOy) {
-      localContentValues.put("commentListCount", Integer.valueOf(this.field_commentListCount));
+    if (this.eAZ) {
+      localContentValues.put("width", Integer.valueOf(this.field_width));
     }
-    if (this.ekE) {
-      localContentValues.put("content", this.field_content);
+    if (this.eQZ) {
+      localContentValues.put("packet_id", this.field_packet_id);
     }
-    if (this.ekF) {
-      localContentValues.put("attrBuf", this.field_attrBuf);
+    if (this.eRm) {
+      localContentValues.put("media_fuzzy_thumbnail_url", this.field_media_fuzzy_thumbnail_url);
     }
-    if (this.ekG) {
-      localContentValues.put("postBuf", this.field_postBuf);
-    }
-    if (this.ekA) {
-      localContentValues.put("sourceType", Integer.valueOf(this.field_sourceType));
-    }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.eOz) {
-      localContentValues.put("itemStoryFlag", Integer.valueOf(this.field_itemStoryFlag));
-    }
-    if (this.eOA) {
-      localContentValues.put("readCount", Integer.valueOf(this.field_readCount));
-    }
-    if (this.eOB) {
-      localContentValues.put("favoriteTime", Integer.valueOf(this.field_favoriteTime));
+    if (this.eRn) {
+      localContentValues.put("media_fuzzy_thumbnail_md5", this.field_media_fuzzy_thumbnail_md5);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

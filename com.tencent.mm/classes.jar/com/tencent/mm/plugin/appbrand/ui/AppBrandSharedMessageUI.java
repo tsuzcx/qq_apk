@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
@@ -18,8 +19,8 @@ import com.tencent.mm.ui.MMActivity;
 public class AppBrandSharedMessageUI
   extends MMActivity
 {
-  private MRecyclerView lCp;
   private ListView mListView;
+  private MRecyclerView mek;
   
   public int getLayoutId()
   {
@@ -31,15 +32,15 @@ public class AppBrandSharedMessageUI
     AppMethodBeat.i(48788);
     super.onCreate(paramBundle);
     this.mListView = ((ListView)findViewById(2131301452));
-    this.lCp = ((MRecyclerView)findViewById(2131298926));
-    this.mListView.setAdapter(new AppBrandSharedMessageUI.b(getLayoutInflater()));
+    this.mek = ((MRecyclerView)findViewById(2131298926));
+    this.mListView.setAdapter(new b(getLayoutInflater()));
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong) {}
     });
-    this.lCp.setLayoutManager(new LinearLayoutManager(1));
-    this.lCp.setAdapter(new a());
-    this.lCp.addHeaderView(getLayoutInflater().inflate(2131493057, null));
+    this.mek.setLayoutManager(new LinearLayoutManager(1));
+    this.mek.setAdapter(new a());
+    this.mek.addHeaderView(getLayoutInflater().inflate(2131493057, null));
     AppMethodBeat.o(48788);
   }
   
@@ -52,12 +53,12 @@ public class AppBrandSharedMessageUI
   public static final class a
     extends RecyclerView.a
   {
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
     {
       return null;
     }
     
-    public final void a(RecyclerView.v paramv, int paramInt) {}
+    public final void a(RecyclerView.w paramw, int paramInt) {}
     
     public final int getItemCount()
     {
@@ -72,10 +73,54 @@ public class AppBrandSharedMessageUI
       return paramInt;
     }
   }
+  
+  static final class b
+    extends BaseAdapter
+  {
+    private LayoutInflater mInflater;
+    
+    public b(LayoutInflater paramLayoutInflater)
+    {
+      this.mInflater = paramLayoutInflater;
+    }
+    
+    public final int getCount()
+    {
+      return 0;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      return null;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return 0L;
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      AppMethodBeat.i(48787);
+      paramInt = super.getItemViewType(paramInt);
+      AppMethodBeat.o(48787);
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      return null;
+    }
+    
+    public final int getViewTypeCount()
+    {
+      return 4;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandSharedMessageUI
  * JD-Core Version:    0.7.0.1
  */

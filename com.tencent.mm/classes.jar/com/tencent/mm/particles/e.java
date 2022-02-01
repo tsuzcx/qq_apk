@@ -7,23 +7,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static final Paint hPF;
-  private static Interpolator hPG;
+  private static final Paint iqa;
+  private static Interpolator iqb;
   
   static
   {
     AppMethodBeat.i(151370);
     Paint localPaint = new Paint();
-    hPF = localPaint;
+    iqa = localPaint;
     localPaint.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(151370);
   }
   
-  public static Interpolator aFI()
+  public static Interpolator aMz()
   {
     AppMethodBeat.i(151369);
-    if (hPG == null) {
-      hPG = new Interpolator()
+    if (iqb == null) {
+      iqb = new Interpolator()
       {
         public final float getInterpolation(float paramAnonymousFloat)
         {
@@ -35,7 +35,7 @@ public final class e
         }
       };
     }
-    Interpolator localInterpolator = hPG;
+    Interpolator localInterpolator = iqb;
     AppMethodBeat.o(151369);
     return localInterpolator;
   }

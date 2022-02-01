@@ -4,10 +4,10 @@ public final class f
 {
   public static i c(i parami)
   {
-    l locall = parami.bWC.bWt;
+    l locall = parami.bUk.bUb;
     if ((parami instanceof j)) {}
-    for (int i = ((j)parami).bWK;; i = parami.bWA.bXn) {
-      return locall.aI(locall.gs(i).JV);
+    for (int i = ((j)parami).bUs;; i = parami.bUi.bUV) {
+      return locall.aE(locall.gd(i).KQ);
     }
   }
 }

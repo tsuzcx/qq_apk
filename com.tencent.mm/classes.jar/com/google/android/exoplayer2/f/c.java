@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   extends i
 {
-  private final b brM;
+  private final b bpL;
   
   public c(b paramb)
   {
-    this.brM = paramb;
+    this.bpL = paramb;
   }
   
   public final void release()
   {
     AppMethodBeat.i(92803);
-    this.brM.a(this);
+    this.bpL.a(this);
     AppMethodBeat.o(92803);
   }
 }

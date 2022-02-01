@@ -14,19 +14,19 @@ import java.io.InputStream;
 public final class e
   implements g
 {
-  private final x<? super e> bws;
-  private long bwt;
-  private final ContentResolver bwu;
-  private AssetFileDescriptor bwv;
+  private final w<? super e> bur;
+  private long bus;
+  private final ContentResolver but;
+  private AssetFileDescriptor buu;
   private InputStream inputStream;
   private boolean opened;
   private Uri uri;
   
-  public e(Context paramContext, x<? super e> paramx)
+  public e(Context paramContext, w<? super e> paramw)
   {
     AppMethodBeat.i(93033);
-    this.bwu = paramContext.getContentResolver();
-    this.bws = paramx;
+    this.but = paramContext.getContentResolver();
+    this.bur = paramw;
     AppMethodBeat.o(93033);
   }
   
@@ -36,8 +36,8 @@ public final class e
     try
     {
       this.uri = paramj.uri;
-      this.bwv = this.bwu.openAssetFileDescriptor(this.uri, "r");
-      if (this.bwv == null)
+      this.buu = this.but.openAssetFileDescriptor(this.uri, "r");
+      if (this.buu == null)
       {
         paramj = new FileNotFoundException("Could not open file descriptor for: " + this.uri);
         AppMethodBeat.o(93034);
@@ -50,8 +50,8 @@ public final class e
       AppMethodBeat.o(93034);
       throw paramj;
     }
-    this.inputStream = new FileInputStream(this.bwv.getFileDescriptor());
-    long l1 = this.bwv.getStartOffset();
+    this.inputStream = new FileInputStream(this.buu.getFileDescriptor());
+    long l1 = this.buu.getStartOffset();
     l1 = this.inputStream.skip(paramj.position + l1) - l1;
     if (l1 != paramj.position)
     {
@@ -60,28 +60,28 @@ public final class e
       throw paramj;
     }
     if (paramj.length != -1L) {
-      this.bwt = paramj.length;
+      this.bus = paramj.length;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.bws != null) {
-        this.bws.vl();
+      if (this.bur != null) {
+        this.bur.ve();
       }
-      l1 = this.bwt;
+      l1 = this.bus;
       AppMethodBeat.o(93034);
       return l1;
-      long l2 = this.bwv.getLength();
+      long l2 = this.buu.getLength();
       if (l2 == -1L)
       {
-        this.bwt = this.inputStream.available();
-        if (this.bwt == 0L) {
-          this.bwt = -1L;
+        this.bus = this.inputStream.available();
+        if (this.bus == 0L) {
+          this.bus = -1L;
         }
       }
       else
       {
-        this.bwt = (l2 - l1);
+        this.bus = (l2 - l1);
       }
     }
   }
@@ -98,8 +98,8 @@ public final class e
       this.inputStream = null;
       try
       {
-        if (this.bwv != null) {
-          this.bwv.close();
+        if (this.buu != null) {
+          this.buu.close();
         }
         return;
       }
@@ -111,12 +111,12 @@ public final class e
       }
       finally
       {
-        this.bwv = null;
+        this.buu = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.bws != null) {
-            this.bws.vm();
+          if (this.bur != null) {
+            this.bur.vf();
           }
         }
         AppMethodBeat.o(93036);
@@ -135,8 +135,8 @@ public final class e
       this.inputStream = null;
       try
       {
-        if (this.bwv != null) {
-          this.bwv.close();
+        if (this.buu != null) {
+          this.buu.close();
         }
         throw localObject2;
       }
@@ -148,12 +148,12 @@ public final class e
       }
       finally
       {
-        this.bwv = null;
+        this.buu = null;
         if (this.opened)
         {
           this.opened = false;
-          if (this.bws != null) {
-            this.bws.vm();
+          if (this.bur != null) {
+            this.bur.vf();
           }
         }
         AppMethodBeat.o(93036);
@@ -174,27 +174,27 @@ public final class e
       AppMethodBeat.o(93035);
       return 0;
     }
-    if (this.bwt == 0L)
+    if (this.bus == 0L)
     {
       AppMethodBeat.o(93035);
       return -1;
     }
     try
     {
-      if (this.bwt == -1L) {}
+      if (this.bus == -1L) {}
       for (;;)
       {
         paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.bwt == -1L) {
+        if (this.bus == -1L) {
           break;
         }
         paramArrayOfByte = new a(new EOFException());
         AppMethodBeat.o(93035);
         throw paramArrayOfByte;
-        long l = Math.min(this.bwt, paramInt2);
+        long l = Math.min(this.bus, paramInt2);
         paramInt2 = (int)l;
       }
       AppMethodBeat.o(93035);
@@ -207,11 +207,11 @@ public final class e
     }
     return -1;
     label134:
-    if (this.bwt != -1L) {
-      this.bwt -= paramInt1;
+    if (this.bus != -1L) {
+      this.bus -= paramInt1;
     }
-    if (this.bws != null) {
-      this.bws.fj(paramInt1);
+    if (this.bur != null) {
+      this.bur.eV(paramInt1);
     }
     AppMethodBeat.o(93035);
     return paramInt1;

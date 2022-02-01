@@ -14,7 +14,7 @@ import android.text.TextUtils;
 import android.view.Surface;
 import com.tencent.liteav.audio.TXCAudioUGCRecorder;
 import com.tencent.liteav.audio.TXCLiveBGMPlayer;
-import com.tencent.liteav.basic.d.n;
+import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
@@ -126,35 +126,7 @@ public class b
     this.D = new ArrayList();
     this.E = null;
     this.F = 0;
-    this.G = new com.tencent.liteav.audio.f()
-    {
-      public void onPlayEnd(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(14007);
-        if (b.this.a != null) {
-          b.this.a.onBGMComplete(paramAnonymousInt);
-        }
-        AppMethodBeat.o(14007);
-      }
-      
-      public void onPlayProgress(long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(14008);
-        if (b.this.a != null) {
-          b.this.a.onBGMProgress(paramAnonymousLong1, paramAnonymousLong2);
-        }
-        AppMethodBeat.o(14008);
-      }
-      
-      public void onPlayStart()
-      {
-        AppMethodBeat.i(14006);
-        if (b.this.a != null) {
-          b.this.a.onBGMStart();
-        }
-        AppMethodBeat.o(14006);
-      }
-    };
+    this.G = new b.1(this);
     this.H = null;
     this.I = new Runnable()
     {
@@ -716,7 +688,7 @@ public class b
     }
   }
   
-  private void a(final TXLivePusher.ITXSnapshotListener paramITXSnapshotListener, final Bitmap paramBitmap)
+  private void a(TXLivePusher.ITXSnapshotListener paramITXSnapshotListener, Bitmap paramBitmap)
   {
     AppMethodBeat.i(14199);
     if (paramITXSnapshotListener == null)
@@ -724,17 +696,7 @@ public class b
       AppMethodBeat.o(14199);
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(14242);
-        if (paramITXSnapshotListener != null) {
-          paramITXSnapshotListener.onSnapshot(paramBitmap);
-        }
-        AppMethodBeat.o(14242);
-      }
-    });
+    new Handler(Looper.getMainLooper()).post(new b.12(this, paramITXSnapshotListener, paramBitmap));
     AppMethodBeat.o(14199);
   }
   
@@ -1562,7 +1524,7 @@ public class b
     if (this.j != null)
     {
       this.r = true;
-      this.j.a(new n()
+      this.j.a(new o()
       {
         public void onTakePhotoComplete(Bitmap paramAnonymousBitmap)
         {

@@ -2,90 +2,90 @@ package com.tencent.mm.ui;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.preference.MMPreferenceFragment;
 
 public abstract class AbstractTabChildPreference
   extends MMPreferenceFragment
   implements m
 {
-  private boolean FFA;
-  private boolean FFB;
-  private boolean FFC;
-  private boolean FFD;
-  protected boolean FFE = false;
-  protected boolean FFF = false;
-  protected boolean FFG;
-  private Bundle xtt;
+  private boolean HeD;
+  private boolean HeE;
+  private boolean HeF;
+  private boolean HeG;
+  protected boolean HeH = false;
+  protected boolean HeI = false;
+  protected boolean HeJ;
+  private Bundle yGj;
   
-  private void ePg()
+  private void feK()
   {
-    if (this.FFB)
+    if (this.HeE)
     {
-      eOU();
-      this.FFB = false;
+      fey();
+      this.HeE = false;
     }
-    while (!this.FFA) {
+    while (!this.HeD) {
       return;
     }
-    eOZ();
-    eOU();
-    ad.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-    this.FFA = false;
+    feD();
+    fey();
+    ac.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
+    this.HeD = false;
   }
   
-  protected abstract void eOU();
+  protected abstract void feA();
   
-  protected abstract void eOV();
+  protected abstract void feB();
   
-  protected abstract void eOW();
+  protected abstract void feC();
   
-  protected abstract void eOX();
+  protected abstract void feD();
   
-  protected abstract void eOY();
-  
-  protected abstract void eOZ();
-  
-  public final void ePd()
+  public final void feH()
   {
-    ePb();
-    this.FFC = true;
+    feF();
+    this.HeF = true;
   }
   
-  public final void ePf()
+  public final void feJ()
   {
-    this.FFF = true;
+    this.HeI = true;
   }
   
-  public final void ePh()
+  public final void feL()
   {
-    if (!this.FFE) {
+    if (!this.HeH) {
       return;
     }
-    ePg();
+    feK();
     long l = System.currentTimeMillis();
-    if (this.FFC)
+    if (this.HeF)
     {
-      ePc();
-      this.FFC = false;
+      feG();
+      this.HeF = false;
     }
-    eTF();
-    eOV();
-    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.FFD = true;
-    this.FFE = false;
+    fjr();
+    fez();
+    ac.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
+    this.HeG = true;
+    this.HeH = false;
   }
+  
+  protected abstract void fey();
+  
+  protected abstract void fez();
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.xtt = paramBundle;
-    this.FFB = true;
+    this.yGj = paramBundle;
+    this.HeE = true;
   }
   
   public void onDestroy()
   {
-    eOZ();
+    feD();
     super.onDestroy();
   }
   
@@ -100,57 +100,57 @@ public abstract class AbstractTabChildPreference
   public void onPause()
   {
     super.onPause();
-    this.FFG = true;
-    if (this.FFG)
+    this.HeJ = true;
+    if (this.HeJ)
     {
-      if (!this.FFD) {
-        this.FFG = false;
+      if (!this.HeG) {
+        this.HeJ = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    eOX();
-    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.FFD = false;
-    this.FFG = false;
+    feB();
+    ac.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
+    this.HeG = false;
+    this.HeJ = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    ePe();
+    feI();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.FMe)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.Hlm)) {}
     do
     {
       return;
-      this.FFE = true;
-    } while (!this.FFF);
-    ePh();
-    this.FFF = false;
+      this.HeH = true;
+    } while (!this.HeI);
+    feL();
+    this.HeI = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.FMe)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.Hlm)) {
       return;
     }
-    eOW();
+    feA();
   }
   
   public void onStop()
   {
     super.onStop();
-    eOY();
+    feC();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.AbstractTabChildPreference
  * JD-Core Version:    0.7.0.1
  */

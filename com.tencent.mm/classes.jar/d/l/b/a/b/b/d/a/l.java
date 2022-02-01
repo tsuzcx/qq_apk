@@ -9,12 +9,12 @@ import java.lang.reflect.Method;
 
 final class l
 {
-  public static final l JvQ;
+  public static final l Ljj;
   
   static
   {
     AppMethodBeat.i(57391);
-    JvQ = new l();
+    Ljj = new l();
     AppMethodBeat.o(57391);
   }
   
@@ -31,7 +31,7 @@ final class l
     {
       Object localObject = paramConstructor[i];
       k.g(localObject, "parameterType");
-      localStringBuilder.append(b.bx(localObject));
+      localStringBuilder.append(b.bA(localObject));
       i += 1;
     }
     localStringBuilder.append(")V");
@@ -54,13 +54,13 @@ final class l
     {
       Class localClass = arrayOfClass[i];
       k.g(localClass, "parameterType");
-      localStringBuilder.append(b.bx(localClass));
+      localStringBuilder.append(b.bA(localClass));
       i += 1;
     }
     localStringBuilder.append(")");
     paramMethod = paramMethod.getReturnType();
     k.g(paramMethod, "method.returnType");
-    localStringBuilder.append(b.bx(paramMethod));
+    localStringBuilder.append(b.bA(paramMethod));
     paramMethod = localStringBuilder.toString();
     k.g(paramMethod, "sb.toString()");
     AppMethodBeat.o(57388);
@@ -73,14 +73,14 @@ final class l
     k.h(paramField, "field");
     paramField = paramField.getType();
     k.g(paramField, "field.type");
-    paramField = b.bx(paramField);
+    paramField = b.bA(paramField);
     AppMethodBeat.o(57390);
     return paramField;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.l
  * JD-Core Version:    0.7.0.1
  */

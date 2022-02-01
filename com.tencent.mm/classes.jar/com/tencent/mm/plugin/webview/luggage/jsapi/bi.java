@@ -7,12 +7,12 @@ import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONObject;
@@ -25,19 +25,19 @@ public class bi
   public final void b(final a<f>.a parama)
   {
     AppMethodBeat.i(78635);
-    ad.i("MicroMsg.JsApiShareTimeLine", "invoke");
-    final MMActivity localMMActivity = (MMActivity)((f)parama.bZU).mContext;
+    ac.i("MicroMsg.JsApiShareTimeLine", "invoke");
+    final MMActivity localMMActivity = (MMActivity)((f)parama.bWR).mContext;
     if ((localMMActivity == null) || (localMMActivity.isFinishing()))
     {
-      ad.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
+      ac.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
       AppMethodBeat.o(78635);
       return;
     }
-    Object localObject1 = parama.bZV.bZb;
+    Object localObject1 = parama.bWS.bVY;
     String str1 = ((JSONObject)localObject1).optString("link");
-    if (bt.isNullOrNil(str1))
+    if (bs.isNullOrNil(str1))
     {
-      ad.e("MicroMsg.JsApiShareTimeLine", "link is null");
+      ac.e("MicroMsg.JsApiShareTimeLine", "link is null");
       parama.a("invalid_params", null);
       AppMethodBeat.o(78635);
       return;
@@ -55,7 +55,7 @@ public class bi
       str2 = ((JSONObject)localObject1).optString("appid");
       Object localObject2 = ((JSONObject)localObject1).optString("img_width");
       String str7 = ((JSONObject)localObject1).optString("img_height");
-      ad.i("MicroMsg.JsApiShareTimeLine", "doTimeline, rawUrl:[%s], shareUrl:[%s]", new Object[] { str1, str1 });
+      ac.i("MicroMsg.JsApiShareTimeLine", "doTimeline, rawUrl:[%s], shareUrl:[%s]", new Object[] { str1, str1 });
       String str3 = ((JSONObject)localObject1).optString("type");
       String str4 = ((JSONObject)localObject1).optString("title");
       String str5 = ((JSONObject)localObject1).optString("img_url");
@@ -80,27 +80,27 @@ public class bi
       ((Intent)localObject2).putExtra("Ksnsupload_link", str1);
       ((Intent)localObject2).putExtra("Ksnsupload_title", str4);
       ((Intent)localObject2).putExtra("Ksnsupload_imgurl", str5);
-      if (w.sE(str6))
+      if (w.wH(str6))
       {
         ((Intent)localObject2).putExtra("src_username", str6);
         ((Intent)localObject2).putExtra("src_displayname", (String)localObject1);
       }
       ((Intent)localObject2).putExtra("Ksnsupload_source", 1);
       ((Intent)localObject2).putExtra("Ksnsupload_type", 1);
-      if ((!bt.isNullOrNil(str3)) && (str3.equals("music"))) {
+      if ((!bs.isNullOrNil(str3)) && (str3.equals("music"))) {
         ((Intent)localObject2).putExtra("ksnsis_music", true);
       }
-      if ((!bt.isNullOrNil(str3)) && (str3.equals("video"))) {
+      if ((!bs.isNullOrNil(str3)) && (str3.equals("video"))) {
         ((Intent)localObject2).putExtra("ksnsis_video", true);
       }
       if ((str2 != null) && (str2.length() > 0)) {
         ((Intent)localObject2).putExtra("Ksnsupload_appid", str2);
       }
       ((Intent)localObject2).putExtra("ShareUrlOriginal", str1);
-      ((Intent)localObject2).putExtra("ShareUrlOpen", ((f)parama.bZU).getUrl());
-      ((Intent)localObject2).putExtra("JsAppId", ((f)parama.bZU).ATn.getAppId());
+      ((Intent)localObject2).putExtra("ShareUrlOpen", ((f)parama.bWR).getUrl());
+      ((Intent)localObject2).putExtra("JsAppId", ((f)parama.bWR).ClA.getAppId());
       ((Intent)localObject2).putExtra("need_result", true);
-      ad.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
+      ac.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
       localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
       {
         public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -133,7 +133,7 @@ public class bi
     }
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

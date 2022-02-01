@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public final class f
 {
-  static final a bVO = new a(", ").bH("null");
+  static final a bTw = new a(", ").by("null");
   
   static boolean a(Collection<?> paramCollection, @Nullable Object paramObject)
   {

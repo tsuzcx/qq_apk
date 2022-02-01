@@ -4,39 +4,39 @@ import android.app.Activity;
 
 public abstract class a
 {
-  public abstract void Bp(int paramInt);
+  public abstract void Ch(int paramInt);
   
-  public abstract void VR(String paramString);
+  public abstract void aa(Activity paramActivity);
   
-  public abstract void VS(String paramString);
+  public abstract void aag(String paramString);
   
-  public abstract void VT(String paramString);
+  public abstract void aah(String paramString);
   
-  public abstract void VU(String paramString);
+  public abstract void aai(String paramString);
   
-  public abstract boolean VV(String paramString);
+  public abstract void aaj(String paramString);
   
-  public abstract boolean VW(String paramString);
+  public abstract boolean aak(String paramString);
   
-  abstract void VX(String paramString);
+  public abstract boolean aal(String paramString);
   
-  public abstract void Z(Activity paramActivity);
+  abstract void aam(String paramString);
   
   public abstract void b(String paramString1, boolean paramBoolean, String paramString2);
   
-  public abstract int cbN();
+  public abstract int ciY();
   
-  public abstract boolean cbO();
+  public abstract boolean ciZ();
   
-  public abstract boolean cbP();
+  public abstract boolean cja();
   
-  public abstract String cbQ();
+  public abstract String cjb();
   
   abstract void reset();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

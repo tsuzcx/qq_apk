@@ -15,7 +15,7 @@ import android.graphics.RectF;
 import android.support.v4.content.b;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 
 public class CircleAnimateView
@@ -30,7 +30,7 @@ public class CircleAnimateView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(106371);
     this.progress = -2147483648L;
-    ed(paramContext);
+    el(paramContext);
     AppMethodBeat.o(106371);
   }
   
@@ -39,15 +39,15 @@ public class CircleAnimateView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106370);
     this.progress = -2147483648L;
-    ed(paramContext);
+    el(paramContext);
     AppMethodBeat.o(106370);
   }
   
-  private void ed(Context paramContext)
+  private void el(Context paramContext)
   {
     AppMethodBeat.i(106372);
-    this.defaultWidth = a.ap(paramContext, 2131166308);
-    this.defaultHeight = a.ap(paramContext, 2131166308);
+    this.defaultWidth = a.av(paramContext, 2131166308);
+    this.defaultHeight = a.av(paramContext, 2131166308);
     AppMethodBeat.o(106372);
   }
   
@@ -188,7 +188,7 @@ public class CircleAnimateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.CircleAnimateView
  * JD-Core Version:    0.7.0.1
  */

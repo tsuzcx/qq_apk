@@ -22,7 +22,7 @@ public final class c
       if (i >= paramArrayOfb1.length) {
         break label64;
       }
-      if ((paramArrayOfb1[i].GT != paramArrayOfb2[i].GT) || (paramArrayOfb1[i].GU.length != paramArrayOfb2[i].GU.length)) {
+      if ((paramArrayOfb1[i].HQ != paramArrayOfb2[i].HQ) || (paramArrayOfb1[i].HR.length != paramArrayOfb2[i].HR.length)) {
         break;
       }
       i += 1;
@@ -79,10 +79,10 @@ public final class c
     }
   }
   
-  public static Path u(String paramString)
+  public static Path x(String paramString)
   {
     Path localPath = new Path();
-    b[] arrayOfb = w(paramString);
+    b[] arrayOfb = y(paramString);
     if (arrayOfb != null) {
       try
       {
@@ -97,7 +97,7 @@ public final class c
     return null;
   }
   
-  public static b[] w(String paramString)
+  public static b[] y(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -111,7 +111,7 @@ public final class c
       String str = paramString.substring(i, j).trim();
       if (str.length() > 0)
       {
-        float[] arrayOfFloat = x(str);
+        float[] arrayOfFloat = z(str);
         a(localArrayList, str.charAt(0), arrayOfFloat);
       }
       int k = j + 1;
@@ -124,7 +124,7 @@ public final class c
     return (b[])localArrayList.toArray(new b[localArrayList.size()]);
   }
   
-  private static float[] x(String paramString)
+  private static float[] z(String paramString)
   {
     if ((paramString.charAt(0) == 'z') || (paramString.charAt(0) == 'Z')) {
       return new float[0];
@@ -143,7 +143,7 @@ public final class c
         j = 0;
         if (k < i2)
         {
-          locala.GS = false;
+          locala.HP = false;
           i = 0;
           i1 = 0;
           m = 0;
@@ -156,22 +156,22 @@ public final class c
           if ((n == k) || (i != 0)) {
             break label289;
           }
-          locala.GS = true;
+          locala.HP = true;
           i = 0;
           m = 1;
           break label291;
           label172:
-          locala.GS = true;
+          locala.HP = true;
           i = 0;
           m = 1;
           break label291;
-          locala.GR = n;
-          m = locala.GR;
+          locala.HO = n;
+          m = locala.HO;
           if (k < m)
           {
             i = j + 1;
             arrayOfFloat[j] = Float.parseFloat(paramString.substring(k, m));
-            if (!locala.GS) {
+            if (!locala.HP) {
               break label331;
             }
             k = m;
@@ -220,25 +220,25 @@ public final class c
   
   static final class a
   {
-    int GR;
-    boolean GS;
+    int HO;
+    boolean HP;
   }
   
   public static final class b
   {
-    public char GT;
-    public float[] GU;
+    public char HQ;
+    public float[] HR;
     
     b(char paramChar, float[] paramArrayOfFloat)
     {
-      this.GT = paramChar;
-      this.GU = paramArrayOfFloat;
+      this.HQ = paramChar;
+      this.HR = paramArrayOfFloat;
     }
     
     b(b paramb)
     {
-      this.GT = paramb.GT;
-      this.GU = c.a(paramb.GU, paramb.GU.length);
+      this.HQ = paramb.HQ;
+      this.HR = c.a(paramb.HR, paramb.HR.length);
     }
     
     private static void a(Path paramPath, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8, double paramDouble9)
@@ -782,8 +782,8 @@ public final class c
       int i = 0;
       while (i < paramArrayOfb.length)
       {
-        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].GT, paramArrayOfb[i].GU);
-        c = paramArrayOfb[i].GT;
+        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].HQ, paramArrayOfb[i].HR);
+        c = paramArrayOfb[i].HQ;
         i += 1;
       }
     }
@@ -791,9 +791,9 @@ public final class c
     public final void a(b paramb1, b paramb2, float paramFloat)
     {
       int i = 0;
-      while (i < paramb1.GU.length)
+      while (i < paramb1.HR.length)
       {
-        this.GU[i] = (paramb1.GU[i] * (1.0F - paramFloat) + paramb2.GU[i] * paramFloat);
+        this.HR[i] = (paramb1.HR[i] * (1.0F - paramFloat) + paramb2.HR[i] * paramFloat);
         i += 1;
       }
     }

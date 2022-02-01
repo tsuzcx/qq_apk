@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.choosemsgfile.b.a;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.vfs.i;
 
 public final class g
   extends c
 {
-  private s nLG;
-  private bl nLz;
+  private s ooG;
+  private bo ooz;
   
   public g(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, com.tencent.mm.vending.e.b paramb)
   {
@@ -29,26 +29,26 @@ public final class g
   {
     AppMethodBeat.i(123257);
     MsgFile localMsgFile = new MsgFile();
-    localMsgFile.fileSize = params.gTY;
+    localMsgFile.fileSize = params.hux;
     localMsgFile.filePath = paramString;
-    localMsgFile.fyk = com.tencent.mm.plugin.choosemsgfile.b.d.c.RK(localMsgFile.filePath);
+    localMsgFile.fBR = com.tencent.mm.plugin.choosemsgfile.b.d.c.VW(localMsgFile.filePath);
     localMsgFile.type = "video";
-    localMsgFile.fileName = (params.getFileName() + "." + localMsgFile.fyk);
+    localMsgFile.fileName = (params.getFileName() + "." + localMsgFile.fBR);
     localMsgFile.timeStamp = params.createTime;
     b(localMsgFile);
     AppMethodBeat.o(123257);
   }
   
-  protected final boolean bNr()
+  protected final boolean bUC()
   {
     AppMethodBeat.i(123255);
-    if (this.nLG.aCW())
+    if (this.ooG.aJN())
     {
-      o.aCI();
-      String str = t.zQ(this.nLz.field_imgPath);
-      if (i.eK(str))
+      o.aJy();
+      String str = t.DV(this.ooz.field_imgPath);
+      if (i.eA(str))
       {
-        a(this.nLG, str);
+        a(this.ooG, str);
         AppMethodBeat.o(123255);
         return true;
       }
@@ -57,82 +57,82 @@ public final class g
     return false;
   }
   
-  protected final void biB()
+  protected final void bpv()
   {
     AppMethodBeat.i(123256);
-    o.aCI().a(new t.a()
+    o.aJy().a(new t.a()
     {
       public final void a(t.a.a paramAnonymousa)
       {
         AppMethodBeat.i(123253);
-        paramAnonymousa = u.Ae(paramAnonymousa.fileName);
+        paramAnonymousa = u.Ej(paramAnonymousa.fileName);
         if (paramAnonymousa != null)
         {
-          int i = paramAnonymousa.hAd;
-          int j = paramAnonymousa.gTY;
-          g.this.eQ(i, j);
-          if (paramAnonymousa.aCW())
+          int i = paramAnonymousa.iaE;
+          int j = paramAnonymousa.hux;
+          g.this.eT(i, j);
+          if (paramAnonymousa.aJN())
           {
-            o.aCI();
-            String str = t.zQ(g.a(g.this).field_imgPath);
-            if (i.eK(str))
+            o.aJy();
+            String str = t.DV(g.a(g.this).field_imgPath);
+            if (i.eA(str))
             {
               g.a(g.this, paramAnonymousa, str);
               AppMethodBeat.o(123253);
               return;
             }
-            ad.e("MicroMsg.MsgFileWorker_Video", "video isn't exist, return");
-            g.this.bNt();
+            ac.e("MicroMsg.MsgFileWorker_Video", "video isn't exist, return");
+            g.this.bUE();
           }
         }
         AppMethodBeat.o(123253);
       }
     }, Looper.getMainLooper());
-    if (this.nLG.aCV())
+    if (this.ooG.aJM())
     {
-      ad.i("MicroMsg.MsgFileWorker_Video", "start complete online video");
-      u.Al(this.nLz.field_imgPath);
+      ac.i("MicroMsg.MsgFileWorker_Video", "start complete online video");
+      u.Eq(this.ooz.field_imgPath);
       AppMethodBeat.o(123256);
       return;
     }
-    ad.i("MicroMsg.MsgFileWorker_Video", "start complete offline video");
-    u.ap(this.nLz.field_imgPath, 10);
-    u.zZ(this.nLz.field_imgPath);
+    ac.i("MicroMsg.MsgFileWorker_Video", "start complete offline video");
+    u.at(this.ooz.field_imgPath, 10);
+    u.Ee(this.ooz.field_imgPath);
     AppMethodBeat.o(123256);
   }
   
   protected final boolean checkValid()
   {
     AppMethodBeat.i(123254);
-    if ((this.nLs == null) || (this.nLs.nLz == null))
+    if ((this.oos == null) || (this.oos.ooz == null))
     {
-      ad.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo is null, return");
+      ac.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo is null, return");
       AppMethodBeat.o(123254);
       return false;
     }
-    this.nLz = this.nLs.nLz;
-    if (this.nLz.eMl())
+    this.ooz = this.oos.ooz;
+    if (this.ooz.fbQ())
     {
-      ad.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s is clean, return", new Object[] { this.nLz });
+      ac.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s is clean, return", new Object[] { this.ooz });
       AppMethodBeat.o(123254);
       return false;
     }
-    if (!((com.tencent.mm.choosemsgfile.compat.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).m(this.nLz))
+    if (!((com.tencent.mm.choosemsgfile.compat.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).m(this.ooz))
     {
-      ad.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s is not video, return", new Object[] { this.nLz });
+      ac.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s is not video, return", new Object[] { this.ooz });
       AppMethodBeat.o(123254);
       return false;
     }
-    this.nLG = u.Ae(this.nLz.field_imgPath);
-    if (this.nLG == null)
+    this.ooG = u.Ej(this.ooz.field_imgPath);
+    if (this.ooG == null)
     {
-      ad.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s videoInfo is null, return", new Object[] { this.nLz });
+      ac.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s videoInfo is null, return", new Object[] { this.ooz });
       AppMethodBeat.o(123254);
       return false;
     }
-    if (this.nLG.status == 198)
+    if (this.ooG.status == 198)
     {
-      ad.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s videoInfo is invalid, return", new Object[] { this.nLz });
+      ac.e("MicroMsg.MsgFileWorker_Video", "mMsgInfo:%s videoInfo is invalid, return", new Object[] { this.ooz });
       AppMethodBeat.o(123254);
       return false;
     }

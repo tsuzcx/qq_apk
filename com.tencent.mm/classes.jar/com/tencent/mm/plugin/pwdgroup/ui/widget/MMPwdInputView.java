@@ -12,15 +12,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMPwdInputView
   extends LinearLayout
 {
-  public StringBuilder fxp;
-  public int pWa;
-  private boolean uJO;
-  private ImageView uJP;
-  private ImageView uJQ;
-  private ImageView uJR;
-  private ImageView uJS;
-  private a uJT;
-  private MMPwdInputView.b uJU;
+  public StringBuilder fAW;
+  public int qEF;
+  private boolean vSF;
+  private ImageView vSG;
+  private ImageView vSH;
+  private ImageView vSI;
+  private ImageView vSJ;
+  private a vSK;
+  private MMPwdInputView.b vSL;
   
   public MMPwdInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,18 +31,18 @@ public class MMPwdInputView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27697);
-    this.fxp = new StringBuilder();
-    this.uJO = false;
-    this.uJU = MMPwdInputView.b.uJW;
+    this.fAW = new StringBuilder();
+    this.vSF = false;
+    this.vSL = MMPwdInputView.b.vSN;
     paramContext = inflate(getContext(), 2131495149, null);
-    this.uJP = ((ImageView)paramContext.findViewById(2131300106));
-    this.uJQ = ((ImageView)paramContext.findViewById(2131304457));
-    this.uJR = ((ImageView)paramContext.findViewById(2131305767));
-    this.uJS = ((ImageView)paramContext.findViewById(2131300234));
-    this.uJP.setImageResource(2131231075);
-    this.uJQ.setImageResource(2131231075);
-    this.uJR.setImageResource(2131231075);
-    this.uJS.setImageResource(2131231075);
+    this.vSG = ((ImageView)paramContext.findViewById(2131300106));
+    this.vSH = ((ImageView)paramContext.findViewById(2131304457));
+    this.vSI = ((ImageView)paramContext.findViewById(2131305767));
+    this.vSJ = ((ImageView)paramContext.findViewById(2131300234));
+    this.vSG.setImageResource(2131231075);
+    this.vSH.setImageResource(2131231075);
+    this.vSI.setImageResource(2131231075);
+    this.vSJ.setImageResource(2131231075);
     addView(paramContext);
     AppMethodBeat.o(27697);
   }
@@ -119,50 +119,50 @@ public class MMPwdInputView
     AppMethodBeat.o(27700);
   }
   
-  public final void aSi()
+  public final void aZf()
   {
     AppMethodBeat.i(27702);
-    if (this.pWa > 0) {
-      this.fxp.delete(0, this.pWa);
+    if (this.qEF > 0) {
+      this.fAW.delete(0, this.qEF);
     }
-    cgY();
-    ddG();
+    coF();
+    dro();
     AppMethodBeat.o(27702);
   }
   
-  public final void cgY()
+  public final void coF()
   {
     AppMethodBeat.i(27701);
-    if (this.fxp != null)
+    if (this.fAW != null)
     {
-      this.pWa = this.fxp.length();
-      if (this.pWa < 4) {
+      this.qEF = this.fAW.length();
+      if (this.qEF < 4) {
         break label79;
       }
     }
     label79:
-    for (this.uJO = true;; this.uJO = false)
+    for (this.vSF = true;; this.vSF = false)
     {
-      if (this.uJT != null) {
-        this.uJT.s(this.uJO, this.fxp.toString());
+      if (this.vSK != null) {
+        this.vSK.t(this.vSF, this.fAW.toString());
       }
       AppMethodBeat.o(27701);
       return;
-      this.pWa = 0;
+      this.qEF = 0;
       break;
     }
   }
   
-  public final void ddG()
+  public final void dro()
   {
     AppMethodBeat.i(27699);
     int i = 0;
     if (i < 4)
     {
       String str;
-      if (this.pWa > i)
+      if (this.qEF > i)
       {
-        str = this.fxp.toString().charAt(i);
+        str = this.fAW.toString().charAt(i);
         label46:
         switch (i)
         {
@@ -174,13 +174,13 @@ public class MMPwdInputView
         break;
         str = "";
         break label46;
-        t(this.uJP, str);
+        t(this.vSG, str);
         continue;
-        t(this.uJQ, str);
+        t(this.vSH, str);
         continue;
-        t(this.uJR, str);
+        t(this.vSI, str);
         continue;
-        t(this.uJS, str);
+        t(this.vSJ, str);
       }
     }
     AppMethodBeat.o(27699);
@@ -189,45 +189,45 @@ public class MMPwdInputView
   public final void input(String paramString)
   {
     AppMethodBeat.i(27703);
-    if ((TextUtils.isEmpty(paramString)) || (this.uJO))
+    if ((TextUtils.isEmpty(paramString)) || (this.vSF))
     {
       AppMethodBeat.o(27703);
       return;
     }
-    this.fxp.append(paramString);
-    cgY();
-    ddG();
+    this.fAW.append(paramString);
+    coF();
+    dro();
     AppMethodBeat.o(27703);
   }
   
   public void setNumberStyle(MMPwdInputView.b paramb)
   {
-    this.uJU = paramb;
+    this.vSL = paramb;
   }
   
   public void setNumberWidth(int paramInt)
   {
     AppMethodBeat.i(27698);
-    if (this.uJP != null)
+    if (this.vSG != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.uJP.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.vSG.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.uJP.setLayoutParams(localLayoutParams);
-      this.uJQ.setLayoutParams(localLayoutParams);
-      this.uJR.setLayoutParams(localLayoutParams);
-      this.uJS.setLayoutParams(localLayoutParams);
+      this.vSG.setLayoutParams(localLayoutParams);
+      this.vSH.setLayoutParams(localLayoutParams);
+      this.vSI.setLayoutParams(localLayoutParams);
+      this.vSJ.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(27698);
   }
   
   public void setOnFinishInputListener(a parama)
   {
-    this.uJT = parama;
+    this.vSK = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void s(boolean paramBoolean, String paramString);
+    public abstract void t(boolean paramBoolean, String paramString);
   }
 }
 

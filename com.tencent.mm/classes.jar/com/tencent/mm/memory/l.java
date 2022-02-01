@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Rect;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.n;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -13,37 +13,37 @@ import java.io.InputStream;
 
 public abstract class l
 {
-  private static j gDW = new j();
-  private static m gDX = new m();
-  private static int gDY = -1;
+  private static j hex = new j();
+  private static m hey = new m();
+  private static int hez = -1;
   
-  public static l aoZ()
+  public static l avQ()
   {
-    if (gDY == -1) {
-      if (!apa()) {
+    if (hez == -1) {
+      if (!avR()) {
         break label48;
       }
     }
     label48:
-    for (gDY = 1;; gDY = 2) {
-      switch (gDY)
+    for (hez = 1;; hez = 2) {
+      switch (hez)
       {
       default: 
-        return gDX;
+        return hey;
       }
     }
-    return gDW;
-    return gDX;
+    return hex;
+    return hey;
   }
   
-  public static boolean apa()
+  public static boolean avR()
   {
-    boolean bool = d.lf(19);
-    ad.i("MicroMsg.PlatformBitmapFactory", "canUseInBitmapFactory, isVersionMatch: %b, isART: %b, result: %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(bt.eGP()), Boolean.valueOf(bool) });
+    boolean bool = d.kZ(19);
+    ac.i("MicroMsg.PlatformBitmapFactory", "canUseInBitmapFactory, isVersionMatch: %b, isART: %b, result: %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(bs.eWk()), Boolean.valueOf(bool) });
     return bool;
   }
   
-  protected static InputStream s(InputStream paramInputStream)
+  protected static InputStream r(InputStream paramInputStream)
   {
     if (paramInputStream.markSupported()) {
       return paramInputStream;
@@ -54,7 +54,7 @@ public abstract class l
     return new BufferedInputStream(paramInputStream);
   }
   
-  protected static void t(InputStream paramInputStream)
+  protected static void s(InputStream paramInputStream)
   {
     try
     {
@@ -63,7 +63,7 @@ public abstract class l
     }
     catch (Exception paramInputStream)
     {
-      ad.printErrStackTrace("MicroMsg.PlatformBitmapFactory", paramInputStream, "reset stream error: %s", new Object[] { paramInputStream.getMessage() });
+      ac.printErrStackTrace("MicroMsg.PlatformBitmapFactory", paramInputStream, "reset stream error: %s", new Object[] { paramInputStream.getMessage() });
     }
   }
   

@@ -5,7 +5,7 @@
     <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/abe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <com.tencent.mm.emoji.view.InsectRelativeLayout android:id="@id/eux" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/abg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hpr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c8" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hsa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c8" android:layout_alignParentBottom="true">
             <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/ath" android:background="@null" android:padding="@dimen/ci" android:focusable="true" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/icons_filled_back2" android:contentDescription="@string/eft" android:rotation="270.0" />
             </FrameLayout>
@@ -15,8 +15,8 @@
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/euc" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:src="@raw/icons_filled_cutie" app:iconColor="@color/BW_100" />
             </FrameLayout>
         </LinearLayout>
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/abf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/dq1" android:layout_above="@id/hpr" android:layout_centerHorizontal="true" />
-        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="56.0dip" android:layout_above="@id/hpr">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/abf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/dq1" android:layout_above="@id/hsa" android:layout_centerHorizontal="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="56.0dip" android:layout_above="@id/hsa">
             <ImageView android:id="@id/euj" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="16.0dip" android:src="@raw/icons_filled_filters" />
         </LinearLayout>
         <ImageView android:id="@id/g34" android:focusable="true" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="24.0dip" android:src="@raw/mmsight_camera_navbar_icon_switch" android:layout_alignParentRight="true" android:contentDescription="@string/eg7" />

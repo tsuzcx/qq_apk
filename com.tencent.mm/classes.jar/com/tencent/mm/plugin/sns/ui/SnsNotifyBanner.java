@@ -15,16 +15,16 @@ public class SnsNotifyBanner
 {
   private View mContentView;
   private LayoutInflater mInflater;
-  private TextView xCt;
-  private ImageView xCu;
-  int xCv;
-  private a xCw;
+  private TextView yPh;
+  private ImageView yPi;
+  int yPj;
+  private a yPk;
   
   public SnsNotifyBanner(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98934);
-    this.xCv = 0;
+    this.yPj = 0;
     init();
     AppMethodBeat.o(98934);
   }
@@ -33,7 +33,7 @@ public class SnsNotifyBanner
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98933);
-    this.xCv = 0;
+    this.yPj = 0;
     init();
     AppMethodBeat.o(98933);
   }
@@ -43,9 +43,9 @@ public class SnsNotifyBanner
     AppMethodBeat.i(98935);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
     this.mContentView = this.mInflater.inflate(2131495573, this, true);
-    this.xCt = ((TextView)this.mContentView.findViewById(2131304941));
-    this.xCu = ((ImageView)this.mContentView.findViewById(2131304940));
-    this.xCu.setOnClickListener(new View.OnClickListener()
+    this.yPh = ((TextView)this.mContentView.findViewById(2131304941));
+    this.yPi = ((ImageView)this.mContentView.findViewById(2131304940));
+    this.yPi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -60,8 +60,8 @@ public class SnsNotifyBanner
   public void setOnClickNotify(a parama)
   {
     AppMethodBeat.i(98936);
-    this.xCw = parama;
-    this.xCt.setOnClickListener(new View.OnClickListener()
+    this.yPk = parama;
+    this.yPh.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -71,9 +71,9 @@ public class SnsNotifyBanner
           AppMethodBeat.o(98932);
           return;
         }
-        if (SnsNotifyBanner.this.xCv > 0)
+        if (SnsNotifyBanner.this.yPj > 0)
         {
-          SnsNotifyBanner.this.xCv = 0;
+          SnsNotifyBanner.this.yPj = 0;
           SnsNotifyBanner.a(SnsNotifyBanner.this);
         }
         for (;;)

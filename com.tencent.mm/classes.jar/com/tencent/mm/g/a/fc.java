@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fc
   extends b
 {
-  public a dhC;
+  public a deV;
+  public b deW;
   
   public fc()
   {
@@ -15,16 +16,24 @@ public final class fc
   
   private fc(byte paramByte)
   {
-    AppMethodBeat.i(116012);
-    this.dhC = new a();
-    this.ESR = false;
+    AppMethodBeat.i(19802);
+    this.deV = new a();
+    this.deW = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(116012);
+    AppMethodBeat.o(19802);
   }
   
   public static final class a
   {
-    public boolean dfN = false;
+    public byte[] data;
+    public String ddh;
+    public String mac;
+  }
+  
+  public static final class b
+  {
+    public boolean ddj;
   }
 }
 

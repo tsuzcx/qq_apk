@@ -1,32 +1,25 @@
 package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.HttpAuthHandler;
+import com.tencent.xweb.j;
 
 public final class g$f
-  extends com.tencent.xweb.JsResult
+  implements j
 {
-  public com.tencent.smtt.export.external.interfaces.JsResult ISa;
+  HttpAuthHandler KEw;
   
-  public g$f(com.tencent.smtt.export.external.interfaces.JsResult paramJsResult)
+  public g$f(HttpAuthHandler paramHttpAuthHandler)
   {
-    this.ISa = paramJsResult;
+    this.KEw = paramHttpAuthHandler;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(153855);
-    this.ISa.cancel();
-    AppMethodBeat.o(153855);
+    AppMethodBeat.i(208884);
+    this.KEw.cancel();
+    AppMethodBeat.o(208884);
   }
-  
-  public final void confirm()
-  {
-    AppMethodBeat.i(153854);
-    this.ISa.confirm();
-    AppMethodBeat.o(153854);
-  }
-  
-  public final void confirmWithResult(String paramString) {}
 }
 
 

@@ -3,81 +3,81 @@ package com.tencent.mm.sdk.e;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 final class b
 {
-  private static final Map<Class<?>, String> EYs;
-  private static final Map<Class<?>, Object> fmO;
-  private static final Map<Class<?>, Object> fmP;
+  private static final Map<Class<?>, String> GvE;
+  private static final Map<Class<?>, Object> fqi;
+  private static final Map<Class<?>, Object> fqj;
   
   static
   {
     AppMethodBeat.i(158081);
-    fmO = new HashMap();
-    fmP = new HashMap();
-    EYs = new HashMap();
+    fqi = new HashMap();
+    fqj = new HashMap();
+    GvE = new HashMap();
     try
     {
-      fmO.put([B.class, new Object() {});
-      fmO.put(Short.TYPE, new Object() {});
-      fmO.put(Short.class, new Object() {});
-      fmO.put(Boolean.TYPE, new Object() {});
-      fmO.put(Boolean.class, new Object() {});
-      fmO.put(Integer.TYPE, new Object() {});
-      fmO.put(Integer.class, new Object() {});
-      fmO.put(Float.TYPE, new Object() {});
-      fmO.put(Float.class, new Object() {});
-      fmO.put(Double.TYPE, new Object() {});
-      fmO.put(Double.class, new Object() {});
-      fmO.put(Long.TYPE, new Object() {});
-      fmO.put(Long.class, new Object() {});
-      fmO.put(String.class, new Object() {});
-      fmP.put([B.class, new Object() {});
-      fmP.put(Short.TYPE, new Object() {});
-      fmP.put(Short.class, new Object() {});
-      fmP.put(Boolean.TYPE, new Object() {});
-      fmP.put(Boolean.class, new Object() {});
-      fmP.put(Integer.TYPE, new Object() {});
-      fmP.put(Integer.class, new Object() {});
-      fmP.put(Float.TYPE, new Object() {});
-      fmP.put(Float.class, new Object() {});
-      fmP.put(Double.TYPE, new Object() {});
-      fmP.put(Double.class, new Object() {});
-      fmP.put(Long.TYPE, new Object() {});
-      fmP.put(Long.class, new Object() {});
-      fmP.put(String.class, new Object() {});
-      EYs.put([B.class, "BLOB");
-      EYs.put(Short.TYPE, "SHORT");
-      EYs.put(Short.class, "SHORT");
-      EYs.put(Boolean.TYPE, "INTEGER");
-      EYs.put(Boolean.class, "INTEGER");
-      EYs.put(Integer.TYPE, "INTEGER");
-      EYs.put(Integer.class, "INTEGER");
-      EYs.put(Float.TYPE, "FLOAT");
-      EYs.put(Float.class, "FLOAT");
-      EYs.put(Double.TYPE, "DOUBLE");
-      EYs.put(Double.class, "DOUBLE");
-      EYs.put(Long.TYPE, "LONG");
-      EYs.put(Long.class, "LONG");
-      EYs.put(String.class, "TEXT");
+      fqi.put([B.class, new Object() {});
+      fqi.put(Short.TYPE, new Object() {});
+      fqi.put(Short.class, new Object() {});
+      fqi.put(Boolean.TYPE, new Object() {});
+      fqi.put(Boolean.class, new Object() {});
+      fqi.put(Integer.TYPE, new Object() {});
+      fqi.put(Integer.class, new Object() {});
+      fqi.put(Float.TYPE, new Object() {});
+      fqi.put(Float.class, new Object() {});
+      fqi.put(Double.TYPE, new Object() {});
+      fqi.put(Double.class, new Object() {});
+      fqi.put(Long.TYPE, new Object() {});
+      fqi.put(Long.class, new Object() {});
+      fqi.put(String.class, new Object() {});
+      fqj.put([B.class, new Object() {});
+      fqj.put(Short.TYPE, new Object() {});
+      fqj.put(Short.class, new Object() {});
+      fqj.put(Boolean.TYPE, new Object() {});
+      fqj.put(Boolean.class, new Object() {});
+      fqj.put(Integer.TYPE, new Object() {});
+      fqj.put(Integer.class, new Object() {});
+      fqj.put(Float.TYPE, new Object() {});
+      fqj.put(Float.class, new Object() {});
+      fqj.put(Double.TYPE, new Object() {});
+      fqj.put(Double.class, new Object() {});
+      fqj.put(Long.TYPE, new Object() {});
+      fqj.put(Long.class, new Object() {});
+      fqj.put(String.class, new Object() {});
+      GvE.put([B.class, "BLOB");
+      GvE.put(Short.TYPE, "SHORT");
+      GvE.put(Short.class, "SHORT");
+      GvE.put(Boolean.TYPE, "INTEGER");
+      GvE.put(Boolean.class, "INTEGER");
+      GvE.put(Integer.TYPE, "INTEGER");
+      GvE.put(Integer.class, "INTEGER");
+      GvE.put(Float.TYPE, "FLOAT");
+      GvE.put(Float.class, "FLOAT");
+      GvE.put(Double.TYPE, "DOUBLE");
+      GvE.put(Double.class, "DOUBLE");
+      GvE.put(Long.TYPE, "LONG");
+      GvE.put(Long.class, "LONG");
+      GvE.put(String.class, "TEXT");
       AppMethodBeat.o(158081);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", localException, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", localException, "", new Object[0]);
       AppMethodBeat.o(158081);
     }
   }
   
-  public static String aX(Class<?> paramClass)
+  public static String aY(Class<?> paramClass)
   {
     AppMethodBeat.i(158064);
-    paramClass = (String)EYs.get(paramClass);
+    paramClass = (String)GvE.get(paramClass);
     AppMethodBeat.o(158064);
     return paramClass;
   }
@@ -93,7 +93,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158066);
     }
   }
@@ -115,7 +115,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158070);
     }
   }
@@ -137,7 +137,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158076);
     }
   }
@@ -159,7 +159,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158074);
     }
   }
@@ -181,7 +181,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158072);
     }
   }
@@ -203,7 +203,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158078);
     }
   }
@@ -219,7 +219,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158068);
     }
   }
@@ -235,7 +235,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158080);
     }
   }
@@ -251,7 +251,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158065);
     }
   }
@@ -281,7 +281,7 @@ final class b
       }
       catch (Exception paramField)
       {
-        ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+        ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
         AppMethodBeat.o(158069);
         return;
       }
@@ -306,7 +306,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158075);
     }
   }
@@ -328,7 +328,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158073);
     }
   }
@@ -350,7 +350,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158071);
     }
   }
@@ -372,7 +372,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158077);
     }
   }
@@ -394,7 +394,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158067);
     }
   }
@@ -410,7 +410,7 @@ final class b
     }
     catch (Exception paramField)
     {
-      ad.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
+      ac.printErrStackTrace("MicroMsg.SDK.CursorFieldHelper", paramField, "", new Object[0]);
       AppMethodBeat.o(158079);
     }
   }

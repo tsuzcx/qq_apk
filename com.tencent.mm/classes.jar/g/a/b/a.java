@@ -7,47 +7,47 @@ import java.io.OutputStream;
 
 public final class a
 {
-  a KtA;
-  b KtB;
-  int KtC;
-  int KtD;
-  int KtE;
-  g.a.a.a Kto;
-  b Ktp;
-  short[] Ktq;
-  short[] Ktr;
-  short[] Kts;
-  short[] Ktt;
-  short[] Ktu;
-  short[] Ktv;
-  g.a.c.a[] Ktw;
-  short[] Ktx;
-  g.a.c.a Kty;
-  a Ktz;
+  g.a.a.a MgX;
+  b MgY;
+  short[] MgZ;
+  short[] Mha;
+  short[] Mhb;
+  short[] Mhc;
+  short[] Mhd;
+  short[] Mhe;
+  g.a.c.a[] Mhf;
+  short[] Mhg;
+  g.a.c.a Mhh;
+  a Mhi;
+  a Mhj;
+  b Mhk;
+  int Mhl;
+  int Mhm;
+  int Mhn;
   
   public a()
   {
     AppMethodBeat.i(155357);
-    this.Kto = new g.a.a.a();
-    this.Ktp = new b();
-    this.Ktq = new short['À'];
-    this.Ktr = new short[12];
-    this.Kts = new short[12];
-    this.Ktt = new short[12];
-    this.Ktu = new short[12];
-    this.Ktv = new short['À'];
-    this.Ktw = new g.a.c.a[4];
-    this.Ktx = new short[114];
-    this.Kty = new g.a.c.a(4);
-    this.Ktz = new a();
-    this.KtA = new a();
-    this.KtB = new b();
-    this.KtC = -1;
-    this.KtD = -1;
+    this.MgX = new g.a.a.a();
+    this.MgY = new b();
+    this.MgZ = new short['À'];
+    this.Mha = new short[12];
+    this.Mhb = new short[12];
+    this.Mhc = new short[12];
+    this.Mhd = new short[12];
+    this.Mhe = new short['À'];
+    this.Mhf = new g.a.c.a[4];
+    this.Mhg = new short[114];
+    this.Mhh = new g.a.c.a(4);
+    this.Mhi = new a();
+    this.Mhj = new a();
+    this.Mhk = new b();
+    this.Mhl = -1;
+    this.Mhm = -1;
     int i = 0;
     while (i < 4)
     {
-      this.Ktw[i] = new g.a.c.a(6);
+      this.Mhf[i] = new g.a.c.a(6);
       i += 1;
     }
     AppMethodBeat.o(155357);
@@ -56,45 +56,45 @@ public final class a
   public final boolean a(InputStream paramInputStream, OutputStream paramOutputStream, long paramLong)
   {
     AppMethodBeat.i(155358);
-    this.Ktp.KtU = paramInputStream;
-    paramInputStream = this.Kto;
-    paramInputStream.fOk();
-    paramInputStream.Ktn = paramOutputStream;
-    paramInputStream = this.Kto;
-    paramInputStream.Ktm = 0;
-    paramInputStream.KhZ = 0;
-    b.c(this.Ktq);
-    b.c(this.Ktv);
-    b.c(this.Ktr);
-    b.c(this.Kts);
-    b.c(this.Ktt);
-    b.c(this.Ktu);
-    b.c(this.Ktx);
-    paramInputStream = this.KtB;
-    int k = paramInputStream.KtM;
-    int m = paramInputStream.KtN;
+    this.MgY.MhD = paramInputStream;
+    paramInputStream = this.MgX;
+    paramInputStream.gha();
+    paramInputStream.MgW = paramOutputStream;
+    paramInputStream = this.MgX;
+    paramInputStream.MgV = 0;
+    paramInputStream.LVI = 0;
+    b.c(this.MgZ);
+    b.c(this.Mhe);
+    b.c(this.Mha);
+    b.c(this.Mhb);
+    b.c(this.Mhc);
+    b.c(this.Mhd);
+    b.c(this.Mhg);
+    paramInputStream = this.Mhk;
+    int k = paramInputStream.Mhv;
+    int m = paramInputStream.Mhw;
     int j = 0;
     while (j < 1 << k + m)
     {
-      b.c(paramInputStream.KtL[j].KtP);
+      b.c(paramInputStream.Mhu[j].Mhy);
       j += 1;
     }
     j = 0;
     while (j < 4)
     {
-      b.c(this.Ktw[j].KtR);
+      b.c(this.Mhf[j].MhA);
       j += 1;
     }
-    this.Ktz.fOm();
-    this.KtA.fOm();
-    b.c(this.Kty.KtR);
-    paramInputStream = this.Ktp;
-    paramInputStream.Epz = 0;
-    paramInputStream.KtT = -1;
+    this.Mhi.ghc();
+    this.Mhj.ghc();
+    b.c(this.Mhh.MhA);
+    paramInputStream = this.MgY;
+    paramInputStream.FMB = 0;
+    paramInputStream.MhC = -1;
     j = 0;
     while (j < 5)
     {
-      paramInputStream.Epz = (paramInputStream.Epz << 8 | paramInputStream.KtU.read());
+      paramInputStream.FMB = (paramInputStream.FMB << 8 | paramInputStream.MhD.read());
       j += 1;
     }
     int i1 = 0;
@@ -110,23 +110,23 @@ public final class a
     int i6;
     if ((paramLong < 0L) || (l < paramLong))
     {
-      i4 = (int)l & this.KtE;
-      if (this.Ktp.f(this.Ktq, (i1 << 4) + i4) == 0)
+      i4 = (int)l & this.Mhn;
+      if (this.MgY.f(this.MgZ, (i1 << 4) + i4) == 0)
       {
-        paramInputStream = this.KtB;
+        paramInputStream = this.Mhk;
         i3 = (int)l;
-        paramOutputStream = paramInputStream.KtL;
-        i4 = paramInputStream.KtO;
-        i5 = paramInputStream.KtM;
-        paramInputStream = paramOutputStream[(((i2 & 0xFF) >>> 8 - paramInputStream.KtM) + ((i3 & i4) << i5))];
+        paramOutputStream = paramInputStream.Mhu;
+        i4 = paramInputStream.Mhx;
+        i5 = paramInputStream.Mhv;
+        paramInputStream = paramOutputStream[(((i2 & 0xFF) >>> 8 - paramInputStream.Mhv) + ((i3 & i4) << i5))];
         int i;
         if (i1 < 7)
         {
           i2 = 1;
           if (i2 == 0)
           {
-            paramOutputStream = this.Ktp;
-            i4 = this.Kto.agu(m);
+            paramOutputStream = this.MgY;
+            i4 = this.MgX.ajq(m);
             i3 = 1;
           }
         }
@@ -136,7 +136,7 @@ public final class a
           {
             i5 = i4 >> 7 & 0x1;
             i4 = (byte)(i4 << 1);
-            i6 = paramOutputStream.f(paramInputStream.KtP, (i5 + 1 << 8) + i3);
+            i6 = paramOutputStream.f(paramInputStream.Mhy, (i5 + 1 << 8) + i3);
             i2 = i3 << 1 | i6;
             if (i5 != i6)
             {
@@ -146,7 +146,7 @@ public final class a
                 if (i2 >= 256) {
                   break;
                 }
-                i2 = paramOutputStream.f(paramInputStream.KtP, i2) | i2 << 1;
+                i2 = paramOutputStream.f(paramInputStream.Mhy, i2) | i2 << 1;
               }
               i2 = 0;
               break;
@@ -156,13 +156,13 @@ public final class a
           i3 = i2;
           i = (byte)i3;
           label515:
-          paramInputStream = this.Kto;
-          paramOutputStream = paramInputStream.Ktk;
-          i2 = paramInputStream.KhZ;
-          paramInputStream.KhZ = (i2 + 1);
+          paramInputStream = this.MgX;
+          paramOutputStream = paramInputStream.MgT;
+          i2 = paramInputStream.LVI;
+          paramInputStream.LVI = (i2 + 1);
           paramOutputStream[i2] = i;
-          if (paramInputStream.KhZ >= paramInputStream.Ktl) {
-            paramInputStream.fOl();
+          if (paramInputStream.LVI >= paramInputStream.MgU) {
+            paramInputStream.ghb();
           }
           if (i1 >= 4) {
             break label627;
@@ -174,11 +174,11 @@ public final class a
           l = 1L + l;
           i2 = i;
           break;
-          paramOutputStream = this.Ktp;
+          paramOutputStream = this.MgY;
           i2 = 1;
           do
           {
-            i3 = paramOutputStream.f(paramInputStream.KtP, i2) | i2 << 1;
+            i3 = paramOutputStream.f(paramInputStream.Mhy, i2) | i2 << 1;
             i2 = i3;
           } while (i3 < 256);
           i = (byte)i3;
@@ -191,12 +191,12 @@ public final class a
           }
         }
       }
-      if (this.Ktp.f(this.Ktr, i1) == 1)
+      if (this.MgY.f(this.Mha, i1) == 1)
       {
         i3 = 0;
-        if (this.Ktp.f(this.Kts, i1) == 0)
+        if (this.MgY.f(this.Mhb, i1) == 0)
         {
-          if (this.Ktp.f(this.Ktv, (i1 << 4) + i4) != 0) {
+          if (this.MgY.f(this.Mhe, (i1 << 4) + i4) != 0) {
             break label1661;
           }
           if (i1 < 7)
@@ -213,7 +213,7 @@ public final class a
       label724:
       if (i2 == 0)
       {
-        i4 = this.KtA.a(this.Ktp, i4) + 2;
+        i4 = this.Mhj.a(this.MgY, i4) + 2;
         if (i1 < 7)
         {
           i1 = 8;
@@ -228,13 +228,13 @@ public final class a
       }
       for (;;)
       {
-        if ((i2 >= l) || (i2 >= this.KtD))
+        if ((i2 >= l) || (i2 >= this.Mhm))
         {
           AppMethodBeat.o(155358);
           return false;
           i1 = 11;
           break label721;
-          if (this.Ktp.f(this.Ktt, i1) == 0)
+          if (this.MgY.f(this.Mhc, i1) == 0)
           {
             i2 = m;
             m = k;
@@ -242,7 +242,7 @@ public final class a
             i2 = i3;
             break label724;
           }
-          if (this.Ktp.f(this.Ktu, i1) == 0) {}
+          if (this.MgY.f(this.Mhd, i1) == 0) {}
           for (;;)
           {
             i2 = k;
@@ -255,11 +255,11 @@ public final class a
           }
           i1 = 11;
           break label757;
-          i2 = this.Ktz.a(this.Ktp, i4) + 2;
+          i2 = this.Mhi.a(this.MgY, i4) + 2;
           if (i1 < 7)
           {
             n = 7;
-            paramInputStream = this.Ktw;
+            paramInputStream = this.Mhf;
             i1 = i2 - 2;
             if (i1 >= 4) {
               break label1069;
@@ -268,7 +268,7 @@ public final class a
           int i7;
           for (;;)
           {
-            i5 = paramInputStream[i1].a(this.Ktp);
+            i5 = paramInputStream[i1].a(this.MgY);
             if (i5 < 4) {
               break label1383;
             }
@@ -277,8 +277,8 @@ public final class a
             if (i5 >= 14) {
               break label1121;
             }
-            paramInputStream = this.Ktx;
-            paramOutputStream = this.Ktp;
+            paramInputStream = this.Mhg;
+            paramOutputStream = this.MgY;
             i4 = 1;
             i1 = 0;
             i3 = 0;
@@ -306,30 +306,30 @@ public final class a
           i2 = i6;
           continue;
           label1121:
-          paramInputStream = this.Ktp;
+          paramInputStream = this.MgY;
           i3 = i7 - 4;
           i1 = 0;
           while (i3 != 0)
           {
-            paramInputStream.KtT >>>= 1;
-            i4 = paramInputStream.Epz - paramInputStream.KtT >>> 31;
-            paramInputStream.Epz -= (paramInputStream.KtT & i4 - 1);
+            paramInputStream.MhC >>>= 1;
+            i4 = paramInputStream.FMB - paramInputStream.MhC >>> 31;
+            paramInputStream.FMB -= (paramInputStream.MhC & i4 - 1);
             i1 = i1 << 1 | 1 - i4;
-            if ((paramInputStream.KtT & 0xFF000000) == 0)
+            if ((paramInputStream.MhC & 0xFF000000) == 0)
             {
-              paramInputStream.Epz = (paramInputStream.Epz << 8 | paramInputStream.KtU.read());
-              paramInputStream.KtT <<= 8;
+              paramInputStream.FMB = (paramInputStream.FMB << 8 | paramInputStream.MhD.read());
+              paramInputStream.MhC <<= 8;
             }
             i3 -= 1;
           }
-          paramInputStream = this.Kty;
-          paramOutputStream = this.Ktp;
+          paramInputStream = this.Mhh;
+          paramOutputStream = this.MgY;
           i5 = 1;
           i4 = 0;
           i3 = 0;
-          while (i3 < paramInputStream.KtS)
+          while (i3 < paramInputStream.MhB)
           {
-            i7 = paramOutputStream.f(paramInputStream.KtR, i5);
+            i7 = paramOutputStream.f(paramInputStream.MhA, i5);
             i5 = (i5 << 1) + i7;
             i4 |= i7 << i3;
             i3 += 1;
@@ -367,11 +367,11 @@ public final class a
           i1 = i6;
           continue;
         }
-        paramInputStream = this.Kto;
-        i3 = paramInputStream.KhZ - i2 - 1;
+        paramInputStream = this.MgX;
+        i3 = paramInputStream.LVI - i2 - 1;
         if (i3 < 0)
         {
-          i3 += paramInputStream.Ktl;
+          i3 += paramInputStream.MgU;
           i4 = j;
         }
         for (;;)
@@ -379,15 +379,15 @@ public final class a
           if (i4 != 0)
           {
             i5 = i3;
-            if (i3 >= paramInputStream.Ktl) {
+            if (i3 >= paramInputStream.MgU) {
               i5 = 0;
             }
-            paramOutputStream = paramInputStream.Ktk;
-            i3 = paramInputStream.KhZ;
-            paramInputStream.KhZ = (i3 + 1);
-            paramOutputStream[i3] = paramInputStream.Ktk[i5];
-            if (paramInputStream.KhZ >= paramInputStream.Ktl) {
-              paramInputStream.fOl();
+            paramOutputStream = paramInputStream.MgT;
+            i3 = paramInputStream.LVI;
+            paramInputStream.LVI = (i3 + 1);
+            paramOutputStream[i3] = paramInputStream.MgT[i5];
+            if (paramInputStream.LVI >= paramInputStream.MgU) {
+              paramInputStream.ghb();
             }
             i4 -= 1;
             i3 = i5 + 1;
@@ -395,7 +395,7 @@ public final class a
           else
           {
             l += j;
-            i4 = this.Kto.agu(0);
+            i4 = this.MgX.ajq(0);
             j = m;
             m = n;
             i3 = i2;
@@ -405,9 +405,9 @@ public final class a
             m = i3;
             break;
             label1590:
-            this.Kto.fOl();
-            this.Kto.fOk();
-            this.Ktp.KtU = null;
+            this.MgX.ghb();
+            this.MgX.gha();
+            this.MgY.MhD = null;
             AppMethodBeat.o(155358);
             return true;
             i4 = j;
@@ -447,43 +447,43 @@ public final class a
     {
       AppMethodBeat.o(155359);
       return false;
-      paramArrayOfByte = this.KtB;
-      if ((paramArrayOfByte.KtL == null) || (paramArrayOfByte.KtM != m) || (paramArrayOfByte.KtN != n))
+      paramArrayOfByte = this.Mhk;
+      if ((paramArrayOfByte.Mhu == null) || (paramArrayOfByte.Mhv != m) || (paramArrayOfByte.Mhw != n))
       {
-        paramArrayOfByte.KtN = n;
-        paramArrayOfByte.KtO = ((1 << n) - 1);
-        paramArrayOfByte.KtM = m;
-        m = 1 << paramArrayOfByte.KtM + paramArrayOfByte.KtN;
-        paramArrayOfByte.KtL = new a.b.a[m];
+        paramArrayOfByte.Mhw = n;
+        paramArrayOfByte.Mhx = ((1 << n) - 1);
+        paramArrayOfByte.Mhv = m;
+        m = 1 << paramArrayOfByte.Mhv + paramArrayOfByte.Mhw;
+        paramArrayOfByte.Mhu = new a.b.a[m];
         j = 0;
         while (j < m)
         {
-          paramArrayOfByte.KtL[j] = new a.b.a(paramArrayOfByte);
+          paramArrayOfByte.Mhu[j] = new a.b.a(paramArrayOfByte);
           j += 1;
         }
       }
       j = 1 << k;
-      this.Ktz.agv(j);
-      this.KtA.agv(j);
-      this.KtE = (j - 1);
+      this.Mhi.ajr(j);
+      this.Mhj.ajr(j);
+      this.Mhn = (j - 1);
     }
     if (i < 0)
     {
       AppMethodBeat.o(155359);
       return false;
     }
-    if (this.KtC != i)
+    if (this.Mhl != i)
     {
-      this.KtC = i;
-      this.KtD = Math.max(this.KtC, 1);
-      paramArrayOfByte = this.Kto;
-      i = Math.max(this.KtD, 4096);
-      if ((paramArrayOfByte.Ktk == null) || (paramArrayOfByte.Ktl != i)) {
-        paramArrayOfByte.Ktk = new byte[i];
+      this.Mhl = i;
+      this.Mhm = Math.max(this.Mhl, 1);
+      paramArrayOfByte = this.MgX;
+      i = Math.max(this.Mhm, 4096);
+      if ((paramArrayOfByte.MgT == null) || (paramArrayOfByte.MgU != i)) {
+        paramArrayOfByte.MgT = new byte[i];
       }
-      paramArrayOfByte.Ktl = i;
-      paramArrayOfByte.KhZ = 0;
-      paramArrayOfByte.Ktm = 0;
+      paramArrayOfByte.MgU = i;
+      paramArrayOfByte.LVI = 0;
+      paramArrayOfByte.MgV = 0;
     }
     AppMethodBeat.o(155359);
     return true;
@@ -491,85 +491,85 @@ public final class a
   
   final class a
   {
-    short[] KtF;
-    g.a.c.a[] KtG;
-    g.a.c.a[] KtH;
-    g.a.c.a KtI;
-    int KtJ;
+    short[] Mho;
+    g.a.c.a[] Mhp;
+    g.a.c.a[] Mhq;
+    g.a.c.a Mhr;
+    int Mhs;
     
     a()
     {
       AppMethodBeat.i(155352);
-      this.KtF = new short[2];
-      this.KtG = new g.a.c.a[16];
-      this.KtH = new g.a.c.a[16];
-      this.KtI = new g.a.c.a(8);
-      this.KtJ = 0;
+      this.Mho = new short[2];
+      this.Mhp = new g.a.c.a[16];
+      this.Mhq = new g.a.c.a[16];
+      this.Mhr = new g.a.c.a(8);
+      this.Mhs = 0;
       AppMethodBeat.o(155352);
     }
     
     public final int a(b paramb, int paramInt)
     {
       AppMethodBeat.i(155355);
-      if (paramb.f(this.KtF, 0) == 0)
+      if (paramb.f(this.Mho, 0) == 0)
       {
-        paramInt = this.KtG[paramInt].a(paramb);
+        paramInt = this.Mhp[paramInt].a(paramb);
         AppMethodBeat.o(155355);
         return paramInt;
       }
-      if (paramb.f(this.KtF, 1) == 0) {}
-      for (paramInt = this.KtH[paramInt].a(paramb) + 8;; paramInt = this.KtI.a(paramb) + 8 + 8)
+      if (paramb.f(this.Mho, 1) == 0) {}
+      for (paramInt = this.Mhq[paramInt].a(paramb) + 8;; paramInt = this.Mhr.a(paramb) + 8 + 8)
       {
         AppMethodBeat.o(155355);
         return paramInt;
       }
     }
     
-    public final void agv(int paramInt)
+    public final void ajr(int paramInt)
     {
       AppMethodBeat.i(155353);
-      while (this.KtJ < paramInt)
+      while (this.Mhs < paramInt)
       {
-        this.KtG[this.KtJ] = new g.a.c.a(3);
-        this.KtH[this.KtJ] = new g.a.c.a(3);
-        this.KtJ += 1;
+        this.Mhp[this.Mhs] = new g.a.c.a(3);
+        this.Mhq[this.Mhs] = new g.a.c.a(3);
+        this.Mhs += 1;
       }
       AppMethodBeat.o(155353);
     }
     
-    public final void fOm()
+    public final void ghc()
     {
       AppMethodBeat.i(155354);
-      b.c(this.KtF);
+      b.c(this.Mho);
       int i = 0;
-      while (i < this.KtJ)
+      while (i < this.Mhs)
       {
-        b.c(this.KtG[i].KtR);
-        b.c(this.KtH[i].KtR);
+        b.c(this.Mhp[i].MhA);
+        b.c(this.Mhq[i].MhA);
         i += 1;
       }
-      b.c(this.KtI.KtR);
+      b.c(this.Mhr.MhA);
       AppMethodBeat.o(155354);
     }
   }
   
   final class b
   {
-    a[] KtL;
-    int KtM;
-    int KtN;
-    int KtO;
+    a[] Mhu;
+    int Mhv;
+    int Mhw;
+    int Mhx;
     
     b() {}
     
     final class a
     {
-      short[] KtP;
+      short[] Mhy;
       
       a()
       {
         AppMethodBeat.i(155356);
-        this.KtP = new short[768];
+        this.Mhy = new short[768];
         AppMethodBeat.o(155356);
       }
     }

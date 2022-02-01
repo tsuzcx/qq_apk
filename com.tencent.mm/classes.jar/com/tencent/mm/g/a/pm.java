@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class pm
   extends b
 {
+  public a dsv;
+  
   public pm()
   {
     this((byte)0);
@@ -12,8 +15,19 @@ public final class pm
   
   private pm(byte paramByte)
   {
-    this.ESR = false;
+    AppMethodBeat.i(91214);
+    this.dsv = new a();
+    this.Gqe = false;
     this.callback = null;
+    AppMethodBeat.o(91214);
+  }
+  
+  public static final class a
+  {
+    public String drV;
+    public long dsr;
+    public String dsw;
+    public String username;
   }
 }
 

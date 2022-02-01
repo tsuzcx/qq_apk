@@ -14,9 +14,9 @@ import com.tencent.mm.modelvideo.j;
 public class SightDraftContainerView
   extends ListView
 {
-  private boolean wtG;
-  private a wtH;
-  b wtI;
+  private boolean xEW;
+  private a xEX;
+  b xEY;
   
   public SightDraftContainerView(Context paramContext)
   {
@@ -51,7 +51,7 @@ public class SightDraftContainerView
     int j = getResources().getDimensionPixelSize(2131165480);
     TextView localTextView = new TextView(getContext());
     localTextView.setText(2131763702);
-    localTextView.setTextSize(0, com.tencent.mm.cd.a.ao(getContext(), 2131165466));
+    localTextView.setTextSize(0, com.tencent.mm.cc.a.au(getContext(), 2131165466));
     localTextView.setGravity(17);
     localTextView.setTextColor(getResources().getColor(2131100491));
     localTextView.setTextSize(1, 11.0F);
@@ -63,11 +63,11 @@ public class SightDraftContainerView
       {
         AppMethodBeat.i(28685);
         paramAnonymousView = SightDraftContainerView.this;
-        if (paramAnonymousView.wtI != null)
+        if (paramAnonymousView.xEY != null)
         {
-          paramAnonymousView = paramAnonymousView.wtI;
+          paramAnonymousView = paramAnonymousView.xEY;
           paramAnonymousView.a(null);
-          paramAnonymousView.wtl.dqN();
+          paramAnonymousView.xEB.dEW();
         }
         AppMethodBeat.o(28685);
         return false;
@@ -76,53 +76,53 @@ public class SightDraftContainerView
     AppMethodBeat.o(28689);
   }
   
-  public final void dqO()
+  public final void dEX()
   {
     AppMethodBeat.i(28690);
-    if (this.wtG)
+    if (this.xEW)
     {
-      this.wtI.wts = 12;
-      this.wtI.a(b.d.wty, false);
-      this.wtI.a(null, null);
+      this.xEY.xEI = 12;
+      this.xEY.a(b.d.xEO, false);
+      this.xEY.a(null, null);
       setSelection(0);
       AppMethodBeat.o(28690);
       return;
     }
-    this.wtG = true;
-    this.wtI = new b(getContext(), this.wtH);
-    this.wtI.wts = 12;
-    setAdapter(this.wtI);
+    this.xEW = true;
+    this.xEY = new b(getContext(), this.xEX);
+    this.xEY.xEI = 12;
+    setAdapter(this.xEY);
     AppMethodBeat.o(28690);
   }
   
   public j getLastDrafInfo()
   {
-    b localb = this.wtI;
-    if (localb.wtw == null) {
+    b localb = this.xEY;
+    if (localb.xEM == null) {
       return null;
     }
-    return localb.wtw.wtE;
+    return localb.xEM.xEU;
   }
   
   public void setSightDraftCallback(a parama)
   {
-    this.wtH = parama;
-    if (this.wtI != null) {
-      this.wtI.wtq = parama;
+    this.xEX = parama;
+    if (this.xEY != null) {
+      this.xEY.xEG = parama;
     }
   }
   
   public void setTipsResId(int paramInt)
   {
-    if (this.wtI == null) {
+    if (this.xEY == null) {
       return;
     }
-    this.wtI.wtr = paramInt;
+    this.xEY.xEH = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftContainerView
  * JD-Core Version:    0.7.0.1
  */

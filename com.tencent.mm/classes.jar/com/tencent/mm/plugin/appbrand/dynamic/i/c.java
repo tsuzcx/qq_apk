@@ -13,21 +13,21 @@ public final class c
   implements a
 {
   private String appId;
-  private String iYE;
-  private String jko;
-  private Map<String, Integer> jnR;
+  private String jKB;
+  private Map<String, Integer> jOd;
+  private String jyU;
   
   public c(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121458);
-    this.jnR = new HashMap();
+    this.jOd = new HashMap();
     this.appId = paramString1;
-    this.jko = paramString2;
-    this.iYE = (this.jko + "-" + this.appId);
+    this.jKB = paramString2;
+    this.jyU = (this.jKB + "-" + this.appId);
     AppMethodBeat.o(121458);
   }
   
-  public final void Hm(String paramString)
+  public final void Lq(String paramString)
   {
     AppMethodBeat.i(121459);
     if (TextUtils.isEmpty(paramString))
@@ -35,25 +35,25 @@ public final class c
       AppMethodBeat.o(121459);
       return;
     }
-    Integer localInteger2 = (Integer)this.jnR.get(paramString);
+    Integer localInteger2 = (Integer)this.jOd.get(paramString);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    this.jnR.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
+    this.jOd.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
     AppMethodBeat.o(121459);
   }
   
   public final void report()
   {
     AppMethodBeat.i(121460);
-    Iterator localIterator = this.jnR.entrySet().iterator();
+    Iterator localIterator = this.jOd.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      h.vKh.f(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.iYE, this.jko, this.appId });
+      h.wUl.f(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.jyU, this.jKB, this.appId });
     }
-    this.jnR.clear();
+    this.jOd.clear();
     AppMethodBeat.o(121460);
   }
 }

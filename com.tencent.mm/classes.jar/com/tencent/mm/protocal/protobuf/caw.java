@@ -1,90 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class caw
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public int mAK;
-  public LinkedList<cav> mAL;
-  
-  public caw()
-  {
-    AppMethodBeat.i(133189);
-    this.mAL = new LinkedList();
-    AppMethodBeat.o(133189);
-  }
+  public int Fpo;
+  public String djF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(133190);
+    AppMethodBeat.i(152654);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.mAK);
-      paramVarArgs.e(2, 8, this.mAL);
-      AppMethodBeat.o(133190);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bA(1, this.mAK);
-      i = f.a.a.a.c(2, 8, this.mAL);
-      AppMethodBeat.o(133190);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.mAL.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.fMq();
-        }
+      if (this.djF != null) {
+        paramVarArgs.d(1, this.djF);
       }
-      AppMethodBeat.o(133190);
+      paramVarArgs.aR(2, this.Fpo);
+      AppMethodBeat.o(152654);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.djF == null) {
+        break label258;
+      }
+    }
+    label258:
+    for (paramInt = f.a.a.b.b.a.e(1, this.djF) + 0;; paramInt = 0)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      caw localcaw = (caw)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      int i = f.a.a.b.b.a.bx(2, this.Fpo);
+      AppMethodBeat.o(152654);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(133190);
-        return -1;
-      case 1: 
-        localcaw.mAK = ((f.a.a.a.a)localObject1).KhF.xS();
-        AppMethodBeat.o(133190);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gfg();
+          }
+        }
+        AppMethodBeat.o(152654);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new cav();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((cav)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localcaw.mAL.add(localObject1);
-        paramInt += 1;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        caw localcaw = (caw)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(152654);
+          return -1;
+        case 1: 
+          localcaw.djF = locala.LVo.readString();
+          AppMethodBeat.o(152654);
+          return 0;
+        }
+        localcaw.Fpo = locala.LVo.xF();
+        AppMethodBeat.o(152654);
+        return 0;
       }
-      AppMethodBeat.o(133190);
-      return 0;
+      AppMethodBeat.o(152654);
+      return -1;
     }
-    AppMethodBeat.o(133190);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.caw
  * JD-Core Version:    0.7.0.1
  */

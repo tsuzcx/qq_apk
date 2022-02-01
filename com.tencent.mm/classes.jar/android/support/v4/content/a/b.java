@@ -9,7 +9,7 @@ import android.graphics.LinearGradient;
 import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
-import android.support.a.a.a;
+import android.support.b.a.a;
 import android.util.AttributeSet;
 import android.util.Xml;
 import org.xmlpull.v1.XmlPullParser;
@@ -17,14 +17,14 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class b
 {
-  public final Shader GB;
-  private final ColorStateList GC;
+  private final ColorStateList HA;
+  public final Shader Hz;
   public int mColor;
   
   private b(Shader paramShader, ColorStateList paramColorStateList, int paramInt)
   {
-    this.GB = paramShader;
-    this.GC = paramColorStateList;
+    this.Hz = paramShader;
+    this.HA = paramColorStateList;
     this.mColor = paramInt;
   }
   
@@ -110,7 +110,7 @@ public final class b
     }
     for (;;)
     {
-      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.GM, d.au(m));
+      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.HJ, d.au(m));
       for (;;)
       {
         return new b(paramResources, null, 0);
@@ -124,9 +124,9 @@ public final class b
         if (f7 <= 0.0F) {
           throw new XmlPullParserException("<gradient> tag requires 'gradientRadius' attribute with radial type");
         }
-        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.GM, d.au(m));
+        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.HJ, d.au(m));
         continue;
-        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.GM);
+        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.HJ);
       }
       label586:
       switch (paramInt)
@@ -140,14 +140,14 @@ public final class b
     }
   }
   
-  public final boolean dR()
+  public final boolean dY()
   {
-    return this.GB != null;
+    return this.Hz != null;
   }
   
-  public final boolean dS()
+  public final boolean dZ()
   {
-    return (dR()) || (this.mColor != 0);
+    return (dY()) || (this.mColor != 0);
   }
   
   public final boolean e(int[] paramArrayOfInt)
@@ -156,7 +156,7 @@ public final class b
     boolean bool1 = bool2;
     if (isStateful())
     {
-      int i = this.GC.getColorForState(paramArrayOfInt, this.GC.getDefaultColor());
+      int i = this.HA.getColorForState(paramArrayOfInt, this.HA.getDefaultColor());
       bool1 = bool2;
       if (i != this.mColor)
       {
@@ -169,7 +169,7 @@ public final class b
   
   public final boolean isStateful()
   {
-    return (this.GB == null) && (this.GC != null) && (this.GC.isStateful());
+    return (this.Hz == null) && (this.HA != null) && (this.HA.isStateful());
   }
 }
 

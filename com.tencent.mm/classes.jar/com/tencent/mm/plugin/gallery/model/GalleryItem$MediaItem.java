@@ -7,20 +7,20 @@ import java.util.HashMap;
 public abstract class GalleryItem$MediaItem
   implements Parcelable, c, Comparable<MediaItem>
 {
-  public HashMap<String, Object> Lmm = new HashMap();
-  public double bPI = 91.0D;
-  public double bPJ = 181.0D;
-  public Object gVl;
+  public double bNq = 91.0D;
+  public double bNr = 181.0D;
+  public Object hvK;
   public String mMimeType;
-  public String pUe;
-  public String rBp;
-  public String rBq;
-  public String rBr;
-  public long rBs;
-  public long rBt;
-  public long rBu;
-  public String rBv;
-  public boolean rBw = false;
+  public String qCJ;
+  public String sKh;
+  public String sKi;
+  public String sKj;
+  public long sKk;
+  public long sKl;
+  public long sKm;
+  public String sKn;
+  public boolean sKo = false;
+  public HashMap<String, Object> sKp = new HashMap();
   
   public GalleryItem$MediaItem()
   {
@@ -34,9 +34,9 @@ public abstract class GalleryItem$MediaItem
   
   public GalleryItem$MediaItem(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    this.rBs = paramLong;
-    this.rBp = paramString1;
-    this.pUe = paramString2;
+    this.sKk = paramLong;
+    this.sKh = paramString1;
+    this.qCJ = paramString2;
     this.mMimeType = paramString3;
   }
   
@@ -48,7 +48,7 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public static MediaItem ag(int paramInt, long paramLong)
+  public static MediaItem af(int paramInt, long paramLong)
   {
     if (paramInt == 1) {
       return new GalleryItem.ImageMediaItem(paramLong);
@@ -56,30 +56,21 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong);
   }
   
-  public final void D(String paramString, Object paramObject)
+  public final String abW()
   {
-    this.Lmm.put(paramString, paramObject);
+    return this.sKk + "_" + this.sKh.hashCode();
   }
   
-  public final <T> T E(String paramString, T paramT)
+  public abstract String auN();
+  
+  public final String cMQ()
   {
-    paramString = this.Lmm.get(paramString);
-    if (paramString != null) {
-      paramT = paramString;
-    }
-    return paramT;
+    return this.sKh;
   }
   
-  public final String aaX()
+  public final String cMU()
   {
-    return this.rBs + "_" + this.rBp.hashCode();
-  }
-  
-  public abstract String anX();
-  
-  public final String czE()
-  {
-    return this.rBp;
+    return this.sKj;
   }
   
   public boolean equals(Object paramObject)
@@ -89,7 +80,7 @@ public abstract class GalleryItem$MediaItem
     if ((paramObject instanceof MediaItem))
     {
       paramObject = (MediaItem)paramObject;
-      if ((this.rBp == null) || (!this.rBp.equals(paramObject.rBp)))
+      if ((this.sKh == null) || (!this.sKh.equals(paramObject.sKh)))
       {
         bool1 = bool2;
         if (this.mMimeType != null)
@@ -98,10 +89,10 @@ public abstract class GalleryItem$MediaItem
           if (this.mMimeType.equals("edit"))
           {
             bool1 = bool2;
-            if (this.rBq != null)
+            if (this.sKi != null)
             {
               bool1 = bool2;
-              if (!this.rBq.equals(paramObject.rBp)) {}
+              if (!this.sKi.equals(paramObject.sKh)) {}
             }
           }
         }
@@ -114,11 +105,6 @@ public abstract class GalleryItem$MediaItem
     return bool1;
   }
   
-  public final String fXR()
-  {
-    return this.rBr;
-  }
-  
   public final String getMimeType()
   {
     return this.mMimeType;
@@ -128,12 +114,26 @@ public abstract class GalleryItem$MediaItem
   
   public final String toSimpleString()
   {
-    return this.rBs + " " + this.mMimeType + " " + this.rBt + " | " + this.rBu;
+    return this.sKk + " " + this.mMimeType + " " + this.sKl + " | " + this.sKm;
   }
   
   public String toString()
   {
-    return "MediaItem{mOriginalPath='" + this.rBp + '\'' + ", mThumbPath='" + this.pUe + '\'' + ", origId=" + this.rBs + ", generateDate=" + this.rBt + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.bPJ + '\'' + ", mLatitude='" + this.bPI + '\'' + ", mBusinessTag='" + this.rBv + '\'' + '}';
+    return "MediaItem{mOriginalPath='" + this.sKh + '\'' + ", mThumbPath='" + this.qCJ + '\'' + ", origId=" + this.sKk + ", generateDate=" + this.sKl + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.bNr + '\'' + ", mLatitude='" + this.bNq + '\'' + ", mBusinessTag='" + this.sKn + '\'' + '}';
+  }
+  
+  public final void u(String paramString, Object paramObject)
+  {
+    this.sKp.put(paramString, paramObject);
+  }
+  
+  public final <T> T v(String paramString, T paramT)
+  {
+    paramString = this.sKp.get(paramString);
+    if (paramString != null) {
+      paramT = paramString;
+    }
+    return paramT;
   }
 }
 

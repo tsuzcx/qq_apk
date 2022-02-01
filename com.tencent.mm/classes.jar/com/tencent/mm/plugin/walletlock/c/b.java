@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.walletlock.c;
 
 public abstract interface b
 {
-  public abstract void egd();
+  public abstract void evx();
   
   public abstract void y(int paramInt, String paramString);
 }

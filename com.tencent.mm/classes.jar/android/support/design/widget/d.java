@@ -24,50 +24,50 @@ import android.view.View;
 
 public final class d
 {
-  private static final boolean lR;
-  private static final Paint lS;
-  private final TextPaint ga;
-  private boolean lT;
-  float lU;
-  private final Rect lV;
-  private final Rect lW;
-  private final RectF lX;
-  int lY = 16;
-  int lZ = 16;
-  private float mA;
-  private float mB;
-  private float mC;
-  private int mD;
-  private float mE;
-  private float mF;
-  private float mG;
-  private int mH;
-  float ma = 15.0F;
-  private float mb = 15.0F;
-  private ColorStateList mc;
-  ColorStateList md;
-  private float me;
-  private float mf;
-  private float mg;
-  private float mh;
-  private float mi;
-  private float mj;
-  Typeface mk;
-  Typeface ml;
-  private Typeface mm;
-  private CharSequence mn;
-  private boolean mo;
-  private boolean mp;
-  private Bitmap mq;
-  private Paint mr;
-  private float ms;
-  private float mt;
-  private float mu;
-  private int[] mv;
-  private boolean mw;
-  private final TextPaint mx;
-  TimeInterpolator my;
-  private TimeInterpolator mz;
+  private static final boolean mQ;
+  private static final Paint mR;
+  private final TextPaint gZ;
+  private boolean mS;
+  float mT;
+  private final Rect mU;
+  private final Rect mV;
+  private final RectF mW;
+  int mZ = 16;
+  private TimeInterpolator nA;
+  private float nB;
+  private float nC;
+  private float nD;
+  private int nE;
+  private float nF;
+  private float nG;
+  private float nH;
+  private int nI;
+  int na = 16;
+  float nb = 15.0F;
+  private float nc = 15.0F;
+  private ColorStateList nd;
+  ColorStateList ne;
+  private float nf;
+  private float ng;
+  private float nh;
+  private float ni;
+  private float nj;
+  private float nk;
+  Typeface nl;
+  Typeface nm;
+  private Typeface nn;
+  private CharSequence no;
+  private boolean np;
+  private boolean nq;
+  private Bitmap nr;
+  private Paint ns;
+  private float nt;
+  private float nu;
+  private float nv;
+  private int[] nw;
+  private boolean nx;
+  private final TextPaint ny;
+  TimeInterpolator nz;
   private float scale;
   CharSequence text;
   private final View view;
@@ -77,8 +77,8 @@ public final class d
     if (Build.VERSION.SDK_INT < 18) {}
     for (boolean bool = true;; bool = false)
     {
-      lR = bool;
-      lS = null;
+      mQ = bool;
+      mR = null;
       return;
     }
   }
@@ -86,11 +86,11 @@ public final class d
   public d(View paramView)
   {
     this.view = paramView;
-    this.ga = new TextPaint(129);
-    this.mx = new TextPaint(this.ga);
-    this.lW = new Rect();
-    this.lV = new Rect();
-    this.lX = new RectF();
+    this.gZ = new TextPaint(129);
+    this.ny = new TextPaint(this.gZ);
+    this.mV = new Rect();
+    this.mU = new Rect();
+    this.mW = new RectF();
   }
   
   private Typeface S(int paramInt)
@@ -123,8 +123,8 @@ public final class d
   
   private void a(TextPaint paramTextPaint)
   {
-    paramTextPaint.setTextSize(this.mb);
-    paramTextPaint.setTypeface(this.mk);
+    paramTextPaint.setTextSize(this.nc);
+    paramTextPaint.setTypeface(this.nl);
   }
   
   private static boolean a(Rect paramRect, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -132,51 +132,51 @@ public final class d
     return (paramRect.left == paramInt1) && (paramRect.top == paramInt2) && (paramRect.right == paramInt3) && (paramRect.bottom == paramInt4);
   }
   
-  private float bI()
+  private float bP()
   {
     if (this.text == null) {
       return 0.0F;
     }
-    a(this.mx);
-    return this.mx.measureText(this.text, 0, this.text.length());
+    a(this.ny);
+    return this.ny.measureText(this.text, 0, this.text.length());
   }
   
-  private void bK()
+  private void bR()
   {
-    if ((this.lW.width() > 0) && (this.lW.height() > 0) && (this.lV.width() > 0) && (this.lV.height() > 0)) {}
+    if ((this.mV.width() > 0) && (this.mV.height() > 0) && (this.mU.width() > 0) && (this.mU.height() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.lT = bool;
+      this.mS = bool;
       return;
     }
   }
   
-  private void bL()
+  private void bS()
   {
-    j(this.lU);
+    n(this.mT);
   }
   
-  private int bM()
+  private int bT()
   {
-    if (this.mv != null) {
-      return this.mc.getColorForState(this.mv, 0);
+    if (this.nw != null) {
+      return this.nd.getColorForState(this.nw, 0);
     }
-    return this.mc.getDefaultColor();
+    return this.nd.getDefaultColor();
   }
   
-  private void bO()
+  private void bV()
   {
     int j = 1;
     float f2 = 0.0F;
-    float f3 = this.mu;
-    m(this.mb);
+    float f3 = this.nv;
+    q(this.nc);
     float f1;
     int i;
-    if (this.mn != null)
+    if (this.no != null)
     {
-      f1 = this.ga.measureText(this.mn, 0, this.mn.length());
-      int k = this.lZ;
-      if (!this.mo) {
+      f1 = this.gZ.measureText(this.no, 0, this.no.length());
+      int k = this.na;
+      if (!this.np) {
         break label383;
       }
       i = 1;
@@ -185,20 +185,20 @@ public final class d
       switch (i & 0x70)
       {
       default: 
-        this.mf = ((this.ga.descent() - this.ga.ascent()) / 2.0F - this.ga.descent() + this.lW.centerY());
+        this.ng = ((this.gZ.descent() - this.gZ.ascent()) / 2.0F - this.gZ.descent() + this.mV.centerY());
         label142:
         switch (i & 0x800007)
         {
         default: 
-          this.mh = this.lW.left;
+          this.ni = this.mV.left;
           label188:
-          m(this.ma);
+          q(this.nb);
           f1 = f2;
-          if (this.mn != null) {
-            f1 = this.ga.measureText(this.mn, 0, this.mn.length());
+          if (this.no != null) {
+            f1 = this.gZ.measureText(this.no, 0, this.no.length());
           }
-          k = this.lY;
-          if (this.mo)
+          k = this.mZ;
+          if (this.np)
           {
             i = j;
             label244:
@@ -206,12 +206,12 @@ public final class d
             switch (i & 0x70)
             {
             default: 
-              this.me = ((this.ga.descent() - this.ga.ascent()) / 2.0F - this.ga.descent() + this.lV.centerY());
+              this.nf = ((this.gZ.descent() - this.gZ.ascent()) / 2.0F - this.gZ.descent() + this.mU.centerY());
               label322:
               switch (i & 0x800007)
               {
               default: 
-                this.mg = this.lV.left;
+                this.nh = this.mU.left;
               }
               break;
             }
@@ -223,37 +223,37 @@ public final class d
     }
     for (;;)
     {
-      bR();
-      l(f3);
+      bY();
+      p(f3);
       return;
       f1 = 0.0F;
       break;
       label383:
       i = 0;
       break label63;
-      this.mf = this.lW.bottom;
+      this.ng = this.mV.bottom;
       break label142;
-      this.mf = (this.lW.top - this.ga.ascent());
+      this.ng = (this.mV.top - this.gZ.ascent());
       break label142;
-      this.mh = (this.lW.centerX() - f1 / 2.0F);
+      this.ni = (this.mV.centerX() - f1 / 2.0F);
       break label188;
-      this.mh = (this.lW.right - f1);
+      this.ni = (this.mV.right - f1);
       break label188;
       i = 0;
       break label244;
-      this.me = this.lV.bottom;
+      this.nf = this.mU.bottom;
       break label322;
-      this.me = (this.lV.top - this.ga.ascent());
+      this.nf = (this.mU.top - this.gZ.ascent());
       break label322;
-      this.mg = (this.lV.centerX() - f1 / 2.0F);
+      this.nh = (this.mU.centerX() - f1 / 2.0F);
       continue;
-      this.mg = (this.lV.right - f1);
+      this.nh = (this.mU.right - f1);
     }
   }
   
-  private void bP()
+  private void bW()
   {
-    if ((this.mq != null) || (this.lV.isEmpty()) || (TextUtils.isEmpty(this.mn))) {}
+    if ((this.nr != null) || (this.mU.isEmpty()) || (TextUtils.isEmpty(this.no))) {}
     do
     {
       int i;
@@ -261,24 +261,24 @@ public final class d
       do
       {
         return;
-        j(0.0F);
-        this.ms = this.ga.ascent();
-        this.mt = this.ga.descent();
-        i = Math.round(this.ga.measureText(this.mn, 0, this.mn.length()));
-        j = Math.round(this.mt - this.ms);
+        n(0.0F);
+        this.nt = this.gZ.ascent();
+        this.nu = this.gZ.descent();
+        i = Math.round(this.gZ.measureText(this.no, 0, this.no.length()));
+        j = Math.round(this.nu - this.nt);
       } while ((i <= 0) || (j <= 0));
-      this.mq = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      new Canvas(this.mq).drawText(this.mn, 0, this.mn.length(), 0.0F, j - this.ga.descent(), this.ga);
-    } while (this.mr != null);
-    this.mr = new Paint(3);
+      this.nr = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      new Canvas(this.nr).drawText(this.no, 0, this.no.length(), 0.0F, j - this.gZ.descent(), this.gZ);
+    } while (this.ns != null);
+    this.ns = new Paint(3);
   }
   
-  private void bR()
+  private void bY()
   {
-    if (this.mq != null)
+    if (this.nr != null)
     {
-      this.mq.recycle();
-      this.mq = null;
+      this.nr.recycle();
+      this.nr = null;
     }
   }
   
@@ -310,7 +310,7 @@ public final class d
       }
     }
     label40:
-    for (android.support.v4.d.d locald = e.Lu;; locald = e.Lt)
+    for (android.support.v4.d.d locald = e.Mp;; locald = e.Mo)
     {
       return locald.a(paramCharSequence, paramCharSequence.length());
       i = 0;
@@ -318,65 +318,65 @@ public final class d
     }
   }
   
-  private void j(float paramFloat)
+  private void n(float paramFloat)
   {
-    k(paramFloat);
-    this.mi = a(this.mg, this.mh, paramFloat, this.my);
-    this.mj = a(this.me, this.mf, paramFloat, this.my);
-    l(a(this.ma, this.mb, paramFloat, this.mz));
-    if (this.md != this.mc) {
-      this.ga.setColor(c(bM(), bN(), paramFloat));
+    o(paramFloat);
+    this.nj = a(this.nh, this.ni, paramFloat, this.nz);
+    this.nk = a(this.nf, this.ng, paramFloat, this.nz);
+    p(a(this.nb, this.nc, paramFloat, this.nA));
+    if (this.ne != this.nd) {
+      this.gZ.setColor(c(bT(), bU(), paramFloat));
     }
     for (;;)
     {
-      this.ga.setShadowLayer(a(this.mE, this.mA, paramFloat, null), a(this.mF, this.mB, paramFloat, null), a(this.mG, this.mC, paramFloat, null), c(this.mH, this.mD, paramFloat));
+      this.gZ.setShadowLayer(a(this.nF, this.nB, paramFloat, null), a(this.nG, this.nC, paramFloat, null), a(this.nH, this.nD, paramFloat, null), c(this.nI, this.nE, paramFloat));
       t.W(this.view);
       return;
-      this.ga.setColor(bN());
+      this.gZ.setColor(bU());
     }
   }
   
-  private void k(float paramFloat)
+  private void o(float paramFloat)
   {
-    this.lX.left = a(this.lV.left, this.lW.left, paramFloat, this.my);
-    this.lX.top = a(this.me, this.mf, paramFloat, this.my);
-    this.lX.right = a(this.lV.right, this.lW.right, paramFloat, this.my);
-    this.lX.bottom = a(this.lV.bottom, this.lW.bottom, paramFloat, this.my);
+    this.mW.left = a(this.mU.left, this.mV.left, paramFloat, this.nz);
+    this.mW.top = a(this.nf, this.ng, paramFloat, this.nz);
+    this.mW.right = a(this.mU.right, this.mV.right, paramFloat, this.nz);
+    this.mW.bottom = a(this.mU.bottom, this.mV.bottom, paramFloat, this.nz);
   }
   
-  private void l(float paramFloat)
+  private void p(float paramFloat)
   {
-    m(paramFloat);
-    if ((lR) && (this.scale != 1.0F)) {}
+    q(paramFloat);
+    if ((mQ) && (this.scale != 1.0F)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mp = bool;
-      if (this.mp) {
-        bP();
+      this.nq = bool;
+      if (this.nq) {
+        bW();
       }
       t.W(this.view);
       return;
     }
   }
   
-  private void m(float paramFloat)
+  private void q(float paramFloat)
   {
     boolean bool = true;
     if (this.text == null) {
       return;
     }
-    float f2 = this.lW.width();
-    float f3 = this.lV.width();
+    float f2 = this.mV.width();
+    float f3 = this.mU.width();
     float f1;
     int i;
-    if (c(paramFloat, this.mb))
+    if (c(paramFloat, this.nc))
     {
-      f1 = this.mb;
+      f1 = this.nc;
       this.scale = 1.0F;
-      if (this.mm == this.mk) {
+      if (this.nn == this.nl) {
         break label339;
       }
-      this.mm = this.mk;
+      this.nn = this.nl;
       i = 1;
       paramFloat = f2;
     }
@@ -385,50 +385,50 @@ public final class d
       int j = i;
       if (paramFloat > 0.0F)
       {
-        if ((this.mu != f1) || (this.mw) || (i != 0))
+        if ((this.nv != f1) || (this.nx) || (i != 0))
         {
           i = 1;
           label109:
-          this.mu = f1;
-          this.mw = false;
+          this.nv = f1;
+          this.nx = false;
           j = i;
         }
       }
       else
       {
-        if ((this.mn != null) && (j == 0)) {
+        if ((this.no != null) && (j == 0)) {
           break;
         }
-        this.ga.setTextSize(this.mu);
-        this.ga.setTypeface(this.mm);
-        Object localObject = this.ga;
+        this.gZ.setTextSize(this.nv);
+        this.gZ.setTypeface(this.nn);
+        Object localObject = this.gZ;
         if (this.scale == 1.0F) {
           break label327;
         }
         label173:
         ((TextPaint)localObject).setLinearText(bool);
-        localObject = TextUtils.ellipsize(this.text, this.ga, paramFloat, TextUtils.TruncateAt.END);
-        if (TextUtils.equals((CharSequence)localObject, this.mn)) {
+        localObject = TextUtils.ellipsize(this.text, this.gZ, paramFloat, TextUtils.TruncateAt.END);
+        if (TextUtils.equals((CharSequence)localObject, this.no)) {
           break;
         }
-        this.mn = ((CharSequence)localObject);
-        this.mo = c(this.mn);
+        this.no = ((CharSequence)localObject);
+        this.np = c(this.no);
         return;
-        f1 = this.ma;
-        if (this.mm == this.ml) {
+        f1 = this.nb;
+        if (this.nn == this.nm) {
           break label333;
         }
-        this.mm = this.ml;
+        this.nn = this.nm;
       }
       label315:
       label327:
       label333:
       for (i = 1;; i = 0)
       {
-        if (c(paramFloat, this.ma)) {}
-        for (this.scale = 1.0F;; this.scale = (paramFloat / this.ma))
+        if (c(paramFloat, this.nb)) {}
+        for (this.scale = 1.0F;; this.scale = (paramFloat / this.nb))
         {
-          paramFloat = this.mb / this.ma;
+          paramFloat = this.nc / this.nb;
           if (f3 * paramFloat <= f2) {
             break label315;
           }
@@ -450,19 +450,19 @@ public final class d
   
   public final void O(int paramInt)
   {
-    if (this.lY != paramInt)
+    if (this.mZ != paramInt)
     {
-      this.lY = paramInt;
-      bQ();
+      this.mZ = paramInt;
+      bX();
     }
   }
   
   public final void P(int paramInt)
   {
-    if (this.lZ != paramInt)
+    if (this.na != paramInt)
     {
-      this.lZ = paramInt;
-      bQ();
+      this.na = paramInt;
+      bX();
     }
   }
   
@@ -470,46 +470,46 @@ public final class d
   {
     az localaz = az.a(this.view.getContext(), paramInt, a.a.TextAppearance);
     if (localaz.hasValue(3)) {
-      this.md = localaz.getColorStateList(3);
+      this.ne = localaz.getColorStateList(3);
     }
     if (localaz.hasValue(0)) {
-      this.mb = localaz.getDimensionPixelSize(0, (int)this.mb);
+      this.nc = localaz.getDimensionPixelSize(0, (int)this.nc);
     }
-    this.mD = localaz.getInt(6, 0);
-    this.mB = localaz.getFloat(7, 0.0F);
-    this.mC = localaz.getFloat(8, 0.0F);
-    this.mA = localaz.getFloat(9, 0.0F);
-    localaz.avP.recycle();
+    this.nE = localaz.getInt(6, 0);
+    this.nC = localaz.getFloat(7, 0.0F);
+    this.nD = localaz.getFloat(8, 0.0F);
+    this.nB = localaz.getFloat(9, 0.0F);
+    localaz.awJ.recycle();
     if (Build.VERSION.SDK_INT >= 16) {
-      this.mk = S(paramInt);
+      this.nl = S(paramInt);
     }
-    bQ();
+    bX();
   }
   
   public final void R(int paramInt)
   {
     az localaz = az.a(this.view.getContext(), paramInt, a.a.TextAppearance);
     if (localaz.hasValue(3)) {
-      this.mc = localaz.getColorStateList(3);
+      this.nd = localaz.getColorStateList(3);
     }
     if (localaz.hasValue(0)) {
-      this.ma = localaz.getDimensionPixelSize(0, (int)this.ma);
+      this.nb = localaz.getDimensionPixelSize(0, (int)this.nb);
     }
-    this.mH = localaz.getInt(6, 0);
-    this.mF = localaz.getFloat(7, 0.0F);
-    this.mG = localaz.getFloat(8, 0.0F);
-    this.mE = localaz.getFloat(9, 0.0F);
-    localaz.avP.recycle();
+    this.nI = localaz.getInt(6, 0);
+    this.nG = localaz.getFloat(7, 0.0F);
+    this.nH = localaz.getFloat(8, 0.0F);
+    this.nF = localaz.getFloat(9, 0.0F);
+    localaz.awJ.recycle();
     if (Build.VERSION.SDK_INT >= 16) {
-      this.ml = S(paramInt);
+      this.nm = S(paramInt);
     }
-    bQ();
+    bX();
   }
   
   public final void a(TimeInterpolator paramTimeInterpolator)
   {
-    this.mz = paramTimeInterpolator;
-    bQ();
+    this.nA = paramTimeInterpolator;
+    bX();
   }
   
   public final void a(RectF paramRectF)
@@ -517,80 +517,80 @@ public final class d
     boolean bool = c(this.text);
     if (!bool)
     {
-      f = this.lW.left;
+      f = this.mV.left;
       paramRectF.left = f;
-      paramRectF.top = this.lW.top;
+      paramRectF.top = this.mV.top;
       if (bool) {
         break label93;
       }
     }
     label93:
-    for (float f = paramRectF.left + bI();; f = this.lW.right)
+    for (float f = paramRectF.left + bP();; f = this.mV.right)
     {
       paramRectF.right = f;
-      paramRectF.bottom = (this.lW.top + bJ());
+      paramRectF.bottom = (this.mV.top + bQ());
       return;
-      f = this.lW.right - bI();
+      f = this.mV.right - bP();
       break;
     }
   }
   
   public final void b(Typeface paramTypeface)
   {
-    this.ml = paramTypeface;
-    this.mk = paramTypeface;
-    bQ();
+    this.nm = paramTypeface;
+    this.nl = paramTypeface;
+    bX();
   }
   
-  public final float bJ()
+  public final float bQ()
   {
-    a(this.mx);
-    return -this.mx.ascent();
+    a(this.ny);
+    return -this.ny.ascent();
   }
   
-  public final int bN()
+  public final int bU()
   {
-    if (this.mv != null) {
-      return this.md.getColorForState(this.mv, 0);
+    if (this.nw != null) {
+      return this.ne.getColorForState(this.nw, 0);
     }
-    return this.md.getDefaultColor();
+    return this.ne.getDefaultColor();
   }
   
-  public final void bQ()
+  public final void bX()
   {
     if ((this.view.getHeight() > 0) && (this.view.getWidth() > 0))
     {
-      bO();
-      bL();
+      bV();
+      bS();
     }
   }
   
   public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!a(this.lV, paramInt1, paramInt2, paramInt3, paramInt4))
+    if (!a(this.mU, paramInt1, paramInt2, paramInt3, paramInt4))
     {
-      this.lV.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.mw = true;
-      bK();
+      this.mU.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.nx = true;
+      bR();
     }
   }
   
   public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!a(this.lW, paramInt1, paramInt2, paramInt3, paramInt4))
+    if (!a(this.mV, paramInt1, paramInt2, paramInt3, paramInt4))
     {
-      this.lW.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.mw = true;
-      bK();
+      this.mV.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.nx = true;
+      bR();
     }
   }
   
   public final void d(ColorStateList paramColorStateList)
   {
-    if (this.md != paramColorStateList)
+    if (this.ne != paramColorStateList)
     {
-      this.md = paramColorStateList;
-      bQ();
+      this.ne = paramColorStateList;
+      bX();
     }
   }
   
@@ -602,18 +602,18 @@ public final class d
     float f1;
     label64:
     float f2;
-    if ((this.mn != null) && (this.lT))
+    if ((this.no != null) && (this.mS))
     {
-      f4 = this.mi;
-      float f3 = this.mj;
-      if ((!this.mp) || (this.mq == null)) {
+      f4 = this.nj;
+      float f3 = this.nk;
+      if ((!this.nq) || (this.nr == null)) {
         break label128;
       }
       i = 1;
       if (i == 0) {
         break label134;
       }
-      f1 = this.ms * this.scale;
+      f1 = this.nt * this.scale;
       f2 = f3;
       if (i != 0) {
         f2 = f3 + f1;
@@ -624,7 +624,7 @@ public final class d
       if (i == 0) {
         break label155;
       }
-      paramCanvas.drawBitmap(this.mq, f4, f2, this.mr);
+      paramCanvas.drawBitmap(this.nr, f4, f2, this.ns);
     }
     for (;;)
     {
@@ -634,41 +634,41 @@ public final class d
       i = 0;
       break;
       label134:
-      this.ga.ascent();
+      this.gZ.ascent();
       f1 = 0.0F;
-      this.ga.descent();
+      this.gZ.descent();
       break label64;
       label155:
-      paramCanvas.drawText(this.mn, 0, this.mn.length(), f4, f2, this.ga);
+      paramCanvas.drawText(this.no, 0, this.no.length(), f4, f2, this.gZ);
     }
   }
   
   public final void e(ColorStateList paramColorStateList)
   {
-    if (this.mc != paramColorStateList)
+    if (this.nd != paramColorStateList)
     {
-      this.mc = paramColorStateList;
-      bQ();
+      this.nd = paramColorStateList;
+      bX();
     }
   }
   
-  public final void i(float paramFloat)
+  public final void m(float paramFloat)
   {
     paramFloat = android.support.v4.b.a.j(paramFloat, 1.0F);
-    if (paramFloat != this.lU)
+    if (paramFloat != this.mT)
     {
-      this.lU = paramFloat;
-      bL();
+      this.mT = paramFloat;
+      bS();
     }
   }
   
   public final boolean setState(int[] paramArrayOfInt)
   {
-    this.mv = paramArrayOfInt;
-    if (((this.md != null) && (this.md.isStateful())) || ((this.mc != null) && (this.mc.isStateful()))) {}
+    this.nw = paramArrayOfInt;
+    if (((this.ne != null) && (this.ne.isStateful())) || ((this.nd != null) && (this.nd.isStateful()))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      bQ();
+      bX();
       return true;
     }
     return false;
@@ -679,15 +679,15 @@ public final class d
     if ((paramCharSequence == null) || (!paramCharSequence.equals(this.text)))
     {
       this.text = paramCharSequence;
-      this.mn = null;
-      bR();
-      bQ();
+      this.no = null;
+      bY();
+      bX();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.d
  * JD-Core Version:    0.7.0.1
  */

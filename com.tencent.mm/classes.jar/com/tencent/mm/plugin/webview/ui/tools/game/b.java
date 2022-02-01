@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.webview.stub.e.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public class b
@@ -21,25 +21,25 @@ public class b
   {
     super(paramMMWebView, (byte)0);
     AppMethodBeat.i(80849);
-    this.BuB = new a((byte)0);
+    this.CMK = new a((byte)0);
     AppMethodBeat.o(80849);
   }
   
-  public boolean ayh(String paramString)
+  public boolean aDy(String paramString)
   {
     AppMethodBeat.i(80850);
-    boolean bool = super.ayh(paramString);
+    boolean bool = super.aDy(paramString);
     AppMethodBeat.o(80850);
     return bool;
   }
   
-  public void epW()
+  public void eFq()
   {
     AppMethodBeat.i(80851);
     try
     {
-      this.BmD.a(this.Buq, true, null);
-      if (ayH(this.Buq))
+      this.CEK.a(this.CMz, true, null);
+      if (aDY(this.CMz))
       {
         AppMethodBeat.o(80851);
         return;
@@ -49,60 +49,60 @@ public class b
     {
       for (;;)
       {
-        ad.w("MicroMsg.GameFloatWebViewClient", "postBinded, jumpToActivity, ex = " + localException.getMessage());
+        ac.w("MicroMsg.GameFloatWebViewClient", "postBinded, jumpToActivity, ex = " + localException.getMessage());
       }
-      Uri localUri = Uri.parse(this.Buq);
+      Uri localUri = Uri.parse(this.CMz);
       Object localObject = localUri;
       if (localUri.getScheme() == null)
       {
-        this.Buq += "http://";
-        localObject = Uri.parse(this.Buq);
+        this.CMz += "http://";
+        localObject = Uri.parse(this.CMz);
       }
       if (((Uri)localObject).getScheme().startsWith("http"))
       {
-        ad.i("MicroMsg.GameFloatWebViewClient", "uri scheme not startwith http, scheme = " + ((Uri)localObject).getScheme());
-        if (this.Buw) {}
-        for (localObject = "";; localObject = this.Buq)
+        ac.i("MicroMsg.GameFloatWebViewClient", "uri scheme not startwith http, scheme = " + ((Uri)localObject).getScheme());
+        if (this.CMF) {}
+        for (localObject = "";; localObject = this.CMz)
         {
-          this.Buo = new k.a((String)localObject);
-          this.Buw = false;
-          if ((!this.Buk) && (!this.ARl.has(this.Buq))) {
+          this.CMx = new k.a((String)localObject);
+          this.CMF = false;
+          if ((!this.CMt) && (!this.Cjy.has(this.CMz))) {
             break label299;
           }
-          if (ak.awv(this.Buq)) {
+          if (ak.aBN(this.CMz)) {
             break;
           }
-          ad.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.Buq);
-          ayi(this.Buq);
+          ac.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.CMz);
+          aDz(this.CMz);
           AppMethodBeat.o(80851);
           return;
         }
-        if (ayg(this.Buq))
+        if (aDx(this.CMz))
         {
-          acj(this.Buq);
+          ahb(this.CMz);
           AppMethodBeat.o(80851);
           return;
         }
-        this.gQk.loadUrl(this.Buq);
+        this.hqK.loadUrl(this.CMz);
         AppMethodBeat.o(80851);
         return;
         label299:
-        if (ayg(this.Buq))
+        if (aDx(this.CMz))
         {
-          acj(this.Buq);
-          this.Bur = this.Buq;
+          ahb(this.CMz);
+          this.CMA = this.CMz;
         }
-        cf(this.Buq, false);
+        cl(this.CMz, false);
         AppMethodBeat.o(80851);
         return;
       }
-      if (!ak.awv(this.Buq))
+      if (!ak.aBN(this.CMz))
       {
-        ayi(this.Buq);
+        aDz(this.CMz);
         AppMethodBeat.o(80851);
         return;
       }
-      this.gQk.loadUrl(this.Buq);
+      this.hqK.loadUrl(this.CMz);
       AppMethodBeat.o(80851);
     }
   }
@@ -118,26 +118,26 @@ public class b
     public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
     {
       AppMethodBeat.i(80847);
-      ad.i("MicroMsg.GameFloatWebViewClient", "onServiceConnected");
-      if (b.this.gQk == null)
+      ac.i("MicroMsg.GameFloatWebViewClient", "onServiceConnected");
+      if (b.this.hqK == null)
       {
-        ad.e("MicroMsg.GameFloatWebViewClient", "onServiceConnected, activity destroyed");
+        ac.e("MicroMsg.GameFloatWebViewClient", "onServiceConnected, activity destroyed");
         AppMethodBeat.o(80847);
         return;
       }
       try
       {
-        b.this.BmD = e.a.G(paramIBinder);
-        b.this.BmD.a(b.this.BuC, b.this.gQk.hashCode());
-        b.this.erd();
-        b.this.a(b.this.BmD, b.this.ARl);
-        b.this.epW();
+        b.this.CEK = e.a.G(paramIBinder);
+        b.this.CEK.a(b.this.CML, b.this.hqK.hashCode());
+        b.this.eGx();
+        b.this.a(b.this.CEK, b.this.Cjy);
+        b.this.eFq();
         AppMethodBeat.o(80847);
         return;
       }
       catch (Exception paramComponentName)
       {
-        ad.e("MicroMsg.GameFloatWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
+        ac.e("MicroMsg.GameFloatWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
         AppMethodBeat.o(80847);
       }
     }

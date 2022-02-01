@@ -4,23 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 final class e$1
   implements View.OnClickListener
 {
   public final void onClick(View paramView)
   {
-    ad.i("Matrix.UISettingHandler", "[onClick] FrameDecorator");
+    ac.i("Matrix.UISettingHandler", "[onClick] FrameDecorator");
     Object localObject = new Intent();
-    ((Intent)localObject).setClassName(aj.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
+    ((Intent)localObject).setClassName(ai.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
     ((Intent)localObject).addFlags(67108864);
     ((Intent)localObject).addFlags(268435456);
-    paramView = aj.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    paramView = ai.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/matrix/MatrixSettingUIHandler$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
 }

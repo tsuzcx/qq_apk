@@ -5,24 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final b aTA;
-  public final int aTB;
-  public final int aTC;
-  AudioAttributes aTD;
+  public static final b aUs;
+  public final int aUt;
+  public final int aUu;
+  AudioAttributes aUv;
   public final int flags;
   
   static
   {
     AppMethodBeat.i(91755);
-    aTA = new a().rT();
+    a locala = new a();
+    aUs = new b(locala.aUt, locala.flags, locala.aUu, (byte)0);
     AppMethodBeat.o(91755);
   }
   
   private b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.aTB = paramInt1;
+    this.aUt = paramInt1;
     this.flags = paramInt2;
-    this.aTC = paramInt3;
+    this.aUu = paramInt3;
   }
   
   public final boolean equals(Object paramObject)
@@ -39,7 +40,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    if ((this.aTB == paramObject.aTB) && (this.flags == paramObject.flags) && (this.aTC == paramObject.aTC))
+    if ((this.aUt == paramObject.aUt) && (this.flags == paramObject.flags) && (this.aUu == paramObject.aUu))
     {
       AppMethodBeat.o(91754);
       return true;
@@ -50,22 +51,14 @@ public final class b
   
   public final int hashCode()
   {
-    return ((this.aTB + 527) * 31 + this.flags) * 31 + this.aTC;
+    return ((this.aUt + 527) * 31 + this.flags) * 31 + this.aUu;
   }
   
   public static final class a
   {
-    public int aTB = 0;
-    public int aTC = 1;
-    private int flags = 0;
-    
-    public final b rT()
-    {
-      AppMethodBeat.i(91753);
-      b localb = new b(this.aTB, this.flags, this.aTC, (byte)0);
-      AppMethodBeat.o(91753);
-      return localb;
-    }
+    int aUt = 0;
+    int aUu = 1;
+    int flags = 0;
   }
 }
 

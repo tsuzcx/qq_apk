@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cz
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Title;
-  public LinkedList<ap> rZV;
-  public String sba;
-  public String sbv;
+  public LinkedList<ap> thO;
+  public String tiU;
+  public String tjp;
   
   public cz()
   {
     AppMethodBeat.i(41830);
-    this.rZV = new LinkedList();
+    this.thO = new LinkedList();
     AppMethodBeat.o(41830);
   }
   
@@ -27,12 +27,12 @@ public final class cz
       if (this.Title != null) {
         paramVarArgs.d(1, this.Title);
       }
-      paramVarArgs.e(2, 8, this.rZV);
-      if (this.sba != null) {
-        paramVarArgs.d(3, this.sba);
+      paramVarArgs.e(2, 8, this.thO);
+      if (this.tiU != null) {
+        paramVarArgs.d(3, this.tiU);
       }
-      if (this.sbv != null) {
-        paramVarArgs.d(4, this.sbv);
+      if (this.tjp != null) {
+        paramVarArgs.d(4, this.tjp);
       }
       AppMethodBeat.o(41831);
       return 0;
@@ -45,25 +45,25 @@ public final class cz
     label478:
     for (paramInt = f.a.a.b.b.a.e(1, this.Title) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 8, this.rZV);
+      int i = paramInt + f.a.a.a.c(2, 8, this.thO);
       paramInt = i;
-      if (this.sba != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.sba);
+      if (this.tiU != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.tiU);
       }
       i = paramInt;
-      if (this.sbv != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.sbv);
+      if (this.tjp != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.tjp);
       }
       AppMethodBeat.o(41831);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.rZV.clear();
+        this.thO.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41831);
@@ -80,11 +80,11 @@ public final class cz
           AppMethodBeat.o(41831);
           return -1;
         case 1: 
-          localcz.Title = ((f.a.a.a.a)localObject1).KhF.readString();
+          localcz.Title = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(41831);
           return 0;
         case 2: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -92,18 +92,18 @@ public final class cz
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new ap();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((ap)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcz.rZV.add(localObject1);
+            for (boolean bool = true; bool; bool = ((ap)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcz.thO.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(41831);
           return 0;
         case 3: 
-          localcz.sba = ((f.a.a.a.a)localObject1).KhF.readString();
+          localcz.tiU = ((f.a.a.a.a)localObject1).LVo.readString();
           AppMethodBeat.o(41831);
           return 0;
         }
-        localcz.sbv = ((f.a.a.a.a)localObject1).KhF.readString();
+        localcz.tjp = ((f.a.a.a.a)localObject1).LVo.readString();
         AppMethodBeat.o(41831);
         return 0;
       }
@@ -114,7 +114,7 @@ public final class cz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.cz
  * JD-Core Version:    0.7.0.1
  */

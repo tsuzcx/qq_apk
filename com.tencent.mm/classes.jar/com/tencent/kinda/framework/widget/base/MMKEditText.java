@@ -29,8 +29,8 @@ import com.tencent.kinda.gen.TextAlign;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ce;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.ui.ao;
 import com.tencent.mm.wallet_core.ui.a;
 import com.tenpay.android.wechat.ISecureEncrypt;
@@ -196,6 +196,8 @@ public class MMKEditText
       }
     });
     this.editText.setId(2131301271);
+    localLinearLayout.setFocusableInTouchMode(true);
+    localLinearLayout.setFocusable(true);
     AppMethodBeat.o(19022);
     return localLinearLayout;
   }
@@ -203,7 +205,7 @@ public class MMKEditText
   public String encryptWith3Des()
   {
     AppMethodBeat.i(19039);
-    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(ce.asQ() / 1000L));
+    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(ce.azH() / 1000L));
     AppMethodBeat.o(19039);
     return str;
   }
@@ -269,7 +271,7 @@ public class MMKEditText
   public String getText()
   {
     AppMethodBeat.i(19024);
-    ad.d("base_MMKView", "MMKLabelView getText ");
+    ac.d("base_MMKView", "MMKLabelView getText ");
     Object localObject = this.editText.getText();
     if (localObject != null)
     {
@@ -462,7 +464,7 @@ public class MMKEditText
   public void setText(String paramString)
   {
     AppMethodBeat.i(19023);
-    ad.d("base_MMKView", "MMKLabelView setText ".concat(String.valueOf(paramString)));
+    ac.d("base_MMKView", "MMKLabelView setText ".concat(String.valueOf(paramString)));
     if ((paramString != null) && (!getText().equals(paramString))) {
       this.editText.setText(paramString);
     }
@@ -506,7 +508,7 @@ public class MMKEditText
     if (paramString != null)
     {
       this.textFontName = paramString;
-      this.editText.setTypeface(Typeface.createFromAsset(aj.getContext().getAssets(), paramString));
+      this.editText.setTypeface(Typeface.createFromAsset(ai.getContext().getAssets(), paramString));
       notifyChanged();
     }
     AppMethodBeat.o(19027);
@@ -518,7 +520,7 @@ public class MMKEditText
     if (paramFloat > 0.0F)
     {
       this.textSize = paramFloat;
-      this.editText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), paramFloat));
+      this.editText.setTextSize(0, MMKViewUtil.dpToPx(ai.getContext(), paramFloat));
       notifyChanged();
     }
     AppMethodBeat.o(19025);
@@ -528,22 +530,12 @@ public class MMKEditText
   
   public void setViewId(String paramString)
   {
-    AppMethodBeat.i(186444);
+    AppMethodBeat.i(207407);
     super.setViewId(paramString);
-    if (this.iconImageView != null)
-    {
-      paramString = paramString + "_btn";
-      int i = this.mContext.getResources().getIdentifier(paramString, "id", this.mContext.getPackageName());
-      if (i > 0)
-      {
-        this.iconImageView.setId(i);
-        ad.d("base_MMKView", "setViewId has set rid: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(186444);
-        return;
-      }
-      ad.d("base_MMKView", "setViewId has not set rid: " + paramString + ", because no found res.");
+    if (this.iconImageView != null) {
+      MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
     }
-    AppMethodBeat.o(186444);
+    AppMethodBeat.o(207407);
   }
   
   public void setVisibleClearIcon(boolean paramBoolean)

@@ -1,20 +1,20 @@
 package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bvo;
+import com.tencent.mm.protocal.protobuf.cag;
 
 public final class a
   extends i
 {
-  bvo hOf;
+  cag ioB;
   
   public a(String paramString)
   {
     super(4);
     AppMethodBeat.i(151265);
-    this.hOf = new bvo();
-    this.hOf.hNH = paramString;
-    this.tyM = this.hOf;
+    this.ioB = new cag();
+    this.ioB.iod = paramString;
+    this.uHj = this.ioB;
     AppMethodBeat.o(151265);
   }
 }

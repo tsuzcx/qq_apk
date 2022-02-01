@@ -7,23 +7,23 @@ import java.lang.reflect.Method;
 
 public final class g
 {
-  private static Method oc;
-  private static boolean od;
+  private static Method pd;
+  private static boolean pe;
   
   static boolean a(DrawableContainer paramDrawableContainer, Drawable.ConstantState paramConstantState)
   {
-    if (!od) {}
+    if (!pe) {}
     try
     {
       Method localMethod = DrawableContainer.class.getDeclaredMethod("setConstantState", new Class[] { DrawableContainer.DrawableContainerState.class });
-      oc = localMethod;
+      pd = localMethod;
       localMethod.setAccessible(true);
       label32:
-      od = true;
-      if (oc != null) {
+      pe = true;
+      if (pd != null) {
         try
         {
-          oc.invoke(paramDrawableContainer, new Object[] { paramConstantState });
+          pd.invoke(paramDrawableContainer, new Object[] { paramConstantState });
           return true;
         }
         catch (Exception paramDrawableContainer) {}
@@ -38,7 +38,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.design.widget.g
  * JD-Core Version:    0.7.0.1
  */

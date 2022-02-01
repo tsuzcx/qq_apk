@@ -36,30 +36,30 @@ public abstract class ActionBar
     return false;
   }
   
-  public abstract void fK();
+  public abstract void fS();
   
-  public abstract void fL();
+  public abstract void fT();
   
-  public abstract void fM();
+  public abstract void fU();
   
-  public abstract void fN();
+  public abstract void fV();
   
-  public void fO()
+  public void fW()
   {
     throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
   }
   
-  public boolean fP()
+  public boolean fX()
   {
     return false;
   }
   
-  public boolean fQ()
+  public boolean fY()
   {
     return false;
   }
   
-  public boolean fR()
+  public boolean fZ()
   {
     return false;
   }

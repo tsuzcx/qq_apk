@@ -5,67 +5,66 @@ import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.r;
 import com.tencent.mm.f.a;
-import com.tencent.mm.platformtools.ab;
-import com.tencent.mm.plugin.report.a.c;
+import com.tencent.mm.plugin.report.b.c;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public class ExDeviceProfile
   extends com.tencent.mm.compatible.loader.d
 {
-  public static final String cLt;
+  public static final String cIB;
   
   static
   {
     AppMethodBeat.i(19442);
-    cLt = aj.getPackageName() + ":exdevice";
+    cIB = ai.getPackageName() + ":exdevice";
     AppMethodBeat.o(19442);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(19441);
-    ad.d("MicroMsg.ExDeviceProfile", "onConfigurationChanged:" + toString());
+    ac.d("MicroMsg.ExDeviceProfile", "onConfigurationChanged:" + toString());
     AppMethodBeat.o(19441);
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(19440);
-    ad.i("MicroMsg.ExDeviceProfile", "exdevice profile oncreate");
-    Object localObject = com.tencent.mm.booter.d.bH(this.app.getBaseContext());
-    a.bD(aj.getContext());
-    s.eA(cLt);
+    ac.i("MicroMsg.ExDeviceProfile", "exdevice profile oncreate");
+    Object localObject = com.tencent.mm.booter.d.bK(this.app.getBaseContext());
+    a.bG(ai.getContext());
+    s.ep(cIB);
     localObject = new r((com.tencent.mm.booter.d)localObject);
-    ((r)localObject).ok("EXDEVICE");
-    ab.hUQ = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.display_errcode"), false);
-    ab.hUR = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.display_msgstate"), false);
-    ab.hUS = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.network.simulate_fault"), false);
-    ab.hUT = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.network.force_touch"), false);
-    ab.hUU = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
-    ab.hUV = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.crashIsExit"), false);
-    ab.hUZ = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.album_show_info"), false);
-    ab.hVa = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.location_help"), false);
-    ab.hVd = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.force_soso"), false);
-    ab.hVe = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.simulatePostServerError"), false);
-    ab.hVf = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
-    ab.hVg = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
-    ab.hVj = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.filterfpnp"), false);
-    ab.hVk = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.testForPull"), false);
-    int i = bt.a(((r)localObject).getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
-    ab.hVh = i;
-    if ((i != 4) && (ab.hVh > 0))
+    ((r)localObject).rq("EXDEVICE");
+    com.tencent.mm.platformtools.ab.iuU = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.display_errcode"), false);
+    com.tencent.mm.platformtools.ab.iuV = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.display_msgstate"), false);
+    com.tencent.mm.platformtools.ab.iuW = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.network.simulate_fault"), false);
+    com.tencent.mm.platformtools.ab.iuX = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.network.force_touch"), false);
+    com.tencent.mm.platformtools.ab.iuY = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
+    com.tencent.mm.platformtools.ab.iuZ = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.crashIsExit"), false);
+    com.tencent.mm.platformtools.ab.ivd = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.album_show_info"), false);
+    com.tencent.mm.platformtools.ab.ive = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.location_help"), false);
+    com.tencent.mm.platformtools.ab.ivh = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.force_soso"), false);
+    com.tencent.mm.platformtools.ab.ivi = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.simulatePostServerError"), false);
+    com.tencent.mm.platformtools.ab.ivj = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
+    com.tencent.mm.platformtools.ab.ivk = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
+    com.tencent.mm.platformtools.ab.ivn = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.filterfpnp"), false);
+    com.tencent.mm.platformtools.ab.ivo = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.testForPull"), false);
+    int i = bs.a(((r)localObject).getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
+    com.tencent.mm.platformtools.ab.ivl = i;
+    if ((i != 4) && (com.tencent.mm.platformtools.ab.ivl > 0))
     {
-      com.tencent.mm.storage.ad.FfF = ab.hVh;
-      ad.e("MicroMsg.ExdDebugger", "cdn thread num " + ab.hVh);
+      com.tencent.mm.storage.ag.GDs = com.tencent.mm.platformtools.ab.ivl;
+      ac.e("MicroMsg.ExdDebugger", "cdn thread num " + com.tencent.mm.platformtools.ab.ivl);
     }
-    ab.hVi = bt.a(((r)localObject).ol(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
+    com.tencent.mm.platformtools.ab.ivm = bs.a(((r)localObject).rr(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
     try
     {
       i = Integer.decode(((r)localObject).getString(".com.tencent.mm.debug.log.setversion")).intValue();
-      com.tencent.mm.protocal.d.Vv(i);
+      com.tencent.mm.protocal.d.XE(i);
       new StringBuilder("set up test protocal version = ").append(Integer.toHexString(i));
     }
     catch (Exception localException3)
@@ -73,13 +72,13 @@ public class ExDeviceProfile
       try
       {
         String str = ((r)localObject).getString(".com.tencent.mm.debug.log.setapilevel");
-        if (!bt.isNullOrNil(str))
+        if (!bs.isNullOrNil(str))
         {
-          com.tencent.mm.protocal.d.glX = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.CpG = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.CpI = String.valueOf(str);
-          b.aFa(str);
-          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.glX).append(" ").append(b.eER());
+          com.tencent.mm.protocal.d.gMK = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.DHY = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.DIa = String.valueOf(str);
+          b.aKr(str);
+          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.gMK).append(" ").append(b.eUl());
         }
       }
       catch (Exception localException3)
@@ -87,8 +86,8 @@ public class ExDeviceProfile
         try
         {
           i = Integer.decode(((r)localObject).getString(".com.tencent.mm.debug.log.setuin")).intValue();
-          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.CpJ).append(" new: ").append(i);
-          com.tencent.mm.protocal.d.CpJ = i;
+          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.DIb).append(" new: ").append(i);
+          com.tencent.mm.protocal.d.DIb = i;
         }
         catch (Exception localException3)
         {
@@ -96,36 +95,36 @@ public class ExDeviceProfile
           {
             for (;;)
             {
-              boolean bool1 = bt.a(((r)localObject).ol(".com.tencent.mm.debug.report.debugmodel"), false);
-              boolean bool2 = bt.a(((r)localObject).ol(".com.tencent.mm.debug.report.kvstat"), false);
-              boolean bool3 = bt.a(((r)localObject).ol(".com.tencent.mm.debug.report.clientpref"), false);
-              boolean bool4 = bt.a(((r)localObject).ol(".com.tencent.mm.debug.report.useraction"), false);
+              boolean bool1 = bs.a(((r)localObject).rr(".com.tencent.mm.debug.report.debugmodel"), false);
+              boolean bool2 = bs.a(((r)localObject).rr(".com.tencent.mm.debug.report.kvstat"), false);
+              boolean bool3 = bs.a(((r)localObject).rr(".com.tencent.mm.debug.report.clientpref"), false);
+              boolean bool4 = bs.a(((r)localObject).rr(".com.tencent.mm.debug.report.useraction"), false);
               c.d(bool1, bool2, bool3, bool4);
               new StringBuilder("try control report : debugModel[").append(bool1).append("],kv[").append(bool2).append("], clientPref[").append(bool3).append("], useraction[").append(bool4).append("]");
-              ab.hVx = bt.by(((r)localObject).getString(".com.tencent.mm.debug.jsapi.permission"), "");
-              ad.d("MicroMsg.ExdDebugger", "Test.jsapiPermission = " + ab.hVx);
-              ab.hVy = bt.by(((r)localObject).getString(".com.tencent.mm.debug.generalcontrol.permission"), "");
-              ad.d("MicroMsg.ExdDebugger", "Test.generalCtrl = " + ab.hVy);
-              ab.hVz = bt.a(((r)localObject).ol(".com.tencent.mm.debug.skiploadurlcheck"), false);
-              ad.d("MicroMsg.ExdDebugger", "Test.skipLoadUrlCheck = " + ab.hVz);
-              aa.KV();
+              com.tencent.mm.platformtools.ab.ivB = bs.bG(((r)localObject).getString(".com.tencent.mm.debug.jsapi.permission"), "");
+              ac.d("MicroMsg.ExdDebugger", "Test.jsapiPermission = " + com.tencent.mm.platformtools.ab.ivB);
+              com.tencent.mm.platformtools.ab.ivC = bs.bG(((r)localObject).getString(".com.tencent.mm.debug.generalcontrol.permission"), "");
+              ac.d("MicroMsg.ExdDebugger", "Test.generalCtrl = " + com.tencent.mm.platformtools.ab.ivC);
+              com.tencent.mm.platformtools.ab.ivD = bs.a(((r)localObject).rr(".com.tencent.mm.debug.skiploadurlcheck"), false);
+              ac.d("MicroMsg.ExdDebugger", "Test.skipLoadUrlCheck = " + com.tencent.mm.platformtools.ab.ivD);
+              ab.KT();
               AppMethodBeat.o(19440);
               return;
               localException1 = localException1;
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ac.i("MicroMsg.ExdDebugger", "no debugger was got");
               continue;
               localException2 = localException2;
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ac.i("MicroMsg.ExdDebugger", "no debugger was got");
               continue;
               localException3 = localException3;
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ac.i("MicroMsg.ExdDebugger", "no debugger was got");
             }
           }
           catch (Exception localException4)
           {
             for (;;)
             {
-              ad.i("MicroMsg.ExdDebugger", "no debugger was got");
+              ac.i("MicroMsg.ExdDebugger", "no debugger was got");
             }
           }
         }
@@ -135,12 +134,12 @@ public class ExDeviceProfile
   
   public String toString()
   {
-    return cLt;
+    return cIB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.ExDeviceProfile
  * JD-Core Version:    0.7.0.1
  */

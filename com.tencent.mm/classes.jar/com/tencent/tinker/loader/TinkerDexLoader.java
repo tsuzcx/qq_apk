@@ -8,6 +8,7 @@ import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareSecurityCheck;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -135,7 +136,9 @@ public class TinkerDexLoader
   
   public static boolean loadTinkerJars(TinkerApplication paramTinkerApplication, String paramString1, String paramString2, Intent paramIntent, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((LOAD_DEX_LIST.isEmpty()) && (classNDexInfo.isEmpty())) {
+    if ((LOAD_DEX_LIST.isEmpty()) && (classNDexInfo.isEmpty()))
+    {
+      ShareTinkerLog.w("Tinker.TinkerDexLoader", "there is no dex to load", new Object[0]);
       return true;
     }
     ClassLoader localClassLoader = TinkerDexLoader.class.getClassLoader();
@@ -144,7 +147,7 @@ public class TinkerDexLoader
     Object localObject2;
     if (localClassLoader != null)
     {
-      new StringBuilder("classloader: ").append(localClassLoader.toString());
+      ShareTinkerLog.i("Tinker.TinkerDexLoader", "classloader: " + localClassLoader.toString(), new Object[0]);
       localObject1 = paramString1 + "/dex/";
       localArrayList = new ArrayList();
       localObject2 = LOAD_DEX_LIST.iterator();
@@ -165,10 +168,11 @@ public class TinkerDexLoader
             ShareIntentUtil.setIntentReturnCode(paramIntent, -13);
             paramIntent.putExtra("intent_patch_mismatch_dex_path", localFile.getAbsolutePath());
             return false;
+            ShareTinkerLog.e("Tinker.TinkerDexLoader", "classloader is null", new Object[0]);
             ShareIntentUtil.setIntentReturnCode(paramIntent, -12);
             return false;
           }
-          new StringBuilder("verify dex file:").append(localFile.getPath()).append(" md5, use time: ").append(System.currentTimeMillis() - l);
+          ShareTinkerLog.i("Tinker.TinkerDexLoader", "verify dex file:" + localFile.getPath() + " md5, use time: " + (System.currentTimeMillis() - l), new Object[0]);
         }
         localArrayList.add(localFile);
       }
@@ -191,7 +195,7 @@ public class TinkerDexLoader
           }
         }
       }
-      new StringBuilder("verify dex file:").append(((File)localObject1).getPath()).append(" md5, use time: ").append(System.currentTimeMillis() - l);
+      ShareTinkerLog.i("Tinker.TinkerDexLoader", "verify dex file:" + ((File)localObject1).getPath() + " md5, use time: " + (System.currentTimeMillis() - l), new Object[0]);
       localArrayList.add(localObject1);
     }
     paramString2 = new File(paramString1 + "/" + paramString2);
@@ -204,6 +208,7 @@ public class TinkerDexLoader
       {
         localObject3 = ShareTinkerInternals.getCurrentInstructionSet();
         deleteOutOfDateOATFile(paramString1);
+        ShareTinkerLog.w("Tinker.TinkerDexLoader", "systemOTA, try parallel oat dexes, targetISA:".concat(String.valueOf(localObject3)), new Object[0]);
         paramString2 = new File(paramString1 + "/interpet");
         TinkerDexOptimizer.optimizeAll(paramTinkerApplication, localArrayList, paramString2, true, (String)localObject3, new TinkerDexOptimizer.ResultCallback()
         {
@@ -213,22 +218,23 @@ public class TinkerDexLoader
           {
             this.val$parallelOTAResult[0] = false;
             this.val$parallelOTAThrowable[0] = paramAnonymousThrowable;
-            new StringBuilder("fail to optimize dex ").append(paramAnonymousFile1.getPath()).append(", use time ").append(System.currentTimeMillis() - this.start);
+            ShareTinkerLog.i("Tinker.TinkerDexLoader", "fail to optimize dex " + paramAnonymousFile1.getPath() + ", use time " + (System.currentTimeMillis() - this.start), new Object[0]);
           }
           
           public final void onStart(File paramAnonymousFile1, File paramAnonymousFile2)
           {
             this.start = System.currentTimeMillis();
-            new StringBuilder("start to optimize dex:").append(paramAnonymousFile1.getPath());
+            ShareTinkerLog.i("Tinker.TinkerDexLoader", "start to optimize dex:" + paramAnonymousFile1.getPath(), new Object[0]);
           }
           
           public final void onSuccess(File paramAnonymousFile1, File paramAnonymousFile2, File paramAnonymousFile3)
           {
-            new StringBuilder("success to optimize dex ").append(paramAnonymousFile1.getPath()).append(", use time ").append(System.currentTimeMillis() - this.start);
+            ShareTinkerLog.i("Tinker.TinkerDexLoader", "success to optimize dex " + paramAnonymousFile1.getPath() + ", use time " + (System.currentTimeMillis() - this.start), new Object[0]);
           }
         });
         if (localObject1[0] == 0)
         {
+          ShareTinkerLog.e("Tinker.TinkerDexLoader", "parallel oat dexes failed", new Object[0]);
           paramIntent.putExtra("intent_patch_interpret_exception", localObject2[0]);
           ShareIntentUtil.setIntentReturnCode(paramIntent, -16);
           return false;
@@ -236,7 +242,7 @@ public class TinkerDexLoader
       }
       catch (Throwable paramTinkerApplication)
       {
-        new StringBuilder("getCurrentInstructionSet fail:").append(paramTinkerApplication);
+        ShareTinkerLog.i("Tinker.TinkerDexLoader", "getCurrentInstructionSet fail:".concat(String.valueOf(paramTinkerApplication)), new Object[0]);
         deleteOutOfDateOATFile(paramString1);
         paramIntent.putExtra("intent_patch_interpret_exception", paramTinkerApplication);
         ShareIntentUtil.setIntentReturnCode(paramIntent, -15);
@@ -250,6 +256,7 @@ public class TinkerDexLoader
     }
     catch (Throwable paramTinkerApplication)
     {
+      ShareTinkerLog.e("Tinker.TinkerDexLoader", "install dexes failed", new Object[0]);
       paramIntent.putExtra("intent_patch_exception", paramTinkerApplication);
       ShareIntentUtil.setIntentReturnCode(paramIntent, -14);
     }

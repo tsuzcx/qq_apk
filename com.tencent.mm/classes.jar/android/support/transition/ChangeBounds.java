@@ -25,30 +25,30 @@ import java.util.Map;
 public class ChangeBounds
   extends Transition
 {
-  private static final String[] wR = { "android:changeBounds:bounds", "android:changeBounds:clip", "android:changeBounds:parent", "android:changeBounds:windowX", "android:changeBounds:windowY" };
-  private static final Property<Drawable, PointF> wS = new Property(PointF.class, "boundsOrigin")
+  private static final String[] xP = { "android:changeBounds:bounds", "android:changeBounds:clip", "android:changeBounds:parent", "android:changeBounds:windowX", "android:changeBounds:windowY" };
+  private static final Property<Drawable, PointF> xQ = new Property(PointF.class, "boundsOrigin")
   {
-    private Rect xc = new Rect();
+    private Rect ya = new Rect();
   };
-  private static final Property<a, PointF> wT = new Property(PointF.class, "topLeft") {};
-  private static final Property<a, PointF> wU = new Property(PointF.class, "bottomRight") {};
-  private static final Property<View, PointF> wV = new ChangeBounds.5(PointF.class, "bottomRight");
-  private static final Property<View, PointF> wW = new ChangeBounds.6(PointF.class, "topLeft");
-  private static final Property<View, PointF> wX = new ChangeBounds.7(PointF.class, "position");
-  private static m xb = new m();
-  private int[] wY = new int[2];
-  private boolean wZ = false;
-  private boolean xa = false;
+  private static final Property<a, PointF> xR = new Property(PointF.class, "topLeft") {};
+  private static final Property<a, PointF> xS = new Property(PointF.class, "bottomRight") {};
+  private static final Property<View, PointF> xT = new ChangeBounds.5(PointF.class, "bottomRight");
+  private static final Property<View, PointF> xU = new ChangeBounds.6(PointF.class, "topLeft");
+  private static final Property<View, PointF> xV = new ChangeBounds.7(PointF.class, "position");
+  private static m xZ = new m();
+  private int[] xW = new int[2];
+  private boolean xX = false;
+  private boolean xY = false;
   
   public ChangeBounds() {}
   
   public ChangeBounds(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.yV);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.zV);
     boolean bool = g.a(paramContext, (XmlResourceParser)paramAttributeSet, "resizeClip", 0, false);
     paramContext.recycle();
-    this.wZ = bool;
+    this.xX = bool;
   }
   
   private void c(u paramu)
@@ -58,13 +58,13 @@ public class ChangeBounds
     {
       paramu.values.put("android:changeBounds:bounds", new Rect(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom()));
       paramu.values.put("android:changeBounds:parent", paramu.view.getParent());
-      if (this.xa)
+      if (this.xY)
       {
-        paramu.view.getLocationInWindow(this.wY);
-        paramu.values.put("android:changeBounds:windowX", Integer.valueOf(this.wY[0]));
-        paramu.values.put("android:changeBounds:windowY", Integer.valueOf(this.wY[1]));
+        paramu.view.getLocationInWindow(this.xW);
+        paramu.values.put("android:changeBounds:windowX", Integer.valueOf(this.xW[0]));
+        paramu.values.put("android:changeBounds:windowY", Integer.valueOf(this.xW[1]));
       }
-      if (this.wZ) {
+      if (this.xX) {
         paramu.values.put("android:changeBounds:clip", android.support.v4.view.t.aB(localView));
       }
     }
@@ -87,7 +87,7 @@ public class ChangeBounds
     localObject2 = paramu2.view;
     u localu;
     int i;
-    if (this.xa)
+    if (this.xY)
     {
       localu = c((View)localObject1, true);
       if (localu == null) {
@@ -170,14 +170,14 @@ public class ChangeBounds
         if (j <= 0) {
           break label1123;
         }
-        if (!this.wZ)
+        if (!this.xX)
         {
           ag.b((View)localObject2, m, i1, i3, i5);
           if (j == 2) {
             if ((i7 == i9) && (i8 == i10))
             {
-              paramViewGroup = this.zJ.getPath(m, i1, n, i2);
-              paramViewGroup = j.a(localObject2, wX, paramViewGroup);
+              paramViewGroup = this.AH.getPath(m, i1, n, i2);
+              paramViewGroup = j.a(localObject2, xV, paramViewGroup);
             }
           }
           for (;;)
@@ -200,12 +200,12 @@ public class ChangeBounds
                 paramAnonymousTransition.b(this);
               }
               
-              public final void dg()
+              public final void dn()
               {
                 aa.c(paramu1, false);
               }
               
-              public final void dh()
+              public final void jdMethod_do()
               {
                 aa.c(paramu1, true);
               }
@@ -221,10 +221,10 @@ public class ChangeBounds
             i = 0;
             break label101;
             paramu1 = new a((View)localObject2);
-            paramViewGroup = this.zJ.getPath(m, i1, n, i2);
-            paramu2 = j.a(paramu1, wT, paramViewGroup);
-            paramViewGroup = this.zJ.getPath(i3, i5, i4, i6);
-            localObject1 = j.a(paramu1, wU, paramViewGroup);
+            paramViewGroup = this.AH.getPath(m, i1, n, i2);
+            paramu2 = j.a(paramu1, xR, paramViewGroup);
+            paramViewGroup = this.AH.getPath(i3, i5, i4, i6);
+            localObject1 = j.a(paramu1, xS, paramViewGroup);
             paramViewGroup = new AnimatorSet();
             paramViewGroup.playTogether(new Animator[] { paramu2, localObject1 });
             paramViewGroup.addListener(new AnimatorListenerAdapter()
@@ -234,13 +234,13 @@ public class ChangeBounds
             continue;
             if ((m != n) || (i1 != i2))
             {
-              paramViewGroup = this.zJ.getPath(m, i1, n, i2);
-              paramViewGroup = j.a(localObject2, wW, paramViewGroup);
+              paramViewGroup = this.AH.getPath(m, i1, n, i2);
+              paramViewGroup = j.a(localObject2, xU, paramViewGroup);
             }
             else
             {
-              paramViewGroup = this.zJ.getPath(i3, i5, i4, i6);
-              paramViewGroup = j.a(localObject2, wV, paramViewGroup);
+              paramViewGroup = this.AH.getPath(i3, i5, i4, i6);
+              paramViewGroup = j.a(localObject2, xT, paramViewGroup);
             }
           }
         }
@@ -248,11 +248,11 @@ public class ChangeBounds
         if ((m == n) && (i1 == i2)) {
           break label1139;
         }
-        paramViewGroup = this.zJ.getPath(m, i1, n, i2);
+        paramViewGroup = this.AH.getPath(m, i1, n, i2);
       }
       label1123:
       label1139:
-      for (paramViewGroup = j.a(localObject2, wX, paramViewGroup);; paramViewGroup = null)
+      for (paramViewGroup = j.a(localObject2, xV, paramViewGroup);; paramViewGroup = null)
       {
         if (paramu1 == null) {
           paramu1 = new Rect(0, 0, i7, i8);
@@ -265,7 +265,7 @@ public class ChangeBounds
             if (!paramu1.equals(paramu2))
             {
               android.support.v4.view.t.b((View)localObject2, paramu1);
-              paramu1 = ObjectAnimator.ofObject(localObject2, "clipBounds", xb, new Object[] { paramu1, paramu2 });
+              paramu1 = ObjectAnimator.ofObject(localObject2, "clipBounds", xZ, new Object[] { paramu1, paramu2 });
               paramu1.addListener(new AnimatorListenerAdapter()
               {
                 private boolean mIsCanceled;
@@ -279,7 +279,7 @@ public class ChangeBounds
                 {
                   if (!this.mIsCanceled)
                   {
-                    android.support.v4.view.t.b(this.val$view, this.xi);
+                    android.support.v4.view.t.b(this.val$view, this.yg);
                     ag.b(this.val$view, n, i2, i4, i6);
                   }
                 }
@@ -295,15 +295,15 @@ public class ChangeBounds
               m = ((Integer)paramu2.values.get("android:changeBounds:windowY")).intValue();
               if ((i != k) || (j != m))
               {
-                paramViewGroup.getLocationInWindow(this.wY);
+                paramViewGroup.getLocationInWindow(this.xW);
                 paramu1 = Bitmap.createBitmap(((View)localObject2).getWidth(), ((View)localObject2).getHeight(), Bitmap.Config.ARGB_8888);
                 ((View)localObject2).draw(new Canvas(paramu1));
                 paramu1 = new BitmapDrawable(paramu1);
                 final float f = ag.O((View)localObject2);
                 ag.d((View)localObject2, 0.0F);
                 ag.M(paramViewGroup).add(paramu1);
-                paramu2 = this.zJ.getPath(i - this.wY[0], j - this.wY[1], k - this.wY[0], m - this.wY[1]);
-                paramu2 = ObjectAnimator.ofPropertyValuesHolder(paramu1, new PropertyValuesHolder[] { l.a(wS, paramu2) });
+                paramu2 = this.AH.getPath(i - this.xW[0], j - this.xW[1], k - this.xW[0], m - this.xW[1]);
+                paramu2 = ObjectAnimator.ofPropertyValuesHolder(paramu1, new PropertyValuesHolder[] { l.a(xQ, paramu2) });
                 paramu2.addListener(new AnimatorListenerAdapter()
                 {
                   public final void onAnimationEnd(Animator paramAnonymousAnimator)
@@ -336,35 +336,35 @@ public class ChangeBounds
   
   public final String[] getTransitionProperties()
   {
-    return wR;
+    return xP;
   }
   
   static final class a
   {
     private View mView;
-    int xo;
-    int xp;
-    int xq;
-    int xr;
-    int xs;
-    int xt;
+    int ym;
+    int yn;
+    int yo;
+    int yp;
+    int yq;
+    int yr;
     
     a(View paramView)
     {
       this.mView = paramView;
     }
     
-    final void di()
+    final void dp()
     {
-      ag.b(this.mView, this.xo, this.xp, this.xq, this.xr);
-      this.xs = 0;
-      this.xt = 0;
+      ag.b(this.mView, this.ym, this.yn, this.yo, this.yp);
+      this.yq = 0;
+      this.yr = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ChangeBounds
  * JD-Core Version:    0.7.0.1
  */

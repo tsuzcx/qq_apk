@@ -8,7 +8,7 @@ import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONObject;
 
 public class az
@@ -19,15 +19,15 @@ public class az
   public final void b(a<f>.a parama)
   {
     AppMethodBeat.i(78623);
-    ad.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
-    boolean bool = parama.bZV.bZb.optBoolean("switch");
-    String str1 = parama.bZV.bZb.optString("title_cn");
-    String str2 = parama.bZV.bZb.optString("title_eng");
-    String str3 = parama.bZV.bZb.optString("ok_cn");
-    String str4 = parama.bZV.bZb.optString("ok_eng");
-    String str5 = parama.bZV.bZb.optString("cancel_cn");
-    String str6 = parama.bZV.bZb.optString("cancel_eng");
-    l locall = ((f)parama.bZU).ekS();
+    ac.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
+    boolean bool = parama.bWS.bVY.optBoolean("switch");
+    String str1 = parama.bWS.bVY.optString("title_cn");
+    String str2 = parama.bWS.bVY.optString("title_eng");
+    String str3 = parama.bWS.bVY.optString("ok_cn");
+    String str4 = parama.bWS.bVY.optString("ok_eng");
+    String str5 = parama.bWS.bVY.optString("cancel_cn");
+    String str6 = parama.bWS.bVY.optString("cancel_eng");
+    l locall = ((f)parama.bWR).eAo();
     if (locall == null)
     {
       AppMethodBeat.o(78623);
@@ -46,7 +46,7 @@ public class az
     AppMethodBeat.o(78623);
   }
   
-  public final int bQV()
+  public final int bYk()
   {
     return 0;
   }

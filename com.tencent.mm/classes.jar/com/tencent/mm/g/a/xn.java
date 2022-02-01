@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xn
   extends b
 {
-  public a dDF;
-  public b dDG;
+  public a dAn;
   
   public xn()
   {
@@ -16,17 +15,17 @@ public final class xn
   
   private xn(byte paramByte)
   {
-    AppMethodBeat.i(91230);
-    this.dDF = new a();
-    this.dDG = new b();
-    this.ESR = false;
+    AppMethodBeat.i(116057);
+    this.dAn = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(91230);
+    AppMethodBeat.o(116057);
   }
   
-  public static final class a {}
-  
-  public static final class b {}
+  public static final class a
+  {
+    public String uri;
+  }
 }
 
 

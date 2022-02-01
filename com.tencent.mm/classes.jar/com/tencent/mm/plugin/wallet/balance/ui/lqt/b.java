@@ -30,7 +30,7 @@ public class b
     AppMethodBeat.o(68739);
   }
   
-  public final String cuB()
+  public final String cHN()
   {
     return "BalanceFetchCardProcess";
   }

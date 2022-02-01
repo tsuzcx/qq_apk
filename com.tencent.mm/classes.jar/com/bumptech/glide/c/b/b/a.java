@@ -11,7 +11,7 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract a oy();
+    public abstract a oI();
   }
   
   public static abstract interface b
@@ -21,7 +21,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.b.a
  * JD-Core Version:    0.7.0.1
  */

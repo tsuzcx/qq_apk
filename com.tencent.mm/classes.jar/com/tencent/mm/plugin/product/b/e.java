@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.product.c.l;
 public final class e
   extends l
 {
-  public int uwb;
-  public int uwc;
+  public int vEU;
+  public int vEV;
 }
 
 

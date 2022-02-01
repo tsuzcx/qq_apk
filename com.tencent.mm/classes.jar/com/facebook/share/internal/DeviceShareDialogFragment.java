@@ -57,7 +57,7 @@ public class DeviceShareDialogFragment
   {
     AppMethodBeat.i(7991);
     if (isAdded()) {
-      getFragmentManager().beginTransaction().b(this).commit();
+      getFragmentManager().beginTransaction().a(this).commit();
     }
     AppMethodBeat.o(7991);
   }

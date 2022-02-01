@@ -6,17 +6,17 @@ import com.google.b.a.e;
 public final class a$l
   extends e
 {
-  public int IkH = 0;
-  public int IkS = 0;
+  public int ADE = 0;
+  public long ADF = 0L;
+  public int JMD = 0;
+  public int JMs = 0;
   public String groupId = "";
-  public int nPB = -1;
   public int netType = 0;
-  public int zkT = 0;
-  public long zkU = 0L;
+  public int osF = -1;
   
   public a$l()
   {
-    this.bIS = -1;
+    this.bGA = -1;
   }
   
   public final void a(b paramb)
@@ -24,57 +24,57 @@ public final class a$l
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.zkT != 0) {
-      paramb.by(2, this.zkT);
+    if (this.ADE != 0) {
+      paramb.bv(2, this.ADE);
     }
-    if (this.zkU != 0L) {
-      paramb.o(3, this.zkU);
+    if (this.ADF != 0L) {
+      paramb.n(3, this.ADF);
     }
-    if (this.nPB != -1) {
-      paramb.by(4, this.nPB);
+    if (this.osF != -1) {
+      paramb.bv(4, this.osF);
     }
-    if (this.IkH != 0) {
-      paramb.bz(5, this.IkH);
+    if (this.JMs != 0) {
+      paramb.bw(5, this.JMs);
     }
     if (this.netType != 0) {
-      paramb.bz(6, this.netType);
+      paramb.bw(6, this.netType);
     }
-    if (this.IkS != 0) {
-      paramb.by(7, this.IkS);
+    if (this.JMD != 0) {
+      paramb.bv(7, this.JMD);
     }
     super.a(paramb);
   }
   
-  public final int yg()
+  public final int xT()
   {
-    int j = super.yg();
+    int j = super.xT();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.zkT != 0) {
-      j = i + b.bA(2, this.zkT);
+    if (this.ADE != 0) {
+      j = i + b.bx(2, this.ADE);
     }
     i = j;
-    if (this.zkU != 0L) {
-      i = j + b.q(3, this.zkU);
+    if (this.ADF != 0L) {
+      i = j + b.p(3, this.ADF);
     }
     j = i;
-    if (this.nPB != -1) {
-      j = i + b.bA(4, this.nPB);
+    if (this.osF != -1) {
+      j = i + b.bx(4, this.osF);
     }
     i = j;
-    if (this.IkH != 0) {
-      i = j + b.bB(5, this.IkH);
+    if (this.JMs != 0) {
+      i = j + b.by(5, this.JMs);
     }
     j = i;
     if (this.netType != 0) {
-      j = i + b.bB(6, this.netType);
+      j = i + b.by(6, this.netType);
     }
     i = j;
-    if (this.IkS != 0) {
-      i = j + b.bA(7, this.IkS);
+    if (this.JMD != 0) {
+      i = j + b.bx(7, this.JMD);
     }
     return i;
   }

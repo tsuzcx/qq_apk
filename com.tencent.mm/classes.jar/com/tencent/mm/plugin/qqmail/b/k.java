@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.util.Iterator;
@@ -17,29 +17,29 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class k
 {
-  public static int uLj = 100;
+  public static int vUa = 100;
   private int maxCount;
-  public String uLk;
+  public String vUb;
   
   public k(String paramString, int paramInt)
   {
     AppMethodBeat.i(122667);
-    this.uLk = null;
-    this.maxCount = uLj;
-    ad.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
-    this.uLk = paramString;
-    i.aMF(this.uLk);
+    this.vUb = null;
+    this.maxCount = vUa;
+    ac.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
+    this.vUb = paramString;
+    i.aSh(this.vUb);
     if (paramInt > 0) {}
     for (;;)
     {
       this.maxCount = paramInt;
       AppMethodBeat.o(122667);
       return;
-      paramInt = uLj;
+      paramInt = vUa;
     }
   }
   
-  private static String B(String paramString, Map<String, String> paramMap)
+  private static String C(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(122670);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -61,7 +61,7 @@ public final class k
     return paramString;
   }
   
-  private static byte[] akR(String paramString)
+  private static byte[] apQ(String paramString)
   {
     AppMethodBeat.i(122671);
     paramString = g.getMessageDigest(paramString.toString().getBytes()).substring(8, 16).getBytes();
@@ -69,7 +69,7 @@ public final class k
     return paramString;
   }
   
-  private static int akS(String paramString)
+  private static int apR(String paramString)
   {
     AppMethodBeat.i(122672);
     paramString = new e(paramString).list();
@@ -100,7 +100,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        ac.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
         paramArrayOfByte1 = null;
       }
     }
@@ -123,7 +123,7 @@ public final class k
     {
       for (;;)
       {
-        ad.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        ac.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
         paramArrayOfByte1 = null;
       }
     }
@@ -131,16 +131,16 @@ public final class k
   
   public static byte[] readFromFile(String paramString)
   {
-    AppMethodBeat.i(205907);
-    paramString = i.aR(paramString, 0, -1);
-    AppMethodBeat.o(205907);
+    AppMethodBeat.i(210496);
+    paramString = i.aU(paramString, 0, -1);
+    AppMethodBeat.o(210496);
     return paramString;
   }
   
   public static boolean t(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(122677);
-    if (bt.iY(i.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
+    if (bs.jl(i.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
     {
       AppMethodBeat.o(122677);
       return true;
@@ -149,27 +149,27 @@ public final class k
     return false;
   }
   
-  public final byte[] A(String paramString, Map<String, String> paramMap)
+  public final byte[] B(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(122668);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ad.e("Msg.Plugin.HttpRequestCache", "getCache, invalid argument");
+      ac.e("Msg.Plugin.HttpRequestCache", "getCache, invalid argument");
       AppMethodBeat.o(122668);
       return null;
     }
-    paramString = B(paramString, paramMap);
-    paramMap = i.aR(this.uLk + paramString, 0, -1);
+    paramString = C(paramString, paramMap);
+    paramMap = i.aU(this.vUb + paramString, 0, -1);
     if (paramMap == null)
     {
-      ad.i("Msg.Plugin.HttpRequestCache", "readFromFile fail, cipherText is null, read error or cache not exist");
+      ac.i("Msg.Plugin.HttpRequestCache", "readFromFile fail, cipherText is null, read error or cache not exist");
       AppMethodBeat.o(122668);
       return null;
     }
-    paramString = decrypt(paramMap, akR(paramString));
+    paramString = decrypt(paramMap, apQ(paramString));
     if (paramString == null)
     {
-      ad.e("Msg.Plugin.HttpRequestCache", "decrypt fail, plaintText is null");
+      ac.e("Msg.Plugin.HttpRequestCache", "decrypt fail, plaintText is null");
       AppMethodBeat.o(122668);
       return null;
     }
@@ -182,33 +182,33 @@ public final class k
     AppMethodBeat.i(122669);
     if ((paramString == null) || (paramString.length() == 0) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ad.e("Msg.Plugin.HttpRequestCache", "setCache, invalid argument");
+      ac.e("Msg.Plugin.HttpRequestCache", "setCache, invalid argument");
       AppMethodBeat.o(122669);
       return false;
     }
-    ddU();
-    paramString = B(paramString, paramMap);
-    paramMap = encrypt(paramArrayOfByte, akR(paramString));
+    drC();
+    paramString = C(paramString, paramMap);
+    paramMap = encrypt(paramArrayOfByte, apQ(paramString));
     if (paramMap == null)
     {
-      ad.e("Msg.Plugin.HttpRequestCache", "encrypt fail, cipherText is null");
+      ac.e("Msg.Plugin.HttpRequestCache", "encrypt fail, cipherText is null");
       AppMethodBeat.o(122669);
       return false;
     }
-    boolean bool = t(this.uLk + paramString, paramMap);
+    boolean bool = t(this.vUb + paramString, paramMap);
     AppMethodBeat.o(122669);
     return bool;
   }
   
-  public final void ddU()
+  public final void drC()
   {
     AppMethodBeat.i(122673);
-    if (akS(this.uLk) < this.maxCount)
+    if (apR(this.vUb) < this.maxCount)
     {
       AppMethodBeat.o(122673);
       return;
     }
-    String[] arrayOfString = new e(this.uLk).list();
+    String[] arrayOfString = new e(this.vUb).list();
     e locale = null;
     int j = arrayOfString.length;
     int i = 0;
@@ -226,7 +226,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.k
  * JD-Core Version:    0.7.0.1
  */

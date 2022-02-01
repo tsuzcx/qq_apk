@@ -2,17 +2,17 @@ package com.c.a.a;
 
 final class x
 {
-  float aSD;
+  float aTw;
   double altitude;
-  float bQL;
-  long bRX;
-  long bRq;
-  long bUA;
-  a bUB = null;
-  int bUC;
-  int bUD = 0;
-  String bUy;
-  long bUz;
+  long bOY;
+  float bOt;
+  long bPF;
+  String bSg;
+  long bSh;
+  long bSi;
+  a bSj = null;
+  int bSk;
+  int bSl = 0;
   double latitude;
   int level;
   double longitude;
@@ -20,8 +20,8 @@ final class x
   
   static final class a
   {
-    float bUE = 0.0F;
-    private int bUF = 0;
+    float bSm = 0.0F;
+    private int bSn = 0;
   }
 }
 

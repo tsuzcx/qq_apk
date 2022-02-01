@@ -16,19 +16,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.c;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.model.ar.b.a;
 import com.tencent.mm.plugin.collect.reward.a.a.a;
 import com.tencent.mm.plugin.collect.reward.a.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.tc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.tm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.MMGridView;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.ArrayList;
@@ -40,43 +40,43 @@ public class QrRewardSelectMoneyUI
   extends QrRewardBaseUI
 {
   private int channel;
-  private String jBp;
-  private String nVA;
-  private String nVB;
-  private String nVq;
-  private String nVs;
-  private String nVu;
-  private String nVv;
-  private String nVw;
-  private String nVx;
-  private String nVy;
-  private int nVz;
-  private List<Integer> nWj;
-  private CdnImageView nWk;
-  private TextView nWl;
-  private TextView nWm;
-  private TextView nWn;
-  private TextView nWo;
-  private MMGridView nWp;
-  private TextView nWq;
-  private a nWr;
-  private String nWs;
-  private String nWt;
+  private String kbL;
+  private String oyL;
+  private String oyN;
+  private String oyP;
+  private String oyQ;
+  private String oyR;
+  private String oyS;
+  private String oyT;
+  private int oyU;
+  private String oyV;
+  private String oyW;
+  private List<Integer> ozE;
+  private CdnImageView ozF;
+  private TextView ozG;
+  private TextView ozH;
+  private TextView ozI;
+  private TextView ozJ;
+  private MMGridView ozK;
+  private TextView ozL;
+  private a ozM;
+  private String ozN;
+  private String ozO;
   
   public QrRewardSelectMoneyUI()
   {
     AppMethodBeat.i(64000);
-    this.nWj = new ArrayList();
+    this.ozE = new ArrayList();
     AppMethodBeat.o(64000);
   }
   
-  private void RY(String paramString)
+  private void Wk(String paramString)
   {
     AppMethodBeat.i(64006);
-    if (bt.isNullOrNil(this.nVA)) {}
-    for (paramString = e.sh(paramString);; paramString = this.nVA)
+    if (bs.isNullOrNil(this.oyV)) {}
+    for (paramString = e.wk(paramString);; paramString = this.oyV)
     {
-      this.nWm.setText(k.c(getContext(), paramString));
+      this.ozH.setText(k.c(getContext(), paramString));
       AppMethodBeat.o(64006);
       return;
     }
@@ -95,16 +95,16 @@ public class QrRewardSelectMoneyUI
   public void initView()
   {
     AppMethodBeat.i(64002);
-    this.nWk = ((CdnImageView)findViewById(2131303657));
-    this.nWl = ((TextView)findViewById(2131303662));
-    this.nWm = ((TextView)findViewById(2131303660));
-    this.nWn = ((TextView)findViewById(2131303658));
-    this.nWo = ((TextView)findViewById(2131303663));
-    this.nWp = ((MMGridView)findViewById(2131303659));
-    this.nWq = ((TextView)findViewById(2131303661));
-    this.nWr = new a((byte)0);
-    this.nWp.setAdapter(this.nWr);
-    this.nWp.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.ozF = ((CdnImageView)findViewById(2131303657));
+    this.ozG = ((TextView)findViewById(2131303662));
+    this.ozH = ((TextView)findViewById(2131303660));
+    this.ozI = ((TextView)findViewById(2131303658));
+    this.ozJ = ((TextView)findViewById(2131303663));
+    this.ozK = ((MMGridView)findViewById(2131303659));
+    this.ozL = ((TextView)findViewById(2131303661));
+    this.ozM = new a((byte)0);
+    this.ozK.setAdapter(this.ozM);
+    this.ozK.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -114,7 +114,7 @@ public class QrRewardSelectMoneyUI
         AppMethodBeat.o(63990);
       }
     });
-    this.nWq.setOnClickListener(new View.OnClickListener()
+    this.ozL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -133,7 +133,7 @@ public class QrRewardSelectMoneyUI
     {
       if (paramInt2 == -1)
       {
-        ad.i("MicroMsg.QrRewardSelectMoneyUI", "pay succ");
+        ac.i("MicroMsg.QrRewardSelectMoneyUI", "pay succ");
         finish();
         AppMethodBeat.o(64005);
       }
@@ -151,15 +151,15 @@ public class QrRewardSelectMoneyUI
     addSceneEndListener(1516);
     setMMTitle(2131762096);
     setContentViewVisibility(4);
-    this.nWs = getIntent().getStringExtra("key_qrcode_url");
+    this.ozN = getIntent().getStringExtra("key_qrcode_url");
     this.channel = getIntent().getIntExtra("key_channel", 0);
-    this.jBp = getIntent().getStringExtra("key_web_url");
-    ad.i("MicroMsg.QrRewardSelectMoneyUI", "do scan code");
-    doSceneProgress(new f(this.nWs, this.channel, this.jBp));
+    this.kbL = getIntent().getStringExtra("key_web_url");
+    ac.i("MicroMsg.QrRewardSelectMoneyUI", "do scan code");
+    doSceneProgress(new f(this.ozN, this.channel, this.kbL));
     initView();
     int i = getIntent().getIntExtra("key_scene", 0);
-    ad.d("MicroMsg.QrRewardSelectMoneyUI", "scene: %s", new Object[] { Integer.valueOf(i) });
-    com.tencent.mm.plugin.report.service.h.vKh.f(14721, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
+    ac.d("MicroMsg.QrRewardSelectMoneyUI", "scene: %s", new Object[] { Integer.valueOf(i) });
+    com.tencent.mm.plugin.report.service.h.wUl.f(14721, new Object[] { Integer.valueOf(2), Integer.valueOf(i) });
     AppMethodBeat.o(64001);
   }
   
@@ -179,25 +179,25 @@ public class QrRewardSelectMoneyUI
       paramString = (f)paramn;
       paramString.a(new a.a()
       {
-        public final void h(n paramAnonymousn)
+        public final void g(n paramAnonymousn)
         {
           AppMethodBeat.i(63995);
-          ad.d("MicroMsg.QrRewardSelectMoneyUI", "callback succ");
-          QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramString.nUY.CUJ);
-          QrRewardSelectMoneyUI.b(QrRewardSelectMoneyUI.this, paramString.nUY.vAM);
-          QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramString.nUY.CUt);
-          QrRewardSelectMoneyUI.c(QrRewardSelectMoneyUI.this, paramString.nUY.CUD);
-          QrRewardSelectMoneyUI.d(QrRewardSelectMoneyUI.this, paramString.nUY.desc);
-          QrRewardSelectMoneyUI.e(QrRewardSelectMoneyUI.this, paramString.nUY.CUO);
-          QrRewardSelectMoneyUI.f(QrRewardSelectMoneyUI.this, paramString.nUY.CUP);
-          QrRewardSelectMoneyUI.g(QrRewardSelectMoneyUI.this, paramString.nUY.CUM);
-          QrRewardSelectMoneyUI.h(QrRewardSelectMoneyUI.this, paramString.nUY.CUS);
-          QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramString.nUY.CUr);
-          QrRewardSelectMoneyUI.i(QrRewardSelectMoneyUI.this, paramString.nUY.CUT);
-          QrRewardSelectMoneyUI.j(QrRewardSelectMoneyUI.this, paramString.nUY.CUU);
+          ac.d("MicroMsg.QrRewardSelectMoneyUI", "callback succ");
+          QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramString.oyt.Ent);
+          QrRewardSelectMoneyUI.b(QrRewardSelectMoneyUI.this, paramString.oyt.wKR);
+          QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramString.oyt.End);
+          QrRewardSelectMoneyUI.c(QrRewardSelectMoneyUI.this, paramString.oyt.Enn);
+          QrRewardSelectMoneyUI.d(QrRewardSelectMoneyUI.this, paramString.oyt.desc);
+          QrRewardSelectMoneyUI.e(QrRewardSelectMoneyUI.this, paramString.oyt.Eny);
+          QrRewardSelectMoneyUI.f(QrRewardSelectMoneyUI.this, paramString.oyt.Enz);
+          QrRewardSelectMoneyUI.g(QrRewardSelectMoneyUI.this, paramString.oyt.Enw);
+          QrRewardSelectMoneyUI.h(QrRewardSelectMoneyUI.this, paramString.oyt.EnC);
+          QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, paramString.oyt.Enb);
+          QrRewardSelectMoneyUI.i(QrRewardSelectMoneyUI.this, paramString.oyt.EnD);
+          QrRewardSelectMoneyUI.j(QrRewardSelectMoneyUI.this, paramString.oyt.EnE);
           if (QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this) == null)
           {
-            ad.i("MicroMsg.QrRewardSelectMoneyUI", "amt_list is null");
+            ac.i("MicroMsg.QrRewardSelectMoneyUI", "amt_list is null");
             QrRewardSelectMoneyUI.a(QrRewardSelectMoneyUI.this, new LinkedList());
           }
           QrRewardSelectMoneyUI.b(QrRewardSelectMoneyUI.this);
@@ -205,22 +205,22 @@ public class QrRewardSelectMoneyUI
         }
       }).b(new a.a()
       {
-        public final void h(n paramAnonymousn)
+        public final void g(n paramAnonymousn)
         {
           AppMethodBeat.i(63994);
-          ad.e("MicroMsg.QrRewardSelectMoneyUI", "scan response error");
-          if (!bt.isNullOrNil(paramString.nUY.nTK)) {
-            Toast.makeText(QrRewardSelectMoneyUI.this, paramString.nUY.nTK, 1).show();
+          ac.e("MicroMsg.QrRewardSelectMoneyUI", "scan response error");
+          if (!bs.isNullOrNil(paramString.oyt.oxf)) {
+            Toast.makeText(QrRewardSelectMoneyUI.this, paramString.oyt.oxf, 1).show();
           }
           QrRewardSelectMoneyUI.this.finish();
           AppMethodBeat.o(63994);
         }
       }).c(new a.a()
       {
-        public final void h(n paramAnonymousn)
+        public final void g(n paramAnonymousn)
         {
           AppMethodBeat.i(63993);
-          ad.e("MicroMsg.QrRewardSelectMoneyUI", "net error: %s", new Object[] { paramString });
+          ac.e("MicroMsg.QrRewardSelectMoneyUI", "net error: %s", new Object[] { paramString });
           com.tencent.mm.ui.base.h.a(QrRewardSelectMoneyUI.this.getContext(), QrRewardSelectMoneyUI.this.getString(2131765901), null, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)

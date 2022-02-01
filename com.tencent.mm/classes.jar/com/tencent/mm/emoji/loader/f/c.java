@@ -6,15 +6,15 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
 public final class c
 {
-  public static final c fMy;
+  public static final c fQk;
   
   static
   {
     AppMethodBeat.i(105492);
-    fMy = new c();
+    fQk = new c();
     AppMethodBeat.o(105492);
   }
   
@@ -24,8 +24,8 @@ public final class c
     k.h(paramEmojiInfo, "emojiInfo");
     a locala = new a();
     k.h(paramEmojiInfo, "emojiInfo");
-    Object localObject1 = paramEmojiInfo.JS();
-    String str2 = paramEmojiInfo.gaa() + "_temp";
+    Object localObject1 = paramEmojiInfo.JC();
+    String str2 = paramEmojiInfo.ghd() + "_temp";
     int i;
     boolean bool;
     if (i.h(paramEmojiInfo))
@@ -44,7 +44,7 @@ public final class c
       if (localObject3 == null) {
         localObject1 = "";
       }
-      String str1 = paramEmojiInfo.gaa();
+      String str1 = paramEmojiInfo.ghd();
       localObject3 = str1;
       if (str1 == null) {
         localObject3 = "";
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.a.a;
+import com.tencent.mm.cn.a.a;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.ad;
@@ -16,30 +16,30 @@ public class PluginAuth
   extends f
   implements com.tencent.mm.plugin.auth.a.b
 {
-  private static int KEc = -1;
-  private final a KEb;
+  private static int rvt = -1;
+  private final a qkj;
   
   public PluginAuth()
   {
     AppMethodBeat.i(134223);
-    this.KEb = new a((byte)0);
+    this.qkj = new a((byte)0);
     AppMethodBeat.o(134223);
   }
   
   public static int getUserInfoPluginSwitch()
   {
-    return KEc;
+    return rvt;
   }
   
   public static void setUserInfoPluginSwitch(int paramInt)
   {
-    KEc = paramInt;
+    rvt = paramInt;
   }
   
   public com.tencent.mm.vending.b.b addHandleAuthResponse(com.tencent.mm.plugin.auth.a.a parama)
   {
     AppMethodBeat.i(134227);
-    parama = this.KEb.bv(parama);
+    parama = this.qkj.bs(parama);
     AppMethodBeat.o(134227);
     return parama;
   }
@@ -52,7 +52,7 @@ public class PluginAuth
       public final void a(j.h paramAnonymoush, j.i paramAnonymousi)
       {
         AppMethodBeat.i(134218);
-        ad.a(paramAnonymousi.Cqo, true);
+        ad.a(paramAnonymousi.DIG, true);
         PluginAuth.this.getHandleAuthResponseCallbacks().a(paramAnonymoush, paramAnonymousi, true);
         AppMethodBeat.o(134218);
       }
@@ -71,7 +71,7 @@ public class PluginAuth
   
   public com.tencent.mm.plugin.auth.a.a getHandleAuthResponseCallbacks()
   {
-    return this.KEb;
+    return this.qkj;
   }
   
   public void installed()
@@ -87,7 +87,7 @@ public class PluginAuth
   }
   
   static final class a
-    extends com.tencent.mm.co.a<com.tencent.mm.plugin.auth.a.a>
+    extends com.tencent.mm.cn.a<com.tencent.mm.plugin.auth.a.a>
     implements com.tencent.mm.plugin.auth.a.a
   {
     public final void a(final j.h paramh, final j.i parami, final boolean paramBoolean)
@@ -107,7 +107,7 @@ public class PluginAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.auth.PluginAuth
  * JD-Core Version:    0.7.0.1
  */

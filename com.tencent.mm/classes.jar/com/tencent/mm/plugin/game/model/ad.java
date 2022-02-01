@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.game.d.aw;
 import com.tencent.mm.plugin.game.d.bc;
 import com.tencent.mm.plugin.game.d.cs;
 import com.tencent.mm.plugin.game.f.d;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -18,29 +18,29 @@ public final class ad
   public static void a(bc parambc)
   {
     AppMethodBeat.i(41542);
-    if ((parambc == null) || (bt.gL(parambc.sce)))
+    if ((parambc == null) || (bs.gY(parambc.tjY)))
     {
       AppMethodBeat.o(41542);
       return;
     }
-    parambc = parambc.sce.iterator();
+    parambc = parambc.tjY.iterator();
     while (parambc.hasNext())
     {
       Object localObject = (af)parambc.next();
-      if ((((af)localObject).saP != null) && (((af)localObject).saP.rZp != null))
+      if ((((af)localObject).tiJ != null) && (((af)localObject).tiJ.thi != null))
       {
-        d.c(a(((af)localObject).saP.rZp));
+        d.c(a(((af)localObject).tiJ.thi));
       }
-      else if ((((af)localObject).saR != null) && (!bt.gL(((af)localObject).saR.rZV)))
+      else if ((((af)localObject).tiL != null) && (!bs.gY(((af)localObject).tiL.thO)))
       {
-        localObject = ((af)localObject).saR.rZV.iterator();
+        localObject = ((af)localObject).tiL.thO.iterator();
         while (((Iterator)localObject).hasNext()) {
-          d.c(a(((aa)((Iterator)localObject).next()).rZp));
+          d.c(a(((aa)((Iterator)localObject).next()).thi));
         }
       }
-      else if ((((af)localObject).saQ != null) && (((af)localObject).saQ.rZp != null))
+      else if ((((af)localObject).tiK != null) && (((af)localObject).tiK.thi != null))
       {
-        d.c(a(((af)localObject).saQ.rZp));
+        d.c(a(((af)localObject).tiK.thi));
       }
     }
     AppMethodBeat.o(41542);

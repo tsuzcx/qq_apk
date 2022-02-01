@@ -14,8 +14,8 @@ import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.a.f.a;
 import com.tencent.mm.plugin.ball.a.f.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.base.b.a;
@@ -26,23 +26,23 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout.a;
 public final class c
   implements com.tencent.mm.plugin.ball.a.f
 {
-  private f ASM;
+  private f CkZ;
   private Intent mIntent;
   
   public c(f paramf)
   {
     AppMethodBeat.i(78201);
     this.mIntent = new Intent();
-    this.ASM = paramf;
+    this.CkZ = paramf;
     this.mIntent.putExtras(paramf.mParams);
     AppMethodBeat.o(78201);
   }
   
-  private boolean ekO()
+  private boolean eAk()
   {
     AppMethodBeat.i(78211);
-    ad.i("MicroMsg.LuggageFloatBallPageAdapter", "useActivityEnv: " + this.ASM.bZZ.Ba().size());
-    if (this.ASM.bZZ.Ba().size() <= 1)
+    ac.i("MicroMsg.LuggageFloatBallPageAdapter", "useActivityEnv: " + this.CkZ.bWW.AE().size());
+    if (this.CkZ.bWW.AE().size() <= 1)
     {
       AppMethodBeat.o(78211);
       return true;
@@ -59,22 +59,22 @@ public final class c
       AppMethodBeat.o(78209);
       return;
     }
-    if ((this.ASM.mContentView == null) || (!(this.ASM.mContentView instanceof me.imid.swipebacklayout.lib.SwipeBackLayout)))
+    if ((this.CkZ.mContentView == null) || (!(this.CkZ.mContentView instanceof me.imid.swipebacklayout.lib.SwipeBackLayout)))
     {
       AppMethodBeat.o(78209);
       return;
     }
-    if (!ekO()) {
-      ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.ASM.mContentView).a(new SwipeBackLayout.a()
+    if (!eAk()) {
+      ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.CkZ.mContentView).a(new SwipeBackLayout.a()
       {
-        public final void Bp() {}
+        public final void AT() {}
         
-        public final int bq(boolean paramAnonymousBoolean)
+        public final int bp(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(78196);
           if (parama != null)
           {
-            int i = parama.ic(paramAnonymousBoolean);
+            int i = parama.iC(paramAnonymousBoolean);
             AppMethodBeat.o(78196);
             return i;
           }
@@ -86,39 +86,39 @@ public final class c
         {
           AppMethodBeat.i(78194);
           if (parama != null) {
-            parama.aK(paramAnonymousFloat);
+            parama.aO(paramAnonymousFloat);
           }
           AppMethodBeat.o(78194);
         }
         
-        public final void m(MotionEvent paramAnonymousMotionEvent)
+        public final void k(MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(78195);
           if (parama != null) {
-            parama.m(paramAnonymousMotionEvent);
+            parama.k(paramAnonymousMotionEvent);
           }
           AppMethodBeat.o(78195);
         }
       });
     }
-    if ((ekO()) && (((MMActivity)getActivity()).getSwipeBackLayout() != null)) {
+    if ((eAk()) && (((MMActivity)getActivity()).getSwipeBackLayout() != null)) {
       ((MMActivity)getActivity()).getSwipeBackLayout().setSwipeBackListener(new SwipeBackLayout.b()
       {
-        public final void aJ(float paramAnonymousFloat)
+        public final void aN(float paramAnonymousFloat)
         {
           AppMethodBeat.i(78197);
           if (parama != null) {
-            parama.aK(paramAnonymousFloat);
+            parama.aO(paramAnonymousFloat);
           }
           AppMethodBeat.o(78197);
         }
         
-        public final int bq(boolean paramAnonymousBoolean)
+        public final int bp(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(78199);
           if (parama != null)
           {
-            int i = parama.ic(paramAnonymousBoolean);
+            int i = parama.iC(paramAnonymousBoolean);
             AppMethodBeat.o(78199);
             return i;
           }
@@ -126,11 +126,11 @@ public final class c
           return 1;
         }
         
-        public final void m(MotionEvent paramAnonymousMotionEvent)
+        public final void k(MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(78198);
           if (parama != null) {
-            parama.m(paramAnonymousMotionEvent);
+            parama.k(paramAnonymousMotionEvent);
           }
           AppMethodBeat.o(78198);
         }
@@ -142,52 +142,42 @@ public final class c
   public final void a(final f.b paramb)
   {
     AppMethodBeat.i(78210);
-    if (ekO())
+    if (eAk())
     {
       b.a(getActivity(), new b.a()
       {
-        public final void ib(boolean paramAnonymousBoolean)
+        public final void iB(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(78200);
-          paramb.ib(paramAnonymousBoolean);
+          paramb.iB(paramAnonymousBoolean);
           AppMethodBeat.o(78200);
         }
       });
       AppMethodBeat.o(78210);
       return;
     }
-    paramb.ib(true);
+    paramb.iB(true);
     AppMethodBeat.o(78210);
   }
   
-  public final boolean aVX()
-  {
-    return this.ASM.mContentView != null;
-  }
-  
-  public final boolean aWk()
-  {
-    return true;
-  }
-  
-  public final ViewGroup byJ()
+  public final ViewGroup bFF()
   {
     AppMethodBeat.i(78203);
-    if (ekO())
+    if (eAk())
     {
       localViewGroup = (ViewGroup)getActivity().getWindow().getDecorView();
       AppMethodBeat.o(78203);
       return localViewGroup;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.ASM.mContentView.getParent();
+    ViewGroup localViewGroup = (ViewGroup)this.CkZ.mContentView.getParent();
     AppMethodBeat.o(78203);
     return localViewGroup;
   }
   
-  public final int byK()
+  public final int bFG()
   {
     AppMethodBeat.i(78207);
-    if (ekO())
+    if (eAk())
     {
       AppMethodBeat.o(78207);
       return -1;
@@ -196,13 +186,23 @@ public final class c
     return 0;
   }
   
-  public final void fF(boolean paramBoolean)
+  public final boolean bcV()
+  {
+    return this.CkZ.mContentView != null;
+  }
+  
+  public final boolean bdi()
+  {
+    return true;
+  }
+  
+  public final void gb(boolean paramBoolean)
   {
     AppMethodBeat.i(78208);
     Activity localActivity;
-    if (!this.ASM.bZZ.Bb().bp(false))
+    if (!this.CkZ.bWW.AF().bo(false))
     {
-      localActivity = (Activity)this.ASM.mContext;
+      localActivity = (Activity)this.CkZ.mContext;
       if (!paramBoolean) {
         break label73;
       }
@@ -222,13 +222,13 @@ public final class c
   
   public final Activity getActivity()
   {
-    return (Activity)this.ASM.mContext;
+    return (Activity)this.CkZ.mContext;
   }
   
   public final Bitmap getBitmap()
   {
     AppMethodBeat.i(78206);
-    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.fz(getContentView());
+    Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.fM(getContentView());
     AppMethodBeat.o(78206);
     return localBitmap;
   }
@@ -236,7 +236,7 @@ public final class c
   public final View getContentView()
   {
     AppMethodBeat.i(78204);
-    if (ekO())
+    if (eAk())
     {
       if (((MMActivity)getActivity()).getSwipeBackLayout() != null)
       {
@@ -247,7 +247,7 @@ public final class c
       AppMethodBeat.o(78204);
       return null;
     }
-    View localView = ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.ASM.mContentView).getTargetView();
+    View localView = ((me.imid.swipebacklayout.lib.SwipeBackLayout)this.CkZ.mContentView).getTargetView();
     AppMethodBeat.o(78204);
     return localView;
   }
@@ -255,8 +255,8 @@ public final class c
   public final Intent getIntent()
   {
     AppMethodBeat.i(78202);
-    if (!bt.isNullOrNil(this.ASM.getTitle())) {
-      this.mIntent.putExtra("title", this.ASM.getTitle());
+    if (!bs.isNullOrNil(this.CkZ.getTitle())) {
+      this.mIntent.putExtra("title", this.CkZ.getTitle());
     }
     Intent localIntent = this.mIntent;
     AppMethodBeat.o(78202);

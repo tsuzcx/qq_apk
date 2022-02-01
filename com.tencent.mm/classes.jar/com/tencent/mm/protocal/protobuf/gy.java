@@ -3,57 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class gy
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String doh;
-  public String omO;
-  public String title;
+  public String hpH;
+  public String key;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123552);
+    AppMethodBeat.i(123547);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.doh != null) {
-        paramVarArgs.d(1, this.doh);
+      if (this.key != null) {
+        paramVarArgs.d(1, this.key);
       }
-      if (this.omO != null) {
-        paramVarArgs.d(2, this.omO);
+      if (this.hpH != null) {
+        paramVarArgs.d(2, this.hpH);
       }
-      if (this.title != null) {
-        paramVarArgs.d(3, this.title);
-      }
-      AppMethodBeat.o(123552);
+      AppMethodBeat.o(123547);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.doh == null) {
-        break label334;
+      if (this.key == null) {
+        break label274;
       }
     }
-    label334:
-    for (int i = f.a.a.b.b.a.e(1, this.doh) + 0;; i = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.key) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.omO != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.omO);
+      int i = paramInt;
+      if (this.hpH != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.hpH);
       }
-      i = paramInt;
-      if (this.title != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.title);
-      }
-      AppMethodBeat.o(123552);
+      AppMethodBeat.o(123547);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(123552);
+        AppMethodBeat.o(123547);
         return 0;
       }
       if (paramInt == 3)
@@ -63,22 +55,18 @@ public final class gy
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123552);
+          AppMethodBeat.o(123547);
           return -1;
         case 1: 
-          localgy.doh = locala.KhF.readString();
-          AppMethodBeat.o(123552);
-          return 0;
-        case 2: 
-          localgy.omO = locala.KhF.readString();
-          AppMethodBeat.o(123552);
+          localgy.key = locala.LVo.readString();
+          AppMethodBeat.o(123547);
           return 0;
         }
-        localgy.title = locala.KhF.readString();
-        AppMethodBeat.o(123552);
+        localgy.hpH = locala.LVo.readString();
+        AppMethodBeat.o(123547);
         return 0;
       }
-      AppMethodBeat.o(123552);
+      AppMethodBeat.o(123547);
       return -1;
     }
   }

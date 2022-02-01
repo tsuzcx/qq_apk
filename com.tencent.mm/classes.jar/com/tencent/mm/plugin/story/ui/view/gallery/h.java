@@ -4,13 +4,13 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import d.g.a.m;
 import d.l;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 16})
 final class h
   implements CompoundButton.OnCheckedChangeListener
 {
   h(m paramm)
   {
-    this.yyR = paramm;
+    this.gsr = paramm;
   }
 }
 

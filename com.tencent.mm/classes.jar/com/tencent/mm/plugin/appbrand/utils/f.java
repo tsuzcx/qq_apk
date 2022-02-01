@@ -1,94 +1,103 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
-import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.plugin.appbrand.jsapi.z.c.b.c;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
 
 public final class f
-  implements Application.ActivityLifecycleCallbacks
+  implements c
 {
-  public Application app;
-  public final Queue<a> lMd;
-  private int lMe;
-  public boolean lMf;
-  
-  public f()
+  public static void S(o paramo)
   {
-    AppMethodBeat.i(137911);
-    this.lMd = new LinkedList();
-    this.lMe = 0;
-    this.lMf = false;
-    AppMethodBeat.o(137911);
+    AppMethodBeat.i(187063);
+    paramo.a(a.moa);
+    AppMethodBeat.o(187063);
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  public final String bma()
   {
-    AppMethodBeat.i(137912);
-    this.lMe += 1;
-    if (this.lMe == 1)
+    AppMethodBeat.i(187064);
+    Object localObject = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, b.class);
+    if (localObject != null)
     {
-      ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
-      paramBundle = this.lMd.iterator();
-      while (paramBundle.hasNext()) {
-        ((a)paramBundle.next()).dJ(paramActivity);
-      }
+      localObject = ((IPCString)localObject).value;
+      AppMethodBeat.o(187064);
+      return localObject;
     }
-    AppMethodBeat.o(137912);
+    AppMethodBeat.o(187064);
+    return null;
   }
   
-  public final void onActivityDestroyed(Activity paramActivity)
+  static final class a
   {
-    AppMethodBeat.i(137913);
-    this.lMe -= 1;
-    if (this.lMe == 0)
-    {
-      ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
-      paramActivity = this.lMd.iterator();
-      while (paramActivity.hasNext()) {
-        ((a)paramActivity.next()).bqq();
-      }
-      if ((this.lMf) && (this.app != null))
-      {
-        paramActivity = this.app;
-        ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
-        paramActivity.unregisterActivityLifecycleCallbacks(this);
-        this.lMd.clear();
-        this.app = null;
-        this.lMf = false;
-        this.lMf = false;
-        this.app = null;
-      }
-    }
-    AppMethodBeat.o(137913);
-  }
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
-  
-  public static abstract interface a
-  {
-    public abstract void bqq();
+    static f moa;
     
-    public abstract void dJ(Context paramContext);
+    static
+    {
+      AppMethodBeat.i(187060);
+      moa = new f((byte)0);
+      AppMethodBeat.o(187060);
+    }
+  }
+  
+  static final class b
+    implements k<IPCVoid, IPCString>
+  {
+    private static boolean bxn()
+    {
+      AppMethodBeat.i(187061);
+      for (;;)
+      {
+        try
+        {
+          TelephonyManager localTelephonyManager = (TelephonyManager)ai.getContext().getSystemService("phone");
+          if (localTelephonyManager == null) {
+            continue;
+          }
+          i = localTelephonyManager.getCallState();
+          switch (i)
+          {
+          default: 
+            bool = false;
+          }
+        }
+        catch (Exception localException1)
+        {
+          int i;
+          boolean bool = false;
+          ac.printErrStackTrace("MicroMsg.AppBrandVOIPStrategy", localException1, "isPhoneInUse, exception:%s", new Object[] { localException1 });
+          continue;
+          bool = false;
+          continue;
+        }
+        try
+        {
+          ac.i("MicroMsg.AppBrandVOIPStrategy", "isPhoneInUse, isPhoneInUse:%s, callState:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+          AppMethodBeat.o(187061);
+          return bool;
+        }
+        catch (Exception localException2)
+        {
+          continue;
+        }
+        bool = false;
+        continue;
+        bool = true;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.f
  * JD-Core Version:    0.7.0.1
  */

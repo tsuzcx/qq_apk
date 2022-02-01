@@ -12,8 +12,8 @@ public class SnsTagList
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsTagList> CREATOR;
-  private int wBi;
-  private List<Long> wBj;
+  private int xND;
+  private List<Long> xNE;
   
   static
   {
@@ -25,8 +25,8 @@ public class SnsTagList
   public SnsTagList()
   {
     AppMethodBeat.i(95091);
-    this.wBi = 0;
-    this.wBj = new LinkedList();
+    this.xND = 0;
+    this.xNE = new LinkedList();
     AppMethodBeat.o(95091);
   }
   
@@ -38,9 +38,9 @@ public class SnsTagList
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(95092);
-    this.wBi = this.wBj.size();
-    paramParcel.writeInt(this.wBi);
-    Iterator localIterator = this.wBj.iterator();
+    this.xND = this.xNE.size();
+    paramParcel.writeInt(this.xND);
+    Iterator localIterator = this.xNE.iterator();
     while (localIterator.hasNext()) {
       paramParcel.writeLong(((Long)localIterator.next()).longValue());
     }

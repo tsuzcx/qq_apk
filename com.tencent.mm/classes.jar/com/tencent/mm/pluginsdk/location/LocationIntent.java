@@ -10,16 +10,16 @@ public class LocationIntent
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationIntent> CREATOR;
-  public String BNO = "";
-  public int BNP = 0;
-  public int dpd = 0;
-  public String goQ = "";
-  public Addr hek = null;
+  public String DfY = "";
+  public int DfZ = 0;
+  public int dmN = 0;
+  public String gPy = "";
+  public Addr hEN = null;
   public String label = "";
   public double lat;
   public double lng;
-  public String sOA;
-  public String sOC;
+  public String tWN;
+  public String tWP;
   
   static
   {
@@ -28,22 +28,22 @@ public class LocationIntent
     AppMethodBeat.o(151630);
   }
   
-  public final String agO()
+  public final String aif()
   {
     AppMethodBeat.i(151628);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("lat " + this.lat + ";");
     ((StringBuffer)localObject).append("lng " + this.lng + ";");
-    ((StringBuffer)localObject).append("scale " + this.dpd + ";");
+    ((StringBuffer)localObject).append("scale " + this.dmN + ";");
     ((StringBuffer)localObject).append("label " + this.label + ";");
-    ((StringBuffer)localObject).append("poiname " + this.goQ + ";");
-    ((StringBuffer)localObject).append("infourl " + this.BNO + ";");
-    ((StringBuffer)localObject).append("locTypeId " + this.sOA + ";");
-    ((StringBuffer)localObject).append("poiType " + this.BNP + ";");
-    if (this.hek != null) {
-      ((StringBuffer)localObject).append("addr " + this.hek.toString() + ";");
+    ((StringBuffer)localObject).append("poiname " + this.gPy + ";");
+    ((StringBuffer)localObject).append("infourl " + this.DfY + ";");
+    ((StringBuffer)localObject).append("locTypeId " + this.tWN + ";");
+    ((StringBuffer)localObject).append("poiType " + this.DfZ + ";");
+    if (this.hEN != null) {
+      ((StringBuffer)localObject).append("addr " + this.hEN.toString() + ";");
     }
-    ((StringBuffer)localObject).append("poiid " + this.sOC + ";");
+    ((StringBuffer)localObject).append("poiid " + this.tWP + ";");
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(151628);
     return localObject;
@@ -59,20 +59,20 @@ public class LocationIntent
     AppMethodBeat.i(151629);
     paramParcel.writeDouble(this.lat);
     paramParcel.writeDouble(this.lng);
-    paramParcel.writeInt(this.dpd);
+    paramParcel.writeInt(this.dmN);
     paramParcel.writeString(this.label);
-    paramParcel.writeString(this.goQ);
-    paramParcel.writeString(this.BNO);
-    paramParcel.writeString(this.sOA);
-    paramParcel.writeInt(this.BNP);
-    paramParcel.writeParcelable(this.hek, paramInt);
-    paramParcel.writeString(this.sOC);
+    paramParcel.writeString(this.gPy);
+    paramParcel.writeString(this.DfY);
+    paramParcel.writeString(this.tWN);
+    paramParcel.writeInt(this.DfZ);
+    paramParcel.writeParcelable(this.hEN, paramInt);
+    paramParcel.writeString(this.tWP);
     AppMethodBeat.o(151629);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.location.LocationIntent
  * JD-Core Version:    0.7.0.1
  */

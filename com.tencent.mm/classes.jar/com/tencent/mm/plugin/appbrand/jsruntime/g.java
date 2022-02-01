@@ -5,9 +5,9 @@ public abstract interface g
 {
   public abstract void b(g paramg, String paramString);
   
-  public abstract boolean bfB();
+  public abstract boolean bmv();
   
-  public abstract int bfC();
+  public abstract int bmw();
   
   public abstract void destroy();
 }

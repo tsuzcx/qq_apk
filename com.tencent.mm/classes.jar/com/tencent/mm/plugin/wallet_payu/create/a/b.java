@@ -9,18 +9,18 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String Azq;
-  public String dpw;
-  public String dyq;
+  public String BRM;
+  public String dnh;
+  public String dwc;
   public String pin;
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(72011);
-    this.Azq = paramString1;
-    this.dyq = paramString2;
+    this.BRM = paramString1;
+    this.dwc = paramString2;
     this.pin = paramString3;
-    this.dpw = paramString4;
+    this.dnh = paramString4;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", paramString2);
@@ -30,7 +30,7 @@ public final class b
     AppMethodBeat.o(72011);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 17;
   }

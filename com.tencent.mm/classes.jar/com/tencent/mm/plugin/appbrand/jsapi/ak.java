@@ -4,13 +4,13 @@ import com.tencent.mm.vending.g.d.b;
 import d.g.a.b;
 import d.l;
 
-@l(fvt={1, 1, 16})
+@l(fNY={1, 1, 16})
 final class ak
   implements d.b
 {
   ak(b paramb)
   {
-    this.guO = paramb;
+    this.gIs = paramb;
   }
 }
 

@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aeu;
-import com.tencent.mm.protocal.protobuf.aev;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.aft;
+import com.tencent.mm.protocal.protobuf.afu;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class a
   extends n
   implements k
 {
   private g callback;
-  private b iaa;
-  private aeu tan;
-  private aev tao;
+  private b gvE;
+  private aft uiC;
+  private afu uiD;
   
   public a(String paramString)
   {
     AppMethodBeat.i(65035);
     b.a locala = new b.a();
-    locala.gUU = new aeu();
-    locala.gUV = new aev();
+    locala.hvt = new aft();
+    locala.hvu = new afu();
     locala.funcId = getType();
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
     locala.uri = "/cgi-bin/mmpay-bin/ftfhb/ffclearwxhb";
-    this.iaa = locala.atI();
-    this.tan = ((aeu)this.iaa.gUS.gUX);
-    this.tan.sZn = paramString;
+    this.gvE = locala.aAz();
+    this.uiC = ((aft)this.gvE.hvr.hvw);
+    this.uiC.uhB = paramString;
     AppMethodBeat.o(65035);
   }
   
@@ -43,7 +43,7 @@ public final class a
   {
     AppMethodBeat.i(65037);
     this.callback = paramg;
-    int i = dispatch(parame, this.iaa, this);
+    int i = dispatch(parame, this.gvE, this);
     AppMethodBeat.o(65037);
     return i;
   }
@@ -56,10 +56,10 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(65036);
-    this.tao = ((aev)((b)paramq).gUT.gUX);
-    ad.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.tao.dcG), this.tao.nTK });
+    this.uiD = ((afu)((b)paramq).hvs.hvw);
+    ac.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.uiD.dae), this.uiD.oxf });
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, this.tao.dcG, this.tao.nTK, this);
+      this.callback.onSceneEnd(paramInt2, this.uiD.dae, this.uiD.oxf, this);
     }
     AppMethodBeat.o(65036);
   }

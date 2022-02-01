@@ -5,13 +5,13 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface l
   extends a
 {
-  public abstract AppBrandBackgroundFetchDataTokenParcel Fm(String paramString);
+  public abstract AppBrandBackgroundFetchDataTokenParcel Jq(String paramString);
   
-  public abstract boolean cl(String paramString1, String paramString2);
+  public abstract boolean cv(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.l
  * JD-Core Version:    0.7.0.1
  */

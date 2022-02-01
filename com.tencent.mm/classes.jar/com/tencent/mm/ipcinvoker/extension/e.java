@@ -6,7 +6,7 @@ import junit.framework.Assert;
 
 public final class e<T>
 {
-  private volatile T fZL;
+  private volatile T ger;
   private Class<T> targetClass;
   
   public e(Class<T> paramClass)
@@ -20,13 +20,13 @@ public final class e<T>
   public final T get()
   {
     AppMethodBeat.i(158800);
-    if (this.fZL == null) {}
+    if (this.ger == null) {}
     try
     {
-      if (this.fZL == null) {
-        this.fZL = b.H(this.targetClass);
+      if (this.ger == null) {
+        this.ger = b.H(this.targetClass);
       }
-      Object localObject1 = this.fZL;
+      Object localObject1 = this.ger;
       AppMethodBeat.o(158800);
       return localObject1;
     }
@@ -38,7 +38,7 @@ public final class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.e
  * JD-Core Version:    0.7.0.1
  */

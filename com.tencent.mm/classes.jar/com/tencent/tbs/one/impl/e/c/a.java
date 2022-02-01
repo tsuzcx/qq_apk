@@ -33,7 +33,7 @@ public final class a
   
   public a(Context paramContext, String paramString, d.a parama, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(186672);
+    AppMethodBeat.i(192440);
     this.i = -1L;
     this.c = paramContext;
     this.d = paramString;
@@ -41,7 +41,7 @@ public final class a
     this.f = paramFile;
     this.j = paramBundle;
     this.g = com.tencent.tbs.one.impl.common.f.a(this.c, this.c, paramString, parama.a, parama.c);
-    AppMethodBeat.o(186672);
+    AppMethodBeat.o(192440);
   }
   
   public final void a()

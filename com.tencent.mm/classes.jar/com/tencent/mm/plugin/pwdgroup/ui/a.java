@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.pwdgroup.b.a;
-import com.tencent.mm.protocal.protobuf.aft;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ags;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -23,58 +23,58 @@ public final class a
   extends BaseAdapter
 {
   private Context mContext;
-  private LinkedList<aft> oGz;
-  private Animation sHx;
-  private Animation uJe;
-  private Animation uJf;
-  private HashMap<String, Boolean> uJg;
+  private LinkedList<ags> pjZ;
+  private Animation tPe;
+  private Animation vRV;
+  private Animation vRW;
+  private HashMap<String, Boolean> vRX;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(27672);
-    this.oGz = new LinkedList();
-    this.uJg = new HashMap();
+    this.pjZ = new LinkedList();
+    this.vRX = new HashMap();
     this.mContext = paramContext;
-    this.sHx = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.uJf = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.uJe = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    this.sHx.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.uJf.setInterpolator(new AccelerateInterpolator());
-    this.uJe.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.sHx.setDuration(300L);
-    this.uJf.setDuration(1000L);
-    this.uJe.setDuration(1000L);
+    this.tPe = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.vRW = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.vRV = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    this.tPe.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.vRW.setInterpolator(new AccelerateInterpolator());
+    this.vRV.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.tPe.setDuration(300L);
+    this.vRW.setDuration(1000L);
+    this.vRV.setDuration(1000L);
     AppMethodBeat.o(27672);
   }
   
-  private static String a(aft paramaft)
+  private static String a(ags paramags)
   {
     AppMethodBeat.i(27677);
-    if (paramaft == null)
+    if (paramags == null)
     {
       AppMethodBeat.o(27677);
       return "";
     }
-    if (bt.isNullOrNil(paramaft.mAQ))
+    if (bs.isNullOrNil(paramags.ncR))
     {
-      paramaft = paramaft.DfI;
+      paramags = paramags.EyO;
       AppMethodBeat.o(27677);
-      return paramaft;
+      return paramags;
     }
-    paramaft = paramaft.mAQ;
+    paramags = paramags.ncR;
     AppMethodBeat.o(27677);
-    return paramaft;
+    return paramags;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(27674);
-    if (this.oGz == null)
+    if (this.pjZ == null)
     {
       AppMethodBeat.o(27674);
       return 1;
     }
-    int i = this.oGz.size();
+    int i = this.pjZ.size();
     AppMethodBeat.o(27674);
     return i + 1;
   }
@@ -82,17 +82,17 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(27675);
-    if (this.oGz == null)
+    if (this.pjZ == null)
     {
       AppMethodBeat.o(27675);
       return null;
     }
-    if (paramInt >= this.oGz.size())
+    if (paramInt >= this.pjZ.size())
     {
       AppMethodBeat.o(27675);
       return null;
     }
-    Object localObject = this.oGz.get(paramInt);
+    Object localObject = this.pjZ.get(paramInt);
     AppMethodBeat.o(27675);
     return localObject;
   }
@@ -111,36 +111,36 @@ public final class a
       paramView = LayoutInflater.from(this.mContext).inflate(2131493936, null);
       paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
-      localObject = (aft)getItem(paramInt);
+      localObject = (ags)getItem(paramInt);
       if (localObject != null)
       {
-        if (!bt.isNullOrNil(((aft)localObject).mBV)) {
+        if (!bs.isNullOrNil(((ags)localObject).ndW)) {
           break label260;
         }
-        paramViewGroup.fQp.setText(((aft)localObject).mAQ);
+        paramViewGroup.fUk.setText(((ags)localObject).ncR);
         label84:
-        if (bt.isNullOrNil(((aft)localObject).mAQ)) {
+        if (bs.isNullOrNil(((ags)localObject).ncR)) {
           break label275;
         }
-        b.a.c(paramViewGroup.hg, ((aft)localObject).mAQ);
+        b.a.c(paramViewGroup.ig, ((ags)localObject).ncR);
       }
     }
     for (;;)
     {
-      localObject = a((aft)localObject);
+      localObject = a((ags)localObject);
       paramView.clearAnimation();
-      if ((this.uJg.containsKey(localObject)) && (!((Boolean)this.uJg.get(localObject)).booleanValue()))
+      if ((this.vRX.containsKey(localObject)) && (!((Boolean)this.vRX.get(localObject)).booleanValue()))
       {
-        paramView.startAnimation(this.sHx);
-        this.uJg.put(localObject, Boolean.TRUE);
+        paramView.startAnimation(this.tPe);
+        this.vRX.put(localObject, Boolean.TRUE);
       }
       if (paramInt + 1 == getCount())
       {
-        paramViewGroup.fQp.setText("");
-        paramViewGroup.hg.setImageResource(2131230836);
+        paramViewGroup.fUk.setText("");
+        paramViewGroup.ig.setImageResource(2131230836);
         if (paramView != null)
         {
-          this.uJf.setAnimationListener(new Animation.AnimationListener()
+          this.vRW.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -153,7 +153,7 @@ public final class a
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          this.uJe.setAnimationListener(new Animation.AnimationListener()
+          this.vRV.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -166,7 +166,7 @@ public final class a
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          paramView.startAnimation(this.uJf);
+          paramView.startAnimation(this.vRW);
         }
       }
       AppMethodBeat.o(27676);
@@ -174,26 +174,26 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label260:
-      paramViewGroup.fQp.setText(((aft)localObject).mBV);
+      paramViewGroup.fUk.setText(((ags)localObject).ndW);
       break label84;
       label275:
-      b.a.c(paramViewGroup.hg, ((aft)localObject).DfI);
+      b.a.c(paramViewGroup.ig, ((ags)localObject).EyO);
     }
   }
   
-  public final void setData(LinkedList<aft> paramLinkedList)
+  public final void setData(LinkedList<ags> paramLinkedList)
   {
     AppMethodBeat.i(27673);
-    this.oGz = paramLinkedList;
-    if ((this.oGz != null) && (this.oGz.size() > 0))
+    this.pjZ = paramLinkedList;
+    if ((this.pjZ != null) && (this.pjZ.size() > 0))
     {
-      int j = this.oGz.size();
+      int j = this.pjZ.size();
       int i = 0;
       while (i < j)
       {
-        paramLinkedList = a((aft)this.oGz.get(i));
-        if (!this.uJg.containsKey(paramLinkedList)) {
-          this.uJg.put(paramLinkedList, Boolean.FALSE);
+        paramLinkedList = a((ags)this.pjZ.get(i));
+        if (!this.vRX.containsKey(paramLinkedList)) {
+          this.vRX.put(paramLinkedList, Boolean.FALSE);
         }
         i += 1;
       }
@@ -204,21 +204,21 @@ public final class a
   
   final class a
   {
-    TextView fQp;
-    ImageView hg;
+    TextView fUk;
+    ImageView ig;
     
     public a(View paramView)
     {
       AppMethodBeat.i(27671);
-      this.hg = ((ImageView)paramView.findViewById(2131299742));
-      this.fQp = ((TextView)paramView.findViewById(2131299751));
+      this.ig = ((ImageView)paramView.findViewById(2131299742));
+      this.fUk = ((TextView)paramView.findViewById(2131299751));
       AppMethodBeat.o(27671);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.a
  * JD-Core Version:    0.7.0.1
  */

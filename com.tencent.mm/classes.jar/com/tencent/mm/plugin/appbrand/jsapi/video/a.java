@@ -4,10 +4,10 @@ import com.tencent.mm.g.b.a.d.a;
 
 public final class a
 {
-  long kmA = 0L;
-  long kmB = 0L;
-  d.a kmC = d.a.dFu;
-  d kmD;
+  long kNS = 0L;
+  long kNT = 0L;
+  d.a kNU = d.a.dDh;
+  d kNV;
   String url = "";
 }
 

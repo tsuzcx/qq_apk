@@ -9,19 +9,19 @@ import java.io.InputStream;
 public final class n
   extends l<InputStream>
 {
-  private static final UriMatcher aCS;
+  private static final UriMatcher aDJ;
   
   static
   {
     AppMethodBeat.i(76902);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    aCS = localUriMatcher;
+    aDJ = localUriMatcher;
     localUriMatcher.addURI("com.android.contacts", "contacts/lookup/*/#", 1);
-    aCS.addURI("com.android.contacts", "contacts/lookup/*", 1);
-    aCS.addURI("com.android.contacts", "contacts/#/photo", 2);
-    aCS.addURI("com.android.contacts", "contacts/#", 3);
-    aCS.addURI("com.android.contacts", "contacts/#/display_photo", 4);
-    aCS.addURI("com.android.contacts", "phone_lookup/*", 5);
+    aDJ.addURI("com.android.contacts", "contacts/lookup/*", 1);
+    aDJ.addURI("com.android.contacts", "contacts/#/photo", 2);
+    aDJ.addURI("com.android.contacts", "contacts/#", 3);
+    aDJ.addURI("com.android.contacts", "contacts/#/display_photo", 4);
+    aDJ.addURI("com.android.contacts", "phone_lookup/*", 5);
     AppMethodBeat.o(76902);
   }
   
@@ -30,7 +30,7 @@ public final class n
     super(paramContentResolver, paramUri);
   }
   
-  public final Class<InputStream> nK()
+  public final Class<InputStream> nU()
   {
     return InputStream.class;
   }

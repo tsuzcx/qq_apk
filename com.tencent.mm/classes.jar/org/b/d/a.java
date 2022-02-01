@@ -5,24 +5,24 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public final String Kno;
-  public final String Knp;
-  public final String Knq;
-  public final h Kns;
-  private final OutputStream Knt;
+  public final String MaX;
+  public final String MaY;
+  public final String MaZ;
+  public final h Mbb;
+  private final OutputStream Mbc;
   public final String scope;
   
   public a(String paramString1, String paramString2, String paramString3, h paramh, String paramString4, OutputStream paramOutputStream)
   {
-    this.Kno = paramString1;
-    this.Knp = paramString2;
-    this.Knq = paramString3;
-    this.Kns = paramh;
+    this.MaX = paramString1;
+    this.MaY = paramString2;
+    this.MaZ = paramString3;
+    this.Mbb = paramh;
     this.scope = paramString4;
-    this.Knt = paramOutputStream;
+    this.Mbc = paramOutputStream;
   }
   
-  public final boolean fNa()
+  public final boolean gfQ()
   {
     return this.scope != null;
   }
@@ -30,12 +30,12 @@ public final class a
   public final void log(String paramString)
   {
     AppMethodBeat.i(40544);
-    if (this.Knt != null)
+    if (this.Mbc != null)
     {
       paramString = paramString + "\n";
       try
       {
-        this.Knt.write(paramString.getBytes("UTF8"));
+        this.Mbc.write(paramString.getBytes("UTF8"));
         AppMethodBeat.o(40544);
         return;
       }
@@ -51,7 +51,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.b.d.a
  * JD-Core Version:    0.7.0.1
  */

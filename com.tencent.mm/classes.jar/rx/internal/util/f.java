@@ -9,30 +9,30 @@ import rx.j;
 public final class f
   implements j
 {
-  private static final c<Object> KrI;
-  public static final d<Queue<Object>> KrK;
-  public static final d<Queue<Object>> KrL;
+  private static final c<Object> Mfr;
+  public static final d<Queue<Object>> Mft;
+  public static final d<Queue<Object>> Mfu;
   public static final int SIZE;
-  static int sok;
-  private final d<Queue<Object>> KrJ;
-  private Queue<Object> cWm;
+  static int twd;
+  private final d<Queue<Object>> Mfs;
+  private Queue<Object> cTI;
   
   static
   {
     AppMethodBeat.i(90197);
-    KrI = c.fNC();
-    sok = 128;
+    Mfr = c.ggs();
+    twd = 128;
     if (e.isAndroid()) {
-      sok = 16;
+      twd = 16;
     }
     String str = System.getProperty("rx.ring-buffer.size");
     if (str != null) {}
     try
     {
-      sok = Integer.parseInt(str);
-      SIZE = sok;
-      KrK = new d() {};
-      KrL = new d() {};
+      twd = Integer.parseInt(str);
+      SIZE = twd;
+      Mft = new d() {};
+      Mfu = new d() {};
       AppMethodBeat.o(90197);
       return;
     }
@@ -45,30 +45,30 @@ public final class f
     }
   }
   
-  public final void fNw()
+  public final void ggm()
   {
     AppMethodBeat.i(90196);
-    Queue localQueue = this.cWm;
-    d locald = this.KrJ;
+    Queue localQueue = this.cTI;
+    d locald = this.Mfs;
     if ((locald != null) && (localQueue != null))
     {
       localQueue.clear();
-      this.cWm = null;
+      this.cTI = null;
       if (localQueue != null) {
-        locald.aGt.offer(localQueue);
+        locald.aHj.offer(localQueue);
       }
     }
     AppMethodBeat.o(90196);
   }
   
-  public final boolean fNx()
+  public final boolean ggn()
   {
-    return this.cWm == null;
+    return this.cTI == null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     rx.internal.util.f
  * JD-Core Version:    0.7.0.1
  */

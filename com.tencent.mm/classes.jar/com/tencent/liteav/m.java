@@ -3,6 +3,7 @@ package com.tencent.liteav;
 import android.content.Context;
 import android.view.Surface;
 import com.tencent.liteav.basic.c.a;
+import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioRawDataListener;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -55,7 +56,7 @@ public abstract class m
     this.d = new WeakReference(parama);
   }
   
-  public abstract void a(com.tencent.liteav.basic.d.n paramn);
+  public abstract void a(o paramo);
   
   public void a(g paramg)
   {

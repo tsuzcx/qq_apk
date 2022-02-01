@@ -9,12 +9,12 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.plugin.fav.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.base.h;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public final class p
 {
-  private static int Cq(int paramInt)
+  private static int Dl(int paramInt)
   {
     if (paramInt == 1) {
       return 4;
@@ -57,7 +57,7 @@ public final class p
       return;
     }
     paramActivity = h.b(paramActivity, paramActivity.getString(2131758855), false, null);
-    com.tencent.mm.kernel.g.afE().ax(new p.1(paramList, parama, paramActivity));
+    com.tencent.mm.kernel.g.agU().az(new p.1(paramList, parama, paramActivity));
     AppMethodBeat.o(107060);
   }
   
@@ -69,7 +69,7 @@ public final class p
       AppMethodBeat.o(107061);
       return;
     }
-    if (bt.isNullOrNil(paramString2))
+    if (bs.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(107061);
       return;
@@ -86,8 +86,8 @@ public final class p
     }
     if (localLinkedList.isEmpty())
     {
-      ad.i(paramString3, "after filter, nothing");
-      h.cf(paramActivity, paramActivity.getString(2131758987));
+      ac.i(paramString3, "after filter, nothing");
+      h.cg(paramActivity, paramActivity.getString(2131758987));
       AppMethodBeat.o(107061);
       return;
     }
@@ -96,7 +96,7 @@ public final class p
       public final void run()
       {
         AppMethodBeat.i(107056);
-        this.qcu.dismiss();
+        this.qLa.dismiss();
         com.tencent.mm.ui.widget.snackbar.b.n(paramActivity, paramActivity.getString(2131758834));
         AppMethodBeat.o(107056);
       }
@@ -112,7 +112,7 @@ public final class p
     if (Build.VERSION.SDK_INT >= 21)
     {
       localObject1 = localObject2;
-      if (!ai.Eq()) {
+      if (!aj.DT()) {
         localObject1 = ActivityOptions.makeSceneTransitionAnimation(paramActivity, new Pair[0]).toBundle();
       }
     }
@@ -135,7 +135,7 @@ public final class p
     if (Build.VERSION.SDK_INT >= 21)
     {
       localObject1 = localObject2;
-      if (!ai.Eq()) {
+      if (!aj.DT()) {
         localObject1 = ActivityOptions.makeSceneTransitionAnimation(paramActivity, new Pair[0]).toBundle();
       }
     }
@@ -161,19 +161,19 @@ public final class p
       paramg.putExtra("scene_from", 1);
       paramg.putExtra("mutil_select_is_ret", true);
       Object localObject;
-      if (paramb.cjt() == 1)
+      if (paramb.cra() == 1)
       {
-        localObject = (com.tencent.mm.plugin.fav.a.g)paramb.kE(false).get(0);
+        localObject = (com.tencent.mm.plugin.fav.a.g)paramb.li(false).get(0);
         paramg.putExtra("select_fav_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).field_localId);
-        if (((com.tencent.mm.plugin.fav.a.g)localObject).pZE) {
-          paramg.putExtra("select_fav_fake_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).djR);
+        if (((com.tencent.mm.plugin.fav.a.g)localObject).qIl) {
+          paramg.putExtra("select_fav_fake_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).dhm);
         }
-        if ((localObject != null) && (Cq(((com.tencent.mm.plugin.fav.a.g)localObject).field_type) != -1)) {
-          paramg.putExtra("Retr_Msg_Type", Cq(((com.tencent.mm.plugin.fav.a.g)localObject).field_type));
+        if ((localObject != null) && (Dl(((com.tencent.mm.plugin.fav.a.g)localObject).field_type) != -1)) {
+          paramg.putExtra("Retr_Msg_Type", Dl(((com.tencent.mm.plugin.fav.a.g)localObject).field_type));
         }
-        if ((paramb.kE(false).get(0) != null) && (((com.tencent.mm.plugin.fav.a.g)paramb.kE(false).get(0)).field_type == 3))
+        if ((paramb.li(false).get(0) != null) && (((com.tencent.mm.plugin.fav.a.g)paramb.li(false).get(0)).field_type == 3))
         {
-          h.cf(paramContext, paramContext.getString(2131758987));
+          h.cg(paramContext, paramContext.getString(2131758987));
           AppMethodBeat.o(107059);
           return false;
         }
@@ -182,7 +182,7 @@ public final class p
       {
         paramg.putExtra("Retr_Msg_Type", 17);
         localObject = new k();
-        paramb = paramb.kE(false).iterator();
+        paramb = paramb.li(false).iterator();
         paramInt = i;
         while (paramb.hasNext()) {
           if (!((k)localObject).u((com.tencent.mm.plugin.fav.a.g)paramb.next())) {
@@ -204,15 +204,15 @@ public final class p
       if (paramg != null)
       {
         paramb.putExtra("select_fav_local_id", paramg.field_localId);
-        if (paramg.pZE) {
-          paramb.putExtra("select_fav_fake_local_id", paramg.djR);
+        if (paramg.qIl) {
+          paramb.putExtra("select_fav_fake_local_id", paramg.dhm);
         }
         if (paramg.field_type == 19) {
           paramb.putExtra("appbrand_params", c.F(paramg));
         }
       }
-      if ((paramg != null) && (Cq(paramg.field_type) != -1)) {
-        paramb.putExtra("Retr_Msg_Type", Cq(paramg.field_type));
+      if ((paramg != null) && (Dl(paramg.field_type) != -1)) {
+        paramb.putExtra("Retr_Msg_Type", Dl(paramg.field_type));
       }
       d.c(paramContext, ".ui.transmit.SelectConversationUI", paramb, 4106);
       AppMethodBeat.o(107059);
@@ -224,7 +224,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.p
  * JD-Core Version:    0.7.0.1
  */

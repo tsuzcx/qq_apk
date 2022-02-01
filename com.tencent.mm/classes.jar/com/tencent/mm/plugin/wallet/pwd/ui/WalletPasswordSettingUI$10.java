@@ -17,25 +17,25 @@ final class WalletPasswordSettingUI$10
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(187142);
+    AppMethodBeat.i(207262);
     super.onBindView(paramView);
-    if (this.GfO != null) {
+    if (this.HFD != null) {
       paramView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(187141);
-          WalletPasswordSettingUI.10.this.GfO.dbW();
-          AppMethodBeat.o(187141);
+          AppMethodBeat.i(207261);
+          WalletPasswordSettingUI.10.this.HFD.dpE();
+          AppMethodBeat.o(207261);
         }
       });
     }
-    AppMethodBeat.o(187142);
+    AppMethodBeat.o(207262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI.10
  * JD-Core Version:    0.7.0.1
  */

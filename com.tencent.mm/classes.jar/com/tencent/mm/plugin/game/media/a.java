@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.game.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b.c;
+import com.tencent.mm.ak.b.c;
 import com.tencent.mm.b.p;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
+import com.tencent.mm.plugin.gallery.model.i.c;
 import com.tencent.mm.plugin.gallery.model.o;
 import com.tencent.mm.plugin.game.b.b.f;
 import com.tencent.mm.plugin.game.b.b.g;
 import com.tencent.mm.plugin.game.b.b.h;
 import com.tencent.mm.plugin.game.b.b.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import java.io.Closeable;
 import java.io.IOException;
@@ -29,31 +31,31 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private static long osg;
-  private static final String rQR;
-  private static final String rQS;
-  private static a rRf;
-  private int fwP;
+  private static long oVG;
+  private static final String sYH;
+  private static final String sYI;
+  private static a sYV;
+  private int fAw;
   private Object lock;
-  private final HashMap<String, b> rQT;
-  private h rQU;
-  private LinkedList<com.tencent.mm.plugin.game.b.b.e> rQV;
-  LinkedList<com.tencent.mm.plugin.game.b.b.e> rQW;
-  LinkedList<com.tencent.mm.plugin.game.b.b.e> rQX;
-  private boolean rQY;
-  private String rQZ;
-  private long rRa;
-  private int rRb;
-  private boolean rRc;
-  private d rRd;
-  private int rRe;
+  private final HashMap<String, b> sYJ;
+  private h sYK;
+  private LinkedList<com.tencent.mm.plugin.game.b.b.e> sYL;
+  LinkedList<com.tencent.mm.plugin.game.b.b.e> sYM;
+  LinkedList<com.tencent.mm.plugin.game.b.b.e> sYN;
+  private boolean sYO;
+  private String sYP;
+  private long sYQ;
+  private int sYR;
+  private boolean sYS;
+  private d sYT;
+  private int sYU;
   
   static
   {
     AppMethodBeat.i(40942);
-    rQR = com.tencent.mm.plugin.game.commlib.e.b.a(com.tencent.mm.plugin.game.commlib.e.b.a.rOH) + "haowan/";
-    rQS = rQR + "haowan_gallery_cache";
-    osg = 0L;
+    sYH = com.tencent.mm.plugin.game.commlib.e.b.a(com.tencent.mm.plugin.game.commlib.e.b.a.sWx) + "haowan/";
+    sYI = sYH + "haowan_gallery_cache";
+    oVG = 0L;
     AppMethodBeat.o(40942);
   }
   
@@ -61,29 +63,29 @@ public final class a
   {
     AppMethodBeat.i(40913);
     this.lock = new Object();
-    this.rQT = new HashMap();
-    this.rQV = new LinkedList();
-    this.rQW = new LinkedList();
-    this.rQX = new LinkedList();
-    this.rQY = false;
-    this.rRd = null;
-    this.rRe = 0;
-    this.rQZ = ax.aFC(OH("game_haowan_mmkv_key")).getString("game_remote_ticket", null);
-    this.rRa = ax.aFC(OH("game_haowan_mmkv_key")).getLong("game_local_ticket", 0L);
-    cBQ();
+    this.sYJ = new HashMap();
+    this.sYL = new LinkedList();
+    this.sYM = new LinkedList();
+    this.sYN = new LinkedList();
+    this.sYO = false;
+    this.sYT = null;
+    this.sYU = 0;
+    this.sYP = aw.aKT(SR("game_haowan_mmkv_key")).getString("game_remote_ticket", null);
+    this.sYQ = aw.aKT(SR("game_haowan_mmkv_key")).getLong("game_local_ticket", 0L);
+    cPb();
     AppMethodBeat.o(40913);
   }
   
-  public static void En(int paramInt)
+  public static void Gj(int paramInt)
   {
     AppMethodBeat.i(40925);
-    ax localax = ax.aFC(OH("game_haowan_mmkv_key"));
-    localax.putInt("game_last_choose_gallery", paramInt);
-    localax.apply();
+    aw localaw = aw.aKT(SR("game_haowan_mmkv_key"));
+    localaw.putInt("game_last_choose_gallery", paramInt);
+    localaw.apply();
     AppMethodBeat.o(40925);
   }
   
-  private static String Eo(int paramInt)
+  private static String Gk(int paramInt)
   {
     AppMethodBeat.i(40932);
     String str = new p(paramInt).toString();
@@ -91,47 +93,57 @@ public final class a
     return str;
   }
   
-  private static String OH(String paramString)
+  private static String SR(String paramString)
   {
     AppMethodBeat.i(40931);
-    int i = com.tencent.mm.kernel.a.aeL();
+    int i = com.tencent.mm.kernel.a.agb();
     if (i == 0)
     {
       AppMethodBeat.o(40931);
       return paramString;
     }
-    paramString = paramString + "_" + Eo(i);
+    paramString = paramString + "_" + Gk(i);
     AppMethodBeat.o(40931);
     return paramString;
   }
   
-  public static void a(int paramInt, a.c paramc)
+  public static void a(int paramInt, c paramc)
   {
     AppMethodBeat.i(40924);
-    com.tencent.mm.plugin.gallery.model.e.czh().setQueryType(paramInt);
-    com.tencent.mm.plugin.gallery.model.e.czh().jWF = 15;
-    com.tencent.mm.plugin.gallery.model.e.czh().a(new a.5(paramc));
-    osg = System.currentTimeMillis();
-    com.tencent.mm.plugin.gallery.model.e.czh().as("", osg);
+    com.tencent.mm.plugin.gallery.model.e.cMt().setQueryType(paramInt);
+    com.tencent.mm.plugin.gallery.model.e.cMt().kxr = 15;
+    com.tencent.mm.plugin.gallery.model.e.cMt().a(new i.c()
+    {
+      public final void b(LinkedList<GalleryItem.MediaItem> paramAnonymousLinkedList, long paramAnonymousLong, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(40911);
+        if ((a.cPm() == paramAnonymousLong) && (this.sZb != null)) {
+          this.sZb.as(paramAnonymousLinkedList);
+        }
+        AppMethodBeat.o(40911);
+      }
+    });
+    oVG = System.currentTimeMillis();
+    com.tencent.mm.plugin.gallery.model.e.cMt().au("", oVG);
     AppMethodBeat.o(40924);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(40912);
-    if (rRf == null)
+    if (sYV == null)
     {
       parama.b(null, false);
       AppMethodBeat.o(40912);
       return;
     }
-    rRf.b(new a()
+    sYV.b(new a()
     {
       public final void b(LinkedList<com.tencent.mm.plugin.game.b.b.e> paramAnonymousLinkedList, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(40907);
-        if (this.rRg != null) {
-          this.rRg.b(a.cCa().rQX, paramAnonymousBoolean);
+        if (this.sYW != null) {
+          this.sYW.b(a.cPl().sYN, paramAnonymousBoolean);
         }
         AppMethodBeat.o(40907);
       }
@@ -141,82 +153,82 @@ public final class a
   
   public static void a(a parama)
   {
-    rRf = parama;
+    sYV = parama;
   }
   
-  private static void cBQ()
+  private static void cPb()
   {
     AppMethodBeat.i(40915);
-    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(rQR);
+    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(sYH);
     if ((!locale.exists()) || (!locale.isDirectory())) {
       locale.mkdirs();
     }
     AppMethodBeat.o(40915);
   }
   
-  private int cBS()
+  private int cPd()
   {
     AppMethodBeat.i(40919);
-    if (this.rRa == 0L)
+    if (this.sYQ == 0L)
     {
       AppMethodBeat.o(40919);
       return 0;
     }
-    int i = j.cCh().b(cBT(), System.currentTimeMillis(), this.rRa + 1L);
+    int i = j.cPs().b(cPe(), System.currentTimeMillis(), this.sYQ + 1L);
     AppMethodBeat.o(40919);
     return i;
   }
   
-  private LinkedList<String> cBT()
+  private LinkedList<String> cPe()
   {
     AppMethodBeat.i(40920);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.rQT.values().iterator();
+    Iterator localIterator = this.sYJ.values().iterator();
     while (localIterator.hasNext()) {
-      localLinkedList.add(((b)localIterator.next()).rBh);
+      localLinkedList.add(((b)localIterator.next()).sJZ);
     }
     AppMethodBeat.o(40920);
     return localLinkedList;
   }
   
-  public static int cBV()
+  public static int cPg()
   {
     AppMethodBeat.i(40926);
-    int i = ax.aFC(OH("game_haowan_mmkv_key")).getInt("game_last_choose_gallery", 0);
+    int i = aw.aKT(SR("game_haowan_mmkv_key")).getInt("game_last_choose_gallery", 0);
     AppMethodBeat.o(40926);
     return i;
   }
   
-  public static void cBW()
+  public static void cPh()
   {
     AppMethodBeat.i(40927);
-    ax localax = ax.aFC(OH("game_haowan_mmkv_key"));
-    localax.putBoolean("game_tab_gallery_first_enter", false);
-    localax.apply();
+    aw localaw = aw.aKT(SR("game_haowan_mmkv_key"));
+    localaw.putBoolean("game_tab_gallery_first_enter", false);
+    localaw.apply();
     AppMethodBeat.o(40927);
   }
   
-  public static boolean cBX()
+  public static boolean cPi()
   {
     AppMethodBeat.i(40928);
-    boolean bool = ax.aFC(OH("game_haowan_mmkv_key")).getBoolean("game_tab_gallery_first_enter", true);
+    boolean bool = aw.aKT(SR("game_haowan_mmkv_key")).getBoolean("game_tab_gallery_first_enter", true);
     AppMethodBeat.o(40928);
     return bool;
   }
   
-  public static void cBY()
+  public static void cPj()
   {
     AppMethodBeat.i(40929);
-    ax localax = ax.aFC(OH("game_haowan_mmkv_key"));
-    localax.putBoolean("game_publish_gallery_first_enter", false);
-    localax.apply();
+    aw localaw = aw.aKT(SR("game_haowan_mmkv_key"));
+    localaw.putBoolean("game_publish_gallery_first_enter", false);
+    localaw.apply();
     AppMethodBeat.o(40929);
   }
   
-  public static boolean cBZ()
+  public static boolean cPk()
   {
     AppMethodBeat.i(40930);
-    boolean bool = ax.aFC(OH("game_haowan_mmkv_key")).getBoolean("game_publish_gallery_first_enter", true);
+    boolean bool = aw.aKT(SR("game_haowan_mmkv_key")).getBoolean("game_publish_gallery_first_enter", true);
     AppMethodBeat.o(40930);
     return bool;
   }
@@ -240,33 +252,33 @@ public final class a
   public final void b(final a parama)
   {
     AppMethodBeat.i(40921);
-    if (this.rQY)
+    if (this.sYO)
     {
-      ad.i("MicroMsg.GameHaowanDataCenter", "gettingDataFromNet, return");
+      ac.i("MicroMsg.GameHaowanDataCenter", "gettingDataFromNet, return");
       AppMethodBeat.o(40921);
       return;
     }
-    ad.d("MicroMsg.GameHaowanDataCenter", "getDataFromNet");
-    this.rQY = true;
+    ac.d("MicroMsg.GameHaowanDataCenter", "getDataFromNet");
+    this.sYO = true;
     final g localg = new g();
-    if (this.rQU != null) {}
-    for (long l = this.rQU.rNR;; l = 0L)
+    if (this.sYK != null) {}
+    for (long l = this.sYK.sVI;; l = 0L)
     {
       localg.offset = l;
       if (localg.offset == 0L) {
-        localg.rNE = this.rQZ;
+        localg.sVt = this.sYP;
       }
-      com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
+      com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
       locala.uri = "/cgi-bin/mmgame-bin/getuservideolist";
       locala.funcId = 3549;
-      locala.gUU = localg;
-      locala.gUV = new h();
-      IPCRunCgi.a(locala.atI(), new IPCRunCgi.a()
+      locala.hvt = localg;
+      locala.hvu = new h();
+      IPCRunCgi.a(locala.aAz(), new IPCRunCgi.a()
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb)
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
         {
           AppMethodBeat.i(40908);
-          ad.i("MicroMsg.GameHaowanDataCenter", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          ac.i("MicroMsg.GameHaowanDataCenter", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
           if (localg.offset == 0L)
           {
             a.b(a.this).clear();
@@ -275,7 +287,7 @@ public final class a
           long l1;
           label101:
           long l2;
-          if (!bt.gL(a.b(a.this)))
+          if (!bs.gY(a.b(a.this)))
           {
             paramAnonymousString = (com.tencent.mm.plugin.game.b.b.e)a.b(a.this).getLast();
             if (paramAnonymousString == null) {
@@ -285,20 +297,20 @@ public final class a
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
               break label454;
             }
-            a.a(a.this, (h)paramAnonymousb.gUT.gUX);
-            ad.d("MicroMsg.GameHaowanDataCenter", "new_count = %d", new Object[] { Integer.valueOf(a.d(a.this).nrk) });
+            a.a(a.this, (h)paramAnonymousb.hvs.hvw);
+            ac.d("MicroMsg.GameHaowanDataCenter", "new_count = %d", new Object[] { Integer.valueOf(a.d(a.this).nUk) });
             paramAnonymousString = a.a(a.d(a.this));
             if (localg.offset == 0L)
             {
-              a.a(a.this, a.d(a.this).nrk + a.e(a.this));
-              a.b(a.this, a.d(a.this).msg + a.f(a.this));
-              a.acl(a.d(a.this).rNE);
-              a.qU(System.currentTimeMillis());
+              a.a(a.this, a.d(a.this).nUk + a.e(a.this));
+              a.b(a.this, a.d(a.this).mUh + a.f(a.this));
+              a.ahd(a.d(a.this).sVt);
+              a.vx(System.currentTimeMillis());
             }
-            if ((!a.d(a.this).ocU) || (bt.gL(a.d(a.this).rNS))) {
+            if ((!a.d(a.this).oGt) || (bs.gY(a.d(a.this).sVJ))) {
               break label448;
             }
-            l2 = ((m)a.d(a.this).rNS.getLast()).rOh * 1000L;
+            l2 = ((m)a.d(a.this).sVJ.getLast()).sVY * 1000L;
             label303:
             paramAnonymousb = a.a(a.this, l1, l2);
             LinkedList localLinkedList = new LinkedList();
@@ -310,7 +322,7 @@ public final class a
             a.c(a.this, localLinkedList);
             a.g(a.this);
             if (parama != null) {
-              parama.b(a.h(a.this), a.d(a.this).ocU);
+              parama.b(a.h(a.this), a.d(a.this).oGt);
             }
           }
           for (;;)
@@ -348,13 +360,13 @@ public final class a
     }
   }
   
-  public final LinkedList<com.tencent.mm.plugin.game.b.b.e> cBR()
+  public final LinkedList<com.tencent.mm.plugin.game.b.b.e> cPc()
   {
     AppMethodBeat.i(40917);
     try
     {
-      localObject2 = new com.tencent.mm.vfs.e(rQS);
-      localObject1 = i.openRead(rQS);
+      localObject2 = new com.tencent.mm.vfs.e(sYI);
+      localObject1 = i.openRead(sYI);
       try
       {
         Object localObject3 = new byte[(int)((com.tencent.mm.vfs.e)localObject2).length()];
@@ -362,19 +374,19 @@ public final class a
         localObject2 = new f();
         ((f)localObject2).parseFrom((byte[])localObject3);
         safeClose((Closeable)localObject1);
-        this.rQV = ((f)localObject2).rNQ;
-        if (bt.gL(this.rQV)) {
+        this.sYL = ((f)localObject2).sVH;
+        if (bs.gY(this.sYL)) {
           break label174;
         }
-        localObject3 = this.rQV.iterator();
+        localObject3 = this.sYL.iterator();
         while (((Iterator)localObject3).hasNext())
         {
           com.tencent.mm.plugin.game.b.b.e locale = (com.tencent.mm.plugin.game.b.b.e)((Iterator)localObject3).next();
-          if ((!locale.rNJ) && (!locale.rNK)) {
-            this.rQW.add(locale);
+          if ((!locale.sVz) && (!locale.sVA)) {
+            this.sYM.add(locale);
           }
         }
-        ad.e("MicroMsg.GameHaowanDataCenter", "parseGlobalConfig: " + ((Exception)localObject1).getMessage());
+        ac.e("MicroMsg.GameHaowanDataCenter", "parseGlobalConfig: " + ((Exception)localObject1).getMessage());
       }
       catch (Exception localException2)
       {
@@ -394,40 +406,40 @@ public final class a
     AppMethodBeat.o(40917);
     return null;
     label174:
-    localObject2 = ((f)localObject2).rNQ;
+    localObject2 = ((f)localObject2).sVH;
     AppMethodBeat.o(40917);
     return localObject2;
   }
   
-  public final String cBU()
+  public final String cPf()
   {
     AppMethodBeat.i(40922);
     Object localObject1 = new IPCString();
-    final int i = cBS();
+    final int i = cPd();
     ??? = new com.tencent.mm.plugin.game.b.b.a();
-    ((com.tencent.mm.plugin.game.b.b.a)???).rNE = this.rQZ;
-    com.tencent.mm.al.b.a locala = new com.tencent.mm.al.b.a();
+    ((com.tencent.mm.plugin.game.b.b.a)???).sVt = this.sYP;
+    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
     locala.uri = "/cgi-bin/mmgame-bin/checkuserifhasnewvideo";
     locala.funcId = 3911;
-    locala.gUU = ((com.tencent.mm.bx.a)???);
-    locala.gUV = new com.tencent.mm.plugin.game.b.b.b();
-    IPCRunCgi.a(locala.atI(), new IPCRunCgi.a()
+    locala.hvt = ((com.tencent.mm.bw.a)???);
+    locala.hvu = new com.tencent.mm.plugin.game.b.b.b();
+    IPCRunCgi.a(locala.aAz(), new IPCRunCgi.a()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String arg3, com.tencent.mm.al.b paramAnonymousb)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String arg3, com.tencent.mm.ak.b paramAnonymousb)
       {
         AppMethodBeat.i(40909);
-        ad.i("MicroMsg.GameHaowanDataCenter", "checkNewVideo errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        ac.i("MicroMsg.GameHaowanDataCenter", "checkNewVideo errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          ??? = (com.tencent.mm.plugin.game.b.b.b)paramAnonymousb.gUT.gUX;
-          paramAnonymousb = bt.nullAsNil(???.desc);
+          ??? = (com.tencent.mm.plugin.game.b.b.b)paramAnonymousb.hvs.hvw;
+          paramAnonymousb = bs.nullAsNil(???.desc);
           if (!paramAnonymousb.contains("[count]")) {
             break label131;
           }
           paramAnonymousInt1 = i;
-          paramAnonymousInt1 = ???.nrk + paramAnonymousInt1;
+          paramAnonymousInt1 = ???.nUk + paramAnonymousInt1;
           if (paramAnonymousInt1 > 0) {
-            this.rRk.value = paramAnonymousb.replace("[count]", String.valueOf(paramAnonymousInt1));
+            this.sZa.value = paramAnonymousb.replace("[count]", String.valueOf(paramAnonymousInt1));
           }
         }
         synchronized (a.j(a.this))
@@ -436,7 +448,7 @@ public final class a
           AppMethodBeat.o(40909);
           return;
           label131:
-          this.rRk.value = paramAnonymousb;
+          this.sZa.value = paramAnonymousb;
         }
       }
     });
@@ -453,7 +465,7 @@ public final class a
       {
         for (;;)
         {
-          ad.printErrStackTrace("MicroMsg.GameHaowanDataCenter", localInterruptedException, "", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.GameHaowanDataCenter", localInterruptedException, "", new Object[0]);
         }
       }
     }
@@ -463,28 +475,28 @@ public final class a
   {
     AppMethodBeat.i(40916);
     Object localObject1 = new f();
-    Object localObject2 = this.rQV.iterator();
+    Object localObject2 = this.sYL.iterator();
     do
     {
       if (!((Iterator)localObject2).hasNext()) {
         break;
       }
-    } while (!((com.tencent.mm.plugin.game.b.b.e)((Iterator)localObject2).next()).rNK);
-    for (int i = this.rQV.indexOf(Integer.valueOf(-1));; i = -1)
+    } while (!((com.tencent.mm.plugin.game.b.b.e)((Iterator)localObject2).next()).sVA);
+    for (int i = this.sYL.indexOf(Integer.valueOf(-1));; i = -1)
     {
       if (i > 0) {
-        this.rQV.remove(i);
+        this.sYL.remove(i);
       }
-      ((f)localObject1).rNQ = this.rQV;
-      cBQ();
+      ((f)localObject1).sVH = this.sYL;
+      cPb();
       label118:
       for (;;)
       {
         try
         {
           localObject2 = ((f)localObject1).toByteArray();
-          localObject1 = i.cM(rQS, false);
-          ad.e("MicroMsg.GameHaowanDataCenter", "cacheData: " + localIOException1.getMessage());
+          localObject1 = i.cS(sYI, false);
+          ac.e("MicroMsg.GameHaowanDataCenter", "cacheData: " + localIOException1.getMessage());
         }
         catch (IOException localIOException1)
         {
@@ -492,7 +504,7 @@ public final class a
           {
             ((OutputStream)localObject1).write((byte[])localObject2);
             safeClose((Closeable)localObject1);
-            rRf = null;
+            sYV = null;
             AppMethodBeat.o(40916);
             return;
           }
@@ -509,7 +521,7 @@ public final class a
   
   public final boolean hasNext()
   {
-    return (this.rQU != null) && (this.rQU.ocU);
+    return (this.sYK != null) && (this.sYK.oGt);
   }
   
   public final void v(JSONArray paramJSONArray)
@@ -527,9 +539,9 @@ public final class a
       b localb = new b((byte)0);
       localb.appId = localJSONObject.optString("appId");
       localb.appName = localJSONObject.optString("gameName");
-      localb.rBh = localJSONObject.optString("albumName");
-      localb.idL = localJSONObject.optString("defaultTitle");
-      this.rQT.put(localb.rBh, localb);
+      localb.sJZ = localJSONObject.optString("albumName");
+      localb.iDU = localJSONObject.optString("defaultTitle");
+      this.sYJ.put(localb.sJZ, localb);
       i += 1;
     }
     AppMethodBeat.o(40914);
@@ -544,8 +556,13 @@ public final class a
   {
     String appId;
     String appName;
-    String idL;
-    String rBh;
+    String iDU;
+    String sJZ;
+  }
+  
+  static abstract interface c
+  {
+    public abstract void as(LinkedList<GalleryItem.MediaItem> paramLinkedList);
   }
   
   public static final class d
@@ -560,7 +577,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.a
  * JD-Core Version:    0.7.0.1
  */

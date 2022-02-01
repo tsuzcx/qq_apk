@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class rv
   extends b
 {
-  public a dxs;
+  public a duM;
   
   public rv()
   {
@@ -15,25 +16,23 @@ public final class rv
   
   private rv(byte paramByte)
   {
-    AppMethodBeat.i(120832);
-    this.dxs = new a();
-    this.ESR = false;
+    AppMethodBeat.i(146075);
+    this.duM = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(120832);
+    AppMethodBeat.o(146075);
   }
   
   public static final class a
   {
-    public int dcS;
-    public boolean dcq;
-    public String dxt;
-    public String dxu;
-    public String dxv;
+    public int action = 0;
+    public String cardNum;
+    public Bitmap duN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.rv
  * JD-Core Version:    0.7.0.1
  */

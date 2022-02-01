@@ -12,13 +12,13 @@ final class FreeWifiEntryUI$3
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25012);
-    this.rkc.finish();
+    this.ssV.finish();
     AppMethodBeat.o(25012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiEntryUI.3
  * JD-Core Version:    0.7.0.1
  */

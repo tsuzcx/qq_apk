@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.appbrand.z.g;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,8 +14,8 @@ public class SetTransformActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTransformActionArg> CREATOR;
-  public float iZv;
-  public float iZw;
+  public float jzK;
+  public float jzL;
   public float scaleX;
   public float scaleY;
   public float translateX;
@@ -59,7 +59,7 @@ public class SetTransformActionArg
       return false;
     }
     paramObject = (SetTransformActionArg)paramObject;
-    if ((Float.compare(paramObject.scaleX, this.scaleX) == 0) && (Float.compare(paramObject.iZv, this.iZv) == 0) && (Float.compare(paramObject.iZw, this.iZw) == 0) && (Float.compare(paramObject.scaleY, this.scaleY) == 0) && (Float.compare(paramObject.translateX, this.translateX) == 0) && (Float.compare(paramObject.translateY, this.translateY) == 0))
+    if ((Float.compare(paramObject.scaleX, this.scaleX) == 0) && (Float.compare(paramObject.jzK, this.jzK) == 0) && (Float.compare(paramObject.jzL, this.jzL) == 0) && (Float.compare(paramObject.scaleY, this.scaleY) == 0) && (Float.compare(paramObject.translateX, this.translateX) == 0) && (Float.compare(paramObject.translateY, this.translateY) == 0))
     {
       AppMethodBeat.o(145258);
       return true;
@@ -73,8 +73,8 @@ public class SetTransformActionArg
     AppMethodBeat.i(145255);
     super.h(paramParcel);
     this.scaleX = paramParcel.readFloat();
-    this.iZv = paramParcel.readFloat();
-    this.iZw = paramParcel.readFloat();
+    this.jzK = paramParcel.readFloat();
+    this.jzL = paramParcel.readFloat();
     this.scaleY = paramParcel.readFloat();
     this.translateX = paramParcel.readFloat();
     this.translateY = paramParcel.readFloat();
@@ -84,7 +84,7 @@ public class SetTransformActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145259);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.scaleX), Float.valueOf(this.iZv), Float.valueOf(this.iZw), Float.valueOf(this.scaleY), Float.valueOf(this.translateX), Float.valueOf(this.translateY) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.scaleX), Float.valueOf(this.jzK), Float.valueOf(this.jzL), Float.valueOf(this.scaleY), Float.valueOf(this.translateX), Float.valueOf(this.translateY) });
     AppMethodBeat.o(145259);
     return i;
   }
@@ -97,8 +97,8 @@ public class SetTransformActionArg
     try
     {
       this.scaleX = ((float)paramJSONObject.getDouble(0));
-      this.iZv = ((float)paramJSONObject.getDouble(1));
-      this.iZw = ((float)paramJSONObject.getDouble(2));
+      this.jzK = ((float)paramJSONObject.getDouble(1));
+      this.jzL = ((float)paramJSONObject.getDouble(2));
       this.scaleY = ((float)paramJSONObject.getDouble(3));
       this.translateX = g.e(paramJSONObject, 4);
       this.translateY = g.e(paramJSONObject, 5);
@@ -107,7 +107,7 @@ public class SetTransformActionArg
     }
     catch (JSONException paramJSONObject)
     {
-      ad.printErrStackTrace("SetTransformActionArg", paramJSONObject, "", new Object[0]);
+      ac.printErrStackTrace("SetTransformActionArg", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(145256);
     }
   }
@@ -117,8 +117,8 @@ public class SetTransformActionArg
     AppMethodBeat.i(145257);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.scaleY);
-    paramParcel.writeFloat(this.iZv);
-    paramParcel.writeFloat(this.iZw);
+    paramParcel.writeFloat(this.jzK);
+    paramParcel.writeFloat(this.jzL);
     paramParcel.writeFloat(this.scaleY);
     paramParcel.writeFloat(this.translateX);
     paramParcel.writeFloat(this.translateY);
@@ -127,7 +127,7 @@ public class SetTransformActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTransformActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ public abstract interface c
   public static final class a
   {
     public String businessType;
-    public String dbt;
-    public int dzS;
-    public String dzT;
-    public String jYX;
-    public String jdE;
+    public String cYP;
+    public int dxE;
+    public String dxF;
+    public String jDS;
+    public String kzK;
     public int scene;
     public int sourceType;
   }
@@ -28,12 +28,12 @@ public abstract interface c
   
   public static abstract interface c
   {
-    public abstract void k(boolean paramBoolean, String paramString);
+    public abstract void l(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c
  * JD-Core Version:    0.7.0.1
  */

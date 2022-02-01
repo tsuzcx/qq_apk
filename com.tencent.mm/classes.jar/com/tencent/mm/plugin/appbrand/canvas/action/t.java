@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontStyleActionArg;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -44,14 +44,14 @@ public final class t
       }
       i = 2;
       break;
-      paramd.iYL.qS(2);
-      paramd.iYM.qS(2);
+      paramd.jzb.rF(2);
+      paramd.jzc.rF(2);
       continue;
-      paramd.iYL.qS(2);
-      paramd.iYM.qS(2);
+      paramd.jzb.rF(2);
+      paramd.jzc.rF(2);
       continue;
-      paramd.iYL.qS(0);
-      paramd.iYM.qS(0);
+      paramd.jzb.rF(0);
+      paramd.jzc.rF(0);
     }
   }
   
@@ -64,7 +64,7 @@ public final class t
       AppMethodBeat.o(144928);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.iZl);
+    boolean bool = b(paramd, paramCanvas.jzA);
     AppMethodBeat.o(144928);
     return bool;
   }
@@ -86,13 +86,13 @@ public final class t
     }
     catch (JSONException paramd)
     {
-      ad.i("MicroMsg.SetFontStyle", "get 'fontStyle' error.");
+      ac.i("MicroMsg.SetFontStyle", "get 'fontStyle' error.");
       AppMethodBeat.o(144926);
     }
     return false;
   }
   
-  public final BaseDrawActionArg aSP()
+  public final BaseDrawActionArg aZO()
   {
     AppMethodBeat.i(144925);
     SetFontStyleActionArg localSetFontStyleActionArg = new SetFontStyleActionArg();
@@ -107,7 +107,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.t
  * JD-Core Version:    0.7.0.1
  */

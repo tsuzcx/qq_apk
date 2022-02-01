@@ -2,9 +2,9 @@ package com.tencent.mm.modelappbrand;
 
 public abstract interface k$c
 {
-  public abstract void atO();
+  public abstract void aAF();
   
-  public abstract void ec(boolean paramBoolean);
+  public abstract void ex(boolean paramBoolean);
 }
 
 

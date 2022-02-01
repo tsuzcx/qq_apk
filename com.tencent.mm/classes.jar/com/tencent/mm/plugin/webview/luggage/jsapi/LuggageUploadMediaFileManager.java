@@ -22,52 +22,52 @@ import com.tencent.mm.plugin.webview.model.am;
 import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.model.f.b;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.HashMap;
 
 public final class LuggageUploadMediaFileManager
 {
-  private static ProgressDialog fpP = null;
-  public f ASM;
-  public String AVW;
-  public boolean AVX;
-  public b AVY;
+  private static ProgressDialog fts = null;
+  public f CkZ;
+  public String Coj;
+  public boolean Cok;
+  public b Col;
   public String mAppId;
-  public MMActivity nCW;
+  public MMActivity ofX;
   
-  final void elC()
+  final void eAY()
   {
     AppMethodBeat.i(78666);
-    if (this.ASM.ekS() != null)
+    if (this.CkZ.eAo() != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("close_window_confirm_dialog_switch", true);
-      localBundle.putString("close_window_confirm_dialog_title_cn", this.nCW.getString(2131766115));
-      localBundle.putString("close_window_confirm_dialog_title_eng", this.nCW.getString(2131766115));
-      localBundle.putString("close_window_confirm_dialog_ok_cn", this.nCW.getString(2131766111));
-      localBundle.putString("close_window_confirm_dialog_ok_eng", this.nCW.getString(2131766111));
-      localBundle.putString("close_window_confirm_dialog_cancel_cn", this.nCW.getString(2131766112));
-      localBundle.putString("close_window_confirm_dialog_cancel_eng", this.nCW.getString(2131766112));
-      this.ASM.ekS().setCloseWindowConfirmInfo(localBundle);
+      localBundle.putString("close_window_confirm_dialog_title_cn", this.ofX.getString(2131766115));
+      localBundle.putString("close_window_confirm_dialog_title_eng", this.ofX.getString(2131766115));
+      localBundle.putString("close_window_confirm_dialog_ok_cn", this.ofX.getString(2131766111));
+      localBundle.putString("close_window_confirm_dialog_ok_eng", this.ofX.getString(2131766111));
+      localBundle.putString("close_window_confirm_dialog_cancel_cn", this.ofX.getString(2131766112));
+      localBundle.putString("close_window_confirm_dialog_cancel_eng", this.ofX.getString(2131766112));
+      this.CkZ.eAo().setCloseWindowConfirmInfo(localBundle);
     }
-    elD();
+    eAZ();
     AppMethodBeat.o(78666);
   }
   
-  final void elD()
+  final void eAZ()
   {
     AppMethodBeat.i(78667);
-    if (this.AVX)
+    if (this.Cok)
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putString("local_id", this.AVW);
+      ((Bundle)localObject).putString("local_id", this.Coj);
       ((Bundle)localObject).putString("app_id", this.mAppId);
-      ((Bundle)localObject).putBoolean("show_progress_tips", this.AVX);
-      b.a(this.nCW, (Bundle)localObject, c.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
+      ((Bundle)localObject).putBoolean("show_progress_tips", this.Cok);
+      b.a(this.ofX, (Bundle)localObject, c.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
       {
         public final void q(Bundle paramAnonymousBundle)
         {
@@ -77,13 +77,13 @@ public final class LuggageUploadMediaFileManager
             HashMap localHashMap = new HashMap();
             String str = paramAnonymousBundle.getString("media_id");
             paramAnonymousBundle = paramAnonymousBundle.getString("media_url");
-            localHashMap.put("serverId", bt.nullAsNil(str));
-            localHashMap.put("mediaUrl", bt.nullAsNil(paramAnonymousBundle));
-            LuggageUploadMediaFileManager.this.AVY.a(true, localHashMap);
+            localHashMap.put("serverId", bs.nullAsNil(str));
+            localHashMap.put("mediaUrl", bs.nullAsNil(paramAnonymousBundle));
+            LuggageUploadMediaFileManager.this.Col.a(true, localHashMap);
             AppMethodBeat.o(78646);
             return;
           }
-          LuggageUploadMediaFileManager.this.AVY.a(false, null);
+          LuggageUploadMediaFileManager.this.Col.a(false, null);
           AppMethodBeat.o(78646);
         }
       });
@@ -91,29 +91,29 @@ public final class LuggageUploadMediaFileManager
       return;
     }
     Object localObject = new UploadMediaFileTask();
-    ((UploadMediaFileTask)localObject).AWi = this.AVW;
+    ((UploadMediaFileTask)localObject).Cov = this.Coj;
     ((UploadMediaFileTask)localObject).appId = this.mAppId;
-    ((UploadMediaFileTask)localObject).jwt = new Runnable()
+    ((UploadMediaFileTask)localObject).jWP = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(78647);
-        this.AWa.aXn();
+        this.Con.bek();
         LuggageUploadMediaFileManager.b(LuggageUploadMediaFileManager.this);
-        if (this.AWa.success)
+        if (this.Con.success)
         {
           HashMap localHashMap = new HashMap();
-          localHashMap.put("serverId", bt.nullAsNil(this.AWa.mediaId));
-          localHashMap.put("mediaUrl", bt.nullAsNil(this.AWa.AWj));
-          LuggageUploadMediaFileManager.this.AVY.a(true, localHashMap);
+          localHashMap.put("serverId", bs.nullAsNil(this.Con.mediaId));
+          localHashMap.put("mediaUrl", bs.nullAsNil(this.Con.Cow));
+          LuggageUploadMediaFileManager.this.Col.a(true, localHashMap);
           AppMethodBeat.o(78647);
           return;
         }
-        LuggageUploadMediaFileManager.this.AVY.a(false, null);
+        LuggageUploadMediaFileManager.this.Col.a(false, null);
         AppMethodBeat.o(78647);
       }
     };
-    ((UploadMediaFileTask)localObject).aXm();
+    ((UploadMediaFileTask)localObject).bej();
     AppBrandMainProcessService.a((MainProcessTask)localObject);
     AppMethodBeat.o(78667);
   }
@@ -122,11 +122,11 @@ public final class LuggageUploadMediaFileManager
     extends MainProcessTask
   {
     public static final Parcelable.Creator<UploadMediaFileTask> CREATOR;
-    private LuggageUploadMediaFileManager.a AWf;
-    public String AWi;
-    public String AWj;
+    private LuggageUploadMediaFileManager.a Cos;
+    public String Cov;
+    public String Cow;
     public String appId;
-    public Runnable jwt;
+    public Runnable jWP;
     public String mediaId;
     public boolean success;
     
@@ -146,38 +146,29 @@ public final class LuggageUploadMediaFileManager
       AppMethodBeat.o(78663);
     }
     
-    public final void aEA()
-    {
-      AppMethodBeat.i(78660);
-      if (this.jwt != null) {
-        this.jwt.run();
-      }
-      AppMethodBeat.o(78660);
-    }
-    
-    public final void aEz()
+    public final void aLq()
     {
       AppMethodBeat.i(78659);
-      ad.i("MicroMsg.UploadMediaTask", "runInMainProcess");
-      if (this.AWf == null) {
-        this.AWf = new LuggageUploadMediaFileManager.a()
+      ac.i("MicroMsg.UploadMediaTask", "runInMainProcess");
+      if (this.Cos == null) {
+        this.Cos = new LuggageUploadMediaFileManager.a()
         {
           public final void d(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2)
           {
             AppMethodBeat.i(78657);
-            ad.i("MicroMsg.UploadMediaTask", "success = %b, mediaId = %s, mediaUrl = %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
+            ac.i("MicroMsg.UploadMediaTask", "success = %b, mediaId = %s, mediaUrl = %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString1, paramAnonymousString2 });
             LuggageUploadMediaFileManager.UploadMediaFileTask.this.success = paramAnonymousBoolean;
             LuggageUploadMediaFileManager.UploadMediaFileTask.this.mediaId = paramAnonymousString1;
-            LuggageUploadMediaFileManager.UploadMediaFileTask.this.AWj = paramAnonymousString2;
+            LuggageUploadMediaFileManager.UploadMediaFileTask.this.Cow = paramAnonymousString2;
             LuggageUploadMediaFileManager.UploadMediaFileTask.a(LuggageUploadMediaFileManager.UploadMediaFileTask.this);
             AppMethodBeat.o(78657);
           }
         };
       }
-      WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.emF().awC(this.AWi);
+      WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eCa().aBU(this.Cov);
       if (localWebViewJSSDKFileItem == null)
       {
-        aXw();
+        bet();
         AppMethodBeat.o(78659);
         return;
       }
@@ -186,26 +177,35 @@ public final class LuggageUploadMediaFileManager
       case 2: 
       case 3: 
       default: 
-        LuggageUploadMediaFileManager.a(aj.getContext(), this.appId, this.AWi, com.tencent.mm.i.a.fne, false, this.AWf);
+        LuggageUploadMediaFileManager.a(ai.getContext(), this.appId, this.Cov, com.tencent.mm.i.a.fqy, false, this.Cos);
         AppMethodBeat.o(78659);
         return;
       case 1: 
-        LuggageUploadMediaFileManager.a(aj.getContext(), localWebViewJSSDKFileItem, this.appId, this.AWi, com.tencent.mm.i.a.fnd, false, this.AWf);
+        LuggageUploadMediaFileManager.a(ai.getContext(), localWebViewJSSDKFileItem, this.appId, this.Cov, com.tencent.mm.i.a.fqx, false, this.Cos);
         AppMethodBeat.o(78659);
         return;
       }
-      LuggageUploadMediaFileManager.a(aj.getContext(), this.appId, this.AWi, com.tencent.mm.i.a.fne, false, this.AWf);
+      LuggageUploadMediaFileManager.a(ai.getContext(), this.appId, this.Cov, com.tencent.mm.i.a.fqy, false, this.Cos);
       AppMethodBeat.o(78659);
+    }
+    
+    public final void aLr()
+    {
+      AppMethodBeat.i(78660);
+      if (this.jWP != null) {
+        this.jWP.run();
+      }
+      AppMethodBeat.o(78660);
     }
     
     public final void e(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(78661);
-      this.AWi = paramParcel.readString();
+      this.Cov = paramParcel.readString();
       this.appId = paramParcel.readString();
       this.mediaId = paramParcel.readString();
-      this.AWj = paramParcel.readString();
+      this.Cow = paramParcel.readString();
       if (paramParcel.readByte() == 1) {}
       for (;;)
       {
@@ -219,10 +219,10 @@ public final class LuggageUploadMediaFileManager
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(78662);
-      paramParcel.writeString(this.AWi);
+      paramParcel.writeString(this.Cov);
       paramParcel.writeString(this.appId);
       paramParcel.writeString(this.mediaId);
-      paramParcel.writeString(this.AWj);
+      paramParcel.writeString(this.Cow);
       if (this.success) {}
       for (paramInt = 1;; paramInt = 0)
       {
@@ -246,13 +246,13 @@ public final class LuggageUploadMediaFileManager
   public static class c
     implements c
   {
-    private LuggageUploadMediaFileManager.a AWf;
-    private com.tencent.mm.plugin.webview.luggage.ipc.a AWg;
+    private LuggageUploadMediaFileManager.a Cos;
+    private com.tencent.mm.plugin.webview.luggage.ipc.a Cot;
     
     public c()
     {
       AppMethodBeat.i(78655);
-      this.AWf = new LuggageUploadMediaFileManager.a()
+      this.Cos = new LuggageUploadMediaFileManager.a()
       {
         public final void d(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2)
         {
@@ -279,11 +279,11 @@ public final class LuggageUploadMediaFileManager
     public final void a(Context paramContext, Bundle paramBundle, com.tencent.mm.plugin.webview.luggage.ipc.a parama)
     {
       AppMethodBeat.i(78656);
-      this.AWg = parama;
+      this.Cot = parama;
       String str1 = paramBundle.getString("local_id");
       String str2 = paramBundle.getString("app_id");
       boolean bool = paramBundle.getBoolean("show_progress_tips");
-      paramBundle = g.emF().awC(str1);
+      paramBundle = g.eCa().aBU(str1);
       if (paramBundle == null)
       {
         parama.q(null);
@@ -295,15 +295,15 @@ public final class LuggageUploadMediaFileManager
       case 2: 
       case 3: 
       default: 
-        LuggageUploadMediaFileManager.a(paramContext, str2, str1, com.tencent.mm.i.a.fne, bool, this.AWf);
+        LuggageUploadMediaFileManager.a(paramContext, str2, str1, com.tencent.mm.i.a.fqy, bool, this.Cos);
         AppMethodBeat.o(78656);
         return;
       case 1: 
-        LuggageUploadMediaFileManager.a(paramContext, paramBundle, str2, str1, com.tencent.mm.i.a.fnd, bool, this.AWf);
+        LuggageUploadMediaFileManager.a(paramContext, paramBundle, str2, str1, com.tencent.mm.i.a.fqx, bool, this.Cos);
         AppMethodBeat.o(78656);
         return;
       }
-      LuggageUploadMediaFileManager.a(paramContext, str2, str1, com.tencent.mm.i.a.fne, bool, this.AWf);
+      LuggageUploadMediaFileManager.a(paramContext, str2, str1, com.tencent.mm.i.a.fqy, bool, this.Cos);
       AppMethodBeat.o(78656);
     }
   }

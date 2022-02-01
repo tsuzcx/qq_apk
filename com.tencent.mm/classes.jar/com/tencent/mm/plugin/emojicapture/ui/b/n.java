@@ -4,31 +4,31 @@ import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.model.d.a;
 import com.tencent.mm.plugin.xlabeffect.XLabEffect;
-import com.tencent.mm.sticker.e;
+import com.tencent.mm.sticker.f;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewRender;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "mode", "", "(I)V", "faceTrackHeight", "faceTrackWidth", "filterOutputTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "inputRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "lastSticker", "Lcom/tencent/mm/sticker/StickerPack;", "outputRenderProc", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewOutputProc;", "previewHeight", "previewRect", "Landroid/graphics/Rect;", "previewWidth", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "changeSticker", "", "stickerPack", "doInitRenderProc", "release", "shouldDestroySurfaceTexture", "", "render", "resizeContent", "resizePreview", "setInitPreviewRect", "updateDrawViewSize", "width", "height", "updateMode", "Companion", "plugin-emojicapture_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewRender;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "mode", "", "(I)V", "faceTrackHeight", "faceTrackWidth", "filterOutputTextureObj", "Lcom/tencent/mm/media/globject/GLTextureObject;", "inputRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "lastSticker", "Lcom/tencent/mm/sticker/StickerPack;", "outputRenderProc", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewOutputProc;", "previewHeight", "previewRect", "Landroid/graphics/Rect;", "previewWidth", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "changeSticker", "", "stickerPack", "doInitRenderProc", "release", "shouldDestroySurfaceTexture", "", "render", "resizeContent", "resizePreview", "setInitPreviewRect", "updateDrawViewSize", "width", "height", "updateMode", "Companion", "plugin-emojicapture_release"})
 public final class n
   extends com.tencent.mm.media.i.a
 {
-  public static final n.a oSB;
-  private int aMk;
-  private int aMl;
-  public XLabEffect fVU;
+  public static final n.a pvM;
+  private int aNa;
+  private int aNb;
+  public XLabEffect fZP;
   private int mode;
-  public final Rect oSA;
-  private com.tencent.mm.media.i.b.a oSu;
-  private m oSv;
-  public e oSw;
-  private com.tencent.mm.media.f.d oSx;
-  private int oSy;
-  private int oSz;
+  private com.tencent.mm.media.i.b.a pvF;
+  private m pvG;
+  public f pvH;
+  private com.tencent.mm.media.f.d pvI;
+  private int pvJ;
+  private int pvK;
+  public final Rect pvL;
   
   static
   {
     AppMethodBeat.i(877);
-    oSB = new n.a((byte)0);
+    pvM = new n.a((byte)0);
     AppMethodBeat.o(877);
   }
   
@@ -37,63 +37,63 @@ public final class n
     super(0, 0, 1, 2, 15);
     AppMethodBeat.i(876);
     this.mode = 0;
-    this.oSA = new Rect();
+    this.pvL = new Rect();
     AppMethodBeat.o(876);
   }
   
-  private final void bYU()
+  private final void cgd()
   {
     switch (this.mode)
     {
     }
     for (;;)
     {
-      this.oSy = 160;
-      this.oSz = (this.aMl * this.oSy / this.aMk);
+      this.pvJ = 160;
+      this.pvK = (this.aNb * this.pvJ / this.aNa);
       return;
-      if (this.guK > 640)
+      if (this.grV > 640)
       {
-        this.aMk = 640;
-        this.aMl = (this.guL * 640 / this.guK);
+        this.aNa = 640;
+        this.aNb = (this.grW * 640 / this.grV);
       }
       else
       {
-        this.aMk = this.guK;
-        this.aMl = this.guL;
+        this.aNa = this.grV;
+        this.aNb = this.grW;
         continue;
-        this.aMk = 640;
-        this.aMl = 1137;
+        this.aNa = 640;
+        this.aNb = 1137;
         continue;
-        this.aMk = 640;
-        this.aMl = 640;
+        this.aNa = 640;
+        this.aNb = 640;
       }
     }
   }
   
-  private final void bYV()
+  private final void cge()
   {
     AppMethodBeat.i(875);
     switch (this.mode)
     {
     }
-    while (this.oSA.isEmpty())
+    while (this.pvL.isEmpty())
     {
-      localm = this.oSv;
+      localm = this.pvG;
       if (localm != null)
       {
-        localm.B(0, 0, this.guK, this.guL);
+        localm.B(0, 0, this.grV, this.grW);
         AppMethodBeat.o(875);
         return;
-        localm = this.oSv;
+        localm = this.pvG;
         if (localm != null)
         {
           m.a(localm);
           continue;
-          localm = this.oSv;
+          localm = this.pvG;
           if (localm != null)
           {
-            d.a locala = com.tencent.mm.plugin.emojicapture.model.d.oJY;
-            localm.a(true, this.aMk * 0.0666667F);
+            d.a locala = com.tencent.mm.plugin.emojicapture.model.d.pnw;
+            localm.a(true, this.aNa * 0.0666667F);
           }
         }
       }
@@ -103,106 +103,106 @@ public final class n
         return;
       }
     }
-    m localm = this.oSv;
+    m localm = this.pvG;
     if (localm != null)
     {
-      localm.B(this.oSA.left, this.oSA.top, this.oSA.right, this.oSA.bottom);
+      localm.B(this.pvL.left, this.pvL.top, this.pvL.right, this.pvL.bottom);
       AppMethodBeat.o(875);
       return;
     }
     AppMethodBeat.o(875);
   }
   
-  public final com.tencent.mm.media.i.b.a akj()
+  public final com.tencent.mm.media.i.b.a ajF()
   {
     AppMethodBeat.i(870);
-    this.oSx = com.tencent.mm.media.f.c.a(true, 8L);
-    Object localObject1 = this.oSu;
+    this.pvI = com.tencent.mm.media.f.c.a(true, 8L);
+    Object localObject1 = this.pvF;
     if (localObject1 != null) {
       ((com.tencent.mm.media.i.b.a)localObject1).release();
     }
-    localObject1 = new com.tencent.mm.media.i.b.c(this.guI, this.guJ, this.aMk, this.aMl, 2, 2);
-    this.oSu = ((com.tencent.mm.media.i.b.a)localObject1);
-    Object localObject2 = this.oSu;
+    localObject1 = new com.tencent.mm.media.i.b.c(this.gqZ, this.gra, this.aNa, this.aNb, 2, 2);
+    this.pvF = ((com.tencent.mm.media.i.b.a)localObject1);
+    Object localObject2 = this.pvF;
     if (localObject2 != null) {
-      ((com.tencent.mm.media.i.b.a)localObject2).guY = true;
+      ((com.tencent.mm.media.i.b.a)localObject2).gVv = true;
     }
-    localObject2 = this.oSv;
+    localObject2 = this.pvG;
     if (localObject2 != null) {
       ((m)localObject2).release();
     }
-    this.oSv = new m(this.aMk, this.aMl, this.guK, this.guL, (byte)0);
-    localObject2 = this.oSv;
+    this.pvG = new m(this.aNa, this.aNb, this.grV, this.grW, (byte)0);
+    localObject2 = this.pvG;
     if (localObject2 != null)
     {
-      com.tencent.mm.media.f.d locald = this.oSx;
+      com.tencent.mm.media.f.d locald = this.pvI;
       if (locald == null) {
-        k.fvU();
+        k.fOy();
       }
-      ((m)localObject2).guC = locald.gro;
+      ((m)localObject2).gqX = locald.gRW;
     }
-    localObject2 = this.fVU;
+    localObject2 = this.fZP;
     if (localObject2 != null) {
       ((XLabEffect)localObject2).destroy();
     }
-    this.fVU = new XLabEffect(0, 0, 0, false, 15);
-    localObject2 = this.fVU;
+    this.fZP = new XLabEffect(0, 0, 0, false, 15);
+    localObject2 = this.fZP;
     if (localObject2 != null) {
-      ((XLabEffect)localObject2).tN(true);
+      ((XLabEffect)localObject2).pt(true);
     }
-    localObject2 = this.fVU;
+    localObject2 = this.fZP;
     if (localObject2 != null) {
-      ((XLabEffect)localObject2).tP(false);
+      ((XLabEffect)localObject2).uQ(false);
     }
-    localObject2 = this.fVU;
+    localObject2 = this.fZP;
     if (localObject2 != null) {
-      ((XLabEffect)localObject2).a(this.oSw);
+      ((XLabEffect)localObject2).a(this.pvH);
     }
-    localObject2 = this.fVU;
+    localObject2 = this.fZP;
     if (localObject2 != null) {
-      ((XLabEffect)localObject2).setSize(this.aMk, this.aMl);
+      ((XLabEffect)localObject2).setSize(this.aNa, this.aNb);
     }
     localObject1 = (com.tencent.mm.media.i.b.a)localObject1;
     AppMethodBeat.o(870);
     return localObject1;
   }
   
-  public final void akk()
+  public final void ajG()
   {
     AppMethodBeat.i(871);
-    super.akk();
-    Object localObject = this.oSu;
+    super.ajG();
+    Object localObject = this.pvF;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.media.i.b.a)localObject).guU;
+      localObject = ((com.tencent.mm.media.i.b.a)localObject).gVr;
       if (localObject == null) {}
     }
-    for (int i = ((com.tencent.mm.media.f.d)localObject).gro;; i = -1)
+    for (int i = ((com.tencent.mm.media.f.d)localObject).gRW;; i = -1)
     {
-      localObject = this.fVU;
+      localObject = this.fZP;
       if (localObject != null) {
         XLabEffect.a((XLabEffect)localObject, i);
       }
-      localObject = b.oRy;
-      localObject = this.oSx;
+      localObject = b.puK;
+      localObject = this.pvI;
       if (localObject == null) {
-        k.fvU();
+        k.fOy();
       }
-      b.a.X(((com.tencent.mm.media.f.d)localObject).gro, this.aMk, this.aMl);
-      localObject = this.fVU;
+      b.a.Y(((com.tencent.mm.media.f.d)localObject).gRW, this.aNa, this.aNb);
+      localObject = this.fZP;
       if (localObject != null)
       {
-        com.tencent.mm.media.f.d locald = this.oSx;
+        com.tencent.mm.media.f.d locald = this.pvI;
         if (locald == null) {
-          k.fvU();
+          k.fOy();
         }
-        XLabEffect.a((XLabEffect)localObject, i, locald.gro, 0L, false, 60);
+        XLabEffect.a((XLabEffect)localObject, i, locald.gRW, 0L, false, 60);
       }
-      localObject = this.oSv;
+      localObject = this.pvG;
       if (localObject == null) {
         break;
       }
-      ((m)localObject).akk();
+      ((m)localObject).ajG();
       AppMethodBeat.o(871);
       return;
     }
@@ -219,67 +219,67 @@ public final class n
       return;
     }
     this.mode = paramInt;
-    this.oSA.set(paramRect);
-    paramRect = this.oSu;
+    this.pvL.set(paramRect);
+    paramRect = this.pvF;
     if (paramRect != null) {
       paramRect.release();
     }
-    paramRect = this.oSv;
+    paramRect = this.pvG;
     if (paramRect != null) {
       paramRect.release();
     }
-    paramRect = this.oSx;
+    paramRect = this.pvI;
     if (paramRect != null) {
       paramRect.close();
     }
-    bYU();
-    this.gux = akj();
-    paramRect = this.oSu;
+    cgd();
+    this.gVc = ajF();
+    paramRect = this.pvF;
     if (paramRect != null) {
-      paramRect.cS(this.guI, this.guJ);
+      paramRect.cS(this.gqZ, this.gra);
     }
-    paramRect = this.oSu;
+    paramRect = this.pvF;
     if (paramRect != null) {
-      paramRect.cT(this.aMk, this.aMl);
+      paramRect.cR(this.aNa, this.aNb);
     }
-    paramRect = this.oSu;
+    paramRect = this.pvF;
     if (paramRect != null) {
-      paramRect.mz(this.guD);
+      paramRect.mE(this.gVh);
     }
-    paramRect = this.oSu;
+    paramRect = this.pvF;
     if (paramRect != null) {
-      paramRect.guE = this.guE;
+      paramRect.gVi = this.gVi;
     }
-    paramRect = this.oSv;
+    paramRect = this.pvG;
     if (paramRect != null) {
-      paramRect.cS(this.aMk, this.aMl);
+      paramRect.cS(this.aNa, this.aNb);
     }
-    paramRect = this.oSv;
+    paramRect = this.pvG;
     if (paramRect != null) {
-      paramRect.cT(this.guK, this.guL);
+      paramRect.cR(this.grV, this.grW);
     }
-    bYV();
+    cge();
     AppMethodBeat.o(874);
   }
   
-  public final void cT(int paramInt1, int paramInt2)
+  public final void cR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(873);
-    super.cT(paramInt1, paramInt2);
-    bYU();
-    Object localObject = this.oSu;
+    super.cR(paramInt1, paramInt2);
+    cgd();
+    Object localObject = this.pvF;
     if (localObject != null) {
-      ((com.tencent.mm.media.i.b.a)localObject).cT(this.aMk, this.aMl);
+      ((com.tencent.mm.media.i.b.a)localObject).cR(this.aNa, this.aNb);
     }
-    localObject = this.oSv;
+    localObject = this.pvG;
     if (localObject != null) {
-      ((m)localObject).cS(this.aMk, this.aMl);
+      ((m)localObject).cS(this.aNa, this.aNb);
     }
-    localObject = this.oSv;
+    localObject = this.pvG;
     if (localObject != null) {
-      ((m)localObject).cT(this.guK, this.guL);
+      ((m)localObject).cR(this.grV, this.grW);
     }
-    bYV();
+    cge();
     AppMethodBeat.o(873);
   }
   
@@ -287,16 +287,16 @@ public final class n
   {
     AppMethodBeat.i(872);
     super.release(paramBoolean);
-    Object localObject = this.oSv;
+    Object localObject = this.pvG;
     if (localObject != null) {
       ((m)localObject).release();
     }
-    localObject = this.fVU;
+    localObject = this.fZP;
     if (localObject != null) {
       ((XLabEffect)localObject).destroy();
     }
-    this.fVU = null;
-    localObject = this.oSx;
+    this.fZP = null;
+    localObject = this.pvI;
     if (localObject != null)
     {
       ((com.tencent.mm.media.f.d)localObject).close();

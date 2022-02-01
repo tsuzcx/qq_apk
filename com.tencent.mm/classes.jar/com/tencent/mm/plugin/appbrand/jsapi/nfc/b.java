@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ public final class b
       public final void y(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(136102);
-        ad.i("MicroMsg.JsApiGetHCEState", "alvinluo checkIsSupport onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        ac.i("MicroMsg.JsApiGetHCEState", "alvinluo checkIsSupport onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
         HashMap localHashMap = new HashMap();
         localHashMap.put("errCode", Integer.valueOf(paramAnonymousInt));
         if (paramAnonymousInt == 0)

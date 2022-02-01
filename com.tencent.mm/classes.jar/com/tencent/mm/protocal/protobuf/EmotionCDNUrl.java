@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionCDNUrl
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String AesKey;
   public int FileSize;
@@ -37,15 +37,15 @@ public class EmotionCDNUrl
       if (this.AesKey != null) {
         i = paramInt + f.a.a.b.b.a.e(2, this.AesKey);
       }
-      paramInt = f.a.a.b.b.a.bA(3, this.FileSize);
+      paramInt = f.a.a.b.b.a.bx(3, this.FileSize);
       AppMethodBeat.o(104771);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(104771);
@@ -61,15 +61,15 @@ public class EmotionCDNUrl
           AppMethodBeat.o(104771);
           return -1;
         case 1: 
-          localEmotionCDNUrl.Url = locala.KhF.readString();
+          localEmotionCDNUrl.Url = locala.LVo.readString();
           AppMethodBeat.o(104771);
           return 0;
         case 2: 
-          localEmotionCDNUrl.AesKey = locala.KhF.readString();
+          localEmotionCDNUrl.AesKey = locala.LVo.readString();
           AppMethodBeat.o(104771);
           return 0;
         }
-        localEmotionCDNUrl.FileSize = locala.KhF.xS();
+        localEmotionCDNUrl.FileSize = locala.LVo.xF();
         AppMethodBeat.o(104771);
         return 0;
       }
@@ -80,7 +80,7 @@ public class EmotionCDNUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionCDNUrl
  * JD-Core Version:    0.7.0.1
  */

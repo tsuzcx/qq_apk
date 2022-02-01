@@ -75,7 +75,12 @@ abstract class CharsetRecog_2022
     CharsetRecog_2022CN()
     {
       AppMethodBeat.i(76617);
-      this.escapeSequences = new byte[][] { { 27, 36, 41, 65 }, { 27, 36, 41, 71 }, { 27, 36, 42, 72 }, { 27, 36, 41, 69 }, { 27, 36, 43, 73 }, { 27, 36, 43, 74 }, { 27, 36, 43, 75 }, { 27, 36, 43, 76 }, { 27, 36, 43, 77 }, { 27, 78 }, { 27, 79 } };
+      byte[] arrayOfByte1 = { 27, 36, 42, 72 };
+      byte[] arrayOfByte2 = { 27, 36, 43, 74 };
+      byte[] arrayOfByte3 = { 27, 36, 43, 76 };
+      byte[] arrayOfByte4 = { 27, 36, 43, 77 };
+      byte[] arrayOfByte5 = { 27, 79 };
+      this.escapeSequences = new byte[][] { { 27, 36, 41, 65 }, { 27, 36, 41, 71 }, arrayOfByte1, { 27, 36, 41, 69 }, { 27, 36, 43, 73 }, arrayOfByte2, { 27, 36, 43, 75 }, arrayOfByte3, arrayOfByte4, { 27, 78 }, arrayOfByte5 };
       AppMethodBeat.o(76617);
     }
     
@@ -107,8 +112,14 @@ abstract class CharsetRecog_2022
     CharsetRecog_2022JP()
     {
       AppMethodBeat.i(76646);
-      byte[] arrayOfByte = { 27, 46, 70 };
-      this.escapeSequences = new byte[][] { { 27, 36, 40, 67 }, { 27, 36, 40, 68 }, { 27, 36, 64 }, { 27, 36, 65 }, { 27, 36, 66 }, { 27, 38, 64 }, { 27, 40, 66 }, { 27, 40, 72 }, { 27, 40, 73 }, { 27, 40, 74 }, { 27, 46, 65 }, arrayOfByte };
+      byte[] arrayOfByte1 = { 27, 36, 40, 67 };
+      byte[] arrayOfByte2 = { 27, 36, 40, 68 };
+      byte[] arrayOfByte3 = { 27, 36, 64 };
+      byte[] arrayOfByte4 = { 27, 36, 65 };
+      byte[] arrayOfByte5 = { 27, 38, 64 };
+      byte[] arrayOfByte6 = { 27, 40, 73 };
+      byte[] arrayOfByte7 = { 27, 46, 65 };
+      this.escapeSequences = new byte[][] { arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, { 27, 36, 66 }, arrayOfByte5, { 27, 40, 66 }, { 27, 40, 72 }, arrayOfByte6, { 27, 40, 74 }, arrayOfByte7, { 27, 46, 70 } };
       AppMethodBeat.o(76646);
     }
     

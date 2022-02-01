@@ -6,14 +6,14 @@ public final class k<V>
   extends b
   implements j
 {
-  private transient V[] bXN;
-  private transient long[] bYb;
-  protected final j bYc = this;
+  private transient long[] bVJ;
+  protected final j bVK = this;
+  private transient V[] bVv;
   
   private boolean a(l<V> paraml)
   {
-    long[] arrayOfLong = this.bYb;
-    Object[] arrayOfObject = this.bXN;
+    long[] arrayOfLong = this.bVJ;
+    Object[] arrayOfObject = this.bVv;
     int j;
     for (int i = arrayOfLong.length;; i = j)
     {
@@ -30,12 +30,12 @@ public final class k<V>
     }
   }
   
-  private int aN(long paramLong)
+  private int aJ(long paramLong)
   {
-    Object[] arrayOfObject = this.bXN;
-    long[] arrayOfLong = this.bYb;
+    Object[] arrayOfObject = this.bVv;
+    long[] arrayOfLong = this.bVJ;
     int n = arrayOfLong.length;
-    int j = this.bYc.aL(paramLong) & 0x7FFFFFFF;
+    int j = this.bVK.aH(paramLong) & 0x7FFFFFFF;
     int i = j % n;
     if (d(arrayOfObject, i)) {}
     int k;
@@ -113,7 +113,7 @@ public final class k<V>
   private static <V> V au(V paramV)
   {
     V ? = paramV;
-    if (paramV == n.bYi) {
+    if (paramV == n.bVQ) {
       ? = null;
     }
     return ?;
@@ -122,12 +122,12 @@ public final class k<V>
   private static boolean b(Object[] paramArrayOfObject, int paramInt)
   {
     paramArrayOfObject = paramArrayOfObject[paramInt];
-    return (paramArrayOfObject != null) && (paramArrayOfObject != n.bYh);
+    return (paramArrayOfObject != null) && (paramArrayOfObject != n.bVP);
   }
   
   private static boolean c(Object[] paramArrayOfObject, int paramInt)
   {
-    return paramArrayOfObject[paramInt] == n.bYh;
+    return paramArrayOfObject[paramInt] == n.bVP;
   }
   
   private static boolean d(Object[] paramArrayOfObject, int paramInt)
@@ -138,25 +138,25 @@ public final class k<V>
   public final V a(long paramLong, V paramV)
   {
     Object localObject1 = null;
-    int j = aN(paramLong);
+    int j = aJ(paramLong);
     int i = 1;
     if (j < 0)
     {
       j = -j - 1;
-      localObject1 = au(this.bXN[j]);
+      localObject1 = au(this.bVv[j]);
       i = 0;
     }
-    for (boolean bool = false;; bool = d(this.bXN, j))
+    for (boolean bool = false;; bool = d(this.bVv, j))
     {
-      this.bYb[j] = paramLong;
-      Object[] arrayOfObject = this.bXN;
+      this.bVJ[j] = paramLong;
+      Object[] arrayOfObject = this.bVv;
       Object localObject2 = paramV;
       if (paramV == null) {
-        localObject2 = n.bYi;
+        localObject2 = n.bVQ;
       }
       arrayOfObject[j] = localObject2;
       if (i != 0) {
-        bo(bool);
+        bn(bool);
       }
       return localObject1;
     }
@@ -164,7 +164,7 @@ public final class k<V>
   
   public final boolean a(s<V> params)
   {
-    Object[] arrayOfObject = this.bXN;
+    Object[] arrayOfObject = this.bVv;
     int j;
     for (int i = arrayOfObject.length;; i = j)
     {
@@ -181,17 +181,17 @@ public final class k<V>
     }
   }
   
-  public final int aL(long paramLong)
+  public final int aH(long paramLong)
   {
     return (int)(paramLong >> 32 ^ paramLong);
   }
   
-  protected final int aM(long paramLong)
+  protected final int aI(long paramLong)
   {
-    long[] arrayOfLong = this.bYb;
-    Object[] arrayOfObject = this.bXN;
+    long[] arrayOfLong = this.bVJ;
+    Object[] arrayOfObject = this.bVv;
     int k = arrayOfLong.length;
-    int m = 0x7FFFFFFF & this.bYc.aL(paramLong);
+    int m = 0x7FFFFFFF & this.bVK.aH(paramLong);
     int i = m % k;
     int j = i;
     if (!d(arrayOfObject, i)) {
@@ -232,14 +232,14 @@ public final class k<V>
   
   protected final int capacity()
   {
-    return this.bXN.length;
+    return this.bVv.length;
   }
   
   public final void clear()
   {
     super.clear();
-    long[] arrayOfLong = this.bYb;
-    Object[] arrayOfObject = this.bXN;
+    long[] arrayOfLong = this.bVJ;
+    Object[] arrayOfObject = this.bVv;
     int j;
     for (int i = arrayOfLong.length;; i = j)
     {
@@ -265,28 +265,28 @@ public final class k<V>
   
   public final V get(long paramLong)
   {
-    int i = aM(paramLong);
+    int i = aI(paramLong);
     if (i < 0) {
       return null;
     }
-    return au(this.bXN[i]);
+    return au(this.bVv[i]);
   }
   
-  protected final int gx(int paramInt)
+  protected final int gi(int paramInt)
   {
-    paramInt = super.gx(paramInt);
-    this.bXN = ((Object[])new Object[paramInt]);
-    this.bYb = new long[paramInt];
+    paramInt = super.gi(paramInt);
+    this.bVv = ((Object[])new Object[paramInt]);
+    this.bVJ = new long[paramInt];
     return paramInt;
   }
   
-  protected final void gy(int paramInt)
+  protected final void gj(int paramInt)
   {
-    int i = this.bYb.length;
-    long[] arrayOfLong = this.bYb;
-    Object[] arrayOfObject = this.bXN;
-    this.bYb = new long[paramInt];
-    this.bXN = ((Object[])new Object[paramInt]);
+    int i = this.bVJ.length;
+    long[] arrayOfLong = this.bVJ;
+    Object[] arrayOfObject = this.bVv;
+    this.bVJ = new long[paramInt];
+    this.bVv = ((Object[])new Object[paramInt]);
     paramInt = i;
     for (;;)
     {
@@ -296,9 +296,9 @@ public final class k<V>
         if (b(arrayOfObject, i))
         {
           long l = arrayOfLong[i];
-          paramInt = aN(l);
-          this.bYb[paramInt] = l;
-          this.bXN[paramInt] = arrayOfObject[i];
+          paramInt = aJ(l);
+          this.bVJ[paramInt] = l;
+          this.bVv[paramInt] = arrayOfObject[i];
           paramInt = i;
         }
       }
@@ -318,25 +318,25 @@ public final class k<V>
   
   protected final void removeAt(int paramInt)
   {
-    this.bXN[paramInt] = n.bYh;
+    this.bVv[paramInt] = n.bVP;
     super.removeAt(paramInt);
   }
   
   static final class a<V>
     implements l<V>
   {
-    private final k<V> bYd;
+    private final k<V> bVL;
     
     a(k<V> paramk)
     {
-      this.bYd = paramk;
+      this.bVL = paramk;
     }
     
     public final boolean b(long paramLong, V paramV)
     {
-      if (this.bYd.aM(paramLong) >= 0)
+      if (this.bVL.aI(paramLong) >= 0)
       {
-        Object localObject = this.bYd.get(paramLong);
+        Object localObject = this.bVL.get(paramLong);
         if ((paramV == localObject) || ((paramV != null) && (paramV.equals(localObject)))) {}
         for (int i = 1; i != 0; i = 0) {
           return true;
@@ -355,7 +355,7 @@ public final class k<V>
     
     public final boolean b(long paramLong, V paramV)
     {
-      this.h += (k.this.bYc.aL(paramLong) ^ a.al(paramV));
+      this.h += (k.this.bVK.aH(paramLong) ^ a.al(paramV));
       return true;
     }
   }

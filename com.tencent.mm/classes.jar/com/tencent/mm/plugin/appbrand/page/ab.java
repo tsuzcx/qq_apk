@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ab
 {
-  public static String LE(String paramString)
+  public static String PL(String paramString)
   {
     AppMethodBeat.i(135207);
     int i = paramString.indexOf("<page>");
@@ -19,7 +19,7 @@ public final class ab
     return paramString;
   }
   
-  public static String LF(String paramString)
+  public static String PM(String paramString)
   {
     AppMethodBeat.i(135208);
     int i = paramString.indexOf("<style>");
@@ -34,7 +34,7 @@ public final class ab
     return paramString;
   }
   
-  public static String LG(String paramString)
+  public static String PN(String paramString)
   {
     AppMethodBeat.i(135209);
     String str = "";
@@ -58,7 +58,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ab
  * JD-Core Version:    0.7.0.1
  */

@@ -80,15 +80,15 @@ public class CMSampleBuffer
   
   public String toString()
   {
-    AppMethodBeat.i(204354);
+    AppMethodBeat.i(195693);
     String str = "CMSampleBuffer{, time=" + this.time + ", texture=" + this.texture + ", sampleByteBuffer=" + this.sampleByteBuffer + ", isNewFrame=" + this.isNewFrame + '}';
-    AppMethodBeat.o(204354);
+    AppMethodBeat.o(195693);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleBuffer
  * JD-Core Version:    0.7.0.1
  */

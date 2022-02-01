@@ -6,7 +6,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.bind.a.c;
 import com.tencent.mm.ui.base.h;
@@ -19,22 +19,22 @@ final class BindLinkedInUI$8
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(109823);
-    h.a(this.igh, this.igh.getString(2131757705), null, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.a(this.iGq, this.iGq.getString(2131757705), null, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(109822);
         paramAnonymousDialogInterface = new c();
-        BindLinkedInUI.a(BindLinkedInUI.8.this.igh, h.b(BindLinkedInUI.8.this.igh, BindLinkedInUI.8.this.igh.getString(2131760709), false, new DialogInterface.OnCancelListener()
+        BindLinkedInUI.a(BindLinkedInUI.8.this.iGq, h.b(BindLinkedInUI.8.this.iGq, BindLinkedInUI.8.this.iGq.getString(2131760709), false, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(109821);
-            g.aeS().a(paramAnonymousDialogInterface);
+            g.agi().a(paramAnonymousDialogInterface);
             AppMethodBeat.o(109821);
           }
         }));
-        g.aeS().a(paramAnonymousDialogInterface, 0);
+        g.agi().a(paramAnonymousDialogInterface, 0);
         AppMethodBeat.o(109822);
       }
     }, new DialogInterface.OnClickListener()

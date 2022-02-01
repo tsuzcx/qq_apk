@@ -3,50 +3,50 @@ package com.tencent.mm.plugin.sight.draft.ui;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.lang.ref.WeakReference;
 
 public abstract class c
 {
-  com.tencent.mm.b.f<String, Bitmap> wtK = new com.tencent.mm.memory.a.c(24);
-  private Bitmap wtL;
+  com.tencent.mm.b.f<String, Bitmap> xFa = new com.tencent.mm.memory.a.c(24);
+  private Bitmap xFb;
   
-  private Bitmap dqP()
+  private Bitmap dEY()
   {
-    if (this.wtL == null) {
-      this.wtL = com.tencent.mm.sdk.platformtools.f.Wf(2131691012);
+    if (this.xFb == null) {
+      this.xFb = com.tencent.mm.sdk.platformtools.f.Yo(2131691012);
     }
-    return this.wtL;
+    return this.xFb;
   }
   
-  public abstract void t(String paramString, Bitmap paramBitmap);
+  public abstract void s(String paramString, Bitmap paramBitmap);
   
   public final Bitmap x(String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (bt.isNullOrNil(paramString1)) {
-      localObject = dqP();
+    if (bs.isNullOrNil(paramString1)) {
+      localObject = dEY();
     }
     Bitmap localBitmap;
     do
     {
       return localObject;
-      localBitmap = (Bitmap)this.wtK.get(paramString1);
+      localBitmap = (Bitmap)this.xFa.get(paramString1);
       localObject = localBitmap;
     } while (localBitmap != null);
     Object localObject = new a((byte)0);
     ((a)localObject).key = paramString1;
     ((a)localObject).path = paramString2;
-    ((a)localObject).wtM = paramBoolean;
-    ((a)localObject).wtN = new WeakReference(this);
+    ((a)localObject).xFc = paramBoolean;
+    ((a)localObject).xFd = new WeakReference(this);
     if (paramBoolean) {
-      az.afE().ax((Runnable)localObject);
+      az.agU().az((Runnable)localObject);
     }
     do
     {
-      return dqP();
+      return dEY();
       ((a)localObject).run();
-      paramString1 = (Bitmap)this.wtK.get(paramString1);
+      paramString1 = (Bitmap)this.xFa.get(paramString1);
     } while (paramString1 == null);
     return paramString1;
   }
@@ -56,25 +56,25 @@ public abstract class c
   {
     String key;
     String path;
-    boolean wtM;
-    WeakReference<c> wtN;
+    boolean xFc;
+    WeakReference<c> xFd;
     
     public final void run()
     {
       AppMethodBeat.i(28693);
-      Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.aFi(this.path);
-      Object localObject = (c)this.wtN.get();
+      Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.aKz(this.path);
+      Object localObject = (c)this.xFd.get();
       if (localObject != null)
       {
-        if ((!bt.isNullOrNil(this.key)) && (localBitmap != null)) {
-          ((c)localObject).wtK.put(this.key, localBitmap);
+        if ((!bs.isNullOrNil(this.key)) && (localBitmap != null)) {
+          ((c)localObject).xFa.put(this.key, localBitmap);
         }
         localObject = new c.b((byte)0);
         ((c.b)localObject).key = this.key;
-        ((c.b)localObject).rJR = localBitmap;
-        ((c.b)localObject).wtN = this.wtN;
-        if (this.wtM) {
-          aq.f((Runnable)localObject);
+        ((c.b)localObject).sRG = localBitmap;
+        ((c.b)localObject).xFd = this.xFd;
+        if (this.xFc) {
+          ap.f((Runnable)localObject);
         }
       }
       AppMethodBeat.o(28693);
@@ -85,15 +85,15 @@ public abstract class c
     implements Runnable
   {
     String key;
-    Bitmap rJR;
-    WeakReference<c> wtN;
+    Bitmap sRG;
+    WeakReference<c> xFd;
     
     public final void run()
     {
       AppMethodBeat.i(28694);
-      c localc = (c)this.wtN.get();
+      c localc = (c)this.xFd.get();
       if (localc != null) {
-        localc.t(this.key, this.rJR);
+        localc.s(this.key, this.sRG);
       }
       AppMethodBeat.o(28694);
     }

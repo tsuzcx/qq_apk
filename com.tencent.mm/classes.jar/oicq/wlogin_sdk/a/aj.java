@@ -8,7 +8,7 @@ public final class aj
 {
   public aj()
   {
-    this.Kik = 327;
+    this.LVT = 327;
   }
   
   private static int dh(byte[] paramArrayOfByte)
@@ -30,15 +30,15 @@ public final class aj
     int i = dh(paramArrayOfByte2);
     byte[] arrayOfByte = new byte[j + 6 + 2 + i];
     util.d(arrayOfByte, 0, 522017402L);
-    util.W(arrayOfByte, 4, j);
+    util.V(arrayOfByte, 4, j);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 6, j);
     j += 6;
-    util.W(arrayOfByte, j, i);
+    util.V(arrayOfByte, j, i);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, j + 2, i);
-    super.agp(this.Kik);
-    super.af(arrayOfByte, arrayOfByte.length);
-    super.fMH();
-    paramArrayOfByte1 = super.fMD();
+    super.ajl(this.LVT);
+    super.ae(arrayOfByte, arrayOfByte.length);
+    super.gfx();
+    paramArrayOfByte1 = super.gft();
     AppMethodBeat.o(88139);
     return paramArrayOfByte1;
   }

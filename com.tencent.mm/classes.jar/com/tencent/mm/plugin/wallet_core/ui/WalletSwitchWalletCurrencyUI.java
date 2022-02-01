@@ -9,15 +9,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.wallet_core.c.q;
-import com.tencent.mm.plugin.wallet_core.model.ac;
 import com.tencent.mm.plugin.wallet_core.model.s;
 import com.tencent.mm.pluginsdk.model.app.aq;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.util.ArrayList;
 
@@ -25,16 +23,16 @@ public class WalletSwitchWalletCurrencyUI
   extends WalletBaseUI
   implements View.OnClickListener
 {
-  private ListView AqK;
-  private ArrayList<ac> AqL = null;
-  private t AqM = null;
-  private ac AqN;
-  private ac AqO;
+  private ListView BJe;
+  private ArrayList<com.tencent.mm.plugin.wallet_core.model.ac> BJf = null;
+  private t BJg = null;
+  private com.tencent.mm.plugin.wallet_core.model.ac BJh;
+  private com.tencent.mm.plugin.wallet_core.model.ac BJi;
   
-  private void sN(boolean paramBoolean)
+  private void tO(boolean paramBoolean)
   {
     AppMethodBeat.i(71251);
-    ad.i("MicroMsg.WalletSwitchWalletCurrencyUI", "doGetAllWalletType isShowProcess = ".concat(String.valueOf(paramBoolean)));
+    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WalletSwitchWalletCurrencyUI", "doGetAllWalletType isShowProcess = ".concat(String.valueOf(paramBoolean)));
     doSceneProgress(new q(), paramBoolean);
     AppMethodBeat.o(71251);
   }
@@ -47,27 +45,27 @@ public class WalletSwitchWalletCurrencyUI
   public void initView()
   {
     AppMethodBeat.i(71249);
-    this.AqK = ((ListView)findViewById(2131304670));
-    this.AqM = new t(this, this.AqL);
-    this.AqK.setAdapter(this.AqM);
-    if ((this.AqL != null) && (this.AqL.size() > 0))
+    this.BJe = ((ListView)findViewById(2131304670));
+    this.BJg = new t(this, this.BJf);
+    this.BJe.setAdapter(this.BJg);
+    if ((this.BJf != null) && (this.BJf.size() > 0))
     {
-      this.AqM.mData = this.AqL;
-      this.AqM.notifyDataSetChanged();
+      this.BJg.mData = this.BJf;
+      this.BJg.notifyDataSetChanged();
     }
-    this.AqK.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.BJe.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(71247);
-        paramAnonymousView = WalletSwitchWalletCurrencyUI.a(WalletSwitchWalletCurrencyUI.this).RH(paramAnonymousInt);
-        WalletSwitchWalletCurrencyUI.a(WalletSwitchWalletCurrencyUI.this, WalletSwitchWalletCurrencyUI.a(WalletSwitchWalletCurrencyUI.this).AqQ);
+        paramAnonymousView = WalletSwitchWalletCurrencyUI.a(WalletSwitchWalletCurrencyUI.this).TQ(paramAnonymousInt);
+        WalletSwitchWalletCurrencyUI.a(WalletSwitchWalletCurrencyUI.this, WalletSwitchWalletCurrencyUI.a(WalletSwitchWalletCurrencyUI.this).BJk);
         if ((paramAnonymousView != null) && ((WalletSwitchWalletCurrencyUI.b(WalletSwitchWalletCurrencyUI.this) == null) || (!WalletSwitchWalletCurrencyUI.b(WalletSwitchWalletCurrencyUI.this).field_wallet_tpa_country.equals(paramAnonymousView.field_wallet_tpa_country))))
         {
           WalletSwitchWalletCurrencyUI.b(WalletSwitchWalletCurrencyUI.this, paramAnonymousView);
           paramAnonymousAdapterView = WalletSwitchWalletCurrencyUI.this;
           paramAnonymousView = paramAnonymousView.field_wallet_tpa_country;
-          ad.i("MicroMsg.WalletSwitchWalletCurrencyUI", "doSetUserWallet walletid = ".concat(String.valueOf(paramAnonymousView)));
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WalletSwitchWalletCurrencyUI", "doSetUserWallet walletid = ".concat(String.valueOf(paramAnonymousView)));
           paramAnonymousAdapterView.doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.u(paramAnonymousView));
         }
         AppMethodBeat.o(71247);
@@ -87,14 +85,14 @@ public class WalletSwitchWalletCurrencyUI
     AppMethodBeat.i(71248);
     super.onCreate(paramBundle);
     setMMTitle(2131765893);
-    com.tencent.mm.kernel.g.afC();
-    com.tencent.mm.kernel.g.afB().afk().set(ae.a.FjV, Boolean.TRUE);
+    com.tencent.mm.kernel.g.agS();
+    com.tencent.mm.kernel.g.agR().agA().set(ah.a.GHK, Boolean.TRUE);
     getIntent().getIntExtra("switch_wallet_scene", 0);
-    this.AqL = s.ecf().edE();
-    if ((this.AqL == null) || (this.AqL.size() == 0))
+    this.BJf = s.erB().esZ();
+    if ((this.BJf == null) || (this.BJf.size() == 0))
     {
-      ad.i("MicroMsg.WalletSwitchWalletCurrencyUI", "not data cache,do NetSceneQueryUserWallet");
-      sN(true);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WalletSwitchWalletCurrencyUI", "not data cache,do NetSceneQueryUserWallet");
+      tO(true);
     }
     for (;;)
     {
@@ -102,8 +100,8 @@ public class WalletSwitchWalletCurrencyUI
       setResult(0);
       AppMethodBeat.o(71248);
       return;
-      ad.i("MicroMsg.WalletSwitchWalletCurrencyUI", "use cache data first, and do NetSceneQueryUserWallet for update cache");
-      sN(false);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WalletSwitchWalletCurrencyUI", "use cache data first, and do NetSceneQueryUserWallet for update cache");
+      tO(false);
     }
   }
   
@@ -114,44 +112,44 @@ public class WalletSwitchWalletCurrencyUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        ad.i("MicroMsg.WalletSwitchWalletCurrencyUI", "NetSceneQueryUserWallet succ and update view");
-        this.AqL = s.ecf().edE();
-        this.AqM.mData = this.AqL;
-        this.AqM.notifyDataSetChanged();
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WalletSwitchWalletCurrencyUI", "NetSceneQueryUserWallet succ and update view");
+        this.BJf = s.erB().esZ();
+        this.BJg.mData = this.BJf;
+        this.BJg.notifyDataSetChanged();
         AppMethodBeat.o(71250);
         return true;
       }
-      ad.e("MicroMsg.WalletSwitchWalletCurrencyUI", "NetSceneQueryUserWallet error");
-      if (this.AqL == null)
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.WalletSwitchWalletCurrencyUI", "NetSceneQueryUserWallet error");
+      if (this.BJf == null)
       {
-        ad.e("MicroMsg.WalletSwitchWalletCurrencyUI", "wallet list is null in cache");
+        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.WalletSwitchWalletCurrencyUI", "wallet list is null in cache");
         AppMethodBeat.o(71250);
         return false;
       }
-      ad.e("MicroMsg.WalletSwitchWalletCurrencyUI", "use cache wallet list data");
+      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.WalletSwitchWalletCurrencyUI", "use cache wallet list data");
       AppMethodBeat.o(71250);
       return true;
     }
     if (((paramn instanceof com.tencent.mm.plugin.wallet_core.c.u)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.AqN.field_wallet_selected = 1;
-      ad.i("MicroMsg.WalletSwitchWalletCurrencyUI", "set user wallet succ. current wallet type = " + this.AqN.field_wallet_type + " " + this.AqN.field_wallet_tpa_country_mask);
-      aq.evU().reset();
-      s.ecf().update(this.AqN, new String[0]);
-      paramString = this.AqM.AqQ;
+      this.BJh.field_wallet_selected = 1;
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.WalletSwitchWalletCurrencyUI", "set user wallet succ. current wallet type = " + this.BJh.field_wallet_type + " " + this.BJh.field_wallet_tpa_country_mask);
+      aq.eLo().reset();
+      s.erB().update(this.BJh, new String[0]);
+      paramString = this.BJg.BJk;
       if (paramString != null)
       {
         paramString.field_wallet_selected = 0;
-        s.ecf().update(paramString, new String[0]);
+        s.erB().update(paramString, new String[0]);
       }
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().set(339975, Integer.valueOf(this.AqN.field_wallet_type));
-      com.tencent.mm.kernel.g.afC();
-      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fla, Integer.valueOf(this.AqN.field_wallet_tpa_country_mask));
-      if (com.tencent.mm.model.u.aqW())
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().set(339975, Integer.valueOf(this.BJh.field_wallet_type));
+      com.tencent.mm.kernel.g.agS();
+      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GIP, Integer.valueOf(this.BJh.field_wallet_tpa_country_mask));
+      if (com.tencent.mm.model.u.axM())
       {
-        s.ebW();
-        s.N(this, null);
+        s.ers();
+        s.ab(this, null);
       }
       paramString = new Intent();
       paramString.putExtra("is_switch_wallet", 1);
@@ -172,7 +170,7 @@ public class WalletSwitchWalletCurrencyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSwitchWalletCurrencyUI
  * JD-Core Version:    0.7.0.1
  */

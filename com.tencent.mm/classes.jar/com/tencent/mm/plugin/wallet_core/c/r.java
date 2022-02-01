@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class r
   extends m
 {
-  public String foR;
-  public String zWp;
-  public String zWq;
-  public BindCardOrder zWr;
+  public String BoJ;
+  public String BoK;
+  public BindCardOrder BoL;
+  public String fsq;
   
   public r(BindCardOrder paramBindCardOrder, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69928);
-    this.zWr = paramBindCardOrder;
+    this.BoL = paramBindCardOrder;
     paramBindCardOrder = new HashMap();
     paramBindCardOrder.put("activity_id", paramString1);
     paramBindCardOrder.put("award_id", paramString2);
@@ -54,9 +54,9 @@ public final class r
     AppMethodBeat.i(69929);
     if ((paramJSONObject != null) && (paramInt == 0))
     {
-      this.zWp = paramJSONObject.optString("result_code");
-      this.foR = paramJSONObject.optString("result_msg");
-      this.zWq = paramJSONObject.optString("alert_wording");
+      this.BoJ = paramJSONObject.optString("result_code");
+      this.fsq = paramJSONObject.optString("result_msg");
+      this.BoK = paramJSONObject.optString("alert_wording");
     }
     AppMethodBeat.o(69929);
   }

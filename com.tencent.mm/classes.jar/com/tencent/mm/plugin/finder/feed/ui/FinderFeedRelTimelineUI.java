@@ -6,33 +6,35 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.feed.j.a;
+import com.tencent.mm.plugin.finder.feed.j.b;
+import com.tencent.mm.plugin.finder.feed.model.e;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.r.a;
-import com.tencent.mm.plugin.finder.feed.r.b;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.a;
+import d.g.a.b;
 import d.g.b.k;
 import d.y;
 import java.util.HashMap;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;", "()V", "TAG", "", "feedId", "", "feedLoader", "mPresenter", "mViewCallback", "scene", "", "tabType", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "plugin-finder_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;", "()V", "TAG", "", "feedId", "", "feedLoader", "mPresenter", "mViewCallback", "scene", "", "tabType", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "plugin-finder_release"})
 public final class FinderFeedRelTimelineUI
-  extends FinderLoaderFeedUI<com.tencent.mm.plugin.finder.feed.model.b, r.b, r.a>
+  extends FinderLoaderFeedUI<e, j.b, j.a>
 {
-  private int IoU;
-  private r.a KRD;
-  private r.b KRE;
-  private com.tencent.mm.plugin.finder.feed.model.b KRF;
   private final String TAG = "Finder.FinderFeedRelTimelineUI";
   private HashMap _$_findViewCache;
-  private long feedId;
+  private long dig;
+  private int diw;
+  private j.a rpn;
+  private j.b rpo;
+  private e rpp;
   private final int scene = 2;
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(198418);
+    AppMethodBeat.i(202331);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -43,45 +45,45 @@ public final class FinderFeedRelTimelineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(198418);
+    AppMethodBeat.o(202331);
     return localView1;
   }
   
-  public final int fTB()
-  {
-    return 2;
-  }
-  
-  public final int getCommentScene()
+  public final int cuI()
   {
     return 20;
   }
   
+  public final int cvJ()
+  {
+    return 2;
+  }
+  
   public final int getLayoutId()
   {
-    return 2131496192;
+    return 2131496193;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(198413);
-    this.feedId = getIntent().getLongExtra("FEED_ID", 0L);
-    this.IoU = getIntent().getIntExtra("TAB_TYPE", 0);
+    AppMethodBeat.i(202326);
+    this.dig = getIntent().getLongExtra("FEED_ID", 0L);
+    this.diw = getIntent().getIntExtra("TAB_TYPE", 0);
     setMMTitle("");
-    this.KRD = new r.a((MMActivity)this, this.feedId, this.scene);
+    this.rpn = new j.a((MMActivity)this, this.dig, this.scene);
     Object localObject = (MMActivity)this;
-    r.a locala = this.KRD;
+    j.a locala = this.rpn;
     if (locala == null) {
-      k.aPZ("mPresenter");
+      k.aVY("mPresenter");
     }
-    this.KRE = new r.b((MMActivity)localObject, locala, this.scene);
-    long l = this.feedId;
-    int i = this.IoU;
-    localObject = a.LCX;
-    localObject = new com.tencent.mm.plugin.finder.feed.model.b(l, i, null, 0, ((FinderReporterUIC)a.s((MMActivity)this).get(FinderReporterUIC.class)).fXs(), 12);
-    ((com.tencent.mm.plugin.finder.feed.model.b)localObject).KPL = ((d.g.a.b)new a(this));
-    this.KRF = ((com.tencent.mm.plugin.finder.feed.model.b)localObject);
-    AppMethodBeat.o(198413);
+    this.rpo = new j.b((MMActivity)localObject, locala, this.scene);
+    long l = this.dig;
+    int i = this.diw;
+    localObject = a.IrY;
+    localObject = new e(l, i, null, 0, ((FinderReporterUIC)a.q((MMActivity)this).get(FinderReporterUIC.class)).cGb(), 12);
+    ((e)localObject).rmE = ((b)new a(this));
+    this.rpp = ((e)localObject);
+    AppMethodBeat.o(202326);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -90,10 +92,10 @@ public final class FinderFeedRelTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI$initOnCreate$1$1"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelTimelineUI$initOnCreate$1$1"})
   static final class a
     extends d.g.b.l
-    implements d.g.a.b<IResponse<BaseFinderFeed>, y>
+    implements b<IResponse<BaseFinderFeed>, y>
   {
     a(FinderFeedRelTimelineUI paramFinderFeedRelTimelineUI)
     {
@@ -103,7 +105,7 @@ public final class FinderFeedRelTimelineUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI
  * JD-Core Version:    0.7.0.1
  */

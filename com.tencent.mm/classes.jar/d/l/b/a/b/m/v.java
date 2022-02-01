@@ -12,14 +12,14 @@ public abstract class v
   extends bg
   implements ar, f
 {
-  public final aj JXH;
-  public final aj JXI;
+  public final aj LLa;
+  public final aj LLb;
   
   public v(aj paramaj1, aj paramaj2)
   {
     super((byte)0);
-    this.JXH = paramaj1;
-    this.JXI = paramaj2;
+    this.LLa = paramaj1;
+    this.LLb = paramaj2;
   }
   
   public abstract String a(c paramc, i parami);
@@ -30,51 +30,51 @@ public abstract class v
     return false;
   }
   
-  public abstract aj fBP();
-  
-  public boolean fBT()
+  public h fQN()
   {
-    return fBP().fBT();
+    return fUt().fQN();
   }
   
-  public final List<av> fIT()
+  public g fQj()
   {
-    return fBP().fIT();
+    return fUt().fQj();
   }
   
-  public final ab fIU()
+  public abstract aj fUt();
+  
+  public boolean fUx()
   {
-    return (ab)this.JXH;
+    return fUt().fUx();
   }
   
-  public final ab fIV()
+  public final List<av> gbw()
   {
-    return (ab)this.JXI;
+    return fUt().gbw();
   }
   
-  public final at fIW()
+  public final ab gbx()
   {
-    return fBP().fIW();
+    return (ab)this.LLa;
   }
   
-  public g fxF()
+  public final ab gby()
   {
-    return fBP().fxF();
+    return (ab)this.LLb;
   }
   
-  public h fyj()
+  public final at gbz()
   {
-    return fBP().fyj();
+    return fUt().gbz();
   }
   
   public String toString()
   {
-    return c.JOO.b((ab)this);
+    return c.LCi.b((ab)this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.v
  * JD-Core Version:    0.7.0.1
  */

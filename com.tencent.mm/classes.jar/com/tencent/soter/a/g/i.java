@@ -26,38 +26,38 @@ public final class i
   extends d
   implements a
 {
-  String ADm;
-  String IvD;
-  int IvS;
-  com.tencent.soter.a.a.a IwG;
-  com.tencent.soter.a.a.b IwH;
-  private a IwI;
-  private c Iwp;
-  com.tencent.soter.a.f.f Iwq;
-  private WeakReference<Context> Iwr;
-  j Iwu;
-  boolean Iww;
-  boolean Iwx;
-  boolean Iwy;
+  String BVH;
+  int JXB;
+  private c JXY;
+  com.tencent.soter.a.f.f JXZ;
+  String JXm;
+  private WeakReference<Context> JYa;
+  j JYd;
+  boolean JYf;
+  boolean JYg;
+  boolean JYh;
+  com.tencent.soter.a.a.a JYp;
+  com.tencent.soter.a.a.b JYq;
+  private a JYr;
   private int mScene;
   
   public i(b paramb)
   {
     AppMethodBeat.i(93);
     this.mScene = -1;
-    this.IvD = null;
-    this.ADm = null;
-    this.Iwp = null;
-    this.Iwq = null;
-    this.Iwr = null;
-    this.IwG = null;
-    this.IwH = null;
-    this.Iwu = null;
-    this.IwI = null;
+    this.JXm = null;
+    this.BVH = null;
+    this.JXY = null;
+    this.JXZ = null;
+    this.JYa = null;
+    this.JYp = null;
+    this.JYq = null;
+    this.JYd = null;
+    this.JYr = null;
     if ((Build.VERSION.SDK_INT < 23) && (Build.MANUFACTURER.equalsIgnoreCase("vivo")))
     {
       bool1 = true;
-      this.Iww = bool1;
+      this.JYf = bool1;
       if (Build.VERSION.SDK_INT >= 23) {
         break label133;
       }
@@ -65,8 +65,8 @@ public final class i
     label133:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.Iwx = bool1;
-      this.Iwy = false;
+      this.JYg = bool1;
+      this.JYh = false;
       if (paramb != null) {
         break label138;
       }
@@ -78,13 +78,13 @@ public final class i
     }
     label138:
     this.mScene = paramb.mScene;
-    this.Iwp = paramb.IvQ;
-    this.Iwq = paramb.IvR;
-    this.Iwr = new WeakReference(paramb.mContext);
-    this.IwH = paramb.IvV;
-    this.IwG = paramb.IvU;
-    this.IvS = paramb.IvS;
-    this.ADm = paramb.ADm;
+    this.JXY = paramb.JXz;
+    this.JXZ = paramb.JXA;
+    this.JYa = new WeakReference(paramb.mContext);
+    this.JYq = paramb.JXE;
+    this.JYp = paramb.JXD;
+    this.JXB = paramb.JXB;
+    this.BVH = paramb.BVH;
     AppMethodBeat.o(93);
   }
   
@@ -94,7 +94,7 @@ public final class i
     if (((parame.errCode == 1018) || (parame.errCode == 1007) || (parame.errCode == 1015)) && (com.tencent.soter.a.c.a.a(getClass(), parame)))
     {
       com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: same error happen too much, delete ask", new Object[0]);
-      com.tencent.soter.a.a.fnm();
+      com.tencent.soter.a.a.fDC();
     }
     AppMethodBeat.o(97);
   }
@@ -104,13 +104,13 @@ public final class i
   {
     String str = null;
     AppMethodBeat.i(99);
-    if (this.IvH)
+    if (this.JXq)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: already finished. can not authenticate", new Object[0]);
       AppMethodBeat.o(99);
       return;
     }
-    Object localObject = (Context)this.Iwr.get();
+    Object localObject = (Context)this.JYa.get();
     if (localObject == null)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: context instance released in startAuthenticate", new Object[0]);
@@ -121,13 +121,13 @@ public final class i
     try
     {
       com.tencent.soter.core.c.d.v("Soter.TaskBiometricAuthentication", "soter: performing start", new Object[0]);
-      localObject = BiometricManagerCompat.from((Context)localObject, Integer.valueOf(this.IvS));
+      localObject = BiometricManagerCompat.from((Context)localObject, Integer.valueOf(this.JXB));
       BiometricManagerCompat.CryptoObject localCryptoObject = new BiometricManagerCompat.CryptoObject(paramSignature);
       paramSignature = str;
-      if (this.IwG != null) {
-        paramSignature = this.IwG.EQJ;
+      if (this.JYp != null) {
+        paramSignature = this.JYp.GnW;
       }
-      ((BiometricManagerCompat)localObject).authenticate(localCryptoObject, 0, paramSignature, this.IwI, null);
+      ((BiometricManagerCompat)localObject).authenticate(localCryptoObject, 0, paramSignature, this.JYr, null);
       AppMethodBeat.o(99);
       return;
     }
@@ -144,119 +144,42 @@ public final class i
   final void execute()
   {
     AppMethodBeat.i(96);
-    if (com.tencent.soter.core.c.g.isNullOrNil(this.ADm))
+    if (com.tencent.soter.core.c.g.isNullOrNil(this.BVH))
     {
       com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: not provide the challenge. we will do the job", new Object[0]);
-      this.Iwp.cY(new c.a());
-      this.Iwp.a(new com.tencent.soter.a.f.b() {});
-      this.Iwp.execute();
+      this.JXY.cZ(new c.a());
+      this.JXY.a(new com.tencent.soter.a.f.b() {});
+      this.JXY.execute();
       AppMethodBeat.o(96);
       return;
     }
     com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: already provided the challenge. directly authenticate", new Object[0]);
-    fnA();
+    fDQ();
     AppMethodBeat.o(96);
   }
   
-  final void fnA()
-  {
-    AppMethodBeat.i(98);
-    if (com.tencent.soter.core.a.fmN() == 1)
-    {
-      localObject = com.tencent.soter.core.a.lQ(this.IvD, this.ADm);
-      if (localObject == null)
-      {
-        com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: error occurred when init sign soterSessionResult is null", new Object[0]);
-        c(new com.tencent.soter.a.b.a(1007));
-        AppMethodBeat.o(98);
-        return;
-      }
-      if (((SoterSessionResult)localObject).bRZ != 0)
-      {
-        com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: error occurred when init sign resultCode error", new Object[0]);
-        c(new com.tencent.soter.a.b.a(1007));
-        AppMethodBeat.o(98);
-        return;
-      }
-      com.tencent.soter.core.c.d.d("Soter.TaskBiometricAuthentication", "soter: session is %d", new Object[] { Long.valueOf(((SoterSessionResult)localObject).dcQ) });
-      this.IwI = new a(null, (byte)0);
-      a.a(this.IwI, ((SoterSessionResult)localObject).dcQ);
-      b(null);
-      g.fnz().f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(74);
-          if (i.this.IwH != null) {
-            i.this.IwH.dED();
-          }
-          AppMethodBeat.o(74);
-        }
-      });
-      AppMethodBeat.o(98);
-      return;
-    }
-    Object localObject = com.tencent.soter.core.a.aNS(this.IvD);
-    if (localObject == null)
-    {
-      com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: error occurred when init sign", new Object[0]);
-      c(new com.tencent.soter.a.b.a(1007));
-      AppMethodBeat.o(98);
-      return;
-    }
-    this.IwI = new a((Signature)localObject, (byte)0);
-    b((Signature)localObject);
-    g.fnz().f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(75);
-        if (i.this.IwH != null) {
-          i.this.IwH.dED();
-        }
-        AppMethodBeat.o(75);
-      }
-    });
-    AppMethodBeat.o(98);
-  }
-  
-  final void fnB()
-  {
-    AppMethodBeat.i(100);
-    if (this.Iwu == null)
-    {
-      c(new com.tencent.soter.a.b.a(1018, "sign failed even after user authenticated the key."));
-      AppMethodBeat.o(100);
-      return;
-    }
-    this.Iwq.cY(new f.a(this.Iwu.signature, this.Iwu.Iva, this.Iwu.IuZ));
-    this.Iwq.a(new com.tencent.soter.a.f.b() {});
-    this.Iwq.execute();
-    AppMethodBeat.o(100);
-  }
-  
-  public final void fnt()
+  public final void fDJ()
   {
     AppMethodBeat.i(101);
     com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: called from cancellation signal", new Object[0]);
-    if (this.IwI != null) {
-      this.IwI.onAuthenticationCancelled();
+    if (this.JYr != null) {
+      this.JYr.onAuthenticationCancelled();
     }
     AppMethodBeat.o(101);
   }
   
   @SuppressLint({"DefaultLocale", "NewApi"})
-  final boolean fnu()
+  final boolean fDK()
   {
     AppMethodBeat.i(94);
-    if (!com.tencent.soter.a.c.b.fno().isInit())
+    if (!com.tencent.soter.a.c.b.fDE().isInit())
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: not initialized yet", new Object[0]);
       c(new com.tencent.soter.a.b.a(1008));
       AppMethodBeat.o(94);
       return true;
     }
-    if (!com.tencent.soter.a.c.b.fno().fnk())
+    if (!com.tencent.soter.a.c.b.fDE().fDA())
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: not support soter", new Object[0]);
       c(new com.tencent.soter.a.b.a(2));
@@ -267,8 +190,8 @@ public final class i
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.IvD = ((String)com.tencent.soter.a.c.b.fno().fnq().get(this.mScene, ""));
-      if (!com.tencent.soter.core.c.g.isNullOrNil(this.IvD)) {
+      this.JXm = ((String)com.tencent.soter.a.c.b.fDE().fDG().get(this.mScene, ""));
+      if (!com.tencent.soter.core.c.g.isNullOrNil(this.JXm)) {
         break;
       }
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: request prepare auth key scene: %d, but key name is not registered. Please make sure you register the scene in init", new Object[0]);
@@ -276,21 +199,21 @@ public final class i
       AppMethodBeat.o(94);
       return true;
     }
-    if (!com.tencent.soter.core.a.aNP(this.IvD))
+    if (!com.tencent.soter.core.a.aTs(this.JXm))
     {
-      com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: auth key %s not exists. need re-generate", new Object[] { this.IvD });
+      com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: auth key %s not exists. need re-generate", new Object[] { this.JXm });
       c(new com.tencent.soter.a.b.a(1006, String.format("the auth key to scene %d not exists. it may because you haven't prepare it, or user removed them already in system settings. please prepare the key again", new Object[] { Integer.valueOf(this.mScene) })));
       AppMethodBeat.o(94);
       return true;
     }
-    if ((this.Iwp == null) && (com.tencent.soter.core.c.g.isNullOrNil(this.ADm)))
+    if ((this.JXY == null) && (com.tencent.soter.core.c.g.isNullOrNil(this.BVH)))
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: challenge wrapper is null!", new Object[0]);
       c(new com.tencent.soter.a.b.a(1010, "neither get challenge wrapper nor challenge str is found in request parameter"));
       AppMethodBeat.o(94);
       return true;
     }
-    Context localContext = (Context)this.Iwr.get();
+    Context localContext = (Context)this.JYa.get();
     if (localContext == null)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: context instance released in preExecute", new Object[0]);
@@ -298,60 +221,137 @@ public final class i
       AppMethodBeat.o(94);
       return true;
     }
-    if (!BiometricManagerCompat.from(localContext, Integer.valueOf(this.IvS)).hasEnrolledBiometric())
+    if (!BiometricManagerCompat.from(localContext, Integer.valueOf(this.JXB)).hasEnrolledBiometric())
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: user has not enrolled any biometric in system.", new Object[0]);
       c(new com.tencent.soter.a.b.a(1013));
       AppMethodBeat.o(94);
       return true;
     }
-    if (com.tencent.soter.core.a.aM(localContext, this.IvS))
+    if (com.tencent.soter.core.a.aS(localContext, this.JXB))
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: biometric sensor frozen", new Object[0]);
       c(new com.tencent.soter.a.b.a(1021, "Too many failed times"));
       AppMethodBeat.o(94);
       return true;
     }
-    if (this.IwG == null)
+    if (this.JYp == null)
     {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: did not pass cancellation obj. We suggest you pass one", new Object[0]);
-      this.IwG = new com.tencent.soter.a.a.a();
+      this.JYp = new com.tencent.soter.a.a.a();
       AppMethodBeat.o(94);
       return false;
     }
-    if (this.Iwq == null) {
+    if (this.JXZ == null) {
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "hy: we strongly recommend you to check the final authentication data in server! Please make sure you upload and check later", new Object[0]);
     }
     AppMethodBeat.o(94);
     return false;
   }
   
-  final void fnv()
+  final void fDL()
   {
     AppMethodBeat.i(95);
-    if (this.IwG != null) {
-      this.IwG.xu(true);
+    if (this.JYp != null) {
+      this.JYp.yE(true);
     }
     AppMethodBeat.o(95);
   }
   
+  final void fDQ()
+  {
+    AppMethodBeat.i(98);
+    if (com.tencent.soter.core.a.fDd() == 1)
+    {
+      localObject = com.tencent.soter.core.a.mn(this.JXm, this.BVH);
+      if (localObject == null)
+      {
+        com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: error occurred when init sign soterSessionResult is null", new Object[0]);
+        c(new com.tencent.soter.a.b.a(1007));
+        AppMethodBeat.o(98);
+        return;
+      }
+      if (((SoterSessionResult)localObject).bPH != 0)
+      {
+        com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: error occurred when init sign resultCode error", new Object[0]);
+        c(new com.tencent.soter.a.b.a(1007));
+        AppMethodBeat.o(98);
+        return;
+      }
+      com.tencent.soter.core.c.d.d("Soter.TaskBiometricAuthentication", "soter: session is %d", new Object[] { Long.valueOf(((SoterSessionResult)localObject).dao) });
+      this.JYr = new a(null, (byte)0);
+      a.a(this.JYr, ((SoterSessionResult)localObject).dao);
+      b(null);
+      g.fDP().f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(74);
+          if (i.this.JYq != null) {
+            i.this.JYq.dTc();
+          }
+          AppMethodBeat.o(74);
+        }
+      });
+      AppMethodBeat.o(98);
+      return;
+    }
+    Object localObject = com.tencent.soter.core.a.aTv(this.JXm);
+    if (localObject == null)
+    {
+      com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: error occurred when init sign", new Object[0]);
+      c(new com.tencent.soter.a.b.a(1007));
+      AppMethodBeat.o(98);
+      return;
+    }
+    this.JYr = new a((Signature)localObject, (byte)0);
+    b((Signature)localObject);
+    g.fDP().f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(75);
+        if (i.this.JYq != null) {
+          i.this.JYq.dTc();
+        }
+        AppMethodBeat.o(75);
+      }
+    });
+    AppMethodBeat.o(98);
+  }
+  
+  final void fDR()
+  {
+    AppMethodBeat.i(100);
+    if (this.JYd == null)
+    {
+      c(new com.tencent.soter.a.b.a(1018, "sign failed even after user authenticated the key."));
+      AppMethodBeat.o(100);
+      return;
+    }
+    this.JXZ.cZ(new f.a(this.JYd.signature, this.JYd.JWJ, this.JYd.JWI));
+    this.JXZ.a(new com.tencent.soter.a.f.b() {});
+    this.JXZ.execute();
+    AppMethodBeat.o(100);
+  }
+  
   public final boolean isCancelled()
   {
-    return this.Iwy;
+    return this.JYh;
   }
   
   final class a
     extends BiometricManagerCompat.AuthenticationCallback
   {
-    private Signature IwA = null;
-    private long dcQ;
+    private Signature JYj = null;
+    private long dao;
     
     private a(Signature paramSignature)
     {
-      this.IwA = paramSignature;
+      this.JYj = paramSignature;
     }
     
-    private static String ay(CharSequence paramCharSequence)
+    private static String az(CharSequence paramCharSequence)
     {
       AppMethodBeat.i(85);
       if (paramCharSequence == null)
@@ -365,13 +365,13 @@ public final class i
     }
     
     @SuppressLint({"NewApi"})
-    private void fnD()
+    private void fDT()
     {
       AppMethodBeat.i(91);
-      if ((i.this.Iwx) || (i.this.IvS == 2))
+      if ((i.this.JYg) || (i.this.JXB == 2))
       {
-        i.this.IwG.xu(false);
-        i.this.Iwy = true;
+        i.this.JYp.yE(false);
+        i.this.JYh = true;
       }
       AppMethodBeat.o(91);
     }
@@ -380,25 +380,25 @@ public final class i
     {
       AppMethodBeat.i(90);
       com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: called onAuthenticationCancelled", new Object[0]);
-      if (i.this.Iwy)
+      if (i.this.JYh)
       {
         com.tencent.soter.core.c.d.v("Soter.TaskBiometricAuthentication", "soter: during ignore cancel period", new Object[0]);
         AppMethodBeat.o(90);
         return;
       }
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(82);
-          if (i.this.IwH != null) {
-            i.this.IwH.onAuthenticationCancelled();
+          if (i.this.JYq != null) {
+            i.this.JYq.onAuthenticationCancelled();
           }
           AppMethodBeat.o(82);
         }
       });
       i.this.c(new com.tencent.soter.a.b.a(1020, "user cancelled authentication"));
-      fnD();
+      fDT();
       AppMethodBeat.o(90);
     }
     
@@ -406,29 +406,29 @@ public final class i
     {
       AppMethodBeat.i(86);
       com.tencent.soter.core.c.d.e("Soter.TaskBiometricAuthentication", "soter: on authentication fatal error: %d, %s", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(77);
-          if (i.this.IwH != null) {
-            i.this.IwH.onAuthenticationError(paramInt, paramCharSequence);
+          if (i.this.JYq != null) {
+            i.this.JYq.onAuthenticationError(paramInt, paramCharSequence);
           }
           AppMethodBeat.o(77);
         }
       });
       if (paramInt == 10308) {
-        i.this.c(new com.tencent.soter.a.b.a(1022, ay(paramCharSequence)));
+        i.this.c(new com.tencent.soter.a.b.a(1022, az(paramCharSequence)));
       }
       for (;;)
       {
-        fnD();
+        fDT();
         AppMethodBeat.o(86);
         return;
         if (paramInt == 10309) {
-          i.this.c(new com.tencent.soter.a.b.a(1022, ay(paramCharSequence)));
+          i.this.c(new com.tencent.soter.a.b.a(1022, az(paramCharSequence)));
         } else {
-          i.this.c(new com.tencent.soter.a.b.a(1017, ay(paramCharSequence)));
+          i.this.c(new com.tencent.soter.a.b.a(1017, az(paramCharSequence)));
         }
       }
     }
@@ -437,31 +437,31 @@ public final class i
     {
       AppMethodBeat.i(89);
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: authentication failed once", new Object[0]);
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(81);
-          if (i.this.IwH != null) {
-            i.this.IwH.onAuthenticationFailed();
+          if (i.this.JYq != null) {
+            i.this.JYq.onAuthenticationFailed();
           }
           AppMethodBeat.o(81);
         }
       });
-      if (i.this.Iww)
+      if (i.this.JYf)
       {
         com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: should compat lower android version logic.", new Object[0]);
-        i.this.IwG.xu(false);
-        g.fnz().ae(new Runnable()
+        i.this.JYp.yE(false);
+        g.fDP().ag(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(83);
-            i.this.IwG.fnn();
+            i.this.JYp.fDD();
             AppMethodBeat.o(83);
           }
         });
-        g.fnz().o(new Runnable()
+        g.fDP().o(new Runnable()
         {
           public final void run()
           {
@@ -471,7 +471,7 @@ public final class i
           }
         }, 1000L);
       }
-      if (i.this.IvS == 2)
+      if (i.this.JXB == 2)
       {
         com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: should compat faceid logic.", new Object[0]);
         i.this.c(new com.tencent.soter.a.b.a(1017, "faceid not match"));
@@ -483,13 +483,13 @@ public final class i
     {
       AppMethodBeat.i(87);
       com.tencent.soter.core.c.d.w("Soter.TaskBiometricAuthentication", "soter: on authentication help. you do not need to cancel the authentication: %d, %s", new Object[] { Integer.valueOf(paramInt), paramCharSequence });
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78);
-          if (i.this.IwH != null) {
-            i.this.IwH.onAuthenticationHelp(paramInt, i.a.az(paramCharSequence));
+          if (i.this.JYq != null) {
+            i.this.JYq.onAuthenticationHelp(paramInt, i.a.aA(paramCharSequence));
           }
           AppMethodBeat.o(78);
         }
@@ -501,18 +501,18 @@ public final class i
     {
       AppMethodBeat.i(88);
       com.tencent.soter.core.c.d.i("Soter.TaskBiometricAuthentication", "soter: authentication succeed. start sign and upload upload signature", new Object[0]);
-      g.fnz().f(new Runnable()
+      g.fDP().f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(79);
-          if (i.this.IwH != null) {
-            i.this.IwH.dEE();
+          if (i.this.JYq != null) {
+            i.this.JYq.dTd();
           }
           AppMethodBeat.o(79);
         }
       });
-      g.fnz().ae(new Runnable()
+      g.fDP().ag(new Runnable()
       {
         /* Error */
         public final void run()
@@ -521,36 +521,36 @@ public final class i
           //   0: bipush 80
           //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   5: aload_0
-          //   6: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   9: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
-          //   12: getfield 43	com/tencent/soter/a/g/i:ADm	Ljava/lang/String;
+          //   6: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   9: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
+          //   12: getfield 43	com/tencent/soter/a/g/i:BVH	Ljava/lang/String;
           //   15: invokestatic 49	com/tencent/soter/core/c/g:isNullOrNil	(Ljava/lang/String;)Z
           //   18: ifne +426 -> 444
-          //   21: invokestatic 55	com/tencent/soter/core/a:fmN	()I
+          //   21: invokestatic 55	com/tencent/soter/core/a:fDd	()I
           //   24: iconst_1
           //   25: if_icmpne +139 -> 164
           //   28: aload_0
-          //   29: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   32: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
+          //   29: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   32: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
           //   35: astore_3
           //   36: aload_0
-          //   37: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
+          //   37: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
           //   40: invokestatic 58	com/tencent/soter/a/g/i$a:a	(Lcom/tencent/soter/a/g/i$a;)Ljava/security/Signature;
           //   43: pop
           //   44: aload_0
-          //   45: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
+          //   45: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
           //   48: invokestatic 62	com/tencent/soter/a/g/i$a:b	(Lcom/tencent/soter/a/g/i$a;)J
           //   51: lstore_1
           //   52: aload_3
           //   53: lload_1
-          //   54: invokestatic 66	com/tencent/soter/core/a:xi	(J)[B
-          //   57: invokestatic 70	com/tencent/soter/core/a:cL	([B)Lcom/tencent/soter/core/c/j;
-          //   60: putfield 74	com/tencent/soter/a/g/i:Iwu	Lcom/tencent/soter/core/c/j;
+          //   54: invokestatic 66	com/tencent/soter/core/a:BS	(J)[B
+          //   57: invokestatic 70	com/tencent/soter/core/a:cK	([B)Lcom/tencent/soter/core/c/j;
+          //   60: putfield 74	com/tencent/soter/a/g/i:JYd	Lcom/tencent/soter/core/c/j;
           //   63: aload_3
-          //   64: getfield 78	com/tencent/soter/a/g/i:Iwq	Lcom/tencent/soter/a/f/f;
+          //   64: getfield 78	com/tencent/soter/a/g/i:JXZ	Lcom/tencent/soter/a/f/f;
           //   67: ifnull +13 -> 80
           //   70: aload_3
-          //   71: invokevirtual 81	com/tencent/soter/a/g/i:fnB	()V
+          //   71: invokevirtual 81	com/tencent/soter/a/g/i:fDR	()V
           //   74: bipush 80
           //   76: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   79: return
@@ -563,7 +563,7 @@ public final class i
           //   92: new 95	com/tencent/soter/a/b/a
           //   95: dup
           //   96: aload_3
-          //   97: getfield 74	com/tencent/soter/a/g/i:Iwu	Lcom/tencent/soter/core/c/j;
+          //   97: getfield 74	com/tencent/soter/a/g/i:JYd	Lcom/tencent/soter/core/c/j;
           //   100: invokespecial 98	com/tencent/soter/a/b/a:<init>	(Lcom/tencent/soter/core/c/j;)V
           //   103: invokevirtual 102	com/tencent/soter/a/g/i:c	(Lcom/tencent/soter/a/b/e;)V
           //   106: bipush 80
@@ -595,34 +595,34 @@ public final class i
           //   160: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   163: return
           //   164: aload_0
-          //   165: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
+          //   165: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
           //   168: invokestatic 58	com/tencent/soter/a/g/i$a:a	(Lcom/tencent/soter/a/g/i$a;)Ljava/security/Signature;
           //   171: aload_0
-          //   172: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   175: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
-          //   178: getfield 43	com/tencent/soter/a/g/i:ADm	Ljava/lang/String;
+          //   172: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   175: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
+          //   178: getfield 43	com/tencent/soter/a/g/i:BVH	Ljava/lang/String;
           //   181: ldc 123
           //   183: invokestatic 129	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
           //   186: invokevirtual 135	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
           //   189: invokevirtual 141	java/security/Signature:update	([B)V
           //   192: aload_0
-          //   193: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   196: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
+          //   193: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   196: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
           //   199: astore_3
           //   200: aload_0
-          //   201: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
+          //   201: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
           //   204: invokestatic 58	com/tencent/soter/a/g/i$a:a	(Lcom/tencent/soter/a/g/i$a;)Ljava/security/Signature;
           //   207: astore 4
           //   209: aload_3
           //   210: aload 4
           //   212: invokevirtual 145	java/security/Signature:sign	()[B
-          //   215: invokestatic 70	com/tencent/soter/core/a:cL	([B)Lcom/tencent/soter/core/c/j;
-          //   218: putfield 74	com/tencent/soter/a/g/i:Iwu	Lcom/tencent/soter/core/c/j;
+          //   215: invokestatic 70	com/tencent/soter/core/a:cK	([B)Lcom/tencent/soter/core/c/j;
+          //   218: putfield 74	com/tencent/soter/a/g/i:JYd	Lcom/tencent/soter/core/c/j;
           //   221: aload_3
-          //   222: getfield 78	com/tencent/soter/a/g/i:Iwq	Lcom/tencent/soter/a/f/f;
+          //   222: getfield 78	com/tencent/soter/a/g/i:JXZ	Lcom/tencent/soter/a/f/f;
           //   225: ifnull +149 -> 374
           //   228: aload_3
-          //   229: invokevirtual 81	com/tencent/soter/a/g/i:fnB	()V
+          //   229: invokevirtual 81	com/tencent/soter/a/g/i:fDR	()V
           //   232: bipush 80
           //   234: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   237: return
@@ -668,21 +668,21 @@ public final class i
           //   318: dup
           //   319: iconst_0
           //   320: aload_0
-          //   321: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   324: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
-          //   327: getfield 155	com/tencent/soter/a/g/i:IvD	Ljava/lang/String;
+          //   321: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   324: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
+          //   327: getfield 155	com/tencent/soter/a/g/i:JXm	Ljava/lang/String;
           //   330: aastore
           //   331: invokestatic 111	com/tencent/soter/core/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   334: aload_0
-          //   335: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   338: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
-          //   341: getfield 155	com/tencent/soter/a/g/i:IvD	Ljava/lang/String;
+          //   335: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   338: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
+          //   341: getfield 155	com/tencent/soter/a/g/i:JXm	Ljava/lang/String;
           //   344: iconst_0
-          //   345: invokestatic 159	com/tencent/soter/core/a:cU	(Ljava/lang/String;Z)Lcom/tencent/soter/core/c/f;
+          //   345: invokestatic 159	com/tencent/soter/core/a:db	(Ljava/lang/String;Z)Lcom/tencent/soter/core/c/f;
           //   348: pop
           //   349: aload_0
-          //   350: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
-          //   353: getfield 39	com/tencent/soter/a/g/i$a:IwJ	Lcom/tencent/soter/a/g/i;
+          //   350: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
+          //   353: getfield 39	com/tencent/soter/a/g/i$a:JYs	Lcom/tencent/soter/a/g/i;
           //   356: new 95	com/tencent/soter/a/b/a
           //   359: dup
           //   360: sipush 1027
@@ -699,7 +699,7 @@ public final class i
           //   386: new 95	com/tencent/soter/a/b/a
           //   389: dup
           //   390: aload_3
-          //   391: getfield 74	com/tencent/soter/a/g/i:Iwu	Lcom/tencent/soter/core/c/j;
+          //   391: getfield 74	com/tencent/soter/a/g/i:JYd	Lcom/tencent/soter/core/c/j;
           //   394: invokespecial 98	com/tencent/soter/a/b/a:<init>	(Lcom/tencent/soter/core/c/j;)V
           //   397: invokevirtual 102	com/tencent/soter/a/g/i:c	(Lcom/tencent/soter/a/b/e;)V
           //   400: bipush 80
@@ -716,7 +716,7 @@ public final class i
           //   421: ldc 165
           //   423: invokestatic 116	com/tencent/soter/core/c/d:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
           //   426: aload_0
-          //   427: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
+          //   427: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
           //   430: sipush -1000
           //   433: ldc 167
           //   435: invokevirtual 171	com/tencent/soter/a/g/i$a:onAuthenticationError	(ILjava/lang/CharSequence;)V
@@ -729,7 +729,7 @@ public final class i
           //   449: anewarray 4	java/lang/Object
           //   452: invokestatic 111	com/tencent/soter/core/c/d:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   455: aload_0
-          //   456: getfield 20	com/tencent/soter/a/g/i$a$4:IwK	Lcom/tencent/soter/a/g/i$a;
+          //   456: getfield 20	com/tencent/soter/a/g/i$a$4:JYt	Lcom/tencent/soter/a/g/i$a;
           //   459: sipush -1000
           //   462: ldc 175
           //   464: invokevirtual 171	com/tencent/soter/a/g/i$a:onAuthenticationError	(ILjava/lang/CharSequence;)V
@@ -760,7 +760,7 @@ public final class i
           //   400	405	406	java/lang/Exception
         }
       });
-      fnD();
+      fDT();
       AppMethodBeat.o(88);
     }
   }

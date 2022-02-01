@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Set;
 
 final class EnvelopeStoryVideoManager$10
@@ -13,12 +13,12 @@ final class EnvelopeStoryVideoManager$10
 {
   EnvelopeStoryVideoManager$10(String paramString, long paramLong) {}
   
-  public final void a(String paramString, d paramd)
+  public final void b(String paramString, d paramd)
   {
     AppMethodBeat.i(182468);
-    ad.i("MicroMsg.EnvelopeStoryVideoManager", "preload complete: %s %s", new Object[] { paramString, Integer.valueOf(paramd.field_retCode) });
-    EnvelopeStoryVideoManager.ble().remove(paramString);
-    h.vKh.f(19228, new Object[] { this.val$url, Integer.valueOf(0), Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf((SystemClock.elapsedRealtime() - this.nWx) / 1000L), Integer.valueOf(0) });
+    ac.i("MicroMsg.EnvelopeStoryVideoManager", "preload complete: %s %s", new Object[] { paramString, Integer.valueOf(paramd.field_retCode) });
+    EnvelopeStoryVideoManager.brT().remove(paramString);
+    h.wUl.f(19228, new Object[] { this.val$url, Integer.valueOf(0), Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf((SystemClock.elapsedRealtime() - this.ozS) / 1000L), Integer.valueOf(0) });
     AppMethodBeat.o(182468);
   }
 }

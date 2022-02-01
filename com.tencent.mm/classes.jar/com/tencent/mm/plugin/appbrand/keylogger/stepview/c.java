@@ -4,18 +4,18 @@ import android.text.SpannableString;
 
 public final class c
 {
-  final SpannableString kFf;
+  final SpannableString lgy;
   final int mState;
   
   public c(SpannableString paramSpannableString, int paramInt)
   {
-    this.kFf = paramSpannableString;
+    this.lgy = paramSpannableString;
     this.mState = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.c
  * JD-Core Version:    0.7.0.1
  */

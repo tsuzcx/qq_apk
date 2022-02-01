@@ -5,22 +5,10 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class y
 {
-  public static boolean h(XmlPullParser paramXmlPullParser, String paramString)
-  {
-    AppMethodBeat.i(93245);
-    if ((m(paramXmlPullParser)) && (paramXmlPullParser.getName().equals(paramString)))
-    {
-      AppMethodBeat.o(93245);
-      return true;
-    }
-    AppMethodBeat.o(93245);
-    return false;
-  }
-  
-  public static boolean i(XmlPullParser paramXmlPullParser, String paramString)
+  public static boolean b(XmlPullParser paramXmlPullParser, String paramString)
   {
     AppMethodBeat.i(93247);
-    if ((n(paramXmlPullParser)) && (paramXmlPullParser.getName().equals(paramString)))
+    if ((c(paramXmlPullParser)) && (paramXmlPullParser.getName().equals(paramString)))
     {
       AppMethodBeat.o(93247);
       return true;
@@ -29,7 +17,7 @@ public final class y
     return false;
   }
   
-  public static String j(XmlPullParser paramXmlPullParser, String paramString)
+  public static String c(XmlPullParser paramXmlPullParser, String paramString)
   {
     AppMethodBeat.i(93249);
     int j = paramXmlPullParser.getAttributeCount();
@@ -48,19 +36,7 @@ public final class y
     return null;
   }
   
-  private static boolean m(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(93246);
-    if (paramXmlPullParser.getEventType() == 3)
-    {
-      AppMethodBeat.o(93246);
-      return true;
-    }
-    AppMethodBeat.o(93246);
-    return false;
-  }
-  
-  public static boolean n(XmlPullParser paramXmlPullParser)
+  private static boolean c(XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(93248);
     if (paramXmlPullParser.getEventType() == 2)

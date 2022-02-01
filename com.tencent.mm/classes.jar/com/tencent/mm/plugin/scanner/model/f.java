@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.mp;
-import com.tencent.mm.protocal.protobuf.mq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.mw;
+import com.tencent.mm.protocal.protobuf.mx;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class f
@@ -25,20 +25,20 @@ public final class f
   {
     AppMethodBeat.i(51617);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new mp();
-    ((b.a)localObject).gUV = new mq();
+    ((b.a)localObject).hvt = new mw();
+    ((b.a)localObject).hvu = new mx();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
     ((b.a)localObject).funcId = 1068;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (mp)this.rr.gUS.gUX;
-    ((mp)localObject).ProductID = paramString1;
-    ((mp)localObject).Scene = paramInt;
-    ((mp)localObject).CJC = paramString2;
-    ((mp)localObject).CJB = paramLinkedList;
-    ((mp)localObject).CJE = paramDouble2;
-    ((mp)localObject).CJD = paramDouble1;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (mw)this.rr.hvr.hvw;
+    ((mw)localObject).ProductID = paramString1;
+    ((mw)localObject).Scene = paramInt;
+    ((mw)localObject).Ece = paramString2;
+    ((mw)localObject).Ecd = paramLinkedList;
+    ((mw)localObject).Ecg = paramDouble2;
+    ((mw)localObject).Ecf = paramDouble1;
     AppMethodBeat.o(51617);
   }
   
@@ -59,14 +59,14 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(51618);
-    ad.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    ac.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(51618);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.f
  * JD-Core Version:    0.7.0.1
  */

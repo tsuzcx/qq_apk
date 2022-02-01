@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.music.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ek;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.storagebase.h.b;
 
@@ -13,7 +13,7 @@ final class f$2
   public final String[] getSQLs()
   {
     AppMethodBeat.i(63026);
-    String str = j.getCreateSQLs(ek.So(), "PieceMusicInfo");
+    String str = j.getCreateSQLs(eo.Th(), "PieceMusicInfo");
     AppMethodBeat.o(63026);
     return new String[] { str };
   }

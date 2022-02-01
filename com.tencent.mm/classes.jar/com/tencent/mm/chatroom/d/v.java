@@ -1,16 +1,16 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ddp;
-import com.tencent.mm.protocal.protobuf.ddq;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.dje;
+import com.tencent.mm.protocal.protobuf.djf;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class v
   extends n
@@ -25,16 +25,16 @@ public final class v
     AppMethodBeat.i(12495);
     b.a locala = new b.a();
     this.username = paramString2;
-    ddp localddp = new ddp();
-    localddp.Cxb = paramString1;
-    localddp.Evo = paramString2;
-    locala.gUU = localddp;
-    locala.gUV = new ddq();
+    dje localdje = new dje();
+    localdje.DPx = paramString1;
+    localdje.FSr = paramString2;
+    locala.hvt = localdje;
+    locala.hvu = new djf();
     locala.uri = "/cgi-bin/micromsg-bin/transferchatroomowner";
     locala.funcId = 990;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.atI();
+    this.rr = locala.aAz();
     AppMethodBeat.o(12495);
   }
   
@@ -55,14 +55,14 @@ public final class v
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12496);
-    ad.w("MicroMsg.NetSceneTransferChatRoomOwner", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
+    ac.w("MicroMsg.NetSceneTransferChatRoomOwner", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.v
  * JD-Core Version:    0.7.0.1
  */

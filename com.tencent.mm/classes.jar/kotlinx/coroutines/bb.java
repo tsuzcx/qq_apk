@@ -1,32 +1,45 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f.b;
-import d.d.f.c;
-import java.io.Closeable;
+import d.l;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Ljava/io/Closeable;", "()V", "executor", "Ljava/util/concurrent/Executor;", "getExecutor", "()Ljava/util/concurrent/Executor;", "close", "", "Key", "kotlinx-coroutines-core"})
-public abstract class bb
-  extends y
-  implements Closeable
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+final class bb
+  implements bj
 {
-  public static final a Kek = new a((byte)0);
+  final boolean isActive;
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    extends d.d.b<y, bb>
+  public bb(boolean paramBoolean)
   {
-    private a()
+    this.isActive = paramBoolean;
+  }
+  
+  public final bx gdQ()
+  {
+    return null;
+  }
+  
+  public final boolean isActive()
+  {
+    return this.isActive;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(117965);
+    StringBuilder localStringBuilder = new StringBuilder("Empty{");
+    if (this.isActive) {}
+    for (String str = "Active";; str = "New")
     {
-      super((d.g.a.b)1.Kel);
-      AppMethodBeat.i(190060);
-      AppMethodBeat.o(190060);
+      str = str + '}';
+      AppMethodBeat.o(117965);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.bb
  * JD-Core Version:    0.7.0.1
  */

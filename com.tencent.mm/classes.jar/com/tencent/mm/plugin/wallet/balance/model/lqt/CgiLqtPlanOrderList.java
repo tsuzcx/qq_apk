@@ -4,70 +4,70 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.c;
-import com.tencent.mm.protocal.protobuf.bpy;
-import com.tencent.mm.protocal.protobuf.car;
-import com.tencent.mm.protocal.protobuf.cea;
-import com.tencent.mm.protocal.protobuf.ceb;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.protocal.protobuf.bup;
+import com.tencent.mm.protocal.protobuf.cfq;
+import com.tencent.mm.protocal.protobuf.cjd;
+import com.tencent.mm.protocal.protobuf.cje;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class CgiLqtPlanOrderList
-  extends c<ceb>
+  extends c<cje>
 {
   public CgiLqtPlanOrderList(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(68445);
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new cea();
-    ((b.a)localObject).gUV = new ceb();
+    ((b.a)localObject).hvt = new cjd();
+    ((b.a)localObject).hvu = new cje();
     ((b.a)localObject).funcId = 1916;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/qryautoplanorderlist";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).atI();
-    cea localcea = (cea)((b)localObject).gUS.gUX;
-    localcea.Eag = paramInt1;
-    localcea.offset = paramInt2;
-    localcea.Eah = paramInt3;
+    localObject = ((b.a)localObject).aAz();
+    cjd localcjd = (cjd)((b)localObject).hvr.hvw;
+    localcjd.Fxb = paramInt1;
+    localcjd.offset = paramInt2;
+    localcjd.Fxc = paramInt3;
     this.rr = ((b)localObject);
-    ad.i("MicroMsg.CgiLqtPlanOrderList", "CgiLqtPlanOrderList Req：plan_id: %s, offset: %s, limit: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ac.i("MicroMsg.CgiLqtPlanOrderList", "CgiLqtPlanOrderList Req：plan_id: %s, offset: %s, limit: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(68445);
   }
   
-  public static PlanItemParcel a(car paramcar)
+  public static PlanItemParcel a(cfq paramcfq)
   {
     AppMethodBeat.i(68446);
-    if (paramcar == null)
+    if (paramcfq == null)
     {
       AppMethodBeat.o(68446);
       return null;
     }
     PlanItemParcel localPlanItemParcel = new PlanItemParcel();
-    localPlanItemParcel.zEA = paramcar.zEA;
-    localPlanItemParcel.dEb = paramcar.dEb;
-    localPlanItemParcel.foG = paramcar.foG;
-    localPlanItemParcel.vur = paramcar.vur;
-    localPlanItemParcel.szi = paramcar.szi;
-    localPlanItemParcel.dca = paramcar.dca;
-    localPlanItemParcel.uoo = paramcar.uoo;
-    localPlanItemParcel.state = paramcar.state;
-    localPlanItemParcel.zEB = paramcar.zEB;
-    if (paramcar.DXg != null)
+    localPlanItemParcel.AWN = paramcfq.AWN;
+    localPlanItemParcel.dBN = paramcfq.dBN;
+    localPlanItemParcel.fsg = paramcfq.fsg;
+    localPlanItemParcel.wEw = paramcfq.wEw;
+    localPlanItemParcel.tGS = paramcfq.tGS;
+    localPlanItemParcel.cZz = paramcfq.cZz;
+    localPlanItemParcel.vxk = paramcfq.vxk;
+    localPlanItemParcel.state = paramcfq.state;
+    localPlanItemParcel.AWO = paramcfq.AWO;
+    if (paramcfq.FtZ != null)
     {
-      localPlanItemParcel.zED = new MngPlanItemParcel();
-      localPlanItemParcel.zED.zEm = paramcar.DXg.zEm;
-      localPlanItemParcel.zED.zEn = paramcar.DXg.zEn;
-      paramcar = paramcar.DXg.DOh.iterator();
-      while (paramcar.hasNext())
+      localPlanItemParcel.AWQ = new MngPlanItemParcel();
+      localPlanItemParcel.AWQ.AWz = paramcfq.FtZ.AWz;
+      localPlanItemParcel.AWQ.AWA = paramcfq.FtZ.AWA;
+      paramcfq = paramcfq.FtZ.Fky.iterator();
+      while (paramcfq.hasNext())
       {
-        Integer localInteger = (Integer)paramcar.next();
-        localPlanItemParcel.zED.zEo.add(localInteger);
+        Integer localInteger = (Integer)paramcfq.next();
+        localPlanItemParcel.AWQ.AWB.add(localInteger);
       }
     }
     AppMethodBeat.o(68446);
@@ -78,9 +78,9 @@ public final class CgiLqtPlanOrderList
     implements Parcelable
   {
     public static final Parcelable.Creator<MngPlanItemParcel> CREATOR;
-    public boolean zEm;
-    public String zEn;
-    public ArrayList<Integer> zEo;
+    public String AWA;
+    public ArrayList<Integer> AWB;
+    public boolean AWz;
     
     static
     {
@@ -92,21 +92,21 @@ public final class CgiLqtPlanOrderList
     public MngPlanItemParcel()
     {
       AppMethodBeat.i(68438);
-      this.zEo = new ArrayList();
+      this.AWB = new ArrayList();
       AppMethodBeat.o(68438);
     }
     
     protected MngPlanItemParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68439);
-      this.zEo = new ArrayList();
+      this.AWB = new ArrayList();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.zEm = bool;
-        this.zEn = paramParcel.readString();
-        this.zEo = new ArrayList();
-        paramParcel.readList(this.zEo, Integer.class.getClassLoader());
+        this.AWz = bool;
+        this.AWA = paramParcel.readString();
+        this.AWB = new ArrayList();
+        paramParcel.readList(this.AWB, Integer.class.getClassLoader());
         AppMethodBeat.o(68439);
         return;
       }
@@ -120,12 +120,12 @@ public final class CgiLqtPlanOrderList
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68437);
-      if (this.zEm) {}
+      if (this.AWz) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.zEn);
-        paramParcel.writeList(this.zEo);
+        paramParcel.writeString(this.AWA);
+        paramParcel.writeList(this.AWB);
         AppMethodBeat.o(68437);
         return;
       }
@@ -136,16 +136,16 @@ public final class CgiLqtPlanOrderList
     implements Parcelable
   {
     public static final Parcelable.Creator<PlanItemParcel> CREATOR;
-    public long dEb;
-    public String dca;
-    public int foG;
+    public int AWN;
+    public String AWO;
+    public CgiLqtPlanOrderList.MngPlanItemParcel AWQ;
+    public String cZz;
+    public long dBN;
+    public int fsg;
     public int state;
-    public String szi;
-    public String uoo;
-    public String vur;
-    public int zEA;
-    public String zEB;
-    public CgiLqtPlanOrderList.MngPlanItemParcel zED;
+    public String tGS;
+    public String vxk;
+    public String wEw;
     
     static
     {
@@ -159,16 +159,16 @@ public final class CgiLqtPlanOrderList
     protected PlanItemParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(68443);
-      this.foG = paramParcel.readInt();
-      this.dEb = paramParcel.readLong();
-      this.dca = paramParcel.readString();
-      this.uoo = paramParcel.readString();
-      this.zED = ((CgiLqtPlanOrderList.MngPlanItemParcel)paramParcel.readParcelable(CgiLqtPlanOrderList.MngPlanItemParcel.class.getClassLoader()));
-      this.zEA = paramParcel.readInt();
+      this.fsg = paramParcel.readInt();
+      this.dBN = paramParcel.readLong();
+      this.cZz = paramParcel.readString();
+      this.vxk = paramParcel.readString();
+      this.AWQ = ((CgiLqtPlanOrderList.MngPlanItemParcel)paramParcel.readParcelable(CgiLqtPlanOrderList.MngPlanItemParcel.class.getClassLoader()));
+      this.AWN = paramParcel.readInt();
       this.state = paramParcel.readInt();
-      this.szi = paramParcel.readString();
-      this.vur = paramParcel.readString();
-      this.zEB = paramParcel.readString();
+      this.tGS = paramParcel.readString();
+      this.wEw = paramParcel.readString();
+      this.AWO = paramParcel.readString();
       AppMethodBeat.o(68443);
     }
     
@@ -180,16 +180,16 @@ public final class CgiLqtPlanOrderList
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(68442);
-      paramParcel.writeInt(this.foG);
-      paramParcel.writeLong(this.dEb);
-      paramParcel.writeString(this.dca);
-      paramParcel.writeString(this.uoo);
-      paramParcel.writeParcelable(this.zED, paramInt);
-      paramParcel.writeInt(this.zEA);
+      paramParcel.writeInt(this.fsg);
+      paramParcel.writeLong(this.dBN);
+      paramParcel.writeString(this.cZz);
+      paramParcel.writeString(this.vxk);
+      paramParcel.writeParcelable(this.AWQ, paramInt);
+      paramParcel.writeInt(this.AWN);
       paramParcel.writeInt(this.state);
-      paramParcel.writeString(this.szi);
-      paramParcel.writeString(this.vur);
-      paramParcel.writeString(this.zEB);
+      paramParcel.writeString(this.tGS);
+      paramParcel.writeString(this.wEw);
+      paramParcel.writeString(this.AWO);
       AppMethodBeat.o(68442);
     }
   }

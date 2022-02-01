@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.wepkg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gm;
+import com.tencent.mm.g.c.gq;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends gm
+  extends gq
 {
-  public static final c.a gLr;
+  public static final c.a hlR;
   
   static
   {
     AppMethodBeat.i(110557);
     c.a locala = new c.a();
-    locala.EYt = new Field[8];
+    locala.GvF = new Field[8];
     locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "pkgId";
-    locala.EYv.put("pkgId", "TEXT PRIMARY KEY ");
+    locala.GvH.put("pkgId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" pkgId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.EYu = "pkgId";
+    locala.GvG = "pkgId";
     locala.columns[1] = "version";
-    locala.EYv.put("version", "TEXT");
+    locala.GvH.put("version", "TEXT");
     localStringBuilder.append(" version TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "oldVersion";
-    locala.EYv.put("oldVersion", "TEXT");
+    locala.GvH.put("oldVersion", "TEXT");
     localStringBuilder.append(" oldVersion TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "oldPath";
-    locala.EYv.put("oldPath", "TEXT");
+    locala.GvH.put("oldPath", "TEXT");
     localStringBuilder.append(" oldPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "md5";
-    locala.EYv.put("md5", "TEXT");
+    locala.GvH.put("md5", "TEXT");
     localStringBuilder.append(" md5 TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "downloadUrl";
-    locala.EYv.put("downloadUrl", "TEXT");
+    locala.GvH.put("downloadUrl", "TEXT");
     localStringBuilder.append(" downloadUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "pkgSize";
-    locala.EYv.put("pkgSize", "INTEGER");
+    locala.GvH.put("pkgSize", "INTEGER");
     localStringBuilder.append(" pkgSize INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "downloadNetType";
-    locala.EYv.put("downloadNetType", "INTEGER");
+    locala.GvH.put("downloadNetType", "INTEGER");
     localStringBuilder.append(" downloadNetType INTEGER");
     locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();
-    gLr = locala;
+    hlR = locala;
     AppMethodBeat.o(110557);
   }
   
   public final c.a getDBInfo()
   {
-    return gLr;
+    return hlR;
   }
 }
 

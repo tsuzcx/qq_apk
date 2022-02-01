@@ -7,18 +7,18 @@ import com.tencent.mm.sdk.e.j;
 public final class ae
   extends j<ad>
 {
-  public static final String[] gLs;
+  public static final String[] hlS;
   
   static
   {
     AppMethodBeat.i(44314);
-    gLs = new String[] { j.getCreateSQLs(ad.iMP, "PkgUpdateStats") };
+    hlS = new String[] { j.getCreateSQLs(ad.jmW, "PkgUpdateStats") };
     AppMethodBeat.o(44314);
   }
   
   public ae(e parame)
   {
-    super(parame, ad.iMP, "PkgUpdateStats", ad.INDEX_CREATE);
+    super(parame, ad.jmW, "PkgUpdateStats", ad.INDEX_CREATE);
   }
 }
 

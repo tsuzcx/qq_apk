@@ -29,7 +29,7 @@ public abstract class GetHttpRequest
     //   15: aload_0
     //   16: getfield 21	com/tencent/tmassistantsdk/network/GetHttpRequest:mHttpGet	Lorg/apache/http/client/methods/HttpGet;
     //   19: ifnonnull -8 -> 11
-    //   22: getstatic 38	com/tencent/e/h:Iye	Lcom/tencent/e/i;
+    //   22: getstatic 38	com/tencent/e/h:JZN	Lcom/tencent/e/i;
     //   25: new 6	com/tencent/tmassistantsdk/network/GetHttpRequest$1
     //   28: dup
     //   29: aload_0
@@ -56,7 +56,7 @@ public abstract class GetHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetHttpRequest
  * JD-Core Version:    0.7.0.1
  */

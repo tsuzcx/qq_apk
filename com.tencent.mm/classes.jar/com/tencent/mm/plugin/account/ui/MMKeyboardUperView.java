@@ -10,16 +10,16 @@ public class MMKeyboardUperView
   extends ScrollView
 {
   private int defaultHeight;
-  private View isN;
-  private Runnable isO;
-  private Runnable isP;
+  private View iSS;
+  private Runnable iST;
+  private Runnable iSU;
   
   public MMKeyboardUperView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(128257);
     this.defaultHeight = -1;
-    this.isO = new Runnable()
+    this.iST = new Runnable()
     {
       public final void run()
       {
@@ -29,7 +29,7 @@ public class MMKeyboardUperView
         AppMethodBeat.o(128254);
       }
     };
-    this.isP = new Runnable()
+    this.iSU = new Runnable()
     {
       public final void run()
       {
@@ -46,7 +46,7 @@ public class MMKeyboardUperView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(128256);
     this.defaultHeight = -1;
-    this.isO = new Runnable()
+    this.iST = new Runnable()
     {
       public final void run()
       {
@@ -56,7 +56,7 @@ public class MMKeyboardUperView
         AppMethodBeat.o(128254);
       }
     };
-    this.isP = new Runnable()
+    this.iSU = new Runnable()
     {
       public final void run()
       {
@@ -70,13 +70,13 @@ public class MMKeyboardUperView
   
   public void setupUperView(View paramView)
   {
-    this.isN = paramView;
+    this.iSS = paramView;
     this.defaultHeight = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MMKeyboardUperView
  * JD-Core Version:    0.7.0.1
  */

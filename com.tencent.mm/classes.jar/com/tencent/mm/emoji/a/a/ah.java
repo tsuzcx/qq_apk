@@ -1,9 +1,10 @@
 package com.tencent.mm.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.a.i;
 import com.tencent.mm.protocal.protobuf.PersonalDesigner;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.aw.a;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.a.v;
@@ -13,40 +14,40 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/panel/StoreItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "emojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "kotlin.jvm.PlatformType", "hasNew", "", "getHasNew", "()Z", "setHasNew", "(Z)V", "reportCount", "", "getReportCount", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/StoreItemGroup;", "Lcom/tencent/mm/emoji/model/panel/AbsPanelItemGroup;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "emojiList", "", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "kotlin.jvm.PlatformType", "hasNew", "", "getHasNew", "()Z", "setHasNew", "(Z)V", "reportCount", "", "getReportCount", "plugin-emojisdk_release"})
 public final class ah
   extends a
 {
-  private int fNA;
-  private final List<EmojiInfo> fNz;
-  public boolean fOi;
+  public boolean fRT;
+  private final List<EmojiInfo> fRk;
+  private int fRl;
   
   public ah(EmojiGroupInfo paramEmojiGroupInfo)
   {
     super(paramEmojiGroupInfo);
     AppMethodBeat.i(105587);
-    Object localObject1 = com.tencent.mm.emoji.a.h.abj().pU(paramEmojiGroupInfo.fZJ());
+    Object localObject1 = i.ach().tf(paramEmojiGroupInfo.fdm());
     if (localObject1 != null) {}
-    for (localObject1 = (List)localObject1;; localObject1 = (List)v.Jgl)
+    for (localObject1 = (List)localObject1;; localObject1 = (List)v.KTF)
     {
-      this.fNz = ((List)localObject1);
-      this.fNA = this.fNz.size();
-      paramEmojiGroupInfo = com.tencent.mm.emoji.a.h.abj().pV(paramEmojiGroupInfo.fZJ());
+      this.fRk = ((List)localObject1);
+      this.fRl = this.fRk.size();
+      paramEmojiGroupInfo = i.ach().tg(paramEmojiGroupInfo.fdm());
       Object localObject2;
       if (paramEmojiGroupInfo != null)
       {
-        this.fNx.fOh = paramEmojiGroupInfo;
-        localObject1 = this.fNx;
-        localObject2 = at.a.FyF;
-        ((q)localObject1).fOi = at.a.Wz(paramEmojiGroupInfo.DesignerUin).eLv();
-        this.fOi = this.fNx.fOi;
+        this.fRi.fRS = paramEmojiGroupInfo;
+        localObject1 = this.fRi;
+        localObject2 = aw.a.GXG;
+        ((q)localObject1).fRT = aw.a.YJ(paramEmojiGroupInfo.DesignerUin).faX();
+        this.fRT = this.fRi.fRT;
       }
-      this.fNy.add(this.fNx);
-      paramEmojiGroupInfo = ((Iterable)this.fNz).iterator();
+      this.fRj.add(this.fRi);
+      paramEmojiGroupInfo = ((Iterable)this.fRk).iterator();
       while (paramEmojiGroupInfo.hasNext())
       {
         localObject1 = (EmojiInfo)paramEmojiGroupInfo.next();
-        localObject2 = this.fNy;
+        localObject2 = this.fRj;
         k.g(localObject1, "it");
         ((LinkedList)localObject2).add(new h((EmojiInfo)localObject1, 2));
       }
@@ -54,14 +55,14 @@ public final class ah
     AppMethodBeat.o(105587);
   }
   
-  public final int abI()
+  public final int acI()
   {
-    return this.fNA;
+    return this.fRl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.a.a.ah
  * JD-Core Version:    0.7.0.1
  */

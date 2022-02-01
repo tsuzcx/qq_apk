@@ -13,23 +13,23 @@ public abstract interface x
   public static final class a
     extends Error
   {
-    final String kJe;
+    final String lkA;
     
     a(String paramString1, String paramString2)
     {
       super();
-      this.kJe = paramString2;
+      this.lkA = paramString2;
     }
     
     static final class a
     {
       String errorMessage;
-      String kJe;
+      String lkA;
       
-      final x.a bgA()
+      final x.a bnu()
       {
         AppMethodBeat.i(47167);
-        x.a locala = new x.a(this.errorMessage, this.kJe);
+        x.a locala = new x.a(this.errorMessage, this.lkA);
         AppMethodBeat.o(47167);
         return locala;
       }
@@ -37,7 +37,7 @@ public abstract interface x
       final a n(String paramString, Object... paramVarArgs)
       {
         AppMethodBeat.i(47165);
-        this.kJe = String.format(Locale.US, paramString, paramVarArgs);
+        this.lkA = String.format(Locale.US, paramString, paramVarArgs);
         AppMethodBeat.o(47165);
         return this;
       }
@@ -54,12 +54,12 @@ public abstract interface x
   
   public static abstract interface b
   {
-    public abstract void gv(boolean paramBoolean);
+    public abstract void gS(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.x
  * JD-Core Version:    0.7.0.1
  */

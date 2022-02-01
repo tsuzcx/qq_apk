@@ -14,37 +14,37 @@ import java.util.List;
 public final class a
   implements e
 {
-  protected b<com.google.android.exoplayer2.drm.d> aQI;
+  protected b<com.google.android.exoplayer2.drm.d> aRD;
   protected Context context;
   protected Handler handler;
-  protected int ksA = 50;
-  protected int ksB = 5000;
-  protected j.a ksw;
-  protected e.a ksx;
-  protected com.google.android.exoplayer2.a.e ksy;
-  protected com.google.android.exoplayer2.video.e ksz;
+  protected j.a kTM;
+  protected e.a kTN;
+  protected com.google.android.exoplayer2.a.e kTO;
+  protected com.google.android.exoplayer2.video.e kTP;
+  protected int kTQ = 50;
+  protected int kTR = 5000;
   
   public a(Context paramContext, Handler paramHandler, j.a parama, e.a parama1, com.google.android.exoplayer2.a.e parame, com.google.android.exoplayer2.video.e parame1)
   {
     this.context = paramContext;
     this.handler = paramHandler;
-    this.ksw = parama;
-    this.ksx = parama1;
-    this.ksy = parame;
-    this.ksz = parame1;
+    this.kTM = parama;
+    this.kTN = parama1;
+    this.kTO = parame;
+    this.kTP = parame1;
   }
   
-  public final List<r> bdI()
+  public final List<r> bkC()
   {
-    AppMethodBeat.i(194109);
+    AppMethodBeat.i(194454);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(new i(com.google.android.exoplayer2.e.c.biT, this.aQI, this.handler, this.ksy, com.google.android.exoplayer2.a.c.ag(this.context), new com.google.android.exoplayer2.a.d[0]));
+    localArrayList2.add(new i(com.google.android.exoplayer2.e.c.bjy, this.aRD, this.handler, this.kTO, com.google.android.exoplayer2.a.c.ah(this.context), new com.google.android.exoplayer2.a.d[0]));
     localArrayList1.addAll(localArrayList2);
     localArrayList2 = new ArrayList();
-    localArrayList2.add(new com.google.android.exoplayer2.video.c(this.context, com.google.android.exoplayer2.e.c.biT, this.ksB, this.aQI, this.handler, this.ksz, this.ksA));
+    localArrayList2.add(new com.google.android.exoplayer2.video.c(this.context, com.google.android.exoplayer2.e.c.bjy, this.kTR, this.aRD, this.handler, this.kTP, this.kTQ));
     localArrayList1.addAll(localArrayList2);
-    AppMethodBeat.o(194109);
+    AppMethodBeat.o(194454);
     return localArrayList1;
   }
 }

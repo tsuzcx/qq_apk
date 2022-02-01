@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.z;
 
 public class AAQueryListH5UrlFooterView
   extends LinearLayout
 {
-  private TextView ibI;
+  private TextView iBP;
   
   public AAQueryListH5UrlFooterView(Context paramContext)
   {
@@ -41,18 +41,18 @@ public class AAQueryListH5UrlFooterView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63502);
-    this.ibI = ((TextView)y.js(paramContext).inflate(2131492887, this, true).findViewById(2131296299));
+    this.iBP = ((TextView)z.jD(paramContext).inflate(2131492887, this, true).findViewById(2131296299));
     AppMethodBeat.o(63502);
   }
   
   public TextView getBottomLinkTv()
   {
-    return this.ibI;
+    return this.iBP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAQueryListH5UrlFooterView
  * JD-Core Version:    0.7.0.1
  */

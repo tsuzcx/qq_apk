@@ -5,13 +5,13 @@ import com.google.android.exoplayer2.source.b.a.b;
 
 public final class e
 {
-  public final a boY;
-  public final b boZ;
+  public final a bnt;
+  public final b bnu;
   
   e(a parama, b paramb)
   {
-    this.boY = parama;
-    this.boZ = paramb;
+    this.bnt = parama;
+    this.bnu = paramb;
   }
 }
 

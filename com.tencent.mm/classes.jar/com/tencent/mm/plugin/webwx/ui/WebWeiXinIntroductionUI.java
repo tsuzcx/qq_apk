@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.br.d;
 import com.tencent.mm.ui.MMActivity;
 
 public class WebWeiXinIntroductionUI
   extends MMActivity
 {
-  private Button BBw;
+  private Button CTC;
   
   public int getLayoutId()
   {
@@ -26,8 +26,8 @@ public class WebWeiXinIntroductionUI
   {
     AppMethodBeat.i(30247);
     setMMTitle("");
-    this.BBw = ((Button)findViewById(2131306934));
-    this.BBw.setOnClickListener(new View.OnClickListener()
+    this.CTC = ((Button)findViewById(2131306934));
+    this.CTC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -72,7 +72,7 @@ public class WebWeiXinIntroductionUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.WebWeiXinIntroductionUI
  * JD-Core Version:    0.7.0.1
  */

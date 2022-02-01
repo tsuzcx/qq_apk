@@ -11,47 +11,49 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.emoji.a.i;
 import com.tencent.mm.emoji.view.EmojiStatusView;
 import com.tencent.mm.emoji.view.EmojiStatusView.b;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.emoji.f.c;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.aw;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
 import com.tencent.mm.storage.emotion.f;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import java.util.Collections;
 
 public class EmojiPopView
   extends AbstractPopView
-  implements com.tencent.mm.al.g
+  implements com.tencent.mm.ak.g
 {
-  private View IaL;
-  private View IaM;
-  private View IaN;
-  private View IaO;
-  private View IaP;
-  private TextView IaQ;
-  private TextView IaR;
-  private WindowManager.LayoutParams IaS;
-  private int IaT;
-  private String IaU;
-  private EmojiInfo IaV;
-  private String IaW;
-  private boolean IaX;
-  private c IaY;
-  private Runnable IaZ;
-  private ProgressBar fQC;
-  private p oJG;
-  private EmojiStatusView xBI;
+  private View JBB;
+  private View JBC;
+  private View JBD;
+  private View JBE;
+  private View JBF;
+  private TextView JBG;
+  private TextView JBH;
+  private WindowManager.LayoutParams JBI;
+  private int JBJ;
+  private String JBK;
+  private EmojiInfo JBL;
+  private String JBM;
+  private boolean JBN;
+  private c JBO;
+  private Runnable JBP;
+  private ProgressBar fUx;
+  private p pne;
+  private EmojiStatusView yOw;
   
   public EmojiPopView(Context paramContext)
   {
@@ -67,9 +69,9 @@ public class EmojiPopView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105300);
-    this.IaT = -1;
-    this.IaX = false;
-    this.IaZ = new Runnable()
+    this.JBJ = -1;
+    this.JBN = false;
+    this.JBP = new Runnable()
     {
       public final void run()
       {
@@ -79,38 +81,38 @@ public class EmojiPopView
       }
     };
     inflate(paramContext, 2131493788, this);
-    this.IaL = findViewById(2131299413);
-    this.xBI = ((EmojiStatusView)findViewById(2131300914));
-    this.fQC = ((ProgressBar)findViewById(2131303515));
-    this.IaM = findViewById(2131299418);
-    this.IaN = findViewById(2131299415);
-    this.IaO = findViewById(2131299417);
-    this.IaP = findViewById(2131299414);
-    this.IaQ = ((TextView)findViewById(2131299416));
-    this.IaR = ((TextView)findViewById(2131299419));
+    this.JBB = findViewById(2131299413);
+    this.yOw = ((EmojiStatusView)findViewById(2131300914));
+    this.fUx = ((ProgressBar)findViewById(2131303515));
+    this.JBC = findViewById(2131299418);
+    this.JBD = findViewById(2131299415);
+    this.JBE = findViewById(2131299417);
+    this.JBF = findViewById(2131299414);
+    this.JBG = ((TextView)findViewById(2131299416));
+    this.JBH = ((TextView)findViewById(2131299419));
     setBackground(null);
-    this.IaS = new WindowManager.LayoutParams(2, 262400, 1);
-    this.IaS.width = -2;
-    this.IaS.height = -2;
-    this.IaS.gravity = 8388659;
-    this.IaO.setOnClickListener(new View.OnClickListener()
+    this.JBI = new WindowManager.LayoutParams(2, 262400, 1);
+    this.JBI.width = -2;
+    this.JBI.height = -2;
+    this.JBI.gravity = 8388659;
+    this.JBE.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183935);
-        paramAnonymousView = com.tencent.mm.emoji.b.d.fRi;
-        com.tencent.mm.emoji.b.d.lI(2);
+        paramAnonymousView = com.tencent.mm.emoji.b.d.fVd;
+        com.tencent.mm.emoji.b.d.lA(2);
         EmojiPopView.a(EmojiPopView.this);
         AppMethodBeat.o(183935);
       }
     });
-    this.IaP.setOnClickListener(new View.OnClickListener()
+    this.JBF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183936);
-        paramAnonymousView = com.tencent.mm.emoji.b.d.fRi;
-        com.tencent.mm.emoji.b.d.lI(3);
+        paramAnonymousView = com.tencent.mm.emoji.b.d.fVd;
+        com.tencent.mm.emoji.b.d.lA(3);
         EmojiPopView.b(EmojiPopView.this);
         EmojiPopView.c(EmojiPopView.this).setActivated(true);
         EmojiPopView.c(EmojiPopView.this).setVisibility(0);
@@ -118,44 +120,44 @@ public class EmojiPopView
         AppMethodBeat.o(183936);
       }
     });
-    this.IaQ.setOnClickListener(new View.OnClickListener()
+    this.JBG.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183937);
         if (EmojiPopView.d(EmojiPopView.this))
         {
-          paramAnonymousView = com.tencent.mm.emoji.b.d.fRi;
-          com.tencent.mm.emoji.b.d.lI(4);
+          paramAnonymousView = com.tencent.mm.emoji.b.d.fVd;
+          com.tencent.mm.emoji.b.d.lA(4);
           EmojiPopView.e(EmojiPopView.this);
           AppMethodBeat.o(183937);
           return;
         }
-        paramAnonymousView = com.tencent.mm.emoji.b.d.fRi;
-        com.tencent.mm.emoji.b.d.lI(5);
+        paramAnonymousView = com.tencent.mm.emoji.b.d.fVd;
+        com.tencent.mm.emoji.b.d.lA(5);
         EmojiPopView.f(EmojiPopView.this);
         AppMethodBeat.o(183937);
       }
     });
-    if (aj.cbe()) {
-      com.tencent.mm.kernel.g.afA().gcy.a(698, this);
+    if (ai.cin()) {
+      com.tencent.mm.kernel.g.agQ().ghe.a(698, this);
     }
     AppMethodBeat.o(105300);
   }
   
-  private void bWZ()
+  private void cem()
   {
     AppMethodBeat.i(183944);
-    com.tencent.mm.ui.base.h.d(getContext(), getContext().getString(2131758409), "", "", getContext().getString(2131760315), null, null);
+    h.d(getContext(), getContext().getString(2131758409), "", "", getContext().getString(2131760315), null, null);
     AppMethodBeat.o(183944);
   }
   
   private void hideLoading()
   {
     AppMethodBeat.i(183943);
-    removeCallbacks(this.IaZ);
-    if (this.oJG != null) {
-      this.oJG.dismiss();
+    removeCallbacks(this.JBP);
+    if (this.pne != null) {
+      this.pne.dismiss();
     }
     AppMethodBeat.o(183943);
   }
@@ -163,7 +165,7 @@ public class EmojiPopView
   private void showLoading()
   {
     AppMethodBeat.i(183942);
-    postDelayed(this.IaZ, 100L);
+    postDelayed(this.JBP, 100L);
     AppMethodBeat.o(183942);
   }
   
@@ -175,54 +177,54 @@ public class EmojiPopView
     AppMethodBeat.o(183941);
   }
   
-  public final void gD(View paramView)
+  public final void gU(View paramView)
   {
     AppMethodBeat.i(105302);
-    kn(paramView.getContext());
+    kz(paramView.getContext());
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    this.IaS.x = (arrayOfInt[0] - (getMeasuredWidth() - paramView.getMeasuredWidth()) / 2);
-    this.IaS.y = (arrayOfInt[1] - getMeasuredHeight() - this.IaG);
+    this.JBI.x = (arrayOfInt[0] - (getMeasuredWidth() - paramView.getMeasuredWidth()) / 2);
+    this.JBI.y = (arrayOfInt[1] - getMeasuredHeight() - this.JBw);
     int i = getResources().getDisplayMetrics().widthPixels;
     int j = arrayOfInt[0] + paramView.getMeasuredWidth() / 2;
     if (j < getWidth() / 2)
     {
-      this.IaS.x = (j - a.fromDPToPix(getContext(), 32));
-      this.IaL.setBackgroundResource(2131232036);
-      this.IaO.setBackgroundResource(2131232037);
-      this.IaP.setBackgroundResource(2131232039);
-      this.IaQ.setBackgroundResource(2131232038);
+      this.JBI.x = (j - a.fromDPToPix(getContext(), 32));
+      this.JBB.setBackgroundResource(2131232036);
+      this.JBE.setBackgroundResource(2131232037);
+      this.JBF.setBackgroundResource(2131232039);
+      this.JBG.setBackgroundResource(2131232038);
       AppMethodBeat.o(105302);
       return;
     }
     if (getWidth() / 2 + j > i)
     {
-      this.IaS.x = (j + a.fromDPToPix(getContext(), 32) - getMeasuredWidth());
-      this.IaL.setBackgroundResource(2131232072);
-      this.IaO.setBackgroundResource(2131232073);
-      this.IaP.setBackgroundResource(2131232075);
-      this.IaQ.setBackgroundResource(2131232074);
+      this.JBI.x = (j + a.fromDPToPix(getContext(), 32) - getMeasuredWidth());
+      this.JBB.setBackgroundResource(2131232072);
+      this.JBE.setBackgroundResource(2131232073);
+      this.JBF.setBackgroundResource(2131232075);
+      this.JBG.setBackgroundResource(2131232074);
       AppMethodBeat.o(105302);
       return;
     }
-    this.IaL.setBackgroundResource(2131232065);
-    this.IaO.setBackgroundResource(2131232066);
-    this.IaP.setBackgroundResource(2131232068);
-    this.IaQ.setBackgroundResource(2131232067);
+    this.JBB.setBackgroundResource(2131232065);
+    this.JBE.setBackgroundResource(2131232066);
+    this.JBF.setBackgroundResource(2131232068);
+    this.JBG.setBackgroundResource(2131232067);
     AppMethodBeat.o(105302);
   }
   
   public WindowManager.LayoutParams getWindowLayoutParams()
   {
-    return this.IaS;
+    return this.JBI;
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(183939);
     super.onDetachedFromWindow();
-    if (aj.cbe()) {
-      com.tencent.mm.kernel.g.afA().gcy.b(698, this);
+    if (ai.cin()) {
+      com.tencent.mm.kernel.g.agQ().ghe.b(698, this);
     }
     AppMethodBeat.o(183939);
   }
@@ -230,52 +232,52 @@ public class EmojiPopView
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(183945);
-    paramString = Collections.singletonList(this.IaU);
-    ad.i("MicroMsg.EmojiPopView", "onSceneEnd: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.IaU, Integer.valueOf(this.IaT) });
-    if ((this.IaY != null) && (paramn == this.IaY))
+    paramString = Collections.singletonList(this.JBK);
+    ac.i("MicroMsg.EmojiPopView", "onSceneEnd: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.JBK, Integer.valueOf(this.JBJ) });
+    if ((this.JBO != null) && (paramn == this.JBO))
     {
-      if (this.IaY.ikN == 3)
+      if (this.JBO.iKU == 3)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if (this.IaT == 0)
+          if (this.JBJ == 0)
           {
-            com.tencent.mm.emoji.a.h.abj().dl(true);
-            com.tencent.mm.emoji.a.h.abj().dk(true);
+            i.ach().dk(true);
+            i.ach().dj(true);
           }
           for (;;)
           {
-            aw.eLx().FyY.m(this.IaT, paramString);
+            az.faZ().GXZ.p(this.JBJ, paramString);
             dismiss();
             AppMethodBeat.o(183945);
             return;
-            com.tencent.mm.emoji.a.h.abj().dn(true);
+            i.ach().dm(true);
           }
         }
-        bWZ();
+        cem();
         hideLoading();
         AppMethodBeat.o(183945);
         return;
       }
-      if (this.IaY.ikN == 2)
+      if (this.JBO.iKU == 2)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if (this.IaT == 0)
+          if (this.JBJ == 0)
           {
-            com.tencent.mm.emoji.a.h.abj().dl(true);
-            com.tencent.mm.emoji.a.h.abj().dk(true);
+            i.ach().dk(true);
+            i.ach().dj(true);
           }
           for (;;)
           {
-            aw.eLx().FyY.z(paramString, this.IaT);
+            az.faZ().GXZ.z(paramString, this.JBJ);
             dismiss();
             AppMethodBeat.o(183945);
             return;
-            com.tencent.mm.emoji.a.h.abj().dn(true);
+            i.ach().dm(true);
           }
         }
-        bWZ();
+        cem();
         hideLoading();
       }
     }
@@ -287,22 +289,22 @@ public class EmojiPopView
     AppMethodBeat.i(105301);
     if (paramEmojiInfo == null)
     {
-      this.xBI.setVisibility(4);
-      this.fQC.setVisibility(0);
-      ad.i("MicroMsg.EmojiPopView", "emoji is null. set null");
+      this.yOw.setVisibility(4);
+      this.fUx.setVisibility(0);
+      ac.i("MicroMsg.EmojiPopView", "emoji is null. set null");
       AppMethodBeat.o(105301);
       return;
     }
-    if (!paramEmojiInfo.JS().equals(this.IaU))
+    if (!paramEmojiInfo.JC().equals(this.JBK))
     {
-      this.IaU = paramEmojiInfo.JS();
-      this.IaV = paramEmojiInfo;
-      this.xBI.setStatusListener(new EmojiStatusView.b()
+      this.JBK = paramEmojiInfo.JC();
+      this.JBL = paramEmojiInfo;
+      this.yOw.setStatusListener(new EmojiStatusView.b()
       {
-        public final void lG(int paramAnonymousInt)
+        public final void lD(int paramAnonymousInt)
         {
           AppMethodBeat.i(183938);
-          ad.i("MicroMsg.EmojiPopView", "onStatus: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ac.i("MicroMsg.EmojiPopView", "onStatus: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (paramAnonymousInt == 1)
           {
             EmojiPopView.g(EmojiPopView.this).setVisibility(8);
@@ -315,7 +317,7 @@ public class EmojiPopView
           AppMethodBeat.o(183938);
         }
       });
-      this.xBI.setEmojiInfo(paramEmojiInfo);
+      this.yOw.setEmojiInfo(paramEmojiInfo);
     }
     AppMethodBeat.o(105301);
   }
@@ -323,53 +325,53 @@ public class EmojiPopView
   public void setPopupType(int paramInt)
   {
     AppMethodBeat.i(183940);
-    if ((!aj.cbe()) || (paramInt == -1) || (this.IaV == null) || (this.IaV.CZ()) || (this.IaV.field_catalog == EmojiGroupInfo.LBO) || (this.IaV.fZV() != EmojiInfo.a.FBv)) {}
+    if ((!ai.cin()) || (paramInt == -1) || (this.JBL == null) || (this.JBL.CC()) || (this.JBL.field_catalog == EmojiGroupInfo.Jsq) || (this.JBL.fFY() != EmojiInfo.a.Hav)) {}
     for (int i = 1;; i = 0)
     {
-      this.IaX = false;
+      this.JBN = false;
       if (i == 0) {
         break;
       }
-      this.IaN.setVisibility(8);
-      this.IaO.setVisibility(8);
-      this.IaP.setVisibility(8);
-      this.IaM.setVisibility(8);
-      this.IaQ.setVisibility(8);
-      this.IaR.setVisibility(8);
-      ((ConstraintLayout.LayoutParams)this.xBI.getLayoutParams()).goneBottomMargin = a.fromDPToPix(getContext(), 28);
+      this.JBD.setVisibility(8);
+      this.JBE.setVisibility(8);
+      this.JBF.setVisibility(8);
+      this.JBC.setVisibility(8);
+      this.JBG.setVisibility(8);
+      this.JBH.setVisibility(8);
+      ((ConstraintLayout.LayoutParams)this.yOw.getLayoutParams()).goneBottomMargin = a.fromDPToPix(getContext(), 28);
       AppMethodBeat.o(183940);
       return;
     }
-    ((ConstraintLayout.LayoutParams)this.xBI.getLayoutParams()).goneBottomMargin = a.fromDPToPix(getContext(), 16);
+    ((ConstraintLayout.LayoutParams)this.yOw.getLayoutParams()).goneBottomMargin = a.fromDPToPix(getContext(), 16);
     if ((paramInt == 0) || (paramInt == 1))
     {
-      this.IaN.setVisibility(0);
-      this.IaO.setVisibility(0);
-      this.IaP.setVisibility(0);
-      this.IaM.setVisibility(0);
-      this.IaQ.setVisibility(8);
-      this.IaR.setVisibility(8);
+      this.JBD.setVisibility(0);
+      this.JBE.setVisibility(0);
+      this.JBF.setVisibility(0);
+      this.JBC.setVisibility(0);
+      this.JBG.setVisibility(8);
+      this.JBH.setVisibility(8);
     }
     for (;;)
     {
-      this.IaT = paramInt;
+      this.JBJ = paramInt;
       AppMethodBeat.o(183940);
       return;
       if ((paramInt == 2) || (paramInt == 3))
       {
-        this.IaN.setVisibility(0);
-        this.IaO.setVisibility(8);
-        this.IaP.setVisibility(8);
-        this.IaM.setVisibility(8);
-        this.IaQ.setVisibility(0);
-        this.IaR.setVisibility(0);
-        if (bt.isNullOrNil(this.IaV.field_groupId)) {
-          this.IaQ.setVisibility(8);
+        this.JBD.setVisibility(0);
+        this.JBE.setVisibility(8);
+        this.JBF.setVisibility(8);
+        this.JBC.setVisibility(8);
+        this.JBG.setVisibility(0);
+        this.JBH.setVisibility(0);
+        if (bs.isNullOrNil(this.JBL.field_groupId)) {
+          this.JBG.setVisibility(8);
         }
-        this.IaW = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().TD(this.IaU);
-        this.IaR.setText(this.IaW);
-        if (bt.isNullOrNil(this.IaW)) {
-          this.IaR.setVisibility(8);
+        this.JBM = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().XP(this.JBK);
+        this.JBH.setText(this.JBM);
+        if (bs.isNullOrNil(this.JBM)) {
+          this.JBH.setVisibility(8);
         }
       }
     }
@@ -377,7 +379,7 @@ public class EmojiPopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.view.popview.EmojiPopView
  * JD-Core Version:    0.7.0.1
  */

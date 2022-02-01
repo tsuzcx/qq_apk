@@ -1,53 +1,62 @@
 package com.tencent.mm.plugin.remittance.a;
 
 import android.text.TextUtils;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.g.a.jw;
-import com.tencent.mm.g.a.pg;
-import com.tencent.mm.g.a.xq;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.app.n;
+import com.tencent.mm.g.a.ke;
+import com.tencent.mm.g.a.pp;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.c.az;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.cc;
 import com.tencent.mm.model.cc.a;
+import com.tencent.mm.model.ce;
 import com.tencent.mm.model.t;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
+import com.tencent.mm.plugin.messenger.foundation.a.f;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
 import com.tencent.mm.plugin.remittance.b.b;
-import com.tencent.mm.plugin.remittance.model.ac;
-import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.cu;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.bw;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
-import com.tencent.mm.storage.bl;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.bo;
 import com.tencent.mm.storagebase.h.b;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class c
-  implements aw
+  implements n, aw, h.a, f
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private k.a gQD;
-  private cc.a oXa;
-  private ac vtU;
-  public b vtV;
-  private com.tencent.mm.plugin.remittance.b.d vtW;
-  public CharSequence vtX;
-  private com.tencent.mm.sdk.b.c<pg> vtY;
-  private com.tencent.mm.sdk.b.c<xq> vtZ;
-  private com.tencent.mm.sdk.b.c<jw> vua;
+  private k.a hrd;
+  private cc.a pAl;
+  private com.tencent.mm.plugin.remittance.model.ac wDZ;
+  public b wEa;
+  private com.tencent.mm.plugin.remittance.b.d wEb;
+  public CharSequence wEc;
+  private com.tencent.mm.sdk.b.c<pp> wEd;
+  private com.tencent.mm.sdk.b.c<yb> wEe;
+  private com.tencent.mm.sdk.b.c<ke> wEf;
   
   static
   {
@@ -56,229 +65,311 @@ public class c
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("DelayTransferRecord".hashCode()), new c.1());
-    baseDBFactories.put(Integer.valueOf("RemittanceRecord".hashCode()), new c.2());
+    baseDBFactories.put(Integer.valueOf("RemittanceRecord".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.remittance.b.d.SQL_CREATE;
+      }
+    });
     AppMethodBeat.o(67351);
   }
   
   public c()
   {
     AppMethodBeat.i(67343);
-    this.vtU = null;
-    this.vtV = null;
-    this.vtW = null;
-    this.gQD = new k.a()
+    this.wDZ = null;
+    this.wEa = null;
+    this.wEb = null;
+    this.hrd = new k.a()
     {
       public final void a(String paramAnonymousString, m paramAnonymousm)
       {
         AppMethodBeat.i(67338);
         if ((paramAnonymousString != null) && (paramAnonymousString.length() > 0) && ("event_updated".equals(paramAnonymousString)))
         {
-          paramAnonymousString = com.tencent.mm.model.c.d.aty().qu("100324");
-          if ((!paramAnonymousString.isValid()) || (!"1".equals(paramAnonymousString.eJy().get("open")))) {
+          paramAnonymousString = com.tencent.mm.model.c.d.aAp().tJ("100324");
+          if ((!paramAnonymousString.isValid()) || (!"1".equals(paramAnonymousString.eYV().get("open")))) {
             break label172;
           }
         }
         label172:
         for (int i = 1;; i = 0)
         {
-          paramAnonymousString = g.afB().afk();
-          paramAnonymousString.set(ae.a.FrG, Integer.valueOf(i));
-          int j = ((Integer)paramAnonymousString.get(ae.a.FrH, Integer.valueOf(0))).intValue();
-          ad.i("MicroMsg.SubCoreRemittance", "receive abtest open bank remit: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          paramAnonymousString = g.agR().agA();
+          paramAnonymousString.set(ah.a.GPw, Integer.valueOf(i));
+          int j = ((Integer)paramAnonymousString.get(ah.a.GPx, Integer.valueOf(0))).intValue();
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "receive abtest open bank remit: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
           if (j == 0)
           {
-            com.tencent.mm.z.c.adr().b(ae.a.FrB, true);
-            paramAnonymousString.set(ae.a.FrH, Integer.valueOf(1));
-            g.afB().afk().set(ae.a.FrC, Boolean.FALSE);
+            com.tencent.mm.y.c.aeH().b(ah.a.GPr, true);
+            paramAnonymousString.set(ah.a.GPx, Integer.valueOf(1));
+            g.agR().agA().set(ah.a.GPs, Boolean.FALSE);
           }
           AppMethodBeat.o(67338);
           return;
         }
       }
     };
-    this.oXa = new cc.a()
+    this.pAl = new cc.a()
     {
       public final void a(f.a paramAnonymousa)
       {
         AppMethodBeat.i(67339);
-        ad.i("MicroMsg.SubCoreRemittance", "hy: received AddMsg");
-        paramAnonymousa = paramAnonymousa.fTo;
+        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "hy: received AddMsg");
+        paramAnonymousa = paramAnonymousa.fXi;
         if (paramAnonymousa == null)
         {
-          ad.e("MicroMsg.SubCoreRemittance", "recieve a null msg");
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "recieve a null msg");
           AppMethodBeat.o(67339);
           return;
         }
-        paramAnonymousa = z.a(paramAnonymousa.Cxz);
-        if (bt.isNullOrNil(paramAnonymousa))
+        paramAnonymousa = z.a(paramAnonymousa.DPV);
+        if (bs.isNullOrNil(paramAnonymousa))
         {
-          ad.e("MicroMsg.SubCoreRemittance", "msg illegal,content is null");
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "msg illegal,content is null");
           AppMethodBeat.o(67339);
           return;
         }
-        paramAnonymousa = bw.K(paramAnonymousa, "sysmsg");
+        paramAnonymousa = bv.L(paramAnonymousa, "sysmsg");
         if (paramAnonymousa == null)
         {
-          ad.e("MicroMsg.SubCoreRemittance", "Resolve msg error");
+          com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "Resolve msg error");
           AppMethodBeat.o(67339);
           return;
         }
         Object localObject1 = (String)paramAnonymousa.get(".sysmsg.paymsg.PayMsgType");
-        Object localObject2;
+        Object localObject3;
         if ("15".equals(localObject1))
         {
           localObject1 = URLDecoder.decode((String)paramAnonymousa.get(".sysmsg.paymsg.appmsgcontent"));
           if (TextUtils.isEmpty((CharSequence)localObject1))
           {
-            ad.e("MicroMsg.SubCoreRemittance", "appmsgcontent is null");
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "appmsgcontent is null");
             AppMethodBeat.o(67339);
             return;
           }
-          localObject2 = bw.K((String)localObject1, "msg");
-          if (localObject2 == null)
+          localObject3 = bv.L((String)localObject1, "msg");
+          if (localObject3 == null)
           {
-            ad.e("MicroMsg.SubCoreRemittance", "Resolve appmsgcontent error");
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "Resolve appmsgcontent error");
             AppMethodBeat.o(67339);
             return;
           }
-          localObject2 = (String)((Map)localObject2).get(".msg.appmsg.wcpayinfo.transferid");
-          if (bt.isNullOrNil((String)localObject2))
+          localObject3 = (String)((Map)localObject3).get(".msg.appmsg.wcpayinfo.transferid");
+          if (bs.isNullOrNil((String)localObject3))
           {
-            ad.e("MicroMsg.SubCoreRemittance", "paymsgid is null");
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "paymsgid is null");
             AppMethodBeat.o(67339);
             return;
           }
-          if (c.this.djm().amh((String)localObject2))
+          if (c.this.dxm().aro((String)localObject3))
           {
-            ad.e("MicroMsg.SubCoreRemittance", "it is a duplicate msg");
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "it is a duplicate msg");
             AppMethodBeat.o(67339);
             return;
           }
           paramAnonymousa = (String)paramAnonymousa.get(".sysmsg.paymsg.tousername");
-          if ((bt.isNullOrNil((String)localObject1)) || (bt.isNullOrNil(paramAnonymousa)))
+          if ((bs.isNullOrNil((String)localObject1)) || (bs.isNullOrNil(paramAnonymousa)))
           {
-            ad.e("MicroMsg.SubCoreRemittance", "onRecieveMsg get a illegal msg,which content or toUserName is null");
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "onRecieveMsg get a illegal msg,which content or toUserName is null");
             AppMethodBeat.o(67339);
             return;
           }
-          c.this.djm().al((String)localObject2, (String)localObject1, paramAnonymousa);
+          c.this.dxm().am((String)localObject3, (String)localObject1, paramAnonymousa);
           AppMethodBeat.o(67339);
           return;
         }
-        String str1;
         int i;
+        Object localObject2;
         if ("22".equals(localObject1))
         {
           localObject1 = (String)paramAnonymousa.get(".sysmsg.paymsg.tousername");
           String str2 = (String)paramAnonymousa.get(".sysmsg.paymsg.fromusername");
+          String str1;
           try
           {
             str1 = URLDecoder.decode((String)paramAnonymousa.get(".sysmsg.paymsg.appmsgcontent"), "UTF-8");
-            if (bt.isNullOrNil(str1))
+            if (bs.isNullOrNil(str1))
             {
-              ad.e("MicroMsg.SubCoreRemittance", "appmsgcontent is null");
+              com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "appmsgcontent is null");
               AppMethodBeat.o(67339);
               return;
             }
           }
           catch (UnsupportedEncodingException paramAnonymousa)
           {
-            ad.printErrStackTrace("MicroMsg.SubCoreRemittance", paramAnonymousa, "", new Object[0]);
+            com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.SubCoreRemittance", paramAnonymousa, "", new Object[0]);
             AppMethodBeat.o(67339);
             return;
           }
-          paramAnonymousa = bw.K(str1, "msg");
+          paramAnonymousa = bv.L(str1, "msg");
           if (paramAnonymousa == null)
           {
-            ad.e("MicroMsg.SubCoreRemittance", "Resolve appmsgcontent error");
+            com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.SubCoreRemittance", "Resolve appmsgcontent error");
             AppMethodBeat.o(67339);
             return;
           }
-          localObject2 = (String)paramAnonymousa.get(".msg.appmsg.wcpayinfo.transferid");
-          i = bt.getInt((String)paramAnonymousa.get(".msg.appmsg.wcpayinfo.paysubtype"), -1);
-          ad.i("MicroMsg.SubCoreRemittance", "receive delay transfer newxml, fromusername: %s, tousername: %s, transferId: %s, paysubtype: %d", new Object[] { str2, localObject1, localObject2, Integer.valueOf(i) });
+          localObject3 = (String)paramAnonymousa.get(".msg.appmsg.wcpayinfo.transferid");
+          i = bs.getInt((String)paramAnonymousa.get(".msg.appmsg.wcpayinfo.paysubtype"), -1);
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "receive delay transfer newxml, fromusername: %s, tousername: %s, transferId: %s, paysubtype: %d", new Object[] { str2, localObject1, localObject3, Integer.valueOf(i) });
           paramAnonymousa = null;
           try
           {
-            c.djj();
-            localObject1 = c.djk().amb((String)localObject2);
+            c.dxj();
+            localObject1 = c.dxk().arg((String)localObject3);
             paramAnonymousa = (f.a)localObject1;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ad.printErrStackTrace("MicroMsg.SubCoreRemittance", localException, "", new Object[0]);
+              com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.SubCoreRemittance", localException, "", new Object[0]);
             }
-            localbl = ((k)g.ab(k.class)).cOI().rm(paramAnonymousa.field_msgId);
-            if (localbl.field_msgId > 0L) {
+            localObject2 = ((k)g.ab(k.class)).dcr().vP(paramAnonymousa.field_msgId);
+            if (((dy)localObject2).field_msgId > 0L) {
               break label596;
             }
-            ad.i("MicroMsg.SubCoreRemittance", "has delete msg");
-            c.djj();
-            c.djk().delete(paramAnonymousa, new String[0]);
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "has delete msg");
+            c.dxj();
+            c.dxk().delete(paramAnonymousa, new String[0]);
             AppMethodBeat.o(67339);
             return;
-            ad.i("MicroMsg.SubCoreRemittance", "update msg: %s", new Object[] { Long.valueOf(localbl.field_msgId) });
-            localbl.setContent(str1);
-            ((k)g.ab(k.class)).cOI().a(localbl.field_msgId, localbl);
-            paramAnonymousa = c.djl().amc((String)localObject2);
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "update msg: %s", new Object[] { Long.valueOf(((dy)localObject2).field_msgId) });
+            ((bo)localObject2).setContent(str1);
+            ((k)g.ab(k.class)).dcr().a(((dy)localObject2).field_msgId, (bo)localObject2);
+            paramAnonymousa = c.dxl().arh((String)localObject3);
             if (paramAnonymousa == null) {
-              break label682;
+              break label690;
             }
-            paramAnonymousa.field_receiveStatus = i;
-            c.djl().a(paramAnonymousa);
-            AppMethodBeat.o(67339);
-            return;
-            if (localbl.field_talker.equals(u.aqG())) {
-              break label737;
-            }
-            paramAnonymousa = new com.tencent.mm.plugin.remittance.b.c();
-            paramAnonymousa.field_locaMsgId = localbl.field_msgId;
-            paramAnonymousa.field_transferId = ((String)localObject2);
-            paramAnonymousa.field_receiveStatus = i;
-            paramAnonymousa.field_isSend = false;
-            c.djl().a(paramAnonymousa);
-            AppMethodBeat.o(67339);
-            return;
           }
           if (paramAnonymousa == null)
           {
-            ad.i("MicroMsg.SubCoreRemittance", "empty record");
+            com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "empty record");
             AppMethodBeat.o(67339);
             return;
           }
-        }
-        bl localbl;
-        label596:
-        label737:
-        if ("33".equals(localbl))
-        {
-          i = bt.getInt((String)paramAnonymousa.get(".sysmsg.paymsg.opentransferbankcard"), 0);
-          paramAnonymousa = g.afB().afk();
-          paramAnonymousa.set(ae.a.FrG, Integer.valueOf(i));
-          int j = ((Integer)paramAnonymousa.get(ae.a.FrH, Integer.valueOf(0))).intValue();
-          ad.i("MicroMsg.SubCoreRemittance", "receive open bank remit: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          if (j == 0)
+          label596:
+          paramAnonymousa.field_receiveStatus = i;
+          c.dxl().a(paramAnonymousa);
+          for (;;)
           {
-            com.tencent.mm.z.c.adr().b(ae.a.FrB, true);
-            paramAnonymousa.set(ae.a.FrH, Integer.valueOf(1));
-            g.afB().afk().set(ae.a.FrC, Boolean.FALSE);
+            c.are(((dy)localObject2).field_talker);
+            AppMethodBeat.o(67339);
+            return;
+            label690:
+            if (!((dy)localObject2).field_talker.equals(u.axw()))
+            {
+              paramAnonymousa = new com.tencent.mm.plugin.remittance.b.c();
+              paramAnonymousa.field_locaMsgId = ((dy)localObject2).field_msgId;
+              paramAnonymousa.field_transferId = ((String)localObject3);
+              paramAnonymousa.field_receiveStatus = i;
+              paramAnonymousa.field_isSend = false;
+              paramAnonymousa.field_talker = ((dy)localObject2).field_talker;
+              c.dxl().a(paramAnonymousa);
+            }
           }
         }
-        label682:
+        if ("25".equals(localObject2))
+        {
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "parse transfer outtime msg");
+          localObject2 = bs.nullAsNil((String)paramAnonymousa.get(".sysmsg.paymsg.transferid"));
+          paramAnonymousa = bs.nullAsNil((String)paramAnonymousa.get(".sysmsg.paymsg.fromusername"));
+          localObject2 = c.dxl().ari((String)localObject2);
+          if (localObject2 != null)
+          {
+            ((com.tencent.mm.plugin.remittance.b.c)localObject2).field_receiveStatus = 2;
+            c.dxl().a((com.tencent.mm.plugin.remittance.b.c)localObject2);
+            if (!paramAnonymousa.equals(u.axw())) {
+              c.are(paramAnonymousa);
+            }
+          }
+          AppMethodBeat.o(67339);
+          return;
+        }
+        if ("33".equals(localObject2))
+        {
+          i = bs.getInt((String)paramAnonymousa.get(".sysmsg.paymsg.opentransferbankcard"), 0);
+          paramAnonymousa = g.agR().agA();
+          paramAnonymousa.set(ah.a.GPw, Integer.valueOf(i));
+          int j = ((Integer)paramAnonymousa.get(ah.a.GPx, Integer.valueOf(0))).intValue();
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "receive open bank remit: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          if (j == 0)
+          {
+            com.tencent.mm.y.c.aeH().b(ah.a.GPr, true);
+            paramAnonymousa.set(ah.a.GPx, Integer.valueOf(1));
+            g.agR().agA().set(ah.a.GPs, Boolean.FALSE);
+          }
+        }
         AppMethodBeat.o(67339);
       }
       
-      public final void a(com.tencent.mm.al.f.c paramAnonymousc) {}
+      public final void a(com.tencent.mm.ak.f.c paramAnonymousc) {}
     };
-    this.vtY = new com.tencent.mm.sdk.b.c() {};
-    this.vtZ = new com.tencent.mm.sdk.b.c() {};
-    this.vua = new com.tencent.mm.sdk.b.c() {};
+    this.wEd = new com.tencent.mm.sdk.b.c() {};
+    this.wEe = new com.tencent.mm.sdk.b.c() {};
+    this.wEf = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(67343);
   }
   
-  public static c djj()
+  private static boolean ard(String paramString)
+  {
+    AppMethodBeat.i(207124);
+    paramString = dxl().arj(paramString);
+    if ((paramString != null) && (!paramString.isEmpty()))
+    {
+      paramString = paramString.iterator();
+      com.tencent.mm.plugin.remittance.b.c localc;
+      bo localbo;
+      long l;
+      do
+      {
+        for (;;)
+        {
+          if (!paramString.hasNext()) {
+            break label226;
+          }
+          localc = (com.tencent.mm.plugin.remittance.b.c)paramString.next();
+          localbo = ((k)g.ab(k.class)).dcr().vP(localc.field_locaMsgId);
+          l = localc.field_invalidtime * 1000L - ce.azJ();
+          com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.SubCoreRemittance", "remittance status: %s, %s, %s", new Object[] { Integer.valueOf(localc.field_receiveStatus), Long.valueOf(localbo.field_msgId), Long.valueOf(l) });
+          if ((l >= 0L) || ((localc.field_receiveStatus != 1) && (localc.field_receiveStatus != 7))) {
+            break;
+          }
+          com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "timeout, change status");
+          localc.field_receiveStatus = 2;
+          dxl().a(localc);
+        }
+      } while ((localbo.field_msgId <= 0L) || (l < 0L) || ((localc.field_receiveStatus != 1) && (localc.field_receiveStatus != 7)));
+    }
+    label226:
+    for (boolean bool = true;; bool = false)
+    {
+      AppMethodBeat.o(207124);
+      return bool;
+    }
+  }
+  
+  public static void are(String paramString)
+  {
+    AppMethodBeat.i(207125);
+    boolean bool = ard(paramString);
+    ap localap = ((k)g.ab(k.class)).awG().aNI(paramString);
+    if (localap != null)
+    {
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "update red flag: %s, %s", new Object[] { paramString, Boolean.valueOf(bool) });
+      if (bool)
+      {
+        ((k)g.ab(k.class)).awG().a(paramString, 268435456, true, localap.field_attrflag);
+        AppMethodBeat.o(207125);
+        return;
+      }
+      ((k)g.ab(k.class)).awG().a(paramString, 268435456, false, localap.field_attrflag);
+    }
+    AppMethodBeat.o(207125);
+  }
+  
+  public static c dxj()
   {
     AppMethodBeat.i(67344);
     c localc = (c)t.ap(c.class);
@@ -286,43 +377,70 @@ public class c
     return localc;
   }
   
-  public static b djk()
+  public static b dxk()
   {
     AppMethodBeat.i(67345);
-    if (djj().vtV == null)
+    if (dxj().wEa == null)
     {
-      localObject = djj();
-      g.afC();
-      ((c)localObject).vtV = new b(g.afB().gda);
+      localObject = dxj();
+      g.agS();
+      ((c)localObject).wEa = new b(g.agR().ghG);
     }
-    Object localObject = djj().vtV;
+    Object localObject = dxj().wEa;
     AppMethodBeat.o(67345);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.remittance.b.d djl()
+  public static com.tencent.mm.plugin.remittance.b.d dxl()
   {
     AppMethodBeat.i(67346);
-    if (djj().vtW == null)
+    if (dxj().wEb == null)
     {
-      localObject = djj();
-      g.afC();
-      ((c)localObject).vtW = new com.tencent.mm.plugin.remittance.b.d(g.afB().gda);
+      localObject = dxj();
+      g.agS();
+      ((c)localObject).wEb = new com.tencent.mm.plugin.remittance.b.d(g.agR().ghG);
     }
-    Object localObject = djj().vtW;
+    Object localObject = dxj().wEb;
     AppMethodBeat.o(67346);
     return localObject;
   }
   
+  public final void a(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh, h.c paramc)
+  {
+    AppMethodBeat.i(207127);
+    if (paramc.uHb.equals("delete"))
+    {
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "update red flag when delete msg: %s", new Object[] { paramc.talker });
+      are(paramc.talker);
+    }
+    AppMethodBeat.o(207127);
+  }
+  
+  public final void a(bo parambo, ap paramap, boolean paramBoolean, h.c paramc)
+  {
+    AppMethodBeat.i(207126);
+    if (paramBoolean)
+    {
+      paramBoolean = ard(paramap.field_username);
+      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.SubCoreRemittance", "try mark red flag when new conv: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+      if (paramBoolean) {
+        paramap.lp(268435456);
+      }
+    }
+    AppMethodBeat.o(207126);
+  }
+  
+  public final void b(bo parambo, ap paramap, boolean paramBoolean, h.c paramc) {}
+  
   public void clearPluginData(int paramInt) {}
   
-  public final ac djm()
+  public final com.tencent.mm.plugin.remittance.model.ac dxm()
   {
     AppMethodBeat.i(67349);
-    if (this.vtU == null) {
-      this.vtU = new ac();
+    if (this.wDZ == null) {
+      this.wDZ = new com.tencent.mm.plugin.remittance.model.ac();
     }
-    ac localac = this.vtU;
+    com.tencent.mm.plugin.remittance.model.ac localac = this.wDZ;
     AppMethodBeat.o(67349);
     return localac;
   }
@@ -335,18 +453,21 @@ public class c
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(67347);
-    ac localac;
-    if (this.vtU != null) {
-      localac = this.vtU;
+    com.tencent.mm.plugin.remittance.model.ac localac;
+    if (this.wDZ != null) {
+      localac = this.wDZ;
     }
     synchronized (localac.lock)
     {
-      localac.vBU.clear();
-      com.tencent.mm.model.c.d.aty().add(this.gQD);
-      ((q)g.ad(q.class)).getSysCmdMsgExtension().a("paymsg", this.oXa, true);
-      com.tencent.mm.sdk.b.a.ESL.b(this.vtY);
-      com.tencent.mm.sdk.b.a.ESL.b(this.vtZ);
-      com.tencent.mm.sdk.b.a.ESL.b(this.vua);
+      localac.wLZ.clear();
+      com.tencent.mm.model.c.d.aAp().add(this.hrd);
+      ((q)g.ad(q.class)).getSysCmdMsgExtension().a("paymsg", this.pAl, true);
+      com.tencent.mm.sdk.b.a.GpY.b(this.wEd);
+      com.tencent.mm.sdk.b.a.GpY.b(this.wEe);
+      com.tencent.mm.sdk.b.a.GpY.b(this.wEf);
+      ((k)g.ab(k.class)).awG().a(this);
+      ((k)g.ab(k.class)).dcr().a(this, null);
+      AppForegroundDelegate.cHM.a(this);
       AppMethodBeat.o(67347);
       return;
     }
@@ -355,19 +476,39 @@ public class c
   public void onAccountRelease()
   {
     AppMethodBeat.i(67348);
-    com.tencent.mm.model.c.d.aty().remove(this.gQD);
-    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("paymsg", this.oXa, true);
-    com.tencent.mm.sdk.b.a.ESL.d(this.vtY);
-    com.tencent.mm.sdk.b.a.ESL.d(this.vtZ);
-    com.tencent.mm.sdk.b.a.ESL.d(this.vua);
+    com.tencent.mm.model.c.d.aAp().remove(this.hrd);
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("paymsg", this.pAl, true);
+    com.tencent.mm.sdk.b.a.GpY.d(this.wEd);
+    com.tencent.mm.sdk.b.a.GpY.d(this.wEe);
+    com.tencent.mm.sdk.b.a.GpY.d(this.wEf);
+    ((k)g.ab(k.class)).awG().b(this);
+    ((k)g.ab(k.class)).dcr().a(this);
+    AppForegroundDelegate.cHM.b(this);
     AppMethodBeat.o(67348);
   }
+  
+  public void onAppBackground(String paramString)
+  {
+    AppMethodBeat.i(207128);
+    com.tencent.e.h.JZN.aS(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(207123);
+        c.dxn();
+        AppMethodBeat.o(207123);
+      }
+    });
+    AppMethodBeat.o(207128);
+  }
+  
+  public void onAppForeground(String paramString) {}
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.c
  * JD-Core Version:    0.7.0.1
  */

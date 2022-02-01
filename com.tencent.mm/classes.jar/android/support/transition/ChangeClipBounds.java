@@ -15,7 +15,7 @@ import java.util.Map;
 public class ChangeClipBounds
   extends Transition
 {
-  private static final String[] wR = { "android:clipBounds:clip" };
+  private static final String[] xP = { "android:clipBounds:clip" };
   
   public ChangeClipBounds() {}
   
@@ -72,14 +72,14 @@ public class ChangeClipBounds
       }
       t.b(paramu2.view, paramViewGroup);
       localObject = new m(new Rect());
-      paramu1 = ObjectAnimator.ofObject(paramu2.view, ag.AN, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramu1 });
+      paramu1 = ObjectAnimator.ofObject(paramu2.view, ag.BL, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramu1 });
       paramViewGroup = paramu1;
     } while (i == 0);
     paramu1.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        t.b(this.xu, null);
+        t.b(this.ys, null);
       }
     });
     return paramu1;
@@ -97,12 +97,12 @@ public class ChangeClipBounds
   
   public final String[] getTransitionProperties()
   {
-    return wR;
+    return xP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ChangeClipBounds
  * JD-Core Version:    0.7.0.1
  */

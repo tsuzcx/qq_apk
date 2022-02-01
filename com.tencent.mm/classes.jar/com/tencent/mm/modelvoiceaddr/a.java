@@ -1,20 +1,20 @@
 package com.tencent.mm.modelvoiceaddr;
 
-import com.tencent.mm.al.n;
+import com.tencent.mm.ak.n;
 import java.util.List;
 
 public abstract class a
   extends n
 {
-  public abstract void aDH();
+  public abstract long aKA();
   
-  public abstract String[] aDI();
+  public abstract int aKB();
   
-  public abstract long aDJ();
+  public abstract List<String> aKC();
   
-  public abstract int aDK();
+  public abstract void aKy();
   
-  public abstract List<String> aDL();
+  public abstract String[] aKz();
 }
 
 

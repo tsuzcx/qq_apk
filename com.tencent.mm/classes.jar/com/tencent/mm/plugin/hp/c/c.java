@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.hp.c;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 
 public final class c
 {
-  public static boolean adK(String paramString)
+  public static boolean aiC(String paramString)
   {
     AppMethodBeat.i(117523);
-    if ((!bt.isNullOrNil(paramString)) && (paramString.length() == 10)) {
+    if ((!bs.isNullOrNil(paramString)) && (paramString.length() == 10)) {
       try
       {
         int i = Integer.decode(paramString).intValue();
@@ -24,17 +24,17 @@ public final class c
       }
       catch (Exception paramString)
       {
-        ad.printErrStackTrace("Tinker.TinkerUtils", paramString, "checkAplhVersion failed.", new Object[0]);
+        ac.printErrStackTrace("Tinker.TinkerUtils", paramString, "checkAplhVersion failed.", new Object[0]);
       }
     }
     AppMethodBeat.o(117523);
     return false;
   }
   
-  public static String adL(String paramString)
+  public static String aiD(String paramString)
   {
     AppMethodBeat.i(117524);
-    if (!bt.isNullOrNil(paramString))
+    if (!bs.isNullOrNil(paramString))
     {
       paramString = new String(Base64.decode(paramString, 0));
       AppMethodBeat.o(117524);
@@ -46,7 +46,7 @@ public final class c
   
   /* Error */
   @java.lang.Deprecated
-  public static boolean cGr()
+  public static boolean cTB()
   {
     // Byte code:
     //   0: ldc 70
@@ -260,7 +260,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.c.c
  * JD-Core Version:    0.7.0.1
  */

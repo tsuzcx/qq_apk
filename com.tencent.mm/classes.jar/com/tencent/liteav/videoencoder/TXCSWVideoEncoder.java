@@ -1,8 +1,8 @@
 package com.tencent.liteav.videoencoder;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.g.a;
+import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.d.h.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.b.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -18,9 +18,9 @@ public class TXCSWVideoEncoder
   private long mPTS = 0L;
   private int mPopIdx = 0;
   private int mPushIdx = 0;
-  private g mRawFrameFilter;
+  private h mRawFrameFilter;
   private int mRendIdx = 0;
-  private g mResizeFilter;
+  private h mResizeFilter;
   
   static
   {
@@ -116,7 +116,7 @@ public class TXCSWVideoEncoder
       this.mInputHeight = paramInt3;
       if (this.mResizeFilter == null)
       {
-        this.mResizeFilter = new g();
+        this.mResizeFilter = new h();
         this.mResizeFilter.a();
         this.mResizeFilter.a(true);
       }
@@ -165,7 +165,7 @@ public class TXCSWVideoEncoder
       }
       label290:
       this.mRawFrameFilter.a(this.mOutputWidth, this.mOutputHeight);
-      this.mRawFrameFilter.a(new g.a()
+      this.mRawFrameFilter.a(new h.a()
       {
         public void a(int paramAnonymousInt)
         {

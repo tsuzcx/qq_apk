@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bw;
+import com.tencent.mm.g.c.by;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class j
-  extends bw
+  extends by
 {
   public static c.a info;
   
   static
   {
     AppMethodBeat.i(103405);
-    info = bw.So();
+    info = by.Th();
     AppMethodBeat.o(103405);
   }
   
-  public static int Ck(int paramInt)
+  public static int Df(int paramInt)
   {
     return 1 << paramInt;
   }

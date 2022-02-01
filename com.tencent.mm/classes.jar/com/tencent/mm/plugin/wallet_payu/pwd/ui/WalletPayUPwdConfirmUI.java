@@ -13,7 +13,7 @@ public class WalletPayUPwdConfirmUI
   {
     AppMethodBeat.i(72164);
     super.onCreate(paramBundle);
-    a.a(this.swk, false);
+    a.a(this.tDZ, false);
     AppMethodBeat.o(72164);
   }
   

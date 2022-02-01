@@ -6,28 +6,28 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.game.report.e;
 import com.tencent.mm.plugin.game.d.dg;
 import com.tencent.mm.plugin.game.d.m;
 import com.tencent.mm.plugin.game.model.ag;
 import com.tencent.mm.plugin.game.model.au;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
 
 public final class t
-  implements View.OnClickListener, com.tencent.mm.al.g
+  implements View.OnClickListener, com.tencent.mm.ak.g
 {
   private Context mContext;
-  private com.tencent.mm.plugin.game.model.c rVN = null;
-  int rXI;
-  DialogInterface.OnClickListener snb = null;
+  private com.tencent.mm.plugin.game.model.c tdF = null;
+  int tfA;
+  DialogInterface.OnClickListener tuU = null;
   
   public t(Context paramContext)
   {
@@ -39,16 +39,16 @@ public final class t
     AppMethodBeat.i(42412);
     if (!(paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c))
     {
-      ad.e("MicroMsg.GameSubscriptionClickListener", "No GameAppInfo");
+      ac.e("MicroMsg.GameSubscriptionClickListener", "No GameAppInfo");
       AppMethodBeat.o(42412);
       return;
     }
-    this.rVN = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
-    ad.i("MicroMsg.GameSubscriptionClickListener", "Clicked appid = " + this.rVN.field_appId);
-    com.tencent.mm.kernel.g.aeS().a(1219, this);
-    paramView = ac.eFu();
-    paramView = new au(this.rVN.field_appId, paramView, this.rVN.dcC, this.rVN.rVe);
-    com.tencent.mm.kernel.g.aeS().a(paramView, 0);
+    this.tdF = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
+    ac.i("MicroMsg.GameSubscriptionClickListener", "Clicked appid = " + this.tdF.field_appId);
+    com.tencent.mm.kernel.g.agi().a(1219, this);
+    paramView = ab.eUO();
+    paramView = new au(this.tdF.field_appId, paramView, this.tdF.daa, this.tdF.tcW);
+    com.tencent.mm.kernel.g.agi().a(paramView, 0);
     AppMethodBeat.o(42412);
   }
   
@@ -57,83 +57,83 @@ public final class t
     AppMethodBeat.i(42413);
     if ((paramInt1 == 0) && (paramInt2 == 0) && (paramn.getType() == 1219))
     {
-      com.tencent.mm.kernel.g.aeS().b(1219, this);
-      paramn = new ag(((au)paramn).fUF.gUT.gUX);
+      com.tencent.mm.kernel.g.agi().b(1219, this);
+      paramn = new ag(((au)paramn).fYA.hvs.hvw);
       paramString = new b();
-      paramString.snf = Boolean.valueOf(paramn.rYo.rZC);
-      paramString.title = paramn.rYo.Title;
-      paramString.content = paramn.rYo.sac;
-      if (paramn.rYo.sdN != null)
+      paramString.tuY = Boolean.valueOf(paramn.tgg.thv);
+      paramString.title = paramn.tgg.Title;
+      paramString.content = paramn.tgg.thV;
+      if (paramn.tgg.tlH != null)
       {
-        paramString.sng = new a();
-        paramString.sng.message = paramn.rYo.sdN.sac;
-        paramString.sng.snd = paramn.rYo.sdN.sad;
-        paramString.sng.sne = paramn.rYo.sdN.sae;
-        paramString.sng.url = paramn.rYo.sdN.Url;
+        paramString.tuZ = new a();
+        paramString.tuZ.message = paramn.tgg.tlH.thV;
+        paramString.tuZ.tuW = paramn.tgg.tlH.thW;
+        paramString.tuZ.tuX = paramn.tgg.tlH.thX;
+        paramString.tuZ.url = paramn.tgg.tlH.Url;
       }
-      this.rVN.hHQ = paramString.snf.booleanValue();
-      if (bt.isNullOrNil(paramString.title))
+      this.tdF.iis = paramString.tuY.booleanValue();
+      if (bs.isNullOrNil(paramString.title))
       {
         AppMethodBeat.o(42413);
         return;
       }
-      if (paramString.sng != null)
+      if (paramString.tuZ != null)
       {
-        paramn = paramString.sng.url;
+        paramn = paramString.tuZ.url;
         d.a locala = new d.a(this.mContext);
-        locala.aMf(paramString.title);
-        locala.aMg(paramString.sng.message);
-        locala.wX(false);
-        locala.aMm(paramString.sng.snd).a(true, new DialogInterface.OnClickListener()
+        locala.aRH(paramString.title);
+        locala.aRI(paramString.tuZ.message);
+        locala.yf(false);
+        locala.aRO(paramString.tuZ.tuW).a(true, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(42411);
-            com.tencent.mm.plugin.game.f.c.ax(t.a(t.this), paramn);
-            e.a(t.a(t.this), t.b(t.this).scene, t.b(t.this).dvS, t.b(t.this).position, 17, t.b(t.this).field_appId, t.c(t.this), t.b(t.this).dcC, t.b(t.this).rVj);
+            com.tencent.mm.plugin.game.f.c.ay(t.a(t.this), paramn);
+            e.a(t.a(t.this), t.b(t.this).scene, t.b(t.this).dtF, t.b(t.this).position, 17, t.b(t.this).field_appId, t.c(t.this), t.b(t.this).daa, t.b(t.this).tdb);
             AppMethodBeat.o(42411);
           }
         });
-        locala.aMn(paramString.sng.sne).c(this.snb);
-        locala.fft().show();
+        locala.aRP(paramString.tuZ.tuX).c(this.tuU);
+        locala.fvp().show();
         AppMethodBeat.o(42413);
         return;
       }
-      if (bt.isNullOrNil(paramString.content))
+      if (bs.isNullOrNil(paramString.content))
       {
         AppMethodBeat.o(42413);
         return;
       }
       paramn = new d.a(this.mContext);
-      paramn.aMf(paramString.title);
-      paramn.aMg(paramString.content);
-      paramn.wX(false);
-      paramn.aaB(2131759989).b(this.snb);
-      paramn.fft().show();
+      paramn.aRH(paramString.title);
+      paramn.aRI(paramString.content);
+      paramn.yf(false);
+      paramn.acM(2131759989).b(this.tuU);
+      paramn.fvp().show();
       AppMethodBeat.o(42413);
       return;
     }
     paramString = new d.a(this.mContext);
-    paramString.aay(2131759990);
-    paramString.aaB(2131759989);
-    paramString.fft().show();
+    paramString.acJ(2131759990);
+    paramString.acM(2131759989);
+    paramString.fvp().show();
     AppMethodBeat.o(42413);
   }
   
   public static final class a
   {
     public String message;
-    public String snd;
-    public String sne;
+    public String tuW;
+    public String tuX;
     public String url;
   }
   
   public static final class b
   {
     public String content;
-    public Boolean snf;
-    public t.a sng;
     public String title;
+    public Boolean tuY;
+    public t.a tuZ;
   }
 }
 

@@ -4,43 +4,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.protocal.protobuf.dau;
-import com.tencent.mm.storage.u;
+import com.tencent.mm.protocal.protobuf.dgg;
+import com.tencent.mm.storage.v;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"TAG", "", "value", "", "isOpenFollow", "()Z", "setOpenFollow", "(Z)V", "isSupportStyle", "style", "", "isTLRecCardWrapperLegal", "wrapper", "Lcom/tencent/mm/protocal/protobuf/TLRecCardWrapper;", "plugin-brandservice_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "value", "", "isOpenFollow", "()Z", "setOpenFollow", "(Z)V", "isSupportStyle", "style", "", "isTLRecCardWrapperLegal", "wrapper", "Lcom/tencent/mm/protocal/protobuf/TLRecCardWrapper;", "plugin-brandservice_release"})
 public final class d
 {
-  private static boolean mYH = true;
+  private static boolean nBg = true;
   
-  public static final boolean a(dau paramdau)
+  public static final boolean a(dgg paramdgg)
   {
-    AppMethodBeat.i(193039);
-    k.h(paramdau, "wrapper");
-    boolean bool = u.a(paramdau);
-    AppMethodBeat.o(193039);
+    AppMethodBeat.i(198833);
+    k.h(paramdgg, "wrapper");
+    boolean bool = v.a(paramdgg);
+    AppMethodBeat.o(198833);
     return bool;
   }
   
-  public static final boolean bCV()
+  public static final boolean bKd()
   {
-    return mYH;
+    return nBg;
   }
   
-  public static final void bCW()
+  public static final void bKe()
   {
-    AppMethodBeat.i(193040);
-    if (((b)g.ab(b.class)).a(b.a.pmN, 1) == 1) {}
+    AppMethodBeat.i(198834);
+    if (((b)g.ab(b.class)).a(b.a.pQn, 1) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      mYH = bool;
-      AppMethodBeat.o(193040);
+      nBg = bool;
+      AppMethodBeat.o(198834);
       return;
     }
   }
   
-  public static final boolean xC(int paramInt)
+  public static final boolean yu(int paramInt)
   {
     switch (paramInt)
     {
@@ -55,7 +55,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.d
  * JD-Core Version:    0.7.0.1
  */

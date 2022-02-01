@@ -13,12 +13,12 @@ import android.os.RemoteException;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.m.e;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.bj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,9 +28,9 @@ import java.util.Map;
 public final class g
   implements Runnable
 {
-  private String doQ;
-  private Account hTO;
-  private a hTP;
+  private String dmy;
+  private Account itT;
+  private a itU;
   private Context mContext;
   private String username;
   
@@ -48,25 +48,25 @@ public final class g
   {
     AppMethodBeat.i(127679);
     this.mContext = paramContext;
-    this.hTO = paramAccount;
+    this.itT = paramAccount;
     this.username = paramString1;
-    this.doQ = paramString2;
-    ad.i("MicroMsg.ContactsOperations", "username = " + paramString1 + ", " + paramString2);
+    this.dmy = paramString2;
+    ac.i("MicroMsg.ContactsOperations", "username = " + paramString1 + ", " + paramString2);
     AppMethodBeat.o(127679);
   }
   
-  private void Bt(String paramString)
+  private void Fx(String paramString)
   {
     AppMethodBeat.i(127684);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.ContactsOperations", "delete wechat contact fail, phoneNum5 is null");
+      ac.e("MicroMsg.ContactsOperations", "delete wechat contact fail, phoneNum5 is null");
       AppMethodBeat.o(127684);
       return;
     }
     if (!com.tencent.mm.pluginsdk.permission.b.o(this.mContext, "android.permission.READ_CONTACTS"))
     {
-      ad.e("MicroMsg.ContactsOperations", "no contact permission");
+      ac.e("MicroMsg.ContactsOperations", "no contact permission");
       AppMethodBeat.o(127684);
       return;
     }
@@ -75,7 +75,7 @@ public final class g
       paramString = this.mContext.getContentResolver().query(ContactsContract.Data.CONTENT_URI, new String[] { "contact_id", "_id" }, "(mimetype= ? or mimetype= ? or mimetype= ? or mimetype= ? or mimetype= ?) AND data4 = ?", new String[] { "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile", "vnd.android.cursor.item/vnd.com.tencent.mm.plugin.sns.timeline", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voiceaction", paramString }, null);
       if (paramString == null)
       {
-        ad.e("MicroMsg.ContactsOperations", "get null cursor");
+        ac.e("MicroMsg.ContactsOperations", "get null cursor");
         AppMethodBeat.o(127684);
         return;
       }
@@ -84,7 +84,7 @@ public final class g
     {
       for (;;)
       {
-        ad.e("MicroMsg.ContactsOperations", "query fail, match error %s \n %s", new Object[] { paramString.getMessage(), bt.m(paramString) });
+        ac.e("MicroMsg.ContactsOperations", "query fail, match error %s \n %s", new Object[] { paramString.getMessage(), bs.m(paramString) });
         paramString = null;
       }
     }
@@ -104,7 +104,7 @@ public final class g
             continue;
           }
           str2 = paramString.getString(i);
-          if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(str2)))
+          if ((!bs.isNullOrNil(str1)) && (!bs.isNullOrNil(str2)))
           {
             this.mContext.getContentResolver().delete(ContactsContract.Data.CONTENT_URI, "_id = ?", new String[] { str2 });
             this.mContext.getContentResolver().delete(ContactsContract.RawContacts.CONTENT_URI, "contact_id = ? AND account_type = ?", new String[] { str1, "com.tencent.mm.account" });
@@ -119,7 +119,7 @@ public final class g
       {
         String str1;
         String str2;
-        ad.e("MicroMsg.ContactsOperations", "delete wechat contact failed : " + localException.getMessage());
+        ac.e("MicroMsg.ContactsOperations", "delete wechat contact failed : " + localException.getMessage());
         continue;
       }
       paramString.close();
@@ -132,7 +132,7 @@ public final class g
   }
   
   /* Error */
-  private boolean Bu(String paramString)
+  private boolean Fy(String paramString)
   {
     // Byte code:
     //   0: ldc 183
@@ -144,7 +144,7 @@ public final class g
     //   14: ifne +17 -> 31
     //   17: ldc 45
     //   19: ldc 94
-    //   21: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   24: ldc 183
     //   26: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: iconst_0
@@ -179,7 +179,7 @@ public final class g
     //   82: aload_1
     //   83: invokestatic 195	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   86: invokevirtual 199	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   89: invokestatic 202	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: invokestatic 202	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: iconst_1
     //   93: istore_2
     //   94: aload_3
@@ -202,7 +202,7 @@ public final class g
     //   126: invokevirtual 137	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   129: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   132: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: iconst_1
     //   139: istore_2
     //   140: goto -46 -> 94
@@ -223,7 +223,7 @@ public final class g
     //   69	92	143	java/lang/Exception
   }
   
-  private void aGr()
+  private void aNe()
   {
     Object localObject2;
     for (;;)
@@ -232,18 +232,18 @@ public final class g
       try
       {
         AppMethodBeat.i(127682);
-        if (!com.tencent.mm.kernel.g.afw())
+        if (!com.tencent.mm.kernel.g.agM())
         {
-          ad.d("MicroMsg.ContactsOperations", "account not ready, quit this operation");
-          ad.w("MicroMsg.ContactsOperations", "quit...");
+          ac.d("MicroMsg.ContactsOperations", "account not ready, quit this operation");
+          ac.w("MicroMsg.ContactsOperations", "quit...");
           AppMethodBeat.o(127682);
           return;
         }
-        localObject5 = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Cg("select  *  from addr_upload2 where ( addr_upload2.username IS NOT NULL AND addr_upload2.status!=\"0\" AND addr_upload2.username!=\"" + bt.aFQ("") + "\" )");
+        localObject5 = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Gj("select  *  from addr_upload2 where ( addr_upload2.username IS NOT NULL AND addr_upload2.status!=\"0\" AND addr_upload2.username!=\"" + bs.aLh("") + "\" )");
         if (((List)localObject5).size() == 0)
         {
-          ad.e("MicroMsg.ContactsOperations", "there is no wechat friend in this phone");
-          ad.w("MicroMsg.ContactsOperations", "quit...");
+          ac.e("MicroMsg.ContactsOperations", "there is no wechat friend in this phone");
+          ac.w("MicroMsg.ContactsOperations", "quit...");
           AppMethodBeat.o(127682);
           continue;
         }
@@ -251,10 +251,10 @@ public final class g
       }
       finally {}
       HashMap localHashMap;
-      localObject2 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.hTO.name).appendQueryParameter("account_type", this.hTO.type).build();
+      localObject2 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.itT.name).appendQueryParameter("account_type", this.itT.type).build();
       if (!com.tencent.mm.pluginsdk.permission.b.o(this.mContext, "android.permission.READ_CONTACTS"))
       {
-        ad.e("MicroMsg.ContactsOperations", "no contact permission");
+        ac.e("MicroMsg.ContactsOperations", "no contact permission");
         AppMethodBeat.o(127682);
       }
       else
@@ -273,25 +273,25 @@ public final class g
             String str;
             boolean bool;
             localObject2 = null;
-            ad.printErrStackTrace("MicroMsg.ContactsOperations", localException1, "", new Object[] { "" });
+            ac.printErrStackTrace("MicroMsg.ContactsOperations", localException1, "", new Object[] { "" });
             Object localObject4 = localObject2;
             continue;
-            localObject2 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).aIv();
+            localObject2 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).aPm();
             continue;
-            Bt(((com.tencent.mm.plugin.account.friend.a.a)localObject6).ijL);
+            Fx(((com.tencent.mm.plugin.account.friend.a.a)localObject6).iJS);
             continue;
-            this.hTP.execute();
-            ad.w("MicroMsg.ContactsOperations", "quit...");
+            this.itU.execute();
+            ac.w("MicroMsg.ContactsOperations", "quit...");
             AppMethodBeat.o(127682);
           }
           try
           {
-            ad.e("MicroMsg.ContactsOperations", "query get no user");
+            ac.e("MicroMsg.ContactsOperations", "query get no user");
             localObject3 = localObject2;
             if (localObject3 != null) {
               ((Cursor)localObject3).close();
             }
-            if ((Bu("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video")) || (Bu("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip"))) {
+            if ((Fy("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video")) || (Fy("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip"))) {
               break label578;
             }
             i = 1;
@@ -302,31 +302,31 @@ public final class g
             i = 0;
             continue;
           }
-          this.hTP = new a(this.mContext.getContentResolver());
+          this.itU = new a(this.mContext.getContentResolver());
           localObject3 = ((List)localObject5).iterator();
           if (!((Iterator)localObject3).hasNext()) {
             continue;
           }
           localObject6 = (com.tencent.mm.plugin.account.friend.a.a)((Iterator)localObject3).next();
           localObject5 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).getUsername();
-          localObject2 = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY((String)localObject5);
-          if ((localObject2 == null) || (!com.tencent.mm.n.b.ls(((au)localObject2).field_type))) {
+          localObject2 = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt((String)localObject5);
+          if ((localObject2 == null) || (!com.tencent.mm.n.b.ln(((av)localObject2).field_type))) {
             continue;
           }
-          if (!bt.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject6).aIv())) {
+          if (!bs.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject6).aPm())) {
             continue;
           }
           localObject2 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).getNickName();
-          str = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).aIA();
-          localObject6 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).ijL;
+          str = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).aPr();
+          localObject6 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).iJS;
           if ((localHashMap.get(localObject6) == null) || (i != 0))
           {
             if (localHashMap.get(localObject6) != null) {
-              Bt((String)localObject6);
+              Fx((String)localObject6);
             }
-            e((String)localObject2, str, (String)localObject6, (String)localObject5);
+            g((String)localObject2, str, (String)localObject6, (String)localObject5);
           }
-          this.hTP.execute();
+          this.itU.execute();
           continue;
           localObject3 = localObject2;
           if (((Cursor)localObject2).moveToFirst())
@@ -342,20 +342,20 @@ public final class g
     }
   }
   
-  private void e(String paramString1, String paramString2, String paramString3, String paramString4)
+  private void g(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(127683);
-    ad.d("MicroMsg.ContactsOperations", "add wechat contact: displayname:" + paramString1 + ", phoneNum:" + paramString2 + ", " + paramString3 + ", username:" + paramString4);
+    ac.d("MicroMsg.ContactsOperations", "add wechat contact: displayname:" + paramString1 + ", phoneNum:" + paramString2 + ", " + paramString3 + ", username:" + paramString4);
     paramString4 = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI);
-    paramString4.withValue("account_name", this.hTO.name);
-    paramString4.withValue("account_type", this.hTO.type);
+    paramString4.withValue("account_name", this.itT.name);
+    paramString4.withValue("account_type", this.itT.type);
     paramString4.withValue("sync1", paramString3);
-    this.hTP.a(paramString4.build());
+    this.itU.a(paramString4.build());
     paramString4 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
     paramString4.withValueBackReference("raw_contact_id", 0);
     paramString4.withValue("mimetype", "vnd.android.cursor.item/name");
     paramString4.withValue("data1", paramString1);
-    this.hTP.a(paramString4.build());
+    this.itU.a(paramString4.build());
     paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
     paramString1.withValueBackReference("raw_contact_id", 0);
     paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile");
@@ -363,8 +363,8 @@ public final class g
     paramString1.withValue("data2", this.mContext.getString(2131755822));
     paramString1.withValue("data3", this.mContext.getString(2131757928));
     paramString1.withValue("data4", paramString3);
-    this.hTP.a(paramString1.build());
-    if ("1".equals(com.tencent.mm.m.g.Zd().getValue("VOIPCallType")))
+    this.itU.a(paramString1.build());
+    if ("1".equals(com.tencent.mm.m.g.ZY().getValue("VOIPCallType")))
     {
       paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
       paramString1.withValueBackReference("raw_contact_id", 0);
@@ -373,7 +373,7 @@ public final class g
       paramString1.withValue("data2", this.mContext.getString(2131755822));
       paramString1.withValue("data3", this.mContext.getString(2131757930));
       paramString1.withValue("data4", paramString3);
-      this.hTP.a(paramString1.build());
+      this.itU.a(paramString1.build());
     }
     for (;;)
     {
@@ -384,7 +384,7 @@ public final class g
       paramString1.withValue("data2", this.mContext.getString(2131755822));
       paramString1.withValue("data3", this.mContext.getString(2131757931));
       paramString1.withValue("data4", paramString3);
-      this.hTP.a(paramString1.build());
+      this.itU.a(paramString1.build());
       paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
       paramString1.withValueBackReference("raw_contact_id", 0);
       paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voiceaction");
@@ -392,7 +392,7 @@ public final class g
       paramString1.withValue("data2", this.mContext.getString(2131755822));
       paramString1.withValue("data3", "");
       paramString1.withValue("data4", paramString3);
-      this.hTP.a(paramString1.build());
+      this.itU.a(paramString1.build());
       AppMethodBeat.o(127683);
       return;
       paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
@@ -402,85 +402,85 @@ public final class g
       paramString1.withValue("data2", this.mContext.getString(2131755822));
       paramString1.withValue("data3", this.mContext.getString(2131757929));
       paramString1.withValue("data4", paramString3);
-      this.hTP.a(paramString1.build());
+      this.itU.a(paramString1.build());
     }
   }
   
   public final void run()
   {
     AppMethodBeat.i(127680);
-    ad.i("MicroMsg.ContactsOperations", "start time:".concat(String.valueOf(System.currentTimeMillis())));
-    if (!com.tencent.mm.kernel.g.afz().aeI())
+    ac.i("MicroMsg.ContactsOperations", "start time:".concat(String.valueOf(System.currentTimeMillis())));
+    if (!com.tencent.mm.kernel.g.agP().afY())
     {
-      ad.w("MicroMsg.ContactsOperations", "account not ready, quit this operation");
-      ad.w("MicroMsg.ContactsOperations", "quit...");
+      ac.w("MicroMsg.ContactsOperations", "account not ready, quit this operation");
+      ac.w("MicroMsg.ContactsOperations", "quit...");
       AppMethodBeat.o(127680);
       return;
     }
-    if ((bt.isNullOrNil(this.username)) && (bt.isNullOrNil(this.doQ))) {
-      aGr();
+    if ((bs.isNullOrNil(this.username)) && (bs.isNullOrNil(this.dmy))) {
+      aNe();
     }
     for (;;)
     {
-      ad.i("MicroMsg.ContactsOperations", "end time:" + System.currentTimeMillis());
+      ac.i("MicroMsg.ContactsOperations", "end time:" + System.currentTimeMillis());
       AppMethodBeat.o(127680);
       return;
-      if (!bt.isNullOrNil(this.doQ)) {
+      if (!bs.isNullOrNil(this.dmy)) {
         break;
       }
-      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Cc(this.username);
-      if ((locala != null) && (!bt.isNullOrNil(locala.ijL))) {
-        Bt(locala.ijL);
+      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Gf(this.username);
+      if ((locala != null) && (!bs.isNullOrNil(locala.iJS))) {
+        Fx(locala.iJS);
       }
-      ad.w("MicroMsg.ContactsOperations", "quit...");
+      ac.w("MicroMsg.ContactsOperations", "quit...");
     }
-    com.tencent.mm.plugin.account.friend.a.a locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Cc(this.username);
-    if ((locala == null) || (bt.isNullOrNil(locala.ijL))) {
-      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Cc(this.doQ);
+    com.tencent.mm.plugin.account.friend.a.a locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Gf(this.username);
+    if ((locala == null) || (bs.isNullOrNil(locala.iJS))) {
+      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Gf(this.dmy);
     }
     for (;;)
     {
       for (;;)
       {
-        if ((locala != null) && (!bt.isNullOrNil(locala.ijL))) {
+        if ((locala != null) && (!bs.isNullOrNil(locala.iJS))) {
           try
           {
             if (!com.tencent.mm.pluginsdk.permission.b.o(this.mContext, "android.permission.READ_CONTACTS")) {
-              ad.e("MicroMsg.ContactsOperations", "no contact permission");
+              ac.e("MicroMsg.ContactsOperations", "no contact permission");
             }
           }
           catch (Exception localException)
           {
-            ad.printErrStackTrace("MicroMsg.ContactsOperations", localException, "", new Object[] { "" });
+            ac.printErrStackTrace("MicroMsg.ContactsOperations", localException, "", new Object[] { "" });
           }
         }
       }
       for (;;)
       {
-        ad.w("MicroMsg.ContactsOperations", "quit...");
+        ac.w("MicroMsg.ContactsOperations", "quit...");
         break;
-        Object localObject1 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.hTO.name).appendQueryParameter("account_type", this.hTO.type).build();
+        Object localObject1 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.itT.name).appendQueryParameter("account_type", this.itT.type).build();
         Object localObject2 = this.mContext.getContentResolver();
-        String str = "deleted=\"0\" AND sync1=\"" + localException.ijL + "\"";
+        String str = "deleted=\"0\" AND sync1=\"" + localException.iJS + "\"";
         localObject2 = ((ContentResolver)localObject2).query((Uri)localObject1, new String[] { "sync1", "_id" }, str, null, null);
         if ((localObject2 == null) || (((Cursor)localObject2).getCount() == 0)) {
-          if (!bt.isNullOrNil(localException.aIv())) {
+          if (!bs.isNullOrNil(localException.aPm())) {
             break label481;
           }
         }
         label481:
-        for (localObject1 = localException.getNickName();; localObject1 = localException.aIv())
+        for (localObject1 = localException.getNickName();; localObject1 = localException.aPm())
         {
-          this.hTP = new a(this.mContext.getContentResolver());
-          e((String)localObject1, localException.aIA(), localException.ijL, this.username);
-          this.hTP.execute();
+          this.itU = new a(this.mContext.getContentResolver());
+          g((String)localObject1, localException.aPr(), localException.iJS, this.username);
+          this.itU.execute();
           if (localObject2 == null) {
             break;
           }
           ((Cursor)localObject2).close();
           break;
         }
-        ad.d("MicroMsg.ContactsOperations", "query addrupload is null " + this.username);
+        ac.d("MicroMsg.ContactsOperations", "query addrupload is null " + this.username);
       }
     }
   }
@@ -488,44 +488,44 @@ public final class g
   public final class a
   {
     private final String TAG;
-    private final ContentResolver hTQ;
-    ArrayList<ContentProviderOperation> hTR;
+    private final ContentResolver gne;
+    ArrayList<ContentProviderOperation> itV;
     
     public a(ContentResolver paramContentResolver)
     {
       AppMethodBeat.i(127676);
       this.TAG = "MicroMsg.BatchOperation";
-      this.hTQ = paramContentResolver;
-      this.hTR = new ArrayList();
+      this.gne = paramContentResolver;
+      this.itV = new ArrayList();
       AppMethodBeat.o(127676);
     }
     
     public final void a(ContentProviderOperation paramContentProviderOperation)
     {
       AppMethodBeat.i(127677);
-      this.hTR.add(paramContentProviderOperation);
+      this.itV.add(paramContentProviderOperation);
       AppMethodBeat.o(127677);
     }
     
     public final void execute()
     {
       AppMethodBeat.i(127678);
-      if (this.hTR.size() == 0)
+      if (this.itV.size() == 0)
       {
-        ad.d("MicroMsg.BatchOperation", "no batch operation");
+        ac.d("MicroMsg.BatchOperation", "no batch operation");
         AppMethodBeat.o(127678);
         return;
       }
       if (!com.tencent.mm.pluginsdk.permission.b.o(g.a(g.this), "android.permission.READ_CONTACTS"))
       {
-        ad.e("MicroMsg.BatchOperation", "no contact permission");
+        ac.e("MicroMsg.BatchOperation", "no contact permission");
         AppMethodBeat.o(127678);
         return;
       }
       try
       {
-        this.hTQ.applyBatch("com.android.contacts", this.hTR);
-        this.hTR.clear();
+        this.gne.applyBatch("com.android.contacts", this.itV);
+        this.itV.clear();
         AppMethodBeat.o(127678);
         return;
       }
@@ -533,21 +533,21 @@ public final class g
       {
         for (;;)
         {
-          ad.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localOperationApplicationException.toString() });
+          ac.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localOperationApplicationException.toString() });
         }
       }
       catch (RemoteException localRemoteException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localRemoteException.toString() });
+          ac.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localRemoteException.toString() });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ad.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localException.toString() });
+          ac.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localException.toString() });
         }
       }
     }
@@ -555,7 +555,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.platformtools.g
  * JD-Core Version:    0.7.0.1
  */

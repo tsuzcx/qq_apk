@@ -16,12 +16,12 @@ public final class d
   public final void r(boolean paramBoolean)
   {
     super.r(paramBoolean);
-    ((h)this.aeq).r(paramBoolean);
+    ((h)this.afk).r(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.internal.d
  * JD-Core Version:    0.7.0.1
  */

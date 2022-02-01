@@ -9,18 +9,18 @@ import java.util.Map;
 public final class l
 {
   public static int VERSION = 5;
-  public static int crn = 0;
-  public static int cro = 1;
-  public static int crp = 2;
-  public static int crq = 3;
-  public static int crr = 4;
-  public static int crs = 6;
-  Map<Integer, String> crt;
+  public static int cot = 0;
+  public static int cou = 1;
+  public static int cov = 2;
+  public static int cow = 3;
+  public static int cox = 4;
+  public static int coy = 6;
+  Map<Integer, String> coz;
   
   public l()
   {
     AppMethodBeat.i(140061);
-    this.crt = new HashMap();
+    this.coz = new HashMap();
     AppMethodBeat.o(140061);
   }
   
@@ -45,7 +45,7 @@ public final class l
     {
       paramRandomAccessFile.read((byte[])localObject1);
       localc.name = new String((byte[])localObject1);
-      localc.crD = paramRandomAccessFile.readInt();
+      localc.coJ = paramRandomAccessFile.readInt();
       localc.offset = paramRandomAccessFile.readInt();
       localc.length = paramRandomAccessFile.readInt();
       if (!"name".equalsIgnoreCase(localc.name)) {}
@@ -64,30 +64,30 @@ public final class l
       }
       paramRandomAccessFile.seek(localc.offset);
       localObject1 = new b((byte)0);
-      ((b)localObject1).crA = paramRandomAccessFile.readShort();
-      ((b)localObject1).crB = paramRandomAccessFile.readShort();
-      ((b)localObject1).crC = paramRandomAccessFile.readShort();
+      ((b)localObject1).coG = paramRandomAccessFile.readShort();
+      ((b)localObject1).coH = paramRandomAccessFile.readShort();
+      ((b)localObject1).coI = paramRandomAccessFile.readShort();
       a locala = new a((byte)0);
       i = j;
-      while (i < ((b)localObject1).crB)
+      while (i < ((b)localObject1).coH)
       {
-        locala.cru = paramRandomAccessFile.readShort();
-        locala.crv = paramRandomAccessFile.readShort();
-        locala.crw = paramRandomAccessFile.readShort();
-        locala.crx = paramRandomAccessFile.readShort();
-        locala.cry = paramRandomAccessFile.readShort();
-        locala.crz = paramRandomAccessFile.readShort();
+        locala.coA = paramRandomAccessFile.readShort();
+        locala.coB = paramRandomAccessFile.readShort();
+        locala.coC = paramRandomAccessFile.readShort();
+        locala.coD = paramRandomAccessFile.readShort();
+        locala.coE = paramRandomAccessFile.readShort();
+        locala.coF = paramRandomAccessFile.readShort();
         long l = paramRandomAccessFile.getFilePointer();
-        if ((locala.cry <= 0) || (locala.cry >= 32767))
+        if ((locala.coE <= 0) || (locala.coE >= 32767))
         {
           AppMethodBeat.o(140062);
           return;
         }
-        Object localObject2 = new byte[locala.cry];
-        paramRandomAccessFile.seek(localc.offset + locala.crz + ((b)localObject1).crC);
+        Object localObject2 = new byte[locala.coE];
+        paramRandomAccessFile.seek(localc.offset + locala.coF + ((b)localObject1).coI);
         paramRandomAccessFile.read((byte[])localObject2);
         localObject2 = new String((byte[])localObject2, Charset.forName("utf-16"));
-        this.crt.put(Integer.valueOf(locala.crx), localObject2);
+        this.coz.put(Integer.valueOf(locala.coD), localObject2);
         paramRandomAccessFile.seek(l);
         i += 1;
       }
@@ -99,31 +99,31 @@ public final class l
   public final String toString()
   {
     AppMethodBeat.i(140063);
-    String str = this.crt.toString();
+    String str = this.coz.toString();
     AppMethodBeat.o(140063);
     return str;
   }
   
   static final class a
   {
-    int cru;
-    int crv;
-    int crw;
-    int crx;
-    int cry;
-    int crz;
+    int coA;
+    int coB;
+    int coC;
+    int coD;
+    int coE;
+    int coF;
   }
   
   static final class b
   {
-    int crA;
-    int crB;
-    int crC;
+    int coG;
+    int coH;
+    int coI;
   }
   
   static final class c
   {
-    int crD;
+    int coJ;
     int length;
     String name;
     int offset;
@@ -131,7 +131,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.l
  * JD-Core Version:    0.7.0.1
  */

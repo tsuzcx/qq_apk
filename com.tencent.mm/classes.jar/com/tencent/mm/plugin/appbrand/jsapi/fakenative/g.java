@@ -10,12 +10,12 @@ public enum g
   static
   {
     AppMethodBeat.i(46297);
-    jQa = new g("OK", 0, 0, "ok");
-    jQb = new g("SYSTEM_ERROR", 1, -1, "fail system error");
-    jQc = new g("CGI_ERROR", 2, -2, "fail CGI error");
-    jQd = new g("CANCEL", 3, -3, "fail cancel");
-    jQe = new g("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
-    jQf = new g[] { jQa, jQb, jQc, jQd, jQe };
+    kqM = new g("OK", 0, 0, "ok");
+    kqN = new g("SYSTEM_ERROR", 1, -1, "fail system error");
+    kqO = new g("CGI_ERROR", 2, -2, "fail CGI error");
+    kqP = new g("CANCEL", 3, -3, "fail cancel");
+    kqQ = new g("INVALID_BUSINESS_TYPE", 4, -4, "fail invalid businessType");
+    kqR = new g[] { kqM, kqN, kqO, kqP, kqQ };
     AppMethodBeat.o(46297);
   }
   
@@ -27,7 +27,7 @@ public enum g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.g
  * JD-Core Version:    0.7.0.1
  */

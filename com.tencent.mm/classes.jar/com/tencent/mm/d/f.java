@@ -13,10 +13,10 @@ import org.w3c.dom.NodeList;
 
 public final class f
 {
-  private static boolean cKf = false;
+  private static boolean cHm = false;
   
   /* Error */
-  public static Map<String, String> K(String paramString1, String paramString2)
+  public static Map<String, String> L(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 967
@@ -145,41 +145,41 @@ public final class f
     //   257: aload_0
     //   258: iconst_0
     //   259: invokestatic 135	com/tencent/mm/d/f:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Lorg/w3c/dom/Node;I)V
-    //   262: getstatic 10	com/tencent/mm/d/f:cKf	Z
+    //   262: getstatic 10	com/tencent/mm/d/f:cHm	Z
     //   265: ifeq +8 -> 273
     //   268: aload 4
-    //   270: invokestatic 138	com/tencent/mm/d/f:i	(Ljava/util/Map;)V
+    //   270: invokestatic 139	com/tencent/mm/d/f:h	(Ljava/util/Map;)V
     //   273: sipush 967
     //   276: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   279: aload 4
     //   281: areturn
     //   282: aload_0
     //   283: aload_1
-    //   284: invokeinterface 142 2 0
+    //   284: invokeinterface 143 2 0
     //   289: astore_0
     //   290: aload_0
-    //   291: invokeinterface 147 1 0
+    //   291: invokeinterface 148 1 0
     //   296: ifgt +19 -> 315
     //   299: getstatic 35	java/lang/System:err	Ljava/io/PrintStream;
-    //   302: ldc 149
+    //   302: ldc 150
     //   304: invokevirtual 43	java/io/PrintStream:println	(Ljava/lang/String;)V
     //   307: sipush 967
     //   310: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   313: aconst_null
     //   314: areturn
     //   315: aload_0
-    //   316: invokeinterface 147 1 0
+    //   316: invokeinterface 148 1 0
     //   321: iconst_1
     //   322: if_icmple +11 -> 333
     //   325: getstatic 35	java/lang/System:err	Ljava/io/PrintStream;
-    //   328: ldc 151
+    //   328: ldc 152
     //   330: invokevirtual 43	java/io/PrintStream:println	(Ljava/lang/String;)V
     //   333: aload 4
     //   335: ldc 131
     //   337: ldc 131
     //   339: aload_0
     //   340: iconst_0
-    //   341: invokeinterface 155 2 0
+    //   341: invokeinterface 156 2 0
     //   346: iconst_0
     //   347: invokestatic 135	com/tencent/mm/d/f:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Lorg/w3c/dom/Node;I)V
     //   350: goto -88 -> 262
@@ -275,7 +275,7 @@ public final class f
     }
   }
   
-  private static void i(Map<String, String> paramMap)
+  private static void h(Map<String, String> paramMap)
   {
     AppMethodBeat.i(969);
     if (paramMap.size() <= 0)

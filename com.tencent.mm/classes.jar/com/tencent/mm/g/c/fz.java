@@ -8,24 +8,22 @@ public abstract class fz
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eZR = "canvasExt".hashCode();
-  private static final int ekU;
-  private static final int esm = "canvasId".hashCode();
-  private static final int esn = "canvasXml".hashCode();
+  private static final int exD = "encryptUsername".hashCode();
+  private static final int ext = "conRemark".hashCode();
+  private static final int fcH = "contactLabels".hashCode();
+  private static final int fcI = "conDescription".hashCode();
+  private static final int fcJ = "conPhone".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eZQ = true;
-  private boolean ekx = true;
-  private boolean esk = true;
-  private boolean esl = true;
-  public String field_canvasExt;
-  public String field_canvasId;
-  public String field_canvasXml;
-  public long field_createTime;
-  
-  static
-  {
-    ekU = "createTime".hashCode();
-  }
+  private boolean exb = true;
+  private boolean exl = true;
+  private boolean fcE = true;
+  private boolean fcF = true;
+  private boolean fcG = true;
+  public String field_conDescription;
+  public String field_conPhone;
+  public String field_conRemark;
+  public String field_contactLabels;
+  public String field_encryptUsername;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -40,11 +38,11 @@ public abstract class fz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (esm != k) {
+      if (exD != k) {
         break label65;
       }
-      this.field_canvasId = paramCursor.getString(i);
-      this.esk = true;
+      this.field_encryptUsername = paramCursor.getString(i);
+      this.exl = true;
     }
     for (;;)
     {
@@ -52,12 +50,14 @@ public abstract class fz
       break label20;
       break;
       label65:
-      if (esn == k) {
-        this.field_canvasXml = paramCursor.getString(i);
-      } else if (ekU == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (eZR == k) {
-        this.field_canvasExt = paramCursor.getString(i);
+      if (ext == k) {
+        this.field_conRemark = paramCursor.getString(i);
+      } else if (fcH == k) {
+        this.field_contactLabels = paramCursor.getString(i);
+      } else if (fcI == k) {
+        this.field_conDescription = paramCursor.getString(i);
+      } else if (fcJ == k) {
+        this.field_conPhone = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,17 +67,35 @@ public abstract class fz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.esk) {
-      localContentValues.put("canvasId", this.field_canvasId);
+    if (this.field_encryptUsername == null) {
+      this.field_encryptUsername = "";
     }
-    if (this.esl) {
-      localContentValues.put("canvasXml", this.field_canvasXml);
+    if (this.exl) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.ekx) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.field_conRemark == null) {
+      this.field_conRemark = "";
     }
-    if (this.eZQ) {
-      localContentValues.put("canvasExt", this.field_canvasExt);
+    if (this.exb) {
+      localContentValues.put("conRemark", this.field_conRemark);
+    }
+    if (this.field_contactLabels == null) {
+      this.field_contactLabels = "";
+    }
+    if (this.fcE) {
+      localContentValues.put("contactLabels", this.field_contactLabels);
+    }
+    if (this.field_conDescription == null) {
+      this.field_conDescription = "";
+    }
+    if (this.fcF) {
+      localContentValues.put("conDescription", this.field_conDescription);
+    }
+    if (this.field_conPhone == null) {
+      this.field_conPhone = "";
+    }
+    if (this.fcG) {
+      localContentValues.put("conPhone", this.field_conPhone);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

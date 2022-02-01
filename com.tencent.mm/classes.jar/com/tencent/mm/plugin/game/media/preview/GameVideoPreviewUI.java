@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.support.v7.widget.ak;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -24,17 +24,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.c.h;
+import com.tencent.mm.av.a.c.h;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.b.b.e;
 import com.tencent.mm.plugin.game.media.GameVideoTagContainer;
 import com.tencent.mm.plugin.game.media.a.a;
 import com.tencent.mm.plugin.game.media.p.a;
 import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
@@ -53,37 +53,37 @@ public class GameVideoPreviewUI
   extends MMActivity
 {
   private Context context;
-  private int dep;
-  private RecyclerView fPw;
-  RecyclerView.m frd;
-  private TextView ftj;
-  private View lZo;
-  private GameVideoTagContainer rRQ;
-  private a rTV;
-  private View rTW;
-  private View rTX;
-  private View rTY;
-  private int rTZ;
-  private c rUa;
-  private boolean rUb;
+  private int dbL;
+  private RecyclerView fTr;
+  RecyclerView.m fuK;
+  private TextView fwQ;
+  private View gDe;
+  private GameVideoTagContainer sZG;
+  private a tbN;
+  private View tbO;
+  private View tbP;
+  private View tbQ;
+  private int tbR;
+  private c tbS;
+  private boolean tbT;
   private TextView titleTv;
   
   public GameVideoPreviewUI()
   {
     AppMethodBeat.i(41264);
-    this.rTZ = 0;
-    this.dep = 0;
-    this.rUb = true;
-    this.frd = new RecyclerView.m()
+    this.tbR = 0;
+    this.dbL = 0;
+    this.tbT = true;
+    this.fuK = new RecyclerView.m()
     {
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(41236);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt1);
-        localb.lT(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$10", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt1);
+        localb.lS(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$10", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
         super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$10", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
         AppMethodBeat.o(41236);
@@ -93,16 +93,16 @@ public class GameVideoPreviewUI
       {
         AppMethodBeat.i(41235);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.be(paramAnonymousRecyclerView);
-        localb.lT(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$10", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ado());
+        localb.bb(paramAnonymousRecyclerView);
+        localb.lS(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$10", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
         if (paramAnonymousInt == 0)
         {
-          paramAnonymousInt = ((LinearLayoutManager)paramAnonymousRecyclerView.getLayoutManager()).jO();
-          ad.i("MicroMsg.Haowan.GameVideoPreviewUI", "scroll position:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          paramAnonymousInt = ((LinearLayoutManager)paramAnonymousRecyclerView.getLayoutManager()).jW();
+          ac.i("MicroMsg.Haowan.GameVideoPreviewUI", "scroll position:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
           GameVideoPreviewUI.c(GameVideoPreviewUI.this, paramAnonymousInt);
-          paramAnonymousRecyclerView = ((GameVideoPreviewUI.a)paramAnonymousRecyclerView.getAdapter()).Eq(paramAnonymousInt);
+          paramAnonymousRecyclerView = ((GameVideoPreviewUI.a)paramAnonymousRecyclerView.getAdapter()).Gm(paramAnonymousInt);
           GameVideoPreviewUI.a(GameVideoPreviewUI.this, paramAnonymousRecyclerView);
           GameVideoPreviewUI.a(GameVideoPreviewUI.this, paramAnonymousInt);
         }
@@ -113,13 +113,13 @@ public class GameVideoPreviewUI
     AppMethodBeat.o(41264);
   }
   
-  private GameVideoView Ev(int paramInt)
+  private GameVideoView Gr(int paramInt)
   {
     AppMethodBeat.i(41272);
-    Object localObject = this.fPw.cj(paramInt);
+    Object localObject = this.fTr.ci(paramInt);
     if ((localObject instanceof GameVideoPreviewUI.a.a))
     {
-      localObject = ((GameVideoPreviewUI.a.a)localObject).rUn;
+      localObject = ((GameVideoPreviewUI.a.a)localObject).tcf;
       AppMethodBeat.o(41272);
       return localObject;
     }
@@ -136,16 +136,16 @@ public class GameVideoPreviewUI
       AppMethodBeat.o(41273);
       return localHashMap;
     }
-    localHashMap.put("videoid", parame.rNP);
+    localHashMap.put("videoid", parame.sVF);
     localHashMap.put("origtime", Long.valueOf(parame.duration));
     localHashMap.put("origsize", Long.valueOf(parame.size));
     AppMethodBeat.o(41273);
     return localHashMap;
   }
   
-  private int cCx()
+  private int cPI()
   {
-    int i = this.rTZ + 1;
+    int i = this.tbR + 1;
     if (i > 100) {
       return 100;
     }
@@ -155,7 +155,7 @@ public class GameVideoPreviewUI
   private void exit()
   {
     AppMethodBeat.i(41266);
-    com.tencent.mm.game.report.b.a.a(this, 8768, 0, 4, com.tencent.mm.game.report.b.a.a(this.dep, null));
+    com.tencent.mm.game.report.b.a.a(this, 8768, 0, 4, com.tencent.mm.game.report.b.a.a(this.dbL, null));
     finish();
     AppMethodBeat.o(41266);
   }
@@ -173,7 +173,7 @@ public class GameVideoPreviewUI
     {
       if ((paramIntent != null) && (paramInt2 == -1))
       {
-        e locale = this.rTV.Eq(this.rTZ);
+        e locale = this.tbN.Gm(this.tbR);
         if (locale != null)
         {
           paramIntent.putExtra("key_game_video_appid", locale.appId);
@@ -184,21 +184,21 @@ public class GameVideoPreviewUI
         AppMethodBeat.o(41271);
         return;
       }
-      paramIntent = Ev(this.rTZ);
+      paramIntent = Gr(this.tbR);
       if (paramIntent != null)
       {
-        if (paramIntent.rUA != null) {
-          paramIntent.rUA.dAC = true;
+        if (paramIntent.tcs != null) {
+          paramIntent.tcs.dyo = true;
         }
-        paramInt1 = this.rTZ;
-        paramIntent = this.fPw.cj(paramInt1);
+        paramInt1 = this.tbR;
+        paramIntent = this.fTr.ci(paramInt1);
         if (!(paramIntent instanceof GameVideoPreviewUI.a.a)) {
           break label163;
         }
       }
     }
     label163:
-    for (paramIntent = ((GameVideoPreviewUI.a.a)paramIntent).rUo;; paramIntent = null)
+    for (paramIntent = ((GameVideoPreviewUI.a.a)paramIntent).tcg;; paramIntent = null)
     {
       if (paramIntent != null) {
         paramIntent.setVisibility(0);
@@ -211,10 +211,10 @@ public class GameVideoPreviewUI
   public void onBackPressed()
   {
     AppMethodBeat.i(41269);
-    if (this.lZo.getVisibility() == 0)
+    if (this.gDe.getVisibility() == 0)
     {
-      this.lZo.setVisibility(8);
-      this.rUa.cCE();
+      this.gDe.setVisibility(8);
+      this.tbS.cPO();
       AppMethodBeat.o(41269);
       return;
     }
@@ -231,36 +231,36 @@ public class GameVideoPreviewUI
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
     getWindow().setFlags(201327616, 201327616);
-    d.ne(true);
+    d.nX(true);
     getWindow().setFormat(-3);
     this.context = this;
     this.titleTv = ((TextView)findViewById(2131305948));
-    this.ftj = ((TextView)findViewById(2131302666));
-    this.rRQ = ((GameVideoTagContainer)findViewById(2131306397));
-    this.rTW = findViewById(2131298378);
-    this.rTX = findViewById(2131304747);
-    this.rTY = findViewById(2131298556);
-    this.lZo = findViewById(2131301514);
-    this.rUa = new c(this.context, this.lZo);
-    this.fPw = ((RecyclerView)findViewById(2131300565));
+    this.fwQ = ((TextView)findViewById(2131302666));
+    this.sZG = ((GameVideoTagContainer)findViewById(2131306397));
+    this.tbO = findViewById(2131298378);
+    this.tbP = findViewById(2131304747);
+    this.tbQ = findViewById(2131298556);
+    this.gDe = findViewById(2131301514);
+    this.tbS = new c(this.context, this.gDe);
+    this.fTr = ((RecyclerView)findViewById(2131300565));
     paramBundle = new LinearLayoutManager();
     paramBundle.setOrientation(0);
-    this.fPw.setLayoutManager(paramBundle);
-    new ak().j(this.fPw);
-    this.fPw.a(this.frd);
+    this.fTr.setLayoutManager(paramBundle);
+    new ak().j(this.fTr);
+    this.fTr.a(this.fuK);
     byte[] arrayOfByte = getIntent().getByteArrayExtra("game_video_list");
-    this.rTZ = getIntent().getIntExtra("game_video_list_current_index", 0);
+    this.tbR = getIntent().getIntExtra("game_video_list_current_index", 0);
     paramBundle = new LinkedList();
     com.tencent.mm.plugin.game.b.b.f localf;
-    if (!bt.cw(arrayOfByte)) {
+    if (!bs.cv(arrayOfByte)) {
       localf = new com.tencent.mm.plugin.game.b.b.f();
     }
     try
     {
       localf.parseFrom(arrayOfByte);
       label284:
-      paramBundle.addAll(localf.rNQ);
-      this.fPw.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+      paramBundle.addAll(localf.sVH);
+      this.fTr.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
       {
         public final void onGlobalLayout()
         {
@@ -268,13 +268,13 @@ public class GameVideoPreviewUI
           GameVideoPreviewUI.a(GameVideoPreviewUI.this).getViewTreeObserver().removeOnGlobalLayoutListener(this);
           GameVideoPreviewUI.a(GameVideoPreviewUI.this, new GameVideoPreviewUI.a(GameVideoPreviewUI.this));
           GameVideoPreviewUI.a(GameVideoPreviewUI.this).setAdapter(GameVideoPreviewUI.b(GameVideoPreviewUI.this));
-          GameVideoPreviewUI.b(GameVideoPreviewUI.this).cI(paramBundle);
-          Object localObject = ((GameVideoPreviewUI.a)GameVideoPreviewUI.a(GameVideoPreviewUI.this).getAdapter()).Eq(GameVideoPreviewUI.c(GameVideoPreviewUI.this));
+          GameVideoPreviewUI.b(GameVideoPreviewUI.this).cK(paramBundle);
+          Object localObject = ((GameVideoPreviewUI.a)GameVideoPreviewUI.a(GameVideoPreviewUI.this).getAdapter()).Gm(GameVideoPreviewUI.c(GameVideoPreviewUI.this));
           GameVideoPreviewUI.a(GameVideoPreviewUI.this, (e)localObject);
           localObject = GameVideoPreviewUI.a(GameVideoPreviewUI.this);
           com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(GameVideoPreviewUI.c(GameVideoPreviewUI.this), new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.adn(), "com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$1", "onGlobalLayout", "()V", "Undefined", "scrollToPosition", "(I)V");
-          ((RecyclerView)localObject).ca(((Integer)locala.lS(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.aeD(), "com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$1", "onGlobalLayout", "()V", "Undefined", "scrollToPosition", "(I)V");
+          ((RecyclerView)localObject).ca(((Integer)locala.lR(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/game/media/preview/GameVideoPreviewUI$1", "onGlobalLayout", "()V", "Undefined", "scrollToPosition", "(I)V");
           GameVideoPreviewUI.a(GameVideoPreviewUI.this, GameVideoPreviewUI.c(GameVideoPreviewUI.this));
           AppMethodBeat.o(41234);
@@ -285,22 +285,22 @@ public class GameVideoPreviewUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(41238);
-          paramAnonymousView = GameVideoPreviewUI.b(GameVideoPreviewUI.this).Eq(GameVideoPreviewUI.c(GameVideoPreviewUI.this));
+          paramAnonymousView = GameVideoPreviewUI.b(GameVideoPreviewUI.this).Gm(GameVideoPreviewUI.c(GameVideoPreviewUI.this));
           if (paramAnonymousView != null)
           {
             Bundle localBundle = GameVideoPreviewUI.b(GameVideoPreviewUI.this, GameVideoPreviewUI.c(GameVideoPreviewUI.this));
-            if (i.eK(paramAnonymousView.videoPath))
+            if (i.eA(paramAnonymousView.videoPath))
             {
               ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(GameVideoPreviewUI.d(GameVideoPreviewUI.this), GameVideoPreviewUI.e(GameVideoPreviewUI.this), paramAnonymousView.appId, paramAnonymousView.videoPath, null, null, 19722, localBundle);
               AppMethodBeat.o(41238);
               return;
             }
-            ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(GameVideoPreviewUI.d(GameVideoPreviewUI.this), GameVideoPreviewUI.e(GameVideoPreviewUI.this), paramAnonymousView.appId, null, paramAnonymousView.videoUrl, paramAnonymousView.rNM, 19722, localBundle);
+            ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(GameVideoPreviewUI.d(GameVideoPreviewUI.this), GameVideoPreviewUI.e(GameVideoPreviewUI.this), paramAnonymousView.appId, null, paramAnonymousView.videoUrl, paramAnonymousView.sVC, 19722, localBundle);
           }
           AppMethodBeat.o(41238);
         }
       });
-      this.rTW.setOnClickListener(new View.OnClickListener()
+      this.tbO.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -322,12 +322,12 @@ public class GameVideoPreviewUI
           AppMethodBeat.o(41240);
         }
       });
-      this.rTX.setOnClickListener(new View.OnClickListener()
+      this.tbP.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(41241);
-          paramAnonymousView = GameVideoPreviewUI.b(GameVideoPreviewUI.this).Eq(GameVideoPreviewUI.c(GameVideoPreviewUI.this));
+          paramAnonymousView = GameVideoPreviewUI.b(GameVideoPreviewUI.this).Gm(GameVideoPreviewUI.c(GameVideoPreviewUI.this));
           if (paramAnonymousView != null) {
             GameVideoPreviewUI.b(GameVideoPreviewUI.this, paramAnonymousView);
           }
@@ -343,20 +343,20 @@ public class GameVideoPreviewUI
           AppMethodBeat.o(41242);
         }
       });
-      if ((p.a)getIntent().getSerializableExtra("game_video_preview_source") == p.a.rTE)
+      if ((p.a)getIntent().getSerializableExtra("game_video_preview_source") == p.a.tbw)
       {
-        this.dep = 7;
-        this.rTX.setVisibility(8);
-        this.rTY.setVisibility(0);
+        this.dbL = 7;
+        this.tbP.setVisibility(8);
+        this.tbQ.setVisibility(0);
       }
       for (;;)
       {
-        com.tencent.mm.game.report.b.a.a(this, 8768, 0, 1, com.tencent.mm.game.report.b.a.a(this.dep, null));
+        com.tencent.mm.game.report.b.a.a(this, 8768, 0, 1, com.tencent.mm.game.report.b.a.a(this.dbL, null));
         AppMethodBeat.o(41265);
         return;
-        this.dep = 6;
-        this.rTX.setVisibility(0);
-        this.rTY.setVisibility(8);
+        this.dbL = 6;
+        this.tbP.setVisibility(0);
+        this.tbQ.setVisibility(8);
       }
     }
     catch (IOException localIOException)
@@ -369,18 +369,18 @@ public class GameVideoPreviewUI
   {
     AppMethodBeat.i(41270);
     super.onDestroy();
-    this.fPw.b(this.frd);
-    GameVideoView localGameVideoView = Ev(this.rTZ);
+    this.fTr.b(this.fuK);
+    GameVideoView localGameVideoView = Gr(this.tbR);
     if (localGameVideoView != null) {
       localGameVideoView.onUIDestroy();
     }
-    this.rUa.cCE();
-    com.tencent.mm.plugin.game.f.c.bNl().postToWorker(new Runnable()
+    this.tbS.cPO();
+    com.tencent.mm.plugin.game.f.c.bUw().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(41245);
-        GameVideoView.cCA();
+        GameVideoView.cPL();
         AppMethodBeat.o(41245);
       }
     });
@@ -391,11 +391,11 @@ public class GameVideoPreviewUI
   {
     AppMethodBeat.i(41268);
     super.onPause();
-    GameVideoView localGameVideoView = Ev(this.rTZ);
+    GameVideoView localGameVideoView = Gr(this.tbR);
     if (localGameVideoView != null) {
       localGameVideoView.onUIPause();
     }
-    com.tencent.mm.plugin.ball.f.f.d(false, true, true);
+    com.tencent.mm.plugin.ball.f.f.e(false, true, true);
     AppMethodBeat.o(41268);
   }
   
@@ -403,11 +403,11 @@ public class GameVideoPreviewUI
   {
     AppMethodBeat.i(41267);
     super.onResume();
-    GameVideoView localGameVideoView = Ev(this.rTZ);
+    GameVideoView localGameVideoView = Gr(this.tbR);
     if (localGameVideoView != null) {
       localGameVideoView.onUIResume();
     }
-    com.tencent.mm.plugin.ball.f.f.d(true, true, true);
+    com.tencent.mm.plugin.ball.f.f.e(true, true, true);
     AppMethodBeat.o(41267);
   }
   
@@ -420,21 +420,21 @@ public class GameVideoPreviewUI
   public final class a
     extends RecyclerView.a<a>
   {
-    private ArrayList<e> rUg;
+    private ArrayList<e> tbY;
     
     public a()
     {
       AppMethodBeat.i(41255);
-      this.rUg = new ArrayList();
+      this.tbY = new ArrayList();
       AppMethodBeat.o(41255);
     }
     
-    public final e Eq(int paramInt)
+    public final e Gm(int paramInt)
     {
       AppMethodBeat.i(41257);
-      if ((paramInt < this.rUg.size()) && (paramInt >= 0))
+      if ((paramInt < this.tbY.size()) && (paramInt >= 0))
       {
-        e locale = (e)this.rUg.get(paramInt);
+        e locale = (e)this.tbY.get(paramInt);
         AppMethodBeat.o(41257);
         return locale;
       }
@@ -442,21 +442,21 @@ public class GameVideoPreviewUI
       return null;
     }
     
-    public final void cI(List paramList)
+    public final void cK(List paramList)
     {
       AppMethodBeat.i(41256);
-      if (bt.gL(paramList))
+      if (bs.gY(paramList))
       {
         AppMethodBeat.o(41256);
         return;
       }
-      this.rUg.addAll(paramList);
-      aq.n(new Runnable()
+      this.tbY.addAll(paramList);
+      ap.n(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(41246);
-          GameVideoPreviewUI.a.this.aql.notifyChanged();
+          GameVideoPreviewUI.a.this.arg.notifyChanged();
           AppMethodBeat.o(41246);
         }
       }, 1000L);
@@ -465,31 +465,31 @@ public class GameVideoPreviewUI
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(204998);
-      int i = this.rUg.size();
-      AppMethodBeat.o(204998);
+      AppMethodBeat.i(210285);
+      int i = this.tbY.size();
+      AppMethodBeat.o(210285);
       return i;
     }
     
     public final class a
-      extends RecyclerView.v
+      extends RecyclerView.w
     {
-      public ProgressBar kuP;
-      public View otP;
-      public GameVideoView rUn;
-      public ImageView rUo;
-      public ImageView rUp;
+      public ProgressBar kWd;
+      public View oXq;
+      public GameVideoView tcf;
+      public ImageView tcg;
+      public ImageView tch;
       
       public a(View paramView)
       {
         super();
         AppMethodBeat.i(41254);
-        this.otP = paramView;
-        this.rUn = ((GameVideoView)paramView.findViewById(2131306410));
-        this.rUn.setVideoFooterView(new b(GameVideoPreviewUI.d(GameVideoPreviewUI.this)));
-        this.rUo = ((ImageView)paramView.findViewById(2131305797));
-        this.rUp = ((ImageView)paramView.findViewById(2131306324));
-        this.kuP = ((ProgressBar)paramView.findViewById(2131306352));
+        this.oXq = paramView;
+        this.tcf = ((GameVideoView)paramView.findViewById(2131306410));
+        this.tcf.setVideoFooterView(new b(GameVideoPreviewUI.d(GameVideoPreviewUI.this)));
+        this.tcg = ((ImageView)paramView.findViewById(2131305797));
+        this.tch = ((ImageView)paramView.findViewById(2131306324));
+        this.kWd = ((ProgressBar)paramView.findViewById(2131306352));
         AppMethodBeat.o(41254);
       }
     }
@@ -497,7 +497,7 @@ public class GameVideoPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.preview.GameVideoPreviewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,20 +8,20 @@ import com.tencent.mm.vending.f.a;
 
 public final class c
 {
-  private Looper HPD;
-  private Handler HPE;
-  byte[] HPF;
-  a HPG;
+  private Looper JpY;
+  private Handler JpZ;
+  byte[] Jqa;
+  a Jqb;
   private Handler mVendingHandler;
   private Looper mVendingLooper;
   
   public c(Looper paramLooper1, Looper paramLooper2)
   {
     AppMethodBeat.i(74945);
-    this.HPF = new byte[0];
-    this.HPD = paramLooper1;
+    this.Jqa = new byte[0];
+    this.JpY = paramLooper1;
     this.mVendingLooper = paramLooper2;
-    this.HPE = new Handler(this.HPD)
+    this.JpZ = new Handler(this.JpY)
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -35,12 +35,12 @@ public final class c
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(74950);
-        synchronized (c.this.HPF)
+        synchronized (c.this.Jqa)
         {
-          if (c.this.HPG != null) {
-            c.this.HPG.synchronizing(paramAnonymousMessage.what, paramAnonymousMessage.obj);
+          if (c.this.Jqb != null) {
+            c.this.Jqb.synchronizing(paramAnonymousMessage.what, paramAnonymousMessage.obj);
           }
-          c.this.HPF.notify();
+          c.this.Jqa.notify();
           AppMethodBeat.o(74950);
           return;
         }
@@ -52,25 +52,25 @@ public final class c
   public final void r(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(74946);
-    if (Looper.myLooper() == this.HPD)
+    if (Looper.myLooper() == this.JpY)
     {
-      if (this.HPG == null)
+      if (this.Jqb == null)
       {
         a.w("Vending.VendingSync", "This call is pointless.", new Object[0]);
         AppMethodBeat.o(74946);
         return;
       }
-      this.HPG.fhe();
-      synchronized (this.HPF)
+      this.Jqb.fxg();
+      synchronized (this.Jqa)
       {
         this.mVendingHandler.sendMessageAtFrontOfQueue(this.mVendingHandler.obtainMessage(paramInt, paramObject));
       }
     }
     try
     {
-      this.HPF.wait();
+      this.Jqa.wait();
       label79:
-      this.HPG.fhf();
+      this.Jqb.fxh();
       AppMethodBeat.o(74946);
       return;
       paramObject = finally;
@@ -78,7 +78,7 @@ public final class c
       throw paramObject;
       if (Looper.myLooper() == this.mVendingLooper)
       {
-        this.HPE.sendMessageAtFrontOfQueue(this.HPE.obtainMessage(paramInt, paramObject));
+        this.JpZ.sendMessageAtFrontOfQueue(this.JpZ.obtainMessage(paramInt, paramObject));
         AppMethodBeat.o(74946);
         return;
       }
@@ -93,9 +93,9 @@ public final class c
   
   public static abstract interface a
   {
-    public abstract void fhe();
+    public abstract void fxg();
     
-    public abstract void fhf();
+    public abstract void fxh();
     
     public abstract void synchronizing(int paramInt, Object paramObject);
   }

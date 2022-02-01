@@ -12,12 +12,12 @@ import java.util.Set;
 
 public final class c
 {
-  public static final c JWQ;
+  public static final c LKj;
   
   static
   {
     AppMethodBeat.i(60571);
-    JWQ = new c();
+    LKj = new c();
     AppMethodBeat.o(60571);
   }
   
@@ -34,13 +34,13 @@ public final class c
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.JWX;
+    ArrayDeque localArrayDeque = paramg.LKq;
     if (localArrayDeque == null) {
-      k.fvU();
+      k.fOy();
     }
-    Set localSet = paramg.JWY;
+    Set localSet = paramg.LKr;
     if (localSet == null) {
-      k.fvU();
+      k.fOy();
     }
     localArrayDeque.push(parami);
     label268:
@@ -67,9 +67,9 @@ public final class c
         g.c localc;
         if (paramg.h((i)localObject))
         {
-          localc = (g.c)g.c.c.JXj;
+          localc = (g.c)g.c.c.LKC;
           label255:
-          if (!(k.g(localc, g.c.c.JXj) ^ true)) {
+          if (!(k.g(localc, g.c.c.LKC) ^ true)) {
             break label381;
           }
           if (localc == null) {
@@ -92,7 +92,7 @@ public final class c
             paramg.clear();
             AppMethodBeat.o(60570);
             return true;
-            localc = (g.c)g.c.b.JXi;
+            localc = (g.c)g.c.b.LKB;
             break label255;
             label381:
             localc = null;
@@ -124,13 +124,13 @@ public final class c
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.JWX;
+    ArrayDeque localArrayDeque = paramg.LKq;
     if (localArrayDeque == null) {
-      k.fvU();
+      k.fOy();
     }
-    Set localSet = paramg.JWY;
+    Set localSet = paramg.LKr;
     if (localSet == null) {
-      k.fvU();
+      k.fOy();
     }
     localArrayDeque.push(parami);
     label386:
@@ -156,9 +156,9 @@ public final class c
         g.c localc;
         if (paramg.h((i)localObject))
         {
-          localc = (g.c)g.c.c.JXj;
+          localc = (g.c)g.c.c.LKC;
           label250:
-          if (!(k.g(localc, g.c.c.JXj) ^ true)) {
+          if (!(k.g(localc, g.c.c.LKC) ^ true)) {
             break label366;
           }
           label263:
@@ -203,7 +203,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.c
  * JD-Core Version:    0.7.0.1
  */

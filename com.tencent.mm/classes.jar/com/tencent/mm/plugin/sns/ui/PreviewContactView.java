@@ -22,22 +22,22 @@ public class PreviewContactView
 {
   private final Context context;
   private List<String> list;
-  private TableLayout xqO;
-  private final Map<Integer, View> xqP;
+  private TableLayout yDE;
+  private final Map<Integer, View> yDF;
   @SuppressLint({"UseSparseArrays"})
-  private final Map<Integer, TableRow> xqQ;
-  private int xqR;
+  private final Map<Integer, TableRow> yDG;
+  private int yDH;
   
   public PreviewContactView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98190);
     this.list = new ArrayList();
-    this.xqP = new HashMap();
-    this.xqQ = new HashMap();
-    this.xqR = 5;
+    this.yDF = new HashMap();
+    this.yDG = new HashMap();
+    this.yDH = 5;
     this.context = paramContext;
-    this.xqO = ((TableLayout)LayoutInflater.from(this.context).inflate(2131495580, this, true).findViewById(2131298739));
+    this.yDE = ((TableLayout)LayoutInflater.from(this.context).inflate(2131495580, this, true).findViewById(2131298739));
     AppMethodBeat.o(98190);
   }
   
@@ -46,7 +46,7 @@ public class PreviewContactView
   public void setLineNum(int paramInt)
   {
     AppMethodBeat.i(98191);
-    this.xqR = paramInt;
+    this.yDH = paramInt;
     setList(this.list);
     AppMethodBeat.o(98191);
   }
@@ -60,7 +60,7 @@ public class PreviewContactView
       return;
     }
     this.list = paramList;
-    this.xqO.removeAllViews();
+    this.yDE.removeAllViews();
     if (paramList.size() == 0)
     {
       AppMethodBeat.o(98192);
@@ -72,26 +72,26 @@ public class PreviewContactView
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.xqQ.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.yDG.get(Integer.valueOf(j));
       if (localTableRow != null) {
         break label284;
       }
       localTableRow = new TableRow(this.context);
-      this.xqQ.put(Integer.valueOf(j), localTableRow);
+      this.yDG.put(Integer.valueOf(j), localTableRow);
     }
     label284:
     for (;;)
     {
       localTableRow.removeAllViews();
       int k = 0;
-      while ((k < this.xqR) && (i < m))
+      while ((k < this.yDH) && (i < m))
       {
-        Object localObject2 = (View)this.xqP.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.yDF.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = View.inflate(this.context, 2131495579, null);
-          this.xqP.put(Integer.valueOf(i), localObject1);
+          this.yDF.put(Integer.valueOf(i), localObject1);
         }
         localObject2 = (String)paramList.get(i);
         ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131301202);
@@ -103,7 +103,7 @@ public class PreviewContactView
         k += 1;
         i += 1;
       }
-      this.xqO.addView(localTableRow);
+      this.yDE.addView(localTableRow);
       j += 1;
       break;
       AppMethodBeat.o(98192);

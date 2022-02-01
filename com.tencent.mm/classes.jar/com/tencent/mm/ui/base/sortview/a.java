@@ -5,7 +5,7 @@ import android.view.View;
 
 public abstract class a
 {
-  protected boolean Ggl;
+  protected boolean HGb;
   protected Object data;
   public int type;
   
@@ -17,13 +17,13 @@ public abstract class a
   
   public abstract void a(Context paramContext, a parama, Object... paramVarArgs);
   
-  public abstract b bCt();
+  public abstract b bJw();
   
-  public abstract a bCu();
+  public abstract a bJx();
   
-  public final boolean eTI()
+  public final boolean fjv()
   {
-    return this.Ggl;
+    return this.HGb;
   }
   
   public final Object getData()
@@ -46,7 +46,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.a
  * JD-Core Version:    0.7.0.1
  */

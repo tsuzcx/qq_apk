@@ -14,7 +14,7 @@ public final class j
     AppMethodBeat.i(66298);
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString);
-    localHashMap.put("device_id", com.tencent.mm.compatible.deviceinfo.q.Xa());
+    localHashMap.put("device_id", com.tencent.mm.compatible.deviceinfo.q.XX());
     setRequestData(localHashMap);
     AppMethodBeat.o(66298);
   }

@@ -12,23 +12,23 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.ab;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.List;
 
 final class a
   extends ArrayAdapter<a.b>
   implements g
 {
+  private b mGD;
+  h mGE;
+  private boolean mGF;
   private final LayoutInflater mInflater;
-  private b meE;
-  h meF;
-  private boolean meG;
   
   a(Context paramContext, List<a.b> paramList)
   {
     super(paramContext, 2131493005, paramList);
     AppMethodBeat.i(136615);
-    this.meG = false;
+    this.mGF = false;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(136615);
   }
@@ -36,14 +36,14 @@ final class a
   public final void a(b paramb)
   {
     AppMethodBeat.i(136617);
-    this.meE = paramb;
-    this.meE.setOnDismissListener(new PopupWindow.OnDismissListener()
+    this.mGD = paramb;
+    this.mGD.setOnDismissListener(new PopupWindow.OnDismissListener()
     {
       public final void onDismiss()
       {
         AppMethodBeat.i(136612);
         if ((a.a(a.this) != null) && (!a.b(a.this))) {
-          a.a(a.this).a("", h.a.mfq);
+          a.a(a.this).a("", h.a.mHp);
         }
         AppMethodBeat.o(136612);
       }
@@ -51,11 +51,11 @@ final class a
     AppMethodBeat.o(136617);
   }
   
-  public final void btS()
+  public final void bAR()
   {
     AppMethodBeat.i(136618);
-    this.meE.setOnDismissListener(null);
-    this.meE = null;
+    this.mGD.setOnDismissListener(null);
+    this.mGD = null;
     AppMethodBeat.o(136618);
   }
   
@@ -84,16 +84,16 @@ final class a
     for (;;)
     {
       paramViewGroup = (a.b)getItem(paramInt);
-      paramView.meL = paramViewGroup;
-      paramView.meI.setText(paramViewGroup.title);
-      paramView.meJ.setText(paramViewGroup.content);
-      TextView localTextView = paramView.meJ;
+      paramView.mGK = paramViewGroup;
+      paramView.mGH.setText(paramViewGroup.title);
+      paramView.mGI.setText(paramViewGroup.content);
+      TextView localTextView = paramView.mGI;
       int i;
-      if (bt.isNullOrNil(paramViewGroup.content))
+      if (bs.isNullOrNil(paramViewGroup.content))
       {
         i = 8;
         localTextView.setVisibility(i);
-        paramView = paramView.icB;
+        paramView = paramView.iCJ;
         if (paramInt != getCount() - 1) {
           break label159;
         }
@@ -120,48 +120,48 @@ final class a
   final class a
     implements View.OnClickListener
   {
-    View arI;
-    View icB;
-    TextView meI;
-    TextView meJ;
-    View meK;
-    a.b meL;
+    View asD;
+    View iCJ;
+    TextView mGH;
+    TextView mGI;
+    View mGJ;
+    a.b mGK;
     
     a(View paramView)
     {
       AppMethodBeat.i(136613);
-      this.arI = paramView;
-      this.meI = ((TextView)paramView.findViewById(2131305902));
-      this.meJ = ((TextView)paramView.findViewById(2131298739));
-      this.meK = paramView.findViewById(2131298360);
-      this.icB = paramView.findViewById(2131299154);
+      this.asD = paramView;
+      this.mGH = ((TextView)paramView.findViewById(2131305902));
+      this.mGI = ((TextView)paramView.findViewById(2131298739));
+      this.mGJ = paramView.findViewById(2131298360);
+      this.iCJ = paramView.findViewById(2131299154);
       paramView.setBackgroundResource(2131233634);
       paramView.setOnClickListener(this);
-      this.meK.setOnClickListener(this);
+      this.mGJ.setOnClickListener(this);
       AppMethodBeat.o(136613);
     }
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(136614);
-      if (this.meL != null) {
+      if (this.mGK != null) {
         if (paramView.getId() == 2131298360)
         {
-          a.this.remove(this.meL);
+          a.this.remove(this.mGK);
           if (a.a(a.this) != null)
           {
-            a.a(a.this).a(this.meL.id, h.a.mfr);
+            a.a(a.this).a(this.mGK.id, h.a.mHq);
             AppMethodBeat.o(136614);
           }
         }
-        else if ((paramView == this.arI) && (a.a(a.this) != null))
+        else if ((paramView == this.asD) && (a.a(a.this) != null))
         {
-          if (this.meL != null) {
-            a.a(a.this).a(this.meL.id, h.a.mfs);
+          if (this.mGK != null) {
+            a.a(a.this).a(this.mGK.id, h.a.mHr);
           }
           a.c(a.this);
           if (a.d(a.this) != null) {
-            a.d(a.this).meM.getView().clearFocus();
+            a.d(a.this).mGL.getView().clearFocus();
           }
         }
       }
@@ -171,7 +171,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.a
  * JD-Core Version:    0.7.0.1
  */

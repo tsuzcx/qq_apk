@@ -7,7 +7,7 @@ import java.io.File;
 
 public final class e
 {
-  public static boolean fme()
+  public static boolean fCv()
   {
     AppMethodBeat.i(138350);
     try
@@ -24,7 +24,7 @@ public final class e
           if (localFile.exists())
           {
             new StringBuilder("SuFile found : ").append(localFile.toString());
-            h.fmy();
+            h.fCO();
             AppMethodBeat.o(138350);
             return true;
           }
@@ -33,13 +33,13 @@ public final class e
       }
       if (new File("/system/bin/su").exists())
       {
-        h.fmy();
+        h.fCO();
         AppMethodBeat.o(138350);
         return true;
       }
       if (new File("/system/xbin/su").exists())
       {
-        h.fmy();
+        h.fCO();
         AppMethodBeat.o(138350);
         return true;
       }
@@ -47,7 +47,7 @@ public final class e
     catch (Throwable localThrowable)
     {
       h.w(localThrowable);
-      h.fmy();
+      h.fCO();
       AppMethodBeat.o(138350);
     }
     return false;
@@ -55,7 +55,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.d.d.a.e
  * JD-Core Version:    0.7.0.1
  */

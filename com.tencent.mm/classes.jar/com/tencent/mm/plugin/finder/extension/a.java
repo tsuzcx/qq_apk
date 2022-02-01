@@ -1,81 +1,82 @@
 package com.tencent.mm.plugin.finder.extension;
 
-import android.os.Message;
 import android.os.SystemClock;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.finder.api.d;
 import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.cgi.at;
 import com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ahv;
-import com.tencent.mm.protocal.protobuf.all;
-import com.tencent.mm.protocal.protobuf.alm;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.ad;
+import com.tencent.mm.protocal.protobuf.aiy;
+import com.tencent.mm.protocal.protobuf.aog;
+import com.tencent.mm.protocal.protobuf.aoh;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ao.a;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.b.k;
 import d.l;
 import d.o;
 import d.v;
 import d.y;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MSG_SYNC_NEXT", "", "SYNC_FAIL_MAX_COUNT", "curSelector", "syncHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "syncTask", "Ljava/lang/Runnable;", "sync_fail_count", "waitLinkedQueue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lkotlin/Pair;", "addSyncHandler", "", "cmdId", "handler", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "checkLoop", "doNextSync", "doSync", "selector", "scene", "enterToSync", "mergeSyncKey", "", "reqKey", "", "respKey", "onSceneEnd", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "register", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "removeSyncHandler", "selector2String", "transformToServerScene", "localScene", "unregister", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "MSG_SYNC_NEXT", "", "SYNC_FAIL_MAX_COUNT", "curSelector", "syncHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "syncTask", "Ljava/lang/Runnable;", "sync_fail_count", "waitLinkedQueue", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lkotlin/Pair;", "addSyncHandler", "", "cmdId", "handler", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "checkLoop", "doNextSync", "doSync", "selector", "scene", "enterToSync", "mergeSyncKey", "", "reqKey", "", "respKey", "onSceneEnd", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "register", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "removeSyncHandler", "selector2String", "transformToServerScene", "localScene", "unregister", "Companion", "plugin-finder_release"})
 public final class a
-  implements com.tencent.mm.al.g, d
+  implements com.tencent.mm.ak.g, d
 {
   private static final String TAG = "Finder.SyncExtension";
-  private static final SparseArray<HashSet<com.tencent.mm.plugin.finder.api.e>> qsV;
-  private static final b qsW;
-  private static HashSet<Integer> qsX;
-  public static final a qsY;
-  private int KMp;
-  private final int KMq;
-  private final ConcurrentLinkedQueue<o<Integer, Integer>> qsQ;
-  private int qsR;
-  private final int qsS;
-  private final ap qsT;
-  private final Runnable qsU;
+  private static final SparseArray<HashSet<com.tencent.mm.plugin.finder.api.e>> rea;
+  private static final b reb;
+  private static HashSet<Integer> rec;
+  public static final a.a red;
+  private final ConcurrentLinkedQueue<o<Integer, Integer>> rdT;
+  private int rdU;
+  private int rdV;
+  private final int rdW;
+  private final int rdX;
+  private final ao rdY;
+  private final Runnable rdZ;
   
   static
   {
     AppMethodBeat.i(165595);
-    qsY = new a((byte)0);
+    red = new a.a((byte)0);
     TAG = "Finder.SyncExtension";
-    qsV = new SparseArray();
-    qsW = new b();
-    qsX = new HashSet();
+    rea = new SparseArray();
+    reb = new b();
+    rec = new HashSet();
     AppMethodBeat.o(165595);
   }
   
   public a()
   {
     AppMethodBeat.i(165594);
-    this.qsQ = new ConcurrentLinkedQueue();
-    this.qsS = 3;
-    this.KMq = 666;
-    this.qsT = new ap("finder_sync_thread", (ap.a)new b(this));
-    this.qsU = ((Runnable)new c(this));
+    this.rdT = new ConcurrentLinkedQueue();
+    this.rdW = 3;
+    this.rdX = 666;
+    this.rdY = new ao("finder_sync_thread", (ao.a)new a.b(this));
+    this.rdZ = ((Runnable)new a.c(this));
     AppMethodBeat.o(165594);
   }
   
-  private static String Cw(int paramInt)
+  private static String Du(int paramInt)
   {
     AppMethodBeat.i(165587);
     Object localObject = new StringBuffer();
-    o[] arrayOfo = d.a.ckr();
+    o[] arrayOfo = d.a.crY();
     int j = arrayOfo.length;
     int i = 0;
     while (i < j)
@@ -92,47 +93,47 @@ public final class a
     return localObject;
   }
   
-  private final void clh()
+  private final void ctu()
+  {
+    AppMethodBeat.i(201432);
+    this.rdY.sendEmptyMessage(this.rdX);
+    AppMethodBeat.o(201432);
+  }
+  
+  private final void ctv()
   {
     AppMethodBeat.i(165591);
-    if (this.qsR >= this.qsS) {
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "checkLoop finderAliveUI " + qsX.size() + " sync_fail_count " + this.qsR + " so ignore checkloop");
+    if (this.rdV >= this.rdW) {
+      ac.i(TAG, "checkLoop finderAliveUI " + rec.size() + " sync_fail_count " + this.rdV + " so ignore checkloop");
     }
-    if (qsX.size() > 0)
+    if (rec.size() > 0)
     {
-      this.qsT.removeCallbacks(this.qsU);
-      ap localap = this.qsT;
-      Runnable localRunnable = this.qsU;
-      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.qJA;
-      localap.postDelayed(localRunnable, com.tencent.mm.plugin.finder.storage.b.coU());
+      this.rdY.removeCallbacks(this.rdZ);
+      ao localao = this.rdY;
+      Runnable localRunnable = this.rdZ;
+      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+      localao.postDelayed(localRunnable, com.tencent.mm.plugin.finder.storage.b.cyr());
     }
     AppMethodBeat.o(165591);
   }
   
-  private final void cli()
+  private final void ctw()
   {
     AppMethodBeat.i(178141);
-    fu(6653, 7);
+    fx(14845, 7);
     AppMethodBeat.o(178141);
-  }
-  
-  private final void fSE()
-  {
-    AppMethodBeat.i(197551);
-    this.qsT.sendEmptyMessage(this.KMq);
-    AppMethodBeat.o(197551);
   }
   
   public final void a(int paramInt, com.tencent.mm.plugin.finder.api.e parame)
   {
     AppMethodBeat.i(165589);
     k.h(parame, "handler");
-    if ((HashSet)qsV.get(paramInt) == null)
+    if ((HashSet)rea.get(paramInt) == null)
     {
-      qsV.append(paramInt, new HashSet());
-      y localy = y.JfV;
+      rea.append(paramInt, new HashSet());
+      y localy = y.KTp;
     }
-    ((HashSet)qsV.get(paramInt)).add(parame);
+    ((HashSet)rea.get(paramInt)).add(parame);
     AppMethodBeat.o(165589);
   }
   
@@ -140,18 +141,18 @@ public final class a
   {
     AppMethodBeat.i(165592);
     k.h(paramMMFinderUI, "activity");
-    if (!qsX.contains(Integer.valueOf(paramMMFinderUI.hashCode())))
+    if (!rec.contains(Integer.valueOf(paramMMFinderUI.hashCode())))
     {
-      qsX.add(Integer.valueOf(paramMMFinderUI.hashCode()));
+      rec.add(Integer.valueOf(paramMMFinderUI.hashCode()));
       String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder("Start msg Looper ");
-      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.qJA;
-      com.tencent.mm.sdk.platformtools.ad.i(str, com.tencent.mm.plugin.finder.storage.b.coU() + " size: " + qsX.size() + ' ' + this.qsR);
-      this.qsR = 0;
+      com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+      ac.i(str, com.tencent.mm.plugin.finder.storage.b.cyr() + " size: " + rec.size() + ' ' + this.rdV);
+      this.rdV = 0;
       if ((paramMMFinderUI instanceof FinderTimelineUI)) {
-        cli();
+        ctw();
       }
-      clh();
+      ctv();
     }
     AppMethodBeat.o(165592);
   }
@@ -160,7 +161,7 @@ public final class a
   {
     AppMethodBeat.i(165590);
     k.h(parame, "handler");
-    HashSet localHashSet = (HashSet)qsV.get(paramInt);
+    HashSet localHashSet = (HashSet)rea.get(paramInt);
     if (localHashSet != null)
     {
       localHashSet.remove(parame);
@@ -174,23 +175,23 @@ public final class a
   {
     AppMethodBeat.i(165593);
     k.h(paramMMFinderUI, "activity");
-    qsX.remove(Integer.valueOf(paramMMFinderUI.hashCode()));
+    rec.remove(Integer.valueOf(paramMMFinderUI.hashCode()));
     paramMMFinderUI = TAG;
     StringBuilder localStringBuilder = new StringBuilder("unregister Looper ");
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.qJA;
-    com.tencent.mm.sdk.platformtools.ad.i(paramMMFinderUI, com.tencent.mm.plugin.finder.storage.b.coU() + " size: " + qsX.size() + ' ' + this.qsR);
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
+    ac.i(paramMMFinderUI, com.tencent.mm.plugin.finder.storage.b.cyr() + " size: " + rec.size() + ' ' + this.rdV);
     AppMethodBeat.o(165593);
   }
   
-  public final void fu(int paramInt1, int paramInt2)
+  public final void fx(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(165588);
-    String str = u.aqO();
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "sync selector %d myFinderUser %s %s", new Object[] { Integer.valueOf(paramInt1), str, Cw(paramInt1) });
-    h.vKh.f(19122, new Object[] { Integer.valueOf(paramInt2), bt.eGN() });
-    com.tencent.mm.plugin.report.e.vIY.idkeyStat(1292L, 1L, 1L, true);
-    this.qsQ.add(new o(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)));
-    fSE();
+    String str = u.axE();
+    ac.i(TAG, "sync selector %d myFinderUser %s %s", new Object[] { Integer.valueOf(paramInt1), str, Du(paramInt1) });
+    h.wUl.f(19122, new Object[] { Integer.valueOf(paramInt2), bs.eWi() });
+    com.tencent.mm.plugin.report.e.wTc.idkeyStat(1292L, 1L, 1L, true);
+    this.rdT.add(new o(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)));
+    ctu();
     AppMethodBeat.o(165588);
   }
   
@@ -204,44 +205,44 @@ public final class a
       AppMethodBeat.o(165586);
       throw paramString;
     }
-    ??? = ((com.tencent.mm.plugin.finder.cgi.ab)paramn).rr.auL();
+    ??? = ((at)paramn).rr.aBC();
     if (??? == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncRequest");
       AppMethodBeat.o(165586);
       throw paramString;
     }
-    int i = ((all)???).hkT;
-    com.tencent.mm.sdk.platformtools.ad.i(TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString + ", cmdList=" + ((com.tencent.mm.plugin.finder.cgi.ab)paramn).ckX().size() + ", (curSelector,selector) (" + this.KMp + ',' + i + "), continueFlag " + ((com.tencent.mm.plugin.finder.cgi.ab)paramn).ckO());
-    this.KMp = 0;
-    this.qsQ.poll();
+    int i = ((aog)???).hLw;
+    ac.i(TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString + ", cmdList=" + ((at)paramn).csQ().size() + ", (curSelector,selector) (" + this.rdU + ',' + i + "), continueFlag " + ((at)paramn).csz());
+    this.rdU = 0;
+    this.rdT.poll();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.qsR = 0;
-      paramInt1 = ((com.tencent.mm.plugin.finder.cgi.ab)paramn).getInterval();
-      Object localObject2 = ((com.tencent.mm.plugin.finder.cgi.ab)paramn).ckX();
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "onSceneEnd " + paramInt1 + " continueFlag " + ((com.tencent.mm.plugin.finder.cgi.ab)paramn).ckO() + " cmdList " + ((List)localObject2).size());
+      this.rdV = 0;
+      paramInt1 = ((at)paramn).getInterval();
+      Object localObject2 = ((at)paramn).csQ();
+      ac.i(TAG, "onSceneEnd " + paramInt1 + " continueFlag " + ((at)paramn).csz() + " cmdList " + ((List)localObject2).size());
       if (paramInt1 > 0)
       {
-        paramString = com.tencent.mm.plugin.finder.storage.b.qJA;
-        com.tencent.mm.plugin.finder.storage.b.CO(((com.tencent.mm.plugin.finder.cgi.ab)paramn).getInterval() * 1000);
+        paramString = com.tencent.mm.plugin.finder.storage.b.rCU;
+        com.tencent.mm.plugin.finder.storage.b.DZ(((at)paramn).getInterval() * 1000);
       }
-      paramString = ((com.tencent.mm.plugin.finder.cgi.ab)paramn).rr.auL();
+      paramString = ((at)paramn).rr.aBC();
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncRequest");
         AppMethodBeat.o(165586);
         throw paramString;
       }
-      Object localObject3 = z.a(((all)paramString).DmH);
-      paramString = ((com.tencent.mm.plugin.finder.cgi.ab)paramn).rr.auM();
+      Object localObject3 = z.a(((aog)paramString).EHs);
+      paramString = ((at)paramn).rr.aBD();
       if (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSyncResponse");
         AppMethodBeat.o(165586);
         throw paramString;
       }
-      ??? = z.a(((alm)paramString).DmH);
+      ??? = z.a(((aoh)paramString).EHs);
       i = 0;
       paramInt2 = i;
       if (??? != null)
@@ -259,8 +260,8 @@ public final class a
         if (paramInt1 == 0) {
           break label737;
         }
-        paramString = com.tencent.mm.protocal.ad.k((byte[])localObject3, (byte[])???);
-        com.tencent.mm.sdk.platformtools.ad.i(TAG, "processFinderSyncKey, req " + bt.cy((byte[])localObject3) + " resp " + bt.cy((byte[])???) + " merge " + bt.cy(paramString));
+        paramString = ad.k((byte[])localObject3, (byte[])???);
+        ac.i(TAG, "processFinderSyncKey, req " + bs.cx((byte[])localObject3) + " resp " + bs.cx((byte[])???) + " merge " + bs.cx(paramString));
         if (paramString != null)
         {
           if (paramString.length != 0) {
@@ -274,20 +275,20 @@ public final class a
         {
           paramString = (String)???;
         }
-        paramString = z.a(z.am(paramString));
+        paramString = z.a(z.al(paramString));
         if (Arrays.equals((byte[])localObject3, paramString)) {
           break label728;
         }
-        ??? = com.tencent.mm.kernel.g.afB();
+        ??? = com.tencent.mm.kernel.g.agR();
         k.g(???, "MMKernel.storage()");
-        ((com.tencent.mm.kernel.e)???).afk().set(ae.a.Fwq, bt.cy(paramString));
+        ((com.tencent.mm.kernel.e)???).agA().set(ah.a.GUs, bs.cx(paramString));
         paramInt1 = 1;
         label569:
         paramInt2 = i;
         if (paramInt1 != 0)
         {
           paramInt2 = i;
-          if (((com.tencent.mm.plugin.finder.cgi.ab)paramn).ckO() != 0) {
+          if (((at)paramn).csz() != 0) {
             paramInt2 = 1;
           }
         }
@@ -298,9 +299,9 @@ public final class a
         if (!paramString.hasNext()) {
           break label753;
         }
-        localObject2 = (ahv)paramString.next();
-        qsW.a((ahv)localObject2);
-        ??? = (HashSet)qsV.get(((ahv)localObject2).cmdId);
+        localObject2 = (aiy)paramString.next();
+        reb.a((aiy)localObject2);
+        ??? = (HashSet)rea.get(((aiy)localObject2).cmdId);
         if (??? != null)
         {
           synchronized ((Iterable)???)
@@ -309,7 +310,7 @@ public final class a
             if (!((Iterator)localObject3).hasNext()) {
               break label742;
             }
-            ((com.tencent.mm.plugin.finder.api.e)((Iterator)localObject3).next()).a((ahv)localObject2);
+            ((com.tencent.mm.plugin.finder.api.e)((Iterator)localObject3).next()).a((aiy)localObject2);
           }
           label713:
           paramInt1 = 0;
@@ -321,92 +322,32 @@ public final class a
           paramInt1 = 0;
           break label515;
           label728:
-          com.tencent.mm.sdk.platformtools.ad.i(TAG, "processFinderSyncKey, Sync Key Not change, not save");
+          ac.i(TAG, "processFinderSyncKey, Sync Key Not change, not save");
           label737:
           paramInt1 = 0;
           break label569;
           label742:
-          localObject2 = y.JfV;
+          localObject2 = y.KTp;
         }
       }
       label753:
       if (paramInt2 != 0) {
-        this.qsQ.add(new o(Integer.valueOf(((com.tencent.mm.plugin.finder.cgi.ab)paramn).ckO()), Integer.valueOf(4)));
+        this.rdT.add(new o(Integer.valueOf(((at)paramn).csz()), Integer.valueOf(4)));
       }
     }
     for (;;)
     {
-      fSE();
-      com.tencent.mm.sdk.platformtools.ad.i(TAG, "[onSceneEnd] cost=" + (SystemClock.uptimeMillis() - l) + "ms");
+      ctu();
+      ac.i(TAG, "[onSceneEnd] cost=" + (SystemClock.uptimeMillis() - l) + "ms");
       AppMethodBeat.o(165586);
       return;
-      this.qsR += 1;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncExtension$Companion;", "", "()V", "TAG", "", "alives", "Ljava/util/HashSet;", "", "defaultHandlers", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "syncHandlers", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class b
-    implements ap.a
-  {
-    b(a parama) {}
-    
-    public final boolean handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(165584);
-      if ((paramMessage.what == a.c(this.qsZ)) && (a.d(this.qsZ) == 0))
-      {
-        int i;
-        if (!((Collection)a.a(this.qsZ)).isEmpty()) {
-          i = 1;
-        }
-        while (i != 0)
-        {
-          paramMessage = (o)a.a(this.qsZ).peek();
-          a.a(this.qsZ, ((Number)paramMessage.first).intValue());
-          Object localObject = com.tencent.mm.kernel.g.afB();
-          k.g(localObject, "MMKernel.storage()");
-          localObject = ((com.tencent.mm.kernel.e)localObject).afk().get(ae.a.Fwq, "");
-          if (localObject == null)
-          {
-            paramMessage = new v("null cannot be cast to non-null type kotlin.String");
-            AppMethodBeat.o(165584);
-            throw paramMessage;
-            i = 0;
-          }
-          else
-          {
-            localObject = bt.aGd((String)localObject);
-            paramMessage = new com.tencent.mm.plugin.finder.cgi.ab(u.aqO(), (byte[])localObject, a.d(this.qsZ), a.Cx(((Number)paramMessage.second).intValue()));
-            com.tencent.mm.kernel.g.aeS().b((n)paramMessage);
-          }
-        }
-      }
-      AppMethodBeat.o(165584);
-      return false;
-    }
-  }
-  
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(165585);
-      this.qsZ.fu(6653, 2);
-      a.b(this.qsZ);
-      AppMethodBeat.o(165585);
+      this.rdV += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.a
  * JD-Core Version:    0.7.0.1
  */

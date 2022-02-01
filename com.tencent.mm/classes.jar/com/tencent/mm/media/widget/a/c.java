@@ -10,45 +10,45 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
 import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/widget/camera/CameraHandler;", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "looper", "Landroid/os/Looper;", "(Landroid/os/Looper;)V", "TAG", "", "bCameraReleased", "", "getBCameraReleased$plugin_mediaeditor_release", "()Z", "setBCameraReleased$plugin_mediaeditor_release", "(Z)V", "curZoomStep", "", "getCurZoomStep$plugin_mediaeditor_release", "()I", "setCurZoomStep$plugin_mediaeditor_release", "(I)V", "displayH", "getDisplayH$plugin_mediaeditor_release", "setDisplayH$plugin_mediaeditor_release", "displayW", "getDisplayW$plugin_mediaeditor_release", "setDisplayW$plugin_mediaeditor_release", "focusMode", "getFocusMode$plugin_mediaeditor_release", "()Ljava/lang/String;", "setFocusMode$plugin_mediaeditor_release", "(Ljava/lang/String;)V", "forInitialize", "getForInitialize$plugin_mediaeditor_release", "setForInitialize$plugin_mediaeditor_release", "sAutoFocusBack", "getSAutoFocusBack$plugin_mediaeditor_release", "setSAutoFocusBack$plugin_mediaeditor_release", "sAutoFocusCallback", "Landroid/hardware/Camera$AutoFocusCallback;", "touchX", "", "getTouchX$plugin_mediaeditor_release", "()F", "setTouchX$plugin_mediaeditor_release", "(F)V", "touchY", "getTouchY$plugin_mediaeditor_release", "setTouchY$plugin_mediaeditor_release", "zoomed", "getZoomed$plugin_mediaeditor_release", "setZoomed$plugin_mediaeditor_release", "calculateTapArea", "Landroid/graphics/Rect;", "x", "y", "coefficient", "surfaceWidth", "surfaceHeight", "calculateTapArea$plugin_mediaeditor_release", "clamp", "min", "max", "clamp$plugin_mediaeditor_release", "getTargetZoomStep", "params", "Landroid/hardware/Camera$Parameters;", "Landroid/hardware/Camera;", "getTargetZoomStep$plugin_mediaeditor_release", "getTargetZoomValue", "getTargetZoomValue$plugin_mediaeditor_release", "handleMessage", "", "msg", "Landroid/os/Message;", "trigetAutoFocus", "camera", "Lcom/tencent/mm/compatible/deviceinfo/MCamera;", "trigetAutoFocus$plugin_mediaeditor_release", "triggerAutoFocus", "triggerAutoFocus$plugin_mediaeditor_release", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camera/CameraHandler;", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "looper", "Landroid/os/Looper;", "(Landroid/os/Looper;)V", "TAG", "", "bCameraReleased", "", "getBCameraReleased$plugin_mediaeditor_release", "()Z", "setBCameraReleased$plugin_mediaeditor_release", "(Z)V", "curZoomStep", "", "getCurZoomStep$plugin_mediaeditor_release", "()I", "setCurZoomStep$plugin_mediaeditor_release", "(I)V", "displayH", "getDisplayH$plugin_mediaeditor_release", "setDisplayH$plugin_mediaeditor_release", "displayW", "getDisplayW$plugin_mediaeditor_release", "setDisplayW$plugin_mediaeditor_release", "focusMode", "getFocusMode$plugin_mediaeditor_release", "()Ljava/lang/String;", "setFocusMode$plugin_mediaeditor_release", "(Ljava/lang/String;)V", "forInitialize", "getForInitialize$plugin_mediaeditor_release", "setForInitialize$plugin_mediaeditor_release", "sAutoFocusBack", "getSAutoFocusBack$plugin_mediaeditor_release", "setSAutoFocusBack$plugin_mediaeditor_release", "sAutoFocusCallback", "Landroid/hardware/Camera$AutoFocusCallback;", "touchX", "", "getTouchX$plugin_mediaeditor_release", "()F", "setTouchX$plugin_mediaeditor_release", "(F)V", "touchY", "getTouchY$plugin_mediaeditor_release", "setTouchY$plugin_mediaeditor_release", "zoomed", "getZoomed$plugin_mediaeditor_release", "setZoomed$plugin_mediaeditor_release", "calculateTapArea", "Landroid/graphics/Rect;", "x", "y", "coefficient", "surfaceWidth", "surfaceHeight", "calculateTapArea$plugin_mediaeditor_release", "clamp", "min", "max", "clamp$plugin_mediaeditor_release", "getTargetZoomStep", "params", "Landroid/hardware/Camera$Parameters;", "Landroid/hardware/Camera;", "getTargetZoomStep$plugin_mediaeditor_release", "getTargetZoomValue", "getTargetZoomValue$plugin_mediaeditor_release", "handleMessage", "", "msg", "Landroid/os/Message;", "trigetAutoFocus", "camera", "Lcom/tencent/mm/compatible/deviceinfo/MCamera;", "trigetAutoFocus$plugin_mediaeditor_release", "triggerAutoFocus", "triggerAutoFocus$plugin_mediaeditor_release", "Companion", "plugin-mediaeditor_release"})
 public final class c
-  extends ap
+  extends ao
 {
-  private static final int gxa = 4353;
-  private static final int gxb = 4354;
-  private static final int gxc = 10;
-  private static final int gxd = 20;
-  private static final int gxe = 6;
-  public static final c.a gxf;
+  private static final int gXA = 20;
+  private static final int gXB = 6;
+  public static final c.a gXC;
+  private static final int gXx = 4353;
+  private static final int gXy = 4354;
+  private static final int gXz = 10;
   private final String TAG;
-  float fPl;
-  float fPm;
-  private int gwR;
-  boolean gwS;
-  private boolean gwT;
-  boolean gwU;
-  int gwV;
-  int gwW;
-  boolean gwX;
-  String gwY;
-  private Camera.AutoFocusCallback gwZ;
+  float fTg;
+  float fTh;
+  private int gXo;
+  boolean gXp;
+  private boolean gXq;
+  boolean gXr;
+  int gXs;
+  int gXt;
+  boolean gXu;
+  String gXv;
+  private Camera.AutoFocusCallback gXw;
   
   static
   {
     AppMethodBeat.i(94016);
-    gxf = new c.a((byte)0);
-    gxa = 4353;
-    gxb = 4354;
-    gxc = 10;
-    gxd = 20;
-    gxe = 6;
+    gXC = new c.a((byte)0);
+    gXx = 4353;
+    gXy = 4354;
+    gXz = 10;
+    gXA = 20;
+    gXB = 6;
     AppMethodBeat.o(94016);
   }
   
@@ -57,9 +57,9 @@ public final class c
     super(paramLooper);
     AppMethodBeat.i(94015);
     this.TAG = "MicroMsg.CameraHandler";
-    this.gwX = true;
-    this.gwY = "auto";
-    this.gwZ = ((Camera.AutoFocusCallback)new b(this));
+    this.gXu = true;
+    this.gXv = "auto";
+    this.gXw = ((Camera.AutoFocusCallback)new b(this));
     AppMethodBeat.o(94015);
   }
   
@@ -73,7 +73,7 @@ public final class c
     paramFloat2 = paramFloat2 * 2000.0F - 1000.0F - paramFloat3 / 2.0F;
     Object localObject = new RectF();
     ((RectF)localObject).set(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat3 + paramFloat2);
-    localObject = new Rect(mI(Math.round(((RectF)localObject).left)), mI(Math.round(((RectF)localObject).top)), mI(Math.round(((RectF)localObject).right)), mI(Math.round(((RectF)localObject).bottom)));
+    localObject = new Rect(nw(Math.round(((RectF)localObject).left)), nw(Math.round(((RectF)localObject).top)), nw(Math.round(((RectF)localObject).right)), nw(Math.round(((RectF)localObject).bottom)));
     AppMethodBeat.o(94012);
     return localObject;
   }
@@ -98,7 +98,7 @@ public final class c
     {
       for (;;)
       {
-        ad.e(this.TAG, "get target zoom value error: %s", new Object[] { paramParameters.getMessage() });
+        ac.e(this.TAG, "get target zoom value error: %s", new Object[] { paramParameters.getMessage() });
         int i = 0;
       }
     }
@@ -106,7 +106,7 @@ public final class c
     return i;
   }
   
-  private static int mI(int paramInt)
+  private static int nw(int paramInt)
   {
     int i;
     if (paramInt > 1000) {
@@ -129,7 +129,7 @@ public final class c
     Object localObject1;
     Object localObject2;
     Camera.Parameters localParameters;
-    if (i == gxb)
+    if (i == gXy)
     {
       paramMessage = paramMessage.obj;
       if (paramMessage == null)
@@ -139,67 +139,67 @@ public final class c
         throw paramMessage;
       }
       paramMessage = (com.tencent.mm.compatible.deviceinfo.v)paramMessage;
-      if ((this.gwV == 0) || (this.gwW == 0) || (d.lg(14)))
+      if ((this.gXs == 0) || (this.gXt == 0) || (d.la(14)))
       {
         if (paramMessage == null)
         {
-          ad.w(this.TAG, "want to auto focus, but camera is null, do nothing");
+          ac.w(this.TAG, "want to auto focus, but camera is null, do nothing");
           AppMethodBeat.o(94014);
           return;
         }
-        if (!this.gwX)
+        if (!this.gXu)
         {
-          ad.w(this.TAG, "auto focus not back");
+          ac.w(this.TAG, "auto focus not back");
           AppMethodBeat.o(94014);
           return;
         }
-        this.gwX = false;
+        this.gXu = false;
         localObject1 = paramMessage.getParameters();
         k.g(localObject1, "camera.parameters");
-        this.gwY = ((Camera.Parameters)localObject1).getFocusMode();
+        this.gXv = ((Camera.Parameters)localObject1).getFocusMode();
         try
         {
-          ad.i(this.TAG, "triggerAutoFocus");
+          ac.i(this.TAG, "triggerAutoFocus");
           paramMessage.cancelAutoFocus();
-          paramMessage.autoFocus(this.gwZ);
+          paramMessage.autoFocus(this.gXw);
           AppMethodBeat.o(94014);
           return;
         }
         catch (Exception paramMessage)
         {
-          ad.w(this.TAG, "autofocus fail, exception %s", new Object[] { paramMessage.getMessage() });
-          this.gwX = true;
+          ac.w(this.TAG, "autofocus fail, exception %s", new Object[] { paramMessage.getMessage() });
+          this.gXu = true;
           AppMethodBeat.o(94014);
           return;
         }
       }
-      float f1 = this.fPl;
-      float f2 = this.fPm;
-      i = this.gwV;
-      j = this.gwW;
+      float f1 = this.fTg;
+      float f2 = this.fTh;
+      i = this.gXs;
+      j = this.gXt;
       if (paramMessage == null)
       {
-        ad.w(this.TAG, "want to auto focus, but camera is null, do nothing");
+        ac.w(this.TAG, "want to auto focus, but camera is null, do nothing");
         AppMethodBeat.o(94014);
         return;
       }
-      if (!this.gwX)
+      if (!this.gXu)
       {
-        ad.w(this.TAG, "auto focus not back");
+        ac.w(this.TAG, "auto focus not back");
         AppMethodBeat.o(94014);
         return;
       }
-      this.gwX = false;
+      this.gXu = false;
       try
       {
         localObject1 = paramMessage.getParameters();
         k.g(localObject1, "camera.parameters");
-        this.gwY = ((Camera.Parameters)localObject1).getFocusMode();
+        this.gXv = ((Camera.Parameters)localObject1).getFocusMode();
         paramMessage.cancelAutoFocus();
-        ad.i(this.TAG, "ashutest:: touch %f %f, display %d %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
+        ac.i(this.TAG, "ashutest:: touch %f %f, display %d %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
         localObject2 = a(f1, f2, 1.0F, i, j);
         localObject1 = a(f1, f2, 1.5F, i, j);
-        ad.i(this.TAG, "ashutest:: focus rect %s, meter rect %s", new Object[] { localObject2, localObject1 });
+        ac.i(this.TAG, "ashutest:: focus rect %s, meter rect %s", new Object[] { localObject2, localObject1 });
         localParameters = paramMessage.getParameters();
         k.g(localParameters, "parameters");
         Object localObject3 = localParameters.getSupportedFocusModes();
@@ -219,21 +219,21 @@ public final class c
           localParameters.setMeteringAreas((List)localObject2);
         }
         paramMessage.setParameters(localParameters);
-        paramMessage.autoFocus(this.gwZ);
+        paramMessage.autoFocus(this.gXw);
         AppMethodBeat.o(94014);
         return;
       }
       catch (Exception paramMessage)
       {
-        ad.w(this.TAG, "autofocus with area fail, exception %s", new Object[] { paramMessage.getMessage() });
-        this.gwX = true;
+        ac.w(this.TAG, "autofocus with area fail, exception %s", new Object[] { paramMessage.getMessage() });
+        this.gXu = true;
         AppMethodBeat.o(94014);
         return;
       }
     }
-    if (i == gxa)
+    if (i == gXx)
     {
-      if (this.gwU)
+      if (this.gXr)
       {
         AppMethodBeat.o(94014);
         return;
@@ -248,13 +248,13 @@ public final class c
       localObject1 = (com.tencent.mm.compatible.deviceinfo.v)localObject1;
       localParameters = ((com.tencent.mm.compatible.deviceinfo.v)localObject1).getParameters();
       localObject2 = this.TAG;
-      boolean bool = this.gwS;
-      i = this.gwR;
+      boolean bool = this.gXp;
+      i = this.gXo;
       k.g(localParameters, "params");
-      ad.i((String)localObject2, "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(localParameters.getZoom()) });
+      ac.i((String)localObject2, "zoomed %s curZoomStep %s params.getZoom() %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(localParameters.getZoom()) });
       i = localParameters.getZoom();
-      i = this.gwR + i;
-      if (!this.gwS) {
+      i = this.gXo + i;
+      if (!this.gXp) {
         break label851;
       }
       int k = c(localParameters);
@@ -272,15 +272,15 @@ public final class c
         label780:
         if (j != 0)
         {
-          this.gwV = 0;
-          this.gwW = this.gwV;
+          this.gXs = 0;
+          this.gXt = this.gXs;
         }
         AppMethodBeat.o(94014);
         return;
         label804:
-        paramMessage = obtainMessage(gxa, paramMessage.obj);
-        if (this.gwT) {}
-        for (j = gxc;; j = gxd)
+        paramMessage = obtainMessage(gXx, paramMessage.obj);
+        if (this.gXq) {}
+        for (j = gXz;; j = gXA)
         {
           sendMessageDelayed(paramMessage, j);
           j = 0;
@@ -292,9 +292,9 @@ public final class c
           i = 0;
           continue;
         }
-        paramMessage = obtainMessage(gxa, paramMessage.obj);
-        if (this.gwT) {}
-        for (j = gxc;; j = gxd)
+        paramMessage = obtainMessage(gXx, paramMessage.obj);
+        if (this.gXq) {}
+        for (j = gXz;; j = gXA)
         {
           sendMessageDelayed(paramMessage, j);
           j = 0;
@@ -308,7 +308,7 @@ public final class c
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "success", "", "camera", "Landroid/hardware/Camera;", "kotlin.jvm.PlatformType", "onAutoFocus"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "success", "", "camera", "Landroid/hardware/Camera;", "kotlin.jvm.PlatformType", "onAutoFocus"})
   static final class b
     implements Camera.AutoFocusCallback
   {
@@ -317,17 +317,17 @@ public final class c
     public final void onAutoFocus(boolean paramBoolean, Camera paramCamera)
     {
       AppMethodBeat.i(94011);
-      ad.v(c.a(this.gxg), "auto focus callback success ".concat(String.valueOf(paramBoolean)));
-      this.gxg.gwX = true;
-      if (!this.gxg.gwU) {
+      ac.v(c.a(this.gXD), "auto focus callback success ".concat(String.valueOf(paramBoolean)));
+      this.gXD.gXu = true;
+      if (!this.gXD.gXr) {
         try
         {
           k.g(paramCamera, "camera");
           Camera.Parameters localParameters = paramCamera.getParameters();
           k.g(localParameters, "camera.parameters");
-          if ((localParameters.getFocusMode() != null) && (this.gxg.gwY != null))
+          if ((localParameters.getFocusMode() != null) && (this.gXD.gXv != null))
           {
-            localParameters.setFocusMode(this.gxg.gwY);
+            localParameters.setFocusMode(this.gXD.gXv);
             paramCamera.setParameters(localParameters);
             AppMethodBeat.o(94011);
             return;
@@ -335,7 +335,7 @@ public final class c
         }
         catch (Exception paramCamera)
         {
-          ad.e(c.a(this.gxg), "auto focus return while camera is release");
+          ac.e(c.a(this.gXD), "auto focus return while camera is release");
         }
       }
       AppMethodBeat.o(94011);
@@ -344,7 +344,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.widget.a.c
  * JD-Core Version:    0.7.0.1
  */

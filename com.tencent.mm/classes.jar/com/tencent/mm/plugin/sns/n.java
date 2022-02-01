@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uh;
+import com.tencent.mm.g.a.ur;
 import com.tencent.mm.sdk.b.c;
 
 public final class n
-  extends c<uh>
+  extends c<ur>
 {
   public n()
   {
     AppMethodBeat.i(160640);
-    this.__eventId = uh.class.getName().hashCode();
+    this.__eventId = ur.class.getName().hashCode();
     AppMethodBeat.o(160640);
   }
 }

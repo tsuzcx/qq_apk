@@ -16,7 +16,7 @@
     <SummaryBelowPreference android:key="settings_voip_sound_and_shake" android:summary="@string/fco" android:title="@string/fcp" />
     <SummaryBelowPreference android:key="settings_special_scene_notification_sound_and_shake" android:summary="@string/faq" android:title="@string/far" />
     <PreferenceSmallCategory />
-    <PreferenceTitleCategory android:title="@string/hqq" />
+    <PreferenceTitleCategory android:title="@string/hrt" />
     <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_sns_notify" android:key="settings_sns_notify" android:summary="@string/faf" android:title="@string/fae" />
-    <CheckBoxPreference android:key="settings_notification_finder" android:summary="@string/hqo" android:title="@string/hqp" />
+    <CheckBoxPreference android:key="settings_notification_finder" android:summary="@string/hrq" android:title="@string/hrr" />
 </PreferenceScreen>

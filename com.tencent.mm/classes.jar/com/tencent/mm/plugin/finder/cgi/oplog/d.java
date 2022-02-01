@@ -1,188 +1,139 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
-import com.tencent.mm.al.n;
-import com.tencent.mm.al.q;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.model.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.finder.cgi.am;
+import com.tencent.mm.plugin.finder.cgi.am.a;
+import com.tencent.mm.plugin.finder.cgi.av;
+import com.tencent.mm.plugin.finder.cgi.av.a;
 import com.tencent.mm.plugin.i.a.i;
-import com.tencent.mm.protocal.protobuf.ahv;
-import com.tencent.mm.protocal.protobuf.ahw;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.a.j;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.aiz;
+import com.tencent.mm.protocal.protobuf.amj;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
-import d.y;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import d.v;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "T", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "waitQueue", "Ljava/util/LinkedHashMap;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "getWaitQueue", "()Ljava/util/LinkedHashMap;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "(Ljava/lang/Object;)Lcom/tencent/mm/protobuf/ByteString;", "getCmdId", "", "handleUpdateResult", "", "retCode", "(Ljava/lang/Object;I)V", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "tryDoNext", "callback", "(Ljava/lang/Object;Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;)V", "plugin-finder_release"})
-public abstract class d<T>
-  implements com.tencent.mm.al.g
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyUserService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyUserAvatar", "avatarPath", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyUserDistrict", "country", "province", "city", "unshowSwitch", "modifyUserNickname", "nickname", "modifyUserSex", "sex", "modifyUserSignature", "signature", "plugin-finder_release"})
+public final class d
+  extends e<amj>
+  implements com.tencent.mm.ak.g, i
 {
-  private final LinkedHashMap<T, WeakReference<i<T>>> qpW = new LinkedHashMap();
+  final String TAG = "Finder.FinderModifyUserService";
   
-  public final void a(T paramT, i<T> parami)
+  public final void a(int paramInt, com.tencent.mm.plugin.i.a.k<amj> paramk)
   {
-    synchronized (this.qpW)
-    {
-      ahv localahv = new ahv();
-      localahv.cmdId = getCmdId();
-      localahv.Dkt = cV(paramT);
-      this.qpW.put(paramT, new WeakReference(parami));
-      paramT = com.tencent.mm.kernel.g.aeS();
-      parami = u.aqO();
-      if (parami == null) {
-        k.fvU();
-      }
-      paramT.b((n)new com.tencent.mm.plugin.finder.cgi.v(parami, j.listOf(localahv)));
-      return;
-    }
+    AppMethodBeat.i(201251);
+    amj localamj = new amj();
+    localamj.exL = paramInt;
+    localamj.EEe = 0;
+    a(localamj, paramk);
+    AppMethodBeat.o(201251);
   }
   
-  public abstract b cV(T paramT);
-  
-  public abstract int getCmdId();
-  
-  public abstract String getTAG();
-  
-  public abstract void h(T paramT, int paramInt);
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void a(String paramString, final com.tencent.mm.plugin.i.a.k<amj> paramk)
   {
-    int k = 0;
-    ad.i(getTAG(), "errType " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString);
-    if (paramn == null) {
-      throw new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderOplog");
-    }
-    Object localObject1 = ((com.tencent.mm.plugin.finder.cgi.v)paramn).ckQ();
-    paramString = ((com.tencent.mm.plugin.finder.cgi.v)paramn).ckP();
-    paramn = paramString.iterator();
-    int i = 0;
-    int j;
-    if (paramn.hasNext()) {
-      if (((ahv)paramn.next()).cmdId == getCmdId())
-      {
-        j = 1;
-        label122:
-        if (j == 0) {
-          break label190;
-        }
-        label127:
-        if (i >= 0) {
-          break label210;
-        }
-        paramn = getTAG();
-        localObject1 = new StringBuilder("not cares cmdId: ");
-        paramString = (ahv)j.iz(paramString);
-        if (paramString == null) {
-          break label205;
-        }
-      }
-    }
-    label190:
-    label205:
-    for (paramString = Integer.valueOf(paramString.cmdId);; paramString = null)
+    AppMethodBeat.i(165310);
+    d.g.b.k.h(paramString, "avatarPath");
+    av.a locala = av.qYN;
+    paramString = new av(paramString, av.csT());
+    com.tencent.mm.kernel.g.agi().a(3759, (com.tencent.mm.ak.g)new a(this, paramk));
+    com.tencent.mm.kernel.g.agi().b((n)paramString);
+    AppMethodBeat.o(165310);
+  }
+  
+  public final void a(String paramString1, String paramString2, String paramString3, int paramInt, com.tencent.mm.plugin.i.a.k<amj> paramk)
+  {
+    AppMethodBeat.i(165313);
+    d.g.b.k.h(paramString1, "country");
+    d.g.b.k.h(paramString2, "province");
+    d.g.b.k.h(paramString3, "city");
+    amj localamj = new amj();
+    localamj.country = paramString1;
+    localamj.exV = paramString2;
+    localamj.exW = paramString3;
+    localamj.EEd = paramInt;
+    a(localamj, paramk);
+    AppMethodBeat.o(165313);
+  }
+  
+  public final void b(String paramString, com.tencent.mm.plugin.i.a.k<amj> paramk)
+  {
+    AppMethodBeat.i(165311);
+    d.g.b.k.h(paramString, "nickname");
+    amj localamj = new amj();
+    localamj.nickname = paramString;
+    a(localamj, paramk);
+    AppMethodBeat.o(165311);
+  }
+  
+  public final void c(String paramString, com.tencent.mm.plugin.i.a.k<amj> paramk)
+  {
+    AppMethodBeat.i(165314);
+    d.g.b.k.h(paramString, "signature");
+    amj localamj = new amj();
+    localamj.signature = paramString;
+    a(localamj, paramk);
+    AppMethodBeat.o(165314);
+  }
+  
+  public final int getCmdId()
+  {
+    AppMethodBeat.i(165309);
+    am.a locala = am.qYu;
+    int i = am.csI();
+    AppMethodBeat.o(165309);
+    return i;
+  }
+  
+  public final String getTAG()
+  {
+    return this.TAG;
+  }
+  
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/cgi/oplog/FinderModifyUserService$modifyUserAvatar$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  public static final class a
+    implements com.tencent.mm.ak.g
+  {
+    a(com.tencent.mm.plugin.i.a.k paramk) {}
+    
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
-      ad.i(paramn, paramString);
-      return;
-      j = 0;
-      break label122;
-      i += 1;
-      break;
-      i = -1;
-      break label127;
-    }
-    label210:
-    ad.i(getTAG(), "retList " + ((List)localObject1).size());
-    for (;;)
-    {
-      synchronized (this.qpW)
+      AppMethodBeat.i(165307);
+      ac.i(this.qZB.TAG, "upload head img errType " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString);
+      com.tencent.mm.kernel.g.agi().b(3759, (com.tencent.mm.ak.g)this);
+      paramString = new amj();
+      if (paramn == null)
       {
-        if (!((Map)this.qpW).isEmpty())
-        {
-          i = 1;
-          if (i == 0) {
-            break label625;
-          }
-          Object localObject3 = ((Map)this.qpW).entrySet().iterator();
-          paramn = (Map.Entry)((Iterator)localObject3).next();
-          paramString = paramn.getKey();
-          paramn = (i)((WeakReference)paramn.getValue()).get();
-          ((Iterator)localObject3).remove();
-          localObject3 = y.JfV;
-          if ((paramInt1 != 0) || (paramInt2 != 0)) {
-            break label572;
-          }
-          ??? = ((List)localObject1).iterator();
-          paramInt1 = 0;
-          if (!((Iterator)???).hasNext()) {
-            break label567;
-          }
-          if (((ahw)((Iterator)???).next()).cmdId != getCmdId()) {
-            break label555;
-          }
-          paramInt2 = 1;
-          if (paramInt2 == 0) {
-            break label560;
-          }
-          if ((paramInt1 != -1) && (paramString != null))
-          {
-            h(paramString, ((ahw)((List)localObject1).get(paramInt1)).retCode);
-            if (paramn != null) {
-              paramn.a(paramString, (ahw)((List)localObject1).get(paramInt1));
-            }
-          }
-          paramString = this.qpW;
-          paramInt1 = k;
-        }
-        try
-        {
-          if (!((Map)this.qpW).isEmpty()) {
-            paramInt1 = 1;
-          }
-          if (paramInt1 != 0)
-          {
-            paramn = (Map.Entry)((Map)this.qpW).entrySet().iterator().next();
-            a(paramn.getKey(), (i)((WeakReference)paramn.getValue()).get());
-          }
-          paramn = y.JfV;
-          return;
-        }
-        finally {}
-        i = 0;
+        paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderUploadHeadImg");
+        AppMethodBeat.o(165307);
+        throw paramString;
       }
-      label555:
-      paramInt2 = 0;
-      continue;
-      label560:
-      paramInt1 += 1;
-      continue;
-      label567:
-      paramInt1 = -1;
-      continue;
-      label572:
-      if ((paramString != null) && (paramn != null))
+      paramString.hlG = ((av)paramn).qYH;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        localObject1 = new ahw();
-        ((ahw)localObject1).cmdId = getCmdId();
-        ((ahw)localObject1).retCode = -1;
-        paramn.a(paramString, (ahw)localObject1);
-        continue;
-        label625:
-        paramString = null;
-        paramn = null;
+        this.qZB.a(paramString, paramk);
+        AppMethodBeat.o(165307);
+        return;
       }
+      paramn = paramk;
+      if (paramn != null)
+      {
+        aiz localaiz = new aiz();
+        am.a locala = am.qYu;
+        localaiz.cmdId = am.csI();
+        localaiz.retCode = -1;
+        paramn.a(paramString, localaiz);
+        AppMethodBeat.o(165307);
+        return;
+      }
+      AppMethodBeat.o(165307);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.d
  * JD-Core Version:    0.7.0.1
  */

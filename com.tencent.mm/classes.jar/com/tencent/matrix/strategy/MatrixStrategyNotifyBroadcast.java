@@ -7,9 +7,9 @@ import android.text.TextUtils;
 import com.tencent.matrix.d;
 import com.tencent.matrix.e;
 import com.tencent.matrix.g.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.x;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +26,11 @@ public class MatrixStrategyNotifyBroadcast
       return;
     }
     paramContext = paramIntent.getAction();
-    Object localObject1 = y.getStringExtra(paramIntent, "strategy");
-    c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { aj.getProcessName(), localObject1, paramContext });
+    Object localObject1 = x.getStringExtra(paramIntent, "strategy");
+    c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { ai.getProcessName(), localObject1, paramContext });
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      b.HL();
+      b.Hw();
       return;
     }
     if (paramContext.equals("statusNotify"))
@@ -47,13 +47,13 @@ public class MatrixStrategyNotifyBroadcast
           if (paramIntent == null) {
             bool2 = true;
           }
-          ad.w("Matrix.StrategyNotifyBroadcast", "keys=%s values=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          ac.w("Matrix.StrategyNotifyBroadcast", "keys=%s values=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
           return;
         }
       }
       if (((List)localObject1).size() != paramIntent.size())
       {
-        ad.w("Matrix.StrategyNotifyBroadcast", "keys.size(%s) != values.size(%s)", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramIntent.size()) });
+        ac.w("Matrix.StrategyNotifyBroadcast", "keys.size(%s) != values.size(%s)", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramIntent.size()) });
         return;
       }
       int i = 0;
@@ -68,7 +68,7 @@ public class MatrixStrategyNotifyBroadcast
           break;
         }
       }
-      d.ctd.cth.h(paramContext);
+      d.cql.cqp.g(paramContext);
       return;
     }
     e.j(paramIntent);

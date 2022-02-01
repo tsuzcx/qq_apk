@@ -7,9 +7,9 @@ import com.tencent.mm.plugin.game.model.r;
 public abstract interface d
   extends a
 {
-  public abstract b cBb();
+  public abstract b cOk();
   
-  public abstract r cBc();
+  public abstract r cOl();
 }
 
 

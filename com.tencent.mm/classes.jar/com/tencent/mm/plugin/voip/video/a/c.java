@@ -5,56 +5,56 @@ import com.tencent.mm.compatible.util.j;
 
 public class c
 {
-  public static boolean zxh;
+  public static boolean AQa;
   
   static
   {
     AppMethodBeat.i(115716);
-    zxh = false;
-    dXw();
+    AQa = false;
+    emR();
     AppMethodBeat.o(115716);
   }
   
-  public static void dXw()
+  public static void emR()
   {
     AppMethodBeat.i(115715);
     System.currentTimeMillis();
-    if (!zxh) {
+    if (!AQa) {
       try
       {
         c.class.getClassLoader();
-        j.pq("image_filter_common");
+        j.sC("image_filter_common");
         c.class.getClassLoader();
-        j.pq("image_filter_gpu");
+        j.sC("image_filter_gpu");
         c.class.getClassLoader();
-        j.pq("format_convert");
+        j.sC("format_convert");
         c.class.getClassLoader();
-        j.pq("YTCommon");
+        j.sC("YTCommon");
         c.class.getClassLoader();
-        j.pq("YTFaceTrackPro");
+        j.sC("YTFaceTrackPro");
         c.class.getClassLoader();
-        j.pq("algo_youtu_jni");
+        j.sC("algo_youtu_jni");
         c.class.getClassLoader();
-        j.pq("pitu_tools");
-        zxh = true;
+        j.sC("pitu_tools");
+        AQa = true;
         AppMethodBeat.o(115715);
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        zxh = false;
+        AQa = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (RuntimeException localRuntimeException)
       {
-        zxh = false;
+        AQa = false;
         AppMethodBeat.o(115715);
         return;
       }
       catch (Exception localException)
       {
-        zxh = false;
+        AQa = false;
       }
     }
     AppMethodBeat.o(115715);
@@ -62,7 +62,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.a.c
  * JD-Core Version:    0.7.0.1
  */

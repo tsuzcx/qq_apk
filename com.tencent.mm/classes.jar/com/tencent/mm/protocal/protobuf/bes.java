@@ -1,79 +1,93 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bes
-  extends com.tencent.mm.bx.a
+  extends cpx
 {
-  public String DbM;
-  public int DbN;
-  public String szn;
+  public String EUl;
+  public int Scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147769);
+    AppMethodBeat.i(32269);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.DbM != null) {
-        paramVarArgs.d(1, this.DbM);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ln(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aR(2, this.DbN);
-      if (this.szn != null) {
-        paramVarArgs.d(3, this.szn);
+      if (this.EUl != null) {
+        paramVarArgs.d(2, this.EUl);
       }
-      AppMethodBeat.o(147769);
+      paramVarArgs.aR(3, this.Scene);
+      AppMethodBeat.o(32269);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.DbM == null) {
-        break label318;
+      if (this.BaseRequest == null) {
+        break label423;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.DbM) + 0;; paramInt = 0)
+    label423:
+    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bA(2, this.DbN);
-      paramInt = i;
-      if (this.szn != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.szn);
+      int i = paramInt;
+      if (this.EUl != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.EUl);
       }
-      AppMethodBeat.o(147769);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bx(3, this.Scene);
+      AppMethodBeat.o(32269);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(147769);
+        AppMethodBeat.o(32269);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bes localbes = (bes)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(147769);
+          AppMethodBeat.o(32269);
           return -1;
         case 1: 
-          localbes.DbM = locala.KhF.readString();
-          AppMethodBeat.o(147769);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new iv();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbes.BaseRequest = ((iv)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32269);
           return 0;
         case 2: 
-          localbes.DbN = locala.KhF.xS();
-          AppMethodBeat.o(147769);
+          localbes.EUl = ((f.a.a.a.a)localObject1).LVo.readString();
+          AppMethodBeat.o(32269);
           return 0;
         }
-        localbes.szn = locala.KhF.readString();
-        AppMethodBeat.o(147769);
+        localbes.Scene = ((f.a.a.a.a)localObject1).LVo.xF();
+        AppMethodBeat.o(32269);
         return 0;
       }
-      AppMethodBeat.o(147769);
+      AppMethodBeat.o(32269);
       return -1;
     }
   }

@@ -27,8 +27,8 @@ import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.d;
 import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.BasePanelKeybordLayout;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -38,30 +38,30 @@ import java.util.List;
 public class LuckyMoneyWishFooter
   extends BasePanelKeybordLayout
 {
-  private Button fPz;
-  ChatFooterPanel fSY;
-  private MMActivity imP;
+  private Button fTu;
+  ChatFooterPanel fWT;
+  private MMActivity iMV;
   private int state;
-  private TextWatcher tqA;
-  private a tqB;
-  private c tqC;
-  private ImageButton tqu;
-  MMEditText tqv;
-  boolean tqw;
-  public boolean tqx;
-  private boolean tqy;
-  boolean tqz;
+  private ImageButton uyL;
+  MMEditText uyM;
+  boolean uyN;
+  public boolean uyO;
+  private boolean uyP;
+  boolean uyQ;
+  private TextWatcher uyR;
+  private a uyS;
+  private c uyT;
   
   public LuckyMoneyWishFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65951);
     this.state = 0;
-    this.tqw = false;
-    this.tqx = false;
-    this.tqy = true;
-    this.tqz = true;
-    this.tqA = new TextWatcher()
+    this.uyN = false;
+    this.uyO = false;
+    this.uyP = true;
+    this.uyQ = true;
+    this.uyR = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -75,15 +75,15 @@ public class LuckyMoneyWishFooter
         if ((paramAnonymousEditable.length() > 0) && (paramAnonymousEditable.toString().trim().length() > 0)) {}
         for (int i = 1;; i = 0)
         {
-          if ((i != 0) && (LuckyMoneyWishFooter.this.tqz))
+          if ((i != 0) && (LuckyMoneyWishFooter.this.uyQ))
           {
             LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this, true);
-            LuckyMoneyWishFooter.this.tqz = false;
+            LuckyMoneyWishFooter.this.uyQ = false;
           }
           if (i == 0)
           {
             LuckyMoneyWishFooter.a(LuckyMoneyWishFooter.this, false);
-            LuckyMoneyWishFooter.this.tqz = true;
+            LuckyMoneyWishFooter.this.uyQ = true;
           }
           AppMethodBeat.o(65945);
           return;
@@ -94,17 +94,17 @@ public class LuckyMoneyWishFooter
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.imP = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)inflate(this.imP, 2131494662, this);
-    this.fPz = ((Button)paramContext.findViewById(2131301961));
-    mU(false);
-    this.tqu = ((ImageButton)paramContext.findViewById(2131301960));
-    this.tqu.setOnClickListener(new View.OnClickListener()
+    this.iMV = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)inflate(this.iMV, 2131494662, this);
+    this.fTu = ((Button)paramContext.findViewById(2131301961));
+    nM(false);
+    this.uyL = ((ImageButton)paramContext.findViewById(2131301960));
+    this.uyL.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(65946);
-        ad.i("MicroMsg.SnsCommentFooter", "state onClick" + LuckyMoneyWishFooter.c(LuckyMoneyWishFooter.this));
+        ac.i("MicroMsg.SnsCommentFooter", "state onClick" + LuckyMoneyWishFooter.c(LuckyMoneyWishFooter.this));
         if (LuckyMoneyWishFooter.c(LuckyMoneyWishFooter.this) == 0)
         {
           LuckyMoneyWishFooter.this.setModeClick(true);
@@ -124,8 +124,8 @@ public class LuckyMoneyWishFooter
         }
       }
     });
-    this.tqv = ((MMEditText)paramContext.findViewById(2131301958));
-    this.tqv.setOnTouchListener(new View.OnTouchListener()
+    this.uyM = ((MMEditText)paramContext.findViewById(2131301958));
+    this.uyM.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -142,37 +142,21 @@ public class LuckyMoneyWishFooter
         return false;
       }
     });
-    if (e.Cgj == null)
+    if (e.DyA == null)
     {
-      this.fSY = new d(this.imP);
+      this.fWT = new d(this.iMV);
       AppMethodBeat.o(65951);
       return;
     }
-    this.fSY = e.Cgj.es(getContext());
-    this.fSY.setEntranceScene(ChatFooterPanel.BUT);
-    this.fSY.setVisibility(8);
-    ((LinearLayout)findViewById(2131304239)).addView(this.fSY, -1, 0);
-    this.fSY.exn();
-    this.fSY.onResume();
-    this.fSY.setOnTextOperationListener(new ChatFooterPanel.a()
+    this.fWT = e.DyA.eA(getContext());
+    this.fWT.setEntranceScene(ChatFooterPanel.Dnj);
+    this.fWT.setVisibility(8);
+    ((LinearLayout)findViewById(2131304239)).addView(this.fWT, -1, 0);
+    this.fWT.eMH();
+    this.fWT.onResume();
+    this.fWT.setOnTextOperationListener(new ChatFooterPanel.a()
     {
-      public final void append(String paramAnonymousString)
-      {
-        AppMethodBeat.i(65949);
-        try
-        {
-          LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).aMd(paramAnonymousString);
-          AppMethodBeat.o(65949);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          ad.printErrStackTrace("MicroMsg.SnsCommentFooter", paramAnonymousString, "", new Object[0]);
-          AppMethodBeat.o(65949);
-        }
-      }
-      
-      public final void btF()
+      public final void amb()
       {
         AppMethodBeat.i(65948);
         LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
@@ -180,18 +164,34 @@ public class LuckyMoneyWishFooter
         AppMethodBeat.o(65948);
       }
       
-      public final void cqY() {}
+      public final void amc() {}
       
-      public final void lf(boolean paramAnonymousBoolean) {}
+      public final void append(String paramAnonymousString)
+      {
+        AppMethodBeat.i(65949);
+        try
+        {
+          LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).aRF(paramAnonymousString);
+          AppMethodBeat.o(65949);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          ac.printErrStackTrace("MicroMsg.SnsCommentFooter", paramAnonymousString, "", new Object[0]);
+          AppMethodBeat.o(65949);
+        }
+      }
+      
+      public final void dS(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(65951);
   }
   
-  private void btC()
+  private void bAC()
   {
     AppMethodBeat.i(65954);
-    this.fSY.onResume();
-    this.fSY.postDelayed(new Runnable()
+    this.fWT.onResume();
+    this.fWT.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -200,25 +200,25 @@ public class LuckyMoneyWishFooter
         AppMethodBeat.o(65944);
       }
     }, 200L);
-    ViewGroup.LayoutParams localLayoutParams = this.fSY.getLayoutParams();
-    if (((localLayoutParams != null) && (localLayoutParams.height <= 0)) || ((localLayoutParams != null) && (i.ip(getContext())) && (this.tqy)))
+    ViewGroup.LayoutParams localLayoutParams = this.fWT.getLayoutParams();
+    if (((localLayoutParams != null) && (localLayoutParams.height <= 0)) || ((localLayoutParams != null) && (i.iA(getContext())) && (this.uyP)))
     {
-      localLayoutParams.height = i.in(getContext());
-      this.fSY.setLayoutParams(localLayoutParams);
-      this.tqy = false;
+      localLayoutParams.height = i.iy(getContext());
+      this.fWT.setLayoutParams(localLayoutParams);
+      this.uyP = false;
     }
     AppMethodBeat.o(65954);
   }
   
-  private void cMP()
+  private void dav()
   {
     AppMethodBeat.i(65953);
     if (this.state == 0)
     {
-      this.tqv.requestFocus();
-      this.imP.getWindow().setSoftInputMode(16);
-      this.imP.showVKB();
-      this.fSY.postDelayed(new Runnable()
+      this.uyM.requestFocus();
+      this.iMV.getWindow().setSoftInputMode(16);
+      this.iMV.showVKB();
+      this.fWT.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -230,59 +230,59 @@ public class LuckyMoneyWishFooter
       AppMethodBeat.o(65953);
       return;
     }
-    this.tqv.requestFocus();
-    this.imP.getWindow().setSoftInputMode(32);
-    this.imP.hideVKB();
-    btC();
+    this.uyM.requestFocus();
+    this.iMV.getWindow().setSoftInputMode(32);
+    this.iMV.hideVKB();
+    bAC();
     AppMethodBeat.o(65953);
   }
   
-  private void mU(boolean paramBoolean)
+  private void nM(boolean paramBoolean)
   {
     AppMethodBeat.i(65962);
     Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772095);
     Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772100);
     localAnimation1.setDuration(150L);
     localAnimation2.setDuration(150L);
-    if (this.fPz == null)
+    if (this.fTu == null)
     {
       AppMethodBeat.o(65962);
       return;
     }
     if (paramBoolean)
     {
-      if ((this.fPz.getVisibility() == 8) || (this.fPz.getVisibility() == 4))
+      if ((this.fTu.getVisibility() == 8) || (this.fTu.getVisibility() == 4))
       {
         AppMethodBeat.o(65962);
         return;
       }
-      this.fPz.startAnimation(localAnimation2);
-      this.fPz.setVisibility(8);
+      this.fTu.startAnimation(localAnimation2);
+      this.fTu.setVisibility(8);
       AppMethodBeat.o(65962);
       return;
     }
-    if ((this.fPz.getVisibility() == 0) || (this.fPz.getVisibility() == 0))
+    if ((this.fTu.getVisibility() == 0) || (this.fTu.getVisibility() == 0))
     {
       AppMethodBeat.o(65962);
       return;
     }
-    this.fPz.startAnimation(localAnimation1);
-    this.fPz.setVisibility(0);
+    this.fTu.startAnimation(localAnimation1);
+    this.fTu.setVisibility(0);
     AppMethodBeat.o(65962);
   }
   
-  public final void DK(int paramInt)
+  public final void FG(int paramInt)
   {
     AppMethodBeat.i(65960);
-    super.DK(paramInt);
+    super.FG(paramInt);
     switch (paramInt)
     {
     default: 
-      this.tqx = false;
+      this.uyO = false;
       AppMethodBeat.o(65960);
       return;
     }
-    this.tqx = true;
+    this.uyO = true;
     AppMethodBeat.o(65960);
   }
   
@@ -290,7 +290,7 @@ public class LuckyMoneyWishFooter
   {
     AppMethodBeat.i(65963);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.fSY);
+    localArrayList.add(this.fWT);
     AppMethodBeat.o(65963);
     return localArrayList;
   }
@@ -298,41 +298,41 @@ public class LuckyMoneyWishFooter
   public void setHint(String paramString)
   {
     AppMethodBeat.i(65958);
-    this.tqv.setHint(paramString);
+    this.uyM.setHint(paramString);
     AppMethodBeat.o(65958);
   }
   
   public void setMaxLength(int paramInt)
   {
     AppMethodBeat.i(65955);
-    this.tqv.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+    this.uyM.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
     AppMethodBeat.o(65955);
   }
   
   public void setModeClick(boolean paramBoolean)
   {
-    this.tqw = paramBoolean;
+    this.uyN = paramBoolean;
   }
   
   public void setOnEditTouchListener(a parama)
   {
-    this.tqB = parama;
+    this.uyS = parama;
   }
   
   public void setOnSmileyShowListener(c paramc)
   {
-    this.tqC = paramc;
+    this.uyT = paramc;
   }
   
   public void setOnWishSendImp(final b paramb)
   {
     AppMethodBeat.i(65959);
-    this.fPz.setOnClickListener(new View.OnClickListener()
+    this.fTu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(65950);
-        paramb.afu(LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).getText().toString());
+        paramb.ako(LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).getText().toString());
         LuckyMoneyWishFooter.b(LuckyMoneyWishFooter.this).setText("");
         AppMethodBeat.o(65950);
       }
@@ -343,10 +343,10 @@ public class LuckyMoneyWishFooter
   public void setText(String paramString)
   {
     AppMethodBeat.i(65957);
-    if (this.tqv != null)
+    if (this.uyM != null)
     {
-      this.tqv.setText("");
-      this.tqv.aMd(paramString);
+      this.uyM.setText("");
+      this.uyM.aRF(paramString);
     }
     AppMethodBeat.o(65957);
   }
@@ -359,16 +359,16 @@ public class LuckyMoneyWishFooter
     if (paramInt == 0)
     {
       bool = true;
-      if (this.fSY != null)
+      if (this.fWT != null)
       {
-        ad.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(bool)));
+        ac.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(bool)));
         if (bool) {
           break label118;
         }
-        ad.d("MicroMsg.SnsCommentFooter", bt.eGN());
-        this.fSY.setVisibility(8);
-        this.tqu.setImageResource(2131690564);
-        this.imP.hideVKB();
+        ac.d("MicroMsg.SnsCommentFooter", bs.eWi());
+        this.fWT.setVisibility(8);
+        this.uyL.setImageResource(2131690564);
+        this.iMV.hideVKB();
         setModeClick(true);
         requestLayout();
       }
@@ -381,8 +381,8 @@ public class LuckyMoneyWishFooter
       bool = false;
       break;
       label118:
-      cMP();
-      this.tqy = false;
+      dav();
+      this.uyP = false;
     }
   }
   
@@ -390,7 +390,7 @@ public class LuckyMoneyWishFooter
   
   public static abstract interface b
   {
-    public abstract void afu(String paramString);
+    public abstract void ako(String paramString);
   }
   
   static abstract interface c {}

@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"buildMap", "", "K", "V", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptyMap", "hashMapOf", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "pairs", "", "Lkotlin/Pair;", "([Lkotlin/Pair;)Ljava/util/HashMap;", "linkedMapOf", "Ljava/util/LinkedHashMap;", "Lkotlin/collections/LinkedHashMap;", "([Lkotlin/Pair;)Ljava/util/LinkedHashMap;", "mapOf", "([Lkotlin/Pair;)Ljava/util/Map;", "mutableMapOf", "component1", "", "(Ljava/util/Map$Entry;)Ljava/lang/Object;", "component2", "contains", "", "Lkotlin/internal/OnlyInputTypes;", "key", "(Ljava/util/Map;Ljava/lang/Object;)Z", "containsKey", "containsValue", "value", "filter", "predicate", "filterKeys", "filterNot", "filterNotTo", "M", "destination", "(Ljava/util/Map;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "filterTo", "filterValues", "get", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;", "getOrElse", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/Map;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "getOrElseNullable", "getOrPut", "getValue", "ifEmpty", "R", "(Ljava/util/Map;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "isNotEmpty", "isNullOrEmpty", "iterator", "", "", "", "mutableIterator", "mapKeys", "transform", "mapKeysTo", "mapValues", "mapValuesTo", "minus", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/util/Map;", "keys", "(Ljava/util/Map;[Ljava/lang/Object;)Ljava/util/Map;", "", "Lkotlin/sequences/Sequence;", "minusAssign", "(Ljava/util/Map;Ljava/lang/Object;)V", "(Ljava/util/Map;[Ljava/lang/Object;)V", "optimizeReadOnlyMap", "orEmpty", "plus", "(Ljava/util/Map;[Lkotlin/Pair;)Ljava/util/Map;", "pair", "map", "plusAssign", "(Ljava/util/Map;[Lkotlin/Pair;)V", "putAll", "remove", "set", "(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)V", "toMap", "([Lkotlin/Pair;Ljava/util/Map;)Ljava/util/Map;", "(Ljava/lang/Iterable;Ljava/util/Map;)Ljava/util/Map;", "(Ljava/util/Map;Ljava/util/Map;)Ljava/util/Map;", "(Lkotlin/sequences/Sequence;Ljava/util/Map;)Ljava/util/Map;", "toMutableMap", "toPair", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"buildMap", "", "K", "V", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptyMap", "hashMapOf", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "pairs", "", "Lkotlin/Pair;", "([Lkotlin/Pair;)Ljava/util/HashMap;", "linkedMapOf", "Ljava/util/LinkedHashMap;", "Lkotlin/collections/LinkedHashMap;", "([Lkotlin/Pair;)Ljava/util/LinkedHashMap;", "mapOf", "([Lkotlin/Pair;)Ljava/util/Map;", "mutableMapOf", "component1", "", "(Ljava/util/Map$Entry;)Ljava/lang/Object;", "component2", "contains", "", "Lkotlin/internal/OnlyInputTypes;", "key", "(Ljava/util/Map;Ljava/lang/Object;)Z", "containsKey", "containsValue", "value", "filter", "predicate", "filterKeys", "filterNot", "filterNotTo", "M", "destination", "(Ljava/util/Map;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "filterTo", "filterValues", "get", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;", "getOrElse", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/Map;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "getOrElseNullable", "getOrPut", "getValue", "ifEmpty", "R", "(Ljava/util/Map;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "isNotEmpty", "isNullOrEmpty", "iterator", "", "", "", "mutableIterator", "mapKeys", "transform", "mapKeysTo", "mapValues", "mapValuesTo", "minus", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/util/Map;", "keys", "(Ljava/util/Map;[Ljava/lang/Object;)Ljava/util/Map;", "", "Lkotlin/sequences/Sequence;", "minusAssign", "(Ljava/util/Map;Ljava/lang/Object;)V", "(Ljava/util/Map;[Ljava/lang/Object;)V", "optimizeReadOnlyMap", "orEmpty", "plus", "(Ljava/util/Map;[Lkotlin/Pair;)Ljava/util/Map;", "pair", "map", "plusAssign", "(Ljava/util/Map;[Lkotlin/Pair;)V", "putAll", "remove", "set", "(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)V", "toMap", "([Lkotlin/Pair;Ljava/util/Map;)Ljava/util/Map;", "(Ljava/lang/Iterable;Ljava/util/Map;)Ljava/util/Map;", "(Ljava/util/Map;Ljava/util/Map;)Ljava/util/Map;", "(Lkotlin/sequences/Sequence;Ljava/util/Map;)Ljava/util/Map;", "toMutableMap", "toPair", "kotlin-stdlib"}, fOb=1)
 public class ah
   extends ag
 {
@@ -32,7 +32,7 @@ public class ah
     k.h(paramVarArgs, "pairs");
     if (paramVarArgs.length > 0)
     {
-      paramVarArgs = ae.a(paramVarArgs, (Map)new LinkedHashMap(ae.adL(paramVarArgs.length)));
+      paramVarArgs = ae.a(paramVarArgs, (Map)new LinkedHashMap(ae.agH(paramVarArgs.length)));
       AppMethodBeat.o(129017);
       return paramVarArgs;
     }
@@ -85,14 +85,24 @@ public class ah
   {
     AppMethodBeat.i(129018);
     k.h(paramVarArgs, "pairs");
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap(ae.adL(paramVarArgs.length));
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap(ae.agH(paramVarArgs.length));
     ae.a((Map)localLinkedHashMap, paramVarArgs);
     paramVarArgs = (Map)localLinkedHashMap;
     AppMethodBeat.o(129018);
     return paramVarArgs;
   }
   
-  public static final <K, V> Map<K, V> bR(Map<K, ? extends V> paramMap)
+  public static final <K, V> HashMap<K, V> c(o<? extends K, ? extends V>... paramVarArgs)
+  {
+    AppMethodBeat.i(177352);
+    k.h(paramVarArgs, "pairs");
+    HashMap localHashMap = new HashMap(ae.agH(paramVarArgs.length));
+    ae.a((Map)localHashMap, paramVarArgs);
+    AppMethodBeat.o(177352);
+    return localHashMap;
+  }
+  
+  public static final <K, V> Map<K, V> ca(Map<K, ? extends V> paramMap)
   {
     AppMethodBeat.i(129025);
     k.h(paramMap, "$this$optimizeReadOnlyMap");
@@ -106,19 +116,9 @@ public class ah
       AppMethodBeat.o(129025);
       return paramMap;
     }
-    paramMap = ae.bQ(paramMap);
+    paramMap = ae.bZ(paramMap);
     AppMethodBeat.o(129025);
     return paramMap;
-  }
-  
-  public static final <K, V> HashMap<K, V> c(o<? extends K, ? extends V>... paramVarArgs)
-  {
-    AppMethodBeat.i(177352);
-    k.h(paramVarArgs, "pairs");
-    HashMap localHashMap = new HashMap(ae.adL(paramVarArgs.length));
-    ae.a((Map)localHashMap, paramVarArgs);
-    AppMethodBeat.o(177352);
-    return localHashMap;
   }
   
   public static final <K, V> V e(Map<K, ? extends V> paramMap, K paramK)
@@ -133,7 +133,7 @@ public class ah
   public static final <K, V> Map<K, V> emptyMap()
   {
     AppMethodBeat.i(129016);
-    Object localObject = w.Jgm;
+    Object localObject = w.KTG;
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type kotlin.collections.Map<K, V>");
@@ -145,7 +145,7 @@ public class ah
     return localObject;
   }
   
-  public static final <K, V> Map<K, V> z(Iterable<? extends o<? extends K, ? extends V>> paramIterable)
+  public static final <K, V> Map<K, V> y(Iterable<? extends o<? extends K, ? extends V>> paramIterable)
   {
     AppMethodBeat.i(129022);
     k.h(paramIterable, "$this$toMap");
@@ -154,7 +154,7 @@ public class ah
       switch (((Collection)paramIterable).size())
       {
       default: 
-        paramIterable = ae.a(paramIterable, (Map)new LinkedHashMap(ae.adL(((Collection)paramIterable).size())));
+        paramIterable = ae.a(paramIterable, (Map)new LinkedHashMap(ae.agH(((Collection)paramIterable).size())));
         AppMethodBeat.o(129022);
         return paramIterable;
       case 0: 
@@ -170,7 +170,7 @@ public class ah
         return paramIterable;
       }
     }
-    paramIterable = ae.bR(ae.a(paramIterable, (Map)new LinkedHashMap()));
+    paramIterable = ae.ca(ae.a(paramIterable, (Map)new LinkedHashMap()));
     AppMethodBeat.o(129022);
     return paramIterable;
   }

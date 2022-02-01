@@ -8,124 +8,124 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isInterceptDown", "", "()Z", "setInterceptDown", "(Z)V", "lastX", "", "getLastX", "()F", "setLastX", "(F)V", "touchListener", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "getTouchListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "setTouchListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;)V", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "TouchListener", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isInterceptDown", "", "()Z", "setInterceptDown", "(Z)V", "lastX", "", "getLastX", "()F", "setLastX", "(F)V", "touchListener", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "getTouchListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "setTouchListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;)V", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "TouchListener", "plugin-finder_release"})
 public final class FinderTouchLayout
   extends FrameLayout
 {
-  private boolean LfM;
-  public a LfN;
-  private float qXK;
+  private float rYu;
+  private boolean rZp;
+  public a rZq;
   
   public FinderTouchLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200167);
-    AppMethodBeat.o(200167);
+    AppMethodBeat.i(204237);
+    AppMethodBeat.o(204237);
   }
   
   public FinderTouchLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(200168);
-    AppMethodBeat.o(200168);
+    AppMethodBeat.i(204238);
+    AppMethodBeat.o(204238);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(200166);
+    AppMethodBeat.i(204236);
     k.h(paramMotionEvent, "event");
     a locala;
     if (paramMotionEvent.getAction() == 0)
     {
-      this.qXK = paramMotionEvent.getRawX();
-      locala = this.LfN;
+      this.rYu = paramMotionEvent.getRawX();
+      locala = this.rZq;
       if (locala == null) {
-        k.aPZ("touchListener");
+        k.aVY("touchListener");
       }
-      this.LfM = locala.i(paramMotionEvent);
-      if (this.LfM)
+      this.rZp = locala.T(paramMotionEvent);
+      if (this.rZp)
       {
-        AppMethodBeat.o(200166);
+        AppMethodBeat.o(204236);
         return true;
       }
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(200166);
+      AppMethodBeat.o(204236);
       return bool;
     }
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
     {
-      if (this.LfM)
+      if (this.rZp)
       {
-        locala = this.LfN;
+        locala = this.rZq;
         if (locala == null) {
-          k.aPZ("touchListener");
+          k.aVY("touchListener");
         }
-        locala.j(paramMotionEvent);
-        this.LfM = false;
-        AppMethodBeat.o(200166);
+        locala.U(paramMotionEvent);
+        this.rZp = false;
+        AppMethodBeat.o(204236);
         return true;
       }
     }
-    else if (this.LfM)
+    else if (this.rZp)
     {
-      locala = this.LfN;
+      locala = this.rZq;
       if (locala == null) {
-        k.aPZ("touchListener");
+        k.aVY("touchListener");
       }
-      locala.bZ(paramMotionEvent.getRawX() - this.qXK);
+      locala.aY(paramMotionEvent.getRawX() - this.rYu);
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(200166);
+    AppMethodBeat.o(204236);
     return bool;
   }
   
   public final float getLastX()
   {
-    return this.qXK;
+    return this.rYu;
   }
   
   public final a getTouchListener()
   {
-    AppMethodBeat.i(200164);
-    a locala = this.LfN;
+    AppMethodBeat.i(204234);
+    a locala = this.rZq;
     if (locala == null) {
-      k.aPZ("touchListener");
+      k.aVY("touchListener");
     }
-    AppMethodBeat.o(200164);
+    AppMethodBeat.o(204234);
     return locala;
   }
   
   public final void setInterceptDown(boolean paramBoolean)
   {
-    this.LfM = paramBoolean;
+    this.rZp = paramBoolean;
   }
   
   public final void setLastX(float paramFloat)
   {
-    this.qXK = paramFloat;
+    this.rYu = paramFloat;
   }
   
   public final void setTouchListener(a parama)
   {
-    AppMethodBeat.i(200165);
+    AppMethodBeat.i(204235);
     k.h(parama, "<set-?>");
-    this.LfN = parama;
-    AppMethodBeat.o(200165);
+    this.rZq = parama;
+    AppMethodBeat.o(204235);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "", "onTouchUp", "plugin-finder_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "", "onTouchUp", "plugin-finder_release"})
   public static abstract interface a
   {
-    public abstract void bZ(float paramFloat);
+    public abstract boolean T(MotionEvent paramMotionEvent);
     
-    public abstract boolean i(MotionEvent paramMotionEvent);
+    public abstract void U(MotionEvent paramMotionEvent);
     
-    public abstract void j(MotionEvent paramMotionEvent);
+    public abstract void aY(float paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderTouchLayout
  * JD-Core Version:    0.7.0.1
  */

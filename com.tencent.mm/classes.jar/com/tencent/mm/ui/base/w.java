@@ -6,17 +6,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class w
 {
-  View[] Gda;
-  int[] Gdb;
-  SparseArray<View>[] Gdc;
-  SparseArray<View> Gdd;
-  int uWk;
+  View[] HCP;
+  int[] HCQ;
+  SparseArray<View>[] HCR;
+  SparseArray<View> HCS;
+  int weZ;
   
   public w()
   {
     AppMethodBeat.i(142451);
-    this.Gda = new View[0];
-    this.Gdb = new int[0];
+    this.HCP = new View[0];
+    this.HCQ = new int[0];
     AppMethodBeat.o(142451);
   }
   
@@ -51,7 +51,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.w
  * JD-Core Version:    0.7.0.1
  */

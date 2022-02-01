@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.matrix.recyclerview;
 
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -13,15 +13,15 @@ import org.json.JSONObject;
 public final class b
   extends a<b>
 {
-  private JSONArray gbL;
-  private JSONObject gbM;
-  public View.OnLongClickListener qhH;
+  private JSONArray ggr;
+  private JSONObject ggs;
+  public View.OnLongClickListener qQj;
   
   public b(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(38921);
-    this.gbL = paramJSONArray;
-    if (this.gbL == null)
+    this.ggr = paramJSONArray;
+    if (this.ggr == null)
     {
       paramJSONArray = new IllegalArgumentException("jsonArray can not be null.");
       AppMethodBeat.o(38921);
@@ -33,7 +33,7 @@ public final class b
   private void a(Object paramObject, JsonItemView paramJsonItemView, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(38924);
-    paramJsonItemView.ao(new SpannableStringBuilder(c.aae(paramInt)));
+    paramJsonItemView.ap(new SpannableStringBuilder(c.acr(paramInt)));
     b(paramObject, paramJsonItemView, paramBoolean, paramInt);
     AppMethodBeat.o(38924);
   }
@@ -41,11 +41,11 @@ public final class b
   private void a(String paramString, Object paramObject, JsonItemView paramJsonItemView, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(38923);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(c.aae(paramInt));
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(c.acr(paramInt));
     localSpannableStringBuilder.append("\"").append(paramString).append("\"").append(":");
-    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkj), 0, localSpannableStringBuilder.length() - 1, 33);
-    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkp), localSpannableStringBuilder.length() - 1, localSpannableStringBuilder.length(), 33);
-    paramJsonItemView.ao(localSpannableStringBuilder);
+    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKC), 0, localSpannableStringBuilder.length() - 1, 33);
+    localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKI), localSpannableStringBuilder.length() - 1, localSpannableStringBuilder.length(), 33);
+    paramJsonItemView.ap(localSpannableStringBuilder);
     b(paramObject, paramJsonItemView, paramBoolean, paramInt);
     AppMethodBeat.o(38923);
   }
@@ -57,58 +57,58 @@ public final class b
     if ((paramObject instanceof Number))
     {
       localSpannableStringBuilder.append(paramObject.toString());
-      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkl), 0, localSpannableStringBuilder.length(), 33);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKE), 0, localSpannableStringBuilder.length(), 33);
     }
     for (;;)
     {
       if (paramBoolean) {
         localSpannableStringBuilder.append(",");
       }
-      paramJsonItemView.ap(localSpannableStringBuilder);
+      paramJsonItemView.aq(localSpannableStringBuilder);
       AppMethodBeat.o(38925);
       return;
       if ((paramObject instanceof Boolean))
       {
         localSpannableStringBuilder.append(paramObject.toString());
-        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkm), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKF), 0, localSpannableStringBuilder.length(), 33);
       }
       else if ((paramObject instanceof JSONObject))
       {
-        paramJsonItemView.wC(true);
+        paramJsonItemView.xJ(true);
         localSpannableStringBuilder.append("Object{...}");
-        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkp), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKI), 0, localSpannableStringBuilder.length(), 33);
         paramJsonItemView.setIconClickListener(new a(paramObject, paramJsonItemView, paramBoolean, paramInt + 1));
       }
       else if ((paramObject instanceof JSONArray))
       {
-        paramJsonItemView.wC(true);
+        paramJsonItemView.xJ(true);
         localSpannableStringBuilder.append("Array[").append(String.valueOf(((JSONArray)paramObject).length())).append("]");
         int i = localSpannableStringBuilder.length();
-        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkp), 0, 6, 33);
-        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkl), 6, i - 1, 33);
-        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkp), i - 1, i, 33);
+        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKI), 0, 6, 33);
+        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKE), 6, i - 1, 33);
+        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKI), i - 1, i, 33);
         paramJsonItemView.setIconClickListener(new a(paramObject, paramJsonItemView, paramBoolean, paramInt + 1));
       }
       else if (paramObject != null)
       {
-        paramJsonItemView.fdg();
+        paramJsonItemView.ftb();
         localSpannableStringBuilder.append("\"").append(paramObject.toString()).append("\"");
-        if (c.aLF(paramObject.toString()))
+        if (c.aRh(paramObject.toString()))
         {
-          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkk), 0, 1, 33);
-          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkn), 1, localSpannableStringBuilder.length() - 1, 33);
-          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkk), localSpannableStringBuilder.length() - 1, localSpannableStringBuilder.length(), 33);
+          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKD), 0, 1, 33);
+          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKG), 1, localSpannableStringBuilder.length() - 1, 33);
+          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKD), localSpannableStringBuilder.length() - 1, localSpannableStringBuilder.length(), 33);
         }
         else
         {
-          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hkk), 0, localSpannableStringBuilder.length(), 33);
+          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKD), 0, localSpannableStringBuilder.length(), 33);
         }
       }
       else if ((localSpannableStringBuilder.length() == 0) || (paramObject == null))
       {
-        paramJsonItemView.fdg();
+        paramJsonItemView.ftb();
         localSpannableStringBuilder.append("null");
-        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Hko), 0, localSpannableStringBuilder.length(), 33);
+        localSpannableStringBuilder.setSpan(new ForegroundColorSpan(IKH), 0, localSpannableStringBuilder.length(), 33);
       }
     }
   }
@@ -117,20 +117,20 @@ public final class b
   {
     AppMethodBeat.i(38922);
     int i;
-    if (this.gbM != null)
+    if (this.ggs != null)
     {
-      if (this.gbM.names() != null)
+      if (this.ggs.names() != null)
       {
-        i = this.gbM.names().length();
+        i = this.ggs.names().length();
         AppMethodBeat.o(38922);
         return i + 2;
       }
       AppMethodBeat.o(38922);
       return 2;
     }
-    if (this.gbL != null)
+    if (this.ggr != null)
     {
-      i = this.gbL.length();
+      i = this.ggr.length();
       AppMethodBeat.o(38922);
       return i + 2;
     }
@@ -141,25 +141,25 @@ public final class b
   final class a
     implements View.OnClickListener
   {
-    private boolean HkA;
-    private int HkB;
-    private boolean HkC;
-    private boolean HkD;
-    private JsonItemView Hkz;
+    private JsonItemView IKS;
+    private boolean IKT;
+    private int IKU;
+    private boolean IKV;
+    private boolean IKW;
     private Object value;
     
     a(Object paramObject, JsonItemView paramJsonItemView, boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(38917);
-      this.HkC = true;
+      this.IKV = true;
       this.value = paramObject;
-      this.Hkz = paramJsonItemView;
-      this.HkA = paramBoolean;
-      this.HkB = paramInt;
+      this.IKS = paramJsonItemView;
+      this.IKT = paramBoolean;
+      this.IKU = paramInt;
       if ((paramObject != null) && ((paramObject instanceof JSONArray))) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.HkD = paramBoolean;
+        this.IKW = paramBoolean;
         AppMethodBeat.o(38917);
         return;
       }
@@ -171,17 +171,17 @@ public final class b
       AppMethodBeat.i(38918);
       label83:
       int i;
-      if (this.Hkz.getChildCount() == 1)
+      if (this.IKS.getChildCount() == 1)
       {
-        this.HkC = false;
-        this.Hkz.wC(false);
-        this.Hkz.setTag(this.Hkz.getRightText());
-        JsonItemView localJsonItemView = this.Hkz;
-        if (this.HkD)
+        this.IKV = false;
+        this.IKS.xJ(false);
+        this.IKS.setTag(this.IKS.getRightText());
+        JsonItemView localJsonItemView = this.IKS;
+        if (this.IKW)
         {
           paramView = "[";
-          localJsonItemView.ap(paramView);
-          if (!this.HkD) {
+          localJsonItemView.aq(paramView);
+          if (!this.IKW) {
             break label199;
           }
           paramView = (JSONArray)this.value;
@@ -190,11 +190,11 @@ public final class b
           if ((paramView == null) || (i >= paramView.length())) {
             break label288;
           }
-          localJsonItemView = new JsonItemView(this.Hkz.getContext());
-          localJsonItemView.setTextSize(a.Hkq);
-          localJsonItemView.setRightColor(a.Hkp);
+          localJsonItemView = new JsonItemView(this.IKS.getContext());
+          localJsonItemView.setTextSize(a.IKJ);
+          localJsonItemView.setRightColor(a.IKI);
           localObject1 = paramView.opt(i);
-          if (!this.HkD) {
+          if (!this.IKW) {
             break label219;
           }
           localObject2 = b.this;
@@ -206,8 +206,8 @@ public final class b
         label213:
         for (bool1 = true;; bool1 = false)
         {
-          b.a((b)localObject2, localObject1, localJsonItemView, bool1, this.HkB);
-          this.Hkz.gm(localJsonItemView);
+          b.a((b)localObject2, localObject1, localJsonItemView, bool1, this.IKU);
+          this.IKS.gA(localJsonItemView);
           i += 1;
           break label85;
           paramView = "{";
@@ -222,19 +222,19 @@ public final class b
         if (i < paramView.length() - 1) {}
         for (bool1 = true;; bool1 = false)
         {
-          b.a((b)localObject2, str, localObject1, localJsonItemView, bool1, this.HkB);
+          b.a((b)localObject2, str, localObject1, localJsonItemView, bool1, this.IKU);
           break;
         }
         label288:
-        localJsonItemView = new JsonItemView(this.Hkz.getContext());
-        localJsonItemView.setTextSize(a.Hkq);
-        localJsonItemView.setRightColor(a.Hkp);
-        localObject1 = new StringBuilder(c.aae(this.HkB - 1));
-        if (this.HkD)
+        localJsonItemView = new JsonItemView(this.IKS.getContext());
+        localJsonItemView.setTextSize(a.IKJ);
+        localJsonItemView.setRightColor(a.IKI);
+        localObject1 = new StringBuilder(c.acr(this.IKU - 1));
+        if (this.IKW)
         {
           paramView = "]";
           localObject2 = ((StringBuilder)localObject1).append(paramView);
-          if (!this.HkA) {
+          if (!this.IKT) {
             break label415;
           }
         }
@@ -242,31 +242,31 @@ public final class b
         for (paramView = ",";; paramView = "")
         {
           ((StringBuilder)localObject2).append(paramView);
-          localJsonItemView.ap((CharSequence)localObject1);
-          this.Hkz.gm(localJsonItemView);
-          this.Hkz.requestLayout();
-          this.Hkz.invalidate();
+          localJsonItemView.aq((CharSequence)localObject1);
+          this.IKS.gA(localJsonItemView);
+          this.IKS.requestLayout();
+          this.IKS.invalidate();
           AppMethodBeat.o(38918);
           return;
           paramView = "}";
           break;
         }
       }
-      paramView = this.Hkz.getRightText();
-      this.Hkz.ap((CharSequence)this.Hkz.getTag());
-      this.Hkz.setTag(paramView);
-      paramView = this.Hkz;
-      if (!this.HkC)
+      paramView = this.IKS.getRightText();
+      this.IKS.aq((CharSequence)this.IKS.getTag());
+      this.IKS.setTag(paramView);
+      paramView = this.IKS;
+      if (!this.IKV)
       {
         bool1 = true;
-        paramView.wC(bool1);
+        paramView.xJ(bool1);
         i = 1;
         label477:
-        if (i >= this.Hkz.getChildCount()) {
+        if (i >= this.IKS.getChildCount()) {
           break label530;
         }
-        paramView = this.Hkz.getChildAt(i);
-        if (!this.HkC) {
+        paramView = this.IKS.getChildAt(i);
+        if (!this.IKV) {
           break label524;
         }
       }
@@ -280,10 +280,10 @@ public final class b
         break;
       }
       label530:
-      if (!this.HkC) {}
+      if (!this.IKV) {}
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.HkC = bool1;
+        this.IKV = bool1;
         AppMethodBeat.o(38918);
         return;
       }
@@ -291,16 +291,16 @@ public final class b
   }
   
   final class b
-    extends RecyclerView.v
+    extends RecyclerView.w
   {
-    JsonItemView Hkz;
+    JsonItemView IKS;
     
     b(final JsonItemView paramJsonItemView)
     {
       super();
       AppMethodBeat.i(38920);
       ax(false);
-      this.Hkz = paramJsonItemView;
+      this.IKS = paramJsonItemView;
       paramJsonItemView.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
@@ -309,7 +309,7 @@ public final class b
           if (b.a(b.this) != null) {}
           try
           {
-            paramJsonItemView.setTag(b.b(b.this).get(b.b.this.ln() - 1));
+            paramJsonItemView.setTag(b.b(b.this).get(b.b.this.lv() - 1));
             label47:
             boolean bool = b.a(b.this).onLongClick(paramAnonymousView);
             AppMethodBeat.o(38919);

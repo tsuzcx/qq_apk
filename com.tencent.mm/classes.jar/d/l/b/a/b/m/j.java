@@ -15,53 +15,53 @@ public final class j
   extends b
   implements at
 {
-  private final e JqE;
-  private final Collection<ab> JuQ;
+  private final e LdX;
+  private final Collection<ab> Lij;
   private final List<as> parameters;
   
   public j(e parame, List<? extends as> paramList, Collection<ab> paramCollection, i parami)
   {
     super(parami);
     AppMethodBeat.i(60613);
-    this.JqE = parame;
+    this.LdX = parame;
     this.parameters = Collections.unmodifiableList(new ArrayList(paramList));
-    this.JuQ = Collections.unmodifiableCollection(paramCollection);
+    this.Lij = Collections.unmodifiableCollection(paramCollection);
     AppMethodBeat.o(60613);
   }
   
-  protected final Collection<ab> fxL()
+  protected final Collection<ab> fQp()
   {
     AppMethodBeat.i(60617);
-    Collection localCollection = this.JuQ;
+    Collection localCollection = this.Lij;
     if (localCollection == null) {
-      adP(6);
+      agL(6);
     }
     AppMethodBeat.o(60617);
     return localCollection;
   }
   
-  public final e fxN()
+  public final e fQr()
   {
     AppMethodBeat.i(60616);
-    e locale = this.JqE;
+    e locale = this.LdX;
     if (locale == null) {
-      adP(5);
+      agL(5);
     }
     AppMethodBeat.o(60616);
     return locale;
   }
   
-  public final boolean fxO()
+  public final boolean fQs()
   {
     return true;
   }
   
-  protected final aq fxP()
+  protected final aq fQt()
   {
     AppMethodBeat.i(60618);
-    aq.a locala = aq.a.JqL;
+    aq.a locala = aq.a.Lee;
     if (locala == null) {
-      adP(7);
+      agL(7);
     }
     AppMethodBeat.o(60618);
     return locala;
@@ -72,7 +72,7 @@ public final class j
     AppMethodBeat.i(60614);
     List localList = this.parameters;
     if (localList == null) {
-      adP(4);
+      agL(4);
     }
     AppMethodBeat.o(60614);
     return localList;
@@ -81,14 +81,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(60615);
-    String str = d.l.b.a.b.j.c.n(this.JqE).qV();
+    String str = d.l.b.a.b.j.c.n(this.LdX).rf();
     AppMethodBeat.o(60615);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.j
  * JD-Core Version:    0.7.0.1
  */

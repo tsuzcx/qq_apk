@@ -15,16 +15,16 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.a.a.c.a;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.bs.d;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.av.o;
+import com.tencent.mm.br.d;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.pluginsdk.model.q;
 import com.tencent.mm.pluginsdk.model.r;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.sdk.platformtools.m;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.gridviewheaders.GridHeadersGridView.c;
@@ -40,25 +40,25 @@ public final class b
   extends BaseAdapter
   implements com.tencent.mm.ui.gridviewheaders.e
 {
-  private static int nOl = 0;
-  private boolean bgc;
+  private static int orn = 0;
+  private boolean bgI;
   ArrayList<com.tencent.mm.plugin.clean.c.c> dataList;
   boolean isStop;
-  AdapterView.OnItemClickListener mUR;
-  HashSet<Integer> mtN;
-  private CleanChattingDetailUI nOk;
-  GridHeadersGridView.c nOm;
-  private ap nOn;
-  AbsListView.OnScrollListener nOo;
+  HashSet<Integer> mVP;
+  AdapterView.OnItemClickListener nxr;
+  private CleanChattingDetailUI orm;
+  GridHeadersGridView.c oro;
+  private ao orp;
+  AbsListView.OnScrollListener orq;
   private String username;
   
   public b(CleanChattingDetailUI paramCleanChattingDetailUI, String paramString)
   {
     AppMethodBeat.i(22864);
     this.isStop = false;
-    this.nOm = new GridHeadersGridView.c()
+    this.oro = new GridHeadersGridView.c()
     {
-      public final void dH(View paramAnonymousView)
+      public final void dJ(View paramAnonymousView)
       {
         AppMethodBeat.i(22858);
         paramAnonymousView = (b.a)paramAnonymousView.getTag();
@@ -67,18 +67,18 @@ public final class b
         AppMethodBeat.o(22858);
       }
     };
-    this.mUR = new AdapterView.OnItemClickListener()
+    this.nxr = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(22859);
-        ad.i("MicroMsg.CleanChattingDetailAdapter", "Click Item position=%d, count=%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(b.this.getCount()) });
+        ac.i("MicroMsg.CleanChattingDetailAdapter", "Click Item position=%d, count=%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(b.this.getCount()) });
         if ((paramAnonymousInt < 0) || (paramAnonymousInt >= b.this.getCount()))
         {
           AppMethodBeat.o(22859);
           return;
         }
-        paramAnonymousAdapterView = b.this.zv(paramAnonymousInt);
+        paramAnonymousAdapterView = b.this.Am(paramAnonymousInt);
         paramAnonymousView = new Intent();
         switch (paramAnonymousAdapterView.type)
         {
@@ -93,9 +93,9 @@ public final class b
           {
             paramAnonymousAdapterView = b.e(b.this);
             paramAnonymousView = Intent.createChooser(paramAnonymousView, b.e(b.this).getString(2131764704));
-            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.adn(), "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lS(0));
+            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.aeD(), "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lR(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingDetailAdapter$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(22859);
             return;
@@ -107,7 +107,7 @@ public final class b
           }
           paramAnonymousView.putExtra("key_title", b.e(b.this).getString(2131757390));
           paramAnonymousView.putExtra("show_menu", false);
-          if (i.eK(paramAnonymousAdapterView.filePath)) {}
+          if (i.eA(paramAnonymousAdapterView.filePath)) {}
           for (paramAnonymousAdapterView = paramAnonymousAdapterView.filePath;; paramAnonymousAdapterView = paramAnonymousAdapterView.thumbPath)
           {
             paramAnonymousView.putExtra("key_image_path", paramAnonymousAdapterView);
@@ -115,12 +115,12 @@ public final class b
             AppMethodBeat.o(22859);
             return;
           }
-          paramAnonymousView.putExtra("app_msg_id", paramAnonymousAdapterView.ded);
+          paramAnonymousView.putExtra("app_msg_id", paramAnonymousAdapterView.dbz);
           d.e(b.e(b.this), ".ui.chatting.AppAttachDownloadUI", paramAnonymousView);
         }
       }
     };
-    this.nOn = new ap()
+    this.orp = new ao()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -131,14 +131,14 @@ public final class b
         AppMethodBeat.o(22860);
       }
     };
-    this.nOo = new AbsListView.OnScrollListener()
+    this.orq = new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
         AppMethodBeat.i(22861);
-        o.ayJ().cq(paramAnonymousInt);
+        o.aFB().cp(paramAnonymousInt);
         if (paramAnonymousInt != 2)
         {
           b.a(b.this, false);
@@ -151,11 +151,27 @@ public final class b
         AppMethodBeat.o(22861);
       }
     };
-    this.nOk = paramCleanChattingDetailUI;
-    this.mtN = new HashSet();
+    this.orm = paramCleanChattingDetailUI;
+    this.mVP = new HashSet();
     this.dataList = new ArrayList();
     this.username = paramString;
     AppMethodBeat.o(22864);
+  }
+  
+  public final com.tencent.mm.plugin.clean.c.c Am(int paramInt)
+  {
+    AppMethodBeat.i(22866);
+    com.tencent.mm.plugin.clean.c.c localc = (com.tencent.mm.plugin.clean.c.c)this.dataList.get(paramInt);
+    AppMethodBeat.o(22866);
+    return localc;
+  }
+  
+  public final long An(int paramInt)
+  {
+    AppMethodBeat.i(22868);
+    long l = ((com.tencent.mm.plugin.clean.c.c)this.dataList.get(paramInt)).bVc();
+    AppMethodBeat.o(22868);
+    return l;
   }
   
   public final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -163,30 +179,30 @@ public final class b
     AppMethodBeat.i(22869);
     if (paramView == null)
     {
-      ad.v("MicroMsg.CleanChattingDetailAdapter", "convertView is null");
-      paramView = this.nOk.getLayoutInflater().inflate(2131493542, paramViewGroup, false);
+      ac.v("MicroMsg.CleanChattingDetailAdapter", "convertView is null");
+      paramView = this.orm.getLayoutInflater().inflate(2131493542, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.nOq = ((TextView)paramView.findViewById(2131300734));
-      paramViewGroup.nOr = ((TextView)paramView.findViewById(2131300726));
-      paramViewGroup.nOs = ((CheckBox)paramView.findViewById(2131300725));
+      paramViewGroup.ors = ((TextView)paramView.findViewById(2131300734));
+      paramViewGroup.ort = ((TextView)paramView.findViewById(2131300726));
+      paramViewGroup.oru = ((CheckBox)paramView.findViewById(2131300725));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      localObject = zv(paramInt);
+      localObject = Am(paramInt);
       paramViewGroup.position = paramInt;
-      paramViewGroup.nOq.setText(h.formatTime(this.nOk.getString(2131759579), ((com.tencent.mm.plugin.clean.c.c)localObject).hAg / 1000L));
-      long l = ((com.tencent.mm.plugin.clean.c.c)localObject).bNR();
+      paramViewGroup.ors.setText(h.formatTime(this.orm.getString(2131759579), ((com.tencent.mm.plugin.clean.c.c)localObject).iaH / 1000L));
+      long l = ((com.tencent.mm.plugin.clean.c.c)localObject).bVc();
       localObject = new HashSet();
       paramInt = 0;
       while (paramInt < this.dataList.size())
       {
-        if (((com.tencent.mm.plugin.clean.c.c)this.dataList.get(paramInt)).bNR() == l) {
+        if (((com.tencent.mm.plugin.clean.c.c)this.dataList.get(paramInt)).bVc() == l) {
           ((HashSet)localObject).add(Integer.valueOf(paramInt));
         }
         paramInt += 1;
       }
-      ad.v("MicroMsg.CleanChattingDetailAdapter", "convertView is not null");
+      ac.v("MicroMsg.CleanChattingDetailAdapter", "convertView is not null");
       paramViewGroup = (a)paramView.getTag();
     }
     Object localObject = ((HashSet)localObject).iterator();
@@ -194,7 +210,7 @@ public final class b
     if (((Iterator)localObject).hasNext())
     {
       int i = ((Integer)((Iterator)localObject).next()).intValue();
-      if (this.mtN.contains(Integer.valueOf(i))) {
+      if (this.mVP.contains(Integer.valueOf(i))) {
         break label295;
       }
       paramInt = 0;
@@ -204,59 +220,59 @@ public final class b
     {
       break;
       if (paramInt != 0) {
-        paramViewGroup.nOs.setChecked(true);
+        paramViewGroup.oru.setChecked(true);
       }
       for (;;)
       {
         AppMethodBeat.o(22869);
         return paramView;
-        paramViewGroup.nOs.setChecked(false);
+        paramViewGroup.oru.setChecked(false);
       }
     }
   }
   
-  public final void bNY()
+  public final void bVj()
   {
     AppMethodBeat.i(22871);
-    this.mtN.clear();
-    bNZ();
+    this.mVP.clear();
+    bVk();
     AppMethodBeat.o(22871);
   }
   
-  final void bNZ()
+  final void bVk()
   {
     AppMethodBeat.i(22870);
-    this.nOk.zx(this.mtN.size());
-    Object localObject = this.nOk;
+    this.orm.Ao(this.mVP.size());
+    Object localObject = this.orm;
     int i;
-    if (this.mtN.size() == this.dataList.size())
+    if (this.mVP.size() == this.dataList.size())
     {
       i = 1;
       if (i == 0) {
         break label118;
       }
-      ((CleanChattingDetailUI)localObject).nOA.setChecked(true);
+      ((CleanChattingDetailUI)localObject).orC.setChecked(true);
     }
     long l;
     for (;;)
     {
-      localObject = this.mtN.iterator();
+      localObject = this.mVP.iterator();
       for (l = 0L; ((Iterator)localObject).hasNext(); l = ((com.tencent.mm.plugin.clean.c.c)this.dataList.get(i)).size + l) {
         i = ((Integer)((Iterator)localObject).next()).intValue();
       }
       i = 0;
       break;
       label118:
-      ((CleanChattingDetailUI)localObject).nOA.setChecked(false);
+      ((CleanChattingDetailUI)localObject).orC.setChecked(false);
     }
-    localObject = this.nOk;
+    localObject = this.orm;
     if (l > 0L)
     {
-      ((CleanChattingDetailUI)localObject).nOB.setText(((CleanChattingDetailUI)localObject).getString(2131758037, new Object[] { bt.mK(l) }));
+      ((CleanChattingDetailUI)localObject).orD.setText(((CleanChattingDetailUI)localObject).getString(2131758037, new Object[] { bs.qz(l) }));
       AppMethodBeat.o(22870);
       return;
     }
-    ((CleanChattingDetailUI)localObject).nOB.setText("");
+    ((CleanChattingDetailUI)localObject).orD.setText("");
     AppMethodBeat.o(22870);
   }
   
@@ -280,18 +296,18 @@ public final class b
     com.tencent.mm.plugin.clean.c.c localc;
     if (paramView == null)
     {
-      paramView = this.nOk.getLayoutInflater().inflate(2131493541, paramViewGroup, false);
+      paramView = this.orm.getLayoutInflater().inflate(2131493541, paramViewGroup, false);
       paramViewGroup = new c();
-      paramViewGroup.nOt = ((MMImageView)paramView.findViewById(2131298760));
-      paramViewGroup.icb = ((CheckBox)paramView.findViewById(2131304502));
-      paramViewGroup.nOv = paramView.findViewById(2131304504);
-      paramViewGroup.nOw = paramView.findViewById(2131304543);
-      paramViewGroup.nOu = ((ImageView)paramView.findViewById(2131303286));
-      paramViewGroup.imt = ((TextView)paramView.findViewById(2131302666));
+      paramViewGroup.orv = ((MMImageView)paramView.findViewById(2131298760));
+      paramViewGroup.iCi = ((CheckBox)paramView.findViewById(2131304502));
+      paramViewGroup.orx = paramView.findViewById(2131304504);
+      paramViewGroup.ory = paramView.findViewById(2131304543);
+      paramViewGroup.orw = ((ImageView)paramView.findViewById(2131303286));
+      paramViewGroup.iMz = ((TextView)paramView.findViewById(2131302666));
       paramView.setTag(paramViewGroup);
-      localc = zv(paramInt);
-      paramViewGroup.nOt.setTag(localc.filePath);
-      paramViewGroup.nOv.setOnClickListener(new View.OnClickListener()
+      localc = Am(paramInt);
+      paramViewGroup.orv.setTag(localc.filePath);
+      paramViewGroup.orx.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -301,85 +317,69 @@ public final class b
           AppMethodBeat.o(22857);
         }
       });
-      if (!this.mtN.contains(Integer.valueOf(paramInt))) {
+      if (!this.mVP.contains(Integer.valueOf(paramInt))) {
         break label320;
       }
-      paramViewGroup.icb.setChecked(true);
-      paramViewGroup.nOw.setVisibility(0);
+      paramViewGroup.iCi.setChecked(true);
+      paramViewGroup.ory.setVisibility(0);
       label188:
       if (localc.type != 3) {
         break label340;
       }
-      paramViewGroup.nOu.setVisibility(0);
+      paramViewGroup.orw.setVisibility(0);
     }
     for (;;)
     {
       if (localc.type != 4) {
         break label352;
       }
-      o.ayJ().a(localc.thumbPath, paramViewGroup.nOt);
-      paramViewGroup.nOt.setImageResource(q.aAJ(i.RK(localc.filePath)));
-      paramViewGroup.imt.setText(new com.tencent.mm.vfs.e(localc.filePath).getName());
-      paramViewGroup.imt.setVisibility(0);
-      ad.d("MicroMsg.CleanChattingDetailAdapter", "getView time=%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      o.aFB().a(localc.thumbPath, paramViewGroup.orv);
+      paramViewGroup.orv.setImageResource(q.aGb(i.VW(localc.filePath)));
+      paramViewGroup.iMz.setText(new com.tencent.mm.vfs.e(localc.filePath).getName());
+      paramViewGroup.iMz.setVisibility(0);
+      ac.d("MicroMsg.CleanChattingDetailAdapter", "getView time=%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(22867);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
       break;
       label320:
-      paramViewGroup.icb.setChecked(false);
-      paramViewGroup.nOw.setVisibility(8);
+      paramViewGroup.iCi.setChecked(false);
+      paramViewGroup.ory.setVisibility(8);
       break label188;
       label340:
-      paramViewGroup.nOu.setVisibility(8);
+      paramViewGroup.orw.setVisibility(8);
     }
     label352:
-    if (nOl == 0) {
-      nOl = paramView.getMeasuredWidth();
+    if (orn == 0) {
+      orn = paramView.getMeasuredWidth();
     }
     Object localObject = new c.a();
-    ((c.a)localObject).hjX = 1;
-    ((c.a)localObject).hjV = false;
-    ((c.a)localObject).gjw = nOl;
-    ((c.a)localObject).gjv = nOl;
+    ((c.a)localObject).hKA = 1;
+    ((c.a)localObject).hKy = false;
+    ((c.a)localObject).gKh = orn;
+    ((c.a)localObject).gKg = orn;
     if ((localc.type != 1) && (localc.msgType == 486539313))
     {
-      ((c.a)localObject).gjt = r.aAK(localc.thumbPath);
-      ((c.a)localObject).hjX = 5;
-      localObject = ((c.a)localObject).azc();
-      o.ayJ().a(localc.thumbPath, paramViewGroup.nOt, (com.tencent.mm.aw.a.a.c)localObject);
+      ((c.a)localObject).gKe = r.aGc(localc.thumbPath);
+      ((c.a)localObject).hKA = 5;
+      localObject = ((c.a)localObject).aFT();
+      o.aFB().a(localc.thumbPath, paramViewGroup.orv, (com.tencent.mm.av.a.a.c)localObject);
     }
     for (;;)
     {
-      paramViewGroup.imt.setVisibility(8);
+      paramViewGroup.iMz.setVisibility(8);
       break;
-      ((c.a)localObject).gjt = localc.thumbPath;
-      localObject = ((c.a)localObject).azc();
-      o.ayJ().a(localc.thumbPath, paramViewGroup.nOt, (com.tencent.mm.aw.a.a.c)localObject);
+      ((c.a)localObject).gKe = localc.thumbPath;
+      localObject = ((c.a)localObject).aFT();
+      o.aFB().a(localc.thumbPath, paramViewGroup.orv, (com.tencent.mm.av.a.a.c)localObject);
     }
-  }
-  
-  public final com.tencent.mm.plugin.clean.c.c zv(int paramInt)
-  {
-    AppMethodBeat.i(22866);
-    com.tencent.mm.plugin.clean.c.c localc = (com.tencent.mm.plugin.clean.c.c)this.dataList.get(paramInt);
-    AppMethodBeat.o(22866);
-    return localc;
-  }
-  
-  public final long zw(int paramInt)
-  {
-    AppMethodBeat.i(22868);
-    long l = ((com.tencent.mm.plugin.clean.c.c)this.dataList.get(paramInt)).bNR();
-    AppMethodBeat.o(22868);
-    return l;
   }
   
   final class a
   {
-    TextView nOq;
-    TextView nOr;
-    CheckBox nOs;
+    TextView ors;
+    TextView ort;
+    CheckBox oru;
     int position;
     
     a() {}
@@ -390,7 +390,7 @@ public final class b
   {
     private b() {}
     
-    private void cG(List<com.tencent.mm.plugin.f.b.a> paramList)
+    private void cI(List<com.tencent.mm.plugin.f.b.a> paramList)
     {
       AppMethodBeat.i(22863);
       int j = paramList.size();
@@ -408,11 +408,11 @@ public final class b
           localHashMap.put(Long.valueOf(locala.field_msgId), localc1);
           localArrayList.add(localc1);
         }
-        localc1.nNL.add(locala);
-        localc1.hAg = locala.field_msgtime;
+        localc1.oqN.add(locala);
+        localc1.iaH = locala.field_msgtime;
         localc1.userName = locala.field_username;
-        localc1.ded = locala.field_msgId;
-        if (!com.tencent.mm.plugin.f.a.yK(locala.field_msgSubType)) {
+        localc1.dbz = locala.field_msgId;
+        if (!com.tencent.mm.plugin.f.a.zA(locala.field_msgSubType)) {
           localc1.size += locala.field_size;
         }
         localc1.msgType = locala.field_msgType;
@@ -423,37 +423,37 @@ public final class b
         {
           i += 1;
           break;
-          localc1.filePath = (g.afB().gcV + locala.field_path);
+          localc1.filePath = (g.agR().ghB + locala.field_path);
           localc1.type = 3;
           continue;
           if (locala.field_msgType == 486539313) {}
-          for (localc1.thumbPath = locala.field_path;; localc1.thumbPath = (g.afB().gcV + locala.field_path))
+          for (localc1.thumbPath = locala.field_path;; localc1.thumbPath = (g.agR().ghB + locala.field_path))
           {
             localc1.type = 3;
             break;
           }
-          localc1.filePath = (g.afB().gcV + locala.field_path);
+          localc1.filePath = (g.agR().ghB + locala.field_path);
           localc1.type = 1;
           continue;
-          localc1.thumbPath = (g.afB().gcV + locala.field_path);
+          localc1.thumbPath = (g.agR().ghB + locala.field_path);
           localc1.type = 1;
           continue;
-          localc1.filePath = (g.afB().gcV + locala.field_path);
+          localc1.filePath = (g.agR().ghB + locala.field_path);
           localc1.type = 1;
           continue;
-          localc1.thumbPath = (g.afB().gcV + locala.field_path);
+          localc1.thumbPath = (g.agR().ghB + locala.field_path);
           localc1.type = 1;
           continue;
-          localc1.filePath = (g.afB().gcV + locala.field_path);
+          localc1.filePath = (g.agR().ghB + locala.field_path);
           localc1.type = 4;
           continue;
-          localc1.thumbPath = (g.afB().gcV + locala.field_path);
+          localc1.thumbPath = (g.agR().ghB + locala.field_path);
           localc1.type = 4;
           continue;
-          localc1.filePath = (g.afB().gcV + locala.field_path);
+          localc1.filePath = (g.agR().ghB + locala.field_path);
           localc1.type = 4;
           continue;
-          localc1.thumbPath = (g.afB().gcV + locala.field_path);
+          localc1.thumbPath = (g.agR().ghB + locala.field_path);
           localc1.type = 4;
         }
       }
@@ -481,14 +481,14 @@ public final class b
       //   18: dup
       //   19: invokespecial 185	com/tencent/mm/pointers/PLong:<init>	()V
       //   22: astore 12
-      //   24: invokestatic 191	com/tencent/mm/plugin/f/b:bHc	()Lcom/tencent/mm/plugin/f/b;
-      //   27: invokevirtual 195	com/tencent/mm/plugin/f/b:bHd	()Lcom/tencent/mm/plugin/f/b/b;
+      //   24: invokestatic 191	com/tencent/mm/plugin/f/b:bOp	()Lcom/tencent/mm/plugin/f/b;
+      //   27: invokevirtual 195	com/tencent/mm/plugin/f/b:bOq	()Lcom/tencent/mm/plugin/f/b/b;
       //   30: astore 10
       //   32: aload_0
-      //   33: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   33: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   36: invokestatic 199	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
       //   39: astore 13
-      //   41: invokestatic 205	com/tencent/mm/sdk/platformtools/bt:GC	()J
+      //   41: invokestatic 205	com/tencent/mm/sdk/platformtools/bs:Gn	()J
       //   44: lstore_1
       //   45: new 116	java/lang/StringBuilder
       //   48: dup
@@ -552,10 +552,10 @@ public final class b
       //   180: dup
       //   181: iconst_1
       //   182: lload_1
-      //   183: invokestatic 247	com/tencent/mm/sdk/platformtools/bt:aS	(J)J
+      //   183: invokestatic 247	com/tencent/mm/sdk/platformtools/bs:aO	(J)J
       //   186: invokestatic 58	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   189: aastore
-      //   190: invokestatic 252	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   190: invokestatic 252	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   193: aload 12
       //   195: aload 12
       //   197: getfield 236	com/tencent/mm/pointers/PLong:value	J
@@ -573,7 +573,7 @@ public final class b
       //   223: invokestatic 260	java/lang/Math:max	(JJ)J
       //   226: lstore_3
       //   227: aload_0
-      //   228: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   228: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   231: invokestatic 263	com/tencent/mm/plugin/clean/ui/fileindexui/b:b	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Z
       //   234: istore 7
       //   236: iload 7
@@ -593,7 +593,7 @@ public final class b
       //   266: iconst_0
       //   267: aload 14
       //   269: aastore
-      //   270: invokestatic 269	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   270: invokestatic 269	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   273: aload 8
       //   275: ifnull -108 -> 167
       //   278: aload 8
@@ -619,22 +619,22 @@ public final class b
       //   322: lsub
       //   323: lstore_1
       //   324: aload_0
-      //   325: invokestatic 191	com/tencent/mm/plugin/f/b:bHc	()Lcom/tencent/mm/plugin/f/b;
-      //   328: invokevirtual 195	com/tencent/mm/plugin/f/b:bHd	()Lcom/tencent/mm/plugin/f/b/b;
+      //   325: invokestatic 191	com/tencent/mm/plugin/f/b:bOp	()Lcom/tencent/mm/plugin/f/b;
+      //   328: invokevirtual 195	com/tencent/mm/plugin/f/b:bOq	()Lcom/tencent/mm/plugin/f/b/b;
       //   331: aload_0
-      //   332: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   332: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   335: invokestatic 199	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
       //   338: lload 5
       //   340: lload_1
-      //   341: invokevirtual 273	com/tencent/mm/plugin/f/b/b:w	(Ljava/lang/String;JJ)Ljava/util/List;
-      //   344: invokespecial 275	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:cG	(Ljava/util/List;)V
+      //   341: invokevirtual 273	com/tencent/mm/plugin/f/b/b:t	(Ljava/lang/String;JJ)Ljava/util/List;
+      //   344: invokespecial 275	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:cI	(Ljava/util/List;)V
       //   347: aload_0
-      //   348: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   348: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   351: invokestatic 278	com/tencent/mm/plugin/clean/ui/fileindexui/b:c	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)V
       //   354: lload_1
       //   355: lstore_3
       //   356: aload_0
-      //   357: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   357: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   360: invokestatic 263	com/tencent/mm/plugin/clean/ui/fileindexui/b:b	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Z
       //   363: ifne +77 -> 440
       //   366: lload_3
@@ -660,17 +660,17 @@ public final class b
       //   404: lsub
       //   405: lstore_1
       //   406: aload_0
-      //   407: invokestatic 191	com/tencent/mm/plugin/f/b:bHc	()Lcom/tencent/mm/plugin/f/b;
-      //   410: invokevirtual 195	com/tencent/mm/plugin/f/b:bHd	()Lcom/tencent/mm/plugin/f/b/b;
+      //   407: invokestatic 191	com/tencent/mm/plugin/f/b:bOp	()Lcom/tencent/mm/plugin/f/b;
+      //   410: invokevirtual 195	com/tencent/mm/plugin/f/b:bOq	()Lcom/tencent/mm/plugin/f/b/b;
       //   413: aload_0
-      //   414: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   414: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   417: invokestatic 199	com/tencent/mm/plugin/clean/ui/fileindexui/b:a	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)Ljava/lang/String;
       //   420: lload_3
       //   421: lload_1
-      //   422: invokevirtual 273	com/tencent/mm/plugin/f/b/b:w	(Ljava/lang/String;JJ)Ljava/util/List;
-      //   425: invokespecial 275	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:cG	(Ljava/util/List;)V
+      //   422: invokevirtual 273	com/tencent/mm/plugin/f/b/b:t	(Ljava/lang/String;JJ)Ljava/util/List;
+      //   425: invokespecial 275	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:cI	(Ljava/util/List;)V
       //   428: aload_0
-      //   429: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:nOp	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
+      //   429: getfield 15	com/tencent/mm/plugin/clean/ui/fileindexui/b$b:orr	Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;
       //   432: invokestatic 278	com/tencent/mm/plugin/clean/ui/fileindexui/b:c	(Lcom/tencent/mm/plugin/clean/ui/fileindexui/b;)V
       //   435: lload_1
       //   436: lstore_3
@@ -684,7 +684,7 @@ public final class b
       //   454: ldc_w 284
       //   457: iconst_0
       //   458: anewarray 4	java/lang/Object
-      //   461: invokestatic 269	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   461: invokestatic 269	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   464: sipush 22862
       //   467: invokestatic 177	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   470: return
@@ -725,19 +725,19 @@ public final class b
   
   final class c
   {
-    CheckBox icb;
-    TextView imt;
-    MMImageView nOt;
-    ImageView nOu;
-    View nOv;
-    View nOw;
+    CheckBox iCi;
+    TextView iMz;
+    MMImageView orv;
+    ImageView orw;
+    View orx;
+    View ory;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,8 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.p;
 import com.tencent.mm.plugin.wallet_core.model.p.a;
 import com.tencent.mm.plugin.wallet_core.model.p.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.base.MaxListView;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,25 +33,25 @@ import java.util.Vector;
 public final class n
   extends com.tencent.mm.ui.base.i
 {
-  private MaxListView Ank;
-  private TextView Anl;
-  private a Anm;
-  private b Ann;
-  private View hIZ;
+  private MaxListView BFF;
+  private TextView BFG;
+  private a BFH;
+  private b BFI;
+  private d Bjk;
+  private View ijA;
   private LayoutInflater mInflater;
-  private d zQQ;
   
   private n(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(70947);
     this.mInflater = LayoutInflater.from(paramContext);
-    this.hIZ = LayoutInflater.from(paramContext).inflate(2131495948, null);
-    this.Ank = ((MaxListView)this.hIZ.findViewById(2131306744));
-    this.Anl = ((TextView)this.hIZ.findViewById(2131306741));
-    this.Anm = new a();
-    this.Ank.setAdapter(this.Anm);
-    this.hIZ.findViewById(2131306742).setOnClickListener(new View.OnClickListener()
+    this.ijA = LayoutInflater.from(paramContext).inflate(2131495948, null);
+    this.BFF = ((MaxListView)this.ijA.findViewById(2131306744));
+    this.BFG = ((TextView)this.ijA.findViewById(2131306741));
+    this.BFH = new a();
+    this.BFF.setAdapter(this.BFH);
+    this.ijA.findViewById(2131306742).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -71,69 +71,69 @@ public final class n
     localn.setOnCancelListener(paramOnCancelListener);
     localn.setCancelable(true);
     localn.setCanceledOnTouchOutside(false);
-    localn.zQQ = e.Ajp.a(paramOrders);
-    if (localn.zQQ == null)
+    localn.Bjk = e.BBL.a(paramOrders);
+    if (localn.Bjk == null)
     {
-      ad.w("MicroMsg.WalletFavorDialog", "mFavorLogicHelper null & dismiss");
+      ac.w("MicroMsg.WalletFavorDialog", "mFavorLogicHelper null & dismiss");
       localn.dismiss();
     }
     Object localObject2;
     int i;
     for (;;)
     {
-      localn.Ann = paramb;
+      localn.BFI = paramb;
       localn.show();
       com.tencent.mm.ui.base.h.a(paramContext, localn);
       AppMethodBeat.o(70950);
       return localn;
-      paramOrders = localn.Anm;
-      localObject2 = paramOrders.Ano.zQQ.Ajk;
-      paramOnCancelListener = paramOrders.Ano.zQQ.auq(paramString);
-      paramOrders.Anq = paramOrders.Ano.zQQ.edL();
-      paramOrders.Ans = paramOrders.Ano.zQQ.aum(paramOnCancelListener);
-      paramOrders.Anp = -1;
+      paramOrders = localn.BFH;
+      localObject2 = paramOrders.BFJ.Bjk.BBG;
+      paramOnCancelListener = paramOrders.BFJ.Bjk.azI(paramString);
+      paramOrders.BFL = paramOrders.BFJ.Bjk.etg();
+      paramOrders.BFM = paramOrders.BFJ.Bjk.azE(paramOnCancelListener);
+      paramOrders.BFK = -1;
       i = 0;
       for (;;)
       {
-        if (i < paramOrders.Anq.size()) {
-          if (((t)paramOrders.Anq.get(i)).zPo == 0) {
+        if (i < paramOrders.BFL.size()) {
+          if (((t)paramOrders.BFL.get(i)).BhI == 0) {
             break label273;
           }
         }
         label273:
         for (j = 1; j != 0; j = 0)
         {
-          paramOrders.Anp = i;
+          paramOrders.BFK = i;
           paramString = new LinkedList();
-          if (paramOrders.Anq == null) {
+          if (paramOrders.BFL == null) {
             break label288;
           }
           i = 0;
-          while (i < paramOrders.Anq.size())
+          while (i < paramOrders.BFL.size())
           {
-            paramString.add(((t)paramOrders.Anq.get(i)).zOl);
+            paramString.add(((t)paramOrders.BFL.get(i)).BgF);
             i += 1;
           }
         }
         i += 1;
       }
       label288:
-      ad.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] mFavorList null");
+      ac.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] mFavorList null");
       i = 0;
       label298:
       if (i != 0) {
         break label670;
       }
-      ad.w("MicroMsg.WalletFavorDialog", "initFavorInfo failed & dismiss");
+      ac.w("MicroMsg.WalletFavorDialog", "initFavorInfo failed & dismiss");
       localn.dismiss();
     }
     LinkedList localLinkedList = new LinkedList();
-    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).zOs != null))
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).BgM != null))
     {
       i = 0;
-      while (i < ((com.tencent.mm.plugin.wallet.a.h)localObject2).zOs.size())
+      while (i < ((com.tencent.mm.plugin.wallet.a.h)localObject2).BgM.size())
       {
-        localObject1 = ((t)((com.tencent.mm.plugin.wallet.a.h)localObject2).zOs.get(i)).zOl;
+        localObject1 = ((t)((com.tencent.mm.plugin.wallet.a.h)localObject2).BgM.get(i)).BgF;
         if (!paramString.contains(localObject1)) {
           localLinkedList.add(localObject1);
         }
@@ -143,14 +143,14 @@ public final class n
     Object localObject1 = new LinkedList();
     label450:
     String str;
-    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).zOt != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).zOt.zOF != null))
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).BgN != null) && (((com.tencent.mm.plugin.wallet.a.h)localObject2).BgN.BgZ != null))
     {
-      localObject2 = ((com.tencent.mm.plugin.wallet.a.h)localObject2).zOt.zOF;
+      localObject2 = ((com.tencent.mm.plugin.wallet.a.h)localObject2).BgN.BgZ;
       i = 0;
       if (i >= ((List)localObject2).size()) {
         break label563;
       }
-      str = ((j)((List)localObject2).get(i)).zOH;
+      str = ((j)((List)localObject2).get(i)).Bhb;
       j = 0;
       label482:
       if (j >= localLinkedList.size()) {
@@ -169,11 +169,11 @@ public final class n
       break label450;
       j += 1;
       break label482;
-      ad.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] favorInfo.favorComposeList or favorInfo.favorComposeList.favorComposeInfo null");
+      ac.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] favorInfo.favorComposeList or favorInfo.favorComposeList.favorComposeInfo null");
       i = 0;
       break label298;
       localLinkedList = new LinkedList();
-      if ((!bt.isNullOrNil(paramOnCancelListener)) && (!paramOnCancelListener.equals("0")))
+      if ((!bs.isNullOrNil(paramOnCancelListener)) && (!paramOnCancelListener.equals("0")))
       {
         paramOnCancelListener = paramOnCancelListener.split("-");
         if (paramOnCancelListener != null)
@@ -185,32 +185,32 @@ public final class n
             i += 1;
           }
         }
-        ad.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] preKeyArr null");
+        ac.w("MicroMsg.WalletFavorDialog", "func[setCouponInfo] preKeyArr null");
         i = 0;
         break label298;
       }
-      paramOrders.Ant.d(paramString, localLinkedList, (List)localObject1);
+      paramOrders.BFN.d(paramString, localLinkedList, (List)localObject1);
       i = 1;
       break label298;
-      localn.Anl.setText(2131765257);
-      localn.Ank.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      localn.BFG.setText(2131765257);
+      localn.BFF.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(70941);
           paramAnonymousAdapterView = n.b(n.this);
-          paramAnonymousView = paramAnonymousAdapterView.Ant;
-          if (paramAnonymousInt < paramAnonymousView.AeD.size())
+          paramAnonymousView = paramAnonymousAdapterView.BFN;
+          if (paramAnonymousInt < paramAnonymousView.BwX.size())
           {
-            p.a locala1 = ((p.b)paramAnonymousView.AeD.get(paramAnonymousInt)).AeL;
-            p.a locala2 = p.a.AeH;
+            p.a locala1 = ((p.b)paramAnonymousView.BwX.get(paramAnonymousInt)).Bxf;
+            p.a locala2 = p.a.Bxb;
             int i = 0;
-            while (i < paramAnonymousView.AeD.size())
+            while (i < paramAnonymousView.BwX.size())
             {
-              paramAnonymousView.a(i, p.a.AeI);
+              paramAnonymousView.a(i, p.a.Bxc);
               i += 1;
             }
-            switch (com.tencent.mm.plugin.wallet_core.model.p.1.AeF[locala1.ordinal()])
+            switch (com.tencent.mm.plugin.wallet_core.model.p.1.BwZ[locala1.ordinal()])
             {
             }
           }
@@ -219,9 +219,9 @@ public final class n
             paramAnonymousAdapterView.notifyDataSetChanged();
             AppMethodBeat.o(70941);
             return;
-            paramAnonymousView.a(paramAnonymousInt, p.a.AeH);
+            paramAnonymousView.a(paramAnonymousInt, p.a.Bxb);
             continue;
-            paramAnonymousView.a(paramAnonymousInt, p.a.AeI);
+            paramAnonymousView.a(paramAnonymousInt, p.a.Bxc);
           }
         }
       });
@@ -229,16 +229,16 @@ public final class n
     }
   }
   
-  private void eed()
+  private void ety()
   {
     AppMethodBeat.i(70952);
-    ad.d("MicroMsg.WalletFavorDialog", "On selection done");
-    if (this.Anm != null)
+    ac.d("MicroMsg.WalletFavorDialog", "On selection done");
+    if (this.BFH != null)
     {
-      Object localObject = this.Anm.Ant;
-      localObject = ((p)localObject).a(((p)localObject).AeD, -1);
-      localObject = this.zQQ.aup((String)localObject);
-      this.Ann.a((FavorPayInfo)localObject);
+      Object localObject = this.BFH.BFN;
+      localObject = ((p)localObject).a(((p)localObject).BwX, -1);
+      localObject = this.Bjk.azH((String)localObject);
+      this.BFI.a((FavorPayInfo)localObject);
     }
     AppMethodBeat.o(70952);
   }
@@ -254,7 +254,7 @@ public final class n
     }
     catch (Exception localException)
     {
-      ad.e("MicroMsg.WalletFavorDialog", "dismiss exception, e = " + localException.getMessage());
+      ac.e("MicroMsg.WalletFavorDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(70949);
     }
   }
@@ -263,7 +263,7 @@ public final class n
   {
     AppMethodBeat.i(70948);
     super.onCreate(paramBundle);
-    setContentView(this.hIZ);
+    setContentView(this.ijA);
     AppMethodBeat.o(70948);
   }
   
@@ -271,7 +271,7 @@ public final class n
   {
     AppMethodBeat.i(70953);
     if (paramInt == 4) {
-      eed();
+      ety();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(70953);
@@ -289,25 +289,25 @@ public final class n
   final class a
     extends BaseAdapter
   {
-    int Anp;
-    List<t> Anq;
-    j Ans;
-    p<String> Ant;
+    int BFK;
+    List<t> BFL;
+    j BFM;
+    p<String> BFN;
     
     public a()
     {
       AppMethodBeat.i(70943);
-      this.Anp = -1;
-      this.Anq = new LinkedList();
-      this.Ans = null;
-      this.Ant = new p()
+      this.BFK = -1;
+      this.BFL = new LinkedList();
+      this.BFM = null;
+      this.BFN = new p()
       {
         public final String a(Vector<p<String>.b> paramAnonymousVector, int paramAnonymousInt)
         {
           AppMethodBeat.i(70942);
           if (paramAnonymousVector == null)
           {
-            ad.w("MicroMsg.WalletFavorDialog", "func[getComposedKey] keyList null");
+            ac.w("MicroMsg.WalletFavorDialog", "func[getComposedKey] keyList null");
             AppMethodBeat.o(70942);
             return "";
           }
@@ -315,9 +315,9 @@ public final class n
           int i = 0;
           while (i < paramAnonymousVector.size())
           {
-            p.a locala = ((p.b)paramAnonymousVector.get(i)).AeL;
-            if ((i == paramAnonymousInt) || (locala == p.a.AeH)) {
-              localStringBuilder.append((String)((p.b)paramAnonymousVector.get(i)).AeK + "-");
+            p.a locala = ((p.b)paramAnonymousVector.get(i)).Bxf;
+            if ((i == paramAnonymousInt) || (locala == p.a.Bxb)) {
+              localStringBuilder.append((String)((p.b)paramAnonymousVector.get(i)).Bxe + "-");
             }
             i += 1;
           }
@@ -340,7 +340,7 @@ public final class n
     public final int getCount()
     {
       AppMethodBeat.i(70944);
-      int i = this.Anq.size();
+      int i = this.BFL.size();
       AppMethodBeat.o(70944);
       return i;
     }
@@ -348,7 +348,7 @@ public final class n
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(70945);
-      Object localObject = this.Anq.get(paramInt);
+      Object localObject = this.BFL.get(paramInt);
       AppMethodBeat.o(70945);
       return localObject;
     }
@@ -371,67 +371,67 @@ public final class n
       {
         paramView = n.c(n.this).inflate(2131495939, paramViewGroup, false);
         paramViewGroup = new n.c();
-        paramViewGroup.Anv = paramView.findViewById(2131306726);
-        paramViewGroup.kEu = ((TextView)paramView.findViewById(2131306725));
-        paramViewGroup.nym = ((TextView)paramView.findViewById(2131306724));
-        paramViewGroup.kFd = ((TextView)paramView.findViewById(2131306723));
-        paramViewGroup.Anx = ((CheckBox)paramView.findViewById(2131306722));
-        paramViewGroup.Anw = ((ImageView)paramView.findViewById(2131306721));
+        paramViewGroup.BFP = paramView.findViewById(2131306726);
+        paramViewGroup.lfN = ((TextView)paramView.findViewById(2131306725));
+        paramViewGroup.obn = ((TextView)paramView.findViewById(2131306724));
+        paramViewGroup.lgw = ((TextView)paramView.findViewById(2131306723));
+        paramViewGroup.BFR = ((CheckBox)paramView.findViewById(2131306722));
+        paramViewGroup.BFQ = ((ImageView)paramView.findViewById(2131306721));
         paramView.setTag(paramViewGroup);
         localObject3 = (t)getItem(paramInt);
-        if ((paramInt != this.Anp) || (this.Anp <= 0)) {
+        if ((paramInt != this.BFK) || (this.BFK <= 0)) {
           break label418;
         }
-        paramViewGroup.Anv.setVisibility(0);
-        paramViewGroup.Anw.setVisibility(8);
-        if (bt.isNullOrNil(((t)localObject3).zPk)) {
+        paramViewGroup.BFP.setVisibility(0);
+        paramViewGroup.BFQ.setVisibility(8);
+        if (bs.isNullOrNil(((t)localObject3).BhE)) {
           break label438;
         }
-        paramViewGroup.kEu.setText(((t)localObject3).zPk);
-        paramViewGroup.kEu.setVisibility(0);
-        localObject1 = ((t)localObject3).zOl;
-        if ((this.Ans == null) || (this.Ans.zOJ == null)) {
+        paramViewGroup.lfN.setText(((t)localObject3).BhE);
+        paramViewGroup.lfN.setVisibility(0);
+        localObject1 = ((t)localObject3).BgF;
+        if ((this.BFM == null) || (this.BFM.Bhd == null)) {
           break label459;
         }
-        localObject2 = this.Ans.zOJ;
+        localObject2 = this.BFM.Bhd;
         i = 0;
         label221:
         if (i >= ((List)localObject2).size()) {
           break label459;
         }
-        if (!((String)localObject1).equals(((f)((List)localObject2).get(i)).zOl)) {
+        if (!((String)localObject1).equals(((f)((List)localObject2).get(i)).BgF)) {
           break label450;
         }
         localObject1 = (f)((List)localObject2).get(i);
         label270:
-        localObject2 = ((t)localObject3).zOm;
-        localObject3 = ((t)localObject3).zOn;
+        localObject2 = ((t)localObject3).BgG;
+        localObject3 = ((t)localObject3).BgH;
         if (localObject1 == null) {
           break label527;
         }
-        localObject3 = ((f)localObject1).zOm;
-        localObject2 = ((f)localObject1).zOn;
+        localObject3 = ((f)localObject1).BgG;
+        localObject2 = ((f)localObject1).BgH;
         localObject1 = localObject3;
       }
       for (;;)
       {
-        if (!bt.isNullOrNil((String)localObject1))
+        if (!bs.isNullOrNil((String)localObject1))
         {
-          paramViewGroup.nym.setText((CharSequence)localObject1);
-          paramViewGroup.nym.setVisibility(0);
+          paramViewGroup.obn.setText((CharSequence)localObject1);
+          paramViewGroup.obn.setVisibility(0);
           label332:
-          if (bt.isNullOrNil((String)localObject2)) {
+          if (bs.isNullOrNil((String)localObject2)) {
             break label477;
           }
-          paramViewGroup.kFd.setText((CharSequence)localObject2);
-          paramViewGroup.kFd.setVisibility(0);
+          paramViewGroup.lgw.setText((CharSequence)localObject2);
+          paramViewGroup.lgw.setVisibility(0);
           label357:
-          localObject1 = ((p.b)this.Ant.AeD.get(paramInt)).AeL;
-          if (localObject1 != p.a.AeG) {
+          localObject1 = ((p.b)this.BFN.BwX.get(paramInt)).Bxf;
+          if (localObject1 != p.a.Bxa) {
             break label489;
           }
-          paramViewGroup.Anx.setChecked(false);
-          paramViewGroup.Anx.setEnabled(false);
+          paramViewGroup.BFR.setChecked(false);
+          paramViewGroup.BFR.setEnabled(false);
         }
         for (;;)
         {
@@ -440,11 +440,11 @@ public final class n
           paramViewGroup = (n.c)paramView.getTag();
           break;
           label418:
-          paramViewGroup.Anv.setVisibility(8);
-          paramViewGroup.Anw.setVisibility(0);
+          paramViewGroup.BFP.setVisibility(8);
+          paramViewGroup.BFQ.setVisibility(0);
           break label154;
           label438:
-          paramViewGroup.kEu.setVisibility(8);
+          paramViewGroup.lfN.setVisibility(8);
           break label185;
           label450:
           i += 1;
@@ -452,17 +452,17 @@ public final class n
           label459:
           localObject1 = null;
           break label270;
-          paramViewGroup.nym.setVisibility(8);
+          paramViewGroup.obn.setVisibility(8);
           break label332;
           label477:
-          paramViewGroup.kFd.setVisibility(8);
+          paramViewGroup.lgw.setVisibility(8);
           break label357;
           label489:
-          paramViewGroup.Anx.setEnabled(true);
-          if (localObject1 == p.a.AeH) {
-            paramViewGroup.Anx.setChecked(true);
+          paramViewGroup.BFR.setEnabled(true);
+          if (localObject1 == p.a.Bxb) {
+            paramViewGroup.BFR.setChecked(true);
           } else {
-            paramViewGroup.Anx.setChecked(false);
+            paramViewGroup.BFR.setChecked(false);
           }
         }
         label527:
@@ -479,12 +479,12 @@ public final class n
   
   static final class c
   {
-    View Anv;
-    ImageView Anw;
-    CheckBox Anx;
-    TextView kEu;
-    TextView kFd;
-    TextView nym;
+    View BFP;
+    ImageView BFQ;
+    CheckBox BFR;
+    TextView lfN;
+    TextView lgw;
+    TextView obn;
   }
 }
 

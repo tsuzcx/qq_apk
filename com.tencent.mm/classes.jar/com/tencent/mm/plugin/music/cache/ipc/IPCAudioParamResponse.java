@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.i;
+import com.tencent.mm.ay.i;
 
 public class IPCAudioParamResponse
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCAudioParamResponse> CREATOR;
-  public String dqm;
+  public String dnX;
   public String fileName;
-  public byte[] hnR;
-  public int hnS;
-  public String hnT;
-  public int hnU;
+  public byte[] hOu;
+  public int hOv;
+  public String hOw;
+  public int hOx;
   public String musicUrl;
   
   static
@@ -30,30 +30,30 @@ public class IPCAudioParamResponse
   public IPCAudioParamResponse(Parcel paramParcel)
   {
     AppMethodBeat.i(137212);
-    this.dqm = paramParcel.readString();
+    this.dnX = paramParcel.readString();
     this.musicUrl = paramParcel.readString();
     this.fileName = paramParcel.readString();
-    this.hnT = paramParcel.readString();
-    this.hnS = paramParcel.readInt();
-    this.hnU = paramParcel.readInt();
+    this.hOw = paramParcel.readString();
+    this.hOv = paramParcel.readInt();
+    this.hOx = paramParcel.readInt();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.hnR = new byte[i];
-      paramParcel.readByteArray(this.hnR);
+      this.hOu = new byte[i];
+      paramParcel.readByteArray(this.hOu);
     }
     AppMethodBeat.o(137212);
   }
   
   public IPCAudioParamResponse(i parami)
   {
-    this.dqm = parami.dqm;
+    this.dnX = parami.dnX;
     this.musicUrl = parami.musicUrl;
     this.fileName = parami.fileName;
-    this.hnS = parami.hnS;
-    this.hnT = parami.hnT;
-    this.hnR = parami.hnR;
-    this.hnU = parami.hnU;
+    this.hOv = parami.hOv;
+    this.hOw = parami.hOw;
+    this.hOu = parami.hOu;
+    this.hOx = parami.hOx;
   }
   
   public int describeContents()
@@ -64,16 +64,16 @@ public class IPCAudioParamResponse
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(137213);
-    paramParcel.writeString(this.dqm);
+    paramParcel.writeString(this.dnX);
     paramParcel.writeString(this.musicUrl);
     paramParcel.writeString(this.fileName);
-    paramParcel.writeString(this.hnT);
-    paramParcel.writeInt(this.hnS);
-    paramParcel.writeInt(this.hnU);
-    if (this.hnR != null)
+    paramParcel.writeString(this.hOw);
+    paramParcel.writeInt(this.hOv);
+    paramParcel.writeInt(this.hOx);
+    if (this.hOu != null)
     {
-      paramParcel.writeInt(this.hnR.length);
-      paramParcel.writeByteArray(this.hnR);
+      paramParcel.writeInt(this.hOu.length);
+      paramParcel.writeByteArray(this.hOu);
       AppMethodBeat.o(137213);
       return;
     }
@@ -83,7 +83,7 @@ public class IPCAudioParamResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamResponse
  * JD-Core Version:    0.7.0.1
  */

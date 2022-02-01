@@ -2,14 +2,13 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jk;
-import com.tencent.mm.g.a.jl;
-import com.tencent.mm.g.a.jm;
-import com.tencent.mm.plugin.expt.hellhound.a.a.g;
+import com.tencent.mm.g.a.jr;
+import com.tencent.mm.g.a.js;
+import com.tencent.mm.g.a.jt;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b;
-import com.tencent.mm.protocal.protobuf.bgd;
-import com.tencent.mm.protocal.protobuf.cuv;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.bjv;
+import com.tencent.mm.protocal.protobuf.dah;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -19,16 +18,16 @@ import java.util.Set;
 public final class c
   implements com.tencent.mm.plugin.expt.a.c
 {
-  private static c pHo;
+  private static c qpV;
   
-  public static c ccM()
+  public static c cku()
   {
     AppMethodBeat.i(122091);
-    if (pHo == null) {}
+    if (qpV == null) {}
     try
     {
-      pHo = new c();
-      c localc = pHo;
+      qpV = new c();
+      c localc = qpV;
       AppMethodBeat.o(122091);
       return localc;
     }
@@ -38,36 +37,36 @@ public final class c
     }
   }
   
-  public static void fx(String paramString1, String paramString2)
+  public static void fK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(122094);
-    ad.i("MicroMsg.HellBizService", "HABBYGE-MALI, notifyGetBizId: requestId:%s, bizId:%s", new Object[] { paramString1, paramString2 });
-    jk localjk = new jk();
-    localjk.dnA.dnB = paramString1;
-    localjk.dnA.dnC = paramString2;
-    com.tencent.mm.sdk.b.a.ESL.l(localjk);
+    ac.i("MicroMsg.HellBizService", "HABBYGE-MALI, notifyGetBizId: requestId:%s, bizId:%s", new Object[] { paramString1, paramString2 });
+    jr localjr = new jr();
+    localjr.dli.dlj = paramString1;
+    localjr.dli.dlk = paramString2;
+    com.tencent.mm.sdk.b.a.GpY.l(localjr);
     AppMethodBeat.o(122094);
   }
   
-  public static void fy(String paramString1, String paramString2)
+  public static void fL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(122096);
-    ad.i("MicroMsg.HellBizService", "HABBYGE-MALI, notifyGetSessionId: requestId:%s, sessionPageId:%s", new Object[] { paramString1, paramString2 });
-    jm localjm = new jm();
-    localjm.dnE.dnB = paramString1;
-    localjm.dnE.dnF = paramString2;
-    com.tencent.mm.sdk.b.a.ESL.l(localjm);
+    ac.i("MicroMsg.HellBizService", "HABBYGE-MALI, notifyGetSessionId: requestId:%s, sessionPageId:%s", new Object[] { paramString1, paramString2 });
+    jt localjt = new jt();
+    localjt.dlm.dlj = paramString1;
+    localjt.dlm.dln = paramString2;
+    com.tencent.mm.sdk.b.a.GpY.l(localjt);
     AppMethodBeat.o(122096);
   }
   
-  public static void fz(String paramString1, String paramString2)
+  public static void fM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(122097);
-    ad.i("MicroMsg.HellBizService", "HABBYGE-MALI, notifyGetSessionId: requestId:%s, sessionId:%s", new Object[] { paramString1, paramString2 });
-    jl localjl = new jl();
-    localjl.dnD.dnB = paramString1;
-    localjl.dnD.sessionId = paramString2;
-    com.tencent.mm.sdk.b.a.ESL.l(localjl);
+    ac.i("MicroMsg.HellBizService", "HABBYGE-MALI, notifyGetSessionId: requestId:%s, sessionId:%s", new Object[] { paramString1, paramString2 });
+    js localjs = new js();
+    localjs.dll.dlj = paramString1;
+    localjs.dll.sessionId = paramString2;
+    com.tencent.mm.sdk.b.a.GpY.l(localjs);
     AppMethodBeat.o(122097);
   }
   
@@ -79,56 +78,56 @@ public final class c
       AppMethodBeat.o(122095);
       return;
     }
-    ad.i("MicroMsg.HellBizService", "HABBYGE-MALI, %d putBizData key[%s] data[%s] bizId[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2, paramString3 });
-    ad.i("AsyncBizCollector", "HABBYGE-MALI, collectBizData: %s, %s, %s", new Object[] { paramString1, paramString2, paramString3 });
-    bgd localbgd = new bgd();
-    localbgd.jOx = paramString3;
-    localbgd.value = paramString2;
-    localbgd.dvm = paramString1;
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().l(502, localbgd);
+    ac.i("MicroMsg.HellBizService", "HABBYGE-MALI, %d putBizData key[%s] data[%s] bizId[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2, paramString3 });
+    ac.i("AsyncBizCollector", "HABBYGE-MALI, collectBizData: %s, %s, %s", new Object[] { paramString1, paramString2, paramString3 });
+    bjv localbjv = new bjv();
+    localbjv.koY = paramString3;
+    localbjv.value = paramString2;
+    localbjv.dsY = paramString1;
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(502, localbjv);
     AppMethodBeat.o(122095);
   }
   
-  public final void Vm(String paramString)
+  public final void Zy(String paramString)
   {
     AppMethodBeat.i(122093);
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().l(501, paramString);
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(501, paramString);
     AppMethodBeat.o(122093);
   }
   
-  public final String cbk()
+  public final String cit()
   {
     AppMethodBeat.i(169347);
-    String str = d.ccN();
-    ad.i("MicroMsg.HellBizService", "HABBYGE-MALI, HellBizService, requestSessionPageId: %s", new Object[] { str });
+    String str = d.ckv();
+    ac.i("MicroMsg.HellBizService", "HABBYGE-MALI, HellBizService, requestSessionPageId: %s", new Object[] { str });
     AppMethodBeat.o(169347);
     return str;
   }
   
-  public final String cbl()
+  public final String ciu()
   {
     AppMethodBeat.i(184373);
-    String str = b.ccH().ccJ();
+    String str = b.ckp().ckr();
     AppMethodBeat.o(184373);
     return str;
   }
   
-  public final Map<String, Boolean> cbm()
+  public final Map<String, Boolean> civ()
   {
     AppMethodBeat.i(184374);
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.g.c.cdO();
-    if (((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).pGv == null)
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.g.c.clv();
+    if (((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).qlE == null)
     {
       AppMethodBeat.o(184374);
       return null;
     }
-    Object localObject2 = ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).pGv.pFk;
+    Object localObject2 = ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).qlE.qjY;
     if ((localObject2 != null) && (!((Map)localObject2).isEmpty()))
     {
       AppMethodBeat.o(184374);
       return localObject2;
     }
-    localObject2 = ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).pGv.pFj;
+    localObject2 = ((com.tencent.mm.plugin.expt.hellhound.a.g.c)localObject1).qlE.qjX;
     if ((localObject2 == null) || (((Map)localObject2).isEmpty()))
     {
       AppMethodBeat.o(184374);
@@ -141,8 +140,8 @@ public final class c
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
       if (localEntry != null)
       {
-        g localg = (g)localEntry.getValue();
-        ((Map)localObject1).put(localEntry.getKey(), Boolean.valueOf(localg.KEO.isAd));
+        com.tencent.mm.plugin.expt.hellhound.a.a.c localc = (com.tencent.mm.plugin.expt.hellhound.a.a.c)localEntry.getValue();
+        ((Map)localObject1).put(localEntry.getKey(), Boolean.valueOf(localc.qkB.isAd));
       }
     }
     if (((Map)localObject1).isEmpty())
@@ -154,7 +153,7 @@ public final class c
     return localObject1;
   }
   
-  public final void fq(String paramString1, String paramString2)
+  public final void fD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(122092);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -162,17 +161,17 @@ public final class c
       AppMethodBeat.o(122092);
       return;
     }
-    ad.i("MicroMsg.HellBizService", "HABBYGE-MALI, %d putBizData key[%s] data[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2 });
-    bgd localbgd = new bgd();
-    localbgd.jOx = paramString1;
-    localbgd.value = paramString2;
-    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cbD().l(500, localbgd);
+    ac.i("MicroMsg.HellBizService", "HABBYGE-MALI, %d putBizData key[%s] data[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2 });
+    bjv localbjv = new bjv();
+    localbjv.koY = paramString1;
+    localbjv.value = paramString2;
+    com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(500, localbjv);
     AppMethodBeat.o(122092);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.a.c
  * JD-Core Version:    0.7.0.1
  */

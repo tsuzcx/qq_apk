@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 class NetStatUnit
   extends View
 {
-  protected static long wes;
-  private long dpt;
-  private long wer;
+  protected static long xpG;
+  private long dne;
+  private long xpF;
   
   public NetStatUnit(Context paramContext)
   {
@@ -31,7 +31,7 @@ class NetStatUnit
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static void se(long paramLong)
+  private static void wH(long paramLong)
   {
     paramLong = (paramLong / 1572864L + 1L) * 1572864L;
     if (94371840L > paramLong) {
@@ -41,8 +41,8 @@ class NetStatUnit
     }
     for (;;)
     {
-      if (paramLong > wes) {
-        wes = paramLong;
+      if (paramLong > xpG) {
+        xpG = paramLong;
       }
       return;
       paramLong = 94371840L;
@@ -52,21 +52,21 @@ class NetStatUnit
     }
   }
   
-  public final void ah(long paramLong1, long paramLong2)
+  public final void ae(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(173792);
-    this.wer = paramLong1;
-    this.dpt = paramLong2;
+    this.xpF = paramLong1;
+    this.dne = paramLong2;
     if (paramLong1 > 94371840L) {
-      this.wer = 94371840L;
+      this.xpF = 94371840L;
     }
     if (paramLong2 > 94371840L) {
-      this.dpt = 94371840L;
+      this.dne = 94371840L;
     }
     if (paramLong1 > paramLong2) {}
     for (;;)
     {
-      se(paramLong1);
+      wH(paramLong1);
       AppMethodBeat.o(173792);
       return;
       paramLong1 = paramLong2;
@@ -81,12 +81,12 @@ class NetStatUnit
     Paint localPaint = new Paint();
     Rect localRect1 = new Rect();
     getDrawingRect(localRect1);
-    float f1 = localRect1.height() * (float)this.dpt / (float)wes;
+    float f1 = localRect1.height() * (float)this.dne / (float)xpG;
     float f2 = localRect1.width();
     Rect localRect2 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-7829368);
     paramCanvas.drawRect(localRect2, localPaint);
-    f1 = localRect1.height() * (float)this.wer / (float)wes;
+    f1 = localRect1.height() * (float)this.xpF / (float)xpG;
     f2 = localRect1.width();
     localRect1 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-16711936);
@@ -96,7 +96,7 @@ class NetStatUnit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatUnit
  * JD-Core Version:    0.7.0.1
  */

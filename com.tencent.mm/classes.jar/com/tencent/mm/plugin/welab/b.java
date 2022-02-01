@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.welab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.f.a;
-import com.tencent.mm.al.f.c;
+import com.tencent.mm.ak.f.a;
+import com.tencent.mm.ak.f.c;
 import com.tencent.mm.model.cc.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cs;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,21 +16,21 @@ public final class b
   public final void a(f.a parama)
   {
     AppMethodBeat.i(146209);
-    if ((parama == null) || (parama.fTo == null) || (parama.fTo.Cxz == null))
+    if ((parama == null) || (parama.fXi == null) || (parama.fXi.DPV == null))
     {
-      ad.i("MicroMsg.WelabNewMsgLsn", "recv null msg");
+      ac.i("MicroMsg.WelabNewMsgLsn", "recv null msg");
       AppMethodBeat.o(146209);
       return;
     }
-    parama = z.a(parama.fTo.Cxz);
-    ad.i("MicroMsg.WelabNewMsgLsn", "recv addMsg ".concat(String.valueOf(parama)));
-    parama = f.ayY(parama);
+    parama = z.a(parama.fXi.DPV);
+    ac.i("MicroMsg.WelabNewMsgLsn", "recv addMsg ".concat(String.valueOf(parama)));
+    parama = f.aEp(parama);
     if ((parama != null) && (parama.isValid()))
     {
       if (parama.field_status != 1) {
         break label124;
       }
-      a.esb().BBC.delete(parama, new String[] { "expId" });
+      a.eHv().CTI.delete(parama, new String[] { "expId" });
     }
     for (;;)
     {
@@ -38,13 +38,13 @@ public final class b
       AppMethodBeat.o(146209);
       return;
       label124:
-      a.esb().BBC.c(parama);
-      com.tencent.mm.plugin.welab.e.b.esr().f(parama);
+      a.eHv().CTI.c(parama);
+      com.tencent.mm.plugin.welab.e.b.eHK().f(parama);
       parama.reportIdkey();
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(parama);
-      a.esb();
-      a.gB(localArrayList);
+      a.eHv();
+      a.gM(localArrayList);
     }
   }
   

@@ -35,19 +35,19 @@ public class ae
   {
     AppMethodBeat.i(57278);
     if (paraml == null) {
-      adP(5);
+      agL(5);
     }
     if (paramg == null) {
-      adP(6);
+      agL(6);
     }
     if (paramf == null) {
-      adP(7);
+      agL(7);
     }
     if (parama == null) {
-      adP(8);
+      agL(8);
     }
     if (paraman == null) {
-      adP(9);
+      agL(9);
     }
     paraml = new ae(paraml, null, paramg, paramf, parama, paraman);
     AppMethodBeat.o(57278);
@@ -58,20 +58,20 @@ public class ae
   {
     AppMethodBeat.i(57280);
     if (paramList == null) {
-      adP(14);
+      agL(14);
     }
     if (paramList1 == null) {
-      adP(15);
+      agL(15);
     }
     if (paramba == null) {
-      adP(16);
+      agL(16);
     }
     super.a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba);
     if ((paramMap != null) && (!paramMap.isEmpty())) {
-      this.JtZ = new LinkedHashMap(paramMap);
+      this.Lhs = new LinkedHashMap(paramMap);
     }
     if (this == null) {
-      adP(17);
+      agL(17);
     }
     AppMethodBeat.o(57280);
     return this;
@@ -81,16 +81,16 @@ public class ae
   {
     AppMethodBeat.i(57282);
     if (paraml == null) {
-      adP(19);
+      agL(19);
     }
     if (parama == null) {
-      adP(20);
+      agL(20);
     }
     if (paramg == null) {
-      adP(21);
+      agL(21);
     }
     if (paraman == null) {
-      adP(22);
+      agL(22);
     }
     paramt = (am)paramt;
     if (paramf != null) {}
@@ -99,7 +99,7 @@ public class ae
       paraml = new ae(paraml, paramt, paramg, paramf, parama, paraman);
       AppMethodBeat.o(57282);
       return paraml;
-      paramf = fyB();
+      paramf = fRf();
     }
   }
   
@@ -107,17 +107,17 @@ public class ae
   {
     AppMethodBeat.i(57279);
     if (paramList == null) {
-      adP(10);
+      agL(10);
     }
     if (paramList1 == null) {
-      adP(11);
+      agL(11);
     }
     if (paramba == null) {
-      adP(12);
+      agL(12);
     }
     paramak1 = a(paramak1, paramak2, paramList, paramList1, paramab, paramw, paramba, null);
     if (paramak1 == null) {
-      adP(13);
+      agL(13);
     }
     AppMethodBeat.o(57279);
     return paramak1;
@@ -128,37 +128,37 @@ public class ae
     AppMethodBeat.i(57283);
     paraml = (am)super.b(paraml, paramw, paramba, parama, paramBoolean);
     if (paraml == null) {
-      adP(23);
+      agL(23);
     }
     AppMethodBeat.o(57283);
     return paraml;
   }
   
-  public final am fAn()
-  {
-    AppMethodBeat.i(57281);
-    am localam = (am)super.fyM();
-    if (localam == null) {
-      adP(18);
-    }
-    AppMethodBeat.o(57281);
-    return localam;
-  }
-  
-  public t.a<? extends am> fyT()
+  public t.a<? extends am> fRx()
   {
     AppMethodBeat.i(57284);
-    t.a locala = super.fyT();
+    t.a locala = super.fRx();
     if (locala == null) {
-      adP(24);
+      agL(24);
     }
     AppMethodBeat.o(57284);
     return locala;
   }
+  
+  public final am fSR()
+  {
+    AppMethodBeat.i(57281);
+    am localam = (am)super.fRq();
+    if (localam == null) {
+      agL(18);
+    }
+    AppMethodBeat.o(57281);
+    return localam;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.b.c.ae
  * JD-Core Version:    0.7.0.1
  */

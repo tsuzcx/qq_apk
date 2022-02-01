@@ -23,40 +23,40 @@ import com.tencent.mm.ui.widget.a.e.b;
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public e.b GHn;
-  public boolean GHo;
-  public ViewTreeObserver acK;
-  public View jGG;
-  public Dialog kBi;
-  public BottomSheetBehavior kBl;
-  public boolean kBm;
-  public int kBn;
-  public boolean kBp;
+  public e.b Ihj;
+  public boolean Ihk;
+  public ViewTreeObserver adE;
+  public View khe;
+  public Dialog lcA;
+  public BottomSheetBehavior lcD;
+  public boolean lcE;
+  public int lcF;
+  public boolean lcH;
   public Context mContext;
-  public View nO;
-  private boolean qVt;
+  public View oP;
+  private boolean rVz;
   
   public b(Context paramContext, View paramView)
   {
     AppMethodBeat.i(185898);
-    this.kBm = false;
-    this.qVt = false;
-    this.GHo = false;
-    this.kBp = false;
-    this.jGG = paramView;
+    this.lcE = false;
+    this.rVz = false;
+    this.Ihk = false;
+    this.lcH = false;
+    this.khe = paramView;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.nO = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.oP = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.kBi = new a(this.mContext, 2131820788);
-    this.kBm = aov();
-    if (this.kBi != null) {
-      this.kBi.setContentView(this.jGG);
+    this.lcA = new a(this.mContext, 2131820788);
+    this.lcE = aly();
+    if (this.lcA != null) {
+      this.lcA.setContentView(this.khe);
     }
-    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
-    this.kBl.setState(3);
-    if (this.kBi != null) {
-      this.kBi.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
+    this.lcD.setState(3);
+    if (this.lcA != null) {
+      this.lcA.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -82,7 +82,7 @@ public final class b
   private boolean isShowing()
   {
     AppMethodBeat.i(185903);
-    if ((this.kBi != null) && (this.kBi.isShowing()))
+    if ((this.lcA != null) && (this.lcA.isShowing()))
     {
       AppMethodBeat.o(185903);
       return true;
@@ -91,7 +91,7 @@ public final class b
     return false;
   }
   
-  public final boolean aov()
+  public final boolean aly()
   {
     AppMethodBeat.i(185902);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
@@ -103,16 +103,16 @@ public final class b
     return false;
   }
   
-  public final void bfo()
+  public final void bmi()
   {
     AppMethodBeat.i(185901);
-    if (this.kBi != null)
+    if (this.lcA != null)
     {
-      if (this.kBl != null) {
-        this.kBl.lh = true;
+      if (this.lcD != null) {
+        this.lcD.mg = true;
       }
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.kBi.dismiss();
+        this.lcA.dismiss();
       }
     }
     AppMethodBeat.o(185901);
@@ -135,15 +135,15 @@ public final class b
     AppMethodBeat.i(185899);
     if (isShowing())
     {
-      View localView = this.nO;
+      View localView = this.oP;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bfo();
+        bmi();
         AppMethodBeat.o(185899);
         return;
       }
-      if ((isShowing()) && ((this.kBm != aov()) || (this.kBn != getRotation()))) {
-        bfo();
+      if ((isShowing()) && ((this.lcE != aly()) || (this.lcF != getRotation()))) {
+        bmi();
       }
     }
     AppMethodBeat.o(185899);
@@ -151,7 +151,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.b
  * JD-Core Version:    0.7.0.1
  */

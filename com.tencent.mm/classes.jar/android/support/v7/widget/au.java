@@ -39,33 +39,33 @@ final class au
   extends o
   implements View.OnClickListener
 {
-  private final WeakHashMap<String, Drawable.ConstantState> atD;
-  private final SearchView atN;
-  private final SearchableInfo aty;
-  private final SearchManager auJ = (SearchManager)this.mContext.getSystemService("search");
-  private final Context auK;
-  private final int auL;
-  int auM = 1;
-  private ColorStateList auN;
-  private int auO = -1;
-  private int auP = -1;
-  private int auQ = -1;
-  private int auR = -1;
-  private int auS = -1;
-  private int auT = -1;
+  private final SearchView auI;
+  private final SearchableInfo aut;
+  private final WeakHashMap<String, Drawable.ConstantState> auy;
+  private final SearchManager avF = (SearchManager)this.mContext.getSystemService("search");
+  private final Context avG;
+  private final int avH;
+  int avI = 1;
+  private ColorStateList avJ;
+  private int avK = -1;
+  private int avL = -1;
+  private int avM = -1;
+  private int avN = -1;
+  private int avO = -1;
+  private int avP = -1;
   private boolean mClosed = false;
   
   public au(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
   {
     super(paramContext, paramSearchView.getSuggestionRowLayout());
-    this.atN = paramSearchView;
-    this.aty = paramSearchableInfo;
-    this.auL = paramSearchView.getSuggestionCommitIconResId();
-    this.auK = paramContext;
-    this.atD = paramWeakHashMap;
+    this.auI = paramSearchView;
+    this.aut = paramSearchableInfo;
+    this.avH = paramSearchView.getSuggestionCommitIconResId();
+    this.avG = paramContext;
+    this.auy = paramWeakHashMap;
   }
   
-  private Drawable G(String paramString)
+  private Drawable I(String paramString)
   {
     Object localObject1;
     if ((paramString == null) || (paramString.isEmpty()) || ("0".equals(paramString))) {
@@ -77,19 +77,19 @@ final class au
       try
       {
         int i = Integer.parseInt(paramString);
-        String str = "android.resource://" + this.auK.getPackageName() + "/" + i;
-        localDrawable = H(str);
+        String str = "android.resource://" + this.avG.getPackageName() + "/" + i;
+        localDrawable = J(str);
         localObject1 = localDrawable;
         if (localDrawable == null)
         {
-          localObject1 = b.l(this.auK, i);
+          localObject1 = b.l(this.avG, i);
           a(str, (Drawable)localObject1);
           return localObject1;
         }
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        Drawable localDrawable = H(paramString);
+        Drawable localDrawable = J(paramString);
         Object localObject2 = localDrawable;
         if (localDrawable == null)
         {
@@ -103,9 +103,9 @@ final class au
     return null;
   }
   
-  private Drawable H(String paramString)
+  private Drawable J(String paramString)
   {
-    paramString = (Drawable.ConstantState)this.atD.get(paramString);
+    paramString = (Drawable.ConstantState)this.auy.get(paramString);
     if (paramString == null) {
       return null;
     }
@@ -147,7 +147,7 @@ final class au
   private void a(String paramString, Drawable paramDrawable)
   {
     if (paramDrawable != null) {
-      this.atD.put(paramString, paramDrawable.getConstantState());
+      this.auy.put(paramString, paramDrawable.getConstantState());
     }
   }
   
@@ -188,7 +188,7 @@ final class au
           throw new FileNotFoundException("Resource does not exist: ".concat(String.valueOf(paramUri)));
         }
       }
-      localInputStream = this.auK.getContentResolver().openInputStream(paramUri);
+      localInputStream = this.avG.getContentResolver().openInputStream(paramUri);
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
@@ -299,93 +299,93 @@ final class au
   {
     Object localObject2 = null;
     a locala = (a)paramView.getTag();
-    if (this.auT != -1) {}
-    for (int i = paramCursor.getInt(this.auT);; i = 0)
+    if (this.avP != -1) {}
+    for (int i = paramCursor.getInt(this.avP);; i = 0)
     {
-      if (locala.auU != null)
+      if (locala.avQ != null)
       {
-        paramView = a(paramCursor, this.auO);
-        b(locala.auU, paramView);
+        paramView = a(paramCursor, this.avK);
+        b(locala.avQ, paramView);
       }
       Object localObject1;
-      if (locala.auV != null)
+      if (locala.avR != null)
       {
-        localObject1 = a(paramCursor, this.auQ);
+        localObject1 = a(paramCursor, this.avM);
         if (localObject1 != null)
         {
-          if (this.auN == null)
+          if (this.avJ == null)
           {
             paramView = new TypedValue();
             this.mContext.getTheme().resolveAttribute(2130969561, paramView, true);
-            this.auN = this.mContext.getResources().getColorStateList(paramView.resourceId);
+            this.avJ = this.mContext.getResources().getColorStateList(paramView.resourceId);
           }
           paramView = new SpannableString((CharSequence)localObject1);
-          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.auN, null), 0, ((CharSequence)localObject1).length(), 33);
+          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.avJ, null), 0, ((CharSequence)localObject1).length(), 33);
           if (!TextUtils.isEmpty(paramView)) {
             break label345;
           }
-          if (locala.auU != null)
+          if (locala.avQ != null)
           {
-            locala.auU.setSingleLine(false);
-            locala.auU.setMaxLines(2);
+            locala.avQ.setSingleLine(false);
+            locala.avQ.setMaxLines(2);
           }
           label201:
-          b(locala.auV, paramView);
+          b(locala.avR, paramView);
         }
       }
       else
       {
-        if (locala.auW != null)
+        if (locala.avS != null)
         {
-          ImageView localImageView = locala.auW;
-          if (this.auR != -1) {
+          ImageView localImageView = locala.avS;
+          if (this.avN != -1) {
             break label374;
           }
           paramView = null;
           label235:
           a(localImageView, paramView, 4);
         }
-        if (locala.auX != null)
+        if (locala.avT != null)
         {
-          localObject1 = locala.auX;
-          if (this.auS != -1) {
+          localObject1 = locala.avT;
+          if (this.avO != -1) {
             break label519;
           }
         }
       }
       label519:
-      for (paramView = localObject2;; paramView = G(paramCursor.getString(this.auS)))
+      for (paramView = localObject2;; paramView = I(paramCursor.getString(this.avO)))
       {
         a((ImageView)localObject1, paramView, 8);
-        if ((this.auM != 2) && ((this.auM != 1) || ((i & 0x1) == 0))) {
+        if ((this.avI != 2) && ((this.avI != 1) || ((i & 0x1) == 0))) {
           break label537;
         }
-        locala.auY.setVisibility(0);
-        locala.auY.setTag(locala.auU.getText());
-        locala.auY.setOnClickListener(this);
+        locala.avU.setVisibility(0);
+        locala.avU.setTag(locala.avQ.getText());
+        locala.avU.setOnClickListener(this);
         return;
-        paramView = a(paramCursor, this.auP);
+        paramView = a(paramCursor, this.avL);
         break;
         label345:
-        if (locala.auU == null) {
+        if (locala.avQ == null) {
           break label201;
         }
-        locala.auU.setSingleLine(true);
-        locala.auU.setMaxLines(1);
+        locala.avQ.setSingleLine(true);
+        locala.avQ.setMaxLines(1);
         break label201;
         label374:
-        localObject1 = G(paramCursor.getString(this.auR));
+        localObject1 = I(paramCursor.getString(this.avN));
         paramView = (View)localObject1;
         if (localObject1 != null) {
           break label235;
         }
-        paramView = this.aty.getSearchActivity();
+        paramView = this.aut.getSearchActivity();
         String str = paramView.flattenToShortString();
-        if (this.atD.containsKey(str))
+        if (this.auy.containsKey(str))
         {
-          paramView = (Drawable.ConstantState)this.atD.get(str);
+          paramView = (Drawable.ConstantState)this.auy.get(str);
           if (paramView == null) {}
-          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.auK.getResources()))
+          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.avG.getResources()))
           {
             paramView = (View)localObject1;
             if (localObject1 != null) {
@@ -399,12 +399,12 @@ final class au
         if (localObject1 == null) {}
         for (paramView = null;; paramView = ((Drawable)localObject1).getConstantState())
         {
-          this.atD.put(str, paramView);
+          this.auy.put(str, paramView);
           break;
         }
       }
       label537:
-      locala.auY.setVisibility(8);
+      locala.avU.setVisibility(8);
       return;
     }
   }
@@ -424,12 +424,12 @@ final class au
         super.changeCursor(paramCursor);
         if (paramCursor != null)
         {
-          this.auO = paramCursor.getColumnIndex("suggest_text_1");
-          this.auP = paramCursor.getColumnIndex("suggest_text_2");
-          this.auQ = paramCursor.getColumnIndex("suggest_text_2_url");
-          this.auR = paramCursor.getColumnIndex("suggest_icon_1");
-          this.auS = paramCursor.getColumnIndex("suggest_icon_2");
-          this.auT = paramCursor.getColumnIndex("suggest_flags");
+          this.avK = paramCursor.getColumnIndex("suggest_text_1");
+          this.avL = paramCursor.getColumnIndex("suggest_text_2");
+          this.avM = paramCursor.getColumnIndex("suggest_text_2_url");
+          this.avN = paramCursor.getColumnIndex("suggest_icon_1");
+          this.avO = paramCursor.getColumnIndex("suggest_icon_2");
+          this.avP = paramCursor.getColumnIndex("suggest_flags");
           return;
         }
       }
@@ -449,14 +449,14 @@ final class au
         if (str != null) {
           return str;
         }
-        if (this.aty.shouldRewriteQueryFromData())
+        if (this.aut.shouldRewriteQueryFromData())
         {
           str = a(paramCursor, "suggest_intent_data");
           if (str != null) {
             return str;
           }
         }
-      } while (!this.aty.shouldRewriteQueryFromText());
+      } while (!this.aut.shouldRewriteQueryFromText());
       paramCursor = a(paramCursor, "suggest_text_1");
     } while (paramCursor == null);
     return paramCursor;
@@ -471,9 +471,9 @@ final class au
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newDropDownView(this.mContext, this.Qs, paramViewGroup);
+      paramViewGroup = newDropDownView(this.mContext, this.Rn, paramViewGroup);
       if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).auU.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).avQ.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -488,9 +488,9 @@ final class au
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newView(this.mContext, this.Qs, paramViewGroup);
+      paramViewGroup = newView(this.mContext, this.Rn, paramViewGroup);
       if (paramViewGroup != null) {
-        ((a)paramViewGroup.getTag()).auU.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).avQ.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -505,7 +505,7 @@ final class au
   {
     paramContext = super.newView(paramContext, paramCursor, paramViewGroup);
     paramContext.setTag(new a(paramContext));
-    ((ImageView)paramContext.findViewById(2131299261)).setImageResource(this.auL);
+    ((ImageView)paramContext.findViewById(2131299261)).setImageResource(this.avH);
     return paramContext;
   }
   
@@ -525,19 +525,19 @@ final class au
   {
     paramView = paramView.getTag();
     if ((paramView instanceof CharSequence)) {
-      this.atN.setQuery((CharSequence)paramView);
+      this.auI.setQuery((CharSequence)paramView);
     }
   }
   
   public final Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
     if (paramCharSequence == null) {}
-    for (paramCharSequence = ""; (this.atN.getVisibility() != 0) || (this.atN.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
+    for (paramCharSequence = ""; (this.auI.getVisibility() != 0) || (this.auI.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
       return null;
     }
     try
     {
-      Object localObject1 = this.aty;
+      Object localObject1 = this.aut;
       if (localObject1 == null) {
         paramCharSequence = null;
       }
@@ -581,25 +581,25 @@ final class au
   
   static final class a
   {
-    public final TextView auU;
-    public final TextView auV;
-    public final ImageView auW;
-    public final ImageView auX;
-    public final ImageView auY;
+    public final TextView avQ;
+    public final TextView avR;
+    public final ImageView avS;
+    public final ImageView avT;
+    public final ImageView avU;
     
     public a(View paramView)
     {
-      this.auU = ((TextView)paramView.findViewById(16908308));
-      this.auV = ((TextView)paramView.findViewById(16908309));
-      this.auW = ((ImageView)paramView.findViewById(16908295));
-      this.auX = ((ImageView)paramView.findViewById(16908296));
-      this.auY = ((ImageView)paramView.findViewById(2131299261));
+      this.avQ = ((TextView)paramView.findViewById(16908308));
+      this.avR = ((TextView)paramView.findViewById(16908309));
+      this.avS = ((ImageView)paramView.findViewById(16908295));
+      this.avT = ((ImageView)paramView.findViewById(16908296));
+      this.avU = ((ImageView)paramView.findViewById(2131299261));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.au
  * JD-Core Version:    0.7.0.1
  */

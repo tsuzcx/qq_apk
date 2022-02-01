@@ -3,7 +3,7 @@ package com.tencent.mm.ui.tools;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.model.az;
 import com.tencent.mm.modelsimple.s;
 
@@ -15,7 +15,7 @@ final class NewTaskUI$2
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(39110);
-    az.aeS().a(this.HsQ);
+    az.agi().a(this.ITn);
     AppMethodBeat.o(39110);
   }
 }

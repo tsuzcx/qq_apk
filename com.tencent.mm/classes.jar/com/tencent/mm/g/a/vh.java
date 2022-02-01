@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class vh
   extends b
 {
-  public a dAL;
-  
   public vh()
   {
     this((byte)0);
@@ -15,16 +12,8 @@ public final class vh
   
   private vh(byte paramByte)
   {
-    AppMethodBeat.i(162263);
-    this.dAL = new a();
-    this.ESR = false;
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(162263);
-  }
-  
-  public static final class a
-  {
-    public String dAM;
   }
 }
 

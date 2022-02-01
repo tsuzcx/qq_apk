@@ -13,9 +13,9 @@ import com.tencent.mm.ui.search.FTSEditTextView;
 public class SOSEditTextView
   extends FTSEditTextView
 {
-  private View AIg;
-  private View AIh;
-  private View AIi;
+  private View Cax;
+  private View Cay;
+  private View Caz;
   
   public SOSEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,10 +27,10 @@ public class SOSEditTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void eix()
+  public final void exR()
   {
     AppMethodBeat.i(116571);
-    getEditText().setOnFocusChangeListener(this.lmy);
+    getEditText().setOnFocusChangeListener(this.lMo);
     AppMethodBeat.o(116571);
   }
   
@@ -44,9 +44,9 @@ public class SOSEditTextView
   {
     AppMethodBeat.i(116570);
     super.init();
-    this.AIg = findViewById(2131306483);
-    this.AIh = findViewById(2131305721);
-    this.AIi = findViewById(2131304392);
+    this.Cax = findViewById(2131306483);
+    this.Cay = findViewById(2131305721);
+    this.Caz = findViewById(2131304392);
     getEditText().setOnFocusChangeListener(null);
     getEditText().setHintTextColor(getResources().getColor(2131100538));
     getEditText().setTextColor(getResources().getColor(2131100711));
@@ -56,8 +56,8 @@ public class SOSEditTextView
   public void setCancelTextViewClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116576);
-    if (this.AIh != null) {
-      this.AIh.setOnClickListener(paramOnClickListener);
+    if (this.Cay != null) {
+      this.Cay.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(116576);
   }
@@ -65,8 +65,8 @@ public class SOSEditTextView
   public void setCancelTextViewVisibile(int paramInt)
   {
     AppMethodBeat.i(116575);
-    if (this.AIh != null) {
-      this.AIh.setVisibility(paramInt);
+    if (this.Cay != null) {
+      this.Cay.setVisibility(paramInt);
     }
     AppMethodBeat.o(116575);
   }
@@ -74,8 +74,8 @@ public class SOSEditTextView
   public void setSearchBarCancelTextContainerVisibile(int paramInt)
   {
     AppMethodBeat.i(116572);
-    if (this.AIi != null) {
-      this.AIi.setVisibility(paramInt);
+    if (this.Caz != null) {
+      this.Caz.setVisibility(paramInt);
     }
     AppMethodBeat.o(116572);
   }
@@ -83,8 +83,8 @@ public class SOSEditTextView
   public void setVoiceBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116574);
-    if (this.AIg != null) {
-      this.AIg.setOnClickListener(paramOnClickListener);
+    if (this.Cax != null) {
+      this.Cax.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(116574);
   }
@@ -92,8 +92,8 @@ public class SOSEditTextView
   public void setVoiceImageButtonVisibile(int paramInt)
   {
     AppMethodBeat.i(116573);
-    if (this.AIg != null) {
-      this.AIg.setVisibility(paramInt);
+    if (this.Cax != null) {
+      this.Cax.setVisibility(paramInt);
     }
     AppMethodBeat.o(116573);
   }

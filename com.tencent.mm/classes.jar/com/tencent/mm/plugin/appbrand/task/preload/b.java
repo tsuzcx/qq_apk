@@ -7,10 +7,10 @@ public enum b
   static
   {
     AppMethodBeat.i(48505);
-    lxj = new b("LOW_LEVEL", 0);
-    lxk = new b("MIDDLE_LEVEL", 1);
-    lxl = new b("HIGH_LEVEL", 2);
-    lxm = new b[] { lxj, lxk, lxl };
+    lZd = new b("LOW_LEVEL", 0);
+    lZe = new b("MIDDLE_LEVEL", 1);
+    lZf = new b("HIGH_LEVEL", 2);
+    lZg = new b[] { lZd, lZe, lZf };
     AppMethodBeat.o(48505);
   }
   

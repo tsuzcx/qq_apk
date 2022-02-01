@@ -10,19 +10,19 @@ import java.util.List;
 public abstract interface at
   extends m
 {
-  public abstract h fxM();
+  public abstract h fQq();
   
-  public abstract boolean fxO();
+  public abstract boolean fQs();
   
-  public abstract Collection<ab> fzP();
+  public abstract g fRE();
   
-  public abstract g fza();
+  public abstract Collection<ab> fSt();
   
   public abstract List<as> getParameters();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.at
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,41 @@
 package com.tencent.mm.plugin.appbrand.r.a;
 
-import com.tencent.mm.ac.g;
-import com.tencent.mm.ac.i;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebChromeClient.CustomViewCallback;
 
-public abstract class d
-  implements a
+public abstract interface d
 {
-  public final String a(String paramString, c paramc)
+  public abstract void O(View paramView, int paramInt);
+  
+  public abstract void a(WebChromeClient.CustomViewCallback paramCustomViewCallback);
+  
+  public abstract void a(b paramb);
+  
+  public abstract boolean aUJ();
+  
+  public abstract void b(b paramb);
+  
+  public abstract boolean bsE();
+  
+  public abstract void release();
+  
+  public abstract void rj(int paramInt);
+  
+  public static abstract interface b
   {
-    try
-    {
-      paramString = new i(paramString);
-      return b(paramString, paramc);
-    }
-    catch (g paramString) {}
-    return paramc.biI();
+    public abstract ViewGroup cF(View paramView);
   }
   
-  protected abstract String b(i parami, c paramc);
+  @Deprecated
+  public static abstract interface c
+  {
+    public abstract void a(e.b paramb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.a.d
  * JD-Core Version:    0.7.0.1
  */

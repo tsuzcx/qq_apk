@@ -6,12 +6,12 @@ import java.io.Serializable;
 public final class e<K, V>
   implements Serializable
 {
-  public final K aFP;
+  public final K aGF;
   public final V value;
   
   public e(K paramK, V paramV)
   {
-    this.aFP = paramK;
+    this.aGF = paramK;
     this.value = paramV;
   }
   
@@ -24,9 +24,9 @@ public final class e<K, V>
       return false;
     }
     paramObject = (e)paramObject;
-    if (this.aFP == null)
+    if (this.aGF == null)
     {
-      if (paramObject.aFP != null) {
+      if (paramObject.aGF != null) {
         break label73;
       }
       if (this.value != null) {
@@ -40,7 +40,7 @@ public final class e<K, V>
     {
       AppMethodBeat.o(61439);
       return true;
-      if (this.aFP.equals(paramObject.aFP)) {
+      if (this.aGF.equals(paramObject.aGF)) {
         break;
       }
       label73:
@@ -58,7 +58,7 @@ public final class e<K, V>
     int j = 0;
     AppMethodBeat.i(61440);
     int i;
-    if (this.aFP == null)
+    if (this.aGF == null)
     {
       i = 0;
       if (this.value != null) {
@@ -69,7 +69,7 @@ public final class e<K, V>
     {
       AppMethodBeat.o(61440);
       return i ^ j;
-      i = this.aFP.hashCode();
+      i = this.aGF.hashCode();
       break;
       label43:
       j = this.value.hashCode();
@@ -79,14 +79,14 @@ public final class e<K, V>
   public final String toString()
   {
     AppMethodBeat.i(61441);
-    String str = this.aFP + "=" + this.value;
+    String str = this.aGF + "=" + this.value;
     AppMethodBeat.o(61441);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.c.e
  * JD-Core Version:    0.7.0.1
  */

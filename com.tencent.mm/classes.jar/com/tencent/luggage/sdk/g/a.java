@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/luggage/sdk/wxa_ktx/ActivityUtils;", "", "()V", "REQUEST_CODE_LOW_BITS_MAGIC_NUM", "", "TAG", "", "hashCodeAsRequestCode", "safeRequestWindowFeature", "", "Landroid/app/Activity;", "feature", "luggage-wxa-app_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/ActivityUtils;", "", "()V", "REQUEST_CODE_LOW_BITS_MAGIC_NUM", "", "TAG", "", "hashCodeAsRequestCode", "safeRequestWindowFeature", "", "Landroid/app/Activity;", "feature", "luggage-wxa-app_release"})
 public final class a
 {
-  public static final a ciy;
+  public static final a cfu;
   
   static
   {
     AppMethodBeat.i(176450);
-    ciy = new a();
+    cfu = new a();
     AppMethodBeat.o(176450);
   }
   
-  public static final int aD(Object paramObject)
+  public static final int aA(Object paramObject)
   {
     AppMethodBeat.i(176449);
     k.h(paramObject, "$this$hashCodeAsRequestCode");

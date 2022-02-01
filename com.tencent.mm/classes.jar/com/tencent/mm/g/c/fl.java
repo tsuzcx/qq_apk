@@ -8,61 +8,49 @@ public abstract class fl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eXK = "newerIds".hashCode();
-  private static final int eXL = "bgId".hashCode();
-  private static final int eXM = "bgUrl".hashCode();
-  private static final int eXN = "older_bgId".hashCode();
-  private static final int eXO = "local_flag".hashCode();
-  private static final int eXP = "istyle".hashCode();
-  private static final int eXQ = "iFlag".hashCode();
-  private static final int eXR = "icount".hashCode();
-  private static final int eXS = "faultS".hashCode();
-  private static final int eXT = "snsBgId".hashCode();
-  private static final int eXU = "snsuser".hashCode();
-  private static final int eXV = "adsession".hashCode();
-  private static final int eXW = "lastFirstPageRequestErrCode".hashCode();
-  private static final int eXX = "lastFirstPageRequestErrType".hashCode();
-  private static final int eXY = "snsYearMonthInfo".hashCode();
-  private static final int eXZ = "albumMd5".hashCode();
-  private static final int ekS = "userName".hashCode();
-  private static final int eyX = "md5".hashCode();
+  private static final int eFD;
+  private static final int eqO = "flag".hashCode();
+  private static final int faj;
+  private static final int fak;
+  private static final int fal;
+  private static final int fam;
+  private static final int fan;
+  private static final int fao;
+  private static final int fap;
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eXA = true;
-  private boolean eXB = true;
-  private boolean eXC = true;
-  private boolean eXD = true;
-  private boolean eXE = true;
-  private boolean eXF = true;
-  private boolean eXG = true;
-  private boolean eXH = true;
-  private boolean eXI = true;
-  private boolean eXJ = true;
-  private boolean eXu = true;
-  private boolean eXv = true;
-  private boolean eXw = true;
-  private boolean eXx = true;
-  private boolean eXy = true;
-  private boolean eXz = true;
-  private boolean ekv = true;
-  private boolean eyl = true;
-  public byte[] field_adsession;
-  public String field_albumMd5;
-  public String field_bgId;
-  public String field_bgUrl;
-  public byte[] field_faultS;
-  public int field_iFlag;
-  public int field_icount;
-  public int field_istyle;
-  public int field_lastFirstPageRequestErrCode;
-  public int field_lastFirstPageRequestErrType;
-  public int field_local_flag;
-  public String field_md5;
-  public String field_newerIds;
-  public String field_older_bgId;
-  public long field_snsBgId;
-  public byte[] field_snsYearMonthInfo;
-  public byte[] field_snsuser;
-  public String field_userName;
+  private boolean __hadSetkey = true;
+  private boolean eFa = true;
+  private boolean eqM = true;
+  private boolean fac = true;
+  private boolean fad = true;
+  private boolean fae = true;
+  private boolean faf = true;
+  private boolean fag = true;
+  private boolean fah = true;
+  private boolean fai = true;
+  public String field_cnValue;
+  public int field_eggIndex;
+  public String field_enValue;
+  public String field_fileName;
+  public int field_flag;
+  public String field_key;
+  public int field_position;
+  public String field_qqValue;
+  public String field_thValue;
+  public String field_twValue;
+  
+  static
+  {
+    faj = "cnValue".hashCode();
+    fak = "qqValue".hashCode();
+    fal = "twValue".hashCode();
+    fam = "enValue".hashCode();
+    fan = "thValue".hashCode();
+    eFD = "fileName".hashCode();
+    fao = "eggIndex".hashCode();
+    fap = "position".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -77,11 +65,11 @@ public abstract class fl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ekS != k) {
+      if (key_HASHCODE != k) {
         break label65;
       }
-      this.field_userName = paramCursor.getString(i);
-      this.ekv = true;
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
@@ -89,40 +77,24 @@ public abstract class fl
       break label20;
       break;
       label65:
-      if (eyX == k) {
-        this.field_md5 = paramCursor.getString(i);
-      } else if (eXK == k) {
-        this.field_newerIds = paramCursor.getString(i);
-      } else if (eXL == k) {
-        this.field_bgId = paramCursor.getString(i);
-      } else if (eXM == k) {
-        this.field_bgUrl = paramCursor.getString(i);
-      } else if (eXN == k) {
-        this.field_older_bgId = paramCursor.getString(i);
-      } else if (eXO == k) {
-        this.field_local_flag = paramCursor.getInt(i);
-      } else if (eXP == k) {
-        this.field_istyle = paramCursor.getInt(i);
-      } else if (eXQ == k) {
-        this.field_iFlag = paramCursor.getInt(i);
-      } else if (eXR == k) {
-        this.field_icount = paramCursor.getInt(i);
-      } else if (eXS == k) {
-        this.field_faultS = paramCursor.getBlob(i);
-      } else if (eXT == k) {
-        this.field_snsBgId = paramCursor.getLong(i);
-      } else if (eXU == k) {
-        this.field_snsuser = paramCursor.getBlob(i);
-      } else if (eXV == k) {
-        this.field_adsession = paramCursor.getBlob(i);
-      } else if (eXW == k) {
-        this.field_lastFirstPageRequestErrCode = paramCursor.getInt(i);
-      } else if (eXX == k) {
-        this.field_lastFirstPageRequestErrType = paramCursor.getInt(i);
-      } else if (eXY == k) {
-        this.field_snsYearMonthInfo = paramCursor.getBlob(i);
-      } else if (eXZ == k) {
-        this.field_albumMd5 = paramCursor.getString(i);
+      if (faj == k) {
+        this.field_cnValue = paramCursor.getString(i);
+      } else if (fak == k) {
+        this.field_qqValue = paramCursor.getString(i);
+      } else if (fal == k) {
+        this.field_twValue = paramCursor.getString(i);
+      } else if (fam == k) {
+        this.field_enValue = paramCursor.getString(i);
+      } else if (fan == k) {
+        this.field_thValue = paramCursor.getString(i);
+      } else if (eFD == k) {
+        this.field_fileName = paramCursor.getString(i);
+      } else if (fao == k) {
+        this.field_eggIndex = paramCursor.getInt(i);
+      } else if (fap == k) {
+        this.field_position = paramCursor.getInt(i);
+      } else if (eqO == k) {
+        this.field_flag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -132,62 +104,35 @@ public abstract class fl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_userName == null) {
-      this.field_userName = "";
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.ekv) {
-      localContentValues.put("userName", this.field_userName);
+    if (this.fac) {
+      localContentValues.put("cnValue", this.field_cnValue);
     }
-    if (this.eyl) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.fad) {
+      localContentValues.put("qqValue", this.field_qqValue);
     }
-    if (this.eXu) {
-      localContentValues.put("newerIds", this.field_newerIds);
+    if (this.fae) {
+      localContentValues.put("twValue", this.field_twValue);
     }
-    if (this.eXv) {
-      localContentValues.put("bgId", this.field_bgId);
+    if (this.faf) {
+      localContentValues.put("enValue", this.field_enValue);
     }
-    if (this.eXw) {
-      localContentValues.put("bgUrl", this.field_bgUrl);
+    if (this.fag) {
+      localContentValues.put("thValue", this.field_thValue);
     }
-    if (this.eXx) {
-      localContentValues.put("older_bgId", this.field_older_bgId);
+    if (this.eFa) {
+      localContentValues.put("fileName", this.field_fileName);
     }
-    if (this.eXy) {
-      localContentValues.put("local_flag", Integer.valueOf(this.field_local_flag));
+    if (this.fah) {
+      localContentValues.put("eggIndex", Integer.valueOf(this.field_eggIndex));
     }
-    if (this.eXz) {
-      localContentValues.put("istyle", Integer.valueOf(this.field_istyle));
+    if (this.fai) {
+      localContentValues.put("position", Integer.valueOf(this.field_position));
     }
-    if (this.eXA) {
-      localContentValues.put("iFlag", Integer.valueOf(this.field_iFlag));
-    }
-    if (this.eXB) {
-      localContentValues.put("icount", Integer.valueOf(this.field_icount));
-    }
-    if (this.eXC) {
-      localContentValues.put("faultS", this.field_faultS);
-    }
-    if (this.eXD) {
-      localContentValues.put("snsBgId", Long.valueOf(this.field_snsBgId));
-    }
-    if (this.eXE) {
-      localContentValues.put("snsuser", this.field_snsuser);
-    }
-    if (this.eXF) {
-      localContentValues.put("adsession", this.field_adsession);
-    }
-    if (this.eXG) {
-      localContentValues.put("lastFirstPageRequestErrCode", Integer.valueOf(this.field_lastFirstPageRequestErrCode));
-    }
-    if (this.eXH) {
-      localContentValues.put("lastFirstPageRequestErrType", Integer.valueOf(this.field_lastFirstPageRequestErrType));
-    }
-    if (this.eXI) {
-      localContentValues.put("snsYearMonthInfo", this.field_snsYearMonthInfo);
-    }
-    if (this.eXJ) {
-      localContentValues.put("albumMd5", this.field_albumMd5);
+    if (this.eqM) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -197,7 +142,7 @@ public abstract class fl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fl
  * JD-Core Version:    0.7.0.1
  */

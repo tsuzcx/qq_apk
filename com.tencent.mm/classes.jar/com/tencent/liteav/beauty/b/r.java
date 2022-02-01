@@ -1,12 +1,12 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class r
-  extends g
+  extends h
 {
   private static String v = "GPUSharpen";
   private int r;

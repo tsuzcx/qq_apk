@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 public final class i
 {
-  public String nrr = "";
-  public int nvl = 0;
+  public String nUr = "";
+  public int nYl = 0;
 }
 
 

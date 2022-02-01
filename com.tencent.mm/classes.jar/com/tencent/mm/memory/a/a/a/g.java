@@ -1,7 +1,7 @@
 package com.tencent.mm.memory.a.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public final class g<T, V>
     super(paramInt);
   }
   
-  protected final T aph()
+  protected final T avY()
   {
     return null;
   }
@@ -30,17 +30,17 @@ public final class g<T, V>
   
   static final class a<T>
   {
-    WeakReference<T> cqo;
+    WeakReference<T> cnv;
     T obj;
     
     public a(T paramT)
     {
       AppMethodBeat.i(156519);
       this.obj = null;
-      this.cqo = null;
+      this.cnv = null;
       this.obj = paramT;
-      this.cqo = new WeakReference(paramT);
-      aq.n(new Runnable()
+      this.cnv = new WeakReference(paramT);
+      ap.n(new Runnable()
       {
         public final void run()
         {
@@ -55,7 +55,7 @@ public final class g<T, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.g
  * JD-Core Version:    0.7.0.1
  */

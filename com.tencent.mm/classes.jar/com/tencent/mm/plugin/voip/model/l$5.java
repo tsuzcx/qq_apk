@@ -10,8 +10,8 @@ final class l$5
   public final void run()
   {
     AppMethodBeat.i(177019);
-    if (this.zjx.zja != null) {
-      this.zjx.zja.hP(this.val$width, this.val$height);
+    if (this.ACh.ABK != null) {
+      this.ACh.ABK.ie(this.val$width, this.val$height);
     }
     AppMethodBeat.o(177019);
   }

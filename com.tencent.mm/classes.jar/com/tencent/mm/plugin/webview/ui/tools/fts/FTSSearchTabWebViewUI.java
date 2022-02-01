@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,114 +14,98 @@ import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.websearch.api.ak;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.h.b;
+import com.tencent.mm.ui.aj;
 import com.tencent.mm.ui.e.m;
 import com.tencent.mm.ui.search.FTSEditTextView;
+import com.tencent.mm.ui.search.WebSearchView;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.y;
+import com.tencent.xweb.z;
 import java.util.ArrayList;
 
 @com.tencent.mm.ui.base.a(3)
 public class FTSSearchTabWebViewUI
   extends FTSBaseWebViewUI
 {
-  public final void SK(int paramInt)
+  public final void US(int paramInt)
   {
     AppMethodBeat.i(80705);
-    if ((this.nhy == null) || (this.nhy.getSettings() == null))
+    if ((this.nKq == null) || (this.nKq.getSettings() == null))
     {
       AppMethodBeat.o(80705);
       return;
     }
-    float f = getContext().getSharedPreferences(aj.eFD(), 0).getFloat("current_text_size_scale_key", com.tencent.mm.cd.a.hF(getContext()));
-    if (f >= com.tencent.mm.cd.a.hL(getContext()))
+    float f = getContext().getSharedPreferences(com.tencent.mm.sdk.platformtools.ai.eUX(), 0).getFloat("current_text_size_scale_key", com.tencent.mm.cc.a.hQ(getContext()));
+    if (f >= com.tencent.mm.cc.a.hW(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(160);
+      this.nKq.getSettings().setTextZoom(160);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hK(getContext()))
+    if (f >= com.tencent.mm.cc.a.hV(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(150);
+      this.nKq.getSettings().setTextZoom(150);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hJ(getContext()))
+    if (f >= com.tencent.mm.cc.a.hU(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(140);
+      this.nKq.getSettings().setTextZoom(140);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hI(getContext()))
+    if (f >= com.tencent.mm.cc.a.hT(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(130);
+      this.nKq.getSettings().setTextZoom(130);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hH(getContext()))
+    if (f >= com.tencent.mm.cc.a.hS(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(120);
+      this.nKq.getSettings().setTextZoom(120);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hG(getContext()))
+    if (f >= com.tencent.mm.cc.a.hR(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(110);
+      this.nKq.getSettings().setTextZoom(110);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hF(getContext()))
+    if (f >= com.tencent.mm.cc.a.hQ(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(100);
+      this.nKq.getSettings().setTextZoom(100);
       AppMethodBeat.o(80705);
       return;
     }
-    if (f >= com.tencent.mm.cd.a.hE(getContext()))
+    if (f >= com.tencent.mm.cc.a.hP(getContext()))
     {
-      this.nhy.getSettings().setTextZoom(90);
+      this.nKq.getSettings().setTextZoom(90);
       AppMethodBeat.o(80705);
       return;
     }
-    this.nhy.getSettings().setTextZoom(80);
+    this.nKq.getSettings().setTextZoom(80);
     AppMethodBeat.o(80705);
   }
   
-  public void bol()
-  {
-    AppMethodBeat.i(80706);
-    super.bol();
-    Object localObject = TF(this.type);
-    if (this.rtD != null)
-    {
-      this.rtD.getFtsEditText().getIconView().setImageDrawable((Drawable)localObject);
-      this.rtD.getFtsEditText().fdl();
-      localObject = this.rtD;
-      if (((com.tencent.mm.ui.search.a)localObject).BVS != null) {
-        ((com.tencent.mm.ui.search.a)localObject).BVS.setVisibility(8);
-      }
-    }
-    AppMethodBeat.o(80706);
-  }
-  
-  public boolean bow()
+  public boolean bvs()
   {
     AppMethodBeat.i(80701);
-    if (this.rtD != null) {
-      this.rtD.getFtsEditText().sz.clearFocus();
+    if (this.CCZ != null) {
+      this.CCZ.getFtsEditText().ty.clearFocus();
     }
-    int i = getIntent().getIntExtra(e.m.FIy, 0);
+    int i = getIntent().getIntExtra(e.m.HhG, 0);
     if (i != 0)
     {
-      ArrayList localArrayList = getIntent().getStringArrayListExtra(e.m.FIz);
+      ArrayList localArrayList = getIntent().getStringArrayListExtra(e.m.HhH);
       if (localArrayList != null) {
-        h.vKh.f(i, new Object[] { localArrayList });
+        h.wUl.f(i, new Object[] { localArrayList });
       }
     }
-    boolean bool = super.bow();
+    boolean bool = super.bvs();
     AppMethodBeat.o(80701);
     return bool;
   }
@@ -148,7 +131,7 @@ public class FTSSearchTabWebViewUI
       if (i >= 0) {
         break;
       }
-      str = aj.getContext().getResources().getString(2131755882);
+      str = com.tencent.mm.sdk.platformtools.ai.getContext().getResources().getString(2131755882);
       AppMethodBeat.o(80700);
       return str;
       i = 2131762939;
@@ -169,7 +152,7 @@ public class FTSSearchTabWebViewUI
       continue;
       i = 2131759693;
     }
-    str = aj.getContext().getResources().getString(2131762937, new Object[] { aj.getContext().getResources().getString(i) });
+    str = com.tencent.mm.sdk.platformtools.ai.getContext().getResources().getString(2131762937, new Object[] { com.tencent.mm.sdk.platformtools.ai.getContext().getResources().getString(i) });
     AppMethodBeat.o(80700);
     return str;
   }
@@ -186,21 +169,35 @@ public class FTSSearchTabWebViewUI
   {
     AppMethodBeat.i(80699);
     super.onCreate(paramBundle);
-    if (Build.VERSION.SDK_INT >= 21)
+    int i;
+    if ((d.kZ(23)) && (!b.YJ()))
     {
-      paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
-      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131296345), true);
-      paramBundle.excludeTarget(16908335, true);
-      getWindow().setEnterTransition(paramBundle);
+      i = getResources().getColor(2131101179);
+      if (aj.DT()) {
+        break label108;
+      }
     }
-    AppMethodBeat.o(80699);
+    label108:
+    for (boolean bool = true;; bool = false)
+    {
+      aM(i, bool);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
+        paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131296345), true);
+        paramBundle.excludeTarget(16908335, true);
+        getWindow().setEnterTransition(paramBundle);
+      }
+      AppMethodBeat.o(80699);
+      return;
+    }
   }
   
   public void onPause()
   {
     AppMethodBeat.i(80703);
     super.onPause();
-    ak.eig();
+    com.tencent.mm.plugin.websearch.api.ai.exA();
     AppMethodBeat.o(80703);
   }
   
@@ -208,7 +205,7 @@ public class FTSSearchTabWebViewUI
   {
     AppMethodBeat.i(80702);
     super.onResume();
-    ak.eif();
+    com.tencent.mm.plugin.websearch.api.ai.exz();
     AppMethodBeat.o(80702);
   }
   
@@ -220,7 +217,7 @@ public class FTSSearchTabWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSSearchTabWebViewUI
  * JD-Core Version:    0.7.0.1
  */

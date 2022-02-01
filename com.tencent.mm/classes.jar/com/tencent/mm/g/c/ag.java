@@ -8,37 +8,37 @@ public abstract class ag
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int epB = "chatType".hashCode();
-  private static final int epT = "bizChatLocalId".hashCode();
-  private static final int epU = "bizChatServId".hashCode();
-  private static final int epV = "headImageUrl".hashCode();
-  private static final int epW = "chatName".hashCode();
-  private static final int epX = "chatNamePY".hashCode();
-  private static final int epY = "chatVersion".hashCode();
-  private static final int epZ = "needToUpdate".hashCode();
-  private static final int eps = "brandUserName".hashCode();
-  private static final int eqa = "bitFlag".hashCode();
-  private static final int eqb = "maxMemberCnt".hashCode();
-  private static final int eqc = "ownerUserId".hashCode();
-  private static final int eqd = "userList".hashCode();
-  private static final int eqe = "addMemberUrl".hashCode();
-  private static final int eqf = "roomflag".hashCode();
+  private static final int erF = "chatType".hashCode();
+  private static final int erX = "bizChatLocalId".hashCode();
+  private static final int erY = "bizChatServId".hashCode();
+  private static final int erZ = "headImageUrl".hashCode();
+  private static final int erw = "brandUserName".hashCode();
+  private static final int esa = "chatName".hashCode();
+  private static final int esb = "chatNamePY".hashCode();
+  private static final int esc = "chatVersion".hashCode();
+  private static final int esd = "needToUpdate".hashCode();
+  private static final int ese = "bitFlag".hashCode();
+  private static final int esf = "maxMemberCnt".hashCode();
+  private static final int esg = "ownerUserId".hashCode();
+  private static final int esh = "userList".hashCode();
+  private static final int esi = "addMemberUrl".hashCode();
+  private static final int esj = "roomflag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean epG = true;
-  private boolean epH = true;
-  private boolean epI = true;
-  private boolean epJ = true;
-  private boolean epK = true;
-  private boolean epL = true;
-  private boolean epM = true;
-  private boolean epN = true;
-  private boolean epO = true;
-  private boolean epP = true;
-  private boolean epQ = true;
-  private boolean epR = true;
-  private boolean epS = true;
-  private boolean epd = true;
-  private boolean epm = true;
+  private boolean erK = true;
+  private boolean erL = true;
+  private boolean erM = true;
+  private boolean erN = true;
+  private boolean erO = true;
+  private boolean erP = true;
+  private boolean erQ = true;
+  private boolean erR = true;
+  private boolean erS = true;
+  private boolean erT = true;
+  private boolean erU = true;
+  private boolean erV = true;
+  private boolean erW = true;
+  private boolean erh = true;
+  private boolean erq = true;
   public String field_addMemberUrl;
   public int field_bitFlag;
   public long field_bizChatLocalId;
@@ -68,11 +68,11 @@ public abstract class ag
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (epT != k) {
+      if (erX != k) {
         break label65;
       }
       this.field_bizChatLocalId = paramCursor.getLong(i);
-      this.epG = true;
+      this.erK = true;
     }
     for (;;)
     {
@@ -80,37 +80,37 @@ public abstract class ag
       break label20;
       break;
       label65:
-      if (epU == k)
+      if (erY == k)
       {
         this.field_bizChatServId = paramCursor.getString(i);
       }
-      else if (eps == k)
+      else if (erw == k)
       {
         this.field_brandUserName = paramCursor.getString(i);
       }
-      else if (epB == k)
+      else if (erF == k)
       {
         this.field_chatType = paramCursor.getInt(i);
       }
-      else if (epV == k)
+      else if (erZ == k)
       {
         this.field_headImageUrl = paramCursor.getString(i);
       }
-      else if (epW == k)
+      else if (esa == k)
       {
         this.field_chatName = paramCursor.getString(i);
       }
-      else if (epX == k)
+      else if (esb == k)
       {
         this.field_chatNamePY = paramCursor.getString(i);
       }
-      else if (epY == k)
+      else if (esc == k)
       {
         this.field_chatVersion = paramCursor.getInt(i);
       }
       else
       {
-        if (epZ == k)
+        if (esd == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -119,17 +119,17 @@ public abstract class ag
             break;
           }
         }
-        if (eqa == k) {
+        if (ese == k) {
           this.field_bitFlag = paramCursor.getInt(i);
-        } else if (eqb == k) {
+        } else if (esf == k) {
           this.field_maxMemberCnt = paramCursor.getInt(i);
-        } else if (eqc == k) {
+        } else if (esg == k) {
           this.field_ownerUserId = paramCursor.getString(i);
-        } else if (eqd == k) {
+        } else if (esh == k) {
           this.field_userList = paramCursor.getString(i);
-        } else if (eqe == k) {
+        } else if (esi == k) {
           this.field_addMemberUrl = paramCursor.getString(i);
-        } else if (eqf == k) {
+        } else if (esj == k) {
           this.field_roomflag = paramCursor.getInt(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -141,58 +141,58 @@ public abstract class ag
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.epG) {
+    if (this.erK) {
       localContentValues.put("bizChatLocalId", Long.valueOf(this.field_bizChatLocalId));
     }
-    if (this.epH) {
+    if (this.erL) {
       localContentValues.put("bizChatServId", this.field_bizChatServId);
     }
     if (this.field_brandUserName == null) {
       this.field_brandUserName = "";
     }
-    if (this.epd) {
+    if (this.erh) {
       localContentValues.put("brandUserName", this.field_brandUserName);
     }
-    if (this.epm) {
+    if (this.erq) {
       localContentValues.put("chatType", Integer.valueOf(this.field_chatType));
     }
-    if (this.epI) {
+    if (this.erM) {
       localContentValues.put("headImageUrl", this.field_headImageUrl);
     }
     if (this.field_chatName == null) {
       this.field_chatName = "";
     }
-    if (this.epJ) {
+    if (this.erN) {
       localContentValues.put("chatName", this.field_chatName);
     }
     if (this.field_chatNamePY == null) {
       this.field_chatNamePY = "";
     }
-    if (this.epK) {
+    if (this.erO) {
       localContentValues.put("chatNamePY", this.field_chatNamePY);
     }
-    if (this.epL) {
+    if (this.erP) {
       localContentValues.put("chatVersion", Integer.valueOf(this.field_chatVersion));
     }
-    if (this.epM) {
+    if (this.erQ) {
       localContentValues.put("needToUpdate", Boolean.valueOf(this.field_needToUpdate));
     }
-    if (this.epN) {
+    if (this.erR) {
       localContentValues.put("bitFlag", Integer.valueOf(this.field_bitFlag));
     }
-    if (this.epO) {
+    if (this.erS) {
       localContentValues.put("maxMemberCnt", Integer.valueOf(this.field_maxMemberCnt));
     }
-    if (this.epP) {
+    if (this.erT) {
       localContentValues.put("ownerUserId", this.field_ownerUserId);
     }
-    if (this.epQ) {
+    if (this.erU) {
       localContentValues.put("userList", this.field_userList);
     }
-    if (this.epR) {
+    if (this.erV) {
       localContentValues.put("addMemberUrl", this.field_addMemberUrl);
     }
-    if (this.epS) {
+    if (this.erW) {
       localContentValues.put("roomflag", Integer.valueOf(this.field_roomflag));
     }
     if (this.systemRowid > 0L) {
@@ -203,7 +203,7 @@ public abstract class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ag
  * JD-Core Version:    0.7.0.1
  */

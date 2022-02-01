@@ -1,15 +1,15 @@
 package com.tencent.mars.mm;
 
 import android.util.Xml;
-import com.tencent.mm.network.ab;
+import com.tencent.mm.network.ad;
 import com.tencent.mm.network.ae;
 import com.tencent.mm.network.u;
-import com.tencent.mm.protocal.protobuf.cwv;
-import com.tencent.mm.protocal.protobuf.cwx;
+import com.tencent.mm.protocal.protobuf.dch;
+import com.tencent.mm.protocal.protobuf.dcj;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -51,7 +51,7 @@ public class MMLogic
   {
     try
     {
-      String str = ac.eFu();
+      String str = com.tencent.mm.sdk.platformtools.ab.eUO();
       return str;
     }
     catch (Exception localException) {}
@@ -184,7 +184,7 @@ public class MMLogic
   {
     try
     {
-      if (bt.iP(aj.getContext())) {
+      if (bs.ja(ai.getContext())) {
         return "HK";
       }
       return "CN";
@@ -195,54 +195,54 @@ public class MMLogic
   
   private static void notifyNewSpeedTestReport(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2, int paramInt6, int paramInt7)
   {
-    if (com.tencent.mm.network.ad.aFq() == null)
+    if (ad.aMh() == null)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "notifyNewSpeedTestReport failed");
+      ac.e("C2Java", "notifyNewSpeedTestReport failed");
       return;
     }
-    cwx localcwx = new cwx();
-    localcwx.EoX = paramInt1;
-    localcwx.EoY = paramInt2;
-    localcwx.EoZ = paramInt3;
-    localcwx.Epa = paramInt4;
-    localcwx.DKa = com.tencent.mm.bx.b.cd(paramArrayOfByte);
-    localcwx.EoV = "";
-    localcwx.EoU = "";
-    localcwx.EoW = "";
+    dcj localdcj = new dcj();
+    localdcj.FLW = paramInt1;
+    localdcj.FLX = paramInt2;
+    localdcj.FLY = paramInt3;
+    localdcj.FLZ = paramInt4;
+    localdcj.Fgp = com.tencent.mm.bw.b.cc(paramArrayOfByte);
+    localdcj.FLU = "";
+    localdcj.FLT = "";
+    localdcj.FLV = "";
     if (paramInt7 == 3) {
-      localcwx.EoU = "dual";
+      localdcj.FLT = "dual";
     }
-    cwv localcwv1 = new cwv();
-    cwv localcwv2 = new cwv();
-    localcwv1.ip = paramString1;
-    localcwv1.port = paramInt5;
-    localcwv2.ip = paramString2;
-    localcwv2.port = paramInt6;
-    localcwx.Epc = localcwv1;
-    localcwx.Epb = localcwv2;
+    dch localdch1 = new dch();
+    dch localdch2 = new dch();
+    localdch1.ip = paramString1;
+    localdch1.port = paramInt5;
+    localdch2.ip = paramString2;
+    localdch2.port = paramInt6;
+    localdcj.FMb = localdch1;
+    localdcj.FMa = localdch2;
     paramString1 = new String(paramArrayOfByte);
-    com.tencent.mm.sdk.platformtools.ad.d("C2Java", "notifyNewSpeedTestReport origin cookie: " + paramString1 + ", origin size : " + paramArrayOfByte.length + ", covert cookie size " + localcwx.DKa.wA.length);
+    ac.d("C2Java", "notifyNewSpeedTestReport origin cookie: " + paramString1 + ", origin size : " + paramArrayOfByte.length + ", covert cookie size " + localdcj.Fgp.xy.length);
     try
     {
-      paramArrayOfByte = localcwx.toByteArray();
-      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      paramArrayOfByte = localdcj.toByteArray();
+      ad.aMd().post(new Runnable()
       {
         public final void run()
         {
-          com.tencent.mm.network.ad.aFq().j(271, this.val$cookieByte);
+          ad.aMh().j(271, this.val$cookieByte);
         }
       });
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "notifyNewSpeedTestReport :%s", new Object[] { bt.m(paramArrayOfByte) });
+      ac.e("C2Java", "notifyNewSpeedTestReport :%s", new Object[] { bs.m(paramArrayOfByte) });
     }
   }
   
   private static void onDisasterNodeNotify(String paramString)
   {
-    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMDisasterInfoHandle", "onDisasterNodeNotify:\n".concat(String.valueOf(paramString)));
+    ac.i("MicroMsg.MMDisasterInfoHandle", "onDisasterNodeNotify:\n".concat(String.valueOf(paramString)));
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     ArrayList localArrayList = new ArrayList();
     for (;;)
@@ -254,7 +254,7 @@ public class MMLogic
       }
       catch (Exception paramString)
       {
-        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bt.m(paramString) });
+        ac.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bs.m(paramString) });
         return;
       }
       int i = localXmlPullParser.next();
@@ -265,9 +265,9 @@ public class MMLogic
         {
           paramString = localArrayList.iterator();
           while (paramString.hasNext()) {
-            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMDisasterInfoHandle", "host ".concat(String.valueOf((String)paramString.next())));
+            ac.i("MicroMsg.MMDisasterInfoHandle", "host ".concat(String.valueOf((String)paramString.next())));
           }
-          u.aF(localArrayList);
+          u.aC(localArrayList);
           return;
         }
         switch (i)
@@ -279,20 +279,20 @@ public class MMLogic
   
   private static void onOOBNotify(String paramString)
   {
-    com.tencent.mm.sdk.platformtools.ad.i("C2Java", "onOOBNotify:".concat(String.valueOf(paramString)));
-    if (com.tencent.mm.network.ad.aFq() == null)
+    ac.i("C2Java", "onOOBNotify:".concat(String.valueOf(paramString)));
+    if (ad.aMh() == null)
     {
       Assert.assertTrue(false);
       return;
     }
     try
     {
-      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      ad.aMd().post(new Runnable()
       {
         public final void run()
         {
-          ab localab = com.tencent.mm.network.ad.aFq();
-          if (bt.isNullOrNil(this.val$_info)) {}
+          com.tencent.mm.network.ab localab = ad.aMh();
+          if (bs.isNullOrNil(this.val$_info)) {}
           for (byte[] arrayOfByte = null;; arrayOfByte = this.val$_info.getBytes())
           {
             localab.j(268369923, arrayOfByte);
@@ -304,7 +304,7 @@ public class MMLogic
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "onOOBNotify :%s", new Object[] { bt.m(paramString) });
+      ac.e("C2Java", "onOOBNotify :%s", new Object[] { bs.m(paramString) });
     }
   }
   
@@ -321,13 +321,13 @@ public class MMLogic
     totalMobileRecv += paramInt3;
     totalMobileSend += paramInt4;
     int i = totalMobileRecv + totalMobileSend + totalWifiRecv + totalWifiSend;
-    com.tencent.mm.network.a.b localb = com.tencent.mm.network.ad.aFk().hMF;
-    com.tencent.mm.sdk.platformtools.ad.i("C2Java", "reportNetFlow time[%d,%d] sum:%d wr[%d,%d] ws[%d,%d] mr[%d,%d] ms[%d,%d] fgbg:%b Moniter:%s", new Object[] { Long.valueOf(lastReportTime), Long.valueOf(bt.lZ(lastReportTime)), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(totalWifiRecv), Integer.valueOf(paramInt2), Integer.valueOf(totalWifiSend), Integer.valueOf(paramInt3), Integer.valueOf(totalMobileRecv), Integer.valueOf(paramInt4), Integer.valueOf(totalMobileSend), Boolean.valueOf(com.tencent.mm.sdk.a.b.foreground), localb });
+    com.tencent.mm.network.a.b localb = ad.aMb().inc;
+    ac.i("C2Java", "reportNetFlow time[%d,%d] sum:%d wr[%d,%d] ws[%d,%d] mr[%d,%d] ms[%d,%d] fgbg:%b Moniter:%s", new Object[] { Long.valueOf(lastReportTime), Long.valueOf(bs.pN(lastReportTime)), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(totalWifiRecv), Integer.valueOf(paramInt2), Integer.valueOf(totalWifiSend), Integer.valueOf(paramInt3), Integer.valueOf(totalMobileRecv), Integer.valueOf(paramInt4), Integer.valueOf(totalMobileSend), Boolean.valueOf(com.tencent.mm.sdk.a.b.foreground), localb });
     if (localb == null) {}
-    while ((i < 102400) && (bt.lZ(lastReportTime) < 30L)) {
+    while ((i < 102400) && (bs.pN(lastReportTime) < 30L)) {
       return;
     }
-    lastReportTime = bt.aGK();
+    lastReportTime = bs.aNx();
     paramInt1 = totalWifiRecv;
     totalWifiRecv = 0;
     paramInt2 = totalWifiSend;
@@ -338,7 +338,7 @@ public class MMLogic
     totalMobileSend = 0;
     try
     {
-      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      ad.aMd().post(new Runnable()
       {
         public final void run()
         {
@@ -349,7 +349,7 @@ public class MMLogic
           }
           catch (Throwable localThrowable)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("C2Java", "reportFlowData :%s", new Object[] { bt.m(localThrowable) });
+            ac.e("C2Java", "reportFlowData :%s", new Object[] { bs.m(localThrowable) });
           }
         }
       });
@@ -357,7 +357,7 @@ public class MMLogic
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "reportFlowData :%s", new Object[] { bt.m(localThrowable) });
+      ac.e("C2Java", "reportFlowData :%s", new Object[] { bs.m(localThrowable) });
     }
   }
   
@@ -365,14 +365,14 @@ public class MMLogic
   {
     try
     {
-      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      ad.aMd().post(new Runnable()
       {
         public final void run()
         {
           int i = MMLogic.getJavaActionId(this.val$item.actionId);
           if (i == 0)
           {
-            com.tencent.mm.sdk.platformtools.ad.e("C2Java", "ActionId Can not convert");
+            ac.e("C2Java", "ActionId Can not convert");
             return;
           }
           this.val$item.actionId = i;
@@ -465,7 +465,7 @@ public class MMLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.mm.MMLogic
  * JD-Core Version:    0.7.0.1
  */

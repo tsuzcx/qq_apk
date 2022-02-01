@@ -6,8 +6,8 @@ import java.util.Arrays;
 public final class b
   implements Cloneable
 {
-  private final int[] bKd;
-  private final int bKe;
+  private final int[] bHL;
+  private final int bHM;
   public final int height;
   public final int width;
   
@@ -29,8 +29,8 @@ public final class b
     }
     this.width = paramInt1;
     this.height = paramInt2;
-    this.bKe = ((paramInt1 + 31) / 32);
-    this.bKd = new int[this.bKe * paramInt2];
+    this.bHM = ((paramInt1 + 31) / 32);
+    this.bHL = new int[this.bHM * paramInt2];
     AppMethodBeat.o(12330);
   }
   
@@ -38,24 +38,24 @@ public final class b
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.bKe = paramInt3;
-    this.bKd = paramArrayOfInt;
+    this.bHM = paramInt3;
+    this.bHL = paramArrayOfInt;
   }
   
-  public final boolean bJ(int paramInt1, int paramInt2)
+  public final boolean bG(int paramInt1, int paramInt2)
   {
-    int i = this.bKe;
+    int i = this.bHM;
     int j = paramInt1 / 32;
-    return (this.bKd[(i * paramInt2 + j)] >>> (paramInt1 & 0x1F) & 0x1) != 0;
+    return (this.bHL[(i * paramInt2 + j)] >>> (paramInt1 & 0x1F) & 0x1) != 0;
   }
   
   public final void clear()
   {
-    int j = this.bKd.length;
+    int j = this.bHL.length;
     int i = 0;
     while (i < j)
     {
-      this.bKd[i] = 0;
+      this.bHL[i] = 0;
       i += 1;
     }
   }
@@ -69,7 +69,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    if ((this.width == paramObject.width) && (this.height == paramObject.height) && (this.bKe == paramObject.bKe) && (Arrays.equals(this.bKd, paramObject.bKd)))
+    if ((this.width == paramObject.width) && (this.height == paramObject.height) && (this.bHM == paramObject.bHM) && (Arrays.equals(this.bHL, paramObject.bHL)))
     {
       AppMethodBeat.o(12332);
       return true;
@@ -84,8 +84,8 @@ public final class b
     int i = this.width;
     int j = this.width;
     int k = this.height;
-    int m = this.bKe;
-    int n = Arrays.hashCode(this.bKd);
+    int m = this.bHM;
+    int n = Arrays.hashCode(this.bHL);
     AppMethodBeat.o(12333);
     return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + n;
   }
@@ -120,11 +120,11 @@ public final class b
       if (paramInt2 >= paramInt4) {
         break;
       }
-      int j = this.bKe;
+      int j = this.bHM;
       paramInt3 = paramInt1;
       while (paramInt3 < i)
       {
-        localObject = this.bKd;
+        localObject = this.bHL;
         int k = paramInt3 / 32 + paramInt2 * j;
         localObject[k] |= 1 << (paramInt3 & 0x1F);
         paramInt3 += 1;
@@ -135,8 +135,8 @@ public final class b
   
   public final void set(int paramInt1, int paramInt2)
   {
-    paramInt2 = this.bKe * paramInt2 + paramInt1 / 32;
-    int[] arrayOfInt = this.bKd;
+    paramInt2 = this.bHM * paramInt2 + paramInt1 / 32;
+    int[] arrayOfInt = this.bHL;
     arrayOfInt[paramInt2] |= 1 << (paramInt1 & 0x1F);
   }
   
@@ -150,7 +150,7 @@ public final class b
       int j = 0;
       if (j < this.width)
       {
-        if (bJ(j, i)) {}
+        if (bG(j, i)) {}
         for (str = "X ";; str = "  ")
         {
           localStringBuilder.append(str);
@@ -168,7 +168,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.c.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,20 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.f;
-import d.d.f.c;
+import d.d.f.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
-public final class cd
-  extends y
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ThreadContextElement;", "S", "Lkotlin/coroutines/CoroutineContext$Element;", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V", "updateThreadContext", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
+public abstract interface cd<S>
+  extends f.b
 {
-  public static final cd KeO;
+  public abstract S b(f paramf);
   
-  static
-  {
-    AppMethodBeat.i(118172);
-    KeO = new cd();
-    AppMethodBeat.o(118172);
-  }
-  
-  public final void a(f paramf, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(118171);
-    paramf = (ce)paramf.get((f.c)ce.KeQ);
-    if (paramf != null)
-    {
-      paramf.KeP = true;
-      AppMethodBeat.o(118171);
-      return;
-    }
-    paramf = (Throwable)new UnsupportedOperationException("Dispatchers.Unconfined.dispatch function can only be used by the yield function. If you wrap Unconfined dispatcher in your code, make sure you properly delegate isDispatchNeeded and dispatch calls.");
-    AppMethodBeat.o(118171);
-    throw paramf;
-  }
-  
-  public final boolean fKU()
-  {
-    return false;
-  }
-  
-  public final String toString()
-  {
-    return "Unconfined";
-  }
+  public abstract void fH(S paramS);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.cd
  * JD-Core Version:    0.7.0.1
  */

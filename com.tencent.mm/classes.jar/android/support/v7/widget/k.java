@@ -13,32 +13,32 @@ import android.widget.SeekBar;
 final class k
   extends j
 {
-  final SeekBar ahR;
-  Drawable ahS;
-  private ColorStateList ahT = null;
-  private PorterDuff.Mode ahU = null;
-  private boolean ahV = false;
-  private boolean ahW = false;
+  final SeekBar aiL;
+  Drawable aiM;
+  private ColorStateList aiN = null;
+  private PorterDuff.Mode aiO = null;
+  private boolean aiP = false;
+  private boolean aiQ = false;
   
   k(SeekBar paramSeekBar)
   {
     super(paramSeekBar);
-    this.ahR = paramSeekBar;
+    this.aiL = paramSeekBar;
   }
   
-  private void iF()
+  private void iN()
   {
-    if ((this.ahS != null) && ((this.ahV) || (this.ahW)))
+    if ((this.aiM != null) && ((this.aiP) || (this.aiQ)))
     {
-      this.ahS = a.i(this.ahS.mutate());
-      if (this.ahV) {
-        a.a(this.ahS, this.ahT);
+      this.aiM = a.i(this.aiM.mutate());
+      if (this.aiP) {
+        a.a(this.aiM, this.aiN);
       }
-      if (this.ahW) {
-        a.a(this.ahS, this.ahU);
+      if (this.aiQ) {
+        a.a(this.aiM, this.aiO);
       }
-      if (this.ahS.isStateful()) {
-        this.ahS.setState(this.ahR.getDrawableState());
+      if (this.aiM.isStateful()) {
+        this.aiM.setState(this.aiL.getDrawableState());
       }
     }
   }
@@ -46,38 +46,38 @@ final class k
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
     super.a(paramAttributeSet, paramInt);
-    paramAttributeSet = az.a(this.ahR.getContext(), paramAttributeSet, a.a.AppCompatSeekBar, paramInt, 0);
-    Drawable localDrawable = paramAttributeSet.db(0);
+    paramAttributeSet = az.a(this.aiL.getContext(), paramAttributeSet, a.a.AppCompatSeekBar, paramInt, 0);
+    Drawable localDrawable = paramAttributeSet.da(0);
     if (localDrawable != null) {
-      this.ahR.setThumb(localDrawable);
+      this.aiL.setThumb(localDrawable);
     }
     localDrawable = paramAttributeSet.getDrawable(1);
-    if (this.ahS != null) {
-      this.ahS.setCallback(null);
+    if (this.aiM != null) {
+      this.aiM.setCallback(null);
     }
-    this.ahS = localDrawable;
+    this.aiM = localDrawable;
     if (localDrawable != null)
     {
-      localDrawable.setCallback(this.ahR);
-      a.b(localDrawable, t.Y(this.ahR));
+      localDrawable.setCallback(this.aiL);
+      a.b(localDrawable, t.Y(this.aiL));
       if (localDrawable.isStateful()) {
-        localDrawable.setState(this.ahR.getDrawableState());
+        localDrawable.setState(this.aiL.getDrawableState());
       }
-      iF();
+      iN();
     }
-    this.ahR.invalidate();
+    this.aiL.invalidate();
     if (paramAttributeSet.hasValue(3))
     {
-      this.ahU = x.a(paramAttributeSet.getInt(3, -1), this.ahU);
-      this.ahW = true;
+      this.aiO = x.a(paramAttributeSet.getInt(3, -1), this.aiO);
+      this.aiQ = true;
     }
     if (paramAttributeSet.hasValue(2))
     {
-      this.ahT = paramAttributeSet.getColorStateList(2);
-      this.ahV = true;
+      this.aiN = paramAttributeSet.getColorStateList(2);
+      this.aiP = true;
     }
-    paramAttributeSet.avP.recycle();
-    iF();
+    paramAttributeSet.awJ.recycle();
+    iN();
   }
 }
 

@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.game.a.a;
 import com.tencent.mm.plugin.game.api.d;
 import com.tencent.mm.plugin.game.f.c;
@@ -29,48 +29,48 @@ import com.tencent.mm.plugin.game.model.p;
 import com.tencent.mm.plugin.game.model.r;
 import com.tencent.mm.plugin.game.model.s;
 import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.ui.q.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.ui.r.a;
 import java.util.HashMap;
 
 public class GameMessageUI
   extends GameCenterActivity
-  implements AdapterView.OnItemClickListener, com.tencent.mm.al.g
+  implements AdapterView.OnItemClickListener, com.tencent.mm.ak.g
 {
-  private int flm;
-  private int fsv;
-  private TextView ifA;
-  private AbsListView.OnScrollListener sfw;
-  private ListView slp;
-  private n slq;
-  private View slr;
-  private int sls;
-  private boolean slt;
-  private boolean slu;
-  private String slv;
-  private long slw;
-  private DialogInterface.OnClickListener slx;
-  private DialogInterface.OnClickListener sly;
+  private int foG;
+  private int fwc;
+  private TextView iFJ;
+  private AbsListView.OnScrollListener tnp;
+  private ListView tti;
+  private n ttj;
+  private View ttk;
+  private int ttl;
+  private boolean ttm;
+  private boolean ttn;
+  private String tto;
+  private long ttp;
+  private DialogInterface.OnClickListener ttq;
+  private DialogInterface.OnClickListener ttr;
   
   public GameMessageUI()
   {
     AppMethodBeat.i(42302);
-    this.sls = 1;
-    this.slt = false;
-    this.slu = false;
-    this.flm = 0;
-    this.slv = "";
-    this.sfw = new AbsListView.OnScrollListener()
+    this.ttl = 1;
+    this.ttm = false;
+    this.ttn = false;
+    this.foG = 0;
+    this.tto = "";
+    this.tnp = new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
       {
         AppMethodBeat.i(42300);
-        if ((paramAnonymousInt == 0) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (!GameMessageUI.b(GameMessageUI.this).bLj()))
+        if ((paramAnonymousInt == 0) && (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (!GameMessageUI.b(GameMessageUI.this).bSw()))
         {
-          GameMessageUI.b(GameMessageUI.this).cEm();
+          GameMessageUI.b(GameMessageUI.this).cRw();
           GameMessageUI.b(GameMessageUI.this).a(null, null);
         }
         AppMethodBeat.o(42300);
@@ -79,32 +79,32 @@ public class GameMessageUI
     AppMethodBeat.o(42302);
   }
   
-  private void EM(int paramInt)
+  private void GI(int paramInt)
   {
     AppMethodBeat.i(42306);
-    if (this.ifA == null) {
-      this.ifA = ((TextView)findViewById(2131300519));
+    if (this.iFJ == null) {
+      this.iFJ = ((TextView)findViewById(2131300519));
     }
-    this.ifA.setVisibility(paramInt);
+    this.iFJ.setVisibility(paramInt);
     AppMethodBeat.o(42306);
   }
   
   private void goBack()
   {
     AppMethodBeat.i(42308);
-    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().cDr();
+    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().cQB();
     finish();
     AppMethodBeat.o(42308);
   }
   
-  public final int cEa()
+  public final int cRk()
   {
     return 1300;
   }
   
-  public final int cEb()
+  public final int cRl()
   {
-    return this.fsv;
+    return this.fwc;
   }
   
   public int getLayoutId()
@@ -141,8 +141,8 @@ public class GameMessageUI
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(42297);
-            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().execSQL("GameRawMessage", "delete from GameRawMessage");
-            GameMessageUI.b(GameMessageUI.this).We();
+            ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().execSQL("GameRawMessage", "delete from GameRawMessage");
+            GameMessageUI.b(GameMessageUI.this).Xc();
             GameMessageUI.b(GameMessageUI.this).notifyDataSetChanged();
             AppMethodBeat.o(42297);
           }
@@ -156,43 +156,43 @@ public class GameMessageUI
         return false;
       }
     });
-    this.fsv = getIntent().getIntExtra("game_report_from_scene", 0);
-    this.slp = ((ListView)findViewById(2131300521));
-    this.slp.setOnItemClickListener(this);
-    if (this.flm > 20)
+    this.fwc = getIntent().getIntExtra("game_report_from_scene", 0);
+    this.tti = ((ListView)findViewById(2131300521));
+    this.tti.setOnItemClickListener(this);
+    if (this.foG > 20)
     {
-      if (!com.tencent.mm.plugin.game.model.e.fb(this)) {
+      if (!com.tencent.mm.plugin.game.model.e.fo(this)) {
         break label319;
       }
-      this.slr = View.inflate(this, 2131494359, null);
-      this.slr.setOnClickListener(new View.OnClickListener()
+      this.ttk = View.inflate(this, 2131494359, null);
+      this.ttk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(42301);
-          if (!bt.isNullOrNil(GameMessageUI.f(GameMessageUI.this)))
+          if (!bs.isNullOrNil(GameMessageUI.f(GameMessageUI.this)))
           {
-            int i = c.ax(GameMessageUI.this.getContext(), GameMessageUI.f(GameMessageUI.this));
+            int i = c.ay(GameMessageUI.this.getContext(), GameMessageUI.f(GameMessageUI.this));
             com.tencent.mm.game.report.e.a(GameMessageUI.this.getContext(), 13, 1302, 1, i, GameMessageUI.g(GameMessageUI.this), null);
           }
           GameMessageUI.h(GameMessageUI.this);
           AppMethodBeat.o(42301);
         }
       });
-      this.slp.addHeaderView(this.slr);
-      this.slr.setVisibility(0);
-      com.tencent.mm.plugin.game.model.e.fc(this);
+      this.tti.addHeaderView(this.ttk);
+      this.ttk.setVisibility(0);
+      com.tencent.mm.plugin.game.model.e.fp(this);
     }
     for (;;)
     {
       Object localObject = new o();
-      ((o)localObject).rWW = true;
-      this.slq = new n(this, (o)localObject, this.fsv, this.slw);
-      this.slq.vw(true);
-      EM(8);
-      this.slq.a(new q.a()
+      ((o)localObject).teO = true;
+      this.ttj = new n(this, (o)localObject, this.fwc, this.ttp);
+      this.ttj.wy(true);
+      GI(8);
+      this.ttj.a(new r.a()
       {
-        public final void aIp()
+        public final void aPg()
         {
           AppMethodBeat.i(42299);
           if (GameMessageUI.b(GameMessageUI.this).getCount() == 0)
@@ -209,21 +209,21 @@ public class GameMessageUI
           AppMethodBeat.o(42299);
         }
       });
-      this.slp.setOnScrollListener(this.sfw);
-      this.slp.setAdapter(this.slq);
-      localObject = this.slp;
-      n localn = this.slq;
-      ad.i("MicroMsg.GameMessageAdapter", "init position:%d", new Object[] { Integer.valueOf(localn.skQ) });
-      if (localn.skQ > localn.getCount() - 1) {
-        localn.skQ = (localn.getCount() - 1);
+      this.tti.setOnScrollListener(this.tnp);
+      this.tti.setAdapter(this.ttj);
+      localObject = this.tti;
+      n localn = this.ttj;
+      ac.i("MicroMsg.GameMessageAdapter", "init position:%d", new Object[] { Integer.valueOf(localn.tsJ) });
+      if (localn.tsJ > localn.getCount() - 1) {
+        localn.tsJ = (localn.getCount() - 1);
       }
-      ((ListView)localObject).setSelection(localn.skQ);
-      com.tencent.mm.game.report.e.a(getContext(), 13, 1300, 0, 1, 0, null, this.fsv, 0, null, null, null);
+      ((ListView)localObject).setSelection(localn.tsJ);
+      com.tencent.mm.game.report.e.a(getContext(), 13, 1300, 0, 1, 0, null, this.fwc, 0, null, null, null);
       AppMethodBeat.o(42305);
       return;
       label319:
-      if (this.slr != null) {
-        this.slr.setVisibility(8);
+      if (this.ttk != null) {
+        this.ttk.setVisibility(8);
       }
     }
   }
@@ -232,14 +232,14 @@ public class GameMessageUI
   {
     AppMethodBeat.i(42303);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.aeS().a(573, this);
-    this.flm = getIntent().getIntExtra("game_unread_msg_count", 0);
-    this.slv = getIntent().getStringExtra("game_manage_url");
-    this.slw = getIntent().getLongExtra("game_msg_ui_from_msgid", 0L);
-    ad.i("MicroMsg.GameMessageUI", "init msgId:%d", new Object[] { Long.valueOf(this.slw) });
+    com.tencent.mm.kernel.g.agi().a(573, this);
+    this.foG = getIntent().getIntExtra("game_unread_msg_count", 0);
+    this.tto = getIntent().getStringExtra("game_manage_url");
+    this.ttp = getIntent().getLongExtra("game_msg_ui_from_msgid", 0L);
+    ac.i("MicroMsg.GameMessageUI", "init msgId:%d", new Object[] { Long.valueOf(this.ttp) });
     initView();
-    ((d)com.tencent.mm.kernel.g.ab(d.class)).cBc();
-    r.cDn();
+    ((d)com.tencent.mm.kernel.g.ab(d.class)).cOl();
+    r.cQx();
     AppMethodBeat.o(42303);
   }
   
@@ -247,12 +247,12 @@ public class GameMessageUI
   {
     AppMethodBeat.i(42309);
     super.onDestroy();
-    if (this.slq != null) {
-      this.slq.cHX();
+    if (this.ttj != null) {
+      this.ttj.cVi();
     }
-    com.tencent.mm.kernel.g.aeS().b(573, this);
-    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().cDs();
-    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cBd().cDr();
+    com.tencent.mm.kernel.g.agi().b(573, this);
+    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().cQC();
+    ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOm().cQB();
     AppMethodBeat.o(42309);
   }
   
@@ -262,18 +262,18 @@ public class GameMessageUI
     paramAdapterView = (o)paramAdapterView.getAdapter().getItem(paramInt);
     if (paramAdapterView == null)
     {
-      ad.e("MicroMsg.GameMessageUI", "get message null: position:[%d]", new Object[] { Integer.valueOf(paramInt) });
+      ac.e("MicroMsg.GameMessageUI", "get message null: position:[%d]", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(42310);
       return;
     }
-    paramAdapterView.cDf();
-    paramView = com.tencent.mm.game.report.e.a(null, null, paramAdapterView.rWS, null);
+    paramAdapterView.cQp();
+    paramView = com.tencent.mm.game.report.e.a(null, null, paramAdapterView.teK, null);
     Object localObject;
     if (paramAdapterView.field_msgType == 100)
     {
-      if (!bt.isNullOrNil(paramAdapterView.rWC))
+      if (!bs.isNullOrNil(paramAdapterView.teu))
       {
-        localObject = (o.e)paramAdapterView.rWh.get(paramAdapterView.rWC);
+        localObject = (o.e)paramAdapterView.tdZ.get(paramAdapterView.teu);
         if (localObject == null)
         {
           AppMethodBeat.o(42310);
@@ -281,13 +281,13 @@ public class GameMessageUI
         }
         paramInt = p.a(this, paramAdapterView, (o.e)localObject, paramAdapterView.field_appId, 1301);
         if (paramInt != 0) {
-          com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fsv, paramAdapterView.rWQ, paramAdapterView.field_gameMsgId, paramAdapterView.rWR, paramView);
+          com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fwc, paramAdapterView.teI, paramAdapterView.field_gameMsgId, paramAdapterView.teJ, paramView);
         }
       }
       AppMethodBeat.o(42310);
       return;
     }
-    if (paramAdapterView.rWU == 0)
+    if (paramAdapterView.teM == 0)
     {
       switch (paramAdapterView.field_msgType)
       {
@@ -303,21 +303,21 @@ public class GameMessageUI
         {
           AppMethodBeat.o(42310);
           return;
-        } while (bt.isNullOrNil(paramAdapterView.rVU));
-        paramInt = c.ax(this, paramAdapterView.rVU);
+        } while (bs.isNullOrNil(paramAdapterView.tdM));
+        paramInt = c.ay(this, paramAdapterView.tdM);
       }
       for (;;)
       {
-        com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fsv, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.rWR, paramView);
+        com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fwc, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.teJ, paramView);
         break;
-        if (bt.isNullOrNil(paramAdapterView.rWx)) {
+        if (bs.isNullOrNil(paramAdapterView.tep)) {
           break;
         }
-        paramInt = c.ax(this, paramAdapterView.rWx);
+        paramInt = c.ay(this, paramAdapterView.tep);
         continue;
         if (com.tencent.mm.pluginsdk.model.app.h.t(this, paramAdapterView.field_appId))
         {
-          com.tencent.mm.plugin.game.model.e.ai(this, paramAdapterView.field_appId);
+          com.tencent.mm.plugin.game.model.e.aj(this, paramAdapterView.field_appId);
           paramInt = 3;
         }
         else
@@ -329,16 +329,16 @@ public class GameMessageUI
         }
       }
     }
-    switch (paramAdapterView.rWU)
+    switch (paramAdapterView.teM)
     {
     default: 
-      ad.e("MicroMsg.GameMessageUI", "unknowed jumptype : " + paramAdapterView.rWU);
+      ac.e("MicroMsg.GameMessageUI", "unknowed jumptype : " + paramAdapterView.teM);
       AppMethodBeat.o(42310);
       return;
     case 1: 
-      if (bt.isNullOrNil(paramAdapterView.field_appId))
+      if (bs.isNullOrNil(paramAdapterView.field_appId))
       {
-        ad.e("MicroMsg.GameMessageUI", "appid is null");
+        ac.e("MicroMsg.GameMessageUI", "appid is null");
         AppMethodBeat.o(42310);
         return;
       }
@@ -346,16 +346,16 @@ public class GameMessageUI
       ((Bundle)localObject).putCharSequence("game_app_id", paramAdapterView.field_appId);
       ((Bundle)localObject).putInt("game_report_from_scene", 1301);
       paramInt = c.a(this, paramAdapterView.field_appId, null, (Bundle)localObject);
-      com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fsv, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.rWR, paramView);
+      com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fwc, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.teJ, paramView);
       AppMethodBeat.o(42310);
       return;
     case 2: 
       if (com.tencent.mm.pluginsdk.model.app.h.t(this, paramAdapterView.field_appId)) {
-        com.tencent.mm.plugin.game.model.e.ai(this, paramAdapterView.field_appId);
+        com.tencent.mm.plugin.game.model.e.aj(this, paramAdapterView.field_appId);
       }
       for (paramInt = 3;; paramInt = c.a(this, paramAdapterView.field_appId, null, (Bundle)localObject))
       {
-        com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fsv, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.rWR, paramView);
+        com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fwc, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.teJ, paramView);
         AppMethodBeat.o(42310);
         return;
         localObject = new Bundle();
@@ -363,14 +363,14 @@ public class GameMessageUI
         ((Bundle)localObject).putInt("game_report_from_scene", 1301);
       }
     }
-    if (!bt.isNullOrNil(paramAdapterView.rWV))
+    if (!bs.isNullOrNil(paramAdapterView.teN))
     {
-      paramInt = c.ax(this, paramAdapterView.rWV);
-      com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fsv, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.rWR, paramView);
+      paramInt = c.ay(this, paramAdapterView.teN);
+      com.tencent.mm.game.report.e.a(getContext(), 13, 1301, 4, paramInt, 0, paramAdapterView.field_appId, this.fwc, paramAdapterView.field_msgType, paramAdapterView.field_gameMsgId, paramAdapterView.teJ, paramView);
       AppMethodBeat.o(42310);
       return;
     }
-    ad.e("MicroMsg.GameMessageUI", "jumpurl is null");
+    ac.e("MicroMsg.GameMessageUI", "jumpurl is null");
     AppMethodBeat.o(42310);
   }
   
@@ -392,35 +392,35 @@ public class GameMessageUI
   {
     AppMethodBeat.i(42304);
     super.onResume();
-    this.slq.notifyDataSetChanged();
-    if ((this.slu) && (this.slr != null)) {
-      this.slp.removeHeaderView(this.slr);
+    this.ttj.notifyDataSetChanged();
+    if ((this.ttn) && (this.ttk != null)) {
+      this.tti.removeHeaderView(this.ttk);
     }
     AppMethodBeat.o(42304);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
   {
     AppMethodBeat.i(42311);
-    ad.i("MicroMsg.GameMessageUI", "onSceneEnd: errType:[%d], errCode:[%d], type:[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.getType()) });
+    ac.i("MicroMsg.GameMessageUI", "onSceneEnd: errType:[%d], errCode:[%d], type:[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.getType()) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramn.getType() == 573)
       {
-        EM(8);
-        this.slq.a(null, null);
+        GI(8);
+        this.ttj.a(null, null);
         AppMethodBeat.o(42311);
       }
     }
     else
     {
-      if (this.slq.getCount() > 0)
+      if (this.ttj.getCount() > 0)
       {
-        ad.i("MicroMsg.GameMessageUI", "has local message, do not show error tips");
+        ac.i("MicroMsg.GameMessageUI", "has local message, do not show error tips");
         AppMethodBeat.o(42311);
         return;
       }
-      if (a.hYu.a(this, paramInt1, paramInt2, paramString))
+      if (a.iyy.a(this, paramInt1, paramInt2, paramString))
       {
         AppMethodBeat.o(42311);
         return;

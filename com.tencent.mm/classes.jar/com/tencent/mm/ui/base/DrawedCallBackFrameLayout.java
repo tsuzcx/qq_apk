@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class DrawedCallBackFrameLayout
   extends FrameLayout
 {
-  private a FUS;
+  private DrawedCallBackFrameLayout.a HuG;
   
   public DrawedCallBackFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,10 +23,10 @@ public class DrawedCallBackFrameLayout
     {
       super.dispatchDraw(paramCanvas);
       label10:
-      if (this.FUS != null)
+      if (this.HuG != null)
       {
-        this.FUS.cAy();
-        this.FUS = null;
+        this.HuG.cNI();
+        this.HuG = null;
       }
       AppMethodBeat.o(141624);
       return;
@@ -44,14 +44,9 @@ public class DrawedCallBackFrameLayout
     AppMethodBeat.o(141623);
   }
   
-  public void setListener(a parama)
+  public void setListener(DrawedCallBackFrameLayout.a parama)
   {
-    this.FUS = parama;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void cAy();
+    this.HuG = parama;
   }
 }
 

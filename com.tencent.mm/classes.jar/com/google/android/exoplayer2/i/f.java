@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private boolean SE;
+  private boolean Tz;
   
   public final void block()
   {
     try
     {
       AppMethodBeat.i(93134);
-      while (!this.SE) {
+      while (!this.Tz) {
         wait();
       }
       AppMethodBeat.o(93134);
@@ -19,22 +19,37 @@ public final class f
     finally {}
   }
   
+  public final boolean close()
+  {
+    try
+    {
+      boolean bool = this.Tz;
+      this.Tz = false;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   /* Error */
-  public final boolean vD()
+  public final boolean open()
   {
     // Byte code:
     //   0: iconst_1
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 30
+    //   4: ldc 31
     //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 21	com/google/android/exoplayer2/i/f:SE	Z
+    //   10: getfield 21	com/google/android/exoplayer2/i/f:Tz	Z
     //   13: ifeq +14 -> 27
     //   16: iconst_0
     //   17: istore_1
-    //   18: ldc 30
+    //   18: ldc 31
     //   20: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
@@ -42,10 +57,10 @@ public final class f
     //   26: ireturn
     //   27: aload_0
     //   28: iconst_1
-    //   29: putfield 21	com/google/android/exoplayer2/i/f:SE	Z
+    //   29: putfield 21	com/google/android/exoplayer2/i/f:Tz	Z
     //   32: aload_0
-    //   33: invokevirtual 33	java/lang/Object:notifyAll	()V
-    //   36: ldc 30
+    //   33: invokevirtual 34	java/lang/Object:notifyAll	()V
+    //   36: ldc 31
     //   38: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   41: goto -18 -> 23
     //   44: astore_2
@@ -63,21 +78,6 @@ public final class f
     //   4	16	44	finally
     //   18	23	44	finally
     //   27	41	44	finally
-  }
-  
-  public final boolean vE()
-  {
-    try
-    {
-      boolean bool = this.SE;
-      this.SE = false;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
   }
 }
 

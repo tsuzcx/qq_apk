@@ -11,34 +11,34 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class NewPullDownView
   extends View
 {
-  private float FUa;
-  private float FUb;
-  private Paint FUc;
-  private Paint FUd;
-  private float lZX;
-  private boolean mae;
+  private float HtP;
+  private float HtQ;
+  private Paint HtR;
+  private Paint HtS;
+  private float mBY;
+  private boolean mCe;
   
   public NewPullDownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33826);
-    this.lZX = 0.0F;
-    this.mae = false;
-    this.FUa = (20.0F * getResources().getDisplayMetrics().density);
-    this.FUb = (14.0F * getResources().getDisplayMetrics().density - getResources().getDisplayMetrics().density * 4.0F);
-    this.FUc = new Paint(1);
-    this.FUc.setStyle(Paint.Style.FILL);
-    this.FUc.setColor(-4408132);
-    this.FUd = new Paint(1);
-    this.FUd.setStyle(Paint.Style.STROKE);
-    this.FUd.setColor(0);
-    this.FUd.setStrokeWidth(getResources().getDisplayMetrics().density * 4.0F);
-    this.FUd.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.mBY = 0.0F;
+    this.mCe = false;
+    this.HtP = (20.0F * getResources().getDisplayMetrics().density);
+    this.HtQ = (14.0F * getResources().getDisplayMetrics().density - getResources().getDisplayMetrics().density * 4.0F);
+    this.HtR = new Paint(1);
+    this.HtR.setStyle(Paint.Style.FILL);
+    this.HtR.setColor(-4408132);
+    this.HtS = new Paint(1);
+    this.HtS.setStyle(Paint.Style.STROKE);
+    this.HtS.setColor(0);
+    this.HtS.setStrokeWidth(getResources().getDisplayMetrics().density * 4.0F);
+    this.HtS.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     AppMethodBeat.o(33826);
   }
   
@@ -49,9 +49,9 @@ public class NewPullDownView
     float f1 = getMeasuredWidth() / 2;
     float f2 = getMeasuredHeight() / 2;
     paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null, 31);
-    paramCanvas.drawCircle(f1, f2, this.lZX * this.FUa / 2.0F, this.FUc);
-    if (this.lZX >= 0.4F) {
-      paramCanvas.drawCircle(f1, f2, (this.lZX - 0.4F) / 0.6F * this.FUb / 2.0F, this.FUd);
+    paramCanvas.drawCircle(f1, f2, this.mBY * this.HtP / 2.0F, this.HtR);
+    if (this.mBY >= 0.4F) {
+      paramCanvas.drawCircle(f1, f2, (this.mBY - 0.4F) / 0.6F * this.HtQ / 2.0F, this.HtS);
     }
     paramCanvas.restore();
     AppMethodBeat.o(33827);
@@ -60,19 +60,19 @@ public class NewPullDownView
   public void setVerticalScrollPercent(float paramFloat)
   {
     AppMethodBeat.i(33828);
-    ad.i("MicroMsg.PullDownView", "[setVerticalScrollPercent] percent:%s", new Object[] { Float.valueOf(paramFloat) });
+    ac.i("MicroMsg.PullDownView", "[setVerticalScrollPercent] percent:%s", new Object[] { Float.valueOf(paramFloat) });
     float f = paramFloat;
-    if (this.mae) {
+    if (this.mCe) {
       f = 1.0F - paramFloat;
     }
-    this.lZX = Math.max(0.0F, Math.min(f, 1.0F));
+    this.mBY = Math.max(0.0F, Math.min(f, 1.0F));
     postInvalidate();
     AppMethodBeat.o(33828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.NewPullDownView
  * JD-Core Version:    0.7.0.1
  */

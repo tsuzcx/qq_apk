@@ -4,26 +4,26 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends e<Bitmap, o.b>
+  extends e<Bitmap, b>
 {
-  public static o gEi;
+  public static o heJ;
   
   static
   {
     AppMethodBeat.i(156463);
-    gEi = new o();
+    heJ = new o();
     AppMethodBeat.o(156463);
   }
   
-  private static Bitmap b(o.b paramb)
+  private static Bitmap b(b paramb)
   {
     AppMethodBeat.i(156456);
-    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.gDV);
+    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.hew);
     AppMethodBeat.o(156456);
     return paramb;
   }
   
-  public final Bitmap a(o.b paramb)
+  public final Bitmap a(b paramb)
   {
     try
     {
@@ -45,12 +45,12 @@ public final class o
     finally {}
   }
   
-  protected final long aoQ()
+  protected final long avH()
   {
     return 1228800L;
   }
   
-  protected final long aoR()
+  protected final long avI()
   {
     return 307200L;
   }
@@ -61,7 +61,7 @@ public final class o
     {
       AppMethodBeat.i(156455);
       if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        super.bL(paramBitmap);
+        super.bJ(paramBitmap);
       }
       AppMethodBeat.o(156455);
       return;
@@ -75,6 +75,47 @@ public final class o
     public a(o.b paramb)
     {
       super();
+    }
+  }
+  
+  public static final class b
+    implements Comparable
+  {
+    private String heK;
+    public int height;
+    public int width;
+    
+    public b(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(156453);
+      this.width = paramInt1;
+      this.height = paramInt2;
+      this.heK = String.format("SightBitmapSize: [%s, %s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(156453);
+    }
+    
+    public final int compareTo(Object paramObject)
+    {
+      if (paramObject == null) {
+        return 0;
+      }
+      if ((paramObject instanceof b))
+      {
+        if ((this.width == ((b)paramObject).width) && (this.height == ((b)paramObject).height)) {
+          return 0;
+        }
+        int i = this.width;
+        if (this.height * i > ((b)paramObject).width * ((b)paramObject).height) {
+          return 1;
+        }
+        return -1;
+      }
+      return 0;
+    }
+    
+    public final String toString()
+    {
+      return this.heK;
     }
   }
 }

@@ -1,76 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class bxk
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String key;
-  public String value;
+  public String iVp;
+  public String token;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117541);
+    AppMethodBeat.i(195780);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.key == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: key");
-        AppMethodBeat.o(117541);
-        throw paramVarArgs;
+      if (this.iVp != null) {
+        paramVarArgs.d(1, this.iVp);
       }
-      if (this.value == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: value");
-        AppMethodBeat.o(117541);
-        throw paramVarArgs;
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      if (this.key != null) {
-        paramVarArgs.d(1, this.key);
+      if (this.token != null) {
+        paramVarArgs.d(3, this.token);
       }
-      if (this.value != null) {
-        paramVarArgs.d(2, this.value);
-      }
-      AppMethodBeat.o(117541);
+      AppMethodBeat.o(195780);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.key == null) {
-        break label370;
+      if (this.iVp == null) {
+        break label334;
       }
     }
-    label370:
-    for (paramInt = f.a.a.b.b.a.e(1, this.key) + 0;; paramInt = 0)
+    label334:
+    for (int i = f.a.a.b.b.a.e(1, this.iVp) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.value != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.value);
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
-      AppMethodBeat.o(117541);
+      i = paramInt;
+      if (this.token != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.token);
+      }
+      AppMethodBeat.o(195780);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.key == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: key");
-          AppMethodBeat.o(117541);
-          throw paramVarArgs;
-        }
-        if (this.value == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: value");
-          AppMethodBeat.o(117541);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(117541);
+        AppMethodBeat.o(195780);
         return 0;
       }
       if (paramInt == 3)
@@ -80,18 +63,22 @@ public final class bxk
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117541);
+          AppMethodBeat.o(195780);
           return -1;
         case 1: 
-          localbxk.key = locala.KhF.readString();
-          AppMethodBeat.o(117541);
+          localbxk.iVp = locala.LVo.readString();
+          AppMethodBeat.o(195780);
+          return 0;
+        case 2: 
+          localbxk.url = locala.LVo.readString();
+          AppMethodBeat.o(195780);
           return 0;
         }
-        localbxk.value = locala.KhF.readString();
-        AppMethodBeat.o(117541);
+        localbxk.token = locala.LVo.readString();
+        AppMethodBeat.o(195780);
         return 0;
       }
-      AppMethodBeat.o(117541);
+      AppMethodBeat.o(195780);
       return -1;
     }
   }

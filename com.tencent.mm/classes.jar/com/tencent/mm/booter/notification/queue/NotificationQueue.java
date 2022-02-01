@@ -8,34 +8,34 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
 import com.tencent.mm.m.f;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class NotificationQueue
 {
-  public ParcelNotificationQueue flu;
+  public ParcelNotificationQueue foO;
   
   private void save()
   {
-    AppMethodBeat.i(191132);
-    if (this.flu == null)
+    AppMethodBeat.i(20014);
+    if (this.foO == null)
     {
-      AppMethodBeat.o(191132);
+      AppMethodBeat.o(20014);
       return;
     }
-    ad.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.flu.size()) });
-    if (this.flu.isEmpty())
+    ac.d("MicroMsg.NotificationCustomQueue", "jacks save: %d", new Object[] { Integer.valueOf(this.foO.size()) });
+    if (this.foO.isEmpty())
     {
-      f.Yg().edit().putString("com.tencent.preference.notification.queue", "").apply();
-      if (this.flu == null) {
+      f.Zd().edit().putString("com.tencent.preference.notification.queue", "").apply();
+      if (this.foO == null) {
         restore();
       }
-      ad.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.flu.size()) });
-      AppMethodBeat.o(191132);
+      ac.d("MicroMsg.NotificationCustomQueue", "jacks _reset: %d", new Object[] { Integer.valueOf(this.foO.size()) });
+      AppMethodBeat.o(20014);
       return;
     }
-    AppMethodBeat.o(191132);
+    AppMethodBeat.o(20014);
   }
   
   public final boolean d(NotificationItem paramNotificationItem)
@@ -43,10 +43,10 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20016);
-      if (this.flu == null) {
+      if (this.foO == null) {
         restore();
       }
-      boolean bool = this.flu.remove(paramNotificationItem);
+      boolean bool = this.foO.remove(paramNotificationItem);
       if (bool) {
         save();
       }
@@ -61,10 +61,10 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20018);
-      if (this.flu == null) {
+      if (this.foO == null) {
         restore();
       }
-      boolean bool = this.flu.add(paramNotificationItem);
+      boolean bool = this.foO.add(paramNotificationItem);
       if (bool) {
         save();
       }
@@ -74,24 +74,24 @@ public final class NotificationQueue
     finally {}
   }
   
-  public final NotificationItem ky(int paramInt)
+  public final NotificationItem kv(int paramInt)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(20017);
-        if (this.flu == null) {
+        if (this.foO == null) {
           restore();
         }
-        Iterator localIterator = this.flu.iterator();
+        Iterator localIterator = this.foO.iterator();
         if (localIterator.hasNext())
         {
           NotificationItem localNotificationItem = (NotificationItem)localIterator.next();
           if (localNotificationItem.id != paramInt) {
             continue;
           }
-          if ((localNotificationItem != null) && (this.flu.remove(localNotificationItem))) {
+          if ((localNotificationItem != null) && (this.foO.remove(localNotificationItem))) {
             save();
           }
           AppMethodBeat.o(20017);
@@ -108,11 +108,11 @@ public final class NotificationQueue
     try
     {
       AppMethodBeat.i(20015);
-      ad.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
-      if (this.flu == null) {
-        this.flu = new ParcelNotificationQueue();
+      ac.d("MicroMsg.NotificationCustomQueue", "jacks _restore");
+      if (this.foO == null) {
+        this.foO = new ParcelNotificationQueue();
       }
-      ad.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.flu.size()) });
+      ac.d("MicroMsg.NotificationCustomQueue", "jacks _restore: %d", new Object[] { Integer.valueOf(this.foO.size()) });
       AppMethodBeat.o(20015);
       return;
     }
@@ -122,10 +122,10 @@ public final class NotificationQueue
   public final int size()
   {
     AppMethodBeat.i(20019);
-    if (this.flu == null) {
+    if (this.foO == null) {
       restore();
     }
-    int i = this.flu.size();
+    int i = this.foO.size();
     AppMethodBeat.o(20019);
     return i;
   }
@@ -162,7 +162,7 @@ public final class NotificationQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.NotificationQueue
  * JD-Core Version:    0.7.0.1
  */

@@ -20,6 +20,7 @@ public class BaseNumberKeyboardView
   extends LinearLayout
 {
   private Context mContext;
+  private ImageButton mHz;
   private EditText mInputEditText;
   private Button mKey0;
   private Button mKey1;
@@ -33,7 +34,6 @@ public class BaseNumberKeyboardView
   private Button mKey9;
   private Button mKeyX;
   private int mXMode;
-  private ImageButton mfA;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
@@ -69,7 +69,7 @@ public class BaseNumberKeyboardView
     this.mKey9 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_9")));
     this.mKeyX = ((Button)paramContext.findViewById(getId("tenpay_keyboard_x")));
     this.mKey0 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_0")));
-    this.mfA = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
+    this.mHz = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -148,7 +148,7 @@ public class BaseNumberKeyboardView
       this.mKey9.setContentDescription("9");
       this.mKey0.setContentDescription("0");
       this.mKeyX.setContentDescription("字母X");
-      this.mfA.setContentDescription("删除");
+      this.mHz.setContentDescription("删除");
     }
     this.mKey1.setOnClickListener(paramContext);
     this.mKey2.setOnClickListener(paramContext);
@@ -161,7 +161,7 @@ public class BaseNumberKeyboardView
     this.mKey9.setOnClickListener(paramContext);
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
-    this.mfA.setOnClickListener(paramContext);
+    this.mHz.setOnClickListener(paramContext);
     AppMethodBeat.o(136681);
   }
   
@@ -220,7 +220,7 @@ public class BaseNumberKeyboardView
     this.mKey8.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
-    this.mfA.setAccessibilityDelegate(paramAccessibilityDelegate);
+    this.mHz.setAccessibilityDelegate(paramAccessibilityDelegate);
     AppMethodBeat.o(136682);
   }
   
@@ -252,7 +252,7 @@ public class BaseNumberKeyboardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

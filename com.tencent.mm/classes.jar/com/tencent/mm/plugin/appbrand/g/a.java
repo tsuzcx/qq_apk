@@ -15,11 +15,11 @@ public abstract interface a
   
   public abstract void a(String paramString, Map<String, String> paramMap, c paramc);
   
-  public abstract Bitmap bR(String paramString);
+  public abstract Bitmap bH(String paramString);
   
   public static abstract interface a
   {
-    public abstract String AL();
+    public abstract String Ap();
     
     public abstract void a(String paramString, Map<String, String> paramMap, a.c paramc);
     
@@ -35,12 +35,12 @@ public abstract interface a
   
   public static abstract interface c
   {
-    public abstract void A(InputStream paramInputStream);
+    public abstract void z(InputStream paramInputStream);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a
  * JD-Core Version:    0.7.0.1
  */

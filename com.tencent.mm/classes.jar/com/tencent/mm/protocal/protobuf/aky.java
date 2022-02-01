@@ -1,75 +1,64 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class aky
-  extends com.tencent.mm.bx.a
+  extends cqk
 {
-  public String Dmv;
-  public String Dmw;
-  public String Lyc;
-  public FinderContact contact;
-  public int fansCount;
-  public int friendFollowCount;
+  public amb EEN;
+  public b rpX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169047);
+    AppMethodBeat.i(168989);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.contact != null)
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.kX(1, this.contact.computeSize());
-        this.contact.writeFields(paramVarArgs);
+        paramVarArgs.ln(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.Dmv != null) {
-        paramVarArgs.d(2, this.Dmv);
+      if (this.EEN != null)
+      {
+        paramVarArgs.ln(2, this.EEN.computeSize());
+        this.EEN.writeFields(paramVarArgs);
       }
-      if (this.Dmw != null) {
-        paramVarArgs.d(3, this.Dmw);
+      if (this.rpX != null) {
+        paramVarArgs.c(3, this.rpX);
       }
-      paramVarArgs.aR(4, this.fansCount);
-      paramVarArgs.aR(5, this.friendFollowCount);
-      if (this.Lyc != null) {
-        paramVarArgs.d(6, this.Lyc);
-      }
-      AppMethodBeat.o(169047);
+      AppMethodBeat.o(168989);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.contact == null) {
-        break label578;
+      if (this.BaseResponse == null) {
+        break label526;
       }
     }
-    label578:
-    for (int i = f.a.a.a.kW(1, this.contact.computeSize()) + 0;; i = 0)
+    label526:
+    for (int i = f.a.a.a.lm(1, this.BaseResponse.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Dmv != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Dmv);
+      if (this.EEN != null) {
+        paramInt = i + f.a.a.a.lm(2, this.EEN.computeSize());
       }
       i = paramInt;
-      if (this.Dmw != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Dmw);
+      if (this.rpX != null) {
+        i = paramInt + f.a.a.b.b.a.b(3, this.rpX);
       }
-      i = i + f.a.a.b.b.a.bA(4, this.fansCount) + f.a.a.b.b.a.bA(5, this.friendFollowCount);
-      paramInt = i;
-      if (this.Lyc != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.Lyc);
-      }
-      AppMethodBeat.o(169047);
-      return paramInt;
+      AppMethodBeat.o(168989);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cqk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cqk.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        AppMethodBeat.o(169047);
+        AppMethodBeat.o(168989);
         return 0;
       }
       if (paramInt == 3)
@@ -77,55 +66,56 @@ public final class aky
         Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         aky localaky = (aky)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(169047);
+          AppMethodBeat.o(168989);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaky.contact = ((FinderContact)localObject1);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localaky.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(169047);
+          AppMethodBeat.o(168989);
           return 0;
         case 2: 
-          localaky.Dmv = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(169047);
-          return 0;
-        case 3: 
-          localaky.Dmw = ((f.a.a.a.a)localObject1).KhF.readString();
-          AppMethodBeat.o(169047);
-          return 0;
-        case 4: 
-          localaky.fansCount = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(169047);
-          return 0;
-        case 5: 
-          localaky.friendFollowCount = ((f.a.a.a.a)localObject1).KhF.xS();
-          AppMethodBeat.o(169047);
+          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new amb();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((amb)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cqk.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localaky.EEN = ((amb)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(168989);
           return 0;
         }
-        localaky.Lyc = ((f.a.a.a.a)localObject1).KhF.readString();
-        AppMethodBeat.o(169047);
+        localaky.rpX = ((f.a.a.a.a)localObject1).LVo.gfk();
+        AppMethodBeat.o(168989);
         return 0;
       }
-      AppMethodBeat.o(169047);
+      AppMethodBeat.o(168989);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aky
  * JD-Core Version:    0.7.0.1
  */

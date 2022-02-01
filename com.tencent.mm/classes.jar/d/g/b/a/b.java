@@ -2,7 +2,7 @@ package d.g.b.a;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlin/jvm/internal/markers/KMutableCollection;", "Lkotlin/jvm/internal/markers/KMutableIterable;", "kotlin-stdlib"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/markers/KMutableCollection;", "Lkotlin/jvm/internal/markers/KMutableIterable;", "kotlin-stdlib"})
 public abstract interface b
   extends c
 {}

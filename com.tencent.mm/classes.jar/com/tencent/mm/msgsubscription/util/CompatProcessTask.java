@@ -8,32 +8,32 @@ import d.f;
 import d.g;
 import d.g.a.a;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Landroid/os/Parcelable;", "()V", "taskId", "", "getTaskId", "()Ljava/lang/String;", "taskId$delegate", "Lkotlin/Lazy;", "callback", "", "describeContents", "", "execAsync", "keepMe", "parseFromParcel", "p", "Landroid/os/Parcel;", "releaseMe", "runInClientProcess", "runInMainProcess", "wxbiz-msgsubscription-sdk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/util/CompatProcessTask;", "Landroid/os/Parcelable;", "()V", "taskId", "", "getTaskId", "()Ljava/lang/String;", "taskId$delegate", "Lkotlin/Lazy;", "callback", "", "describeContents", "", "execAsync", "keepMe", "parseFromParcel", "p", "Landroid/os/Parcel;", "releaseMe", "runInClientProcess", "runInMainProcess", "wxbiz-msgsubscription-sdk_release"})
 public abstract class CompatProcessTask
   implements Parcelable
 {
-  private final f hKo = g.E((a)new c(this));
+  private final f ikL = g.K((a)new c(this));
   
-  public void aEA() {}
+  public abstract void aLq();
   
-  public final String aEB()
+  public void aLr() {}
+  
+  public final String aLs()
   {
-    return (String)this.hKo.getValue();
+    return (String)this.ikL.getValue();
   }
   
-  public final void aEC()
+  public final void aLt()
   {
-    h.Iye.f((Runnable)new b(this), "CompatProcessTask_" + aEB());
+    h.JZN.f((Runnable)new b(this), "CompatProcessTask_" + aLs());
   }
-  
-  public abstract void aEz();
   
   public int describeContents()
   {
     return 0;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   public static final class a
     implements Runnable
   {
@@ -42,12 +42,12 @@ public abstract class CompatProcessTask
     public final void run()
     {
       AppMethodBeat.i(174575);
-      this.hKp.aEA();
+      this.ikM.aLr();
       AppMethodBeat.o(174575);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -56,12 +56,12 @@ public abstract class CompatProcessTask
     public final void run()
     {
       AppMethodBeat.i(174576);
-      this.hKp.aEz();
+      this.ikM.aLq();
       AppMethodBeat.o(174576);
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
   static final class c
     extends d.g.b.l
     implements a<String>
@@ -74,7 +74,7 @@ public abstract class CompatProcessTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.util.CompatProcessTask
  * JD-Core Version:    0.7.0.1
  */

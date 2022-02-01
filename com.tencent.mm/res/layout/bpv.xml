@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:id="@id/hq0" android:background="@drawable/a_c" android:paddingLeft="@dimen/c0" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+    <android.support.constraint.ConstraintLayout android:id="@id/hsx" android:background="@drawable/a_c" android:paddingLeft="@dimen/c0" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8">
         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/hq1" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginRight="@dimen/ci" android:scaleType="centerCrop" />
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/hqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="250.0dip" android:text="{title}{title}{title}{title}{title}{title}{title}{title}" android:maxLines="1" />
-            <TextView android:textSize="@dimen/jo" android:textColor="@color/yh" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/hqc" android:background="@drawable/c55" android:paddingLeft="@dimen/bq" android:paddingRight="@dimen/bq" android:layout_width="wrap_content" android:layout_height="@dimen/c6" android:layout_marginLeft="@dimen/c0" android:text="{sub}{sub}" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/FG_0" android:id="@id/hta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" />
         </LinearLayout>
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/FG_2" android:id="@id/hpz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c9" android:text="{desc}" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-        <FrameLayout android:id="@id/hqb" android:background="@drawable/c54" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginRight="@dimen/ci" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+        <FrameLayout android:id="@id/ht9" android:background="@drawable/c57" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginRight="@dimen/ci" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/ci" android:layout_height="@dimen/c5" android:src="@raw/icons_filled_arrow" app:iconColor="@color/BW_70" />
         </FrameLayout>
     </android.support.constraint.ConstraintLayout>
-    <LinearLayout android:orientation="horizontal" android:background="@color/BW_100" android:paddingLeft="@dimen/ci" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toBottomOf="@id/hq0">
-        <include android:id="@id/hq7" layout="@layout/bpx" />
-        <include android:id="@id/hq8" layout="@layout/bpx" />
-        <include android:id="@id/hq9" layout="@layout/bpx" />
-    </LinearLayout>
+    <RelativeLayout android:background="@color/BW_100" android:paddingLeft="@dimen/ca" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/ca" android:paddingBottom="@dimen/c8" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toBottomOf="@id/hsx">
+        <include android:id="@id/ht1" android:layout_width="@dimen/br" android:layout_height="wrap_content" android:layout_alignParentLeft="true" layout="@layout/bpx" />
+        <include android:id="@id/ht2" android:layout_width="@dimen/br" android:layout_height="wrap_content" android:layout_centerHorizontal="true" layout="@layout/bpx" />
+        <include android:id="@id/ht3" android:layout_width="@dimen/br" android:layout_height="wrap_content" android:layout_alignParentRight="true" layout="@layout/bpx" />
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

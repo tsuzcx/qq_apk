@@ -1,29 +1,123 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"DEFAULT_SLOT_SECONDS", "", "now", "isExpire", "", "seconds", "", "millSeconds", "libcompatible_release"})
 public final class as
 {
-  public static final boolean ad(long paramLong, int paramInt)
+  public static String eVo()
   {
-    AppMethodBeat.i(156398);
-    boolean bool = au(paramLong, paramInt * 1000L);
-    AppMethodBeat.o(156398);
-    return bool;
+    AppMethodBeat.i(157711);
+    try
+    {
+      Object localObject = new Throwable().getStackTrace();
+      if ((localObject == null) || (localObject.length < 3))
+      {
+        AppMethodBeat.o(157711);
+        return "";
+      }
+      String str = localObject[2].getClassName().substring(15);
+      str = str + ":" + localObject[2].getMethodName();
+      localObject = str + "(" + localObject[2].getLineNumber() + ")";
+      AppMethodBeat.o(157711);
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      ac.e("MicroMsg.Util.MMStack", "getCaller e:%s", new Object[] { m(localThrowable) });
+      AppMethodBeat.o(157711);
+    }
+    return "";
   }
   
-  public static final boolean au(long paramLong1, long paramLong2)
+  public static String eVp()
   {
-    AppMethodBeat.i(156397);
-    if (System.currentTimeMillis() - paramLong1 > paramLong2)
+    AppMethodBeat.i(157712);
+    Object localObject = new Throwable().getStackTrace();
+    if ((localObject == null) || (localObject.length < 4))
     {
-      AppMethodBeat.o(156397);
-      return true;
+      AppMethodBeat.o(157712);
+      return "";
     }
-    AppMethodBeat.o(156397);
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 3;
+    while (i < localObject.length)
+    {
+      if ((localObject[i].getClassName().contains("com.tencent.mm")) && (!localObject[i].getClassName().contains("sdk.platformtools.Log")))
+      {
+        localStringBuilder.append("[");
+        localStringBuilder.append(localObject[i].getClassName().substring(15));
+        localStringBuilder.append(":");
+        localStringBuilder.append(localObject[i].getMethodName());
+        localStringBuilder.append("(" + localObject[i].getLineNumber() + ")]");
+      }
+      i += 1;
+    }
+    localObject = localStringBuilder.toString();
+    AppMethodBeat.o(157712);
+    return localObject;
+  }
+  
+  public static String m(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(157713);
+    if (paramThrowable == null)
+    {
+      AppMethodBeat.o(157713);
+      return "";
+    }
+    try
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
+      paramThrowable.printStackTrace(localPrintStream);
+      paramThrowable = localByteArrayOutputStream.toString();
+      localPrintStream.close();
+      localByteArrayOutputStream.close();
+      AppMethodBeat.o(157713);
+      return paramThrowable;
+    }
+    catch (Exception paramThrowable)
+    {
+      AppMethodBeat.o(157713);
+    }
+    return "";
+  }
+  
+  public static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
+  {
+    AppMethodBeat.i(157714);
+    if ((paramArrayOfStackTraceElement == null) || (paramArrayOfStackTraceElement.length < 4))
+    {
+      AppMethodBeat.o(157714);
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 3;
+    while (i < paramArrayOfStackTraceElement.length)
+    {
+      if ((paramArrayOfStackTraceElement[i].getClassName().contains("com.tencent.mm")) && (!paramArrayOfStackTraceElement[i].getClassName().contains("sdk.platformtools.Log")))
+      {
+        localStringBuilder.append("[");
+        localStringBuilder.append(paramArrayOfStackTraceElement[i].getClassName().substring(15));
+        localStringBuilder.append(":");
+        localStringBuilder.append(paramArrayOfStackTraceElement[i].getMethodName());
+        localStringBuilder.append("(" + paramArrayOfStackTraceElement[i].getLineNumber() + ")]");
+      }
+      i += 1;
+    }
+    paramArrayOfStackTraceElement = localStringBuilder.toString();
+    AppMethodBeat.o(157714);
+    return paramArrayOfStackTraceElement;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(157710);
+    String str = eVp();
+    AppMethodBeat.o(157710);
+    return str;
   }
 }
 

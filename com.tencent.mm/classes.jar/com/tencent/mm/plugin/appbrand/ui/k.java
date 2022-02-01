@@ -15,30 +15,30 @@ import com.tencent.mm.ui.statusbar.b;
 @SuppressLint({"ViewConstructor"})
 public class k
   extends b
-  implements v
+  implements u
 {
-  private View aoo;
-  private final Bitmap lCa;
-  private TextView lCb;
+  private View apj;
+  private final Bitmap mdW;
+  private TextView mdX;
   
   public k(Context paramContext, Bitmap paramBitmap)
   {
     super(paramContext);
     AppMethodBeat.i(48782);
-    this.lCa = paramBitmap;
-    wD(true);
+    this.mdW = paramBitmap;
+    xK(true);
     setBackground(new BitmapDrawable(getResources(), paramBitmap));
     paramContext = LayoutInflater.from(paramContext).inflate(2131493061, this, false);
-    this.aoo = paramContext;
+    this.apj = paramContext;
     addView(paramContext);
     paramBitmap = (TextView)paramContext.findViewById(2131305902);
-    this.lCb = paramBitmap;
+    this.mdX = paramBitmap;
     paramBitmap.setText(2131755490);
     paramContext.findViewById(2131301215).setVisibility(8);
     AppMethodBeat.o(48782);
   }
   
-  public void bhu()
+  public void boo()
   {
     AppMethodBeat.i(48783);
     post(new Runnable()
@@ -75,7 +75,7 @@ public class k
     AppMethodBeat.o(48783);
   }
   
-  public final void dB(String paramString1, String paramString2) {}
+  public final void dN(String paramString1, String paramString2) {}
   
   public View getView()
   {
@@ -86,7 +86,7 @@ public class k
   {
     AppMethodBeat.i(48784);
     super.onDetachedFromWindow();
-    this.lCa.recycle();
+    this.mdW.recycle();
     AppMethodBeat.o(48784);
   }
   
@@ -94,29 +94,29 @@ public class k
   
   public void setPromptText(String paramString)
   {
-    AppMethodBeat.i(196189);
-    this.lCb.setText(paramString);
-    AppMethodBeat.o(196189);
+    AppMethodBeat.i(187034);
+    this.mdX.setText(paramString);
+    AppMethodBeat.o(187034);
   }
   
   public void setPromptVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(196188);
-    View localView = this.aoo;
+    AppMethodBeat.i(187033);
+    View localView = this.apj;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
-      AppMethodBeat.o(196188);
+      AppMethodBeat.o(187033);
       return;
     }
   }
   
-  public final void tc(int paramInt) {}
+  public final void tT(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.k
  * JD-Core Version:    0.7.0.1
  */

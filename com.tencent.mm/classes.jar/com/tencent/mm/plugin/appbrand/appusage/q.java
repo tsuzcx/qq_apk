@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bdr;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.protocal.protobuf.bhj;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import com.tencent.mm.storage.c;
 import java.util.Collections;
 import java.util.Map;
@@ -15,26 +15,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public enum q
 {
-  private static volatile bdr iUI;
-  private static final Set<Object> iUJ;
+  private static volatile bhj juY;
+  private static final Set<Object> juZ;
   
   static
   {
     AppMethodBeat.i(44546);
-    iUK = new q[0];
-    iUJ = Collections.newSetFromMap(new ConcurrentHashMap());
+    jva = new q[0];
+    juZ = Collections.newSetFromMap(new ConcurrentHashMap());
     AppMethodBeat.o(44546);
   }
   
-  public static boolean aRI()
+  public static boolean aYD()
   {
     return true;
   }
   
-  public static boolean aRJ()
+  public static boolean aYE()
   {
     AppMethodBeat.i(44539);
-    switch (1.iUL[aRK().ordinal()])
+    switch (1.jvb[aYF().ordinal()])
     {
     }
     do
@@ -45,13 +45,13 @@ public enum q
       return false;
       AppMethodBeat.o(44539);
       return true;
-      if (aRL())
+      if (aYG())
       {
         AppMethodBeat.o(44539);
         return true;
       }
-    } while (iUI == null);
-    if (iUI.msf >= iUI.DBe)
+    } while (juY == null);
+    if (juY.mUg >= juY.EWA)
     {
       AppMethodBeat.o(44539);
       return true;
@@ -60,20 +60,20 @@ public enum q
     return false;
   }
   
-  static a aRK()
+  static a aYF()
   {
     int i = 0;
     AppMethodBeat.i(44541);
-    if (!g.afw())
+    if (!g.agM())
     {
-      localObject = a.iUM;
+      localObject = a.jvc;
       AppMethodBeat.o(44541);
       return localObject;
     }
-    Object localObject = com.tencent.mm.model.c.d.aty().qu("100215");
+    Object localObject = com.tencent.mm.model.c.d.aAp().tJ("100215");
     if (((c)localObject).isValid())
     {
-      int j = bt.getInt((String)((c)localObject).eJy().get("isOpenNewNearEntry"), 0);
+      int j = bs.getInt((String)((c)localObject).eYV().get("isOpenNewNearEntry"), 0);
       localObject = a.values();
       int k = localObject.length;
       while (i < k)
@@ -87,34 +87,34 @@ public enum q
         i += 1;
       }
     }
-    localObject = a.iUM;
+    localObject = a.jvc;
     AppMethodBeat.o(44541);
     return localObject;
   }
   
-  static boolean aRL()
+  static boolean aYG()
   {
     AppMethodBeat.i(44542);
-    boolean bool = g.afB().afk().getBoolean(ae.a.FlA, false);
+    boolean bool = g.agR().agA().getBoolean(ah.a.GJp, false);
     AppMethodBeat.o(44542);
     return bool;
   }
   
-  static void aRM()
+  static void aYH()
   {
     AppMethodBeat.i(44543);
-    g.afB().afk().set(ae.a.FlA, Boolean.TRUE);
+    g.agR().agA().set(ah.a.GJp, Boolean.TRUE);
     AppMethodBeat.o(44543);
   }
   
-  public static bdr aRN()
+  public static bhj aYI()
   {
-    return iUI;
+    return juY;
   }
   
   public static void clearData()
   {
-    iUI = null;
+    juY = null;
   }
   
   static enum a
@@ -124,10 +124,10 @@ public enum q
     static
     {
       AppMethodBeat.i(44534);
-      iUM = new a("FORCE_OFF", 0, 0);
-      iUN = new a("FORCE_ON", 1, 1);
-      iUO = new a("DYNAMIC_THRESHOLD", 2, 2);
-      iUP = new a[] { iUM, iUN, iUO };
+      jvc = new a("FORCE_OFF", 0, 0);
+      jvd = new a("FORCE_ON", 1, 1);
+      jve = new a("DYNAMIC_THRESHOLD", 2, 2);
+      jvf = new a[] { jvc, jvd, jve };
       AppMethodBeat.o(44534);
     }
     
@@ -139,7 +139,7 @@ public enum q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.q
  * JD-Core Version:    0.7.0.1
  */

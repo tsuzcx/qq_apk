@@ -1,20 +1,8 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public enum bb
+public abstract interface bb
 {
-  static
-  {
-    AppMethodBeat.i(135279);
-    leY = new bb("MODAL", 0);
-    leZ = new bb("ACTION_SHEET", 1);
-    lfa = new bb("TOAST", 2);
-    lfb = new bb[] { leY, leZ, lfa };
-    AppMethodBeat.o(135279);
-  }
-  
-  private bb() {}
+  public abstract String OF(String paramString);
 }
 
 

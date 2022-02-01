@@ -13,185 +13,185 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.d;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public class AdVideoPlayerLoadingBar
   extends RelativeLayout
 {
   protected View contentView;
-  protected boolean jVE;
-  protected e.d ktd;
-  protected ImageView kte;
-  protected ImageView ktf;
-  protected ImageView ktg;
-  protected ImageView kth;
-  protected TextView kti;
-  protected TextView ktj;
-  protected int ktk;
-  private int ktl;
-  private int ktm;
-  protected float ktn;
-  private int kto;
-  private int ktp;
-  private int ktq;
-  private int ktr;
+  private int kUA;
+  private int kUB;
+  protected float kUC;
+  private int kUD;
+  private int kUE;
+  private int kUF;
+  private int kUG;
+  protected e.d kUs;
+  protected ImageView kUt;
+  protected ImageView kUu;
+  protected ImageView kUv;
+  protected ImageView kUw;
+  protected TextView kUx;
+  protected TextView kUy;
+  protected int kUz;
+  protected boolean kwq;
   protected int mPosition;
   
   public AdVideoPlayerLoadingBar(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(194195);
-    this.ktd = null;
+    AppMethodBeat.i(194540);
+    this.kUs = null;
     this.contentView = null;
-    this.ktf = null;
-    this.ktg = null;
-    this.kth = null;
-    this.ktk = 0;
+    this.kUu = null;
+    this.kUv = null;
+    this.kUw = null;
+    this.kUz = 0;
     this.mPosition = 0;
-    this.ktl = 0;
-    this.ktm = 0;
-    this.jVE = false;
-    this.ktn = 0.0F;
-    this.kto = -1;
-    this.ktp = -1;
-    this.ktq = -1;
-    this.ktr = -1;
+    this.kUA = 0;
+    this.kUB = 0;
+    this.kwq = false;
+    this.kUC = 0.0F;
+    this.kUD = -1;
+    this.kUE = -1;
+    this.kUF = -1;
+    this.kUG = -1;
     init();
-    AppMethodBeat.o(194195);
+    AppMethodBeat.o(194540);
   }
   
   public AdVideoPlayerLoadingBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194196);
-    this.ktd = null;
+    AppMethodBeat.i(194541);
+    this.kUs = null;
     this.contentView = null;
-    this.ktf = null;
-    this.ktg = null;
-    this.kth = null;
-    this.ktk = 0;
+    this.kUu = null;
+    this.kUv = null;
+    this.kUw = null;
+    this.kUz = 0;
     this.mPosition = 0;
-    this.ktl = 0;
-    this.ktm = 0;
-    this.jVE = false;
-    this.ktn = 0.0F;
-    this.kto = -1;
-    this.ktp = -1;
-    this.ktq = -1;
-    this.ktr = -1;
+    this.kUA = 0;
+    this.kUB = 0;
+    this.kwq = false;
+    this.kUC = 0.0F;
+    this.kUD = -1;
+    this.kUE = -1;
+    this.kUF = -1;
+    this.kUG = -1;
     init();
-    AppMethodBeat.o(194196);
+    AppMethodBeat.o(194541);
   }
   
   public AdVideoPlayerLoadingBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194197);
-    this.ktd = null;
+    AppMethodBeat.i(194542);
+    this.kUs = null;
     this.contentView = null;
-    this.ktf = null;
-    this.ktg = null;
-    this.kth = null;
-    this.ktk = 0;
+    this.kUu = null;
+    this.kUv = null;
+    this.kUw = null;
+    this.kUz = 0;
     this.mPosition = 0;
-    this.ktl = 0;
-    this.ktm = 0;
-    this.jVE = false;
-    this.ktn = 0.0F;
-    this.kto = -1;
-    this.ktp = -1;
-    this.ktq = -1;
-    this.ktr = -1;
+    this.kUA = 0;
+    this.kUB = 0;
+    this.kwq = false;
+    this.kUC = 0.0F;
+    this.kUD = -1;
+    this.kUE = -1;
+    this.kUF = -1;
+    this.kUG = -1;
     init();
-    AppMethodBeat.o(194197);
+    AppMethodBeat.o(194542);
   }
   
-  public static String rX(int paramInt)
+  public static String sO(int paramInt)
   {
-    AppMethodBeat.i(194209);
+    AppMethodBeat.i(194554);
     if (paramInt < 10)
     {
       String str = "0".concat(String.valueOf(paramInt));
-      AppMethodBeat.o(194209);
+      AppMethodBeat.o(194554);
       return str;
     }
-    AppMethodBeat.o(194209);
+    AppMethodBeat.o(194554);
     return String.valueOf(paramInt);
   }
   
-  public final void bdS()
+  public final void bkM()
   {
-    AppMethodBeat.i(194205);
-    this.ktj.setText(rX(this.ktk / 60) + ":" + rX(this.ktk % 60));
-    bdT();
-    AppMethodBeat.o(194205);
+    AppMethodBeat.i(194550);
+    this.kUy.setText(sO(this.kUz / 60) + ":" + sO(this.kUz % 60));
+    bkN();
+    AppMethodBeat.o(194550);
   }
   
-  public void bdT()
+  public void bkN()
   {
-    AppMethodBeat.i(194208);
-    if (this.ktk == 0)
+    AppMethodBeat.i(194553);
+    if (this.kUz == 0)
     {
-      AppMethodBeat.o(194208);
+      AppMethodBeat.o(194553);
       return;
     }
-    if (this.jVE)
+    if (this.kwq)
     {
-      AppMethodBeat.o(194208);
+      AppMethodBeat.o(194553);
       return;
     }
-    if (this.ktg == null)
+    if (this.kUv == null)
     {
-      AppMethodBeat.o(194208);
+      AppMethodBeat.o(194553);
       return;
     }
     if (getBarLen() == 0)
     {
-      AppMethodBeat.o(194208);
+      AppMethodBeat.o(194553);
       return;
     }
-    int i = (getBarPointWidth() - this.ktg.getPaddingLeft() - this.ktg.getPaddingRight()) / 2;
-    this.kti.setText(rX(this.mPosition / 60) + ":" + rX(this.mPosition % 60));
-    int j = ((FrameLayout.LayoutParams)this.ktf.getLayoutParams()).leftMargin;
-    int k = this.ktg.getPaddingLeft();
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ktg.getLayoutParams();
-    localLayoutParams.leftMargin = (j - k + (int)(this.mPosition * 1.0D / this.ktk * getBarLen()) - i);
-    this.ktg.setLayoutParams(localLayoutParams);
-    localLayoutParams = (FrameLayout.LayoutParams)this.kte.getLayoutParams();
-    localLayoutParams.width = ((int)(this.mPosition * 1.0D / this.ktk * getBarLen()));
-    this.kte.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(194208);
+    int i = (getBarPointWidth() - this.kUv.getPaddingLeft() - this.kUv.getPaddingRight()) / 2;
+    this.kUx.setText(sO(this.mPosition / 60) + ":" + sO(this.mPosition % 60));
+    int j = ((FrameLayout.LayoutParams)this.kUu.getLayoutParams()).leftMargin;
+    int k = this.kUv.getPaddingLeft();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kUv.getLayoutParams();
+    localLayoutParams.leftMargin = (j - k + (int)(this.mPosition * 1.0D / this.kUz * getBarLen()) - i);
+    this.kUv.setLayoutParams(localLayoutParams);
+    localLayoutParams = (FrameLayout.LayoutParams)this.kUt.getLayoutParams();
+    localLayoutParams.width = ((int)(this.mPosition * 1.0D / this.kUz * getBarLen()));
+    this.kUt.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(194553);
   }
   
   protected int getBarLen()
   {
-    AppMethodBeat.i(194206);
-    if (this.ktl <= 0) {
-      this.ktl = this.ktf.getWidth();
+    AppMethodBeat.i(194551);
+    if (this.kUA <= 0) {
+      this.kUA = this.kUu.getWidth();
     }
-    int i = this.ktl;
-    AppMethodBeat.o(194206);
+    int i = this.kUA;
+    AppMethodBeat.o(194551);
     return i;
   }
   
   protected int getBarPointWidth()
   {
-    AppMethodBeat.i(194207);
-    if (this.ktm <= 0) {
-      this.ktm = this.ktg.getWidth();
+    AppMethodBeat.i(194552);
+    if (this.kUB <= 0) {
+      this.kUB = this.kUv.getWidth();
     }
-    int i = this.ktm;
-    AppMethodBeat.o(194207);
+    int i = this.kUB;
+    AppMethodBeat.o(194552);
     return i;
   }
   
   protected int getCurrentTimeByBarPoint()
   {
-    AppMethodBeat.i(194202);
-    int i = ((FrameLayout.LayoutParams)this.ktf.getLayoutParams()).leftMargin;
-    int j = this.ktg.getPaddingLeft();
-    i = Math.max(0, (int)((((FrameLayout.LayoutParams)this.ktg.getLayoutParams()).leftMargin - (i - j) + (getBarPointWidth() - this.ktg.getPaddingLeft() - this.ktg.getPaddingRight()) / 2) * 1.0D / getBarLen() * this.ktk));
-    AppMethodBeat.o(194202);
+    AppMethodBeat.i(194547);
+    int i = ((FrameLayout.LayoutParams)this.kUu.getLayoutParams()).leftMargin;
+    int j = this.kUv.getPaddingLeft();
+    i = Math.max(0, (int)((((FrameLayout.LayoutParams)this.kUv.getLayoutParams()).leftMargin - (i - j) + (getBarPointWidth() - this.kUv.getPaddingLeft() - this.kUv.getPaddingRight()) / 2) * 1.0D / getBarLen() * this.kUz));
+    AppMethodBeat.o(194547);
     return i;
   }
   
@@ -202,7 +202,7 @@ public class AdVideoPlayerLoadingBar
   
   public int getVideoTotalTime()
   {
-    return this.ktk;
+    return this.kUz;
   }
   
   public int getmPosition()
@@ -212,152 +212,152 @@ public class AdVideoPlayerLoadingBar
   
   protected void init()
   {
-    AppMethodBeat.i(194198);
+    AppMethodBeat.i(194543);
     this.contentView = View.inflate(getContext(), getLayoutId(), this);
-    this.kte = ((ImageView)this.contentView.findViewById(2131303302));
-    this.ktf = ((ImageView)this.contentView.findViewById(2131303301));
-    this.ktg = ((ImageView)this.contentView.findViewById(2131303305));
-    this.kth = ((ImageView)this.contentView.findViewById(2131303281));
-    this.kti = ((TextView)this.contentView.findViewById(2131303283));
-    this.ktj = ((TextView)this.contentView.findViewById(2131303289));
-    this.ktg.setOnTouchListener(new View.OnTouchListener()
+    this.kUt = ((ImageView)this.contentView.findViewById(2131303302));
+    this.kUu = ((ImageView)this.contentView.findViewById(2131303301));
+    this.kUv = ((ImageView)this.contentView.findViewById(2131303305));
+    this.kUw = ((ImageView)this.contentView.findViewById(2131303281));
+    this.kUx = ((TextView)this.contentView.findViewById(2131303283));
+    this.kUy = ((TextView)this.contentView.findViewById(2131303289));
+    this.kUv.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(194192);
+        AppMethodBeat.i(194537);
         if (paramAnonymousMotionEvent.getAction() == 0)
         {
-          ad.i("MicroMsg.AdVideoPlayerLoadingBar", "ontouch down");
-          AdVideoPlayerLoadingBar.this.jVE = false;
-          AdVideoPlayerLoadingBar.this.ktn = paramAnonymousMotionEvent.getX();
-          if (AdVideoPlayerLoadingBar.this.ktd != null) {
-            AdVideoPlayerLoadingBar.this.ktd.bcv();
+          ac.i("MicroMsg.AdVideoPlayerLoadingBar", "ontouch down");
+          AdVideoPlayerLoadingBar.this.kwq = false;
+          AdVideoPlayerLoadingBar.this.kUC = paramAnonymousMotionEvent.getX();
+          if (AdVideoPlayerLoadingBar.this.kUs != null) {
+            AdVideoPlayerLoadingBar.this.kUs.anR();
           }
         }
         for (;;)
         {
-          AppMethodBeat.o(194192);
+          AppMethodBeat.o(194537);
           return true;
           int i;
           if (paramAnonymousMotionEvent.getAction() == 2)
           {
             float f = paramAnonymousMotionEvent.getX();
-            paramAnonymousView = (FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.ktg.getLayoutParams();
+            paramAnonymousView = (FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.kUv.getLayoutParams();
             i = paramAnonymousView.leftMargin;
-            int j = (int)(f - AdVideoPlayerLoadingBar.this.ktn);
+            int j = (int)(f - AdVideoPlayerLoadingBar.this.kUC);
             paramAnonymousView.leftMargin = AdVideoPlayerLoadingBar.a(AdVideoPlayerLoadingBar.this, j + i);
-            AdVideoPlayerLoadingBar.this.ktg.setLayoutParams(paramAnonymousView);
+            AdVideoPlayerLoadingBar.this.kUv.setLayoutParams(paramAnonymousView);
             i = AdVideoPlayerLoadingBar.this.getCurrentTimeByBarPoint();
-            if (AdVideoPlayerLoadingBar.this.ktk > 0)
+            if (AdVideoPlayerLoadingBar.this.kUz > 0)
             {
-              paramAnonymousView = (FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.kte.getLayoutParams();
-              paramAnonymousView.width = ((int)(i * 1.0D / AdVideoPlayerLoadingBar.this.ktk * AdVideoPlayerLoadingBar.this.getBarLen()));
-              AdVideoPlayerLoadingBar.this.kte.setLayoutParams(paramAnonymousView);
+              paramAnonymousView = (FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.kUt.getLayoutParams();
+              paramAnonymousView.width = ((int)(i * 1.0D / AdVideoPlayerLoadingBar.this.kUz * AdVideoPlayerLoadingBar.this.getBarLen()));
+              AdVideoPlayerLoadingBar.this.kUt.setLayoutParams(paramAnonymousView);
             }
-            AdVideoPlayerLoadingBar.this.kti.setText(AdVideoPlayerLoadingBar.rX(i / 60) + ":" + AdVideoPlayerLoadingBar.rX(i % 60));
-            AdVideoPlayerLoadingBar.this.jVE = true;
+            AdVideoPlayerLoadingBar.this.kUx.setText(AdVideoPlayerLoadingBar.sO(i / 60) + ":" + AdVideoPlayerLoadingBar.sO(i % 60));
+            AdVideoPlayerLoadingBar.this.kwq = true;
           }
-          else if (AdVideoPlayerLoadingBar.this.jVE)
+          else if (AdVideoPlayerLoadingBar.this.kwq)
           {
             i = AdVideoPlayerLoadingBar.this.getCurrentTimeByBarPoint();
-            if (AdVideoPlayerLoadingBar.this.ktd != null)
+            if (AdVideoPlayerLoadingBar.this.kUs != null)
             {
-              ad.i("MicroMsg.AdVideoPlayerLoadingBar", "current time : ".concat(String.valueOf(i)));
-              AdVideoPlayerLoadingBar.this.ktd.rZ(i);
+              ac.i("MicroMsg.AdVideoPlayerLoadingBar", "current time : ".concat(String.valueOf(i)));
+              AdVideoPlayerLoadingBar.this.kUs.nn(i);
             }
-            AdVideoPlayerLoadingBar.this.jVE = false;
+            AdVideoPlayerLoadingBar.this.kwq = false;
           }
         }
       }
     });
-    this.ktg.post(new Runnable()
+    this.kUv.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194193);
-        int i = (AdVideoPlayerLoadingBar.this.getBarPointWidth() - AdVideoPlayerLoadingBar.this.ktg.getPaddingLeft() - AdVideoPlayerLoadingBar.this.ktg.getPaddingRight()) / 2;
-        int j = ((FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.ktf.getLayoutParams()).leftMargin;
-        int k = AdVideoPlayerLoadingBar.this.ktg.getPaddingLeft();
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.ktg.getLayoutParams();
+        AppMethodBeat.i(194538);
+        int i = (AdVideoPlayerLoadingBar.this.getBarPointWidth() - AdVideoPlayerLoadingBar.this.kUv.getPaddingLeft() - AdVideoPlayerLoadingBar.this.kUv.getPaddingRight()) / 2;
+        int j = ((FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.kUu.getLayoutParams()).leftMargin;
+        int k = AdVideoPlayerLoadingBar.this.kUv.getPaddingLeft();
+        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)AdVideoPlayerLoadingBar.this.kUv.getLayoutParams();
         localLayoutParams.leftMargin = (j - k - i);
-        AdVideoPlayerLoadingBar.this.ktg.setLayoutParams(localLayoutParams);
-        AppMethodBeat.o(194193);
+        AdVideoPlayerLoadingBar.this.kUv.setLayoutParams(localLayoutParams);
+        AppMethodBeat.o(194538);
       }
     });
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kte.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kUt.getLayoutParams();
     localLayoutParams.width = 0;
-    this.kte.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(194198);
+    this.kUt.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(194543);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(194199);
+    AppMethodBeat.i(194544);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.ktl = 0;
-    if ((paramInt1 != this.kto) || (paramInt2 != this.ktp) || (paramInt3 != this.ktq) || (paramInt4 != this.ktr)) {
-      bdT();
+    this.kUA = 0;
+    if ((paramInt1 != this.kUD) || (paramInt2 != this.kUE) || (paramInt3 != this.kUF) || (paramInt4 != this.kUG)) {
+      bkN();
     }
-    this.kto = paramInt1;
-    this.ktp = paramInt2;
-    this.ktq = paramInt3;
-    this.ktr = paramInt4;
-    AppMethodBeat.o(194199);
+    this.kUD = paramInt1;
+    this.kUE = paramInt2;
+    this.kUF = paramInt3;
+    this.kUG = paramInt4;
+    AppMethodBeat.o(194544);
   }
   
   public void seek(int paramInt)
   {
-    AppMethodBeat.i(194203);
+    AppMethodBeat.i(194548);
     this.mPosition = paramInt;
-    bdT();
-    AppMethodBeat.o(194203);
+    bkN();
+    AppMethodBeat.o(194548);
   }
   
   public void setIplaySeekCallback(e.d paramd)
   {
-    this.ktd = paramd;
+    this.kUs = paramd;
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
-    AppMethodBeat.i(194201);
+    AppMethodBeat.i(194546);
     if (paramBoolean)
     {
-      this.kth.setImageResource(2131690795);
-      AppMethodBeat.o(194201);
+      this.kUw.setImageResource(2131690795);
+      AppMethodBeat.o(194546);
       return;
     }
-    this.kth.setImageResource(2131690796);
-    AppMethodBeat.o(194201);
+    this.kUw.setImageResource(2131690796);
+    AppMethodBeat.o(194546);
   }
   
   public void setOnPlayButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(194200);
-    this.kth.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(194200);
+    AppMethodBeat.i(194545);
+    this.kUw.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(194545);
   }
   
   public void setVideoTotalTime(int paramInt)
   {
-    AppMethodBeat.i(194204);
-    this.ktk = paramInt;
+    AppMethodBeat.i(194549);
+    this.kUz = paramInt;
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(194194);
-          AdVideoPlayerLoadingBar.this.bdS();
-          AppMethodBeat.o(194194);
+          AppMethodBeat.i(194539);
+          AdVideoPlayerLoadingBar.this.bkM();
+          AppMethodBeat.o(194539);
         }
       });
-      AppMethodBeat.o(194204);
+      AppMethodBeat.o(194549);
       return;
     }
-    bdS();
-    AppMethodBeat.o(194204);
+    bkM();
+    AppMethodBeat.o(194549);
   }
 }
 

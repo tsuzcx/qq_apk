@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class kf
   extends b
 {
-  public a doB;
+  public a dlK;
   
   public kf()
   {
@@ -15,17 +16,18 @@ public final class kf
   
   private kf(byte paramByte)
   {
-    AppMethodBeat.i(193469);
-    this.doB = new a();
-    this.ESR = false;
+    AppMethodBeat.i(91208);
+    this.dlK = new a();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(193469);
+    AppMethodBeat.o(91208);
   }
   
   public static final class a
   {
-    public String content;
-    public long doC;
+    public int bPH;
+    public Intent dlL;
+    public int requestCode;
   }
 }
 

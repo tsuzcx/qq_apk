@@ -11,8 +11,8 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.sb;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sk;
 import com.tencent.mm.model.w;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
@@ -23,12 +23,12 @@ import com.tencent.mm.pluginsdk.ui.applet.ab;
 import com.tencent.mm.pluginsdk.ui.applet.ab.a;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.pluginsdk.ui.span.d.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,12 +37,12 @@ import java.util.Map;
 public class SnsTransparentUI
   extends MMActivity
 {
-  private Map<String, Bitmap> xbu;
+  private Map<String, Bitmap> yoj;
   
   public SnsTransparentUI()
   {
     AppMethodBeat.i(99457);
-    this.xbu = new HashMap();
+    this.yoj = new HashMap();
     AppMethodBeat.o(99457);
   }
   
@@ -74,12 +74,12 @@ public class SnsTransparentUI
       final String str5 = ((Intent)localObject).getStringExtra("statExtStr");
       final String str6 = ((Intent)localObject).getStringExtra("uxInfo");
       localObject = ((Intent)localObject).getStringExtra("canvasId");
-      ad.i("SnsTransparentUI", "doTransimt snsAdNativeLadingPagesUI");
-      ad.i("SnsTransparentUI.Share", "uxInfo = " + str6 + ", canvasId = " + (String)localObject);
+      ac.i("SnsTransparentUI", "doTransimt snsAdNativeLadingPagesUI");
+      ac.i("SnsTransparentUI.Share", "uxInfo = " + str6 + ", canvasId = " + (String)localObject);
       Intent localIntent = new Intent();
       localIntent.putExtra("Select_Conv_Type", 259);
       localIntent.putExtra("select_is_ret", true);
-      com.tencent.mm.bs.d.a(this, ".ui.transmit.SelectConversationUI", localIntent, 0, new MMActivity.a()
+      com.tencent.mm.br.d.a(this, ".ui.transmit.SelectConversationUI", localIntent, 0, new MMActivity.a()
       {
         public final void c(int paramAnonymousInt1, int paramAnonymousInt2, final Intent paramAnonymousIntent)
         {
@@ -89,15 +89,15 @@ public class SnsTransparentUI
             if (paramAnonymousIntent == null) {}
             for (paramAnonymousIntent = null; (paramAnonymousIntent == null) || (paramAnonymousIntent.length() == 0); paramAnonymousIntent = paramAnonymousIntent.getStringExtra("Select_Conv_User"))
             {
-              ad.e("SnsTransparentUI", "mmOnActivityResult fail, toUser is null");
+              ac.e("SnsTransparentUI", "mmOnActivityResult fail, toUser is null");
               SnsTransparentUI.this.finish();
               AppMethodBeat.o(99455);
               return;
             }
-            ad.i("SnsTransparentUI", "doTransimt snsAdNativeLadingPagesUI is ok");
+            ac.i("SnsTransparentUI", "doTransimt snsAdNativeLadingPagesUI is ok");
             final String str = paramBundle;
             final SnsTransparentUI localSnsTransparentUI = SnsTransparentUI.this;
-            ab.a.BZI.a(((MMActivity)localSnsTransparentUI).getController(), str1, str2, str3, true, localSnsTransparentUI.getResources().getString(2131755884), new y.a()
+            ab.a.DrY.a(((MMActivity)localSnsTransparentUI).getController(), str1, str2, str3, true, localSnsTransparentUI.getResources().getString(2131755884), new y.a()
             {
               public final void a(boolean paramAnonymous2Boolean, final String paramAnonymous2String, int paramAnonymous2Int)
               {
@@ -105,107 +105,107 @@ public class SnsTransparentUI
                 if (paramAnonymous2Boolean)
                 {
                   Object localObject1 = new WXMediaMessage();
-                  ((WXMediaMessage)localObject1).title = SnsTransparentUI.1.this.xJd;
-                  ((WXMediaMessage)localObject1).description = SnsTransparentUI.1.this.xJf;
+                  ((WXMediaMessage)localObject1).title = SnsTransparentUI.1.this.yVT;
+                  ((WXMediaMessage)localObject1).description = SnsTransparentUI.1.this.yVV;
                   Object localObject2 = new WXWebpageObject();
                   ((WXWebpageObject)localObject2).canvasPageXml = str;
-                  ((WXWebpageObject)localObject2).webpageUrl = SnsTransparentUI.1.this.xJg;
+                  ((WXWebpageObject)localObject2).webpageUrl = SnsTransparentUI.1.this.yVW;
                   ((WXMediaMessage)localObject1).mediaObject = ((WXMediaMessage.IMediaObject)localObject2);
-                  if (SnsTransparentUI.a(SnsTransparentUI.this).containsKey(SnsTransparentUI.1.this.xJe))
+                  if (SnsTransparentUI.a(SnsTransparentUI.this).containsKey(SnsTransparentUI.1.this.yVU))
                   {
-                    localObject2 = (Bitmap)SnsTransparentUI.a(SnsTransparentUI.this).get(SnsTransparentUI.1.this.xJe);
+                    localObject2 = (Bitmap)SnsTransparentUI.a(SnsTransparentUI.this).get(SnsTransparentUI.1.this.yVU);
                     if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
                     {
-                      ad.i("SnsTransparentUI", "thumb image is not null");
+                      ac.i("SnsTransparentUI", "thumb image is not null");
                       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
                       ((Bitmap)localObject2).compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
                       ((WXMediaMessage)localObject1).thumbData = localByteArrayOutputStream.toByteArray();
                     }
-                    localObject2 = new ry();
-                    ((ry)localObject2).dxx.doG = ((WXMediaMessage)localObject1);
-                    ((ry)localObject2).dxx.toUser = paramAnonymousIntent;
-                    ((ry)localObject2).dxx.dxy = 49;
-                    ((ry)localObject2).dxx.dxz = "";
-                    ((ry)localObject2).dxx.dxA = "";
-                    ((ry)localObject2).dxx.dxG = SnsTransparentUI.1.this.xJh;
-                    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
+                    localObject2 = new sh();
+                    ((sh)localObject2).dvk.dis = ((WXMediaMessage)localObject1);
+                    ((sh)localObject2).dvk.toUser = paramAnonymousIntent;
+                    ((sh)localObject2).dvk.dit = 49;
+                    ((sh)localObject2).dvk.dvl = "";
+                    ((sh)localObject2).dvk.dvm = "";
+                    ((sh)localObject2).dvk.dvs = SnsTransparentUI.1.this.yVX;
+                    com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
                     if (!TextUtils.isEmpty(paramAnonymous2String))
                     {
-                      localObject1 = new sb();
-                      ((sb)localObject1).dxJ.dxK = paramAnonymousIntent;
-                      ((sb)localObject1).dxJ.content = paramAnonymous2String;
-                      ((sb)localObject1).dxJ.type = w.tq(paramAnonymousIntent);
-                      ((sb)localObject1).dxJ.flags = 0;
-                      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+                      localObject1 = new sk();
+                      ((sk)localObject1).dvv.dvw = paramAnonymousIntent;
+                      ((sk)localObject1).dvv.content = paramAnonymous2String;
+                      ((sk)localObject1).dvv.type = w.xt(paramAnonymousIntent);
+                      ((sk)localObject1).dvv.flags = 0;
+                      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
                     }
-                    com.tencent.mm.plugin.sns.b.b.ao(paramAnonymousIntent, SnsTransparentUI.1.this.wAQ, SnsTransparentUI.1.this.xtg);
-                    com.tencent.mm.ui.base.h.cf(localSnsTransparentUI, localSnsTransparentUI.getString(2131755894));
+                    com.tencent.mm.plugin.sns.a.b.aq(paramAnonymousIntent, SnsTransparentUI.1.this.xNk, SnsTransparentUI.1.this.yFW);
+                    com.tencent.mm.ui.base.h.cg(localSnsTransparentUI, localSnsTransparentUI.getString(2131755894));
                     SnsTransparentUI.this.finish();
                     AppMethodBeat.o(99454);
                     return;
                   }
-                  ai.du(SnsTransparentUI.1.this.xJe);
-                  com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.c("adId", SnsTransparentUI.1.this.xJe, false, 1000000001, new f.a()
+                  ah.dg(SnsTransparentUI.1.this.yVU);
+                  com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.c("adId", SnsTransparentUI.1.this.yVU, false, 1000000001, new f.a()
                   {
-                    public final void apm(String paramAnonymous3String)
+                    public final void asD(String paramAnonymous3String)
                     {
                       AppMethodBeat.i(99453);
                       try
                       {
                         paramAnonymous3String = f.decodeFile(paramAnonymous3String);
-                        SnsTransparentUI.a(SnsTransparentUI.this).put(SnsTransparentUI.1.this.xJe, paramAnonymous3String);
+                        SnsTransparentUI.a(SnsTransparentUI.this).put(SnsTransparentUI.1.this.yVU, paramAnonymous3String);
                         if ((paramAnonymous3String != null) && (!paramAnonymous3String.isRecycled()))
                         {
-                          ad.i("SnsTransparentUI", "thumb image is not null");
+                          ac.i("SnsTransparentUI", "thumb image is not null");
                           ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
                           paramAnonymous3String.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-                          this.xJk.thumbData = localByteArrayOutputStream.toByteArray();
+                          this.yWa.thumbData = localByteArrayOutputStream.toByteArray();
                         }
-                        paramAnonymous3String = new ry();
-                        paramAnonymous3String.dxx.doG = this.xJk;
-                        paramAnonymous3String.dxx.toUser = SnsTransparentUI.1.1.this.cND;
-                        paramAnonymous3String.dxx.dxy = 49;
-                        paramAnonymous3String.dxx.dxz = "";
-                        paramAnonymous3String.dxx.dxA = "";
-                        paramAnonymous3String.dxx.dxG = SnsTransparentUI.1.this.xJh;
-                        com.tencent.mm.sdk.b.a.ESL.l(paramAnonymous3String);
+                        paramAnonymous3String = new sh();
+                        paramAnonymous3String.dvk.dis = this.yWa;
+                        paramAnonymous3String.dvk.toUser = SnsTransparentUI.1.1.this.cKY;
+                        paramAnonymous3String.dvk.dit = 49;
+                        paramAnonymous3String.dvk.dvl = "";
+                        paramAnonymous3String.dvk.dvm = "";
+                        paramAnonymous3String.dvk.dvs = SnsTransparentUI.1.this.yVX;
+                        com.tencent.mm.sdk.b.a.GpY.l(paramAnonymous3String);
                         if (!TextUtils.isEmpty(paramAnonymous2String))
                         {
-                          paramAnonymous3String = new sb();
-                          paramAnonymous3String.dxJ.dxK = SnsTransparentUI.1.1.this.cND;
-                          paramAnonymous3String.dxJ.content = paramAnonymous2String;
-                          paramAnonymous3String.dxJ.type = w.tq(SnsTransparentUI.1.1.this.cND);
-                          paramAnonymous3String.dxJ.flags = 0;
-                          com.tencent.mm.sdk.b.a.ESL.l(paramAnonymous3String);
+                          paramAnonymous3String = new sk();
+                          paramAnonymous3String.dvv.dvw = SnsTransparentUI.1.1.this.cKY;
+                          paramAnonymous3String.dvv.content = paramAnonymous2String;
+                          paramAnonymous3String.dvv.type = w.xt(SnsTransparentUI.1.1.this.cKY);
+                          paramAnonymous3String.dvv.flags = 0;
+                          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymous3String);
                         }
-                        com.tencent.mm.plugin.sns.b.b.ao(SnsTransparentUI.1.1.this.cND, SnsTransparentUI.1.this.wAQ, SnsTransparentUI.1.this.xtg);
-                        com.tencent.mm.ui.base.h.cf(SnsTransparentUI.1.1.this.val$context, SnsTransparentUI.1.1.this.val$context.getString(2131755894));
+                        com.tencent.mm.plugin.sns.a.b.aq(SnsTransparentUI.1.1.this.cKY, SnsTransparentUI.1.this.xNk, SnsTransparentUI.1.this.yFW);
+                        com.tencent.mm.ui.base.h.cg(SnsTransparentUI.1.1.this.val$context, SnsTransparentUI.1.1.this.val$context.getString(2131755894));
                         SnsTransparentUI.this.finish();
                         AppMethodBeat.o(99453);
                         return;
                       }
                       catch (Exception paramAnonymous3String)
                       {
-                        ad.e("SnsTransparentUI", "this has a error : " + paramAnonymous3String.toString());
+                        ac.e("SnsTransparentUI", "this has a error : " + paramAnonymous3String.toString());
                         SnsTransparentUI.this.finish();
                         AppMethodBeat.o(99453);
                       }
                     }
                     
-                    public final void dsA()
+                    public final void dFC() {}
+                    
+                    public final void dFD()
                     {
                       AppMethodBeat.i(99452);
-                      com.tencent.mm.ui.base.h.cf(SnsTransparentUI.1.1.this.val$context, SnsTransparentUI.1.1.this.val$context.getString(2131763645));
+                      com.tencent.mm.ui.base.h.cg(SnsTransparentUI.1.1.this.val$context, SnsTransparentUI.1.1.this.val$context.getString(2131763645));
                       SnsTransparentUI.this.finish();
                       AppMethodBeat.o(99452);
                     }
-                    
-                    public final void duP() {}
                   });
                   AppMethodBeat.o(99454);
                   return;
                 }
-                com.tencent.mm.ui.base.h.cf(localSnsTransparentUI, localSnsTransparentUI.getString(2131763645));
+                com.tencent.mm.ui.base.h.cg(localSnsTransparentUI, localSnsTransparentUI.getString(2131763645));
                 SnsTransparentUI.this.finish();
                 AppMethodBeat.o(99454);
               }
@@ -220,12 +220,12 @@ public class SnsTransparentUI
       AppMethodBeat.o(99458);
       return;
       paramBundle = ((Intent)localObject).getStringExtra("phoneNum");
-      d.a.CjG.a(this, paramBundle, new DialogInterface.OnDismissListener()new Bundle
+      d.a.DBX.a(this, paramBundle, new DialogInterface.OnDismissListener()new Bundle
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(99456);
-          al.fV(SnsTransparentUI.this);
+          al.gh(SnsTransparentUI.this);
           SnsTransparentUI.this.finish();
           AppMethodBeat.o(99456);
         }

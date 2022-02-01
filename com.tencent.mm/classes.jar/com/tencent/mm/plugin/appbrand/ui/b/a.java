@@ -8,14 +8,14 @@ import com.tencent.mm.sdk.platformtools.f;
 public final class a
   implements b.h
 {
-  private final int lGN;
+  private final int miI;
   
   public a(int paramInt)
   {
-    this.lGN = paramInt;
+    this.miI = paramInt;
   }
   
-  public final String AL()
+  public final String Ap()
   {
     return "AppBrandProfileLikeImageTransformation";
   }
@@ -28,7 +28,7 @@ public final class a
       AppMethodBeat.o(49043);
       return paramBitmap;
     }
-    Bitmap localBitmap = f.a(paramBitmap, false, this.lGN, false);
+    Bitmap localBitmap = f.a(paramBitmap, false, this.miI, false);
     if (localBitmap != null)
     {
       AppMethodBeat.o(49043);

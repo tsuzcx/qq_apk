@@ -15,8 +15,8 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rp;
-import com.tencent.mm.g.a.rq;
+import com.tencent.mm.g.a.ry;
+import com.tencent.mm.g.a.rz;
 import com.tencent.mm.plugin.licence.model.LibCardRecog;
 import com.tencent.mm.plugin.scanner.b.a.a.a;
 import com.tencent.mm.plugin.scanner.b.a.b;
@@ -26,9 +26,9 @@ import com.tencent.mm.plugin.scanner.b.a.c.a;
 import com.tencent.mm.plugin.scanner.b.a.c.b;
 import com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher;
 import com.tencent.mm.plugin.scanner.util.ScanCameraLightDetector;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.qbar.WxQbarNative;
 import com.tencent.scanlib.a.b.b.a;
 import com.tencent.scanlib.a.b.d.a;
@@ -41,31 +41,31 @@ public class ScanCardRectView
   extends ScanView
 {
   private int mode;
-  private long vNo;
-  private ScannerFlashSwitcher vQG;
-  private com.tencent.mm.sdk.b.c vRs;
-  private ScanRectDecorView vUK;
-  private com.tencent.mm.sdk.b.c<rq> vVi;
-  private CardHighLightEdgeView wbH;
-  private a wbI;
-  private View wbJ;
-  private a.a wbK;
-  private b.a wbL;
-  private c.b wbM;
+  private long wXJ;
+  private ScannerFlashSwitcher xbo;
+  private com.tencent.mm.sdk.b.c xcd;
+  private com.tencent.mm.sdk.b.c<rz> xfT;
+  private ScanRectDecorView xfv;
+  private CardHighLightEdgeView xmO;
+  private a xmP;
+  private View xmQ;
+  private a.a xmR;
+  private b.a xmS;
+  private c.b xmT;
   
   public ScanCardRectView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(118389);
-    this.wbK = new a.a() {};
-    this.wbL = new b.a()
+    this.xmR = new a.a() {};
+    this.xmS = new b.a()
     {
       public final void a(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(118383);
         if (paramAnonymousLong == ScanCardRectView.a(ScanCardRectView.this))
         {
-          ad.i("MicroMsg.ScanCardRectView", "bankcard decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
+          ac.i("MicroMsg.ScanCardRectView", "bankcard decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
           ScanCardRectView.b(ScanCardRectView.this);
           if (ScanCardRectView.c(ScanCardRectView.this) != null) {
             ScanCardRectView.c(ScanCardRectView.this).e(paramAnonymousLong, paramAnonymousBundle);
@@ -74,23 +74,23 @@ public class ScanCardRectView
         AppMethodBeat.o(118383);
       }
       
-      public final void ag(long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ad(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(118382);
         if (paramAnonymousLong1 == ScanCardRectView.a(ScanCardRectView.this)) {
-          ScanCardRectView.this.sb(paramAnonymousLong2);
+          ScanCardRectView.this.wE(paramAnonymousLong2);
         }
         AppMethodBeat.o(118382);
       }
     };
-    this.wbM = new c.b()
+    this.xmT = new c.b()
     {
       public final void a(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(177502);
         if (paramAnonymousLong == ScanCardRectView.a(ScanCardRectView.this))
         {
-          ad.i("MicroMsg.ScanCardRectView", "license decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
+          ac.i("MicroMsg.ScanCardRectView", "license decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
           ScanCardRectView.b(ScanCardRectView.this);
           if (ScanCardRectView.c(ScanCardRectView.this) != null) {
             ScanCardRectView.c(ScanCardRectView.this).e(paramAnonymousLong, paramAnonymousBundle);
@@ -99,11 +99,11 @@ public class ScanCardRectView
         AppMethodBeat.o(177502);
       }
       
-      public final void ag(long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ad(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(177501);
         if (paramAnonymousLong1 == ScanCardRectView.a(ScanCardRectView.this)) {
-          ScanCardRectView.this.sb(paramAnonymousLong2);
+          ScanCardRectView.this.wE(paramAnonymousLong2);
         }
         AppMethodBeat.o(177501);
       }
@@ -117,8 +117,8 @@ public class ScanCardRectView
         AppMethodBeat.o(177503);
       }
     };
-    this.vRs = new com.tencent.mm.sdk.b.c() {};
-    this.vVi = new com.tencent.mm.sdk.b.c() {};
+    this.xcd = new com.tencent.mm.sdk.b.c() {};
+    this.xfT = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(118389);
   }
   
@@ -126,15 +126,15 @@ public class ScanCardRectView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(118390);
-    this.wbK = new a.a() {};
-    this.wbL = new b.a()
+    this.xmR = new a.a() {};
+    this.xmS = new b.a()
     {
       public final void a(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(118383);
         if (paramAnonymousLong == ScanCardRectView.a(ScanCardRectView.this))
         {
-          ad.i("MicroMsg.ScanCardRectView", "bankcard decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
+          ac.i("MicroMsg.ScanCardRectView", "bankcard decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
           ScanCardRectView.b(ScanCardRectView.this);
           if (ScanCardRectView.c(ScanCardRectView.this) != null) {
             ScanCardRectView.c(ScanCardRectView.this).e(paramAnonymousLong, paramAnonymousBundle);
@@ -143,23 +143,23 @@ public class ScanCardRectView
         AppMethodBeat.o(118383);
       }
       
-      public final void ag(long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ad(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(118382);
         if (paramAnonymousLong1 == ScanCardRectView.a(ScanCardRectView.this)) {
-          ScanCardRectView.this.sb(paramAnonymousLong2);
+          ScanCardRectView.this.wE(paramAnonymousLong2);
         }
         AppMethodBeat.o(118382);
       }
     };
-    this.wbM = new c.b()
+    this.xmT = new c.b()
     {
       public final void a(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(177502);
         if (paramAnonymousLong == ScanCardRectView.a(ScanCardRectView.this))
         {
-          ad.i("MicroMsg.ScanCardRectView", "license decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
+          ac.i("MicroMsg.ScanCardRectView", "license decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
           ScanCardRectView.b(ScanCardRectView.this);
           if (ScanCardRectView.c(ScanCardRectView.this) != null) {
             ScanCardRectView.c(ScanCardRectView.this).e(paramAnonymousLong, paramAnonymousBundle);
@@ -168,11 +168,11 @@ public class ScanCardRectView
         AppMethodBeat.o(177502);
       }
       
-      public final void ag(long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ad(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(177501);
         if (paramAnonymousLong1 == ScanCardRectView.a(ScanCardRectView.this)) {
-          ScanCardRectView.this.sb(paramAnonymousLong2);
+          ScanCardRectView.this.wE(paramAnonymousLong2);
         }
         AppMethodBeat.o(177501);
       }
@@ -186,8 +186,8 @@ public class ScanCardRectView
         AppMethodBeat.o(177503);
       }
     };
-    this.vRs = new com.tencent.mm.sdk.b.c() {};
-    this.vVi = new com.tencent.mm.sdk.b.c() {};
+    this.xcd = new com.tencent.mm.sdk.b.c() {};
+    this.xfT = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(118390);
   }
   
@@ -195,15 +195,15 @@ public class ScanCardRectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(118391);
-    this.wbK = new a.a() {};
-    this.wbL = new b.a()
+    this.xmR = new a.a() {};
+    this.xmS = new b.a()
     {
       public final void a(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(118383);
         if (paramAnonymousLong == ScanCardRectView.a(ScanCardRectView.this))
         {
-          ad.i("MicroMsg.ScanCardRectView", "bankcard decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
+          ac.i("MicroMsg.ScanCardRectView", "bankcard decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
           ScanCardRectView.b(ScanCardRectView.this);
           if (ScanCardRectView.c(ScanCardRectView.this) != null) {
             ScanCardRectView.c(ScanCardRectView.this).e(paramAnonymousLong, paramAnonymousBundle);
@@ -212,23 +212,23 @@ public class ScanCardRectView
         AppMethodBeat.o(118383);
       }
       
-      public final void ag(long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ad(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(118382);
         if (paramAnonymousLong1 == ScanCardRectView.a(ScanCardRectView.this)) {
-          ScanCardRectView.this.sb(paramAnonymousLong2);
+          ScanCardRectView.this.wE(paramAnonymousLong2);
         }
         AppMethodBeat.o(118382);
       }
     };
-    this.wbM = new c.b()
+    this.xmT = new c.b()
     {
       public final void a(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(177502);
         if (paramAnonymousLong == ScanCardRectView.a(ScanCardRectView.this))
         {
-          ad.i("MicroMsg.ScanCardRectView", "license decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
+          ac.i("MicroMsg.ScanCardRectView", "license decode success %s", new Object[] { Long.valueOf(ScanCardRectView.a(ScanCardRectView.this)) });
           ScanCardRectView.b(ScanCardRectView.this);
           if (ScanCardRectView.c(ScanCardRectView.this) != null) {
             ScanCardRectView.c(ScanCardRectView.this).e(paramAnonymousLong, paramAnonymousBundle);
@@ -237,11 +237,11 @@ public class ScanCardRectView
         AppMethodBeat.o(177502);
       }
       
-      public final void ag(long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void ad(long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(177501);
         if (paramAnonymousLong1 == ScanCardRectView.a(ScanCardRectView.this)) {
-          ScanCardRectView.this.sb(paramAnonymousLong2);
+          ScanCardRectView.this.wE(paramAnonymousLong2);
         }
         AppMethodBeat.o(177501);
       }
@@ -255,84 +255,84 @@ public class ScanCardRectView
         AppMethodBeat.o(177503);
       }
     };
-    this.vRs = new com.tencent.mm.sdk.b.c() {};
-    this.vVi = new com.tencent.mm.sdk.b.c() {};
+    this.xcd = new com.tencent.mm.sdk.b.c() {};
+    this.xfT = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(118391);
   }
   
-  private void dlN()
+  private void dAz()
+  {
+    AppMethodBeat.i(118398);
+    b.dzn().release();
+    com.tencent.mm.plugin.scanner.b.a.c localc = com.tencent.mm.plugin.scanner.b.a.c.dzo();
+    long l = this.wXJ;
+    synchronized (localc.wXD)
+    {
+      if (localc.wXJ == l)
+      {
+        localc.wXJ = 0L;
+        localc.wXM = 0;
+        localc.wXR = null;
+        localc.wXC.clear();
+      }
+      this.wXJ = 0L;
+      AppMethodBeat.o(118398);
+      return;
+    }
+  }
+  
+  private void dzT()
   {
     AppMethodBeat.i(118404);
-    this.vQG = ((ScannerFlashSwitcher)this.wbJ.findViewById(2131304345));
-    if (this.vQG != null) {
-      this.vQG.setOnClickListener(new View.OnClickListener()
+    this.xbo = ((ScannerFlashSwitcher)this.xmQ.findViewById(2131304345));
+    if (this.xbo != null) {
+      this.xbo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(177504);
-          if (!ScanCardRectView.e(ScanCardRectView.this).SE)
+          if (!ScanCardRectView.e(ScanCardRectView.this).Tz)
           {
-            paramAnonymousView = new rq();
-            paramAnonymousView.dxj.dbV = 1;
-            com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
-            ScanCardRectView.e(ScanCardRectView.this).dmE();
+            paramAnonymousView = new rz();
+            paramAnonymousView.duW.cZu = 1;
+            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
+            ScanCardRectView.e(ScanCardRectView.this).dAK();
             AppMethodBeat.o(177504);
             return;
           }
-          paramAnonymousView = new rq();
-          paramAnonymousView.dxj.dbV = 2;
-          com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
-          ScanCardRectView.e(ScanCardRectView.this).dmF();
+          paramAnonymousView = new rz();
+          paramAnonymousView.duW.cZu = 2;
+          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
+          ScanCardRectView.e(ScanCardRectView.this).dAL();
           AppMethodBeat.o(177504);
         }
       });
     }
-    com.tencent.mm.sdk.b.a.ESL.c(this.vRs);
-    com.tencent.mm.sdk.b.a.ESL.c(this.vVi);
-    aq.n(new Runnable()
+    com.tencent.mm.sdk.b.a.GpY.c(this.xcd);
+    com.tencent.mm.sdk.b.a.GpY.c(this.xfT);
+    ap.n(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(177505);
-        ScanCameraLightDetector.wap.start(((com.tencent.mm.plugin.scanner.a.a)ScanCardRectView.f(ScanCardRectView.this)).getFocusMode());
+        ScanCameraLightDetector.xlv.start(((com.tencent.mm.plugin.scanner.a.a)ScanCardRectView.f(ScanCardRectView.this)).getFocusMode());
         AppMethodBeat.o(177505);
       }
     }, 300L);
     AppMethodBeat.o(118404);
   }
   
-  private void dmt()
-  {
-    AppMethodBeat.i(118398);
-    b.dll().release();
-    com.tencent.mm.plugin.scanner.b.a.c localc = com.tencent.mm.plugin.scanner.b.a.c.dlm();
-    long l = this.vNo;
-    synchronized (localc.vNi)
-    {
-      if (localc.vNo == l)
-      {
-        localc.vNo = 0L;
-        localc.vNr = 0;
-        localc.vNw = null;
-        localc.vNh.clear();
-      }
-      this.vNo = 0L;
-      AppMethodBeat.o(118398);
-      return;
-    }
-  }
-  
-  public final void dmr()
+  public final void dAx()
   {
     AppMethodBeat.i(118393);
-    this.ItZ = new com.tencent.mm.plugin.scanner.a.a();
+    this.JVI = new com.tencent.mm.plugin.scanner.a.a();
     AppMethodBeat.o(118393);
   }
   
   public Rect getDecorRect()
   {
     AppMethodBeat.i(118394);
-    Rect localRect = this.vUK.getDecorRect();
+    Rect localRect = this.xfv.getDecorRect();
     AppMethodBeat.o(118394);
     return localRect;
   }
@@ -341,10 +341,10 @@ public class ScanCardRectView
   {
     AppMethodBeat.i(118392);
     super.init();
-    this.wbH = new CardHighLightEdgeView(getContext());
-    addView(this.wbH, new FrameLayout.LayoutParams(-1, -1));
-    this.vUK = new ScanRectDecorView(getContext());
-    addView(this.vUK, new FrameLayout.LayoutParams(-1, -1));
+    this.xmO = new CardHighLightEdgeView(getContext());
+    addView(this.xmO, new FrameLayout.LayoutParams(-1, -1));
+    this.xfv = new ScanRectDecorView(getContext());
+    addView(this.xfv, new FrameLayout.LayoutParams(-1, -1));
     AppMethodBeat.o(118392);
   }
   
@@ -354,83 +354,83 @@ public class ScanCardRectView
     super.onAttachedToWindow();
     Point localPoint = new Point();
     getDisplay().getSize(localPoint);
-    ad.i("MicroMsg.ScanCardRectView", "screenSize %s", new Object[] { localPoint });
-    if (this.wbJ != null) {
-      removeView(this.wbJ);
+    ac.i("MicroMsg.ScanCardRectView", "screenSize %s", new Object[] { localPoint });
+    if (this.xmQ != null) {
+      removeView(this.xmQ);
     }
     switch (this.mode)
     {
     case 8: 
     default: 
-      ad.e("MicroMsg.ScanCardRectView", "unknown mode!");
+      ac.e("MicroMsg.ScanCardRectView", "unknown mode!");
       AppMethodBeat.o(118396);
       return;
     case 7: 
-      this.wbJ = View.inflate(getContext(), 2131495287, null);
-      localObject = bt.by(((Activity)getContext()).getIntent().getStringExtra("bank_card_owner"), "");
+      this.xmQ = View.inflate(getContext(), 2131495287, null);
+      localObject = bs.bG(((Activity)getContext()).getIntent().getStringExtra("bank_card_owner"), "");
       String str = String.format(getContext().getResources().getString(2131762798), new Object[] { localObject });
-      View localView = this.wbJ.findViewById(2131306001);
-      if (bt.isNullOrNil((String)localObject)) {
+      View localView = this.xmQ.findViewById(2131306001);
+      if (bs.isNullOrNil((String)localObject)) {
         localView.setVisibility(4);
       }
       for (;;)
       {
-        addView(this.wbJ, new FrameLayout.LayoutParams(-1, -1));
+        addView(this.xmQ, new FrameLayout.LayoutParams(-1, -1));
         localObject = new Rect();
-        ((Rect)localObject).left = com.tencent.mm.cd.a.fromDPToPix(getContext(), 40);
-        ((Rect)localObject).right = (localPoint.x - com.tencent.mm.cd.a.fromDPToPix(getContext(), 40));
+        ((Rect)localObject).left = com.tencent.mm.cc.a.fromDPToPix(getContext(), 40);
+        ((Rect)localObject).right = (localPoint.x - com.tencent.mm.cc.a.fromDPToPix(getContext(), 40));
         ((Rect)localObject).top = ((localPoint.y - (int)(((Rect)localObject).width() / 1.586F)) / 2);
         ((Rect)localObject).bottom = (((Rect)localObject).top + (int)(((Rect)localObject).width() / 1.586F));
-        ad.i("MicroMsg.ScanCardRectView", "scan bank card rect %s", new Object[] { localObject });
-        this.vUK.gT(((Rect)localObject).width(), ((Rect)localObject).height());
-        this.wbH.setCardRect((Rect)localObject);
-        dlN();
+        ac.i("MicroMsg.ScanCardRectView", "scan bank card rect %s", new Object[] { localObject });
+        this.xfv.hc(((Rect)localObject).width(), ((Rect)localObject).height());
+        this.xmO.setCardRect((Rect)localObject);
+        dzT();
         AppMethodBeat.o(118396);
         return;
-        ((TextView)this.wbJ.findViewById(2131297118)).setText(str);
-        this.wbJ.findViewById(2131297114).setOnClickListener(new ScanCardRectView.1(this));
+        ((TextView)this.xmQ.findViewById(2131297118)).setText(str);
+        this.xmQ.findViewById(2131297114).setOnClickListener(new ScanCardRectView.1(this));
         localView.setVisibility(0);
       }
     case 9: 
     case 11: 
       localObject = new Rect();
-      ((Rect)localObject).left = com.tencent.mm.cd.a.fromDPToPix(getContext(), 40);
-      ((Rect)localObject).right = (localPoint.x - com.tencent.mm.cd.a.fromDPToPix(getContext(), 40));
+      ((Rect)localObject).left = com.tencent.mm.cc.a.fromDPToPix(getContext(), 40);
+      ((Rect)localObject).right = (localPoint.x - com.tencent.mm.cc.a.fromDPToPix(getContext(), 40));
       ((Rect)localObject).top = ((localPoint.y - (int)(((Rect)localObject).width() / 1.586F)) / 2);
       ((Rect)localObject).bottom = (((Rect)localObject).top + (int)(((Rect)localObject).width() / 1.586F));
-      ad.i("MicroMsg.ScanCardRectView", "scan id card rect %s", new Object[] { localObject });
-      this.vUK.gT(((Rect)localObject).width(), ((Rect)localObject).height());
-      this.wbH.setCardRect((Rect)localObject);
-      this.wbJ = View.inflate(getContext(), 2131495296, null);
-      addView(this.wbJ, new FrameLayout.LayoutParams(-1, -1));
-      ((TextView)this.wbJ.findViewById(2131297474)).setText(getContext().getResources().getString(2131762830, new Object[] { getContext().getResources().getString(2131762805) }));
-      dlN();
+      ac.i("MicroMsg.ScanCardRectView", "scan id card rect %s", new Object[] { localObject });
+      this.xfv.hc(((Rect)localObject).width(), ((Rect)localObject).height());
+      this.xmO.setCardRect((Rect)localObject);
+      this.xmQ = View.inflate(getContext(), 2131495296, null);
+      addView(this.xmQ, new FrameLayout.LayoutParams(-1, -1));
+      ((TextView)this.xmQ.findViewById(2131297474)).setText(getContext().getResources().getString(2131762830, new Object[] { getContext().getResources().getString(2131762805) }));
+      dzT();
       AppMethodBeat.o(118396);
       return;
     }
     Object localObject = new Rect();
-    ((Rect)localObject).left = com.tencent.mm.cd.a.fromDPToPix(getContext(), 40);
-    ((Rect)localObject).right = (localPoint.x - com.tencent.mm.cd.a.fromDPToPix(getContext(), 40));
+    ((Rect)localObject).left = com.tencent.mm.cc.a.fromDPToPix(getContext(), 40);
+    ((Rect)localObject).right = (localPoint.x - com.tencent.mm.cc.a.fromDPToPix(getContext(), 40));
     ((Rect)localObject).top = ((localPoint.y - (int)(((Rect)localObject).width() / 1.467F)) / 2);
     ((Rect)localObject).bottom = (((Rect)localObject).top + (int)(((Rect)localObject).width() / 1.467F));
-    ad.i("MicroMsg.ScanCardRectView", "scan driver card rect %s", new Object[] { localObject });
-    this.vUK.gT(((Rect)localObject).width(), ((Rect)localObject).height());
-    this.wbH.setCardRect((Rect)localObject);
-    this.wbJ = View.inflate(getContext(), 2131495296, null);
-    addView(this.wbJ, new FrameLayout.LayoutParams(-1, -1));
-    ((TextView)this.wbJ.findViewById(2131297474)).setText("");
-    dlN();
+    ac.i("MicroMsg.ScanCardRectView", "scan driver card rect %s", new Object[] { localObject });
+    this.xfv.hc(((Rect)localObject).width(), ((Rect)localObject).height());
+    this.xmO.setCardRect((Rect)localObject);
+    this.xmQ = View.inflate(getContext(), 2131495296, null);
+    addView(this.xmQ, new FrameLayout.LayoutParams(-1, -1));
+    ((TextView)this.xmQ.findViewById(2131297474)).setText("");
+    dzT();
     AppMethodBeat.o(118396);
   }
   
   public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
     AppMethodBeat.i(118403);
-    ad.i("MicroMsg.ScanCardRectView", "onAutoFocus %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ac.i("MicroMsg.ScanCardRectView", "onAutoFocus %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      sb(0L);
+      wE(0L);
     }
-    xh(Iuc);
+    BR(JVL);
     AppMethodBeat.o(118403);
   }
   
@@ -438,8 +438,8 @@ public class ScanCardRectView
   {
     AppMethodBeat.i(118401);
     super.onDestroy();
-    b.dll().release();
-    com.tencent.mm.plugin.scanner.b.a.c.dlm().release();
+    b.dzn().release();
+    com.tencent.mm.plugin.scanner.b.a.c.dzo().release();
     AppMethodBeat.o(118401);
   }
   
@@ -447,7 +447,7 @@ public class ScanCardRectView
   {
     AppMethodBeat.i(118399);
     super.onPause();
-    dmt();
+    dAz();
     AppMethodBeat.o(118399);
   }
   
@@ -466,64 +466,64 @@ public class ScanCardRectView
     int k;
     for (;;)
     {
-      ad.i("MicroMsg.ScanCardRectView", bool);
-      if ((this.ItZ.cPP()) && (((com.tencent.mm.plugin.scanner.a.a)this.ItZ).dlj())) {
-        ScanCameraLightDetector.wap.B(paramArrayOfByte, ((com.tencent.mm.plugin.scanner.a.a)this.ItZ).fmC().x, ((com.tencent.mm.plugin.scanner.a.a)this.ItZ).fmC().y);
+      ac.i("MicroMsg.ScanCardRectView", bool);
+      if ((this.JVI.cDz()) && (((com.tencent.mm.plugin.scanner.a.a)this.JVI).dzl())) {
+        ScanCameraLightDetector.xlv.A(paramArrayOfByte, ((com.tencent.mm.plugin.scanner.a.a)this.JVI).fCS().x, ((com.tencent.mm.plugin.scanner.a.a)this.JVI).fCS().y);
       }
       if (this.mode == 7)
       {
-        ??? = ((com.tencent.scanlib.a.a)this.ItZ).t(getDecorRect());
-        paramCamera = b.dll();
-        localPoint = this.ItZ.fmC();
-        i = this.ItZ.getCameraRotation();
-        synchronized (paramCamera.vNi)
+        ??? = ((com.tencent.scanlib.a.a)this.JVI).s(getDecorRect());
+        paramCamera = b.dzn();
+        localPoint = this.JVI.fCS();
+        i = this.JVI.getCameraRotation();
+        synchronized (paramCamera.wXD)
         {
-          if ((((Rect)???).width() != paramCamera.vNl.width()) || (((Rect)???).height() != paramCamera.vNl.height())) {}
-          synchronized (paramCamera.vNj)
+          if ((((Rect)???).width() != paramCamera.wXG.width()) || (((Rect)???).height() != paramCamera.wXG.height())) {}
+          synchronized (paramCamera.wXE)
           {
-            if (paramCamera.fFP) {
+            if (paramCamera.fJw) {
               WxQbarNative.focusedEngineRelease();
             }
-            paramCamera.fFP = false;
-            ad.i("MicroMsg.BankCardDetectQueue", "resolution %s, rotation %d, rect %s", new Object[] { localPoint, Integer.valueOf(i), ??? });
-            if (!paramCamera.fFP) {}
-            synchronized (paramCamera.vNj)
+            paramCamera.fJw = false;
+            ac.i("MicroMsg.BankCardDetectQueue", "resolution %s, rotation %d, rect %s", new Object[] { localPoint, Integer.valueOf(i), ??? });
+            if (!paramCamera.fJw) {}
+            synchronized (paramCamera.wXE)
             {
-              ad.i("MicroMsg.BankCardDetectQueue", "rect %s", new Object[] { ??? });
-              paramCamera.vNl = ((Rect)???);
-              j = (int)(((Rect)???).width() * b.vNg);
-              k = (int)(((Rect)???).height() * b.vNg);
-              paramCamera.gtE.left = (((Rect)???).left - (j - ((Rect)???).width()) / 2);
-              paramCamera.gtE.top = (((Rect)???).top - (k - ((Rect)???).height()) / 2);
-              paramCamera.gtE.right = (paramCamera.gtE.left + j);
-              paramCamera.gtE.bottom = (paramCamera.gtE.top + k);
-              ad.i("MicroMsg.BankCardDetectQueue", "cropRect %s", new Object[] { paramCamera.gtE });
+              ac.i("MicroMsg.BankCardDetectQueue", "rect %s", new Object[] { ??? });
+              paramCamera.wXG = ((Rect)???);
+              j = (int)(((Rect)???).width() * b.wXB);
+              k = (int)(((Rect)???).height() * b.wXB);
+              paramCamera.gUl.left = (((Rect)???).left - (j - ((Rect)???).width()) / 2);
+              paramCamera.gUl.top = (((Rect)???).top - (k - ((Rect)???).height()) / 2);
+              paramCamera.gUl.right = (paramCamera.gUl.left + j);
+              paramCamera.gUl.bottom = (paramCamera.gUl.top + k);
+              ac.i("MicroMsg.BankCardDetectQueue", "cropRect %s", new Object[] { paramCamera.gUl });
               if (WxQbarNative.focusedEngineForBankcardInit(j, k, 8, false) == 0)
               {
                 bool = true;
                 label434:
-                paramCamera.fFP = bool;
-                if (!paramCamera.fFP) {}
+                paramCamera.fJw = bool;
+                if (!paramCamera.fJw) {}
               }
             }
           }
         }
-        synchronized (paramCamera.vNi)
+        synchronized (paramCamera.wXD)
         {
-          paramCamera.vNh.clear();
-          paramCamera.vNh.put("param_preview_data", paramArrayOfByte);
-          paramCamera.vNh.put("param_camera_resolution", localPoint);
-          paramCamera.vNh.put("param_camera_rotation", Integer.valueOf(i));
-          if ((!paramCamera.vNq) && (paramCamera.vNo != 0L))
+          paramCamera.wXC.clear();
+          paramCamera.wXC.put("param_preview_data", paramArrayOfByte);
+          paramCamera.wXC.put("param_camera_resolution", localPoint);
+          paramCamera.wXC.put("param_camera_rotation", Integer.valueOf(i));
+          if ((!paramCamera.wXL) && (paramCamera.wXJ != 0L))
           {
-            ad.i("MicroMsg.BankCardDetectQueue", "%d submit decode bankcard", new Object[] { Long.valueOf(paramCamera.vNo) });
-            paramCamera.vNn.execute(new b.b(paramCamera, paramCamera.vNo));
+            ac.i("MicroMsg.BankCardDetectQueue", "%d submit decode bankcard", new Object[] { Long.valueOf(paramCamera.wXJ) });
+            paramCamera.wXI.execute(new b.b(paramCamera, paramCamera.wXJ));
           }
-          if ((!((com.tencent.scanlib.a.a)this.ItZ).dms()) && (b.dll().vNr > 10))
+          if ((!((com.tencent.scanlib.a.a)this.JVI).dAy()) && (b.dzn().wXM > 10))
           {
-            ad.i("MicroMsg.ScanCardRectView", "change to FOCUS_MODE_AUTO");
-            this.ItZ.setFocusMode("auto");
-            xh(100L);
+            ac.i("MicroMsg.ScanCardRectView", "change to FOCUS_MODE_AUTO");
+            this.JVI.setFocusMode("auto");
+            BR(100L);
           }
           AppMethodBeat.o(118402);
           return;
@@ -545,63 +545,63 @@ public class ScanCardRectView
     }
     if (this.mode == 11)
     {
-      ??? = ((com.tencent.scanlib.a.a)this.ItZ).t(getDecorRect());
-      paramCamera = com.tencent.mm.plugin.scanner.b.a.c.dlm();
-      localPoint = this.ItZ.fmC();
-      i = this.ItZ.getCameraRotation();
+      ??? = ((com.tencent.scanlib.a.a)this.JVI).s(getDecorRect());
+      paramCamera = com.tencent.mm.plugin.scanner.b.a.c.dzo();
+      localPoint = this.JVI.fCS();
+      i = this.JVI.getCameraRotation();
     }
     for (;;)
     {
-      synchronized (paramCamera.vNi)
+      synchronized (paramCamera.wXD)
       {
-        if ((((Rect)???).width() != paramCamera.vNl.width()) || (((Rect)???).height() != paramCamera.vNl.height()))
+        if ((((Rect)???).width() != paramCamera.wXG.width()) || (((Rect)???).height() != paramCamera.wXG.height()))
         {
           paramCamera.release();
-          paramCamera.fFP = false;
+          paramCamera.fJw = false;
         }
-        if (!paramCamera.fFP) {}
-        synchronized (paramCamera.vNj)
+        if (!paramCamera.fJw) {}
+        synchronized (paramCamera.wXE)
         {
-          paramCamera.vNl = ((Rect)???);
+          paramCamera.wXG = ((Rect)???);
           j = (int)(((Rect)???).width() * 1.05D) / 4 * 4;
           k = (int)(((Rect)???).height() * 1.05D) / 4 * 4;
-          paramCamera.gtE.left = (((Rect)???).left - (j - ((Rect)???).width()) / 2);
-          paramCamera.gtE.top = (((Rect)???).top - (k - ((Rect)???).height()) / 2);
-          paramCamera.gtE.right = (j + paramCamera.gtE.left);
-          paramCamera.gtE.bottom = (paramCamera.gtE.top + k);
+          paramCamera.gUl.left = (((Rect)???).left - (j - ((Rect)???).width()) / 2);
+          paramCamera.gUl.top = (((Rect)???).top - (k - ((Rect)???).height()) / 2);
+          paramCamera.gUl.right = (j + paramCamera.gUl.left);
+          paramCamera.gUl.bottom = (paramCamera.gUl.top + k);
           if (i % 180 != 0)
           {
-            j = (localPoint.y - paramCamera.gtE.height()) / 2;
-            k = (localPoint.x - paramCamera.gtE.width()) / 2;
-            paramCamera.gtE = new Rect(j, k, paramCamera.gtE.height() + j, paramCamera.gtE.width() + k);
+            j = (localPoint.y - paramCamera.gUl.height()) / 2;
+            k = (localPoint.x - paramCamera.gUl.width()) / 2;
+            paramCamera.gUl = new Rect(j, k, paramCamera.gUl.height() + j, paramCamera.gUl.width() + k);
           }
-          ad.i("MicroMsg.LicenseCardDecodeQueue", "init cropRect %s", new Object[] { paramCamera.gtE });
-          j = LibCardRecog.recognizeCardInit(paramCamera.gtE.width(), paramCamera.gtE.height(), paramCamera.gIt);
-          ad.d("MicroMsg.LicenseCardDecodeQueue", "initRet %d, cropWidth %d, cropHeight %d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramCamera.gtE.width()), Integer.valueOf(paramCamera.gtE.height()) });
+          ac.i("MicroMsg.LicenseCardDecodeQueue", "init cropRect %s", new Object[] { paramCamera.gUl });
+          j = LibCardRecog.recognizeCardInit(paramCamera.gUl.width(), paramCamera.gUl.height(), paramCamera.hiU);
+          ac.d("MicroMsg.LicenseCardDecodeQueue", "initRet %d, cropWidth %d, cropHeight %d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramCamera.gUl.width()), Integer.valueOf(paramCamera.gUl.height()) });
           if (j == 0)
           {
             bool = true;
-            paramCamera.fFP = bool;
-            if (!paramCamera.fFP) {}
+            paramCamera.fJw = bool;
+            if (!paramCamera.fJw) {}
           }
         }
       }
-      synchronized (paramCamera.vNi)
+      synchronized (paramCamera.wXD)
       {
-        paramCamera.vNh.clear();
-        paramCamera.vNh.put("param_preview_data", paramArrayOfByte);
-        paramCamera.vNh.put("param_camera_resolution", localPoint);
-        paramCamera.vNh.put("param_camera_rotation", Integer.valueOf(i));
-        if ((!paramCamera.vNq) && (paramCamera.vNo != 0L))
+        paramCamera.wXC.clear();
+        paramCamera.wXC.put("param_preview_data", paramArrayOfByte);
+        paramCamera.wXC.put("param_camera_resolution", localPoint);
+        paramCamera.wXC.put("param_camera_rotation", Integer.valueOf(i));
+        if ((!paramCamera.wXL) && (paramCamera.wXJ != 0L))
         {
-          ad.i("MicroMsg.LicenseCardDecodeQueue", "%d submit decode license card", new Object[] { Long.valueOf(paramCamera.vNo) });
-          paramCamera.vNk.execute(new c.a(paramCamera, paramCamera.vNo));
+          ac.i("MicroMsg.LicenseCardDecodeQueue", "%d submit decode license card", new Object[] { Long.valueOf(paramCamera.wXJ) });
+          paramCamera.wXF.execute(new c.a(paramCamera, paramCamera.wXJ));
         }
-        if ((!((com.tencent.scanlib.a.a)this.ItZ).dms()) && (com.tencent.mm.plugin.scanner.b.a.c.dlm().vNr > 10))
+        if ((!((com.tencent.scanlib.a.a)this.JVI).dAy()) && (com.tencent.mm.plugin.scanner.b.a.c.dzo().wXM > 10))
         {
-          ad.i("MicroMsg.ScanCardRectView", "change to FOCUS_MODE_AUTO");
-          this.ItZ.setFocusMode("auto");
-          xh(100L);
+          ac.i("MicroMsg.ScanCardRectView", "change to FOCUS_MODE_AUTO");
+          this.JVI.setFocusMode("auto");
+          BR(100L);
         }
         AppMethodBeat.o(118402);
         return;
@@ -624,64 +624,64 @@ public class ScanCardRectView
     b localb;
     long l;
     b.a locala;
-    if (!this.ItZ.isOpen())
+    if (!this.JVI.isOpen())
     {
       a(new b.b.a()
       {
-        public final void dmD()
+        public final void dAJ()
         {
           AppMethodBeat.i(118379);
           ScanCardRectView.this.a(new b.d.a()
           {
-            public final void dmC()
+            public final void dAI()
             {
               AppMethodBeat.i(177499);
-              ScanCardRectView.this.sb(0L);
+              ScanCardRectView.this.wE(0L);
               AppMethodBeat.o(177499);
             }
           });
           AppMethodBeat.o(118379);
         }
       });
-      this.vNo = System.currentTimeMillis();
+      this.wXJ = System.currentTimeMillis();
       if (this.mode != 7) {
         break label157;
       }
-      localb = b.dll();
-      l = this.vNo;
-      locala = this.wbL;
+      localb = b.dzn();
+      l = this.wXJ;
+      locala = this.xmS;
     }
     for (;;)
     {
-      synchronized (localb.vNi)
+      synchronized (localb.wXD)
       {
-        localb.vNo = l;
-        localb.vNr = 0;
-        localb.vNp = locala;
-        this.vUK.cjm();
+        localb.wXJ = l;
+        localb.wXM = 0;
+        localb.wXK = locala;
+        this.xfv.cqT();
         AppMethodBeat.o(118397);
         return;
-        if (!this.ItZ.cPP())
+        if (!this.JVI.cDz())
         {
           a(new b.d.a()
           {
-            public final void dmC()
+            public final void dAI()
             {
               AppMethodBeat.i(177500);
-              ScanCardRectView.this.sb(0L);
+              ScanCardRectView.this.wE(0L);
               AppMethodBeat.o(177500);
             }
           });
           break;
         }
-        sb(0L);
+        wE(0L);
       }
       label157:
       if ((this.mode == 9) || (this.mode == 11) || (this.mode == 10)) {
         if ((this.mode == 9) || (this.mode == 11)) {
-          com.tencent.mm.plugin.scanner.b.a.c.dlm().a(1, this.vNo, this.wbM);
+          com.tencent.mm.plugin.scanner.b.a.c.dzo().a(1, this.wXJ, this.xmT);
         } else if (this.mode == 10) {
-          com.tencent.mm.plugin.scanner.b.a.c.dlm().a(2, this.vNo, this.wbM);
+          com.tencent.mm.plugin.scanner.b.a.c.dzo().a(2, this.wXJ, this.xmT);
         }
       }
     }
@@ -691,33 +691,33 @@ public class ScanCardRectView
   {
     AppMethodBeat.i(118400);
     super.onStop();
-    anq();
-    if (this.vQG != null) {
-      this.vQG.dmF();
+    auj();
+    if (this.xbo != null) {
+      this.xbo.dAL();
     }
-    ScanCameraLightDetector.wap.stop();
-    com.tencent.mm.sdk.b.a.ESL.d(this.vVi);
-    com.tencent.mm.sdk.b.a.ESL.d(this.vRs);
+    ScanCameraLightDetector.xlv.stop();
+    com.tencent.mm.sdk.b.a.GpY.d(this.xfT);
+    com.tencent.mm.sdk.b.a.GpY.d(this.xcd);
     AppMethodBeat.o(118400);
   }
   
   public void setDecorRect(Rect paramRect)
   {
     AppMethodBeat.i(118395);
-    this.vUK.setDecorRect(paramRect);
-    this.wbH.setCardRect(paramRect);
+    this.xfv.setDecorRect(paramRect);
+    this.xmO.setCardRect(paramRect);
     AppMethodBeat.o(118395);
   }
   
   public void setMode(int paramInt)
   {
     this.mode = paramInt;
-    this.vNo = 0L;
+    this.wXJ = 0L;
   }
   
   public void setScanCallback(a parama)
   {
-    this.wbI = parama;
+    this.xmP = parama;
   }
   
   public static abstract interface a
@@ -727,7 +727,7 @@ public class ScanCardRectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.ScanCardRectView
  * JD-Core Version:    0.7.0.1
  */

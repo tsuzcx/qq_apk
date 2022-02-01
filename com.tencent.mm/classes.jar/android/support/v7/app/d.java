@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 
 public abstract class d
 {
-  static int Vy = -1;
+  static int Wt = -1;
   
   public static d a(Activity paramActivity, c paramc)
   {
@@ -27,13 +27,13 @@ public abstract class d
   
   public abstract void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
   
-  public abstract void fT();
-  
-  public abstract void fU();
-  
-  public abstract boolean fV();
-  
   public abstract <T extends View> T findViewById(int paramInt);
+  
+  public abstract void gb();
+  
+  public abstract void gd();
+  
+  public abstract boolean ge();
   
   public abstract a.a getDrawerToggleDelegate();
   

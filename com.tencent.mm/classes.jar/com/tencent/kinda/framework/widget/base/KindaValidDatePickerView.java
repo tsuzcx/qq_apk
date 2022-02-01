@@ -6,8 +6,8 @@ import com.tencent.kinda.gen.KValidDatePickerView;
 import com.tencent.kinda.gen.KValidDatePickerViewOnSelectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.widget.picker.b;
 import com.tencent.mm.ui.widget.picker.b.a;
 import com.tenpay.android.wechat.TenpaySecureEditText;
@@ -68,8 +68,8 @@ public class KindaValidDatePickerView
       this.activity.hideVKB();
       this.activity.hideTenpayKB();
       this.datePicker = new b(this.activity);
-      this.datePicker.aL(true, false);
-      this.datePicker.HIQ = new b.a()
+      this.datePicker.aP(true, false);
+      this.datePicker.Jjn = new b.a()
       {
         public void onResult(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
@@ -77,8 +77,8 @@ public class KindaValidDatePickerView
           KindaValidDatePickerView.this.datePicker.hide();
           if (paramAnonymousBoolean)
           {
-            Object localObject = KindaValidDatePickerView.this.datePicker.ffY();
-            if (bt.isNullOrNil((String)localObject))
+            Object localObject = KindaValidDatePickerView.this.datePicker.fvX();
+            if (bs.isNullOrNil((String)localObject))
             {
               AppMethodBeat.o(18974);
               return;
@@ -89,10 +89,10 @@ public class KindaValidDatePickerView
               AppMethodBeat.o(18974);
               return;
             }
-            ad.d("base_MMKView", "result: %s", new Object[] { localObject });
-            KindaValidDatePickerView.access$102(KindaValidDatePickerView.this, bt.aGh(arrayOfString[0]));
-            KindaValidDatePickerView.access$202(KindaValidDatePickerView.this, bt.aGh(arrayOfString[1]) - 1);
-            ad.d("base_MMKView", "year: %s, month: %s", new Object[] { Integer.valueOf(KindaValidDatePickerView.this.mYear), Integer.valueOf(KindaValidDatePickerView.this.mMonthOfYear) });
+            ac.d("base_MMKView", "result: %s", new Object[] { localObject });
+            KindaValidDatePickerView.access$102(KindaValidDatePickerView.this, bs.aLy(arrayOfString[0]));
+            KindaValidDatePickerView.access$202(KindaValidDatePickerView.this, bs.aLy(arrayOfString[1]) - 1);
+            ac.d("base_MMKView", "year: %s, month: %s", new Object[] { Integer.valueOf(KindaValidDatePickerView.this.mYear), Integer.valueOf(KindaValidDatePickerView.this.mMonthOfYear) });
             localObject = new DecimalFormat("00");
             KindaValidDatePickerView.this.mEditText.setText(((DecimalFormat)localObject).format(KindaValidDatePickerView.this.mMonthOfYear + 1) + ((DecimalFormat)localObject).format(KindaValidDatePickerView.this.mYear).substring(2));
             KindaValidDatePickerView.access$402(KindaValidDatePickerView.this, ((DecimalFormat)localObject).format(KindaValidDatePickerView.this.mYear).substring(2) + ((DecimalFormat)localObject).format(KindaValidDatePickerView.this.mMonthOfYear + 1));
@@ -105,17 +105,17 @@ public class KindaValidDatePickerView
       localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format((Date)localObject).split("-");
       if (localObject.length >= 3)
       {
-        this.datePicker.aN(bt.aGh(localObject[0]), bt.aGh(localObject[1]), bt.aGh(localObject[2]));
-        this.datePicker.aO(bt.aGh(localObject[0]) + 30, 12, 31);
+        this.datePicker.aP(bs.aLy(localObject[0]), bs.aLy(localObject[1]), bs.aLy(localObject[2]));
+        this.datePicker.aQ(bs.aLy(localObject[0]) + 30, 12, 31);
       }
       for (;;)
       {
-        this.datePicker.aM(this.mYear, this.mMonthOfYear + 1, 1);
+        this.datePicker.aO(this.mYear, this.mMonthOfYear + 1, 1);
         this.datePicker.show();
         AppMethodBeat.o(18976);
         return;
-        this.datePicker.aN(bt.aGh(localObject[0]), 1, 1);
-        this.datePicker.aO(bt.aGh(localObject[0]) + 30, 12, 31);
+        this.datePicker.aP(bs.aLy(localObject[0]), 1, 1);
+        this.datePicker.aQ(bs.aLy(localObject[0]) + 30, 12, 31);
       }
     }
     if (this.datePicker != null) {

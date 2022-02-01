@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.al.b;
-import com.tencent.mm.al.b.a;
-import com.tencent.mm.al.b.b;
-import com.tencent.mm.al.b.c;
-import com.tencent.mm.al.n;
+import com.tencent.mm.aj.i;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.c.a;
-import com.tencent.mm.protocal.protobuf.bly;
-import com.tencent.mm.protocal.protobuf.blz;
-import com.tencent.mm.protocal.protobuf.bma;
-import com.tencent.mm.protocal.protobuf.cmf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bpw;
+import com.tencent.mm.protocal.protobuf.bpx;
+import com.tencent.mm.protocal.protobuf.bpy;
+import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +29,7 @@ public final class aj
   extends n
   implements k
 {
-  private com.tencent.mm.al.g callback;
+  private com.tencent.mm.ak.g callback;
   private final b rr;
   
   public aj(String paramString, List<String[]> paramList)
@@ -37,22 +37,22 @@ public final class aj
     AppMethodBeat.i(131132);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).gUU = new blz();
-    ((b.a)localObject).gUV = new bma();
+    ((b.a)localObject).hvt = new bpx();
+    ((b.a)localObject).hvu = new bpy();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/listmfriend";
     ((b.a)localObject).funcId = 431;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).atI();
-    localObject = (blz)this.rr.gUS.gUX;
-    ((blz)localObject).Ddo = paramString;
-    ((blz)localObject).DJw = 0;
+    this.rr = ((b.a)localObject).aAz();
+    localObject = (bpx)this.rr.hvr.hvw;
+    ((bpx)localObject).Ewu = paramString;
+    ((bpx)localObject).FeR = 0;
     if (paramList == null) {}
     for (;;)
     {
-      ((blz)localObject).DJu = i;
-      ((blz)localObject).DJx = new LinkedList();
-      ((blz)localObject).DJv = new LinkedList();
+      ((bpx)localObject).FeP = i;
+      ((bpx)localObject).FeS = new LinkedList();
+      ((bpx)localObject).FeQ = new LinkedList();
       if (paramList == null) {
         break;
       }
@@ -60,8 +60,8 @@ public final class aj
       while (paramString.hasNext())
       {
         paramList = (String[])paramString.next();
-        if (!bt.isNullOrNil(paramList[2])) {
-          ((blz)localObject).DJv.add(new cmf().aEE(paramList[2]));
+        if (!bs.isNullOrNil(paramList[2])) {
+          ((bpx)localObject).FeQ.add(new crm().aJV(paramList[2]));
         }
       }
       i = paramList.size();
@@ -69,25 +69,25 @@ public final class aj
     AppMethodBeat.o(131132);
   }
   
-  public final LinkedList<bly> aJd()
+  public final LinkedList<bpw> aPU()
   {
     AppMethodBeat.i(131134);
-    Object localObject = ((bma)this.rr.gUT.gUX).DJy;
+    Object localObject = ((bpy)this.rr.hvs.hvw).FeT;
     if (localObject != null)
     {
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bly localbly = (bly)((Iterator)localObject).next();
-        a.aLf().aqn().kY(localbly.mAQ, localbly.Dqd);
+        bpw localbpw = (bpw)((Iterator)localObject).next();
+        a.aRW().axc().lv(localbpw.ncR, localbpw.ELg);
       }
     }
-    localObject = ((bma)this.rr.gUT.gUX).DJy;
+    localObject = ((bpy)this.rr.hvs.hvw).FeT;
     AppMethodBeat.o(131134);
     return localObject;
   }
   
-  public final int doScene(e parame, com.tencent.mm.al.g paramg)
+  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
   {
     AppMethodBeat.i(131133);
     this.callback = paramg;
@@ -104,29 +104,29 @@ public final class aj
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, final q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131135);
-    paramq = (bma)this.rr.gUT.gUX;
-    com.tencent.mm.kernel.g.afE().a(new aq.a()
+    paramq = (bpy)this.rr.hvs.hvw;
+    com.tencent.mm.kernel.g.agU().a(new ap.a()
     {
-      public final boolean aus()
+      public final boolean aBj()
       {
         AppMethodBeat.i(131130);
-        if ((paramq != null) && (paramq.DJy.size() > 0))
+        if ((paramq != null) && (paramq.FeT.size() > 0))
         {
-          Iterator localIterator = paramq.DJy.iterator();
+          Iterator localIterator = paramq.FeT.iterator();
           while (localIterator.hasNext())
           {
-            bly localbly = (bly)localIterator.next();
-            if (localbly.mBi == 1)
+            bpw localbpw = (bpw)localIterator.next();
+            if (localbpw.ndj == 1)
             {
               i locali = new i();
-              locali.username = localbly.mAQ;
-              locali.gUg = localbly.CVv;
-              locali.gUf = localbly.CVw;
-              locali.dtM = -1;
-              ad.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aux(), locali.auy() });
-              locali.evo = 3;
-              locali.ee(true);
-              p.auF().b(locali);
+              locali.username = localbpw.ncR;
+              locali.huF = localbpw.Eof;
+              locali.huE = localbpw.Eog;
+              locali.drx = -1;
+              ac.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aBo(), locali.aBp() });
+              locali.exK = 3;
+              locali.ez(true);
+              p.aBw().b(locali);
             }
           }
         }
@@ -134,7 +134,7 @@ public final class aj
         return true;
       }
       
-      public final boolean aut()
+      public final boolean aBk()
       {
         return false;
       }
@@ -153,7 +153,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.aj
  * JD-Core Version:    0.7.0.1
  */

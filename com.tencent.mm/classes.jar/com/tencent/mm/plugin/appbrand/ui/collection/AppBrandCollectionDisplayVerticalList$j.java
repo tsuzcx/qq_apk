@@ -5,7 +5,7 @@ import com.tencent.mm.ui.base.h.b;
 import d.g.a.b;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
 final class AppBrandCollectionDisplayVerticalList$j
   implements h.b
 {
@@ -18,7 +18,7 @@ final class AppBrandCollectionDisplayVerticalList$j
     {
       paramCharSequence = paramCharSequence.toString();
       if (paramCharSequence != null) {
-        AppBrandCollectionDisplayVerticalList.d(paramCharSequence, (b)1.lGe);
+        AppBrandCollectionDisplayVerticalList.e(paramCharSequence, (b)1.mhY);
       }
     }
     AppMethodBeat.o(175223);

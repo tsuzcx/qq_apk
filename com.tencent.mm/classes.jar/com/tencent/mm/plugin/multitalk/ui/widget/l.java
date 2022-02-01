@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.multitalk.ui.widget;
 
-import android.support.v7.widget.RecyclerView.v;
+import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "headerStub", "getHeaderStub", "()Landroid/view/View;", "setHeaderStub", "plugin-multitalk_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/multitalk/ui/widget/SmallAvatarHolderInContactUI;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarIv", "Landroid/widget/ImageView;", "getAvatarIv", "()Landroid/widget/ImageView;", "setAvatarIv", "(Landroid/widget/ImageView;)V", "headerStub", "getHeaderStub", "()Landroid/view/View;", "setHeaderStub", "plugin-multitalk_release"})
 public final class l
-  extends RecyclerView.v
+  extends RecyclerView.w
 {
-  ImageView fuj;
-  View tQY;
+  ImageView fxQ;
+  View uZF;
   
   public l(View paramView)
   {
@@ -19,16 +19,16 @@ public final class l
     AppMethodBeat.i(178985);
     View localView = paramView.findViewById(2131296996);
     k.g(localView, "itemView.findViewById(R.id.avatar)");
-    this.fuj = ((ImageView)localView);
+    this.fxQ = ((ImageView)localView);
     paramView = paramView.findViewById(2131300727);
     k.g(paramView, "itemView.findViewById(R.id.header_stub)");
-    this.tQY = paramView;
+    this.uZF = paramView;
     AppMethodBeat.o(178985);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.l
  * JD-Core Version:    0.7.0.1
  */

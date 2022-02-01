@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
 {
-  public final long hUe;
-  public final int hUf;
-  public long hUg;
-  public int hUh;
+  public final long iui;
+  public final int iuj;
+  public long iuk;
+  public int iul;
   
   public q()
   {
     AppMethodBeat.i(132969);
-    this.hUe = 180000L;
-    this.hUf = 3;
-    this.hUh = this.hUf;
-    this.hUg = 0L;
+    this.iui = 180000L;
+    this.iuj = 3;
+    this.iul = this.iuj;
+    this.iuk = 0L;
     AppMethodBeat.o(132969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.platformtools.q
  * JD-Core Version:    0.7.0.1
  */

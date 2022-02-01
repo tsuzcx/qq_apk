@@ -114,7 +114,7 @@ public class KindaBankCardTypePickerViewImpl
     if (paramBoolean)
     {
       this.mOptionPiker = new c(this.mContext, this.mFirstOptionList, this.mSecondOptionStringList);
-      this.mOptionPiker.HIW = new c.a()
+      this.mOptionPiker.Jjt = new c.a()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -125,12 +125,12 @@ public class KindaBankCardTypePickerViewImpl
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             paramAnonymousObject2 = (String)paramAnonymousObject2;
             KindaBankCardTypePickerViewImpl.this.mEditText.setText(paramAnonymousObject1 + " " + paramAnonymousObject2);
-            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.ffZ());
+            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.fvY());
             paramAnonymousObject1 = KindaBankCardTypePickerViewImpl.this;
             paramAnonymousObject2 = KindaBankCardTypePickerViewImpl.this.mOptionPiker;
             int i = 0;
-            if (paramAnonymousObject2.HIV != null) {
-              i = paramAnonymousObject2.HIV.getValue();
+            if (paramAnonymousObject2.Jjs != null) {
+              i = paramAnonymousObject2.Jjs.getValue();
             }
             KindaBankCardTypePickerViewImpl.access$302(paramAnonymousObject1, i);
             if ((KindaBankCardTypePickerViewImpl.this.mFirstSelectedIndex >= 0) && (KindaBankCardTypePickerViewImpl.this.mSecondSelectedIndex >= 0))
@@ -148,7 +148,7 @@ public class KindaBankCardTypePickerViewImpl
         if (this.mSecondSelectedIndex < 0) {
           break label91;
         }
-        this.mOptionPiker.jL(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
+        this.mOptionPiker.jX(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
       }
     }
     for (;;)
@@ -157,7 +157,7 @@ public class KindaBankCardTypePickerViewImpl
       AppMethodBeat.o(18839);
       return;
       label91:
-      this.mOptionPiker.aaR(this.mFirstSelectedIndex);
+      this.mOptionPiker.adc(this.mFirstSelectedIndex);
     }
   }
   

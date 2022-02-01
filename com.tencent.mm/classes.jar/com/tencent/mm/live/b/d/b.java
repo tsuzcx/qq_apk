@@ -3,11 +3,11 @@ package com.tencent.mm.live.b.d;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.b.e.c;
+import com.tencent.mm.live.b.f.c;
 import com.tencent.mm.live.view.a.a;
 import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.protocal.protobuf.eat;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.bqf;
+import com.tencent.mm.sdk.platformtools.bs;
 import d.a.j;
 import d.g.b.k;
 import d.l;
@@ -18,61 +18,79 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/live/model/util/LiveMessageMergeUtil;", "", "()V", "checkHeadImgUrl", "", "liveMessage", "Lcom/tencent/mm/protocal/protobuf/LiveMessage;", "merge", "local", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "remote", "", "selfID", "", "parseTemplateMsg", "parseTemplateMsgs", "msgList", "plugin-logic_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/util/LiveMessageMergeUtil;", "", "()V", "MAX_MSG_COUNT", "", "checkHeadImgUrl", "", "liveMessage", "Lcom/tencent/mm/protocal/protobuf/LiveMessage;", "checkMsgListSize", "local", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "merge", "remote", "", "selfID", "", "parseTemplateMsg", "parseTemplateMsgs", "msgList", "plugin-logic_release"})
 public final class b
 {
-  public static final b FwG;
+  public static final b gxy;
   
   static
   {
-    AppMethodBeat.i(202799);
-    FwG = new b();
-    AppMethodBeat.o(202799);
+    AppMethodBeat.i(190000);
+    gxy = new b();
+    AppMethodBeat.o(190000);
   }
   
-  private static void a(eat parameat)
+  private static List<a> Y(List<? extends bqf> paramList)
   {
-    AppMethodBeat.i(202796);
-    if (!bt.isNullOrNil(parameat.fvv))
+    AppMethodBeat.i(189999);
+    ArrayList localArrayList = new ArrayList();
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
     {
-      String str = parameat.fvv;
-      k.g(str, "liveMessage.headimgurl");
-      if (!n.mB(str, "/0")) {
-        parameat.fvv += "/0";
+      a locala = b((bqf)paramList.next());
+      if (locala != null) {
+        localArrayList.add(locala);
       }
     }
-    AppMethodBeat.o(202796);
+    paramList = (List)localArrayList;
+    AppMethodBeat.o(189999);
+    return paramList;
   }
   
-  public static void a(ArrayList<a> paramArrayList, List<? extends eat> paramList, String paramString)
+  private static void a(bqf parambqf)
   {
-    AppMethodBeat.i(202795);
+    AppMethodBeat.i(189997);
+    if (!bs.isNullOrNil(parambqf.fzc))
+    {
+      String str = parambqf.fzc;
+      k.g(str, "liveMessage.headimgurl");
+      if (!n.nc(str, "/0")) {
+        parambqf.fzc += "/0";
+      }
+    }
+    AppMethodBeat.o(189997);
+  }
+  
+  public static void a(ArrayList<a> paramArrayList, List<? extends bqf> paramList, String paramString)
+  {
+    AppMethodBeat.i(189995);
     k.h(paramArrayList, "local");
     k.h(paramList, "remote");
     k.h(paramString, "selfID");
     if (paramArrayList.size() == 0)
     {
-      paramArrayList.addAll((Collection)dv(paramList));
-      AppMethodBeat.o(202795);
+      paramArrayList.addAll((Collection)Y(paramList));
+      i(paramArrayList);
+      AppMethodBeat.o(189995);
       return;
     }
     int i = 0;
-    int k = ((a)j.iA((List)paramArrayList)).tGD;
+    int k = ((a)j.iQ((List)paramArrayList)).gIh;
     Iterator localIterator = ((Iterable)paramList).iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (eat)localIterator.next();
+      Object localObject = (bqf)localIterator.next();
       int j = i;
-      if (((eat)localObject).Lzj > k) {
+      if (((bqf)localObject).Ffj > k) {
         j = 1;
       }
       i = j;
       if (j != 0)
       {
         i = j;
-        if (!k.g(((eat)localObject).Lzi, paramString))
+        if (!k.g(((bqf)localObject).Ffi, paramString))
         {
-          localObject = b((eat)localObject);
+          localObject = b((bqf)localObject);
           i = j;
           if (localObject != null)
           {
@@ -85,21 +103,22 @@ public final class b
     if (paramList.size() - paramArrayList.size() > 10)
     {
       paramArrayList.clear();
-      paramArrayList.addAll((Collection)dv(paramList));
+      paramArrayList.addAll((Collection)Y(paramList));
     }
-    AppMethodBeat.o(202795);
+    i(paramArrayList);
+    AppMethodBeat.o(189995);
   }
   
-  private static a b(eat parameat)
+  private static a b(bqf parambqf)
   {
-    AppMethodBeat.i(202797);
-    a(parameat);
-    int i = parameat.CJZ;
-    Object localObject = e.c.qYs;
+    AppMethodBeat.i(189998);
+    a(parambqf);
+    int i = parambqf.EcB;
+    Object localObject = f.c.gtp;
     CharSequence localCharSequence;
-    if (i == e.c.emb())
+    if (i == f.c.akm())
     {
-      localObject = parameat.content;
+      localObject = parambqf.content;
       localObject = ((f)g.ab(f.class)).b((String)localObject, new Bundle(), null, null);
       if (localObject != null)
       {
@@ -108,7 +127,7 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(202797);
+        AppMethodBeat.o(189998);
         return null;
       }
       i = n.a(localCharSequence, "：", 0, false, 6);
@@ -120,47 +139,48 @@ public final class b
     }
     for (;;)
     {
-      String str = parameat.fvv;
+      String str = parambqf.fzc;
       k.g(str, "liveMessage.headimgurl");
-      parameat = new a((String)localObject, str, localCharSequence, parameat.CJZ, parameat.Lzj);
-      AppMethodBeat.o(202797);
-      return parameat;
+      parambqf = new a((String)localObject, str, localCharSequence, parambqf.EcB, parambqf.Ffj);
+      AppMethodBeat.o(189998);
+      return parambqf;
       localObject = "";
       continue;
-      localObject = parameat.content;
+      localObject = parambqf.content;
       k.g(localObject, "liveMessage.content");
       if (localObject == null)
       {
-        parameat = new v("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(202797);
-        throw parameat;
+        parambqf = new v("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(189998);
+        throw parambqf;
       }
       localCharSequence = (CharSequence)n.trim((CharSequence)localObject).toString();
-      localObject = parameat.Lzi;
+      localObject = parambqf.Ffi;
       k.g(localObject, "liveMessage.identity_id");
     }
   }
   
-  private static List<a> dv(List<? extends eat> paramList)
+  private static void i(ArrayList<a> paramArrayList)
   {
-    AppMethodBeat.i(202798);
-    ArrayList localArrayList = new ArrayList();
-    paramList = ((Iterable)paramList).iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(189996);
+    if (paramArrayList.size() > 3000)
     {
-      a locala = b((eat)paramList.next());
-      if (locala != null) {
-        localArrayList.add(locala);
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      int j = paramArrayList.size();
+      while (i < j - 3000)
+      {
+        localArrayList.add(paramArrayList.get(i));
+        i += 1;
       }
+      paramArrayList.removeAll((Collection)localArrayList);
     }
-    paramList = (List)localArrayList;
-    AppMethodBeat.o(202798);
-    return paramList;
+    AppMethodBeat.o(189996);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.b.d.b
  * JD-Core Version:    0.7.0.1
  */

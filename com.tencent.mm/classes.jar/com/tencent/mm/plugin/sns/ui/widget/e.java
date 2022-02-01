@@ -1,154 +1,113 @@
 package com.tencent.mm.plugin.sns.ui.widget;
 
 import android.content.Context;
+import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.a.b.l;
+import com.tencent.mm.plugin.sns.ad.d.l;
+import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.ui.j;
 import com.tencent.mm.plugin.story.api.n;
-import com.tencent.mm.plugin.story.api.o;
-import com.tencent.mm.protocal.protobuf.cuo;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.bg;
+import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.protocal.protobuf.daa;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.vfs.i;
 
 public final class e
 {
-  public static CharSequence a(Context paramContext, cuo paramcuo, j paramj, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.sns.storage.p paramp)
+  public static CharSequence a(Context paramContext, daa paramdaa, j paramj, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.sns.storage.p paramp)
   {
     AppMethodBeat.i(100534);
-    paramContext = b(paramContext, paramcuo, paramj, paramInt1, paramString, paramInt2, paramBoolean1, paramBoolean2, paramp);
+    paramContext = b(paramContext, paramdaa, paramj, paramInt1, paramString, paramInt2, paramBoolean1, paramBoolean2, paramp);
     AppMethodBeat.o(100534);
     return paramContext;
   }
   
-  public static String a(com.tencent.mm.plugin.sns.storage.b paramb, String paramString)
-  {
-    AppMethodBeat.i(100537);
-    String str = paramString;
-    if (paramb != null)
-    {
-      if (!paramb.wTG) {
-        break label30;
-      }
-      str = paramb.wTH;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(100537);
-      return str;
-      label30:
-      str = paramString;
-      if (bt.isNullOrNil(paramString))
-      {
-        str = paramString;
-        if (!bt.isNullOrNil(paramb.nickname)) {
-          str = paramb.nickname;
-        }
-      }
-    }
-  }
-  
-  private static String a(cuo paramcuo)
+  private static String a(daa paramdaa)
   {
     AppMethodBeat.i(100536);
-    com.tencent.mm.storage.af localaf = com.tencent.mm.plugin.sns.model.af.dti().aHX(paramcuo.Username);
-    if (localaf != null)
+    ai localai = af.dHF().aNs(paramdaa.Username);
+    if (localai != null)
     {
-      paramcuo = localaf.ZX();
+      paramdaa = localai.aaS();
       AppMethodBeat.o(100536);
-      return paramcuo;
+      return paramdaa;
     }
-    if (paramcuo.Nickname != null)
+    if (paramdaa.Nickname != null)
     {
-      paramcuo = paramcuo.Nickname;
+      paramdaa = paramdaa.Nickname;
       AppMethodBeat.o(100536);
-      return paramcuo;
+      return paramdaa;
     }
-    paramcuo = paramcuo.Username;
+    paramdaa = paramdaa.Username;
     AppMethodBeat.o(100536);
-    return paramcuo;
+    return paramdaa;
   }
   
   public static boolean a(final ImageView paramImageView, com.tencent.mm.plugin.sns.storage.p paramp, String paramString)
   {
     AppMethodBeat.i(100539);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramp != null)
+    boolean bool2;
+    if ((paramp != null) && (b(paramp, paramString)))
     {
-      bool1 = bool2;
-      if (b(paramp, paramString))
+      paramp = paramp.dFR();
+      if ((paramp != null) && (paramp.ygq) && (!TextUtils.isEmpty(paramp.ygs)))
       {
-        paramp = paramp.dxs();
-        bool1 = bool2;
-        if (paramp != null)
-        {
-          bool1 = bool2;
-          if (paramp.wTG)
-          {
-            bool1 = bool2;
-            if (!TextUtils.isEmpty(paramp.wTI))
-            {
-              paramp = paramp.wTI;
-              paramImageView.setTag(2131305044, paramp);
-              bool2 = true;
-              ad.i("SnsCommentUtil", "trySetAdBossCommentAvater, isSet=true");
-              paramString = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.iU("adId", paramp);
-              if (!i.eK(paramString)) {
-                break label172;
-              }
-            }
-          }
-        }
+        paramp = paramp.ygs;
+        paramImageView.setTag(2131305044, paramp);
+        bool2 = true;
+        ac.i("SnsCommentUtil", "trySetAdBossCommentAvater, isSet=true");
+        paramString = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.js("adId", paramp);
+        if (!i.eA(paramString)) {}
       }
     }
     for (;;)
     {
       try
       {
-        paramString = l.wyR.getBitmap(paramString);
+        paramString = l.xKs.getBitmap(paramString);
         bool1 = bool2;
         if (paramString != null)
         {
           paramImageView.setImageBitmap(paramString);
-          ad.i("SnsCommentUtil", "trySetAdBossCommentAvater use local cache, url=".concat(String.valueOf(paramp)));
+          ac.i("SnsCommentUtil", "trySetAdBossCommentAvater use local cache, url=".concat(String.valueOf(paramp)));
           bool1 = bool2;
         }
       }
       catch (Throwable paramImageView)
       {
-        ad.e("SnsCommentUtil", "trySetAdBossCommentAvater decode exp=" + paramImageView.toString());
+        ac.e("SnsCommentUtil", "trySetAdBossCommentAvater decode exp=" + paramImageView.toString());
         bool1 = bool2;
         continue;
       }
       AppMethodBeat.o(100539);
       return bool1;
-      label172:
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramp, new f.a()
+      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramp, false, new f.a()
       {
-        public final void apm(String paramAnonymousString)
+        public final void asD(String paramAnonymousString)
         {
           AppMethodBeat.i(100533);
           try
           {
-            ad.i("SnsCommentUtil", "trySetAdBossCommentAvater onDownloadedSucc, url=" + this.xYk);
+            ac.i("SnsCommentUtil", "trySetAdBossCommentAvater onDownloadedSucc, url=" + this.zlh);
             String str = (String)paramImageView.getTag(2131305044);
             if (TextUtils.isEmpty(str)) {}
-            for (str = "";; str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.iU("adId", str))
+            for (str = "";; str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.js("adId", str))
             {
               if ((!TextUtils.isEmpty(paramAnonymousString)) && (paramAnonymousString.equals(str)))
               {
-                paramAnonymousString = l.wyR.getBitmap(paramAnonymousString);
+                paramAnonymousString = l.xKs.getBitmap(paramAnonymousString);
                 if (paramAnonymousString != null)
                 {
                   paramImageView.setImageBitmap(paramAnonymousString);
-                  ad.i("SnsCommentUtil", "trySetAdBossCommentAvater setImageBitmap");
+                  ac.i("SnsCommentUtil", "trySetAdBossCommentAvater setImageBitmap");
                 }
               }
               AppMethodBeat.o(100533);
@@ -158,31 +117,33 @@ public final class e
           }
           catch (Throwable paramAnonymousString)
           {
-            ad.e("SnsCommentUtil", "trySetAdBossCommentAvater, download decode, exp=" + paramAnonymousString.toString());
+            ac.e("SnsCommentUtil", "trySetAdBossCommentAvater, download decode, exp=" + paramAnonymousString.toString());
             AppMethodBeat.o(100533);
           }
         }
         
-        public final void dsA()
+        public final void dFC() {}
+        
+        public final void dFD()
         {
           AppMethodBeat.i(100532);
-          ad.i("SnsCommentUtil", "trySetAdBossCommentAvater onDownloadError, url=" + this.xYk);
+          ac.i("SnsCommentUtil", "trySetAdBossCommentAvater onDownloadError, url=" + this.zlh);
           AppMethodBeat.o(100532);
         }
-        
-        public final void duP() {}
       });
-      bool1 = bool2;
+      boolean bool1 = bool2;
+      continue;
+      bool1 = false;
     }
   }
   
-  private static CharSequence b(Context paramContext, cuo paramcuo, j paramj, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.sns.storage.p paramp)
+  private static CharSequence b(Context paramContext, daa paramdaa, j paramj, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.sns.storage.p paramp)
   {
     AppMethodBeat.i(100535);
     String str2 = "";
-    String str1 = a(paramcuo);
-    if (b(paramp, paramcuo.Username)) {
-      str1 = a(paramp.dxs(), str1);
+    String str1 = a(paramdaa);
+    if (b(paramp, paramdaa.Username)) {
+      str1 = b(paramp.dFR(), str1);
     }
     label410:
     label1440:
@@ -192,31 +153,31 @@ public final class e
       Object localObject1 = "";
       Object localObject4 = null;
       Object localObject5 = null;
-      Object localObject3 = com.tencent.mm.plugin.sns.model.af.dti().aHX(paramcuo.Emu);
+      Object localObject3 = af.dHF().aNs(paramdaa.FJt);
       int n;
       label90:
       String str3;
-      if ((paramBoolean1) && (com.tencent.mm.plugin.sns.g.a.anZ(paramcuo.Username)))
+      if ((paramBoolean1) && (com.tencent.mm.plugin.sns.f.a.atl(paramdaa.Username)))
       {
         paramBoolean1 = true;
         if (paramInt1 != 21) {
           break label650;
         }
         n = 3;
-        str3 = bt.nullAsNil(paramcuo.gKr);
-        if (bt.isNullOrNil(paramString)) {
+        str3 = bs.nullAsNil(paramdaa.hkR);
+        if (bs.isNullOrNil(paramString)) {
           break label1458;
         }
-        g.afC();
+        g.agS();
       }
       label1191:
       label1196:
       label1458:
-      for (Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHW(paramString);; localObject2 = null)
+      for (Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNr(paramString);; localObject2 = null)
       {
         int m;
         if (paramInt2 == 1) {
-          if ((com.tencent.mm.plugin.sns.g.a.anY(paramcuo.Username)) && (paramBoolean2) && (o.isShowStoryCheck()))
+          if ((com.tencent.mm.plugin.sns.f.a.atk(paramdaa.Username)) && (paramBoolean2) && (com.tencent.mm.plugin.story.api.o.isShowStoryCheck()))
           {
             localObject1 = str1 + "  ";
             m = 1;
@@ -229,17 +190,17 @@ public final class e
           int j;
           int i;
           int k;
-          if ((hA(paramcuo.Eme, 1)) && (TextUtils.isEmpty(paramcuo.Emu))) {
+          if ((hJ(paramdaa.FJd, 1)) && (TextUtils.isEmpty(paramdaa.FJt))) {
             if (localObject2 != null) {
-              if ((localObject2 == null) || (TextUtils.isEmpty(((com.tencent.mm.storage.af)localObject2).ZX())))
+              if ((localObject2 == null) || (TextUtils.isEmpty(((ai)localObject2).aaS())))
               {
                 localObject3 = paramString;
                 localObject2 = localObject3;
                 if (paramp != null)
                 {
                   localObject2 = localObject3;
-                  if (paramp.Nb(32)) {
-                    localObject2 = a(paramp.dxs(), (String)localObject3);
+                  if (paramp.Pe(32)) {
+                    localObject2 = b(paramp.dFR(), (String)localObject3);
                   }
                 }
                 localObject1 = (String)localObject1 + paramContext.getString(2131763780);
@@ -255,7 +216,7 @@ public final class e
           }
           for (;;)
           {
-            paramContext = com.tencent.mm.pluginsdk.ui.span.k.a(paramContext, (String)localObject1 + str3, com.tencent.mm.cd.a.fromDPToPix(paramContext, (int)(15.0F * com.tencent.mm.cd.a.dT(paramContext))), 2, paramBoolean1);
+            paramContext = com.tencent.mm.pluginsdk.ui.span.k.a(paramContext, (String)localObject1 + str3, com.tencent.mm.cc.a.fromDPToPix(paramContext, (int)(15.0F * com.tencent.mm.cc.a.eb(paramContext))), 2, paramBoolean1);
             if (paramInt1 != 21) {
               break label1191;
             }
@@ -263,27 +224,27 @@ public final class e
             paramContext = new SpannableStringBuilder(paramContext);
             if (paramInt2 == 1)
             {
-              if (!b(paramp, paramcuo.Username)) {
+              if (!b(paramp, paramdaa.Username)) {
                 break label1202;
               }
-              if (!hA(paramcuo.Eme, 32)) {
+              if (!hJ(paramdaa.FJd, 32)) {
                 break label1196;
               }
               paramInt2 = 27;
               label453:
-              paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(new com.tencent.mm.plugin.sns.data.a(paramp.Nb(32), paramcuo.Username, paramp.dxX(), 0, paramInt2), paramj, paramInt1), 0, str1.length(), 33);
+              paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(new com.tencent.mm.plugin.sns.data.a(paramp.Pe(32), paramdaa.Username, paramp.dMu(), 0, paramInt2), paramj, paramInt1), 0, str1.length(), 33);
               label500:
               if (m != 0) {
-                paramContext.setSpan(new h(((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().qD(true)), str1.length() + 1, str1.length() + 2, 17);
+                paramContext.setSpan(new h(((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().rB(true)), str1.length() + 1, str1.length() + 2, 17);
               }
             }
-            if (bt.isNullOrNil((String)localObject3)) {
+            if (bs.isNullOrNil((String)localObject3)) {
               break label1261;
             }
-            if ((paramp == null) || (!paramp.Nb(32)) || (!paramString.equals(paramp.field_userName))) {
+            if ((paramp == null) || (!paramp.Pe(32)) || (!paramString.equals(paramp.field_userName))) {
               break label1230;
             }
-            paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(new com.tencent.mm.plugin.sns.data.a(paramp.Nb(32), paramString, paramp.dxX(), 0, 2), paramj, n), j, ((String)localObject3).length() + j, 33);
+            paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(new com.tencent.mm.plugin.sns.data.a(paramp.Pe(32), paramString, paramp.dMu(), 0, 2), paramj, n), j, ((String)localObject3).length() + j, 33);
             label637:
             AppMethodBeat.o(100535);
             return paramContext;
@@ -294,9 +255,9 @@ public final class e
             m = 0;
             localObject1 = str1;
             break label185;
-            localObject3 = ((com.tencent.mm.storage.af)localObject2).ZX();
+            localObject3 = ((ai)localObject2).aaS();
             break label231;
-            ad.w("SnsCommentUtil", "feedContact null by feedOwnUserName %s", new Object[] { paramString });
+            ac.w("SnsCommentUtil", "feedContact null by feedOwnUserName %s", new Object[] { paramString });
             i = 0;
             j = 0;
             k = 0;
@@ -304,12 +265,12 @@ public final class e
             localObject3 = localObject4;
             localObject1 = str2;
             continue;
-            if (!hA(paramcuo.Eme, 8)) {
+            if (!hJ(paramdaa.FJd, 8)) {
               break label883;
             }
-            localObject3 = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(paramcuo.Emu);
+            localObject3 = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramdaa.FJt);
             localObject2 = localObject1;
-            if (!bt.isNullOrNil((String)localObject1)) {
+            if (!bs.isNullOrNil((String)localObject1)) {
               localObject2 = (String)localObject1 + ": ";
             }
             localObject1 = (String)localObject2 + paramContext.getString(2131763780);
@@ -322,25 +283,25 @@ public final class e
             localObject3 = localObject4;
           }
           label883:
-          if (!bt.isNullOrNil(paramcuo.Emu)) {
+          if (!bs.isNullOrNil(paramdaa.FJt)) {
             if (localObject3 == null)
             {
-              localObject3 = paramcuo.Emu;
+              localObject3 = paramdaa.FJt;
               localObject2 = localObject3;
               if (paramp != null)
               {
                 localObject2 = localObject3;
-                if (paramp.Nb(32))
+                if (paramp.Pe(32))
                 {
                   localObject2 = localObject3;
-                  if (paramcuo.Emu.equals(paramp.field_userName)) {
-                    localObject2 = a(paramp.dxs(), (String)localObject3);
+                  if (paramdaa.FJt.equals(paramp.field_userName)) {
+                    localObject2 = b(paramp.dFR(), (String)localObject3);
                   }
                 }
               }
               localObject3 = (String)localObject1 + paramContext.getString(2131763952);
               k = ((String)localObject3).length();
-              if ((!com.tencent.mm.plugin.sns.g.a.anY(paramcuo.Emu)) || (!paramBoolean2) || (!o.isShowStoryCheck())) {
+              if ((!com.tencent.mm.plugin.sns.f.a.atk(paramdaa.FJt)) || (!paramBoolean2) || (!com.tencent.mm.plugin.story.api.o.isShowStoryCheck())) {
                 break label1442;
               }
               localObject1 = (String)localObject2 + "  ";
@@ -356,10 +317,10 @@ public final class e
             localObject1 = localObject3;
             localObject3 = localObject4;
             break;
-            localObject3 = ((com.tencent.mm.n.b)localObject3).ZX();
+            localObject3 = ((com.tencent.mm.n.b)localObject3).aaS();
             break label904;
             localObject2 = localObject1;
-            if (!bt.isNullOrNil((String)localObject1)) {
+            if (!bs.isNullOrNil((String)localObject1)) {
               localObject2 = (String)localObject1 + ": ";
             }
             localObject1 = "" + (String)localObject2;
@@ -374,26 +335,26 @@ public final class e
             paramInt2 = 2;
             break label453;
             label1202:
-            paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(paramcuo.Username, paramj, paramInt1), 0, str1.length(), 33);
+            paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(paramdaa.Username, paramj, paramInt1), 0, str1.length(), 33);
             break label500;
             label1230:
             paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(paramString, paramj, n), j, ((String)localObject3).length() + j, 33);
             break label637;
             label1261:
-            if (bt.isNullOrNil((String)localObject2)) {
+            if (bs.isNullOrNil((String)localObject2)) {
               break label637;
             }
-            if ((paramp != null) && (paramp.Nb(32)) && (paramcuo.Emu.equals(paramp.field_userName))) {
-              paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(new com.tencent.mm.plugin.sns.data.a(paramp.Nb(32), paramcuo.Emu, paramp.dxX(), 0, 2), paramj, n), k, ((String)localObject2).length() + k, 33);
+            if ((paramp != null) && (paramp.Pe(32)) && (paramdaa.FJt.equals(paramp.field_userName))) {
+              paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(new com.tencent.mm.plugin.sns.data.a(paramp.Pe(32), paramdaa.FJt, paramp.dMu(), 0, 2), paramj, n), k, ((String)localObject2).length() + k, 33);
             }
             for (;;)
             {
               if (i == 0) {
                 break label1440;
               }
-              paramContext.setSpan(new h(((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().qD(true)), ((String)localObject2).length() + k - 1, ((String)localObject2).length() + k, 17);
+              paramContext.setSpan(new h(((com.tencent.mm.plugin.story.api.e)g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryUIFactory().rB(true)), ((String)localObject2).length() + k - 1, ((String)localObject2).length() + k, 17);
               break;
-              paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(paramcuo.Emu, paramj, n), k, ((String)localObject2).length() + k, 33);
+              paramContext.setSpan(new com.tencent.mm.pluginsdk.ui.span.p(paramdaa.FJt, paramj, n), k, ((String)localObject2).length() + k, 33);
             }
             break label637;
             i = 0;
@@ -405,10 +366,71 @@ public final class e
     }
   }
   
+  public static CharSequence b(SpannableStringBuilder paramSpannableStringBuilder)
+  {
+    AppMethodBeat.i(200670);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannableStringBuilder);
+    if (!bs.aj(paramSpannableStringBuilder))
+    {
+      paramSpannableStringBuilder = (com.tencent.mm.pluginsdk.ui.span.o[])paramSpannableStringBuilder.getSpans(0, paramSpannableStringBuilder.length(), com.tencent.mm.pluginsdk.ui.span.o.class);
+      if ((paramSpannableStringBuilder != null) && (paramSpannableStringBuilder.length > 0))
+      {
+        int j = paramSpannableStringBuilder.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = paramSpannableStringBuilder[i];
+          if (localObject.getType() == 1)
+          {
+            String str1 = localObject.getHrefInfo().url;
+            if ((str1 != null) && (str1.length() > com.tencent.mm.plugin.sns.ui.a.b.a.yZS))
+            {
+              String str2 = str1.substring(0, com.tencent.mm.plugin.sns.ui.a.b.a.yZS) + "...";
+              SpannableString localSpannableString = new SpannableString(str2);
+              localSpannableString.setSpan(new com.tencent.mm.pluginsdk.ui.span.o(2, localObject.getHrefInfo()), 0, str2.length(), 33);
+              int k = localSpannableStringBuilder.toString().indexOf(str1);
+              localSpannableStringBuilder.replace(k, str1.length() + k, localSpannableString);
+            }
+          }
+          i += 1;
+        }
+      }
+    }
+    AppMethodBeat.o(200670);
+    return localSpannableStringBuilder;
+  }
+  
+  public static String b(com.tencent.mm.plugin.sns.storage.b paramb, String paramString)
+  {
+    AppMethodBeat.i(100537);
+    String str = paramString;
+    if (paramb != null)
+    {
+      if (!paramb.ygq) {
+        break label32;
+      }
+      str = paramb.ygr;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(100537);
+      return str;
+      label32:
+      str = paramString;
+      if (bs.isNullOrNil(paramString))
+      {
+        str = paramString;
+        if (!bs.isNullOrNil(paramb.nickname)) {
+          str = paramb.nickname;
+        }
+      }
+    }
+  }
+  
   public static boolean b(com.tencent.mm.plugin.sns.storage.p paramp, String paramString)
   {
     AppMethodBeat.i(100538);
-    if ((paramp != null) && (paramp.Nb(32)) && (paramString != null) && (paramString.equals(paramp.field_userName)))
+    if ((paramp != null) && (paramp.Pe(32)) && (paramString != null) && (paramString.equals(paramp.field_userName)))
     {
       AppMethodBeat.o(100538);
       return true;
@@ -417,7 +439,7 @@ public final class e
     return false;
   }
   
-  public static boolean hA(int paramInt1, int paramInt2)
+  public static boolean hJ(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) == paramInt2;
   }

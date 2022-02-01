@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public final class h
 {
-  private long[] byS;
+  private long[] bwA;
   public int size;
   
   public h()
@@ -16,17 +16,17 @@ public final class h
   private h(byte paramByte)
   {
     AppMethodBeat.i(93136);
-    this.byS = new long[32];
+    this.bwA = new long[32];
     AppMethodBeat.o(93136);
   }
   
   public final void add(long paramLong)
   {
     AppMethodBeat.i(93137);
-    if (this.size == this.byS.length) {
-      this.byS = Arrays.copyOf(this.byS, this.size * 2);
+    if (this.size == this.bwA.length) {
+      this.bwA = Arrays.copyOf(this.bwA, this.size * 2);
     }
-    long[] arrayOfLong = this.byS;
+    long[] arrayOfLong = this.bwA;
     int i = this.size;
     this.size = (i + 1);
     arrayOfLong[i] = paramLong;
@@ -42,7 +42,7 @@ public final class h
       AppMethodBeat.o(93138);
       throw localIndexOutOfBoundsException;
     }
-    long l = this.byS[paramInt];
+    long l = this.bwA[paramInt];
     AppMethodBeat.o(93138);
     return l;
   }
@@ -50,7 +50,7 @@ public final class h
   public final long[] toArray()
   {
     AppMethodBeat.i(93139);
-    long[] arrayOfLong = Arrays.copyOf(this.byS, this.size);
+    long[] arrayOfLong = Arrays.copyOf(this.bwA, this.size);
     AppMethodBeat.o(93139);
     return arrayOfLong;
   }

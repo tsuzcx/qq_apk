@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/ui/common/VideoEditCommonDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setContentView", "view", "Landroid/view/View;", "setTranslucentStatus", "wrapSheet", "plugin-recordvideo_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/common/VideoEditCommonDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getMContext", "()Landroid/content/Context;", "setMContext", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setContentView", "view", "Landroid/view/View;", "setTranslucentStatus", "wrapSheet", "plugin-recordvideo_release"})
 public final class a
   extends e
 {
@@ -20,27 +20,27 @@ public final class a
   public a(Context paramContext)
   {
     super(paramContext, 2131820861);
-    AppMethodBeat.i(204298);
+    AppMethodBeat.i(199417);
     this.mContext = paramContext;
-    gl();
-    AppMethodBeat.o(204298);
+    gt();
+    AppMethodBeat.o(199417);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(204296);
+    AppMethodBeat.i(199415);
     super.onCreate(paramBundle);
     getWindow().setDimAmount(0.0F);
-    AppMethodBeat.o(204296);
+    AppMethodBeat.o(199415);
   }
   
   public final void setContentView(View paramView)
   {
-    AppMethodBeat.i(204297);
+    AppMethodBeat.i(199416);
     k.h(paramView, "view");
     Window localWindow = getWindow();
     if (localWindow == null) {
-      k.fvU();
+      k.fOy();
     }
     localWindow.setGravity(80);
     localWindow.setWindowAnimations(2131820790);
@@ -72,7 +72,7 @@ public final class a
     for (;;)
     {
       getWindow().setFlags(134217728, 134217728);
-      AppMethodBeat.o(204297);
+      AppMethodBeat.o(199416);
       return;
       label174:
       getWindow().addFlags(67108864);
@@ -81,7 +81,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

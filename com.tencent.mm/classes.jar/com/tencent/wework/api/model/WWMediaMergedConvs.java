@@ -9,12 +9,12 @@ import java.util.List;
 public class WWMediaMergedConvs
   extends WWMediaMessage.WWMediaObject
 {
-  public List<WWMediaConversation> IMa;
+  public List<WWMediaConversation> Kys;
   
   public WWMediaMergedConvs()
   {
     AppMethodBeat.i(106546);
-    this.IMa = new ArrayList();
+    this.Kys = new ArrayList();
     AppMethodBeat.o(106546);
   }
   
@@ -23,7 +23,7 @@ public class WWMediaMergedConvs
     AppMethodBeat.i(106547);
     if (paramWWMediaConversation.checkArgs())
     {
-      this.IMa.add(paramWWMediaConversation);
+      this.Kys.add(paramWWMediaConversation);
       AppMethodBeat.o(106547);
       return true;
     }
@@ -39,12 +39,12 @@ public class WWMediaMergedConvs
       AppMethodBeat.o(106548);
       return false;
     }
-    if ((this.IMa == null) || (this.IMa.size() == 0))
+    if ((this.Kys == null) || (this.Kys.size() == 0))
     {
       AppMethodBeat.o(106548);
       return false;
     }
-    Iterator localIterator = this.IMa.iterator();
+    Iterator localIterator = this.Kys.iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -61,11 +61,11 @@ public class WWMediaMergedConvs
   public final void toBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(106549);
-    paramBundle.putInt("_wwmergedconvobject_messageslen", this.IMa.size());
+    paramBundle.putInt("_wwmergedconvobject_messageslen", this.Kys.size());
     int i = 0;
-    while (i < this.IMa.size())
+    while (i < this.Kys.size())
     {
-      paramBundle.putBundle("_wwmergedconvobject_messages".concat(String.valueOf(i)), BaseMessage.b((BaseMessage)this.IMa.get(i)));
+      paramBundle.putBundle("_wwmergedconvobject_messages".concat(String.valueOf(i)), BaseMessage.b((BaseMessage)this.Kys.get(i)));
       i += 1;
     }
     super.toBundle(paramBundle);

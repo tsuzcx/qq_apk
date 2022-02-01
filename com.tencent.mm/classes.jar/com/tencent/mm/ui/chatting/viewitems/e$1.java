@@ -1,0 +1,33 @@
+package com.tencent.mm.ui.chatting.viewitems;
+
+import android.graphics.Paint;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class e$1
+  implements Runnable
+{
+  e$1(TextView paramTextView, String paramString) {}
+  
+  public final void run()
+  {
+    AppMethodBeat.i(36751);
+    TextPaint localTextPaint = this.fxL.getPaint();
+    float f = this.fxL.getMeasuredWidth() - this.fxL.getPaddingLeft() - this.fxL.getPaddingRight();
+    if (localTextPaint.measureText(this.hSd) > f)
+    {
+      this.fxL.setMinLines(2);
+      AppMethodBeat.o(36751);
+      return;
+    }
+    this.fxL.setMinLines(0);
+    AppMethodBeat.o(36751);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.e.1
+ * JD-Core Version:    0.7.0.1
+ */

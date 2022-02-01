@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/InvokeCallbackContext;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "transitiveData", "", "(Ljava/lang/String;)V", "getTransitiveData", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/InvokeCallbackContext;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "transitiveData", "", "(Ljava/lang/String;)V", "getTransitiveData", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"})
 final class n
   extends a
 {
-  final String jdG;
+  final String jDU;
   
   public n(String paramString)
   {
     super((byte)0);
-    this.jdG = paramString;
+    this.jDU = paramString;
   }
   
   public final boolean equals(Object paramObject)
@@ -24,7 +24,7 @@ final class n
       if ((paramObject instanceof n))
       {
         paramObject = (n)paramObject;
-        if (!k.g(this.jdG, paramObject.jdG)) {}
+        if (!k.g(this.jDU, paramObject.jDU)) {}
       }
     }
     else
@@ -39,7 +39,7 @@ final class n
   public final int hashCode()
   {
     AppMethodBeat.i(50881);
-    String str = this.jdG;
+    String str = this.jDU;
     if (str != null)
     {
       int i = str.hashCode();
@@ -53,14 +53,14 @@ final class n
   public final String toString()
   {
     AppMethodBeat.i(50880);
-    String str = "InvokeCallbackContext(transitiveData=" + this.jdG + ")";
+    String str = "InvokeCallbackContext(transitiveData=" + this.jDU + ")";
     AppMethodBeat.o(50880);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.n
  * JD-Core Version:    0.7.0.1
  */

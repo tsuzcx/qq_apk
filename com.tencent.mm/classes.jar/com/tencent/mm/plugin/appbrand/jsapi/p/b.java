@@ -1,42 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.MenuItem;
-import com.tencent.luggage.h.i;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.aa.g;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.bb;
-import com.tencent.mm.plugin.appbrand.page.bh;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import d.l;
 
-public final class b
-  extends a<q>
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerPolicyContainer;", "", "referrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "setReferrerPolicy", "(Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;)V", "luggage-commons_release"})
+public abstract interface b
 {
-  private static final int CTRL_INDEX = 107;
-  private static final String NAME = "showActionSheet";
-  public static a khr;
+  public abstract c getReferrerPolicy();
   
-  public static abstract interface a
-  {
-    public abstract void rT(int paramInt);
-  }
+  public abstract void setReferrerPolicy(c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.b
  * JD-Core Version:    0.7.0.1
  */

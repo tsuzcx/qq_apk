@@ -20,75 +20,75 @@ import java.util.Map.Entry;
 
 public final class c
 {
-  private static final r Jxm;
-  private static final Map<r, f> Jxn;
-  private static final Map<String, f> Jxo;
-  private static final List<f> Jxp;
-  private static final Map<f, List<f>> Jxq;
-  public static final c Jxr;
+  private static final r LkF;
+  private static final Map<r, f> LkG;
+  private static final Map<String, f> LkH;
+  private static final List<f> LkI;
+  private static final Map<f, List<f>> LkJ;
+  public static final c LkK;
   
   static
   {
     AppMethodBeat.i(57551);
-    Jxr = new c();
-    Object localObject1 = d.JSG.getDesc();
+    LkK = new c();
+    Object localObject1 = d.LFZ.getDesc();
     k.g(localObject1, "JvmPrimitiveType.INT.desc");
-    Jxm = t.y("java/util/List", "removeAt", (String)localObject1, "Ljava/lang/Object;");
-    localObject1 = d.l.b.a.b.d.b.v.JEQ;
-    localObject1 = d.l.b.a.b.d.b.v.aQv("Number");
-    Object localObject2 = d.JSE.getDesc();
+    LkF = t.A("java/util/List", "removeAt", (String)localObject1, "Ljava/lang/Object;");
+    localObject1 = d.l.b.a.b.d.b.v.Lsj;
+    localObject1 = d.l.b.a.b.d.b.v.aWu("Number");
+    Object localObject2 = d.LFX.getDesc();
     k.g(localObject2, "JvmPrimitiveType.BYTE.desc");
-    localObject1 = u.P(t.y((String)localObject1, "toByte", "", (String)localObject2), f.aQC("byteValue"));
-    localObject2 = d.l.b.a.b.d.b.v.aQv("Number");
-    Object localObject3 = d.JSF.getDesc();
+    localObject1 = u.Q(t.A((String)localObject1, "toByte", "", (String)localObject2), f.aWB("byteValue"));
+    localObject2 = d.l.b.a.b.d.b.v.aWu("Number");
+    Object localObject3 = d.LFY.getDesc();
     k.g(localObject3, "JvmPrimitiveType.SHORT.desc");
-    localObject2 = u.P(t.y((String)localObject2, "toShort", "", (String)localObject3), f.aQC("shortValue"));
-    localObject3 = d.l.b.a.b.d.b.v.aQv("Number");
-    Object localObject4 = d.JSG.getDesc();
+    localObject2 = u.Q(t.A((String)localObject2, "toShort", "", (String)localObject3), f.aWB("shortValue"));
+    localObject3 = d.l.b.a.b.d.b.v.aWu("Number");
+    Object localObject4 = d.LFZ.getDesc();
     k.g(localObject4, "JvmPrimitiveType.INT.desc");
-    localObject3 = u.P(t.y((String)localObject3, "toInt", "", (String)localObject4), f.aQC("intValue"));
-    localObject4 = d.l.b.a.b.d.b.v.aQv("Number");
-    Object localObject5 = d.JSI.getDesc();
+    localObject3 = u.Q(t.A((String)localObject3, "toInt", "", (String)localObject4), f.aWB("intValue"));
+    localObject4 = d.l.b.a.b.d.b.v.aWu("Number");
+    Object localObject5 = d.LGb.getDesc();
     k.g(localObject5, "JvmPrimitiveType.LONG.desc");
-    localObject4 = u.P(t.y((String)localObject4, "toLong", "", (String)localObject5), f.aQC("longValue"));
-    localObject5 = d.l.b.a.b.d.b.v.aQv("Number");
-    Object localObject6 = d.JSH.getDesc();
+    localObject4 = u.Q(t.A((String)localObject4, "toLong", "", (String)localObject5), f.aWB("longValue"));
+    localObject5 = d.l.b.a.b.d.b.v.aWu("Number");
+    Object localObject6 = d.LGa.getDesc();
     k.g(localObject6, "JvmPrimitiveType.FLOAT.desc");
-    localObject5 = u.P(t.y((String)localObject5, "toFloat", "", (String)localObject6), f.aQC("floatValue"));
-    localObject6 = d.l.b.a.b.d.b.v.aQv("Number");
-    Object localObject7 = d.JSJ.getDesc();
+    localObject5 = u.Q(t.A((String)localObject5, "toFloat", "", (String)localObject6), f.aWB("floatValue"));
+    localObject6 = d.l.b.a.b.d.b.v.aWu("Number");
+    Object localObject7 = d.LGc.getDesc();
     k.g(localObject7, "JvmPrimitiveType.DOUBLE.desc");
-    localObject6 = u.P(t.y((String)localObject6, "toDouble", "", (String)localObject7), f.aQC("doubleValue"));
-    localObject7 = u.P(Jxm, f.aQC("remove"));
-    String str1 = d.l.b.a.b.d.b.v.aQv("CharSequence");
-    String str2 = d.JSG.getDesc();
+    localObject6 = u.Q(t.A((String)localObject6, "toDouble", "", (String)localObject7), f.aWB("doubleValue"));
+    localObject7 = u.Q(LkF, f.aWB("remove"));
+    String str1 = d.l.b.a.b.d.b.v.aWu("CharSequence");
+    String str2 = d.LFZ.getDesc();
     k.g(str2, "JvmPrimitiveType.INT.desc");
-    String str3 = d.JSD.getDesc();
+    String str3 = d.LFW.getDesc();
     k.g(str3, "JvmPrimitiveType.CHAR.desc");
-    localObject2 = ae.a(new o[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, u.P(t.y(str1, "get", str2, str3), f.aQC("charAt")) });
-    Jxn = (Map)localObject2;
-    localObject1 = (Map)new LinkedHashMap(ae.adL(((Map)localObject2).size()));
+    localObject2 = ae.a(new o[] { localObject1, localObject2, localObject3, localObject4, localObject5, localObject6, localObject7, u.Q(t.A(str1, "get", str2, str3), f.aWB("charAt")) });
+    LkG = (Map)localObject2;
+    localObject1 = (Map)new LinkedHashMap(ae.agH(((Map)localObject2).size()));
     localObject2 = ((Iterable)((Map)localObject2).entrySet()).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = ((Iterator)localObject2).next();
       ((Map)localObject1).put(((r)((Map.Entry)localObject3).getKey()).signature, ((Map.Entry)localObject3).getValue());
     }
-    Jxo = (Map)localObject1;
-    localObject2 = (Iterable)Jxn.keySet();
+    LkH = (Map)localObject1;
+    localObject2 = (Iterable)LkG.keySet();
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add(((r)((Iterator)localObject2).next()).JsQ);
+      ((Collection)localObject1).add(((r)((Iterator)localObject2).next()).Lgj);
     }
-    Jxp = (List)localObject1;
-    localObject2 = (Iterable)Jxn.entrySet();
+    LkI = (List)localObject1;
+    localObject2 = (Iterable)LkG.entrySet();
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (Map.Entry)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(new o(((r)((Map.Entry)localObject3).getKey()).JsQ, ((Map.Entry)localObject3).getValue()));
+      ((Collection)localObject1).add(new o(((r)((Map.Entry)localObject3).getKey()).Lgj, ((Map.Entry)localObject3).getValue()));
     }
     localObject1 = (Iterable)localObject1;
     localObject2 = (Map)new LinkedHashMap();
@@ -109,7 +109,7 @@ public final class c
         break;
       }
     }
-    Jxq = (Map)localObject2;
+    LkJ = (Map)localObject2;
     AppMethodBeat.o(57551);
   }
   
@@ -117,7 +117,7 @@ public final class c
   {
     AppMethodBeat.i(57547);
     k.h(paramam, "functionDescriptor");
-    Map localMap = Jxo;
+    Map localMap = LkH;
     paramam = d.l.b.a.b.d.b.t.c((d.l.b.a.b.b.a)paramam);
     if (paramam == null)
     {
@@ -146,7 +146,7 @@ public final class c
   {
     AppMethodBeat.i(57550);
     k.h(paramam, "$this$isRemoveAtByIndex");
-    if ((k.g(paramam.fyB().qV(), "removeAt")) && (k.g(d.l.b.a.b.d.b.t.c((d.l.b.a.b.b.a)paramam), Jxm.signature)))
+    if ((k.g(paramam.fRf().rf(), "removeAt")) && (k.g(d.l.b.a.b.d.b.t.c((d.l.b.a.b.b.a)paramam), LkF.signature)))
     {
       AppMethodBeat.o(57550);
       return true;
@@ -159,7 +159,7 @@ public final class c
   {
     AppMethodBeat.i(57546);
     k.h(paramf, "$this$sameAsRenamedInJvmBuiltin");
-    boolean bool = Jxp.contains(paramf);
+    boolean bool = LkI.contains(paramf);
     AppMethodBeat.o(57546);
     return bool;
   }
@@ -168,18 +168,18 @@ public final class c
   {
     AppMethodBeat.i(57549);
     k.h(paramf, "name");
-    List localList = (List)Jxq.get(paramf);
+    List localList = (List)LkJ.get(paramf);
     paramf = localList;
     if (localList == null) {
-      paramf = (List)d.a.v.Jgl;
+      paramf = (List)d.a.v.KTF;
     }
     AppMethodBeat.o(57549);
     return paramf;
   }
   
-  public static List<f> fBk()
+  public static List<f> fTO()
   {
-    return Jxp;
+    return LkI;
   }
   
   static final class a
@@ -194,7 +194,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.d.a.c
  * JD-Core Version:    0.7.0.1
  */

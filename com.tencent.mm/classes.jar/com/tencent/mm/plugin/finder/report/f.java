@@ -1,100 +1,114 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.event.base.h;
 import com.tencent.mm.plugin.finder.event.base.i;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.protocal.protobuf.cxk;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.MMActivity;
-import d.g.a.a;
+import com.tencent.mm.plugin.finder.event.base.j;
+import com.tencent.mm.plugin.finder.utils.n;
+import com.tencent.mm.plugin.finder.utils.n.b;
 import d.g.b.k;
-import d.y;
-import java.util.Iterator;
-import java.util.LinkedList;
+import d.l;
+import d.v;
+import java.util.List;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderHotFeedFlowReporter;", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "onEventHappen", "", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "Companion", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onInvisible", "", "plugin-finder_release"})
 public final class f
-  extends l
+  extends i
 {
-  private static LinkedList<cxk> KUC;
-  public static final a KUD;
-  private static final String TAG = "Finder.FinderHotFeedFlowReporter";
+  private final String TAG = "Finder.FinderSingleFeedFlowEventSubscriber";
+  private long raQ = -1L;
   
-  static
+  public f(c paramc)
   {
-    AppMethodBeat.i(198778);
-    KUD = new a((byte)0);
-    TAG = "Finder.FinderHotFeedFlowReporter";
-    KUC = new LinkedList();
-    AppMethodBeat.o(198778);
+    super(paramc);
   }
   
-  public f(MMActivity paramMMActivity, dzp paramdzp)
+  private static j DX(int paramInt)
   {
-    super(paramMMActivity, paramdzp);
-    AppMethodBeat.i(198777);
-    AppMethodBeat.o(198777);
+    AppMethodBeat.i(202762);
+    j localj = new j(paramInt);
+    AppMethodBeat.o(202762);
+    return localj;
   }
   
-  public final void a(com.tencent.mm.plugin.finder.event.base.c paramc)
+  public final h i(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(198776);
-    k.h(paramc, "event");
-    super.a(paramc);
-    if (((paramc instanceof com.tencent.mm.plugin.finder.event.base.l)) && (((com.tencent.mm.plugin.finder.event.base.l)paramc).qGl != ((com.tencent.mm.plugin.finder.event.base.l)paramc).qsk))
+    AppMethodBeat.i(202760);
+    k.h(paramRecyclerView, "recyclerView");
+    Object localObject1 = super.i(paramRecyclerView, paramInt);
+    if (localObject1 == null)
     {
-      paramc = FinderReporterUIC.Ljl;
-      com.tencent.mm.ad.c.e(FinderReporterUIC.fXw(), (a)new b(this));
+      paramRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.SingleFeedFlowScrollEvent");
+      AppMethodBeat.o(202760);
+      throw paramRecyclerView;
     }
-    AppMethodBeat.o(198776);
-  }
-  
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/report/FinderHotFeedFlowReporter$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "streamCgiStats", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/Stats;", "getWaitForReportStatsListAndClear", "tabType", "", "plugin-finder_release"})
-  public static final class a
-  {
-    public static LinkedList<cxk> ahn(int paramInt)
+    localObject1 = (j)localObject1;
+    ((j)localObject1).raQ = this.raQ;
+    ((j)localObject1).nAG = this.nAG;
+    ((j)localObject1).nAH = this.nAH;
+    Object localObject2 = this.rdp;
+    int i;
+    if (localObject2 != null)
     {
-      AppMethodBeat.i(198774);
-      if (paramInt == 4)
+      n localn = n.rPN;
+      localObject2 = n.a(paramRecyclerView, (Rect)localObject2);
+      ((j)localObject1).rdQ = ((List)((n.b)localObject2).rPP);
+      ((j)localObject1).rdR = ((n.b)localObject2).rPQ;
+      if ((this.nAG != ((h)localObject1).rdH) || (this.nAH != ((h)localObject1).rdJ))
       {
-        LinkedList localLinkedList = f.fTU();
-        f.ad(new LinkedList());
-        ad.i(f.access$getTAG$cp(), "streamCgiStats returnList " + localLinkedList.size());
-        if (h.DEBUG)
-        {
-          Iterator localIterator = ((Iterable)localLinkedList).iterator();
-          while (localIterator.hasNext())
-          {
-            cxk localcxk = (cxk)localIterator.next();
-            Object localObject = m.KVt;
-            localObject = f.KUD;
-            m.a.a(localcxk, f.access$getTAG$cp());
-          }
+        if ((this.nAG != 2147483647) && (this.nAH != 2147483647)) {
+          break label259;
         }
-        AppMethodBeat.o(198774);
-        return localLinkedList;
+        i = ((h)localObject1).rdH;
+        paramInt = ((h)localObject1).rdJ;
       }
-      AppMethodBeat.o(198774);
-      return null;
+    }
+    for (;;)
+    {
+      localObject2 = n.rPN;
+      ((j)localObject1).rdP = n.a(i, paramInt, paramRecyclerView);
+      this.raQ = ((h)localObject1).rdL;
+      this.nAG = ((h)localObject1).rdH;
+      this.nAH = ((h)localObject1).rdJ;
+      paramRecyclerView = (h)localObject1;
+      AppMethodBeat.o(202760);
+      return paramRecyclerView;
+      localObject2 = n.rPN;
+      ((j)localObject1).rdQ = n.a(((h)localObject1).rdH, ((h)localObject1).rdJ, paramRecyclerView);
+      break;
+      label259:
+      if (((h)localObject1).rdH < this.nAG) {}
+      for (paramInt = ((h)localObject1).rdH;; paramInt = this.nAG)
+      {
+        if (((h)localObject1).rdJ <= this.nAH) {
+          break label312;
+        }
+        j = ((h)localObject1).rdJ;
+        i = paramInt;
+        paramInt = j;
+        break;
+      }
+      label312:
+      int j = this.nAH;
+      i = paramInt;
+      paramInt = j;
     }
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements a<y>
+  public final void onInvisible()
   {
-    b(f paramf)
-    {
-      super();
-    }
+    AppMethodBeat.i(202765);
+    super.onInvisible();
+    this.raQ = -1L;
+    AppMethodBeat.o(202765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,35 +7,35 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah.a;
 import d.g.a.a;
 import d.g.b.k;
 import d.l;
 import d.y;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/encoder/MediaCodecTransEncoder;", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "videoCodecConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "highPriority", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lcom/tencent/mm/media/config/VideoCodecConfig;ZLkotlin/jvm/functions/Function1;)V", "TAG", "", "TIMEOUT", "", "TIMEOUT$1", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "encodeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "encodeThread", "Landroid/os/HandlerThread;", "encoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "receivedEOS", "startTime", "drainEncoder", "encodeFrame", "pts", "finalize", "finishEncode", "getRecordTimes", "releaseEncoder", "Companion", "plugin-mediaeditor_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/encoder/MediaCodecTransEncoder;", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "videoCodecConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "highPriority", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lcom/tencent/mm/media/config/VideoCodecConfig;ZLkotlin/jvm/functions/Function1;)V", "TAG", "", "TIMEOUT", "", "TIMEOUT$1", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "encodeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "encodeThread", "Landroid/os/HandlerThread;", "encoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "receivedEOS", "startTime", "drainEncoder", "encodeFrame", "pts", "finalize", "finishEncode", "getRecordTimes", "releaseEncoder", "Companion", "plugin-mediaeditor_release"})
 public final class e
   extends b
 {
-  public static final e.a gqI;
+  public static final e.a gRq;
   private final String TAG;
   private final MediaCodec.BufferInfo bufferInfo;
-  private HandlerThread gmK;
-  private ap gmL;
-  private final long gqG;
-  private boolean gqH;
-  private z gqj;
+  private HandlerThread gNx;
+  private ao gNy;
+  private z gQR;
+  private final long gRo;
+  private boolean gRp;
   private long startTime;
   
   static
   {
     AppMethodBeat.i(93646);
-    gqI = new e.a((byte)0);
+    gRq = new e.a((byte)0);
     AppMethodBeat.o(93646);
   }
   
@@ -44,104 +44,104 @@ public final class e
     super(paramd, paramb);
     AppMethodBeat.i(93645);
     this.TAG = "MicroMsg.MediaCodecTransEncoder";
-    this.gqG = 10000L;
+    this.gRo = 10000L;
     this.bufferInfo = new MediaCodec.BufferInfo();
     if (paramBoolean) {}
     for (int i = -2;; i = 0)
     {
-      Object localObject = com.tencent.e.c.d.gw("MediaCodecTransEncoder_encodeThread", i);
+      Object localObject = com.tencent.e.c.d.gA("MediaCodecTransEncoder_encodeThread", i);
       k.g(localObject, "SpecialThreadFactory.cre….THREAD_PRIORITY_DEFAULT)");
-      this.gmK = ((HandlerThread)localObject);
-      localObject = com.tencent.mm.media.j.d.gwr;
-      com.tencent.mm.media.j.d.alD();
-      ad.i(this.TAG, "create mp4encoder " + hashCode());
-      localObject = z.pn(paramd.name);
+      this.gNx = ((HandlerThread)localObject);
+      localObject = com.tencent.mm.media.j.d.gWO;
+      com.tencent.mm.media.j.d.asx();
+      ac.i(this.TAG, "create mp4encoder " + hashCode());
+      localObject = z.sz(paramd.name);
       k.g(localObject, "MediaCodecProxy.createBy…me(videoCodecConfig.name)");
-      this.gqj = ((z)localObject);
-      this.gqj.a(paramd.ajq(), null, 1);
-      if (!aj.cbe()) {
+      this.gQR = ((z)localObject);
+      this.gQR.a(paramd.aqq(), null, 1);
+      if (!ai.cin()) {
         break;
       }
-      paramd = g.afB();
+      paramd = g.agR();
       k.g(paramd, "MMKernel.storage()");
-      if (!k.g(paramd.afk().get(ae.a.FmF, Integer.valueOf(-1)), Integer.valueOf(1))) {
+      if (!k.g(paramd.agA().get(ah.a.GKu, Integer.valueOf(-1)), Integer.valueOf(1))) {
         break;
       }
-      Toast.makeText(aj.getContext(), (CharSequence)"remuxer 抛出异常", 0).show();
+      Toast.makeText(ai.getContext(), (CharSequence)"remuxer 抛出异常", 0).show();
       paramd = (Throwable)new IllegalStateException("leex test error");
       AppMethodBeat.o(93645);
       throw paramd;
     }
-    paramd = this.gqj.createInputSurface();
+    paramd = this.gQR.createInputSurface();
     k.g(paramd, "encoder.createInputSurface()");
-    h(paramd);
-    this.gqj.start();
-    this.gmK.start();
-    this.gmL = new ap(this.gmK.getLooper());
-    ad.i(this.TAG, "create mp4encoder finish " + hashCode());
+    g(paramd);
+    this.gQR.start();
+    this.gNx.start();
+    this.gNy = new ao(this.gNx.getLooper());
+    ac.i(this.TAG, "create mp4encoder finish " + hashCode());
     if (paramb != null)
     {
-      paramb.aA(this);
+      paramb.ay(this);
       AppMethodBeat.o(93645);
       return;
     }
     AppMethodBeat.o(93645);
   }
   
-  public final void ajF()
+  public final void aqE()
   {
     AppMethodBeat.i(93641);
-    if (this.gqH)
+    if (this.gRp)
     {
-      ad.e(this.TAG, "has received eos");
+      ac.e(this.TAG, "has received eos");
       AppMethodBeat.o(93641);
       return;
     }
     try
     {
-      this.gmL.removeCallbacksAndMessages(null);
-      this.gmL.post((Runnable)new c(this));
+      this.gNy.removeCallbacksAndMessages(null);
+      this.gNy.post((Runnable)new c(this));
       AppMethodBeat.o(93641);
       return;
     }
     catch (Exception localException)
     {
-      ad.printErrStackTrace(this.TAG, (Throwable)localException, "finishEncode " + hashCode() + " \n signalEndOfInputStream error:" + localException.getMessage(), new Object[0]);
+      ac.printErrStackTrace(this.TAG, (Throwable)localException, "finishEncode " + hashCode() + " \n signalEndOfInputStream error:" + localException.getMessage(), new Object[0]);
       AppMethodBeat.o(93641);
     }
   }
   
-  public final void ajG()
+  public final void aqF()
   {
     AppMethodBeat.i(93642);
-    ad.i(this.TAG, "try to release " + hashCode());
+    ac.i(this.TAG, "try to release " + hashCode());
     try
     {
-      this.gmL.post((Runnable)new d(this));
+      this.gNy.post((Runnable)new d(this));
       AppMethodBeat.o(93642);
       return;
     }
     catch (Exception localException)
     {
-      ad.e(this.TAG, "release encoder error " + hashCode() + " \n " + localException.getMessage());
+      ac.e(this.TAG, "release encoder error " + hashCode() + " \n " + localException.getMessage());
       AppMethodBeat.o(93642);
     }
   }
   
-  public final void ajI()
+  public final void aqH()
   {
     AppMethodBeat.i(93640);
     if (0L == this.startTime) {
-      this.startTime = bt.GC();
+      this.startTime = bs.Gn();
     }
-    this.gmL.post((Runnable)new b(this));
+    this.gNy.post((Runnable)new b(this));
     AppMethodBeat.o(93640);
   }
   
-  public final long ajJ()
+  public final long aqI()
   {
     AppMethodBeat.i(93644);
-    long l1 = bt.GC();
+    long l1 = bs.Gn();
     long l2 = this.startTime;
     AppMethodBeat.o(93644);
     return l1 - l2;
@@ -150,14 +150,14 @@ public final class e
   protected final void finalize()
   {
     AppMethodBeat.i(93643);
-    ad.i(this.TAG, "finalize");
-    if (!this.gqu) {
-      this.gqj.release();
+    ac.i(this.TAG, "finalize");
+    if (!this.gRc) {
+      this.gQR.release();
     }
     AppMethodBeat.o(93643);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -166,25 +166,25 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(93637);
-      long l = bt.GC();
-      synchronized (this.gqJ.gqv)
+      long l = bs.Gn();
+      synchronized (this.gRr.gRd)
       {
-        if ((this.gqJ.gqu) || (this.gqJ.gqt))
+        if ((this.gRr.gRc) || (this.gRr.gRb))
         {
-          ad.i(e.a(this.gqJ), "encodeFrame() stop encodeFrame " + this.gqJ.hashCode() + ", isRelease:" + this.gqJ.gqu + ", isFinishEncode:" + this.gqJ.gqt);
+          ac.i(e.a(this.gRr), "encodeFrame() stop encodeFrame " + this.gRr.hashCode() + ", isRelease:" + this.gRr.gRc + ", isFinishEncode:" + this.gRr.gRb);
           AppMethodBeat.o(93637);
           return;
         }
-        y localy = y.JfV;
-        e.b(this.gqJ);
-        ad.d(e.a(this.gqJ), " drainEncoder cost " + bt.aS(l) + "  " + this.gqJ.hashCode());
+        y localy = y.KTp;
+        e.b(this.gRr);
+        ac.d(e.a(this.gRr), " drainEncoder cost " + bs.aO(l) + "  " + this.gRr.hashCode());
         AppMethodBeat.o(93637);
         return;
       }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -193,26 +193,26 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(93638);
-      synchronized (this.gqJ.gqv)
+      synchronized (this.gRr.gRd)
       {
-        if ((this.gqJ.gqt) || (this.gqJ.gqu) || (0L == e.c(this.gqJ)))
+        if ((this.gRr.gRb) || (this.gRr.gRc) || (0L == e.c(this.gRr)))
         {
-          ad.i(e.a(this.gqJ), "finishEncode() already finish " + this.gqJ.hashCode() + ", isFinishEncode:" + this.gqJ.gqt + ", isRelease:" + this.gqJ.gqu + ", startTime:" + e.c(this.gqJ));
+          ac.i(e.a(this.gRr), "finishEncode() already finish " + this.gRr.hashCode() + ", isFinishEncode:" + this.gRr.gRb + ", isRelease:" + this.gRr.gRc + ", startTime:" + e.c(this.gRr));
           AppMethodBeat.o(93638);
           return;
         }
-        y localy = y.JfV;
-        ad.i(e.a(this.gqJ), "finishEncode() hash:" + this.gqJ.hashCode() + "  isFinishEncode:" + this.gqJ.gqt + "  startTime:" + e.c(this.gqJ));
-        e.d(this.gqJ).signalEndOfInputStream();
-        this.gqJ.gqt = true;
-        e.b(this.gqJ);
+        y localy = y.KTp;
+        ac.i(e.a(this.gRr), "finishEncode() hash:" + this.gRr.hashCode() + "  isFinishEncode:" + this.gRr.gRb + "  startTime:" + e.c(this.gRr));
+        e.d(this.gRr).signalEndOfInputStream();
+        this.gRr.gRb = true;
+        e.b(this.gRr);
         AppMethodBeat.o(93638);
         return;
       }
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -221,30 +221,30 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(93639);
-      synchronized (this.gqJ.gqv)
+      synchronized (this.gRr.gRd)
       {
-        if (this.gqJ.gqu)
+        if (this.gRr.gRc)
         {
-          ad.i(e.a(this.gqJ), "releaseEncoder(), already finished " + this.gqJ.hashCode());
+          ac.i(e.a(this.gRr), "releaseEncoder(), already finished " + this.gRr.hashCode());
           AppMethodBeat.o(93639);
           return;
         }
-        y localy = y.JfV;
-        long l = bt.GC();
-        ad.i(e.a(this.gqJ), "releaseEncoder() start " + this.gqJ.hashCode());
-        ??? = this.gqJ.gqs;
+        y localy = y.KTp;
+        long l = bs.Gn();
+        ac.i(e.a(this.gRr), "releaseEncoder() start " + this.gRr.hashCode());
+        ??? = this.gRr.gRa;
         if (??? != null) {
           ((a)???).invoke();
         }
-        e.e(this.gqJ).removeCallbacksAndMessages(null);
-        e.f(this.gqJ).quitSafely();
-        e.d(this.gqJ).stop();
-        e.d(this.gqJ).release();
-        this.gqJ.ajH().release();
-        this.gqJ.gqu = true;
-        ??? = com.tencent.mm.media.j.d.gwr;
-        com.tencent.mm.media.j.d.alE();
-        ad.i(e.a(this.gqJ), "releaseEncoder() finish: time:" + bt.aS(l) + ", " + this.gqJ.hashCode());
+        e.e(this.gRr).removeCallbacksAndMessages(null);
+        e.f(this.gRr).quitSafely();
+        e.d(this.gRr).stop();
+        e.d(this.gRr).release();
+        this.gRr.aqG().release();
+        this.gRr.gRc = true;
+        ??? = com.tencent.mm.media.j.d.gWO;
+        com.tencent.mm.media.j.d.asy();
+        ac.i(e.a(this.gRr), "releaseEncoder() finish: time:" + bs.aO(l) + ", " + this.gRr.hashCode());
         AppMethodBeat.o(93639);
         return;
       }

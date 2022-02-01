@@ -8,17 +8,17 @@ public abstract class p
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemUpdateTimeIndex ON AppBrandLauncherLayoutItem(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemSceneIndex ON AppBrandLauncherLayoutItem(scene)" };
-  private static final int elq = "scene".hashCode();
-  private static final int emE = "recordId".hashCode();
-  private static final int emF = "brandId".hashCode();
-  private static final int emf;
-  private static final int emu = "versionType".hashCode();
+  private static final int env = "scene".hashCode();
+  private static final int eoA;
+  private static final int eoK = "recordId".hashCode();
+  private static final int eoL = "brandId".hashCode();
+  private static final int eol;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean elo = true;
-  private boolean emC = true;
-  private boolean emD = true;
-  private boolean emc = true;
-  private boolean emq = true;
+  private boolean ent = true;
+  private boolean eoI = true;
+  private boolean eoJ = true;
+  private boolean eoi = true;
+  private boolean eow = true;
   public String field_brandId;
   public int field_recordId;
   public int field_scene;
@@ -27,7 +27,8 @@ public abstract class p
   
   static
   {
-    emf = "updateTime".hashCode();
+    eoA = "versionType".hashCode();
+    eol = "updateTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,11 +44,11 @@ public abstract class p
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (emE != k) {
+      if (eoK != k) {
         break label65;
       }
       this.field_recordId = paramCursor.getInt(i);
-      this.emC = true;
+      this.eoI = true;
     }
     for (;;)
     {
@@ -55,13 +56,13 @@ public abstract class p
       break label20;
       break;
       label65:
-      if (emF == k) {
+      if (eoL == k) {
         this.field_brandId = paramCursor.getString(i);
-      } else if (emu == k) {
+      } else if (eoA == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (emf == k) {
+      } else if (eol == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (elq == k) {
+      } else if (env == k) {
         this.field_scene = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -72,19 +73,19 @@ public abstract class p
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emC) {
+    if (this.eoI) {
       localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
     }
-    if (this.emD) {
+    if (this.eoJ) {
       localContentValues.put("brandId", this.field_brandId);
     }
-    if (this.emq) {
+    if (this.eow) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.emc) {
+    if (this.eoi) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.elo) {
+    if (this.ent) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
     if (this.systemRowid > 0L) {

@@ -15,14 +15,14 @@ import java.util.Set;
 
 public final class c
 {
-  private static final LinkedHashSet<d.l.b.a.b.f.a> Jlw;
-  public static final c Jlx;
+  private static final LinkedHashSet<d.l.b.a.b.f.a> KYQ;
+  public static final c KYR;
   
   static
   {
     AppMethodBeat.i(56653);
-    Jlx = new c();
-    Object localObject1 = h.JnA;
+    KYR = new c();
+    Object localObject1 = h.LaU;
     k.g(localObject1, "PrimitiveType.NUMBER_TYPES");
     Object localObject2 = (Iterable)localObject1;
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -30,13 +30,13 @@ public final class c
     while (((Iterator)localObject2).hasNext()) {
       ((Collection)localObject1).add(g.c((h)((Iterator)localObject2).next()));
     }
-    localObject2 = (Iterable)j.b((Collection)j.b((Collection)j.b((Collection)localObject1, g.JlM.JlW.fHh()), g.JlM.JlY.fHh()), g.JlM.Jmh.fHh());
+    localObject2 = (Iterable)j.b((Collection)j.b((Collection)j.b((Collection)localObject1, g.KZg.KZq.fZL()), g.KZg.KZs.fZL()), g.KZg.KZB.fZL());
     localObject1 = (Collection)new LinkedHashSet();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((Collection)localObject1).add(d.l.b.a.b.f.a.p((b)((Iterator)localObject2).next()));
     }
-    Jlw = (LinkedHashSet)localObject1;
+    KYQ = (LinkedHashSet)localObject1;
     AppMethodBeat.o(56653);
   }
   
@@ -46,10 +46,10 @@ public final class c
     k.h(parame, "classDescriptor");
     if (d.l.b.a.b.j.c.u((l)parame))
     {
-      Iterable localIterable = (Iterable)Jlw;
+      Iterable localIterable = (Iterable)KYQ;
       parame = d.l.b.a.b.j.d.a.c((d.l.b.a.b.b.h)parame);
       if (parame != null) {}
-      for (parame = parame.fGZ(); j.a(localIterable, parame); parame = null)
+      for (parame = parame.fZD(); j.a(localIterable, parame); parame = null)
       {
         AppMethodBeat.o(56652);
         return true;
@@ -59,10 +59,10 @@ public final class c
     return false;
   }
   
-  public static Set<d.l.b.a.b.f.a> fwT()
+  public static Set<d.l.b.a.b.f.a> fPx()
   {
     AppMethodBeat.i(56651);
-    Set localSet = Collections.unmodifiableSet((Set)Jlw);
+    Set localSet = Collections.unmodifiableSet((Set)KYQ);
     k.g(localSet, "Collections.unmodifiableSet(classIds)");
     AppMethodBeat.o(56651);
     return localSet;
@@ -70,7 +70,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.a.c
  * JD-Core Version:    0.7.0.1
  */

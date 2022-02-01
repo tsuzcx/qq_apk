@@ -4,47 +4,47 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.vfs.i;
 import d.g.a.a;
 import d.g.b.k;
 import d.y;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/xlabeffect/XLabFileUtil;", "", "()V", "TAG", "", "alignmentPath", "getAlignmentPath", "()Ljava/lang/String;", "assetsRoot", "core3DModelPath", "getCore3DModelPath", "core3DParamPath", "getCore3DParamPath", "detectModelPath", "getDetectModelPath", "filterPath", "getFilterPath", "gestureClsPath", "getGestureClsPath", "gestureDetPath", "getGestureDetPath", "licensePath", "getLicensePath", "localRoot", "getLocalRoot", "segModelPath", "getSegModelPath", "trackModelPath", "getTrackModelPath", "versionFile", "checkAssetsVersion", "", "checkFile", "", "copyAssets", "assets", "Landroid/content/res/AssetManager;", "assetsPath", "localPath", "plugin-xlabeffect_release"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/xlabeffect/XLabFileUtil;", "", "()V", "TAG", "", "alignmentPath", "getAlignmentPath", "()Ljava/lang/String;", "assetsRoot", "core3DModelPath", "getCore3DModelPath", "core3DParamPath", "getCore3DParamPath", "detectModelPath", "getDetectModelPath", "filterPath", "getFilterPath", "gestureClsPath", "getGestureClsPath", "gestureDetPath", "getGestureDetPath", "licensePath", "getLicensePath", "localRoot", "getLocalRoot", "segModelPath", "getSegModelPath", "trackModelPath", "getTrackModelPath", "versionFile", "checkAssetsVersion", "", "checkFile", "", "copyAssets", "assets", "Landroid/content/res/AssetManager;", "assetsPath", "localPath", "plugin-xlabeffect_release"})
 public final class c
 {
-  private static final String BMc;
-  private static final String BMd;
-  private static final String BMe;
-  private static final String BMf;
-  private static final String BMg;
-  private static final String BMh;
-  private static final String BMi;
-  private static final String BMj;
-  public static final c BMk;
-  private static final String Ltd;
+  private static final String Ark;
+  private static final String Dem;
+  private static final String Den;
+  private static final String Deo;
+  private static final String Dep;
+  private static final String Deq;
+  private static final String Der;
+  private static final String Des;
+  private static final String Det;
+  public static final c Deu;
   private static final String TAG = "MicroMsg.XLabFileUtil";
-  private static final String fVI;
+  private static final String fZD;
   private static final String licensePath;
   
   static
   {
     AppMethodBeat.i(90537);
-    BMk = new c();
+    Deu = new c();
     TAG = "MicroMsg.XLabFileUtil";
-    fVI = com.tencent.mm.loader.j.b.aia() + "xlab";
-    licensePath = fVI + "/lic/wechat_face_effect.lic";
-    BMc = fVI + "/Models/XNet/face_det_v4.16.xnet";
-    BMd = fVI + "/Models/XNet/track_reg_v8.16.xnet";
-    BMe = fVI + "/Models/XNet/face_alignment_v26.4.16.xbin";
-    BMf = fVI + "/Models/XNet/portrait_seg_v10.16.xnet";
-    BMg = fVI + "/Models/XNet/gesture_detect.6.16.xnet";
-    BMh = fVI + "/Models/XNet/gesture_cls13.13.16.xnet";
-    BMi = fVI + "/Models/FaceKit10K/model_sticker.xbin";
-    BMj = fVI + "/Models/Params_FaceSticker.json";
-    Ltd = fVI + "/filters";
+    fZD = com.tencent.mm.loader.j.b.apa() + "xlab";
+    licensePath = fZD + "/lic/wechat_face_effect.lic";
+    Dem = fZD + "/Models/XNet/face_det_v4.16.xnet";
+    Den = fZD + "/Models/XNet/track_reg_v8.16.xnet";
+    Deo = fZD + "/Models/XNet/face_alignment_v26.4.16.xbin";
+    Dep = fZD + "/Models/XNet/portrait_seg_v10.16.xnet";
+    Deq = fZD + "/Models/XNet/gesture_detect.6.16.xnet";
+    Der = fZD + "/Models/XNet/gesture_cls13.13.16.xnet";
+    Des = fZD + "/Models/FaceKit10K/model_sticker.xbin";
+    Det = fZD + "/Models/Params_FaceSticker.json";
+    Ark = fZD + "/filters";
     AppMethodBeat.o(90537);
   }
   
@@ -90,7 +90,7 @@ public final class c
     //   68: checkcast 178	java/io/InputStream
     //   71: astore_0
     //   72: aload_2
-    //   73: invokestatic 184	com/tencent/mm/vfs/i:vu	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   73: invokestatic 184	com/tencent/mm/vfs/i:zA	(Ljava/lang/String;)Ljava/io/OutputStream;
     //   76: checkcast 176	java/io/Closeable
     //   79: astore_2
     //   80: aload_2
@@ -104,14 +104,14 @@ public final class c
     //   94: invokestatic 191	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   97: aload_0
     //   98: aload_1
-    //   99: invokestatic 198	d/f/a:g	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+    //   99: invokestatic 199	d/f/a:f	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
     //   102: pop2
     //   103: aload_2
     //   104: aconst_null
-    //   105: invokestatic 203	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   105: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   108: aload 6
     //   110: aconst_null
-    //   111: invokestatic 203	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   111: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   114: ldc 155
     //   116: invokestatic 146	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: return
@@ -119,10 +119,10 @@ public final class c
     //   121: getstatic 84	com/tencent/mm/plugin/xlabeffect/c:TAG	Ljava/lang/String;
     //   124: aload_0
     //   125: checkcast 154	java/lang/Throwable
-    //   128: ldc 204
+    //   128: ldc 205
     //   130: iconst_0
     //   131: anewarray 4	java/lang/Object
-    //   134: invokestatic 210	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   134: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   137: ldc 155
     //   139: invokestatic 146	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   142: return
@@ -137,7 +137,7 @@ public final class c
     //   156: astore_0
     //   157: aload_2
     //   158: aload_1
-    //   159: invokestatic 203	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   159: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   162: ldc 155
     //   164: invokestatic 146	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   167: aload_0
@@ -150,13 +150,13 @@ public final class c
     //   177: astore_0
     //   178: aload 6
     //   180: aload_1
-    //   181: invokestatic 203	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   181: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   184: ldc 155
     //   186: invokestatic 146	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aload_0
     //   190: athrow
     //   191: aload_2
-    //   192: invokestatic 214	com/tencent/mm/vfs/i:aMF	(Ljava/lang/String;)Z
+    //   192: invokestatic 215	com/tencent/mm/vfs/i:aSh	(Ljava/lang/String;)Z
     //   195: pop
     //   196: aload 6
     //   198: arraylength
@@ -177,7 +177,7 @@ public final class c
     //   223: aload_1
     //   224: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   227: bipush 47
-    //   229: invokevirtual 217	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 218	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   232: aload 5
     //   234: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   237: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -187,11 +187,11 @@ public final class c
     //   247: aload_2
     //   248: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: bipush 47
-    //   253: invokevirtual 217	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 218	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   256: aload 5
     //   258: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   261: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   264: invokestatic 219	com/tencent/mm/plugin/xlabeffect/c:a	(Landroid/content/res/AssetManager;Ljava/lang/String;Ljava/lang/String;)V
+    //   264: invokestatic 220	com/tencent/mm/plugin/xlabeffect/c:a	(Landroid/content/res/AssetManager;Ljava/lang/String;Ljava/lang/String;)V
     //   267: iload_3
     //   268: iconst_1
     //   269: iadd
@@ -239,89 +239,84 @@ public final class c
     //   80	103	287	finally
   }
   
-  public static String euk()
+  public static String eJD()
   {
-    return fVI;
+    return fZD;
   }
   
-  public static String eul()
+  public static String eJE()
   {
-    return BMc;
+    return Dem;
   }
   
-  public static String eum()
+  public static String eJF()
   {
-    return BMd;
+    return Den;
   }
   
-  public static String eun()
+  public static String eJG()
   {
-    return BMe;
+    return Deo;
   }
   
-  public static String euo()
+  public static String eJH()
   {
-    return BMf;
+    return Dep;
   }
   
-  public static String eup()
+  public static String eJI()
   {
-    return BMg;
+    return Deq;
   }
   
-  public static String euq()
+  public static String eJJ()
   {
-    return BMh;
+    return Der;
   }
   
-  public static String eur()
+  public static String eJK()
   {
-    return BMi;
+    return Des;
   }
   
-  public static String eus()
+  public static String eJL()
   {
-    return BMj;
+    return Det;
   }
   
-  public static void eut()
+  public static void eJM()
   {
     int j = 0;
     AppMethodBeat.i(90535);
-    Object localObject = fVI + "/version.txt";
-    if (i.eK((String)localObject)) {}
-    for (int i = bt.aGh(i.aMP((String)localObject));; i = 0)
+    Object localObject = fZD + "/version.txt";
+    if (i.eA((String)localObject)) {}
+    for (int i = bs.aLy(i.aSr((String)localObject));; i = 0)
     {
-      ad.i(TAG, "checkAssetsVersion: 7, ".concat(String.valueOf(i)));
+      ac.i(TAG, "checkAssetsVersion: 7, ".concat(String.valueOf(i)));
       if (7 != i) {
         j = 1;
       }
       if (j == 0) {
         break label153;
       }
-      i.deleteDir(fVI);
-      i.aMF(fVI);
-      localObject = d.piG;
-      if (d.Vj("xlab")) {
+      i.deleteDir(fZD);
+      i.aSh(fZD);
+      localObject = d.pLO;
+      if (d.Zv("xlab")) {
         break;
       }
-      localObject = aj.getContext();
+      localObject = ai.getContext();
       k.g(localObject, "MMApplicationContext.getContext()");
       localObject = ((Context)localObject).getAssets();
       k.g(localObject, "MMApplicationContext.getContext().assets");
-      a((AssetManager)localObject, "xlab", fVI);
+      a((AssetManager)localObject, "xlab", fZD);
       AppMethodBeat.o(90535);
       return;
     }
-    localObject = d.piG;
-    d.u((d.g.a.b)a.BMl);
+    localObject = d.pLO;
+    d.y((d.g.a.b)a.Dev);
     label153:
     AppMethodBeat.o(90535);
-  }
-  
-  public static String fZD()
-  {
-    return Ltd;
   }
   
   public static String getLicensePath()
@@ -329,17 +324,17 @@ public final class c
     return licensePath;
   }
   
-  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "invoke"})
+  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.b<com.tencent.mm.plugin.expansions.b, y>
   {
-    public static final a BMl;
+    public static final a Dev;
     
     static
     {
       AppMethodBeat.i(90534);
-      BMl = new a();
+      Dev = new a();
       AppMethodBeat.o(90534);
     }
     
@@ -351,7 +346,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.xlabeffect.c
  * JD-Core Version:    0.7.0.1
  */

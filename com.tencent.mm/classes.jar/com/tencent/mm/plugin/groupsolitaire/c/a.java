@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.groupsolitaire.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cs;
+import com.tencent.mm.g.c.cu;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
-  extends cs
+  extends cu
 {
   protected static c.a info;
   public String header;
   public String separator;
-  public String sqW;
-  public String sqX;
-  public int sqY;
-  public boolean sqZ;
-  public HashMap<Integer, b> sra;
-  public boolean srb;
-  public int srd;
+  public String tyO;
+  public String tyP;
+  public int tyQ;
+  public boolean tyR;
+  public HashMap<Integer, b> tyS;
+  public boolean tyT;
+  public int tyU;
   
   static
   {
     AppMethodBeat.i(110397);
     c.a locala = new c.a();
-    locala.EYt = new Field[9];
+    locala.GvF = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.EYv.put("username", "TEXT");
+    locala.GvH.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "key";
-    locala.EYv.put("key", "TEXT");
+    locala.GvH.put("key", "TEXT");
     localStringBuilder.append(" key TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "content";
-    locala.EYv.put("content", "TEXT");
+    locala.GvH.put("content", "TEXT");
     localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "creator";
-    locala.EYv.put("creator", "TEXT");
+    locala.GvH.put("creator", "TEXT");
     localStringBuilder.append(" creator TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "num";
-    locala.EYv.put("num", "INTEGER");
+    locala.GvH.put("num", "INTEGER");
     localStringBuilder.append(" num INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "firstMsgId";
-    locala.EYv.put("firstMsgId", "LONG");
+    locala.GvH.put("firstMsgId", "LONG");
     localStringBuilder.append(" firstMsgId LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "msgSvrId";
-    locala.EYv.put("msgSvrId", "LONG");
+    locala.GvH.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "active";
-    locala.EYv.put("active", "INTEGER default '-1' ");
+    locala.GvH.put("active", "INTEGER default '-1' ");
     localStringBuilder.append(" active INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "lastActiveTime";
-    locala.EYv.put("lastActiveTime", "LONG");
+    locala.GvH.put("lastActiveTime", "LONG");
     localStringBuilder.append(" lastActiveTime LONG");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -73,28 +73,28 @@ public final class a
   {
     AppMethodBeat.i(110393);
     this.header = "";
-    this.sqW = "";
-    this.sqX = "";
+    this.tyO = "";
+    this.tyP = "";
     this.separator = " ";
-    this.sqY = 1;
-    this.sqZ = false;
-    this.sra = new HashMap();
-    this.srb = false;
-    this.srd = 0;
+    this.tyQ = 1;
+    this.tyR = false;
+    this.tyS = new HashMap();
+    this.tyT = false;
+    this.tyU = 0;
     AppMethodBeat.o(110393);
   }
   
-  public final void cFc()
+  public final void cSm()
   {
-    if (this.sqY == 0)
+    if (this.tyQ == 0)
     {
-      this.sqY = 1;
+      this.tyQ = 1;
       this.header = "";
     }
   }
   
   /* Error */
-  public final a cFd()
+  public final a cSn()
   {
     // Byte code:
     //   0: ldc 157
@@ -151,53 +151,53 @@ public final class a
     //   101: putfield 130	com/tencent/mm/plugin/groupsolitaire/c/a:header	Ljava/lang/String;
     //   104: aload_2
     //   105: aload_0
-    //   106: getfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:sqW	Ljava/lang/String;
-    //   109: putfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:sqW	Ljava/lang/String;
+    //   106: getfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:tyO	Ljava/lang/String;
+    //   109: putfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:tyO	Ljava/lang/String;
     //   112: aload_2
     //   113: aload_0
-    //   114: getfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:sqX	Ljava/lang/String;
-    //   117: putfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:sqX	Ljava/lang/String;
+    //   114: getfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:tyP	Ljava/lang/String;
+    //   117: putfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:tyP	Ljava/lang/String;
     //   120: aload_2
     //   121: aload_0
     //   122: getfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:separator	Ljava/lang/String;
     //   125: putfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:separator	Ljava/lang/String;
     //   128: aload_2
     //   129: aload_0
-    //   130: getfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:sqY	I
-    //   133: putfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:sqY	I
+    //   130: getfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:tyQ	I
+    //   133: putfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:tyQ	I
     //   136: aload_2
     //   137: aload_0
-    //   138: getfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:srd	I
-    //   141: putfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:srd	I
+    //   138: getfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:tyU	I
+    //   141: putfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:tyU	I
     //   144: aload_2
     //   145: aload_0
-    //   146: getfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:srb	Z
-    //   149: putfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:srb	Z
+    //   146: getfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:tyT	Z
+    //   149: putfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:tyT	Z
     //   152: aload_2
     //   153: new 144	java/util/HashMap
     //   156: dup
     //   157: invokespecial 145	java/util/HashMap:<init>	()V
-    //   160: putfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:sra	Ljava/util/HashMap;
+    //   160: putfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:tyS	Ljava/util/HashMap;
     //   163: iconst_1
     //   164: istore_1
     //   165: iload_1
     //   166: aload_0
-    //   167: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:sra	Ljava/util/HashMap;
+    //   167: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:tyS	Ljava/util/HashMap;
     //   170: invokevirtual 193	java/util/HashMap:size	()I
     //   173: if_icmpgt +41 -> 214
     //   176: aload_0
-    //   177: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:sra	Ljava/util/HashMap;
+    //   177: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:tyS	Ljava/util/HashMap;
     //   180: iload_1
     //   181: invokestatic 199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   184: invokevirtual 203	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   187: checkcast 205	com/tencent/mm/plugin/groupsolitaire/c/b
     //   190: astore_3
     //   191: aload_2
-    //   192: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:sra	Ljava/util/HashMap;
+    //   192: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:tyS	Ljava/util/HashMap;
     //   195: iload_1
     //   196: invokestatic 199	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   199: aload_3
-    //   200: invokevirtual 209	com/tencent/mm/plugin/groupsolitaire/c/b:cFe	()Lcom/tencent/mm/plugin/groupsolitaire/c/b;
+    //   200: invokevirtual 209	com/tencent/mm/plugin/groupsolitaire/c/b:cSo	()Lcom/tencent/mm/plugin/groupsolitaire/c/b;
     //   203: invokevirtual 210	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   206: pop
     //   207: iload_1
@@ -226,7 +226,7 @@ public final class a
     //   242: aload_3
     //   243: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   246: aastore
-    //   247: invokestatic 228	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   247: invokestatic 228	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   250: goto -36 -> 214
     //   253: astore_3
     //   254: goto -29 -> 225
@@ -254,14 +254,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(110394);
-    String str = "GroupSolitatire{header='" + this.header + '\'' + ", example='" + this.sqW + '\'' + ", tail='" + this.sqX + '\'' + ", separator='" + this.separator + '\'' + ", hasRealTitle=" + this.sqY + ", content=" + this.sra + ", includeRepeatedContent=" + this.srb + ", includeWhiteContentNum=" + this.srd + ", field_username='" + this.field_username + '\'' + ", field_key='" + this.field_key + '\'' + ", field_content='" + this.field_content + '\'' + ", field_creator='" + this.field_creator + '\'' + ", field_num=" + this.field_num + ", field_firstMsgId=" + this.field_firstMsgId + ", field_msgSvrId=" + this.field_msgSvrId + ", field_active=" + this.field_active + ", field_lastActiveTime=" + this.field_lastActiveTime + ", systemRowid=" + this.systemRowid + '}';
+    String str = "GroupSolitatire{header='" + this.header + '\'' + ", example='" + this.tyO + '\'' + ", tail='" + this.tyP + '\'' + ", separator='" + this.separator + '\'' + ", hasRealTitle=" + this.tyQ + ", content=" + this.tyS + ", includeRepeatedContent=" + this.tyT + ", includeWhiteContentNum=" + this.tyU + ", field_username='" + this.field_username + '\'' + ", field_key='" + this.field_key + '\'' + ", field_content='" + this.field_content + '\'' + ", field_creator='" + this.field_creator + '\'' + ", field_num=" + this.field_num + ", field_firstMsgId=" + this.field_firstMsgId + ", field_msgSvrId=" + this.field_msgSvrId + ", field_active=" + this.field_active + ", field_lastActiveTime=" + this.field_lastActiveTime + ", systemRowid=" + this.systemRowid + '}';
     AppMethodBeat.o(110394);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.c.a
  * JD-Core Version:    0.7.0.1
  */

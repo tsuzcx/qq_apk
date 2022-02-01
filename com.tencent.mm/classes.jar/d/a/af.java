@@ -6,7 +6,7 @@ import d.l;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"getOrImplicitDefault", "V", "K", "", "key", "getOrImplicitDefaultNullable", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;", "withDefault", "defaultValue", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "withDefaultMutable", "kotlin-stdlib"}, fvw=1)
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"getOrImplicitDefault", "V", "K", "", "key", "getOrImplicitDefaultNullable", "(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;", "withDefault", "defaultValue", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "withDefaultMutable", "kotlin-stdlib"}, fOb=1)
 class af
 {
   public static final <K, V> V d(Map<K, ? extends V> paramMap, K paramK)
@@ -15,7 +15,7 @@ class af
     k.h(paramMap, "$this$getOrImplicitDefault");
     if ((paramMap instanceof ad))
     {
-      paramMap = ((ad)paramMap).fvz();
+      paramMap = ((ad)paramMap).fOe();
       AppMethodBeat.o(129235);
       return paramMap;
     }

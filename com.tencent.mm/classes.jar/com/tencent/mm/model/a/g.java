@@ -5,17 +5,17 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.model.aw;
 import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class g
   implements aw
 {
-  private c gPR = null;
+  private c hqr = null;
   
-  private static g asW()
+  private static g azN()
   {
     AppMethodBeat.i(153100);
     g localg = (g)t.ap(g.class);
@@ -23,14 +23,14 @@ public class g
     return localg;
   }
   
-  public static c asX()
+  public static c azO()
   {
     AppMethodBeat.i(153103);
-    com.tencent.mm.kernel.g.afz().aeD();
-    if (asW().gPR == null) {
-      asW().gPR = new c();
+    com.tencent.mm.kernel.g.agP().afT();
+    if (azN().hqr == null) {
+      azN().hqr = new c();
     }
-    c localc = asW().gPR;
+    c localc = azN().hqr;
     AppMethodBeat.o(153103);
     return localc;
   }
@@ -45,15 +45,15 @@ public class g
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(153101);
-    c localc = asX();
+    c localc = azO();
     long l = System.currentTimeMillis();
     try
     {
-      localc.uA((String)com.tencent.mm.kernel.g.afB().afk().get(328193, null));
-      if (localc.asV()) {
-        f.uC(localc.gPM.gPI);
+      localc.yG((String)com.tencent.mm.kernel.g.agR().agA().get(328193, null));
+      if (localc.azM()) {
+        f.yI(localc.hqm.hqi);
       }
-      ad.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      ac.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(153101);
       return;
     }
@@ -61,7 +61,7 @@ public class g
     {
       for (;;)
       {
-        ad.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { localException.toString() });
+        ac.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { localException.toString() });
       }
     }
   }
@@ -69,9 +69,9 @@ public class g
   public void onAccountRelease()
   {
     AppMethodBeat.i(153102);
-    c localc = asX();
-    localc.gPN = null;
-    localc.gPM = null;
+    c localc = azO();
+    localc.hqn = null;
+    localc.hqm = null;
     AppMethodBeat.o(153102);
   }
   
@@ -79,7 +79,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.a.g
  * JD-Core Version:    0.7.0.1
  */

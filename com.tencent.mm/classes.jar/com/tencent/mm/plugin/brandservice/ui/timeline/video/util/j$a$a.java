@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
 
-@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<no name provided>", "", "t", "", "invoke"})
+@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<no name provided>", "", "t", "", "invoke"})
 public final class j$a$a
   extends d.g.b.l
   implements b<Long, String>
 {
-  public static final a nlO;
+  public static final a nOO;
   
   static
   {
-    AppMethodBeat.i(193356);
-    nlO = new a();
-    AppMethodBeat.o(193356);
+    AppMethodBeat.i(199168);
+    nOO = new a();
+    AppMethodBeat.o(199168);
   }
   
   j$a$a()

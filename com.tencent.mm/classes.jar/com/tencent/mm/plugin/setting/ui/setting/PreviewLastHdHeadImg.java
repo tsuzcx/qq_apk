@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.l;
@@ -31,11 +31,11 @@ public class PreviewLastHdHeadImg
   extends MMActivity
   implements View.OnClickListener
 {
-  private ImageView djK;
-  private String dpa;
+  private ImageView dhf;
+  private String dmK;
   private String username;
-  private Bitmap weK;
-  private TextView weL;
+  private Bitmap xpY;
+  private TextView xpZ;
   
   private static boolean e(Bitmap paramBitmap, String paramString)
   {
@@ -49,8 +49,8 @@ public class PreviewLastHdHeadImg
       }
       catch (Exception paramBitmap)
       {
-        ad.printErrStackTrace("MicroMsg.PreviewLastHdHeadImg", paramBitmap, "", new Object[0]);
-        ad.e("MicroMsg.PreviewLastHdHeadImg", "saveBitmapToImage failed:" + paramBitmap.toString());
+        ac.printErrStackTrace("MicroMsg.PreviewLastHdHeadImg", paramBitmap, "", new Object[0]);
+        ac.e("MicroMsg.PreviewLastHdHeadImg", "saveBitmapToImage failed:" + paramBitmap.toString());
       }
     }
     AppMethodBeat.o(73943);
@@ -68,31 +68,31 @@ public class PreviewLastHdHeadImg
     setMMTitle(2131763256);
     setActionbarColor(getResources().getColor(2131101053));
     setNavigationbarColor(getResources().getColor(2131099654));
-    this.username = u.aqG();
-    this.dpa = getIntent().getStringExtra("last_avatar_path");
-    this.djK = ((ImageView)findViewById(2131300697));
-    this.weK = f.aFi(this.dpa);
-    this.weL = ((TextView)findViewById(2131306229));
-    this.djK.setImageBitmap(this.weK);
-    this.weL.setOnClickListener(this);
+    this.username = u.axw();
+    this.dmK = getIntent().getStringExtra("last_avatar_path");
+    this.dhf = ((ImageView)findViewById(2131300697));
+    this.xpY = f.aKz(this.dmK);
+    this.xpZ = ((TextView)findViewById(2131306229));
+    this.dhf.setImageBitmap(this.xpY);
+    this.xpZ.setOnClickListener(this);
     addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(73939);
         paramAnonymousMenuItem = new e(PreviewLastHdHeadImg.this, 1, false);
-        paramAnonymousMenuItem.HrX = new n.c()
+        paramAnonymousMenuItem.ISu = new n.c()
         {
           public final void onCreateMMMenu(l paramAnonymous2l)
           {
             AppMethodBeat.i(73937);
             if (PreviewLastHdHeadImg.a(PreviewLastHdHeadImg.this) != null) {
-              paramAnonymous2l.jj(0, 2131760065);
+              paramAnonymous2l.jw(0, 2131760065);
             }
             AppMethodBeat.o(73937);
           }
         };
-        paramAnonymousMenuItem.HrY = new n.d()
+        paramAnonymousMenuItem.ISv = new n.d()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -101,7 +101,7 @@ public class PreviewLastHdHeadImg
             AppMethodBeat.o(73938);
           }
         };
-        paramAnonymousMenuItem.csG();
+        paramAnonymousMenuItem.cED();
         AppMethodBeat.o(73939);
         return true;
       }
@@ -123,7 +123,7 @@ public class PreviewLastHdHeadImg
   {
     AppMethodBeat.i(73944);
     paramView = getIntent().getStringExtra("CropImage_OutputPath");
-    if ((paramView != null) && (e(this.weK, paramView)))
+    if ((paramView != null) && (e(this.xpY, paramView)))
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("CropImage_OutputPath", paramView);
@@ -155,7 +155,7 @@ public class PreviewLastHdHeadImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PreviewLastHdHeadImg
  * JD-Core Version:    0.7.0.1
  */

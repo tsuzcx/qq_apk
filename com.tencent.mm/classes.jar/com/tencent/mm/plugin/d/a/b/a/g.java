@@ -7,28 +7,28 @@ public class g
   extends a
 {
   public static final String TAG;
-  public static String mOi;
-  public static String mOj;
-  c mPC = null;
-  b mPD = null;
+  public static String nqu;
+  public static String nqv;
+  c nrO = null;
+  b nrP = null;
   
   static
   {
     AppMethodBeat.i(22585);
     TAG = g.class.getName();
-    mOj = h.mOj;
-    mOi = h.mOi;
+    nqv = h.nqv;
+    nqu = h.nqu;
     AppMethodBeat.o(22585);
   }
   
   public g()
   {
-    this.mNN = 2L;
-    this.mOt = null;
-    this.mOu = 2;
+    this.npZ = 2L;
+    this.nqF = null;
+    this.nqG = 2;
   }
   
-  public final byte[] bBD()
+  public final byte[] bIB()
   {
     return null;
   }
@@ -37,29 +37,29 @@ public class g
   {
     public int mDay = 1;
     public int mMonth = 0;
-    public int mOQ = 0;
-    public int mOR = 0;
-    public int mOS = 0;
     public int mYear = 1582;
+    public int nrc = 0;
+    public int nrd = 0;
+    public int nre = 0;
   }
   
   public static final class b
   {
-    public int GE = 0;
+    public int HC = 0;
     public int mHeight = 0;
-    public int mOJ = 255;
-    public boolean mPE = false;
-    public g.a mPF = null;
-    public int mPG = 0;
+    public int nqV = 255;
+    public boolean nrQ = false;
+    public g.a nrR = null;
+    public int nrS = 0;
   }
   
   public static final class c
   {
-    public boolean mPH = false;
-    public boolean mPI = false;
-    public boolean mPJ = false;
-    public byte mPK = 0;
-    public byte mPL = 0;
+    public boolean nrT = false;
+    public boolean nrU = false;
+    public boolean nrV = false;
+    public byte nrW = 0;
+    public byte nrX = 0;
   }
 }
 

@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoFilePath", "", "videoThumbPath", "enablePicture", "", "forceForegroundMix", "(Ljava/lang/String;Ljava/lang/String;ZZ)V", "getEnablePicture", "()Z", "setEnablePicture", "(Z)V", "getForceForegroundMix", "setForceForegroundMix", "getVideoFilePath", "()Ljava/lang/String;", "setVideoFilePath", "(Ljava/lang/String;)V", "getVideoThumbPath", "setVideoThumbPath", "component1", "component2", "component3", "component4", "copy", "describeContents", "", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-story_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoFilePath", "", "videoThumbPath", "enablePicture", "", "forceForegroundMix", "(Ljava/lang/String;Ljava/lang/String;ZZ)V", "getEnablePicture", "()Z", "setEnablePicture", "(Z)V", "getForceForegroundMix", "setForceForegroundMix", "getVideoFilePath", "()Ljava/lang/String;", "setVideoFilePath", "(Ljava/lang/String;)V", "getVideoThumbPath", "setVideoThumbPath", "component1", "component2", "component3", "component4", "copy", "describeContents", "", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "dest", "flags", "Companion", "plugin-story_release"})
 public final class VideoCaptureSettingModel
   implements Parcelable
 {
   public static final Parcelable.Creator<VideoCaptureSettingModel> CREATOR;
-  public static final a ysA;
-  private String jLZ;
-  private String kkP;
-  private boolean vlb;
-  private boolean ysz;
+  public static final a zFX;
+  private String kMh;
+  private String kmA;
+  private boolean wtF;
+  private boolean zFW;
   
   static
   {
     AppMethodBeat.i(119911);
-    ysA = new a((byte)0);
+    zFX = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(119911);
   }
@@ -31,10 +31,10 @@ public final class VideoCaptureSettingModel
   private VideoCaptureSettingModel(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(119909);
-    this.jLZ = paramString1;
-    this.kkP = paramString2;
-    this.vlb = paramBoolean1;
-    this.ysz = paramBoolean2;
+    this.kmA = paramString1;
+    this.kMh = paramString2;
+    this.wtF = paramBoolean1;
+    this.zFW = paramBoolean2;
     AppMethodBeat.o(119909);
   }
   
@@ -51,7 +51,7 @@ public final class VideoCaptureSettingModel
       if ((paramObject instanceof VideoCaptureSettingModel))
       {
         paramObject = (VideoCaptureSettingModel)paramObject;
-        if ((!k.g(this.jLZ, paramObject.jLZ)) || (!k.g(this.kkP, paramObject.kkP)) || (this.vlb != paramObject.vlb) || (this.ysz != paramObject.ysz)) {}
+        if ((!k.g(this.kmA, paramObject.kmA)) || (!k.g(this.kMh, paramObject.kMh)) || (this.wtF != paramObject.wtF) || (this.zFW != paramObject.zFW)) {}
       }
     }
     else
@@ -71,7 +71,7 @@ public final class VideoCaptureSettingModel
   public final String toString()
   {
     AppMethodBeat.i(119912);
-    String str = "VideoCaptureSettingModel(videoFilePath=" + this.jLZ + ", videoThumbPath=" + this.kkP + ", enablePicture=" + this.vlb + ", forceForegroundMix=" + this.ysz + ")";
+    String str = "VideoCaptureSettingModel(videoFilePath=" + this.kmA + ", videoThumbPath=" + this.kMh + ", enablePicture=" + this.wtF + ", forceForegroundMix=" + this.zFW + ")";
     AppMethodBeat.o(119912);
     return str;
   }
@@ -81,13 +81,13 @@ public final class VideoCaptureSettingModel
     int i = 1;
     AppMethodBeat.i(119908);
     k.h(paramParcel, "dest");
-    paramParcel.writeString(this.jLZ);
-    paramParcel.writeString(this.kkP);
-    if (this.vlb)
+    paramParcel.writeString(this.kmA);
+    paramParcel.writeString(this.kMh);
+    if (this.wtF)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.ysz) {
+      if (!this.zFW) {
         break label68;
       }
     }
@@ -102,17 +102,17 @@ public final class VideoCaptureSettingModel
     }
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "generateNormalModel", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "generateNormalModel", "plugin-story_release"})
   public static final class a {}
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "plugin-story_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/story/ui/jumper/VideoCaptureSettingModel;", "plugin-story_release"})
   public static final class b
     implements Parcelable.Creator<VideoCaptureSettingModel>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.jumper.VideoCaptureSettingModel
  * JD-Core Version:    0.7.0.1
  */

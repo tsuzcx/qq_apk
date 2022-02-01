@@ -7,38 +7,38 @@ import java.util.List;
 
 public final class d<T>
 {
-  private int hRF;
-  float hSE;
-  WheelView.b hSG;
-  WheelView hSV;
-  public WheelView hSW;
-  List<T> hSX;
-  boolean hSY = true;
-  com.tencent.mm.picker.d.b hSe;
-  boolean hSg;
+  private int irK;
+  float isJ;
+  WheelView.b isL;
+  com.tencent.mm.picker.d.b isj;
+  boolean isl;
+  WheelView ita;
+  public WheelView itb;
+  List<T> itc;
+  boolean itd = true;
   
   @Deprecated
-  private void aGh()
+  private void aMU()
   {
     AppMethodBeat.i(175361);
-    this.hSW.setDividerColor(this.hRF);
+    this.itb.setDividerColor(this.irK);
     AppMethodBeat.o(175361);
   }
   
-  private void pJ(int paramInt)
+  private void qw(int paramInt)
   {
     AppMethodBeat.i(175364);
-    if (this.hSX != null) {
-      this.hSW.setCurrentItem(paramInt);
+    if (this.itc != null) {
+      this.itb.setCurrentItem(paramInt);
     }
     AppMethodBeat.o(175364);
   }
   
-  public final int[] aGi()
+  public final int[] aMV()
   {
     AppMethodBeat.i(175362);
     int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.hSW.getCurrentItem();
+    arrayOfInt[0] = this.itb.getCurrentItem();
     AppMethodBeat.o(175362);
     return arrayOfInt;
   }
@@ -46,34 +46,34 @@ public final class d<T>
   public final void ds(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(175366);
-    this.hSW.setPadding(0, paramInt1, 0, paramInt2);
+    this.itb.setPadding(0, paramInt1, 0, paramInt2);
     AppMethodBeat.o(175366);
   }
   
-  public final void pI(int paramInt)
+  public final void qv(int paramInt)
   {
     AppMethodBeat.i(175363);
-    if (this.hSY)
+    if (this.itd)
     {
-      pJ(paramInt);
+      qw(paramInt);
       AppMethodBeat.o(175363);
       return;
     }
-    this.hSW.setCurrentItem(paramInt);
+    this.itb.setCurrentItem(paramInt);
     AppMethodBeat.o(175363);
   }
   
   public final void setDividerColor(int paramInt)
   {
     AppMethodBeat.i(175365);
-    this.hRF = paramInt;
-    aGh();
+    this.irK = paramInt;
+    aMU();
     AppMethodBeat.o(175365);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.f.d
  * JD-Core Version:    0.7.0.1
  */

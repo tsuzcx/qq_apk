@@ -9,14 +9,14 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String AyX;
-  public String dpw;
+  public String BRt;
+  public String dnh;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(71977);
-    this.AyX = paramString1;
-    this.dpw = paramString2;
+    this.BRt = paramString1;
+    this.dnh = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bind_serial", paramString1);
     localHashMap.put("payu_reference", String.valueOf(paramString2));
@@ -24,7 +24,7 @@ public final class b
     AppMethodBeat.o(71977);
   }
   
-  public final int ebo()
+  public final int eqK()
   {
     return 6;
   }

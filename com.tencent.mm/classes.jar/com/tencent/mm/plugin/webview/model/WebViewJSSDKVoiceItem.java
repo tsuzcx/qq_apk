@@ -32,21 +32,21 @@ public class WebViewJSSDKVoiceItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem fZw()
+  public final WebViewJSSDKFileItem fcG()
   {
     AppMethodBeat.i(79026);
-    this.jau = s.getFullPath(this.fileName);
-    this.diQ = aw.awH(this.jau);
+    this.jAH = s.getFullPath(this.fileName);
+    this.dgl = aw.aBZ(this.jAH);
     AppMethodBeat.o(79026);
     return this;
   }
   
-  public final String fZx()
+  public final String fcH()
   {
     return "speex";
   }
   
-  public final String fZy()
+  public final String fda()
   {
     return "voice";
   }
@@ -60,7 +60,7 @@ public class WebViewJSSDKVoiceItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKVoiceItem
  * JD-Core Version:    0.7.0.1
  */

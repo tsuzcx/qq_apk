@@ -17,9 +17,9 @@ import android.view.animation.Transformation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.b;
-import com.tencent.mm.cg.c;
-import com.tencent.mm.cg.g;
+import com.tencent.mm.cf.b;
+import com.tencent.mm.cf.c;
+import com.tencent.mm.cf.g;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -28,21 +28,21 @@ import junit.framework.Assert;
 public class ShakeEggAnimFrame
   extends FrameLayout
 {
-  int og;
+  int ph;
   int size;
-  List<View> wok;
+  List<View> xzB;
   
   public ShakeEggAnimFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(28385);
-    this.wok = new ArrayList();
+    this.xzB = new ArrayList();
     this.size = 0;
-    this.og = 0;
+    this.ph = 0;
     AppMethodBeat.o(28385);
   }
   
-  static float V(float paramFloat1, float paramFloat2)
+  static float Z(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(28387);
     float f = (float)Math.random();
@@ -64,10 +64,10 @@ public class ShakeEggAnimFrame
     return i;
   }
   
-  public final void ay(Activity paramActivity)
+  public final void aC(Activity paramActivity)
   {
     AppMethodBeat.i(28386);
-    Object localObject1 = this.wok.iterator();
+    Object localObject1 = this.xzB.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
@@ -82,9 +82,9 @@ public class ShakeEggAnimFrame
     while (i < 30)
     {
       paramActivity = new b(((DisplayMetrics)localObject1).widthPixels, ((DisplayMetrics)localObject1).heightPixels);
-      g.eIa();
-      localObject2 = b.eHL();
-      localObject2 = ((b)localObject2).a((c)((b)localObject2).Far.get(107), true);
+      g.eXw();
+      localObject2 = b.eXh();
+      localObject2 = ((b)localObject2).a((c)((b)localObject2).GxI.get(107), true);
       ((Drawable)localObject2).setBounds(0, 0, getSize(), getSize());
       Object localObject3 = new ImageSpan((Drawable)localObject2, 1);
       localObject2 = new SpannableString("  ");
@@ -96,7 +96,7 @@ public class ShakeEggAnimFrame
       ((TextView)localObject3).setTag(paramActivity);
       addView((View)localObject3);
       ((a)paramActivity).targetView = ((View)localObject3);
-      this.wok.add(localObject3);
+      this.xzB.add(localObject3);
       i += 1;
     }
     AppMethodBeat.o(28386);
@@ -110,7 +110,7 @@ public class ShakeEggAnimFrame
     
     a() {}
     
-    public final void dpI()
+    public final void dDS()
     {
       if (this.targetView != null) {}
       for (boolean bool = true;; bool = false)
@@ -126,7 +126,7 @@ public class ShakeEggAnimFrame
               ShakeEggAnimFrame.a.this.targetView.clearAnimation();
               ShakeEggAnimFrame localShakeEggAnimFrame = ShakeEggAnimFrame.this;
               View localView = ShakeEggAnimFrame.a.this.targetView;
-              localShakeEggAnimFrame.wok.remove(localView);
+              localShakeEggAnimFrame.xzB.remove(localView);
               localShakeEggAnimFrame.removeView(localView);
             }
             AppMethodBeat.o(28380);
@@ -140,52 +140,52 @@ public class ShakeEggAnimFrame
   final class b
     extends ShakeEggAnimFrame.a
   {
-    private int fQq;
-    private int ln;
-    private float won;
-    private float woo;
-    private float wop;
-    private float woq;
-    private float wor;
-    private float wos;
-    private float wot;
-    private float wou;
-    private float wov;
-    private float wow;
+    private int fUl;
+    private int mm;
+    private float xzE;
+    private float xzF;
+    private float xzG;
+    private float xzH;
+    private float xzI;
+    private float xzJ;
+    private float xzK;
+    private float xzL;
+    private float xzM;
+    private float xzN;
     
     public b(int paramInt1, int paramInt2)
     {
       super();
       AppMethodBeat.i(28381);
-      this.wor = 0.01F;
-      this.wos = 0.02F;
-      this.fQq = paramInt1;
-      this.ln = paramInt2;
-      this.won = ShakeEggAnimFrame.V(0.1F, 0.9F);
-      this.woo = this.won;
-      this.woq = ShakeEggAnimFrame.V(-0.3F, -0.1F);
+      this.xzI = 0.01F;
+      this.xzJ = 0.02F;
+      this.fUl = paramInt1;
+      this.mm = paramInt2;
+      this.xzE = ShakeEggAnimFrame.Z(0.1F, 0.9F);
+      this.xzF = this.xzE;
+      this.xzH = ShakeEggAnimFrame.Z(-0.3F, -0.1F);
       restart();
       AppMethodBeat.o(28381);
     }
     
     private void resolve()
     {
-      this.wot = (this.won * this.fQq);
-      this.wou = (this.woo * this.fQq);
-      this.wov = (this.wop * this.ln);
-      this.wow = (this.woq * this.ln);
+      this.xzK = (this.xzE * this.fUl);
+      this.xzL = (this.xzF * this.fUl);
+      this.xzM = (this.xzG * this.mm);
+      this.xzN = (this.xzH * this.mm);
     }
     
     private void restart()
     {
       AppMethodBeat.i(28383);
-      if (this.woq > 0.0F) {
-        this.wos += this.wor;
+      if (this.xzH > 0.0F) {
+        this.xzJ += this.xzI;
       }
-      this.wop = this.woq;
-      this.woq += this.wos;
-      if (this.wop > 1.1F) {
-        dpI();
+      this.xzG = this.xzH;
+      this.xzH += this.xzJ;
+      if (this.xzG > 1.1F) {
+        dDS();
       }
       resolve();
       AppMethodBeat.o(28383);
@@ -194,13 +194,13 @@ public class ShakeEggAnimFrame
     protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
     {
       AppMethodBeat.i(28382);
-      float f1 = this.wot;
-      float f2 = this.wov;
-      if (this.wot != this.wou) {
-        f1 = this.wot + (this.wou - this.wot) * paramFloat;
+      float f1 = this.xzK;
+      float f2 = this.xzM;
+      if (this.xzK != this.xzL) {
+        f1 = this.xzK + (this.xzL - this.xzK) * paramFloat;
       }
-      if (this.wov != this.wow) {
-        f2 = this.wov + (this.wow - this.wov) * paramFloat;
+      if (this.xzM != this.xzN) {
+        f2 = this.xzM + (this.xzN - this.xzM) * paramFloat;
       }
       paramTransformation.getMatrix().setTranslate(f1, f2);
       if (paramFloat == 1.0F) {
@@ -221,7 +221,7 @@ public class ShakeEggAnimFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeEggAnimFrame
  * JD-Core Version:    0.7.0.1
  */

@@ -2,23 +2,23 @@ package com.tencent.mm.model;
 
 public abstract interface ak
 {
-  public abstract void aA(String paramString1, String paramString2);
+  public abstract void aI(String paramString1, String paramString2);
   
-  public abstract void tP(String paramString);
+  public abstract void xV(String paramString);
   
-  public abstract void tQ(String paramString);
+  public abstract void xW(String paramString);
   
-  public abstract void tR(String paramString);
+  public abstract void xX(String paramString);
   
-  public abstract void tS(String paramString);
+  public abstract void xY(String paramString);
   
-  public abstract void tT(String paramString);
+  public abstract void xZ(String paramString);
   
-  public abstract void tU(String paramString);
+  public abstract void ya(String paramString);
   
-  public abstract void tV(String paramString);
+  public abstract void yb(String paramString);
   
-  public abstract void tW(String paramString);
+  public abstract void yc(String paramString);
 }
 
 

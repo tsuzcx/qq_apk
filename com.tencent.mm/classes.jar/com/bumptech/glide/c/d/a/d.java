@@ -11,14 +11,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   implements q, u<Bitmap>
 {
-  private final e azz;
+  private final e aAt;
   private final Bitmap bitmap;
   
   public d(Bitmap paramBitmap, e parame)
   {
     AppMethodBeat.i(77357);
     this.bitmap = ((Bitmap)i.checkNotNull(paramBitmap, "Bitmap must not be null"));
-    this.azz = ((e)i.checkNotNull(parame, "BitmapPool must not be null"));
+    this.aAt = ((e)i.checkNotNull(parame, "BitmapPool must not be null"));
     AppMethodBeat.o(77357);
   }
   
@@ -50,7 +50,7 @@ public final class d
     AppMethodBeat.o(77360);
   }
   
-  public final Class<Bitmap> oo()
+  public final Class<Bitmap> oy()
   {
     return Bitmap.class;
   }
@@ -58,13 +58,13 @@ public final class d
   public final void recycle()
   {
     AppMethodBeat.i(77359);
-    this.azz.g(this.bitmap);
+    this.aAt.g(this.bitmap);
     AppMethodBeat.o(77359);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.d.a.d
  * JD-Core Version:    0.7.0.1
  */

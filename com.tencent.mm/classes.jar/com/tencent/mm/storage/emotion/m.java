@@ -1,40 +1,104 @@
 package com.tencent.mm.storage.emotion;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bl;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
 
 public final class m
-  extends bl
+  extends j<l>
+  implements g.a
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(105118);
-    c.a locala = new c.a();
-    locala.EYt = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "productID";
-    locala.EYv.put("productID", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" productID TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.EYu = "productID";
-    locala.columns[1] = "content";
-    locala.EYv.put("content", "BLOB default '' ");
-    localStringBuilder.append(" content BLOB default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(105118);
+    AppMethodBeat.i(105117);
+    SQL_CREATE = new String[] { j.getCreateSQLs(l.info, "EmotionDetailInfo") };
+    AppMethodBeat.o(105117);
   }
   
-  public final c.a getDBInfo()
+  public m(e parame)
   {
-    return null;
+    super(parame, l.info, "EmotionDetailInfo", null);
+    this.db = parame;
+  }
+  
+  public final int a(g paramg)
+  {
+    this.db = paramg;
+    return 0;
+  }
+  
+  public final void a(String paramString1, GetEmotionDetailResponse paramGetEmotionDetailResponse, String paramString2)
+  {
+    AppMethodBeat.i(183930);
+    if ((bs.isNullOrNil(paramString1)) || (paramGetEmotionDetailResponse == null)) {
+      ac.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
+    }
+    try
+    {
+      l locall = new l();
+      locall.field_productID = paramString1;
+      locall.field_content = paramGetEmotionDetailResponse.toByteArray();
+      locall.field_lan = paramString2;
+      paramGetEmotionDetailResponse = locall.convertTo();
+      if (this.db.replace("EmotionDetailInfo", "productID", paramGetEmotionDetailResponse) > 0L)
+      {
+        ac.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
+        AppMethodBeat.o(183930);
+        return;
+      }
+      ac.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID failed. ProductId:%s", new Object[] { paramString1 });
+      AppMethodBeat.o(183930);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      ac.e("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bs.m(paramString1) });
+      AppMethodBeat.o(183930);
+    }
+  }
+  
+  public final l aPc(String paramString)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(105116);
+    if (bs.isNullOrNil(paramString))
+    {
+      ac.w("MicroMsg.emoji.EmotionDetailInfoStorage", "getEmotionDetailRespnseByPID failed. productID is null.");
+      AppMethodBeat.o(105116);
+      return null;
+    }
+    Cursor localCursor = this.db.a("EmotionDetailInfo", new String[] { "content", "lan" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    Object localObject1 = localObject2;
+    if (localCursor != null)
+    {
+      localObject1 = localObject2;
+      if (localCursor.moveToFirst())
+      {
+        localObject1 = new l();
+        ((l)localObject1).field_content = localCursor.getBlob(0);
+        ((l)localObject1).field_lan = localCursor.getString(1);
+        ((l)localObject1).field_productID = paramString;
+      }
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(105116);
+    return localObject1;
+  }
+  
+  public final String getTableName()
+  {
+    return "EmotionDetailInfo";
   }
 }
 

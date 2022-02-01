@@ -16,43 +16,43 @@ public abstract interface i
   
   public abstract void b(Context paramContext, f paramf, b paramb);
   
+  public abstract boolean cHA();
+  
+  public abstract boolean cHB();
+  
+  public abstract boolean cHC();
+  
+  public abstract boolean cHD();
+  
+  public abstract boolean cHE();
+  
+  public abstract int cHF();
+  
+  public abstract com.tencent.mm.plugin.fingerprint.d.d cHG();
+  
+  public abstract boolean cHH();
+  
+  public abstract boolean cHb();
+  
+  public abstract Map<String, String> cHj();
+  
+  public abstract boolean cHy();
+  
+  public abstract boolean cHz();
+  
   public abstract void cancel();
   
-  public abstract boolean ctP();
+  public abstract boolean fb(Context paramContext);
   
-  public abstract Map<String, String> ctX();
+  public abstract boolean fc(Context paramContext);
   
-  public abstract boolean cum();
+  public abstract void mn(boolean paramBoolean);
   
-  public abstract boolean cun();
-  
-  public abstract boolean cuo();
-  
-  public abstract boolean cup();
-  
-  public abstract boolean cuq();
-  
-  public abstract boolean cur();
-  
-  public abstract boolean cus();
-  
-  public abstract int cut();
-  
-  public abstract com.tencent.mm.plugin.fingerprint.d.d cuu();
-  
-  public abstract boolean cuv();
-  
-  public abstract boolean eO(Context paramContext);
-  
-  public abstract boolean eP(Context paramContext);
-  
-  public abstract void lv(boolean paramBoolean);
-  
-  public abstract void lw(boolean paramBoolean);
-  
-  public abstract void p(Object... paramVarArgs);
+  public abstract void mo(boolean paramBoolean);
   
   public abstract void prepare();
+  
+  public abstract void r(Object... paramVarArgs);
 }
 
 

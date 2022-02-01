@@ -19,14 +19,14 @@ public final class ah
   extends ListPopupWindow
   implements ag
 {
-  private static Method aoC;
-  public ag aoD;
+  private static Method apy;
+  public ag apz;
   
   static
   {
     try
     {
-      aoC = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
+      apy = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException) {}
@@ -39,15 +39,15 @@ public final class ah
   
   public final void b(h paramh, MenuItem paramMenuItem)
   {
-    if (this.aoD != null) {
-      this.aoD.b(paramh, paramMenuItem);
+    if (this.apz != null) {
+      this.apz.b(paramh, paramMenuItem);
     }
   }
   
   public final void c(h paramh, MenuItem paramMenuItem)
   {
-    if (this.aoD != null) {
-      this.aoD.c(paramh, paramMenuItem);
+    if (this.apz != null) {
+      this.apz.c(paramh, paramMenuItem);
     }
   }
   
@@ -58,19 +58,19 @@ public final class ah
     return paramContext;
   }
   
-  public final void ka()
+  public final void ki()
   {
     if (Build.VERSION.SDK_INT >= 23) {
-      this.aoA.setEnterTransition(null);
+      this.apw.setEnterTransition(null);
     }
   }
   
-  public final void kb()
+  public final void kj()
   {
-    if (aoC != null) {}
+    if (apy != null) {}
     try
     {
-      aoC.invoke(this.aoA, new Object[] { Boolean.FALSE });
+      apy.invoke(this.apw, new Object[] { Boolean.FALSE });
       return;
     }
     catch (Exception localException) {}
@@ -79,10 +79,10 @@ public final class ah
   public static final class a
     extends y
   {
-    private ag aoD;
-    final int aoE;
-    final int aoF;
-    private MenuItem aoG;
+    final int apA;
+    final int apB;
+    private MenuItem apC;
+    private ag apz;
     
     public a(Context paramContext, boolean paramBoolean)
     {
@@ -90,19 +90,19 @@ public final class ah
       paramContext = paramContext.getResources().getConfiguration();
       if ((Build.VERSION.SDK_INT >= 17) && (1 == paramContext.getLayoutDirection()))
       {
-        this.aoE = 21;
-        this.aoF = 22;
+        this.apA = 21;
+        this.apB = 22;
         return;
       }
-      this.aoE = 22;
-      this.aoF = 21;
+      this.apA = 22;
+      this.apB = 21;
     }
     
     public final boolean onHoverEvent(MotionEvent paramMotionEvent)
     {
       Object localObject;
       int i;
-      if (this.aoD != null)
+      if (this.apz != null)
       {
         localObject = getAdapter();
         if (!(localObject instanceof HeaderViewListAdapter)) {
@@ -127,16 +127,16 @@ public final class ah
       label178:
       for (j localj = ((g)localObject).bu(i);; localj = null)
       {
-        MenuItem localMenuItem = this.aoG;
+        MenuItem localMenuItem = this.apC;
         if (localMenuItem != localj)
         {
-          localObject = ((g)localObject).ado;
+          localObject = ((g)localObject).aei;
           if (localMenuItem != null) {
-            this.aoD.b((h)localObject, localMenuItem);
+            this.apz.b((h)localObject, localMenuItem);
           }
-          this.aoG = localj;
+          this.apC = localj;
           if (localj != null) {
-            this.aoD.c((h)localObject, localj);
+            this.apz.c((h)localObject, localj);
           }
         }
         return super.onHoverEvent(paramMotionEvent);
@@ -149,17 +149,17 @@ public final class ah
     public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
     {
       ListMenuItemView localListMenuItemView = (ListMenuItemView)getSelectedView();
-      if ((localListMenuItemView != null) && (paramInt == this.aoE))
+      if ((localListMenuItemView != null) && (paramInt == this.apA))
       {
         if ((localListMenuItemView.isEnabled()) && (localListMenuItemView.getItemData().hasSubMenu())) {
           performItemClick(localListMenuItemView, getSelectedItemPosition(), getSelectedItemId());
         }
         return true;
       }
-      if ((localListMenuItemView != null) && (paramInt == this.aoF))
+      if ((localListMenuItemView != null) && (paramInt == this.apB))
       {
         setSelection(-1);
-        ((g)getAdapter()).ado.ab(false);
+        ((g)getAdapter()).aei.ab(false);
         return true;
       }
       return super.onKeyDown(paramInt, paramKeyEvent);
@@ -167,7 +167,7 @@ public final class ah
     
     public final void setHoverListener(ag paramag)
     {
-      this.aoD = paramag;
+      this.apz = paramag;
     }
   }
 }

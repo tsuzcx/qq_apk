@@ -4,17 +4,21 @@ import android.content.Context;
 import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.map.tools.sheet.SheetManager.Options;
+import com.tencent.map.tools.sheet.SheetManager.UncaughtListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 public final class e
   implements c
 {
-  private b a;
-  private f b;
-  private boolean c;
+  Thread.UncaughtExceptionHandler a;
+  private b b;
+  private f c;
+  private boolean d;
   
-  public e(Context paramContext, SheetManager.Options paramOptions)
+  public e(final Context paramContext, SheetManager.Options paramOptions)
   {
     AppMethodBeat.i(180779);
     a.a = paramOptions.getPluginName();
@@ -24,9 +28,37 @@ public final class e
     a.e = paramOptions.getSdkMapKey();
     a.f = paramOptions.getSoLibName();
     a.h = paramOptions.isCoreLogOn();
-    this.c = paramOptions.isSheetEnable();
-    if (!this.c)
+    this.d = paramOptions.isSheetEnable();
+    if (!this.d)
     {
+      paramContext = paramOptions.getUncaughtListener();
+      if ((paramContext != null) && (this.a == null))
+      {
+        this.a = Thread.getDefaultUncaughtExceptionHandler();
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
+        {
+          public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+          {
+            AppMethodBeat.i(191284);
+            CountDownLatch localCountDownLatch = new CountDownLatch(1);
+            paramContext.onModuleSDKCrashed(paramAnonymousThrowable);
+            try
+            {
+              localCountDownLatch.await(400L, TimeUnit.MILLISECONDS);
+              label34:
+              if (e.this.a != null) {
+                e.this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+              }
+              AppMethodBeat.o(191284);
+              return;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              break label34;
+            }
+          }
+        });
+      }
       AppMethodBeat.o(180779);
       return;
     }
@@ -36,11 +68,11 @@ public final class e
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         a.j = (String)localObject;
       }
-      this.a = b.a(paramContext);
+      this.b = b.a(paramContext);
       paramContext = paramOptions.getUncaughtListener();
       if (paramContext != null)
       {
-        localObject = this.a.a;
+        localObject = this.b.a;
         if (paramContext != null)
         {
           ((m)localObject).b = paramContext;
@@ -60,14 +92,14 @@ public final class e
         if (!paramContext.exists()) {
           paramContext.mkdirs();
         }
-        paramOptions = this.a.a;
+        paramOptions = this.b.a;
         paramOptions.c = paramContext;
         if (a.h) {
           g.a(paramOptions.a).g = paramOptions.c;
         }
       }
     }
-    paramContext = g.a(this.a.a.a);
+    paramContext = g.a(this.b.a.a);
     if (!paramContext.c)
     {
       if (a.h) {
@@ -80,15 +112,15 @@ public final class e
   
   public final boolean a()
   {
-    return this.c;
+    return this.d;
   }
   
   public final File b()
   {
     AppMethodBeat.i(180780);
-    if (this.a != null)
+    if (this.b != null)
     {
-      Object localObject = g.a(this.a.a.a);
+      Object localObject = g.a(this.b.a.a);
       if (((g)localObject).e != null)
       {
         localObject = ((g)localObject).e.c;
@@ -105,10 +137,10 @@ public final class e
   public final d c()
   {
     AppMethodBeat.i(180781);
-    if ((this.b == null) && (this.a != null)) {
-      this.b = new f(this.a);
+    if ((this.c == null) && (this.b != null)) {
+      this.c = new f(this.b);
     }
-    f localf = this.b;
+    f localf = this.c;
     AppMethodBeat.o(180781);
     return localf;
   }

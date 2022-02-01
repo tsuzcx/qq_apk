@@ -12,7 +12,7 @@ public final class PluginCardCompat
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(22758);
-    if (paramg.agu()) {
+    if (paramg.ahL()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.card.compat.a.a.class, new e(new a()));
     }
     AppMethodBeat.o(22758);

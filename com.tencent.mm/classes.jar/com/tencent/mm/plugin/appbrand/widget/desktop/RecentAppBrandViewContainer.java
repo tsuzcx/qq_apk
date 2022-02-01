@@ -13,27 +13,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.ui.z;
 import java.util.List;
 
 public class RecentAppBrandViewContainer
   extends LinearLayout
 {
-  Runnable Zq;
-  RecentAppBrandView lUs;
-  private View lWp;
-  boolean lWq;
-  private View.OnClickListener lWr;
+  Runnable aal;
   private Context mContext;
+  RecentAppBrandView mwu;
+  private View myr;
+  boolean mys;
+  private View.OnClickListener myt;
   
   public RecentAppBrandViewContainer(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(49704);
-    this.Zq = null;
-    this.lWq = true;
-    this.lWr = null;
+    this.aal = null;
+    this.mys = true;
+    this.myt = null;
     init(paramContext);
     AppMethodBeat.o(49704);
   }
@@ -42,9 +42,9 @@ public class RecentAppBrandViewContainer
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49705);
-    this.Zq = null;
-    this.lWq = true;
-    this.lWr = null;
+    this.aal = null;
+    this.mys = true;
+    this.myt = null;
     init(paramContext);
     AppMethodBeat.o(49705);
   }
@@ -53,23 +53,23 @@ public class RecentAppBrandViewContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49706);
-    this.Zq = null;
-    this.lWq = true;
-    this.lWr = null;
+    this.aal = null;
+    this.mys = true;
+    this.myt = null;
     init(paramContext);
     AppMethodBeat.o(49706);
   }
   
-  private void bse()
+  private void bze()
   {
     AppMethodBeat.i(49710);
-    if (this.lUs.getDataCount() > this.lUs.getMaxShowItemCountIncludeMore())
+    if (this.mwu.getDataCount() > this.mwu.getMaxShowItemCountIncludeMore())
     {
-      this.lWp.setVisibility(0);
+      this.myr.setVisibility(0);
       AppMethodBeat.o(49710);
       return;
     }
-    this.lWp.setVisibility(4);
+    this.myr.setVisibility(4);
     AppMethodBeat.o(49710);
   }
   
@@ -77,21 +77,21 @@ public class RecentAppBrandViewContainer
   {
     AppMethodBeat.i(49712);
     this.mContext = paramContext;
-    paramContext = y.js(paramContext).inflate(2131492988, this);
-    this.lUs = ((RecentAppBrandView)paramContext.findViewById(2131303807));
-    this.lWp = paramContext.findViewById(2131302475);
-    paramContext = new e(this.lWp);
-    int i = (int)d.dS(getContext());
-    paramContext.lVz.getLayoutParams().width = ((int)(a.ap(getContext(), 2131165568) * 2 * d.dT(getContext())) + i);
-    paramContext.lVz.getLayoutParams().height = ((int)(a.ap(getContext(), 2131165568) * 2 * d.dT(getContext())) + i);
-    paramContext.kXS.getLayoutParams().width = i;
-    paramContext.kXS.getLayoutParams().height = i;
-    paramContext.lVy.getLayoutParams().width = i;
-    paramContext.lVy.getLayoutParams().height = i;
-    paramContext.kXS.setImageResource(2131690904);
-    paramContext.lVA.setVisibility(8);
+    paramContext = z.jD(paramContext).inflate(2131492988, this);
+    this.mwu = ((RecentAppBrandView)paramContext.findViewById(2131303807));
+    this.myr = paramContext.findViewById(2131302475);
+    paramContext = new e(this.myr);
+    int i = (int)d.ea(getContext());
+    paramContext.mxB.getLayoutParams().width = ((int)(a.av(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
+    paramContext.mxB.getLayoutParams().height = ((int)(a.av(getContext(), 2131165568) * 2 * d.eb(getContext())) + i);
+    paramContext.lzC.getLayoutParams().width = i;
+    paramContext.lzC.getLayoutParams().height = i;
+    paramContext.mxA.getLayoutParams().width = i;
+    paramContext.mxA.getLayoutParams().height = i;
+    paramContext.lzC.setImageResource(2131690904);
+    paramContext.mxC.setVisibility(8);
     paramContext.titleTv.setText("");
-    paramContext.arI.setOnClickListener(new View.OnClickListener()
+    paramContext.asD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -107,15 +107,15 @@ public class RecentAppBrandViewContainer
   
   public RecentAppBrandView getRecentView()
   {
-    return this.lUs;
+    return this.mwu;
   }
   
   public int getShowLines()
   {
     AppMethodBeat.i(49709);
-    if (this.lUs != null)
+    if (this.mwu != null)
     {
-      int i = this.lUs.getShowLines();
+      int i = this.mwu.getShowLines();
       AppMethodBeat.o(49709);
       return i;
     }
@@ -126,10 +126,10 @@ public class RecentAppBrandViewContainer
   public final void notifyDataSetChanged()
   {
     AppMethodBeat.i(49707);
-    if (this.lUs != null)
+    if (this.mwu != null)
     {
-      bse();
-      this.lUs.bsd();
+      bze();
+      this.mwu.bzd();
     }
     AppMethodBeat.o(49707);
   }
@@ -137,10 +137,10 @@ public class RecentAppBrandViewContainer
   public void setDataList(List<AppBrandDesktopView.c> paramList)
   {
     AppMethodBeat.i(49708);
-    if (this.lUs != null)
+    if (this.mwu != null)
     {
-      this.lUs.setDataList(paramList);
-      bse();
+      this.mwu.setDataList(paramList);
+      bze();
     }
     AppMethodBeat.o(49708);
   }
@@ -148,25 +148,25 @@ public class RecentAppBrandViewContainer
   public void setItemPadding(int paramInt)
   {
     AppMethodBeat.i(49711);
-    if (this.lUs != null) {
-      this.lUs.setItemPadding(paramInt);
+    if (this.mwu != null) {
+      this.mwu.setItemPadding(paramInt);
     }
-    if (this.lWp != null)
+    if (this.myr != null)
     {
-      View localView = this.lWp;
-      localView.setPadding(paramInt, localView.getPaddingTop(), paramInt, this.lWp.getPaddingBottom());
+      View localView = this.myr;
+      localView.setPadding(paramInt, localView.getPaddingTop(), paramInt, this.myr.getPaddingBottom());
     }
     AppMethodBeat.o(49711);
   }
   
   public void setOnMoreClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.lWr = paramOnClickListener;
+    this.myt = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.RecentAppBrandViewContainer
  * JD-Core Version:    0.7.0.1
  */

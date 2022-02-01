@@ -8,7 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,32 +16,31 @@ import java.util.Map;
 public final class l$b
   extends c.a
 {
-  public static Map<String, WeakReference<b>> GLj;
-  ImageView GJi;
-  RTChattingEmojiView GLe;
-  ImageView GLf;
-  ProgressBar GLg;
-  ImageView GLh;
-  TextView GLi;
-  ProgressBar uPp;
+  public static Map<String, WeakReference<b>> Ilg;
+  ImageView Ijf;
+  RTChattingEmojiView Ilb;
+  ImageView Ilc;
+  ProgressBar Ild;
+  ImageView Ile;
+  TextView Ilf;
   
   static
   {
     AppMethodBeat.i(36923);
-    GLj = new HashMap();
+    Ilg = new HashMap();
     AppMethodBeat.o(36923);
   }
   
-  public static void t(String paramString, int paramInt1, int paramInt2)
+  public static void s(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(36922);
-    if (!GLj.containsKey(paramString))
+    if (!Ilg.containsKey(paramString))
     {
-      ad.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
+      ac.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
       AppMethodBeat.o(36922);
       return;
     }
-    paramString = (b)((WeakReference)GLj.get(paramString)).get();
+    paramString = (b)((WeakReference)Ilg.get(paramString)).get();
     if (paramString != null) {
       switch (paramInt2)
       {
@@ -51,46 +50,46 @@ public final class l$b
     {
       AppMethodBeat.o(36922);
       return;
-      paramString.GLg.setVisibility(8);
-      paramString.GLi.setVisibility(8);
-      paramString.GLh.setVisibility(8);
+      paramString.Ild.setVisibility(8);
+      paramString.Ilf.setVisibility(8);
+      paramString.Ile.setVisibility(8);
       AppMethodBeat.o(36922);
       return;
-      paramString.GLg.setVisibility(8);
-      paramString.GLi.setVisibility(8);
-      paramString.GLh.setVisibility(0);
-      paramString.GLg.setProgress(paramInt1);
-      paramString.GLh.setImageResource(2131232024);
+      paramString.Ild.setVisibility(8);
+      paramString.Ilf.setVisibility(8);
+      paramString.Ile.setVisibility(0);
+      paramString.Ild.setProgress(paramInt1);
+      paramString.Ile.setImageResource(2131232024);
       AppMethodBeat.o(36922);
       return;
-      paramString.GLg.setVisibility(0);
-      paramString.GLi.setVisibility(8);
-      paramString.GLh.setVisibility(8);
-      paramString.GLg.setProgress(0);
+      paramString.Ild.setVisibility(0);
+      paramString.Ilf.setVisibility(8);
+      paramString.Ile.setVisibility(8);
+      paramString.Ild.setProgress(0);
     }
   }
   
   public final c.a z(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36921);
-    super.fK(paramView);
-    this.fwS = ((TextView)paramView.findViewById(2131298178));
-    this.GLe = ((RTChattingEmojiView)paramView.findViewById(2131298074));
-    this.hIS = ((CheckBox)paramView.findViewById(2131298068));
-    this.lRB = paramView.findViewById(2131298147);
-    this.GLg = ((ProgressBar)paramView.findViewById(2131298082));
-    this.GLh = ((ImageView)paramView.findViewById(2131298175));
-    this.GLi = ((TextView)paramView.findViewById(2131298171));
+    super.fX(paramView);
+    this.fAz = ((TextView)paramView.findViewById(2131298178));
+    this.Ilb = ((RTChattingEmojiView)paramView.findViewById(2131298074));
+    this.ijt = ((CheckBox)paramView.findViewById(2131298068));
+    this.gGk = paramView.findViewById(2131298147);
+    this.Ild = ((ProgressBar)paramView.findViewById(2131298082));
+    this.Ile = ((ImageView)paramView.findViewById(2131298175));
+    this.Ilf = ((TextView)paramView.findViewById(2131298171));
     if (!paramBoolean)
     {
-      this.uPp = ((ProgressBar)paramView.findViewById(2131306220));
-      this.GHZ = ((ImageView)paramView.findViewById(2131298174));
-      this.GJi = ((ImageView)paramView.findViewById(2131298176));
+      this.vYf = ((ProgressBar)paramView.findViewById(2131306220));
+      this.IhW = ((ImageView)paramView.findViewById(2131298174));
+      this.Ijf = ((ImageView)paramView.findViewById(2131298176));
     }
-    if (this.GLf != null) {
-      ((ViewGroup)this.GLf.getParent()).setBackgroundDrawable(null);
+    if (this.Ilc != null) {
+      ((ViewGroup)this.Ilc.getParent()).setBackgroundDrawable(null);
     }
-    this.wet = ((TextView)paramView.findViewById(2131298185));
+    this.xpH = ((TextView)paramView.findViewById(2131298185));
     AppMethodBeat.o(36921);
     return this;
   }

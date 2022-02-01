@@ -22,9 +22,9 @@ public abstract class AbsStoryMuteView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract void dFX();
+  public abstract void dUy();
   
-  public abstract void dFY();
+  public abstract void dUz();
 }
 
 

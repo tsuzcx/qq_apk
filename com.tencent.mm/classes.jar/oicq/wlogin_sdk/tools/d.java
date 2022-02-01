@@ -123,7 +123,7 @@ public final class d
       AppMethodBeat.o(88197);
       return null;
     }
-    locala.prePlain = locala.aA(arrayOfByte);
+    locala.prePlain = locala.az(arrayOfByte);
     locala.pos = (locala.prePlain[0] & 0x7);
     paramInt2 = i - locala.pos - 10;
     if (paramInt2 < 0)
@@ -168,7 +168,7 @@ public final class d
       }
       if (locala.pos == 8)
       {
-        if (!locala.I(arrayOfByte, i))
+        if (!locala.G(arrayOfByte, i))
         {
           AppMethodBeat.o(88197);
           return null;
@@ -185,7 +185,7 @@ public final class d
             if (locala.pos == 8)
             {
               locala.preCrypt = (locala.crypt - 8);
-              if (!locala.I(arrayOfByte, i))
+              if (!locala.G(arrayOfByte, i))
               {
                 AppMethodBeat.o(88197);
                 return null;
@@ -202,7 +202,7 @@ public final class d
                 if (locala.pos == 8)
                 {
                   locala.preCrypt = locala.crypt;
-                  if (!locala.I(arrayOfByte, i))
+                  if (!locala.G(arrayOfByte, i))
                   {
                     AppMethodBeat.o(88197);
                     return null;

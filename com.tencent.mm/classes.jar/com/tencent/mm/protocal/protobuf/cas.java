@@ -3,85 +3,77 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cas
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public long dEb;
-  public String doh;
-  public int state;
-  public String wdN;
+  public com.tencent.mm.bw.b Fpp;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91619);
+    AppMethodBeat.i(43115);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.wdN != null) {
-        paramVarArgs.d(1, this.wdN);
+      if (this.Fpp == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: buf");
+        AppMethodBeat.o(43115);
+        throw paramVarArgs;
       }
-      paramVarArgs.aG(2, this.dEb);
-      paramVarArgs.aR(3, this.state);
-      if (this.doh != null) {
-        paramVarArgs.d(4, this.doh);
+      paramVarArgs.aR(1, this.type);
+      if (this.Fpp != null) {
+        paramVarArgs.c(2, this.Fpp);
       }
-      AppMethodBeat.o(91619);
+      AppMethodBeat.o(43115);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.wdN == null) {
-        break label362;
-      }
-    }
-    label362:
-    for (paramInt = f.a.a.b.b.a.e(1, this.wdN) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.b.b.a.q(2, this.dEb) + f.a.a.b.b.a.bA(3, this.state);
+      int i = f.a.a.b.b.a.bx(1, this.type) + 0;
       paramInt = i;
-      if (this.doh != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.doh);
+      if (this.Fpp != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.Fpp);
       }
-      AppMethodBeat.o(91619);
+      AppMethodBeat.o(43115);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
-          }
-        }
-        AppMethodBeat.o(91619);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cas localcas = (cas)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(91619);
-          return -1;
-        case 1: 
-          localcas.wdN = locala.KhF.readString();
-          AppMethodBeat.o(91619);
-          return 0;
-        case 2: 
-          localcas.dEb = locala.KhF.xT();
-          AppMethodBeat.o(91619);
-          return 0;
-        case 3: 
-          localcas.state = locala.KhF.xS();
-          AppMethodBeat.o(91619);
-          return 0;
-        }
-        localcas.doh = locala.KhF.readString();
-        AppMethodBeat.o(91619);
-        return 0;
-      }
-      AppMethodBeat.o(91619);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gfg();
+        }
+      }
+      if (this.Fpp == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: buf");
+        AppMethodBeat.o(43115);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(43115);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      cas localcas = (cas)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(43115);
+        return -1;
+      case 1: 
+        localcas.type = locala.LVo.xF();
+        AppMethodBeat.o(43115);
+        return 0;
+      }
+      localcas.Fpp = locala.LVo.gfk();
+      AppMethodBeat.o(43115);
+      return 0;
+    }
+    AppMethodBeat.o(43115);
+    return -1;
   }
 }
 

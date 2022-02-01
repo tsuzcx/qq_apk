@@ -2,7 +2,7 @@ package com.tencent.mm.vfs;
 
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"forEachLine", "", "Lcom/tencent/mm/vfs/VFSFile;", "charset", "Ljava/nio/charset/Charset;", "action", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "line", "inputStream", "Ljava/io/InputStream;", "readText", "reader", "Ljava/io/InputStreamReader;", "writeBytes", "array", "", "writeText", "text", "mmkernel_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"forEachLine", "", "Lcom/tencent/mm/vfs/VFSFile;", "charset", "Ljava/nio/charset/Charset;", "action", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "line", "inputStream", "Ljava/io/InputStream;", "readText", "reader", "Ljava/io/InputStreamReader;", "writeBytes", "array", "", "writeText", "text", "mmkernel_release"})
 public final class f
 {
   /* Error */
@@ -24,7 +24,7 @@ public final class f
     //   24: ldc 51
     //   26: invokestatic 50	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   29: aload_0
-    //   30: invokestatic 59	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   30: invokestatic 59	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   33: astore_0
     //   34: aload_0
     //   35: ldc 61
@@ -109,14 +109,14 @@ public final class f
     //   14: ldc 117
     //   16: invokestatic 50	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   19: aload_0
-    //   20: invokestatic 121	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   20: invokestatic 121	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
     //   23: checkcast 72	java/io/Closeable
     //   26: astore_3
     //   27: aload_3
     //   28: checkcast 123	java/io/OutputStream
     //   31: aload_1
     //   32: invokevirtual 127	java/io/OutputStream:write	([B)V
-    //   35: getstatic 133	d/y:JfV	Ld/y;
+    //   35: getstatic 133	d/y:KTp	Ld/y;
     //   38: astore_0
     //   39: aload_3
     //   40: aconst_null

@@ -15,24 +15,24 @@ import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.expt.a.b;
 import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ado;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.protocal.protobuf.aen;
+import com.tencent.mm.sdk.platformtools.aw;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderLiveEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "configKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onEntranceInfoUpdate", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "wantShowEntry", "", "Companion", "plugin-appbrand-integration_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderLiveEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "configKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onEntranceInfoUpdate", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "wantShowEntry", "", "Companion", "plugin-appbrand-integration_release"})
 public final class d
   extends f
   implements ap.c
 {
-  public static final a lGT;
-  private final ax lGS;
+  public static final a miO;
+  private final aw miN;
   
   static
   {
     AppMethodBeat.i(180700);
-    lGT = new a((byte)0);
+    miO = new a((byte)0);
     AppMethodBeat.o(180700);
   }
   
@@ -40,23 +40,23 @@ public final class d
   {
     super(paramFragmentActivity, paramViewGroup);
     AppMethodBeat.i(180699);
-    paramFragmentActivity = com.tencent.mm.plugin.appbrand.app.d.iJD;
-    paramFragmentActivity = com.tencent.mm.plugin.appbrand.app.d.Km();
+    paramFragmentActivity = com.tencent.mm.plugin.appbrand.app.d.jjJ;
+    paramFragmentActivity = com.tencent.mm.plugin.appbrand.app.d.JW();
     if (paramFragmentActivity == null) {
-      k.fvU();
+      k.fOy();
     }
-    this.lGS = paramFragmentActivity;
+    this.miN = paramFragmentActivity;
     AppMethodBeat.o(180699);
   }
   
-  public final void a(ado paramado)
+  public final void a(aen paramaen)
   {
     AppMethodBeat.i(180694);
-    k.h(paramado, "info");
-    if ((!this.lGS.getBoolean("kv_want_show_entry", false)) && (paramado.Deg == 1)) {
-      this.lGS.putBoolean("kv_want_show_entry", true);
+    k.h(paramaen, "info");
+    if ((!this.miN.getBoolean("kv_want_show_entry", false)) && (paramaen.Exm == 1)) {
+      this.miN.putBoolean("kv_want_show_entry", true);
     }
-    b(paramado);
+    b(paramaen);
     AppMethodBeat.o(180694);
   }
   
@@ -73,19 +73,19 @@ public final class d
     AppMethodBeat.o(180697);
   }
   
-  public final ap.b aSh()
+  public final ap.b aZe()
   {
-    return ap.b.iVY;
+    return ap.b.jwo;
   }
   
-  public final void bpt()
+  public final void bwo()
   {
     AppMethodBeat.i(180698);
-    super.bpt();
-    if ((k.g(((b)g.ab(b.class)).a(b.a.pwJ, ""), "1")) && (this.lGS.getBoolean("kv_want_show_entry", false))) {}
+    super.bwo();
+    if ((k.g(((b)g.ab(b.class)).a(b.a.qaY, ""), "1")) && (this.miN.getBoolean("kv_want_show_entry", false))) {}
     for (boolean bool = true;; bool = false)
     {
-      he(bool);
+      hB(bool);
       AppMethodBeat.o(180698);
       return;
     }
@@ -105,29 +105,29 @@ public final class d
     super.onClick(paramView);
     paramView = new com.tencent.mm.plugin.appbrand.a.f();
     paramView.username = "gh_bc64bb356935@app";
-    paramView.gXn = 0;
+    paramView.hxM = 0;
     paramView.version = 0;
     paramView.scene = 1001;
-    paramView.dbt = "";
+    paramView.cYP = "";
     ((n)g.ab(n.class)).a((Context)getActivity(), paramView);
-    if (this.lHg != null)
+    if (this.mjb != null)
     {
-      paramView = com.tencent.mm.plugin.appbrand.report.d.lpj;
+      paramView = com.tencent.mm.plugin.appbrand.report.d.lRj;
       paramView = getActivity();
       k.g(paramView, "activity");
       paramView = com.tencent.mm.plugin.appbrand.report.d.b(paramView);
-      int i = this.lHg.rXs;
-      h.vKh.f(19468, new Object[] { Integer.valueOf(3), Integer.valueOf(i), "", "", "", "", Long.valueOf(paramView.mSessionId) });
+      int i = this.mjb.tfk;
+      h.wUl.f(19468, new Object[] { Integer.valueOf(3), Integer.valueOf(i), "", "", "", "", Long.valueOf(paramView.mSessionId) });
     }
     AppMethodBeat.o(180696);
   }
   
-  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderLiveEntrance$Companion;", "", "()V", "KV_WANT_SHOW_ENTRY", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderLiveEntrance$Companion;", "", "()V", "KV_WANT_SHOW_ENTRY", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.d
  * JD-Core Version:    0.7.0.1
  */

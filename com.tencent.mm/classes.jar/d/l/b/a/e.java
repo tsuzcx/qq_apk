@@ -1,5 +1,6 @@
 package d.l.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l.b.a.a.d;
 import d.l.b.a.b.b.ak;
@@ -12,36 +13,37 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@d.l(fvt={1, 1, 15}, fvu={""}, fvv={"Lkotlin/reflect/jvm/internal/KCallableImpl;", "R", "Lkotlin/reflect/KCallable;", "()V", "_annotations", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "", "", "kotlin.jvm.PlatformType", "_parameters", "Ljava/util/ArrayList;", "Lkotlin/reflect/KParameter;", "_returnType", "Lkotlin/reflect/jvm/internal/KTypeImpl;", "_typeParameters", "Lkotlin/reflect/jvm/internal/KTypeParameterImpl;", "annotations", "getAnnotations", "()Ljava/util/List;", "caller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "getContainer", "()Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "defaultCaller", "getDefaultCaller", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;", "isAbstract", "", "()Z", "isAnnotationConstructor", "isBound", "isFinal", "isOpen", "parameters", "getParameters", "returnType", "Lkotlin/reflect/KType;", "getReturnType", "()Lkotlin/reflect/KType;", "typeParameters", "Lkotlin/reflect/KTypeParameter;", "getTypeParameters", "visibility", "Lkotlin/reflect/KVisibility;", "getVisibility", "()Lkotlin/reflect/KVisibility;", "call", "args", "", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "callAnnotationConstructor", "", "(Ljava/util/Map;)Ljava/lang/Object;", "callBy", "callDefaultMethod", "continuationArgument", "Lkotlin/coroutines/Continuation;", "callDefaultMethod$kotlin_reflection", "(Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "defaultPrimitiveValue", "type", "Ljava/lang/reflect/Type;", "extractContinuationArgument", "kotlin-reflection"})
+@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KCallableImpl;", "R", "Lkotlin/reflect/KCallable;", "()V", "_annotations", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "", "", "kotlin.jvm.PlatformType", "_parameters", "Ljava/util/ArrayList;", "Lkotlin/reflect/KParameter;", "_returnType", "Lkotlin/reflect/jvm/internal/KTypeImpl;", "_typeParameters", "Lkotlin/reflect/jvm/internal/KTypeParameterImpl;", "annotations", "getAnnotations", "()Ljava/util/List;", "caller", "Lkotlin/reflect/jvm/internal/calls/Caller;", "getCaller", "()Lkotlin/reflect/jvm/internal/calls/Caller;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "getContainer", "()Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "defaultCaller", "getDefaultCaller", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;", "isAbstract", "", "()Z", "isAnnotationConstructor", "isBound", "isFinal", "isOpen", "parameters", "getParameters", "returnType", "Lkotlin/reflect/KType;", "getReturnType", "()Lkotlin/reflect/KType;", "typeParameters", "Lkotlin/reflect/KTypeParameter;", "getTypeParameters", "visibility", "Lkotlin/reflect/KVisibility;", "getVisibility", "()Lkotlin/reflect/KVisibility;", "call", "args", "", "", "([Ljava/lang/Object;)Ljava/lang/Object;", "callAnnotationConstructor", "", "(Ljava/util/Map;)Ljava/lang/Object;", "callBy", "callDefaultMethod", "continuationArgument", "Lkotlin/coroutines/Continuation;", "callDefaultMethod$kotlin_reflection", "(Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "defaultPrimitiveValue", "type", "Ljava/lang/reflect/Type;", "extractContinuationArgument", "kotlin-reflection"})
 public abstract class e<R>
   implements d.l.a<R>
 {
-  private final z.a<u> JiA;
-  private final z.a<List<w>> JiB;
-  private final z.a<List<Annotation>> Jiy;
-  private final z.a<ArrayList<d.l.j>> Jiz;
+  private final z.a<List<Annotation>> KVS;
+  private final z.a<ArrayList<d.l.j>> KVT;
+  private final z.a<u> KVU;
+  private final z.a<List<w>> KVV;
   
   public e()
   {
-    z.a locala = z.G((d.g.a.a)new a(this));
+    z.a locala = z.N((d.g.a.a)new a(this));
     k.g(locala, "ReflectProperties.lazySo…or.computeAnnotations() }");
-    this.Jiy = locala;
-    locala = z.G((d.g.a.a)new b(this));
+    this.KVS = locala;
+    locala = z.N((d.g.a.a)new b(this));
     k.g(locala, "ReflectProperties.lazySo…ze()\n        result\n    }");
-    this.Jiz = locala;
-    locala = z.G((d.g.a.a)new c(this));
+    this.KVT = locala;
+    locala = z.N((d.g.a.a)new c(this));
     k.g(locala, "ReflectProperties.lazySo…eturnType\n        }\n    }");
-    this.JiA = locala;
-    locala = z.G((d.g.a.a)new d(this));
+    this.KVU = locala;
+    locala = z.N((d.g.a.a)new d(this));
     k.g(locala, "ReflectProperties.lazySo…KTypeParameterImpl)\n    }");
-    this.JiB = locala;
+    this.KVV = locala;
   }
   
-  private R bU(Map<d.l.j, ? extends Object> paramMap)
+  private R cd(Map<d.l.j, ? extends Object> paramMap)
   {
     k.h(paramMap, "args");
     Object localObject = getParameters();
@@ -68,7 +70,7 @@ public abstract class e<R>
         m = j;
         j = k;
         k = m;
-        if (localj.fwd() != j.a.JhX) {
+        if (localj.fOH() != j.a.KVr) {
           break label649;
         }
         i += 1;
@@ -82,11 +84,11 @@ public abstract class e<R>
       k = j;
       j = m;
       break;
-      if (localj.bfV())
+      if (localj.bmP())
       {
-        localObject = localj.fwc();
+        localObject = localj.fOG();
         k.h(localObject, "$this$javaType");
-        localObject = ((u)localObject).fwM();
+        localObject = ((u)localObject).fPq();
         if (((localObject instanceof Class)) && (((Class)localObject).isPrimitive())) {
           if (k.g(localObject, Boolean.TYPE)) {
             localObject = Boolean.FALSE;
@@ -143,12 +145,12 @@ public abstract class e<R>
         if (paramMap == null) {
           throw new v("null cannot be cast to non-null type kotlin.Array<T>");
         }
-        return ac(Arrays.copyOf(paramMap, paramMap.length));
+        return ae(Arrays.copyOf(paramMap, paramMap.length));
       }
       localArrayList2.add(Integer.valueOf(k));
-      paramMap = fwl();
+      paramMap = fOP();
       if (paramMap == null) {
-        throw ((Throwable)new x("This callable does not support a default call: " + fwj()));
+        throw ((Throwable)new x("This callable does not support a default call: " + fON()));
       }
       localArrayList1.addAll((Collection)localArrayList2);
       localArrayList1.add(null);
@@ -163,13 +165,13 @@ public abstract class e<R>
       {
         throw ((Throwable)new d.l.a.a(paramMap));
       }
-      paramMap = paramMap.ac((Object[])localObject);
+      paramMap = paramMap.ae((Object[])localObject);
       return paramMap;
       break label101;
     }
   }
   
-  private final R bV(Map<d.l.j, ? extends Object> paramMap)
+  private final R ce(Map<d.l.j, ? extends Object> paramMap)
   {
     Object localObject = (Iterable)getParameters();
     Collection localCollection = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
@@ -186,7 +188,7 @@ public abstract class e<R>
         }
         throw ((Throwable)new IllegalArgumentException("Annotation argument value cannot be null (" + localj + ')'));
       }
-      if (localj.bfV()) {
+      if (localj.bmP()) {
         localObject = null;
       }
     }
@@ -197,9 +199,9 @@ public abstract class e<R>
       break;
       throw ((Throwable)new IllegalArgumentException("No argument provided for a required parameter: ".concat(String.valueOf(localj))));
       localObject = (List)localCollection;
-      paramMap = fwl();
+      paramMap = fOP();
       if (paramMap == null) {
-        throw ((Throwable)new x("This callable does not support a default call: " + fwj()));
+        throw ((Throwable)new x("This callable does not support a default call: " + fON()));
       }
       try
       {
@@ -212,17 +214,17 @@ public abstract class e<R>
       {
         throw ((Throwable)new d.l.a.a(paramMap));
       }
-      paramMap = paramMap.ac((Object[])localObject);
+      paramMap = paramMap.ae((Object[])localObject);
       return paramMap;
     }
   }
   
-  public final R ac(Object... paramVarArgs)
+  public final R ae(Object... paramVarArgs)
   {
     k.h(paramVarArgs, "args");
     try
     {
-      paramVarArgs = fwk().ac(paramVarArgs);
+      paramVarArgs = fOO().ae(paramVarArgs);
       return paramVarArgs;
     }
     catch (IllegalAccessException paramVarArgs)
@@ -231,38 +233,38 @@ public abstract class e<R>
     }
   }
   
-  public final R bT(Map<d.l.j, ? extends Object> paramMap)
+  public final R cc(Map<d.l.j, ? extends Object> paramMap)
   {
     k.h(paramMap, "args");
-    if (fwn()) {
-      return bV(paramMap);
+    if (fOR()) {
+      return ce(paramMap);
     }
-    return bU(paramMap);
+    return cd(paramMap);
   }
   
-  public abstract b fwj();
+  public abstract b fON();
   
-  public abstract d<?> fwk();
+  public abstract d<?> fOO();
   
-  public abstract d<?> fwl();
+  public abstract d<?> fOP();
   
-  public abstract i fwm();
+  public abstract i fOQ();
   
-  protected final boolean fwn()
+  protected final boolean fOR()
   {
-    return (k.g(getName(), "<init>")) && (fwm().fvP().isAnnotation());
+    return (k.g(getName(), "<init>")) && (fOQ().fOt().isAnnotation());
   }
   
   public final List<d.l.j> getParameters()
   {
-    Object localObject = this.Jiz.invoke();
+    Object localObject = this.KVT.invoke();
     k.g(localObject, "_parameters()");
     return (List)localObject;
   }
   
   public abstract boolean isBound();
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "", "", "R", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "", "R", "invoke"})
   static final class a
     extends d.g.b.l
     implements d.g.a.a<List<? extends Annotation>>
@@ -273,7 +275,7 @@ public abstract class e<R>
     }
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "Ljava/util/ArrayList;", "Lkotlin/reflect/KParameter;", "R", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Ljava/util/ArrayList;", "Lkotlin/reflect/KParameter;", "R", "invoke"})
   static final class b
     extends d.g.b.l
     implements d.g.a.a<ArrayList<d.l.j>>
@@ -282,9 +284,22 @@ public abstract class e<R>
     {
       super();
     }
+    
+    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+    public static final class a<T>
+      implements Comparator<T>
+    {
+      public final int compare(T paramT1, T paramT2)
+      {
+        AppMethodBeat.i(56298);
+        int i = d.b.a.a((Comparable)((d.l.j)paramT1).getName(), (Comparable)((d.l.j)paramT2).getName());
+        AppMethodBeat.o(56298);
+        return i;
+      }
+    }
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "Lkotlin/reflect/jvm/internal/KTypeImpl;", "R", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/KTypeImpl;", "R", "invoke"})
   static final class c
     extends d.g.b.l
     implements d.g.a.a<u>
@@ -295,7 +310,7 @@ public abstract class e<R>
     }
   }
   
-  @d.l(fvt={1, 1, 15}, fvu={""}, fvv={"<anonymous>", "", "Lkotlin/reflect/jvm/internal/KTypeParameterImpl;", "R", "invoke"})
+  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "Lkotlin/reflect/jvm/internal/KTypeParameterImpl;", "R", "invoke"})
   static final class d
     extends d.g.b.l
     implements d.g.a.a<List<? extends w>>
@@ -308,7 +323,7 @@ public abstract class e<R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.e
  * JD-Core Version:    0.7.0.1
  */

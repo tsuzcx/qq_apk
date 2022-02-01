@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.finder.ui;
 import com.tencent.mm.plugin.gallery.picker.GalleryPickerFragment.b;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/finder/ui/FinderPostPickerUI$initView$fragment$1", "Lcom/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$ISelectedMediaChange;", "onChange", "", "size", "", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/ui/FinderPostPickerUI$initView$fragment$1", "Lcom/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$ISelectedMediaChange;", "onChange", "", "size", "", "plugin-finder_release"})
 public final class FinderPostPickerUI$e
   implements GalleryPickerFragment.b
 {}

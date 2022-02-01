@@ -19,11 +19,11 @@ public class AvatarImageView
   extends AppCompatImageView
   implements m
 {
-  private boolean GHl;
+  private boolean Ihh;
   private final String TAG;
   private int pageType;
-  private i xLj;
-  private String xXR;
+  private i yXY;
+  private String zkN;
   
   public AvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,16 +36,16 @@ public class AvatarImageView
     AppMethodBeat.i(36689);
     this.TAG = "MicroMsg.AvatarImageView";
     this.pageType = -1;
-    this.xLj = null;
-    this.xXR = "";
-    this.GHl = true;
-    this.xLj = ((e)g.ad(e.class)).getStoryUIFactory().ge(paramContext);
-    this.xLj.aZ(this);
+    this.yXY = null;
+    this.zkN = "";
+    this.Ihh = true;
+    this.yXY = ((e)g.ad(e.class)).getStoryUIFactory().gq(paramContext);
+    this.yXY.aZ(this);
     setLayerType(1, null);
     AppMethodBeat.o(36689);
   }
   
-  public final void bH(String paramString, boolean paramBoolean)
+  public final void bO(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36696);
     if ((TextUtils.isEmpty(paramString)) || (getContext() == null))
@@ -53,7 +53,7 @@ public class AvatarImageView
       AppMethodBeat.o(36696);
       return;
     }
-    if (paramString.equals(this.xXR)) {
+    if (paramString.equals(this.zkN)) {
       if (paramBoolean) {
         break label53;
       }
@@ -67,11 +67,11 @@ public class AvatarImageView
     }
   }
   
-  public final void eE(String paramString, int paramInt)
+  public final void eM(String paramString, int paramInt)
   {
     AppMethodBeat.i(36695);
-    this.xLj.eE(paramString, paramInt);
-    this.xXR = paramString;
+    this.yXY.eM(paramString, paramInt);
+    this.zkN = paramString;
     AppMethodBeat.o(36695);
   }
   
@@ -80,7 +80,7 @@ public class AvatarImageView
     AppMethodBeat.i(36697);
     super.onDetachedFromWindow();
     if (this.pageType != -1) {
-      a.b(this.pageType, this.xXR, this);
+      a.b(this.pageType, this.zkN, this);
     }
     AppMethodBeat.o(36697);
   }
@@ -89,13 +89,13 @@ public class AvatarImageView
   {
     AppMethodBeat.i(36690);
     super.onDraw(paramCanvas);
-    if (this.GHl)
+    if (this.Ihh)
     {
-      this.xLj.a(paramCanvas, true, 0);
+      this.yXY.a(paramCanvas, true, 0);
       AppMethodBeat.o(36690);
       return;
     }
-    this.xLj.a(paramCanvas, false, 0);
+    this.yXY.a(paramCanvas, false, 0);
     AppMethodBeat.o(36690);
   }
   
@@ -108,28 +108,28 @@ public class AvatarImageView
   
   public void setChattingBG(boolean paramBoolean)
   {
-    this.GHl = paramBoolean;
+    this.Ihh = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(36692);
-    super.setOnClickListener(this.xLj.dGg());
-    this.xLj.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.yXY.dUH());
+    this.yXY.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(36692);
   }
   
   public void setOnDoubleClickListener(i.a parama)
   {
     AppMethodBeat.i(36693);
-    this.xLj.setOnDoubleClickListener(parama);
+    this.yXY.setOnDoubleClickListener(parama);
     AppMethodBeat.o(36693);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(36694);
-    this.xLj.setShowStoryHint(paramBoolean);
+    this.yXY.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(36694);
   }
 }

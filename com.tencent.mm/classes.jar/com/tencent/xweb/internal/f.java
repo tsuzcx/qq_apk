@@ -1,12 +1,12 @@
 package com.tencent.xweb.internal;
 
-import com.tencent.xweb.l;
+import com.tencent.xweb.m;
 
 public abstract interface f
 {
-  public abstract l frL();
+  public abstract m fKo();
   
-  public abstract void frM();
+  public abstract void fKp();
 }
 
 

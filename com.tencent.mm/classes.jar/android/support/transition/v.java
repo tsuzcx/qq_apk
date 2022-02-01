@@ -7,14 +7,14 @@ import android.view.View;
 
 final class v
 {
-  final a<View, u> Ah = new a();
-  final SparseArray<View> Ai = new SparseArray();
-  final g<View> Aj = new g();
-  final a<String, View> Ak = new a();
+  final a<View, u> Bf = new a();
+  final SparseArray<View> Bg = new SparseArray();
+  final g<View> Bh = new g();
+  final a<String, View> Bi = new a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.v
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip.model;
 
 abstract interface l$b
 {
-  public abstract void at(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void au(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

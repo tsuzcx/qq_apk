@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bx.b;
-import com.tencent.mm.protocal.protobuf.bkf;
-import com.tencent.mm.protocal.protobuf.cuz;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.protocal.protobuf.bnz;
+import com.tencent.mm.protocal.protobuf.dal;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ public final class s
   extends j<r>
 {
   public static final String[] SQL_CREATE;
-  public h gPa;
+  public h hpA;
   
   static
   {
@@ -29,69 +29,69 @@ public final class s
   public s(h paramh)
   {
     super(paramh, r.info, "SnsReportKv", r.INDEX_CREATE);
-    this.gPa = paramh;
+    this.hpA = paramh;
   }
   
-  private int a(cuz paramcuz, int paramInt)
+  private int a(dal paramdal, int paramInt)
   {
     AppMethodBeat.i(97592);
     try
     {
-      paramcuz = paramcuz.toByteArray();
+      paramdal = paramdal.toByteArray();
       r localr = new r();
-      localr.field_value = paramcuz;
+      localr.field_value = paramdal;
       localr.field_logtime = System.currentTimeMillis();
       localr.field_logsize = paramInt;
       localr.field_offset = 0;
-      paramcuz = localr.convertTo();
-      paramInt = (int)this.gPa.a("SnsReportKv", "", paramcuz);
-      ad.d("MicroMsg.SnsKvReportStg", "SnsKvReport Insert result ".concat(String.valueOf(paramInt)));
+      paramdal = localr.convertTo();
+      paramInt = (int)this.hpA.a("SnsReportKv", "", paramdal);
+      ac.d("MicroMsg.SnsKvReportStg", "SnsKvReport Insert result ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(97592);
       return paramInt;
     }
-    catch (Exception paramcuz)
+    catch (Exception paramdal)
     {
       AppMethodBeat.o(97592);
     }
     return 0;
   }
   
-  public final int a(cuz paramcuz)
+  public final int a(dal paramdal)
   {
     AppMethodBeat.i(97591);
-    cuz localcuz = new cuz();
+    dal localdal = new dal();
     int k = 0;
     int i = 0;
     int j = 0;
-    if (k < paramcuz.CwS.size())
+    if (k < paramdal.DPo.size())
     {
-      bkf localbkf = (bkf)paramcuz.CwS.get(k);
-      if (localbkf.DId.wA.length + j > 51200)
+      bnz localbnz = (bnz)paramdal.DPo.get(k);
+      if (localbnz.Fdy.xy.length + j > 51200)
       {
-        a(localcuz, j);
+        a(localdal, j);
         i += 1;
-        localcuz.CwS.clear();
+        localdal.DPo.clear();
         j = 0;
       }
       for (;;)
       {
         k += 1;
         break;
-        j += localbkf.DId.wA.length;
-        localcuz.CwS.add(localbkf);
+        j += localbnz.Fdy.xy.length;
+        localdal.DPo.add(localbnz);
       }
     }
     k = i;
-    if (localcuz.CwS.size() > 0)
+    if (localdal.DPo.size() > 0)
     {
       k = i + 1;
-      a(localcuz, j);
+      a(localdal, j);
     }
     AppMethodBeat.o(97591);
     return k;
   }
   
-  public final cuz hk(int paramInt1, int paramInt2)
+  public final dal ht(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97593);
     Object localObject = "select rowid, *  from SnsReportKv";
@@ -99,8 +99,8 @@ public final class s
     if (paramInt2 > 0) {
       localObject = "select rowid, *  from SnsReportKv" + " where rowid <= " + paramInt2;
     }
-    Cursor localCursor = this.gPa.a((String)localObject, null, 0);
-    cuz localcuz = new cuz();
+    Cursor localCursor = this.hpA.a((String)localObject, null, 0);
+    dal localdal = new dal();
     ArrayList localArrayList = new ArrayList();
     localStringBuffer.append("target size " + paramInt1 + " current maxcolid " + paramInt2);
     if (localCursor.moveToFirst()) {
@@ -112,16 +112,16 @@ public final class s
       localr.convertFrom(localCursor);
       i = localr.field_offset;
       localStringBuffer.append("|offset: ".concat(String.valueOf(i)));
-      localObject = new cuz();
+      localObject = new dal();
       for (;;)
       {
         try
         {
-          ((cuz)localObject).parseFrom(localr.field_value);
+          ((dal)localObject).parseFrom(localr.field_value);
         }
         catch (Exception localException2)
         {
-          bkf localbkf;
+          bnz localbnz;
           continue;
           i = 0;
           continue;
@@ -130,27 +130,27 @@ public final class s
         }
         try
         {
-          if (i >= ((cuz)localObject).CwS.size()) {
+          if (i >= ((dal)localObject).DPo.size()) {
             continue;
           }
-          localbkf = (bkf)((cuz)localObject).CwS.get(i);
-          if (localbkf.DId.wA.length + paramInt2 > paramInt1)
+          localbnz = (bnz)((dal)localObject).DPo.get(i);
+          if (localbnz.Fdy.xy.length + paramInt2 > paramInt1)
           {
             if (paramInt2 != 0) {
               continue;
             }
-            localArrayList.add(Integer.valueOf(localr.xiB));
-            ad.i("MicroMsg.SnsKvReportStg", "error by server for the mini size " + paramInt1 + " vlauesize " + localbkf.DId.wA.length);
+            localArrayList.add(Integer.valueOf(localr.yvp));
+            ac.i("MicroMsg.SnsKvReportStg", "error by server for the mini size " + paramInt1 + " vlauesize " + localbnz.Fdy.xy.length);
             continue;
-            localStringBuffer.append("|read end on " + localr.xiB + " and get size " + paramInt2);
-            if ((i != 0) && (localr.field_offset <= ((cuz)localObject).CwS.size()))
+            localStringBuffer.append("|read end on " + localr.yvp + " and get size " + paramInt2);
+            if ((i != 0) && (localr.field_offset <= ((dal)localObject).DPo.size()))
             {
-              update(localr.xiB, localr);
+              update(localr.yvp, localr);
               localStringBuffer.append("|update new offset " + localr.field_offset);
               if (i == 0) {
                 continue;
               }
-              ad.i("MicroMsg.SnsKvReportStg", "read info " + localStringBuffer.toString());
+              ac.i("MicroMsg.SnsKvReportStg", "read info " + localStringBuffer.toString());
               localCursor.close();
               localObject = localArrayList.iterator();
               if (!((Iterator)localObject).hasNext()) {
@@ -163,14 +163,14 @@ public final class s
           else
           {
             localr.field_offset = (i + 1);
-            localcuz.CwS.add(localbkf);
-            int j = paramInt2 + localbkf.DId.wA.length;
+            localdal.DPo.add(localbnz);
+            int j = paramInt2 + localbnz.Fdy.xy.length;
             i += 1;
             paramInt2 = j;
             continue;
           }
           localStringBuffer.append("|read full ");
-          localArrayList.add(Integer.valueOf(localr.xiB));
+          localArrayList.add(Integer.valueOf(localr.yvp));
           continue;
           if (localCursor.moveToNext()) {
             break;
@@ -178,9 +178,9 @@ public final class s
         }
         catch (Exception localException1)
         {
-          ad.printErrStackTrace("MicroMsg.SnsKvReportStg", localException1, "", new Object[0]);
-          localArrayList.add(Integer.valueOf(localr.xiB));
-          ad.i("MicroMsg.SnsKvReportStg", "error paser then delete " + localr.xiB);
+          ac.printErrStackTrace("MicroMsg.SnsKvReportStg", localException1, "", new Object[0]);
+          localArrayList.add(Integer.valueOf(localr.yvp));
+          ac.i("MicroMsg.SnsKvReportStg", "error paser then delete " + localr.yvp);
         }
       }
     }
@@ -189,7 +189,7 @@ public final class s
       break;
     }
     AppMethodBeat.o(97593);
-    return localcuz;
+    return localdal;
   }
 }
 

@@ -2,9 +2,9 @@ package com.google.android.exoplayer2.f.e;
 
 final class c
 {
-  public final float brG;
-  public final int brH;
-  public final float brI;
+  public final float bpF;
+  public final int bpG;
+  public final float bpH;
   public final String id;
   public final int lineType;
   public final float width;
@@ -17,10 +17,10 @@ final class c
   public c(String paramString, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, float paramFloat3)
   {
     this.id = paramString;
-    this.brI = paramFloat1;
-    this.brG = paramFloat2;
+    this.bpH = paramFloat1;
+    this.bpF = paramFloat2;
     this.lineType = paramInt1;
-    this.brH = paramInt2;
+    this.bpG = paramInt2;
     this.width = paramFloat3;
   }
 }

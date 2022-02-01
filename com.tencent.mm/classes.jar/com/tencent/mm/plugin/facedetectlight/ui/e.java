@@ -8,18 +8,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends a
 {
-  private RelativeLayout pTf;
-  private RelativeLayout pTg;
-  private ImageView pTh;
-  private ImageView pTi;
-  private ImageView pTj;
+  private RelativeLayout qBL;
+  private RelativeLayout qBM;
+  private ImageView qBN;
+  private ImageView qBO;
+  private ImageView qBP;
   
   public e(ViewGroup paramViewGroup, com.tencent.mm.plugin.facedetectlight.ui.container.a parama)
   {
     super(paramViewGroup, parama);
   }
   
-  public final int chg()
+  public final int coN()
   {
     return 2131493914;
   }
@@ -27,14 +27,14 @@ public final class e
   public final void initView()
   {
     AppMethodBeat.i(104328);
-    this.pTf = ((RelativeLayout)findViewById(2131299732));
-    this.pTg = ((RelativeLayout)findViewById(2131299730));
+    this.qBL = ((RelativeLayout)findViewById(2131299732));
+    this.qBM = ((RelativeLayout)findViewById(2131299730));
     setVisibility(4);
-    this.pTf.setVisibility(4);
-    this.pTg.setVisibility(4);
-    this.pTh = ((ImageView)findViewById(2131299673));
-    this.pTi = ((ImageView)findViewById(2131299670));
-    this.pTj = ((ImageView)findViewById(2131299680));
+    this.qBL.setVisibility(4);
+    this.qBM.setVisibility(4);
+    this.qBN = ((ImageView)findViewById(2131299673));
+    this.qBO = ((ImageView)findViewById(2131299670));
+    this.qBP = ((ImageView)findViewById(2131299680));
     AppMethodBeat.o(104328);
   }
 }

@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.ball.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.ball.c.c;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 
 public final class f
 {
-  public static void bAp()
+  public static void bHl()
   {
-    AppMethodBeat.i(205923);
-    d(false, true, true);
-    AppMethodBeat.o(205923);
+    AppMethodBeat.i(210298);
+    e(false, true, true);
+    AppMethodBeat.o(210298);
   }
   
-  public static void bAq()
+  public static void bHm()
   {
-    AppMethodBeat.i(205924);
-    d(true, true, true);
-    AppMethodBeat.o(205924);
+    AppMethodBeat.i(210299);
+    e(true, true, true);
+    AppMethodBeat.o(210299);
   }
   
-  public static void d(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public static void e(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(184419);
     c localc = (c)g.ab(c.class);
@@ -29,29 +29,29 @@ public final class f
     {
       if (paramBoolean1)
       {
-        ad.m("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, hide float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
+        ac.m("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, hide float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
         if (paramBoolean3)
         {
-          localc.ig(paramBoolean2);
+          localc.iG(paramBoolean2);
           AppMethodBeat.o(184419);
           return;
         }
-        localc.ie(paramBoolean2);
+        localc.iE(paramBoolean2);
         AppMethodBeat.o(184419);
         return;
       }
-      ad.m("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, show float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
+      ac.m("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, show float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
       if (paramBoolean3)
       {
-        localc.ih(paramBoolean2);
+        localc.iH(paramBoolean2);
         AppMethodBeat.o(184419);
         return;
       }
-      localc.jdMethod_if(paramBoolean2);
+      localc.iF(paramBoolean2);
       AppMethodBeat.o(184419);
       return;
     }
-    ad.i("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, service is null");
+    ac.i("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, service is null");
     AppMethodBeat.o(184419);
   }
 }

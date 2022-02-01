@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class x
 {
-  private boolean aFD;
+  private boolean aGt;
   private final Handler handler;
   
   x()
@@ -22,16 +22,16 @@ final class x
   final void e(u<?> paramu)
   {
     AppMethodBeat.i(77058);
-    j.pQ();
-    if (this.aFD)
+    j.qa();
+    if (this.aGt)
     {
       this.handler.obtainMessage(1, paramu).sendToTarget();
       AppMethodBeat.o(77058);
       return;
     }
-    this.aFD = true;
+    this.aGt = true;
     paramu.recycle();
-    this.aFD = false;
+    this.aGt = false;
     AppMethodBeat.o(77058);
   }
   
@@ -54,7 +54,7 @@ final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.bumptech.glide.c.b.x
  * JD-Core Version:    0.7.0.1
  */

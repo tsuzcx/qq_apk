@@ -5,12 +5,15 @@ import com.tencent.mm.loader.g.h;
 import com.tencent.mm.model.ce;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.bmd;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.plugin.finder.storage.f;
+import com.tencent.mm.plugin.finder.utils.p;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.vfs.FileSystem.a;
 import com.tencent.mm.vfs.i;
 import d.a.j;
 import d.a.v;
+import d.g.b.k;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/upload/FinderPostClearTask;", "Lcom/tencent/mm/plugin/finder/upload/FinderPostTask;", "id", "", "(Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "call", "", "uniqueId", "plugin-finder_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderPostClearTask;", "Lcom/tencent/mm/plugin/finder/upload/FinderPostTask;", "id", "", "(Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "call", "", "uniqueId", "plugin-finder_release"})
 public final class d
   extends g
 {
@@ -33,7 +36,7 @@ public final class d
     AppMethodBeat.o(167737);
   }
   
-  public final String abi()
+  public final String acg()
   {
     return this.id;
   }
@@ -41,21 +44,21 @@ public final class d
   public final void call()
   {
     AppMethodBeat.i(167736);
-    Object localObject3 = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFeedStorage().cqo();
-    Object localObject1 = e.qQW;
-    d.g.b.k.h(localObject3, "unsentObjs");
+    Object localObject3 = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFeedStorage().cAy();
+    Object localObject1 = e.rMX;
+    k.h(localObject3, "unsentObjs");
     Set localSet;
     Object localObject4;
-    if (e.crz())
+    if (e.cCt())
     {
-      ad.i(e.TAG, "checkPostingFolder, unsentSize:" + ((List)localObject3).size());
-      e.qQV = ce.asQ();
+      ac.i(e.TAG, "checkPostingFolder, unsentSize:" + ((List)localObject3).size());
+      e.rMW = ce.azH();
       try
       {
-        localObject1 = com.tencent.mm.plugin.finder.utils.k.qTp;
-        localObject1 = com.tencent.mm.plugin.finder.utils.k.csd();
+        localObject1 = p.rQw;
+        localObject1 = p.cDw();
         localSet = (Set)new LinkedHashSet();
-        Object localObject5 = i.cT((String)localObject1, false);
+        Object localObject5 = i.cZ((String)localObject1, false);
         if (localObject5 == null) {
           break label372;
         }
@@ -64,13 +67,13 @@ public final class d
         while (((Iterator)localObject5).hasNext())
         {
           FileSystem.a locala = (FileSystem.a)((Iterator)localObject5).next();
-          ((Collection)localObject4).add((String)localObject1 + "/" + locala.EQk);
+          ((Collection)localObject4).add((String)localObject1 + "/" + locala.Gnx);
         }
-        a(h.gla);
+        a(h.gLN);
       }
       catch (Throwable localThrowable)
       {
-        ad.printErrStackTrace(e.TAG, localThrowable, "checkPostingFolder", new Object[0]);
+        ac.printErrStackTrace(e.TAG, localThrowable, "checkPostingFolder", new Object[0]);
       }
     }
     else
@@ -82,7 +85,7 @@ public final class d
     for (Object localObject2 = (List)localObject4;; localObject2 = null)
     {
       if (localObject2 != null) {}
-      for (localObject2 = (Collection)localObject2;; localObject2 = (Collection)v.Jgl)
+      for (localObject2 = (Collection)localObject2;; localObject2 = (Collection)v.KTF)
       {
         localSet.addAll((Collection)localObject2);
         localObject2 = ((Iterable)localObject3).iterator();
@@ -91,15 +94,15 @@ public final class d
           localObject3 = ((Iterable)((FinderItem)((Iterator)localObject2).next()).getMediaList()).iterator();
           while (((Iterator)localObject3).hasNext())
           {
-            localObject4 = (bmd)((Iterator)localObject3).next();
-            localSet.remove(((bmd)localObject4).url);
-            localSet.remove(((bmd)localObject4).thumbUrl);
+            localObject4 = (bqs)((Iterator)localObject3).next();
+            localSet.remove(((bqs)localObject4).url);
+            localSet.remove(((bqs)localObject4).thumbUrl);
           }
         }
       }
       localObject2 = ((Iterable)localSet).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        e.ZG((String)((Iterator)localObject2).next());
+        e.aes((String)((Iterator)localObject2).next());
       }
       break;
     }

@@ -7,49 +7,49 @@ import com.tencent.mm.plugin.messenger.foundation.a.m;
 
 public abstract class e
 {
-  public static m Fef;
-  protected com.tencent.mm.plugin.messenger.foundation.a.a.h Fee;
+  public static m GBO;
+  protected com.tencent.mm.plugin.messenger.foundation.a.a.h GBN;
   
   public e(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
   {
-    this.Fee = paramh;
+    this.GBN = paramh;
   }
   
   protected final void a(h.b paramb)
   {
-    this.Fee.a(paramb);
+    this.GBN.a(paramb);
   }
   
   protected final void a(h.c paramc)
   {
-    this.Fee.a(paramc);
+    this.GBN.a(paramc);
   }
   
-  protected boolean a(bl parambl, bi.b paramb)
+  protected boolean a(bo parambo, bi.b paramb)
   {
     return true;
   }
   
-  public abstract String aHk(String paramString);
+  public abstract String aME(String paramString);
   
-  protected final String agG(String paramString)
+  protected final String alA(String paramString)
   {
-    return this.Fee.agG(paramString);
+    return this.GBN.alA(paramString);
   }
   
   protected final void c(com.tencent.mm.storagebase.h paramh, String paramString)
   {
-    this.Fee.c(paramh, paramString);
+    this.GBN.c(paramh, paramString);
   }
   
   public final com.tencent.mm.storagebase.h getDB()
   {
-    return this.Fee.getDB();
+    return this.GBN.getDB();
   }
   
-  protected final void kX(String paramString1, String paramString2)
+  protected final void lu(String paramString1, String paramString2)
   {
-    this.Fee.b(paramString1, paramString2, null);
+    this.GBN.b(paramString1, paramString2, null);
   }
 }
 

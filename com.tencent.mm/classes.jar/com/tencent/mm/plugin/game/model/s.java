@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.LinkedList;
 
 public final class s
@@ -40,11 +40,19 @@ public final class s
     return paramVarArgs;
   }
   
-  public final int EA(int paramInt)
+  public final Cursor Gv(int paramInt)
+  {
+    AppMethodBeat.i(183866);
+    Cursor localCursor = rawQuery("select * from GameRawMessage where showType = " + paramInt + " and showInMsgList = 1 and isHidden = 0 order by isRead, createTime desc", new String[0]);
+    AppMethodBeat.o(183866);
+    return localCursor;
+  }
+  
+  public final int Gw(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(184805);
-    Cursor localCursor = Ez(paramInt);
+    Cursor localCursor = Gv(paramInt);
     if (localCursor == null)
     {
       AppMethodBeat.o(184805);
@@ -59,7 +67,7 @@ public final class s
     return paramInt;
   }
   
-  public final int EB(int paramInt)
+  public final int Gx(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(183867);
@@ -78,15 +86,7 @@ public final class s
     return paramInt;
   }
   
-  public final Cursor Ez(int paramInt)
-  {
-    AppMethodBeat.i(183866);
-    Cursor localCursor = rawQuery("select * from GameRawMessage where showType = " + paramInt + " and showInMsgList = 1 and isHidden = 0 order by isRead, createTime desc", new String[0]);
-    AppMethodBeat.o(183866);
-    return localCursor;
-  }
-  
-  public final o acA(String paramString)
+  public final o ahs(String paramString)
   {
     AppMethodBeat.i(184804);
     paramString = rawQuery("select * from GameRawMessage where gameMsgId = \"" + paramString + "\"", new String[0]);
@@ -189,14 +189,14 @@ public final class s
     return false;
   }
   
-  public final void cDq()
+  public final void cQA()
   {
     AppMethodBeat.i(41495);
     execSQL("GameRawMessage", "update GameRawMessage set isHidden = 0 where isHidden = 1");
     AppMethodBeat.o(41495);
   }
   
-  public final void cDr()
+  public final void cQB()
   {
     AppMethodBeat.i(41496);
     String str = A(new int[] { 2, 5, 6, 10, 11, 100 });
@@ -204,15 +204,15 @@ public final class s
     AppMethodBeat.o(41496);
   }
   
-  public final void cDs()
+  public final void cQC()
   {
     AppMethodBeat.i(183865);
-    String str = "delete from GameRawMessage where createTime < (" + "select createTime from GameRawMessage order by createTime desc limit 9999,1" + ")";
-    ad.i("MicroMsg.GameMessageStorage", "clearMessageStorage: [%b], [%s]", new Object[] { Boolean.valueOf(execSQL("GameRawMessage", str)), str });
+    String str = "delete from GameRawMessage where createTime < (" + "select createTime from GameRawMessage order by createTime desc limit 100000,1" + ")";
+    ac.i("MicroMsg.GameMessageStorage", "clearMessageStorage: [%b], [%s]", new Object[] { Boolean.valueOf(execSQL("GameRawMessage", str)), str });
     AppMethodBeat.o(183865);
   }
   
-  public final int cDt()
+  public final int cQD()
   {
     int i = 0;
     AppMethodBeat.i(41497);
@@ -231,7 +231,7 @@ public final class s
     return i;
   }
   
-  public final o qV(long paramLong)
+  public final o vy(long paramLong)
   {
     AppMethodBeat.i(41492);
     o localo = new o();

@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.n;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -16,9 +16,9 @@ import com.tencent.mm.wallet_core.ui.formview.a;
 public class WalletCheckIdentityUI
   extends WalletBaseUI
 {
-  private WalletFormView AjM;
-  private String BKL;
-  private WalletFormView zTO;
+  private WalletFormView BCi;
+  private WalletFormView Bmi;
+  private String DcT;
   
   public int getForceOrientation()
   {
@@ -34,23 +34,23 @@ public class WalletCheckIdentityUI
   {
     AppMethodBeat.i(72327);
     setMMTitle(2131765192);
-    this.AjM = ((WalletFormView)findViewById(2131302662));
-    a.e(this, this.AjM);
-    this.zTO = ((WalletFormView)findViewById(2131300910));
-    a.c(this.zTO);
-    setEditFocusListener(this.zTO, 1, false);
+    this.BCi = ((WalletFormView)findViewById(2131302662));
+    a.e(this, this.BCi);
+    this.Bmi = ((WalletFormView)findViewById(2131300910));
+    a.c(this.Bmi);
+    setEditFocusListener(this.Bmi, 1, false);
     String str = getInput().getString("key_pre_name");
-    this.BKL = getInput().getString("key_pre_indentity");
-    if (!bt.isNullOrNil(str))
+    this.DcT = getInput().getString("key_pre_indentity");
+    if (!bs.isNullOrNil(str))
     {
-      this.AjM.getPrefilledTv().setText(str);
-      this.AjM.setHint(getString(2131765181));
+      this.BCi.getPrefilledTv().setText(str);
+      this.BCi.setHint(getString(2131765181));
     }
-    if (!bt.isNullOrNil(this.BKL))
+    if (!bs.isNullOrNil(this.DcT))
     {
-      this.zTO.setMaxInputLength(4);
-      this.zTO.getPrefilledTv().setText(this.BKL);
-      this.zTO.setHint(getString(2131765135));
+      this.Bmi.setMaxInputLength(4);
+      this.Bmi.getPrefilledTv().setText(this.DcT);
+      this.Bmi.setHint(getString(2131765135));
     }
     findViewById(2131302852).setOnClickListener(new View.OnClickListener()
     {
@@ -60,7 +60,7 @@ public class WalletCheckIdentityUI
         paramAnonymousView = WalletCheckIdentityUI.a(WalletCheckIdentityUI.this).getText();
         String str = WalletCheckIdentityUI.b(WalletCheckIdentityUI.this).getText();
         if (WalletCheckIdentityUI.a(WalletCheckIdentityUI.this, paramAnonymousView, str)) {
-          WalletCheckIdentityUI.this.getNetController().q(new Object[] { paramAnonymousView, str });
+          WalletCheckIdentityUI.this.getNetController().s(new Object[] { paramAnonymousView, str });
         }
         AppMethodBeat.o(72325);
       }

@@ -14,15 +14,15 @@ public final class f$2
   public final void onShow(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(48655);
-    if (this.lzV.getWindow() != null) {
-      this.lzV.getWindow().setDimAmount(0.0F);
+    if (this.mbR.getWindow() != null) {
+      this.mbR.getWindow().setDimAmount(0.0F);
     }
     AppMethodBeat.o(48655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.f.2
  * JD-Core Version:    0.7.0.1
  */

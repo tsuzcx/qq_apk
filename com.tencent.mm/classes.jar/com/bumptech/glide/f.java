@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum f
 {
-  private final float azZ;
+  private final float aAT;
   
   static
   {
     AppMethodBeat.i(76786);
-    azW = new f("LOW", 0, 0.5F);
-    azX = new f("NORMAL", 1, 1.0F);
-    azY = new f("HIGH", 2, 1.5F);
-    aAa = new f[] { azW, azX, azY };
+    aAQ = new f("LOW", 0, 0.5F);
+    aAR = new f("NORMAL", 1, 1.0F);
+    aAS = new f("HIGH", 2, 1.5F);
+    aAU = new f[] { aAQ, aAR, aAS };
     AppMethodBeat.o(76786);
   }
   
   private f(float paramFloat)
   {
-    this.azZ = paramFloat;
+    this.aAT = paramFloat;
   }
 }
 

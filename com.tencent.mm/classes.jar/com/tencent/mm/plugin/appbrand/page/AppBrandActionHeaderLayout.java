@@ -15,23 +15,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandActionHeaderLayout
   extends LinearLayout
 {
-  public LinearLayout kXl;
-  public HorizontalScrollView kXm;
-  public AppBrandActionSingleHeaderView kXn;
-  private AppBrandActionMultipleHeaderView kXo;
-  private AppBrandActionMultipleHeaderView kXp;
-  private AppBrandActionMultipleHeaderView kXq;
-  private AppBrandActionMultipleHeaderView kXr;
-  private TextView kXs;
-  private int kXt;
+  public LinearLayout lyV;
+  public HorizontalScrollView lyW;
+  public AppBrandActionSingleHeaderView lyX;
+  private AppBrandActionMultipleHeaderView lyY;
+  private AppBrandActionMultipleHeaderView lyZ;
+  private AppBrandActionMultipleHeaderView lza;
+  private AppBrandActionMultipleHeaderView lzb;
+  private TextView lzc;
+  private int lzd;
   private Context mContext;
   
   public AppBrandActionHeaderLayout(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(147430);
-    this.kXt = -1;
-    aL(paramContext);
+    this.lzd = -1;
+    aM(paramContext);
     AppMethodBeat.o(147430);
   }
   
@@ -39,8 +39,8 @@ public class AppBrandActionHeaderLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(147431);
-    this.kXt = -1;
-    aL(paramContext);
+    this.lzd = -1;
+    aM(paramContext);
     AppMethodBeat.o(147431);
   }
   
@@ -49,43 +49,43 @@ public class AppBrandActionHeaderLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(147432);
-    this.kXt = -1;
-    aL(paramContext);
+    this.lzd = -1;
+    aM(paramContext);
     AppMethodBeat.o(147432);
   }
   
-  private void aL(Context paramContext)
+  private void aM(Context paramContext)
   {
     AppMethodBeat.i(147436);
     this.mContext = paramContext;
     View.inflate(paramContext, 2131493089, this);
-    this.kXl = ((LinearLayout)findViewById(2131296881));
-    this.kXm = ((HorizontalScrollView)findViewById(2131296879));
-    this.kXn = ((AppBrandActionSingleHeaderView)findViewById(2131296891));
-    this.kXo = ((AppBrandActionMultipleHeaderView)findViewById(2131296885));
-    this.kXp = ((AppBrandActionMultipleHeaderView)findViewById(2131296886));
-    this.kXq = ((AppBrandActionMultipleHeaderView)findViewById(2131296887));
-    this.kXr = ((AppBrandActionMultipleHeaderView)findViewById(2131296888));
-    this.kXs = ((TextView)findViewById(2131296882));
-    this.kXo.setVisibility(8);
-    this.kXp.setVisibility(8);
-    this.kXq.setVisibility(8);
-    this.kXr.setVisibility(8);
-    this.kXs.setVisibility(8);
+    this.lyV = ((LinearLayout)findViewById(2131296881));
+    this.lyW = ((HorizontalScrollView)findViewById(2131296879));
+    this.lyX = ((AppBrandActionSingleHeaderView)findViewById(2131296891));
+    this.lyY = ((AppBrandActionMultipleHeaderView)findViewById(2131296885));
+    this.lyZ = ((AppBrandActionMultipleHeaderView)findViewById(2131296886));
+    this.lza = ((AppBrandActionMultipleHeaderView)findViewById(2131296887));
+    this.lzb = ((AppBrandActionMultipleHeaderView)findViewById(2131296888));
+    this.lzc = ((TextView)findViewById(2131296882));
+    this.lyY.setVisibility(8);
+    this.lyZ.setVisibility(8);
+    this.lza.setVisibility(8);
+    this.lzb.setVisibility(8);
+    this.lzc.setVisibility(8);
     AppMethodBeat.o(147436);
   }
   
   public TextView getStatusTextView()
   {
-    return this.kXs;
+    return this.lzc;
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(147435);
     super.onAttachedToWindow();
-    if (this.kXt > 0) {
-      setForceHeight(this.kXt);
+    if (this.lzd > 0) {
+      setForceHeight(this.lzd);
     }
     AppMethodBeat.o(147435);
   }
@@ -93,12 +93,12 @@ public class AppBrandActionHeaderLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(147433);
-    if (this.kXt > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.kXt, 1073741824);
+    if (this.lzd > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.lzd, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.kXt > 0) && (getMeasuredHeight() > this.kXt)) {
-      super.setMeasuredDimension(getMeasuredWidth(), this.kXt);
+    if ((this.lzd > 0) && (getMeasuredHeight() > this.lzd)) {
+      super.setMeasuredDimension(getMeasuredWidth(), this.lzd);
     }
     AppMethodBeat.o(147433);
   }
@@ -108,21 +108,21 @@ public class AppBrandActionHeaderLayout
     AppMethodBeat.i(147437);
     if (paramBoolean)
     {
-      this.kXn.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.kXo.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.kXp.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.kXq.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.kXr.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.kXs.setTextColor(this.mContext.getResources().getColor(2131101182));
+      this.lyX.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
+      this.lyY.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
+      this.lyZ.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
+      this.lza.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
+      this.lzb.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
+      this.lzc.setTextColor(this.mContext.getResources().getColor(2131101182));
       AppMethodBeat.o(147437);
       return;
     }
-    this.kXn.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.kXo.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.kXp.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.kXq.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.kXr.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.kXs.setTextColor(this.mContext.getResources().getColor(2131100030));
+    this.lyX.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
+    this.lyY.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
+    this.lyZ.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
+    this.lza.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
+    this.lzb.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
+    this.lzc.setTextColor(this.mContext.getResources().getColor(2131100030));
     AppMethodBeat.o(147437);
   }
   
@@ -132,12 +132,12 @@ public class AppBrandActionHeaderLayout
   public void setForceHeight(int paramInt)
   {
     AppMethodBeat.i(169505);
-    this.kXt = Math.max(paramInt, -1);
+    this.lzd = Math.max(paramInt, -1);
     if ((getParent() instanceof ViewGroup))
     {
       ViewGroup localViewGroup = (ViewGroup)getParent();
-      if (this.kXt > 0) {
-        localViewGroup.setMinimumHeight(this.kXt);
+      if (this.lzd > 0) {
+        localViewGroup.setMinimumHeight(this.lzd);
       }
       requestLayout();
     }
@@ -147,16 +147,16 @@ public class AppBrandActionHeaderLayout
   public void setStatusDescription(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(147438);
-    this.kXs.setText(paramCharSequence);
-    this.kXs.setVisibility(0);
-    this.kXl.setVisibility(8);
-    this.kXm.setVisibility(8);
+    this.lzc.setText(paramCharSequence);
+    this.lzc.setVisibility(0);
+    this.lyV.setVisibility(8);
+    this.lyW.setVisibility(8);
     AppMethodBeat.o(147438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandActionHeaderLayout
  * JD-Core Version:    0.7.0.1
  */

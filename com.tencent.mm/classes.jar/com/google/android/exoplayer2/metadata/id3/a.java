@@ -15,13 +15,13 @@ import java.util.Locale;
 public final class a
   implements com.google.android.exoplayer2.metadata.a
 {
-  public static final int bfm;
-  private final a bjC;
+  public static final int bfU;
+  private final a bkh;
   
   static
   {
     AppMethodBeat.i(92443);
-    bfm = x.aY("ID3");
+    bfU = x.aQ("ID3");
     AppMethodBeat.o(92443);
   }
   
@@ -32,7 +32,7 @@ public final class a
   
   public a(a parama)
   {
-    this.bjC = parama;
+    this.bkh = parama;
   }
   
   private static ChapterFrame a(m paramm, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, a parama)
@@ -44,12 +44,12 @@ public final class a
     paramm.setPosition(j + 1);
     j = paramm.readInt();
     int k = paramm.readInt();
-    long l2 = paramm.df();
+    long l2 = paramm.dm();
     long l1 = l2;
     if (l2 == 4294967295L) {
       l1 = -1L;
     }
-    long l3 = paramm.df();
+    long l3 = paramm.dm();
     l2 = l3;
     if (l3 == 4294967295L) {
       l2 = -1L;
@@ -83,7 +83,7 @@ public final class a
       if (paramInt1 != 4) {
         break label162;
       }
-      j = paramm.vQ();
+      j = paramm.vF();
       i = j;
       if (!paramBoolean) {
         i = j & 0xFF | (j >> 8 & 0xFF) << 7 | (j >> 16 & 0xFF) << 14 | (j >> 24 & 0xFF) << 21;
@@ -107,10 +107,10 @@ public final class a
       break;
       if (paramInt1 == 3)
       {
-        i = paramm.vQ();
+        i = paramm.vF();
         break label100;
       }
-      i = paramm.vL();
+      i = paramm.vA();
       break label100;
     }
     label191:
@@ -224,12 +224,12 @@ public final class a
     if (k != 0)
     {
       k = i - 1;
-      paramm.fl(1);
+      paramm.eX(1);
       i = k;
       if (j != 0)
       {
         i = k - 4;
-        paramm.fl(4);
+        paramm.eX(4);
       }
       j = i;
       if (i1 != 0) {
@@ -351,7 +351,7 @@ public final class a
       if (paramInt1 == 2)
       {
         i = 2;
-        localObject1 = "image/" + x.aV(new String((byte[])localObject3, 0, 3, "ISO-8859-1"));
+        localObject1 = "image/" + x.aO(new String((byte[])localObject3, 0, 3, "ISO-8859-1"));
         paramInt2 = i;
         parama = (a)localObject1;
         if (((String)localObject1).equals("image/jpg"))
@@ -368,7 +368,7 @@ public final class a
         parama = new ApicFrame(parama, new String((byte[])localObject3, paramInt2, m - paramInt2, (String)localObject2), i & 0xFF, i((byte[])localObject3, ew(k) + m, localObject3.length));
         break;
         i = e((byte[])localObject3, 0);
-        localObject1 = x.aV(new String((byte[])localObject3, 0, i, "ISO-8859-1"));
+        localObject1 = x.aO(new String((byte[])localObject3, 0, i, "ISO-8859-1"));
         paramInt2 = i;
         parama = (a)localObject1;
         if (((String)localObject1).indexOf('/') == -1)
@@ -444,13 +444,13 @@ public final class a
     {
       try
       {
-        if (paramm.vJ() >= paramInt2)
+        if (paramm.vy() >= paramInt2)
         {
           int k;
           if (paramInt1 >= 3)
           {
             i = paramm.readInt();
-            l = paramm.df();
+            l = paramm.dm();
             k = paramm.readUnsignedShort();
             if ((i == 0) && (l == 0L) && (k == 0)) {
               return true;
@@ -458,8 +458,8 @@ public final class a
           }
           else
           {
-            i = paramm.vL();
-            j = paramm.vL();
+            i = paramm.vA();
+            j = paramm.vA();
             l = j;
             k = 0;
             continue;
@@ -525,12 +525,12 @@ public final class a
             i = 0;
             continue;
           }
-          i = paramm.vJ();
+          i = paramm.vy();
           if (i < l) {
             return false;
           }
           i = (int)l;
-          paramm.fl(i);
+          paramm.eX(i);
           continue;
         }
         paramm.setPosition(m);
@@ -715,20 +715,20 @@ public final class a
   private static b x(m paramm)
   {
     AppMethodBeat.i(92434);
-    if (paramm.vJ() < 10)
+    if (paramm.vy() < 10)
     {
       AppMethodBeat.o(92434);
       return null;
     }
-    if (paramm.vL() != bfm)
+    if (paramm.vA() != bfU)
     {
       AppMethodBeat.o(92434);
       return null;
     }
     int m = paramm.readUnsignedByte();
-    paramm.fl(1);
+    paramm.eX(1);
     int n = paramm.readUnsignedByte();
-    int i = paramm.vP();
+    int i = paramm.vE();
     int j;
     if (m == 2)
     {
@@ -758,7 +758,7 @@ public final class a
           if (k != 0)
           {
             j = paramm.readInt();
-            paramm.fl(j);
+            paramm.eX(j);
             j = i - (j + 4);
           }
           i = j;
@@ -774,8 +774,8 @@ public final class a
           j = i;
           if (k != 0)
           {
-            j = paramm.vP();
-            paramm.fl(j - 4);
+            j = paramm.vE();
+            paramm.eX(j - 4);
             j = i - j;
           }
           if ((n & 0x10) == 0) {
@@ -802,7 +802,7 @@ public final class a
   public final Metadata a(d paramd)
   {
     AppMethodBeat.i(92432);
-    paramd = paramd.aIq;
+    paramd = paramd.aJg;
     paramd = d(paramd.array(), paramd.limit());
     AppMethodBeat.o(92432);
     return paramd;
@@ -821,27 +821,27 @@ public final class a
     }
     int j = paramArrayOfByte.position;
     boolean bool;
-    if (localb.bjD == 2)
+    if (localb.bki == 2)
     {
       paramInt = 6;
-      int i = localb.bjF;
-      if (localb.bjE) {
-        i = f(paramArrayOfByte, localb.bjF);
+      int i = localb.bkk;
+      if (localb.bkj) {
+        i = f(paramArrayOfByte, localb.bkk);
       }
-      paramArrayOfByte.fk(i + j);
-      if (a(paramArrayOfByte, localb.bjD, paramInt, false)) {
+      paramArrayOfByte.eW(i + j);
+      if (a(paramArrayOfByte, localb.bki, paramInt, false)) {
         break label225;
       }
-      if ((localb.bjD != 4) || (!a(paramArrayOfByte, 4, paramInt, true))) {
+      if ((localb.bki != 4) || (!a(paramArrayOfByte, 4, paramInt, true))) {
         break label180;
       }
       bool = true;
     }
     for (;;)
     {
-      if (paramArrayOfByte.vJ() >= paramInt)
+      if (paramArrayOfByte.vy() >= paramInt)
       {
-        Id3Frame localId3Frame = a(localb.bjD, paramArrayOfByte, bool, paramInt, this.bjC);
+        Id3Frame localId3Frame = a(localb.bki, paramArrayOfByte, bool, paramInt, this.bkh);
         if (localId3Frame == null) {
           continue;
         }
@@ -850,7 +850,7 @@ public final class a
         paramInt = 10;
         break;
         label180:
-        new StringBuilder("Failed to validate ID3 tag with majorVersion=").append(localb.bjD);
+        new StringBuilder("Failed to validate ID3 tag with majorVersion=").append(localb.bki);
         AppMethodBeat.o(92433);
         return null;
       }
@@ -869,15 +869,15 @@ public final class a
   
   static final class b
   {
-    final int bjD;
-    final boolean bjE;
-    final int bjF;
+    final int bki;
+    final boolean bkj;
+    final int bkk;
     
     public b(int paramInt1, boolean paramBoolean, int paramInt2)
     {
-      this.bjD = paramInt1;
-      this.bjE = paramBoolean;
-      this.bjF = paramInt2;
+      this.bki = paramInt1;
+      this.bkj = paramBoolean;
+      this.bkk = paramInt2;
     }
   }
 }

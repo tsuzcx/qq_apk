@@ -2,72 +2,72 @@ package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/report/ChatEmojiBtnClickReport;", "", "()V", "TAG", "", "btnClicked", "", "lastShow", "panelOpenTime", "", "recordBtnClick", "", "recordClose", "recordOpen", "plugin-emojisdk_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/report/ChatEmojiBtnClickReport;", "", "()V", "TAG", "", "btnClicked", "", "lastShow", "panelOpenTime", "", "recordBtnClick", "", "recordClose", "recordOpen", "plugin-emojisdk_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.ChatEmojiBtnClickReport";
-  private static long fQX;
-  private static boolean fQY;
-  private static boolean fQZ;
-  public static final a fRa;
+  private static long fUS;
+  private static boolean fUT;
+  private static boolean fUU;
+  public static final a fUV;
   
   static
   {
     AppMethodBeat.i(105725);
-    fRa = new a();
+    fUV = new a();
     TAG = "MicroMsg.ChatEmojiBtnClickReport";
     AppMethodBeat.o(105725);
   }
   
-  public static void acj()
+  public static void adp()
   {
-    fQY = true;
+    fUT = true;
   }
   
-  public static void ack()
+  public static void adq()
   {
     int i = 3;
     AppMethodBeat.i(105723);
-    fQX = System.currentTimeMillis();
-    ad.i(TAG, "recordOpen: " + fQX + ", " + fQZ);
-    if (!fQZ)
+    fUS = System.currentTimeMillis();
+    ac.i(TAG, "recordOpen: " + fUS + ", " + fUU);
+    if (!fUU)
     {
-      Object localObject = h.vKh;
-      if (fQY) {
+      Object localObject = h.wUl;
+      if (fUT) {
         i = 1;
       }
-      ((h)localObject).f(17302, new Object[] { Integer.valueOf(i), Integer.valueOf(0), Long.valueOf(fQX) });
-      b.acm().lq(fQX);
-      f.acp().lq(fQX);
-      localObject = e.fRj;
-      e.lq(fQX);
+      ((h)localObject).f(17302, new Object[] { Integer.valueOf(i), Integer.valueOf(0), Long.valueOf(fUS) });
+      b.ads().oT(fUS);
+      f.adv().oT(fUS);
+      localObject = e.fVe;
+      e.oT(fUS);
     }
-    fQZ = true;
-    fQY = false;
+    fUU = true;
+    fUT = false;
     AppMethodBeat.o(105723);
   }
   
-  public static void acl()
+  public static void adr()
   {
     int i = 2;
     AppMethodBeat.i(105724);
-    long l = System.currentTimeMillis() - fQX;
-    ad.i(TAG, "recordClose: " + l + ", " + fQX + ", " + fQZ);
+    long l = System.currentTimeMillis() - fUS;
+    ac.i(TAG, "recordClose: " + l + ", " + fUS + ", " + fUU);
     h localh;
-    if (fQZ)
+    if (fUU)
     {
-      localh = h.vKh;
-      if (!fQY) {
+      localh = h.wUl;
+      if (!fUT) {
         break label110;
       }
     }
     for (;;)
     {
       localh.f(17302, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-      fQZ = false;
+      fUU = false;
       AppMethodBeat.o(105724);
       return;
       label110:

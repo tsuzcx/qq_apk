@@ -5,17 +5,17 @@ import android.graphics.PorterDuff.Mode;
 
 final class ax
 {
-  public ColorStateList Hr;
-  public boolean ZV;
-  public boolean ZW;
-  public PorterDuff.Mode vo;
+  public ColorStateList Ip;
+  public boolean aaQ;
+  public boolean aaR;
+  public PorterDuff.Mode wn;
   
   final void clear()
   {
-    this.Hr = null;
-    this.ZV = false;
-    this.vo = null;
-    this.ZW = false;
+    this.Ip = null;
+    this.aaQ = false;
+    this.wn = null;
+    this.aaR = false;
   }
 }
 

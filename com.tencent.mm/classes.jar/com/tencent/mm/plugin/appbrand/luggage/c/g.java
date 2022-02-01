@@ -11,19 +11,19 @@ public class g
 {
   public g()
   {
-    super(a.chL);
+    super(a.ceG);
   }
   
   static final class a
     extends b
   {
-    static final b.a chL;
+    static final b.a ceG;
     
     static
     {
       AppMethodBeat.i(47575);
-      chL = new a((byte)0);
-      com.tencent.luggage.sdk.b.a.c.d.DS().a(chL, a.class);
+      ceG = new a((byte)0);
+      com.tencent.luggage.sdk.b.a.c.d.Dv().a(ceG, a.class);
       AppMethodBeat.o(47575);
     }
     
@@ -32,13 +32,13 @@ public class g
       super();
     }
     
-    public final b.b DE()
+    public final b.b Dh()
     {
       AppMethodBeat.i(47574);
       b.b localb = new b.b();
       localb.name = "WAService.js";
-      localb.source = com.tencent.mm.plugin.appbrand.aa.d.Ne("wxa_library/native/WAService.js");
-      localb.chD = ("WANativeRender_" + localb.name);
+      localb.source = com.tencent.mm.plugin.appbrand.z.d.Rn("wxa_library/native/WAService.js");
+      localb.cey = ("WANativeRender_" + localb.name);
       AppMethodBeat.o(47574);
       return localb;
     }
@@ -50,7 +50,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.g
  * JD-Core Version:    0.7.0.1
  */

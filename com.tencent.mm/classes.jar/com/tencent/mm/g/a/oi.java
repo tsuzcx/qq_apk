@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class oi
   extends b
 {
-  public a dtq;
+  public a dqN;
+  public b dqO;
   
   public oi()
   {
@@ -15,25 +16,29 @@ public final class oi
   
   private oi(byte paramByte)
   {
-    AppMethodBeat.i(104419);
-    this.dtq = new a();
-    this.ESR = false;
+    AppMethodBeat.i(130031);
+    this.dqN = new a();
+    this.dqO = new b();
+    this.Gqe = false;
     this.callback = null;
-    AppMethodBeat.o(104419);
+    AppMethodBeat.o(130031);
   }
   
   public static final class a
   {
-    public String dtr;
-    public int dtt;
-    public long dtu;
-    public String query;
+    public boolean dqP = false;
+    public boolean dqQ = false;
     public int type;
+  }
+  
+  public static final class b
+  {
+    public boolean dqR = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.oi
  * JD-Core Version:    0.7.0.1
  */

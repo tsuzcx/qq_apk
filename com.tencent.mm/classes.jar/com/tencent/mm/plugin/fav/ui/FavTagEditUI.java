@@ -24,16 +24,16 @@ import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.a.c;
 import com.tencent.mm.plugin.fav.ui.a.d;
 import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.agz;
-import com.tencent.mm.protocal.protobuf.aha;
-import com.tencent.mm.protocal.protobuf.ahb;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.protocal.protobuf.ahx;
+import com.tencent.mm.protocal.protobuf.ahy;
+import com.tencent.mm.protocal.protobuf.ahz;
+import com.tencent.mm.protocal.protobuf.aia;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMTagPanel.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -46,18 +46,18 @@ import java.util.Set;
 public class FavTagEditUI
   extends MMActivity
 {
-  private FavTagPanel qfA;
-  private ListView qfB;
-  private ListView qfC;
-  private TextView qfD;
-  private c qfE;
-  private d qfF;
-  private boolean qfG;
-  private com.tencent.mm.plugin.fav.a.g qfx;
-  private List<String> qfy;
-  private FavTagPanel qfz;
+  private com.tencent.mm.plugin.fav.a.g qNZ;
+  private List<String> qOa;
+  private FavTagPanel qOb;
+  private FavTagPanel qOc;
+  private ListView qOd;
+  private ListView qOe;
+  private TextView qOf;
+  private c qOg;
+  private d qOh;
+  private boolean qOi;
   
-  private void LS()
+  private void LQ()
   {
     AppMethodBeat.i(106929);
     h.d(getContext(), getString(2131758955), "", getString(2131755277), getString(2131755691), new DialogInterface.OnClickListener()
@@ -80,39 +80,39 @@ public class FavTagEditUI
       AppMethodBeat.o(106930);
       return;
     }
-    ad.d("MicroMsg.FavTagEditUI", "mod tags %s", new Object[] { paramCollection });
+    ac.d("MicroMsg.FavTagEditUI", "mod tags %s", new Object[] { paramCollection });
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(paramg.field_tagProto.DiR);
-    paramg.field_tagProto.DiR.clear();
+    localHashSet.addAll(paramg.field_tagProto.EBX);
+    paramg.field_tagProto.EBX.clear();
     if ((paramCollection == null) || (paramCollection.isEmpty())) {}
     for (;;)
     {
       ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a(paramg, new String[] { "localId" });
       b.p(paramg);
-      ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr().e(localHashSet);
+      ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr().f(localHashSet);
       b.a(paramg, paramInt);
       AppMethodBeat.o(106930);
       return;
-      paramg.field_tagProto.DiR.addAll(paramCollection);
+      paramg.field_tagProto.EBX.addAll(paramCollection);
       localHashSet.removeAll(paramCollection);
     }
   }
   
-  private void cjf()
+  private void cqM()
   {
     AppMethodBeat.i(106926);
-    if (this.qfG)
+    if (this.qOi)
     {
-      ad.w("MicroMsg.FavTagEditUI", "match max length, disable finish button");
+      ac.w("MicroMsg.FavTagEditUI", "match max length, disable finish button");
       if (isOptionMenuEnable(0)) {
         enableOptionMenu(0, false);
       }
       AppMethodBeat.o(106926);
       return;
     }
-    if (this.qfx == null)
+    if (this.qNZ == null)
     {
-      if ((this.qfA.getTagCount() <= 0) && (this.qfA.getEditText().length() <= 0))
+      if ((this.qOc.getTagCount() <= 0) && (this.qOc.getEditText().length() <= 0))
       {
         if (isOptionMenuEnable(0))
         {
@@ -126,7 +126,7 @@ public class FavTagEditUI
         AppMethodBeat.o(106926);
       }
     }
-    else if ((this.qfx.field_tagProto.DiR.size() != this.qfA.getTagCount()) || (this.qfA.getEditText().length() > 0))
+    else if ((this.qNZ.field_tagProto.EBX.size() != this.qOc.getTagCount()) || (this.qOc.getEditText().length() > 0))
     {
       if (!isOptionMenuEnable(0))
       {
@@ -136,11 +136,11 @@ public class FavTagEditUI
     }
     else
     {
-      ArrayList localArrayList = this.qfA.getTagList();
+      ArrayList localArrayList = this.qOc.getTagList();
       int i = 0;
       while (i < localArrayList.size())
       {
-        if (!((String)localArrayList.get(i)).equals(this.qfx.field_tagProto.DiR.get(i)))
+        if (!((String)localArrayList.get(i)).equals(this.qNZ.field_tagProto.EBX.get(i)))
         {
           if (!isOptionMenuEnable(0)) {
             enableOptionMenu(0, true);
@@ -168,19 +168,19 @@ public class FavTagEditUI
     super.onCreate(paramBundle);
     final long l = getIntent().getLongExtra("key_fav_item_id", -1L);
     if (-1L != l) {
-      this.qfx = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(l);
+      this.qNZ = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(l);
     }
-    this.qfy = getIntent().getStringArrayListExtra("key_fav_result_list");
-    this.qfA = ((FavTagPanel)findViewById(2131299843));
-    this.qfB = ((ListView)findViewById(2131305632));
-    this.qfC = ((ListView)findViewById(2131304449));
-    this.qfD = ((TextView)findViewById(2131302197));
-    this.qfA.vN(true);
-    this.qfA.setTagEditTextBG(2131234289);
-    this.qfA.setIsAllowEnterCharacter(true);
-    this.qfA.setCallBack(new MMTagPanel.a()
+    this.qOa = getIntent().getStringArrayListExtra("key_fav_result_list");
+    this.qOc = ((FavTagPanel)findViewById(2131299843));
+    this.qOd = ((ListView)findViewById(2131305632));
+    this.qOe = ((ListView)findViewById(2131304449));
+    this.qOf = ((TextView)findViewById(2131302197));
+    this.qOc.wR(true);
+    this.qOc.setTagEditTextBG(2131234289);
+    this.qOc.setIsAllowEnterCharacter(true);
+    this.qOc.setCallBack(new MMTagPanel.a()
     {
-      public final void B(boolean paramAnonymousBoolean, int paramAnonymousInt)
+      public final void C(boolean paramAnonymousBoolean, int paramAnonymousInt)
       {
         AppMethodBeat.i(106917);
         FavTagEditUI.a(FavTagEditUI.this, paramAnonymousBoolean);
@@ -196,57 +196,71 @@ public class FavTagEditUI
         }
       }
       
-      public final void Uk(String paramAnonymousString)
+      public final void YA(String paramAnonymousString)
+      {
+        AppMethodBeat.i(106916);
+        if (bs.isNullOrNil(paramAnonymousString))
+        {
+          ac.d("MicroMsg.FavTagEditUI", "on create tag, fail, tag is empty");
+          AppMethodBeat.o(106916);
+          return;
+        }
+        FavTagEditUI.d(FavTagEditUI.this).cI(paramAnonymousString, true);
+        FavTagEditUI.c(FavTagEditUI.this);
+        AppMethodBeat.o(106916);
+      }
+      
+      public final void Yw(String paramAnonymousString)
       {
         AppMethodBeat.i(106913);
         FavTagEditUI.d(FavTagEditUI.this).removeTag(paramAnonymousString);
-        FavTagEditUI.f(FavTagEditUI.this).YD(paramAnonymousString);
+        FavTagEditUI.f(FavTagEditUI.this).acZ(paramAnonymousString);
         if (FavTagEditUI.g(FavTagEditUI.this) != null) {
-          FavTagEditUI.g(FavTagEditUI.this).cD(paramAnonymousString, false);
+          FavTagEditUI.g(FavTagEditUI.this).cJ(paramAnonymousString, false);
         }
         FavTagEditUI.c(FavTagEditUI.this);
         AppMethodBeat.o(106913);
       }
       
-      public final void Ul(String paramAnonymousString) {}
+      public final void Yx(String paramAnonymousString) {}
       
-      public final void Um(String paramAnonymousString)
+      public final void Yy(String paramAnonymousString)
       {
         AppMethodBeat.i(106914);
         FavTagEditUI.d(FavTagEditUI.this).removeTag(paramAnonymousString);
-        FavTagEditUI.f(FavTagEditUI.this).YD(paramAnonymousString);
+        FavTagEditUI.f(FavTagEditUI.this).acZ(paramAnonymousString);
         if (FavTagEditUI.g(FavTagEditUI.this) != null) {
-          FavTagEditUI.g(FavTagEditUI.this).cD(paramAnonymousString, false);
+          FavTagEditUI.g(FavTagEditUI.this).cJ(paramAnonymousString, false);
         }
         FavTagEditUI.c(FavTagEditUI.this);
         AppMethodBeat.o(106914);
       }
       
-      public final void Un(String paramAnonymousString)
+      public final void Yz(String paramAnonymousString)
       {
         AppMethodBeat.i(106915);
-        if (!bt.isNullOrNil(paramAnonymousString))
+        if (!bs.isNullOrNil(paramAnonymousString))
         {
           d locald = FavTagEditUI.h(FavTagEditUI.this);
-          locald.qhj.clear();
-          locald.qhi.clear();
-          locald.oiJ = bt.by(paramAnonymousString, "");
+          locald.qPL.clear();
+          locald.qPK.clear();
+          locald.oMj = bs.bG(paramAnonymousString, "");
           Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr();
-          boolean bool = bt.isNullOrNil(paramAnonymousString);
+          boolean bool = bs.isNullOrNil(paramAnonymousString);
           ArrayList localArrayList = new ArrayList(16);
-          localObject = ((l)localObject).qah.rNO.iterator();
+          localObject = ((l)localObject).qIN.sVE.iterator();
           while (((Iterator)localObject).hasNext())
           {
-            Iterator localIterator = ((agz)((Iterator)localObject).next()).DiP.iterator();
+            Iterator localIterator = ((ahy)((Iterator)localObject).next()).EBV.iterator();
             while (localIterator.hasNext())
             {
-              agy localagy = (agy)localIterator.next();
-              if ((bool) || (localagy.xXR.contains(paramAnonymousString))) {
-                localArrayList.add(localagy.xXR);
+              ahx localahx = (ahx)localIterator.next();
+              if ((bool) || (localahx.zkN.contains(paramAnonymousString))) {
+                localArrayList.add(localahx.zkN);
               }
             }
           }
-          locald.qhi.addAll(localArrayList);
+          locald.qPK.addAll(localArrayList);
           locald.notifyDataSetChanged();
           FavTagEditUI.i(FavTagEditUI.this).setVisibility(0);
           FavTagEditUI.j(FavTagEditUI.this).setVisibility(8);
@@ -261,147 +275,133 @@ public class FavTagEditUI
         }
       }
       
-      public final void Uo(String paramAnonymousString)
-      {
-        AppMethodBeat.i(106916);
-        if (bt.isNullOrNil(paramAnonymousString))
-        {
-          ad.d("MicroMsg.FavTagEditUI", "on create tag, fail, tag is empty");
-          AppMethodBeat.o(106916);
-          return;
-        }
-        FavTagEditUI.d(FavTagEditUI.this).cC(paramAnonymousString, true);
-        FavTagEditUI.c(FavTagEditUI.this);
-        AppMethodBeat.o(106916);
-      }
-      
-      public final void bXc() {}
+      public final void cep() {}
     });
-    this.qfA.postDelayed(new Runnable()
+    this.qOc.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106918);
-        FavTagEditUI.d(FavTagEditUI.this).eTb();
+        FavTagEditUI.d(FavTagEditUI.this).fiL();
         FavTagEditUI.this.showVKB();
         AppMethodBeat.o(106918);
       }
     }, 100L);
     Object localObject;
-    if (this.qfx != null)
+    if (this.qNZ != null)
     {
-      this.qfA.a(this.qfx.field_tagProto.DiR, this.qfx.field_tagProto.DiR);
-      this.qfE = new c(getContext())
+      this.qOc.a(this.qNZ.field_tagProto.EBX, this.qNZ.field_tagProto.EBX);
+      this.qOg = new c(getContext())
       {
-        public final void Yy(String paramAnonymousString)
+        public final void acU(String paramAnonymousString)
         {
           AppMethodBeat.i(106919);
-          FavTagEditUI.d(FavTagEditUI.this).cC(paramAnonymousString, true);
+          FavTagEditUI.d(FavTagEditUI.this).cI(paramAnonymousString, true);
           if (FavTagEditUI.g(FavTagEditUI.this) != null) {
-            FavTagEditUI.g(FavTagEditUI.this).cD(paramAnonymousString, true);
+            FavTagEditUI.g(FavTagEditUI.this).cJ(paramAnonymousString, true);
           }
           FavTagEditUI.c(FavTagEditUI.this);
           AppMethodBeat.o(106919);
         }
         
-        public final void Yz(String paramAnonymousString)
+        public final void acV(String paramAnonymousString)
         {
           AppMethodBeat.i(106920);
           FavTagEditUI.d(FavTagEditUI.this).removeTag(paramAnonymousString);
           if (FavTagEditUI.g(FavTagEditUI.this) != null) {
-            FavTagEditUI.g(FavTagEditUI.this).cD(paramAnonymousString, false);
+            FavTagEditUI.g(FavTagEditUI.this).cJ(paramAnonymousString, false);
           }
           FavTagEditUI.c(FavTagEditUI.this);
           AppMethodBeat.o(106920);
         }
       };
-      localObject = this.qfE;
-      if (this.qfx != null) {
+      localObject = this.qOg;
+      if (this.qNZ != null) {
         break label633;
       }
     }
     label633:
-    for (paramBundle = null;; paramBundle = this.qfx.field_tagProto.DiR)
+    for (paramBundle = null;; paramBundle = this.qNZ.field_tagProto.EBX)
     {
-      ((c)localObject).dp(paramBundle);
-      if ((this.qfx != null) && (!this.qfx.field_tagProto.DiQ.isEmpty()))
+      ((c)localObject).dr(paramBundle);
+      if ((this.qNZ != null) && (!this.qNZ.field_tagProto.EBW.isEmpty()))
       {
         paramBundle = View.inflate(getContext(), 2131493981, null);
         localObject = (TextView)paramBundle.findViewById(2131299815);
         ((TextView)localObject).setText(getString(2131758956));
         ((TextView)localObject).setVisibility(0);
         int i = getResources().getDimensionPixelSize(2131165366);
-        this.qfz = ((FavTagPanel)paramBundle.findViewById(2131299845));
-        this.qfz.setVisibility(0);
-        this.qfz.a(this.qfx.field_tagProto.DiR, this.qfx.field_tagProto.DiQ);
-        this.qfz.setBackgroundResource(2131232878);
-        this.qfz.setPadding(0, 0, 0, i);
-        this.qfz.setCallBack(new MMTagPanel.a()
+        this.qOb = ((FavTagPanel)paramBundle.findViewById(2131299845));
+        this.qOb.setVisibility(0);
+        this.qOb.a(this.qNZ.field_tagProto.EBX, this.qNZ.field_tagProto.EBW);
+        this.qOb.setBackgroundResource(2131232878);
+        this.qOb.setPadding(0, 0, 0, i);
+        this.qOb.setCallBack(new MMTagPanel.a()
         {
-          public final void B(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
+          public final void C(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
           
-          public final void Uk(String paramAnonymousString)
+          public final void YA(String paramAnonymousString) {}
+          
+          public final void Yw(String paramAnonymousString)
           {
             AppMethodBeat.i(106921);
             FavTagEditUI.d(FavTagEditUI.this).removeTag(paramAnonymousString);
-            FavTagEditUI.f(FavTagEditUI.this).YD(paramAnonymousString);
+            FavTagEditUI.f(FavTagEditUI.this).acZ(paramAnonymousString);
             FavTagEditUI.c(FavTagEditUI.this);
             AppMethodBeat.o(106921);
           }
           
-          public final void Ul(String paramAnonymousString)
+          public final void Yx(String paramAnonymousString)
           {
             AppMethodBeat.i(106922);
-            FavTagEditUI.d(FavTagEditUI.this).cC(paramAnonymousString, true);
-            FavTagEditUI.f(FavTagEditUI.this).YC(paramAnonymousString);
+            FavTagEditUI.d(FavTagEditUI.this).cI(paramAnonymousString, true);
+            FavTagEditUI.f(FavTagEditUI.this).acY(paramAnonymousString);
             FavTagEditUI.c(FavTagEditUI.this);
             AppMethodBeat.o(106922);
           }
           
-          public final void Um(String paramAnonymousString) {}
+          public final void Yy(String paramAnonymousString) {}
           
-          public final void Un(String paramAnonymousString) {}
+          public final void Yz(String paramAnonymousString) {}
           
-          public final void Uo(String paramAnonymousString) {}
-          
-          public final void bXc() {}
+          public final void cep() {}
         });
-        this.qfB.addHeaderView(paramBundle);
+        this.qOd.addHeaderView(paramBundle);
       }
-      if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr().chO() > 0) {
-        this.qfB.addHeaderView(View.inflate(getContext(), 2131493980, null));
+      if (((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr().cpv() > 0) {
+        this.qOd.addHeaderView(View.inflate(getContext(), 2131493980, null));
       }
-      this.qfB.setAdapter(this.qfE);
-      this.qfB.setOnTouchListener(new View.OnTouchListener()
+      this.qOd.setAdapter(this.qOg);
+      this.qOd.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(106923);
-          FavTagEditUI.d(FavTagEditUI.this).eTc();
+          FavTagEditUI.d(FavTagEditUI.this).fiM();
           AppMethodBeat.o(106923);
           return false;
         }
       });
-      this.qfF = new d(getContext())
+      this.qOh = new d(getContext())
       {
-        public final void Ve(String paramAnonymousString)
+        public final void Zq(String paramAnonymousString)
         {
           AppMethodBeat.i(106924);
-          FavTagEditUI.d(FavTagEditUI.this).cC(paramAnonymousString, true);
-          FavTagEditUI.f(FavTagEditUI.this).YC(paramAnonymousString);
-          FavTagEditUI.d(FavTagEditUI.this).eTa();
-          FavTagEditUI.d(FavTagEditUI.this).eTc();
+          FavTagEditUI.d(FavTagEditUI.this).cI(paramAnonymousString, true);
+          FavTagEditUI.f(FavTagEditUI.this).acY(paramAnonymousString);
+          FavTagEditUI.d(FavTagEditUI.this).fiK();
+          FavTagEditUI.d(FavTagEditUI.this).fiM();
           FavTagEditUI.c(FavTagEditUI.this);
           AppMethodBeat.o(106924);
         }
       };
-      this.qfC.setAdapter(this.qfF);
-      this.qfC.setOnTouchListener(new View.OnTouchListener()
+      this.qOe.setAdapter(this.qOh);
+      this.qOe.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(106910);
-          FavTagEditUI.d(FavTagEditUI.this).eTc();
+          FavTagEditUI.d(FavTagEditUI.this).fiM();
           AppMethodBeat.o(106910);
           return false;
         }
@@ -430,12 +430,12 @@ public class FavTagEditUI
           }
           paramAnonymousMenuItem = FavTagEditUI.d(FavTagEditUI.this).getTagList();
           Object localObject1 = FavTagEditUI.d(FavTagEditUI.this).getEditText().trim();
-          if (!bt.isNullOrNil((String)localObject1))
+          if (!bs.isNullOrNil((String)localObject1))
           {
             paramAnonymousMenuItem.remove(localObject1);
             paramAnonymousMenuItem.add(localObject1);
           }
-          FavTagEditUI.a(FavTagEditUI.this, ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(l));
+          FavTagEditUI.a(FavTagEditUI.this, ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().tH(l));
           if (FavTagEditUI.e(FavTagEditUI.this) != null)
           {
             FavTagEditUI.a(FavTagEditUI.e(FavTagEditUI.this), paramAnonymousMenuItem, FavTagEditUI.this.getIntent().getIntExtra("key_fav_scene", 1));
@@ -463,15 +463,15 @@ public class FavTagEditUI
             FavTagEditUI.this.setResult(-1, (Intent)localObject2);
           }
         }
-      }, null, r.b.FOB);
-      cjf();
-      ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr().a(this.qfE);
+      }, null, s.b.Hom);
+      cqM();
+      ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr().a(this.qOg);
       AppMethodBeat.o(106925);
       return;
-      if (this.qfy == null) {
+      if (this.qOa == null) {
         break;
       }
-      this.qfA.a(this.qfy, this.qfy);
+      this.qOc.a(this.qOa, this.qOa);
       break;
     }
   }
@@ -481,13 +481,13 @@ public class FavTagEditUI
     AppMethodBeat.i(106927);
     super.onDestroy();
     l locall = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavTagSetMgr();
-    c localc = this.qfE;
+    c localc = this.qOg;
     if (localc == null)
     {
       AppMethodBeat.o(106927);
       return;
     }
-    locall.byu.remove(localc.toString());
+    locall.bwc.remove(localc.toString());
     AppMethodBeat.o(106927);
   }
   
@@ -496,7 +496,7 @@ public class FavTagEditUI
     AppMethodBeat.i(106928);
     if (paramInt == 4)
     {
-      LS();
+      LQ();
       AppMethodBeat.o(106928);
       return true;
     }
@@ -513,7 +513,7 @@ public class FavTagEditUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavTagEditUI
  * JD-Core Version:    0.7.0.1
  */

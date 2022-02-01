@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.card.base;
 
 public abstract interface d
 {
-  public abstract void bIg();
+  public abstract void bPt();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.base.d
  * JD-Core Version:    0.7.0.1
  */

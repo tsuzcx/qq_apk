@@ -16,8 +16,8 @@ import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import d.g.a.b;
@@ -34,9 +34,9 @@ public enum AppBrandJsApiPayService
   static
   {
     AppMethodBeat.i(46710);
-    kfq = new AppBrandJsApiPayService("INSTANCE");
-    kfr = new AppBrandJsApiPayService[] { kfq };
-    g.DE("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
+    kGg = new AppBrandJsApiPayService("INSTANCE");
+    kGh = new AppBrandJsApiPayService[] { kGg };
+    g.HI("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
     AppMethodBeat.o(46710);
   }
   
@@ -46,7 +46,7 @@ public enum AppBrandJsApiPayService
   {
     AppMethodBeat.i(174861);
     paramAppBrandStatObject = new WalletJsapiData(paramJSONObject);
-    paramAppBrandStatObject.dfg = 16;
+    paramAppBrandStatObject.dcB = 16;
     paramJSONObject = new MMActivity.a()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -93,7 +93,7 @@ public enum AppBrandJsApiPayService
     paramb.putExtra("nonceStr", paramAppBrandStatObject.nonceStr);
     paramb.putExtra("packageExt", paramAppBrandStatObject.packageExt);
     paramb.putExtra("signtype", paramAppBrandStatObject.signType);
-    paramb.putExtra("paySignature", paramAppBrandStatObject.dsZ);
+    paramb.putExtra("paySignature", paramAppBrandStatObject.dqJ);
     paramb.putExtra("key_static_from_scene", 100004);
     paramb.putExtra("url", paramAppBrandStatObject.url);
     AppBrandJsApiPayUtils.a(paramActivity, new b() {});
@@ -136,44 +136,44 @@ public enum AppBrandJsApiPayService
     final WalletJsapiData localWalletJsapiData = new WalletJsapiData(paramJSONObject);
     if (paramAppBrandStatObject != null)
     {
-      localWalletJsapiData.dfg = WalletJsapiData.iS(paramAppBrandStatObject.scene, paramAppBrandStatObject.dzQ);
-      localWalletJsapiData.CoE = WalletJsapiData.iR(paramAppBrandStatObject.scene, paramAppBrandStatObject.dzQ);
+      localWalletJsapiData.dcB = WalletJsapiData.jf(paramAppBrandStatObject.scene, paramAppBrandStatObject.dxC);
+      localWalletJsapiData.DGW = WalletJsapiData.je(paramAppBrandStatObject.scene, paramAppBrandStatObject.dxC);
     }
-    localWalletJsapiData.dtb = 46;
+    localWalletJsapiData.dqL = 46;
     paramAppBrandStatObject = paramJSONObject.optString("adUxInfo");
-    localWalletJsapiData.CoM = paramAppBrandStatObject;
-    com.tencent.mm.plugin.t.a.r("AppBrandRuntime", "requestPayment", paramAppBrandStatObject, "data");
+    localWalletJsapiData.DHe = paramAppBrandStatObject;
+    com.tencent.mm.plugin.t.a.t("AppBrandRuntime", "requestPayment", paramAppBrandStatObject, "data");
     paramPString.value = localWalletJsapiData.packageExt;
     final int i = hashCode() & 0xFFFF;
     paramAppBrandStatObject = new MMActivity.a()
     {
-      boolean kfC = false;
-      Pair<Integer, Bundle> kfD;
+      boolean kGs = false;
+      Pair<Integer, Bundle> kGt;
       
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(195927);
-        boolean bool2 = this.kfC;
-        if (this.kfD != null) {}
+        AppMethodBeat.i(186749);
+        boolean bool2 = this.kGs;
+        if (this.kGt != null) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          ad.i("MicroMsg.AppBrandJsApiPayService", "startPay onActivityResult resultReceived[%b] requestCode[%d] resultCode[%d] hasOverriddenSuccessResult[%b]", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool1) });
+          ac.i("MicroMsg.AppBrandJsApiPayService", "startPay onActivityResult resultReceived[%b] requestCode[%d] resultCode[%d] hasOverriddenSuccessResult[%b]", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool1) });
           if (paramAnonymousInt1 == i) {
             break;
           }
-          AppMethodBeat.o(195927);
+          AppMethodBeat.o(186749);
           return;
         }
-        if (this.kfC)
+        if (this.kGs)
         {
-          AppMethodBeat.o(195927);
+          AppMethodBeat.o(186749);
           return;
         }
-        this.kfC = true;
-        if (this.kfD != null)
+        this.kGs = true;
+        if (this.kGt != null)
         {
-          paramAnonymousInt2 = ((Integer)this.kfD.first).intValue();
-          paramAnonymousIntent = new Intent().putExtras((Bundle)this.kfD.second);
+          paramAnonymousInt2 = ((Integer)this.kGt.first).intValue();
+          paramAnonymousIntent = new Intent().putExtras((Bundle)this.kGt.second);
         }
         if (paramAnonymousIntent != null) {}
         for (paramAnonymousInt1 = paramAnonymousIntent.getIntExtra("key_is_clear_failure", -1);; paramAnonymousInt1 = -1)
@@ -187,7 +187,7 @@ public enum AppBrandJsApiPayService
             if (paramb != null) {
               paramb.a(1, null, localHashMap);
             }
-            AppMethodBeat.o(195927);
+            AppMethodBeat.o(186749);
             return;
             if (paramAnonymousInt1 == 1) {
               localHashMap.put("pay_status", "fail");
@@ -196,25 +196,25 @@ public enum AppBrandJsApiPayService
           if (paramAnonymousInt2 == 5)
           {
             paramAnonymousInt1 = paramAnonymousIntent.getIntExtra("key_jsapi_pay_err_code", 0);
-            paramAnonymousIntent = bt.nullAsNil(paramAnonymousIntent.getStringExtra("key_jsapi_pay_err_msg"));
-            ad.e("MicroMsg.AppBrandJsApiPayService", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
+            paramAnonymousIntent = bs.nullAsNil(paramAnonymousIntent.getStringExtra("key_jsapi_pay_err_msg"));
+            ac.e("MicroMsg.AppBrandJsApiPayService", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
             if (paramb != null) {
               paramb.a(2, paramAnonymousIntent, localHashMap);
             }
-            AppMethodBeat.o(195927);
+            AppMethodBeat.o(186749);
             return;
           }
           if (paramb != null) {
             paramb.a(3, null, localHashMap);
           }
-          AppMethodBeat.o(195927);
+          AppMethodBeat.o(186749);
           return;
         }
       }
     };
-    localWalletJsapiData.CoO = new ResultReceiver(paramAppBrandStatObject)
+    localWalletJsapiData.DHg = new ResultReceiver(paramAppBrandStatObject)
     {
-      private final AppBrandJsApiPayService.1WxPayMMActivityResultDispatcher kfz;
+      private final AppBrandJsApiPayService.1WxPayMMActivityResultDispatcher kGp;
       
       protected void onReceiveResult(final int paramAnonymousInt, final Bundle paramAnonymousBundle)
       {
@@ -224,9 +224,9 @@ public enum AppBrandJsApiPayService
         {
           public void run()
           {
-            AppMethodBeat.i(195925);
-            AppBrandJsApiPayService.1PaySuccessAheadCallbackResultReceiver.a(AppBrandJsApiPayService.1PaySuccessAheadCallbackResultReceiver.this).c(AppBrandJsApiPayService.1PaySuccessAheadCallbackResultReceiver.this.kft, paramAnonymousInt, new Intent().putExtras(paramAnonymousBundle));
-            AppMethodBeat.o(195925);
+            AppMethodBeat.i(186747);
+            AppBrandJsApiPayService.1PaySuccessAheadCallbackResultReceiver.a(AppBrandJsApiPayService.1PaySuccessAheadCallbackResultReceiver.this).c(AppBrandJsApiPayService.1PaySuccessAheadCallbackResultReceiver.this.kGj, paramAnonymousInt, new Intent().putExtras(paramAnonymousBundle));
+            AppMethodBeat.o(186747);
           }
         };
         if ((paramh instanceof m))
@@ -235,7 +235,7 @@ public enum AppBrandJsApiPayService
           AppMethodBeat.o(180264);
           return;
         }
-        this.kfz.kfD = Pair.create(Integer.valueOf(paramAnonymousInt), paramAnonymousBundle);
+        this.kGp.kGt = Pair.create(Integer.valueOf(paramAnonymousInt), paramAnonymousBundle);
         AppMethodBeat.o(180264);
       }
     };
@@ -243,9 +243,9 @@ public enum AppBrandJsApiPayService
     {
       public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(195928);
+        AppMethodBeat.i(186750);
         paramAppBrandStatObject.c(i, paramAnonymousInt, paramAnonymousIntent);
-        AppMethodBeat.o(195928);
+        AppMethodBeat.o(186750);
       }
     });
     AppMethodBeat.o(174858);
@@ -265,10 +265,10 @@ public enum AppBrandJsApiPayService
     paramJSONObject = new WalletJsapiData(paramJSONObject);
     if (paramAppBrandStatObject != null)
     {
-      paramJSONObject.dfg = WalletJsapiData.iS(paramAppBrandStatObject.scene, paramAppBrandStatObject.dzQ);
-      paramJSONObject.CoE = WalletJsapiData.iR(paramAppBrandStatObject.scene, paramAppBrandStatObject.dzQ);
+      paramJSONObject.dcB = WalletJsapiData.jf(paramAppBrandStatObject.scene, paramAppBrandStatObject.dxC);
+      paramJSONObject.DGW = WalletJsapiData.je(paramAppBrandStatObject.scene, paramAppBrandStatObject.dxC);
     }
-    paramJSONObject.dtb = 46;
+    paramJSONObject.dqL = 46;
     boolean bool = AppBrandJsApiPayUtils.a(paramActivity, new b()
     {
       public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -282,8 +282,8 @@ public enum AppBrandJsApiPayService
         if (paramAnonymousInt2 == -1)
         {
           HashMap localHashMap = new HashMap();
-          String str = bt.by(paramAnonymousIntent.getStringExtra("token"), "");
-          paramAnonymousIntent = bt.by(paramAnonymousIntent.getStringExtra("bind_serial"), "");
+          String str = bs.bG(paramAnonymousIntent.getStringExtra("token"), "");
+          paramAnonymousIntent = bs.bG(paramAnonymousIntent.getStringExtra("bind_serial"), "");
           localHashMap.put("token", str);
           localHashMap.put("bindSerial", paramAnonymousIntent);
           if (paramb != null) {
@@ -319,29 +319,29 @@ public enum AppBrandJsApiPayService
         {
           String str = "";
           if (paramAnonymousIntent != null) {
-            str = bt.by(paramAnonymousIntent.getStringExtra("token"), "");
+            str = bs.bG(paramAnonymousIntent.getStringExtra("token"), "");
           }
           if (!TextUtils.isEmpty(str))
           {
-            ad.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is valid, verifyWCPayPassword:ok");
+            ac.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is valid, verifyWCPayPassword:ok");
             if (paramc != null)
             {
-              paramc.l(true, str);
+              paramc.m(true, str);
               AppMethodBeat.o(174857);
             }
           }
           else
           {
-            ad.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is empty, verifyWCPayPassword:fail");
+            ac.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is empty, verifyWCPayPassword:fail");
             if (paramc != null) {
-              paramc.l(false, null);
+              paramc.m(false, null);
             }
           }
           AppMethodBeat.o(174857);
           return;
         }
         if (paramc != null) {
-          paramc.l(false, null);
+          paramc.m(false, null);
         }
         AppMethodBeat.o(174857);
       }
@@ -353,7 +353,7 @@ public enum AppBrandJsApiPayService
     paramc.putExtra("nonceStr", paramJSONObject.nonceStr);
     paramc.putExtra("packageExt", paramJSONObject.packageExt);
     paramc.putExtra("signtype", paramJSONObject.signType);
-    paramc.putExtra("paySignature", paramJSONObject.dsZ);
+    paramc.putExtra("paySignature", paramJSONObject.dqJ);
     paramc.putExtra("url", paramJSONObject.url);
     paramc.putExtra("scene", 1);
     AppBrandJsApiPayUtils.a(paramActivity, new b() {});

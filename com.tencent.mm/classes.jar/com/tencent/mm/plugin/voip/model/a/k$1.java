@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.g;
-import com.tencent.mm.al.n;
-import com.tencent.mm.plugin.voip.b.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.n;
+import com.tencent.mm.plugin.voip.b.d;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.protobuf.dni;
+import com.tencent.mm.protocal.protobuf.dsz;
 
 final class k$1
   implements g
@@ -16,38 +16,38 @@ final class k$1
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(115249);
-    c.Logd("MicroMsg.NetSceneVoipSpeedTest", "onSceneEnd type:" + paramn.getType() + " errType:" + paramInt1 + " errCode:" + paramInt2);
+    d.Logd("MicroMsg.NetSceneVoipSpeedTest", "onSceneEnd type:" + paramn.getType() + " errType:" + paramInt1 + " errCode:" + paramInt2);
     try
     {
-      paramString = (dni)this.zni.dVk();
-      if ((paramString.EDV == 0) || (paramString.EDW == 0))
+      paramString = (dsz)this.AFW.ekw();
+      if ((paramString.Gbi == 0) || (paramString.Gbj == 0))
       {
-        c.Loge("MicroMsg.NetSceneVoipSpeedTest", "onVoipSpeedTestResp: no need to do speed test, svrCount = " + paramString.EDW);
+        d.Loge("MicroMsg.NetSceneVoipSpeedTest", "onVoipSpeedTestResp: no need to do speed test, svrCount = " + paramString.Gbj);
         AppMethodBeat.o(115249);
         return;
       }
-      if (this.zni.zjH.ziE != 1)
+      if (this.AFW.ACr.ABo != 1)
       {
-        c.Loge("MicroMsg.NetSceneVoipSpeedTest", "onVoipSpeedTestResp: no need to do speed test, for mSpeedTestStatus = " + this.zni.zjH.ziE);
+        d.Loge("MicroMsg.NetSceneVoipSpeedTest", "onVoipSpeedTestResp: no need to do speed test, for mSpeedTestStatus = " + this.AFW.ACr.ABo);
         AppMethodBeat.o(115249);
         return;
       }
-      this.zni.zjH.ziE = 2;
-      this.zni.zjH.ziG = paramString.EDR;
-      this.zni.zjH.ziZ.a(paramString);
+      this.AFW.ACr.ABo = 2;
+      this.AFW.ACr.ABq = paramString.Gbe;
+      this.AFW.ACr.ABJ.a(paramString);
       AppMethodBeat.o(115249);
       return;
     }
     catch (Exception paramString)
     {
-      this.zni.zjH.ziE = 0;
+      this.AFW.ACr.ABo = 0;
       AppMethodBeat.o(115249);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.k.1
  * JD-Core Version:    0.7.0.1
  */

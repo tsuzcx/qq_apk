@@ -18,7 +18,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.io.FileDescriptor;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
@@ -36,71 +36,71 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b
 {
-  private static final ClassLoader ufH;
-  private static final String ufI;
-  private static final String ufJ;
-  private static final String ufK;
-  private static final String ufL;
-  private static final String ufM;
-  private static final String ufN;
-  private static final String ufO;
-  private static final String ufP;
-  private static final String ufQ;
-  private static final String ufR;
-  private static final String ufS;
-  private static final String ufT;
-  private static final String ufU;
-  private static final String ufV;
-  private static final String ufW;
-  private static final String ufX;
-  private static final String ufY;
-  private static final String ufZ;
-  private static final String uga;
-  private static final String ugb;
-  private static final String ugc;
+  private static final ClassLoader voG;
+  private static final String voH;
+  private static final String voI;
+  private static final String voJ;
+  private static final String voK;
+  private static final String voL;
+  private static final String voM;
+  private static final String voN;
+  private static final String voO;
+  private static final String voP;
+  private static final String voQ;
+  private static final String voR;
+  private static final String voS;
+  private static final String voT;
+  private static final String voU;
+  private static final String voV;
+  private static final String voW;
+  private static final String voX;
+  private static final String voY;
+  private static final String voZ;
+  private static final String vpa;
+  private static final String vpb;
   private volatile boolean mInitialized;
-  public final Queue<g> ugd;
-  private final Map<Object, IBinder> uge;
-  private final Map<IBinder, Integer> ugf;
-  private final Handler ugg;
-  private IInterface ugh;
+  public final Queue<g> vpc;
+  private final Map<Object, IBinder> vpd;
+  private final Map<IBinder, Integer> vpe;
+  private final Handler vpf;
+  private IInterface vpg;
   
   static
   {
     AppMethodBeat.i(149084);
-    ufH = b.class.getClassLoader();
-    ufI = d.ajp("");
-    ufJ = d.ajp("\021p\036z\bg\016jD+Xv%@2D-N+f\007i\bo\nx");
-    ufK = d.ajp("\007t7V5]8");
-    ufL = d.ajp("\027v\005L\"V3A'F%@");
-    ufM = d.ajp("\ng$E)E'F%N");
-    ufN = d.ajp("\016c5\\9N\034s\034h!L<P");
-    ufO = d.ajp("Ñ°ÞºÈ§Îªòþ§Æ¥Æ£Ð£Ê¨Á­Ä°Éç®ïïùãèíà©Ç³Ö¤Å¦Ò»Ôºùøóäâ");
-    ufP = d.ajp("Ù¸Ü¸ùùïõþûö¿Ñ¥À²Ó°Ä­Â¬ïîåòô");
-    ufQ = d.ajp("éëÞ½Þ»È»Ò°ÙµÜ¨ÑöçôãåÈ§É½Ï Ì Å·");
-    ufR = d.ajp("\032k\036{\tp<S0Q=t\032n\013y\037~\035x");
-    ufS = d.ajp("?Y0^:l\005`\027U,m\016m\b{\ba\003j\006o\033b+O");
-    ufT = d.ajp("+M$J.o\fo\ny\nc\001h\004m\031`.A%@\tg\001n,U\024w\024q\002q\030z\023\026b\033R6");
-    ufU = d.ajp("");
-    ufV = d.ajp("÷ðÕ¶Õ°Ã°Ù»Ò¾×£Úûú³Ý»Ô§åÊ£Æ±ø");
-    ufW = d.ajp("±×¾Ð´õõãùò÷ú´Û¿ÚýôÅ¼èõ");
-    ufX = d.ajp("\rk\002l\bN!B7D");
-    ufY = d.ajp("\"D+H=N\035x\031k\b`");
-    ufZ = d.ajp("m\035x\nl\003q\034]>]8K8Q3Z6_+R\023p\004m\002l");
-    uga = d.ajp("Ì¿Ú®èïÊ©Ê¯Ü¯Æ¤Í¡È¼Åäå¬Â¤Ëüúâ");
-    ugb = d.ajp("¬ßºÎáëªÉªÏ¼Ï¦Ä­Á¨Ü¥ëàÌ¢Ä«Øïéñ");
-    ugc = d.ajp("îøÜ¹Ë­Â°Ýÿùùò÷êÒ±Å¬Ã­ÿéð");
+    voG = b.class.getClassLoader();
+    voH = d.aon("");
+    voI = d.aon("\021p\036z\bg\016jD+Xv%@2D-N+f\007i\bo\nx");
+    voJ = d.aon("\007t7V5]8");
+    voK = d.aon("\027v\005L\"V3A'F%@");
+    voL = d.aon("\ng$E)E'F%N");
+    voM = d.aon("\016c5\\9N\034s\034h!L<P");
+    voN = d.aon("Ñ°ÞºÈ§Îªòþ§Æ¥Æ£Ð£Ê¨Á­Ä°Éç®ïïùãèíà©Ç³Ö¤Å¦Ò»Ôºùøóäâ");
+    voO = d.aon("Ù¸Ü¸ùùïõþûö¿Ñ¥À²Ó°Ä­Â¬ïîåòô");
+    voP = d.aon("éëÞ½Þ»È»Ò°ÙµÜ¨ÑöçôãåÈ§É½Ï Ì Å·");
+    voQ = d.aon("\032k\036{\tp<S0Q=t\032n\013y\037~\035x");
+    voR = d.aon("?Y0^:l\005`\027U,m\016m\b{\ba\003j\006o\033b+O");
+    voS = d.aon("+M$J.o\fo\ny\nc\001h\004m\031`.A%@\tg\001n,U\024w\024q\002q\030z\023\026b\033R6");
+    voT = d.aon("");
+    voU = d.aon("÷ðÕ¶Õ°Ã°Ù»Ò¾×£Úûú³Ý»Ô§åÊ£Æ±ø");
+    voV = d.aon("±×¾Ð´õõãùò÷ú´Û¿ÚýôÅ¼èõ");
+    voW = d.aon("\rk\002l\bN!B7D");
+    voX = d.aon("\"D+H=N\035x\031k\b`");
+    voY = d.aon("m\035x\nl\003q\034]>]8K8Q3Z6_+R\023p\004m\002l");
+    voZ = d.aon("Ì¿Ú®èïÊ©Ê¯Ü¯Æ¤Í¡È¼Åäå¬Â¤Ëüúâ");
+    vpa = d.aon("¬ßºÎáëªÉªÏ¼Ï¦Ä­Á¨Ü¥ëàÌ¢Ä«Øïéñ");
+    vpb = d.aon("îøÜ¹Ë­Â°Ýÿùùò÷êÒ±Å¬Ã­ÿéð");
     AppMethodBeat.o(149084);
   }
   
   private b()
   {
     AppMethodBeat.i(149076);
-    this.ugd = new ConcurrentLinkedQueue();
-    this.uge = new WeakHashMap();
-    this.ugf = new ConcurrentHashMap();
-    this.ugg = new Handler(Looper.getMainLooper());
-    this.ugh = null;
+    this.vpc = new ConcurrentLinkedQueue();
+    this.vpd = new WeakHashMap();
+    this.vpe = new ConcurrentHashMap();
+    this.vpf = new Handler(Looper.getMainLooper());
+    this.vpg = null;
     this.mInitialized = false;
     AppMethodBeat.o(149076);
   }
@@ -108,7 +108,7 @@ public final class b
   private void b(int paramInt, View paramView, List<AccessibilityNodeInfo> paramList)
   {
     AppMethodBeat.i(149072);
-    Iterator localIterator = this.ugd.iterator();
+    Iterator localIterator = this.vpc.iterator();
     while (localIterator.hasNext()) {
       ((g)localIterator.next()).a(paramInt, paramView, paramList);
     }
@@ -130,7 +130,7 @@ public final class b
     boolean[] tmp46_40 = tmp40_38;
     tmp46_40[1] = 0;
     tmp46_40;
-    this.ugg.post(new Runnable()
+    this.vpf.post(new Runnable()
     {
       public final void run()
       {
@@ -169,7 +169,7 @@ public final class b
   private boolean c(int paramInt1, int paramInt2, View paramView)
   {
     AppMethodBeat.i(149074);
-    Iterator localIterator = this.ugd.iterator();
+    Iterator localIterator = this.vpc.iterator();
     while (localIterator.hasNext()) {
       if (!((g)localIterator.next()).a(paramInt1, paramInt2, paramView))
       {
@@ -181,15 +181,15 @@ public final class b
     return true;
   }
   
-  public static b cXi()
+  public static b dkQ()
   {
-    return h.ugx;
+    return h.vpw;
   }
   
   private void l(Throwable paramThrowable)
   {
     AppMethodBeat.i(149075);
-    Iterator localIterator = this.ugd.iterator();
+    Iterator localIterator = this.vpc.iterator();
     while (localIterator.hasNext()) {
       ((g)localIterator.next()).onError(paramThrowable);
     }
@@ -251,7 +251,7 @@ public final class b
     //   69: monitorexit
     //   70: aload_1
     //   71: athrow
-    //   72: getstatic 111	com/tencent/mm/plugin/normsg/c/b:ufJ	Ljava/lang/String;
+    //   72: getstatic 111	com/tencent/mm/plugin/normsg/c/b:voI	Ljava/lang/String;
     //   75: ldc_w 402
     //   78: iconst_1
     //   79: anewarray 91	java/lang/Class
@@ -269,8 +269,8 @@ public final class b
     //   101: invokestatic 414	com/tencent/mm/plugin/normsg/c/h:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   104: checkcast 416	android/os/IBinder
     //   107: astore_2
-    //   108: getstatic 107	com/tencent/mm/plugin/normsg/c/b:ufI	Ljava/lang/String;
-    //   111: getstatic 119	com/tencent/mm/plugin/normsg/c/b:ufL	Ljava/lang/String;
+    //   108: getstatic 107	com/tencent/mm/plugin/normsg/c/b:voH	Ljava/lang/String;
+    //   111: getstatic 119	com/tencent/mm/plugin/normsg/c/b:voK	Ljava/lang/String;
     //   114: iconst_1
     //   115: anewarray 91	java/lang/Class
     //   118: dup
@@ -288,7 +288,7 @@ public final class b
     //   138: checkcast 418	android/os/IInterface
     //   141: astore_2
     //   142: aload_0
-    //   143: getstatic 97	com/tencent/mm/plugin/normsg/c/b:ufH	Ljava/lang/ClassLoader;
+    //   143: getstatic 97	com/tencent/mm/plugin/normsg/c/b:voG	Ljava/lang/ClassLoader;
     //   146: aload_2
     //   147: invokevirtual 421	java/lang/Object:getClass	()Ljava/lang/Class;
     //   150: invokevirtual 425	java/lang/Class:getInterfaces	()[Ljava/lang/Class;
@@ -299,14 +299,14 @@ public final class b
     //   159: invokespecial 428	com/tencent/mm/plugin/normsg/c/b$c:<init>	(Lcom/tencent/mm/plugin/normsg/c/b;Landroid/os/IInterface;)V
     //   162: invokestatic 434	java/lang/reflect/Proxy:newProxyInstance	(Ljava/lang/ClassLoader;[Ljava/lang/Class;Ljava/lang/reflect/InvocationHandler;)Ljava/lang/Object;
     //   165: checkcast 418	android/os/IInterface
-    //   168: putfield 225	com/tencent/mm/plugin/normsg/c/b:ugh	Landroid/os/IInterface;
-    //   171: getstatic 111	com/tencent/mm/plugin/normsg/c/b:ufJ	Ljava/lang/String;
-    //   174: getstatic 115	com/tencent/mm/plugin/normsg/c/b:ufK	Ljava/lang/String;
-    //   177: invokestatic 438	com/tencent/mm/plugin/normsg/c/h:hM	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   168: putfield 225	com/tencent/mm/plugin/normsg/c/b:vpg	Landroid/os/IInterface;
+    //   171: getstatic 111	com/tencent/mm/plugin/normsg/c/b:voI	Ljava/lang/String;
+    //   174: getstatic 115	com/tencent/mm/plugin/normsg/c/b:voJ	Ljava/lang/String;
+    //   177: invokestatic 438	com/tencent/mm/plugin/normsg/c/h:if	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   180: checkcast 440	java/util/Map
     //   183: ldc_w 411
     //   186: aload_0
-    //   187: getfield 225	com/tencent/mm/plugin/normsg/c/b:ugh	Landroid/os/IInterface;
+    //   187: getfield 225	com/tencent/mm/plugin/normsg/c/b:vpg	Landroid/os/IInterface;
     //   190: invokeinterface 444 1 0
     //   195: invokeinterface 448 3 0
     //   200: pop
@@ -338,7 +338,7 @@ public final class b
     //   246: aload_2
     //   247: ldc_w 464
     //   250: aload_0
-    //   251: getfield 225	com/tencent/mm/plugin/normsg/c/b:ugh	Landroid/os/IInterface;
+    //   251: getfield 225	com/tencent/mm/plugin/normsg/c/b:vpg	Landroid/os/IInterface;
     //   254: invokestatic 467	com/tencent/mm/plugin/normsg/c/h:c	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V
     //   257: aload_1
     //   258: monitorexit
@@ -382,7 +382,7 @@ public final class b
     //   326: aload_2
     //   327: ldc_w 464
     //   330: aload_0
-    //   331: getfield 225	com/tencent/mm/plugin/normsg/c/b:ugh	Landroid/os/IInterface;
+    //   331: getfield 225	com/tencent/mm/plugin/normsg/c/b:vpg	Landroid/os/IInterface;
     //   334: invokestatic 467	com/tencent/mm/plugin/normsg/c/h:c	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V
     //   337: goto -78 -> 259
     // Local variable table:
@@ -417,19 +417,19 @@ public final class b
   final class a
     extends b.d
   {
-    private b.i ugn;
-    private WeakReference<Object> ugo;
+    private b.i vpm;
+    private WeakReference<Object> vpn;
     
     a(Object paramObject, IBinder paramIBinder)
     {
       super(paramIBinder);
       AppMethodBeat.i(149045);
-      this.ugn = null;
-      this.ugo = null;
+      this.vpm = null;
+      this.vpn = null;
       try
       {
-        this.ugo = new WeakReference(paramObject);
-        this.ugn = new b.i(b.this, h.findClass(b.ufO + "$Stub"));
+        this.vpn = new WeakReference(paramObject);
+        this.vpm = new b.i(b.this, h.findClass(b.voN + "$Stub"));
         AppMethodBeat.o(149045);
         return;
       }
@@ -450,29 +450,29 @@ public final class b
         AppMethodBeat.o(149046);
         return bool;
       }
-      if (this.ugn == null)
+      if (this.vpm == null)
       {
-        ad.e("MicroMsg.AED", "init failed, give up intercepting.");
+        ac.e("MicroMsg.AED", "init failed, give up intercepting.");
         bool = super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
         AppMethodBeat.o(149046);
         return bool;
       }
-      if (this.ugo.get() == null)
+      if (this.vpn.get() == null)
       {
-        ad.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
+        ac.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
         bool = super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
         AppMethodBeat.o(149046);
         return bool;
       }
-      Object localObject = (String)this.ugn.cXu().get(paramInt1);
+      Object localObject = (String)this.vpm.dlc().get(paramInt1);
       int i;
       IBinder localIBinder;
       for (;;)
       {
         try
         {
-          paramParcel1.enforceInterface(b.ufO);
-          if (!b.cXk().equals(localObject)) {
+          paramParcel1.enforceInterface(b.voN);
+          if (!b.dkS().equals(localObject)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -488,7 +488,7 @@ public final class b
         }
         catch (Throwable localThrowable)
         {
-          ad.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
           b.a(b.this, localThrowable);
           continue;
           if ((i < 21) || (paramParcel1.readInt() == 0)) {
@@ -496,7 +496,7 @@ public final class b
           }
           Region.CREATOR.createFromParcel(paramParcel1);
           continue;
-          if (!b.cXl().equals(localThrowable)) {
+          if (!b.dkT().equals(localThrowable)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -524,7 +524,7 @@ public final class b
           continue;
           paramParcel1.readLong();
           continue;
-          if (!b.cXm().equals(localIBinder)) {
+          if (!b.dkU().equals(localIBinder)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -540,7 +540,7 @@ public final class b
           i = paramParcel1.readInt();
           b.c(b.this).put(localIBinder, Integer.valueOf(i));
           continue;
-          if (!b.cXn().equals(localIBinder)) {
+          if (!b.dkV().equals(localIBinder)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -562,7 +562,7 @@ public final class b
           }
           Region.CREATOR.createFromParcel(paramParcel1);
           continue;
-          if (!b.cXo().equals(localIBinder)) {
+          if (!b.dkW().equals(localIBinder)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -584,7 +584,7 @@ public final class b
           }
           Region.CREATOR.createFromParcel(paramParcel1);
           continue;
-          if (!b.cXp().equals(localIBinder)) {
+          if (!b.dkX().equals(localIBinder)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -606,7 +606,7 @@ public final class b
           }
           Region.CREATOR.createFromParcel(paramParcel1);
           continue;
-          if (!b.aud().equals(localIBinder)) {
+          if (!b.aAU().equals(localIBinder)) {
             continue;
           }
           i = Build.VERSION.SDK_INT;
@@ -650,23 +650,23 @@ public final class b
   final class b
     implements Handler.Callback
   {
-    private final WeakReference<Object> ugo;
-    private final Handler.Callback ugp;
+    private final WeakReference<Object> vpn;
+    private final Handler.Callback vpo;
     
     b(Object paramObject, Handler.Callback paramCallback)
     {
       AppMethodBeat.i(149048);
-      this.ugo = new WeakReference(paramObject);
-      this.ugp = paramCallback;
+      this.vpn = new WeakReference(paramObject);
+      this.vpo = paramCallback;
       AppMethodBeat.o(149048);
     }
     
     private boolean q(Message paramMessage)
     {
       AppMethodBeat.i(149050);
-      if (this.ugp != null)
+      if (this.vpo != null)
       {
-        boolean bool = this.ugp.handleMessage(paramMessage);
+        boolean bool = this.vpo.handleMessage(paramMessage);
         AppMethodBeat.o(149050);
         return bool;
       }
@@ -677,11 +677,11 @@ public final class b
     public final boolean handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(149049);
-      Object localObject1 = this.ugo.get();
+      Object localObject1 = this.vpn.get();
       boolean bool;
       if (localObject1 == null)
       {
-        ad.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
+        ac.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
         bool = q(paramMessage);
         AppMethodBeat.o(149049);
         return bool;
@@ -693,7 +693,7 @@ public final class b
           localView = (View)h.b(localObject1, "getView", null, new Object[0]);
           if (localView == null)
           {
-            ad.e("MicroMsg.AED", "cannot find root view, give up intercepting.");
+            ac.e("MicroMsg.AED", "cannot find root view, give up intercepting.");
             bool = q(paramMessage);
             AppMethodBeat.o(149049);
             return bool;
@@ -728,7 +728,7 @@ public final class b
         if (localObject1 != null) {
           continue;
         }
-        ad.w("MicroMsg.AED", "callback is null, give up intercepting, op: %s", new Object[] { Integer.valueOf(paramMessage.what) });
+        ac.w("MicroMsg.AED", "callback is null, give up intercepting, op: %s", new Object[] { Integer.valueOf(paramMessage.what) });
         bool = q(paramMessage);
         AppMethodBeat.o(149049);
         return bool;
@@ -740,7 +740,7 @@ public final class b
       }
       if ((Proxy.isProxyClass(localObject1.getClass())) && ((Proxy.getInvocationHandler(localObject1) instanceof b.e)))
       {
-        ad.w("MicroMsg.AED", "reused callback, skip rest works.");
+        ac.w("MicroMsg.AED", "reused callback, skip rest works.");
         bool = q(paramMessage);
         AppMethodBeat.o(149049);
         return bool;
@@ -766,7 +766,7 @@ public final class b
           if (localInteger != null) {
             break label839;
           }
-          ad.w("MicroMsg.AED", "callback %s's binder is unmarked, give up intercept.", new Object[] { localObject1.getClass().getName() });
+          ac.w("MicroMsg.AED", "callback %s's binder is unmarked, give up intercept.", new Object[] { localObject1.getClass().getName() });
           bool = q(paramMessage);
           AppMethodBeat.o(149049);
           return bool;
@@ -789,7 +789,7 @@ public final class b
           case 1021: 
             for (;;)
             {
-              localView = (View)h.b(localView, b.cXq(), h.b(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(i) });
+              localView = (View)h.b(localView, b.dkY(), h.b(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(i) });
               break;
               i = ((Integer)h.d(paramMessage.obj, "argi1")).intValue();
               continue;
@@ -824,18 +824,18 @@ public final class b
           case 1020: 
             while (!b.a(b.this, j, localInteger.intValue(), localView))
             {
-              h.b(localObject1, b.cXr(), h.b(new Class[] { Boolean.TYPE, Integer.TYPE }), new Object[] { Boolean.FALSE, Integer.valueOf(i) });
+              h.b(localObject1, b.dkZ(), h.b(new Class[] { Boolean.TYPE, Integer.TYPE }), new Object[] { Boolean.FALSE, Integer.valueOf(i) });
               AppMethodBeat.o(149049);
               return true;
               j = ((Integer)h.d(paramMessage.obj, "argi2")).intValue();
             }
-            localObject1 = (IInterface)Proxy.newProxyInstance(b.cXj(), localObject1.getClass().getInterfaces(), new b.e((IInterface)localObject1, localInteger)
+            localObject1 = (IInterface)Proxy.newProxyInstance(b.dkR(), localObject1.getClass().getInterfaces(), new b.e((IInterface)localObject1, localInteger)
             {
               public final Object invoke(Object paramAnonymousObject, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
               {
                 AppMethodBeat.i(149047);
                 Object localObject = paramAnonymousMethod.getName();
-                if (b.cXs().equals(localObject))
+                if (b.dla().equals(localObject))
                 {
                   localObject = new ArrayList();
                   if (paramAnonymousArrayOfObject[0] != null) {
@@ -853,7 +853,7 @@ public final class b
                   return paramAnonymousObject;
                   paramAnonymousArrayOfObject[0] = ((List)localObject).get(0);
                   continue;
-                  if (b.cXt().equals(localObject))
+                  if (b.dlb().equals(localObject))
                   {
                     List localList = (List)paramAnonymousArrayOfObject[0];
                     localObject = localList;
@@ -885,13 +885,13 @@ public final class b
   final class c
     extends b.e
   {
-    private InvocationHandler ugt;
+    private InvocationHandler vps;
     
     c(IInterface paramIInterface)
     {
       super(paramIInterface);
       AppMethodBeat.i(149052);
-      this.ugt = new InvocationHandler()
+      this.vps = new InvocationHandler()
       {
         public final Object invoke(Object arg1, Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
         {
@@ -900,7 +900,7 @@ public final class b
           synchronized (b.this)
           {
             localObject = paramAnonymousMethod.getName();
-            if (b.bQU().equals(localObject))
+            if (b.bYj().equals(localObject))
             {
               paramAnonymousMethod = b.b(b.this);
               AppMethodBeat.o(149051);
@@ -909,7 +909,7 @@ public final class b
           }
           try
           {
-            paramAnonymousArrayOfObject = paramAnonymousMethod.invoke(b.c.this.ugw.asBinder(), paramAnonymousArrayOfObject);
+            paramAnonymousArrayOfObject = paramAnonymousMethod.invoke(b.c.this.vpv.asBinder(), paramAnonymousArrayOfObject);
             AppMethodBeat.o(149051);
             return paramAnonymousArrayOfObject;
           }
@@ -955,8 +955,8 @@ public final class b
     public final IBinder asBinder()
     {
       AppMethodBeat.i(149054);
-      Object localObject = b.cXj();
-      InvocationHandler localInvocationHandler = this.ugt;
+      Object localObject = b.dkR();
+      InvocationHandler localInvocationHandler = this.vps;
       localObject = (IBinder)Proxy.newProxyInstance((ClassLoader)localObject, new Class[] { IBinder.class }, localInvocationHandler);
       AppMethodBeat.o(149054);
       return localObject;
@@ -966,12 +966,12 @@ public final class b
     {
       AppMethodBeat.i(149053);
       Object localObject6;
-      if ((b.ufP.equals(paramMethod.getName())) && (paramArrayOfObject != null) && (paramArrayOfObject.length >= 2))
+      if ((b.voO.equals(paramMethod.getName())) && (paramArrayOfObject != null) && (paramArrayOfObject.length >= 2))
       {
         localObject6 = paramArrayOfObject[1];
         try
         {
-          if (!h.findClass(b.ufO).isAssignableFrom(localObject6.getClass()))
+          if (!h.findClass(b.voN).isAssignableFrom(localObject6.getClass()))
           {
             IllegalStateException localIllegalStateException = new IllegalStateException("mismatched conn class: " + localObject6.getClass() + ", give up intercepting.");
             AppMethodBeat.o(149053);
@@ -980,7 +980,7 @@ public final class b
         }
         catch (Throwable localThrowable)
         {
-          ad.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
+          ac.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
           b.a(b.this, localThrowable);
           paramArrayOfObject[1] = localObject6;
         }
@@ -992,21 +992,21 @@ public final class b
         paramObject = super.invoke(paramObject, paramMethod, paramArrayOfObject);
         AppMethodBeat.o(149053);
         return paramObject;
-        localWeakReference = (WeakReference)h.d(localObject6, b.ufN);
+        localWeakReference = (WeakReference)h.d(localObject6, b.voM);
         localObject4 = localWeakReference.get();
         if (localObject4 != null) {
           break;
         }
-        ad.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
+        ac.e("MicroMsg.AED", "lost viewRootImpl instance, give up intercepting.");
       }
       if (Build.VERSION.SDK_INT < 16) {}
       Object localObject3;
-      for (Object localObject1 = localObject4;; localObject3 = h.d(h.b(localObject4, b.cPj(), null, new Object[0]), "mHandler")) {
+      for (Object localObject1 = localObject4;; localObject3 = h.d(h.b(localObject4, b.dcS(), null, new Object[0]), "mHandler")) {
         for (;;)
         {
-          Object localObject5 = (Handler.Callback)h.d(localObject1, b.ufM);
+          Object localObject5 = (Handler.Callback)h.d(localObject1, b.voL);
           if (!(localObject5 instanceof b.b)) {
-            h.c(localObject1, b.ufM, new b.b(b.this, localObject4, (Handler.Callback)localObject5));
+            h.c(localObject1, b.voL, new b.b(b.this, localObject4, (Handler.Callback)localObject5));
           }
           synchronized (b.a(b.this))
           {
@@ -1018,7 +1018,7 @@ public final class b
               localObject1 = new b.a(b.this, localWeakReference.get(), (IBinder)localObject1);
               b.a(b.this).put(localObject4, localObject1);
             }
-            paramArrayOfObject[1] = ((IInterface)h.a(b.ufO + "$Stub", "asInterface", h.b(new Class[] { IBinder.class }), new Object[] { localObject1 }));
+            paramArrayOfObject[1] = ((IInterface)h.a(b.voN + "$Stub", "asInterface", h.b(new Class[] { IBinder.class }), new Object[] { localObject1 }));
           }
         }
       }
@@ -1028,11 +1028,11 @@ public final class b
   class d
     extends Binder
   {
-    protected final IBinder ugv;
+    protected final IBinder vpu;
     
     d(IBinder paramIBinder)
     {
-      this.ugv = paramIBinder;
+      this.vpu = paramIBinder;
     }
     
     public void dump(FileDescriptor paramFileDescriptor, String[] paramArrayOfString)
@@ -1040,7 +1040,7 @@ public final class b
       AppMethodBeat.i(149058);
       try
       {
-        this.ugv.dump(paramFileDescriptor, paramArrayOfString);
+        this.vpu.dump(paramFileDescriptor, paramArrayOfString);
         AppMethodBeat.o(149058);
         return;
       }
@@ -1055,7 +1055,7 @@ public final class b
       AppMethodBeat.i(149059);
       try
       {
-        this.ugv.dumpAsync(paramFileDescriptor, paramArrayOfString);
+        this.vpu.dumpAsync(paramFileDescriptor, paramArrayOfString);
         AppMethodBeat.o(149059);
         return;
       }
@@ -1070,7 +1070,7 @@ public final class b
       AppMethodBeat.i(149055);
       try
       {
-        String str = this.ugv.getInterfaceDescriptor();
+        String str = this.vpu.getInterfaceDescriptor();
         AppMethodBeat.o(149055);
         return str;
       }
@@ -1084,7 +1084,7 @@ public final class b
     public boolean isBinderAlive()
     {
       AppMethodBeat.i(149057);
-      boolean bool = this.ugv.isBinderAlive();
+      boolean bool = this.vpu.isBinderAlive();
       AppMethodBeat.o(149057);
       return bool;
     }
@@ -1094,7 +1094,7 @@ public final class b
       AppMethodBeat.i(149061);
       try
       {
-        this.ugv.linkToDeath(paramDeathRecipient, paramInt);
+        this.vpu.linkToDeath(paramDeathRecipient, paramInt);
         AppMethodBeat.o(149061);
         return;
       }
@@ -1110,9 +1110,9 @@ public final class b
       AppMethodBeat.i(149060);
       try
       {
-        if (this.ugv.isBinderAlive())
+        if (this.vpu.isBinderAlive())
         {
-          boolean bool = this.ugv.transact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+          boolean bool = this.vpu.transact(paramInt1, paramParcel1, paramParcel2, paramInt2);
           AppMethodBeat.o(149060);
           return bool;
         }
@@ -1135,7 +1135,7 @@ public final class b
     public boolean pingBinder()
     {
       AppMethodBeat.i(149056);
-      boolean bool = this.ugv.pingBinder();
+      boolean bool = this.vpu.pingBinder();
       AppMethodBeat.o(149056);
       return bool;
     }
@@ -1148,7 +1148,7 @@ public final class b
     public boolean unlinkToDeath(IBinder.DeathRecipient paramDeathRecipient, int paramInt)
     {
       AppMethodBeat.i(149062);
-      boolean bool = this.ugv.unlinkToDeath(paramDeathRecipient, paramInt);
+      boolean bool = this.vpu.unlinkToDeath(paramDeathRecipient, paramInt);
       AppMethodBeat.o(149062);
       return bool;
     }
@@ -1157,17 +1157,17 @@ public final class b
   class e
     implements InvocationHandler
   {
-    protected final IInterface ugw;
+    protected final IInterface vpv;
     
     e(IInterface paramIInterface)
     {
-      this.ugw = paramIInterface;
+      this.vpv = paramIInterface;
     }
     
     public IBinder asBinder()
     {
       AppMethodBeat.i(149064);
-      IBinder localIBinder = this.ugw.asBinder();
+      IBinder localIBinder = this.vpv.asBinder();
       AppMethodBeat.o(149064);
       return localIBinder;
     }
@@ -1184,7 +1184,7 @@ public final class b
           AppMethodBeat.o(149063);
           return paramObject;
         }
-        paramObject = paramMethod.invoke(this.ugw, paramArrayOfObject);
+        paramObject = paramMethod.invoke(this.vpv, paramArrayOfObject);
         AppMethodBeat.o(149063);
         return paramObject;
       }
@@ -1252,12 +1252,12 @@ public final class b
   
   static final class h
   {
-    static final b ugx;
+    static final b vpw;
     
     static
     {
       AppMethodBeat.i(149065);
-      ugx = new b((byte)0);
+      vpw = new b((byte)0);
       AppMethodBeat.o(149065);
     }
   }
@@ -1265,17 +1265,17 @@ public final class b
   final class i
     implements IBinder
   {
-    private String ugA = null;
-    private final Class<?> ugy;
-    private a<String> ugz = null;
+    private final Class<?> vpx;
+    private a<String> vpy = null;
+    private String vpz = null;
     
     i()
     {
       Object localObject;
-      this.ugy = localObject;
+      this.vpx = localObject;
     }
     
-    public final SparseArray<String> cXu()
+    public final SparseArray<String> dlc()
     {
       Object[] arrayOfObject;
       int k;
@@ -1289,17 +1289,17 @@ public final class b
         {
           AppMethodBeat.i(149068);
           Object localObject1;
-          if (this.ugz != null)
+          if (this.vpy != null)
           {
-            localObject1 = this.ugz;
+            localObject1 = this.vpy;
             AppMethodBeat.o(149068);
             return localObject1;
           }
-          this.ugz = new a((byte)0);
+          this.vpy = new a((byte)0);
           try
           {
-            localObject1 = (IInterface)h.b(this.ugy, "asInterface", h.b(new Class[] { IBinder.class }), new Object[] { this });
-            Class[] arrayOfClass1 = this.ugy.getInterfaces();
+            localObject1 = (IInterface)h.b(this.vpx, "asInterface", h.b(new Class[] { IBinder.class }), new Object[] { this });
+            Class[] arrayOfClass1 = this.vpx.getInterfaces();
             int m = arrayOfClass1.length;
             i = 0;
             if (i < m)
@@ -1318,7 +1318,7 @@ public final class b
               if ("asBinder".equals(localObject4.getName())) {
                 break label374;
               }
-              this.ugA = localObject4.getName();
+              this.vpz = localObject4.getName();
               if (!localObject4.isAccessible()) {
                 localObject4.setAccessible(true);
               }
@@ -1342,10 +1342,10 @@ public final class b
           }
           catch (Throwable localThrowable)
           {
-            ad.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
+            ac.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
             b.a(b.this, localThrowable);
-            this.ugz.clear();
-            a locala = this.ugz;
+            this.vpy.clear();
+            a locala = this.vpy;
             AppMethodBeat.o(149068);
           }
           continue;
@@ -1416,8 +1416,8 @@ public final class b
       AppMethodBeat.i(149069);
       try
       {
-        if (this.ugz != null) {
-          this.ugz.put(paramInt1, this.ugA);
+        if (this.vpy != null) {
+          this.vpy.put(paramInt1, this.vpz);
         }
         return false;
       }
@@ -1462,7 +1462,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.b
  * JD-Core Version:    0.7.0.1
  */

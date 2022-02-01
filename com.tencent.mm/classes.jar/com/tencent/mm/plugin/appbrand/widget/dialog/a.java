@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.y;
 
 final class a
   extends FrameLayout
@@ -29,7 +29,7 @@ final class a
       if (((View)getParent()).getMeasuredHeight() > 0)
       {
         localContext = getContext();
-        if (!z.ip(getContext())) {
+        if (!y.iA(getContext())) {
           break label89;
         }
       }
@@ -37,7 +37,7 @@ final class a
     label89:
     for (paramInt2 = 173;; paramInt2 = 24)
     {
-      paramInt2 = com.tencent.mm.cd.a.fromDPToPix(localContext, paramInt2);
+      paramInt2 = com.tencent.mm.cc.a.fromDPToPix(localContext, paramInt2);
       i = View.MeasureSpec.makeMeasureSpec(((View)getParent()).getMeasuredHeight() - paramInt2, -2147483648);
       super.onMeasure(paramInt1, i);
       AppMethodBeat.o(131475);
@@ -47,7 +47,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.a
  * JD-Core Version:    0.7.0.1
  */

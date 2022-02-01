@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.sns.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,17 +10,17 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public int tgW;
+  public int upl;
   
   public a(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(65406);
-    this.tgW = 0;
+    this.upl = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("flag", String.valueOf(paramInt));
     localHashMap.put("passwd", paramString1);
     localHashMap.put("req_key", String.valueOf(paramString2));
-    this.tgW = paramInt;
+    this.upl = paramInt;
     setRequestData(localHashMap);
     AppMethodBeat.o(65406);
   }
@@ -43,22 +43,22 @@ public final class a
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(65407);
-    ad.i("MicroMsg.NetSceneSnsPayManage", " errCode: " + paramInt + " errMsg :" + paramString);
+    ac.i("MicroMsg.NetSceneSnsPayManage", " errCode: " + paramInt + " errMsg :" + paramString);
     if (paramInt == 0)
     {
-      if (this.tgW == 1)
+      if (this.upl == 1)
       {
-        com.tencent.mm.plugin.luckymoney.sns.b.a.FW(1);
-        ad.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 1");
+        com.tencent.mm.plugin.luckymoney.sns.b.a.HR(1);
+        ac.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 1");
         AppMethodBeat.o(65407);
         return;
       }
-      com.tencent.mm.plugin.luckymoney.sns.b.a.FW(0);
-      ad.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 0");
+      com.tencent.mm.plugin.luckymoney.sns.b.a.HR(0);
+      ac.i("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() setIsOpenSnsPay with 0");
       AppMethodBeat.o(65407);
       return;
     }
-    ad.e("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() NetSceneSnsPayManage is false!");
+    ac.e("MicroMsg.NetSceneSnsPayManage", "onGYNetEnd() NetSceneSnsPayManage is false!");
     AppMethodBeat.o(65407);
   }
 }

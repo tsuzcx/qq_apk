@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tbs.one.impl.a.f;
+import com.tencent.tbs.one.impl.a.f.b;
 import com.tencent.tbs.one.impl.common.d;
 import com.tencent.tbs.one.impl.common.d.a;
 import com.tencent.tbs.one.impl.common.h.a;
@@ -34,17 +35,17 @@ public final class a
   
   public static com.tencent.tbs.one.impl.a.a<com.tencent.tbs.one.impl.e.e<d>> a(i parami, int paramInt, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(186677);
+    AppMethodBeat.i(192445);
     parami = new b(parami.a, parami.b, parami.f(), parami.e(), paramInt, paramFile, paramBundle);
-    AppMethodBeat.o(186677);
+    AppMethodBeat.o(192445);
     return parami;
   }
   
   public static com.tencent.tbs.one.impl.a.a<com.tencent.tbs.one.impl.e.e<File>> a(i parami, d.a parama, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(186678);
+    AppMethodBeat.i(192446);
     parami = new com.tencent.tbs.one.impl.e.a.a(parami.a, parami.b, parami.f(), parami.e(), parama, paramFile, paramBundle);
-    AppMethodBeat.o(186678);
+    AppMethodBeat.o(192446);
     return parami;
   }
   
@@ -67,7 +68,7 @@ public final class a
       }
       try
       {
-        localObject1 = com.tencent.tbs.b.a.Ixr.keySet();
+        localObject1 = com.tencent.tbs.b.a.JZa.keySet();
         localObject2 = ((SharedPreferences)localObject2).edit();
         ((SharedPreferences.Editor)localObject2).putStringSet("in_use_component_names", (Set)localObject1);
         ((SharedPreferences.Editor)localObject2).apply();
@@ -93,7 +94,15 @@ public final class a
       if (!c)
       {
         com.tencent.tbs.a.e.cv(paramContext.getApplicationContext(), "onelog");
-        f.a(new a.1());
+        f.a(new f.b()
+        {
+          public final void a(int paramAnonymousInt, String paramAnonymousString)
+          {
+            AppMethodBeat.i(173887);
+            com.tencent.tbs.a.e.a(paramAnonymousInt, "TBSOne", paramAnonymousString);
+            AppMethodBeat.o(173887);
+          }
+        });
         StatisticReport.initialize(paramContext.getApplicationContext());
         com.tencent.tbs.one.impl.common.h.a = new h.a()
         {

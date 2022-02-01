@@ -22,16 +22,16 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.af;
-import com.tencent.mm.aw.o;
-import com.tencent.mm.bs.d;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.al.af;
+import com.tencent.mm.av.o;
+import com.tencent.mm.br.d;
+import com.tencent.mm.g.c.dy;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.storage.s;
-import com.tencent.mm.storage.t.a;
-import com.tencent.mm.storage.t.b;
-import com.tencent.mm.storage.v;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.storage.t;
+import com.tencent.mm.storage.u.a;
+import com.tencent.mm.storage.u.b;
+import com.tencent.mm.storage.w;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
 
@@ -39,35 +39,35 @@ public class BizTimeLineNewMsgUI
   extends MMActivity
   implements j
 {
-  private int dcS;
+  private int daq;
   private TextView emptyTipTv;
   private int fromScene;
-  private ListView iwH;
-  private int mUE;
-  private int mUF;
-  private com.tencent.mm.ui.widget.b.a mVN;
-  private g mXA;
-  private s mXB;
-  private int mXC;
-  private n.d mXD;
-  private long mXp;
-  View mXu;
-  private ProgressBar mXv;
-  private TextView mXw;
-  private View mXx;
-  View mXy;
-  View mXz;
+  private ListView iWK;
+  private t nAa;
+  private int nAb;
+  private n.d nAc;
+  private int nwY;
+  private int nwZ;
+  private com.tencent.mm.ui.widget.b.a nym;
+  private long nzO;
+  View nzT;
+  private ProgressBar nzU;
+  private TextView nzV;
+  private View nzW;
+  View nzX;
+  View nzY;
+  private g nzZ;
   
   public BizTimeLineNewMsgUI()
   {
     AppMethodBeat.i(5923);
     this.fromScene = 1;
-    this.mUE = 0;
-    this.mUF = 0;
-    this.dcS = 0;
-    this.mXp = 0L;
-    this.mXC = 0;
-    this.mXD = new n.d()
+    this.nwY = 0;
+    this.nwZ = 0;
+    this.daq = 0;
+    this.nzO = 0L;
+    this.nAb = 0;
+    this.nAc = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -81,8 +81,8 @@ public class BizTimeLineNewMsgUI
           return;
           if (BizTimeLineNewMsgUI.m(BizTimeLineNewMsgUI.this) != null)
           {
-            af.awl().wc(BizTimeLineNewMsgUI.m(BizTimeLineNewMsgUI.this).field_msgId);
-            paramAnonymousMenuItem = b.mWx;
+            af.aDd().AF(BizTimeLineNewMsgUI.m(BizTimeLineNewMsgUI.this).field_msgId);
+            paramAnonymousMenuItem = b.nyW;
             b.a(BizTimeLineNewMsgUI.m(BizTimeLineNewMsgUI.this), 2, BizTimeLineNewMsgUI.n(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.b(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.c(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.d(BizTimeLineNewMsgUI.this));
           }
         }
@@ -91,11 +91,11 @@ public class BizTimeLineNewMsgUI
     AppMethodBeat.o(5923);
   }
   
-  public final void bCM()
+  public final void bJU()
   {
     AppMethodBeat.i(5925);
-    if (this.mXA != null) {
-      this.mXA.notifyDataSetChanged();
+    if (this.nzZ != null) {
+      this.nzZ.notifyDataSetChanged();
     }
     AppMethodBeat.o(5925);
   }
@@ -112,51 +112,51 @@ public class BizTimeLineNewMsgUI
     this.emptyTipTv = ((TextView)$(2131299468));
     this.emptyTipTv.setText(2131756607);
     setMMTitle(getString(2131756634));
-    this.dcS = getIntent().getIntExtra("biz_time_line_line_session_id", 0);
-    this.mXp = (System.currentTimeMillis() / 1000L);
+    this.daq = getIntent().getIntExtra("biz_time_line_line_session_id", 0);
+    this.nzO = (System.currentTimeMillis() / 1000L);
     this.fromScene = getIntent().getIntExtra("biz_time_line_line_enter_scene", 1);
     if (this.fromScene == 1) {}
-    for (paramBundle = v.p(af.awl().gPa.query("BizTimeLineSingleMsgInfo", null, "status!=?", new String[] { "4" }, null, null, "createTime DESC "));; paramBundle = v.p(af.awl().gPa.query("BizTimeLineSingleMsgInfo", null, null, null, null, null, "createTime DESC limit 20")))
+    for (paramBundle = w.o(af.aDd().hpA.query("BizTimeLineSingleMsgInfo", null, "status!=?", new String[] { "4" }, null, null, "createTime DESC "));; paramBundle = w.o(af.aDd().hpA.query("BizTimeLineSingleMsgInfo", null, null, null, null, null, "createTime DESC limit 20")))
     {
-      this.mXA = new g(this, paramBundle, this.fromScene, this.dcS, this.mXp);
-      this.iwH = ((ListView)$(2131297355));
-      paramBundle = this.iwH;
-      this.mXu = getLayoutInflater().inflate(2131493205, null);
-      this.mXv = ((ProgressBar)this.mXu.findViewById(2131297352));
-      this.mXw = ((TextView)this.mXu.findViewById(2131297353));
-      this.mXx = this.mXu.findViewById(2131297453);
-      this.mXy = this.mXu.findViewById(2131297351);
-      this.mXz = this.mXu.findViewById(2131297359);
-      paramBundle.addFooterView(this.mXu);
-      this.iwH.setAdapter(this.mXA);
-      this.iwH.setFooterDividersEnabled(false);
-      this.iwH.setOnScrollListener(new AbsListView.OnScrollListener()
+      this.nzZ = new g(this, paramBundle, this.fromScene, this.daq, this.nzO);
+      this.iWK = ((ListView)$(2131297355));
+      paramBundle = this.iWK;
+      this.nzT = getLayoutInflater().inflate(2131493205, null);
+      this.nzU = ((ProgressBar)this.nzT.findViewById(2131297352));
+      this.nzV = ((TextView)this.nzT.findViewById(2131297353));
+      this.nzW = this.nzT.findViewById(2131297453);
+      this.nzX = this.nzT.findViewById(2131297351);
+      this.nzY = this.nzT.findViewById(2131297359);
+      paramBundle.addFooterView(this.nzT);
+      this.iWK.setAdapter(this.nzZ);
+      this.iWK.setFooterDividersEnabled(false);
+      this.iWK.setOnScrollListener(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
         {
           AppMethodBeat.i(5917);
-          o.ayJ().cq(paramAnonymousInt);
+          o.aFB().cp(paramAnonymousInt);
           AppMethodBeat.o(5917);
         }
       });
-      this.iwH.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.iWK.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(5918);
-          paramAnonymousAdapterView = BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).xP(paramAnonymousInt);
+          paramAnonymousAdapterView = BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).yG(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
-            ad.e("MicroMsg.BizTimeLineNewMsgUI", "onItemClick info is null");
+            ac.e("MicroMsg.BizTimeLineNewMsgUI", "onItemClick info is null");
             AppMethodBeat.o(5918);
             return;
           }
-          if (paramAnonymousAdapterView.eJP())
+          if (paramAnonymousAdapterView.eZn())
           {
-            ad.i("MicroMsg.BizTimeLineNewMsgUI", "System XML msg onItemClick");
-            paramAnonymousView = b.mWx;
+            ac.i("MicroMsg.BizTimeLineNewMsgUI", "System XML msg onItemClick");
+            paramAnonymousView = b.nyW;
             b.a(paramAnonymousAdapterView, 1, paramAnonymousInt, BizTimeLineNewMsgUI.b(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.c(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.d(BizTimeLineNewMsgUI.this));
             paramAnonymousView = new Intent(BizTimeLineNewMsgUI.this, BizFastRejectMsgUI.class);
             if (BizTimeLineNewMsgUI.c(BizTimeLineNewMsgUI.this) == 2) {
@@ -169,9 +169,9 @@ public class BizTimeLineNewMsgUI
               paramAnonymousView.putExtra("key_time_line_msg_id", paramAnonymousAdapterView.field_msgId);
               paramAnonymousView.putExtra("key_reject_biz_info_xml", paramAnonymousAdapterView.field_content);
               paramAnonymousAdapterView = BizTimeLineNewMsgUI.this;
-              paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.adn(), "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineNewMsgUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lS(0));
+              paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.aeD(), "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineNewMsgUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lR(0));
               com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineNewMsgUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(5918);
               return;
@@ -180,13 +180,13 @@ public class BizTimeLineNewMsgUI
               }
             }
           }
-          if (((k)com.tencent.mm.kernel.g.ab(k.class)).cOI().rm(paramAnonymousAdapterView.field_msgId).field_msgId == 0L)
+          if (((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().vP(paramAnonymousAdapterView.field_msgId).field_msgId == 0L)
           {
-            com.tencent.mm.ui.base.h.cf(BizTimeLineNewMsgUI.this, BizTimeLineNewMsgUI.this.getString(2131756630));
+            com.tencent.mm.ui.base.h.cg(BizTimeLineNewMsgUI.this, BizTimeLineNewMsgUI.this.getString(2131756630));
             AppMethodBeat.o(5918);
             return;
           }
-          paramAnonymousView = b.mWx;
+          paramAnonymousView = b.nyW;
           b.a(paramAnonymousAdapterView, 1, paramAnonymousInt, BizTimeLineNewMsgUI.b(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.c(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.d(BizTimeLineNewMsgUI.this));
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("Chat_User", paramAnonymousAdapterView.field_talker);
@@ -199,21 +199,21 @@ public class BizTimeLineNewMsgUI
           AppMethodBeat.o(5918);
         }
       });
-      this.iwH.setEmptyView(this.emptyTipTv);
-      if ((this.fromScene == 1) && (this.mXu != null))
+      this.iWK.setEmptyView(this.emptyTipTv);
+      if ((this.fromScene == 1) && (this.nzT != null))
       {
-        this.mXv.setVisibility(8);
-        this.mXw.setText(getString(2131756633));
-        this.mXu.setBackgroundResource(2131231244);
-        this.mXx.setVisibility(0);
-        this.mXu.setOnClickListener(new View.OnClickListener()
+        this.nzU.setVisibility(8);
+        this.nzV.setText(getString(2131756633));
+        this.nzT.setBackgroundResource(2131231244);
+        this.nzW.setVisibility(0);
+        this.nzT.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(5921);
             BizTimeLineNewMsgUI.i(BizTimeLineNewMsgUI.this).setOnClickListener(null);
-            BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).mXq = true;
-            BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).xQ(BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).getCount() - 1);
+            BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).nzP = true;
+            BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).yH(BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).getCount() - 1);
             BizTimeLineNewMsgUI.j(BizTimeLineNewMsgUI.this).setVisibility(0);
             BizTimeLineNewMsgUI.k(BizTimeLineNewMsgUI.this).setText(BizTimeLineNewMsgUI.this.getString(2131756625));
             BizTimeLineNewMsgUI.i(BizTimeLineNewMsgUI.this).setBackgroundColor(BizTimeLineNewMsgUI.this.getResources().getColor(2131100002));
@@ -222,7 +222,7 @@ public class BizTimeLineNewMsgUI
           }
         });
       }
-      this.iwH.setOnTouchListener(new View.OnTouchListener()
+      this.iWK.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -239,13 +239,13 @@ public class BizTimeLineNewMsgUI
           }
         }
       });
-      this.mVN = new com.tencent.mm.ui.widget.b.a(this);
-      this.iwH.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+      this.nym = new com.tencent.mm.ui.widget.b.a(this);
+      this.iWK.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(5920);
-          BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this, BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).xP(paramAnonymousInt));
+          BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this, BizTimeLineNewMsgUI.a(BizTimeLineNewMsgUI.this).yG(paramAnonymousInt));
           BizTimeLineNewMsgUI.c(BizTimeLineNewMsgUI.this, paramAnonymousInt);
           BizTimeLineNewMsgUI.h(BizTimeLineNewMsgUI.this).a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, BizTimeLineNewMsgUI.this, BizTimeLineNewMsgUI.e(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.f(BizTimeLineNewMsgUI.this), BizTimeLineNewMsgUI.g(BizTimeLineNewMsgUI.this));
           AppMethodBeat.o(5920);
@@ -279,13 +279,13 @@ public class BizTimeLineNewMsgUI
   {
     AppMethodBeat.i(5926);
     super.onDestroy();
-    Object localObject = this.mXA;
-    af.awl().a(((g)localObject).mSg);
-    localObject = af.awl();
-    ((v)localObject).gPa.execSQL("BizTimeLineSingleMsgInfo", "update BizTimeLineSingleMsgInfo set status = 4 where status != 4");
-    t.a locala = new t.a();
-    locala.FeG = t.b.FeK;
-    ((v)localObject).a(locala);
+    Object localObject = this.nzZ;
+    af.aDd().a(((g)localObject).nuw);
+    localObject = af.aDd();
+    ((w)localObject).hpA.execSQL("BizTimeLineSingleMsgInfo", "update BizTimeLineSingleMsgInfo set status = 4 where status != 4");
+    u.a locala = new u.a();
+    locala.GCq = u.b.GCu;
+    ((w)localObject).a(locala);
     AppMethodBeat.o(5926);
   }
   
@@ -311,7 +311,7 @@ public class BizTimeLineNewMsgUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineNewMsgUI
  * JD-Core Version:    0.7.0.1
  */

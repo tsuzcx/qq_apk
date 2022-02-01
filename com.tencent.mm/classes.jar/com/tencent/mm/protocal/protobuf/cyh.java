@@ -1,88 +1,88 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class cyh
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
-  public String Eqr;
-  public String Eqs;
-  public String Eqt;
-  public String Equ;
-  public String Eqv;
+  public String FHA;
+  public String FHB;
+  public int FHC;
+  public String FHD;
+  public String FHy;
+  public String FHz;
+  public String content;
+  public int state;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101531);
+    AppMethodBeat.i(153299);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Eqr == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: videoFileMD5");
-        AppMethodBeat.o(101531);
-        throw paramVarArgs;
+      if (this.content != null) {
+        paramVarArgs.d(1, this.content);
       }
-      if (this.Eqr != null) {
-        paramVarArgs.d(1, this.Eqr);
+      if (this.FHy != null) {
+        paramVarArgs.d(2, this.FHy);
       }
-      if (this.Eqs != null) {
-        paramVarArgs.d(2, this.Eqs);
+      if (this.FHz != null) {
+        paramVarArgs.d(3, this.FHz);
       }
-      if (this.Eqt != null) {
-        paramVarArgs.d(3, this.Eqt);
+      if (this.FHA != null) {
+        paramVarArgs.d(4, this.FHA);
       }
-      if (this.Equ != null) {
-        paramVarArgs.d(4, this.Equ);
+      if (this.FHB != null) {
+        paramVarArgs.d(5, this.FHB);
       }
-      if (this.Eqv != null) {
-        paramVarArgs.d(5, this.Eqv);
+      paramVarArgs.aR(6, this.FHC);
+      paramVarArgs.aR(7, this.state);
+      if (this.FHD != null) {
+        paramVarArgs.d(8, this.FHD);
       }
-      AppMethodBeat.o(101531);
+      AppMethodBeat.o(153299);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Eqr == null) {
-        break label502;
+      if (this.content == null) {
+        break label606;
       }
     }
-    label502:
-    for (int i = f.a.a.b.b.a.e(1, this.Eqr) + 0;; i = 0)
+    label606:
+    for (int i = f.a.a.b.b.a.e(1, this.content) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Eqs != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Eqs);
+      if (this.FHy != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.FHy);
       }
       i = paramInt;
-      if (this.Eqt != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Eqt);
+      if (this.FHz != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.FHz);
       }
       paramInt = i;
-      if (this.Equ != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Equ);
+      if (this.FHA != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.FHA);
       }
       i = paramInt;
-      if (this.Eqv != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Eqv);
+      if (this.FHB != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.FHB);
       }
-      AppMethodBeat.o(101531);
-      return i;
+      i = i + f.a.a.b.b.a.bx(6, this.FHC) + f.a.a.b.b.a.bx(7, this.state);
+      paramInt = i;
+      if (this.FHD != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.FHD);
+      }
+      AppMethodBeat.o(153299);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
-        if (this.Eqr == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: videoFileMD5");
-          AppMethodBeat.o(101531);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(101531);
+        AppMethodBeat.o(153299);
         return 0;
       }
       if (paramInt == 3)
@@ -92,30 +92,42 @@ public final class cyh
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(101531);
+          AppMethodBeat.o(153299);
           return -1;
         case 1: 
-          localcyh.Eqr = locala.KhF.readString();
-          AppMethodBeat.o(101531);
+          localcyh.content = locala.LVo.readString();
+          AppMethodBeat.o(153299);
           return 0;
         case 2: 
-          localcyh.Eqs = locala.KhF.readString();
-          AppMethodBeat.o(101531);
+          localcyh.FHy = locala.LVo.readString();
+          AppMethodBeat.o(153299);
           return 0;
         case 3: 
-          localcyh.Eqt = locala.KhF.readString();
-          AppMethodBeat.o(101531);
+          localcyh.FHz = locala.LVo.readString();
+          AppMethodBeat.o(153299);
           return 0;
         case 4: 
-          localcyh.Equ = locala.KhF.readString();
-          AppMethodBeat.o(101531);
+          localcyh.FHA = locala.LVo.readString();
+          AppMethodBeat.o(153299);
+          return 0;
+        case 5: 
+          localcyh.FHB = locala.LVo.readString();
+          AppMethodBeat.o(153299);
+          return 0;
+        case 6: 
+          localcyh.FHC = locala.LVo.xF();
+          AppMethodBeat.o(153299);
+          return 0;
+        case 7: 
+          localcyh.state = locala.LVo.xF();
+          AppMethodBeat.o(153299);
           return 0;
         }
-        localcyh.Eqv = locala.KhF.readString();
-        AppMethodBeat.o(101531);
+        localcyh.FHD = locala.LVo.readString();
+        AppMethodBeat.o(153299);
         return 0;
       }
-      AppMethodBeat.o(101531);
+      AppMethodBeat.o(153299);
       return -1;
     }
   }

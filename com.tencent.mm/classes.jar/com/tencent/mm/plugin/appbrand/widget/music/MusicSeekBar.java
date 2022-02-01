@@ -21,14 +21,14 @@ public class MusicSeekBar
 {
   private Context context;
   boolean isLoading;
-  private TextView mhB;
-  private TextView mhC;
-  private SeekBar mhD;
-  ValueAnimator mhE;
-  boolean mhF;
-  a mhG;
-  Drawable mhH;
-  private a mhI;
+  private TextView mJC;
+  private TextView mJD;
+  private SeekBar mJE;
+  ValueAnimator mJF;
+  boolean mJG;
+  a mJH;
+  Drawable mJI;
+  private a mJJ;
   
   public MusicSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,32 +39,32 @@ public class MusicSeekBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(133762);
-    this.mhF = false;
+    this.mJG = false;
     this.isLoading = false;
     this.context = paramContext;
     paramContext = LayoutInflater.from(this.context).inflate(2131494986, this);
-    this.mhB = ((TextView)paramContext.findViewById(2131298899));
-    this.mhC = ((TextView)paramContext.findViewById(2131299490));
-    this.mhD = ((SeekBar)paramContext.findViewById(2131304485));
-    this.mhB.setText("00:00");
-    this.mhC.setText("--:--");
-    this.mhG = new a(getResources().getDrawable(2131233397));
-    this.mhH = getResources().getDrawable(2131233399);
-    this.mhD.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+    this.mJC = ((TextView)paramContext.findViewById(2131298899));
+    this.mJD = ((TextView)paramContext.findViewById(2131299490));
+    this.mJE = ((SeekBar)paramContext.findViewById(2131304485));
+    this.mJC.setText("00:00");
+    this.mJD.setText("--:--");
+    this.mJH = new a(getResources().getDrawable(2131233397));
+    this.mJI = getResources().getDrawable(2131233399);
+    this.mJE.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
     {
       public final void onProgressChanged(SeekBar paramAnonymousSeekBar, int paramAnonymousInt, boolean paramAnonymousBoolean) {}
       
       public final void onStartTrackingTouch(SeekBar paramAnonymousSeekBar)
       {
-        MusicSeekBar.this.mhF = true;
+        MusicSeekBar.this.mJG = true;
       }
       
       public final void onStopTrackingTouch(SeekBar paramAnonymousSeekBar)
       {
         AppMethodBeat.i(133760);
-        MusicSeekBar.this.mhF = false;
+        MusicSeekBar.this.mJG = false;
         if (MusicSeekBar.a(MusicSeekBar.this) != null) {
-          MusicSeekBar.a(MusicSeekBar.this).vj(paramAnonymousSeekBar.getProgress());
+          MusicSeekBar.a(MusicSeekBar.this).wa(paramAnonymousSeekBar.getProgress());
         }
         AppMethodBeat.o(133760);
       }
@@ -72,7 +72,7 @@ public class MusicSeekBar
     AppMethodBeat.o(133762);
   }
   
-  private static String vi(int paramInt)
+  private static String vZ(int paramInt)
   {
     AppMethodBeat.i(133767);
     Object localObject = new StringBuilder();
@@ -91,26 +91,26 @@ public class MusicSeekBar
     return localObject;
   }
   
-  public final void hE(boolean paramBoolean)
+  public final void id(boolean paramBoolean)
   {
     AppMethodBeat.i(133763);
-    if (this.mhE == null)
+    if (this.mJF == null)
     {
-      this.mhE = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
-      this.mhE.setTarget(this.mhD);
-      this.mhE.setRepeatCount(100);
-      this.mhE.setDuration(5000L);
-      this.mhE.setInterpolator(new LinearInterpolator());
-      this.mhE.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.mJF = ValueAnimator.ofFloat(new float[] { 0.0F, 360.0F });
+      this.mJF.setTarget(this.mJE);
+      this.mJF.setRepeatCount(100);
+      this.mJF.setDuration(5000L);
+      this.mJF.setInterpolator(new LinearInterpolator());
+      this.mJF.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(133761);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          paramAnonymousValueAnimator = MusicSeekBar.this.mhG;
-          paramAnonymousValueAnimator.mhL = f;
+          paramAnonymousValueAnimator = MusicSeekBar.this.mJH;
+          paramAnonymousValueAnimator.mJM = f;
           paramAnonymousValueAnimator.invalidateSelf();
-          MusicSeekBar.b(MusicSeekBar.this).setThumb(MusicSeekBar.this.mhG);
+          MusicSeekBar.b(MusicSeekBar.this).setThumb(MusicSeekBar.this.mJH);
           AppMethodBeat.o(133761);
         }
       });
@@ -118,56 +118,56 @@ public class MusicSeekBar
     this.isLoading = paramBoolean;
     if (paramBoolean)
     {
-      this.mhE.start();
+      this.mJF.start();
       AppMethodBeat.o(133763);
       return;
     }
-    this.mhE.cancel();
-    this.mhD.setThumb(this.mhH);
+    this.mJF.cancel();
+    this.mJE.setThumb(this.mJI);
     AppMethodBeat.o(133763);
   }
   
   public void setColor(int paramInt)
   {
     AppMethodBeat.i(133764);
-    this.mhB.setTextColor(paramInt);
-    this.mhC.setTextColor(paramInt);
-    this.mhD.getProgressDrawable().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    this.mhD.getThumb().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    this.mhH.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
-    this.mhG.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.mJC.setTextColor(paramInt);
+    this.mJD.setTextColor(paramInt);
+    this.mJE.getProgressDrawable().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.mJE.getThumb().setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.mJI.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
+    this.mJH.setColorFilter(paramInt, PorterDuff.Mode.MULTIPLY);
     AppMethodBeat.o(133764);
   }
   
   public void setMaxProgress(int paramInt)
   {
     AppMethodBeat.i(133766);
-    this.mhC.setText(vi(paramInt));
-    this.mhD.setMax(paramInt);
+    this.mJD.setText(vZ(paramInt));
+    this.mJE.setMax(paramInt);
     AppMethodBeat.o(133766);
   }
   
   public void setOnSeekBarChange(a parama)
   {
-    this.mhI = parama;
+    this.mJJ = parama;
   }
   
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(133765);
-    if ((this.isLoading) || (this.mhF))
+    if ((this.isLoading) || (this.mJG))
     {
       AppMethodBeat.o(133765);
       return;
     }
-    this.mhB.setText(vi(paramInt));
-    this.mhD.setProgress(paramInt);
+    this.mJC.setText(vZ(paramInt));
+    this.mJE.setProgress(paramInt);
     AppMethodBeat.o(133765);
   }
   
   public static abstract interface a
   {
-    public abstract void vj(int paramInt);
+    public abstract void wa(int paramInt);
   }
 }
 

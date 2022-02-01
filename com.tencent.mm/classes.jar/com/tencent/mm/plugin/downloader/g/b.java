@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bs;
 import java.util.LinkedList;
 
 public final class b
@@ -28,7 +28,7 @@ public final class b
   public static String T(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(89089);
-    if (bt.gL(paramLinkedList))
+    if (bs.gY(paramLinkedList))
     {
       AppMethodBeat.o(89089);
       return "";
@@ -47,13 +47,33 @@ public final class b
     return paramLinkedList;
   }
   
-  public final a Sk(String paramString)
+  public final boolean WA(String paramString)
+  {
+    AppMethodBeat.i(89096);
+    paramString = rawQuery(String.format("select count(*) from %s where %s=\"%s\"", new Object[] { "FileDownloadInfo", "downloadUrl", paramString }), new String[0]);
+    if ((paramString != null) && (paramString.moveToFirst()))
+    {
+      int i = paramString.getInt(0);
+      paramString.close();
+      if (i > 1)
+      {
+        AppMethodBeat.o(89096);
+        return true;
+      }
+      AppMethodBeat.o(89096);
+      return false;
+    }
+    AppMethodBeat.o(89096);
+    return false;
+  }
+  
+  public final a Ww(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(89088);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.FileDownloadInfoStorage", "appId is null");
+      ac.e("MicroMsg.FileDownloadInfoStorage", "appId is null");
       AppMethodBeat.o(89088);
       return null;
     }
@@ -76,12 +96,12 @@ public final class b
     return paramString;
   }
   
-  public final boolean Sl(String paramString)
+  public final boolean Wx(String paramString)
   {
     AppMethodBeat.i(89093);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, url is null");
+      ac.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, url is null");
       AppMethodBeat.o(89093);
       return false;
     }
@@ -90,12 +110,12 @@ public final class b
     return bool;
   }
   
-  public final boolean Sm(String paramString)
+  public final boolean Wy(String paramString)
   {
     AppMethodBeat.i(89094);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, appId is null");
+      ac.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, appId is null");
       AppMethodBeat.o(89094);
       return false;
     }
@@ -104,13 +124,13 @@ public final class b
     return bool;
   }
   
-  public final a Sn(String paramString)
+  public final a Wz(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(89091);
-    if (bt.isNullOrNil(paramString))
+    if (bs.isNullOrNil(paramString))
     {
-      ad.e("MicroMsg.FileDownloadInfoStorage", "Null or nil url");
+      ac.e("MicroMsg.FileDownloadInfoStorage", "Null or nil url");
       AppMethodBeat.o(89091);
       return null;
     }
@@ -133,43 +153,15 @@ public final class b
     return paramString;
   }
   
-  public final boolean So(String paramString)
+  public final LinkedList<a> bXH()
   {
-    AppMethodBeat.i(89096);
-    paramString = rawQuery(String.format("select count(*) from %s where %s=\"%s\"", new Object[] { "FileDownloadInfo", "downloadUrl", paramString }), new String[0]);
-    if ((paramString != null) && (paramString.moveToFirst()))
-    {
-      int i = paramString.getInt(0);
-      paramString.close();
-      if (i > 1)
-      {
-        AppMethodBeat.o(89096);
-        return true;
-      }
-      AppMethodBeat.o(89096);
-      return false;
-    }
-    AppMethodBeat.o(89096);
-    return false;
-  }
-  
-  public final boolean bQG()
-  {
-    AppMethodBeat.i(89092);
-    boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo");
-    AppMethodBeat.o(89092);
-    return bool;
-  }
-  
-  public final LinkedList<a> bQr()
-  {
-    AppMethodBeat.i(189079);
-    ad.i("MicroMsg.FileDownloadInfoStorage", "getAllTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo")));
+    AppMethodBeat.i(209633);
+    ac.i("MicroMsg.FileDownloadInfoStorage", "getAllTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo")));
     Cursor localCursor = rawQuery("select * from FileDownloadInfo", new String[0]);
     LinkedList localLinkedList = new LinkedList();
     if (localCursor == null)
     {
-      AppMethodBeat.o(189079);
+      AppMethodBeat.o(209633);
       return localLinkedList;
     }
     while (localCursor.moveToNext())
@@ -179,27 +171,35 @@ public final class b
       localLinkedList.add(locala);
     }
     localCursor.close();
-    AppMethodBeat.o(189079);
+    AppMethodBeat.o(209633);
     return localLinkedList;
   }
   
-  public final boolean cF(String paramString, int paramInt)
+  public final boolean bXW()
+  {
+    AppMethodBeat.i(89092);
+    boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo");
+    AppMethodBeat.o(89092);
+    return bool;
+  }
+  
+  public final boolean cK(String paramString, int paramInt)
   {
     AppMethodBeat.i(89095);
     String str = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "FileDownloadInfo", "status", Integer.valueOf(paramInt), "downloadUrl", paramString });
     boolean bool = execSQL("FileDownloadInfo", str);
-    ad.i("MicroMsg.FileDownloadInfoStorage", "updateDownloadState, sql : %s\ndownloadUrl : %s, status : %d, ret : %s", new Object[] { str, paramString, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+    ac.i("MicroMsg.FileDownloadInfoStorage", "updateDownloadState, sql : %s\ndownloadUrl : %s, status : %d, ret : %s", new Object[] { str, paramString, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
     AppMethodBeat.o(89095);
     return bool;
   }
   
-  public final a oC(long paramLong)
+  public final a so(long paramLong)
   {
     a locala = null;
     AppMethodBeat.i(89090);
     if (paramLong < 0L)
     {
-      ad.e("MicroMsg.FileDownloadInfoStorage", "download id is not avaiable");
+      ac.e("MicroMsg.FileDownloadInfoStorage", "download id is not avaiable");
       AppMethodBeat.o(89090);
       return null;
     }

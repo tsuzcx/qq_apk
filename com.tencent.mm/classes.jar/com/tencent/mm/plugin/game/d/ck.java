@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ck
-  extends com.tencent.mm.bx.a
+  extends com.tencent.mm.bw.a
 {
   public String Desc;
   public String Title;
-  public String rZn;
+  public String thg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -18,8 +18,8 @@ public final class ck
       if (this.Title != null) {
         paramVarArgs.d(1, this.Title);
       }
-      if (this.rZn != null) {
-        paramVarArgs.d(2, this.rZn);
+      if (this.thg != null) {
+        paramVarArgs.d(2, this.thg);
       }
       if (this.Desc != null) {
         paramVarArgs.d(3, this.Desc);
@@ -36,8 +36,8 @@ public final class ck
     for (int i = f.a.a.b.b.a.e(1, this.Title) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.rZn != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.rZn);
+      if (this.thg != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.thg);
       }
       i = paramInt;
       if (this.Desc != null) {
@@ -48,9 +48,9 @@ public final class ck
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.fMq();
+            paramVarArgs.gfg();
           }
         }
         AppMethodBeat.o(41813);
@@ -66,15 +66,15 @@ public final class ck
           AppMethodBeat.o(41813);
           return -1;
         case 1: 
-          localck.Title = locala.KhF.readString();
+          localck.Title = locala.LVo.readString();
           AppMethodBeat.o(41813);
           return 0;
         case 2: 
-          localck.rZn = locala.KhF.readString();
+          localck.thg = locala.LVo.readString();
           AppMethodBeat.o(41813);
           return 0;
         }
-        localck.Desc = locala.KhF.readString();
+        localck.Desc = locala.LVo.readString();
         AppMethodBeat.o(41813);
         return 0;
       }
@@ -85,7 +85,7 @@ public final class ck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ck
  * JD-Core Version:    0.7.0.1
  */

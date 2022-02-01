@@ -16,49 +16,47 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.am;
-import com.tencent.mm.ui.ao;
 import java.util.ArrayList;
 
 public class r
 {
-  boolean Htj;
-  public boolean Htk;
-  private boolean Htl;
-  private boolean Htm;
-  boolean Htn;
-  public d Hto;
-  public b Htp;
-  private SearchViewNotRealTimeHelper.a Htq;
-  private boolean Htr;
-  private ArrayList<String> Hts;
-  private boolean Htt;
-  public int Htu;
-  private int Htv;
-  a Htw;
+  boolean ITG;
+  public boolean ITH;
+  private boolean ITI;
+  private boolean ITJ;
+  boolean ITK;
+  public d ITL;
+  public b ITM;
+  private SearchViewNotRealTimeHelper.a ITN;
+  private boolean ITO;
+  private ArrayList<String> ITP;
+  private boolean ITQ;
+  public int ITR;
+  private int ITS;
+  a ITT;
   final String TAG;
-  ap gAC;
-  MenuItem qeS;
+  com.tencent.mm.sdk.platformtools.ao gox;
+  MenuItem qNu;
   
   public r()
   {
     AppMethodBeat.i(143240);
-    this.Htj = false;
-    this.Htk = false;
-    this.Htl = false;
-    this.Htm = true;
-    this.Htn = true;
-    this.qeS = null;
-    this.gAC = new ap(Looper.getMainLooper());
-    this.Hto = null;
-    this.Htr = true;
-    this.Htu = 2131755726;
-    this.Htv = 0;
-    this.Htr = true;
-    this.Htj = false;
+    this.ITG = false;
+    this.ITH = false;
+    this.ITI = false;
+    this.ITJ = true;
+    this.ITK = true;
+    this.qNu = null;
+    this.gox = new com.tencent.mm.sdk.platformtools.ao(Looper.getMainLooper());
+    this.ITL = null;
+    this.ITO = true;
+    this.ITR = 2131755726;
+    this.ITS = 0;
+    this.ITO = true;
+    this.ITG = false;
     this.TAG = ("MicroMsg.SearchViewHelper-" + String.valueOf(System.currentTimeMillis()));
     AppMethodBeat.o(143240);
   }
@@ -66,19 +64,19 @@ public class r
   public r(byte paramByte)
   {
     AppMethodBeat.i(143241);
-    this.Htj = false;
-    this.Htk = false;
-    this.Htl = false;
-    this.Htm = true;
-    this.Htn = true;
-    this.qeS = null;
-    this.gAC = new ap(Looper.getMainLooper());
-    this.Hto = null;
-    this.Htr = true;
-    this.Htu = 2131755726;
-    this.Htv = 0;
-    this.Htr = true;
-    this.Htj = true;
+    this.ITG = false;
+    this.ITH = false;
+    this.ITI = false;
+    this.ITJ = true;
+    this.ITK = true;
+    this.qNu = null;
+    this.gox = new com.tencent.mm.sdk.platformtools.ao(Looper.getMainLooper());
+    this.ITL = null;
+    this.ITO = true;
+    this.ITR = 2131755726;
+    this.ITS = 0;
+    this.ITO = true;
+    this.ITG = true;
     this.TAG = ("MicroMsg.SearchViewHelper-" + String.valueOf(System.currentTimeMillis()));
     AppMethodBeat.o(143241);
   }
@@ -86,11 +84,11 @@ public class r
   private void b(final Activity paramActivity, Menu paramMenu)
   {
     AppMethodBeat.i(143249);
-    if ((this.Htm) && ((this.Htk) || (this.Htl)))
+    if ((this.ITJ) && ((this.ITH) || (this.ITI)))
     {
-      this.Htl = false;
+      this.ITI = false;
       if ((paramActivity instanceof MMActivity)) {
-        ((MMActivity)paramActivity).setActionbarColor(ao.aD(paramActivity, 2130968577));
+        ((MMActivity)paramActivity).setActionbarColor(com.tencent.mm.ui.ao.aJ(paramActivity, 2130968577));
       }
       if (paramMenu != null)
       {
@@ -104,31 +102,31 @@ public class r
           i += 1;
         }
       }
-      this.gAC.postDelayed(new Runnable()
+      this.gox.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(143237);
-          if (r.this.qeS == null)
+          if (r.this.qNu == null)
           {
-            ad.w(r.this.TAG, "on post expand search menu, but item is null");
+            ac.w(r.this.TAG, "on post expand search menu, but item is null");
             AppMethodBeat.o(143237);
             return;
           }
-          ad.i(r.this.TAG, "try to expand action view, searchViewExpand %B", new Object[] { Boolean.valueOf(r.this.Htk) });
-          if (r.this.Htj) {
-            if (!r.this.Htk) {
-              r.this.qeS.expandActionView();
+          ac.i(r.this.TAG, "try to expand action view, searchViewExpand %B", new Object[] { Boolean.valueOf(r.this.ITH) });
+          if (r.this.ITG) {
+            if (!r.this.ITH) {
+              r.this.qNu.expandActionView();
             }
           }
           for (;;)
           {
-            final View localView = r.this.qeS.getActionView();
-            if ((localView != null) && (r.this.Htk))
+            final View localView = r.this.qNu.getActionView();
+            if ((localView != null) && (r.this.ITH))
             {
               localView.findViewById(2131299306).requestFocus();
-              if (r.this.Htn) {
-                r.this.gAC.postDelayed(new Runnable()
+              if (r.this.ITK) {
+                r.this.gox.postDelayed(new Runnable()
                 {
                   public final void run()
                   {
@@ -141,8 +139,8 @@ public class r
             }
             AppMethodBeat.o(143237);
             return;
-            if (r.this.Htw != null) {
-              r.this.Htw.fdX();
+            if (r.this.ITT != null) {
+              r.this.ITT.ftS();
             }
           }
         }
@@ -154,21 +152,21 @@ public class r
   public void a(Activity paramActivity, Menu paramMenu)
   {
     AppMethodBeat.i(143248);
-    ad.v(this.TAG, "on prepare options menu, searchViewExpand %B, triggerExpand %B, canExpand %B", new Object[] { Boolean.valueOf(this.Htk), Boolean.valueOf(this.Htl), Boolean.valueOf(this.Htm) });
+    ac.v(this.TAG, "on prepare options menu, searchViewExpand %B, triggerExpand %B, canExpand %B", new Object[] { Boolean.valueOf(this.ITH), Boolean.valueOf(this.ITI), Boolean.valueOf(this.ITJ) });
     if (paramActivity == null)
     {
-      ad.w(this.TAG, "on hanle status fail, activity is null");
+      ac.w(this.TAG, "on hanle status fail, activity is null");
       AppMethodBeat.o(143248);
       return;
     }
-    this.qeS = paramMenu.findItem(2131302248);
-    if (this.qeS == null)
+    this.qNu = paramMenu.findItem(2131302248);
+    if (this.qNu == null)
     {
-      ad.w(this.TAG, "can not find search menu, error");
+      ac.w(this.TAG, "can not find search menu, error");
       AppMethodBeat.o(143248);
       return;
     }
-    this.qeS.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+    this.qNu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -182,81 +180,81 @@ public class r
   public void a(final FragmentActivity paramFragmentActivity, final Menu paramMenu)
   {
     AppMethodBeat.i(143247);
-    ad.v(this.TAG, "on create options menu");
+    ac.v(this.TAG, "on create options menu");
     if (paramFragmentActivity == null)
     {
-      ad.w(this.TAG, "on add search menu, activity is null");
+      ac.w(this.TAG, "on add search menu, activity is null");
       AppMethodBeat.o(143247);
       return;
     }
-    if (this.Hto == null)
+    if (this.ITL == null)
     {
-      if (this.Htr)
+      if (this.ITO)
       {
-        this.Hto = new ActionBarSearchView(paramFragmentActivity);
-        this.Hto.setAutoMatchKeywords(this.Htt);
-        this.Hto.setKeywords(this.Hts);
+        this.ITL = new ActionBarSearchView(paramFragmentActivity);
+        this.ITL.setAutoMatchKeywords(this.ITQ);
+        this.ITL.setKeywords(this.ITP);
       }
     }
     else
     {
-      this.Hto.setCallBack(new ActionBarSearchView.b()
+      this.ITL.setCallBack(new ActionBarSearchView.b()
       {
-        public final void aBF(String paramAnonymousString)
+        public final void aGX(String paramAnonymousString)
         {
           AppMethodBeat.i(143225);
-          if (!r.this.Htk)
+          if (!r.this.ITH)
           {
-            ad.v(r.this.TAG, "onSearchTextChange %s, but not in searching", new Object[] { paramAnonymousString });
+            ac.v(r.this.TAG, "onSearchTextChange %s, but not in searching", new Object[] { paramAnonymousString });
             AppMethodBeat.o(143225);
             return;
           }
-          if (r.this.Htp != null) {
-            r.this.Htp.BY(paramAnonymousString);
+          if (r.this.ITM != null) {
+            r.this.ITM.Gb(paramAnonymousString);
           }
           AppMethodBeat.o(143225);
         }
         
-        public final void aIl()
+        public final void aPc()
         {
           AppMethodBeat.i(143226);
-          if (r.this.Htp != null) {
-            r.this.Htp.aIl();
+          if (r.this.ITM != null) {
+            r.this.ITM.aPc();
           }
           AppMethodBeat.o(143226);
         }
         
-        public final void fdA()
-        {
-          AppMethodBeat.i(143223);
-          if (!r.this.Htk)
-          {
-            ad.v(r.this.TAG, "onVoiceSearchRequired, but not in searching");
-            AppMethodBeat.o(143223);
-            return;
-          }
-          r.this.aEg();
-          AppMethodBeat.o(143223);
-        }
-        
-        public final void fdz()
+        public final void ftu()
         {
           AppMethodBeat.i(143224);
-          if (r.this.Htp != null) {
-            r.this.Htp.aIm();
+          if (r.this.ITM != null) {
+            r.this.ITM.aPd();
           }
           AppMethodBeat.o(143224);
         }
+        
+        public final void ftv()
+        {
+          AppMethodBeat.i(143223);
+          if (!r.this.ITH)
+          {
+            ac.v(r.this.TAG, "onVoiceSearchRequired, but not in searching");
+            AppMethodBeat.o(143223);
+            return;
+          }
+          r.this.aKX();
+          AppMethodBeat.o(143223);
+        }
       });
-      this.Hto.wE(aEf());
-      this.Hto.setOnEditorActionListener(new TextView.OnEditorActionListener()
+      this.ITL.xL(aKW());
+      this.ITL.setOnEditorActionListener(new TextView.OnEditorActionListener()
       {
         public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
           AppMethodBeat.i(143230);
-          if ((3 == paramAnonymousInt) && (r.this.Htp != null))
+          if ((3 == paramAnonymousInt) && (r.this.ITM != null))
           {
-            boolean bool = r.this.Htp.BX(r.this.getSearchContent());
+            boolean bool = r.this.ITM.Ga(r.this.getSearchContent());
             AppMethodBeat.o(143230);
             return bool;
           }
@@ -264,24 +262,24 @@ public class r
           return false;
         }
       });
-      if (this.Htv != 0) {
-        this.Hto.setSearchTipIcon(this.Htv);
+      if (this.ITS != 0) {
+        this.ITL.setSearchTipIcon(this.ITS);
       }
-      this.qeS = paramMenu.add(0, 2131302248, 0, this.Htu);
-      this.qeS.setEnabled(this.Htm);
-      this.qeS.setIcon(am.i(paramFragmentActivity, 2131689494, paramFragmentActivity.getResources().getColor(2131099732)));
-      this.qeS.setActionView((View)this.Hto);
-      if (!this.Htj) {
+      this.qNu = paramMenu.add(0, 2131302248, 0, this.ITR);
+      this.qNu.setEnabled(this.ITJ);
+      this.qNu.setIcon(am.k(paramFragmentActivity, 2131689494, paramFragmentActivity.getResources().getColor(2131099732)));
+      this.qNu.setActionView((View)this.ITL);
+      if (!this.ITG) {
         break label322;
       }
-      this.qeS.setShowAsAction(9);
+      this.qNu.setShowAsAction(9);
       label246:
-      if (!this.Htj) {
+      if (!this.ITG) {
         break label335;
       }
-      h.a(this.qeS, new h.a()
+      h.a(this.qNu, new h.a()
       {
-        public final boolean eV()
+        public final boolean fd()
         {
           AppMethodBeat.i(143231);
           r.this.a(paramFragmentActivity, false, paramMenu);
@@ -289,7 +287,7 @@ public class r
           return true;
         }
         
-        public final boolean eW()
+        public final boolean fe()
         {
           AppMethodBeat.i(143232);
           r.this.b(paramFragmentActivity, false, paramMenu);
@@ -300,35 +298,35 @@ public class r
     }
     for (;;)
     {
-      this.Hto.setBackClickCallback(new ActionBarSearchView.a()
+      this.ITL.setBackClickCallback(new ActionBarSearchView.a()
       {
-        public final void fdy()
+        public final void ftt()
         {
           AppMethodBeat.i(143235);
-          if (r.this.Htj)
+          if (r.this.ITG)
           {
-            if (r.this.qeS != null)
+            if (r.this.qNu != null)
             {
-              r.this.qeS.collapseActionView();
+              r.this.qNu.collapseActionView();
               AppMethodBeat.o(143235);
             }
           }
-          else if (r.this.Htw != null) {
-            r.this.Htw.collapseActionView();
+          else if (r.this.ITT != null) {
+            r.this.ITT.collapseActionView();
           }
           AppMethodBeat.o(143235);
         }
       });
       AppMethodBeat.o(143247);
       return;
-      this.Hto = new SearchViewNotRealTimeHelper(paramFragmentActivity);
-      this.Hto.setNotRealCallBack(this.Htq);
+      this.ITL = new SearchViewNotRealTimeHelper(paramFragmentActivity);
+      this.ITL.setNotRealCallBack(this.ITN);
       break;
       label322:
-      this.qeS.setShowAsAction(2);
+      this.qNu.setShowAsAction(2);
       break label246;
       label335:
-      this.Htw = new a()
+      this.ITT = new a()
       {
         public final void collapseActionView()
         {
@@ -337,7 +335,7 @@ public class r
           AppMethodBeat.o(143234);
         }
         
-        public final void fdX()
+        public final void ftS()
         {
           AppMethodBeat.i(143233);
           r.this.a(paramFragmentActivity, true, paramMenu);
@@ -350,19 +348,19 @@ public class r
   public final void a(final FragmentActivity paramFragmentActivity, final boolean paramBoolean, Menu paramMenu)
   {
     AppMethodBeat.i(143255);
-    ad.d(this.TAG, "doNewExpand, searchViewExpand " + this.Htk);
-    if (!this.Htk)
+    ac.d(this.TAG, "doNewExpand, searchViewExpand " + this.ITH);
+    if (!this.ITH)
     {
-      this.Htk = true;
+      this.ITH = true;
       b(paramFragmentActivity, paramMenu);
-      this.gAC.post(new Runnable()
+      this.gox.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(143239);
           if ((paramFragmentActivity == null) || (paramFragmentActivity.isFinishing()))
           {
-            ad.w(r.this.TAG, "want to expand search view, but activity status error");
+            ac.w(r.this.TAG, "want to expand search view, but activity status error");
             AppMethodBeat.o(143239);
             return;
           }
@@ -372,39 +370,39 @@ public class r
           AppMethodBeat.o(143239);
         }
       });
-      if (this.Htp != null) {
-        this.Htp.aIk();
+      if (this.ITM != null) {
+        this.ITM.aPb();
       }
     }
     AppMethodBeat.o(143255);
   }
   
-  protected boolean aEf()
+  protected boolean aKW()
   {
     return false;
   }
   
-  protected void aEg() {}
+  protected void aKX() {}
   
   public final void b(final FragmentActivity paramFragmentActivity, final boolean paramBoolean, Menu paramMenu)
   {
     AppMethodBeat.i(143256);
-    ad.d(this.TAG, "doNewCollapse, searchViewExpand " + this.Htk);
-    if (this.Htk)
+    ac.d(this.TAG, "doNewCollapse, searchViewExpand " + this.ITH);
+    if (this.ITH)
     {
-      this.Htk = false;
+      this.ITH = false;
       c(paramMenu);
-      if (this.Hto != null) {
-        this.Hto.wF(false);
+      if (this.ITL != null) {
+        this.ITL.xM(false);
       }
-      this.gAC.post(new Runnable()
+      this.gox.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(143227);
           if ((paramFragmentActivity == null) || (paramFragmentActivity.isFinishing()))
           {
-            ad.w(r.this.TAG, "want to collapse search view, but activity status error");
+            ac.w(r.this.TAG, "want to collapse search view, but activity status error");
             AppMethodBeat.o(143227);
             return;
           }
@@ -414,28 +412,28 @@ public class r
           AppMethodBeat.o(143227);
         }
       });
-      if (this.Htp != null) {
-        this.gAC.post(new Runnable()
+      if (this.ITM != null) {
+        this.gox.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(143228);
-            if (r.this.Htp != null) {
-              r.this.Htp.aIj();
+            if (r.this.ITM != null) {
+              r.this.ITM.aPa();
             }
             AppMethodBeat.o(143228);
           }
         });
       }
     }
-    this.gAC.post(new Runnable()
+    this.gox.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(143229);
-        if (r.this.qeS == null)
+        if (r.this.qNu == null)
         {
-          ad.w(r.this.TAG, "want to collapse search view, but search menu item is null");
+          ac.w(r.this.TAG, "want to collapse search view, but search menu item is null");
           AppMethodBeat.o(143229);
           return;
         }
@@ -455,7 +453,7 @@ public class r
             }
           }
         }
-        Object localObject1 = r.this.qeS.getActionView();
+        Object localObject1 = r.this.qNu.getActionView();
         if (localObject1 != null)
         {
           localObject1 = ((View)localObject1).findViewById(2131299306);
@@ -490,37 +488,37 @@ public class r
   public final void clearFocus()
   {
     AppMethodBeat.i(143245);
-    if (this.Hto != null) {
-      this.Hto.fdv();
+    if (this.ITL != null) {
+      this.ITL.ftq();
     }
     AppMethodBeat.o(143245);
   }
   
-  public final void fdW()
+  public final void ftR()
   {
     AppMethodBeat.i(143252);
-    ad.d(this.TAG, "do collapse");
-    if ((this.Htk) && (this.qeS != null))
+    ac.d(this.TAG, "do collapse");
+    if ((this.ITH) && (this.qNu != null))
     {
-      if (this.Htj)
+      if (this.ITG)
       {
-        this.qeS.collapseActionView();
+        this.qNu.collapseActionView();
         AppMethodBeat.o(143252);
         return;
       }
-      if (this.Htw != null) {
-        this.Htw.collapseActionView();
+      if (this.ITT != null) {
+        this.ITT.collapseActionView();
       }
     }
     AppMethodBeat.o(143252);
   }
   
-  public final boolean fdw()
+  public final boolean ftr()
   {
     AppMethodBeat.i(143253);
-    if (this.Hto != null)
+    if (this.ITL != null)
     {
-      boolean bool = this.Hto.fdw();
+      boolean bool = this.ITL.ftr();
       AppMethodBeat.o(143253);
       return bool;
     }
@@ -528,12 +526,12 @@ public class r
     return false;
   }
   
-  public final boolean fdx()
+  public final boolean fts()
   {
     AppMethodBeat.i(143254);
-    if (this.Hto != null)
+    if (this.ITL != null)
     {
-      boolean bool = this.Hto.fdx();
+      boolean bool = this.ITL.fts();
       AppMethodBeat.o(143254);
       return bool;
     }
@@ -544,9 +542,9 @@ public class r
   public final String getSearchContent()
   {
     AppMethodBeat.i(143242);
-    if (this.Hto != null)
+    if (this.ITL != null)
     {
-      String str = this.Hto.getSearchContent();
+      String str = this.ITL.getSearchContent();
       AppMethodBeat.o(143242);
       return str;
     }
@@ -557,10 +555,10 @@ public class r
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143250);
-    ad.v(this.TAG, "on key down, key code %d, expand %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.Htk) });
-    if ((4 == paramInt) && (this.Htk))
+    ac.v(this.TAG, "on key down, key code %d, expand %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.ITH) });
+    if ((4 == paramInt) && (this.ITH))
     {
-      fdW();
+      ftR();
       AppMethodBeat.o(143250);
       return true;
     }
@@ -571,70 +569,70 @@ public class r
   public final void setHint(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(143244);
-    if (this.Hto == null)
+    if (this.ITL == null)
     {
       AppMethodBeat.o(143244);
       return;
     }
-    this.Hto.setHint(paramCharSequence);
+    this.ITL.setHint(paramCharSequence);
     AppMethodBeat.o(143244);
   }
   
   public void setSearchContent(String paramString)
   {
     AppMethodBeat.i(143243);
-    if (this.Hto == null)
+    if (this.ITL == null)
     {
       AppMethodBeat.o(143243);
       return;
     }
-    this.Hto.setSearchContent(paramString);
+    this.ITL.setSearchContent(paramString);
     AppMethodBeat.o(143243);
   }
   
-  public final void wH(boolean paramBoolean)
+  public final void xO(boolean paramBoolean)
   {
     boolean bool1 = false;
     AppMethodBeat.i(143251);
     String str = this.TAG;
-    boolean bool2 = this.Htk;
-    if (this.qeS == null) {
+    boolean bool2 = this.ITH;
+    if (this.qNu == null) {
       bool1 = true;
     }
-    ad.d(str, "do expand, expanded[%B], search menu item null[%B]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-    if (this.Htk)
+    ac.d(str, "do expand, expanded[%B], search menu item null[%B]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+    if (this.ITH)
     {
       AppMethodBeat.o(143251);
       return;
     }
-    if (!this.Htm)
+    if (!this.ITJ)
     {
-      ad.w(this.TAG, "can not expand now");
+      ac.w(this.TAG, "can not expand now");
       AppMethodBeat.o(143251);
       return;
     }
-    this.Htn = paramBoolean;
-    if (this.qeS != null)
+    this.ITK = paramBoolean;
+    if (this.qNu != null)
     {
-      this.gAC.post(new Runnable()
+      this.gox.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(143238);
-          if (r.this.qeS == null)
+          if (r.this.qNu == null)
           {
-            ad.w(r.this.TAG, "post do expand search menu, but search menu item is null");
+            ac.w(r.this.TAG, "post do expand search menu, but search menu item is null");
             AppMethodBeat.o(143238);
             return;
           }
-          if (r.this.Htj)
+          if (r.this.ITG)
           {
-            r.this.qeS.expandActionView();
+            r.this.qNu.expandActionView();
             AppMethodBeat.o(143238);
             return;
           }
-          if (r.this.Htw != null) {
-            r.this.Htw.fdX();
+          if (r.this.ITT != null) {
+            r.this.ITT.ftS();
           }
           AppMethodBeat.o(143238);
         }
@@ -642,7 +640,7 @@ public class r
       AppMethodBeat.o(143251);
       return;
     }
-    this.Htl = true;
+    this.ITI = true;
     AppMethodBeat.o(143251);
   }
   
@@ -650,22 +648,22 @@ public class r
   {
     public abstract void collapseActionView();
     
-    public abstract void fdX();
+    public abstract void ftS();
   }
   
   public static abstract interface b
   {
-    public abstract boolean BX(String paramString);
+    public abstract boolean Ga(String paramString);
     
-    public abstract void BY(String paramString);
+    public abstract void Gb(String paramString);
     
-    public abstract void aIj();
+    public abstract void aPa();
     
-    public abstract void aIk();
+    public abstract void aPb();
     
-    public abstract void aIl();
+    public abstract void aPc();
     
-    public abstract void aIm();
+    public abstract void aPd();
   }
 }
 

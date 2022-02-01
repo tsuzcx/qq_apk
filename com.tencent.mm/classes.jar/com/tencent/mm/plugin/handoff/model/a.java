@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.k;
 import d.l;
 
-@l(fvt={1, 1, 16}, fvu={""}, fvv={"cdata", "", "", "api-handoff_release"})
+@l(fNY={1, 1, 16}, fNZ={""}, fOa={"cdata", "", "", "api-handoff_release"})
 public final class a
 {
-  public static final String dg(Object paramObject)
+  public static final String di(Object paramObject)
   {
     AppMethodBeat.i(121712);
     k.h(paramObject, "$this$cdata");

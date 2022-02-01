@@ -6,14 +6,14 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ai;
 import java.util.BitSet;
 
 public final class d
 {
-  public static int kys = -1;
+  public static int kZG = -1;
   
-  public static String JP(String paramString)
+  public static String NW(String paramString)
   {
     AppMethodBeat.i(144728);
     if (paramString == null)
@@ -32,17 +32,17 @@ public final class d
     return paramString;
   }
   
-  public static int JQ(String paramString)
+  public static int NX(String paramString)
   {
-    AppMethodBeat.i(193714);
-    WifiInfo localWifiInfo = ((WifiManager)aj.getContext().getSystemService("wifi")).getConnectionInfo();
+    AppMethodBeat.i(204987);
+    WifiInfo localWifiInfo = ((WifiManager)ai.getContext().getSystemService("wifi")).getConnectionInfo();
     if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null) && (localWifiInfo.getBSSID().equals(paramString)))
     {
-      int i = c.su(localWifiInfo.getRssi());
-      AppMethodBeat.o(193714);
+      int i = c.tk(localWifiInfo.getRssi());
+      AppMethodBeat.o(204987);
       return i;
     }
-    AppMethodBeat.o(193714);
+    AppMethodBeat.o(204987);
     return 0;
   }
   
@@ -97,7 +97,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d
  * JD-Core Version:    0.7.0.1
  */

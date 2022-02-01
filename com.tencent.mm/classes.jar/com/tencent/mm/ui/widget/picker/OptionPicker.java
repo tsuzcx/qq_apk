@@ -12,10 +12,10 @@ public class OptionPicker
   extends NumberPicker
 {
   private Context mContext;
+  private String[] mKp;
+  private int mKq;
   private int mMaxWidth;
   private int mMinWidth;
-  private String[] mip;
-  private int miq;
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,7 +39,7 @@ public class OptionPicker
   {
     AppMethodBeat.i(159583);
     this.mMinWidth = ao.fromDPToPix(this.mContext, 120);
-    this.miq = ao.fromDPToPix(this.mContext, 20);
+    this.mKq = ao.fromDPToPix(this.mContext, 20);
     f.a(this, getResources().getDrawable(2131233617));
     setDescendantFocusability(393216);
     f.b(this, this.mContext.getResources().getColor(2131100711));
@@ -66,7 +66,7 @@ public class OptionPicker
       AppMethodBeat.o(159588);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.miq * 2;
+    paramInt2 = getMeasuredWidth() + this.mKq * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -93,7 +93,7 @@ public class OptionPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(159586);
-    this.miq = Math.max(paramInt, 0);
+    this.mKq = Math.max(paramInt, 0);
     AppMethodBeat.o(159586);
   }
   
@@ -115,7 +115,7 @@ public class OptionPicker
       AppMethodBeat.o(159584);
       return;
     }
-    this.mip = paramArrayOfString;
+    this.mKp = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));
@@ -130,7 +130,7 @@ public class OptionPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.OptionPicker
  * JD-Core Version:    0.7.0.1
  */

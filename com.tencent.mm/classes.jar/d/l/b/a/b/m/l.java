@@ -12,26 +12,26 @@ public final class l
   extends n
   implements d, k
 {
-  public static final a JXs;
-  final aj JXr;
+  public static final a LKL;
+  final aj LKK;
   
   static
   {
     AppMethodBeat.i(60631);
-    JXs = new a((byte)0);
+    LKL = new a((byte)0);
     AppMethodBeat.o(60631);
   }
   
   private l(aj paramaj)
   {
-    this.JXr = paramaj;
+    this.LKK = paramaj;
   }
   
   private l g(g paramg)
   {
     AppMethodBeat.i(60624);
     d.g.b.k.h(paramg, "newAnnotations");
-    paramg = new l(this.JXr.d(paramg));
+    paramg = new l(this.LKK.d(paramg));
     AppMethodBeat.o(60624);
     return paramg;
   }
@@ -40,20 +40,20 @@ public final class l
   {
     AppMethodBeat.i(60623);
     d.g.b.k.h(paramab, "replacement");
-    paramab = (ab)am.b(paramab.fJW());
+    paramab = (ab)am.b(paramab.gcz());
     AppMethodBeat.o(60623);
     return paramab;
   }
   
-  protected final aj fBP()
+  protected final aj fUt()
   {
-    return this.JXr;
+    return this.LKK;
   }
   
-  public final boolean fBS()
+  public final boolean fUw()
   {
     AppMethodBeat.i(60622);
-    if (((this.JXr.fIW() instanceof p)) || ((this.JXr.fIW().fxM() instanceof as)))
+    if (((this.LKK.gbz() instanceof p)) || ((this.LKK.gbz().fQq() instanceof as)))
     {
       AppMethodBeat.o(60622);
       return true;
@@ -62,7 +62,7 @@ public final class l
     return false;
   }
   
-  public final boolean fBT()
+  public final boolean fUx()
   {
     return false;
   }
@@ -70,17 +70,17 @@ public final class l
   public final String toString()
   {
     AppMethodBeat.i(60629);
-    String str = this.JXr + "!!";
+    String str = this.LKK + "!!";
     AppMethodBeat.o(60629);
     return str;
   }
   
-  public final aj xW(boolean paramBoolean)
+  public final aj zo(boolean paramBoolean)
   {
     AppMethodBeat.i(60627);
     if (paramBoolean)
     {
-      localaj = this.JXr.xW(paramBoolean);
+      localaj = this.LKK.zo(paramBoolean);
       AppMethodBeat.o(60627);
       return localaj;
     }
@@ -104,13 +104,13 @@ public final class l
       }
       d.g.b.k.h(parambg, "$this$canHaveUndefinedNullability");
       int i;
-      if (((parambg.fIW() instanceof p)) || ((parambg.fIW().fxM() instanceof as)) || ((parambg instanceof d.l.b.a.b.m.a.k)))
+      if (((parambg.gbz() instanceof p)) || ((parambg.gbz().fQq() instanceof as)) || ((parambg instanceof d.l.b.a.b.m.a.k)))
       {
         i = 1;
         if (i == 0) {
           break label179;
         }
-        q localq = q.JZf;
+        q localq = q.LMy;
         if (q.d(parambg)) {
           break label179;
         }
@@ -122,8 +122,8 @@ public final class l
         {
           if ((parambg instanceof v))
           {
-            boolean bool = d.g.b.k.g(((v)parambg).JXH.fIW(), ((v)parambg).JXI.fIW());
-            if ((aa.JfW) && (!bool))
+            boolean bool = d.g.b.k.g(((v)parambg).LLa.gbz(), ((v)parambg).LLb.gbz());
+            if ((aa.KTq) && (!bool))
             {
               parambg = (Throwable)new AssertionError("DefinitelyNotNullType for flexible type (" + parambg + ") can be created only from type variable with the same constructor for bounds");
               AppMethodBeat.o(60621);
@@ -147,7 +147,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.l.b.a.b.m.l
  * JD-Core Version:    0.7.0.1
  */

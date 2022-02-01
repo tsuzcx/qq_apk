@@ -1,13 +1,13 @@
 package com.tencent.liteav.beauty.b.a;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.g;
+import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
-  extends g
+  extends h
 {
   private int r = -1;
   private int s = -1;

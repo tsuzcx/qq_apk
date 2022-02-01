@@ -28,12 +28,11 @@
     <item type="anim" name="dr">false</item>
     <item type="anim" name="ds">false</item>
     <item type="anim" name="dt">false</item>
-    <item type="anim" name="e0">false</item>
-    <item type="anim" name="e1">false</item>
     <item type="anim" name="e6">false</item>
     <item type="anim" name="e7">false</item>
     <item type="anim" name="ec">false</item>
     <item type="anim" name="ed">false</item>
     <item type="anim" name="ee">false</item>
     <item type="anim" name="eo">false</item>
+    <item type="anim" name="eu">false</item>
 </resources>

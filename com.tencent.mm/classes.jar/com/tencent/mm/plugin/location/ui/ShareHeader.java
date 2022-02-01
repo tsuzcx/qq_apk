@@ -15,9 +15,9 @@ public class ShareHeader
   extends LinearLayout
 {
   private Context mContext;
-  private ViewGroup sRI;
-  private MMImageButton sRJ;
-  private MMImageButton sRK;
+  private ViewGroup tZV;
+  private MMImageButton tZW;
+  private MMImageButton tZX;
   private TextView titleTv;
   
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,29 +43,29 @@ public class ShareHeader
   {
     AppMethodBeat.i(55887);
     View localView = View.inflate(this.mContext, 2131495426, this);
-    this.sRI = ((ViewGroup)localView.findViewById(2131300707));
-    this.sRJ = ((MMImageButton)localView.findViewById(2131305935));
-    this.sRK = ((MMImageButton)localView.findViewById(2131305942));
+    this.tZV = ((ViewGroup)localView.findViewById(2131300707));
+    this.tZW = ((MMImageButton)localView.findViewById(2131305935));
+    this.tZX = ((MMImageButton)localView.findViewById(2131305942));
     this.titleTv = ((TextView)localView.findViewById(2131305902));
     AppMethodBeat.o(55887);
   }
   
   public ViewGroup getHeaderBar()
   {
-    return this.sRI;
+    return this.tZV;
   }
   
   public void setOnLeftClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55888);
-    this.sRJ.setOnClickListener(paramOnClickListener);
+    this.tZW.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55888);
   }
   
   public void setOnRightClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55889);
-    this.sRK.setOnClickListener(paramOnClickListener);
+    this.tZX.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55889);
   }
   
@@ -85,7 +85,7 @@ public class ShareHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.ShareHeader
  * JD-Core Version:    0.7.0.1
  */

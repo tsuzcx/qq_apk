@@ -1,85 +1,54 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.content.Context;
+import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.List;
 
 public final class bj
 {
-  public static Map<String, String> aFP(String paramString)
+  private SensorManager Dmw;
+  private bj.a Gup;
+  
+  public bj(Context paramContext)
   {
-    AppMethodBeat.i(157824);
-    if ((paramString == null) || (!paramString.startsWith("~SEMI_XML~")))
-    {
-      AppMethodBeat.o(157824);
-      return null;
-    }
-    String str1 = paramString.substring(10);
-    paramString = new HashMap();
-    int j = str1.length();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j - 4)
-      {
-        int k = i + 1;
-        try
-        {
-          int m = str1.charAt(i);
-          i = k + 1;
-          k = (m << 16) + str1.charAt(k) + i;
-          String str2 = str1.substring(i, k);
-          i = k + 1;
-          m = str1.charAt(k);
-          k = i + 1;
-          i = (m << 16) + str1.charAt(i) + k;
-          paramString.put(str2, str1.substring(k, i));
-        }
-        catch (Exception localException)
-        {
-          ad.printErrStackTrace("MicroMsg.SemiXml", localException, "", new Object[0]);
-        }
-      }
-    }
-    AppMethodBeat.o(157824);
-    return paramString;
+    AppMethodBeat.i(157832);
+    this.Dmw = ((SensorManager)paramContext.getSystemService("sensor"));
+    AppMethodBeat.o(157832);
   }
   
-  public static String bA(Map<String, String> paramMap)
+  public final boolean aE(Runnable paramRunnable)
   {
-    AppMethodBeat.i(157823);
-    if (paramMap == null)
+    AppMethodBeat.i(157833);
+    if (this.Dmw == null)
     {
-      AppMethodBeat.o(157823);
-      return null;
+      AppMethodBeat.o(157833);
+      return false;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("~SEMI_XML~");
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    List localList = this.Dmw.getSensorList(1);
+    if ((localList != null) && (localList.size() > 0))
     {
-      Object localObject = (Map.Entry)paramMap.next();
-      String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (String)((Map.Entry)localObject).getValue();
-      if (localObject != null)
-      {
-        int i = str.length();
-        int j = ((String)localObject).length();
-        localStringBuilder.append((char)(i >> 16)).append((char)i).append(str);
-        localStringBuilder.append((char)(j >> 16)).append((char)j).append((String)localObject);
-      }
+      this.Gup = new bj.a(paramRunnable);
+      this.Dmw.registerListener(this.Gup, 2, 3);
+      AppMethodBeat.o(157833);
+      return true;
     }
-    paramMap = localStringBuilder.toString();
-    AppMethodBeat.o(157823);
-    return paramMap;
+    AppMethodBeat.o(157833);
+    return false;
+  }
+  
+  public final void eVT()
+  {
+    AppMethodBeat.i(157834);
+    if ((this.Dmw != null) && (this.Gup != null)) {
+      this.Dmw.unregisterListener(this.Gup, 2);
+    }
+    AppMethodBeat.o(157834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bj
  * JD-Core Version:    0.7.0.1
  */

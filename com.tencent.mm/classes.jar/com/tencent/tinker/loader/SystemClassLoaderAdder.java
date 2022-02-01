@@ -5,6 +5,7 @@ import android.os.Build.VERSION;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import dalvik.system.DexFile;
 import dalvik.system.PathClassLoader;
 import java.io.File;
@@ -32,7 +33,9 @@ public class SystemClassLoaderAdder
   
   private static boolean checkDexInstall(ClassLoader paramClassLoader)
   {
-    return ((Boolean)ShareReflectUtil.findField(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramClassLoader), "isPatch").get(null)).booleanValue();
+    boolean bool = ((Boolean)ShareReflectUtil.findField(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramClassLoader), "isPatch").get(null)).booleanValue();
+    ShareTinkerLog.w("Tinker.ClassLoaderAdder", "checkDexInstall result:".concat(String.valueOf(bool)), new Object[0]);
+    return bool;
   }
   
   private static List<File> createSortedAdditionalPathEntries(List<File> paramList)
@@ -117,14 +120,14 @@ public class SystemClassLoaderAdder
       paramList = createSortedAdditionalPathEntries(paramList);
       ArkHot.install(paramPathClassLoader, paramList);
       sPatchDexCount = paramList.size();
-      new StringBuilder("after loaded classloader: ").append(paramPathClassLoader).append(", dex size:").append(sPatchDexCount);
+      ShareTinkerLog.i("Tinker.ClassLoaderAdder", "after loaded classloader: " + paramPathClassLoader + ", dex size:" + sPatchDexCount, new Object[0]);
       checkDexInstall(paramPathClassLoader);
     }
   }
   
   public static void installDexes(Application paramApplication, ClassLoader paramClassLoader, File paramFile, List<File> paramList, boolean paramBoolean)
   {
-    new StringBuilder("installDexes dexOptDir: ").append(paramFile.getAbsolutePath()).append(", dex size:").append(paramList.size());
+    ShareTinkerLog.i("Tinker.ClassLoaderAdder", "installDexes dexOptDir: " + paramFile.getAbsolutePath() + ", dex size:" + paramList.size(), new Object[0]);
     if (!paramList.isEmpty())
     {
       paramList = createSortedAdditionalPathEntries(paramList);
@@ -134,7 +137,7 @@ public class SystemClassLoaderAdder
       for (;;)
       {
         sPatchDexCount = paramList.size();
-        new StringBuilder("after loaded classloader: ").append(paramClassLoader).append(", dex size:").append(sPatchDexCount);
+        ShareTinkerLog.i("Tinker.ClassLoaderAdder", "after loaded classloader: " + paramClassLoader + ", dex size:" + sPatchDexCount, new Object[0]);
         if (checkDexInstall(paramClassLoader)) {
           break;
         }
@@ -186,6 +189,7 @@ public class SystemClassLoaderAdder
         Method localMethod = localClass.getDeclaredMethod("applyPatch", new Class[] { ClassLoader.class, String.class });
         localMethod.setAccessible(true);
         localMethod.invoke(null, new Object[] { paramClassLoader, str });
+        ShareTinkerLog.i("Tinker.ClassLoaderAdder", "ArkHot install path = ".concat(String.valueOf(str)), new Object[0]);
       }
     }
   }
@@ -214,8 +218,11 @@ public class SystemClassLoaderAdder
       if (localArrayList.size() > 0)
       {
         paramClassLoader = localArrayList.iterator();
-        if (paramClassLoader.hasNext()) {
-          throw ((IOException)paramClassLoader.next());
+        if (paramClassLoader.hasNext())
+        {
+          paramClassLoader = (IOException)paramClassLoader.next();
+          ShareTinkerLog.w("Tinker.ClassLoaderAdder", "Exception in makeDexElement", new Object[] { paramClassLoader });
+          throw paramClassLoader;
         }
       }
     }
@@ -229,13 +236,18 @@ public class SystemClassLoaderAdder
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        try
+        for (;;)
         {
-          Method localMethod2 = ShareReflectUtil.findMethod(paramObject, "makeDexElements", new Class[] { List.class, File.class, List.class });
-        }
-        catch (NoSuchMethodException paramObject)
-        {
-          throw paramObject;
+          ShareTinkerLog.e("Tinker.ClassLoaderAdder", "NoSuchMethodException: makeDexElements(ArrayList,File,ArrayList) failure", new Object[0]);
+          try
+          {
+            Method localMethod2 = ShareReflectUtil.findMethod(paramObject, "makeDexElements", new Class[] { List.class, File.class, List.class });
+          }
+          catch (NoSuchMethodException paramObject)
+          {
+            ShareTinkerLog.e("Tinker.ClassLoaderAdder", "NoSuchMethodException: makeDexElements(List,File,List) failure", new Object[0]);
+            throw paramObject;
+          }
         }
       }
     }
@@ -251,8 +263,11 @@ public class SystemClassLoaderAdder
       if (localArrayList.size() > 0)
       {
         paramClassLoader = localArrayList.iterator();
-        if (paramClassLoader.hasNext()) {
-          throw ((IOException)paramClassLoader.next());
+        if (paramClassLoader.hasNext())
+        {
+          paramClassLoader = (IOException)paramClassLoader.next();
+          ShareTinkerLog.w("Tinker.ClassLoaderAdder", "Exception in makePathElement", new Object[] { paramClassLoader });
+          throw paramClassLoader;
         }
       }
     }
@@ -266,20 +281,27 @@ public class SystemClassLoaderAdder
       }
       catch (NoSuchMethodException localNoSuchMethodException1)
       {
-        try
+        for (;;)
         {
-          Method localMethod2 = ShareReflectUtil.findMethod(paramObject, "makePathElements", new Class[] { ArrayList.class, File.class, ArrayList.class });
-        }
-        catch (NoSuchMethodException localNoSuchMethodException2)
-        {
+          ShareTinkerLog.e("Tinker.ClassLoaderAdder", "NoSuchMethodException: makePathElements(List,File,List) failure", new Object[0]);
           try
           {
-            paramObject = SystemClassLoaderAdder.V19.makeDexElements(paramObject, paramArrayList, paramFile, paramArrayList1);
-            return paramObject;
+            Method localMethod2 = ShareReflectUtil.findMethod(paramObject, "makePathElements", new Class[] { ArrayList.class, File.class, ArrayList.class });
           }
-          catch (NoSuchMethodException paramObject)
+          catch (NoSuchMethodException localNoSuchMethodException2)
           {
-            throw paramObject;
+            ShareTinkerLog.e("Tinker.ClassLoaderAdder", "NoSuchMethodException: makeDexElements(ArrayList,File,ArrayList) failure", new Object[0]);
+            try
+            {
+              ShareTinkerLog.e("Tinker.ClassLoaderAdder", "NoSuchMethodException: try use v19 instead", new Object[0]);
+              paramObject = SystemClassLoaderAdder.V19.makeDexElements(paramObject, paramArrayList, paramFile, paramArrayList1);
+              return paramObject;
+            }
+            catch (NoSuchMethodException paramObject)
+            {
+              ShareTinkerLog.e("Tinker.ClassLoaderAdder", "NoSuchMethodException: makeDexElements(List,File,List) failure", new Object[0]);
+              throw paramObject;
+            }
           }
         }
       }

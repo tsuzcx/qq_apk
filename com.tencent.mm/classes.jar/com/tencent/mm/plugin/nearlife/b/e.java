@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.nearlife.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class e
   implements aw
 {
-  private com.tencent.mm.pluginsdk.location.a ubM;
+  private com.tencent.mm.pluginsdk.location.a vkL;
   
   public e()
   {
     AppMethodBeat.i(163198);
-    this.ubM = new a();
+    this.vkL = new a();
     AppMethodBeat.o(163198);
   }
   
@@ -29,9 +29,9 @@ public final class e
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(26559);
-    ad.i("MicroMsg.SubCoreNearLife", "onAccountPostReset SubCoreNearLife");
+    ac.i("MicroMsg.SubCoreNearLife", "onAccountPostReset SubCoreNearLife");
     g.b(com.tencent.mm.plugin.story.api.a.class, new com.tencent.mm.plugin.story.api.a() {});
-    g.b(com.tencent.mm.pluginsdk.location.a.class, this.ubM);
+    g.b(com.tencent.mm.pluginsdk.location.a.class, this.vkL);
     AppMethodBeat.o(26559);
   }
   
